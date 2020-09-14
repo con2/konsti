@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loading should render correctly 1`] = `
+<div
+  className="accordion"
+>
+  <Accordion__AccordionToggle
+    onClick={[Function]}
+  >
+    <Accordion__AccordionIcon
+      icon="angle-down"
+    />
+    <span>
+      test button text
+    </span>
+  </Accordion__AccordionToggle>
+</div>
+`;

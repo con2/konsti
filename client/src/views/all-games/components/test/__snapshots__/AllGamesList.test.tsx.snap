@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AllGamesList should render correctly 1`] = `
+<div
+  className="games-list"
+>
+  <AllGamesList__GameListTitle
+    key="2018-07-28T16:00:00.000Z"
+  >
+    <span
+      className="game-startup-time"
+    >
+      Saturday 16:00
+    </span>
+  </AllGamesList__GameListTitle>
+  <div
+    className="games-list"
+    key="p2106"
+  >
+    <Link
+      to="/games/p2106"
+    >
+      Test game
+    </Link>
+     
+    <AllGamesList__GameListShortDescription>
+      programType.tabletopRPG
+      :
+       
+      Short description
+    </AllGamesList__GameListShortDescription>
+  </div>
+</div>
+`;
