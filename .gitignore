@@ -2,6 +2,9 @@
 logs
 *.log
 
+# Temp files
+temp
+
 # Dependency directories
 node_modules
 
@@ -19,8 +22,25 @@ build/*
 report.html
 stats.json
 
+# Transpiled files
+lib
+
+# Front end files
+front
+
+# Zip files
+*.zip
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+
 # Mac
 .DS_Store
 
 # Coverage report
 coverage
+
+# Secrets
+secret
