@@ -1,8 +1,8 @@
-# konsti-client
+# Konsti
 
-![Build](https://github.com/Archinowsk/konsti-client/workflows/Node%20CI/badge.svg)
+![Build](https://github.com/ropekonsti/konsti/workflows/Node%20CI/badge.svg)
 
-[![Known Vulnerabilities](https://snyk.io/test/github/archinowsk/konsti-client/badge.svg)](https://snyk.io/test/github/archinowsk/konsti-client)
+[![Known Vulnerabilities](https://snyk.io/test/github/ropekonsti/konsti/badge.svg)](https://snyk.io/test/github/ropekonsti/konsti)
 
 Tabletop roleplaying game signup application Konsti. The application is used to sign up and assign players to game sessions. Registered users can choose weighted preferences and signup slots are quickly allocated using [Hungarian algorithm](https://en.wikipedia.org/wiki/Hungarian_algorithm), [eventassigner-js](https://github.com/Altesmi/eventassigner-js), or brute force approximation. Users can form groups to be assigned into the same game session. Game data is fetched from [Kompassi Event Management System](https://kompassi.eu/).
 
@@ -16,7 +16,7 @@ Registered users by year:
 
 ## Tech
 
-- Back-end (see [konsti-server](https://github.com/Archinowsk/konsti-server))
+- Back-end
   - Node.js
   - Express
   - AWS
