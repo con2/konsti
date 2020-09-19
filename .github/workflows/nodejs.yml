@@ -28,7 +28,7 @@ jobs:
 
       - name: Run Prettier
         run: |
-          yarn prettier
+          yarn prettier:check
 
       - name: Run ESLint
         run: |
