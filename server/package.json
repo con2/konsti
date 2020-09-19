@@ -42,11 +42,6 @@
     "update-game-popularity": "npm run build && cross-env NODE_ENV=development node lib/test/scripts/testUpdateGamePopularity.js",
     "verify-results": "npm run build && cross-env NODE_ENV=development node lib/test/scripts/testVerifyResults.js"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "config": {
     "mongodbMemoryServer": {
       "version": "4.2.6"
@@ -126,9 +121,7 @@
     "eslint-plugin-standard": "4.0.1",
     "eslint-plugin-unicorn": "21.0.0",
     "faker": "5.1.0",
-    "husky": "4.2.5",
     "jest": "26.4.2",
-    "lint-staged": "10.2.13",
     "mongodb-memory-server": "6.6.7",
     "ncp": "2.0.0",
     "nodemon": "2.0.4",

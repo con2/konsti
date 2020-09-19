@@ -17,21 +17,15 @@
     "eslint": "eslint . --ext .js,.ts,.tsx",
     "eslint-rules": "eslint --print-config .eslintrc.js",
     "postinstall": "rimraf node_modules/@types/react-native",
-    "lint": "npm run eslint && npm run stylelint && npm run prettier:check",
     "prettier:check": "prettier --check ./**/*.{js,json,md,ts,tsx,yml}",
     "prettier:write": "prettier --write ./**/*.{js,json,md,ts,tsx,yml}",
     "snapshot-update": "jest -u",
     "start": "webpack-dev-server",
-    "stylelint": "stylelint ./**/*.{ts,tsx}",
+    "stylelint": "stylelint \"./**/*.{ts,tsx}\"",
     "test": "jest",
     "test:coverage": "jest --coverage --colors",
     "test:watch": "jest --watch",
     "type-check": "tsc --noEmit"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "1.2.30",
@@ -141,10 +135,8 @@
     "extract-text-webpack-plugin": "4.0.0-beta.0",
     "file-loader": "6.1.0",
     "html-webpack-plugin": "4.4.1",
-    "husky": "4.2.5",
     "jest": "26.4.2",
     "jest-styled-components": "7.0.3",
-    "lint-staged": "10.2.13",
     "moment-locales-webpack-plugin": "1.2.0",
     "moment-timezone": "0.5.31",
     "prettier": "2.1.1",

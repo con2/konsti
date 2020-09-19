@@ -10590,13 +10590,11 @@ fsevents@^1.2.7:
     extract-text-webpack-plugin: 4.0.0-beta.0
     file-loader: 6.1.0
     html-webpack-plugin: 4.4.1
-    husky: 4.2.5
     i18next: 19.7.0
     i18next-browser-languagedetector: 6.0.1
     i18next-xhr-backend: 3.2.2
     jest: 26.4.2
     jest-styled-components: 7.0.3
-    lint-staged: 10.2.13
     lodash: 4.17.20
     moment: 2.27.0
     moment-locales-webpack-plugin: 1.2.0
@@ -10640,49 +10638,12 @@ fsevents@^1.2.7:
   version: 0.0.0-use.local
   resolution: "konsti-monorepo@workspace:."
   dependencies:
-    "@babel/core": 7.11.5
-    "@babel/node": 7.10.5
-    "@babel/preset-env": 7.11.5
-    "@babel/preset-react": 7.10.4
-    "@babel/preset-typescript": 7.10.4
-    "@babel/register": 7.11.5
-    "@types/eslint": 7.2.2
-    "@types/eslint-plugin-prettier": 3.1.0
     "@types/jest": 26.0.13
-    "@types/stylelint": 9.10.1
-    "@typescript-eslint/eslint-plugin": 4.0.1
-    "@typescript-eslint/parser": 4.0.1
-    babel-eslint: 10.1.0
-    babel-jest: 26.3.0
-    babel-plugin-lodash: 3.3.4
     babel-plugin-module-resolver: 4.0.0
     concurrently: 5.3.0
-    eslint: 7.8.1
-    eslint-config-prettier: 6.11.0
-    eslint-config-standard-with-typescript: 19.0.1
-    eslint-import-resolver-babel-module: 5.1.2
-    eslint-plugin-compat: 3.8.0
-    eslint-plugin-eslint-comments: 3.2.0
-    eslint-plugin-import: 2.22.0
-    eslint-plugin-jest: 23.20.0
-    eslint-plugin-jsx-a11y: 6.3.1
-    eslint-plugin-node: 11.1.0
-    eslint-plugin-prettier: 3.1.4
-    eslint-plugin-promise: 4.2.1
-    eslint-plugin-react: 7.20.6
-    eslint-plugin-react-hooks: 4.1.0
     husky: 4.2.5
-    jest: 26.4.2
     lint-staged: 10.2.13
     prettier: 2.1.1
-    stylelint: 13.7.0
-    stylelint-a11y: 1.2.3
-    stylelint-config-prettier: 8.0.2
-    stylelint-config-standard: 20.0.0
-    stylelint-config-styled-components: 0.1.1
-    stylelint-no-unsupported-browser-features: 4.0.0
-    stylelint-processor-styled-components: 1.10.0
-    typescript: 4.0.2
   languageName: unknown
   linkType: soft
 
@@ -10748,10 +10709,8 @@ fsevents@^1.2.7:
     faker: 5.1.0
     generate-serial-number: 0.0.3
     helmet: 4.1.0
-    husky: 4.2.5
     jest: 26.4.2
     jsonwebtoken: 8.5.1
-    lint-staged: 10.2.13
     lodash: 4.17.20
     moment: 2.27.0
     mongodb-memory-server: 6.6.7

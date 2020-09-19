@@ -22,11 +22,10 @@ build/*
 report.html
 stats.json
 
-# Transpiled files
-lib
-
-# Front end files
+# Build files
 front
+build
+lib
 
 # Zip files
 *.zip
