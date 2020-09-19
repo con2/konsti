@@ -28,7 +28,9 @@ jobs:
 
       - name: Run linters
         run: |
-          yarn run lint
+          yarn run eslint
+          yarn run stylelint
+          yarn run prettier
 
       - name: TS type check
         run: |
