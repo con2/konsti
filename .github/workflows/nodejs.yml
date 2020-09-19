@@ -18,8 +18,8 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: yarn install, build, and test
         run: |
-          yarn ci
-          yarn run build --if-present
+          yarn install --immutable
+          yarn run build
           yarn run lint
           yarn run type-check
           yarn test
