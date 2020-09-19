@@ -11,7 +11,7 @@
     "start": "concurrently --kill-others-on-fail \"yarn server\"  \"yarn client\"",
     "prettier:check": "prettier --check \"./**/*.{js,json,md,ts,tsx,yml}\"",
     "prettier:write": "prettier --write \"./**/*.{js,json,md,ts,tsx,yml}\"",
-    "lint": "npm run eslint && npm run stylelint && npm run prettier:check",
+    "lint": "yarn run eslint && yarn run stylelint && yarn run prettier:check",
     "eslint:client": "yarn workspace konsti-client eslint",
     "eslint:server": "yarn workspace konsti-server eslint",
     "eslint": "concurrently \"yarn eslint:client\" \"yarn eslint:server\"",
