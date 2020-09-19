@@ -13,15 +13,29 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Use Node.js ${{ matrix.node-version }}
+
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: yarn install, build, and test
+
+      - name: yarn install
         run: |
           yarn install --immutable
+
+      - name: Build
+        run: |
           yarn run build
+
+      - name: Run linters
+        run: |
           yarn run lint
+
+      - name: TS type check
+        run: |
           yarn run type-check
+
+      - name: Test
+        run: |
           yarn test
         env:
           CI: true
