@@ -1,0 +1,53 @@
+# Logs
+logs
+*.log
+
+# Temp files
+temp
+
+# Dependency directories
+node_modules
+
+# Build assets
+build/*
+!build/.keep
+
+# Office temp files
+~$*
+
+# IDE config
+.vscode
+
+# Analyzer files
+report.html
+stats.json
+
+# Build files
+front
+build
+lib
+
+# Zip files
+*.zip
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+
+# Mac
+.DS_Store
+
+# Coverage report
+coverage
+
+# Secrets
+secret
+
+# Yarn
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+.pnp.*

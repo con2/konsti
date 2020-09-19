@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FeedbackForm should render correctly 1`] = `
+<div
+  className="feedback-form"
+>
+  <p
+    className="bold"
+  >
+    feedbackTitle
+  </p>
+  <p>
+    feedbackInstruction
+  </p>
+  <FeedbackForm__FeedbackTextarea
+    onChange={[Function]}
+    rows={4}
+    value=""
+  />
+  <button
+    disabled={false}
+    onClick={[Function]}
+  >
+    button.sendFeedback
+  </button>
+</div>
+`;

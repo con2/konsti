@@ -1,0 +1,5 @@
+# Handle line endings automatically for files detected as text
+* text=auto eol=lf
+
+# Don't modify binary files
+*.png binary

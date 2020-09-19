@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DropRow should render correctly 1`] = `
+<Fragment>
+  <p>
+    test label
+     
+    <span>
+      (
+      0
+      /3)
+    </span>
+  </p>
+  <Connect(Droppable)
+    direction="vertical"
+    droppableId="testId"
+    getContainerForClone={[Function]}
+    ignoreContainerClipping={false}
+    isCombineEnabled={false}
+    isDropDisabled={false}
+    mode="standard"
+    renderClone={null}
+    type="DEFAULT"
+  >
+    <Component />
+  </Connect(Droppable)>
+</Fragment>
+`;

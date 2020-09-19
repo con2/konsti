@@ -1,0 +1,47 @@
+{
+  "name": "konsti-monorepo",
+  "private": true,
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "client": "yarn workspace konsti-client start",
+    "server": "yarn workspace konsti-server start-dev",
+    "start": "concurrently --kill-others-on-fail \"yarn server\"  \"yarn client\"",
+    "prettier:check": "prettier --check \"./**/*.{js,json,md,ts,tsx,yml}\"",
+    "prettier:write": "prettier --write \"./**/*.{js,json,md,ts,tsx,yml}\"",
+    "lint": "yarn eslint && yarn stylelint && yarn prettier:check",
+    "eslint:client": "yarn workspace konsti-client eslint",
+    "eslint:server": "yarn workspace konsti-server eslint",
+    "eslint": "concurrently \"yarn eslint:client\" \"yarn eslint:server\"",
+    "eslint-rules": "eslint --print-config .eslintrc.js",
+    "stylelint": "yarn workspace konsti-client stylelint",
+    "test:client": "yarn workspace konsti-client test",
+    "test:server": "yarn workspace konsti-server test",
+    "test": "concurrently \"yarn test:client\" \"yarn test:server\"",
+    "type-check:client": "yarn workspace konsti-client type-check",
+    "type-check:server": "yarn workspace konsti-server type-check",
+    "type-check": "concurrently \"yarn type-check:client\" \"yarn type-check:server\"",
+    "build:client": "yarn workspace konsti-client build:prod",
+    "build:server": "yarn workspace konsti-server build",
+    "build": "concurrently \"yarn build:client\" \"yarn build:server\""
+  },
+  "resolutions": {
+    "@types/react-native": "npm:@types/react@*"
+  },
+  "dependencies": {
+    "babel-plugin-module-resolver": "4.0.0",
+    "concurrently": "5.3.0"
+  },
+  "devDependencies": {
+    "husky": "4.2.5",
+    "lint-staged": "10.2.13",
+    "prettier": "2.1.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  }
+}
