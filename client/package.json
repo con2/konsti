@@ -167,5 +167,8 @@
   },
   "engines": {
     "node": ">=12.x.x"
+  },
+  "resolutions": {
+    "@types/react-native": "npm:@types/react@*"
   }
 }
