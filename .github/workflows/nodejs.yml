@@ -1,0 +1,50 @@
+name: Node CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.14.1]
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: yarn install
+        run: |
+          yarn install --immutable
+
+      - name: Build
+        run: |
+          yarn build
+
+      - name: Run Prettier
+        run: |
+          yarn prettier:check
+
+      - name: Run ESLint
+        run: |
+          yarn eslint
+
+      - name: Run stylelint
+        run: |
+          yarn stylelint
+
+      - name: TS type check
+        run: |
+          yarn type-check
+
+      - name: Test
+        run: |
+          yarn test
+
+        env:
+          CI: true

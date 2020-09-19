@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "commonjs",
+    "lib": ["es2017", "esnext", "dom"],
+    "jsx": "react",
+    "declaration": true,
+    "outDir": "build",
+    "strict": true,
+    "noImplicitAny": true,
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "paths": {
+      "*": ["src/*"]
+    },
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true
+  },
+  "include": ["**/*.js", "**/*.ts", "**/*.tsx", ".eslintrc.js"],
+  "exclude": ["node_modules", "build", "coverage"]
+}
