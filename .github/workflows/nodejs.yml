@@ -24,23 +24,23 @@ jobs:
 
       - name: Build
         run: |
-          yarn run build
+          yarn build
 
       - name: Run Prettier
         run: |
-          yarn run prettier
+          yarn prettier
 
       - name: Run ESLint
         run: |
-          yarn run eslint
+          yarn eslint
 
       - name: Run stylelint
         run: |
-          yarn run stylelint
+          yarn stylelint
 
       - name: TS type check
         run: |
-          yarn run type-check
+          yarn type-check
 
       - name: Test
         run: |
