@@ -26,11 +26,17 @@ jobs:
         run: |
           yarn run build
 
-      - name: Run linters
+      - name: Run Prettier
+        run: |
+          yarn run prettier
+
+      - name: Run ESLint
         run: |
           yarn run eslint
+
+      - name: Run stylelint
+        run: |
           yarn run stylelint
-          yarn run prettier
 
       - name: TS type check
         run: |
@@ -39,5 +45,6 @@ jobs:
       - name: Test
         run: |
           yarn test
+
         env:
           CI: true
