@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loading should render correctly 1`] = `
+<Loading__LoadingContainer>
+  <p>
+    loading
+  </p>
+  <img
+    alt="loading"
+    src=""
+    width="40"
+  />
+</Loading__LoadingContainer>
+`;
