@@ -1,34 +1,81 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AllGamesList should render correctly 1`] = `
-<div
-  className="games-list"
+<ContextProvider
+  value={
+    Object {
+      "store": Object {
+        "dispatch": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+        Symbol(observable): [Function],
+      },
+      "subscription": Subscription {
+        "handleChangeWrapper": [Function],
+        "listeners": Object {
+          "notify": [Function],
+        },
+        "onStateChange": [Function],
+        "parentSub": undefined,
+        "store": Object {
+          "dispatch": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+          Symbol(observable): [Function],
+        },
+        "unsubscribe": null,
+      },
+    }
+  }
 >
-  <AllGamesList__GameListTitle
-    key="2018-07-28T16:00:00.000Z"
-  >
-    <span
-      className="game-startup-time"
-    >
-      Saturday 16:00
-    </span>
-  </AllGamesList__GameListTitle>
-  <div
-    className="games-list"
-    key="p2106"
-  >
-    <Link
-      to="/games/p2106"
-    >
-      Test game
-    </Link>
-     
-    <AllGamesList__GameListShortDescription>
-      programType.tabletopRPG
-      :
-       
-      Short description
-    </AllGamesList__GameListShortDescription>
-  </div>
-</div>
+  <AllGamesList
+    games={
+      Array [
+        Object {
+          "ageRestricted": false,
+          "beginnerFriendly": false,
+          "childrenFriendly": false,
+          "description": "Test game description",
+          "endTime": "2018-07-28T20:00:00.000Z",
+          "englishOk": false,
+          "gameId": "p2106",
+          "gameSystem": "Test gamesystem",
+          "genres": Array [
+            "fantasy",
+            "war",
+            "exploration",
+            "mystery",
+            "drama",
+          ],
+          "intendedForExperiencedParticipants": false,
+          "language": "fi",
+          "location": "Test location",
+          "maxAttendance": 4,
+          "minAttendance": 2,
+          "mins": 240,
+          "people": "Test GM",
+          "popularity": 0,
+          "programType": "tabletopRPG",
+          "revolvingDoor": true,
+          "shortDescription": "Short description",
+          "startTime": "2018-07-28T16:00:00.000Z",
+          "styles": Array [
+            "serious",
+            "story_driven",
+            "character_driven",
+          ],
+          "tags": Array [
+            "aloittelijaystävällinen",
+            "english",
+            "lapsiystävällinen",
+            "pöytäpelit",
+          ],
+          "title": "Test game",
+        },
+      ]
+    }
+  />
+</ContextProvider>
 `;

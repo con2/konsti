@@ -31,6 +31,8 @@ const commonConfig = {
 
   // Convention settings
   dataUri: 'https://kompassi.eu/api/v1/events/hitpoint2019/programme/hitpoint',
+
+  firtSignupBonus: 20,
 };
 
 const prodConfig = {

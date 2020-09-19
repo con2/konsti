@@ -37,4 +37,5 @@ export interface Config {
   useLocalProgramFile: boolean;
   autoAssignPlayersEnabled: boolean;
   enableSignupTimeCheck: boolean;
+  firtSignupBonus: number;
 }

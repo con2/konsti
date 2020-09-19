@@ -3,11 +3,11 @@ import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { submitUpdateHidden } from 'views/admin/adminActions';
-import { submitUpdateFavorites } from 'views/my-games/myGamesActions';
 import { FeedbackForm } from 'views/all-games/components/FeedbackForm';
 import { GameInfo } from 'views/all-games/components/GameInfo';
 import { Loading } from 'components/Loading';
 import { Game } from 'typings/game.typings';
+import { updateFavorite, UpdateFavoriteOpts } from 'utils/favorite';
 
 import { UserGroup } from 'typings/user.typings';
 import { RootState } from 'typings/redux.typings';
@@ -82,33 +82,19 @@ export const GameDetails: FC = (): ReactElement => {
   };
 
   // Favorite / remove favorite clicked
-  const updateFavorite = async (action: string): Promise<void> => {
+  const updateFavoriteHandler = async (action: string): Promise<void> => {
     if (!game || !game.gameId) return;
 
     setSubmitting(true);
-    const gameIndex = findGame(game.gameId, favoritedGames);
-    const allFavoritedGames = favoritedGames.slice();
-
-    if (action === 'add') {
-      if (gameIndex === -1) {
-        allFavoritedGames.push(game);
-      }
-    } else if (action === 'del') {
-      if (gameIndex > -1) {
-        allFavoritedGames.splice(gameIndex, 1);
-      }
-    }
-
-    const favoriteData = {
-      username: username,
-      favoritedGames: allFavoritedGames,
+    const updateFavoriteOpts: UpdateFavoriteOpts = {
+      game,
+      action,
+      username,
+      favoritedGames,
+      dispatch,
     };
 
-    try {
-      await dispatch(submitUpdateFavorites(favoriteData));
-    } catch (error) {
-      throw new Error(`submitUpdateFavorites error: ${error}`);
-    }
+    await updateFavorite(updateFavoriteOpts);
 
     setSubmitting(false);
 
@@ -170,7 +156,7 @@ export const GameDetails: FC = (): ReactElement => {
         {favorited && loggedIn && userGroup === 'user' && game && (
           <button
             disabled={submitting}
-            onClick={async () => await updateFavorite('del')}
+            onClick={async () => await updateFavoriteHandler('del')}
           >
             {t('button.removeFavorite')}
           </button>
@@ -179,7 +165,7 @@ export const GameDetails: FC = (): ReactElement => {
         {!favorited && loggedIn && userGroup === 'user' && game && (
           <button
             disabled={submitting}
-            onClick={async () => await updateFavorite('add')}
+            onClick={async () => await updateFavoriteHandler('add')}
           >
             {t('button.favorite')}
           </button>

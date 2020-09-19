@@ -1,10 +1,16 @@
 import React, { FC, ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import _ from 'lodash';
 import styled from 'styled-components';
 import { timeFormatter } from 'utils/timeFormatter';
+import { updateFavorite, UpdateFavoriteOpts } from 'utils/favorite';
 import { Game } from 'typings/game.typings';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import { UserGroup } from 'typings/user.typings';
+import { RootState } from 'typings/redux.typings';
 
 export interface Props {
   games: readonly Game[];
@@ -13,6 +19,38 @@ export interface Props {
 export const AllGamesList: FC<Props> = (props: Props): ReactElement => {
   const { games } = props;
   const { t } = useTranslation();
+  const dispatch = useDispatch();
+
+  const username: string = useSelector(
+    (state: RootState) => state.login.username
+  );
+  const loggedIn: boolean = useSelector(
+    (state: RootState) => state.login.loggedIn
+  );
+  const userGroup: UserGroup = useSelector(
+    (state: RootState) => state.login.userGroup
+  );
+  const favoritedGames: readonly Game[] = useSelector(
+    (state: RootState) => state.myGames.favoritedGames
+  );
+
+  // Favorite / remove favorite clicked
+  const updateFavoriteHandler = async (
+    game: Game,
+    action: string
+  ): Promise<void> => {
+    if (!game || !game.gameId) return;
+
+    const updateFavoriteOpts: UpdateFavoriteOpts = {
+      game,
+      action,
+      username,
+      favoritedGames,
+      dispatch,
+    };
+
+    await updateFavorite(updateFavoriteOpts);
+  };
 
   const buildGamesList = (games: readonly Game[]): ReactElement[] => {
     const sortedGames = _.sortBy(games, [
@@ -49,8 +87,28 @@ export const AllGamesList: FC<Props> = (props: Props): ReactElement => {
       GamesList.push(title);
 
       for (const game of games) {
+        // Check if in favorites
+        const favorited =
+          favoritedGames.find(
+            (favoritedGame) => favoritedGame.gameId === game.gameId
+          ) !== undefined;
+
         const gameEntry = (
           <div key={game.gameId} className='games-list'>
+            {favorited && loggedIn && userGroup === 'user' && game && (
+              <IconContainer
+                onClick={async () => await updateFavoriteHandler(game, 'del')}
+              >
+                <FontAwesomeIcon icon='heart' />
+              </IconContainer>
+            )}
+            {!favorited && loggedIn && userGroup === 'user' && game && (
+              <IconContainer
+                onClick={async () => await updateFavoriteHandler(game, 'add')}
+              >
+                <FontAwesomeIcon icon={['far', 'heart']} />
+              </IconContainer>
+            )}
             <Link to={`/games/${game.gameId}`}>{game.title}</Link>{' '}
             <GameListShortDescription>
               {t(`programType.${game.programType}`)}:{' '}
@@ -75,6 +133,13 @@ export const AllGamesList: FC<Props> = (props: Props): ReactElement => {
     </div>
   );
 };
+
+const IconContainer = styled.span`
+  span {
+    position: relative;
+    top: 6px;
+  }
+`;
 
 const GameListTitle = styled.h3`
   margin: 20px 0;
