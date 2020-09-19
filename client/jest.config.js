@@ -77,7 +77,7 @@ module.exports = {
 
   // A map from regular expressions to module names that allow to stub out resources with a single module
   moduleNameMapper: {
-    '\\.(jpg|png|gif|)$': '<rootDir>/src/test/__mocks__/binaryMock.ts',
+    '\\.(jpg|png|gif|svg)$': '<rootDir>/src/test/__mocks__/binaryMock.ts',
   },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
