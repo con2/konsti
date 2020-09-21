@@ -36,9 +36,6 @@
     "build-front:staging": "yarn workspace konsti-client build:staging && yarn copy-front",
     "copy-front": "rimraf server/front && ncp client/build server/front"
   },
-  "resolutions": {
-    "@types/react-native": "npm:@types/react@*"
-  },
   "dependencies": {
     "babel-plugin-module-resolver": "4.0.0",
     "concurrently": "5.3.0",
