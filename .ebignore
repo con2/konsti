@@ -1,0 +1,28 @@
+# .ebignore is the same as .gitignore but does not include /front
+
+# Logs
+logs
+*.log
+
+# Statistics data files
+datafiles
+
+# Dependency directories
+node_modules
+
+# Office temp files
+~$*
+
+# IDE config
+.vscode
+
+# Transpiled files
+lib
+
+# Zip files
+*.zip
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml

@@ -8,7 +8,8 @@
   "scripts": {
     "client": "yarn workspace konsti-client start",
     "server": "yarn workspace konsti-server start-dev",
-    "start": "concurrently --kill-others-on-fail \"yarn server\"  \"yarn client\"",
+    "start": "yarn workspace konsti-server start",
+    "start:dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
     "prettier:check": "prettier --check \"./**/*.{js,json,md,ts,tsx,yml}\"",
     "prettier:write": "prettier --write \"./**/*.{js,json,md,ts,tsx,yml}\"",
     "lint": "yarn eslint && yarn stylelint && yarn prettier:check",
@@ -25,14 +26,24 @@
     "type-check": "concurrently \"yarn type-check:client\" \"yarn type-check:server\"",
     "build:client": "yarn workspace konsti-client build:prod",
     "build:server": "yarn workspace konsti-server build",
-    "build": "concurrently \"yarn build:client\" \"yarn build:server\""
+    "build": "concurrently \"yarn build:client\" \"yarn build:server\"",
+    "deploy-prod": "yarn prepare-deploy:prod && eb deploy konsti-prod",
+    "deploy-staging": "yarn prepare-deploy:staging && eb deploy konsti-staging",
+    "prepare-deploy:prod": "yarn build-front:prod && yarn build:server",
+    "prepare-deploy:staging": "yarn build-front:staging && yarn build:server",
+    "build-front:dev": "yarn workspace konsti-client build:dev && yarn copy-front",
+    "build-front:prod": "yarn workspace konsti-client build:prod && yarn copy-front",
+    "build-front:staging": "yarn workspace konsti-client build:staging && yarn copy-front",
+    "copy-front": "rimraf server/front && ncp client/build server/front"
   },
   "resolutions": {
     "@types/react-native": "npm:@types/react@*"
   },
   "dependencies": {
     "babel-plugin-module-resolver": "4.0.0",
-    "concurrently": "5.3.0"
+    "concurrently": "5.3.0",
+    "ncp": "2.0.0",
+    "rimraf": "3.0.2"
   },
   "devDependencies": {
     "husky": "4.2.5",
