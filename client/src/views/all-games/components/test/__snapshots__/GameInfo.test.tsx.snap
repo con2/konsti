@@ -40,9 +40,9 @@ exports[`GameInfo should render correctly 1`] = `
     </GameInfo__GameDetailsTitle>
     <GameInfo__GameDetailsValue>
       <span>
-        Saturday 16:00
+        Saturday 19:00
          - 
-        20:00
+        23:00
          
       </span>
       <span
