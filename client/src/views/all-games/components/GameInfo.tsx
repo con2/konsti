@@ -6,7 +6,7 @@ import { getGameTags } from 'utils/getGameTags';
 import { config } from 'config';
 import { Game } from 'typings/game.typings';
 
-export interface Props {
+interface Props {
   game: Game;
 }
 
