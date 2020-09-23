@@ -63,6 +63,7 @@ module.exports = {
     // eslint-plugin-node
     'node/no-unsupported-features/es-syntax': 'off', // Import and export declarations are not supported yet
     'node/no-missing-import': 'off', // Not working with babel-plugin-module-resolver and handled by eslint-plugin-import
+    'node/no-extraneous-import': 'off', // Doesn't work with Yarn workspace dependencies
 
     // eslint-plugin-import
     'import/no-unused-modules': ['error', { unusedExports: true }],
