@@ -100,7 +100,6 @@
     "html-webpack-plugin": "4.4.1",
     "jest-styled-components": "7.0.3",
     "moment-locales-webpack-plugin": "1.2.0",
-    "moment-timezone": "0.5.31",
     "react-axe": "3.5.3",
     "react-hot-loader": "4.12.21",
     "redux-devtools-extension": "2.13.8",
