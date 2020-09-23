@@ -18,9 +18,9 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: yarn install
+      - name: Yarn install
         run: |
-          yarn install --immutable
+          yarn install
 
       - name: Build
         run: |
