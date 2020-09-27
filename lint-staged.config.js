@@ -1,7 +1,5 @@
 module.exports = {
   '*.{js,ts,tsx}': (files) => {
-    const filenames = files.join(' ');
-
     let clientFiles = [];
     let serverFiles = [];
     let sharedFiles = [];
@@ -12,14 +10,21 @@ module.exports = {
       else sharedFiles.push(file);
     });
 
+    const filenames = files.join(' ');
+    const clientFilenames = clientFiles.join(' ');
+    const serverFilenames = serverFiles.join(' ');
+    const sharedFilenames = sharedFiles.join(' ');
+
     return [
       `prettier --check ${filenames}`,
-      `eslint -c client/.eslintrc.js ${clientFiles}`,
-      `eslint -c server/.eslintrc.js ${serverFiles}`,
-      // `eslint -c server/.eslintrc.js ${sharedFiles}`,
-      // `stylelint ${filenames}`,
-      // `jest --bail --findRelatedTests ${filenames}`,
+      `eslint -c client/.eslintrc.js ${clientFilenames}`,
+      `eslint -c server/.eslintrc.js ${serverFilenames}`,
     ];
+  },
+
+  '*.{tsx}': (files) => {
+    const filenames = files.join(' ');
+    return [`stylelint --config client/.stylelintrc.js ${filenames}`];
   },
 
   '*.{json,md,yml}': (files) => {
