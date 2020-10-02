@@ -9,7 +9,7 @@ let mongoUri: string;
 
 beforeEach(async () => {
   mongoServer = new MongoMemoryServer();
-  mongoUri = await mongoServer.getConnectionString();
+  mongoUri = await mongoServer.getUri();
   server = await startServer(mongoUri);
 });
 
