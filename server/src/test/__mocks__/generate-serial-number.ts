@@ -2,7 +2,7 @@ interface serialGenerator {
   generate: (count: number) => string;
 }
 
-const generator: serialGenerator = jest.genMockFromModule(
+const generator: serialGenerator = jest.createMockFromModule(
   'generate-serial-number'
 );
 
