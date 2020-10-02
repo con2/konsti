@@ -16,7 +16,7 @@
     "copy-front": "rimraf server/front && ncp client/build server/front",
     "deploy-prod": "yarn prepare-deploy:prod && eb deploy konsti-prod",
     "deploy-staging": "yarn prepare-deploy:staging && eb deploy konsti-staging",
-    "eslint": "concurrently \"yarn eslint:client\" \"yarn eslint:server\"",
+    "eslint": "eslint . --ext .js,.ts,.tsx",
     "eslint-rules": "eslint --print-config .eslintrc.js",
     "eslint:client": "yarn workspace konsti-client eslint",
     "eslint:server": "yarn workspace konsti-server eslint",
