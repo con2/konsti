@@ -8,7 +8,7 @@ const commonConfig = {
   apiServerURL:
     typeof process.env.API_SERVER_URL === 'string'
       ? process.env.API_SERVER_URL
-      : 'http://localhost:3000',
+      : 'http://localhost:5000',
 
   // App settings
   loadedSettings:

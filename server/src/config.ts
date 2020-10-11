@@ -12,7 +12,7 @@ const commonConfig = {
   port:
     typeof process.env.PORT === 'string'
       ? parseInt(process.env.PORT, 10)
-      : 3000,
+      : 5000,
   debug: false,
 
   // Logging
