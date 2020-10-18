@@ -1,20 +1,13 @@
 import { Config } from './typings/config.typings';
 
+const settings = typeof SETTINGS !== 'undefined' ? SETTINGS : 'development';
+
 const commonConfig = {
   // App info
   appName: 'Konsti',
 
-  // App status
-  apiServerURL:
-    typeof process.env.API_SERVER_URL === 'string'
-      ? process.env.API_SERVER_URL
-      : 'http://localhost:5000',
-
   // App settings
-  loadedSettings:
-    typeof process.env.SETTINGS === 'string'
-      ? process.env.SETTINGS
-      : 'development',
+  loadedSettings: settings,
   SIGNUP_END_TIME: 30, // minutes
   SIGNUP_OPEN_TIME: 4, // hours
   MESSAGE_DELAY: 3000, // ms
@@ -36,24 +29,27 @@ const commonConfig = {
 };
 
 const prodConfig = {
+  apiServerUrl: 'https://ropekonsti.fi',
   useTestTime: false,
   dataUpdateInterval: 60, // seconds
 };
 
 const stagingConfig = {
+  apiServerUrl: 'https://test.ropekonsti.fi',
   useTestTime: true,
   dataUpdateInterval: 60, // seconds
 };
 
 const devConfig = {
+  apiServerUrl: 'http://localhost:5000',
   useTestTime: true,
   dataUpdateInterval: 60, // seconds
 };
 
 const combineConfig = (): Config => {
-  if (process.env.SETTINGS === 'production') {
+  if (settings === 'production') {
     return { ...commonConfig, ...prodConfig };
-  } else if (process.env.SETTINGS === 'staging') {
+  } else if (settings === 'staging') {
     return { ...commonConfig, ...stagingConfig };
   }
   return { ...commonConfig, ...devConfig };
