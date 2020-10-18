@@ -1,47 +1,42 @@
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import CompressionPlugin from 'compression-webpack-plugin';
-import CopyWebpackPlugin from 'copy-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
 import MomentLocalesPlugin from 'moment-locales-webpack-plugin';
-import TerserPlugin from 'terser-webpack-plugin';
-import BrotliPlugin from 'brotli-webpack-plugin';
-import Dotenv from 'dotenv-webpack';
 import path from 'path';
 import webpack, { Configuration } from 'webpack';
 import { merge } from 'webpack-merge';
 import { config } from './src/config';
+
+const TARGET = process.env.npm_lifecycle_event;
 
 const stats = {
   // assets: false,
   // children: false,
   // chunks: false,
   // hash: false,
-  modules: false,
+  // modules: false,
   // publicPath: false,
   // timings: false,
   // version: false,
-  // warnings: true,
+  warnings: false,
 };
 
-const commonConfig = {
-  target: 'web' as const,
+const commonConfig: Configuration = {
+  target: 'browserslist',
 
-  // Array of entry files
-  entry: {
-    client: [path.join(__dirname, 'src', 'index')],
-  },
+  // Entry file
+  entry: path.join(__dirname, 'src', 'index'),
 
   // Output for compiled file
   output: {
     path: path.join(__dirname, 'build'),
     publicPath: '/',
-    filename: '[name].[hash].bundle.js',
+    filename: '[name].[contenthash].bundle.js',
   },
 
   resolve: {
-    modules: [path.resolve(__dirname, 'src'), 'node_modules'],
     extensions: ['.js', '.ts', '.tsx'],
   },
 
@@ -52,14 +47,12 @@ const commonConfig = {
       favicon: path.resolve(__dirname, 'assets', 'favicon.png'),
       template: path.resolve(__dirname, 'src', 'index.html'),
     }),
-    new webpack.HashedModuleIdsPlugin(), // so that file hashes don't change unexpectedly
   ],
 
   module: {
     // Loaders to transform sources
     rules: [
       {
-        // JS/TS loaders
         test: /\.(ts|tsx|js)$/,
         include: [path.resolve(__dirname, 'src')],
         loader: 'babel-loader',
@@ -85,9 +78,9 @@ const commonConfig = {
 };
 
 const devConfig: Configuration = {
-  mode: 'development' as const,
+  mode: 'development',
 
-  devtool: config.reduxTrace ? ('source-map' as const) : ('eval' as const), // Use eval for best hot-loading perf
+  devtool: config.reduxTrace ? 'source-map' : 'eval', // Use eval for best hot-loading perf
 
   // webpack-dev-server config
   devServer: {
@@ -106,34 +99,44 @@ const devConfig: Configuration = {
   },
 
   plugins: [
+    new webpack.DefinePlugin({
+      SETTINGS: JSON.stringify('development'),
+    }),
     new webpack.HotModuleReplacementPlugin(), // Enable HMR globally
   ],
 };
 
 const prodConfig: Configuration = {
-  mode: 'production' as const,
+  mode: 'production',
 
   stats,
 
   plugins: [
-    new CopyWebpackPlugin({
-      patterns: [{ from: 'assets' }],
+    new webpack.DefinePlugin({
+      SETTINGS: () => {
+        switch (TARGET) {
+          case 'build:prod':
+            return JSON.stringify('production');
+          case 'build:staging':
+            return JSON.stringify('staging');
+          case 'build:dev':
+            return JSON.stringify('development');
+        }
+      },
     }),
     new MomentLocalesPlugin({
       localesToKeep: ['fi'], // “en” is built into Moment and can’t be removed
     }),
-    new Dotenv({
-      path: './.prod.env',
-    }),
     new CompressionPlugin({
-      filename: '[path].gz[query]',
+      filename: '[path][base].gz',
       algorithm: 'gzip',
       test: /\.(js|html|svg)$/,
       threshold: 10240,
       minRatio: 0.8,
     }),
-    new BrotliPlugin({
-      asset: '[path].br[query]',
+    new CompressionPlugin({
+      filename: '[path][base].br',
+      algorithm: 'brotliCompress',
       test: /\.(js|html|svg)$/,
       threshold: 10240,
       minRatio: 0.8,
@@ -141,104 +144,27 @@ const prodConfig: Configuration = {
   ],
 
   optimization: {
-    minimizer: [
-      new TerserPlugin({
-        terserOptions: {
-          compress: {
-            drop_console: false,
-          },
-        },
-      }),
-    ],
-    // https://hackernoon.com/the-100-correct-way-to-split-your-chunks-with-webpack-f8a9df5b7758
-    runtimeChunk: 'single' as const,
     splitChunks: {
-      chunks: 'all' as const,
-      maxInitialRequests: Infinity,
-      minSize: 0,
       cacheGroups: {
-        vendor: {
-          test: /[\\/]node_modules[\\/]/,
-          name(module) {
-            const packageName = module.context.match(
-              /[\\/]node_modules[\\/](.*?)([\\/]|$)/
-            )[1];
-
-            return `npm.${packageName.replace('@', '')}`;
-          },
+        defaultVendors: {
+          name: 'vendors',
         },
       },
     },
   },
 };
 
-const stagingConfig: Configuration = {
-  mode: 'production' as const,
-
-  stats,
-
-  plugins: [
-    new CopyWebpackPlugin({
-      patterns: [{ from: 'assets' }],
-    }),
-    new MomentLocalesPlugin({
-      localesToKeep: ['fi'], // “en” is built into Moment and can’t be removed
-    }),
-    new Dotenv({
-      path: './.staging.env',
-    }),
-    new CompressionPlugin({
-      filename: '[path].gz[query]',
-      algorithm: 'gzip',
-      test: /\.(js|html|svg)$/,
-      threshold: 10240,
-      minRatio: 0.8,
-    }),
-    new BrotliPlugin({
-      asset: '[path].br[query]',
-      test: /\.(js|html|svg)$/,
-      threshold: 10240,
-      minRatio: 0.8,
-    }),
-  ],
-
-  optimization: {
-    minimize: false,
-    namedModules: true,
-    namedChunks: true,
-    moduleIds: 'named' as const,
-    chunkIds: 'named' as const,
-    // https://hackernoon.com/the-100-correct-way-to-split-your-chunks-with-webpack-f8a9df5b7758
-    runtimeChunk: 'single' as const,
-    splitChunks: {
-      chunks: 'all' as const,
-      maxInitialRequests: Infinity,
-      minSize: 0,
-      cacheGroups: {
-        vendor: {
-          test: /[\\/]node_modules[\\/]/,
-          name(module) {
-            const packageName = module.context.match(
-              /[\\/]node_modules[\\/](.*?)([\\/]|$)/
-            )[1];
-
-            return `npm.${packageName.replace('@', '')}`;
-          },
-        },
-      },
-    },
-  },
-};
-
-const getWebpackConfig = (): Configuration => {
-  const TARGET = process.env.npm_lifecycle_event;
-
+const getWebpackConfig = (): Configuration | undefined => {
   switch (TARGET) {
-    case 'build:prod' || 'bundle-analyzer':
+    case 'build:prod':
       return merge(commonConfig, prodConfig);
     case 'build:staging':
-      return merge(commonConfig, stagingConfig);
-    default:
+      return merge(commonConfig, prodConfig);
+    case 'build:dev':
+      return merge(commonConfig, prodConfig);
+    case 'bundle-analyzer':
+      return merge(commonConfig, prodConfig);
+    case 'start':
       return merge(commonConfig, devConfig);
   }
 };

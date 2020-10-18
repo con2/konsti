@@ -3,7 +3,7 @@ import { config } from 'config';
 import { getJWT } from 'utils/getJWT';
 
 export const api: AxiosInstance = axios.create({
-  baseURL: `${config.apiServerURL}/api`,
+  baseURL: `${config.apiServerUrl}/api`,
   timeout: 60000, // 60s
   headers: {
     'Content-Type': 'application/json',
