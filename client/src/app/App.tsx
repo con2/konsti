@@ -1,5 +1,4 @@
 import React, { FC, ReactElement } from 'react';
-import { hot } from 'react-hot-loader/root';
 import { useTranslation } from 'react-i18next';
 import { useSelector, useStore } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
@@ -57,4 +56,4 @@ export const App: FC = (): ReactElement => {
 };
 
 /* eslint-disable-next-line import/no-unused-modules */
-export default hot(App);
+export default App;
