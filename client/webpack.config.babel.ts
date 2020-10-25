@@ -1,8 +1,6 @@
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import CompressionPlugin from 'compression-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-expect-error
 import MomentLocalesPlugin from 'moment-locales-webpack-plugin';
 import path from 'path';
 import webpack, { Configuration } from 'webpack';
@@ -127,6 +125,7 @@ const prodConfig: Configuration = {
     new MomentLocalesPlugin({
       localesToKeep: ['fi'], // “en” is built into Moment and can’t be removed
     }),
+    // @ts-expect-error: Type not working with Webpack 5
     new CompressionPlugin({
       filename: '[path][base].gz',
       algorithm: 'gzip',
@@ -134,6 +133,7 @@ const prodConfig: Configuration = {
       threshold: 10240,
       minRatio: 0.8,
     }),
+    // @ts-expect-error: Type not working with Webpack 5
     new CompressionPlugin({
       filename: '[path][base].br',
       algorithm: 'brotliCompress',
