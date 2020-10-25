@@ -30,7 +30,7 @@ if (enableWhyDidYouRender && process.env.NODE_ENV === 'development') {
 }
 
 if (enableAxe && process.env.NODE_ENV === 'development') {
-  const axe = require('react-axe');
+  const axe = require('@axe-core/react');
   axe(React, ReactDOM, 1000);
 }
 
