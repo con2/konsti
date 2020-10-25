@@ -23,8 +23,6 @@ const stats = {
 };
 
 const commonConfig: Configuration = {
-  target: 'web',
-
   // Entry file
   entry: path.join(__dirname, 'src', 'index'),
 
