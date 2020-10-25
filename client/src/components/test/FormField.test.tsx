@@ -12,8 +12,7 @@ describe('FormField', () => {
         asyncValidating: false,
         autofilled: false,
         dirty: false,
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-expect-error
+        // @ts-expect-error Type 'AnyAction' is not assignable to type 'T'.
         dispatch: () => store.dispatch(''),
         error: 'validation.required',
         form: 'registration',
