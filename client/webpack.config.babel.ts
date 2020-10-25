@@ -97,7 +97,6 @@ const devConfig: Configuration = {
     new webpack.DefinePlugin({
       SETTINGS: JSON.stringify('development'),
     }),
-    new webpack.HotModuleReplacementPlugin(),
     new ReactRefreshWebpackPlugin(),
   ],
 };
