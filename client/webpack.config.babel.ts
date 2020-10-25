@@ -5,6 +5,7 @@ import MomentLocalesPlugin from 'moment-locales-webpack-plugin';
 import path from 'path';
 import webpack, { Configuration } from 'webpack';
 import { merge } from 'webpack-merge';
+import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import { config } from './src/config';
 
 const TARGET = process.env.npm_lifecycle_event;
@@ -22,8 +23,6 @@ const stats = {
 };
 
 const commonConfig: Configuration = {
-  target: 'browserslist',
-
   // Entry file
   entry: path.join(__dirname, 'src', 'index'),
 
@@ -53,7 +52,7 @@ const commonConfig: Configuration = {
       {
         test: /\.(ts|tsx|js)$/,
         include: [path.resolve(__dirname, 'src')],
-        loader: 'babel-loader',
+        use: ['babel-loader'],
       },
       {
         test: /\.(png|jpe?g|gif)$/,
@@ -76,6 +75,8 @@ const commonConfig: Configuration = {
 };
 
 const devConfig: Configuration = {
+  target: 'web',
+
   mode: 'development',
 
   devtool: config.reduxTrace ? 'source-map' : 'eval', // Use eval for best hot-loading perf
@@ -84,27 +85,23 @@ const devConfig: Configuration = {
   devServer: {
     host: 'localhost',
     port: 8000,
-    hot: true, // enable HMR on the server
+    hot: true,
     contentBase: path.join(__dirname, 'build'),
     historyApiFallback: true, // respond to 404s with index.html
     stats,
-  },
-
-  resolve: {
-    alias: {
-      'react-dom': '@hot-loader/react-dom',
-    },
   },
 
   plugins: [
     new webpack.DefinePlugin({
       SETTINGS: JSON.stringify('development'),
     }),
-    new webpack.HotModuleReplacementPlugin(), // Enable HMR globally
+    new ReactRefreshWebpackPlugin(),
   ],
 };
 
 const prodConfig: Configuration = {
+  target: 'browserslist',
+
   mode: 'production',
 
   stats,
