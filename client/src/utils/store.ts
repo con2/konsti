@@ -58,6 +58,5 @@ const enhancer = composeEnhancers(middlewares);
 const persistedState = loadSession();
 
 // Create a Redux store object that holds the app state
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-expect-error
+// @ts-expect-error: Types of parameters 'state' and 'state' are incompatible
 export const store = createStore(rootReducer, persistedState, enhancer);

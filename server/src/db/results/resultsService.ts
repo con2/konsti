@@ -85,8 +85,7 @@ const saveResult = async (
     response = await ResultsModel.replaceOne(
       { startTime },
       { startTime, results, algorithm, message },
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-expect-error
+      // @ts-expect-error: Upsert is missing from type definition
       { upsert: true }
     );
     logger.debug(

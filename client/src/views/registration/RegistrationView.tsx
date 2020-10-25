@@ -33,7 +33,7 @@ export const RegistrationView: FC = (): ReactElement => {
 
   return (
     <div className='registration-view'>
-      {/* @ts-expect-error */}
+      {/* @ts-expect-error: Type '{}' is missing the following properties from type 'RegistrationFormFields': password, registerDescription, serial, username */}
       <RegistrationForm onSubmit={submit} />
     </div>
   );
