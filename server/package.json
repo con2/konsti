@@ -12,8 +12,6 @@
     "build:js": "babel src -d lib --extensions \".ts\"",
     "build:types": "tsc --emitDeclarationOnly",
     "clean": "rimraf lib",
-    "docker:start": "docker-compose up --detach --build --remove-orphans",
-    "docker:stop": "docker-compose down --remove-orphans",
     "eslint": "eslint . --ext .js,.ts",
     "eslint-rules": "eslint --print-config .eslintrc.js",
     "fixer": "yarn build && node lib/statistics/dataFixer.js --",
