@@ -3,7 +3,7 @@ services:
   server:
     build:
       context: .
-      dockerfile: server.dockerfile
+      dockerfile: server/Dockerfile
     ports:
       - 5000:5000
     environment:

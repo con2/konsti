@@ -4,8 +4,8 @@ FROM node:alpine
 WORKDIR /usr/src/app
 
 # Install app dependencies
-COPY package.json package-lock.json ./
-RUN npm ci --only=production
+COPY package.json yarn.lock ./
+RUN yarn --only=production
 
 # Copy app source
 COPY . .
@@ -14,4 +14,4 @@ COPY . .
 EXPOSE 5000
 
 # Command to run app
-CMD [ "npm", "run", "start" ]
+CMD [ "yarn", "start" ]
