@@ -15,7 +15,7 @@ COPY . .
 EXPOSE 5000
 
 # Populate MongoDB
-# RUN yarn run generate-data -ugs
+# RUN yarn workspace konsti-server generate-data -ugs
 
 # Command to run app
 CMD ["yarn", "start"]
