@@ -16,7 +16,7 @@
     "copy-front": "rimraf server/front && ncp client/build server/front",
     "deploy-prod": "yarn prepare-deploy:prod && eb deploy konsti-prod",
     "deploy-staging": "yarn prepare-deploy:staging && eb deploy konsti-staging",
-    "docker:start": "docker-compose up --detach --build --remove-orphans",
+    "docker:start": "yarn build-front:dev && docker-compose up --detach --build --remove-orphans",
     "docker:stop": "docker-compose down --remove-orphans",
     "eslint": "eslint . --ext .js,.ts,.tsx",
     "eslint-rules": "eslint --print-config .eslintrc.js",
