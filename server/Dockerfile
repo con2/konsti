@@ -17,4 +17,4 @@ EXPOSE 5000
 # RUN yarn run generate-data -ugs
 
 # Command to run app
-CMD [ "yarn", "start" ]
+CMD ["yarn", "start"]
