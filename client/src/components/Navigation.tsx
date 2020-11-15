@@ -124,6 +124,7 @@ const Drawer = styled.div`
   z-index: 10;
   border-right: 1px solid black;
   color: black;
+  background-color: ${(props) => props.theme.backgroundHighlight};
 `;
 
 const LoggedUserDetails = styled.div`
@@ -134,13 +135,6 @@ const LoggedUserDetails = styled.div`
 
 const UserInfo = styled.span`
   padding: 6px 0 0 0;
-`;
-
-const StyledRoutes = styled.div`
-  display: flex;
-  flex-direction: column;
-  background-color: ${(props) => props.theme.backgroundHighlight};
-  border-bottom: 1px solid ${(props) => props.theme.borderInactive};
 `;
 
 const RouterLink = styled(Link)`
@@ -155,20 +149,9 @@ const RouterLink = styled(Link)`
   :focus {
     background-color: ${(props) => props.theme.backgroundHover};
   }
+`;
 
-  &.active {
-    border: none;
-  }
-
-  &.active::after {
-    background-color: ${(props) => props.theme.mainText};
-    bottom: 0;
-    content: '';
-    display: block;
-    height: 3px;
-    left: 50%;
-    margin-left: -30px;
-    position: absolute;
-    width: 60px;
-  }
+const StyledRoutes = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
