@@ -11,6 +11,7 @@ export const theme = {
   inputPlaceholder: '#b3b3b3',
   mainText: '#030303',
   warningButtonText: '#000',
+  titleText: 'white',
 
   success: '#3c763d',
   disabled: '#dad8d8',

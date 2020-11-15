@@ -4,7 +4,13 @@ import { TFunction } from 'i18next';
 import moment from 'moment';
 import styled from 'styled-components';
 
-export const LanguageSelector: FC = (): ReactElement => {
+interface LanguageSelectorProps {
+  className?: string;
+}
+
+export const LanguageSelector: FC<LanguageSelectorProps> = (
+  props: LanguageSelectorProps
+): ReactElement => {
   const { t, i18n } = useTranslation();
   const language = i18n.language;
 
@@ -23,6 +29,7 @@ export const LanguageSelector: FC = (): ReactElement => {
         id='language'
         value={language}
         onChange={setLanguage}
+        className={props.className}
       >
         <option title={t('language.english')} value='en'>
           {t('language.englishShort')}
