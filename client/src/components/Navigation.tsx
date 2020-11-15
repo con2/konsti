@@ -4,6 +4,8 @@ import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import { RootState } from 'typings/redux.typings';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link } from 'react-router-dom';
+import { UserGroup } from 'typings/user.typings';
 
 export const Navigation = (): ReactElement => {
   const username: string = useSelector(
@@ -35,9 +37,69 @@ export const Navigation = (): ReactElement => {
               </UserInfo>
             </LoggedUserDetails>
           )}
+          {loggedIn ? <LoggedInUserNavigation /> : <UserNavigation />}
         </Drawer>
       )}
     </>
+  );
+};
+
+const LoggedInUserNavigation = (): ReactElement => {
+  const userGroup: UserGroup = useSelector(
+    (state: RootState) => state.login.userGroup
+  );
+  const { t } = useTranslation();
+
+  return (
+    <StyledRoutes>
+      <RouterLink to='/games'>{t('pages.allGames')}</RouterLink>
+
+      {userGroup === 'user' && (
+        <RouterLink to='/mygames'>{t('pages.myGames')}</RouterLink>
+      )}
+
+      {userGroup === 'user' && (
+        <RouterLink to='/signup'>{t('pages.signUp')}</RouterLink>
+      )}
+
+      {(userGroup === 'user' ||
+        userGroup === 'admin' ||
+        userGroup === 'help') && (
+        <RouterLink to='/results'>{t('pages.results')}</RouterLink>
+      )}
+
+      {userGroup === 'user' && (
+        <RouterLink to='/group'>{t('pages.group')}</RouterLink>
+      )}
+
+      {(userGroup === 'help' || userGroup === 'admin') && (
+        <RouterLink to='/help'>{t('button.helper')}</RouterLink>
+      )}
+
+      {userGroup === 'admin' && (
+        <RouterLink to='/admin'>{t('pages.admin')}</RouterLink>
+      )}
+
+      {(userGroup === 'user' ||
+        userGroup === 'admin' ||
+        userGroup === 'help') && (
+        <RouterLink to='/logout'>{t('button.logout')}</RouterLink>
+      )}
+    </StyledRoutes>
+  );
+};
+
+const UserNavigation = (): ReactElement => {
+  const { t } = useTranslation();
+
+  return (
+    <StyledRoutes>
+      <RouterLink to='/games'>{t('pages.allGames')}</RouterLink>
+
+      <RouterLink to='/login'>{t('button.login')}</RouterLink>
+
+      <RouterLink to='/registration'>{t('button.register')}</RouterLink>
+    </StyledRoutes>
   );
 };
 
@@ -72,4 +134,41 @@ const LoggedUserDetails = styled.div`
 
 const UserInfo = styled.span`
   padding: 6px 0 0 0;
+`;
+
+const StyledRoutes = styled.div`
+  display: flex;
+  flex-direction: column;
+  background-color: ${(props) => props.theme.backgroundHighlight};
+  border-bottom: 1px solid ${(props) => props.theme.borderInactive};
+`;
+
+const RouterLink = styled(Link)`
+  position: relative;
+  display: inline-block;
+  padding: 10px 12px 10px 12px;
+  font-size: ${(props) => props.theme.linkFontSize};
+  text-decoration: none;
+  color: ${(props) => props.theme.mainText};
+
+  :hover,
+  :focus {
+    background-color: ${(props) => props.theme.backgroundHover};
+  }
+
+  &.active {
+    border: none;
+  }
+
+  &.active::after {
+    background-color: ${(props) => props.theme.mainText};
+    bottom: 0;
+    content: '';
+    display: block;
+    height: 3px;
+    left: 50%;
+    margin-left: -30px;
+    position: absolute;
+    width: 60px;
+  }
 `;
