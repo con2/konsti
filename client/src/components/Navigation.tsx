@@ -6,6 +6,7 @@ import { RootState } from 'typings/redux.typings';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 import { UserGroup } from 'typings/user.typings';
+import { config } from 'config';
 
 export const Navigation = (): ReactElement => {
   const username: string = useSelector(
@@ -16,6 +17,7 @@ export const Navigation = (): ReactElement => {
   );
   const serial: string = useSelector((state: RootState) => state.login.serial);
   const { t } = useTranslation();
+  const { loadedSettings, useTestTime } = config;
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -25,9 +27,20 @@ export const Navigation = (): ReactElement => {
       <NavigationIconContainer>
         <NavigationIcon icon={icon} onClick={() => setIsOpen(!isOpen)} />
       </NavigationIconContainer>
-      {isOpen && <Dimmer onClick={() => setIsOpen(false)} />}
       {isOpen && (
-        <Drawer>
+        <Dimmer
+          onClick={() => setIsOpen(false)}
+          includeTimeSelectorHeight={
+            loadedSettings !== 'production' && useTestTime
+          }
+        />
+      )}
+      {isOpen && (
+        <Drawer
+          includeTimeSelectorHeight={
+            loadedSettings !== 'production' && useTestTime
+          }
+        >
           {loggedIn && (
             <LoggedUserDetails>
               <UserInfo>
@@ -143,9 +156,9 @@ const NavigationIconContainer = styled.span`
   height: 32px;
 `;
 
-const Dimmer = styled.div`
+const Dimmer = styled.div<{ includeTimeSelectorHeight: boolean }>`
   position: absolute;
-  top: 87px;
+  top: ${(props) => (props.includeTimeSelectorHeight ? 40 + 50 : 40)}px;
   left: 0;
   right: 0;
   bottom: 0;
@@ -153,10 +166,10 @@ const Dimmer = styled.div`
   opacity: 0.7;
 `;
 
-const Drawer = styled.div`
+const Drawer = styled.div<{ includeTimeSelectorHeight: boolean }>`
   background-color: white;
   position: absolute;
-  top: 87px;
+  top: ${(props) => (props.includeTimeSelectorHeight ? 40 + 50 : 40)}px;
   left: 0;
   bottom: 0;
   width: 60%;
