@@ -146,7 +146,7 @@ export const Routes: FC<Props> = (props: Props): ReactElement => {
   }
 
   return (
-    <>
+    <ContentContainer>
       <StyledRoutes>
         <RouterLink to='/games' data-testkey='all-games-page-link'>
           {t('pages.allGames')}
@@ -177,9 +177,13 @@ export const Routes: FC<Props> = (props: Props): ReactElement => {
         <Redirect from='/' to='/games' />
         <Redirect from='/*' to='/login' />
       </Switch>
-    </>
+    </ContentContainer>
   );
 };
+
+const ContentContainer = styled.div`
+  padding: 0 30px;
+`;
 
 const StyledRoutes = styled.div`
   background-color: ${(props) => props.theme.backgroundHighlight};
