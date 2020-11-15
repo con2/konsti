@@ -38,7 +38,6 @@ export const App: FC = (): ReactElement => {
 
   return (
     <>
-      <Header />
       {/* <h3>{t('errorMessage')}</h3> */}
 
       {loading && <Loading />}
@@ -47,6 +46,7 @@ export const App: FC = (): ReactElement => {
         <>
           {!appOpen && <h2>{t('closingMessage')}</h2>}
           <BrowserRouter>
+            <Header />
             <Routes onlyAdminLoginAllowed={!appOpen} />
           </BrowserRouter>
         </>

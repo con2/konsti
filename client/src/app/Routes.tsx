@@ -74,42 +74,7 @@ export const Routes: FC<Props> = (props: Props): ReactElement => {
 
   if (loggedIn) {
     return (
-      <>
-        <StyledRoutes>
-          <RouterLink to='/games'>{t('pages.allGames')}</RouterLink>
-
-          {userGroup === 'user' && (
-            <RouterLink to='/mygames'>{t('pages.myGames')}</RouterLink>
-          )}
-
-          {userGroup === 'user' && (
-            <RouterLink to='/signup'>{t('pages.signUp')}</RouterLink>
-          )}
-
-          {(userGroup === 'user' ||
-            userGroup === 'admin' ||
-            userGroup === 'help') && (
-            <RouterLink to='/results'>{t('pages.results')}</RouterLink>
-          )}
-
-          {userGroup === 'user' && (
-            <RouterLink to='/group'>{t('pages.group')}</RouterLink>
-          )}
-
-          {(userGroup === 'help' || userGroup === 'admin') && (
-            <RouterLink to='/help'>{t('button.helper')}</RouterLink>
-          )}
-
-          {userGroup === 'admin' && (
-            <RouterLink to='/admin'>{t('pages.admin')}</RouterLink>
-          )}
-
-          {(userGroup === 'user' ||
-            userGroup === 'admin' ||
-            userGroup === 'help') && (
-            <RouterLink to='/logout'>{t('button.logout')}</RouterLink>
-          )}
-        </StyledRoutes>
+      <ContentContainer>
         <Switch>
           <Route path='/games/:gameId'>
             <GameDetails />
@@ -141,26 +106,12 @@ export const Routes: FC<Props> = (props: Props): ReactElement => {
           <Redirect from='/' to='/games' />
           <Redirect from='/*' to='/' />
         </Switch>
-      </>
+      </ContentContainer>
     );
   }
 
   return (
     <ContentContainer>
-      <StyledRoutes>
-        <RouterLink to='/games' data-testkey='all-games-page-link'>
-          {t('pages.allGames')}
-        </RouterLink>
-
-        <RouterLink to='/login' data-testkey='login-page-link'>
-          {t('button.login')}
-        </RouterLink>
-
-        <RouterLink to='/registration' data-testkey='registration-page-link'>
-          {t('button.register')}
-        </RouterLink>
-      </StyledRoutes>
-
       <Switch>
         <Route path='/login'>
           <LoginView />
