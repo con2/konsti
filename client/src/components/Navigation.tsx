@@ -25,6 +25,7 @@ export const Navigation = (): ReactElement => {
       <NavigationIconContainer>
         <NavigationIcon icon={icon} onClick={() => setIsOpen(!isOpen)} />
       </NavigationIconContainer>
+      {isOpen && <Dimmer onClick={() => setIsOpen(false)} />}
       {isOpen && (
         <Drawer>
           {loggedIn && (
@@ -37,14 +38,20 @@ export const Navigation = (): ReactElement => {
               </UserInfo>
             </LoggedUserDetails>
           )}
-          {loggedIn ? <LoggedInUserNavigation /> : <UserNavigation />}
+          {loggedIn ? (
+            <LoggedInUserNavigation onSelect={() => setIsOpen(false)} />
+          ) : (
+            <UserNavigation onSelect={() => setIsOpen(false)} />
+          )}
         </Drawer>
       )}
     </>
   );
 };
 
-const LoggedInUserNavigation = (): ReactElement => {
+const LoggedInUserNavigation = (props: {
+  onSelect: () => void;
+}): ReactElement => {
   const userGroup: UserGroup = useSelector(
     (state: RootState) => state.login.userGroup
   );
@@ -52,53 +59,75 @@ const LoggedInUserNavigation = (): ReactElement => {
 
   return (
     <StyledRoutes>
-      <RouterLink to='/games'>{t('pages.allGames')}</RouterLink>
+      <RouterLink onClick={props.onSelect} to='/games'>
+        {t('pages.allGames')}
+      </RouterLink>
 
       {userGroup === 'user' && (
-        <RouterLink to='/mygames'>{t('pages.myGames')}</RouterLink>
+        <RouterLink onClick={props.onSelect} to='/mygames'>
+          {t('pages.myGames')}
+        </RouterLink>
       )}
 
       {userGroup === 'user' && (
-        <RouterLink to='/signup'>{t('pages.signUp')}</RouterLink>
+        <RouterLink onClick={props.onSelect} to='/signup'>
+          {t('pages.signUp')}
+        </RouterLink>
       )}
 
       {(userGroup === 'user' ||
         userGroup === 'admin' ||
         userGroup === 'help') && (
-        <RouterLink to='/results'>{t('pages.results')}</RouterLink>
+        <RouterLink onClick={props.onSelect} to='/results'>
+          {t('pages.results')}
+        </RouterLink>
       )}
 
       {userGroup === 'user' && (
-        <RouterLink to='/group'>{t('pages.group')}</RouterLink>
+        <RouterLink onClick={props.onSelect} to='/group'>
+          {t('pages.group')}
+        </RouterLink>
       )}
 
       {(userGroup === 'help' || userGroup === 'admin') && (
-        <RouterLink to='/help'>{t('button.helper')}</RouterLink>
+        <RouterLink onClick={props.onSelect} to='/help'>
+          {t('button.helper')}
+        </RouterLink>
       )}
 
       {userGroup === 'admin' && (
-        <RouterLink to='/admin'>{t('pages.admin')}</RouterLink>
+        <RouterLink onClick={props.onSelect} to='/admin'>
+          {t('pages.admin')}
+        </RouterLink>
       )}
 
       {(userGroup === 'user' ||
         userGroup === 'admin' ||
         userGroup === 'help') && (
-        <RouterLink to='/logout'>{t('button.logout')}</RouterLink>
+        <RouterLink onClick={props.onSelect} to='/logout'>
+          {t('button.logout')}
+        </RouterLink>
       )}
     </StyledRoutes>
   );
 };
 
-const UserNavigation = (): ReactElement => {
+const UserNavigation = (props: { onSelect: () => void }): ReactElement => {
   const { t } = useTranslation();
 
   return (
     <StyledRoutes>
-      <RouterLink to='/games'>{t('pages.allGames')}</RouterLink>
+      <RouterLink onClick={props.onSelect} to='/games'>
+        {t('pages.allGames')}
+      </RouterLink>
 
-      <RouterLink to='/login'>{t('button.login')}</RouterLink>
+      <RouterLink onClick={props.onSelect} to='/login'>
+        {t('button.login')}
+      </RouterLink>
 
-      <RouterLink to='/registration'>{t('button.register')}</RouterLink>
+      <RouterLink onClick={props.onSelect} to='/registration'>
+        {t('button.register')}
+      </RouterLink>
     </StyledRoutes>
   );
 };
@@ -112,6 +141,16 @@ const NavigationIconContainer = styled.span`
   font-size: 30px;
   width: 32px;
   height: 32px;
+`;
+
+const Dimmer = styled.div`
+  position: absolute;
+  top: 87px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: black;
+  opacity: 0.7;
 `;
 
 const Drawer = styled.div`
