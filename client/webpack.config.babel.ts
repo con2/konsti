@@ -122,7 +122,6 @@ const prodConfig: Configuration = {
     new MomentLocalesPlugin({
       localesToKeep: ['fi'], // “en” is built into Moment and can’t be removed
     }),
-    // @ts-expect-error: Type not working with Webpack 5
     new CompressionPlugin({
       filename: '[path][base].gz',
       algorithm: 'gzip',
@@ -130,7 +129,6 @@ const prodConfig: Configuration = {
       threshold: 10240,
       minRatio: 0.8,
     }),
-    // @ts-expect-error: Type not working with Webpack 5
     new CompressionPlugin({
       filename: '[path][base].br',
       algorithm: 'brotliCompress',
