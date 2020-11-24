@@ -44,6 +44,7 @@ const runGenerators = async (): Promise<void> => {
     await db.connectToDb();
   } catch (error) {
     logger.error(error);
+    return;
   }
 
   if (commander.clean) {

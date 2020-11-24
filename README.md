@@ -14,6 +14,26 @@ Registered users by year:
 - Ropecon 2018: 850
 - Ropecon 2019: 920
 
+## Quick Start
+
+- Requirements
+
+  - Docker
+
+- Run
+
+  ```
+  yarn docker:start
+  ```
+
+- Open `localhost:5000`
+
+- Login credentials for different roles
+
+  - **Admin**: admin:test
+  - **Users**: test1:test | test2:test | test3:test
+  - **Helpers**: ropetiski:test
+
 ## Tech
 
 - Back-end
