@@ -21,9 +21,10 @@ export const PasswordManagement: FC = (): ReactElement => {
     setChangePasswordInputVisible,
   ] = React.useState<boolean>(false);
   const [userFoundMessage, setUserFoundMessage] = React.useState<string>('');
-  const [passwordChangeMessage, setPasswordChangeMessage] = React.useState<
-    string
-  >('');
+  const [
+    passwordChangeMessage,
+    setPasswordChangeMessage,
+  ] = React.useState<string>('');
 
   const submitGetUser = async (): Promise<void> => {
     const response = await getUserBySerial(userSerialInput);

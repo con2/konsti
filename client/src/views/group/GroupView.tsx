@@ -36,9 +36,10 @@ export const GroupView: FC = (): ReactElement => {
   const [joinGroupValue, setJoinGroupValue] = React.useState<string>('');
   const [message, setMessage] = React.useState<string>('');
   const [messageStyle, setMessageStyle] = React.useState<string>('');
-  const [closeGroupConfirmation, setCloseGroupConfirmation] = React.useState<
-    boolean
-  >(false);
+  const [
+    closeGroupConfirmation,
+    setCloseGroupConfirmation,
+  ] = React.useState<boolean>(false);
 
   const store = useStore();
 

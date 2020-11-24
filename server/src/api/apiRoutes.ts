@@ -16,6 +16,7 @@ import { toggleAppOpen } from 'api/controllers/toggleAppOpenController';
 
 export const apiRoutes = express.Router();
 
+/* eslint-disable @typescript-eslint/no-misused-promises */
 apiRoutes.post('/games', postGames);
 apiRoutes.post('/user', postUserValidation, postUser);
 apiRoutes.post('/login', postLoginValidation, postLogin);
@@ -33,3 +34,4 @@ apiRoutes.get('/user', getUser);
 apiRoutes.get('/settings', getSettings);
 apiRoutes.get('/results', getResults);
 apiRoutes.get('/group', getGroup);
+/* eslint-enable @typescript-eslint/no-misused-promises */
