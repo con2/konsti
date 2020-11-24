@@ -16,11 +16,19 @@ Registered users by year:
 
 ## Quick Start
 
-```
-yarn docker:start
-```
+- Run
 
-Open `localhost:5000`
+  ```
+  yarn docker:start
+  ```
+
+- Open `localhost:5000`
+
+- Login credentials for different roles
+
+  - **Admin**: admin:test
+  - **Users**: test1:test | test2:test | test3:test
+  - **Helpers**: ropetiski:test
 
 ## Tech
 
