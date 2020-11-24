@@ -14,6 +14,14 @@ Registered users by year:
 - Ropecon 2018: 850
 - Ropecon 2019: 920
 
+## Quick Start
+
+```
+yarn docker:start
+```
+
+Open `localhost:5000`
+
 ## Tech
 
 - Back-end
