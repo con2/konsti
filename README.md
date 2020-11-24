@@ -16,6 +16,10 @@ Registered users by year:
 
 ## Quick Start
 
+- Requirements
+
+  - Docker
+
 - Run
 
   ```
