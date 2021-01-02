@@ -84,8 +84,8 @@ const saveResult = async (
   try {
     response = await ResultsModel.replaceOne(
       { startTime },
+      // @ts-expect-error: replaceOne type broken
       { startTime, results, algorithm, message },
-      // @ts-expect-error: Upsert is missing from type definition
       { upsert: true }
     );
     logger.debug(
