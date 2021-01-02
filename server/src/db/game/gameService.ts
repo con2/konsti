@@ -110,7 +110,7 @@ const saveGamePopularity = async (
 ): Promise<void> => {
   logger.debug(`MongoDB: Update game ${gameId} popularity to ${popularity}`);
   try {
-    return await GameModel.updateOne(
+    await GameModel.updateOne(
       {
         gameId,
       },
