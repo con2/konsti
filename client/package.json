@@ -23,7 +23,8 @@
     "test:coverage": "jest --coverage --colors",
     "test:watch": "jest --watch",
     "type-check": "tsc --noEmit",
-    "cypress:open": "cypress open"
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "1.2.32",
