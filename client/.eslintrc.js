@@ -9,6 +9,7 @@ module.exports = {
     'eslint-plugin-react-hooks',
     'eslint-plugin-import',
     '@typescript-eslint',
+    'cypress',
     // 'eslint-plugin-jsx-a11y',
     // 'eslint-plugin-security',
     // 'eslint-plugin-unicorn',
@@ -26,6 +27,7 @@ module.exports = {
     'plugin:eslint-plugin-react/recommended',
     'plugin:eslint-plugin-import/errors',
     'plugin:eslint-plugin-import/typescript',
+    'plugin:cypress/recommended',
     // 'plugin:@typescript-eslint/recommended',
     // 'plugin:@typescript-eslint/recommended-requiring-type-checking',
     // 'plugin:eslint-plugin-jsx-a11y/recommended',
@@ -39,13 +41,14 @@ module.exports = {
     sourceType: 'module',
     impliedStrict: true,
     tsconfigRootDir: __dirname,
-    project: ['./tsconfig.json'],
+    project: ['./tsconfig.json', 'cypress/tsconfig.json'],
   },
 
   env: {
     es6: true,
     browser: true,
     jest: true,
+    'cypress/globals': true,
   },
 
   settings: {
@@ -78,6 +81,9 @@ module.exports = {
     'import/no-unused-modules': ['error', { unusedExports: true }],
     'import/no-unresolved': 'off',
 
+    // eslint-plugin-jest
+    'jest/expect-expect': 'off', // Does not work with Cypress
+
     // eslint-plugin-eslint-comments
     'eslint-comments/no-unused-disable': 'error',
 
@@ -89,6 +95,7 @@ module.exports = {
       { ignoreStringArrays: true },
     ],
     '@typescript-eslint/default-param-last': 'off', // Problem setting Redux reducer initial state
+    '@typescript-eslint/triple-slash-reference': 'off', // Cypress requires triple slash reference
 
     // TODO: Enable these
     '@typescript-eslint/strict-boolean-expressions': 'off',
