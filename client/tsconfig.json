@@ -19,6 +19,14 @@
     "resolveJsonModule": true,
     "skipLibCheck": true
   },
-  "include": ["src/**/*.js", "src/**/*.ts", "src/**/*.tsx", ".eslintrc.js"],
+  "include": [
+    "src/**/*.js",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    ".eslintrc.js",
+    "webpack.config.babel.ts",
+    "jest.config.js",
+    "babel.config.js"
+  ],
   "exclude": ["node_modules", "build", "coverage"]
 }
