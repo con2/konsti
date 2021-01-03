@@ -51,3 +51,7 @@ secret
 !.yarn/sdks
 !.yarn/versions
 .pnp.*
+
+# Cypress
+client/cypress/videos/*
+client/cypress/screenshots/*
