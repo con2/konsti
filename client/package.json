@@ -23,6 +23,7 @@
     "test:coverage": "jest --coverage --colors",
     "test:watch": "jest --watch",
     "type-check": "tsc --noEmit",
+    "type-check:cypress": "tsc --noEmit --project cypress/tsconfig.json",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run"
   },

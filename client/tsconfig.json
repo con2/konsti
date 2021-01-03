@@ -19,6 +19,6 @@
     "resolveJsonModule": true,
     "skipLibCheck": true
   },
-  "include": ["**/*.js", "**/*.ts", "**/*.tsx", ".eslintrc.js"],
+  "include": ["src/**/*.js", "src/**/*.ts", "src/**/*.tsx", ".eslintrc.js"],
   "exclude": ["node_modules", "build", "coverage"]
 }

@@ -36,8 +36,10 @@
     "test:client": "yarn workspace konsti-client test",
     "test:server": "yarn workspace konsti-server test",
     "type-check": "concurrently \"yarn type-check:client\" \"yarn type-check:server\"",
-    "type-check:client": "yarn workspace konsti-client type-check",
-    "type-check:server": "yarn workspace konsti-server type-check"
+    "type-check:client": "yarn workspace konsti-client type-check && yarn workspace konsti-client type-check:cypress",
+    "type-check:server": "yarn workspace konsti-server type-check",
+    "cypress:run": "yarn workspace konsti-client cypress:run",
+    "cypress:open": "yarn workspace konsti-client cypress:open"
   },
   "husky": {
     "hooks": {
@@ -78,6 +80,7 @@
     "eslint-config-standard-with-typescript": "19.0.1",
     "eslint-import-resolver-babel-module": "5.2.0",
     "eslint-plugin-compat": "3.9.0",
+    "eslint-plugin-cypress": "2.11.2",
     "eslint-plugin-eslint-comments": "3.2.0",
     "eslint-plugin-import": "2.22.1",
     "eslint-plugin-jest": "24.1.3",
