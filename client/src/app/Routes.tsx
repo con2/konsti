@@ -148,11 +148,17 @@ export const Routes: FC<Props> = (props: Props): ReactElement => {
   return (
     <>
       <StyledRoutes>
-        <RouterLink to='/games'>{t('pages.allGames')}</RouterLink>
+        <RouterLink to='/games' data-testkey='all-games-page-link'>
+          {t('pages.allGames')}
+        </RouterLink>
 
-        <RouterLink to='/login'>{t('button.login')}</RouterLink>
+        <RouterLink to='/login' data-testkey='login-page-link'>
+          {t('button.login')}
+        </RouterLink>
 
-        <RouterLink to='/registration'>{t('button.register')}</RouterLink>
+        <RouterLink to='/registration' data-testkey='registration-page-link'>
+          {t('button.register')}
+        </RouterLink>
       </StyledRoutes>
 
       <Switch>

@@ -29,7 +29,7 @@ const LoginForm: FC<InjectedFormProps> = (
           validate={required}
         />
 
-        <button type='submit' disabled={submitting}>
+        <button type='submit' disabled={submitting} data-testkey='login-button'>
           {t('button.login')}
         </button>
       </form>

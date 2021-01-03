@@ -38,7 +38,7 @@ export const Header = (): ReactElement => {
 
       {loggedIn && (
         <LoggedUserDetails>
-          <UserInfo>
+          <UserInfo data-testkey='current-username'>
             {t('user')}: {username}
           </UserInfo>
           <UserInfo>
