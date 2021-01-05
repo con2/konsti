@@ -167,7 +167,6 @@ const Dimmer = styled.div<{ includeTimeSelectorHeight: boolean }>`
 `;
 
 const Drawer = styled.div<{ includeTimeSelectorHeight: boolean }>`
-  background-color: white;
   position: absolute;
   top: ${(props) => (props.includeTimeSelectorHeight ? 40 + 50 : 40)}px;
   left: 0;
