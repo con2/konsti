@@ -135,6 +135,7 @@ export const AllGamesList: FC<Props> = (props: Props): ReactElement => {
 };
 
 const IconContainer = styled.span`
+  margin-left: 16px;
   span {
     position: relative;
     top: 6px;
@@ -143,6 +144,11 @@ const IconContainer = styled.span`
 
 const GameListTitle = styled.h3`
   margin: 20px 0;
+  padding: 8px;
+  background-color: #444;
+  color: white;
+  position: sticky;
+  top: 0;
 `;
 
 const GameListShortDescription = styled.p`
