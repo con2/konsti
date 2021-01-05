@@ -183,6 +183,8 @@ const LoggedUserDetails = styled.div`
   display: flex;
   flex: 0 1 auto;
   flex-direction: column;
+  margin-top: 24px;
+  text-align: center;
 `;
 
 const UserInfo = styled.span`
