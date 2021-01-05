@@ -196,6 +196,7 @@ const RouterLink = styled(Link)`
   font-size: ${(props) => props.theme.linkFontSize};
   text-decoration: none;
   color: ${(props) => props.theme.mainText};
+  border-bottom: 1px solid black;
 
   :hover,
   :focus {
