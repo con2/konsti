@@ -41,6 +41,11 @@ export const Navigation = (): ReactElement => {
             loadedSettings !== 'production' && useTestTime
           }
         >
+          {loggedIn ? (
+            <LoggedInUserNavigation onSelect={() => setIsOpen(false)} />
+          ) : (
+            <UserNavigation onSelect={() => setIsOpen(false)} />
+          )}
           {loggedIn && (
             <LoggedUserDetails>
               <UserInfo>
@@ -50,11 +55,6 @@ export const Navigation = (): ReactElement => {
                 {t('code')}: {serial}
               </UserInfo>
             </LoggedUserDetails>
-          )}
-          {loggedIn ? (
-            <LoggedInUserNavigation onSelect={() => setIsOpen(false)} />
-          ) : (
-            <UserNavigation onSelect={() => setIsOpen(false)} />
           )}
         </Drawer>
       )}
