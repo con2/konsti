@@ -66,6 +66,7 @@ module.exports = {
     'no-param-reassign': 'error',
 
     // eslint-plugin-react
+    'react/no-multi-comp': 'error',
     'react/no-unescaped-entities': 'off',
 
     // eslint-plugin-react-hooks
