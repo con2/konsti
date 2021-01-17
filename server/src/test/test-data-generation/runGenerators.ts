@@ -34,6 +34,8 @@ const runGenerators = async (): Promise<void> => {
     .option('-g, --games', 'Generate games')
     .option('-c, --clean', 'Clean all data');
 
+  const options = commander.opts();
+
   if (process.argv.length < 3) {
     commander.help();
   }
@@ -47,7 +49,7 @@ const runGenerators = async (): Promise<void> => {
     return;
   }
 
-  if (commander.clean) {
+  if (options.clean) {
     logger.info('Clean all data');
 
     try {
@@ -75,7 +77,7 @@ const runGenerators = async (): Promise<void> => {
     }
   }
 
-  if (commander.users) {
+  if (options.users) {
     logger.info('Generate users');
 
     try {
@@ -102,7 +104,7 @@ const runGenerators = async (): Promise<void> => {
     }
   }
 
-  if (commander.games) {
+  if (options.games) {
     logger.info('Generate games');
 
     try {
@@ -120,7 +122,7 @@ const runGenerators = async (): Promise<void> => {
     await createGames(newGamesCount, signupTimes);
   }
 
-  if (commander.signups) {
+  if (options.signups) {
     logger.info('Generate signups');
     // TODO: Remove signups
 
