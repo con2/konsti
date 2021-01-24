@@ -1,7 +1,6 @@
 import React, { FC, ReactElement } from 'react';
-import { Route, NavLink, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import { AllGamesView } from 'views/all-games/AllGamesView';
 import { GameDetails } from 'views/all-games/components/GameDetails';
@@ -14,7 +13,6 @@ import { ResultsView } from 'views/results/ResultsView';
 import { LogoutView } from 'views/logout/LogoutView';
 import { GroupView } from 'views/group/GroupView';
 import { HelperView } from 'views/helper/HelperView';
-import { UserGroup } from 'typings/user.typings';
 import { RootState } from 'typings/redux.typings';
 
 export interface Props {
@@ -26,39 +24,10 @@ export const Routes: FC<Props> = (props: Props): ReactElement => {
   const loggedIn: boolean = useSelector(
     (state: RootState) => state.login.loggedIn
   );
-  const userGroup: UserGroup = useSelector(
-    (state: RootState) => state.login.userGroup
-  );
-  const { t } = useTranslation();
 
   if (onlyAdminLoginAllowed) {
-    if (!loggedIn) {
-      return (
-        <>
-          <StyledRoutes>
-            <RouterLink to='/login'>{t('button.login')}</RouterLink>
-          </StyledRoutes>
-          <Switch>
-            <Route path='/login'>
-              <LoginView />
-            </Route>
-            <Redirect from='/*' to='/' />
-          </Switch>
-        </>
-      );
-    }
-
     return (
       <>
-        <StyledRoutes>
-          {userGroup === 'admin' && (
-            <RouterLink to='/admin'>{t('pages.admin')}</RouterLink>
-          )}
-
-          {(userGroup === 'user' || userGroup === 'admin') && (
-            <RouterLink to='/logout'>{t('button.logout')}</RouterLink>
-          )}
-        </StyledRoutes>
         <Switch>
           <Route path='/admin'>
             <AdminView />
@@ -134,39 +103,4 @@ export const Routes: FC<Props> = (props: Props): ReactElement => {
 
 const ContentContainer = styled.div`
   padding: 0 30px;
-`;
-
-const StyledRoutes = styled.div`
-  background-color: ${(props) => props.theme.backgroundHighlight};
-  border-bottom: 1px solid ${(props) => props.theme.borderInactive};
-`;
-
-const RouterLink = styled(NavLink)`
-  position: relative;
-  display: inline-block;
-  padding: 10px 12px 10px 12px;
-  font-size: ${(props) => props.theme.linkFontSize};
-  text-decoration: none;
-  color: ${(props) => props.theme.mainText};
-
-  :hover,
-  :focus {
-    background-color: ${(props) => props.theme.backgroundHover};
-  }
-
-  &.active {
-    border: none;
-  }
-
-  &.active::after {
-    background-color: ${(props) => props.theme.mainText};
-    bottom: 0;
-    content: '';
-    display: block;
-    height: 3px;
-    left: 50%;
-    margin-left: -30px;
-    position: absolute;
-    width: 60px;
-  }
 `;
