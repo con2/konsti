@@ -10,8 +10,12 @@ jobs:
       matrix:
         node-version: [12.14.1]
 
+    env:
+      CI: true
+
     steps:
-      - uses: actions/checkout@v1
+      - name: Checkout code
+        uses: actions/checkout@v2
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
@@ -20,7 +24,7 @@ jobs:
 
       - name: Yarn install
         run: |
-          yarn install
+          yarn --frozen-lockfile
 
       - name: Build
         run: |
@@ -46,5 +50,6 @@ jobs:
         run: |
           yarn test
 
-        env:
-          CI: true
+      - name: Cypress
+        run: |
+          yarn docker:test

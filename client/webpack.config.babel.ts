@@ -2,13 +2,31 @@ import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import CompressionPlugin from 'compression-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MomentLocalesPlugin from 'moment-locales-webpack-plugin';
+import Dotenv from 'dotenv-webpack';
 import path from 'path';
-import webpack, { Configuration } from 'webpack';
+import { Configuration } from 'webpack';
 import { merge } from 'webpack-merge';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import { config } from './src/config';
 
 const TARGET = process.env.npm_lifecycle_event;
+
+const getEnvVariableFile = (): string | undefined => {
+  switch (TARGET) {
+    case 'build:prod':
+      return './env_prod.env';
+    case 'build:staging':
+      return './env_staging.env';
+    case 'build:dev':
+      return './env_dev.env';
+    case 'build:ci':
+      return './env_ci.env';
+    case 'bundle-analyzer':
+      return './env_dev.env';
+    case 'start':
+      return './env_dev.env';
+  }
+};
 
 const stats = {
   // assets: false,
@@ -92,9 +110,7 @@ const devConfig: Configuration = {
   },
 
   plugins: [
-    new webpack.DefinePlugin({
-      SETTINGS: JSON.stringify('development'),
-    }),
+    new Dotenv({ path: './env_dev.env' }),
     new ReactRefreshWebpackPlugin(),
   ],
 };
@@ -107,18 +123,7 @@ const prodConfig: Configuration = {
   stats,
 
   plugins: [
-    new webpack.DefinePlugin({
-      SETTINGS: () => {
-        switch (TARGET) {
-          case 'build:prod':
-            return JSON.stringify('production');
-          case 'build:staging':
-            return JSON.stringify('staging');
-          case 'build:dev':
-            return JSON.stringify('development');
-        }
-      },
-    }),
+    new Dotenv({ path: getEnvVariableFile() }),
     new MomentLocalesPlugin({
       localesToKeep: ['fi'], // “en” is built into Moment and can’t be removed
     }),
@@ -156,6 +161,8 @@ const getWebpackConfig = (): Configuration | undefined => {
     case 'build:staging':
       return merge(commonConfig, prodConfig);
     case 'build:dev':
+      return merge(commonConfig, prodConfig);
+    case 'build:ci':
       return merge(commonConfig, prodConfig);
     case 'bundle-analyzer':
       return merge(commonConfig, prodConfig);

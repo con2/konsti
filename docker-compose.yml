@@ -1,4 +1,5 @@
 version: '3.8'
+
 services:
   server:
     build:
@@ -30,3 +31,14 @@ services:
     # environment:
     # ME_CONFIG_MONGODB_ADMINUSERNAME: root
     # ME_CONFIG_MONGODB_ADMINPASSWORD: example
+
+  cypress:
+    image: 'cypress/included:6.2.1'
+    depends_on:
+      - server
+    environment:
+      - CYPRESS_baseUrl=http://server:5000
+    working_dir: /client
+    volumes:
+      - ./client:/client
+    entrypoint: /bin/sh -c "sleep 10 && cypress run --browser chrome --headless --config-file false --project ./build"
