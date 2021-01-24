@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import { RootState } from 'typings/redux.typings';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { UserGroup } from 'typings/user.typings';
 
 export const LoggedInUserNavigation = (props: {
@@ -69,7 +69,7 @@ export const LoggedInUserNavigation = (props: {
   );
 };
 
-const RouterLink = styled(Link)`
+const RouterLink = styled(NavLink)`
   position: relative;
   display: inline-block;
   padding: 10px 12px 10px 12px;
@@ -79,7 +79,8 @@ const RouterLink = styled(Link)`
   border-bottom: 1px solid black;
 
   :hover,
-  :focus {
+  :focus,
+  &.active {
     background-color: ${(props) => props.theme.backgroundHover};
   }
 `;
