@@ -4,13 +4,11 @@ import { TFunction } from 'i18next';
 import moment from 'moment';
 import styled from 'styled-components';
 
-interface LanguageSelectorProps {
+interface Props {
   className?: string;
 }
 
-export const LanguageSelector: FC<LanguageSelectorProps> = (
-  props: LanguageSelectorProps
-): ReactElement => {
+export const LanguageSelector: FC<Props> = (props: Props): ReactElement => {
   const { t, i18n } = useTranslation();
   const language = i18n.language;
 
