@@ -4,9 +4,9 @@ import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import { RootState } from 'typings/redux.typings';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Link } from 'react-router-dom';
-import { UserGroup } from 'typings/user.typings';
 import { config } from 'config';
+import { LoggedInUserNavigation } from './LoggedInUserNavigation';
+import { UserNavigation } from './UserNavigation';
 
 export const Navigation = (): ReactElement => {
   const username: string = useSelector(
@@ -62,89 +62,6 @@ export const Navigation = (): ReactElement => {
   );
 };
 
-const LoggedInUserNavigation = (props: {
-  onSelect: () => void;
-}): ReactElement => {
-  const userGroup: UserGroup = useSelector(
-    (state: RootState) => state.login.userGroup
-  );
-  const { t } = useTranslation();
-
-  return (
-    <StyledRoutes>
-      <RouterLink onClick={props.onSelect} to='/games'>
-        {t('pages.allGames')}
-      </RouterLink>
-
-      {userGroup === 'user' && (
-        <RouterLink onClick={props.onSelect} to='/mygames'>
-          {t('pages.myGames')}
-        </RouterLink>
-      )}
-
-      {userGroup === 'user' && (
-        <RouterLink onClick={props.onSelect} to='/signup'>
-          {t('pages.signUp')}
-        </RouterLink>
-      )}
-
-      {(userGroup === 'user' ||
-        userGroup === 'admin' ||
-        userGroup === 'help') && (
-        <RouterLink onClick={props.onSelect} to='/results'>
-          {t('pages.results')}
-        </RouterLink>
-      )}
-
-      {userGroup === 'user' && (
-        <RouterLink onClick={props.onSelect} to='/group'>
-          {t('pages.group')}
-        </RouterLink>
-      )}
-
-      {(userGroup === 'help' || userGroup === 'admin') && (
-        <RouterLink onClick={props.onSelect} to='/help'>
-          {t('button.helper')}
-        </RouterLink>
-      )}
-
-      {userGroup === 'admin' && (
-        <RouterLink onClick={props.onSelect} to='/admin'>
-          {t('pages.admin')}
-        </RouterLink>
-      )}
-
-      {(userGroup === 'user' ||
-        userGroup === 'admin' ||
-        userGroup === 'help') && (
-        <RouterLink onClick={props.onSelect} to='/logout'>
-          {t('button.logout')}
-        </RouterLink>
-      )}
-    </StyledRoutes>
-  );
-};
-
-const UserNavigation = (props: { onSelect: () => void }): ReactElement => {
-  const { t } = useTranslation();
-
-  return (
-    <StyledRoutes>
-      <RouterLink onClick={props.onSelect} to='/games'>
-        {t('pages.allGames')}
-      </RouterLink>
-
-      <RouterLink onClick={props.onSelect} to='/login'>
-        {t('button.login')}
-      </RouterLink>
-
-      <RouterLink onClick={props.onSelect} to='/registration'>
-        {t('button.register')}
-      </RouterLink>
-    </StyledRoutes>
-  );
-};
-
 const NavigationIcon = styled(FontAwesomeIcon)`
   color: white;
 `;
@@ -188,24 +105,4 @@ const LoggedUserDetails = styled.div`
 
 const UserInfo = styled.span`
   padding: 6px 0 0 0;
-`;
-
-const RouterLink = styled(Link)`
-  position: relative;
-  display: inline-block;
-  padding: 10px 12px 10px 12px;
-  font-size: ${(props) => props.theme.linkFontSize};
-  text-decoration: none;
-  color: ${(props) => props.theme.mainText};
-  border-bottom: 1px solid black;
-
-  :hover,
-  :focus {
-    background-color: ${(props) => props.theme.backgroundHover};
-  }
-`;
-
-const StyledRoutes = styled.div`
-  display: flex;
-  flex-direction: column;
 `;
