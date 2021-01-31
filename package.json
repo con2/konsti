@@ -20,7 +20,7 @@
     "deploy-staging": "yarn prepare-deploy:staging && eb deploy konsti-staging",
     "docker:start": "yarn build-front:dev && docker-compose up --detach --build --remove-orphans",
     "docker:stop": "docker-compose down --remove-orphans",
-    "docker:test": "yarn build-front:ci && yarn build:cypress && docker-compose up --build --remove-orphans --exit-code-from cypress --abort-on-container-exit",
+    "docker:test": "yarn build-front:ci && yarn build:cypress && docker-compose -f ./docker-compose.yml -f ./client/cypress/docker-compose.yml up --build --remove-orphans --exit-code-from cypress --abort-on-container-exit",
     "eslint": "eslint . --ext .js,.ts,.tsx",
     "eslint-rules": "eslint --print-config .eslintrc.js",
     "eslint:client": "yarn workspace konsti-client eslint",

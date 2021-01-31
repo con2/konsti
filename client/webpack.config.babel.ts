@@ -14,13 +14,13 @@ const TARGET = process.env.npm_lifecycle_event;
 const getEnvVariableFile = (): string | undefined => {
   switch (TARGET) {
     case 'build:prod':
-      return './config/env_prod.env';
+      return './config/prod.env';
     case 'build:staging':
-      return './config/env_staging.env';
+      return './config/staging.env';
     case 'build:ci':
-      return './config/env_ci.env';
+      return './config/ci.env';
     default:
-      return './config/env_dev.env';
+      return './config/dev.env';
   }
 };
 
@@ -106,7 +106,7 @@ const devConfig: Configuration = {
   },
 
   plugins: [
-    new Dotenv({ path: './env_dev.env' }),
+    new Dotenv({ path: './config/dev.env' }),
     new ReactRefreshWebpackPlugin(),
   ],
 };
