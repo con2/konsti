@@ -10,15 +10,27 @@ export const UserNavigation = (props: {
 
   return (
     <StyledRoutes>
-      <RouterLink onClick={props.onSelect} to='/games'>
+      <RouterLink
+        onClick={props.onSelect}
+        to='/games'
+        data-testkey='all-games-page-link'
+      >
         {t('pages.allGames')}
       </RouterLink>
 
-      <RouterLink onClick={props.onSelect} to='/login'>
+      <RouterLink
+        onClick={props.onSelect}
+        to='/login'
+        data-testkey='login-page-link'
+      >
         {t('button.login')}
       </RouterLink>
 
-      <RouterLink onClick={props.onSelect} to='/registration'>
+      <RouterLink
+        onClick={props.onSelect}
+        to='/registration'
+        data-testkey='registration-page-link'
+      >
         {t('button.register')}
       </RouterLink>
     </StyledRoutes>
