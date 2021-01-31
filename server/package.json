@@ -20,7 +20,7 @@
     "lint": "yarn eslint && yarn prettier:check",
     "remove-invalid-games": "yarn build && cross-env NODE_ENV=development node lib/test/scripts/removeInvalidGames.js",
     "start": "yarn build && node lib/app.js",
-    "start-dev": "yarn build && cross-env NODE_ENV=development nodemon --ext js,ts,json --exec node lib/app.js",
+    "start:dev": "yarn build && cross-env NODE_ENV=development nodemon --ext js,ts,json --exec node lib/app.js",
     "stats": "yarn build && node lib/statistics/statGenerator.js --",
     "test": "jest",
     "test-assign": "yarn build && cross-env NODE_ENV=development node lib/test/scripts/testAssignPlayers.js",
