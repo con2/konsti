@@ -1,12 +1,11 @@
 module.exports = {
-  parser: '@typescript-eslint/parser', // or 'babel-eslint'
+  parser: '@typescript-eslint/parser',
 
   plugins: [
     'eslint-plugin-jest',
     'eslint-plugin-node',
     'eslint-plugin-prettier',
     'eslint-plugin-promise',
-    'eslint-plugin-standard',
     'eslint-plugin-import',
     '@typescript-eslint',
     // 'eslint-plugin-security',
@@ -75,5 +74,8 @@ module.exports = {
     '@typescript-eslint/strict-boolean-expressions': 'off', // Forces unwanted code style
     '@typescript-eslint/restrict-template-expressions': 'off', // Requires typing catch(e) every time
     '@typescript-eslint/restrict-plus-operands': 'off', // Doesn't support dynamic object occurance counting
+
+    // TODO: Enable these
+    'array-callback-return': 'off',
   },
 };
