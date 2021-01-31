@@ -14,13 +14,13 @@ const TARGET = process.env.npm_lifecycle_event;
 const getEnvVariableFile = (): string | undefined => {
   switch (TARGET) {
     case 'build:prod':
-      return './env_prod.env';
+      return './config/env_prod.env';
     case 'build:staging':
-      return './env_staging.env';
+      return './config/env_staging.env';
     case 'build:ci':
-      return './env_ci.env';
+      return './config/env_ci.env';
     default:
-      return './env_dev.env';
+      return './config/env_dev.env';
   }
 };
 
