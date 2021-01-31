@@ -7,6 +7,7 @@ import { submitSetTestTime } from 'views/admin/adminActions';
 import { TimesDropdown } from 'components/TimesDropdown';
 import { config } from 'config';
 import { RootState } from 'typings/redux.typings';
+import styled from 'styled-components';
 
 export const TimeSelector: FC = (): ReactElement => {
   const testTime: string = useSelector(
@@ -43,7 +44,7 @@ export const TimeSelector: FC = (): ReactElement => {
   };
 
   return (
-    <div className='time-selector'>
+    <TimeSelectorElement className='time-selector'>
       <span>{t('testTime')}</span>
       <TimesDropdown
         times={times}
@@ -52,6 +53,10 @@ export const TimeSelector: FC = (): ReactElement => {
           setTestTime(event.target.value)
         }
       />
-    </div>
+    </TimeSelectorElement>
   );
 };
+
+const TimeSelectorElement = styled.div`
+  height: 50px;
+`;
