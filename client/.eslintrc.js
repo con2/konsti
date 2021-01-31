@@ -1,5 +1,5 @@
 module.exports = {
-  parser: '@typescript-eslint/parser', // or 'babel-eslint'
+  parser: '@typescript-eslint/parser',
 
   plugins: [
     'eslint-plugin-compat',
@@ -104,5 +104,6 @@ module.exports = {
     '@typescript-eslint/restrict-template-expressions': 'off',
     '@typescript-eslint/no-misused-promises': 'off',
     '@typescript-eslint/no-var-requires': 'off',
+    'array-callback-return': 'off',
   },
 };
