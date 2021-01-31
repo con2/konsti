@@ -17,13 +17,9 @@ const getEnvVariableFile = (): string | undefined => {
       return './env_prod.env';
     case 'build:staging':
       return './env_staging.env';
-    case 'build:dev':
-      return './env_dev.env';
     case 'build:ci':
       return './env_ci.env';
-    case 'bundle-analyzer':
-      return './env_dev.env';
-    case 'start':
+    default:
       return './env_dev.env';
   }
 };
