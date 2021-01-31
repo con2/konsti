@@ -10,12 +10,15 @@ describe('User login', () => {
     cy.visit('/');
 
     // Go to login page and enter login credentials
+    clickOn('navigation-icon');
+
     clickOn('login-page-link');
     cy.get('.form-input#username').type(username);
     cy.get('.form-input#password').type(password);
     clickOn('login-button');
 
     // Check if login was completed
-    get('current-username').should('have.text', `User: ${username}`);
+    clickOn('navigation-icon');
+    get('logged-user-username').should('have.text', `User: ${username}`);
   });
 });
