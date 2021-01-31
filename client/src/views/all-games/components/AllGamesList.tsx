@@ -1,16 +1,10 @@
 import React, { FC, ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 import _ from 'lodash';
 import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { timeFormatter } from 'client/utils/timeFormatter';
-import { updateFavorite, UpdateFavoriteOpts } from 'client/utils/favorite';
 import { Game } from 'shared/typings/models/game';
-
-import { UserGroup } from 'client/typings/user.typings';
-import { RootState } from 'client/typings/redux.typings';
+import { GameEntry } from './GameEntry';
 
 export interface Props {
   games: readonly Game[];
@@ -19,38 +13,6 @@ export interface Props {
 export const AllGamesList: FC<Props> = (props: Props): ReactElement => {
   const { games } = props;
   const { t } = useTranslation();
-  const dispatch = useDispatch();
-
-  const username: string = useSelector(
-    (state: RootState) => state.login.username
-  );
-  const loggedIn: boolean = useSelector(
-    (state: RootState) => state.login.loggedIn
-  );
-  const userGroup: UserGroup = useSelector(
-    (state: RootState) => state.login.userGroup
-  );
-  const favoritedGames: readonly Game[] = useSelector(
-    (state: RootState) => state.myGames.favoritedGames
-  );
-
-  // Favorite / remove favorite clicked
-  const updateFavoriteHandler = async (
-    game: Game,
-    action: string
-  ): Promise<void> => {
-    if (!game || !game.gameId) return;
-
-    const updateFavoriteOpts: UpdateFavoriteOpts = {
-      game,
-      action,
-      username,
-      favoritedGames,
-      dispatch,
-    };
-
-    await updateFavorite(updateFavoriteOpts);
-  };
 
   const buildGamesList = (games: readonly Game[]): ReactElement[] => {
     const sortedGames = _.sortBy(games, [
@@ -86,39 +48,10 @@ export const AllGamesList: FC<Props> = (props: Props): ReactElement => {
 
       GamesList.push(title);
 
-      for (const game of games) {
-        // Check if in favorites
-        const favorited =
-          favoritedGames.find(
-            (favoritedGame) => favoritedGame.gameId === game.gameId
-          ) !== undefined;
-
-        const gameEntry = (
-          <GameContainer key={game.gameId} className='games-list'>
-            {favorited && loggedIn && userGroup === 'user' && game && (
-              <IconContainer
-                onClick={async () => await updateFavoriteHandler(game, 'del')}
-              >
-                <FontAwesomeIcon icon='heart' />
-              </IconContainer>
-            )}
-            {!favorited && loggedIn && userGroup === 'user' && game && (
-              <IconContainer
-                onClick={async () => await updateFavoriteHandler(game, 'add')}
-              >
-                <FontAwesomeIcon icon={['far', 'heart']} />
-              </IconContainer>
-            )}
-            <Link to={`/games/${game.gameId}`}>{game.title}</Link>{' '}
-            <GameListShortDescription>
-              {t(`programType.${game.programType}`)}:{' '}
-              {game.shortDescription ? game.shortDescription : game.gameSystem}
-            </GameListShortDescription>
-          </GameContainer>
-        );
-
-        GamesList.push(gameEntry);
-      }
+      const gameEntries = games.map((game) => (
+        <GameEntry key={game.gameId} game={game} />
+      ));
+      GamesList.push(...gameEntries);
     }
 
     return GamesList;
@@ -134,32 +67,11 @@ export const AllGamesList: FC<Props> = (props: Props): ReactElement => {
   );
 };
 
-const GameContainer = styled.div`
-  padding: 8px;
-  margin: 4px;
-  border: 1px solid #ccc;
-  background-color: #eee;
-`;
-
-const IconContainer = styled.span`
-  margin-left: 16px;
-  span {
-    position: relative;
-    top: 6px;
-  }
-`;
-
 const GameListTitle = styled.h3`
   margin: 20px 0;
   padding: 8px;
-  background-color: #444;
+  background-color: #04080f;
   color: white;
   position: sticky;
   top: 0;
-`;
-
-const GameListShortDescription = styled.p`
-  font-size: ${(props) => props.theme.fontSizeSmall};
-  font-style: italic;
-  margin: 4px 0 8px 14px;
 `;
