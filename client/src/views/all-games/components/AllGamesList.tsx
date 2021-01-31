@@ -94,7 +94,7 @@ export const AllGamesList: FC<Props> = (props: Props): ReactElement => {
           ) !== undefined;
 
         const gameEntry = (
-          <div key={game.gameId} className='games-list'>
+          <GameContainer key={game.gameId} className='games-list'>
             {favorited && loggedIn && userGroup === 'user' && game && (
               <IconContainer
                 onClick={async () => await updateFavoriteHandler(game, 'del')}
@@ -114,7 +114,7 @@ export const AllGamesList: FC<Props> = (props: Props): ReactElement => {
               {t(`programType.${game.programType}`)}:{' '}
               {game.shortDescription ? game.shortDescription : game.gameSystem}
             </GameListShortDescription>
-          </div>
+          </GameContainer>
         );
 
         GamesList.push(gameEntry);
@@ -133,6 +133,13 @@ export const AllGamesList: FC<Props> = (props: Props): ReactElement => {
     </div>
   );
 };
+
+const GameContainer = styled.div`
+  padding: 8px;
+  margin: 4px;
+  border: 1px solid #ccc;
+  background-color: #eee;
+`;
 
 const IconContainer = styled.span`
   margin-left: 16px;
