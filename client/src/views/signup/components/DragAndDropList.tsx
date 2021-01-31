@@ -63,8 +63,7 @@ export const DragAndDropList: FC<Props> = (props: Props): ReactElement => {
         destination.index
       );
 
-      if (source.droppableId === 'availableGames') {
-      } else if (source.droppableId === 'selectedGames') {
+      if (source.droppableId === 'selectedGames') {
         updateSelectedGames(updatedPositions);
       }
     }
@@ -100,9 +99,6 @@ export const DragAndDropList: FC<Props> = (props: Props): ReactElement => {
       ) {
         showWarning('groupTooBigWarning');
         return;
-      }
-
-      if (updatedPositions.availableGames) {
       }
 
       if (updatedPositions.selectedGames) {
