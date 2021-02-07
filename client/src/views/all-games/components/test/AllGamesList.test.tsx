@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import { Provider } from 'react-redux';
 import { store } from 'utils/store';
 import { testGame } from 'test/test-data/testGame';
-import { AllGamesList, Props } from '../AllGamesList';
+import { AllGamesList, Props } from 'views/all-games/components/AllGamesList';
 
 const games = [testGame];
 

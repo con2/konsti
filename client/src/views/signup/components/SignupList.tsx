@@ -6,14 +6,14 @@ import { submitSignup, submitSelectedGames } from 'views/signup/signupActions';
 import { DragAndDropList } from 'views/signup/components/DragAndDropList';
 import { sleep } from 'utils/sleep';
 import { config } from 'config';
-import { Game } from 'typings/game.typings';
+import { Game } from 'common/typings/game';
 import { Signup } from 'typings/user.typings';
 import { RootState } from 'typings/redux.typings';
-import { filterAvailableGames } from '../utils/filterAvailableGames';
-import { filterSelectedGames } from '../utils/filterSelectedGames';
 import { SignupTimeButtons } from './SignupTimeButtons';
 import { SignupInfo } from './SignupInfo';
 import { SignupActionButtons } from './SignupActionButtons';
+import { filterAvailableGames } from 'views/signup/utils/filterAvailableGames';
+import { filterSelectedGames } from 'views/signup/utils/filterSelectedGames';
 
 export interface Props {
   games: readonly Game[];

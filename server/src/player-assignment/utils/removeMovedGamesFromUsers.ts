@@ -1,7 +1,8 @@
 import moment from 'moment';
 import { db } from 'db/mongodb';
 import { logger } from 'utils/logger';
-import { Game, GameDoc } from 'typings/game.typings';
+import { GameDoc } from 'typings/game.typings';
+import { Game } from 'common/typings/game';
 
 export const removeMovedGamesFromUsers = async (
   updatedGames: readonly Game[]

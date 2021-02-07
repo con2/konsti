@@ -1,4 +1,4 @@
-import { Game } from 'typings/game.typings';
+import { Game } from 'common/typings/game';
 
 export const SUBMIT_UPDATE_HIDDEN = 'SUBMIT_UPDATE_HIDDEN';
 export const SUBMIT_GET_SETTINGS = 'SUBMIT_GET_SETTINGS';

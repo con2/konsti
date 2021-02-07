@@ -11,7 +11,9 @@
     "moduleResolution": "node",
     "baseUrl": ".",
     "paths": {
-      "*": ["src/*"]
+      "*": ["src/*"],
+      "common/*": ["../common/*"],
+      "cypress/*": ["./cypress/*"]
     },
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,

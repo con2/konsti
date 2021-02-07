@@ -1,6 +1,6 @@
-import { getList } from '../getList';
 import { UserArray, User, UserGroup } from 'typings/user.typings';
 import { mockGame } from 'test/mock-data/mockGame';
+import { getList } from 'player-assignment/padg/utils/getList';
 
 const user: User = {
   username: 'username',

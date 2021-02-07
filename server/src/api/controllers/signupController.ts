@@ -1,9 +1,9 @@
 import moment from 'moment';
+import { Request, Response } from 'express';
 import { logger } from 'utils/logger';
 import { db } from 'db/mongodb';
 import { validateAuthHeader } from 'utils/authHeader';
 import { config } from 'config';
-import { Request, Response } from 'express';
 import { UserGroup } from 'typings/user.typings';
 
 // Add signup data for user

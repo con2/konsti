@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { LanguageSelector } from '../LanguageSelector';
+import { LanguageSelector } from 'components/LanguageSelector';
 
 describe('LanguageSelector', () => {
   it('should render correctly', () => {

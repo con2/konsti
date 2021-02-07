@@ -4,10 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import _ from 'lodash';
 import styled from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { timeFormatter } from 'utils/timeFormatter';
 import { updateFavorite, UpdateFavoriteOpts } from 'utils/favorite';
-import { Game } from 'typings/game.typings';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Game } from 'common/typings/game';
 
 import { UserGroup } from 'typings/user.typings';
 import { RootState } from 'typings/redux.typings';

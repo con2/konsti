@@ -64,6 +64,7 @@ module.exports = {
   rules: {
     // eslint
     'no-param-reassign': 'error',
+    'no-restricted-imports': ['error', { patterns: ['../*'] }],
 
     // eslint-plugin-react
     'react/no-multi-comp': 'error',
@@ -81,6 +82,7 @@ module.exports = {
     // eslint-plugin-import
     'import/no-unused-modules': ['error', { unusedExports: true }],
     'import/no-unresolved': 'off',
+    'import/order': ['error', { groups: ['builtin', 'external'] }],
 
     // eslint-plugin-jest
     'jest/expect-expect': 'off', // Does not work with Cypress

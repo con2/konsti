@@ -11,7 +11,7 @@ import { submitPlayersAssign } from 'views/results/resultsActions';
 import { submitGamesUpdate } from 'views/all-games/allGamesActions';
 import { TimesDropdown } from 'components/TimesDropdown';
 import { timeFormatter } from 'utils/timeFormatter';
-import { Game } from 'typings/game.typings';
+import { Game } from 'common/typings/game';
 import { RootState } from 'typings/redux.typings';
 
 export const AdminView: FC = (): ReactElement => {

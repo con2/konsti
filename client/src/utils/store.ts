@@ -7,13 +7,13 @@ import {
 } from 'redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import { reducer as formReducer } from 'redux-form';
 import { config } from 'config';
 import { loadSession } from 'utils/localStorage';
 import { RootState } from 'typings/redux.typings';
 import { SUBMIT_LOGOUT } from 'typings/logoutActions.typings';
 
 // Reducers
-import { reducer as formReducer } from 'redux-form';
 import { allGamesReducer } from 'views/all-games/allGamesReducer';
 import { loginReducer } from 'views/login/loginReducer';
 import { myGamesReducer } from 'views/my-games/myGamesReducer';

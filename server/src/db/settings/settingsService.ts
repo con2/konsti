@@ -2,8 +2,9 @@ import moment from 'moment';
 import { logger } from 'utils/logger';
 import { db } from 'db/mongodb';
 import { SettingsModel } from 'db/settings/settingsSchema';
-import { Game, GameDoc } from 'typings/game.typings';
+import { GameDoc } from 'typings/game.typings';
 import { Settings } from 'typings/settings.typings';
+import { Game } from 'common/typings/game';
 
 const removeSettings = async (): Promise<void> => {
   logger.info('MongoDB: remove ALL settings from db');

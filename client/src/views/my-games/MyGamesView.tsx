@@ -12,7 +12,7 @@ import {
 } from 'utils/getUpcomingGames';
 import { loadUser, loadGames, loadGroupMembers } from 'utils/loadData';
 import { isGroupLeader } from 'views/group/GroupView';
-import { Game } from 'typings/game.typings';
+import { Game } from 'common/typings/game';
 import { Signup } from 'typings/user.typings';
 import { GroupMember } from 'typings/group.typings';
 import { RootState } from 'typings/redux.typings';
