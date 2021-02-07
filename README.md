@@ -36,21 +36,27 @@ Registered users by year:
 
 ## Tech
 
+- General
+
+  - TypeScript
+  - Prettier & ESlint
+  - Jest
+  - Cypress
+
 - Back-end
   - Node.js
   - Express
-  - AWS
   - MongoDB
-  - TypeScript
-  - Jest
-  - Prettier & ESLint
+  - AWS
 - Front-end
   - React
   - Redux
   - Webpack
-  - TypeScript
-  - Jest
-  - Prettier & ESLint & stylelint
+  - stylelint
+
+## Cypress end-to-end tests
+
+See [Cypress Dashboard](https://dashboard.cypress.io/projects/btftv2) for test results.
 
 ## Supporters
 

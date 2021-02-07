@@ -180,8 +180,9 @@ const findSerial = async (serialData: Serial): Promise<User | null> => {
 };
 
 const findGroupMembers = async (groupCode: string): Promise<User[]> => {
-  let response;
+  let response: User[];
   try {
+    // @ts-expect-error: Returns User even though it definitely should be User[]
     response = await UserModel.find({ groupCode })
       .lean<User>()
       .populate('favoritedGames')
@@ -244,8 +245,9 @@ const findGroup = async (
 
 const findUsers = async (): Promise<User[]> => {
   logger.debug(`MongoDB: Find all users`);
-  let users;
+  let users: User[];
   try {
+    // @ts-expect-error: Returns User even though it definitely should be User[]
     users = await UserModel.find({})
       .lean<User>()
       .populate('favoritedGames')
