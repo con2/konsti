@@ -1,2 +1,0 @@
-# This is required because @types/styled-components contains typings for react and react-native which will cause conflicts
-@types/react-native
