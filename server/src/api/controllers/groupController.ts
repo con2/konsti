@@ -1,8 +1,8 @@
 import { Record, String } from 'runtypes';
+import { Request, Response } from 'express';
 import { logger } from 'utils/logger';
 import { db } from 'db/mongodb';
 import { validateAuthHeader } from 'utils/authHeader';
-import { Request, Response } from 'express';
 import { UserGroup, User, GetGroupReturValue } from 'typings/user.typings';
 
 const postGroup = async (req: Request, res: Response): Promise<unknown> => {

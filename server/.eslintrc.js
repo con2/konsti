@@ -53,6 +53,7 @@ module.exports = {
     // eslint
     'no-param-reassign': 'error',
     'no-console': 'error',
+    'no-restricted-imports': ['error', { patterns: ['../*'] }],
 
     // eslint-plugin-prettier
     'prettier/prettier': 'error',
@@ -64,6 +65,7 @@ module.exports = {
 
     // eslint-plugin-import
     'import/no-unused-modules': ['error', { unusedExports: true }],
+    'import/order': ['error', { groups: ['builtin', 'external'] }],
 
     // eslint-plugin-eslint-comments
     'eslint-comments/no-unused-disable': 'error',

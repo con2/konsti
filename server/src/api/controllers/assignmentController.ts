@@ -1,10 +1,10 @@
+import { Request, Response } from 'express';
 import { logger } from 'utils/logger';
 import { removeOverlapSignups } from 'player-assignment/utils/removeOverlapSignups';
 import { saveResults } from 'player-assignment/utils/saveResults';
 import { runAssignment } from 'player-assignment/runAssignment';
 import { validateAuthHeader } from 'utils/authHeader';
 import { config } from 'config';
-import { Request, Response } from 'express';
 import { UserGroup } from 'typings/user.typings';
 
 // Assign players to games

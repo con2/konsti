@@ -1,6 +1,6 @@
 import moment from 'moment';
 import { logger } from 'utils/logger';
-import { Game } from 'typings/game.typings';
+import { Game } from 'common/typings/game';
 
 export const getStartingGames = (
   games: readonly Game[],

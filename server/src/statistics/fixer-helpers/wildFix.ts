@@ -1,4 +1,4 @@
-import { readJson, writeJson } from '../statsUtil';
+import { readJson, writeJson } from 'statistics/statsUtil';
 import { logger } from 'utils/logger';
 
 export const wildFix = (year: number, event: string, type: string): void => {

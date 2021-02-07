@@ -1,7 +1,7 @@
 import { ThunkAction, ThunkDispatch } from 'redux-thunk';
 import { Action, AnyAction } from 'redux';
 import { RootState } from './redux.typings';
-import { Game } from 'typings/game.typings';
+import { Game } from 'common/typings/game';
 
 export interface WeekdayAndTime {
   time: string;

@@ -1,8 +1,8 @@
-import { toPercent } from '../statsUtil';
 import { logger } from 'utils/logger';
-import { Game } from 'typings/game.typings';
+import { Game } from 'common/typings/game';
 import { ResultsCollectionEntry } from 'typings/result.typings';
 import { StringNumberObject } from 'typings/common.typings';
+import { toPercent } from 'statistics/statsUtil';
 
 export const getSignupsByTime = (
   results: readonly ResultsCollectionEntry[]

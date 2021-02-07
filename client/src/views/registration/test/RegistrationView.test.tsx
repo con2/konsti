@@ -1,8 +1,8 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { store } from 'utils/store';
 import { shallow } from 'enzyme';
-import { RegistrationView } from '../RegistrationView';
+import { store } from 'utils/store';
+import { RegistrationView } from 'views/registration/RegistrationView';
 
 describe('RegistrationView', () => {
   it('should render correctly', () => {

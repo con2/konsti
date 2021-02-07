@@ -1,5 +1,5 @@
 import { User, SignedGame } from 'typings/user.typings';
-import { Game } from 'typings/game.typings';
+import { Game } from 'common/typings/game';
 import { Result } from 'typings/result.typings';
 
 export const buildSignupResults = (

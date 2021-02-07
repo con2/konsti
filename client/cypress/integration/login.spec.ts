@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 
-import { get, clickOn } from '../support/cypressUtils';
+import { clickOn, get } from 'cypress/support/cypressUtils';
 
 describe('User login', () => {
   it('Admin user can log in', () => {

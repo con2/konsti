@@ -1,8 +1,8 @@
 import _ from 'lodash';
-import { toPercent } from '../statsUtil';
 import { logger } from 'utils/logger';
 import { User } from 'typings/user.typings';
 import { StringNumberObject } from 'typings/common.typings';
+import { toPercent } from 'statistics/statsUtil';
 
 export const getUsersWithoutGames = (
   users: readonly User[]

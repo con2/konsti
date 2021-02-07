@@ -4,7 +4,7 @@ import _ from 'lodash';
 import styled from 'styled-components';
 import { ResultsByStartTimes } from './ResultsByStartTimes';
 import { Signup } from 'typings/user.typings';
-import { getMissedSignups } from '../utils/getMissedSignups';
+import { getMissedSignups } from 'views/my-games/utils/getMissedSignups';
 
 export interface Props {
   enteredGames: readonly Signup[];
