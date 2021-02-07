@@ -32,7 +32,6 @@ const saveSerials = async (count: number): Promise<SerialDoc[]> => {
 
   let response: SerialDoc[];
   try {
-    // @ts-expect-error: Return SerialDoc even though it definitely should be SerialDoc[]
     response = await SerialModel.create(serialDocs);
     logger.info(
       `MongoDB: Serials data saved. (${serialDocs.length} serials saved)`
