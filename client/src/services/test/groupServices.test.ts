@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { postGroup, getGroup } from '../groupServices';
+import { getGroup, postGroup } from 'services/groupServices';
 
 jest.mock('axios');
 const mockAxios = axios as jest.Mocked<typeof axios>;

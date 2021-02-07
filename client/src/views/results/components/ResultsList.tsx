@@ -1,9 +1,9 @@
 import React, { FC, ReactElement, ChangeEvent } from 'react';
 import { useTranslation } from 'react-i18next';
+import styled from 'styled-components';
 import { ResultsByGameTitle } from './ResultsByGameTitle';
 import { ResultsByUsername } from './ResultsByUsername';
 import { Result } from 'typings/result.typings';
-import styled from 'styled-components';
 
 export interface Props {
   results: readonly Result[];

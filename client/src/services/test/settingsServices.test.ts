@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { getSettings, postToggleAppOpen } from '../settingsServices';
+import { getSettings, postToggleAppOpen } from 'services/settingsServices';
 
 jest.mock('axios');
 const mockAxios = axios as jest.Mocked<typeof axios>;

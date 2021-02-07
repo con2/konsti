@@ -4,7 +4,8 @@ import { logger } from 'utils/logger';
 import { db } from 'db/mongodb';
 import { config } from 'config';
 import { kompassiGameMapper } from 'utils/kompassiGameMapper';
-import { KompassiGame, Game } from 'typings/game.typings';
+import { KompassiGame } from 'typings/game.typings';
+import { Game } from 'common/typings/game';
 
 export const createGames = async (
   gameCount: number,

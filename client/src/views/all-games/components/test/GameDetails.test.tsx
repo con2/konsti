@@ -1,8 +1,8 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { store } from 'utils/store';
 import { shallow } from 'enzyme';
-import { GameDetails } from '../GameDetails';
+import { store } from 'utils/store';
+import { GameDetails } from 'views/all-games/components/GameDetails';
 
 jest.mock('react-router-dom', () => ({
   useHistory: () => {},

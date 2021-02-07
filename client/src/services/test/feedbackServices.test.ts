@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { postFeedback } from '../feedbackServices';
+import { postFeedback } from 'services/feedbackServices';
 
 jest.mock('axios');
 const mockAxios = axios as jest.Mocked<typeof axios>;

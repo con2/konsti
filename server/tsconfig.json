@@ -10,7 +10,8 @@
     "moduleResolution": "node",
     "baseUrl": ".",
     "paths": {
-      "*": ["src/*"]
+      "*": ["src/*"],
+      "common/*": ["../common/*"]
     },
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,

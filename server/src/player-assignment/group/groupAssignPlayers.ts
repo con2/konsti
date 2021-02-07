@@ -8,7 +8,7 @@ import { getPlayerGroups } from 'player-assignment/utils/getPlayerGroups';
 import { getGroupMembers } from 'player-assignment/utils/getGroupMembers';
 import { getHappiness } from 'player-assignment/group/utils/getHappiness';
 import { User } from 'typings/user.typings';
-import { Game } from 'typings/game.typings';
+import { Game } from 'common/typings/game';
 import { PlayerAssignmentResult } from 'typings/result.typings';
 
 export const groupAssignPlayers = (

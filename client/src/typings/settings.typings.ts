@@ -1,4 +1,4 @@
-import { Game } from 'typings/game.typings';
+import { Game } from 'common/typings/game';
 
 export interface Settings {
   hiddenGames: readonly Game[];

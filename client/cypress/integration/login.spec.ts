@@ -1,6 +1,7 @@
 /// <reference types="Cypress" />
 
-import { get, clickOn } from '../support/cypressUtils';
+// eslint-disable-next-line no-restricted-imports
+import { clickOn, get } from '../support/cypressUtils';
 
 describe('User login', () => {
   it('Admin user can log in', () => {

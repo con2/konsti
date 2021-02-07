@@ -1,5 +1,6 @@
 import _ from 'lodash';
-import { GameWithPlayerCount, Game } from 'typings/game.typings';
+import { Game } from 'common/typings/game';
+import { GameWithPlayerCount } from 'typings/game.typings';
 
 export const getRemovedGame = (
   gamesWithTooFewPlayers: readonly GameWithPlayerCount[]

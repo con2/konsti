@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import { moveArrayItem, insertByIndex } from 'utils/array';
-import { Game, DnDUpdatedPositions, DnDMove } from 'typings/game.typings';
+import { DnDUpdatedPositions, DnDMove } from 'typings/game.typings';
+import { Game } from 'common/typings/game';
 
 export const reorder = (
   list: readonly Game[],

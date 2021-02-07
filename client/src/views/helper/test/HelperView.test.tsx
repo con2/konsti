@@ -1,8 +1,8 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { store } from 'utils/store';
 import { shallow } from 'enzyme';
-import { HelperView } from '../HelperView';
+import { store } from 'utils/store';
+import { HelperView } from 'views/helper/HelperView';
 
 describe('HelperView', () => {
   it('should render correctly', () => {

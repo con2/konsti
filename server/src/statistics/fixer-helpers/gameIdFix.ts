@@ -1,6 +1,5 @@
 import fs from 'fs';
 import { logger } from 'utils/logger';
-import { writeJson } from '../statsUtil';
 import {
   SignedGame,
   EnteredGame,
@@ -9,6 +8,7 @@ import {
 } from 'typings/user.typings';
 import { GameDoc } from 'typings/game.typings';
 import { ResultsCollectionEntry } from 'typings/result.typings';
+import { writeJson } from 'statistics/statsUtil';
 
 export const gameIdFix = async (year: number, event: string): Promise<void> => {
   const users: User[] = JSON.parse(

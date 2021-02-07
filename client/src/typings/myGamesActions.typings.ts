@@ -1,4 +1,4 @@
-import { Game } from 'typings/game.typings';
+import { Game } from 'common/typings/game';
 import { Signup } from 'typings/user.typings';
 
 export const SUBMIT_GET_USER_GAMES = 'SUBMIT_GET_USER_GAMES';

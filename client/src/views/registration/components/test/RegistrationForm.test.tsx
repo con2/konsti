@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import RegistrationForm from '../RegistrationForm';
+import RegistrationForm from 'views/registration/components/RegistrationForm';
 
 describe('RegistrationForm', () => {
   it('should render correctly', () => {
