@@ -1,8 +1,5 @@
 /// <reference types="Cypress" />
 
-// TODO: Fix no-unused-modules scope for Cypress files
-/* eslint-disable import/no-unused-modules */
-
 export const get = (
   key: string,
   timeoutTime = 10000
@@ -13,5 +10,3 @@ export const get = (
 export const clickOn = (key: string): void => {
   get(key).click();
 };
-
-/* eslint-enable import/no-unused-modules */
