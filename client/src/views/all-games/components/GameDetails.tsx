@@ -6,7 +6,7 @@ import { submitUpdateHidden } from 'views/admin/adminActions';
 import { FeedbackForm } from 'views/all-games/components/FeedbackForm';
 import { GameInfo } from 'views/all-games/components/GameInfo';
 import { Loading } from 'components/Loading';
-import { Game } from 'typings/game.typings';
+import { Game } from 'common/typings/game';
 import { updateFavorite, UpdateFavoriteOpts } from 'utils/favorite';
 
 import { UserGroup } from 'typings/user.typings';

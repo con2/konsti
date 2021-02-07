@@ -19,6 +19,7 @@ module.exports = (api) => {
       'babel-plugin-module-resolver',
       {
         root: ['./src'],
+        alias: { common: '../common' },
         extensions: ['.js', '.ts'],
       },
       'babel-plugin-lodash',

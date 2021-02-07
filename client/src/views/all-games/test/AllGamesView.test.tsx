@@ -1,8 +1,8 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { store } from 'utils/store';
 import { shallow } from 'enzyme';
-import { AllGamesView } from '../AllGamesView';
+import { store } from 'utils/store';
+import { AllGamesView } from 'views/all-games/AllGamesView';
 
 describe('AllGamesView', () => {
   it('should render correctly', () => {

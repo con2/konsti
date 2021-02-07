@@ -3,7 +3,8 @@ import { logger } from 'utils/logger';
 import { GameModel } from 'db/game/gameSchema';
 import { removeInvalidSignupsFromUsers } from 'player-assignment/utils/removeInvalidSignupsFromUsers';
 import { removeMovedGamesFromUsers } from 'player-assignment/utils/removeMovedGamesFromUsers';
-import { Game, GameDoc } from 'typings/game.typings';
+import { GameDoc } from 'typings/game.typings';
+import { Game } from 'common/typings/game';
 
 const removeGames = async (): Promise<void> => {
   logger.info('MongoDB: remove ALL games from db');

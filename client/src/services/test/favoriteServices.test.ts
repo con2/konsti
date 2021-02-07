@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { postFavorite } from '../favoriteServices';
+import { postFavorite } from 'services/favoriteServices';
 
 jest.mock('axios');
 const mockAxios = axios as jest.Mocked<typeof axios>;

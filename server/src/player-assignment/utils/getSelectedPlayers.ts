@@ -1,6 +1,6 @@
 import { logger } from 'utils/logger';
 import { User } from 'typings/user.typings';
-import { Game } from 'typings/game.typings';
+import { Game } from 'common/typings/game';
 
 export const getSelectedPlayers = (
   players: readonly User[],

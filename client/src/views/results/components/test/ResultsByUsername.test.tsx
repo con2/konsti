@@ -1,7 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { ResultsByUsername, Props } from '../ResultsByUsername';
 import { Result } from 'typings/result.typings';
+import {
+  ResultsByUsername,
+  Props,
+} from 'views/results/components/ResultsByUsername';
 
 const results: Result[] = [];
 

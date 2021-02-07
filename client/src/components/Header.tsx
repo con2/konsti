@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
-import { LanguageSelector } from 'components/LanguageSelector';
 import styled from 'styled-components';
+import { LanguageSelector } from 'components/LanguageSelector';
 import { config } from 'config';
 import { TimeSelector } from 'test/test-components/TimeSelector';
 import { Navigation } from './Navigation';

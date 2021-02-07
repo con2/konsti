@@ -8,8 +8,9 @@ import { reorder, move } from 'utils/dragAndDrop';
 import { sleep } from 'utils/sleep';
 import { config } from 'config';
 import { GroupMember } from 'typings/group.typings';
-import { Game, DnDUpdatedPositions } from 'typings/game.typings';
+import { DnDUpdatedPositions } from 'typings/game.typings';
 import { RootState } from 'typings/redux.typings';
+import { Game } from 'common/typings/game';
 
 export interface Props {
   updateSelectedGames: Function;

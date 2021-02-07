@@ -8,7 +8,7 @@ import { getPlayerGroups } from 'player-assignment/utils/getPlayerGroups';
 import { getGroupMembers } from 'player-assignment/utils/getGroupMembers';
 import { runPadgAssignment } from 'player-assignment/padg/utils/runPadgAssignment';
 import { User } from 'typings/user.typings';
-import { Game } from 'typings/game.typings';
+import { Game } from 'common/typings/game';
 import { PlayerAssignmentResult } from 'typings/result.typings';
 
 export const padgAssignPlayers = (
