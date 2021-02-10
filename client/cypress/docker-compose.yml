@@ -9,5 +9,5 @@ services:
       - CYPRESS_RECORD_KEY=${CYPRESS_DASHBOARD_RECORD_KEY}
     working_dir: /client
     volumes:
-      - ./client:/client
+      - ./client:/client # In relation to root level docker-compose.yml file
     entrypoint: /bin/sh -c "sleep 10 && cypress run --browser chrome --headless --config-file false --project ./build --record"
