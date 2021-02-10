@@ -4,7 +4,10 @@
     "noEmit": true,
     "target": "es5",
     "lib": ["es5", "dom"],
-    "types": ["cypress"]
+    "types": ["cypress"],
+    "paths": {
+      "cypress/*": ["./*"]
+    }
   },
   "include": ["./**/*.ts"]
 }
