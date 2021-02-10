@@ -21,7 +21,11 @@ module.exports = (api) => {
       'babel-plugin-module-resolver',
       {
         root: ['./src'],
-        alias: { assets: './assets', common: '../common' },
+        alias: {
+          assets: './assets',
+          common: '../common',
+          cypress: './cypress',
+        },
         extensions: ['.js', '.ts', '.tsx'],
       },
     ],
