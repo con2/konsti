@@ -2,7 +2,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { shallow } from 'enzyme';
 import { store } from 'utils/store';
-import { Game } from 'common/typings/game';
+import { Game } from 'shared/typings/game';
 import {
   DragAndDropList,
   Props,

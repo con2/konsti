@@ -23,7 +23,7 @@ module.exports = (api) => {
         root: ['./src'],
         alias: {
           assets: './assets',
-          common: '../common',
+          shared: '../shared',
           cypress: './cypress',
         },
         extensions: ['.js', '.ts', '.tsx'],

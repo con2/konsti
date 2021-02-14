@@ -4,7 +4,7 @@ import { db } from 'db/mongodb';
 import { SettingsModel } from 'db/settings/settingsSchema';
 import { GameDoc } from 'typings/game.typings';
 import { Settings } from 'typings/settings.typings';
-import { Game } from 'common/typings/game';
+import { Game } from 'shared/typings/game';
 
 const removeSettings = async (): Promise<void> => {
   logger.info('MongoDB: remove ALL settings from db');

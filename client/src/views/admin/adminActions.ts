@@ -1,7 +1,7 @@
 import { postHidden } from 'services/hiddenServices';
 import { getSettings, postToggleAppOpen } from 'services/settingsServices';
 import { postSignupTime } from 'services/signuptimeServices';
-import { Game } from 'common/typings/game';
+import { Game } from 'shared/typings/game';
 import { Settings } from 'typings/settings.typings';
 import { AppThunk } from 'typings/utils.typings';
 import {
