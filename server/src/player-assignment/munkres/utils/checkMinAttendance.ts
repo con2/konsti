@@ -1,7 +1,7 @@
 import { logger } from 'utils/logger';
 import { GameWithPlayerCount } from 'typings/game.typings';
 import { StringNumberObject } from 'typings/common.typings';
-import { Game } from 'common/typings/game';
+import { Game } from 'shared/typings/game';
 
 export const checkMinAttendance = (
   results: readonly number[][],

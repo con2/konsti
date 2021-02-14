@@ -1,5 +1,5 @@
 import { getGames, postGamesUpdate } from 'services/gamesServices';
-import { Game } from 'common/typings/game';
+import { Game } from 'shared/typings/game';
 import { AppThunk } from 'typings/utils.typings';
 import {
   SubmitGetGamesAsync,

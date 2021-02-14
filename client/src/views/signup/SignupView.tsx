@@ -4,7 +4,7 @@ import { SignupList } from 'views/signup/components/SignupList';
 import { getOpenStartTimes } from 'utils/getOpenStartTimes';
 import { loadGroupMembers, loadUser } from 'utils/loadData';
 import { isGroupLeader } from 'views/group/GroupView';
-import { Game } from 'common/typings/game';
+import { Game } from 'shared/typings/game';
 import { RootState } from 'typings/redux.typings';
 
 export const SignupView: FC = (): ReactElement => {

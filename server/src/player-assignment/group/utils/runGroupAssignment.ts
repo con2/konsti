@@ -3,7 +3,7 @@ import { logger } from 'utils/logger';
 import { getRandomInt } from 'player-assignment/utils/getRandomInt';
 import { shuffleArray } from 'utils/shuffleArray';
 import { UserArray, SignedGame } from 'typings/user.typings';
-import { Game } from 'common/typings/game';
+import { Game } from 'shared/typings/game';
 import { GroupAssignResult } from 'typings/groupAssign.typings';
 import { Result } from 'typings/result.typings';
 

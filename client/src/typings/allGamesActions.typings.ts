@@ -1,4 +1,4 @@
-import { Game } from 'common/typings/game';
+import { Game } from 'shared/typings/game';
 
 export const SUBMIT_GET_GAMES = 'SUBMIT_GET_GAMES';
 

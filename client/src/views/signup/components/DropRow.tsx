@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Droppable, Draggable } from 'react-beautiful-dnd';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { Game } from 'common/typings/game';
+import { Game } from 'shared/typings/game';
 
 export interface Props {
   droppableId: string;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Game } from 'common/typings/game';
+import { Game } from 'shared/typings/game';
 import {
   MyFavoritesList,
   Props,

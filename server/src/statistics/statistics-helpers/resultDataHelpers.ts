@@ -1,5 +1,5 @@
 import { logger } from 'utils/logger';
-import { Game } from 'common/typings/game';
+import { Game } from 'shared/typings/game';
 import { ResultsCollectionEntry } from 'typings/result.typings';
 import { StringNumberObject } from 'typings/common.typings';
 import { toPercent } from 'statistics/statsUtil';

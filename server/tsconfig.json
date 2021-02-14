@@ -11,7 +11,7 @@
     "baseUrl": ".",
     "paths": {
       "*": ["src/*"],
-      "common/*": ["../common/*"]
+      "shared/*": ["../shared/*"]
     },
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,

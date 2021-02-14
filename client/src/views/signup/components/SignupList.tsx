@@ -6,7 +6,7 @@ import { submitSignup, submitSelectedGames } from 'views/signup/signupActions';
 import { DragAndDropList } from 'views/signup/components/DragAndDropList';
 import { sleep } from 'utils/sleep';
 import { config } from 'config';
-import { Game } from 'common/typings/game';
+import { Game } from 'shared/typings/game';
 import { Signup } from 'typings/user.typings';
 import { RootState } from 'typings/redux.typings';
 import { SignupTimeButtons } from './SignupTimeButtons';
