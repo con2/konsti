@@ -2,7 +2,7 @@ import { logger } from 'utils/logger';
 import { runGroupAssignment } from 'player-assignment/group/utils/runGroupAssignment';
 import { config } from 'config';
 import { User, UserArray } from 'typings/user.typings';
-import { Game } from 'common/typings/game';
+import { Game } from 'shared/typings/game';
 import { AssignmentStrategyResult, Result } from 'typings/result.typings';
 
 export const assignGroups = (

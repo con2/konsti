@@ -1,7 +1,7 @@
 import moment from 'moment';
 import _ from 'lodash';
 import { logger } from 'utils/logger';
-import { Game } from 'common/typings/game';
+import { Game } from 'shared/typings/game';
 import { User } from 'typings/user.typings';
 import { getMaximumNumberOfPlayersByTime } from './resultDataHelpers';
 import { StringNumberObject, PriorityObject } from 'typings/common.typings';

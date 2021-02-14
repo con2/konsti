@@ -2,7 +2,7 @@ import React, { FC, ReactElement } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { timeFormatter } from 'utils/timeFormatter';
-import { Game } from 'common/typings/game';
+import { Game } from 'shared/typings/game';
 
 export interface Props {
   games: readonly Game[];

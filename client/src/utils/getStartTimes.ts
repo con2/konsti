@@ -1,4 +1,4 @@
-import { Game } from 'common/typings/game';
+import { Game } from 'shared/typings/game';
 
 export const getStartTimes = (games: readonly Game[]): readonly string[] => {
   const startTimes = games.map((game) => {

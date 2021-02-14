@@ -5,7 +5,7 @@ import { updateWithSignups } from 'game-popularity/utils/updateWithSignups';
 import { updateWithAssign } from 'game-popularity/utils/updateWithAssign';
 import { config } from 'config';
 import { User } from 'typings/user.typings';
-import { Game } from 'common/typings/game';
+import { Game } from 'shared/typings/game';
 
 export const updateGamePopularity = async (): Promise<void> => {
   logger.info('Calculate game popularity');

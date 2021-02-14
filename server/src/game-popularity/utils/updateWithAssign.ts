@@ -4,7 +4,7 @@ import { db } from 'db/mongodb';
 import { logger } from 'utils/logger';
 import { padgAssignPlayers } from 'player-assignment/padg/padgAssignPlayers';
 import { User } from 'typings/user.typings';
-import { Game } from 'common/typings/game';
+import { Game } from 'shared/typings/game';
 import { Result } from 'typings/result.typings';
 
 export const updateWithAssign = async (

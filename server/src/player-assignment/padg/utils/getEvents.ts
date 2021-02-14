@@ -1,4 +1,4 @@
-import { Game } from 'common/typings/game';
+import { Game } from 'shared/typings/game';
 import { Event } from 'typings/padgAssign.typings';
 
 export const getEvents = (signedGames: readonly Game[]): Event[] => {

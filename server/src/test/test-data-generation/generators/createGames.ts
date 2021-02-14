@@ -5,7 +5,7 @@ import { db } from 'db/mongodb';
 import { config } from 'config';
 import { kompassiGameMapper } from 'utils/kompassiGameMapper';
 import { KompassiGame } from 'typings/game.typings';
-import { Game } from 'common/typings/game';
+import { Game } from 'shared/typings/game';
 
 export const createGames = async (
   gameCount: number,
