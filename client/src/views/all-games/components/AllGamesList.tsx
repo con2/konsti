@@ -7,7 +7,7 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { timeFormatter } from 'utils/timeFormatter';
 import { updateFavorite, UpdateFavoriteOpts } from 'utils/favorite';
-import { Game } from 'common/typings/game';
+import { Game } from 'shared/typings/game';
 
 import { UserGroup } from 'typings/user.typings';
 import { RootState } from 'typings/redux.typings';

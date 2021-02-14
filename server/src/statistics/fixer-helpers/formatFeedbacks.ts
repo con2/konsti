@@ -4,7 +4,7 @@ import moment from 'moment';
 import { Array } from 'runtypes';
 import { logger } from 'utils/logger';
 import { FeedbackRuntype } from 'typings/feedback.typings';
-import { GameRuntype } from 'common/typings/game';
+import { GameRuntype } from 'shared/typings/game';
 import { writeJson } from 'statistics/statsUtil';
 
 export const formatFeedbacks = (year: number, event: string): void => {

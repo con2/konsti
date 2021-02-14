@@ -2,7 +2,7 @@ import React, { FC, ReactElement, ChangeEvent } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import { postFeedback } from 'services/feedbackServices';
-import { Game } from 'common/typings/game';
+import { Game } from 'shared/typings/game';
 
 export interface Props {
   game: Game;

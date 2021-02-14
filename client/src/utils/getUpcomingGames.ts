@@ -1,5 +1,5 @@
 import moment from 'moment';
-import { Game } from 'common/typings/game';
+import { Game } from 'shared/typings/game';
 import { Signup } from 'typings/user.typings';
 import { getTime } from 'utils/getTime';
 

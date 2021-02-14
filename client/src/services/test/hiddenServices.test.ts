@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Game } from 'common/typings/game';
+import { Game } from 'shared/typings/game';
 import { postHidden } from 'services/hiddenServices';
 
 jest.mock('axios');

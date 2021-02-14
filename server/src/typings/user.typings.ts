@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { Game } from 'common/typings/game';
+import { Game } from 'shared/typings/game';
 
 export interface UserDoc extends User, mongoose.Document {}
 
