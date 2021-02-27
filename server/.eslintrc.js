@@ -43,12 +43,6 @@ module.exports = {
     jest: true,
   },
 
-  settings: {
-    'import/resolver': {
-      'babel-module': {},
-    },
-  },
-
   rules: {
     // eslint
     'no-param-reassign': 'error',

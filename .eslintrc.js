@@ -7,5 +7,13 @@ module.exports = {
 
   extends: [],
 
+  settings: {
+    'import/resolver': {
+      'babel-module': {
+        babelOptions: { rootMode: 'upward' },
+      },
+    },
+  },
+
   rules: {},
 };
