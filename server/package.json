@@ -9,7 +9,7 @@
   "main": "app.ts",
   "scripts": {
     "build": "yarn build:js",
-    "build:js": "babel src -d lib --extensions \".ts\"",
+    "build:js": "babel src -d lib --extensions \".ts\" --root-mode upward",
     "build:types": "tsc --emitDeclarationOnly",
     "clean": "rimraf lib",
     "eslint": "eslint . --ext .js,.ts",
