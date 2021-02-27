@@ -66,7 +66,14 @@ const commonConfig: Configuration = {
       {
         test: /\.(ts|tsx|js)$/,
         include: [path.resolve(__dirname, 'src')],
-        use: ['babel-loader'],
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              rootMode: 'upward',
+            },
+          },
+        ],
       },
       {
         test: /\.(png|jpe?g|gif)$/,

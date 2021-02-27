@@ -56,9 +56,6 @@ module.exports = {
       version: 'detect',
     },
     polyfills: ['Promise', 'Array.from', 'Object.entries'],
-    'import/resolver': {
-      'babel-module': {},
-    },
   },
 
   rules: {

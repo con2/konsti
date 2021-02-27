@@ -13,7 +13,7 @@
     "build:prod": "yarn clean && webpack-cli",
     "build:staging": "yarn clean && webpack-cli",
     "build:types": "tsc --emitDeclarationOnly",
-    "build:cypress": "babel cypress --config-file ./babel.config.js --out-dir build/cypress --extensions .ts",
+    "build:cypress": "babel cypress --out-dir build/cypress --extensions .ts --root-mode upward",
     "bundle-analyzer": "webpack-cli --profile --json > stats.json && webpack-bundle-analyzer stats.json build -m server",
     "clean": "rimraf build",
     "eslint": "eslint . --ext .js,.ts,.tsx",
