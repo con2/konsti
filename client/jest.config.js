@@ -164,7 +164,11 @@ module.exports = {
   // timers: "real",
 
   // A map from regular expressions to paths to transformers
-  // transform: null,
+  transform: {
+    '^.+\\.tsx?$': ['babel-jest', { rootMode: 'upward' }],
+    '^.+\\.ts?$': ['babel-jest', { rootMode: 'upward' }],
+    '^.+\\.js?$': ['babel-jest', { rootMode: 'upward' }],
+  },
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
   // transformIgnorePatterns: [
