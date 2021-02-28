@@ -7,10 +7,10 @@ exports[`MySignupsList should render correctly 1`] = `
   <h3>
     signedGames
   </h3>
-  <MySignupsList__MySignupsGames>
+  <styled.div>
     <span>
       noSignedGames
     </span>
-  </MySignupsList__MySignupsGames>
+  </styled.div>
 </div>
 `;

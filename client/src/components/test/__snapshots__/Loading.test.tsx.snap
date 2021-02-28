@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Loading should render correctly 1`] = `
-<Loading__LoadingContainer>
+<styled.div>
   <p>
     loading
   </p>
@@ -10,5 +10,5 @@ exports[`Loading should render correctly 1`] = `
     src=""
     width="40"
   />
-</Loading__LoadingContainer>
+</styled.div>
 `;
