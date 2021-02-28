@@ -1,9 +1,6 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
-    "target": "esnext",
-    "module": "commonjs",
-    "lib": ["es2017", "esnext"],
     "outDir": "lib"
   },
   "include": ["**/*.js", "**/*.ts", "./.eslintrc.js"],

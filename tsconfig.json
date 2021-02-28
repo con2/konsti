@@ -1,6 +1,10 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
+    "target": "es2019",
+    "module": "commonjs",
+    "lib": ["es2017", "esnext", "dom"],
+    "jsx": "react",
     "skipLibCheck": true,
     "strict": true,
     "noImplicitAny": true,
@@ -10,7 +14,6 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "declaration": true,
-    "jsx": "react",
     "paths": {
       "client/*": ["client/src/*"],
       "server/*": ["server/src/*"],
