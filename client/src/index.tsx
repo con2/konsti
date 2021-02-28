@@ -12,7 +12,7 @@ import { theme } from 'client/theme';
 import { GlobalStyle } from 'client/globalStyle';
 
 // Initialized i18next instance
-import 'utils/i18n';
+import 'client/utils/i18n';
 
 // Redux store
 import { store } from 'client/utils/store';
