@@ -1,5 +1,5 @@
-import { logger } from 'utils/logger';
-import { db } from 'db/mongodb';
+import { logger } from 'server/utils/logger';
+import { db } from 'server/db/mongodb';
 
 export const removeInvalidSignupsFromUsers = async (): Promise<void> => {
   logger.info('Remove invalid signups from users');

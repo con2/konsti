@@ -36,7 +36,7 @@
     "start:dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
     "stylelint": "yarn workspace konsti-client stylelint",
     "test": "jest",
-    "type-check": "concurrently \"yarn type-check:client\" \"yarn type-check:server\"",
+    "type-check": "tsc --noEmit",
     "type-check:client": "yarn workspace konsti-client type-check && yarn workspace konsti-client type-check:cypress",
     "type-check:server": "yarn workspace konsti-server type-check",
     "cypress:run": "yarn workspace konsti-client cypress:run",

@@ -1,7 +1,7 @@
 import { AxiosResponse, AxiosError } from 'axios';
-import { api } from 'utils/api';
-import { PostPlayerAssignmentResponse } from 'typings/result.typings';
-import { ServerError } from 'typings/utils.typings';
+import { api } from 'client/utils/api';
+import { PostPlayerAssignmentResponse } from 'client/typings/result.typings';
+import { ServerError } from 'client/typings/utils.typings';
 
 export const postPlayerAssignment = async (
   signupTime: string

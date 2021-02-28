@@ -3,8 +3,8 @@ import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { RootState } from 'typings/redux.typings';
-import { config } from 'config';
+import { RootState } from 'client/typings/redux.typings';
+import { config } from 'client/config';
 import { LoggedInUserNavigation } from './LoggedInUserNavigation';
 import { UserNavigation } from './UserNavigation';
 

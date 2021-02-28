@@ -1,7 +1,7 @@
 import fs from 'fs';
 import _ from 'lodash';
 import prettier from 'prettier';
-import { logger } from 'utils/logger';
+import { logger } from 'server/utils/logger';
 
 export const readJson = <T>(
   year: number,

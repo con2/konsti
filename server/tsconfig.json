@@ -1,4 +1,5 @@
 {
+  "extends": "../tsconfig.json",
   "compilerOptions": {
     "target": "esnext",
     "module": "commonjs",
@@ -8,17 +9,12 @@
     "strict": true,
     "noImplicitAny": true,
     "moduleResolution": "node",
-    "baseUrl": ".",
-    "paths": {
-      "*": ["src/*"],
-      "shared/*": ["../shared/*"]
-    },
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "skipLibCheck": true
   },
-  "include": ["**/*.js", "**/*.ts", ".eslintrc.js"],
-  "exclude": ["node_modules", "lib", "coverage", "front"]
+  "include": ["**/*.js", "**/*.ts", "./.eslintrc.js"],
+  "exclude": ["./node_modules", "./lib", "./coverage", "./front"]
 }

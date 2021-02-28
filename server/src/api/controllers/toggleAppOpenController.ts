@@ -1,8 +1,8 @@
 import { Request, Response } from 'express';
-import { logger } from 'utils/logger';
-import { db } from 'db/mongodb';
-import { validateAuthHeader } from 'utils/authHeader';
-import { UserGroup } from 'typings/user.typings';
+import { logger } from 'server/utils/logger';
+import { db } from 'server/db/mongodb';
+import { validateAuthHeader } from 'server/utils/authHeader';
+import { UserGroup } from 'server/typings/user.typings';
 
 export const toggleAppOpen = async (
   req: Request,

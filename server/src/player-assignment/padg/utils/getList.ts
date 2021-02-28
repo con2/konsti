@@ -1,8 +1,8 @@
 import _ from 'lodash';
 import moment from 'moment';
-import { ListItem } from 'typings/padgAssign.typings';
-import { UserArray, SignedGame } from 'typings/user.typings';
-import { getAssignmentBonus } from 'player-assignment/utils/getAssignmentBonus';
+import { ListItem } from 'server/typings/padgAssign.typings';
+import { UserArray, SignedGame } from 'server/typings/user.typings';
+import { getAssignmentBonus } from 'server/player-assignment/utils/getAssignmentBonus';
 
 export const getList = (
   playerGroups: readonly UserArray[],

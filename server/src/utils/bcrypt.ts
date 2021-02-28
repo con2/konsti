@@ -1,5 +1,5 @@
 import bcrypt from 'bcryptjs';
-import { logger } from 'utils/logger';
+import { logger } from 'server/utils/logger';
 
 const saltLength = 10;
 

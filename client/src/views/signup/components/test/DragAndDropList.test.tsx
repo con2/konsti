@@ -1,12 +1,12 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { shallow } from 'enzyme';
-import { store } from 'utils/store';
+import { store } from 'client/utils/store';
 import { Game } from 'shared/typings/game';
 import {
   DragAndDropList,
   Props,
-} from 'views/signup/components/DragAndDropList';
+} from 'client/views/signup/components/DragAndDropList';
 
 const updateSelectedGames = (): void => {};
 const availableGames: Game[] = [];

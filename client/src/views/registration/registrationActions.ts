@@ -1,7 +1,7 @@
-import { postRegistration } from 'services/userServices';
-import { submitLogin } from 'views/login/loginActions';
-import { RegistrationFormFields } from 'typings/user.typings';
-import { AppThunk } from 'typings/utils.typings';
+import { postRegistration } from 'client/services/userServices';
+import { submitLogin } from 'client/views/login/loginActions';
+import { RegistrationFormFields } from 'client/typings/user.typings';
+import { AppThunk } from 'client/typings/utils.typings';
 
 export const submitRegistration = (
   registrationFormFields: RegistrationFormFields

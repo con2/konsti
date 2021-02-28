@@ -4,7 +4,7 @@ import {
   getUserBySerial,
   postRegistration,
   updateUserPassword,
-} from 'services/userServices';
+} from 'client/services/userServices';
 
 jest.mock('axios');
 const mockAxios = axios as jest.Mocked<typeof axios>;

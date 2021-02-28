@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { ResultDoc } from 'typings/result.typings';
+import { ResultDoc } from 'server/typings/result.typings';
 
 const ResultsSchema = new mongoose.Schema(
   {

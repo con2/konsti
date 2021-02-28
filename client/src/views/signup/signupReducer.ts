@@ -3,8 +3,8 @@ import {
   SUBMIT_SIGNUP_TIME,
   SUBMIT_SELECTED_GAMES,
   UPDATE_UNSAVED_CHANGES_STATUS,
-} from 'typings/signupActions.typings';
-import { SignupState } from 'typings/redux.typings';
+} from 'client/typings/signupActions.typings';
+import { SignupState } from 'client/typings/redux.typings';
 
 const initialState: SignupState = {
   signupTime: '',

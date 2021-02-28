@@ -1,9 +1,12 @@
-import { postHidden } from 'services/hiddenServices';
-import { getSettings, postToggleAppOpen } from 'services/settingsServices';
-import { postSignupTime } from 'services/signuptimeServices';
+import { postHidden } from 'client/services/hiddenServices';
+import {
+  getSettings,
+  postToggleAppOpen,
+} from 'client/services/settingsServices';
+import { postSignupTime } from 'client/services/signuptimeServices';
 import { Game } from 'shared/typings/game';
-import { Settings } from 'typings/settings.typings';
-import { AppThunk } from 'typings/utils.typings';
+import { Settings } from 'client/typings/settings.typings';
+import { AppThunk } from 'client/typings/utils.typings';
 import {
   SubmitUpdateHiddenAsync,
   SubmitGetSettingsAsync,
@@ -17,7 +20,7 @@ import {
   SUBMIT_SET_TEST_TIME,
   SUBMIT_TOGGLE_APP_OPEN,
   SUBMIT_RESPONSE_MESSAGE,
-} from 'typings/adminActions.typings';
+} from 'client/typings/adminActions.typings';
 
 export const submitUpdateHidden = (hiddenGames: readonly Game[]): AppThunk => {
   return async (dispatch): Promise<void> => {

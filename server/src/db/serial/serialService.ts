@@ -1,7 +1,7 @@
 import generator from 'generate-serial-number';
-import { logger } from 'utils/logger';
-import { SerialModel } from 'db/serial/serialSchema';
-import { SerialDoc, Serial } from 'typings/serial.typings';
+import { logger } from 'server/utils/logger';
+import { SerialModel } from 'server/db/serial/serialSchema';
+import { SerialDoc, Serial } from 'server/typings/serial.typings';
 
 const removeSerials = async (): Promise<void> => {
   logger.info('MongoDB: remove ALL serials from db');

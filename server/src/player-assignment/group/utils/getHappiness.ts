@@ -1,9 +1,9 @@
 import _ from 'lodash';
-import { logger } from 'utils/logger';
-import { calculateHappiness } from 'player-assignment/padg/utils/calculateHappiness';
-import { getGroups } from 'player-assignment/padg/utils/getGroups';
-import { Result } from 'typings/result.typings';
-import { User, UserArray } from 'typings/user.typings';
+import { logger } from 'server/utils/logger';
+import { calculateHappiness } from 'server/player-assignment/padg/utils/calculateHappiness';
+import { getGroups } from 'server/player-assignment/padg/utils/getGroups';
+import { Result } from 'server/typings/result.typings';
+import { User, UserArray } from 'server/typings/user.typings';
 
 export const getHappiness = (
   results: readonly Result[],

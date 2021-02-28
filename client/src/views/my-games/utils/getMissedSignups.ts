@@ -1,8 +1,8 @@
 import moment from 'moment';
-import { getStartTimes } from 'utils/getStartTimes';
-import { config } from 'config';
-import { Signup } from 'typings/user.typings';
-import { getTime } from 'utils/getTime';
+import { getStartTimes } from 'client/utils/getStartTimes';
+import { config } from 'client/config';
+import { Signup } from 'client/typings/user.typings';
+import { getTime } from 'client/utils/getTime';
 
 export const getMissedSignups = (
   signedGames: readonly Signup[],

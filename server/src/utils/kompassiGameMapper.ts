@@ -1,6 +1,6 @@
 import moment from 'moment';
 import { Game } from 'shared/typings/game';
-import { KompassiGame } from 'typings/game.typings';
+import { KompassiGame } from 'server/typings/game.typings';
 
 export const kompassiGameMapper = (
   games: readonly KompassiGame[]

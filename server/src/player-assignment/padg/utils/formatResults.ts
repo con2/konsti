@@ -1,7 +1,7 @@
 import _ from 'lodash';
-import { PadgAssignResults } from 'typings/padgAssign.typings';
-import { UserArray, EnteredGame, User } from 'typings/user.typings';
-import { Result } from 'typings/result.typings';
+import { PadgAssignResults } from 'server/typings/padgAssign.typings';
+import { UserArray, EnteredGame, User } from 'server/typings/user.typings';
+import { Result } from 'server/typings/result.typings';
 
 export const formatResults = (
   assignResults: PadgAssignResults,

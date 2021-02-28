@@ -1,7 +1,7 @@
 import _ from 'lodash';
-import { logger } from 'utils/logger';
-import { db } from 'db/mongodb';
-import { User } from 'typings/user.typings';
+import { logger } from 'server/utils/logger';
+import { db } from 'server/db/mongodb';
+import { User } from 'server/typings/user.typings';
 import { Game } from 'shared/typings/game';
 
 export const updateWithSignups = async (

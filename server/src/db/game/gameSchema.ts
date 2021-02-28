@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { GameDoc } from 'typings/game.typings';
+import { GameDoc } from 'server/typings/game.typings';
 
 const gameSchema = new mongoose.Schema(
   {

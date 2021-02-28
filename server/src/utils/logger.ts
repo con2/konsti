@@ -1,7 +1,7 @@
 import fs from 'fs';
 import { createLogger, format, transports } from 'winston';
 import 'winston-daily-rotate-file';
-import { config } from 'config';
+import { config } from 'server/config';
 
 const { combine, printf, colorize, timestamp, json, errors } = format;
 const { logDir, debug } = config;

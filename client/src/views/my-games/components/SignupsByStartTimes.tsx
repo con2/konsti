@@ -2,8 +2,8 @@ import React, { FC, ReactElement } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
-import { timeFormatter } from 'utils/timeFormatter';
-import { Signup } from 'typings/user.typings';
+import { timeFormatter } from 'client/utils/timeFormatter';
+import { Signup } from 'client/typings/user.typings';
 
 export interface Props {
   signups: Signup[];

@@ -1,7 +1,10 @@
 import { AxiosResponse, AxiosError } from 'axios';
-import { api } from 'utils/api';
-import { LoginFormFields, PostLoginResponse } from 'typings/user.typings';
-import { ServerError } from 'typings/utils.typings';
+import { api } from 'client/utils/api';
+import {
+  LoginFormFields,
+  PostLoginResponse,
+} from 'client/typings/user.typings';
+import { ServerError } from 'client/typings/utils.typings';
 
 export const postLogin = async (
   loginFormFields: LoginFormFields

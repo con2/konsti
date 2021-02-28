@@ -1,8 +1,8 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { shallow } from 'enzyme';
-import { store } from 'utils/store';
-import { ResultsView } from 'views/results/ResultsView';
+import { store } from 'client/utils/store';
+import { ResultsView } from 'client/views/results/ResultsView';
 
 describe('ResultsView', () => {
   it('should render correctly', () => {

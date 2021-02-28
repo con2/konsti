@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { Game } from 'shared/typings/game';
-import { DropRow, Props } from 'views/signup/components/DropRow';
+import { DropRow, Props } from 'client/views/signup/components/DropRow';
 
 const droppableId = 'testId';
 const games: Game[] = [];

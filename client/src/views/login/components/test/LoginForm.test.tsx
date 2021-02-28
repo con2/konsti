@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import LoginForm from 'views/login/components/LoginForm';
+import LoginForm from 'client/views/login/components/LoginForm';
 
 describe('LoginForm', () => {
   it('should render correctly', () => {

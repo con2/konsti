@@ -1,6 +1,6 @@
-import { verifyJWT } from 'utils/jwt';
-import { logger } from 'utils/logger';
-import { UserGroup } from 'typings/user.typings';
+import { verifyJWT } from 'server/utils/jwt';
+import { logger } from 'server/utils/logger';
+import { UserGroup } from 'server/typings/user.typings';
 
 export const validateAuthHeader = (
   authHeader: string | undefined,

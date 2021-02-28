@@ -6,15 +6,15 @@ import {
   submitJoinGroup,
   submitCreateGroup,
   submitLeaveGroup,
-} from 'views/group/groupActions';
-import { GroupMembersList } from 'views/group/components/GroupMembersList';
-import { sleep } from 'utils/sleep';
-import { config } from 'config';
-import { submitSignup } from 'views/signup/signupActions';
-import { loadGroupMembers } from 'utils/loadData';
-import { GroupMember } from 'typings/group.typings';
+} from 'client/views/group/groupActions';
+import { GroupMembersList } from 'client/views/group/components/GroupMembersList';
+import { sleep } from 'client/utils/sleep';
+import { config } from 'client/config';
+import { submitSignup } from 'client/views/signup/signupActions';
+import { loadGroupMembers } from 'client/utils/loadData';
+import { GroupMember } from 'client/typings/group.typings';
 
-import { RootState } from 'typings/redux.typings';
+import { RootState } from 'client/typings/redux.typings';
 
 export const GroupView: FC = (): ReactElement => {
   const username: string = useSelector(

@@ -1,7 +1,7 @@
 import _ from 'lodash';
-import { config } from 'config';
+import { config } from 'client/config';
 import { Game } from 'shared/typings/game';
-import { Signup } from 'typings/user.typings';
+import { Signup } from 'client/typings/user.typings';
 
 // Get games that have are not hidden, have signup open, and are not signed
 export const filterAvailableGames = (

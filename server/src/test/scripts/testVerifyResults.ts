@@ -1,7 +1,7 @@
-import { db } from 'db/mongodb';
-import { logger } from 'utils/logger';
-import { verifyResults } from 'player-assignment/test/utils/verifyResults';
-import { verifyUserSignups } from 'player-assignment/test/utils/verifyUserSignups';
+import { db } from 'server/db/mongodb';
+import { logger } from 'server/utils/logger';
+import { verifyResults } from 'server/player-assignment/test/utils/verifyResults';
+import { verifyUserSignups } from 'server/player-assignment/test/utils/verifyUserSignups';
 
 const testVerifyResults = async (): Promise<void> => {
   try {

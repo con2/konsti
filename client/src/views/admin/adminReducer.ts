@@ -6,8 +6,8 @@ import {
   SUBMIT_SET_TEST_TIME,
   SUBMIT_TOGGLE_APP_OPEN,
   SUBMIT_RESPONSE_MESSAGE,
-} from 'typings/adminActions.typings';
-import { AdminState } from 'typings/redux.typings';
+} from 'client/typings/adminActions.typings';
+import { AdminState } from 'client/typings/redux.typings';
 
 const initialState: AdminState = {
   hiddenGames: [],
