@@ -4,16 +4,7 @@
     "target": "esnext",
     "module": "commonjs",
     "lib": ["es2017", "esnext"],
-    "declaration": true,
-    "outDir": "lib",
-    "strict": true,
-    "noImplicitAny": true,
-    "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true,
-    "skipLibCheck": true
+    "outDir": "lib"
   },
   "include": ["**/*.js", "**/*.ts", "./.eslintrc.js"],
   "exclude": ["./node_modules", "./lib", "./coverage", "./front"]

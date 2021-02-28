@@ -5,16 +5,7 @@
     "module": "commonjs",
     "lib": ["es2017", "esnext", "dom"],
     "jsx": "react",
-    "declaration": true,
-    "outDir": "build",
-    "strict": true,
-    "noImplicitAny": true,
-    "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true,
-    "skipLibCheck": true
+    "outDir": "build"
   },
   "include": [
     "./src/**/*.js",

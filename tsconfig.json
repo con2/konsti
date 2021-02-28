@@ -1,11 +1,28 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
+    "skipLibCheck": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "declaration": true,
+    "jsx": "react",
     "paths": {
       "client/*": ["client/src/*"],
       "server/*": ["server/src/*"],
       "shared/*": ["shared/*"],
       "cypress/*": ["client/cypress/*"]
     }
-  }
+  },
+  "exclude": [
+    "node_modules",
+    "server/lib",
+    "server/coverage",
+    "server/front",
+    "client/cypress"
+  ]
 }
