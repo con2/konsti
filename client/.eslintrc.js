@@ -18,9 +18,6 @@ module.exports = {
   extends: [
     'eslint-config-standard-with-typescript',
     'eslint-config-prettier',
-    'eslint-config-prettier/react',
-    'eslint-config-prettier/standard',
-    'eslint-config-prettier/@typescript-eslint',
     'plugin:eslint-plugin-eslint-comments/recommended',
     'plugin:eslint-plugin-jest/recommended',
     'plugin:eslint-plugin-promise/recommended',
