@@ -387,9 +387,8 @@ const saveEnteredGames = async (
   enteredGames: readonly EnteredGame[],
   username: string
 ): Promise<void> => {
-  let response;
   try {
-    response = await UserModel.updateOne(
+    await UserModel.updateOne(
       {
         username,
       },
@@ -401,7 +400,6 @@ const saveEnteredGames = async (
     logger.debug(
       `MongoDB: Updated entered games stored for user "${username}"`
     );
-    return response;
   } catch (error) {
     logger.error(
       `MongoDB: Error updating entered games for user ${username} - ${error}`
