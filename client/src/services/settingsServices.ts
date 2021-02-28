@@ -1,10 +1,10 @@
 import { AxiosResponse, AxiosError } from 'axios';
-import { api } from 'utils/api';
+import { api } from 'client/utils/api';
 import {
   ServerError,
   GetSettingsResponse,
   PostToggleAppOpenResponse,
-} from 'typings/utils.typings';
+} from 'client/typings/utils.typings';
 
 export const getSettings = async (): Promise<
   GetSettingsResponse | ServerError

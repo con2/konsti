@@ -1,11 +1,11 @@
 import moment from 'moment';
 import _ from 'lodash';
-import { db } from 'db/mongodb';
-import { logger } from 'utils/logger';
-import { padgAssignPlayers } from 'player-assignment/padg/padgAssignPlayers';
-import { User } from 'typings/user.typings';
+import { db } from 'server/db/mongodb';
+import { logger } from 'server/utils/logger';
+import { padgAssignPlayers } from 'server/player-assignment/padg/padgAssignPlayers';
+import { User } from 'server/typings/user.typings';
 import { Game } from 'shared/typings/game';
-import { Result } from 'typings/result.typings';
+import { Result } from 'server/typings/result.typings';
 
 export const updateWithAssign = async (
   users: readonly User[],

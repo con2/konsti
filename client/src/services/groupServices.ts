@@ -1,11 +1,11 @@
 import { AxiosResponse, AxiosError } from 'axios';
-import { api } from 'utils/api';
+import { api } from 'client/utils/api';
 import {
   GroupData,
   PostGroupResponse,
   GetGroupResponse,
-} from 'typings/group.typings';
-import { ServerError } from 'typings/utils.typings';
+} from 'client/typings/group.typings';
+import { ServerError } from 'client/typings/utils.typings';
 
 export const postGroup = async (
   groupData: GroupData

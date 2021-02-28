@@ -1,13 +1,16 @@
-import { LoginActionTypes, SUBMIT_LOGIN } from 'typings/loginActions.typings';
+import {
+  LoginActionTypes,
+  SUBMIT_LOGIN,
+} from 'client/typings/loginActions.typings';
 import {
   GroupActionTypes,
   SUBMIT_UPDATE_GROUP_CODE,
   SUBMIT_LEAVE_GROUP,
   SUBMIT_UPDATE_GROUP_MEMBERS,
-} from 'typings/groupActions.typings';
+} from 'client/typings/groupActions.typings';
 
-import { LoginState } from 'typings/redux.typings';
-import { UserGroup } from 'typings/user.typings';
+import { LoginState } from 'client/typings/redux.typings';
+import { UserGroup } from 'client/typings/user.typings';
 
 const initialState: LoginState = {
   username: '',

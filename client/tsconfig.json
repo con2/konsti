@@ -1,34 +1,16 @@
 {
+  "extends": "../tsconfig.json",
   "compilerOptions": {
-    "target": "esnext",
-    "module": "commonjs",
-    "lib": ["es2017", "esnext", "dom"],
-    "jsx": "react",
-    "declaration": true,
-    "outDir": "build",
-    "strict": true,
-    "noImplicitAny": true,
-    "moduleResolution": "node",
-    "baseUrl": ".",
-    "paths": {
-      "*": ["src/*"],
-      "shared/*": ["../shared/*"],
-      "cypress/*": ["./cypress/*"]
-    },
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true,
-    "skipLibCheck": true
+    "outDir": "build"
   },
   "include": [
-    "src/**/*.js",
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    ".eslintrc.js",
-    "webpack.config.babel.ts",
-    "jest.config.js",
-    "babel.config.js"
+    "./src/**/*.js",
+    "./src/**/*.ts",
+    "./src/**/*.tsx",
+    "./.eslintrc.js",
+    "./webpack.config.babel.ts",
+    "./jest.config.js",
+    "./babel.config.js"
   ],
-  "exclude": ["node_modules", "build", "coverage"]
+  "exclude": ["./node_modules", "./build", "./coverage"]
 }

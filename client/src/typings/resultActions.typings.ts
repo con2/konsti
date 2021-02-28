@@ -1,4 +1,4 @@
-import { Result } from 'typings/result.typings';
+import { Result } from 'client/typings/result.typings';
 
 export const SUBMIT_GET_RESULTS = 'SUBMIT_GET_RESULTS';
 

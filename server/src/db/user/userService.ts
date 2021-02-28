@@ -1,7 +1,7 @@
-import { logger } from 'utils/logger';
-import { db } from 'db/mongodb';
-import { UserModel } from 'db/user/userSchema';
-import { Signup } from 'typings/result.typings';
+import { logger } from 'server/utils/logger';
+import { db } from 'server/db/mongodb';
+import { UserModel } from 'server/db/user/userSchema';
+import { Signup } from 'server/typings/result.typings';
 import {
   User,
   NewUserData,
@@ -10,9 +10,9 @@ import {
   FavoritedGame,
   SaveFavoriteRequest,
   UserGroup,
-} from 'typings/user.typings';
-import { Serial } from 'typings/serial.typings';
-import { GameDoc } from 'typings/game.typings';
+} from 'server/typings/user.typings';
+import { Serial } from 'server/typings/serial.typings';
+import { GameDoc } from 'server/typings/game.typings';
 
 const removeUsers = async (): Promise<void> => {
   logger.info('MongoDB: remove ALL users from db');

@@ -1,6 +1,6 @@
-import { logger } from 'utils/logger';
+import { logger } from 'server/utils/logger';
 import { Game } from 'shared/typings/game';
-import { SignupWish } from 'typings/user.typings';
+import { SignupWish } from 'server/typings/user.typings';
 
 export const getSignedGames = (
   startingGames: readonly Game[],

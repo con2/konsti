@@ -1,7 +1,7 @@
 import { Record, String } from 'runtypes';
 import { Request, Response } from 'express';
-import { logger } from 'utils/logger';
-import { db } from 'db/mongodb';
+import { logger } from 'server/utils/logger';
+import { db } from 'server/db/mongodb';
 
 const getResults = async (req: Request, res: Response): Promise<unknown> => {
   logger.info('API call: GET /api/results');

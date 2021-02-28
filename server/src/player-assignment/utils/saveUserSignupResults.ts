@@ -1,9 +1,9 @@
 import moment from 'moment';
-import { logger } from 'utils/logger';
-import { db } from 'db/mongodb';
-import { Result } from 'typings/result.typings';
-import { GameDoc } from 'typings/game.typings';
-import { EnteredGame } from 'typings/user.typings';
+import { logger } from 'server/utils/logger';
+import { db } from 'server/db/mongodb';
+import { Result } from 'server/typings/result.typings';
+import { GameDoc } from 'server/typings/game.typings';
+import { EnteredGame } from 'server/typings/user.typings';
 
 export const saveUserSignupResults = async (
   startingTime: string,

@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { SettingsDoc } from 'typings/settings.typings';
+import { SettingsDoc } from 'server/typings/settings.typings';
 
 const SettingsSchema = new mongoose.Schema(
   {

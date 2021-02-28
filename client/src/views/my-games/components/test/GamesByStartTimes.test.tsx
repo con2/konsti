@@ -4,7 +4,7 @@ import { Game } from 'shared/typings/game';
 import {
   GamesByStartTimes,
   Props,
-} from 'views/my-games/components/GamesByStartTimes';
+} from 'client/views/my-games/components/GamesByStartTimes';
 
 const games: Game[] = [];
 const startTimes: string[] = [];

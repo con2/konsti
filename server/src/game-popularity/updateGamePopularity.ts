@@ -1,10 +1,10 @@
 import 'array-flat-polyfill';
-import { logger } from 'utils/logger';
-import { db } from 'db/mongodb';
-import { updateWithSignups } from 'game-popularity/utils/updateWithSignups';
-import { updateWithAssign } from 'game-popularity/utils/updateWithAssign';
-import { config } from 'config';
-import { User } from 'typings/user.typings';
+import { logger } from 'server/utils/logger';
+import { db } from 'server/db/mongodb';
+import { updateWithSignups } from 'server/game-popularity/utils/updateWithSignups';
+import { updateWithAssign } from 'server/game-popularity/utils/updateWithAssign';
+import { config } from 'server/config';
+import { User } from 'server/typings/user.typings';
 import { Game } from 'shared/typings/game';
 
 export const updateGamePopularity = async (): Promise<void> => {

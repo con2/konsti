@@ -1,5 +1,5 @@
-import { logger } from 'utils/logger';
-import { User } from 'typings/user.typings';
+import { logger } from 'server/utils/logger';
+import { User } from 'server/typings/user.typings';
 
 export const getGroupMembers = (
   groupLeaders: readonly User[],

@@ -1,8 +1,8 @@
 import {
   ResultActionTypes,
   SUBMIT_GET_RESULTS,
-} from 'typings/resultActions.typings';
-import { ResultsState } from 'typings/redux.typings';
+} from 'client/typings/resultActions.typings';
+import { ResultsState } from 'client/typings/redux.typings';
 
 const initialState: ResultsState = { startTime: '', result: [] };
 

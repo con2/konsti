@@ -1,6 +1,6 @@
 import _ from 'lodash';
-import { moveArrayItem, insertByIndex } from 'utils/array';
-import { DnDUpdatedPositions, DnDMove } from 'typings/game.typings';
+import { moveArrayItem, insertByIndex } from 'client/utils/array';
+import { DnDUpdatedPositions, DnDMove } from 'client/typings/game.typings';
 import { Game } from 'shared/typings/game';
 
 export const reorder = (

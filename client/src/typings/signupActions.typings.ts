@@ -1,4 +1,4 @@
-import { Signup } from 'typings/user.typings';
+import { Signup } from 'client/typings/user.typings';
 
 export const SUBMIT_SIGNUP_TIME = 'SUBMIT_SELECT_SIGNUPTIME';
 export const SUBMIT_SELECTED_GAMES = 'SUBMIT_SELECTED_GAMES';

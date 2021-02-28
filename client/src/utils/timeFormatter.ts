@@ -1,6 +1,6 @@
 import moment from 'moment';
-import { config } from 'config';
-import { WeekdayAndTime } from 'typings/utils.typings';
+import { config } from 'client/config';
+import { WeekdayAndTime } from 'client/typings/utils.typings';
 
 const {
   SIGNUP_OPEN_TIME,

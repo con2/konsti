@@ -1,15 +1,15 @@
 import mongoose from 'mongoose';
 import { MongoMemoryServer } from 'mongodb-memory-server';
 import moment from 'moment';
-import { config } from 'config';
-import { logger } from 'utils/logger';
-import { runAssignment } from 'player-assignment/runAssignment';
-import { generateTestData } from 'test/test-data-generation/generators/generateTestData';
-import { verifyUserSignups } from 'player-assignment/test/utils/verifyUserSignups';
-import { removeOverlapSignups } from 'player-assignment/utils/removeOverlapSignups';
-import { verifyResults } from 'player-assignment/test/utils/verifyResults';
-import { saveResults } from 'player-assignment/utils/saveResults';
-import { AssignmentStrategy } from 'typings/config.typings';
+import { config } from 'server/config';
+import { logger } from 'server/utils/logger';
+import { runAssignment } from 'server/player-assignment/runAssignment';
+import { generateTestData } from 'server/test/test-data-generation/generators/generateTestData';
+import { verifyUserSignups } from 'server/player-assignment/test/utils/verifyUserSignups';
+import { removeOverlapSignups } from 'server/player-assignment/utils/removeOverlapSignups';
+import { verifyResults } from 'server/player-assignment/test/utils/verifyResults';
+import { saveResults } from 'server/player-assignment/utils/saveResults';
+import { AssignmentStrategy } from 'server/typings/config.typings';
 
 let mongoServer: MongoMemoryServer;
 

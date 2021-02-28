@@ -2,9 +2,9 @@ import React, { FC, ReactElement } from 'react';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { SubmissionError } from 'redux-form';
-import { submitLogin } from 'views/login/loginActions';
-import LoginForm from 'views/login/components/LoginForm';
-import { LoginFormFields } from 'typings/user.typings';
+import { submitLogin } from 'client/views/login/loginActions';
+import LoginForm from 'client/views/login/components/LoginForm';
+import { LoginFormFields } from 'client/typings/user.typings';
 
 export const LoginView: FC = (): ReactElement => {
   const dispatch = useDispatch();

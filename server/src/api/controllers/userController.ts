@@ -1,11 +1,11 @@
 import { validationResult } from 'express-validator';
 import { Record, String, Undefined } from 'runtypes';
 import { Request, Response } from 'express';
-import { logger } from 'utils/logger';
-import { db } from 'db/mongodb';
-import { hashPassword } from 'utils/bcrypt';
-import { validateAuthHeader } from 'utils/authHeader';
-import { UserGroup } from 'typings/user.typings';
+import { logger } from 'server/utils/logger';
+import { db } from 'server/db/mongodb';
+import { hashPassword } from 'server/utils/bcrypt';
+import { validateAuthHeader } from 'server/utils/authHeader';
+import { UserGroup } from 'server/typings/user.typings';
 
 const postUser = async (req: Request, res: Response): Promise<unknown> => {
   logger.info('API call: POST /api/user');

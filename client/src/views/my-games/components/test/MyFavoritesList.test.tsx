@@ -4,7 +4,7 @@ import { Game } from 'shared/typings/game';
 import {
   MyFavoritesList,
   Props,
-} from 'views/my-games/components/MyFavoritesList';
+} from 'client/views/my-games/components/MyFavoritesList';
 
 const favoritedGames: Game[] = [];
 

@@ -1,8 +1,8 @@
 import mongoose from 'mongoose';
 import { MongoMemoryServer } from 'mongodb-memory-server';
-import { db } from 'db/mongodb';
-import { ResultsModel } from 'db/results/resultsSchema';
-import { Result } from 'typings/result.typings';
+import { db } from 'server/db/mongodb';
+import { ResultsModel } from 'server/db/results/resultsSchema';
+import { Result } from 'server/typings/result.typings';
 
 let mongoServer: MongoMemoryServer;
 

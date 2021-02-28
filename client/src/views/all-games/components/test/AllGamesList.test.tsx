@@ -1,9 +1,12 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { Provider } from 'react-redux';
-import { store } from 'utils/store';
-import { testGame } from 'test/test-data/testGame';
-import { AllGamesList, Props } from 'views/all-games/components/AllGamesList';
+import { store } from 'client/utils/store';
+import { testGame } from 'client/test/test-data/testGame';
+import {
+  AllGamesList,
+  Props,
+} from 'client/views/all-games/components/AllGamesList';
 
 const games = [testGame];
 

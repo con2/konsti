@@ -27,8 +27,9 @@ module.exports = (api) => {
       [
         'babel-plugin-module-resolver',
         {
-          root: ['./src'],
+          root: ['.'],
           alias: {
+            client: './src',
             assets: './assets',
             shared: '../shared/',
             cypress: './cypress',
@@ -58,8 +59,8 @@ module.exports = (api) => {
       [
         'babel-plugin-module-resolver',
         {
-          root: ['./src'],
-          alias: { shared: '../shared' },
+          root: ['.'],
+          alias: { server: './src', shared: '../shared' },
           extensions: ['.js', '.ts'],
         },
       ],

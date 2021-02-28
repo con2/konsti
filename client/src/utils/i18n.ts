@@ -2,8 +2,8 @@ import i18next from 'i18next';
 import backend, { BackendOptions } from 'i18next-xhr-backend';
 import languageDetector from 'i18next-browser-languagedetector';
 import { initReactI18next } from 'react-i18next';
-import en from 'locales/en.json';
-import fi from 'locales/fi.json';
+import en from 'client/locales/en.json';
+import fi from 'client/locales/fi.json';
 
 const loadLocales = (
   url: string,

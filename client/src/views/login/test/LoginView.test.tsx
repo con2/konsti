@@ -1,8 +1,8 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { shallow } from 'enzyme';
-import { store } from 'utils/store';
-import { LoginView } from 'views/login/LoginView';
+import { store } from 'client/utils/store';
+import { LoginView } from 'client/views/login/LoginView';
 
 describe('LoginView', () => {
   it('should render correctly', () => {
