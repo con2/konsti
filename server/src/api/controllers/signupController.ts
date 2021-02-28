@@ -1,10 +1,10 @@
 import moment from 'moment';
 import { Request, Response } from 'express';
-import { logger } from 'utils/logger';
-import { db } from 'db/mongodb';
-import { validateAuthHeader } from 'utils/authHeader';
-import { config } from 'config';
-import { UserGroup } from 'typings/user.typings';
+import { logger } from 'server/utils/logger';
+import { db } from 'server/db/mongodb';
+import { validateAuthHeader } from 'server/utils/authHeader';
+import { config } from 'server/config';
+import { UserGroup } from 'server/typings/user.typings';
 
 // Add signup data for user
 const postSignup = async (req: Request, res: Response): Promise<unknown> => {

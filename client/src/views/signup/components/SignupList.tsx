@@ -2,18 +2,21 @@ import React, { FC, ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { submitSignup, submitSelectedGames } from 'views/signup/signupActions';
-import { DragAndDropList } from 'views/signup/components/DragAndDropList';
-import { sleep } from 'utils/sleep';
-import { config } from 'config';
+import {
+  submitSignup,
+  submitSelectedGames,
+} from 'client/views/signup/signupActions';
+import { DragAndDropList } from 'client/views/signup/components/DragAndDropList';
+import { sleep } from 'client/utils/sleep';
+import { config } from 'client/config';
 import { Game } from 'shared/typings/game';
-import { Signup } from 'typings/user.typings';
-import { RootState } from 'typings/redux.typings';
+import { Signup } from 'client/typings/user.typings';
+import { RootState } from 'client/typings/redux.typings';
 import { SignupTimeButtons } from './SignupTimeButtons';
 import { SignupInfo } from './SignupInfo';
 import { SignupActionButtons } from './SignupActionButtons';
-import { filterAvailableGames } from 'views/signup/utils/filterAvailableGames';
-import { filterSelectedGames } from 'views/signup/utils/filterSelectedGames';
+import { filterAvailableGames } from 'client/views/signup/utils/filterAvailableGames';
+import { filterSelectedGames } from 'client/views/signup/utils/filterSelectedGames';
 
 export interface Props {
   games: readonly Game[];

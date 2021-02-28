@@ -1,11 +1,11 @@
 import mongoose from 'mongoose';
 import { MongoMemoryServer } from 'mongodb-memory-server';
-import { db } from 'db/mongodb';
-import { UserModel } from 'db/user/userSchema';
-import { GameModel } from 'db/game/gameSchema';
-import { mockUser, mockSignup } from 'test/mock-data/mockUser';
-import { mockGame, mockGame2 } from 'test/mock-data/mockGame';
-import { removeInvalidSignupsFromUsers } from 'player-assignment/utils/removeInvalidSignupsFromUsers';
+import { db } from 'server/db/mongodb';
+import { UserModel } from 'server/db/user/userSchema';
+import { GameModel } from 'server/db/game/gameSchema';
+import { mockUser, mockSignup } from 'server/test/mock-data/mockUser';
+import { mockGame, mockGame2 } from 'server/test/mock-data/mockGame';
+import { removeInvalidSignupsFromUsers } from 'server/player-assignment/utils/removeInvalidSignupsFromUsers';
 
 let mongoServer: MongoMemoryServer;
 

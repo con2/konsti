@@ -1,7 +1,7 @@
 import moment from 'moment';
 import { Game } from 'shared/typings/game';
-import { Signup } from 'typings/user.typings';
-import { getTime } from 'utils/getTime';
+import { Signup } from 'client/typings/user.typings';
+import { getTime } from 'client/utils/getTime';
 
 export const getUpcomingGames = (games: readonly Game[]): readonly Game[] => {
   const timeNow = getTime();

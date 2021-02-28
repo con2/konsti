@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import { logger } from 'utils/logger';
-import { db } from 'db/mongodb';
+import { logger } from 'server/utils/logger';
+import { db } from 'server/db/mongodb';
 
 // Get settings
 const getSettings = async (req: Request, res: Response): Promise<unknown> => {

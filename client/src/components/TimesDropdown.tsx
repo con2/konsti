@@ -1,5 +1,5 @@
 import React, { FC, ReactElement, ChangeEvent } from 'react';
-import { timeFormatter } from 'utils/timeFormatter';
+import { timeFormatter } from 'client/utils/timeFormatter';
 
 export interface Props {
   onChange: (event: ChangeEvent<HTMLSelectElement>) => void;

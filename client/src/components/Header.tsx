@@ -1,9 +1,9 @@
 import React, { ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
-import { LanguageSelector } from 'components/LanguageSelector';
-import { config } from 'config';
-import { TimeSelector } from 'test/test-components/TimeSelector';
+import { LanguageSelector } from 'client/components/LanguageSelector';
+import { config } from 'client/config';
+import { TimeSelector } from 'client/test/test-components/TimeSelector';
 import { Navigation } from './Navigation';
 
 export const Header = (): ReactElement => {

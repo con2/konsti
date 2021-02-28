@@ -1,9 +1,12 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { shallow } from 'enzyme';
-import { store } from 'utils/store';
-import { Signup } from 'typings/user.typings';
-import { MyEnteredList, Props } from 'views/my-games/components/MyEnteredList';
+import { store } from 'client/utils/store';
+import { Signup } from 'client/typings/user.typings';
+import {
+  MyEnteredList,
+  Props,
+} from 'client/views/my-games/components/MyEnteredList';
 
 const enteredGames: Signup[] = [];
 const signedGames: Signup[] = [];

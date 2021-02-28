@@ -1,10 +1,10 @@
 import { AxiosResponse, AxiosError } from 'axios';
-import { api } from 'utils/api';
-import { ServerError } from 'typings/utils.typings';
+import { api } from 'client/utils/api';
+import { ServerError } from 'client/typings/utils.typings';
 import {
   PostGamesUpdateResponse,
   GetGamesResponse,
-} from 'typings/game.typings';
+} from 'client/typings/game.typings';
 
 export const postGamesUpdate = async (): Promise<
   PostGamesUpdateResponse | ServerError

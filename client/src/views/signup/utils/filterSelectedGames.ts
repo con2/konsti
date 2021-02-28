@@ -1,4 +1,4 @@
-import { Signup } from 'typings/user.typings';
+import { Signup } from 'client/typings/user.typings';
 import { Game } from 'shared/typings/game';
 
 export const filterSelectedGames = (

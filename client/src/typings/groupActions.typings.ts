@@ -1,4 +1,4 @@
-import { GroupMember } from 'typings/group.typings';
+import { GroupMember } from 'client/typings/group.typings';
 
 export const SUBMIT_UPDATE_GROUP_CODE = 'SUBMIT_UPDATE_GROUP_CODE';
 export const SUBMIT_LEAVE_GROUP = 'SUBMIT_LEAVE_GROUP';

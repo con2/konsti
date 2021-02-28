@@ -3,9 +3,9 @@ import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import _ from 'lodash';
 import styled from 'styled-components';
-import { timeFormatter } from 'utils/timeFormatter';
-import { Result } from 'typings/result.typings';
-import { RootState } from 'typings/redux.typings';
+import { timeFormatter } from 'client/utils/timeFormatter';
+import { Result } from 'client/typings/result.typings';
+import { RootState } from 'client/typings/redux.typings';
 
 export const HelperResultsList: FC = (): ReactElement => {
   const results: readonly Result[] = useSelector(

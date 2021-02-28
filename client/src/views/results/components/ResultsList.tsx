@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import { ResultsByGameTitle } from './ResultsByGameTitle';
 import { ResultsByUsername } from './ResultsByUsername';
-import { Result } from 'typings/result.typings';
+import { Result } from 'client/typings/result.typings';
 
 export interface Props {
   results: readonly Result[];

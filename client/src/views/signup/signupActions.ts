@@ -1,6 +1,6 @@
-import { postSignup } from 'services/signupServices';
-import { Signup, SignupData } from 'typings/user.typings';
-import { AppThunk } from 'typings/utils.typings';
+import { postSignup } from 'client/services/signupServices';
+import { Signup, SignupData } from 'client/typings/user.typings';
+import { AppThunk } from 'client/typings/utils.typings';
 import {
   SubmitSignupAsync,
   SubmitSignupTime,
@@ -10,7 +10,7 @@ import {
   SUBMIT_SELECTED_GAMES,
   UPDATE_UNSAVED_CHANGES_STATUS,
   SUBMIT_SIGNED_GAMES,
-} from 'typings/signupActions.typings';
+} from 'client/typings/signupActions.typings';
 
 export const submitSignup = (signupData: SignupData): AppThunk => {
   return async (dispatch): Promise<void> => {

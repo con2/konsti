@@ -4,10 +4,10 @@ import { useTranslation } from 'react-i18next';
 import _ from 'lodash';
 import moment from 'moment';
 import styled from 'styled-components';
-import { submitSetTestTime } from 'views/admin/adminActions';
-import { TimesDropdown } from 'components/TimesDropdown';
-import { config } from 'config';
-import { RootState } from 'typings/redux.typings';
+import { submitSetTestTime } from 'client/views/admin/adminActions';
+import { TimesDropdown } from 'client/components/TimesDropdown';
+import { config } from 'client/config';
+import { RootState } from 'client/typings/redux.typings';
 
 export const TimeSelector: FC = (): ReactElement => {
   const testTime: string = useSelector(

@@ -1,6 +1,6 @@
-import { logger } from 'utils/logger';
-import { FeedbackModel } from 'db/feedback/feedbackSchema';
-import { Feedback } from 'typings/feedback.typings';
+import { logger } from 'server/utils/logger';
+import { FeedbackModel } from 'server/db/feedback/feedbackSchema';
+import { Feedback } from 'server/typings/feedback.typings';
 
 const saveFeedback = async (feedbackData: Feedback): Promise<void> => {
   const feedback = new FeedbackModel({

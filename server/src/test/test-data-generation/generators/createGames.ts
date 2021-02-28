@@ -1,10 +1,10 @@
 import faker from 'faker';
 import moment from 'moment';
-import { logger } from 'utils/logger';
-import { db } from 'db/mongodb';
-import { config } from 'config';
-import { kompassiGameMapper } from 'utils/kompassiGameMapper';
-import { KompassiGame } from 'typings/game.typings';
+import { logger } from 'server/utils/logger';
+import { db } from 'server/db/mongodb';
+import { config } from 'server/config';
+import { kompassiGameMapper } from 'server/utils/kompassiGameMapper';
+import { KompassiGame } from 'server/typings/game.typings';
 import { Game } from 'shared/typings/game';
 
 export const createGames = async (

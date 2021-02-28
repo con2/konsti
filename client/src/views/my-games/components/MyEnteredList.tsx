@@ -3,8 +3,8 @@ import { useTranslation } from 'react-i18next';
 import _ from 'lodash';
 import styled from 'styled-components';
 import { ResultsByStartTimes } from './ResultsByStartTimes';
-import { Signup } from 'typings/user.typings';
-import { getMissedSignups } from 'views/my-games/utils/getMissedSignups';
+import { Signup } from 'client/typings/user.typings';
+import { getMissedSignups } from 'client/views/my-games/utils/getMissedSignups';
 
 export interface Props {
   enteredGames: readonly Signup[];

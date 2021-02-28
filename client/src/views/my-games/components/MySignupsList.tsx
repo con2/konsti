@@ -2,9 +2,9 @@ import React, { FC, ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
 import _ from 'lodash';
 import styled from 'styled-components';
-import { getStartTimes } from 'utils/getStartTimes';
+import { getStartTimes } from 'client/utils/getStartTimes';
 import { SignupsByStartTimes } from './SignupsByStartTimes';
-import { Signup } from 'typings/user.typings';
+import { Signup } from 'client/typings/user.typings';
 
 export interface Props {
   signedGames: readonly Signup[];

@@ -1,7 +1,10 @@
 import { AxiosResponse, AxiosError } from 'axios';
-import { api } from 'utils/api';
-import { Feedback, PostFeedbackResponse } from 'typings/feedback.typings';
-import { ServerError } from 'typings/utils.typings';
+import { api } from 'client/utils/api';
+import {
+  Feedback,
+  PostFeedbackResponse,
+} from 'client/typings/feedback.typings';
+import { ServerError } from 'client/typings/utils.typings';
 
 export const postFeedback = async (
   feedbackData: Feedback

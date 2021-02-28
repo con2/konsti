@@ -1,7 +1,7 @@
 import request from 'supertest';
 import { MongoMemoryServer } from 'mongodb-memory-server';
 import { Application } from 'express';
-import { startServer, closeServer } from 'server/server';
+import { startServer, closeServer } from 'server/server/server';
 
 let server: Application;
 let mongoServer: MongoMemoryServer;

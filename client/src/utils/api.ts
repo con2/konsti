@@ -1,6 +1,6 @@
 import axios, { AxiosInstance } from 'axios';
-import { config } from 'config';
-import { getJWT } from 'utils/getJWT';
+import { config } from 'client/config';
+import { getJWT } from 'client/utils/getJWT';
 
 export const api: AxiosInstance = axios.create({
   baseURL: `${config.apiServerUrl}/api`,

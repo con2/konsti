@@ -1,6 +1,6 @@
-import { postGroup, getGroup } from 'services/groupServices';
-import { GroupData, GroupMember } from 'typings/group.typings';
-import { AppThunk } from 'typings/utils.typings';
+import { postGroup, getGroup } from 'client/services/groupServices';
+import { GroupData, GroupMember } from 'client/typings/group.typings';
+import { AppThunk } from 'client/typings/utils.typings';
 import {
   SubmitUpdateGroupCodeAsync,
   SubmitGetGroupAsync,
@@ -8,7 +8,7 @@ import {
   SUBMIT_UPDATE_GROUP_CODE,
   SUBMIT_LEAVE_GROUP,
   SUBMIT_UPDATE_GROUP_MEMBERS,
-} from 'typings/groupActions.typings';
+} from 'client/typings/groupActions.typings';
 
 export const submitJoinGroup = (groupData: GroupData): AppThunk => {
   return async (dispatch): Promise<void> => {

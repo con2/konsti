@@ -8,18 +8,18 @@ import {
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { reducer as formReducer } from 'redux-form';
-import { config } from 'config';
-import { loadSession } from 'utils/localStorage';
-import { RootState } from 'typings/redux.typings';
-import { SUBMIT_LOGOUT } from 'typings/logoutActions.typings';
+import { config } from 'client/config';
+import { loadSession } from 'client/utils/localStorage';
+import { RootState } from 'client/typings/redux.typings';
+import { SUBMIT_LOGOUT } from 'client/typings/logoutActions.typings';
 
 // Reducers
-import { allGamesReducer } from 'views/all-games/allGamesReducer';
-import { loginReducer } from 'views/login/loginReducer';
-import { myGamesReducer } from 'views/my-games/myGamesReducer';
-import { signupReducer } from 'views/signup/signupReducer';
-import { adminReducer } from 'views/admin/adminReducer';
-import { resultsReducer } from 'views/results/resultsReducer';
+import { allGamesReducer } from 'client/views/all-games/allGamesReducer';
+import { loginReducer } from 'client/views/login/loginReducer';
+import { myGamesReducer } from 'client/views/my-games/myGamesReducer';
+import { signupReducer } from 'client/views/signup/signupReducer';
+import { adminReducer } from 'client/views/admin/adminReducer';
+import { resultsReducer } from 'client/views/results/resultsReducer';
 
 // Set reducers
 export const appReducer = combineReducers({

@@ -1,12 +1,12 @@
 import React, { FC, ReactElement } from 'react';
 import { useSelector, useStore } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { ResultsList } from 'views/results/components/ResultsList';
-import { timeFormatter } from 'utils/timeFormatter';
-import { loadResults, loadSettings } from 'utils/loadData';
-import { Result } from 'typings/result.typings';
+import { ResultsList } from 'client/views/results/components/ResultsList';
+import { timeFormatter } from 'client/utils/timeFormatter';
+import { loadResults, loadSettings } from 'client/utils/loadData';
+import { Result } from 'client/typings/result.typings';
 
-import { RootState } from 'typings/redux.typings';
+import { RootState } from 'client/typings/redux.typings';
 
 export const ResultsView: FC = (): ReactElement => {
   const result: readonly Result[] = useSelector(

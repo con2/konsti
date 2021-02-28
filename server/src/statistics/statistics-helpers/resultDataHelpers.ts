@@ -1,8 +1,8 @@
-import { logger } from 'utils/logger';
+import { logger } from 'server/utils/logger';
 import { Game } from 'shared/typings/game';
-import { ResultsCollectionEntry } from 'typings/result.typings';
-import { StringNumberObject } from 'typings/common.typings';
-import { toPercent } from 'statistics/statsUtil';
+import { ResultsCollectionEntry } from 'server/typings/result.typings';
+import { StringNumberObject } from 'server/typings/common.typings';
+import { toPercent } from 'server/statistics/statsUtil';
 
 export const getSignupsByTime = (
   results: readonly ResultsCollectionEntry[]

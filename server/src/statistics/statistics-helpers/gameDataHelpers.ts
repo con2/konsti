@@ -1,11 +1,14 @@
 import moment from 'moment';
 import _ from 'lodash';
-import { logger } from 'utils/logger';
+import { logger } from 'server/utils/logger';
 import { Game } from 'shared/typings/game';
-import { User } from 'typings/user.typings';
+import { User } from 'server/typings/user.typings';
 import { getMaximumNumberOfPlayersByTime } from './resultDataHelpers';
-import { StringNumberObject, PriorityObject } from 'typings/common.typings';
-import { toPercent } from 'statistics/statsUtil';
+import {
+  StringNumberObject,
+  PriorityObject,
+} from 'server/typings/common.typings';
+import { toPercent } from 'server/statistics/statsUtil';
 
 export const getGamesByStartingTime = (
   games: readonly Game[]

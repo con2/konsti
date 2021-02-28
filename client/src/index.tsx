@@ -6,21 +6,21 @@ import { Provider } from 'react-redux';
 import moment from 'moment';
 import { ThemeProvider } from 'styled-components';
 import loaderImage from 'assets/loading.gif';
-import { config } from 'config';
-import { getLanguage } from 'utils/localStorage';
-import { theme } from 'theme';
-import { GlobalStyle } from 'globalStyle';
+import { config } from 'client/config';
+import { getLanguage } from 'client/utils/localStorage';
+import { theme } from 'client/theme';
+import { GlobalStyle } from 'client/globalStyle';
 
 // Initialized i18next instance
-import 'utils/i18n';
+import 'client/utils/i18n';
 
 // Redux store
-import { store } from 'utils/store';
+import { store } from 'client/utils/store';
 
 moment.locale(getLanguage());
 
 // Root component
-const App = lazy(async () => await import('app/App'));
+const App = lazy(async () => await import('client/app/App'));
 
 const { enableAxe, enableWhyDidYouRender } = config;
 

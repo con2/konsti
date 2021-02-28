@@ -1,4 +1,4 @@
-import { store } from 'utils/store';
+import { store } from 'client/utils/store';
 
 export const getJWT = (): string => {
   if (!store) return '';

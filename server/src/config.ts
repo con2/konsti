@@ -2,7 +2,7 @@ import {
   Config,
   AssignmentStrategy,
   GameUpdateMethod,
-} from 'typings/config.typings';
+} from 'server/typings/config.typings';
 
 const commonConfig = {
   // App info

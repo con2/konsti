@@ -1,4 +1,4 @@
-import { UserGroup } from 'typings/user.typings';
+import { UserGroup } from 'client/typings/user.typings';
 
 export const SUBMIT_LOGIN = 'SUBMIT_LOGIN';
 

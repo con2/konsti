@@ -1,6 +1,6 @@
 import { Dispatch } from 'redux';
 import { Game } from 'shared/typings/game';
-import { submitUpdateFavorites } from 'views/my-games/myGamesActions';
+import { submitUpdateFavorites } from 'client/views/my-games/myGamesActions';
 
 export interface UpdateFavoriteOpts {
   game: Game;

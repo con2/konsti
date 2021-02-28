@@ -1,5 +1,5 @@
-import { mockGame } from 'test/mock-data/mockGame';
-import { Result } from 'typings/result.typings';
+import { mockGame } from 'server/test/mock-data/mockGame';
+import { Result } from 'server/typings/result.typings';
 
 export const mockResults: Result[] = [
   {

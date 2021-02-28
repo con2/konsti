@@ -1,7 +1,7 @@
-import { logger } from 'utils/logger';
-import { db } from 'db/mongodb';
-import { saveUserSignupResults } from 'player-assignment/utils/saveUserSignupResults';
-import { Result } from 'typings/result.typings';
+import { logger } from 'server/utils/logger';
+import { db } from 'server/db/mongodb';
+import { saveUserSignupResults } from 'server/player-assignment/utils/saveUserSignupResults';
+import { Result } from 'server/typings/result.typings';
 
 export const saveResults = async (
   results: readonly Result[],

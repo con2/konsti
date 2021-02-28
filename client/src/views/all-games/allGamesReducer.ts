@@ -1,8 +1,8 @@
 import {
   AllGamesActionTypes,
   SUBMIT_GET_GAMES,
-} from 'typings/allGamesActions.typings';
-import { AllGamesState } from 'typings/redux.typings';
+} from 'client/typings/allGamesActions.typings';
+import { AllGamesState } from 'client/typings/redux.typings';
 
 const initialState: AllGamesState = { games: [] };
 
