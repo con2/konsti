@@ -1,9 +1,9 @@
 import _ from 'lodash';
-import { logger } from 'utils/logger';
-import { GameModel } from 'db/game/gameSchema';
-import { removeInvalidSignupsFromUsers } from 'player-assignment/utils/removeInvalidSignupsFromUsers';
-import { removeMovedGamesFromUsers } from 'player-assignment/utils/removeMovedGamesFromUsers';
-import { GameDoc } from 'typings/game.typings';
+import { logger } from 'server/utils/logger';
+import { GameModel } from 'server/db/game/gameSchema';
+import { removeInvalidSignupsFromUsers } from 'server/player-assignment/utils/removeInvalidSignupsFromUsers';
+import { removeMovedGamesFromUsers } from 'server/player-assignment/utils/removeMovedGamesFromUsers';
+import { GameDoc } from 'server/typings/game.typings';
 import { Game } from 'shared/typings/game';
 
 const removeGames = async (): Promise<void> => {

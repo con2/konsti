@@ -2,10 +2,10 @@ import fs from 'fs';
 import _ from 'lodash';
 import moment from 'moment';
 import { Array } from 'runtypes';
-import { logger } from 'utils/logger';
-import { FeedbackRuntype } from 'typings/feedback.typings';
+import { logger } from 'server/utils/logger';
+import { FeedbackRuntype } from 'server/typings/feedback.typings';
 import { GameRuntype } from 'shared/typings/game';
-import { writeJson } from 'statistics/statsUtil';
+import { writeJson } from 'server/statistics/statsUtil';
 
 export const formatFeedbacks = (year: number, event: string): void => {
   moment.locale('fi');

@@ -2,7 +2,7 @@
 
 exports[`LanguageSelector should render correctly 1`] = `
 <Fragment>
-  <LanguageSelector__LanguageSelectorContainer
+  <styled.select
     id="language"
     onChange={[Function]}
     value="en"
@@ -19,6 +19,6 @@ exports[`LanguageSelector should render correctly 1`] = `
     >
       language.finnishShort
     </option>
-  </LanguageSelector__LanguageSelectorContainer>
+  </styled.select>
 </Fragment>
 `;

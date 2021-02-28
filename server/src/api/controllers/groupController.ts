@@ -1,9 +1,13 @@
 import { Record, String } from 'runtypes';
 import { Request, Response } from 'express';
-import { logger } from 'utils/logger';
-import { db } from 'db/mongodb';
-import { validateAuthHeader } from 'utils/authHeader';
-import { UserGroup, User, GetGroupReturValue } from 'typings/user.typings';
+import { logger } from 'server/utils/logger';
+import { db } from 'server/db/mongodb';
+import { validateAuthHeader } from 'server/utils/authHeader';
+import {
+  UserGroup,
+  User,
+  GetGroupReturValue,
+} from 'server/typings/user.typings';
 
 const postGroup = async (req: Request, res: Response): Promise<unknown> => {
   logger.info('API call: POST /api/group');

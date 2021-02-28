@@ -1,7 +1,7 @@
 import { AxiosResponse, AxiosError } from 'axios';
-import { api } from 'utils/api';
-import { ServerError } from 'typings/utils.typings';
-import { GetResultsResponse } from 'typings/result.typings';
+import { api } from 'client/utils/api';
+import { ServerError } from 'client/typings/utils.typings';
+import { GetResultsResponse } from 'client/typings/result.typings';
 
 export const getResults = async (
   startTime: string

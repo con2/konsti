@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "target": "es2019",
+    "module": "commonjs",
+    "lib": ["es2017", "esnext", "dom"],
+    "jsx": "react",
+    "skipLibCheck": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "declaration": true,
+    "paths": {
+      "client/*": ["client/src/*"],
+      "server/*": ["server/src/*"],
+      "shared/*": ["shared/*"],
+      "cypress/*": ["client/cypress/*"]
+    }
+  },
+  "exclude": [
+    "node_modules",
+    "server/lib",
+    "server/coverage",
+    "server/front",
+    "client/cypress"
+  ]
+}

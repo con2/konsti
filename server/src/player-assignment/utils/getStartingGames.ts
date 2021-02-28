@@ -1,5 +1,5 @@
 import moment from 'moment';
-import { logger } from 'utils/logger';
+import { logger } from 'server/utils/logger';
 import { Game } from 'shared/typings/game';
 
 export const getStartingGames = (

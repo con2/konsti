@@ -1,7 +1,7 @@
 import moment from 'moment';
-import { db } from 'db/mongodb';
-import { logger } from 'utils/logger';
-import { User } from 'typings/user.typings';
+import { db } from 'server/db/mongodb';
+import { logger } from 'server/utils/logger';
+import { User } from 'server/typings/user.typings';
 
 export const verifyUserSignups = async (): Promise<void> => {
   logger.info('Verify entered games and signups match for users');

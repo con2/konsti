@@ -1,4 +1,4 @@
-import { PadgAssignResults, Group } from 'typings/padgAssign.typings';
+import { PadgAssignResults, Group } from 'server/typings/padgAssign.typings';
 
 export const calculateHappiness = (
   assignment: PadgAssignResults,

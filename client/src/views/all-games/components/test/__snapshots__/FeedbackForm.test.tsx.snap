@@ -12,7 +12,7 @@ exports[`FeedbackForm should render correctly 1`] = `
   <p>
     feedbackInstruction
   </p>
-  <FeedbackForm__FeedbackTextarea
+  <styled.textarea
     onChange={[Function]}
     rows={4}
     value=""

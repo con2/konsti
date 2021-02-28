@@ -2,7 +2,10 @@ import React, { FC, ReactElement, ChangeEvent } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { getUserBySerial, updateUserPassword } from 'services/userServices';
+import {
+  getUserBySerial,
+  updateUserPassword,
+} from 'client/services/userServices';
 
 export const PasswordManagement: FC = (): ReactElement => {
   const { t } = useTranslation();

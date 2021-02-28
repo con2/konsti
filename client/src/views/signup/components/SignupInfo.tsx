@@ -1,8 +1,8 @@
 import React, { FC, ReactElement } from 'react';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
-import { Accordion } from 'components/Accordion';
-import { timeFormatter } from 'utils/timeFormatter';
+import { Accordion } from 'client/components/Accordion';
+import { timeFormatter } from 'client/utils/timeFormatter';
 
 interface Props {
   signupTime: string;

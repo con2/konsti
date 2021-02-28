@@ -2,12 +2,12 @@ import {
   MyGamesActionTypes,
   SUBMIT_GET_USER_GAMES,
   SUBMIT_UPDATE_FAVORITES,
-} from 'typings/myGamesActions.typings';
+} from 'client/typings/myGamesActions.typings';
 import {
   SignupActionTypes,
   SUBMIT_SIGNED_GAMES,
-} from 'typings/signupActions.typings';
-import { MyGamesState } from 'typings/redux.typings';
+} from 'client/typings/signupActions.typings';
+import { MyGamesState } from 'client/typings/redux.typings';
 
 const initialState: MyGamesState = {
   enteredGames: [],

@@ -1,12 +1,12 @@
 import mongoose from 'mongoose';
 import { MongoMemoryServer } from 'mongodb-memory-server';
-import { db } from 'db/mongodb';
-import { UserModel } from 'db/user/userSchema';
-import { GameModel } from 'db/game/gameSchema';
-import { removeOverlapSignups } from 'player-assignment/utils/removeOverlapSignups';
-import { mockUser, mockSignup } from 'test/mock-data/mockUser';
-import { mockResults } from 'test/mock-data/mockResults';
-import { mockGame, mockGame2 } from 'test/mock-data/mockGame';
+import { db } from 'server/db/mongodb';
+import { UserModel } from 'server/db/user/userSchema';
+import { GameModel } from 'server/db/game/gameSchema';
+import { removeOverlapSignups } from 'server/player-assignment/utils/removeOverlapSignups';
+import { mockUser, mockSignup } from 'server/test/mock-data/mockUser';
+import { mockResults } from 'server/test/mock-data/mockResults';
+import { mockGame, mockGame2 } from 'server/test/mock-data/mockGame';
 
 let mongoServer: MongoMemoryServer;
 

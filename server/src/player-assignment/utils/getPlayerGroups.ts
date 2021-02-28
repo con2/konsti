@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { User, UserArray } from 'typings/user.typings';
+import { User, UserArray } from 'server/typings/user.typings';
 
 export const getPlayerGroups = (
   players: readonly User[]

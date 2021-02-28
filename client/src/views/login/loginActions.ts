@@ -1,12 +1,15 @@
-import { postLogin } from 'services/loginServices';
-import { saveSession, clearSession } from 'utils/localStorage';
+import { postLogin } from 'client/services/loginServices';
+import { saveSession, clearSession } from 'client/utils/localStorage';
 import {
   LoginFormFields,
   LoginData,
   PostLoginResponse,
-} from 'typings/user.typings';
-import { ServerError, AppThunk } from 'typings/utils.typings';
-import { SubmitLoginAsync, SUBMIT_LOGIN } from 'typings/loginActions.typings';
+} from 'client/typings/user.typings';
+import { ServerError, AppThunk } from 'client/typings/utils.typings';
+import {
+  SubmitLoginAsync,
+  SUBMIT_LOGIN,
+} from 'client/typings/loginActions.typings';
 
 export const submitLogin = (loginFormFields: LoginFormFields): AppThunk => {
   return async (dispatch): Promise<void> => {

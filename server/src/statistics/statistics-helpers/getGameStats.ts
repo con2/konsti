@@ -5,7 +5,7 @@ import {
   getDemandByTime,
   getDemandByGame,
 } from './gameDataHelpers';
-import { logger } from 'utils/logger';
+import { logger } from 'server/utils/logger';
 
 export const getGameStats = (year: number, event: string): void => {
   const games = JSON.parse(

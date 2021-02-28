@@ -1,8 +1,8 @@
 import mongoose from 'mongoose';
 import { MongoMemoryServer } from 'mongodb-memory-server';
-import { db } from 'db/mongodb';
-import { UserModel } from 'db/user/userSchema';
-import { UserGroup } from 'typings/user.typings';
+import { db } from 'server/db/mongodb';
+import { UserModel } from 'server/db/user/userSchema';
+import { UserGroup } from 'server/typings/user.typings';
 
 let mongoServer: MongoMemoryServer;
 

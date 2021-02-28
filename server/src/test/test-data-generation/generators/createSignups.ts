@@ -1,10 +1,10 @@
 import faker from 'faker';
 import moment from 'moment';
 import _ from 'lodash';
-import { logger } from 'utils/logger';
-import { db } from 'db/mongodb';
-import { updateGamePopularity } from 'game-popularity/updateGamePopularity';
-import { User, SignedGame } from 'typings//user.typings';
+import { logger } from 'server/utils/logger';
+import { db } from 'server/db/mongodb';
+import { updateGamePopularity } from 'server/game-popularity/updateGamePopularity';
+import { User, SignedGame } from 'server/typings//user.typings';
 import { Game } from 'shared/typings/game';
 
 export const createSignups = async (): Promise<void> => {

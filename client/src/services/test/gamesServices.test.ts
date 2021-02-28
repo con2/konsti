@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { getGames, postGamesUpdate } from 'services/gamesServices';
+import { getGames, postGamesUpdate } from 'client/services/gamesServices';
 
 jest.mock('axios');
 const mockAxios = axios as jest.Mocked<typeof axios>;

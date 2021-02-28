@@ -1,8 +1,8 @@
 import React, { FC, ReactElement } from 'react';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
-import { timeFormatter } from 'utils/timeFormatter';
-import { submitSignupTime } from 'views/signup/signupActions';
+import { timeFormatter } from 'client/utils/timeFormatter';
+import { submitSignupTime } from 'client/views/signup/signupActions';
 
 interface Props {
   signupTimes: readonly string[];

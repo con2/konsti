@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import { MongoMemoryServer } from 'mongodb-memory-server';
-import { db } from 'db/mongodb';
+import { db } from 'server/db/mongodb';
 
 jest.mock('generate-serial-number');
 

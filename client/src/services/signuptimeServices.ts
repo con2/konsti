@@ -1,6 +1,9 @@
 import { AxiosResponse, AxiosError } from 'axios';
-import { api } from 'utils/api';
-import { ServerError, PostSignupTimeResult } from 'typings/utils.typings';
+import { api } from 'client/utils/api';
+import {
+  ServerError,
+  PostSignupTimeResult,
+} from 'client/typings/utils.typings';
 
 export const postSignupTime = async (
   signupTime: string

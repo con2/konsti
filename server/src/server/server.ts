@@ -5,11 +5,11 @@ import bodyParser from 'body-parser';
 import morgan from 'morgan';
 // import expressJWT from 'express-jwt'
 import expressStaticGzip from 'express-static-gzip';
-import { config } from 'config';
-import { logger, stream } from 'utils/logger';
-import { db } from 'db/mongodb';
-import { allowCORS } from 'server/middleware/cors';
-import { apiRoutes } from 'api/apiRoutes';
+import { config } from 'server/config';
+import { logger, stream } from 'server/utils/logger';
+import { db } from 'server/db/mongodb';
+import { allowCORS } from 'server/server/middleware/cors';
+import { apiRoutes } from 'server/api/apiRoutes';
 
 export const startServer = async (
   dbConnString: string

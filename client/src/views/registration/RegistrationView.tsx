@@ -2,9 +2,9 @@ import React, { FC, ReactElement } from 'react';
 import { useDispatch } from 'react-redux';
 import { SubmissionError } from 'redux-form';
 import { useTranslation } from 'react-i18next';
-import { submitRegistration } from 'views/registration/registrationActions';
-import RegistrationForm from 'views/registration/components/RegistrationForm';
-import { RegistrationFormFields } from 'typings/user.typings';
+import { submitRegistration } from 'client/views/registration/registrationActions';
+import RegistrationForm from 'client/views/registration/components/RegistrationForm';
+import { RegistrationFormFields } from 'client/typings/user.typings';
 
 export const RegistrationView: FC = (): ReactElement => {
   const dispatch = useDispatch();

@@ -1,15 +1,15 @@
 import moment from 'moment';
 import schedule from 'node-schedule';
-import { logger } from 'utils/logger';
-import { db } from 'db/mongodb';
-import { updateGames } from 'api/controllers/gamesController';
-import { config } from 'config';
-import { updateGamePopularity } from 'game-popularity/updateGamePopularity';
-import { removeOverlapSignups } from 'player-assignment/utils/removeOverlapSignups';
-import { runAssignment } from 'player-assignment/runAssignment';
-import { saveResults } from 'player-assignment/utils/saveResults';
-import { sleep } from 'utils/sleep';
-import { kompassiGameMapper } from 'utils/kompassiGameMapper';
+import { logger } from 'server/utils/logger';
+import { db } from 'server/db/mongodb';
+import { updateGames } from 'server/api/controllers/gamesController';
+import { config } from 'server/config';
+import { updateGamePopularity } from 'server/game-popularity/updateGamePopularity';
+import { removeOverlapSignups } from 'server/player-assignment/utils/removeOverlapSignups';
+import { runAssignment } from 'server/player-assignment/runAssignment';
+import { saveResults } from 'server/player-assignment/utils/saveResults';
+import { sleep } from 'server/utils/sleep';
+import { kompassiGameMapper } from 'server/utils/kompassiGameMapper';
 
 const {
   autoUpdateGamesEnabled,

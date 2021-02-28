@@ -1,8 +1,8 @@
 import moment from 'moment';
-import { config } from 'config';
+import { config } from 'client/config';
 import { getStartTimes } from './getStartTimes';
 import { Game } from 'shared/typings/game';
-import { getTime } from 'utils/getTime';
+import { getTime } from 'client/utils/getTime';
 
 export const getOpenStartTimes = (games: readonly Game[]): string[] => {
   const startTimes = getStartTimes(games);

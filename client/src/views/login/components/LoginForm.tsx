@@ -2,8 +2,8 @@ import React, { FC, ReactElement } from 'react';
 import { Field, reduxForm, InjectedFormProps } from 'redux-form';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
-import { required } from 'utils/validate';
-import { FormField } from 'components/FormField';
+import { required } from 'client/utils/validate';
+import { FormField } from 'client/components/FormField';
 
 const LoginForm: FC<InjectedFormProps> = (
   props: InjectedFormProps

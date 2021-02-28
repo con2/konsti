@@ -2,8 +2,8 @@ import React, { FC, ReactElement } from 'react';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
-import { Signup } from 'typings/user.typings';
-import { updateUnsavedChangesStatus } from 'views/signup/signupActions';
+import { Signup } from 'client/typings/user.typings';
+import { updateUnsavedChangesStatus } from 'client/views/signup/signupActions';
 
 interface Props {
   groupCode: string;

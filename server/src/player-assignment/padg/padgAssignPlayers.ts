@@ -1,15 +1,15 @@
 import _ from 'lodash';
-import { logger } from 'utils/logger';
-import { getStartingGames } from 'player-assignment/utils/getStartingGames';
-import { getSignupWishes } from 'player-assignment/utils/getSignupWishes';
-import { getSignedGames } from 'player-assignment/utils/getSignedGames';
-import { getSelectedPlayers } from 'player-assignment/utils/getSelectedPlayers';
-import { getPlayerGroups } from 'player-assignment/utils/getPlayerGroups';
-import { getGroupMembers } from 'player-assignment/utils/getGroupMembers';
-import { runPadgAssignment } from 'player-assignment/padg/utils/runPadgAssignment';
-import { User } from 'typings/user.typings';
+import { logger } from 'server/utils/logger';
+import { getStartingGames } from 'server/player-assignment/utils/getStartingGames';
+import { getSignupWishes } from 'server/player-assignment/utils/getSignupWishes';
+import { getSignedGames } from 'server/player-assignment/utils/getSignedGames';
+import { getSelectedPlayers } from 'server/player-assignment/utils/getSelectedPlayers';
+import { getPlayerGroups } from 'server/player-assignment/utils/getPlayerGroups';
+import { getGroupMembers } from 'server/player-assignment/utils/getGroupMembers';
+import { runPadgAssignment } from 'server/player-assignment/padg/utils/runPadgAssignment';
+import { User } from 'server/typings/user.typings';
 import { Game } from 'shared/typings/game';
-import { PlayerAssignmentResult } from 'typings/result.typings';
+import { PlayerAssignmentResult } from 'server/typings/result.typings';
 
 export const padgAssignPlayers = (
   players: readonly User[],

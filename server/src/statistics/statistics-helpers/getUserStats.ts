@@ -5,7 +5,7 @@ import {
   getUsersSignupCount,
   getUsersWithAllGames,
 } from './userDataHelpers';
-import { logger } from 'utils/logger';
+import { logger } from 'server/utils/logger';
 
 export const getUserStats = (year: number, event: string): void => {
   const users = JSON.parse(

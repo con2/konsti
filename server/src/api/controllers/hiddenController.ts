@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
-import { logger } from 'utils/logger';
-import { db } from 'db/mongodb';
-import { validateAuthHeader } from 'utils/authHeader';
+import { logger } from 'server/utils/logger';
+import { db } from 'server/db/mongodb';
+import { validateAuthHeader } from 'server/utils/authHeader';
 import { Game } from 'shared/typings/game';
-import { UserGroup } from 'typings/user.typings';
+import { UserGroup } from 'server/typings/user.typings';
 
 // Add hidden data to server settings
 const postHidden = async (req: Request, res: Response): Promise<unknown> => {

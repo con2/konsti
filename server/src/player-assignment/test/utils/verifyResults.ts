@@ -1,8 +1,8 @@
 import moment from 'moment';
-import { db } from 'db/mongodb';
-import { logger } from 'utils/logger';
-import { User } from 'typings/user.typings';
-import { ResultsCollectionEntry } from 'typings/result.typings';
+import { db } from 'server/db/mongodb';
+import { logger } from 'server/utils/logger';
+import { User } from 'server/typings/user.typings';
+import { ResultsCollectionEntry } from 'server/typings/result.typings';
 
 export const verifyResults = async (): Promise<void> => {
   logger.info(`Verify results and user entered games match`);

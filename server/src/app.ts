@@ -1,8 +1,8 @@
 import 'array-flat-polyfill';
-import { startServer } from 'server/server';
-import { logger } from 'utils/logger';
-import { autoUpdateGames, autoAssignPlayers } from 'utils/cron';
-import { config } from 'config';
+import { startServer } from 'server/server/server';
+import { logger } from 'server/utils/logger';
+import { autoUpdateGames, autoAssignPlayers } from 'server/utils/cron';
+import { config } from 'server/config';
 
 const startApp = async (): Promise<void> => {
   // Start cronjob to auto update games from Kompassi
