@@ -1,5 +1,6 @@
 import 'array-flat-polyfill';
 import { startServer } from 'server/utils/startServer';
+import { closeServer } from 'server/utils/closeServer';
 import { logger } from 'server/utils/logger';
 import { autoUpdateGames, autoAssignPlayers } from 'server/utils/cron';
 import { config } from 'server/config';
@@ -20,6 +21,15 @@ const startApp = async (): Promise<void> => {
     const address = app?.address();
     if (!address || typeof address === 'string') return;
     logger.info(`Express: Server started on port ${address.port}`);
+  });
+
+  process.on('SIGINT', () => {
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
+    closeServer(app, config.dbConnString);
+  });
+  process.on('SIGTERM', () => {
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
+    closeServer(app, config.dbConnString);
   });
 };
 
