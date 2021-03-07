@@ -15,7 +15,7 @@ beforeEach(async () => {
 });
 
 afterEach(async () => {
-  await closeServer(server, mongoUri);
+  await closeServer(null, mongoUri);
   await mongoServer.stop();
 });
 
