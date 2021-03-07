@@ -6,7 +6,7 @@
   "author": {
     "name": "Arttu Hanska"
   },
-  "main": "app.ts",
+  "main": "index.ts",
   "scripts": {
     "build": "yarn build:js",
     "build:js": "babel src -d lib --extensions \".ts\" --root-mode upward",
@@ -19,8 +19,8 @@
     "generate-serials": "yarn build && node lib/utils/generateSerials.js",
     "lint": "yarn eslint && yarn prettier:check",
     "remove-invalid-games": "yarn build && cross-env NODE_ENV=development node lib/test/scripts/removeInvalidGames.js",
-    "start": "yarn build && node lib/app.js",
-    "start:dev": "yarn build && cross-env NODE_ENV=development nodemon --ext js,ts,json --exec node lib/app.js",
+    "start": "yarn build && node lib/index.js",
+    "start:dev": "yarn build && cross-env NODE_ENV=development nodemon --ext js,ts,json --exec node lib/index.js",
     "stats": "yarn build && node lib/statistics/statGenerator.js --",
     "test": "jest",
     "test-assign": "yarn build && cross-env NODE_ENV=development node lib/test/scripts/testAssignPlayers.js",
