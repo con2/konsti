@@ -48,6 +48,7 @@ const prodConfig = {
   debug: process.env.DEBUG === 'true' || false,
   GROUP_ASSIGNMENT_ROUNDS: 300,
   PADG_ASSIGNMENT_ROUNDS: 300,
+  RANDOM_ASSIGNMENT_ROUNDS: 300,
   updateGamePopularityEnabled: true,
   enableSignupTimeCheck: true,
 
@@ -71,6 +72,7 @@ const stagingConfig = {
   debug: process.env.DEBUG === 'true' || false,
   GROUP_ASSIGNMENT_ROUNDS: 300,
   PADG_ASSIGNMENT_ROUNDS: 300,
+  RANDOM_ASSIGNMENT_ROUNDS: 300,
   updateGamePopularityEnabled: true,
   enableSignupTimeCheck: false,
 
@@ -91,6 +93,7 @@ const devConfig = {
   debug: false,
   GROUP_ASSIGNMENT_ROUNDS: 1,
   PADG_ASSIGNMENT_ROUNDS: 300,
+  RANDOM_ASSIGNMENT_ROUNDS: 10,
   updateGamePopularityEnabled: true,
   enableSignupTimeCheck: false,
 

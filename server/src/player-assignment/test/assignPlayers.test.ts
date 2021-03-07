@@ -174,10 +174,133 @@ describe('Assignment with valid data', () => {
     await verifyResults();
   });
 
+  test('should return success with random strategy', async () => {
+    const { CONVENTION_START_TIME } = config;
+
+    const assignmentStrategy = AssignmentStrategy.random;
+
+    const startingTime = moment(CONVENTION_START_TIME).add(2, 'hours').format();
+
+    // First run
+    const assignResults = await runAssignment(startingTime, assignmentStrategy);
+
+    expect(assignResults.status).toEqual('success');
+
+    try {
+      await removeOverlapSignups(assignResults.results);
+    } catch (error) {
+      return logger.error(error);
+    }
+
+    try {
+      await saveResults(
+        assignResults.results,
+        startingTime,
+        assignResults.algorithm,
+        assignResults.message
+      );
+    } catch (error) {
+      return logger.error(error);
+    }
+
+    await verifyUserSignups();
+
+    await verifyResults();
+
+    // SECOND RUN
+
+    const assignResults2 = await runAssignment(startingTime);
+
+    expect(assignResults2.status).toEqual('success');
+
+    try {
+      await removeOverlapSignups(assignResults2.results);
+    } catch (error) {
+      return logger.error(error);
+    }
+
+    try {
+      await saveResults(
+        assignResults2.results,
+        startingTime,
+        assignResults2.algorithm,
+        assignResults2.message
+      );
+    } catch (error) {
+      return logger.error(error);
+    }
+
+    await verifyUserSignups();
+
+    await verifyResults();
+  });
+
   test('should return success with group+padg strategy', async () => {
     const { CONVENTION_START_TIME } = config;
 
     const assignmentStrategy = AssignmentStrategy.groupPadg;
+
+    const startingTime = moment(CONVENTION_START_TIME).add(2, 'hours').format();
+
+    // FIRST RUN
+
+    const assignResults = await runAssignment(startingTime, assignmentStrategy);
+
+    expect(assignResults.status).toEqual('success');
+
+    try {
+      await removeOverlapSignups(assignResults.results);
+    } catch (error) {
+      return logger.error(error);
+    }
+
+    try {
+      await saveResults(
+        assignResults.results,
+        startingTime,
+        assignResults.algorithm,
+        assignResults.message
+      );
+    } catch (error) {
+      return logger.error(error);
+    }
+
+    await verifyUserSignups();
+
+    await verifyResults();
+
+    // SECOND RUN
+
+    const assignResults2 = await runAssignment(startingTime);
+
+    expect(assignResults2.status).toEqual('success');
+
+    try {
+      await removeOverlapSignups(assignResults2.results);
+    } catch (error) {
+      return logger.error(error);
+    }
+
+    try {
+      await saveResults(
+        assignResults2.results,
+        startingTime,
+        assignResults2.algorithm,
+        assignResults2.message
+      );
+    } catch (error) {
+      return logger.error(error);
+    }
+
+    await verifyUserSignups();
+
+    await verifyResults();
+  });
+
+  test('should return success with random+padg strategy', async () => {
+    const { CONVENTION_START_TIME } = config;
+
+    const assignmentStrategy = AssignmentStrategy.randomPadg;
 
     const startingTime = moment(CONVENTION_START_TIME).add(2, 'hours').format();
 
@@ -334,10 +457,34 @@ describe('Assignment with no games', () => {
     expect(assignResults.status).toEqual('error: no starting games');
   });
 
+  test('should return error with random strategy', async () => {
+    const { CONVENTION_START_TIME } = config;
+
+    const assignmentStrategy = AssignmentStrategy.random;
+
+    const startingTime = moment(CONVENTION_START_TIME).add(2, 'hours').format();
+
+    const assignResults = await runAssignment(startingTime, assignmentStrategy);
+
+    expect(assignResults.status).toEqual('error: no starting games');
+  });
+
   test('should return error with group+padg strategy', async () => {
     const { CONVENTION_START_TIME } = config;
 
     const assignmentStrategy = AssignmentStrategy.groupPadg;
+
+    const startingTime = moment(CONVENTION_START_TIME).add(2, 'hours').format();
+
+    const assignResults = await runAssignment(startingTime, assignmentStrategy);
+
+    expect(assignResults.status).toEqual('error: no starting games');
+  });
+
+  test('should return error with random+padg strategy', async () => {
+    const { CONVENTION_START_TIME } = config;
+
+    const assignmentStrategy = AssignmentStrategy.randomPadg;
 
     const startingTime = moment(CONVENTION_START_TIME).add(2, 'hours').format();
 
@@ -390,10 +537,34 @@ describe('Assignment with no players', () => {
     expect(assignResults.status).toEqual('error: no signup wishes');
   });
 
+  test('should return error with random strategy', async () => {
+    const { CONVENTION_START_TIME } = config;
+
+    const assignmentStrategy = AssignmentStrategy.random;
+
+    const startingTime = moment(CONVENTION_START_TIME).add(2, 'hours').format();
+
+    const assignResults = await runAssignment(startingTime, assignmentStrategy);
+
+    expect(assignResults.status).toEqual('error: no signup wishes');
+  });
+
   test('should return error with group+padg strategy', async () => {
     const { CONVENTION_START_TIME } = config;
 
     const assignmentStrategy = AssignmentStrategy.groupPadg;
+
+    const startingTime = moment(CONVENTION_START_TIME).add(2, 'hours').format();
+
+    const assignResults = await runAssignment(startingTime, assignmentStrategy);
+
+    expect(assignResults.status).toEqual('error: no signup wishes');
+  });
+
+  test('should return error with random+padg strategy', async () => {
+    const { CONVENTION_START_TIME } = config;
+
+    const assignmentStrategy = AssignmentStrategy.randomPadg;
 
     const startingTime = moment(CONVENTION_START_TIME).add(2, 'hours').format();
 

@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
-import { SignedGame, EnteredGame } from 'typings/user.typings';
+import { SignedGame, EnteredGame, UserArray, User } from 'typings/user.typings';
+import { Game } from 'typings/game.typings';
 
 export interface ResultDoc extends Result, mongoose.Document {
   algorithm: string;
@@ -33,4 +34,12 @@ export interface ResultsCollectionEntry {
 export interface AssignmentStrategyResult {
   results: readonly Result[];
   message: string;
+}
+
+export interface runRandomAndPadgInput {
+  signedGames: readonly Game[];
+  playerGroups: readonly UserArray[];
+  allPlayers: readonly User[];
+  numberOfIndividuals: Number;
+  numberOfGroups: Number;
 }

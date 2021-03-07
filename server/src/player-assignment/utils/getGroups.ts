@@ -1,7 +1,7 @@
 import moment from 'moment';
 import _ from 'lodash';
 import { UserArray } from 'typings/user.typings';
-import { Group } from 'typings/padgAssign.typings';
+import { Group } from 'typings/padgRandomAssign.typings';
 
 export const getGroups = (
   playerGroups: readonly UserArray[],

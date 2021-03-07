@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { PadgAssignResults } from 'typings/padgAssign.typings';
+import { PadgAssignResults } from 'typings/padgRandomAssign.typings';
 import { UserArray, EnteredGame, User } from 'typings/user.typings';
 import { Result } from 'typings/result.typings';
 

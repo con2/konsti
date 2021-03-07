@@ -1,4 +1,4 @@
-import { getList } from '../getList';
+import { getList } from 'player-assignment/utils/getList';
 import { UserArray, User, UserGroup } from 'typings/user.typings';
 import { mockGame } from 'test/mock-data/mockGame';
 
