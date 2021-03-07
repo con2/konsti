@@ -8,14 +8,16 @@
   },
   "main": "index.tsx",
   "scripts": {
-    "build:dev": "yarn clean && webpack-cli",
     "build:ci": "yarn clean && webpack-cli",
+    "build:cypress": "babel cypress --out-dir build/cypress --extensions .ts --root-mode upward",
+    "build:dev": "yarn clean && webpack-cli",
     "build:prod": "yarn clean && webpack-cli",
     "build:staging": "yarn clean && webpack-cli",
     "build:types": "tsc --emitDeclarationOnly",
-    "build:cypress": "babel cypress --out-dir build/cypress --extensions .ts --root-mode upward",
     "bundle-analyzer": "webpack-cli --profile --json > stats.json && webpack-bundle-analyzer stats.json build -m server",
     "clean": "rimraf build",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
     "eslint": "eslint . --ext .js,.ts,.tsx",
     "eslint-rules": "eslint --print-config .eslintrc.js",
     "snapshot-update": "jest -u",
@@ -25,9 +27,7 @@
     "test:coverage": "jest --coverage --colors",
     "test:watch": "jest --watch",
     "type-check": "tsc --noEmit",
-    "type-check:cypress": "tsc --noEmit --project cypress/tsconfig.json",
-    "cypress:open": "cypress open",
-    "cypress:run": "cypress run"
+    "type-check:cypress": "tsc --noEmit --project cypress/tsconfig.json"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "1.2.34",
