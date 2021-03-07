@@ -6,7 +6,7 @@
   "author": {
     "name": "Arttu Hanska"
   },
-  "main": "app.ts",
+  "main": "index.ts",
   "scripts": {
     "build": "yarn build:js",
     "build:js": "babel src -d lib --extensions \".ts\" --root-mode upward",
