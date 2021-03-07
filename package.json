@@ -7,15 +7,17 @@
   ],
   "scripts": {
     "build": "concurrently \"yarn build:client\" \"yarn build:server\"",
-    "build-front:dev": "yarn workspace konsti-client build:dev && yarn copy-front",
     "build-front:ci": "yarn workspace konsti-client build:ci && yarn copy-front",
+    "build-front:dev": "yarn workspace konsti-client build:dev && yarn copy-front",
     "build-front:prod": "yarn workspace konsti-client build:prod && yarn copy-front",
     "build-front:staging": "yarn workspace konsti-client build:staging && yarn copy-front",
     "build:client": "yarn workspace konsti-client build:prod",
-    "build:server": "yarn workspace konsti-server build",
     "build:cypress": "yarn workspace konsti-client build:cypress",
+    "build:server": "yarn workspace konsti-server build",
     "client": "yarn workspace konsti-client start",
     "copy-front": "rimraf server/front && ncp client/build server/front",
+    "cypress:open": "yarn workspace konsti-client cypress:open",
+    "cypress:run": "yarn workspace konsti-client cypress:run",
     "deploy-prod": "yarn prepare-deploy:prod && eb deploy konsti-prod",
     "deploy-staging": "yarn prepare-deploy:staging && eb deploy konsti-staging",
     "docker:start": "yarn build-front:dev && docker-compose up --detach --build --remove-orphans",
@@ -25,6 +27,7 @@
     "eslint-rules": "eslint --print-config .eslintrc.js",
     "eslint:client": "yarn workspace konsti-client eslint",
     "eslint:server": "yarn workspace konsti-server eslint",
+    "prepare": "is-ci || husky install",
     "lint": "yarn eslint && yarn stylelint && yarn prettier:check",
     "prepare-deploy:prod": "yarn build-front:prod && yarn build:server",
     "prepare-deploy:staging": "yarn build-front:staging && yarn build:server",
@@ -36,14 +39,7 @@
     "start:dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
     "stylelint": "yarn workspace konsti-client stylelint",
     "test": "jest",
-    "type-check": "tsc --noEmit",
-    "cypress:run": "yarn workspace konsti-client cypress:run",
-    "cypress:open": "yarn workspace konsti-client cypress:open"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "@babel/cli": "7.13.0",
@@ -90,7 +86,8 @@
     "eslint-plugin-react-hooks": "4.2.0",
     "eslint-plugin-security": "1.4.0",
     "eslint-plugin-unicorn": "28.0.2",
-    "husky": "4.3.8",
+    "husky": "5.1.3",
+    "is-ci": "3.0.0",
     "jest": "26.6.3",
     "lint-staged": "10.5.4",
     "prettier": "2.2.1",
