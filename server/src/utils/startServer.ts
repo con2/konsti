@@ -8,7 +8,7 @@ import expressStaticGzip from 'express-static-gzip';
 import { config } from 'server/config';
 import { logger, stream } from 'server/utils/logger';
 import { db } from 'server/db/mongodb';
-import { allowCORS } from 'server/server/middleware/cors';
+import { allowCORS } from 'server/middleware/cors';
 import { apiRoutes } from 'server/api/apiRoutes';
 
 export const startServer = async (
@@ -85,15 +85,4 @@ export const startServer = async (
   server.set('port', config.port);
 
   return server;
-};
-
-export const closeServer = async (
-  server: Application,
-  dbConnString: string
-): Promise<void> => {
-  try {
-    await db.gracefulExit(dbConnString);
-  } catch (error) {
-    logger.error(error);
-  }
 };

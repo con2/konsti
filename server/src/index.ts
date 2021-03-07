@@ -1,5 +1,5 @@
 import 'array-flat-polyfill';
-import { startServer } from 'server/server/server';
+import { startServer } from 'server/utils/startServer';
 import { logger } from 'server/utils/logger';
 import { autoUpdateGames, autoAssignPlayers } from 'server/utils/cron';
 import { config } from 'server/config';
