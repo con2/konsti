@@ -1,6 +1,6 @@
 import moment from 'moment';
 import { logger } from 'server/utils/logger';
-import { Game } from 'shared/typings/game';
+import { Game } from 'shared/typings/models/game';
 
 export const getStartingGames = (
   games: readonly Game[],

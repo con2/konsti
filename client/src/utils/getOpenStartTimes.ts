@@ -1,7 +1,7 @@
 import moment from 'moment';
 import { config } from 'client/config';
 import { getStartTimes } from './getStartTimes';
-import { Game } from 'shared/typings/game';
+import { Game } from 'shared/typings/models/game';
 import { getTime } from 'client/utils/getTime';
 
 export const getOpenStartTimes = (games: readonly Game[]): string[] => {

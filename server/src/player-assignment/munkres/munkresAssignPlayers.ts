@@ -12,7 +12,7 @@ import { getPlayersWithTooHighPriority } from 'server/player-assignment/munkres/
 import { getRemovedPlayer } from 'server/player-assignment/munkres/utils/getRemovedPlayer';
 import { buildSignupResults } from 'server/player-assignment/munkres/utils/buildSignupResults';
 import { User } from 'server/typings/user.typings';
-import { Game } from 'shared/typings/game';
+import { Game } from 'shared/typings/models/game';
 import { PlayerAssignmentResult } from 'server/typings/result.typings';
 
 export const munkresAssignPlayers = (
