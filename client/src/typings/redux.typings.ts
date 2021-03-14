@@ -1,4 +1,4 @@
-import { Game } from 'shared/typings/game';
+import { Game } from 'shared/typings/models/game';
 import { GroupMember } from 'client/typings/group.typings';
 import { Signup, UserGroup } from 'client/typings/user.typings';
 import { Result } from 'client/typings/result.typings';

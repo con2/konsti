@@ -1,5 +1,5 @@
 import { logger } from 'server/utils/logger';
-import { Game } from 'shared/typings/game';
+import { Game } from 'shared/typings/models/game';
 import { ResultsCollectionEntry } from 'server/typings/result.typings';
 import { StringNumberObject } from 'server/typings/common.typings';
 import { toPercent } from 'server/statistics/statsUtil';

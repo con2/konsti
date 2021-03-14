@@ -10,7 +10,7 @@ import { config } from 'client/config';
 import { GroupMember } from 'client/typings/group.typings';
 import { DnDUpdatedPositions } from 'client/typings/game.typings';
 import { RootState } from 'client/typings/redux.typings';
-import { Game } from 'shared/typings/game';
+import { Game } from 'shared/typings/models/game';
 
 export interface Props {
   updateSelectedGames: Function;

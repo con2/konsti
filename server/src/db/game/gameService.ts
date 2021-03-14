@@ -4,7 +4,7 @@ import { GameModel } from 'server/db/game/gameSchema';
 import { removeInvalidSignupsFromUsers } from 'server/player-assignment/utils/removeInvalidSignupsFromUsers';
 import { removeMovedGamesFromUsers } from 'server/player-assignment/utils/removeMovedGamesFromUsers';
 import { GameDoc } from 'server/typings/game.typings';
-import { Game } from 'shared/typings/game';
+import { Game } from 'shared/typings/models/game';
 
 const removeGames = async (): Promise<void> => {
   logger.info('MongoDB: remove ALL games from db');

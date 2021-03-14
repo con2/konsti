@@ -1,5 +1,5 @@
 import { logger } from 'server/utils/logger';
-import { Game } from 'shared/typings/game';
+import { Game } from 'shared/typings/models/game';
 import { SignupWish } from 'server/typings/user.typings';
 
 export const getSignedGames = (
