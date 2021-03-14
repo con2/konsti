@@ -35,7 +35,7 @@ export const startServer = async (
 
   server.use(
     '/',
-    (err: Error, req: Request, res: Response, next: NextFunction) => {
+    (err: Error, _req: Request, res: Response, next: NextFunction) => {
       if (err) {
         return res.sendStatus(400);
       } else {
@@ -78,7 +78,7 @@ export const startServer = async (
     server.use(express.static(staticPath));
   }
 
-  server.get('/*', (req: Request, res: Response) => {
+  server.get('/*', (_req: Request, res: Response) => {
     res.sendFile(path.join(staticPath, 'index.html'));
   });
 

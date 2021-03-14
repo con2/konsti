@@ -1,4 +1,4 @@
-import { Game } from 'shared/typings/game';
+import { Game } from 'shared/typings/models/game';
 import { Signup } from 'client/typings/user.typings';
 
 export const SUBMIT_GET_USER_GAMES = 'SUBMIT_GET_USER_GAMES';

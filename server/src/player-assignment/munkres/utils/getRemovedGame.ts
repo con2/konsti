@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { Game } from 'shared/typings/game';
+import { Game } from 'shared/typings/models/game';
 import { GameWithPlayerCount } from 'server/typings/game.typings';
 
 export const getRemovedGame = (

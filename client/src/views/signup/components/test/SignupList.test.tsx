@@ -2,7 +2,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { shallow } from 'enzyme';
 import { store } from 'client/utils/store';
-import { Game } from 'shared/typings/game';
+import { Game } from 'shared/typings/models/game';
 import { SignupList, Props } from 'client/views/signup/components/SignupList';
 
 const games: Game[] = [];

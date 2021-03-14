@@ -1,7 +1,7 @@
 import { getUser } from 'client/services/userServices';
 import { postFavorite } from 'client/services/favoriteServices';
 import { FavoriteData, UserGames } from 'client/typings/user.typings';
-import { Game } from 'shared/typings/game';
+import { Game } from 'shared/typings/models/game';
 import { AppThunk } from 'client/typings/utils.typings';
 import {
   SubmitGetUserAsync,

@@ -9,7 +9,7 @@ import { getUpcomingGames } from 'client/utils/getUpcomingGames';
 import { loadGames } from 'client/utils/loadData';
 import { config } from 'client/config';
 import { Loading } from 'client/components/Loading';
-import { Game } from 'shared/typings/game';
+import { Game } from 'shared/typings/models/game';
 import { getTime } from 'client/utils/getTime';
 import { RootState } from 'client/typings/redux.typings';
 

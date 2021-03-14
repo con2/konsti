@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { timeFormatter } from 'client/utils/timeFormatter';
 import { getGameTags } from 'client/utils/getGameTags';
 import { config } from 'client/config';
-import { Game } from 'shared/typings/game';
+import { Game } from 'shared/typings/models/game';
 
 interface Props {
   game: Game;

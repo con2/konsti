@@ -5,7 +5,7 @@ import { runAssignmentStrategy } from 'server/player-assignment/utils/runAssignm
 import { removeInvalidSignupsFromUsers } from 'server/player-assignment/utils/removeInvalidSignupsFromUsers';
 import { PlayerAssignmentResult } from 'server/typings/result.typings';
 import { User } from 'server/typings/user.typings';
-import { Game } from 'shared/typings/game';
+import { Game } from 'shared/typings/models/game';
 import { AssignmentStrategy } from 'server/typings/config.typings';
 
 export const runAssignment = async (

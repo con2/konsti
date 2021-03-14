@@ -3,7 +3,7 @@ import { groupAssignPlayers } from 'server/player-assignment/group/groupAssignPl
 import { munkresAssignPlayers } from 'server/player-assignment/munkres/munkresAssignPlayers';
 import { padgAssignPlayers } from 'server/player-assignment/padg/padgAssignPlayers';
 import { User } from 'server/typings/user.typings';
-import { Game } from 'shared/typings/game';
+import { Game } from 'shared/typings/models/game';
 import { PlayerAssignmentResult } from 'server/typings/result.typings';
 import { AssignmentStrategy } from 'server/typings/config.typings';
 

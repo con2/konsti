@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { logger } from 'server/utils/logger';
 import { db } from 'server/db/mongodb';
 import { validateAuthHeader } from 'server/utils/authHeader';
-import { Game } from 'shared/typings/game';
+import { Game } from 'shared/typings/models/game';
 import { UserGroup } from 'server/typings/user.typings';
 
 // Add hidden data to server settings

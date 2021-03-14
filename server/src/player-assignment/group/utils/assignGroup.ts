@@ -2,7 +2,7 @@ import { logger } from 'server/utils/logger';
 import { runGroupAssignment } from 'server/player-assignment/group/utils/runGroupAssignment';
 import { config } from 'server/config';
 import { User, UserArray } from 'server/typings/user.typings';
-import { Game } from 'shared/typings/game';
+import { Game } from 'shared/typings/models/game';
 import {
   AssignmentStrategyResult,
   Result,
