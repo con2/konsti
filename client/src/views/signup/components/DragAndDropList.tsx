@@ -3,13 +3,14 @@ import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { DragDropContext, DropResult } from 'react-beautiful-dnd';
-import { DropRow } from 'views/signup/components/DropRow';
-import { reorder, move } from 'utils/dragAndDrop';
-import { sleep } from 'utils/sleep';
-import { config } from 'config';
-import { GroupMember } from 'typings/group.typings';
-import { Game, DnDUpdatedPositions } from 'typings/game.typings';
-import { RootState } from 'typings/redux.typings';
+import { DropRow } from 'client/views/signup/components/DropRow';
+import { reorder, move } from 'client/utils/dragAndDrop';
+import { sleep } from 'client/utils/sleep';
+import { config } from 'client/config';
+import { GroupMember } from 'client/typings/group.typings';
+import { DnDUpdatedPositions } from 'client/typings/game.typings';
+import { RootState } from 'client/typings/redux.typings';
+import { Game } from 'shared/typings/game';
 
 export interface Props {
   updateSelectedGames: Function;
@@ -63,8 +64,7 @@ export const DragAndDropList: FC<Props> = (props: Props): ReactElement => {
         destination.index
       );
 
-      if (source.droppableId === 'availableGames') {
-      } else if (source.droppableId === 'selectedGames') {
+      if (source.droppableId === 'selectedGames') {
         updateSelectedGames(updatedPositions);
       }
     }
@@ -100,9 +100,6 @@ export const DragAndDropList: FC<Props> = (props: Props): ReactElement => {
       ) {
         showWarning('groupTooBigWarning');
         return;
-      }
-
-      if (updatedPositions.availableGames) {
       }
 
       if (updatedPositions.selectedGames) {

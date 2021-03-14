@@ -4,7 +4,7 @@ import {
   getMaximumNumberOfPlayersByTime,
   getDemandByTime,
 } from './resultDataHelpers';
-import { logger } from 'utils/logger';
+import { logger } from 'server/utils/logger';
 
 export const getResultsStats = (year: number, event: string): void => {
   const results = JSON.parse(

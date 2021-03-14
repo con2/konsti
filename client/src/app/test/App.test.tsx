@@ -1,8 +1,8 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { store } from 'utils/store';
 import { shallow } from 'enzyme';
-import { App } from '../App';
+import { store } from 'client/utils/store';
+import { App } from 'client/app/App';
 
 describe('App', () => {
   it('should render correctly', () => {

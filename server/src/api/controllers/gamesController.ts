@@ -1,13 +1,13 @@
-import { logger } from 'utils/logger';
-import { db } from 'db/mongodb';
-import { validateAuthHeader } from 'utils/authHeader';
-import { updateGames } from 'utils/updateGames';
-import { updateGamePopularity } from 'game-popularity/updateGamePopularity';
-import { config } from 'config';
-import { kompassiGameMapper } from 'utils/kompassiGameMapper';
 import { Request, Response } from 'express';
-import { UserGroup } from 'typings/user.typings';
-import { KompassiGame } from 'typings/game.typings';
+import { logger } from 'server/utils/logger';
+import { db } from 'server/db/mongodb';
+import { validateAuthHeader } from 'server/utils/authHeader';
+import { updateGames } from 'server/utils/updateGames';
+import { updateGamePopularity } from 'server/game-popularity/updateGamePopularity';
+import { config } from 'server/config';
+import { kompassiGameMapper } from 'server/utils/kompassiGameMapper';
+import { UserGroup } from 'server/typings/user.typings';
+import { KompassiGame } from 'server/typings/game.typings';
 
 // Update games db from master data
 const postGames = async (req: Request, res: Response): Promise<unknown> => {

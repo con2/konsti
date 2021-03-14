@@ -1,5 +1,5 @@
 module.exports = {
-  parser: '@typescript-eslint/parser', // or 'babel-eslint'
+  parser: '@typescript-eslint/parser',
 
   plugins: [
     'eslint-plugin-compat',
@@ -18,9 +18,6 @@ module.exports = {
   extends: [
     'eslint-config-standard-with-typescript',
     'eslint-config-prettier',
-    'eslint-config-prettier/react',
-    'eslint-config-prettier/standard',
-    'eslint-config-prettier/@typescript-eslint',
     'plugin:eslint-plugin-eslint-comments/recommended',
     'plugin:eslint-plugin-jest/recommended',
     'plugin:eslint-plugin-promise/recommended',
@@ -56,16 +53,15 @@ module.exports = {
       version: 'detect',
     },
     polyfills: ['Promise', 'Array.from', 'Object.entries'],
-    'import/resolver': {
-      'babel-module': {},
-    },
   },
 
   rules: {
     // eslint
     'no-param-reassign': 'error',
+    'no-restricted-imports': ['error', { patterns: ['../*'] }],
 
     // eslint-plugin-react
+    'react/no-multi-comp': 'error',
     'react/no-unescaped-entities': 'off',
 
     // eslint-plugin-react-hooks
@@ -80,6 +76,7 @@ module.exports = {
     // eslint-plugin-import
     'import/no-unused-modules': ['error', { unusedExports: true }],
     'import/no-unresolved': 'off',
+    'import/order': ['error', { groups: ['builtin', 'external'] }],
 
     // eslint-plugin-jest
     'jest/expect-expect': 'off', // Does not work with Cypress
@@ -103,5 +100,6 @@ module.exports = {
     '@typescript-eslint/restrict-template-expressions': 'off',
     '@typescript-eslint/no-misused-promises': 'off',
     '@typescript-eslint/no-var-requires': 'off',
+    'array-callback-return': 'off',
   },
 };

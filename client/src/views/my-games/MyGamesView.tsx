@@ -2,20 +2,20 @@ import React, { FC, ReactElement } from 'react';
 import { useSelector, useStore } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
-import { MySignupsList } from 'views/my-games/components/MySignupsList';
-import { MyFavoritesList } from 'views/my-games/components/MyFavoritesList';
-import { MyEnteredList } from 'views/my-games/components/MyEnteredList';
+import { MySignupsList } from 'client/views/my-games/components/MySignupsList';
+import { MyFavoritesList } from 'client/views/my-games/components/MyFavoritesList';
+import { MyEnteredList } from 'client/views/my-games/components/MyEnteredList';
 import {
   getUpcomingSignedGames,
   getUpcomingEnteredGames,
   getUpcomingFavorites,
-} from 'utils/getUpcomingGames';
-import { loadUser, loadGames, loadGroupMembers } from 'utils/loadData';
-import { isGroupLeader } from 'views/group/GroupView';
-import { Game } from 'typings/game.typings';
-import { Signup } from 'typings/user.typings';
-import { GroupMember } from 'typings/group.typings';
-import { RootState } from 'typings/redux.typings';
+} from 'client/utils/getUpcomingGames';
+import { loadUser, loadGames, loadGroupMembers } from 'client/utils/loadData';
+import { isGroupLeader } from 'client/views/group/GroupView';
+import { Game } from 'shared/typings/game';
+import { Signup } from 'client/typings/user.typings';
+import { GroupMember } from 'client/typings/group.typings';
+import { RootState } from 'client/typings/redux.typings';
 
 export const MyGamesView: FC = (): ReactElement => {
   const { t } = useTranslation();

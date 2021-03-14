@@ -2,17 +2,17 @@ import React, { FC, ReactElement, ChangeEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
-import { Hidden } from 'views/admin/components/Hidden';
+import { Hidden } from 'client/views/admin/components/Hidden';
 import {
   submitSignupTime,
   submitToggleAppOpen,
-} from 'views/admin/adminActions';
-import { submitPlayersAssign } from 'views/results/resultsActions';
-import { submitGamesUpdate } from 'views/all-games/allGamesActions';
-import { TimesDropdown } from 'components/TimesDropdown';
-import { timeFormatter } from 'utils/timeFormatter';
-import { Game } from 'typings/game.typings';
-import { RootState } from 'typings/redux.typings';
+} from 'client/views/admin/adminActions';
+import { submitPlayersAssign } from 'client/views/results/resultsActions';
+import { submitGamesUpdate } from 'client/views/all-games/allGamesActions';
+import { TimesDropdown } from 'client/components/TimesDropdown';
+import { timeFormatter } from 'client/utils/timeFormatter';
+import { Game } from 'shared/typings/game';
+import { RootState } from 'client/typings/redux.typings';
 
 export const AdminView: FC = (): ReactElement => {
   const games: readonly Game[] = useSelector(

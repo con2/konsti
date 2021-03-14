@@ -1,8 +1,8 @@
-import { logger } from 'utils/logger';
-import { db } from 'db/mongodb';
-import { ResultsModel } from 'db/results/resultsSchema';
-import { Result, ResultsCollectionEntry } from 'typings/result.typings';
-import { GameDoc } from 'typings/game.typings';
+import { logger } from 'server/utils/logger';
+import { db } from 'server/db/mongodb';
+import { ResultsModel } from 'server/db/results/resultsSchema';
+import { Result, ResultsCollectionEntry } from 'server/typings/result.typings';
+import { GameDoc } from 'server/typings/game.typings';
 
 const removeResults = async (): Promise<void> => {
   logger.info('MongoDB: remove ALL results from db');
@@ -31,8 +31,9 @@ const findResult = async (
 };
 
 const findResults = async (): Promise<ResultsCollectionEntry[]> => {
-  let response;
+  let response: ResultsCollectionEntry[];
   try {
+    // @ts-expect-error: Returns ResultsCollectionEntry even though it definitely should be ResultsCollectionEntry[]
     response = await ResultsModel.find(
       {},
       '-_id -__v -createdAt -updatedAt -result._id'

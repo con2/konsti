@@ -27,19 +27,19 @@ exports[`ResultsList should render correctly 1`] = `
     >
       gameTitle
     </button>
-    <ResultsList__FindField>
+    <styled.div>
       <span>
         find
          
       </span>
       <span>
-        <ResultsList__Input
+        <styled.input
           onChange={[Function]}
           type="text"
           value=""
         />
       </span>
-    </ResultsList__FindField>
+    </styled.div>
   </div>
 </div>
 `;

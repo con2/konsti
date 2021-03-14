@@ -1,4 +1,4 @@
-import { Game } from 'typings/game.typings';
+import { Game } from 'shared/typings/game';
 
 export const mockGame: Game = {
   gameId: 'p2106',

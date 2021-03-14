@@ -1,7 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { ResultsByStartTimes, Props } from '../ResultsByStartTimes';
-import { Signup } from 'typings/user.typings';
+import { Signup } from 'client/typings/user.typings';
+import {
+  ResultsByStartTimes,
+  Props,
+} from 'client/views/my-games/components/ResultsByStartTimes';
 
 const signups: Signup[] = [];
 const startTimes: string[] = [];

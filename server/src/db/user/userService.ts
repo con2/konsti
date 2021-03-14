@@ -1,7 +1,7 @@
-import { logger } from 'utils/logger';
-import { db } from 'db/mongodb';
-import { UserModel } from 'db/user/userSchema';
-import { Signup } from 'typings/result.typings';
+import { logger } from 'server/utils/logger';
+import { db } from 'server/db/mongodb';
+import { UserModel } from 'server/db/user/userSchema';
+import { Signup } from 'server/typings/result.typings';
 import {
   User,
   NewUserData,
@@ -10,9 +10,9 @@ import {
   FavoritedGame,
   SaveFavoriteRequest,
   UserGroup,
-} from 'typings/user.typings';
-import { Serial } from 'typings/serial.typings';
-import { GameDoc } from 'typings/game.typings';
+} from 'server/typings/user.typings';
+import { Serial } from 'server/typings/serial.typings';
+import { GameDoc } from 'server/typings/game.typings';
 
 const removeUsers = async (): Promise<void> => {
   logger.info('MongoDB: remove ALL users from db');
@@ -180,8 +180,9 @@ const findSerial = async (serialData: Serial): Promise<User | null> => {
 };
 
 const findGroupMembers = async (groupCode: string): Promise<User[]> => {
-  let response;
+  let response: User[];
   try {
+    // @ts-expect-error: Returns User even though it definitely should be User[]
     response = await UserModel.find({ groupCode })
       .lean<User>()
       .populate('favoritedGames')
@@ -244,8 +245,9 @@ const findGroup = async (
 
 const findUsers = async (): Promise<User[]> => {
   logger.debug(`MongoDB: Find all users`);
-  let users;
+  let users: User[];
   try {
+    // @ts-expect-error: Returns User even though it definitely should be User[]
     users = await UserModel.find({})
       .lean<User>()
       .populate('favoritedGames')
@@ -385,9 +387,8 @@ const saveEnteredGames = async (
   enteredGames: readonly EnteredGame[],
   username: string
 ): Promise<void> => {
-  let response;
   try {
-    response = await UserModel.updateOne(
+    await UserModel.updateOne(
       {
         username,
       },
@@ -399,7 +400,6 @@ const saveEnteredGames = async (
     logger.debug(
       `MongoDB: Updated entered games stored for user "${username}"`
     );
-    return response;
   } catch (error) {
     logger.error(
       `MongoDB: Error updating entered games for user ${username} - ${error}`

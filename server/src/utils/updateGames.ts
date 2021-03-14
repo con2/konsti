@@ -1,9 +1,9 @@
 import fs from 'fs';
 import path from 'path';
 import request from 'request-promise-native';
-import { logger } from 'utils/logger';
-import { config } from 'config';
-import { KompassiGame } from 'typings/game.typings';
+import { logger } from 'server/utils/logger';
+import { config } from 'server/config';
+import { KompassiGame } from 'server/typings/game.typings';
 
 export const updateGames = async (): Promise<readonly KompassiGame[]> => {
   let programItems: readonly KompassiGame[] = [];

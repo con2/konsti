@@ -1,11 +1,11 @@
 import React, { FC, ReactElement } from 'react';
 import { useSelector, useStore } from 'react-redux';
-import { SignupList } from 'views/signup/components/SignupList';
-import { getOpenStartTimes } from 'utils/getOpenStartTimes';
-import { loadGroupMembers, loadUser } from 'utils/loadData';
-import { isGroupLeader } from 'views/group/GroupView';
-import { Game } from 'typings/game.typings';
-import { RootState } from 'typings/redux.typings';
+import { SignupList } from 'client/views/signup/components/SignupList';
+import { getOpenStartTimes } from 'client/utils/getOpenStartTimes';
+import { loadGroupMembers, loadUser } from 'client/utils/loadData';
+import { isGroupLeader } from 'client/views/group/GroupView';
+import { Game } from 'shared/typings/game';
+import { RootState } from 'client/typings/redux.typings';
 
 export const SignupView: FC = (): ReactElement => {
   const games: readonly Game[] = useSelector(

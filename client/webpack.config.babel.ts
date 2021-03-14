@@ -1,14 +1,28 @@
+import path from 'path';
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import CompressionPlugin from 'compression-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MomentLocalesPlugin from 'moment-locales-webpack-plugin';
-import path from 'path';
-import webpack, { Configuration } from 'webpack';
+import Dotenv from 'dotenv-webpack';
+import { Configuration } from 'webpack';
 import { merge } from 'webpack-merge';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import { config } from './src/config';
 
 const TARGET = process.env.npm_lifecycle_event;
+
+const getEnvVariableFile = (): string | undefined => {
+  switch (TARGET) {
+    case 'build:prod':
+      return './config/prod.env';
+    case 'build:staging':
+      return './config/staging.env';
+    case 'build:ci':
+      return './config/ci.env';
+    default:
+      return './config/dev.env';
+  }
+};
 
 const stats = {
   // assets: false,
@@ -52,7 +66,14 @@ const commonConfig: Configuration = {
       {
         test: /\.(ts|tsx|js)$/,
         include: [path.resolve(__dirname, 'src')],
-        use: ['babel-loader'],
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              rootMode: 'upward',
+            },
+          },
+        ],
       },
       {
         test: /\.(png|jpe?g|gif)$/,
@@ -92,9 +113,7 @@ const devConfig: Configuration = {
   },
 
   plugins: [
-    new webpack.DefinePlugin({
-      SETTINGS: JSON.stringify('development'),
-    }),
+    new Dotenv({ path: './config/dev.env' }),
     new ReactRefreshWebpackPlugin(),
   ],
 };
@@ -107,18 +126,7 @@ const prodConfig: Configuration = {
   stats,
 
   plugins: [
-    new webpack.DefinePlugin({
-      SETTINGS: () => {
-        switch (TARGET) {
-          case 'build:prod':
-            return JSON.stringify('production');
-          case 'build:staging':
-            return JSON.stringify('staging');
-          case 'build:dev':
-            return JSON.stringify('development');
-        }
-      },
-    }),
+    new Dotenv({ path: getEnvVariableFile() }),
     new MomentLocalesPlugin({
       localesToKeep: ['fi'], // “en” is built into Moment and can’t be removed
     }),
@@ -156,6 +164,8 @@ const getWebpackConfig = (): Configuration | undefined => {
     case 'build:staging':
       return merge(commonConfig, prodConfig);
     case 'build:dev':
+      return merge(commonConfig, prodConfig);
+    case 'build:ci':
       return merge(commonConfig, prodConfig);
     case 'bundle-analyzer':
       return merge(commonConfig, prodConfig);

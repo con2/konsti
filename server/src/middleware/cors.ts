@@ -1,6 +1,6 @@
-import { logger } from 'utils/logger';
-import { config } from 'config';
 import { Request, Response, NextFunction } from 'express';
+import { logger } from 'server/utils/logger';
+import { config } from 'server/config';
 
 export const allowCORS = (
   req: Request,

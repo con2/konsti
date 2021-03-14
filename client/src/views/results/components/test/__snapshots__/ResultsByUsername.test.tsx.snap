@@ -1,19 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ResultsByUsername should render correctly 1`] = `
-<ResultsByUsername__FlexTableContainer>
-  <ResultsByUsername__FlexTableColumn
+<styled.div>
+  <styled.div
     className="flex-table-header"
   >
-    <ResultsByUsername__FlexTableRow>
+    <styled.div>
       player
-    </ResultsByUsername__FlexTableRow>
-    <ResultsByUsername__FlexTableRow>
+    </styled.div>
+    <styled.div>
       gameTitle
-    </ResultsByUsername__FlexTableRow>
-    <ResultsByUsername__FlexTableRow>
+    </styled.div>
+    <styled.div>
       gameInfo.location
-    </ResultsByUsername__FlexTableRow>
-  </ResultsByUsername__FlexTableColumn>
-</ResultsByUsername__FlexTableContainer>
+    </styled.div>
+  </styled.div>
+</styled.div>
 `;

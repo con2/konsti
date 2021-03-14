@@ -1,14 +1,14 @@
-import { getUser } from 'services/userServices';
-import { postFavorite } from 'services/favoriteServices';
-import { FavoriteData, UserGames } from 'typings/user.typings';
-import { Game } from 'typings/game.typings';
-import { AppThunk } from 'typings/utils.typings';
+import { getUser } from 'client/services/userServices';
+import { postFavorite } from 'client/services/favoriteServices';
+import { FavoriteData, UserGames } from 'client/typings/user.typings';
+import { Game } from 'shared/typings/game';
+import { AppThunk } from 'client/typings/utils.typings';
 import {
   SubmitGetUserAsync,
   SubmitUpdateFavoritesAsync,
   SUBMIT_GET_USER_GAMES,
   SUBMIT_UPDATE_FAVORITES,
-} from 'typings/myGamesActions.typings';
+} from 'client/typings/myGamesActions.typings';
 
 export const submitGetUser = (username: string): AppThunk => {
   return async (dispatch): Promise<void> => {

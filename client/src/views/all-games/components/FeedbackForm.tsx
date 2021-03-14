@@ -1,8 +1,8 @@
 import React, { FC, ReactElement, ChangeEvent } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
-import { postFeedback } from 'services/feedbackServices';
-import { Game } from 'typings/game.typings';
+import { postFeedback } from 'client/services/feedbackServices';
+import { Game } from 'shared/typings/game';
 
 export interface Props {
   game: Game;

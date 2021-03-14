@@ -1,4 +1,4 @@
-import { LocalStorageState } from 'typings/redux.typings';
+import { LocalStorageState } from 'client/typings/redux.typings';
 
 export const loadSession = (): string | undefined => {
   try {

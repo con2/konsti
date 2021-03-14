@@ -1,8 +1,8 @@
 import React, { FC, ReactElement } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { timeFormatter } from 'utils/timeFormatter';
-import { Game } from 'typings/game.typings';
+import { timeFormatter } from 'client/utils/timeFormatter';
+import { Game } from 'shared/typings/game';
 
 export interface Props {
   games: readonly Game[];

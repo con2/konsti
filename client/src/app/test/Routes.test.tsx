@@ -1,8 +1,8 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { store } from 'utils/store';
 import { shallow } from 'enzyme';
-import { Routes, Props } from '../Routes';
+import { store } from 'client/utils/store';
+import { Routes, Props } from 'client/app/Routes';
 
 const onlyAdminLoginAllowed = false;
 

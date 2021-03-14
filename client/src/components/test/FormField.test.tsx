@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { WrappedFieldProps } from 'redux-form';
-import { FormField } from '../FormField';
-import { store } from 'utils/store';
+import { FormField } from 'client/components/FormField';
+import { store } from 'client/utils/store';
 
 describe('FormField', () => {
   it('should render correctly', () => {

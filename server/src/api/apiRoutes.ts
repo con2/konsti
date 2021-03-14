@@ -1,18 +1,18 @@
 import express from 'express';
-import { postUserValidation, postLoginValidation } from 'api/validation';
-import { postGames, getGames } from 'api/controllers/gamesController';
-import { postUser, getUser } from 'api/controllers/userController';
-import { postLogin } from 'api/controllers/loginController';
-import { postAssignment } from 'api/controllers/assignmentController';
-import { postSignup } from 'api/controllers/signupController';
-import { postFavorite } from 'api/controllers/favoriteController';
-import { postHidden } from 'api/controllers/hiddenController';
-import { postSignupTime } from 'api/controllers/signuptimeController';
-import { postFeedback } from 'api/controllers/feedbackController';
-import { getSettings } from 'api/controllers/settingsController';
-import { getResults } from 'api/controllers/resultsController';
-import { postGroup, getGroup } from 'api/controllers/groupController';
-import { toggleAppOpen } from 'api/controllers/toggleAppOpenController';
+import { postUserValidation, postLoginValidation } from 'server/api/validation';
+import { postGames, getGames } from 'server/api/controllers/gamesController';
+import { postUser, getUser } from 'server/api/controllers/userController';
+import { postLogin } from 'server/api/controllers/loginController';
+import { postAssignment } from 'server/api/controllers/assignmentController';
+import { postSignup } from 'server/api/controllers/signupController';
+import { postFavorite } from 'server/api/controllers/favoriteController';
+import { postHidden } from 'server/api/controllers/hiddenController';
+import { postSignupTime } from 'server/api/controllers/signuptimeController';
+import { postFeedback } from 'server/api/controllers/feedbackController';
+import { getSettings } from 'server/api/controllers/settingsController';
+import { getResults } from 'server/api/controllers/resultsController';
+import { postGroup, getGroup } from 'server/api/controllers/groupController';
+import { toggleAppOpen } from 'server/api/controllers/toggleAppOpenController';
 
 export const apiRoutes = express.Router();
 

@@ -1,7 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { GroupMembersList, Props } from '../GroupMembersList';
-import { GroupMember } from 'typings/group.typings';
+import { GroupMember } from 'client/typings/group.typings';
+import {
+  GroupMembersList,
+  Props,
+} from 'client/views/group/components/GroupMembersList';
 
 const groupMembers: GroupMember[] = [];
 

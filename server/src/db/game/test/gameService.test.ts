@@ -1,8 +1,8 @@
 import mongoose from 'mongoose';
 import { MongoMemoryServer } from 'mongodb-memory-server';
-import { db } from 'db/mongodb';
-import { GameModel } from 'db/game/gameSchema';
-import { mockGame } from 'test/mock-data/mockGame';
+import { db } from 'server/db/mongodb';
+import { GameModel } from 'server/db/game/gameSchema';
+import { mockGame } from 'server/test/mock-data/mockGame';
 
 let mongoServer: MongoMemoryServer;
 

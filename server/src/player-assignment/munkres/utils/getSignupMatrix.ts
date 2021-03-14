@@ -1,6 +1,6 @@
-import { logger } from 'utils/logger';
-import { Game } from 'typings/game.typings';
-import { User } from 'typings/user.typings';
+import { logger } from 'server/utils/logger';
+import { Game } from 'shared/typings/game';
+import { User } from 'server/typings/user.typings';
 
 export const getSignupMatrix = (
   signedGames: readonly Game[],

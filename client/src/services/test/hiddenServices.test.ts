@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { postHidden } from '../hiddenServices';
-import { Game } from 'typings/game.typings';
+import { Game } from 'shared/typings/game';
+import { postHidden } from 'client/services/hiddenServices';
 
 jest.mock('axios');
 const mockAxios = axios as jest.Mocked<typeof axios>;

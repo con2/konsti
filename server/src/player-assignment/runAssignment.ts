@@ -1,12 +1,12 @@
-import { logger } from 'utils/logger';
-import { db } from 'db/mongodb';
-import { config } from 'config';
-import { runAssignmentStrategy } from 'player-assignment/utils/runAssignmentStrategy';
-import { removeInvalidSignupsFromUsers } from 'player-assignment/utils/removeInvalidSignupsFromUsers';
-import { PlayerAssignmentResult } from 'typings/result.typings';
-import { User } from 'typings/user.typings';
-import { Game } from 'typings/game.typings';
-import { AssignmentStrategy } from 'typings/config.typings';
+import { logger } from 'server/utils/logger';
+import { db } from 'server/db/mongodb';
+import { config } from 'server/config';
+import { runAssignmentStrategy } from 'server/player-assignment/utils/runAssignmentStrategy';
+import { removeInvalidSignupsFromUsers } from 'server/player-assignment/utils/removeInvalidSignupsFromUsers';
+import { PlayerAssignmentResult } from 'server/typings/result.typings';
+import { User } from 'server/typings/user.typings';
+import { Game } from 'shared/typings/game';
+import { AssignmentStrategy } from 'server/typings/config.typings';
 
 export const runAssignment = async (
   startingTime: string,

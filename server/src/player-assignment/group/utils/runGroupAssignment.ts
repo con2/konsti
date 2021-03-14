@@ -1,11 +1,11 @@
 import _ from 'lodash';
-import { logger } from 'utils/logger';
-import { getRandomInt } from 'player-assignment/utils/getRandomInt';
-import { shuffleArray } from 'utils/shuffleArray';
-import { UserArray, SignedGame } from 'typings/user.typings';
-import { Game } from 'typings/game.typings';
-import { GroupAssignResult } from 'typings/groupAssign.typings';
-import { Result } from 'typings/result.typings';
+import { logger } from 'server/utils/logger';
+import { getRandomInt } from 'server/player-assignment/utils/getRandomInt';
+import { shuffleArray } from 'server/utils/shuffleArray';
+import { UserArray, SignedGame } from 'server/typings/user.typings';
+import { Game } from 'shared/typings/game';
+import { GroupAssignResult } from 'server/typings/groupAssign.typings';
+import { Result } from 'server/typings/result.typings';
 
 export const runGroupAssignment = (
   playerGroups: readonly UserArray[],

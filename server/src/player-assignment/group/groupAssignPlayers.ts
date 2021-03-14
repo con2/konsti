@@ -1,15 +1,15 @@
-import { logger } from 'utils/logger';
-import { getStartingGames } from 'player-assignment/utils/getStartingGames';
-import { getSignupWishes } from 'player-assignment/utils/getSignupWishes';
-import { getSignedGames } from 'player-assignment/utils/getSignedGames';
-import { getSelectedPlayers } from 'player-assignment/utils/getSelectedPlayers';
-import { assignGroups } from 'player-assignment/group/utils/assignGroup';
-import { getPlayerGroups } from 'player-assignment/utils/getPlayerGroups';
-import { getGroupMembers } from 'player-assignment/utils/getGroupMembers';
-import { getHappiness } from 'player-assignment/group/utils/getHappiness';
-import { User } from 'typings/user.typings';
-import { Game } from 'typings/game.typings';
-import { PlayerAssignmentResult } from 'typings/result.typings';
+import { logger } from 'server/utils/logger';
+import { getStartingGames } from 'server/player-assignment/utils/getStartingGames';
+import { getSignupWishes } from 'server/player-assignment/utils/getSignupWishes';
+import { getSignedGames } from 'server/player-assignment/utils/getSignedGames';
+import { getSelectedPlayers } from 'server/player-assignment/utils/getSelectedPlayers';
+import { assignGroups } from 'server/player-assignment/group/utils/assignGroup';
+import { getPlayerGroups } from 'server/player-assignment/utils/getPlayerGroups';
+import { getGroupMembers } from 'server/player-assignment/utils/getGroupMembers';
+import { getHappiness } from 'server/player-assignment/group/utils/getHappiness';
+import { User } from 'server/typings/user.typings';
+import { Game } from 'shared/typings/game';
+import { PlayerAssignmentResult } from 'server/typings/result.typings';
 
 export const groupAssignPlayers = (
   players: readonly User[],

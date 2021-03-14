@@ -1,8 +1,8 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { store } from 'utils/store';
 import { shallow } from 'enzyme';
-import { AdminView } from '../AdminView';
+import { store } from 'client/utils/store';
+import { AdminView } from 'client/views/admin/AdminView';
 
 describe('AdminView', () => {
   it('should render correctly', () => {

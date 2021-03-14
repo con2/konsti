@@ -1,10 +1,10 @@
-import { getGames, postGamesUpdate } from 'services/gamesServices';
-import { Game } from 'typings/game.typings';
-import { AppThunk } from 'typings/utils.typings';
+import { getGames, postGamesUpdate } from 'client/services/gamesServices';
+import { Game } from 'shared/typings/game';
+import { AppThunk } from 'client/typings/utils.typings';
 import {
   SubmitGetGamesAsync,
   SUBMIT_GET_GAMES,
-} from 'typings/allGamesActions.typings';
+} from 'client/typings/allGamesActions.typings';
 
 export const submitGetGames = (): AppThunk => {
   return async (dispatch): Promise<void> => {

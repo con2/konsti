@@ -1,9 +1,9 @@
 import mongoose from 'mongoose';
 import { MongoMemoryServer } from 'mongodb-memory-server';
 import moment from 'moment';
-import { db } from 'db/mongodb';
-import { SettingsModel } from 'db/settings/settingsSchema';
-import { mockGame, mockGame2 } from 'test/mock-data/mockGame';
+import { db } from 'server/db/mongodb';
+import { SettingsModel } from 'server/db/settings/settingsSchema';
+import { mockGame, mockGame2 } from 'server/test/mock-data/mockGame';
 
 let mongoServer: MongoMemoryServer;
 

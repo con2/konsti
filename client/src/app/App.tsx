@@ -2,13 +2,13 @@ import React, { FC, ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector, useStore } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
-import { Routes } from 'app/Routes';
-import { Header } from 'components/Header';
-import { loadData } from 'utils/loadData';
-import { Loading } from 'components/Loading';
-import { getIconLibrary } from 'utils/icons';
-import { config } from 'config';
-import { RootState } from 'typings/redux.typings';
+import { Routes } from 'client/app/Routes';
+import { Header } from 'client/components/Header';
+import { loadData } from 'client/utils/loadData';
+import { Loading } from 'client/components/Loading';
+import { getIconLibrary } from 'client/utils/icons';
+import { config } from 'client/config';
+import { RootState } from 'client/typings/redux.typings';
 
 export const App: FC = (): ReactElement => {
   const { dataUpdateInterval } = config;
@@ -38,7 +38,6 @@ export const App: FC = (): ReactElement => {
 
   return (
     <>
-      <Header />
       {/* <h3>{t('errorMessage')}</h3> */}
 
       {loading && <Loading />}
@@ -47,6 +46,7 @@ export const App: FC = (): ReactElement => {
         <>
           {!appOpen && <h2>{t('closingMessage')}</h2>}
           <BrowserRouter>
+            <Header />
             <Routes onlyAdminLoginAllowed={!appOpen} />
           </BrowserRouter>
         </>

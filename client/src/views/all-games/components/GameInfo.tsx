@@ -1,10 +1,10 @@
 import React, { FC, ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
-import { timeFormatter } from 'utils/timeFormatter';
-import { getGameTags } from 'utils/getGameTags';
-import { config } from 'config';
-import { Game } from 'typings/game.typings';
+import { timeFormatter } from 'client/utils/timeFormatter';
+import { getGameTags } from 'client/utils/getGameTags';
+import { config } from 'client/config';
+import { Game } from 'shared/typings/game';
 
 interface Props {
   game: Game;

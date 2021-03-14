@@ -1,0 +1,2 @@
+- Please do not create a Pull Request without discussing the change first.
+- Please provide enough information so others can review your Pull Request.

@@ -1,13 +1,13 @@
 import { AxiosResponse, AxiosError } from 'axios';
-import { api } from 'utils/api';
+import { api } from 'client/utils/api';
 import {
   RegistrationFormFields,
   UpdateUserResponse,
   GetUserBySerialResponse,
   PostRegistrationResponse,
   GetUserResponse,
-} from 'typings/user.typings';
-import { ServerError } from 'typings/utils.typings';
+} from 'client/typings/user.typings';
+import { ServerError } from 'client/typings/utils.typings';
 
 export const postRegistration = async (
   registrationFormFields: RegistrationFormFields

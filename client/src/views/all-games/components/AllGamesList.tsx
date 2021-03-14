@@ -4,13 +4,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import _ from 'lodash';
 import styled from 'styled-components';
-import { timeFormatter } from 'utils/timeFormatter';
-import { updateFavorite, UpdateFavoriteOpts } from 'utils/favorite';
-import { Game } from 'typings/game.typings';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { timeFormatter } from 'client/utils/timeFormatter';
+import { updateFavorite, UpdateFavoriteOpts } from 'client/utils/favorite';
+import { Game } from 'shared/typings/game';
 
-import { UserGroup } from 'typings/user.typings';
-import { RootState } from 'typings/redux.typings';
+import { UserGroup } from 'client/typings/user.typings';
+import { RootState } from 'client/typings/redux.typings';
 
 export interface Props {
   games: readonly Game[];

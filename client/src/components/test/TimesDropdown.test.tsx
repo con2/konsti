@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { TimesDropdown, Props } from '../TimesDropdown';
+import { TimesDropdown, Props } from 'client/components/TimesDropdown';
 
 describe('TimesDropdown', () => {
   it('should render correctly', () => {

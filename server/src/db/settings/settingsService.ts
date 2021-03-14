@@ -1,9 +1,10 @@
 import moment from 'moment';
-import { logger } from 'utils/logger';
-import { db } from 'db/mongodb';
-import { SettingsModel } from 'db/settings/settingsSchema';
-import { Game, GameDoc } from 'typings/game.typings';
-import { Settings } from 'typings/settings.typings';
+import { logger } from 'server/utils/logger';
+import { db } from 'server/db/mongodb';
+import { SettingsModel } from 'server/db/settings/settingsSchema';
+import { GameDoc } from 'server/typings/game.typings';
+import { Settings } from 'server/typings/settings.typings';
+import { Game } from 'shared/typings/game';
 
 const removeSettings = async (): Promise<void> => {
   logger.info('MongoDB: remove ALL settings from db');

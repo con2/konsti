@@ -4,15 +4,15 @@ exports[`Loading should render correctly 1`] = `
 <div
   className="accordion"
 >
-  <Accordion__AccordionToggle
+  <styled.button
     onClick={[Function]}
   >
-    <Accordion__AccordionIcon
+    <Styled(FontAwesomeIcon)
       icon="angle-down"
     />
     <span>
       test button text
     </span>
-  </Accordion__AccordionToggle>
+  </styled.button>
 </div>
 `;

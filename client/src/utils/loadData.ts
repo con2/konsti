@@ -1,11 +1,11 @@
-import { submitGetResults } from 'views/results/resultsActions';
-import { submitGetGames } from 'views/all-games/allGamesActions';
-import { submitGetSettings } from 'views/admin/adminActions';
-import { submitGetUser } from 'views/my-games/myGamesActions';
-import { submitGetGroup } from 'views/group/groupActions';
-import { submitLogin } from 'views/login/loginActions';
-import { store } from 'utils/store';
-import { AppThunkDispatch } from 'typings/utils.typings';
+import { submitGetResults } from 'client/views/results/resultsActions';
+import { submitGetGames } from 'client/views/all-games/allGamesActions';
+import { submitGetSettings } from 'client/views/admin/adminActions';
+import { submitGetUser } from 'client/views/my-games/myGamesActions';
+import { submitGetGroup } from 'client/views/group/groupActions';
+import { submitLogin } from 'client/views/login/loginActions';
+import { store } from 'client/utils/store';
+import { AppThunkDispatch } from 'client/typings/utils.typings';
 
 export const loadData = async (): Promise<void> => {
   // Get app settings

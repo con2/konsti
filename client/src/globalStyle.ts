@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import { Theme } from 'theme';
+import { Theme } from 'client/theme';
 
 export const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
   html {
@@ -11,9 +11,9 @@ export const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
 
   body {
     background-color: #fafafa;
-    margin: 0 auto;
     padding-bottom: 32px;
-    width: 800px;
+    margin: 0;
+    width: 100%;
   }
 
   @media (max-width: ${(props) => props.theme.breakpointPhone}) {
@@ -25,16 +25,11 @@ export const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
 
   #main {
     background-color: #fff;
-    border: solid 1px #e3e7eb;
-    margin: 20px 0 0 0;
-    padding: 30px;
   }
 
   @media (max-width: ${(props) => props.theme.breakpointPhone}) {
     #main {
-      border: solid 1px #fff;
       margin: 0 0 10px 0;
-      padding: 0 10px;
     }
   }
 

@@ -7,3 +7,4 @@ front
 stats.json
 build
 .yarn
+.history

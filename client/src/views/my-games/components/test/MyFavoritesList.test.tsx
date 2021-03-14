@@ -1,7 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { MyFavoritesList, Props } from '../MyFavoritesList';
-import { Game } from 'typings/game.typings';
+import { Game } from 'shared/typings/game';
+import {
+  MyFavoritesList,
+  Props,
+} from 'client/views/my-games/components/MyFavoritesList';
 
 const favoritedGames: Game[] = [];
 

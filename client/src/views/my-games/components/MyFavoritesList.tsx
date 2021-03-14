@@ -2,9 +2,9 @@ import React, { FC, ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
 import _ from 'lodash';
 import styled from 'styled-components';
-import { getStartTimes } from 'utils/getStartTimes';
+import { getStartTimes } from 'client/utils/getStartTimes';
 import { GamesByStartTimes } from './GamesByStartTimes';
-import { Game } from 'typings/game.typings';
+import { Game } from 'shared/typings/game';
 
 export interface Props {
   favoritedGames: readonly Game[];

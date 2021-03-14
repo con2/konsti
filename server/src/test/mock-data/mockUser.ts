@@ -1,6 +1,6 @@
-import { mockGame, mockGame2 } from 'test/mock-data/mockGame';
-import { NewUserData, UserGroup } from 'typings/user.typings';
-import { Signup } from 'typings/result.typings';
+import { mockGame, mockGame2 } from 'server/test/mock-data/mockGame';
+import { NewUserData, UserGroup } from 'server/typings/user.typings';
+import { Signup } from 'server/typings/result.typings';
 
 export const mockUser: NewUserData = {
   favoritedGames: [],

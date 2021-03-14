@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Hidden, Props } from '../Hidden';
-import { Game } from 'typings/game.typings';
+import { Game } from 'shared/typings/game';
+import { Hidden, Props } from 'client/views/admin/components/Hidden';
 
 const hiddenGames: Game[] = [];
 

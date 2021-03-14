@@ -1,8 +1,8 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { store } from 'utils/store';
 import { shallow } from 'enzyme';
-import { GroupView } from '../GroupView';
+import { store } from 'client/utils/store';
+import { GroupView } from 'client/views/group/GroupView';
 
 describe('GroupView', () => {
   it('should render correctly', () => {

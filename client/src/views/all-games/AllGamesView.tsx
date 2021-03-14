@@ -4,14 +4,14 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import moment from 'moment';
 import styled from 'styled-components';
-import { AllGamesList } from 'views/all-games/components/AllGamesList';
-import { getUpcomingGames } from 'utils/getUpcomingGames';
-import { loadGames } from 'utils/loadData';
-import { config } from 'config';
-import { Loading } from 'components/Loading';
-import { Game } from 'typings/game.typings';
-import { getTime } from 'utils/getTime';
-import { RootState } from 'typings/redux.typings';
+import { AllGamesList } from 'client/views/all-games/components/AllGamesList';
+import { getUpcomingGames } from 'client/utils/getUpcomingGames';
+import { loadGames } from 'client/utils/loadData';
+import { config } from 'client/config';
+import { Loading } from 'client/components/Loading';
+import { Game } from 'shared/typings/game';
+import { getTime } from 'client/utils/getTime';
+import { RootState } from 'client/typings/redux.typings';
 
 export const AllGamesView: FC = (): ReactElement => {
   const { t } = useTranslation();

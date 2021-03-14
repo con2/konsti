@@ -1,9 +1,9 @@
 import fs from 'fs';
 import faker from 'faker';
-import { logger } from 'utils/logger';
-import { writeJson } from '../statsUtil';
-import { User } from 'typings/user.typings';
-import { ResultsCollectionEntry } from 'typings/result.typings';
+import { logger } from 'server/utils/logger';
+import { User } from 'server/typings/user.typings';
+import { ResultsCollectionEntry } from 'server/typings/result.typings';
+import { writeJson } from 'server/statistics/statsUtil';
 
 export const anonymizeData = async (
   year: number,

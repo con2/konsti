@@ -2,15 +2,15 @@ import React, { FC, ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
-import { submitUpdateHidden } from 'views/admin/adminActions';
-import { FeedbackForm } from 'views/all-games/components/FeedbackForm';
-import { GameInfo } from 'views/all-games/components/GameInfo';
-import { Loading } from 'components/Loading';
-import { Game } from 'typings/game.typings';
-import { updateFavorite, UpdateFavoriteOpts } from 'utils/favorite';
+import { submitUpdateHidden } from 'client/views/admin/adminActions';
+import { FeedbackForm } from 'client/views/all-games/components/FeedbackForm';
+import { GameInfo } from 'client/views/all-games/components/GameInfo';
+import { Loading } from 'client/components/Loading';
+import { Game } from 'shared/typings/game';
+import { updateFavorite, UpdateFavoriteOpts } from 'client/utils/favorite';
 
-import { UserGroup } from 'typings/user.typings';
-import { RootState } from 'typings/redux.typings';
+import { UserGroup } from 'client/typings/user.typings';
+import { RootState } from 'client/typings/redux.typings';
 
 export const GameDetails: FC = (): ReactElement => {
   const history = useHistory();

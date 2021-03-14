@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { postSignupTime } from '../signuptimeServices';
+import { postSignupTime } from 'client/services/signuptimeServices';
 
 jest.mock('axios');
 const mockAxios = axios as jest.Mocked<typeof axios>;

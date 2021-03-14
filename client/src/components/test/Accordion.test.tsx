@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Accordion, Props } from '../Accordion';
+import { Accordion, Props } from 'client/components/Accordion';
 
 const title = 'test title';
 const text = 'test text';

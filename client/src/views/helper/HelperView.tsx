@@ -1,9 +1,9 @@
 import React, { FC, ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useStore } from 'react-redux';
-import { HelperResultsList } from 'views/helper/components/HelperResultsList';
-import { PasswordManagement } from 'views/helper/components/PasswordManagement';
-import { loadResults, loadSettings } from 'utils/loadData';
+import { HelperResultsList } from 'client/views/helper/components/HelperResultsList';
+import { PasswordManagement } from 'client/views/helper/components/PasswordManagement';
+import { loadResults, loadSettings } from 'client/utils/loadData';
 
 export const HelperView: FC = (): ReactElement => {
   const { t } = useTranslation();

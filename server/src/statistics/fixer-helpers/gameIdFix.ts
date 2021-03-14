@@ -1,14 +1,14 @@
 import fs from 'fs';
-import { logger } from 'utils/logger';
-import { writeJson } from '../statsUtil';
+import { logger } from 'server/utils/logger';
 import {
   SignedGame,
   EnteredGame,
   FavoritedGame,
   User,
-} from 'typings/user.typings';
-import { GameDoc } from 'typings/game.typings';
-import { ResultsCollectionEntry } from 'typings/result.typings';
+} from 'server/typings/user.typings';
+import { GameDoc } from 'server/typings/game.typings';
+import { ResultsCollectionEntry } from 'server/typings/result.typings';
+import { writeJson } from 'server/statistics/statsUtil';
 
 export const gameIdFix = async (year: number, event: string): Promise<void> => {
   const users: User[] = JSON.parse(

@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  cypress:
+    image: 'cypress/included:6.6.0'
+    environment:
+      - CYPRESS_baseUrl=http://server:5000
+      - CYPRESS_PROJECT_ID=btftv2
+      - CYPRESS_RECORD_KEY=${CYPRESS_DASHBOARD_RECORD_KEY}
+    working_dir: /client
+    volumes:
+      - ./client:/client # In relation to root level docker-compose.yml file
+    entrypoint: /bin/sh -c "sleep 10 && cypress run --browser chrome --headless --config-file false --project ./build --record"

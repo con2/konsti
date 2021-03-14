@@ -1,8 +1,8 @@
-import { logger } from 'utils/logger';
-import { db } from 'db/mongodb';
-import { validateAuthHeader } from 'utils/authHeader';
 import { Request, Response } from 'express';
-import { UserGroup } from 'typings/user.typings';
+import { logger } from 'server/utils/logger';
+import { db } from 'server/db/mongodb';
+import { validateAuthHeader } from 'server/utils/authHeader';
+import { UserGroup } from 'server/typings/user.typings';
 
 // Post feedback data
 const postFeedback = async (req: Request, res: Response): Promise<unknown> => {

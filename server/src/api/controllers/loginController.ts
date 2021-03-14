@@ -1,9 +1,9 @@
-import { logger } from 'utils/logger';
-import { db } from 'db/mongodb';
-import { validateLogin } from 'utils/bcrypt';
-import { getJWT, verifyJWT, decodeJWT } from 'utils/jwt';
 import { Request, Response } from 'express';
-import { UserGroup } from 'typings/user.typings';
+import { logger } from 'server/utils/logger';
+import { db } from 'server/db/mongodb';
+import { validateLogin } from 'server/utils/bcrypt';
+import { getJWT, verifyJWT, decodeJWT } from 'server/utils/jwt';
+import { UserGroup } from 'server/typings/user.typings';
 
 const postLogin = async (req: Request, res: Response): Promise<unknown> => {
   logger.info('API call: POST /api/login');

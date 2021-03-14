@@ -4,7 +4,7 @@
 
 [![Known Vulnerabilities](https://snyk.io/test/github/ropekonsti/konsti/badge.svg)](https://snyk.io/test/github/ropekonsti/konsti)
 
-Tabletop roleplaying game signup application Konsti. The application is used to sign up and assign players to game sessions. Registered users can choose weighted preferences and signup slots are quickly allocated using [Hungarian algorithm](https://en.wikipedia.org/wiki/Hungarian_algorithm), [eventassigner-js](https://github.com/Altesmi/eventassigner-js), or brute force approximation. Users can form groups to be assigned into the same game session. Game data is fetched from [Kompassi Event Management System](https://kompassi.eu/).
+Tabletop roleplaying game signup application Konsti. The application is used to sign up and assign players to game sessions. Registered users can choose weighted preferences and signup slots are quickly allocated using [Hungarian algorithm](https://en.wikipedia.org/wiki/Hungarian_algorithm), [eventassigner-js](https://github.com/Altesmi/eventassigner-js), or [brute force approximation](https://github.com/Altesmi/eventassigner-random). Users can form groups to be assigned into the same game session. Game data is fetched from [Kompassi Event Management System](https://kompassi.eu/).
 
 Konsti is designed for the roleplaying convention [Ropecon](https://ropecon.fi).
 
@@ -36,21 +36,27 @@ Registered users by year:
 
 ## Tech
 
+- General
+
+  - TypeScript
+  - Prettier & ESlint
+  - Jest
+  - Cypress
+
 - Back-end
   - Node.js
   - Express
-  - AWS
   - MongoDB
-  - TypeScript
-  - Jest
-  - Prettier & ESLint
+  - AWS
 - Front-end
   - React
   - Redux
   - Webpack
-  - TypeScript
-  - Jest
-  - Prettier & ESLint & stylelint
+  - stylelint
+
+## Cypress end-to-end tests
+
+See [Cypress Dashboard](https://dashboard.cypress.io/projects/btftv2) for test results.
 
 ## Supporters
 
