@@ -5,7 +5,7 @@ import { getEvents } from 'server/player-assignment/padg/utils/getEvents';
 import { formatResults } from 'server/player-assignment/padg/utils/formatResults';
 import { AssignmentStrategyResult } from 'server/typings/result.typings';
 import { UserArray } from 'server/typings/user.typings';
-import { Game } from 'shared/typings/game';
+import { Game } from 'shared/typings/models/game';
 
 export const runPadgAssignment = (
   signedGames: readonly Game[],

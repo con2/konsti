@@ -1,4 +1,4 @@
-import { Game } from 'shared/typings/game';
+import { Game } from 'shared/typings/models/game';
 
 export interface DnDUpdatedPositions {
   availableGames?: readonly Game[];
@@ -8,18 +8,6 @@ export interface DnDUpdatedPositions {
 export interface DnDMove {
   index: number;
   droppableId: string;
-}
-
-export interface PostGamesUpdateResponse {
-  games: Game[];
-  message: string;
-  status: 'success';
-}
-
-export interface GetGamesResponse {
-  games: Game[];
-  message: string;
-  status: 'success';
 }
 
 export interface PostHiddenResponse {

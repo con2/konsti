@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import { config } from 'client/config';
-import { Game } from 'shared/typings/game';
+import { Game } from 'shared/typings/models/game';
 import { Signup } from 'client/typings/user.typings';
 
 // Get games that have are not hidden, have signup open, and are not signed
