@@ -4,7 +4,7 @@ import _ from 'lodash';
 import styled from 'styled-components';
 import { getStartTimes } from 'client/utils/getStartTimes';
 import { GamesByStartTimes } from './GamesByStartTimes';
-import { Game } from 'shared/typings/game';
+import { Game } from 'shared/typings/models/game';
 
 export interface Props {
   favoritedGames: readonly Game[];

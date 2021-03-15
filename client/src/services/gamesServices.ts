@@ -1,17 +1,14 @@
 import { AxiosResponse, AxiosError } from 'axios';
 import { api } from 'client/utils/api';
 import { ServerError } from 'client/typings/utils.typings';
-import {
-  PostGamesUpdateResponse,
-  GetGamesResponse,
-} from 'client/typings/game.typings';
+import { PostGamesResponse, GetGamesResponse } from 'shared/typings/api/games';
 
 export const postGamesUpdate = async (): Promise<
-  PostGamesUpdateResponse | ServerError
+  PostGamesResponse | ServerError
 > => {
   let response: AxiosResponse;
   try {
-    response = await api.post<PostGamesUpdateResponse>('/games');
+    response = await api.post<PostGamesResponse>('/games');
   } catch (error) {
     if (error?.response) {
       const axiosError: AxiosError<ServerError> = error;

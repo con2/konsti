@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import { User } from 'server/typings/user.typings';
-import { Game } from 'shared/typings/game';
+import { Game } from 'shared/typings/models/game';
 import { PlayerAssignmentResult } from 'server/typings/result.typings';
 import { getStartingGames } from 'server/player-assignment/utils/getStartingGames';
 import { getRunRandomAndPadgInput } from 'server/player-assignment/utils/getRunRandomAndPadgInput';

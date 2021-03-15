@@ -6,7 +6,7 @@ import { getList } from 'server/player-assignment/utils/getList';
 import { getRandomAssignEvents } from 'server/player-assignment/utils/getRandomAssignEvents';
 import { formatResults } from 'server/player-assignment/utils/formatResults';
 import { UserArray } from 'server/typings/user.typings';
-import { Game } from 'shared/typings/game';
+import { Game } from 'shared/typings/models/game';
 import { AssignmentStrategyResult } from 'server/typings/result.typings';
 import {
   ListItem,

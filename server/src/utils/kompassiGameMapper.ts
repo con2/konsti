@@ -1,5 +1,5 @@
 import moment from 'moment';
-import { Game } from 'shared/typings/game';
+import { Game } from 'shared/typings/models/game';
 import { KompassiGame } from 'server/typings/game.typings';
 
 export const kompassiGameMapper = (

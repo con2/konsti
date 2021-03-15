@@ -1,4 +1,4 @@
-import { Game } from 'shared/typings/game';
+import { Game } from 'shared/typings/models/game';
 
 export const getGameTags = (game: Game): string[] => {
   if (!game.tags) return [];

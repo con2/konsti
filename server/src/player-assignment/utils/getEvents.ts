@@ -1,4 +1,4 @@
-import { Game } from 'shared/typings/game';
+import { Game } from 'shared/typings/models/game';
 import { Event } from 'server/typings/padgRandomAssign.typings';
 
 export const getEvents = (signedGames: readonly Game[]): Event[] => {

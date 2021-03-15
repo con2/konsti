@@ -1,5 +1,5 @@
 import { Signup } from 'client/typings/user.typings';
-import { Game } from 'shared/typings/game';
+import { Game } from 'shared/typings/models/game';
 
 export const filterSelectedGames = (
   selectedGames: readonly Signup[],

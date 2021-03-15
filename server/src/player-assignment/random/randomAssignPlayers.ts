@@ -3,7 +3,7 @@ import { logger } from 'server/utils/logger';
 import { getStartingGames } from 'server/player-assignment/utils/getStartingGames';
 import { runRandomAssignment } from 'server/player-assignment/random/utils/runRandomAssignment';
 import { User } from 'server/typings/user.typings';
-import { Game } from 'shared/typings/game';
+import { Game } from 'shared/typings/models/game';
 import { PlayerAssignmentResult } from 'server/typings/result.typings';
 import { getRunRandomAndPadgInput } from 'server/player-assignment/utils/getRunRandomAndPadgInput';
 

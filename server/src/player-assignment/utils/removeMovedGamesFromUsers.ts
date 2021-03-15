@@ -2,7 +2,7 @@ import moment from 'moment';
 import { db } from 'server/db/mongodb';
 import { logger } from 'server/utils/logger';
 import { GameDoc } from 'server/typings/game.typings';
-import { Game } from 'shared/typings/game';
+import { Game } from 'shared/typings/models/game';
 
 export const removeMovedGamesFromUsers = async (
   updatedGames: readonly Game[]

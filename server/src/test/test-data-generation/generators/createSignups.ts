@@ -5,7 +5,7 @@ import { logger } from 'server/utils/logger';
 import { db } from 'server/db/mongodb';
 import { updateGamePopularity } from 'server/game-popularity/updateGamePopularity';
 import { User, SignedGame } from 'server/typings//user.typings';
-import { Game } from 'shared/typings/game';
+import { Game } from 'shared/typings/models/game';
 
 export const createSignups = async (): Promise<void> => {
   let games: Game[] = [];

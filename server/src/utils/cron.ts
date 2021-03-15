@@ -2,7 +2,7 @@ import moment from 'moment';
 import schedule from 'node-schedule';
 import { logger } from 'server/utils/logger';
 import { db } from 'server/db/mongodb';
-import { updateGames } from 'server/api/controllers/gamesController';
+import { updateGames } from 'server/utils/updateGames';
 import { config } from 'server/config';
 import { updateGamePopularity } from 'server/game-popularity/updateGamePopularity';
 import { removeOverlapSignups } from 'server/player-assignment/utils/removeOverlapSignups';
