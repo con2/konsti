@@ -1,11 +1,11 @@
-import { logger } from 'utils/logger';
-import { getStartingGames } from 'player-assignment/utils/getStartingGames';
-import { runRandomAssignment } from 'player-assignment/random/utils/runRandomAssignment';
-import { User } from 'typings/user.typings';
-import { Game } from 'typings/game.typings';
-import { PlayerAssignmentResult } from 'typings/result.typings';
-import { getRunRandomAndPadgInput } from 'player-assignment/utils/getRunRandomAndPadgInput';
 import _ from 'lodash';
+import { logger } from 'server/utils/logger';
+import { getStartingGames } from 'server/player-assignment/utils/getStartingGames';
+import { runRandomAssignment } from 'server/player-assignment/random/utils/runRandomAssignment';
+import { User } from 'server/typings/user.typings';
+import { Game } from 'shared/typings/game';
+import { PlayerAssignmentResult } from 'server/typings/result.typings';
+import { getRunRandomAndPadgInput } from 'server/player-assignment/utils/getRunRandomAndPadgInput';
 
 export const randomAssignPlayers = (
   players: readonly User[],

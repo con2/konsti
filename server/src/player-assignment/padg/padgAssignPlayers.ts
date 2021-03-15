@@ -1,11 +1,11 @@
 import _ from 'lodash';
-import { logger } from 'utils/logger';
-import { getStartingGames } from 'player-assignment/utils/getStartingGames';
-import { getRunRandomAndPadgInput } from 'player-assignment/utils/getRunRandomAndPadgInput';
-import { runPadgAssignment } from 'player-assignment/padg/utils/runPadgAssignment';
-import { User } from 'typings/user.typings';
-import { Game } from 'typings/game.typings';
-import { PlayerAssignmentResult } from 'typings/result.typings';
+import { User } from 'server/typings/user.typings';
+import { Game } from 'shared/typings/game';
+import { PlayerAssignmentResult } from 'server/typings/result.typings';
+import { getStartingGames } from 'server/player-assignment/utils/getStartingGames';
+import { getRunRandomAndPadgInput } from 'server/player-assignment/utils/getRunRandomAndPadgInput';
+import { runPadgAssignment } from 'server/player-assignment/padg/utils/runPadgAssignment';
+import { logger } from 'server/utils/logger';
 
 export const padgAssignPlayers = (
   players: readonly User[],

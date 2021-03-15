@@ -1,18 +1,18 @@
 import { eventAssignment } from 'eventassigner-random';
-import { config } from 'config';
-import { getGroups } from 'player-assignment/utils/getGroups';
-import { getList } from 'player-assignment/utils/getList';
-import { getRandomAssignEvents } from 'player-assignment/utils/getRandomAssignEvents';
-import { formatResults } from 'player-assignment/utils/formatResults';
-import { UserArray } from 'typings/user.typings';
-import { Game } from 'typings/game.typings';
-import { AssignmentStrategyResult } from 'typings/result.typings';
+import { CheckResult } from 'eventassigner-random/lib/typings/checkResult';
+import { config } from 'server/config';
+import { getGroups } from 'server/player-assignment/utils/getGroups';
+import { getList } from 'server/player-assignment/utils/getList';
+import { getRandomAssignEvents } from 'server/player-assignment/utils/getRandomAssignEvents';
+import { formatResults } from 'server/player-assignment/utils/formatResults';
+import { UserArray } from 'server/typings/user.typings';
+import { Game } from 'shared/typings/game';
+import { AssignmentStrategyResult } from 'server/typings/result.typings';
 import {
   ListItem,
   RandomAssignUpdateLInput,
   PadgRandomAssignResults,
-} from 'typings/padgRandomAssign.typings';
-import { CheckResult } from 'eventassigner-random/lib/typings/checkResult';
+} from 'server/typings/padgRandomAssign.typings';
 
 export const runRandomAssignment = (
   signedGames: readonly Game[],

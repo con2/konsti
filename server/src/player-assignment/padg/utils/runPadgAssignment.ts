@@ -1,8 +1,8 @@
 import { assignPadg } from 'server/player-assignment/padg/utils/assignPadg';
-import { getGroups } from 'server/player-assignment/padg/utils/getGroups';
-import { getList } from 'server/player-assignment/padg/utils/getList';
-import { getEvents } from 'server/player-assignment/padg/utils/getEvents';
-import { formatResults } from 'server/player-assignment/padg/utils/formatResults';
+import { getGroups } from 'server/player-assignment/utils/getGroups';
+import { getList } from 'server/player-assignment/utils/getList';
+import { getEvents } from 'server/player-assignment/utils/getEvents';
+import { formatResults } from 'server/player-assignment/utils/formatResults';
 import { AssignmentStrategyResult } from 'server/typings/result.typings';
 import { UserArray } from 'server/typings/user.typings';
 import { Game } from 'shared/typings/game';

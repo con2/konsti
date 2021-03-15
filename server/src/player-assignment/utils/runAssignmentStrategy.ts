@@ -1,12 +1,12 @@
-import { logger } from 'utils/logger';
-import { groupAssignPlayers } from 'player-assignment/group/groupAssignPlayers';
-import { munkresAssignPlayers } from 'player-assignment/munkres/munkresAssignPlayers';
-import { padgAssignPlayers } from 'player-assignment/padg/padgAssignPlayers';
-import { randomAssignPlayers } from 'player-assignment/random/randomAssignPlayers';
-import { User } from 'typings/user.typings';
-import { Game } from 'typings/game.typings';
-import { PlayerAssignmentResult } from 'typings/result.typings';
-import { AssignmentStrategy } from 'typings/config.typings';
+import { logger } from 'server/utils/logger';
+import { groupAssignPlayers } from 'server/player-assignment/group/groupAssignPlayers';
+import { munkresAssignPlayers } from 'server/player-assignment/munkres/munkresAssignPlayers';
+import { padgAssignPlayers } from 'server/player-assignment/padg/padgAssignPlayers';
+import { randomAssignPlayers } from 'server/player-assignment/random/randomAssignPlayers';
+import { User } from 'server/typings/user.typings';
+import { Game } from 'shared/typings/game';
+import { PlayerAssignmentResult } from 'server/typings/result.typings';
+import { AssignmentStrategy } from 'server/typings/config.typings';
 
 export const runAssignmentStrategy = (
   players: readonly User[],

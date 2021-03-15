@@ -1,15 +1,15 @@
 import eventassigner from 'eventassigner-js';
 import _ from 'lodash';
-import { logger } from 'server/utils/logger';
-import { config } from 'server/config';
-import { calculateHappiness } from 'server/player-assignment/padg/utils/calculateHappiness';
 import {
   PadgInput,
   ListItem,
   Group,
   Event,
-  PadgAssignResults,
-} from 'server/typings/padgAssign.typings';
+  PadgRandomAssignResults,
+} from 'server/typings/padgRandomAssign.typings';
+import { logger } from 'server/utils/logger';
+import { config } from 'server/config';
+import { calculateHappiness } from 'server/player-assignment/padg/utils/calculateHappiness';
 
 export const assignPadg = (
   groups: Group[],
