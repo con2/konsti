@@ -1,5 +1,11 @@
 import mongoose from 'mongoose';
-import { SignedGame, EnteredGame } from './user.typings';
+import {
+  SignedGame,
+  EnteredGame,
+  User,
+  UserArray,
+} from 'server/typings/user.typings';
+import { Game } from 'shared/typings/models/game';
 
 export interface ResultDoc extends Result, mongoose.Document {
   algorithm: string;
