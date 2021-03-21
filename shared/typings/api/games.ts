@@ -1,6 +1,6 @@
 import { Game } from 'shared/typings/models/game';
 
-type Status = 'success' | 'error';
+export type Status = 'success' | 'error';
 
 export interface PostGamesResponse {
   message: string;
