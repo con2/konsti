@@ -1,20 +1,41 @@
-import { validationResult } from 'express-validator';
-import { Record, String, Undefined } from 'runtypes';
-import { Request, Response } from 'express';
 import { logger } from 'server/utils/logger';
 import { db } from 'server/db/mongodb';
 import { hashPassword } from 'server/utils/bcrypt';
-import { validateAuthHeader } from 'server/utils/authHeader';
-import { UserGroup } from 'server/typings/user.typings';
+import { Status } from 'shared/typings/api/games';
+import {
+  EnteredGame,
+  FavoritedGame,
+  SignedGame,
+} from 'server/typings/user.typings';
 
-const postUser = async (req: Request, res: Response): Promise<unknown> => {
+interface PostUserResponse {
+  message: string;
+  status: Status;
+  code?: number;
+  username?: string;
+  password?: string;
+}
+
+interface GetUserResponse {
+  message: string;
+  status: Status;
+  error?: Error;
+  games?: {
+    enteredGames: readonly EnteredGame[];
+    favoritedGames: readonly FavoritedGame[];
+    signedGames: readonly SignedGame[];
+  };
+  username?: string;
+  serial?: string;
+}
+
+export const postUser = async (
+  username: string,
+  password: string,
+  serial: string,
+  changePassword: boolean
+): Promise<PostUserResponse> => {
   logger.info('API call: POST /api/user');
-  const { username, password, serial, changePassword } = req.body;
-
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    return res.status(422).json({ errors: errors.array() });
-  }
 
   if (changePassword) {
     let passwordHash;
@@ -22,26 +43,26 @@ const postUser = async (req: Request, res: Response): Promise<unknown> => {
       passwordHash = await hashPassword(password);
     } catch (error) {
       logger.error(`db.user.updateUser error: ${error}`);
-      return res.json({
+      return {
         message: 'Password change error',
         status: 'error',
-      });
+      };
     }
 
     try {
       await db.user.updateUserPassword(username, passwordHash);
     } catch (error) {
       logger.error(`db.user.updateUserPassword error: ${error}`);
-      return res.json({
+      return {
         message: 'Password change error',
         status: 'error',
-      });
+      };
     }
 
-    return res.json({
+    return {
       message: 'Password changed',
       status: 'success',
-    });
+    };
   }
 
   let serialFound = false;
@@ -49,21 +70,21 @@ const postUser = async (req: Request, res: Response): Promise<unknown> => {
     serialFound = await db.serial.findSerial(serial);
   } catch (error) {
     logger.error(`Error finding serial: ${error}`);
-    return res.json({
+    return {
       code: 10,
       message: 'Finding serial failed',
       status: 'error',
-    });
+    };
   }
 
   // Check for valid serial
   if (!serialFound) {
     logger.info('User: Serial is not valid');
-    return res.json({
+    return {
       code: 12,
       message: 'Invalid serial',
       status: 'error',
-    });
+    };
   }
 
   logger.info('User: Serial is valid');
@@ -75,20 +96,20 @@ const postUser = async (req: Request, res: Response): Promise<unknown> => {
     user = await db.user.findUser(username);
   } catch (error) {
     logger.error(`db.user.findUser(): ${error}`);
-    return res.json({
+    return {
       code: 10,
       message: 'Finding user failed',
       status: 'error',
-    });
+    };
   }
 
   if (user) {
     logger.info(`User: Username "${username}" is already registered`);
-    return res.json({
+    return {
       code: 11,
       message: 'Username in already registered',
       status: 'error',
-    });
+    };
   }
 
   // Username free
@@ -99,21 +120,21 @@ const postUser = async (req: Request, res: Response): Promise<unknown> => {
       serialResponse = await db.user.findSerial({ serial });
     } catch (error) {
       logger.error(`db.user.findSerial(): ${error}`);
-      return res.json({
+      return {
         code: 10,
         message: 'Finding serial failed',
         status: 'error',
-      });
+      };
     }
 
     // Serial used
     if (serialResponse) {
       logger.info('User: Serial used');
-      return res.json({
+      return {
         code: 12,
         message: 'Invalid serial',
         status: 'error',
-      });
+      };
     }
 
     // Serial not used
@@ -123,20 +144,20 @@ const postUser = async (req: Request, res: Response): Promise<unknown> => {
         passwordHash = await hashPassword(password);
       } catch (error) {
         logger.error(`hashPassword(): ${error}`);
-        return res.json({
+        return {
           code: 10,
           message: 'Hashing password failed',
           status: 'error',
-        });
+        };
       }
 
       if (!passwordHash) {
         logger.info('User: Serial used');
-        return res.json({
+        return {
           code: 12,
           message: 'Invalid serial',
           status: 'error',
-        });
+        };
       }
 
       if (passwordHash) {
@@ -149,49 +170,35 @@ const postUser = async (req: Request, res: Response): Promise<unknown> => {
           });
         } catch (error) {
           logger.error(`db.user.saveUser(): ${error}`);
-          return res.json({
+          return {
             code: 10,
             message: 'User registration failed',
             status: 'error',
-          });
+          };
         }
 
-        return res.json({
+        return {
           message: 'User registration success',
           status: 'success',
           username: saveUserResponse.username,
           password: saveUserResponse.password,
-        });
+        };
       }
     }
   }
+
+  return {
+    message: 'Unknown error',
+    status: 'error',
+  };
 };
 
 // Get user info
-const getUser = async (req: Request, res: Response): Promise<unknown> => {
+export const getUser = async (
+  username: string | undefined,
+  serial: string | undefined
+): Promise<GetUserResponse> => {
   logger.info('API call: GET /api/user');
-
-  const validToken = validateAuthHeader(
-    req.headers.authorization,
-    UserGroup.user
-  );
-
-  if (!validToken) {
-    return res.sendStatus(401);
-  }
-
-  const GetUserQueryParameters = Record({
-    username: String.Or(Undefined),
-    serial: String.Or(Undefined),
-  });
-
-  const queryParameters = GetUserQueryParameters.check(req.query);
-
-  const { username, serial } = queryParameters;
-
-  if (!username && !serial) {
-    return res.sendStatus(422);
-  }
 
   let user;
 
@@ -200,33 +207,33 @@ const getUser = async (req: Request, res: Response): Promise<unknown> => {
       user = await db.user.findUser(username);
     } catch (error) {
       logger.error(`db.user.findUser(): ${error}`);
-      return res.json({
+      return {
         message: 'Getting user data failed',
         status: 'error',
         error,
-      });
+      };
     }
   } else if (serial) {
     try {
       user = await db.user.findUserBySerial(serial);
     } catch (error) {
       logger.error(`db.user.findUser(): ${error}`);
-      return res.json({
+      return {
         message: 'Getting user data failed',
         status: 'error',
         error,
-      });
+      };
     }
   }
 
   if (!user) {
-    return res.json({
+    return {
       message: `User ${username} not found`,
       status: 'error',
-    });
+    };
   }
 
-  return res.json({
+  return {
     message: 'Getting user data success',
     status: 'success',
     games: {
@@ -236,7 +243,5 @@ const getUser = async (req: Request, res: Response): Promise<unknown> => {
     },
     username: user.username,
     serial: user.serial,
-  });
+  };
 };
-
-export { postUser, getUser };

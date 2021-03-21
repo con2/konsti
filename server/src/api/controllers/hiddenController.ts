@@ -1,52 +1,49 @@
-import { Request, Response } from 'express';
 import { logger } from 'server/utils/logger';
 import { db } from 'server/db/mongodb';
-import { validateAuthHeader } from 'server/utils/authHeader';
 import { Game } from 'shared/typings/models/game';
-import { UserGroup } from 'server/typings/user.typings';
+import { Status } from 'shared/typings/api/games';
+
+interface PostHiddenResponse {
+  message: string;
+  status: Status;
+  error?: Error;
+  hiddenGames?: readonly Game[];
+}
 
 // Add hidden data to server settings
-const postHidden = async (req: Request, res: Response): Promise<unknown> => {
+export const postHidden = async (
+  hiddenData: readonly Game[]
+): Promise<PostHiddenResponse> => {
   logger.info('API call: POST /api/hidden');
-  const hiddenData = req.body.hiddenData;
-
-  const validToken = validateAuthHeader(
-    req.headers.authorization,
-    UserGroup.admin
-  );
-
-  if (!validToken) {
-    return res.sendStatus(401);
-  }
 
   let settings;
   try {
     settings = await db.settings.saveHidden(hiddenData);
   } catch (error) {
     logger.error(`db.settings.saveHidden error: ${error}`);
-    return res.json({
+    return {
       message: 'Update hidden failure',
       status: 'error',
       error,
-    });
+    };
   }
 
   try {
     await removeHiddenGamesFromUsers(settings.hiddenGames);
   } catch (error) {
     logger.error(`removeHiddenGamesFromUsers error: ${error}`);
-    return res.json({
+    return {
       message: 'Update hidden failure',
       status: 'error',
       error,
-    });
+    };
   }
 
-  return res.json({
+  return {
     message: 'Update hidden success',
     status: 'success',
     hiddenGames: settings.hiddenGames,
-  });
+  };
 };
 
 const removeHiddenGamesFromUsers = async (
@@ -116,5 +113,3 @@ const removeHiddenGamesFromUsers = async (
 
   logger.info(`Hidden games removed from users`);
 };
-
-export { postHidden };
