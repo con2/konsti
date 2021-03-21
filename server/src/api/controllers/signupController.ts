@@ -1,32 +1,32 @@
 import moment from 'moment';
-import { Request, Response } from 'express';
 import { logger } from 'server/utils/logger';
 import { db } from 'server/db/mongodb';
-import { validateAuthHeader } from 'server/utils/authHeader';
 import { config } from 'server/config';
-import { UserGroup } from 'server/typings/user.typings';
+import { Signup } from 'server/typings/result.typings';
+import { SignedGame } from 'server/typings/user.typings';
+import { Status } from 'shared/typings/api/games';
+
+interface PostSignupResponse {
+  message: string;
+  status: Status;
+  code?: number;
+  error?: Error | string;
+  signedGames?: readonly SignedGame[];
+}
 
 // Add signup data for user
-const postSignup = async (req: Request, res: Response): Promise<unknown> => {
+export const postSignup = async (
+  selectedGames: readonly SignedGame[],
+  username: string,
+  signupTime: string
+): Promise<PostSignupResponse> => {
   logger.info('API call: POST /api/signup');
-  const signupData = req.body.signupData;
-
-  const validToken = validateAuthHeader(
-    req.headers.authorization,
-    UserGroup.user
-  );
-
-  if (!validToken) {
-    return res.sendStatus(401);
-  }
-
-  const { selectedGames, username, signupTime } = signupData;
 
   if (!signupTime) {
-    return res.json({
+    return {
       message: 'Signup failure',
       status: 'error',
-    });
+    };
   }
 
   const timeNow = moment();
@@ -36,33 +36,31 @@ const postSignup = async (req: Request, res: Response): Promise<unknown> => {
     ).format()} does not match: too late`;
 
     logger.debug(error);
-    return res.json({
+    return {
       code: 41,
       message: 'Signup failure',
       status: 'error',
       error,
-    });
+    };
   }
 
-  const modifiedSignupData = {
+  const modifiedSignupData: Signup = {
     signedGames: selectedGames,
     username,
   };
 
   try {
     const response = await db.user.saveSignup(modifiedSignupData);
-    return res.json({
+    return {
       message: 'Signup success',
       status: 'success',
       signedGames: response.signedGames,
-    });
+    };
   } catch (error) {
-    return res.json({
+    return {
       message: 'Signup failure',
       status: 'error',
       error,
-    });
+    };
   }
 };
-
-export { postSignup };

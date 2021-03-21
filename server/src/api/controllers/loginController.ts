@@ -1,27 +1,38 @@
-import { Request, Response } from 'express';
 import { logger } from 'server/utils/logger';
 import { db } from 'server/db/mongodb';
 import { validateLogin } from 'server/utils/bcrypt';
 import { getJWT, verifyJWT, decodeJWT } from 'server/utils/jwt';
 import { UserGroup } from 'server/typings/user.typings';
+import { Status } from 'shared/typings/api/games';
 
-const postLogin = async (req: Request, res: Response): Promise<unknown> => {
+interface PostLoginResponse {
+  message: string;
+  status: Status;
+  error?: Error;
+  code?: number;
+  username?: string;
+  userGroup?: string;
+  serial?: string;
+  groupCode?: string;
+  jwt?: string;
+}
+
+export const postLogin = async (
+  username: string,
+  password: string,
+  jwt: string
+): Promise<PostLoginResponse> => {
   logger.info('API call: POST /api/login');
-  const { username, password, jwt } = req.body;
-
-  if (((!username || !password) && !jwt) || (username && password && jwt)) {
-    return res.sendStatus(422);
-  }
 
   // Restore session
   if (jwt) {
     const jwtData = decodeJWT(jwt);
 
     if (!jwtData) {
-      return res.json({
+      return {
         message: 'Invalid jwt',
         status: 'error',
-      });
+      };
     }
 
     const { userGroup } = jwtData;
@@ -31,19 +42,19 @@ const postLogin = async (req: Request, res: Response): Promise<unknown> => {
       userGroup !== UserGroup.admin &&
       userGroup !== UserGroup.help
     ) {
-      return res.json({
+      return {
         message: 'Invalid userGroup',
         status: 'error',
-      });
+      };
     }
 
     const jwtResponse = verifyJWT(jwt, userGroup);
 
     if (jwtResponse.status === 'error') {
-      return res.json({
+      return {
         message: 'Invalid jwt',
         status: 'error',
-      });
+      };
     }
 
     if (typeof jwtResponse.username === 'string') {
@@ -52,20 +63,20 @@ const postLogin = async (req: Request, res: Response): Promise<unknown> => {
         user = await db.user.findUser(jwtResponse.username);
       } catch (error) {
         logger.error(`Login: ${error}`);
-        return res.json({
+        return {
           message: 'Session restore error',
           status: 'error',
           error,
-        });
+        };
       }
 
       if (!user) {
         logger.info(`Login: User "${username}" not found`);
-        return res.json({
+        return {
           code: 21,
           message: 'User login error',
           status: 'error',
-        });
+        };
       }
 
       let settingsResponse;
@@ -73,22 +84,22 @@ const postLogin = async (req: Request, res: Response): Promise<unknown> => {
         settingsResponse = await db.settings.findSettings();
       } catch (error) {
         logger.error(`Login: ${error}`);
-        return res.json({
+        return {
           message: 'User login error',
           status: 'error',
           error,
-        });
+        };
       }
 
       if (!settingsResponse.appOpen && user.userGroup === 'user') {
-        return res.json({
+        return {
           code: 22,
           message: 'User login disabled',
           status: 'error',
-        });
+        };
       }
 
-      return res.json({
+      return {
         message: 'Session restore success',
         status: 'success',
         username: user.username,
@@ -96,7 +107,7 @@ const postLogin = async (req: Request, res: Response): Promise<unknown> => {
         serial: user.serial,
         groupCode: user.groupCode,
         jwt: getJWT(user.userGroup, user.username),
-      });
+      };
     }
   }
 
@@ -105,20 +116,20 @@ const postLogin = async (req: Request, res: Response): Promise<unknown> => {
     user = await db.user.findUser(username);
   } catch (error) {
     logger.error(`Login: ${error}`);
-    return res.json({
+    return {
       message: 'User login error',
       status: 'error',
       error,
-    });
+    };
   }
 
   if (!user) {
     logger.info(`Login: User "${username}" not found`);
-    return res.json({
+    return {
       code: 21,
       message: 'User login error',
       status: 'error',
-    });
+    };
   }
 
   let settingsResponse;
@@ -126,19 +137,19 @@ const postLogin = async (req: Request, res: Response): Promise<unknown> => {
     settingsResponse = await db.settings.findSettings();
   } catch (error) {
     logger.error(`Login: ${error}`);
-    return res.json({
+    return {
       message: 'User login error',
       status: 'error',
       error,
-    });
+    };
   }
 
   if (!settingsResponse.appOpen && user.userGroup === 'user') {
-    return res.json({
+    return {
       code: 22,
       message: 'User login disabled',
       status: 'error',
-    });
+    };
   }
 
   // User exists
@@ -152,7 +163,7 @@ const postLogin = async (req: Request, res: Response): Promise<unknown> => {
 
     if (validLogin) {
       logger.info(`Login: Password for user "${username}" matches`);
-      return res.json({
+      return {
         message: 'User login success',
         status: 'success',
         username: user.username,
@@ -160,24 +171,22 @@ const postLogin = async (req: Request, res: Response): Promise<unknown> => {
         serial: user.serial,
         groupCode: user.groupCode,
         jwt: getJWT(user.userGroup, user.username),
-      });
+      };
     } else {
       logger.info(`Login: Password for user "${username}" doesn't match`);
 
-      return res.json({
+      return {
         code: 21,
         message: 'User login error',
         status: 'error',
-      });
+      };
     }
   } catch (error) {
     logger.error(`Login: ${error}`);
-    return res.json({
+    return {
       message: 'User login error',
       status: 'error',
       error,
-    });
+    };
   }
 };
-
-export { postLogin };

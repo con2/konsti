@@ -1,46 +1,45 @@
-import { Request, Response } from 'express';
 import { logger } from 'server/utils/logger';
 import { db } from 'server/db/mongodb';
-import { validateAuthHeader } from 'server/utils/authHeader';
-import { UserGroup } from 'server/typings/user.typings';
+import {
+  FavoritedGame,
+  SaveFavoriteRequest,
+} from 'server/typings/user.typings';
+import { Status } from 'shared/typings/api/games';
+
+interface PostFavoriteResponse {
+  message: string;
+  status: Status;
+  error?: Error;
+  favoritedGames?: readonly FavoritedGame[];
+}
 
 // Add favorite data for user
-const postFavorite = async (req: Request, res: Response): Promise<unknown> => {
+export const postFavorite = async (
+  favoriteData: SaveFavoriteRequest
+): Promise<PostFavoriteResponse> => {
   logger.info('API call: POST /api/favorite');
-  const favoriteData = req.body.favoriteData;
-
-  const validToken = validateAuthHeader(
-    req.headers.authorization,
-    UserGroup.user
-  );
-
-  if (!validToken) {
-    return res.sendStatus(401);
-  }
 
   let saveFavoriteResponse;
   try {
     saveFavoriteResponse = await db.user.saveFavorite(favoriteData);
   } catch (error) {
-    return res.json({
+    return {
       message: 'Update favorite failure',
       status: 'error',
       error,
-    });
+    };
   }
 
   if (saveFavoriteResponse) {
-    return res.json({
+    return {
       message: 'Update favorite success',
       status: 'success',
       favoritedGames: saveFavoriteResponse.favoritedGames,
-    });
+    };
   }
 
-  return res.json({
+  return {
     message: 'Update favorite failure',
     status: 'error',
-  });
+  };
 };
-
-export { postFavorite };
