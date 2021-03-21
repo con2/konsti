@@ -61,7 +61,7 @@ export interface PlayerIdWithPriority {
   priorityValue: number;
 }
 
-export interface GetGroupReturValue {
+export interface GetGroupReturnValue {
   groupCode: string;
   signedGames: readonly SignedGame[];
   enteredGames: readonly EnteredGame[];

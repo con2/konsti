@@ -1,34 +1,31 @@
-import { Request, Response } from 'express';
 import { logger } from 'server/utils/logger';
 import { removeOverlapSignups } from 'server/player-assignment/utils/removeOverlapSignups';
 import { saveResults } from 'server/player-assignment/utils/saveResults';
 import { runAssignment } from 'server/player-assignment/runAssignment';
-import { validateAuthHeader } from 'server/utils/authHeader';
 import { config } from 'server/config';
-import { UserGroup } from 'server/typings/user.typings';
+import { Status } from 'shared/typings/api/games';
+import { Result } from 'server/typings/result.typings';
+
+interface PostAssignmentResponse {
+  message: string;
+  status: Status;
+  error?: Error;
+  results?: readonly Result[];
+  resultMessage?: string;
+  startTime?: string;
+}
 
 // Assign players to games
-const postAssignment = async (
-  req: Request,
-  res: Response
-): Promise<unknown> => {
+export const postAssignment = async (
+  startingTime: string
+): Promise<PostAssignmentResponse> => {
   logger.info('API call: POST /api/assignment');
-  const startingTime = req.body.startingTime;
-
-  const validToken = validateAuthHeader(
-    req.headers.authorization,
-    UserGroup.admin
-  );
-
-  if (!validToken) {
-    return res.sendStatus(401);
-  }
 
   if (!startingTime) {
-    return res.json({
+    return {
       message: 'Invalid starting time',
       status: 'error',
-    });
+    };
   }
 
   let assignResults;
@@ -36,17 +33,17 @@ const postAssignment = async (
     assignResults = await runAssignment(startingTime);
   } catch (error) {
     logger.error(`Player assign error: ${error}`);
-    return res.json({
+    return {
       message: 'Players assign failure',
       status: 'error',
-    });
+    };
   }
 
   if (!assignResults || !assignResults.results) {
-    return res.json({
+    return {
       message: 'Players assign failure',
       status: 'error',
-    });
+    };
   }
 
   try {
@@ -58,11 +55,11 @@ const postAssignment = async (
     );
   } catch (error) {
     logger.error(`saveResult error: ${error}`);
-    return res.json({
+    return {
       message: 'Players assign failure',
       status: 'error',
       error,
-    });
+    };
   }
 
   // Remove overlapping signups
@@ -72,21 +69,19 @@ const postAssignment = async (
       await removeOverlapSignups(assignResults.results);
     } catch (error) {
       logger.error(`removeOverlapSignups error: ${error}`);
-      return res.json({
+      return {
         message: 'Players assign failure',
         status: 'error',
         error,
-      });
+      };
     }
   }
 
-  return res.json({
+  return {
     message: 'Players assign success',
     status: 'success',
     results: assignResults.results,
     resultMessage: assignResults.message,
     startTime: startingTime,
-  });
+  };
 };
-
-export { postAssignment };
