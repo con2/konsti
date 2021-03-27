@@ -1,26 +1,26 @@
 import eventassigner from 'eventassigner-js';
 import _ from 'lodash';
-import { logger } from 'server/utils/logger';
-import { config } from 'server/config';
-import { calculateHappiness } from 'server/player-assignment/padg/utils/calculateHappiness';
 import {
-  Input,
+  PadgInput,
   ListItem,
   Group,
   Event,
-  PadgAssignResults,
-} from 'server/typings/padgAssign.typings';
+  PadgRandomAssignResults,
+} from 'server/typings/padgRandomAssign.typings';
+import { logger } from 'server/utils/logger';
+import { config } from 'server/config';
+import { calculateHappiness } from 'server/player-assignment/padg/utils/calculateHappiness';
 
 export const assignPadg = (
   groups: Group[],
   events: Event[],
   list: ListItem[],
   updateL: Function
-): PadgAssignResults => {
+): PadgRandomAssignResults => {
   const { PADG_ASSIGNMENT_ROUNDS } = config;
 
   let finalHappiness = 0;
-  let finalAssignResults: PadgAssignResults = [];
+  let finalAssignResults: PadgRandomAssignResults = [];
 
   const sortList = (list: ListItem[], i: number): ListItem[] => {
     switch (i) {
@@ -36,14 +36,14 @@ export const assignPadg = (
   for (let i = 0; i < PADG_ASSIGNMENT_ROUNDS; i++) {
     const eventsCopy = _.cloneDeep(events);
 
-    const input: Input = {
+    const input: PadgInput = {
       groups,
       events: eventsCopy,
       list: sortList(list, i),
       updateL,
     };
 
-    const assignResults: PadgAssignResults = eventassigner.eventAssignment(
+    const assignResults: PadgRandomAssignResults = eventassigner.eventAssignment(
       input
     );
 

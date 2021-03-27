@@ -2,7 +2,9 @@ export enum AssignmentStrategy {
   munkres = 'munkres',
   group = 'group',
   padg = 'padg',
+  random = 'random',
   groupPadg = 'group+padg',
+  randomPadg = 'random+padg',
 }
 
 export enum GameUpdateMethod {
@@ -25,6 +27,7 @@ export interface Config {
   dataUri: string;
   GROUP_ASSIGNMENT_ROUNDS: number;
   PADG_ASSIGNMENT_ROUNDS: number;
+  RANDOM_ASSIGNMENT_ROUNDS: number;
   bundleCompression: boolean;
   autoUpdateGamesEnabled: boolean;
   gameUpdateInterval: number;

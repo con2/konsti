@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import moment from 'moment';
-import { ListItem } from 'server/typings/padgAssign.typings';
+import { ListItem } from 'server/typings/padgRandomAssign.typings';
 import { UserArray, SignedGame } from 'server/typings/user.typings';
 import { getAssignmentBonus } from 'server/player-assignment/utils/getAssignmentBonus';
 
@@ -11,7 +11,7 @@ export const getList = (
   return playerGroups.flatMap((playerGroup) => {
     const firstMember = _.first(playerGroup);
     if (!firstMember)
-      throw new Error('Padg assign: error getting first member');
+      throw new Error('Padg or Random assign: error getting first member');
 
     return firstMember.signedGames
       .filter(

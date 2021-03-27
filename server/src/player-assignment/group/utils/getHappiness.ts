@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import { logger } from 'server/utils/logger';
 import { calculateHappiness } from 'server/player-assignment/padg/utils/calculateHappiness';
-import { getGroups } from 'server/player-assignment/padg/utils/getGroups';
+import { getGroups } from 'server/player-assignment/utils/getGroups';
 import { Result } from 'server/typings/result.typings';
 import { User, UserArray } from 'server/typings/user.typings';
 
