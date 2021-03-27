@@ -25,7 +25,6 @@ export const padgAssignPlayers = (
     };
   }
 
-  // const signupWishes = getSignupWishes(players);
   const {
     signedGames,
     playerGroups,

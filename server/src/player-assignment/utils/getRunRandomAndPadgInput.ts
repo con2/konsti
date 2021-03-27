@@ -6,13 +6,13 @@ import { getPlayerGroups } from 'server/player-assignment/utils/getPlayerGroups'
 import { getGroupMembers } from 'server/player-assignment/utils/getGroupMembers';
 import { User } from 'server/typings/user.typings';
 import { Game } from 'shared/typings/models/game';
-import { runRandomAndPadgInput } from 'server/typings/result.typings';
+import { RunRandomAndPadgInput } from 'server/typings/result.typings';
 
 export const getRunRandomAndPadgInput = (
   players: readonly User[],
   games: readonly Game[],
   startingTime: string
-): runRandomAndPadgInput => {
+): RunRandomAndPadgInput => {
   const startingGames = getStartingGames(games, startingTime);
 
   if (startingGames.length === 0) {

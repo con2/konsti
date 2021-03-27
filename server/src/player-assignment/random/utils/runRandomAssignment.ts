@@ -3,7 +3,7 @@ import { CheckResult } from 'eventassigner-random/lib/typings/checkResult';
 import { config } from 'server/config';
 import { getGroups } from 'server/player-assignment/utils/getGroups';
 import { getList } from 'server/player-assignment/utils/getList';
-import { getRandomAssignEvents } from 'server/player-assignment/utils/getRandomAssignEvents';
+import { getRandomAssignEvents } from 'server/player-assignment/random/utils/getRandomAssignEvents';
 import { formatResults } from 'server/player-assignment/utils/formatResults';
 import { UserArray } from 'server/typings/user.typings';
 import { Game } from 'shared/typings/models/game';
@@ -46,8 +46,8 @@ export const runRandomAssignment = (
   return { results, message };
 };
 
-function isCheckResult(
+const isCheckResult = (
   assignResults: PadgRandomAssignResults | CheckResult
-): assignResults is CheckResult {
+): assignResults is CheckResult => {
   return (assignResults as CheckResult).value !== undefined;
-}
+};

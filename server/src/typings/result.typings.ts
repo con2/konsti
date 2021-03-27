@@ -41,7 +41,7 @@ export interface AssignmentStrategyResult {
   message: string;
 }
 
-export interface runRandomAndPadgInput {
+export interface RunRandomAndPadgInput {
   signedGames: readonly Game[];
   playerGroups: readonly UserArray[];
   allPlayers: readonly User[];
