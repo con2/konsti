@@ -1,11 +1,12 @@
 import 'array-flat-polyfill';
 import { logger } from 'server/utils/logger';
-import { db } from 'server/db/mongodb';
 import { updateWithSignups } from 'server/game-popularity/utils/updateWithSignups';
 import { updateWithAssign } from 'server/game-popularity/utils/updateWithAssign';
 import { config } from 'server/config';
 import { User } from 'server/typings/user.typings';
 import { Game } from 'shared/typings/models/game';
+import { findUsers } from 'server/db/user/userService';
+import { findGames } from 'server/db/game/gameService';
 
 export const updateGamePopularity = async (): Promise<void> => {
   logger.info('Calculate game popularity');
@@ -13,16 +14,16 @@ export const updateGamePopularity = async (): Promise<void> => {
 
   let users: User[] = [];
   try {
-    users = await db.user.findUsers();
+    users = await findUsers();
   } catch (error) {
-    logger.error(`db.user.findUsers error: ${error}`);
+    logger.error(`findUsers error: ${error}`);
   }
 
   let games: Game[] = [];
   try {
-    games = await db.game.findGames();
+    games = await findGames();
   } catch (error) {
-    logger.error(`db.user.findGames error: ${error}`);
+    logger.error(`findGames error: ${error}`);
   }
 
   if (gamePopularityUpdateMethod === 'signups')

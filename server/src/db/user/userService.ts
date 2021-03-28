@@ -1,5 +1,4 @@
 import { logger } from 'server/utils/logger';
-import { db } from 'server/db/mongodb';
 import { UserModel } from 'server/db/user/userSchema';
 import { Signup } from 'server/typings/result.typings';
 import {
@@ -13,8 +12,9 @@ import {
 } from 'server/typings/user.typings';
 import { Serial } from 'server/typings/serial.typings';
 import { GameDoc } from 'server/typings/game.typings';
+import { findGames } from 'server/db/game/gameService';
 
-const removeUsers = async (): Promise<void> => {
+export const removeUsers = async (): Promise<void> => {
   logger.info('MongoDB: remove ALL users from db');
   try {
     await UserModel.deleteMany({});
@@ -23,7 +23,7 @@ const removeUsers = async (): Promise<void> => {
   }
 };
 
-const saveUser = async (newUserData: NewUserData): Promise<User> => {
+export const saveUser = async (newUserData: NewUserData): Promise<User> => {
   const user = new UserModel({
     username: newUserData.username,
     password: newUserData.passwordHash,
@@ -49,7 +49,7 @@ const saveUser = async (newUserData: NewUserData): Promise<User> => {
   }
 };
 
-const updateUser = async (user: User): Promise<User | null> => {
+export const updateUser = async (user: User): Promise<User | null> => {
   let response;
 
   try {
@@ -80,7 +80,7 @@ const updateUser = async (user: User): Promise<User | null> => {
   }
 };
 
-const updateUserPassword = async (
+export const updateUserPassword = async (
   username: string,
   password: string
 ): Promise<User | null> => {
@@ -110,7 +110,7 @@ const updateUserPassword = async (
   }
 };
 
-const findUser = async (username: string): Promise<User | null> => {
+export const findUser = async (username: string): Promise<User | null> => {
   let response;
   try {
     response = await UserModel.findOne(
@@ -134,7 +134,9 @@ const findUser = async (username: string): Promise<User | null> => {
   return response;
 };
 
-const findUserBySerial = async (serial: string): Promise<User | null> => {
+export const findUserBySerial = async (
+  serial: string
+): Promise<User | null> => {
   let response;
   try {
     response = await UserModel.findOne(
@@ -160,7 +162,9 @@ const findUserBySerial = async (serial: string): Promise<User | null> => {
   return response;
 };
 
-const findSerial = async (serialData: Serial): Promise<User | null> => {
+export const findUserSerial = async (
+  serialData: Serial
+): Promise<User | null> => {
   const serial = serialData.serial;
 
   let response;
@@ -179,7 +183,7 @@ const findSerial = async (serialData: Serial): Promise<User | null> => {
   return response;
 };
 
-const findGroupMembers = async (groupCode: string): Promise<User[]> => {
+export const findGroupMembers = async (groupCode: string): Promise<User[]> => {
   let response: User[];
   try {
     // @ts-expect-error: Returns User even though it definitely should be User[]
@@ -203,7 +207,7 @@ const findGroupMembers = async (groupCode: string): Promise<User[]> => {
   return response;
 };
 
-const findGroup = async (
+export const findGroup = async (
   groupCode: string,
   username: string
 ): Promise<User | null> => {
@@ -243,7 +247,7 @@ const findGroup = async (
   }
 };
 
-const findUsers = async (): Promise<User[]> => {
+export const findUsers = async (): Promise<User[]> => {
   logger.debug(`MongoDB: Find all users`);
   let users: User[];
   try {
@@ -259,12 +263,12 @@ const findUsers = async (): Promise<User[]> => {
   return users;
 };
 
-const saveSignup = async (signupData: Signup): Promise<User> => {
+export const saveSignup = async (signupData: Signup): Promise<User> => {
   const { signedGames, username } = signupData;
 
   let games: GameDoc[];
   try {
-    games = await db.game.findGames();
+    games = await findGames();
   } catch (error) {
     logger.error(`MongoDB: Error loading games - ${error}`);
     return error;
@@ -308,7 +312,7 @@ const saveSignup = async (signupData: Signup): Promise<User> => {
   return signupResponse;
 };
 
-const saveGroupCode = async (
+export const saveGroupCode = async (
   groupCode: string,
   username: string
 ): Promise<User | null> => {
@@ -335,12 +339,12 @@ const saveGroupCode = async (
   return response;
 };
 
-const saveFavorite = async (
+export const saveFavorite = async (
   favoriteData: SaveFavoriteRequest
 ): Promise<User | null> => {
   let games: GameDoc[];
   try {
-    games = await db.game.findGames();
+    games = await findGames();
   } catch (error) {
     logger.error(`MongoDB: Error loading games - ${error}`);
     return error;
@@ -383,7 +387,7 @@ const saveFavorite = async (
   }
 };
 
-const saveEnteredGames = async (
+export const saveEnteredGames = async (
   enteredGames: readonly EnteredGame[],
   username: string
 ): Promise<void> => {
@@ -406,21 +410,4 @@ const saveEnteredGames = async (
     );
     return error;
   }
-};
-
-export const user = {
-  findSerial,
-  findUser,
-  findGroup,
-  findUsers,
-  removeUsers,
-  saveFavorite,
-  saveSignup,
-  saveUser,
-  findGroupMembers,
-  saveGroupCode,
-  updateUser,
-  findUserBySerial,
-  updateUserPassword,
-  saveEnteredGames,
 };

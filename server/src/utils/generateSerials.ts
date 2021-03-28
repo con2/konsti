@@ -1,5 +1,6 @@
-import { logger } from 'server/utils/logger';
 import { db } from 'server/db/mongodb';
+import { saveSerials } from 'server/db/serial/serialService';
+import { logger } from 'server/utils/logger';
 
 const isInt = (n: string): boolean => parseInt(n, 10) % 1 === 0;
 
@@ -15,7 +16,7 @@ const generateSerials = async (): Promise<void> => {
     }
 
     try {
-      await db.serial.saveSerials(parseInt(count, 10));
+      await saveSerials(parseInt(count, 10));
     } catch (error) {
       logger.error(`Error saving serials: ${error}`);
     }

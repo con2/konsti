@@ -1,12 +1,12 @@
+import { saveSignupTime } from 'server/db/settings/settingsService';
 import { logger } from 'server/utils/logger';
-import { db } from 'server/db/mongodb';
 
 // Add open signup time to server settings
 export const postSignupTime = async (signupTime: string): Promise<unknown> => {
   logger.info('API call: POST /api/signuptime');
 
   try {
-    const response = await db.settings.saveSignupTime(signupTime);
+    const response = await saveSignupTime(signupTime);
     return {
       message: 'Signup time set success',
       status: 'success',

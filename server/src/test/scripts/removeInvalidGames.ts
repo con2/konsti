@@ -1,6 +1,6 @@
-import { db } from 'server/db/mongodb';
 import { logger } from 'server/utils/logger';
 import { removeInvalidSignupsFromUsers } from 'server/player-assignment/utils/removeInvalidSignupsFromUsers';
+import { db } from 'server/db/mongodb';
 
 const removeInvalidGames = async (): Promise<void> => {
   try {

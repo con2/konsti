@@ -1,8 +1,8 @@
 import mongoose from 'mongoose';
 import { MongoMemoryServer } from 'mongodb-memory-server';
-import { db } from 'server/db/mongodb';
 import { UserModel } from 'server/db/user/userSchema';
 import { UserGroup } from 'server/typings/user.typings';
+import { saveUser } from 'server/db/user/userService';
 
 let mongoServer: MongoMemoryServer;
 
@@ -37,7 +37,7 @@ describe('User service', () => {
       enteredGames: [],
     };
 
-    await db.user.saveUser(mockUser);
+    await saveUser(mockUser);
 
     const insertedUser = await UserModel.findOne({
       username: mockUser.username,

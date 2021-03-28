@@ -1,12 +1,12 @@
 import moment from 'moment';
 import { logger } from 'server/utils/logger';
-import { db } from 'server/db/mongodb';
 import { SettingsModel } from 'server/db/settings/settingsSchema';
 import { GameDoc } from 'server/typings/game.typings';
 import { Settings } from 'server/typings/settings.typings';
 import { Game } from 'shared/typings/models/game';
+import { findGames } from 'server/db/game/gameService';
 
-const removeSettings = async (): Promise<void> => {
+export const removeSettings = async (): Promise<void> => {
   logger.info('MongoDB: remove ALL settings from db');
   try {
     await SettingsModel.deleteMany({});
@@ -31,7 +31,7 @@ const createSettings = async (): Promise<Settings> => {
   return settings;
 };
 
-const findSettings = async (): Promise<Settings> => {
+export const findSettings = async (): Promise<Settings> => {
   let settings;
   try {
     settings = await SettingsModel.findOne(
@@ -50,10 +50,12 @@ const findSettings = async (): Promise<Settings> => {
   return settings;
 };
 
-const saveHidden = async (hiddenGames: readonly Game[]): Promise<Settings> => {
+export const saveHidden = async (
+  hiddenGames: readonly Game[]
+): Promise<Settings> => {
   let games: GameDoc[];
   try {
-    games = await db.game.findGames();
+    games = await findGames();
   } catch (error) {
     logger.error(`MongoDB: Error loading games - ${error}`);
     return error;
@@ -88,7 +90,7 @@ const saveHidden = async (hiddenGames: readonly Game[]): Promise<Settings> => {
   return settings;
 };
 
-const saveSignupTime = async (signupTime: string): Promise<Settings> => {
+export const saveSignupTime = async (signupTime: string): Promise<Settings> => {
   let settings;
   try {
     settings = await SettingsModel.findOneAndUpdate(
@@ -106,7 +108,9 @@ const saveSignupTime = async (signupTime: string): Promise<Settings> => {
   return settings;
 };
 
-const saveToggleAppOpen = async (appOpen: boolean): Promise<Settings> => {
+export const saveToggleAppOpen = async (
+  appOpen: boolean
+): Promise<Settings> => {
   let settings;
   try {
     settings = await SettingsModel.findOneAndUpdate(
@@ -122,13 +126,4 @@ const saveToggleAppOpen = async (appOpen: boolean): Promise<Settings> => {
 
   logger.info(`MongoDB: App open status updated`);
   return settings;
-};
-
-export const settings = {
-  findSettings,
-  removeSettings,
-  saveHidden,
-  saveSignupTime,
-  saveToggleAppOpen,
-  createSettings,
 };

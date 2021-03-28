@@ -6,7 +6,7 @@ import { removeMovedGamesFromUsers } from 'server/player-assignment/utils/remove
 import { GameDoc } from 'server/typings/game.typings';
 import { Game } from 'shared/typings/models/game';
 
-const removeGames = async (): Promise<void> => {
+export const removeGames = async (): Promise<void> => {
   logger.info('MongoDB: remove ALL games from db');
   try {
     await GameModel.deleteMany({});
@@ -40,7 +40,7 @@ const removeDeletedGames = async (
   }
 };
 
-const saveGames = async (games: readonly Game[]): Promise<Game[]> => {
+export const saveGames = async (games: readonly Game[]): Promise<Game[]> => {
   logger.info('MongoDB: Store games to DB');
 
   await removeDeletedGames(games);
@@ -93,7 +93,7 @@ const saveGames = async (games: readonly Game[]): Promise<Game[]> => {
   return await findGames();
 };
 
-const findGames = async (): Promise<GameDoc[]> => {
+export const findGames = async (): Promise<GameDoc[]> => {
   let response;
   try {
     response = await GameModel.find({});
@@ -105,7 +105,7 @@ const findGames = async (): Promise<GameDoc[]> => {
   }
 };
 
-const saveGamePopularity = async (
+export const saveGamePopularity = async (
   gameId: string,
   popularity: number
 ): Promise<void> => {
@@ -123,5 +123,3 @@ const saveGamePopularity = async (
     logger.error(`Error updating game popularity: ${error}`);
   }
 };
-
-export const game = { saveGames, findGames, removeGames, saveGamePopularity };

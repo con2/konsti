@@ -1,10 +1,10 @@
 import { logger } from 'server/utils/logger';
-import { db } from 'server/db/mongodb';
 import {
   FavoritedGame,
   SaveFavoriteRequest,
 } from 'server/typings/user.typings';
 import { Status } from 'shared/typings/api/games';
+import { saveFavorite } from 'server/db/user/userService';
 
 interface PostFavoriteResponse {
   message: string;
@@ -21,7 +21,7 @@ export const postFavorite = async (
 
   let saveFavoriteResponse;
   try {
-    saveFavoriteResponse = await db.user.saveFavorite(favoriteData);
+    saveFavoriteResponse = await saveFavorite(favoriteData);
   } catch (error) {
     return {
       message: 'Update favorite failure',
