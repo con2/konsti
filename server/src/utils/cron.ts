@@ -3,14 +3,14 @@ import schedule from 'node-schedule';
 import { logger } from 'server/utils/logger';
 import { updateGames } from 'server/utils/updateGames';
 import { config } from 'server/config';
-import { updateGamePopularity } from 'server/game-popularity/updateGamePopularity';
-import { removeOverlapSignups } from 'server/player-assignment/utils/removeOverlapSignups';
-import { runAssignment } from 'server/player-assignment/runAssignment';
-import { saveResults } from 'server/player-assignment/utils/saveResults';
+import { updateGamePopularity } from 'server/features/game-popularity/updateGamePopularity';
+import { removeOverlapSignups } from 'server/features/player-assignment/utils/removeOverlapSignups';
+import { runAssignment } from 'server/features/player-assignment/runAssignment';
+import { saveResults } from 'server/features/player-assignment/utils/saveResults';
 import { sleep } from 'server/utils/sleep';
 import { kompassiGameMapper } from 'server/utils/kompassiGameMapper';
-import { saveGames } from 'server/db/game/gameService';
-import { saveSignupTime } from 'server/db/settings/settingsService';
+import { saveSignupTime } from 'server/features/settings/settingsService';
+import { saveGames } from 'server/features/game/gameService';
 
 const {
   autoUpdateGamesEnabled,
