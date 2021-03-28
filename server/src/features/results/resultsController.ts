@@ -1,46 +1,53 @@
+import { Request, Response } from 'express';
+import { Record, String } from 'runtypes';
+import { storeAssignment } from 'server/features/player-assignment/assignmentController';
+import { fetchResults } from 'server/features/results/resultsService';
+import { UserGroup } from 'server/typings/user.typings';
+import { validateAuthHeader } from 'server/utils/authHeader';
 import { logger } from 'server/utils/logger';
-import { Status } from 'shared/typings/api/games';
-import { Result } from 'server/typings/result.typings';
-import { findResult } from 'server/features/results/resultsService';
-
-interface GetResultsResponse {
-  message: string;
-  status: Status;
-  error?: Error;
-  results?: readonly Result[];
-  startTime?: string;
-}
 
 export const getResults = async (
-  startTime: string
-): Promise<GetResultsResponse> => {
+  req: Request,
+  res: Response
+): Promise<Response> => {
   logger.info('API call: GET /api/results');
 
-  let results;
+  const GetResultsQueryParameters = Record({
+    startTime: String,
+  });
+
+  let queryParameters;
   try {
-    results = await findResult(startTime);
+    queryParameters = GetResultsQueryParameters.check(req.query);
   } catch (error) {
-    logger.error(`Results: ${error}`);
-    return {
-      message: 'Getting results failed',
-      status: 'error',
-      error,
-    };
+    return res.sendStatus(422);
   }
 
-  if (!results) {
-    return {
-      message: 'Getting results success',
-      status: 'success',
-      results: [],
-      startTime: startTime,
-    };
+  const { startTime } = queryParameters;
+
+  if (!startTime) {
+    return res.sendStatus(422);
   }
 
-  return {
-    message: 'Getting results success',
-    status: 'success',
-    results: results.results,
-    startTime: results.startTime,
-  };
+  const response = await fetchResults(startTime);
+  return res.send(response);
+};
+
+export const postAssignment = async (
+  req: Request,
+  res: Response
+): Promise<Response> => {
+  const startingTime = req.body.startingTime;
+
+  const validToken = validateAuthHeader(
+    req.headers.authorization,
+    UserGroup.admin
+  );
+
+  if (!validToken) {
+    return res.sendStatus(401);
+  }
+
+  const response = await storeAssignment(startingTime);
+  return res.send(response);
 };

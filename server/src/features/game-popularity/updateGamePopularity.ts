@@ -5,8 +5,8 @@ import { updateWithAssign } from 'server/features/game-popularity/utils/updateWi
 import { config } from 'server/config';
 import { User } from 'server/typings/user.typings';
 import { Game } from 'shared/typings/models/game';
-import { findUsers } from 'server/features/user/userService';
-import { findGames } from 'server/features/game/gameService';
+import { findUsers } from 'server/features/user/userRepository';
+import { findGames } from 'server/features/game/gameRepository';
 
 export const updateGamePopularity = async (): Promise<void> => {
   logger.info('Calculate game popularity');

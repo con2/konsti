@@ -1,26 +1,34 @@
 import { Request, Response } from 'express';
 import { validateAuthHeader } from 'server/utils/authHeader';
 import { UserGroup } from 'server/typings/user.typings';
-import { storeFeedback } from 'server/features/feedback/feedbackService';
+import { fetchGames, storeGames } from 'server/features/game/gamesService';
 import { logger } from 'server/utils/logger';
 
-export const postFeedback = async (
+export const postGame = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  logger.info('API call: POST /api/feedback');
-
-  const feedbackData = req.body.feedbackData;
+  logger.info('API call: POST /api/games');
 
   const validToken = validateAuthHeader(
     req.headers.authorization,
-    UserGroup.user
+    UserGroup.admin
   );
 
   if (!validToken) {
     return res.sendStatus(401);
   }
 
-  const response = await storeFeedback(feedbackData);
+  const response = await storeGames();
+  return res.send(response);
+};
+
+export const getGames = async (
+  _req: Request,
+  res: Response
+): Promise<Response> => {
+  logger.info('API call: GET /api/games');
+
+  const response = await fetchGames();
   return res.send(response);
 };

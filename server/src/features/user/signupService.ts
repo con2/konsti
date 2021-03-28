@@ -4,7 +4,7 @@ import { config } from 'server/config';
 import { Signup } from 'server/typings/result.typings';
 import { SignedGame } from 'server/typings/user.typings';
 import { Status } from 'shared/typings/api/games';
-import { saveSignup } from 'server/features/user/userService';
+import { saveSignup } from 'server/features/user/userRepository';
 
 interface PostSignupResponse {
   message: string;
@@ -14,14 +14,11 @@ interface PostSignupResponse {
   signedGames?: readonly SignedGame[];
 }
 
-// Add signup data for user
-export const postSignup = async (
+export const storeSignup = async (
   selectedGames: readonly SignedGame[],
   username: string,
   signupTime: string
 ): Promise<PostSignupResponse> => {
-  logger.info('API call: POST /api/signup');
-
   if (!signupTime) {
     return {
       message: 'Signup failure',

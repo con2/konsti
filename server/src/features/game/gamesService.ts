@@ -6,12 +6,9 @@ import { kompassiGameMapper } from 'server/utils/kompassiGameMapper';
 import { KompassiGame } from 'server/typings/game.typings';
 import { Game } from 'shared/typings/models/game';
 import { PostGamesResponse, GetGamesResponse } from 'shared/typings/api/games';
-import { findGames, saveGames } from 'server/features/game/gameService';
+import { findGames, saveGames } from 'server/features/game/gameRepository';
 
-// Update games db from master data
-export const postGames = async (): Promise<PostGamesResponse> => {
-  logger.info('API call: POST /api/games');
-
+export const storeGames = async (): Promise<PostGamesResponse> => {
   let kompassiGames = [] as readonly KompassiGame[];
   try {
     kompassiGames = await updateGames();
@@ -73,10 +70,7 @@ export const postGames = async (): Promise<PostGamesResponse> => {
   };
 };
 
-// Get games from db
-export const getGames = async (): Promise<GetGamesResponse> => {
-  logger.info('API call: GET /api/games');
-
+export const fetchGames = async (): Promise<GetGamesResponse> => {
   try {
     const games = await findGames();
     return {

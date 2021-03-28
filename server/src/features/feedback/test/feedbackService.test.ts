@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import { MongoMemoryServer } from 'mongodb-memory-server';
 import { FeedbackModel } from 'server/features/feedback/feedbackSchema';
-import { saveFeedback } from 'server/features/feedback/feedbackService';
+import { saveFeedback } from 'server/features/feedback/feedbackRepository';
 
 let mongoServer: MongoMemoryServer;
 
