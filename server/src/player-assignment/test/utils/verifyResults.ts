@@ -1,15 +1,16 @@
 import moment from 'moment';
-import { db } from 'server/db/mongodb';
 import { logger } from 'server/utils/logger';
 import { User } from 'server/typings/user.typings';
 import { ResultsCollectionEntry } from 'server/typings/result.typings';
+import { findUsers } from 'server/db/user/userService';
+import { findResults } from 'server/db/results/resultsService';
 
 export const verifyResults = async (): Promise<void> => {
   logger.info(`Verify results and user entered games match`);
 
   let resultsCollection: ResultsCollectionEntry[];
   try {
-    resultsCollection = await db.results.findResults();
+    resultsCollection = await findResults();
   } catch (error) {
     logger.error(error);
     throw new Error(error);
@@ -17,7 +18,7 @@ export const verifyResults = async (): Promise<void> => {
 
   let users: User[];
   try {
-    users = await db.user.findUsers();
+    users = await findUsers();
   } catch (error) {
     logger.error(error);
     throw new Error(error);

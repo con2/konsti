@@ -1,7 +1,7 @@
 import { logger } from 'server/utils/logger';
-import { db } from 'server/db/mongodb';
 import { saveUserSignupResults } from 'server/player-assignment/utils/saveUserSignupResults';
 import { Result } from 'server/typings/result.typings';
+import { saveResult } from 'server/db/results/resultsService';
 
 export const saveResults = async (
   results: readonly Result[],
@@ -13,9 +13,9 @@ export const saveResults = async (
     logger.info(
       `Save all signup results to separate collection for starting time ${startingTime}`
     );
-    await db.results.saveResult(results, startingTime, algorithm, message);
+    await saveResult(results, startingTime, algorithm, message);
   } catch (error) {
-    throw new Error(`No assign results: db.results.saveResult error: ${error}`);
+    throw new Error(`No assign results: saveResult error: ${error}`);
   }
 
   try {

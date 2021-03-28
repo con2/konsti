@@ -1,5 +1,5 @@
+import { saveToggleAppOpen } from 'server/db/settings/settingsService';
 import { logger } from 'server/utils/logger';
-import { db } from 'server/db/mongodb';
 import { Status } from 'shared/typings/api/games';
 
 interface ToggleAppOpenResponse {
@@ -15,7 +15,7 @@ export const toggleAppOpen = async (
   logger.info('API call: POST /api/toggle-app-open');
 
   try {
-    const response = await db.settings.saveToggleAppOpen(appOpen);
+    const response = await saveToggleAppOpen(appOpen);
     return {
       message: 'Update app open success',
       status: 'success',

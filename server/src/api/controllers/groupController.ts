@@ -1,7 +1,12 @@
 import { logger } from 'server/utils/logger';
-import { db } from 'server/db/mongodb';
 import { User, GetGroupReturnValue } from 'server/typings/user.typings';
 import { Status } from 'shared/typings/api/games';
+import {
+  findGroup,
+  findGroupMembers,
+  findUserSerial,
+  saveGroupCode,
+} from 'server/db/user/userService';
 
 interface PostGroupResponse {
   message: string;
@@ -29,16 +34,16 @@ export const postGroup = async (
   logger.info('API call: POST /api/group');
 
   if (closeGroup) {
-    const groupMembers = await db.user.findGroupMembers(groupCode);
+    const groupMembers = await findGroupMembers(groupCode);
 
     try {
       await Promise.all(
         groupMembers.map(async (groupMember) => {
-          await db.user.saveGroupCode('0', groupMember.username);
+          await saveGroupCode('0', groupMember.username);
         })
       );
     } catch (error) {
-      logger.error(`db.user.findGroupMembers: ${error}`);
+      logger.error(`findGroupMembers: ${error}`);
       throw new Error('Error closing group');
     }
 
@@ -50,7 +55,7 @@ export const postGroup = async (
   }
 
   if (leaveGroup) {
-    const groupMembers = await db.user.findGroupMembers(groupCode);
+    const groupMembers = await findGroupMembers(groupCode);
 
     if (leader && groupMembers.length > 1) {
       return {
@@ -62,7 +67,7 @@ export const postGroup = async (
 
     let saveGroupResponse;
     try {
-      saveGroupResponse = await db.user.saveGroupCode('0', username);
+      saveGroupResponse = await saveGroupCode('0', username);
     } catch (error) {
       logger.error(`Failed to leave group: ${error}`);
       return {
@@ -94,9 +99,9 @@ export const postGroup = async (
     let findGroupResponse;
     try {
       // Check if group exists
-      findGroupResponse = await db.user.findGroup(groupCode, username);
+      findGroupResponse = await findGroup(groupCode, username);
     } catch (error) {
-      logger.error(`db.user.findUser(): ${error}`);
+      logger.error(`findUser(): ${error}`);
       return {
         message: 'Own group already exists',
         status: 'error',
@@ -116,9 +121,9 @@ export const postGroup = async (
     // No existing group, create
     let saveGroupResponse;
     try {
-      saveGroupResponse = await db.user.saveGroupCode(groupCode, username);
+      saveGroupResponse = await saveGroupCode(groupCode, username);
     } catch (error) {
-      logger.error(`db.user.saveGroup(): ${error}`);
+      logger.error(`saveGroup(): ${error}`);
       return {
         message: 'Save group failure',
         status: 'error',
@@ -156,9 +161,9 @@ export const postGroup = async (
     // Check if code is valid
     let findSerialResponse;
     try {
-      findSerialResponse = await db.user.findSerial({ serial: groupCode });
+      findSerialResponse = await findUserSerial({ serial: groupCode });
     } catch (error) {
-      logger.error(`db.user.findSerial(): ${error}`);
+      logger.error(`findSerial(): ${error}`);
       return {
         message: 'Error finding serial',
         status: 'error',
@@ -179,9 +184,9 @@ export const postGroup = async (
     let findGroupResponse;
     try {
       const leaderUsername = findSerialResponse.username;
-      findGroupResponse = await db.user.findGroup(groupCode, leaderUsername);
+      findGroupResponse = await findGroup(groupCode, leaderUsername);
     } catch (error) {
-      logger.error(`db.user.findGroup(): ${error}`);
+      logger.error(`findGroup(): ${error}`);
       return {
         message: 'Error finding group',
         status: 'error',
@@ -201,9 +206,9 @@ export const postGroup = async (
     // Group exists, join
     let saveGroupResponse;
     try {
-      saveGroupResponse = await db.user.saveGroupCode(groupCode, username);
+      saveGroupResponse = await saveGroupCode(groupCode, username);
     } catch (error) {
-      logger.error(`db.user.saveGroup(): ${error}`);
+      logger.error(`saveGroup(): ${error}`);
       return {
         message: 'Error saving group',
         status: 'error',
@@ -241,7 +246,7 @@ export const getGroup = async (
 
   let findGroupResults: User[];
   try {
-    findGroupResults = await db.user.findGroupMembers(groupCode);
+    findGroupResults = await findGroupMembers(groupCode);
 
     const returnData: GetGroupReturnValue[] = [];
     for (const findGroupResult of findGroupResults) {

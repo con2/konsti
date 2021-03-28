@@ -1,10 +1,10 @@
 import moment from 'moment';
 import { logger } from 'server/utils/logger';
-import { db } from 'server/db/mongodb';
 import { config } from 'server/config';
 import { Signup } from 'server/typings/result.typings';
 import { SignedGame } from 'server/typings/user.typings';
 import { Status } from 'shared/typings/api/games';
+import { saveSignup } from 'server/db/user/userService';
 
 interface PostSignupResponse {
   message: string;
@@ -50,7 +50,7 @@ export const postSignup = async (
   };
 
   try {
-    const response = await db.user.saveSignup(modifiedSignupData);
+    const response = await saveSignup(modifiedSignupData);
     return {
       message: 'Signup success',
       status: 'success',

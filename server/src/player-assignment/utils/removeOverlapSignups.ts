@@ -1,8 +1,8 @@
 import moment from 'moment';
 import { logger } from 'server/utils/logger';
-import { db } from 'server/db/mongodb';
 import { Signup, Result } from 'server/typings/result.typings';
 import { SignedGame, User } from 'server/typings/user.typings';
+import { findUsers, saveSignup } from 'server/db/user/userService';
 
 export const removeOverlapSignups = async (
   results: readonly Result[]
@@ -12,7 +12,7 @@ export const removeOverlapSignups = async (
 
   let players: User[];
   try {
-    players = await db.user.findUsers();
+    players = await findUsers();
   } catch (error) {
     logger.error(error);
     throw new Error(error);
@@ -68,7 +68,7 @@ export const removeOverlapSignups = async (
   try {
     await Promise.all(
       signupData.map(async (signup) => {
-        await db.user.saveSignup(signup);
+        await saveSignup(signup);
       })
     );
   } catch (error) {

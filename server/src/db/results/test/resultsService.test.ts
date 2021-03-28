@@ -1,8 +1,8 @@
 import mongoose from 'mongoose';
 import { MongoMemoryServer } from 'mongodb-memory-server';
-import { db } from 'server/db/mongodb';
 import { ResultsModel } from 'server/db/results/resultsSchema';
 import { Result } from 'server/typings/result.typings';
+import { saveResult } from 'server/db/results/resultsService';
 
 let mongoServer: MongoMemoryServer;
 
@@ -31,12 +31,7 @@ describe('Results service', () => {
     const algorithm = 'group';
     const message = 'Test assign result message';
 
-    await db.results.saveResult(
-      signupResultData,
-      startTime,
-      algorithm,
-      message
-    );
+    await saveResult(signupResultData, startTime, algorithm, message);
 
     const insertedResults = await ResultsModel.findOne({ message });
     expect(insertedResults?.message).toEqual(message);

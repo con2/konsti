@@ -1,7 +1,6 @@
 import moment from 'moment';
 import schedule from 'node-schedule';
 import { logger } from 'server/utils/logger';
-import { db } from 'server/db/mongodb';
 import { updateGames } from 'server/utils/updateGames';
 import { config } from 'server/config';
 import { updateGamePopularity } from 'server/game-popularity/updateGamePopularity';
@@ -10,6 +9,8 @@ import { runAssignment } from 'server/player-assignment/runAssignment';
 import { saveResults } from 'server/player-assignment/utils/saveResults';
 import { sleep } from 'server/utils/sleep';
 import { kompassiGameMapper } from 'server/utils/kompassiGameMapper';
+import { saveGames } from 'server/db/game/gameService';
+import { saveSignupTime } from 'server/db/settings/settingsService';
 
 const {
   autoUpdateGamesEnabled,
@@ -27,7 +28,7 @@ export const autoUpdateGames = async (): Promise<void> => {
     if (autoUpdateGamesEnabled) {
       logger.info('----> Auto update games');
       const kompassiGames = await updateGames();
-      await db.game.saveGames(kompassiGameMapper(kompassiGames));
+      await saveGames(kompassiGameMapper(kompassiGames));
       logger.info('***** Games auto update completed');
     }
 
@@ -91,9 +92,9 @@ export const autoAssignPlayers = async (): Promise<void> => {
 
     // Set which results are shown
     try {
-      await db.settings.saveSignupTime(startTime);
+      await saveSignupTime(startTime);
     } catch (error) {
-      logger.error(`db.settings.saveSignupTime error: ${error}`);
+      logger.error(`saveSignupTime error: ${error}`);
     }
 
     // Remove overlapping signups

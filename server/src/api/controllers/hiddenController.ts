@@ -1,7 +1,8 @@
 import { logger } from 'server/utils/logger';
-import { db } from 'server/db/mongodb';
 import { Game } from 'shared/typings/models/game';
 import { Status } from 'shared/typings/api/games';
+import { saveHidden } from 'server/db/settings/settingsService';
+import { findUsers, updateUser } from 'server/db/user/userService';
 
 interface PostHiddenResponse {
   message: string;
@@ -18,9 +19,9 @@ export const postHidden = async (
 
   let settings;
   try {
-    settings = await db.settings.saveHidden(hiddenData);
+    settings = await saveHidden(hiddenData);
   } catch (error) {
-    logger.error(`db.settings.saveHidden error: ${error}`);
+    logger.error(`saveHidden error: ${error}`);
     return {
       message: 'Update hidden failure',
       status: 'error',
@@ -57,7 +58,7 @@ const removeHiddenGamesFromUsers = async (
 
   let users;
   try {
-    users = await db.user.findUsers();
+    users = await findUsers();
   } catch (error) {
     logger.error(`findUsers error: ${error}`);
     return await Promise.reject(error);
@@ -98,7 +99,7 @@ const removeHiddenGamesFromUsers = async (
           user.enteredGames.length !== enteredGames.length ||
           user.favoritedGames.length !== favoritedGames.length
         ) {
-          await db.user.updateUser({
+          await updateUser({
             ...user,
             signedGames,
             enteredGames,
@@ -108,7 +109,7 @@ const removeHiddenGamesFromUsers = async (
       })
     );
   } catch (error) {
-    logger.error(`db.user.updateUser error: ${error}`);
+    logger.error(`updateUser error: ${error}`);
   }
 
   logger.info(`Hidden games removed from users`);

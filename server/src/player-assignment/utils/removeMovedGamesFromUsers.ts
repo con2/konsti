@@ -1,8 +1,9 @@
 import moment from 'moment';
-import { db } from 'server/db/mongodb';
 import { logger } from 'server/utils/logger';
 import { GameDoc } from 'server/typings/game.typings';
 import { Game } from 'shared/typings/models/game';
+import { findGames } from 'server/db/game/gameService';
+import { findUsers, updateUser } from 'server/db/user/userService';
 
 export const removeMovedGamesFromUsers = async (
   updatedGames: readonly Game[]
@@ -11,7 +12,7 @@ export const removeMovedGamesFromUsers = async (
 
   let currentGames: GameDoc[] = [];
   try {
-    currentGames = await db.game.findGames();
+    currentGames = await findGames();
   } catch (error) {
     logger.error(error);
   }
@@ -32,7 +33,7 @@ export const removeMovedGamesFromUsers = async (
 
   let users;
   try {
-    users = await db.user.findUsers();
+    users = await findUsers();
   } catch (error) {
     logger.error(`findUsers error: ${error}`);
     return await Promise.reject(error);
@@ -63,7 +64,7 @@ export const removeMovedGamesFromUsers = async (
           user.signedGames.length !== signedGames.length ||
           user.enteredGames.length !== enteredGames.length
         ) {
-          await db.user.updateUser({
+          await updateUser({
             ...user,
             signedGames,
             enteredGames,
@@ -72,7 +73,7 @@ export const removeMovedGamesFromUsers = async (
       })
     );
   } catch (error) {
-    logger.error(`db.user.updateUser error: ${error}`);
+    logger.error(`updateUser error: ${error}`);
     throw new Error('No assign results');
   }
 };

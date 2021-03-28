@@ -1,8 +1,8 @@
 import _ from 'lodash';
 import { logger } from 'server/utils/logger';
-import { db } from 'server/db/mongodb';
 import { User } from 'server/typings/user.typings';
 import { Game } from 'shared/typings/models/game';
+import { saveGamePopularity } from 'server/db/game/gameService';
 
 export const updateWithSignups = async (
   users: User[],
@@ -34,10 +34,7 @@ export const updateWithSignups = async (
     await Promise.all(
       games.map(async (game) => {
         if (groupedSignups[game.gameId]) {
-          await db.game.saveGamePopularity(
-            game.gameId,
-            groupedSignups[game.gameId]
-          );
+          await saveGamePopularity(game.gameId, groupedSignups[game.gameId]);
         }
       })
     );

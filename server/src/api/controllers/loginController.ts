@@ -1,9 +1,10 @@
 import { logger } from 'server/utils/logger';
-import { db } from 'server/db/mongodb';
 import { validateLogin } from 'server/utils/bcrypt';
 import { getJWT, verifyJWT, decodeJWT } from 'server/utils/jwt';
 import { UserGroup } from 'server/typings/user.typings';
 import { Status } from 'shared/typings/api/games';
+import { findUser } from 'server/db/user/userService';
+import { findSettings } from 'server/db/settings/settingsService';
 
 interface PostLoginResponse {
   message: string;
@@ -60,7 +61,7 @@ export const postLogin = async (
     if (typeof jwtResponse.username === 'string') {
       let user;
       try {
-        user = await db.user.findUser(jwtResponse.username);
+        user = await findUser(jwtResponse.username);
       } catch (error) {
         logger.error(`Login: ${error}`);
         return {
@@ -81,7 +82,7 @@ export const postLogin = async (
 
       let settingsResponse;
       try {
-        settingsResponse = await db.settings.findSettings();
+        settingsResponse = await findSettings();
       } catch (error) {
         logger.error(`Login: ${error}`);
         return {
@@ -113,7 +114,7 @@ export const postLogin = async (
 
   let user;
   try {
-    user = await db.user.findUser(username);
+    user = await findUser(username);
   } catch (error) {
     logger.error(`Login: ${error}`);
     return {
@@ -134,7 +135,7 @@ export const postLogin = async (
 
   let settingsResponse;
   try {
-    settingsResponse = await db.settings.findSettings();
+    settingsResponse = await findSettings();
   } catch (error) {
     logger.error(`Login: ${error}`);
     return {

@@ -1,5 +1,5 @@
+import { findSettings } from 'server/db/settings/settingsService';
 import { logger } from 'server/utils/logger';
-import { db } from 'server/db/mongodb';
 import { Status } from 'shared/typings/api/games';
 import { Game } from 'shared/typings/models/game';
 
@@ -17,7 +17,7 @@ export const getSettings = async (): Promise<GetSettingsResponse> => {
   logger.info('API call: GET /api/settings');
 
   try {
-    const response = await db.settings.findSettings();
+    const response = await findSettings();
 
     return {
       message: 'Getting settings success',

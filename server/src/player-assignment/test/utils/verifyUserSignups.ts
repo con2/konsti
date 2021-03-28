@@ -1,14 +1,14 @@
 import moment from 'moment';
-import { db } from 'server/db/mongodb';
 import { logger } from 'server/utils/logger';
 import { User } from 'server/typings/user.typings';
+import { findUsers } from 'server/db/user/userService';
 
 export const verifyUserSignups = async (): Promise<void> => {
   logger.info('Verify entered games and signups match for users');
 
   let users: User[];
   try {
-    users = await db.user.findUsers();
+    users = await findUsers();
   } catch (error) {
     logger.error(error);
     return;
