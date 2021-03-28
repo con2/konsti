@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import { MongoMemoryServer } from 'mongodb-memory-server';
-import { db } from 'server/db/mongodb';
 import { FeedbackModel } from 'server/db/feedback/feedbackSchema';
+import { saveFeedback } from 'server/db/feedback/feedbackService';
 
 let mongoServer: MongoMemoryServer;
 
@@ -26,7 +26,7 @@ afterEach(async () => {
 describe('Feedback service', () => {
   it('should insert new feedback into collection', async () => {
     const mockFeedback = { gameId: '1234A', feedback: 'Test feedback' };
-    await db.feedback.saveFeedback(mockFeedback);
+    await saveFeedback(mockFeedback);
 
     const insertedFeedback = await FeedbackModel.findOne(mockFeedback);
     expect(insertedFeedback?.gameId).toEqual(mockFeedback.gameId);

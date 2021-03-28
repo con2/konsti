@@ -1,7 +1,7 @@
 import { logger } from 'server/utils/logger';
-import { db } from 'server/db/mongodb';
 import { Feedback } from 'server/typings/feedback.typings';
 import { Status } from 'shared/typings/api/games';
+import { saveFeedback } from 'server/db/feedback/feedbackService';
 
 interface PostFeedbackResponse {
   message: string;
@@ -16,7 +16,7 @@ export const postFeedback = async (
   logger.info('API call: POST /api/feedback');
 
   try {
-    await db.feedback.saveFeedback(feedbackData);
+    await saveFeedback(feedbackData);
     return {
       message: 'Post feedback success',
       status: 'success',

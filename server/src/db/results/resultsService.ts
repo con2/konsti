@@ -1,15 +1,15 @@
 import { logger } from 'server/utils/logger';
-import { db } from 'server/db/mongodb';
 import { ResultsModel } from 'server/db/results/resultsSchema';
 import { Result, ResultsCollectionEntry } from 'server/typings/result.typings';
 import { GameDoc } from 'server/typings/game.typings';
+import { findGames } from 'server/db/game/gameService';
 
-const removeResults = async (): Promise<void> => {
+export const removeResults = async (): Promise<void> => {
   logger.info('MongoDB: remove ALL results from db');
   await ResultsModel.deleteMany({});
 };
 
-const findResult = async (
+export const findResult = async (
   startTime: string
 ): Promise<ResultsCollectionEntry | null> => {
   let response;
@@ -30,7 +30,7 @@ const findResult = async (
   return response;
 };
 
-const findResults = async (): Promise<ResultsCollectionEntry[]> => {
+export const findResults = async (): Promise<ResultsCollectionEntry[]> => {
   let response: ResultsCollectionEntry[];
   try {
     // @ts-expect-error: Returns ResultsCollectionEntry even though it definitely should be ResultsCollectionEntry[]
@@ -49,7 +49,7 @@ const findResults = async (): Promise<ResultsCollectionEntry[]> => {
   return response;
 };
 
-const saveResult = async (
+export const saveResult = async (
   signupResultData: readonly Result[],
   startTime: string,
   algorithm: string,
@@ -57,7 +57,7 @@ const saveResult = async (
 ): Promise<ResultsCollectionEntry> => {
   let games: GameDoc[] = [];
   try {
-    games = await db.game.findGames();
+    games = await findGames();
   } catch (error) {
     logger.error(`MongoDB: Error loading games - ${error}`);
     return error;
@@ -101,5 +101,3 @@ const saveResult = async (
 
   return response;
 };
-
-export const results = { removeResults, saveResult, findResult, findResults };

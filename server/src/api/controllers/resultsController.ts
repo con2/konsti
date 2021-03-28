@@ -1,7 +1,7 @@
 import { logger } from 'server/utils/logger';
-import { db } from 'server/db/mongodb';
 import { Status } from 'shared/typings/api/games';
 import { Result } from 'server/typings/result.typings';
+import { findResult } from 'server/db/results/resultsService';
 
 interface GetResultsResponse {
   message: string;
@@ -18,7 +18,7 @@ export const getResults = async (
 
   let results;
   try {
-    results = await db.results.findResult(startTime);
+    results = await findResult(startTime);
   } catch (error) {
     logger.error(`Results: ${error}`);
     return {

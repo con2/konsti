@@ -1,12 +1,6 @@
 import mongoose from 'mongoose';
 import { logger } from 'server/utils/logger';
 import { config } from 'server/config';
-import { user } from 'server/db/user/userService';
-import { feedback } from 'server/db/feedback/feedbackService';
-import { game } from 'server/db/game/gameService';
-import { results } from 'server/db/results/resultsService';
-import { settings } from 'server/db/settings/settingsService';
-import { serial } from 'server/db/serial/serialService';
 
 const connectToDb = async (
   dbConnString: string = config.dbConnString
@@ -51,10 +45,4 @@ const gracefulExit = async (
 export const db = {
   connectToDb,
   gracefulExit,
-  user,
-  feedback,
-  game,
-  results,
-  settings,
-  serial,
 };

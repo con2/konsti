@@ -1,5 +1,4 @@
 import { logger } from 'server/utils/logger';
-import { db } from 'server/db/mongodb';
 import { updateGames } from 'server/utils/updateGames';
 import { updateGamePopularity } from 'server/game-popularity/updateGamePopularity';
 import { config } from 'server/config';
@@ -7,6 +6,7 @@ import { kompassiGameMapper } from 'server/utils/kompassiGameMapper';
 import { KompassiGame } from 'server/typings/game.typings';
 import { Game } from 'shared/typings/models/game';
 import { PostGamesResponse, GetGamesResponse } from 'shared/typings/api/games';
+import { findGames, saveGames } from 'server/db/game/gameService';
 
 // Update games db from master data
 export const postGames = async (): Promise<PostGamesResponse> => {
@@ -35,11 +35,9 @@ export const postGames = async (): Promise<PostGamesResponse> => {
 
   let gameSaveResponse: Game[];
   try {
-    gameSaveResponse = await db.game.saveGames(
-      kompassiGameMapper(kompassiGames)
-    );
+    gameSaveResponse = await saveGames(kompassiGameMapper(kompassiGames));
   } catch (error) {
-    logger.error(`db.game.saveGames error: ${error}`);
+    logger.error(`saveGames error: ${error}`);
     return {
       message: 'Games db update failed: Saving games failed',
       status: 'error',
@@ -80,7 +78,7 @@ export const getGames = async (): Promise<GetGamesResponse> => {
   logger.info('API call: GET /api/games');
 
   try {
-    const games = await db.game.findGames();
+    const games = await findGames();
     return {
       message: 'Games downloaded',
       status: 'success',

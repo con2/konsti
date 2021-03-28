@@ -1,5 +1,4 @@
 import { logger } from 'server/utils/logger';
-import { db } from 'server/db/mongodb';
 import { hashPassword } from 'server/utils/bcrypt';
 import { Status } from 'shared/typings/api/games';
 import {
@@ -7,6 +6,14 @@ import {
   FavoritedGame,
   SignedGame,
 } from 'server/typings/user.typings';
+import {
+  findUser,
+  findUserBySerial,
+  findUserSerial,
+  saveUser,
+  updateUserPassword,
+} from 'server/db/user/userService';
+import { findSerial } from 'server/db/serial/serialService';
 
 interface PostUserResponse {
   message: string;
@@ -42,7 +49,7 @@ export const postUser = async (
     try {
       passwordHash = await hashPassword(password);
     } catch (error) {
-      logger.error(`db.user.updateUser error: ${error}`);
+      logger.error(`updateUser error: ${error}`);
       return {
         message: 'Password change error',
         status: 'error',
@@ -50,9 +57,9 @@ export const postUser = async (
     }
 
     try {
-      await db.user.updateUserPassword(username, passwordHash);
+      await updateUserPassword(username, passwordHash);
     } catch (error) {
-      logger.error(`db.user.updateUserPassword error: ${error}`);
+      logger.error(`updateUserPassword error: ${error}`);
       return {
         message: 'Password change error',
         status: 'error',
@@ -67,7 +74,7 @@ export const postUser = async (
 
   let serialFound = false;
   try {
-    serialFound = await db.serial.findSerial(serial);
+    serialFound = await findSerial(serial);
   } catch (error) {
     logger.error(`Error finding serial: ${error}`);
     return {
@@ -93,9 +100,9 @@ export const postUser = async (
   let user;
   try {
     // Check if user already exists
-    user = await db.user.findUser(username);
+    user = await findUser(username);
   } catch (error) {
-    logger.error(`db.user.findUser(): ${error}`);
+    logger.error(`findUser(): ${error}`);
     return {
       code: 10,
       message: 'Finding user failed',
@@ -117,9 +124,9 @@ export const postUser = async (
     // Check if serial is used
     let serialResponse;
     try {
-      serialResponse = await db.user.findSerial({ serial });
+      serialResponse = await findUserSerial({ serial });
     } catch (error) {
-      logger.error(`db.user.findSerial(): ${error}`);
+      logger.error(`findSerial(): ${error}`);
       return {
         code: 10,
         message: 'Finding serial failed',
@@ -163,13 +170,13 @@ export const postUser = async (
       if (passwordHash) {
         let saveUserResponse;
         try {
-          saveUserResponse = await db.user.saveUser({
+          saveUserResponse = await saveUser({
             username,
             passwordHash,
             serial,
           });
         } catch (error) {
-          logger.error(`db.user.saveUser(): ${error}`);
+          logger.error(`saveUser(): ${error}`);
           return {
             code: 10,
             message: 'User registration failed',
@@ -204,9 +211,9 @@ export const getUser = async (
 
   if (username) {
     try {
-      user = await db.user.findUser(username);
+      user = await findUser(username);
     } catch (error) {
-      logger.error(`db.user.findUser(): ${error}`);
+      logger.error(`findUser(): ${error}`);
       return {
         message: 'Getting user data failed',
         status: 'error',
@@ -215,9 +222,9 @@ export const getUser = async (
     }
   } else if (serial) {
     try {
-      user = await db.user.findUserBySerial(serial);
+      user = await findUserBySerial(serial);
     } catch (error) {
-      logger.error(`db.user.findUser(): ${error}`);
+      logger.error(`findUser(): ${error}`);
       return {
         message: 'Getting user data failed',
         status: 'error',
