@@ -24,7 +24,8 @@ export const anonymizeData = async (
   );
 
   users.forEach((user) => {
-    const randomUsername = faker.random.number(1000000).toString();
+    // @ts-expect-error @types/faker not updated yet
+    const randomUsername = faker.datatype.number(1000000).toString();
 
     results.forEach((result) => {
       result.results.forEach((userResult) => {
