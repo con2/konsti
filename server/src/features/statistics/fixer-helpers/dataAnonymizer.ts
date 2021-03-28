@@ -3,7 +3,7 @@ import faker from 'faker';
 import { logger } from 'server/utils/logger';
 import { User } from 'server/typings/user.typings';
 import { ResultsCollectionEntry } from 'server/typings/result.typings';
-import { writeJson } from 'server/statistics/statsUtil';
+import { writeJson } from 'server/features/statistics/statsUtil';
 
 export const anonymizeData = async (
   year: number,

@@ -5,7 +5,7 @@ import { Array } from 'runtypes';
 import { logger } from 'server/utils/logger';
 import { FeedbackRuntype } from 'server/typings/feedback.typings';
 import { GameRuntype } from 'shared/typings/models/game';
-import { writeJson } from 'server/statistics/statsUtil';
+import { writeJson } from 'server/features/statistics/statsUtil';
 
 export const formatFeedbacks = (year: number, event: string): void => {
   moment.locale('fi');

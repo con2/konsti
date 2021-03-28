@@ -8,7 +8,7 @@ import {
 } from 'server/typings/user.typings';
 import { GameDoc } from 'server/typings/game.typings';
 import { ResultsCollectionEntry } from 'server/typings/result.typings';
-import { writeJson } from 'server/statistics/statsUtil';
+import { writeJson } from 'server/features/statistics/statsUtil';
 
 export const gameIdFix = async (year: number, event: string): Promise<void> => {
   const users: User[] = JSON.parse(

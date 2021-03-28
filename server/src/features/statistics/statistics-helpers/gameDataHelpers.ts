@@ -8,7 +8,7 @@ import {
   StringNumberObject,
   PriorityObject,
 } from 'server/typings/common.typings';
-import { toPercent } from 'server/statistics/statsUtil';
+import { toPercent } from 'server/features/statistics/statsUtil';
 
 export const getGamesByStartingTime = (
   games: readonly Game[]
