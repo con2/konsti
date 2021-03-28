@@ -1,12 +1,12 @@
 import 'array-flat-polyfill';
 import moment from 'moment';
 import { logger } from 'server/utils/logger';
-import { runAssignment } from 'server/player-assignment/runAssignment';
+import { runAssignment } from 'server/features/player-assignment/runAssignment';
 import { config } from 'server/config';
-import { saveResults } from 'server/player-assignment/utils/saveResults';
-import { removeOverlapSignups } from 'server/player-assignment/utils/removeOverlapSignups';
-import { verifyUserSignups } from 'server/player-assignment/test/utils/verifyUserSignups';
-import { verifyResults } from 'server/player-assignment/test/utils/verifyResults';
+import { saveResults } from 'server/features/player-assignment/utils/saveResults';
+import { removeOverlapSignups } from 'server/features/player-assignment/utils/removeOverlapSignups';
+import { verifyUserSignups } from 'server/features/player-assignment/test/utils/verifyUserSignups';
+import { verifyResults } from 'server/features/player-assignment/test/utils/verifyResults';
 import { AssignmentStrategy } from 'server/typings/config.typings';
 import { db } from 'server/db/mongodb';
 

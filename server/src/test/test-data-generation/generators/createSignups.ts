@@ -2,11 +2,11 @@ import faker from 'faker';
 import moment from 'moment';
 import _ from 'lodash';
 import { logger } from 'server/utils/logger';
-import { updateGamePopularity } from 'server/game-popularity/updateGamePopularity';
+import { updateGamePopularity } from 'server/features/game-popularity/updateGamePopularity';
 import { User, SignedGame } from 'server/typings//user.typings';
 import { Game } from 'shared/typings/models/game';
-import { findUsers, saveSignup } from 'server/db/user/userService';
-import { findGames } from 'server/db/game/gameService';
+import { findUsers, saveSignup } from 'server/features/user/userService';
+import { findGames } from 'server/features/game/gameService';
 
 export const createSignups = async (): Promise<void> => {
   let games: Game[] = [];

@@ -5,7 +5,7 @@ import { config } from 'server/config';
 import { kompassiGameMapper } from 'server/utils/kompassiGameMapper';
 import { KompassiGame } from 'server/typings/game.typings';
 import { Game } from 'shared/typings/models/game';
-import { saveGames } from 'server/db/game/gameService';
+import { saveGames } from 'server/features/game/gameService';
 
 export const createGames = async (
   gameCount: number,
