@@ -29,8 +29,10 @@ export const createGames = async (
 
   startingTimes.forEach((startingTime) => {
     for (let i = 0; i < gameCount; i += 1) {
-      const minAttendance = faker.random.number({ min: 3, max: 4 });
-      const maxAttendance = faker.random.number({ min: 4, max: 6 });
+      // @ts-expect-error @types/faker not updated yet
+      const minAttendance = faker.datatype.number({ min: 3, max: 4 });
+      // @ts-expect-error @types/faker not updated yet
+      const maxAttendance = faker.datatype.number({ min: 4, max: 6 });
       const startTime = startingTime;
       const length = 180;
 
@@ -53,7 +55,8 @@ export const createGames = async (
         intended_for_experienced_participants: true,
         min_players: minAttendance,
         max_players: maxAttendance,
-        identifier: faker.random.number().toString(),
+        // @ts-expect-error @types/faker not updated yet
+        identifier: faker.datatype.number().toString(),
         tags: [
           'in-english',
           'sopii-lapsille',
