@@ -2,7 +2,7 @@ import faker from 'faker';
 import { logger } from 'server/utils/logger';
 import { hashPassword } from 'server/utils/bcrypt';
 import { UserGroup } from 'server/typings/user.typings';
-import { saveUser } from 'server/features/user/userService';
+import { saveUser } from 'server/features/user/userRepository';
 export const createAdminUser = async (): Promise<void> => {
   logger.info(`Generate data for admin user "admin:test"`);
 

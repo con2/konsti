@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import { MongoMemoryServer } from 'mongodb-memory-server';
-import { saveSerials } from 'server/features/serial/serialService';
+import { saveSerials } from 'server/features/serial/serialRepository';
 
 jest.mock('generate-serial-number');
 

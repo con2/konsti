@@ -2,7 +2,7 @@ import moment from 'moment';
 import { logger } from 'server/utils/logger';
 import { Signup, Result } from 'server/typings/result.typings';
 import { SignedGame, User } from 'server/typings/user.typings';
-import { findUsers, saveSignup } from 'server/features/user/userService';
+import { findUsers, saveSignup } from 'server/features/user/userRepository';
 
 export const removeOverlapSignups = async (
   results: readonly Result[]

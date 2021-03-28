@@ -1,5 +1,5 @@
 import { db } from 'server/db/mongodb';
-import { saveSerials } from 'server/features/serial/serialService';
+import { saveSerials } from 'server/features/serial/serialRepository';
 import { logger } from 'server/utils/logger';
 
 const isInt = (n: string): boolean => parseInt(n, 10) % 1 === 0;

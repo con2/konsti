@@ -5,8 +5,8 @@ import { logger } from 'server/utils/logger';
 import { updateGamePopularity } from 'server/features/game-popularity/updateGamePopularity';
 import { User, SignedGame } from 'server/typings//user.typings';
 import { Game } from 'shared/typings/models/game';
-import { findUsers, saveSignup } from 'server/features/user/userService';
-import { findGames } from 'server/features/game/gameService';
+import { findUsers, saveSignup } from 'server/features/user/userRepository';
+import { findGames } from 'server/features/game/gameRepository';
 
 export const createSignups = async (): Promise<void> => {
   let games: Game[] = [];
