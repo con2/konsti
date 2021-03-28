@@ -3,8 +3,8 @@ import { validateLogin } from 'server/utils/bcrypt';
 import { getJWT, verifyJWT, decodeJWT } from 'server/utils/jwt';
 import { UserGroup } from 'server/typings/user.typings';
 import { Status } from 'shared/typings/api/games';
-import { findUser } from 'server/features/user/userService';
-import { findSettings } from 'server/features/settings/settingsService';
+import { findUser } from 'server/features/user/userRepository';
+import { findSettings } from 'server/features/settings/settingsRepository';
 
 interface PostLoginResponse {
   message: string;
@@ -18,13 +18,11 @@ interface PostLoginResponse {
   jwt?: string;
 }
 
-export const postLogin = async (
+export const login = async (
   username: string,
   password: string,
   jwt: string
 ): Promise<PostLoginResponse> => {
-  logger.info('API call: POST /api/login');
-
   // Restore session
   if (jwt) {
     const jwtData = decodeJWT(jwt);

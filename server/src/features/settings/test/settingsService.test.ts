@@ -8,8 +8,8 @@ import {
   saveSignupTime,
   saveToggleAppOpen,
   saveHidden,
-} from 'server/features/settings/settingsService';
-import { saveGames } from 'server/features/game/gameService';
+} from 'server/features/settings/settingsRepository';
+import { saveGames } from 'server/features/game/gameRepository';
 
 let mongoServer: MongoMemoryServer;
 

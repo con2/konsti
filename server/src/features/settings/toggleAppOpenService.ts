@@ -1,5 +1,4 @@
-import { saveToggleAppOpen } from 'server/features/settings/settingsService';
-import { logger } from 'server/utils/logger';
+import { saveToggleAppOpen } from 'server/features/settings/settingsRepository';
 import { Status } from 'shared/typings/api/games';
 
 interface ToggleAppOpenResponse {
@@ -12,8 +11,6 @@ interface ToggleAppOpenResponse {
 export const toggleAppOpen = async (
   appOpen: boolean
 ): Promise<ToggleAppOpenResponse> => {
-  logger.info('API call: POST /api/toggle-app-open');
-
   try {
     const response = await saveToggleAppOpen(appOpen);
     return {

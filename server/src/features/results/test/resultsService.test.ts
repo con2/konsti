@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import { MongoMemoryServer } from 'mongodb-memory-server';
 import { ResultsModel } from 'server/features/results/resultsSchema';
 import { Result } from 'server/typings/result.typings';
-import { saveResult } from 'server/features/results/resultsService';
+import { saveResult } from 'server/features/results/resultsRepository';
 
 let mongoServer: MongoMemoryServer;
 

@@ -3,8 +3,11 @@ import { logger } from 'server/utils/logger';
 import { Result } from 'server/typings/result.typings';
 import { GameDoc } from 'server/typings/game.typings';
 import { EnteredGame } from 'server/typings/user.typings';
-import { findUsers, saveEnteredGames } from 'server/features/user/userService';
-import { findGames } from 'server/features/game/gameService';
+import {
+  findUsers,
+  saveEnteredGames,
+} from 'server/features/user/userRepository';
+import { findGames } from 'server/features/game/gameRepository';
 
 export const saveUserSignupResults = async (
   startingTime: string,

@@ -9,8 +9,8 @@ import { runAssignment } from 'server/features/player-assignment/runAssignment';
 import { saveResults } from 'server/features/player-assignment/utils/saveResults';
 import { sleep } from 'server/utils/sleep';
 import { kompassiGameMapper } from 'server/utils/kompassiGameMapper';
-import { saveSignupTime } from 'server/features/settings/settingsService';
-import { saveGames } from 'server/features/game/gameService';
+import { saveSignupTime } from 'server/features/settings/settingsRepository';
+import { saveGames } from 'server/features/game/gameRepository';
 
 const {
   autoUpdateGamesEnabled,

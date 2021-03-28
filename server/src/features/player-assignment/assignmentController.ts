@@ -16,7 +16,7 @@ interface PostAssignmentResponse {
 }
 
 // Assign players to games
-export const postAssignment = async (
+export const storeAssignment = async (
   startingTime: string
 ): Promise<PostAssignmentResponse> => {
   logger.info('API call: POST /api/assignment');
