@@ -1,11 +1,11 @@
 import faker from 'faker';
 import moment from 'moment';
 import { logger } from 'server/utils/logger';
-import { db } from 'server/db/mongodb';
 import { config } from 'server/config';
 import { kompassiGameMapper } from 'server/utils/kompassiGameMapper';
 import { KompassiGame } from 'server/typings/game.typings';
 import { Game } from 'shared/typings/models/game';
+import { saveGames } from 'server/db/game/gameService';
 
 export const createGames = async (
   gameCount: number,
@@ -78,5 +78,5 @@ export const createGames = async (
     }
   });
 
-  return await db.game.saveGames(kompassiGameMapper(kompassiGames));
+  return await saveGames(kompassiGameMapper(kompassiGames));
 };

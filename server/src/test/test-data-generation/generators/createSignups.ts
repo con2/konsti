@@ -2,24 +2,25 @@ import faker from 'faker';
 import moment from 'moment';
 import _ from 'lodash';
 import { logger } from 'server/utils/logger';
-import { db } from 'server/db/mongodb';
 import { updateGamePopularity } from 'server/game-popularity/updateGamePopularity';
 import { User, SignedGame } from 'server/typings//user.typings';
 import { Game } from 'shared/typings/models/game';
+import { findUsers, saveSignup } from 'server/db/user/userService';
+import { findGames } from 'server/db/game/gameService';
 
 export const createSignups = async (): Promise<void> => {
   let games: Game[] = [];
   try {
-    games = await db.game.findGames();
+    games = await findGames();
   } catch (error) {
-    logger.error(`db.game.findGames error: ${error}`);
+    logger.error(`findGames error: ${error}`);
   }
 
   let allUsers: User[] = [];
   try {
-    allUsers = await db.user.findUsers();
+    allUsers = await findUsers();
   } catch (error) {
-    logger.error(`db.game.findUsers error: ${error}`);
+    logger.error(`findUsers error: ${error}`);
   }
 
   const users = allUsers.filter(
@@ -93,7 +94,7 @@ const getRandomSignup = (games: readonly Game[]): SignedGame[] => {
 const signup = async (games: readonly Game[], user: User): Promise<User> => {
   const signedGames = getRandomSignup(games);
 
-  return await db.user.saveSignup({
+  return await saveSignup({
     username: user.username,
     signedGames: signedGames,
   });
@@ -131,7 +132,7 @@ const signupGroup = async (
       signedGames: i === 0 ? signedGames : [],
     };
 
-    promises.push(db.user.saveSignup(signupData));
+    promises.push(saveSignup(signupData));
   }
 
   await Promise.all(promises);

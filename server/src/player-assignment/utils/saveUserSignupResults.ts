@@ -1,9 +1,10 @@
 import moment from 'moment';
 import { logger } from 'server/utils/logger';
-import { db } from 'server/db/mongodb';
 import { Result } from 'server/typings/result.typings';
 import { GameDoc } from 'server/typings/game.typings';
 import { EnteredGame } from 'server/typings/user.typings';
+import { findUsers, saveEnteredGames } from 'server/db/user/userService';
+import { findGames } from 'server/db/game/gameService';
 
 export const saveUserSignupResults = async (
   startingTime: string,
@@ -11,14 +12,14 @@ export const saveUserSignupResults = async (
 ): Promise<void> => {
   let users;
   try {
-    users = await db.user.findUsers();
+    users = await findUsers();
   } catch (error) {
     throw new Error(`MongoDB: Error fetching users - ${error}`);
   }
 
   let games: GameDoc[];
   try {
-    games = await db.game.findGames();
+    games = await findGames();
   } catch (error) {
     logger.error(`MongoDB: Error loading games - ${error}`);
     return error;
@@ -53,7 +54,7 @@ export const saveUserSignupResults = async (
           ];
         }
 
-        await db.user.saveEnteredGames(enteredGames, user.username);
+        await saveEnteredGames(enteredGames, user.username);
       })
     );
   } catch (error) {

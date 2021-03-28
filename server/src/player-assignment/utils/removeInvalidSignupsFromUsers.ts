@@ -1,12 +1,12 @@
+import { findUsers, updateUser } from 'server/db/user/userService';
 import { logger } from 'server/utils/logger';
-import { db } from 'server/db/mongodb';
 
 export const removeInvalidSignupsFromUsers = async (): Promise<void> => {
   logger.info('Remove invalid signups from users');
 
   let users;
   try {
-    users = await db.user.findUsers();
+    users = await findUsers();
   } catch (error) {
     logger.error(`findUsers error: ${error}`);
     throw new Error(error);
@@ -32,7 +32,7 @@ export const removeInvalidSignupsFromUsers = async (): Promise<void> => {
           user.enteredGames.length !== enteredGames.length ||
           user.favoritedGames.length !== favoritedGames.length
         ) {
-          await db.user.updateUser({
+          await updateUser({
             ...user,
             signedGames,
             enteredGames,
@@ -42,7 +42,7 @@ export const removeInvalidSignupsFromUsers = async (): Promise<void> => {
       })
     );
   } catch (error) {
-    logger.error(`db.user.updateUser error: ${error}`);
+    logger.error(`updateUser error: ${error}`);
     throw new Error(error);
   }
 };

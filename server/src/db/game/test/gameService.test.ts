@@ -1,8 +1,8 @@
 import mongoose from 'mongoose';
 import { MongoMemoryServer } from 'mongodb-memory-server';
-import { db } from 'server/db/mongodb';
 import { GameModel } from 'server/db/game/gameSchema';
 import { mockGame } from 'server/test/mock-data/mockGame';
+import { saveGames } from 'server/db/game/gameService';
 
 let mongoServer: MongoMemoryServer;
 
@@ -26,7 +26,7 @@ afterEach(async () => {
 
 describe('Game service', () => {
   it('should insert new game into collection', async () => {
-    await db.game.saveGames([mockGame]);
+    await saveGames([mockGame]);
 
     const insertedGame = await GameModel.findOne({
       gameId: mockGame.gameId,

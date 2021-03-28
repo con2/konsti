@@ -7,9 +7,9 @@ import morgan from 'morgan';
 import expressStaticGzip from 'express-static-gzip';
 import { config } from 'server/config';
 import { logger, stream } from 'server/utils/logger';
-import { db } from 'server/db/mongodb';
 import { allowCORS } from 'server/middleware/cors';
 import { apiRoutes } from 'server/api/apiRoutes';
+import { db } from 'server/db/mongodb';
 
 export const startServer = async (
   dbConnString: string

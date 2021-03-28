@@ -1,8 +1,8 @@
 import faker from 'faker';
 import { logger } from 'server/utils/logger';
-import { db } from 'server/db/mongodb';
 import { hashPassword } from 'server/utils/bcrypt';
 import { UserGroup } from 'server/typings/user.typings';
+import { saveUser } from 'server/db/user/userService';
 export const createAdminUser = async (): Promise<void> => {
   logger.info(`Generate data for admin user "admin:test"`);
 
@@ -20,7 +20,7 @@ export const createAdminUser = async (): Promise<void> => {
   };
 
   try {
-    await db.user.saveUser(registrationData);
+    await saveUser(registrationData);
   } catch (error) {
     logger.error(error);
   }
@@ -41,7 +41,7 @@ export const createHelpUser = async (): Promise<void> => {
   };
 
   try {
-    await db.user.saveUser(registrationData);
+    await saveUser(registrationData);
   } catch (error) {
     logger.error(error);
   }
@@ -62,7 +62,7 @@ const createTestUser = async (userNumber: number): Promise<void> => {
   };
 
   try {
-    await db.user.saveUser(registrationData);
+    await saveUser(registrationData);
   } catch (error) {
     logger.error(error);
   }
@@ -99,7 +99,7 @@ const createUser = async ({
   };
 
   try {
-    await db.user.saveUser(registrationData);
+    await saveUser(registrationData);
   } catch (error) {
     logger.error(error);
   }

@@ -3,12 +3,7 @@ import { logger } from 'server/utils/logger';
 import { SerialModel } from 'server/db/serial/serialSchema';
 import { SerialDoc, Serial } from 'server/typings/serial.typings';
 
-const removeSerials = async (): Promise<void> => {
-  logger.info('MongoDB: remove ALL serials from db');
-  await SerialModel.deleteMany({});
-};
-
-const saveSerials = async (count: number): Promise<SerialDoc[]> => {
+export const saveSerials = async (count: number): Promise<SerialDoc[]> => {
   const serialDocs = [] as SerialDoc[];
   // create serials
   for (let i = 1; i <= count; i += 1) {
@@ -43,7 +38,7 @@ const saveSerials = async (count: number): Promise<SerialDoc[]> => {
   }
 };
 
-const findSerial = async (serial: string): Promise<boolean> => {
+export const findSerial = async (serial: string): Promise<boolean> => {
   let response;
   try {
     response = await SerialModel.findOne({ serial }).lean<Serial>();
@@ -60,5 +55,3 @@ const findSerial = async (serial: string): Promise<boolean> => {
     return true;
   }
 };
-
-export const serial = { removeSerials, findSerial, saveSerials };

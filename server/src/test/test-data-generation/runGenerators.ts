@@ -2,7 +2,6 @@ import 'array-flat-polyfill';
 import commander from 'commander';
 import faker from 'faker';
 import { logger } from 'server/utils/logger';
-import { db } from 'server/db/mongodb';
 import {
   createIndividualUsers,
   createAdminUser,
@@ -12,6 +11,11 @@ import {
 } from 'server/test/test-data-generation/generators/createUsers';
 import { createGames } from 'server/test/test-data-generation/generators/createGames';
 import { createSignups } from 'server/test/test-data-generation/generators/createSignups';
+import { removeUsers } from 'server/db/user/userService';
+import { removeResults } from 'server/db/results/resultsService';
+import { removeGames } from 'server/db/game/gameService';
+import { removeSettings } from 'server/db/settings/settingsService';
+import { db } from 'server/db/mongodb';
 
 const runGenerators = async (): Promise<void> => {
   if (process.env.NODE_ENV === 'production') {
@@ -53,25 +57,25 @@ const runGenerators = async (): Promise<void> => {
     logger.info('Clean all data');
 
     try {
-      await db.user.removeUsers();
+      await removeUsers();
     } catch (error) {
       logger.error(error);
     }
 
     try {
-      await db.game.removeGames();
+      await removeGames();
     } catch (error) {
       logger.error(error);
     }
 
     try {
-      await db.results.removeResults();
+      await removeResults();
     } catch (error) {
       logger.error(error);
     }
 
     try {
-      await db.settings.removeSettings();
+      await removeSettings();
     } catch (error) {
       logger.error(error);
     }
@@ -81,13 +85,13 @@ const runGenerators = async (): Promise<void> => {
     logger.info('Generate users');
 
     try {
-      await db.user.removeUsers();
+      await removeUsers();
     } catch (error) {
       logger.error(error);
     }
 
     try {
-      await db.results.removeResults();
+      await removeResults();
     } catch (error) {
       logger.error(error);
     }
@@ -109,13 +113,13 @@ const runGenerators = async (): Promise<void> => {
     logger.info('Generate games');
 
     try {
-      await db.game.removeGames();
+      await removeGames();
     } catch (error) {
       logger.error(error);
     }
 
     try {
-      await db.results.removeResults();
+      await removeResults();
     } catch (error) {
       logger.error(error);
     }
@@ -128,7 +132,7 @@ const runGenerators = async (): Promise<void> => {
     // TODO: Remove signups
 
     try {
-      await db.results.removeResults();
+      await removeResults();
     } catch (error) {
       logger.error(error);
     }

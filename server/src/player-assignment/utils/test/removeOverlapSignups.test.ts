@@ -1,12 +1,13 @@
 import mongoose from 'mongoose';
 import { MongoMemoryServer } from 'mongodb-memory-server';
-import { db } from 'server/db/mongodb';
 import { UserModel } from 'server/db/user/userSchema';
 import { GameModel } from 'server/db/game/gameSchema';
 import { removeOverlapSignups } from 'server/player-assignment/utils/removeOverlapSignups';
 import { mockUser, mockSignup } from 'server/test/mock-data/mockUser';
 import { mockResults } from 'server/test/mock-data/mockResults';
 import { mockGame, mockGame2 } from 'server/test/mock-data/mockGame';
+import { saveSignup, saveUser } from 'server/db/user/userService';
+import { saveGames } from 'server/db/game/gameService';
 
 let mongoServer: MongoMemoryServer;
 
@@ -30,12 +31,12 @@ afterEach(async () => {
 
 describe('removeOverlapSignups', () => {
   it('should remove overlapping signups from user', async () => {
-    await db.game.saveGames([mockGame, mockGame2]);
+    await saveGames([mockGame, mockGame2]);
     const insertedGames = await GameModel.find({});
     expect(insertedGames.length).toEqual(2);
 
-    await db.user.saveUser(mockUser);
-    await db.user.saveSignup(mockSignup);
+    await saveUser(mockUser);
+    await saveSignup(mockSignup);
     const insertedUser = await UserModel.findOne({
       username: mockUser.username,
     });
