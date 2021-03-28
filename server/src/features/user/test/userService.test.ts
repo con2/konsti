@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import { MongoMemoryServer } from 'mongodb-memory-server';
 import { UserModel } from 'server/features/user/userSchema';
 import { UserGroup } from 'server/typings/user.typings';
-import { saveUser } from 'server/features/user/userService';
+import { saveUser } from 'server/features/user/userRepository';
 
 let mongoServer: MongoMemoryServer;
 

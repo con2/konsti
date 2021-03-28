@@ -11,10 +11,10 @@ import {
 } from 'server/test/test-data-generation/generators/createUsers';
 import { createGames } from 'server/test/test-data-generation/generators/createGames';
 import { createSignups } from 'server/test/test-data-generation/generators/createSignups';
-import { removeUsers } from 'server/features/user/userService';
-import { removeResults } from 'server/features/results/resultsService';
-import { removeGames } from 'server/features/game/gameService';
-import { removeSettings } from 'server/features/settings/settingsService';
+import { removeUsers } from 'server/features/user/userRepository';
+import { removeResults } from 'server/features/results/resultsRepository';
+import { removeGames } from 'server/features/game/gameRepository';
+import { removeSettings } from 'server/features/settings/settingsRepository';
 import { db } from 'server/db/mongodb';
 
 const runGenerators = async (): Promise<void> => {

@@ -6,8 +6,8 @@ import { removeOverlapSignups } from 'server/features/player-assignment/utils/re
 import { mockUser, mockSignup } from 'server/test/mock-data/mockUser';
 import { mockResults } from 'server/test/mock-data/mockResults';
 import { mockGame, mockGame2 } from 'server/test/mock-data/mockGame';
-import { saveSignup, saveUser } from 'server/features/user/userService';
-import { saveGames } from 'server/features/game/gameService';
+import { saveSignup, saveUser } from 'server/features/user/userRepository';
+import { saveGames } from 'server/features/game/gameRepository';
 
 let mongoServer: MongoMemoryServer;
 

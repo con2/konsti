@@ -1,10 +1,9 @@
-import { logger } from 'server/utils/logger';
 import {
   FavoritedGame,
   SaveFavoriteRequest,
 } from 'server/typings/user.typings';
 import { Status } from 'shared/typings/api/games';
-import { saveFavorite } from 'server/features/user/userService';
+import { saveFavorite } from 'server/features/user/userRepository';
 
 interface PostFavoriteResponse {
   message: string;
@@ -14,11 +13,9 @@ interface PostFavoriteResponse {
 }
 
 // Add favorite data for user
-export const postFavorite = async (
+export const storeFavorite = async (
   favoriteData: SaveFavoriteRequest
 ): Promise<PostFavoriteResponse> => {
-  logger.info('API call: POST /api/favorite');
-
   let saveFavoriteResponse;
   try {
     saveFavoriteResponse = await saveFavorite(favoriteData);

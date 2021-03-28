@@ -1,8 +1,8 @@
 import { logger } from 'server/utils/logger';
 import { Game } from 'shared/typings/models/game';
 import { Status } from 'shared/typings/api/games';
-import { saveHidden } from 'server/features/settings/settingsService';
-import { findUsers, updateUser } from 'server/features/user/userService';
+import { saveHidden } from 'server/features/settings/settingsRepository';
+import { findUsers, updateUser } from 'server/features/user/userRepository';
 
 interface PostHiddenResponse {
   message: string;
@@ -11,12 +11,9 @@ interface PostHiddenResponse {
   hiddenGames?: readonly Game[];
 }
 
-// Add hidden data to server settings
-export const postHidden = async (
+export const storeHidden = async (
   hiddenData: readonly Game[]
 ): Promise<PostHiddenResponse> => {
-  logger.info('API call: POST /api/hidden');
-
   let settings;
   try {
     settings = await saveHidden(hiddenData);

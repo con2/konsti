@@ -6,8 +6,8 @@ import { PlayerAssignmentResult } from 'server/typings/result.typings';
 import { User } from 'server/typings/user.typings';
 import { Game } from 'shared/typings/models/game';
 import { AssignmentStrategy } from 'server/typings/config.typings';
-import { findUsers } from 'server/features/user/userService';
-import { findGames } from 'server/features/game/gameService';
+import { findUsers } from 'server/features/user/userRepository';
+import { findGames } from 'server/features/game/gameRepository';
 
 export const runAssignment = async (
   startingTime: string,

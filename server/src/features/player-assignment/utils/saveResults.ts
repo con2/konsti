@@ -1,7 +1,7 @@
 import { logger } from 'server/utils/logger';
 import { saveUserSignupResults } from 'server/features/player-assignment/utils/saveUserSignupResults';
 import { Result } from 'server/typings/result.typings';
-import { saveResult } from 'server/features/results/resultsService';
+import { saveResult } from 'server/features/results/resultsRepository';
 
 export const saveResults = async (
   results: readonly Result[],

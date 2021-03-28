@@ -6,7 +6,7 @@ import {
   findGroupMembers,
   findUserSerial,
   saveGroupCode,
-} from 'server/features/user/userService';
+} from 'server/features/user/userRepository';
 
 interface PostGroupResponse {
   message: string;
@@ -23,7 +23,7 @@ interface GetGroupResponse {
   error?: Error;
 }
 
-export const postGroup = async (
+export const storeGroup = async (
   username: string,
   leader: boolean,
   groupCode: string,
@@ -31,8 +31,6 @@ export const postGroup = async (
   leaveGroup: boolean,
   closeGroup: boolean
 ): Promise<PostGroupResponse> => {
-  logger.info('API call: POST /api/group');
-
   if (closeGroup) {
     const groupMembers = await findGroupMembers(groupCode);
 
@@ -238,12 +236,9 @@ export const postGroup = async (
   };
 };
 
-// Get group members
-export const getGroup = async (
+export const fetchGroup = async (
   groupCode: string
 ): Promise<GetGroupResponse> => {
-  logger.info('API call: GET /api/group');
-
   let findGroupResults: User[];
   try {
     findGroupResults = await findGroupMembers(groupCode);

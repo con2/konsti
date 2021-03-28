@@ -1,4 +1,4 @@
-import { findUsers, updateUser } from 'server/features/user/userService';
+import { findUsers, updateUser } from 'server/features/user/userRepository';
 import { logger } from 'server/utils/logger';
 
 export const removeInvalidSignupsFromUsers = async (): Promise<void> => {

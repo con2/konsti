@@ -5,7 +5,7 @@ import { padgAssignPlayers } from 'server/features/player-assignment/padg/padgAs
 import { User } from 'server/typings/user.typings';
 import { Game } from 'shared/typings/models/game';
 import { Result } from 'server/typings/result.typings';
-import { saveGamePopularity } from 'server/features/game/gameService';
+import { saveGamePopularity } from 'server/features/game/gameRepository';
 
 export const updateWithAssign = async (
   users: readonly User[],

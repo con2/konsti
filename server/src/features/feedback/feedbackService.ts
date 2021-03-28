@@ -1,18 +1,27 @@
-import { logger } from 'server/utils/logger';
-import { FeedbackModel } from 'server/features/feedback/feedbackSchema';
 import { Feedback } from 'server/typings/feedback.typings';
+import { Status } from 'shared/typings/api/games';
+import { saveFeedback } from 'server/features/feedback/feedbackRepository';
 
-export const saveFeedback = async (feedbackData: Feedback): Promise<void> => {
-  const feedback = new FeedbackModel({
-    gameId: feedbackData.gameId,
-    feedback: feedbackData.feedback,
-  });
+interface PostFeedbackResponse {
+  message: string;
+  status: Status;
+  error?: Error;
+}
 
+export const storeFeedback = async (
+  feedbackData: Feedback
+): Promise<PostFeedbackResponse> => {
   try {
-    await feedback.save();
+    await saveFeedback(feedbackData);
+    return {
+      message: 'Post feedback success',
+      status: 'success',
+    };
   } catch (error) {
-    throw new Error(`MongoDB: Feedback save error: ${error}`);
+    return {
+      message: 'Post feedback failure',
+      status: 'error',
+      error,
+    };
   }
-
-  logger.info(`MongoDB: Feedback saved successfully`);
 };

@@ -1,254 +1,189 @@
+import { Request, Response } from 'express';
+import { validationResult } from 'express-validator';
+import { Undefined, String, Record } from 'runtypes';
+import { storeFavorite } from 'server/features/user/favoriteService';
+import { fetchGroup, storeGroup } from 'server/features/user/groupService';
+import { login } from 'server/features/user/loginService';
+import { storeSignup } from 'server/features/user/signupService';
+import { fetchUser, storeUser } from 'server/features/user/userService';
+import { UserGroup } from 'server/typings/user.typings';
+import { validateAuthHeader } from 'server/utils/authHeader';
 import { logger } from 'server/utils/logger';
-import { hashPassword } from 'server/utils/bcrypt';
-import { Status } from 'shared/typings/api/games';
-import {
-  EnteredGame,
-  FavoritedGame,
-  SignedGame,
-} from 'server/typings/user.typings';
-import { findSerial } from 'server/features/serial/serialService';
-import {
-  updateUserPassword,
-  findUser,
-  findUserBySerial,
-  findUserSerial,
-  saveUser,
-} from 'server/features/user/userService';
-
-interface PostUserResponse {
-  message: string;
-  status: Status;
-  code?: number;
-  username?: string;
-  password?: string;
-}
-
-interface GetUserResponse {
-  message: string;
-  status: Status;
-  error?: Error;
-  games?: {
-    enteredGames: readonly EnteredGame[];
-    favoritedGames: readonly FavoritedGame[];
-    signedGames: readonly SignedGame[];
-  };
-  username?: string;
-  serial?: string;
-}
 
 export const postUser = async (
-  username: string,
-  password: string,
-  serial: string,
-  changePassword: boolean
-): Promise<PostUserResponse> => {
+  req: Request,
+  res: Response
+): Promise<Response> => {
   logger.info('API call: POST /api/user');
 
-  if (changePassword) {
-    let passwordHash;
-    try {
-      passwordHash = await hashPassword(password);
-    } catch (error) {
-      logger.error(`updateUser error: ${error}`);
-      return {
-        message: 'Password change error',
-        status: 'error',
-      };
-    }
-
-    try {
-      await updateUserPassword(username, passwordHash);
-    } catch (error) {
-      logger.error(`updateUserPassword error: ${error}`);
-      return {
-        message: 'Password change error',
-        status: 'error',
-      };
-    }
-
-    return {
-      message: 'Password changed',
-      status: 'success',
-    };
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(422).json({ errors: errors.array() });
   }
 
-  let serialFound = false;
-  try {
-    serialFound = await findSerial(serial);
-  } catch (error) {
-    logger.error(`Error finding serial: ${error}`);
-    return {
-      code: 10,
-      message: 'Finding serial failed',
-      status: 'error',
-    };
-  }
+  const { username, password, serial, changePassword } = req.body;
 
-  // Check for valid serial
-  if (!serialFound) {
-    logger.info('User: Serial is not valid');
-    return {
-      code: 12,
-      message: 'Invalid serial',
-      status: 'error',
-    };
-  }
-
-  logger.info('User: Serial is valid');
-
-  // Check that serial is not used
-  let user;
-  try {
-    // Check if user already exists
-    user = await findUser(username);
-  } catch (error) {
-    logger.error(`findUser(): ${error}`);
-    return {
-      code: 10,
-      message: 'Finding user failed',
-      status: 'error',
-    };
-  }
-
-  if (user) {
-    logger.info(`User: Username "${username}" is already registered`);
-    return {
-      code: 11,
-      message: 'Username in already registered',
-      status: 'error',
-    };
-  }
-
-  // Username free
-  if (!user) {
-    // Check if serial is used
-    let serialResponse;
-    try {
-      serialResponse = await findUserSerial({ serial });
-    } catch (error) {
-      logger.error(`findSerial(): ${error}`);
-      return {
-        code: 10,
-        message: 'Finding serial failed',
-        status: 'error',
-      };
-    }
-
-    // Serial used
-    if (serialResponse) {
-      logger.info('User: Serial used');
-      return {
-        code: 12,
-        message: 'Invalid serial',
-        status: 'error',
-      };
-    }
-
-    // Serial not used
-    if (!serialResponse) {
-      let passwordHash;
-      try {
-        passwordHash = await hashPassword(password);
-      } catch (error) {
-        logger.error(`hashPassword(): ${error}`);
-        return {
-          code: 10,
-          message: 'Hashing password failed',
-          status: 'error',
-        };
-      }
-
-      if (!passwordHash) {
-        logger.info('User: Serial used');
-        return {
-          code: 12,
-          message: 'Invalid serial',
-          status: 'error',
-        };
-      }
-
-      if (passwordHash) {
-        let saveUserResponse;
-        try {
-          saveUserResponse = await saveUser({
-            username,
-            passwordHash,
-            serial,
-          });
-        } catch (error) {
-          logger.error(`saveUser(): ${error}`);
-          return {
-            code: 10,
-            message: 'User registration failed',
-            status: 'error',
-          };
-        }
-
-        return {
-          message: 'User registration success',
-          status: 'success',
-          username: saveUserResponse.username,
-          password: saveUserResponse.password,
-        };
-      }
-    }
-  }
-
-  return {
-    message: 'Unknown error',
-    status: 'error',
-  };
+  const response = await storeUser(username, password, serial, changePassword);
+  return res.send(response);
 };
 
-// Get user info
+export const postLogin = async (
+  req: Request,
+  res: Response
+): Promise<Response> => {
+  logger.info('API call: POST /api/login');
+
+  const { username, password, jwt } = req.body;
+
+  if (((!username || !password) && !jwt) || (username && password && jwt)) {
+    return res.sendStatus(422);
+  }
+
+  const response = await login(username, password, jwt);
+  return res.send(response);
+};
+
+export const postSignup = async (
+  req: Request,
+  res: Response
+): Promise<Response> => {
+  logger.info('API call: POST /api/signup');
+
+  const signupData = req.body.signupData;
+
+  const validToken = validateAuthHeader(
+    req.headers.authorization,
+    UserGroup.user
+  );
+
+  if (!validToken) {
+    return res.sendStatus(401);
+  }
+
+  const { selectedGames, username, signupTime } = signupData;
+
+  const response = await storeSignup(selectedGames, username, signupTime);
+  return res.send(response);
+};
+
+export const postFavorite = async (
+  req: Request,
+  res: Response
+): Promise<Response> => {
+  logger.info('API call: POST /api/favorite');
+
+  const favoriteData = req.body.favoriteData;
+
+  const validToken = validateAuthHeader(
+    req.headers.authorization,
+    UserGroup.user
+  );
+
+  if (!validToken) {
+    return res.sendStatus(401);
+  }
+
+  const response = await storeFavorite(favoriteData);
+  return res.send(response);
+};
+
+export const postGroup = async (
+  req: Request,
+  res: Response
+): Promise<Response> => {
+  logger.info('API call: POST /api/group');
+
+  const validToken = validateAuthHeader(
+    req.headers.authorization,
+    UserGroup.user
+  );
+
+  if (!validToken) {
+    return res.sendStatus(401);
+  }
+
+  const groupData = req.body.groupData;
+  const {
+    username,
+    leader,
+    groupCode,
+    ownSerial,
+    leaveGroup,
+    closeGroup,
+  } = groupData;
+
+  const response = await storeGroup(
+    username,
+    leader,
+    groupCode,
+    ownSerial,
+    leaveGroup,
+    closeGroup
+  );
+  return res.send(response);
+};
+
 export const getUser = async (
-  username: string | undefined,
-  serial: string | undefined
-): Promise<GetUserResponse> => {
+  req: Request,
+  res: Response
+): Promise<Response> => {
   logger.info('API call: GET /api/user');
 
-  let user;
+  const validToken = validateAuthHeader(
+    req.headers.authorization,
+    UserGroup.user
+  );
 
-  if (username) {
-    try {
-      user = await findUser(username);
-    } catch (error) {
-      logger.error(`findUser(): ${error}`);
-      return {
-        message: 'Getting user data failed',
-        status: 'error',
-        error,
-      };
-    }
-  } else if (serial) {
-    try {
-      user = await findUserBySerial(serial);
-    } catch (error) {
-      logger.error(`findUser(): ${error}`);
-      return {
-        message: 'Getting user data failed',
-        status: 'error',
-        error,
-      };
-    }
+  if (!validToken) {
+    return res.sendStatus(401);
   }
 
-  if (!user) {
-    return {
-      message: `User ${username} not found`,
-      status: 'error',
-    };
+  const GetUserQueryParameters = Record({
+    username: String.Or(Undefined),
+    serial: String.Or(Undefined),
+  });
+
+  const queryParameters = GetUserQueryParameters.check(req.query);
+
+  const { username, serial } = queryParameters;
+
+  if (!username && !serial) {
+    return res.sendStatus(422);
   }
 
-  return {
-    message: 'Getting user data success',
-    status: 'success',
-    games: {
-      enteredGames: user.enteredGames,
-      favoritedGames: user.favoritedGames,
-      signedGames: user.signedGames,
-    },
-    username: user.username,
-    serial: user.serial,
-  };
+  const response = await fetchUser(username, serial);
+  return res.send(response);
+};
+
+export const getGroup = async (
+  req: Request,
+  res: Response
+): Promise<Response> => {
+  logger.info('API call: GET /api/group');
+
+  const validToken = validateAuthHeader(
+    req.headers.authorization,
+    UserGroup.user
+  );
+
+  if (!validToken) {
+    return res.sendStatus(401);
+  }
+
+  const GetGroupQueryParameters = Record({
+    groupCode: String,
+  });
+
+  let queryParameters;
+
+  try {
+    queryParameters = GetGroupQueryParameters.check(req.query);
+  } catch (error) {
+    return res.sendStatus(422);
+  }
+
+  const { groupCode } = queryParameters;
+
+  const response = await fetchGroup(groupCode);
+  return res.send(response);
 };
