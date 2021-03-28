@@ -5237,6 +5237,13 @@ eventassigner-js@0.1.6:
   resolved "https://registry.yarnpkg.com/eventassigner-js/-/eventassigner-js-0.1.6.tgz#121cb4df77788267359d3873d3699bab9c516606"
   integrity sha512-HlFw9yHdbimkrHA9vA/6Ot7NwXyYEjMnRJQUf2q8pjN/5K8C8zVrHovWgXwRHvgz6ZpDbdh0KPVwYY7bGJb7nQ==
 
+eventassigner-random@0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/eventassigner-random/-/eventassigner-random-0.2.0.tgz#9e8a980b36a60694a4ec8296b2df8ba3b96751a2"
+  integrity sha512-ZVGv9CYG28TJKBmDllS2AC5lM9tCZjfBxnQehtqFbIOjyeMH8/FvGS9RDgXGApBRGHauzZrty0T0nje+n4Fhxg==
+  dependencies:
+    rimraf "^3.0.2"
+
 eventemitter2@^6.4.2:
   version "6.4.4"
   resolved "https://registry.yarnpkg.com/eventemitter2/-/eventemitter2-6.4.4.tgz#aa96e8275c4dbeb017a5d0e03780c65612a1202b"
