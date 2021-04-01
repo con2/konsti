@@ -85,6 +85,7 @@ const SignupForm: FC<Props> = (props: Props): ReactElement => {
 
   return (
     <form>
+      Peli on toiveissani sijalla{' '}
       <select ref={priorityRef}>
         <option disabled={isAlreadySelected(1)} value='1'>
           1
