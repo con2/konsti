@@ -137,7 +137,7 @@ export const GameEntry: FC<Props> = (props: Props): ReactElement => {
       (favoritedGame) => favoritedGame.gameId === game.gameId
     ) !== undefined;
 
-  const isAllreadySigned = (game: Game): boolean => {
+  const isAlreadySigned = (game: Game): boolean => {
     const allSignedGames = getSignedGames(
       signedGames,
       groupCode,
@@ -173,6 +173,10 @@ export const GameEntry: FC<Props> = (props: Props): ReactElement => {
 
     await dispatch(submitSignup(signupData));
   };
+
+  const currentPriority = signedGames.find(
+    (g) => g.gameDetails.gameId === game.gameId
+  )?.priority;
 
   return (
     <GameContainer key={game.gameId} className='games-list'>
@@ -213,17 +217,22 @@ export const GameEntry: FC<Props> = (props: Props): ReactElement => {
       </GameListShortDescription>
       {loggedIn && (
         <>
-          {!isAllreadySigned(game) && (
+          {!isAlreadySigned(game) && (
             <button onClick={() => setSignupFormOpen(!signupFormOpen)}>
               Ilmoittaudu
             </button>
           )}
-          {isAllreadySigned(game) && (
-            <button onClick={async () => await removeSignup(game)}>
-              Peruuta
-            </button>
+          {isAlreadySigned(game) && (
+            <>
+              <button onClick={async () => await removeSignup(game)}>
+                Peruuta
+              </button>
+              <p>Peli on ilmoittautumisissa sijalla {currentPriority}</p>
+            </>
           )}
-          {signupFormOpen && <SignupForm game={game} />}
+          {signupFormOpen && !isAlreadySigned(game) && (
+            <SignupForm game={game} />
+          )}
         </>
       )}
     </GameContainer>
