@@ -17,6 +17,7 @@ import {
 
 interface Props {
   game: Game;
+  startTime: string;
 }
 
 // Favorite / remove favorite clicked
@@ -29,7 +30,7 @@ const updateFavoriteHandler = async (
 };
 
 const SignupForm: FC<Props> = (props: Props): ReactElement => {
-  const { game } = props;
+  const { game, startTime } = props;
 
   const dispatch = useDispatch();
   const selectedGames: readonly Signup[] = useSelector(
@@ -76,7 +77,9 @@ const SignupForm: FC<Props> = (props: Props): ReactElement => {
     }
   };
 
-  const selectedPriorities = selectedGames.map((game) => game.priority);
+  const selectedPriorities = selectedGames
+    .filter((game) => game.gameDetails.startTime === startTime)
+    .map((game) => game.priority);
   const isAlreadySelected = (priority: number) =>
     selectedPriorities.includes(priority);
 
@@ -99,7 +102,7 @@ const SignupForm: FC<Props> = (props: Props): ReactElement => {
 };
 
 export const GameEntry: FC<Props> = (props: Props): ReactElement => {
-  const { game } = props;
+  const { game, startTime } = props;
 
   const { t } = useTranslation();
 
@@ -178,6 +181,10 @@ export const GameEntry: FC<Props> = (props: Props): ReactElement => {
     (g) => g.gameDetails.gameId === game.gameId
   )?.priority;
 
+  const signedGamesForTimeslot = signedGames.filter(
+    (g) => g.gameDetails.startTime === startTime
+  );
+
   return (
     <GameContainer key={game.gameId} className='games-list'>
       {favorited && loggedIn && userGroup === 'user' && game && (
@@ -217,7 +224,10 @@ export const GameEntry: FC<Props> = (props: Props): ReactElement => {
       </GameListShortDescription>
       {loggedIn && (
         <>
-          {!isAlreadySigned(game) && (
+          {!isAlreadySigned(game) && signedGamesForTimeslot.length >= 3 && (
+            <p>Voit ilmoittautua vain kolmeen peliin per alkamisaika</p>
+          )}
+          {!isAlreadySigned(game) && signedGamesForTimeslot.length < 3 && (
             <button onClick={() => setSignupFormOpen(!signupFormOpen)}>
               Ilmoittaudu
             </button>
@@ -231,7 +241,7 @@ export const GameEntry: FC<Props> = (props: Props): ReactElement => {
             </>
           )}
           {signupFormOpen && !isAlreadySigned(game) && (
-            <SignupForm game={game} />
+            <SignupForm game={game} startTime={startTime} />
           )}
         </>
       )}
