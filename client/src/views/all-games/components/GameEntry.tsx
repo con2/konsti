@@ -33,7 +33,7 @@ const SignupForm: FC<Props> = (props: Props): ReactElement => {
 
   const dispatch = useDispatch();
   const selectedGames: readonly Signup[] = useSelector(
-    (state: RootState) => state.signup.selectedGames
+    (state: RootState) => state.myGames.signedGames
   );
   const username: string = useSelector(
     (state: RootState) => state.login.username
@@ -76,12 +76,22 @@ const SignupForm: FC<Props> = (props: Props): ReactElement => {
     }
   };
 
+  const selectedPriorities = selectedGames.map((game) => game.priority);
+  const isAlreadySelected = (priority: number) =>
+    selectedPriorities.includes(priority);
+
   return (
     <form>
       <select ref={priorityRef}>
-        <option value='1'>1</option>
-        <option value='2'>2</option>
-        <option value='3'>3</option>
+        <option disabled={isAlreadySelected(1)} value='1'>
+          1
+        </option>
+        <option disabled={isAlreadySelected(2)} value='2'>
+          2
+        </option>
+        <option disabled={isAlreadySelected(3)} value='3'>
+          3
+        </option>
       </select>
       <button onClick={handleSignup}>Vahvista</button>
     </form>
