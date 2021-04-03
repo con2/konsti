@@ -61,7 +61,7 @@ export const SignupForm: FC<Props> = (props: Props): ReactElement => {
   const selectedPriorities = selectedGames
     .filter((game) => game.gameDetails.startTime === startTime)
     .map((game) => game.priority);
-  const isAlreadySelected = (priority: number) =>
+  const isAlreadySelected = (priority: number): boolean =>
     selectedPriorities.includes(priority);
 
   return (
