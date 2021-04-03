@@ -2,12 +2,12 @@ import React, { FC, ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
 import _ from 'lodash';
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
+import { RootState } from 'typings/redux.typings';
+import { Signup } from 'typings/user.typings';
 import { timeFormatter } from 'client/utils/timeFormatter';
 import { Game } from 'shared/typings/models/game';
 import { GameEntry } from './GameEntry';
-import { Signup } from 'typings/user.typings';
-import { useSelector } from 'react-redux';
-import { RootState } from 'typings/redux.typings';
 
 export interface Props {
   games: readonly Game[];
@@ -87,6 +87,7 @@ const GameListTitle = styled.h3`
   padding: 8px;
   background-color: #04080f;
   color: white;
+  /* stylelint-disable plugin/no-unsupported-browser-features */
   position: sticky;
   top: 0;
 `;
