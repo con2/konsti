@@ -1,8 +1,8 @@
 import React, { FC, ReactElement, useRef, FormEvent } from 'react';
-import { Game } from 'typings/game.typings';
-import { Signup } from 'typings/user.typings';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from 'typings/redux.typings';
+import { Game } from 'shared/typings/models/game';
+import { Signup } from 'client/typings/user.typings';
+import { RootState } from 'client/typings/redux.typings';
 import {
   submitSignup,
   submitSelectedGames,

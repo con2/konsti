@@ -1,13 +1,13 @@
 import React, { FC, ReactElement, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { Game } from 'typings/game.typings';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useTranslation } from 'react-i18next';
-import { UserGroup, Signup } from 'typings/user.typings';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from 'typings/redux.typings';
-import { GroupMember } from 'typings/group.typings';
+import { Game } from 'shared/typings/models/game';
+import { UserGroup, Signup } from 'client/typings/user.typings';
+import { RootState } from 'client/typings/redux.typings';
+import { GroupMember } from 'client/typings/group.typings';
 import { updateFavorite, UpdateFavoriteOpts } from 'client/utils/favorite';
 import {
   getSignedGames,
