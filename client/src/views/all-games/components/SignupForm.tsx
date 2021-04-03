@@ -3,7 +3,10 @@ import { Game } from 'typings/game.typings';
 import { Signup } from 'typings/user.typings';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'typings/redux.typings';
-import { submitSignup, submitSelectedGames } from 'views/signup/signupActions';
+import {
+  submitSignup,
+  submitSelectedGames,
+} from 'client/views/signup/signupActions';
 
 interface Props {
   game: Game;

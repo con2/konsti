@@ -1,5 +1,4 @@
 import React, { FC, ReactElement, useState } from 'react';
-import { updateFavorite, UpdateFavoriteOpts } from 'utils/favorite';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Game } from 'typings/game.typings';
@@ -8,13 +7,17 @@ import { useTranslation } from 'react-i18next';
 import { UserGroup, Signup } from 'typings/user.typings';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'typings/redux.typings';
-import { submitSignup, submitSelectedGames } from 'views/signup/signupActions';
 import { GroupMember } from 'typings/group.typings';
+import { updateFavorite, UpdateFavoriteOpts } from 'client/utils/favorite';
 import {
   getSignedGames,
   getUpcomingEnteredGames,
-} from 'utils/getUpcomingGames';
+} from 'client/utils/getUpcomingGames';
 import { SignupForm } from './SignupForm';
+import {
+  submitSignup,
+  submitSelectedGames,
+} from 'client/views/signup/signupActions';
 
 interface Props {
   game: Game;
