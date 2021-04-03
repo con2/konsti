@@ -1,9 +1,9 @@
 import moment from 'moment';
+import { GroupMember } from 'typings/group.typings';
 import { Game } from 'shared/typings/models/game';
 import { Signup } from 'client/typings/user.typings';
 import { getTime } from 'client/utils/getTime';
-import { isGroupLeader } from 'views/group/GroupView';
-import { GroupMember } from 'typings/group.typings';
+import { isGroupLeader } from 'client/views/group/GroupView';
 
 export const getUpcomingGames = (games: readonly Game[]): readonly Game[] => {
   const timeNow = getTime();
