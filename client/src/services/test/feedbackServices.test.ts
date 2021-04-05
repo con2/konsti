@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { postFeedback } from 'client/services/feedbackServices';
+import { FEEDBACK_ENDPOINT } from 'shared/constants/apiEndpoints';
 
 jest.mock('axios');
 const mockAxios = axios as jest.Mocked<typeof axios>;
@@ -22,6 +23,8 @@ describe('feedbackServices', () => {
 
     expect(response).toEqual('test response');
     expect(mockAxios.post).toHaveBeenCalledTimes(1);
-    expect(mockAxios.post).toHaveBeenCalledWith(`/feedback`, { feedbackData });
+    expect(mockAxios.post).toHaveBeenCalledWith(FEEDBACK_ENDPOINT, {
+      feedbackData,
+    });
   });
 });

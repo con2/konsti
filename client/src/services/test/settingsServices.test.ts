@@ -3,6 +3,10 @@ import {
   getSettings,
   postToggleAppOpen,
 } from 'client/services/settingsServices';
+import {
+  SETTINGS_ENDPOINT,
+  TOGGLE_APP_OPEN_ENDPOINT,
+} from 'shared/constants/apiEndpoints';
 
 jest.mock('axios');
 const mockAxios = axios as jest.Mocked<typeof axios>;
@@ -21,7 +25,7 @@ describe('settingsServices', () => {
 
     expect(response).toEqual('test response');
     expect(mockAxios.get).toHaveBeenCalledTimes(1);
-    expect(mockAxios.get).toHaveBeenCalledWith(`/settings`);
+    expect(mockAxios.get).toHaveBeenCalledWith(SETTINGS_ENDPOINT);
   });
 
   it('POST appOpen setting to server', async () => {
@@ -38,7 +42,7 @@ describe('settingsServices', () => {
 
     expect(response).toEqual('test response');
     expect(mockAxios.post).toHaveBeenCalledTimes(1);
-    expect(mockAxios.post).toHaveBeenCalledWith(`/toggle-app-open`, {
+    expect(mockAxios.post).toHaveBeenCalledWith(TOGGLE_APP_OPEN_ENDPOINT, {
       appOpen,
     });
   });

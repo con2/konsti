@@ -3,6 +3,10 @@ import request from 'supertest';
 import { MongoMemoryServer } from 'mongodb-memory-server';
 import { startServer } from 'server/utils/startServer';
 import { closeServer } from 'server/utils/closeServer';
+import {
+  USERS_BY_SERIAL_ENDPOINT,
+  USERS_ENDPOINT,
+} from 'shared/constants/apiEndpoints';
 
 let server: Application;
 let mongoServer: MongoMemoryServer;
@@ -19,16 +23,23 @@ afterEach(async () => {
   await mongoServer.stop();
 });
 
-describe('GET /api/user', () => {
+describe(`GET ${USERS_ENDPOINT}`, () => {
   test('should return 401 without valid authorization', async () => {
-    const response = await request(server).get('/api/user');
+    const response = await request(server).get(USERS_ENDPOINT);
     expect(response.status).toEqual(401);
   });
 });
 
-describe('POST /api/user', () => {
+describe(`GET ${USERS_BY_SERIAL_ENDPOINT}`, () => {
+  test('should return 401 without valid authorization', async () => {
+    const response = await request(server).get(USERS_BY_SERIAL_ENDPOINT);
+    expect(response.status).toEqual(401);
+  });
+});
+
+describe(`POST ${USERS_ENDPOINT}`, () => {
   test('should return 422 without username', async () => {
-    const response = await request(server).post('/api/user').send({
+    const response = await request(server).post(USERS_ENDPOINT).send({
       password: 'testpass',
       serial: 'testserial',
     });
@@ -36,7 +47,7 @@ describe('POST /api/user', () => {
   });
 
   test('should return 422 without password', async () => {
-    const response = await request(server).post('/api/user').send({
+    const response = await request(server).post(USERS_ENDPOINT).send({
       username: 'testuser',
       serial: 'testserial',
     });
@@ -44,7 +55,7 @@ describe('POST /api/user', () => {
   });
 
   test('should return 422 without serial', async () => {
-    const response = await request(server).post('/api/user').send({
+    const response = await request(server).post(USERS_ENDPOINT).send({
       username: 'testuser',
       password: 'testpass',
     });
