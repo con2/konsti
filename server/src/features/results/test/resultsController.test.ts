@@ -3,6 +3,7 @@ import { MongoMemoryServer } from 'mongodb-memory-server';
 import { Application } from 'express';
 import { startServer } from 'server/utils/startServer';
 import { closeServer } from 'server/utils/closeServer';
+import { RESULTS_ENDPOINT } from 'shared/constants/apiEndpoints';
 
 let server: Application;
 let mongoServer: MongoMemoryServer;
@@ -19,9 +20,9 @@ afterEach(async () => {
   await mongoServer.stop();
 });
 
-describe('GET /api/results', () => {
+describe(`GET ${RESULTS_ENDPOINT}`, () => {
   test('should return 422 without any parameters', async () => {
-    const response = await request(server).get('/api/results');
+    const response = await request(server).get(RESULTS_ENDPOINT);
     expect(response.status).toEqual(422);
   });
 });

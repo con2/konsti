@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { postLogin } from 'client/services/loginServices';
+import { LOGIN_ENDPOINT } from 'shared/constants/apiEndpoints';
 
 jest.mock('axios');
 const mockAxios = axios as jest.Mocked<typeof axios>;
@@ -27,7 +28,7 @@ describe('loginServices', () => {
 
     expect(response).toEqual('test response');
     expect(mockAxios.post).toHaveBeenCalledTimes(1);
-    expect(mockAxios.post).toHaveBeenCalledWith(`/login`, {
+    expect(mockAxios.post).toHaveBeenCalledWith(LOGIN_ENDPOINT, {
       username,
       password,
       jwt,

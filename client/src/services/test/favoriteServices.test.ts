@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { postFavorite } from 'client/services/favoriteServices';
+import { FAVORITE_ENDPOINT } from 'shared/constants/apiEndpoints';
 
 jest.mock('axios');
 const mockAxios = axios as jest.Mocked<typeof axios>;
@@ -22,6 +23,8 @@ describe('favoriteServices', () => {
 
     expect(response).toEqual('test response');
     expect(mockAxios.post).toHaveBeenCalledTimes(1);
-    expect(mockAxios.post).toHaveBeenCalledWith(`/favorite`, { favoriteData });
+    expect(mockAxios.post).toHaveBeenCalledWith(FAVORITE_ENDPOINT, {
+      favoriteData,
+    });
   });
 });

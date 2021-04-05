@@ -3,6 +3,7 @@ import { MongoMemoryServer } from 'mongodb-memory-server';
 import { Application } from 'express';
 import { startServer } from 'server/utils/startServer';
 import { closeServer } from 'server/utils/closeServer';
+import { GAMES_ENDPOINT } from 'shared/constants/apiEndpoints';
 
 let server: Application;
 let mongoServer: MongoMemoryServer;
@@ -19,16 +20,16 @@ afterEach(async () => {
   await mongoServer.stop();
 });
 
-describe('GET /api/games', () => {
+describe(`GET ${GAMES_ENDPOINT}`, () => {
   test('should return 200', async () => {
-    const response = await request(server).get('/api/games');
+    const response = await request(server).get(GAMES_ENDPOINT);
     expect(response.status).toEqual(200);
   });
 });
 
-describe('POST /api/games', () => {
+describe(`POST ${GAMES_ENDPOINT}`, () => {
   test('should return 401 without valid authorization', async () => {
-    const response = await request(server).post('/api/games');
+    const response = await request(server).post(GAMES_ENDPOINT);
     expect(response.status).toEqual(401);
   });
 });
