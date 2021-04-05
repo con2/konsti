@@ -67,9 +67,35 @@ module.exports = (api) => {
     ],
   };
 
+  const sharedOverrides = {
+    test: './shared/**/*',
+    presets: [
+      [
+        '@babel/preset-env',
+        {
+          modules: 'commonjs',
+          debug: false,
+          targets: {
+            node: 'current',
+          },
+        },
+      ],
+    ],
+    plugins: [
+      [
+        'babel-plugin-module-resolver',
+        {
+          root: ['.'],
+          alias: { shared: '../shared' },
+          extensions: ['.js', '.ts'],
+        },
+      ],
+    ],
+  };
+
   return {
     presets,
     plugins,
-    overrides: [clientOverrides, serverOverrides],
+    overrides: [clientOverrides, serverOverrides, sharedOverrides],
   };
 };
