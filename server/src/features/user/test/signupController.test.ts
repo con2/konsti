@@ -3,6 +3,7 @@ import request from 'supertest';
 import { MongoMemoryServer } from 'mongodb-memory-server';
 import { startServer } from 'server/utils/startServer';
 import { closeServer } from 'server/utils/closeServer';
+import { SIGNUP_ENDPOINT } from 'shared/constants/apiEndpoints';
 
 let server: Application;
 let mongoServer: MongoMemoryServer;
@@ -19,9 +20,9 @@ afterEach(async () => {
   await mongoServer.stop();
 });
 
-describe('POST /api/signup', () => {
+describe(`POST ${SIGNUP_ENDPOINT}`, () => {
   test('should return 401 without valid authorization', async () => {
-    const response = await request(server).post('/api/signup');
+    const response = await request(server).post(SIGNUP_ENDPOINT);
     expect(response.status).toEqual(401);
   });
 });

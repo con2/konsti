@@ -5,13 +5,14 @@ import {
   PostFeedbackResponse,
 } from 'client/typings/feedback.typings';
 import { ServerError } from 'client/typings/utils.typings';
+import { FEEDBACK_ENDPOINT } from 'shared/constants/apiEndpoints';
 
 export const postFeedback = async (
   feedbackData: Feedback
 ): Promise<PostFeedbackResponse | ServerError> => {
   let response: AxiosResponse;
   try {
-    response = await api.post<PostFeedbackResponse>('/feedback', {
+    response = await api.post<PostFeedbackResponse>(FEEDBACK_ENDPOINT, {
       feedbackData,
     });
   } catch (error) {
