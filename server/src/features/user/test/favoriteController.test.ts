@@ -3,6 +3,7 @@ import { MongoMemoryServer } from 'mongodb-memory-server';
 import { Application } from 'express';
 import { startServer } from 'server/utils/startServer';
 import { closeServer } from 'server/utils/closeServer';
+import { FAVORITE_ENDPOINT } from 'shared/constants/apiEndpoints';
 
 let server: Application;
 let mongoServer: MongoMemoryServer;
@@ -19,9 +20,9 @@ afterEach(async () => {
   await mongoServer.stop();
 });
 
-describe('POST /api/favorite', () => {
+describe(`POST ${FAVORITE_ENDPOINT}`, () => {
   test('should return 401 without valid authorization', async () => {
-    const response = await request(server).post('/api/favorite');
+    const response = await request(server).post(FAVORITE_ENDPOINT);
     expect(response.status).toEqual(401);
   });
 });

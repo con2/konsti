@@ -5,6 +5,7 @@ import { runAssignment } from 'server/features/player-assignment/runAssignment';
 import { config } from 'server/config';
 import { Status } from 'shared/typings/api/games';
 import { Result } from 'server/typings/result.typings';
+import { ASSIGNMENT_ENDPOINT } from 'shared/constants/apiEndpoints';
 
 interface PostAssignmentResponse {
   message: string;
@@ -19,7 +20,7 @@ interface PostAssignmentResponse {
 export const storeAssignment = async (
   startingTime: string
 ): Promise<PostAssignmentResponse> => {
-  logger.info('API call: POST /api/assignment');
+  logger.info(`API call: POST ${ASSIGNMENT_ENDPOINT}`);
 
   if (!startingTime) {
     return {

@@ -6,13 +6,14 @@ import {
   GetGroupResponse,
 } from 'client/typings/group.typings';
 import { ServerError } from 'client/typings/utils.typings';
+import { GROUP_ENDPOINT } from 'shared/constants/apiEndpoints';
 
 export const postGroup = async (
   groupData: GroupData
 ): Promise<PostGroupResponse | ServerError> => {
   let response: AxiosResponse;
   try {
-    response = await api.post<PostGroupResponse>('/group', { groupData });
+    response = await api.post<PostGroupResponse>(GROUP_ENDPOINT, { groupData });
   } catch (error) {
     if (error?.response) {
       const axiosError: AxiosError<ServerError> = error;
@@ -29,7 +30,7 @@ export const getGroup = async (
 ): Promise<GetGroupResponse | ServerError> => {
   let response: AxiosResponse;
   try {
-    response = await api.get<GetGroupResponse>('/group', {
+    response = await api.get<GetGroupResponse>(GROUP_ENDPOINT, {
       params: {
         groupCode,
       },
