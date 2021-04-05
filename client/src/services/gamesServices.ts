@@ -1,6 +1,6 @@
 import { AxiosResponse, AxiosError } from 'axios';
 import { api } from 'client/utils/api';
-import { ServerError } from 'client/typings/utils.typings';
+import { ServerError } from 'shared/typings/api/errors';
 import { PostGamesResponse, GetGamesResponse } from 'shared/typings/api/games';
 import { GAMES_ENDPOINT } from 'shared/constants/apiEndpoints';
 

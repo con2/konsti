@@ -55,12 +55,6 @@ export interface UpdateUserResponse {
   status: 'success';
 }
 
-export interface PostSignupResponse {
-  message: string;
-  signedGames: Signup[];
-  status: 'success';
-}
-
 export interface PostLoginResponse {
   groupCode: string;
   jwt: string;
