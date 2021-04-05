@@ -1,7 +1,6 @@
 import { AxiosResponse, AxiosError } from 'axios';
 import { api } from 'client/utils/api';
 import {
-  ServerError,
   GetSettingsResponse,
   PostToggleAppOpenResponse,
 } from 'client/typings/utils.typings';
@@ -9,6 +8,7 @@ import {
   SETTINGS_ENDPOINT,
   TOGGLE_APP_OPEN_ENDPOINT,
 } from 'shared/constants/apiEndpoints';
+import { ServerError } from 'shared/typings/api/errors';
 
 export const getSettings = async (): Promise<
   GetSettingsResponse | ServerError

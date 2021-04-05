@@ -4,7 +4,7 @@ import {
   LoginFormFields,
   PostLoginResponse,
 } from 'client/typings/user.typings';
-import { ServerError } from 'client/typings/utils.typings';
+import { ServerError } from 'shared/typings/api/errors';
 import { LOGIN_ENDPOINT } from 'shared/constants/apiEndpoints';
 
 export const postLogin = async (

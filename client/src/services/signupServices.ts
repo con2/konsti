@@ -1,8 +1,9 @@
 import { AxiosResponse, AxiosError } from 'axios';
 import { api } from 'client/utils/api';
-import { SignupData, PostSignupResponse } from 'client/typings/user.typings';
-import { ServerError } from 'client/typings/utils.typings';
+import { SignupData } from 'client/typings/user.typings';
+import { ServerError } from 'shared/typings/api/errors';
 import { SIGNUP_ENDPOINT } from 'shared/constants/apiEndpoints';
+import { PostSignupResponse } from 'shared/typings/api/signup';
 
 export const postSignup = async (
   signupData: SignupData

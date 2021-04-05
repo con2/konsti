@@ -1,7 +1,7 @@
 import { AxiosResponse, AxiosError } from 'axios';
 import { api } from 'client/utils/api';
 import { PostHiddenResponse } from 'client/typings/game.typings';
-import { ServerError } from 'client/typings/utils.typings';
+import { ServerError } from 'shared/typings/api/errors';
 import { Game } from 'shared/typings/models/game';
 import { HIDDEN_ENDPOINT } from 'shared/constants/apiEndpoints';
 
