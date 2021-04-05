@@ -5,12 +5,13 @@ import { fetchResults } from 'server/features/results/resultsService';
 import { UserGroup } from 'server/typings/user.typings';
 import { validateAuthHeader } from 'server/utils/authHeader';
 import { logger } from 'server/utils/logger';
+import { RESULTS_ENDPOINT } from 'shared/constants/apiEndpoints';
 
 export const getResults = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  logger.info('API call: GET /api/results');
+  logger.info(`API call: GET ${RESULTS_ENDPOINT}`);
 
   const GetResultsQueryParameters = Record({
     startTime: String,

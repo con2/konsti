@@ -3,6 +3,7 @@ import { MongoMemoryServer } from 'mongodb-memory-server';
 import { Application } from 'express';
 import { startServer } from 'server/utils/startServer';
 import { closeServer } from 'server/utils/closeServer';
+import { GROUP_ENDPOINT } from 'shared/constants/apiEndpoints';
 
 let server: Application;
 let mongoServer: MongoMemoryServer;
@@ -19,16 +20,16 @@ afterEach(async () => {
   await mongoServer.stop();
 });
 
-describe('GET /api/group', () => {
+describe(`GET ${GROUP_ENDPOINT}`, () => {
   test('should return 401 without valid authorization', async () => {
-    const response = await request(server).get('/api/group');
+    const response = await request(server).get(GROUP_ENDPOINT);
     expect(response.status).toEqual(401);
   });
 });
 
-describe('POST /api/group', () => {
+describe(`POST ${GROUP_ENDPOINT}`, () => {
   test('should return 401 without valid authorization', async () => {
-    const response = await request(server).post('/api/group');
+    const response = await request(server).post(GROUP_ENDPOINT);
     expect(response.status).toEqual(401);
   });
 });

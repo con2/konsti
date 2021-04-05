@@ -6,12 +6,18 @@ import { toggleAppOpen } from 'server/features/settings/toggleAppOpenService';
 import { UserGroup } from 'server/typings/user.typings';
 import { validateAuthHeader } from 'server/utils/authHeader';
 import { logger } from 'server/utils/logger';
+import {
+  HIDDEN_ENDPOINT,
+  SETTINGS_ENDPOINT,
+  SIGNUPTIME_ENDPOINT,
+  TOGGLE_APP_OPEN_ENDPOINT,
+} from 'shared/constants/apiEndpoints';
 
 export const postHidden = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  logger.info('API call: POST /api/hidden');
+  logger.info(`API call: POST ${HIDDEN_ENDPOINT}`);
 
   const hiddenData = req.body.hiddenData;
 
@@ -32,7 +38,7 @@ export const postSignupTime = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  logger.info('API call: POST /api/signuptime');
+  logger.info(`API call: POST ${SIGNUPTIME_ENDPOINT}`);
 
   const signupTime = req.body.signupTime;
 
@@ -53,7 +59,7 @@ export const postAppOpen = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  logger.info('API call: POST /api/toggle-app-open');
+  logger.info(`API call: POST ${TOGGLE_APP_OPEN_ENDPOINT}`);
 
   const appOpen = req.body.appOpen;
 
@@ -71,10 +77,10 @@ export const postAppOpen = async (
 };
 
 export const getSettings = async (
-  req: Request,
+  _req: Request,
   res: Response
 ): Promise<Response> => {
-  logger.info('API call: GET /api/settings');
+  logger.info(`API call: GET ${SETTINGS_ENDPOINT}`);
 
   const response = await fetchSettings();
   return res.send(response);
