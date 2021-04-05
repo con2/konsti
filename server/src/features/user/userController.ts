@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { validationResult } from 'express-validator';
-import { Undefined, String, Record } from 'runtypes';
+import { String, Record } from 'runtypes';
 import { storeFavorite } from 'server/features/user/favoriteService';
 import { fetchGroup, storeGroup } from 'server/features/user/groupService';
 import { login } from 'server/features/user/loginService';
@@ -18,6 +18,7 @@ import {
   GROUP_ENDPOINT,
   LOGIN_ENDPOINT,
   SIGNUP_ENDPOINT,
+  USERS_BY_SERIAL_ENDPOINT,
   USERS_ENDPOINT,
 } from 'shared/constants/apiEndpoints';
 
@@ -175,7 +176,7 @@ export const getUserBySerial = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  logger.info(`API call: GET ${USERS_ENDPOINT}`);
+  logger.info(`API call: GET ${USERS_BY_SERIAL_ENDPOINT}`);
 
   const validToken = validateAuthHeader(
     req.headers.authorization,
@@ -187,14 +188,16 @@ export const getUserBySerial = async (
   }
 
   const GetUserQueryParameters = Record({
-    serial: String.Or(Undefined),
+    serial: String,
   });
 
   let queryParameters;
   try {
     queryParameters = GetUserQueryParameters.check(req.query);
   } catch (error) {
-    logger.error(`Error validating getUser parameters: ${error.message}`);
+    logger.error(
+      `Error validating getUserBySerial parameters: ${error.message}`
+    );
     return res.sendStatus(422);
   }
 

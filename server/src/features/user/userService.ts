@@ -245,7 +245,7 @@ export const fetchUserBySerial = async (
     try {
       user = await findUserBySerial(serial);
     } catch (error) {
-      logger.error(`findUser(): ${error}`);
+      logger.error(`fetchUserBySerial(): ${error}`);
       return {
         message: 'Getting user data failed',
         status: 'error',
