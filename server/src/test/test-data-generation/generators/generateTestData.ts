@@ -24,7 +24,6 @@ export const generateTestData = async (
   if (newUsersCount) await createIndividualUsers(newUsersCount);
 
   for (let i = 0; i < numberOfGroups; i++) {
-    // @ts-expect-error @types/faker not updated yet
     const randomGroupCode = faker.datatype.number().toString();
     await createUsersInGroup(groupSize, randomGroupCode);
   }
