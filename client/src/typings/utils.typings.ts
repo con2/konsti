@@ -7,12 +7,6 @@ export interface WeekdayAndTime {
   capitalize: boolean;
 }
 
-export interface PostSignupTimeResult {
-  message: string;
-  signupTime: string;
-  status: 'success';
-}
-
 // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
 export type AppThunk<ReturnType = void> = ThunkAction<
   ReturnType,

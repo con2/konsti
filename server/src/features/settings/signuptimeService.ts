@@ -1,6 +1,10 @@
 import { saveSignupTime } from 'server/features/settings/settingsRepository';
+import { ServerError } from 'shared/typings/api/errors';
+import { PostSignupTimeResponse } from 'shared/typings/api/signup';
 
-export const storeSignupTime = async (signupTime: string): Promise<unknown> => {
+export const storeSignupTime = async (
+  signupTime: string
+): Promise<PostSignupTimeResponse | ServerError> => {
   try {
     const response = await saveSignupTime(signupTime);
     return {
@@ -12,7 +16,7 @@ export const storeSignupTime = async (signupTime: string): Promise<unknown> => {
     return {
       message: 'Signup time set failure',
       status: 'error',
-      error,
+      code: 0,
     };
   }
 };
