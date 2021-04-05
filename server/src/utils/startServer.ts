@@ -3,7 +3,6 @@ import express, { Request, Response, NextFunction, Application } from 'express';
 import helmet from 'helmet';
 import bodyParser from 'body-parser';
 import morgan from 'morgan';
-// import expressJWT from 'express-jwt'
 import expressStaticGzip from 'express-static-gzip';
 import { config } from 'server/config';
 import { logger, stream } from 'server/utils/logger';
@@ -43,21 +42,6 @@ export const startServer = async (
       }
     }
   );
-
-  /*
-  server.use(
-    expressJWT({ secret: config.jwtSecretKeyAdmin }).unless({
-      path: [
-        // Allow all paths not starting with "/api"
-        { url: /^(?!\/api).*$/i, methods: ['GET'] },
-        { url: '/api/login', methods: ['POST', 'OPTIONS'] },
-        { url: '/api/user', methods: ['POST', 'OPTIONS'] },
-        { url: '/api/games', methods: ['GET', 'OPTIONS'] },
-      ],
-      ext: ['.js', '.css', '.html'],
-    })
-  );
-  */
 
   server.use(allowCORS);
 
