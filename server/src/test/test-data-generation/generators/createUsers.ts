@@ -12,7 +12,6 @@ export const createAdminUser = async (): Promise<void> => {
     username: 'admin',
     passwordHash: passwordHash,
     userGroup: UserGroup.admin,
-    // @ts-expect-error @types/faker not updated yet
     serial: faker.datatype.number(10000000).toString(),
     favoritedGames: [],
     signedGames: [],
@@ -33,7 +32,6 @@ export const createHelpUser = async (): Promise<void> => {
     username: 'ropetiski',
     passwordHash: await hashPassword('test'),
     userGroup: UserGroup.help,
-    // @ts-expect-error @types/faker not updated yet
     serial: faker.datatype.number(10000000).toString(),
     favoritedGames: [],
     signedGames: [],
@@ -54,7 +52,6 @@ const createTestUser = async (userNumber: number): Promise<void> => {
     username: `test${userNumber}`,
     passwordHash: await hashPassword('test'),
     userGroup: UserGroup.user,
-    // @ts-expect-error @types/faker not updated yet
     serial: faker.datatype.number(10000000).toString(),
     favoritedGames: [],
     signedGames: [],
@@ -90,7 +87,6 @@ const createUser = async ({
     passwordHash: 'testPass', // Skip hashing to save time
     userGroup: UserGroup.user,
     serial:
-      // @ts-expect-error @types/faker not updated yet
       groupMemberCount === 0 ? groupCode : faker.datatype.number().toString(),
     groupCode,
     favoritedGames: [],
