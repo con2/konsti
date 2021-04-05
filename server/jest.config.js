@@ -8,5 +8,6 @@ module.exports = {
   preset: 'ts-jest',
   moduleNameMapper: {
     '^server(.*)$': '<rootDir>/src/$1',
+    '^shared(.*)$': '<rootDir>/../shared/$1',
   },
 };
