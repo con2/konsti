@@ -4,7 +4,7 @@ import {
   Feedback,
   PostFeedbackResponse,
 } from 'client/typings/feedback.typings';
-import { ServerError } from 'client/typings/utils.typings';
+import { ServerError } from 'shared/typings/api/errors';
 import { FEEDBACK_ENDPOINT } from 'shared/constants/apiEndpoints';
 
 export const postFeedback = async (

@@ -4,7 +4,6 @@ import { String, Record } from 'runtypes';
 import { storeFavorite } from 'server/features/user/favoriteService';
 import { fetchGroup, storeGroup } from 'server/features/user/groupService';
 import { login } from 'server/features/user/loginService';
-import { storeSignup } from 'server/features/user/signupService';
 import {
   fetchUserByUsername,
   fetchUserBySerial,
@@ -17,7 +16,6 @@ import {
   FAVORITE_ENDPOINT,
   GROUP_ENDPOINT,
   LOGIN_ENDPOINT,
-  SIGNUP_ENDPOINT,
   USERS_BY_SERIAL_ENDPOINT,
   USERS_ENDPOINT,
 } from 'shared/constants/apiEndpoints';
@@ -52,29 +50,6 @@ export const postLogin = async (
   }
 
   const response = await login(username, password, jwt);
-  return res.send(response);
-};
-
-export const postSignup = async (
-  req: Request,
-  res: Response
-): Promise<Response> => {
-  logger.info(`API call: POST ${SIGNUP_ENDPOINT}`);
-
-  const signupData = req.body.signupData;
-
-  const validToken = validateAuthHeader(
-    req.headers.authorization,
-    UserGroup.user
-  );
-
-  if (!validToken) {
-    return res.sendStatus(401);
-  }
-
-  const { selectedGames, username, signupTime } = signupData;
-
-  const response = await storeSignup(selectedGames, username, signupTime);
   return res.send(response);
 };
 

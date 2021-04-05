@@ -8,12 +8,6 @@ export interface WeekdayAndTime {
   capitalize: boolean;
 }
 
-export interface ServerError {
-  code: string;
-  message: string;
-  status: 'error';
-}
-
 export interface GetSettingsResponse {
   appOpen: boolean;
   hiddenGames: Game[];

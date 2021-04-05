@@ -5,11 +5,12 @@ import {
   LoginData,
   PostLoginResponse,
 } from 'client/typings/user.typings';
-import { ServerError, AppThunk } from 'client/typings/utils.typings';
+import { AppThunk } from 'client/typings/utils.typings';
 import {
   SubmitLoginAsync,
   SUBMIT_LOGIN,
 } from 'client/typings/loginActions.typings';
+import { ServerError } from 'shared/typings/api/errors';
 
 export const submitLogin = (loginFormFields: LoginFormFields): AppThunk => {
   return async (dispatch): Promise<void> => {
