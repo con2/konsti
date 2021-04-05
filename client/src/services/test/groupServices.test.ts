@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { getGroup, postGroup } from 'client/services/groupServices';
+import { GROUP_ENDPOINT } from 'shared/constants/apiEndpoints';
 
 jest.mock('axios');
 const mockAxios = axios as jest.Mocked<typeof axios>;
@@ -20,7 +21,7 @@ describe('groupServices', () => {
 
     expect(response).toEqual('test response');
     expect(mockAxios.get).toHaveBeenCalledTimes(1);
-    expect(mockAxios.get).toHaveBeenCalledWith(`/group`, {
+    expect(mockAxios.get).toHaveBeenCalledWith(GROUP_ENDPOINT, {
       params: { groupCode },
     });
   });
@@ -46,6 +47,6 @@ describe('groupServices', () => {
 
     expect(response).toEqual('test response');
     expect(mockAxios.post).toHaveBeenCalledTimes(1);
-    expect(mockAxios.post).toHaveBeenCalledWith(`/group`, { groupData });
+    expect(mockAxios.post).toHaveBeenCalledWith(GROUP_ENDPOINT, { groupData });
   });
 });

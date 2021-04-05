@@ -198,10 +198,8 @@ export const storeUser = async (
   };
 };
 
-// Get user info
-export const fetchUser = async (
-  username: string | undefined,
-  serial: string | undefined
+export const fetchUserByUsername = async (
+  username: string
 ): Promise<GetUserResponse> => {
   let user;
 
@@ -216,7 +214,34 @@ export const fetchUser = async (
         error,
       };
     }
-  } else if (serial) {
+  }
+
+  if (!user) {
+    return {
+      message: `User ${username} not found`,
+      status: 'error',
+    };
+  }
+
+  return {
+    message: 'Getting user data success',
+    status: 'success',
+    games: {
+      enteredGames: user.enteredGames,
+      favoritedGames: user.favoritedGames,
+      signedGames: user.signedGames,
+    },
+    username: user.username,
+    serial: user.serial,
+  };
+};
+
+export const fetchUserBySerial = async (
+  serial: string
+): Promise<GetUserResponse> => {
+  let user;
+
+  if (serial) {
     try {
       user = await findUserBySerial(serial);
     } catch (error) {
@@ -231,7 +256,7 @@ export const fetchUser = async (
 
   if (!user) {
     return {
-      message: `User ${username} not found`,
+      message: `User with serial ${serial} not found`,
       status: 'error',
     };
   }

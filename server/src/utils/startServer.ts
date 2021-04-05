@@ -45,7 +45,7 @@ export const startServer = async (
 
   server.use(allowCORS);
 
-  server.use('/api', apiRoutes);
+  server.use(apiRoutes);
 
   // Set static path
   const staticPath = path.join(__dirname, '../../', 'front');
