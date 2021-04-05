@@ -4,7 +4,7 @@ import {
   FavoriteData,
   PostFavoriteResponse,
 } from 'client/typings/user.typings';
-import { ServerError } from 'client/typings/utils.typings';
+import { ServerError } from 'shared/typings/api/errors';
 import { FAVORITE_ENDPOINT } from 'shared/constants/apiEndpoints';
 
 export const postFavorite = async (

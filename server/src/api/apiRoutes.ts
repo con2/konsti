@@ -12,6 +12,7 @@ import {
   postHidden,
   postSignupTime,
 } from 'server/features/settings/settingsController';
+import { postSignup } from 'server/features/signup/signupController';
 import {
   getGroup,
   getUser,
@@ -19,7 +20,6 @@ import {
   postFavorite,
   postGroup,
   postLogin,
-  postSignup,
   postUser,
 } from 'server/features/user/userController';
 import {

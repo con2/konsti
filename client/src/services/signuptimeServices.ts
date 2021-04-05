@@ -1,10 +1,8 @@
 import { AxiosResponse, AxiosError } from 'axios';
 import { api } from 'client/utils/api';
-import {
-  ServerError,
-  PostSignupTimeResult,
-} from 'client/typings/utils.typings';
+import { PostSignupTimeResult } from 'client/typings/utils.typings';
 import { SIGNUPTIME_ENDPOINT } from 'shared/constants/apiEndpoints';
+import { ServerError } from 'shared/typings/api/errors';
 
 export const postSignupTime = async (
   signupTime: string

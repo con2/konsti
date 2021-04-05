@@ -7,7 +7,7 @@ import {
   PostRegistrationResponse,
   GetUserResponse,
 } from 'client/typings/user.typings';
-import { ServerError } from 'client/typings/utils.typings';
+import { ServerError } from 'shared/typings/api/errors';
 import {
   USERS_BY_SERIAL_ENDPOINT,
   USERS_ENDPOINT,

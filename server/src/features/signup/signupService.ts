@@ -3,26 +3,20 @@ import { logger } from 'server/utils/logger';
 import { config } from 'server/config';
 import { Signup } from 'server/typings/result.typings';
 import { SignedGame } from 'server/typings/user.typings';
-import { Status } from 'shared/typings/api/games';
 import { saveSignup } from 'server/features/user/userRepository';
-
-interface PostSignupResponse {
-  message: string;
-  status: Status;
-  code?: number;
-  error?: Error | string;
-  signedGames?: readonly SignedGame[];
-}
+import { PostSignupResponse } from 'shared/typings/api/signup';
+import { ServerError } from 'shared/typings/api/errors';
 
 export const storeSignup = async (
   selectedGames: readonly SignedGame[],
   username: string,
   signupTime: string
-): Promise<PostSignupResponse> => {
+): Promise<PostSignupResponse | ServerError> => {
   if (!signupTime) {
     return {
       message: 'Signup failure',
       status: 'error',
+      code: 0,
     };
   }
 
@@ -37,7 +31,6 @@ export const storeSignup = async (
       code: 41,
       message: 'Signup failure',
       status: 'error',
-      error,
     };
   }
 
@@ -57,7 +50,7 @@ export const storeSignup = async (
     return {
       message: 'Signup failure',
       status: 'error',
-      error,
+      code: 0,
     };
   }
 };
