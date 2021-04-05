@@ -150,8 +150,9 @@ export const storeUser = async (
       }
 
       if (passwordHash) {
+        let saveUserResponse;
         try {
-          await saveUser({
+          saveUserResponse = await saveUser({
             username,
             passwordHash,
             serial,
@@ -168,8 +169,8 @@ export const storeUser = async (
         return {
           message: 'User registration success',
           status: 'success',
-          username: username,
-          password: password,
+          username: saveUserResponse.username,
+          password: saveUserResponse.password,
         };
       }
     }
