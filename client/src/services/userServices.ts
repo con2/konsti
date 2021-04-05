@@ -4,22 +4,21 @@ import {
   RegistrationFormFields,
   UpdateUserResponse,
   GetUserBySerialResponse,
-  PostRegistrationResponse,
-  GetUserResponse,
 } from 'client/typings/user.typings';
 import { ServerError } from 'shared/typings/api/errors';
 import {
   USERS_BY_SERIAL_ENDPOINT,
   USERS_ENDPOINT,
 } from 'shared/constants/apiEndpoints';
+import { GetUserResponse, PostUserResponse } from 'shared/typings/api/users';
 
 export const postRegistration = async (
   registrationFormFields: RegistrationFormFields
-): Promise<PostRegistrationResponse | ServerError> => {
+): Promise<PostUserResponse | ServerError> => {
   const { username, password, serial } = registrationFormFields;
   let response: AxiosResponse;
   try {
-    response = await api.post<PostRegistrationResponse>(USERS_ENDPOINT, {
+    response = await api.post<PostUserResponse>(USERS_ENDPOINT, {
       username,
       password,
       serial,

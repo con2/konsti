@@ -1,16 +1,10 @@
 import { saveToggleAppOpen } from 'server/features/settings/settingsRepository';
-import { Status } from 'shared/typings/api/games';
-
-interface ToggleAppOpenResponse {
-  message: string;
-  status: Status;
-  appOpen?: boolean;
-  error?: Error;
-}
+import { ServerError } from 'shared/typings/api/errors';
+import { PostToggleAppOpenResponse } from 'shared/typings/api/settings';
 
 export const toggleAppOpen = async (
   appOpen: boolean
-): Promise<ToggleAppOpenResponse> => {
+): Promise<PostToggleAppOpenResponse | ServerError> => {
   try {
     const response = await saveToggleAppOpen(appOpen);
     return {
@@ -22,7 +16,7 @@ export const toggleAppOpen = async (
     return {
       message: 'Update app open failure',
       status: 'error',
-      error,
+      code: 0,
     };
   }
 };

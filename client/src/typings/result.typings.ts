@@ -12,10 +12,3 @@ export interface PostPlayerAssignmentResponse {
   startTime: string;
   status: 'success';
 }
-
-export interface GetResultsResponse {
-  message: string;
-  results: Result[];
-  startTime: string;
-  status: 'success';
-}

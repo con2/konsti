@@ -1,19 +1,10 @@
 import { ThunkAction, ThunkDispatch } from 'redux-thunk';
 import { Action, AnyAction } from 'redux';
 import { RootState } from './redux.typings';
-import { Game } from 'shared/typings/models/game';
 
 export interface WeekdayAndTime {
   time: string;
   capitalize: boolean;
-}
-
-export interface GetSettingsResponse {
-  appOpen: boolean;
-  hiddenGames: Game[];
-  message: string;
-  signupTime: string;
-  status: 'success';
 }
 
 export interface PostToggleAppOpenResponse {

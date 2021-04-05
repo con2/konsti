@@ -7,8 +7,11 @@ import { KompassiGame } from 'server/typings/game.typings';
 import { Game } from 'shared/typings/models/game';
 import { PostGamesResponse, GetGamesResponse } from 'shared/typings/api/games';
 import { findGames, saveGames } from 'server/features/game/gameRepository';
+import { ServerError } from 'shared/typings/api/errors';
 
-export const storeGames = async (): Promise<PostGamesResponse> => {
+export const storeGames = async (): Promise<
+  PostGamesResponse | ServerError
+> => {
   let kompassiGames = [] as readonly KompassiGame[];
   try {
     kompassiGames = await updateGames();
@@ -70,7 +73,7 @@ export const storeGames = async (): Promise<PostGamesResponse> => {
   };
 };
 
-export const fetchGames = async (): Promise<GetGamesResponse> => {
+export const fetchGames = async (): Promise<GetGamesResponse | ServerError> => {
   try {
     const games = await findGames();
     return {

@@ -72,24 +72,3 @@ export interface GetUserBySerialResponse {
   status: 'success';
   username: string;
 }
-
-export interface PostRegistrationResponse {
-  message: string;
-  password: string;
-  status: 'success';
-  username: string;
-}
-
-export interface GetUserResponse {
-  games: UserGames;
-  message: string;
-  serial: string;
-  status: 'success';
-  username: string;
-}
-
-export interface PostFavoriteResponse {
-  favoritedGames: Game[];
-  message: string;
-  status: 'success';
-}

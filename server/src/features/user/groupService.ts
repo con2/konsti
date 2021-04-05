@@ -1,27 +1,13 @@
 import { logger } from 'server/utils/logger';
 import { User, GetGroupReturnValue } from 'server/typings/user.typings';
-import { Status } from 'shared/typings/api/games';
 import {
   findGroup,
   findGroupMembers,
   findUserSerial,
   saveGroupCode,
 } from 'server/features/user/userRepository';
-
-interface PostGroupResponse {
-  message: string;
-  status: Status;
-  groupCode?: string;
-  code?: number;
-  error?: Error;
-}
-
-interface GetGroupResponse {
-  message: string;
-  status: Status;
-  results?: GetGroupReturnValue[];
-  error?: Error;
-}
+import { GetGroupResponse, PostGroupResponse } from 'shared/typings/api/groups';
+import { ServerError } from 'shared/typings/api/errors';
 
 export const storeGroup = async (
   username: string,
@@ -30,7 +16,7 @@ export const storeGroup = async (
   ownSerial: string,
   leaveGroup: boolean,
   closeGroup: boolean
-): Promise<PostGroupResponse> => {
+): Promise<PostGroupResponse | ServerError> => {
   if (closeGroup) {
     const groupMembers = await findGroupMembers(groupCode);
 
@@ -125,7 +111,6 @@ export const storeGroup = async (
       return {
         message: 'Save group failure',
         status: 'error',
-        error,
         code: 30,
       };
     }
@@ -233,12 +218,13 @@ export const storeGroup = async (
   return {
     message: 'Unknown error',
     status: 'error',
+    code: 0,
   };
 };
 
 export const fetchGroup = async (
   groupCode: string
-): Promise<GetGroupResponse> => {
+): Promise<GetGroupResponse | ServerError> => {
   let findGroupResults: User[];
   try {
     findGroupResults = await findGroupMembers(groupCode);
@@ -264,7 +250,7 @@ export const fetchGroup = async (
     return {
       message: 'Getting group members failed',
       status: 'error',
-      error,
+      code: 0,
     };
   }
 };
