@@ -8,7 +8,11 @@ import {
   findUserSerial,
   saveUser,
 } from 'server/features/user/userRepository';
-import { GetUserResponse, PostUserResponse } from 'shared/typings/api/users';
+import {
+  GetUserBySerialResponse,
+  GetUserResponse,
+  PostUserResponse,
+} from 'shared/typings/api/users';
 import { ServerError } from 'shared/typings/api/errors';
 import { Game } from 'shared/typings/models/game';
 
@@ -219,7 +223,7 @@ export const fetchUserByUsername = async (
 
 export const fetchUserBySerial = async (
   serial: string
-): Promise<GetUserResponse | ServerError> => {
+): Promise<GetUserBySerialResponse | ServerError> => {
   let user;
 
   if (serial) {

@@ -7,12 +7,6 @@ export interface WeekdayAndTime {
   capitalize: boolean;
 }
 
-export interface PostToggleAppOpenResponse {
-  appOpen: boolean;
-  message: string;
-  status: 'success';
-}
-
 export interface PostSignupTimeResult {
   message: string;
   signupTime: string;

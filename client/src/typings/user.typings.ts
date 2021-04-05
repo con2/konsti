@@ -50,25 +50,3 @@ export interface UserGames {
   favoritedGames: readonly Game[];
   signedGames: readonly Signup[];
 }
-
-export interface UpdateUserResponse {
-  status: 'success';
-}
-
-export interface PostLoginResponse {
-  groupCode: string;
-  jwt: string;
-  message: string;
-  serial: string;
-  status: 'success';
-  userGroup: UserGroup;
-  username: string;
-}
-
-export interface GetUserBySerialResponse {
-  games: Game[];
-  message: string;
-  serial: string;
-  status: 'success';
-  username: string;
-}

@@ -14,3 +14,11 @@ export interface PostUserResponse {
   status: 'success';
   username: string;
 }
+
+export interface GetUserBySerialResponse {
+  games: UserGames;
+  message: string;
+  serial: string;
+  status: 'success';
+  username: string;
+}
