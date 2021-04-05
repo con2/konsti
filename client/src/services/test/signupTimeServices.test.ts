@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { postSignupTime } from 'client/services/signuptimeServices';
+import { SIGNUPTIME_ENDPOINT } from 'shared/constants/apiEndpoints';
 
 jest.mock('axios');
 const mockAxios = axios as jest.Mocked<typeof axios>;
@@ -19,6 +20,8 @@ describe('signuptimeServices', () => {
 
     expect(response).toEqual('test response');
     expect(mockAxios.post).toHaveBeenCalledTimes(1);
-    expect(mockAxios.post).toHaveBeenCalledWith(`/signuptime`, { signupTime });
+    expect(mockAxios.post).toHaveBeenCalledWith(SIGNUPTIME_ENDPOINT, {
+      signupTime,
+    });
   });
 });

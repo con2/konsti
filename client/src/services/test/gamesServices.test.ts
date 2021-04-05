@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { getGames, postGamesUpdate } from 'client/services/gamesServices';
+import { GAMES_ENDPOINT } from 'shared/constants/apiEndpoints';
 
 jest.mock('axios');
 const mockAxios = axios as jest.Mocked<typeof axios>;
@@ -18,7 +19,7 @@ describe('gamesServices', () => {
 
     expect(response).toEqual('test response');
     expect(mockAxios.get).toHaveBeenCalledTimes(1);
-    expect(mockAxios.get).toHaveBeenCalledWith(`/games`);
+    expect(mockAxios.get).toHaveBeenCalledWith(GAMES_ENDPOINT);
   });
 
   it('POST games update to server', async () => {
@@ -33,6 +34,6 @@ describe('gamesServices', () => {
 
     expect(response).toEqual('test response');
     expect(mockAxios.post).toHaveBeenCalledTimes(1);
-    expect(mockAxios.post).toHaveBeenCalledWith(`/games`);
+    expect(mockAxios.post).toHaveBeenCalledWith(GAMES_ENDPOINT);
   });
 });

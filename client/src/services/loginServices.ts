@@ -5,6 +5,7 @@ import {
   PostLoginResponse,
 } from 'client/typings/user.typings';
 import { ServerError } from 'client/typings/utils.typings';
+import { LOGIN_ENDPOINT } from 'shared/constants/apiEndpoints';
 
 export const postLogin = async (
   loginFormFields: LoginFormFields
@@ -12,7 +13,7 @@ export const postLogin = async (
   const { username, password, jwt } = loginFormFields;
   let response: AxiosResponse;
   try {
-    response = await api.post<PostLoginResponse>('/login', {
+    response = await api.post<PostLoginResponse>(LOGIN_ENDPOINT, {
       username,
       password,
       jwt,

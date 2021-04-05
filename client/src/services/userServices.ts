@@ -8,6 +8,10 @@ import {
   GetUserResponse,
 } from 'client/typings/user.typings';
 import { ServerError } from 'client/typings/utils.typings';
+import {
+  USERS_BY_SERIAL_ENDPOINT,
+  USERS_ENDPOINT,
+} from 'shared/constants/apiEndpoints';
 
 export const postRegistration = async (
   registrationFormFields: RegistrationFormFields
@@ -15,7 +19,7 @@ export const postRegistration = async (
   const { username, password, serial } = registrationFormFields;
   let response: AxiosResponse;
   try {
-    response = await api.post<PostRegistrationResponse>('/user', {
+    response = await api.post<PostRegistrationResponse>(USERS_ENDPOINT, {
       username,
       password,
       serial,
@@ -36,7 +40,7 @@ export const getUser = async (
 ): Promise<GetUserResponse | ServerError> => {
   let response: AxiosResponse;
   try {
-    response = await api.get<GetUserResponse>('/user', {
+    response = await api.get<GetUserResponse>(USERS_ENDPOINT, {
       params: {
         username,
       },
@@ -57,11 +61,14 @@ export const getUserBySerial = async (
 ): Promise<GetUserBySerialResponse | ServerError> => {
   let response: AxiosResponse;
   try {
-    response = await api.get<GetUserBySerialResponse>('/user', {
-      params: {
-        serial,
-      },
-    });
+    response = await api.get<GetUserBySerialResponse>(
+      USERS_BY_SERIAL_ENDPOINT,
+      {
+        params: {
+          serial,
+        },
+      }
+    );
   } catch (error) {
     if (error?.response) {
       const axiosError: AxiosError<ServerError> = error;
@@ -81,7 +88,7 @@ export const updateUserPassword = async (
 ): Promise<UpdateUserResponse | ServerError> => {
   let response: AxiosResponse;
   try {
-    response = await api.post<UpdateUserResponse>('/user', {
+    response = await api.post<UpdateUserResponse>(USERS_ENDPOINT, {
       username,
       serial,
       password,

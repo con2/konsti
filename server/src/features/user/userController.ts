@@ -1,20 +1,32 @@
 import { Request, Response } from 'express';
 import { validationResult } from 'express-validator';
-import { Undefined, String, Record } from 'runtypes';
+import { String, Record } from 'runtypes';
 import { storeFavorite } from 'server/features/user/favoriteService';
 import { fetchGroup, storeGroup } from 'server/features/user/groupService';
 import { login } from 'server/features/user/loginService';
 import { storeSignup } from 'server/features/user/signupService';
-import { fetchUser, storeUser } from 'server/features/user/userService';
+import {
+  fetchUserByUsername,
+  fetchUserBySerial,
+  storeUser,
+} from 'server/features/user/userService';
 import { UserGroup } from 'server/typings/user.typings';
 import { validateAuthHeader } from 'server/utils/authHeader';
 import { logger } from 'server/utils/logger';
+import {
+  FAVORITE_ENDPOINT,
+  GROUP_ENDPOINT,
+  LOGIN_ENDPOINT,
+  SIGNUP_ENDPOINT,
+  USERS_BY_SERIAL_ENDPOINT,
+  USERS_ENDPOINT,
+} from 'shared/constants/apiEndpoints';
 
 export const postUser = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  logger.info('API call: POST /api/user');
+  logger.info(`API call: POST ${USERS_ENDPOINT}`);
 
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -31,7 +43,7 @@ export const postLogin = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  logger.info('API call: POST /api/login');
+  logger.info(`API call: POST ${LOGIN_ENDPOINT}`);
 
   const { username, password, jwt } = req.body;
 
@@ -47,7 +59,7 @@ export const postSignup = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  logger.info('API call: POST /api/signup');
+  logger.info(`API call: POST ${SIGNUP_ENDPOINT}`);
 
   const signupData = req.body.signupData;
 
@@ -70,7 +82,7 @@ export const postFavorite = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  logger.info('API call: POST /api/favorite');
+  logger.info(`API call: POST ${FAVORITE_ENDPOINT}`);
 
   const favoriteData = req.body.favoriteData;
 
@@ -91,7 +103,7 @@ export const postGroup = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  logger.info('API call: POST /api/group');
+  logger.info(`API call: POST ${GROUP_ENDPOINT}`);
 
   const validToken = validateAuthHeader(
     req.headers.authorization,
@@ -127,7 +139,7 @@ export const getUser = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  logger.info('API call: GET /api/user');
+  logger.info(`API call: GET ${USERS_ENDPOINT}`);
 
   const validToken = validateAuthHeader(
     req.headers.authorization,
@@ -139,19 +151,63 @@ export const getUser = async (
   }
 
   const GetUserQueryParameters = Record({
-    username: String.Or(Undefined),
-    serial: String.Or(Undefined),
+    username: String,
   });
 
-  const queryParameters = GetUserQueryParameters.check(req.query);
-
-  const { username, serial } = queryParameters;
-
-  if (!username && !serial) {
+  let queryParameters;
+  try {
+    queryParameters = GetUserQueryParameters.check(req.query);
+  } catch (error) {
+    logger.error(`Error validating getUser parameters: ${error.message}`);
     return res.sendStatus(422);
   }
 
-  const response = await fetchUser(username, serial);
+  const { username } = queryParameters;
+
+  if (!username) {
+    return res.sendStatus(422);
+  }
+
+  const response = await fetchUserByUsername(username);
+  return res.send(response);
+};
+
+export const getUserBySerial = async (
+  req: Request,
+  res: Response
+): Promise<Response> => {
+  logger.info(`API call: GET ${USERS_BY_SERIAL_ENDPOINT}`);
+
+  const validToken = validateAuthHeader(
+    req.headers.authorization,
+    UserGroup.user
+  );
+
+  if (!validToken) {
+    return res.sendStatus(401);
+  }
+
+  const GetUserQueryParameters = Record({
+    serial: String,
+  });
+
+  let queryParameters;
+  try {
+    queryParameters = GetUserQueryParameters.check(req.query);
+  } catch (error) {
+    logger.error(
+      `Error validating getUserBySerial parameters: ${error.message}`
+    );
+    return res.sendStatus(422);
+  }
+
+  const { serial } = queryParameters;
+
+  if (!serial) {
+    return res.sendStatus(422);
+  }
+
+  const response = await fetchUserBySerial(serial);
   return res.send(response);
 };
 
@@ -159,7 +215,7 @@ export const getGroup = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  logger.info('API call: GET /api/group');
+  logger.info(`API call: GET ${GROUP_ENDPOINT}`);
 
   const validToken = validateAuthHeader(
     req.headers.authorization,
