@@ -1,19 +1,13 @@
 import { logger } from 'server/utils/logger';
 import { Game } from 'shared/typings/models/game';
-import { Status } from 'shared/typings/api/games';
 import { saveHidden } from 'server/features/settings/settingsRepository';
 import { findUsers, updateUser } from 'server/features/user/userRepository';
-
-interface PostHiddenResponse {
-  message: string;
-  status: Status;
-  error?: Error;
-  hiddenGames?: readonly Game[];
-}
+import { ServerError } from 'shared/typings/api/errors';
+import { PostHiddenResponse } from 'shared/typings/api/settings';
 
 export const storeHidden = async (
   hiddenData: readonly Game[]
-): Promise<PostHiddenResponse> => {
+): Promise<PostHiddenResponse | ServerError> => {
   let settings;
   try {
     settings = await saveHidden(hiddenData);
@@ -22,7 +16,7 @@ export const storeHidden = async (
     return {
       message: 'Update hidden failure',
       status: 'error',
-      error,
+      code: 0,
     };
   }
 
@@ -33,7 +27,7 @@ export const storeHidden = async (
     return {
       message: 'Update hidden failure',
       status: 'error',
-      error,
+      code: 0,
     };
   }
 
