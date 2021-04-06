@@ -13,6 +13,7 @@ import {
 import { Serial } from 'server/typings/serial.typings';
 import { GameDoc } from 'server/typings/game.typings';
 import { findGames } from 'server/features/game/gameRepository';
+import { Game } from 'shared/typings/models/game';
 
 export const removeUsers = async (): Promise<void> => {
   logger.info('MongoDB: remove ALL users from db');
@@ -341,7 +342,7 @@ export const saveGroupCode = async (
 
 export const saveFavorite = async (
   favoriteData: SaveFavoriteRequest
-): Promise<User | null> => {
+): Promise<readonly Game[] | null> => {
   let games: GameDoc[];
   try {
     games = await findGames();
@@ -378,7 +379,7 @@ export const saveFavorite = async (
     logger.info(
       `MongoDB: Favorite data stored for user "${favoriteData.username}"`
     );
-    return response;
+    return response.favoritedGames as Game[];
   } catch (error) {
     logger.error(
       `MongoDB: Error storing favorite data for user "${favoriteData.username}" - ${error}`

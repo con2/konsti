@@ -1,25 +1,24 @@
 import { AxiosResponse, AxiosError } from 'axios';
 import { api } from 'client/utils/api';
-import {
-  RegistrationFormFields,
-  UpdateUserResponse,
-  GetUserBySerialResponse,
-  PostRegistrationResponse,
-  GetUserResponse,
-} from 'client/typings/user.typings';
+import { RegistrationFormFields } from 'client/typings/user.typings';
 import { ServerError } from 'shared/typings/api/errors';
 import {
   USERS_BY_SERIAL_ENDPOINT,
   USERS_ENDPOINT,
 } from 'shared/constants/apiEndpoints';
+import {
+  GetUserBySerialResponse,
+  GetUserResponse,
+  PostUserResponse,
+} from 'shared/typings/api/users';
 
 export const postRegistration = async (
   registrationFormFields: RegistrationFormFields
-): Promise<PostRegistrationResponse | ServerError> => {
+): Promise<PostUserResponse | ServerError> => {
   const { username, password, serial } = registrationFormFields;
   let response: AxiosResponse;
   try {
-    response = await api.post<PostRegistrationResponse>(USERS_ENDPOINT, {
+    response = await api.post<PostUserResponse>(USERS_ENDPOINT, {
       username,
       password,
       serial,
@@ -85,10 +84,10 @@ export const updateUserPassword = async (
   serial: string,
   password: string,
   changePassword: boolean
-): Promise<UpdateUserResponse | ServerError> => {
+): Promise<PostUserResponse | ServerError> => {
   let response: AxiosResponse;
   try {
-    response = await api.post<UpdateUserResponse>(USERS_ENDPOINT, {
+    response = await api.post<PostUserResponse>(USERS_ENDPOINT, {
       username,
       serial,
       password,

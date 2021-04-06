@@ -1,11 +1,5 @@
 import { logger } from 'server/utils/logger';
 import { hashPassword } from 'server/utils/bcrypt';
-import { Status } from 'shared/typings/api/games';
-import {
-  EnteredGame,
-  FavoritedGame,
-  SignedGame,
-} from 'server/typings/user.typings';
 import { findSerial } from 'server/features/serial/serialRepository';
 import {
   updateUserPassword,
@@ -14,34 +8,20 @@ import {
   findUserSerial,
   saveUser,
 } from 'server/features/user/userRepository';
-
-interface PostUserResponse {
-  message: string;
-  status: Status;
-  code?: number;
-  username?: string;
-  password?: string;
-}
-
-interface GetUserResponse {
-  message: string;
-  status: Status;
-  error?: Error;
-  games?: {
-    enteredGames: readonly EnteredGame[];
-    favoritedGames: readonly FavoritedGame[];
-    signedGames: readonly SignedGame[];
-  };
-  username?: string;
-  serial?: string;
-}
+import {
+  GetUserBySerialResponse,
+  GetUserResponse,
+  PostUserResponse,
+} from 'shared/typings/api/users';
+import { ServerError } from 'shared/typings/api/errors';
+import { Game } from 'shared/typings/models/game';
 
 export const storeUser = async (
   username: string,
   password: string,
   serial: string,
   changePassword: boolean
-): Promise<PostUserResponse> => {
+): Promise<PostUserResponse | ServerError> => {
   if (changePassword) {
     let passwordHash;
     try {
@@ -51,6 +31,7 @@ export const storeUser = async (
       return {
         message: 'Password change error',
         status: 'error',
+        code: 0,
       };
     }
 
@@ -61,12 +42,15 @@ export const storeUser = async (
       return {
         message: 'Password change error',
         status: 'error',
+        code: 0,
       };
     }
 
     return {
       message: 'Password changed',
       status: 'success',
+      username: 'notAvailable',
+      password: 'notAvailable',
     };
   }
 
@@ -195,12 +179,13 @@ export const storeUser = async (
   return {
     message: 'Unknown error',
     status: 'error',
+    code: 0,
   };
 };
 
 export const fetchUserByUsername = async (
   username: string
-): Promise<GetUserResponse> => {
+): Promise<GetUserResponse | ServerError> => {
   let user;
 
   if (username) {
@@ -211,7 +196,7 @@ export const fetchUserByUsername = async (
       return {
         message: 'Getting user data failed',
         status: 'error',
-        error,
+        code: 0,
       };
     }
   }
@@ -220,6 +205,7 @@ export const fetchUserByUsername = async (
     return {
       message: `User ${username} not found`,
       status: 'error',
+      code: 0,
     };
   }
 
@@ -228,7 +214,7 @@ export const fetchUserByUsername = async (
     status: 'success',
     games: {
       enteredGames: user.enteredGames,
-      favoritedGames: user.favoritedGames,
+      favoritedGames: user.favoritedGames as readonly Game[],
       signedGames: user.signedGames,
     },
     username: user.username,
@@ -238,7 +224,7 @@ export const fetchUserByUsername = async (
 
 export const fetchUserBySerial = async (
   serial: string
-): Promise<GetUserResponse> => {
+): Promise<GetUserBySerialResponse | ServerError> => {
   let user;
 
   if (serial) {
@@ -249,7 +235,7 @@ export const fetchUserBySerial = async (
       return {
         message: 'Getting user data failed',
         status: 'error',
-        error,
+        code: 0,
       };
     }
   }
@@ -258,6 +244,7 @@ export const fetchUserBySerial = async (
     return {
       message: `User with serial ${serial} not found`,
       status: 'error',
+      code: 0,
     };
   }
 
@@ -266,7 +253,7 @@ export const fetchUserBySerial = async (
     status: 'success',
     games: {
       enteredGames: user.enteredGames,
-      favoritedGames: user.favoritedGames,
+      favoritedGames: user.favoritedGames as Game[],
       signedGames: user.signedGames,
     },
     username: user.username,

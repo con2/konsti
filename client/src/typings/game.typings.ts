@@ -9,9 +9,3 @@ export interface DnDMove {
   index: number;
   droppableId: string;
 }
-
-export interface PostHiddenResponse {
-  hiddenGames: Game[];
-  message: string;
-  status: 'success';
-}

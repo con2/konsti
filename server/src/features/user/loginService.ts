@@ -2,27 +2,16 @@ import { logger } from 'server/utils/logger';
 import { validateLogin } from 'server/utils/bcrypt';
 import { getJWT, verifyJWT, decodeJWT } from 'server/utils/jwt';
 import { UserGroup } from 'server/typings/user.typings';
-import { Status } from 'shared/typings/api/games';
 import { findUser } from 'server/features/user/userRepository';
 import { findSettings } from 'server/features/settings/settingsRepository';
-
-interface PostLoginResponse {
-  message: string;
-  status: Status;
-  error?: Error;
-  code?: number;
-  username?: string;
-  userGroup?: string;
-  serial?: string;
-  groupCode?: string;
-  jwt?: string;
-}
+import { PostLoginResponse } from 'shared/typings/api/login';
+import { ServerError } from 'shared/typings/api/errors';
 
 export const login = async (
   username: string,
   password: string,
   jwt: string
-): Promise<PostLoginResponse> => {
+): Promise<PostLoginResponse | ServerError> => {
   // Restore session
   if (jwt) {
     const jwtData = decodeJWT(jwt);
@@ -31,6 +20,7 @@ export const login = async (
       return {
         message: 'Invalid jwt',
         status: 'error',
+        code: 0,
       };
     }
 
@@ -44,6 +34,7 @@ export const login = async (
       return {
         message: 'Invalid userGroup',
         status: 'error',
+        code: 0,
       };
     }
 
@@ -53,6 +44,7 @@ export const login = async (
       return {
         message: 'Invalid jwt',
         status: 'error',
+        code: 0,
       };
     }
 
@@ -65,7 +57,7 @@ export const login = async (
         return {
           message: 'Session restore error',
           status: 'error',
-          error,
+          code: 0,
         };
       }
 
@@ -86,7 +78,7 @@ export const login = async (
         return {
           message: 'User login error',
           status: 'error',
-          error,
+          code: 0,
         };
       }
 
@@ -118,7 +110,7 @@ export const login = async (
     return {
       message: 'User login error',
       status: 'error',
-      error,
+      code: 0,
     };
   }
 
@@ -139,7 +131,7 @@ export const login = async (
     return {
       message: 'User login error',
       status: 'error',
-      error,
+      code: 0,
     };
   }
 
@@ -185,7 +177,7 @@ export const login = async (
     return {
       message: 'User login error',
       status: 'error',
-      error,
+      code: 0,
     };
   }
 };

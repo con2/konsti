@@ -1,8 +1,8 @@
 import { AxiosResponse, AxiosError } from 'axios';
 import { api } from 'client/utils/api';
-import { PostPlayerAssignmentResponse } from 'client/typings/result.typings';
 import { ServerError } from 'shared/typings/api/errors';
 import { ASSIGNMENT_ENDPOINT } from 'shared/constants/apiEndpoints';
+import { PostPlayerAssignmentResponse } from 'shared/typings/api/assignment';
 
 export const postPlayerAssignment = async (
   signupTime: string

@@ -1,42 +1,33 @@
-import {
-  FavoritedGame,
-  SaveFavoriteRequest,
-} from 'server/typings/user.typings';
-import { Status } from 'shared/typings/api/games';
+import { SaveFavoriteRequest } from 'server/typings/user.typings';
 import { saveFavorite } from 'server/features/user/userRepository';
+import { ServerError } from 'shared/typings/api/errors';
+import { PostFavoriteResponse } from 'shared/typings/api/favorite';
 
-interface PostFavoriteResponse {
-  message: string;
-  status: Status;
-  error?: Error;
-  favoritedGames?: readonly FavoritedGame[];
-}
-
-// Add favorite data for user
 export const storeFavorite = async (
   favoriteData: SaveFavoriteRequest
-): Promise<PostFavoriteResponse> => {
-  let saveFavoriteResponse;
+): Promise<PostFavoriteResponse | ServerError> => {
+  let favoritedGames;
   try {
-    saveFavoriteResponse = await saveFavorite(favoriteData);
+    favoritedGames = await saveFavorite(favoriteData);
   } catch (error) {
     return {
       message: 'Update favorite failure',
       status: 'error',
-      error,
+      code: 0,
     };
   }
 
-  if (saveFavoriteResponse) {
+  if (favoritedGames) {
     return {
       message: 'Update favorite success',
       status: 'success',
-      favoritedGames: saveFavoriteResponse.favoritedGames,
+      favoritedGames,
     };
   }
 
   return {
     message: 'Update favorite failure',
     status: 'error',
+    code: 0,
   };
 };
