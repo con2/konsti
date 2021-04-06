@@ -1,16 +1,11 @@
 import { Feedback } from 'server/typings/feedback.typings';
-import { Status } from 'shared/typings/api/games';
 import { saveFeedback } from 'server/features/feedback/feedbackRepository';
-
-interface PostFeedbackResponse {
-  message: string;
-  status: Status;
-  error?: Error;
-}
+import { PostFeedbackResponse } from 'shared/typings/api/feedback';
+import { ServerError } from 'shared/typings/api/errors';
 
 export const storeFeedback = async (
   feedbackData: Feedback
-): Promise<PostFeedbackResponse> => {
+): Promise<PostFeedbackResponse | ServerError> => {
   try {
     await saveFeedback(feedbackData);
     return {
@@ -21,7 +16,7 @@ export const storeFeedback = async (
     return {
       message: 'Post feedback failure',
       status: 'error',
-      error,
+      code: 0,
     };
   }
 };

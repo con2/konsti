@@ -1,19 +1,11 @@
 import { logger } from 'server/utils/logger';
-import { Status } from 'shared/typings/api/games';
-import { Result } from 'server/typings/result.typings';
 import { findResult } from 'server/features/results/resultsRepository';
-
-interface GetResultsResponse {
-  message: string;
-  status: Status;
-  error?: Error;
-  results?: readonly Result[];
-  startTime?: string;
-}
+import { ServerError } from 'shared/typings/api/errors';
+import { GetResultsResponse } from 'shared/typings/api/results';
 
 export const fetchResults = async (
   startTime: string
-): Promise<GetResultsResponse> => {
+): Promise<GetResultsResponse | ServerError> => {
   let results;
   try {
     results = await findResult(startTime);
@@ -22,7 +14,7 @@ export const fetchResults = async (
     return {
       message: 'Getting results failed',
       status: 'error',
-      error,
+      code: 0,
     };
   }
 

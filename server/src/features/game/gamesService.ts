@@ -7,8 +7,11 @@ import { KompassiGame } from 'server/typings/game.typings';
 import { Game } from 'shared/typings/models/game';
 import { PostGamesResponse, GetGamesResponse } from 'shared/typings/api/games';
 import { findGames, saveGames } from 'server/features/game/gameRepository';
+import { ServerError } from 'shared/typings/api/errors';
 
-export const storeGames = async (): Promise<PostGamesResponse> => {
+export const storeGames = async (): Promise<
+  PostGamesResponse | ServerError
+> => {
   let kompassiGames = [] as readonly KompassiGame[];
   try {
     kompassiGames = await updateGames();
@@ -16,7 +19,7 @@ export const storeGames = async (): Promise<PostGamesResponse> => {
     return {
       message: 'Games db update failed',
       status: 'error',
-      games: [],
+      code: 0,
     };
   }
 
@@ -24,7 +27,7 @@ export const storeGames = async (): Promise<PostGamesResponse> => {
     return {
       message: 'Games db update failed: No games available',
       status: 'error',
-      games: [],
+      code: 0,
     };
   }
 
@@ -38,7 +41,7 @@ export const storeGames = async (): Promise<PostGamesResponse> => {
     return {
       message: 'Games db update failed: Saving games failed',
       status: 'error',
-      games: [],
+      code: 0,
     };
   }
 
@@ -46,7 +49,7 @@ export const storeGames = async (): Promise<PostGamesResponse> => {
     return {
       message: 'Games db update failed: No save response',
       status: 'error',
-      games: [],
+      code: 0,
     };
   }
 
@@ -58,7 +61,7 @@ export const storeGames = async (): Promise<PostGamesResponse> => {
       return {
         message: 'Game popularity update failed',
         status: 'error',
-        games: [],
+        code: 0,
       };
     }
   }
@@ -70,7 +73,7 @@ export const storeGames = async (): Promise<PostGamesResponse> => {
   };
 };
 
-export const fetchGames = async (): Promise<GetGamesResponse> => {
+export const fetchGames = async (): Promise<GetGamesResponse | ServerError> => {
   try {
     const games = await findGames();
     return {
@@ -82,7 +85,7 @@ export const fetchGames = async (): Promise<GetGamesResponse> => {
     return {
       message: `Downloading games failed: ${error.message}`,
       status: 'error',
-      games: [],
+      code: 0,
     };
   }
 };

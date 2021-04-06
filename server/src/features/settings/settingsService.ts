@@ -1,19 +1,11 @@
 import { findSettings } from 'server/features/settings/settingsRepository';
 import { logger } from 'server/utils/logger';
-import { Status } from 'shared/typings/api/games';
-import { Game } from 'shared/typings/models/game';
+import { ServerError } from 'shared/typings/api/errors';
+import { GetSettingsResponse } from 'shared/typings/api/settings';
 
-interface GetSettingsResponse {
-  message: string;
-  status: Status;
-  error?: Error;
-  hiddenGames?: readonly Game[];
-  signupTime?: string;
-  appOpen?: boolean;
-}
-
-// Get settings
-export const fetchSettings = async (): Promise<GetSettingsResponse> => {
+export const fetchSettings = async (): Promise<
+  GetSettingsResponse | ServerError
+> => {
   try {
     const response = await findSettings();
 
@@ -29,7 +21,7 @@ export const fetchSettings = async (): Promise<GetSettingsResponse> => {
     return {
       message: 'Getting settings failed',
       status: 'error',
-      error,
+      code: 0,
     };
   }
 };
