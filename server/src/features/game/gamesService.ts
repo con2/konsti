@@ -19,7 +19,7 @@ export const storeGames = async (): Promise<
     return {
       message: 'Games db update failed',
       status: 'error',
-      games: [],
+      code: 0,
     };
   }
 
@@ -27,7 +27,7 @@ export const storeGames = async (): Promise<
     return {
       message: 'Games db update failed: No games available',
       status: 'error',
-      games: [],
+      code: 0,
     };
   }
 
@@ -41,7 +41,7 @@ export const storeGames = async (): Promise<
     return {
       message: 'Games db update failed: Saving games failed',
       status: 'error',
-      games: [],
+      code: 0,
     };
   }
 
@@ -49,7 +49,7 @@ export const storeGames = async (): Promise<
     return {
       message: 'Games db update failed: No save response',
       status: 'error',
-      games: [],
+      code: 0,
     };
   }
 
@@ -61,7 +61,7 @@ export const storeGames = async (): Promise<
       return {
         message: 'Game popularity update failed',
         status: 'error',
-        games: [],
+        code: 0,
       };
     }
   }
@@ -85,7 +85,7 @@ export const fetchGames = async (): Promise<GetGamesResponse | ServerError> => {
     return {
       message: `Downloading games failed: ${error.message}`,
       status: 'error',
-      games: [],
+      code: 0,
     };
   }
 };
