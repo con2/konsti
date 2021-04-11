@@ -1,5 +1,6 @@
 import React, { FC, ReactElement, useRef, FormEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import { Game } from 'shared/typings/models/game';
 import { Signup } from 'client/typings/user.typings';
 import { RootState } from 'client/typings/redux.typings';
@@ -16,6 +17,7 @@ interface Props {
 export const SignupForm: FC<Props> = (props: Props): ReactElement => {
   const { game, startTime } = props;
 
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const selectedGames: readonly Signup[] = useSelector(
     (state: RootState) => state.myGames.signedGames
@@ -69,7 +71,7 @@ export const SignupForm: FC<Props> = (props: Props): ReactElement => {
 
   return (
     <form>
-      Peli on toiveissani sijalla{' '}
+      {t('signup.gamePriority')}{' '}
       <select ref={priorityRef}>
         <option disabled={isAlreadySelected(1)} value='1'>
           1
@@ -81,7 +83,7 @@ export const SignupForm: FC<Props> = (props: Props): ReactElement => {
           3
         </option>
       </select>
-      <button onClick={handleSignup}>Vahvista</button>
+      <button onClick={handleSignup}>{t('signup.confirm')}</button>
     </form>
   );
 };

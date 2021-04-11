@@ -157,19 +157,23 @@ export const GameEntry: FC<Props> = (props: Props): ReactElement => {
       {loggedIn && (
         <>
           {!isAlreadySigned(game) && signedGamesForTimeslot.length >= 3 && (
-            <p>Voit ilmoittautua vain kolmeen peliin per alkamisaika</p>
+            <p>{t('signup.cannotSignupMoreGames')}</p>
           )}
           {!isAlreadySigned(game) && signedGamesForTimeslot.length < 3 && (
             <button onClick={() => setSignupFormOpen(!signupFormOpen)}>
-              Ilmoittaudu
+              {t('signup.signup')}
             </button>
           )}
           {isAlreadySigned(game) && (
             <>
               <button onClick={async () => await removeSignup(game)}>
-                Peruuta
+                {t('button.cancel')}
               </button>
-              <p>Peli on ilmoittautumisissa sijalla {currentPriority}</p>
+              <p>
+                {t('signup.alreadySigned', {
+                  CURRENT_PRIORITY: currentPriority,
+                })}
+              </p>
             </>
           )}
           {signupFormOpen && !isAlreadySigned(game) && (
