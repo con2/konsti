@@ -54,7 +54,7 @@ export const SignupForm: FC<Props> = (props: Props): ReactElement => {
       await dispatch(submitSignup(signupData));
     } catch (error) {
       switch (error.code) {
-        case 40:
+        case 41:
           console.error('Signup ended');
           return;
         default:
