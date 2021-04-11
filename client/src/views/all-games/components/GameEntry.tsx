@@ -1,7 +1,6 @@
 import React, { FC, ReactElement, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useTranslation } from 'react-i18next';
 import { Game } from 'shared/typings/models/game';
 import { updateFavorite, UpdateFavoriteOpts } from 'client/utils/favorite';
@@ -103,8 +102,17 @@ export const GameEntry: FC<Props> = (props: Props): ReactElement => {
 
   return (
     <GameContainer key={game.gameId} className='games-list'>
+      <GameHeader>
+        <HeaderContainer>
+          <h3>{game.title}</h3>
+        </HeaderContainer>
+        <TagColumn>
+          <Tag>{t(`programType.${game.programType}`)}</Tag>
+          <Tag>{game.gameSystem}</Tag>
+        </TagColumn>
+      </GameHeader>
       {favorited && loggedIn && userGroup === 'user' && game && (
-        <IconContainer
+        <FavoriteButton
           onClick={async () =>
             await updateFavoriteHandler({
               game,
@@ -115,11 +123,11 @@ export const GameEntry: FC<Props> = (props: Props): ReactElement => {
             })
           }
         >
-          <FontAwesomeIcon icon='heart' />
-        </IconContainer>
+          Lisaa suosikkeihin
+        </FavoriteButton>
       )}
       {!favorited && loggedIn && userGroup === 'user' && game && (
-        <IconContainer
+        <FavoriteButton
           onClick={async () =>
             await updateFavoriteHandler({
               game,
@@ -130,14 +138,15 @@ export const GameEntry: FC<Props> = (props: Props): ReactElement => {
             })
           }
         >
-          <FontAwesomeIcon icon={['far', 'heart']} />
-        </IconContainer>
+          Poista suosikeista
+        </FavoriteButton>
       )}
-      <Link to={`/games/${game.gameId}`}>{game.title}</Link>{' '}
-      <GameListShortDescription>
-        {t(`programType.${game.programType}`)}:{' '}
-        {game.shortDescription ? game.shortDescription : game.gameSystem}
-      </GameListShortDescription>
+      <GameMoreInfoRow>
+        <GameListShortDescription>
+          {game.shortDescription}
+          <Link to={`/games/${game.gameId}`}>{t('gameInfo.readMore')}</Link>
+        </GameListShortDescription>
+      </GameMoreInfoRow>
       {loggedIn && (
         <>
           {!isAlreadySigned(game) && signedGamesForTimeslot.length >= 3 && (
@@ -169,7 +178,55 @@ export const GameEntry: FC<Props> = (props: Props): ReactElement => {
   );
 };
 
+const FavoriteButton = styled.button`
+  margin: 0;
+  align-self: flex-end;
+  width: 130px;
+`;
+
+const GameEntryRow = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+const GameHeader = styled(GameEntryRow)`
+  justify-content: space-between;
+  margin-bottom: 8px;
+`;
+
+const HeaderContainer = styled.div`
+  display: flex;
+
+  h3 {
+    margin: 0px;
+  }
+`;
+
+const TagColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const GameMoreInfoRow = styled(GameEntryRow)`
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const Tag = styled.span`
+  min-width: 120px;
+  height: 14px;
+  text-align: center;
+  border: 1px solid #d2deeb;
+  border-radius: 4px;
+  background: #c8d9ed;
+  padding: 4px;
+  margin-bottom: 4px;
+  font-size: 12px;
+`;
+
 const GameContainer = styled.div`
+  display: flex;
+  flex-direction: column;
   padding: 8px;
   margin: 4px 16px 24px 16px;
   border: 1px solid #ccc;
@@ -179,16 +236,7 @@ const GameContainer = styled.div`
   box-shadow: 1px 8px 15px 0px rgba(0, 0, 0, 0.42);
 `;
 
-const IconContainer = styled.span`
-  margin-left: 16px;
-  span {
-    position: relative;
-    top: 6px;
-  }
-`;
-
 const GameListShortDescription = styled.p`
   font-size: ${(props) => props.theme.fontSizeSmall};
   font-style: italic;
-  margin: 4px 0 8px 14px;
 `;
