@@ -102,5 +102,5 @@ export const Routes: FC<Props> = (props: Props): ReactElement => {
 };
 
 const ContentContainer = styled.div`
-  padding: 0 30px;
+  padding: 0;
 `;
