@@ -1,7 +1,9 @@
 import moment from 'moment';
+import { GroupMember } from 'client/typings/group.typings';
 import { Game } from 'shared/typings/models/game';
 import { Signup } from 'client/typings/user.typings';
 import { getTime } from 'client/utils/getTime';
+import { isGroupLeader } from 'client/views/group/GroupView';
 
 export const getUpcomingGames = (games: readonly Game[]): readonly Game[] => {
   const timeNow = getTime();
@@ -25,6 +27,42 @@ export const getUpcomingSignedGames = (
   });
 
   return upcomingGames;
+};
+
+const getGroupLeader = (
+  groupMembers: readonly GroupMember[]
+): GroupMember | null => {
+  const groupLeader = groupMembers.find(
+    (member) => member.serial === member.groupCode
+  );
+  if (!groupLeader) return null;
+  return groupLeader;
+};
+
+export const getSignedGames = (
+  signedGames: readonly Signup[],
+  groupCode: string,
+  serial: string,
+  groupMembers: readonly GroupMember[],
+  getAllGames: boolean = true
+): readonly Signup[] => {
+  if (isGroupLeader(groupCode, serial)) {
+    return !getAllGames ? getUpcomingSignedGames(signedGames) : signedGames;
+  }
+
+  if (!isGroupLeader(groupCode, serial)) {
+    const groupLeader = getGroupLeader(groupMembers);
+
+    if (!getAllGames) {
+      return getUpcomingSignedGames(
+        groupLeader ? groupLeader.signedGames : signedGames
+      );
+    } else {
+      return groupLeader ? groupLeader.signedGames : signedGames;
+    }
+  }
+
+  return signedGames;
 };
 
 export const getUpcomingEnteredGames = (

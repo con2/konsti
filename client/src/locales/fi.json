@@ -224,5 +224,12 @@
   "changingPasswordError": "Virhe salasanaa vaihtaessa",
   "changingPasswordSuccess": "Salasana vaihdettu onnistuneesti",
   "errorMessage": "Olemme tunnistaneet ongelman, että 'Omat pelit' sivulla näkyvät 'Ilmoittautumisen tulokset' voivat näkyä väärin ja tiedot on piilotettu. Oikeat tulokset voi katsoa 'Ilmoittautumistulokset' sivulta.",
-  "testTime": "Testiaika"
+  "testTime": "Testiaika",
+  "signup": {
+    "alreadySigned": "Peli on ilmoittautumisissa sijalla {{CURRENT_PRIORITY}}",
+    "signup": "Ilmoittaudu",
+    "cannotSignupMoreGames": "Voit ilmoittautua vain kolmeen peliin per alkamisaika",
+    "gamePriority": "Peli on toiveissani sijalla",
+    "confirm": "Vahvista"
+  }
 }
