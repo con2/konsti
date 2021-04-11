@@ -223,5 +223,12 @@
   "changingPasswordError": "Error changing password",
   "changingPasswordSuccess": "Password changed succesfully",
   "errorMessage": "We have recognised an issue that 'Signup results' under 'My Games' may be shown incorrectly and are now hidden. Please see 'All Signup Results' page for correct information.",
-  "testTime": "Test time"
+  "testTime": "Test time",
+  "signup": {
+    "alreadySigned": "This game is on priority {{CURRENT_PRIORITY}} on your signups",
+    "signup": "Signup",
+    "cannotSignupMoreGames": "You can signup up to three games for the timeslot",
+    "gamePriority": "Game priority for me is",
+    "confirm": "Confirm"
+  }
 }
