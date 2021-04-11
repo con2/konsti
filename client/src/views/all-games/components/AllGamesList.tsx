@@ -87,7 +87,6 @@ const GameListTitle = styled.h3`
   padding: 8px;
   background-color: #04080f;
   color: white;
-  /* stylelint-disable plugin/no-unsupported-browser-features */
   position: sticky;
   top: 0;
 `;
