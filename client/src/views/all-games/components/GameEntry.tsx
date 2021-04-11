@@ -171,9 +171,12 @@ export const GameEntry: FC<Props> = (props: Props): ReactElement => {
 
 const GameContainer = styled.div`
   padding: 8px;
-  margin: 4px;
+  margin: 4px 16px 24px 16px;
   border: 1px solid #ccc;
+  border-radius: 4px;
   background-color: #eee;
+  min-height: 160px;
+  box-shadow: 1px 8px 15px 0px rgba(0, 0, 0, 0.42);
 `;
 
 const IconContainer = styled.span`
