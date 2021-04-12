@@ -79,6 +79,7 @@ module.exports = {
     'import/order': ['error', { groups: ['builtin', 'external'] }],
 
     // eslint-plugin-jest
+    'jest/no-disabled-tests': 'error',
     'jest/expect-expect': 'off', // Does not work with Cypress
 
     // eslint-plugin-eslint-comments
