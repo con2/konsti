@@ -6,6 +6,8 @@ logger.info = jest.fn();
 logger.debug = jest.fn();
 
 // Throw if errors are logged
+/*
 logger.error = jest.fn().mockImplementation((message) => {
   throw new Error(message);
 });
+*/
