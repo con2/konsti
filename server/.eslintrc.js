@@ -62,6 +62,9 @@ module.exports = {
     // eslint-plugin-eslint-comments
     'eslint-comments/no-unused-disable': 'error',
 
+    // eslint-plugin-jest
+    'jest/no-disabled-tests': 'error',
+
     // @typescript-eslint
     '@typescript-eslint/ban-ts-comment': 'error',
     '@typescript-eslint/no-explicit-any': 'error',
