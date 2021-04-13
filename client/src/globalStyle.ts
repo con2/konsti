@@ -82,8 +82,8 @@ export const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
 
   button {
     background: #fff;
-    border: 1px solid #3f3f3f36;
-    border-bottom: 2px solid #3f3f3f;;
+    border: 1px solid #abd0a57a;
+    border-bottom: 2px solid #abd0a5;
     border-radius: 5px;
     color: ${(props) => props.theme.buttonText};
     cursor: pointer;
