@@ -34,7 +34,7 @@ const HeaderContainer = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: black;
+  background-color: #2f5aa1;
   color: white;
   width: 100%;
   height: 40px;
