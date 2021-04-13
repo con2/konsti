@@ -216,9 +216,8 @@ const Tag = styled.span`
   min-width: 120px;
   height: 14px;
   text-align: center;
-  border: 1px solid #d2deeb;
   border-radius: 4px;
-  background: #c8d9ed;
+  background: #abd0a5;
   padding: 4px;
   margin-bottom: 4px;
   font-size: 12px;
