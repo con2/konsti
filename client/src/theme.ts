@@ -7,9 +7,9 @@ export const theme = {
   borderActive: '#77933c',
   borderInactive: '#969696',
   buttonSelected: '#f2f2f2',
-  buttonText: '#3d3d3d',
+  buttonText: '#282828',
   inputPlaceholder: '#b3b3b3',
-  mainText: '#3d3d3d',
+  mainText: '#282828',
   warningButtonText: '#000',
   titleText: 'white',
 

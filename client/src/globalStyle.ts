@@ -24,7 +24,7 @@ export const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
   }
 
   #main {
-    background-color: #f5f5f5;
+    background-color: #F2F3F5;
   }
 
   @media (max-width: ${(props) => props.theme.breakpointPhone}) {
@@ -82,8 +82,8 @@ export const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
 
   button {
     background: #fff;
-    border: 1px solid #7aa7c666;
-    border-bottom: 2px solid #2f5aa1;
+    border: 1px solid #3f3f3f36;
+    border-bottom: 2px solid #3f3f3f;;
     border-radius: 5px;
     color: ${(props) => props.theme.buttonText};
     cursor: pointer;
