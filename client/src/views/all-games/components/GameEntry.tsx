@@ -229,11 +229,12 @@ const GameContainer = styled.div`
   flex-direction: column;
   padding: 8px;
   margin: 4px 16px 24px 16px;
-  border: 1px solid #ccc;
+  border: 1px solid #ddd:
   border-radius: 4px;
-  background-color: #eee;
+  background-color: #fafafa;
   min-height: 160px;
   box-shadow: 1px 8px 15px 0px rgba(0, 0, 0, 0.42);
+  color: #3d3d3d;
 `;
 
 const GameListShortDescription = styled.p`

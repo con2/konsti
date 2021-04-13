@@ -10,7 +10,7 @@ export const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
   }
 
   body {
-    background-color: #fafafa;
+    background-color: #f5f5f5;
     padding-bottom: 32px;
     margin: 0;
     width: 100%;
@@ -18,13 +18,13 @@ export const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
 
   @media (max-width: ${(props) => props.theme.breakpointPhone}) {
     body {
-      background-color: #fff;
+      background-color: #f5f5f5;
       padding-bottom: 0;
     }
   }
 
   #main {
-    background-color: #fff;
+    background-color: #f5f5f5;
   }
 
   @media (max-width: ${(props) => props.theme.breakpointPhone}) {
@@ -81,8 +81,9 @@ export const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
   }
 
   button {
-    background-color: #fff;
-    border: 1px solid ${(props) => props.theme.borderInactive};
+    background: #fff;
+    border: 1px solid #7aa7c666;
+    border-bottom: 2px solid #2f5aa1;
     border-radius: 5px;
     color: ${(props) => props.theme.buttonText};
     cursor: pointer;
