@@ -81,7 +81,7 @@ const SignupCount = styled.span`
 const GameListTitle = styled.h3`
   margin: 20px 0;
   padding: 8px;
-  background-color: #04080f;
+  background-color: #2f5aa1;
   color: white;
   position: sticky;
   top: 0;
