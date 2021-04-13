@@ -14,7 +14,7 @@ export const theme = {
   titleText: 'white',
 
   success: '#3c763d',
-  disabled: '#dad8d8',
+  disabled: '#abd0a545',
   error: '#c00000',
   informative: '#030303',
   warning: '#fc3d60',
