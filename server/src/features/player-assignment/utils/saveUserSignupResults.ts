@@ -2,7 +2,7 @@ import moment from 'moment';
 import { logger } from 'server/utils/logger';
 import { Result } from 'server/typings/result.typings';
 import { GameDoc } from 'server/typings/game.typings';
-import { EnteredGame } from 'server/typings/user.typings';
+import { EnteredGame, User } from 'server/typings/user.typings';
 import {
   findUsers,
   saveEnteredGames,
@@ -13,7 +13,7 @@ export const saveUserSignupResults = async (
   startingTime: string,
   results: readonly Result[]
 ): Promise<void> => {
-  let users;
+  let users: User[];
   try {
     users = await findUsers();
   } catch (error) {
