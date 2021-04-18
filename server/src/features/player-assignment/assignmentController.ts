@@ -23,7 +23,10 @@ export const storeAssignment = async (
 
   let assignResults;
   try {
-    assignResults = await runAssignment(startingTime);
+    assignResults = await runAssignment(
+      startingTime,
+      config.assignmentStrategy
+    );
   } catch (error) {
     logger.error(`Player assign error: ${error}`);
     return {

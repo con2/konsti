@@ -1,5 +1,4 @@
 import { logger } from 'server/utils/logger';
-import { config } from 'server/config';
 import { runAssignmentStrategy } from 'server/features/player-assignment/utils/runAssignmentStrategy';
 import { removeInvalidSignupsFromUsers } from 'server/features/player-assignment/utils/removeInvalidSignupsFromUsers';
 import { PlayerAssignmentResult } from 'server/typings/result.typings';
@@ -11,7 +10,7 @@ import { findGames } from 'server/features/game/gameRepository';
 
 export const runAssignment = async (
   startingTime: string,
-  assignmentStrategy: AssignmentStrategy = config.assignmentStrategy
+  assignmentStrategy: AssignmentStrategy
 ): Promise<PlayerAssignmentResult> => {
   try {
     await removeInvalidSignupsFromUsers();
