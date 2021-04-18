@@ -1,4 +1,3 @@
-import faker from 'faker';
 import {
   createIndividualUsers,
   createAdminUser,
@@ -17,6 +16,24 @@ export const generateTestData = async (
   testUsersCount: number,
   signupTimes: number
 ): Promise<void> => {
+  await generateTestUsers(
+    newUsersCount,
+    groupSize,
+    numberOfGroups,
+    testUsersCount
+  );
+
+  await createGames(newGamesCount, signupTimes);
+
+  await createSignups();
+};
+
+export const generateTestUsers = async (
+  newUsersCount: number,
+  groupSize: number,
+  numberOfGroups: number,
+  testUsersCount: number
+): Promise<void> => {
   await createAdminUser();
   await createHelpUser();
 
@@ -24,11 +41,6 @@ export const generateTestData = async (
   if (newUsersCount) await createIndividualUsers(newUsersCount);
 
   for (let i = 0; i < numberOfGroups; i++) {
-    const randomGroupCode = faker.datatype.number().toString();
-    await createUsersInGroup(groupSize, randomGroupCode);
+    await createUsersInGroup(groupSize);
   }
-
-  await createGames(newGamesCount, signupTimes);
-
-  await createSignups();
 };

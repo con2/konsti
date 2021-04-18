@@ -7,6 +7,8 @@ import { KompassiGame } from 'server/typings/game.typings';
 import { Game } from 'shared/typings/models/game';
 import { saveGames } from 'server/features/game/gameRepository';
 
+const GAME_ID_MAX = 10000000;
+
 export const createGames = async (
   gameCount: number,
   signupTimes: number
@@ -53,7 +55,7 @@ export const createGames = async (
         intended_for_experienced_participants: true,
         min_players: minAttendance,
         max_players: maxAttendance,
-        identifier: faker.datatype.number().toString(),
+        identifier: faker.datatype.number(GAME_ID_MAX).toString(),
         tags: [
           'in-english',
           'sopii-lapsille',
