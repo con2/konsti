@@ -32,14 +32,16 @@ export const createSignups = async (): Promise<void> => {
 
   const groupedUsers = _.groupBy(users, 'groupCode');
 
-  for (const [key, value] of Object.entries(groupedUsers)) {
-    const array = [...value];
-    if (key === '0') {
+  for (const [groupCode, groupMembers] of Object.entries(groupedUsers)) {
+    // Individual users
+    if (groupCode === '0') {
       logger.info('SIGNUP INDIVIDUAL USERS');
-      await signupMultiple(games, array);
-    } else {
-      logger.info(`SIGNUP GROUP ${key}`);
-      await signupGroup(games, array);
+      await signupMultiple(games, groupMembers);
+    }
+    // Users in groups
+    else {
+      logger.info(`SIGNUP GROUP ${groupCode}`);
+      await signupGroup(games, groupMembers);
     }
   }
 
@@ -118,21 +120,14 @@ const signupGroup = async (
   games: readonly Game[],
   users: readonly User[]
 ): Promise<void> => {
-  // Generate random signup data for the first user
-  const firstUser = _.first(users);
-  if (!firstUser) throw new Error('Error getting first user of group');
-  const signedGames = getRandomSignup(games);
+  // Generate random signup data for the group leader
+  const leader = users.find((user) => user.serial === user.groupCode);
+  if (!leader) throw new Error('Error getting group leader');
 
-  // Assign same signup data for group members
-  const promises: Array<Promise<User>> = [];
-  for (let i = 0; i < users.length; i++) {
-    const signupData = {
-      username: users[i].username,
-      signedGames: i === 0 ? signedGames : [],
-    };
+  const signupData = {
+    username: leader.username,
+    signedGames: getRandomSignup(games),
+  };
 
-    promises.push(saveSignup(signupData));
-  }
-
-  await Promise.all(promises);
+  await saveSignup(signupData);
 };
