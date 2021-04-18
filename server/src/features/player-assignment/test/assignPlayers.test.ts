@@ -86,7 +86,10 @@ describe('Assignment with valid data', () => {
 
     // SECOND RUN
 
-    const assignResults2 = await runAssignment(startingTime);
+    const assignResults2 = await runAssignment(
+      startingTime,
+      assignmentStrategy
+    );
 
     expect(assignResults2.status).toEqual('success');
 
@@ -148,7 +151,10 @@ describe('Assignment with valid data', () => {
 
     // SECOND RUN
 
-    const assignResults2 = await runAssignment(startingTime);
+    const assignResults2 = await runAssignment(
+      startingTime,
+      assignmentStrategy
+    );
 
     expect(assignResults2.status).toEqual('success');
 
@@ -209,7 +215,10 @@ describe('Assignment with valid data', () => {
 
     // SECOND RUN
 
-    const assignResults2 = await runAssignment(startingTime);
+    const assignResults2 = await runAssignment(
+      startingTime,
+      assignmentStrategy
+    );
 
     expect(assignResults2.status).toEqual('success');
 
@@ -271,7 +280,10 @@ describe('Assignment with valid data', () => {
 
     // SECOND RUN
 
-    const assignResults2 = await runAssignment(startingTime);
+    const assignResults2 = await runAssignment(
+      startingTime,
+      assignmentStrategy
+    );
 
     expect(assignResults2.status).toEqual('success');
 
@@ -333,7 +345,10 @@ describe('Assignment with valid data', () => {
 
     // SECOND RUN
 
-    const assignResults2 = await runAssignment(startingTime);
+    const assignResults2 = await runAssignment(
+      startingTime,
+      assignmentStrategy
+    );
 
     expect(assignResults2.status).toEqual('success');
 
@@ -393,7 +408,10 @@ describe('Assignment with valid data', () => {
       .add(4, 'hours')
       .format();
 
-    const assignResults2 = await runAssignment(startingTime2);
+    const assignResults2 = await runAssignment(
+      startingTime2,
+      assignmentStrategy
+    );
 
     expect(assignResults2.status).toEqual('success');
 
