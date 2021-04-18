@@ -1,14 +1,6 @@
 import 'array-flat-polyfill';
 import commander from 'commander';
-import faker from 'faker';
 import { logger } from 'server/utils/logger';
-import {
-  createIndividualUsers,
-  createAdminUser,
-  createTestUsers,
-  createUsersInGroup,
-  createHelpUser,
-} from 'server/test/test-data-generation/generators/createUsers';
 import { createGames } from 'server/test/test-data-generation/generators/createGames';
 import { createSignups } from 'server/test/test-data-generation/generators/createSignups';
 import { removeUsers } from 'server/features/user/userRepository';
@@ -16,6 +8,7 @@ import { removeResults } from 'server/features/results/resultsRepository';
 import { removeGames } from 'server/features/game/gameRepository';
 import { removeSettings } from 'server/features/settings/settingsRepository';
 import { db } from 'server/db/mongodb';
+import { generateTestUsers } from 'server/test/test-data-generation/generators/generateTestData';
 
 const runGenerators = async (): Promise<void> => {
   if (process.env.NODE_ENV === 'production') {
@@ -96,16 +89,12 @@ const runGenerators = async (): Promise<void> => {
       logger.error(error);
     }
 
-    await createAdminUser();
-    await createHelpUser();
-
-    if (testUsersCount) await createTestUsers(testUsersCount);
-    if (newUsersCount) await createIndividualUsers(newUsersCount);
-
-    for (let i = 0; i < numberOfGroups; i++) {
-      const randomGroupCode = faker.datatype.number().toString();
-      await createUsersInGroup(groupSize, randomGroupCode);
-    }
+    await generateTestUsers(
+      newUsersCount,
+      groupSize,
+      numberOfGroups,
+      testUsersCount
+    );
   }
 
   if (options.games) {

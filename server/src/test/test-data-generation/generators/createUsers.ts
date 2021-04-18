@@ -3,6 +3,9 @@ import { logger } from 'server/utils/logger';
 import { hashPassword } from 'server/utils/bcrypt';
 import { UserGroup } from 'server/typings/user.typings';
 import { saveUser } from 'server/features/user/userRepository';
+
+const SERIAL_MAX = 10000000;
+
 export const createAdminUser = async (): Promise<void> => {
   logger.info(`Generate data for admin user "admin:test"`);
 
@@ -87,7 +90,9 @@ const createUser = async ({
     passwordHash: 'testPass', // Skip hashing to save time
     userGroup: UserGroup.user,
     serial:
-      groupMemberCount === 0 ? groupCode : faker.datatype.number().toString(),
+      groupMemberCount === 0
+        ? groupCode
+        : faker.datatype.number(SERIAL_MAX).toString(),
     groupCode,
     favoritedGames: [],
     signedGames: [],
@@ -101,10 +106,9 @@ const createUser = async ({
   }
 };
 
-export const createUsersInGroup = async (
-  count: number,
-  groupCode: string
-): Promise<void> => {
+export const createUsersInGroup = async (count: number): Promise<void> => {
+  const groupCode = faker.datatype.number(SERIAL_MAX).toString();
+
   logger.info(`Generate data for ${count} users in group ${groupCode}`);
 
   const promises: Array<Promise<void>> = [];
