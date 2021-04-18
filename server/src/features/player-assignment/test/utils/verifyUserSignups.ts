@@ -16,14 +16,10 @@ export const verifyUserSignups = async (): Promise<void> => {
 
   users.map((user) => {
     // Group member enteredGames match with group leader signedGames
-    let groupLeader: User | undefined;
-    if (user.groupCode !== '0' && user.groupCode !== user.serial) {
-      groupLeader = users.find((leader) => leader.serial === user.groupCode);
-    }
+    const groupLeader = getGroupLeader(users, user);
 
     user.enteredGames.map((enteredGame) => {
-      const userToMatch = groupLeader ?? user;
-      const gameFound = userToMatch.signedGames.find(
+      const gameFound = !!groupLeader.signedGames.find(
         (signedGame) =>
           signedGame.gameDetails.gameId === enteredGame.gameDetails.gameId &&
           moment(signedGame.gameDetails.startTime).isSame(
@@ -44,4 +40,20 @@ export const verifyUserSignups = async (): Promise<void> => {
       }
     });
   });
+};
+
+const getGroupLeader = (users: User[], user: User): User => {
+  if (user.groupCode !== '0' && user.groupCode !== user.serial) {
+    const groupLeader = users.find(
+      (leader) => leader.serial === user.groupCode
+    );
+
+    if (groupLeader) {
+      return groupLeader;
+    } else {
+      logger.error(`Group leader not found for user ${user.username}`);
+    }
+  }
+
+  return user;
 };
