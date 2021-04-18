@@ -31,36 +31,50 @@ export const saveUserSignupResults = async (
   try {
     await Promise.all(
       users.map(async (user) => {
-        const existingEnteredGames = user.enteredGames.filter(
-          (enteredGame) =>
-            moment(enteredGame.time).format() !== moment(startingTime).format()
+        const enteredGames = getCurrentEnteredGames(
+          games,
+          user,
+          results,
+          startingTime
         );
-
-        const result = results.find(
-          (result) => result.username === user.username
-        );
-
-        const gameDocInDb = games.find(
-          (game) => game.gameId === result?.enteredGame.gameDetails.gameId
-        );
-
-        let enteredGames: EnteredGame[] = existingEnteredGames;
-
-        if (gameDocInDb && result) {
-          enteredGames = [
-            ...existingEnteredGames,
-            {
-              gameDetails: gameDocInDb?._id,
-              priority: result?.enteredGame.priority,
-              time: result?.enteredGame.time,
-            },
-          ];
-        }
-
         await saveEnteredGames(enteredGames, user.username);
       })
     );
   } catch (error) {
     throw new Error(`Error saving signup results for users: ${error}`);
   }
+};
+
+const getCurrentEnteredGames = (
+  games: GameDoc[],
+  user: User,
+  results: readonly Result[],
+  startingTime: string
+): EnteredGame[] => {
+  const existingEnteredGames = user.enteredGames.filter(
+    (enteredGame) =>
+      moment(enteredGame.time).format() !== moment(startingTime).format()
+  );
+
+  const result = results.find((result) => result.username === user.username);
+
+  const gameDocInDb = games.find(
+    (game) => game.gameId === result?.enteredGame.gameDetails.gameId
+  );
+
+  let enteredGames = existingEnteredGames;
+
+  // Matching enteredGame exists -> override
+  if (gameDocInDb && result) {
+    enteredGames = [
+      ...existingEnteredGames,
+      {
+        gameDetails: gameDocInDb?._id,
+        priority: result?.enteredGame.priority,
+        time: result?.enteredGame.time,
+      },
+    ];
+  }
+
+  return enteredGames;
 };
