@@ -33,10 +33,13 @@ export const createSignups = async (): Promise<void> => {
   const groupedUsers = _.groupBy(users, 'groupCode');
 
   for (const [groupCode, groupMembers] of Object.entries(groupedUsers)) {
+    // Individual users
     if (groupCode === '0') {
       logger.info('SIGNUP INDIVIDUAL USERS');
       await signupMultiple(games, groupMembers);
-    } else {
+    }
+    // Users in groups
+    else {
       logger.info(`SIGNUP GROUP ${groupCode}`);
       await signupGroup(games, groupMembers);
     }
