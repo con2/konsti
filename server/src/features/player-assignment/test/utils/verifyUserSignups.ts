@@ -43,6 +43,7 @@ export const verifyUserSignups = async (): Promise<void> => {
 };
 
 const getGroupLeader = (users: User[], user: User): User => {
+  // User is group member, not group leader
   if (user.groupCode !== '0' && user.groupCode !== user.serial) {
     const groupLeader = users.find(
       (leader) => leader.serial === user.groupCode
@@ -55,5 +56,6 @@ const getGroupLeader = (users: User[], user: User): User => {
     }
   }
 
+  // User is group leader
   return user;
 };
