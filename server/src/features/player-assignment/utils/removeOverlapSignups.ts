@@ -1,7 +1,7 @@
 import moment from 'moment';
 import { logger } from 'server/utils/logger';
 import { Signup, Result } from 'server/typings/result.typings';
-import { SignedGame, User } from 'server/typings/user.typings';
+import { User } from 'server/typings/user.typings';
 import { findUsers, saveSignup } from 'server/features/user/userRepository';
 
 export const removeOverlapSignups = async (
@@ -10,57 +10,42 @@ export const removeOverlapSignups = async (
   logger.debug('Find overlapping signups');
   const signupData: Signup[] = [];
 
-  let players: User[];
+  let users: User[];
   try {
-    players = await findUsers();
+    users = await findUsers();
   } catch (error) {
     logger.error(error);
     throw new Error(error);
   }
 
-  results.forEach((result) => {
+  results.map((result) => {
     const enteredGame = result.enteredGame.gameDetails;
+    if (!enteredGame) {
+      logger.error('removeOverlapSignups: Error finding entered game');
+      return;
+    }
 
-    if (!enteredGame) return new Error('Error finding entered game');
+    const signedUser = users.find((user) => user.username === result.username);
+    if (!signedUser) {
+      logger.error('removeOverlapSignups: Error finding signed user');
+      return;
+    }
 
-    const signedPlayer = players.find(
-      (player) => player.username === result.username
-    );
+    const newSignedGames = signedUser?.signedGames.filter((signedGame) => {
+      // If signed game takes place during the length of entered game, cancel it
+      return !moment(signedGame.gameDetails.startTime).isBetween(
+        moment(enteredGame.startTime).add(1, 'minutes'),
+        moment(enteredGame.endTime)
+      );
+    });
 
-    if (!signedPlayer) return new Error('Error finding signed player');
-
-    const newSignedGames = [] as SignedGame[];
-
-    if (signedPlayer?.signedGames) {
-      signedPlayer.signedGames.forEach((signedGame) => {
-        // If signed game takes place during the length of entered game, cancel it
-        if (
-          moment(signedGame.gameDetails.startTime).isBetween(
-            moment(enteredGame.startTime).add(1, 'minutes'),
-            moment(enteredGame.endTime)
-          )
-        ) {
-          // Remove this signup
-          logger.debug(
-            `Signed game "${signedGame.gameDetails.title}" starts at ${moment(
-              signedGame.gameDetails.startTime
-            ).format()}`
-          );
-
-          logger.debug(
-            `Entered game "${enteredGame.title}" ends at ${moment(
-              enteredGame.endTime
-            ).format()}`
-          );
-          logger.debug(`=> Remove signup "${signedGame.gameDetails.title}"`);
-        } else {
-          newSignedGames.push(signedGame);
-        }
-      });
+    if (!newSignedGames) {
+      logger.error('removeOverlapSignups: Error finding signed games');
+      return;
     }
 
     signupData.push({
-      username: signedPlayer.username,
+      username: signedUser.username,
       signedGames: newSignedGames,
     });
   });
