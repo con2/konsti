@@ -69,7 +69,7 @@ export const autoAssignPlayers = async (): Promise<void> => {
 
     let assignResults;
     try {
-      assignResults = await runAssignment(startTime);
+      assignResults = await runAssignment(startTime, config.assignmentStrategy);
     } catch (error) {
       logger.error(error);
     }
