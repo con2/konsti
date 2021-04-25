@@ -1,8 +1,10 @@
 import { Request, Response } from 'express';
-import { storeHidden } from 'server/features/settings/hiddenService';
-import { fetchSettings } from 'server/features/settings/settingsService';
-import { storeSignupTime } from 'server/features/settings/signuptimeService';
-import { toggleAppOpen } from 'server/features/settings/toggleAppOpenService';
+import {
+  fetchSettings,
+  toggleAppOpen,
+  storeSignupTime,
+  storeHidden,
+} from 'server/features/settings/settingsService';
 import { UserGroup } from 'server/typings/user.typings';
 import { validateAuthHeader } from 'server/utils/authHeader';
 import { logger } from 'server/utils/logger';
