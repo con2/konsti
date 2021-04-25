@@ -5,7 +5,6 @@ import { getGroups } from 'server/features/player-assignment/utils/getGroups';
 import { getList } from 'server/features/player-assignment/utils/getList';
 import { getRandomAssignEvents } from 'server/features/player-assignment/random/utils/getRandomAssignEvents';
 import { formatResults } from 'server/features/player-assignment/utils/formatResults';
-import { UserArray } from 'server/typings/user.typings';
 import { Game } from 'shared/typings/models/game';
 import { AssignmentStrategyResult } from 'server/typings/result.typings';
 import {
@@ -13,10 +12,11 @@ import {
   RandomAssignUpdateLInput,
   PadgRandomAssignResults,
 } from 'server/typings/padgRandomAssign.typings';
+import { User } from 'shared/typings/models/user';
 
 export const runRandomAssignment = (
   signedGames: readonly Game[],
-  playerGroups: readonly UserArray[],
+  playerGroups: readonly User[][],
   startingTime: string
 ): AssignmentStrategyResult => {
   const groups = getGroups(playerGroups, startingTime);

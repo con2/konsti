@@ -7,7 +7,7 @@ import { assignGroups } from 'server/features/player-assignment/group/utils/assi
 import { getPlayerGroups } from 'server/features/player-assignment/utils/getPlayerGroups';
 import { getGroupMembers } from 'server/features/player-assignment/utils/getGroupMembers';
 import { getHappiness } from 'server/features/player-assignment/group/utils/getHappiness';
-import { User } from 'server/typings/user.typings';
+import { User } from 'shared/typings/models/user';
 import { Game } from 'shared/typings/models/game';
 import { PlayerAssignmentResult } from 'server/typings/result.typings';
 

@@ -1,7 +1,7 @@
 import { config } from 'server/config';
-import { UserArray } from 'server/typings/user.typings';
+import { User } from 'shared/typings/models/user';
 
-export const getAssignmentBonus = (playerGroup: UserArray): number => {
+export const getAssignmentBonus = (playerGroup: User[]): number => {
   const groupMembersWithEnteredGames = playerGroup.reduce((acc, curr) => {
     if (curr.enteredGames.length > 0) {
       return acc + 1;

@@ -1,4 +1,3 @@
-import moment from 'moment';
 import { logger } from 'server/utils/logger';
 import { hashPassword, validateLogin } from 'server/utils/bcrypt';
 import { findSerial } from 'server/features/serial/serialRepository';
@@ -24,18 +23,16 @@ import { Game } from 'shared/typings/models/game';
 import {
   GetGroupReturnValue,
   SaveFavoriteRequest,
-  SignedGame,
-  User,
 } from 'server/typings/user.typings';
 import { PostFavoriteResponse } from 'shared/typings/api/favorite';
 import { GetGroupResponse, PostGroupResponse } from 'shared/typings/api/groups';
 import { PostLoginResponse } from 'shared/typings/api/login';
 import { decodeJWT, getJWT, verifyJWT } from 'server/utils/jwt';
 import { findSettings } from 'server/features/settings/settingsRepository';
-import { UserGroup } from 'shared/typings/models/user';
+import { SignedGame, User, UserGroup } from 'shared/typings/models/user';
 import { PostSignupResponse } from 'shared/typings/api/signup';
-import { config } from 'server/config';
 import { Signup } from 'server/typings/result.typings';
+import { isValidSignupTime } from 'server/features/user/userUtils';
 
 export const storeUser = async (
   username: string,
@@ -745,13 +742,8 @@ export const storeSignup = async (
     };
   }
 
-  const timeNow = moment();
-  if (config.enableSignupTimeCheck && moment(signupTime).isBefore(timeNow)) {
-    const error = `Signup time ${moment(
-      signupTime
-    ).format()} does not match: too late`;
-
-    logger.debug(error);
+  const validSignupTime = isValidSignupTime(signupTime);
+  if (!validSignupTime) {
     return {
       code: 41,
       message: 'Signup failure',

@@ -4,12 +4,12 @@ import { getList } from 'server/features/player-assignment/utils/getList';
 import { getEvents } from 'server/features/player-assignment/utils/getEvents';
 import { formatResults } from 'server/features/player-assignment/utils/formatResults';
 import { AssignmentStrategyResult } from 'server/typings/result.typings';
-import { UserArray } from 'server/typings/user.typings';
 import { Game } from 'shared/typings/models/game';
+import { User } from 'shared/typings/models/user';
 
 export const runPadgAssignment = (
   signedGames: readonly Game[],
-  playerGroups: readonly UserArray[],
+  playerGroups: readonly User[][],
   startingTime: string
 ): AssignmentStrategyResult => {
   interface Input {

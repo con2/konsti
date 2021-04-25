@@ -1,10 +1,10 @@
 import moment from 'moment';
 import _ from 'lodash';
-import { UserArray } from 'server/typings/user.typings';
 import { Group } from 'server/typings/padgRandomAssign.typings';
+import { User } from 'shared/typings/models/user';
 
 export const getGroups = (
-  playerGroups: readonly UserArray[],
+  playerGroups: readonly User[][],
   startingTime: string
 ): Group[] => {
   return playerGroups.map((playerGroup) => {

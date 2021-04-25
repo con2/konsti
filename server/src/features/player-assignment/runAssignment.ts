@@ -2,7 +2,7 @@ import { logger } from 'server/utils/logger';
 import { runAssignmentStrategy } from 'server/features/player-assignment/utils/runAssignmentStrategy';
 import { removeInvalidSignupsFromUsers } from 'server/features/player-assignment/utils/removeInvalidSignupsFromUsers';
 import { PlayerAssignmentResult } from 'server/typings/result.typings';
-import { User } from 'server/typings/user.typings';
+import { User } from 'shared/typings/models/user';
 import { Game } from 'shared/typings/models/game';
 import { AssignmentStrategy } from 'server/typings/config.typings';
 import { findUsers } from 'server/features/user/userRepository';

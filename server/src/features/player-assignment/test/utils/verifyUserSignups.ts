@@ -1,6 +1,6 @@
 import moment from 'moment';
 import { logger } from 'server/utils/logger';
-import { User } from 'server/typings/user.typings';
+import { User } from 'shared/typings/models/user';
 import { findUsers } from 'server/features/user/userRepository';
 
 export const verifyUserSignups = async (): Promise<void> => {

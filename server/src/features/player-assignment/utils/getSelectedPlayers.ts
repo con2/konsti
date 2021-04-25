@@ -1,5 +1,5 @@
 import { logger } from 'server/utils/logger';
-import { User } from 'server/typings/user.typings';
+import { User } from 'shared/typings/models/user';
 import { Game } from 'shared/typings/models/game';
 
 export const getSelectedPlayers = (
