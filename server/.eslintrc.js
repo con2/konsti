@@ -1,40 +1,9 @@
 module.exports = {
-  parser: '@typescript-eslint/parser',
-
-  plugins: [
-    'eslint-plugin-jest',
-    'eslint-plugin-node',
-    'eslint-plugin-prettier',
-    'eslint-plugin-promise',
-    'eslint-plugin-import',
-    '@typescript-eslint',
-    // 'eslint-plugin-security',
-    // 'eslint-plugin-unicorn',
-  ],
-
-  extends: [
-    'eslint-config-standard-with-typescript',
-    'eslint-config-prettier',
-    'plugin:eslint-plugin-eslint-comments/recommended',
-    'plugin:eslint-plugin-jest/recommended',
-    'plugin:eslint-plugin-node/recommended',
-    'plugin:eslint-plugin-promise/recommended',
-    'plugin:eslint-plugin-import/errors',
-    'plugin:eslint-plugin-import/typescript',
-    // 'plugin:@typescript-eslint/recommended',
-    // 'plugin:@typescript-eslint/recommended-requiring-type-checking',
-    // 'plugin:eslint-plugin-security/recommended',
-    // 'plugin:eslint-plugin-unicorn/recommended',
-  ],
-
   ignorePatterns: ['node_modules', 'lib', 'coverage', 'front'],
 
-  parserOptions: {
-    sourceType: 'module',
-    impliedStrict: true,
-    tsconfigRootDir: __dirname,
-    project: ['./tsconfig.json'],
-  },
+  plugins: ['eslint-plugin-node'],
+
+  extends: ['plugin:eslint-plugin-node/recommended'],
 
   env: {
     node: true,
@@ -42,37 +11,14 @@ module.exports = {
   },
 
   rules: {
-    // eslint
-    'no-param-reassign': 'error',
-    'no-console': 'error',
-    'no-restricted-imports': ['error', { patterns: ['../*'] }],
-
-    // eslint-plugin-prettier
-    'prettier/prettier': 'error',
-
     // eslint-plugin-node
     'node/no-unsupported-features/es-syntax': 'off', // Import and export declarations are not supported yet
     'node/no-missing-import': 'off', // Not working with babel-plugin-module-resolver and handled by eslint-plugin-import
     'node/no-extraneous-import': 'off', // Doesn't work with Yarn workspace dependencies
 
-    // eslint-plugin-import
-    'import/no-unused-modules': ['error', { unusedExports: true }],
-    'import/order': ['error', { groups: ['builtin', 'external'] }],
-
-    // eslint-plugin-eslint-comments
-    'eslint-comments/no-unused-disable': 'error',
-
-    // eslint-plugin-jest
-    'jest/no-disabled-tests': 'error',
-
     // @typescript-eslint
-    '@typescript-eslint/ban-ts-comment': 'error',
-    '@typescript-eslint/no-explicit-any': 'error',
     '@typescript-eslint/strict-boolean-expressions': 'off', // Forces unwanted code style
     '@typescript-eslint/restrict-template-expressions': 'off', // Requires typing catch(e) every time
     '@typescript-eslint/restrict-plus-operands': 'off', // Doesn't support dynamic object occurance counting
-
-    // TODO: Enable these
-    'array-callback-return': 'off',
   },
 };
