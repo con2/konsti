@@ -29,6 +29,7 @@ export const App: FC = (): ReactElement => {
     fetchData();
 
     const startUpdateTimer = (): void => {
+      /* eslint-disable-next-line @typescript-eslint/no-misused-promises */
       setInterval(async () => await fetchData(), dataUpdateInterval * 1000);
     };
     startUpdateTimer();
