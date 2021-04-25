@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import { logger } from 'server/utils/logger';
-import { User } from 'server/typings/user.typings';
+import { User } from 'shared/typings/models/user';
 import { Game } from 'shared/typings/models/game';
 import { saveGamePopularity } from 'server/features/game/gameRepository';
 

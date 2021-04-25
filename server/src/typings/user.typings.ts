@@ -1,35 +1,14 @@
 import mongoose from 'mongoose';
 import { Game } from 'shared/typings/models/game';
-import { UserGroup } from 'shared/typings/models/user';
+import {
+  EnteredGame,
+  FavoritedGame,
+  SignedGame,
+  User,
+  UserGroup,
+} from 'shared/typings/models/user';
+
 export interface UserDoc extends User, mongoose.Document {}
-
-export interface FavoritedGame {
-  gameId: string;
-}
-
-export interface SignedGame {
-  gameDetails: Game;
-  priority: number;
-  time: string;
-}
-
-export interface EnteredGame {
-  gameDetails: Game;
-  priority: number;
-  time: string;
-}
-
-export interface User {
-  username: string;
-  password: string;
-  userGroup: UserGroup;
-  serial: string;
-  groupCode: string;
-  favoritedGames: readonly FavoritedGame[];
-  signedGames: readonly SignedGame[];
-  enteredGames: readonly EnteredGame[];
-  createdAt: string | null;
-}
 
 export type UserArray = readonly User[];
 

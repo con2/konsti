@@ -2,7 +2,7 @@ import moment from 'moment';
 import _ from 'lodash';
 import { logger } from 'server/utils/logger';
 import { padgAssignPlayers } from 'server/features/player-assignment/padg/padgAssignPlayers';
-import { User } from 'server/typings/user.typings';
+import { User } from 'shared/typings/models/user';
 import { Game } from 'shared/typings/models/game';
 import { Result } from 'server/typings/result.typings';
 import { saveGamePopularity } from 'server/features/game/gameRepository';

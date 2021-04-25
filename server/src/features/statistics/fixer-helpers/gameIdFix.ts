@@ -5,7 +5,7 @@ import {
   EnteredGame,
   FavoritedGame,
   User,
-} from 'server/typings/user.typings';
+} from 'shared/typings/models/user';
 import { GameDoc } from 'server/typings/game.typings';
 import { ResultsCollectionEntry } from 'server/typings/result.typings';
 import { writeJson } from 'server/features/statistics/statsUtil';

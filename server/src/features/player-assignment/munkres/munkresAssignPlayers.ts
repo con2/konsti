@@ -11,7 +11,7 @@ import { getPriorities } from 'server/features/player-assignment/munkres/utils/g
 import { getPlayersWithTooHighPriority } from 'server/features/player-assignment/munkres/utils/getPlayersWithTooHighPriority';
 import { getRemovedPlayer } from 'server/features/player-assignment/munkres/utils/getRemovedPlayer';
 import { buildSignupResults } from 'server/features/player-assignment/munkres/utils/buildSignupResults';
-import { User } from 'server/typings/user.typings';
+import { User } from 'shared/typings/models/user';
 import { Game } from 'shared/typings/models/game';
 import { PlayerAssignmentResult } from 'server/typings/result.typings';
 
