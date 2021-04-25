@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { Record, String } from 'runtypes';
 import { storeAssignment } from 'server/features/player-assignment/assignmentController';
 import { fetchResults } from 'server/features/results/resultsService';
-import { UserGroup } from 'server/typings/user.typings';
+import { UserGroup } from 'shared/typings/models/user';
 import { validateAuthHeader } from 'server/utils/authHeader';
 import { logger } from 'server/utils/logger';
 import { RESULTS_ENDPOINT } from 'shared/constants/apiEndpoints';

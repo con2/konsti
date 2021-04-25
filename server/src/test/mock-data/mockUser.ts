@@ -1,6 +1,7 @@
 import { mockGame, mockGame2 } from 'server/test/mock-data/mockGame';
-import { NewUserData, UserGroup } from 'server/typings/user.typings';
+import { NewUserData } from 'server/typings/user.typings';
 import { Signup } from 'server/typings/result.typings';
+import { UserGroup } from 'shared/typings/models/user';
 
 export const mockUser: NewUserData = {
   favoritedGames: [],

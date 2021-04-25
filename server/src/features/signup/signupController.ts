@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { storeSignup } from 'server/features/signup/signupService';
-import { UserGroup } from 'server/typings/user.typings';
+import { UserGroup } from 'shared/typings/models/user';
 import { validateAuthHeader } from 'server/utils/authHeader';
 import { logger } from 'server/utils/logger';
 import { SIGNUP_ENDPOINT } from 'shared/constants/apiEndpoints';

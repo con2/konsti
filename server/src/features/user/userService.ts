@@ -23,13 +23,13 @@ import {
   GetGroupReturnValue,
   SaveFavoriteRequest,
   User,
-  UserGroup,
 } from 'server/typings/user.typings';
 import { PostFavoriteResponse } from 'shared/typings/api/favorite';
 import { GetGroupResponse, PostGroupResponse } from 'shared/typings/api/groups';
 import { PostLoginResponse } from 'shared/typings/api/login';
 import { decodeJWT, getJWT, verifyJWT } from 'server/utils/jwt';
 import { findSettings } from 'server/features/settings/settingsRepository';
+import { UserGroup } from 'shared/typings/models/user';
 
 export const storeUser = async (
   username: string,

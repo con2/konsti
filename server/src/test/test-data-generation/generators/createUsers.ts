@@ -1,7 +1,7 @@
 import faker from 'faker';
 import { logger } from 'server/utils/logger';
 import { hashPassword } from 'server/utils/bcrypt';
-import { UserGroup } from 'server/typings/user.typings';
+import { UserGroup } from 'shared/typings/models/user';
 import { saveUser } from 'server/features/user/userRepository';
 
 const SERIAL_MAX = 10000000;

@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { validateAuthHeader } from 'server/utils/authHeader';
-import { UserGroup } from 'server/typings/user.typings';
+import { UserGroup } from 'shared/typings/models/user';
 import { fetchGames, storeGames } from 'server/features/game/gamesService';
 import { logger } from 'server/utils/logger';
 import { GAMES_ENDPOINT } from 'shared/constants/apiEndpoints';

@@ -10,7 +10,7 @@ import {
   storeGroup,
   login,
 } from 'server/features/user/userService';
-import { UserGroup } from 'server/typings/user.typings';
+import { UserGroup } from 'shared/typings/models/user';
 import { validateAuthHeader } from 'server/utils/authHeader';
 import { logger } from 'server/utils/logger';
 import {

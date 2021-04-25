@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { validateAuthHeader } from 'server/utils/authHeader';
-import { UserGroup } from 'server/typings/user.typings';
+import { UserGroup } from 'shared/typings/models/user';
 import { storeFeedback } from 'server/features/feedback/feedbackService';
 import { logger } from 'server/utils/logger';
 import { FEEDBACK_ENDPOINT } from 'shared/constants/apiEndpoints';

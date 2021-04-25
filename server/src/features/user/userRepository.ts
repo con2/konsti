@@ -8,12 +8,12 @@ import {
   SignedGame,
   FavoritedGame,
   SaveFavoriteRequest,
-  UserGroup,
 } from 'server/typings/user.typings';
 import { Serial } from 'server/typings/serial.typings';
 import { GameDoc } from 'server/typings/game.typings';
 import { findGames } from 'server/features/game/gameRepository';
 import { Game } from 'shared/typings/models/game';
+import { UserGroup } from 'shared/typings/models/user';
 
 export const removeUsers = async (): Promise<void> => {
   logger.info('MongoDB: remove ALL users from db');
