@@ -1,8 +1,9 @@
 import { Game } from 'shared/typings/models/game';
 import { GroupMember } from 'client/typings/group.typings';
-import { Signup, UserGroup } from 'client/typings/user.typings';
+import { Signup } from 'client/typings/user.typings';
 import { Result } from 'client/typings/result.typings';
 import { appReducer } from 'client/utils/store';
+import { UserGroup } from 'shared/typings/models/user';
 
 export interface AdminState {
   hiddenGames: readonly Game[];

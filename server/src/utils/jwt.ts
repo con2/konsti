@@ -1,7 +1,7 @@
 import jsonwebtoken from 'jsonwebtoken';
 import { config } from 'server/config';
 import { JWTResult } from 'server/typings/jwt.typings';
-import { UserGroup } from 'server/typings/user.typings';
+import { UserGroup } from 'shared/typings/models/user';
 
 const getSecret = (userGroup: UserGroup): string => {
   if (userGroup === 'admin') {

@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import { MongoMemoryServer } from 'mongodb-memory-server';
 import { UserModel } from 'server/features/user/userSchema';
-import { UserGroup } from 'server/typings/user.typings';
+import { UserGroup } from 'shared/typings/models/user';
 import { saveUser } from 'server/features/user/userRepository';
 
 let mongoServer: MongoMemoryServer;
@@ -30,7 +30,7 @@ describe('User service', () => {
       favoritedGames: [],
       username: 'test user',
       passwordHash: 'testpass',
-      userGroup: UserGroup.user,
+      userGroup: UserGroup.USER,
       serial: '1234ABCD',
       groupCode: '0',
       signedGames: [],

@@ -65,7 +65,10 @@ const commonConfig: Configuration = {
     rules: [
       {
         test: /\.(ts|tsx|js)$/,
-        include: [path.resolve(__dirname, 'src')],
+        include: [
+          path.resolve(__dirname, 'src'),
+          path.resolve(__dirname, '../shared'),
+        ],
         use: [
           {
             loader: 'babel-loader',

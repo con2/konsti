@@ -11,7 +11,7 @@ import {
   login,
   storeSignup,
 } from 'server/features/user/userService';
-import { UserGroup } from 'server/typings/user.typings';
+import { UserGroup } from 'shared/typings/models/user';
 import { validateAuthHeader } from 'server/utils/authHeader';
 import { logger } from 'server/utils/logger';
 import {
@@ -66,7 +66,7 @@ export const postFavorite = async (
 
   const validToken = validateAuthHeader(
     req.headers.authorization,
-    UserGroup.user
+    UserGroup.USER
   );
 
   if (!validToken) {
@@ -85,7 +85,7 @@ export const postGroup = async (
 
   const validToken = validateAuthHeader(
     req.headers.authorization,
-    UserGroup.user
+    UserGroup.USER
   );
 
   if (!validToken) {
@@ -121,7 +121,7 @@ export const getUser = async (
 
   const validToken = validateAuthHeader(
     req.headers.authorization,
-    UserGroup.user
+    UserGroup.USER
   );
 
   if (!validToken) {
@@ -158,7 +158,7 @@ export const getUserBySerial = async (
 
   const validToken = validateAuthHeader(
     req.headers.authorization,
-    UserGroup.user
+    UserGroup.USER
   );
 
   if (!validToken) {
@@ -197,7 +197,7 @@ export const getGroup = async (
 
   const validToken = validateAuthHeader(
     req.headers.authorization,
-    UserGroup.user
+    UserGroup.USER
   );
 
   if (!validToken) {
@@ -232,7 +232,7 @@ export const postSignup = async (
 
   const validToken = validateAuthHeader(
     req.headers.authorization,
-    UserGroup.user
+    UserGroup.USER
   );
 
   if (!validToken) {

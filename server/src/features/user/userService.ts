@@ -26,13 +26,13 @@ import {
   SaveFavoriteRequest,
   SignedGame,
   User,
-  UserGroup,
 } from 'server/typings/user.typings';
 import { PostFavoriteResponse } from 'shared/typings/api/favorite';
 import { GetGroupResponse, PostGroupResponse } from 'shared/typings/api/groups';
 import { PostLoginResponse } from 'shared/typings/api/login';
 import { decodeJWT, getJWT, verifyJWT } from 'server/utils/jwt';
 import { findSettings } from 'server/features/settings/settingsRepository';
+import { UserGroup } from 'shared/typings/models/user';
 import { PostSignupResponse } from 'shared/typings/api/signup';
 import { config } from 'server/config';
 import { Signup } from 'server/typings/result.typings';
@@ -577,9 +577,9 @@ export const login = async (
     const { userGroup } = jwtData;
 
     if (
-      userGroup !== UserGroup.user &&
-      userGroup !== UserGroup.admin &&
-      userGroup !== UserGroup.help
+      userGroup !== UserGroup.USER &&
+      userGroup !== UserGroup.ADMIN &&
+      userGroup !== UserGroup.HELP
     ) {
       return {
         message: 'Invalid userGroup',

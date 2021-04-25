@@ -5,7 +5,7 @@ import {
   storeSignupTime,
   storeHidden,
 } from 'server/features/settings/settingsService';
-import { UserGroup } from 'server/typings/user.typings';
+import { UserGroup } from 'shared/typings/models/user';
 import { validateAuthHeader } from 'server/utils/authHeader';
 import { logger } from 'server/utils/logger';
 import {
@@ -25,7 +25,7 @@ export const postHidden = async (
 
   const validToken = validateAuthHeader(
     req.headers.authorization,
-    UserGroup.admin
+    UserGroup.ADMIN
   );
 
   if (!validToken) {
@@ -46,7 +46,7 @@ export const postSignupTime = async (
 
   const validToken = validateAuthHeader(
     req.headers.authorization,
-    UserGroup.admin
+    UserGroup.ADMIN
   );
 
   if (!validToken) {
@@ -67,7 +67,7 @@ export const postAppOpen = async (
 
   const validToken = validateAuthHeader(
     req.headers.authorization,
-    UserGroup.admin
+    UserGroup.ADMIN
   );
 
   if (!validToken) {

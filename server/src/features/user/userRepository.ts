@@ -8,12 +8,12 @@ import {
   SignedGame,
   FavoritedGame,
   SaveFavoriteRequest,
-  UserGroup,
 } from 'server/typings/user.typings';
 import { Serial } from 'server/typings/serial.typings';
 import { GameDoc } from 'server/typings/game.typings';
 import { findGames } from 'server/features/game/gameRepository';
 import { Game } from 'shared/typings/models/game';
+import { UserGroup } from 'shared/typings/models/user';
 
 export const removeUsers = async (): Promise<void> => {
   logger.info('MongoDB: remove ALL users from db');
@@ -28,7 +28,7 @@ export const saveUser = async (newUserData: NewUserData): Promise<User> => {
   const user = new UserModel({
     username: newUserData.username,
     password: newUserData.passwordHash,
-    userGroup: newUserData.userGroup ? newUserData.userGroup : UserGroup.user,
+    userGroup: newUserData.userGroup ? newUserData.userGroup : UserGroup.USER,
     serial: newUserData.serial,
     groupCode:
       typeof newUserData.groupCode === 'string' ? newUserData.groupCode : '0',
@@ -58,7 +58,7 @@ export const updateUser = async (user: User): Promise<User | null> => {
       { username: user.username },
       {
         userGroup:
-          typeof user.userGroup === 'string' ? user.userGroup : UserGroup.user,
+          typeof user.userGroup === 'string' ? user.userGroup : UserGroup.USER,
         serial: user.serial,
         groupCode: typeof user.groupCode === 'string' ? user.groupCode : '0',
         favoritedGames: user.favoritedGames ?? [],
