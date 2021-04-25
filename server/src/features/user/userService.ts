@@ -1,3 +1,4 @@
+import moment from 'moment';
 import { logger } from 'server/utils/logger';
 import { hashPassword, validateLogin } from 'server/utils/bcrypt';
 import { findSerial } from 'server/features/serial/serialRepository';
@@ -11,6 +12,7 @@ import {
   findGroupMembers,
   saveGroupCode,
   findGroup,
+  saveSignup,
 } from 'server/features/user/userRepository';
 import {
   GetUserBySerialResponse,
@@ -22,6 +24,7 @@ import { Game } from 'shared/typings/models/game';
 import {
   GetGroupReturnValue,
   SaveFavoriteRequest,
+  SignedGame,
   User,
   UserGroup,
 } from 'server/typings/user.typings';
@@ -30,6 +33,9 @@ import { GetGroupResponse, PostGroupResponse } from 'shared/typings/api/groups';
 import { PostLoginResponse } from 'shared/typings/api/login';
 import { decodeJWT, getJWT, verifyJWT } from 'server/utils/jwt';
 import { findSettings } from 'server/features/settings/settingsRepository';
+import { PostSignupResponse } from 'shared/typings/api/signup';
+import { config } from 'server/config';
+import { Signup } from 'server/typings/result.typings';
 
 export const storeUser = async (
   username: string,
@@ -720,6 +726,54 @@ export const login = async (
     logger.error(`Login: ${error}`);
     return {
       message: 'User login error',
+      status: 'error',
+      code: 0,
+    };
+  }
+};
+
+export const storeSignup = async (
+  selectedGames: readonly SignedGame[],
+  username: string,
+  signupTime: string
+): Promise<PostSignupResponse | ServerError> => {
+  if (!signupTime) {
+    return {
+      message: 'Signup failure',
+      status: 'error',
+      code: 0,
+    };
+  }
+
+  const timeNow = moment();
+  if (config.enableSignupTimeCheck && moment(signupTime).isBefore(timeNow)) {
+    const error = `Signup time ${moment(
+      signupTime
+    ).format()} does not match: too late`;
+
+    logger.debug(error);
+    return {
+      code: 41,
+      message: 'Signup failure',
+      status: 'error',
+    };
+  }
+
+  const modifiedSignupData: Signup = {
+    signedGames: selectedGames,
+    username,
+  };
+
+  try {
+    const response = await saveSignup(modifiedSignupData);
+    return {
+      message: 'Signup success',
+      status: 'success',
+      signedGames: response.signedGames,
+    };
+  } catch (error) {
+    return {
+      message: 'Signup failure',
       status: 'error',
       code: 0,
     };
