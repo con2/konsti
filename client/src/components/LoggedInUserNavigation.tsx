@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { RootState } from 'client/typings/redux.typings';
-import { UserGroup } from 'client/typings/user.typings';
+import { UserGroup } from 'shared/typings/models/user';
 
 export const LoggedInUserNavigation = (props: {
   onSelect: () => void;

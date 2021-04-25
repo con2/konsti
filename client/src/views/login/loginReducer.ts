@@ -8,15 +8,14 @@ import {
   SUBMIT_LEAVE_GROUP,
   SUBMIT_UPDATE_GROUP_MEMBERS,
 } from 'client/typings/groupActions.typings';
-
 import { LoginState } from 'client/typings/redux.typings';
-import { UserGroup } from 'client/typings/user.typings';
+import { UserGroup } from 'shared/typings/models/user';
 
 const initialState: LoginState = {
   username: '',
   loggedIn: false,
   jwt: '',
-  userGroup: UserGroup.user,
+  userGroup: UserGroup.USER,
   serial: '',
   groupCode: '0',
   groupMembers: [],

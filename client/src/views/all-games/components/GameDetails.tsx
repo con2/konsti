@@ -8,8 +8,7 @@ import { GameInfo } from 'client/views/all-games/components/GameInfo';
 import { Loading } from 'client/components/Loading';
 import { Game } from 'shared/typings/models/game';
 import { updateFavorite, UpdateFavoriteOpts } from 'client/utils/favorite';
-
-import { UserGroup } from 'client/typings/user.typings';
+import { UserGroup } from 'shared/typings/models/user';
 import { RootState } from 'client/typings/redux.typings';
 
 export const GameDetails: FC = (): ReactElement => {

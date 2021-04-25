@@ -1,6 +1,7 @@
-import { UserArray, User, UserGroup } from 'server/typings/user.typings';
+import { UserArray, User } from 'server/typings/user.typings';
 import { mockGame } from 'server/test/mock-data/mockGame';
 import { getList } from 'server/features/player-assignment/utils/getList';
+import { UserGroup } from 'shared/typings/models/user';
 
 const user: User = {
   username: 'username',

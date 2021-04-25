@@ -1,4 +1,5 @@
 import { Game } from 'shared/typings/models/game';
+import { UserGroup } from 'shared/typings/models/user';
 
 export interface Signup {
   gameDetails: Game;
@@ -21,12 +22,6 @@ export interface LoginFormFields {
   username?: string;
   password?: string;
   jwt?: string;
-}
-
-export enum UserGroup {
-  user = 'user',
-  admin = 'admin',
-  help = 'help',
 }
 
 export interface LoginData {

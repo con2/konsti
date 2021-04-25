@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { Game } from 'shared/typings/models/game';
-import { UserGroup, Signup } from 'client/typings/user.typings';
+import { Signup } from 'client/typings/user.typings';
 import { RootState } from 'client/typings/redux.typings';
 import { GroupMember } from 'client/typings/group.typings';
 import { updateFavorite, UpdateFavoriteOpts } from 'client/utils/favorite';
@@ -18,6 +18,7 @@ import {
   submitSignup,
   submitSelectedGames,
 } from 'client/views/signup/signupActions';
+import { UserGroup } from 'shared/typings/models/user';
 
 interface Props {
   game: Game;
