@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import { Game } from 'shared/typings/models/game';
-
+import { UserGroup } from 'shared/typings/models/user';
 export interface UserDoc extends User, mongoose.Document {}
 
 export interface FavoritedGame {
@@ -17,12 +17,6 @@ export interface EnteredGame {
   gameDetails: Game;
   priority: number;
   time: string;
-}
-
-export enum UserGroup {
-  user = 'user',
-  admin = 'admin',
-  help = 'help',
 }
 
 export interface User {
