@@ -1,5 +1,4 @@
 import _ from 'lodash';
-import {} from 'server/typings/user.typings';
 import { User } from 'shared/typings/models/user';
 
 export const getPlayerGroups = (
