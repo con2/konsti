@@ -30,7 +30,7 @@ describe('User service', () => {
       favoritedGames: [],
       username: 'test user',
       passwordHash: 'testpass',
-      userGroup: UserGroup.user,
+      userGroup: UserGroup.USER,
       serial: '1234ABCD',
       groupCode: '0',
       signedGames: [],

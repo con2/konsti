@@ -16,7 +16,7 @@ const initialState: LoginState = {
   username: '',
   loggedIn: false,
   jwt: '',
-  userGroup: UserGroup.user,
+  userGroup: UserGroup.USER,
   serial: '',
   groupCode: '0',
   groupMembers: [],

@@ -6,7 +6,7 @@ export const mockUser: NewUserData = {
   favoritedGames: [],
   username: 'Test User',
   passwordHash: 'testpass',
-  userGroup: UserGroup.user,
+  userGroup: UserGroup.USER,
   serial: '1234ABCD',
   groupCode: '0',
   signedGames: [],

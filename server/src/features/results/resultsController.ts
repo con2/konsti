@@ -42,7 +42,7 @@ export const postAssignment = async (
 
   const validToken = validateAuthHeader(
     req.headers.authorization,
-    UserGroup.admin
+    UserGroup.ADMIN
   );
 
   if (!validToken) {

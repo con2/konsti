@@ -20,9 +20,9 @@ export interface EnteredGame {
 }
 
 export enum UserGroup {
-  user = 'user',
-  admin = 'admin',
-  help = 'help',
+  USER = 'user',
+  ADMIN = 'admin',
+  HELP = 'help',
 }
 
 export interface User {

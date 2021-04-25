@@ -25,7 +25,7 @@ export const postHidden = async (
 
   const validToken = validateAuthHeader(
     req.headers.authorization,
-    UserGroup.admin
+    UserGroup.ADMIN
   );
 
   if (!validToken) {
@@ -46,7 +46,7 @@ export const postSignupTime = async (
 
   const validToken = validateAuthHeader(
     req.headers.authorization,
-    UserGroup.admin
+    UserGroup.ADMIN
   );
 
   if (!validToken) {
@@ -67,7 +67,7 @@ export const postAppOpen = async (
 
   const validToken = validateAuthHeader(
     req.headers.authorization,
-    UserGroup.admin
+    UserGroup.ADMIN
   );
 
   if (!validToken) {

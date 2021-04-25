@@ -14,7 +14,7 @@ export const createAdminUser = async (): Promise<void> => {
   const registrationData = {
     username: 'admin',
     passwordHash: passwordHash,
-    userGroup: UserGroup.admin,
+    userGroup: UserGroup.ADMIN,
     serial: faker.datatype.number(10000000).toString(),
     favoritedGames: [],
     signedGames: [],
@@ -34,7 +34,7 @@ export const createHelpUser = async (): Promise<void> => {
   const registrationData = {
     username: 'ropetiski',
     passwordHash: await hashPassword('test'),
-    userGroup: UserGroup.help,
+    userGroup: UserGroup.HELP,
     serial: faker.datatype.number(10000000).toString(),
     favoritedGames: [],
     signedGames: [],
@@ -54,7 +54,7 @@ const createTestUser = async (userNumber: number): Promise<void> => {
   const registrationData = {
     username: `test${userNumber}`,
     passwordHash: await hashPassword('test'),
-    userGroup: UserGroup.user,
+    userGroup: UserGroup.USER,
     serial: faker.datatype.number(10000000).toString(),
     favoritedGames: [],
     signedGames: [],
@@ -88,7 +88,7 @@ const createUser = async ({
   const registrationData = {
     username: faker.internet.userName(),
     passwordHash: 'testPass', // Skip hashing to save time
-    userGroup: UserGroup.user,
+    userGroup: UserGroup.USER,
     serial:
       groupMemberCount === 0
         ? groupCode

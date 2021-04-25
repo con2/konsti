@@ -15,7 +15,7 @@ export const postSignup = async (
 
   const validToken = validateAuthHeader(
     req.headers.authorization,
-    UserGroup.user
+    UserGroup.USER
   );
 
   if (!validToken) {

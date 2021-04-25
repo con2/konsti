@@ -15,7 +15,7 @@ export const postFeedback = async (
 
   const validToken = validateAuthHeader(
     req.headers.authorization,
-    UserGroup.user
+    UserGroup.USER
   );
 
   if (!validToken) {

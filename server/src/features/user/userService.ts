@@ -571,9 +571,9 @@ export const login = async (
     const { userGroup } = jwtData;
 
     if (
-      userGroup !== UserGroup.user &&
-      userGroup !== UserGroup.admin &&
-      userGroup !== UserGroup.help
+      userGroup !== UserGroup.USER &&
+      userGroup !== UserGroup.ADMIN &&
+      userGroup !== UserGroup.HELP
     ) {
       return {
         message: 'Invalid userGroup',

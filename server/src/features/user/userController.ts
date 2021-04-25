@@ -64,7 +64,7 @@ export const postFavorite = async (
 
   const validToken = validateAuthHeader(
     req.headers.authorization,
-    UserGroup.user
+    UserGroup.USER
   );
 
   if (!validToken) {
@@ -83,7 +83,7 @@ export const postGroup = async (
 
   const validToken = validateAuthHeader(
     req.headers.authorization,
-    UserGroup.user
+    UserGroup.USER
   );
 
   if (!validToken) {
@@ -119,7 +119,7 @@ export const getUser = async (
 
   const validToken = validateAuthHeader(
     req.headers.authorization,
-    UserGroup.user
+    UserGroup.USER
   );
 
   if (!validToken) {
@@ -156,7 +156,7 @@ export const getUserBySerial = async (
 
   const validToken = validateAuthHeader(
     req.headers.authorization,
-    UserGroup.user
+    UserGroup.USER
   );
 
   if (!validToken) {
@@ -195,7 +195,7 @@ export const getGroup = async (
 
   const validToken = validateAuthHeader(
     req.headers.authorization,
-    UserGroup.user
+    UserGroup.USER
   );
 
   if (!validToken) {
