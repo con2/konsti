@@ -1,10 +1,9 @@
-import _ from 'lodash';
 import { logger } from 'server/utils/logger';
 import { GameModel } from 'server/features/game/gameSchema';
-import { removeInvalidSignupsFromUsers } from 'server/features/player-assignment/utils/removeInvalidSignupsFromUsers';
 import { removeMovedGamesFromUsers } from 'server/features/player-assignment/utils/removeMovedGamesFromUsers';
 import { GameDoc } from 'server/typings/game.typings';
 import { Game } from 'shared/typings/models/game';
+import { removeDeletedGames } from 'server/features/game/gameUtils';
 
 export const removeGames = async (): Promise<void> => {
   logger.info('MongoDB: remove ALL games from db');
@@ -12,31 +11,6 @@ export const removeGames = async (): Promise<void> => {
     await GameModel.deleteMany({});
   } catch (error) {
     throw new Error(`MongoDB: Error removing games - ${error}`);
-  }
-};
-
-const removeDeletedGames = async (
-  updatedGames: readonly Game[]
-): Promise<void> => {
-  const currentGames = await findGames();
-
-  const deletedGames = _.differenceBy(currentGames, updatedGames, 'gameId');
-
-  if (deletedGames && deletedGames.length !== 0) {
-    logger.info(`Found ${deletedGames.length} deleted games, remove...`);
-
-    try {
-      await Promise.all(
-        deletedGames.map(async (deletedGame) => {
-          await GameModel.deleteOne({ gameId: deletedGame.gameId });
-        })
-      );
-    } catch (error) {
-      logger.error(`Error removing deleted games: ${error}`);
-      return await Promise.reject(error);
-    }
-
-    await removeInvalidSignupsFromUsers();
   }
 };
 
