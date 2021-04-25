@@ -1,13 +1,14 @@
 import { Request, Response } from 'express';
 import { validationResult } from 'express-validator';
 import { String, Record } from 'runtypes';
-import { storeFavorite } from 'server/features/user/favoriteService';
-import { fetchGroup, storeGroup } from 'server/features/user/groupService';
-import { login } from 'server/features/user/loginService';
 import {
   fetchUserByUsername,
   fetchUserBySerial,
   storeUser,
+  storeFavorite,
+  fetchGroup,
+  storeGroup,
+  login,
 } from 'server/features/user/userService';
 import { UserGroup } from 'server/typings/user.typings';
 import { validateAuthHeader } from 'server/utils/authHeader';
