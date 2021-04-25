@@ -1,12 +1,13 @@
 import _ from 'lodash';
-import { User, UserArray } from 'server/typings/user.typings';
+import {} from 'server/typings/user.typings';
+import { User } from 'shared/typings/models/user';
 
 export const getPlayerGroups = (
   players: readonly User[]
-): readonly UserArray[] => {
+): readonly User[][] => {
   const groupedUsers = _.groupBy(players, 'groupCode');
 
-  const playersArray = [] as UserArray[];
+  const playersArray = [] as User[][];
   for (const [key, value] of Object.entries(groupedUsers)) {
     if (Array.isArray(value)) {
       if (key === '0') {

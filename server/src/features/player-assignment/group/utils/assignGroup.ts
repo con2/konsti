@@ -1,17 +1,17 @@
 import { logger } from 'server/utils/logger';
 import { runGroupAssignment } from 'server/features/player-assignment/group/utils/runGroupAssignment';
 import { config } from 'server/config';
-import { User, UserArray } from 'server/typings/user.typings';
 import { Game } from 'shared/typings/models/game';
 import {
   AssignmentStrategyResult,
   Result,
 } from 'server/typings/result.typings';
+import { User } from 'shared/typings/models/user';
 
 export const assignGroups = (
   selectedPlayers: readonly User[],
   signedGames: readonly Game[],
-  playerGroups: readonly UserArray[]
+  playerGroups: readonly User[][]
 ): AssignmentStrategyResult => {
   const { GROUP_ASSIGNMENT_ROUNDS } = config;
 

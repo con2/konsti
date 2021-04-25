@@ -3,10 +3,10 @@ import moment from 'moment';
 import _ from 'lodash';
 import { logger } from 'server/utils/logger';
 import { updateGamePopularity } from 'server/features/game-popularity/updateGamePopularity';
-import { User, SignedGame } from 'server/typings//user.typings';
 import { Game } from 'shared/typings/models/game';
 import { findUsers, saveSignup } from 'server/features/user/userRepository';
 import { findGames } from 'server/features/game/gameRepository';
+import { SignedGame, User } from 'shared/typings/models/user';
 
 export const createSignups = async (): Promise<void> => {
   let games: Game[] = [];

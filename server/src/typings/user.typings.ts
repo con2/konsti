@@ -10,8 +10,6 @@ import {
 
 export interface UserDoc extends User, mongoose.Document {}
 
-export type UserArray = readonly User[];
-
 export interface NewUserData {
   username: string;
   serial: string;

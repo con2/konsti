@@ -2,18 +2,18 @@ import _ from 'lodash';
 import { logger } from 'server/utils/logger';
 import { getRandomInt } from 'server/features/player-assignment/utils/getRandomInt';
 import { shuffleArray } from 'server/utils/shuffleArray';
-import { UserArray, SignedGame } from 'server/typings/user.typings';
 import { Game } from 'shared/typings/models/game';
 import { GroupAssignResult } from 'server/typings/groupAssign.typings';
 import { Result } from 'server/typings/result.typings';
+import { SignedGame, User } from 'shared/typings/models/user';
 
 export const runGroupAssignment = (
-  playerGroups: readonly UserArray[],
+  playerGroups: readonly User[][],
   signedGames: readonly Game[]
 ): GroupAssignResult => {
   const signupResults: Result[] = [];
-  let matchingGroups: UserArray[] = [];
-  let selectedGroups: UserArray[] = [];
+  let matchingGroups: User[][] = [];
+  let selectedGroups: User[][] = [];
   let score = 0;
   let playerCounter = 0;
   let gameCounter = 0;
