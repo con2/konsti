@@ -1,11 +1,11 @@
 import _ from 'lodash';
 import { PadgRandomAssignResults } from 'server/typings/padgRandomAssign.typings';
-import { UserArray, EnteredGame, User } from 'server/typings/user.typings';
 import { Result } from 'server/typings/result.typings';
+import { EnteredGame, User } from 'shared/typings/models/user';
 
 export const formatResults = (
   assignResults: PadgRandomAssignResults,
-  playerGroups: readonly UserArray[]
+  playerGroups: readonly User[][]
 ): readonly Result[] => {
   const selectedPlayers = playerGroups
     .filter((playerGroup) => {

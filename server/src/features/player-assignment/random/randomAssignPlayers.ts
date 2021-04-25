@@ -2,7 +2,7 @@ import _ from 'lodash';
 import { logger } from 'server/utils/logger';
 import { getStartingGames } from 'server/features/player-assignment/utils/getStartingGames';
 import { runRandomAssignment } from 'server/features/player-assignment/random/utils/runRandomAssignment';
-import { User } from 'server/typings/user.typings';
+import { User } from 'shared/typings/models/user';
 import { Game } from 'shared/typings/models/game';
 import { PlayerAssignmentResult } from 'server/typings/result.typings';
 import { getRunRandomAndPadgInput } from 'server/features/player-assignment/utils/getRunRandomAndPadgInput';
