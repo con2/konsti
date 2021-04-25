@@ -3,11 +3,11 @@ import { logger } from 'server/utils/logger';
 import { calculateHappiness } from 'server/features/player-assignment/padg/utils/calculateHappiness';
 import { getGroups } from 'server/features/player-assignment/utils/getGroups';
 import { Result } from 'server/typings/result.typings';
-import { User, UserArray } from 'server/typings/user.typings';
+import { User } from 'shared/typings/models/user';
 
 export const getHappiness = (
   results: readonly Result[],
-  playerGroups: readonly UserArray[],
+  playerGroups: readonly User[][],
   allPlayers: readonly User[],
   startingTime: string
 ): void => {

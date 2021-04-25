@@ -1,7 +1,7 @@
 import moment from 'moment';
 import { logger } from 'server/utils/logger';
 import { Signup, Result } from 'server/typings/result.typings';
-import { User } from 'server/typings/user.typings';
+import { User } from 'shared/typings/models/user';
 import { findUsers, saveSignup } from 'server/features/user/userRepository';
 
 export const removeOverlapSignups = async (

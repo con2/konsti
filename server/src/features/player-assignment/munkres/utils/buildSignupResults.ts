@@ -1,6 +1,6 @@
-import { User, SignedGame } from 'server/typings/user.typings';
 import { Game } from 'shared/typings/models/game';
 import { Result } from 'server/typings/result.typings';
+import { SignedGame, User } from 'shared/typings/models/user';
 
 export const buildSignupResults = (
   results: readonly number[][],

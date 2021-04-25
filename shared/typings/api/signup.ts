@@ -1,4 +1,4 @@
-import { SignedGame } from 'server/typings/user.typings';
+import { SignedGame } from 'shared/typings/models/user';
 
 export interface PostSignupResponse {
   message: string;

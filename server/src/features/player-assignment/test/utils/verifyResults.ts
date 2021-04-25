@@ -1,6 +1,6 @@
 import moment from 'moment';
 import { logger } from 'server/utils/logger';
-import { User } from 'server/typings/user.typings';
+import { User } from 'shared/typings/models/user';
 import { ResultsCollectionEntry } from 'server/typings/result.typings';
 import { findUsers } from 'server/features/user/userRepository';
 import { findResults } from 'server/features/results/resultsRepository';

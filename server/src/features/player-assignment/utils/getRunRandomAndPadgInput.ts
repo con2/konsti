@@ -4,7 +4,7 @@ import { getSignedGames } from 'server/features/player-assignment/utils/getSigne
 import { getSelectedPlayers } from 'server/features/player-assignment/utils/getSelectedPlayers';
 import { getPlayerGroups } from 'server/features/player-assignment/utils/getPlayerGroups';
 import { getGroupMembers } from 'server/features/player-assignment/utils/getGroupMembers';
-import { User } from 'server/typings/user.typings';
+import { User } from 'shared/typings/models/user';
 import { Game } from 'shared/typings/models/game';
 import { RunRandomAndPadgInput } from 'server/typings/result.typings';
 

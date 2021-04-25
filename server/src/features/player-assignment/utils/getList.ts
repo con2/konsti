@@ -1,11 +1,11 @@
 import _ from 'lodash';
 import moment from 'moment';
 import { ListItem } from 'server/typings/padgRandomAssign.typings';
-import { UserArray, SignedGame } from 'server/typings/user.typings';
 import { getAssignmentBonus } from 'server/features/player-assignment/utils/getAssignmentBonus';
+import { SignedGame, User } from 'shared/typings/models/user';
 
 export const getList = (
-  playerGroups: readonly UserArray[],
+  playerGroups: readonly User[][],
   startingTime: string
 ): ListItem[] => {
   return playerGroups.flatMap((playerGroup) => {
@@ -32,7 +32,7 @@ export const getList = (
   });
 };
 
-const getGain = (signedGame: SignedGame, playerGroup: UserArray): number => {
+const getGain = (signedGame: SignedGame, playerGroup: User[]): number => {
   const bonus = getAssignmentBonus(playerGroup);
 
   switch (signedGame.priority) {

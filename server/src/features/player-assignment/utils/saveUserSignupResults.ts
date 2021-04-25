@@ -2,12 +2,12 @@ import moment from 'moment';
 import { logger } from 'server/utils/logger';
 import { Result } from 'server/typings/result.typings';
 import { GameDoc } from 'server/typings/game.typings';
-import { EnteredGame, User } from 'server/typings/user.typings';
 import {
   findUsers,
   saveEnteredGames,
 } from 'server/features/user/userRepository';
 import { findGames } from 'server/features/game/gameRepository';
+import { EnteredGame, User } from 'shared/typings/models/user';
 
 export const saveUserSignupResults = async (
   startingTime: string,

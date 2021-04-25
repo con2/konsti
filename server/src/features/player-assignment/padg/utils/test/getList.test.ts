@@ -1,7 +1,6 @@
-import { UserArray, User } from 'server/typings/user.typings';
 import { mockGame } from 'server/test/mock-data/mockGame';
 import { getList } from 'server/features/player-assignment/utils/getList';
-import { UserGroup } from 'shared/typings/models/user';
+import { User, UserGroup } from 'shared/typings/models/user';
 
 const user: User = {
   username: 'username',
@@ -46,8 +45,8 @@ const user3: User = {
 const startingTime = '2019-11-23T12:00:00+02:00';
 
 test('should generate assignment list with bonuses for single user', async () => {
-  const userArray: readonly User[] = [user];
-  const playerGroups: readonly UserArray[] = [userArray, userArray, userArray];
+  const userArray: User[] = [user];
+  const playerGroups: readonly User[][] = [userArray, userArray, userArray];
   const list = getList(playerGroups, startingTime);
 
   expect(list).toEqual([
@@ -58,8 +57,8 @@ test('should generate assignment list with bonuses for single user', async () =>
 });
 
 test('should generate assignment list with bonuses for group', async () => {
-  const userArray: readonly User[] = [user, user2];
-  const playerGroups: readonly UserArray[] = [userArray, userArray, userArray];
+  const userArray: User[] = [user, user2];
+  const playerGroups: readonly User[][] = [userArray, userArray, userArray];
   const list = getList(playerGroups, startingTime);
 
   expect(list).toEqual([
@@ -70,8 +69,8 @@ test('should generate assignment list with bonuses for group', async () => {
 });
 
 test('should generate assignment list without bonuses for group', async () => {
-  const userArray: readonly User[] = [user, user3];
-  const playerGroups: readonly UserArray[] = [userArray, userArray, userArray];
+  const userArray: User[] = [user, user3];
+  const playerGroups: readonly User[][] = [userArray, userArray, userArray];
   const list = getList(playerGroups, startingTime);
 
   expect(list).toEqual([
