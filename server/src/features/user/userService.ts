@@ -1,5 +1,5 @@
 import { logger } from 'server/utils/logger';
-import { hashPassword } from 'server/utils/bcrypt';
+import { hashPassword, validateLogin } from 'server/utils/bcrypt';
 import { findSerial } from 'server/features/serial/serialRepository';
 import {
   updateUserPassword,
@@ -7,6 +7,10 @@ import {
   findUserBySerial,
   findUserSerial,
   saveUser,
+  saveFavorite,
+  findGroupMembers,
+  saveGroupCode,
+  findGroup,
 } from 'server/features/user/userRepository';
 import {
   GetUserBySerialResponse,
@@ -15,6 +19,17 @@ import {
 } from 'shared/typings/api/users';
 import { ServerError } from 'shared/typings/api/errors';
 import { Game } from 'shared/typings/models/game';
+import {
+  GetGroupReturnValue,
+  SaveFavoriteRequest,
+  User,
+  UserGroup,
+} from 'server/typings/user.typings';
+import { PostFavoriteResponse } from 'shared/typings/api/favorite';
+import { GetGroupResponse, PostGroupResponse } from 'shared/typings/api/groups';
+import { PostLoginResponse } from 'shared/typings/api/login';
+import { decodeJWT, getJWT, verifyJWT } from 'server/utils/jwt';
+import { findSettings } from 'server/features/settings/settingsRepository';
 
 export const storeUser = async (
   username: string,
@@ -259,4 +274,454 @@ export const fetchUserBySerial = async (
     username: user.username,
     serial: user.serial,
   };
+};
+
+export const storeFavorite = async (
+  favoriteData: SaveFavoriteRequest
+): Promise<PostFavoriteResponse | ServerError> => {
+  let favoritedGames;
+  try {
+    favoritedGames = await saveFavorite(favoriteData);
+  } catch (error) {
+    return {
+      message: 'Update favorite failure',
+      status: 'error',
+      code: 0,
+    };
+  }
+
+  if (favoritedGames) {
+    return {
+      message: 'Update favorite success',
+      status: 'success',
+      favoritedGames,
+    };
+  }
+
+  return {
+    message: 'Update favorite failure',
+    status: 'error',
+    code: 0,
+  };
+};
+
+export const storeGroup = async (
+  username: string,
+  leader: boolean,
+  groupCode: string,
+  ownSerial: string,
+  leaveGroup: boolean,
+  closeGroup: boolean
+): Promise<PostGroupResponse | ServerError> => {
+  if (closeGroup) {
+    const groupMembers = await findGroupMembers(groupCode);
+
+    try {
+      await Promise.all(
+        groupMembers.map(async (groupMember) => {
+          await saveGroupCode('0', groupMember.username);
+        })
+      );
+    } catch (error) {
+      logger.error(`findGroupMembers: ${error}`);
+      throw new Error('Error closing group');
+    }
+
+    return {
+      message: 'Group closed successfully',
+      status: 'success',
+      groupCode: '0',
+    };
+  }
+
+  if (leaveGroup) {
+    const groupMembers = await findGroupMembers(groupCode);
+
+    if (leader && groupMembers.length > 1) {
+      return {
+        message: 'Leader cannot leave non-empty group',
+        status: 'error',
+        code: 36,
+      };
+    }
+
+    let saveGroupResponse;
+    try {
+      saveGroupResponse = await saveGroupCode('0', username);
+    } catch (error) {
+      logger.error(`Failed to leave group: ${error}`);
+      return {
+        message: 'Failed to leave group',
+        status: 'error',
+        code: 35,
+      };
+    }
+
+    if (saveGroupResponse) {
+      return {
+        message: 'Leave group success',
+        status: 'success',
+        groupCode: saveGroupResponse.groupCode,
+      };
+    } else {
+      logger.error('Failed to leave group');
+      return {
+        message: 'Failed to leave group',
+        status: 'error',
+        code: 35,
+      };
+    }
+  }
+
+  // Create group
+  if (leader) {
+    // Check that serial is not used
+    let findGroupResponse;
+    try {
+      // Check if group exists
+      findGroupResponse = await findGroup(groupCode, username);
+    } catch (error) {
+      logger.error(`findUser(): ${error}`);
+      return {
+        message: 'Own group already exists',
+        status: 'error',
+        code: 34,
+      };
+    }
+
+    if (findGroupResponse) {
+      // Group exists
+      return {
+        message: 'Own group already exists',
+        status: 'error',
+        code: 34,
+      };
+    }
+
+    // No existing group, create
+    let saveGroupResponse;
+    try {
+      saveGroupResponse = await saveGroupCode(groupCode, username);
+    } catch (error) {
+      logger.error(`saveGroup(): ${error}`);
+      return {
+        message: 'Save group failure',
+        status: 'error',
+        code: 30,
+      };
+    }
+
+    if (saveGroupResponse) {
+      return {
+        message: 'Create group success',
+        status: 'success',
+        groupCode: saveGroupResponse.groupCode,
+      };
+    } else {
+      return {
+        message: 'Save group failure',
+        status: 'error',
+        code: 30,
+      };
+    }
+  }
+
+  // Join group
+  if (!leader) {
+    // Cannot join own group
+    if (ownSerial === groupCode) {
+      return {
+        message: 'Cannot join own group',
+        status: 'error',
+        code: 33,
+      };
+    }
+
+    // Check if code is valid
+    let findSerialResponse;
+    try {
+      findSerialResponse = await findUserSerial({ serial: groupCode });
+    } catch (error) {
+      logger.error(`findSerial(): ${error}`);
+      return {
+        message: 'Error finding serial',
+        status: 'error',
+        code: 31,
+      };
+    }
+
+    // Code is valid
+    if (!findSerialResponse) {
+      return {
+        message: 'Invalid group code',
+        status: 'error',
+        code: 31,
+      };
+    }
+
+    // Check if group leader has created a group
+    let findGroupResponse;
+    try {
+      const leaderUsername = findSerialResponse.username;
+      findGroupResponse = await findGroup(groupCode, leaderUsername);
+    } catch (error) {
+      logger.error(`findGroup(): ${error}`);
+      return {
+        message: 'Error finding group',
+        status: 'error',
+        code: 32,
+      };
+    }
+
+    // No existing group, cannot join
+    if (!findGroupResponse) {
+      return {
+        message: 'Group does not exist',
+        status: 'error',
+        code: 32,
+      };
+    }
+
+    // Group exists, join
+    let saveGroupResponse;
+    try {
+      saveGroupResponse = await saveGroupCode(groupCode, username);
+    } catch (error) {
+      logger.error(`saveGroup(): ${error}`);
+      return {
+        message: 'Error saving group',
+        status: 'error',
+        code: 30,
+      };
+    }
+
+    if (saveGroupResponse) {
+      return {
+        message: 'Joined to group success',
+        status: 'success',
+        groupCode: saveGroupResponse.groupCode,
+      };
+    } else {
+      logger.error('Failed to sign to group');
+      return {
+        message: 'Failed to update group',
+        status: 'error',
+        code: 30,
+      };
+    }
+  }
+
+  return {
+    message: 'Unknown error',
+    status: 'error',
+    code: 0,
+  };
+};
+
+export const fetchGroup = async (
+  groupCode: string
+): Promise<GetGroupResponse | ServerError> => {
+  let findGroupResults: User[];
+  try {
+    findGroupResults = await findGroupMembers(groupCode);
+
+    const returnData: GetGroupReturnValue[] = [];
+    for (const findGroupResult of findGroupResults) {
+      returnData.push({
+        groupCode: findGroupResult.groupCode,
+        signedGames: findGroupResult.signedGames,
+        enteredGames: findGroupResult.enteredGames,
+        serial: findGroupResult.serial,
+        username: findGroupResult.username,
+      });
+    }
+
+    return {
+      message: 'Getting group members success',
+      status: 'success',
+      results: returnData,
+    };
+  } catch (error) {
+    logger.error(`Results: ${error}`);
+    return {
+      message: 'Getting group members failed',
+      status: 'error',
+      code: 0,
+    };
+  }
+};
+
+export const login = async (
+  username: string,
+  password: string,
+  jwt: string
+): Promise<PostLoginResponse | ServerError> => {
+  // Restore session
+  if (jwt) {
+    const jwtData = decodeJWT(jwt);
+
+    if (!jwtData) {
+      return {
+        message: 'Invalid jwt',
+        status: 'error',
+        code: 0,
+      };
+    }
+
+    const { userGroup } = jwtData;
+
+    if (
+      userGroup !== UserGroup.user &&
+      userGroup !== UserGroup.admin &&
+      userGroup !== UserGroup.help
+    ) {
+      return {
+        message: 'Invalid userGroup',
+        status: 'error',
+        code: 0,
+      };
+    }
+
+    const jwtResponse = verifyJWT(jwt, userGroup);
+
+    if (jwtResponse.status === 'error') {
+      return {
+        message: 'Invalid jwt',
+        status: 'error',
+        code: 0,
+      };
+    }
+
+    if (typeof jwtResponse.username === 'string') {
+      let user;
+      try {
+        user = await findUser(jwtResponse.username);
+      } catch (error) {
+        logger.error(`Login: ${error}`);
+        return {
+          message: 'Session restore error',
+          status: 'error',
+          code: 0,
+        };
+      }
+
+      if (!user) {
+        logger.info(`Login: User "${username}" not found`);
+        return {
+          code: 21,
+          message: 'User login error',
+          status: 'error',
+        };
+      }
+
+      let settingsResponse;
+      try {
+        settingsResponse = await findSettings();
+      } catch (error) {
+        logger.error(`Login: ${error}`);
+        return {
+          message: 'User login error',
+          status: 'error',
+          code: 0,
+        };
+      }
+
+      if (!settingsResponse.appOpen && user.userGroup === 'user') {
+        return {
+          code: 22,
+          message: 'User login disabled',
+          status: 'error',
+        };
+      }
+
+      return {
+        message: 'Session restore success',
+        status: 'success',
+        username: user.username,
+        userGroup: user.userGroup,
+        serial: user.serial,
+        groupCode: user.groupCode,
+        jwt: getJWT(user.userGroup, user.username),
+      };
+    }
+  }
+
+  let user;
+  try {
+    user = await findUser(username);
+  } catch (error) {
+    logger.error(`Login: ${error}`);
+    return {
+      message: 'User login error',
+      status: 'error',
+      code: 0,
+    };
+  }
+
+  if (!user) {
+    logger.info(`Login: User "${username}" not found`);
+    return {
+      code: 21,
+      message: 'User login error',
+      status: 'error',
+    };
+  }
+
+  let settingsResponse;
+  try {
+    settingsResponse = await findSettings();
+  } catch (error) {
+    logger.error(`Login: ${error}`);
+    return {
+      message: 'User login error',
+      status: 'error',
+      code: 0,
+    };
+  }
+
+  if (!settingsResponse.appOpen && user.userGroup === 'user') {
+    return {
+      code: 22,
+      message: 'User login disabled',
+      status: 'error',
+    };
+  }
+
+  // User exists
+  let validLogin;
+  try {
+    validLogin = await validateLogin(password, user.password);
+
+    logger.info(
+      `Login: User "${user.username}" with "${user.userGroup}" user group`
+    );
+
+    if (validLogin) {
+      logger.info(`Login: Password for user "${username}" matches`);
+      return {
+        message: 'User login success',
+        status: 'success',
+        username: user.username,
+        userGroup: user.userGroup,
+        serial: user.serial,
+        groupCode: user.groupCode,
+        jwt: getJWT(user.userGroup, user.username),
+      };
+    } else {
+      logger.info(`Login: Password for user "${username}" doesn't match`);
+
+      return {
+        code: 21,
+        message: 'User login error',
+        status: 'error',
+      };
+    }
+  } catch (error) {
+    logger.error(`Login: ${error}`);
+    return {
+      message: 'User login error',
+      status: 'error',
+      code: 0,
+    };
+  }
 };
