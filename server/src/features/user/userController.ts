@@ -9,6 +9,7 @@ import {
   fetchGroup,
   storeGroup,
   login,
+  storeSignup,
 } from 'server/features/user/userService';
 import { UserGroup } from 'shared/typings/models/user';
 import { validateAuthHeader } from 'server/utils/authHeader';
@@ -17,6 +18,7 @@ import {
   FAVORITE_ENDPOINT,
   GROUP_ENDPOINT,
   LOGIN_ENDPOINT,
+  SIGNUP_ENDPOINT,
   USERS_BY_SERIAL_ENDPOINT,
   USERS_ENDPOINT,
 } from 'shared/constants/apiEndpoints';
@@ -217,5 +219,28 @@ export const getGroup = async (
   const { groupCode } = queryParameters;
 
   const response = await fetchGroup(groupCode);
+  return res.send(response);
+};
+
+export const postSignup = async (
+  req: Request,
+  res: Response
+): Promise<Response> => {
+  logger.info(`API call: POST ${SIGNUP_ENDPOINT}`);
+
+  const signupData = req.body.signupData;
+
+  const validToken = validateAuthHeader(
+    req.headers.authorization,
+    UserGroup.user
+  );
+
+  if (!validToken) {
+    return res.sendStatus(401);
+  }
+
+  const { selectedGames, username, signupTime } = signupData;
+
+  const response = await storeSignup(selectedGames, username, signupTime);
   return res.send(response);
 };
