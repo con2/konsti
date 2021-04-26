@@ -1,11 +1,6 @@
 import fs from 'fs';
 import { logger } from 'server/utils/logger';
-import {
-  SignedGame,
-  EnteredGame,
-  FavoritedGame,
-  User,
-} from 'shared/typings/models/user';
+import { FavoritedGame, SelectedGame, User } from 'shared/typings/models/user';
 import { GameDoc } from 'server/typings/game.typings';
 import { ResultsCollectionEntry } from 'server/typings/result.typings';
 import { writeJson } from 'server/features/statistics/statsUtil';
@@ -40,8 +35,8 @@ export const gameIdFix = async (year: number, event: string): Promise<void> => {
 
   users.forEach((user) => {
     const tempFavoritedGames: FavoritedGame[] = [];
-    const tempEnteredGames: EnteredGame[] = [];
-    const tempSignedGames: SignedGame[] = [];
+    const tempEnteredGames: SelectedGame[] = [];
+    const tempSignedGames: SelectedGame[] = [];
 
     games.forEach((game) => {
       user.favoritedGames.forEach((favoritedGame) => {

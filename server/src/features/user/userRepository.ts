@@ -1,15 +1,14 @@
 import { logger } from 'server/utils/logger';
 import { UserModel } from 'server/features/user/userSchema';
-import { Signup } from 'server/typings/result.typings';
+import { UserSignup } from 'server/typings/result.typings';
 import { NewUserData, SaveFavoriteRequest } from 'server/typings/user.typings';
 import { Serial } from 'server/typings/serial.typings';
 import { GameDoc } from 'server/typings/game.typings';
 import { findGames } from 'server/features/game/gameRepository';
 import { Game } from 'shared/typings/models/game';
 import {
-  EnteredGame,
   FavoritedGame,
-  SignedGame,
+  SelectedGame,
   User,
   UserGroup,
 } from 'shared/typings/models/user';
@@ -263,7 +262,7 @@ export const findUsers = async (): Promise<User[]> => {
   return users;
 };
 
-export const saveSignup = async (signupData: Signup): Promise<User> => {
+export const saveSignup = async (signupData: UserSignup): Promise<User> => {
   const { signedGames, username } = signupData;
 
   let games: GameDoc[];
@@ -274,20 +273,23 @@ export const saveSignup = async (signupData: Signup): Promise<User> => {
     return error;
   }
 
-  const formattedData = signedGames.reduce<SignedGame[]>((acc, signedGame) => {
-    const gameDocInDb = games.find(
-      (game) => game.gameId === signedGame.gameDetails.gameId
-    );
+  const formattedData = signedGames.reduce<SelectedGame[]>(
+    (acc, signedGame) => {
+      const gameDocInDb = games.find(
+        (game) => game.gameId === signedGame.gameDetails.gameId
+      );
 
-    if (gameDocInDb) {
-      acc.push({
-        gameDetails: gameDocInDb._id,
-        priority: signedGame.priority,
-        time: signedGame.time,
-      });
-    }
-    return acc;
-  }, []);
+      if (gameDocInDb) {
+        acc.push({
+          gameDetails: gameDocInDb._id,
+          priority: signedGame.priority,
+          time: signedGame.time,
+        });
+      }
+      return acc;
+    },
+    []
+  );
 
   let signupResponse;
   try {
@@ -388,7 +390,7 @@ export const saveFavorite = async (
 };
 
 export const saveEnteredGames = async (
-  enteredGames: readonly EnteredGame[],
+  enteredGames: readonly SelectedGame[],
   username: string
 ): Promise<void> => {
   try {

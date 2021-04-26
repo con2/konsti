@@ -1,6 +1,6 @@
 import { Game } from 'shared/typings/models/game';
 import { Result } from 'server/typings/result.typings';
-import { SignedGame, User } from 'shared/typings/models/user';
+import { SelectedGame, User } from 'shared/typings/models/user';
 
 export const buildSignupResults = (
   results: readonly number[][],
@@ -46,8 +46,8 @@ export const buildSignupResults = (
 
 const findEnteredGame = (
   enteredGame: Game,
-  signedGames: readonly SignedGame[]
-): SignedGame | undefined => {
+  signedGames: readonly SelectedGame[]
+): SelectedGame | undefined => {
   return signedGames.find(
     (signedGame) => signedGame.gameDetails.gameId === enteredGame.gameId
   );

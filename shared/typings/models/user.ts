@@ -7,8 +7,8 @@ export interface User {
   serial: string;
   groupCode: string;
   favoritedGames: readonly FavoritedGame[];
-  signedGames: readonly SignedGame[];
-  enteredGames: readonly EnteredGame[];
+  signedGames: readonly SelectedGame[];
+  enteredGames: readonly SelectedGame[];
   createdAt: string | null;
 }
 
@@ -16,13 +16,7 @@ export interface FavoritedGame {
   gameId: string;
 }
 
-export interface SignedGame {
-  gameDetails: Game;
-  priority: number;
-  time: string;
-}
-
-export interface EnteredGame {
+export interface SelectedGame {
   gameDetails: Game;
   priority: number;
   time: string;

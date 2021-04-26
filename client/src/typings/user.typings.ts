@@ -1,15 +1,9 @@
 import { Game } from 'shared/typings/models/game';
-import { UserGroup } from 'shared/typings/models/user';
-
-export interface Signup {
-  gameDetails: Game;
-  priority: number;
-  time: string;
-}
+import { SelectedGame, UserGroup } from 'shared/typings/models/user';
 
 export interface SignupData {
   username: string;
-  selectedGames: readonly Signup[];
+  selectedGames: readonly SelectedGame[];
   signupTime: string;
 }
 
@@ -41,7 +35,7 @@ export interface RegistrationFormFields {
 }
 
 export interface UserGames {
-  enteredGames: readonly Signup[];
+  enteredGames: readonly SelectedGame[];
   favoritedGames: readonly Game[];
-  signedGames: readonly Signup[];
+  signedGames: readonly SelectedGame[];
 }

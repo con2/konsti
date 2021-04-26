@@ -3,12 +3,12 @@ import { useTranslation } from 'react-i18next';
 import _ from 'lodash';
 import styled from 'styled-components';
 import { ResultsByStartTimes } from './ResultsByStartTimes';
-import { Signup } from 'client/typings/user.typings';
 import { getMissedSignups } from 'client/views/my-games/utils/getMissedSignups';
+import { SelectedGame } from 'shared/typings/models/user';
 
 export interface Props {
-  enteredGames: readonly Signup[];
-  signedGames: readonly Signup[];
+  enteredGames: readonly SelectedGame[];
+  signedGames: readonly SelectedGame[];
 }
 
 export const MyEnteredList: FC<Props> = (props: Props): ReactElement => {

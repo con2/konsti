@@ -1,12 +1,12 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Signup } from 'client/typings/user.typings';
 import {
   ResultsByStartTimes,
   Props,
 } from 'client/views/my-games/components/ResultsByStartTimes';
+import { SelectedGame } from 'shared/typings/models/user';
 
-const signups: Signup[] = [];
+const signups: SelectedGame[] = [];
 const startTimes: string[] = [];
 const missedSignups: readonly string[] = [];
 

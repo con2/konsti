@@ -2,16 +2,16 @@ import React, { FC, ReactElement } from 'react';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
-import { Signup } from 'client/typings/user.typings';
 import { updateUnsavedChangesStatus } from 'client/views/signup/signupActions';
+import { SelectedGame } from 'shared/typings/models/user';
 
 interface Props {
   groupCode: string;
   leader: boolean;
   onCancelClick: (event: React.MouseEvent) => void;
   onSubmitClick: (event: React.MouseEvent) => void;
-  selectedGames: readonly Signup[];
-  signedGames: readonly Signup[];
+  selectedGames: readonly SelectedGame[];
+  signedGames: readonly SelectedGame[];
   signupError: string;
   signupSubmitted: boolean;
   submitting: boolean;
@@ -34,8 +34,8 @@ export const SignupActionButtons: FC<Props> = (props: Props): ReactElement => {
   const { t } = useTranslation();
 
   const checkForSignupChanges = (
-    signedGames: readonly Signup[],
-    selectedGames: readonly Signup[]
+    signedGames: readonly SelectedGame[],
+    selectedGames: readonly SelectedGame[]
   ): boolean => {
     const filteredSignedGames = signedGames.filter((signedGame) => {
       return selectedGames.find((selectedGame) => {

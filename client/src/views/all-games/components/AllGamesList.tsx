@@ -4,10 +4,10 @@ import _ from 'lodash';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 import { RootState } from 'client/typings/redux.typings';
-import { Signup } from 'client/typings/user.typings';
 import { timeFormatter } from 'client/utils/timeFormatter';
 import { Game } from 'shared/typings/models/game';
 import { GameEntry } from './GameEntry';
+import { SelectedGame } from 'shared/typings/models/user';
 
 export interface Props {
   games: readonly Game[];
@@ -17,7 +17,7 @@ export const AllGamesList: FC<Props> = (props: Props): ReactElement => {
   const { games } = props;
   const { t } = useTranslation();
 
-  const signedGames: readonly Signup[] = useSelector(
+  const signedGames: readonly SelectedGame[] = useSelector(
     (state: RootState) => state.myGames.signedGames
   );
 
