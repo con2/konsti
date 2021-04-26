@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import { PadgRandomAssignResults } from 'server/typings/padgRandomAssign.typings';
 import { Result } from 'server/typings/result.typings';
-import { EnteredGame, User } from 'shared/typings/models/user';
+import { SelectedGame, User } from 'shared/typings/models/user';
 
 export const formatResults = (
   assignResults: PadgRandomAssignResults,
@@ -24,7 +24,7 @@ export const formatResults = (
     })
     .flat();
 
-  const getEnteredGame = (player: User): EnteredGame | undefined => {
+  const getEnteredGame = (player: User): SelectedGame | undefined => {
     return player.signedGames.find((signedGame) => {
       return assignResults.find(
         (assignResult) =>

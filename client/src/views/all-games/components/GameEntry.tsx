@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { Game } from 'shared/typings/models/game';
-import { Signup } from 'client/typings/user.typings';
 import { RootState } from 'client/typings/redux.typings';
 import { GroupMember } from 'client/typings/group.typings';
 import { updateFavorite, UpdateFavoriteOpts } from 'client/utils/favorite';
@@ -18,7 +17,7 @@ import {
   submitSignup,
   submitSelectedGames,
 } from 'client/views/signup/signupActions';
-import { UserGroup } from 'shared/typings/models/user';
+import { SelectedGame, UserGroup } from 'shared/typings/models/user';
 
 interface Props {
   game: Game;
@@ -55,10 +54,10 @@ export const GameEntry: FC<Props> = (props: Props): ReactElement => {
   const groupCode: string = useSelector(
     (state: RootState) => state.login.groupCode
   );
-  const signedGames: readonly Signup[] = useSelector(
+  const signedGames: readonly SelectedGame[] = useSelector(
     (state: RootState) => state.myGames.signedGames
   );
-  const enteredGames: readonly Signup[] = useSelector(
+  const enteredGames: readonly SelectedGame[] = useSelector(
     (state: RootState) => state.myGames.enteredGames
   );
   const groupMembers: readonly GroupMember[] = useSelector(
@@ -84,7 +83,7 @@ export const GameEntry: FC<Props> = (props: Props): ReactElement => {
     const allEnteredGames = getUpcomingEnteredGames(enteredGames);
 
     return [...allSignedGames, ...allEnteredGames].some(
-      (g: Signup) => g.gameDetails.gameId === game.gameId
+      (g: SelectedGame) => g.gameDetails.gameId === game.gameId
     );
   };
 
@@ -98,7 +97,7 @@ export const GameEntry: FC<Props> = (props: Props): ReactElement => {
     );
     const allEnteredGames = getUpcomingEnteredGames(enteredGames);
     const newSignupData = [...allSignedGames, ...allEnteredGames].filter(
-      (g: Signup) => g.gameDetails.gameId !== game.gameId
+      (g: SelectedGame) => g.gameDetails.gameId !== game.gameId
     );
     dispatch(submitSelectedGames(newSignupData));
     const signupData = {

@@ -4,10 +4,10 @@ import _ from 'lodash';
 import styled from 'styled-components';
 import { getStartTimes } from 'client/utils/getStartTimes';
 import { SignupsByStartTimes } from './SignupsByStartTimes';
-import { Signup } from 'client/typings/user.typings';
+import { SelectedGame } from 'shared/typings/models/user';
 
 export interface Props {
-  signedGames: readonly Signup[];
+  signedGames: readonly SelectedGame[];
 }
 
 export const MySignupsList: FC<Props> = (props: Props): ReactElement => {

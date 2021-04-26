@@ -10,13 +10,13 @@ import { DragAndDropList } from 'client/views/signup/components/DragAndDropList'
 import { sleep } from 'client/utils/sleep';
 import { config } from 'client/config';
 import { Game } from 'shared/typings/models/game';
-import { Signup } from 'client/typings/user.typings';
 import { RootState } from 'client/typings/redux.typings';
 import { SignupTimeButtons } from './SignupTimeButtons';
 import { SignupInfo } from './SignupInfo';
 import { SignupActionButtons } from './SignupActionButtons';
 import { filterAvailableGames } from 'client/views/signup/utils/filterAvailableGames';
 import { filterSelectedGames } from 'client/views/signup/utils/filterSelectedGames';
+import { SelectedGame } from 'shared/typings/models/user';
 
 export interface Props {
   games: readonly Game[];
@@ -39,10 +39,10 @@ export const SignupList: FC<Props> = (props: Props): ReactElement => {
   const hiddenGames: readonly Game[] = useSelector(
     (state: RootState) => state.admin.hiddenGames
   );
-  const signedGames: readonly Signup[] = useSelector(
+  const signedGames: readonly SelectedGame[] = useSelector(
     (state: RootState) => state.myGames.signedGames
   );
-  const selectedGames: readonly Signup[] = useSelector(
+  const selectedGames: readonly SelectedGame[] = useSelector(
     (state: RootState) => state.signup.selectedGames
   );
   const unsavedChanges: boolean = useSelector(

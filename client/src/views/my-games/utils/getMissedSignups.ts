@@ -1,12 +1,12 @@
 import moment from 'moment';
 import { getStartTimes } from 'client/utils/getStartTimes';
 import { config } from 'client/config';
-import { Signup } from 'client/typings/user.typings';
 import { getTime } from 'client/utils/getTime';
+import { SelectedGame } from 'shared/typings/models/user';
 
 export const getMissedSignups = (
-  signedGames: readonly Signup[],
-  enteredGames: readonly Signup[]
+  signedGames: readonly SelectedGame[],
+  enteredGames: readonly SelectedGame[]
 ): string[] => {
   const timeNow = getTime();
 

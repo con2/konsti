@@ -2,12 +2,12 @@ import React, { FC, ReactElement, useRef, FormEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { Game } from 'shared/typings/models/game';
-import { Signup } from 'client/typings/user.typings';
 import { RootState } from 'client/typings/redux.typings';
 import {
   submitSignup,
   submitSelectedGames,
 } from 'client/views/signup/signupActions';
+import { SelectedGame } from 'shared/typings/models/user';
 
 interface Props {
   game: Game;
@@ -19,7 +19,7 @@ export const SignupForm: FC<Props> = (props: Props): ReactElement => {
 
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const selectedGames: readonly Signup[] = useSelector(
+  const selectedGames: readonly SelectedGame[] = useSelector(
     (state: RootState) => state.myGames.signedGames
   );
   const username: string = useSelector(

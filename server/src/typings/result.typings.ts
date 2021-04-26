@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import { Game } from 'shared/typings/models/game';
-import { EnteredGame, SignedGame, User } from 'shared/typings/models/user';
+import { SelectedGame, User } from 'shared/typings/models/user';
 
 export interface ResultDoc extends Result, mongoose.Document {
   algorithm: string;
@@ -9,12 +9,12 @@ export interface ResultDoc extends Result, mongoose.Document {
 
 export interface Result {
   username: string;
-  enteredGame: EnteredGame;
+  enteredGame: SelectedGame;
 }
 
-export interface Signup {
+export interface UserSignup {
   username: string;
-  signedGames: readonly SignedGame[];
+  signedGames: readonly SelectedGame[];
 }
 
 export interface PlayerAssignmentResult {

@@ -7,7 +7,7 @@ import {
   saveEnteredGames,
 } from 'server/features/user/userRepository';
 import { findGames } from 'server/features/game/gameRepository';
-import { EnteredGame, User } from 'shared/typings/models/user';
+import { SelectedGame, User } from 'shared/typings/models/user';
 
 export const saveUserSignupResults = async (
   startingTime: string,
@@ -50,7 +50,7 @@ const getCurrentEnteredGames = (
   user: User,
   results: readonly Result[],
   startingTime: string
-): EnteredGame[] => {
+): SelectedGame[] => {
   const existingEnteredGames = user.enteredGames.filter(
     (enteredGame) =>
       moment(enteredGame.time).format() !== moment(startingTime).format()
