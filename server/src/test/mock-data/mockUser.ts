@@ -1,6 +1,6 @@
 import { mockGame, mockGame2 } from 'server/test/mock-data/mockGame';
 import { NewUserData } from 'server/typings/user.typings';
-import { Signup } from 'server/typings/result.typings';
+import { UserSignup } from 'server/typings/result.typings';
 import { UserGroup } from 'shared/typings/models/user';
 
 export const mockUser: NewUserData = {
@@ -14,7 +14,7 @@ export const mockUser: NewUserData = {
   enteredGames: [],
 };
 
-export const mockSignup: Signup = {
+export const mockSignup: UserSignup = {
   username: 'Test User',
   signedGames: [
     {

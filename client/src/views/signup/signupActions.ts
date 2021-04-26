@@ -1,5 +1,5 @@
 import { postSignup } from 'client/services/signupServices';
-import { Signup, SignupData } from 'client/typings/user.typings';
+import { SignupData } from 'client/typings/user.typings';
 import { AppThunk } from 'client/typings/utils.typings';
 import {
   SubmitSignupAsync,
@@ -11,6 +11,7 @@ import {
   UPDATE_UNSAVED_CHANGES_STATUS,
   SUBMIT_SIGNED_GAMES,
 } from 'client/typings/signupActions.typings';
+import { SelectedGame } from 'shared/typings/models/user';
 
 export const submitSignup = (signupData: SignupData): AppThunk => {
   return async (dispatch): Promise<void> => {
@@ -28,7 +29,7 @@ export const submitSignup = (signupData: SignupData): AppThunk => {
 };
 
 const submitSignupAsync = (
-  signedGames: readonly Signup[]
+  signedGames: readonly SelectedGame[]
 ): SubmitSignupAsync => {
   return {
     type: SUBMIT_SIGNED_GAMES,
@@ -44,7 +45,7 @@ export const submitSignupTime = (signupTime: string): SubmitSignupTime => {
 };
 
 export const submitSelectedGames = (
-  selectedGames: readonly Signup[]
+  selectedGames: readonly SelectedGame[]
 ): SubmitSelectedGames => {
   return {
     type: SUBMIT_SELECTED_GAMES,

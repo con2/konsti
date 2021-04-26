@@ -1,6 +1,6 @@
-import { Signup } from 'client/typings/user.typings';
+import { SelectedGame } from 'shared/typings/models/user';
 
 export interface Result {
   username: string;
-  enteredGame: Signup;
+  enteredGame: SelectedGame;
 }

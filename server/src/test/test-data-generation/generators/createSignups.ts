@@ -6,7 +6,7 @@ import { updateGamePopularity } from 'server/features/game-popularity/updateGame
 import { Game } from 'shared/typings/models/game';
 import { findUsers, saveSignup } from 'server/features/user/userRepository';
 import { findGames } from 'server/features/game/gameRepository';
-import { SignedGame, User } from 'shared/typings/models/user';
+import { SelectedGame, User } from 'shared/typings/models/user';
 
 export const createSignups = async (): Promise<void> => {
   let games: Game[] = [];
@@ -48,8 +48,8 @@ export const createSignups = async (): Promise<void> => {
   await updateGamePopularity();
 };
 
-const getRandomSignup = (games: readonly Game[]): SignedGame[] => {
-  const signedGames = [] as SignedGame[];
+const getRandomSignup = (games: readonly Game[]): SelectedGame[] => {
+  const signedGames = [] as SelectedGame[];
   let randomIndex;
 
   const startTimes = games.map((game) => moment(game.startTime).utc().format());

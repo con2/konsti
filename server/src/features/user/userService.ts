@@ -29,9 +29,9 @@ import { GetGroupResponse, PostGroupResponse } from 'shared/typings/api/groups';
 import { PostLoginResponse } from 'shared/typings/api/login';
 import { decodeJWT, getJWT, verifyJWT } from 'server/utils/jwt';
 import { findSettings } from 'server/features/settings/settingsRepository';
-import { SignedGame, User, UserGroup } from 'shared/typings/models/user';
+import { SelectedGame, User, UserGroup } from 'shared/typings/models/user';
 import { PostSignupResponse } from 'shared/typings/api/signup';
-import { Signup } from 'server/typings/result.typings';
+import { UserSignup } from 'server/typings/result.typings';
 import { isValidSignupTime } from 'server/features/user/userUtils';
 
 export const storeUser = async (
@@ -730,7 +730,7 @@ export const login = async (
 };
 
 export const storeSignup = async (
-  selectedGames: readonly SignedGame[],
+  selectedGames: readonly SelectedGame[],
   username: string,
   signupTime: string
 ): Promise<PostSignupResponse | ServerError> => {
@@ -751,7 +751,7 @@ export const storeSignup = async (
     };
   }
 
-  const modifiedSignupData: Signup = {
+  const modifiedSignupData: UserSignup = {
     signedGames: selectedGames,
     username,
   };

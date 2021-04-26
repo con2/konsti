@@ -1,9 +1,9 @@
 import moment from 'moment';
 import { GroupMember } from 'client/typings/group.typings';
 import { Game } from 'shared/typings/models/game';
-import { Signup } from 'client/typings/user.typings';
 import { getTime } from 'client/utils/getTime';
 import { isGroupLeader } from 'client/views/group/GroupView';
+import { SelectedGame } from 'shared/typings/models/user';
 
 export const getUpcomingGames = (games: readonly Game[]): readonly Game[] => {
   const timeNow = getTime();
@@ -16,8 +16,8 @@ export const getUpcomingGames = (games: readonly Game[]): readonly Game[] => {
 };
 
 export const getUpcomingSignedGames = (
-  signedGames: readonly Signup[]
-): readonly Signup[] => {
+  signedGames: readonly SelectedGame[]
+): readonly SelectedGame[] => {
   const timeNow = getTime();
 
   const upcomingGames = signedGames.filter((signedGame) => {
@@ -40,12 +40,12 @@ const getGroupLeader = (
 };
 
 export const getSignedGames = (
-  signedGames: readonly Signup[],
+  signedGames: readonly SelectedGame[],
   groupCode: string,
   serial: string,
   groupMembers: readonly GroupMember[],
   getAllGames: boolean = true
-): readonly Signup[] => {
+): readonly SelectedGame[] => {
   if (isGroupLeader(groupCode, serial)) {
     return !getAllGames ? getUpcomingSignedGames(signedGames) : signedGames;
   }
@@ -66,8 +66,8 @@ export const getSignedGames = (
 };
 
 export const getUpcomingEnteredGames = (
-  enteredGames: readonly Signup[]
-): readonly Signup[] => {
+  enteredGames: readonly SelectedGame[]
+): readonly SelectedGame[] => {
   const timeNow = getTime();
 
   const upcomingGames = enteredGames.filter((enteredGame) =>
