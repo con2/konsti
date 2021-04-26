@@ -4,7 +4,7 @@ import { getRandomInt } from 'server/features/player-assignment/utils/getRandomI
 import { shuffleArray } from 'server/utils/shuffleArray';
 import { Game } from 'shared/typings/models/game';
 import { GroupAssignResult } from 'server/typings/groupAssign.typings';
-import { Result } from 'server/typings/result.typings';
+import { Result } from 'shared/typings/models/result';
 import { SelectedGame, User } from 'shared/typings/models/user';
 
 export const runGroupAssignment = (

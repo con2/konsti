@@ -1,6 +1,6 @@
 import moment from 'moment';
 import { logger } from 'server/utils/logger';
-import { Result } from 'server/typings/result.typings';
+import { Result } from 'shared/typings/models/result';
 import { GameDoc } from 'server/typings/game.typings';
 import {
   findUsers,

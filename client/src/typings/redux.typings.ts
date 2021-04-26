@@ -1,6 +1,6 @@
 import { Game } from 'shared/typings/models/game';
 import { GroupMember } from 'client/typings/group.typings';
-import { Result } from 'client/typings/result.typings';
+import { Result } from 'shared/typings/models/result';
 import { appReducer } from 'client/utils/store';
 import { SelectedGame, UserGroup } from 'shared/typings/models/user';
 
