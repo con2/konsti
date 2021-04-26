@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import _ from 'lodash';
 import styled from 'styled-components';
 import { timeFormatter } from 'client/utils/timeFormatter';
-import { Result } from 'client/typings/result.typings';
+import { Result } from 'shared/typings/models/result';
 import { RootState } from 'client/typings/redux.typings';
 
 export const HelperResultsList: FC = (): ReactElement => {

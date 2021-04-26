@@ -1,8 +1,9 @@
 import { logger } from 'server/utils/logger';
 import { ResultsModel } from 'server/features/results/resultsSchema';
-import { Result, ResultsCollectionEntry } from 'server/typings/result.typings';
+import { ResultsCollectionEntry } from 'server/typings/result.typings';
 import { GameDoc } from 'server/typings/game.typings';
 import { findGames } from 'server/features/game/gameRepository';
+import { Result } from 'shared/typings/models/result';
 
 export const removeResults = async (): Promise<void> => {
   logger.info('MongoDB: remove ALL results from db');
