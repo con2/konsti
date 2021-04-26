@@ -3,9 +3,9 @@ import _ from 'lodash';
 import moment from 'moment';
 import { Array } from 'runtypes';
 import { logger } from 'server/utils/logger';
-import { FeedbackRuntype } from 'server/typings/feedback.typings';
 import { GameRuntype } from 'shared/typings/models/game';
 import { writeJson } from 'server/features/statistics/statsUtil';
+import { FeedbackRuntype } from 'shared/typings/models/feedback';
 
 export const formatFeedbacks = (year: number, event: string): void => {
   moment.locale('fi');

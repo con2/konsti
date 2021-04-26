@@ -2,8 +2,7 @@ import React, { FC, ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
 import _ from 'lodash';
 import styled from 'styled-components';
-
-import { Result } from 'client/typings/result.typings';
+import { Result } from 'shared/typings/models/result';
 
 export interface Props {
   results: readonly Result[];

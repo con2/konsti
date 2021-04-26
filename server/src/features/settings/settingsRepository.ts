@@ -2,7 +2,7 @@ import moment from 'moment';
 import { logger } from 'server/utils/logger';
 import { SettingsModel } from 'server/features/settings/settingsSchema';
 import { GameDoc } from 'server/typings/game.typings';
-import { Settings } from 'server/typings/settings.typings';
+import { Settings } from 'shared/typings/models/settings';
 import { Game } from 'shared/typings/models/game';
 import { findGames } from 'server/features/game/gameRepository';
 

@@ -1,4 +1,4 @@
-import { Feedback } from 'server/typings/feedback.typings';
+import { Feedback } from 'shared/typings/models/feedback';
 import { saveFeedback } from 'server/features/feedback/feedbackRepository';
 import { PostFeedbackResponse } from 'shared/typings/api/feedback';
 import { ServerError } from 'shared/typings/api/errors';

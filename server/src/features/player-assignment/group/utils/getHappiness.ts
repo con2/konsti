@@ -2,7 +2,7 @@ import _ from 'lodash';
 import { logger } from 'server/utils/logger';
 import { calculateHappiness } from 'server/features/player-assignment/padg/utils/calculateHappiness';
 import { getGroups } from 'server/features/player-assignment/utils/getGroups';
-import { Result } from 'server/typings/result.typings';
+import { Result } from 'shared/typings/models/result';
 import { User } from 'shared/typings/models/user';
 
 export const getHappiness = (

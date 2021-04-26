@@ -4,7 +4,7 @@ import { logger } from 'server/utils/logger';
 import { padgAssignPlayers } from 'server/features/player-assignment/padg/padgAssignPlayers';
 import { User } from 'shared/typings/models/user';
 import { Game } from 'shared/typings/models/game';
-import { Result } from 'server/typings/result.typings';
+import { Result } from 'shared/typings/models/result';
 import { saveGamePopularity } from 'server/features/game/gameRepository';
 
 export const updateWithAssign = async (

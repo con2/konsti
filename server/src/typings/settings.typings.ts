@@ -1,10 +1,4 @@
 import mongoose from 'mongoose';
-import { Game } from 'shared/typings/models/game';
+import { Settings } from 'shared/typings/models/settings';
 
 export interface SettingsDoc extends Settings, mongoose.Document {}
-
-export interface Settings {
-  hiddenGames: readonly Game[];
-  signupTime: string;
-  appOpen: boolean;
-}
