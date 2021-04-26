@@ -4,8 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { ResultsList } from 'client/views/results/components/ResultsList';
 import { timeFormatter } from 'client/utils/timeFormatter';
 import { loadResults, loadSettings } from 'client/utils/loadData';
-import { Result } from 'client/typings/result.typings';
-
+import { Result } from 'shared/typings/models/result';
 import { RootState } from 'client/typings/redux.typings';
 
 export const ResultsView: FC = (): ReactElement => {

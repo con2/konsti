@@ -1,4 +1,4 @@
-import { Result } from 'server/typings/result.typings';
+import { Result } from 'shared/typings/models/result';
 
 export interface GroupAssignResult {
   score: number;

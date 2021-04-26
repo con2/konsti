@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Result } from 'client/typings/result.typings';
+import { Result } from 'shared/typings/models/result';
 import {
   ResultsByUsername,
   Props,

@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import { PadgRandomAssignResults } from 'server/typings/padgRandomAssign.typings';
-import { Result } from 'server/typings/result.typings';
+import { Result } from 'shared/typings/models/result';
 import { SelectedGame, User } from 'shared/typings/models/user';
 
 export const formatResults = (

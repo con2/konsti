@@ -5,7 +5,7 @@ import {
 } from 'client/services/settingsServices';
 import { postSignupTime } from 'client/services/signuptimeServices';
 import { Game } from 'shared/typings/models/game';
-import { Settings } from 'client/typings/settings.typings';
+import { Settings } from 'shared/typings/models/settings';
 import { AppThunk } from 'client/typings/utils.typings';
 import {
   SubmitUpdateHiddenAsync,
