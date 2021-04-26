@@ -1,12 +1,12 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Signup } from 'client/typings/user.typings';
 import {
   MySignupsList,
   Props,
 } from 'client/views/my-games/components/MySignupsList';
+import { SelectedGame } from 'shared/typings/models/user';
 
-const signedGames: Signup[] = [];
+const signedGames: SelectedGame[] = [];
 
 describe('MySignupsList', () => {
   it('should render correctly', () => {

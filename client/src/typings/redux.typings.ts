@@ -1,9 +1,8 @@
 import { Game } from 'shared/typings/models/game';
 import { GroupMember } from 'client/typings/group.typings';
-import { Signup } from 'client/typings/user.typings';
 import { Result } from 'client/typings/result.typings';
 import { appReducer } from 'client/utils/store';
-import { UserGroup } from 'shared/typings/models/user';
+import { SelectedGame, UserGroup } from 'shared/typings/models/user';
 
 export interface AdminState {
   hiddenGames: readonly Game[];
@@ -28,9 +27,9 @@ export interface LoginState {
 }
 
 export interface MyGamesState {
-  enteredGames: readonly Signup[];
+  enteredGames: readonly SelectedGame[];
   favoritedGames: readonly Game[];
-  signedGames: readonly Signup[];
+  signedGames: readonly SelectedGame[];
 }
 
 export interface ResultsState {
@@ -40,7 +39,7 @@ export interface ResultsState {
 
 export interface SignupState {
   signupTime: string;
-  selectedGames: readonly Signup[];
+  selectedGames: readonly SelectedGame[];
   unsavedChanges: boolean;
 }
 

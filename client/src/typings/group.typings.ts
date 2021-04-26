@@ -1,10 +1,10 @@
-import { Signup } from 'client/typings/user.typings';
+import { SelectedGame } from 'shared/typings/models/user';
 
 export interface GroupMember {
-  enteredGames: readonly Signup[];
+  enteredGames: readonly SelectedGame[];
   groupCode: string;
   serial: string;
-  signedGames: readonly Signup[];
+  signedGames: readonly SelectedGame[];
   username: string;
 }
 

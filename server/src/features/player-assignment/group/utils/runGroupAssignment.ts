@@ -5,7 +5,7 @@ import { shuffleArray } from 'server/utils/shuffleArray';
 import { Game } from 'shared/typings/models/game';
 import { GroupAssignResult } from 'server/typings/groupAssign.typings';
 import { Result } from 'server/typings/result.typings';
-import { SignedGame, User } from 'shared/typings/models/user';
+import { SelectedGame, User } from 'shared/typings/models/user';
 
 export const runGroupAssignment = (
   playerGroups: readonly User[][],
@@ -20,8 +20,8 @@ export const runGroupAssignment = (
 
   const findEnteredGame = (
     enteredGame: Game,
-    signedGames: readonly SignedGame[]
-  ): SignedGame | undefined => {
+    signedGames: readonly SelectedGame[]
+  ): SelectedGame | undefined => {
     return signedGames.find(
       (signedGame) => signedGame.gameDetails.gameId === enteredGame.gameId
     );

@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import { timeFormatter } from 'client/utils/timeFormatter';
-import { Signup } from 'client/typings/user.typings';
+import { SelectedGame } from 'shared/typings/models/user';
 
 export interface Props {
-  signups: Signup[];
+  signups: SelectedGame[];
   startTimes: readonly string[];
 }
 

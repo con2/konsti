@@ -1,6 +1,6 @@
 import moment from 'moment';
 import { logger } from 'server/utils/logger';
-import { Signup, Result } from 'server/typings/result.typings';
+import { UserSignup, Result } from 'server/typings/result.typings';
 import { User } from 'shared/typings/models/user';
 import { findUsers, saveSignup } from 'server/features/user/userRepository';
 
@@ -8,7 +8,7 @@ export const removeOverlapSignups = async (
   results: readonly Result[]
 ): Promise<void> => {
   logger.debug('Find overlapping signups');
-  const signupData: Signup[] = [];
+  const signupData: UserSignup[] = [];
 
   let users: User[];
   try {

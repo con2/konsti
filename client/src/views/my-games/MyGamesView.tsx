@@ -13,9 +13,9 @@ import {
 import { loadUser, loadGames, loadGroupMembers } from 'client/utils/loadData';
 import { isGroupLeader } from 'client/views/group/GroupView';
 import { Game } from 'shared/typings/models/game';
-import { Signup } from 'client/typings/user.typings';
 import { GroupMember } from 'client/typings/group.typings';
 import { RootState } from 'client/typings/redux.typings';
+import { SelectedGame } from 'shared/typings/models/user';
 
 export const MyGamesView: FC = (): ReactElement => {
   const { t } = useTranslation();
@@ -24,13 +24,13 @@ export const MyGamesView: FC = (): ReactElement => {
   const groupCode: string = useSelector(
     (state: RootState) => state.login.groupCode
   );
-  const signedGames: readonly Signup[] = useSelector(
+  const signedGames: readonly SelectedGame[] = useSelector(
     (state: RootState) => state.myGames.signedGames
   );
   const favoritedGames: readonly Game[] = useSelector(
     (state: RootState) => state.myGames.favoritedGames
   );
-  const enteredGames: readonly Signup[] = useSelector(
+  const enteredGames: readonly SelectedGame[] = useSelector(
     (state: RootState) => state.myGames.enteredGames
   );
   const groupMembers: readonly GroupMember[] = useSelector(
@@ -64,8 +64,8 @@ export const MyGamesView: FC = (): ReactElement => {
   };
 
   const getSignedGames = (
-    signedGames: readonly Signup[]
-  ): readonly Signup[] => {
+    signedGames: readonly SelectedGame[]
+  ): readonly SelectedGame[] => {
     if (isGroupLeader(groupCode, serial)) {
       if (!showAllGames) return getUpcomingSignedGames(signedGames);
       else return signedGames;

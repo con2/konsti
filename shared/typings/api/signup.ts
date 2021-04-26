@@ -1,8 +1,8 @@
-import { SignedGame } from 'shared/typings/models/user';
+import { SelectedGame } from 'shared/typings/models/user';
 
 export interface PostSignupResponse {
   message: string;
-  signedGames: readonly SignedGame[];
+  signedGames: readonly SelectedGame[];
   status: 'success';
 }
 

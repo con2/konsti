@@ -1,9 +1,8 @@
 import mongoose from 'mongoose';
 import { Game } from 'shared/typings/models/game';
 import {
-  EnteredGame,
   FavoritedGame,
-  SignedGame,
+  SelectedGame,
   User,
   UserGroup,
 } from 'shared/typings/models/user';
@@ -17,8 +16,8 @@ export interface NewUserData {
   userGroup?: UserGroup;
   groupCode?: string;
   favoritedGames?: readonly FavoritedGame[];
-  signedGames?: readonly SignedGame[];
-  enteredGames?: readonly EnteredGame[];
+  signedGames?: readonly SelectedGame[];
+  enteredGames?: readonly SelectedGame[];
 }
 
 export interface SignupWish {
@@ -34,8 +33,8 @@ export interface PlayerIdWithPriority {
 
 export interface GetGroupReturnValue {
   groupCode: string;
-  signedGames: readonly SignedGame[];
-  enteredGames: readonly EnteredGame[];
+  signedGames: readonly SelectedGame[];
+  enteredGames: readonly SelectedGame[];
   serial: string;
   username: string;
 }
