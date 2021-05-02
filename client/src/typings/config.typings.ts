@@ -1,5 +1,4 @@
 export interface Config {
-  appName: string;
   SIGNUP_END_TIME: number;
   SIGNUP_OPEN_TIME: number;
   MESSAGE_DELAY: number;

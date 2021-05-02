@@ -1,24 +1,13 @@
-export enum AssignmentStrategy {
-  munkres = 'munkres',
-  group = 'group',
-  padg = 'padg',
-  random = 'random',
-  groupPadg = 'group+padg',
-  randomPadg = 'random+padg',
-}
-
 export enum GameUpdateMethod {
   signups = 'signups',
   assign = 'assign',
 }
 
 export interface Config {
-  appName: string;
   port: number;
   debug: boolean;
   logDir: string;
   enableAccessLog: boolean;
-  assignmentStrategy: AssignmentStrategy;
   dbConnString: string;
   dbName: string;
   jwtSecretKey: string;

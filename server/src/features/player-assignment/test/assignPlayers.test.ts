@@ -9,7 +9,7 @@ import { verifyUserSignups } from 'server/features/player-assignment/test/utils/
 import { removeOverlapSignups } from 'server/features/player-assignment/utils/removeOverlapSignups';
 import { verifyResults } from 'server/features/player-assignment/test/utils/verifyResults';
 import { saveResults } from 'server/features/player-assignment/utils/saveResults';
-import { AssignmentStrategy } from 'server/typings/config.typings';
+import { AssignmentStrategy } from 'shared/sharedConfig.types';
 
 let mongoServer: MongoMemoryServer;
 
@@ -53,7 +53,7 @@ describe('Assignment with valid data', () => {
   test('should return success with group strategy', async () => {
     const { CONVENTION_START_TIME } = config;
 
-    const assignmentStrategy = AssignmentStrategy.group;
+    const assignmentStrategy = AssignmentStrategy.GROUP;
 
     const startingTime = moment(CONVENTION_START_TIME).add(2, 'hours').format();
 
@@ -118,7 +118,7 @@ describe('Assignment with valid data', () => {
   test('should return success with padg strategy', async () => {
     const { CONVENTION_START_TIME } = config;
 
-    const assignmentStrategy = AssignmentStrategy.padg;
+    const assignmentStrategy = AssignmentStrategy.PADG;
 
     const startingTime = moment(CONVENTION_START_TIME).add(2, 'hours').format();
 
@@ -183,7 +183,7 @@ describe('Assignment with valid data', () => {
   test('should return success with random strategy', async () => {
     const { CONVENTION_START_TIME } = config;
 
-    const assignmentStrategy = AssignmentStrategy.random;
+    const assignmentStrategy = AssignmentStrategy.RANDOM;
 
     const startingTime = moment(CONVENTION_START_TIME).add(2, 'hours').format();
 
@@ -247,7 +247,7 @@ describe('Assignment with valid data', () => {
   test('should return success with group+padg strategy', async () => {
     const { CONVENTION_START_TIME } = config;
 
-    const assignmentStrategy = AssignmentStrategy.groupPadg;
+    const assignmentStrategy = AssignmentStrategy.GROUP_PADG;
 
     const startingTime = moment(CONVENTION_START_TIME).add(2, 'hours').format();
 
@@ -312,7 +312,7 @@ describe('Assignment with valid data', () => {
   test('should return success with random+padg strategy', async () => {
     const { CONVENTION_START_TIME } = config;
 
-    const assignmentStrategy = AssignmentStrategy.randomPadg;
+    const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
 
     const startingTime = moment(CONVENTION_START_TIME).add(2, 'hours').format();
 
@@ -377,7 +377,7 @@ describe('Assignment with valid data', () => {
   test('should return valid results after multiple executions on different times', async () => {
     const { CONVENTION_START_TIME } = config;
 
-    const assignmentStrategy = AssignmentStrategy.group;
+    const assignmentStrategy = AssignmentStrategy.GROUP;
 
     const startingTime = moment(CONVENTION_START_TIME).add(2, 'hours').format();
 
@@ -454,7 +454,7 @@ describe('Assignment with no games', () => {
   test('should return error with group strategy', async () => {
     const { CONVENTION_START_TIME } = config;
 
-    const assignmentStrategy = AssignmentStrategy.group;
+    const assignmentStrategy = AssignmentStrategy.GROUP;
 
     const startingTime = moment(CONVENTION_START_TIME).add(2, 'hours').format();
 
@@ -466,7 +466,7 @@ describe('Assignment with no games', () => {
   test('should return error with padg strategy', async () => {
     const { CONVENTION_START_TIME } = config;
 
-    const assignmentStrategy = AssignmentStrategy.padg;
+    const assignmentStrategy = AssignmentStrategy.PADG;
 
     const startingTime = moment(CONVENTION_START_TIME).add(2, 'hours').format();
 
@@ -478,7 +478,7 @@ describe('Assignment with no games', () => {
   test('should return error with random strategy', async () => {
     const { CONVENTION_START_TIME } = config;
 
-    const assignmentStrategy = AssignmentStrategy.random;
+    const assignmentStrategy = AssignmentStrategy.RANDOM;
 
     const startingTime = moment(CONVENTION_START_TIME).add(2, 'hours').format();
 
@@ -490,7 +490,7 @@ describe('Assignment with no games', () => {
   test('should return error with group+padg strategy', async () => {
     const { CONVENTION_START_TIME } = config;
 
-    const assignmentStrategy = AssignmentStrategy.groupPadg;
+    const assignmentStrategy = AssignmentStrategy.GROUP_PADG;
 
     const startingTime = moment(CONVENTION_START_TIME).add(2, 'hours').format();
 
@@ -502,7 +502,7 @@ describe('Assignment with no games', () => {
   test('should return error with random+padg strategy', async () => {
     const { CONVENTION_START_TIME } = config;
 
-    const assignmentStrategy = AssignmentStrategy.randomPadg;
+    const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
 
     const startingTime = moment(CONVENTION_START_TIME).add(2, 'hours').format();
 
@@ -534,7 +534,7 @@ describe('Assignment with no players', () => {
   test('should return error with group strategy', async () => {
     const { CONVENTION_START_TIME } = config;
 
-    const assignmentStrategy = AssignmentStrategy.group;
+    const assignmentStrategy = AssignmentStrategy.GROUP;
 
     const startingTime = moment(CONVENTION_START_TIME).add(2, 'hours').format();
 
@@ -546,7 +546,7 @@ describe('Assignment with no players', () => {
   test('should return error with padg strategy', async () => {
     const { CONVENTION_START_TIME } = config;
 
-    const assignmentStrategy = AssignmentStrategy.padg;
+    const assignmentStrategy = AssignmentStrategy.PADG;
 
     const startingTime = moment(CONVENTION_START_TIME).add(2, 'hours').format();
 
@@ -558,7 +558,7 @@ describe('Assignment with no players', () => {
   test('should return error with random strategy', async () => {
     const { CONVENTION_START_TIME } = config;
 
-    const assignmentStrategy = AssignmentStrategy.random;
+    const assignmentStrategy = AssignmentStrategy.RANDOM;
 
     const startingTime = moment(CONVENTION_START_TIME).add(2, 'hours').format();
 
@@ -570,7 +570,7 @@ describe('Assignment with no players', () => {
   test('should return error with group+padg strategy', async () => {
     const { CONVENTION_START_TIME } = config;
 
-    const assignmentStrategy = AssignmentStrategy.groupPadg;
+    const assignmentStrategy = AssignmentStrategy.GROUP_PADG;
 
     const startingTime = moment(CONVENTION_START_TIME).add(2, 'hours').format();
 
@@ -582,7 +582,7 @@ describe('Assignment with no players', () => {
   test('should return error with random+padg strategy', async () => {
     const { CONVENTION_START_TIME } = config;
 
-    const assignmentStrategy = AssignmentStrategy.randomPadg;
+    const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
 
     const startingTime = moment(CONVENTION_START_TIME).add(2, 'hours').format();
 

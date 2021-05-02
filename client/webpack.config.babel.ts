@@ -7,7 +7,8 @@ import Dotenv from 'dotenv-webpack';
 import { Configuration } from 'webpack';
 import { merge } from 'webpack-merge';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
-import { config } from './src/config';
+import { config } from 'client/config';
+import { sharedConfig } from 'shared/sharedConfig';
 
 const TARGET = process.env.npm_lifecycle_event;
 
@@ -54,7 +55,7 @@ const commonConfig: Configuration = {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: config.appName,
+      title: sharedConfig.appName,
       favicon: path.resolve(__dirname, 'assets', 'favicon.png'),
       template: path.resolve(__dirname, 'src', 'index.html'),
     }),

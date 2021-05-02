@@ -6,6 +6,7 @@ import { config } from 'server/config';
 import { ASSIGNMENT_ENDPOINT } from 'shared/constants/apiEndpoints';
 import { PostPlayerAssignmentResponse } from 'shared/typings/api/assignment';
 import { ServerError } from 'shared/typings/api/errors';
+import { sharedConfig } from 'shared/sharedConfig';
 
 // Assign players to games
 export const storeAssignment = async (
@@ -25,7 +26,7 @@ export const storeAssignment = async (
   try {
     assignResults = await runAssignment(
       startingTime,
-      config.assignmentStrategy
+      sharedConfig.assignmentStrategy
     );
   } catch (error) {
     logger.error(`Player assign error: ${error}`);

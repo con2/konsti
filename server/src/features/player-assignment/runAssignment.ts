@@ -4,9 +4,9 @@ import { removeInvalidSignupsFromUsers } from 'server/features/player-assignment
 import { PlayerAssignmentResult } from 'server/typings/result.typings';
 import { User } from 'shared/typings/models/user';
 import { Game } from 'shared/typings/models/game';
-import { AssignmentStrategy } from 'server/typings/config.typings';
 import { findUsers } from 'server/features/user/userRepository';
 import { findGames } from 'server/features/game/gameRepository';
+import { AssignmentStrategy } from 'shared/sharedConfig.types';
 
 export const runAssignment = async (
   startingTime: string,
