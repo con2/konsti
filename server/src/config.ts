@@ -1,13 +1,6 @@
-import {
-  Config,
-  AssignmentStrategy,
-  GameUpdateMethod,
-} from 'server/typings/config.typings';
+import { Config, GameUpdateMethod } from 'server/typings/config.typings';
 
 const commonConfig = {
-  // App info
-  appName: 'Konsti',
-
   // Server settings
   port:
     typeof process.env.PORT === 'string'
@@ -20,7 +13,6 @@ const commonConfig = {
   enableAccessLog: false,
 
   // App settings
-  assignmentStrategy: AssignmentStrategy.groupPadg, // 'munkres', 'group', 'padg', 'group+padg'
   bundleCompression: true,
   CONVENTION_START_TIME: '2019-11-23T08:00:00Z', // UTC date
   enableRemoveOverlapSignups: true,

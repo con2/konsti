@@ -7,8 +7,8 @@ import { saveResults } from 'server/features/player-assignment/utils/saveResults
 import { removeOverlapSignups } from 'server/features/player-assignment/utils/removeOverlapSignups';
 import { verifyUserSignups } from 'server/features/player-assignment/test/utils/verifyUserSignups';
 import { verifyResults } from 'server/features/player-assignment/test/utils/verifyResults';
-import { AssignmentStrategy } from 'server/typings/config.typings';
 import { db } from 'server/db/mongodb';
+import { AssignmentStrategy } from 'shared/sharedConfig.types';
 
 const testAssignPlayers = async (
   assignmentStrategy: AssignmentStrategy
@@ -60,10 +60,10 @@ const testAssignPlayers = async (
 
 const getAssignmentStrategy = (userParameter: string): AssignmentStrategy => {
   if (
-    userParameter === AssignmentStrategy.munkres ||
-    userParameter === AssignmentStrategy.group ||
-    userParameter === AssignmentStrategy.padg ||
-    userParameter === AssignmentStrategy.groupPadg
+    userParameter === AssignmentStrategy.MUNKRES ||
+    userParameter === AssignmentStrategy.GROUP ||
+    userParameter === AssignmentStrategy.PADG ||
+    userParameter === AssignmentStrategy.GROUP_PADG
   ) {
     return userParameter;
   } else {

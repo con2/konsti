@@ -6,7 +6,7 @@ import { randomAssignPlayers } from 'server/features/player-assignment/random/ra
 import { User } from 'shared/typings/models/user';
 import { Game } from 'shared/typings/models/game';
 import { PlayerAssignmentResult } from 'server/typings/result.typings';
-import { AssignmentStrategy } from 'server/typings/config.typings';
+import { AssignmentStrategy } from 'shared/sharedConfig.types';
 
 export const runAssignmentStrategy = (
   players: readonly User[],

@@ -11,6 +11,7 @@ import { sleep } from 'server/utils/sleep';
 import { kompassiGameMapper } from 'server/utils/kompassiGameMapper';
 import { saveSignupTime } from 'server/features/settings/settingsRepository';
 import { saveGames } from 'server/features/game/gameRepository';
+import { sharedConfig } from 'shared/sharedConfig';
 
 const {
   autoUpdateGamesEnabled,
@@ -69,7 +70,10 @@ export const autoAssignPlayers = async (): Promise<void> => {
 
     let assignResults;
     try {
-      assignResults = await runAssignment(startTime, config.assignmentStrategy);
+      assignResults = await runAssignment(
+        startTime,
+        sharedConfig.assignmentStrategy
+      );
     } catch (error) {
       logger.error(error);
     }
