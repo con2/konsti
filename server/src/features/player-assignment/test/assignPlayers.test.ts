@@ -9,7 +9,7 @@ import { verifyUserSignups } from 'server/features/player-assignment/test/utils/
 import { removeOverlapSignups } from 'server/features/player-assignment/utils/removeOverlapSignups';
 import { verifyResults } from 'server/features/player-assignment/test/utils/verifyResults';
 import { saveResults } from 'server/features/player-assignment/utils/saveResults';
-import { AssignmentStrategy } from 'shared/sharedConfig.types';
+import { AssignmentStrategy } from 'shared/config/sharedConfig.types';
 
 let mongoServer: MongoMemoryServer;
 
