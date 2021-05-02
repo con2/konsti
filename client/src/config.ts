@@ -1,9 +1,6 @@
 import { Config } from './typings/config.typings';
 
 export const config: Config = {
-  // App info
-  appName: 'Konsti',
-
   // App settings
   SIGNUP_END_TIME: 30, // minutes
   SIGNUP_OPEN_TIME: 4, // hours

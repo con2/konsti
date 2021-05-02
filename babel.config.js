@@ -42,7 +42,7 @@ module.exports = (api) => {
   };
 
   const serverOverrides = {
-    test: './server/**/*',
+    test: './server/',
     presets: [
       [
         '@babel/preset-env',
@@ -68,7 +68,7 @@ module.exports = (api) => {
   };
 
   const sharedOverrides = {
-    test: './shared/**/*',
+    test: './shared/',
     presets: [
       [
         '@babel/preset-env',
