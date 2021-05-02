@@ -8,7 +8,7 @@ import { removeOverlapSignups } from 'server/features/player-assignment/utils/re
 import { verifyUserSignups } from 'server/features/player-assignment/test/utils/verifyUserSignups';
 import { verifyResults } from 'server/features/player-assignment/test/utils/verifyResults';
 import { db } from 'server/db/mongodb';
-import { AssignmentStrategy } from 'shared/sharedConfig.types';
+import { AssignmentStrategy } from 'shared/config/sharedConfig.types';
 
 const testAssignPlayers = async (
   assignmentStrategy: AssignmentStrategy

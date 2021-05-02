@@ -8,7 +8,7 @@ import { Configuration } from 'webpack';
 import { merge } from 'webpack-merge';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import { config } from 'client/config';
-import { sharedConfig } from 'shared/sharedConfig';
+import { sharedConfig } from 'shared/config/sharedConfig';
 
 const TARGET = process.env.npm_lifecycle_event;
 

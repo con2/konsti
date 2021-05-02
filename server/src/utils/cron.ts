@@ -11,7 +11,7 @@ import { sleep } from 'server/utils/sleep';
 import { kompassiGameMapper } from 'server/utils/kompassiGameMapper';
 import { saveSignupTime } from 'server/features/settings/settingsRepository';
 import { saveGames } from 'server/features/game/gameRepository';
-import { sharedConfig } from 'shared/sharedConfig';
+import { sharedConfig } from 'shared/config/sharedConfig';
 
 const {
   autoUpdateGamesEnabled,
