@@ -6,7 +6,7 @@ import { User } from 'shared/typings/models/user';
 import { Game } from 'shared/typings/models/game';
 import { findUsers } from 'server/features/user/userRepository';
 import { findGames } from 'server/features/game/gameRepository';
-import { AssignmentStrategy } from 'shared/sharedConfig.types';
+import { AssignmentStrategy } from 'shared/config/sharedConfig.types';
 
 export const runAssignment = async (
   startingTime: string,
