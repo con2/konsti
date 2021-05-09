@@ -24,7 +24,7 @@ import {
 } from 'shared/constants/apiEndpoints';
 import { SignupData } from 'shared/typings/api/signup';
 import { GroupData } from 'shared/typings/api/groups';
-import { FavoriteData } from 'shared/typings/api/favorite';
+import { SaveFavoriteRequest } from 'shared/typings/api/favorite';
 import {
   LoginFormFields,
   RegistrationFormFields,
@@ -66,7 +66,7 @@ export const postLogin = async (
 };
 
 export const postFavorite = async (
-  req: Request<{}, {}, { favoriteData: FavoriteData }>,
+  req: Request<{}, {}, { favoriteData: SaveFavoriteRequest }>,
   res: Response
 ): Promise<Response> => {
   logger.info(`API call: POST ${FAVORITE_ENDPOINT}`);

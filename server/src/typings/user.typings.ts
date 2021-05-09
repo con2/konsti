@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-import { Game } from 'shared/typings/models/game';
 import {
   FavoritedGame,
   SelectedGame,
@@ -37,9 +36,4 @@ export interface GetGroupReturnValue {
   enteredGames: readonly SelectedGame[];
   serial: string;
   username: string;
-}
-
-export interface SaveFavoriteRequest {
-  username: string;
-  favoritedGames: readonly Game[];
 }

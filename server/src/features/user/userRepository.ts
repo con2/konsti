@@ -1,7 +1,7 @@
 import { logger } from 'server/utils/logger';
 import { UserModel } from 'server/features/user/userSchema';
 import { UserSignup } from 'server/typings/result.typings';
-import { NewUserData, SaveFavoriteRequest } from 'server/typings/user.typings';
+import { NewUserData } from 'server/typings/user.typings';
 import { Serial } from 'server/typings/serial.typings';
 import { GameDoc } from 'server/typings/game.typings';
 import { findGames } from 'server/features/game/gameRepository';
@@ -12,6 +12,7 @@ import {
   User,
   UserGroup,
 } from 'shared/typings/models/user';
+import { SaveFavoriteRequest } from 'shared/typings/api/favorite';
 
 export const removeUsers = async (): Promise<void> => {
   logger.info('MongoDB: remove ALL users from db');

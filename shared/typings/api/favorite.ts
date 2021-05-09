@@ -6,7 +6,7 @@ export interface PostFavoriteResponse {
   status: 'success';
 }
 
-export interface FavoriteData {
+export interface SaveFavoriteRequest {
   username: string;
   favoritedGames: readonly Game[];
 }

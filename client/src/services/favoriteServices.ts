@@ -3,12 +3,12 @@ import { api } from 'client/utils/api';
 import { ServerError } from 'shared/typings/api/errors';
 import { FAVORITE_ENDPOINT } from 'shared/constants/apiEndpoints';
 import {
-  FavoriteData,
+  SaveFavoriteRequest,
   PostFavoriteResponse,
 } from 'shared/typings/api/favorite';
 
 export const postFavorite = async (
-  favoriteData: FavoriteData
+  favoriteData: SaveFavoriteRequest
 ): Promise<PostFavoriteResponse | ServerError> => {
   let response: AxiosResponse;
   try {

@@ -9,7 +9,7 @@ import {
   SUBMIT_GET_USER_GAMES,
   SUBMIT_UPDATE_FAVORITES,
 } from 'client/typings/myGamesActions.typings';
-import { FavoriteData } from 'shared/typings/api/favorite';
+import { SaveFavoriteRequest } from 'shared/typings/api/favorite';
 
 export const submitGetUser = (username: string): AppThunk => {
   return async (dispatch): Promise<void> => {
@@ -48,7 +48,9 @@ const submitGetUserAsync = ({
   };
 };
 
-export const submitUpdateFavorites = (favoriteData: FavoriteData): AppThunk => {
+export const submitUpdateFavorites = (
+  favoriteData: SaveFavoriteRequest
+): AppThunk => {
   return async (dispatch): Promise<void> => {
     const updateFavoriteResponse = await postFavorite(favoriteData);
 
