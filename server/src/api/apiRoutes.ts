@@ -21,9 +21,12 @@ import {
   postLogin,
   postUser,
   postSignup,
+  postEnteredGame,
+  deleteEnteredGame,
 } from 'server/features/user/userController';
 import {
   ASSIGNMENT_ENDPOINT,
+  ENTERED_GAME_ENDPOINT,
   FAVORITE_ENDPOINT,
   FEEDBACK_ENDPOINT,
   GAMES_ENDPOINT,
@@ -56,6 +59,7 @@ apiRoutes.post(SIGNUPTIME_ENDPOINT, postSignupTime);
 apiRoutes.post(FEEDBACK_ENDPOINT, postFeedback);
 apiRoutes.post(GROUP_ENDPOINT, postGroup);
 apiRoutes.post(TOGGLE_APP_OPEN_ENDPOINT, postAppOpen);
+apiRoutes.post(ENTERED_GAME_ENDPOINT, postEnteredGame);
 
 /* GET routes */
 
@@ -65,5 +69,9 @@ apiRoutes.get(USERS_BY_SERIAL_ENDPOINT, getUserBySerial);
 apiRoutes.get(SETTINGS_ENDPOINT, getSettings);
 apiRoutes.get(RESULTS_ENDPOINT, getResults);
 apiRoutes.get(GROUP_ENDPOINT, getGroup);
+
+/* DELETE routes */
+
+apiRoutes.delete(ENTERED_GAME_ENDPOINT, deleteEnteredGame);
 
 /* eslint-enable @typescript-eslint/no-misused-promises */
