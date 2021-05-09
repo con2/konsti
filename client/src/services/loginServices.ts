@@ -1,9 +1,8 @@
 import { AxiosResponse, AxiosError } from 'axios';
 import { api } from 'client/utils/api';
-import { LoginFormFields } from 'client/typings/user.typings';
 import { ServerError } from 'shared/typings/api/errors';
 import { LOGIN_ENDPOINT } from 'shared/constants/apiEndpoints';
-import { PostLoginResponse } from 'shared/typings/api/login';
+import { LoginFormFields, PostLoginResponse } from 'shared/typings/api/login';
 
 export const postLogin = async (
   loginFormFields: LoginFormFields

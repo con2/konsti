@@ -5,3 +5,8 @@ export interface PostFavoriteResponse {
   message: string;
   status: 'success';
 }
+
+export interface FavoriteData {
+  username: string;
+  favoritedGames: readonly Game[];
+}

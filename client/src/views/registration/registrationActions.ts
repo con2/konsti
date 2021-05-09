@@ -1,6 +1,6 @@
 import { postRegistration } from 'client/services/userServices';
 import { submitLogin } from 'client/views/login/loginActions';
-import { RegistrationFormFields } from 'client/typings/user.typings';
+import { RegistrationFormFields } from 'shared/typings/api/login';
 import { AppThunk } from 'client/typings/utils.typings';
 
 export const submitRegistration = (

@@ -7,12 +7,3 @@ export interface GroupMember {
   signedGames: readonly SelectedGame[];
   username: string;
 }
-
-export interface GroupData {
-  groupCode: string;
-  leader: boolean;
-  ownSerial: string;
-  username: string;
-  leaveGroup?: boolean;
-  closeGroup?: boolean;
-}

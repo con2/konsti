@@ -14,9 +14,10 @@ import {
   SIGNUPTIME_ENDPOINT,
   TOGGLE_APP_OPEN_ENDPOINT,
 } from 'shared/constants/apiEndpoints';
+import { Game } from 'shared/typings/models/game';
 
 export const postHidden = async (
-  req: Request,
+  req: Request<{}, {}, { hiddenData: readonly Game[] }>,
   res: Response
 ): Promise<Response> => {
   logger.info(`API call: POST ${HIDDEN_ENDPOINT}`);
@@ -37,7 +38,7 @@ export const postHidden = async (
 };
 
 export const postSignupTime = async (
-  req: Request,
+  req: Request<{}, {}, { signupTime: string }>,
   res: Response
 ): Promise<Response> => {
   logger.info(`API call: POST ${SIGNUPTIME_ENDPOINT}`);
@@ -58,7 +59,7 @@ export const postSignupTime = async (
 };
 
 export const postAppOpen = async (
-  req: Request,
+  req: Request<{}, {}, { appOpen: boolean }>,
   res: Response
 ): Promise<Response> => {
   logger.info(`API call: POST ${TOGGLE_APP_OPEN_ENDPOINT}`);

@@ -22,9 +22,16 @@ import {
   USERS_BY_SERIAL_ENDPOINT,
   USERS_ENDPOINT,
 } from 'shared/constants/apiEndpoints';
+import { SignupData } from 'shared/typings/api/signup';
+import { GroupData } from 'shared/typings/api/groups';
+import { FavoriteData } from 'shared/typings/api/favorite';
+import {
+  LoginFormFields,
+  RegistrationFormFields,
+} from 'shared/typings/api/login';
 
 export const postUser = async (
-  req: Request,
+  req: Request<{}, {}, RegistrationFormFields>,
   res: Response
 ): Promise<Response> => {
   logger.info(`API call: POST ${USERS_ENDPOINT}`);
@@ -34,6 +41,7 @@ export const postUser = async (
     return res.status(422).json({ errors: errors.array() });
   }
 
+  // @ts-expect-error: TODO
   const { username, password, serial, changePassword } = req.body;
 
   const response = await storeUser(username, password, serial, changePassword);
@@ -41,7 +49,7 @@ export const postUser = async (
 };
 
 export const postLogin = async (
-  req: Request,
+  req: Request<{}, {}, LoginFormFields>,
   res: Response
 ): Promise<Response> => {
   logger.info(`API call: POST ${LOGIN_ENDPOINT}`);
@@ -52,12 +60,13 @@ export const postLogin = async (
     return res.sendStatus(422);
   }
 
+  // @ts-expect-error: TODO
   const response = await login(username, password, jwt);
   return res.send(response);
 };
 
 export const postFavorite = async (
-  req: Request,
+  req: Request<{}, {}, { favoriteData: FavoriteData }>,
   res: Response
 ): Promise<Response> => {
   logger.info(`API call: POST ${FAVORITE_ENDPOINT}`);
@@ -78,7 +87,7 @@ export const postFavorite = async (
 };
 
 export const postGroup = async (
-  req: Request,
+  req: Request<{}, {}, { groupData: GroupData }>,
   res: Response
 ): Promise<Response> => {
   logger.info(`API call: POST ${GROUP_ENDPOINT}`);
@@ -223,7 +232,7 @@ export const getGroup = async (
 };
 
 export const postSignup = async (
-  req: Request,
+  req: Request<{}, {}, { signupData: SignupData }>,
   res: Response
 ): Promise<Response> => {
   logger.info(`API call: POST ${SIGNUP_ENDPOINT}`);

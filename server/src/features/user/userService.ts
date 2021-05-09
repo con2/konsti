@@ -313,8 +313,8 @@ export const storeGroup = async (
   leader: boolean,
   groupCode: string,
   ownSerial: string,
-  leaveGroup: boolean,
-  closeGroup: boolean
+  leaveGroup: boolean = false,
+  closeGroup: boolean = false
 ): Promise<PostGroupResponse | ServerError> => {
   if (closeGroup) {
     const groupMembers = await findGroupMembers(groupCode);
