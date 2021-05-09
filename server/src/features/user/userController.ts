@@ -10,11 +10,14 @@ import {
   storeGroup,
   login,
   storeSignup,
+  storeEnteredGame,
+  removeEnteredGame,
 } from 'server/features/user/userService';
 import { UserGroup } from 'shared/typings/models/user';
 import { validateAuthHeader } from 'server/utils/authHeader';
 import { logger } from 'server/utils/logger';
 import {
+  ENTERED_GAME_ENDPOINT,
   FAVORITE_ENDPOINT,
   GROUP_ENDPOINT,
   LOGIN_ENDPOINT,
@@ -22,7 +25,7 @@ import {
   USERS_BY_SERIAL_ENDPOINT,
   USERS_ENDPOINT,
 } from 'shared/constants/apiEndpoints';
-import { SignupData } from 'shared/typings/api/signup';
+import { EnteredGameRequest, SignupData } from 'shared/typings/api/signup';
 import { GroupData } from 'shared/typings/api/groups';
 import { SaveFavoriteRequest } from 'shared/typings/api/favorite';
 import {
@@ -251,5 +254,73 @@ export const postSignup = async (
   const { selectedGames, username, signupTime } = signupData;
 
   const response = await storeSignup(selectedGames, username, signupTime);
+  return res.send(response);
+};
+
+export const postEnteredGame = async (
+  req: Request<{}, {}, { enteredGameRequest: EnteredGameRequest }>,
+  res: Response
+): Promise<Response> => {
+  logger.info(`API call: POST ${ENTERED_GAME_ENDPOINT}`);
+
+  const validToken = validateAuthHeader(
+    req.headers.authorization,
+    UserGroup.USER
+  );
+
+  if (!validToken) {
+    return res.sendStatus(401);
+  }
+
+  const PostEnteredGameParameters = Record({
+    username: String,
+    enteredGameId: String,
+    signupTime: String,
+  });
+
+  try {
+    PostEnteredGameParameters.check(req.query);
+  } catch (error) {
+    logger.error(
+      `Error validating postEnteredGame parameters: ${error.message}`
+    );
+    return res.sendStatus(422);
+  }
+
+  const response = await storeEnteredGame(req.body.enteredGameRequest);
+  return res.send(response);
+};
+
+export const deleteEnteredGame = async (
+  req: Request<{}, {}, { enteredGameRequest: EnteredGameRequest }>,
+  res: Response
+): Promise<Response> => {
+  logger.info(`API call: DELETE ${ENTERED_GAME_ENDPOINT}`);
+
+  const validToken = validateAuthHeader(
+    req.headers.authorization,
+    UserGroup.USER
+  );
+
+  if (!validToken) {
+    return res.sendStatus(401);
+  }
+
+  const DeleteEnteredGameParameters = Record({
+    username: String,
+    enteredGameId: String,
+    signupTime: String,
+  });
+
+  try {
+    DeleteEnteredGameParameters.check(req.query);
+  } catch (error) {
+    logger.error(
+      `Error validating deleteEnteredGame parameters: ${error.message}`
+    );
+    return res.sendStatus(422);
+  }
+
+  const response = await removeEnteredGame(req.body.enteredGameRequest);
   return res.send(response);
 };

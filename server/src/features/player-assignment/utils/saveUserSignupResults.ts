@@ -4,7 +4,7 @@ import { Result } from 'shared/typings/models/result';
 import { GameDoc } from 'server/typings/game.typings';
 import {
   findUsers,
-  saveEnteredGames,
+  updateEnteredGames,
 } from 'server/features/user/userRepository';
 import { findGames } from 'server/features/game/gameRepository';
 import { SelectedGame, User } from 'shared/typings/models/user';
@@ -37,7 +37,7 @@ export const saveUserSignupResults = async (
           results,
           startingTime
         );
-        await saveEnteredGames(enteredGames, user.username);
+        await updateEnteredGames(enteredGames, user.username);
       })
     );
   } catch (error) {

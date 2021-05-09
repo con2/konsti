@@ -13,6 +13,8 @@ import {
   UserGroup,
 } from 'shared/typings/models/user';
 import { SaveFavoriteRequest } from 'shared/typings/api/favorite';
+import { EnteredGameRequest } from 'shared/typings/api/signup';
+import { getGameById } from 'server/features/game/gameUtils';
 
 export const removeUsers = async (): Promise<void> => {
   logger.info('MongoDB: remove ALL users from db');
@@ -390,7 +392,7 @@ export const saveFavorite = async (
   }
 };
 
-export const saveEnteredGames = async (
+export const updateEnteredGames = async (
   enteredGames: readonly SelectedGame[],
   username: string
 ): Promise<void> => {
@@ -413,4 +415,93 @@ export const saveEnteredGames = async (
     );
     return error;
   }
+};
+
+export const saveEnteredGame = async (
+  enteredGameRequest: EnteredGameRequest
+): Promise<User> => {
+  const { username, enteredGameId, signupTime } = enteredGameRequest;
+
+  let game;
+  try {
+    game = await getGameById(enteredGameId);
+  } catch (error) {
+    logger.error(error);
+    throw new Error(error);
+  }
+
+  let user;
+  try {
+    user = await UserModel.findOneAndUpdate(
+      { username },
+      {
+        $push: {
+          enteredGames: {
+            gameDetails: game._id,
+            priority: 1,
+            time: signupTime,
+          },
+        },
+      },
+      { new: true, fields: '-_id -__v -createdAt -updatedAt' }
+    )
+      .lean<User>()
+      .populate('favoritedGames')
+      .populate('enteredGames.gameDetails')
+      .populate('signedGames.gameDetails');
+  } catch (error) {
+    logger.error(
+      `MongoDB: Error saving entered game for user "${username}" - ${error}`
+    );
+    throw new Error(error);
+  }
+
+  if (!user) throw new Error(`Username ${username} not found`);
+
+  logger.info(`MongoDB: Entered game saved for user "${username}"`);
+  return user;
+};
+
+export const delEnteredGame = async (
+  enteredGameRequest: EnteredGameRequest
+): Promise<User> => {
+  const { username, enteredGameId, signupTime } = enteredGameRequest;
+
+  let game;
+  try {
+    game = await getGameById(enteredGameId);
+  } catch (error) {
+    logger.error(error);
+    throw new Error(error);
+  }
+
+  let user;
+  try {
+    user = await UserModel.findOneAndUpdate(
+      { username },
+      {
+        $pull: {
+          enteredGames: {
+            gameDetails: game._id,
+            time: signupTime,
+          },
+        },
+      },
+      { new: true }
+    )
+      .lean<User>()
+      .populate('favoritedGames')
+      .populate('enteredGames.gameDetails')
+      .populate('signedGames.gameDetails');
+  } catch (error) {
+    logger.error(
+      `MongoDB: Error deleting entered game from user "${username}" - ${error}`
+    );
+    throw new Error(error);
+  }
+
+  if (!user) throw new Error(`Username ${username} not found`);
+
+  logger.info(`MongoDB: Entered game removed from user "${username}"`);
+  return user;
 };
