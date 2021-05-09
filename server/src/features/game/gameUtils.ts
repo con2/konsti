@@ -2,6 +2,7 @@ import _ from 'lodash';
 import { findGames } from 'server/features/game/gameRepository';
 import { GameModel } from 'server/features/game/gameSchema';
 import { removeInvalidSignupsFromUsers } from 'server/features/player-assignment/utils/removeInvalidSignupsFromUsers';
+import { GameDoc } from 'server/typings/game.typings';
 import { logger } from 'server/utils/logger';
 import { Game } from 'shared/typings/models/game';
 
@@ -28,4 +29,20 @@ export const removeDeletedGames = async (
 
     await removeInvalidSignupsFromUsers();
   }
+};
+
+export const getGameById = async (gameId: string): Promise<GameDoc> => {
+  let games: GameDoc[];
+  try {
+    games = await findGames();
+  } catch (error) {
+    logger.error(`MongoDB: Error loading games - ${error}`);
+    return error;
+  }
+
+  const game = games.find((game) => game.gameId === gameId);
+
+  if (!game) throw new Error(`Game ${gameId} not found`);
+
+  return game;
 };

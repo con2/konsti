@@ -1,8 +1,17 @@
 import mongoose from 'mongoose';
 import { MongoMemoryServer } from 'mongodb-memory-server';
 import { UserModel } from 'server/features/user/userSchema';
-import { UserGroup } from 'shared/typings/models/user';
-import { saveUser } from 'server/features/user/userRepository';
+import {
+  delEnteredGame,
+  saveEnteredGame,
+  saveUser,
+} from 'server/features/user/userRepository';
+import { mockGame } from 'server/test/mock-data/mockGame';
+import { saveGames } from 'server/features/game/gameRepository';
+import {
+  mockPostEnteredGameRequest,
+  mockUser,
+} from 'server/test/mock-data/mockUser';
 
 let mongoServer: MongoMemoryServer;
 
@@ -26,22 +35,32 @@ afterEach(async () => {
 
 describe('User service', () => {
   it('should insert new user into collection', async () => {
-    const mockUser = {
-      favoritedGames: [],
-      username: 'test user',
-      passwordHash: 'testpass',
-      userGroup: UserGroup.USER,
-      serial: '1234ABCD',
-      groupCode: '0',
-      signedGames: [],
-      enteredGames: [],
-    };
-
     await saveUser(mockUser);
 
     const insertedUser = await UserModel.findOne({
       username: mockUser.username,
     });
     expect(insertedUser?.username).toEqual(mockUser.username);
+  });
+
+  it('should add new enteredGame for user', async () => {
+    await saveUser(mockUser);
+    await saveGames([mockGame]);
+
+    const response = await saveEnteredGame(mockPostEnteredGameRequest);
+
+    expect(response.enteredGames[0].gameDetails.gameId).toEqual(
+      mockGame.gameId
+    );
+  });
+
+  it('should delete enteredGame from user', async () => {
+    await saveUser(mockUser);
+    await saveGames([mockGame]);
+    await saveEnteredGame(mockPostEnteredGameRequest);
+
+    const response = await delEnteredGame(mockPostEnteredGameRequest);
+
+    expect(response.enteredGames.length).toEqual(0);
   });
 });

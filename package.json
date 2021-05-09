@@ -39,6 +39,7 @@
     "start:dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
     "stylelint": "yarn workspace konsti-client stylelint",
     "test": "jest",
+    "test:watch": "jest --watch",
     "type-check": "tsc --noEmit"
   },
   "dependencies": {

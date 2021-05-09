@@ -17,3 +17,19 @@ export interface SignupData {
   selectedGames: readonly SelectedGame[];
   signupTime: string;
 }
+
+export interface EnteredGameRequest {
+  username: string;
+  enteredGameId: string;
+  signupTime: string;
+}
+
+export interface PostEnteredGameResponse {
+  message: string;
+  status: 'success';
+}
+
+export interface DeleteEnteredGameResponse {
+  message: string;
+  status: 'success';
+}
