@@ -10,4 +10,11 @@ services:
     working_dir: /client
     volumes:
       - ./client:/client # In relation to root level docker-compose.yml file
-    entrypoint: /bin/sh -c "sleep 20 && cypress run --browser chrome --headless --config-file false --project ./build --record"
+    depends_on:
+      - server
+    entrypoint: /bin/sh -c "
+        wget -q -O /usr/local/bin/waitforit https://github.com/maxcnunes/waitforit/releases/download/v2.4.1/waitforit-linux_amd64
+        && chmod +x /usr/local/bin/waitforit
+        && /usr/local/bin/waitforit -address=server:5000 -timeout=60
+        && cypress run --browser chrome --headless --config-file false --project ./build --record
+      "
