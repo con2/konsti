@@ -71,6 +71,7 @@ apiRoutes.get(RESULTS_ENDPOINT, getResults);
 apiRoutes.get(GROUP_ENDPOINT, getGroup);
 
 /* DELETE routes */
-apiRoutes.post(ENTERED_GAME_ENDPOINT, deleteEnteredGame);
+
+apiRoutes.delete(ENTERED_GAME_ENDPOINT, deleteEnteredGame);
 
 /* eslint-enable @typescript-eslint/no-misused-promises */
