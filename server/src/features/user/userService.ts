@@ -787,7 +787,7 @@ export const storeEnteredGame = async (
     user = await saveEnteredGame(enteredGameRequest);
   } catch (error) {
     return {
-      message: 'Update entered game failure',
+      message: 'Store entered game failure',
       status: 'error',
       code: 0,
     };
@@ -795,13 +795,13 @@ export const storeEnteredGame = async (
 
   if (user) {
     return {
-      message: 'Update entered game success',
+      message: 'Store entered game success',
       status: 'success',
     };
   }
 
   return {
-    message: 'Update entered game failure',
+    message: 'Store entered game failure',
     status: 'error',
     code: 0,
   };
