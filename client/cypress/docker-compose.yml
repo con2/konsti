@@ -10,4 +10,4 @@ services:
     working_dir: /client
     volumes:
       - ./client:/client # In relation to root level docker-compose.yml file
-    entrypoint: /bin/sh -c "sleep 15 && cypress run --browser chrome --headless --config-file false --project ./build"
+    entrypoint: /bin/sh -c "sleep 20 && cypress run --browser chrome --headless --config-file false --project ./build"
