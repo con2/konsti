@@ -4,7 +4,7 @@ import { SubmissionError } from 'redux-form';
 import { useTranslation } from 'react-i18next';
 import { submitRegistration } from 'client/views/registration/registrationActions';
 import RegistrationForm from 'client/views/registration/components/RegistrationForm';
-import { RegistrationFormFields } from 'client/typings/user.typings';
+import { RegistrationFormFields } from 'shared/typings/api/login';
 
 export const RegistrationView: FC = (): ReactElement => {
   const dispatch = useDispatch();

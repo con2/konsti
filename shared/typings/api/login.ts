@@ -9,3 +9,16 @@ export interface PostLoginResponse {
   userGroup: UserGroup;
   username: string;
 }
+
+export interface LoginFormFields {
+  username?: string;
+  password?: string;
+  jwt?: string;
+}
+
+export interface RegistrationFormFields {
+  password: string;
+  registerDescription: boolean;
+  serial: string;
+  username: string;
+}

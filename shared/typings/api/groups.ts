@@ -11,3 +11,12 @@ export interface GetGroupResponse {
   results: GroupMember[];
   status: 'success';
 }
+
+export interface GroupData {
+  groupCode: string;
+  leader: boolean;
+  ownSerial: string;
+  username: string;
+  leaveGroup?: boolean;
+  closeGroup?: boolean;
+}

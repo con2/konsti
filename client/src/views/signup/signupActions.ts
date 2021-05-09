@@ -1,5 +1,4 @@
 import { postSignup } from 'client/services/signupServices';
-import { SignupData } from 'client/typings/user.typings';
 import { AppThunk } from 'client/typings/utils.typings';
 import {
   SubmitSignupAsync,
@@ -12,6 +11,7 @@ import {
   SUBMIT_SIGNED_GAMES,
 } from 'client/typings/signupActions.typings';
 import { SelectedGame } from 'shared/typings/models/user';
+import { SignupData } from 'shared/typings/api/signup';
 
 export const submitSignup = (signupData: SignupData): AppThunk => {
   return async (dispatch): Promise<void> => {
