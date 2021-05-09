@@ -1,6 +1,5 @@
 import { AxiosResponse, AxiosError } from 'axios';
 import { api } from 'client/utils/api';
-import { RegistrationFormFields } from 'client/typings/user.typings';
 import { ServerError } from 'shared/typings/api/errors';
 import {
   USERS_BY_SERIAL_ENDPOINT,
@@ -11,6 +10,7 @@ import {
   GetUserResponse,
   PostUserResponse,
 } from 'shared/typings/api/users';
+import { RegistrationFormFields } from 'shared/typings/api/login';
 
 export const postRegistration = async (
   registrationFormFields: RegistrationFormFields

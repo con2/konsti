@@ -20,11 +20,11 @@ import {
 } from 'shared/typings/api/users';
 import { ServerError } from 'shared/typings/api/errors';
 import { Game } from 'shared/typings/models/game';
+import { GetGroupReturnValue } from 'server/typings/user.typings';
 import {
-  GetGroupReturnValue,
+  PostFavoriteResponse,
   SaveFavoriteRequest,
-} from 'server/typings/user.typings';
-import { PostFavoriteResponse } from 'shared/typings/api/favorite';
+} from 'shared/typings/api/favorite';
 import { GetGroupResponse, PostGroupResponse } from 'shared/typings/api/groups';
 import { PostLoginResponse } from 'shared/typings/api/login';
 import { decodeJWT, getJWT, verifyJWT } from 'server/utils/jwt';
@@ -313,8 +313,8 @@ export const storeGroup = async (
   leader: boolean,
   groupCode: string,
   ownSerial: string,
-  leaveGroup: boolean,
-  closeGroup: boolean
+  leaveGroup: boolean = false,
+  closeGroup: boolean = false
 ): Promise<PostGroupResponse | ServerError> => {
   if (closeGroup) {
     const groupMembers = await findGroupMembers(groupCode);
