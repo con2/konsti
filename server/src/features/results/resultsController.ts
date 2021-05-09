@@ -5,7 +5,10 @@ import { fetchResults } from 'server/features/results/resultsService';
 import { UserGroup } from 'shared/typings/models/user';
 import { validateAuthHeader } from 'server/utils/authHeader';
 import { logger } from 'server/utils/logger';
-import { RESULTS_ENDPOINT } from 'shared/constants/apiEndpoints';
+import {
+  ASSIGNMENT_ENDPOINT,
+  RESULTS_ENDPOINT,
+} from 'shared/constants/apiEndpoints';
 
 export const getResults = async (
   req: Request,
@@ -35,9 +38,11 @@ export const getResults = async (
 };
 
 export const postAssignment = async (
-  req: Request,
+  req: Request<{}, {}, { startingTime: string }>,
   res: Response
 ): Promise<Response> => {
+  logger.info(`API call: POST ${ASSIGNMENT_ENDPOINT}`);
+
   const startingTime = req.body.startingTime;
 
   const validToken = validateAuthHeader(

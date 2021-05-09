@@ -1,5 +1,5 @@
 import { postGroup, getGroup } from 'client/services/groupServices';
-import { GroupData, GroupMember } from 'client/typings/group.typings';
+import { GroupMember } from 'client/typings/group.typings';
 import { AppThunk } from 'client/typings/utils.typings';
 import {
   SubmitUpdateGroupCodeAsync,
@@ -9,6 +9,7 @@ import {
   SUBMIT_LEAVE_GROUP,
   SUBMIT_UPDATE_GROUP_MEMBERS,
 } from 'client/typings/groupActions.typings';
+import { GroupData } from 'shared/typings/api/groups';
 
 export const submitJoinGroup = (groupData: GroupData): AppThunk => {
   return async (dispatch): Promise<void> => {
