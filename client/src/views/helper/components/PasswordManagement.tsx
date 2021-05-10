@@ -12,22 +12,16 @@ export const PasswordManagement: FC = (): ReactElement => {
 
   const [serial, setSerial] = React.useState<string>('');
   const [username, setUsername] = React.useState<string>('');
-  const [passwordFieldType, setPasswordFieldType] = React.useState<string>(
-    'password'
-  );
+  const [passwordFieldType, setPasswordFieldType] =
+    React.useState<string>('password');
   const [userSerialInput, setUserSerialInput] = React.useState<string>('');
-  const [changePasswordInput, setChangePasswordInput] = React.useState<string>(
-    ''
-  );
-  const [
-    changePasswordInputVisible,
-    setChangePasswordInputVisible,
-  ] = React.useState<boolean>(false);
+  const [changePasswordInput, setChangePasswordInput] =
+    React.useState<string>('');
+  const [changePasswordInputVisible, setChangePasswordInputVisible] =
+    React.useState<boolean>(false);
   const [userFoundMessage, setUserFoundMessage] = React.useState<string>('');
-  const [
-    passwordChangeMessage,
-    setPasswordChangeMessage,
-  ] = React.useState<string>('');
+  const [passwordChangeMessage, setPasswordChangeMessage] =
+    React.useState<string>('');
 
   const submitGetUser = async (): Promise<void> => {
     const response = await getUserBySerial(userSerialInput);

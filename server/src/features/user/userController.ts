@@ -105,14 +105,8 @@ export const postGroup = async (
   }
 
   const groupData = req.body.groupData;
-  const {
-    username,
-    leader,
-    groupCode,
-    ownSerial,
-    leaveGroup,
-    closeGroup,
-  } = groupData;
+  const { username, leader, groupCode, ownSerial, leaveGroup, closeGroup } =
+    groupData;
 
   const response = await storeGroup(
     username,
