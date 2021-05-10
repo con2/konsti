@@ -39,7 +39,7 @@
     "browserslist": "4.16.6",
     "core-js": "3.12.1",
     "i18next": "20.2.2",
-    "i18next-browser-languagedetector": "6.1.0",
+    "i18next-browser-languagedetector": "6.1.1",
     "i18next-xhr-backend": "3.2.2",
     "react": "16.14.0",
     "react-beautiful-dnd": "13.1.0",
@@ -107,10 +107,18 @@
     "stylelint-config-styled-components": "0.1.1",
     "stylelint-no-unsupported-browser-features": "4.1.4",
     "stylelint-processor-styled-components": "1.10.0",
-    "webpack": "5.36.2",
+    "webpack": "5.37.0",
     "webpack-bundle-analyzer": "4.4.1",
     "webpack-cli": "4.7.0",
     "webpack-dev-server": "3.11.2",
     "webpack-merge": "5.7.3"
+  },
+  "peerDependenciesMeta": {
+    "@babel/core": {
+      "optional": true
+    },
+    "moment": {
+      "optional": true
+    }
   }
 }

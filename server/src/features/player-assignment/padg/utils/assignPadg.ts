@@ -43,9 +43,8 @@ export const assignPadg = (
       updateL,
     };
 
-    const assignResults: PadgRandomAssignResults = eventassigner.eventAssignment(
-      input
-    );
+    const assignResults: PadgRandomAssignResults =
+      eventassigner.eventAssignment(input);
 
     const happiness = calculateHappiness(assignResults, groups);
 
