@@ -37,9 +37,8 @@ export const AdminView: FC = (): ReactElement => {
   const [submitting, setSubmitting] = React.useState<boolean>(false);
   const [message, setMessage] = React.useState<string>('');
   const [messageStyle, setMessageStyle] = React.useState<string>('');
-  const [selectedSignupTime, setSelectedSignupTime] = React.useState<string>(
-    signupTime
-  );
+  const [selectedSignupTime, setSelectedSignupTime] =
+    React.useState<string>(signupTime);
 
   const showMessage = ({
     message,
