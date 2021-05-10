@@ -13,11 +13,8 @@ import { AssignmentStrategy } from 'shared/config/sharedConfig.types';
 const testAssignPlayers = async (
   assignmentStrategy: AssignmentStrategy
 ): Promise<void> => {
-  const {
-    CONVENTION_START_TIME,
-    saveTestAssign,
-    enableRemoveOverlapSignups,
-  } = config;
+  const { CONVENTION_START_TIME, saveTestAssign, enableRemoveOverlapSignups } =
+    config;
 
   let assignResults;
 

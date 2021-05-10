@@ -14,13 +14,8 @@ export interface UpdateFavoriteOpts {
 export const updateFavorite = async (
   updateFavoriteOpts: UpdateFavoriteOpts
 ): Promise<void> => {
-  const {
-    game,
-    action,
-    favoritedGames,
-    username,
-    dispatch,
-  } = updateFavoriteOpts;
+  const { game, action, favoritedGames, username, dispatch } =
+    updateFavoriteOpts;
 
   if (!game || !game.gameId) return;
 

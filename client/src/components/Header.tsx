@@ -8,12 +8,8 @@ import { Navigation } from './Navigation';
 
 export const Header = (): ReactElement => {
   const { t } = useTranslation();
-  const {
-    loadedSettings,
-    CONVENTION_NAME,
-    CONVENTION_YEAR,
-    useTestTime,
-  } = config;
+  const { loadedSettings, CONVENTION_NAME, CONVENTION_YEAR, useTestTime } =
+    config;
 
   return (
     <>
