@@ -4,6 +4,7 @@ module.exports = {
   parser: '@typescript-eslint/parser',
 
   plugins: [
+    'eslint-plugin-ban',
     'eslint-plugin-compat',
     'eslint-plugin-jest',
     'eslint-plugin-prettier',
@@ -82,5 +83,12 @@ module.exports = {
     '@typescript-eslint/strict-boolean-expressions': 'off', // Forces unwanted code style
     '@typescript-eslint/restrict-template-expressions': 'off', // Requires typing catch(e) every time
     '@typescript-eslint/restrict-plus-operands': 'off', // Doesn't support dynamic object occurance counting
+
+    // eslint-plugin-ban
+    'ban/ban': [
+      'error',
+      { name: 'useDispatch', message: 'Please use useAppDispatch()' },
+      { name: 'useSelector', message: 'Please use useAppSelector()' },
+    ],
   },
 };

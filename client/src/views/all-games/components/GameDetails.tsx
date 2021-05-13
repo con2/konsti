@@ -1,6 +1,5 @@
 import React, { FC, ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import { submitUpdateHidden } from 'client/views/admin/adminActions';
 import { FeedbackForm } from 'client/views/all-games/components/FeedbackForm';
@@ -8,33 +7,22 @@ import { GameInfo } from 'client/views/all-games/components/GameInfo';
 import { Loading } from 'client/components/Loading';
 import { Game } from 'shared/typings/models/game';
 import { updateFavorite, UpdateFavoriteOpts } from 'client/utils/favorite';
-import { UserGroup } from 'shared/typings/models/user';
-import { RootState } from 'client/typings/redux.typings';
+import { useAppDispatch, useAppSelector } from 'client/utils/hooks';
 
 export const GameDetails: FC = (): ReactElement => {
   const history = useHistory();
   // @ts-expect-error: Property 'gameId' does not exist on type '{}'.
   const { gameId } = useParams();
 
-  const username: string = useSelector(
-    (state: RootState) => state.login.username
+  const username = useAppSelector((state) => state.login.username);
+  const loggedIn = useAppSelector((state) => state.login.loggedIn);
+  const games = useAppSelector((state) => state.allGames.games);
+  const userGroup = useAppSelector((state) => state.login.userGroup);
+  const favoritedGames = useAppSelector(
+    (state) => state.myGames.favoritedGames
   );
-  const loggedIn: boolean = useSelector(
-    (state: RootState) => state.login.loggedIn
-  );
-  const games: readonly Game[] = useSelector(
-    (state: RootState) => state.allGames.games
-  );
-  const userGroup: UserGroup = useSelector(
-    (state: RootState) => state.login.userGroup
-  );
-  const favoritedGames: readonly Game[] = useSelector(
-    (state: RootState) => state.myGames.favoritedGames
-  );
-  const hiddenGames: readonly Game[] = useSelector(
-    (state: RootState) => state.admin.hiddenGames
-  );
-  const dispatch = useDispatch();
+  const hiddenGames = useAppSelector((state) => state.admin.hiddenGames);
+  const dispatch = useAppDispatch();
   const { t } = useTranslation();
 
   const game = games.find((game) => game.gameId === gameId);

@@ -1,6 +1,5 @@
 import React, { FC, ReactElement } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { AllGamesView } from 'client/views/all-games/AllGamesView';
 import { GameDetails } from 'client/views/all-games/components/GameDetails';
@@ -13,7 +12,7 @@ import { ResultsView } from 'client/views/results/ResultsView';
 import { LogoutView } from 'client/views/logout/LogoutView';
 import { GroupView } from 'client/views/group/GroupView';
 import { HelperView } from 'client/views/helper/HelperView';
-import { RootState } from 'client/typings/redux.typings';
+import { useAppSelector } from 'client/utils/hooks';
 
 export interface Props {
   onlyAdminLoginAllowed: boolean;
@@ -21,9 +20,7 @@ export interface Props {
 
 export const Routes: FC<Props> = (props: Props): ReactElement => {
   const { onlyAdminLoginAllowed } = props;
-  const loggedIn: boolean = useSelector(
-    (state: RootState) => state.login.loggedIn
-  );
+  const loggedIn = useAppSelector((state) => state.login.loggedIn);
 
   if (onlyAdminLoginAllowed) {
     return (

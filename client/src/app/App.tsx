@@ -1,6 +1,6 @@
 import React, { FC, ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useSelector, useStore } from 'react-redux';
+import { useStore } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { Routes } from 'client/app/Routes';
 import { Header } from 'client/components/Header';
@@ -8,13 +8,11 @@ import { loadData } from 'client/utils/loadData';
 import { Loading } from 'client/components/Loading';
 import { getIconLibrary } from 'client/utils/icons';
 import { config } from 'client/config';
-import { RootState } from 'client/typings/redux.typings';
+import { useAppSelector } from 'client/utils/hooks';
 
 export const App: FC = (): ReactElement => {
   const { dataUpdateInterval } = config;
-  const appOpen: boolean = useSelector(
-    (state: RootState) => state.admin.appOpen
-  );
+  const appOpen = useAppSelector((state) => state.admin.appOpen);
   const { t } = useTranslation();
   const store = useStore();
 

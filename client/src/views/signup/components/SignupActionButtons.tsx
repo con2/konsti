@@ -1,9 +1,9 @@
 import React, { FC, ReactElement } from 'react';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
-import { useDispatch } from 'react-redux';
 import { updateUnsavedChangesStatus } from 'client/views/signup/signupActions';
 import { SelectedGame } from 'shared/typings/models/user';
+import { useAppDispatch } from 'client/utils/hooks';
 
 interface Props {
   groupCode: string;
@@ -30,7 +30,7 @@ export const SignupActionButtons: FC<Props> = (props: Props): ReactElement => {
     submitting,
   } = props;
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const { t } = useTranslation();
 
   const checkForSignupChanges = (
