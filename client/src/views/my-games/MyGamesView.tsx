@@ -42,37 +42,6 @@ export const MyGamesView: FC = (): ReactElement => {
     fetchData();
   }, [store, testTime]);
 
-  const getGroupLeader = (
-    groupMembers: readonly GroupMember[]
-  ): GroupMember | null => {
-    const groupLeader = groupMembers.find(
-      (member) => member.serial === member.groupCode
-    );
-    if (!groupLeader) return null;
-    return groupLeader;
-  };
-
-  const getSignedGames = (
-    signedGames: readonly SelectedGame[]
-  ): readonly SelectedGame[] => {
-    if (isGroupLeader(groupCode, serial)) {
-      if (!showAllGames) return getUpcomingSignedGames(signedGames);
-      else return signedGames;
-    }
-
-    if (!isGroupLeader(groupCode, serial)) {
-      const groupLeader = getGroupLeader(groupMembers);
-
-      if (!showAllGames) {
-        return getUpcomingSignedGames(
-          groupLeader ? groupLeader.signedGames : signedGames
-        );
-      } else return groupLeader ? groupLeader.signedGames : signedGames;
-    }
-
-    return signedGames;
-  };
-
   return (
     <div className='my-games-view'>
       <>
@@ -100,17 +69,66 @@ export const MyGamesView: FC = (): ReactElement => {
           </MyGamesGroupNotification>
         )}
 
-        <MySignupsList signedGames={getSignedGames(signedGames)} />
+        <MySignupsList
+          signedGames={getSignedGames(
+            signedGames,
+            groupCode,
+            serial,
+            showAllGames,
+            groupMembers
+          )}
+        />
 
         <MyEnteredList
           enteredGames={
             showAllGames ? enteredGames : getUpcomingEnteredGames(enteredGames)
           }
-          signedGames={getSignedGames(signedGames)}
+          signedGames={getSignedGames(
+            signedGames,
+            groupCode,
+            serial,
+            showAllGames,
+            groupMembers
+          )}
         />
       </>
     </div>
   );
+};
+
+const getGroupLeader = (
+  groupMembers: readonly GroupMember[]
+): GroupMember | null => {
+  const groupLeader = groupMembers.find(
+    (member) => member.serial === member.groupCode
+  );
+  if (!groupLeader) return null;
+  return groupLeader;
+};
+
+const getSignedGames = (
+  signedGames: readonly SelectedGame[],
+  groupCode: string,
+  serial: string,
+  showAllGames: boolean,
+  groupMembers: readonly GroupMember[]
+): readonly SelectedGame[] => {
+  if (isGroupLeader(groupCode, serial)) {
+    if (!showAllGames) return getUpcomingSignedGames(signedGames);
+    else return signedGames;
+  }
+
+  if (!isGroupLeader(groupCode, serial)) {
+    const groupLeader = getGroupLeader(groupMembers);
+
+    if (!showAllGames) {
+      return getUpcomingSignedGames(
+        groupLeader ? groupLeader.signedGames : signedGames
+      );
+    } else return groupLeader ? groupLeader.signedGames : signedGames;
+  }
+
+  return signedGames;
 };
 
 const MyGamesGroupNotification = styled.div`

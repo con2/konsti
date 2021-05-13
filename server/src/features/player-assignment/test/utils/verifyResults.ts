@@ -93,14 +93,14 @@ export const verifyResults = async (): Promise<void> => {
 
   resultsCollection.forEach((results) => {
     results.results.forEach((result) => {
-      const user = users.find((user) => user.username === result.username);
+      const foundUser = users.find((user) => user.username === result.username);
 
-      if (!user) {
+      if (!foundUser) {
         logger.error('No user found for result');
         return;
       }
 
-      const gameFound = user.enteredGames.find(
+      const gameFound = foundUser.enteredGames.find(
         (enteredGame) =>
           enteredGame.gameDetails.gameId ===
           result.enteredGame.gameDetails.gameId
@@ -108,7 +108,7 @@ export const verifyResults = async (): Promise<void> => {
 
       if (!gameFound) {
         logger.error(
-          `No entered game found for user "${user.username}" and result "${result.enteredGame.gameDetails?.title}"`
+          `No entered game found for user "${foundUser.username}" and result "${result.enteredGame.gameDetails?.title}"`
         );
       }
     });

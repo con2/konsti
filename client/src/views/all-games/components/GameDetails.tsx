@@ -25,7 +25,7 @@ export const GameDetails: FC = (): ReactElement => {
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
 
-  const game = games.find((game) => game.gameId === gameId);
+  const foundGame = games.find((game) => game.gameId === gameId);
 
   const [hidden, setHidden] = React.useState<boolean>(false);
   const [favorited, setFavorited] = React.useState<boolean>(false);
@@ -36,18 +36,18 @@ export const GameDetails: FC = (): ReactElement => {
     setLoading(true);
 
     const checkGameState = (): void => {
-      if (!game || !game.gameId) return;
+      if (!foundGame || !foundGame.gameId) return;
 
       // Check if in favorites
       favoritedGames.find((favoritedGame) => {
-        if (favoritedGame.gameId === game.gameId) {
+        if (favoritedGame.gameId === foundGame.gameId) {
           setFavorited(true);
         }
       });
 
       // Check if hidden
       hiddenGames.find((hiddenGame) => {
-        if (hiddenGame.gameId === game.gameId) {
+        if (hiddenGame.gameId === foundGame.gameId) {
           setHidden(true);
         }
       });
@@ -55,25 +55,15 @@ export const GameDetails: FC = (): ReactElement => {
 
     checkGameState();
     setLoading(false);
-  }, [game, favoritedGames, hiddenGames]);
-
-  // Find selected game index
-  const findGame = (gameId: string, array: readonly Game[]): number => {
-    for (let i = 0; i < array.length; i += 1) {
-      if (array[i].gameId === gameId) {
-        return i;
-      }
-    }
-    return -1;
-  };
+  }, [foundGame, favoritedGames, hiddenGames]);
 
   // Favorite / remove favorite clicked
   const updateFavoriteHandler = async (action: string): Promise<void> => {
-    if (!game || !game.gameId) return;
+    if (!foundGame || !foundGame.gameId) return;
 
     setSubmitting(true);
     const updateFavoriteOpts: UpdateFavoriteOpts = {
-      game,
+      game: foundGame,
       action,
       username,
       favoritedGames,
@@ -93,15 +83,15 @@ export const GameDetails: FC = (): ReactElement => {
 
   // Hide / show clicked
   const updateHidden = async (action: string): Promise<void> => {
-    if (!game || !game.gameId) return;
+    if (!foundGame || !foundGame.gameId) return;
 
     setSubmitting(true);
-    const gameIndex = findGame(game.gameId, hiddenGames);
+    const gameIndex = findGame(foundGame.gameId, hiddenGames);
     const allHiddenGames = hiddenGames.slice();
 
     if (action === 'add') {
       if (gameIndex === -1) {
-        allHiddenGames.push(game);
+        allHiddenGames.push(foundGame);
       }
     } else if (action === 'del') {
       if (gameIndex > -1) {
@@ -139,7 +129,7 @@ export const GameDetails: FC = (): ReactElement => {
           {t('button.back')}
         </button>
 
-        {favorited && loggedIn && userGroup === 'user' && game && (
+        {favorited && loggedIn && userGroup === 'user' && foundGame && (
           <button
             disabled={submitting}
             onClick={async () => await updateFavoriteHandler('del')}
@@ -148,7 +138,7 @@ export const GameDetails: FC = (): ReactElement => {
           </button>
         )}
 
-        {!favorited && loggedIn && userGroup === 'user' && game && (
+        {!favorited && loggedIn && userGroup === 'user' && foundGame && (
           <button
             disabled={submitting}
             onClick={async () => await updateFavoriteHandler('add')}
@@ -157,7 +147,7 @@ export const GameDetails: FC = (): ReactElement => {
           </button>
         )}
 
-        {hidden && loggedIn && userGroup === 'admin' && game && (
+        {hidden && loggedIn && userGroup === 'admin' && foundGame && (
           <button
             disabled={submitting}
             onClick={async () => await updateHidden('del')}
@@ -166,7 +156,7 @@ export const GameDetails: FC = (): ReactElement => {
           </button>
         )}
 
-        {!hidden && loggedIn && userGroup === 'admin' && game && (
+        {!hidden && loggedIn && userGroup === 'admin' && foundGame && (
           <button
             disabled={submitting}
             onClick={async () => await updateHidden('add')}
@@ -178,18 +168,28 @@ export const GameDetails: FC = (): ReactElement => {
 
       {loading && <Loading />}
 
-      {!loading && !game && (
+      {!loading && !foundGame && (
         <div className='game-not-found'>
           {t('invalidGameId')} {gameId}.
         </div>
       )}
 
-      {!loading && game && (
+      {!loading && foundGame && (
         <>
-          <GameInfo game={game} />
-          {loggedIn && <FeedbackForm game={game} />}
+          <GameInfo game={foundGame} />
+          {loggedIn && <FeedbackForm game={foundGame} />}
         </>
       )}
     </div>
   );
+};
+
+// Find selected game index
+const findGame = (gameId: string, array: readonly Game[]): number => {
+  for (let i = 0; i < array.length; i += 1) {
+    if (array[i].gameId === gameId) {
+      return i;
+    }
+  }
+  return -1;
 };
