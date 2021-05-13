@@ -7,7 +7,7 @@ export const postUserValidation = (): ValidationChain[] => {
     check('username').not().isEmpty().isLength({ max: 20 }).trim().escape(),
     check('password').not().isEmpty().trim().escape(),
   ];
-  if (sharedConfig.conventionType === ConventionType.REMOTE) {
+  if (sharedConfig.conventionType === ConventionType.LIVE) {
     validation.push(check('serial').not().isEmpty().trim().escape());
   }
   return validation;
