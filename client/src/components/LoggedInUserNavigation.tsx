@@ -1,17 +1,13 @@
 import React, { ReactElement } from 'react';
-import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import { RootState } from 'client/typings/redux.typings';
-import { UserGroup } from 'shared/typings/models/user';
+import { useAppSelector } from 'client/utils/hooks';
 
 export const LoggedInUserNavigation = (props: {
   onSelect: () => void;
 }): ReactElement => {
-  const userGroup: UserGroup = useSelector(
-    (state: RootState) => state.login.userGroup
-  );
+  const userGroup = useAppSelector((state) => state.login.userGroup);
   const { t } = useTranslation();
 
   return (

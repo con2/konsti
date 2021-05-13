@@ -1,19 +1,13 @@
 import React, { FC, ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
 import _ from 'lodash';
 import styled from 'styled-components';
 import { timeFormatter } from 'client/utils/timeFormatter';
-import { Result } from 'shared/typings/models/result';
-import { RootState } from 'client/typings/redux.typings';
+import { useAppSelector } from 'client/utils/hooks';
 
 export const HelperResultsList: FC = (): ReactElement => {
-  const results: readonly Result[] = useSelector(
-    (state: RootState) => state.results.result
-  );
-  const startTime: string = useSelector(
-    (state: RootState) => state.results.startTime
-  );
+  const results = useAppSelector((state) => state.results.result);
+  const startTime = useAppSelector((state) => state.results.startTime);
   const { t } = useTranslation();
 
   const validResults = results.filter(

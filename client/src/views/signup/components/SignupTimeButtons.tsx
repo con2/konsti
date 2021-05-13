@@ -1,8 +1,8 @@
 import React, { FC, ReactElement } from 'react';
 import styled from 'styled-components';
-import { useDispatch } from 'react-redux';
 import { timeFormatter } from 'client/utils/timeFormatter';
 import { submitSignupTime } from 'client/views/signup/signupActions';
+import { useAppDispatch } from 'client/utils/hooks';
 
 interface Props {
   signupTimes: readonly string[];
@@ -12,7 +12,7 @@ interface Props {
 export const SignupTimeButtons: FC<Props> = (props: Props): ReactElement => {
   const { signupTimes, signupTime } = props;
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const selectSignupTime = (signupTime: string): void => {
     dispatch(submitSignupTime(signupTime));
