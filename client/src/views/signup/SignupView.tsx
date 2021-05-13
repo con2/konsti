@@ -1,26 +1,17 @@
 import React, { FC, ReactElement } from 'react';
-import { useSelector, useStore } from 'react-redux';
+import { useStore } from 'react-redux';
 import { SignupList } from 'client/views/signup/components/SignupList';
 import { getOpenStartTimes } from 'client/utils/getOpenStartTimes';
 import { loadGroupMembers, loadUser } from 'client/utils/loadData';
 import { isGroupLeader } from 'client/views/group/GroupView';
-import { Game } from 'shared/typings/models/game';
-import { RootState } from 'client/typings/redux.typings';
+import { useAppSelector } from 'client/utils/hooks';
 
 export const SignupView: FC = (): ReactElement => {
-  const games: readonly Game[] = useSelector(
-    (state: RootState) => state.allGames.games
-  );
-  const hiddenGames: readonly Game[] = useSelector(
-    (state: RootState) => state.admin.hiddenGames
-  );
-  const testTime: string = useSelector(
-    (state: RootState) => state.admin.testTime
-  );
-  const serial: string = useSelector((state: RootState) => state.login.serial);
-  const groupCode: string = useSelector(
-    (state: RootState) => state.login.groupCode
-  );
+  const games = useAppSelector((state) => state.allGames.games);
+  const hiddenGames = useAppSelector((state) => state.admin.hiddenGames);
+  const testTime = useAppSelector((state) => state.admin.testTime);
+  const serial = useAppSelector((state) => state.login.serial);
+  const groupCode = useAppSelector((state) => state.login.groupCode);
 
   const [signupTimes, setSignupTimes] = React.useState<readonly string[]>([]);
 

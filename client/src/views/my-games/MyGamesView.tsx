@@ -1,5 +1,5 @@
 import React, { FC, ReactElement } from 'react';
-import { useSelector, useStore } from 'react-redux';
+import { useStore } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import { MySignupsList } from 'client/views/my-games/components/MySignupsList';
@@ -12,33 +12,22 @@ import {
 } from 'client/utils/getUpcomingGames';
 import { loadUser, loadGames, loadGroupMembers } from 'client/utils/loadData';
 import { isGroupLeader } from 'client/views/group/GroupView';
-import { Game } from 'shared/typings/models/game';
 import { GroupMember } from 'client/typings/group.typings';
-import { RootState } from 'client/typings/redux.typings';
 import { SelectedGame } from 'shared/typings/models/user';
+import { useAppSelector } from 'client/utils/hooks';
 
 export const MyGamesView: FC = (): ReactElement => {
   const { t } = useTranslation();
 
-  const serial: string = useSelector((state: RootState) => state.login.serial);
-  const groupCode: string = useSelector(
-    (state: RootState) => state.login.groupCode
+  const serial = useAppSelector((state) => state.login.serial);
+  const groupCode = useAppSelector((state) => state.login.groupCode);
+  const signedGames = useAppSelector((state) => state.myGames.signedGames);
+  const favoritedGames = useAppSelector(
+    (state) => state.myGames.favoritedGames
   );
-  const signedGames: readonly SelectedGame[] = useSelector(
-    (state: RootState) => state.myGames.signedGames
-  );
-  const favoritedGames: readonly Game[] = useSelector(
-    (state: RootState) => state.myGames.favoritedGames
-  );
-  const enteredGames: readonly SelectedGame[] = useSelector(
-    (state: RootState) => state.myGames.enteredGames
-  );
-  const groupMembers: readonly GroupMember[] = useSelector(
-    (state: RootState) => state.login.groupMembers
-  );
-  const testTime: string = useSelector(
-    (state: RootState) => state.admin.testTime
-  );
+  const enteredGames = useAppSelector((state) => state.myGames.enteredGames);
+  const groupMembers = useAppSelector((state) => state.login.groupMembers);
+  const testTime = useAppSelector((state) => state.admin.testTime);
 
   const [showAllGames, setShowAllGames] = React.useState<boolean>(false);
 

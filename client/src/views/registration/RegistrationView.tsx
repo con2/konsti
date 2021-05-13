@@ -1,13 +1,13 @@
 import React, { FC, ReactElement } from 'react';
-import { useDispatch } from 'react-redux';
 import { SubmissionError } from 'redux-form';
 import { useTranslation } from 'react-i18next';
 import { submitRegistration } from 'client/views/registration/registrationActions';
 import RegistrationForm from 'client/views/registration/components/RegistrationForm';
 import { RegistrationFormFields } from 'shared/typings/api/login';
+import { useAppDispatch } from 'client/utils/hooks';
 
 export const RegistrationView: FC = (): ReactElement => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const { t } = useTranslation();
 
   const submit = async (

@@ -2312,6 +2312,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@reduxjs/toolkit@npm:1.5.1":
+  version: 1.5.1
+  resolution: "@reduxjs/toolkit@npm:1.5.1"
+  dependencies:
+    immer: ^8.0.1
+    redux: ^4.0.0
+    redux-thunk: ^2.3.0
+    reselect: ^4.0.0
+  checksum: 6d485fc8ff543ce78b4ca7fee3bb0e447e0e1d2ab2eb494fa59ec883f25369384c826c538140ff56e335901eb9ca30828f78c449e90d3c878ec7b9e4ab543e34
+  languageName: node
+  linkType: hard
+
 "@samverschueren/stream-to-observable@npm:^0.3.0":
   version: 0.3.1
   resolution: "@samverschueren/stream-to-observable@npm:0.3.1"
@@ -7118,6 +7130,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"eslint-plugin-ban@npm:1.5.2":
+  version: 1.5.2
+  resolution: "eslint-plugin-ban@npm:1.5.2"
+  dependencies:
+    requireindex: ~1.2.0
+  checksum: 9ced43eaa4d5336537db9b76316d69f2d91e64f5d9faef2f083a30315dbfdd69f0539d0fe7b41245a4fe512e8ca1734d1fd1b6ef5d3f6e385e8bdcc7240d3083
+  languageName: node
+  linkType: hard
+
 "eslint-plugin-compat@npm:3.9.0":
   version: 3.9.0
   resolution: "eslint-plugin-compat@npm:3.9.0"
@@ -9142,6 +9163,13 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
+"immer@npm:^8.0.1":
+  version: 8.0.4
+  resolution: "immer@npm:8.0.4"
+  checksum: 047d4af1c6d9dbba3ecbcf39aed9fa2f5323f80205c0618085d25a981d061353f4417b53fad95c71bd834eb9aa9ffdc2db53c7aa7726736b80bf1ae5f206eca7
+  languageName: node
+  linkType: hard
+
 "import-fresh@npm:^3.0.0, import-fresh@npm:^3.2.1":
   version: 3.3.0
   resolution: "import-fresh@npm:3.3.0"
@@ -10883,6 +10911,7 @@ fsevents@^1.2.7:
     "@babel/preset-react": 7.13.13
     "@babel/preset-typescript": 7.13.0
     "@babel/register": 7.13.16
+    "@reduxjs/toolkit": 1.5.1
     "@types/eslint": 7.2.10
     "@types/eslint-plugin-prettier": 3.1.0
     "@types/jest": 26.0.23
@@ -10901,6 +10930,7 @@ fsevents@^1.2.7:
     eslint-config-prettier: 8.3.0
     eslint-config-standard-with-typescript: 20.0.0
     eslint-import-resolver-babel-module: 5.3.1
+    eslint-plugin-ban: 1.5.2
     eslint-plugin-compat: 3.9.0
     eslint-plugin-cypress: 2.11.3
     eslint-plugin-eslint-comments: 3.2.0
@@ -14030,7 +14060,7 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"redux-thunk@npm:2.3.0":
+"redux-thunk@npm:2.3.0, redux-thunk@npm:^2.3.0":
   version: 2.3.0
   resolution: "redux-thunk@npm:2.3.0"
   checksum: 2d7210b88cef244384ab15bfe0c0f79a7d5a2fe059825da121121ec75378b175860695fafd5265386a0fd4b86212cc49e5972825f7bc9f803ad8753229f0258b
@@ -14341,6 +14371,13 @@ fsevents@^1.2.7:
   version: 2.0.1
   resolution: "require-package-name@npm:2.0.1"
   checksum: bc1b42ecffccc4936256536b12607115a5a6ba5bb6105e6b966fc271a1a2fd6ff2db72b44eb7e8b6366f128d0eead4541597b77d1260f53a61540bb3f074c2d1
+  languageName: node
+  linkType: hard
+
+"requireindex@npm:~1.2.0":
+  version: 1.2.0
+  resolution: "requireindex@npm:1.2.0"
+  checksum: a6c6c2edd46bcce88f839f69f1d29a11920664862d8b78c205fc69ab2d65a8f592c1a8d68755335898af14ab110cc9fdfc7c572412d38cec485bdf4db45c49c5
   languageName: node
   linkType: hard
 

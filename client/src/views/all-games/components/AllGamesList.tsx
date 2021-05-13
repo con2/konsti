@@ -2,12 +2,10 @@ import React, { FC, ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
 import _ from 'lodash';
 import styled from 'styled-components';
-import { useSelector } from 'react-redux';
-import { RootState } from 'client/typings/redux.typings';
 import { timeFormatter } from 'client/utils/timeFormatter';
 import { Game } from 'shared/typings/models/game';
 import { GameEntry } from './GameEntry';
-import { SelectedGame } from 'shared/typings/models/user';
+import { useAppSelector } from 'client/utils/hooks';
 
 export interface Props {
   games: readonly Game[];
@@ -17,9 +15,7 @@ export const AllGamesList: FC<Props> = (props: Props): ReactElement => {
   const { games } = props;
   const { t } = useTranslation();
 
-  const signedGames: readonly SelectedGame[] = useSelector(
-    (state: RootState) => state.myGames.signedGames
-  );
+  const signedGames = useAppSelector((state) => state.myGames.signedGames);
 
   const buildGamesList = (games: readonly Game[]): ReactElement[] => {
     const sortedGames = _.sortBy(games, [
