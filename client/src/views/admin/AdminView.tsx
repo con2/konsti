@@ -1,5 +1,4 @@
 import React, { FC, ReactElement, ChangeEvent } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import { Hidden } from 'client/views/admin/components/Hidden';
@@ -12,26 +11,18 @@ import { submitGamesUpdate } from 'client/views/all-games/allGamesActions';
 import { TimesDropdown } from 'client/components/TimesDropdown';
 import { timeFormatter } from 'client/utils/timeFormatter';
 import { Game } from 'shared/typings/models/game';
-import { RootState } from 'client/typings/redux.typings';
+import { useAppDispatch, useAppSelector } from 'client/utils/hooks';
 
 export const AdminView: FC = (): ReactElement => {
-  const games: readonly Game[] = useSelector(
-    (state: RootState) => state.allGames.games
-  );
-  const signupTime: string = useSelector(
-    (state: RootState) => state.admin.signupTime
-  );
-  const appOpen: boolean = useSelector(
-    (state: RootState) => state.admin.appOpen
-  );
-  const hiddenGames: readonly Game[] = useSelector(
-    (state: RootState) => state.admin.hiddenGames
-  );
-  const responseMessage: string = useSelector(
-    (state: RootState) => state.admin.responseMessage
+  const games = useAppSelector((state) => state.allGames.games);
+  const signupTime = useAppSelector((state) => state.admin.signupTime);
+  const appOpen = useAppSelector((state) => state.admin.appOpen);
+  const hiddenGames = useAppSelector((state) => state.admin.hiddenGames);
+  const responseMessage = useAppSelector(
+    (state) => state.admin.responseMessage
   );
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const { t } = useTranslation();
 
   const [submitting, setSubmitting] = React.useState<boolean>(false);

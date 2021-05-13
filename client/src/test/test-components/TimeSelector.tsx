@@ -1,5 +1,4 @@
 import React, { FC, ReactElement, ChangeEvent } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import _ from 'lodash';
 import moment from 'moment';
@@ -7,14 +6,12 @@ import styled from 'styled-components';
 import { submitSetTestTime } from 'client/views/admin/adminActions';
 import { TimesDropdown } from 'client/components/TimesDropdown';
 import { config } from 'client/config';
-import { RootState } from 'client/typings/redux.typings';
+import { useAppDispatch, useAppSelector } from 'client/utils/hooks';
 
 export const TimeSelector: FC = (): ReactElement => {
-  const testTime: string = useSelector(
-    (state: RootState) => state.admin.testTime
-  );
+  const testTime: string = useAppSelector((state) => state.admin.testTime);
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const { t } = useTranslation();
 
   const { CONVENTION_START_TIME } = config;

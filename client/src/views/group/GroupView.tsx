@@ -1,6 +1,6 @@
 import React, { FC, ReactElement, ChangeEvent } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useDispatch, useSelector, useStore } from 'react-redux';
+import { useStore } from 'react-redux';
 import styled from 'styled-components';
 import {
   submitJoinGroup,
@@ -12,22 +12,14 @@ import { sleep } from 'client/utils/sleep';
 import { config } from 'client/config';
 import { submitSignup } from 'client/views/signup/signupActions';
 import { loadGroupMembers } from 'client/utils/loadData';
-import { GroupMember } from 'client/typings/group.typings';
-
-import { RootState } from 'client/typings/redux.typings';
+import { useAppDispatch, useAppSelector } from 'client/utils/hooks';
 
 export const GroupView: FC = (): ReactElement => {
-  const username: string = useSelector(
-    (state: RootState) => state.login.username
-  );
-  const serial: string = useSelector((state: RootState) => state.login.serial);
-  const groupCode: string = useSelector(
-    (state: RootState) => state.login.groupCode
-  );
-  const groupMembers: readonly GroupMember[] = useSelector(
-    (state: RootState) => state.login.groupMembers
-  );
-  const dispatch = useDispatch();
+  const username = useAppSelector((state) => state.login.username);
+  const serial = useAppSelector((state) => state.login.serial);
+  const groupCode = useAppSelector((state) => state.login.groupCode);
+  const groupMembers = useAppSelector((state) => state.login.groupMembers);
+  const dispatch = useAppDispatch();
   const { t } = useTranslation();
 
   const [loading, setLoading] = React.useState<boolean>(false);

@@ -1,7 +1,7 @@
 import { Game } from 'shared/typings/models/game';
 import { GroupMember } from 'client/typings/group.typings';
 import { Result } from 'shared/typings/models/result';
-import { appReducer } from 'client/utils/store';
+import { store, combinedReducer } from 'client/utils/store';
 import { SelectedGame, UserGroup } from 'shared/typings/models/user';
 
 export interface AdminState {
@@ -47,4 +47,6 @@ export interface LocalStorageState {
   login: { jwt: string };
 }
 
-export type RootState = ReturnType<typeof appReducer>;
+export type AppDispatch = typeof store.dispatch;
+
+export type RootState = ReturnType<typeof combinedReducer>;

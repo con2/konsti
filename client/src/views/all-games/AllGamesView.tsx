@@ -1,5 +1,5 @@
 import React, { FC, ReactElement, ChangeEvent } from 'react';
-import { useSelector, useStore } from 'react-redux';
+import { useStore } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import moment from 'moment';
@@ -11,20 +11,14 @@ import { config } from 'client/config';
 import { Loading } from 'client/components/Loading';
 import { Game } from 'shared/typings/models/game';
 import { getTime } from 'client/utils/getTime';
-import { RootState } from 'client/typings/redux.typings';
+import { useAppSelector } from 'client/utils/hooks';
 
 export const AllGamesView: FC = (): ReactElement => {
   const { t } = useTranslation();
 
-  const games: readonly Game[] = useSelector(
-    (state: RootState) => state.allGames.games
-  );
-  const testTime: string = useSelector(
-    (state: RootState) => state.admin.testTime
-  );
-  const hiddenGames: readonly Game[] = useSelector(
-    (state: RootState) => state.admin.hiddenGames
-  );
+  const games = useAppSelector((state) => state.allGames.games);
+  const testTime = useAppSelector((state) => state.admin.testTime);
+  const hiddenGames = useAppSelector((state) => state.admin.hiddenGames);
 
   const [selectedView, setSelectedView] = React.useState<string>('upcoming');
   const [selectedTag, setSelectedTag] = React.useState<string>('');
