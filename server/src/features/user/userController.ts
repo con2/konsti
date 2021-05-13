@@ -32,6 +32,9 @@ import {
   LoginFormFields,
   RegistrationFormFields,
 } from 'shared/typings/api/login';
+import { sharedConfig } from 'shared/config/sharedConfig';
+import { ConventionType } from 'shared/config/sharedConfig.types';
+import { createSerial } from './userUtils';
 
 export const postUser = async (
   req: Request<{}, {}, RegistrationFormFields>,
@@ -45,8 +48,14 @@ export const postUser = async (
   }
 
   // @ts-expect-error: TODO
-  const { username, password, serial, changePassword } = req.body;
-
+  const { username, password, changePassword } = req.body;
+  let serial = '';
+  if (sharedConfig.conventionType === ConventionType.REMOTE) {
+    const serialDoc = await createSerial();
+    serial = serialDoc[0].serial;
+  } else if (req.body.serial !== undefined) {
+    serial = req.body.serial;
+  }
   const response = await storeUser(username, password, serial, changePassword);
   return res.send(response);
 };

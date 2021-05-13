@@ -49,7 +49,7 @@ export const apiRoutes = express.Router();
 /* POST routes */
 
 apiRoutes.post(GAMES_ENDPOINT, postGame);
-apiRoutes.post(USERS_ENDPOINT, postUserValidation, postUser);
+apiRoutes.post(USERS_ENDPOINT, postUserValidation(), postUser);
 apiRoutes.post(LOGIN_ENDPOINT, postLoginValidation, postLogin);
 apiRoutes.post(ASSIGNMENT_ENDPOINT, postAssignment);
 apiRoutes.post(SIGNUP_ENDPOINT, postSignup);

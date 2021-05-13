@@ -5,13 +5,29 @@ import styled from 'styled-components';
 import { FormField } from 'client/components/FormField';
 import { required } from 'client/utils/validate';
 import { Accordion } from 'client/components/Accordion';
+import { sharedConfig } from 'shared/config/sharedConfig';
+import { ConventionType } from 'shared/config/sharedConfig.types';
 
 const RegistrationForm: FC<InjectedFormProps> = (
   props: InjectedFormProps
 ): ReactElement => {
   const { handleSubmit, submitting, error } = props;
   const { t } = useTranslation();
-
+  const serialRequired = sharedConfig.conventionType === ConventionType.LIVE;
+  const serialField = (
+    <div>
+      <Field
+        name='serial'
+        id='serial'
+        type='text'
+        component={FormField}
+        validate={required}
+      />
+      <label htmlFor='serial' className='small'>
+        {t('registrationSerialHelp')}
+      </label>
+    </div>
+  );
   return (
     <div className='registration-form'>
       <h2>{t('pageTitle.registration')}</h2>
@@ -30,17 +46,7 @@ const RegistrationForm: FC<InjectedFormProps> = (
           validate={required}
         />
 
-        <Field
-          name='serial'
-          id='serial'
-          type='text'
-          component={FormField}
-          validate={required}
-        />
-
-        <label htmlFor='serial' className='small'>
-          {t('registrationSerialHelp')}
-        </label>
+        {serialRequired && serialField}
 
         <Field
           name='agreePrivacyPolicy'
