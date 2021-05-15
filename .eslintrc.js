@@ -63,7 +63,7 @@ module.exports = {
     // eslint-plugin-import
     'import/no-unused-modules': ['error', { unusedExports: true }],
     'import/no-unresolved': 'off',
-    'import/order': ['error', { groups: ['builtin', 'external'] }],
+    // 'import/order': ['error', { groups: ['builtin', 'external'] }], // Broken at the moment
 
     // eslint-plugin-jest
     'jest/no-disabled-tests': 'error',
