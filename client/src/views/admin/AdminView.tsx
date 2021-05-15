@@ -5,7 +5,7 @@ import { Hidden } from 'client/views/admin/components/Hidden';
 import {
   submitSignupTime,
   submitToggleAppOpen,
-} from 'client/views/admin/adminActions';
+} from 'client/views/admin/adminThunks';
 import { submitPlayersAssign } from 'client/views/results/resultsActions';
 import { submitGamesUpdate } from 'client/views/all-games/allGamesActions';
 import { TimesDropdown } from 'client/components/TimesDropdown';

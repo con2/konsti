@@ -1,16 +1,17 @@
+import { Immutable } from 'immer';
 import { Game } from 'shared/typings/models/game';
 import { GroupMember } from 'client/typings/group.typings';
 import { Result } from 'shared/typings/models/result';
 import { store, combinedReducer } from 'client/utils/store';
 import { SelectedGame, UserGroup } from 'shared/typings/models/user';
 
-export interface AdminState {
+export type AdminState = Immutable<{
   hiddenGames: readonly Game[];
   signupTime: string;
   testTime: string;
   appOpen: boolean;
   responseMessage: string;
-}
+}>;
 
 export interface AllGamesState {
   games: readonly Game[];

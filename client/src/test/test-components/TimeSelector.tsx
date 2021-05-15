@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import _ from 'lodash';
 import moment from 'moment';
 import styled from 'styled-components';
-import { submitSetTestTime } from 'client/views/admin/adminActions';
+import { submitSetTestTime } from 'client/views/admin/adminSlice';
 import { TimesDropdown } from 'client/components/TimesDropdown';
 import { config } from 'client/config';
 import { useAppDispatch, useAppSelector } from 'client/utils/hooks';

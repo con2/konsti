@@ -1,9 +1,9 @@
 import { submitGetResults } from 'client/views/results/resultsActions';
 import { submitGetGames } from 'client/views/all-games/allGamesActions';
-import { submitGetSettings } from 'client/views/admin/adminActions';
+import { submitGetSettings } from 'client/views/admin/adminThunks';
 import { submitGetUser } from 'client/views/my-games/myGamesActions';
-import { submitGetGroup } from 'client/views/group/groupActions';
-import { submitLogin } from 'client/views/login/loginActions';
+import { submitGetGroup } from 'client/views/group/groupThunks';
+import { submitLogin } from 'client/views/login/loginThunks';
 import { store } from 'client/utils/store';
 import { AppThunkDispatch } from 'client/typings/utils.typings';
 

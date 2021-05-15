@@ -2,7 +2,7 @@ import { postPlayerAssignment } from 'client/services/assignmentServices';
 import { getResults } from 'client/services/resultsServices';
 import { ResultsState } from 'client/typings/redux.typings';
 import { AppThunk } from 'client/typings/utils.typings';
-import { submitResponseMessageAsync } from 'client/views/admin/adminActions';
+import { submitResponseMessageAsync } from 'client/views/admin/adminSlice';
 import {
   SubmitGetResultsAsync,
   SUBMIT_GET_RESULTS,
