@@ -1,13 +1,9 @@
 import { postLogin } from 'client/services/loginServices';
 import { saveSession, clearSession } from 'client/utils/localStorage';
-import { LoginData } from 'client/typings/user.typings';
 import { AppThunk } from 'client/typings/utils.typings';
-import {
-  SubmitLoginAsync,
-  SUBMIT_LOGIN,
-} from 'client/typings/loginActions.typings';
 import { ServerError } from 'shared/typings/api/errors';
 import { LoginFormFields, PostLoginResponse } from 'shared/typings/api/login';
+import { submitLoginAsync } from 'client/views/login/loginSlice';
 
 export const submitLogin = (loginFormFields: LoginFormFields): AppThunk => {
   return async (dispatch): Promise<void> => {
@@ -40,24 +36,5 @@ export const submitLogin = (loginFormFields: LoginFormFields): AppThunk => {
         })
       );
     }
-  };
-};
-
-const submitLoginAsync = ({
-  username,
-  loggedIn,
-  jwt,
-  userGroup,
-  serial,
-  groupCode,
-}: LoginData): SubmitLoginAsync => {
-  return {
-    type: SUBMIT_LOGIN,
-    username,
-    loggedIn,
-    jwt,
-    userGroup,
-    serial,
-    groupCode,
   };
 };
