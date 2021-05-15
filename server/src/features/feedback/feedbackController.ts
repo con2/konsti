@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { validateAuthHeader } from 'server/utils/authHeader';
+import { isAuthorized } from 'server/utils/authHeader';
 import { UserGroup } from 'shared/typings/models/user';
 import { storeFeedback } from 'server/features/feedback/feedbackService';
 import { logger } from 'server/utils/logger';
@@ -12,17 +12,11 @@ export const postFeedback = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${FEEDBACK_ENDPOINT}`);
 
-  const feedbackData = req.body.feedbackData;
-
-  const validToken = validateAuthHeader(
-    req.headers.authorization,
-    UserGroup.USER
-  );
-
-  if (!validToken) {
+  if (!isAuthorized(req.headers.authorization, UserGroup.USER)) {
     return res.sendStatus(401);
   }
 
+  const feedbackData = req.body.feedbackData;
   const response = await storeFeedback(feedbackData);
-  return res.send(response);
+  return res.json(response);
 };
