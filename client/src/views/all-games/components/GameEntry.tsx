@@ -198,7 +198,7 @@ const HeaderContainer = styled.div`
   display: flex;
 
   h3 {
-    margin: 0px;
+    margin: 0;
   }
 `;
 
@@ -232,7 +232,7 @@ const GameContainer = styled.div`
   border-radius: 4px;
   background-color: #fafafa;
   min-height: 160px;
-  box-shadow: 1px 8px 15px 0px rgba(0, 0, 0, 0.42);
+  box-shadow: 1px 8px 15px 0 rgba(0, 0, 0, 0.42);
   color: #3d3d3d;
 `;
 
