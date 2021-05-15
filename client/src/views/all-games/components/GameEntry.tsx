@@ -228,7 +228,7 @@ const GameContainer = styled.div`
   flex-direction: column;
   padding: 8px;
   margin: 4px 16px 24px 16px;
-  border: 1px solid #ddd:
+  border: 1px solid #ddd;
   border-radius: 4px;
   background-color: #fafafa;
   min-height: 160px;
