@@ -1,7 +1,7 @@
 import React, { FC, ReactElement } from 'react';
 import styled from 'styled-components';
 import { timeFormatter } from 'client/utils/timeFormatter';
-import { submitSignupTime } from 'client/views/signup/signupActions';
+import { submitSignupTime } from 'client/views/signup/signupSlice';
 import { useAppDispatch } from 'client/utils/hooks';
 import { AppDispatch } from 'client/typings/redux.typings';
 

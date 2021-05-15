@@ -1,14 +1,10 @@
 import { postGroup, getGroup } from 'client/services/groupServices';
-import { GroupMember } from 'client/typings/group.typings';
 import { AppThunk } from 'client/typings/utils.typings';
 import {
-  SubmitUpdateGroupCodeAsync,
-  SubmitGetGroupAsync,
-  SubmitLeaveGroupAsync,
-  SUBMIT_UPDATE_GROUP_CODE,
-  SUBMIT_LEAVE_GROUP,
-  SUBMIT_UPDATE_GROUP_MEMBERS,
-} from 'client/typings/groupActions.typings';
+  submitLeaveGroupAsync,
+  submitUpdateGroupAsync,
+  submitUpdateGroupCodeAsync,
+} from 'client/views/login/loginSlice';
 import { GroupData } from 'shared/typings/api/groups';
 
 export const submitJoinGroup = (groupData: GroupData): AppThunk => {
@@ -41,15 +37,6 @@ export const submitCreateGroup = (groupData: GroupData): AppThunk => {
   };
 };
 
-const submitUpdateGroupCodeAsync = (
-  groupCode: string
-): SubmitUpdateGroupCodeAsync => {
-  return {
-    type: SUBMIT_UPDATE_GROUP_CODE,
-    groupCode,
-  };
-};
-
 export const submitGetGroup = (groupCode: string): AppThunk => {
   return async (dispatch): Promise<void> => {
     const getGroupResponse = await getGroup(groupCode);
@@ -59,17 +46,8 @@ export const submitGetGroup = (groupCode: string): AppThunk => {
     }
 
     if (getGroupResponse?.status === 'success') {
-      dispatch(submitGetGroupAsync(getGroupResponse.results));
+      dispatch(submitUpdateGroupAsync(getGroupResponse.results));
     }
-  };
-};
-
-const submitGetGroupAsync = (
-  groupMembers: readonly GroupMember[]
-): SubmitGetGroupAsync => {
-  return {
-    type: SUBMIT_UPDATE_GROUP_MEMBERS,
-    groupMembers,
   };
 };
 
@@ -84,12 +62,5 @@ export const submitLeaveGroup = (groupData: GroupData): AppThunk => {
     if (leaveGroupResponse?.status === 'success') {
       dispatch(submitLeaveGroupAsync(leaveGroupResponse.groupCode));
     }
-  };
-};
-
-const submitLeaveGroupAsync = (groupCode: string): SubmitLeaveGroupAsync => {
-  return {
-    type: SUBMIT_LEAVE_GROUP,
-    groupCode,
   };
 };

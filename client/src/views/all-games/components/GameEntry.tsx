@@ -10,12 +10,10 @@ import {
   getUpcomingEnteredGames,
 } from 'client/utils/getUpcomingGames';
 import { SignupForm } from './SignupForm';
-import {
-  submitSignup,
-  submitSelectedGames,
-} from 'client/views/signup/signupActions';
+import { submitSignup } from 'client/views/signup/signupThunks';
 import { SelectedGame } from 'shared/typings/models/user';
 import { useAppDispatch, useAppSelector } from 'client/utils/hooks';
+import { submitSelectedGames } from 'client/views/signup/signupSlice';
 
 interface Props {
   game: Game;

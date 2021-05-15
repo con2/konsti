@@ -6,11 +6,11 @@ import {
   submitJoinGroup,
   submitCreateGroup,
   submitLeaveGroup,
-} from 'client/views/group/groupActions';
+} from 'client/views/group/groupThunks';
 import { GroupMembersList } from 'client/views/group/components/GroupMembersList';
 import { sleep } from 'client/utils/sleep';
 import { config } from 'client/config';
-import { submitSignup } from 'client/views/signup/signupActions';
+import { submitSignup } from 'client/views/signup/signupThunks';
 import { loadGroupMembers } from 'client/utils/loadData';
 import { useAppDispatch, useAppSelector } from 'client/utils/hooks';
 

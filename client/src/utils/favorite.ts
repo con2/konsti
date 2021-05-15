@@ -1,5 +1,5 @@
 import { Game } from 'shared/typings/models/game';
-import { submitUpdateFavorites } from 'client/views/my-games/myGamesActions';
+import { submitUpdateFavorites } from 'client/views/my-games/myGamesThunks';
 import { AppDispatch } from 'client/typings/redux.typings';
 
 export interface UpdateFavoriteOpts {
