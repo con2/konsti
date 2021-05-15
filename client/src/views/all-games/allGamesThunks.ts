@@ -1,10 +1,6 @@
 import { getGames, postGamesUpdate } from 'client/services/gamesServices';
-import { Game } from 'shared/typings/models/game';
 import { AppThunk } from 'client/typings/utils.typings';
-import {
-  SubmitGetGamesAsync,
-  SUBMIT_GET_GAMES,
-} from 'client/typings/allGamesActions.typings';
+import { submitGetGamesAsync } from 'client/views/all-games/allGamesSlice';
 
 export const submitGetGames = (): AppThunk => {
   return async (dispatch): Promise<void> => {
@@ -31,12 +27,5 @@ export const submitGamesUpdate = (): AppThunk => {
     if (gamesUpdateResponse?.status === 'success') {
       dispatch(submitGetGamesAsync(gamesUpdateResponse.games));
     }
-  };
-};
-
-const submitGetGamesAsync = (games: readonly Game[]): SubmitGetGamesAsync => {
-  return {
-    type: SUBMIT_GET_GAMES,
-    games,
   };
 };

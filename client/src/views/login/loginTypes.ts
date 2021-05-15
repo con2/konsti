@@ -1,9 +1,6 @@
 import { UserGroup } from 'shared/typings/models/user';
 
-export const SUBMIT_LOGIN = 'SUBMIT_LOGIN';
-
-export interface SubmitLoginAsync {
-  type: typeof SUBMIT_LOGIN;
+export interface SubmitLoginPayload {
   username: string;
   loggedIn: boolean;
   jwt: string;
@@ -11,5 +8,3 @@ export interface SubmitLoginAsync {
   serial: string;
   groupCode: string;
 }
-
-export type LoginActionTypes = SubmitLoginAsync;

@@ -1,7 +1,7 @@
 import React, { FC, ReactElement } from 'react';
 import { SubmissionError } from 'redux-form';
 import { useTranslation } from 'react-i18next';
-import { submitRegistration } from 'client/views/registration/registrationActions';
+import { submitRegistration } from 'client/views/registration/registrationThunks';
 import RegistrationForm from 'client/views/registration/components/RegistrationForm';
 import { RegistrationFormFields } from 'shared/typings/api/login';
 import { useAppDispatch } from 'client/utils/hooks';

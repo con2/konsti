@@ -1,11 +1,9 @@
 import React, { FC, ReactElement, useRef, FormEvent } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Game } from 'shared/typings/models/game';
-import {
-  submitSignup,
-  submitSelectedGames,
-} from 'client/views/signup/signupActions';
+import { submitSignup } from 'client/views/signup/signupThunks';
 import { useAppDispatch, useAppSelector } from 'client/utils/hooks';
+import { submitSelectedGames } from 'client/views/signup/signupSlice';
 
 interface Props {
   game: Game;

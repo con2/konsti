@@ -1,10 +1,7 @@
 import React, { FC, ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
-import {
-  submitSignup,
-  submitSelectedGames,
-} from 'client/views/signup/signupActions';
+import { submitSignup } from 'client/views/signup/signupThunks';
 import { DragAndDropList } from 'client/views/signup/components/DragAndDropList';
 import { sleep } from 'client/utils/sleep';
 import { config } from 'client/config';
@@ -15,6 +12,7 @@ import { SignupActionButtons } from './SignupActionButtons';
 import { filterAvailableGames } from 'client/views/signup/utils/filterAvailableGames';
 import { filterSelectedGames } from 'client/views/signup/utils/filterSelectedGames';
 import { useAppDispatch, useAppSelector } from 'client/utils/hooks';
+import { submitSelectedGames } from 'client/views/signup/signupSlice';
 
 export interface Props {
   games: readonly Game[];

@@ -1,7 +1,7 @@
 import React, { FC, ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useHistory, useParams } from 'react-router-dom';
-import { submitUpdateHidden } from 'client/views/admin/adminActions';
+import { submitUpdateHidden } from 'client/views/admin/adminThunks';
 import { FeedbackForm } from 'client/views/all-games/components/FeedbackForm';
 import { GameInfo } from 'client/views/all-games/components/GameInfo';
 import { Loading } from 'client/components/Loading';

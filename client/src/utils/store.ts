@@ -7,12 +7,12 @@ import { RootState } from 'client/typings/redux.typings';
 import { SUBMIT_LOGOUT } from 'client/typings/logoutActions.typings';
 
 // Reducers
-import { allGamesReducer } from 'client/views/all-games/allGamesReducer';
-import { loginReducer } from 'client/views/login/loginReducer';
-import { myGamesReducer } from 'client/views/my-games/myGamesReducer';
-import { signupReducer } from 'client/views/signup/signupReducer';
-import { adminReducer } from 'client/views/admin/adminReducer';
-import { resultsReducer } from 'client/views/results/resultsReducer';
+import { allGamesReducer } from 'client/views/all-games/allGamesSlice';
+import { loginReducer } from 'client/views/login/loginSlice';
+import { myGamesReducer } from 'client/views/my-games/myGamesSlice';
+import { signupReducer } from 'client/views/signup/signupSlice';
+import { adminReducer } from 'client/views/admin/adminSlice';
+import { resultsReducer } from 'client/views/results/resultsSlice';
 
 export const combinedReducer = combineReducers({
   form: formReducer,
