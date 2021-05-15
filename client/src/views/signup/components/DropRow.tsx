@@ -51,13 +51,14 @@ export const DropRow: FC<Props> = (props: Props): ReactElement => {
                 draggableId={game.gameId}
                 index={index}
               >
-                {(provided2) => (
+                {/* eslint-disable-next-line @typescript-eslint/no-shadow */}
+                {(provided) => (
                   <Link to={`/games/${game.gameId}`}>
                     <DraggableItem
                       className={`${getPopularity(game)}`}
                       ref={provided.innerRef}
-                      {...provided2.draggableProps}
-                      {...provided2.dragHandleProps}
+                      {...provided.draggableProps}
+                      {...provided.dragHandleProps}
                     >
                       <SignupGameTitle className='break-long'>
                         {game.title}
