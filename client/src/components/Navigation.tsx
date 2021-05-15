@@ -62,7 +62,7 @@ export const Navigation = (): ReactElement => {
 };
 
 const NavigationIcon = styled(FontAwesomeIcon)`
-  color: white;
+  color: black;
 `;
 
 const NavigationIconContainer = styled.span`
@@ -80,15 +80,15 @@ const Dimmer = styled.div<{ includeTimeSelectorHeight: boolean }>`
   bottom: 0;
   background-color: black;
   opacity: 0.7;
+  z-index: 90;
 `;
 
 const Drawer = styled.div<{ includeTimeSelectorHeight: boolean }>`
   position: absolute;
   top: ${(props) => (props.includeTimeSelectorHeight ? 40 + 50 : 40)}px;
-  left: 0;
   bottom: 0;
   width: 60%;
-  z-index: 10;
+  z-index: 100;
   border-right: 1px solid black;
   color: black;
   background-color: ${(props) => props.theme.backgroundHighlight};
