@@ -7,7 +7,7 @@ import { RootState } from 'client/typings/redux.typings';
 import { SUBMIT_LOGOUT } from 'client/typings/logoutActions.typings';
 
 // Reducers
-import { allGamesReducer } from 'client/views/all-games/allGamesReducer';
+import { allGamesReducer } from 'client/views/all-games/allGamesSlice';
 import { loginReducer } from 'client/views/login/loginSlice';
 import { myGamesReducer } from 'client/views/my-games/myGamesReducer';
 import { signupReducer } from 'client/views/signup/signupReducer';

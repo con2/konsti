@@ -1,5 +1,5 @@
 import { submitGetResults } from 'client/views/results/resultsActions';
-import { submitGetGames } from 'client/views/all-games/allGamesActions';
+import { submitGetGames } from 'client/views/all-games/allGamesThunks';
 import { submitGetSettings } from 'client/views/admin/adminThunks';
 import { submitGetUser } from 'client/views/my-games/myGamesActions';
 import { submitGetGroup } from 'client/views/group/groupThunks';

@@ -7,7 +7,7 @@ import {
   submitToggleAppOpen,
 } from 'client/views/admin/adminThunks';
 import { submitPlayersAssign } from 'client/views/results/resultsActions';
-import { submitGamesUpdate } from 'client/views/all-games/allGamesActions';
+import { submitGamesUpdate } from 'client/views/all-games/allGamesThunks';
 import { TimesDropdown } from 'client/components/TimesDropdown';
 import { timeFormatter } from 'client/utils/timeFormatter';
 import { Game } from 'shared/typings/models/game';
