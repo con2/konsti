@@ -3,7 +3,7 @@ import { Record, String } from 'runtypes';
 import { storeAssignment } from 'server/features/player-assignment/assignmentController';
 import { fetchResults } from 'server/features/results/resultsService';
 import { UserGroup } from 'shared/typings/models/user';
-import { validateAuthHeader } from 'server/utils/authHeader';
+import { isAuthorized } from 'server/utils/authHeader';
 import { logger } from 'server/utils/logger';
 import {
   ASSIGNMENT_ENDPOINT,
@@ -34,7 +34,7 @@ export const getResults = async (
   }
 
   const response = await fetchResults(startTime);
-  return res.send(response);
+  return res.json(response);
 };
 
 export const postAssignment = async (
@@ -43,17 +43,11 @@ export const postAssignment = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${ASSIGNMENT_ENDPOINT}`);
 
-  const startingTime = req.body.startingTime;
-
-  const validToken = validateAuthHeader(
-    req.headers.authorization,
-    UserGroup.ADMIN
-  );
-
-  if (!validToken) {
+  if (!isAuthorized(req.headers.authorization, UserGroup.ADMIN)) {
     return res.sendStatus(401);
   }
 
+  const startingTime = req.body.startingTime;
   const response = await storeAssignment(startingTime);
-  return res.send(response);
+  return res.json(response);
 };
