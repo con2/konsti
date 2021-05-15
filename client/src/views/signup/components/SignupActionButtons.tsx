@@ -1,7 +1,7 @@
 import React, { FC, ReactElement } from 'react';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
-import { updateUnsavedChangesStatus } from 'client/views/signup/signupActions';
+import { updateUnsavedChangesStatus } from 'client/views/signup/signupSlice';
 import { SelectedGame } from 'shared/typings/models/user';
 import { useAppDispatch } from 'client/utils/hooks';
 import { AppDispatch } from 'client/typings/redux.typings';

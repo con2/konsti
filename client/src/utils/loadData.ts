@@ -1,7 +1,7 @@
 import { submitGetResults } from 'client/views/results/resultsActions';
 import { submitGetGames } from 'client/views/all-games/allGamesThunks';
 import { submitGetSettings } from 'client/views/admin/adminThunks';
-import { submitGetUser } from 'client/views/my-games/myGamesActions';
+import { submitGetUser } from 'client/views/my-games/myGamesThunks';
 import { submitGetGroup } from 'client/views/group/groupThunks';
 import { submitLogin } from 'client/views/login/loginThunks';
 import { store } from 'client/utils/store';
