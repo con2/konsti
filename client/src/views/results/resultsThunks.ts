@@ -1,12 +1,8 @@
 import { postPlayerAssignment } from 'client/services/assignmentServices';
 import { getResults } from 'client/services/resultsServices';
-import { ResultsState } from 'client/typings/redux.typings';
 import { AppThunk } from 'client/typings/utils.typings';
 import { submitResponseMessageAsync } from 'client/views/admin/adminSlice';
-import {
-  SubmitGetResultsAsync,
-  SUBMIT_GET_RESULTS,
-} from 'client/typings/resultActions.typings';
+import { submitGetResultsAsync } from 'client/views/results/resultsSlice';
 
 export const submitGetResults = (startTime: string): AppThunk => {
   return async (dispatch): Promise<void> => {
@@ -45,15 +41,5 @@ export const submitPlayersAssign = (signupTime: string): AppThunk => {
 
       dispatch(submitResponseMessageAsync(assignResponse.resultMessage));
     }
-  };
-};
-
-const submitGetResultsAsync = (
-  results: ResultsState
-): SubmitGetResultsAsync => {
-  return {
-    type: SUBMIT_GET_RESULTS,
-    result: results.result,
-    startTime: results.startTime,
   };
 };

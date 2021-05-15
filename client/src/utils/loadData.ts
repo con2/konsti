@@ -1,4 +1,4 @@
-import { submitGetResults } from 'client/views/results/resultsActions';
+import { submitGetResults } from 'client/views/results/resultsThunks';
 import { submitGetGames } from 'client/views/all-games/allGamesThunks';
 import { submitGetSettings } from 'client/views/admin/adminThunks';
 import { submitGetUser } from 'client/views/my-games/myGamesThunks';

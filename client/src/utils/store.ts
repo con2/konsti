@@ -12,7 +12,7 @@ import { loginReducer } from 'client/views/login/loginSlice';
 import { myGamesReducer } from 'client/views/my-games/myGamesSlice';
 import { signupReducer } from 'client/views/signup/signupSlice';
 import { adminReducer } from 'client/views/admin/adminSlice';
-import { resultsReducer } from 'client/views/results/resultsReducer';
+import { resultsReducer } from 'client/views/results/resultsSlice';
 
 export const combinedReducer = combineReducers({
   form: formReducer,
