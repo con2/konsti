@@ -3,27 +3,17 @@ import { config } from 'server/config';
 import { JWTResult } from 'server/typings/jwt.typings';
 import { UserGroup } from 'shared/typings/models/user';
 
-const getSecret = (userGroup: UserGroup): string => {
-  if (userGroup === 'admin') {
-    return config.jwtSecretKeyAdmin;
-  } else if (userGroup === 'user') {
-    return config.jwtSecretKey;
-  } else if (userGroup === 'help') {
-    return config.jwtSecretKey;
-  }
-  return '';
-};
-
 export const getJWT = (userGroup: UserGroup, username: string): string => {
+  const payload = {
+    username,
+    userGroup,
+  };
+
   const options = {
     expiresIn: '2 days',
   };
 
-  return jsonwebtoken.sign(
-    { username, userGroup },
-    getSecret(userGroup),
-    options
-  );
+  return jsonwebtoken.sign(payload, getSecret(userGroup), options);
 };
 
 export const verifyJWT = (jwt: string, userGroup: UserGroup): JWTResult => {
@@ -63,4 +53,15 @@ export const verifyJWT = (jwt: string, userGroup: UserGroup): JWTResult => {
 
 export const decodeJWT = (jwt: string): JWTResult => {
   return jsonwebtoken.decode(jwt) as JWTResult;
+};
+
+const getSecret = (userGroup: UserGroup): string => {
+  if (userGroup === 'admin') {
+    return config.jwtSecretKeyAdmin;
+  } else if (userGroup === 'user') {
+    return config.jwtSecretKey;
+  } else if (userGroup === 'help') {
+    return config.jwtSecretKey;
+  }
+  return '';
 };
