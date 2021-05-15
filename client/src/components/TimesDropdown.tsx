@@ -16,7 +16,7 @@ export const TimesDropdown: FC<Props> = (props: Props): ReactElement => {
   const { times, onChange, selectedTime } = props;
 
   const sortedTimes = times.map((sortedTime) => {
-    const formattedDate = timeFormatter.weekdayAndTime({
+    const formattedDate = timeFormatter.getWeekdayAndTime({
       time: sortedTime,
       capitalize: true,
     });

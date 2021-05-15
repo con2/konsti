@@ -10,10 +10,10 @@ export const api: AxiosInstance = axios.create({
   },
 });
 
-api.interceptors.request.use((config) => {
+api.interceptors.request.use((requestConfig) => {
   const authToken = getJWT();
   if (authToken) {
-    config.headers.Authorization = `Bearer ${authToken}`;
+    requestConfig.headers.Authorization = `Bearer ${authToken}`;
   }
-  return config;
+  return requestConfig;
 });

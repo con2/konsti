@@ -111,24 +111,24 @@ export const getDemandByGame = (
     }
 
     user.signedGames.forEach((signedGame) => {
-      const game = games.find(
+      const foundGame = games.find(
         (game) => game.gameId === signedGame.gameDetails.gameId
       );
 
-      if (!game) return;
+      if (!foundGame) return;
 
-      acc[game.title] = {
-        first: acc[game.title]?.first ? acc[game.title].first : 0,
-        second: acc[game.title]?.second ? acc[game.title].second : 0,
-        third: acc[game.title]?.third ? acc[game.title].third : 0,
+      acc[foundGame.title] = {
+        first: acc[foundGame.title]?.first ? acc[foundGame.title].first : 0,
+        second: acc[foundGame.title]?.second ? acc[foundGame.title].second : 0,
+        third: acc[foundGame.title]?.third ? acc[foundGame.title].third : 0,
       };
 
       if (signedGame.priority === 1) {
-        acc[game.title].first = acc[game.title].first + groupSize;
+        acc[foundGame.title].first = acc[foundGame.title].first + groupSize;
       } else if (signedGame.priority === 2) {
-        acc[game.title].second = ++acc[game.title].second + groupSize;
+        acc[foundGame.title].second = ++acc[foundGame.title].second + groupSize;
       } else if (signedGame.priority === 3) {
-        acc[game.title].third = ++acc[game.title].third + groupSize;
+        acc[foundGame.title].third = ++acc[foundGame.title].third + groupSize;
       }
     });
     return acc;

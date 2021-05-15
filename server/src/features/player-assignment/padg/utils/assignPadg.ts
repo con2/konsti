@@ -22,17 +22,6 @@ export const assignPadg = (
   let finalHappiness = 0;
   let finalAssignResults: PadgRandomAssignResults = [];
 
-  const sortList = (list: ListItem[], i: number): ListItem[] => {
-    switch (i) {
-      case 0:
-        return _.sortBy(list, 'gain');
-      case 1:
-        return _.sortBy(list, 'size');
-      default:
-        return list.sort((a, b) => 0.5 - Math.random());
-    }
-  };
-
   for (let i = 0; i < PADG_ASSIGNMENT_ROUNDS; i++) {
     const eventsCopy = _.cloneDeep(events);
 
@@ -57,4 +46,15 @@ export const assignPadg = (
   logger.debug(`Padg assignment completed with happiness ${finalHappiness}%`);
 
   return finalAssignResults;
+};
+
+const sortList = (list: ListItem[], i: number): ListItem[] => {
+  switch (i) {
+    case 0:
+      return _.sortBy(list, 'gain');
+    case 1:
+      return _.sortBy(list, 'size');
+    default:
+      return list.sort((a, b) => 0.5 - Math.random());
+  }
 };

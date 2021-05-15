@@ -50,18 +50,18 @@ export const GameInfo: FC<Props> = (props: Props): ReactElement => {
     );
   });
 
-  const getFormattedStartTime = (game: Game): string =>
-    timeFormatter.weekdayAndTime({
-      time: game.startTime,
+  const getFormattedStartTime = (startTime: string): string =>
+    timeFormatter.getWeekdayAndTime({
+      time: startTime,
       capitalize: true,
     });
 
-  const getFormattedEndTime = (game: Game): string =>
-    timeFormatter.time(game.endTime);
+  const getFormattedEndTime = (endTime: string): string =>
+    timeFormatter.getTime(endTime);
 
-  const getFormattedDuration = (game: Game): string => {
-    const hours = Math.floor(game.mins / 60);
-    const minutes = Math.round((game.mins / 60 - hours) * 60);
+  const getFormattedDuration = (duration: number): string => {
+    const hours = Math.floor(duration / 60);
+    const minutes = Math.round((duration / 60 - hours) * 60);
 
     if (!minutes) return `${hours} ${t('hours')}`;
     else return `${hours} ${t('hours')} ${minutes} ${t('minutes')}`;
@@ -126,9 +126,10 @@ export const GameInfo: FC<Props> = (props: Props): ReactElement => {
           </GameDetailsTitle>
           <GameDetailsValue>
             <span>
-              {getFormattedStartTime(game)} - {getFormattedEndTime(game)}{' '}
+              {getFormattedStartTime(game.startTime)} -{' '}
+              {getFormattedEndTime(game.endTime)}{' '}
             </span>
-            <span className='no-wrap'>({getFormattedDuration(game)})</span>
+            <span className='no-wrap'>({getFormattedDuration(game.mins)})</span>
           </GameDetailsValue>
         </GameDetailsRow>
       )}

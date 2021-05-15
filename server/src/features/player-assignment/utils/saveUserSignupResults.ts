@@ -56,22 +56,24 @@ const getCurrentEnteredGames = (
       moment(enteredGame.time).format() !== moment(startingTime).format()
   );
 
-  const result = results.find((result) => result.username === user.username);
+  const foundResult = results.find(
+    (result) => result.username === user.username
+  );
 
   const gameDocInDb = games.find(
-    (game) => game.gameId === result?.enteredGame.gameDetails.gameId
+    (game) => game.gameId === foundResult?.enteredGame.gameDetails.gameId
   );
 
   let enteredGames = existingEnteredGames;
 
   // Matching enteredGame exists -> override
-  if (gameDocInDb && result) {
+  if (gameDocInDb && foundResult) {
     enteredGames = [
       ...existingEnteredGames,
       {
         gameDetails: gameDocInDb?._id,
-        priority: result?.enteredGame.priority,
-        time: result?.enteredGame.time,
+        priority: foundResult?.enteredGame.priority,
+        time: foundResult?.enteredGame.time,
       },
     ];
   }
