@@ -56,7 +56,7 @@ export const GameEntry: FC<Props> = (props: Props): ReactElement => {
       (favoritedGame) => favoritedGame.gameId === game.gameId
     ) !== undefined;
 
-  const isAlreadySigned = (game: Game): boolean => {
+  const isAlreadySigned = (gameToCheck: Game): boolean => {
     const allSignedGames = getSignedGames(
       signedGames,
       groupCode,
@@ -67,11 +67,11 @@ export const GameEntry: FC<Props> = (props: Props): ReactElement => {
     const allEnteredGames = getUpcomingEnteredGames(enteredGames);
 
     return [...allSignedGames, ...allEnteredGames].some(
-      (g: SelectedGame) => g.gameDetails.gameId === game.gameId
+      (g: SelectedGame) => g.gameDetails.gameId === gameToCheck.gameId
     );
   };
 
-  const removeSignup = async (game: Game): Promise<void> => {
+  const removeSignup = async (gameToRemove: Game): Promise<void> => {
     const allSignedGames = getSignedGames(
       signedGames,
       groupCode,
@@ -81,13 +81,13 @@ export const GameEntry: FC<Props> = (props: Props): ReactElement => {
     );
     const allEnteredGames = getUpcomingEnteredGames(enteredGames);
     const newSignupData = [...allSignedGames, ...allEnteredGames].filter(
-      (g: SelectedGame) => g.gameDetails.gameId !== game.gameId
+      (g: SelectedGame) => g.gameDetails.gameId !== gameToRemove.gameId
     );
     dispatch(submitSelectedGames(newSignupData));
     const signupData = {
       username,
       selectedGames: newSignupData,
-      signupTime: game.startTime,
+      signupTime: gameToRemove.startTime,
     };
 
     await dispatch(submitSignup(signupData));

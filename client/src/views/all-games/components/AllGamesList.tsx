@@ -1,11 +1,12 @@
 import React, { FC, ReactElement } from 'react';
-import { useTranslation } from 'react-i18next';
+import { TFunction, useTranslation } from 'react-i18next';
 import _ from 'lodash';
 import styled from 'styled-components';
 import { timeFormatter } from 'client/utils/timeFormatter';
 import { Game } from 'shared/typings/models/game';
 import { GameEntry } from './GameEntry';
 import { useAppSelector } from 'client/utils/hooks';
+import { SelectedGame } from 'shared/typings/models/user';
 
 export interface Props {
   games: readonly Game[];
@@ -17,54 +18,7 @@ export const AllGamesList: FC<Props> = (props: Props): ReactElement => {
 
   const signedGames = useAppSelector((state) => state.myGames.signedGames);
 
-  const buildGamesList = (games: readonly Game[]): ReactElement[] => {
-    const sortedGames = _.sortBy(games, [
-      (game) => game.startTime,
-      (game) => game.title.toLowerCase(),
-    ]);
-
-    const groupedGames = _.groupBy(sortedGames, 'startTime');
-
-    const GamesList: ReactElement[] = [];
-
-    for (const [startTime, games] of Object.entries(groupedGames)) {
-      const formattedStartTime = timeFormatter.weekdayAndTime({
-        time: startTime,
-        capitalize: true,
-      });
-      const signupStartTime = timeFormatter.startTime(startTime);
-      const signupEndTime = timeFormatter.endTime(startTime);
-
-      const allGamesRevolvingDoor = games.every((game) => game.revolvingDoor);
-      const signedGamesCount = signedGames.filter(
-        (game) => game.gameDetails.startTime === startTime
-      ).length;
-
-      const title = (
-        <GameListTitle key={startTime}>
-          <span className='game-startup-time'>{formattedStartTime}</span>
-          {!allGamesRevolvingDoor && (
-            <span className='game-signup-time'>
-              {' '}
-              ({t('signupOpenBetween')} {signupStartTime}-{signupEndTime})
-            </span>
-          )}
-          <SignupCount>{signedGamesCount} / 3</SignupCount>
-        </GameListTitle>
-      );
-
-      GamesList.push(title);
-
-      const gameEntries = games.map((game) => (
-        <GameEntry key={game.gameId} game={game} startTime={startTime} />
-      ));
-      GamesList.push(...gameEntries);
-    }
-
-    return GamesList;
-  };
-
-  const GamesList = buildGamesList(games);
+  const GamesList = buildGamesList(games, signedGames, t);
 
   return (
     <div className='games-list'>
@@ -72,6 +26,57 @@ export const AllGamesList: FC<Props> = (props: Props): ReactElement => {
       {games.length !== 0 && <>{GamesList}</>}
     </div>
   );
+};
+
+const buildGamesList = (
+  games: readonly Game[],
+  signedGames: readonly SelectedGame[],
+  t: TFunction
+): ReactElement[] => {
+  const sortedGames = _.sortBy(games, [
+    (game) => game.startTime,
+    (game) => game.title.toLowerCase(),
+  ]);
+
+  const groupedGames = _.groupBy(sortedGames, 'startTime');
+
+  const GamesList: ReactElement[] = [];
+
+  for (const [startTime, gamesList] of Object.entries(groupedGames)) {
+    const formattedStartTime = timeFormatter.getWeekdayAndTime({
+      time: startTime,
+      capitalize: true,
+    });
+    const signupStartTime = timeFormatter.getStartTime(startTime);
+    const signupEndTime = timeFormatter.getEndTime(startTime);
+
+    const allGamesRevolvingDoor = gamesList.every((game) => game.revolvingDoor);
+    const signedGamesCount = signedGames.filter(
+      (game) => game.gameDetails.startTime === startTime
+    ).length;
+
+    const title = (
+      <GameListTitle key={startTime}>
+        <span className='game-startup-time'>{formattedStartTime}</span>
+        {!allGamesRevolvingDoor && (
+          <span className='game-signup-time'>
+            {' '}
+            ({t('signupOpenBetween')} {signupStartTime}-{signupEndTime})
+          </span>
+        )}
+        <SignupCount>{signedGamesCount} / 3</SignupCount>
+      </GameListTitle>
+    );
+
+    GamesList.push(title);
+
+    const gameEntries = gamesList.map((game) => (
+      <GameEntry key={game.gameId} game={game} startTime={startTime} />
+    ));
+    GamesList.push(...gameEntries);
+  }
+
+  return GamesList;
 };
 
 const SignupCount = styled.span`

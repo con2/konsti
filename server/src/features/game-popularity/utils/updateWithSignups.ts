@@ -13,19 +13,19 @@ export const updateWithSignups = async (
   );
 
   const allUsers = users.map((user) => {
-    const groupLeader = groupLeaders.find(
+    const foundGroupLeader = groupLeaders.find(
       (groupLeader) =>
         user.groupCode === groupLeader.groupCode &&
         user.serial !== groupLeader.serial
     );
 
-    if (groupLeader) {
-      return { ...user, signedGames: groupLeader.signedGames };
+    if (foundGroupLeader) {
+      return { ...user, signedGames: foundGroupLeader.signedGames };
     } else return user;
   });
 
   const signedGames = allUsers.flatMap((user) =>
-    user.signedGames.map((signedGames) => signedGames.gameDetails)
+    user.signedGames.map((signedGame) => signedGame.gameDetails)
   );
 
   const groupedSignups = _.countBy(signedGames, 'gameId');

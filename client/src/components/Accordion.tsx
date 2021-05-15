@@ -20,8 +20,8 @@ export const Accordion: FC<Props> = (props: Props): ReactElement => {
     setOpen(!open);
   };
 
-  const splitTextRows = (text: string): ReactElement[] => {
-    const rows = t(text).split('\n');
+  const splitTextRows = (textToSplit: string): ReactElement[] => {
+    const rows = t(textToSplit).split('\n');
     return rows.map((row) => <p key={row}>{row}</p>);
   };
 

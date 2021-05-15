@@ -28,7 +28,10 @@ export const GamesByStartTimes: FC<Props> = (props: Props): ReactElement => {
     return (
       <div key={startTime}>
         <p className='bold'>
-          {timeFormatter.weekdayAndTime({ time: startTime, capitalize: true })}
+          {timeFormatter.getWeekdayAndTime({
+            time: startTime,
+            capitalize: true,
+          })}
         </p>
         {getGamesList(startTime)}
       </div>

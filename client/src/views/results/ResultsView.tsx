@@ -7,7 +7,7 @@ import { loadResults, loadSettings } from 'client/utils/loadData';
 import { useAppSelector } from 'client/utils/hooks';
 
 export const ResultsView: FC = (): ReactElement => {
-  const result = useAppSelector((state) => state.results.result);
+  const results = useAppSelector((state) => state.results.result);
   const signupTime = useAppSelector((state) => state.admin.signupTime);
   const { t } = useTranslation();
 
@@ -21,7 +21,7 @@ export const ResultsView: FC = (): ReactElement => {
     fetchData();
   }, [store]);
 
-  const validResults = result.filter(
+  const validResults = results.filter(
     (result) => result.enteredGame.gameDetails
   );
 
@@ -32,7 +32,7 @@ export const ResultsView: FC = (): ReactElement => {
         <>
           <h2>
             {t('signupResultsfor')}{' '}
-            {timeFormatter.weekdayAndTime({
+            {timeFormatter.getWeekdayAndTime({
               time: signupTime,
               capitalize: false,
             })}

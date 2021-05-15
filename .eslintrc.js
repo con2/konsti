@@ -55,6 +55,7 @@ module.exports = {
     'no-restricted-imports': ['error', { patterns: ['../*'] }],
     'no-console': 'error',
     'array-callback-return': 'off',
+    'no-shadow': 'off', // Required by @typescript-eslint/no-shadow
 
     // eslint-plugin-prettier
     'prettier/prettier': 'error',
@@ -78,6 +79,7 @@ module.exports = {
       'error',
       { ignoreStringArrays: true },
     ],
+    '@typescript-eslint/no-shadow': 'error',
     '@typescript-eslint/default-param-last': 'off', // Problem setting Redux reducer initial state
     '@typescript-eslint/triple-slash-reference': 'off', // Cypress requires triple slash reference
     '@typescript-eslint/strict-boolean-expressions': 'off', // Forces unwanted code style

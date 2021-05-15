@@ -32,13 +32,13 @@ export const AdminView: FC = (): ReactElement => {
     React.useState<string>(signupTime);
 
   const showMessage = ({
-    message,
+    value,
     style,
   }: {
-    message: string;
+    value: string;
     style: string;
   }): void => {
-    setMessage(message);
+    setMessage(value);
     setMessageStyle(style);
   };
 
@@ -84,7 +84,7 @@ export const AdminView: FC = (): ReactElement => {
       await dispatch(submitPlayersAssign(signupTime));
     } catch (error) {
       showMessage({
-        message: error.message,
+        value: error.message,
         style: 'error',
       });
       return;
@@ -160,7 +160,7 @@ export const AdminView: FC = (): ReactElement => {
               {signupTime && (
                 <p>
                   {t('activeTime')}:{' '}
-                  {timeFormatter.weekdayAndTime({
+                  {timeFormatter.getWeekdayAndTime({
                     time: signupTime,
                     capitalize: true,
                   })}

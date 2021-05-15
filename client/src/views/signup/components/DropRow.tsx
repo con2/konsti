@@ -51,13 +51,13 @@ export const DropRow: FC<Props> = (props: Props): ReactElement => {
                 draggableId={game.gameId}
                 index={index}
               >
-                {(provided) => (
+                {(provided2) => (
                   <Link to={`/games/${game.gameId}`}>
                     <DraggableItem
                       className={`${getPopularity(game)}`}
                       ref={provided.innerRef}
-                      {...provided.draggableProps}
-                      {...provided.dragHandleProps}
+                      {...provided2.draggableProps}
+                      {...provided2.dragHandleProps}
                     >
                       <SignupGameTitle className='break-long'>
                         {game.title}

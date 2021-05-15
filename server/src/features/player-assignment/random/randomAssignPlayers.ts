@@ -46,22 +46,28 @@ export const randomAssignPlayers = (
     `Selected players: ${allPlayers.length} (${numberOfIndividuals} individual, ${numberOfGroups} groups)`
   );
 
-  const result = runRandomAssignment(signedGames, playerGroups, startingTime);
-
-  const selectedUniqueGames = _.uniq(
-    result.results.map((result) => result.enteredGame.gameDetails.gameId)
+  const assignmentResult = runRandomAssignment(
+    signedGames,
+    playerGroups,
+    startingTime
   );
 
-  const message = `Random Assign Result - Players: ${result.results.length}/${
-    allPlayers.length
-  } (${Math.round(
-    (result.results.length / allPlayers.length) * 100
+  const selectedUniqueGames = _.uniq(
+    assignmentResult.results.map(
+      (result) => result.enteredGame.gameDetails.gameId
+    )
+  );
+
+  const message = `Random Assign Result - Players: ${
+    assignmentResult.results.length
+  }/${allPlayers.length} (${Math.round(
+    (assignmentResult.results.length / allPlayers.length) * 100
   )}%), Games: ${selectedUniqueGames.length}/${
     signedGames.length
   } (${Math.round((selectedUniqueGames.length / signedGames.length) * 100)}%)`;
 
   return Object.assign({
-    ...result,
+    ...assignmentResult,
     message,
     algorithm: 'Random',
     status: 'success',
