@@ -25,6 +25,8 @@ export const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
 
   #main {
     background-color: #F2F3F5;
+    max-width: 1024px;
+    margin: auto;
   }
 
   @media (max-width: ${(props) => props.theme.breakpointPhone}) {
