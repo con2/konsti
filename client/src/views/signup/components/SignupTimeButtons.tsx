@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { timeFormatter } from 'client/utils/timeFormatter';
 import { submitSignupTime } from 'client/views/signup/signupActions';
 import { useAppDispatch } from 'client/utils/hooks';
+import { AppDispatch } from 'client/typings/redux.typings';
 
 interface Props {
   signupTimes: readonly string[];
@@ -14,11 +15,7 @@ export const SignupTimeButtons: FC<Props> = (props: Props): ReactElement => {
 
   const dispatch = useAppDispatch();
 
-  const selectSignupTime = (signupTime: string): void => {
-    dispatch(submitSignupTime(signupTime));
-  };
-
-  const isActive = (isActive: boolean): string => (isActive ? 'active' : '');
+  const getIsActive = (isActive: boolean): string => (isActive ? 'active' : '');
 
   return (
     <>
@@ -26,16 +23,20 @@ export const SignupTimeButtons: FC<Props> = (props: Props): ReactElement => {
         return (
           <StyledButton
             key={time}
-            onClick={() => selectSignupTime(time)}
-            className={`button-${time} ${isActive(time === signupTime)}`}
+            onClick={() => selectSignupTime(time, dispatch)}
+            className={`button-${time} ${getIsActive(time === signupTime)}`}
             disabled={time === signupTime}
           >
-            {timeFormatter.weekdayAndTime({ time: time, capitalize: true })}
+            {timeFormatter.getWeekdayAndTime({ time: time, capitalize: true })}
           </StyledButton>
         );
       })}
     </>
   );
+};
+
+const selectSignupTime = (signupTime: string, dispatch: AppDispatch): void => {
+  dispatch(submitSignupTime(signupTime));
 };
 
 const StyledButton = styled.button`

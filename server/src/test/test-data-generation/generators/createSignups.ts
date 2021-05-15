@@ -59,8 +59,8 @@ const getRandomSignup = (games: readonly Game[]): SelectedGame[] => {
   uniqueTimes.forEach((startingTime) => {
     logger.debug(`Generate signups for time ${startingTime}`);
     const gamesForTime = games.filter(
-      (games) =>
-        moment(games.startTime).format() === moment(startingTime).format()
+      (game) =>
+        moment(game.startTime).format() === moment(startingTime).format()
     );
 
     const numberOfSignups = Math.min(gamesForTime.length, 3);

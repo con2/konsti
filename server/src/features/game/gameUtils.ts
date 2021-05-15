@@ -40,9 +40,9 @@ export const getGameById = async (gameId: string): Promise<GameDoc> => {
     return error;
   }
 
-  const game = games.find((game) => game.gameId === gameId);
+  const foundGame = games.find((game) => game.gameId === gameId);
 
-  if (!game) throw new Error(`Game ${gameId} not found`);
+  if (!foundGame) throw new Error(`Game ${gameId} not found`);
 
-  return game;
+  return foundGame;
 };

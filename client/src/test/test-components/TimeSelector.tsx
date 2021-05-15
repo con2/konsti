@@ -36,8 +36,8 @@ export const TimeSelector: FC = (): ReactElement => {
     if (!testTime && defaultTestTime) setTestTime(defaultTestTime);
   });
 
-  const setTestTime = (testTime: string): void => {
-    dispatch(submitSetTestTime(testTime));
+  const setTestTime = (time: string): void => {
+    dispatch(submitSetTestTime(time));
   };
 
   return (

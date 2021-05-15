@@ -12,14 +12,17 @@ export const getHappiness = (
   startingTime: string
 ): void => {
   const padgAssignment = results.map((result) => {
-    const player = allPlayers.find(
+    const foundPlayer = allPlayers.find(
       (player) => player.username === result.username
     );
 
-    if (!player) throw new Error('Error calculating assignment happiness');
+    if (!foundPlayer) throw new Error('Error calculating assignment happiness');
 
     return {
-      id: player.groupCode !== '0' ? player.groupCode : player.serial,
+      id:
+        foundPlayer.groupCode !== '0'
+          ? foundPlayer.groupCode
+          : foundPlayer.serial,
       assignment: result.enteredGame.gameDetails.gameId,
     };
   });

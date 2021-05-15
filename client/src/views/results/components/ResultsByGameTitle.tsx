@@ -23,23 +23,26 @@ export const ResultsByGameTitle: FC<Props> = (props: Props): ReactElement => {
 
   const resultsByGameTitle: ReactElement[] = [];
 
-  for (const result in groupedResults) {
-    const sortedResults = _.sortBy(groupedResults[result], [
+  for (const groupedResult in groupedResults) {
+    const reSortedResults = _.sortBy(groupedResults[groupedResult], [
       (result) => result.username.toLowerCase(),
     ]);
 
-    const playerList = sortedResults.map((result) => (
+    const playerList = reSortedResults.map((result) => (
       <p key={result.username}>{result.username}</p>
     ));
 
     resultsByGameTitle.push(
-      <GameResult key={result}>
+      <GameResult key={groupedResult}>
         <p>
-          <span className='bold'>{t('gameTitle')}:</span> {result}
+          <span className='bold'>{t('gameTitle')}:</span> {groupedResult}
         </p>
         <p>
           <span className='bold'>{t('gameInfo.location')}:</span>{' '}
-          {_.head(groupedResults[result])?.enteredGame.gameDetails.location}
+          {
+            _.head(groupedResults[groupedResult])?.enteredGame.gameDetails
+              .location
+          }
         </p>
         <p className='bold'>{t('players')}:</p>
         <ResultPlayerList>{playerList}</ResultPlayerList>
