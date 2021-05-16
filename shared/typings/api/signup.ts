@@ -1,3 +1,4 @@
+import { Record, String, Static } from 'runtypes';
 import { SelectedGame } from 'shared/typings/models/user';
 
 export interface PostSignupResponse {
@@ -18,12 +19,6 @@ export interface SignupData {
   signupTime: string;
 }
 
-export interface EnteredGameRequest {
-  username: string;
-  enteredGameId: string;
-  signupTime: string;
-}
-
 export interface PostEnteredGameResponse {
   message: string;
   status: 'success';
@@ -33,3 +28,23 @@ export interface DeleteEnteredGameResponse {
   message: string;
   status: 'success';
 }
+
+export const PostEnteredGameParametersRuntype = Record({
+  username: String,
+  enteredGameId: String,
+  signupTime: String,
+});
+
+export type PostEnteredGameParameters = Static<
+  typeof PostEnteredGameParametersRuntype
+>;
+
+export const DeleteEnteredGameParametersRuntype = Record({
+  username: String,
+  enteredGameId: String,
+  signupTime: String,
+});
+
+export type DeleteEnteredGameParameters = Static<
+  typeof DeleteEnteredGameParametersRuntype
+>;

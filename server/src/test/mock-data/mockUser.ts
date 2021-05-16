@@ -2,7 +2,7 @@ import { mockGame, mockGame2 } from 'server/test/mock-data/mockGame';
 import { NewUserData } from 'server/typings/user.typings';
 import { UserSignup } from 'server/typings/result.typings';
 import { UserGroup } from 'shared/typings/models/user';
-import { EnteredGameRequest } from 'shared/typings/api/signup';
+import { PostEnteredGameParameters } from 'shared/typings/api/signup';
 
 export const mockUser: NewUserData = {
   username: 'Test User',
@@ -31,7 +31,7 @@ export const mockSignup: UserSignup = {
   ],
 };
 
-export const mockPostEnteredGameRequest: EnteredGameRequest = {
+export const mockPostEnteredGameRequest: PostEnteredGameParameters = {
   username: mockUser.username,
   enteredGameId: mockGame.gameId,
   signupTime: mockGame.startTime,
