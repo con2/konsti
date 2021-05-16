@@ -23,7 +23,7 @@ afterEach(async () => {
   await mongoServer.stop();
 });
 
-describe('Feedback service', () => {
+describe('Feedback repository', () => {
   it('should insert new feedback into collection', async () => {
     const mockFeedback = { gameId: '1234A', feedback: 'Test feedback' };
     await saveFeedback(mockFeedback);

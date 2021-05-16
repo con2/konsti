@@ -33,7 +33,7 @@ afterEach(async () => {
   await mongoServer.stop();
 });
 
-describe('User service', () => {
+describe('User repository', () => {
   it('should insert new user into collection', async () => {
     await saveUser(mockUser);
 
