@@ -1,6 +1,6 @@
 import { postPlayerAssignment } from 'client/services/assignmentServices';
 import { getResults } from 'client/services/resultsServices';
-import { AppThunk } from 'client/typings/utils.typings';
+import { AppThunk } from 'client/typings/redux.typings';
 import { submitResponseMessageAsync } from 'client/views/admin/adminSlice';
 import { submitGetResultsAsync } from 'client/views/results/resultsSlice';
 

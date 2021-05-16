@@ -1,5 +1,5 @@
 import { postSignup } from 'client/services/signupServices';
-import { AppThunk } from 'client/typings/utils.typings';
+import { AppThunk } from 'client/typings/redux.typings';
 import { SignupData } from 'shared/typings/api/signup';
 import { submitSignupAsync } from 'client/views/my-games/myGamesSlice';
 import { submitSelectedGames } from 'client/views/signup/signupSlice';
