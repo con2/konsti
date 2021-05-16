@@ -5,6 +5,10 @@ import { startServer } from 'server/utils/startServer';
 import { closeServer } from 'server/utils/closeServer';
 import {
   ENTERED_GAME_ENDPOINT,
+  FAVORITE_ENDPOINT,
+  GROUP_ENDPOINT,
+  LOGIN_ENDPOINT,
+  SIGNUP_ENDPOINT,
   USERS_BY_SERIAL_ENDPOINT,
   USERS_ENDPOINT,
 } from 'shared/constants/apiEndpoints';
@@ -67,6 +71,76 @@ describe(`POST ${USERS_ENDPOINT}`, () => {
 describe(`POST ${ENTERED_GAME_ENDPOINT}`, () => {
   test('should return 401 without valid authorization', async () => {
     const response = await request(server).post(ENTERED_GAME_ENDPOINT);
+    expect(response.status).toEqual(401);
+  });
+});
+
+describe(`POST ${FAVORITE_ENDPOINT}`, () => {
+  test('should return 401 without valid authorization', async () => {
+    const response = await request(server).post(FAVORITE_ENDPOINT);
+    expect(response.status).toEqual(401);
+  });
+});
+
+describe(`GET ${GROUP_ENDPOINT}`, () => {
+  test('should return 401 without valid authorization', async () => {
+    const response = await request(server).get(GROUP_ENDPOINT);
+    expect(response.status).toEqual(401);
+  });
+});
+
+describe(`POST ${GROUP_ENDPOINT}`, () => {
+  test('should return 401 without valid authorization', async () => {
+    const response = await request(server).post(GROUP_ENDPOINT);
+    expect(response.status).toEqual(401);
+  });
+});
+
+describe(`POST ${LOGIN_ENDPOINT}`, () => {
+  test('should return 422 without any parameters', async () => {
+    const response = await request(server).post(LOGIN_ENDPOINT);
+    expect(response.status).toEqual(422);
+  });
+
+  test('should return 422 if username is found but password is missing', async () => {
+    const response = await request(server).post(LOGIN_ENDPOINT).send({
+      username: 'testuser',
+    });
+    expect(response.status).toEqual(422);
+  });
+
+  test('should return 422 if password is found but username is missing', async () => {
+    const response = await request(server).post(LOGIN_ENDPOINT).send({
+      password: 'testpass',
+    });
+    expect(response.status).toEqual(422);
+  });
+
+  test('should return 422 if password, username, and jwt are found', async () => {
+    const response = await request(server)
+      .post(LOGIN_ENDPOINT)
+      .send({ username: 'testuser', password: 'testpass', jwt: 'testjwt' });
+    expect(response.status).toEqual(422);
+  });
+
+  test('should return 200 if password and username are found', async () => {
+    const response = await request(server)
+      .post(LOGIN_ENDPOINT)
+      .send({ username: 'testuser', password: 'testpass' });
+    expect(response.status).toEqual(200);
+  });
+
+  test('should return 200 if jwt is found', async () => {
+    const response = await request(server)
+      .post(LOGIN_ENDPOINT)
+      .send({ jwt: 'testjwt' });
+    expect(response.status).toEqual(200);
+  });
+});
+
+describe(`POST ${SIGNUP_ENDPOINT}`, () => {
+  test('should return 401 without valid authorization', async () => {
+    const response = await request(server).post(SIGNUP_ENDPOINT);
     expect(response.status).toEqual(401);
   });
 });

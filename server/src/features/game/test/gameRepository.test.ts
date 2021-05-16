@@ -24,7 +24,7 @@ afterEach(async () => {
   await mongoServer.stop();
 });
 
-describe('Game service', () => {
+describe('Game repository', () => {
   it('should insert new game into collection', async () => {
     await saveGames([mockGame]);
 
