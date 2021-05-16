@@ -1,5 +1,5 @@
 import { getGames, postGamesUpdate } from 'client/services/gamesServices';
-import { AppThunk } from 'client/typings/utils.typings';
+import { AppThunk } from 'client/typings/redux.typings';
 import { submitGetGamesAsync } from 'client/views/all-games/allGamesSlice';
 
 export const submitGetGames = (): AppThunk => {

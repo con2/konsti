@@ -6,7 +6,7 @@ import { DropRow } from 'client/views/signup/components/DropRow';
 import { reorder, move } from 'client/utils/dragAndDrop';
 import { sleep } from 'client/utils/sleep';
 import { config } from 'client/config';
-import { DnDUpdatedPositions } from 'client/typings/game.typings';
+import { DnDUpdatedPositions } from 'client/views/signup/signupTypes';
 import { Game } from 'shared/typings/models/game';
 import { useAppSelector } from 'client/utils/hooks';
 

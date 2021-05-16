@@ -1,6 +1,6 @@
 import { postLogin } from 'client/services/loginServices';
 import { saveSession, clearSession } from 'client/utils/localStorage';
-import { AppThunk } from 'client/typings/utils.typings';
+import { AppThunk } from 'client/typings/redux.typings';
 import { ServerError } from 'shared/typings/api/errors';
 import { LoginFormFields, PostLoginResponse } from 'shared/typings/api/login';
 import { submitLoginAsync } from 'client/views/login/loginSlice';

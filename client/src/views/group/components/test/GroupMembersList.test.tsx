@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { GroupMember } from 'client/typings/group.typings';
+import { GroupMember } from 'shared/typings/api/groups';
 import {
   GroupMembersList,
   Props,
