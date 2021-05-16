@@ -12,8 +12,6 @@ import {
   saveGroupCode,
   findGroup,
   saveSignup,
-  saveEnteredGame,
-  delEnteredGame,
 } from 'server/features/user/userRepository';
 import {
   GetUserBySerialResponse,
@@ -32,12 +30,7 @@ import { PostLoginResponse } from 'shared/typings/api/login';
 import { decodeJWT, getJWT, verifyJWT } from 'server/utils/jwt';
 import { findSettings } from 'server/features/settings/settingsRepository';
 import { SelectedGame, User, UserGroup } from 'shared/typings/models/user';
-import {
-  DeleteEnteredGameResponse,
-  EnteredGameRequest,
-  PostEnteredGameResponse,
-  PostSignupResponse,
-} from 'shared/typings/api/signup';
+import { PostSignupResponse } from 'shared/typings/api/signup';
 import { UserSignup } from 'server/typings/result.typings';
 import { isValidSignupTime } from 'server/features/user/userUtils';
 
@@ -777,60 +770,4 @@ export const storeSignup = async (
       code: 0,
     };
   }
-};
-
-export const storeEnteredGame = async (
-  enteredGameRequest: EnteredGameRequest
-): Promise<PostEnteredGameResponse | ServerError> => {
-  let user;
-  try {
-    user = await saveEnteredGame(enteredGameRequest);
-  } catch (error) {
-    return {
-      message: 'Store entered game failure',
-      status: 'error',
-      code: 0,
-    };
-  }
-
-  if (user) {
-    return {
-      message: 'Store entered game success',
-      status: 'success',
-    };
-  }
-
-  return {
-    message: 'Store entered game failure',
-    status: 'error',
-    code: 0,
-  };
-};
-
-export const removeEnteredGame = async (
-  enteredGameRequest: EnteredGameRequest
-): Promise<DeleteEnteredGameResponse | ServerError> => {
-  let user;
-  try {
-    user = await delEnteredGame(enteredGameRequest);
-  } catch (error) {
-    return {
-      message: 'Delete entered game failure',
-      status: 'error',
-      code: 0,
-    };
-  }
-
-  if (user) {
-    return {
-      message: 'Delete entered game success',
-      status: 'success',
-    };
-  }
-
-  return {
-    message: 'Delete entered game failure',
-    status: 'error',
-    code: 0,
-  };
 };

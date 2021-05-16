@@ -4,7 +4,6 @@ import { MongoMemoryServer } from 'mongodb-memory-server';
 import { startServer } from 'server/utils/startServer';
 import { closeServer } from 'server/utils/closeServer';
 import {
-  ENTERED_GAME_ENDPOINT,
   FAVORITE_ENDPOINT,
   GROUP_ENDPOINT,
   LOGIN_ENDPOINT,
@@ -65,13 +64,6 @@ describe(`POST ${USERS_ENDPOINT}`, () => {
       password: 'testpass',
     });
     expect(response.status).toEqual(422);
-  });
-});
-
-describe(`POST ${ENTERED_GAME_ENDPOINT}`, () => {
-  test('should return 401 without valid authorization', async () => {
-    const response = await request(server).post(ENTERED_GAME_ENDPOINT);
-    expect(response.status).toEqual(401);
   });
 });
 
