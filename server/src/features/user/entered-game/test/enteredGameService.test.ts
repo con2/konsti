@@ -8,8 +8,8 @@ import { getJWT } from 'server/utils/jwt';
 import { UserGroup } from 'shared/typings/models/user';
 import { mockUser } from 'server/test/mock-data/mockUser';
 import { mockGame } from 'server/test/mock-data/mockGame';
-import { saveUser } from 'server/features/user/userRepository';
-import { saveGames } from 'server/features/game/gameRepository';
+import { findUser, saveUser } from 'server/features/user/userRepository';
+import { findGames, saveGames } from 'server/features/game/gameRepository';
 
 let server: Application;
 let mongoServer: MongoMemoryServer;
@@ -83,9 +83,15 @@ describe(`POST ${ENTERED_GAME_ENDPOINT}`, () => {
   });
 
   test('should return success when user and game are found', async () => {
-    await saveUser(mockUser);
+    // Populate database
     await saveGames([mockGame]);
+    await saveUser(mockUser);
 
+    // Check starting conditions
+    const nonModifiedUser = await findUser(mockUser.username);
+    expect(nonModifiedUser?.enteredGames.length).toEqual(0);
+
+    // Update entered games
     const response = await request(server)
       .post(ENTERED_GAME_ENDPOINT)
       .send({
@@ -97,9 +103,17 @@ describe(`POST ${ENTERED_GAME_ENDPOINT}`, () => {
         'Authorization',
         `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`
       );
+
+    // Check API response
     expect(response.status).toEqual(200);
     expect(response.body.message).toEqual('Store entered game success');
     expect(response.body.status).toEqual('success');
+
+    // Check database
+    const modifiedUser = await findUser(mockUser.username);
+    expect(modifiedUser?.enteredGames[0].gameDetails.gameId).toEqual(
+      mockGame.gameId
+    );
   });
 });
 
@@ -157,9 +171,28 @@ describe(`DELETE ${ENTERED_GAME_ENDPOINT}`, () => {
   });
 
   test('should return success when user and game are found', async () => {
-    await saveUser(mockUser);
+    // Populate database
     await saveGames([mockGame]);
+    const games = await findGames();
 
+    const mockUserWithEnteredGame = {
+      ...mockUser,
+      enteredGames: [
+        {
+          gameDetails: games[0]._id,
+          priority: 1,
+          time: mockGame.startTime,
+        },
+      ],
+    };
+
+    await saveUser(mockUserWithEnteredGame);
+
+    // Check starting conditions
+    const nonModifiedUser = await findUser(mockUser.username);
+    expect(nonModifiedUser?.enteredGames.length).toEqual(1);
+
+    // Update entered games
     const response = await request(server)
       .delete(ENTERED_GAME_ENDPOINT)
       .send({
@@ -171,8 +204,14 @@ describe(`DELETE ${ENTERED_GAME_ENDPOINT}`, () => {
         'Authorization',
         `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`
       );
+
+    // Check API response
     expect(response.status).toEqual(200);
     expect(response.body.message).toEqual('Delete entered game success');
     expect(response.body.status).toEqual('success');
+
+    // Check database
+    const modifiedUser = await findUser(mockUser.username);
+    expect(modifiedUser?.enteredGames.length).toEqual(0);
   });
 });
