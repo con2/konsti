@@ -32,7 +32,7 @@ export interface DeleteEnteredGameResponse {
 export const PostEnteredGameParametersRuntype = Record({
   username: String,
   enteredGameId: String,
-  signupTime: String,
+  startTime: String,
 });
 
 export type PostEnteredGameParameters = Static<
@@ -42,7 +42,7 @@ export type PostEnteredGameParameters = Static<
 export const DeleteEnteredGameParametersRuntype = Record({
   username: String,
   enteredGameId: String,
-  signupTime: String,
+  startTime: String,
 });
 
 export type DeleteEnteredGameParameters = Static<

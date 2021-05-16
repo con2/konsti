@@ -34,5 +34,5 @@ export const mockSignup: UserSignup = {
 export const mockPostEnteredGameRequest: PostEnteredGameParameters = {
   username: mockUser.username,
   enteredGameId: mockGame.gameId,
-  signupTime: mockGame.startTime,
+  startTime: mockGame.startTime,
 };

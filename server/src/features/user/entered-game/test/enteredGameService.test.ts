@@ -54,7 +54,7 @@ describe(`POST ${ENTERED_GAME_ENDPOINT}`, () => {
       .send({
         username: mockUser.username,
         enteredGameId: 'invalid_game_id',
-        signupTime: '2019-07-26T13:00:00Z',
+        startTime: '2019-07-26T13:00:00Z',
       })
       .set(
         'Authorization',
@@ -72,7 +72,7 @@ describe(`POST ${ENTERED_GAME_ENDPOINT}`, () => {
       .send({
         username: 'user_not_found',
         enteredGameId: mockGame.gameId,
-        signupTime: mockGame.startTime,
+        startTime: mockGame.startTime,
       })
       .set(
         'Authorization',
@@ -91,7 +91,7 @@ describe(`POST ${ENTERED_GAME_ENDPOINT}`, () => {
       .send({
         username: mockUser.username,
         enteredGameId: mockGame.gameId,
-        signupTime: mockGame.startTime,
+        startTime: mockGame.startTime,
       })
       .set(
         'Authorization',
@@ -128,7 +128,7 @@ describe(`DELETE ${ENTERED_GAME_ENDPOINT}`, () => {
       .send({
         username: mockUser.username,
         enteredGameId: 'invalid_game_id',
-        signupTime: '2019-07-26T13:00:00Z',
+        startTime: '2019-07-26T13:00:00Z',
       })
       .set(
         'Authorization',
@@ -146,7 +146,7 @@ describe(`DELETE ${ENTERED_GAME_ENDPOINT}`, () => {
       .send({
         username: 'user_not_found',
         enteredGameId: mockGame.gameId,
-        signupTime: mockGame.startTime,
+        startTime: mockGame.startTime,
       })
       .set(
         'Authorization',
@@ -165,7 +165,7 @@ describe(`DELETE ${ENTERED_GAME_ENDPOINT}`, () => {
       .send({
         username: mockUser.username,
         enteredGameId: mockGame.gameId,
-        signupTime: mockGame.startTime,
+        startTime: mockGame.startTime,
       })
       .set(
         'Authorization',
