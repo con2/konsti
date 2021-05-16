@@ -1,5 +1,5 @@
 import moment from 'moment';
-import { GroupMember } from 'client/typings/group.typings';
+import { GroupMember } from 'shared/typings/api/groups';
 import { Game } from 'shared/typings/models/game';
 import { getTime } from 'client/utils/getTime';
 import { isGroupLeader } from 'client/views/group/GroupView';

@@ -1,7 +1,7 @@
 import { LoginState } from 'client/typings/redux.typings';
 import { UserGroup } from 'shared/typings/models/user';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { GroupMember } from 'client/typings/group.typings';
+import { GroupMember } from 'shared/typings/api/groups';
 import { SubmitLoginPayload } from 'client/views/login/loginTypes';
 
 const initialState: LoginState = {

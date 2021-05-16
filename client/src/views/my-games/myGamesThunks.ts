@@ -1,6 +1,6 @@
 import { getUser } from 'client/services/userServices';
 import { postFavorite } from 'client/services/favoriteServices';
-import { AppThunk } from 'client/typings/utils.typings';
+import { AppThunk } from 'client/typings/redux.typings';
 import { SaveFavoriteRequest } from 'shared/typings/api/favorite';
 import {
   submitGetUserAsync,

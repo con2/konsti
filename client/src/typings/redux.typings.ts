@@ -1,5 +1,7 @@
+import { ThunkAction } from 'redux-thunk';
+import { Action } from 'redux';
 import { Game } from 'shared/typings/models/game';
-import { GroupMember } from 'client/typings/group.typings';
+import { GroupMember } from 'shared/typings/api/groups';
 import { Result } from 'shared/typings/models/result';
 import { store, combinedReducer } from 'client/utils/store';
 import { SelectedGame, UserGroup } from 'shared/typings/models/user';
@@ -50,3 +52,11 @@ export interface LocalStorageState {
 export type AppDispatch = typeof store.dispatch;
 
 export type RootState = ReturnType<typeof combinedReducer>;
+
+// eslint-disable-next-line @typescript-eslint/no-invalid-void-type
+export type AppThunk<ReturnType = void> = ThunkAction<
+  ReturnType,
+  RootState,
+  unknown,
+  Action<string>
+>;
