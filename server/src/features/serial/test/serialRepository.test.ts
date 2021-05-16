@@ -24,7 +24,7 @@ afterEach(async () => {
   await mongoServer.stop();
 });
 
-describe('Serial service', () => {
+describe('Serial repository', () => {
   it('should insert new serial into collection', async () => {
     const result = await saveSerials(1);
     expect(result.length).toEqual(1);

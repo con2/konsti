@@ -31,7 +31,7 @@ afterEach(async () => {
   await mongoServer.stop();
 });
 
-describe('Settings service', () => {
+describe('Settings repository', () => {
   it('should set defaults if settings not found', async () => {
     await findSettings();
     const defaultSettings = {
