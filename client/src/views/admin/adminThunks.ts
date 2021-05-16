@@ -5,7 +5,7 @@ import {
 } from 'client/services/settingsServices';
 import { postSignupTime } from 'client/services/signuptimeServices';
 import { Game } from 'shared/typings/models/game';
-import { AppThunk } from 'client/typings/utils.typings';
+import { AppThunk } from 'client/typings/redux.typings';
 import {
   submitUpdateHiddenAsync,
   submitGetSettingsAsync,

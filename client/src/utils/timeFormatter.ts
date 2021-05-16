@@ -1,6 +1,6 @@
 import moment from 'moment';
 import { config } from 'client/config';
-import { WeekdayAndTime } from 'client/typings/utils.typings';
+import { WeekdayAndTime } from 'client/utils/utils.typings';
 import { capitalizeFirstLetter } from 'client/utils/capitalizeFirstLetter';
 
 const {

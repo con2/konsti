@@ -12,7 +12,7 @@ import {
 } from 'client/utils/getUpcomingGames';
 import { loadUser, loadGames, loadGroupMembers } from 'client/utils/loadData';
 import { isGroupLeader } from 'client/views/group/GroupView';
-import { GroupMember } from 'client/typings/group.typings';
+import { GroupMember } from 'shared/typings/api/groups';
 import { SelectedGame } from 'shared/typings/models/user';
 import { useAppSelector } from 'client/utils/hooks';
 

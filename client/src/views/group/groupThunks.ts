@@ -1,5 +1,5 @@
 import { postGroup, getGroup } from 'client/services/groupServices';
-import { AppThunk } from 'client/typings/utils.typings';
+import { AppThunk } from 'client/typings/redux.typings';
 import {
   submitLeaveGroupAsync,
   submitUpdateGroupAsync,
