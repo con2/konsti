@@ -12,7 +12,7 @@ COPY package.json .
 COPY yarn.lock .
 
 # Install dependencies
-RUN yarn workspaces focus --all --production
+RUN yarn --production
 
 # Copy app source
 COPY . .
