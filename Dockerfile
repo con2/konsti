@@ -4,7 +4,7 @@ FROM node:alpine3.13
 WORKDIR /usr/src/app
 
 # Copy Yarn
-COPY .yarnrc.yml .
+COPY .yarnrc .
 COPY .yarn ./.yarn
 
 # Copy dependency files
@@ -12,7 +12,7 @@ COPY package.json .
 COPY yarn.lock .
 
 # Install dependencies
-RUN yarn workspaces focus --all --production
+RUN yarn --production
 
 # Copy app source
 COPY . .
