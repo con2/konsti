@@ -11,6 +11,9 @@ module.exports = {
   },
 
   rules: {
+    // eslint-plugin-import
+    'node/no-unpublished-import': 'off', // Gives error when tests are in same folder as tested code
+
     // eslint-plugin-node
     'node/no-unsupported-features/es-syntax': 'off', // Import and export declarations are not supported yet
     'node/no-missing-import': 'off', // Not working with babel-plugin-module-resolver and handled by eslint-plugin-import
