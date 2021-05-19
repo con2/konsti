@@ -1,17 +1,12 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import { Result } from 'shared/typings/models/result';
+import { render } from '@testing-library/react';
 import {
   ResultsList,
   Props,
 } from 'client/views/results/components/ResultsList';
 
-const results: Result[] = [];
+test('should render correctly', () => {
+  const props: Props = { results: [] };
 
-describe('ResultsList', () => {
-  it('should render correctly', () => {
-    const props: Props = { results };
-    const component = shallow(<ResultsList {...props} />);
-    expect(component).toMatchSnapshot();
-  });
+  render(<ResultsList {...props} />);
 });

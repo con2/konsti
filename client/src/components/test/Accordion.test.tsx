@@ -1,15 +1,14 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 import { Accordion, Props } from 'client/components/Accordion';
 
-const title = 'test title';
-const text = 'test text';
-const buttonText = 'test button text';
+test('should render correctly', () => {
+  const props: Props = {
+    title: 'test title',
+    text: 'test text',
+    buttonText: 'test button text',
+  };
 
-describe('Loading', () => {
-  it('should render correctly', () => {
-    const props: Props = { title, text, buttonText };
-    const component = shallow(<Accordion {...props} />);
-    expect(component).toMatchSnapshot();
-  });
+  render(<Accordion {...props} />);
+  // expect(screen.getByRole('heading')).toHaveTextContent('Welcome, John Doe');
 });

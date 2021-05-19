@@ -24,16 +24,14 @@ afterEach(async () => {
   await mongoServer.stop();
 });
 
-describe('Results repository', () => {
-  it('should insert new result into collection', async () => {
-    const signupResultData: Result[] = [];
-    const startTime = '2019-07-26T14:00:00.000Z';
-    const algorithm = 'group';
-    const message = 'Test assign result message';
+test('should insert new result into collection', async () => {
+  const signupResultData: Result[] = [];
+  const startTime = '2019-07-26T14:00:00.000Z';
+  const algorithm = 'group';
+  const message = 'Test assign result message';
 
-    await saveResult(signupResultData, startTime, algorithm, message);
+  await saveResult(signupResultData, startTime, algorithm, message);
 
-    const insertedResults = await ResultsModel.findOne({ message });
-    expect(insertedResults?.message).toEqual(message);
-  });
+  const insertedResults = await ResultsModel.findOne({ message });
+  expect(insertedResults?.message).toEqual(message);
 });

@@ -1,22 +1,21 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import { Game } from 'shared/typings/models/game';
+import { render } from '@testing-library/react';
+import { DragDropContext, DropResult } from 'react-beautiful-dnd';
 import { DropRow, Props } from 'client/views/signup/components/DropRow';
 
-const droppableId = 'testId';
-const games: Game[] = [];
-const label = 'test label';
-const showCount = true;
+test('should render correctly', () => {
+  const props: Props = {
+    droppableId: 'testId',
+    games: [],
+    label: 'test label',
+    showCount: true,
+  };
 
-describe('DropRow', () => {
-  it('should render correctly', () => {
-    const props: Props = {
-      droppableId,
-      games,
-      label,
-      showCount,
-    };
-    const component = shallow(<DropRow {...props} />);
-    expect(component).toMatchSnapshot();
-  });
+  const onDragEnd = (_result: DropResult): void => {};
+
+  render(
+    <DragDropContext onDragEnd={onDragEnd}>
+      <DropRow {...props} />
+    </DragDropContext>
+  );
 });

@@ -1,12 +1,9 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 import { Error } from 'client/components/Error';
 
-describe('Errors', () => {
-  const meta = { touched: true, error: 'error' };
+const meta = { touched: true, error: 'error' };
 
-  it('should render correctly', () => {
-    const component = shallow(<Error meta={meta} />);
-    expect(component).toMatchSnapshot();
-  });
+test('should render correctly', () => {
+  render(<Error meta={meta} />);
 });
