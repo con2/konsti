@@ -20,9 +20,7 @@ afterEach(async () => {
   await mongoServer.stop();
 });
 
-describe(`GET ${RESULTS_ENDPOINT}`, () => {
-  test('should return 422 without any parameters', async () => {
-    const response = await request(server).get(RESULTS_ENDPOINT);
-    expect(response.status).toEqual(422);
-  });
+test(`GET ${RESULTS_ENDPOINT} should return 422 without any parameters`, async () => {
+  const response = await request(server).get(RESULTS_ENDPOINT);
+  expect(response.status).toEqual(422);
 });

@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { store } from 'client/utils/store';
 import { testGame } from 'client/test/test-data/testGame';
@@ -7,17 +7,18 @@ import {
   AllGamesList,
   Props,
 } from 'client/views/all-games/components/AllGamesList';
+import { BrowserRouter } from 'react-router-dom';
 
-const games = [testGame];
+test('should render correctly', () => {
+  const props: Props = {
+    games: [testGame],
+  };
 
-describe('AllGamesList', () => {
-  it('should render correctly', () => {
-    const props: Props = { games };
-    const component = shallow(
-      <Provider store={store}>
+  render(
+    <Provider store={store}>
+      <BrowserRouter>
         <AllGamesList {...props} />
-      </Provider>
-    );
-    expect(component).toMatchSnapshot();
-  });
+      </BrowserRouter>
+    </Provider>
+  );
 });

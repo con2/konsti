@@ -20,9 +20,7 @@ afterEach(async () => {
   await mongoServer.stop();
 });
 
-describe(`POST ${ASSIGNMENT_ENDPOINT}`, () => {
-  test('should return 401 without valid authorization', async () => {
-    const response = await request(server).post(ASSIGNMENT_ENDPOINT);
-    expect(response.status).toEqual(401);
-  });
+test(`POST ${ASSIGNMENT_ENDPOINT} should return 401 without valid authorization`, async () => {
+  const response = await request(server).post(ASSIGNMENT_ENDPOINT);
+  expect(response.status).toEqual(401);
 });

@@ -24,24 +24,24 @@ afterEach(async () => {
   await mongoServer.stop();
 });
 
-describe('Serial repository', () => {
-  it('should insert new serial into collection', async () => {
-    const result = await saveSerials(1);
-    expect(result.length).toEqual(1);
-    expect(result[0].serial).toEqual('a1234');
-  });
-  it('should not insert same serial into collection when creating', async () => {
-    const savedSerials = await saveSerials(4);
-    const results = savedSerials.map((serial) => serial.serial);
-    expect(results.length).toEqual(4);
-    expect(results).toEqual(['a1234', 'b5225', 'c2512', 'd1232']);
-  });
-  it('should not insert same serial into collection if the serial is in a collection', async () => {
-    // save the first serial into the collection
-    await saveSerials(1);
-    const savedSerials = await saveSerials(4);
-    const results = savedSerials.map((serial) => serial.serial);
-    expect(results.length).toEqual(4);
-    expect(results).toEqual(['b5225', 'c2512', 'd1232', 'e12039']);
-  });
+test('should insert new serial into collection', async () => {
+  const result = await saveSerials(1);
+  expect(result.length).toEqual(1);
+  expect(result[0].serial).toEqual('a1234');
+});
+
+test('should not insert same serial into collection when creating', async () => {
+  const savedSerials = await saveSerials(4);
+  const results = savedSerials.map((serial) => serial.serial);
+  expect(results.length).toEqual(4);
+  expect(results).toEqual(['a1234', 'b5225', 'c2512', 'd1232']);
+});
+
+test('should not insert same serial into collection if the serial is in a collection', async () => {
+  // save the first serial into the collection
+  await saveSerials(1);
+  const savedSerials = await saveSerials(4);
+  const results = savedSerials.map((serial) => serial.serial);
+  expect(results.length).toEqual(4);
+  expect(results).toEqual(['b5225', 'c2512', 'd1232', 'e12039']);
 });

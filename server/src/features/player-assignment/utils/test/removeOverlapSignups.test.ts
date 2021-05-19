@@ -29,23 +29,21 @@ afterEach(async () => {
   await mongoServer.stop();
 });
 
-describe('removeOverlapSignups', () => {
-  it('should remove overlapping signups from user', async () => {
-    await saveGames([mockGame, mockGame2]);
-    const insertedGames = await GameModel.find({});
-    expect(insertedGames.length).toEqual(2);
+test('should remove overlapping signups from user', async () => {
+  await saveGames([mockGame, mockGame2]);
+  const insertedGames = await GameModel.find({});
+  expect(insertedGames.length).toEqual(2);
 
-    await saveUser(mockUser);
-    await saveSignup(mockSignup);
-    const insertedUser = await UserModel.findOne({
-      username: mockUser.username,
-    });
-    expect(insertedUser?.signedGames.length).toEqual(2);
-
-    await removeOverlapSignups(mockResults);
-    const updatedUser = await UserModel.findOne({
-      username: mockUser.username,
-    });
-    expect(updatedUser?.signedGames.length).toEqual(1);
+  await saveUser(mockUser);
+  await saveSignup(mockSignup);
+  const insertedUser = await UserModel.findOne({
+    username: mockUser.username,
   });
+  expect(insertedUser?.signedGames.length).toEqual(2);
+
+  await removeOverlapSignups(mockResults);
+  const updatedUser = await UserModel.findOne({
+    username: mockUser.username,
+  });
+  expect(updatedUser?.signedGames.length).toEqual(1);
 });

@@ -33,34 +33,30 @@ afterEach(async () => {
   await mongoServer.stop();
 });
 
-describe('User repository', () => {
-  it('should insert new user into collection', async () => {
-    await saveUser(mockUser);
+test('should insert new user into collection', async () => {
+  await saveUser(mockUser);
 
-    const insertedUser = await UserModel.findOne({
-      username: mockUser.username,
-    });
-    expect(insertedUser?.username).toEqual(mockUser.username);
+  const insertedUser = await UserModel.findOne({
+    username: mockUser.username,
   });
+  expect(insertedUser?.username).toEqual(mockUser.username);
+});
 
-  it('should add new enteredGame for user', async () => {
-    await saveUser(mockUser);
-    await saveGames([mockGame]);
+test('should add new enteredGame for user', async () => {
+  await saveUser(mockUser);
+  await saveGames([mockGame]);
 
-    const response = await saveEnteredGame(mockPostEnteredGameRequest);
+  const response = await saveEnteredGame(mockPostEnteredGameRequest);
 
-    expect(response.enteredGames[0].gameDetails.gameId).toEqual(
-      mockGame.gameId
-    );
-  });
+  expect(response.enteredGames[0].gameDetails.gameId).toEqual(mockGame.gameId);
+});
 
-  it('should delete enteredGame from user', async () => {
-    await saveUser(mockUser);
-    await saveGames([mockGame]);
-    await saveEnteredGame(mockPostEnteredGameRequest);
+test('should delete enteredGame from user', async () => {
+  await saveUser(mockUser);
+  await saveGames([mockGame]);
+  await saveEnteredGame(mockPostEnteredGameRequest);
 
-    const response = await delEnteredGame(mockPostEnteredGameRequest);
+  const response = await delEnteredGame(mockPostEnteredGameRequest);
 
-    expect(response.enteredGames.length).toEqual(0);
-  });
+  expect(response.enteredGames.length).toEqual(0);
 });

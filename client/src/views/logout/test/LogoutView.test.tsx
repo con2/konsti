@@ -1,16 +1,16 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 import { store } from 'client/utils/store';
 import { LogoutView } from 'client/views/logout/LogoutView';
+import { BrowserRouter } from 'react-router-dom';
 
-describe('LogoutView', () => {
-  it('should render correctly', () => {
-    const component = shallow(
-      <Provider store={store}>
+test('should render correctly', () => {
+  render(
+    <Provider store={store}>
+      <BrowserRouter>
         <LogoutView />
-      </Provider>
-    );
-    expect(component).toMatchSnapshot();
-  });
+      </BrowserRouter>
+    </Provider>
+  );
 });

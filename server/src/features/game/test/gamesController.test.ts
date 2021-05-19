@@ -20,16 +20,12 @@ afterEach(async () => {
   await mongoServer.stop();
 });
 
-describe(`GET ${GAMES_ENDPOINT}`, () => {
-  test('should return 200', async () => {
-    const response = await request(server).get(GAMES_ENDPOINT);
-    expect(response.status).toEqual(200);
-  });
+test(`GET ${GAMES_ENDPOINT} should return 200`, async () => {
+  const response = await request(server).get(GAMES_ENDPOINT);
+  expect(response.status).toEqual(200);
 });
 
-describe(`POST ${GAMES_ENDPOINT}`, () => {
-  test('should return 401 without valid authorization', async () => {
-    const response = await request(server).post(GAMES_ENDPOINT);
-    expect(response.status).toEqual(401);
-  });
+test(`POST ${GAMES_ENDPOINT} should return 401 without valid authorization`, async () => {
+  const response = await request(server).post(GAMES_ENDPOINT);
+  expect(response.status).toEqual(401);
 });

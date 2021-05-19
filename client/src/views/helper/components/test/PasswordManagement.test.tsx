@@ -1,10 +1,18 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 import { PasswordManagement } from 'client/views/helper/components/PasswordManagement';
 
-describe('PasswordManagement', () => {
-  it('should render correctly', () => {
-    const component = shallow(<PasswordManagement />);
-    expect(component).toMatchSnapshot();
-  });
+/*
+jest.mock('client/services/userServices', () => ({
+  getUserBySerial: jest.fn(),
+  updateUserPassword: jest.fn(),
+}));
+*/
+
+// getUserBySerial.mockImplementation(() => {});
+
+// jest.fn(updateUserPassword);
+
+test('should render correctly', () => {
+  render(<PasswordManagement />);
 });

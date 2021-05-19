@@ -1,10 +1,13 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 import RegistrationForm from 'client/views/registration/components/RegistrationForm';
+import { store } from 'client/utils/store';
+import { Provider } from 'react-redux';
 
-describe('RegistrationForm', () => {
-  it('should render correctly', () => {
-    const component = shallow(<RegistrationForm />);
-    expect(component).toMatchSnapshot();
-  });
+test('should render correctly', () => {
+  render(
+    <Provider store={store}>
+      <RegistrationForm />
+    </Provider>
+  );
 });
