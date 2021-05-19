@@ -5,9 +5,9 @@ import { config } from 'server/config';
 import { logger } from 'server/utils/logger';
 import { runAssignment } from 'server/features/player-assignment/runAssignment';
 import { generateTestData } from 'server/test/test-data-generation/generators/generateTestData';
-import { verifyUserSignups } from 'server/features/player-assignment/test/utils/verifyUserSignups';
+import { verifyUserSignups } from 'server/features/player-assignment/utils/verifyUserSignups';
 import { removeOverlapSignups } from 'server/features/player-assignment/utils/removeOverlapSignups';
-import { verifyResults } from 'server/features/player-assignment/test/utils/verifyResults';
+import { verifyResults } from 'server/features/player-assignment/utils/verifyResults';
 import { saveResults } from 'server/features/player-assignment/utils/saveResults';
 import { AssignmentStrategy } from 'shared/config/sharedConfig.types';
 
