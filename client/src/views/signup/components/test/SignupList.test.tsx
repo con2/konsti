@@ -1,26 +1,19 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 import { store } from 'client/utils/store';
-import { Game } from 'shared/typings/models/game';
 import { SignupList, Props } from 'client/views/signup/components/SignupList';
 
-const games: Game[] = [];
-const signupTimes: string[] = [];
-const leader = true;
+test('should render correctly', () => {
+  const props: Props = {
+    games: [],
+    signupTimes: [],
+    leader: true,
+  };
 
-describe('SignupList', () => {
-  it('should render correctly', () => {
-    const props: Props = {
-      games,
-      signupTimes,
-      leader,
-    };
-    const component = shallow(
-      <Provider store={store}>
-        <SignupList {...props} />
-      </Provider>
-    );
-    expect(component).toMatchSnapshot();
-  });
+  render(
+    <Provider store={store}>
+      <SignupList {...props} />
+    </Provider>
+  );
 });

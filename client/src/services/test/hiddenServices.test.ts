@@ -6,23 +6,21 @@ import { HIDDEN_ENDPOINT } from 'shared/constants/apiEndpoints';
 jest.mock('axios');
 const mockAxios = axios as jest.Mocked<typeof axios>;
 
-describe('hiddenServices', () => {
-  it('POST hidden games to server', async () => {
-    mockAxios.post.mockImplementation(async () => {
-      return await Promise.resolve({
-        status: 200,
-        data: 'test response',
-      });
+test('POST hidden games to server', async () => {
+  mockAxios.post.mockImplementation(async () => {
+    return await Promise.resolve({
+      status: 200,
+      data: 'test response',
     });
+  });
 
-    const hiddenData: Game[] = [];
+  const hiddenData: Game[] = [];
 
-    const response = await postHidden(hiddenData);
+  const response = await postHidden(hiddenData);
 
-    expect(response).toEqual('test response');
-    expect(mockAxios.post).toHaveBeenCalledTimes(1);
-    expect(mockAxios.post).toHaveBeenCalledWith(HIDDEN_ENDPOINT, {
-      hiddenData,
-    });
+  expect(response).toEqual('test response');
+  expect(mockAxios.post).toHaveBeenCalledTimes(1);
+  expect(mockAxios.post).toHaveBeenCalledWith(HIDDEN_ENDPOINT, {
+    hiddenData,
   });
 });

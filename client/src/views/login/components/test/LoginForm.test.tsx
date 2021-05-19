@@ -1,10 +1,13 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 import LoginForm from 'client/views/login/components/LoginForm';
+import { store } from 'client/utils/store';
+import { Provider } from 'react-redux';
 
-describe('LoginForm', () => {
-  it('should render correctly', () => {
-    const component = shallow(<LoginForm />);
-    expect(component).toMatchSnapshot();
-  });
+test('should render correctly', () => {
+  render(
+    <Provider store={store}>
+      <LoginForm />
+    </Provider>
+  );
 });

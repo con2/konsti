@@ -1,11 +1,9 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 import { TimesDropdown, Props } from 'client/components/TimesDropdown';
 
-describe('TimesDropdown', () => {
-  it('should render correctly', () => {
-    const props: Props = { times: [], onChange: () => {}, selectedTime: '' };
-    const component = shallow(<TimesDropdown {...props} />);
-    expect(component).toMatchSnapshot();
-  });
+test('should render correctly', () => {
+  const props: Props = { times: [], onChange: () => {}, selectedTime: '' };
+
+  render(<TimesDropdown {...props} />);
 });

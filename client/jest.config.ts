@@ -10,6 +10,5 @@ module.exports = {
   },
 
   setupFiles: ['./src/test/setupTests.ts'],
-  snapshotSerializers: ['enzyme-to-json/serializer'],
   testPathIgnorePatterns: ['cypress'],
 };
