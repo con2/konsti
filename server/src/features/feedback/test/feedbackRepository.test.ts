@@ -23,13 +23,11 @@ afterEach(async () => {
   await mongoServer.stop();
 });
 
-describe('Feedback repository', () => {
-  it('should insert new feedback into collection', async () => {
-    const mockFeedback = { gameId: '1234A', feedback: 'Test feedback' };
-    await saveFeedback(mockFeedback);
+test('should insert new feedback into collection', async () => {
+  const mockFeedback = { gameId: '1234A', feedback: 'Test feedback' };
+  await saveFeedback(mockFeedback);
 
-    const insertedFeedback = await FeedbackModel.findOne(mockFeedback);
-    expect(insertedFeedback?.gameId).toEqual(mockFeedback.gameId);
-    expect(insertedFeedback?.feedback).toEqual(mockFeedback.feedback);
-  });
+  const insertedFeedback = await FeedbackModel.findOne(mockFeedback);
+  expect(insertedFeedback?.gameId).toEqual(mockFeedback.gameId);
+  expect(insertedFeedback?.feedback).toEqual(mockFeedback.feedback);
 });

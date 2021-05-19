@@ -1,17 +1,12 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 import {
   MySignupsList,
   Props,
 } from 'client/views/my-games/components/MySignupsList';
-import { SelectedGame } from 'shared/typings/models/user';
 
-const signedGames: SelectedGame[] = [];
+test('should render correctly', () => {
+  const props: Props = { signedGames: [] };
 
-describe('MySignupsList', () => {
-  it('should render correctly', () => {
-    const props: Props = { signedGames };
-    const component = shallow(<MySignupsList {...props} />);
-    expect(component).toMatchSnapshot();
-  });
+  render(<MySignupsList {...props} />);
 });

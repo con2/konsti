@@ -24,13 +24,11 @@ afterEach(async () => {
   await mongoServer.stop();
 });
 
-describe('Game repository', () => {
-  it('should insert new game into collection', async () => {
-    await saveGames([mockGame]);
+test('should insert new game into collection', async () => {
+  await saveGames([mockGame]);
 
-    const insertedGame = await GameModel.findOne({
-      gameId: mockGame.gameId,
-    });
-    expect(insertedGame?.gameId).toEqual(mockGame.gameId);
+  const insertedGame = await GameModel.findOne({
+    gameId: mockGame.gameId,
   });
+  expect(insertedGame?.gameId).toEqual(mockGame.gameId);
 });

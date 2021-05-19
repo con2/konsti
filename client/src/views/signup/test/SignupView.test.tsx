@@ -1,16 +1,15 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 import { store } from 'client/utils/store';
 import { SignupView } from 'client/views/signup/SignupView';
 
-describe('SignupView', () => {
-  it('should render correctly', () => {
-    const component = shallow(
-      <Provider store={store}>
-        <SignupView />
-      </Provider>
-    );
-    expect(component).toMatchSnapshot();
-  });
+jest.doMock('client/utils/loadData');
+
+test('should render correctly', () => {
+  render(
+    <Provider store={store}>
+      <SignupView />
+    </Provider>
+  );
 });

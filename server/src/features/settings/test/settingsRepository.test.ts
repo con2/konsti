@@ -31,50 +31,48 @@ afterEach(async () => {
   await mongoServer.stop();
 });
 
-describe('Settings repository', () => {
-  it('should set defaults if settings not found', async () => {
-    await findSettings();
-    const defaultSettings = {
-      hiddenGames: [],
-      signupTime: null,
-      appOpen: true,
-    };
-    const insertedSettings = await SettingsModel.findOne({});
-    expect(insertedSettings?.hiddenGames.length).toEqual(
-      defaultSettings.hiddenGames.length
-    );
-    expect(insertedSettings?.signupTime).toEqual(defaultSettings.signupTime);
-    expect(insertedSettings?.appOpen).toEqual(defaultSettings.appOpen);
-  });
+test('should set defaults if settings not found', async () => {
+  await findSettings();
+  const defaultSettings = {
+    hiddenGames: [],
+    signupTime: null,
+    appOpen: true,
+  };
+  const insertedSettings = await SettingsModel.findOne({});
+  expect(insertedSettings?.hiddenGames.length).toEqual(
+    defaultSettings.hiddenGames.length
+  );
+  expect(insertedSettings?.signupTime).toEqual(defaultSettings.signupTime);
+  expect(insertedSettings?.appOpen).toEqual(defaultSettings.appOpen);
+});
 
-  it('should update hidden games', async () => {
-    const hiddenGames = [mockGame, mockGame2];
-    await saveGames(hiddenGames);
-    await saveHidden(hiddenGames);
-    const insertedSettings = await SettingsModel.findOne({});
-    expect(insertedSettings?.hiddenGames.length).toEqual(hiddenGames.length);
-  });
+test('should update hidden games', async () => {
+  const hiddenGames = [mockGame, mockGame2];
+  await saveGames(hiddenGames);
+  await saveHidden(hiddenGames);
+  const insertedSettings = await SettingsModel.findOne({});
+  expect(insertedSettings?.hiddenGames.length).toEqual(hiddenGames.length);
+});
 
-  it('should not return hidden games that are not in DB', async () => {
-    const hiddenGames = [mockGame, mockGame2];
-    await saveHidden(hiddenGames);
-    const insertedSettings = await SettingsModel.findOne({});
-    expect(insertedSettings?.hiddenGames.length).toEqual(0);
-  });
+test('should not return hidden games that are not in DB', async () => {
+  const hiddenGames = [mockGame, mockGame2];
+  await saveHidden(hiddenGames);
+  const insertedSettings = await SettingsModel.findOne({});
+  expect(insertedSettings?.hiddenGames.length).toEqual(0);
+});
 
-  it('should update signup time', async () => {
-    const signupTime = '2019-07-26T14:00:00.000Z';
-    await saveSignupTime(signupTime);
-    const insertedSettings = await SettingsModel.findOne({});
-    expect(moment(insertedSettings?.signupTime).format()).toEqual(
-      moment(signupTime).format()
-    );
-  });
+test('should update signup time', async () => {
+  const signupTime = '2019-07-26T14:00:00.000Z';
+  await saveSignupTime(signupTime);
+  const insertedSettings = await SettingsModel.findOne({});
+  expect(moment(insertedSettings?.signupTime).format()).toEqual(
+    moment(signupTime).format()
+  );
+});
 
-  it('should update appOpen status', async () => {
-    const appOpen = false;
-    await saveToggleAppOpen(appOpen);
-    const insertedSettings = await SettingsModel.findOne({});
-    expect(insertedSettings?.appOpen).toEqual(appOpen);
-  });
+test('should update appOpen status', async () => {
+  const appOpen = false;
+  await saveToggleAppOpen(appOpen);
+  const insertedSettings = await SettingsModel.findOne({});
+  expect(insertedSettings?.appOpen).toEqual(appOpen);
 });

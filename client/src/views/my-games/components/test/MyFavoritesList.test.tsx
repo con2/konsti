@@ -1,17 +1,12 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import { Game } from 'shared/typings/models/game';
+import { render } from '@testing-library/react';
 import {
   MyFavoritesList,
   Props,
 } from 'client/views/my-games/components/MyFavoritesList';
 
-const favoritedGames: Game[] = [];
+test('should render correctly', () => {
+  const props: Props = { favoritedGames: [] };
 
-describe('MyFavoritesList', () => {
-  it('should render correctly', () => {
-    const props: Props = { favoritedGames };
-    const component = shallow(<MyFavoritesList {...props} />);
-    expect(component).toMatchSnapshot();
-  });
+  render(<MyFavoritesList {...props} />);
 });

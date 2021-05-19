@@ -1,6 +1,20 @@
-import { configure } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
 import 'regenerator-runtime/runtime';
-import 'client/test/i18nTest';
+import i18next from 'i18next';
+import { initReactI18next } from 'react-i18next';
+import { getIconLibrary } from 'client/utils/icons';
 
-configure({ adapter: new Adapter() });
+// Icons
+getIconLibrary();
+
+// Translations
+i18next.use(initReactI18next).init({
+  lng: 'en',
+  fallbackLng: 'en',
+  debug: false,
+  resources: {
+    en: {},
+  },
+  interpolation: {
+    escapeValue: false,
+  },
+});
