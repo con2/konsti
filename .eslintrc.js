@@ -11,8 +11,8 @@ module.exports = {
     'eslint-plugin-promise',
     'eslint-plugin-import',
     '@typescript-eslint',
+    'eslint-plugin-unicorn',
     // 'eslint-plugin-security',
-    // 'eslint-plugin-unicorn',
   ],
 
   extends: [
@@ -26,8 +26,12 @@ module.exports = {
     // 'plugin:@typescript-eslint/recommended',
     // 'plugin:@typescript-eslint/recommended-requiring-type-checking',
     // 'plugin:eslint-plugin-security/recommended',
-    // 'plugin:eslint-plugin-unicorn/recommended',
   ],
+
+  env: {
+    es2021: true,
+    jest: true,
+  },
 
   parserOptions: {
     sourceType: 'module',
@@ -91,5 +95,8 @@ module.exports = {
       { name: 'useDispatch', message: 'Please use useAppDispatch()' },
       { name: 'useSelector', message: 'Please use useAppSelector()' },
     ],
+
+    // eslint-plugin-unicorn
+    'unicorn/no-useless-undefined': ['error', { checkArguments: true }],
   },
 };
