@@ -80,7 +80,6 @@ module.exports = {
       { ignoreStringArrays: true },
     ],
     '@typescript-eslint/no-shadow': 'error',
-    '@typescript-eslint/default-param-last': 'off', // Problem setting Redux reducer initial state
     '@typescript-eslint/triple-slash-reference': 'off', // Cypress requires triple slash reference
     '@typescript-eslint/strict-boolean-expressions': 'off', // Forces unwanted code style
     '@typescript-eslint/restrict-template-expressions': 'off', // Requires typing catch(e) every time
