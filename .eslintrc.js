@@ -12,7 +12,6 @@ module.exports = {
     'eslint-plugin-import',
     '@typescript-eslint',
     'eslint-plugin-unicorn',
-    // 'eslint-plugin-security',
   ],
 
   extends: [
@@ -23,9 +22,8 @@ module.exports = {
     'plugin:eslint-plugin-promise/recommended',
     'plugin:eslint-plugin-import/errors',
     'plugin:eslint-plugin-import/typescript',
-    // 'plugin:@typescript-eslint/recommended',
+    'plugin:@typescript-eslint/recommended',
     // 'plugin:@typescript-eslint/recommended-requiring-type-checking',
-    // 'plugin:eslint-plugin-security/recommended',
   ],
 
   env: {
@@ -79,6 +77,7 @@ module.exports = {
     // @typescript-eslint
     '@typescript-eslint/ban-ts-comment': 'error',
     '@typescript-eslint/no-explicit-any': 'error',
+    '@typescript-eslint/explicit-module-boundary-types': 'error',
     '@typescript-eslint/require-array-sort-compare': [
       'error',
       { ignoreStringArrays: true },
@@ -98,5 +97,9 @@ module.exports = {
 
     // eslint-plugin-unicorn
     'unicorn/no-useless-undefined': ['error', { checkArguments: true }],
+
+    // TODO: Enable these rules
+    '@typescript-eslint/ban-types': 'off',
+    '@typescript-eslint/no-empty-function': 'off',
   },
 };

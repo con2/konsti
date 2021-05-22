@@ -1,5 +1,5 @@
 import fs from 'fs';
-import { createLogger, format, transports } from 'winston';
+import { createLogger, format, Logger, transports } from 'winston';
 import 'winston-daily-rotate-file';
 import { config } from 'server/config';
 
@@ -56,5 +56,5 @@ export const logger = createLogger({
 });
 
 export const stream = {
-  write: (message: string) => logger.info(message.slice(0, -1)), // Slice to remove line break
+  write: (message: string): Logger => logger.info(message.slice(0, -1)), // Slice to remove line break
 };
