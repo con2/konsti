@@ -44,7 +44,7 @@ const user3: User = {
 
 const startingTime = '2019-11-23T12:00:00+02:00';
 
-test('should generate assignment list with bonuses for single user', async () => {
+test('should generate assignment list with bonuses for single user', () => {
   const userArray: User[] = [user];
   const playerGroups: readonly User[][] = [userArray, userArray, userArray];
   const list = getList(playerGroups, startingTime);
@@ -56,7 +56,7 @@ test('should generate assignment list with bonuses for single user', async () =>
   ]);
 });
 
-test('should generate assignment list with bonuses for group', async () => {
+test('should generate assignment list with bonuses for group', () => {
   const userArray: User[] = [user, user2];
   const playerGroups: readonly User[][] = [userArray, userArray, userArray];
   const list = getList(playerGroups, startingTime);
@@ -68,7 +68,7 @@ test('should generate assignment list with bonuses for group', async () => {
   ]);
 });
 
-test('should generate assignment list without bonuses for group', async () => {
+test('should generate assignment list without bonuses for group', () => {
   const userArray: User[] = [user, user3];
   const playerGroups: readonly User[][] = [userArray, userArray, userArray];
   const list = getList(playerGroups, startingTime);
