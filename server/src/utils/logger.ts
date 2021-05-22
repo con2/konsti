@@ -20,7 +20,7 @@ const formatMessage = (message: string | object): string => {
   if (typeof message === 'string') {
     return message;
   } else {
-    return JSON.stringify(message, null, 2);
+    return JSON.stringify(message, undefined, 2);
   }
 };
 

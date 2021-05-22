@@ -13,7 +13,7 @@ const user: User = {
     { gameDetails: mockGame, priority: 1, time: '2019-11-23T12:00:00+02:00' },
   ],
   enteredGames: [],
-  createdAt: null,
+  createdAt: undefined,
 };
 
 const user2: User = {
@@ -25,7 +25,7 @@ const user2: User = {
   favoritedGames: [],
   signedGames: [],
   enteredGames: [],
-  createdAt: null,
+  createdAt: undefined,
 };
 
 const user3: User = {
@@ -39,7 +39,7 @@ const user3: User = {
   enteredGames: [
     { gameDetails: mockGame, priority: 1, time: '2019-11-23T12:00:00+02:00' },
   ],
-  createdAt: null,
+  createdAt: undefined,
 };
 
 const startingTime = '2019-11-23T12:00:00+02:00';

@@ -1,17 +1,15 @@
 import { LocalStorageState } from 'client/typings/redux.typings';
 
 export const loadSession = (): string | undefined => {
+  let serializedState;
   try {
-    const serializedState = localStorage.getItem('state');
-    if (
-      (serializedState !== null || serializedState !== '') &&
-      typeof serializedState === 'string'
-    ) {
-      return JSON.parse(serializedState);
-    }
+    serializedState = localStorage.getItem('state');
   } catch (error) {
     throw new Error(error);
   }
+
+  if (!serializedState) return undefined;
+  return JSON.parse(serializedState);
 };
 
 export const saveSession = (state: LocalStorageState): void => {

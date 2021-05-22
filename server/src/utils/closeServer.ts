@@ -3,7 +3,7 @@ import { db } from 'server/db/mongodb';
 import { logger } from 'server/utils/logger';
 
 export const closeServer = async (
-  server: Server | null,
+  server: Server | undefined,
   dbConnString: string
 ): Promise<void> => {
   try {

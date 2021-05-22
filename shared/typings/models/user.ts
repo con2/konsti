@@ -9,7 +9,7 @@ export interface User {
   favoritedGames: readonly FavoritedGame[];
   signedGames: readonly SelectedGame[];
   enteredGames: readonly SelectedGame[];
-  createdAt: string | null;
+  createdAt: string | undefined;
 }
 
 export interface FavoritedGame {

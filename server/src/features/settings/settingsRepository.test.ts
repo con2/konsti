@@ -35,7 +35,7 @@ test('should set defaults if settings not found', async () => {
   await findSettings();
   const defaultSettings = {
     hiddenGames: [],
-    signupTime: null,
+    signupTime: undefined,
     appOpen: true,
   };
   const insertedSettings = await SettingsModel.findOne({});

@@ -134,5 +134,5 @@ export const getDemandByGame = (
     return acc;
   }, {});
 
-  logger.info(JSON.stringify(signedGames, null, 2));
+  logger.info(JSON.stringify(signedGames, undefined, 2));
 };

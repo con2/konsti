@@ -98,11 +98,11 @@ export const MyGamesView: FC = (): ReactElement => {
 
 const getGroupLeader = (
   groupMembers: readonly GroupMember[]
-): GroupMember | null => {
+): GroupMember | undefined => {
   const groupLeader = groupMembers.find(
     (member) => member.serial === member.groupCode
   );
-  if (!groupLeader) return null;
+  if (!groupLeader) return undefined;
   return groupLeader;
 };
 
