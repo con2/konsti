@@ -9,10 +9,16 @@ import {
   getUpcomingEnteredGames,
 } from 'client/utils/getUpcomingGames';
 import { SignupForm } from './SignupForm';
-import { submitSignup } from 'client/views/signup/signupThunks';
+import { EnterGameForm } from './EnterGameForm';
+import {
+  submitDeleteGame,
+  submitSignup,
+} from 'client/views/signup/signupThunks';
 import { SelectedGame } from 'shared/typings/models/user';
 import { useAppDispatch, useAppSelector } from 'client/utils/hooks';
 import { submitSelectedGames } from 'client/views/signup/signupSlice';
+import { sharedConfig } from 'shared/config/sharedConfig';
+import { SignupStrategy } from 'shared/config/sharedConfig.types';
 
 interface Props {
   game: Game;
@@ -67,25 +73,35 @@ export const GameEntry = ({ game, startTime }: Props): ReactElement => {
   };
 
   const removeSignup = async (gameToRemove: Game): Promise<void> => {
-    const allSignedGames = getSignedGames(
-      signedGames,
-      groupCode,
-      serial,
-      groupMembers,
-      true
-    );
-    const allEnteredGames = getUpcomingEnteredGames(enteredGames);
-    const newSignupData = [...allSignedGames, ...allEnteredGames].filter(
-      (g: SelectedGame) => g.gameDetails.gameId !== gameToRemove.gameId
-    );
-    dispatch(submitSelectedGames(newSignupData));
-    const signupData = {
-      username,
-      selectedGames: newSignupData,
-      signupTime: gameToRemove.startTime,
-    };
+    if (sharedConfig.signupStrategy === SignupStrategy.DIRECT) {
+      await dispatch(
+        submitDeleteGame({
+          username,
+          startTime: gameToRemove.startTime,
+          enteredGameId: gameToRemove.gameId,
+        })
+      );
+    } else {
+      const allSignedGames = getSignedGames(
+        signedGames,
+        groupCode,
+        serial,
+        groupMembers,
+        true
+      );
+      const allEnteredGames = getUpcomingEnteredGames(enteredGames);
+      const newSignupData = [...allSignedGames, ...allEnteredGames].filter(
+        (g: SelectedGame) => g.gameDetails.gameId !== gameToRemove.gameId
+      );
+      dispatch(submitSelectedGames(newSignupData));
+      const signupData = {
+        username,
+        selectedGames: newSignupData,
+        signupTime: gameToRemove.startTime,
+      };
 
-    await dispatch(submitSignup(signupData));
+      await dispatch(submitSignup(signupData));
+    }
   };
 
   const currentPriority = signedGames.find(
@@ -95,6 +111,12 @@ export const GameEntry = ({ game, startTime }: Props): ReactElement => {
   const signedGamesForTimeslot = signedGames.filter(
     (g) => g.gameDetails.startTime === startTime
   );
+
+  const enteredGamesForTimeslot = getUpcomingEnteredGames(enteredGames).filter(
+    (g) => g.gameDetails.startTime === startTime
+  );
+
+  const isEnterGameMode = sharedConfig.signupStrategy === SignupStrategy.DIRECT;
 
   return (
     <GameContainer key={game.gameId} className='games-list'>
@@ -143,16 +165,29 @@ export const GameEntry = ({ game, startTime }: Props): ReactElement => {
           <Link to={`/games/${game.gameId}`}>{t('gameInfo.readMore')}</Link>
         </GameListShortDescription>
       </GameMoreInfoRow>
+      {console.log(signedGamesForTimeslot)}
       {loggedIn && (
         <>
-          {!isAlreadySigned(game) && signedGamesForTimeslot.length >= 3 && (
-            <p>{t('signup.cannotSignupMoreGames')}</p>
-          )}
-          {!isAlreadySigned(game) && signedGamesForTimeslot.length < 3 && (
-            <button onClick={() => setSignupFormOpen(!signupFormOpen)}>
-              {t('signup.signup')}
-            </button>
-          )}
+          {!isAlreadySigned(game) &&
+            enteredGamesForTimeslot.length === 1 &&
+            isEnterGameMode && <p>{t('signup.cannotSignupMoreThanOneGame')}</p>}
+          {!isAlreadySigned(game) &&
+            enteredGamesForTimeslot.length === 0 &&
+            isEnterGameMode && (
+              <button onClick={() => setSignupFormOpen(!signupFormOpen)}>
+                {t('signup.signup')}
+              </button>
+            )}
+          {!isAlreadySigned(game) &&
+            signedGamesForTimeslot.length >= 3 &&
+            !isEnterGameMode && <p>{t('signup.cannotSignupMoreGames')}</p>}
+          {!isAlreadySigned(game) &&
+            signedGamesForTimeslot.length < 3 &&
+            !isEnterGameMode && (
+              <button onClick={() => setSignupFormOpen(!signupFormOpen)}>
+                {t('signup.signup')}
+              </button>
+            )}
           {isAlreadySigned(game) && (
             <>
               <button onClick={async () => await removeSignup(game)}>
@@ -165,9 +200,13 @@ export const GameEntry = ({ game, startTime }: Props): ReactElement => {
               </p>
             </>
           )}
-          {signupFormOpen && !isAlreadySigned(game) && (
-            <SignupForm game={game} startTime={startTime} />
-          )}
+          {signupFormOpen &&
+            !isAlreadySigned(game) &&
+            (isEnterGameMode ? (
+              <EnterGameForm game={game} />
+            ) : (
+              <SignupForm game={game} startTime={startTime} />
+            ))}
         </>
       )}
     </GameContainer>
