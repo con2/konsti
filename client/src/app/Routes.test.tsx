@@ -12,7 +12,7 @@ test('should render correctly', async () => {
   const props: Props = { onlyAdminLoginAllowed: false };
 
   await act(async () => {
-    render(
+    await render(
       <Provider store={store}>
         <BrowserRouter>
           <Routes {...props} />

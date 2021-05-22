@@ -23,7 +23,7 @@ module.exports = {
     'plugin:eslint-plugin-import/errors',
     'plugin:eslint-plugin-import/typescript',
     'plugin:@typescript-eslint/recommended',
-    // 'plugin:@typescript-eslint/recommended-requiring-type-checking',
+    'plugin:@typescript-eslint/recommended-requiring-type-checking',
   ],
 
   env: {
@@ -101,5 +101,11 @@ module.exports = {
     // TODO: Enable these rules
     '@typescript-eslint/ban-types': 'off',
     '@typescript-eslint/no-empty-function': 'off',
+    '@typescript-eslint/no-unsafe-member-access': 'off',
+    '@typescript-eslint/no-unsafe-return': 'off',
+    '@typescript-eslint/no-unsafe-assignment': 'off',
+    '@typescript-eslint/await-thenable': 'off',
+    '@typescript-eslint/no-unsafe-call': 'off',
+    '@typescript-eslint/unbound-method': 'off',
   },
 };

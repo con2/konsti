@@ -11,7 +11,7 @@ jest.spyOn(loadData, 'loadGroupMembers').mockReturnValue(Promise.resolve());
 
 test('should render correctly', async () => {
   await act(async () => {
-    render(
+    await render(
       <Provider store={store}>
         <MyGamesView />
       </Provider>
