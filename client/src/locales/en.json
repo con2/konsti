@@ -78,7 +78,8 @@
     "shortDescription": "Short description",
     "revolvingDoor": "This is a revolving door game",
     "revolvingDoorDescription": "You can join this game at any time if there are free seats",
-    "programType": "Program type"
+    "programType": "Program type",
+    "readMore": "Read more"
   },
   "programType": {
     "tabletopRPG": "Tabletop RPG",
