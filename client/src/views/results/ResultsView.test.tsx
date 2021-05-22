@@ -9,7 +9,7 @@ jest.spyOn(loadData, 'loadSettings').mockReturnValue(Promise.resolve());
 
 test('should render correctly', async () => {
   await act(async () => {
-    render(
+    await render(
       <Provider store={store}>
         <ResultsView />
       </Provider>
