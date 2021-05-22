@@ -150,7 +150,7 @@ export const runGroupAssignment = (
             _.first(remainingGroup)?.username ===
             _.first(selectedGroup)?.username
           ) {
-            return undefined;
+            return;
           }
         }
         return remainingGroup;

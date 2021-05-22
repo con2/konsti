@@ -5,19 +5,17 @@ module.exports = {
     'eslint-plugin-compat',
     'eslint-plugin-react-hooks',
     'cypress',
-    // 'eslint-plugin-jsx-a11y',
+    'eslint-plugin-jsx-a11y',
   ],
 
   extends: [
     'plugin:eslint-plugin-react/recommended',
     'plugin:cypress/recommended',
-    // 'plugin:eslint-plugin-jsx-a11y/recommended',
+    'plugin:eslint-plugin-jsx-a11y/recommended',
   ],
 
   env: {
-    es6: true,
     browser: true,
-    jest: true,
     'cypress/globals': true,
   },
 
@@ -49,5 +47,6 @@ module.exports = {
 
     // TODO: Enable these rules
     '@typescript-eslint/no-floating-promises': 'off',
+    'jsx-a11y/no-onchange': 'off',
   },
 };

@@ -44,7 +44,7 @@ export const getSignedGames = (
   groupCode: string,
   serial: string,
   groupMembers: readonly GroupMember[],
-  getAllGames: boolean = true
+  getAllGames = true
 ): readonly SelectedGame[] => {
   if (isGroupLeader(groupCode, serial)) {
     return !getAllGames ? getUpcomingSignedGames(signedGames) : signedGames;
