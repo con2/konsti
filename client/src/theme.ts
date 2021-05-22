@@ -1,4 +1,6 @@
 export const theme = {
+  bodyBackground: '#f5f5f5',
+  mainBackground: '#f2f3f5',
   backgroundActive: '#ebf1de',
   backgroundDndItem: '#fff',
   backgroundDndRow: '#add8e6',
@@ -12,6 +14,11 @@ export const theme = {
   mainText: '#282828',
   warningButtonText: '#000',
   titleText: 'white',
+  link: '#1f4ba0',
+
+  inputFocusBorder: '#4d90fe',
+  buttonBorder: '#abd0a57a',
+  buttonBackground: '#fff',
 
   success: '#3c763d',
   disabled: '#abd0a545',

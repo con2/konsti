@@ -10,7 +10,7 @@ export const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
   }
 
   body {
-    background-color: #f5f5f5;
+    background-color: ${(props) => props.theme.bodyBackground};
     padding-bottom: 32px;
     margin: 0;
     width: 100%;
@@ -18,13 +18,13 @@ export const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
 
   @media (max-width: ${(props) => props.theme.breakpointPhone}) {
     body {
-      background-color: #f5f5f5;
+      background-color: ${(props) => props.theme.bodyBackground};
       padding-bottom: 0;
     }
   }
 
   #main {
-    background-color: #F2F3F5;
+    background-color: ${(props) => props.theme.mainBackground};
     max-width: 1024px;
     margin: auto;
   }
@@ -58,13 +58,13 @@ export const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
   }
 
   input:focus {
-    border: 1px solid #4d90fe;
-    box-shadow: 0 0 5px 0 #4d90fe;
+    border: 1px solid ${(props) => props.theme.inputFocusBorder};
+    box-shadow: 0 0 5px 0 ${(props) => props.theme.inputFocusBorder};
     box-sizing: border-box;
   }
 
   a {
-    color: #1f4ba0;
+    color: ${(props) => props.theme.link};
     text-decoration: underline;
   }
 
@@ -83,9 +83,9 @@ export const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
   }
 
   button {
-    background: #fff;
-    border: 1px solid #abd0a57a;
-    border-bottom: 2px solid #abd0a5;
+    background: ${(props) => props.theme.buttonBackground};
+    border: 1px solid ${(props) => props.theme.buttonBorder};
+    border-bottom: 2px solid ${(props) => props.theme.buttonBorder};
     border-radius: 5px;
     color: ${(props) => props.theme.buttonText};
     cursor: pointer;
