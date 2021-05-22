@@ -123,7 +123,7 @@ export const GameEntry: FC<Props> = (props: Props): ReactElement => {
             })
           }
         >
-          Lisaa suosikkeihin
+          {t('button.favorite')}
         </FavoriteButton>
       )}
       {!favorited && loggedIn && userGroup === 'user' && game && (
@@ -138,7 +138,7 @@ export const GameEntry: FC<Props> = (props: Props): ReactElement => {
             })
           }
         >
-          Poista suosikeista
+          {t('button.removeFavorite')}
         </FavoriteButton>
       )}
       <GameMoreInfoRow>
