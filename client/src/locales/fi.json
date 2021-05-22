@@ -78,7 +78,8 @@
     "shortDescription": "Lyhyt kuvaus",
     "revolvingDoor": "Tämä on pyöröovipeli",
     "revolvingDoorDescription": "Voit liittyä peliin koska tahansa, jos pelipöydässä on tilaa",
-    "programType": "Ohjelmatyyppi"
+    "programType": "Ohjelmatyyppi",
+    "readMore": "Lue lisää"
   },
   "programType": {
     "tabletopRPG": "Pöytäroolipeli",
