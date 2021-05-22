@@ -18,15 +18,6 @@ export const runGroupAssignment = (
   let playerCounter = 0;
   let gameCounter = 0;
 
-  const findEnteredGame = (
-    enteredGame: Game,
-    signedGames: readonly SelectedGame[]
-  ): SelectedGame | undefined => {
-    return signedGames.find(
-      (signedGame) => signedGame.gameDetails.gameId === enteredGame.gameId
-    );
-  };
-
   // Shuffle games order
   const shuffledGames = shuffleArray(signedGames);
 
@@ -121,17 +112,17 @@ export const runGroupAssignment = (
       // Store results for selected groups
       for (const selectedGroup of selectedGroups) {
         for (const groupMember of selectedGroup) {
-          const signedGame = groupMember.signedGames.find(
+          const foundSignedGame = groupMember.signedGames.find(
             (signedGame) =>
               signedGame.gameDetails.gameId === selectedGame.gameId
           );
 
           // Increase score based on priority of the entered game
-          if (signedGame && signedGame.priority === 1) {
+          if (foundSignedGame && foundSignedGame.priority === 1) {
             score += 3;
-          } else if (signedGame && signedGame.priority === 2) {
+          } else if (foundSignedGame && foundSignedGame.priority === 2) {
             score += 2;
-          } else if (signedGame && signedGame.priority === 3) {
+          } else if (foundSignedGame && foundSignedGame.priority === 3) {
             score += 1;
           }
 
@@ -183,4 +174,13 @@ export const runGroupAssignment = (
     playerCounter,
     gameCounter,
   };
+};
+
+const findEnteredGame = (
+  enteredGame: Game,
+  signedGames: readonly SelectedGame[]
+): SelectedGame | undefined => {
+  return signedGames.find(
+    (signedGame) => signedGame.gameDetails.gameId === enteredGame.gameId
+  );
 };

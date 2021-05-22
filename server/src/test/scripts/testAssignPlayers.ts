@@ -5,8 +5,8 @@ import { runAssignment } from 'server/features/player-assignment/runAssignment';
 import { config } from 'server/config';
 import { saveResults } from 'server/features/player-assignment/utils/saveResults';
 import { removeOverlapSignups } from 'server/features/player-assignment/utils/removeOverlapSignups';
-import { verifyUserSignups } from 'server/features/player-assignment/test/utils/verifyUserSignups';
-import { verifyResults } from 'server/features/player-assignment/test/utils/verifyResults';
+import { verifyUserSignups } from 'server/features/player-assignment/utils/verifyUserSignups';
+import { verifyResults } from 'server/features/player-assignment/utils/verifyResults';
 import { db } from 'server/db/mongodb';
 import { AssignmentStrategy } from 'shared/config/sharedConfig.types';
 

@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { validateAuthHeader } from 'server/utils/authHeader';
+import { isAuthorized } from 'server/utils/authHeader';
 import { UserGroup } from 'shared/typings/models/user';
 import { fetchGames, storeGames } from 'server/features/game/gamesService';
 import { logger } from 'server/utils/logger';
@@ -11,17 +11,12 @@ export const postGame = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${GAMES_ENDPOINT}`);
 
-  const validToken = validateAuthHeader(
-    req.headers.authorization,
-    UserGroup.ADMIN
-  );
-
-  if (!validToken) {
+  if (!isAuthorized(req.headers.authorization, UserGroup.ADMIN)) {
     return res.sendStatus(401);
   }
 
   const response = await storeGames();
-  return res.send(response);
+  return res.json(response);
 };
 
 export const getGames = async (
@@ -31,5 +26,5 @@ export const getGames = async (
   logger.info(`API call: GET ${GAMES_ENDPOINT}`);
 
   const response = await fetchGames();
-  return res.send(response);
+  return res.json(response);
 };

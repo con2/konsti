@@ -3,21 +3,17 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useTranslation } from 'react-i18next';
-import { useDispatch, useSelector } from 'react-redux';
 import { Game } from 'shared/typings/models/game';
-import { RootState } from 'client/typings/redux.typings';
-import { GroupMember } from 'client/typings/group.typings';
 import { updateFavorite, UpdateFavoriteOpts } from 'client/utils/favorite';
 import {
   getSignedGames,
   getUpcomingEnteredGames,
 } from 'client/utils/getUpcomingGames';
 import { SignupForm } from './SignupForm';
-import {
-  submitSignup,
-  submitSelectedGames,
-} from 'client/views/signup/signupActions';
-import { SelectedGame, UserGroup } from 'shared/typings/models/user';
+import { submitSignup } from 'client/views/signup/signupThunks';
+import { SelectedGame } from 'shared/typings/models/user';
+import { useAppDispatch, useAppSelector } from 'client/utils/hooks';
+import { submitSelectedGames } from 'client/views/signup/signupSlice';
 
 interface Props {
   game: Game;
@@ -38,41 +34,27 @@ export const GameEntry: FC<Props> = (props: Props): ReactElement => {
 
   const { t } = useTranslation();
 
-  const username: string = useSelector(
-    (state: RootState) => state.login.username
+  const username = useAppSelector((state) => state.login.username);
+  const loggedIn = useAppSelector((state) => state.login.loggedIn);
+  const userGroup = useAppSelector((state) => state.login.userGroup);
+  const favoritedGames = useAppSelector(
+    (state) => state.myGames.favoritedGames
   );
-  const loggedIn: boolean = useSelector(
-    (state: RootState) => state.login.loggedIn
-  );
-  const userGroup: UserGroup = useSelector(
-    (state: RootState) => state.login.userGroup
-  );
-  const favoritedGames: readonly Game[] = useSelector(
-    (state: RootState) => state.myGames.favoritedGames
-  );
-  const serial: string = useSelector((state: RootState) => state.login.serial);
-  const groupCode: string = useSelector(
-    (state: RootState) => state.login.groupCode
-  );
-  const signedGames: readonly SelectedGame[] = useSelector(
-    (state: RootState) => state.myGames.signedGames
-  );
-  const enteredGames: readonly SelectedGame[] = useSelector(
-    (state: RootState) => state.myGames.enteredGames
-  );
-  const groupMembers: readonly GroupMember[] = useSelector(
-    (state: RootState) => state.login.groupMembers
-  );
+  const serial = useAppSelector((state) => state.login.serial);
+  const groupCode = useAppSelector((state) => state.login.groupCode);
+  const signedGames = useAppSelector((state) => state.myGames.signedGames);
+  const enteredGames = useAppSelector((state) => state.myGames.enteredGames);
+  const groupMembers = useAppSelector((state) => state.login.groupMembers);
   const [signupFormOpen, setSignupFormOpen] = useState(false);
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const favorited =
     favoritedGames.find(
       (favoritedGame) => favoritedGame.gameId === game.gameId
     ) !== undefined;
 
-  const isAlreadySigned = (game: Game): boolean => {
+  const isAlreadySigned = (gameToCheck: Game): boolean => {
     const allSignedGames = getSignedGames(
       signedGames,
       groupCode,
@@ -83,11 +65,11 @@ export const GameEntry: FC<Props> = (props: Props): ReactElement => {
     const allEnteredGames = getUpcomingEnteredGames(enteredGames);
 
     return [...allSignedGames, ...allEnteredGames].some(
-      (g: SelectedGame) => g.gameDetails.gameId === game.gameId
+      (g: SelectedGame) => g.gameDetails.gameId === gameToCheck.gameId
     );
   };
 
-  const removeSignup = async (game: Game): Promise<void> => {
+  const removeSignup = async (gameToRemove: Game): Promise<void> => {
     const allSignedGames = getSignedGames(
       signedGames,
       groupCode,
@@ -97,13 +79,13 @@ export const GameEntry: FC<Props> = (props: Props): ReactElement => {
     );
     const allEnteredGames = getUpcomingEnteredGames(enteredGames);
     const newSignupData = [...allSignedGames, ...allEnteredGames].filter(
-      (g: SelectedGame) => g.gameDetails.gameId !== game.gameId
+      (g: SelectedGame) => g.gameDetails.gameId !== gameToRemove.gameId
     );
     dispatch(submitSelectedGames(newSignupData));
     const signupData = {
       username,
       selectedGames: newSignupData,
-      signupTime: game.startTime,
+      signupTime: gameToRemove.startTime,
     };
 
     await dispatch(submitSignup(signupData));

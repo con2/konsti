@@ -9,7 +9,7 @@
     "./src/**/*.tsx",
     "./.eslintrc.js",
     "./webpack.config.babel.ts",
-    "./jest.config.js",
+    "jest.config.ts",
     "./babel.config.js"
   ],
   "exclude": ["./node_modules", "./build", "./coverage"]

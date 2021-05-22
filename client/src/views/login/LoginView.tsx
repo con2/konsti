@@ -1,13 +1,13 @@
 import React, { FC, ReactElement } from 'react';
-import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { SubmissionError } from 'redux-form';
-import { submitLogin } from 'client/views/login/loginActions';
+import { submitLogin } from 'client/views/login/loginThunks';
 import LoginForm from 'client/views/login/components/LoginForm';
 import { LoginFormFields } from 'shared/typings/api/login';
+import { useAppDispatch } from 'client/utils/hooks';
 
 export const LoginView: FC = (): ReactElement => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const { t } = useTranslation();
 
   const submit = async (loginFormFields: LoginFormFields): Promise<void> => {

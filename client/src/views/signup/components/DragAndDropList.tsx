@@ -1,16 +1,14 @@
 import React, { FC, ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { DragDropContext, DropResult } from 'react-beautiful-dnd';
 import { DropRow } from 'client/views/signup/components/DropRow';
 import { reorder, move } from 'client/utils/dragAndDrop';
 import { sleep } from 'client/utils/sleep';
 import { config } from 'client/config';
-import { GroupMember } from 'client/typings/group.typings';
-import { DnDUpdatedPositions } from 'client/typings/game.typings';
-import { RootState } from 'client/typings/redux.typings';
+import { DnDUpdatedPositions } from 'client/views/signup/signupTypes';
 import { Game } from 'shared/typings/models/game';
+import { useAppSelector } from 'client/utils/hooks';
 
 export interface Props {
   updateSelectedGames: Function;
@@ -22,12 +20,8 @@ export const DragAndDropList: FC<Props> = (props: Props): ReactElement => {
   const { availableGames, selectedGames, updateSelectedGames } = props;
   const { t } = useTranslation();
 
-  const groupCode: string = useSelector(
-    (state: RootState) => state.login.groupCode
-  );
-  const groupMembers: readonly GroupMember[] = useSelector(
-    (state: RootState) => state.login.groupMembers
-  );
+  const groupCode = useAppSelector((state) => state.login.groupCode);
+  const groupMembers = useAppSelector((state) => state.login.groupMembers);
 
   const [warningVisible, setWarningVisible] = React.useState<boolean>(false);
   const [warning, setWarning] = React.useState<string>('');

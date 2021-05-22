@@ -13,7 +13,10 @@ import {
   UserGroup,
 } from 'shared/typings/models/user';
 import { SaveFavoriteRequest } from 'shared/typings/api/favorite';
-import { EnteredGameRequest } from 'shared/typings/api/signup';
+import {
+  DeleteEnteredGameParameters,
+  PostEnteredGameParameters,
+} from 'shared/typings/api/signup';
 import { getGameById } from 'server/features/game/gameUtils';
 
 export const removeUsers = async (): Promise<void> => {
@@ -418,9 +421,9 @@ export const updateEnteredGames = async (
 };
 
 export const saveEnteredGame = async (
-  enteredGameRequest: EnteredGameRequest
+  enteredGameRequest: PostEnteredGameParameters
 ): Promise<User> => {
-  const { username, enteredGameId, signupTime } = enteredGameRequest;
+  const { username, enteredGameId, startTime } = enteredGameRequest;
 
   let game;
   try {
@@ -439,7 +442,7 @@ export const saveEnteredGame = async (
           enteredGames: {
             gameDetails: game._id,
             priority: 1,
-            time: signupTime,
+            time: startTime,
           },
         },
       },
@@ -463,9 +466,9 @@ export const saveEnteredGame = async (
 };
 
 export const delEnteredGame = async (
-  enteredGameRequest: EnteredGameRequest
+  enteredGameRequest: DeleteEnteredGameParameters
 ): Promise<User> => {
-  const { username, enteredGameId, signupTime } = enteredGameRequest;
+  const { username, enteredGameId, startTime } = enteredGameRequest;
 
   let game;
   try {
@@ -483,7 +486,7 @@ export const delEnteredGame = async (
         $pull: {
           enteredGames: {
             gameDetails: game._id,
-            time: signupTime,
+            time: startTime,
           },
         },
       },

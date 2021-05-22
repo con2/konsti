@@ -1,33 +1,25 @@
 import React, { FC, ReactElement, ChangeEvent } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useDispatch, useSelector, useStore } from 'react-redux';
+import { useStore } from 'react-redux';
 import styled from 'styled-components';
 import {
   submitJoinGroup,
   submitCreateGroup,
   submitLeaveGroup,
-} from 'client/views/group/groupActions';
+} from 'client/views/group/groupThunks';
 import { GroupMembersList } from 'client/views/group/components/GroupMembersList';
 import { sleep } from 'client/utils/sleep';
 import { config } from 'client/config';
-import { submitSignup } from 'client/views/signup/signupActions';
+import { submitSignup } from 'client/views/signup/signupThunks';
 import { loadGroupMembers } from 'client/utils/loadData';
-import { GroupMember } from 'client/typings/group.typings';
-
-import { RootState } from 'client/typings/redux.typings';
+import { useAppDispatch, useAppSelector } from 'client/utils/hooks';
 
 export const GroupView: FC = (): ReactElement => {
-  const username: string = useSelector(
-    (state: RootState) => state.login.username
-  );
-  const serial: string = useSelector((state: RootState) => state.login.serial);
-  const groupCode: string = useSelector(
-    (state: RootState) => state.login.groupCode
-  );
-  const groupMembers: readonly GroupMember[] = useSelector(
-    (state: RootState) => state.login.groupMembers
-  );
-  const dispatch = useDispatch();
+  const username = useAppSelector((state) => state.login.username);
+  const serial = useAppSelector((state) => state.login.serial);
+  const groupCode = useAppSelector((state) => state.login.groupCode);
+  const groupMembers = useAppSelector((state) => state.login.groupMembers);
+  const dispatch = useAppDispatch();
   const { t } = useTranslation();
 
   const [loading, setLoading] = React.useState<boolean>(false);
@@ -70,13 +62,13 @@ export const GroupView: FC = (): ReactElement => {
       await dispatch(submitCreateGroup(groupData));
     } catch (error) {
       showMessage({
-        message: t('generalCreateGroupError'),
+        value: t('generalCreateGroupError'),
         style: 'error',
       });
       return;
     }
 
-    showMessage({ message: t('groupCreated'), style: 'success' });
+    showMessage({ value: t('groupCreated'), style: 'success' });
   };
 
   // Remove all signups
@@ -104,26 +96,26 @@ export const GroupView: FC = (): ReactElement => {
       switch (error.code) {
         case 31:
           showMessage({
-            message: t('invalidGroupCode'),
+            value: t('invalidGroupCode'),
             style: 'error',
           });
           return;
         case 32:
           showMessage({
-            message: t('groupNotExist'),
+            value: t('groupNotExist'),
             style: 'error',
           });
           return;
         default:
           showMessage({
-            message: t('generalCreateGroupError'),
+            value: t('generalCreateGroupError'),
             style: 'error',
           });
           return;
       }
     }
 
-    showMessage({ message: t('groupJoined'), style: 'success' });
+    showMessage({ value: t('groupJoined'), style: 'success' });
     await removeSignups();
   };
 
@@ -144,20 +136,20 @@ export const GroupView: FC = (): ReactElement => {
       switch (error.code) {
         case 36:
           showMessage({
-            message: t('groupNotEmpty'),
+            value: t('groupNotEmpty'),
             style: 'error',
           });
           return;
         default:
           showMessage({
-            message: t('generalLeaveGroupError'),
+            value: t('generalLeaveGroupError'),
             style: 'error',
           });
           return;
       }
     }
 
-    showMessage({ message: t('leftGroup'), style: 'success' });
+    showMessage({ value: t('leftGroup'), style: 'success' });
     setShowJoinGroup(false);
     setLoading(false);
   };
@@ -181,12 +173,12 @@ export const GroupView: FC = (): ReactElement => {
       await dispatch(submitLeaveGroup(groupData));
     } catch (error) {
       showMessage({
-        message: t('generalLeaveGroupError'),
+        value: t('generalLeaveGroupError'),
         style: 'error',
       });
     }
 
-    showMessage({ message: t('closedGroup'), style: 'success' });
+    showMessage({ value: t('closedGroup'), style: 'success' });
     toggleCloseGroupConfirmation(false);
     setLoading(false);
   };
@@ -205,13 +197,13 @@ export const GroupView: FC = (): ReactElement => {
   };
 
   const showMessage = async ({
-    message,
+    value,
     style,
   }: {
-    message: string;
+    value: string;
     style: string;
   }): Promise<void> => {
-    setMessage(message);
+    setMessage(value);
     setMessageStyle(style);
     await sleep(config.MESSAGE_DELAY);
     setMessage('');

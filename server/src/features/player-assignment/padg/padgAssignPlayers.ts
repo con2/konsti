@@ -47,16 +47,22 @@ export const padgAssignPlayers = (
     `Selected players: ${allPlayers.length} (${numberOfIndividuals} individual, ${numberOfGroups} groups)`
   );
 
-  const result = runPadgAssignment(signedGames, playerGroups, startingTime);
-
-  const selectedUniqueGames = _.uniq(
-    result.results.map((result) => result.enteredGame.gameDetails.gameId)
+  const assignmentResult = runPadgAssignment(
+    signedGames,
+    playerGroups,
+    startingTime
   );
 
-  const message = `Padg Assign Result - Players: ${result.results.length}/${
-    allPlayers.length
-  } (${Math.round(
-    (result.results.length / allPlayers.length) * 100
+  const selectedUniqueGames = _.uniq(
+    assignmentResult.results.map(
+      (result) => result.enteredGame.gameDetails.gameId
+    )
+  );
+
+  const message = `Padg Assign Result - Players: ${
+    assignmentResult.results.length
+  }/${allPlayers.length} (${Math.round(
+    (assignmentResult.results.length / allPlayers.length) * 100
   )}%), Games: ${selectedUniqueGames.length}/${
     signedGames.length
   } (${Math.round((selectedUniqueGames.length / signedGames.length) * 100)}%)`;
@@ -64,7 +70,7 @@ export const padgAssignPlayers = (
   logger.debug(`${message}`);
 
   return Object.assign({
-    ...result,
+    ...assignmentResult,
     message,
     algorithm: 'padg',
     status: 'success',

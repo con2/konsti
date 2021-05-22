@@ -1,11 +1,11 @@
-import { submitGetResults } from 'client/views/results/resultsActions';
-import { submitGetGames } from 'client/views/all-games/allGamesActions';
-import { submitGetSettings } from 'client/views/admin/adminActions';
-import { submitGetUser } from 'client/views/my-games/myGamesActions';
-import { submitGetGroup } from 'client/views/group/groupActions';
-import { submitLogin } from 'client/views/login/loginActions';
+import { submitGetResults } from 'client/views/results/resultsThunks';
+import { submitGetGames } from 'client/views/all-games/allGamesThunks';
+import { submitGetSettings } from 'client/views/admin/adminThunks';
+import { submitGetUser } from 'client/views/my-games/myGamesThunks';
+import { submitGetGroup } from 'client/views/group/groupThunks';
+import { submitLogin } from 'client/views/login/loginThunks';
 import { store } from 'client/utils/store';
-import { AppThunkDispatch } from 'client/typings/utils.typings';
+import { AppDispatch } from 'client/typings/redux.typings';
 
 export const loadData = async (): Promise<void> => {
   // Get app settings
@@ -28,18 +28,18 @@ export const loadData = async (): Promise<void> => {
 };
 
 export const loadSettings = async (): Promise<void> => {
-  const dispatch: AppThunkDispatch = store.dispatch;
+  const dispatch: AppDispatch = store.dispatch;
   await dispatch(submitGetSettings());
 };
 
 export const loadGames = async (): Promise<void> => {
-  const dispatch: AppThunkDispatch = store.dispatch;
+  const dispatch: AppDispatch = store.dispatch;
   await dispatch(submitGetGames());
 };
 
 const recoverSession = async (): Promise<void> => {
   const state = store.getState();
-  const dispatch: AppThunkDispatch = store.dispatch;
+  const dispatch: AppDispatch = store.dispatch;
   const { loggedIn, jwt } = state.login;
 
   if (!loggedIn && jwt) {
@@ -49,7 +49,7 @@ const recoverSession = async (): Promise<void> => {
 
 export const loadResults = async (): Promise<void> => {
   const state = store.getState();
-  const dispatch: AppThunkDispatch = store.dispatch;
+  const dispatch: AppDispatch = store.dispatch;
   const { loggedIn } = state.login;
   const { signupTime } = state.admin;
 
@@ -60,7 +60,7 @@ export const loadResults = async (): Promise<void> => {
 
 export const loadUser = async (): Promise<void> => {
   const state = store.getState();
-  const dispatch: AppThunkDispatch = store.dispatch;
+  const dispatch: AppDispatch = store.dispatch;
   const { loggedIn, userGroup, username } = state.login;
 
   if (loggedIn && userGroup === 'user') {
@@ -70,7 +70,7 @@ export const loadUser = async (): Promise<void> => {
 
 export const loadGroupMembers = async (): Promise<void> => {
   const state = store.getState();
-  const dispatch: AppThunkDispatch = store.dispatch;
+  const dispatch: AppDispatch = store.dispatch;
   const { loggedIn, groupCode } = state.login;
 
   if (loggedIn && groupCode !== '0') {

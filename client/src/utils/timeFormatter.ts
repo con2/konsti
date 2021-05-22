@@ -1,6 +1,7 @@
 import moment from 'moment';
 import { config } from 'client/config';
-import { WeekdayAndTime } from 'client/typings/utils.typings';
+import { WeekdayAndTime } from 'client/utils/utils.typings';
+import { capitalizeFirstLetter } from 'client/utils/capitalizeFirstLetter';
 
 const {
   SIGNUP_OPEN_TIME,
@@ -9,7 +10,7 @@ const {
   DAY_START_TIME,
 } = config;
 
-const startTime = (startTime: string): string => {
+const getStartTime = (startTime: string): string => {
   const timeFormat = 'HH:mm';
 
   // Signup starts before convention
@@ -36,38 +37,34 @@ const startTime = (startTime: string): string => {
   }
 };
 
-const endTime = (startTime: string): string => {
+const getEndTime = (startTime: string): string => {
   const timeFormat = 'HH:mm';
   return moment(startTime)
     .subtract(SIGNUP_END_TIME, 'minutes')
     .format(timeFormat);
 };
 
-const weekdayAndTime = ({ time, capitalize }: WeekdayAndTime): string => {
+const getWeekdayAndTime = ({ time, capitalize }: WeekdayAndTime): string => {
   const timeFormat = 'dddd HH:mm';
   const formattedTime = moment(time).format(timeFormat);
   if (capitalize) return capitalizeFirstLetter(formattedTime);
   else return formattedTime;
 };
 
-const dateAndTime = (time: string): string => {
+const getDateAndTime = (time: string): string => {
   const timeFormat = 'DD.M.YYYY HH:mm';
   return moment(time).format(timeFormat);
 };
 
-const time = (time: string): string => {
+const getTime = (time: string): string => {
   const timeFormat = 'HH:mm';
   return moment(time).format(timeFormat);
 };
 
-const capitalizeFirstLetter = (string: string): string => {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-};
-
 export const timeFormatter = {
-  startTime,
-  endTime,
-  weekdayAndTime,
-  dateAndTime,
-  time,
+  getStartTime,
+  getEndTime,
+  getWeekdayAndTime,
+  getDateAndTime,
+  getTime,
 };

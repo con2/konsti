@@ -1,14 +1,13 @@
-import { Dispatch } from 'redux';
 import { Game } from 'shared/typings/models/game';
-import { submitUpdateFavorites } from 'client/views/my-games/myGamesActions';
+import { submitUpdateFavorites } from 'client/views/my-games/myGamesThunks';
+import { AppDispatch } from 'client/typings/redux.typings';
 
 export interface UpdateFavoriteOpts {
   game: Game;
   action: string;
   favoritedGames: readonly Game[];
   username: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  dispatch: Dispatch<any>;
+  dispatch: AppDispatch;
 }
 
 export const updateFavorite = async (

@@ -1,4 +1,4 @@
-import { GroupMember } from 'client/typings/group.typings';
+import { SelectedGame } from 'shared/typings/models/user';
 
 export interface PostGroupResponse {
   groupCode: string;
@@ -19,4 +19,12 @@ export interface GroupData {
   username: string;
   leaveGroup?: boolean;
   closeGroup?: boolean;
+}
+
+export interface GroupMember {
+  enteredGames: readonly SelectedGame[];
+  groupCode: string;
+  serial: string;
+  signedGames: readonly SelectedGame[];
+  username: string;
 }

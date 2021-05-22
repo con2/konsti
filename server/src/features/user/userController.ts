@@ -10,14 +10,11 @@ import {
   storeGroup,
   login,
   storeSignup,
-  storeEnteredGame,
-  removeEnteredGame,
 } from 'server/features/user/userService';
 import { UserGroup } from 'shared/typings/models/user';
-import { validateAuthHeader } from 'server/utils/authHeader';
+import { isAuthorized } from 'server/utils/authHeader';
 import { logger } from 'server/utils/logger';
 import {
-  ENTERED_GAME_ENDPOINT,
   FAVORITE_ENDPOINT,
   GROUP_ENDPOINT,
   LOGIN_ENDPOINT,
@@ -25,7 +22,7 @@ import {
   USERS_BY_SERIAL_ENDPOINT,
   USERS_ENDPOINT,
 } from 'shared/constants/apiEndpoints';
-import { EnteredGameRequest, SignupData } from 'shared/typings/api/signup';
+import { SignupData } from 'shared/typings/api/signup';
 import { GroupData } from 'shared/typings/api/groups';
 import { SaveFavoriteRequest } from 'shared/typings/api/favorite';
 import {
@@ -57,7 +54,7 @@ export const postUser = async (
     serial = req.body.serial;
   }
   const response = await storeUser(username, password, serial, changePassword);
-  return res.send(response);
+  return res.json(response);
 };
 
 export const postLogin = async (
@@ -74,7 +71,7 @@ export const postLogin = async (
 
   // @ts-expect-error: TODO
   const response = await login(username, password, jwt);
-  return res.send(response);
+  return res.json(response);
 };
 
 export const postFavorite = async (
@@ -83,19 +80,13 @@ export const postFavorite = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${FAVORITE_ENDPOINT}`);
 
-  const favoriteData = req.body.favoriteData;
-
-  const validToken = validateAuthHeader(
-    req.headers.authorization,
-    UserGroup.USER
-  );
-
-  if (!validToken) {
+  if (!isAuthorized(req.headers.authorization, UserGroup.USER)) {
     return res.sendStatus(401);
   }
 
+  const favoriteData = req.body.favoriteData;
   const response = await storeFavorite(favoriteData);
-  return res.send(response);
+  return res.json(response);
 };
 
 export const postGroup = async (
@@ -104,12 +95,7 @@ export const postGroup = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${GROUP_ENDPOINT}`);
 
-  const validToken = validateAuthHeader(
-    req.headers.authorization,
-    UserGroup.USER
-  );
-
-  if (!validToken) {
+  if (!isAuthorized(req.headers.authorization, UserGroup.USER)) {
     return res.sendStatus(401);
   }
 
@@ -125,7 +111,7 @@ export const postGroup = async (
     leaveGroup,
     closeGroup
   );
-  return res.send(response);
+  return res.json(response);
 };
 
 export const getUser = async (
@@ -134,12 +120,7 @@ export const getUser = async (
 ): Promise<Response> => {
   logger.info(`API call: GET ${USERS_ENDPOINT}`);
 
-  const validToken = validateAuthHeader(
-    req.headers.authorization,
-    UserGroup.USER
-  );
-
-  if (!validToken) {
+  if (!isAuthorized(req.headers.authorization, UserGroup.USER)) {
     return res.sendStatus(401);
   }
 
@@ -162,7 +143,7 @@ export const getUser = async (
   }
 
   const response = await fetchUserByUsername(username);
-  return res.send(response);
+  return res.json(response);
 };
 
 export const getUserBySerial = async (
@@ -171,12 +152,7 @@ export const getUserBySerial = async (
 ): Promise<Response> => {
   logger.info(`API call: GET ${USERS_BY_SERIAL_ENDPOINT}`);
 
-  const validToken = validateAuthHeader(
-    req.headers.authorization,
-    UserGroup.USER
-  );
-
-  if (!validToken) {
+  if (!isAuthorized(req.headers.authorization, UserGroup.USER)) {
     return res.sendStatus(401);
   }
 
@@ -201,7 +177,7 @@ export const getUserBySerial = async (
   }
 
   const response = await fetchUserBySerial(serial);
-  return res.send(response);
+  return res.json(response);
 };
 
 export const getGroup = async (
@@ -210,12 +186,7 @@ export const getGroup = async (
 ): Promise<Response> => {
   logger.info(`API call: GET ${GROUP_ENDPOINT}`);
 
-  const validToken = validateAuthHeader(
-    req.headers.authorization,
-    UserGroup.USER
-  );
-
-  if (!validToken) {
+  if (!isAuthorized(req.headers.authorization, UserGroup.USER)) {
     return res.sendStatus(401);
   }
 
@@ -234,7 +205,7 @@ export const getGroup = async (
   const { groupCode } = queryParameters;
 
   const response = await fetchGroup(groupCode);
-  return res.send(response);
+  return res.json(response);
 };
 
 export const postSignup = async (
@@ -243,87 +214,13 @@ export const postSignup = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${SIGNUP_ENDPOINT}`);
 
-  const signupData = req.body.signupData;
-
-  const validToken = validateAuthHeader(
-    req.headers.authorization,
-    UserGroup.USER
-  );
-
-  if (!validToken) {
+  if (!isAuthorized(req.headers.authorization, UserGroup.USER)) {
     return res.sendStatus(401);
   }
 
+  const signupData = req.body.signupData;
   const { selectedGames, username, signupTime } = signupData;
 
   const response = await storeSignup(selectedGames, username, signupTime);
-  return res.send(response);
-};
-
-export const postEnteredGame = async (
-  req: Request<{}, {}, { enteredGameRequest: EnteredGameRequest }>,
-  res: Response
-): Promise<Response> => {
-  logger.info(`API call: POST ${ENTERED_GAME_ENDPOINT}`);
-
-  const validToken = validateAuthHeader(
-    req.headers.authorization,
-    UserGroup.USER
-  );
-
-  if (!validToken) {
-    return res.sendStatus(401);
-  }
-
-  const PostEnteredGameParameters = Record({
-    username: String,
-    enteredGameId: String,
-    signupTime: String,
-  });
-
-  try {
-    PostEnteredGameParameters.check(req.query);
-  } catch (error) {
-    logger.error(
-      `Error validating postEnteredGame parameters: ${error.message}`
-    );
-    return res.sendStatus(422);
-  }
-
-  const response = await storeEnteredGame(req.body.enteredGameRequest);
-  return res.send(response);
-};
-
-export const deleteEnteredGame = async (
-  req: Request<{}, {}, { enteredGameRequest: EnteredGameRequest }>,
-  res: Response
-): Promise<Response> => {
-  logger.info(`API call: DELETE ${ENTERED_GAME_ENDPOINT}`);
-
-  const validToken = validateAuthHeader(
-    req.headers.authorization,
-    UserGroup.USER
-  );
-
-  if (!validToken) {
-    return res.sendStatus(401);
-  }
-
-  const DeleteEnteredGameParameters = Record({
-    username: String,
-    enteredGameId: String,
-    signupTime: String,
-  });
-
-  try {
-    DeleteEnteredGameParameters.check(req.query);
-  } catch (error) {
-    logger.error(
-      `Error validating deleteEnteredGame parameters: ${error.message}`
-    );
-    return res.sendStatus(422);
-  }
-
-  const response = await removeEnteredGame(req.body.enteredGameRequest);
-  return res.send(response);
+  return res.json(response);
 };

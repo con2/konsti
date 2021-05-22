@@ -1,19 +1,14 @@
 import React, { FC, ReactElement } from 'react';
-import { useSelector, useStore } from 'react-redux';
+import { useStore } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { ResultsList } from 'client/views/results/components/ResultsList';
 import { timeFormatter } from 'client/utils/timeFormatter';
 import { loadResults, loadSettings } from 'client/utils/loadData';
-import { Result } from 'shared/typings/models/result';
-import { RootState } from 'client/typings/redux.typings';
+import { useAppSelector } from 'client/utils/hooks';
 
 export const ResultsView: FC = (): ReactElement => {
-  const result: readonly Result[] = useSelector(
-    (state: RootState) => state.results.result
-  );
-  const signupTime: string = useSelector(
-    (state: RootState) => state.admin.signupTime
-  );
+  const results = useAppSelector((state) => state.results.result);
+  const signupTime = useAppSelector((state) => state.admin.signupTime);
   const { t } = useTranslation();
 
   const store = useStore();
@@ -26,7 +21,7 @@ export const ResultsView: FC = (): ReactElement => {
     fetchData();
   }, [store]);
 
-  const validResults = result.filter(
+  const validResults = results.filter(
     (result) => result.enteredGame.gameDetails
   );
 
@@ -37,7 +32,7 @@ export const ResultsView: FC = (): ReactElement => {
         <>
           <h2>
             {t('signupResultsfor')}{' '}
-            {timeFormatter.weekdayAndTime({
+            {timeFormatter.getWeekdayAndTime({
               time: signupTime,
               capitalize: false,
             })}

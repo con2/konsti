@@ -1,7 +1,7 @@
 import React, { FC, ReactElement, ChangeEvent } from 'react';
-import { useSelector, useStore } from 'react-redux';
+import { useStore } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
+import { TFunction, useTranslation } from 'react-i18next';
 import moment from 'moment';
 import styled from 'styled-components';
 import { AllGamesList } from 'client/views/all-games/components/AllGamesList';
@@ -11,20 +11,14 @@ import { config } from 'client/config';
 import { Loading } from 'client/components/Loading';
 import { Game } from 'shared/typings/models/game';
 import { getTime } from 'client/utils/getTime';
-import { RootState } from 'client/typings/redux.typings';
+import { useAppSelector } from 'client/utils/hooks';
 
 export const AllGamesView: FC = (): ReactElement => {
   const { t } = useTranslation();
 
-  const games: readonly Game[] = useSelector(
-    (state: RootState) => state.allGames.games
-  );
-  const testTime: string = useSelector(
-    (state: RootState) => state.admin.testTime
-  );
-  const hiddenGames: readonly Game[] = useSelector(
-    (state: RootState) => state.admin.hiddenGames
-  );
+  const games = useAppSelector((state) => state.allGames.games);
+  const testTime = useAppSelector((state) => state.admin.testTime);
+  const hiddenGames = useAppSelector((state) => state.admin.hiddenGames);
 
   const [selectedView, setSelectedView] = React.useState<string>('upcoming');
   const [selectedTag, setSelectedTag] = React.useState<string>('');
@@ -41,41 +35,6 @@ export const AllGamesView: FC = (): ReactElement => {
     fetchData();
   }, [store, testTime]);
 
-  const getVisibleGames = (games: readonly Game[]): readonly Game[] => {
-    const filteredGames = getTagFilteredGames(games);
-
-    const visibleGames = filteredGames.filter((game) => {
-      const hidden = hiddenGames.find(
-        (hiddenGame) => game.gameId === hiddenGame.gameId
-      );
-      if (!hidden) return game;
-    });
-
-    if (selectedView === 'upcoming') {
-      return getUpcomingGames(visibleGames);
-    } else if (selectedView === 'revolving-door') {
-      return getUpcomingGames(visibleGames).filter(
-        (game) => game.revolvingDoor
-      );
-    }
-
-    return visibleGames;
-  };
-
-  const getTagFilteredGames = (games: readonly Game[]): readonly Game[] => {
-    if (!selectedTag) return games;
-    if (selectedTag === 'aloittelijaystavallinen') {
-      return games.filter((game) => game.beginnerFriendly);
-    } else if (selectedTag === 'tabletopRPG') {
-      return games.filter((game) => game.programType === 'tabletopRPG');
-    } else if (selectedTag === 'freeformRPG') {
-      return games.filter((game) => game.programType === 'freeformRPG');
-    }
-    return games;
-    // return games.filter(game => game.tags && game.tags.includes(selectedTag));
-  };
-
-  // const tags = ['in-english', 'aloittelijaystavallinen', 'sopii-lapsille'];
   const tags = ['aloittelijaystavallinen', 'tabletopRPG', 'freeformRPG'];
 
   const tagsList = (): ReactElement[] => {
@@ -88,33 +47,6 @@ export const AllGamesView: FC = (): ReactElement => {
           {tag === 'tabletopRPG' && t(`programType.tabletopRPG`)}
           {tag === 'freeformRPG' && t(`programType.freeformRPG`)}
         </option>
-      );
-    });
-  };
-
-  const getRunningRevolvingDoorGames = (
-    games: readonly Game[]
-  ): ReactElement | ReactElement[] => {
-    const timeNow = getTime();
-    const runningGames = games.filter((game) => {
-      return (
-        game.revolvingDoor &&
-        moment(game.startTime).isBefore(timeNow) &&
-        moment(game.endTime).isAfter(timeNow)
-      );
-    });
-
-    if (!runningGames || runningGames.length === 0) {
-      return <p>{t('noCurrentlyRunningGames')}</p>;
-    }
-    return runningGames.map((game) => {
-      return (
-        <div key={game.gameId} className='games-list'>
-          <Link to={`/games/${game.gameId}`}>{game.title}</Link>{' '}
-          <GameListShortDescription>
-            {game.shortDescription ? game.shortDescription : game.gameSystem}
-          </GameListShortDescription>
-        </div>
       );
     });
   };
@@ -170,12 +102,18 @@ export const AllGamesView: FC = (): ReactElement => {
           </RevolvingDoorInstruction>
           <div className='running-revolving-door-games'>
             <h3>{t('currentlyRunningRevolvingDoor')}</h3>
-            {getRunningRevolvingDoorGames(games)}
+            {getRunningRevolvingDoorGames(games, t)}
           </div>
         </>
       )}
 
-      {loading ? <Loading /> : <AllGamesList games={getVisibleGames(games)} />}
+      {loading ? (
+        <Loading />
+      ) : (
+        <AllGamesList
+          games={getVisibleGames(games, hiddenGames, selectedView, selectedTag)}
+        />
+      )}
     </>
   );
 };
@@ -200,6 +138,73 @@ const AllGamesVisibilityBar = styled.div`
     }
   }
 `;
+
+const getVisibleGames = (
+  games: readonly Game[],
+  hiddenGames: readonly Game[],
+  selectedView: string,
+  selectedTag: string
+): readonly Game[] => {
+  const filteredGames = getTagFilteredGames(games, selectedTag);
+
+  const visibleGames = filteredGames.filter((game) => {
+    const hidden = hiddenGames.find(
+      (hiddenGame) => game.gameId === hiddenGame.gameId
+    );
+    if (!hidden) return game;
+  });
+
+  if (selectedView === 'upcoming') {
+    return getUpcomingGames(visibleGames);
+  } else if (selectedView === 'revolving-door') {
+    return getUpcomingGames(visibleGames).filter((game) => game.revolvingDoor);
+  }
+
+  return visibleGames;
+};
+
+const getTagFilteredGames = (
+  games: readonly Game[],
+  selectedTag: string
+): readonly Game[] => {
+  if (!selectedTag) return games;
+  if (selectedTag === 'aloittelijaystavallinen') {
+    return games.filter((game) => game.beginnerFriendly);
+  } else if (selectedTag === 'tabletopRPG') {
+    return games.filter((game) => game.programType === 'tabletopRPG');
+  } else if (selectedTag === 'freeformRPG') {
+    return games.filter((game) => game.programType === 'freeformRPG');
+  }
+  return games;
+};
+
+const getRunningRevolvingDoorGames = (
+  games: readonly Game[],
+  t: TFunction
+): ReactElement | ReactElement[] => {
+  const timeNow = getTime();
+  const runningGames = games.filter((game) => {
+    return (
+      game.revolvingDoor &&
+      moment(game.startTime).isBefore(timeNow) &&
+      moment(game.endTime).isAfter(timeNow)
+    );
+  });
+
+  if (!runningGames || runningGames.length === 0) {
+    return <p>{t('noCurrentlyRunningGames')}</p>;
+  }
+  return runningGames.map((game) => {
+    return (
+      <div key={game.gameId} className='games-list'>
+        <Link to={`/games/${game.gameId}`}>{game.title}</Link>{' '}
+        <GameListShortDescription>
+          {game.shortDescription ? game.shortDescription : game.gameSystem}
+        </GameListShortDescription>
+      </div>
+    );
+  });
+};
 
 const RevolvingDoorInstruction = styled.div`
   margin: 100px 0 0 14px;

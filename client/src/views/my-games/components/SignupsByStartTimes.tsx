@@ -20,7 +20,7 @@ export const SignupsByStartTimes: FC<Props> = (props: Props): ReactElement => {
         return (
           <div key={startTime}>
             <p className='bold'>
-              {timeFormatter.weekdayAndTime({
+              {timeFormatter.getWeekdayAndTime({
                 time: startTime,
                 capitalize: true,
               })}

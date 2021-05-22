@@ -1,13 +1,9 @@
 import React, { FC, ReactElement, useRef, FormEvent } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { Game } from 'shared/typings/models/game';
-import { RootState } from 'client/typings/redux.typings';
-import {
-  submitSignup,
-  submitSelectedGames,
-} from 'client/views/signup/signupActions';
-import { SelectedGame } from 'shared/typings/models/user';
+import { submitSignup } from 'client/views/signup/signupThunks';
+import { useAppDispatch, useAppSelector } from 'client/utils/hooks';
+import { submitSelectedGames } from 'client/views/signup/signupSlice';
 
 interface Props {
   game: Game;
@@ -18,13 +14,9 @@ export const SignupForm: FC<Props> = (props: Props): ReactElement => {
   const { game, startTime } = props;
 
   const { t } = useTranslation();
-  const dispatch = useDispatch();
-  const selectedGames: readonly SelectedGame[] = useSelector(
-    (state: RootState) => state.myGames.signedGames
-  );
-  const username: string = useSelector(
-    (state: RootState) => state.login.username
-  );
+  const dispatch = useAppDispatch();
+  const selectedGames = useAppSelector((state) => state.myGames.signedGames);
+  const username = useAppSelector((state) => state.login.username);
   const priorityRef = useRef<HTMLSelectElement>(null);
 
   const handleSignup = async (event: FormEvent): Promise<void> => {
@@ -64,8 +56,9 @@ export const SignupForm: FC<Props> = (props: Props): ReactElement => {
   };
 
   const selectedPriorities = selectedGames
-    .filter((game) => game.gameDetails.startTime === startTime)
-    .map((game) => game.priority);
+    .filter((selectedGame) => selectedGame.gameDetails.startTime === startTime)
+    .map((selectedGame) => selectedGame.priority);
+
   const isAlreadySelected = (priority: number): boolean =>
     selectedPriorities.includes(priority);
 

@@ -1,9 +1,10 @@
 import React, { FC, ReactElement } from 'react';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
-import { useDispatch } from 'react-redux';
-import { updateUnsavedChangesStatus } from 'client/views/signup/signupActions';
+import { updateUnsavedChangesStatus } from 'client/views/signup/signupSlice';
 import { SelectedGame } from 'shared/typings/models/user';
+import { useAppDispatch } from 'client/utils/hooks';
+import { AppDispatch } from 'client/typings/redux.typings';
 
 interface Props {
   groupCode: string;
@@ -30,40 +31,8 @@ export const SignupActionButtons: FC<Props> = (props: Props): ReactElement => {
     submitting,
   } = props;
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const { t } = useTranslation();
-
-  const checkForSignupChanges = (
-    signedGames: readonly SelectedGame[],
-    selectedGames: readonly SelectedGame[]
-  ): boolean => {
-    const filteredSignedGames = signedGames.filter((signedGame) => {
-      return selectedGames.find((selectedGame) => {
-        return (
-          signedGame.gameDetails.gameId === selectedGame.gameDetails.gameId
-        );
-      });
-    });
-
-    const filteredSelectedGames = selectedGames.filter((selectedGame) => {
-      return signedGames.find((signedGame) => {
-        return (
-          selectedGame.gameDetails.gameId === signedGame.gameDetails.gameId
-        );
-      });
-    });
-
-    if (
-      filteredSignedGames.length !== signedGames.length ||
-      filteredSelectedGames.length !== selectedGames.length
-    ) {
-      dispatch(updateUnsavedChangesStatus(true));
-      return true;
-    } else {
-      dispatch(updateUnsavedChangesStatus(false));
-      return false;
-    }
-  };
 
   return (
     <div className='signup-action-buttons-row'>
@@ -77,7 +46,7 @@ export const SignupActionButtons: FC<Props> = (props: Props): ReactElement => {
 
       {signupSubmitted && <SuccessMessage>{t('signupSaved')}</SuccessMessage>}
 
-      {checkForSignupChanges(signedGames, selectedGames) && (
+      {checkForSignupChanges(signedGames, selectedGames, dispatch) && (
         <InfoMessage>{t('signupUnsavedChanges')}</InfoMessage>
       )}
 
@@ -104,3 +73,32 @@ const SuccessMessage = styled.span`
   color: ${(props) => props.theme.success};
   font-weight: 600;
 `;
+
+const checkForSignupChanges = (
+  signedGames: readonly SelectedGame[],
+  selectedGames: readonly SelectedGame[],
+  dispatch: AppDispatch
+): boolean => {
+  const filteredSignedGames = signedGames.filter((signedGame) => {
+    return selectedGames.find((selectedGame) => {
+      return signedGame.gameDetails.gameId === selectedGame.gameDetails.gameId;
+    });
+  });
+
+  const filteredSelectedGames = selectedGames.filter((selectedGame) => {
+    return signedGames.find((signedGame) => {
+      return selectedGame.gameDetails.gameId === signedGame.gameDetails.gameId;
+    });
+  });
+
+  if (
+    filteredSignedGames.length !== signedGames.length ||
+    filteredSelectedGames.length !== selectedGames.length
+  ) {
+    dispatch(updateUnsavedChangesStatus(true));
+    return true;
+  } else {
+    dispatch(updateUnsavedChangesStatus(false));
+    return false;
+  }
+};

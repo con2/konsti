@@ -4,6 +4,7 @@ module.exports = {
   parser: '@typescript-eslint/parser',
 
   plugins: [
+    'eslint-plugin-ban',
     'eslint-plugin-compat',
     'eslint-plugin-jest',
     'eslint-plugin-prettier',
@@ -54,6 +55,7 @@ module.exports = {
     'no-restricted-imports': ['error', { patterns: ['../*'] }],
     'no-console': 'error',
     'array-callback-return': 'off',
+    'no-shadow': 'off', // Required by @typescript-eslint/no-shadow
 
     // eslint-plugin-prettier
     'prettier/prettier': 'error',
@@ -61,7 +63,7 @@ module.exports = {
     // eslint-plugin-import
     'import/no-unused-modules': ['error', { unusedExports: true }],
     'import/no-unresolved': 'off',
-    'import/order': ['error', { groups: ['builtin', 'external'] }],
+    // 'import/order': ['error', { groups: ['builtin', 'external'] }], // Broken at the moment
 
     // eslint-plugin-jest
     'jest/no-disabled-tests': 'error',
@@ -77,10 +79,18 @@ module.exports = {
       'error',
       { ignoreStringArrays: true },
     ],
+    '@typescript-eslint/no-shadow': 'error',
     '@typescript-eslint/default-param-last': 'off', // Problem setting Redux reducer initial state
     '@typescript-eslint/triple-slash-reference': 'off', // Cypress requires triple slash reference
     '@typescript-eslint/strict-boolean-expressions': 'off', // Forces unwanted code style
     '@typescript-eslint/restrict-template-expressions': 'off', // Requires typing catch(e) every time
     '@typescript-eslint/restrict-plus-operands': 'off', // Doesn't support dynamic object occurance counting
+
+    // eslint-plugin-ban
+    'ban/ban': [
+      'error',
+      { name: 'useDispatch', message: 'Please use useAppDispatch()' },
+      { name: 'useSelector', message: 'Please use useAppSelector()' },
+    ],
   },
 };

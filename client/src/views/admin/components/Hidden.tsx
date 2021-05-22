@@ -21,7 +21,7 @@ export const Hidden: FC<Props> = (props: Props): ReactElement => {
     <li key={game.gameId}>
       <Link to={`/games/${game.gameId}`}>{game.title}</Link>
       {' - '}
-      {timeFormatter.weekdayAndTime({
+      {timeFormatter.getWeekdayAndTime({
         time: game.startTime,
         capitalize: false,
       })}

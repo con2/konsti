@@ -1,19 +1,13 @@
 import React, { FC, ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useSelector } from 'react-redux';
 import _ from 'lodash';
 import styled from 'styled-components';
 import { timeFormatter } from 'client/utils/timeFormatter';
-import { Result } from 'shared/typings/models/result';
-import { RootState } from 'client/typings/redux.typings';
+import { useAppSelector } from 'client/utils/hooks';
 
 export const HelperResultsList: FC = (): ReactElement => {
-  const results: readonly Result[] = useSelector(
-    (state: RootState) => state.results.result
-  );
-  const startTime: string = useSelector(
-    (state: RootState) => state.results.startTime
-  );
+  const results = useAppSelector((state) => state.results.result);
+  const startTime = useAppSelector((state) => state.results.startTime);
   const { t } = useTranslation();
 
   const validResults = results.filter(
@@ -31,29 +25,32 @@ export const HelperResultsList: FC = (): ReactElement => {
 
   const resultsByGameTitle: ReactElement[] = [];
 
-  for (const result in groupedResults) {
-    const sortedResults = _.sortBy(groupedResults[result], [
+  for (const groupedResult in groupedResults) {
+    const reSortedResults = _.sortBy(groupedResults[groupedResult], [
       (result) => result.username.toLowerCase(),
     ]);
 
-    const playerList = sortedResults.map((result) => (
+    const playerList = reSortedResults.map((result) => (
       <p key={result.username}>{result.username}</p>
     ));
 
     resultsByGameTitle.push(
-      <GameResult key={result}>
+      <GameResult key={groupedResult}>
         <p>
-          <span className='bold'>{t('gameTitle')}:</span> {result}
+          <span className='bold'>{t('gameTitle')}:</span> {groupedResult}
         </p>
         <p>
           <span className='bold'>{t('gameInfo.location')}:</span>{' '}
-          {_.head(groupedResults[result])?.enteredGame.gameDetails.location}
+          {
+            _.head(groupedResults[groupedResult])?.enteredGame.gameDetails
+              .location
+          }
         </p>
         <p>
           <span className='bold'>{t('players')}: </span>
           {playerList.length}/
           {
-            _.head(groupedResults[result])?.enteredGame.gameDetails
+            _.head(groupedResults[groupedResult])?.enteredGame.gameDetails
               .maxAttendance
           }
         </p>
@@ -67,7 +64,7 @@ export const HelperResultsList: FC = (): ReactElement => {
         {t('signupResults')}:{' '}
         {startTime ? (
           <span>
-            {timeFormatter.weekdayAndTime({
+            {timeFormatter.getWeekdayAndTime({
               time: startTime,
               capitalize: false,
             })}

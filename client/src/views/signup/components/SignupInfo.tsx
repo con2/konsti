@@ -13,8 +13,8 @@ export const SignupInfo: FC<Props> = (props: Props): ReactElement => {
 
   const { t } = useTranslation();
 
-  const signupStartTime = timeFormatter.startTime(signupTime);
-  const signupEndTime = timeFormatter.endTime(signupTime);
+  const signupStartTime = timeFormatter.getStartTime(signupTime);
+  const signupEndTime = timeFormatter.getEndTime(signupTime);
 
   return (
     <SignupInfoContainer>

@@ -13,6 +13,10 @@ import {
   postSignupTime,
 } from 'server/features/settings/settingsController';
 import {
+  deleteEnteredGame,
+  postEnteredGame,
+} from 'server/features/user/entered-game/enteredGameController';
+import {
   getGroup,
   getUser,
   getUserBySerial,
@@ -21,8 +25,6 @@ import {
   postLogin,
   postUser,
   postSignup,
-  postEnteredGame,
-  deleteEnteredGame,
 } from 'server/features/user/userController';
 import {
   ASSIGNMENT_ENDPOINT,

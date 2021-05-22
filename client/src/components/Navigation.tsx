@@ -1,21 +1,16 @@
 import React, { ReactElement, useState } from 'react';
-import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { RootState } from 'client/typings/redux.typings';
 import { config } from 'client/config';
 import { LoggedInUserNavigation } from './LoggedInUserNavigation';
 import { UserNavigation } from './UserNavigation';
+import { useAppSelector } from 'client/utils/hooks';
 
 export const Navigation = (): ReactElement => {
-  const username: string = useSelector(
-    (state: RootState) => state.login.username
-  );
-  const loggedIn: boolean = useSelector(
-    (state: RootState) => state.login.loggedIn
-  );
-  const serial: string = useSelector((state: RootState) => state.login.serial);
+  const username = useAppSelector((state) => state.login.username);
+  const loggedIn = useAppSelector((state) => state.login.loggedIn);
+  const serial = useAppSelector((state) => state.login.serial);
   const { t } = useTranslation();
   const { loadedSettings, useTestTime } = config;
 

@@ -1,5 +1,5 @@
 import React, { FC, ReactElement } from 'react';
-import { useSelector, useStore } from 'react-redux';
+import { useStore } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import { MySignupsList } from 'client/views/my-games/components/MySignupsList';
@@ -12,33 +12,22 @@ import {
 } from 'client/utils/getUpcomingGames';
 import { loadUser, loadGames, loadGroupMembers } from 'client/utils/loadData';
 import { isGroupLeader } from 'client/views/group/GroupView';
-import { Game } from 'shared/typings/models/game';
-import { GroupMember } from 'client/typings/group.typings';
-import { RootState } from 'client/typings/redux.typings';
+import { GroupMember } from 'shared/typings/api/groups';
 import { SelectedGame } from 'shared/typings/models/user';
+import { useAppSelector } from 'client/utils/hooks';
 
 export const MyGamesView: FC = (): ReactElement => {
   const { t } = useTranslation();
 
-  const serial: string = useSelector((state: RootState) => state.login.serial);
-  const groupCode: string = useSelector(
-    (state: RootState) => state.login.groupCode
+  const serial = useAppSelector((state) => state.login.serial);
+  const groupCode = useAppSelector((state) => state.login.groupCode);
+  const signedGames = useAppSelector((state) => state.myGames.signedGames);
+  const favoritedGames = useAppSelector(
+    (state) => state.myGames.favoritedGames
   );
-  const signedGames: readonly SelectedGame[] = useSelector(
-    (state: RootState) => state.myGames.signedGames
-  );
-  const favoritedGames: readonly Game[] = useSelector(
-    (state: RootState) => state.myGames.favoritedGames
-  );
-  const enteredGames: readonly SelectedGame[] = useSelector(
-    (state: RootState) => state.myGames.enteredGames
-  );
-  const groupMembers: readonly GroupMember[] = useSelector(
-    (state: RootState) => state.login.groupMembers
-  );
-  const testTime: string = useSelector(
-    (state: RootState) => state.admin.testTime
-  );
+  const enteredGames = useAppSelector((state) => state.myGames.enteredGames);
+  const groupMembers = useAppSelector((state) => state.login.groupMembers);
+  const testTime = useAppSelector((state) => state.admin.testTime);
 
   const [showAllGames, setShowAllGames] = React.useState<boolean>(false);
 
@@ -52,37 +41,6 @@ export const MyGamesView: FC = (): ReactElement => {
     };
     fetchData();
   }, [store, testTime]);
-
-  const getGroupLeader = (
-    groupMembers: readonly GroupMember[]
-  ): GroupMember | null => {
-    const groupLeader = groupMembers.find(
-      (member) => member.serial === member.groupCode
-    );
-    if (!groupLeader) return null;
-    return groupLeader;
-  };
-
-  const getSignedGames = (
-    signedGames: readonly SelectedGame[]
-  ): readonly SelectedGame[] => {
-    if (isGroupLeader(groupCode, serial)) {
-      if (!showAllGames) return getUpcomingSignedGames(signedGames);
-      else return signedGames;
-    }
-
-    if (!isGroupLeader(groupCode, serial)) {
-      const groupLeader = getGroupLeader(groupMembers);
-
-      if (!showAllGames) {
-        return getUpcomingSignedGames(
-          groupLeader ? groupLeader.signedGames : signedGames
-        );
-      } else return groupLeader ? groupLeader.signedGames : signedGames;
-    }
-
-    return signedGames;
-  };
 
   return (
     <div className='my-games-view'>
@@ -111,17 +69,66 @@ export const MyGamesView: FC = (): ReactElement => {
           </MyGamesGroupNotification>
         )}
 
-        <MySignupsList signedGames={getSignedGames(signedGames)} />
+        <MySignupsList
+          signedGames={getSignedGames(
+            signedGames,
+            groupCode,
+            serial,
+            showAllGames,
+            groupMembers
+          )}
+        />
 
         <MyEnteredList
           enteredGames={
             showAllGames ? enteredGames : getUpcomingEnteredGames(enteredGames)
           }
-          signedGames={getSignedGames(signedGames)}
+          signedGames={getSignedGames(
+            signedGames,
+            groupCode,
+            serial,
+            showAllGames,
+            groupMembers
+          )}
         />
       </>
     </div>
   );
+};
+
+const getGroupLeader = (
+  groupMembers: readonly GroupMember[]
+): GroupMember | null => {
+  const groupLeader = groupMembers.find(
+    (member) => member.serial === member.groupCode
+  );
+  if (!groupLeader) return null;
+  return groupLeader;
+};
+
+const getSignedGames = (
+  signedGames: readonly SelectedGame[],
+  groupCode: string,
+  serial: string,
+  showAllGames: boolean,
+  groupMembers: readonly GroupMember[]
+): readonly SelectedGame[] => {
+  if (isGroupLeader(groupCode, serial)) {
+    if (!showAllGames) return getUpcomingSignedGames(signedGames);
+    else return signedGames;
+  }
+
+  if (!isGroupLeader(groupCode, serial)) {
+    const groupLeader = getGroupLeader(groupMembers);
+
+    if (!showAllGames) {
+      return getUpcomingSignedGames(
+        groupLeader ? groupLeader.signedGames : signedGames
+      );
+    } else return groupLeader ? groupLeader.signedGames : signedGames;
+  }
+
+  return signedGames;
 };
 
 const MyGamesGroupNotification = styled.div`
