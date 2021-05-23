@@ -1,7 +1,18 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
-    "outDir": "lib"
+    "outDir": "lib",
+    "paths": {
+      "client/*": ["client/src/*"],
+      "server/*": ["server/src/*"],
+      "shared/*": ["shared/*"],
+      "cypress/*": ["client/cypress/*"]
+    }
+  },
+  "ts-node": {
+    "transpileOnly": true,
+    "files": true,
+    "require": ["tsconfig-paths/register"]
   },
   "include": ["**/*.js", "**/*.ts", "./.eslintrc.js"],
   "exclude": ["./node_modules", "./lib", "./coverage", "./front"]
