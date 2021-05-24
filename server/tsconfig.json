@@ -5,7 +5,6 @@
   },
   "ts-node": {
     "transpileOnly": true,
-    "files": true,
     "require": ["tsconfig-paths/register"]
   },
   "include": ["**/*.js", "**/*.ts", "./.eslintrc.js"],
