@@ -1,13 +1,7 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
-    "outDir": "lib",
-    "paths": {
-      "client/*": ["client/src/*"],
-      "server/*": ["server/src/*"],
-      "shared/*": ["shared/*"],
-      "cypress/*": ["client/cypress/*"]
-    }
+    "outDir": "lib"
   },
   "ts-node": {
     "transpileOnly": true,
