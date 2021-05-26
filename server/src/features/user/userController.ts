@@ -46,7 +46,7 @@ export const postUser = async (
 
   // @ts-expect-error: TODO
   const { username, password, changePassword } = req.body;
-  let serial = '';
+  let serial;
   if (sharedConfig.conventionType === ConventionType.REMOTE) {
     const serialDoc = await createSerial();
     serial = serialDoc[0].serial;
