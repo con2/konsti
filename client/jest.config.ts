@@ -1,7 +1,10 @@
 module.exports = {
-  clearMocks: true,
-  coverageDirectory: 'coverage',
   preset: 'ts-jest',
+  testEnvironment: 'jsdom',
+
+  clearMocks: true,
+
+  coverageDirectory: 'coverage',
 
   moduleNameMapper: {
     '\\.(jpg|png|gif|svg)$': '<rootDir>/src/test/__mocks__/binaryMock.ts',
@@ -10,5 +13,6 @@ module.exports = {
   },
 
   setupFiles: ['./src/test/setupTests.ts'],
+
   testPathIgnorePatterns: ['cypress'],
 };
