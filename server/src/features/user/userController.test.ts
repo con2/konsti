@@ -11,6 +11,8 @@ import {
   USERS_BY_SERIAL_ENDPOINT,
   USERS_ENDPOINT,
 } from 'shared/constants/apiEndpoints';
+import { sharedConfig } from 'shared/config/sharedConfig';
+import { ConventionType } from 'shared/config/sharedConfig.types';
 
 let server: Application;
 let mongoServer: MongoMemoryServer;
@@ -57,14 +59,23 @@ describe(`POST ${USERS_ENDPOINT}`, () => {
     });
     expect(response.status).toEqual(422);
   });
-
-  test('should return 422 without serial', async () => {
-    const response = await request(server).post(USERS_ENDPOINT).send({
-      username: 'testuser',
-      password: 'testpass',
+  if (sharedConfig.conventionType === ConventionType.LIVE) {
+    test('should return 422 without serial if convention is live', async () => {
+      const response = await request(server).post(USERS_ENDPOINT).send({
+        username: 'testuser',
+        password: 'testpass',
+      });
+      expect(response.status).toEqual(422);
     });
-    expect(response.status).toEqual(422);
-  });
+  } else {
+    test('should return 200 without serial if convention is remote', async () => {
+      const response = await request(server).post(USERS_ENDPOINT).send({
+        username: 'testuser',
+        password: 'testpass',
+      });
+      expect(response.status).toEqual(200);
+    });
+  }
 });
 
 describe(`POST ${FAVORITE_ENDPOINT}`, () => {
