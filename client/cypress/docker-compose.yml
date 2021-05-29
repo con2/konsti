@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   cypress:
-    image: 'cypress/included:7.3.0'
+    image: 'cypress/included:7.4.0'
     environment:
       - CYPRESS_baseUrl=http://server:5000
       - CYPRESS_PROJECT_ID=btftv2
