@@ -233,6 +233,8 @@
     "confirm": "Confirm"
   },
   "resultsView": {
-    "allSignupResults": "Signup overview and players"
+    "allSignupResults": "Signup overview and players",
+    "confirm": "Confirm",
+    "cannotSignupMoreThanOneGame": "You already entered to game {{GAME}}. You can only be at one game at the time."
   }
 }
