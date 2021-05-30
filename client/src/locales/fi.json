@@ -234,6 +234,8 @@
     "confirm": "Vahvista"
   },
   "resultsView": {
-    "allSignupResults": "Pelien ilmoittautumistilanne ja pelaajat"
+    "allSignupResults": "Pelien ilmoittautumistilanne ja pelaajat",
+    "confirm": "Vahvista",
+    "cannotSignupMoreThanOneGame": "Olet päässyt peliin {{GAME}}. Et voi ilmoittautua muihin samaan aikaan oleviin peleihin."
   }
 }

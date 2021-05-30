@@ -61,7 +61,13 @@ export const DirectSignupForm: FC<Props> = (props: Props): ReactElement => {
     }
 
     if (enteredGamesForTimeSlot.length === 1) {
-      return <p>{t('signup.cannotSignupMoreThanOneGame')}</p>;
+      return (
+        <p>
+          {t('signup.cannotSignupMoreThanOneGame', {
+            GAME: enteredGamesForTimeslot[0].gameDetails.title,
+          })}
+        </p>
+      );
     }
 
     if (enteredGamesForTimeSlot.length === 0) {
