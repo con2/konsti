@@ -88,7 +88,10 @@ export const DirectSignupForm: FC<Props> = (props: Props): ReactElement => {
             </>
           )}
           {signupFormOpen && !alreadySignedToGame && (
-            <EnterGameForm game={game} />
+            <EnterGameForm
+              game={game}
+              onEnterGame={() => setSignupFormOpen(false)}
+            />
           )}
         </>
       )}
