@@ -6,10 +6,11 @@ import { useAppDispatch, useAppSelector } from 'client/utils/hooks';
 
 interface Props {
   game: Game;
+  onEnterGame: () => void;
 }
 
 export const EnterGameForm: FC<Props> = (props: Props): ReactElement => {
-  const { game } = props;
+  const { game, onEnterGame } = props;
 
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
@@ -32,6 +33,7 @@ export const EnterGameForm: FC<Props> = (props: Props): ReactElement => {
 
     try {
       await dispatch(submitEnterGame(enterData, newGame));
+      onEnterGame();
     } catch (error) {
       switch (error.code) {
         case 41:
