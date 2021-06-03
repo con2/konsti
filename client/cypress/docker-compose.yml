@@ -9,7 +9,7 @@ services:
       - CYPRESS_RECORD_KEY=${CYPRESS_DASHBOARD_RECORD_KEY}
     working_dir: /client
     volumes:
-      - ./client:/client # In relation to root level docker-compose.yml file
+      - ../client:/client # In relation to root level docker-compose.yml file
     depends_on:
       - server
     entrypoint: /bin/sh -c "
