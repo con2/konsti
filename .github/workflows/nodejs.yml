@@ -53,4 +53,4 @@ jobs:
 
       - name: Cypress
         run: |
-          yarn docker:test
+          yarn docker-compose:test
