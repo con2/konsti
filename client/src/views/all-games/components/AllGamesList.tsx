@@ -23,7 +23,7 @@ export const AllGamesList: FC<Props> = (props: Props): ReactElement => {
   return (
     <div className='games-list'>
       {games.length === 0 && <h3>{t('noProgramItemsAvailable')}</h3>}
-      {games.length !== 0 && <>{GamesList}</>}
+      {games.length !== 0 && GamesList}
     </div>
   );
 };
