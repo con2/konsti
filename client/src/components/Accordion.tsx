@@ -40,12 +40,10 @@ export const Accordion: FC<Props> = (props: Props): ReactElement => {
         </>
       )}
       {!open && (
-        <>
-          <AccordionToggle onClick={() => onClick()}>
-            <AccordionIcon icon='angle-down' />
-            <span>{t(`${buttonText}`)}</span>
-          </AccordionToggle>
-        </>
+        <AccordionToggle onClick={() => onClick()}>
+          <AccordionIcon icon='angle-down' />
+          <span>{t(`${buttonText}`)}</span>
+        </AccordionToggle>
       )}
     </div>
   );

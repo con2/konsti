@@ -24,17 +24,15 @@ export const Routes: FC<Props> = (props: Props): ReactElement => {
 
   if (onlyAdminLoginAllowed) {
     return (
-      <>
-        <Switch>
-          <Route path='/admin'>
-            <AdminView />
-          </Route>
-          <Route path='/logout'>
-            <LogoutView />
-          </Route>
-          <Redirect from='/*' to='/' />
-        </Switch>
-      </>
+      <Switch>
+        <Route path='/admin'>
+          <AdminView />
+        </Route>
+        <Route path='/logout'>
+          <LogoutView />
+        </Route>
+        <Redirect from='/*' to='/' />
+      </Switch>
     );
   }
 

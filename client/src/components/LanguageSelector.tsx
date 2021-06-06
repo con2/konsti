@@ -22,21 +22,19 @@ export const LanguageSelector: FC<Props> = (props: Props): ReactElement => {
   };
 
   return (
-    <>
-      <LanguageSelectorContainer
-        id='language'
-        value={language}
-        onChange={setLanguage}
-        className={props.className}
-      >
-        <option title={t('language.english')} value='en'>
-          {t('language.englishShort')}
-        </option>
-        <option title={t('language.finnish')} value='fi'>
-          {t('language.finnishShort')}
-        </option>
-      </LanguageSelectorContainer>
-    </>
+    <LanguageSelectorContainer
+      id='language'
+      value={language}
+      onChange={setLanguage}
+      className={props.className}
+    >
+      <option title={t('language.english')} value='en'>
+        {t('language.englishShort')}
+      </option>
+      <option title={t('language.finnish')} value='fi'>
+        {t('language.finnishShort')}
+      </option>
+    </LanguageSelectorContainer>
   );
 };
 

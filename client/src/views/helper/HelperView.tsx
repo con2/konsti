@@ -35,10 +35,8 @@ export const HelperView: FC = (): ReactElement => {
         {t('helperPasswordManagement')}
       </button>
 
-      <>
-        {selectedTool === 'results' && <HelperResultsList />}
-        {selectedTool === 'password-management' && <PasswordManagement />}
-      </>
+      {selectedTool === 'results' && <HelperResultsList />}
+      {selectedTool === 'password-management' && <PasswordManagement />}
     </div>
   );
 };
