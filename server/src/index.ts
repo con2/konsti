@@ -15,21 +15,16 @@ const startApp = async (): Promise<void> => {
   autoAssignPlayers().catch((error) => {
     logger.error(error);
   });
-  const server = await startServer(config.dbConnString);
 
-  const app = server.listen(server.get('port'), () => {
-    const address = app?.address();
-    if (!address || typeof address === 'string') return;
-    logger.info(`Express: Server started on port ${address.port}`);
-  });
+  const server = await startServer(config.dbConnString, config.port);
 
   process.on('SIGINT', () => {
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    closeServer(app, config.dbConnString);
+    closeServer(server, config.dbConnString);
   });
   process.on('SIGTERM', () => {
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    closeServer(app, config.dbConnString);
+    closeServer(server, config.dbConnString);
   });
 };
 
