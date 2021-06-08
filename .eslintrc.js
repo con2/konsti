@@ -11,8 +11,7 @@ module.exports = {
     'eslint-plugin-promise',
     'eslint-plugin-import',
     '@typescript-eslint',
-    // 'eslint-plugin-security',
-    // 'eslint-plugin-unicorn',
+    'eslint-plugin-unicorn',
   ],
 
   extends: [
@@ -23,11 +22,14 @@ module.exports = {
     'plugin:eslint-plugin-promise/recommended',
     'plugin:eslint-plugin-import/errors',
     'plugin:eslint-plugin-import/typescript',
-    // 'plugin:@typescript-eslint/recommended',
-    // 'plugin:@typescript-eslint/recommended-requiring-type-checking',
-    // 'plugin:eslint-plugin-security/recommended',
-    // 'plugin:eslint-plugin-unicorn/recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:@typescript-eslint/recommended-requiring-type-checking',
   ],
+
+  env: {
+    es2021: true,
+    jest: true,
+  },
 
   parserOptions: {
     sourceType: 'module',
@@ -75,12 +77,12 @@ module.exports = {
     // @typescript-eslint
     '@typescript-eslint/ban-ts-comment': 'error',
     '@typescript-eslint/no-explicit-any': 'error',
+    '@typescript-eslint/explicit-module-boundary-types': 'error',
     '@typescript-eslint/require-array-sort-compare': [
       'error',
       { ignoreStringArrays: true },
     ],
     '@typescript-eslint/no-shadow': 'error',
-    '@typescript-eslint/default-param-last': 'off', // Problem setting Redux reducer initial state
     '@typescript-eslint/triple-slash-reference': 'off', // Cypress requires triple slash reference
     '@typescript-eslint/strict-boolean-expressions': 'off', // Forces unwanted code style
     '@typescript-eslint/restrict-template-expressions': 'off', // Requires typing catch(e) every time
@@ -92,5 +94,18 @@ module.exports = {
       { name: 'useDispatch', message: 'Please use useAppDispatch()' },
       { name: 'useSelector', message: 'Please use useAppSelector()' },
     ],
+
+    // eslint-plugin-unicorn
+    'unicorn/no-useless-undefined': ['error', { checkArguments: true }],
+
+    // TODO: Enable these rules
+    '@typescript-eslint/ban-types': 'off',
+    '@typescript-eslint/no-empty-function': 'off',
+    '@typescript-eslint/no-unsafe-member-access': 'off',
+    '@typescript-eslint/no-unsafe-return': 'off',
+    '@typescript-eslint/no-unsafe-assignment': 'off',
+    '@typescript-eslint/await-thenable': 'off',
+    '@typescript-eslint/no-unsafe-call': 'off',
+    '@typescript-eslint/unbound-method': 'off',
   },
 };

@@ -27,9 +27,9 @@ jobs:
         run: |
           yarn --frozen-lockfile
 
-      - name: Build
+      - name: Build front-end
         run: |
-          yarn build
+          yarn build-front:prod
 
       - name: Run Prettier
         run: |
@@ -53,4 +53,4 @@ jobs:
 
       - name: Cypress
         run: |
-          yarn docker:test
+          yarn docker-compose:test

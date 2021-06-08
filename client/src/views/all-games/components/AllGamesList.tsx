@@ -23,7 +23,7 @@ export const AllGamesList: FC<Props> = (props: Props): ReactElement => {
   return (
     <div className='games-list'>
       {games.length === 0 && <h3>{t('noProgramItemsAvailable')}</h3>}
-      {games.length !== 0 && <>{GamesList}</>}
+      {games.length !== 0 && GamesList}
     </div>
   );
 };
@@ -86,8 +86,10 @@ const SignupCount = styled.span`
 const GameListTitle = styled.h3`
   margin: 20px 0;
   padding: 8px;
-  background-color: #04080f;
-  color: white;
+  background-color: #fafafa;
+  border-bottom: 1px solid #d5d5d5;
+  box-shadow: 4px 4px 45px 4px #d5d5d5;
+  color: #3d3d3d;
   position: sticky;
   top: 0;
 `;

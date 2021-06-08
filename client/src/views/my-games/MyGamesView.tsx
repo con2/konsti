@@ -44,54 +44,49 @@ export const MyGamesView: FC = (): ReactElement => {
 
   return (
     <div className='my-games-view'>
-      <>
-        <div className='my-games-toggle-visibility'>
-          <button
-            onClick={() => setShowAllGames(false)}
-            disabled={!showAllGames}
-          >
-            {t('lastStartedAndUpcomingGames')}
-          </button>
-          <button onClick={() => setShowAllGames(true)} disabled={showAllGames}>
-            {t('allGames')}
-          </button>
-        </div>
+      <div className='my-games-toggle-visibility'>
+        <button onClick={() => setShowAllGames(false)} disabled={!showAllGames}>
+          {t('lastStartedAndUpcomingGames')}
+        </button>
+        <button onClick={() => setShowAllGames(true)} disabled={showAllGames}>
+          {t('allGames')}
+        </button>
+      </div>
 
-        <MyFavoritesList
-          favoritedGames={
-            showAllGames ? favoritedGames : getUpcomingFavorites(favoritedGames)
-          }
-        />
+      <MyFavoritesList
+        favoritedGames={
+          showAllGames ? favoritedGames : getUpcomingFavorites(favoritedGames)
+        }
+      />
 
-        {!isGroupLeader(groupCode, serial) && (
-          <MyGamesGroupNotification>
-            <p className='bold'>{t('inGroupSignups')}</p>
-          </MyGamesGroupNotification>
+      {!isGroupLeader(groupCode, serial) && (
+        <MyGamesGroupNotification>
+          <p className='bold'>{t('inGroupSignups')}</p>
+        </MyGamesGroupNotification>
+      )}
+
+      <MySignupsList
+        signedGames={getSignedGames(
+          signedGames,
+          groupCode,
+          serial,
+          showAllGames,
+          groupMembers
         )}
+      />
 
-        <MySignupsList
-          signedGames={getSignedGames(
-            signedGames,
-            groupCode,
-            serial,
-            showAllGames,
-            groupMembers
-          )}
-        />
-
-        <MyEnteredList
-          enteredGames={
-            showAllGames ? enteredGames : getUpcomingEnteredGames(enteredGames)
-          }
-          signedGames={getSignedGames(
-            signedGames,
-            groupCode,
-            serial,
-            showAllGames,
-            groupMembers
-          )}
-        />
-      </>
+      <MyEnteredList
+        enteredGames={
+          showAllGames ? enteredGames : getUpcomingEnteredGames(enteredGames)
+        }
+        signedGames={getSignedGames(
+          signedGames,
+          groupCode,
+          serial,
+          showAllGames,
+          groupMembers
+        )}
+      />
     </div>
   );
 };

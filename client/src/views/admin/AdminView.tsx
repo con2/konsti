@@ -114,82 +114,80 @@ export const AdminView: FC = (): ReactElement => {
 
   return (
     <div className='admin-view'>
-      <>
-        <div className='admin-button-row'>
-          <button
-            disabled={submitting}
-            onClick={() => {
-              submitUpdate();
-            }}
-          >
-            {t('button.updateDb')}
-          </button>
+      <div className='admin-button-row'>
+        <button
+          disabled={submitting}
+          onClick={() => {
+            submitUpdate();
+          }}
+        >
+          {t('button.updateDb')}
+        </button>
+
+        <button
+          disabled={submitting}
+          onClick={() => {
+            submitAssign();
+          }}
+        >
+          {t('button.assignPlayers')}
+        </button>
+
+        <button
+          disabled={submitting}
+          onClick={() => {
+            toggleAppOpen();
+          }}
+        >
+          {appOpen ? t('button.closeApp') : t('button.openApp')}
+        </button>
+      </div>
+
+      {submitting && <p>{t('loading')}</p>}
+
+      <ResponseMessage>{responseMessage}</ResponseMessage>
+
+      {(!games || games.length === 0) && <p>{t('noGamesInDatabase')}</p>}
+
+      {games && games.length !== 0 && (
+        <>
+          <StatusMessage className={messageStyle}>{message}</StatusMessage>
+
+          <p>{t('activeTimeDescription')}</p>
+
+          <div className={'signup-open'}>
+            {signupTime && (
+              <p>
+                {t('activeTime')}:{' '}
+                {timeFormatter.getWeekdayAndTime({
+                  time: signupTime,
+                  capitalize: true,
+                })}
+              </p>
+            )}
+            {!signupTime && <p>{t('noActiveTime')}</p>}
+          </div>
 
           <button
             disabled={submitting}
             onClick={() => {
-              submitAssign();
+              submitTime();
             }}
           >
-            {t('button.assignPlayers')}
+            {t('button.saveTime')}
           </button>
 
-          <button
-            disabled={submitting}
-            onClick={() => {
-              toggleAppOpen();
-            }}
-          >
-            {appOpen ? t('button.closeApp') : t('button.openApp')}
-          </button>
-        </div>
+          <TimesDropdown
+            times={getStartingTimes()}
+            selectedTime={selectedSignupTime}
+            onChange={(event: ChangeEvent<HTMLSelectElement>) =>
+              setSelectedSignupTime(event.target.value)
+            }
+          />
 
-        {submitting && <p>{t('loading')}</p>}
-
-        <ResponseMessage>{responseMessage}</ResponseMessage>
-
-        {(!games || games.length === 0) && <p>{t('noGamesInDatabase')}</p>}
-
-        {games && games.length !== 0 && (
-          <>
-            <StatusMessage className={messageStyle}>{message}</StatusMessage>
-
-            <p>{t('activeTimeDescription')}</p>
-
-            <div className={'signup-open'}>
-              {signupTime && (
-                <p>
-                  {t('activeTime')}:{' '}
-                  {timeFormatter.getWeekdayAndTime({
-                    time: signupTime,
-                    capitalize: true,
-                  })}
-                </p>
-              )}
-              {!signupTime && <p>{t('noActiveTime')}</p>}
-            </div>
-
-            <button
-              disabled={submitting}
-              onClick={() => {
-                submitTime();
-              }}
-            >
-              {t('button.saveTime')}
-            </button>
-
-            <TimesDropdown
-              times={getStartingTimes()}
-              selectedTime={selectedSignupTime}
-              onChange={(event: ChangeEvent<HTMLSelectElement>) =>
-                setSelectedSignupTime(event.target.value)
-              }
-            />
-
-            <Hidden hiddenGames={hiddenGames} />
-          </>
-        )}
-      </>
+          <Hidden hiddenGames={hiddenGames} />
+        </>
+      )}
     </div>
   );
 };

@@ -3,6 +3,10 @@
   "compilerOptions": {
     "outDir": "lib"
   },
+  "ts-node": {
+    "transpileOnly": true,
+    "require": ["tsconfig-paths/register"]
+  },
   "include": ["**/*.js", "**/*.ts", "./.eslintrc.js"],
   "exclude": ["./node_modules", "./lib", "./coverage", "./front"]
 }
