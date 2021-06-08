@@ -22,7 +22,7 @@ beforeEach(async () => {
 });
 
 afterEach(async () => {
-  await closeServer(server, mongoUri);
+  await closeServer(server);
   await mongoServer.stop();
 });
 
