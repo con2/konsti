@@ -1,4 +1,4 @@
-import { Application } from 'express';
+import { Server } from 'http';
 import request from 'supertest';
 import { MongoMemoryServer } from 'mongodb-memory-server';
 import { startServer } from 'server/utils/startServer';
@@ -14,7 +14,7 @@ import {
 import { sharedConfig } from 'shared/config/sharedConfig';
 import { ConventionType } from 'shared/config/sharedConfig.types';
 
-let server: Application;
+let server: Server;
 let mongoServer: MongoMemoryServer;
 let mongoUri: string;
 
@@ -25,7 +25,7 @@ beforeEach(async () => {
 });
 
 afterEach(async () => {
-  await closeServer(null, mongoUri);
+  await closeServer(server, mongoUri);
   await mongoServer.stop();
 });
 
