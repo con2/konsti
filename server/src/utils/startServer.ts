@@ -1,9 +1,10 @@
 import path from 'path';
-import express, { Request, Response, NextFunction, Application } from 'express';
+import express, { Request, Response, NextFunction } from 'express';
 import helmet from 'helmet';
 import bodyParser from 'body-parser';
 import morgan from 'morgan';
 import expressStaticGzip from 'express-static-gzip';
+import { Server } from 'http';
 import { config } from 'server/config';
 import { logger, stream } from 'server/utils/logger';
 import { allowCORS } from 'server/middleware/cors';
@@ -11,8 +12,9 @@ import { apiRoutes } from 'server/api/apiRoutes';
 import { db } from 'server/db/mongodb';
 
 export const startServer = async (
-  dbConnString: string
-): Promise<Application> => {
+  dbConnString: string,
+  port?: number
+): Promise<Server> => {
   try {
     await db.connectToDb(dbConnString);
   } catch (error) {
@@ -66,7 +68,13 @@ export const startServer = async (
     res.sendFile(path.join(staticPath, 'index.html'));
   });
 
-  server.set('port', config.port);
+  server.set('port', port ?? process.env.PORT);
 
-  return server;
+  const runningServer = server.listen(server.get('port'), () => {
+    const address = runningServer?.address();
+    if (!address || typeof address === 'string') return;
+    logger.info(`Express: Server started on port ${address.port}`);
+  });
+
+  return runningServer;
 };
