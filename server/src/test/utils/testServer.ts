@@ -1,6 +1,5 @@
 import { Server } from 'http';
 import { MongoMemoryServer } from 'mongodb-memory-server';
-import { closeServer } from 'server/utils/closeServer';
 
 interface StartTestServerReturn {
   server: Server;
@@ -20,6 +19,7 @@ export const stopTestServer = async (
   server: Server,
   mongoServer: MongoMemoryServer
 ): Promise<void> => {
-  await closeServer(server);
+  const module = await import('server/utils/closeServer');
+  await module.closeServer(server);
   await mongoServer.stop();
 };
