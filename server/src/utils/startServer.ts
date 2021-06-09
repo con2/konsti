@@ -1,7 +1,6 @@
 import path from 'path';
 import express, { Request, Response, NextFunction } from 'express';
 import helmet from 'helmet';
-import bodyParser from 'body-parser';
 import morgan from 'morgan';
 import expressStaticGzip from 'express-static-gzip';
 import { Server } from 'http';
@@ -32,7 +31,7 @@ export const startServer = async (
   }
 
   // Parse body and populate req.body - only accepts JSON
-  server.use(bodyParser.json({ limit: '1000kb', type: '*/*' }));
+  server.use(express.json({ limit: '1000kb', type: '*/*' }));
 
   server.use(
     '/',
@@ -68,13 +67,13 @@ export const startServer = async (
     res.sendFile(path.join(staticPath, 'index.html'));
   });
 
-  server.set('port', port ?? process.env.PORT);
+  const runningServer = server.listen(port ?? process.env.PORT);
 
-  const runningServer = server.listen(server.get('port'), () => {
-    const address = runningServer?.address();
-    if (!address || typeof address === 'string') return;
-    logger.info(`Express: Server started on port ${address.port}`);
-  });
+  const address = runningServer.address();
+  if (!address || typeof address === 'string')
+    throw new Error('Starting server failed');
+
+  logger.info(`Express: Server started on port ${address.port}`);
 
   return runningServer;
 };
