@@ -19,12 +19,14 @@ const startApp = async (): Promise<void> => {
   const server = await startServer(config.dbConnString, config.port);
 
   process.on('SIGINT', () => {
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    closeServer(server);
+    closeServer(server).catch((error) => {
+      logger.error(error);
+    });
   });
   process.on('SIGTERM', () => {
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    closeServer(server);
+    closeServer(server).catch((error) => {
+      logger.error(error);
+    });
   });
 };
 

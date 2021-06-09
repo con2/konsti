@@ -1,8 +1,6 @@
-import mongoose, { Mongoose } from 'mongoose';
+import mongoose from 'mongoose';
 import { logger } from 'server/utils/logger';
 import { config } from 'server/config';
-
-let database: Mongoose;
 
 const connectToDb = async (
   dbConnString: string = config.dbConnString
@@ -18,7 +16,7 @@ const connectToDb = async (
   };
 
   try {
-    database = await mongoose.connect(dbConnString, options);
+    await mongoose.connect(dbConnString, options);
   } catch (error) {
     throw new Error(`MongoDB: Error connecting to DB: ${error}`);
   }
@@ -32,7 +30,7 @@ const connectToDb = async (
 
 const gracefulExit = async (): Promise<void> => {
   try {
-    await database.connection.close();
+    await mongoose.connection.close();
   } catch (error) {
     throw new Error(`MongoDB: Error shutting down db connection: ${error}`);
   }
