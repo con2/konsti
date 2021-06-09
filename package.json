@@ -35,7 +35,7 @@
     "start-and-populate-db": "yarn workspace konsti-server generate-data -ugs && yarn start",
     "start:dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
     "stylelint": "yarn workspace konsti-client stylelint",
-    "test": "jest",
+    "test": "jest --detectOpenHandles",
     "test:watch": "jest --watch",
     "type-check": "tsc --noEmit"
   },
