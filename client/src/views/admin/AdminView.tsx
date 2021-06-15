@@ -15,7 +15,9 @@ import { useAppDispatch, useAppSelector } from 'client/utils/hooks';
 
 export const AdminView = (): ReactElement => {
   const games = useAppSelector((state) => state.allGames.games);
-  const signupTime = useAppSelector((state) => state.admin.signupTime);
+  const activeSignupTime = useAppSelector(
+    (state) => state.admin.activeSignupTime
+  );
   const appOpen = useAppSelector((state) => state.admin.appOpen);
   const hiddenGames = useAppSelector((state) => state.admin.hiddenGames);
   const responseMessage = useAppSelector(
@@ -29,7 +31,7 @@ export const AdminView = (): ReactElement => {
   const [message, setMessage] = useState<string>('');
   const [messageStyle, setMessageStyle] = useState<string>('');
   const [selectedSignupTime, setSelectedSignupTime] =
-    useState<string>(signupTime);
+    useState<string>(activeSignupTime);
 
   const showMessage = ({
     value,
@@ -81,7 +83,7 @@ export const AdminView = (): ReactElement => {
     setSubmitting(true);
 
     try {
-      await dispatch(submitPlayersAssign(signupTime));
+      await dispatch(submitPlayersAssign(activeSignupTime));
     } catch (error) {
       showMessage({
         value: error.message,
@@ -156,16 +158,16 @@ export const AdminView = (): ReactElement => {
           <p>{t('activeTimeDescription')}</p>
 
           <div className={'signup-open'}>
-            {signupTime && (
+            {activeSignupTime && (
               <p>
                 {t('activeTime')}:{' '}
                 {timeFormatter.getWeekdayAndTime({
-                  time: signupTime,
+                  time: activeSignupTime,
                   capitalize: true,
                 })}
               </p>
             )}
-            {!signupTime && <p>{t('noActiveTime')}</p>}
+            {!activeSignupTime && <p>{t('noActiveTime')}</p>}
           </div>
 
           <button

@@ -8,7 +8,9 @@ import { useAppSelector } from 'client/utils/hooks';
 
 export const ResultsView = (): ReactElement => {
   const results = useAppSelector((state) => state.results.result);
-  const signupTime = useAppSelector((state) => state.admin.signupTime);
+  const activeSignupTime = useAppSelector(
+    (state) => state.admin.activeSignupTime
+  );
   const { t } = useTranslation();
 
   const store = useStore();
@@ -27,13 +29,13 @@ export const ResultsView = (): ReactElement => {
 
   return (
     <div className='results-view'>
-      {!signupTime && <h2>{t('noResults')}</h2>}
-      {signupTime && (
+      {!activeSignupTime && <h2>{t('noResults')}</h2>}
+      {activeSignupTime && (
         <>
           <h2>
             {t('signupResultsfor')}{' '}
             {timeFormatter.getWeekdayAndTime({
-              time: signupTime,
+              time: activeSignupTime,
               capitalize: false,
             })}
           </h2>
