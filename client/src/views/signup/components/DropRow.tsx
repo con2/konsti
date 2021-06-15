@@ -12,8 +12,12 @@ export interface Props {
   showCount: boolean;
 }
 
-export const DropRow = (props: Props): ReactElement => {
-  const { droppableId, games, label, showCount } = props;
+export const DropRow = ({
+  droppableId,
+  games,
+  label,
+  showCount,
+}: Props): ReactElement => {
   const { t } = useTranslation();
 
   const getListStyle = (dragging: boolean): string => {

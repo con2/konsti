@@ -10,8 +10,7 @@ export interface Props {
   favoritedGames: readonly Game[];
 }
 
-export const MyFavoritesList = (props: Props): ReactElement => {
-  const { favoritedGames } = props;
+export const MyFavoritesList = ({ favoritedGames }: Props): ReactElement => {
   const { t } = useTranslation();
 
   const sortedGames: readonly Game[] = _.sortBy(favoritedGames, [

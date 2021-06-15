@@ -11,8 +11,10 @@ export interface Props {
   signedGames: readonly SelectedGame[];
 }
 
-export const MyEnteredList = (props: Props): ReactElement => {
-  const { enteredGames, signedGames } = props;
+export const MyEnteredList = ({
+  enteredGames,
+  signedGames,
+}: Props): ReactElement => {
   const { t } = useTranslation();
 
   const [missedSignups, setMissedSignups] = useState<string[]>([]);

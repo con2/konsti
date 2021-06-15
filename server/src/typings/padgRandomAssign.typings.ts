@@ -1,4 +1,5 @@
 import { ListElement } from 'eventassigner-random/lib/typings/list';
+import { Input } from 'server/typings/result.typings';
 
 export interface Group {
   id: id; // Group id
@@ -40,7 +41,7 @@ export interface PadgInput {
   groups: readonly Group[];
   events: readonly Event[];
   list: readonly ListItem[];
-  updateL: Function;
+  updateL: (input: Input) => string;
 }
 
 interface PadgRandomAssignResult {

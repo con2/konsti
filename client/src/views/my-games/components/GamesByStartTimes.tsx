@@ -9,9 +9,10 @@ export interface Props {
   startTimes: readonly string[];
 }
 
-export const GamesByStartTimes = (props: Props): ReactElement => {
-  const { games, startTimes } = props;
-
+export const GamesByStartTimes = ({
+  games,
+  startTimes,
+}: Props): ReactElement => {
   const getGamesList = (startTime: string): Array<ReactElement | undefined> => {
     return games.map((game) => {
       if (game.startTime === startTime) {

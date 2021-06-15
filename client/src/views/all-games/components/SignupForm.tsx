@@ -10,9 +10,7 @@ interface Props {
   startTime: string;
 }
 
-export const SignupForm = (props: Props): ReactElement => {
-  const { game, startTime } = props;
-
+export const SignupForm = ({ game, startTime }: Props): ReactElement => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const selectedGames = useAppSelector((state) => state.myGames.signedGames);

@@ -8,9 +8,7 @@ export interface Props {
   game: Game;
 }
 
-export const FeedbackForm = (props: Props): ReactElement => {
-  const { game } = props;
-
+export const FeedbackForm = ({ game }: Props): ReactElement => {
   const [submitting, setSubmitting] = useState<boolean>(false);
   const [feedbackValue, setFeedbackValue] = useState<string>('');
   const [feedbackSent, setFeedbackSent] = useState<boolean>(false);

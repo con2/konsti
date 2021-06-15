@@ -28,9 +28,7 @@ const updateFavoriteHandler = async (
   await updateFavorite(updateOpts);
 };
 
-export const GameEntry = (props: Props): ReactElement => {
-  const { game, startTime } = props;
-
+export const GameEntry = ({ game, startTime }: Props): ReactElement => {
   const { t } = useTranslation();
 
   const username = useAppSelector((state) => state.login.username);

@@ -11,8 +11,11 @@ export interface Props {
   missedSignups: readonly string[];
 }
 
-export const ResultsByStartTimes = (props: Props): ReactElement => {
-  const { signups, startTimes, missedSignups } = props;
+export const ResultsByStartTimes = ({
+  signups,
+  startTimes,
+  missedSignups,
+}: Props): ReactElement => {
   const { t } = useTranslation();
 
   return (

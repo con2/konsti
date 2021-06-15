@@ -20,9 +20,11 @@ export interface Props {
   leader: boolean;
 }
 
-export const SignupList = (props: Props): ReactElement => {
-  const { games, signupTimes, leader } = props;
-
+export const SignupList = ({
+  games,
+  signupTimes,
+  leader,
+}: Props): ReactElement => {
   const signupTime = useAppSelector((state) => state.signup.signupTime);
   const username = useAppSelector((state) => state.login.username);
   const groupCode = useAppSelector((state) => state.login.groupCode);
@@ -102,7 +104,7 @@ export const SignupList = (props: Props): ReactElement => {
     setSubmitting(false);
   };
 
-  const updateSelectedGames = (newSelectedGames: Game[]): void => {
+  const updateSelectedGames = (newSelectedGames: readonly Game[]): void => {
     const newSignups = newSelectedGames.map((newSelectedGame) => {
       return {
         gameDetails: { ...newSelectedGame },
