@@ -8,7 +8,7 @@ import { SelectedGame, UserGroup } from 'shared/typings/models/user';
 
 export interface AdminState {
   hiddenGames: readonly Game[];
-  signupTime: string;
+  activeSignupTime: string;
   testTime: string;
   appOpen: boolean;
   responseMessage: string;
