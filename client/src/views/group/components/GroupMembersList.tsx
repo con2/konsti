@@ -1,4 +1,4 @@
-import React, { FC, ReactElement } from 'react';
+import React, { ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import { GroupMember } from 'shared/typings/api/groups';
@@ -7,7 +7,7 @@ export interface Props {
   groupMembers: readonly GroupMember[];
 }
 
-export const GroupMembersList: FC<Props> = (props: Props): ReactElement => {
+export const GroupMembersList = (props: Props): ReactElement => {
   const { groupMembers } = props;
   const { t } = useTranslation();
 

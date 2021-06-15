@@ -1,18 +1,18 @@
-import React, { FC, ReactElement } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useStore } from 'react-redux';
 import { HelperResultsList } from 'client/views/helper/components/HelperResultsList';
 import { PasswordManagement } from 'client/views/helper/components/PasswordManagement';
 import { loadResults, loadSettings } from 'client/utils/loadData';
 
-export const HelperView: FC = (): ReactElement => {
+export const HelperView = (): ReactElement => {
   const { t } = useTranslation();
 
-  const [selectedTool, setSelectedTool] = React.useState<string>('results');
+  const [selectedTool, setSelectedTool] = useState<string>('results');
 
   const store = useStore();
 
-  React.useEffect(() => {
+  useEffect(() => {
     const fetchData = async (): Promise<void> => {
       await loadSettings();
       await loadResults();

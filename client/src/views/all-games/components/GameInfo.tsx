@@ -1,4 +1,4 @@
-import React, { FC, ReactElement } from 'react';
+import React, { ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import { timeFormatter } from 'client/utils/timeFormatter';
@@ -10,7 +10,7 @@ interface Props {
   game: Game;
 }
 
-export const GameInfo: FC<Props> = (props: Props): ReactElement => {
+export const GameInfo = (props: Props): ReactElement => {
   const { game } = props;
   const { t } = useTranslation();
   const { simpleDetails } = config;

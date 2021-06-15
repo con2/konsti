@@ -1,4 +1,4 @@
-import React, { FC, ReactElement } from 'react';
+import React, { ReactElement, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled from 'styled-components';
@@ -9,10 +9,10 @@ export interface Props {
   buttonText: string;
 }
 
-export const Accordion: FC<Props> = (props: Props): ReactElement => {
+export const Accordion = (props: Props): ReactElement => {
   const { text, title, buttonText } = props;
 
-  const [open, setOpen] = React.useState<boolean>(false);
+  const [open, setOpen] = useState<boolean>(false);
 
   const { t } = useTranslation();
 

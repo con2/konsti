@@ -1,4 +1,4 @@
-import React, { FC, ReactElement } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useStore } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
@@ -10,15 +10,15 @@ import { getIconLibrary } from 'client/utils/icons';
 import { config } from 'client/config';
 import { useAppSelector } from 'client/utils/hooks';
 
-export const App: FC = (): ReactElement => {
+export const App = (): ReactElement => {
   const { dataUpdateInterval } = config;
   const appOpen = useAppSelector((state) => state.admin.appOpen);
   const { t } = useTranslation();
   const store = useStore();
 
-  const [loading, setLoading] = React.useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>(true);
 
-  React.useEffect(() => {
+  useEffect(() => {
     setLoading(true);
     const fetchData = async (): Promise<void> => {
       await loadData();
@@ -37,8 +37,6 @@ export const App: FC = (): ReactElement => {
 
   return (
     <>
-      {/* <h3>{t('errorMessage')}</h3> */}
-
       {loading && <Loading />}
 
       {!loading && (

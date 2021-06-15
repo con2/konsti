@@ -1,4 +1,4 @@
-import React, { FC, ReactElement, ChangeEvent } from 'react';
+import React, { ReactElement, ChangeEvent } from 'react';
 import { useTranslation } from 'react-i18next';
 import { TFunction } from 'i18next';
 import moment from 'moment';
@@ -8,7 +8,7 @@ interface Props {
   className?: string;
 }
 
-export const LanguageSelector: FC<Props> = (props: Props): ReactElement => {
+export const LanguageSelector = (props: Props): ReactElement => {
   const { t, i18n } = useTranslation();
   const language = i18n.language;
 
