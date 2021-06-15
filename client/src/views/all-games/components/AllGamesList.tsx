@@ -1,4 +1,4 @@
-import React, { FC, ReactElement } from 'react';
+import React, { ReactElement } from 'react';
 import { TFunction, useTranslation } from 'react-i18next';
 import _ from 'lodash';
 import styled from 'styled-components';
@@ -12,7 +12,7 @@ export interface Props {
   games: readonly Game[];
 }
 
-export const AllGamesList: FC<Props> = (props: Props): ReactElement => {
+export const AllGamesList = (props: Props): ReactElement => {
   const { games } = props;
   const { t } = useTranslation();
 

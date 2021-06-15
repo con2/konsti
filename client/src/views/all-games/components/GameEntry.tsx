@@ -1,4 +1,4 @@
-import React, { FC, ReactElement, useState } from 'react';
+import React, { ReactElement, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
@@ -28,7 +28,7 @@ const updateFavoriteHandler = async (
   await updateFavorite(updateOpts);
 };
 
-export const GameEntry: FC<Props> = (props: Props): ReactElement => {
+export const GameEntry = (props: Props): ReactElement => {
   const { game, startTime } = props;
 
   const { t } = useTranslation();

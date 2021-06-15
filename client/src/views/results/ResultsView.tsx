@@ -1,4 +1,4 @@
-import React, { FC, ReactElement } from 'react';
+import React, { ReactElement, useEffect } from 'react';
 import { useStore } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { ResultsList } from 'client/views/results/components/ResultsList';
@@ -6,14 +6,14 @@ import { timeFormatter } from 'client/utils/timeFormatter';
 import { loadResults, loadSettings } from 'client/utils/loadData';
 import { useAppSelector } from 'client/utils/hooks';
 
-export const ResultsView: FC = (): ReactElement => {
+export const ResultsView = (): ReactElement => {
   const results = useAppSelector((state) => state.results.result);
   const signupTime = useAppSelector((state) => state.admin.signupTime);
   const { t } = useTranslation();
 
   const store = useStore();
 
-  React.useEffect(() => {
+  useEffect(() => {
     const fetchData = async (): Promise<void> => {
       await loadSettings();
       await loadResults();

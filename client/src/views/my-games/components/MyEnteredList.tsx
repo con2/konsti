@@ -1,4 +1,4 @@
-import React, { FC, ReactElement } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import _ from 'lodash';
 import styled from 'styled-components';
@@ -11,18 +11,18 @@ export interface Props {
   signedGames: readonly SelectedGame[];
 }
 
-export const MyEnteredList: FC<Props> = (props: Props): ReactElement => {
+export const MyEnteredList = (props: Props): ReactElement => {
   const { enteredGames, signedGames } = props;
   const { t } = useTranslation();
 
-  const [missedSignups, setMissedSignups] = React.useState<string[]>([]);
-  const [startTimes, setStartTimes] = React.useState<string[]>([]);
+  const [missedSignups, setMissedSignups] = useState<string[]>([]);
+  const [startTimes, setStartTimes] = useState<string[]>([]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     setMissedSignups(getMissedSignups(signedGames, enteredGames));
   }, [signedGames, enteredGames]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     setStartTimes(
       enteredGames
         .map((sortedEnteredGame) => {

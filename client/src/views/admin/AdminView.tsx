@@ -1,4 +1,4 @@
-import React, { FC, ReactElement, ChangeEvent } from 'react';
+import React, { ReactElement, ChangeEvent, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import { Hidden } from 'client/views/admin/components/Hidden';
@@ -13,7 +13,7 @@ import { timeFormatter } from 'client/utils/timeFormatter';
 import { Game } from 'shared/typings/models/game';
 import { useAppDispatch, useAppSelector } from 'client/utils/hooks';
 
-export const AdminView: FC = (): ReactElement => {
+export const AdminView = (): ReactElement => {
   const games = useAppSelector((state) => state.allGames.games);
   const signupTime = useAppSelector((state) => state.admin.signupTime);
   const appOpen = useAppSelector((state) => state.admin.appOpen);
@@ -25,11 +25,11 @@ export const AdminView: FC = (): ReactElement => {
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
 
-  const [submitting, setSubmitting] = React.useState<boolean>(false);
-  const [message, setMessage] = React.useState<string>('');
-  const [messageStyle, setMessageStyle] = React.useState<string>('');
+  const [submitting, setSubmitting] = useState<boolean>(false);
+  const [message, setMessage] = useState<string>('');
+  const [messageStyle, setMessageStyle] = useState<string>('');
   const [selectedSignupTime, setSelectedSignupTime] =
-    React.useState<string>(signupTime);
+    useState<string>(signupTime);
 
   const showMessage = ({
     value,

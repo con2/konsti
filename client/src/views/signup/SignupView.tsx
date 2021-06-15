@@ -1,4 +1,4 @@
-import React, { FC, ReactElement } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
 import { useStore } from 'react-redux';
 import { SignupList } from 'client/views/signup/components/SignupList';
 import { getOpenStartTimes } from 'client/utils/getOpenStartTimes';
@@ -6,18 +6,18 @@ import { loadGroupMembers, loadUser } from 'client/utils/loadData';
 import { isGroupLeader } from 'client/views/group/GroupView';
 import { useAppSelector } from 'client/utils/hooks';
 
-export const SignupView: FC = (): ReactElement => {
+export const SignupView = (): ReactElement => {
   const games = useAppSelector((state) => state.allGames.games);
   const hiddenGames = useAppSelector((state) => state.admin.hiddenGames);
   const testTime = useAppSelector((state) => state.admin.testTime);
   const serial = useAppSelector((state) => state.login.serial);
   const groupCode = useAppSelector((state) => state.login.groupCode);
 
-  const [signupTimes, setSignupTimes] = React.useState<readonly string[]>([]);
+  const [signupTimes, setSignupTimes] = useState<readonly string[]>([]);
 
   const store = useStore();
 
-  React.useEffect(() => {
+  useEffect(() => {
     const fetchData = async (): Promise<void> => {
       await loadUser();
       await loadGroupMembers();
@@ -25,7 +25,7 @@ export const SignupView: FC = (): ReactElement => {
     fetchData();
   }, [store]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const visibleGames = games.filter((game) => {
       const hidden = hiddenGames.find(
         (hiddenGame) => game.gameId === hiddenGame.gameId
