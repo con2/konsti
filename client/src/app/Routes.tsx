@@ -1,4 +1,4 @@
-import React, { FC, ReactElement } from 'react';
+import React, { ReactElement } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import { AllGamesView } from 'client/views/all-games/AllGamesView';
@@ -18,7 +18,7 @@ export interface Props {
   onlyAdminLoginAllowed: boolean;
 }
 
-export const Routes: FC<Props> = (props: Props): ReactElement => {
+export const Routes = (props: Props): ReactElement => {
   const { onlyAdminLoginAllowed } = props;
   const loggedIn = useAppSelector((state) => state.login.loggedIn);
 

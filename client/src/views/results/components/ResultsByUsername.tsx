@@ -1,4 +1,4 @@
-import React, { FC, ReactElement } from 'react';
+import React, { ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
 import _ from 'lodash';
 import styled from 'styled-components';
@@ -8,7 +8,7 @@ export interface Props {
   results: readonly Result[];
 }
 
-export const ResultsByUsername: FC<Props> = (props: Props): ReactElement => {
+export const ResultsByUsername = (props: Props): ReactElement => {
   const { results } = props;
   const { t } = useTranslation();
 

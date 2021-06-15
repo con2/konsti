@@ -1,4 +1,4 @@
-import React, { FC, ReactElement } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import { submitSignup } from 'client/views/signup/signupThunks';
@@ -20,7 +20,7 @@ export interface Props {
   leader: boolean;
 }
 
-export const SignupList: FC<Props> = (props: Props): ReactElement => {
+export const SignupList = (props: Props): ReactElement => {
   const { games, signupTimes, leader } = props;
 
   const signupTime = useAppSelector((state) => state.signup.signupTime);
@@ -34,11 +34,11 @@ export const SignupList: FC<Props> = (props: Props): ReactElement => {
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
 
-  const [submitting, setSubmitting] = React.useState<boolean>(false);
-  const [signupSubmitted, setSignupSubmitted] = React.useState<boolean>(false);
-  const [signupError, setSignupError] = React.useState<string>('');
+  const [submitting, setSubmitting] = useState<boolean>(false);
+  const [signupSubmitted, setSignupSubmitted] = useState<boolean>(false);
+  const [signupError, setSignupError] = useState<string>('');
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!unsavedChanges) {
       dispatch(submitSelectedGames(signedGames));
     }

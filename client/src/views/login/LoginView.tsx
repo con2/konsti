@@ -1,4 +1,4 @@
-import React, { FC, ReactElement } from 'react';
+import React, { ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
 import { SubmissionError } from 'redux-form';
 import { submitLogin } from 'client/views/login/loginThunks';
@@ -6,7 +6,7 @@ import LoginForm from 'client/views/login/components/LoginForm';
 import { LoginFormFields } from 'shared/typings/api/login';
 import { useAppDispatch } from 'client/utils/hooks';
 
-export const LoginView: FC = (): ReactElement => {
+export const LoginView = (): ReactElement => {
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
 

@@ -1,4 +1,4 @@
-import React, { FC, ReactElement } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -8,7 +8,7 @@ interface CustomFieldProps {
   type?: string;
 }
 
-export const FormField: FC<WrappedFieldProps & CustomFieldProps> = (
+export const FormField = (
   props: WrappedFieldProps & CustomFieldProps
 ): ReactElement => {
   const { type } = props;
@@ -16,9 +16,9 @@ export const FormField: FC<WrappedFieldProps & CustomFieldProps> = (
   const { touched, error } = props.meta;
   const { t } = useTranslation();
 
-  const [fieldType, setFieldType] = React.useState<string>('');
+  const [fieldType, setFieldType] = useState<string>('');
 
-  React.useEffect(() => {
+  useEffect(() => {
     setFieldType(type ?? 'text');
   }, [type]);
 

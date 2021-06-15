@@ -1,4 +1,4 @@
-import React, { FC, ReactElement, ChangeEvent } from 'react';
+import React, { ReactElement, ChangeEvent } from 'react';
 import { timeFormatter } from 'client/utils/timeFormatter';
 
 export interface Props {
@@ -12,7 +12,7 @@ export interface Props {
 // Show "signup starts xx:xx" on others
 // Toggle to show upcoming gameslots or all gameslots
 
-export const TimesDropdown: FC<Props> = (props: Props): ReactElement => {
+export const TimesDropdown = (props: Props): ReactElement => {
   const { times, onChange, selectedTime } = props;
 
   const sortedTimes = times.map((sortedTime) => {

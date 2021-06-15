@@ -1,4 +1,4 @@
-import React, { FC, ReactElement, ChangeEvent } from 'react';
+import React, { ReactElement, ChangeEvent, useState, useEffect } from 'react';
 import { useStore } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { TFunction, useTranslation } from 'react-i18next';
@@ -13,20 +13,20 @@ import { Game } from 'shared/typings/models/game';
 import { getTime } from 'client/utils/getTime';
 import { useAppSelector } from 'client/utils/hooks';
 
-export const AllGamesView: FC = (): ReactElement => {
+export const AllGamesView = (): ReactElement => {
   const { t } = useTranslation();
 
   const games = useAppSelector((state) => state.allGames.games);
   const testTime = useAppSelector((state) => state.admin.testTime);
   const hiddenGames = useAppSelector((state) => state.admin.hiddenGames);
 
-  const [selectedView, setSelectedView] = React.useState<string>('upcoming');
-  const [selectedTag, setSelectedTag] = React.useState<string>('');
-  const [loading, setLoading] = React.useState<boolean>(false);
+  const [selectedView, setSelectedView] = useState<string>('upcoming');
+  const [selectedTag, setSelectedTag] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(false);
 
   const store = useStore();
 
-  React.useEffect(() => {
+  useEffect(() => {
     setLoading(true);
     const fetchData = async (): Promise<void> => {
       await loadGames();

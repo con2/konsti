@@ -1,4 +1,4 @@
-import React, { FC, ReactElement } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
 import { useStore } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
@@ -16,7 +16,7 @@ import { GroupMember } from 'shared/typings/api/groups';
 import { SelectedGame } from 'shared/typings/models/user';
 import { useAppSelector } from 'client/utils/hooks';
 
-export const MyGamesView: FC = (): ReactElement => {
+export const MyGamesView = (): ReactElement => {
   const { t } = useTranslation();
 
   const serial = useAppSelector((state) => state.login.serial);
@@ -29,11 +29,11 @@ export const MyGamesView: FC = (): ReactElement => {
   const groupMembers = useAppSelector((state) => state.login.groupMembers);
   const testTime = useAppSelector((state) => state.admin.testTime);
 
-  const [showAllGames, setShowAllGames] = React.useState<boolean>(false);
+  const [showAllGames, setShowAllGames] = useState<boolean>(false);
 
   const store = useStore();
 
-  React.useEffect(() => {
+  useEffect(() => {
     const fetchData = async (): Promise<void> => {
       await loadGames();
       await loadUser();

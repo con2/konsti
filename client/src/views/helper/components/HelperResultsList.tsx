@@ -1,11 +1,11 @@
-import React, { FC, ReactElement } from 'react';
+import React, { ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
 import _ from 'lodash';
 import styled from 'styled-components';
 import { timeFormatter } from 'client/utils/timeFormatter';
 import { useAppSelector } from 'client/utils/hooks';
 
-export const HelperResultsList: FC = (): ReactElement => {
+export const HelperResultsList = (): ReactElement => {
   const results = useAppSelector((state) => state.results.result);
   const startTime = useAppSelector((state) => state.results.startTime);
   const { t } = useTranslation();

@@ -1,4 +1,4 @@
-import React, { FC, ReactElement } from 'react';
+import React, { ReactElement, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import { DragDropContext, DropResult } from 'react-beautiful-dnd';
@@ -16,15 +16,15 @@ export interface Props {
   selectedGames: readonly Game[];
 }
 
-export const DragAndDropList: FC<Props> = (props: Props): ReactElement => {
+export const DragAndDropList = (props: Props): ReactElement => {
   const { availableGames, selectedGames, updateSelectedGames } = props;
   const { t } = useTranslation();
 
   const groupCode = useAppSelector((state) => state.login.groupCode);
   const groupMembers = useAppSelector((state) => state.login.groupMembers);
 
-  const [warningVisible, setWarningVisible] = React.useState<boolean>(false);
-  const [warning, setWarning] = React.useState<string>('');
+  const [warningVisible, setWarningVisible] = useState<boolean>(false);
+  const [warning, setWarning] = useState<string>('');
 
   const getList = (id: string): readonly Game[] => {
     if (id === 'availableGames') return availableGames;

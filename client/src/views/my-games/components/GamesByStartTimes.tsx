@@ -1,4 +1,4 @@
-import React, { FC, ReactElement } from 'react';
+import React, { ReactElement } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { timeFormatter } from 'client/utils/timeFormatter';
@@ -9,7 +9,7 @@ export interface Props {
   startTimes: readonly string[];
 }
 
-export const GamesByStartTimes: FC<Props> = (props: Props): ReactElement => {
+export const GamesByStartTimes = (props: Props): ReactElement => {
   const { games, startTimes } = props;
 
   const getGamesList = (startTime: string): Array<ReactElement | undefined> => {

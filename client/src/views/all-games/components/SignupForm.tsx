@@ -1,4 +1,4 @@
-import React, { FC, ReactElement, useRef, FormEvent } from 'react';
+import React, { ReactElement, useRef, FormEvent } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Game } from 'shared/typings/models/game';
 import { submitSignup } from 'client/views/signup/signupThunks';
@@ -10,7 +10,7 @@ interface Props {
   startTime: string;
 }
 
-export const SignupForm: FC<Props> = (props: Props): ReactElement => {
+export const SignupForm = (props: Props): ReactElement => {
   const { game, startTime } = props;
 
   const { t } = useTranslation();
