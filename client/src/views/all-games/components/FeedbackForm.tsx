@@ -1,4 +1,4 @@
-import React, { FC, ReactElement, ChangeEvent } from 'react';
+import React, { ReactElement, ChangeEvent, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import { postFeedback } from 'client/services/feedbackServices';
@@ -8,12 +8,12 @@ export interface Props {
   game: Game;
 }
 
-export const FeedbackForm: FC<Props> = (props: Props): ReactElement => {
+export const FeedbackForm = (props: Props): ReactElement => {
   const { game } = props;
 
-  const [submitting, setSubmitting] = React.useState<boolean>(false);
-  const [feedbackValue, setFeedbackValue] = React.useState<string>('');
-  const [feedbackSent, setFeedbackSent] = React.useState<boolean>(false);
+  const [submitting, setSubmitting] = useState<boolean>(false);
+  const [feedbackValue, setFeedbackValue] = useState<string>('');
+  const [feedbackSent, setFeedbackSent] = useState<boolean>(false);
 
   const { t } = useTranslation();
 

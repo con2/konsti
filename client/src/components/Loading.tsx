@@ -1,9 +1,9 @@
-import React, { FC, ReactElement } from 'react';
+import React, { ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import loaderImage from 'assets/loading.gif';
 
-export const Loading: FC = (): ReactElement => {
+export const Loading = (): ReactElement => {
   const { t } = useTranslation();
   return (
     <LoadingContainer>

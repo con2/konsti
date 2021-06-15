@@ -1,4 +1,4 @@
-import React, { FC, ReactElement } from 'react';
+import React, { ReactElement } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
@@ -11,7 +11,7 @@ export interface Props {
   missedSignups: readonly string[];
 }
 
-export const ResultsByStartTimes: FC<Props> = (props: Props): ReactElement => {
+export const ResultsByStartTimes = (props: Props): ReactElement => {
   const { signups, startTimes, missedSignups } = props;
   const { t } = useTranslation();
 

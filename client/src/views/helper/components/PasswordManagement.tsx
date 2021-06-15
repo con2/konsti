@@ -1,4 +1,4 @@
-import React, { FC, ReactElement, ChangeEvent } from 'react';
+import React, { ReactElement, ChangeEvent, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -7,21 +7,20 @@ import {
   updateUserPassword,
 } from 'client/services/userServices';
 
-export const PasswordManagement: FC = (): ReactElement => {
+export const PasswordManagement = (): ReactElement => {
   const { t } = useTranslation();
 
-  const [serial, setSerial] = React.useState<string>('');
-  const [username, setUsername] = React.useState<string>('');
+  const [serial, setSerial] = useState<string>('');
+  const [username, setUsername] = useState<string>('');
   const [passwordFieldType, setPasswordFieldType] =
-    React.useState<string>('password');
-  const [userSerialInput, setUserSerialInput] = React.useState<string>('');
-  const [changePasswordInput, setChangePasswordInput] =
-    React.useState<string>('');
+    useState<string>('password');
+  const [userSerialInput, setUserSerialInput] = useState<string>('');
+  const [changePasswordInput, setChangePasswordInput] = useState<string>('');
   const [changePasswordInputVisible, setChangePasswordInputVisible] =
-    React.useState<boolean>(false);
-  const [userFoundMessage, setUserFoundMessage] = React.useState<string>('');
+    useState<boolean>(false);
+  const [userFoundMessage, setUserFoundMessage] = useState<string>('');
   const [passwordChangeMessage, setPasswordChangeMessage] =
-    React.useState<string>('');
+    useState<string>('');
 
   const submitGetUser = async (): Promise<void> => {
     const response = await getUserBySerial(userSerialInput);

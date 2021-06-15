@@ -1,4 +1,4 @@
-import React, { FC, ReactElement, ChangeEvent } from 'react';
+import React, { ReactElement, ChangeEvent, useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useStore } from 'react-redux';
 import styled from 'styled-components';
@@ -14,7 +14,7 @@ import { submitSignup } from 'client/views/signup/signupThunks';
 import { loadGroupMembers } from 'client/utils/loadData';
 import { useAppDispatch, useAppSelector } from 'client/utils/hooks';
 
-export const GroupView: FC = (): ReactElement => {
+export const GroupView = (): ReactElement => {
   const username = useAppSelector((state) => state.login.username);
   const serial = useAppSelector((state) => state.login.serial);
   const groupCode = useAppSelector((state) => state.login.groupCode);
@@ -22,18 +22,18 @@ export const GroupView: FC = (): ReactElement => {
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
 
-  const [loading, setLoading] = React.useState<boolean>(false);
-  const [showCreateGroup, setShowCreateGroup] = React.useState<boolean>(false);
-  const [showJoinGroup, setShowJoinGroup] = React.useState<boolean>(false);
-  const [joinGroupValue, setJoinGroupValue] = React.useState<string>('');
-  const [message, setMessage] = React.useState<string>('');
-  const [messageStyle, setMessageStyle] = React.useState<string>('');
+  const [loading, setLoading] = useState<boolean>(false);
+  const [showCreateGroup, setShowCreateGroup] = useState<boolean>(false);
+  const [showJoinGroup, setShowJoinGroup] = useState<boolean>(false);
+  const [joinGroupValue, setJoinGroupValue] = useState<string>('');
+  const [message, setMessage] = useState<string>('');
+  const [messageStyle, setMessageStyle] = useState<string>('');
   const [closeGroupConfirmation, setCloseGroupConfirmation] =
-    React.useState<boolean>(false);
+    useState<boolean>(false);
 
   const store = useStore();
 
-  React.useEffect(() => {
+  useEffect(() => {
     const fetchData = async (): Promise<void> => {
       await loadGroupMembers();
     };

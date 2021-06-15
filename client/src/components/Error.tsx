@@ -1,10 +1,10 @@
-import React, { FC, ReactElement } from 'react';
+import React, { ReactElement } from 'react';
 
 interface Props {
   meta: { touched: boolean; error: string };
 }
 
-export const Error: FC<Props> = (props: Props): ReactElement => {
+export const Error = (props: Props): ReactElement => {
   const {
     meta: { touched, error },
   } = props;

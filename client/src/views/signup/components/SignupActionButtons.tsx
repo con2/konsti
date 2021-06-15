@@ -1,4 +1,4 @@
-import React, { FC, ReactElement } from 'react';
+import React, { ReactElement, MouseEvent } from 'react';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import { updateUnsavedChangesStatus } from 'client/views/signup/signupSlice';
@@ -9,8 +9,8 @@ import { AppDispatch } from 'client/typings/redux.typings';
 interface Props {
   groupCode: string;
   leader: boolean;
-  onCancelClick: (event: React.MouseEvent) => void;
-  onSubmitClick: (event: React.MouseEvent) => void;
+  onCancelClick: (event: MouseEvent) => void;
+  onSubmitClick: (event: MouseEvent) => void;
   selectedGames: readonly SelectedGame[];
   signedGames: readonly SelectedGame[];
   signupError: string;
@@ -18,7 +18,7 @@ interface Props {
   submitting: boolean;
 }
 
-export const SignupActionButtons: FC<Props> = (props: Props): ReactElement => {
+export const SignupActionButtons = (props: Props): ReactElement => {
   const {
     groupCode,
     leader,

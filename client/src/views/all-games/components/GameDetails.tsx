@@ -1,4 +1,4 @@
-import React, { FC, ReactElement } from 'react';
+import React, { ReactElement, useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useHistory, useParams } from 'react-router-dom';
 import { submitUpdateHidden } from 'client/views/admin/adminThunks';
@@ -9,7 +9,7 @@ import { Game } from 'shared/typings/models/game';
 import { updateFavorite, UpdateFavoriteOpts } from 'client/utils/favorite';
 import { useAppDispatch, useAppSelector } from 'client/utils/hooks';
 
-export const GameDetails: FC = (): ReactElement => {
+export const GameDetails = (): ReactElement => {
   const history = useHistory();
   // @ts-expect-error: Property 'gameId' does not exist on type '{}'.
   const { gameId } = useParams();
@@ -27,12 +27,12 @@ export const GameDetails: FC = (): ReactElement => {
 
   const foundGame = games.find((game) => game.gameId === gameId);
 
-  const [hidden, setHidden] = React.useState<boolean>(false);
-  const [favorited, setFavorited] = React.useState<boolean>(false);
-  const [submitting, setSubmitting] = React.useState<boolean>(false);
-  const [loading, setLoading] = React.useState<boolean>(true);
+  const [hidden, setHidden] = useState<boolean>(false);
+  const [favorited, setFavorited] = useState<boolean>(false);
+  const [submitting, setSubmitting] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
 
-  React.useEffect(() => {
+  useEffect(() => {
     setLoading(true);
 
     const checkGameState = (): void => {

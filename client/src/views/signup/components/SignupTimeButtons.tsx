@@ -1,4 +1,4 @@
-import React, { FC, ReactElement } from 'react';
+import React, { ReactElement } from 'react';
 import styled from 'styled-components';
 import { timeFormatter } from 'client/utils/timeFormatter';
 import { submitSignupTime } from 'client/views/signup/signupSlice';
@@ -10,7 +10,7 @@ interface Props {
   signupTime: string;
 }
 
-export const SignupTimeButtons: FC<Props> = (props: Props): ReactElement => {
+export const SignupTimeButtons = (props: Props): ReactElement => {
   const { signupTimes, signupTime } = props;
 
   const dispatch = useAppDispatch();

@@ -1,4 +1,4 @@
-import React, { FC, ReactElement } from 'react';
+import React, { ReactElement } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
@@ -10,7 +10,7 @@ export interface Props {
   startTimes: readonly string[];
 }
 
-export const SignupsByStartTimes: FC<Props> = (props: Props): ReactElement => {
+export const SignupsByStartTimes = (props: Props): ReactElement => {
   const { signups, startTimes } = props;
   const { t } = useTranslation();
 

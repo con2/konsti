@@ -1,4 +1,4 @@
-import React, { FC, ReactElement } from 'react';
+import React, { ReactElement } from 'react';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import { Accordion } from 'client/components/Accordion';
@@ -8,7 +8,7 @@ interface Props {
   signupTime: string;
 }
 
-export const SignupInfo: FC<Props> = (props: Props): ReactElement => {
+export const SignupInfo = (props: Props): ReactElement => {
   const { signupTime } = props;
 
   const { t } = useTranslation();

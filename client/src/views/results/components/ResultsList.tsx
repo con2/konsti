@@ -1,4 +1,4 @@
-import React, { FC, ReactElement, ChangeEvent } from 'react';
+import React, { ReactElement, ChangeEvent, useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import { ResultsByGameTitle } from './ResultsByGameTitle';
@@ -9,19 +9,18 @@ export interface Props {
   results: readonly Result[];
 }
 
-export const ResultsList: FC<Props> = (props: Props): ReactElement => {
+export const ResultsList = (props: Props): ReactElement => {
   const { results } = props;
   const { t } = useTranslation();
-  const [sortedBy, setSortedBy] = React.useState<string>('');
-  const [searchTerm, setSearchTerm] = React.useState<string>('');
-  const [searchResults, setSearchResults] = React.useState<readonly Result[]>(
-    []
-  );
-  React.useEffect(() => {
+  const [sortedBy, setSortedBy] = useState<string>('');
+  const [searchTerm, setSearchTerm] = useState<string>('');
+  const [searchResults, setSearchResults] = useState<readonly Result[]>([]);
+
+  useEffect(() => {
     setSortedBy('username');
   }, []);
 
-  React.useEffect(() => {
+  useEffect(() => {
     setSearchResults(
       results.filter((result) => {
         return (

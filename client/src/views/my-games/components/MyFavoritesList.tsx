@@ -1,4 +1,4 @@
-import React, { FC, ReactElement } from 'react';
+import React, { ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
 import _ from 'lodash';
 import styled from 'styled-components';
@@ -10,7 +10,7 @@ export interface Props {
   favoritedGames: readonly Game[];
 }
 
-export const MyFavoritesList: FC<Props> = (props: Props): ReactElement => {
+export const MyFavoritesList = (props: Props): ReactElement => {
   const { favoritedGames } = props;
   const { t } = useTranslation();
 

@@ -1,4 +1,4 @@
-import React, { FC, ReactElement } from 'react';
+import React, { ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Droppable, Draggable } from 'react-beautiful-dnd';
 import styled from 'styled-components';
@@ -12,7 +12,7 @@ export interface Props {
   showCount: boolean;
 }
 
-export const DropRow: FC<Props> = (props: Props): ReactElement => {
+export const DropRow = (props: Props): ReactElement => {
   const { droppableId, games, label, showCount } = props;
   const { t } = useTranslation();
 
