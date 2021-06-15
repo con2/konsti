@@ -40,7 +40,7 @@ export interface PadgInput {
   groups: readonly Group[];
   events: readonly Event[];
   list: readonly ListItem[];
-  updateL: Function;
+  updateL: () => void;
 }
 
 interface PadgRandomAssignResult {

@@ -10,9 +10,10 @@ interface Props {
   signupTime: string;
 }
 
-export const SignupTimeButtons = (props: Props): ReactElement => {
-  const { signupTimes, signupTime } = props;
-
+export const SignupTimeButtons = ({
+  signupTimes,
+  signupTime,
+}: Props): ReactElement => {
   const dispatch = useAppDispatch();
 
   const getIsActive = (isActive: boolean): string => (isActive ? 'active' : '');

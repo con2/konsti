@@ -10,8 +10,7 @@ interface Props {
   game: Game;
 }
 
-export const GameInfo = (props: Props): ReactElement => {
-  const { game } = props;
+export const GameInfo = ({ game }: Props): ReactElement => {
   const { t } = useTranslation();
   const { simpleDetails } = config;
 

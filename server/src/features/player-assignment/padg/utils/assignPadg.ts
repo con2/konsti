@@ -15,7 +15,7 @@ export const assignPadg = (
   groups: Group[],
   events: Event[],
   list: ListItem[],
-  updateL: Function
+  updateL: () => void
 ): PadgRandomAssignResults => {
   const { PADG_ASSIGNMENT_ROUNDS } = config;
 

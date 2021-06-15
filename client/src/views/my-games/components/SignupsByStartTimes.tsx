@@ -10,8 +10,10 @@ export interface Props {
   startTimes: readonly string[];
 }
 
-export const SignupsByStartTimes = (props: Props): ReactElement => {
-  const { signups, startTimes } = props;
+export const SignupsByStartTimes = ({
+  signups,
+  startTimes,
+}: Props): ReactElement => {
   const { t } = useTranslation();
 
   return (

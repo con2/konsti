@@ -11,13 +11,16 @@ import { Game } from 'shared/typings/models/game';
 import { useAppSelector } from 'client/utils/hooks';
 
 export interface Props {
-  updateSelectedGames: Function;
+  updateSelectedGames: (newSelectedGames: readonly Game[]) => void;
   availableGames: readonly Game[];
   selectedGames: readonly Game[];
 }
 
-export const DragAndDropList = (props: Props): ReactElement => {
-  const { availableGames, selectedGames, updateSelectedGames } = props;
+export const DragAndDropList = ({
+  updateSelectedGames,
+  availableGames,
+  selectedGames,
+}: Props): ReactElement => {
   const { t } = useTranslation();
 
   const groupCode = useAppSelector((state) => state.login.groupCode);

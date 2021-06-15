@@ -18,19 +18,17 @@ interface Props {
   submitting: boolean;
 }
 
-export const SignupActionButtons = (props: Props): ReactElement => {
-  const {
-    groupCode,
-    leader,
-    onCancelClick,
-    onSubmitClick,
-    selectedGames,
-    signedGames,
-    signupError,
-    signupSubmitted,
-    submitting,
-  } = props;
-
+export const SignupActionButtons = ({
+  groupCode,
+  leader,
+  onCancelClick,
+  onSubmitClick,
+  selectedGames,
+  signedGames,
+  signupError,
+  signupSubmitted,
+  submitting,
+}: Props): ReactElement => {
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
 

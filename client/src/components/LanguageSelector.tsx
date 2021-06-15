@@ -8,7 +8,7 @@ interface Props {
   className?: string;
 }
 
-export const LanguageSelector = (props: Props): ReactElement => {
+export const LanguageSelector = ({ className }: Props): ReactElement => {
   const { t, i18n } = useTranslation();
   const language = i18n.language;
 
@@ -26,7 +26,7 @@ export const LanguageSelector = (props: Props): ReactElement => {
       id='language'
       value={language}
       onChange={setLanguage}
-      className={props.className}
+      className={className}
     >
       <option title={t('language.english')} value='en'>
         {t('language.englishShort')}
