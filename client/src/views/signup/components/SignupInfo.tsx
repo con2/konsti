@@ -8,9 +8,7 @@ interface Props {
   signupTime: string;
 }
 
-export const SignupInfo = (props: Props): ReactElement => {
-  const { signupTime } = props;
-
+export const SignupInfo = ({ signupTime }: Props): ReactElement => {
   const { t } = useTranslation();
 
   const signupStartTime = timeFormatter.getStartTime(signupTime);

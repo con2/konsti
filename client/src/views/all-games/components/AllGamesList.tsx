@@ -12,8 +12,7 @@ export interface Props {
   games: readonly Game[];
 }
 
-export const AllGamesList = (props: Props): ReactElement => {
-  const { games } = props;
+export const AllGamesList = ({ games }: Props): ReactElement => {
   const { t } = useTranslation();
 
   const signedGames = useAppSelector((state) => state.myGames.signedGames);

@@ -12,9 +12,11 @@ export interface Props {
 // Show "signup starts xx:xx" on others
 // Toggle to show upcoming gameslots or all gameslots
 
-export const TimesDropdown = (props: Props): ReactElement => {
-  const { times, onChange, selectedTime } = props;
-
+export const TimesDropdown = ({
+  onChange,
+  selectedTime,
+  times,
+}: Props): ReactElement => {
   const sortedTimes = times.map((sortedTime) => {
     const formattedDate = timeFormatter.getWeekdayAndTime({
       time: sortedTime,

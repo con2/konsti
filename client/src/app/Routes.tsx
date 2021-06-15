@@ -18,8 +18,7 @@ export interface Props {
   onlyAdminLoginAllowed: boolean;
 }
 
-export const Routes = (props: Props): ReactElement => {
-  const { onlyAdminLoginAllowed } = props;
+export const Routes = ({ onlyAdminLoginAllowed }: Props): ReactElement => {
   const loggedIn = useAppSelector((state) => state.login.loggedIn);
 
   if (onlyAdminLoginAllowed) {

@@ -4,10 +4,6 @@ interface Props {
   meta: { touched: boolean; error: string };
 }
 
-export const Error = (props: Props): ReactElement => {
-  const {
-    meta: { touched, error },
-  } = props;
-
+export const Error = ({ meta: { touched, error } }: Props): ReactElement => {
   return touched && error ? <span>{error}</span> : <span />;
 };

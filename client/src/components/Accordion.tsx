@@ -9,9 +9,7 @@ export interface Props {
   buttonText: string;
 }
 
-export const Accordion = (props: Props): ReactElement => {
-  const { text, title, buttonText } = props;
-
+export const Accordion = ({ text, title, buttonText }: Props): ReactElement => {
   const [open, setOpen] = useState<boolean>(false);
 
   const { t } = useTranslation();

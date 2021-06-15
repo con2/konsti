@@ -10,8 +10,7 @@ export interface Props {
   signedGames: readonly SelectedGame[];
 }
 
-export const MySignupsList = (props: Props): ReactElement => {
-  const { signedGames } = props;
+export const MySignupsList = ({ signedGames }: Props): ReactElement => {
   const { t } = useTranslation();
 
   const sortedSignups = _.sortBy(signedGames, [
