@@ -9,7 +9,7 @@ export interface Props {
   results: readonly Result[];
 }
 
-export const ResultsList = ({ results }: Props): ReactElement => {
+export const AlgorithmResultsList = ({ results }: Props): ReactElement => {
   const { t } = useTranslation();
   const [sortedBy, setSortedBy] = useState<string>('');
   const [searchTerm, setSearchTerm] = useState<string>('');
