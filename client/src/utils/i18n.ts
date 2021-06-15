@@ -7,8 +7,8 @@ import fi from 'client/locales/fi.json';
 
 const loadLocales = (
   url: string,
-  options: BackendOptions,
-  callback: Function
+  _options: BackendOptions,
+  callback: (locale: object, config: object) => void
 ): void => {
   if (url === 'en') {
     callback(en, { status: '200' });

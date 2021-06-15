@@ -9,8 +9,7 @@ export interface Props {
   hiddenGames: readonly Game[];
 }
 
-export const Hidden = (props: Props): ReactElement => {
-  const { hiddenGames } = props;
+export const Hidden = ({ hiddenGames }: Props): ReactElement => {
   const { t } = useTranslation();
 
   const sortedGames = _.sortBy(hiddenGames, [

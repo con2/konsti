@@ -7,8 +7,7 @@ export interface Props {
   groupMembers: readonly GroupMember[];
 }
 
-export const GroupMembersList = (props: Props): ReactElement => {
-  const { groupMembers } = props;
+export const GroupMembersList = ({ groupMembers }: Props): ReactElement => {
   const { t } = useTranslation();
 
   if (!groupMembers) return <GroupMembersListContainer />;

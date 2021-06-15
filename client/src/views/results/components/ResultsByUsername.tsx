@@ -8,8 +8,7 @@ export interface Props {
   results: readonly Result[];
 }
 
-export const ResultsByUsername = (props: Props): ReactElement => {
-  const { results } = props;
+export const ResultsByUsername = ({ results }: Props): ReactElement => {
   const { t } = useTranslation();
 
   const sortedResults = _.sortBy(results, [
