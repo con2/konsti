@@ -1,12 +1,12 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import {
-  ResultsList,
+  AlgorithmResultsList,
   Props,
-} from 'client/views/results/components/ResultsList';
+} from 'client/views/results/components/AlgorithmResultsList';
 
 test('should render correctly', () => {
   const props: Props = { results: [] };
 
-  render(<ResultsList {...props} />);
+  render(<AlgorithmResultsList {...props} />);
 });
