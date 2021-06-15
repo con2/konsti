@@ -5,7 +5,7 @@ import { Game } from 'shared/typings/models/game';
 
 const initialState: AdminState = {
   hiddenGames: [],
-  signupTime: '',
+  activeSignupTime: '',
   testTime: '',
   appOpen: true,
   responseMessage: '',
@@ -26,13 +26,13 @@ const adminSlice = createSlice({
       return {
         ...state,
         hiddenGames: action.payload.hiddenGames,
-        signupTime: action.payload.signupTime,
+        activeSignupTime: action.payload.signupTime,
         appOpen: action.payload.appOpen,
       };
     },
 
-    submitSignupTimeAsync(state, action: PayloadAction<string>) {
-      return { ...state, signupTime: action.payload };
+    submitActiveSignupTimeAsync(state, action: PayloadAction<string>) {
+      return { ...state, activeSignupTime: action.payload };
     },
 
     submitSetTestTime(state, action: PayloadAction<string>) {
@@ -52,7 +52,7 @@ const adminSlice = createSlice({
 export const {
   submitUpdateHiddenAsync,
   submitGetSettingsAsync,
-  submitSignupTimeAsync,
+  submitActiveSignupTimeAsync,
   submitSetTestTime,
   submitToggleAppOpenAsync,
   submitResponseMessageAsync,

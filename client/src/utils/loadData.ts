@@ -51,10 +51,10 @@ export const loadResults = async (): Promise<void> => {
   const state = store.getState();
   const dispatch: AppDispatch = store.dispatch;
   const { loggedIn } = state.login;
-  const { signupTime } = state.admin;
+  const { activeSignupTime } = state.admin;
 
-  if (loggedIn && signupTime) {
-    await dispatch(submitGetResults(signupTime));
+  if (loggedIn && activeSignupTime) {
+    await dispatch(submitGetResults(activeSignupTime));
   }
 };
 
