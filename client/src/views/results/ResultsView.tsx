@@ -1,18 +1,12 @@
 import React, { ReactElement, useEffect } from 'react';
 import { useStore } from 'react-redux';
-import { useTranslation } from 'react-i18next';
-import { ResultsList } from 'client/views/results/components/ResultsList';
-import { timeFormatter } from 'client/utils/timeFormatter';
 import { loadResults, loadSettings } from 'client/utils/loadData';
-import { useAppSelector } from 'client/utils/hooks';
+import { sharedConfig } from 'shared/config/sharedConfig';
+import { SignupStrategy } from 'shared/config/sharedConfig.types';
+import { AlgorithmResults } from 'client/views/results/components/AlgorithmResults';
+import { DirectResults } from 'client/views/results/components/DirectResults';
 
 export const ResultsView = (): ReactElement => {
-  const results = useAppSelector((state) => state.results.result);
-  const activeSignupTime = useAppSelector(
-    (state) => state.admin.activeSignupTime
-  );
-  const { t } = useTranslation();
-
   const store = useStore();
 
   useEffect(() => {
@@ -23,25 +17,13 @@ export const ResultsView = (): ReactElement => {
     fetchData();
   }, [store]);
 
-  const validResults = results.filter(
-    (result) => result.enteredGame.gameDetails
-  );
+  if (sharedConfig.signupStrategy === SignupStrategy.DIRECT) {
+    return <DirectResults />;
+  }
 
-  return (
-    <div className='results-view'>
-      {!activeSignupTime && <h2>{t('noResults')}</h2>}
-      {activeSignupTime && (
-        <>
-          <h2>
-            {t('signupResultsfor')}{' '}
-            {timeFormatter.getWeekdayAndTime({
-              time: activeSignupTime,
-              capitalize: false,
-            })}
-          </h2>
-          <ResultsList results={validResults} />
-        </>
-      )}
-    </div>
-  );
+  if (sharedConfig.signupStrategy === SignupStrategy.ALGORITHM) {
+    return <AlgorithmResults />;
+  }
+
+  return <div />;
 };
