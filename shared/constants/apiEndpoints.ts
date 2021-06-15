@@ -10,6 +10,6 @@ export const SIGNUPTIME_ENDPOINT = '/api/signuptime';
 export const FEEDBACK_ENDPOINT = '/api/feedback';
 export const GROUP_ENDPOINT = '/api/group';
 export const TOGGLE_APP_OPEN_ENDPOINT = '/api/toggle-app-open';
-export const SETTINGS_ENDPOINT = '/api/settigs';
+export const SETTINGS_ENDPOINT = '/api/settings';
 export const RESULTS_ENDPOINT = '/api/results';
 export const ENTERED_GAME_ENDPOINT = '/api/enteredgame';

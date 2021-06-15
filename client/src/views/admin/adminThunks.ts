@@ -9,7 +9,7 @@ import { AppThunk } from 'client/typings/redux.typings';
 import {
   submitUpdateHiddenAsync,
   submitGetSettingsAsync,
-  submitSignupTimeAsync,
+  submitActiveSignupTimeAsync,
   submitToggleAppOpenAsync,
 } from 'client/views/admin/adminSlice';
 
@@ -56,7 +56,7 @@ export const submitSignupTime = (signupTime: string): AppThunk => {
     }
 
     if (signupTimeResponse?.status === 'success') {
-      dispatch(submitSignupTimeAsync(signupTimeResponse.signupTime));
+      dispatch(submitActiveSignupTimeAsync(signupTimeResponse.signupTime));
     }
   };
 };
