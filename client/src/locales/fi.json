@@ -232,5 +232,8 @@
     "cannotSignupMoreGames": "Voit ilmoittautua vain kolmeen peliin per alkamisaika",
     "gamePriority": "Peli on toiveissani sijalla",
     "confirm": "Vahvista"
+  },
+  "resultsView": {
+    "allSignupResults": "Pelien ilmoittautumistilanne ja pelaajat"
   }
 }
