@@ -10,12 +10,13 @@ import {
 import { logger } from 'server/utils/logger';
 import { config } from 'server/config';
 import { calculateHappiness } from 'server/features/player-assignment/padg/utils/calculateHappiness';
+import { Input } from 'server/typings/result.typings';
 
 export const assignPadg = (
   groups: Group[],
   events: Event[],
   list: ListItem[],
-  updateL: () => void
+  updateL: (input: Input) => string
 ): PadgRandomAssignResults => {
   const { PADG_ASSIGNMENT_ROUNDS } = config;
 

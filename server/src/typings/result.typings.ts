@@ -39,3 +39,7 @@ export interface RunRandomAndPadgInput {
   numberOfIndividuals: Number;
   numberOfGroups: Number;
 }
+
+export interface Input {
+  list: string;
+}

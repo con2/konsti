@@ -3,7 +3,7 @@ import { getGroups } from 'server/features/player-assignment/utils/getGroups';
 import { getList } from 'server/features/player-assignment/utils/getList';
 import { getEvents } from 'server/features/player-assignment/utils/getEvents';
 import { formatResults } from 'server/features/player-assignment/utils/formatResults';
-import { AssignmentStrategyResult } from 'server/typings/result.typings';
+import { AssignmentStrategyResult, Input } from 'server/typings/result.typings';
 import { Game } from 'shared/typings/models/game';
 import { User } from 'shared/typings/models/user';
 
@@ -12,10 +12,6 @@ export const runPadgAssignment = (
   playerGroups: readonly User[][],
   startingTime: string
 ): AssignmentStrategyResult => {
-  interface Input {
-    list: string;
-  }
-
   const groups = getGroups(playerGroups, startingTime);
   const events = getEvents(signedGames);
   const list = getList(playerGroups, startingTime);
