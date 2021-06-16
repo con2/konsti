@@ -10,7 +10,7 @@ import { submitSignup } from 'client/views/signup/signupThunks';
 import { SelectedGame } from 'shared/typings/models/user';
 import { useAppDispatch, useAppSelector } from 'client/utils/hooks';
 import { submitSelectedGames } from 'client/views/signup/signupSlice';
-import { isAlreadySigned } from './GameService';
+import { isAlreadySigned } from './allGamesUtils';
 
 interface Props {
   game: Game;

@@ -6,7 +6,7 @@ import { EnterGameForm } from './EnterGameForm';
 import { submitDeleteGame } from 'client/views/signup/signupThunks';
 import { SelectedGame } from 'shared/typings/models/user';
 import { useAppDispatch, useAppSelector } from 'client/utils/hooks';
-import { isAlreadySigned } from './GameService';
+import { isAlreadySigned } from './allGamesUtils';
 
 interface Props {
   game: Game;
