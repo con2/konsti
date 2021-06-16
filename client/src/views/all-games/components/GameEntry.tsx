@@ -90,14 +90,11 @@ export const GameEntry = ({ game, startTime }: Props): ReactElement => {
           <Link to={`/games/${game.gameId}`}>{t('gameInfo.readMore')}</Link>
         </GameListShortDescription>
       </GameMoreInfoRow>
-      {loggedIn && (
-        <>
-          {isEnterGameMode ? (
-            <DirectSignupForm game={game} startTime={startTime} />
-          ) : (
-            <AlgorithmSignupForm game={game} startTime={startTime} />
-          )}
-        </>
+      {loggedIn && isEnterGameMode && (
+        <DirectSignupForm game={game} startTime={startTime} />
+      )}
+      {loggedIn && !isEnterGameMode && (
+        <AlgorithmSignupForm game={game} startTime={startTime} />
       )}
     </GameContainer>
   );

@@ -17,7 +17,9 @@ interface Props {
   startTime: string;
 }
 
-export const AlgorithmSignupForm: FC<Props> = (props: Props): ReactElement => {
+export const AlgorithmSignupForm: FC<Props> = (
+  props: Props
+): ReactElement | null => {
   const { game, startTime } = props;
 
   const { t } = useTranslation();
@@ -95,28 +97,28 @@ export const AlgorithmSignupForm: FC<Props> = (props: Props): ReactElement => {
     return null;
   };
 
-  return (
-    <>
-      {loggedIn && (
-        <>
-          {signupForAlgorithm(alreadySignedToGame, signedGamesForTimeslot)}
-          {alreadySignedToGame && (
-            <>
-              <button onClick={async () => await removeSignup(game)}>
-                {t('button.cancel')}
-              </button>
-              <p>
-                {t('signup.alreadySigned', {
-                  CURRENT_PRIORITY: currentPriority,
-                })}
-              </p>
-            </>
-          )}
-          {signupFormOpen && !alreadySignedToGame && (
-            <SignupForm game={game} startTime={startTime} />
-          )}
-        </>
-      )}
-    </>
-  );
+  if (loggedIn) {
+    return (
+      <>
+        {signupForAlgorithm(alreadySignedToGame, signedGamesForTimeslot)}
+        {alreadySignedToGame && (
+          <>
+            <button onClick={async () => await removeSignup(game)}>
+              {t('button.cancel')}
+            </button>
+            <p>
+              {t('signup.alreadySigned', {
+                CURRENT_PRIORITY: currentPriority,
+              })}
+            </p>
+          </>
+        )}
+        {signupFormOpen && !alreadySignedToGame && (
+          <SignupForm game={game} startTime={startTime} />
+        )}
+      </>
+    );
+  }
+
+  return null;
 };
