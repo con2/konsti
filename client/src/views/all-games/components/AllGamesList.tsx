@@ -7,6 +7,8 @@ import { Game } from 'shared/typings/models/game';
 import { GameEntry } from './GameEntry';
 import { useAppSelector } from 'client/utils/hooks';
 import { SelectedGame } from 'shared/typings/models/user';
+import { sharedConfig } from 'shared/config/sharedConfig';
+import { SignupStrategy } from 'shared/config/sharedConfig.types';
 
 export interface Props {
   games: readonly Game[];
@@ -16,8 +18,9 @@ export const AllGamesList = ({ games }: Props): ReactElement => {
   const { t } = useTranslation();
 
   const signedGames = useAppSelector((state) => state.myGames.signedGames);
+  const enteredGames = useAppSelector((state) => state.myGames.enteredGames);
 
-  const GamesList = buildGamesList(games, signedGames, t);
+  const GamesList = buildGamesList(games, signedGames, enteredGames, t);
 
   return (
     <div className='games-list'>
@@ -30,6 +33,7 @@ export const AllGamesList = ({ games }: Props): ReactElement => {
 const buildGamesList = (
   games: readonly Game[],
   signedGames: readonly SelectedGame[],
+  enteredGames: readonly SelectedGame[],
   t: TFunction
 ): ReactElement[] => {
   const sortedGames = _.sortBy(games, [
@@ -53,6 +57,21 @@ const buildGamesList = (
     const signedGamesCount = signedGames.filter(
       (game) => game.gameDetails.startTime === startTime
     ).length;
+    const signedGame = enteredGames.find(
+      (game) => game.gameDetails.startTime === startTime
+    );
+
+    const getHeaderGameInfo = (): JSX.Element => {
+      if (sharedConfig.signupStrategy === SignupStrategy.DIRECT) {
+        return (
+          <SignupCount>
+            {signedGame ? signedGame.gameDetails.title : ''}
+          </SignupCount>
+        );
+      }
+
+      return <SignupCount>{signedGamesCount} / 3</SignupCount>;
+    };
 
     const title = (
       <GameListTitle key={startTime}>
@@ -63,7 +82,7 @@ const buildGamesList = (
             ({t('signupOpenBetween')} {signupStartTime}-{signupEndTime})
           </span>
         )}
-        <SignupCount>{signedGamesCount} / 3</SignupCount>
+        {getHeaderGameInfo()}
       </GameListTitle>
     );
 
