@@ -13,7 +13,9 @@ interface Props {
   startTime: string;
 }
 
-export const DirectSignupForm: FC<Props> = (props: Props): ReactElement => {
+export const DirectSignupForm: FC<Props> = (
+  props: Props
+): ReactElement | null => {
   const { game, startTime } = props;
 
   const { t } = useTranslation();
@@ -81,26 +83,24 @@ export const DirectSignupForm: FC<Props> = (props: Props): ReactElement => {
     return null;
   };
 
-  return (
-    <>
-      {loggedIn && (
-        <>
-          {signupForDirect(alreadySignedToGame, enteredGamesForTimeslot)}
-          {alreadySignedToGame && (
-            <>
-              <button onClick={async () => await removeSignup(game)}>
-                {t('button.cancel')}
-              </button>
-            </>
-          )}
-          {signupFormOpen && !alreadySignedToGame && (
-            <EnterGameForm
-              game={game}
-              onEnterGame={() => setSignupFormOpen(false)}
-            />
-          )}
-        </>
-      )}
-    </>
-  );
+  if (loggedIn) {
+    return (
+      <>
+        {signupForDirect(alreadySignedToGame, enteredGamesForTimeslot)}
+        {alreadySignedToGame && (
+          <button onClick={async () => await removeSignup(game)}>
+            {t('button.cancel')}
+          </button>
+        )}
+        {signupFormOpen && !alreadySignedToGame && (
+          <EnterGameForm
+            game={game}
+            onEnterGame={() => setSignupFormOpen(false)}
+          />
+        )}
+      </>
+    );
+  }
+
+  return null;
 };
