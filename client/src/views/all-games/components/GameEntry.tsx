@@ -1,18 +1,14 @@
-import React, { ReactElement, useState } from 'react';
+import React, { ReactElement } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import { Game } from 'shared/typings/models/game';
 import { updateFavorite, UpdateFavoriteOpts } from 'client/utils/favorite';
-import {
-  getSignedGames,
-  getUpcomingEnteredGames,
-} from 'client/utils/getUpcomingGames';
-import { SignupForm } from './SignupForm';
-import { submitSignup } from 'client/views/signup/signupThunks';
-import { SelectedGame } from 'shared/typings/models/user';
 import { useAppDispatch, useAppSelector } from 'client/utils/hooks';
-import { submitSelectedGames } from 'client/views/signup/signupSlice';
+import { sharedConfig } from 'shared/config/sharedConfig';
+import { SignupStrategy } from 'shared/config/sharedConfig.types';
+import { DirectSignupForm } from './DirectSignupForm';
+import { AlgorithmSignupForm } from './AlgorithmSignupForm';
 
 interface Props {
   game: Game;
@@ -37,12 +33,6 @@ export const GameEntry = ({ game, startTime }: Props): ReactElement => {
   const favoritedGames = useAppSelector(
     (state) => state.myGames.favoritedGames
   );
-  const serial = useAppSelector((state) => state.login.serial);
-  const groupCode = useAppSelector((state) => state.login.groupCode);
-  const signedGames = useAppSelector((state) => state.myGames.signedGames);
-  const enteredGames = useAppSelector((state) => state.myGames.enteredGames);
-  const groupMembers = useAppSelector((state) => state.login.groupMembers);
-  const [signupFormOpen, setSignupFormOpen] = useState(false);
 
   const dispatch = useAppDispatch();
 
@@ -51,50 +41,7 @@ export const GameEntry = ({ game, startTime }: Props): ReactElement => {
       (favoritedGame) => favoritedGame.gameId === game.gameId
     ) !== undefined;
 
-  const isAlreadySigned = (gameToCheck: Game): boolean => {
-    const allSignedGames = getSignedGames(
-      signedGames,
-      groupCode,
-      serial,
-      groupMembers,
-      true
-    );
-    const allEnteredGames = getUpcomingEnteredGames(enteredGames);
-
-    return [...allSignedGames, ...allEnteredGames].some(
-      (g: SelectedGame) => g.gameDetails.gameId === gameToCheck.gameId
-    );
-  };
-
-  const removeSignup = async (gameToRemove: Game): Promise<void> => {
-    const allSignedGames = getSignedGames(
-      signedGames,
-      groupCode,
-      serial,
-      groupMembers,
-      true
-    );
-    const allEnteredGames = getUpcomingEnteredGames(enteredGames);
-    const newSignupData = [...allSignedGames, ...allEnteredGames].filter(
-      (g: SelectedGame) => g.gameDetails.gameId !== gameToRemove.gameId
-    );
-    dispatch(submitSelectedGames(newSignupData));
-    const signupData = {
-      username,
-      selectedGames: newSignupData,
-      signupTime: gameToRemove.startTime,
-    };
-
-    await dispatch(submitSignup(signupData));
-  };
-
-  const currentPriority = signedGames.find(
-    (g) => g.gameDetails.gameId === game.gameId
-  )?.priority;
-
-  const signedGamesForTimeslot = signedGames.filter(
-    (g) => g.gameDetails.startTime === startTime
-  );
+  const isEnterGameMode = sharedConfig.signupStrategy === SignupStrategy.DIRECT;
 
   return (
     <GameContainer key={game.gameId} className='games-list'>
@@ -143,32 +90,11 @@ export const GameEntry = ({ game, startTime }: Props): ReactElement => {
           <Link to={`/games/${game.gameId}`}>{t('gameInfo.readMore')}</Link>
         </GameListShortDescription>
       </GameMoreInfoRow>
-      {loggedIn && (
-        <>
-          {!isAlreadySigned(game) && signedGamesForTimeslot.length >= 3 && (
-            <p>{t('signup.cannotSignupMoreGames')}</p>
-          )}
-          {!isAlreadySigned(game) && signedGamesForTimeslot.length < 3 && (
-            <button onClick={() => setSignupFormOpen(!signupFormOpen)}>
-              {t('signup.signup')}
-            </button>
-          )}
-          {isAlreadySigned(game) && (
-            <>
-              <button onClick={async () => await removeSignup(game)}>
-                {t('button.cancel')}
-              </button>
-              <p>
-                {t('signup.alreadySigned', {
-                  CURRENT_PRIORITY: currentPriority,
-                })}
-              </p>
-            </>
-          )}
-          {signupFormOpen && !isAlreadySigned(game) && (
-            <SignupForm game={game} startTime={startTime} />
-          )}
-        </>
+      {loggedIn && isEnterGameMode && (
+        <DirectSignupForm game={game} startTime={startTime} />
+      )}
+      {loggedIn && !isEnterGameMode && (
+        <AlgorithmSignupForm game={game} startTime={startTime} />
       )}
     </GameContainer>
   );

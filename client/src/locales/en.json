@@ -230,9 +230,11 @@
     "signup": "Signup",
     "cannotSignupMoreGames": "You can signup up to three games for the timeslot",
     "gamePriority": "Game priority for me is",
-    "confirm": "Confirm"
+    "confirm": "Confirm",
+    "cannotSignupMoreThanOneGame": "You already signed to game {{GAME}}. You can only be at one game at the time."
   },
   "resultsView": {
-    "allSignupResults": "Signup overview and players"
+    "allSignupResults": "Signup overview and players",
+    "confirm": "Confirm"
   }
 }
