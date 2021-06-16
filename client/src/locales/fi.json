@@ -231,11 +231,11 @@
     "signup": "Ilmoittaudu",
     "cannotSignupMoreGames": "Voit ilmoittautua vain kolmeen peliin per alkamisaika",
     "gamePriority": "Peli on toiveissani sijalla",
-    "confirm": "Vahvista"
+    "confirm": "Vahvista",
+    "cannotSignupMoreThanOneGame": "Olet ilmoittautunut peliin {{GAME}}. Et voi ilmoittautua muihin samaan aikaan oleviin peleihin."
   },
   "resultsView": {
     "allSignupResults": "Pelien ilmoittautumistilanne ja pelaajat",
-    "confirm": "Vahvista",
-    "cannotSignupMoreThanOneGame": "Olet ilmoittautunut peliin {{GAME}}. Et voi ilmoittautua muihin samaan aikaan oleviin peleihin."
+    "confirm": "Vahvista"
   }
 }
