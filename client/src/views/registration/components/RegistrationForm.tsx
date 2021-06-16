@@ -14,6 +14,9 @@ const RegistrationForm = (props: InjectedFormProps): ReactElement => {
     <div className='registration-form'>
       <h2>{t('pageTitle.registration')}</h2>
       <form onSubmit={handleSubmit}>
+        <div style={{ color: 'red' }}>
+          {t('pageTitle.usernamePublicWarning')}
+        </div>
         <Field
           name='username'
           type='text'
