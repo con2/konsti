@@ -16,6 +16,7 @@ export const postRegistration = async (
   registrationFormFields: RegistrationFormFields
 ): Promise<PostUserResponse | ServerError> => {
   const { username, password, serial } = registrationFormFields;
+
   let response: AxiosResponse;
   try {
     response = await api.post<PostUserResponse>(USERS_ENDPOINT, {
@@ -30,7 +31,6 @@ export const postRegistration = async (
     }
     throw error;
   }
-
   return response.data;
 };
 
