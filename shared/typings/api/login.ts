@@ -19,6 +19,6 @@ export interface LoginFormFields {
 export interface RegistrationFormFields {
   password: string;
   registerDescription: boolean;
-  serial: string;
+  serial?: string;
   username: string;
 }
