@@ -14,20 +14,6 @@ const RegistrationForm: FC<InjectedFormProps> = (
   const { handleSubmit, submitting, error } = props;
   const { t } = useTranslation();
   const serialRequired = sharedConfig.conventionType === ConventionType.LIVE;
-  const serialField = (
-    <div>
-      <Field
-        name='serial'
-        id='serial'
-        type='text'
-        component={FormField}
-        validate={required}
-      />
-      <label htmlFor='serial' className='small'>
-        {t('registrationSerialHelp')}
-      </label>
-    </div>
-  );
   return (
     <div className='registration-form'>
       <h2>{t('pageTitle.registration')}</h2>
@@ -46,7 +32,20 @@ const RegistrationForm: FC<InjectedFormProps> = (
           validate={required}
         />
 
-        {serialRequired && serialField}
+        {serialRequired && (
+          <div>
+            <Field
+              name='serial'
+              id='serial'
+              type='text'
+              component={FormField}
+              validate={required}
+            />
+            <label htmlFor='serial' className='small'>
+              {t('registrationSerialHelp')}
+            </label>
+          </div>
+        )}
 
         <Field
           name='agreePrivacyPolicy'

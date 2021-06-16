@@ -50,7 +50,7 @@ export const postUser = async (
   if (sharedConfig.conventionType === ConventionType.REMOTE) {
     const serialDoc = await createSerial();
     serial = serialDoc[0].serial;
-  } else if (req.body.serial !== undefined) {
+  } else {
     serial = req.body.serial;
   }
   const response = await storeUser(username, password, serial, changePassword);
