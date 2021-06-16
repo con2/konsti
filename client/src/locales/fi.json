@@ -122,7 +122,7 @@
   "pageTitle": {
     "login": "Kirjaudu sisään",
     "registration": "Rekisteröi käyttäjätunnus",
-    "usernamePublicWarning": "Huomaa, että käyttäjänimi on julkinen KAIKILLE käyttäjille"
+    "usernamePublicWarning": "Huomaa, että käyttäjänimi on julkinen"
   },
   "user": "Käyttäjä",
   "favoritedGames": "Suosikkipelit",

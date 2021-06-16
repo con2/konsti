@@ -121,7 +121,7 @@
   "pageTitle": {
     "login": "Please login",
     "registration": "Please register user account",
-    "usernamePublicWarning": "Please note that the username is visible to ALL users"
+    "usernamePublicWarning": "Please note that the username is public"
   },
   "user": "User",
   "favoritedGames": "Favorited games",
