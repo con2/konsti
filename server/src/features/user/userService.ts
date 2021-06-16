@@ -37,9 +37,16 @@ import { isValidSignupTime } from 'server/features/user/userUtils';
 export const storeUser = async (
   username: string,
   password: string,
-  serial: string,
+  serial: string | undefined,
   changePassword: boolean
 ): Promise<PostUserResponse | ServerError> => {
+  if (serial === undefined) {
+    return {
+      message: 'Invalid serial',
+      status: 'error',
+      code: 12,
+    };
+  }
   if (changePassword) {
     let passwordHash;
     try {

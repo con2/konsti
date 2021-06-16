@@ -1,6 +1,8 @@
 import moment from 'moment';
 import { config } from 'server/config';
 import { logger } from 'server/utils/logger';
+import { saveSerials } from 'server/features/serial/serialRepository';
+import { SerialDoc } from 'server/typings/serial.typings';
 
 export const isValidSignupTime = (signupTime: string): boolean => {
   if (!config.enableSignupTimeCheck) return true;
@@ -18,4 +20,8 @@ export const isValidSignupTime = (signupTime: string): boolean => {
   }
 
   return true;
+};
+
+export const createSerial = async (): Promise<SerialDoc[]> => {
+  return await saveSerials(1);
 };
