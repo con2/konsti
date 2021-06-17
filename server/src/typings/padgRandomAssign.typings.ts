@@ -14,7 +14,7 @@ export interface Event {
   groups: readonly Group[]; // groups signed for the game
 }
 
-export interface randomAssignEvent {
+export interface RandomAssignEvent {
   id: id;
   min: number;
   max: number;
@@ -30,7 +30,7 @@ export interface ListItem {
 
 export interface RandomAssignUpdateLInput {
   groups: Group[];
-  events: randomAssignEvent[];
+  events: RandomAssignEvent[];
   assignment: PadgRandomAssignResult[];
   unassignedGroups: Group[];
   L: ListElement[];
