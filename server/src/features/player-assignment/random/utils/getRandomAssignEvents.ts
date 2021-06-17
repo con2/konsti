@@ -1,9 +1,9 @@
 import { Game } from 'shared/typings/models/game';
-import { randomAssignEvent } from 'server/typings/padgRandomAssign.typings';
+import { RandomAssignEvent } from 'server/typings/padgRandomAssign.typings';
 
 export const getRandomAssignEvents = (
   signedGames: readonly Game[]
-): randomAssignEvent[] => {
+): RandomAssignEvent[] => {
   return signedGames.map((signedGame) => {
     return {
       id: signedGame.gameId,

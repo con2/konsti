@@ -1,8 +1,8 @@
-interface serialGenerator {
+interface SerialGenerator {
   generate: (count: number) => string;
 }
 
-const generator: serialGenerator = jest.createMockFromModule(
+const generator: SerialGenerator = jest.createMockFromModule(
   'generate-serial-number'
 );
 
