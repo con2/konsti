@@ -5,6 +5,9 @@ import { removeInvalidSignupsFromUsers } from 'server/features/player-assignment
 import { GameDoc } from 'server/typings/game.typings';
 import { logger } from 'server/utils/logger';
 import { Game } from 'shared/typings/models/game';
+import { numPlayersInfo } from 'shared/typings/api/games';
+import { findUsers } from 'server/features//user/userRepository';
+import { User } from 'shared/typings/models/user';
 
 export const removeDeletedGames = async (
   updatedGames: readonly Game[]
@@ -45,4 +48,34 @@ export const getGameById = async (gameId: string): Promise<GameDoc> => {
   if (!foundGame) throw new Error(`Game ${gameId} not found`);
 
   return foundGame;
+};
+
+export const getNumPlayersInGames = async (
+  games: readonly Game[]
+): Promise<numPlayersInfo[]> => {
+  const numPlayers: numPlayersInfo[] = [];
+  try {
+    const users = await findUsers();
+    for (const game of games) {
+      numPlayers.push({
+        gameId: game.gameId,
+        numPlayers: countNumPlayers(users, game.gameId),
+      });
+    }
+  } catch (error) {
+    logger.error(
+      `getNumPlayersInGames: Error calculating number of players in games - ${error}`
+    );
+    return error;
+  }
+  return numPlayers;
+};
+
+const countNumPlayers = (users: User[], gameId: string): number => {
+  return users.filter(
+    (user) =>
+      user.enteredGames.filter(
+        (enteredGame) => enteredGame.gameDetails.gameId === gameId
+      ).length > 0
+  ).length;
 };

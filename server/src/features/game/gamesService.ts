@@ -8,6 +8,7 @@ import { Game } from 'shared/typings/models/game';
 import { PostGamesResponse, GetGamesResponse } from 'shared/typings/api/games';
 import { findGames, saveGames } from 'server/features/game/gameRepository';
 import { ServerError } from 'shared/typings/api/errors';
+import { getNumPlayersInGames } from './gameUtils';
 
 export const storeGames = async (): Promise<
   PostGamesResponse | ServerError
@@ -76,10 +77,12 @@ export const storeGames = async (): Promise<
 export const fetchGames = async (): Promise<GetGamesResponse | ServerError> => {
   try {
     const games = await findGames();
+    const numPlayers = await getNumPlayersInGames(games);
     return {
       message: 'Games downloaded',
       status: 'success',
       games: games,
+      numPlayers: numPlayers,
     };
   } catch (error) {
     return {
