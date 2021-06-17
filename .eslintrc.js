@@ -83,6 +83,13 @@ module.exports = {
       { ignoreStringArrays: true },
     ],
     '@typescript-eslint/no-shadow': 'error',
+    '@typescript-eslint/naming-convention': [
+      'error',
+      {
+        selector: 'interface',
+        format: ['PascalCase'],
+      },
+    ],
     '@typescript-eslint/triple-slash-reference': 'off', // Cypress requires triple slash reference
     '@typescript-eslint/strict-boolean-expressions': 'off', // Forces unwanted code style
     '@typescript-eslint/restrict-template-expressions': 'off', // Requires typing catch(e) every time
