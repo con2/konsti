@@ -141,10 +141,12 @@ const Tag = styled.span`
   height: 14px;
   text-align: center;
   border-radius: 4px;
-  background: #abd0a5;
+  background: ${(props) => props.theme.tagBackground};
   padding: 4px;
   margin-bottom: 4px;
   font-size: 12px;
+  color: ${(props) => props.theme.tagTextColor};
+  };
 `;
 
 const GameContainer = styled.div`
