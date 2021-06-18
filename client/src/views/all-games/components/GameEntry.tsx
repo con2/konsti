@@ -1,14 +1,15 @@
-import React, { ReactElement } from 'react';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import { useTranslation } from 'react-i18next';
-import { Game } from 'shared/typings/models/game';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { updateFavorite, UpdateFavoriteOpts } from 'client/utils/favorite';
 import { useAppDispatch, useAppSelector } from 'client/utils/hooks';
+import React, { ReactElement } from 'react';
+import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import { sharedConfig } from 'shared/config/sharedConfig';
 import { SignupStrategy } from 'shared/config/sharedConfig.types';
-import { DirectSignupForm } from './DirectSignupForm';
+import { Game } from 'shared/typings/models/game';
+import styled from 'styled-components';
 import { AlgorithmSignupForm } from './AlgorithmSignupForm';
+import { DirectSignupForm } from './DirectSignupForm';
 
 interface Props {
   game: Game;
@@ -49,41 +50,43 @@ export const GameEntry = ({ game, startTime }: Props): ReactElement => {
         <HeaderContainer>
           <h3>{game.title}</h3>
         </HeaderContainer>
-        <TagColumn>
-          <Tag>{t(`programType.${game.programType}`)}</Tag>
-          <Tag>{game.gameSystem}</Tag>
-        </TagColumn>
+        <GameTags>
+          {favorited && loggedIn && userGroup === 'user' && game && (
+            <FavoriteButton
+              onClick={async () =>
+                await updateFavoriteHandler({
+                  game,
+                  action: 'del',
+                  favoritedGames,
+                  username,
+                  dispatch,
+                })
+              }
+            >
+              <FavoriteIcon icon='heart' />
+            </FavoriteButton>
+          )}
+          {!favorited && loggedIn && userGroup === 'user' && game && (
+            <FavoriteButton
+              onClick={async () =>
+                await updateFavoriteHandler({
+                  game,
+                  action: 'add',
+                  favoritedGames,
+                  username,
+                  dispatch,
+                })
+              }
+            >
+              <FavoriteIcon icon={['far', 'heart']} />
+            </FavoriteButton>
+          )}
+          <TagColumn>
+            <Tag>{t(`programType.${game.programType}`)}</Tag>
+            <Tag>{game.gameSystem}</Tag>
+          </TagColumn>
+        </GameTags>
       </GameHeader>
-      {favorited && loggedIn && userGroup === 'user' && game && (
-        <FavoriteButton
-          onClick={async () =>
-            await updateFavoriteHandler({
-              game,
-              action: 'del',
-              favoritedGames,
-              username,
-              dispatch,
-            })
-          }
-        >
-          {t('button.favorite')}
-        </FavoriteButton>
-      )}
-      {!favorited && loggedIn && userGroup === 'user' && game && (
-        <FavoriteButton
-          onClick={async () =>
-            await updateFavoriteHandler({
-              game,
-              action: 'add',
-              favoritedGames,
-              username,
-              dispatch,
-            })
-          }
-        >
-          {t('button.removeFavorite')}
-        </FavoriteButton>
-      )}
       <GameMoreInfoRow>
         <GameListShortDescription>
           {game.shortDescription}
@@ -101,9 +104,8 @@ export const GameEntry = ({ game, startTime }: Props): ReactElement => {
 };
 
 const FavoriteButton = styled.button`
-  margin: 0;
-  align-self: flex-end;
-  width: 130px;
+  margin: 0 16px;
+  width: 60px;
 `;
 
 const GameEntryRow = styled.div`
@@ -161,4 +163,12 @@ const GameContainer = styled.div`
 const GameListShortDescription = styled.p`
   font-size: ${(props) => props.theme.fontSizeSmall};
   font-style: italic;
+`;
+
+const GameTags = styled.div`
+  display: flex;
+`;
+
+const FavoriteIcon = styled(FontAwesomeIcon)`
+  color: ${(props) => props.theme.favorited};
 `;

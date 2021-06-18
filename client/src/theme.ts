@@ -37,6 +37,8 @@ export const theme = {
   iconSize: '20px',
   buttonFontSize: '14px',
   linkFontSize: '18px',
+
+  favorited: '#D0A5AB',
 };
 
 export type Theme = typeof theme;
