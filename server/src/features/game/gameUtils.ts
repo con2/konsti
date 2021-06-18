@@ -5,7 +5,7 @@ import { removeInvalidSignupsFromUsers } from 'server/features/player-assignment
 import { GameDoc } from 'server/typings/game.typings';
 import { logger } from 'server/utils/logger';
 import { Game } from 'shared/typings/models/game';
-import { numPlayersInfo } from 'shared/typings/api/games';
+import { NumPlayersInGame } from 'shared/typings/api/games';
 import { findUsers } from 'server/features//user/userRepository';
 import { User } from 'shared/typings/models/user';
 
@@ -52,8 +52,8 @@ export const getGameById = async (gameId: string): Promise<GameDoc> => {
 
 export const getNumPlayersInGames = async (
   games: readonly Game[]
-): Promise<numPlayersInfo[]> => {
-  const numPlayers: numPlayersInfo[] = [];
+): Promise<NumPlayersInGame[]> => {
+  const numPlayers: NumPlayersInGame[] = [];
   try {
     const users = await findUsers();
     for (const game of games) {
