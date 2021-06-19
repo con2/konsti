@@ -31,8 +31,3 @@ export interface KompassiGame {
   three_word_description: string;
   is_beginner_friendly: boolean;
 }
-
-export interface GameWithPlayerCount {
-  game: Game;
-  players: number;
-}
