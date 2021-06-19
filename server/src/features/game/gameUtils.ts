@@ -7,7 +7,7 @@ import { logger } from 'server/utils/logger';
 import { Game } from 'shared/typings/models/game';
 import { findUsers } from 'server/features//user/userRepository';
 import { User } from 'shared/typings/models/user';
-import { GameWithPlayers } from 'shared/typings/api/games';
+import { GameWithUsernames } from 'shared/typings/api/games';
 
 export const removeDeletedGames = async (
   updatedGames: readonly Game[]
@@ -52,12 +52,12 @@ export const getGameById = async (gameId: string): Promise<GameDoc> => {
 
 export const getGamesWithPlayers = async (
   games: readonly Game[]
-): Promise<GameWithPlayers[]> => {
+): Promise<GameWithUsernames[]> => {
   try {
     const users = await findUsers();
 
     return games.map((game) => {
-      return { game, players: getPlayersForGame(users, game.gameId) };
+      return { game, usernames: getUsernamesForGame(users, game.gameId) };
     });
   } catch (error) {
     logger.error(`getGamesWithPlayers error: ${error}`);
@@ -65,7 +65,7 @@ export const getGamesWithPlayers = async (
   }
 };
 
-const getPlayersForGame = (users: User[], gameId: string): string[] => {
+const getUsernamesForGame = (users: User[], gameId: string): string[] => {
   const playersForGame = users.filter(
     (user) =>
       user.enteredGames.filter(
