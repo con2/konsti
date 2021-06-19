@@ -9,5 +9,10 @@ export interface PostGamesResponse {
 export interface GetGamesResponse {
   message: string;
   status: 'success';
-  games: Game[];
+  games: GameWithPlayers[];
+}
+
+export interface GameWithPlayers {
+  game: Game;
+  players: string[];
 }

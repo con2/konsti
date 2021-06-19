@@ -1,15 +1,27 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AllGamesState } from 'client/typings/redux.typings';
-import { Game } from 'shared/typings/models/game';
+import { GameWithPlayers } from 'shared/typings/api/games';
 
-const initialState: AllGamesState = { games: [] };
+const initialState: AllGamesState = { games: [], signups: [] };
 
 const allGamesSlice = createSlice({
   name: 'allGames',
   initialState,
   reducers: {
-    submitGetGamesAsync(state, action: PayloadAction<readonly Game[]>) {
-      return { ...state, games: action.payload };
+    submitGetGamesAsync(
+      state,
+      action: PayloadAction<readonly GameWithPlayers[]>
+    ) {
+      return {
+        ...state,
+        games: action.payload.map((gameWithPlayers) => gameWithPlayers.game),
+        signups: action.payload.map((gameWithPlayers) => {
+          return {
+            usernames: gameWithPlayers.players,
+            gameId: gameWithPlayers.game.gameId,
+          };
+        }),
+      };
     },
   },
 });

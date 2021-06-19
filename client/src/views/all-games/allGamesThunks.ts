@@ -25,7 +25,7 @@ export const submitGamesUpdate = (): AppThunk => {
     }
 
     if (gamesUpdateResponse?.status === 'success') {
-      dispatch(submitGetGamesAsync(gamesUpdateResponse.games));
+      dispatch(submitGetGames());
     }
   };
 };
