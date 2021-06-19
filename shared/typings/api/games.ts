@@ -21,3 +21,8 @@ export interface UserSignup {
   username: string;
   signupMessage: string;
 }
+
+export interface GameSignups {
+  usernames: string[];
+  gameId: string;
+}

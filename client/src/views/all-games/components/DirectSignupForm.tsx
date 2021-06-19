@@ -8,16 +8,18 @@ import { SelectedGame } from 'shared/typings/models/user';
 import { useAppDispatch, useAppSelector } from 'client/utils/hooks';
 import { isAlreadySigned } from './allGamesUtils';
 import { Button } from 'client/components/Button';
+import styled from 'styled-components';
 
 interface Props {
   game: Game;
   startTime: string;
+  gameIsFull: boolean;
 }
 
 export const DirectSignupForm: FC<Props> = (
   props: Props
 ): ReactElement | null => {
-  const { game, startTime } = props;
+  const { game, startTime, gameIsFull } = props;
 
   const { t } = useTranslation();
 
@@ -88,12 +90,13 @@ export const DirectSignupForm: FC<Props> = (
     return (
       <>
         {signupForDirect(alreadySignedToGame, enteredGamesForTimeslot)}
+        {gameIsFull && <GameIsFull>Peli on taynna</GameIsFull>}
         {alreadySignedToGame && (
           <Button onClick={async () => await removeSignup(game)}>
             {t('button.cancel')}
           </Button>
         )}
-        {signupFormOpen && !alreadySignedToGame && (
+        {signupFormOpen && !alreadySignedToGame && !gameIsFull && (
           <EnterGameForm
             game={game}
             onEnterGame={() => setSignupFormOpen(false)}
@@ -105,3 +108,7 @@ export const DirectSignupForm: FC<Props> = (
 
   return null;
 };
+
+const GameIsFull = styled.h4`
+  color: ${(props) => props.theme.error};
+`;
