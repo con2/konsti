@@ -15,6 +15,7 @@ import { Button } from 'client/components/Button';
 interface Props {
   game: Game;
   startTime: string;
+  players: number;
 }
 
 // Favorite / remove favorite clicked
@@ -26,7 +27,11 @@ const updateFavoriteHandler = async (
   await updateFavorite(updateOpts);
 };
 
-export const GameEntry = ({ game, startTime }: Props): ReactElement => {
+export const GameEntry = ({
+  game,
+  startTime,
+  players,
+}: Props): ReactElement => {
   const { t } = useTranslation();
 
   const username = useAppSelector((state) => state.login.username);
@@ -44,12 +49,19 @@ export const GameEntry = ({ game, startTime }: Props): ReactElement => {
     ) !== undefined;
 
   const isEnterGameMode = sharedConfig.signupStrategy === SignupStrategy.DIRECT;
+  const gameIsFull = game.maxAttendance === players;
 
   return (
     <GameContainer key={game.gameId} className='games-list'>
       <GameHeader>
         <HeaderContainer>
           <h3>{game.title}</h3>
+          <PlayerCount visible={isEnterGameMode}>
+            {players} / {game.maxAttendance} ilmoittautunutta
+          </PlayerCount>
+          <PlayersNeeded visible={players < game.minAttendance}>
+            Tarvitaan vielä {game.minAttendance - players} pelaajaa!
+          </PlayersNeeded>
         </HeaderContainer>
         <GameTags>
           {favorited && loggedIn && userGroup === 'user' && game && (
@@ -95,7 +107,11 @@ export const GameEntry = ({ game, startTime }: Props): ReactElement => {
         </GameListShortDescription>
       </GameMoreInfoRow>
       {loggedIn && isEnterGameMode && (
-        <DirectSignupForm game={game} startTime={startTime} />
+        <DirectSignupForm
+          game={game}
+          gameIsFull={gameIsFull}
+          startTime={startTime}
+        />
       )}
       {loggedIn && !isEnterGameMode && (
         <AlgorithmSignupForm game={game} startTime={startTime} />
@@ -103,6 +119,16 @@ export const GameEntry = ({ game, startTime }: Props): ReactElement => {
     </GameContainer>
   );
 };
+
+const PlayersNeeded = styled.span`
+  margin-top: 8px;
+  display: ${(props) => (props.visible ? 'block' : 'none')};
+`;
+
+const PlayerCount = styled.span`
+  margin-top: 8px;
+  display: ${(props) => (props.visible ? 'block' : 'none')};
+`;
 
 const FavoriteButton = styled(Button)`
   margin: 0 16px;
@@ -121,6 +147,7 @@ const GameHeader = styled(GameEntryRow)`
 
 const HeaderContainer = styled.div`
   display: flex;
+  flex-direction: column;
 
   h3 {
     margin: 0;

@@ -3,12 +3,13 @@ import { TFunction, useTranslation } from 'react-i18next';
 import _ from 'lodash';
 import styled from 'styled-components';
 import { timeFormatter } from 'client/utils/timeFormatter';
-import { Game } from 'shared/typings/models/game';
 import { GameEntry } from './GameEntry';
 import { useAppSelector } from 'client/utils/hooks';
 import { SelectedGame } from 'shared/typings/models/user';
 import { sharedConfig } from 'shared/config/sharedConfig';
 import { SignupStrategy } from 'shared/config/sharedConfig.types';
+import { Game } from 'shared/typings/models/game';
+import { GameSignups } from 'shared/typings/api/games';
 
 export interface Props {
   games: readonly Game[];
@@ -17,11 +18,19 @@ export interface Props {
 export const AllGamesList = ({ games }: Props): ReactElement => {
   const { t } = useTranslation();
 
+  const signups = useAppSelector((state) => state.allGames.signups);
   const signedGames = useAppSelector((state) => state.myGames.signedGames);
   const enteredGames = useAppSelector((state) => state.myGames.enteredGames);
 
-  const GamesList = buildGamesList(games, signedGames, enteredGames, t);
+  const GamesList = buildGamesList(
+    games,
+    signups,
+    signedGames,
+    enteredGames,
+    t
+  );
 
+  console.log(signups);
   return (
     <div className='games-list'>
       {games.length === 0 && <h3>{t('noProgramItemsAvailable')}</h3>}
@@ -32,6 +41,7 @@ export const AllGamesList = ({ games }: Props): ReactElement => {
 
 const buildGamesList = (
   games: readonly Game[],
+  signups: readonly GameSignups[],
   signedGames: readonly SelectedGame[],
   enteredGames: readonly SelectedGame[],
   t: TFunction
@@ -53,7 +63,9 @@ const buildGamesList = (
     const signupStartTime = timeFormatter.getStartTime(startTime);
     const signupEndTime = timeFormatter.getEndTime(startTime);
 
-    const allGamesRevolvingDoor = gamesList.every((game) => game.revolvingDoor);
+    const allGamesRevolvingDoor = gamesList.every(
+      (game) => game?.revolvingDoor
+    );
     const signedGamesCount = signedGames.filter(
       (game) => game.gameDetails.startTime === startTime
     ).length;
@@ -88,9 +100,19 @@ const buildGamesList = (
 
     GamesList.push(title);
 
-    const gameEntries = gamesList.map((game) => (
-      <GameEntry key={game.gameId} game={game} startTime={startTime} />
-    ));
+    const gameEntries = gamesList.map((game) => {
+      const gameSignups = signups.find(
+        (gameSignup) => gameSignup.gameId === game.gameId
+      );
+      return (
+        <GameEntry
+          key={game.gameId}
+          game={game}
+          players={gameSignups?.usernames.length ?? 0}
+          startTime={startTime}
+        />
+      );
+    });
     GamesList.push(...gameEntries);
   }
 
