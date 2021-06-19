@@ -9,7 +9,7 @@ interface StartTestServerReturn {
 export const startTestServer = async (): Promise<StartTestServerReturn> => {
   const mongoServer = new MongoMemoryServer();
   const mongoUri = await mongoServer.getUri();
-  const module = await import('server/utils/startServer');
+  const module = await import('server/utils/server');
   const server = await module.startServer(mongoUri);
 
   return { server, mongoServer };
@@ -19,7 +19,7 @@ export const stopTestServer = async (
   server: Server,
   mongoServer: MongoMemoryServer
 ): Promise<void> => {
-  const module = await import('server/utils/closeServer');
+  const module = await import('server/utils/server');
   await module.closeServer(server);
   await mongoServer.stop();
 };

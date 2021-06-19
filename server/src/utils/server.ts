@@ -77,3 +77,19 @@ export const startServer = async (
 
   return runningServer;
 };
+
+export const closeServer = async (server: Server): Promise<void> => {
+  try {
+    await server.close();
+  } catch (error) {
+    logger.error(error);
+  }
+
+  try {
+    await db.gracefulExit();
+  } catch (error) {
+    logger.error(error);
+  }
+
+  logger.info('Server closed');
+};
