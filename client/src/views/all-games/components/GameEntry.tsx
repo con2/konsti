@@ -146,7 +146,6 @@ const Tag = styled.span`
   margin-bottom: 4px;
   font-size: 12px;
   color: ${(props) => props.theme.tagTextColor};
-  };
 `;
 
 const GameContainer = styled.div`
