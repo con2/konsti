@@ -1,8 +1,7 @@
 import { Server } from 'http';
 import request from 'supertest';
 import { MongoMemoryServer } from 'mongodb-memory-server';
-import { startServer } from 'server/utils/startServer';
-import { closeServer } from 'server/utils/closeServer';
+import { startServer, closeServer } from 'server/utils/server';
 import { ENTERED_GAME_ENDPOINT } from 'shared/constants/apiEndpoints';
 import { getJWT } from 'server/utils/jwt';
 import { UserGroup } from 'shared/typings/models/user';
