@@ -60,9 +60,7 @@ export const getGamesWithPlayers = async (
       return { game, players: getPlayersForGame(users, game.gameId) };
     });
   } catch (error) {
-    logger.error(
-      `getNumPlayersInGames: Error calculating number of players in games - ${error}`
-    );
+    logger.error(`getGamesWithPlayers error: ${error}`);
     return [];
   }
 };
