@@ -3,12 +3,12 @@ import { updateGames } from 'server/utils/updateGames';
 import { updateGamePopularity } from 'server/features/game-popularity/updateGamePopularity';
 import { config } from 'server/config';
 import { kompassiGameMapper } from 'server/utils/kompassiGameMapper';
-import { GameWithPlayerCount, KompassiGame } from 'server/typings/game.typings';
+import { KompassiGame } from 'server/typings/game.typings';
 import { Game } from 'shared/typings/models/game';
 import { PostGamesResponse, GetGamesResponse } from 'shared/typings/api/games';
 import { findGames, saveGames } from 'server/features/game/gameRepository';
 import { ServerError } from 'shared/typings/api/errors';
-import { getNumPlayersInGames } from './gameUtils';
+import { getGamesWithPlayers } from './gameUtils';
 
 export const storeGames = async (): Promise<
   PostGamesResponse | ServerError
@@ -77,24 +77,12 @@ export const storeGames = async (): Promise<
 export const fetchGames = async (): Promise<GetGamesResponse | ServerError> => {
   try {
     const games = await findGames();
-    const numPlayers = await getNumPlayersInGames(games);
+    const gamesWithPlayers = await getGamesWithPlayers(games);
 
-    const gamesWithPlayerCount: GameWithPlayerCount[] = [];
-    for (const game of games) {
-      const numPlayersInfo = numPlayers.find((n) => n.gameId === game.gameId);
-      let num = -1;
-      if (numPlayersInfo !== undefined) {
-        num = numPlayersInfo.numPlayers;
-      }
-      gamesWithPlayerCount.push({
-        game: game,
-        players: num,
-      });
-    }
     return {
       message: 'Games downloaded',
       status: 'success',
-      games: gamesWithPlayerCount,
+      games: gamesWithPlayers,
     };
   } catch (error) {
     return {

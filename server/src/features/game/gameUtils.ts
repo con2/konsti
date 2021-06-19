@@ -5,9 +5,9 @@ import { removeInvalidSignupsFromUsers } from 'server/features/player-assignment
 import { GameDoc } from 'server/typings/game.typings';
 import { logger } from 'server/utils/logger';
 import { Game } from 'shared/typings/models/game';
-import { NumPlayersInGame } from 'shared/typings/api/games';
 import { findUsers } from 'server/features//user/userRepository';
 import { User } from 'shared/typings/models/user';
+import { GameWithPlayers } from 'shared/typings/api/games';
 
 export const removeDeletedGames = async (
   updatedGames: readonly Game[]
@@ -50,32 +50,30 @@ export const getGameById = async (gameId: string): Promise<GameDoc> => {
   return foundGame;
 };
 
-export const getNumPlayersInGames = async (
+export const getGamesWithPlayers = async (
   games: readonly Game[]
-): Promise<NumPlayersInGame[]> => {
-  const numPlayers: NumPlayersInGame[] = [];
+): Promise<GameWithPlayers[]> => {
   try {
     const users = await findUsers();
-    for (const game of games) {
-      numPlayers.push({
-        gameId: game.gameId,
-        numPlayers: countNumPlayers(users, game.gameId),
-      });
-    }
+
+    return games.map((game) => {
+      return { game, players: getPlayersForGame(users, game.gameId) };
+    });
   } catch (error) {
     logger.error(
       `getNumPlayersInGames: Error calculating number of players in games - ${error}`
     );
-    return error;
+    return [];
   }
-  return numPlayers;
 };
 
-const countNumPlayers = (users: User[], gameId: string): number => {
-  return users.filter(
+const getPlayersForGame = (users: User[], gameId: string): string[] => {
+  const playersForGame = users.filter(
     (user) =>
       user.enteredGames.filter(
         (enteredGame) => enteredGame.gameDetails.gameId === gameId
       ).length > 0
-  ).length;
+  );
+
+  return playersForGame.map((player) => player.username);
 };

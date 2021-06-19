@@ -17,15 +17,11 @@ export const submitGetGames = (): AppThunk => {
 };
 
 export const submitGamesUpdate = (): AppThunk => {
-  return async (dispatch): Promise<void> => {
+  return async (): Promise<void> => {
     const gamesUpdateResponse = await postGamesUpdate();
 
     if (gamesUpdateResponse?.status === 'error') {
       return await Promise.reject(gamesUpdateResponse);
-    }
-
-    if (gamesUpdateResponse?.status === 'success') {
-      dispatch(submitGetGamesAsync(gamesUpdateResponse.games));
     }
   };
 };

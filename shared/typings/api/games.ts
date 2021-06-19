@@ -1,10 +1,4 @@
-import { GameWithPlayerCount } from 'server/typings/game.typings';
 import { Game } from 'shared/typings/models/game';
-
-export interface NumPlayersInGame {
-  gameId: string;
-  numPlayers: number;
-}
 
 export interface PostGamesResponse {
   message: string;
@@ -15,5 +9,10 @@ export interface PostGamesResponse {
 export interface GetGamesResponse {
   message: string;
   status: 'success';
-  games: GameWithPlayerCount[];
+  games: GameWithPlayers[];
+}
+
+export interface GameWithPlayers {
+  game: Game;
+  players: string[];
 }

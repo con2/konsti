@@ -14,8 +14,14 @@ export interface AdminState {
   responseMessage: string;
 }
 
+interface UsersForGame {
+  usernames: string[];
+  gameId: string;
+}
+
 export interface AllGamesState {
   games: readonly Game[];
+  signups: readonly UsersForGame[];
 }
 
 export interface LoginState {
