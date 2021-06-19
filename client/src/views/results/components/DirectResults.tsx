@@ -1,13 +1,17 @@
 import _ from 'lodash';
 import React, { ReactElement } from 'react';
+import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import { timeFormatter } from 'client/utils/timeFormatter';
 import { useAppSelector } from 'client/utils/hooks';
+import { getUsernamesForGameId } from 'client/views/results/resultsUtils';
 
 export const DirectResults = (): ReactElement => {
   const { t } = useTranslation();
 
   const games = useAppSelector((state) => state.allGames.games);
+  const signups = useAppSelector((state) => state.allGames.signups);
+
   const gamesByStartTime = _.groupBy(games, 'startTime');
 
   return (
@@ -25,7 +29,19 @@ export const DirectResults = (): ReactElement => {
             </h3>
 
             {gamesForTime.map((game) => {
-              return <p key={game.gameId}>{game.title}</p>;
+              const usernames = getUsernamesForGameId(game.gameId, signups);
+              return (
+                <>
+                  <h4
+                    key={game.gameId}
+                  >{`${game.title} (${usernames.length}/${game.maxAttendance})`}</h4>
+                  <ResultPlayerList>
+                    {usernames.map((username) => (
+                      <p key={username}>{username}</p>
+                    ))}
+                  </ResultPlayerList>
+                </>
+              );
             })}
           </>
         );
@@ -33,3 +49,7 @@ export const DirectResults = (): ReactElement => {
     </div>
   );
 };
+
+const ResultPlayerList = styled.div`
+  padding-left: 30px;
+`;

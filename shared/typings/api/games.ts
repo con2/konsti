@@ -9,10 +9,10 @@ export interface PostGamesResponse {
 export interface GetGamesResponse {
   message: string;
   status: 'success';
-  games: GameWithPlayers[];
+  games: GameWithUsernames[];
 }
 
-export interface GameWithPlayers {
+export interface GameWithUsernames {
   game: Game;
-  players: string[];
+  usernames: string[];
 }
