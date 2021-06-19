@@ -57,7 +57,7 @@ export const getGamesWithPlayers = async (
     const users = await findUsers();
 
     return games.map((game) => {
-      return { game, usernames: getPlayersForGame(users, game.gameId) };
+      return { game, usernames: getUsernamesForGame(users, game.gameId) };
     });
   } catch (error) {
     logger.error(`getGamesWithPlayers error: ${error}`);
@@ -65,7 +65,7 @@ export const getGamesWithPlayers = async (
   }
 };
 
-const getPlayersForGame = (users: User[], gameId: string): string[] => {
+const getUsernamesForGame = (users: User[], gameId: string): string[] => {
   const playersForGame = users.filter(
     (user) =>
       user.enteredGames.filter(
