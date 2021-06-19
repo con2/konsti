@@ -14,7 +14,7 @@ export interface AdminState {
   responseMessage: string;
 }
 
-interface UsersForGame {
+export interface UsersForGame {
   usernames: string[];
   gameId: string;
 }
