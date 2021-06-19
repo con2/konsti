@@ -1,8 +1,7 @@
 import request from 'supertest';
 import { MongoMemoryServer } from 'mongodb-memory-server';
 import { Server } from 'http';
-import { startServer } from 'server/utils/startServer';
-import { closeServer } from 'server/utils/closeServer';
+import { startServer, closeServer } from 'server/utils/server';
 import { FEEDBACK_ENDPOINT } from 'shared/constants/apiEndpoints';
 
 let server: Server;
