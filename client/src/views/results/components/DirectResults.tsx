@@ -32,14 +32,13 @@ export const DirectResults = (): ReactElement => {
       </div>
 
       {Object.entries(gamesByStartTime).map(([startTime, gamesForTime]) => {
+        const formattedTime = timeFormatter.getWeekdayAndTime({
+          time: startTime,
+          capitalize: true,
+        });
         return (
-          <div key={startTime}>
-            <h3>
-              {timeFormatter.getWeekdayAndTime({
-                time: startTime,
-                capitalize: true,
-              })}
-            </h3>
+          <TimeSlot key={startTime}>
+            <h3>{formattedTime}</h3>
 
             {gamesForTime.map((game) => {
               const usernames = getUsernamesForGameId(game.gameId, signups);
@@ -58,12 +57,16 @@ export const DirectResults = (): ReactElement => {
                 </div>
               );
             })}
-          </div>
+          </TimeSlot>
         );
       })}
     </div>
   );
 };
+
+const TimeSlot = styled.div`
+  padding: 0 0 20px 0;
+`;
 
 const ResultPlayerList = styled.div`
   padding-left: 30px;
