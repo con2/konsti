@@ -12,6 +12,7 @@ import { TimesDropdown } from 'client/components/TimesDropdown';
 import { timeFormatter } from 'client/utils/timeFormatter';
 import { Game } from 'shared/typings/models/game';
 import { useAppDispatch, useAppSelector } from 'client/utils/hooks';
+import { Button } from 'client/components/Button';
 
 export const AdminView = (): ReactElement => {
   const games = useAppSelector((state) => state.allGames.games);
@@ -117,32 +118,32 @@ export const AdminView = (): ReactElement => {
   return (
     <div className='admin-view'>
       <div className='admin-button-row'>
-        <button
+        <Button
           disabled={submitting}
           onClick={() => {
             submitUpdate();
           }}
         >
           {t('button.updateDb')}
-        </button>
+        </Button>
 
-        <button
+        <Button
           disabled={submitting}
           onClick={() => {
             submitAssign();
           }}
         >
           {t('button.assignPlayers')}
-        </button>
+        </Button>
 
-        <button
+        <Button
           disabled={submitting}
           onClick={() => {
             toggleAppOpen();
           }}
         >
           {appOpen ? t('button.closeApp') : t('button.openApp')}
-        </button>
+        </Button>
       </div>
 
       {submitting && <p>{t('loading')}</p>}
@@ -170,14 +171,14 @@ export const AdminView = (): ReactElement => {
             {!activeSignupTime && <p>{t('noActiveTime')}</p>}
           </div>
 
-          <button
+          <Button
             disabled={submitting}
             onClick={() => {
               submitTime();
             }}
           >
             {t('button.saveTime')}
-          </button>
+          </Button>
 
           <TimesDropdown
             times={getStartingTimes()}

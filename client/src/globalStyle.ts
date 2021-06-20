@@ -82,33 +82,6 @@ export const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
     padding: 0;
   }
 
-  button {
-    background: ${(props) => props.theme.buttonBackground};
-    border: 1px solid ${(props) => props.theme.buttonBorder};
-    border-radius: 5px;
-    color: ${(props) => props.theme.buttonText};
-    cursor: pointer;
-    margin: 10px 10px 10px 0;
-    padding: 6px 20px;
-    font-size: ${(props) => props.theme.buttonFontSize};
-  }
-
-  button:hover,
-  button:focus {
-    background-color: ${(props) => props.theme.backgroundActive};
-    border: 1px solid ${(props) => props.theme.borderActive};
-    color: ${(props) => props.theme.borderActive};
-  }
-
-  button:disabled {
-    background-color: ${(props) => props.theme.disabled};
-  }
-
-  button:disabled:hover,
-  button:disabled:focus {
-    color: ${(props) => props.theme.buttonText};
-  }
-
   .small {
     font-size: 14px;
   }

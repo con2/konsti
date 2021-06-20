@@ -4,6 +4,7 @@ import { useStore } from 'react-redux';
 import { HelperResultsList } from 'client/views/helper/components/HelperResultsList';
 import { PasswordManagement } from 'client/views/helper/components/PasswordManagement';
 import { loadResults, loadSettings } from 'client/utils/loadData';
+import { Button } from 'client/components/Button';
 
 export const HelperView = (): ReactElement => {
   const { t } = useTranslation();
@@ -22,18 +23,18 @@ export const HelperView = (): ReactElement => {
 
   return (
     <div className='helper-view'>
-      <button
+      <Button
         disabled={selectedTool === 'results'}
         onClick={() => setSelectedTool('results')}
       >
         {t('helperResults')}
-      </button>
-      <button
+      </Button>
+      <Button
         disabled={selectedTool === 'password-management'}
         onClick={() => setSelectedTool('password-management')}
       >
         {t('helperPasswordManagement')}
-      </button>
+      </Button>
 
       {selectedTool === 'results' && <HelperResultsList />}
       {selectedTool === 'password-management' && <PasswordManagement />}

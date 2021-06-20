@@ -6,6 +6,7 @@ import { timeFormatter } from 'client/utils/timeFormatter';
 import { useAppSelector } from 'client/utils/hooks';
 import { getUsernamesForGameId } from 'client/views/results/resultsUtils';
 import { getUpcomingGames } from 'client/utils/getUpcomingGames';
+import { Button } from 'client/components/Button';
 
 export const DirectResults = (): ReactElement => {
   const { t } = useTranslation();
@@ -22,12 +23,12 @@ export const DirectResults = (): ReactElement => {
       <h2>{t('resultsView.allSignupResults')}</h2>
 
       <div className='my-games-toggle-visibility'>
-        <button onClick={() => setShowAllGames(false)} disabled={!showAllGames}>
+        <Button onClick={() => setShowAllGames(false)} disabled={!showAllGames}>
           {t('lastStartedAndUpcomingGames')}
-        </button>
-        <button onClick={() => setShowAllGames(true)} disabled={showAllGames}>
+        </Button>
+        <Button onClick={() => setShowAllGames(true)} disabled={showAllGames}>
           {t('allGames')}
-        </button>
+        </Button>
       </div>
 
       {Object.entries(gamesByStartTime).map(([startTime, gamesForTime]) => {
