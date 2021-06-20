@@ -84,6 +84,7 @@ const getRandomSignup = (games: readonly Game[]): SelectedGame[] => {
           gameDetails: randomGame,
           priority: i + 1,
           time: randomGame.startTime,
+          message: '',
         });
       }
     }

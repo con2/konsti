@@ -10,7 +10,12 @@ const user: User = {
   groupCode: '123',
   favoritedGames: [],
   signedGames: [
-    { gameDetails: mockGame, priority: 1, time: '2019-11-23T12:00:00+02:00' },
+    {
+      gameDetails: mockGame,
+      priority: 1,
+      time: '2019-11-23T12:00:00+02:00',
+      message: '',
+    },
   ],
   enteredGames: [],
   createdAt: null,
@@ -37,7 +42,12 @@ const user3: User = {
   favoritedGames: [],
   signedGames: [],
   enteredGames: [
-    { gameDetails: mockGame, priority: 1, time: '2019-11-23T12:00:00+02:00' },
+    {
+      gameDetails: mockGame,
+      priority: 1,
+      time: '2019-11-23T12:00:00+02:00',
+      message: '',
+    },
   ],
   createdAt: null,
 };

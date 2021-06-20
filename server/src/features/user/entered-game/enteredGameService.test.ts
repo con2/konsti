@@ -54,6 +54,7 @@ describe(`POST ${ENTERED_GAME_ENDPOINT}`, () => {
         username: mockUser.username,
         enteredGameId: 'invalid_game_id',
         startTime: '2019-07-26T13:00:00Z',
+        message: '',
       })
       .set(
         'Authorization',
@@ -72,6 +73,7 @@ describe(`POST ${ENTERED_GAME_ENDPOINT}`, () => {
         username: 'user_not_found',
         enteredGameId: mockGame.gameId,
         startTime: mockGame.startTime,
+        message: '',
       })
       .set(
         'Authorization',
@@ -97,7 +99,7 @@ describe(`POST ${ENTERED_GAME_ENDPOINT}`, () => {
         username: mockUser.username,
         enteredGameId: mockGame.gameId,
         startTime: mockGame.startTime,
-        messasge: 'Test message',
+        message: 'Test message',
       })
       .set(
         'Authorization',
