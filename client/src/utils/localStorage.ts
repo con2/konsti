@@ -19,7 +19,7 @@ export const saveSession = (state: LocalStorageState): void => {
     const serializedState = JSON.stringify(state);
     localStorage.setItem('state', serializedState);
   } catch (error) {
-    console.error(error);
+    console.error(error); // eslint-disable-line no-console
   }
 };
 
@@ -27,7 +27,7 @@ export const clearSession = (): void => {
   try {
     localStorage.removeItem('state');
   } catch (error) {
-    console.error(error);
+    console.error(error); // eslint-disable-line no-console
   }
 };
 
@@ -36,7 +36,7 @@ export const getLanguage = (): string => {
   try {
     language = localStorage.getItem('i18nextLng');
   } catch (error) {
-    console.error(error);
+    console.error(error); // eslint-disable-line no-console
   }
 
   if (typeof language !== 'undefined' && typeof language === 'string') {

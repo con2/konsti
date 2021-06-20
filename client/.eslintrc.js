@@ -27,9 +27,6 @@ module.exports = {
   },
 
   rules: {
-    // eslint
-    'no-console': 'off',
-
     // eslint-plugin-react
     'react/no-multi-comp': 'error',
     'react/jsx-no-useless-fragment': 'error',
