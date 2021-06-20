@@ -238,6 +238,8 @@
   "resultsView": {
     "allSignupResults": "Pelien ilmoittautumistilanne ja pelaajat",
     "confirm": "Vahvista",
-    "noSignups": "Ei ilmoittautuneita pelaajia"
+    "noSignups": "Ei ilmoittautuneita pelaajia",
+    "players": "Pelaajia",
+    "noStartingGames": "Ei alkavia pelejä"
   }
 }
