@@ -97,6 +97,7 @@ describe(`POST ${ENTERED_GAME_ENDPOINT}`, () => {
         username: mockUser.username,
         enteredGameId: mockGame.gameId,
         startTime: mockGame.startTime,
+        messasge: 'Test message',
       })
       .set(
         'Authorization',
@@ -113,6 +114,7 @@ describe(`POST ${ENTERED_GAME_ENDPOINT}`, () => {
     expect(modifiedUser?.enteredGames[0].gameDetails.gameId).toEqual(
       mockGame.gameId
     );
+    expect(modifiedUser?.enteredGames[0].message).toEqual('Test message');
   });
 });
 
@@ -181,6 +183,7 @@ describe(`DELETE ${ENTERED_GAME_ENDPOINT}`, () => {
           gameDetails: games[0]._id,
           priority: 1,
           time: mockGame.startTime,
+          message: 'Test message',
         },
       ],
     };

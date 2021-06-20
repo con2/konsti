@@ -290,6 +290,7 @@ export const saveSignup = async (signupData: UserSignup): Promise<User> => {
           gameDetails: gameDocInDb._id,
           priority: signedGame.priority,
           time: signedGame.time,
+          message: signedGame.message,
         });
       }
       return acc;

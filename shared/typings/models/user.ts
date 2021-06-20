@@ -20,6 +20,7 @@ export interface SelectedGame {
   gameDetails: Game;
   priority: number;
   time: string;
+  message: string;
 }
 
 export enum UserGroup {

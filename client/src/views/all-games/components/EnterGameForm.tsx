@@ -24,6 +24,7 @@ export const EnterGameForm: FC<Props> = (props: Props): ReactElement => {
       gameDetails: game,
       priority: 0,
       time: game.startTime,
+      message: '',
     };
 
     const enterData = {
