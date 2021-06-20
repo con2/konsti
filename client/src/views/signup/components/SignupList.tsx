@@ -110,6 +110,7 @@ export const SignupList = ({
         gameDetails: { ...newSelectedGame },
         priority: newSelectedGames.indexOf(newSelectedGame) + 1,
         time: signupTime,
+        message: '',
       };
     });
 

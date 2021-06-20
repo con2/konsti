@@ -74,6 +74,7 @@ const getCurrentEnteredGames = (
         gameDetails: gameDocInDb?._id,
         priority: foundResult?.enteredGame.priority,
         time: foundResult?.enteredGame.time,
+        message: '',
       },
     ];
   }

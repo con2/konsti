@@ -33,6 +33,7 @@ export const PostEnteredGameParametersRuntype = Record({
   username: String,
   enteredGameId: String,
   startTime: String,
+  message: String,
 });
 
 export type PostEnteredGameParameters = Static<

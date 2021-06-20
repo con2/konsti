@@ -290,6 +290,7 @@ export const saveSignup = async (signupData: UserSignup): Promise<User> => {
           gameDetails: gameDocInDb._id,
           priority: signedGame.priority,
           time: signedGame.time,
+          message: signedGame.message,
         });
       }
       return acc;
@@ -423,7 +424,7 @@ export const updateEnteredGames = async (
 export const saveEnteredGame = async (
   enteredGameRequest: PostEnteredGameParameters
 ): Promise<User> => {
-  const { username, enteredGameId, startTime } = enteredGameRequest;
+  const { username, enteredGameId, startTime, message } = enteredGameRequest;
 
   let game;
   try {
@@ -443,6 +444,7 @@ export const saveEnteredGame = async (
             gameDetails: game._id,
             priority: 1,
             time: startTime,
+            message: message,
           },
         },
       },
