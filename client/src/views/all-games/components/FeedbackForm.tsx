@@ -27,7 +27,7 @@ export const FeedbackForm = ({ game }: Props): ReactElement => {
     try {
       await postFeedback(feedbackData);
     } catch (error) {
-      console.log(`postFeedback error:`, error);
+      console.log(`postFeedback error:`, error); // eslint-disable-line no-console
     }
     setFeedbackSent(true);
     setSubmitting(false);
