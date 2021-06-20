@@ -5,11 +5,14 @@ import { getTime } from 'client/utils/getTime';
 import { isGroupLeader } from 'client/views/group/GroupView';
 import { SelectedGame } from 'shared/typings/models/user';
 
-export const getUpcomingGames = (games: readonly Game[]): readonly Game[] => {
+export const getUpcomingGames = (
+  games: readonly Game[],
+  offsetByHours = 0
+): readonly Game[] => {
   const timeNow = getTime();
 
   const upcomingGames = games.filter((game) =>
-    moment(game.startTime).isAfter(timeNow)
+    moment(game.startTime).add(offsetByHours, 'hours').isAfter(timeNow)
   );
 
   return upcomingGames;

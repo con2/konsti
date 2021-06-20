@@ -1,10 +1,11 @@
 import _ from 'lodash';
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useState } from 'react';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import { timeFormatter } from 'client/utils/timeFormatter';
 import { useAppSelector } from 'client/utils/hooks';
 import { getUsernamesForGameId } from 'client/views/results/resultsUtils';
+import { getUpcomingGames } from 'client/utils/getUpcomingGames';
 
 export const DirectResults = (): ReactElement => {
   const { t } = useTranslation();
@@ -12,11 +13,22 @@ export const DirectResults = (): ReactElement => {
   const games = useAppSelector((state) => state.allGames.games);
   const signups = useAppSelector((state) => state.allGames.signups);
 
-  const gamesByStartTime = _.groupBy(games, 'startTime');
+  const [showAllGames, setShowAllGames] = useState<boolean>(false);
+  const filteredGames = showAllGames ? games : getUpcomingGames(games, 1);
+  const gamesByStartTime = _.groupBy(filteredGames, 'startTime');
 
   return (
     <div className='results-view'>
       <h2>{t('resultsView.allSignupResults')}</h2>
+
+      <div className='my-games-toggle-visibility'>
+        <button onClick={() => setShowAllGames(false)} disabled={!showAllGames}>
+          {t('lastStartedAndUpcomingGames')}
+        </button>
+        <button onClick={() => setShowAllGames(true)} disabled={showAllGames}>
+          {t('allGames')}
+        </button>
+      </div>
 
       {Object.entries(gamesByStartTime).map(([startTime, gamesForTime]) => {
         return (
@@ -36,9 +48,11 @@ export const DirectResults = (): ReactElement => {
                     key={game.gameId}
                   >{`${game.title} (${usernames.length}/${game.maxAttendance})`}</h4>
                   <ResultPlayerList>
-                    {usernames.map((username) => (
-                      <p key={username}>{username}</p>
-                    ))}
+                    {usernames.length > 0
+                      ? usernames.map((username) => (
+                          <p key={username}>{username}</p>
+                        ))
+                      : t('resultsView.noSignups')}
                   </ResultPlayerList>
                 </div>
               );

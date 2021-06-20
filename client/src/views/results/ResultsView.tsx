@@ -5,9 +5,12 @@ import { sharedConfig } from 'shared/config/sharedConfig';
 import { SignupStrategy } from 'shared/config/sharedConfig.types';
 import { AlgorithmResults } from 'client/views/results/components/AlgorithmResults';
 import { DirectResults } from 'client/views/results/components/DirectResults';
+import { useAppSelector } from 'client/utils/hooks';
 
 export const ResultsView = (): ReactElement => {
   const store = useStore();
+
+  const testTime = useAppSelector((state) => state.admin.testTime);
 
   useEffect(() => {
     const fetchData = async (): Promise<void> => {
@@ -15,7 +18,7 @@ export const ResultsView = (): ReactElement => {
       await loadResults();
     };
     fetchData();
-  }, [store]);
+  }, [store, testTime]);
 
   if (sharedConfig.signupStrategy === SignupStrategy.DIRECT) {
     return <DirectResults />;
