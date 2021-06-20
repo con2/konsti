@@ -29,6 +29,7 @@ export const SignupForm = ({ game, startTime }: Props): ReactElement => {
         gameDetails: game,
         priority: parseInt(priorityRef.current.value, 10),
         time: game.startTime,
+        message: '',
       },
     ];
 

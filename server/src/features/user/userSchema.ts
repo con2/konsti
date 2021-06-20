@@ -14,6 +14,7 @@ const UserSchema = new mongoose.Schema(
         gameDetails: { type: mongoose.Schema.Types.ObjectId, ref: 'Game' },
         priority: Number,
         time: Date,
+        message: String,
       },
     ],
     enteredGames: [
@@ -21,6 +22,7 @@ const UserSchema = new mongoose.Schema(
         gameDetails: { type: mongoose.Schema.Types.ObjectId, ref: 'Game' },
         priority: Number,
         time: Date,
+        message: String,
       },
     ],
   },
