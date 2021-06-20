@@ -48,7 +48,7 @@ const StyledButton = styled.button<StyledButtonProps>`
   ${(buttonProps) =>
     buttonProps.disabled &&
     css`
-      background-color: ${(props) => props.theme.disabled};
+      background: ${(props) => props.theme.disabled};
     `};
 
   &:hover,
@@ -56,7 +56,7 @@ const StyledButton = styled.button<StyledButtonProps>`
     ${(buttonProps) =>
       !buttonProps.disabled &&
       css`
-        background-color: ${(props) => props.theme.backgroundActive};
+        background: ${(props) => props.theme.backgroundActive};
         border: 1px solid ${(props) => props.theme.borderActive};
         color: ${(props) => props.theme.borderActive};
       `};
