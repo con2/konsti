@@ -75,7 +75,7 @@ export const SignupForm = ({ game, startTime }: Props): ReactElement => {
           3
         </option>
       </select>
-      <Button onClick={() => handleSignup}>{t('signup.confirm')}</Button>
+      <Button onClick={handleSignup}>{t('signup.confirm')}</Button>
     </form>
   );
 };

@@ -1,9 +1,9 @@
-import React, { ReactElement } from 'react';
+import React, { MouseEventHandler, ReactElement } from 'react';
 import styled, { css } from 'styled-components';
 
 interface Props {
   children: ReactElement;
-  onClick?: () => void;
+  onClick?: MouseEventHandler;
   disabled?: boolean;
   type?: 'submit' | 'reset' | 'button';
 }

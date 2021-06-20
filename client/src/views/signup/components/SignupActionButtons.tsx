@@ -35,11 +35,11 @@ export const SignupActionButtons = ({
 
   return (
     <div className='signup-action-buttons-row'>
-      <Button disabled={submitting || !leader} onClick={() => onSubmitClick}>
+      <Button disabled={submitting || !leader} onClick={onSubmitClick}>
         {t('button.signup')}
       </Button>
 
-      <Button disabled={submitting || !leader} onClick={() => onCancelClick}>
+      <Button disabled={submitting || !leader} onClick={onCancelClick}>
         {t('button.cancelSignup')}
       </Button>
 

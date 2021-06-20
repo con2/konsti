@@ -48,7 +48,7 @@ export const EnterGameForm: FC<Props> = (props: Props): ReactElement => {
 
   return (
     <form>
-      <Button onClick={() => handleSignup}>{t('signup.confirm')}</Button>
+      <Button onClick={handleSignup}>{t('signup.confirm')}</Button>
     </form>
   );
 };
