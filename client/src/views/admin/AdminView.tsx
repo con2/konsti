@@ -74,7 +74,7 @@ export const AdminView = (): ReactElement => {
     try {
       await dispatch(submitGamesUpdate());
     } catch (error) {
-      console.log(`submitGamesUpdate error:`, error);
+      console.log(`submitGamesUpdate error:`, error); // eslint-disable-line no-console
     }
     setSubmitting(false);
   };
@@ -99,7 +99,7 @@ export const AdminView = (): ReactElement => {
     try {
       await dispatch(submitSignupTime(selectedSignupTime));
     } catch (error) {
-      console.log(`submitSignupTime error:`, error);
+      console.log(`submitSignupTime error:`, error); // eslint-disable-line no-console
     }
     setSubmitting(false);
   };
@@ -109,7 +109,7 @@ export const AdminView = (): ReactElement => {
     try {
       await dispatch(submitToggleAppOpen(!appOpen));
     } catch (error) {
-      console.log(`submitToggleAppOpen error:`, error);
+      console.log(`submitToggleAppOpen error:`, error); // eslint-disable-line no-console
     }
     setSubmitting(false);
   };

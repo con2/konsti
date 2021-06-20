@@ -45,10 +45,10 @@ export const SignupForm = ({ game, startTime }: Props): ReactElement => {
     } catch (error) {
       switch (error.code) {
         case 41:
-          console.error('Signup ended');
+          console.error('Signup ended'); // eslint-disable-line no-console
           return;
         default:
-          console.error('signupError');
+          console.error('signupError'); // eslint-disable-line no-console
       }
     }
   };
