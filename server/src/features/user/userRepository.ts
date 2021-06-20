@@ -424,7 +424,7 @@ export const updateEnteredGames = async (
 export const saveEnteredGame = async (
   enteredGameRequest: PostEnteredGameParameters
 ): Promise<User> => {
-  const { username, enteredGameId, startTime } = enteredGameRequest;
+  const { username, enteredGameId, startTime, message } = enteredGameRequest;
 
   let game;
   try {
@@ -444,6 +444,7 @@ export const saveEnteredGame = async (
             gameDetails: game._id,
             priority: 1,
             time: startTime,
+            message: message,
           },
         },
       },

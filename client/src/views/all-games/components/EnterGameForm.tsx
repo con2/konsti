@@ -31,6 +31,7 @@ export const EnterGameForm: FC<Props> = (props: Props): ReactElement => {
       username,
       enteredGameId: game.gameId,
       startTime: game.startTime,
+      message: 'Test message', // TODO: Read this from UI field
     };
 
     try {
