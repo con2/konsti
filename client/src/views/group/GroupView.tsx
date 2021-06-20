@@ -374,14 +374,14 @@ const GroupStatusMessage = styled.span`
   font-weight: 600;
 `;
 
-const StyledButton = styled.button`
+const StyledButton = styled(Button)`
   &.active {
     background-color: ${(props) => props.theme.buttonSelected};
     border: 1px solid ${(props) => props.theme.borderActive};
   }
 `;
 
-const WarningButton = styled.button`
+const WarningButton = styled(Button)`
   background-color: ${(props) => props.theme.warning};
   color: ${(props) => props.theme.warningButtonText};
 `;

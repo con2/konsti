@@ -1,11 +1,12 @@
-import React, { MouseEventHandler, ReactElement } from 'react';
+import React, { MouseEventHandler, ReactElement, ReactNode } from 'react';
 import styled, { css } from 'styled-components';
 
 interface Props {
-  children: ReactElement;
+  children?: ReactNode;
   onClick?: MouseEventHandler;
   disabled?: boolean;
   type?: 'submit' | 'reset' | 'button';
+  className?: string;
 }
 
 export const Button = ({
@@ -13,9 +14,15 @@ export const Button = ({
   onClick,
   disabled = false,
   type = 'button',
+  className,
 }: Props): ReactElement => {
   return (
-    <StyledButton onClick={onClick} disabled={disabled} type={type}>
+    <StyledButton
+      className={className}
+      onClick={onClick}
+      disabled={disabled}
+      type={type}
+    >
       {children}
     </StyledButton>
   );

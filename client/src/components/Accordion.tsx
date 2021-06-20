@@ -2,6 +2,7 @@ import React, { ReactElement, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled from 'styled-components';
+import { Button } from 'client/components/Button';
 
 export interface Props {
   text: string;
@@ -54,7 +55,7 @@ const AccordionContent = styled.div`
   padding: 0 10px;
 `;
 
-const AccordionToggle = styled.button`
+const AccordionToggle = styled(Button)`
   padding: 6px 10px;
 `;
 
