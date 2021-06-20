@@ -100,7 +100,7 @@ const FormFieldIcon = styled.span`
 
 const FormFieldError = styled.div`
   display: flex;
-  background-color: ${(props) => props.theme.backgroundHighlight};
+  background: ${(props) => props.theme.backgroundHighlight};
   color: ${(props) => props.theme.error};
   width: 50%;
 

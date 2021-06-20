@@ -18,7 +18,7 @@ export const theme = {
 
   inputFocusBorder: '#4d90fe',
   buttonBorder: '#abd0a57a',
-  buttonBackground: '#abd0a57a',
+  buttonBackground: '#ffffff',
 
   tagBackground: '#a5abd0',
   tagTextColor: '#fff',

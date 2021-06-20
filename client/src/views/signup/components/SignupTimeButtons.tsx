@@ -43,7 +43,7 @@ const selectSignupTime = (signupTime: string, dispatch: AppDispatch): void => {
 
 const StyledButton = styled(Button)`
   &.active {
-    background-color: ${(props) => props.theme.buttonSelected};
+    background: ${(props) => props.theme.buttonSelected};
     border: 1px solid ${(props) => props.theme.borderActive};
   }
 `;
