@@ -76,6 +76,7 @@ export const saveResult = async (
           gameDetails: gameDocInDb._id,
           priority: result.enteredGame.priority,
           time: result.enteredGame.time,
+          message: '',
         },
       });
     }
