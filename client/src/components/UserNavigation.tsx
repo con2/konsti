@@ -49,7 +49,7 @@ const RouterLink = styled(NavLink)`
   :hover,
   :focus,
   &.active {
-    background-color: ${(props) => props.theme.backgroundHover};
+    background: ${(props) => props.theme.backgroundHover};
   }
 `;
 

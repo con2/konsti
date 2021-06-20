@@ -90,12 +90,12 @@ export const DropRow = ({
 };
 
 const DropRowContainer = styled.div`
-  background-color: ${(props) => props.theme.backgroundHighlight};
+  background: ${(props) => props.theme.backgroundHighlight};
   min-height: 40px;
   padding: 10px;
 
   &.dragging {
-    background-color: ${(props) => props.theme.backgroundDndRow};
+    background: ${(props) => props.theme.backgroundDndRow};
   }
 
   &.availableGames,
@@ -111,7 +111,7 @@ const DropRowContainer = styled.div`
 `;
 
 const DraggableItem = styled.div`
-  background-color: ${(props) => props.theme.backgroundDndItem};
+  background: ${(props) => props.theme.backgroundDndItem};
   border: 1px solid ${(props) => props.theme.borderInactive};
   margin: 8px 0;
   padding: 8px;
@@ -120,20 +120,19 @@ const DraggableItem = styled.div`
 
   :hover,
   :focus {
-    /* stylelint-disable-next-line plugin/no-unsupported-browser-features */
     filter: brightness(90%);
   }
 
   &.high-popularity {
-    background-color: #ffe8e8;
+    background: #ffe8e8;
   }
 
   &.medium-popularity {
-    background-color: #fff;
+    background: #fff;
   }
 
   &.low-popularity {
-    background-color: #f0ffff;
+    background: #f0ffff;
   }
 `;
 
