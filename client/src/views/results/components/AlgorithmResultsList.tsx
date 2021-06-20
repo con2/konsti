@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { ResultsByGameTitle } from './ResultsByGameTitle';
 import { ResultsByUsername } from './ResultsByUsername';
 import { Result } from 'shared/typings/models/result';
+import { Button } from 'client/components/Button';
 
 export interface Props {
   results: readonly Result[];
@@ -44,14 +45,13 @@ export const AlgorithmResultsList = ({ results }: Props): ReactElement => {
         <span>{t('sortBy')} </span>
         {buttons.map((name) => {
           return (
-            <button
+            <Button
               disabled={sortedBy === name}
-              value={name}
               onClick={() => setSortedBy(name)}
               key={name}
             >
               {t(name)}
-            </button>
+            </Button>
           );
         })}
         <FindField>

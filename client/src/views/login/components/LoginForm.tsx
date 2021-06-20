@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import { required } from 'client/utils/validate';
 import { FormField } from 'client/components/FormField';
+import { Button } from 'client/components/Button';
 
 const LoginForm = (props: InjectedFormProps): ReactElement => {
   const { handleSubmit, submitting, error } = props;
@@ -27,9 +28,9 @@ const LoginForm = (props: InjectedFormProps): ReactElement => {
           validate={required}
         />
 
-        <button type='submit' disabled={submitting} data-testkey='login-button'>
+        <Button type='submit' disabled={submitting} data-testkey='login-button'>
           {t('button.login')}
-        </button>
+        </Button>
       </form>
 
       {typeof error === 'string' && error && (

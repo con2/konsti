@@ -4,15 +4,16 @@ module.exports = {
   plugins: ['stylelint-no-unsupported-browser-features'],
 
   extends: [
-    'stylelint-config-standard',
+    'stylelint-config-recommended',
+    'stylelint-config-styled-components',
     'stylelint-config-prettier',
     'stylelint-a11y/recommended',
-    'stylelint-config-styled-components',
   ],
 
   ignoreFiles: ['build/**/*', 'coverage/**/*'],
 
   rules: {
+    // no-unsupported-browser-features
     'plugin/no-unsupported-browser-features': [
       true,
       {

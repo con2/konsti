@@ -7,6 +7,7 @@ import { submitDeleteGame } from 'client/views/signup/signupThunks';
 import { SelectedGame } from 'shared/typings/models/user';
 import { useAppDispatch, useAppSelector } from 'client/utils/hooks';
 import { isAlreadySigned } from './allGamesUtils';
+import { Button } from 'client/components/Button';
 
 interface Props {
   game: Game;
@@ -74,9 +75,9 @@ export const DirectSignupForm: FC<Props> = (
 
     if (enteredGamesForTimeSlot.length === 0) {
       return (
-        <button onClick={() => setSignupFormOpen(!signupFormOpen)}>
+        <Button onClick={() => setSignupFormOpen(!signupFormOpen)}>
           {t('signup.signup')}
-        </button>
+        </Button>
       );
     }
 
@@ -88,9 +89,9 @@ export const DirectSignupForm: FC<Props> = (
       <>
         {signupForDirect(alreadySignedToGame, enteredGamesForTimeslot)}
         {alreadySignedToGame && (
-          <button onClick={async () => await removeSignup(game)}>
+          <Button onClick={async () => await removeSignup(game)}>
             {t('button.cancel')}
-          </button>
+          </Button>
         )}
         {signupFormOpen && !alreadySignedToGame && (
           <EnterGameForm

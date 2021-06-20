@@ -6,6 +6,7 @@ import {
   getUserBySerial,
   updateUserPassword,
 } from 'client/services/userServices';
+import { Button } from 'client/components/Button';
 
 export const PasswordManagement = (): ReactElement => {
   const { t } = useTranslation();
@@ -73,7 +74,7 @@ export const PasswordManagement = (): ReactElement => {
           value={userSerialInput}
           onChange={handleSerialChange}
         />
-        <button onClick={submitGetUser}>{t('button.find')}</button>
+        <Button onClick={submitGetUser}>{t('button.find')}</Button>
         <p>{userFoundMessage && <span>{userFoundMessage}</span>}</p>
       </div>
 
@@ -88,7 +89,7 @@ export const PasswordManagement = (): ReactElement => {
               value={changePasswordInput}
               onChange={handlePasswordChange}
             />
-            <button onClick={submitUpdatePassword}>{t('button.save')}</button>
+            <Button onClick={submitUpdatePassword}>{t('button.save')}</Button>
 
             <FormFieldIcon>
               <FontAwesomeIcon

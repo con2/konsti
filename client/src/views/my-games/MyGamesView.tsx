@@ -15,6 +15,7 @@ import { isGroupLeader } from 'client/views/group/GroupView';
 import { GroupMember } from 'shared/typings/api/groups';
 import { SelectedGame } from 'shared/typings/models/user';
 import { useAppSelector } from 'client/utils/hooks';
+import { Button } from 'client/components/Button';
 
 export const MyGamesView = (): ReactElement => {
   const { t } = useTranslation();
@@ -45,12 +46,12 @@ export const MyGamesView = (): ReactElement => {
   return (
     <div className='my-games-view'>
       <div className='my-games-toggle-visibility'>
-        <button onClick={() => setShowAllGames(false)} disabled={!showAllGames}>
+        <Button onClick={() => setShowAllGames(false)} disabled={!showAllGames}>
           {t('lastStartedAndUpcomingGames')}
-        </button>
-        <button onClick={() => setShowAllGames(true)} disabled={showAllGames}>
+        </Button>
+        <Button onClick={() => setShowAllGames(true)} disabled={showAllGames}>
           {t('allGames')}
-        </button>
+        </Button>
       </div>
 
       <MyFavoritesList
