@@ -33,7 +33,7 @@ export const DirectResults = (): ReactElement => {
 
       {Object.entries(gamesByStartTime).map(([startTime, gamesForTime]) => {
         return (
-          <div key={startTime}>
+          <TimeSlot key={startTime}>
             <h3>
               {timeFormatter.getWeekdayAndTime({
                 time: startTime,
@@ -41,30 +41,62 @@ export const DirectResults = (): ReactElement => {
               })}
             </h3>
 
-            {gamesForTime.map((game) => {
-              const usernames = getUsernamesForGameId(game.gameId, signups);
-              return (
-                <div key={game.gameId}>
-                  <h4
-                    key={game.gameId}
-                  >{`${game.title} (${usernames.length}/${game.maxAttendance})`}</h4>
-                  <ResultPlayerList>
-                    {usernames.length > 0
-                      ? usernames.map((username) => (
+            <Games>
+              {gamesForTime.map((game) => {
+                const usernames = getUsernamesForGameId(game.gameId, signups);
+                return (
+                  <GameBox key={game.gameId}>
+                    <h4 key={game.gameId}>{`${game.title}`}</h4>
+                    <PlayerCount>
+                      {t('resultsView.players')}: {usernames.length}/
+                      {game.maxAttendance}
+                    </PlayerCount>
+                    <PlayerList>
+                      {usernames.length > 0 ? (
+                        usernames.map((username) => (
                           <p key={username}>{username}</p>
                         ))
-                      : t('resultsView.noSignups')}
-                  </ResultPlayerList>
-                </div>
-              );
-            })}
-          </div>
+                      ) : (
+                        <p>{t('resultsView.noSignups')}</p>
+                      )}
+                    </PlayerList>
+                  </GameBox>
+                );
+              })}
+            </Games>
+          </TimeSlot>
         );
       })}
     </div>
   );
 };
 
-const ResultPlayerList = styled.div`
-  padding-left: 30px;
+const TimeSlot = styled.div`
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  box-shadow: 1px 8px 15px 0 rgba(0, 0, 0, 0.42);
+  margin: 0 0 24px 0;
+  padding: 0 10px 20px 10px;
+`;
+
+const Games = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 0 0 30px;
+  justify-content: space-between;
+`;
+
+const GameBox = styled.div`
+  flex-basis: 25%;
+  flex-grow: 0;
+  padding: 0 20px 10px 20px;
+  min-width: 200px;
+`;
+
+const PlayerList = styled.div`
+  padding: 0 0 0 30px;
+`;
+
+const PlayerCount = styled.div`
+  padding: 0 0 0 10px;
 `;
