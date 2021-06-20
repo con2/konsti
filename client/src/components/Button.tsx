@@ -7,6 +7,7 @@ interface Props {
   disabled?: boolean;
   type?: 'submit' | 'reset' | 'button';
   className?: string;
+  'data-testkey'?: string;
 }
 
 export const Button = ({
@@ -15,6 +16,7 @@ export const Button = ({
   disabled = false,
   type = 'button',
   className,
+  'data-testkey': dataTestKey,
 }: Props): ReactElement => {
   return (
     <StyledButton
@@ -22,6 +24,7 @@ export const Button = ({
       onClick={onClick}
       disabled={disabled}
       type={type}
+      data-testkey={dataTestKey}
     >
       {children}
     </StyledButton>
