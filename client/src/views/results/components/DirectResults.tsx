@@ -31,6 +31,10 @@ export const DirectResults = (): ReactElement => {
         </Button>
       </div>
 
+      {filteredGames.length === 0 && (
+        <h3>{t('resultsView.noStartingGames')}</h3>
+      )}
+
       {Object.entries(gamesByStartTime).map(([startTime, gamesForTime]) => {
         return (
           <TimeSlot key={startTime}>

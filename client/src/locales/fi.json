@@ -239,6 +239,7 @@
     "allSignupResults": "Pelien ilmoittautumistilanne ja pelaajat",
     "confirm": "Vahvista",
     "noSignups": "Ei ilmoittautuneita pelaajia",
-    "players": "Pelaajia"
+    "players": "Pelaajia",
+    "noStartingGames": "Ei alkavia pelejä"
   }
 }

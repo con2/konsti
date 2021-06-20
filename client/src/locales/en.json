@@ -238,6 +238,7 @@
     "allSignupResults": "Signup overview and players",
     "confirm": "Confirm",
     "noSignups": "No signed up players",
-    "players": "Players"
+    "players": "Players",
+    "noStartingGames": "No starting games"
   }
 }
