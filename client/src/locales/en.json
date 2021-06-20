@@ -237,6 +237,8 @@
   "resultsView": {
     "allSignupResults": "Signup overview and players",
     "confirm": "Confirm",
-    "noSignups": "No signed up players"
+    "noSignups": "No signed up players",
+    "players": "Players",
+    "noStartingGames": "No starting games"
   }
 }
