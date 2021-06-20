@@ -1,48 +1,36 @@
-import React, { ReactElement, useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import React, { ReactElement, ReactNode, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled from 'styled-components';
 import { Button } from 'client/components/Button';
 
 export interface Props {
-  text: string;
-  title: string;
-  buttonText: string;
+  toggleButton: string | ReactElement;
+  children?: ReactNode;
+  initialValue?: boolean;
 }
 
-export const Accordion = ({ text, title, buttonText }: Props): ReactElement => {
-  const [open, setOpen] = useState<boolean>(false);
-
-  const { t } = useTranslation();
+export const Accordion = ({
+  toggleButton,
+  children,
+  initialValue = false,
+}: Props): ReactElement => {
+  const [open, setOpen] = useState<boolean>(initialValue);
 
   const onClick = (): void => {
     setOpen(!open);
   };
 
-  const splitTextRows = (textToSplit: string): ReactElement[] => {
-    const rows = t(textToSplit).split('\n');
-    return rows.map((row) => <p key={row}>{row}</p>);
-  };
-
   return (
-    <div className='accordion'>
+    <div>
+      <AccordionToggle onClick={() => onClick()}>
+        {<AccordionIcon icon={open ? 'angle-up' : 'angle-down'} />}
+        {toggleButton}
+      </AccordionToggle>
+
       {open && (
-        <>
-          <AccordionToggle onClick={() => onClick()}>
-            <AccordionIcon icon='angle-up' />
-            {t(`${buttonText}`)}
-          </AccordionToggle>
-          <AccordionContent>
-            <h3>{t(`${title}`)}</h3>
-            <div>{splitTextRows(text)}</div>
-          </AccordionContent>
-        </>
-      )}
-      {!open && (
-        <AccordionToggle onClick={() => onClick()}>
-          <AccordionIcon icon='angle-down' />
-          <span>{t(`${buttonText}`)}</span>
-        </AccordionToggle>
+        <AccordionContent>
+          <div>{children}</div>
+        </AccordionContent>
       )}
     </div>
   );

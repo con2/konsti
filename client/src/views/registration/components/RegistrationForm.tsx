@@ -8,6 +8,7 @@ import { Accordion } from 'client/components/Accordion';
 import { sharedConfig } from 'shared/config/sharedConfig';
 import { ConventionType } from 'shared/config/sharedConfig.types';
 import { Button } from 'client/components/Button';
+import { Paragraph } from 'client/components/Paragraph';
 
 const RegistrationForm = (props: InjectedFormProps): ReactElement => {
   const { handleSubmit, submitting, error } = props;
@@ -57,11 +58,10 @@ const RegistrationForm = (props: InjectedFormProps): ReactElement => {
           validate={required}
         />
 
-        <Accordion
-          text='privacyPolicyText'
-          title='privacyPolicyTitle'
-          buttonText='privacyPolicyButton'
-        />
+        <Accordion toggleButton={t('privacyPolicyButton')}>
+          <h3>{t(`privacyPolicyTitle`)}</h3>
+          <Paragraph text={t('privacyPolicyText')} />
+        </Accordion>
 
         <Button type='submit' disabled={submitting}>
           {t('button.register')}
