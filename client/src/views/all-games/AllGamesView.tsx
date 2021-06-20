@@ -12,6 +12,7 @@ import { Loading } from 'client/components/Loading';
 import { Game } from 'shared/typings/models/game';
 import { getTime } from 'client/utils/getTime';
 import { useAppSelector } from 'client/utils/hooks';
+import { Button } from 'client/components/Button';
 
 export const AllGamesView = (): ReactElement => {
   const { t } = useTranslation();
@@ -55,27 +56,27 @@ export const AllGamesView = (): ReactElement => {
     <>
       <AllGamesVisibilityBar>
         <AllGamesToggleVisibility>
-          <button
+          <Button
             onClick={() => setSelectedView('upcoming')}
             disabled={selectedView === 'upcoming'}
           >
             {t('upcomingGames')}
-          </button>
+          </Button>
 
-          <button
+          <Button
             onClick={() => setSelectedView('all')}
             disabled={selectedView === 'all'}
           >
             {t('allGames')}
-          </button>
+          </Button>
 
           {config.revolvingDoorEnabled && (
-            <button
+            <Button
               onClick={() => setSelectedView('revolving-door')}
               disabled={selectedView === 'revolving-door'}
             >
               {t('revolvingDoor')}
-            </button>
+            </Button>
           )}
         </AllGamesToggleVisibility>
 

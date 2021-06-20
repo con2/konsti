@@ -10,7 +10,7 @@ export const sharedConfig: SharedConfig = {
   appName: 'Konsti',
 
   // Convention settings
-  signupStrategy: SignupStrategy.DIRECT,
+  signupStrategy: SignupStrategy.ALGORITHM,
   conventionType: ConventionType.REMOTE,
   assignmentStrategy: AssignmentStrategy.GROUP_PADG,
 };

@@ -4,6 +4,7 @@ import { Game } from 'shared/typings/models/game';
 import { submitSignup } from 'client/views/signup/signupThunks';
 import { useAppDispatch, useAppSelector } from 'client/utils/hooks';
 import { submitSelectedGames } from 'client/views/signup/signupSlice';
+import { Button } from 'client/components/Button';
 
 interface Props {
   game: Game;
@@ -74,7 +75,7 @@ export const SignupForm = ({ game, startTime }: Props): ReactElement => {
           3
         </option>
       </select>
-      <button onClick={handleSignup}>{t('signup.confirm')}</button>
+      <Button onClick={() => handleSignup}>{t('signup.confirm')}</Button>
     </form>
   );
 };

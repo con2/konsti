@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import { postFeedback } from 'client/services/feedbackServices';
 import { Game } from 'shared/typings/models/game';
+import { Button } from 'client/components/Button';
 
 export interface Props {
   game: Game;
@@ -52,12 +53,12 @@ export const FeedbackForm = ({ game }: Props): ReactElement => {
             rows={4}
           />
 
-          <button
+          <Button
             disabled={submitting}
             onClick={async () => await sendFeedbackEvent()}
           >
             {t('button.sendFeedback')}
-          </button>
+          </Button>
         </>
       )}
 

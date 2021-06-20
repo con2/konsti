@@ -7,6 +7,7 @@ import { required } from 'client/utils/validate';
 import { Accordion } from 'client/components/Accordion';
 import { sharedConfig } from 'shared/config/sharedConfig';
 import { ConventionType } from 'shared/config/sharedConfig.types';
+import { Button } from 'client/components/Button';
 
 const RegistrationForm = (props: InjectedFormProps): ReactElement => {
   const { handleSubmit, submitting, error } = props;
@@ -62,9 +63,9 @@ const RegistrationForm = (props: InjectedFormProps): ReactElement => {
           buttonText='privacyPolicyButton'
         />
 
-        <button type='submit' disabled={submitting}>
+        <Button type='submit' disabled={submitting}>
           {t('button.register')}
-        </button>
+        </Button>
       </form>
 
       {typeof error === 'string' && error && (

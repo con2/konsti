@@ -13,6 +13,7 @@ import { config } from 'client/config';
 import { submitSignup } from 'client/views/signup/signupThunks';
 import { loadGroupMembers } from 'client/utils/loadData';
 import { useAppDispatch, useAppSelector } from 'client/utils/hooks';
+import { Button } from 'client/components/Button';
 
 export const GroupView = (): ReactElement => {
   const username = useAppSelector((state) => state.login.username);
@@ -258,12 +259,12 @@ export const GroupView = (): ReactElement => {
             <div>
               <p>{t('createGroupConfirmationMessage')}</p>
               <p>{t('groupLeaderWarning')}</p>
-              <button
+              <Button
                 disabled={loading}
                 onClick={async () => await createGroup()}
               >
                 {t('button.joinGroupConfirmation')}
-              </button>
+              </Button>
             </div>
           )}
 
@@ -272,12 +273,12 @@ export const GroupView = (): ReactElement => {
               <p className='bold'>{t('joiningGroupWillCancelGames')}</p>
 
               {joinGroupInput}
-              <button
+              <Button
                 disabled={loading}
                 onClick={async () => await joinGroup()}
               >
                 {t('button.joinGroup')}
-              </button>
+              </Button>
             </div>
           )}
         </>
@@ -305,23 +306,23 @@ export const GroupView = (): ReactElement => {
         <>
           <div className='group-controls'>
             {!groupLeader && (
-              <button
+              <Button
                 disabled={loading}
                 onClick={async () => await leaveGroup({ leader: groupLeader })}
               >
                 {t('button.leaveGroup')}
-              </button>
+              </Button>
             )}
 
             {groupLeader && (
               <>
                 <div>
-                  <button
+                  <Button
                     disabled={loading}
                     onClick={() => toggleCloseGroupConfirmation(true)}
                   >
                     {t('button.closeGroup')}
-                  </button>
+                  </Button>
 
                   <GroupStatusMessage className={messageStyle}>
                     {message}
@@ -330,12 +331,12 @@ export const GroupView = (): ReactElement => {
                 {closeGroupConfirmation && (
                   <div>
                     <p>{t('closeGroupConfirmation')}</p>
-                    <button
+                    <Button
                       disabled={loading}
                       onClick={() => toggleCloseGroupConfirmation(false)}
                     >
                       {t('button.cancel')}
-                    </button>
+                    </Button>
 
                     <WarningButton
                       disabled={loading}

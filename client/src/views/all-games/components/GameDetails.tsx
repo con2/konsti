@@ -8,6 +8,7 @@ import { Loading } from 'client/components/Loading';
 import { Game } from 'shared/typings/models/game';
 import { updateFavorite, UpdateFavoriteOpts } from 'client/utils/favorite';
 import { useAppDispatch, useAppSelector } from 'client/utils/hooks';
+import { Button } from 'client/components/Button';
 
 export const GameDetails = (): ReactElement => {
   const history = useHistory();
@@ -117,7 +118,7 @@ export const GameDetails = (): ReactElement => {
   return (
     <div className='game-details-view'>
       <div className='details-button-row'>
-        <button
+        <Button
           onClick={() => {
             if (history.action === 'PUSH') {
               history.goBack();
@@ -127,42 +128,42 @@ export const GameDetails = (): ReactElement => {
           }}
         >
           {t('button.back')}
-        </button>
+        </Button>
 
         {favorited && loggedIn && userGroup === 'user' && foundGame && (
-          <button
+          <Button
             disabled={submitting}
             onClick={async () => await updateFavoriteHandler('del')}
           >
             {t('button.removeFavorite')}
-          </button>
+          </Button>
         )}
 
         {!favorited && loggedIn && userGroup === 'user' && foundGame && (
-          <button
+          <Button
             disabled={submitting}
             onClick={async () => await updateFavoriteHandler('add')}
           >
             {t('button.favorite')}
-          </button>
+          </Button>
         )}
 
         {hidden && loggedIn && userGroup === 'admin' && foundGame && (
-          <button
+          <Button
             disabled={submitting}
             onClick={async () => await updateHidden('del')}
           >
             {t('button.show')}
-          </button>
+          </Button>
         )}
 
         {!hidden && loggedIn && userGroup === 'admin' && foundGame && (
-          <button
+          <Button
             disabled={submitting}
             onClick={async () => await updateHidden('add')}
           >
             {t('button.hide')}
-          </button>
+          </Button>
         )}
       </div>
 
