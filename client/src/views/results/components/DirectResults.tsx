@@ -20,7 +20,7 @@ export const DirectResults = (): ReactElement => {
 
       {Object.entries(gamesByStartTime).map(([startTime, gamesForTime]) => {
         return (
-          <>
+          <div key={startTime}>
             <h3>
               {timeFormatter.getWeekdayAndTime({
                 time: startTime,
@@ -31,7 +31,7 @@ export const DirectResults = (): ReactElement => {
             {gamesForTime.map((game) => {
               const usernames = getUsernamesForGameId(game.gameId, signups);
               return (
-                <>
+                <div key={game.gameId}>
                   <h4
                     key={game.gameId}
                   >{`${game.title} (${usernames.length}/${game.maxAttendance})`}</h4>
@@ -40,10 +40,10 @@ export const DirectResults = (): ReactElement => {
                       <p key={username}>{username}</p>
                     ))}
                   </ResultPlayerList>
-                </>
+                </div>
               );
             })}
-          </>
+          </div>
         );
       })}
     </div>
