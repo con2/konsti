@@ -236,6 +236,7 @@
   },
   "resultsView": {
     "allSignupResults": "Signup overview and players",
-    "confirm": "Confirm"
+    "confirm": "Confirm",
+    "noSignups": "No signed up players"
   }
 }
