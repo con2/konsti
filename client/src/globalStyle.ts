@@ -10,7 +10,7 @@ export const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
   }
 
   body {
-    background-color: ${(props) => props.theme.bodyBackground};
+    background: ${(props) => props.theme.bodyBackground};
     padding-bottom: 32px;
     margin: 0;
     width: 100%;
@@ -18,13 +18,13 @@ export const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
 
   @media (max-width: ${(props) => props.theme.breakpointPhone}) {
     body {
-      background-color: ${(props) => props.theme.bodyBackground};
+      background: ${(props) => props.theme.bodyBackground};
       padding-bottom: 0;
     }
   }
 
   #main {
-    background-color: ${(props) => props.theme.mainBackground};
+    background: ${(props) => props.theme.mainBackground};
     max-width: 1024px;
     margin: auto;
   }

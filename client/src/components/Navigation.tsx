@@ -78,7 +78,7 @@ const Dimmer = styled.div<{ includeTimeSelectorHeight: boolean }>`
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: black;
+  background: black;
   opacity: 0.7;
   z-index: 90;
 `;
@@ -91,7 +91,7 @@ const Drawer = styled.div<{ includeTimeSelectorHeight: boolean }>`
   z-index: 100;
   border-right: 1px solid black;
   color: black;
-  background-color: ${(props) => props.theme.backgroundHighlight};
+  background: ${(props) => props.theme.backgroundHighlight};
 `;
 
 const LoggedUserDetails = styled.div`
