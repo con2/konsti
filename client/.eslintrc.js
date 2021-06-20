@@ -30,6 +30,10 @@ module.exports = {
     // eslint-plugin-react
     'react/no-multi-comp': 'error',
     'react/jsx-no-useless-fragment': 'error',
+    'react/forbid-elements': [
+      'error',
+      { forbid: [{ element: 'button', message: 'use <Button> instead' }] },
+    ],
     'react/no-unescaped-entities': 'off',
 
     // eslint-plugin-react-hooks

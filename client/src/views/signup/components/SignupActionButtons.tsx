@@ -5,6 +5,7 @@ import { updateUnsavedChangesStatus } from 'client/views/signup/signupSlice';
 import { SelectedGame } from 'shared/typings/models/user';
 import { useAppDispatch } from 'client/utils/hooks';
 import { AppDispatch } from 'client/typings/redux.typings';
+import { Button } from 'client/components/Button';
 
 interface Props {
   groupCode: string;
@@ -34,13 +35,13 @@ export const SignupActionButtons = ({
 
   return (
     <div className='signup-action-buttons-row'>
-      <button disabled={submitting || !leader} onClick={onSubmitClick}>
+      <Button disabled={submitting || !leader} onClick={onSubmitClick}>
         {t('button.signup')}
-      </button>
+      </Button>
 
-      <button disabled={submitting || !leader} onClick={onCancelClick}>
+      <Button disabled={submitting || !leader} onClick={onCancelClick}>
         {t('button.cancelSignup')}
-      </button>
+      </Button>
 
       {signupSubmitted && <SuccessMessage>{t('signupSaved')}</SuccessMessage>}
 

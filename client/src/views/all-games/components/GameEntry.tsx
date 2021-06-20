@@ -10,6 +10,7 @@ import { Game } from 'shared/typings/models/game';
 import styled from 'styled-components';
 import { AlgorithmSignupForm } from './AlgorithmSignupForm';
 import { DirectSignupForm } from './DirectSignupForm';
+import { Button } from 'client/components/Button';
 
 interface Props {
   game: Game;
@@ -103,7 +104,7 @@ export const GameEntry = ({ game, startTime }: Props): ReactElement => {
   );
 };
 
-const FavoriteButton = styled.button`
+const FavoriteButton = styled(Button)`
   margin: 0 16px;
   width: 60px;
 `;

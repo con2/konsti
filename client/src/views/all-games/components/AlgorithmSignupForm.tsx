@@ -11,6 +11,7 @@ import { SelectedGame } from 'shared/typings/models/user';
 import { useAppDispatch, useAppSelector } from 'client/utils/hooks';
 import { submitSelectedGames } from 'client/views/signup/signupSlice';
 import { isAlreadySigned } from './allGamesUtils';
+import { Button } from 'client/components/Button';
 
 interface Props {
   game: Game;
@@ -88,9 +89,9 @@ export const AlgorithmSignupForm: FC<Props> = (
 
     if (signedGamesForTimeSlot.length < 3) {
       return (
-        <button onClick={() => setSignupFormOpen(!signupFormOpen)}>
+        <Button onClick={() => setSignupFormOpen(!signupFormOpen)}>
           {t('signup.signup')}
-        </button>
+        </Button>
       );
     }
 
@@ -103,9 +104,9 @@ export const AlgorithmSignupForm: FC<Props> = (
         {signupForAlgorithm(alreadySignedToGame, signedGamesForTimeslot)}
         {alreadySignedToGame && (
           <>
-            <button onClick={async () => await removeSignup(game)}>
+            <Button onClick={async () => await removeSignup(game)}>
               {t('button.cancel')}
-            </button>
+            </Button>
             <p>
               {t('signup.alreadySigned', {
                 CURRENT_PRIORITY: currentPriority,

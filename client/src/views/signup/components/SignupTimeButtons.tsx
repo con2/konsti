@@ -4,6 +4,7 @@ import { timeFormatter } from 'client/utils/timeFormatter';
 import { submitSignupTime } from 'client/views/signup/signupSlice';
 import { useAppDispatch } from 'client/utils/hooks';
 import { AppDispatch } from 'client/typings/redux.typings';
+import { Button } from 'client/components/Button';
 
 interface Props {
   signupTimes: readonly string[];
@@ -40,7 +41,7 @@ const selectSignupTime = (signupTime: string, dispatch: AppDispatch): void => {
   dispatch(submitSignupTime(signupTime));
 };
 
-const StyledButton = styled.button`
+const StyledButton = styled(Button)`
   &.active {
     background-color: ${(props) => props.theme.buttonSelected};
     border: 1px solid ${(props) => props.theme.borderActive};
