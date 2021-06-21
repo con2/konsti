@@ -1,6 +1,8 @@
 import { postHidden } from 'client/services/hiddenServices';
 import {
+  deleteSignupMessage,
   getSettings,
+  postSignupMessage,
   postToggleAppOpen,
 } from 'client/services/settingsServices';
 import { postSignupTime } from 'client/services/signuptimeServices';
@@ -11,7 +13,9 @@ import {
   submitGetSettingsAsync,
   submitActiveSignupTimeAsync,
   submitToggleAppOpenAsync,
+  updateSignupMessages,
 } from 'client/views/admin/adminSlice';
+import { SignupMessage } from 'shared/typings/models/settings';
 
 export const submitUpdateHidden = (hiddenGames: readonly Game[]): AppThunk => {
   return async (dispatch): Promise<void> => {
@@ -41,6 +45,7 @@ export const submitGetSettings = (): AppThunk => {
           hiddenGames: settingsResponse.hiddenGames,
           signupTime: settingsResponse.signupTime,
           appOpen: settingsResponse.appOpen,
+          signupMessages: settingsResponse.signupMessages,
         })
       );
     }
@@ -71,6 +76,39 @@ export const submitToggleAppOpen = (appOpen: boolean): AppThunk => {
 
     if (appOpenResponse?.status === 'success') {
       dispatch(submitToggleAppOpenAsync(appOpenResponse.appOpen));
+    }
+  };
+};
+
+export const submitAddSignupMessage = (
+  signupMessage: SignupMessage
+): AppThunk => {
+  return async (dispatch): Promise<void> => {
+    const response = await postSignupMessage({
+      gameId: signupMessage.gameId,
+      message: signupMessage.message,
+    });
+
+    if (response?.status === 'error') {
+      return await Promise.reject(response);
+    }
+
+    if (response?.status === 'success') {
+      dispatch(updateSignupMessages(response.signupMessages));
+    }
+  };
+};
+
+export const submitDeleteSignupMessage = (gameId: string): AppThunk => {
+  return async (dispatch): Promise<void> => {
+    const response = await deleteSignupMessage(gameId);
+
+    if (response?.status === 'error') {
+      return await Promise.reject(response);
+    }
+
+    if (response?.status === 'success') {
+      dispatch(updateSignupMessages(response.signupMessages));
     }
   };
 };

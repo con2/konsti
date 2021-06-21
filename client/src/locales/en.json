@@ -29,7 +29,9 @@
     "cancel": "Cancel",
     "helper": "Helper",
     "find": "Find",
-    "save": "Save"
+    "save": "Save",
+    "addSignupMessage": "Add textfield",
+    "removeSignupMessage": "Delete textfield"
   },
   "username": "Username",
   "password": "Password",
@@ -240,5 +242,8 @@
     "noSignups": "No signed up players",
     "players": "Players",
     "noStartingGames": "No starting games"
+  },
+  "gameDetails": {
+    "addSignupTextField": "Add signup additional info field"
   }
 }
