@@ -139,7 +139,7 @@ export const GameDetails = (): ReactElement => {
     setSignupMessageInput(event.target.value);
   };
 
-  const onSubmitAddSignupMessageClick = (): void => {
+  const onClickAddSignupMessage = (): void => {
     if (!foundGame) return;
     dispatch(
       submitAddSignupMessage({
@@ -151,7 +151,7 @@ export const GameDetails = (): ReactElement => {
     setSignupMessageInput('');
   };
 
-  const submitRemoveSignupMessage = (): void => {
+  const onClickDeleteSignupMessage = (): void => {
     if (!foundGame) return;
     dispatch(submitDeleteSignupMessage(foundGame.gameId));
     setHasSignupMessage(false);
@@ -235,10 +235,7 @@ export const GameDetails = (): ReactElement => {
           )}
 
         {hasSignupMessage && loggedIn && userGroup === 'admin' && foundGame && (
-          <Button
-            disabled={submitting}
-            onClick={() => submitRemoveSignupMessage()}
-          >
+          <Button disabled={submitting} onClick={onClickDeleteSignupMessage}>
             {t('button.removeSignupMessage')}
           </Button>
         )}
@@ -256,9 +253,7 @@ export const GameDetails = (): ReactElement => {
             value={signupMessageInput}
             onChange={handleSignupMessageChange}
           />
-          <Button onClick={onSubmitAddSignupMessageClick}>
-            {t('button.save')}
-          </Button>
+          <Button onClick={onClickAddSignupMessage}>{t('button.save')}</Button>
         </>
       )}
 
