@@ -5,6 +5,7 @@ import { GroupMember } from 'shared/typings/api/groups';
 import { Result } from 'shared/typings/models/result';
 import { store, combinedReducer } from 'client/utils/store';
 import { SelectedGame, UserGroup } from 'shared/typings/models/user';
+import { SignupMessage } from 'shared/typings/models/settings';
 
 export interface AdminState {
   hiddenGames: readonly Game[];
@@ -12,6 +13,7 @@ export interface AdminState {
   testTime: string;
   appOpen: boolean;
   responseMessage: string;
+  signupMessages: readonly SignupMessage[];
 }
 
 export interface UsersForGame {

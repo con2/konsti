@@ -29,7 +29,9 @@
     "cancel": "Peruuta",
     "helper": "Apuja",
     "find": "Etsi",
-    "save": "Tallenna"
+    "save": "Tallenna",
+    "addSignupMessage": "Lisää tekstikenttä",
+    "removeSignupMessage": "Poista tekstikenttä"
   },
   "username": "Käyttäjänimi",
   "password": "Salasana",
@@ -241,5 +243,8 @@
     "noSignups": "Ei ilmoittautuneita pelaajia",
     "players": "Pelaajia",
     "noStartingGames": "Ei alkavia pelejä"
+  },
+  "gameDetails": {
+    "addSignupTextField": "Lisää ilmoittautumisen lisätietokenttä"
   }
 }
