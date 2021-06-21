@@ -4,6 +4,8 @@ import {
   toggleAppOpen,
   storeSignupTime,
   storeHidden,
+  storeSignupMessage,
+  removeSignupMessage,
 } from 'server/features/settings/settingsService';
 import { UserGroup } from 'shared/typings/models/user';
 import { isAuthorized } from 'server/utils/authHeader';
@@ -12,9 +14,11 @@ import {
   HIDDEN_ENDPOINT,
   SETTINGS_ENDPOINT,
   SIGNUPTIME_ENDPOINT,
+  SIGNUP_MESSAGE_ENDPOINT,
   TOGGLE_APP_OPEN_ENDPOINT,
 } from 'shared/constants/apiEndpoints';
 import { Game } from 'shared/typings/models/game';
+import { SignupMessage } from 'shared/typings/models/settings';
 
 export const postHidden = async (
   req: Request<{}, {}, { hiddenData: readonly Game[] }>,
@@ -68,5 +72,33 @@ export const getSettings = async (
   logger.info(`API call: GET ${SETTINGS_ENDPOINT}`);
 
   const response = await fetchSettings();
+  return res.json(response);
+};
+
+export const postSignupMessage = async (
+  req: Request<{}, {}, { signupMessage: SignupMessage }>,
+  res: Response
+): Promise<Response> => {
+  logger.info(`API call: POST ${SIGNUP_MESSAGE_ENDPOINT}`);
+
+  if (!isAuthorized(req.headers.authorization, UserGroup.ADMIN)) {
+    return res.sendStatus(401);
+  }
+
+  const response = await storeSignupMessage(req.body.signupMessage);
+  return res.json(response);
+};
+
+export const deleteSignupMessage = async (
+  req: Request<{}, {}, { gameId: string }>,
+  res: Response
+): Promise<Response> => {
+  logger.info(`API call: DELETE ${SIGNUP_MESSAGE_ENDPOINT}`);
+
+  if (!isAuthorized(req.headers.authorization, UserGroup.ADMIN)) {
+    return res.sendStatus(401);
+  }
+
+  const response = await removeSignupMessage(req.body.gameId);
   return res.json(response);
 };

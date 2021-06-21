@@ -7,9 +7,11 @@ import {
   postAssignment,
 } from 'server/features/results/resultsController';
 import {
+  deleteSignupMessage,
   getSettings,
   postAppOpen,
   postHidden,
+  postSignupMessage,
   postSignupTime,
 } from 'server/features/settings/settingsController';
 import {
@@ -39,6 +41,7 @@ import {
   SETTINGS_ENDPOINT,
   SIGNUPTIME_ENDPOINT,
   SIGNUP_ENDPOINT,
+  SIGNUP_MESSAGE_ENDPOINT,
   TOGGLE_APP_OPEN_ENDPOINT,
   USERS_BY_SERIAL_ENDPOINT,
   USERS_ENDPOINT,
@@ -62,6 +65,7 @@ apiRoutes.post(FEEDBACK_ENDPOINT, postFeedback);
 apiRoutes.post(GROUP_ENDPOINT, postGroup);
 apiRoutes.post(TOGGLE_APP_OPEN_ENDPOINT, postAppOpen);
 apiRoutes.post(ENTERED_GAME_ENDPOINT, postEnteredGame);
+apiRoutes.post(SIGNUP_MESSAGE_ENDPOINT, postSignupMessage);
 
 /* GET routes */
 
@@ -75,5 +79,6 @@ apiRoutes.get(GROUP_ENDPOINT, getGroup);
 /* DELETE routes */
 
 apiRoutes.delete(ENTERED_GAME_ENDPOINT, deleteEnteredGame);
+apiRoutes.delete(SIGNUP_MESSAGE_ENDPOINT, deleteSignupMessage);
 
 /* eslint-enable @typescript-eslint/no-misused-promises */

@@ -3,17 +3,21 @@ import {
   saveSignupTime,
   saveToggleAppOpen,
   saveHidden,
+  saveSignupMessage,
+  delSignupMessage,
 } from 'server/features/settings/settingsRepository';
 import { logger } from 'server/utils/logger';
 import { ServerError } from 'shared/typings/api/errors';
 import {
   GetSettingsResponse,
   PostHiddenResponse,
+  PostSignupMessageResponse,
   PostToggleAppOpenResponse,
 } from 'shared/typings/api/settings';
 import { PostSignupTimeResponse } from 'shared/typings/api/signup';
 import { Game } from 'shared/typings/models/game';
 import { removeHiddenGamesFromUsers } from 'server/features/settings/settingsUtils';
+import { SignupMessage } from 'shared/typings/models/settings';
 
 export const fetchSettings = async (): Promise<
   GetSettingsResponse | ServerError
@@ -27,6 +31,7 @@ export const fetchSettings = async (): Promise<
       hiddenGames: response.hiddenGames,
       signupTime: response.signupTime || '',
       appOpen: response.appOpen,
+      signupMessages: response.signupMessages,
     };
   } catch (error) {
     logger.error(`Settings: ${error}`);
@@ -106,5 +111,49 @@ export const storeHidden = async (
     message: 'Update hidden success',
     status: 'success',
     hiddenGames: settings.hiddenGames,
+  };
+};
+
+export const storeSignupMessage = async (
+  signupMessageData: SignupMessage
+): Promise<PostSignupMessageResponse | ServerError> => {
+  let settings;
+  try {
+    settings = await saveSignupMessage(signupMessageData);
+  } catch (error) {
+    logger.error(`saveSignupMessage error: ${error}`);
+    return {
+      message: 'saveSignupMessage failure',
+      status: 'error',
+      code: 0,
+    };
+  }
+
+  return {
+    message: 'saveSignupMessage success',
+    status: 'success',
+    signupMessages: settings.signupMessages,
+  };
+};
+
+export const removeSignupMessage = async (
+  gameId: string
+): Promise<PostSignupMessageResponse | ServerError> => {
+  let settings;
+  try {
+    settings = await delSignupMessage(gameId);
+  } catch (error) {
+    logger.error(`delSignupMessage error: ${error}`);
+    return {
+      message: 'delSignupMessage failure',
+      status: 'error',
+      code: 0,
+    };
+  }
+
+  return {
+    message: 'delSignupMessage success',
+    status: 'success',
+    signupMessages: settings.signupMessages,
   };
 };

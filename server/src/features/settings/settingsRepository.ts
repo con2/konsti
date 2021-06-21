@@ -2,7 +2,7 @@ import moment from 'moment';
 import { logger } from 'server/utils/logger';
 import { SettingsModel } from 'server/features/settings/settingsSchema';
 import { GameDoc } from 'server/typings/game.typings';
-import { Settings } from 'shared/typings/models/settings';
+import { Settings, SignupMessage } from 'shared/typings/models/settings';
 import { Game } from 'shared/typings/models/game';
 import { findGames } from 'server/features/game/gameRepository';
 
@@ -36,7 +36,7 @@ export const findSettings = async (): Promise<Settings> => {
   try {
     settings = await SettingsModel.findOne(
       {},
-      '-_id -__v -createdAt -updatedAt'
+      '-signupMessages._id -_id -__v -createdAt -updatedAt'
     )
       .lean<Settings>()
       .populate('hiddenGames');
@@ -125,5 +125,53 @@ export const saveToggleAppOpen = async (
   }
 
   logger.info(`MongoDB: App open status updated`);
+  return settings;
+};
+
+export const saveSignupMessage = async (
+  signupMessageData: SignupMessage
+): Promise<Settings> => {
+  let settings;
+  try {
+    settings = await SettingsModel.findOneAndUpdate(
+      {},
+      {
+        $push: { signupMessages: signupMessageData },
+      },
+      {
+        new: true,
+        upsert: true,
+        fields: '-signupMessages._id -_id -__v -createdAt -updatedAt',
+      }
+    );
+  } catch (error) {
+    throw new Error(`MongoDB: Error updating signup info games: ${error}`);
+  }
+
+  logger.info(`MongoDB: Signup info updated`);
+  return settings;
+};
+
+export const delSignupMessage = async (gameId: string): Promise<Settings> => {
+  let settings;
+  try {
+    settings = await SettingsModel.findOneAndUpdate(
+      {},
+      {
+        $pull: { signupMessages: { gameId } },
+      },
+      {
+        new: true,
+        fields: '-signupMessages._id -_id -__v -createdAt -updatedAt',
+      }
+    );
+    if (!settings) {
+      throw new Error('Signup messages not found');
+    }
+  } catch (error) {
+    throw new Error(`MongoDB: Error deleting signup info games: ${error}`);
+  }
+
+  logger.info(`MongoDB: Signup info deleted`);
   return settings;
 };
