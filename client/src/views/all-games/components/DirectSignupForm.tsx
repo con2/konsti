@@ -75,7 +75,7 @@ export const DirectSignupForm: FC<Props> = (
       );
     }
 
-    if (enteredGamesForTimeSlot.length === 0) {
+    if (enteredGamesForTimeSlot.length === 0 && !signupFormOpen) {
       return (
         <Button onClick={() => setSignupFormOpen(!signupFormOpen)}>
           {t('signup.signup')}
@@ -100,6 +100,7 @@ export const DirectSignupForm: FC<Props> = (
           <EnterGameForm
             game={game}
             onEnterGame={() => setSignupFormOpen(false)}
+            onCancelSignup={() => setSignupFormOpen(false)}
           />
         )}
       </>
