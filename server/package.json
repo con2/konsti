@@ -45,7 +45,7 @@
     "generate-serial-number": "0.0.3",
     "helmet": "4.6.0",
     "jsonwebtoken": "8.5.1",
-    "mongoose": "5.12.14",
+    "mongoose": "5.12.15",
     "morgan": "1.10.0",
     "munkres-js": "1.2.2",
     "node-schedule": "2.0.0",
