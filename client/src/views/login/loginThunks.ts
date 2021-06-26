@@ -4,6 +4,7 @@ import { AppThunk } from 'client/typings/redux.typings';
 import { ServerError } from 'shared/typings/api/errors';
 import { LoginFormFields, PostLoginResponse } from 'shared/typings/api/login';
 import { submitLoginAsync } from 'client/views/login/loginSlice';
+import { loadUser } from 'client/utils/loadData';
 
 export const submitLogin = (loginFormFields: LoginFormFields): AppThunk => {
   return async (dispatch): Promise<void> => {
@@ -85,6 +86,8 @@ export const submitSessionRecovery = (jwt: string): AppThunk => {
           groupCode: loginResponse.groupCode,
         })
       );
+
+      await loadUser();
     }
   };
 };
