@@ -87,7 +87,6 @@ export const saveResult = async (
   try {
     response = await ResultsModel.replaceOne(
       { startTime },
-      // @ts-expect-error: replaceOne type broken
       { startTime, results, algorithm, message },
       { upsert: true }
     );
