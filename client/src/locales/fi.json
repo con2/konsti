@@ -240,6 +240,7 @@
     "cannotSignupMoreGames": "Voit ilmoittautua vain kolmeen peliin per alkamisaika",
     "gamePriority": "Peli on toiveissani sijalla",
     "confirm": "Vahvista",
+    "cancel": "Peruuta",
     "cannotSignupMoreThanOneGame": "Olet ilmoittautunut peliin {{GAME}}. Et voi ilmoittautua muihin samaan aikaan oleviin peleihin."
   },
   "resultsView": {

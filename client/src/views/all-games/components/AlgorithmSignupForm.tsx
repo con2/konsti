@@ -87,7 +87,7 @@ export const AlgorithmSignupForm: FC<Props> = (
       return <p>{t('signup.cannotSignupMoreGames')}</p>;
     }
 
-    if (signedGamesForTimeSlot.length < 3) {
+    if (signedGamesForTimeSlot.length < 3 && !signupFormOpen) {
       return (
         <Button onClick={() => setSignupFormOpen(!signupFormOpen)}>
           {t('signup.signup')}
@@ -115,7 +115,11 @@ export const AlgorithmSignupForm: FC<Props> = (
           </>
         )}
         {signupFormOpen && !alreadySignedToGame && (
-          <SignupForm game={game} startTime={startTime} />
+          <SignupForm
+            game={game}
+            startTime={startTime}
+            onCancel={() => setSignupFormOpen(false)}
+          />
         )}
       </>
     );
