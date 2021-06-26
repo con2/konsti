@@ -50,6 +50,7 @@ const commonConfig: Configuration = {
 
   resolve: {
     extensions: ['.js', '.ts', '.tsx'],
+    fallback: { crypto: false },
   },
 
   plugins: [
