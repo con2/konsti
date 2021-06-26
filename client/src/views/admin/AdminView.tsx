@@ -1,7 +1,7 @@
 import React, { ReactElement, ChangeEvent, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
-import { Hidden } from 'client/views/admin/components/Hidden';
+import { HiddenGamesList } from 'client/views/admin/components/HiddenGamesList';
 import {
   submitSignupTime,
   submitToggleAppOpen,
@@ -13,6 +13,7 @@ import { timeFormatter } from 'client/utils/timeFormatter';
 import { Game } from 'shared/typings/models/game';
 import { useAppDispatch, useAppSelector } from 'client/utils/hooks';
 import { Button } from 'client/components/Button';
+import { SignupMessageList } from 'client/views/admin/components/SignupMessageList';
 
 export const AdminView = (): ReactElement => {
   const games = useAppSelector((state) => state.allGames.games);
@@ -21,6 +22,7 @@ export const AdminView = (): ReactElement => {
   );
   const appOpen = useAppSelector((state) => state.admin.appOpen);
   const hiddenGames = useAppSelector((state) => state.admin.hiddenGames);
+  const signupMessages = useAppSelector((state) => state.admin.signupMessages);
   const responseMessage = useAppSelector(
     (state) => state.admin.responseMessage
   );
@@ -188,7 +190,9 @@ export const AdminView = (): ReactElement => {
             }
           />
 
-          <Hidden hiddenGames={hiddenGames} />
+          <HiddenGamesList hiddenGames={hiddenGames} />
+
+          <SignupMessageList signupMessages={signupMessages} />
         </>
       )}
     </div>
