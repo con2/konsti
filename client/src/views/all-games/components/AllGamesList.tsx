@@ -30,7 +30,6 @@ export const AllGamesList = ({ games }: Props): ReactElement => {
     t
   );
 
-  console.log(signups);
   return (
     <div className='games-list'>
       {games.length === 0 && <h3>{t('noProgramItemsAvailable')}</h3>}
