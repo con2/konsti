@@ -9,30 +9,32 @@ export interface Props {
   hiddenGames: readonly Game[];
 }
 
-export const Hidden = ({ hiddenGames }: Props): ReactElement => {
+export const HiddenGamesList = ({ hiddenGames }: Props): ReactElement => {
   const { t } = useTranslation();
 
   const sortedGames = _.sortBy(hiddenGames, [
     (hiddenGame) => hiddenGame.title.toLowerCase(),
   ]);
 
-  const GamesList = sortedGames.map((game) => (
-    <li key={game.gameId}>
-      <Link to={`/games/${game.gameId}`}>{game.title}</Link>
-      {' - '}
-      {timeFormatter.getWeekdayAndTime({
-        time: game.startTime,
-        capitalize: false,
-      })}
-    </li>
-  ));
-
   return (
     <div className='hidden'>
       <h3>{t('hiddenGames')}</h3>
+
       <ul>
-        {!hiddenGames && <span>{t('noHiddenGames')}</span>}
-        {GamesList}
+        {hiddenGames.length === 0 && <span>{t('noHiddenGames')}</span>}
+
+        {sortedGames.map((game) => (
+          <li key={game.gameId}>
+            <Link to={`/games/${game.gameId}`}>{game.title}</Link>
+
+            {' - '}
+
+            {timeFormatter.getWeekdayAndTime({
+              time: game.startTime,
+              capitalize: false,
+            })}
+          </li>
+        ))}
       </ul>
     </div>
   );
