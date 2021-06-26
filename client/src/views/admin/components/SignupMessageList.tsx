@@ -12,7 +12,7 @@ export const SignupMessageList = ({ signupMessages }: Props): ReactElement => {
 
   return (
     <div>
-      <h3>{t('noSignupMessages')}</h3>
+      <h3>{t('signupMessages')}</h3>
 
       <ul>
         {signupMessages.length === 0 && <span>{t('noSignupMessages')}</span>}
