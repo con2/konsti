@@ -1,9 +1,10 @@
 import { UsersForGame } from 'client/typings/redux.typings';
+import { UserSignup } from 'shared/typings/api/games';
 
-export const getUsernamesForGameId = (
+export const getUsersForGameId = (
   gameId: string,
   signups: readonly UsersForGame[]
-): string[] => {
+): UserSignup[] => {
   const foundSignup = signups.find((signup) => signup.gameId === gameId);
-  return foundSignup?.usernames ?? [];
+  return foundSignup?.users ?? [];
 };
