@@ -21,11 +21,7 @@ export const createAdminUser = async (): Promise<void> => {
     enteredGames: [],
   };
 
-  try {
-    await saveUser(registrationData);
-  } catch (error) {
-    logger.error(error);
-  }
+  await saveUser(registrationData);
 };
 
 export const createHelpUser = async (): Promise<void> => {
@@ -41,11 +37,7 @@ export const createHelpUser = async (): Promise<void> => {
     enteredGames: [],
   };
 
-  try {
-    await saveUser(registrationData);
-  } catch (error) {
-    logger.error(error);
-  }
+  await saveUser(registrationData);
 };
 
 const createTestUser = async (userNumber: number): Promise<void> => {
@@ -61,20 +53,12 @@ const createTestUser = async (userNumber: number): Promise<void> => {
     enteredGames: [],
   };
 
-  try {
-    await saveUser(registrationData);
-  } catch (error) {
-    logger.error(error);
-  }
+  await saveUser(registrationData);
 };
 
 export const createTestUsers = async (number: number): Promise<void> => {
   for (let i = 0; i < number; i += 1) {
-    try {
-      await createTestUser(i + 1);
-    } catch (error) {
-      logger.error(error);
-    }
+    await createTestUser(i + 1);
   }
 };
 
@@ -99,11 +83,7 @@ const createUser = async ({
     enteredGames: [],
   };
 
-  try {
-    await saveUser(registrationData);
-  } catch (error) {
-    logger.error(error);
-  }
+  await saveUser(registrationData);
 };
 
 export const createUsersInGroup = async (count: number): Promise<void> => {
