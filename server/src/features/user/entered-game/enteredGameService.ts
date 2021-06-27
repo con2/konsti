@@ -24,10 +24,16 @@ export const storeEnteredGame = async (
     };
   }
 
-  if (user) {
+  const newEnteredGame = user.enteredGames.find(
+    (enteredGame) =>
+      enteredGame.gameDetails.gameId === enteredGameRequest.enteredGameId
+  );
+
+  if (user && newEnteredGame) {
     return {
       message: 'Store entered game success',
       status: 'success',
+      enteredGame: newEnteredGame,
     };
   }
 

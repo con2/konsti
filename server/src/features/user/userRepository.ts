@@ -448,11 +448,11 @@ export const saveEnteredGame = async (
           },
         },
       },
-      { new: true, fields: '-_id -__v -createdAt -updatedAt' }
+      { new: true, fields: '-enteredGames._id -_id -__v -createdAt -updatedAt' }
     )
       .lean<User>()
       .populate('favoritedGames')
-      .populate('enteredGames.gameDetails')
+      .populate('enteredGames.gameDetails', '-_id -__v -updatedAt')
       .populate('signedGames.gameDetails');
   } catch (error) {
     logger.error(
