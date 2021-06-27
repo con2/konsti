@@ -1,10 +1,12 @@
-import commander from 'commander';
+import { Command } from 'commander';
 import { anonymizeData } from './fixer-helpers/dataAnonymizer';
 import { wildFix } from './fixer-helpers/wildFix';
 import { gameIdFix } from './fixer-helpers/gameIdFix';
 import { formatFeedbacks } from './fixer-helpers/formatFeedbacks';
 
 const fixData = (): void => {
+  const commander = new Command();
+
   commander
     .command('anonymize <year> <event>')
     .description('Anonymize users and results')
