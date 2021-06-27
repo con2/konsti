@@ -148,7 +148,7 @@ export const saveSignupMessage = async (
     throw new Error(`MongoDB: Error updating signup info games: ${error}`);
   }
 
-  logger.info(`MongoDB: Signup info updated`);
+  logger.info(`MongoDB: Signup message updated`);
   return settings;
 };
 
