@@ -9,6 +9,8 @@ import { shuffleArray } from 'server/utils/shuffleArray';
 import { getRandomInt } from 'server/features/player-assignment/utils/getRandomInt';
 
 export const createEnteredGames = async (): Promise<void> => {
+  logger.info(`Generate EnteredGames data`);
+
   const games = await findGames();
 
   const allUsers = await findUsers();
@@ -18,8 +20,8 @@ export const createEnteredGames = async (): Promise<void> => {
     (user) => user.username !== 'admin' && user.username !== 'ropetiski'
   );
 
-  logger.info(`Signup: ${games.length} games`);
-  logger.info(`Signup: ${users.length} users`);
+  logger.info(`EnteredGames: ${games.length} games`);
+  logger.info(`EnteredGames: ${users.length} users`);
 
   const shuffledGames = shuffleArray(games);
   let currentIndex = 0;
