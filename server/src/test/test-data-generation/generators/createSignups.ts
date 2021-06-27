@@ -9,19 +9,8 @@ import { findGames } from 'server/features/game/gameRepository';
 import { SelectedGame, User } from 'shared/typings/models/user';
 
 export const createSignups = async (): Promise<void> => {
-  let games: Game[] = [];
-  try {
-    games = await findGames();
-  } catch (error) {
-    logger.error(`findGames error: ${error}`);
-  }
-
-  let allUsers: User[] = [];
-  try {
-    allUsers = await findUsers();
-  } catch (error) {
-    logger.error(`findUsers error: ${error}`);
-  }
+  const games = await findGames();
+  const allUsers = await findUsers();
 
   const users = allUsers.filter(
     (user) => user.username !== 'admin' && user.username !== 'ropetiski'
