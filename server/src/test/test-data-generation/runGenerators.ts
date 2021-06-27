@@ -3,7 +3,10 @@ import { Command } from 'commander';
 import { logger } from 'server/utils/logger';
 import { createGames } from 'server/test/test-data-generation/generators/createGames';
 import { createSignups } from 'server/test/test-data-generation/generators/createSignups';
-import { removeUsers } from 'server/features/user/userRepository';
+import {
+  removeSignups,
+  removeUsers,
+} from 'server/features/user/userRepository';
 import { removeResults } from 'server/features/results/resultsRepository';
 import { removeGames } from 'server/features/game/gameRepository';
 import { removeSettings } from 'server/features/settings/settingsRepository';
@@ -41,55 +44,22 @@ const runGenerators = async (): Promise<void> => {
 
   commander.parse(process.argv);
 
-  try {
-    await db.connectToDb();
-  } catch (error) {
-    logger.error(error);
-    return;
-  }
+  await db.connectToDb();
 
   if (options.clean) {
     logger.info('Clean all data');
 
-    try {
-      await removeUsers();
-    } catch (error) {
-      logger.error(error);
-    }
-
-    try {
-      await removeGames();
-    } catch (error) {
-      logger.error(error);
-    }
-
-    try {
-      await removeResults();
-    } catch (error) {
-      logger.error(error);
-    }
-
-    try {
-      await removeSettings();
-    } catch (error) {
-      logger.error(error);
-    }
+    await removeUsers();
+    await removeGames();
+    await removeResults();
+    await removeSettings();
   }
 
   if (options.users) {
     logger.info('Generate users');
 
-    try {
-      await removeUsers();
-    } catch (error) {
-      logger.error(error);
-    }
-
-    try {
-      await removeResults();
-    } catch (error) {
-      logger.error(error);
-    }
+    !options.clean && (await removeUsers());
+    !options.clean && (await removeResults());
 
     await generateTestUsers(
       newUsersCount,
@@ -102,39 +72,22 @@ const runGenerators = async (): Promise<void> => {
   if (options.games) {
     logger.info('Generate games');
 
-    try {
-      await removeGames();
-    } catch (error) {
-      logger.error(error);
-    }
-
-    try {
-      await removeResults();
-    } catch (error) {
-      logger.error(error);
-    }
+    !options.clean && (await removeGames());
+    !options.clean && (await removeResults());
 
     await createGames(newGamesCount, signupTimes);
   }
 
   if (options.signups) {
     logger.info('Generate signups');
-    // TODO: Remove signups
 
-    try {
-      await removeResults();
-    } catch (error) {
-      logger.error(error);
-    }
+    !options.clean && (await removeSignups());
+    !options.clean && (await removeResults());
 
     await createSignups();
   }
 
-  try {
-    await db.gracefulExit();
-  } catch (error) {
-    logger.error(error);
-  }
+  await db.gracefulExit();
 };
 
 runGenerators().catch((error) => {
