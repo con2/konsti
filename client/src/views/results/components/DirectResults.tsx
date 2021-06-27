@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import { timeFormatter } from 'client/utils/timeFormatter';
 import { useAppSelector } from 'client/utils/hooks';
-import { getUsernamesForGameId } from 'client/views/results/resultsUtils';
+import { getUsersForGameId } from 'client/views/results/resultsUtils';
 import { getUpcomingGames } from 'client/utils/getUpcomingGames';
 import { Button } from 'client/components/Button';
 
@@ -47,18 +47,21 @@ export const DirectResults = (): ReactElement => {
 
             <Games>
               {gamesForTime.map((game) => {
-                const usernames = getUsernamesForGameId(game.gameId, signups);
+                const users = getUsersForGameId(game.gameId, signups);
                 return (
                   <GameBox key={game.gameId}>
                     <h4 key={game.gameId}>{`${game.title}`}</h4>
                     <PlayerCount>
-                      {t('resultsView.players')}: {usernames.length}/
+                      {t('resultsView.players')}: {users.length}/
                       {game.maxAttendance}
                     </PlayerCount>
                     <PlayerList>
-                      {usernames.length > 0 ? (
-                        usernames.map((username) => (
-                          <p key={username}>{username}</p>
+                      {users.length > 0 ? (
+                        users.map((user) => (
+                          <>
+                            <p key={user.username}>{user.username}</p>
+                            <SignupMessage>{user.signupMessage}</SignupMessage>
+                          </>
                         ))
                       ) : (
                         <p>{t('resultsView.noSignups')}</p>
@@ -103,4 +106,8 @@ const PlayerList = styled.div`
 
 const PlayerCount = styled.div`
   padding: 0 0 0 10px;
+`;
+
+const SignupMessage = styled.p`
+  padding: 0 0 0 20px;
 `;

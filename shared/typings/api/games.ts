@@ -14,5 +14,10 @@ export interface GetGamesResponse {
 
 export interface GameWithUsernames {
   game: Game;
-  usernames: string[];
+  users: UserSignup[];
+}
+
+export interface UserSignup {
+  username: string;
+  signupMessage: string;
 }
