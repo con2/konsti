@@ -4,7 +4,8 @@ import { logger } from 'server/utils/logger';
 import { createGames } from 'server/test/test-data-generation/generators/createGames';
 import { createSignups } from 'server/test/test-data-generation/generators/createSignups';
 import {
-  removeSignups,
+  removeEnteredGames,
+  removeSignedGames,
   removeUsers,
 } from 'server/features/user/userRepository';
 import { removeResults } from 'server/features/results/resultsRepository';
@@ -12,6 +13,10 @@ import { removeGames } from 'server/features/game/gameRepository';
 import { removeSettings } from 'server/features/settings/settingsRepository';
 import { db } from 'server/db/mongodb';
 import { generateTestUsers } from 'server/test/test-data-generation/generators/generateTestData';
+import { createEnteredGames } from 'server/test/test-data-generation/generators/createEnteredGames';
+import { createSettings } from 'server/test/test-data-generation/generators/createSettings';
+import { sharedConfig } from 'shared/config/sharedConfig';
+import { SignupStrategy } from 'shared/config/sharedConfig.types';
 
 const runGenerators = async (): Promise<void> => {
   if (process.env.NODE_ENV === 'production') {
@@ -20,10 +25,15 @@ const runGenerators = async (): Promise<void> => {
 
   const commander = new Command();
 
+  // Generator settings
+  const enableGroups = sharedConfig.signupStrategy === SignupStrategy.ALGORITHM;
+
   // Total users: newUsersCount + groupSize * numberOfGroups + testUsersCount
   const newUsersCount = 40; // Number of individual users
-  const groupSize = 3; // How many users in each group
-  const numberOfGroups = 15; // Number of groups
+
+  const groupSize = enableGroups ? 3 : 0; // How many users in each group
+  const numberOfGroups = enableGroups ? 15 : 0; // Number of groups
+
   const testUsersCount = 5; // Number of test users
 
   // Total games: newGamesCount * signupTimes
@@ -33,6 +43,7 @@ const runGenerators = async (): Promise<void> => {
   commander
     .option('-u, --users', 'Generate users')
     .option('-s, --signups', 'Generate signups')
+    .option('-e, --entered', 'Generate entered games')
     .option('-g, --games', 'Generate games')
     .option('-c, --clean', 'Clean all data');
 
@@ -81,10 +92,20 @@ const runGenerators = async (): Promise<void> => {
   if (options.signups) {
     logger.info('Generate signups');
 
-    !options.clean && (await removeSignups());
+    !options.clean && (await removeSignedGames());
     !options.clean && (await removeResults());
 
     await createSignups();
+  }
+
+  if (options.entered) {
+    logger.info('Generate signups');
+
+    !options.clean && (await removeEnteredGames());
+    !options.clean && (await removeResults());
+
+    await createSettings({ signupMessages: true });
+    await createEnteredGames();
   }
 
   await db.gracefulExit();
