@@ -22,6 +22,7 @@ export interface SignupData {
 export interface PostEnteredGameResponse {
   message: string;
   status: 'success';
+  enteredGame: SelectedGame;
 }
 
 export interface DeleteEnteredGameResponse {
