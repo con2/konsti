@@ -112,5 +112,5 @@ const runGenerators = async (): Promise<void> => {
 };
 
 runGenerators().catch((error) => {
-  throw new Error(error);
+  logger.error(error);
 });
