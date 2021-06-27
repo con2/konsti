@@ -7,7 +7,7 @@ import { logger } from 'server/utils/logger';
 import { Game } from 'shared/typings/models/game';
 import { findUsers } from 'server/features//user/userRepository';
 import { User } from 'shared/typings/models/user';
-import { GameWithUsernames } from 'shared/typings/api/games';
+import { GameWithUsernames, UserSignup } from 'shared/typings/api/games';
 
 export const removeDeletedGames = async (
   updatedGames: readonly Game[]
@@ -57,7 +57,7 @@ export const getGamesWithPlayers = async (
     const users = await findUsers();
 
     return games.map((game) => {
-      return { game, usernames: getUsernamesForGame(users, game.gameId) };
+      return { game, users: getUsersForGame(users, game.gameId) };
     });
   } catch (error) {
     logger.error(`getGamesWithPlayers error: ${error}`);
@@ -65,13 +65,22 @@ export const getGamesWithPlayers = async (
   }
 };
 
-const getUsernamesForGame = (users: User[], gameId: string): string[] => {
-  const playersForGame = users.filter(
+const getUsersForGame = (users: User[], gameId: string): UserSignup[] => {
+  const usersForGame = users.filter(
     (user) =>
       user.enteredGames.filter(
         (enteredGame) => enteredGame.gameDetails.gameId === gameId
       ).length > 0
   );
 
-  return playersForGame.map((player) => player.username);
+  return usersForGame.map((user) => {
+    const enteredGame = user.enteredGames.find(
+      (game) => game.gameDetails.gameId === gameId
+    );
+
+    return {
+      username: user.username,
+      signupMessage: enteredGame?.message ?? '',
+    };
+  });
 };

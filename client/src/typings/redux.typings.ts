@@ -6,6 +6,7 @@ import { Result } from 'shared/typings/models/result';
 import { store, combinedReducer } from 'client/utils/store';
 import { SelectedGame, UserGroup } from 'shared/typings/models/user';
 import { SignupMessage } from 'shared/typings/models/settings';
+import { UserSignup } from 'shared/typings/api/games';
 
 export interface AdminState {
   hiddenGames: readonly Game[];
@@ -17,7 +18,7 @@ export interface AdminState {
 }
 
 export interface UsersForGame {
-  usernames: string[];
+  users: UserSignup[];
   gameId: string;
 }
 
