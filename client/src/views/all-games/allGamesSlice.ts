@@ -17,7 +17,7 @@ const allGamesSlice = createSlice({
         games: action.payload.map((gameWithPlayers) => gameWithPlayers.game),
         signups: action.payload.map((gameWithPlayers) => {
           return {
-            usernames: gameWithPlayers.usernames,
+            users: gameWithPlayers.users,
             gameId: gameWithPlayers.game.gameId,
           };
         }),
