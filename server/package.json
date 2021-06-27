@@ -35,7 +35,7 @@
   "dependencies": {
     "array-flat-polyfill": "1.0.1",
     "bcryptjs": "2.4.3",
-    "commander": "7.2.0",
+    "commander": "8.0.0",
     "eventassigner-js": "0.1.6",
     "eventassigner-random": "0.2.0",
     "express": "4.17.1",
