@@ -452,7 +452,7 @@ export const saveEnteredGame = async (
     )
       .lean<User>()
       .populate('favoritedGames')
-      .populate('enteredGames.gameDetails')
+      .populate('enteredGames.gameDetails', '-_id -__v -updatedAt')
       .populate('signedGames.gameDetails');
   } catch (error) {
     logger.error(
