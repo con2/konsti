@@ -1,9 +1,11 @@
-import commander from 'commander';
+import { Command } from 'commander';
 import { getUserStats } from './statistics-helpers/getUserStats';
 import { getGameStats } from './statistics-helpers/getGameStats';
 import { getResultsStats } from './statistics-helpers/getResultsStats';
 
 const fixData = (): void => {
+  const commander = new Command();
+
   commander
     .command('users <year> <event>')
     .description('Get user statisticss')

@@ -1,5 +1,5 @@
 import 'array-flat-polyfill';
-import commander from 'commander';
+import { Command } from 'commander';
 import { logger } from 'server/utils/logger';
 import { createGames } from 'server/test/test-data-generation/generators/createGames';
 import { createSignups } from 'server/test/test-data-generation/generators/createSignups';
@@ -14,6 +14,8 @@ const runGenerators = async (): Promise<void> => {
   if (process.env.NODE_ENV === 'production') {
     throw new Error(`Data creation not allowed in production`);
   }
+
+  const commander = new Command();
 
   // Total users: newUsersCount + groupSize * numberOfGroups + testUsersCount
   const newUsersCount = 40; // Number of individual users
