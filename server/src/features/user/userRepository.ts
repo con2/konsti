@@ -510,3 +510,12 @@ export const delEnteredGame = async (
   logger.info(`MongoDB: Entered game removed from user "${username}"`);
   return user;
 };
+
+export const removeSignups = async (): Promise<void> => {
+  logger.info('MongoDB: remove ALL signups from db');
+  try {
+    await UserModel.updateMany({}, { signedGames: [], enteredGames: [] });
+  } catch (error) {
+    throw new Error(`MongoDB: Error removing signups: ${error}`);
+  }
+};
