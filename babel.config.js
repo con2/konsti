@@ -16,7 +16,6 @@ module.exports = (api) => {
       [
         '@babel/preset-env',
         {
-          debug: false,
           useBuiltIns: 'entry',
           corejs: '3',
         },
@@ -48,7 +47,6 @@ module.exports = (api) => {
         '@babel/preset-env',
         {
           modules: 'commonjs',
-          debug: false,
           targets: {
             node: 'current',
           },
@@ -74,7 +72,6 @@ module.exports = (api) => {
         '@babel/preset-env',
         {
           modules: 'commonjs',
-          debug: false,
           targets: {
             node: 'current',
           },
@@ -86,7 +83,7 @@ module.exports = (api) => {
         'babel-plugin-module-resolver',
         {
           root: ['.'],
-          alias: { shared: '../shared' },
+          alias: { shared: './shared' },
           extensions: ['.js', '.ts'],
         },
       ],

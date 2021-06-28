@@ -1,0 +1,1 @@
+export const SIGNUP_MESSAGE_LENGTH = 140;
