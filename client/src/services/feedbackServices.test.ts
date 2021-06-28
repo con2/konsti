@@ -13,16 +13,17 @@ test('POST feedback to server', async () => {
     });
   });
 
-  const feedbackData = {
-    feedback: 'test feedback',
-    gameId: '123',
-  };
+  const feedback = 'test feedback';
+  const gameId = '123';
+  const username = 'test user';
 
-  const response = await postFeedback(feedbackData);
+  const response = await postFeedback({ feedback, gameId, username });
 
   expect(response).toEqual('test response');
   expect(mockAxios.post).toHaveBeenCalledTimes(1);
   expect(mockAxios.post).toHaveBeenCalledWith(FEEDBACK_ENDPOINT, {
-    feedbackData,
+    feedback,
+    gameId,
+    username,
   });
 });

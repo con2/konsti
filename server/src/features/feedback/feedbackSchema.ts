@@ -5,6 +5,7 @@ const feedbackSchema = new mongoose.Schema(
   {
     gameId: String,
     feedback: String,
+    username: String,
   },
   { timestamps: true }
 );

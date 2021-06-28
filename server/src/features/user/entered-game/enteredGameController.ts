@@ -20,7 +20,9 @@ export const postEnteredGame = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${ENTERED_GAME_ENDPOINT}`);
 
-  if (!isAuthorized(req.headers.authorization, UserGroup.USER)) {
+  const { username } = req.body;
+
+  if (!isAuthorized(req.headers.authorization, UserGroup.USER, username)) {
     return res.sendStatus(401);
   }
 
@@ -43,7 +45,9 @@ export const deleteEnteredGame = async (
 ): Promise<Response> => {
   logger.info(`API call: DELETE ${ENTERED_GAME_ENDPOINT}`);
 
-  if (!isAuthorized(req.headers.authorization, UserGroup.USER)) {
+  const { username } = req.body;
+
+  if (!isAuthorized(req.headers.authorization, UserGroup.USER, username)) {
     return res.sendStatus(401);
   }
 

@@ -17,7 +17,6 @@ export interface PostUserResponse {
 }
 
 export interface GetUserBySerialResponse {
-  games: UserGames;
   message: string;
   serial: string;
   status: 'success';

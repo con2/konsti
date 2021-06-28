@@ -16,7 +16,7 @@ export const submitJoinGroup = (groupData: GroupData): AppThunk => {
     }
 
     if (joinGroupResponse?.status === 'success') {
-      dispatch(submitGetGroup(joinGroupResponse.groupCode));
+      dispatch(submitGetGroup(joinGroupResponse.groupCode, groupData.username));
       dispatch(submitUpdateGroupCodeAsync(joinGroupResponse.groupCode));
     }
   };
@@ -31,15 +31,20 @@ export const submitCreateGroup = (groupData: GroupData): AppThunk => {
     }
 
     if (createGroupResponse?.status === 'success') {
-      dispatch(submitGetGroup(createGroupResponse.groupCode));
+      dispatch(
+        submitGetGroup(createGroupResponse.groupCode, groupData.username)
+      );
       dispatch(submitUpdateGroupCodeAsync(createGroupResponse.groupCode));
     }
   };
 };
 
-export const submitGetGroup = (groupCode: string): AppThunk => {
+export const submitGetGroup = (
+  groupCode: string,
+  username: string
+): AppThunk => {
   return async (dispatch): Promise<void> => {
-    const getGroupResponse = await getGroup(groupCode);
+    const getGroupResponse = await getGroup(groupCode, username);
 
     if (getGroupResponse?.status === 'error') {
       return await Promise.reject(getGroupResponse);

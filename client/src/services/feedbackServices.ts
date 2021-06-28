@@ -11,7 +11,9 @@ export const postFeedback = async (
   let response: AxiosResponse;
   try {
     response = await api.post<PostFeedbackResponse>(FEEDBACK_ENDPOINT, {
-      feedbackData,
+      feedback: feedbackData.feedback,
+      gameId: feedbackData.gameId,
+      username: feedbackData.username,
     });
   } catch (error) {
     if (error?.response) {
