@@ -4,12 +4,15 @@ import styled from 'styled-components';
 import { postFeedback } from 'client/services/feedbackServices';
 import { Game } from 'shared/typings/models/game';
 import { Button } from 'client/components/Button';
+import { useAppSelector } from 'client/utils/hooks';
 
 export interface Props {
   game: Game;
 }
 
 export const FeedbackForm = ({ game }: Props): ReactElement => {
+  const username = useAppSelector((state) => state.login.username);
+
   const [submitting, setSubmitting] = useState<boolean>(false);
   const [feedbackValue, setFeedbackValue] = useState<string>('');
   const [feedbackSent, setFeedbackSent] = useState<boolean>(false);
@@ -23,6 +26,7 @@ export const FeedbackForm = ({ game }: Props): ReactElement => {
     const feedbackData = {
       gameId: game.gameId,
       feedback: feedbackValue,
+      username: username,
     };
 
     try {

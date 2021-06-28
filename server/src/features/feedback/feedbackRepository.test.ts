@@ -24,7 +24,11 @@ afterEach(async () => {
 });
 
 test('should insert new feedback into collection', async () => {
-  const mockFeedback = { gameId: '1234A', feedback: 'Test feedback' };
+  const mockFeedback = {
+    gameId: '1234A',
+    feedback: 'Test feedback',
+    username: 'Test user',
+  };
   await saveFeedback(mockFeedback);
 
   const insertedFeedback = await FeedbackModel.findOne(mockFeedback);

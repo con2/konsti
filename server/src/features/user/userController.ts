@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { validationResult } from 'express-validator';
-import { String, Record } from 'runtypes';
+import { String, Record, Number, Array, Boolean } from 'runtypes';
 import {
   fetchUserByUsername,
   fetchUserBySerial,
@@ -32,6 +32,7 @@ import {
 import { sharedConfig } from 'shared/config/sharedConfig';
 import { ConventionType } from 'shared/config/sharedConfig.types';
 import { createSerial } from './userUtils';
+import { GameRuntype } from 'shared/typings/models/game';
 
 export const postUser = async (
   req: Request<{}, {}, RegistrationFormFields>,
@@ -80,11 +81,33 @@ export const postFavorite = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${FAVORITE_ENDPOINT}`);
 
-  if (!isAuthorized(req.headers.authorization, UserGroup.USER)) {
+  const PostFavoriteParameters = Record({
+    favoriteData: Record({
+      username: String,
+      favoritedGames: Array(GameRuntype),
+    }),
+  });
+
+  let parameters;
+  try {
+    parameters = PostFavoriteParameters.check(req.body);
+  } catch (error) {
+    logger.error(`Error validating getUser parameters: ${error.message}`);
+    return res.sendStatus(422);
+  }
+
+  const { favoriteData } = parameters;
+
+  if (
+    !isAuthorized(
+      req.headers.authorization,
+      UserGroup.USER,
+      favoriteData.username
+    )
+  ) {
     return res.sendStatus(401);
   }
 
-  const favoriteData = req.body.favoriteData;
   const response = await storeFavorite(favoriteData);
   return res.json(response);
 };
@@ -95,13 +118,31 @@ export const postGroup = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${GROUP_ENDPOINT}`);
 
-  if (!isAuthorized(req.headers.authorization, UserGroup.USER)) {
-    return res.sendStatus(401);
+  const PostGroupParameters = Record({
+    groupData: Record({
+      groupCode: String,
+      leader: Boolean,
+      ownSerial: String,
+      username: String,
+      leaveGroup: Boolean.optional(),
+      closeGroup: Boolean.optional(),
+    }),
+  });
+
+  let parameters;
+  try {
+    parameters = PostGroupParameters.check(req.body);
+  } catch (error) {
+    logger.error(`Error validating getUser parameters: ${error.message}`);
+    return res.sendStatus(422);
   }
 
-  const groupData = req.body.groupData;
   const { username, leader, groupCode, ownSerial, leaveGroup, closeGroup } =
-    groupData;
+    parameters.groupData;
+
+  if (!isAuthorized(req.headers.authorization, UserGroup.USER, username)) {
+    return res.sendStatus(401);
+  }
 
   const response = await storeGroup(
     username,
@@ -120,23 +161,23 @@ export const getUser = async (
 ): Promise<Response> => {
   logger.info(`API call: GET ${USERS_ENDPOINT}`);
 
-  if (!isAuthorized(req.headers.authorization, UserGroup.USER)) {
-    return res.sendStatus(401);
-  }
-
   const GetUserQueryParameters = Record({
     username: String,
   });
 
-  let queryParameters;
+  let parameters;
   try {
-    queryParameters = GetUserQueryParameters.check(req.query);
+    parameters = GetUserQueryParameters.check(req.query);
   } catch (error) {
     logger.error(`Error validating getUser parameters: ${error.message}`);
     return res.sendStatus(422);
   }
 
-  const { username } = queryParameters;
+  const { username } = parameters;
+
+  if (!isAuthorized(req.headers.authorization, UserGroup.USER, username)) {
+    return res.sendStatus(401);
+  }
 
   if (!username) {
     return res.sendStatus(422);
@@ -152,17 +193,15 @@ export const getUserBySerial = async (
 ): Promise<Response> => {
   logger.info(`API call: GET ${USERS_BY_SERIAL_ENDPOINT}`);
 
-  if (!isAuthorized(req.headers.authorization, UserGroup.USER)) {
-    return res.sendStatus(401);
-  }
+  // TODO: Add isAuthorized() with helper token
 
   const GetUserQueryParameters = Record({
     serial: String,
   });
 
-  let queryParameters;
+  let parameters;
   try {
-    queryParameters = GetUserQueryParameters.check(req.query);
+    parameters = GetUserQueryParameters.check(req.query);
   } catch (error) {
     logger.error(
       `Error validating getUserBySerial parameters: ${error.message}`
@@ -170,7 +209,7 @@ export const getUserBySerial = async (
     return res.sendStatus(422);
   }
 
-  const { serial } = queryParameters;
+  const { serial } = parameters;
 
   if (!serial) {
     return res.sendStatus(422);
@@ -186,23 +225,24 @@ export const getGroup = async (
 ): Promise<Response> => {
   logger.info(`API call: GET ${GROUP_ENDPOINT}`);
 
-  if (!isAuthorized(req.headers.authorization, UserGroup.USER)) {
-    return res.sendStatus(401);
-  }
-
   const GetGroupQueryParameters = Record({
     groupCode: String,
+    username: String,
   });
 
-  let queryParameters;
+  let parameters;
 
   try {
-    queryParameters = GetGroupQueryParameters.check(req.query);
+    parameters = GetGroupQueryParameters.check(req.query);
   } catch (error) {
     return res.sendStatus(422);
   }
 
-  const { groupCode } = queryParameters;
+  const { groupCode, username } = parameters;
+
+  if (!isAuthorized(req.headers.authorization, UserGroup.USER, username)) {
+    return res.sendStatus(401);
+  }
 
   const response = await fetchGroup(groupCode);
   return res.json(response);
@@ -214,12 +254,34 @@ export const postSignup = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${SIGNUP_ENDPOINT}`);
 
-  if (!isAuthorized(req.headers.authorization, UserGroup.USER)) {
-    return res.sendStatus(401);
+  const PostSignupParameters = Record({
+    signupData: Record({
+      username: String,
+      selectedGames: Array(
+        Record({
+          gameDetails: GameRuntype,
+          priority: Number,
+          time: String,
+          message: String,
+        })
+      ),
+      signupTime: String,
+    }),
+  });
+
+  let parameters;
+  try {
+    parameters = PostSignupParameters.check(req.body);
+  } catch (error) {
+    logger.error(`Error validating getUser parameters: ${error.message}`);
+    return res.sendStatus(422);
   }
 
-  const signupData = req.body.signupData;
-  const { selectedGames, username, signupTime } = signupData;
+  const { selectedGames, username, signupTime } = parameters.signupData;
+
+  if (!isAuthorized(req.headers.authorization, UserGroup.USER, username)) {
+    return res.sendStatus(401);
+  }
 
   const response = await storeSignup(selectedGames, username, signupTime);
   return res.json(response);

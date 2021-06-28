@@ -16,10 +16,15 @@ export const getJWT = (userGroup: UserGroup, username: string): string => {
   return jsonwebtoken.sign(payload, getSecret(userGroup), options);
 };
 
-export const verifyJWT = (jwt: string, userGroup: UserGroup): JWTResult => {
+export const verifyJWT = (
+  jwt: string,
+  userGroup: UserGroup,
+  username: string
+): JWTResult => {
   try {
     const result = jsonwebtoken.verify(jwt, getSecret(userGroup)) as JWTResult;
-    if (typeof result !== 'string')
+
+    if (typeof result !== 'string' && result.username === username)
       return {
         username: result.username,
         userGroup: result.userGroup,

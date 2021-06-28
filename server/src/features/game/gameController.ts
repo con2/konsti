@@ -11,7 +11,7 @@ export const postGame = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${GAMES_ENDPOINT}`);
 
-  if (!isAuthorized(req.headers.authorization, UserGroup.ADMIN)) {
+  if (!isAuthorized(req.headers.authorization, UserGroup.ADMIN, 'admin')) {
     return res.sendStatus(401);
   }
 
