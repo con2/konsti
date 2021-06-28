@@ -43,7 +43,7 @@ export const store = configureStore({
   // @ts-expect-error: TODO
   preloadedState: loadSession(), // Load persisted state from localStorage
   devTools: {
-    trace: config.reduxTrace,
+    trace: config.enableReduxTrace,
     traceLimit: 25,
   },
 });
