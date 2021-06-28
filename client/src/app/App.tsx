@@ -44,7 +44,7 @@ export const App = (): ReactElement => {
           {!appOpen && <h2>{t('closingMessage')}</h2>}
           <BrowserRouter>
             <Header />
-            <Routes onlyAdminLoginAllowed={!appOpen} />
+            <Routes />
           </BrowserRouter>
         </>
       )}
