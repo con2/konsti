@@ -123,7 +123,8 @@
   "pageTitle": {
     "login": "Please login",
     "registration": "Please register user account",
-    "usernamePublicWarning": "Please note that the username is public"
+    "usernamePublicWarning": "Please note that the username is public",
+    "usernameDiscordInfo": "Please use the same username as in Discord"
   },
   "user": "User",
   "favoritedGames": "Favorited games",
