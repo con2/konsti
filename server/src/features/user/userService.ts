@@ -276,11 +276,6 @@ export const fetchUserBySerial = async (
   return {
     message: 'Getting user data success',
     status: 'success',
-    games: {
-      enteredGames: user.enteredGames,
-      favoritedGames: user.favoritedGames as Game[],
-      signedGames: user.signedGames,
-    },
     username: user.username,
     serial: user.serial,
   };
@@ -592,7 +587,7 @@ export const login = async (
       };
     }
 
-    const jwtResponse = verifyJWT(jwt, userGroup);
+    const jwtResponse = verifyJWT(jwt, userGroup, username);
 
     if (jwtResponse.status === 'error') {
       return {

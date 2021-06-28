@@ -20,14 +20,14 @@ export const getResults = async (
     startTime: String,
   });
 
-  let queryParameters;
+  let parameters;
   try {
-    queryParameters = GetResultsQueryParameters.check(req.query);
+    parameters = GetResultsQueryParameters.check(req.query);
   } catch (error) {
     return res.sendStatus(422);
   }
 
-  const { startTime } = queryParameters;
+  const { startTime } = parameters;
 
   if (!startTime) {
     return res.sendStatus(422);
@@ -43,7 +43,7 @@ export const postAssignment = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${ASSIGNMENT_ENDPOINT}`);
 
-  if (!isAuthorized(req.headers.authorization, UserGroup.ADMIN)) {
+  if (!isAuthorized(req.headers.authorization, UserGroup.ADMIN, 'admin')) {
     return res.sendStatus(401);
   }
 

@@ -15,13 +15,14 @@ test('GET group from server', async () => {
   );
 
   const groupCode = '123';
+  const username = 'test user';
 
-  const response = await getGroup(groupCode);
+  const response = await getGroup(groupCode, username);
 
   expect(response).toEqual('test response');
   expect(mockAxios.get).toHaveBeenCalledTimes(1);
   expect(mockAxios.get).toHaveBeenCalledWith(GROUP_ENDPOINT, {
-    params: { groupCode },
+    params: { groupCode, username },
   });
 });
 

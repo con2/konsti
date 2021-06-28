@@ -75,9 +75,9 @@ export const loadUser = async (): Promise<void> => {
 export const loadGroupMembers = async (): Promise<void> => {
   const state = store.getState();
   const dispatch: AppDispatch = store.dispatch;
-  const { loggedIn, groupCode } = state.login;
+  const { loggedIn, groupCode, username } = state.login;
 
   if (loggedIn && groupCode !== '0') {
-    await dispatch(submitGetGroup(groupCode));
+    await dispatch(submitGetGroup(groupCode, username));
   }
 };

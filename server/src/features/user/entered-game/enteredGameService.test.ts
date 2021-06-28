@@ -35,7 +35,7 @@ describe(`POST ${ENTERED_GAME_ENDPOINT}`, () => {
     const response = await request(server)
       .post(ENTERED_GAME_ENDPOINT)
       .send({
-        username: 'testuser',
+        username: mockUser.username,
         enteredGameId: 'ABCD1234',
       })
       .set(

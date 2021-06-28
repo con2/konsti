@@ -26,13 +26,15 @@ export const postGroup = async (
 };
 
 export const getGroup = async (
-  groupCode: string
+  groupCode: string,
+  username: string
 ): Promise<GetGroupResponse | ServerError> => {
   let response: AxiosResponse;
   try {
     response = await api.get<GetGroupResponse>(GROUP_ENDPOINT, {
       params: {
         groupCode,
+        username,
       },
     });
   } catch (error) {
