@@ -19,7 +19,16 @@ afterEach(async () => {
   await mongoServer.stop();
 });
 
-test(`POST ${FEEDBACK_ENDPOINT} should return 401 without valid authorization`, async () => {
+test(`POST ${FEEDBACK_ENDPOINT} should return 422 without valid body`, async () => {
   const response = await request(server).post(FEEDBACK_ENDPOINT);
+  expect(response.status).toEqual(422);
+});
+
+test(`POST ${FEEDBACK_ENDPOINT} should return 401 without valid authorization`, async () => {
+  const response = await request(server).post(FEEDBACK_ENDPOINT).send({
+    gameId: '1234',
+    feedback: 'test feedback',
+    username: 'testuser',
+  });
   expect(response.status).toEqual(401);
 });

@@ -26,7 +26,7 @@ export const postHidden = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${HIDDEN_ENDPOINT}`);
 
-  if (!isAuthorized(req.headers.authorization, UserGroup.ADMIN)) {
+  if (!isAuthorized(req.headers.authorization, UserGroup.ADMIN, 'admin')) {
     return res.sendStatus(401);
   }
 
@@ -41,7 +41,7 @@ export const postSignupTime = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${SIGNUPTIME_ENDPOINT}`);
 
-  if (!isAuthorized(req.headers.authorization, UserGroup.ADMIN)) {
+  if (!isAuthorized(req.headers.authorization, UserGroup.ADMIN, 'admin')) {
     return res.sendStatus(401);
   }
 
@@ -56,7 +56,7 @@ export const postAppOpen = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${TOGGLE_APP_OPEN_ENDPOINT}`);
 
-  if (!isAuthorized(req.headers.authorization, UserGroup.ADMIN)) {
+  if (!isAuthorized(req.headers.authorization, UserGroup.ADMIN, 'admin')) {
     return res.sendStatus(401);
   }
 
@@ -81,7 +81,7 @@ export const postSignupMessage = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${SIGNUP_MESSAGE_ENDPOINT}`);
 
-  if (!isAuthorized(req.headers.authorization, UserGroup.ADMIN)) {
+  if (!isAuthorized(req.headers.authorization, UserGroup.ADMIN, 'admin')) {
     return res.sendStatus(401);
   }
 
@@ -95,7 +95,7 @@ export const deleteSignupMessage = async (
 ): Promise<Response> => {
   logger.info(`API call: DELETE ${SIGNUP_MESSAGE_ENDPOINT}`);
 
-  if (!isAuthorized(req.headers.authorization, UserGroup.ADMIN)) {
+  if (!isAuthorized(req.headers.authorization, UserGroup.ADMIN, 'admin')) {
     return res.sendStatus(401);
   }
 

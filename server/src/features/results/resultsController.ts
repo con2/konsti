@@ -43,7 +43,7 @@ export const postAssignment = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${ASSIGNMENT_ENDPOINT}`);
 
-  if (!isAuthorized(req.headers.authorization, UserGroup.ADMIN)) {
+  if (!isAuthorized(req.headers.authorization, UserGroup.ADMIN, 'admin')) {
     return res.sendStatus(401);
   }
 

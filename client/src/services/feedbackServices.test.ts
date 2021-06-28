@@ -16,6 +16,7 @@ test('POST feedback to server', async () => {
   const feedbackData = {
     feedback: 'test feedback',
     gameId: '123',
+    username: 'test user',
   };
 
   const response = await postFeedback(feedbackData);

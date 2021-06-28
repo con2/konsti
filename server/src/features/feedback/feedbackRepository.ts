@@ -6,6 +6,7 @@ export const saveFeedback = async (feedbackData: Feedback): Promise<void> => {
   const feedback = new FeedbackModel({
     gameId: feedbackData.gameId,
     feedback: feedbackData.feedback,
+    username: feedbackData.username,
   });
 
   try {
