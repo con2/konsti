@@ -1,4 +1,5 @@
 import { Record, String, Static } from 'runtypes';
+import { SIGNUP_MESSAGE_LENGTH } from 'shared/constants/validation';
 import { SelectedGame } from 'shared/typings/models/user';
 
 export interface PostSignupResponse {
@@ -34,7 +35,11 @@ export const PostEnteredGameParametersRuntype = Record({
   username: String,
   enteredGameId: String,
   startTime: String,
-  message: String,
+  message: String.withConstraint(
+    (message) =>
+      message.length <= SIGNUP_MESSAGE_LENGTH ||
+      `Message too long: ${message.length}/${SIGNUP_MESSAGE_LENGTH}`
+  ),
 });
 
 export type PostEnteredGameParameters = Static<

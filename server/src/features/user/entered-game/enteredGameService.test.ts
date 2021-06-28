@@ -45,6 +45,23 @@ describe(`POST ${ENTERED_GAME_ENDPOINT}`, () => {
     expect(response.status).toEqual(422);
   });
 
+  test('should return 422 if signup message is too long', async () => {
+    const response = await request(server)
+      .post(ENTERED_GAME_ENDPOINT)
+      .send({
+        username: mockUser.username,
+        enteredGameId: mockGame.gameId,
+        startTime: mockGame.startTime,
+        message:
+          'Test message Test message Test message Test message Test message Test message Test message Test message Test message Test message Test message Test message Test message',
+      })
+      .set(
+        'Authorization',
+        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`
+      );
+    expect(response.status).toEqual(422);
+  });
+
   test('should return error when game is not found', async () => {
     await saveUser(mockUser);
 
