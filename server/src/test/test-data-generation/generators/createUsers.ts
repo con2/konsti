@@ -6,10 +6,10 @@ import { saveUser } from 'server/features/user/userRepository';
 
 const SERIAL_MAX = 10000000;
 
-export const createAdminUser = async (): Promise<void> => {
+export const createAdminUser = async (password?: string): Promise<void> => {
   logger.info(`Generate data for admin user "admin:test"`);
 
-  const passwordHash = await hashPassword('test');
+  const passwordHash = await hashPassword(password ?? 'test');
 
   const registrationData = {
     username: 'admin',

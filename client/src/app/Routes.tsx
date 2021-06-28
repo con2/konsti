@@ -75,8 +75,6 @@ export const Routes = (): ReactElement => {
           <Route path='/help'>
             <HelperView />
           </Route>
-          {userGroup === UserGroup.ADMIN && <Redirect from='/' to='/admin' />}
-          {userGroup === UserGroup.HELP && <Redirect from='/' to='/help' />}
           <Redirect from='/' to='/games' />
           <Redirect from='/*' to='/' />
         </Switch>
