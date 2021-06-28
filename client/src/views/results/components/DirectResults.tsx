@@ -7,14 +7,18 @@ import { useAppSelector } from 'client/utils/hooks';
 import { getUsersForGameId } from 'client/views/results/resultsUtils';
 import { getUpcomingGames } from 'client/utils/getUpcomingGames';
 import { Button } from 'client/components/Button';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export const DirectResults = (): ReactElement => {
   const { t } = useTranslation();
 
   const games = useAppSelector((state) => state.allGames.games);
   const signups = useAppSelector((state) => state.allGames.signups);
+  const signupMessages = useAppSelector((state) => state.admin.signupMessages);
 
   const [showAllGames, setShowAllGames] = useState<boolean>(false);
+  const [showSignupMessages, setShowSignupMessages] = useState<string[]>([]);
+
   const filteredGames = showAllGames ? games : getUpcomingGames(games, 1);
   const gamesByStartTime = _.groupBy(filteredGames, 'startTime');
 
@@ -47,24 +51,66 @@ export const DirectResults = (): ReactElement => {
 
             <Games>
               {gamesForTime.map((game) => {
+                const signupMessage = signupMessages.find(
+                  (message) => message.gameId === game.gameId
+                );
+                const signupMessagesVisible = showSignupMessages.find(
+                  (message) => message === game.gameId
+                );
                 const users = getUsersForGameId(game.gameId, signups);
+
                 return (
                   <GameBox key={game.gameId}>
-                    <h4 key={game.gameId}>{`${game.title}`}</h4>
+                    <h4 key={game.gameId}>
+                      {`${game.title}`}{' '}
+                      {!!signupMessage &&
+                        (signupMessagesVisible ? (
+                          <FontAwesomeIcon
+                            icon={'comment'}
+                            onClick={() =>
+                              setShowSignupMessages(
+                                showSignupMessages.filter(
+                                  (message) => message !== game.gameId
+                                )
+                              )
+                            }
+                          />
+                        ) : (
+                          <FontAwesomeIcon
+                            icon={['far', 'comment']}
+                            onClick={() =>
+                              setShowSignupMessages([
+                                ...showSignupMessages,
+                                game.gameId,
+                              ])
+                            }
+                          />
+                        ))}
+                    </h4>
+
                     <PlayerCount>
                       {t('resultsView.players')}: {users.length}/
                       {game.maxAttendance}
                     </PlayerCount>
+
+                    {signupMessagesVisible && (
+                      <SignupMessageQuestion>
+                        {signupMessage?.message}
+                      </SignupMessageQuestion>
+                    )}
+
                     <PlayerList>
-                      {users.length > 0 ? (
-                        users.map((user) => (
-                          <>
-                            <p key={user.username}>{user.username}</p>
-                            <SignupMessage>{user.signupMessage}</SignupMessage>
-                          </>
-                        ))
-                      ) : (
+                      {users.length === 0 ? (
                         <p>{t('resultsView.noSignups')}</p>
+                      ) : (
+                        users.map((user) => (
+                          <p key={user.username}>
+                            {user.username}:{' '}
+                            {signupMessagesVisible && (
+                              <span>{user.signupMessage}</span>
+                            )}
+                          </p>
+                        ))
                       )}
                     </PlayerList>
                   </GameBox>
@@ -108,6 +154,6 @@ const PlayerCount = styled.div`
   padding: 0 0 0 10px;
 `;
 
-const SignupMessage = styled.p`
-  padding: 0 0 0 20px;
+const SignupMessageQuestion = styled.p`
+  font-weight: 600;
 `;
