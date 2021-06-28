@@ -1,5 +1,5 @@
-import { SignupState } from 'client/typings/redux.typings';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { SignupState } from 'client/typings/redux.typings';
 import { SelectedGame } from 'shared/typings/models/user';
 
 const initialState: SignupState = {

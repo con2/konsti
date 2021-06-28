@@ -1,9 +1,9 @@
+import { Server } from 'http';
 import path from 'path';
 import express, { Request, Response, NextFunction } from 'express';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import expressStaticGzip from 'express-static-gzip';
-import { Server } from 'http';
 import { config } from 'server/config';
 import { logger, stream } from 'server/utils/logger';
 import { allowCORS } from 'server/middleware/cors';
