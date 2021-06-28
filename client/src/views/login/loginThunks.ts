@@ -17,7 +17,15 @@ export const submitLogin = (loginFormFields: LoginFormFields): AppThunk => {
 
     if (loginResponse?.status === 'error') {
       clearSession();
-      return await Promise.reject(loginResponse);
+
+      switch (loginResponse.code) {
+        case 21:
+          throw new Error('error.loginFailed');
+        case 22:
+          throw new Error('error.loginDisabled');
+        default:
+          throw new Error(`error.unkown`);
+      }
     }
 
     if (loginResponse?.status === 'success') {

@@ -14,18 +14,9 @@ export const LoginView = (): ReactElement => {
     try {
       await dispatch(submitLogin(loginFormFields));
     } catch (error) {
-      switch (error.code) {
-        case 21:
-          throw new SubmissionError({
-            _error: t('error.loginFailed'),
-          });
-        case 22:
-          throw new SubmissionError({
-            _error: t('error.loginDisabled'),
-          });
-        default:
-          throw new Error(`submitLogin error: ${error.message}`);
-      }
+      throw new SubmissionError({
+        _error: t(error.message),
+      });
     }
   };
 

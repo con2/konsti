@@ -15,7 +15,14 @@ export const submitRegistration = (
     }
 
     if (registrationResponse?.status === 'error') {
-      return await Promise.reject(registrationResponse);
+      switch (registrationResponse.code) {
+        case 11:
+          throw new Error('error.usernameTaken');
+        case 12:
+          throw new Error('error.invalidSerial');
+        default:
+          throw new Error('error.unknown');
+      }
     }
 
     if (registrationResponse?.status === 'success') {
