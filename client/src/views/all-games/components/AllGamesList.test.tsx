@@ -1,13 +1,13 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 import { store } from 'client/utils/store';
 import { testGame } from 'client/test/test-data/testGame';
 import {
   AllGamesList,
   Props,
 } from 'client/views/all-games/components/AllGamesList';
-import { BrowserRouter } from 'react-router-dom';
 
 test('should render correctly', () => {
   const props: Props = {

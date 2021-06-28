@@ -1,6 +1,6 @@
+import { Server } from 'http';
 import request from 'supertest';
 import { MongoMemoryServer } from 'mongodb-memory-server';
-import { Server } from 'http';
 import { startServer, closeServer } from 'server/utils/server';
 
 let server: Server;
