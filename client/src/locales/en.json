@@ -54,7 +54,8 @@
     "finnishShort": "FI"
   },
   "validation": {
-    "required": "Required"
+    "required": "Required",
+    "tooLong": "Value is too long"
   },
   "pages": {
     "myGames": "My Games",

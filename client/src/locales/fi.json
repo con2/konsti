@@ -54,7 +54,8 @@
     "finnishShort": "FI"
   },
   "validation": {
-    "required": "Vaadittu kenttä"
+    "required": "Vaadittu kenttä",
+    "tooLong": "Syöte on liian pitkä"
   },
   "pages": {
     "myGames": "Omat pelit",

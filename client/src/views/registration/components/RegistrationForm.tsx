@@ -3,7 +3,11 @@ import { Field, reduxForm, InjectedFormProps } from 'redux-form';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import { FormField } from 'client/components/FormField';
-import { required } from 'client/utils/validate';
+import {
+  passwordMaxLength,
+  required,
+  usernameMaxLength,
+} from 'client/utils/validate';
 import { Accordion } from 'client/components/Accordion';
 import { sharedConfig } from 'shared/config/sharedConfig';
 import { ConventionType } from 'shared/config/sharedConfig.types';
@@ -28,14 +32,14 @@ const RegistrationForm = (props: InjectedFormProps): ReactElement => {
           name='username'
           type='text'
           component={FormField}
-          validate={required}
+          validate={[required, usernameMaxLength]}
         />
 
         <Field
           name='password'
           type='password'
           component={FormField}
-          validate={required}
+          validate={[required, passwordMaxLength]}
         />
 
         {serialRequired && (
