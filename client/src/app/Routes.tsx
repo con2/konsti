@@ -15,23 +15,22 @@ import { HelperView } from 'client/views/helper/HelperView';
 import { useAppSelector } from 'client/utils/hooks';
 import { UserGroup } from 'shared/typings/models/user';
 
-export interface Props {
-  onlyAdminLoginAllowed: boolean;
-}
-
-export const Routes = ({ onlyAdminLoginAllowed }: Props): ReactElement => {
+export const Routes = (): ReactElement => {
+  const appOpen = useAppSelector((state) => state.admin.appOpen);
   const loggedIn = useAppSelector((state) => state.login.loggedIn);
   const userGroup = useAppSelector((state) => state.login.userGroup);
 
-  if (onlyAdminLoginAllowed) {
+  if (!appOpen) {
     return (
       <Switch>
         {userGroup === UserGroup.ADMIN && (
           <Redirect from='/login' to='/admin' />
         )}
-        <Route path='/admin'>
-          <AdminView />
-        </Route>
+        {userGroup === UserGroup.ADMIN && (
+          <Route path='/admin'>
+            <AdminView />
+          </Route>
+        )}
         <Route path='/login'>
           <LoginView />
         </Route>
