@@ -20,14 +20,14 @@ export const getResults = async (
     startTime: String,
   });
 
-  let queryParameters;
+  let parameters;
   try {
-    queryParameters = GetResultsQueryParameters.check(req.query);
+    parameters = GetResultsQueryParameters.check(req.query);
   } catch (error) {
     return res.sendStatus(422);
   }
 
-  const { startTime } = queryParameters;
+  const { startTime } = parameters;
 
   if (!startTime) {
     return res.sendStatus(422);

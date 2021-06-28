@@ -88,15 +88,15 @@ export const postFavorite = async (
     }),
   });
 
-  let queryParameters;
+  let parameters;
   try {
-    queryParameters = PostFavoriteParameters.check(req.body);
+    parameters = PostFavoriteParameters.check(req.body);
   } catch (error) {
     logger.error(`Error validating getUser parameters: ${error.message}`);
     return res.sendStatus(422);
   }
 
-  const { favoriteData } = queryParameters;
+  const { favoriteData } = parameters;
 
   if (
     !isAuthorized(
@@ -129,16 +129,16 @@ export const postGroup = async (
     }),
   });
 
-  let queryParameters;
+  let parameters;
   try {
-    queryParameters = PostGroupParameters.check(req.body);
+    parameters = PostGroupParameters.check(req.body);
   } catch (error) {
     logger.error(`Error validating getUser parameters: ${error.message}`);
     return res.sendStatus(422);
   }
 
   const { username, leader, groupCode, ownSerial, leaveGroup, closeGroup } =
-    queryParameters.groupData;
+    parameters.groupData;
 
   if (!isAuthorized(req.headers.authorization, UserGroup.USER, username)) {
     return res.sendStatus(401);
@@ -165,15 +165,15 @@ export const getUser = async (
     username: String,
   });
 
-  let queryParameters;
+  let parameters;
   try {
-    queryParameters = GetUserQueryParameters.check(req.query);
+    parameters = GetUserQueryParameters.check(req.query);
   } catch (error) {
     logger.error(`Error validating getUser parameters: ${error.message}`);
     return res.sendStatus(422);
   }
 
-  const { username } = queryParameters;
+  const { username } = parameters;
 
   if (!isAuthorized(req.headers.authorization, UserGroup.USER, username)) {
     return res.sendStatus(401);
@@ -199,9 +199,9 @@ export const getUserBySerial = async (
     serial: String,
   });
 
-  let queryParameters;
+  let parameters;
   try {
-    queryParameters = GetUserQueryParameters.check(req.query);
+    parameters = GetUserQueryParameters.check(req.query);
   } catch (error) {
     logger.error(
       `Error validating getUserBySerial parameters: ${error.message}`
@@ -209,7 +209,7 @@ export const getUserBySerial = async (
     return res.sendStatus(422);
   }
 
-  const { serial } = queryParameters;
+  const { serial } = parameters;
 
   if (!serial) {
     return res.sendStatus(422);
@@ -230,15 +230,15 @@ export const getGroup = async (
     username: String,
   });
 
-  let queryParameters;
+  let parameters;
 
   try {
-    queryParameters = GetGroupQueryParameters.check(req.query);
+    parameters = GetGroupQueryParameters.check(req.query);
   } catch (error) {
     return res.sendStatus(422);
   }
 
-  const { groupCode, username } = queryParameters;
+  const { groupCode, username } = parameters;
 
   if (!isAuthorized(req.headers.authorization, UserGroup.USER, username)) {
     return res.sendStatus(401);
@@ -269,15 +269,15 @@ export const postSignup = async (
     }),
   });
 
-  let queryParameters;
+  let parameters;
   try {
-    queryParameters = PostSignupParameters.check(req.body);
+    parameters = PostSignupParameters.check(req.body);
   } catch (error) {
     logger.error(`Error validating getUser parameters: ${error.message}`);
     return res.sendStatus(422);
   }
 
-  const { selectedGames, username, signupTime } = queryParameters.signupData;
+  const { selectedGames, username, signupTime } = parameters.signupData;
 
   if (!isAuthorized(req.headers.authorization, UserGroup.USER, username)) {
     return res.sendStatus(401);

@@ -12,9 +12,9 @@ export const postFeedback = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${FEEDBACK_ENDPOINT}`);
 
-  let queryParameters;
+  let parameters;
   try {
-    queryParameters = FeedbackRuntype.check(req.body);
+    parameters = FeedbackRuntype.check(req.body);
   } catch (error) {
     return res.sendStatus(422);
   }
@@ -23,12 +23,12 @@ export const postFeedback = async (
     !isAuthorized(
       req.headers.authorization,
       UserGroup.USER,
-      queryParameters.username
+      parameters.username
     )
   ) {
     return res.sendStatus(401);
   }
 
-  const response = await storeFeedback(queryParameters);
+  const response = await storeFeedback(parameters);
   return res.json(response);
 };
