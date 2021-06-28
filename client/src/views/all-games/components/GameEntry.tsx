@@ -1,13 +1,13 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { updateFavorite, UpdateFavoriteOpts } from 'client/utils/favorite';
-import { useAppDispatch, useAppSelector } from 'client/utils/hooks';
 import React, { ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { updateFavorite, UpdateFavoriteOpts } from 'client/utils/favorite';
+import { useAppDispatch, useAppSelector } from 'client/utils/hooks';
 import { sharedConfig } from 'shared/config/sharedConfig';
 import { SignupStrategy } from 'shared/config/sharedConfig.types';
 import { Game } from 'shared/typings/models/game';
-import styled from 'styled-components';
 import { AlgorithmSignupForm } from './AlgorithmSignupForm';
 import { DirectSignupForm } from './DirectSignupForm';
 import { Button } from 'client/components/Button';

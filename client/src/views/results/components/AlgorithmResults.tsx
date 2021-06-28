@@ -1,6 +1,6 @@
-import { useAppSelector } from 'client/utils/hooks';
 import React, { ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useAppSelector } from 'client/utils/hooks';
 import { AlgorithmResultsList } from 'client/views/results/components/AlgorithmResultsList';
 import { timeFormatter } from 'client/utils/timeFormatter';
 

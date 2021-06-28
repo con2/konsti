@@ -1,6 +1,7 @@
 import React, { ReactElement, useState, useEffect, ChangeEvent } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useHistory, useParams } from 'react-router-dom';
+import styled from 'styled-components';
 import {
   submitAddSignupMessage,
   submitDeleteSignupMessage,
@@ -13,7 +14,6 @@ import { Game } from 'shared/typings/models/game';
 import { updateFavorite, UpdateFavoriteOpts } from 'client/utils/favorite';
 import { useAppDispatch, useAppSelector } from 'client/utils/hooks';
 import { Button } from 'client/components/Button';
-import styled from 'styled-components';
 
 export const GameDetails = (): ReactElement => {
   const history = useHistory();
