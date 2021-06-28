@@ -13,6 +13,7 @@
     "eslint-rules": "eslint --print-config .eslintrc.js",
     "fixer": "ts-node src/statistics/dataFixer.ts --",
     "generate-data": "node -r ts-node/register src/test/test-data-generation/runGenerators.ts",
+    "initialize-db": "node -r ts-node/register src/utils/initializeDatabase.ts",
     "generate-serials": "ts-node src/utils/generateSerials.ts",
     "lint": "yarn eslint && yarn prettier:check",
     "remove-invalid-games": "cross-env NODE_ENV=development ts-node src/test/scripts/removeInvalidGames.ts",
