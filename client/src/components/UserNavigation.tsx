@@ -2,21 +2,25 @@ import React, { ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import { useAppSelector } from 'client/utils/hooks';
 
 export const UserNavigation = (props: {
   onSelect: () => void;
 }): ReactElement => {
   const { t } = useTranslation();
+  const appOpen = useAppSelector((state) => state.admin.appOpen);
 
   return (
     <StyledRoutes>
-      <RouterLink
-        onClick={props.onSelect}
-        to='/games'
-        data-testkey='all-games-page-link'
-      >
-        {t('pages.allGames')}
-      </RouterLink>
+      {appOpen && (
+        <RouterLink
+          onClick={props.onSelect}
+          to='/games'
+          data-testkey='all-games-page-link'
+        >
+          {t('pages.allGames')}
+        </RouterLink>
+      )}
 
       <RouterLink
         onClick={props.onSelect}
@@ -26,13 +30,15 @@ export const UserNavigation = (props: {
         {t('button.login')}
       </RouterLink>
 
-      <RouterLink
-        onClick={props.onSelect}
-        to='/registration'
-        data-testkey='registration-page-link'
-      >
-        {t('button.register')}
-      </RouterLink>
+      {appOpen && (
+        <RouterLink
+          onClick={props.onSelect}
+          to='/registration'
+          data-testkey='registration-page-link'
+        >
+          {t('button.register')}
+        </RouterLink>
+      )}
     </StyledRoutes>
   );
 };

@@ -13,6 +13,7 @@ import { LogoutView } from 'client/views/logout/LogoutView';
 import { GroupView } from 'client/views/group/GroupView';
 import { HelperView } from 'client/views/helper/HelperView';
 import { useAppSelector } from 'client/utils/hooks';
+import { UserGroup } from 'shared/typings/models/user';
 
 export interface Props {
   onlyAdminLoginAllowed: boolean;
@@ -20,12 +21,19 @@ export interface Props {
 
 export const Routes = ({ onlyAdminLoginAllowed }: Props): ReactElement => {
   const loggedIn = useAppSelector((state) => state.login.loggedIn);
+  const userGroup = useAppSelector((state) => state.login.userGroup);
 
   if (onlyAdminLoginAllowed) {
     return (
       <Switch>
+        {userGroup === UserGroup.ADMIN && (
+          <Redirect from='/login' to='/admin' />
+        )}
         <Route path='/admin'>
           <AdminView />
+        </Route>
+        <Route path='/login'>
+          <LoginView />
         </Route>
         <Route path='/logout'>
           <LogoutView />
@@ -57,15 +65,19 @@ export const Routes = ({ onlyAdminLoginAllowed }: Props): ReactElement => {
           <Route path='/group'>
             <GroupView />
           </Route>
-          <Route path='/admin'>
-            <AdminView />
-          </Route>
+          {userGroup === UserGroup.ADMIN && (
+            <Route path='/admin'>
+              <AdminView />
+            </Route>
+          )}
           <Route path='/logout'>
             <LogoutView />
           </Route>
           <Route path='/help'>
             <HelperView />
           </Route>
+          {userGroup === UserGroup.ADMIN && <Redirect from='/' to='/admin' />}
+          {userGroup === UserGroup.HELP && <Redirect from='/' to='/help' />}
           <Redirect from='/' to='/games' />
           <Redirect from='/*' to='/' />
         </Switch>
