@@ -2,12 +2,12 @@ import _ from 'lodash';
 import React, { ReactElement, useState } from 'react';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { timeFormatter } from 'client/utils/timeFormatter';
 import { useAppSelector } from 'client/utils/hooks';
 import { getUsersForGameId } from 'client/views/results/resultsUtils';
 import { getUpcomingGames } from 'client/utils/getUpcomingGames';
 import { Button } from 'client/components/Button';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export const DirectResults = (): ReactElement => {
   const { t } = useTranslation();

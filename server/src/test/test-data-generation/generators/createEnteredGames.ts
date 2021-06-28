@@ -1,3 +1,4 @@
+import faker from 'faker';
 import { logger } from 'server/utils/logger';
 import {
   findUsers,
@@ -7,7 +8,6 @@ import { findGames } from 'server/features/game/gameRepository';
 import { findSettings } from 'server/features/settings/settingsRepository';
 import { shuffleArray } from 'server/utils/shuffleArray';
 import { getRandomInt } from 'server/features/player-assignment/utils/getRandomInt';
-import faker from 'faker';
 
 export const createEnteredGames = async (): Promise<void> => {
   logger.info(`Generate EnteredGames data`);
