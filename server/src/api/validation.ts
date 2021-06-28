@@ -1,20 +1,25 @@
 import { check, ValidationChain } from 'express-validator';
 import { sharedConfig } from 'shared/config/sharedConfig';
 import { ConventionType } from 'shared/config/sharedConfig.types';
-import { PASSWORD_LENGTH, USERNAME_LENGTH } from 'shared/constants/validation';
+import {
+  PASSWORD_LENGTH_MAX,
+  PASSWORD_LENGTH_MIN,
+  USERNAME_LENGTH_MAX,
+  USERNAME_LENGTH_MIN,
+} from 'shared/constants/validation';
 
 export const postUserValidation = (): ValidationChain[] => {
   const validation = [
     check('username')
       .not()
       .isEmpty()
-      .isLength({ max: USERNAME_LENGTH })
+      .isLength({ min: USERNAME_LENGTH_MIN, max: USERNAME_LENGTH_MAX })
       .trim()
       .escape(),
     check('password')
       .not()
       .isEmpty()
-      .isLength({ max: PASSWORD_LENGTH })
+      .isLength({ min: PASSWORD_LENGTH_MIN, max: PASSWORD_LENGTH_MAX })
       .trim()
       .escape(),
   ];

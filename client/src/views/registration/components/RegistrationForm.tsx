@@ -4,9 +4,9 @@ import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import { FormField } from 'client/components/FormField';
 import {
-  passwordMaxLength,
+  passwordLength,
   required,
-  usernameMaxLength,
+  usernameLength,
 } from 'client/utils/validate';
 import { Accordion } from 'client/components/Accordion';
 import { sharedConfig } from 'shared/config/sharedConfig';
@@ -32,14 +32,14 @@ const RegistrationForm = (props: InjectedFormProps): ReactElement => {
           name='username'
           type='text'
           component={FormField}
-          validate={[required, usernameMaxLength]}
+          validate={[required, usernameLength]}
         />
 
         <Field
           name='password'
           type='password'
           component={FormField}
-          validate={[required, passwordMaxLength]}
+          validate={[required, passwordLength]}
         />
 
         {serialRequired && (

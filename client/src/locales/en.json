@@ -55,7 +55,8 @@
   },
   "validation": {
     "required": "Required",
-    "tooLong": "Value is too long"
+    "tooLong": "Value is too long",
+    "tooShort": "Value is too short"
   },
   "pages": {
     "myGames": "My Games",

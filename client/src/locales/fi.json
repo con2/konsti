@@ -55,7 +55,8 @@
   },
   "validation": {
     "required": "Vaadittu kenttä",
-    "tooLong": "Syöte on liian pitkä"
+    "tooLong": "Syöte on liian pitkä",
+    "tooShort": "Syöte on liian lyhyt"
   },
   "pages": {
     "myGames": "Omat pelit",
