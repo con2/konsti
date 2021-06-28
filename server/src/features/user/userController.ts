@@ -41,7 +41,7 @@ export const postUser = async (
 
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    return res.status(422).json({ errors: errors.array() });
+    return res.sendStatus(422);
   }
 
   // @ts-expect-error: TODO
