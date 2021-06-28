@@ -17,10 +17,13 @@ const RegistrationForm = (props: InjectedFormProps): ReactElement => {
   return (
     <div className='registration-form'>
       <h2>{t('pageTitle.registration')}</h2>
+
       <form onSubmit={handleSubmit}>
-        <div style={{ color: 'red' }}>
-          {t('pageTitle.usernamePublicWarning')}
-        </div>
+        <NotificationMessage>
+          {t('pageTitle.usernamePublicWarning')}.{' '}
+          {t('pageTitle.usernameDiscordInfo')}.
+        </NotificationMessage>
+
         <Field
           name='username'
           type='text'
@@ -78,6 +81,10 @@ const RegistrationForm = (props: InjectedFormProps): ReactElement => {
 export default reduxForm({
   form: 'registration',
 })(RegistrationForm);
+
+const NotificationMessage = styled.p`
+  color: ${(props) => props.theme.warning};
+`;
 
 const ErrorMessage = styled.span`
   font-weight: bold;
