@@ -8,7 +8,7 @@ export const config: Config = {
 
   // Convention settings
   CONVENTION_NAME: 'Ropecon' as const,
-  CONVENTION_YEAR: '2020',
+  CONVENTION_YEAR: '2021',
   CONVENTION_START_TIME: '2019-11-23T08:00:00Z', // UTC date
   DAY_START_TIME: 8, // 08:00
   noSignupGames: [],
@@ -17,7 +17,7 @@ export const config: Config = {
   simpleDetails: true,
 
   // Dev
-  reduxTrace: false,
+  enableReduxTrace: false,
   enableAxe: false,
   enableWhyDidYouRender: false,
 

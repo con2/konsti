@@ -8,7 +8,7 @@ export interface Config {
   DAY_START_TIME: number;
   apiServerUrl: string;
   useTestTime: boolean;
-  reduxTrace: boolean;
+  enableReduxTrace: boolean;
   loadedSettings: string;
   enableAxe: boolean;
   enableWhyDidYouRender: boolean;
