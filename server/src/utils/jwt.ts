@@ -10,7 +10,7 @@ export const getJWT = (userGroup: UserGroup, username: string): string => {
   };
 
   const options = {
-    expiresIn: '2 days',
+    expiresIn: '14 days',
   };
 
   return jsonwebtoken.sign(payload, getSecret(userGroup), options);

@@ -596,7 +596,7 @@ export const login = async (
 
     if (jwtResponse.status === 'error') {
       return {
-        message: 'Invalid jwt',
+        message: 'Login expired',
         status: 'error',
         code: 0,
       };

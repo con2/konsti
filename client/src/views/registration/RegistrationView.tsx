@@ -16,18 +16,9 @@ export const RegistrationView = (): ReactElement => {
     try {
       await dispatch(submitRegistration(registrationFormFields));
     } catch (error) {
-      switch (error.code) {
-        case 11:
-          throw new SubmissionError({
-            username: t('error.usernameTaken'),
-          });
-        case 12:
-          throw new SubmissionError({
-            serial: t('error.invalidSerial'),
-          });
-        default:
-          throw new Error(`submitRegistration error: ${error.message}`);
-      }
+      throw new SubmissionError({
+        _error: t(error.message),
+      });
     }
   };
 
