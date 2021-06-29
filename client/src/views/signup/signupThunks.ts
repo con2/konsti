@@ -25,6 +25,9 @@ export const submitEnterGame = (
     const signupResponse = await postEnteredGame(data);
 
     if (signupResponse?.status === 'error') {
+      if (signupResponse.code === 51) {
+        console.error('Entered game is full'); // eslint-disable-line no-console
+      }
       return await Promise.reject(signupResponse);
     }
 

@@ -8,6 +8,7 @@ import {
 import {
   DeleteEnteredGameParameters,
   DeleteEnteredGameResponse,
+  PostEnteredGameError,
   PostEnteredGameParameters,
   PostEnteredGameResponse,
   PostSignupResponse,
@@ -35,7 +36,7 @@ export const postSignup = async (
 
 export const postEnteredGame = async (
   requestData: PostEnteredGameParameters
-): Promise<PostEnteredGameResponse | ServerError> => {
+): Promise<PostEnteredGameResponse | PostEnteredGameError> => {
   let response: AxiosResponse;
   try {
     response = await api.post<PostEnteredGameParameters>(
@@ -44,7 +45,7 @@ export const postEnteredGame = async (
     );
   } catch (error) {
     if (error?.response) {
-      const axiosError: AxiosError<ServerError> = error;
+      const axiosError: AxiosError<PostEnteredGameError> = error;
       if (axiosError.response) return axiosError.response.data;
     }
     throw error;

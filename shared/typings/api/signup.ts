@@ -1,5 +1,6 @@
 import { Record, String, Static } from 'runtypes';
 import { SIGNUP_MESSAGE_LENGTH } from 'shared/constants/validation';
+import { ServerError } from 'shared/typings/api/errors';
 import { SelectedGame } from 'shared/typings/models/user';
 
 export interface PostSignupResponse {
@@ -24,6 +25,10 @@ export interface PostEnteredGameResponse {
   message: string;
   status: 'success';
   enteredGame: SelectedGame;
+}
+
+export interface PostEnteredGameError extends ServerError {
+  code: 0 | 51;
 }
 
 export interface DeleteEnteredGameResponse {

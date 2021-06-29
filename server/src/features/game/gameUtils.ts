@@ -65,7 +65,10 @@ export const getGamesWithPlayers = async (
   }
 };
 
-const getUsersForGame = (users: User[], gameId: string): UserSignup[] => {
+export const getUsersForGame = (
+  users: User[],
+  gameId: string
+): UserSignup[] => {
   const usersForGame = users.filter(
     (user) =>
       user.enteredGames.filter(

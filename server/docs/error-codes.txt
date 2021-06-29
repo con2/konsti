@@ -23,6 +23,10 @@ Signup
 
 41: Signup made after the game assignment
 
+Entered games
+
+51: Entered games is full
+
 HTTP
 
 401: Unauthorized, invalid jtw token
