@@ -254,25 +254,23 @@ describe(`POST ${ENTERED_GAME_ENDPOINT}`, () => {
       mockGame.gameId
     );
 
-    const modifiedUser2 = await findUser(mockUser.username);
+    const modifiedUser2 = await findUser(mockUser2.username);
     expect(modifiedUser2?.enteredGames[0].gameDetails.gameId).toEqual(
       mockGame.gameId
     );
 
-    const modifiedUser3 = await findUser(mockUser.username);
+    const modifiedUser3 = await findUser(mockUser3.username);
     expect(modifiedUser3?.enteredGames[0].gameDetails.gameId).toEqual(
       mockGame.gameId
     );
 
-    const modifiedUser4 = await findUser(mockUser.username);
+    const modifiedUser4 = await findUser(mockUser4.username);
     expect(modifiedUser4?.enteredGames[0].gameDetails.gameId).toEqual(
       mockGame.gameId
     );
 
-    const modifiedUser5 = await findUser(mockUser.username);
-    expect(modifiedUser5?.enteredGames[0].gameDetails.gameId).toEqual(
-      mockGame.gameId
-    );
+    const modifiedUser5 = await findUser(mockUser5.username);
+    expect(modifiedUser5?.enteredGames.length).toEqual(0);
   });
 });
 
