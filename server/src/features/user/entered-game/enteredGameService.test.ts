@@ -5,7 +5,13 @@ import { startServer, closeServer } from 'server/utils/server';
 import { ENTERED_GAME_ENDPOINT } from 'shared/constants/apiEndpoints';
 import { getJWT } from 'server/utils/jwt';
 import { UserGroup } from 'shared/typings/models/user';
-import { mockUser } from 'server/test/mock-data/mockUser';
+import {
+  mockUser,
+  mockUser2,
+  mockUser3,
+  mockUser4,
+  mockUser5,
+} from 'server/test/mock-data/mockUser';
 import { mockGame } from 'server/test/mock-data/mockGame';
 import { findUser, saveUser } from 'server/features/user/userRepository';
 import { findGames, saveGames } from 'server/features/game/gameRepository';
@@ -134,6 +140,137 @@ describe(`POST ${ENTERED_GAME_ENDPOINT}`, () => {
       mockGame.gameId
     );
     expect(modifiedUser?.enteredGames[0].message).toEqual('Test message');
+  });
+
+  test('should return error when game is full', async () => {
+    // Populate database
+    await saveGames([mockGame]);
+    await saveUser(mockUser);
+    await saveUser(mockUser2);
+    await saveUser(mockUser3);
+    await saveUser(mockUser4);
+    await saveUser(mockUser5);
+
+    // SIGNUP 1
+
+    const response = await request(server)
+      .post(ENTERED_GAME_ENDPOINT)
+      .send({
+        username: mockUser.username,
+        enteredGameId: mockGame.gameId,
+        startTime: mockGame.startTime,
+        message: 'Test message',
+      })
+      .set(
+        'Authorization',
+        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`
+      );
+
+    expect(response.status).toEqual(200);
+    expect(response.body.message).toEqual('Store entered game success');
+    expect(response.body.status).toEqual('success');
+
+    // SIGNUP 2
+
+    const response2 = await request(server)
+      .post(ENTERED_GAME_ENDPOINT)
+      .send({
+        username: mockUser2.username,
+        enteredGameId: mockGame.gameId,
+        startTime: mockGame.startTime,
+        message: 'Test message',
+      })
+      .set(
+        'Authorization',
+        `Bearer ${getJWT(UserGroup.USER, mockUser2.username)}`
+      );
+
+    expect(response2.status).toEqual(200);
+    expect(response2.body.message).toEqual('Store entered game success');
+    expect(response2.body.status).toEqual('success');
+
+    // SIGNUP 3
+
+    const response3 = await request(server)
+      .post(ENTERED_GAME_ENDPOINT)
+      .send({
+        username: mockUser3.username,
+        enteredGameId: mockGame.gameId,
+        startTime: mockGame.startTime,
+        message: 'Test message',
+      })
+      .set(
+        'Authorization',
+        `Bearer ${getJWT(UserGroup.USER, mockUser3.username)}`
+      );
+
+    expect(response3.status).toEqual(200);
+    expect(response3.body.message).toEqual('Store entered game success');
+    expect(response3.body.status).toEqual('success');
+
+    // SIGNUP 4
+
+    const response4 = await request(server)
+      .post(ENTERED_GAME_ENDPOINT)
+      .send({
+        username: mockUser4.username,
+        enteredGameId: mockGame.gameId,
+        startTime: mockGame.startTime,
+        message: 'Test message',
+      })
+      .set(
+        'Authorization',
+        `Bearer ${getJWT(UserGroup.USER, mockUser4.username)}`
+      );
+
+    expect(response4.status).toEqual(200);
+    expect(response4.body.message).toEqual('Store entered game success');
+    expect(response4.body.status).toEqual('success');
+
+    // SIGNUP 5
+
+    const response5 = await request(server)
+      .post(ENTERED_GAME_ENDPOINT)
+      .send({
+        username: mockUser5.username,
+        enteredGameId: mockGame.gameId,
+        startTime: mockGame.startTime,
+        message: 'Test message',
+      })
+      .set(
+        'Authorization',
+        `Bearer ${getJWT(UserGroup.USER, mockUser5.username)}`
+      );
+
+    expect(response5.status).toEqual(200);
+    expect(response5.body.message).toEqual('Entered game is full');
+    expect(response5.body.status).toEqual('error');
+    expect(response5.body.code).toEqual(51);
+
+    // Check results
+
+    const modifiedUser = await findUser(mockUser.username);
+    expect(modifiedUser?.enteredGames[0].gameDetails.gameId).toEqual(
+      mockGame.gameId
+    );
+
+    const modifiedUser2 = await findUser(mockUser2.username);
+    expect(modifiedUser2?.enteredGames[0].gameDetails.gameId).toEqual(
+      mockGame.gameId
+    );
+
+    const modifiedUser3 = await findUser(mockUser3.username);
+    expect(modifiedUser3?.enteredGames[0].gameDetails.gameId).toEqual(
+      mockGame.gameId
+    );
+
+    const modifiedUser4 = await findUser(mockUser4.username);
+    expect(modifiedUser4?.enteredGames[0].gameDetails.gameId).toEqual(
+      mockGame.gameId
+    );
+
+    const modifiedUser5 = await findUser(mockUser5.username);
+    expect(modifiedUser5?.enteredGames.length).toEqual(0);
   });
 });
 
