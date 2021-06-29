@@ -9,13 +9,14 @@ import { ServerError } from 'shared/typings/api/errors';
 import {
   DeleteEnteredGameParameters,
   DeleteEnteredGameResponse,
+  PostEnteredGameError,
   PostEnteredGameParameters,
   PostEnteredGameResponse,
 } from 'shared/typings/api/signup';
 
 export const storeEnteredGame = async (
   enteredGameRequest: PostEnteredGameParameters
-): Promise<PostEnteredGameResponse | ServerError> => {
+): Promise<PostEnteredGameResponse | PostEnteredGameError> => {
   let game;
   try {
     game = await findGameById(enteredGameRequest.enteredGameId);
@@ -47,7 +48,7 @@ export const storeEnteredGame = async (
     return {
       message: `Entered game is full`,
       status: 'error',
-      code: 0,
+      code: 51,
     };
   }
 

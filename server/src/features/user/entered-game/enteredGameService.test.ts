@@ -245,6 +245,7 @@ describe(`POST ${ENTERED_GAME_ENDPOINT}`, () => {
     expect(response5.status).toEqual(200);
     expect(response5.body.message).toEqual('Entered game is full');
     expect(response5.body.status).toEqual('error');
+    expect(response5.body.code).toEqual(51);
 
     // Check results
 
