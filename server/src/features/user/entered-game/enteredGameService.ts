@@ -1,5 +1,8 @@
+import { findGameById } from 'server/features/game/gameRepository';
+import { getUsersForGame } from 'server/features/game/gameUtils';
 import {
   delEnteredGame,
+  findUsers,
   saveEnteredGame,
 } from 'server/features/user/userRepository';
 import { ServerError } from 'shared/typings/api/errors';
@@ -13,6 +16,41 @@ import {
 export const storeEnteredGame = async (
   enteredGameRequest: PostEnteredGameParameters
 ): Promise<PostEnteredGameResponse | ServerError> => {
+  let game;
+  try {
+    game = await findGameById(enteredGameRequest.enteredGameId);
+    if (!game) throw new Error('Entered game not found');
+  } catch (error) {
+    return {
+      message: `Entered game not found`,
+      status: 'error',
+      code: 0,
+    };
+  }
+
+  let usersForGame;
+  try {
+    const users = await findUsers();
+    usersForGame = await getUsersForGame(
+      users,
+      enteredGameRequest.enteredGameId
+    );
+  } catch (error) {
+    return {
+      message: `Error counting users for game`,
+      status: 'error',
+      code: 0,
+    };
+  }
+
+  if (usersForGame.length >= game.maxAttendance) {
+    return {
+      message: `Entered game is full`,
+      status: 'error',
+      code: 0,
+    };
+  }
+
   let user;
   try {
     user = await saveEnteredGame(enteredGameRequest);

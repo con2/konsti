@@ -15,6 +15,50 @@ export const mockUser: NewUserData = {
   enteredGames: [],
 };
 
+export const mockUser2: NewUserData = {
+  username: 'Test User 2',
+  passwordHash: 'testpass',
+  userGroup: UserGroup.USER,
+  serial: '1234ABCD',
+  groupCode: '0',
+  favoritedGames: [],
+  signedGames: [],
+  enteredGames: [],
+};
+
+export const mockUser3: NewUserData = {
+  username: 'Test User 3',
+  passwordHash: 'testpass',
+  userGroup: UserGroup.USER,
+  serial: 'jhertyee',
+  groupCode: '0',
+  favoritedGames: [],
+  signedGames: [],
+  enteredGames: [],
+};
+
+export const mockUser4: NewUserData = {
+  username: 'Test User 4',
+  passwordHash: 'testpass',
+  userGroup: UserGroup.USER,
+  serial: 'urtyjjjtyy',
+  groupCode: '0',
+  favoritedGames: [],
+  signedGames: [],
+  enteredGames: [],
+};
+
+export const mockUser5: NewUserData = {
+  username: 'Test User 5',
+  passwordHash: 'testpass',
+  userGroup: UserGroup.USER,
+  serial: 'ootehhjjj',
+  groupCode: '0',
+  favoritedGames: [],
+  signedGames: [],
+  enteredGames: [],
+};
+
 export const mockSignup: UserSignup = {
   username: 'Test User',
   signedGames: [
