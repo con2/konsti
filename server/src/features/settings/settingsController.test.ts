@@ -15,7 +15,8 @@ let mongoUri: string;
 
 beforeEach(async () => {
   mongoServer = new MongoMemoryServer();
-  mongoUri = await mongoServer.getUri();
+  await mongoServer.start();
+  mongoUri = mongoServer.getUri();
   server = await startServer(mongoUri);
 });
 
