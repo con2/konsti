@@ -18,7 +18,7 @@
     "deploy:prod": "yarn build-front:prod && eb deploy konsti-docker-prod",
     "deploy:staging": "yarn build-front:staging && eb deploy konsti-docker-staging",
     "docker-compose:start": "yarn build-front:dev && docker-compose -f ./docker/docker-compose.yml up --detach --build --remove-orphans",
-    "docker-compose:stop": "docker-compose down --remove-orphans",
+    "docker-compose:stop": "docker-compose -f ./docker/docker-compose.yml down --remove-orphans",
     "docker-compose:test": "yarn build-front:ci && yarn build:cypress && docker-compose -f ./docker/docker-compose.yml -f ./client/cypress/docker-compose.yml up --build --remove-orphans --exit-code-from cypress --abort-on-container-exit",
     "docker:build": "docker build . -t konsti",
     "docker:start": "docker run -p 5000:5000 -d --env-file ./docker/docker-dev.env konsti",
