@@ -24,7 +24,8 @@ const options = {
 
 beforeEach(async () => {
   mongoServer = new MongoMemoryServer();
-  const mongoUri = await mongoServer.getUri();
+  await mongoServer.start();
+  const mongoUri = mongoServer.getUri();
   await mongoose.connect(mongoUri, options);
 });
 
