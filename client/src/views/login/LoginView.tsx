@@ -22,6 +22,7 @@ export const LoginView = (): ReactElement => {
 
   return (
     <div className='login-view'>
+      {/* @ts-expect-error: Type '{}' is missing the following properties from type 'LoginFormFields': username, password */}
       <LoginForm onSubmit={submit} />
     </div>
   );

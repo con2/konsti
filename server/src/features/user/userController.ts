@@ -10,6 +10,7 @@ import {
   storeGroup,
   login,
   storeSignup,
+  loginWithJwt,
 } from 'server/features/user/userService';
 import { UserGroup } from 'shared/typings/models/user';
 import { isAuthorized } from 'server/utils/authHeader';
@@ -18,6 +19,7 @@ import {
   FAVORITE_ENDPOINT,
   GROUP_ENDPOINT,
   LOGIN_ENDPOINT,
+  RESTORE_SESSION_ENDPOINT,
   SIGNUP_ENDPOINT,
   USERS_BY_SERIAL_ENDPOINT,
   USERS_ENDPOINT,
@@ -28,6 +30,7 @@ import { SaveFavoriteRequest } from 'shared/typings/api/favorite';
 import {
   LoginFormFields,
   RegistrationFormFields,
+  SessionRecoveryRequest,
 } from 'shared/typings/api/login';
 import { sharedConfig } from 'shared/config/sharedConfig';
 import { ConventionType } from 'shared/config/sharedConfig.types';
@@ -64,14 +67,29 @@ export const postLogin = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${LOGIN_ENDPOINT}`);
 
-  const { username, password, jwt } = req.body;
+  const { username, password } = req.body;
 
-  if (((!username || !password) && !jwt) || (username && password && jwt)) {
+  if (!username || !password) {
     return res.sendStatus(422);
   }
 
-  // @ts-expect-error: TODO
-  const response = await login(username, password, jwt);
+  const response = await login(username, password);
+  return res.json(response);
+};
+
+export const postRestoreSession = async (
+  req: Request<{}, {}, SessionRecoveryRequest>,
+  res: Response
+): Promise<Response> => {
+  logger.info(`API call: POST ${RESTORE_SESSION_ENDPOINT}`);
+
+  const { jwt } = req.body;
+
+  if (!jwt) {
+    return res.sendStatus(422);
+  }
+
+  const response = await loginWithJwt(jwt);
   return res.json(response);
 };
 

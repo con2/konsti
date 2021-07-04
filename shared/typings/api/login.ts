@@ -11,9 +11,12 @@ export interface PostLoginResponse {
 }
 
 export interface LoginFormFields {
-  username?: string;
-  password?: string;
-  jwt?: string;
+  username: string;
+  password: string;
+}
+
+export interface SessionRecoveryRequest {
+  jwt: string;
 }
 
 export interface RegistrationFormFields {

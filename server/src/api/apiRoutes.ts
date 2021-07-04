@@ -27,6 +27,7 @@ import {
   postLogin,
   postUser,
   postSignup,
+  postRestoreSession,
 } from 'server/features/user/userController';
 import {
   ASSIGNMENT_ENDPOINT,
@@ -37,6 +38,7 @@ import {
   GROUP_ENDPOINT,
   HIDDEN_ENDPOINT,
   LOGIN_ENDPOINT,
+  RESTORE_SESSION_ENDPOINT,
   RESULTS_ENDPOINT,
   SETTINGS_ENDPOINT,
   SIGNUPTIME_ENDPOINT,
@@ -66,6 +68,7 @@ apiRoutes.post(GROUP_ENDPOINT, postGroup);
 apiRoutes.post(TOGGLE_APP_OPEN_ENDPOINT, postAppOpen);
 apiRoutes.post(ENTERED_GAME_ENDPOINT, postEnteredGame);
 apiRoutes.post(SIGNUP_MESSAGE_ENDPOINT, postSignupMessage);
+apiRoutes.post(RESTORE_SESSION_ENDPOINT, postRestoreSession);
 
 /* GET routes */
 
