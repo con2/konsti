@@ -3,7 +3,7 @@ import { submitGetGames } from 'client/views/all-games/allGamesThunks';
 import { submitGetSettings } from 'client/views/admin/adminThunks';
 import { submitGetUser } from 'client/views/my-games/myGamesThunks';
 import { submitGetGroup } from 'client/views/group/groupThunks';
-import { submitLogin } from 'client/views/login/loginThunks';
+import { submitSessionRecovery } from 'client/views/login/loginThunks';
 import { store } from 'client/utils/store';
 import { AppDispatch } from 'client/typings/redux.typings';
 
@@ -44,7 +44,7 @@ const recoverSession = async (): Promise<void> => {
 
   if (!loggedIn && jwt) {
     try {
-      await dispatch(submitLogin({ jwt }));
+      await dispatch(submitSessionRecovery(jwt));
     } catch (error) {
       console.log(`Error loading saved session, reset session...`); // eslint-disable-line no-console
     }

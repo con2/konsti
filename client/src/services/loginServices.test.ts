@@ -15,12 +15,10 @@ test('POST login to server', async () => {
 
   const username = 'test username';
   const password = 'test password';
-  const jwt = 'test jwt';
 
   const loginData = {
     username,
     password,
-    jwt,
   };
 
   const response = await postLogin(loginData);
@@ -30,6 +28,5 @@ test('POST login to server', async () => {
   expect(mockAxios.post).toHaveBeenCalledWith(LOGIN_ENDPOINT, {
     username,
     password,
-    jwt,
   });
 });
