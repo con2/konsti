@@ -6,7 +6,7 @@ import { PostEnteredGameParameters } from 'shared/typings/api/signup';
 
 export const mockUser: NewUserData = {
   username: 'Test User',
-  passwordHash: 'testpass',
+  passwordHash: '$2a$10$RfH4QV71FPDta0wWfCwFreyAWJIZSTB7Rzmn8atwRldJWANuDDIpe', // Hash for password 'password'
   userGroup: UserGroup.USER,
   serial: '1234ABCD',
   groupCode: '0',

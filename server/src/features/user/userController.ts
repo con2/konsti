@@ -64,14 +64,13 @@ export const postLogin = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${LOGIN_ENDPOINT}`);
 
-  const { username, password, jwt } = req.body;
+  const { username, password } = req.body;
 
-  if (((!username || !password) && !jwt) || (username && password && jwt)) {
+  if (!username || !password) {
     return res.sendStatus(422);
   }
 
-  // @ts-expect-error: TODO
-  const response = await login(username, password, jwt);
+  const response = await login(username, password);
   return res.json(response);
 };
 
