@@ -3,7 +3,7 @@ import { api } from 'client/utils/api';
 import { ServerError } from 'shared/typings/api/errors';
 import {
   LOGIN_ENDPOINT,
-  RESTORE_SESSION_ENDPOINT,
+  SESSION_RESTORE_ENDPOINT,
 } from 'shared/constants/apiEndpoints';
 import { LoginFormFields, PostLoginResponse } from 'shared/typings/api/login';
 
@@ -33,7 +33,7 @@ export const postSessionRecovery = async (
 ): Promise<PostLoginResponse | ServerError> => {
   let response: AxiosResponse;
   try {
-    response = await api.post<PostLoginResponse>(RESTORE_SESSION_ENDPOINT, {
+    response = await api.post<PostLoginResponse>(SESSION_RESTORE_ENDPOINT, {
       jwt,
     });
   } catch (error) {
