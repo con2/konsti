@@ -220,34 +220,12 @@ describe(`POST ${LOGIN_ENDPOINT}`, () => {
     await stopTestServer(server, mongoServer);
   });
 
-  test('should return 422 if password, username, and jwt are found', async () => {
-    const { server, mongoServer } = await startTestServer();
-
-    const response = await request(server)
-      .post(LOGIN_ENDPOINT)
-      .send({ username: 'testuser', password: 'testpass', jwt: 'testjwt' });
-    expect(response.status).toEqual(422);
-
-    await stopTestServer(server, mongoServer);
-  });
-
   test('should return 200 if password and username are found', async () => {
     const { server, mongoServer } = await startTestServer();
 
     const response = await request(server)
       .post(LOGIN_ENDPOINT)
       .send({ username: 'testuser', password: 'testpass' });
-    expect(response.status).toEqual(200);
-
-    await stopTestServer(server, mongoServer);
-  });
-
-  test('should return 200 if jwt is found', async () => {
-    const { server, mongoServer } = await startTestServer();
-
-    const response = await request(server)
-      .post(LOGIN_ENDPOINT)
-      .send({ jwt: 'testjwt' });
     expect(response.status).toEqual(200);
 
     await stopTestServer(server, mongoServer);

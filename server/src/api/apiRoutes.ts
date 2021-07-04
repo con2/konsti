@@ -18,6 +18,7 @@ import {
   deleteEnteredGame,
   postEnteredGame,
 } from 'server/features/user/entered-game/enteredGameController';
+import { postSessionRestore } from 'server/features/user/session-restore/sessionRestoreController';
 import {
   getGroup,
   getUser,
@@ -37,6 +38,7 @@ import {
   GROUP_ENDPOINT,
   HIDDEN_ENDPOINT,
   LOGIN_ENDPOINT,
+  SESSION_RESTORE_ENDPOINT,
   RESULTS_ENDPOINT,
   SETTINGS_ENDPOINT,
   SIGNUPTIME_ENDPOINT,
@@ -66,6 +68,7 @@ apiRoutes.post(GROUP_ENDPOINT, postGroup);
 apiRoutes.post(TOGGLE_APP_OPEN_ENDPOINT, postAppOpen);
 apiRoutes.post(ENTERED_GAME_ENDPOINT, postEnteredGame);
 apiRoutes.post(SIGNUP_MESSAGE_ENDPOINT, postSignupMessage);
+apiRoutes.post(SESSION_RESTORE_ENDPOINT, postSessionRestore);
 
 /* GET routes */
 
