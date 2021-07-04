@@ -3,12 +3,15 @@ import {
   FAVORITE_ENDPOINT,
   GROUP_ENDPOINT,
   LOGIN_ENDPOINT,
+  RESTORE_SESSION_ENDPOINT,
   SIGNUP_ENDPOINT,
   USERS_BY_SERIAL_ENDPOINT,
   USERS_ENDPOINT,
 } from 'shared/constants/apiEndpoints';
 import { ConventionType } from 'shared/config/sharedConfig.types';
 import { startTestServer, stopTestServer } from 'server/test/utils/testServer';
+import { saveUser } from 'server/features/user/userRepository';
+import { mockUser } from 'server/test/mock-data/mockUser';
 
 jest.mock('server/utils/logger');
 
@@ -220,34 +223,12 @@ describe(`POST ${LOGIN_ENDPOINT}`, () => {
     await stopTestServer(server, mongoServer);
   });
 
-  test('should return 422 if password, username, and jwt are found', async () => {
-    const { server, mongoServer } = await startTestServer();
-
-    const response = await request(server)
-      .post(LOGIN_ENDPOINT)
-      .send({ username: 'testuser', password: 'testpass', jwt: 'testjwt' });
-    expect(response.status).toEqual(422);
-
-    await stopTestServer(server, mongoServer);
-  });
-
   test('should return 200 if password and username are found', async () => {
     const { server, mongoServer } = await startTestServer();
 
     const response = await request(server)
       .post(LOGIN_ENDPOINT)
       .send({ username: 'testuser', password: 'testpass' });
-    expect(response.status).toEqual(200);
-
-    await stopTestServer(server, mongoServer);
-  });
-
-  test('should return 200 if jwt is found', async () => {
-    const { server, mongoServer } = await startTestServer();
-
-    const response = await request(server)
-      .post(LOGIN_ENDPOINT)
-      .send({ jwt: 'testjwt' });
     expect(response.status).toEqual(200);
 
     await stopTestServer(server, mongoServer);
@@ -277,6 +258,55 @@ describe(`POST ${SIGNUP_ENDPOINT}`, () => {
         },
       });
     expect(response.status).toEqual(401);
+
+    await stopTestServer(server, mongoServer);
+  });
+});
+
+describe(`POST ${RESTORE_SESSION_ENDPOINT}`, () => {
+  test('should return 422 without any parameters', async () => {
+    const { server, mongoServer } = await startTestServer();
+
+    const response = await request(server).post(RESTORE_SESSION_ENDPOINT);
+    expect(response.status).toEqual(422);
+
+    await stopTestServer(server, mongoServer);
+  });
+
+  test('should return 200 and error message with invalid jwt parameter', async () => {
+    const { server, mongoServer } = await startTestServer();
+
+    const loginResponse = await request(server)
+      .post(LOGIN_ENDPOINT)
+      .send({ username: 'testuser', password: 'testpass' });
+    expect(loginResponse.status).toEqual(200);
+
+    const sessionRestoreResponse = await request(server)
+      .post(RESTORE_SESSION_ENDPOINT)
+      .send({ jwt: 'testjwt' });
+    expect(sessionRestoreResponse.status).toEqual(200);
+    expect(sessionRestoreResponse.body.message).toEqual('Invalid jwt');
+
+    await stopTestServer(server, mongoServer);
+  });
+
+  test('should return 200 and success with valid jwt parameter', async () => {
+    const { server, mongoServer } = await startTestServer();
+    await saveUser(mockUser);
+
+    const loginResponse = await request(server)
+      .post(LOGIN_ENDPOINT)
+      .send({ username: mockUser.username, password: 'password' });
+    expect(loginResponse.status).toEqual(200);
+    expect(loginResponse.body.message).toEqual('User login success');
+
+    const sessionRestoreResponse = await request(server)
+      .post(RESTORE_SESSION_ENDPOINT)
+      .send({ jwt: loginResponse.body.jwt });
+    expect(sessionRestoreResponse.status).toEqual(200);
+    expect(sessionRestoreResponse.body.message).toEqual(
+      'Session restore success'
+    );
 
     await stopTestServer(server, mongoServer);
   });
