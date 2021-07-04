@@ -11,46 +11,52 @@ describe(`POST ${SESSION_RESTORE_ENDPOINT}`, () => {
   test('should return 422 without any parameters', async () => {
     const { server, mongoServer } = await startTestServer();
 
-    const response = await request(server).post(SESSION_RESTORE_ENDPOINT);
-    expect(response.status).toEqual(422);
-
-    await stopTestServer(server, mongoServer);
+    try {
+      const response = await request(server).post(SESSION_RESTORE_ENDPOINT);
+      expect(response.status).toEqual(422);
+    } finally {
+      await stopTestServer(server, mongoServer);
+    }
   });
 
   test('should return 200 and error message with invalid jwt parameter', async () => {
     const { server, mongoServer } = await startTestServer();
 
-    const response = await request(server)
-      .post(SESSION_RESTORE_ENDPOINT)
-      .send({ jwt: 'testjwt' });
-    expect(response.status).toEqual(200);
-    expect(response.body.message).toEqual('Invalid jwt');
-
-    await stopTestServer(server, mongoServer);
+    try {
+      const response = await request(server)
+        .post(SESSION_RESTORE_ENDPOINT)
+        .send({ jwt: 'testjwt' });
+      expect(response.status).toEqual(200);
+      expect(response.body.message).toEqual('Invalid jwt');
+    } finally {
+      await stopTestServer(server, mongoServer);
+    }
   });
 
   test('should return 200 and success with valid jwt parameter', async () => {
     const { server, mongoServer } = await startTestServer();
 
-    const user = await saveUser(mockUser);
-    expect(user.password).toEqual(mockUser.passwordHash);
+    try {
+      const user = await saveUser(mockUser);
+      expect(user.password).toEqual(mockUser.passwordHash);
 
-    const loginResponse = await request(server)
-      .post(LOGIN_ENDPOINT)
-      .send({ username: mockUser.username, password: 'password' });
+      const loginResponse = await request(server)
+        .post(LOGIN_ENDPOINT)
+        .send({ username: mockUser.username, password: 'password' });
 
-    expect(loginResponse.status).toEqual(200);
-    expect(loginResponse.body.message).toEqual('User login success');
+      expect(loginResponse.status).toEqual(200);
+      expect(loginResponse.body.message).toEqual('User login success');
 
-    const sessionRestoreResponse = await request(server)
-      .post(SESSION_RESTORE_ENDPOINT)
-      .send({ jwt: loginResponse.body.jwt });
+      const sessionRestoreResponse = await request(server)
+        .post(SESSION_RESTORE_ENDPOINT)
+        .send({ jwt: loginResponse.body.jwt });
 
-    expect(sessionRestoreResponse.status).toEqual(200);
-    expect(sessionRestoreResponse.body.message).toEqual(
-      'Session restore success'
-    );
-
-    await stopTestServer(server, mongoServer);
+      expect(sessionRestoreResponse.status).toEqual(200);
+      expect(sessionRestoreResponse.body.message).toEqual(
+        'Session restore success'
+      );
+    } finally {
+      await stopTestServer(server, mongoServer);
+    }
   });
 });
