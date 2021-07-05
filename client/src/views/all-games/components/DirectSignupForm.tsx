@@ -82,7 +82,7 @@ export const DirectSignupForm: FC<Props> = (
     return (
       <>
         {signupForDirect(alreadyEnteredToGame, enteredGamesForTimeslot)}
-        {gameIsFull && <GameIsFull>Peli on taynna</GameIsFull>}
+        {gameIsFull && <GameIsFull>{t('signup.gameIsFull')}</GameIsFull>}
         {alreadyEnteredToGame && (
           <Button onClick={async () => await removeSignup(game)}>
             {t('button.cancel')}
