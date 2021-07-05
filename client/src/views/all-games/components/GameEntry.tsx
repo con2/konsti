@@ -57,10 +57,13 @@ export const GameEntry = ({
         <HeaderContainer>
           <h3>{game.title}</h3>
           <PlayerCount visible={isEnterGameMode}>
-            {players} / {game.maxAttendance} ilmoittautunutta
+            {t('signup.signupCount', {
+              PLAYERS: players,
+              MAX_ATTENDANCE: game.maxAttendance,
+            })}
           </PlayerCount>
           <PlayersNeeded visible={players < game.minAttendance}>
-            Tarvitaan vielä {game.minAttendance - players} pelaajaa!
+            {t('signup.playerNeeded', { COUNT: game.minAttendance - players })}
           </PlayersNeeded>
         </HeaderContainer>
         <GameTags>
