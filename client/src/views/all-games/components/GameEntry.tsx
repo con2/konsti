@@ -123,12 +123,12 @@ export const GameEntry = ({
   );
 };
 
-const PlayersNeeded = styled.span`
+const PlayersNeeded = styled('span')<{ visible: boolean }>`
   margin-top: 8px;
   display: ${(props) => (props.visible ? 'block' : 'none')};
 `;
 
-const PlayerCount = styled.span`
+const PlayerCount = styled('span')<{ visible: boolean }>`
   margin-top: 8px;
   display: ${(props) => (props.visible ? 'block' : 'none')};
 `;
