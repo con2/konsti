@@ -1,21 +1,30 @@
-import React, { FC, ReactElement, FormEvent } from 'react';
+import React, { FC, ReactElement, FormEvent, useState } from 'react';
+import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import { Game } from 'shared/typings/models/game';
 import { submitEnterGame } from 'client/views/signup/signupThunks';
 import { useAppDispatch, useAppSelector } from 'client/utils/hooks';
 import { Button } from 'client/components/Button';
+import { SignupMessage } from 'shared/typings/models/settings';
 
 interface Props {
   game: Game;
+  signupMessage: SignupMessage | undefined;
   onEnterGame: () => void;
+  onCancelSignup: () => void;
 }
 
 export const EnterGameForm: FC<Props> = (props: Props): ReactElement => {
-  const { game, onEnterGame } = props;
+  const { game, onEnterGame, onCancelSignup, signupMessage } = props;
 
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const username = useAppSelector((state) => state.login.username);
+  const [userSignupMessage, setUserSignupMessage] = useState<string>('');
+
+  const handleCancel = (): void => {
+    onCancelSignup();
+  };
 
   const handleSignup = async (event: FormEvent): Promise<void> => {
     event.preventDefault();
@@ -31,7 +40,7 @@ export const EnterGameForm: FC<Props> = (props: Props): ReactElement => {
       username,
       enteredGameId: game.gameId,
       startTime: game.startTime,
-      message: 'Test message', // TODO: Read this from UI field
+      message: userSignupMessage,
     };
 
     try {
@@ -49,8 +58,42 @@ export const EnterGameForm: FC<Props> = (props: Props): ReactElement => {
   };
 
   return (
-    <form>
-      <Button onClick={handleSignup}>{t('signup.confirm')}</Button>
-    </form>
+    <SignupForm>
+      {signupMessage && (
+        <SignupMessageContainer>
+          <span>{signupMessage.message}</span>
+          <textarea
+            onChange={(evt) => {
+              if (evt.target.value.length > 140) {
+                return;
+              }
+
+              setUserSignupMessage(evt.target.value);
+            }}
+            value={userSignupMessage}
+          />
+          <span>{userSignupMessage.length} / 140</span>
+        </SignupMessageContainer>
+      )}
+      <ButtonContainer>
+        <Button onClick={handleSignup}>{t('signup.confirm')}</Button>
+        <Button onClick={handleCancel}>{t('signup.cancel')}</Button>
+      </ButtonContainer>
+    </SignupForm>
   );
 };
+
+const SignupForm = styled.form`
+  display: flex;
+  flex-direction: column;
+`;
+
+const SignupMessageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
