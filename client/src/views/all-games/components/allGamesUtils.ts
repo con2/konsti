@@ -11,8 +11,7 @@ export const isAlreadySigned = (
   signedGames: readonly SelectedGame[],
   groupCode: string,
   serial: string,
-  groupMembers: readonly GroupMember[],
-  enteredGames: readonly SelectedGame[]
+  groupMembers: readonly GroupMember[]
 ): boolean => {
   const allSignedGames = getSignedGames(
     signedGames,
@@ -21,9 +20,19 @@ export const isAlreadySigned = (
     groupMembers,
     true
   );
+
+  return [...allSignedGames].some(
+    (g: SelectedGame) => g.gameDetails.gameId === gameToCheck.gameId
+  );
+};
+
+export const isAlreadyEntered = (
+  gameToCheck: Game,
+  enteredGames: readonly SelectedGame[]
+): boolean => {
   const allEnteredGames = getUpcomingEnteredGames(enteredGames);
 
-  return [...allSignedGames, ...allEnteredGames].some(
+  return [...allEnteredGames].some(
     (g: SelectedGame) => g.gameDetails.gameId === gameToCheck.gameId
   );
 };
