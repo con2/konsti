@@ -71,8 +71,7 @@ export const AlgorithmSignupForm: FC<Props> = (
     signedGames,
     groupCode,
     serial,
-    groupMembers,
-    enteredGames
+    groupMembers
   );
 
   const signupForAlgorithm = (
