@@ -3,6 +3,8 @@ import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { useAppSelector } from 'client/utils/hooks';
+import { sharedConfig } from 'shared/config/sharedConfig';
+import { SignupStrategy } from 'shared/config/sharedConfig.types';
 
 export const LoggedInUserNavigation = (props: {
   onSelect: () => void;
@@ -22,11 +24,12 @@ export const LoggedInUserNavigation = (props: {
         </RouterLink>
       )}
 
-      {userGroup === 'user' && (
-        <RouterLink onClick={props.onSelect} to='/signup'>
-          {t('pages.signUp')}
-        </RouterLink>
-      )}
+      {userGroup === 'user' &&
+        sharedConfig.signupStrategy === SignupStrategy.ALGORITHM && (
+          <RouterLink onClick={props.onSelect} to='/signup'>
+            {t('pages.signUp')}
+          </RouterLink>
+        )}
 
       {(userGroup === 'user' ||
         userGroup === 'admin' ||
@@ -36,7 +39,7 @@ export const LoggedInUserNavigation = (props: {
         </RouterLink>
       )}
 
-      {userGroup === 'user' && (
+      {userGroup === 'user' && sharedConfig.enableGroups && (
         <RouterLink onClick={props.onSelect} to='/group'>
           {t('pages.group')}
         </RouterLink>

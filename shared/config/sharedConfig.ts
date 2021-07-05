@@ -13,4 +13,5 @@ export const sharedConfig: SharedConfig = {
   signupStrategy: SignupStrategy.DIRECT,
   conventionType: ConventionType.REMOTE,
   assignmentStrategy: AssignmentStrategy.GROUP_PADG,
+  enableGroups: false,
 };
