@@ -1,4 +1,5 @@
 import React, { FC, ReactElement, useState } from 'react';
+import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import { Game } from 'shared/typings/models/game';
 import { getUpcomingEnteredGames } from 'client/utils/getUpcomingGames';
@@ -6,29 +7,29 @@ import { EnterGameForm } from './EnterGameForm';
 import { submitDeleteGame } from 'client/views/signup/signupThunks';
 import { SelectedGame } from 'shared/typings/models/user';
 import { useAppDispatch, useAppSelector } from 'client/utils/hooks';
-import { isAlreadySigned } from './allGamesUtils';
+import { isAlreadyEntered } from './allGamesUtils';
 import { Button } from 'client/components/Button';
 
 interface Props {
   game: Game;
   startTime: string;
+  gameIsFull: boolean;
 }
 
 export const DirectSignupForm: FC<Props> = (
   props: Props
 ): ReactElement | null => {
-  const { game, startTime } = props;
+  const { game, startTime, gameIsFull } = props;
 
   const { t } = useTranslation();
 
   const username = useAppSelector((state) => state.login.username);
   const loggedIn = useAppSelector((state) => state.login.loggedIn);
-  const serial = useAppSelector((state) => state.login.serial);
-  const groupCode = useAppSelector((state) => state.login.groupCode);
-  const signedGames = useAppSelector((state) => state.myGames.signedGames);
   const enteredGames = useAppSelector((state) => state.myGames.enteredGames);
-  const groupMembers = useAppSelector((state) => state.login.groupMembers);
   const [signupFormOpen, setSignupFormOpen] = useState(false);
+  const AdditionalInfoMessages = useAppSelector(
+    (state) => state.admin.signupMessages
+  );
 
   const dispatch = useAppDispatch();
 
@@ -46,14 +47,7 @@ export const DirectSignupForm: FC<Props> = (
     (g) => g.gameDetails.startTime === startTime
   );
 
-  const alreadySignedToGame = isAlreadySigned(
-    game,
-    signedGames,
-    groupCode,
-    serial,
-    groupMembers,
-    enteredGames
-  );
+  const alreadyEnteredToGame = isAlreadyEntered(game, enteredGames);
 
   const signupForDirect = (
     alreadySigned: boolean,
@@ -73,7 +67,7 @@ export const DirectSignupForm: FC<Props> = (
       );
     }
 
-    if (enteredGamesForTimeSlot.length === 0) {
+    if (enteredGamesForTimeSlot.length === 0 && !signupFormOpen) {
       return (
         <Button onClick={() => setSignupFormOpen(!signupFormOpen)}>
           {t('signup.signup')}
@@ -87,16 +81,21 @@ export const DirectSignupForm: FC<Props> = (
   if (loggedIn) {
     return (
       <>
-        {signupForDirect(alreadySignedToGame, enteredGamesForTimeslot)}
-        {alreadySignedToGame && (
+        {signupForDirect(alreadyEnteredToGame, enteredGamesForTimeslot)}
+        {gameIsFull && <GameIsFull>{t('signup.gameIsFull')}</GameIsFull>}
+        {alreadyEnteredToGame && (
           <Button onClick={async () => await removeSignup(game)}>
             {t('button.cancel')}
           </Button>
         )}
-        {signupFormOpen && !alreadySignedToGame && (
+        {signupFormOpen && !alreadyEnteredToGame && !gameIsFull && (
           <EnterGameForm
             game={game}
+            signupMessage={AdditionalInfoMessages.find(
+              ({ gameId }) => gameId === game.gameId
+            )}
             onEnterGame={() => setSignupFormOpen(false)}
+            onCancelSignup={() => setSignupFormOpen(false)}
           />
         )}
       </>
@@ -105,3 +104,7 @@ export const DirectSignupForm: FC<Props> = (
 
   return null;
 };
+
+const GameIsFull = styled.h4`
+  color: ${(props) => props.theme.error};
+`;

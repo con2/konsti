@@ -25,7 +25,7 @@ export const theme = {
 
   success: '#3c763d',
   disabled: '#abd0a545',
-  error: '#c00000',
+  error: '#ff6a7e',
   informative: '#030303',
   warning: '#fc3d60',
 
