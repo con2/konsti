@@ -14,6 +14,8 @@ import { GroupView } from 'client/views/group/GroupView';
 import { HelperView } from 'client/views/helper/HelperView';
 import { useAppSelector } from 'client/utils/hooks';
 import { UserGroup } from 'shared/typings/models/user';
+import { sharedConfig } from 'shared/config/sharedConfig';
+import { SignupStrategy } from 'shared/config/sharedConfig.types';
 
 export const Routes = (): ReactElement => {
   const appOpen = useAppSelector((state) => state.admin.appOpen);
@@ -55,15 +57,19 @@ export const Routes = (): ReactElement => {
           <Route path='/mygames'>
             <MyGamesView />
           </Route>
-          <Route path='/signup'>
-            <SignupView />
-          </Route>
+          {sharedConfig.signupStrategy === SignupStrategy.ALGORITHM && (
+            <Route path='/signup'>
+              <SignupView />
+            </Route>
+          )}
           <Route path='/results'>
             <ResultsView />
           </Route>
-          <Route path='/group'>
-            <GroupView />
-          </Route>
+          {sharedConfig.enableGroups && (
+            <Route path='/group'>
+              <GroupView />
+            </Route>
+          )}
           {userGroup === UserGroup.ADMIN && (
             <Route path='/admin'>
               <AdminView />

@@ -16,6 +16,8 @@ import { GroupMember } from 'shared/typings/api/groups';
 import { SelectedGame } from 'shared/typings/models/user';
 import { useAppSelector } from 'client/utils/hooks';
 import { Button } from 'client/components/Button';
+import { sharedConfig } from 'shared/config/sharedConfig';
+import { SignupStrategy } from 'shared/config/sharedConfig.types';
 
 export const MyGamesView = (): ReactElement => {
   const { t } = useTranslation();
@@ -66,15 +68,17 @@ export const MyGamesView = (): ReactElement => {
         </MyGamesGroupNotification>
       )}
 
-      <MySignupsList
-        signedGames={getSignedGames(
-          signedGames,
-          groupCode,
-          serial,
-          showAllGames,
-          groupMembers
-        )}
-      />
+      {sharedConfig.signupStrategy === SignupStrategy.ALGORITHM && (
+        <MySignupsList
+          signedGames={getSignedGames(
+            signedGames,
+            groupCode,
+            serial,
+            showAllGames,
+            groupMembers
+          )}
+        />
+      )}
 
       <MyEnteredList
         enteredGames={
