@@ -9,7 +9,7 @@ import { SelectedGame } from 'shared/typings/models/user';
 import { sharedConfig } from 'shared/config/sharedConfig';
 import { SignupStrategy } from 'shared/config/sharedConfig.types';
 import { Game } from 'shared/typings/models/game';
-import { GameSignups } from 'shared/typings/api/games';
+import { UsersForGame } from 'client/typings/redux.typings';
 
 export interface Props {
   games: readonly Game[];
@@ -40,7 +40,7 @@ export const AllGamesList = ({ games }: Props): ReactElement => {
 
 const buildGamesList = (
   games: readonly Game[],
-  signups: readonly GameSignups[],
+  signups: readonly UsersForGame[],
   signedGames: readonly SelectedGame[],
   enteredGames: readonly SelectedGame[],
   t: TFunction
@@ -107,7 +107,7 @@ const buildGamesList = (
         <GameEntry
           key={game.gameId}
           game={game}
-          players={gameSignups?.usernames.length ?? 0}
+          players={gameSignups?.users.length ?? 0}
           startTime={startTime}
         />
       );
