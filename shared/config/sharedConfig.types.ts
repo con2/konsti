@@ -3,6 +3,7 @@ export interface SharedConfig {
   signupStrategy: SignupStrategy;
   conventionType: ConventionType;
   assignmentStrategy: AssignmentStrategy;
+  enableGroups: boolean;
 }
 
 export enum SignupStrategy {
