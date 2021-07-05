@@ -243,7 +243,8 @@
     "cancel": "Peruuta",
     "cannotSignupMoreThanOneGame": "Olet ilmoittautunut peliin {{GAME}}. Et voi ilmoittautua muihin samaan aikaan oleviin peleihin.",
     "signupCount": "{{PLAYERS}} / {{MAX_ATTENDANCE}} ilmoittautunutta",
-    "playerNeeded": "Tarvitaan vielä {{COUNT}} pelaajaa!"
+    "playerNeeded": "Tarvitaan vielä {{COUNT}} pelaajaa!",
+    "gameIsFull": "Peli on täynnä"
   },
   "resultsView": {
     "allSignupResults": "Pelien ilmoittautumistilanne ja pelaajat",

@@ -242,7 +242,8 @@
     "cancel": "Cancel",
     "cannotSignupMoreThanOneGame": "You already signed to game {{GAME}}. You can only be at one game at the time.",
     "signupCount": "{{PLAYERS}} / {{MAX_ATTENDANCE}} players",
-    "playerNeeded": "Need {{COUNT}} players!"
+    "playerNeeded": "Need {{COUNT}} players!",
+    "gameIsFull": "Game is full"
   },
   "resultsView": {
     "allSignupResults": "Signup overview and players",
