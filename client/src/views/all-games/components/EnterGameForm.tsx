@@ -1,11 +1,11 @@
 import React, { FC, ReactElement, FormEvent, useState } from 'react';
+import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import { Game } from 'shared/typings/models/game';
 import { submitEnterGame } from 'client/views/signup/signupThunks';
 import { useAppDispatch, useAppSelector } from 'client/utils/hooks';
 import { Button } from 'client/components/Button';
 import { SignupMessage } from 'shared/typings/models/settings';
-import styled from 'styled-components';
 
 interface Props {
   game: Game;
