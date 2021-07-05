@@ -240,7 +240,11 @@
     "cannotSignupMoreGames": "Voit ilmoittautua vain kolmeen peliin per alkamisaika",
     "gamePriority": "Peli on toiveissani sijalla",
     "confirm": "Vahvista",
-    "cannotSignupMoreThanOneGame": "Olet ilmoittautunut peliin {{GAME}}. Et voi ilmoittautua muihin samaan aikaan oleviin peleihin."
+    "cancel": "Peruuta",
+    "cannotSignupMoreThanOneGame": "Olet ilmoittautunut peliin {{GAME}}. Et voi ilmoittautua muihin samaan aikaan oleviin peleihin.",
+    "signupCount": "{{PLAYERS}} / {{MAX_ATTENDANCE}} ilmoittautunutta",
+    "playerNeeded": "Tarvitaan vielä {{COUNT}} pelaajaa!",
+    "gameIsFull": "Peli on täynnä"
   },
   "resultsView": {
     "allSignupResults": "Pelien ilmoittautumistilanne ja pelaajat",

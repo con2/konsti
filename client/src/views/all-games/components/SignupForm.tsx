@@ -9,14 +9,23 @@ import { Button } from 'client/components/Button';
 interface Props {
   game: Game;
   startTime: string;
+  onCancel: () => void;
 }
 
-export const SignupForm = ({ game, startTime }: Props): ReactElement => {
+export const SignupForm = ({
+  game,
+  startTime,
+  onCancel,
+}: Props): ReactElement => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const selectedGames = useAppSelector((state) => state.myGames.signedGames);
   const username = useAppSelector((state) => state.login.username);
   const priorityRef = useRef<HTMLSelectElement>(null);
+
+  const handleCancel = (): void => {
+    onCancel();
+  };
 
   const handleSignup = async (event: FormEvent): Promise<void> => {
     event.preventDefault();
@@ -77,6 +86,7 @@ export const SignupForm = ({ game, startTime }: Props): ReactElement => {
         </option>
       </select>
       <Button onClick={handleSignup}>{t('signup.confirm')}</Button>
+      <Button onClick={handleCancel}>{t('signup.cancel')}</Button>
     </form>
   );
 };
