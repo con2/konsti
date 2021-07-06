@@ -5,11 +5,15 @@ import { HelperResultsList } from 'client/views/helper/components/HelperResultsL
 import { PasswordManagement } from 'client/views/helper/components/PasswordManagement';
 import { loadResults, loadSettings } from 'client/utils/loadData';
 import { Button } from 'client/components/Button';
+import { sharedConfig } from 'shared/config/sharedConfig';
+import { SignupStrategy } from 'shared/config/sharedConfig.types';
 
 export const HelperView = (): ReactElement => {
   const { t } = useTranslation();
 
-  const [selectedTool, setSelectedTool] = useState<string>('results');
+  const [selectedTool, setSelectedTool] = useState<string>(
+    'password-management'
+  );
 
   const store = useStore();
 
@@ -23,12 +27,14 @@ export const HelperView = (): ReactElement => {
 
   return (
     <div className='helper-view'>
-      <Button
-        disabled={selectedTool === 'results'}
-        onClick={() => setSelectedTool('results')}
-      >
-        {t('helperResults')}
-      </Button>
+      {sharedConfig.signupStrategy === SignupStrategy.ALGORITHM && (
+        <Button
+          disabled={selectedTool === 'results'}
+          onClick={() => setSelectedTool('results')}
+        >
+          {t('helperResults')}
+        </Button>
+      )}
       <Button
         disabled={selectedTool === 'password-management'}
         onClick={() => setSelectedTool('password-management')}
