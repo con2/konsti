@@ -47,6 +47,7 @@
   "players": "Pelaajat",
   "player": "Pelaaja",
   "find": "Etsi",
+  "findSignupOrGame": "Pelin nimi tai käyttäjänimi",
   "language": {
     "english": "Englanti",
     "englishShort": "EN",

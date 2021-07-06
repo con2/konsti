@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import React, { ReactElement, useState } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -8,6 +8,7 @@ import { useAppSelector } from 'client/utils/hooks';
 import { getUsersForGameId } from 'client/views/results/resultsUtils';
 import { getUpcomingGames } from 'client/utils/getUpcomingGames';
 import { Button } from 'client/components/Button';
+import { Game } from 'shared/typings/models/game';
 
 export const DirectResults = (): ReactElement => {
   const { t } = useTranslation();
@@ -20,12 +21,55 @@ export const DirectResults = (): ReactElement => {
   const [showSignupMessages, setShowSignupMessages] = useState<string[]>([]);
 
   const filteredGames = showAllGames ? games : getUpcomingGames(games, 1);
-  const gamesByStartTime = _.groupBy(filteredGames, 'startTime');
+
+  const [gamesForListing, setGamesForListing] = useState<readonly Game[]>([]);
+  const [filteredGamesForListing, setFilteredGamesForListing] = useState<{
+    [key: string]: Game[];
+  }>({});
+  const [searchTerm, setSearchTerm] = useState<string>('');
+
+  useEffect(() => {
+    if (_.isEqual(filteredGames, gamesForListing)) {
+      return;
+    }
+
+    setGamesForListing(filteredGames);
+  }, [filteredGames]);
+
+  useEffect(() => {
+    if (searchTerm.length === 0) {
+      const gamesByStartTime = _.groupBy<Game>(gamesForListing, 'startTime');
+      setFilteredGamesForListing(gamesByStartTime);
+      return;
+    }
+
+    const gamesFilteredBySearchTerm = gamesForListing.filter((game) => {
+      const users = getUsersForGameId(game.gameId, signups);
+      return (
+        game.title.toLocaleLowerCase().includes(searchTerm) ||
+        users.some((user) =>
+          user.username.toLocaleLowerCase().includes(searchTerm)
+        )
+      );
+    });
+
+    const gamesByStartTime = _.groupBy<Game>(
+      gamesFilteredBySearchTerm,
+      'startTime'
+    );
+
+    setFilteredGamesForListing(gamesByStartTime);
+  }, [searchTerm, gamesForListing]);
 
   return (
     <div className='results-view'>
       <h2>{t('resultsView.allSignupResults')}</h2>
 
+      <SearchInput
+        type='text'
+        onChange={(event) => setSearchTerm(event.target.value)}
+        placeholder={t('findSignupOrGame')}
+      />
       <div className='my-games-toggle-visibility'>
         <Button onClick={() => setShowAllGames(false)} disabled={!showAllGames}>
           {t('lastStartedAndUpcomingGames')}
@@ -39,87 +83,89 @@ export const DirectResults = (): ReactElement => {
         <h3>{t('resultsView.noStartingGames')}</h3>
       )}
 
-      {Object.entries(gamesByStartTime).map(([startTime, gamesForTime]) => {
-        return (
-          <TimeSlot key={startTime}>
-            <h3>
-              {timeFormatter.getWeekdayAndTime({
-                time: startTime,
-                capitalize: true,
-              })}
-            </h3>
+      {Object.entries(filteredGamesForListing).map(
+        ([startTime, gamesForTime]) => {
+          return (
+            <TimeSlot key={startTime}>
+              <h3>
+                {timeFormatter.getWeekdayAndTime({
+                  time: startTime,
+                  capitalize: true,
+                })}
+              </h3>
 
-            <Games>
-              {gamesForTime.map((game) => {
-                const signupMessage = signupMessages.find(
-                  (message) => message.gameId === game.gameId
-                );
-                const signupMessagesVisible = showSignupMessages.find(
-                  (message) => message === game.gameId
-                );
-                const users = getUsersForGameId(game.gameId, signups);
+              <Games>
+                {gamesForTime.map((game) => {
+                  const signupMessage = signupMessages.find(
+                    (message) => message.gameId === game.gameId
+                  );
+                  const signupMessagesVisible = showSignupMessages.find(
+                    (message) => message === game.gameId
+                  );
+                  const users = getUsersForGameId(game.gameId, signups);
 
-                return (
-                  <GameBox key={game.gameId}>
-                    <h4 key={game.gameId}>
-                      {`${game.title}`}{' '}
-                      {!!signupMessage &&
-                        (signupMessagesVisible ? (
-                          <FontAwesomeIcon
-                            icon={'comment'}
-                            onClick={() =>
-                              setShowSignupMessages(
-                                showSignupMessages.filter(
-                                  (message) => message !== game.gameId
+                  return (
+                    <GameBox key={game.gameId}>
+                      <h4 key={game.gameId}>
+                        {`${game.title}`}{' '}
+                        {!!signupMessage &&
+                          (signupMessagesVisible ? (
+                            <FontAwesomeIcon
+                              icon={'comment'}
+                              onClick={() =>
+                                setShowSignupMessages(
+                                  showSignupMessages.filter(
+                                    (message) => message !== game.gameId
+                                  )
                                 )
-                              )
-                            }
-                          />
-                        ) : (
-                          <FontAwesomeIcon
-                            icon={['far', 'comment']}
-                            onClick={() =>
-                              setShowSignupMessages([
-                                ...showSignupMessages,
-                                game.gameId,
-                              ])
-                            }
-                          />
-                        ))}
-                    </h4>
+                              }
+                            />
+                          ) : (
+                            <FontAwesomeIcon
+                              icon={['far', 'comment']}
+                              onClick={() =>
+                                setShowSignupMessages([
+                                  ...showSignupMessages,
+                                  game.gameId,
+                                ])
+                              }
+                            />
+                          ))}
+                      </h4>
 
-                    <PlayerCount>
-                      {t('resultsView.players')}: {users.length}/
-                      {game.maxAttendance}
-                    </PlayerCount>
+                      <PlayerCount>
+                        {t('resultsView.players')}: {users.length}/
+                        {game.maxAttendance}
+                      </PlayerCount>
 
-                    {signupMessagesVisible && (
-                      <SignupMessageQuestion>
-                        {signupMessage?.message}
-                      </SignupMessageQuestion>
-                    )}
-
-                    <PlayerList>
-                      {users.length === 0 ? (
-                        <p>{t('resultsView.noSignups')}</p>
-                      ) : (
-                        users.map((user) => (
-                          <p key={user.username}>
-                            {user.username}
-                            {signupMessagesVisible && (
-                              <span>: {user.signupMessage}</span>
-                            )}
-                          </p>
-                        ))
+                      {signupMessagesVisible && (
+                        <SignupMessageQuestion>
+                          {signupMessage?.message}
+                        </SignupMessageQuestion>
                       )}
-                    </PlayerList>
-                  </GameBox>
-                );
-              })}
-            </Games>
-          </TimeSlot>
-        );
-      })}
+
+                      <PlayerList>
+                        {users.length === 0 ? (
+                          <p>{t('resultsView.noSignups')}</p>
+                        ) : (
+                          users.map((user) => (
+                            <p key={user.username}>
+                              {user.username}
+                              {signupMessagesVisible && (
+                                <span>: {user.signupMessage}</span>
+                              )}
+                            </p>
+                          ))
+                        )}
+                      </PlayerList>
+                    </GameBox>
+                  );
+                })}
+              </Games>
+            </TimeSlot>
+          );
+        }
+      )}
     </div>
   );
 };
@@ -156,4 +202,12 @@ const PlayerCount = styled.div`
 
 const SignupMessageQuestion = styled.p`
   font-weight: 600;
+`;
+
+const SearchInput = styled.input`
+  border: 1px solid ${(props) => props.theme.borderInactive};
+  color: ${(props) => props.theme.buttonText};
+  height: 34px;
+  padding: 0 0 0 10px;
+  width: 100%;
 `;
