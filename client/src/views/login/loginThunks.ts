@@ -44,6 +44,8 @@ export const submitLogin = (loginFormFields: LoginFormFields): AppThunk => {
           groupCode: loginResponse.groupCode,
         })
       );
+
+      await loadUser();
     }
   };
 };
