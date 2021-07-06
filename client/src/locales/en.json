@@ -143,7 +143,7 @@
   "agreePrivacyPolicy": "I agree to the privacy policy",
   "privacyPolicyButton": "Show privacy policy",
   "privacyPolicyTitle": "Privacy policy",
-  "privacyPolicyText": "Tracon Hitpoint's role playing signup system is implemented by Arttu Hanska (email arttu.hanska@gmail.com). The system is governed by US law. The following information about game registrations is stored in the system. Personally identifiable information is removed from the system after the event, but non-personally identifiable information may be published for statistical purposes.\nInformation to be saved:\n- A unique user ID of your choice\n- Username password hash\n- Information about user-selected games: favorites, sign-ups, games where the user is assigned\n- Other users with whom the user has formed a group\nhttps://aws.amazon.com/compliance/gdpr-center/",
+  "privacyPolicyText": "Role playing signup system is implemented by Arttu Hanska (email arttu.hanska@gmail.com). The system is governed by US law. The following information about game registrations is stored in the system. Personally identifiable information is removed from the system after the event, but non-personally identifiable information may be published for statistical purposes.\nInformation to be saved:\n- A unique user ID of your choice\n- Username password hash\n- Information about user-selected games: favorites, sign-ups, games where the user is assigned\n- Other users with whom the user has formed a group\nhttps://aws.amazon.com/compliance/gdpr-center/",
   "registrationSerialHelp": "Get registration code from RPG desk",
   "noSignedGames": "No selected games",
   "noFavoritedGames": "No favorited games",
