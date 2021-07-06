@@ -254,5 +254,9 @@
   },
   "gameDetails": {
     "addSignupTextField": "Add signup additional info field"
+  },
+  "firstLogin": {
+    "serial": "Save this code for recovering your password:",
+    "info": "This message is shown to you only when you first login. You can also find code from the navigation."
   }
 }
