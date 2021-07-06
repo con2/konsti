@@ -247,27 +247,29 @@ export const fetchUserByUsername = async (
   };
 };
 
-export const fetchUserBySerial = async (
-  serial: string
+export const fetchUserBySerialOrUsername = async (
+  searchTerm: string
 ): Promise<GetUserBySerialResponse | ServerError> => {
   let user;
 
-  if (serial) {
-    try {
-      user = await findUserBySerial(serial);
-    } catch (error) {
-      logger.error(`fetchUserBySerial(): ${error}`);
-      return {
-        message: 'Getting user data failed',
-        status: 'error',
-        code: 0,
-      };
+  try {
+    user = await findUserBySerial(searchTerm);
+
+    if (user === null) {
+      user = await findUser(searchTerm);
     }
+  } catch (error) {
+    logger.error(`fetchUserBySerial(): ${error}`);
+    return {
+      message: 'Getting user data failed',
+      status: 'error',
+      code: 0,
+    };
   }
 
   if (!user) {
     return {
-      message: `User with serial ${serial} not found`,
+      message: `User with serial ${searchTerm} not found`,
       status: 'error',
       code: 0,
     };

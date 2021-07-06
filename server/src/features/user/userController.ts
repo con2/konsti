@@ -3,13 +3,13 @@ import { validationResult } from 'express-validator';
 import { String, Record, Number, Array, Boolean } from 'runtypes';
 import {
   fetchUserByUsername,
-  fetchUserBySerial,
   storeUser,
   storeFavorite,
   fetchGroup,
   storeGroup,
   login,
   storeSignup,
+  fetchUserBySerialOrUsername,
 } from 'server/features/user/userService';
 import { UserGroup } from 'shared/typings/models/user';
 import { isAuthorized } from 'server/utils/authHeader';
@@ -186,7 +186,7 @@ export const getUser = async (
   return res.json(response);
 };
 
-export const getUserBySerial = async (
+export const getUserBySerialOrUsername = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
@@ -214,7 +214,8 @@ export const getUserBySerial = async (
     return res.sendStatus(422);
   }
 
-  const response = await fetchUserBySerial(serial);
+  const response = await fetchUserBySerialOrUsername(serial);
+
   return res.json(response);
 };
 

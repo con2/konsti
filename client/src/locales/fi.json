@@ -226,7 +226,7 @@
   "signupResults": "Ilmoittautumisen tulokset",
   "helperResults": "Tulokset",
   "helperPasswordManagement": "Salasanojenhallinta",
-  "userCode": "Käyttäjän koodi",
+  "userCode": "Käyttäjän koodi tai käyttäjänimi",
   "newPassword": "Uusi salasana",
   "userNotFound": "Käyttäjää ei löytynyt",
   "foundUser": "Löytyi käyttäjä",
