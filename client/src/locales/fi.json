@@ -255,5 +255,9 @@
   },
   "gameDetails": {
     "addSignupTextField": "Lisää ilmoittautumisen lisätietokenttä"
+  },
+  "firstLogin": {
+    "serial": "Ota koodi säilöön salasanan palauttamista varten:",
+    "info": "Tämä viesti näytetään vain ensimmäisen kirjautumisesi yhteydessä. Löydät koodin myös navigaation takaa."
   }
 }
