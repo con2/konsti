@@ -105,9 +105,9 @@ export const DirectResults = (): ReactElement => {
                       ) : (
                         users.map((user) => (
                           <p key={user.username}>
-                            {user.username}:{' '}
+                            {user.username}
                             {signupMessagesVisible && (
-                              <span>{user.signupMessage}</span>
+                              <span>: {user.signupMessage}</span>
                             )}
                           </p>
                         ))
