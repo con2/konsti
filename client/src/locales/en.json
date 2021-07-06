@@ -225,7 +225,7 @@
   "signupResults": "Signup results",
   "helperResults": "Results",
   "helperPasswordManagement": "Password management",
-  "userCode": "User code",
+  "userCode": "User code or username",
   "newPassword": "New password",
   "userNotFound": "User not found",
   "foundUser": "Found user",
