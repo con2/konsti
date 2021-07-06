@@ -47,6 +47,7 @@
   "players": "Players",
   "player": "Player",
   "find": "Find",
+  "findSignupOrGame": "Game title or username",
   "language": {
     "english": "English",
     "englishShort": "EN",
