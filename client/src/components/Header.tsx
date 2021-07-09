@@ -5,6 +5,7 @@ import { LanguageSelector } from 'client/components/LanguageSelector';
 import { config } from 'client/config';
 import { TimeSelector } from 'client/test/test-components/TimeSelector';
 import { Navigation } from './Navigation';
+import { FirstLogin } from './FirstLogin';
 
 export const Header = (): ReactElement => {
   const { t } = useTranslation();
@@ -22,6 +23,7 @@ export const Header = (): ReactElement => {
         </HeaderBar>
         <HeaderLanguageSelector />
       </HeaderContainer>
+      <FirstLogin />
     </>
   );
 };
