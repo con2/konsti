@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import { config } from 'client/config';
 import { useAppSelector } from 'client/utils/hooks';
+import { Button } from './Button';
 
 export const FirstLogin = (): ReactElement | null => {
   const { t } = useTranslation();
@@ -36,12 +37,12 @@ export const FirstLogin = (): ReactElement | null => {
         {t('firstLogin.serial')} <b>{serial}</b>
       </p>
       <p>{t('firstLogin.info')}</p>
+      <Button onClick={() => setIsFirstLogin(false)}>Sulje</Button>
     </FirstLoginContainer>
   );
 };
 
 const FirstLoginContainer = styled.div`
-  height: 80px;
   border: 1px solid ${(props) => props.theme.warning};
   background: #fafafa;
   padding: 8px;
