@@ -22,12 +22,12 @@ import { postSessionRestore } from 'server/features/user/session-restore/session
 import {
   getGroup,
   getUser,
-  getUserBySerial,
   postFavorite,
   postGroup,
   postLogin,
   postUser,
   postSignup,
+  getUserBySerialOrUsername,
 } from 'server/features/user/userController';
 import {
   ASSIGNMENT_ENDPOINT,
@@ -74,7 +74,7 @@ apiRoutes.post(SESSION_RESTORE_ENDPOINT, postSessionRestore);
 
 apiRoutes.get(GAMES_ENDPOINT, getGames);
 apiRoutes.get(USERS_ENDPOINT, getUser);
-apiRoutes.get(USERS_BY_SERIAL_ENDPOINT, getUserBySerial);
+apiRoutes.get(USERS_BY_SERIAL_ENDPOINT, getUserBySerialOrUsername);
 apiRoutes.get(SETTINGS_ENDPOINT, getSettings);
 apiRoutes.get(RESULTS_ENDPOINT, getResults);
 apiRoutes.get(GROUP_ENDPOINT, getGroup);
