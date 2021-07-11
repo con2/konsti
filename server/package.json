@@ -26,7 +26,8 @@
     "test:watch": "jest --watch",
     "type-check": "tsc --noEmit",
     "update-game-popularity": "cross-env NODE_ENV=development ts-node src/test/scripts/testUpdateGamePopularity.ts",
-    "verify-results": "cross-env NODE_ENV=development ts-node src/test/scripts/testVerifyResults.ts"
+    "verify-results": "cross-env NODE_ENV=development ts-node src/test/scripts/testVerifyResults.ts",
+    "load-kompassi-data": "cross-env NODE_ENV=development ts-node src/test/scripts/loadKompassiDataToDb.ts"
   },
   "config": {
     "mongodbMemoryServer": {

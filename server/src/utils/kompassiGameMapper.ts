@@ -19,8 +19,8 @@ export const kompassiGameMapper = (
       language: game.language,
       endTime: moment(game.start_time).add(game.length, 'minutes').format(),
       people: game.formatted_hosts,
-      minAttendance: game.min_players,
-      maxAttendance: game.max_players,
+      minAttendance: game.min_players ?? 0,
+      maxAttendance: game.max_players ?? 0,
       gameSystem: game.rpg_system,
       englishOk: game.english_ok,
       childrenFriendly: game.children_friendly,
@@ -37,7 +37,8 @@ export const kompassiGameMapper = (
 };
 
 const mapProgramType = (programType: string): string => {
-  if (programType === 'Roolipeli') return 'tabletopRPG';
+  if (programType === 'Roolipeli / Pen & Paper RPG') return 'tabletopRPG';
   else if (programType === 'Freeform') return 'freeformRPG';
+  else if (programType === 'LARP') return 'larp';
   else return 'unknown';
 };
