@@ -51,11 +51,26 @@ export const GameEntry = ({
   const isEnterGameMode = sharedConfig.signupStrategy === SignupStrategy.DIRECT;
   const gameIsFull = game.maxAttendance === players;
 
+  const formatDuration = (mins: number): string => {
+    const hours = Math.floor(mins / 60);
+    const minutes = mins % 60;
+
+    const hoursStr = hours === 0 ? '' : `${hours}h`;
+    const minutesStr = minutes === 0 ? '' : `${minutes}min`;
+
+    return `${hoursStr} ${minutesStr}`;
+  };
+
   return (
     <GameContainer key={game.gameId} className='games-list'>
       <GameHeader>
         <HeaderContainer>
           <h3>{game.title}</h3>
+          <p>
+            {t('signup.expectedDuration', {
+              EXPECTED_DURATION: formatDuration(game.mins),
+            })}
+          </p>
           <PlayerCount visible={isEnterGameMode}>
             {t('signup.signupCount', {
               PLAYERS: players,
