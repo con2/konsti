@@ -46,12 +46,18 @@ export const updateGames = async (): Promise<readonly KompassiGame[]> => {
     return [];
   }
 
-  return programItems.filter((programItem) => {
+  const filteredProgramItems = programItems.filter((programItem) => {
     if (
-      programItem.category_title === 'Roolipeli' ||
-      programItem.category_title === 'Freeform'
+      programItem.category_title === 'Roolipeli / Pen & Paper RPG' ||
+      programItem.category_title === 'LARP'
     ) {
       return programItem;
     }
   });
+
+  if (filteredProgramItems.length === 0) {
+    logger.info('No program items with required categories found');
+  }
+
+  return filteredProgramItems;
 };

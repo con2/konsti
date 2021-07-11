@@ -22,8 +22,7 @@ const commonConfig = {
   saveTestAssign: true,
 
   // Convention settings
-  dataUri: 'https://kompassi.eu/api/v1/events/hitpoint2019/programme/hitpoint',
-
+  dataUri: 'https://kompassi.eu/api/v1/events/ropecon2021/programme/ropecon',
   firtSignupBonus: 20,
 };
 
