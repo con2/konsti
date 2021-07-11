@@ -4,6 +4,7 @@ import request from 'request-promise-native';
 import { logger } from 'server/utils/logger';
 import { config } from 'server/config';
 import { KompassiGame } from 'server/typings/game.typings';
+import { KompassiProgramType } from 'shared/constants/kompassiProgramType';
 
 export const updateGames = async (): Promise<readonly KompassiGame[]> => {
   let programItems: readonly KompassiGame[] = [];
@@ -48,8 +49,8 @@ export const updateGames = async (): Promise<readonly KompassiGame[]> => {
 
   const filteredProgramItems = programItems.filter((programItem) => {
     if (
-      programItem.category_title === 'Roolipeli / Pen & Paper RPG' ||
-      programItem.category_title === 'LARP'
+      programItem.category_title === KompassiProgramType.TABLETOP_RPG ||
+      programItem.category_title === KompassiProgramType.LARP
     ) {
       return programItem;
     }
