@@ -1,6 +1,7 @@
 import moment from 'moment';
 import { Game } from 'shared/typings/models/game';
 import { KompassiGame } from 'server/typings/game.typings';
+import { KompassiProgramType } from 'shared/constants/kompassiProgramType';
 
 export const kompassiGameMapper = (
   games: readonly KompassiGame[]
@@ -37,8 +38,9 @@ export const kompassiGameMapper = (
 };
 
 const mapProgramType = (programType: string): string => {
-  if (programType === 'Roolipeli / Pen & Paper RPG') return 'tabletopRPG';
-  else if (programType === 'Freeform') return 'freeformRPG';
-  else if (programType === 'LARP') return 'larp';
+  if (programType === KompassiProgramType.TABLETOP_RPG) return 'tabletopRPG';
+  else if (programType === KompassiProgramType.FREEFORM_RPG)
+    return 'freeformRPG';
+  else if (programType === KompassiProgramType.LARP) return 'larp';
   else return 'unknown';
 };
