@@ -36,7 +36,7 @@ export const AllGamesView = (): ReactElement => {
     fetchData();
   }, [store, testTime]);
 
-  const tags = ['aloittelijaystavallinen', 'tabletopRPG', 'freeformRPG'];
+  const tags = ['aloittelijaystavallinen', 'tabletopRPG', 'larp'];
 
   const tagsList = (): ReactElement[] => {
     return tags.map((tag) => {
@@ -46,7 +46,7 @@ export const AllGamesView = (): ReactElement => {
           {tag === 'aloittelijaystavallinen' && t(`gameTags.beginnerFriendly`)}
           {tag === 'sopii-lapsille' && t(`gameTags.childrenFriendly`)}
           {tag === 'tabletopRPG' && t(`programType.tabletopRPG`)}
-          {tag === 'freeformRPG' && t(`programType.freeformRPG`)}
+          {tag === 'larp' && t(`programType.larp`)}
         </option>
       );
     });
@@ -173,8 +173,8 @@ const getTagFilteredGames = (
     return games.filter((game) => game.beginnerFriendly);
   } else if (selectedTag === 'tabletopRPG') {
     return games.filter((game) => game.programType === 'tabletopRPG');
-  } else if (selectedTag === 'freeformRPG') {
-    return games.filter((game) => game.programType === 'freeformRPG');
+  } else if (selectedTag === 'larp') {
+    return games.filter((game) => game.programType === 'larp');
   }
   return games;
 };
