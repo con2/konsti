@@ -12,6 +12,9 @@ import { AlgorithmSignupForm } from './AlgorithmSignupForm';
 import { DirectSignupForm } from './DirectSignupForm';
 import { Button } from 'client/components/Button';
 
+const DESCRIPTION_SENTENCES_LENGTH = 3;
+const matchNextSentence = /([.?!])\s*(?=[A-Z])/g;
+
 interface Props {
   game: Game;
   startTime: string;
@@ -105,7 +108,12 @@ export const GameEntry = ({
       </GameHeader>
       <GameMoreInfoRow>
         <GameListShortDescription>
-          {game.shortDescription}
+          {game.shortDescription ??
+            game.description
+              .replace(matchNextSentence, '$1|')
+              .split('|')
+              .slice(0, DESCRIPTION_SENTENCES_LENGTH)
+              .join(' ')}{' '}
           <Link to={`/games/${game.gameId}`}>{t('gameInfo.readMore')}</Link>
         </GameListShortDescription>
       </GameMoreInfoRow>
