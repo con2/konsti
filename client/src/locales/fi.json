@@ -89,7 +89,7 @@
   "programType": {
     "tabletopRPG": "Pöytäroolipeli",
     "freeformRPG": "Freeform-roolipeli",
-    "larp": "Larp"
+    "larp": "LARP"
   },
   "gameStyle": {
     "serious": "Vakava pelityyli",
