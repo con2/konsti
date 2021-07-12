@@ -102,7 +102,7 @@ export const GameEntry = ({
           )}
           <TagColumn>
             <Tag>{t(`programType.${game.programType}`)}</Tag>
-            <Tag>{game.gameSystem}</Tag>
+            {game.gameSystem && <Tag>{game.gameSystem}</Tag>}
           </TagColumn>
         </GameTags>
       </GameHeader>
