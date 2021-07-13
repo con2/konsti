@@ -4,6 +4,10 @@ import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import { timeFormatter } from 'client/utils/timeFormatter';
 import { SelectedGame } from 'shared/typings/models/user';
+import { Button } from 'client/components/Button';
+import { Game } from 'shared/typings/models/game';
+import { submitDeleteGame } from 'client/views/signup/signupThunks';
+import { useAppDispatch, useAppSelector } from 'client/utils/hooks';
 
 export interface Props {
   signups: readonly SelectedGame[];
@@ -17,6 +21,19 @@ export const ResultsByStartTimes = ({
   missedSignups,
 }: Props): ReactElement => {
   const { t } = useTranslation();
+
+  const dispatch = useAppDispatch();
+  const username = useAppSelector((state) => state.login.username);
+
+  const removeSignup = async (gameToRemove: Game): Promise<void> => {
+    await dispatch(
+      submitDeleteGame({
+        username,
+        startTime: gameToRemove.startTime,
+        enteredGameId: gameToRemove.gameId,
+      })
+    );
+  };
 
   return (
     <div className='start-times-list'>
@@ -36,6 +53,16 @@ export const ResultsByStartTimes = ({
                     <Link to={`/games/${signup.gameDetails.gameId}`}>
                       {signup.gameDetails.title}
                     </Link>
+                    <ButtonPlacement>
+                      <Button
+                        onClick={async () =>
+                          await removeSignup(signup.gameDetails)
+                        }
+                      >
+                        {' '}
+                        {t('button.cancel')}{' '}
+                      </Button>
+                    </ButtonPlacement>
                   </GameDetailsList>
                 );
               }
@@ -58,4 +85,8 @@ export const ResultsByStartTimes = ({
 
 const GameDetailsList = styled.p`
   padding-left: 30px;
+`;
+
+const ButtonPlacement = styled.span`
+  padding-left: 10px;
 `;
