@@ -56,3 +56,6 @@ secret
 # Cypress
 client/cypress/videos/*
 client/cypress/screenshots/*
+
+# Husky
+.husky/_/
