@@ -28,7 +28,7 @@
     "eslint": "eslint . --ext .js,.ts,.tsx",
     "lint": "yarn eslint && yarn stylelint && yarn prettier:check",
     "populate-db:dummy": "yarn workspace konsti-server generate-data -ugcs",
-    "populate-db:kompassi": "yarn workspace konsti-server load-kompassi-data && yarn workspace konsti-server generate-data -uc",
+    "populate-db:kompassi": "yarn workspace konsti-server generate-data -uc && yarn workspace konsti-server load-kompassi-data",
     "prepare": "is-ci || husky install",
     "prettier:check": "prettier --check \"./**/*.{js,json,md,ts,tsx,yml}\"",
     "prettier:write": "prettier --write \"./**/*.{js,json,md,ts,tsx,yml}\"",
