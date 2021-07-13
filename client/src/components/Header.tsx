@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import { LanguageSelector } from 'client/components/LanguageSelector';
 import { config } from 'client/config';
-import { TimeSelector } from 'client/test/test-components/TimeSelector';
+import { TestTimeSelector } from 'client/test/test-components/TestTimeSelector';
 import { Navigation } from './Navigation';
 import { FirstLogin } from './FirstLogin';
 
@@ -14,7 +14,7 @@ export const Header = (): ReactElement => {
 
   return (
     <>
-      {loadedSettings !== 'production' && useTestTime && <TimeSelector />}
+      {loadedSettings !== 'production' && useTestTime && <TestTimeSelector />}
       <HeaderContainer>
         <Navigation />
 

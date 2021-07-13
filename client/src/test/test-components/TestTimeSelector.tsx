@@ -8,7 +8,7 @@ import { TimesDropdown } from 'client/components/TimesDropdown';
 import { config } from 'client/config';
 import { useAppDispatch, useAppSelector } from 'client/utils/hooks';
 
-export const TimeSelector = (): ReactElement => {
+export const TestTimeSelector = (): ReactElement => {
   const testTime: string = useAppSelector((state) => state.admin.testTime);
 
   const dispatch = useAppDispatch();
