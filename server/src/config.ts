@@ -1,4 +1,6 @@
 import { Config, GameUpdateMethod } from 'server/typings/config.typings';
+import { sharedConfig } from 'shared/config/sharedConfig';
+import { SignupStrategy } from 'shared/config/sharedConfig.types';
 
 const commonConfig = {
   // Server settings
@@ -45,9 +47,11 @@ const prodConfig = {
 
   // Cron
   autoUpdateGamesEnabled: true,
-  autoUpdateGamePopularityEnabled: true,
   gameUpdateInterval: 4, // minutes
-  autoAssignPlayersEnabled: true,
+  autoUpdateGamePopularityEnabled:
+    sharedConfig.signupStrategy === SignupStrategy.ALGORITHM,
+  autoAssignPlayersEnabled:
+    sharedConfig.signupStrategy === SignupStrategy.ALGORITHM,
 };
 
 const stagingConfig = {
@@ -69,8 +73,9 @@ const stagingConfig = {
 
   // Cron
   autoUpdateGamesEnabled: true,
-  autoUpdateGamePopularityEnabled: true,
   gameUpdateInterval: 4, // minutes
+  autoUpdateGamePopularityEnabled:
+    sharedConfig.signupStrategy === SignupStrategy.ALGORITHM,
   autoAssignPlayersEnabled: false,
 };
 
@@ -90,8 +95,8 @@ const devConfig = {
 
   // Cron
   autoUpdateGamesEnabled: false,
-  autoUpdateGamePopularityEnabled: false,
   gameUpdateInterval: 4, // minutes
+  autoUpdateGamePopularityEnabled: false,
   autoAssignPlayersEnabled: false,
 };
 
