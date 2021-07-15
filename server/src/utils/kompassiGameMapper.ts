@@ -18,10 +18,12 @@ export const kompassiGameMapper = (
       genres: game.genres,
       styles: game.styles,
       language: game.language,
-      endTime: moment(game.start_time).add(game.length, 'minutes').format(),
+      endTime:
+        moment(game.end_time).format() ||
+        moment(game.start_time).add(game.length, 'minutes').format(),
       people: game.formatted_hosts,
-      minAttendance: game.min_players ?? 0,
-      maxAttendance: game.max_players ?? 0,
+      minAttendance: game.min_players,
+      maxAttendance: game.max_players || game.ropecon2018_characters,
       gameSystem: game.rpg_system,
       englishOk: game.english_ok,
       childrenFriendly: game.children_friendly,
@@ -33,6 +35,21 @@ export const kompassiGameMapper = (
       revolvingDoor: game.revolving_door,
       programType: mapProgramType(game.category_title),
       popularity: 0,
+      contentWarnings: game.content_warnings,
+      otherAuthor: game.other_author,
+      accessibility: {
+        loudSounds: game.ropecon2021_accessibility_loud_sounds,
+        flashingLights: game.ropecon2021_accessibility_flashing_lights,
+        strongSmells: game.ropecon2021_accessibility_strong_smells,
+        irritateSkin: game.ropecon2021_accessibility_irritate_skin,
+        physicalContact: game.ropecon2021_accessibility_physical_contact,
+        lowLighting: game.ropecon2021_accessibility_low_lightning,
+        movingAround: game.ropecon2021_accessibility_moving_around,
+        video: game.ropecon2021_accessibility_video,
+        recording: game.ropecon2021_accessibility_recording,
+        text: game.ropecon2021_accessibility_text,
+        colourblind: game.ropecon2021_accessibility_colourblind,
+      },
     };
   });
 };
