@@ -36,7 +36,7 @@ export const createGames = async (
       const startTime = startingTime;
       const length = 180;
 
-      const gameData = {
+      const kompassiGameData = {
         title: faker.random.words(3),
         description: faker.lorem.sentences(5),
         category_title: 'Roolipeli',
@@ -70,10 +70,24 @@ export const createGames = async (
         revolving_door: true,
         three_word_description: 'This is example ',
         is_beginner_friendly: true,
+        content_warnings: '',
+        other_author: '',
+        ropecon2018_characters: 6,
+        ropecon2021_accessibility_loud_sounds: false,
+        ropecon2021_accessibility_flashing_lights: false,
+        ropecon2021_accessibility_strong_smells: false,
+        ropecon2021_accessibility_irritate_skin: false,
+        ropecon2021_accessibility_physical_contact: false,
+        ropecon2021_accessibility_low_lightning: false,
+        ropecon2021_accessibility_moving_around: false,
+        ropecon2021_accessibility_video: false,
+        ropecon2021_accessibility_recording: false,
+        ropecon2021_accessibility_text: false,
+        ropecon2021_accessibility_colourblind: false,
       };
 
-      logger.info(`Stored game "${gameData.title}"`);
-      kompassiGames.push(gameData);
+      logger.info(`Stored game "${kompassiGameData.title}"`);
+      kompassiGames.push(kompassiGameData);
     }
   });
 
