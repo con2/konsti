@@ -30,6 +30,21 @@ export const mockGame: Game = {
   revolvingDoor: true,
   popularity: 0,
   programType: 'Roolipeli',
+  contentWarnings: '',
+  otherAuthor: '',
+  accessibility: {
+    loudSounds: false,
+    flashingLights: false,
+    strongSmells: false,
+    irritateSkin: false,
+    physicalContact: false,
+    lowLighting: false,
+    movingAround: false,
+    video: false,
+    recording: false,
+    text: false,
+    colourblind: false,
+  },
 };
 
 export const mockGame2: Game = {
@@ -62,4 +77,19 @@ export const mockGame2: Game = {
   revolvingDoor: true,
   popularity: 0,
   programType: 'Roolipeli',
+  contentWarnings: '',
+  otherAuthor: '',
+  accessibility: {
+    loudSounds: false,
+    flashingLights: false,
+    strongSmells: false,
+    irritateSkin: false,
+    physicalContact: false,
+    lowLighting: false,
+    movingAround: false,
+    video: false,
+    recording: false,
+    text: false,
+    colourblind: false,
+  },
 };

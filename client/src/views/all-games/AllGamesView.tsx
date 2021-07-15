@@ -36,7 +36,7 @@ export const AllGamesView = (): ReactElement => {
     fetchData();
   }, [store, testTime]);
 
-  const tags = ['aloittelijaystavallinen', 'tabletopRPG', 'larp'];
+  const tags = ['tabletopRPG', 'larp', 'in-english', 'aloittelijaystavallinen'];
 
   const tagsList = (): ReactElement[] => {
     return tags.map((tag) => {
@@ -170,11 +170,16 @@ const getTagFilteredGames = (
 ): readonly Game[] => {
   if (!selectedTag) return games;
   if (selectedTag === 'aloittelijaystavallinen') {
-    return games.filter((game) => game.beginnerFriendly);
+    return games.filter(
+      (game) =>
+        game.beginnerFriendly || game.tags.includes('aloittelijaystavallinen')
+    );
   } else if (selectedTag === 'tabletopRPG') {
     return games.filter((game) => game.programType === 'tabletopRPG');
   } else if (selectedTag === 'larp') {
     return games.filter((game) => game.programType === 'larp');
+  } else if (selectedTag === 'in-english') {
+    return games.filter((game) => game.tags.includes('in-english'));
   }
   return games;
 };
