@@ -84,7 +84,10 @@
     "revolvingDoor": "This is a revolving door game",
     "revolvingDoorDescription": "You can join this game at any time if there are free seats",
     "programType": "Program type",
-    "readMore": "Read more"
+    "readMore": "Read more",
+    "contentWarnings": "Content warnings",
+    "otherAuthor": "Game designer",
+    "accessibility": "Accessibility"
   },
   "programType": {
     "tabletopRPG": "Tabletop RPG",
@@ -114,15 +117,21 @@
     "adventure": "Adventure"
   },
   "gameTags": {
-    "inEnglish": "Played in English",
+    "inEnglish": "Can be played in English",
     "childrenFriendly": "Children friendly",
-    "ageRestricted": "Age limit 18+",
+    "ageRestricted": "For players over 18 only",
     "ageRestrictedTitle": "This game's age limit is 18+",
     "ageRestrictedLong": "Players may be asked to verify their age",
     "beginnerFriendly": "Beginner friendly",
     "intendedForExperiencedParticipants": "Experienced participants preferred",
     "guestOfHonor": "Guest of Honor game",
-    "family": "Suitable for families"
+    "family": "Suitable for families",
+    "themeElements": "Theme: Elements",
+    "suitableUnder7": "Suitable for children under 7",
+    "suitable7to12": "Suitable for children aged 7-12",
+    "suitableOver12": "Suitable for children aged 12+",
+    "notSuitableUnder15": "Not suitable for children under 15",
+    "childrensProgram": "Programme for children"
   },
   "pageTitle": {
     "login": "Please login",
@@ -260,5 +269,18 @@
   "firstLogin": {
     "serial": "Save this code for recovering your password:",
     "info": "This message is shown to you only when you first login. You can also find code from the navigation."
+  },
+  "accessibility": {
+    "loudSounds": "Loud sounds",
+    "flashingLights": "Flashing or bright lights",
+    "strongSmells": "Strong smells",
+    "irritateSkin": "Materials or substances that irritate the skin",
+    "physicalContact": "Physical contact and/or low chances of personal space",
+    "lowLighting": "Darkness/low lighting",
+    "movingAround": "Participation involves a lot of moving around without a chance for sitting down",
+    "video": "The game involves watching a video without subtitles for the hearing impaired",
+    "recording": "Participation requires listening to a recording that does not have a text version for the hearing impaired",
+    "text": "Participation involves reading long texts independently, and the texts are not available as recordings for those with visual impairment",
+    "colourblind": "Material used in the game can cause problems for the colourblind"
   }
 }

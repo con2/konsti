@@ -1,5 +1,19 @@
 import { Record, String, Number, Static, Boolean, Array } from 'runtypes';
 
+const AccessibilityRuntype = Record({
+  loudSounds: Boolean,
+  flashingLights: Boolean,
+  strongSmells: Boolean,
+  irritateSkin: Boolean,
+  physicalContact: Boolean,
+  lowLighting: Boolean,
+  movingAround: Boolean,
+  video: Boolean,
+  recording: Boolean,
+  text: Boolean,
+  colourblind: Boolean,
+});
+
 export const GameRuntype = Record({
   gameId: String,
   title: String,
@@ -25,6 +39,9 @@ export const GameRuntype = Record({
   shortDescription: String,
   revolvingDoor: Boolean,
   programType: String,
+  contentWarnings: String,
+  otherAuthor: String,
+  accessibility: AccessibilityRuntype,
 });
 
 export type Game = Static<typeof GameRuntype>;

@@ -84,7 +84,10 @@
     "revolvingDoor": "Tämä on pyöröovipeli",
     "revolvingDoorDescription": "Voit liittyä peliin koska tahansa, jos pelipöydässä on tilaa",
     "programType": "Ohjelmatyyppi",
-    "readMore": "Lue lisää"
+    "readMore": "Lue lisää",
+    "contentWarnings": "Sisältövaroitukset",
+    "otherAuthor": "Pelin kirjoittaja",
+    "accessibility": "Esteettömyys"
   },
   "programType": {
     "tabletopRPG": "Pöytäroolipeli",
@@ -114,15 +117,21 @@
     "adventure": "Seikkailu"
   },
   "gameTags": {
-    "inEnglish": "Pelataan englanniksi",
+    "inEnglish": "Voidaan pelata englanniksi",
     "childrenFriendly": "Lapsiystävällinen",
-    "ageRestricted": "Ikäraja 18+",
+    "ageRestricted": "Vain täysi-ikäisille",
     "ageRestrictedTitle": "Tämän pelin ikäraja on 18+",
     "ageRestrictedLong": "Pelaajia voidaan pyytää todistamaan ikänsä",
     "beginnerFriendly": "Aloittelijaystävällinen",
     "intendedForExperiencedParticipants": "Peli suosii kokeneita pelaajia",
     "guestOfHonor": "Kunniavieraspeli",
-    "family": "Sopii perheille"
+    "family": "Sopii perheille",
+    "themeElements": "Teema: Elementit",
+    "suitableUnder7": "Sopii alle 7-vuotiaille",
+    "suitable7to12": "Sopii 7-12-vuotiaille",
+    "suitableOver12": "Sopii yli 12-vuotiaille",
+    "notSuitableUnder15": "Ei sovellu alle 15-vuotiaille",
+    "childrensProgram": "Lastenohjelma"
   },
 
   "pageTitle": {
@@ -261,5 +270,18 @@
   "firstLogin": {
     "serial": "Ota koodi säilöön salasanan palauttamista varten:",
     "info": "Tämä viesti näytetään vain ensimmäisen kirjautumisesi yhteydessä. Löydät koodin myös navigaation takaa."
+  },
+  "accessibility": {
+    "loudSounds": "Kovat äänet",
+    "flashingLights": "Välkkyvät tai voimakkaat valot",
+    "strongSmells": "Voimakkaat tuoksut",
+    "irritateSkin": "Ihoa ärsyttävät aineet tai materiaalit",
+    "physicalContact": "Fyysinen kontakti ja/tai suppea henkilökohtaisen tilan mahdollisuus",
+    "lowLighting": "Pimeä/heikko valaistus",
+    "movingAround": "Osallistuminen vaatii paljon liikkumista ilman mahdollisuutta istumiseen",
+    "video": "Ohjelmanumerossa katsotaan video, jossa ei ole tekstitystä kuulorajoitteisille",
+    "recording": "Osallistuminen edellyttää sellaisen äänitteen kuuntelemista, josta ei ole tekstiversiota kuulorajoitteisille",
+    "text": "Osallistuminen vaatii pitkien tekstien itsenäistä lukemista, eikä tekstejä ole mahdollista saada äänitteinä näkörajoitteisille",
+    "colourblind": "Ohjelmanumerossa käytettävät materiaalit voivat tuottaa haasteita värisokeille"
   }
 }
