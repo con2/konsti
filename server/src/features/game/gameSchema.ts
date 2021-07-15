@@ -27,6 +27,21 @@ const gameSchema = new mongoose.Schema(
     revolvingDoor: Boolean,
     popularity: { type: Number, default: 0 },
     programType: String,
+    contentWarnings: String,
+    otherAuthor: String,
+    accessibility: {
+      loudSounds: Boolean,
+      flashingLights: Boolean,
+      strongSmells: Boolean,
+      irritateSkin: Boolean,
+      physicalContact: Boolean,
+      lowLighting: Boolean,
+      movingAround: Boolean,
+      video: Boolean,
+      recording: Boolean,
+      text: Boolean,
+      colourblind: Boolean,
+    },
   },
   { timestamps: true }
 );

@@ -30,6 +30,20 @@ export interface KompassiGame {
   revolving_door: boolean;
   three_word_description: string;
   is_beginner_friendly: boolean;
+  content_warnings: string;
+  other_author: string;
+  ropecon2018_characters: number;
+  ropecon2021_accessibility_loud_sounds: boolean;
+  ropecon2021_accessibility_flashing_lights: boolean;
+  ropecon2021_accessibility_strong_smells: boolean;
+  ropecon2021_accessibility_irritate_skin: boolean;
+  ropecon2021_accessibility_physical_contact: boolean;
+  ropecon2021_accessibility_low_lightning: boolean;
+  ropecon2021_accessibility_moving_around: boolean;
+  ropecon2021_accessibility_video: boolean;
+  ropecon2021_accessibility_recording: boolean;
+  ropecon2021_accessibility_text: boolean;
+  ropecon2021_accessibility_colourblind: boolean;
 }
 
 export interface GameWithPlayerCount {

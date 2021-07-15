@@ -50,6 +50,9 @@ export const saveGames = async (games: readonly Game[]): Promise<Game[]> => {
             shortDescription: game.shortDescription,
             revolvingDoor: game.revolvingDoor,
             programType: game.programType,
+            contentWarnings: game.contentWarnings,
+            otherAuthor: game.otherAuthor,
+            accessibility: game.accessibility,
           },
           {
             upsert: true,

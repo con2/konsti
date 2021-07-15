@@ -29,6 +29,30 @@ export const getGameTags = (game: Game): string[] => {
     tagsList.push(`family`);
   }
 
+  if (game.tags.includes('teema-elementit')) {
+    tagsList.push(`themeElements`);
+  }
+
+  if (game.tags.includes('sopii-alle-7v-')) {
+    tagsList.push(`suitableUnder7`);
+  }
+
+  if (game.tags.includes('sopii-7-12v-')) {
+    tagsList.push(`suitable7to12`);
+  }
+
+  if (game.tags.includes('sopii-yli-12v-')) {
+    tagsList.push(`suitableOver12`);
+  }
+
+  if (game.tags.includes('ei-sovellu-alle-15v-')) {
+    tagsList.push(`notSuitableUnder15`);
+  }
+
+  if (game.tags.includes('lastenohjelma')) {
+    tagsList.push(`childrensProgram`);
+  }
+
   if (game.intendedForExperiencedParticipants) {
     tagsList.push(`intendedForExperiencedParticipants`);
   }
