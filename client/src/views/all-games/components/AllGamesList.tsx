@@ -87,12 +87,13 @@ const buildGamesList = (
     const title = (
       <GameListTitle key={startTime}>
         <span className='game-startup-time'>{formattedStartTime}</span>
-        {!allGamesRevolvingDoor && (
-          <span className='game-signup-time'>
-            {' '}
-            ({t('signupOpenBetween')} {signupStartTime}-{signupEndTime})
-          </span>
-        )}
+        {!allGamesRevolvingDoor &&
+          sharedConfig.signupStrategy === SignupStrategy.ALGORITHM && (
+            <span className='game-signup-time'>
+              {' '}
+              ({t('signupOpenBetween')} {signupStartTime}-{signupEndTime})
+            </span>
+          )}
         {getHeaderGameInfo()}
       </GameListTitle>
     );
