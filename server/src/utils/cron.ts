@@ -21,7 +21,7 @@ const {
 } = config;
 
 export const autoUpdateGames = async (): Promise<void> => {
-  if (!autoUpdateGamesEnabled || !autoUpdateGamePopularityEnabled) return;
+  if (!autoUpdateGamesEnabled && !autoUpdateGamePopularityEnabled) return;
 
   const cronRule = `*/${gameUpdateInterval} * * * *`;
 
