@@ -271,6 +271,9 @@
     "serial": "Save this code for recovering your password:",
     "info": "This message is shown to you only when you first login. You can also find code from the navigation."
   },
+  "myGamesView": {
+    "yourAnswer": "Your answer to field"
+  },
   "accessibility": {
     "loudSounds": "Loud sounds",
     "flashingLights": "Flashing or bright lights",

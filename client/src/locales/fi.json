@@ -272,6 +272,9 @@
     "serial": "Ota koodi säilöön salasanan palauttamista varten:",
     "info": "Tämä viesti näytetään vain ensimmäisen kirjautumisesi yhteydessä. Löydät koodin myös navigaation takaa."
   },
+  "myGamesView": {
+    "yourAnswer": "Vastauksesi kenttään"
+  },
   "accessibility": {
     "loudSounds": "Kovat äänet",
     "flashingLights": "Välkkyvät tai voimakkaat valot",
