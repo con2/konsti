@@ -34,9 +34,9 @@ export const CancelSignupForm: FC<Props> = (props: Props): ReactElement => {
   };
 
   return (
-    <span>
+    <>
       <Button onClick={removeSignup}>{t('signup.confirmCancelSignup')}</Button>{' '}
       <Button onClick={handleCancel}>{t('signup.cancel')}</Button>
-    </span>
+    </>
   );
 };
