@@ -213,7 +213,7 @@ const getRunningRevolvingDoorGames = (
 };
 
 const RevolvingDoorInstruction = styled.div`
-  margin: 100px 0 0 14px;
+  margin: 20px 0 0 14px;
 `;
 
 const AllGamesToggleVisibility = styled.div`
