@@ -12,7 +12,7 @@ export const config: Config = {
   CONVENTION_START_TIME: '2021-07-30T12:00:00Z', // UTC date
   DAY_START_TIME: 8, // 08:00
   noSignupGames: [],
-  revolvingDoorEnabled: false,
+  revolvingDoorEnabled: true,
   tagFilteringEnabled: true,
   simpleDetails: true,
 
