@@ -245,7 +245,7 @@
     "signupCount": "{{PLAYERS}} / {{MAX_ATTENDANCE}} players",
     "playerNeeded": "Need {{COUNT}} players!",
     "gameIsFull": "Game is full",
-    "expectedDuration": "Expected duration {{EXPECTED_DURATION}}"
+    "expectedDuration": "Duration {{EXPECTED_DURATION}}"
   },
   "resultsView": {
     "allSignupResults": "Signup overview and players",
