@@ -60,7 +60,7 @@ export const ResultsByStartTimes = ({
                         }
                       >
                         {' '}
-                        {t('button.cancel')}{' '}
+                        {t('button.cancelSignup')}{' '}
                       </Button>
                     </ButtonPlacement>
                   </GameDetailsList>

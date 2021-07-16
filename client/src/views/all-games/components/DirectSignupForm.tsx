@@ -4,11 +4,11 @@ import { useTranslation } from 'react-i18next';
 import { Game } from 'shared/typings/models/game';
 import { getUpcomingEnteredGames } from 'client/utils/getUpcomingGames';
 import { EnterGameForm } from './EnterGameForm';
-import { submitDeleteGame } from 'client/views/signup/signupThunks';
 import { SelectedGame } from 'shared/typings/models/user';
-import { useAppDispatch, useAppSelector } from 'client/utils/hooks';
+import { useAppSelector } from 'client/utils/hooks';
 import { isAlreadyEntered } from './allGamesUtils';
 import { Button } from 'client/components/Button';
+import { CancelSignupForm } from './CancelSignupForm';
 
 interface Props {
   game: Game;
@@ -23,25 +23,13 @@ export const DirectSignupForm: FC<Props> = (
 
   const { t } = useTranslation();
 
-  const username = useAppSelector((state) => state.login.username);
   const loggedIn = useAppSelector((state) => state.login.loggedIn);
   const enteredGames = useAppSelector((state) => state.myGames.enteredGames);
   const [signupFormOpen, setSignupFormOpen] = useState(false);
+  const [cancelSignupFormOpen, setCancelSignupFormOpen] = useState(false);
   const AdditionalInfoMessages = useAppSelector(
     (state) => state.admin.signupMessages
   );
-
-  const dispatch = useAppDispatch();
-
-  const removeSignup = async (gameToRemove: Game): Promise<void> => {
-    await dispatch(
-      submitDeleteGame({
-        username,
-        startTime: gameToRemove.startTime,
-        enteredGameId: gameToRemove.gameId,
-      })
-    );
-  };
 
   const enteredGamesForTimeslot = getUpcomingEnteredGames(enteredGames).filter(
     (g) => g.gameDetails.startTime === startTime
@@ -83,10 +71,23 @@ export const DirectSignupForm: FC<Props> = (
       <>
         {signupForDirect(alreadyEnteredToGame, enteredGamesForTimeslot)}
         {gameIsFull && <GameIsFull>{t('signup.gameIsFull')}</GameIsFull>}
-        {alreadyEnteredToGame && (
-          <Button onClick={async () => await removeSignup(game)}>
-            {t('button.cancel')}
+        {alreadyEnteredToGame && !cancelSignupFormOpen && (
+          <Button
+            onClick={() => setCancelSignupFormOpen(!cancelSignupFormOpen)}
+          >
+            {t('button.cancelSignup')}
           </Button>
+        )}
+        {alreadyEnteredToGame && cancelSignupFormOpen && (
+          <CancelSignupForm
+            game={game}
+            onCancelSignup={() => {
+              setCancelSignupFormOpen(false);
+            }}
+            onCancelForm={() => {
+              setCancelSignupFormOpen(false);
+            }}
+          />
         )}
         {signupFormOpen && !alreadyEnteredToGame && !gameIsFull && (
           <EnterGameForm
