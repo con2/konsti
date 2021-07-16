@@ -6,6 +6,7 @@ import { submitEnterGame } from 'client/views/signup/signupThunks';
 import { useAppDispatch, useAppSelector } from 'client/utils/hooks';
 import { Button } from 'client/components/Button';
 import { SignupMessage } from 'shared/typings/models/settings';
+import { loadGames } from 'client/utils/loadData';
 
 interface Props {
   game: Game;
@@ -45,6 +46,7 @@ export const EnterGameForm: FC<Props> = (props: Props): ReactElement => {
 
     try {
       await dispatch(submitEnterGame(enterData, newGame));
+      await loadGames();
       onEnterGame();
     } catch (error) {
       switch (error.code) {

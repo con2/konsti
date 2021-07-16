@@ -9,6 +9,7 @@ import { SelectedGame } from 'shared/typings/models/user';
 import { useAppDispatch, useAppSelector } from 'client/utils/hooks';
 import { isAlreadyEntered } from './allGamesUtils';
 import { Button } from 'client/components/Button';
+import { loadGames } from 'client/utils/loadData';
 
 interface Props {
   game: Game;
@@ -41,6 +42,7 @@ export const DirectSignupForm: FC<Props> = (
         enteredGameId: gameToRemove.gameId,
       })
     );
+    await loadGames();
   };
 
   const enteredGamesForTimeslot = getUpcomingEnteredGames(enteredGames).filter(
