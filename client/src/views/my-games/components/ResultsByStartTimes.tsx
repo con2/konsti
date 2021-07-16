@@ -26,9 +26,9 @@ export const ResultsByStartTimes = ({
   const dispatch = useAppDispatch();
   const username = useAppSelector((state) => state.login.username);
   const signupMessages = useAppSelector((state) => state.admin.signupMessages);
-  const [showSignupMessageVisible, setShowSignupMessageVisible] = useState<
-    string[]
-  >([]);
+  // const [showSignupMessageVisible, setShowSignupMessageVisible] = useState<
+  //   string[]
+  // >([]);
   const removeSignup = async (gameToRemove: Game): Promise<void> => {
     await dispatch(
       submitDeleteGame({
@@ -55,9 +55,6 @@ export const ResultsByStartTimes = ({
                 const showSignupMessage = signupMessages.find(
                   (message) => message.gameId === signup.gameDetails.gameId
                 );
-                const signupMessageVisible = showSignupMessageVisible.find(
-                  (message) => message === signup.gameDetails.gameId
-                );
                 return (
                   <GameDetailsList key={signup.gameDetails.gameId}>
                     <Link to={`/games/${signup.gameDetails.gameId}`}>
@@ -73,37 +70,14 @@ export const ResultsByStartTimes = ({
                         {t('button.cancel')}{' '}
                       </Button>
                     </ButtonPlacement>
-                    {!!showSignupMessage &&
-                      (signupMessageVisible ? (
-                        <SignupMessagePlacement>
-                          <FontAwesomeIcon
-                            icon={'comment'}
-                            onClick={() =>
-                              setShowSignupMessageVisible(
-                                showSignupMessageVisible.filter(
-                                  (message) =>
-                                    message !== signup.gameDetails.gameId
-                                )
-                              )
-                            }
-                          />
-                          {` ${t('myGamesView.yourAnswer')} "${
-                            showSignupMessage.message
-                          }": ${signup.message}`}
-                        </SignupMessagePlacement>
-                      ) : (
-                        <SignupMessagePlacement>
-                          <FontAwesomeIcon
-                            icon={['far', 'comment']}
-                            onClick={() => {
-                              setShowSignupMessageVisible([
-                                ...showSignupMessageVisible,
-                                signup.gameDetails.gameId,
-                              ]);
-                            }}
-                          />
-                        </SignupMessagePlacement>
-                      ))}
+                    {!!showSignupMessage && (
+                      <SignupMessagePlacement>
+                        <FontAwesomeIcon icon={'comment'} />
+                        {` ${t('myGamesView.yourAnswer')} "${
+                          showSignupMessage.message
+                        }": ${signup.message}`}
+                      </SignupMessagePlacement>
+                    )}
                   </GameDetailsList>
                 );
               }
