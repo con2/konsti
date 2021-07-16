@@ -138,7 +138,7 @@
     "login": "Kirjaudu sisään",
     "registration": "Rekisteröi käyttäjätunnus",
     "usernamePublicWarning": "Käyttäjänimi on julkinen",
-    "usernameDiscordInfo": "Pyydämme käyttämään samaa käyttäjänimeä kuin Discordissa"
+    "usernameDiscordInfo": "Käytä samaa käyttäjänimeä kuin Ropeconin Discordissa, että pelinjohtajan on helppo tunnistaa pelaajansa."
   },
   "user": "Käyttäjä",
   "favoritedGames": "Suosikkipelit",
