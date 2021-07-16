@@ -1,6 +1,6 @@
 {
   "appTitle": "Konsti",
-  "appDescription": "{{CONVENTION_NAME}} {{CONVENTION_YEAR}} roolipeli-ilmoittautuminen",
+  "appDescription": "{{CONVENTION_NAME}} {{CONVENTION_YEAR}} roolipeli & LARP ilmoittautuminen",
   "footer": "Alaviite",
   "button": {
     "logout": "Kirjaudu ulos",
