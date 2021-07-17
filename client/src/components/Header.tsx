@@ -27,7 +27,7 @@ export const Header = (): ReactElement => {
         <HeaderLanguageSelector />
       </HeaderContainer>
 
-      {!appOpen && <h2>{t('closingMessage')}</h2>}
+      {!appOpen && <ClosingMessage>{t('closingMessage')}</ClosingMessage>}
 
       <FirstLogin />
     </>
@@ -56,4 +56,8 @@ const HeaderBar = styled.div`
   flex: 0 1 auto;
   align-items: center;
   justify-content: space-between;
+`;
+
+const ClosingMessage = styled.h2`
+  text-align: center;
 `;
