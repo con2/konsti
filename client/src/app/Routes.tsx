@@ -28,9 +28,15 @@ export const Routes = (): ReactElement => {
         {userGroup === UserGroup.ADMIN && (
           <Redirect from='/login' to='/admin' />
         )}
+        {userGroup === UserGroup.HELP && <Redirect from='/login' to='/help' />}
         {userGroup === UserGroup.ADMIN && (
           <Route path='/admin'>
             <AdminView />
+          </Route>
+        )}
+        {(userGroup === UserGroup.HELP || userGroup === UserGroup.ADMIN) && (
+          <Route path='/help'>
+            <HelperView />
           </Route>
         )}
         <Route path='/login'>
