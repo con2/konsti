@@ -1,5 +1,4 @@
 import React, { ReactElement, useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import { useStore } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { Routes } from 'client/app/Routes';
@@ -8,12 +7,9 @@ import { loadData } from 'client/utils/loadData';
 import { Loading } from 'client/components/Loading';
 import { getIconLibrary } from 'client/utils/icons';
 import { config } from 'client/config';
-import { useAppSelector } from 'client/utils/hooks';
 
 export const App = (): ReactElement => {
   const { dataUpdateInterval } = config;
-  const appOpen = useAppSelector((state) => state.admin.appOpen);
-  const { t } = useTranslation();
   const store = useStore();
 
   const [loading, setLoading] = useState<boolean>(true);
@@ -40,13 +36,10 @@ export const App = (): ReactElement => {
       {loading && <Loading />}
 
       {!loading && (
-        <>
-          {!appOpen && <h2>{t('closingMessage')}</h2>}
-          <BrowserRouter>
-            <Header />
-            <Routes />
-          </BrowserRouter>
-        </>
+        <BrowserRouter>
+          <Header />
+          <Routes />
+        </BrowserRouter>
       )}
     </>
   );

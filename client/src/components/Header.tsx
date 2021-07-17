@@ -6,11 +6,14 @@ import { config } from 'client/config';
 import { TestTimeSelector } from 'client/test/test-components/TestTimeSelector';
 import { Navigation } from './Navigation';
 import { FirstLogin } from './FirstLogin';
+import { useAppSelector } from 'client/utils/hooks';
 
 export const Header = (): ReactElement => {
   const { t } = useTranslation();
   const { loadedSettings, CONVENTION_NAME, CONVENTION_YEAR, useTestTime } =
     config;
+
+  const appOpen = useAppSelector((state) => state.admin.appOpen);
 
   return (
     <>
@@ -23,6 +26,9 @@ export const Header = (): ReactElement => {
         </HeaderBar>
         <HeaderLanguageSelector />
       </HeaderContainer>
+
+      {!appOpen && <ClosingMessage>{t('closingMessage')}</ClosingMessage>}
+
       <FirstLogin />
     </>
   );
@@ -50,4 +56,8 @@ const HeaderBar = styled.div`
   flex: 0 1 auto;
   align-items: center;
   justify-content: space-between;
+`;
+
+const ClosingMessage = styled.h2`
+  text-align: center;
 `;
