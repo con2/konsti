@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom';
 import { useAppSelector } from 'client/utils/hooks';
 import { sharedConfig } from 'shared/config/sharedConfig';
 import { SignupStrategy } from 'shared/config/sharedConfig.types';
+import { isAdmin, isAdminOrHelp, isUser } from 'client/utils/checkUserGroup';
 
 export const LoggedInUserNavigation = (props: {
   onSelect: () => void;
@@ -18,52 +19,44 @@ export const LoggedInUserNavigation = (props: {
         {t('pages.allGames')}
       </RouterLink>
 
-      {userGroup === 'user' && (
+      {isUser(userGroup) && (
         <RouterLink onClick={props.onSelect} to='/mygames'>
           {t('pages.myGames')}
         </RouterLink>
       )}
 
-      {userGroup === 'user' &&
+      {isUser(userGroup) &&
         sharedConfig.signupStrategy === SignupStrategy.ALGORITHM && (
           <RouterLink onClick={props.onSelect} to='/signup'>
             {t('pages.signUp')}
           </RouterLink>
         )}
 
-      {(userGroup === 'user' ||
-        userGroup === 'admin' ||
-        userGroup === 'help') && (
-        <RouterLink onClick={props.onSelect} to='/results'>
-          {t('pages.results')}
-        </RouterLink>
-      )}
+      <RouterLink onClick={props.onSelect} to='/results'>
+        {t('pages.results')}
+      </RouterLink>
 
-      {userGroup === 'user' && sharedConfig.enableGroups && (
+      {isUser(userGroup) && sharedConfig.enableGroups && (
         <RouterLink onClick={props.onSelect} to='/group'>
           {t('pages.group')}
         </RouterLink>
       )}
 
-      {(userGroup === 'help' || userGroup === 'admin') && (
+      {isAdminOrHelp(userGroup) && (
         <RouterLink onClick={props.onSelect} to='/help'>
           {t('button.helper')}
         </RouterLink>
       )}
 
-      {userGroup === 'admin' && (
+      {isAdmin(userGroup) && (
         <RouterLink onClick={props.onSelect} to='/admin'>
           {t('pages.admin')}
         </RouterLink>
       )}
 
-      {(userGroup === 'user' ||
-        userGroup === 'admin' ||
-        userGroup === 'help') && (
-        <RouterLink onClick={props.onSelect} to='/logout'>
-          {t('button.logout')}
-        </RouterLink>
-      )}
+      <RouterLink onClick={props.onSelect} to='/logout'>
+        {t('button.logout')}
+      </RouterLink>
     </StyledRoutes>
   );
 };
