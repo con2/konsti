@@ -91,6 +91,7 @@ module.exports = {
         format: ['PascalCase'],
       },
     ],
+    '@typescript-eslint/no-unused-vars': 'error',
     '@typescript-eslint/triple-slash-reference': 'off', // Cypress requires triple slash reference
     '@typescript-eslint/strict-boolean-expressions': 'off', // Forces unwanted code style
     '@typescript-eslint/restrict-template-expressions': 'off', // Requires typing catch(e) every time
