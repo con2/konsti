@@ -107,7 +107,8 @@ export const DirectResults = (): ReactElement => {
                   return (
                     <div key={game.gameId}>
                       <h4 key={game.gameId}>
-                        {`${game.title}`}{' '}
+                        {game.title}{' '}
+                        <Tag>{t(`programType.${game.programType}`)}</Tag>{' '}
                         {!!signupMessage &&
                           (signupMessagesVisible ? (
                             <FontAwesomeIcon
@@ -203,4 +204,13 @@ const SearchInput = styled.input`
   height: 34px;
   padding: 0 0 0 10px;
   width: 100%;
+`;
+
+const Tag = styled.span`
+  border-radius: 4px;
+  background: ${(props) => props.theme.tagBackground};
+  padding: 4px;
+  font-size: 12px;
+  color: ${(props) => props.theme.tagTextColor};
+  white-space: nowrap;
 `;
