@@ -192,7 +192,7 @@ export const AdminView = (): ReactElement => {
 
           <HiddenGamesList hiddenGames={hiddenGames} />
 
-          <SignupMessageList signupMessages={signupMessages} />
+          <SignupMessageList signupMessages={signupMessages} games={games} />
         </>
       )}
     </div>
