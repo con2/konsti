@@ -181,7 +181,7 @@ export const GameInfo = ({ game }: Props): ReactElement => {
         </GameDetailsRow>
       )}
 
-      {game.contentWarnings && (
+      {game.contentWarnings && game.contentWarnings !== '-' && (
         <GameDetailsRow>
           <GameDetailsTitle className='game-details-two-columns'>
             {t('gameInfo.contentWarnings')}
