@@ -105,7 +105,7 @@ export const DirectResults = (): ReactElement => {
                   const users = getUsersForGameId(game.gameId, signups);
 
                   return (
-                    <GameBox key={game.gameId}>
+                    <div key={game.gameId}>
                       <h4 key={game.gameId}>
                         {`${game.title}`}{' '}
                         {!!signupMessage &&
@@ -158,7 +158,7 @@ export const DirectResults = (): ReactElement => {
                           ))
                         )}
                       </PlayerList>
-                    </GameBox>
+                    </div>
                   );
                 })}
               </Games>
@@ -179,17 +179,10 @@ const TimeSlot = styled.div`
 `;
 
 const Games = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  padding: 0 0 0 30px;
-  justify-content: space-between;
-`;
-
-const GameBox = styled.div`
-  flex-basis: 25%;
-  flex-grow: 0;
-  padding: 0 20px 10px 20px;
-  min-width: 200px;
+  display: grid;
+  grid-gap: 30px;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  padding: 0 10px 0 30px;
 `;
 
 const PlayerList = styled.div`

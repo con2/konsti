@@ -24,6 +24,7 @@ module.exports = {
           'css-resize',
           'css-sticky',
           'css-filters',
+          'multicolumn',
         ],
       },
     ],
