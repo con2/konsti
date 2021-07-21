@@ -24,19 +24,19 @@ export const SignupMessageList = ({
         {signupMessages.length === 0 && <span>{t('noSignupMessages')}</span>}
 
         {signupMessages.flatMap((signupMessage) => {
-          const signedGame = games.find(
+          const foundGame = games.find(
             (game) => game.gameId === signupMessage.gameId
           );
-          if (!signedGame) return [];
+          if (!foundGame) return [];
 
           return (
             <li key={signupMessage.gameId}>
               <Link to={`/games/${signupMessage.gameId}`}>
-                {signedGame.title}
+                {foundGame.title}
               </Link>
               : {signupMessage.message} -{' '}
               {timeFormatter.getWeekdayAndTime({
-                time: signedGame.startTime,
+                time: foundGame.startTime,
                 capitalize: false,
               })}
             </li>
