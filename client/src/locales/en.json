@@ -142,7 +142,7 @@
   "user": "User",
   "favoritedGames": "Favorited games",
   "signedGames": "Selected games",
-  "enteredGames": "Signup results",
+  "enteredGames": "Signups",
   "hiddenGames": "Hidden games",
   "error": {
     "usernameTaken": "Username already taken",
@@ -158,7 +158,7 @@
   "registrationSerialHelp": "Get registration code from RPG desk",
   "noSignedGames": "No selected games",
   "noFavoritedGames": "No favorited games",
-  "noEnteredGames": "No signup results",
+  "noEnteredGames": "No signups",
   "noHiddenGames": "No hidden games",
   "noSignupMessages": "No signup messages",
   "signupMessages": "Signup messages",
@@ -243,8 +243,7 @@
     "userNotFound": "User not found",
     "foundUser": "Found user",
     "changingPasswordError": "Error changing password",
-    "changingPasswordSuccess": "Password changed succesfully",
-    "passwordChangeHelp": "If you forgot your password, you can change it with the code you received during the registration. \nIf you don't remember your code, ask help from Ropecon Discord."
+    "changingPasswordSuccess": "Password changed succesfully"
   },
   "errorMessage": "We have recognised an issue that 'Signup results' under 'My Games' may be shown incorrectly and are now hidden. Please see 'All Signup Results' page for correct information.",
   "testTime": "Test time",
@@ -276,7 +275,8 @@
     "info": "This message is shown to you only when you first login. You can also find code from the navigation."
   },
   "myGamesView": {
-    "yourAnswer": "Your answer to field"
+    "yourAnswer": "Your answer to field",
+    "changePassword": "Change password"
   },
   "accessibility": {
     "loudSounds": "Loud sounds",
@@ -292,6 +292,6 @@
     "colourblind": "Material used in the game can cause problems for the colourblind"
   },
   "login": {
-    "forgotPassword": "Forgot password?"
+    "passwordHint": "If you forgot your password, you can ask help from Ropecon Discord"
   }
 }

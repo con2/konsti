@@ -43,9 +43,7 @@ export const HelperView = (): ReactElement => {
       </Button>
 
       {selectedTool === 'results' && <HelperResultsList />}
-      {selectedTool === 'password-management' && (
-        <PasswordManagement allowUsernameSearch={true} />
-      )}
+      {selectedTool === 'password-management' && <PasswordManagement />}
     </div>
   );
 };
