@@ -143,7 +143,7 @@
   "user": "Käyttäjä",
   "favoritedGames": "Suosikkipelit",
   "signedGames": "Valitut pelit",
-  "enteredGames": "Ilmoittautumisen tulokset",
+  "enteredGames": "Ilmoittautumiset",
   "hiddenGames": "Piilotetut pelit",
   "error": {
     "usernameTaken": "Käyttäjänimi on jo olemassa",
@@ -159,7 +159,7 @@
   "registrationSerialHelp": "Nouda rekisteröintikoodi roolipelitiskiltä",
   "noSignedGames": "Ei valittuja pelejä",
   "noFavoritedGames": "Ei suosikkipelejä",
-  "noEnteredGames": "Ei vahvistuneita ilmoittautumisia",
+  "noEnteredGames": "Ei ilmoittautumisia",
   "noHiddenGames": "Ei piilotettuja pelejä",
   "noSignupMessages": "Ei ilmoittautumisten lisätietoja",
   "signupMessages": "Ilmoittautumisen lisätiedot",
@@ -244,8 +244,7 @@
     "userNotFound": "Käyttäjää ei löytynyt",
     "foundUser": "Löytyi käyttäjä",
     "changingPasswordError": "Virhe salasanaa vaihtaessa",
-    "changingPasswordSuccess": "Salasana vaihdettu onnistuneesti",
-    "passwordChangeHelp": "Jos unohdit salasanasi, voit vaihtaa sen rekisteröitymisen yhteydessä annetun koodin avulla. \nJos et muista koodiasi, pyydä apua Ropeconin Discordista."
+    "changingPasswordSuccess": "Salasana vaihdettu onnistuneesti"
   },
   "errorMessage": "Olemme tunnistaneet ongelman, että 'Omat pelit' sivulla näkyvät 'Ilmoittautumisen tulokset' voivat näkyä väärin ja tiedot on piilotettu. Oikeat tulokset voi katsoa 'Ilmoittautumistulokset' sivulta.",
   "testTime": "Testiaika",
@@ -277,7 +276,8 @@
     "info": "Tämä viesti näytetään vain ensimmäisen kirjautumisesi yhteydessä. Löydät koodin myös navigaation takaa."
   },
   "myGamesView": {
-    "yourAnswer": "Vastauksesi kenttään"
+    "yourAnswer": "Vastauksesi kenttään",
+    "changePassword": "Vaihda salasana"
   },
   "accessibility": {
     "loudSounds": "Kovat äänet",
@@ -293,6 +293,6 @@
     "colourblind": "Ohjelmanumerossa käytettävät materiaalit voivat tuottaa haasteita värisokeille"
   },
   "login": {
-    "forgotPassword": "Unohditko salasanasi?"
+    "passwordHint": "Jos unohdit salasanasi, voit pyytää apua Ropeconin Discordista"
   }
 }
