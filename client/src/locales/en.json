@@ -235,13 +235,17 @@
   "generalLeaveGroupError": "Error leaving group",
   "signupResults": "Signup results",
   "helperResults": "Results",
-  "helperPasswordManagement": "Password management",
-  "userCode": "User code or username",
-  "newPassword": "New password",
-  "userNotFound": "User not found",
-  "foundUser": "Found user",
-  "changingPasswordError": "Error changing password",
-  "changingPasswordSuccess": "Password changed succesfully",
+  "passwordManagement": {
+    "helperPasswordManagement": "Change password",
+    "userCode": "User code",
+    "userCodeOrUsername": "User code or username",
+    "newPassword": "New password",
+    "userNotFound": "User not found",
+    "foundUser": "Found user",
+    "changingPasswordError": "Error changing password",
+    "changingPasswordSuccess": "Password changed succesfully",
+    "passwordChangeHelp": "If you forgot your password, you can change it with the code you received during the registration. \nIf you don't remember your code, ask help from Ropecon Discord."
+  },
   "errorMessage": "We have recognised an issue that 'Signup results' under 'My Games' may be shown incorrectly and are now hidden. Please see 'All Signup Results' page for correct information.",
   "testTime": "Test time",
   "signup": {
@@ -286,5 +290,8 @@
     "recording": "Participation requires listening to a recording that does not have a text version for the hearing impaired",
     "text": "Participation involves reading long texts independently, and the texts are not available as recordings for those with visual impairment",
     "colourblind": "Material used in the game can cause problems for the colourblind"
+  },
+  "login": {
+    "forgotPassword": "Forgot password?"
   }
 }

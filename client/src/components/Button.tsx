@@ -7,6 +7,7 @@ interface Props {
   disabled?: boolean;
   type?: 'submit' | 'reset' | 'button';
   className?: string;
+  selected?: boolean;
   'data-testkey'?: string;
 }
 
@@ -17,6 +18,7 @@ export const Button = ({
   type = 'button',
   className,
   'data-testkey': dataTestKey,
+  selected = false,
 }: Props): ReactElement => {
   return (
     <StyledButton
@@ -25,6 +27,7 @@ export const Button = ({
       disabled={disabled}
       type={type}
       data-testkey={dataTestKey}
+      selected={selected}
     >
       {children}
     </StyledButton>
@@ -33,6 +36,7 @@ export const Button = ({
 
 interface StyledButtonProps {
   disabled: boolean;
+  selected: boolean;
 }
 
 const StyledButton = styled.button<StyledButtonProps>`
@@ -44,6 +48,12 @@ const StyledButton = styled.button<StyledButtonProps>`
   margin: 10px 10px 10px 0;
   padding: 6px 20px;
   font-size: ${(props) => props.theme.buttonFontSize};
+
+  ${(buttonProps) =>
+    buttonProps.selected &&
+    css`
+      background: ${(props) => props.theme.disabled};
+    `};
 
   ${(buttonProps) =>
     buttonProps.disabled &&
