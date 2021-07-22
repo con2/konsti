@@ -82,14 +82,14 @@ export const postUserPassword = async (
 
   const { username, password, requester } = parameters;
 
-  if (
-    !isAuthorized(
-      req.headers.authorization,
-      [UserGroup.USER, UserGroup.HELP],
-      requester
-    )
-  ) {
-    return res.sendStatus(401);
+  if (requester === 'ropetiski') {
+    if (!isAuthorized(req.headers.authorization, UserGroup.HELP, requester)) {
+      return res.sendStatus(401);
+    }
+  } else {
+    if (!isAuthorized(req.headers.authorization, UserGroup.USER, username)) {
+      return res.sendStatus(401);
+    }
   }
 
   const response = await storeUserPassword(username, password);
