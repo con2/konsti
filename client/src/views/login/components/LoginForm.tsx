@@ -39,7 +39,10 @@ const LoginForm = (props: InjectedFormProps): ReactElement => {
         <ErrorMessage>{error}</ErrorMessage>
       )}
 
-      <Button onClick={() => setShowChangePassword(!showChangePassword)}>
+      <Button
+        selected={showChangePassword}
+        onClick={() => setShowChangePassword(!showChangePassword)}
+      >
         {t('login.forgotPassword')}
       </Button>
 
