@@ -28,6 +28,7 @@ import {
   postUser,
   postSignup,
   getUserBySerialOrUsername,
+  postUserPassword,
 } from 'server/features/user/userController';
 import {
   ASSIGNMENT_ENDPOINT,
@@ -47,6 +48,7 @@ import {
   TOGGLE_APP_OPEN_ENDPOINT,
   USERS_ENDPOINT,
   USERS_BY_SERIAL_OR_USERNAME_ENDPOINT,
+  USERS_PASSWORD_ENDPOINT,
 } from 'shared/constants/apiEndpoints';
 
 export const apiRoutes = express.Router();
@@ -69,6 +71,7 @@ apiRoutes.post(TOGGLE_APP_OPEN_ENDPOINT, postAppOpen);
 apiRoutes.post(ENTERED_GAME_ENDPOINT, postEnteredGame);
 apiRoutes.post(SIGNUP_MESSAGE_ENDPOINT, postSignupMessage);
 apiRoutes.post(SESSION_RESTORE_ENDPOINT, postSessionRestore);
+apiRoutes.post(USERS_PASSWORD_ENDPOINT, postUserPassword);
 
 /* GET routes */
 

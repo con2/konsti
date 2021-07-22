@@ -16,3 +16,4 @@ export const RESULTS_ENDPOINT = '/api/results';
 export const ENTERED_GAME_ENDPOINT = '/api/enteredgame';
 export const SIGNUP_MESSAGE_ENDPOINT = '/api/signup-info';
 export const SESSION_RESTORE_ENDPOINT = '/api/session-restore';
+export const USERS_PASSWORD_ENDPOINT = '/api/users/password';

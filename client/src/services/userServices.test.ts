@@ -8,6 +8,7 @@ import {
 import {
   USERS_BY_SERIAL_OR_USERNAME_ENDPOINT,
   USERS_ENDPOINT,
+  USERS_PASSWORD_ENDPOINT,
 } from 'shared/constants/apiEndpoints';
 
 jest.mock('axios');
@@ -95,23 +96,14 @@ test('POST new user password to server', async () => {
   });
 
   const username = 'test username';
-  const serial = '123456';
   const password = 'test password';
-  const changePassword = true;
 
-  const response = await updateUserPassword(
-    username,
-    serial,
-    password,
-    changePassword
-  );
+  const response = await updateUserPassword(username, password);
 
   expect(response).toEqual('test response');
   expect(mockAxios.post).toHaveBeenCalledTimes(1);
-  expect(mockAxios.post).toHaveBeenCalledWith(USERS_ENDPOINT, {
+  expect(mockAxios.post).toHaveBeenCalledWith(USERS_PASSWORD_ENDPOINT, {
     username,
-    serial,
     password,
-    changePassword,
   });
 });

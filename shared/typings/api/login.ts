@@ -25,3 +25,8 @@ export interface RegistrationFormFields {
   serial?: string;
   username: string;
 }
+
+export interface UpdateUserPasswordRequest {
+  username: string;
+  password: string;
+}

@@ -37,12 +37,8 @@ export const ChangePasswordForm = ({
       return;
     }
 
-    const response = await updateUserPassword(
-      username,
-      serial,
-      changePasswordInput,
-      true
-    );
+    const response = await updateUserPassword(username, changePasswordInput);
+
     if (!response || response.status === 'error') {
       setPasswordChangeMessage(
         <Message error={true}>
