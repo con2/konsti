@@ -81,7 +81,13 @@ export const postUserPassword = async (
 
   const { username, password } = parameters;
 
-  if (!isAuthorized(req.headers.authorization, UserGroup.USER, username)) {
+  if (
+    !isAuthorized(
+      req.headers.authorization,
+      [UserGroup.USER, UserGroup.HELP],
+      username
+    )
+  ) {
     return res.sendStatus(401);
   }
 
