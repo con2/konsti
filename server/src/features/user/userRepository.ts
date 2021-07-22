@@ -361,9 +361,7 @@ export const saveFavorite = async (
 
   const favoritedGames = favoriteData.favoritedGames.reduce<FavoritedGame[]>(
     (acc, favoritedGame) => {
-      const gameDocInDb = games.find(
-        (game) => game.gameId === favoritedGame.gameId
-      );
+      const gameDocInDb = games.find((game) => game.gameId === favoritedGame);
 
       if (gameDocInDb) {
         acc.push(gameDocInDb._id);
