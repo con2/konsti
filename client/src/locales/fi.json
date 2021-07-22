@@ -238,9 +238,8 @@
   "helperResults": "Tulokset",
   "passwordManagement": {
     "helperPasswordManagement": "Vaihda salasana",
-    "searchWithCode": "Käyttäjän koodi",
-    "searchWithUsername": "Käyttäjänimi",
-    "searchWithCodeOrUsername": "Käyttäjän koodi tai käyttäjänimi",
+    "userCode": "Käyttäjän koodi",
+    "userCodeOrUsername": "Käyttäjän koodi tai käyttäjänimi",
     "newPassword": "Uusi salasana",
     "userNotFound": "Käyttäjää ei löytynyt",
     "foundUser": "Löytyi käyttäjä",

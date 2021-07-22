@@ -102,10 +102,18 @@ export const PasswordManagement = ({
     <div className='password-management'>
       <h3>{t('passwordManagement.helperPasswordManagement')}</h3>
       <div>
-        <p>{t('passwordManagement.userCode')}</p>
+        <p>
+          {allowUsernameSearch
+            ? t('passwordManagement.userCodeOrUsername')
+            : t('passwordManagement.userCode')}
+        </p>
         <FormInput
           key='user-serial'
-          placeholder={t('passwordManagement.userCode')}
+          placeholder={
+            allowUsernameSearch
+              ? t('passwordManagement.userCodeOrUsername')
+              : t('passwordManagement.userCode')
+          }
           value={userSerialInput}
           onChange={handleSerialChange}
         />
