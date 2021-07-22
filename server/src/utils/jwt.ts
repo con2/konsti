@@ -70,3 +70,22 @@ const getSecret = (userGroup: UserGroup): string => {
   }
   return '';
 };
+
+export const getJwtResponse = (
+  jwt: string,
+  requiredUserGroup: UserGroup | UserGroup[],
+  username: string
+): JWTResult => {
+  if (Array.isArray(requiredUserGroup)) {
+    const responses = requiredUserGroup.map((userGroup) => {
+      return verifyJWT(jwt, userGroup, username);
+    });
+
+    return (
+      responses.find((response) => response.status === 'success') ??
+      responses[0]
+    );
+  }
+
+  return verifyJWT(jwt, requiredUserGroup, username);
+};
