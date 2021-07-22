@@ -91,7 +91,7 @@ export const postFavorite = async (
   try {
     parameters = PostFavoriteParameters.check(req.body);
   } catch (error) {
-    logger.error(`Error validating getUser parameters: ${error.message}`);
+    logger.error(`Error validating postFavorite parameters: ${error.message}`);
     return res.sendStatus(422);
   }
 
