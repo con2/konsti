@@ -1,12 +1,12 @@
 import axios from 'axios';
 import {
   getUser,
-  getUserBySerial,
+  getUserBySerialOrUsername,
   postRegistration,
   updateUserPassword,
 } from 'client/services/userServices';
 import {
-  USERS_BY_SERIAL_ENDPOINT,
+  USERS_BY_SERIAL_OR_USERNAME_ENDPOINT,
   USERS_ENDPOINT,
 } from 'shared/constants/apiEndpoints';
 
@@ -44,13 +44,16 @@ test('GET user by serial from server', async () => {
 
   const serial = '12345';
 
-  const response = await getUserBySerial(serial);
+  const response = await getUserBySerialOrUsername(serial);
 
   expect(response).toEqual('test response');
   expect(mockAxios.get).toHaveBeenCalledTimes(1);
-  expect(mockAxios.get).toHaveBeenCalledWith(USERS_BY_SERIAL_ENDPOINT, {
-    params: { serial },
-  });
+  expect(mockAxios.get).toHaveBeenCalledWith(
+    USERS_BY_SERIAL_OR_USERNAME_ENDPOINT,
+    {
+      params: { serial },
+    }
+  );
 });
 
 test('POST registration to server', async () => {

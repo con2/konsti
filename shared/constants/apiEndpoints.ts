@@ -1,5 +1,4 @@
 export const USERS_ENDPOINT = '/api/users';
-export const USERS_BY_SERIAL_ENDPOINT = '/api/users/serial';
 export const USERS_BY_SERIAL_OR_USERNAME_ENDPOINT =
   '/api/users/serial-or-username';
 export const GAMES_ENDPOINT = '/api/games';

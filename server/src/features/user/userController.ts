@@ -10,7 +10,6 @@ import {
   login,
   storeSignup,
   fetchUserBySerialOrUsername,
-  fetchUserBySerial,
 } from 'server/features/user/userService';
 import { UserGroup } from 'shared/typings/models/user';
 import { isAuthorized } from 'server/utils/authHeader';
@@ -20,7 +19,6 @@ import {
   GROUP_ENDPOINT,
   LOGIN_ENDPOINT,
   SIGNUP_ENDPOINT,
-  USERS_BY_SERIAL_ENDPOINT,
   USERS_BY_SERIAL_OR_USERNAME_ENDPOINT,
   USERS_ENDPOINT,
 } from 'shared/constants/apiEndpoints';
@@ -219,37 +217,6 @@ export const getUserBySerialOrUsername = async (
   }
 
   const response = await fetchUserBySerialOrUsername(searchTerm);
-
-  return res.json(response);
-};
-
-export const getUserBySerial = async (
-  req: Request,
-  res: Response
-): Promise<Response> => {
-  logger.info(`API call: GET ${USERS_BY_SERIAL_ENDPOINT}`);
-
-  const GetUserQueryParameters = Record({
-    serial: String,
-  });
-
-  let parameters;
-  try {
-    parameters = GetUserQueryParameters.check(req.query);
-  } catch (error) {
-    logger.error(
-      `Error validating getUserBySerial parameters: ${error.message}`
-    );
-    return res.sendStatus(422);
-  }
-
-  const { serial } = parameters;
-
-  if (!serial) {
-    return res.sendStatus(422);
-  }
-
-  const response = await fetchUserBySerial(serial);
 
   return res.json(response);
 };

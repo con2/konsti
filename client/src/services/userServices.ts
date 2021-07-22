@@ -2,7 +2,6 @@ import { AxiosResponse, AxiosError } from 'axios';
 import { api } from 'client/utils/api';
 import { ServerError } from 'shared/typings/api/errors';
 import {
-  USERS_BY_SERIAL_ENDPOINT,
   USERS_BY_SERIAL_OR_USERNAME_ENDPOINT,
   USERS_ENDPOINT,
 } from 'shared/constants/apiEndpoints';
@@ -45,30 +44,6 @@ export const getUser = async (
         username,
       },
     });
-  } catch (error) {
-    if (error?.response) {
-      const axiosError: AxiosError<ServerError> = error;
-      if (axiosError.response) return axiosError.response.data;
-    }
-    throw error;
-  }
-
-  return response.data;
-};
-
-export const getUserBySerial = async (
-  serial: string
-): Promise<GetUserBySerialResponse | ServerError> => {
-  let response: AxiosResponse;
-  try {
-    response = await api.get<GetUserBySerialResponse>(
-      USERS_BY_SERIAL_ENDPOINT,
-      {
-        params: {
-          serial,
-        },
-      }
-    );
   } catch (error) {
     if (error?.response) {
       const axiosError: AxiosError<ServerError> = error;

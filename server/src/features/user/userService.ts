@@ -283,38 +283,6 @@ export const fetchUserBySerialOrUsername = async (
   };
 };
 
-export const fetchUserBySerial = async (
-  serial: string
-): Promise<GetUserBySerialResponse | ServerError> => {
-  let user;
-
-  try {
-    user = await findUserBySerial(serial);
-  } catch (error) {
-    logger.error(`fetchUserBySerial(): ${error}`);
-    return {
-      message: 'Getting user data failed',
-      status: 'error',
-      code: 0,
-    };
-  }
-
-  if (!user) {
-    return {
-      message: `User with serial ${serial} not found`,
-      status: 'error',
-      code: 0,
-    };
-  }
-
-  return {
-    message: 'Getting user data success',
-    status: 'success',
-    username: user.username,
-    serial: user.serial,
-  };
-};
-
 export const storeFavorite = async (
   favoriteData: SaveFavoriteRequest
 ): Promise<PostFavoriteResponse | ServerError> => {

@@ -28,7 +28,6 @@ import {
   postUser,
   postSignup,
   getUserBySerialOrUsername,
-  getUserBySerial,
 } from 'server/features/user/userController';
 import {
   ASSIGNMENT_ENDPOINT,
@@ -46,7 +45,6 @@ import {
   SIGNUP_ENDPOINT,
   SIGNUP_MESSAGE_ENDPOINT,
   TOGGLE_APP_OPEN_ENDPOINT,
-  USERS_BY_SERIAL_ENDPOINT,
   USERS_ENDPOINT,
   USERS_BY_SERIAL_OR_USERNAME_ENDPOINT,
 } from 'shared/constants/apiEndpoints';
@@ -76,7 +74,6 @@ apiRoutes.post(SESSION_RESTORE_ENDPOINT, postSessionRestore);
 
 apiRoutes.get(GAMES_ENDPOINT, getGames);
 apiRoutes.get(USERS_ENDPOINT, getUser);
-apiRoutes.get(USERS_BY_SERIAL_ENDPOINT, getUserBySerial);
 apiRoutes.get(USERS_BY_SERIAL_OR_USERNAME_ENDPOINT, getUserBySerialOrUsername);
 apiRoutes.get(SETTINGS_ENDPOINT, getSettings);
 apiRoutes.get(RESULTS_ENDPOINT, getResults);
