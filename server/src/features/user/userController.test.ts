@@ -10,6 +10,8 @@ import {
 } from 'shared/constants/apiEndpoints';
 import { ConventionType } from 'shared/config/sharedConfig.types';
 import { startTestServer, stopTestServer } from 'server/test/utils/testServer';
+import { UserGroup } from 'shared/typings/models/user';
+import { getJWT } from 'server/utils/jwt';
 
 jest.mock('server/utils/logger');
 
@@ -57,13 +59,26 @@ describe(`GET ${USERS_BY_SERIAL_ENDPOINT}`, () => {
 });
 
 describe(`GET ${USERS_BY_SERIAL_OR_USERNAME_ENDPOINT}`, () => {
-  test('should return 422 without valid body', async () => {
+  test('should return 401 without valid authorization', async () => {
     const { server, mongoServer } = await startTestServer();
 
     try {
       const response = await request(server).get(
         USERS_BY_SERIAL_OR_USERNAME_ENDPOINT
       );
+      expect(response.status).toEqual(401);
+    } finally {
+      await stopTestServer(server, mongoServer);
+    }
+  });
+
+  test('should return 422 without valid body', async () => {
+    const { server, mongoServer } = await startTestServer();
+
+    try {
+      const response = await request(server)
+        .get(USERS_BY_SERIAL_OR_USERNAME_ENDPOINT)
+        .set('Authorization', `Bearer ${getJWT(UserGroup.HELP, 'ropetiski')}`);
       expect(response.status).toEqual(422);
     } finally {
       await stopTestServer(server, mongoServer);

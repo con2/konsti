@@ -194,7 +194,9 @@ export const getUserBySerialOrUsername = async (
 ): Promise<Response> => {
   logger.info(`API call: GET ${USERS_BY_SERIAL_OR_USERNAME_ENDPOINT}`);
 
-  // TODO: Add isAuthorized() with helper token
+  if (!isAuthorized(req.headers.authorization, UserGroup.HELP, 'ropetiski')) {
+    return res.sendStatus(401);
+  }
 
   const GetUserQueryParameters = Record({
     searchTerm: String,

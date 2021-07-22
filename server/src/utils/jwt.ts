@@ -61,12 +61,12 @@ export const decodeJWT = (jwt: string): JWTResult => {
 };
 
 const getSecret = (userGroup: UserGroup): string => {
-  if (userGroup === 'admin') {
+  if (userGroup === UserGroup.ADMIN) {
     return config.jwtSecretKeyAdmin;
-  } else if (userGroup === 'user') {
+  } else if (userGroup === UserGroup.USER) {
     return config.jwtSecretKey;
-  } else if (userGroup === 'help') {
-    return config.jwtSecretKey;
+  } else if (userGroup === UserGroup.HELP) {
+    return config.jwtSecretKeyHelp;
   }
   return '';
 };
