@@ -12,6 +12,7 @@ export interface Config {
   dbName: string;
   jwtSecretKey: string;
   jwtSecretKeyAdmin: string;
+  jwtSecretKeyHelp: string;
   allowedCorsOrigins: readonly string[];
   dataUri: string;
   GROUP_ASSIGNMENT_ROUNDS: number;

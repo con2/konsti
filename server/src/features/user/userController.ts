@@ -10,6 +10,7 @@ import {
   login,
   storeSignup,
   fetchUserBySerialOrUsername,
+  fetchUserBySerial,
 } from 'server/features/user/userService';
 import { UserGroup } from 'shared/typings/models/user';
 import { isAuthorized } from 'server/utils/authHeader';
@@ -20,6 +21,7 @@ import {
   LOGIN_ENDPOINT,
   SIGNUP_ENDPOINT,
   USERS_BY_SERIAL_ENDPOINT,
+  USERS_BY_SERIAL_OR_USERNAME_ENDPOINT,
   USERS_ENDPOINT,
 } from 'shared/constants/apiEndpoints';
 import { SignupData } from 'shared/typings/api/signup';
@@ -190,9 +192,42 @@ export const getUserBySerialOrUsername = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  logger.info(`API call: GET ${USERS_BY_SERIAL_ENDPOINT}`);
+  logger.info(`API call: GET ${USERS_BY_SERIAL_OR_USERNAME_ENDPOINT}`);
 
-  // TODO: Add isAuthorized() with helper token
+  if (!isAuthorized(req.headers.authorization, UserGroup.HELP, 'ropetiski')) {
+    return res.sendStatus(401);
+  }
+
+  const GetUserQueryParameters = Record({
+    searchTerm: String,
+  });
+
+  let parameters;
+  try {
+    parameters = GetUserQueryParameters.check(req.query);
+  } catch (error) {
+    logger.error(
+      `Error validating getUserBySerialOrUsername parameters: ${error.message}`
+    );
+    return res.sendStatus(422);
+  }
+
+  const { searchTerm } = parameters;
+
+  if (!searchTerm) {
+    return res.sendStatus(422);
+  }
+
+  const response = await fetchUserBySerialOrUsername(searchTerm);
+
+  return res.json(response);
+};
+
+export const getUserBySerial = async (
+  req: Request,
+  res: Response
+): Promise<Response> => {
+  logger.info(`API call: GET ${USERS_BY_SERIAL_ENDPOINT}`);
 
   const GetUserQueryParameters = Record({
     serial: String,
@@ -214,7 +249,7 @@ export const getUserBySerialOrUsername = async (
     return res.sendStatus(422);
   }
 
-  const response = await fetchUserBySerialOrUsername(serial);
+  const response = await fetchUserBySerial(serial);
 
   return res.json(response);
 };

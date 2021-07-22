@@ -1,14 +1,17 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useState } from 'react';
 import { Field, reduxForm, InjectedFormProps } from 'redux-form';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import { required } from 'client/utils/validate';
 import { FormField } from 'client/components/FormField';
 import { Button } from 'client/components/Button';
+import { PasswordManagement } from 'client/views/helper/components/PasswordManagement';
+import { Paragraph } from 'client/components/Paragraph';
 
 const LoginForm = (props: InjectedFormProps): ReactElement => {
   const { handleSubmit, submitting, error } = props;
   const { t } = useTranslation();
+  const [showChangePassword, setShowChangePassword] = useState<boolean>(false);
 
   return (
     <div className='login-form'>
@@ -36,6 +39,20 @@ const LoginForm = (props: InjectedFormProps): ReactElement => {
       {typeof error === 'string' && error && (
         <ErrorMessage>{error}</ErrorMessage>
       )}
+
+      <Button
+        selected={showChangePassword}
+        onClick={() => setShowChangePassword(!showChangePassword)}
+      >
+        {t('login.forgotPassword')}
+      </Button>
+
+      {showChangePassword && (
+        <>
+          <Paragraph text={t('passwordManagement.passwordChangeHelp')} />
+          <PasswordManagement allowUsernameSearch={false} />
+        </>
+      )}
     </div>
   );
 };
@@ -44,7 +61,7 @@ export default reduxForm({
   form: 'login',
 })(LoginForm);
 
-const ErrorMessage = styled.span`
+const ErrorMessage = styled.p`
   font-weight: bold;
   color: ${(props) => props.theme.error};
 `;
