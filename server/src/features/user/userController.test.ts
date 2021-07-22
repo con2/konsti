@@ -4,9 +4,9 @@ import {
   GROUP_ENDPOINT,
   LOGIN_ENDPOINT,
   SIGNUP_ENDPOINT,
-  USERS_BY_SERIAL_ENDPOINT,
   USERS_BY_SERIAL_OR_USERNAME_ENDPOINT,
   USERS_ENDPOINT,
+  USERS_PASSWORD_ENDPOINT,
 } from 'shared/constants/apiEndpoints';
 import { ConventionType } from 'shared/config/sharedConfig.types';
 import { startTestServer, stopTestServer } from 'server/test/utils/testServer';
@@ -39,19 +39,6 @@ describe(`GET ${USERS_ENDPOINT}`, () => {
         .get(USERS_ENDPOINT)
         .query({ username: 'testuser' });
       expect(response.status).toEqual(401);
-    } finally {
-      await stopTestServer(server, mongoServer);
-    }
-  });
-});
-
-describe(`GET ${USERS_BY_SERIAL_ENDPOINT}`, () => {
-  test('should return 422 without valid body', async () => {
-    const { server, mongoServer } = await startTestServer();
-
-    try {
-      const response = await request(server).get(USERS_BY_SERIAL_ENDPOINT);
-      expect(response.status).toEqual(422);
     } finally {
       await stopTestServer(server, mongoServer);
     }
@@ -145,6 +132,58 @@ describe(`POST ${USERS_ENDPOINT}`, () => {
         username: 'testuser',
         password: 'testpass',
       });
+      expect(response.status).toEqual(200);
+    } finally {
+      await stopTestServer(server, mongoServer);
+    }
+  });
+});
+
+describe(`POST ${USERS_PASSWORD_ENDPOINT}`, () => {
+  test('should return 422 without valid body', async () => {
+    const { server, mongoServer } = await startTestServer();
+
+    try {
+      const response = await request(server)
+        .post(USERS_PASSWORD_ENDPOINT)
+        .send({
+          username: 'testuser',
+        });
+      expect(response.status).toEqual(422);
+    } finally {
+      await stopTestServer(server, mongoServer);
+    }
+  });
+
+  test('should return 401 without valid authorization', async () => {
+    const { server, mongoServer } = await startTestServer();
+
+    try {
+      const response = await request(server)
+        .post(USERS_PASSWORD_ENDPOINT)
+        .send({
+          username: 'testuser',
+          password: 'testpass',
+          requester: 'testuser',
+        });
+      expect(response.status).toEqual(401);
+    } finally {
+      await stopTestServer(server, mongoServer);
+    }
+  });
+
+  test('should return 200 with valid body and authorization', async () => {
+    const { server, mongoServer } = await startTestServer();
+
+    try {
+      const response = await request(server)
+        .post(USERS_PASSWORD_ENDPOINT)
+        .send({
+          username: 'testuser',
+          password: 'testpass',
+          requester: 'testuser',
+        })
+        .set('Authorization', `Bearer ${getJWT(UserGroup.USER, 'testuser')}`);
       expect(response.status).toEqual(200);
     } finally {
       await stopTestServer(server, mongoServer);

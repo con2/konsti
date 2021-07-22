@@ -10,7 +10,7 @@ import {
   login,
   storeSignup,
   fetchUserBySerialOrUsername,
-  fetchUserBySerial,
+  storeUserPassword,
 } from 'server/features/user/userService';
 import { UserGroup } from 'shared/typings/models/user';
 import { isAuthorized } from 'server/utils/authHeader';
@@ -20,9 +20,9 @@ import {
   GROUP_ENDPOINT,
   LOGIN_ENDPOINT,
   SIGNUP_ENDPOINT,
-  USERS_BY_SERIAL_ENDPOINT,
   USERS_BY_SERIAL_OR_USERNAME_ENDPOINT,
   USERS_ENDPOINT,
+  USERS_PASSWORD_ENDPOINT,
 } from 'shared/constants/apiEndpoints';
 import { SignupData } from 'shared/typings/api/signup';
 import { GroupData } from 'shared/typings/api/groups';
@@ -30,6 +30,7 @@ import { SaveFavoriteRequest } from 'shared/typings/api/favorite';
 import {
   LoginFormFields,
   RegistrationFormFields,
+  UpdateUserPasswordRequest,
 } from 'shared/typings/api/login';
 import { sharedConfig } from 'shared/config/sharedConfig';
 import { ConventionType } from 'shared/config/sharedConfig.types';
@@ -47,8 +48,7 @@ export const postUser = async (
     return res.sendStatus(422);
   }
 
-  // @ts-expect-error: TODO
-  const { username, password, changePassword } = req.body;
+  const { username, password } = req.body;
   let serial;
   if (sharedConfig.conventionType === ConventionType.REMOTE) {
     const serialDoc = await createSerial();
@@ -56,7 +56,43 @@ export const postUser = async (
   } else {
     serial = req.body.serial;
   }
-  const response = await storeUser(username, password, serial, changePassword);
+  const response = await storeUser(username, password, serial);
+  return res.json(response);
+};
+
+export const postUserPassword = async (
+  req: Request<{}, {}, UpdateUserPasswordRequest>,
+  res: Response
+): Promise<Response> => {
+  logger.info(`API call: POST ${USERS_PASSWORD_ENDPOINT}`);
+
+  const PostUserPasswordParameters = Record({
+    username: String,
+    password: String,
+    requester: String,
+  });
+
+  let parameters;
+  try {
+    parameters = PostUserPasswordParameters.check(req.body);
+  } catch (error) {
+    logger.error(`Error validating postFavorite parameters: ${error.message}`);
+    return res.sendStatus(422);
+  }
+
+  const { username, password, requester } = parameters;
+
+  if (requester === 'ropetiski') {
+    if (!isAuthorized(req.headers.authorization, UserGroup.HELP, requester)) {
+      return res.sendStatus(401);
+    }
+  } else {
+    if (!isAuthorized(req.headers.authorization, UserGroup.USER, username)) {
+      return res.sendStatus(401);
+    }
+  }
+
+  const response = await storeUserPassword(username, password);
   return res.json(response);
 };
 
@@ -219,37 +255,6 @@ export const getUserBySerialOrUsername = async (
   }
 
   const response = await fetchUserBySerialOrUsername(searchTerm);
-
-  return res.json(response);
-};
-
-export const getUserBySerial = async (
-  req: Request,
-  res: Response
-): Promise<Response> => {
-  logger.info(`API call: GET ${USERS_BY_SERIAL_ENDPOINT}`);
-
-  const GetUserQueryParameters = Record({
-    serial: String,
-  });
-
-  let parameters;
-  try {
-    parameters = GetUserQueryParameters.check(req.query);
-  } catch (error) {
-    logger.error(
-      `Error validating getUserBySerial parameters: ${error.message}`
-    );
-    return res.sendStatus(422);
-  }
-
-  const { serial } = parameters;
-
-  if (!serial) {
-    return res.sendStatus(422);
-  }
-
-  const response = await fetchUserBySerial(serial);
 
   return res.json(response);
 };
