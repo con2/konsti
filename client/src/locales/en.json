@@ -243,7 +243,8 @@
     "userNotFound": "User not found",
     "foundUser": "Found user",
     "changingPasswordError": "Error changing password",
-    "changingPasswordSuccess": "Password changed succesfully"
+    "changingPasswordSuccess": "Password changed succesfully",
+    "passwordChangeHelp": "If you forgot your password, you can change it with the code you received during the registration. \nIf you don't remember your code, ask help from Ropecon Discord."
   },
   "errorMessage": "We have recognised an issue that 'Signup results' under 'My Games' may be shown incorrectly and are now hidden. Please see 'All Signup Results' page for correct information.",
   "testTime": "Test time",

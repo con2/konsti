@@ -44,10 +44,12 @@ export const PasswordManagement = ({
       setUserFoundMessage(
         <Message error={true}>{t('passwordManagement.userNotFound')}</Message>
       );
+      setChangePasswordInputVisible(false);
     } else if (response.status === 'success') {
       setUserFoundMessage(
         <Message>
-          {t('passwordManagement.foundUser')}: {response.username}
+          {t('passwordManagement.foundUser')}: {response.username} (
+          {response.serial})
         </Message>
       );
       setSerial(response.serial);
