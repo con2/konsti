@@ -51,7 +51,7 @@ test('GET user by serial from server', async () => {
   expect(mockAxios.get).toHaveBeenCalledWith(
     USERS_BY_SERIAL_OR_USERNAME_ENDPOINT,
     {
-      params: { serial },
+      params: { searchTerm: serial },
     }
   );
 });
