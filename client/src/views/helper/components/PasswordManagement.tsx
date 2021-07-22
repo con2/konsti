@@ -1,14 +1,22 @@
 import React, { ReactElement, ChangeEvent, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   getUserBySerial,
+  getUserBySerialOrUsername,
   updateUserPassword,
 } from 'client/services/userServices';
 import { Button } from 'client/components/Button';
+import { passwordLength } from 'client/utils/validate';
 
-export const PasswordManagement = (): ReactElement => {
+interface Props {
+  allowUsernameSearch: boolean;
+}
+
+export const PasswordManagement = ({
+  allowUsernameSearch = false,
+}: Props): ReactElement => {
   const { t } = useTranslation();
 
   const [serial, setSerial] = useState<string>('');
@@ -19,17 +27,29 @@ export const PasswordManagement = (): ReactElement => {
   const [changePasswordInput, setChangePasswordInput] = useState<string>('');
   const [changePasswordInputVisible, setChangePasswordInputVisible] =
     useState<boolean>(false);
-  const [userFoundMessage, setUserFoundMessage] = useState<string>('');
+  const [userFoundMessage, setUserFoundMessage] = useState<ReactElement>(
+    <Message />
+  );
   const [passwordChangeMessage, setPasswordChangeMessage] =
-    useState<string>('');
+    useState<ReactElement>(<Message />);
 
   const submitGetUser = async (): Promise<void> => {
-    const response = await getUserBySerial(userSerialInput);
+    if (userSerialInput.length === 0) return;
+
+    const response = allowUsernameSearch
+      ? await getUserBySerialOrUsername(userSerialInput)
+      : await getUserBySerial(userSerialInput);
 
     if (!response || response.status === 'error') {
-      setUserFoundMessage(`${t('userNotFound')}`);
+      setUserFoundMessage(
+        <Message error={true}>{t('passwordManagement.userNotFound')}</Message>
+      );
     } else if (response.status === 'success') {
-      setUserFoundMessage(`${t('foundUser')}: ${response.username}`);
+      setUserFoundMessage(
+        <Message>
+          {t('passwordManagement.foundUser')}: {response.username}
+        </Message>
+      );
       setSerial(response.serial);
       setUsername(response.username);
       setChangePasswordInputVisible(true);
@@ -37,6 +57,15 @@ export const PasswordManagement = (): ReactElement => {
   };
 
   const submitUpdatePassword = async (): Promise<void> => {
+    const validationError = passwordLength(changePasswordInput);
+
+    if (validationError) {
+      setPasswordChangeMessage(
+        <Message error={true}>{t(validationError)}</Message>
+      );
+      return;
+    }
+
     const response = await updateUserPassword(
       username,
       serial,
@@ -44,9 +73,15 @@ export const PasswordManagement = (): ReactElement => {
       true
     );
     if (!response || response.status === 'error') {
-      setPasswordChangeMessage(`${t('changingPasswordError')}`);
+      setPasswordChangeMessage(
+        <Message error={true}>
+          {t('passwordManagement.changingPasswordError')}
+        </Message>
+      );
     } else if (response.status === 'success') {
-      setPasswordChangeMessage(`${t('changingPasswordSuccess')}`);
+      setPasswordChangeMessage(
+        <Message>{t('passwordManagement.changingPasswordSuccess')}</Message>
+      );
     }
   };
 
@@ -65,27 +100,28 @@ export const PasswordManagement = (): ReactElement => {
 
   return (
     <div className='password-management'>
-      <h3>{t('helperPasswordManagement')}</h3>
+      <h3>{t('passwordManagement.helperPasswordManagement')}</h3>
       <div>
-        <p>{t('userCode')}</p>
+        <p>{t('passwordManagement.userCode')}</p>
         <FormInput
           key='user-serial'
-          placeholder={t('userCode')}
+          placeholder={t('passwordManagement.userCode')}
           value={userSerialInput}
           onChange={handleSerialChange}
         />
         <Button onClick={submitGetUser}>{t('button.find')}</Button>
-        <p>{userFoundMessage && <span>{userFoundMessage}</span>}</p>
+
+        {userFoundMessage}
       </div>
 
       <div>
         {changePasswordInputVisible && (
           <>
-            <p>{t('newPassword')}</p>
+            <p>{t('passwordManagement.newPassword')}</p>
             <FormInput
               type={passwordFieldType}
               key='new-password'
-              placeholder={t('newPassword')}
+              placeholder={t('passwordManagement.newPassword')}
               value={changePasswordInput}
               onChange={handlePasswordChange}
             />
@@ -98,9 +134,7 @@ export const PasswordManagement = (): ReactElement => {
               />
             </FormFieldIcon>
 
-            <p>
-              {passwordChangeMessage && <span>{passwordChangeMessage}</span>}
-            </p>
+            {passwordChangeMessage}
           </>
         )}
       </div>
@@ -119,4 +153,16 @@ const FormInput = styled.input`
   height: 34px;
   padding: 0 0 0 10px;
   width: 100%;
+`;
+
+interface MessageProps {
+  error?: boolean;
+}
+
+const Message = styled.p<MessageProps>`
+  ${(messageProps) =>
+    messageProps.error &&
+    css`
+      color: ${(props) => props.theme.error};
+    `};
 `;

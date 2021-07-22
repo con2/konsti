@@ -236,13 +236,17 @@
   "generalLeaveGroupError": "Virhe ryhmästä poistuessa",
   "signupResults": "Ilmoittautumisen tulokset",
   "helperResults": "Tulokset",
-  "helperPasswordManagement": "Salasanojenhallinta",
-  "userCode": "Käyttäjän koodi tai käyttäjänimi",
-  "newPassword": "Uusi salasana",
-  "userNotFound": "Käyttäjää ei löytynyt",
-  "foundUser": "Löytyi käyttäjä",
-  "changingPasswordError": "Virhe salasanaa vaihtaessa",
-  "changingPasswordSuccess": "Salasana vaihdettu onnistuneesti",
+  "passwordManagement": {
+    "helperPasswordManagement": "Vaihda salasana",
+    "searchWithCode": "Käyttäjän koodi",
+    "searchWithUsername": "Käyttäjänimi",
+    "searchWithCodeOrUsername": "Käyttäjän koodi tai käyttäjänimi",
+    "newPassword": "Uusi salasana",
+    "userNotFound": "Käyttäjää ei löytynyt",
+    "foundUser": "Löytyi käyttäjä",
+    "changingPasswordError": "Virhe salasanaa vaihtaessa",
+    "changingPasswordSuccess": "Salasana vaihdettu onnistuneesti"
+  },
   "errorMessage": "Olemme tunnistaneet ongelman, että 'Omat pelit' sivulla näkyvät 'Ilmoittautumisen tulokset' voivat näkyä väärin ja tiedot on piilotettu. Oikeat tulokset voi katsoa 'Ilmoittautumistulokset' sivulta.",
   "testTime": "Testiaika",
   "signup": {
@@ -287,5 +291,8 @@
     "recording": "Osallistuminen edellyttää sellaisen äänitteen kuuntelemista, josta ei ole tekstiversiota kuulorajoitteisille",
     "text": "Osallistuminen vaatii pitkien tekstien itsenäistä lukemista, eikä tekstejä ole mahdollista saada äänitteinä näkörajoitteisille",
     "colourblind": "Ohjelmanumerossa käytettävät materiaalit voivat tuottaa haasteita värisokeille"
+  },
+  "login": {
+    "forgotPassword": "Unohditko salasanasi?"
   }
 }
