@@ -83,7 +83,7 @@ export const postFavorite = async (
   const PostFavoriteParameters = Record({
     favoriteData: Record({
       username: String,
-      favoritedGames: Array(GameRuntype),
+      favoritedGames: Array(String),
     }),
   });
 

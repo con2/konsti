@@ -31,7 +31,9 @@ export const updateFavorite = async (
 
   const favoriteData = {
     username: username,
-    favoritedGames: allFavoritedGames,
+    favoritedGames: allFavoritedGames.map(
+      (favoritedGame) => favoritedGame.gameId
+    ),
   };
 
   try {
