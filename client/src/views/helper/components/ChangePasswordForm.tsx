@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { Button } from 'client/components/Button';
 import { updateUserPassword } from 'client/services/userServices';
 import { passwordLength } from 'client/utils/validate';
+import { useAppSelector } from 'client/utils/hooks';
 
 interface Props {
   serial: string;
@@ -16,6 +17,8 @@ export const ChangePasswordForm = ({
   username,
 }: Props): ReactElement => {
   const { t } = useTranslation();
+
+  const requester = useAppSelector((state) => state.login.username);
 
   const [changePasswordInput, setChangePasswordInput] = useState<string>('');
   const [passwordChangeMessage, setPasswordChangeMessage] =
@@ -37,7 +40,11 @@ export const ChangePasswordForm = ({
       return;
     }
 
-    const response = await updateUserPassword(username, changePasswordInput);
+    const response = await updateUserPassword(
+      username,
+      changePasswordInput,
+      requester
+    );
 
     if (!response || response.status === 'error') {
       setPasswordChangeMessage(

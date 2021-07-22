@@ -69,6 +69,7 @@ export const postUserPassword = async (
   const PostUserPasswordParameters = Record({
     username: String,
     password: String,
+    requester: String,
   });
 
   let parameters;
@@ -79,13 +80,13 @@ export const postUserPassword = async (
     return res.sendStatus(422);
   }
 
-  const { username, password } = parameters;
+  const { username, password, requester } = parameters;
 
   if (
     !isAuthorized(
       req.headers.authorization,
       [UserGroup.USER, UserGroup.HELP],
-      username
+      requester
     )
   ) {
     return res.sendStatus(401);

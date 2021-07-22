@@ -97,13 +97,15 @@ test('POST new user password to server', async () => {
 
   const username = 'test username';
   const password = 'test password';
+  const requester = 'test requester';
 
-  const response = await updateUserPassword(username, password);
+  const response = await updateUserPassword(username, password, requester);
 
   expect(response).toEqual('test response');
   expect(mockAxios.post).toHaveBeenCalledTimes(1);
   expect(mockAxios.post).toHaveBeenCalledWith(USERS_PASSWORD_ENDPOINT, {
     username,
     password,
+    requester,
   });
 });

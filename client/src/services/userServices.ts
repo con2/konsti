@@ -82,13 +82,15 @@ export const getUserBySerialOrUsername = async (
 
 export const updateUserPassword = async (
   username: string,
-  password: string
+  password: string,
+  requester: string
 ): Promise<PostUserResponse | ServerError> => {
   let response: AxiosResponse;
   try {
     response = await api.post<PostUserResponse>(USERS_PASSWORD_ENDPOINT, {
       username,
       password,
+      requester,
     });
   } catch (error) {
     if (error?.response) {

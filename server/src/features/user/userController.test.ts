@@ -164,6 +164,7 @@ describe(`POST ${USERS_PASSWORD_ENDPOINT}`, () => {
         .send({
           username: 'testuser',
           password: 'testpass',
+          requester: 'testuser',
         });
       expect(response.status).toEqual(401);
     } finally {
@@ -180,6 +181,7 @@ describe(`POST ${USERS_PASSWORD_ENDPOINT}`, () => {
         .send({
           username: 'testuser',
           password: 'testpass',
+          requester: 'testuser',
         })
         .set('Authorization', `Bearer ${getJWT(UserGroup.USER, 'testuser')}`);
       expect(response.status).toEqual(200);

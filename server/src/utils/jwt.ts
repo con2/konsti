@@ -24,10 +24,7 @@ export const verifyJWT = (
   try {
     const result = jsonwebtoken.verify(jwt, getSecret(userGroup)) as JWTResult;
 
-    if (
-      typeof result !== 'string' &&
-      (result.username === username || result.username === 'ropetiski')
-    )
+    if (typeof result !== 'string' && result.username === username)
       return {
         username: result.username,
         userGroup: result.userGroup,
