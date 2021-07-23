@@ -1,6 +1,6 @@
-import React, { FC, ReactElement, FormEvent } from 'react';
-import { useTranslation } from 'react-i18next';
+import React, { FC, ReactElement } from 'react';
 import styled from 'styled-components';
+import { useTranslation } from 'react-i18next';
 import { Button } from 'client/components/Button';
 import { Game } from 'shared/typings/models/game';
 import { submitDeleteGame } from 'client/views/signup/signupThunks';
@@ -35,8 +35,27 @@ export const CancelSignupForm: FC<Props> = (props: Props): ReactElement => {
 
   return (
     <>
-      <Button onClick={removeSignup}>{t('signup.confirmCancelSignup')}</Button>{' '}
-      <Button onClick={handleCancel}>{t('signup.cancel')}</Button>
+      <CancelSignupButton onClick={removeSignup}>
+        {t('signup.confirmCancelSignup')}
+      </CancelSignupButton>{' '}
+      <CancelFormButton onClick={handleCancel}>
+        {t('signup.cancel')}
+      </CancelFormButton>
     </>
   );
 };
+
+const CancelSignupButton = styled(Button)`
+  background: ${(props) => props.theme.buttonCancelSignup};
+  border: 1px solid ${(props) => props.theme.buttonCancelSignupBorder};
+  color: ${(props) => props.theme.mainText};
+  &:hover {
+    border 1px solid ${(props) => props.theme.buttonCancelSignupBorder};
+    background: ${(props) => props.theme.buttonCancelSignupHover};
+    color: ${(props) => props.theme.mainText}
+  }
+`;
+
+const CancelFormButton = styled(Button)`
+  border: 1px solid ${(props) => props.theme.informative};
+`;
