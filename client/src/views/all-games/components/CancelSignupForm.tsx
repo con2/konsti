@@ -55,10 +55,11 @@ const CancelSignupButton = styled(Button)`
   background: ${(props) => props.theme.buttonCancelSignup};
   border: 1px solid ${(props) => props.theme.buttonCancelSignupBorder};
   color: ${(props) => props.theme.mainText};
-  &:hover {
-    border 1px solid ${(props) => props.theme.buttonCancelSignupBorder};
+  &:hover,
+  &:focus {
+    border: 1px solid ${(props) => props.theme.buttonCancelSignupBorder};
     background: ${(props) => props.theme.buttonCancelSignupHover};
-    color: ${(props) => props.theme.mainText}
+    color: ${(props) => props.theme.mainText};
   }
 `;
 
