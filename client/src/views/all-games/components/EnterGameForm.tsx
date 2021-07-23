@@ -17,7 +17,6 @@ interface Props {
 
 export const EnterGameForm: FC<Props> = (props: Props): ReactElement => {
   const { game, onEnterGame, onCancelSignup, signupMessage } = props;
-
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const username = useAppSelector((state) => state.login.username);

@@ -23,6 +23,10 @@ export const theme = {
   buttonConfirm: '#eaeaad',
   buttonConfirmBorder: '#d6d6a6',
 
+  buttonCancelSignup: '#d0a5ab',
+  buttonCancelSignupHover: '#c9b3b6',
+  buttonCancelSignupBorder: '#d0a5ab',
+
   tagBackground: '#a5abd0',
   tagTextColor: '#fff',
 

@@ -1,14 +1,13 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { timeFormatter } from 'client/utils/timeFormatter';
+import { useAppSelector } from 'client/utils/hooks';
 import { SelectedGame } from 'shared/typings/models/user';
+import { CancelSignupForm } from './CancelSignupForm';
 import { Button } from 'client/components/Button';
-import { Game } from 'shared/typings/models/game';
-import { submitDeleteGame } from 'client/views/signup/signupThunks';
-import { useAppDispatch, useAppSelector } from 'client/utils/hooks';
 
 export interface Props {
   signups: readonly SelectedGame[];
@@ -21,24 +20,12 @@ export const ResultsByStartTimes = ({
   startTimes,
   missedSignups,
 }: Props): ReactElement => {
-  const { t } = useTranslation();
+  const [showCancelSignupForm, setShowCancelSignupForm] = useState<String[]>(
+    []
+  );
 
-  const dispatch = useAppDispatch();
-  const username = useAppSelector((state) => state.login.username);
   const signupMessages = useAppSelector((state) => state.admin.signupMessages);
-  // const [showSignupMessageVisible, setShowSignupMessageVisible] = useState<
-  //   string[]
-  // >([]);
-  const removeSignup = async (gameToRemove: Game): Promise<void> => {
-    await dispatch(
-      submitDeleteGame({
-        username,
-        startTime: gameToRemove.startTime,
-        enteredGameId: gameToRemove.gameId,
-      })
-    );
-  };
-
+  const { t } = useTranslation();
   return (
     <div className='start-times-list'>
       {startTimes.map((startTime) => {
@@ -51,6 +38,30 @@ export const ResultsByStartTimes = ({
               })}
             </p>
             {signups.map((signup) => {
+              const cancelSignupFormVisible = showCancelSignupForm.find(
+                (signupform) => signupform === signup.gameDetails.gameId
+              );
+              const onCancelForm = (): void => {
+                setShowCancelSignupForm(
+                  showCancelSignupForm.filter(
+                    (signupform) => signupform !== signup.gameDetails.gameId
+                  )
+                );
+              };
+
+              const onCancelSignup = (): void => {
+                setShowCancelSignupForm(
+                  showCancelSignupForm.filter(
+                    (signupform) => signupform !== signup.gameDetails.gameId
+                  )
+                );
+              };
+              const onConfirmCancelSignup = (): void => {
+                setShowCancelSignupForm([
+                  ...showCancelSignupForm,
+                  signup.gameDetails.gameId,
+                ]);
+              };
               if (signup.time === startTime) {
                 const showSignupMessage = signupMessages.find(
                   (message) => message.gameId === signup.gameDetails.gameId
@@ -60,16 +71,19 @@ export const ResultsByStartTimes = ({
                     <Link to={`/games/${signup.gameDetails.gameId}`}>
                       {signup.gameDetails.title}
                     </Link>
-                    <ButtonPlacement>
-                      <Button
-                        onClick={async () =>
-                          await removeSignup(signup.gameDetails)
-                        }
-                      >
-                        {' '}
-                        {t('button.cancel')}{' '}
-                      </Button>
-                    </ButtonPlacement>
+                    <ButtonContainer>
+                      {cancelSignupFormVisible ? (
+                        <CancelSignupForm
+                          game={signup.gameDetails}
+                          onCancelForm={onCancelForm}
+                          onCancelSignup={onCancelSignup}
+                        />
+                      ) : (
+                        <Button onClick={() => onConfirmCancelSignup()}>
+                          {t('button.cancelSignup')}
+                        </Button>
+                      )}
+                    </ButtonContainer>
                     {!!showSignupMessage && (
                       <SignupMessagePlacement>
                         <FontAwesomeIcon icon={'comment'} />
@@ -102,7 +116,7 @@ const GameDetailsList = styled.div`
   padding-left: 30px;
 `;
 
-const ButtonPlacement = styled.span`
+const ButtonContainer = styled.span`
   padding-left: 10px;
 `;
 
