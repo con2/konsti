@@ -20,6 +20,9 @@ export const theme = {
   buttonBorder: '#abd0a57a',
   buttonBackground: '#f4f4f4',
 
+  buttonConfirm: '#eaeaad',
+  buttonConfirmBorder: '#d6d6a6',
+
   tagBackground: '#a5abd0',
   tagTextColor: '#fff',
 

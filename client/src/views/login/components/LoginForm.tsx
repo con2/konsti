@@ -36,6 +36,8 @@ const LoginForm = (props: InjectedFormProps): ReactElement => {
       {typeof error === 'string' && error && (
         <ErrorMessage>{error}</ErrorMessage>
       )}
+
+      <p>{t('login.passwordHint')}</p>
     </div>
   );
 };
@@ -44,7 +46,7 @@ export default reduxForm({
   form: 'login',
 })(LoginForm);
 
-const ErrorMessage = styled.span`
+const ErrorMessage = styled.p`
   font-weight: bold;
   color: ${(props) => props.theme.error};
 `;

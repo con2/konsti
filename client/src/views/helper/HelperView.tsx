@@ -39,7 +39,7 @@ export const HelperView = (): ReactElement => {
         disabled={selectedTool === 'password-management'}
         onClick={() => setSelectedTool('password-management')}
       >
-        {t('helperPasswordManagement')}
+        {t('passwordManagement.helperPasswordManagement')}
       </Button>
 
       {selectedTool === 'results' && <HelperResultsList />}

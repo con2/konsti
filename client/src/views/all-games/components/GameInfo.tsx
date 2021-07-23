@@ -66,6 +66,23 @@ export const GameInfo = ({ game }: Props): ReactElement => {
     else return `${hours} ${t('hours')} ${minutes} ${t('minutes')}`;
   };
 
+  const getFormattedAccessibility = (): ReactElement[] => {
+    return Object.entries(game.accessibility).flatMap(
+      ([accessibilityValue, value]) => {
+        if (value) {
+          return (
+            <AccessibilityValue key={accessibilityValue}>
+              {t(`accessibility.${accessibilityValue}`)}
+            </AccessibilityValue>
+          );
+        }
+        return [];
+      }
+    );
+  };
+
+  const formattedAccessibilityValues = getFormattedAccessibility();
+
   return (
     <div className='game-details'>
       {game.title && (
@@ -102,6 +119,7 @@ export const GameInfo = ({ game }: Props): ReactElement => {
         </>
       )}
 
+      {/*
       {game.ageRestricted && (
         <>
           <GameDetailsRow className='game-details-row-with-subtext'>
@@ -117,6 +135,7 @@ export const GameInfo = ({ game }: Props): ReactElement => {
           </GameDetailsRow>
         </>
       )}
+      */}
 
       {!!game.mins && (
         <GameDetailsRow>
@@ -159,6 +178,33 @@ export const GameInfo = ({ game }: Props): ReactElement => {
             {t('gameInfo.tags')}
           </GameDetailsTitle>
           <GameDetailsValue>{tagsList}</GameDetailsValue>
+        </GameDetailsRow>
+      )}
+
+      {game.contentWarnings && game.contentWarnings !== '-' && (
+        <GameDetailsRow>
+          <GameDetailsTitle className='game-details-two-columns'>
+            {t('gameInfo.contentWarnings')}
+          </GameDetailsTitle>
+          <GameDetailsValue>{game.contentWarnings}</GameDetailsValue>
+        </GameDetailsRow>
+      )}
+
+      {game.otherAuthor && (
+        <GameDetailsRow>
+          <GameDetailsTitle className='game-details-two-columns'>
+            {t('gameInfo.otherAuthor')}
+          </GameDetailsTitle>
+          <GameDetailsValue>{game.otherAuthor}</GameDetailsValue>
+        </GameDetailsRow>
+      )}
+
+      {formattedAccessibilityValues.length > 0 && (
+        <GameDetailsRow>
+          <GameDetailsTitle className='game-details-two-columns'>
+            {t('gameInfo.accessibility')}
+          </GameDetailsTitle>
+          <GameDetailsValue>{formattedAccessibilityValues}</GameDetailsValue>
         </GameDetailsRow>
       )}
 
@@ -269,4 +315,8 @@ const GameDetailsValue = styled.span`
 
 const GameDetailsTextIndent = styled.span`
   margin: 0 0 0 14px;
+`;
+
+const AccessibilityValue = styled.p`
+  margin: 0 0 6px 0px;
 `;

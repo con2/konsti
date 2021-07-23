@@ -42,7 +42,7 @@ export const updateGames = async (): Promise<readonly KompassiGame[]> => {
     }
   }
 
-  if (!programItems) {
+  if (!programItems || programItems.length === 0) {
     logger.info('No program items found');
     return [];
   }

@@ -6,7 +6,7 @@ import {
 } from 'client/views/admin/components/SignupMessageList';
 
 test('should render correctly', () => {
-  const props: Props = { signupMessages: [] };
+  const props: Props = { signupMessages: [], games: [] };
 
   render(<SignupMessageList {...props} />);
 });

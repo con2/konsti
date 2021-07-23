@@ -21,16 +21,20 @@ const {
 } = config;
 
 export const autoUpdateGames = async (): Promise<void> => {
-  if (!autoUpdateGamesEnabled || !autoUpdateGamePopularityEnabled) return;
+  if (!autoUpdateGamesEnabled && !autoUpdateGamePopularityEnabled) return;
 
   const cronRule = `*/${gameUpdateInterval} * * * *`;
 
   const callback = async (): Promise<void> => {
     if (autoUpdateGamesEnabled) {
       logger.info('----> Auto update games');
-      const kompassiGames = await updateGames();
-      await saveGames(kompassiGameMapper(kompassiGames));
-      logger.info('***** Games auto update completed');
+      try {
+        const kompassiGames = await updateGames();
+        await saveGames(kompassiGameMapper(kompassiGames));
+        logger.info('***** Games auto update completed');
+      } catch (error) {
+        logger.error(`autoUpdateGames() failed: ${error}`);
+      }
     }
 
     if (autoUpdateGamePopularityEnabled) {

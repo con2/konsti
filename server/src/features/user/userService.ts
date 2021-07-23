@@ -37,45 +37,13 @@ import { isValidSignupTime } from 'server/features/user/userUtils';
 export const storeUser = async (
   username: string,
   password: string,
-  serial: string | undefined,
-  changePassword: boolean
+  serial: string | undefined
 ): Promise<PostUserResponse | ServerError> => {
   if (serial === undefined) {
     return {
       message: 'Invalid serial',
       status: 'error',
       code: 12,
-    };
-  }
-  if (changePassword) {
-    let passwordHash;
-    try {
-      passwordHash = await hashPassword(password);
-    } catch (error) {
-      logger.error(`updateUser error: ${error}`);
-      return {
-        message: 'Password change error',
-        status: 'error',
-        code: 0,
-      };
-    }
-
-    try {
-      await updateUserPassword(username, passwordHash);
-    } catch (error) {
-      logger.error(`updateUserPassword error: ${error}`);
-      return {
-        message: 'Password change error',
-        status: 'error',
-        code: 0,
-      };
-    }
-
-    return {
-      message: 'Password changed',
-      status: 'success',
-      username: 'notAvailable',
-      password: 'notAvailable',
     };
   }
 
@@ -208,6 +176,47 @@ export const storeUser = async (
   };
 };
 
+export const storeUserPassword = async (
+  username: string,
+  password: string
+): Promise<PostUserResponse | ServerError> => {
+  let passwordHash;
+  try {
+    passwordHash = await hashPassword(password);
+  } catch (error) {
+    logger.error(`updateUser error: ${error}`);
+    return {
+      message: 'Password change error',
+      status: 'error',
+      code: 0,
+    };
+  }
+
+  try {
+    await updateUserPassword(username, passwordHash);
+  } catch (error) {
+    logger.error(`updateUserPassword error: ${error}`);
+    return {
+      message: 'Password change error',
+      status: 'error',
+      code: 0,
+    };
+  }
+
+  return {
+    message: 'Password changed',
+    status: 'success',
+    username: 'notAvailable',
+    password: 'notAvailable',
+  };
+
+  return {
+    message: 'Unknown error',
+    status: 'error',
+    code: 0,
+  };
+};
+
 export const fetchUserByUsername = async (
   username: string
 ): Promise<GetUserResponse | ServerError> => {
@@ -259,7 +268,7 @@ export const fetchUserBySerialOrUsername = async (
       user = await findUser(searchTerm);
     }
   } catch (error) {
-    logger.error(`fetchUserBySerial(): ${error}`);
+    logger.error(`fetchUserBySerialOrUsername(): ${error}`);
     return {
       message: 'Getting user data failed',
       status: 'error',
@@ -269,7 +278,7 @@ export const fetchUserBySerialOrUsername = async (
 
   if (!user) {
     return {
-      message: `User with serial ${searchTerm} not found`,
+      message: `User with search term ${searchTerm} not found`,
       status: 'error',
       code: 0,
     };
@@ -278,8 +287,8 @@ export const fetchUserBySerialOrUsername = async (
   return {
     message: 'Getting user data success',
     status: 'success',
-    username: user.username,
     serial: user.serial,
+    username: user.username,
   };
 };
 

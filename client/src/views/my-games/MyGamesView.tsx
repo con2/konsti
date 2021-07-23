@@ -18,11 +18,13 @@ import { useAppSelector } from 'client/utils/hooks';
 import { Button } from 'client/components/Button';
 import { sharedConfig } from 'shared/config/sharedConfig';
 import { SignupStrategy } from 'shared/config/sharedConfig.types';
+import { ChangePasswordForm } from 'client/views/helper/components/ChangePasswordForm';
 
 export const MyGamesView = (): ReactElement => {
   const { t } = useTranslation();
 
   const serial = useAppSelector((state) => state.login.serial);
+  const username = useAppSelector((state) => state.login.username);
   const groupCode = useAppSelector((state) => state.login.groupCode);
   const signedGames = useAppSelector((state) => state.myGames.signedGames);
   const favoritedGames = useAppSelector(
@@ -33,6 +35,7 @@ export const MyGamesView = (): ReactElement => {
   const testTime = useAppSelector((state) => state.admin.testTime);
 
   const [showAllGames, setShowAllGames] = useState<boolean>(false);
+  const [showChangePassword, setShowChangePassword] = useState<boolean>(false);
 
   const store = useStore();
 
@@ -92,6 +95,17 @@ export const MyGamesView = (): ReactElement => {
           groupMembers
         )}
       />
+
+      <ChangePasswordButton
+        selected={showChangePassword}
+        onClick={() => setShowChangePassword(!showChangePassword)}
+      >
+        {t('myGamesView.changePassword')}
+      </ChangePasswordButton>
+
+      {showChangePassword && (
+        <ChangePasswordForm serial={serial} username={username} />
+      )}
     </div>
   );
 };
@@ -132,5 +146,9 @@ const getSignedGames = (
 };
 
 const MyGamesGroupNotification = styled.div`
+  margin: 30px 0 0 0;
+`;
+
+const ChangePasswordButton = styled(Button)`
   margin: 30px 0 0 0;
 `;

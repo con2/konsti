@@ -6,6 +6,7 @@ import { submitEnterGame } from 'client/views/signup/signupThunks';
 import { useAppDispatch, useAppSelector } from 'client/utils/hooks';
 import { Button } from 'client/components/Button';
 import { SignupMessage } from 'shared/typings/models/settings';
+import { loadGames } from 'client/utils/loadData';
 
 interface Props {
   game: Game;
@@ -45,6 +46,7 @@ export const EnterGameForm: FC<Props> = (props: Props): ReactElement => {
 
     try {
       await dispatch(submitEnterGame(enterData, newGame));
+      await loadGames();
       onEnterGame();
     } catch (error) {
       switch (error.code) {
@@ -76,8 +78,12 @@ export const EnterGameForm: FC<Props> = (props: Props): ReactElement => {
         </SignupMessageContainer>
       )}
       <ButtonContainer>
-        <Button onClick={handleSignup}>{t('signup.confirm')}</Button>
-        <Button onClick={handleCancel}>{t('signup.cancel')}</Button>
+        <SignupConfirmationButton onClick={handleSignup}>
+          {t('signup.confirm')}
+        </SignupConfirmationButton>
+        <SignupCancelButton onClick={handleCancel}>
+          {t('signup.cancel')}
+        </SignupCancelButton>
       </ButtonContainer>
     </SignupForm>
   );
@@ -96,4 +102,16 @@ const SignupMessageContainer = styled.div`
 const ButtonContainer = styled.div`
   display: flex;
   flex-direction: row;
+`;
+
+const SignupConfirmationButton = styled(Button)`
+  width: 50%;
+  background: ${(props) => props.theme.buttonConfirm};
+  border: 1px solid ${(props) => props.theme.buttonConfirmBorder};
+  color: ${(props) => props.theme.mainText};
+`;
+
+const SignupCancelButton = styled(Button)`
+  width: 50%;
+  border: 1px solid ${(props) => props.theme.informative};
 `;

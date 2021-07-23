@@ -2,8 +2,9 @@ import { AxiosResponse, AxiosError } from 'axios';
 import { api } from 'client/utils/api';
 import { ServerError } from 'shared/typings/api/errors';
 import {
-  USERS_BY_SERIAL_ENDPOINT,
+  USERS_BY_SERIAL_OR_USERNAME_ENDPOINT,
   USERS_ENDPOINT,
+  USERS_PASSWORD_ENDPOINT,
 } from 'shared/constants/apiEndpoints';
 import {
   GetUserBySerialResponse,
@@ -55,16 +56,16 @@ export const getUser = async (
   return response.data;
 };
 
-export const getUserBySerial = async (
-  serial: string
+export const getUserBySerialOrUsername = async (
+  searchTerm: string
 ): Promise<GetUserBySerialResponse | ServerError> => {
   let response: AxiosResponse;
   try {
     response = await api.get<GetUserBySerialResponse>(
-      USERS_BY_SERIAL_ENDPOINT,
+      USERS_BY_SERIAL_OR_USERNAME_ENDPOINT,
       {
         params: {
-          serial,
+          searchTerm,
         },
       }
     );
@@ -81,17 +82,15 @@ export const getUserBySerial = async (
 
 export const updateUserPassword = async (
   username: string,
-  serial: string,
   password: string,
-  changePassword: boolean
+  requester: string
 ): Promise<PostUserResponse | ServerError> => {
   let response: AxiosResponse;
   try {
-    response = await api.post<PostUserResponse>(USERS_ENDPOINT, {
+    response = await api.post<PostUserResponse>(USERS_PASSWORD_ENDPOINT, {
       username,
-      serial,
       password,
-      changePassword,
+      requester,
     });
   } catch (error) {
     if (error?.response) {

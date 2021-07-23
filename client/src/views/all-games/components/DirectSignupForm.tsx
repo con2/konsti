@@ -39,9 +39,10 @@ export const DirectSignupForm: FC<Props> = (
 
   const signupForDirect = (
     alreadySigned: boolean,
-    enteredGamesForTimeSlot: readonly SelectedGame[]
+    enteredGamesForTimeSlot: readonly SelectedGame[],
+    isFull: boolean
   ): JSX.Element | null => {
-    if (alreadySigned) {
+    if (alreadySigned || isFull) {
       return null;
     }
 
@@ -69,7 +70,11 @@ export const DirectSignupForm: FC<Props> = (
   if (loggedIn) {
     return (
       <>
-        {signupForDirect(alreadyEnteredToGame, enteredGamesForTimeslot)}
+        {signupForDirect(
+          alreadyEnteredToGame,
+          enteredGamesForTimeslot,
+          gameIsFull
+        )}
         {gameIsFull && <GameIsFull>{t('signup.gameIsFull')}</GameIsFull>}
         {alreadyEnteredToGame && !cancelSignupFormOpen && (
           <Button

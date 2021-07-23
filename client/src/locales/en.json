@@ -1,6 +1,6 @@
 {
   "appTitle": "Konsti",
-  "appDescription": "{{CONVENTION_NAME}} {{CONVENTION_YEAR}} RPG Signup",
+  "appDescription": "{{CONVENTION_NAME}} {{CONVENTION_YEAR}} RPG & LARP signup",
   "footer": "Footer",
   "button": {
     "logout": "Logout",
@@ -84,7 +84,10 @@
     "revolvingDoor": "This is a revolving door game",
     "revolvingDoorDescription": "You can join this game at any time if there are free seats",
     "programType": "Program type",
-    "readMore": "Read more"
+    "readMore": "Read more",
+    "contentWarnings": "Content warnings",
+    "otherAuthor": "Game designer",
+    "accessibility": "Accessibility"
   },
   "programType": {
     "tabletopRPG": "Tabletop RPG",
@@ -114,26 +117,32 @@
     "adventure": "Adventure"
   },
   "gameTags": {
-    "inEnglish": "Played in English",
+    "inEnglish": "Can be played in English",
     "childrenFriendly": "Children friendly",
-    "ageRestricted": "Age limit 18+",
+    "ageRestricted": "For players over 18 only",
     "ageRestrictedTitle": "This game's age limit is 18+",
     "ageRestrictedLong": "Players may be asked to verify their age",
     "beginnerFriendly": "Beginner friendly",
     "intendedForExperiencedParticipants": "Experienced participants preferred",
     "guestOfHonor": "Guest of Honor game",
-    "family": "Suitable for families"
+    "family": "Suitable for families",
+    "themeElements": "Theme: Elements",
+    "suitableUnder7": "Suitable for children under 7",
+    "suitable7to12": "Suitable for children aged 7-12",
+    "suitableOver12": "Suitable for children aged 12+",
+    "notSuitableUnder15": "Not suitable for children under 15",
+    "childrensProgram": "Programme for children"
   },
   "pageTitle": {
     "login": "Please login",
     "registration": "Please register user account",
     "usernamePublicWarning": "Please note that the username is public",
-    "usernameDiscordInfo": "Please use the same username as in Discord"
+    "usernameDiscordInfo": "Use same username as in Ropecon Discord server, so gamemasters can easily indetify their players."
   },
   "user": "User",
   "favoritedGames": "Favorited games",
   "signedGames": "Selected games",
-  "enteredGames": "Signup results",
+  "enteredGames": "Signups",
   "hiddenGames": "Hidden games",
   "error": {
     "usernameTaken": "Username already taken",
@@ -149,7 +158,7 @@
   "registrationSerialHelp": "Get registration code from RPG desk",
   "noSignedGames": "No selected games",
   "noFavoritedGames": "No favorited games",
-  "noEnteredGames": "No signup results",
+  "noEnteredGames": "No signups",
   "noHiddenGames": "No hidden games",
   "noSignupMessages": "No signup messages",
   "signupMessages": "Signup messages",
@@ -226,13 +235,16 @@
   "generalLeaveGroupError": "Error leaving group",
   "signupResults": "Signup results",
   "helperResults": "Results",
-  "helperPasswordManagement": "Password management",
-  "userCode": "User code or username",
-  "newPassword": "New password",
-  "userNotFound": "User not found",
-  "foundUser": "Found user",
-  "changingPasswordError": "Error changing password",
-  "changingPasswordSuccess": "Password changed succesfully",
+  "passwordManagement": {
+    "helperPasswordManagement": "Change password",
+    "userCode": "User code",
+    "userCodeOrUsername": "User code or username",
+    "newPassword": "New password",
+    "userNotFound": "User not found",
+    "foundUser": "Found user",
+    "changingPasswordError": "Error changing password",
+    "changingPasswordSuccess": "Password changed succesfully"
+  },
   "errorMessage": "We have recognised an issue that 'Signup results' under 'My Games' may be shown incorrectly and are now hidden. Please see 'All Signup Results' page for correct information.",
   "testTime": "Test time",
   "signup": {
@@ -246,7 +258,8 @@
     "signupCount": "{{PLAYERS}} / {{MAX_ATTENDANCE}} players",
     "playerNeeded": "Need {{COUNT}} players!",
     "gameIsFull": "Game is full",
-    "confirmCancelSignup": "Confirm signup cancellation"
+    "confirmCancelSignup": "Confirm signup cancellation",
+    "expectedDuration": "Duration {{EXPECTED_DURATION}}"
   },
   "resultsView": {
     "allSignupResults": "Signup overview and players",
@@ -261,5 +274,25 @@
   "firstLogin": {
     "serial": "Save this code for recovering your password:",
     "info": "This message is shown to you only when you first login. You can also find code from the navigation."
+  },
+  "myGamesView": {
+    "yourAnswer": "Your answer to field",
+    "changePassword": "Change password"
+  },
+  "accessibility": {
+    "loudSounds": "Loud sounds",
+    "flashingLights": "Flashing or bright lights",
+    "strongSmells": "Strong smells",
+    "irritateSkin": "Materials or substances that irritate the skin",
+    "physicalContact": "Physical contact and/or low chances of personal space",
+    "lowLighting": "Darkness/low lighting",
+    "movingAround": "Participation involves a lot of moving around without a chance for sitting down",
+    "video": "The game involves watching a video without subtitles for the hearing impaired",
+    "recording": "Participation requires listening to a recording that does not have a text version for the hearing impaired",
+    "text": "Participation involves reading long texts independently, and the texts are not available as recordings for those with visual impairment",
+    "colourblind": "Material used in the game can cause problems for the colourblind"
+  },
+  "login": {
+    "passwordHint": "If you forgot your password, you can ask help from Ropecon Discord"
   }
 }

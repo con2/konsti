@@ -33,6 +33,7 @@ const prodConfig = {
   dbName: 'konsti',
   jwtSecretKey: process.env.JWT_SECRET_KEY ?? '',
   jwtSecretKeyAdmin: process.env.JWT_SECRET_KEY_ADMIN ?? '',
+  jwtSecretKeyHelp: process.env.JWT_SECRET_KEY_HELP ?? '',
   allowedCorsOrigins:
     typeof process.env.CORS_WHITELIST === 'string'
       ? process.env.CORS_WHITELIST.split(';')
@@ -59,6 +60,7 @@ const stagingConfig = {
   dbName: 'konsti',
   jwtSecretKey: process.env.JWT_SECRET_KEY ?? '',
   jwtSecretKeyAdmin: process.env.JWT_SECRET_KEY_ADMIN ?? '',
+  jwtSecretKeyHelp: process.env.JWT_SECRET_KEY_HELP ?? '',
   allowedCorsOrigins:
     typeof process.env.CORS_WHITELIST === 'string'
       ? process.env.CORS_WHITELIST.split(';')
@@ -84,6 +86,7 @@ const devConfig = {
   dbName: 'konsti',
   jwtSecretKey: 'secret',
   jwtSecretKeyAdmin: 'admin secret',
+  jwtSecretKeyHelp: 'help secret',
   allowedCorsOrigins: ['http://localhost:8000'],
   useLocalProgramFile: false,
   debug: false,

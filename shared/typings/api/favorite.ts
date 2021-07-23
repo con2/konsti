@@ -8,5 +8,5 @@ export interface PostFavoriteResponse {
 
 export interface SaveFavoriteRequest {
   username: string;
-  favoritedGames: readonly Game[];
+  favoritedGames: readonly string[];
 }

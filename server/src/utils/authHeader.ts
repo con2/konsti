@@ -1,10 +1,10 @@
-import { verifyJWT } from 'server/utils/jwt';
+import { getJwtResponse } from 'server/utils/jwt';
 import { logger } from 'server/utils/logger';
 import { UserGroup } from 'shared/typings/models/user';
 
 export const isAuthorized = (
   authHeader: string | undefined,
-  requiredUserGroup: UserGroup,
+  requiredUserGroup: UserGroup | UserGroup[],
   username: string
 ): boolean => {
   logger.debug(`Auth: Require jwt for user group "${requiredUserGroup}"`);
@@ -17,7 +17,7 @@ export const isAuthorized = (
   // Strip 'bearer' from authHeader
   const jwt = authHeader.split('Bearer ')[1];
 
-  const jwtResponse = verifyJWT(jwt, requiredUserGroup, username);
+  const jwtResponse = getJwtResponse(jwt, requiredUserGroup, username);
 
   if (jwtResponse.status === 'error') {
     logger.info(`Auth: Invalid jwt for user group "${requiredUserGroup}"`);

@@ -1,6 +1,6 @@
 {
   "appTitle": "Konsti",
-  "appDescription": "{{CONVENTION_NAME}} {{CONVENTION_YEAR}} roolipeli-ilmoittautuminen",
+  "appDescription": "{{CONVENTION_NAME}} {{CONVENTION_YEAR}} roolipeli & LARP ilmoittautuminen",
   "footer": "Alaviite",
   "button": {
     "logout": "Kirjaudu ulos",
@@ -84,7 +84,10 @@
     "revolvingDoor": "Tämä on pyöröovipeli",
     "revolvingDoorDescription": "Voit liittyä peliin koska tahansa, jos pelipöydässä on tilaa",
     "programType": "Ohjelmatyyppi",
-    "readMore": "Lue lisää"
+    "readMore": "Lue lisää",
+    "contentWarnings": "Sisältövaroitukset",
+    "otherAuthor": "Pelin kirjoittaja",
+    "accessibility": "Esteettömyys"
   },
   "programType": {
     "tabletopRPG": "Pöytäroolipeli",
@@ -114,27 +117,33 @@
     "adventure": "Seikkailu"
   },
   "gameTags": {
-    "inEnglish": "Pelataan englanniksi",
+    "inEnglish": "Voidaan pelata englanniksi",
     "childrenFriendly": "Lapsiystävällinen",
-    "ageRestricted": "Ikäraja 18+",
+    "ageRestricted": "Vain täysi-ikäisille",
     "ageRestrictedTitle": "Tämän pelin ikäraja on 18+",
     "ageRestrictedLong": "Pelaajia voidaan pyytää todistamaan ikänsä",
     "beginnerFriendly": "Aloittelijaystävällinen",
     "intendedForExperiencedParticipants": "Peli suosii kokeneita pelaajia",
     "guestOfHonor": "Kunniavieraspeli",
-    "family": "Sopii perheille"
+    "family": "Sopii perheille",
+    "themeElements": "Teema: Elementit",
+    "suitableUnder7": "Sopii alle 7-vuotiaille",
+    "suitable7to12": "Sopii 7-12-vuotiaille",
+    "suitableOver12": "Sopii yli 12-vuotiaille",
+    "notSuitableUnder15": "Ei sovellu alle 15-vuotiaille",
+    "childrensProgram": "Lastenohjelma"
   },
 
   "pageTitle": {
     "login": "Kirjaudu sisään",
     "registration": "Rekisteröi käyttäjätunnus",
     "usernamePublicWarning": "Käyttäjänimi on julkinen",
-    "usernameDiscordInfo": "Pyydämme käyttämään samaa käyttäjänimeä kuin Discordissa"
+    "usernameDiscordInfo": "Käytä samaa käyttäjänimeä kuin Ropeconin Discordissa, että pelinjohtajan on helppo tunnistaa pelaajansa."
   },
   "user": "Käyttäjä",
   "favoritedGames": "Suosikkipelit",
   "signedGames": "Valitut pelit",
-  "enteredGames": "Ilmoittautumisen tulokset",
+  "enteredGames": "Ilmoittautumiset",
   "hiddenGames": "Piilotetut pelit",
   "error": {
     "usernameTaken": "Käyttäjänimi on jo olemassa",
@@ -150,10 +159,10 @@
   "registrationSerialHelp": "Nouda rekisteröintikoodi roolipelitiskiltä",
   "noSignedGames": "Ei valittuja pelejä",
   "noFavoritedGames": "Ei suosikkipelejä",
-  "noEnteredGames": "Ei vahvistuneita ilmoittautumisia",
+  "noEnteredGames": "Ei ilmoittautumisia",
   "noHiddenGames": "Ei piilotettuja pelejä",
   "noSignupMessages": "Ei ilmoittautumisten lisätietoja",
-  "signupMessages": "Ilmoittautumisten lisätiedot",
+  "signupMessages": "Ilmoittautumisen lisätiedot",
   "noOpenSignups": "Ei avoimia ilmoittautumisia",
   "signupOpen": "Ilmoittautuminen auki seuraaville alkamisajoille",
   "activeTime": "Aktiinen aika",
@@ -227,13 +236,16 @@
   "generalLeaveGroupError": "Virhe ryhmästä poistuessa",
   "signupResults": "Ilmoittautumisen tulokset",
   "helperResults": "Tulokset",
-  "helperPasswordManagement": "Salasanojenhallinta",
-  "userCode": "Käyttäjän koodi tai käyttäjänimi",
-  "newPassword": "Uusi salasana",
-  "userNotFound": "Käyttäjää ei löytynyt",
-  "foundUser": "Löytyi käyttäjä",
-  "changingPasswordError": "Virhe salasanaa vaihtaessa",
-  "changingPasswordSuccess": "Salasana vaihdettu onnistuneesti",
+  "passwordManagement": {
+    "helperPasswordManagement": "Vaihda salasana",
+    "userCode": "Käyttäjän koodi",
+    "userCodeOrUsername": "Käyttäjän koodi tai käyttäjänimi",
+    "newPassword": "Uusi salasana",
+    "userNotFound": "Käyttäjää ei löytynyt",
+    "foundUser": "Löytyi käyttäjä",
+    "changingPasswordError": "Virhe salasanaa vaihtaessa",
+    "changingPasswordSuccess": "Salasana vaihdettu onnistuneesti"
+  },
   "errorMessage": "Olemme tunnistaneet ongelman, että 'Omat pelit' sivulla näkyvät 'Ilmoittautumisen tulokset' voivat näkyä väärin ja tiedot on piilotettu. Oikeat tulokset voi katsoa 'Ilmoittautumistulokset' sivulta.",
   "testTime": "Testiaika",
   "signup": {
@@ -247,7 +259,8 @@
     "signupCount": "{{PLAYERS}} / {{MAX_ATTENDANCE}} ilmoittautunutta",
     "playerNeeded": "Tarvitaan vielä {{COUNT}} pelaajaa!",
     "gameIsFull": "Peli on täynnä",
-    "confirmCancelSignup": "Vahvista ilmoittautumisen peruminen"
+    "confirmCancelSignup": "Vahvista ilmoittautumisen peruminen",
+    "expectedDuration": "Pelin kesto {{EXPECTED_DURATION}}"
   },
   "resultsView": {
     "allSignupResults": "Pelien ilmoittautumistilanne ja pelaajat",
@@ -262,5 +275,25 @@
   "firstLogin": {
     "serial": "Ota koodi säilöön salasanan palauttamista varten:",
     "info": "Tämä viesti näytetään vain ensimmäisen kirjautumisesi yhteydessä. Löydät koodin myös navigaation takaa."
+  },
+  "myGamesView": {
+    "yourAnswer": "Vastauksesi kenttään",
+    "changePassword": "Vaihda salasana"
+  },
+  "accessibility": {
+    "loudSounds": "Kovat äänet",
+    "flashingLights": "Välkkyvät tai voimakkaat valot",
+    "strongSmells": "Voimakkaat tuoksut",
+    "irritateSkin": "Ihoa ärsyttävät aineet tai materiaalit",
+    "physicalContact": "Fyysinen kontakti ja/tai suppea henkilökohtaisen tilan mahdollisuus",
+    "lowLighting": "Pimeä/heikko valaistus",
+    "movingAround": "Osallistuminen vaatii paljon liikkumista ilman mahdollisuutta istumiseen",
+    "video": "Ohjelmanumerossa katsotaan video, jossa ei ole tekstitystä kuulorajoitteisille",
+    "recording": "Osallistuminen edellyttää sellaisen äänitteen kuuntelemista, josta ei ole tekstiversiota kuulorajoitteisille",
+    "text": "Osallistuminen vaatii pitkien tekstien itsenäistä lukemista, eikä tekstejä ole mahdollista saada äänitteinä näkörajoitteisille",
+    "colourblind": "Ohjelmanumerossa käytettävät materiaalit voivat tuottaa haasteita värisokeille"
+  },
+  "login": {
+    "passwordHint": "Jos unohdit salasanasi, voit pyytää apua Ropeconin Discordista"
   }
 }
