@@ -259,6 +259,7 @@
     "signupCount": "{{PLAYERS}} / {{MAX_ATTENDANCE}} ilmoittautunutta",
     "playerNeeded": "Tarvitaan vielä {{COUNT}} pelaajaa!",
     "gameIsFull": "Peli on täynnä",
+    "confirmCancelSignup": "Vahvista ilmoittautumisen peruminen",
     "expectedDuration": "Pelin kesto {{EXPECTED_DURATION}}"
   },
   "resultsView": {
