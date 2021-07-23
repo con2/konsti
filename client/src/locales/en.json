@@ -258,6 +258,7 @@
     "signupCount": "{{PLAYERS}} / {{MAX_ATTENDANCE}} players",
     "playerNeeded": "Need {{COUNT}} players!",
     "gameIsFull": "Game is full",
+    "confirmCancelSignup": "Confirm signup cancellation",
     "expectedDuration": "Duration {{EXPECTED_DURATION}}"
   },
   "resultsView": {
