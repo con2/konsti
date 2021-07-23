@@ -36,21 +36,18 @@ export const AllGamesView = (): ReactElement => {
     fetchData();
   }, [store, testTime]);
 
-  const tags = ['tabletopRPG', 'larp', 'in-english', 'aloittelijaystavallinen'];
-
-  const tagsList = (): ReactElement[] => {
-    return tags.map((tag) => {
-      return (
-        <option key={tag} value={tag}>
-          {tag === 'in-english' && t(`gameTags.inEnglish`)}
-          {tag === 'aloittelijaystavallinen' && t(`gameTags.beginnerFriendly`)}
-          {tag === 'sopii-lapsille' && t(`gameTags.childrenFriendly`)}
-          {tag === 'tabletopRPG' && t(`programType.tabletopRPG`)}
-          {tag === 'larp' && t(`programType.larp`)}
-        </option>
-      );
-    });
-  };
+  const visibleTags = [
+    'tabletopRPG',
+    'larp',
+    'in-english',
+    'aloittelijaystavallinen',
+    'childrensProgram',
+    'suitableUnder7',
+    'suitable7to12',
+    'suitableOver12',
+    'notSuitableUnder15',
+    'ageRestricted',
+  ];
 
   return (
     <>
@@ -90,7 +87,27 @@ export const AllGamesView = (): ReactElement => {
               value={selectedTag}
             >
               <option value=''>{t('allGames')}</option>
-              {tagsList()}
+
+              {visibleTags.map((tag) => {
+                return (
+                  <option key={tag} value={tag}>
+                    {tag === 'in-english' && t(`gameTags.inEnglish`)}
+                    {tag === 'aloittelijaystavallinen' &&
+                      t(`gameTags.beginnerFriendly`)}
+                    {tag === 'sopii-lapsille' && t(`gameTags.childrenFriendly`)}
+                    {tag === 'tabletopRPG' && t(`programType.tabletopRPG`)}
+                    {tag === 'larp' && t(`programType.larp`)}
+                    {tag === 'suitableUnder7' && t(`gameTags.suitableUnder7`)}
+                    {tag === 'suitable7to12' && t(`gameTags.suitable7to12`)}
+                    {tag === 'suitableOver12' && t(`gameTags.suitableOver12`)}
+                    {tag === 'notSuitableUnder15' &&
+                      t(`gameTags.notSuitableUnder15`)}
+                    {tag === 'ageRestricted' && t(`gameTags.ageRestricted`)}
+                    {tag === 'childrensProgram' &&
+                      t(`gameTags.childrensProgram`)}
+                  </option>
+                );
+              })}
             </select>
           </TagsDropdown>
         )}
@@ -169,6 +186,7 @@ const getTagFilteredGames = (
   selectedTag: string
 ): readonly Game[] => {
   if (!selectedTag) return games;
+
   if (selectedTag === 'aloittelijaystavallinen') {
     return games.filter(
       (game) =>
@@ -180,7 +198,20 @@ const getTagFilteredGames = (
     return games.filter((game) => game.programType === 'larp');
   } else if (selectedTag === 'in-english') {
     return games.filter((game) => game.tags.includes('in-english'));
+  } else if (selectedTag === 'childrensProgram') {
+    return games.filter((game) => game.tags.includes('lastenohjelma'));
+  } else if (selectedTag === 'suitableUnder7') {
+    return games.filter((game) => game.tags.includes('sopii-alle-7v-'));
+  } else if (selectedTag === 'suitable7to12') {
+    return games.filter((game) => game.tags.includes('sopii-7-12v-'));
+  } else if (selectedTag === 'suitableOver12') {
+    return games.filter((game) => game.tags.includes('sopii-yli-12v-'));
+  } else if (selectedTag === 'notSuitableUnder15') {
+    return games.filter((game) => game.tags.includes('ei-sovellu-alle-15v-'));
+  } else if (selectedTag === 'ageRestricted') {
+    return games.filter((game) => game.tags.includes('vain-taysi-ikaisille'));
   }
+
   return games;
 };
 
