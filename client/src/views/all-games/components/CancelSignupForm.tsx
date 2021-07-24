@@ -5,6 +5,7 @@ import { Game } from 'shared/typings/models/game';
 import { useAppDispatch, useAppSelector } from 'client/utils/hooks';
 import { Button } from 'client/components/Button';
 import { submitDeleteGame } from 'client/views/signup/signupThunks';
+import { loadGames } from 'client/utils/loadData';
 
 interface Props {
   game: Game;
@@ -30,6 +31,7 @@ export const CancelSignupForm: FC<Props> = (props: Props): ReactElement => {
         enteredGameId: game.gameId,
       })
     );
+    await loadGames();
     onCancelSignup();
   };
 
