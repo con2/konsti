@@ -49,9 +49,11 @@ export const DirectSignupForm: FC<Props> = (
     if (enteredGamesForTimeSlot.length === 1) {
       return (
         <p>
-          {t('signup.cannotSignupMoreThanOneGame', {
-            GAME: enteredGamesForTimeslot[0].gameDetails.title,
-          })}
+          {t('signup.alreadySignedToGame')}{' '}
+          <SignedGameName>
+            {enteredGamesForTimeslot[0].gameDetails.title}
+          </SignedGameName>
+          . {t('signup.cannotSignupMoreThanOneGame')}
         </p>
       );
     }
@@ -113,4 +115,8 @@ export const DirectSignupForm: FC<Props> = (
 
 const GameIsFull = styled.h4`
   color: ${(props) => props.theme.error};
+`;
+
+const SignedGameName = styled.span`
+  font-weight: 600;
 `;
