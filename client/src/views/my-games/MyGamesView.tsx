@@ -49,7 +49,7 @@ export const MyGamesView = (): ReactElement => {
   }, [store, testTime]);
 
   return (
-    <div className='my-games-view'>
+    <MyGamesViewContainer className='my-games-view'>
       <div className='my-games-toggle-visibility'>
         <Button onClick={() => setShowAllGames(false)} disabled={!showAllGames}>
           {t('lastStartedAndUpcomingGames')}
@@ -106,7 +106,7 @@ export const MyGamesView = (): ReactElement => {
       {showChangePassword && (
         <ChangePasswordForm serial={serial} username={username} />
       )}
-    </div>
+    </MyGamesViewContainer>
   );
 };
 
@@ -144,6 +144,10 @@ const getSignedGames = (
 
   return signedGames;
 };
+
+const MyGamesViewContainer = styled.div`
+  padding: 8px 16px;
+`;
 
 const MyGamesGroupNotification = styled.div`
   margin: 30px 0 0 0;
