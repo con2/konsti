@@ -25,7 +25,7 @@ const RegistrationForm = (props: InjectedFormProps): ReactElement => {
       <form onSubmit={handleSubmit}>
         <NotificationMessage>
           {t('pageTitle.usernamePublicWarning')}.{' '}
-          {t('pageTitle.usernameDiscordInfo')}.
+          {t('pageTitle.usernameDiscordInfo')}
         </NotificationMessage>
 
         <Field
