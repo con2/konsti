@@ -1,13 +1,10 @@
 import React, { ReactElement } from 'react';
 import { useTranslation } from 'react-i18next';
 import _ from 'lodash';
-import styled from 'styled-components';
-import { timeFormatter } from 'client/utils/timeFormatter';
 import { GameEntry } from './GameEntry';
 import { useAppSelector } from 'client/utils/hooks';
-import { sharedConfig } from 'shared/config/sharedConfig';
-import { SignupStrategy } from 'shared/config/sharedConfig.types';
 import { Game } from 'shared/typings/models/game';
+import { GameListTitle } from 'client/views/all-games/components/GameListTitle';
 
 export interface Props {
   games: readonly Game[];
@@ -29,44 +26,14 @@ export const AllGamesList = ({ games }: Props): ReactElement => {
 
   const gamesList = Object.entries(gamesByStartTime).map(
     ([startTime, gamesForStartTime]) => {
-      const formattedStartTime = timeFormatter.getWeekdayAndTime({
-        time: startTime,
-        capitalize: true,
-      });
-      const signupStartTime = timeFormatter.getStartTime(startTime);
-      const signupEndTime = timeFormatter.getEndTime(startTime);
-
-      const allGamesRevolvingDoor = gamesForStartTime.every(
-        (game) => game?.revolvingDoor
-      );
-      const signedGamesCount = signedGames.filter(
-        (game) => game.gameDetails.startTime === startTime
-      ).length;
-      const signedGame = enteredGames.find(
-        (game) => game.gameDetails.startTime === startTime
-      );
-
       return (
-        <>
-          <GameListTitle key={startTime}>
-            <span>{formattedStartTime}</span>
-
-            {!allGamesRevolvingDoor &&
-              sharedConfig.signupStrategy === SignupStrategy.ALGORITHM && (
-                <span>
-                  {' '}
-                  ({t('signupOpenBetween')} {signupStartTime}-{signupEndTime})
-                </span>
-              )}
-
-            {sharedConfig.signupStrategy === SignupStrategy.DIRECT ? (
-              <SignupCount>
-                {signedGame ? signedGame.gameDetails.title : ''}
-              </SignupCount>
-            ) : (
-              <SignupCount>{signedGamesCount} / 3</SignupCount>
-            )}
-          </GameListTitle>
+        <div key={startTime}>
+          <GameListTitle
+            startTime={startTime}
+            gamesForStartTime={gamesForStartTime}
+            signedGames={signedGames}
+            enteredGames={enteredGames}
+          />
 
           {gamesForStartTime.map((game) => {
             const gameSignups = signups.find(
@@ -82,7 +49,7 @@ export const AllGamesList = ({ games }: Props): ReactElement => {
               />
             );
           })}
-        </>
+        </div>
       );
     }
   );
@@ -94,18 +61,3 @@ export const AllGamesList = ({ games }: Props): ReactElement => {
     </div>
   );
 };
-
-const SignupCount = styled.span`
-  float: right;
-`;
-
-const GameListTitle = styled.h3`
-  margin: 20px 0;
-  padding: 8px;
-  background: #fafafa;
-  border-bottom: 1px solid #d5d5d5;
-  box-shadow: 4px 4px 45px 4px #d5d5d5;
-  color: #3d3d3d;
-  position: sticky;
-  top: 0;
-`;
