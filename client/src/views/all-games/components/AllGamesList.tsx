@@ -1,15 +1,13 @@
 import React, { ReactElement } from 'react';
-import { TFunction, useTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import _ from 'lodash';
 import styled from 'styled-components';
 import { timeFormatter } from 'client/utils/timeFormatter';
 import { GameEntry } from './GameEntry';
 import { useAppSelector } from 'client/utils/hooks';
-import { SelectedGame } from 'shared/typings/models/user';
 import { sharedConfig } from 'shared/config/sharedConfig';
 import { SignupStrategy } from 'shared/config/sharedConfig.types';
 import { Game } from 'shared/typings/models/game';
-import { UsersForGame } from 'client/typings/redux.typings';
 
 export interface Props {
   games: readonly Game[];
@@ -22,101 +20,79 @@ export const AllGamesList = ({ games }: Props): ReactElement => {
   const signedGames = useAppSelector((state) => state.myGames.signedGames);
   const enteredGames = useAppSelector((state) => state.myGames.enteredGames);
 
-  const GamesList = buildGamesList(
-    games,
-    signups,
-    signedGames,
-    enteredGames,
-    t
-  );
-
-  return (
-    <div className='games-list'>
-      {games.length === 0 && <h3>{t('noProgramItemsAvailable')}</h3>}
-      {games.length !== 0 && GamesList}
-    </div>
-  );
-};
-
-const buildGamesList = (
-  games: readonly Game[],
-  signups: readonly UsersForGame[],
-  signedGames: readonly SelectedGame[],
-  enteredGames: readonly SelectedGame[],
-  t: TFunction
-): ReactElement[] => {
   const sortedGames = _.sortBy(games, [
     (game) => game.startTime,
     (game) => game.title.toLowerCase(),
   ]);
 
-  const groupedGames = _.groupBy(sortedGames, 'startTime');
+  const gamesByStartTime = _.groupBy(sortedGames, 'startTime');
 
-  const GamesList: ReactElement[] = [];
+  const gamesList = Object.entries(gamesByStartTime).map(
+    ([startTime, gamesForStartTime]) => {
+      const formattedStartTime = timeFormatter.getWeekdayAndTime({
+        time: startTime,
+        capitalize: true,
+      });
+      const signupStartTime = timeFormatter.getStartTime(startTime);
+      const signupEndTime = timeFormatter.getEndTime(startTime);
 
-  for (const [startTime, gamesList] of Object.entries(groupedGames)) {
-    const formattedStartTime = timeFormatter.getWeekdayAndTime({
-      time: startTime,
-      capitalize: true,
-    });
-    const signupStartTime = timeFormatter.getStartTime(startTime);
-    const signupEndTime = timeFormatter.getEndTime(startTime);
-
-    const allGamesRevolvingDoor = gamesList.every(
-      (game) => game?.revolvingDoor
-    );
-    const signedGamesCount = signedGames.filter(
-      (game) => game.gameDetails.startTime === startTime
-    ).length;
-    const signedGame = enteredGames.find(
-      (game) => game.gameDetails.startTime === startTime
-    );
-
-    const getHeaderGameInfo = (): JSX.Element => {
-      if (sharedConfig.signupStrategy === SignupStrategy.DIRECT) {
-        return (
-          <SignupCount>
-            {signedGame ? signedGame.gameDetails.title : ''}
-          </SignupCount>
-        );
-      }
-
-      return <SignupCount>{signedGamesCount} / 3</SignupCount>;
-    };
-
-    const title = (
-      <GameListTitle key={startTime}>
-        <span className='game-startup-time'>{formattedStartTime}</span>
-        {!allGamesRevolvingDoor &&
-          sharedConfig.signupStrategy === SignupStrategy.ALGORITHM && (
-            <span className='game-signup-time'>
-              {' '}
-              ({t('signupOpenBetween')} {signupStartTime}-{signupEndTime})
-            </span>
-          )}
-        {getHeaderGameInfo()}
-      </GameListTitle>
-    );
-
-    GamesList.push(title);
-
-    const gameEntries = gamesList.map((game) => {
-      const gameSignups = signups.find(
-        (gameSignup) => gameSignup.gameId === game.gameId
+      const allGamesRevolvingDoor = gamesForStartTime.every(
+        (game) => game?.revolvingDoor
       );
+      const signedGamesCount = signedGames.filter(
+        (game) => game.gameDetails.startTime === startTime
+      ).length;
+      const signedGame = enteredGames.find(
+        (game) => game.gameDetails.startTime === startTime
+      );
+
       return (
-        <GameEntry
-          key={game.gameId}
-          game={game}
-          players={gameSignups?.users.length ?? 0}
-          startTime={startTime}
-        />
-      );
-    });
-    GamesList.push(...gameEntries);
-  }
+        <>
+          <GameListTitle key={startTime}>
+            <span>{formattedStartTime}</span>
 
-  return GamesList;
+            {!allGamesRevolvingDoor &&
+              sharedConfig.signupStrategy === SignupStrategy.ALGORITHM && (
+                <span>
+                  {' '}
+                  ({t('signupOpenBetween')} {signupStartTime}-{signupEndTime})
+                </span>
+              )}
+
+            {sharedConfig.signupStrategy === SignupStrategy.DIRECT ? (
+              <SignupCount>
+                {signedGame ? signedGame.gameDetails.title : ''}
+              </SignupCount>
+            ) : (
+              <SignupCount>{signedGamesCount} / 3</SignupCount>
+            )}
+          </GameListTitle>
+
+          {gamesForStartTime.map((game) => {
+            const gameSignups = signups.find(
+              (gameSignup) => gameSignup.gameId === game.gameId
+            );
+
+            return (
+              <GameEntry
+                key={game.gameId}
+                game={game}
+                players={gameSignups?.users.length ?? 0}
+                startTime={startTime}
+              />
+            );
+          })}
+        </>
+      );
+    }
+  );
+
+  return (
+    <div>
+      {games.length === 0 && <h3>{t('noProgramItemsAvailable')}</h3>}
+      {games.length !== 0 && gamesList}
+    </div>
+  );
 };
 
 const SignupCount = styled.span`
