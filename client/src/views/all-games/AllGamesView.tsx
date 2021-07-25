@@ -233,7 +233,7 @@ const getRunningRevolvingDoorGames = (
   }
   return runningGames.map((game) => {
     return (
-      <div key={game.gameId} className='games-list'>
+      <div key={game.gameId}>
         <Link to={`/games/${game.gameId}`}>{game.title}</Link>{' '}
         <GameListShortDescription>
           {game.shortDescription ? game.shortDescription : game.gameSystem}

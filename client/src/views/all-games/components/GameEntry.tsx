@@ -21,15 +21,6 @@ interface Props {
   players: number;
 }
 
-// Favorite / remove favorite clicked
-const updateFavoriteHandler = async (
-  updateOpts: UpdateFavoriteOpts
-): Promise<void> => {
-  if (!updateOpts?.game || !updateOpts?.game?.gameId) return;
-
-  await updateFavorite(updateOpts);
-};
-
 export const GameEntry = ({
   game,
   startTime,
@@ -64,8 +55,17 @@ export const GameEntry = ({
     return `${hoursStr} ${minutesStr}`;
   };
 
+  // Favorite / remove favorite clicked
+  const updateFavoriteHandler = async (
+    updateOpts: UpdateFavoriteOpts
+  ): Promise<void> => {
+    if (!updateOpts?.game || !updateOpts?.game?.gameId) return;
+
+    await updateFavorite(updateOpts);
+  };
+
   return (
-    <GameContainer key={game.gameId} className='games-list'>
+    <GameContainer key={game.gameId}>
       <GameHeader>
         <HeaderContainer>
           <h3>{game.title}</h3>
