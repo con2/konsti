@@ -23,9 +23,8 @@ export const GameListTitle = ({
 }: Props): ReactElement => {
   const { t } = useTranslation();
 
-  const ref = useRef<HTMLDivElement | null>(null);
-  const { isIntersecting } = useIntersectionObserver(ref);
-  const isVisible = !!isIntersecting;
+  const intersectionRef = useRef<HTMLDivElement | null>(null);
+  const { isIntersecting } = useIntersectionObserver(intersectionRef);
 
   const formattedStartTime = timeFormatter.getWeekdayAndTime({
     time: startTime,
@@ -45,7 +44,11 @@ export const GameListTitle = ({
   );
 
   return (
-    <StyledGameListTitle key={startTime} ref={ref} isVisible={isVisible}>
+    <StyledGameListTitle
+      key={startTime}
+      ref={intersectionRef}
+      isVisible={!!isIntersecting}
+    >
       <span>{formattedStartTime}</span>
 
       {!allGamesRevolvingDoor &&
