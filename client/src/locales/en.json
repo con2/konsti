@@ -137,7 +137,7 @@
     "login": "Please login",
     "registration": "Please register user account",
     "usernamePublicWarning": "Please note that the username is public",
-    "usernameDiscordInfo": "Use same username as in Ropecon Discord server, so gamemasters can easily indetify their players."
+    "usernameDiscordInfo": "Use same username as in Ropecon Discord server, so gamemasters can easily identify their players."
   },
   "user": "User",
   "favoritedGames": "Favorited games",
