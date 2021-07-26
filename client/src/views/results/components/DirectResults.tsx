@@ -20,7 +20,9 @@ export const DirectResults = (): ReactElement => {
   const [showAllGames, setShowAllGames] = useState<boolean>(false);
   const [showSignupMessages, setShowSignupMessages] = useState<string[]>([]);
 
-  const filteredGames = showAllGames ? games : getUpcomingGames(games, 1);
+  const filteredGames = showAllGames
+    ? _.sortBy(games, 'startTime')
+    : _.sortBy(getUpcomingGames(games, 1), 'startTime');
 
   const [gamesForListing, setGamesForListing] = useState<readonly Game[]>([]);
   const [filteredGamesForListing, setFilteredGamesForListing] = useState<{
