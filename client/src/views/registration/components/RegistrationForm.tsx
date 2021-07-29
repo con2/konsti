@@ -26,6 +26,11 @@ const RegistrationForm = (props: InjectedFormProps): ReactElement => {
         <NotificationMessage>
           {t('pageTitle.usernamePublicWarning')}.{' '}
           {t('pageTitle.usernameDiscordInfo')}
+          <p>
+            <a href={'https://2021.ropecon.fi/etaropecon/ohjeet/'}>
+              {t('discordHint')}
+            </a>
+          </p>
         </NotificationMessage>
 
         <Field
