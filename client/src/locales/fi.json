@@ -296,5 +296,6 @@
   },
   "login": {
     "passwordHint": "Jos unohdit salasanasi, voit pyytää apua Ropeconin Discordista"
-  }
+  },
+  "discordHint": "Ohjeet Discordiin liittymiseen"
 }

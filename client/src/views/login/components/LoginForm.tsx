@@ -38,6 +38,10 @@ const LoginForm = (props: InjectedFormProps): ReactElement => {
       )}
 
       <p>{t('login.passwordHint')}</p>
+
+      <a href={'https://2021.ropecon.fi/etaropecon/ohjeet/'}>
+        {t('discordHint')}
+      </a>
     </div>
   );
 };
