@@ -16,13 +16,21 @@ export const DirectResults = (): ReactElement => {
   const games = useAppSelector((state) => state.allGames.games);
   const signups = useAppSelector((state) => state.allGames.signups);
   const signupMessages = useAppSelector((state) => state.admin.signupMessages);
+  const hiddenGames = useAppSelector((state) => state.admin.hiddenGames);
 
   const [showAllGames, setShowAllGames] = useState<boolean>(false);
   const [showSignupMessages, setShowSignupMessages] = useState<string[]>([]);
 
+  const visibleGames = games.filter((game) => {
+    const hidden = hiddenGames.find(
+      (hiddenGame) => game.gameId === hiddenGame.gameId
+    );
+    if (!hidden) return game;
+  });
+
   const filteredGames = showAllGames
-    ? _.sortBy(games, 'startTime')
-    : _.sortBy(getUpcomingGames(games, 1), 'startTime');
+    ? _.sortBy(visibleGames, 'startTime')
+    : _.sortBy(getUpcomingGames(visibleGames, 1), 'startTime');
 
   const [gamesForListing, setGamesForListing] = useState<readonly Game[]>([]);
   const [filteredGamesForListing, setFilteredGamesForListing] = useState<{
