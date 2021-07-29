@@ -295,5 +295,6 @@
   },
   "login": {
     "passwordHint": "If you forgot your password, you can ask help from Ropecon Discord"
-  }
+  },
+  "discordHint": "How to join Discord"
 }
