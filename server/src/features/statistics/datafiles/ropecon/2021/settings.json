@@ -1,0 +1,19 @@
+[
+  {
+    "hiddenGames": [
+      { "gameId": "p4692" },
+      { "gameId": "p4671" },
+      { "gameId": "p4717" }
+    ],
+    "signupTime": null,
+    "appOpen": false,
+    "signupMessages": [
+      {
+        "gameId": "p4699",
+        "message": "Hahmoluokka ja taso / Character class and level"
+      }
+    ],
+    "createdAt": { "$date": "2021-06-28T12:19:30.049Z" },
+    "updatedAt": { "$date": "2021-08-04T11:25:22.853Z" }
+  }
+]
