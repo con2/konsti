@@ -26,6 +26,9 @@ const commonConfig = {
   // Convention settings
   dataUri: 'https://kompassi.eu/api/v1/events/ropecon2021/programme/ropecon',
   firtSignupBonus: 20,
+
+  // Statistics
+  statsDataDir: 'src/features/statistics/datafiles',
 };
 
 const prodConfig = {

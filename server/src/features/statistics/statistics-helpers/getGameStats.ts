@@ -6,11 +6,12 @@ import {
   getDemandByGame,
 } from './gameDataHelpers';
 import { logger } from 'server/utils/logger';
+import { config } from 'server/config';
 
 export const getGameStats = (year: number, event: string): void => {
   const games = JSON.parse(
     fs.readFileSync(
-      `src/statistics/datafiles/${event}/${year}/games.json`,
+      `${config.statsDataDir}/${event}/${year}/games.json`,
       'utf8'
     )
   );
@@ -19,7 +20,7 @@ export const getGameStats = (year: number, event: string): void => {
 
   const users = JSON.parse(
     fs.readFileSync(
-      `src/statistics/datafiles/${event}/${year}/users.json`,
+      `${config.statsDataDir}/${event}/${year}/users.json`,
       'utf8'
     )
   );
