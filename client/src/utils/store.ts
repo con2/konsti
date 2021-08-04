@@ -1,5 +1,4 @@
 import { combineReducers, CombinedState, AnyAction } from 'redux';
-import { reducer as formReducer } from 'redux-form';
 import { configureStore } from '@reduxjs/toolkit';
 import { config } from 'client/config';
 import { loadSession } from 'client/utils/localStorage';
@@ -15,7 +14,6 @@ import { adminReducer } from 'client/views/admin/adminSlice';
 import { resultsReducer } from 'client/views/results/resultsSlice';
 
 export const combinedReducer = combineReducers({
-  form: formReducer,
   allGames: allGamesReducer,
   login: loginReducer,
   myGames: myGamesReducer,

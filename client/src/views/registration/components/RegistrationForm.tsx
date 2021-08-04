@@ -1,101 +1,240 @@
-import React, { ReactElement } from 'react';
-import { Field, reduxForm, InjectedFormProps } from 'redux-form';
+import React, { ReactElement, useState } from 'react';
+import { SubmitHandler, useForm, useFormState } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
-import { FormField } from 'client/components/FormField';
-import {
-  passwordLength,
-  required,
-  usernameLength,
-} from 'client/utils/validate';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Accordion } from 'client/components/Accordion';
 import { sharedConfig } from 'shared/config/sharedConfig';
 import { ConventionType } from 'shared/config/sharedConfig.types';
 import { Button } from 'client/components/Button';
 import { Paragraph } from 'client/components/Paragraph';
+import { RegistrationFormFields } from 'shared/typings/api/login';
+import { useAppDispatch } from 'client/utils/hooks';
+import { submitRegistration } from 'client/views/registration/registrationThunks';
+import {
+  PASSWORD_LENGTH_MAX,
+  PASSWORD_LENGTH_MIN,
+  USERNAME_LENGTH_MAX,
+  USERNAME_LENGTH_MIN,
+} from 'shared/constants/validation';
 
-const RegistrationForm = (props: InjectedFormProps): ReactElement => {
-  const { handleSubmit, submitting, error } = props;
+export const RegistrationForm = (): ReactElement => {
+  const dispatch = useAppDispatch();
   const { t } = useTranslation();
+
   const serialRequired = sharedConfig.conventionType === ConventionType.LIVE;
+
+  const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
+  const [serverError, setServerError] = useState<string>('');
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    control,
+    clearErrors,
+  } = useForm<RegistrationFormFields>();
+
+  const { isSubmitting } = useFormState({
+    control,
+  });
+
+  const onSubmit: SubmitHandler<RegistrationFormFields> = async (
+    registrationFormFields
+  ): Promise<void> => {
+    try {
+      await dispatch(submitRegistration(registrationFormFields));
+    } catch (error) {
+      setServerError(t(error.message));
+    }
+  };
+
   return (
-    <div className='registration-form'>
+    <div>
       <h2>{t('pageTitle.registration')}</h2>
 
-      <form onSubmit={handleSubmit}>
-        <NotificationMessage>
-          {t('pageTitle.usernamePublicWarning')}.{' '}
-          {t('pageTitle.usernameDiscordInfo')}
-          <p>
-            <a href={'https://2021.ropecon.fi/etaropecon/ohjeet/'}>
-              {t('discordHint')}
-            </a>
-          </p>
-        </NotificationMessage>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <FormRow>
+          <StyledFormField>
+            <StyledInput
+              {...register('username', {
+                required: `${t(`validation.required`)}`,
+                minLength: {
+                  value: USERNAME_LENGTH_MIN,
+                  message: t(`validation.tooShort`),
+                },
+                maxLength: {
+                  value: USERNAME_LENGTH_MAX,
+                  message: t(`validation.tooLong`),
+                },
+              })}
+              placeholder={t('username')}
+              type={'text'}
+              onChange={(e) => {
+                clearErrors('username');
+                setServerError('');
+              }}
+            />
+          </StyledFormField>
+        </FormRow>
 
-        <Field
-          name='username'
-          type='text'
-          component={FormField}
-          validate={[required, usernameLength]}
-        />
+        {errors.username && (
+          <FormFieldError>{errors.username.message}</FormFieldError>
+        )}
 
-        <Field
-          name='password'
-          type='password'
-          component={FormField}
-          validate={[required, passwordLength]}
-        />
+        <FormRow>
+          <StyledFormField>
+            <StyledInput
+              {...register('password', {
+                required: `${t(`validation.required`)}`,
+                minLength: {
+                  value: PASSWORD_LENGTH_MIN,
+                  message: t(`validation.tooShort`),
+                },
+                maxLength: {
+                  value: PASSWORD_LENGTH_MAX,
+                  message: t(`validation.tooLong`),
+                },
+              })}
+              placeholder={t('password')}
+              type={passwordVisible ? 'text' : 'password'}
+              onChange={(e) => {
+                clearErrors('password');
+                setServerError('');
+              }}
+            />
+          </StyledFormField>
+
+          <FormFieldIcon>
+            <FontAwesomeIcon
+              icon={passwordVisible ? 'eye-slash' : 'eye'}
+              onClick={() => setPasswordVisible(!passwordVisible)}
+            />
+          </FormFieldIcon>
+        </FormRow>
+
+        {errors.password && (
+          <FormFieldError>{errors.password.message}</FormFieldError>
+        )}
 
         {serialRequired && (
-          <div>
-            <Field
-              name='serial'
-              id='serial'
-              type='text'
-              component={FormField}
-              validate={required}
-            />
+          <>
+            <FormRow>
+              <StyledFormField>
+                <StyledInput
+                  {...register('serial', {
+                    required: `${t(`validation.required`)}`,
+                  })}
+                  placeholder={t('serial')}
+                  type={'text'}
+                  onChange={(e) => {
+                    clearErrors('serial');
+                    setServerError('');
+                  }}
+                />
+              </StyledFormField>
+            </FormRow>
+
+            {errors.serial && (
+              <FormFieldError>{errors.serial.message}</FormFieldError>
+            )}
+
             <label htmlFor='serial' className='small'>
               {t('registrationSerialHelp')}
             </label>
-          </div>
+          </>
         )}
 
-        <Field
-          name='agreePrivacyPolicy'
-          id='agreePrivacyPolicy'
-          type='checkbox'
-          component={FormField}
-          validate={required}
-        />
+        <FormRow>
+          <StyledFormField>
+            <StyledCheckbox
+              {...register('registerDescription', {
+                required: `${t(`validation.required`)}`,
+              })}
+              type={'checkbox'}
+              onChange={(e) => {
+                clearErrors('registerDescription');
+                setServerError('');
+              }}
+            />
+            <label htmlFor='registerDescription'>
+              {t('agreePrivacyPolicy')}
+            </label>
+          </StyledFormField>
+        </FormRow>
+
+        {errors.registerDescription && (
+          <FormFieldError>{errors.registerDescription.message}</FormFieldError>
+        )}
 
         <Accordion toggleButton={t('privacyPolicyButton')}>
           <h3>{t(`privacyPolicyTitle`)}</h3>
           <Paragraph text={t('privacyPolicyText')} />
         </Accordion>
 
-        <Button type='submit' disabled={submitting}>
+        <Button type='submit' disabled={isSubmitting}>
           {t('button.register')}
         </Button>
-      </form>
 
-      {typeof error === 'string' && error && (
-        <ErrorMessage>{error}</ErrorMessage>
-      )}
+        {serverError && <ErrorMessage>{serverError}</ErrorMessage>}
+      </form>
     </div>
   );
 };
 
-export default reduxForm({
-  form: 'registration',
-})(RegistrationForm);
-
-const NotificationMessage = styled.p`
-  color: ${(props) => props.theme.warning};
-`;
-
-const ErrorMessage = styled.span`
+const ErrorMessage = styled.p`
   font-weight: bold;
   color: ${(props) => props.theme.error};
+`;
+
+const StyledInput = styled.input`
+  border: 1px solid ${(props) => props.theme.borderInactive};
+  color: ${(props) => props.theme.buttonText};
+  height: 34px;
+  padding: 0 0 0 10px;
+  width: 100%;
+`;
+
+const FormRow = styled.div`
+  align-items: center;
+  display: flex;
+  flex: 0 1 auto;
+  flex-direction: row;
+  width: 50%;
+  justify-content: flex-start;
+
+  @media (max-width: ${(props) => props.theme.breakpointPhone}) {
+    width: 100%;
+  }
+`;
+
+const StyledFormField = styled.div`
+  align-items: center;
+  display: flex;
+  flex: 0 1 auto;
+  flex-direction: row;
+  padding: 8px 0;
+  width: 80%;
+`;
+
+const FormFieldError = styled.div`
+  display: flex;
+  background: ${(props) => props.theme.backgroundHighlight};
+  color: ${(props) => props.theme.error};
+  width: 50%;
+  padding: 4px 0 4px 10px;
+
+  @media (max-width: ${(props) => props.theme.breakpointPhone}) {
+    width: 100%;
+  }
+`;
+
+const FormFieldIcon = styled.span`
+  padding: 0 0 0 8px;
+  font-size: ${(props) => props.theme.iconSize};
+`;
+
+const StyledCheckbox = styled.input`
+  margin-right: 10px;
+  width: 16px;
 `;
