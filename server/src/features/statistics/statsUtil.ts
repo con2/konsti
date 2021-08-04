@@ -1,6 +1,7 @@
 import fs from 'fs';
 import _ from 'lodash';
 import prettier from 'prettier';
+import { config } from 'server/config';
 import { logger } from 'server/utils/logger';
 
 export const readJson = <T>(
@@ -10,7 +11,7 @@ export const readJson = <T>(
 ): T[] => {
   const data = JSON.parse(
     fs.readFileSync(
-      `src/statistics/datafiles/${event}/${year}/${datatype}.json`,
+      `${config.statsDataDir}/${event}/${year}/${datatype}.json`,
       'utf8'
     )
   );
@@ -25,20 +26,20 @@ export const writeJson = <T>(
   datatype: string,
   data: T[] | Object
 ): void => {
-  if (!fs.existsSync(`src/statistics/datafiles/${event}/${year}/temp/`)) {
-    fs.mkdirSync(`src/statistics/datafiles/${event}/${year}/temp/`);
+  if (!fs.existsSync(`${config.statsDataDir}/${event}/${year}/temp/`)) {
+    fs.mkdirSync(`${config.statsDataDir}/${event}/${year}/temp/`);
   }
 
   fs.writeFileSync(
-    `src/statistics/datafiles/${event}/${year}/temp/${datatype}-fixed.json`,
+    `${config.statsDataDir}/${event}/${year}/temp/${datatype}-fixed.json`,
     prettier.format(JSON.stringify(data), { parser: 'json' }),
     'utf8'
   );
 
   logger.info(
-    `Saved ${getDataLength(
-      data
-    )} ${datatype} to file src/statistics/datafiles/${event}/${year}/temp/${datatype}-fixed.json`
+    `Saved ${getDataLength(data)} ${datatype} to file ${
+      config.statsDataDir
+    }/${event}/${year}/temp/${datatype}-fixed.json`
   );
 };
 

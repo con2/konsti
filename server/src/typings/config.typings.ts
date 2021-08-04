@@ -31,4 +31,5 @@ export interface Config {
   autoAssignPlayersEnabled: boolean;
   enableSignupTimeCheck: boolean;
   firtSignupBonus: number;
+  statsDataDir: string;
 }
