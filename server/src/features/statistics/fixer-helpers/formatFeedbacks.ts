@@ -6,12 +6,13 @@ import { logger } from 'server/utils/logger';
 import { GameRuntype } from 'shared/typings/models/game';
 import { writeJson } from 'server/features/statistics/statsUtil';
 import { FeedbackRuntype } from 'shared/typings/models/feedback';
+import { config } from 'server/config';
 
 export const formatFeedbacks = (year: number, event: string): void => {
   moment.locale('fi');
 
   const feedbacksJson = fs.readFileSync(
-    `src/statistics/datafiles/${event}/${year}/secret/feedbacks.json`,
+    `${config.statsDataDir}/${event}/${year}/secret/feedbacks.json`,
     'utf8'
   );
   const feedbacks = Array(FeedbackRuntype).check(JSON.parse(feedbacksJson));
@@ -19,7 +20,7 @@ export const formatFeedbacks = (year: number, event: string): void => {
   logger.info(`Loaded ${feedbacks.length} feedbacks`);
 
   const gamesJson = fs.readFileSync(
-    `src/statistics/datafiles/${event}/${year}/games.json`,
+    `${config.statsDataDir}/${event}/${year}/games.json`,
     'utf8'
   );
   const games = Array(GameRuntype).check(JSON.parse(gamesJson));
