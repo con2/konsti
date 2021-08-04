@@ -12,8 +12,8 @@ it('Admin user can log in', () => {
   clickOn('navigation-icon');
 
   clickOn('login-page-link');
-  cy.get('.form-input#username').type(username);
-  cy.get('.form-input#password').type(password);
+  get('login-form-input-username').type(username);
+  get('login-form-input-password').type(password);
   clickOn('login-button');
 
   // Check if login was completed

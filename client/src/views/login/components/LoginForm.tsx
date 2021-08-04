@@ -51,6 +51,7 @@ export const LoginForm = (): ReactElement => {
               clearErrors('username');
               setServerError('');
             }}
+            data-testkey={'login-form-input-username'}
           />
         </StyledFormField>
       </FormRow>
@@ -71,6 +72,7 @@ export const LoginForm = (): ReactElement => {
               clearErrors('password');
               setServerError('');
             }}
+            data-testkey={'login-form-input-password'}
           />
         </StyledFormField>
 
