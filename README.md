@@ -68,6 +68,7 @@ Konsti development supported by
 ![Reaktor](https://github.com/Archinowsk/archinowsk.github.io/blob/master/assets/reaktor-logo-small.png) &nbsp;&nbsp;&nbsp; ![Sovellin](https://github.com/Archinowsk/archinowsk.github.io/blob/master/assets/sovellin-logo-small.png)
 
 <a href="https://www.reaktor.com/" style="margin-right: 70px"><img src="https://github.com/Archinowsk/archinowsk.github.io/blob/master/assets/reaktor-logo-small.png"></a>
+&nbsp;&nbsp;&nbsp;
 <a href="https://www.sovellin.com/"><img src="https://github.com/Archinowsk/archinowsk.github.io/blob/master/assets/sovellin-logo-small.png"></a>
 
 Mobile testing supported by <a href="https://www.browserstack.com/">BrowserStack</a>
