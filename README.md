@@ -44,14 +44,17 @@ Registered users by year:
   - Cypress
 
 - Back-end
+
   - Node.js
   - Express
   - MongoDB
   - AWS
+
 - Front-end
   - React
   - Redux
   - Webpack
+  - styled-components
   - stylelint
 
 ## Cypress end-to-end tests
@@ -61,6 +64,8 @@ See [Cypress Dashboard](https://dashboard.cypress.io/projects/btftv2) for test r
 ## Supporters
 
 Konsti development supported by
+
+| <img src="https://github.com/Archinowsk/archinowsk.github.io/blob/master/assets/reaktor-logo.png" height="40"> | <img src="https://github.com/Archinowsk/archinowsk.github.io/blob/master/assets/sovellin-logo.svg" height="40"> |
 
 <a href="https://www.reaktor.com/" style="margin-right: 70px"><img src="https://github.com/Archinowsk/archinowsk.github.io/blob/master/assets/reaktor-logo.png" height="40"></a>
 <a href="https://www.sovellin.com/"><img src="https://github.com/Archinowsk/archinowsk.github.io/blob/master/assets/sovellin-logo.svg" height="40"></a>
