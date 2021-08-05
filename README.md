@@ -62,7 +62,7 @@ See [Cypress Dashboard](https://dashboard.cypress.io/projects/btftv2) for test r
 
 Konsti development supported by
 
-<a href="https://www.reaktor.com/"><img src="https://github.com/Archinowsk/archinowsk.github.io/blob/master/assets/reaktor-logo.svg" height="40"></a>
+<a href="https://www.reaktor.com/"><img src="https://github.com/Archinowsk/archinowsk.github.io/blob/master/assets/reaktor-logo.png" height="40"></a>
 
 <a href="https://www.sovellin.com/"><img src="https://github.com/Archinowsk/archinowsk.github.io/blob/master/assets/sovellin-logo.svg" height="40"></a>
 
