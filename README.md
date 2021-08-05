@@ -21,11 +21,12 @@ Registered users by year:
 - Requirements
 
   - Docker
+  - Yarn
 
 - Run
 
   ```
-  yarn docker:start
+  yarn docker-compose:start
   ```
 
 - Open `localhost:5000`
@@ -55,7 +56,7 @@ Registered users by year:
 - Front-end
 
   - React
-  - Redux
+  - Redux with Redux Toolkit
   - Webpack
   - styled-components
   - stylelint
@@ -68,10 +69,8 @@ See [Cypress Dashboard](https://dashboard.cypress.io/projects/btftv2) for test r
 
 Konsti development supported by
 
-<a href="https://www.reaktor.com/"><img src="https://github.com/Archinowsk/archinowsk.github.io/blob/master/assets/reaktor-logo-small.png"></a>
-&nbsp;&nbsp;&nbsp;
-<a href="https://www.sovellin.com/"><img src="https://github.com/Archinowsk/archinowsk.github.io/blob/master/assets/sovellin-logo-small.png"></a>
+<a href="https://www.reaktor.com/"><img src="/client/assets/reaktor-logo.png"></a> &nbsp;&nbsp;&nbsp; <a href="https://www.sovellin.com/"><img src="/client/assets/sovellin-logo.png"></a>
 
 Mobile testing supported by <a href="https://www.browserstack.com/">BrowserStack</a>
 
-<a href="https://www.browserstack.com/"><img src="https://github.com/Archinowsk/archinowsk.github.io/blob/master/assets/browserstack-logo.svg" height="40"></a>
+<a href="https://www.browserstack.com/"><img src="/client/assets/browserstack-logo.png" height="40"></a>
