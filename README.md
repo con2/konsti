@@ -56,7 +56,7 @@ Registered users by year:
 - Front-end
 
   - React
-  - Redux with Redux Toolkit
+  - Redux & Redux Toolkit
   - Webpack
   - styled-components
   - stylelint
