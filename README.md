@@ -4,15 +4,17 @@
 
 [![Known Vulnerabilities](https://snyk.io/test/github/ropekonsti/konsti/badge.svg)](https://snyk.io/test/github/ropekonsti/konsti)
 
-Tabletop roleplaying game signup application Konsti. The application is used to sign up and assign players to game sessions. Registered users can choose weighted preferences and signup slots are quickly allocated using [Hungarian algorithm](https://en.wikipedia.org/wiki/Hungarian_algorithm), [eventassigner-js](https://github.com/Altesmi/eventassigner-js), or [brute force approximation](https://github.com/Altesmi/eventassigner-random). Users can form groups to be assigned into the same game session. Game data is fetched from [Kompassi Event Management System](https://kompassi.eu/).
+Event signup application Konsti. The application is used to sign up and assign users to events. Registered users can choose weighted preferences for different time slots and event seats are quickly allocated using [Hungarian algorithm](https://en.wikipedia.org/wiki/Hungarian_algorithm), [eventassigner-js](https://github.com/Altesmi/eventassigner-js), or [brute force approximation](https://github.com/Altesmi/eventassigner-random). Users can form groups to be assigned into the same event.
 
-Konsti is designed for the roleplaying convention [Ropecon](https://ropecon.fi).
+Konsti is used by roleplaying conventions [Ropecon](https://ropecon.fi) and [Tracon Hitpoint](https://hitpoint.tracon.fi). Event data is fetched from [Kompassi Event Management System](https://kompassi.eu/).
 
 Registered users by year:
 
-- Ropecon 2017: 550
-- Ropecon 2018: 850
-- Ropecon 2019: 920
+- Ropecon 2017: 550 (live, Hungarian algorithm)
+- Ropecon 2018: 850 (live, brute force approximation)
+- Ropecon 2019: 920 (live, eventassigner-js + brute force approximation)
+- Tracon Hitpoint 2019: 150 (live, eventassigner-js + brute force approximation)
+- Ropecon 2021: 150 (remote, direct signup)
 
 ## Quick Start
 
