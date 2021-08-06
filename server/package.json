@@ -8,23 +8,22 @@
   },
   "main": "index.ts",
   "scripts": {
-    "build:types": "tsc --emitDeclarationOnly",
-    "eslint": "eslint . --ext .js,.ts",
-    "eslint-rules": "eslint --print-config .eslintrc.js",
+    "eslint": "yarn run -T eslint . --ext .js,.ts",
+    "eslint-rules": "yarn run -T eslint --print-config .eslintrc.js",
     "fixer": "ts-node src/features/statistics/dataFixer.ts --",
-    "generate-data": "node -r ts-node/register src/test/test-data-generation/runGenerators.ts",
-    "initialize-db": "node -r ts-node/register src/utils/initializeDatabase.ts",
+    "generate-data": "ts-node src/test/test-data-generation/runGenerators.ts",
+    "initialize-db": "ts-node src/utils/initializeDatabase.ts",
     "generate-serials": "ts-node src/utils/generateSerials.ts",
     "lint": "yarn eslint && yarn prettier:check",
     "remove-invalid-games": "cross-env NODE_ENV=development ts-node src/test/scripts/removeInvalidGames.ts",
     "start": "ts-node src/index.ts",
     "start:dev": "cross-env NODE_ENV=development ts-node-dev -r tsconfig-paths/register --respawn src/index.ts",
     "stats": "ts-node src/features/statistics/statGenerator.ts --",
-    "test": "jest",
+    "test": "yarn run -T jest",
     "test-assign": "cross-env NODE_ENV=development ts-node src/test/scripts/testAssignPlayers.ts",
-    "test:coverage": "jest --coverage --colors",
-    "test:watch": "jest --watch",
-    "type-check": "tsc --noEmit",
+    "test:coverage": "yarn run -T jest --coverage --colors",
+    "test:watch": "yarn run -T jest --watch",
+    "type-check": "yarn run -T tsc --noEmit",
     "update-game-popularity": "cross-env NODE_ENV=development ts-node src/test/scripts/testUpdateGamePopularity.ts",
     "verify-results": "cross-env NODE_ENV=development ts-node src/test/scripts/testVerifyResults.ts",
     "load-kompassi-data": "cross-env NODE_ENV=development ts-node src/test/scripts/loadKompassiDataToDb.ts"
@@ -69,8 +68,14 @@
     "@types/request": "2.48.7",
     "@types/request-promise-native": "1.0.18",
     "@types/supertest": "2.0.11",
+    "cross-env": "7.0.3",
     "mongodb-memory-server": "7.3.4",
     "supertest": "6.1.4",
     "ts-node-dev": "1.1.8"
+  },
+  "peerDependenciesMeta": {
+    "typescript": {
+      "optional": true
+    }
   }
 }

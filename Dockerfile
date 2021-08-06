@@ -7,7 +7,7 @@ WORKDIR /usr/src/app
 COPY . .
 
 # Install dependencies
-RUN yarn --production --frozen-lockfile
+RUN yarn workspaces focus --all --production
 
 # App binds to port 5000
 EXPOSE 5000
