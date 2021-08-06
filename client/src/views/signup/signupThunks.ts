@@ -2,20 +2,20 @@ import {
   deleteEnteredGame,
   postEnteredGame,
   postSignup,
-} from 'client/services/signupServices';
-import { AppThunk } from 'client/typings/redux.typings';
+} from "client/services/signupServices";
+import { AppThunk } from "client/typings/redux.typings";
 import {
   DeleteEnteredGameParameters,
   PostEnteredGameParameters,
   SignupData,
-} from 'shared/typings/api/signup';
+} from "shared/typings/api/signup";
 import {
   submitSignupAsync,
   submitEnteredAsync,
   submitDeleteEnteredAsync,
-} from 'client/views/my-games/myGamesSlice';
-import { submitSelectedGames } from 'client/views/signup/signupSlice';
-import { SelectedGame } from 'shared/typings/models/user';
+} from "client/views/my-games/myGamesSlice";
+import { submitSelectedGames } from "client/views/signup/signupSlice";
+import { SelectedGame } from "shared/typings/models/user";
 
 export const submitEnterGame = (
   data: PostEnteredGameParameters,
@@ -24,14 +24,14 @@ export const submitEnterGame = (
   return async (dispatch): Promise<void> => {
     const signupResponse = await postEnteredGame(data);
 
-    if (signupResponse?.status === 'error') {
+    if (signupResponse?.status === "error") {
       if (signupResponse.code === 51) {
-        console.error('Entered game is full'); // eslint-disable-line no-console
+        console.error("Entered game is full"); // eslint-disable-line no-console
       }
       return await Promise.reject(signupResponse);
     }
 
-    if (signupResponse?.status === 'success') {
+    if (signupResponse?.status === "success") {
       dispatch(submitEnteredAsync(game));
     }
   };
@@ -43,11 +43,11 @@ export const submitDeleteGame = (
   return async (dispatch): Promise<void> => {
     const signupResponse = await deleteEnteredGame(data);
 
-    if (signupResponse?.status === 'error') {
+    if (signupResponse?.status === "error") {
       return await Promise.reject(signupResponse);
     }
 
-    if (signupResponse?.status === 'success') {
+    if (signupResponse?.status === "success") {
       dispatch(submitDeleteEnteredAsync(data.enteredGameId));
     }
   };
@@ -57,11 +57,11 @@ export const submitSignup = (signupData: SignupData): AppThunk => {
   return async (dispatch): Promise<void> => {
     const signupResponse = await postSignup(signupData);
 
-    if (signupResponse?.status === 'error') {
+    if (signupResponse?.status === "error") {
       return await Promise.reject(signupResponse);
     }
 
-    if (signupResponse?.status === 'success') {
+    if (signupResponse?.status === "success") {
       dispatch(submitSignupAsync(signupResponse.signedGames));
       dispatch(submitSelectedGames(signupResponse.signedGames));
     }

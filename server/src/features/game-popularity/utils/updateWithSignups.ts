@@ -1,15 +1,15 @@
-import _ from 'lodash';
-import { logger } from 'server/utils/logger';
-import { User } from 'shared/typings/models/user';
-import { Game } from 'shared/typings/models/game';
-import { saveGamePopularity } from 'server/features/game/gameRepository';
+import _ from "lodash";
+import { logger } from "server/utils/logger";
+import { User } from "shared/typings/models/user";
+import { Game } from "shared/typings/models/game";
+import { saveGamePopularity } from "server/features/game/gameRepository";
 
 export const updateWithSignups = async (
   users: User[],
   games: Game[]
 ): Promise<void> => {
   const groupLeaders = users.filter(
-    (user) => user.groupCode !== '0' && user.groupCode === user.serial
+    (user) => user.groupCode !== "0" && user.groupCode === user.serial
   );
 
   const allUsers = users.map((user) => {
@@ -28,7 +28,7 @@ export const updateWithSignups = async (
     user.signedGames.map((signedGame) => signedGame.gameDetails)
   );
 
-  const groupedSignups = _.countBy(signedGames, 'gameId');
+  const groupedSignups = _.countBy(signedGames, "gameId");
 
   try {
     await Promise.all(
@@ -40,6 +40,6 @@ export const updateWithSignups = async (
     );
   } catch (error) {
     logger.error(`saveGamePopularity error: ${error}`);
-    throw new Error('Update game popularity error');
+    throw new Error("Update game popularity error");
   }
 };

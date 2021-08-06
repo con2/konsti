@@ -1,11 +1,11 @@
-import moment from 'moment';
-import _ from 'lodash';
-import { logger } from 'server/utils/logger';
-import { padgAssignPlayers } from 'server/features/player-assignment/padg/padgAssignPlayers';
-import { User } from 'shared/typings/models/user';
-import { Game } from 'shared/typings/models/game';
-import { Result } from 'shared/typings/models/result';
-import { saveGamePopularity } from 'server/features/game/gameRepository';
+import moment from "moment";
+import _ from "lodash";
+import { logger } from "server/utils/logger";
+import { padgAssignPlayers } from "server/features/player-assignment/padg/padgAssignPlayers";
+import { User } from "shared/typings/models/user";
+import { Game } from "shared/typings/models/game";
+import { Result } from "shared/typings/models/result";
+import { saveGamePopularity } from "server/features/game/gameRepository";
 
 export const updateWithAssign = async (
   users: readonly User[],
@@ -25,7 +25,7 @@ export const updateWithAssign = async (
     (result) => result.enteredGame.gameDetails
   );
 
-  const groupedSignups = _.countBy(signedGames, 'gameId');
+  const groupedSignups = _.countBy(signedGames, "gameId");
 
   try {
     await Promise.all(
@@ -37,6 +37,6 @@ export const updateWithAssign = async (
     );
   } catch (error) {
     logger.error(`saveGamePopularity error: ${error}`);
-    throw new Error('Update game popularity error');
+    throw new Error("Update game popularity error");
   }
 };

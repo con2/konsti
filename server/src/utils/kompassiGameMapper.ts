@@ -1,7 +1,7 @@
-import moment from 'moment';
-import { Game } from 'shared/typings/models/game';
-import { KompassiGame } from 'server/typings/game.typings';
-import { KompassiProgramType } from 'shared/constants/kompassiProgramType';
+import moment from "moment";
+import { Game } from "shared/typings/models/game";
+import { KompassiGame } from "server/typings/game.typings";
+import { KompassiProgramType } from "shared/constants/kompassiProgramType";
 
 export const kompassiGameMapper = (
   games: readonly KompassiGame[]
@@ -20,7 +20,7 @@ export const kompassiGameMapper = (
       language: game.language,
       endTime:
         moment(game.end_time).format() ||
-        moment(game.start_time).add(game.length, 'minutes').format(),
+        moment(game.start_time).add(game.length, "minutes").format(),
       people: game.formatted_hosts,
       minAttendance: game.min_players,
       maxAttendance: game.max_players || game.ropecon2018_characters,
@@ -36,8 +36,8 @@ export const kompassiGameMapper = (
       revolvingDoor: game.revolving_door,
       programType: mapProgramType(game.category_title),
       popularity: 0,
-      contentWarnings: game.content_warnings ?? '',
-      otherAuthor: game.other_author ?? '',
+      contentWarnings: game.content_warnings ?? "",
+      otherAuthor: game.other_author ?? "",
       accessibility: {
         loudSounds: game.ropecon2021_accessibility_loud_sounds,
         flashingLights: game.ropecon2021_accessibility_flashing_lights,
@@ -56,9 +56,9 @@ export const kompassiGameMapper = (
 };
 
 const mapProgramType = (programType: string): string => {
-  if (programType === KompassiProgramType.TABLETOP_RPG) return 'tabletopRPG';
+  if (programType === KompassiProgramType.TABLETOP_RPG) return "tabletopRPG";
   else if (programType === KompassiProgramType.FREEFORM_RPG)
-    return 'freeformRPG';
-  else if (programType === KompassiProgramType.LARP) return 'larp';
-  else return 'unknown';
+    return "freeformRPG";
+  else if (programType === KompassiProgramType.LARP) return "larp";
+  else return "unknown";
 };

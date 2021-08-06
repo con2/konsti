@@ -1,21 +1,21 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { LoginState } from 'client/typings/redux.typings';
-import { UserGroup } from 'shared/typings/models/user';
-import { GroupMember } from 'shared/typings/api/groups';
-import { SubmitLoginPayload } from 'client/views/login/loginTypes';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { LoginState } from "client/typings/redux.typings";
+import { UserGroup } from "shared/typings/models/user";
+import { GroupMember } from "shared/typings/api/groups";
+import { SubmitLoginPayload } from "client/views/login/loginTypes";
 
 const initialState: LoginState = {
-  username: '',
+  username: "",
   loggedIn: false,
-  jwt: '',
+  jwt: "",
   userGroup: UserGroup.USER,
-  serial: '',
-  groupCode: '0',
+  serial: "",
+  groupCode: "0",
   groupMembers: [],
 };
 
 const loginSlice = createSlice({
-  name: 'login',
+  name: "login",
   initialState,
   reducers: {
     submitLoginAsync(state, action: PayloadAction<SubmitLoginPayload>) {

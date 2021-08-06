@@ -1,14 +1,14 @@
-import _ from 'lodash';
-import React, { ReactElement, useEffect, useState } from 'react';
-import styled from 'styled-components';
-import { useTranslation } from 'react-i18next';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { timeFormatter } from 'client/utils/timeFormatter';
-import { useAppSelector } from 'client/utils/hooks';
-import { getUsersForGameId } from 'client/views/results/resultsUtils';
-import { getUpcomingGames } from 'client/utils/getUpcomingGames';
-import { Button } from 'client/components/Button';
-import { Game } from 'shared/typings/models/game';
+import _ from "lodash";
+import React, { ReactElement, useEffect, useState } from "react";
+import styled from "styled-components";
+import { useTranslation } from "react-i18next";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { timeFormatter } from "client/utils/timeFormatter";
+import { useAppSelector } from "client/utils/hooks";
+import { getUsersForGameId } from "client/views/results/resultsUtils";
+import { getUpcomingGames } from "client/utils/getUpcomingGames";
+import { Button } from "client/components/Button";
+import { Game } from "shared/typings/models/game";
 
 export const DirectResults = (): ReactElement => {
   const { t } = useTranslation();
@@ -29,14 +29,14 @@ export const DirectResults = (): ReactElement => {
   });
 
   const filteredGames = showAllGames
-    ? _.sortBy(visibleGames, 'startTime')
-    : _.sortBy(getUpcomingGames(visibleGames, 1), 'startTime');
+    ? _.sortBy(visibleGames, "startTime")
+    : _.sortBy(getUpcomingGames(visibleGames, 1), "startTime");
 
   const [gamesForListing, setGamesForListing] = useState<readonly Game[]>([]);
   const [filteredGamesForListing, setFilteredGamesForListing] = useState<{
     [key: string]: Game[];
   }>({});
-  const [searchTerm, setSearchTerm] = useState<string>('');
+  const [searchTerm, setSearchTerm] = useState<string>("");
 
   useEffect(() => {
     if (_.isEqual(filteredGames, gamesForListing)) {
@@ -48,7 +48,7 @@ export const DirectResults = (): ReactElement => {
 
   useEffect(() => {
     if (searchTerm.length === 0) {
-      const gamesByStartTime = _.groupBy<Game>(gamesForListing, 'startTime');
+      const gamesByStartTime = _.groupBy<Game>(gamesForListing, "startTime");
       setFilteredGamesForListing(gamesByStartTime);
       return;
     }
@@ -65,32 +65,32 @@ export const DirectResults = (): ReactElement => {
 
     const gamesByStartTime = _.groupBy<Game>(
       gamesFilteredBySearchTerm,
-      'startTime'
+      "startTime"
     );
 
     setFilteredGamesForListing(gamesByStartTime);
   }, [searchTerm, gamesForListing]);
 
   return (
-    <div className='results-view'>
-      <h2>{t('resultsView.allSignupResults')}</h2>
+    <div className="results-view">
+      <h2>{t("resultsView.allSignupResults")}</h2>
 
       <SearchInput
-        type='text'
+        type="text"
         onChange={(event) => setSearchTerm(event.target.value)}
-        placeholder={t('findSignupOrGame')}
+        placeholder={t("findSignupOrGame")}
       />
-      <div className='my-games-toggle-visibility'>
+      <div className="my-games-toggle-visibility">
         <Button onClick={() => setShowAllGames(false)} disabled={!showAllGames}>
-          {t('lastStartedAndUpcomingGames')}
+          {t("lastStartedAndUpcomingGames")}
         </Button>
         <Button onClick={() => setShowAllGames(true)} disabled={showAllGames}>
-          {t('allGames')}
+          {t("allGames")}
         </Button>
       </div>
 
       {filteredGames.length === 0 && (
-        <h3>{t('resultsView.noStartingGames')}</h3>
+        <h3>{t("resultsView.noStartingGames")}</h3>
       )}
 
       {Object.entries(filteredGamesForListing).map(
@@ -117,12 +117,12 @@ export const DirectResults = (): ReactElement => {
                   return (
                     <div key={game.gameId}>
                       <h4 key={game.gameId}>
-                        {game.title}{' '}
-                        <Tag>{t(`programType.${game.programType}`)}</Tag>{' '}
+                        {game.title}{" "}
+                        <Tag>{t(`programType.${game.programType}`)}</Tag>{" "}
                         {!!signupMessage &&
                           (signupMessagesVisible ? (
                             <FontAwesomeIcon
-                              icon={'comment'}
+                              icon={"comment"}
                               onClick={() =>
                                 setShowSignupMessages(
                                   showSignupMessages.filter(
@@ -133,7 +133,7 @@ export const DirectResults = (): ReactElement => {
                             />
                           ) : (
                             <FontAwesomeIcon
-                              icon={['far', 'comment']}
+                              icon={["far", "comment"]}
                               onClick={() =>
                                 setShowSignupMessages([
                                   ...showSignupMessages,
@@ -145,7 +145,7 @@ export const DirectResults = (): ReactElement => {
                       </h4>
 
                       <PlayerCount>
-                        {t('resultsView.players')}: {users.length}/
+                        {t("resultsView.players")}: {users.length}/
                         {game.maxAttendance}
                       </PlayerCount>
 
@@ -157,7 +157,7 @@ export const DirectResults = (): ReactElement => {
 
                       <PlayerList>
                         {users.length === 0 ? (
-                          <p>{t('resultsView.noSignups')}</p>
+                          <p>{t("resultsView.noSignups")}</p>
                         ) : (
                           users.map((user) => (
                             <p key={user.username}>

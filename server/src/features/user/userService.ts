@@ -1,6 +1,6 @@
-import { logger } from 'server/utils/logger';
-import { hashPassword, validateLogin } from 'server/utils/bcrypt';
-import { findSerial } from 'server/features/serial/serialRepository';
+import { logger } from "server/utils/logger";
+import { hashPassword, validateLogin } from "server/utils/bcrypt";
+import { findSerial } from "server/features/serial/serialRepository";
 import {
   updateUserPassword,
   findUser,
@@ -12,27 +12,27 @@ import {
   saveGroupCode,
   findGroup,
   saveSignup,
-} from 'server/features/user/userRepository';
+} from "server/features/user/userRepository";
 import {
   GetUserBySerialResponse,
   GetUserResponse,
   PostUserResponse,
-} from 'shared/typings/api/users';
-import { ServerError } from 'shared/typings/api/errors';
-import { Game } from 'shared/typings/models/game';
-import { GetGroupReturnValue } from 'server/typings/user.typings';
+} from "shared/typings/api/users";
+import { ServerError } from "shared/typings/api/errors";
+import { Game } from "shared/typings/models/game";
+import { GetGroupReturnValue } from "server/typings/user.typings";
 import {
   PostFavoriteResponse,
   SaveFavoriteRequest,
-} from 'shared/typings/api/favorite';
-import { GetGroupResponse, PostGroupResponse } from 'shared/typings/api/groups';
-import { PostLoginResponse } from 'shared/typings/api/login';
-import { getJWT } from 'server/utils/jwt';
-import { findSettings } from 'server/features/settings/settingsRepository';
-import { SelectedGame, User } from 'shared/typings/models/user';
-import { PostSignupResponse } from 'shared/typings/api/signup';
-import { UserSignup } from 'server/typings/result.typings';
-import { isValidSignupTime } from 'server/features/user/userUtils';
+} from "shared/typings/api/favorite";
+import { GetGroupResponse, PostGroupResponse } from "shared/typings/api/groups";
+import { PostLoginResponse } from "shared/typings/api/login";
+import { getJWT } from "server/utils/jwt";
+import { findSettings } from "server/features/settings/settingsRepository";
+import { SelectedGame, User } from "shared/typings/models/user";
+import { PostSignupResponse } from "shared/typings/api/signup";
+import { UserSignup } from "server/typings/result.typings";
+import { isValidSignupTime } from "server/features/user/userUtils";
 
 export const storeUser = async (
   username: string,
@@ -41,8 +41,8 @@ export const storeUser = async (
 ): Promise<PostUserResponse | ServerError> => {
   if (serial === undefined) {
     return {
-      message: 'Invalid serial',
-      status: 'error',
+      message: "Invalid serial",
+      status: "error",
       code: 12,
     };
   }
@@ -54,22 +54,22 @@ export const storeUser = async (
     logger.error(`Error finding serial: ${error}`);
     return {
       code: 10,
-      message: 'Finding serial failed',
-      status: 'error',
+      message: "Finding serial failed",
+      status: "error",
     };
   }
 
   // Check for valid serial
   if (!serialFound) {
-    logger.info('User: Serial is not valid');
+    logger.info("User: Serial is not valid");
     return {
       code: 12,
-      message: 'Invalid serial',
-      status: 'error',
+      message: "Invalid serial",
+      status: "error",
     };
   }
 
-  logger.info('User: Serial is valid');
+  logger.info("User: Serial is valid");
 
   // Check that serial is not used
   let user;
@@ -80,8 +80,8 @@ export const storeUser = async (
     logger.error(`findUser(): ${error}`);
     return {
       code: 10,
-      message: 'Finding user failed',
-      status: 'error',
+      message: "Finding user failed",
+      status: "error",
     };
   }
 
@@ -89,8 +89,8 @@ export const storeUser = async (
     logger.info(`User: Username "${username}" is already registered`);
     return {
       code: 11,
-      message: 'Username in already registered',
-      status: 'error',
+      message: "Username in already registered",
+      status: "error",
     };
   }
 
@@ -104,18 +104,18 @@ export const storeUser = async (
       logger.error(`findSerial(): ${error}`);
       return {
         code: 10,
-        message: 'Finding serial failed',
-        status: 'error',
+        message: "Finding serial failed",
+        status: "error",
       };
     }
 
     // Serial used
     if (serialResponse) {
-      logger.info('User: Serial used');
+      logger.info("User: Serial used");
       return {
         code: 12,
-        message: 'Invalid serial',
-        status: 'error',
+        message: "Invalid serial",
+        status: "error",
       };
     }
 
@@ -128,17 +128,17 @@ export const storeUser = async (
         logger.error(`hashPassword(): ${error}`);
         return {
           code: 10,
-          message: 'Hashing password failed',
-          status: 'error',
+          message: "Hashing password failed",
+          status: "error",
         };
       }
 
       if (!passwordHash) {
-        logger.info('User: Serial used');
+        logger.info("User: Serial used");
         return {
           code: 12,
-          message: 'Invalid serial',
-          status: 'error',
+          message: "Invalid serial",
+          status: "error",
         };
       }
 
@@ -154,14 +154,14 @@ export const storeUser = async (
           logger.error(`saveUser(): ${error}`);
           return {
             code: 10,
-            message: 'User registration failed',
-            status: 'error',
+            message: "User registration failed",
+            status: "error",
           };
         }
 
         return {
-          message: 'User registration success',
-          status: 'success',
+          message: "User registration success",
+          status: "success",
           username: saveUserResponse.username,
           password: saveUserResponse.password,
         };
@@ -170,8 +170,8 @@ export const storeUser = async (
   }
 
   return {
-    message: 'Unknown error',
-    status: 'error',
+    message: "Unknown error",
+    status: "error",
     code: 0,
   };
 };
@@ -186,8 +186,8 @@ export const storeUserPassword = async (
   } catch (error) {
     logger.error(`updateUser error: ${error}`);
     return {
-      message: 'Password change error',
-      status: 'error',
+      message: "Password change error",
+      status: "error",
       code: 0,
     };
   }
@@ -197,22 +197,22 @@ export const storeUserPassword = async (
   } catch (error) {
     logger.error(`updateUserPassword error: ${error}`);
     return {
-      message: 'Password change error',
-      status: 'error',
+      message: "Password change error",
+      status: "error",
       code: 0,
     };
   }
 
   return {
-    message: 'Password changed',
-    status: 'success',
-    username: 'notAvailable',
-    password: 'notAvailable',
+    message: "Password changed",
+    status: "success",
+    username: "notAvailable",
+    password: "notAvailable",
   };
 
   return {
-    message: 'Unknown error',
-    status: 'error',
+    message: "Unknown error",
+    status: "error",
     code: 0,
   };
 };
@@ -228,8 +228,8 @@ export const fetchUserByUsername = async (
     } catch (error) {
       logger.error(`findUser(): ${error}`);
       return {
-        message: 'Getting user data failed',
-        status: 'error',
+        message: "Getting user data failed",
+        status: "error",
         code: 0,
       };
     }
@@ -238,14 +238,14 @@ export const fetchUserByUsername = async (
   if (!user) {
     return {
       message: `User ${username} not found`,
-      status: 'error',
+      status: "error",
       code: 0,
     };
   }
 
   return {
-    message: 'Getting user data success',
-    status: 'success',
+    message: "Getting user data success",
+    status: "success",
     games: {
       enteredGames: user.enteredGames,
       favoritedGames: user.favoritedGames as readonly Game[],
@@ -270,8 +270,8 @@ export const fetchUserBySerialOrUsername = async (
   } catch (error) {
     logger.error(`fetchUserBySerialOrUsername(): ${error}`);
     return {
-      message: 'Getting user data failed',
-      status: 'error',
+      message: "Getting user data failed",
+      status: "error",
       code: 0,
     };
   }
@@ -279,14 +279,14 @@ export const fetchUserBySerialOrUsername = async (
   if (!user) {
     return {
       message: `User with search term ${searchTerm} not found`,
-      status: 'error',
+      status: "error",
       code: 0,
     };
   }
 
   return {
-    message: 'Getting user data success',
-    status: 'success',
+    message: "Getting user data success",
+    status: "success",
     serial: user.serial,
     username: user.username,
   };
@@ -300,23 +300,23 @@ export const storeFavorite = async (
     favoritedGames = await saveFavorite(favoriteData);
   } catch (error) {
     return {
-      message: 'Update favorite failure',
-      status: 'error',
+      message: "Update favorite failure",
+      status: "error",
       code: 0,
     };
   }
 
   if (favoritedGames) {
     return {
-      message: 'Update favorite success',
-      status: 'success',
+      message: "Update favorite success",
+      status: "success",
       favoritedGames,
     };
   }
 
   return {
-    message: 'Update favorite failure',
-    status: 'error',
+    message: "Update favorite failure",
+    status: "error",
     code: 0,
   };
 };
@@ -335,18 +335,18 @@ export const storeGroup = async (
     try {
       await Promise.all(
         groupMembers.map(async (groupMember) => {
-          await saveGroupCode('0', groupMember.username);
+          await saveGroupCode("0", groupMember.username);
         })
       );
     } catch (error) {
       logger.error(`findGroupMembers: ${error}`);
-      throw new Error('Error closing group');
+      throw new Error("Error closing group");
     }
 
     return {
-      message: 'Group closed successfully',
-      status: 'success',
-      groupCode: '0',
+      message: "Group closed successfully",
+      status: "success",
+      groupCode: "0",
     };
   }
 
@@ -355,35 +355,35 @@ export const storeGroup = async (
 
     if (leader && groupMembers.length > 1) {
       return {
-        message: 'Leader cannot leave non-empty group',
-        status: 'error',
+        message: "Leader cannot leave non-empty group",
+        status: "error",
         code: 36,
       };
     }
 
     let saveGroupResponse;
     try {
-      saveGroupResponse = await saveGroupCode('0', username);
+      saveGroupResponse = await saveGroupCode("0", username);
     } catch (error) {
       logger.error(`Failed to leave group: ${error}`);
       return {
-        message: 'Failed to leave group',
-        status: 'error',
+        message: "Failed to leave group",
+        status: "error",
         code: 35,
       };
     }
 
     if (saveGroupResponse) {
       return {
-        message: 'Leave group success',
-        status: 'success',
+        message: "Leave group success",
+        status: "success",
         groupCode: saveGroupResponse.groupCode,
       };
     } else {
-      logger.error('Failed to leave group');
+      logger.error("Failed to leave group");
       return {
-        message: 'Failed to leave group',
-        status: 'error',
+        message: "Failed to leave group",
+        status: "error",
         code: 35,
       };
     }
@@ -399,8 +399,8 @@ export const storeGroup = async (
     } catch (error) {
       logger.error(`findUser(): ${error}`);
       return {
-        message: 'Own group already exists',
-        status: 'error',
+        message: "Own group already exists",
+        status: "error",
         code: 34,
       };
     }
@@ -408,8 +408,8 @@ export const storeGroup = async (
     if (findGroupResponse) {
       // Group exists
       return {
-        message: 'Own group already exists',
-        status: 'error',
+        message: "Own group already exists",
+        status: "error",
         code: 34,
       };
     }
@@ -421,22 +421,22 @@ export const storeGroup = async (
     } catch (error) {
       logger.error(`saveGroup(): ${error}`);
       return {
-        message: 'Save group failure',
-        status: 'error',
+        message: "Save group failure",
+        status: "error",
         code: 30,
       };
     }
 
     if (saveGroupResponse) {
       return {
-        message: 'Create group success',
-        status: 'success',
+        message: "Create group success",
+        status: "success",
         groupCode: saveGroupResponse.groupCode,
       };
     } else {
       return {
-        message: 'Save group failure',
-        status: 'error',
+        message: "Save group failure",
+        status: "error",
         code: 30,
       };
     }
@@ -447,8 +447,8 @@ export const storeGroup = async (
     // Cannot join own group
     if (ownSerial === groupCode) {
       return {
-        message: 'Cannot join own group',
-        status: 'error',
+        message: "Cannot join own group",
+        status: "error",
         code: 33,
       };
     }
@@ -460,8 +460,8 @@ export const storeGroup = async (
     } catch (error) {
       logger.error(`findSerial(): ${error}`);
       return {
-        message: 'Error finding serial',
-        status: 'error',
+        message: "Error finding serial",
+        status: "error",
         code: 31,
       };
     }
@@ -469,8 +469,8 @@ export const storeGroup = async (
     // Code is valid
     if (!findSerialResponse) {
       return {
-        message: 'Invalid group code',
-        status: 'error',
+        message: "Invalid group code",
+        status: "error",
         code: 31,
       };
     }
@@ -483,8 +483,8 @@ export const storeGroup = async (
     } catch (error) {
       logger.error(`findGroup(): ${error}`);
       return {
-        message: 'Error finding group',
-        status: 'error',
+        message: "Error finding group",
+        status: "error",
         code: 32,
       };
     }
@@ -492,8 +492,8 @@ export const storeGroup = async (
     // No existing group, cannot join
     if (!findGroupResponse) {
       return {
-        message: 'Group does not exist',
-        status: 'error',
+        message: "Group does not exist",
+        status: "error",
         code: 32,
       };
     }
@@ -505,31 +505,31 @@ export const storeGroup = async (
     } catch (error) {
       logger.error(`saveGroup(): ${error}`);
       return {
-        message: 'Error saving group',
-        status: 'error',
+        message: "Error saving group",
+        status: "error",
         code: 30,
       };
     }
 
     if (saveGroupResponse) {
       return {
-        message: 'Joined to group success',
-        status: 'success',
+        message: "Joined to group success",
+        status: "success",
         groupCode: saveGroupResponse.groupCode,
       };
     } else {
-      logger.error('Failed to sign to group');
+      logger.error("Failed to sign to group");
       return {
-        message: 'Failed to update group',
-        status: 'error',
+        message: "Failed to update group",
+        status: "error",
         code: 30,
       };
     }
   }
 
   return {
-    message: 'Unknown error',
-    status: 'error',
+    message: "Unknown error",
+    status: "error",
     code: 0,
   };
 };
@@ -553,15 +553,15 @@ export const fetchGroup = async (
     }
 
     return {
-      message: 'Getting group members success',
-      status: 'success',
+      message: "Getting group members success",
+      status: "success",
       results: returnData,
     };
   } catch (error) {
     logger.error(`Results: ${error}`);
     return {
-      message: 'Getting group members failed',
-      status: 'error',
+      message: "Getting group members failed",
+      status: "error",
       code: 0,
     };
   }
@@ -577,8 +577,8 @@ export const login = async (
   } catch (error) {
     logger.error(`Login: ${error}`);
     return {
-      message: 'User login error',
-      status: 'error',
+      message: "User login error",
+      status: "error",
       code: 0,
     };
   }
@@ -587,8 +587,8 @@ export const login = async (
     logger.info(`Login: User "${username}" not found`);
     return {
       code: 21,
-      message: 'User login error',
-      status: 'error',
+      message: "User login error",
+      status: "error",
     };
   }
 
@@ -598,17 +598,17 @@ export const login = async (
   } catch (error) {
     logger.error(`Login: ${error}`);
     return {
-      message: 'User login error',
-      status: 'error',
+      message: "User login error",
+      status: "error",
       code: 0,
     };
   }
 
-  if (!settingsResponse.appOpen && user.userGroup === 'user') {
+  if (!settingsResponse.appOpen && user.userGroup === "user") {
     return {
       code: 22,
-      message: 'User login disabled',
-      status: 'error',
+      message: "User login disabled",
+      status: "error",
     };
   }
 
@@ -624,8 +624,8 @@ export const login = async (
     if (validLogin) {
       logger.info(`Login: Password for user "${username}" matches`);
       return {
-        message: 'User login success',
-        status: 'success',
+        message: "User login success",
+        status: "success",
         username: user.username,
         userGroup: user.userGroup,
         serial: user.serial,
@@ -637,15 +637,15 @@ export const login = async (
 
       return {
         code: 21,
-        message: 'User login error',
-        status: 'error',
+        message: "User login error",
+        status: "error",
       };
     }
   } catch (error) {
     logger.error(`Login: ${error}`);
     return {
-      message: 'User login error',
-      status: 'error',
+      message: "User login error",
+      status: "error",
       code: 0,
     };
   }
@@ -658,8 +658,8 @@ export const storeSignup = async (
 ): Promise<PostSignupResponse | ServerError> => {
   if (!signupTime) {
     return {
-      message: 'Signup failure',
-      status: 'error',
+      message: "Signup failure",
+      status: "error",
       code: 0,
     };
   }
@@ -668,8 +668,8 @@ export const storeSignup = async (
   if (!validSignupTime) {
     return {
       code: 41,
-      message: 'Signup failure',
-      status: 'error',
+      message: "Signup failure",
+      status: "error",
     };
   }
 
@@ -681,14 +681,14 @@ export const storeSignup = async (
   try {
     const response = await saveSignup(modifiedSignupData);
     return {
-      message: 'Signup success',
-      status: 'success',
+      message: "Signup success",
+      status: "success",
       signedGames: response.signedGames,
     };
   } catch (error) {
     return {
-      message: 'Signup failure',
-      status: 'error',
+      message: "Signup failure",
+      status: "error",
       code: 0,
     };
   }

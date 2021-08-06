@@ -1,19 +1,19 @@
-import React, { ReactElement, ChangeEvent, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import styled from 'styled-components';
-import { HiddenGamesList } from 'client/views/admin/components/HiddenGamesList';
+import React, { ReactElement, ChangeEvent, useState } from "react";
+import { useTranslation } from "react-i18next";
+import styled from "styled-components";
+import { HiddenGamesList } from "client/views/admin/components/HiddenGamesList";
 import {
   submitSignupTime,
   submitToggleAppOpen,
-} from 'client/views/admin/adminThunks';
-import { submitPlayersAssign } from 'client/views/results/resultsThunks';
-import { submitGamesUpdate } from 'client/views/all-games/allGamesThunks';
-import { TimesDropdown } from 'client/components/TimesDropdown';
-import { timeFormatter } from 'client/utils/timeFormatter';
-import { Game } from 'shared/typings/models/game';
-import { useAppDispatch, useAppSelector } from 'client/utils/hooks';
-import { Button } from 'client/components/Button';
-import { SignupMessageList } from 'client/views/admin/components/SignupMessageList';
+} from "client/views/admin/adminThunks";
+import { submitPlayersAssign } from "client/views/results/resultsThunks";
+import { submitGamesUpdate } from "client/views/all-games/allGamesThunks";
+import { TimesDropdown } from "client/components/TimesDropdown";
+import { timeFormatter } from "client/utils/timeFormatter";
+import { Game } from "shared/typings/models/game";
+import { useAppDispatch, useAppSelector } from "client/utils/hooks";
+import { Button } from "client/components/Button";
+import { SignupMessageList } from "client/views/admin/components/SignupMessageList";
 
 export const AdminView = (): ReactElement => {
   const games = useAppSelector((state) => state.allGames.games);
@@ -31,8 +31,8 @@ export const AdminView = (): ReactElement => {
   const { t } = useTranslation();
 
   const [submitting, setSubmitting] = useState<boolean>(false);
-  const [message, setMessage] = useState<string>('');
-  const [messageStyle, setMessageStyle] = useState<string>('');
+  const [message, setMessage] = useState<string>("");
+  const [messageStyle, setMessageStyle] = useState<string>("");
   const [selectedSignupTime, setSelectedSignupTime] =
     useState<string>(activeSignupTime);
 
@@ -90,7 +90,7 @@ export const AdminView = (): ReactElement => {
     } catch (error) {
       showMessage({
         value: error.message,
-        style: 'error',
+        style: "error",
       });
       return;
     }
@@ -118,15 +118,15 @@ export const AdminView = (): ReactElement => {
   };
 
   return (
-    <div className='admin-view'>
-      <div className='admin-button-row'>
+    <div className="admin-view">
+      <div className="admin-button-row">
         <Button
           disabled={submitting}
           onClick={() => {
             submitUpdate();
           }}
         >
-          {t('button.updateDb')}
+          {t("button.updateDb")}
         </Button>
 
         <Button
@@ -135,7 +135,7 @@ export const AdminView = (): ReactElement => {
             submitAssign();
           }}
         >
-          {t('button.assignPlayers')}
+          {t("button.assignPlayers")}
         </Button>
 
         <Button
@@ -144,33 +144,33 @@ export const AdminView = (): ReactElement => {
             toggleAppOpen();
           }}
         >
-          {appOpen ? t('button.closeApp') : t('button.openApp')}
+          {appOpen ? t("button.closeApp") : t("button.openApp")}
         </Button>
       </div>
 
-      {submitting && <p>{t('loading')}</p>}
+      {submitting && <p>{t("loading")}</p>}
 
       <ResponseMessage>{responseMessage}</ResponseMessage>
 
-      {(!games || games.length === 0) && <p>{t('noGamesInDatabase')}</p>}
+      {(!games || games.length === 0) && <p>{t("noGamesInDatabase")}</p>}
 
       {games && games.length !== 0 && (
         <>
           <StatusMessage className={messageStyle}>{message}</StatusMessage>
 
-          <p>{t('activeTimeDescription')}</p>
+          <p>{t("activeTimeDescription")}</p>
 
-          <div className={'signup-open'}>
+          <div className={"signup-open"}>
             {activeSignupTime && (
               <p>
-                {t('activeTime')}:{' '}
+                {t("activeTime")}:{" "}
                 {timeFormatter.getWeekdayAndTime({
                   time: activeSignupTime,
                   capitalize: true,
                 })}
               </p>
             )}
-            {!activeSignupTime && <p>{t('noActiveTime')}</p>}
+            {!activeSignupTime && <p>{t("noActiveTime")}</p>}
           </div>
 
           <Button
@@ -179,7 +179,7 @@ export const AdminView = (): ReactElement => {
               submitTime();
             }}
           >
-            {t('button.saveTime')}
+            {t("button.saveTime")}
           </Button>
 
           <TimesDropdown

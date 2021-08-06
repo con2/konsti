@@ -1,10 +1,10 @@
-import { AxiosResponse, AxiosError } from 'axios';
-import { api } from 'client/utils/api';
-import { ServerError } from 'shared/typings/api/errors';
+import { AxiosResponse, AxiosError } from "axios";
+import { api } from "client/utils/api";
+import { ServerError } from "shared/typings/api/errors";
 import {
   ENTERED_GAME_ENDPOINT,
   SIGNUP_ENDPOINT,
-} from 'shared/constants/apiEndpoints';
+} from "shared/constants/apiEndpoints";
 import {
   DeleteEnteredGameParameters,
   DeleteEnteredGameResponse,
@@ -13,7 +13,7 @@ import {
   PostEnteredGameResponse,
   PostSignupResponse,
   SignupData,
-} from 'shared/typings/api/signup';
+} from "shared/typings/api/signup";
 
 export const postSignup = async (
   signupData: SignupData

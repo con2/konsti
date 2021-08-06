@@ -1,11 +1,11 @@
-import React, { ReactElement, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { config } from 'client/config';
-import { LoggedInUserNavigation } from './LoggedInUserNavigation';
-import { UserNavigation } from './UserNavigation';
-import { useAppSelector } from 'client/utils/hooks';
+import React, { ReactElement, useState } from "react";
+import { useTranslation } from "react-i18next";
+import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { config } from "client/config";
+import { LoggedInUserNavigation } from "./LoggedInUserNavigation";
+import { UserNavigation } from "./UserNavigation";
+import { useAppSelector } from "client/utils/hooks";
 
 export const Navigation = (): ReactElement => {
   const username = useAppSelector((state) => state.login.username);
@@ -16,28 +16,28 @@ export const Navigation = (): ReactElement => {
 
   const [isOpen, setIsOpen] = useState(false);
 
-  const icon = isOpen ? 'times' : 'bars';
+  const icon = isOpen ? "times" : "bars";
   return (
     <>
       <NavigationIconContainer>
         <NavigationIcon
           icon={icon}
           onClick={() => setIsOpen(!isOpen)}
-          data-testkey='navigation-icon'
+          data-testkey="navigation-icon"
         />
       </NavigationIconContainer>
       {isOpen && (
         <Dimmer
           onClick={() => setIsOpen(false)}
           includeTimeSelectorHeight={
-            loadedSettings !== 'production' && useTestTime
+            loadedSettings !== "production" && useTestTime
           }
         />
       )}
       {isOpen && (
         <Drawer
           includeTimeSelectorHeight={
-            loadedSettings !== 'production' && useTestTime
+            loadedSettings !== "production" && useTestTime
           }
         >
           {loggedIn ? (
@@ -47,11 +47,11 @@ export const Navigation = (): ReactElement => {
           )}
           {loggedIn && (
             <LoggedUserDetails>
-              <UserInfo data-testkey='logged-user-username'>
-                {t('user')}: {username}
+              <UserInfo data-testkey="logged-user-username">
+                {t("user")}: {username}
               </UserInfo>
-              <UserInfo data-testkey='logged-user-serial'>
-                {t('code')}: {serial}
+              <UserInfo data-testkey="logged-user-serial">
+                {t("code")}: {serial}
               </UserInfo>
             </LoggedUserDetails>
           )}

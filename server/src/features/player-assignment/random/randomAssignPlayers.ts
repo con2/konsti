@@ -1,11 +1,11 @@
-import _ from 'lodash';
-import { logger } from 'server/utils/logger';
-import { getStartingGames } from 'server/features/player-assignment/utils/getStartingGames';
-import { runRandomAssignment } from 'server/features/player-assignment/random/utils/runRandomAssignment';
-import { User } from 'shared/typings/models/user';
-import { Game } from 'shared/typings/models/game';
-import { PlayerAssignmentResult } from 'server/typings/result.typings';
-import { getRunRandomAndPadgInput } from 'server/features/player-assignment/utils/getRunRandomAndPadgInput';
+import _ from "lodash";
+import { logger } from "server/utils/logger";
+import { getStartingGames } from "server/features/player-assignment/utils/getStartingGames";
+import { runRandomAssignment } from "server/features/player-assignment/random/utils/runRandomAssignment";
+import { User } from "shared/typings/models/user";
+import { Game } from "shared/typings/models/game";
+import { PlayerAssignmentResult } from "server/typings/result.typings";
+import { getRunRandomAndPadgInput } from "server/features/player-assignment/utils/getRunRandomAndPadgInput";
 
 export const randomAssignPlayers = (
   players: readonly User[],
@@ -16,12 +16,12 @@ export const randomAssignPlayers = (
   const startingGames = getStartingGames(games, startingTime);
 
   if (startingGames.length === 0) {
-    logger.info('No starting games, stop!');
+    logger.info("No starting games, stop!");
     return {
       results: [],
-      message: 'Random Assign Result - No starting games',
-      algorithm: 'Random',
-      status: 'error: no starting games',
+      message: "Random Assign Result - No starting games",
+      algorithm: "Random",
+      status: "error: no starting games",
     };
   }
   const {
@@ -33,12 +33,12 @@ export const randomAssignPlayers = (
   } = getRunRandomAndPadgInput(players, games, startingTime);
 
   if (signedGames.length === 0) {
-    logger.info('No signup wishes, stop!');
+    logger.info("No signup wishes, stop!");
     return {
       results: [],
-      message: 'Random Assign Result - No signup wishes',
-      algorithm: 'Random',
-      status: 'error: no signup wishes',
+      message: "Random Assign Result - No signup wishes",
+      algorithm: "Random",
+      status: "error: no signup wishes",
     };
   }
   logger.debug(`Games with signups: ${signedGames.length}`);
@@ -69,7 +69,7 @@ export const randomAssignPlayers = (
   return Object.assign({
     ...assignmentResult,
     message,
-    algorithm: 'Random',
-    status: 'success',
+    algorithm: "Random",
+    status: "success",
   });
 };

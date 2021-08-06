@@ -1,8 +1,8 @@
-import { logger } from 'server/utils/logger';
-import { Game } from 'shared/typings/models/game';
-import { ResultsCollectionEntry } from 'server/typings/result.typings';
-import { StringNumberObject } from 'server/typings/common.typings';
-import { toPercent } from 'server/features/statistics/statsUtil';
+import { logger } from "server/utils/logger";
+import { Game } from "shared/typings/models/game";
+import { ResultsCollectionEntry } from "server/typings/result.typings";
+import { StringNumberObject } from "server/typings/common.typings";
+import { toPercent } from "server/features/statistics/statsUtil";
 
 export const getSignupsByTime = (
   results: readonly ResultsCollectionEntry[]
@@ -49,7 +49,7 @@ export const getDemandByTime = (
   signupsByTime: StringNumberObject,
   maximumNumberOfPlayersByTime: StringNumberObject
 ): void => {
-  logger.info('Sanity check: values over 100% are anomalies');
+  logger.info("Sanity check: values over 100% are anomalies");
   for (const startTime in maximumNumberOfPlayersByTime) {
     logger.info(
       `Signed people for ${startTime}: ${signupsByTime[startTime]}/${

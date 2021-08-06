@@ -1,7 +1,7 @@
-import mongoose from 'mongoose';
-import { MongoMemoryServer } from 'mongodb-memory-server';
-import { FeedbackModel } from 'server/features/feedback/feedbackSchema';
-import { saveFeedback } from 'server/features/feedback/feedbackRepository';
+import mongoose from "mongoose";
+import { MongoMemoryServer } from "mongodb-memory-server";
+import { FeedbackModel } from "server/features/feedback/feedbackSchema";
+import { saveFeedback } from "server/features/feedback/feedbackRepository";
 
 let mongoServer: MongoMemoryServer;
 
@@ -24,11 +24,11 @@ afterEach(async () => {
   await mongoServer.stop();
 });
 
-test('should insert new feedback into collection', async () => {
+test("should insert new feedback into collection", async () => {
   const mockFeedback = {
-    gameId: '1234A',
-    feedback: 'Test feedback',
-    username: 'Test user',
+    gameId: "1234A",
+    feedback: "Test feedback",
+    username: "Test user",
   };
   await saveFeedback(mockFeedback);
 

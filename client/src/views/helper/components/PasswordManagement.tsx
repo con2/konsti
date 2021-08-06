@@ -1,16 +1,16 @@
-import React, { ReactElement, ChangeEvent, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import styled, { css } from 'styled-components';
-import { getUserBySerialOrUsername } from 'client/services/userServices';
-import { Button } from 'client/components/Button';
-import { ChangePasswordForm } from 'client/views/helper/components/ChangePasswordForm';
+import React, { ReactElement, ChangeEvent, useState } from "react";
+import { useTranslation } from "react-i18next";
+import styled, { css } from "styled-components";
+import { getUserBySerialOrUsername } from "client/services/userServices";
+import { Button } from "client/components/Button";
+import { ChangePasswordForm } from "client/views/helper/components/ChangePasswordForm";
 
 export const PasswordManagement = (): ReactElement => {
   const { t } = useTranslation();
 
-  const [serial, setSerial] = useState<string>('');
-  const [username, setUsername] = useState<string>('');
-  const [userSerialInput, setUserSerialInput] = useState<string>('');
+  const [serial, setSerial] = useState<string>("");
+  const [username, setUsername] = useState<string>("");
+  const [userSerialInput, setUserSerialInput] = useState<string>("");
   const [changePasswordInputVisible, setChangePasswordInputVisible] =
     useState<boolean>(false);
   const [userFoundMessage, setUserFoundMessage] = useState<ReactElement>(
@@ -22,15 +22,15 @@ export const PasswordManagement = (): ReactElement => {
 
     const response = await getUserBySerialOrUsername(userSerialInput);
 
-    if (!response || response.status === 'error') {
+    if (!response || response.status === "error") {
       setUserFoundMessage(
-        <Message error={true}>{t('passwordManagement.userNotFound')}</Message>
+        <Message error={true}>{t("passwordManagement.userNotFound")}</Message>
       );
       setChangePasswordInputVisible(false);
-    } else if (response.status === 'success') {
+    } else if (response.status === "success") {
       setUserFoundMessage(
         <Message>
-          {t('passwordManagement.foundUser')}: {response.username} (
+          {t("passwordManagement.foundUser")}: {response.username} (
           {response.serial})
         </Message>
       );
@@ -45,17 +45,17 @@ export const PasswordManagement = (): ReactElement => {
   };
 
   return (
-    <div className='password-management'>
-      <h3>{t('passwordManagement.helperPasswordManagement')}</h3>
+    <div className="password-management">
+      <h3>{t("passwordManagement.helperPasswordManagement")}</h3>
       <div>
-        <p>{t('passwordManagement.userCodeOrUsername')}</p>
+        <p>{t("passwordManagement.userCodeOrUsername")}</p>
         <FormInput
-          key='user-serial'
-          placeholder={t('passwordManagement.userCodeOrUsername')}
+          key="user-serial"
+          placeholder={t("passwordManagement.userCodeOrUsername")}
           value={userSerialInput}
           onChange={handleSerialChange}
         />
-        <Button onClick={submitGetUser}>{t('button.find')}</Button>
+        <Button onClick={submitGetUser}>{t("button.find")}</Button>
 
         {userFoundMessage}
       </div>

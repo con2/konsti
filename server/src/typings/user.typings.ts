@@ -1,10 +1,10 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 import {
   FavoritedGame,
   SelectedGame,
   User,
   UserGroup,
-} from 'shared/typings/models/user';
+} from "shared/typings/models/user";
 
 export interface UserDoc extends User, mongoose.Document {}
 

@@ -1,6 +1,6 @@
-import { Request, Response } from 'express';
-import { validationResult } from 'express-validator';
-import { String, Record, Number, Array, Boolean } from 'runtypes';
+import { Request, Response } from "express";
+import { validationResult } from "express-validator";
+import { String, Record, Number, Array, Boolean } from "runtypes";
 import {
   fetchUserByUsername,
   storeUser,
@@ -11,10 +11,10 @@ import {
   storeSignup,
   fetchUserBySerialOrUsername,
   storeUserPassword,
-} from 'server/features/user/userService';
-import { UserGroup } from 'shared/typings/models/user';
-import { isAuthorized } from 'server/utils/authHeader';
-import { logger } from 'server/utils/logger';
+} from "server/features/user/userService";
+import { UserGroup } from "shared/typings/models/user";
+import { isAuthorized } from "server/utils/authHeader";
+import { logger } from "server/utils/logger";
 import {
   FAVORITE_ENDPOINT,
   GROUP_ENDPOINT,
@@ -23,19 +23,19 @@ import {
   USERS_BY_SERIAL_OR_USERNAME_ENDPOINT,
   USERS_ENDPOINT,
   USERS_PASSWORD_ENDPOINT,
-} from 'shared/constants/apiEndpoints';
-import { SignupData } from 'shared/typings/api/signup';
-import { GroupData } from 'shared/typings/api/groups';
-import { SaveFavoriteRequest } from 'shared/typings/api/favorite';
+} from "shared/constants/apiEndpoints";
+import { SignupData } from "shared/typings/api/signup";
+import { GroupData } from "shared/typings/api/groups";
+import { SaveFavoriteRequest } from "shared/typings/api/favorite";
 import {
   LoginFormFields,
   RegistrationFormFields,
   UpdateUserPasswordRequest,
-} from 'shared/typings/api/login';
-import { sharedConfig } from 'shared/config/sharedConfig';
-import { ConventionType } from 'shared/config/sharedConfig.types';
-import { createSerial } from './userUtils';
-import { GameRuntype } from 'shared/typings/models/game';
+} from "shared/typings/api/login";
+import { sharedConfig } from "shared/config/sharedConfig";
+import { ConventionType } from "shared/config/sharedConfig.types";
+import { createSerial } from "./userUtils";
+import { GameRuntype } from "shared/typings/models/game";
 
 export const postUser = async (
   req: Request<{}, {}, RegistrationFormFields>,
@@ -82,7 +82,7 @@ export const postUserPassword = async (
 
   const { username, password, requester } = parameters;
 
-  if (requester === 'ropetiski') {
+  if (requester === "ropetiski") {
     if (!isAuthorized(req.headers.authorization, UserGroup.HELP, requester)) {
       return res.sendStatus(401);
     }
@@ -230,7 +230,7 @@ export const getUserBySerialOrUsername = async (
 ): Promise<Response> => {
   logger.info(`API call: GET ${USERS_BY_SERIAL_OR_USERNAME_ENDPOINT}`);
 
-  if (!isAuthorized(req.headers.authorization, UserGroup.HELP, 'ropetiski')) {
+  if (!isAuthorized(req.headers.authorization, UserGroup.HELP, "ropetiski")) {
     return res.sendStatus(401);
   }
 

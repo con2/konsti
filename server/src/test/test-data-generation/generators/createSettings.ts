@@ -1,20 +1,20 @@
-import { logger } from 'server/utils/logger';
-import { findGames } from 'server/features/game/gameRepository';
+import { logger } from "server/utils/logger";
+import { findGames } from "server/features/game/gameRepository";
 import {
   findSettings,
   saveSignupMessage,
-} from 'server/features/settings/settingsRepository';
+} from "server/features/settings/settingsRepository";
 
 interface CreateSettingsParameters {
   signupMessages: boolean;
 }
 
 const testMessages = [
-  'Character class and level',
-  'Do you like cake?',
-  'Have you played this before?',
-  'Can you make it in time?',
-  'Do you know the place?',
+  "Character class and level",
+  "Do you like cake?",
+  "Have you played this before?",
+  "Can you make it in time?",
+  "Do you know the place?",
 ];
 
 export const createSettings = async ({

@@ -1,18 +1,18 @@
-import { eventAssignment } from 'eventassigner-random';
-import { CheckResult } from 'eventassigner-random/lib/typings/checkResult';
-import { config } from 'server/config';
-import { getGroups } from 'server/features/player-assignment/utils/getGroups';
-import { getList } from 'server/features/player-assignment/utils/getList';
-import { getRandomAssignEvents } from 'server/features/player-assignment/random/utils/getRandomAssignEvents';
-import { formatResults } from 'server/features/player-assignment/utils/formatResults';
-import { Game } from 'shared/typings/models/game';
-import { AssignmentStrategyResult } from 'server/typings/result.typings';
+import { eventAssignment } from "eventassigner-random";
+import { CheckResult } from "eventassigner-random/lib/typings/checkResult";
+import { config } from "server/config";
+import { getGroups } from "server/features/player-assignment/utils/getGroups";
+import { getList } from "server/features/player-assignment/utils/getList";
+import { getRandomAssignEvents } from "server/features/player-assignment/random/utils/getRandomAssignEvents";
+import { formatResults } from "server/features/player-assignment/utils/formatResults";
+import { Game } from "shared/typings/models/game";
+import { AssignmentStrategyResult } from "server/typings/result.typings";
 import {
   ListItem,
   RandomAssignUpdateLInput,
   PadgRandomAssignResults,
-} from 'server/typings/padgRandomAssign.typings';
-import { User } from 'shared/typings/models/user';
+} from "server/typings/padgRandomAssign.typings";
+import { User } from "shared/typings/models/user";
 
 export const runRandomAssignment = (
   signedGames: readonly Game[],
@@ -41,7 +41,7 @@ export const runRandomAssignment = (
 
   const results = formatResults(assignResults, playerGroups);
 
-  const message = 'Random assignment completed';
+  const message = "Random assignment completed";
 
   return { results, message };
 };

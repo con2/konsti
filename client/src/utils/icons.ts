@@ -1,4 +1,4 @@
-import { library } from '@fortawesome/fontawesome-svg-core';
+import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faAngleUp as fasAngleUp,
   faAngleDown as fasAngleDown,
@@ -8,11 +8,11 @@ import {
   faBars as fasBars,
   faTimes as fasTimes,
   faComment as fasComment,
-} from '@fortawesome/free-solid-svg-icons';
+} from "@fortawesome/free-solid-svg-icons";
 import {
   faHeart as farHeart,
   faComment as farComment,
-} from '@fortawesome/free-regular-svg-icons';
+} from "@fortawesome/free-regular-svg-icons";
 
 export const getIconLibrary = (): void => {
   library.add(

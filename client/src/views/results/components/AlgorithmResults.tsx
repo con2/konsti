@@ -1,8 +1,8 @@
-import React, { ReactElement } from 'react';
-import { useTranslation } from 'react-i18next';
-import { useAppSelector } from 'client/utils/hooks';
-import { AlgorithmResultsList } from 'client/views/results/components/AlgorithmResultsList';
-import { timeFormatter } from 'client/utils/timeFormatter';
+import React, { ReactElement } from "react";
+import { useTranslation } from "react-i18next";
+import { useAppSelector } from "client/utils/hooks";
+import { AlgorithmResultsList } from "client/views/results/components/AlgorithmResultsList";
+import { timeFormatter } from "client/utils/timeFormatter";
 
 export const AlgorithmResults = (): ReactElement => {
   const { t } = useTranslation();
@@ -18,12 +18,12 @@ export const AlgorithmResults = (): ReactElement => {
   );
 
   return (
-    <div className='results-view'>
-      {!activeSignupTime && <h2>{t('noResults')}</h2>}
+    <div className="results-view">
+      {!activeSignupTime && <h2>{t("noResults")}</h2>}
       {activeSignupTime && (
         <>
           <h2>
-            {t('signupResultsfor')}{' '}
+            {t("signupResultsfor")}{" "}
             {timeFormatter.getWeekdayAndTime({
               time: activeSignupTime,
               capitalize: false,

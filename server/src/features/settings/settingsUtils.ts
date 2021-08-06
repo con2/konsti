@@ -1,6 +1,6 @@
-import { findUsers, updateUser } from 'server/features/user/userRepository';
-import { logger } from 'server/utils/logger';
-import { Game } from 'shared/typings/models/game';
+import { findUsers, updateUser } from "server/features/user/userRepository";
+import { logger } from "server/utils/logger";
+import { Game } from "shared/typings/models/game";
 
 export const removeHiddenGamesFromUsers = async (
   hiddenGames: readonly Game[]

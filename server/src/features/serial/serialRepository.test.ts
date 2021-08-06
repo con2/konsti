@@ -1,8 +1,8 @@
-import mongoose from 'mongoose';
-import { MongoMemoryServer } from 'mongodb-memory-server';
-import { saveSerials } from 'server/features/serial/serialRepository';
+import mongoose from "mongoose";
+import { MongoMemoryServer } from "mongodb-memory-server";
+import { saveSerials } from "server/features/serial/serialRepository";
 
-jest.mock('generate-serial-number');
+jest.mock("generate-serial-number");
 
 let mongoServer: MongoMemoryServer;
 
@@ -25,24 +25,24 @@ afterEach(async () => {
   await mongoServer.stop();
 });
 
-test('should insert new serial into collection', async () => {
+test("should insert new serial into collection", async () => {
   const result = await saveSerials(1);
   expect(result.length).toEqual(1);
-  expect(result[0].serial).toEqual('a1234');
+  expect(result[0].serial).toEqual("a1234");
 });
 
-test('should not insert same serial into collection when creating', async () => {
+test("should not insert same serial into collection when creating", async () => {
   const savedSerials = await saveSerials(4);
   const results = savedSerials.map((serial) => serial.serial);
   expect(results.length).toEqual(4);
-  expect(results).toEqual(['a1234', 'b5225', 'c2512', 'd1232']);
+  expect(results).toEqual(["a1234", "b5225", "c2512", "d1232"]);
 });
 
-test('should not insert same serial into collection if the serial is in a collection', async () => {
+test("should not insert same serial into collection if the serial is in a collection", async () => {
   // save the first serial into the collection
   await saveSerials(1);
   const savedSerials = await saveSerials(4);
   const results = savedSerials.map((serial) => serial.serial);
   expect(results.length).toEqual(4);
-  expect(results).toEqual(['b5225', 'c2512', 'd1232', 'e12039']);
+  expect(results).toEqual(["b5225", "c2512", "d1232", "e12039"]);
 });

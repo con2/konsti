@@ -1,8 +1,8 @@
-import mongoose from 'mongoose';
-import { MongoMemoryServer } from 'mongodb-memory-server';
-import { ResultsModel } from 'server/features/results/resultsSchema';
-import { Result } from 'shared/typings/models/result';
-import { saveResult } from 'server/features/results/resultsRepository';
+import mongoose from "mongoose";
+import { MongoMemoryServer } from "mongodb-memory-server";
+import { ResultsModel } from "server/features/results/resultsSchema";
+import { Result } from "shared/typings/models/result";
+import { saveResult } from "server/features/results/resultsRepository";
 
 let mongoServer: MongoMemoryServer;
 
@@ -25,11 +25,11 @@ afterEach(async () => {
   await mongoServer.stop();
 });
 
-test('should insert new result into collection', async () => {
+test("should insert new result into collection", async () => {
   const signupResultData: Result[] = [];
-  const startTime = '2019-07-26T14:00:00.000Z';
-  const algorithm = 'group';
-  const message = 'Test assign result message';
+  const startTime = "2019-07-26T14:00:00.000Z";
+  const algorithm = "group";
+  const message = "Test assign result message";
 
   await saveResult(signupResultData, startTime, algorithm, message);
 

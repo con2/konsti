@@ -1,8 +1,8 @@
-import fs from 'fs';
-import _ from 'lodash';
-import prettier from 'prettier';
-import { config } from 'server/config';
-import { logger } from 'server/utils/logger';
+import fs from "fs";
+import _ from "lodash";
+import prettier from "prettier";
+import { config } from "server/config";
+import { logger } from "server/utils/logger";
 
 export const readJson = <T>(
   year: number,
@@ -12,7 +12,7 @@ export const readJson = <T>(
   const data = JSON.parse(
     fs.readFileSync(
       `${config.statsDataDir}/${event}/${year}/${datatype}.json`,
-      'utf8'
+      "utf8"
     )
   );
 
@@ -32,8 +32,8 @@ export const writeJson = <T>(
 
   fs.writeFileSync(
     `${config.statsDataDir}/${event}/${year}/temp/${datatype}-fixed.json`,
-    prettier.format(JSON.stringify(data), { parser: 'json' }),
-    'utf8'
+    prettier.format(JSON.stringify(data), { parser: "json" }),
+    "utf8"
   );
 
   logger.info(

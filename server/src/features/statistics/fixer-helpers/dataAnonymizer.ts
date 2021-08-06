@@ -1,10 +1,10 @@
-import fs from 'fs';
-import faker from 'faker';
-import { logger } from 'server/utils/logger';
-import { User } from 'shared/typings/models/user';
-import { ResultsCollectionEntry } from 'server/typings/result.typings';
-import { writeJson } from 'server/features/statistics/statsUtil';
-import { config } from 'server/config';
+import fs from "fs";
+import faker from "faker";
+import { logger } from "server/utils/logger";
+import { User } from "shared/typings/models/user";
+import { ResultsCollectionEntry } from "server/typings/result.typings";
+import { writeJson } from "server/features/statistics/statsUtil";
+import { config } from "server/config";
 
 export const anonymizeData = async (
   year: number,
@@ -13,14 +13,14 @@ export const anonymizeData = async (
   const users: User[] = JSON.parse(
     fs.readFileSync(
       `${config.statsDataDir}/${event}/${year}/users.json`,
-      'utf8'
+      "utf8"
     )
   );
 
   const results: ResultsCollectionEntry[] = JSON.parse(
     fs.readFileSync(
       `${config.statsDataDir}/${event}/${year}/results.json`,
-      'utf8'
+      "utf8"
     )
   );
 
@@ -40,6 +40,6 @@ export const anonymizeData = async (
     user.username = randomUsername;
   });
 
-  await writeJson(year, event, 'users', users);
-  await writeJson(year, event, 'results', results);
+  await writeJson(year, event, "users", users);
+  await writeJson(year, event, "results", results);
 };

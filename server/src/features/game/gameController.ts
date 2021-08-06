@@ -1,9 +1,9 @@
-import { Request, Response } from 'express';
-import { isAuthorized } from 'server/utils/authHeader';
-import { UserGroup } from 'shared/typings/models/user';
-import { fetchGames, storeGames } from 'server/features/game/gamesService';
-import { logger } from 'server/utils/logger';
-import { GAMES_ENDPOINT } from 'shared/constants/apiEndpoints';
+import { Request, Response } from "express";
+import { isAuthorized } from "server/utils/authHeader";
+import { UserGroup } from "shared/typings/models/user";
+import { fetchGames, storeGames } from "server/features/game/gamesService";
+import { logger } from "server/utils/logger";
+import { GAMES_ENDPOINT } from "shared/constants/apiEndpoints";
 
 export const postGame = async (
   req: Request,
@@ -11,7 +11,7 @@ export const postGame = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${GAMES_ENDPOINT}`);
 
-  if (!isAuthorized(req.headers.authorization, UserGroup.ADMIN, 'admin')) {
+  if (!isAuthorized(req.headers.authorization, UserGroup.ADMIN, "admin")) {
     return res.sendStatus(401);
   }
 

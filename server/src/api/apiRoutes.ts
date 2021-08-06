@@ -1,11 +1,11 @@
-import express from 'express';
-import { postUserValidation, postLoginValidation } from 'server/api/validation';
-import { postFeedback } from 'server/features/feedback/feedbackController';
-import { getGames, postGame } from 'server/features/game/gameController';
+import express from "express";
+import { postUserValidation, postLoginValidation } from "server/api/validation";
+import { postFeedback } from "server/features/feedback/feedbackController";
+import { getGames, postGame } from "server/features/game/gameController";
 import {
   getResults,
   postAssignment,
-} from 'server/features/results/resultsController';
+} from "server/features/results/resultsController";
 import {
   deleteSignupMessage,
   getSettings,
@@ -13,12 +13,12 @@ import {
   postHidden,
   postSignupMessage,
   postSignupTime,
-} from 'server/features/settings/settingsController';
+} from "server/features/settings/settingsController";
 import {
   deleteEnteredGame,
   postEnteredGame,
-} from 'server/features/user/entered-game/enteredGameController';
-import { postSessionRestore } from 'server/features/user/session-restore/sessionRestoreController';
+} from "server/features/user/entered-game/enteredGameController";
+import { postSessionRestore } from "server/features/user/session-restore/sessionRestoreController";
 import {
   getGroup,
   getUser,
@@ -29,7 +29,7 @@ import {
   postSignup,
   getUserBySerialOrUsername,
   postUserPassword,
-} from 'server/features/user/userController';
+} from "server/features/user/userController";
 import {
   ASSIGNMENT_ENDPOINT,
   ENTERED_GAME_ENDPOINT,
@@ -49,7 +49,7 @@ import {
   USERS_ENDPOINT,
   USERS_BY_SERIAL_OR_USERNAME_ENDPOINT,
   USERS_PASSWORD_ENDPOINT,
-} from 'shared/constants/apiEndpoints';
+} from "shared/constants/apiEndpoints";
 
 export const apiRoutes = express.Router();
 

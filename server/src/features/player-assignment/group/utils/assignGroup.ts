@@ -1,10 +1,10 @@
-import { logger } from 'server/utils/logger';
-import { runGroupAssignment } from 'server/features/player-assignment/group/utils/runGroupAssignment';
-import { config } from 'server/config';
-import { Game } from 'shared/typings/models/game';
-import { AssignmentStrategyResult } from 'server/typings/result.typings';
-import { User } from 'shared/typings/models/user';
-import { Result } from 'shared/typings/models/result';
+import { logger } from "server/utils/logger";
+import { runGroupAssignment } from "server/features/player-assignment/group/utils/runGroupAssignment";
+import { config } from "server/config";
+import { Game } from "shared/typings/models/game";
+import { AssignmentStrategyResult } from "server/typings/result.typings";
+import { User } from "shared/typings/models/user";
+import { Result } from "shared/typings/models/result";
 
 export const assignGroups = (
   selectedPlayers: readonly User[],

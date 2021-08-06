@@ -1,17 +1,17 @@
-import React, { FC, ReactElement, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { Game } from 'shared/typings/models/game';
+import React, { FC, ReactElement, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { Game } from "shared/typings/models/game";
 import {
   getSignedGames,
   getUpcomingEnteredGames,
-} from 'client/utils/getUpcomingGames';
-import { SignupForm } from './SignupForm';
-import { submitSignup } from 'client/views/signup/signupThunks';
-import { SelectedGame } from 'shared/typings/models/user';
-import { useAppDispatch, useAppSelector } from 'client/utils/hooks';
-import { submitSelectedGames } from 'client/views/signup/signupSlice';
-import { isAlreadySigned } from './allGamesUtils';
-import { Button } from 'client/components/Button';
+} from "client/utils/getUpcomingGames";
+import { SignupForm } from "./SignupForm";
+import { submitSignup } from "client/views/signup/signupThunks";
+import { SelectedGame } from "shared/typings/models/user";
+import { useAppDispatch, useAppSelector } from "client/utils/hooks";
+import { submitSelectedGames } from "client/views/signup/signupSlice";
+import { isAlreadySigned } from "./allGamesUtils";
+import { Button } from "client/components/Button";
 
 interface Props {
   game: Game;
@@ -83,13 +83,13 @@ export const AlgorithmSignupForm: FC<Props> = (
     }
 
     if (signedGamesForTimeSlot.length >= 3) {
-      return <p>{t('signup.cannotSignupMoreGames')}</p>;
+      return <p>{t("signup.cannotSignupMoreGames")}</p>;
     }
 
     if (signedGamesForTimeSlot.length < 3 && !signupFormOpen) {
       return (
         <Button onClick={() => setSignupFormOpen(!signupFormOpen)}>
-          {t('signup.signup')}
+          {t("signup.signup")}
         </Button>
       );
     }
@@ -104,10 +104,10 @@ export const AlgorithmSignupForm: FC<Props> = (
         {alreadySignedToGame && (
           <>
             <Button onClick={async () => await removeSignup(game)}>
-              {t('button.cancel')}
+              {t("button.cancel")}
             </Button>
             <p>
-              {t('signup.alreadySigned', {
+              {t("signup.alreadySigned", {
                 CURRENT_PRIORITY: currentPriority,
               })}
             </p>

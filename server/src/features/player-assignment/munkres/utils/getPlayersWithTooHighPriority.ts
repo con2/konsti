@@ -1,5 +1,5 @@
-import { logger } from 'server/utils/logger';
-import { PlayerIdWithPriority } from 'server/typings/user.typings';
+import { logger } from "server/utils/logger";
+import { PlayerIdWithPriority } from "server/typings/user.typings";
 
 export const getPlayersWithTooHighPriority = (
   priorities: readonly PlayerIdWithPriority[]

@@ -1,8 +1,8 @@
-import _ from 'lodash';
-import { logger } from 'server/utils/logger';
-import { User } from 'shared/typings/models/user';
-import { StringNumberObject } from 'server/typings/common.typings';
-import { toPercent } from 'server/features/statistics/statsUtil';
+import _ from "lodash";
+import { logger } from "server/utils/logger";
+import { User } from "shared/typings/models/user";
+import { StringNumberObject } from "server/typings/common.typings";
+import { toPercent } from "server/features/statistics/statsUtil";
 
 export const getUsersWithoutGames = (
   users: readonly User[]
@@ -49,7 +49,7 @@ export const getUsersWithoutSignups = (
 export const getUsersSignupCount = (users: readonly User[]): void => {
   const userSignupCounts: StringNumberObject[] = [];
   users.forEach((user) => {
-    const signedGames = _.countBy(user.signedGames, 'time');
+    const signedGames = _.countBy(user.signedGames, "time");
     userSignupCounts.push(signedGames);
   });
 
@@ -82,7 +82,7 @@ export const getUsersWithAllGames = (users: readonly User[]): void => {
   let counter = 0;
 
   users.forEach((user) => {
-    const signedGamesByTime = _.countBy(user.signedGames, 'time');
+    const signedGamesByTime = _.countBy(user.signedGames, "time");
 
     if (Object.keys(signedGamesByTime).length === user.enteredGames.length) {
       counter++;
