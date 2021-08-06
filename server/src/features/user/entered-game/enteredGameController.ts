@@ -1,18 +1,18 @@
-import { Request, Response } from 'express';
+import { Request, Response } from "express";
 import {
   removeEnteredGame,
   storeEnteredGame,
-} from 'server/features/user/entered-game/enteredGameService';
-import { isAuthorized } from 'server/utils/authHeader';
-import { logger } from 'server/utils/logger';
-import { ENTERED_GAME_ENDPOINT } from 'shared/constants/apiEndpoints';
+} from "server/features/user/entered-game/enteredGameService";
+import { isAuthorized } from "server/utils/authHeader";
+import { logger } from "server/utils/logger";
+import { ENTERED_GAME_ENDPOINT } from "shared/constants/apiEndpoints";
 import {
   DeleteEnteredGameParameters,
   DeleteEnteredGameParametersRuntype,
   PostEnteredGameParameters,
   PostEnteredGameParametersRuntype,
-} from 'shared/typings/api/signup';
-import { UserGroup } from 'shared/typings/models/user';
+} from "shared/typings/api/signup";
+import { UserGroup } from "shared/typings/models/user";
 
 export const postEnteredGame = async (
   req: Request<{}, {}, PostEnteredGameParameters>,

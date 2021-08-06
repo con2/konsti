@@ -1,8 +1,8 @@
-import 'array-flat-polyfill';
-import { startServer, closeServer } from 'server/utils/server';
-import { logger } from 'server/utils/logger';
-import { autoUpdateGames, autoAssignPlayers } from 'server/utils/cron';
-import { config } from 'server/config';
+import "array-flat-polyfill";
+import { startServer, closeServer } from "server/utils/server";
+import { logger } from "server/utils/logger";
+import { autoUpdateGames, autoAssignPlayers } from "server/utils/cron";
+import { config } from "server/config";
 
 const startApp = async (): Promise<void> => {
   // Start cronjob to auto update games from Kompassi
@@ -17,12 +17,12 @@ const startApp = async (): Promise<void> => {
 
   const server = await startServer(config.dbConnString, config.port);
 
-  process.on('SIGINT', () => {
+  process.on("SIGINT", () => {
     closeServer(server).catch((error) => {
       logger.error(error);
     });
   });
-  process.on('SIGTERM', () => {
+  process.on("SIGTERM", () => {
     closeServer(server).catch((error) => {
       logger.error(error);
     });
@@ -30,7 +30,7 @@ const startApp = async (): Promise<void> => {
 };
 
 const init = (): void => {
-  if (typeof process.env.NODE_ENV === 'string') {
+  if (typeof process.env.NODE_ENV === "string") {
     logger.info(`Node environment: ${process.env.NODE_ENV}`);
   } else {
     throw new Error(`Node environment NODE_ENV missing`);

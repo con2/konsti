@@ -1,4 +1,4 @@
-import { Game } from 'shared/typings/models/game';
+import { Game } from "shared/typings/models/game";
 
 export interface User {
   username: string;
@@ -24,7 +24,7 @@ export interface SelectedGame {
 }
 
 export enum UserGroup {
-  USER = 'user',
-  ADMIN = 'admin',
-  HELP = 'help',
+  USER = "user",
+  ADMIN = "admin",
+  HELP = "help",
 }

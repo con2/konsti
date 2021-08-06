@@ -1,11 +1,11 @@
-import faker from 'faker';
-import moment from 'moment';
-import { logger } from 'server/utils/logger';
-import { config } from 'server/config';
-import { kompassiGameMapper } from 'server/utils/kompassiGameMapper';
-import { KompassiGame } from 'server/typings/game.typings';
-import { Game } from 'shared/typings/models/game';
-import { saveGames } from 'server/features/game/gameRepository';
+import faker from "faker";
+import moment from "moment";
+import { logger } from "server/utils/logger";
+import { config } from "server/config";
+import { kompassiGameMapper } from "server/utils/kompassiGameMapper";
+import { KompassiGame } from "server/typings/game.typings";
+import { Game } from "shared/typings/models/game";
+import { saveGames } from "server/features/game/gameRepository";
 
 const GAME_ID_MAX = 10000000;
 
@@ -18,7 +18,7 @@ export const createGames = async (
   for (let i = 0; i < signupTimes; i += 1) {
     startingTimes.push(
       moment(config.CONVENTION_START_TIME)
-        .add(i + 2, 'hours')
+        .add(i + 2, "hours")
         .format()
     );
   }
@@ -39,14 +39,14 @@ export const createGames = async (
       const kompassiGameData = {
         title: faker.random.words(3),
         description: faker.lorem.sentences(5),
-        category_title: 'Roolipeli',
+        category_title: "Roolipeli",
         formatted_hosts: faker.internet.userName(),
-        room_name: 'Ropetaverna',
+        room_name: "Ropetaverna",
         length,
         start_time: moment(startTime).format(),
-        end_time: moment(startTime).add(length, 'minutes').format(),
-        language: 'fi',
-        rpg_system: 'Test gamesystem',
+        end_time: moment(startTime).add(length, "minutes").format(),
+        language: "fi",
+        rpg_system: "Test gamesystem",
         no_language: true,
         english_ok: true,
         children_friendly: true,
@@ -57,21 +57,21 @@ export const createGames = async (
         max_players: maxAttendance,
         identifier: faker.datatype.number(GAME_ID_MAX).toString(),
         tags: [
-          'in-english',
-          'sopii-lapsille',
-          'vain-taysi-ikaisille',
-          'aloittelijaystavallinen',
-          'kunniavieras',
-          'perheohjelma',
+          "in-english",
+          "sopii-lapsille",
+          "vain-taysi-ikaisille",
+          "aloittelijaystavallinen",
+          "kunniavieras",
+          "perheohjelma",
         ],
-        genres: ['fantasy', 'war', 'exploration', 'mystery', 'drama'],
-        styles: ['serious', 'story_driven', 'character_driven'],
+        genres: ["fantasy", "war", "exploration", "mystery", "drama"],
+        styles: ["serious", "story_driven", "character_driven"],
         short_blurb: faker.lorem.sentence(),
         revolving_door: true,
-        three_word_description: 'This is example ',
+        three_word_description: "This is example ",
         is_beginner_friendly: true,
-        content_warnings: '',
-        other_author: '',
+        content_warnings: "",
+        other_author: "",
         ropecon2018_characters: 6,
         ropecon2021_accessibility_loud_sounds: false,
         ropecon2021_accessibility_flashing_lights: false,

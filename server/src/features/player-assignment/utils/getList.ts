@@ -1,8 +1,8 @@
-import _ from 'lodash';
-import moment from 'moment';
-import { ListItem } from 'server/typings/padgRandomAssign.typings';
-import { getAssignmentBonus } from 'server/features/player-assignment/utils/getAssignmentBonus';
-import { SelectedGame, User } from 'shared/typings/models/user';
+import _ from "lodash";
+import moment from "moment";
+import { ListItem } from "server/typings/padgRandomAssign.typings";
+import { getAssignmentBonus } from "server/features/player-assignment/utils/getAssignmentBonus";
+import { SelectedGame, User } from "shared/typings/models/user";
 
 export const getList = (
   playerGroups: readonly User[][],
@@ -11,7 +11,7 @@ export const getList = (
   return playerGroups.flatMap((playerGroup) => {
     const firstMember = _.first(playerGroup);
     if (!firstMember)
-      throw new Error('Padg or Random assign: error getting first member');
+      throw new Error("Padg or Random assign: error getting first member");
 
     return firstMember.signedGames
       .filter(
@@ -21,7 +21,7 @@ export const getList = (
       .map((signedGame) => {
         return {
           id:
-            firstMember.groupCode !== '0'
+            firstMember.groupCode !== "0"
               ? firstMember.groupCode
               : firstMember.serial,
           size: playerGroup.length,

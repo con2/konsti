@@ -1,10 +1,10 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ResultsState } from 'client/typings/redux.typings';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { ResultsState } from "client/typings/redux.typings";
 
-const initialState: ResultsState = { startTime: '', result: [] };
+const initialState: ResultsState = { startTime: "", result: [] };
 
 const resultsSlice = createSlice({
-  name: 'myGames',
+  name: "myGames",
   initialState,
   reducers: {
     submitGetResultsAsync(state, action: PayloadAction<ResultsState>) {

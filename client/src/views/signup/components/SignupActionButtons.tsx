@@ -1,11 +1,11 @@
-import React, { ReactElement, MouseEvent } from 'react';
-import styled from 'styled-components';
-import { useTranslation } from 'react-i18next';
-import { updateUnsavedChangesStatus } from 'client/views/signup/signupSlice';
-import { SelectedGame } from 'shared/typings/models/user';
-import { useAppDispatch } from 'client/utils/hooks';
-import { AppDispatch } from 'client/typings/redux.typings';
-import { Button } from 'client/components/Button';
+import React, { ReactElement, MouseEvent } from "react";
+import styled from "styled-components";
+import { useTranslation } from "react-i18next";
+import { updateUnsavedChangesStatus } from "client/views/signup/signupSlice";
+import { SelectedGame } from "shared/typings/models/user";
+import { useAppDispatch } from "client/utils/hooks";
+import { AppDispatch } from "client/typings/redux.typings";
+import { Button } from "client/components/Button";
 
 interface Props {
   groupCode: string;
@@ -34,24 +34,24 @@ export const SignupActionButtons = ({
   const { t } = useTranslation();
 
   return (
-    <div className='signup-action-buttons-row'>
+    <div className="signup-action-buttons-row">
       <Button disabled={submitting || !leader} onClick={onSubmitClick}>
-        {t('button.signup')}
+        {t("button.signup")}
       </Button>
 
       <Button disabled={submitting || !leader} onClick={onCancelClick}>
-        {t('button.cancelSignup')}
+        {t("button.cancelSignup")}
       </Button>
 
-      {signupSubmitted && <SuccessMessage>{t('signupSaved')}</SuccessMessage>}
+      {signupSubmitted && <SuccessMessage>{t("signupSaved")}</SuccessMessage>}
 
       {checkForSignupChanges(signedGames, selectedGames, dispatch) && (
-        <InfoMessage>{t('signupUnsavedChanges')}</InfoMessage>
+        <InfoMessage>{t("signupUnsavedChanges")}</InfoMessage>
       )}
 
-      {!leader && <p className='bold'>{t('signupDisabledNotLeader')}</p>}
-      {leader && groupCode !== '0' && (
-        <p className='bold'>{t('signupForWholeGroup')}</p>
+      {!leader && <p className="bold">{t("signupDisabledNotLeader")}</p>}
+      {leader && groupCode !== "0" && (
+        <p className="bold">{t("signupForWholeGroup")}</p>
       )}
 
       <p>{signupError && <ErrorMessage>{t(signupError)} </ErrorMessage>}</p>

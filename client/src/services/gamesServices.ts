@@ -1,8 +1,8 @@
-import { AxiosResponse, AxiosError } from 'axios';
-import { api } from 'client/utils/api';
-import { ServerError } from 'shared/typings/api/errors';
-import { PostGamesResponse, GetGamesResponse } from 'shared/typings/api/games';
-import { GAMES_ENDPOINT } from 'shared/constants/apiEndpoints';
+import { AxiosResponse, AxiosError } from "axios";
+import { api } from "client/utils/api";
+import { ServerError } from "shared/typings/api/errors";
+import { PostGamesResponse, GetGamesResponse } from "shared/typings/api/games";
+import { GAMES_ENDPOINT } from "shared/constants/apiEndpoints";
 
 export const postGamesUpdate = async (): Promise<
   PostGamesResponse | ServerError

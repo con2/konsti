@@ -1,9 +1,9 @@
-import moment from 'moment';
-import { logger } from 'server/utils/logger';
-import { User } from 'shared/typings/models/user';
-import { ResultsCollectionEntry } from 'server/typings/result.typings';
-import { findUsers } from 'server/features/user/userRepository';
-import { findResults } from 'server/features/results/resultsRepository';
+import moment from "moment";
+import { logger } from "server/utils/logger";
+import { User } from "shared/typings/models/user";
+import { ResultsCollectionEntry } from "server/typings/result.typings";
+import { findUsers } from "server/features/user/userRepository";
+import { findResults } from "server/features/results/resultsRepository";
 
 export const verifyResults = async (): Promise<void> => {
   logger.info(`Verify results and user entered games match`);
@@ -24,7 +24,7 @@ export const verifyResults = async (): Promise<void> => {
     throw new Error(error);
   }
 
-  logger.info('Verify all userResults have correct startTime');
+  logger.info("Verify all userResults have correct startTime");
 
   resultsCollection.map((result) => {
     result.results.map((userResult) => {
@@ -43,7 +43,7 @@ export const verifyResults = async (): Promise<void> => {
     });
   });
 
-  logger.info('Check if user enteredGames match userResults');
+  logger.info("Check if user enteredGames match userResults");
 
   users.forEach((user) => {
     if (!user.enteredGames.length) return;
@@ -89,14 +89,14 @@ export const verifyResults = async (): Promise<void> => {
     });
   });
 
-  logger.info('Check if results match user enteredGames');
+  logger.info("Check if results match user enteredGames");
 
   resultsCollection.forEach((results) => {
     results.results.forEach((result) => {
       const foundUser = users.find((user) => user.username === result.username);
 
       if (!foundUser) {
-        logger.error('No user found for result');
+        logger.error("No user found for result");
         return;
       }
 

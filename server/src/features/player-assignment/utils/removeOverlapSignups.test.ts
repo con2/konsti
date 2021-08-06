@@ -1,13 +1,13 @@
-import mongoose from 'mongoose';
-import { MongoMemoryServer } from 'mongodb-memory-server';
-import { UserModel } from 'server/features/user/userSchema';
-import { GameModel } from 'server/features/game/gameSchema';
-import { removeOverlapSignups } from 'server/features/player-assignment/utils/removeOverlapSignups';
-import { mockUser, mockSignup } from 'server/test/mock-data/mockUser';
-import { mockResults } from 'server/test/mock-data/mockResults';
-import { mockGame, mockGame2 } from 'server/test/mock-data/mockGame';
-import { saveSignup, saveUser } from 'server/features/user/userRepository';
-import { saveGames } from 'server/features/game/gameRepository';
+import mongoose from "mongoose";
+import { MongoMemoryServer } from "mongodb-memory-server";
+import { UserModel } from "server/features/user/userSchema";
+import { GameModel } from "server/features/game/gameSchema";
+import { removeOverlapSignups } from "server/features/player-assignment/utils/removeOverlapSignups";
+import { mockUser, mockSignup } from "server/test/mock-data/mockUser";
+import { mockResults } from "server/test/mock-data/mockResults";
+import { mockGame, mockGame2 } from "server/test/mock-data/mockGame";
+import { saveSignup, saveUser } from "server/features/user/userRepository";
+import { saveGames } from "server/features/game/gameRepository";
 
 let mongoServer: MongoMemoryServer;
 
@@ -30,7 +30,7 @@ afterEach(async () => {
   await mongoServer.stop();
 });
 
-test('should remove overlapping signups from user', async () => {
+test("should remove overlapping signups from user", async () => {
   await saveGames([mockGame, mockGame2]);
   const insertedGames = await GameModel.find({});
   expect(insertedGames.length).toEqual(2);

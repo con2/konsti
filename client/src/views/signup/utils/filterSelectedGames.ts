@@ -1,5 +1,5 @@
-import { Game } from 'shared/typings/models/game';
-import { SelectedGame } from 'shared/typings/models/user';
+import { Game } from "shared/typings/models/game";
+import { SelectedGame } from "shared/typings/models/user";
 
 export const filterSelectedGames = (
   selectedGames: readonly SelectedGame[],

@@ -1,12 +1,12 @@
-import { logger } from 'server/utils/logger';
-import { User } from 'shared/typings/models/user';
-import { Game } from 'shared/typings/models/game';
+import { logger } from "server/utils/logger";
+import { User } from "shared/typings/models/user";
+import { Game } from "shared/typings/models/game";
 
 export const getSelectedPlayers = (
   players: readonly User[],
   startingGames: readonly Game[]
 ): User[] => {
-  logger.debug('Get selected players');
+  logger.debug("Get selected players");
 
   // Get users who have wishes for starting games
   const selectedPlayers = [] as User[];

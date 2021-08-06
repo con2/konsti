@@ -1,10 +1,10 @@
-import mongoose from 'mongoose';
-import { SettingsDoc } from 'server/typings/settings.typings';
+import mongoose from "mongoose";
+import { SettingsDoc } from "server/typings/settings.typings";
 
 const SettingsSchema = new mongoose.Schema(
   {
     hiddenGames: [
-      { type: mongoose.Schema.Types.ObjectId, ref: 'Game', default: [] },
+      { type: mongoose.Schema.Types.ObjectId, ref: "Game", default: [] },
     ],
     signupTime: { type: Date, default: null },
     appOpen: { type: Boolean, default: true },
@@ -14,6 +14,6 @@ const SettingsSchema = new mongoose.Schema(
 );
 
 export const SettingsModel = mongoose.model<SettingsDoc>(
-  'Settings',
+  "Settings",
   SettingsSchema
 );

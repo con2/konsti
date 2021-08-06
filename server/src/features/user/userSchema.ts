@@ -1,5 +1,5 @@
-import mongoose from 'mongoose';
-import { UserDoc } from 'server/typings/user.typings';
+import mongoose from "mongoose";
+import { UserDoc } from "server/typings/user.typings";
 
 const UserSchema = new mongoose.Schema(
   {
@@ -8,10 +8,10 @@ const UserSchema = new mongoose.Schema(
     userGroup: String,
     serial: String,
     groupCode: String,
-    favoritedGames: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Game' }],
+    favoritedGames: [{ type: mongoose.Schema.Types.ObjectId, ref: "Game" }],
     signedGames: [
       {
-        gameDetails: { type: mongoose.Schema.Types.ObjectId, ref: 'Game' },
+        gameDetails: { type: mongoose.Schema.Types.ObjectId, ref: "Game" },
         priority: Number,
         time: Date,
         message: String,
@@ -19,7 +19,7 @@ const UserSchema = new mongoose.Schema(
     ],
     enteredGames: [
       {
-        gameDetails: { type: mongoose.Schema.Types.ObjectId, ref: 'Game' },
+        gameDetails: { type: mongoose.Schema.Types.ObjectId, ref: "Game" },
         priority: Number,
         time: Date,
         message: String,
@@ -29,4 +29,4 @@ const UserSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-export const UserModel = mongoose.model<UserDoc>('User', UserSchema);
+export const UserModel = mongoose.model<UserDoc>("User", UserSchema);

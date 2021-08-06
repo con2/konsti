@@ -1,8 +1,8 @@
-import moment from 'moment';
-import { getStartTimes } from 'client/utils/getStartTimes';
-import { config } from 'client/config';
-import { getTime } from 'client/utils/getTime';
-import { SelectedGame } from 'shared/typings/models/user';
+import moment from "moment";
+import { getStartTimes } from "client/utils/getStartTimes";
+import { config } from "client/config";
+import { getTime } from "client/utils/getTime";
+import { SelectedGame } from "shared/typings/models/user";
 
 export const getMissedSignups = (
   signedGames: readonly SelectedGame[],
@@ -19,7 +19,7 @@ export const getMissedSignups = (
     (signedGamesStartTime) => {
       const signupEndTime = moment(signedGamesStartTime).subtract(
         config.SIGNUP_END_TIME,
-        'minutes'
+        "minutes"
       );
 
       if (signupEndTime.isBefore(moment(timeNow))) {

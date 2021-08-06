@@ -1,13 +1,13 @@
-import React, { ReactElement, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
-import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { timeFormatter } from 'client/utils/timeFormatter';
-import { useAppSelector } from 'client/utils/hooks';
-import { SelectedGame } from 'shared/typings/models/user';
-import { CancelSignupForm } from './CancelSignupForm';
-import { Button } from 'client/components/Button';
+import React, { ReactElement, useState } from "react";
+import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { timeFormatter } from "client/utils/timeFormatter";
+import { useAppSelector } from "client/utils/hooks";
+import { SelectedGame } from "shared/typings/models/user";
+import { CancelSignupForm } from "./CancelSignupForm";
+import { Button } from "client/components/Button";
 
 export interface Props {
   signups: readonly SelectedGame[];
@@ -27,11 +27,11 @@ export const ResultsByStartTimes = ({
   const signupMessages = useAppSelector((state) => state.admin.signupMessages);
   const { t } = useTranslation();
   return (
-    <div className='start-times-list'>
+    <div className="start-times-list">
       {startTimes.map((startTime) => {
         return (
           <div key={startTime}>
-            <p className='bold'>
+            <p className="bold">
               {timeFormatter.getWeekdayAndTime({
                 time: startTime,
                 capitalize: true,
@@ -80,14 +80,14 @@ export const ResultsByStartTimes = ({
                         />
                       ) : (
                         <Button onClick={() => onConfirmCancelSignup()}>
-                          {t('button.cancelSignup')}
+                          {t("button.cancelSignup")}
                         </Button>
                       )}
                     </ButtonContainer>
                     {!!showSignupMessage && (
                       <SignupMessagePlacement>
-                        <FontAwesomeIcon icon={'comment'} />
-                        {` ${t('myGamesView.yourAnswer')} "${
+                        <FontAwesomeIcon icon={"comment"} />
+                        {` ${t("myGamesView.yourAnswer")} "${
                           showSignupMessage.message
                         }": ${signup.message}`}
                       </SignupMessagePlacement>
@@ -100,7 +100,7 @@ export const ResultsByStartTimes = ({
               if (missedSignup === startTime) {
                 return (
                   <GameDetailsList key={missedSignup}>
-                    {t('noSignupResult')}
+                    {t("noSignupResult")}
                   </GameDetailsList>
                 );
               }

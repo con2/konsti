@@ -1,12 +1,12 @@
-import { logger } from 'server/utils/logger';
-import { Game } from 'shared/typings/models/game';
-import { SignupWish } from 'server/typings/user.typings';
+import { logger } from "server/utils/logger";
+import { Game } from "shared/typings/models/game";
+import { SignupWish } from "server/typings/user.typings";
 
 export const getSignedGames = (
   startingGames: readonly Game[],
   signupWishes: readonly SignupWish[]
 ): Game[] => {
-  logger.debug('Get selected games');
+  logger.debug("Get selected games");
   const signedGames = [] as Game[];
   let minAttendance = 0;
   let maxAttendance = 0;

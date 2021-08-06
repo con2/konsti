@@ -1,4 +1,4 @@
-import { UserGroup } from 'shared/typings/models/user';
+import { UserGroup } from "shared/typings/models/user";
 
 export const isUser = (userGroup: UserGroup): boolean => {
   return userGroup === UserGroup.USER;

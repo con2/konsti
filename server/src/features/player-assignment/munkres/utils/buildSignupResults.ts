@@ -1,6 +1,6 @@
-import { Game } from 'shared/typings/models/game';
-import { Result } from 'shared/typings/models/result';
-import { SelectedGame, User } from 'shared/typings/models/user';
+import { Game } from "shared/typings/models/game";
+import { Result } from "shared/typings/models/result";
+import { SelectedGame, User } from "shared/typings/models/user";
 
 export const buildSignupResults = (
   results: readonly number[][],
@@ -31,7 +31,7 @@ export const buildSignupResults = (
         );
 
         if (!enteredGame)
-          throw new Error('Unable to find entered game from signed games');
+          throw new Error("Unable to find entered game from signed games");
 
         signupResults.push({
           username: players[selectedPlayer].username,

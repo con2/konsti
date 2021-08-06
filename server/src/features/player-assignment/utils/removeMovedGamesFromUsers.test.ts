@@ -1,12 +1,12 @@
-import moment from 'moment';
-import mongoose from 'mongoose';
-import { MongoMemoryServer } from 'mongodb-memory-server';
-import { UserModel } from 'server/features/user/userSchema';
-import { GameModel } from 'server/features/game/gameSchema';
-import { mockUser, mockSignup } from 'server/test/mock-data/mockUser';
-import { mockGame, mockGame2 } from 'server/test/mock-data/mockGame';
-import { removeMovedGamesFromUsers } from 'server/features/player-assignment/utils/removeMovedGamesFromUsers';
-import { saveSignup, saveUser } from 'server/features/user/userRepository';
+import moment from "moment";
+import mongoose from "mongoose";
+import { MongoMemoryServer } from "mongodb-memory-server";
+import { UserModel } from "server/features/user/userSchema";
+import { GameModel } from "server/features/game/gameSchema";
+import { mockUser, mockSignup } from "server/test/mock-data/mockUser";
+import { mockGame, mockGame2 } from "server/test/mock-data/mockGame";
+import { removeMovedGamesFromUsers } from "server/features/player-assignment/utils/removeMovedGamesFromUsers";
+import { saveSignup, saveUser } from "server/features/user/userRepository";
 
 let mongoServer: MongoMemoryServer;
 
@@ -29,7 +29,7 @@ afterEach(async () => {
   await mongoServer.stop();
 });
 
-test('should remove signups for moved games from users', async () => {
+test("should remove signups for moved games from users", async () => {
   const game = new GameModel(mockGame);
   await game.save();
   const game2 = new GameModel(mockGame2);
@@ -47,7 +47,7 @@ test('should remove signups for moved games from users', async () => {
   await GameModel.updateOne(
     { gameId: game.gameId },
     {
-      startTime: moment(game.startTime).add(1, 'hours').format(),
+      startTime: moment(game.startTime).add(1, "hours").format(),
     }
   );
 

@@ -19,4 +19,4 @@ export interface Config {
   simpleDetails: boolean;
 }
 
-type ConventionName = 'Ropecon' | 'Tracon Hitpoint';
+type ConventionName = "Ropecon" | "Tracon Hitpoint";

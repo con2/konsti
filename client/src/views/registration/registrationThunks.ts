@@ -1,7 +1,7 @@
-import { postRegistration } from 'client/services/userServices';
-import { submitLogin } from 'client/views/login/loginThunks';
-import { RegistrationFormFields } from 'shared/typings/api/login';
-import { AppThunk } from 'client/typings/redux.typings';
+import { postRegistration } from "client/services/userServices";
+import { submitLogin } from "client/views/login/loginThunks";
+import { RegistrationFormFields } from "shared/typings/api/login";
+import { AppThunk } from "client/typings/redux.typings";
 
 export const submitRegistration = (
   registrationFormFields: RegistrationFormFields
@@ -14,18 +14,18 @@ export const submitRegistration = (
       return await Promise.reject(error);
     }
 
-    if (registrationResponse?.status === 'error') {
+    if (registrationResponse?.status === "error") {
       switch (registrationResponse.code) {
         case 11:
-          throw new Error('error.usernameTaken');
+          throw new Error("error.usernameTaken");
         case 12:
-          throw new Error('error.invalidSerial');
+          throw new Error("error.invalidSerial");
         default:
-          throw new Error('error.unknown');
+          throw new Error("error.unknown");
       }
     }
 
-    if (registrationResponse?.status === 'success') {
+    if (registrationResponse?.status === "success") {
       dispatch(
         submitLogin({
           username: registrationFormFields.username,

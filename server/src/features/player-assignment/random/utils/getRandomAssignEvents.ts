@@ -1,5 +1,5 @@
-import { Game } from 'shared/typings/models/game';
-import { RandomAssignEvent } from 'server/typings/padgRandomAssign.typings';
+import { Game } from "shared/typings/models/game";
+import { RandomAssignEvent } from "server/typings/padgRandomAssign.typings";
 
 export const getRandomAssignEvents = (
   signedGames: readonly Game[]

@@ -1,15 +1,15 @@
-import { logger } from 'server/utils/logger';
-import { getStartingGames } from 'server/features/player-assignment/utils/getStartingGames';
-import { getSignupWishes } from 'server/features/player-assignment/utils/getSignupWishes';
-import { getSignedGames } from 'server/features/player-assignment/utils/getSignedGames';
-import { getSelectedPlayers } from 'server/features/player-assignment/utils/getSelectedPlayers';
-import { assignGroups } from 'server/features/player-assignment/group/utils/assignGroup';
-import { getPlayerGroups } from 'server/features/player-assignment/utils/getPlayerGroups';
-import { getGroupMembers } from 'server/features/player-assignment/utils/getGroupMembers';
-import { getHappiness } from 'server/features/player-assignment/group/utils/getHappiness';
-import { User } from 'shared/typings/models/user';
-import { Game } from 'shared/typings/models/game';
-import { PlayerAssignmentResult } from 'server/typings/result.typings';
+import { logger } from "server/utils/logger";
+import { getStartingGames } from "server/features/player-assignment/utils/getStartingGames";
+import { getSignupWishes } from "server/features/player-assignment/utils/getSignupWishes";
+import { getSignedGames } from "server/features/player-assignment/utils/getSignedGames";
+import { getSelectedPlayers } from "server/features/player-assignment/utils/getSelectedPlayers";
+import { assignGroups } from "server/features/player-assignment/group/utils/assignGroup";
+import { getPlayerGroups } from "server/features/player-assignment/utils/getPlayerGroups";
+import { getGroupMembers } from "server/features/player-assignment/utils/getGroupMembers";
+import { getHappiness } from "server/features/player-assignment/group/utils/getHappiness";
+import { User } from "shared/typings/models/user";
+import { Game } from "shared/typings/models/game";
+import { PlayerAssignmentResult } from "server/typings/result.typings";
 
 export const groupAssignPlayers = (
   players: readonly User[],
@@ -20,24 +20,24 @@ export const groupAssignPlayers = (
   const startingGames = getStartingGames(games, startingTime);
 
   if (startingGames.length === 0) {
-    logger.info('No starting games, stop!');
+    logger.info("No starting games, stop!");
     return {
       results: [],
-      message: 'Group Assign Result - No starting games',
-      algorithm: 'group',
-      status: 'error: no starting games',
+      message: "Group Assign Result - No starting games",
+      algorithm: "group",
+      status: "error: no starting games",
     };
   }
 
   const signupWishes = getSignupWishes(players);
 
   if (signupWishes.length === 0) {
-    logger.info('No signup wishes, stop!');
+    logger.info("No signup wishes, stop!");
     return {
       results: [],
-      message: 'Group Assign Result - No signup wishes',
-      algorithm: 'group',
-      status: 'error: no signup wishes',
+      message: "Group Assign Result - No signup wishes",
+      algorithm: "group",
+      status: "error: no signup wishes",
     };
   }
 
@@ -73,7 +73,7 @@ export const groupAssignPlayers = (
 
   return Object.assign({
     ...result,
-    algorithm: 'group',
-    status: 'success',
+    algorithm: "group",
+    status: "success",
   });
 };

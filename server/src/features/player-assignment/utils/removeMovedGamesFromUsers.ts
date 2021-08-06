@@ -1,14 +1,14 @@
-import moment from 'moment';
-import { logger } from 'server/utils/logger';
-import { GameDoc } from 'server/typings/game.typings';
-import { Game } from 'shared/typings/models/game';
-import { findGames } from 'server/features/game/gameRepository';
-import { findUsers, updateUser } from 'server/features/user/userRepository';
+import moment from "moment";
+import { logger } from "server/utils/logger";
+import { GameDoc } from "server/typings/game.typings";
+import { Game } from "shared/typings/models/game";
+import { findGames } from "server/features/game/gameRepository";
+import { findUsers, updateUser } from "server/features/user/userRepository";
 
 export const removeMovedGamesFromUsers = async (
   updatedGames: readonly Game[]
 ): Promise<void> => {
-  logger.info('Remove moved games from users');
+  logger.info("Remove moved games from users");
 
   let currentGames: GameDoc[] = [];
   try {
@@ -74,6 +74,6 @@ export const removeMovedGamesFromUsers = async (
     );
   } catch (error) {
     logger.error(`updateUser error: ${error}`);
-    throw new Error('No assign results');
+    throw new Error("No assign results");
   }
 };

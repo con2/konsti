@@ -1,12 +1,12 @@
-import React, { ReactElement, useRef } from 'react';
-import styled, { css } from 'styled-components';
-import { useTranslation } from 'react-i18next';
-import useIntersectionObserver from '@react-hook/intersection-observer';
-import { timeFormatter } from 'client/utils/timeFormatter';
-import { Game } from 'shared/typings/models/game';
-import { SelectedGame } from 'shared/typings/models/user';
-import { sharedConfig } from 'shared/config/sharedConfig';
-import { SignupStrategy } from 'shared/config/sharedConfig.types';
+import React, { ReactElement, useRef } from "react";
+import styled, { css } from "styled-components";
+import { useTranslation } from "react-i18next";
+import useIntersectionObserver from "@react-hook/intersection-observer";
+import { timeFormatter } from "client/utils/timeFormatter";
+import { Game } from "shared/typings/models/game";
+import { SelectedGame } from "shared/typings/models/user";
+import { sharedConfig } from "shared/config/sharedConfig";
+import { SignupStrategy } from "shared/config/sharedConfig.types";
 
 interface Props {
   startTime: string;
@@ -54,14 +54,14 @@ export const GameListTitle = ({
       {!allGamesRevolvingDoor &&
         sharedConfig.signupStrategy === SignupStrategy.ALGORITHM && (
           <span>
-            {' '}
-            ({t('signupOpenBetween')} {signupStartTime}-{signupEndTime})
+            {" "}
+            ({t("signupOpenBetween")} {signupStartTime}-{signupEndTime})
           </span>
         )}
 
       {sharedConfig.signupStrategy === SignupStrategy.DIRECT ? (
         <SignupCount>
-          {signedGame ? signedGame.gameDetails.title : ''}
+          {signedGame ? signedGame.gameDetails.title : ""}
         </SignupCount>
       ) : (
         <SignupCount>{signedGamesCount} / 3</SignupCount>

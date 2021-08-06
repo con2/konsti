@@ -1,8 +1,8 @@
-import React, { ReactElement } from 'react';
-import { useTranslation } from 'react-i18next';
-import _ from 'lodash';
-import styled from 'styled-components';
-import { Result } from 'shared/typings/models/result';
+import React, { ReactElement } from "react";
+import { useTranslation } from "react-i18next";
+import _ from "lodash";
+import styled from "styled-components";
+import { Result } from "shared/typings/models/result";
 
 export interface Props {
   results: readonly Result[];
@@ -25,10 +25,10 @@ export const ResultsByUsername = ({ results }: Props): ReactElement => {
 
   const resultsByUsername = (
     <FlexTableContainer>
-      <FlexTableColumn className='flex-table-header'>
-        <FlexTableRow>{t('player')}</FlexTableRow>
-        <FlexTableRow>{t('gameTitle')}</FlexTableRow>
-        <FlexTableRow>{t('gameInfo.location')}</FlexTableRow>
+      <FlexTableColumn className="flex-table-header">
+        <FlexTableRow>{t("player")}</FlexTableRow>
+        <FlexTableRow>{t("gameTitle")}</FlexTableRow>
+        <FlexTableRow>{t("gameInfo.location")}</FlexTableRow>
       </FlexTableColumn>
       {resultsTable}
     </FlexTableContainer>

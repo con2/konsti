@@ -1,23 +1,23 @@
-import React, { MouseEventHandler, ReactElement, ReactNode } from 'react';
-import styled, { css } from 'styled-components';
+import React, { MouseEventHandler, ReactElement, ReactNode } from "react";
+import styled, { css } from "styled-components";
 
 interface Props {
   children?: ReactNode;
   onClick?: MouseEventHandler;
   disabled?: boolean;
-  type?: 'submit' | 'reset' | 'button';
+  type?: "submit" | "reset" | "button";
   className?: string;
   selected?: boolean;
-  'data-testkey'?: string;
+  "data-testkey"?: string;
 }
 
 export const Button = ({
   children,
   onClick,
   disabled = false,
-  type = 'button',
+  type = "button",
   className,
-  'data-testkey': dataTestKey,
+  "data-testkey": dataTestKey,
   selected = false,
 }: Props): ReactElement => {
   return (

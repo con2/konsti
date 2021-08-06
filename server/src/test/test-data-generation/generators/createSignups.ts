@@ -1,30 +1,30 @@
-import faker from 'faker';
-import moment from 'moment';
-import _ from 'lodash';
-import { logger } from 'server/utils/logger';
-import { updateGamePopularity } from 'server/features/game-popularity/updateGamePopularity';
-import { Game } from 'shared/typings/models/game';
-import { findUsers, saveSignup } from 'server/features/user/userRepository';
-import { findGames } from 'server/features/game/gameRepository';
-import { SelectedGame, User } from 'shared/typings/models/user';
+import faker from "faker";
+import moment from "moment";
+import _ from "lodash";
+import { logger } from "server/utils/logger";
+import { updateGamePopularity } from "server/features/game-popularity/updateGamePopularity";
+import { Game } from "shared/typings/models/game";
+import { findUsers, saveSignup } from "server/features/user/userRepository";
+import { findGames } from "server/features/game/gameRepository";
+import { SelectedGame, User } from "shared/typings/models/user";
 
 export const createSignups = async (): Promise<void> => {
   const games = await findGames();
   const allUsers = await findUsers();
 
   const users = allUsers.filter(
-    (user) => user.username !== 'admin' && user.username !== 'ropetiski'
+    (user) => user.username !== "admin" && user.username !== "ropetiski"
   );
 
   logger.info(`Signup: ${games.length} games`);
   logger.info(`Signup: ${users.length} users`);
 
-  const groupedUsers = _.groupBy(users, 'groupCode');
+  const groupedUsers = _.groupBy(users, "groupCode");
 
   for (const [groupCode, groupMembers] of Object.entries(groupedUsers)) {
     // Individual users
-    if (groupCode === '0') {
-      logger.info('SIGNUP INDIVIDUAL USERS');
+    if (groupCode === "0") {
+      logger.info("SIGNUP INDIVIDUAL USERS");
       await signupMultiple(games, groupMembers);
     }
     // Users in groups
@@ -73,7 +73,7 @@ const getRandomSignup = (games: readonly Game[]): SelectedGame[] => {
           gameDetails: randomGame,
           priority: i + 1,
           time: randomGame.startTime,
-          message: '',
+          message: "",
         });
       }
     }
@@ -98,7 +98,7 @@ const signupMultiple = async (
   const promises: Array<Promise<User>> = [];
 
   for (const user of users) {
-    if (user.username !== 'admin' && user.username !== 'ropetiski') {
+    if (user.username !== "admin" && user.username !== "ropetiski") {
       promises.push(signup(games, user));
     }
   }
@@ -112,7 +112,7 @@ const signupGroup = async (
 ): Promise<void> => {
   // Generate random signup data for the group leader
   const leader = users.find((user) => user.serial === user.groupCode);
-  if (!leader) throw new Error('Error getting group leader');
+  if (!leader) throw new Error("Error getting group leader");
 
   const signupData = {
     username: leader.username,

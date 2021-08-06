@@ -1,16 +1,16 @@
-import eventassigner from 'eventassigner-js';
-import _ from 'lodash';
+import eventassigner from "eventassigner-js";
+import _ from "lodash";
 import {
   PadgInput,
   ListItem,
   Group,
   Event,
   PadgRandomAssignResults,
-} from 'server/typings/padgRandomAssign.typings';
-import { logger } from 'server/utils/logger';
-import { config } from 'server/config';
-import { calculateHappiness } from 'server/features/player-assignment/padg/utils/calculateHappiness';
-import { Input } from 'server/typings/result.typings';
+} from "server/typings/padgRandomAssign.typings";
+import { logger } from "server/utils/logger";
+import { config } from "server/config";
+import { calculateHappiness } from "server/features/player-assignment/padg/utils/calculateHappiness";
+import { Input } from "server/typings/result.typings";
 
 export const assignPadg = (
   groups: Group[],
@@ -52,9 +52,9 @@ export const assignPadg = (
 const sortList = (list: ListItem[], i: number): ListItem[] => {
   switch (i) {
     case 0:
-      return _.sortBy(list, 'gain');
+      return _.sortBy(list, "gain");
     case 1:
-      return _.sortBy(list, 'size');
+      return _.sortBy(list, "size");
     default:
       return list.sort((a, b) => 0.5 - Math.random());
   }

@@ -1,12 +1,12 @@
-import React, { ReactElement } from 'react';
-import { useTranslation } from 'react-i18next';
-import styled from 'styled-components';
-import { LanguageSelector } from 'client/components/LanguageSelector';
-import { config } from 'client/config';
-import { TestTimeSelector } from 'client/test/test-components/TestTimeSelector';
-import { Navigation } from './Navigation';
-import { FirstLogin } from './FirstLogin';
-import { useAppSelector } from 'client/utils/hooks';
+import React, { ReactElement } from "react";
+import { useTranslation } from "react-i18next";
+import styled from "styled-components";
+import { LanguageSelector } from "client/components/LanguageSelector";
+import { config } from "client/config";
+import { TestTimeSelector } from "client/test/test-components/TestTimeSelector";
+import { Navigation } from "./Navigation";
+import { FirstLogin } from "./FirstLogin";
+import { useAppSelector } from "client/utils/hooks";
 
 export const Header = (): ReactElement => {
   const { t } = useTranslation();
@@ -17,17 +17,17 @@ export const Header = (): ReactElement => {
 
   return (
     <>
-      {loadedSettings !== 'production' && useTestTime && <TestTimeSelector />}
+      {loadedSettings !== "production" && useTestTime && <TestTimeSelector />}
       <HeaderContainer>
         <Navigation />
 
         <HeaderBar>
-          {t('appDescription', { CONVENTION_NAME, CONVENTION_YEAR })}
+          {t("appDescription", { CONVENTION_NAME, CONVENTION_YEAR })}
         </HeaderBar>
         <HeaderLanguageSelector />
       </HeaderContainer>
 
-      {!appOpen && <ClosingMessage>{t('closingMessage')}</ClosingMessage>}
+      {!appOpen && <ClosingMessage>{t("closingMessage")}</ClosingMessage>}
 
       <FirstLogin />
     </>

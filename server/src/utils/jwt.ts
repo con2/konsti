@@ -1,7 +1,7 @@
-import jsonwebtoken from 'jsonwebtoken';
-import { config } from 'server/config';
-import { JWTResult } from 'server/typings/jwt.typings';
-import { UserGroup } from 'shared/typings/models/user';
+import jsonwebtoken from "jsonwebtoken";
+import { config } from "server/config";
+import { JWTResult } from "server/typings/jwt.typings";
+import { UserGroup } from "shared/typings/models/user";
 
 export const getJWT = (userGroup: UserGroup, username: string): string => {
   const payload = {
@@ -10,7 +10,7 @@ export const getJWT = (userGroup: UserGroup, username: string): string => {
   };
 
   const options = {
-    expiresIn: '14 days',
+    expiresIn: "14 days",
   };
 
   return jsonwebtoken.sign(payload, getSecret(userGroup), options);
@@ -24,22 +24,22 @@ export const verifyJWT = (
   try {
     const result = jsonwebtoken.verify(jwt, getSecret(userGroup)) as JWTResult;
 
-    if (typeof result !== 'string' && result.username === username)
+    if (typeof result !== "string" && result.username === username)
       return {
         username: result.username,
         userGroup: result.userGroup,
         iat: result.iat,
         exp: result.exp,
-        status: 'success',
-        message: 'success',
+        status: "success",
+        message: "success",
       };
   } catch (error) {
-    if (error.name === 'TokenExpiredError') {
+    if (error.name === "TokenExpiredError") {
       return {
-        status: 'error',
-        message: 'expired jwt',
-        username: '',
-        userGroup: '',
+        status: "error",
+        message: "expired jwt",
+        username: "",
+        userGroup: "",
         iat: 0,
         exp: 0,
       };
@@ -47,10 +47,10 @@ export const verifyJWT = (
   }
 
   return {
-    status: 'error',
-    message: 'unknown jwt error',
-    username: '',
-    userGroup: '',
+    status: "error",
+    message: "unknown jwt error",
+    username: "",
+    userGroup: "",
     iat: 0,
     exp: 0,
   };
@@ -68,7 +68,7 @@ const getSecret = (userGroup: UserGroup): string => {
   } else if (userGroup === UserGroup.HELP) {
     return config.jwtSecretKeyHelp;
   }
-  return '';
+  return "";
 };
 
 export const getJwtResponse = (
@@ -82,7 +82,7 @@ export const getJwtResponse = (
     });
 
     return (
-      responses.find((response) => response.status === 'success') ??
+      responses.find((response) => response.status === "success") ??
       responses[0]
     );
   }

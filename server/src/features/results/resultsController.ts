@@ -1,14 +1,14 @@
-import { Request, Response } from 'express';
-import { Record, String } from 'runtypes';
-import { storeAssignment } from 'server/features/player-assignment/assignmentController';
-import { fetchResults } from 'server/features/results/resultsService';
-import { UserGroup } from 'shared/typings/models/user';
-import { isAuthorized } from 'server/utils/authHeader';
-import { logger } from 'server/utils/logger';
+import { Request, Response } from "express";
+import { Record, String } from "runtypes";
+import { storeAssignment } from "server/features/player-assignment/assignmentController";
+import { fetchResults } from "server/features/results/resultsService";
+import { UserGroup } from "shared/typings/models/user";
+import { isAuthorized } from "server/utils/authHeader";
+import { logger } from "server/utils/logger";
 import {
   ASSIGNMENT_ENDPOINT,
   RESULTS_ENDPOINT,
-} from 'shared/constants/apiEndpoints';
+} from "shared/constants/apiEndpoints";
 
 export const getResults = async (
   req: Request,
@@ -43,7 +43,7 @@ export const postAssignment = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${ASSIGNMENT_ENDPOINT}`);
 
-  if (!isAuthorized(req.headers.authorization, UserGroup.ADMIN, 'admin')) {
+  if (!isAuthorized(req.headers.authorization, UserGroup.ADMIN, "admin")) {
     return res.sendStatus(401);
   }
 

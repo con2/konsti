@@ -1,7 +1,7 @@
-import { Feedback } from 'shared/typings/models/feedback';
-import { saveFeedback } from 'server/features/feedback/feedbackRepository';
-import { PostFeedbackResponse } from 'shared/typings/api/feedback';
-import { ServerError } from 'shared/typings/api/errors';
+import { Feedback } from "shared/typings/models/feedback";
+import { saveFeedback } from "server/features/feedback/feedbackRepository";
+import { PostFeedbackResponse } from "shared/typings/api/feedback";
+import { ServerError } from "shared/typings/api/errors";
 
 export const storeFeedback = async (
   feedbackData: Feedback
@@ -9,13 +9,13 @@ export const storeFeedback = async (
   try {
     await saveFeedback(feedbackData);
     return {
-      message: 'Post feedback success',
-      status: 'success',
+      message: "Post feedback success",
+      status: "success",
     };
   } catch (error) {
     return {
-      message: 'Post feedback failure',
-      status: 'error',
+      message: "Post feedback failure",
+      status: "error",
       code: 0,
     };
   }

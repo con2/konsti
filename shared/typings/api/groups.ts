@@ -1,15 +1,15 @@
-import { SelectedGame } from 'shared/typings/models/user';
+import { SelectedGame } from "shared/typings/models/user";
 
 export interface PostGroupResponse {
   groupCode: string;
   message: string;
-  status: 'success';
+  status: "success";
 }
 
 export interface GetGroupResponse {
   message: string;
   results: GroupMember[];
-  status: 'success';
+  status: "success";
 }
 
 export interface GroupData {

@@ -1,4 +1,4 @@
-import { Game } from 'shared/typings/models/game';
+import { Game } from "shared/typings/models/game";
 
 export interface DnDUpdatedPositions {
   availableGames?: readonly Game[];

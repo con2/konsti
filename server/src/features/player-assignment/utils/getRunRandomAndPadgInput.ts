@@ -1,12 +1,12 @@
-import { getStartingGames } from 'server/features/player-assignment/utils/getStartingGames';
-import { getSignupWishes } from 'server/features/player-assignment/utils/getSignupWishes';
-import { getSignedGames } from 'server/features/player-assignment/utils/getSignedGames';
-import { getSelectedPlayers } from 'server/features/player-assignment/utils/getSelectedPlayers';
-import { getPlayerGroups } from 'server/features/player-assignment/utils/getPlayerGroups';
-import { getGroupMembers } from 'server/features/player-assignment/utils/getGroupMembers';
-import { User } from 'shared/typings/models/user';
-import { Game } from 'shared/typings/models/game';
-import { RunRandomAndPadgInput } from 'server/typings/result.typings';
+import { getStartingGames } from "server/features/player-assignment/utils/getStartingGames";
+import { getSignupWishes } from "server/features/player-assignment/utils/getSignupWishes";
+import { getSignedGames } from "server/features/player-assignment/utils/getSignedGames";
+import { getSelectedPlayers } from "server/features/player-assignment/utils/getSelectedPlayers";
+import { getPlayerGroups } from "server/features/player-assignment/utils/getPlayerGroups";
+import { getGroupMembers } from "server/features/player-assignment/utils/getGroupMembers";
+import { User } from "shared/typings/models/user";
+import { Game } from "shared/typings/models/game";
+import { RunRandomAndPadgInput } from "server/typings/result.typings";
 
 export const getRunRandomAndPadgInput = (
   players: readonly User[],

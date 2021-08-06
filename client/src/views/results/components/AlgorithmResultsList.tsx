@@ -1,10 +1,10 @@
-import React, { ReactElement, ChangeEvent, useState, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
-import styled from 'styled-components';
-import { ResultsByGameTitle } from './ResultsByGameTitle';
-import { ResultsByUsername } from './ResultsByUsername';
-import { Result } from 'shared/typings/models/result';
-import { Button } from 'client/components/Button';
+import React, { ReactElement, ChangeEvent, useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
+import styled from "styled-components";
+import { ResultsByGameTitle } from "./ResultsByGameTitle";
+import { ResultsByUsername } from "./ResultsByUsername";
+import { Result } from "shared/typings/models/result";
+import { Button } from "client/components/Button";
 
 export interface Props {
   results: readonly Result[];
@@ -12,12 +12,12 @@ export interface Props {
 
 export const AlgorithmResultsList = ({ results }: Props): ReactElement => {
   const { t } = useTranslation();
-  const [sortedBy, setSortedBy] = useState<string>('');
-  const [searchTerm, setSearchTerm] = useState<string>('');
+  const [sortedBy, setSortedBy] = useState<string>("");
+  const [searchTerm, setSearchTerm] = useState<string>("");
   const [searchResults, setSearchResults] = useState<readonly Result[]>([]);
 
   useEffect(() => {
-    setSortedBy('username');
+    setSortedBy("username");
   }, []);
 
   useEffect(() => {
@@ -33,16 +33,16 @@ export const AlgorithmResultsList = ({ results }: Props): ReactElement => {
     );
   }, [searchTerm, results]);
 
-  const buttons = ['username', 'gameTitle'];
+  const buttons = ["username", "gameTitle"];
 
   const handleSearchFieldChange = (e: ChangeEvent<HTMLInputElement>): void => {
     setSearchTerm(e.target.value);
   };
 
   return (
-    <div className='results-list'>
-      <div className='results-button-row'>
-        <span>{t('sortBy')} </span>
+    <div className="results-list">
+      <div className="results-button-row">
+        <span>{t("sortBy")} </span>
         {buttons.map((name) => {
           return (
             <Button
@@ -55,20 +55,20 @@ export const AlgorithmResultsList = ({ results }: Props): ReactElement => {
           );
         })}
         <FindField>
-          <span>{t('find')} </span>
+          <span>{t("find")} </span>
           <span>
             <Input
-              type='text'
+              type="text"
               value={searchTerm}
               onChange={handleSearchFieldChange}
             />
           </span>
         </FindField>
       </div>
-      {sortedBy === 'username' && (
+      {sortedBy === "username" && (
         <ResultsByUsername results={searchResults ?? results} />
       )}
-      {sortedBy === 'gameTitle' && (
+      {sortedBy === "gameTitle" && (
         <ResultsByGameTitle results={searchResults ?? results} />
       )}
     </div>

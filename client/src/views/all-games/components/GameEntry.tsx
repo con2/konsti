@@ -1,16 +1,16 @@
-import React, { ReactElement } from 'react';
-import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { updateFavorite, UpdateFavoriteOpts } from 'client/utils/favorite';
-import { useAppDispatch, useAppSelector } from 'client/utils/hooks';
-import { sharedConfig } from 'shared/config/sharedConfig';
-import { SignupStrategy } from 'shared/config/sharedConfig.types';
-import { Game } from 'shared/typings/models/game';
-import { AlgorithmSignupForm } from './AlgorithmSignupForm';
-import { DirectSignupForm } from './DirectSignupForm';
-import { Button } from 'client/components/Button';
+import React, { ReactElement } from "react";
+import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { updateFavorite, UpdateFavoriteOpts } from "client/utils/favorite";
+import { useAppDispatch, useAppSelector } from "client/utils/hooks";
+import { sharedConfig } from "shared/config/sharedConfig";
+import { SignupStrategy } from "shared/config/sharedConfig.types";
+import { Game } from "shared/typings/models/game";
+import { AlgorithmSignupForm } from "./AlgorithmSignupForm";
+import { DirectSignupForm } from "./DirectSignupForm";
+import { Button } from "client/components/Button";
 
 const DESCRIPTION_SENTENCES_LENGTH = 3;
 const matchNextSentence = /([.?!])\s*(?=[A-Z])/g;
@@ -49,8 +49,8 @@ export const GameEntry = ({
     const hours = Math.floor(mins / 60);
     const minutes = mins % 60;
 
-    const hoursStr = hours === 0 ? '' : `${hours}h`;
-    const minutesStr = minutes === 0 ? '' : `${minutes}min`;
+    const hoursStr = hours === 0 ? "" : `${hours}h`;
+    const minutesStr = minutes === 0 ? "" : `${minutes}min`;
 
     return `${hoursStr} ${minutesStr}`;
   };
@@ -70,49 +70,49 @@ export const GameEntry = ({
         <HeaderContainer>
           <h3>{game.title}</h3>
           <p>
-            {t('signup.expectedDuration', {
+            {t("signup.expectedDuration", {
               EXPECTED_DURATION: formatDuration(game.mins),
             })}
           </p>
           <PlayerCount visible={isEnterGameMode}>
-            {t('signup.signupCount', {
+            {t("signup.signupCount", {
               PLAYERS: players,
               MAX_ATTENDANCE: game.maxAttendance,
             })}
           </PlayerCount>
           <PlayersNeeded visible={players < game.minAttendance}>
-            {t('signup.playerNeeded', { COUNT: game.minAttendance - players })}
+            {t("signup.playerNeeded", { COUNT: game.minAttendance - players })}
           </PlayersNeeded>
         </HeaderContainer>
         <GameTags>
-          {favorited && loggedIn && userGroup === 'user' && game && (
+          {favorited && loggedIn && userGroup === "user" && game && (
             <FavoriteButton
               onClick={async () =>
                 await updateFavoriteHandler({
                   game,
-                  action: 'del',
+                  action: "del",
                   favoritedGames,
                   username,
                   dispatch,
                 })
               }
             >
-              <FavoriteIcon icon='heart' />
+              <FavoriteIcon icon="heart" />
             </FavoriteButton>
           )}
-          {!favorited && loggedIn && userGroup === 'user' && game && (
+          {!favorited && loggedIn && userGroup === "user" && game && (
             <FavoriteButton
               onClick={async () =>
                 await updateFavoriteHandler({
                   game,
-                  action: 'add',
+                  action: "add",
                   favoritedGames,
                   username,
                   dispatch,
                 })
               }
             >
-              <FavoriteIcon icon={['far', 'heart']} />
+              <FavoriteIcon icon={["far", "heart"]} />
             </FavoriteButton>
           )}
           <TagColumn>
@@ -125,11 +125,11 @@ export const GameEntry = ({
         <GameListShortDescription>
           {game.shortDescription ??
             game.description
-              .replace(matchNextSentence, '$1|')
-              .split('|')
+              .replace(matchNextSentence, "$1|")
+              .split("|")
               .slice(0, DESCRIPTION_SENTENCES_LENGTH)
-              .join(' ')}{' '}
-          <Link to={`/games/${game.gameId}`}>{t('gameInfo.readMore')}</Link>
+              .join(" ")}{" "}
+          <Link to={`/games/${game.gameId}`}>{t("gameInfo.readMore")}</Link>
         </GameListShortDescription>
       </GameMoreInfoRow>
       {loggedIn && isEnterGameMode && (
@@ -146,14 +146,14 @@ export const GameEntry = ({
   );
 };
 
-const PlayersNeeded = styled('span')<{ visible: boolean }>`
+const PlayersNeeded = styled("span")<{ visible: boolean }>`
   margin-top: 8px;
-  display: ${(props) => (props.visible ? 'block' : 'none')};
+  display: ${(props) => (props.visible ? "block" : "none")};
 `;
 
-const PlayerCount = styled('span')<{ visible: boolean }>`
+const PlayerCount = styled("span")<{ visible: boolean }>`
   margin-top: 8px;
-  display: ${(props) => (props.visible ? 'block' : 'none')};
+  display: ${(props) => (props.visible ? "block" : "none")};
 `;
 
 const FavoriteButton = styled(Button)`

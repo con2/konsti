@@ -1,11 +1,11 @@
-import { AxiosResponse, AxiosError } from 'axios';
-import { api } from 'client/utils/api';
-import { ServerError } from 'shared/typings/api/errors';
+import { AxiosResponse, AxiosError } from "axios";
+import { api } from "client/utils/api";
+import { ServerError } from "shared/typings/api/errors";
 import {
   LOGIN_ENDPOINT,
   SESSION_RESTORE_ENDPOINT,
-} from 'shared/constants/apiEndpoints';
-import { LoginFormFields, PostLoginResponse } from 'shared/typings/api/login';
+} from "shared/constants/apiEndpoints";
+import { LoginFormFields, PostLoginResponse } from "shared/typings/api/login";
 
 export const postLogin = async (
   loginFormFields: LoginFormFields

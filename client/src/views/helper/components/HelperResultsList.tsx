@@ -1,9 +1,9 @@
-import React, { ReactElement } from 'react';
-import { useTranslation } from 'react-i18next';
-import _ from 'lodash';
-import styled from 'styled-components';
-import { timeFormatter } from 'client/utils/timeFormatter';
-import { useAppSelector } from 'client/utils/hooks';
+import React, { ReactElement } from "react";
+import { useTranslation } from "react-i18next";
+import _ from "lodash";
+import styled from "styled-components";
+import { timeFormatter } from "client/utils/timeFormatter";
+import { useAppSelector } from "client/utils/hooks";
 
 export const HelperResultsList = (): ReactElement => {
   const results = useAppSelector((state) => state.results.result);
@@ -20,7 +20,7 @@ export const HelperResultsList = (): ReactElement => {
 
   const groupedResults = _.groupBy(
     sortedResults,
-    'enteredGame.gameDetails.title'
+    "enteredGame.gameDetails.title"
   );
 
   const resultsByGameTitle: ReactElement[] = [];
@@ -37,17 +37,17 @@ export const HelperResultsList = (): ReactElement => {
     resultsByGameTitle.push(
       <GameResult key={groupedResult}>
         <p>
-          <span className='bold'>{t('gameTitle')}:</span> {groupedResult}
+          <span className="bold">{t("gameTitle")}:</span> {groupedResult}
         </p>
         <p>
-          <span className='bold'>{t('gameInfo.location')}:</span>{' '}
+          <span className="bold">{t("gameInfo.location")}:</span>{" "}
           {
             _.head(groupedResults[groupedResult])?.enteredGame.gameDetails
               .location
           }
         </p>
         <p>
-          <span className='bold'>{t('players')}: </span>
+          <span className="bold">{t("players")}: </span>
           {playerList.length}/
           {
             _.head(groupedResults[groupedResult])?.enteredGame.gameDetails
@@ -59,9 +59,9 @@ export const HelperResultsList = (): ReactElement => {
   }
 
   return (
-    <div className='results-with-free-seats'>
+    <div className="results-with-free-seats">
       <h3>
-        {t('signupResults')}:{' '}
+        {t("signupResults")}:{" "}
         {startTime ? (
           <span>
             {timeFormatter.getWeekdayAndTime({
@@ -70,7 +70,7 @@ export const HelperResultsList = (): ReactElement => {
             })}
           </span>
         ) : (
-          <span>{t('noResults')}</span>
+          <span>{t("noResults")}</span>
         )}
       </h3>
       {resultsByGameTitle}

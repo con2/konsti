@@ -1,10 +1,10 @@
-import { postLogin, postSessionRecovery } from 'client/services/loginServices';
-import { saveSession, clearSession } from 'client/utils/localStorage';
-import { AppThunk } from 'client/typings/redux.typings';
-import { ServerError } from 'shared/typings/api/errors';
-import { LoginFormFields, PostLoginResponse } from 'shared/typings/api/login';
-import { submitLoginAsync } from 'client/views/login/loginSlice';
-import { loadUser } from 'client/utils/loadData';
+import { postLogin, postSessionRecovery } from "client/services/loginServices";
+import { saveSession, clearSession } from "client/utils/localStorage";
+import { AppThunk } from "client/typings/redux.typings";
+import { ServerError } from "shared/typings/api/errors";
+import { LoginFormFields, PostLoginResponse } from "shared/typings/api/login";
+import { submitLoginAsync } from "client/views/login/loginSlice";
+import { loadUser } from "client/utils/loadData";
 
 export const submitLogin = (loginFormFields: LoginFormFields): AppThunk => {
   return async (dispatch): Promise<void> => {
@@ -16,20 +16,20 @@ export const submitLogin = (loginFormFields: LoginFormFields): AppThunk => {
       throw error;
     }
 
-    if (loginResponse?.status === 'error') {
+    if (loginResponse?.status === "error") {
       clearSession();
 
       switch (loginResponse.code) {
         case 21:
-          throw new Error('error.loginFailed');
+          throw new Error("error.loginFailed");
         case 22:
-          throw new Error('error.loginDisabled');
+          throw new Error("error.loginDisabled");
         default:
           throw new Error(`error.unkown`);
       }
     }
 
-    if (loginResponse?.status === 'success') {
+    if (loginResponse?.status === "success") {
       saveSession({
         login: { jwt: loginResponse.jwt },
       });
@@ -60,20 +60,20 @@ export const submitSessionRecovery = (jwt: string): AppThunk => {
       throw error;
     }
 
-    if (loginResponse?.status === 'error') {
+    if (loginResponse?.status === "error") {
       clearSession();
 
       switch (loginResponse.code) {
         case 21:
-          throw new Error('error.loginFailed');
+          throw new Error("error.loginFailed");
         case 22:
-          throw new Error('error.loginDisabled');
+          throw new Error("error.loginDisabled");
         default:
           throw new Error(`error.unkown`);
       }
     }
 
-    if (loginResponse?.status === 'success') {
+    if (loginResponse?.status === "success") {
       saveSession({
         login: { jwt: loginResponse.jwt },
       });

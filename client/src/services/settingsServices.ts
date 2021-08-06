@@ -1,17 +1,17 @@
-import { AxiosResponse, AxiosError } from 'axios';
-import { api } from 'client/utils/api';
+import { AxiosResponse, AxiosError } from "axios";
+import { api } from "client/utils/api";
 import {
   SETTINGS_ENDPOINT,
   SIGNUP_MESSAGE_ENDPOINT,
   TOGGLE_APP_OPEN_ENDPOINT,
-} from 'shared/constants/apiEndpoints';
-import { ServerError } from 'shared/typings/api/errors';
+} from "shared/constants/apiEndpoints";
+import { ServerError } from "shared/typings/api/errors";
 import {
   GetSettingsResponse,
   PostSignupMessageResponse,
   PostToggleAppOpenResponse,
-} from 'shared/typings/api/settings';
-import { SignupMessage } from 'shared/typings/models/settings';
+} from "shared/typings/api/settings";
+import { SignupMessage } from "shared/typings/models/settings";
 
 export const getSettings = async (): Promise<
   GetSettingsResponse | ServerError
