@@ -1407,7 +1407,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.1.2, @babel/runtime@npm:^7.10.2, @babel/runtime@npm:^7.11.2, @babel/runtime@npm:^7.12.0, @babel/runtime@npm:^7.12.1, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.14.5, @babel/runtime@npm:^7.14.6, @babel/runtime@npm:^7.5.5, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.9.2":
+"@babel/runtime@npm:^7.1.2, @babel/runtime@npm:^7.10.2, @babel/runtime@npm:^7.11.2, @babel/runtime@npm:^7.12.0, @babel/runtime@npm:^7.12.1, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.14.5, @babel/runtime@npm:^7.14.6, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.9.2":
   version: 7.14.8
   resolution: "@babel/runtime@npm:7.14.8"
   dependencies:
@@ -8316,15 +8316,6 @@ fsevents@^1.2.7:
   languageName: node
   linkType: hard
 
-"i18next-xhr-backend@npm:3.2.2":
-  version: 3.2.2
-  resolution: "i18next-xhr-backend@npm:3.2.2"
-  dependencies:
-    "@babel/runtime": ^7.5.5
-  checksum: 2a750a7360b13c8026cc4593742f713c6bc071f8023257e858319e4ff7b783f6fd086867194a7ec9a995273e92e682b7aa2826c5792e719d8d56990c6963a276
-  languageName: node
-  linkType: hard
-
 "i18next@npm:20.3.5":
   version: 20.3.5
   resolution: "i18next@npm:20.3.5"
@@ -9999,7 +9990,6 @@ fsevents@^1.2.7:
     html-webpack-plugin: 5.3.2
     i18next: 20.3.5
     i18next-browser-languagedetector: 6.1.2
-    i18next-xhr-backend: 3.2.2
     moment-locales-webpack-plugin: 1.2.0
     react: 17.0.2
     react-beautiful-dnd: 13.1.0
