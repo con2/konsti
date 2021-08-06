@@ -1,8 +1,8 @@
-import React, { ReactElement, ChangeEvent } from 'react';
-import { useTranslation } from 'react-i18next';
-import { TFunction } from 'i18next';
-import moment from 'moment';
-import styled from 'styled-components';
+import React, { ReactElement, ChangeEvent } from "react";
+import { useTranslation } from "react-i18next";
+import { TFunction } from "i18next";
+import moment from "moment";
+import styled from "styled-components";
 
 interface Props {
   className?: string;
@@ -23,16 +23,16 @@ export const LanguageSelector = ({ className }: Props): ReactElement => {
 
   return (
     <LanguageSelectorContainer
-      id='language'
+      id="language"
       value={language}
       onChange={setLanguage}
       className={className}
     >
-      <option title={t('language.english')} value='en'>
-        {t('language.englishShort')}
+      <option title={t("language.english")} value="en">
+        {t("language.englishShort")}
       </option>
-      <option title={t('language.finnish')} value='fi'>
-        {t('language.finnishShort')}
+      <option title={t("language.finnish")} value="fi">
+        {t("language.finnishShort")}
       </option>
     </LanguageSelectorContainer>
   );

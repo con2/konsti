@@ -1,11 +1,11 @@
-import React, { ReactElement } from 'react';
-import { useTranslation } from 'react-i18next';
-import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
-import { useAppSelector } from 'client/utils/hooks';
-import { sharedConfig } from 'shared/config/sharedConfig';
-import { SignupStrategy } from 'shared/config/sharedConfig.types';
-import { isAdmin, isAdminOrHelp, isUser } from 'client/utils/checkUserGroup';
+import React, { ReactElement } from "react";
+import { useTranslation } from "react-i18next";
+import styled from "styled-components";
+import { NavLink } from "react-router-dom";
+import { useAppSelector } from "client/utils/hooks";
+import { sharedConfig } from "shared/config/sharedConfig";
+import { SignupStrategy } from "shared/config/sharedConfig.types";
+import { isAdmin, isAdminOrHelp, isUser } from "client/utils/checkUserGroup";
 
 export const LoggedInUserNavigation = (props: {
   onSelect: () => void;
@@ -15,47 +15,47 @@ export const LoggedInUserNavigation = (props: {
 
   return (
     <StyledRoutes>
-      <RouterLink onClick={props.onSelect} to='/games'>
-        {t('pages.allGames')}
+      <RouterLink onClick={props.onSelect} to="/games">
+        {t("pages.allGames")}
       </RouterLink>
 
       {isUser(userGroup) && (
-        <RouterLink onClick={props.onSelect} to='/mygames'>
-          {t('pages.myGames')}
+        <RouterLink onClick={props.onSelect} to="/mygames">
+          {t("pages.myGames")}
         </RouterLink>
       )}
 
       {isUser(userGroup) &&
         sharedConfig.signupStrategy === SignupStrategy.ALGORITHM && (
-          <RouterLink onClick={props.onSelect} to='/signup'>
-            {t('pages.signUp')}
+          <RouterLink onClick={props.onSelect} to="/signup">
+            {t("pages.signUp")}
           </RouterLink>
         )}
 
-      <RouterLink onClick={props.onSelect} to='/results'>
-        {t('pages.results')}
+      <RouterLink onClick={props.onSelect} to="/results">
+        {t("pages.results")}
       </RouterLink>
 
       {isUser(userGroup) && sharedConfig.enableGroups && (
-        <RouterLink onClick={props.onSelect} to='/group'>
-          {t('pages.group')}
+        <RouterLink onClick={props.onSelect} to="/group">
+          {t("pages.group")}
         </RouterLink>
       )}
 
       {isAdminOrHelp(userGroup) && (
-        <RouterLink onClick={props.onSelect} to='/help'>
-          {t('button.helper')}
+        <RouterLink onClick={props.onSelect} to="/help">
+          {t("button.helper")}
         </RouterLink>
       )}
 
       {isAdmin(userGroup) && (
-        <RouterLink onClick={props.onSelect} to='/admin'>
-          {t('pages.admin')}
+        <RouterLink onClick={props.onSelect} to="/admin">
+          {t("pages.admin")}
         </RouterLink>
       )}
 
-      <RouterLink onClick={props.onSelect} to='/logout'>
-        {t('button.logout')}
+      <RouterLink onClick={props.onSelect} to="/logout">
+        {t("button.logout")}
       </RouterLink>
     </StyledRoutes>
   );

@@ -1,4 +1,4 @@
-import { Record, String, Number, Static, Boolean, Array } from 'runtypes';
+import { Record, String, Number, Static, Boolean, Array } from "runtypes";
 
 const AccessibilityRuntype = Record({
   loudSounds: Boolean,

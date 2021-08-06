@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 export interface SerialDoc extends Serial, mongoose.Document {}
 

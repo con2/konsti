@@ -1,8 +1,8 @@
-import React, { ReactElement } from 'react';
-import { useTranslation } from 'react-i18next';
-import _ from 'lodash';
-import styled from 'styled-components';
-import { Result } from 'shared/typings/models/result';
+import React, { ReactElement } from "react";
+import { useTranslation } from "react-i18next";
+import _ from "lodash";
+import styled from "styled-components";
+import { Result } from "shared/typings/models/result";
 
 export interface Props {
   results: readonly Result[];
@@ -17,7 +17,7 @@ export const ResultsByGameTitle = ({ results }: Props): ReactElement => {
 
   const groupedResults = _.groupBy(
     sortedResults,
-    'enteredGame.gameDetails.title'
+    "enteredGame.gameDetails.title"
   );
 
   const resultsByGameTitle: ReactElement[] = [];
@@ -34,22 +34,22 @@ export const ResultsByGameTitle = ({ results }: Props): ReactElement => {
     resultsByGameTitle.push(
       <GameResult key={groupedResult}>
         <p>
-          <span className='bold'>{t('gameTitle')}:</span> {groupedResult}
+          <span className="bold">{t("gameTitle")}:</span> {groupedResult}
         </p>
         <p>
-          <span className='bold'>{t('gameInfo.location')}:</span>{' '}
+          <span className="bold">{t("gameInfo.location")}:</span>{" "}
           {
             _.head(groupedResults[groupedResult])?.enteredGame.gameDetails
               .location
           }
         </p>
-        <p className='bold'>{t('players')}:</p>
+        <p className="bold">{t("players")}:</p>
         <ResultPlayerList>{playerList}</ResultPlayerList>
       </GameResult>
     );
   }
 
-  return <div className='results-by-gametime'>{resultsByGameTitle}</div>;
+  return <div className="results-by-gametime">{resultsByGameTitle}</div>;
 };
 
 const GameResult = styled.div`

@@ -1,11 +1,11 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { AllGamesState } from 'client/typings/redux.typings';
-import { GameWithUsernames } from 'shared/typings/api/games';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { AllGamesState } from "client/typings/redux.typings";
+import { GameWithUsernames } from "shared/typings/api/games";
 
 const initialState: AllGamesState = { games: [], signups: [] };
 
 const allGamesSlice = createSlice({
-  name: 'allGames',
+  name: "allGames",
   initialState,
   reducers: {
     submitGetGamesAsync(

@@ -1,5 +1,5 @@
-import bcrypt from 'bcryptjs';
-import { logger } from 'server/utils/logger';
+import bcrypt from "bcryptjs";
+import { logger } from "server/utils/logger";
 
 const saltLength = 10;
 
@@ -9,7 +9,7 @@ const hashPassword = async (password: string): Promise<string> => {
   } catch (error) {
     logger.error(`bcrypt.hash error: ${error}`);
   }
-  return 'hash-error';
+  return "hash-error";
 };
 
 const comparePasswordHash = async (

@@ -1,8 +1,8 @@
-import { Server } from 'http';
-import request from 'supertest';
-import { MongoMemoryServer } from 'mongodb-memory-server';
-import { startServer, closeServer } from 'server/utils/server';
-import { ASSIGNMENT_ENDPOINT } from 'shared/constants/apiEndpoints';
+import { Server } from "http";
+import request from "supertest";
+import { MongoMemoryServer } from "mongodb-memory-server";
+import { startServer, closeServer } from "server/utils/server";
+import { ASSIGNMENT_ENDPOINT } from "shared/constants/apiEndpoints";
 
 let server: Server;
 let mongoServer: MongoMemoryServer;

@@ -1,5 +1,5 @@
-import mongoose from 'mongoose';
-import { GameDoc } from 'server/typings/game.typings';
+import mongoose from "mongoose";
+import { GameDoc } from "server/typings/game.typings";
 
 const gameSchema = new mongoose.Schema(
   {
@@ -46,4 +46,4 @@ const gameSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-export const GameModel = mongoose.model<GameDoc>('Game', gameSchema);
+export const GameModel = mongoose.model<GameDoc>("Game", gameSchema);

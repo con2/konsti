@@ -1,10 +1,10 @@
-import React, { ReactElement, useEffect, useState } from 'react';
-import { useStore } from 'react-redux';
-import { SignupList } from 'client/views/signup/components/SignupList';
-import { getOpenStartTimes } from 'client/utils/getOpenStartTimes';
-import { loadGroupMembers, loadUser } from 'client/utils/loadData';
-import { isGroupLeader } from 'client/views/group/GroupView';
-import { useAppSelector } from 'client/utils/hooks';
+import React, { ReactElement, useEffect, useState } from "react";
+import { useStore } from "react-redux";
+import { SignupList } from "client/views/signup/components/SignupList";
+import { getOpenStartTimes } from "client/utils/getOpenStartTimes";
+import { loadGroupMembers, loadUser } from "client/utils/loadData";
+import { isGroupLeader } from "client/views/group/GroupView";
+import { useAppSelector } from "client/utils/hooks";
 
 export const SignupView = (): ReactElement => {
   const games = useAppSelector((state) => state.allGames.games);
@@ -39,7 +39,7 @@ export const SignupView = (): ReactElement => {
   const leader = isGroupLeader(groupCode, serial);
 
   return (
-    <div className='signup-view'>
+    <div className="signup-view">
       <SignupList games={games} signupTimes={signupTimes} leader={leader} />
     </div>
   );

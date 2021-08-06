@@ -1,6 +1,6 @@
-import { Game } from 'shared/typings/models/game';
-import { submitUpdateFavorites } from 'client/views/my-games/myGamesThunks';
-import { AppDispatch } from 'client/typings/redux.typings';
+import { Game } from "shared/typings/models/game";
+import { submitUpdateFavorites } from "client/views/my-games/myGamesThunks";
+import { AppDispatch } from "client/typings/redux.typings";
 
 export interface UpdateFavoriteOpts {
   game: Game;
@@ -23,9 +23,9 @@ export const updateFavorite = async (
   );
   const allFavoritedGames = favoritedGames.slice();
 
-  if (action === 'add' && gameIndex === -1) {
+  if (action === "add" && gameIndex === -1) {
     allFavoritedGames.push(game);
-  } else if (action === 'del' && gameIndex > -1) {
+  } else if (action === "del" && gameIndex > -1) {
     allFavoritedGames.splice(gameIndex, 1);
   }
 

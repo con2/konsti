@@ -1,19 +1,19 @@
-import React, { ReactElement, useState } from 'react';
-import { SubmitHandler, useForm, useFormState } from 'react-hook-form';
-import { useTranslation } from 'react-i18next';
-import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Button } from 'client/components/Button';
-import { LoginFormFields } from 'shared/typings/api/login';
-import { useAppDispatch } from 'client/utils/hooks';
-import { submitLogin } from 'client/views/login/loginThunks';
+import React, { ReactElement, useState } from "react";
+import { SubmitHandler, useForm, useFormState } from "react-hook-form";
+import { useTranslation } from "react-i18next";
+import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Button } from "client/components/Button";
+import { LoginFormFields } from "shared/typings/api/login";
+import { useAppDispatch } from "client/utils/hooks";
+import { submitLogin } from "client/views/login/loginThunks";
 
 export const LoginForm = (): ReactElement => {
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
 
   const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
-  const [serverError, setServerError] = useState<string>('');
+  const [serverError, setServerError] = useState<string>("");
 
   const {
     register,
@@ -42,16 +42,16 @@ export const LoginForm = (): ReactElement => {
       <FormRow>
         <StyledFormField>
           <StyledInput
-            {...register('username', {
+            {...register("username", {
               required: `${t(`validation.required`)}`,
             })}
-            placeholder={t('username')}
-            type={'text'}
+            placeholder={t("username")}
+            type={"text"}
             onChange={(e) => {
-              clearErrors('username');
-              setServerError('');
+              clearErrors("username");
+              setServerError("");
             }}
-            data-testkey={'login-form-input-username'}
+            data-testkey={"login-form-input-username"}
           />
         </StyledFormField>
       </FormRow>
@@ -63,22 +63,22 @@ export const LoginForm = (): ReactElement => {
       <FormRow>
         <StyledFormField>
           <StyledInput
-            {...register('password', {
+            {...register("password", {
               required: `${t(`validation.required`)}`,
             })}
-            placeholder={t('password')}
-            type={passwordVisible ? 'text' : 'password'}
+            placeholder={t("password")}
+            type={passwordVisible ? "text" : "password"}
             onChange={(e) => {
-              clearErrors('password');
-              setServerError('');
+              clearErrors("password");
+              setServerError("");
             }}
-            data-testkey={'login-form-input-password'}
+            data-testkey={"login-form-input-password"}
           />
         </StyledFormField>
 
         <FormFieldIcon>
           <FontAwesomeIcon
-            icon={passwordVisible ? 'eye-slash' : 'eye'}
+            icon={passwordVisible ? "eye-slash" : "eye"}
             onClick={() => setPasswordVisible(!passwordVisible)}
           />
         </FormFieldIcon>
@@ -88,8 +88,8 @@ export const LoginForm = (): ReactElement => {
         <FormFieldError>{errors.password.message}</FormFieldError>
       )}
 
-      <Button type='submit' disabled={isSubmitting} data-testkey='login-button'>
-        {t('button.login')}
+      <Button type="submit" disabled={isSubmitting} data-testkey="login-button">
+        {t("button.login")}
       </Button>
 
       {serverError && <ErrorMessage>{serverError}</ErrorMessage>}

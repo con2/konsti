@@ -1,8 +1,8 @@
-import moment from 'moment';
-import { config } from 'client/config';
-import { getStartTimes } from './getStartTimes';
-import { Game } from 'shared/typings/models/game';
-import { getTime } from 'client/utils/getTime';
+import moment from "moment";
+import { config } from "client/config";
+import { getStartTimes } from "./getStartTimes";
+import { Game } from "shared/typings/models/game";
+import { getTime } from "client/utils/getTime";
 
 export const getOpenStartTimes = (games: readonly Game[]): string[] => {
   const startTimes = getStartTimes(games);
@@ -17,8 +17,8 @@ export const getOpenStartTimes = (games: readonly Game[]): string[] => {
   const timeNow = getTime();
 
   const earliestSignupTime = moment(timeNow)
-    .add(SIGNUP_END_TIME, 'minutes')
-    .endOf('hour');
+    .add(SIGNUP_END_TIME, "minutes")
+    .endOf("hour");
 
   /*
   if (moment(earliestSignupTime).isBefore(moment(CONVENTION_START_TIME))) {
@@ -34,19 +34,19 @@ export const getOpenStartTimes = (games: readonly Game[]): string[] => {
   }
   */
 
-  const minutes = moment(timeNow).format('m');
+  const minutes = moment(timeNow).format("m");
 
   const lastSignupTime = moment(timeNow)
-    .add(SIGNUP_OPEN_TIME, 'hours')
-    .subtract(minutes, 'minutes')
-    .startOf('hour');
+    .add(SIGNUP_OPEN_TIME, "hours")
+    .subtract(minutes, "minutes")
+    .startOf("hour");
 
   const openSignupTimes: string[] = [];
   for (const startTime of startTimes) {
     if (
       moment(startTime).isBetween(
         earliestSignupTime,
-        lastSignupTime.add(1, 'minutes')
+        lastSignupTime.add(1, "minutes")
       )
     ) {
       openSignupTimes.push(startTime);

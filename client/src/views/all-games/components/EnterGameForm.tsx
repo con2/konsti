@@ -1,12 +1,12 @@
-import React, { FC, ReactElement, FormEvent, useState } from 'react';
-import styled from 'styled-components';
-import { useTranslation } from 'react-i18next';
-import { Game } from 'shared/typings/models/game';
-import { submitEnterGame } from 'client/views/signup/signupThunks';
-import { useAppDispatch, useAppSelector } from 'client/utils/hooks';
-import { Button } from 'client/components/Button';
-import { SignupMessage } from 'shared/typings/models/settings';
-import { loadGames } from 'client/utils/loadData';
+import React, { FC, ReactElement, FormEvent, useState } from "react";
+import styled from "styled-components";
+import { useTranslation } from "react-i18next";
+import { Game } from "shared/typings/models/game";
+import { submitEnterGame } from "client/views/signup/signupThunks";
+import { useAppDispatch, useAppSelector } from "client/utils/hooks";
+import { Button } from "client/components/Button";
+import { SignupMessage } from "shared/typings/models/settings";
+import { loadGames } from "client/utils/loadData";
 
 interface Props {
   game: Game;
@@ -20,7 +20,7 @@ export const EnterGameForm: FC<Props> = (props: Props): ReactElement => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const username = useAppSelector((state) => state.login.username);
-  const [userSignupMessage, setUserSignupMessage] = useState<string>('');
+  const [userSignupMessage, setUserSignupMessage] = useState<string>("");
 
   const handleCancel = (): void => {
     onCancelSignup();
@@ -33,7 +33,7 @@ export const EnterGameForm: FC<Props> = (props: Props): ReactElement => {
       gameDetails: game,
       priority: 0,
       time: game.startTime,
-      message: '',
+      message: "",
     };
 
     const enterData = {
@@ -50,10 +50,10 @@ export const EnterGameForm: FC<Props> = (props: Props): ReactElement => {
     } catch (error) {
       switch (error.code) {
         case 41:
-          console.error('Signup ended'); // eslint-disable-line no-console
+          console.error("Signup ended"); // eslint-disable-line no-console
           return;
         default:
-          console.error('signupError'); // eslint-disable-line no-console
+          console.error("signupError"); // eslint-disable-line no-console
       }
     }
   };
@@ -78,10 +78,10 @@ export const EnterGameForm: FC<Props> = (props: Props): ReactElement => {
       )}
       <ButtonContainer>
         <SignupConfirmationButton onClick={handleSignup}>
-          {t('signup.confirm')}
+          {t("signup.confirm")}
         </SignupConfirmationButton>
         <SignupCancelButton onClick={handleCancel}>
-          {t('signup.cancel')}
+          {t("signup.cancel")}
         </SignupCancelButton>
       </ButtonContainer>
     </SignupForm>

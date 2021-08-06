@@ -1,10 +1,10 @@
-import moment from 'moment';
-import { logger } from 'server/utils/logger';
-import { User } from 'shared/typings/models/user';
-import { findUsers } from 'server/features/user/userRepository';
+import moment from "moment";
+import { logger } from "server/utils/logger";
+import { User } from "shared/typings/models/user";
+import { findUsers } from "server/features/user/userRepository";
 
 export const verifyUserSignups = async (): Promise<void> => {
-  logger.info('Verify entered games and signups match for users');
+  logger.info("Verify entered games and signups match for users");
 
   let users: User[];
   try {
@@ -44,7 +44,7 @@ export const verifyUserSignups = async (): Promise<void> => {
 
 const getGroupLeader = (users: User[], user: User): User => {
   // User is group member, not group leader
-  if (user.groupCode !== '0' && user.groupCode !== user.serial) {
+  if (user.groupCode !== "0" && user.groupCode !== user.serial) {
     const groupLeader = users.find(
       (leader) => leader.serial === user.groupCode
     );

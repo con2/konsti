@@ -1,19 +1,19 @@
-import React, { ReactElement, useState, useEffect, ChangeEvent } from 'react';
-import { useTranslation } from 'react-i18next';
-import { useHistory, useParams } from 'react-router-dom';
-import styled from 'styled-components';
+import React, { ReactElement, useState, useEffect, ChangeEvent } from "react";
+import { useTranslation } from "react-i18next";
+import { useHistory, useParams } from "react-router-dom";
+import styled from "styled-components";
 import {
   submitAddSignupMessage,
   submitDeleteSignupMessage,
   submitUpdateHidden,
-} from 'client/views/admin/adminThunks';
-import { FeedbackForm } from 'client/views/all-games/components/FeedbackForm';
-import { GameInfo } from 'client/views/all-games/components/GameInfo';
-import { Loading } from 'client/components/Loading';
-import { Game } from 'shared/typings/models/game';
-import { updateFavorite, UpdateFavoriteOpts } from 'client/utils/favorite';
-import { useAppDispatch, useAppSelector } from 'client/utils/hooks';
-import { Button } from 'client/components/Button';
+} from "client/views/admin/adminThunks";
+import { FeedbackForm } from "client/views/all-games/components/FeedbackForm";
+import { GameInfo } from "client/views/all-games/components/GameInfo";
+import { Loading } from "client/components/Loading";
+import { Game } from "shared/typings/models/game";
+import { updateFavorite, UpdateFavoriteOpts } from "client/utils/favorite";
+import { useAppDispatch, useAppSelector } from "client/utils/hooks";
+import { Button } from "client/components/Button";
 
 export const GameDetails = (): ReactElement => {
   const history = useHistory();
@@ -40,7 +40,7 @@ export const GameDetails = (): ReactElement => {
   const [submitting, setSubmitting] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
 
-  const [signupMessageInput, setSignupMessageInput] = useState<string>('');
+  const [signupMessageInput, setSignupMessageInput] = useState<string>("");
   const [signupMessageInputVisible, setSignupMessageInputVisible] =
     useState<boolean>(false);
 
@@ -93,9 +93,9 @@ export const GameDetails = (): ReactElement => {
 
     setSubmitting(false);
 
-    if (action === 'add') {
+    if (action === "add") {
       setFavorited(true);
-    } else if (action === 'del') {
+    } else if (action === "del") {
       setFavorited(false);
     }
   };
@@ -108,11 +108,11 @@ export const GameDetails = (): ReactElement => {
     const gameIndex = findGame(foundGame.gameId, hiddenGames);
     const allHiddenGames = hiddenGames.slice();
 
-    if (action === 'add') {
+    if (action === "add") {
       if (gameIndex === -1) {
         allHiddenGames.push(foundGame);
       }
-    } else if (action === 'del') {
+    } else if (action === "del") {
       if (gameIndex > -1) {
         allHiddenGames.splice(gameIndex, 1);
       }
@@ -126,9 +126,9 @@ export const GameDetails = (): ReactElement => {
 
     setSubmitting(false);
 
-    if (action === 'add') {
+    if (action === "add") {
       setHidden(true);
-    } else if (action === 'del') {
+    } else if (action === "del") {
       setHidden(false);
     }
   };
@@ -148,7 +148,7 @@ export const GameDetails = (): ReactElement => {
       })
     );
     setSignupMessageInputVisible(false);
-    setSignupMessageInput('');
+    setSignupMessageInput("");
   };
 
   const onClickDeleteSignupMessage = (): void => {
@@ -158,85 +158,85 @@ export const GameDetails = (): ReactElement => {
   };
 
   return (
-    <div className='game-details-view'>
-      <div className='details-button-row'>
+    <div className="game-details-view">
+      <div className="details-button-row">
         <Button
           onClick={() => {
-            if (history.action === 'PUSH') {
+            if (history.action === "PUSH") {
               history.goBack();
             } else {
-              history.push('/');
+              history.push("/");
             }
           }}
         >
-          {t('button.back')}
+          {t("button.back")}
         </Button>
 
-        {favorited && loggedIn && userGroup === 'user' && foundGame && (
+        {favorited && loggedIn && userGroup === "user" && foundGame && (
           <Button
             disabled={submitting}
-            onClick={async () => await updateFavoriteHandler('del')}
+            onClick={async () => await updateFavoriteHandler("del")}
           >
-            {t('button.removeFavorite')}
+            {t("button.removeFavorite")}
           </Button>
         )}
 
-        {!favorited && loggedIn && userGroup === 'user' && foundGame && (
+        {!favorited && loggedIn && userGroup === "user" && foundGame && (
           <Button
             disabled={submitting}
-            onClick={async () => await updateFavoriteHandler('add')}
+            onClick={async () => await updateFavoriteHandler("add")}
           >
-            {t('button.favorite')}
+            {t("button.favorite")}
           </Button>
         )}
 
-        {hidden && loggedIn && userGroup === 'admin' && foundGame && (
+        {hidden && loggedIn && userGroup === "admin" && foundGame && (
           <Button
             disabled={submitting}
-            onClick={async () => await updateHidden('del')}
+            onClick={async () => await updateHidden("del")}
           >
-            {t('button.show')}
+            {t("button.show")}
           </Button>
         )}
 
-        {!hidden && loggedIn && userGroup === 'admin' && foundGame && (
+        {!hidden && loggedIn && userGroup === "admin" && foundGame && (
           <Button
             disabled={submitting}
-            onClick={async () => await updateHidden('add')}
+            onClick={async () => await updateHidden("add")}
           >
-            {t('button.hide')}
+            {t("button.hide")}
           </Button>
         )}
 
         {!hasSignupMessage &&
           !signupMessageInputVisible &&
           loggedIn &&
-          userGroup === 'admin' &&
+          userGroup === "admin" &&
           foundGame && (
             <Button
               disabled={submitting}
               onClick={() => setSignupMessageInputVisible(true)}
             >
-              {t('button.addSignupMessage')}
+              {t("button.addSignupMessage")}
             </Button>
           )}
 
         {!hasSignupMessage &&
           signupMessageInputVisible &&
           loggedIn &&
-          userGroup === 'admin' &&
+          userGroup === "admin" &&
           foundGame && (
             <Button
               disabled={submitting}
               onClick={() => setSignupMessageInputVisible(false)}
             >
-              {t('button.cancel')}
+              {t("button.cancel")}
             </Button>
           )}
 
-        {hasSignupMessage && loggedIn && userGroup === 'admin' && foundGame && (
+        {hasSignupMessage && loggedIn && userGroup === "admin" && foundGame && (
           <Button disabled={submitting} onClick={onClickDeleteSignupMessage}>
-            {t('button.removeSignupMessage')}
+            {t("button.removeSignupMessage")}
           </Button>
         )}
       </div>
@@ -245,21 +245,21 @@ export const GameDetails = (): ReactElement => {
 
       {signupMessageInputVisible && (
         <>
-          <p>{t('gameDetails.addSignupTextField')}</p>
+          <p>{t("gameDetails.addSignupTextField")}</p>
           <FormInput
-            type={'text'}
-            key='new-password'
-            placeholder={t('gameDetails.addSignupTextField')}
+            type={"text"}
+            key="new-password"
+            placeholder={t("gameDetails.addSignupTextField")}
             value={signupMessageInput}
             onChange={handleSignupMessageChange}
           />
-          <Button onClick={onClickAddSignupMessage}>{t('button.save')}</Button>
+          <Button onClick={onClickAddSignupMessage}>{t("button.save")}</Button>
         </>
       )}
 
       {!loading && !foundGame && (
-        <div className='game-not-found'>
-          {t('invalidGameId')} {gameId}.
+        <div className="game-not-found">
+          {t("invalidGameId")} {gameId}.
         </div>
       )}
 

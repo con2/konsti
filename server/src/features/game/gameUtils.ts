@@ -1,20 +1,20 @@
-import _ from 'lodash';
-import { findGames } from 'server/features/game/gameRepository';
-import { GameModel } from 'server/features/game/gameSchema';
-import { removeInvalidSignupsFromUsers } from 'server/features/player-assignment/utils/removeInvalidSignupsFromUsers';
-import { GameDoc } from 'server/typings/game.typings';
-import { logger } from 'server/utils/logger';
-import { Game } from 'shared/typings/models/game';
-import { findUsers } from 'server/features//user/userRepository';
-import { User } from 'shared/typings/models/user';
-import { GameWithUsernames, UserSignup } from 'shared/typings/api/games';
+import _ from "lodash";
+import { findGames } from "server/features/game/gameRepository";
+import { GameModel } from "server/features/game/gameSchema";
+import { removeInvalidSignupsFromUsers } from "server/features/player-assignment/utils/removeInvalidSignupsFromUsers";
+import { GameDoc } from "server/typings/game.typings";
+import { logger } from "server/utils/logger";
+import { Game } from "shared/typings/models/game";
+import { findUsers } from "server/features//user/userRepository";
+import { User } from "shared/typings/models/user";
+import { GameWithUsernames, UserSignup } from "shared/typings/api/games";
 
 export const removeDeletedGames = async (
   updatedGames: readonly Game[]
 ): Promise<void> => {
   const currentGames = await findGames();
 
-  const deletedGames = _.differenceBy(currentGames, updatedGames, 'gameId');
+  const deletedGames = _.differenceBy(currentGames, updatedGames, "gameId");
 
   if (deletedGames && deletedGames.length !== 0) {
     logger.info(`Found ${deletedGames.length} deleted games, remove...`);
@@ -83,7 +83,7 @@ export const getUsersForGame = (
 
     return {
       username: user.username,
-      signupMessage: enteredGame?.message ?? '',
+      signupMessage: enteredGame?.message ?? "",
     };
   });
 };

@@ -1,7 +1,7 @@
-import _ from 'lodash';
-import { config } from 'client/config';
-import { Game } from 'shared/typings/models/game';
-import { SelectedGame } from 'shared/typings/models/user';
+import _ from "lodash";
+import { config } from "client/config";
+import { Game } from "shared/typings/models/game";
+import { SelectedGame } from "shared/typings/models/user";
 
 // Get games that have are not hidden, have signup open, and are not signed
 export const filterAvailableGames = (
@@ -10,7 +10,7 @@ export const filterAvailableGames = (
   selectedGames: readonly SelectedGame[],
   signupTime: string
 ): readonly Game[] => {
-  const visibleGames = _.differenceBy(games, hiddenGames, 'gameId');
+  const visibleGames = _.differenceBy(games, hiddenGames, "gameId");
 
   const noSignupGames = config.noSignupGames;
 
@@ -26,7 +26,7 @@ export const filterAvailableGames = (
   const availableGames = _.differenceBy(
     signupOpenGames,
     selectedGameDetails,
-    'gameId'
+    "gameId"
   );
 
   const availableGamesForStartTime = availableGames.filter(

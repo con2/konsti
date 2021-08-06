@@ -1,7 +1,7 @@
-import _ from 'lodash';
-import { moveArrayItem, insertByIndex } from 'client/utils/array';
-import { DnDUpdatedPositions, DnDMove } from 'client/views/signup/signupTypes';
-import { Game } from 'shared/typings/models/game';
+import _ from "lodash";
+import { moveArrayItem, insertByIndex } from "client/utils/array";
+import { DnDUpdatedPositions, DnDMove } from "client/views/signup/signupTypes";
+import { Game } from "shared/typings/models/game";
 
 export const reorder = (
   list: readonly Game[],

@@ -1,11 +1,11 @@
-import _ from 'lodash';
-import { User } from 'shared/typings/models/user';
-import { Game } from 'shared/typings/models/game';
-import { PlayerAssignmentResult } from 'server/typings/result.typings';
-import { getStartingGames } from 'server/features/player-assignment/utils/getStartingGames';
-import { getRunRandomAndPadgInput } from 'server/features/player-assignment/utils/getRunRandomAndPadgInput';
-import { runPadgAssignment } from 'server/features/player-assignment/padg/utils/runPadgAssignment';
-import { logger } from 'server/utils/logger';
+import _ from "lodash";
+import { User } from "shared/typings/models/user";
+import { Game } from "shared/typings/models/game";
+import { PlayerAssignmentResult } from "server/typings/result.typings";
+import { getStartingGames } from "server/features/player-assignment/utils/getStartingGames";
+import { getRunRandomAndPadgInput } from "server/features/player-assignment/utils/getRunRandomAndPadgInput";
+import { runPadgAssignment } from "server/features/player-assignment/padg/utils/runPadgAssignment";
+import { logger } from "server/utils/logger";
 
 export const padgAssignPlayers = (
   players: readonly User[],
@@ -16,12 +16,12 @@ export const padgAssignPlayers = (
   const startingGames = getStartingGames(games, startingTime);
 
   if (startingGames.length === 0) {
-    logger.info('No starting games, stop!');
+    logger.info("No starting games, stop!");
     return {
       results: [],
-      message: 'Padg Assign Result - No starting games',
-      algorithm: 'padg',
-      status: 'error: no starting games',
+      message: "Padg Assign Result - No starting games",
+      algorithm: "padg",
+      status: "error: no starting games",
     };
   }
 
@@ -33,12 +33,12 @@ export const padgAssignPlayers = (
     numberOfGroups,
   } = getRunRandomAndPadgInput(players, games, startingTime);
   if (signedGames.length === 0) {
-    logger.info('No signup wishes, stop!');
+    logger.info("No signup wishes, stop!");
     return {
       results: [],
-      message: 'Padg Assign Result - No signup wishes',
-      algorithm: 'padg',
-      status: 'error: no signup wishes',
+      message: "Padg Assign Result - No signup wishes",
+      algorithm: "padg",
+      status: "error: no signup wishes",
     };
   }
 
@@ -72,7 +72,7 @@ export const padgAssignPlayers = (
   return Object.assign({
     ...assignmentResult,
     message,
-    algorithm: 'padg',
-    status: 'success',
+    algorithm: "padg",
+    status: "success",
   });
 };

@@ -1,12 +1,12 @@
-import { logger } from 'server/utils/logger';
-import { ResultsModel } from 'server/features/results/resultsSchema';
-import { ResultsCollectionEntry } from 'server/typings/result.typings';
-import { GameDoc } from 'server/typings/game.typings';
-import { findGames } from 'server/features/game/gameRepository';
-import { Result } from 'shared/typings/models/result';
+import { logger } from "server/utils/logger";
+import { ResultsModel } from "server/features/results/resultsSchema";
+import { ResultsCollectionEntry } from "server/typings/result.typings";
+import { GameDoc } from "server/typings/game.typings";
+import { findGames } from "server/features/game/gameRepository";
+import { Result } from "shared/typings/models/result";
 
 export const removeResults = async (): Promise<void> => {
-  logger.info('MongoDB: remove ALL results from db');
+  logger.info("MongoDB: remove ALL results from db");
   await ResultsModel.deleteMany({});
 };
 
@@ -17,11 +17,11 @@ export const findResult = async (
   try {
     response = await ResultsModel.findOne(
       { startTime },
-      '-_id -__v -createdAt -updatedAt -result._id'
+      "-_id -__v -createdAt -updatedAt -result._id"
     )
       .lean<ResultsCollectionEntry>()
       .sort({ createdAt: -1 })
-      .populate('results.enteredGame.gameDetails');
+      .populate("results.enteredGame.gameDetails");
     logger.debug(`MongoDB: Results data found for time ${startTime}`);
   } catch (error) {
     throw new Error(
@@ -37,11 +37,11 @@ export const findResults = async (): Promise<ResultsCollectionEntry[]> => {
     // @ts-expect-error: Returns ResultsCollectionEntry even though it definitely should be ResultsCollectionEntry[]
     response = await ResultsModel.find(
       {},
-      '-_id -__v -createdAt -updatedAt -result._id'
+      "-_id -__v -createdAt -updatedAt -result._id"
     )
       .lean<ResultsCollectionEntry>()
       .sort({ createdAt: -1 })
-      .populate('results.enteredGame.gameDetails');
+      .populate("results.enteredGame.gameDetails");
   } catch (error) {
     throw new Error(`MongoDB: Error loading all results  - ${error}`);
   }
@@ -76,7 +76,7 @@ export const saveResult = async (
           gameDetails: gameDocInDb._id,
           priority: result.enteredGame.priority,
           time: result.enteredGame.time,
-          message: '',
+          message: "",
         },
       });
     }

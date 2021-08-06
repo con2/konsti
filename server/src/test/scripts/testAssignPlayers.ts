@@ -1,14 +1,14 @@
-import 'array-flat-polyfill';
-import moment from 'moment';
-import { logger } from 'server/utils/logger';
-import { runAssignment } from 'server/features/player-assignment/runAssignment';
-import { config } from 'server/config';
-import { saveResults } from 'server/features/player-assignment/utils/saveResults';
-import { removeOverlapSignups } from 'server/features/player-assignment/utils/removeOverlapSignups';
-import { verifyUserSignups } from 'server/features/player-assignment/utils/verifyUserSignups';
-import { verifyResults } from 'server/features/player-assignment/utils/verifyResults';
-import { db } from 'server/db/mongodb';
-import { AssignmentStrategy } from 'shared/config/sharedConfig.types';
+import "array-flat-polyfill";
+import moment from "moment";
+import { logger } from "server/utils/logger";
+import { runAssignment } from "server/features/player-assignment/runAssignment";
+import { config } from "server/config";
+import { saveResults } from "server/features/player-assignment/utils/saveResults";
+import { removeOverlapSignups } from "server/features/player-assignment/utils/removeOverlapSignups";
+import { verifyUserSignups } from "server/features/player-assignment/utils/verifyUserSignups";
+import { verifyResults } from "server/features/player-assignment/utils/verifyResults";
+import { db } from "server/db/mongodb";
+import { AssignmentStrategy } from "shared/config/sharedConfig.types";
 
 const testAssignPlayers = async (
   assignmentStrategy: AssignmentStrategy
@@ -18,7 +18,7 @@ const testAssignPlayers = async (
 
   let assignResults;
 
-  const startingTime = moment(CONVENTION_START_TIME).add(2, 'hours').format();
+  const startingTime = moment(CONVENTION_START_TIME).add(2, "hours").format();
 
   try {
     assignResults = await runAssignment(startingTime, assignmentStrategy);
@@ -71,7 +71,7 @@ const getAssignmentStrategy = (userParameter: string): AssignmentStrategy => {
 };
 
 const init = async (): Promise<void> => {
-  if (process.env.NODE_ENV === 'production') {
+  if (process.env.NODE_ENV === "production") {
     logger.error(`Player allocation not allowed in production`);
     return;
   }

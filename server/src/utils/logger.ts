@@ -1,7 +1,7 @@
-import fs from 'fs';
-import { createLogger, format, Logger, transports } from 'winston';
-import 'winston-daily-rotate-file';
-import { config } from 'server/config';
+import fs from "fs";
+import { createLogger, format, Logger, transports } from "winston";
+import "winston-daily-rotate-file";
+import { config } from "server/config";
 
 const { combine, printf, colorize, timestamp, json, errors } = format;
 const { logDir, debug } = config;
@@ -12,12 +12,12 @@ if (!fs.existsSync(logDir)) {
 }
 
 const loggerLevel = (): string => {
-  if (debug) return 'debug';
-  else return 'info';
+  if (debug) return "debug";
+  else return "info";
 };
 
 const formatMessage = (message: string | object): string => {
-  if (typeof message === 'string') {
+  if (typeof message === "string") {
     return message;
   } else {
     return JSON.stringify(message, null, 2);
@@ -28,10 +28,10 @@ export const logger = createLogger({
   format: errors({ stack: true }),
   transports: [
     new transports.DailyRotateFile({
-      level: 'info', // info, debug, warn, error
+      level: "info", // info, debug, warn, error
       filename: `${logDir}/%DATE%.log`,
-      datePattern: 'YYYY-MM-DD',
-      maxSize: '20m',
+      datePattern: "YYYY-MM-DD",
+      maxSize: "20m",
       // maxFiles: '14d',
       zippedArchive: false,
       format: combine(timestamp(), json()),
@@ -42,7 +42,7 @@ export const logger = createLogger({
       format: combine(
         colorize(),
         timestamp({
-          format: 'HH:mm:ss',
+          format: "HH:mm:ss",
         }),
         printf((info) => {
           return `${info.timestamp} ${info.level}: ${formatMessage(

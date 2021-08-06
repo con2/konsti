@@ -1,5 +1,5 @@
-import mongoose from 'mongoose';
-import { FeedbackDoc } from 'server/typings/feedback.typings';
+import mongoose from "mongoose";
+import { FeedbackDoc } from "server/typings/feedback.typings";
 
 const feedbackSchema = new mongoose.Schema(
   {
@@ -11,6 +11,6 @@ const feedbackSchema = new mongoose.Schema(
 );
 
 export const FeedbackModel = mongoose.model<FeedbackDoc>(
-  'Feedback',
+  "Feedback",
   feedbackSchema
 );

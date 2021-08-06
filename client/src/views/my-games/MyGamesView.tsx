@@ -1,24 +1,24 @@
-import React, { ReactElement, useEffect, useState } from 'react';
-import { useStore } from 'react-redux';
-import { useTranslation } from 'react-i18next';
-import styled from 'styled-components';
-import { MySignupsList } from 'client/views/my-games/components/MySignupsList';
-import { MyFavoritesList } from 'client/views/my-games/components/MyFavoritesList';
-import { MyEnteredList } from 'client/views/my-games/components/MyEnteredList';
+import React, { ReactElement, useEffect, useState } from "react";
+import { useStore } from "react-redux";
+import { useTranslation } from "react-i18next";
+import styled from "styled-components";
+import { MySignupsList } from "client/views/my-games/components/MySignupsList";
+import { MyFavoritesList } from "client/views/my-games/components/MyFavoritesList";
+import { MyEnteredList } from "client/views/my-games/components/MyEnteredList";
 import {
   getUpcomingSignedGames,
   getUpcomingEnteredGames,
   getUpcomingFavorites,
-} from 'client/utils/getUpcomingGames';
-import { loadUser, loadGames, loadGroupMembers } from 'client/utils/loadData';
-import { isGroupLeader } from 'client/views/group/GroupView';
-import { GroupMember } from 'shared/typings/api/groups';
-import { SelectedGame } from 'shared/typings/models/user';
-import { useAppSelector } from 'client/utils/hooks';
-import { Button } from 'client/components/Button';
-import { sharedConfig } from 'shared/config/sharedConfig';
-import { SignupStrategy } from 'shared/config/sharedConfig.types';
-import { ChangePasswordForm } from 'client/views/helper/components/ChangePasswordForm';
+} from "client/utils/getUpcomingGames";
+import { loadUser, loadGames, loadGroupMembers } from "client/utils/loadData";
+import { isGroupLeader } from "client/views/group/GroupView";
+import { GroupMember } from "shared/typings/api/groups";
+import { SelectedGame } from "shared/typings/models/user";
+import { useAppSelector } from "client/utils/hooks";
+import { Button } from "client/components/Button";
+import { sharedConfig } from "shared/config/sharedConfig";
+import { SignupStrategy } from "shared/config/sharedConfig.types";
+import { ChangePasswordForm } from "client/views/helper/components/ChangePasswordForm";
 
 export const MyGamesView = (): ReactElement => {
   const { t } = useTranslation();
@@ -49,13 +49,13 @@ export const MyGamesView = (): ReactElement => {
   }, [store, testTime]);
 
   return (
-    <MyGamesViewContainer className='my-games-view'>
-      <div className='my-games-toggle-visibility'>
+    <MyGamesViewContainer className="my-games-view">
+      <div className="my-games-toggle-visibility">
         <Button onClick={() => setShowAllGames(false)} disabled={!showAllGames}>
-          {t('lastStartedAndUpcomingGames')}
+          {t("lastStartedAndUpcomingGames")}
         </Button>
         <Button onClick={() => setShowAllGames(true)} disabled={showAllGames}>
-          {t('allGames')}
+          {t("allGames")}
         </Button>
       </div>
 
@@ -67,7 +67,7 @@ export const MyGamesView = (): ReactElement => {
 
       {!isGroupLeader(groupCode, serial) && (
         <MyGamesGroupNotification>
-          <p className='bold'>{t('inGroupSignups')}</p>
+          <p className="bold">{t("inGroupSignups")}</p>
         </MyGamesGroupNotification>
       )}
 
@@ -100,7 +100,7 @@ export const MyGamesView = (): ReactElement => {
         selected={showChangePassword}
         onClick={() => setShowChangePassword(!showChangePassword)}
       >
-        {t('myGamesView.changePassword')}
+        {t("myGamesView.changePassword")}
       </ChangePasswordButton>
 
       {showChangePassword && (

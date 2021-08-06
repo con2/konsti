@@ -1,11 +1,11 @@
-import _ from 'lodash';
-import { logger } from 'server/utils/logger';
-import { getRandomInt } from 'server/features/player-assignment/utils/getRandomInt';
-import { shuffleArray } from 'server/utils/shuffleArray';
-import { Game } from 'shared/typings/models/game';
-import { GroupAssignResult } from 'server/typings/groupAssign.typings';
-import { Result } from 'shared/typings/models/result';
-import { SelectedGame, User } from 'shared/typings/models/user';
+import _ from "lodash";
+import { logger } from "server/utils/logger";
+import { getRandomInt } from "server/features/player-assignment/utils/getRandomInt";
+import { shuffleArray } from "server/utils/shuffleArray";
+import { Game } from "shared/typings/models/game";
+import { GroupAssignResult } from "server/typings/groupAssign.typings";
+import { Result } from "shared/typings/models/result";
+import { SelectedGame, User } from "shared/typings/models/user";
 
 export const runGroupAssignment = (
   playerGroups: readonly User[][],
@@ -134,7 +134,7 @@ export const runGroupAssignment = (
           );
 
           if (!enteredGame)
-            throw new Error('Unable to find entered game from signed games');
+            throw new Error("Unable to find entered game from signed games");
 
           signupResults.push({
             username: groupMember.username,

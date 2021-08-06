@@ -1,6 +1,6 @@
 export enum GameUpdateMethod {
-  signups = 'signups',
-  assign = 'assign',
+  signups = "signups",
+  assign = "assign",
 }
 
 export interface Config {

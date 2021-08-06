@@ -1,11 +1,11 @@
-import { AxiosResponse, AxiosError } from 'axios';
-import { api } from 'client/utils/api';
-import { ServerError } from 'shared/typings/api/errors';
-import { FAVORITE_ENDPOINT } from 'shared/constants/apiEndpoints';
+import { AxiosResponse, AxiosError } from "axios";
+import { api } from "client/utils/api";
+import { ServerError } from "shared/typings/api/errors";
+import { FAVORITE_ENDPOINT } from "shared/constants/apiEndpoints";
 import {
   SaveFavoriteRequest,
   PostFavoriteResponse,
-} from 'shared/typings/api/favorite';
+} from "shared/typings/api/favorite";
 
 export const postFavorite = async (
   favoriteData: SaveFavoriteRequest

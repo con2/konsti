@@ -1,4 +1,4 @@
 export interface PostFeedbackResponse {
   message: string;
-  status: 'success';
+  status: "success";
 }

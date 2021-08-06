@@ -1,10 +1,10 @@
-import React, { ReactElement, useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import _ from 'lodash';
-import styled from 'styled-components';
-import { ResultsByStartTimes } from './ResultsByStartTimes';
-import { getMissedSignups } from 'client/views/my-games/utils/getMissedSignups';
-import { SelectedGame } from 'shared/typings/models/user';
+import React, { ReactElement, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import _ from "lodash";
+import styled from "styled-components";
+import { ResultsByStartTimes } from "./ResultsByStartTimes";
+import { getMissedSignups } from "client/views/my-games/utils/getMissedSignups";
+import { SelectedGame } from "shared/typings/models/user";
 
 export interface Props {
   enteredGames: readonly SelectedGame[];
@@ -35,10 +35,10 @@ export const MyEnteredList = ({
   }, [missedSignups]);
 
   return (
-    <div className='my-entered-list'>
-      <h3>{t('enteredGames')}</h3>
+    <div className="my-entered-list">
+      <h3>{t("enteredGames")}</h3>
       <MyEnteredGames>
-        {startTimes.length === 0 && <span>{t('noEnteredGames')}</span>}
+        {startTimes.length === 0 && <span>{t("noEnteredGames")}</span>}
         {startTimes.length !== 0 && (
           <ResultsByStartTimes
             signups={_.sortBy(enteredGames, [

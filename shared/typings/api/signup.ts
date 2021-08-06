@@ -1,18 +1,18 @@
-import { Record, String, Static } from 'runtypes';
-import { SIGNUP_MESSAGE_LENGTH } from 'shared/constants/validation';
-import { ServerError } from 'shared/typings/api/errors';
-import { SelectedGame } from 'shared/typings/models/user';
+import { Record, String, Static } from "runtypes";
+import { SIGNUP_MESSAGE_LENGTH } from "shared/constants/validation";
+import { ServerError } from "shared/typings/api/errors";
+import { SelectedGame } from "shared/typings/models/user";
 
 export interface PostSignupResponse {
   message: string;
   signedGames: readonly SelectedGame[];
-  status: 'success';
+  status: "success";
 }
 
 export interface PostSignupTimeResponse {
   message: string;
   signupTime: string;
-  status: 'success';
+  status: "success";
 }
 
 export interface SignupData {
@@ -23,7 +23,7 @@ export interface SignupData {
 
 export interface PostEnteredGameResponse {
   message: string;
-  status: 'success';
+  status: "success";
   enteredGame: SelectedGame;
 }
 
@@ -33,7 +33,7 @@ export interface PostEnteredGameError extends ServerError {
 
 export interface DeleteEnteredGameResponse {
   message: string;
-  status: 'success';
+  status: "success";
 }
 
 export const PostEnteredGameParametersRuntype = Record({

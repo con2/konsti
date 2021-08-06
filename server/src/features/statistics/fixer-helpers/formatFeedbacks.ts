@@ -1,19 +1,19 @@
-import fs from 'fs';
-import _ from 'lodash';
-import moment from 'moment';
-import { Array } from 'runtypes';
-import { logger } from 'server/utils/logger';
-import { GameRuntype } from 'shared/typings/models/game';
-import { writeJson } from 'server/features/statistics/statsUtil';
-import { FeedbackRuntype } from 'shared/typings/models/feedback';
-import { config } from 'server/config';
+import fs from "fs";
+import _ from "lodash";
+import moment from "moment";
+import { Array } from "runtypes";
+import { logger } from "server/utils/logger";
+import { GameRuntype } from "shared/typings/models/game";
+import { writeJson } from "server/features/statistics/statsUtil";
+import { FeedbackRuntype } from "shared/typings/models/feedback";
+import { config } from "server/config";
 
 export const formatFeedbacks = (year: number, event: string): void => {
-  moment.locale('fi');
+  moment.locale("fi");
 
   const feedbacksJson = fs.readFileSync(
     `${config.statsDataDir}/${event}/${year}/secret/feedbacks.json`,
-    'utf8'
+    "utf8"
   );
   const feedbacks = Array(FeedbackRuntype).check(JSON.parse(feedbacksJson));
 
@@ -21,14 +21,14 @@ export const formatFeedbacks = (year: number, event: string): void => {
 
   const gamesJson = fs.readFileSync(
     `${config.statsDataDir}/${event}/${year}/games.json`,
-    'utf8'
+    "utf8"
   );
   const games = Array(GameRuntype).check(JSON.parse(gamesJson));
 
   logger.info(`Loaded ${games.length} games`);
 
   const filteredFeedbacks = feedbacks.filter(
-    (feedback) => feedback.feedback !== ''
+    (feedback) => feedback.feedback !== ""
   );
 
   const formattedFeedbacks = filteredFeedbacks.map((feedback) => {
@@ -37,11 +37,11 @@ export const formatFeedbacks = (year: number, event: string): void => {
       ...feedback,
       title: foundGame?.title,
       people: foundGame?.people,
-      startTime: moment(foundGame?.startTime).format('dddd HH:mm'),
+      startTime: moment(foundGame?.startTime).format("dddd HH:mm"),
     };
   });
 
-  const groupedFeedbacks = _.groupBy(formattedFeedbacks, 'people');
+  const groupedFeedbacks = _.groupBy(formattedFeedbacks, "people");
 
-  writeJson(year, event, 'feedback', groupedFeedbacks);
+  writeJson(year, event, "feedback", groupedFeedbacks);
 };

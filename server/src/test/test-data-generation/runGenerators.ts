@@ -1,25 +1,25 @@
-import 'array-flat-polyfill';
-import { Command } from 'commander';
-import { logger } from 'server/utils/logger';
-import { createGames } from 'server/test/test-data-generation/generators/createGames';
-import { createSignups } from 'server/test/test-data-generation/generators/createSignups';
+import "array-flat-polyfill";
+import { Command } from "commander";
+import { logger } from "server/utils/logger";
+import { createGames } from "server/test/test-data-generation/generators/createGames";
+import { createSignups } from "server/test/test-data-generation/generators/createSignups";
 import {
   removeEnteredGames,
   removeSignedGames,
   removeUsers,
-} from 'server/features/user/userRepository';
-import { removeResults } from 'server/features/results/resultsRepository';
-import { removeGames } from 'server/features/game/gameRepository';
-import { removeSettings } from 'server/features/settings/settingsRepository';
-import { db } from 'server/db/mongodb';
-import { generateTestUsers } from 'server/test/test-data-generation/generators/generateTestData';
-import { createEnteredGames } from 'server/test/test-data-generation/generators/createEnteredGames';
-import { createSettings } from 'server/test/test-data-generation/generators/createSettings';
-import { sharedConfig } from 'shared/config/sharedConfig';
-import { SignupStrategy } from 'shared/config/sharedConfig.types';
+} from "server/features/user/userRepository";
+import { removeResults } from "server/features/results/resultsRepository";
+import { removeGames } from "server/features/game/gameRepository";
+import { removeSettings } from "server/features/settings/settingsRepository";
+import { db } from "server/db/mongodb";
+import { generateTestUsers } from "server/test/test-data-generation/generators/generateTestData";
+import { createEnteredGames } from "server/test/test-data-generation/generators/createEnteredGames";
+import { createSettings } from "server/test/test-data-generation/generators/createSettings";
+import { sharedConfig } from "shared/config/sharedConfig";
+import { SignupStrategy } from "shared/config/sharedConfig.types";
 
 const runGenerators = async (): Promise<void> => {
-  if (process.env.NODE_ENV === 'production') {
+  if (process.env.NODE_ENV === "production") {
     throw new Error(`Data creation not allowed in production`);
   }
 
@@ -41,11 +41,11 @@ const runGenerators = async (): Promise<void> => {
   const signupTimes = 3; // For how many signup times games are created
 
   commander
-    .option('-u, --users', 'Generate users')
-    .option('-s, --signups', 'Generate signups')
-    .option('-e, --entered', 'Generate entered games')
-    .option('-g, --games', 'Generate games')
-    .option('-c, --clean', 'Clean all data');
+    .option("-u, --users", "Generate users")
+    .option("-s, --signups", "Generate signups")
+    .option("-e, --entered", "Generate entered games")
+    .option("-g, --games", "Generate games")
+    .option("-c, --clean", "Clean all data");
 
   const options = commander.opts();
 
@@ -58,7 +58,7 @@ const runGenerators = async (): Promise<void> => {
   await db.connectToDb();
 
   if (options.clean) {
-    logger.info('Clean all data');
+    logger.info("Clean all data");
 
     await removeUsers();
     await removeGames();
@@ -67,7 +67,7 @@ const runGenerators = async (): Promise<void> => {
   }
 
   if (options.users) {
-    logger.info('Generate users');
+    logger.info("Generate users");
 
     !options.clean && (await removeUsers());
     !options.clean && (await removeResults());
@@ -81,7 +81,7 @@ const runGenerators = async (): Promise<void> => {
   }
 
   if (options.games) {
-    logger.info('Generate games');
+    logger.info("Generate games");
 
     !options.clean && (await removeGames());
     !options.clean && (await removeResults());
@@ -90,7 +90,7 @@ const runGenerators = async (): Promise<void> => {
   }
 
   if (options.signups) {
-    logger.info('Generate signups');
+    logger.info("Generate signups");
 
     !options.clean && (await removeSignedGames());
     !options.clean && (await removeResults());
@@ -99,7 +99,7 @@ const runGenerators = async (): Promise<void> => {
   }
 
   if (options.entered) {
-    logger.info('Generate signups');
+    logger.info("Generate signups");
 
     !options.clean && (await removeEnteredGames());
     !options.clean && (await removeResults());

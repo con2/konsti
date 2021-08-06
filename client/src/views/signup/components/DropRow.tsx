@@ -1,9 +1,9 @@
-import React, { ReactElement } from 'react';
-import { useTranslation } from 'react-i18next';
-import { Droppable, Draggable } from 'react-beautiful-dnd';
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import { Game } from 'shared/typings/models/game';
+import React, { ReactElement } from "react";
+import { useTranslation } from "react-i18next";
+import { Droppable, Draggable } from "react-beautiful-dnd";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+import { Game } from "shared/typings/models/game";
 
 export interface Props {
   droppableId: string;
@@ -21,18 +21,18 @@ export const DropRow = ({
   const { t } = useTranslation();
 
   const getListStyle = (dragging: boolean): string => {
-    if (dragging) return 'dragging';
-    else return '';
+    if (dragging) return "dragging";
+    else return "";
   };
 
   const getPopularity = (game: Game): string => {
-    if (game.popularity >= game.maxAttendance) return 'high-popularity';
+    if (game.popularity >= game.maxAttendance) return "high-popularity";
     else if (
       game.popularity >= game.maxAttendance / 2 &&
       game.popularity >= game.minAttendance
     )
-      return 'medium-popularity';
-    else return 'low-popularity';
+      return "medium-popularity";
+    else return "low-popularity";
   };
 
   return (
@@ -64,17 +64,17 @@ export const DropRow = ({
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
                     >
-                      <SignupGameTitle className='break-long'>
+                      <SignupGameTitle className="break-long">
                         {game.title}
                       </SignupGameTitle>
-                      <SignupShortDescription className='break-long'>
-                        {t(`programType.${game.programType}`)}:{' '}
+                      <SignupShortDescription className="break-long">
+                        {t(`programType.${game.programType}`)}:{" "}
                         {game.shortDescription
                           ? game.shortDescription
                           : game.gameSystem}
                       </SignupShortDescription>
                       <SignupPopularity>
-                        {t('playerStatus')}: {t(getPopularity(game))}
+                        {t("playerStatus")}: {t(getPopularity(game))}
                       </SignupPopularity>
                     </DraggableItem>
                   </Link>

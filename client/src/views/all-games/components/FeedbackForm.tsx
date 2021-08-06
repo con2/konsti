@@ -1,10 +1,10 @@
-import React, { ReactElement, ChangeEvent, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import styled from 'styled-components';
-import { postFeedback } from 'client/services/feedbackServices';
-import { Game } from 'shared/typings/models/game';
-import { Button } from 'client/components/Button';
-import { useAppSelector } from 'client/utils/hooks';
+import React, { ReactElement, ChangeEvent, useState } from "react";
+import { useTranslation } from "react-i18next";
+import styled from "styled-components";
+import { postFeedback } from "client/services/feedbackServices";
+import { Game } from "shared/typings/models/game";
+import { Button } from "client/components/Button";
+import { useAppSelector } from "client/utils/hooks";
 
 export interface Props {
   game: Game;
@@ -14,7 +14,7 @@ export const FeedbackForm = ({ game }: Props): ReactElement => {
   const username = useAppSelector((state) => state.login.username);
 
   const [submitting, setSubmitting] = useState<boolean>(false);
-  const [feedbackValue, setFeedbackValue] = useState<string>('');
+  const [feedbackValue, setFeedbackValue] = useState<string>("");
   const [feedbackSent, setFeedbackSent] = useState<boolean>(false);
 
   const { t } = useTranslation();
@@ -45,9 +45,9 @@ export const FeedbackForm = ({ game }: Props): ReactElement => {
   };
 
   return (
-    <div className='feedback-form'>
-      <p className='bold'>{t('feedbackTitle')}</p>
-      <p>{t('feedbackInstruction')}</p>
+    <div className="feedback-form">
+      <p className="bold">{t("feedbackTitle")}</p>
+      <p>{t("feedbackInstruction")}</p>
 
       {!feedbackSent && (
         <>
@@ -61,13 +61,13 @@ export const FeedbackForm = ({ game }: Props): ReactElement => {
             disabled={submitting}
             onClick={async () => await sendFeedbackEvent()}
           >
-            {t('button.sendFeedback')}
+            {t("button.sendFeedback")}
           </Button>
         </>
       )}
 
       {feedbackSent && (
-        <SuccessMessage>{t('button.feedbackSent')}</SuccessMessage>
+        <SuccessMessage>{t("button.feedbackSent")}</SuccessMessage>
       )}
     </div>
   );

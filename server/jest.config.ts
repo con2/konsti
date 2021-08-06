@@ -1,18 +1,18 @@
 module.exports = {
-  preset: 'ts-jest',
-  testEnvironment: 'node',
+  preset: "ts-jest",
+  testEnvironment: "node",
 
   clearMocks: true,
 
-  coverageDirectory: 'coverage',
+  coverageDirectory: "coverage",
 
-  modulePathIgnorePatterns: ['./lib'],
+  modulePathIgnorePatterns: ["./lib"],
 
-  setupFiles: ['./src/test/setupTests.ts'],
-  setupFilesAfterEnv: ['./src/test/setupTestsAfterEnv.ts'],
+  setupFiles: ["./src/test/setupTests.ts"],
+  setupFilesAfterEnv: ["./src/test/setupTestsAfterEnv.ts"],
 
   moduleNameMapper: {
-    '^server(.*)$': '<rootDir>/src/$1',
-    '^shared(.*)$': '<rootDir>/../shared/$1',
+    "^server(.*)$": "<rootDir>/src/$1",
+    "^shared(.*)$": "<rootDir>/../shared/$1",
   },
 };

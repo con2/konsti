@@ -1,19 +1,19 @@
-import moment from 'moment';
-import _ from 'lodash';
-import { logger } from 'server/utils/logger';
-import { Game } from 'shared/typings/models/game';
-import { User } from 'shared/typings/models/user';
-import { getMaximumNumberOfPlayersByTime } from './resultDataHelpers';
+import moment from "moment";
+import _ from "lodash";
+import { logger } from "server/utils/logger";
+import { Game } from "shared/typings/models/game";
+import { User } from "shared/typings/models/user";
+import { getMaximumNumberOfPlayersByTime } from "./resultDataHelpers";
 import {
   StringNumberObject,
   PriorityObject,
-} from 'server/typings/common.typings';
-import { toPercent } from 'server/features/statistics/statsUtil';
+} from "server/typings/common.typings";
+import { toPercent } from "server/features/statistics/statsUtil";
 
 export const getGamesByStartingTime = (
   games: readonly Game[]
 ): StringNumberObject => {
-  const gamesByTime = _.countBy(games, 'startTime');
+  const gamesByTime = _.countBy(games, "startTime");
 
   logger.info(`Number of games for each start time: \n`, gamesByTime);
   return gamesByTime;
@@ -21,7 +21,7 @@ export const getGamesByStartingTime = (
 
 const getUsersByGames = (users: readonly User[]): StringNumberObject => {
   const enteredGames = users.flatMap((user) => user.enteredGames);
-  const usersByGames = _.countBy(enteredGames, 'gameDetails.gameId');
+  const usersByGames = _.countBy(enteredGames, "gameDetails.gameId");
   return usersByGames;
 };
 
@@ -48,12 +48,12 @@ export const getNumberOfFullGames = (
 const getSignupsByStartTime = (users: readonly User[]): StringNumberObject => {
   const userSignupCountsByTime: StringNumberObject = {};
 
-  logger.warn('Warning: Inaccurate because forming groups deletes signedGames');
+  logger.warn("Warning: Inaccurate because forming groups deletes signedGames");
 
   users.forEach((user) => {
     let groupSize = 1;
 
-    if (user.groupCode !== '0' && user.groupCode === user.serial) {
+    if (user.groupCode !== "0" && user.groupCode === user.serial) {
       groupSize = users.filter(
         (groupUser) => groupUser.groupCode === user.serial
       ).length;
@@ -81,13 +81,13 @@ export const getDemandByTime = (
   games: readonly Game[],
   users: readonly User[]
 ): void => {
-  logger.info('>>> Demand by time');
+  logger.info(">>> Demand by time");
   const signupsByTime = getSignupsByStartTime(users);
   const maximumNumberOfPlayersByTime = getMaximumNumberOfPlayersByTime(games);
 
   for (const startTime in maximumNumberOfPlayersByTime) {
     logger.info(
-      `Demand for ${moment(startTime).format('DD.M.YYYY HH:mm')}: ${
+      `Demand for ${moment(startTime).format("DD.M.YYYY HH:mm")}: ${
         signupsByTime[startTime]
       }/${maximumNumberOfPlayersByTime[startTime]} (${toPercent(
         signupsByTime[startTime] / maximumNumberOfPlayersByTime[startTime]
@@ -100,11 +100,11 @@ export const getDemandByGame = (
   games: readonly Game[],
   users: readonly User[]
 ): void => {
-  logger.info('>>> Demand by games');
+  logger.info(">>> Demand by games");
 
   const signedGames = users.reduce<PriorityObject>((acc, user) => {
     let groupSize = 1;
-    if (user.groupCode !== '0' && user.groupCode === user.serial) {
+    if (user.groupCode !== "0" && user.groupCode === user.serial) {
       groupSize = users.filter(
         (groupUser) => groupUser.groupCode === user.serial
       ).length;

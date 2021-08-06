@@ -1,18 +1,18 @@
-import React, { ReactElement, useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import styled from 'styled-components';
-import { submitSignup } from 'client/views/signup/signupThunks';
-import { DragAndDropList } from 'client/views/signup/components/DragAndDropList';
-import { sleep } from 'client/utils/sleep';
-import { config } from 'client/config';
-import { Game } from 'shared/typings/models/game';
-import { SignupTimeButtons } from './SignupTimeButtons';
-import { SignupInfo } from './SignupInfo';
-import { SignupActionButtons } from './SignupActionButtons';
-import { filterAvailableGames } from 'client/views/signup/utils/filterAvailableGames';
-import { filterSelectedGames } from 'client/views/signup/utils/filterSelectedGames';
-import { useAppDispatch, useAppSelector } from 'client/utils/hooks';
-import { submitSelectedGames } from 'client/views/signup/signupSlice';
+import React, { ReactElement, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import styled from "styled-components";
+import { submitSignup } from "client/views/signup/signupThunks";
+import { DragAndDropList } from "client/views/signup/components/DragAndDropList";
+import { sleep } from "client/utils/sleep";
+import { config } from "client/config";
+import { Game } from "shared/typings/models/game";
+import { SignupTimeButtons } from "./SignupTimeButtons";
+import { SignupInfo } from "./SignupInfo";
+import { SignupActionButtons } from "./SignupActionButtons";
+import { filterAvailableGames } from "client/views/signup/utils/filterAvailableGames";
+import { filterSelectedGames } from "client/views/signup/utils/filterSelectedGames";
+import { useAppDispatch, useAppSelector } from "client/utils/hooks";
+import { submitSelectedGames } from "client/views/signup/signupSlice";
 
 export interface Props {
   games: readonly Game[];
@@ -38,7 +38,7 @@ export const SignupList = ({
 
   const [submitting, setSubmitting] = useState<boolean>(false);
   const [signupSubmitted, setSignupSubmitted] = useState<boolean>(false);
-  const [signupError, setSignupError] = useState<string>('');
+  const [signupError, setSignupError] = useState<string>("");
 
   useEffect(() => {
     if (!unsavedChanges) {
@@ -60,15 +60,15 @@ export const SignupList = ({
     } catch (error) {
       switch (error.code) {
         case 41:
-          showMessage('signupEnded');
+          showMessage("signupEnded");
           return;
         default:
-          showMessage('signupError');
+          showMessage("signupError");
           return;
       }
     }
 
-    showMessage('signupSubmitted');
+    showMessage("signupSubmitted");
     setSubmitting(false);
   };
 
@@ -92,15 +92,15 @@ export const SignupList = ({
     } catch (error) {
       switch (error.code) {
         case 41:
-          showMessage('signupEnded');
+          showMessage("signupEnded");
           return;
         default:
-          showMessage('signupError');
+          showMessage("signupError");
           return;
       }
     }
 
-    showMessage('signupSubmitted');
+    showMessage("signupSubmitted");
     setSubmitting(false);
   };
 
@@ -110,7 +110,7 @@ export const SignupList = ({
         gameDetails: { ...newSelectedGame },
         priority: newSelectedGames.indexOf(newSelectedGame) + 1,
         time: signupTime,
-        message: '',
+        message: "",
       };
     });
 
@@ -122,25 +122,25 @@ export const SignupList = ({
   };
 
   const showMessage = async (message: string): Promise<void> => {
-    if (message === 'signupSubmitted') {
+    if (message === "signupSubmitted") {
       setSignupSubmitted(true);
-    } else if (message === 'signupError') {
-      setSignupError('signupError');
-    } else if (message === 'signupEnded') {
-      setSignupError('signupEnded');
+    } else if (message === "signupError") {
+      setSignupError("signupError");
+    } else if (message === "signupEnded") {
+      setSignupError("signupEnded");
     }
     await sleep(config.MESSAGE_DELAY);
     setSignupSubmitted(false);
-    setSignupError('');
+    setSignupError("");
   };
 
   return (
     <SignupListContainer>
       {signupTimes.length === 0 ? (
-        <h2>{t('noOpenSignups')}</h2>
+        <h2>{t("noOpenSignups")}</h2>
       ) : (
         <>
-          <h2>{t('signupOpen')}</h2>
+          <h2>{t("signupOpen")}</h2>
           <SignupTimeButtons
             signupTimes={signupTimes}
             signupTime={signupTime}

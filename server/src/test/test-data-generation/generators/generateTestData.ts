@@ -4,9 +4,9 @@ import {
   createTestUsers,
   createUsersInGroup,
   createHelpUser,
-} from 'server/test/test-data-generation/generators/createUsers';
-import { createGames } from 'server/test/test-data-generation/generators/createGames';
-import { createSignups } from 'server/test/test-data-generation/generators/createSignups';
+} from "server/test/test-data-generation/generators/createUsers";
+import { createGames } from "server/test/test-data-generation/generators/createGames";
+import { createSignups } from "server/test/test-data-generation/generators/createSignups";
 
 export const generateTestData = async (
   newUsersCount: number,
