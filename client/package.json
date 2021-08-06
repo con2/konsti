@@ -9,24 +9,23 @@
   "main": "index.tsx",
   "scripts": {
     "build:ci": "yarn clean && webpack-cli",
-    "build:cypress": "babel cypress --out-dir build/cypress --extensions .ts --root-mode upward",
+    "build:cypress": "yarn run -T babel cypress --out-dir build/cypress --extensions .ts --root-mode upward",
     "build:dev": "yarn clean && webpack-cli",
     "build:prod": "yarn clean && webpack-cli",
     "build:staging": "yarn clean && webpack-cli",
-    "build:types": "tsc --emitDeclarationOnly",
     "bundle-analyzer": "webpack-cli --profile --json > stats.json && webpack-bundle-analyzer stats.json build -m server",
-    "clean": "rimraf build",
+    "clean": "yarn run -T rimraf build",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
-    "eslint": "eslint . --ext .js,.ts,.tsx",
-    "eslint-rules": "eslint --print-config .eslintrc.js",
+    "eslint": "yarn run -T eslint . --ext .js,.ts,.tsx",
+    "eslint-rules": "yarn run -T eslint --print-config .eslintrc.js",
     "start": "webpack serve",
     "stylelint": "stylelint \"./**/*.{ts,tsx}\"",
-    "test": "jest",
-    "test:coverage": "jest --coverage --colors",
-    "test:watch": "jest --watch",
-    "type-check": "tsc --noEmit",
-    "type-check:cypress": "tsc --noEmit --project cypress/tsconfig.json"
+    "test": "yarn run -T jest",
+    "test:coverage": "yarn run -T jest --coverage --colors",
+    "test:watch": "yarn run -T jest --watch",
+    "type-check": "yarn run -T tsc --noEmit",
+    "type-check:cypress": "yarn run -T tsc --noEmit --project cypress/tsconfig.json"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "1.2.36",
@@ -102,5 +101,13 @@
     "webpack-cli": "4.7.2",
     "webpack-dev-server": "3.11.2",
     "webpack-merge": "5.8.0"
+  },
+  "peerDependenciesMeta": {
+    "@babel/core": {
+      "optional": true
+    },
+    "moment": {
+      "optional": true
+    }
   }
 }
