@@ -1,17 +1,17 @@
-import mongoose from 'mongoose';
-import { MongoMemoryServer } from 'mongodb-memory-server';
-import { UserModel } from 'server/features/user/userSchema';
+import mongoose from "mongoose";
+import { MongoMemoryServer } from "mongodb-memory-server";
+import { UserModel } from "server/features/user/userSchema";
 import {
   delEnteredGame,
   saveEnteredGame,
   saveUser,
-} from 'server/features/user/userRepository';
-import { mockGame } from 'server/test/mock-data/mockGame';
-import { saveGames } from 'server/features/game/gameRepository';
+} from "server/features/user/userRepository";
+import { mockGame } from "server/test/mock-data/mockGame";
+import { saveGames } from "server/features/game/gameRepository";
 import {
   mockPostEnteredGameRequest,
   mockUser,
-} from 'server/test/mock-data/mockUser';
+} from "server/test/mock-data/mockUser";
 
 let mongoServer: MongoMemoryServer;
 
@@ -34,7 +34,7 @@ afterEach(async () => {
   await mongoServer.stop();
 });
 
-test('should insert new user into collection', async () => {
+test("should insert new user into collection", async () => {
   await saveUser(mockUser);
 
   const insertedUser = await UserModel.findOne({
@@ -43,7 +43,7 @@ test('should insert new user into collection', async () => {
   expect(insertedUser?.username).toEqual(mockUser.username);
 });
 
-test('should add new enteredGame for user', async () => {
+test("should add new enteredGame for user", async () => {
   await saveUser(mockUser);
   await saveGames([mockGame]);
 
@@ -52,7 +52,7 @@ test('should add new enteredGame for user', async () => {
   expect(response.enteredGames[0].gameDetails.gameId).toEqual(mockGame.gameId);
 });
 
-test('should delete enteredGame from user', async () => {
+test("should delete enteredGame from user", async () => {
   await saveUser(mockUser);
   await saveGames([mockGame]);
   await saveEnteredGame(mockPostEnteredGameRequest);

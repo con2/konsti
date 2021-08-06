@@ -1,10 +1,10 @@
-import { Game } from 'shared/typings/models/game';
+import { Game } from "shared/typings/models/game";
 import {
   getSignedGames,
   getUpcomingEnteredGames,
-} from 'client/utils/getUpcomingGames';
-import { SelectedGame } from 'shared/typings/models/user';
-import { GroupMember } from 'shared/typings/api/groups';
+} from "client/utils/getUpcomingGames";
+import { SelectedGame } from "shared/typings/models/user";
+import { GroupMember } from "shared/typings/api/groups";
 
 export const isAlreadySigned = (
   gameToCheck: Game,

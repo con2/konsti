@@ -1,11 +1,11 @@
-import { submitGetResults } from 'client/views/results/resultsThunks';
-import { submitGetGames } from 'client/views/all-games/allGamesThunks';
-import { submitGetSettings } from 'client/views/admin/adminThunks';
-import { submitGetUser } from 'client/views/my-games/myGamesThunks';
-import { submitGetGroup } from 'client/views/group/groupThunks';
-import { submitSessionRecovery } from 'client/views/login/loginThunks';
-import { store } from 'client/utils/store';
-import { AppDispatch } from 'client/typings/redux.typings';
+import { submitGetResults } from "client/views/results/resultsThunks";
+import { submitGetGames } from "client/views/all-games/allGamesThunks";
+import { submitGetSettings } from "client/views/admin/adminThunks";
+import { submitGetUser } from "client/views/my-games/myGamesThunks";
+import { submitGetGroup } from "client/views/group/groupThunks";
+import { submitSessionRecovery } from "client/views/login/loginThunks";
+import { store } from "client/utils/store";
+import { AppDispatch } from "client/typings/redux.typings";
 
 export const loadData = async (): Promise<void> => {
   // Get app settings
@@ -67,7 +67,7 @@ export const loadUser = async (): Promise<void> => {
   const dispatch: AppDispatch = store.dispatch;
   const { loggedIn, userGroup, username } = state.login;
 
-  if (loggedIn && userGroup === 'user') {
+  if (loggedIn && userGroup === "user") {
     await dispatch(submitGetUser(username));
   }
 };
@@ -77,7 +77,7 @@ export const loadGroupMembers = async (): Promise<void> => {
   const dispatch: AppDispatch = store.dispatch;
   const { loggedIn, groupCode, username } = state.login;
 
-  if (loggedIn && groupCode !== '0') {
+  if (loggedIn && groupCode !== "0") {
     await dispatch(submitGetGroup(groupCode, username));
   }
 };

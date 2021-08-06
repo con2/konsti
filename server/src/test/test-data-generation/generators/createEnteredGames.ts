@@ -1,13 +1,13 @@
-import faker from 'faker';
-import { logger } from 'server/utils/logger';
+import faker from "faker";
+import { logger } from "server/utils/logger";
 import {
   findUsers,
   saveEnteredGame,
-} from 'server/features/user/userRepository';
-import { findGames } from 'server/features/game/gameRepository';
-import { findSettings } from 'server/features/settings/settingsRepository';
-import { shuffleArray } from 'server/utils/shuffleArray';
-import { getRandomInt } from 'server/features/player-assignment/utils/getRandomInt';
+} from "server/features/user/userRepository";
+import { findGames } from "server/features/game/gameRepository";
+import { findSettings } from "server/features/settings/settingsRepository";
+import { shuffleArray } from "server/utils/shuffleArray";
+import { getRandomInt } from "server/features/player-assignment/utils/getRandomInt";
 
 export const createEnteredGames = async (): Promise<void> => {
   logger.info(`Generate EnteredGames data`);
@@ -18,7 +18,7 @@ export const createEnteredGames = async (): Promise<void> => {
   const settings = await findSettings();
 
   const users = allUsers.filter(
-    (user) => user.username !== 'admin' && user.username !== 'ropetiski'
+    (user) => user.username !== "admin" && user.username !== "ropetiski"
   );
 
   logger.info(`EnteredGames: ${games.length} games`);
@@ -46,7 +46,7 @@ export const createEnteredGames = async (): Promise<void> => {
         username: user.username,
         enteredGameId: randomGame.gameId,
         startTime: randomGame.startTime,
-        message: foundSignupMessage?.message ? faker.lorem.words(4) : '',
+        message: foundSignupMessage?.message ? faker.lorem.words(4) : "",
       });
     });
   });

@@ -1,8 +1,8 @@
-import React, { ReactElement } from 'react';
-import { useTranslation } from 'react-i18next';
-import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
-import { useAppSelector } from 'client/utils/hooks';
+import React, { ReactElement } from "react";
+import { useTranslation } from "react-i18next";
+import styled from "styled-components";
+import { NavLink } from "react-router-dom";
+import { useAppSelector } from "client/utils/hooks";
 
 export const UserNavigation = (props: {
   onSelect: () => void;
@@ -15,28 +15,28 @@ export const UserNavigation = (props: {
       {appOpen && (
         <RouterLink
           onClick={props.onSelect}
-          to='/games'
-          data-testkey='all-games-page-link'
+          to="/games"
+          data-testkey="all-games-page-link"
         >
-          {t('pages.allGames')}
+          {t("pages.allGames")}
         </RouterLink>
       )}
 
       <RouterLink
         onClick={props.onSelect}
-        to='/login'
-        data-testkey='login-page-link'
+        to="/login"
+        data-testkey="login-page-link"
       >
-        {t('button.login')}
+        {t("button.login")}
       </RouterLink>
 
       {appOpen && (
         <RouterLink
           onClick={props.onSelect}
-          to='/registration'
-          data-testkey='registration-page-link'
+          to="/registration"
+          data-testkey="registration-page-link"
         >
-          {t('button.register')}
+          {t("button.register")}
         </RouterLink>
       )}
     </StyledRoutes>

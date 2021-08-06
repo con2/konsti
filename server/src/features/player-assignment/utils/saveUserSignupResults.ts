@@ -1,13 +1,13 @@
-import moment from 'moment';
-import { logger } from 'server/utils/logger';
-import { Result } from 'shared/typings/models/result';
-import { GameDoc } from 'server/typings/game.typings';
+import moment from "moment";
+import { logger } from "server/utils/logger";
+import { Result } from "shared/typings/models/result";
+import { GameDoc } from "server/typings/game.typings";
 import {
   findUsers,
   updateEnteredGames,
-} from 'server/features/user/userRepository';
-import { findGames } from 'server/features/game/gameRepository';
-import { SelectedGame, User } from 'shared/typings/models/user';
+} from "server/features/user/userRepository";
+import { findGames } from "server/features/game/gameRepository";
+import { SelectedGame, User } from "shared/typings/models/user";
 
 export const saveUserSignupResults = async (
   startingTime: string,
@@ -74,7 +74,7 @@ const getCurrentEnteredGames = (
         gameDetails: gameDocInDb?._id,
         priority: foundResult?.enteredGame.priority,
         time: foundResult?.enteredGame.time,
-        message: '',
+        message: "",
       },
     ];
   }

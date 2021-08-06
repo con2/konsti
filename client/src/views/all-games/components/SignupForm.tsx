@@ -1,10 +1,10 @@
-import React, { ReactElement, useRef, FormEvent } from 'react';
-import { useTranslation } from 'react-i18next';
-import { Game } from 'shared/typings/models/game';
-import { submitSignup } from 'client/views/signup/signupThunks';
-import { useAppDispatch, useAppSelector } from 'client/utils/hooks';
-import { submitSelectedGames } from 'client/views/signup/signupSlice';
-import { Button } from 'client/components/Button';
+import React, { ReactElement, useRef, FormEvent } from "react";
+import { useTranslation } from "react-i18next";
+import { Game } from "shared/typings/models/game";
+import { submitSignup } from "client/views/signup/signupThunks";
+import { useAppDispatch, useAppSelector } from "client/utils/hooks";
+import { submitSelectedGames } from "client/views/signup/signupSlice";
+import { Button } from "client/components/Button";
 
 interface Props {
   game: Game;
@@ -38,7 +38,7 @@ export const SignupForm = ({
         gameDetails: game,
         priority: parseInt(priorityRef.current.value, 10),
         time: game.startTime,
-        message: '',
+        message: "",
       },
     ];
 
@@ -56,10 +56,10 @@ export const SignupForm = ({
     } catch (error) {
       switch (error.code) {
         case 41:
-          console.error('Signup ended'); // eslint-disable-line no-console
+          console.error("Signup ended"); // eslint-disable-line no-console
           return;
         default:
-          console.error('signupError'); // eslint-disable-line no-console
+          console.error("signupError"); // eslint-disable-line no-console
       }
     }
   };
@@ -73,20 +73,20 @@ export const SignupForm = ({
 
   return (
     <form>
-      {t('signup.gamePriority')}{' '}
+      {t("signup.gamePriority")}{" "}
       <select ref={priorityRef}>
-        <option disabled={isAlreadySelected(1)} value='1'>
+        <option disabled={isAlreadySelected(1)} value="1">
           1
         </option>
-        <option disabled={isAlreadySelected(2)} value='2'>
+        <option disabled={isAlreadySelected(2)} value="2">
           2
         </option>
-        <option disabled={isAlreadySelected(3)} value='3'>
+        <option disabled={isAlreadySelected(3)} value="3">
           3
         </option>
       </select>
-      <Button onClick={handleSignup}>{t('signup.confirm')}</Button>
-      <Button onClick={handleCancel}>{t('signup.cancel')}</Button>
+      <Button onClick={handleSignup}>{t("signup.confirm")}</Button>
+      <Button onClick={handleCancel}>{t("signup.cancel")}</Button>
     </form>
   );
 };

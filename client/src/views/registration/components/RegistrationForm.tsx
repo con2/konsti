@@ -1,22 +1,22 @@
-import React, { ReactElement, useState } from 'react';
-import { SubmitHandler, useForm, useFormState } from 'react-hook-form';
-import { useTranslation } from 'react-i18next';
-import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Accordion } from 'client/components/Accordion';
-import { sharedConfig } from 'shared/config/sharedConfig';
-import { ConventionType } from 'shared/config/sharedConfig.types';
-import { Button } from 'client/components/Button';
-import { Paragraph } from 'client/components/Paragraph';
-import { RegistrationFormFields } from 'shared/typings/api/login';
-import { useAppDispatch } from 'client/utils/hooks';
-import { submitRegistration } from 'client/views/registration/registrationThunks';
+import React, { ReactElement, useState } from "react";
+import { SubmitHandler, useForm, useFormState } from "react-hook-form";
+import { useTranslation } from "react-i18next";
+import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Accordion } from "client/components/Accordion";
+import { sharedConfig } from "shared/config/sharedConfig";
+import { ConventionType } from "shared/config/sharedConfig.types";
+import { Button } from "client/components/Button";
+import { Paragraph } from "client/components/Paragraph";
+import { RegistrationFormFields } from "shared/typings/api/login";
+import { useAppDispatch } from "client/utils/hooks";
+import { submitRegistration } from "client/views/registration/registrationThunks";
 import {
   PASSWORD_LENGTH_MAX,
   PASSWORD_LENGTH_MIN,
   USERNAME_LENGTH_MAX,
   USERNAME_LENGTH_MIN,
-} from 'shared/constants/validation';
+} from "shared/constants/validation";
 
 export const RegistrationForm = (): ReactElement => {
   const dispatch = useAppDispatch();
@@ -25,7 +25,7 @@ export const RegistrationForm = (): ReactElement => {
   const serialRequired = sharedConfig.conventionType === ConventionType.LIVE;
 
   const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
-  const [serverError, setServerError] = useState<string>('');
+  const [serverError, setServerError] = useState<string>("");
 
   const {
     register,
@@ -51,13 +51,13 @@ export const RegistrationForm = (): ReactElement => {
 
   return (
     <div>
-      <h2>{t('pageTitle.registration')}</h2>
+      <h2>{t("pageTitle.registration")}</h2>
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <FormRow>
           <StyledFormField>
             <StyledInput
-              {...register('username', {
+              {...register("username", {
                 required: `${t(`validation.required`)}`,
                 minLength: {
                   value: USERNAME_LENGTH_MIN,
@@ -68,11 +68,11 @@ export const RegistrationForm = (): ReactElement => {
                   message: t(`validation.tooLong`),
                 },
               })}
-              placeholder={t('username')}
-              type={'text'}
+              placeholder={t("username")}
+              type={"text"}
               onChange={(e) => {
-                clearErrors('username');
-                setServerError('');
+                clearErrors("username");
+                setServerError("");
               }}
             />
           </StyledFormField>
@@ -85,7 +85,7 @@ export const RegistrationForm = (): ReactElement => {
         <FormRow>
           <StyledFormField>
             <StyledInput
-              {...register('password', {
+              {...register("password", {
                 required: `${t(`validation.required`)}`,
                 minLength: {
                   value: PASSWORD_LENGTH_MIN,
@@ -96,18 +96,18 @@ export const RegistrationForm = (): ReactElement => {
                   message: t(`validation.tooLong`),
                 },
               })}
-              placeholder={t('password')}
-              type={passwordVisible ? 'text' : 'password'}
+              placeholder={t("password")}
+              type={passwordVisible ? "text" : "password"}
               onChange={(e) => {
-                clearErrors('password');
-                setServerError('');
+                clearErrors("password");
+                setServerError("");
               }}
             />
           </StyledFormField>
 
           <FormFieldIcon>
             <FontAwesomeIcon
-              icon={passwordVisible ? 'eye-slash' : 'eye'}
+              icon={passwordVisible ? "eye-slash" : "eye"}
               onClick={() => setPasswordVisible(!passwordVisible)}
             />
           </FormFieldIcon>
@@ -122,14 +122,14 @@ export const RegistrationForm = (): ReactElement => {
             <FormRow>
               <StyledFormField>
                 <StyledInput
-                  {...register('serial', {
+                  {...register("serial", {
                     required: `${t(`validation.required`)}`,
                   })}
-                  placeholder={t('serial')}
-                  type={'text'}
+                  placeholder={t("serial")}
+                  type={"text"}
                   onChange={(e) => {
-                    clearErrors('serial');
-                    setServerError('');
+                    clearErrors("serial");
+                    setServerError("");
                   }}
                 />
               </StyledFormField>
@@ -139,8 +139,8 @@ export const RegistrationForm = (): ReactElement => {
               <FormFieldError>{errors.serial.message}</FormFieldError>
             )}
 
-            <label htmlFor='serial' className='small'>
-              {t('registrationSerialHelp')}
+            <label htmlFor="serial" className="small">
+              {t("registrationSerialHelp")}
             </label>
           </>
         )}
@@ -148,17 +148,17 @@ export const RegistrationForm = (): ReactElement => {
         <FormRow>
           <StyledFormField>
             <StyledCheckbox
-              {...register('registerDescription', {
+              {...register("registerDescription", {
                 required: `${t(`validation.required`)}`,
               })}
-              type={'checkbox'}
+              type={"checkbox"}
               onChange={(e) => {
-                clearErrors('registerDescription');
-                setServerError('');
+                clearErrors("registerDescription");
+                setServerError("");
               }}
             />
-            <label htmlFor='registerDescription'>
-              {t('agreePrivacyPolicy')}
+            <label htmlFor="registerDescription">
+              {t("agreePrivacyPolicy")}
             </label>
           </StyledFormField>
         </FormRow>
@@ -167,13 +167,13 @@ export const RegistrationForm = (): ReactElement => {
           <FormFieldError>{errors.registerDescription.message}</FormFieldError>
         )}
 
-        <Accordion toggleButton={t('privacyPolicyButton')}>
+        <Accordion toggleButton={t("privacyPolicyButton")}>
           <h3>{t(`privacyPolicyTitle`)}</h3>
-          <Paragraph text={t('privacyPolicyText')} />
+          <Paragraph text={t("privacyPolicyText")} />
         </Accordion>
 
-        <Button type='submit' disabled={isSubmitting}>
-          {t('button.register')}
+        <Button type="submit" disabled={isSubmitting}>
+          {t("button.register")}
         </Button>
 
         {serverError && <ErrorMessage>{serverError}</ErrorMessage>}

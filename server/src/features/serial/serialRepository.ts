@@ -1,7 +1,7 @@
-import generator from 'generate-serial-number';
-import { logger } from 'server/utils/logger';
-import { SerialModel } from 'server/features/serial/serialSchema';
-import { SerialDoc, Serial } from 'server/typings/serial.typings';
+import generator from "generate-serial-number";
+import { logger } from "server/utils/logger";
+import { SerialModel } from "server/features/serial/serialSchema";
+import { SerialDoc, Serial } from "server/typings/serial.typings";
 
 export const saveSerials = async (count: number): Promise<SerialDoc[]> => {
   const serialDocs = [] as SerialDoc[];

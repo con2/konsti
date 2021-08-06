@@ -3,23 +3,23 @@ interface SerialGenerator {
 }
 
 const generator: SerialGenerator = jest.createMockFromModule(
-  'generate-serial-number'
+  "generate-serial-number"
 );
 
 const serials: string[] = [
-  'a1234',
-  'a1234',
-  'b5225',
-  'c2512',
-  'a1234', // this is a duplicate and should not be saved
-  'd1232',
-  'a1234',
-  'b5225',
-  'c2512',
-  'a1234', // this is a duplicate and should not be saved
-  'd1232',
-  'e12039',
-  'f1259105',
+  "a1234",
+  "a1234",
+  "b5225",
+  "c2512",
+  "a1234", // this is a duplicate and should not be saved
+  "d1232",
+  "a1234",
+  "b5225",
+  "c2512",
+  "a1234", // this is a duplicate and should not be saved
+  "d1232",
+  "e12039",
+  "f1259105",
 ];
 
 let ind = -1;

@@ -1,7 +1,7 @@
-import React, { ReactElement, ReactNode, useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import styled from 'styled-components';
-import { Button } from 'client/components/Button';
+import React, { ReactElement, ReactNode, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import styled from "styled-components";
+import { Button } from "client/components/Button";
 
 export interface Props {
   toggleButton: string | ReactElement;
@@ -23,7 +23,7 @@ export const Accordion = ({
   return (
     <div>
       <AccordionToggle onClick={() => onClick()}>
-        {<AccordionIcon icon={open ? 'angle-up' : 'angle-down'} />}
+        {<AccordionIcon icon={open ? "angle-up" : "angle-down"} />}
         {toggleButton}
       </AccordionToggle>
 

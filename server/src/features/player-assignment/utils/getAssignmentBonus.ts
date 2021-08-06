@@ -1,5 +1,5 @@
-import { config } from 'server/config';
-import { User } from 'shared/typings/models/user';
+import { config } from "server/config";
+import { User } from "shared/typings/models/user";
 
 export const getAssignmentBonus = (playerGroup: User[]): number => {
   const groupMembersWithEnteredGames = playerGroup.reduce((acc, curr) => {

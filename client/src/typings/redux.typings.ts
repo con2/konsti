@@ -1,12 +1,12 @@
-import { ThunkAction } from 'redux-thunk';
-import { Action } from 'redux';
-import { Game } from 'shared/typings/models/game';
-import { GroupMember } from 'shared/typings/api/groups';
-import { Result } from 'shared/typings/models/result';
-import { store, combinedReducer } from 'client/utils/store';
-import { SelectedGame, UserGroup } from 'shared/typings/models/user';
-import { SignupMessage } from 'shared/typings/models/settings';
-import { UserSignup } from 'shared/typings/api/games';
+import { ThunkAction } from "redux-thunk";
+import { Action } from "redux";
+import { Game } from "shared/typings/models/game";
+import { GroupMember } from "shared/typings/api/groups";
+import { Result } from "shared/typings/models/result";
+import { store, combinedReducer } from "client/utils/store";
+import { SelectedGame, UserGroup } from "shared/typings/models/user";
+import { SignupMessage } from "shared/typings/models/settings";
+import { UserSignup } from "shared/typings/api/games";
 
 export interface AdminState {
   hiddenGames: readonly Game[];

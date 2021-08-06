@@ -1,14 +1,14 @@
-import React, { ReactElement } from 'react';
-import { useTranslation } from 'react-i18next';
-import styled from 'styled-components';
-import loaderImage from 'assets/loading.gif';
+import React, { ReactElement } from "react";
+import { useTranslation } from "react-i18next";
+import styled from "styled-components";
+import loaderImage from "assets/loading.gif";
 
 export const Loading = (): ReactElement => {
   const { t } = useTranslation();
   return (
     <LoadingContainer>
-      <p>{t('loading')}</p>
-      <img alt={t('loading')} src={loaderImage} width='40' />
+      <p>{t("loading")}</p>
+      <img alt={t("loading")} src={loaderImage} width="40" />
     </LoadingContainer>
   );
 };

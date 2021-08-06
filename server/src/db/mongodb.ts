@@ -1,6 +1,6 @@
-import mongoose from 'mongoose';
-import { logger } from 'server/utils/logger';
-import { config } from 'server/config';
+import mongoose from "mongoose";
+import { logger } from "server/utils/logger";
+import { config } from "server/config";
 
 const connectToDb = async (
   dbConnString: string = config.dbConnString
@@ -23,7 +23,7 @@ const connectToDb = async (
 
   logger.info(`MongoDB: Connection successful`);
 
-  mongoose.connection.on('error', (error) => {
+  mongoose.connection.on("error", (error) => {
     logger.error(error);
   });
 };

@@ -1,19 +1,19 @@
-import munkres from 'munkres-js';
-import { logger } from 'server/utils/logger';
-import { getStartingGames } from 'server/features/player-assignment/utils/getStartingGames';
-import { getSignupWishes } from 'server/features/player-assignment/utils/getSignupWishes';
-import { getSignedGames } from 'server/features/player-assignment/utils/getSignedGames';
-import { getSelectedPlayers } from 'server/features/player-assignment/utils/getSelectedPlayers';
-import { getSignupMatrix } from 'server/features/player-assignment/munkres/utils/getSignupMatrix';
-import { checkMinAttendance } from 'server/features/player-assignment/munkres/utils/checkMinAttendance';
-import { getRemovedGame } from 'server/features/player-assignment/munkres/utils/getRemovedGame';
-import { getPriorities } from 'server/features/player-assignment/munkres/utils/getPriorities';
-import { getPlayersWithTooHighPriority } from 'server/features/player-assignment/munkres/utils/getPlayersWithTooHighPriority';
-import { getRemovedPlayer } from 'server/features/player-assignment/munkres/utils/getRemovedPlayer';
-import { buildSignupResults } from 'server/features/player-assignment/munkres/utils/buildSignupResults';
-import { User } from 'shared/typings/models/user';
-import { Game } from 'shared/typings/models/game';
-import { PlayerAssignmentResult } from 'server/typings/result.typings';
+import munkres from "munkres-js";
+import { logger } from "server/utils/logger";
+import { getStartingGames } from "server/features/player-assignment/utils/getStartingGames";
+import { getSignupWishes } from "server/features/player-assignment/utils/getSignupWishes";
+import { getSignedGames } from "server/features/player-assignment/utils/getSignedGames";
+import { getSelectedPlayers } from "server/features/player-assignment/utils/getSelectedPlayers";
+import { getSignupMatrix } from "server/features/player-assignment/munkres/utils/getSignupMatrix";
+import { checkMinAttendance } from "server/features/player-assignment/munkres/utils/checkMinAttendance";
+import { getRemovedGame } from "server/features/player-assignment/munkres/utils/getRemovedGame";
+import { getPriorities } from "server/features/player-assignment/munkres/utils/getPriorities";
+import { getPlayersWithTooHighPriority } from "server/features/player-assignment/munkres/utils/getPlayersWithTooHighPriority";
+import { getRemovedPlayer } from "server/features/player-assignment/munkres/utils/getRemovedPlayer";
+import { buildSignupResults } from "server/features/player-assignment/munkres/utils/buildSignupResults";
+import { User } from "shared/typings/models/user";
+import { Game } from "shared/typings/models/game";
+import { PlayerAssignmentResult } from "server/typings/result.typings";
 
 export const munkresAssignPlayers = (
   players: readonly User[],
@@ -78,14 +78,14 @@ export const munkresAssignPlayers = (
     selectedPlayers
   );
 
-  const message = 'Munkres assignment completed';
+  const message = "Munkres assignment completed";
 
   logger.debug(`${message}`);
 
   return {
     results: signupResults,
     message,
-    algorithm: 'munkres',
-    status: 'success',
+    algorithm: "munkres",
+    status: "success",
   };
 };

@@ -1,8 +1,8 @@
-import { Request, Response } from 'express';
-import { loginWithJwt } from 'server/features/user/session-restore/sessionRestoreService';
-import { logger } from 'server/utils/logger';
-import { SESSION_RESTORE_ENDPOINT } from 'shared/constants/apiEndpoints';
-import { SessionRecoveryRequest } from 'shared/typings/api/login';
+import { Request, Response } from "express";
+import { loginWithJwt } from "server/features/user/session-restore/sessionRestoreService";
+import { logger } from "server/utils/logger";
+import { SESSION_RESTORE_ENDPOINT } from "shared/constants/apiEndpoints";
+import { SessionRecoveryRequest } from "shared/typings/api/login";
 
 export const postSessionRestore = async (
   req: Request<{}, {}, SessionRecoveryRequest>,

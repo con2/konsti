@@ -1,11 +1,11 @@
-import React, { FC, ReactElement, FormEvent } from 'react';
-import styled from 'styled-components';
-import { useTranslation } from 'react-i18next';
-import { Game } from 'shared/typings/models/game';
-import { useAppDispatch, useAppSelector } from 'client/utils/hooks';
-import { Button } from 'client/components/Button';
-import { submitDeleteGame } from 'client/views/signup/signupThunks';
-import { loadGames } from 'client/utils/loadData';
+import React, { FC, ReactElement, FormEvent } from "react";
+import styled from "styled-components";
+import { useTranslation } from "react-i18next";
+import { Game } from "shared/typings/models/game";
+import { useAppDispatch, useAppSelector } from "client/utils/hooks";
+import { Button } from "client/components/Button";
+import { submitDeleteGame } from "client/views/signup/signupThunks";
+import { loadGames } from "client/utils/loadData";
 
 interface Props {
   game: Game;
@@ -38,10 +38,10 @@ export const CancelSignupForm: FC<Props> = (props: Props): ReactElement => {
   return (
     <ButtonContainer>
       <CancelSignupButton onClick={removeSignup}>
-        {t('signup.confirmCancelSignup')}
+        {t("signup.confirmCancelSignup")}
       </CancelSignupButton>
       <CancelFormButton onClick={handleCancel}>
-        {t('signup.cancel')}
+        {t("signup.cancel")}
       </CancelFormButton>
     </ButtonContainer>
   );

@@ -1,14 +1,14 @@
-import React, { FC, ReactElement, useState } from 'react';
-import styled from 'styled-components';
-import { useTranslation } from 'react-i18next';
-import { Game } from 'shared/typings/models/game';
-import { getUpcomingEnteredGames } from 'client/utils/getUpcomingGames';
-import { EnterGameForm } from './EnterGameForm';
-import { SelectedGame } from 'shared/typings/models/user';
-import { useAppSelector } from 'client/utils/hooks';
-import { isAlreadyEntered } from './allGamesUtils';
-import { Button } from 'client/components/Button';
-import { CancelSignupForm } from './CancelSignupForm';
+import React, { FC, ReactElement, useState } from "react";
+import styled from "styled-components";
+import { useTranslation } from "react-i18next";
+import { Game } from "shared/typings/models/game";
+import { getUpcomingEnteredGames } from "client/utils/getUpcomingGames";
+import { EnterGameForm } from "./EnterGameForm";
+import { SelectedGame } from "shared/typings/models/user";
+import { useAppSelector } from "client/utils/hooks";
+import { isAlreadyEntered } from "./allGamesUtils";
+import { Button } from "client/components/Button";
+import { CancelSignupForm } from "./CancelSignupForm";
 
 interface Props {
   game: Game;
@@ -49,11 +49,11 @@ export const DirectSignupForm: FC<Props> = (
     if (enteredGamesForTimeSlot.length === 1) {
       return (
         <p>
-          {t('signup.alreadySignedToGame')}{' '}
+          {t("signup.alreadySignedToGame")}{" "}
           <SignedGameName>
             {enteredGamesForTimeslot[0].gameDetails.title}
           </SignedGameName>
-          . {t('signup.cannotSignupMoreThanOneGame')}
+          . {t("signup.cannotSignupMoreThanOneGame")}
         </p>
       );
     }
@@ -61,7 +61,7 @@ export const DirectSignupForm: FC<Props> = (
     if (enteredGamesForTimeSlot.length === 0 && !signupFormOpen) {
       return (
         <Button onClick={() => setSignupFormOpen(!signupFormOpen)}>
-          {t('signup.signup')}
+          {t("signup.signup")}
         </Button>
       );
     }
@@ -77,12 +77,12 @@ export const DirectSignupForm: FC<Props> = (
           enteredGamesForTimeslot,
           gameIsFull
         )}
-        {gameIsFull && <GameIsFull>{t('signup.gameIsFull')}</GameIsFull>}
+        {gameIsFull && <GameIsFull>{t("signup.gameIsFull")}</GameIsFull>}
         {alreadyEnteredToGame && !cancelSignupFormOpen && (
           <Button
             onClick={() => setCancelSignupFormOpen(!cancelSignupFormOpen)}
           >
-            {t('button.cancelSignup')}
+            {t("button.cancelSignup")}
           </Button>
         )}
         {alreadyEnteredToGame && cancelSignupFormOpen && (

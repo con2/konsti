@@ -1,12 +1,12 @@
-import { AxiosResponse, AxiosError } from 'axios';
-import { api } from 'client/utils/api';
-import { ServerError } from 'shared/typings/api/errors';
-import { GROUP_ENDPOINT } from 'shared/constants/apiEndpoints';
+import { AxiosResponse, AxiosError } from "axios";
+import { api } from "client/utils/api";
+import { ServerError } from "shared/typings/api/errors";
+import { GROUP_ENDPOINT } from "shared/constants/apiEndpoints";
 import {
   GetGroupResponse,
   GroupData,
   PostGroupResponse,
-} from 'shared/typings/api/groups';
+} from "shared/typings/api/groups";
 
 export const postGroup = async (
   groupData: GroupData

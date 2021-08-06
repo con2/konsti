@@ -1,5 +1,5 @@
-import mongoose from 'mongoose';
-import { ResultDoc } from 'server/typings/result.typings';
+import mongoose from "mongoose";
+import { ResultDoc } from "server/typings/result.typings";
 
 const ResultsSchema = new mongoose.Schema(
   {
@@ -7,7 +7,7 @@ const ResultsSchema = new mongoose.Schema(
       {
         username: String,
         enteredGame: {
-          gameDetails: { type: mongoose.Schema.Types.ObjectId, ref: 'Game' },
+          gameDetails: { type: mongoose.Schema.Types.ObjectId, ref: "Game" },
           priority: Number,
           time: Date,
         },
@@ -20,4 +20,4 @@ const ResultsSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-export const ResultsModel = mongoose.model<ResultDoc>('Results', ResultsSchema);
+export const ResultsModel = mongoose.model<ResultDoc>("Results", ResultsSchema);

@@ -1,7 +1,7 @@
-import _ from 'lodash';
-import { PadgRandomAssignResults } from 'server/typings/padgRandomAssign.typings';
-import { Result } from 'shared/typings/models/result';
-import { SelectedGame, User } from 'shared/typings/models/user';
+import _ from "lodash";
+import { PadgRandomAssignResults } from "server/typings/padgRandomAssign.typings";
+import { Result } from "shared/typings/models/result";
+import { SelectedGame, User } from "shared/typings/models/user";
 
 export const formatResults = (
   assignResults: PadgRandomAssignResults,
@@ -12,7 +12,7 @@ export const formatResults = (
       const firstMember = _.first(playerGroup);
 
       if (!firstMember) {
-        throw new Error('Padg assign: error getting first member');
+        throw new Error("Padg assign: error getting first member");
       }
 
       return assignResults.find(

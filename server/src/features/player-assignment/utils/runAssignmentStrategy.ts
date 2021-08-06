@@ -1,12 +1,12 @@
-import { logger } from 'server/utils/logger';
-import { groupAssignPlayers } from 'server/features/player-assignment/group/groupAssignPlayers';
-import { munkresAssignPlayers } from 'server/features/player-assignment/munkres/munkresAssignPlayers';
-import { padgAssignPlayers } from 'server/features/player-assignment/padg/padgAssignPlayers';
-import { randomAssignPlayers } from 'server/features/player-assignment/random/randomAssignPlayers';
-import { User } from 'shared/typings/models/user';
-import { Game } from 'shared/typings/models/game';
-import { PlayerAssignmentResult } from 'server/typings/result.typings';
-import { AssignmentStrategy } from 'shared/config/sharedConfig.types';
+import { logger } from "server/utils/logger";
+import { groupAssignPlayers } from "server/features/player-assignment/group/groupAssignPlayers";
+import { munkresAssignPlayers } from "server/features/player-assignment/munkres/munkresAssignPlayers";
+import { padgAssignPlayers } from "server/features/player-assignment/padg/padgAssignPlayers";
+import { randomAssignPlayers } from "server/features/player-assignment/random/randomAssignPlayers";
+import { User } from "shared/typings/models/user";
+import { Game } from "shared/typings/models/game";
+import { PlayerAssignmentResult } from "server/typings/result.typings";
+import { AssignmentStrategy } from "shared/config/sharedConfig.types";
 
 export const runAssignmentStrategy = (
   players: readonly User[],
@@ -24,15 +24,15 @@ export const runAssignmentStrategy = (
 
   logger.info(`Assign strategy: ${assignmentStrategy}`);
 
-  if (assignmentStrategy === 'munkres') {
+  if (assignmentStrategy === "munkres") {
     return munkresAssignPlayers(players, games, startingTime);
-  } else if (assignmentStrategy === 'group') {
+  } else if (assignmentStrategy === "group") {
     return groupAssignPlayers(players, games, startingTime);
-  } else if (assignmentStrategy === 'padg') {
+  } else if (assignmentStrategy === "padg") {
     return padgAssignPlayers(players, games, startingTime);
-  } else if (assignmentStrategy === 'random') {
+  } else if (assignmentStrategy === "random") {
     return randomAssignPlayers(players, games, startingTime);
-  } else if (assignmentStrategy === 'group+padg') {
+  } else if (assignmentStrategy === "group+padg") {
     const groupResult = groupAssignPlayers(players, games, startingTime);
     const padgResult = padgAssignPlayers(players, games, startingTime);
 
@@ -41,23 +41,23 @@ export const runAssignmentStrategy = (
     );
 
     if (groupResult.results.length > padgResult.results.length) {
-      logger.info('----> Use Group Assign result');
+      logger.info("----> Use Group Assign result");
       return groupResult;
     } else {
-      logger.info('----> Use Padg Assign result');
+      logger.info("----> Use Padg Assign result");
       return padgResult;
     }
-  } else if (assignmentStrategy === 'random+padg') {
+  } else if (assignmentStrategy === "random+padg") {
     const randomResult = randomAssignPlayers(players, games, startingTime);
     const padgResult = padgAssignPlayers(players, games, startingTime);
     logger.info(
       `Random result: ${randomResult.results.length} players, Padg result: ${padgResult.results.length} players`
     );
     if (randomResult.results.length > padgResult.results.length) {
-      logger.info('----> Use Random assign result');
+      logger.info("----> Use Random assign result");
       return randomResult;
     } else {
-      logger.info('----> Use Padg Assign result');
+      logger.info("----> Use Padg Assign result");
       return padgResult;
     }
   } else {

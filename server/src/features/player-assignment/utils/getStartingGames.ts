@@ -1,12 +1,12 @@
-import moment from 'moment';
-import { logger } from 'server/utils/logger';
-import { Game } from 'shared/typings/models/game';
+import moment from "moment";
+import { logger } from "server/utils/logger";
+import { Game } from "shared/typings/models/game";
 
 export const getStartingGames = (
   games: readonly Game[],
   startingTime: string
 ): readonly Game[] => {
-  logger.debug('Get starting games');
+  logger.debug("Get starting games");
   const startingGames = [] as Game[];
   const selectedStartingTime = moment(startingTime).format();
 

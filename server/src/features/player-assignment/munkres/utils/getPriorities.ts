@@ -1,4 +1,4 @@
-import { PlayerIdWithPriority } from 'server/typings/user.typings';
+import { PlayerIdWithPriority } from "server/typings/user.typings";
 
 export const getPriorities = (
   results: readonly number[][],

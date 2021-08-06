@@ -22,9 +22,9 @@ export default (
   on: Cypress.PluginEvents,
   config: Cypress.PluginConfigOptions
 ): Cypress.PluginConfigOptions => {
-  on('before:browser:launch', (browser, launchOptions) => {
-    if (browser.name === 'chrome') {
-      launchOptions.args.push('--auto-open-devtools-for-tabs');
+  on("before:browser:launch", (browser, launchOptions) => {
+    if (browser.name === "chrome") {
+      launchOptions.args.push("--auto-open-devtools-for-tabs");
       return launchOptions;
     }
   });

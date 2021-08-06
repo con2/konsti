@@ -1,9 +1,9 @@
-import React, { ReactElement } from 'react';
-import { Link } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
-import styled from 'styled-components';
-import { timeFormatter } from 'client/utils/timeFormatter';
-import { SelectedGame } from 'shared/typings/models/user';
+import React, { ReactElement } from "react";
+import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import styled from "styled-components";
+import { timeFormatter } from "client/utils/timeFormatter";
+import { SelectedGame } from "shared/typings/models/user";
 
 export interface Props {
   signups: SelectedGame[];
@@ -17,11 +17,11 @@ export const SignupsByStartTimes = ({
   const { t } = useTranslation();
 
   return (
-    <div className='start-times-list'>
+    <div className="start-times-list">
       {startTimes.map((startTime) => {
         return (
           <div key={startTime}>
-            <p className='bold'>
+            <p className="bold">
               {timeFormatter.getWeekdayAndTime({
                 time: startTime,
                 capitalize: true,
@@ -32,7 +32,7 @@ export const SignupsByStartTimes = ({
                 if (!signup.gameDetails) {
                   return (
                     <GameDetailsList key={signup.time}>
-                      {t('noSignupResult')}
+                      {t("noSignupResult")}
                     </GameDetailsList>
                   );
                 } else {

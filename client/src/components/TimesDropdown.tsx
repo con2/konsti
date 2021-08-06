@@ -1,5 +1,5 @@
-import React, { ReactElement, ChangeEvent } from 'react';
-import { timeFormatter } from 'client/utils/timeFormatter';
+import React, { ReactElement, ChangeEvent } from "react";
+import { timeFormatter } from "client/utils/timeFormatter";
 
 export interface Props {
   onChange: (event: ChangeEvent<HTMLSelectElement>) => void;
@@ -30,7 +30,7 @@ export const TimesDropdown = ({
   });
 
   return (
-    <div className='times-dropdown'>
+    <div className="times-dropdown">
       <select onChange={onChange} value={selectedTime}>
         {sortedTimes}
       </select>

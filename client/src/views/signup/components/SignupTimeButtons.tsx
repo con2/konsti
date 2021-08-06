@@ -1,10 +1,10 @@
-import React, { ReactElement } from 'react';
-import styled from 'styled-components';
-import { timeFormatter } from 'client/utils/timeFormatter';
-import { submitSignupTime } from 'client/views/signup/signupSlice';
-import { useAppDispatch } from 'client/utils/hooks';
-import { AppDispatch } from 'client/typings/redux.typings';
-import { Button } from 'client/components/Button';
+import React, { ReactElement } from "react";
+import styled from "styled-components";
+import { timeFormatter } from "client/utils/timeFormatter";
+import { submitSignupTime } from "client/views/signup/signupSlice";
+import { useAppDispatch } from "client/utils/hooks";
+import { AppDispatch } from "client/typings/redux.typings";
+import { Button } from "client/components/Button";
 
 interface Props {
   signupTimes: readonly string[];
@@ -17,7 +17,7 @@ export const SignupTimeButtons = ({
 }: Props): ReactElement => {
   const dispatch = useAppDispatch();
 
-  const getIsActive = (isActive: boolean): string => (isActive ? 'active' : '');
+  const getIsActive = (isActive: boolean): string => (isActive ? "active" : "");
 
   return (
     <>

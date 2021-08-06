@@ -1,9 +1,9 @@
-import React, { ReactElement } from 'react';
-import styled from 'styled-components';
-import { useTranslation } from 'react-i18next';
-import { Accordion } from 'client/components/Accordion';
-import { timeFormatter } from 'client/utils/timeFormatter';
-import { Paragraph } from 'client/components/Paragraph';
+import React, { ReactElement } from "react";
+import styled from "styled-components";
+import { useTranslation } from "react-i18next";
+import { Accordion } from "client/components/Accordion";
+import { timeFormatter } from "client/utils/timeFormatter";
+import { Paragraph } from "client/components/Paragraph";
 
 interface Props {
   signupTime: string;
@@ -18,12 +18,12 @@ export const SignupInfo = ({ signupTime }: Props): ReactElement => {
   return (
     <SignupInfoContainer>
       <p>
-        {t('signupOpenBetweenCapital')} {signupStartTime}-{signupEndTime}.{' '}
-        {t('signupResultHint')} {signupEndTime}.
+        {t("signupOpenBetweenCapital")} {signupStartTime}-{signupEndTime}.{" "}
+        {t("signupResultHint")} {signupEndTime}.
       </p>
-      <Accordion toggleButton={t('signupGuideButton')}>
+      <Accordion toggleButton={t("signupGuideButton")}>
         <h3>{t(`signupGuideTitle`)}</h3>
-        <Paragraph text={t('signupGuide')} />
+        <Paragraph text={t("signupGuide")} />
       </Accordion>
     </SignupInfoContainer>
   );

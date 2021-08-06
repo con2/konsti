@@ -1,15 +1,15 @@
-import mongoose from 'mongoose';
-import { MongoMemoryServer } from 'mongodb-memory-server';
-import moment from 'moment';
-import { SettingsModel } from 'server/features/settings/settingsSchema';
-import { mockGame, mockGame2 } from 'server/test/mock-data/mockGame';
+import mongoose from "mongoose";
+import { MongoMemoryServer } from "mongodb-memory-server";
+import moment from "moment";
+import { SettingsModel } from "server/features/settings/settingsSchema";
+import { mockGame, mockGame2 } from "server/test/mock-data/mockGame";
 import {
   findSettings,
   saveSignupTime,
   saveToggleAppOpen,
   saveHidden,
-} from 'server/features/settings/settingsRepository';
-import { saveGames } from 'server/features/game/gameRepository';
+} from "server/features/settings/settingsRepository";
+import { saveGames } from "server/features/game/gameRepository";
 
 let mongoServer: MongoMemoryServer;
 
@@ -32,7 +32,7 @@ afterEach(async () => {
   await mongoServer.stop();
 });
 
-test('should set defaults if settings not found', async () => {
+test("should set defaults if settings not found", async () => {
   await findSettings();
   const defaultSettings = {
     hiddenGames: [],
@@ -47,7 +47,7 @@ test('should set defaults if settings not found', async () => {
   expect(insertedSettings?.appOpen).toEqual(defaultSettings.appOpen);
 });
 
-test('should update hidden games', async () => {
+test("should update hidden games", async () => {
   const hiddenGames = [mockGame, mockGame2];
   await saveGames(hiddenGames);
   await saveHidden(hiddenGames);
@@ -55,15 +55,15 @@ test('should update hidden games', async () => {
   expect(insertedSettings?.hiddenGames.length).toEqual(hiddenGames.length);
 });
 
-test('should not return hidden games that are not in DB', async () => {
+test("should not return hidden games that are not in DB", async () => {
   const hiddenGames = [mockGame, mockGame2];
   await saveHidden(hiddenGames);
   const insertedSettings = await SettingsModel.findOne({});
   expect(insertedSettings?.hiddenGames.length).toEqual(0);
 });
 
-test('should update signup time', async () => {
-  const signupTime = '2019-07-26T14:00:00.000Z';
+test("should update signup time", async () => {
+  const signupTime = "2019-07-26T14:00:00.000Z";
   await saveSignupTime(signupTime);
   const insertedSettings = await SettingsModel.findOne({});
   expect(moment(insertedSettings?.signupTime).format()).toEqual(
@@ -71,7 +71,7 @@ test('should update signup time', async () => {
   );
 });
 
-test('should update appOpen status', async () => {
+test("should update appOpen status", async () => {
   const appOpen = false;
   await saveToggleAppOpen(appOpen);
   const insertedSettings = await SettingsModel.findOne({});

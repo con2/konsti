@@ -1,20 +1,20 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { AdminState } from 'client/typings/redux.typings';
-import { SubmitGetSettingsPayload } from 'client/views/admin/adminTypes';
-import { Game } from 'shared/typings/models/game';
-import { SignupMessage } from 'shared/typings/models/settings';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { AdminState } from "client/typings/redux.typings";
+import { SubmitGetSettingsPayload } from "client/views/admin/adminTypes";
+import { Game } from "shared/typings/models/game";
+import { SignupMessage } from "shared/typings/models/settings";
 
 const initialState: AdminState = {
   hiddenGames: [],
-  activeSignupTime: '',
-  testTime: '',
+  activeSignupTime: "",
+  testTime: "",
   appOpen: true,
-  responseMessage: '',
+  responseMessage: "",
   signupMessages: [],
 };
 
 const adminSlice = createSlice({
-  name: 'admin',
+  name: "admin",
   initialState,
   reducers: {
     submitUpdateHiddenAsync(state, action: PayloadAction<readonly Game[]>) {

@@ -1,12 +1,12 @@
-import { logger } from 'server/utils/logger';
-import { GameModel } from 'server/features/game/gameSchema';
-import { removeMovedGamesFromUsers } from 'server/features/player-assignment/utils/removeMovedGamesFromUsers';
-import { GameDoc } from 'server/typings/game.typings';
-import { Game } from 'shared/typings/models/game';
-import { removeDeletedGames } from 'server/features/game/gameUtils';
+import { logger } from "server/utils/logger";
+import { GameModel } from "server/features/game/gameSchema";
+import { removeMovedGamesFromUsers } from "server/features/player-assignment/utils/removeMovedGamesFromUsers";
+import { GameDoc } from "server/typings/game.typings";
+import { Game } from "shared/typings/models/game";
+import { removeDeletedGames } from "server/features/game/gameUtils";
 
 export const removeGames = async (): Promise<void> => {
-  logger.info('MongoDB: remove ALL games from db');
+  logger.info("MongoDB: remove ALL games from db");
   try {
     await GameModel.deleteMany({});
   } catch (error) {
@@ -15,7 +15,7 @@ export const removeGames = async (): Promise<void> => {
 };
 
 export const saveGames = async (games: readonly Game[]): Promise<Game[]> => {
-  logger.info('MongoDB: Store games to DB');
+  logger.info("MongoDB: Store games to DB");
 
   await removeDeletedGames(games);
   await removeMovedGamesFromUsers(games);
@@ -66,7 +66,7 @@ export const saveGames = async (games: readonly Game[]): Promise<Game[]> => {
     return await Promise.reject(error);
   }
 
-  logger.debug('MongoDB: Games saved to DB successfully');
+  logger.debug("MongoDB: Games saved to DB successfully");
   return await findGames();
 };
 

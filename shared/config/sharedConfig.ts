@@ -3,11 +3,11 @@ import {
   SharedConfig,
   SignupStrategy,
   ConventionType,
-} from './sharedConfig.types';
+} from "./sharedConfig.types";
 
 export const sharedConfig: SharedConfig = {
   // App info
-  appName: 'Konsti',
+  appName: "Konsti",
 
   // Convention settings
   signupStrategy: SignupStrategy.DIRECT,

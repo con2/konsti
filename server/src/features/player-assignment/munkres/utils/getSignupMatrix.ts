@@ -1,12 +1,12 @@
-import { logger } from 'server/utils/logger';
-import { Game } from 'shared/typings/models/game';
-import { User } from 'shared/typings/models/user';
+import { logger } from "server/utils/logger";
+import { Game } from "shared/typings/models/game";
+import { User } from "shared/typings/models/user";
 
 export const getSignupMatrix = (
   signedGames: readonly Game[],
   selectedPlayers: readonly User[]
 ): number[][] => {
-  logger.info('Generate signup matrix');
+  logger.info("Generate signup matrix");
   // Create matrix for the sorting algorithm
   // Each available seat is possible result
   // Sort same game wishes to single array
@@ -23,7 +23,7 @@ export const getSignupMatrix = (
       for (let i = 0; i < player.signedGames.length; i += 1) {
         // Player has wish that matches starting game
         if (signedGame.gameId === player.signedGames[i].gameDetails.gameId) {
-          if (typeof player.signedGames[i].priority === 'undefined') {
+          if (typeof player.signedGames[i].priority === "undefined") {
             gameSignups.push(9);
           } else {
             gameSignups.push(player.signedGames[i].priority);

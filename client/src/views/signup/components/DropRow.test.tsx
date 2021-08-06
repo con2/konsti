@@ -1,13 +1,13 @@
-import React from 'react';
-import { render } from '@testing-library/react';
-import { DragDropContext, DropResult } from 'react-beautiful-dnd';
-import { DropRow, Props } from 'client/views/signup/components/DropRow';
+import React from "react";
+import { render } from "@testing-library/react";
+import { DragDropContext, DropResult } from "react-beautiful-dnd";
+import { DropRow, Props } from "client/views/signup/components/DropRow";
 
-test('should render correctly', () => {
+test("should render correctly", () => {
   const props: Props = {
-    droppableId: 'testId',
+    droppableId: "testId",
     games: [],
-    label: 'test label',
+    label: "test label",
     showCount: true,
   };
 

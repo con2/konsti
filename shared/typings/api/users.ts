@@ -1,25 +1,25 @@
-import { Game } from 'shared/typings/models/game';
-import { SelectedGame } from 'shared/typings/models/user';
+import { Game } from "shared/typings/models/game";
+import { SelectedGame } from "shared/typings/models/user";
 
 export interface GetUserResponse {
   games: UserGames;
   message: string;
   serial: string;
-  status: 'success';
+  status: "success";
   username: string;
 }
 
 export interface PostUserResponse {
   message: string;
   password: string;
-  status: 'success';
+  status: "success";
   username: string;
 }
 
 export interface GetUserBySerialResponse {
   message: string;
   serial: string;
-  status: 'success';
+  status: "success";
   username: string;
 }
 

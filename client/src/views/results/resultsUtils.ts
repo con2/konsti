@@ -1,5 +1,5 @@
-import { UsersForGame } from 'client/typings/redux.typings';
-import { UserSignup } from 'shared/typings/api/games';
+import { UsersForGame } from "client/typings/redux.typings";
+import { UserSignup } from "shared/typings/api/games";
 
 export const getUsersForGameId = (
   gameId: string,

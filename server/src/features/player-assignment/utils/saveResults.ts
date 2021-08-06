@@ -1,7 +1,7 @@
-import { logger } from 'server/utils/logger';
-import { saveUserSignupResults } from 'server/features/player-assignment/utils/saveUserSignupResults';
-import { Result } from 'shared/typings/models/result';
-import { saveResult } from 'server/features/results/resultsRepository';
+import { logger } from "server/utils/logger";
+import { saveUserSignupResults } from "server/features/player-assignment/utils/saveUserSignupResults";
+import { Result } from "shared/typings/models/result";
+import { saveResult } from "server/features/results/resultsRepository";
 
 export const saveResults = async (
   results: readonly Result[],

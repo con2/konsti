@@ -1,22 +1,22 @@
-import { Config, GameUpdateMethod } from 'server/typings/config.typings';
-import { sharedConfig } from 'shared/config/sharedConfig';
-import { SignupStrategy } from 'shared/config/sharedConfig.types';
+import { Config, GameUpdateMethod } from "server/typings/config.typings";
+import { sharedConfig } from "shared/config/sharedConfig";
+import { SignupStrategy } from "shared/config/sharedConfig.types";
 
 const commonConfig = {
   // Server settings
   port:
-    typeof process.env.PORT === 'string'
+    typeof process.env.PORT === "string"
       ? parseInt(process.env.PORT, 10)
       : 5000,
   debug: false,
 
   // Logging
-  logDir: './logs',
+  logDir: "./logs",
   enableAccessLog: false,
 
   // App settings
   bundleCompression: true,
-  CONVENTION_START_TIME: '2019-11-23T08:00:00Z', // UTC date
+  CONVENTION_START_TIME: "2019-11-23T08:00:00Z", // UTC date
   enableRemoveOverlapSignups: true,
   gamePopularityUpdateMethod: GameUpdateMethod.assign, // 'signups', 'assign'
 
@@ -24,25 +24,25 @@ const commonConfig = {
   saveTestAssign: true,
 
   // Convention settings
-  dataUri: 'https://kompassi.eu/api/v1/events/ropecon2021/programme/ropecon',
+  dataUri: "https://kompassi.eu/api/v1/events/ropecon2021/programme/ropecon",
   firtSignupBonus: 20,
 
   // Statistics
-  statsDataDir: 'src/features/statistics/datafiles',
+  statsDataDir: "src/features/statistics/datafiles",
 };
 
 const prodConfig = {
-  dbConnString: process.env.CONN_STRING ?? '',
-  dbName: 'konsti',
-  jwtSecretKey: process.env.JWT_SECRET_KEY ?? '',
-  jwtSecretKeyAdmin: process.env.JWT_SECRET_KEY_ADMIN ?? '',
-  jwtSecretKeyHelp: process.env.JWT_SECRET_KEY_HELP ?? '',
+  dbConnString: process.env.CONN_STRING ?? "",
+  dbName: "konsti",
+  jwtSecretKey: process.env.JWT_SECRET_KEY ?? "",
+  jwtSecretKeyAdmin: process.env.JWT_SECRET_KEY_ADMIN ?? "",
+  jwtSecretKeyHelp: process.env.JWT_SECRET_KEY_HELP ?? "",
   allowedCorsOrigins:
-    typeof process.env.CORS_WHITELIST === 'string'
-      ? process.env.CORS_WHITELIST.split(';')
+    typeof process.env.CORS_WHITELIST === "string"
+      ? process.env.CORS_WHITELIST.split(";")
       : [],
   useLocalProgramFile: false,
-  debug: process.env.DEBUG === 'true' || false,
+  debug: process.env.DEBUG === "true" || false,
   GROUP_ASSIGNMENT_ROUNDS: 300,
   PADG_ASSIGNMENT_ROUNDS: 300,
   RANDOM_ASSIGNMENT_ROUNDS: 300,
@@ -59,17 +59,17 @@ const prodConfig = {
 };
 
 const stagingConfig = {
-  dbConnString: process.env.CONN_STRING ?? '',
-  dbName: 'konsti',
-  jwtSecretKey: process.env.JWT_SECRET_KEY ?? '',
-  jwtSecretKeyAdmin: process.env.JWT_SECRET_KEY_ADMIN ?? '',
-  jwtSecretKeyHelp: process.env.JWT_SECRET_KEY_HELP ?? '',
+  dbConnString: process.env.CONN_STRING ?? "",
+  dbName: "konsti",
+  jwtSecretKey: process.env.JWT_SECRET_KEY ?? "",
+  jwtSecretKeyAdmin: process.env.JWT_SECRET_KEY_ADMIN ?? "",
+  jwtSecretKeyHelp: process.env.JWT_SECRET_KEY_HELP ?? "",
   allowedCorsOrigins:
-    typeof process.env.CORS_WHITELIST === 'string'
-      ? process.env.CORS_WHITELIST.split(';')
+    typeof process.env.CORS_WHITELIST === "string"
+      ? process.env.CORS_WHITELIST.split(";")
       : [],
   useLocalProgramFile: false,
-  debug: process.env.DEBUG === 'true' || false,
+  debug: process.env.DEBUG === "true" || false,
   GROUP_ASSIGNMENT_ROUNDS: 300,
   PADG_ASSIGNMENT_ROUNDS: 300,
   RANDOM_ASSIGNMENT_ROUNDS: 300,
@@ -85,12 +85,12 @@ const stagingConfig = {
 };
 
 const devConfig = {
-  dbConnString: process.env.CONN_STRING ?? 'mongodb://localhost:27017',
-  dbName: 'konsti',
-  jwtSecretKey: 'secret',
-  jwtSecretKeyAdmin: 'admin secret',
-  jwtSecretKeyHelp: 'help secret',
-  allowedCorsOrigins: ['http://localhost:8000'],
+  dbConnString: process.env.CONN_STRING ?? "mongodb://localhost:27017",
+  dbName: "konsti",
+  jwtSecretKey: "secret",
+  jwtSecretKeyAdmin: "admin secret",
+  jwtSecretKeyHelp: "help secret",
+  allowedCorsOrigins: ["http://localhost:8000"],
   useLocalProgramFile: false,
   debug: false,
   GROUP_ASSIGNMENT_ROUNDS: 1,
@@ -107,9 +107,9 @@ const devConfig = {
 };
 
 const combineConfig = (): Config => {
-  if (process.env.SETTINGS === 'production') {
+  if (process.env.SETTINGS === "production") {
     return { ...commonConfig, ...prodConfig };
-  } else if (process.env.SETTINGS === 'staging') {
+  } else if (process.env.SETTINGS === "staging") {
     return { ...commonConfig, ...stagingConfig };
   }
   return { ...commonConfig, ...devConfig };

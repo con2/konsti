@@ -1,3 +1,3 @@
 module.exports = {
-  projects: ['client', 'server'],
+  projects: ["client", "server"],
 };

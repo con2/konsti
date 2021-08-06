@@ -1,15 +1,15 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { SignupState } from 'client/typings/redux.typings';
-import { SelectedGame } from 'shared/typings/models/user';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { SignupState } from "client/typings/redux.typings";
+import { SelectedGame } from "shared/typings/models/user";
 
 const initialState: SignupState = {
-  signupTime: '',
+  signupTime: "",
   selectedGames: [],
   unsavedChanges: false,
 };
 
 const signupSlice = createSlice({
-  name: 'signup',
+  name: "signup",
   initialState,
   reducers: {
     submitSignupTime(state, action: PayloadAction<string>) {

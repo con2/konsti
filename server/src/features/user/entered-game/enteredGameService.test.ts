@@ -1,20 +1,20 @@
-import { Server } from 'http';
-import request from 'supertest';
-import { MongoMemoryServer } from 'mongodb-memory-server';
-import { startServer, closeServer } from 'server/utils/server';
-import { ENTERED_GAME_ENDPOINT } from 'shared/constants/apiEndpoints';
-import { getJWT } from 'server/utils/jwt';
-import { UserGroup } from 'shared/typings/models/user';
+import { Server } from "http";
+import request from "supertest";
+import { MongoMemoryServer } from "mongodb-memory-server";
+import { startServer, closeServer } from "server/utils/server";
+import { ENTERED_GAME_ENDPOINT } from "shared/constants/apiEndpoints";
+import { getJWT } from "server/utils/jwt";
+import { UserGroup } from "shared/typings/models/user";
 import {
   mockUser,
   mockUser2,
   mockUser3,
   mockUser4,
   mockUser5,
-} from 'server/test/mock-data/mockUser';
-import { mockGame } from 'server/test/mock-data/mockGame';
-import { findUser, saveUser } from 'server/features/user/userRepository';
-import { findGames, saveGames } from 'server/features/game/gameRepository';
+} from "server/test/mock-data/mockUser";
+import { mockGame } from "server/test/mock-data/mockGame";
+import { findUser, saveUser } from "server/features/user/userRepository";
+import { findGames, saveGames } from "server/features/game/gameRepository";
 
 let server: Server;
 let mongoServer: MongoMemoryServer;
@@ -33,26 +33,26 @@ afterEach(async () => {
 });
 
 describe(`POST ${ENTERED_GAME_ENDPOINT}`, () => {
-  test('should return 401 without valid authorization', async () => {
+  test("should return 401 without valid authorization", async () => {
     const response = await request(server).post(ENTERED_GAME_ENDPOINT);
     expect(response.status).toEqual(401);
   });
 
-  test('should return 422 with invalid parameters', async () => {
+  test("should return 422 with invalid parameters", async () => {
     const response = await request(server)
       .post(ENTERED_GAME_ENDPOINT)
       .send({
         username: mockUser.username,
-        enteredGameId: 'ABCD1234',
+        enteredGameId: "ABCD1234",
       })
       .set(
-        'Authorization',
+        "Authorization",
         `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`
       );
     expect(response.status).toEqual(422);
   });
 
-  test('should return 422 if signup message is too long', async () => {
+  test("should return 422 if signup message is too long", async () => {
     const response = await request(server)
       .post(ENTERED_GAME_ENDPOINT)
       .send({
@@ -60,54 +60,54 @@ describe(`POST ${ENTERED_GAME_ENDPOINT}`, () => {
         enteredGameId: mockGame.gameId,
         startTime: mockGame.startTime,
         message:
-          'Test message Test message Test message Test message Test message Test message Test message Test message Test message Test message Test message Test message Test message',
+          "Test message Test message Test message Test message Test message Test message Test message Test message Test message Test message Test message Test message Test message",
       })
       .set(
-        'Authorization',
+        "Authorization",
         `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`
       );
     expect(response.status).toEqual(422);
   });
 
-  test('should return error when game is not found', async () => {
+  test("should return error when game is not found", async () => {
     await saveUser(mockUser);
 
     const response = await request(server)
       .post(ENTERED_GAME_ENDPOINT)
       .send({
         username: mockUser.username,
-        enteredGameId: 'invalid_game_id',
-        startTime: '2019-07-26T13:00:00Z',
-        message: '',
+        enteredGameId: "invalid_game_id",
+        startTime: "2019-07-26T13:00:00Z",
+        message: "",
       })
       .set(
-        'Authorization',
+        "Authorization",
         `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`
       );
     expect(response.status).toEqual(200);
-    expect(response.body.status).toEqual('error');
+    expect(response.body.status).toEqual("error");
   });
 
-  test('should return error when user is not found', async () => {
+  test("should return error when user is not found", async () => {
     await saveGames([mockGame]);
 
     const response = await request(server)
       .post(ENTERED_GAME_ENDPOINT)
       .send({
-        username: 'user_not_found',
+        username: "user_not_found",
         enteredGameId: mockGame.gameId,
         startTime: mockGame.startTime,
-        message: '',
+        message: "",
       })
       .set(
-        'Authorization',
-        `Bearer ${getJWT(UserGroup.USER, 'user_not_found')}`
+        "Authorization",
+        `Bearer ${getJWT(UserGroup.USER, "user_not_found")}`
       );
     expect(response.status).toEqual(200);
-    expect(response.body.status).toEqual('error');
+    expect(response.body.status).toEqual("error");
   });
 
-  test('should return success when user and game are found', async () => {
+  test("should return success when user and game are found", async () => {
     // Populate database
     await saveGames([mockGame]);
     await saveUser(mockUser);
@@ -123,27 +123,27 @@ describe(`POST ${ENTERED_GAME_ENDPOINT}`, () => {
         username: mockUser.username,
         enteredGameId: mockGame.gameId,
         startTime: mockGame.startTime,
-        message: 'Test message',
+        message: "Test message",
       })
       .set(
-        'Authorization',
+        "Authorization",
         `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`
       );
 
     // Check API response
     expect(response.status).toEqual(200);
-    expect(response.body.message).toEqual('Store entered game success');
-    expect(response.body.status).toEqual('success');
+    expect(response.body.message).toEqual("Store entered game success");
+    expect(response.body.status).toEqual("success");
 
     // Check database
     const modifiedUser = await findUser(mockUser.username);
     expect(modifiedUser?.enteredGames[0].gameDetails.gameId).toEqual(
       mockGame.gameId
     );
-    expect(modifiedUser?.enteredGames[0].message).toEqual('Test message');
+    expect(modifiedUser?.enteredGames[0].message).toEqual("Test message");
   });
 
-  test('should return error when game is full', async () => {
+  test("should return error when game is full", async () => {
     // Populate database
     await saveGames([mockGame]);
     await saveUser(mockUser);
@@ -160,16 +160,16 @@ describe(`POST ${ENTERED_GAME_ENDPOINT}`, () => {
         username: mockUser.username,
         enteredGameId: mockGame.gameId,
         startTime: mockGame.startTime,
-        message: 'Test message',
+        message: "Test message",
       })
       .set(
-        'Authorization',
+        "Authorization",
         `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`
       );
 
     expect(response.status).toEqual(200);
-    expect(response.body.message).toEqual('Store entered game success');
-    expect(response.body.status).toEqual('success');
+    expect(response.body.message).toEqual("Store entered game success");
+    expect(response.body.status).toEqual("success");
 
     // SIGNUP 2
 
@@ -179,16 +179,16 @@ describe(`POST ${ENTERED_GAME_ENDPOINT}`, () => {
         username: mockUser2.username,
         enteredGameId: mockGame.gameId,
         startTime: mockGame.startTime,
-        message: 'Test message',
+        message: "Test message",
       })
       .set(
-        'Authorization',
+        "Authorization",
         `Bearer ${getJWT(UserGroup.USER, mockUser2.username)}`
       );
 
     expect(response2.status).toEqual(200);
-    expect(response2.body.message).toEqual('Store entered game success');
-    expect(response2.body.status).toEqual('success');
+    expect(response2.body.message).toEqual("Store entered game success");
+    expect(response2.body.status).toEqual("success");
 
     // SIGNUP 3
 
@@ -198,16 +198,16 @@ describe(`POST ${ENTERED_GAME_ENDPOINT}`, () => {
         username: mockUser3.username,
         enteredGameId: mockGame.gameId,
         startTime: mockGame.startTime,
-        message: 'Test message',
+        message: "Test message",
       })
       .set(
-        'Authorization',
+        "Authorization",
         `Bearer ${getJWT(UserGroup.USER, mockUser3.username)}`
       );
 
     expect(response3.status).toEqual(200);
-    expect(response3.body.message).toEqual('Store entered game success');
-    expect(response3.body.status).toEqual('success');
+    expect(response3.body.message).toEqual("Store entered game success");
+    expect(response3.body.status).toEqual("success");
 
     // SIGNUP 4
 
@@ -217,16 +217,16 @@ describe(`POST ${ENTERED_GAME_ENDPOINT}`, () => {
         username: mockUser4.username,
         enteredGameId: mockGame.gameId,
         startTime: mockGame.startTime,
-        message: 'Test message',
+        message: "Test message",
       })
       .set(
-        'Authorization',
+        "Authorization",
         `Bearer ${getJWT(UserGroup.USER, mockUser4.username)}`
       );
 
     expect(response4.status).toEqual(200);
-    expect(response4.body.message).toEqual('Store entered game success');
-    expect(response4.body.status).toEqual('success');
+    expect(response4.body.message).toEqual("Store entered game success");
+    expect(response4.body.status).toEqual("success");
 
     // SIGNUP 5
 
@@ -236,16 +236,16 @@ describe(`POST ${ENTERED_GAME_ENDPOINT}`, () => {
         username: mockUser5.username,
         enteredGameId: mockGame.gameId,
         startTime: mockGame.startTime,
-        message: 'Test message',
+        message: "Test message",
       })
       .set(
-        'Authorization',
+        "Authorization",
         `Bearer ${getJWT(UserGroup.USER, mockUser5.username)}`
       );
 
     expect(response5.status).toEqual(200);
-    expect(response5.body.message).toEqual('Entered game is full');
-    expect(response5.body.status).toEqual('error');
+    expect(response5.body.message).toEqual("Entered game is full");
+    expect(response5.body.status).toEqual("error");
     expect(response5.body.code).toEqual(51);
 
     // Check results
@@ -276,59 +276,59 @@ describe(`POST ${ENTERED_GAME_ENDPOINT}`, () => {
 });
 
 describe(`DELETE ${ENTERED_GAME_ENDPOINT}`, () => {
-  test('should return 401 without valid authorization', async () => {
+  test("should return 401 without valid authorization", async () => {
     const response = await request(server).delete(ENTERED_GAME_ENDPOINT);
     expect(response.status).toEqual(401);
   });
 
-  test('should return 422 with invalid parameters', async () => {
+  test("should return 422 with invalid parameters", async () => {
     const response = await request(server)
       .delete(ENTERED_GAME_ENDPOINT)
       .send({
-        username: 'testuser',
-        enteredGameId: 'ABCD1234',
+        username: "testuser",
+        enteredGameId: "ABCD1234",
       })
-      .set('Authorization', `Bearer ${getJWT(UserGroup.USER, 'testuser')}`);
+      .set("Authorization", `Bearer ${getJWT(UserGroup.USER, "testuser")}`);
     expect(response.status).toEqual(422);
   });
 
-  test('should return error when game is not found', async () => {
+  test("should return error when game is not found", async () => {
     await saveUser(mockUser);
 
     const response = await request(server)
       .delete(ENTERED_GAME_ENDPOINT)
       .send({
         username: mockUser.username,
-        enteredGameId: 'invalid_game_id',
-        startTime: '2019-07-26T13:00:00Z',
+        enteredGameId: "invalid_game_id",
+        startTime: "2019-07-26T13:00:00Z",
       })
       .set(
-        'Authorization',
+        "Authorization",
         `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`
       );
     expect(response.status).toEqual(200);
-    expect(response.body.status).toEqual('error');
+    expect(response.body.status).toEqual("error");
   });
 
-  test('should return error when user is not found', async () => {
+  test("should return error when user is not found", async () => {
     await saveGames([mockGame]);
 
     const response = await request(server)
       .delete(ENTERED_GAME_ENDPOINT)
       .send({
-        username: 'user_not_found',
+        username: "user_not_found",
         enteredGameId: mockGame.gameId,
         startTime: mockGame.startTime,
       })
       .set(
-        'Authorization',
-        `Bearer ${getJWT(UserGroup.USER, 'user_not_found')}`
+        "Authorization",
+        `Bearer ${getJWT(UserGroup.USER, "user_not_found")}`
       );
     expect(response.status).toEqual(200);
-    expect(response.body.status).toEqual('error');
+    expect(response.body.status).toEqual("error");
   });
 
-  test('should return success when user and game are found', async () => {
+  test("should return success when user and game are found", async () => {
     // Populate database
     await saveGames([mockGame]);
     const games = await findGames();
@@ -340,7 +340,7 @@ describe(`DELETE ${ENTERED_GAME_ENDPOINT}`, () => {
           gameDetails: games[0]._id,
           priority: 1,
           time: mockGame.startTime,
-          message: 'Test message',
+          message: "Test message",
         },
       ],
     };
@@ -360,14 +360,14 @@ describe(`DELETE ${ENTERED_GAME_ENDPOINT}`, () => {
         startTime: mockGame.startTime,
       })
       .set(
-        'Authorization',
+        "Authorization",
         `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`
       );
 
     // Check API response
     expect(response.status).toEqual(200);
-    expect(response.body.message).toEqual('Delete entered game success');
-    expect(response.body.status).toEqual('success');
+    expect(response.body.message).toEqual("Delete entered game success");
+    expect(response.body.status).toEqual("success");
 
     // Check database
     const modifiedUser = await findUser(mockUser.username);

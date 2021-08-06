@@ -1,9 +1,9 @@
-import React, { ReactElement, useState, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
-import styled from 'styled-components';
-import { config } from 'client/config';
-import { useAppSelector } from 'client/utils/hooks';
-import { Button } from './Button';
+import React, { ReactElement, useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
+import styled from "styled-components";
+import { config } from "client/config";
+import { useAppSelector } from "client/utils/hooks";
+import { Button } from "./Button";
 
 export const FirstLogin = (): ReactElement | null => {
   const { t } = useTranslation();
@@ -21,7 +21,7 @@ export const FirstLogin = (): ReactElement | null => {
 
     if (firstLogin === null) {
       setIsFirstLogin(true);
-      localStorage.setItem(firstLoginKey, 'firstLogin');
+      localStorage.setItem(firstLoginKey, "firstLogin");
     } else {
       setIsFirstLogin(false);
     }
@@ -34,9 +34,9 @@ export const FirstLogin = (): ReactElement | null => {
   return (
     <FirstLoginContainer>
       <p>
-        {t('firstLogin.serial')} <b>{serial}</b>
+        {t("firstLogin.serial")} <b>{serial}</b>
       </p>
-      <p>{t('firstLogin.info')}</p>
+      <p>{t("firstLogin.info")}</p>
       <Button onClick={() => setIsFirstLogin(false)}>Sulje</Button>
     </FirstLoginContainer>
   );

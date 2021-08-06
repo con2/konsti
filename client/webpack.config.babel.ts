@@ -1,27 +1,27 @@
-import path from 'path';
-import { CleanWebpackPlugin } from 'clean-webpack-plugin';
-import CompressionPlugin from 'compression-webpack-plugin';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import MomentLocalesPlugin from 'moment-locales-webpack-plugin';
-import Dotenv from 'dotenv-webpack';
-import { Configuration } from 'webpack';
-import { merge } from 'webpack-merge';
-import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
-import { config } from 'client/config';
-import { sharedConfig } from 'shared/config/sharedConfig';
+import path from "path";
+import { CleanWebpackPlugin } from "clean-webpack-plugin";
+import CompressionPlugin from "compression-webpack-plugin";
+import HtmlWebpackPlugin from "html-webpack-plugin";
+import MomentLocalesPlugin from "moment-locales-webpack-plugin";
+import Dotenv from "dotenv-webpack";
+import { Configuration } from "webpack";
+import { merge } from "webpack-merge";
+import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
+import { config } from "client/config";
+import { sharedConfig } from "shared/config/sharedConfig";
 
 const TARGET = process.env.npm_lifecycle_event;
 
 const getEnvVariableFile = (): string | undefined => {
   switch (TARGET) {
-    case 'build:prod':
-      return './config/prod.env';
-    case 'build:staging':
-      return './config/staging.env';
-    case 'build:ci':
-      return './config/ci.env';
+    case "build:prod":
+      return "./config/prod.env";
+    case "build:staging":
+      return "./config/staging.env";
+    case "build:ci":
+      return "./config/ci.env";
     default:
-      return './config/dev.env';
+      return "./config/dev.env";
   }
 };
 
@@ -39,17 +39,17 @@ const stats = {
 
 const commonConfig: Configuration = {
   // Entry file
-  entry: path.join(__dirname, 'src', 'index'),
+  entry: path.join(__dirname, "src", "index"),
 
   // Output for compiled file
   output: {
-    path: path.join(__dirname, 'build'),
-    publicPath: '/',
-    filename: '[name].[contenthash].bundle.js',
+    path: path.join(__dirname, "build"),
+    publicPath: "/",
+    filename: "[name].[contenthash].bundle.js",
   },
 
   resolve: {
-    extensions: ['.js', '.ts', '.tsx'],
+    extensions: [".js", ".ts", ".tsx"],
     fallback: { crypto: false },
   },
 
@@ -57,8 +57,8 @@ const commonConfig: Configuration = {
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       title: sharedConfig.appName,
-      favicon: path.resolve(__dirname, 'assets', 'favicon.png'),
-      template: path.resolve(__dirname, 'src', 'index.html'),
+      favicon: path.resolve(__dirname, "assets", "favicon.png"),
+      template: path.resolve(__dirname, "src", "index.html"),
     }),
   ],
 
@@ -68,14 +68,14 @@ const commonConfig: Configuration = {
       {
         test: /\.(ts|tsx|js)$/,
         include: [
-          path.resolve(__dirname, 'src'),
-          path.resolve(__dirname, '../shared'),
+          path.resolve(__dirname, "src"),
+          path.resolve(__dirname, "../shared"),
         ],
         use: [
           {
-            loader: 'babel-loader',
+            loader: "babel-loader",
             options: {
-              rootMode: 'upward',
+              rootMode: "upward",
             },
           },
         ],
@@ -84,67 +84,67 @@ const commonConfig: Configuration = {
         test: /\.(png|jpe?g|gif)$/,
         use: [
           {
-            loader: 'file-loader',
+            loader: "file-loader",
             options: {
-              name: '[name].[ext]',
-              outputPath: 'images',
+              name: "[name].[ext]",
+              outputPath: "images",
             },
           },
         ],
       },
       {
         test: /\.svg$/,
-        use: ['@svgr/webpack'],
+        use: ["@svgr/webpack"],
       },
     ],
   },
 };
 
 const devConfig: Configuration = {
-  target: 'web',
+  target: "web",
 
-  mode: 'development',
+  mode: "development",
 
-  devtool: config.enableReduxTrace ? 'source-map' : 'eval', // Use eval for best hot-loading perf
+  devtool: config.enableReduxTrace ? "source-map" : "eval", // Use eval for best hot-loading perf
 
   // webpack-dev-server config
   devServer: {
-    host: 'localhost',
+    host: "localhost",
     port: 8000,
     hot: true,
-    contentBase: path.join(__dirname, 'build'),
+    contentBase: path.join(__dirname, "build"),
     historyApiFallback: true, // respond to 404s with index.html
     stats,
   },
 
   plugins: [
-    new Dotenv({ path: './config/dev.env' }),
+    new Dotenv({ path: "./config/dev.env" }),
     new ReactRefreshWebpackPlugin(),
   ],
 };
 
 const prodConfig: Configuration = {
-  target: 'browserslist',
+  target: "browserslist",
 
-  mode: 'production',
+  mode: "production",
 
   stats,
 
   plugins: [
     new Dotenv({ path: getEnvVariableFile() }),
     new MomentLocalesPlugin({
-      localesToKeep: ['fi'], // “en” is built into Moment and can’t be removed
+      localesToKeep: ["fi"], // “en” is built into Moment and can’t be removed
     }),
     new CompressionPlugin({
-      filename: '[path][base].gz',
-      algorithm: 'gzip',
+      filename: "[path][base].gz",
+      algorithm: "gzip",
       test: /\.(js|html|svg)$/,
       threshold: 10240,
       minRatio: 0.8,
     }),
     new CompressionPlugin({
-      filename: '[path][base].br',
-      algorithm: 'brotliCompress',
+      filename: "[path][base].br",
+      algorithm: "brotliCompress",
       test: /\.(js|html|svg)$/,
       threshold: 10240,
       minRatio: 0.8,
@@ -155,7 +155,7 @@ const prodConfig: Configuration = {
     splitChunks: {
       cacheGroups: {
         defaultVendors: {
-          name: 'vendors',
+          name: "vendors",
         },
       },
     },
@@ -164,17 +164,17 @@ const prodConfig: Configuration = {
 
 const getWebpackConfig = (): Configuration | undefined => {
   switch (TARGET) {
-    case 'build:prod':
+    case "build:prod":
       return merge(commonConfig, prodConfig);
-    case 'build:staging':
+    case "build:staging":
       return merge(commonConfig, prodConfig);
-    case 'build:dev':
+    case "build:dev":
       return merge(commonConfig, prodConfig);
-    case 'build:ci':
+    case "build:ci":
       return merge(commonConfig, prodConfig);
-    case 'bundle-analyzer':
+    case "bundle-analyzer":
       return merge(commonConfig, prodConfig);
-    case 'start':
+    case "start":
       return merge(commonConfig, devConfig);
   }
 };

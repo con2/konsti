@@ -1,14 +1,14 @@
-import React, { ReactElement, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import styled from 'styled-components';
-import { DragDropContext, DropResult } from 'react-beautiful-dnd';
-import { DropRow } from 'client/views/signup/components/DropRow';
-import { reorder, move } from 'client/utils/dragAndDrop';
-import { sleep } from 'client/utils/sleep';
-import { config } from 'client/config';
-import { DnDUpdatedPositions } from 'client/views/signup/signupTypes';
-import { Game } from 'shared/typings/models/game';
-import { useAppSelector } from 'client/utils/hooks';
+import React, { ReactElement, useState } from "react";
+import { useTranslation } from "react-i18next";
+import styled from "styled-components";
+import { DragDropContext, DropResult } from "react-beautiful-dnd";
+import { DropRow } from "client/views/signup/components/DropRow";
+import { reorder, move } from "client/utils/dragAndDrop";
+import { sleep } from "client/utils/sleep";
+import { config } from "client/config";
+import { DnDUpdatedPositions } from "client/views/signup/signupTypes";
+import { Game } from "shared/typings/models/game";
+import { useAppSelector } from "client/utils/hooks";
 
 export interface Props {
   updateSelectedGames: (newSelectedGames: readonly Game[]) => void;
@@ -27,11 +27,11 @@ export const DragAndDropList = ({
   const groupMembers = useAppSelector((state) => state.login.groupMembers);
 
   const [warningVisible, setWarningVisible] = useState<boolean>(false);
-  const [warning, setWarning] = useState<string>('');
+  const [warning, setWarning] = useState<string>("");
 
   const getList = (id: string): readonly Game[] => {
-    if (id === 'availableGames') return availableGames;
-    else if (id === 'selectedGames') return selectedGames;
+    if (id === "availableGames") return availableGames;
+    else if (id === "selectedGames") return selectedGames;
     return [];
   };
 
@@ -40,7 +40,7 @@ export const DragAndDropList = ({
     setWarningVisible(true);
     await sleep(config.MESSAGE_DELAY);
     setWarningVisible(false);
-    setWarning('');
+    setWarning("");
   };
 
   const onDragEnd = (result: DropResult): void => {
@@ -61,7 +61,7 @@ export const DragAndDropList = ({
         destination.index
       );
 
-      if (source.droppableId === 'selectedGames') {
+      if (source.droppableId === "selectedGames") {
         updateSelectedGames(updatedPositions);
       }
     }
@@ -81,21 +81,21 @@ export const DragAndDropList = ({
       );
 
       if (
-        destination.droppableId === 'selectedGames' &&
+        destination.droppableId === "selectedGames" &&
         selectedGames.length >= 3
       ) {
-        showWarning('gameLimitWarning');
+        showWarning("gameLimitWarning");
         return;
       }
 
       if (
-        groupCode !== '0' &&
+        groupCode !== "0" &&
         updatedPositions.selectedGames &&
-        destination.droppableId === 'selectedGames' &&
+        destination.droppableId === "selectedGames" &&
         updatedPositions.selectedGames[destination.index].maxAttendance <
           groupMembers.length
       ) {
-        showWarning('groupTooBigWarning');
+        showWarning("groupTooBigWarning");
         return;
       }
 
@@ -112,17 +112,17 @@ export const DragAndDropList = ({
         <DragDropContext onDragEnd={onDragEnd}>
           <AvailableGamesRow>
             <DropRow
-              droppableId='availableGames'
+              droppableId="availableGames"
               games={availableGames}
-              label={t('signupView.signupOpenGames')}
+              label={t("signupView.signupOpenGames")}
               showCount={false}
             />
           </AvailableGamesRow>
           <SelectedGamesRow>
             <DropRow
-              droppableId='selectedGames'
+              droppableId="selectedGames"
               games={selectedGames}
-              label={t('signupView.selectedGames')}
+              label={t("signupView.selectedGames")}
               showCount
             />
           </SelectedGamesRow>

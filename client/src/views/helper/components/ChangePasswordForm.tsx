@@ -1,11 +1,11 @@
-import React, { ChangeEvent, ReactElement, useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import styled, { css } from 'styled-components';
-import { useTranslation } from 'react-i18next';
-import { Button } from 'client/components/Button';
-import { updateUserPassword } from 'client/services/userServices';
-import { passwordLength } from 'client/utils/validate';
-import { useAppSelector } from 'client/utils/hooks';
+import React, { ChangeEvent, ReactElement, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import styled, { css } from "styled-components";
+import { useTranslation } from "react-i18next";
+import { Button } from "client/components/Button";
+import { updateUserPassword } from "client/services/userServices";
+import { passwordLength } from "client/utils/validate";
+import { useAppSelector } from "client/utils/hooks";
 
 interface Props {
   serial: string;
@@ -20,11 +20,11 @@ export const ChangePasswordForm = ({
 
   const requester = useAppSelector((state) => state.login.username);
 
-  const [changePasswordInput, setChangePasswordInput] = useState<string>('');
+  const [changePasswordInput, setChangePasswordInput] = useState<string>("");
   const [passwordChangeMessage, setPasswordChangeMessage] =
     useState<ReactElement>(<Message />);
   const [passwordFieldType, setPasswordFieldType] =
-    useState<string>('password');
+    useState<string>("password");
 
   const handlePasswordChange = (event: ChangeEvent<HTMLInputElement>): void => {
     setChangePasswordInput(event.target.value);
@@ -46,39 +46,39 @@ export const ChangePasswordForm = ({
       requester
     );
 
-    if (!response || response.status === 'error') {
+    if (!response || response.status === "error") {
       setPasswordChangeMessage(
         <Message error={true}>
-          {t('passwordManagement.changingPasswordError')}
+          {t("passwordManagement.changingPasswordError")}
         </Message>
       );
-    } else if (response.status === 'success') {
+    } else if (response.status === "success") {
       setPasswordChangeMessage(
-        <Message>{t('passwordManagement.changingPasswordSuccess')}</Message>
+        <Message>{t("passwordManagement.changingPasswordSuccess")}</Message>
       );
     }
   };
 
   const togglePasswordVisibility = (): void => {
-    if (passwordFieldType === 'password') setPasswordFieldType('text');
-    else if (passwordFieldType === 'text') setPasswordFieldType('password');
+    if (passwordFieldType === "password") setPasswordFieldType("text");
+    else if (passwordFieldType === "text") setPasswordFieldType("password");
   };
 
   return (
     <>
-      <p>{t('passwordManagement.newPassword')}</p>
+      <p>{t("passwordManagement.newPassword")}</p>
       <FormInput
         type={passwordFieldType}
-        key='new-password'
-        placeholder={t('passwordManagement.newPassword')}
+        key="new-password"
+        placeholder={t("passwordManagement.newPassword")}
         value={changePasswordInput}
         onChange={handlePasswordChange}
       />
-      <Button onClick={submitUpdatePassword}>{t('button.save')}</Button>
+      <Button onClick={submitUpdatePassword}>{t("button.save")}</Button>
 
       <FormFieldIcon>
         <FontAwesomeIcon
-          icon={passwordFieldType === 'password' ? 'eye' : 'eye-slash'}
+          icon={passwordFieldType === "password" ? "eye" : "eye-slash"}
           onClick={togglePasswordVisibility}
         />
       </FormFieldIcon>

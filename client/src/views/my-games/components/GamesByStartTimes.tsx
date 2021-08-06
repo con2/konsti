@@ -1,12 +1,12 @@
-import React, { ReactElement } from 'react';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import { useTranslation } from 'react-i18next';
-import { timeFormatter } from 'client/utils/timeFormatter';
-import { Game } from 'shared/typings/models/game';
-import { Button } from 'client/components/Button';
-import { useAppDispatch, useAppSelector } from 'client/utils/hooks';
-import { updateFavorite } from 'client/utils/favorite';
+import React, { ReactElement } from "react";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import { useTranslation } from "react-i18next";
+import { timeFormatter } from "client/utils/timeFormatter";
+import { Game } from "shared/typings/models/game";
+import { Button } from "client/components/Button";
+import { useAppDispatch, useAppSelector } from "client/utils/hooks";
+import { updateFavorite } from "client/utils/favorite";
 
 export interface Props {
   games: readonly Game[];
@@ -27,7 +27,7 @@ export const GamesByStartTimes = ({
   const removeFavorite = async (game: Game): Promise<void> => {
     await updateFavorite({
       game,
-      action: 'del',
+      action: "del",
       favoritedGames,
       username,
       dispatch,
@@ -46,8 +46,8 @@ export const GamesByStartTimes = ({
                   await removeFavorite(game);
                 }}
               >
-                {' '}
-                {t('button.removeFavorite')}{' '}
+                {" "}
+                {t("button.removeFavorite")}{" "}
               </Button>
             </ButtonPlacement>
           </GameDetailsList>
@@ -59,7 +59,7 @@ export const GamesByStartTimes = ({
   const startTimesList = startTimes.map((startTime) => {
     return (
       <div key={startTime}>
-        <p className='bold'>
+        <p className="bold">
           {timeFormatter.getWeekdayAndTime({
             time: startTime,
             capitalize: true,
@@ -70,7 +70,7 @@ export const GamesByStartTimes = ({
     );
   });
 
-  return <div className='start-times-list'>{startTimesList}</div>;
+  return <div className="start-times-list">{startTimesList}</div>;
 };
 
 const GameDetailsList = styled.p`
