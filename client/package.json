@@ -39,7 +39,6 @@
     "core-js": "3.16.0",
     "i18next": "20.3.5",
     "i18next-browser-languagedetector": "6.1.2",
-    "i18next-xhr-backend": "3.2.2",
     "react": "17.0.2",
     "react-beautiful-dnd": "13.1.0",
     "react-dom": "17.0.2",
