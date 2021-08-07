@@ -4,7 +4,7 @@ module.exports = {
     return [`prettier --check ${filenames}`, `eslint ${filenames}`];
   },
 
-  "*.{tsx}": (files) => {
+  "*.tsx": (files) => {
     const filenames = files.join(" ");
     return [`stylelint --config client/.stylelintrc.js ${filenames}`];
   },

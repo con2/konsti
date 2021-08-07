@@ -1,11 +1,8 @@
 module.exports = {
-  processors: ["stylelint-processor-styled-components"],
-
   plugins: ["stylelint-no-unsupported-browser-features"],
 
   extends: [
     "stylelint-config-recommended",
-    "stylelint-config-styled-components",
     "stylelint-config-prettier",
     "stylelint-a11y/recommended",
   ],
@@ -13,6 +10,10 @@ module.exports = {
   ignoreFiles: ["build/**/*", "coverage/**/*"],
 
   rules: {
+    // stylelint
+    "length-zero-no-unit": true,
+    "media-feature-name-no-unknown": null, // Doesn't work with styled-component media queries
+
     // no-unsupported-browser-features
     "plugin/no-unsupported-browser-features": [
       true,
