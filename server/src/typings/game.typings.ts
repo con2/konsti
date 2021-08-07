@@ -23,9 +23,9 @@ export interface KompassiGame {
   min_players: number;
   max_players: number;
   identifier: string;
-  tags: readonly string[];
-  genres: readonly string[];
-  styles: readonly string[];
+  tags: string[];
+  genres: string[];
+  styles: string[];
   short_blurb: string;
   revolving_door: boolean;
   three_word_description: string;

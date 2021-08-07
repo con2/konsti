@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { validationResult } from "express-validator";
-import { String, Record, Number, Array, Boolean } from "runtypes";
+import { z } from "zod";
 import {
   fetchUserByUsername,
   storeUser,
@@ -35,7 +35,7 @@ import {
 import { sharedConfig } from "shared/config/sharedConfig";
 import { ConventionType } from "shared/config/sharedConfig.types";
 import { createSerial } from "./userUtils";
-import { GameRuntype } from "shared/typings/models/game";
+import { GameSchema } from "shared/typings/models/game";
 
 export const postUser = async (
   req: Request<{}, {}, RegistrationFormFields>,
@@ -66,15 +66,15 @@ export const postUserPassword = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${USERS_PASSWORD_ENDPOINT}`);
 
-  const PostUserPasswordParameters = Record({
-    username: String,
-    password: String,
-    requester: String,
+  const PostUserPasswordParameters = z.object({
+    username: z.string(),
+    password: z.string(),
+    requester: z.string(),
   });
 
   let parameters;
   try {
-    parameters = PostUserPasswordParameters.check(req.body);
+    parameters = PostUserPasswordParameters.parse(req.body);
   } catch (error) {
     logger.error(`Error validating postFavorite parameters: ${error.message}`);
     return res.sendStatus(422);
@@ -118,16 +118,16 @@ export const postFavorite = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${FAVORITE_ENDPOINT}`);
 
-  const PostFavoriteParameters = Record({
-    favoriteData: Record({
-      username: String,
-      favoritedGames: Array(String),
+  const PostFavoriteParameters = z.object({
+    favoriteData: z.object({
+      username: z.string(),
+      favoritedGames: z.array(z.string()),
     }),
   });
 
   let parameters;
   try {
-    parameters = PostFavoriteParameters.check(req.body);
+    parameters = PostFavoriteParameters.parse(req.body);
   } catch (error) {
     logger.error(`Error validating postFavorite parameters: ${error.message}`);
     return res.sendStatus(422);
@@ -155,20 +155,20 @@ export const postGroup = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${GROUP_ENDPOINT}`);
 
-  const PostGroupParameters = Record({
-    groupData: Record({
-      groupCode: String,
-      leader: Boolean,
-      ownSerial: String,
-      username: String,
-      leaveGroup: Boolean.optional(),
-      closeGroup: Boolean.optional(),
+  const PostGroupParameters = z.object({
+    groupData: z.object({
+      groupCode: z.string(),
+      leader: z.boolean(),
+      ownSerial: z.string(),
+      username: z.string(),
+      leaveGroup: z.optional(z.boolean()),
+      closeGroup: z.optional(z.boolean()),
     }),
   });
 
   let parameters;
   try {
-    parameters = PostGroupParameters.check(req.body);
+    parameters = PostGroupParameters.parse(req.body);
   } catch (error) {
     logger.error(`Error validating getUser parameters: ${error.message}`);
     return res.sendStatus(422);
@@ -198,13 +198,13 @@ export const getUser = async (
 ): Promise<Response> => {
   logger.info(`API call: GET ${USERS_ENDPOINT}`);
 
-  const GetUserQueryParameters = Record({
-    username: String,
+  const GetUserQueryParameters = z.object({
+    username: z.string(),
   });
 
   let parameters;
   try {
-    parameters = GetUserQueryParameters.check(req.query);
+    parameters = GetUserQueryParameters.parse(req.query);
   } catch (error) {
     logger.error(`Error validating getUser parameters: ${error.message}`);
     return res.sendStatus(422);
@@ -234,13 +234,13 @@ export const getUserBySerialOrUsername = async (
     return res.sendStatus(401);
   }
 
-  const GetUserQueryParameters = Record({
-    searchTerm: String,
+  const GetUserQueryParameters = z.object({
+    searchTerm: z.string(),
   });
 
   let parameters;
   try {
-    parameters = GetUserQueryParameters.check(req.query);
+    parameters = GetUserQueryParameters.parse(req.query);
   } catch (error) {
     logger.error(
       `Error validating getUserBySerialOrUsername parameters: ${error.message}`
@@ -265,15 +265,15 @@ export const getGroup = async (
 ): Promise<Response> => {
   logger.info(`API call: GET ${GROUP_ENDPOINT}`);
 
-  const GetGroupQueryParameters = Record({
-    groupCode: String,
-    username: String,
+  const GetGroupQueryParameters = z.object({
+    groupCode: z.string(),
+    username: z.string(),
   });
 
   let parameters;
 
   try {
-    parameters = GetGroupQueryParameters.check(req.query);
+    parameters = GetGroupQueryParameters.parse(req.query);
   } catch (error) {
     return res.sendStatus(422);
   }
@@ -294,24 +294,24 @@ export const postSignup = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${SIGNUP_ENDPOINT}`);
 
-  const PostSignupParameters = Record({
-    signupData: Record({
-      username: String,
-      selectedGames: Array(
-        Record({
-          gameDetails: GameRuntype,
-          priority: Number,
-          time: String,
-          message: String,
+  const PostSignupParameters = z.object({
+    signupData: z.object({
+      username: z.string(),
+      selectedGames: z.array(
+        z.object({
+          gameDetails: GameSchema,
+          priority: z.number(),
+          time: z.string(),
+          message: z.string(),
         })
       ),
-      signupTime: String,
+      signupTime: z.string(),
     }),
   });
 
   let parameters;
   try {
-    parameters = PostSignupParameters.check(req.body);
+    parameters = PostSignupParameters.parse(req.body);
   } catch (error) {
     logger.error(`Error validating getUser parameters: ${error.message}`);
     return res.sendStatus(422);
