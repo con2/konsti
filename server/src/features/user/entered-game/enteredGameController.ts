@@ -8,9 +8,9 @@ import { logger } from "server/utils/logger";
 import { ENTERED_GAME_ENDPOINT } from "shared/constants/apiEndpoints";
 import {
   DeleteEnteredGameParameters,
-  DeleteEnteredGameParametersRuntype,
+  DeleteEnteredGameParametersSchema,
   PostEnteredGameParameters,
-  PostEnteredGameParametersRuntype,
+  PostEnteredGameParametersSchema,
 } from "shared/typings/api/signup";
 import { UserGroup } from "shared/typings/models/user";
 
@@ -27,7 +27,7 @@ export const postEnteredGame = async (
   }
 
   try {
-    PostEnteredGameParametersRuntype.check(req.body);
+    PostEnteredGameParametersSchema.parse(req.body);
   } catch (error) {
     logger.info(
       `Error validating postEnteredGame parameters: ${error.message}`
@@ -52,7 +52,7 @@ export const deleteEnteredGame = async (
   }
 
   try {
-    DeleteEnteredGameParametersRuntype.check(req.body);
+    DeleteEnteredGameParametersSchema.parse(req.body);
   } catch (error) {
     logger.error(
       `Error validating deleteEnteredGame parameters: ${error.message}`

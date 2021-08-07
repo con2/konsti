@@ -1,11 +1,11 @@
 import fs from "fs";
 import _ from "lodash";
 import moment from "moment";
-import { Array } from "runtypes";
+import { z } from "zod";
 import { logger } from "server/utils/logger";
-import { GameRuntype } from "shared/typings/models/game";
+import { GameSchema } from "shared/typings/models/game";
 import { writeJson } from "server/features/statistics/statsUtil";
-import { FeedbackRuntype } from "shared/typings/models/feedback";
+import { FeedbackSchema } from "shared/typings/models/feedback";
 import { config } from "server/config";
 
 export const formatFeedbacks = (year: number, event: string): void => {
@@ -15,7 +15,8 @@ export const formatFeedbacks = (year: number, event: string): void => {
     `${config.statsDataDir}/${event}/${year}/secret/feedbacks.json`,
     "utf8"
   );
-  const feedbacks = Array(FeedbackRuntype).check(JSON.parse(feedbacksJson));
+
+  const feedbacks = z.array(FeedbackSchema).parse(JSON.parse(feedbacksJson));
 
   logger.info(`Loaded ${feedbacks.length} feedbacks`);
 
@@ -23,7 +24,7 @@ export const formatFeedbacks = (year: number, event: string): void => {
     `${config.statsDataDir}/${event}/${year}/games.json`,
     "utf8"
   );
-  const games = Array(GameRuntype).check(JSON.parse(gamesJson));
+  const games = z.array(GameSchema).parse(JSON.parse(gamesJson));
 
   logger.info(`Loaded ${games.length} games`);
 

@@ -1,9 +1,9 @@
-import { Record, String, Static } from "runtypes";
+import { z } from "zod";
 
-export const FeedbackRuntype = Record({
-  gameId: String,
-  feedback: String,
-  username: String,
+export const FeedbackSchema = z.object({
+  gameId: z.string(),
+  feedback: z.string(),
+  username: z.string(),
 });
 
-export type Feedback = Static<typeof FeedbackRuntype>;
+export type Feedback = z.infer<typeof FeedbackSchema>;

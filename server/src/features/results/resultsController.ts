@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { Record, String } from "runtypes";
+import { z } from "zod";
 import { storeAssignment } from "server/features/player-assignment/assignmentController";
 import { fetchResults } from "server/features/results/resultsService";
 import { UserGroup } from "shared/typings/models/user";
@@ -16,13 +16,13 @@ export const getResults = async (
 ): Promise<Response> => {
   logger.info(`API call: GET ${RESULTS_ENDPOINT}`);
 
-  const GetResultsQueryParameters = Record({
-    startTime: String,
+  const GetResultsQueryParameters = z.object({
+    startTime: z.string(),
   });
 
   let parameters;
   try {
-    parameters = GetResultsQueryParameters.check(req.query);
+    parameters = GetResultsQueryParameters.parse(req.query);
   } catch (error) {
     return res.sendStatus(422);
   }
