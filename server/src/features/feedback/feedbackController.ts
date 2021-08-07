@@ -4,7 +4,7 @@ import { UserGroup } from "shared/typings/models/user";
 import { storeFeedback } from "server/features/feedback/feedbackService";
 import { logger } from "server/utils/logger";
 import { FEEDBACK_ENDPOINT } from "shared/constants/apiEndpoints";
-import { Feedback, FeedbackRuntype } from "shared/typings/models/feedback";
+import { Feedback, FeedbackSchema } from "shared/typings/models/feedback";
 
 export const postFeedback = async (
   req: Request<{}, {}, Feedback>,
@@ -14,7 +14,7 @@ export const postFeedback = async (
 
   let parameters;
   try {
-    parameters = FeedbackRuntype.check(req.body);
+    parameters = FeedbackSchema.parse(req.body);
   } catch (error) {
     return res.sendStatus(422);
   }

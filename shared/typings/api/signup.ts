@@ -1,4 +1,4 @@
-import { Record, String, Static } from "runtypes";
+import { z } from "zod";
 import { SIGNUP_MESSAGE_LENGTH } from "shared/constants/validation";
 import { ServerError } from "shared/typings/api/errors";
 import { SelectedGame } from "shared/typings/models/user";
@@ -36,27 +36,23 @@ export interface DeleteEnteredGameResponse {
   status: "success";
 }
 
-export const PostEnteredGameParametersRuntype = Record({
-  username: String,
-  enteredGameId: String,
-  startTime: String,
-  message: String.withConstraint(
-    (message) =>
-      message.length <= SIGNUP_MESSAGE_LENGTH ||
-      `Message too long: ${message.length}/${SIGNUP_MESSAGE_LENGTH}`
-  ),
+export const PostEnteredGameParametersSchema = z.object({
+  username: z.string(),
+  enteredGameId: z.string(),
+  startTime: z.string(),
+  message: z.string().max(SIGNUP_MESSAGE_LENGTH, "Message too long"),
 });
 
-export type PostEnteredGameParameters = Static<
-  typeof PostEnteredGameParametersRuntype
+export type PostEnteredGameParameters = z.infer<
+  typeof PostEnteredGameParametersSchema
 >;
 
-export const DeleteEnteredGameParametersRuntype = Record({
-  username: String,
-  enteredGameId: String,
-  startTime: String,
+export const DeleteEnteredGameParametersSchema = z.object({
+  username: z.string(),
+  enteredGameId: z.string(),
+  startTime: z.string(),
 });
 
-export type DeleteEnteredGameParameters = Static<
-  typeof DeleteEnteredGameParametersRuntype
+export type DeleteEnteredGameParameters = z.infer<
+  typeof DeleteEnteredGameParametersSchema
 >;

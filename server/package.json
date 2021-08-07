@@ -52,7 +52,6 @@
     "node-schedule": "2.0.0",
     "request": "2.88.2",
     "request-promise-native": "1.0.9",
-    "runtypes": "6.3.2",
     "ts-node": "10.1.0",
     "winston": "3.3.3",
     "winston-daily-rotate-file": "4.5.5"
