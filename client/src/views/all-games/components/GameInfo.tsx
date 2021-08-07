@@ -318,5 +318,5 @@ const GameDetailsTextIndent = styled.span`
 `;
 
 const AccessibilityValue = styled.p`
-  margin: 0 0 6px 0px;
+  margin: 0 0 6px 0;
 `;
