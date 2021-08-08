@@ -1,4 +1,3 @@
-import "array-flat-polyfill";
 import { logger } from "server/utils/logger";
 import { updateWithSignups } from "server/features/game-popularity/utils/updateWithSignups";
 import { updateWithAssign } from "server/features/game-popularity/utils/updateWithAssign";

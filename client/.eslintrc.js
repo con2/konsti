@@ -23,7 +23,7 @@ module.exports = {
     react: {
       version: "detect",
     },
-    polyfills: ["Promise", "Array.from", "Object.entries"],
+    polyfills: ["Promise"],
   },
 
   rules: {

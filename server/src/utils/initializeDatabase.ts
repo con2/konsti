@@ -1,4 +1,3 @@
-import "array-flat-polyfill";
 import { logger } from "server/utils/logger";
 import { removeUsers } from "server/features/user/userRepository";
 import { removeResults } from "server/features/results/resultsRepository";

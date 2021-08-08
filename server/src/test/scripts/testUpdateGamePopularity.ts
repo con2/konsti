@@ -1,4 +1,3 @@
-import "array-flat-polyfill";
 import { logger } from "server/utils/logger";
 import { updateGamePopularity } from "server/features/game-popularity/updateGamePopularity";
 import { db } from "server/db/mongodb";
