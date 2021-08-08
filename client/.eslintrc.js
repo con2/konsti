@@ -23,7 +23,6 @@ module.exports = {
     react: {
       version: "detect",
     },
-    polyfills: ["Promise"],
   },
 
   rules: {
