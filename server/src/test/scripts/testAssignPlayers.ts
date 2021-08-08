@@ -1,4 +1,3 @@
-import "array-flat-polyfill";
 import moment from "moment";
 import { logger } from "server/utils/logger";
 import { runAssignment } from "server/features/player-assignment/runAssignment";

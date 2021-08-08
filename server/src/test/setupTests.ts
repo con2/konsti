@@ -1,4 +1,3 @@
-import "array-flat-polyfill";
 import { logger } from "server/utils/logger";
 
 const throwOnErrorLog = false;
