@@ -63,13 +63,7 @@
     "zod": "3.7.1"
   },
   "devDependencies": {
-    "@types/eslint": "7.28.0",
-    "@types/eslint-plugin-prettier": "3.1.0",
-    "@types/jest": "26.0.24",
     "@types/lodash": "4.14.172",
-    "@types/ncp": "2.0.5",
-    "@types/prettier": "2.3.2",
-    "@types/rimraf": "3.0.1",
     "@typescript-eslint/eslint-plugin": "4.29.0",
     "@typescript-eslint/parser": "4.29.0",
     "eslint": "7.32.0",
@@ -94,8 +88,7 @@
     "jest": "27.0.6",
     "lint-staged": "11.1.2",
     "prettier": "2.3.2",
-    "ts-jest": "27.0.4",
-    "type-fest": "2.0.0"
+    "ts-jest": "27.0.4"
   },
   "engines": {
     "node": ">=14.17.x"
