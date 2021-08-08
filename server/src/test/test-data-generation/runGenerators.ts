@@ -1,4 +1,3 @@
-import "array-flat-polyfill";
 import { Command } from "commander";
 import { logger } from "server/utils/logger";
 import { createGames } from "server/test/test-data-generation/generators/createGames";

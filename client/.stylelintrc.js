@@ -19,14 +19,8 @@ module.exports = {
       true,
       {
         severity: "error",
-        ignore: [
-          "flexbox",
-          "css3-cursors-newer",
-          "css-resize",
-          "css-sticky",
-          "css-filters",
-          "multicolumn",
-        ],
+        ignorePartialSupport: true,
+        ignore: ["css-resize", "css-sticky", "css3-cursors-newer"],
       },
     ],
   },

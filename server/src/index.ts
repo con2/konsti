@@ -1,4 +1,3 @@
-import "array-flat-polyfill";
 import { startServer, closeServer } from "server/utils/server";
 import { logger } from "server/utils/logger";
 import { autoUpdateGames, autoAssignPlayers } from "server/utils/cron";
