@@ -25,11 +25,11 @@ export const ResultsByUsername = ({ results }: Props): ReactElement => {
 
   const resultsByUsername = (
     <FlexTableContainer>
-      <FlexTableColumn className="flex-table-header">
+      <FlexTableHeader>
         <FlexTableRow>{t("player")}</FlexTableRow>
         <FlexTableRow>{t("gameTitle")}</FlexTableRow>
         <FlexTableRow>{t("gameInfo.location")}</FlexTableRow>
-      </FlexTableColumn>
+      </FlexTableHeader>
       {resultsTable}
     </FlexTableContainer>
   );
@@ -41,16 +41,21 @@ const FlexTableContainer = styled.div`
   margin-top: 10px;
 `;
 
-const FlexTableColumn = styled.div`
+const FlexTableHeader = styled.div`
   border-bottom: solid 1px ${(props) => props.theme.disabled};
   display: flex;
   flex-direction: row;
   padding: 10px 0;
 
-  &.flex-table-header {
-    font-weight: 700;
-    padding-bottom: 20px;
-  }
+  font-weight: 700;
+  padding-bottom: 20px;
+`;
+
+const FlexTableColumn = styled.div`
+  border-bottom: solid 1px ${(props) => props.theme.disabled};
+  display: flex;
+  flex-direction: row;
+  padding: 10px 0;
 `;
 
 const FlexTableRow = styled.div`
