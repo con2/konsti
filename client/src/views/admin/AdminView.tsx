@@ -1,6 +1,6 @@
 import React, { ReactElement, ChangeEvent, useState } from "react";
 import { useTranslation } from "react-i18next";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { HiddenGamesList } from "client/views/admin/components/HiddenGamesList";
 import {
   submitSignupTime,
@@ -156,7 +156,7 @@ export const AdminView = (): ReactElement => {
 
       {games && games.length !== 0 && (
         <>
-          <StatusMessage className={messageStyle}>{message}</StatusMessage>
+          <StatusMessage messageStyle={messageStyle}>{message}</StatusMessage>
 
           <p>{t("activeTimeDescription")}</p>
 
@@ -199,14 +199,22 @@ export const AdminView = (): ReactElement => {
   );
 };
 
-const StatusMessage = styled.p`
-  &.error {
-    color: ${(props) => props.theme.error};
-  }
+interface StatusMessageProps {
+  messageStyle: string;
+}
 
-  &.success {
-    color: ${(props) => props.theme.success};
-  }
+const StatusMessage = styled.p<StatusMessageProps>`
+  ${(statusMessageProps) =>
+    statusMessageProps.messageStyle === "success" &&
+    css`
+      color: ${(props) => props.theme.success};
+    `};
+
+  ${(statusMessageProps) =>
+    statusMessageProps.messageStyle === "error" &&
+    css`
+      color: ${(props) => props.theme.error};
+    `};
 `;
 
 const ResponseMessage = styled.p`
