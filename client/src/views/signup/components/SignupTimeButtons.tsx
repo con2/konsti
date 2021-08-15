@@ -1,9 +1,7 @@
 import React, { ReactElement } from "react";
-import styled from "styled-components";
 import { timeFormatter } from "client/utils/timeFormatter";
 import { submitSignupTime } from "client/views/signup/signupSlice";
 import { useAppDispatch } from "client/utils/hooks";
-import { AppDispatch } from "client/typings/redux.typings";
 import { Button } from "client/components/Button";
 
 interface Props {
@@ -17,33 +15,24 @@ export const SignupTimeButtons = ({
 }: Props): ReactElement => {
   const dispatch = useAppDispatch();
 
-  const getIsActive = (isActive: boolean): string => (isActive ? "active" : "");
+  const selectSignupTime = (selectedSignupTime: string): void => {
+    dispatch(submitSignupTime(selectedSignupTime));
+  };
 
   return (
     <>
       {signupTimes.map((time) => {
         return (
-          <StyledButton
+          <Button
             key={time}
-            onClick={() => selectSignupTime(time, dispatch)}
-            className={`button-${time} ${getIsActive(time === signupTime)}`}
+            onClick={() => selectSignupTime(time)}
+            selected={time === signupTime}
             disabled={time === signupTime}
           >
             {timeFormatter.getWeekdayAndTime({ time: time, capitalize: true })}
-          </StyledButton>
+          </Button>
         );
       })}
     </>
   );
 };
-
-const selectSignupTime = (signupTime: string, dispatch: AppDispatch): void => {
-  dispatch(submitSignupTime(signupTime));
-};
-
-const StyledButton = styled(Button)`
-  &.active {
-    background: ${(props) => props.theme.buttonSelected};
-    border: 1px solid ${(props) => props.theme.borderActive};
-  }
-`;
