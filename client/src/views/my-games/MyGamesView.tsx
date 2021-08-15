@@ -49,8 +49,8 @@ export const MyGamesView = (): ReactElement => {
   }, [store, testTime]);
 
   return (
-    <MyGamesViewContainer className="my-games-view">
-      <div className="my-games-toggle-visibility">
+    <MyGamesViewContainer>
+      <div>
         <Button onClick={() => setShowAllGames(false)} disabled={!showAllGames}>
           {t("lastStartedAndUpcomingGames")}
         </Button>

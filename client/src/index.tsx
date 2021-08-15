@@ -36,7 +36,7 @@ if (enableAxe && process.env.NODE_ENV === "development") {
 
 // Suspend fallback element
 const loader = (
-  <div className="loading">
+  <div>
     <img alt="Loading..." src={loaderImage} />
   </div>
 );

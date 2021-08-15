@@ -59,7 +59,7 @@ export const HelperResultsList = (): ReactElement => {
   }
 
   return (
-    <div className="results-with-free-seats">
+    <div>
       <h3>
         {t("signupResults")}:{" "}
         {startTime ? (

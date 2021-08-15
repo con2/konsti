@@ -118,8 +118,8 @@ export const AdminView = (): ReactElement => {
   };
 
   return (
-    <div className="admin-view">
-      <div className="admin-button-row">
+    <div>
+      <div>
         <Button
           disabled={submitting}
           onClick={() => {
@@ -160,7 +160,7 @@ export const AdminView = (): ReactElement => {
 
           <p>{t("activeTimeDescription")}</p>
 
-          <div className={"signup-open"}>
+          <div>
             {activeSignupTime && (
               <p>
                 {t("activeTime")}:{" "}
