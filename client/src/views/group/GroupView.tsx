@@ -235,21 +235,21 @@ export const GroupView = (): ReactElement => {
 
       {groupCode === "0" && !inGroup && (
         <>
-          <StyledButton
+          <Button
             disabled={loading}
-            className={showCreateGroup ? "active" : ""}
+            selected={showCreateGroup}
             onClick={() => openGroupForming()}
           >
             {t("button.createGroup")}
-          </StyledButton>
+          </Button>
 
-          <StyledButton
+          <Button
             disabled={loading}
-            className={showJoinGroup ? "active" : ""}
+            selected={showJoinGroup}
             onClick={() => openJoinGroup()}
           >
             {t("button.joinGroup")}
-          </StyledButton>
+          </Button>
 
           <GroupStatusMessage className={messageStyle}>
             {message}
@@ -374,13 +374,6 @@ export const isGroupLeader = (groupCode: string, serial: string): boolean => {
 
 const GroupStatusMessage = styled.span`
   font-weight: 600;
-`;
-
-const StyledButton = styled(Button)`
-  &.active {
-    background: ${(props) => props.theme.buttonSelected};
-    border: 1px solid ${(props) => props.theme.borderActive};
-  }
 `;
 
 const WarningButton = styled(Button)`
