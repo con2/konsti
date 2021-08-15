@@ -20,7 +20,7 @@ export const GameInfo = ({ game }: Props): ReactElement => {
     return genresList.map((genre, i) => {
       return (
         <span key={genre}>
-          <NoWrap>{t(`genre.${genre}`)}</NoWrap>
+          <NoWrapText>{t(`genre.${genre}`)}</NoWrapText>
           <span>{i !== genresList.length - 1 ? ", " : ""}</span>
         </span>
       );
@@ -31,7 +31,7 @@ export const GameInfo = ({ game }: Props): ReactElement => {
     return styles.map((style, i) => {
       return (
         <span key={style}>
-          <NoWrap>{t(`gameStyle.${style}`)}</NoWrap>
+          <NoWrapText>{t(`gameStyle.${style}`)}</NoWrapText>
           <span>{i !== styles.length - 1 ? ", " : ""}</span>
         </span>
       );
@@ -43,7 +43,7 @@ export const GameInfo = ({ game }: Props): ReactElement => {
   const tagsList = tags.map((tag, i) => {
     return (
       <span key={tag}>
-        <NoWrap>{t(`gameTags.${tag}`)}</NoWrap>
+        <NoWrapText>{t(`gameTags.${tag}`)}</NoWrapText>
         <span>{i !== tags.length - 1 ? ", " : ""}</span>
       </span>
     );
@@ -147,7 +147,7 @@ export const GameInfo = ({ game }: Props): ReactElement => {
               {getFormattedStartTime(game.startTime)} -{" "}
               {getFormattedEndTime(game.endTime)}{" "}
             </span>
-            <NoWrap>({getFormattedDuration(game.mins)})</NoWrap>
+            <NoWrapText>({getFormattedDuration(game.mins)})</NoWrapText>
           </GameDetailsValue>
         </GameDetailsRow>
       )}
@@ -341,10 +341,10 @@ const AccessibilityValue = styled.p`
   margin: 0 0 6px 0;
 `;
 
-const NoWrap = styled.span`
-  white-space: nowrap;
-`;
-
 const ItalicText = styled.span`
   font-style: italic;
+`;
+
+const NoWrapText = styled.span`
+  white-space: nowrap;
 `;
