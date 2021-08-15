@@ -1,7 +1,7 @@
 import React, { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import _ from "lodash";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Result } from "shared/typings/models/result";
 
 export interface Props {
@@ -25,7 +25,7 @@ export const ResultsByUsername = ({ results }: Props): ReactElement => {
 
   const resultsByUsername = (
     <FlexTableContainer>
-      <FlexTableColumn className="flex-table-header">
+      <FlexTableColumn header={true}>
         <FlexTableRow>{t("player")}</FlexTableRow>
         <FlexTableRow>{t("gameTitle")}</FlexTableRow>
         <FlexTableRow>{t("gameInfo.location")}</FlexTableRow>
@@ -41,16 +41,22 @@ const FlexTableContainer = styled.div`
   margin-top: 10px;
 `;
 
-const FlexTableColumn = styled.div`
+interface FlexTableColumnProps {
+  header?: boolean;
+}
+
+const FlexTableColumn = styled.div<FlexTableColumnProps>`
   border-bottom: solid 1px ${(props) => props.theme.disabled};
   display: flex;
   flex-direction: row;
   padding: 10px 0;
 
-  &.flex-table-header {
-    font-weight: 700;
-    padding-bottom: 20px;
-  }
+  ${(flexTableColumnProps) =>
+    flexTableColumnProps.header &&
+    css`
+      font-weight: 700;
+      padding-bottom: 20px;
+    `};
 `;
 
 const FlexTableRow = styled.div`

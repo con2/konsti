@@ -79,7 +79,7 @@ export const AllGamesView = (): ReactElement => {
 
         {config.tagFilteringEnabled && (
           <TagsDropdown>
-            <span className={"choose-tag-instruction"}>{t("chooseTag")} </span>
+            <ChooseTagsInstruction>{t("chooseTag")} </ChooseTagsInstruction>
             <select
               onChange={(event: ChangeEvent<HTMLSelectElement>) =>
                 setSelectedTag(event.target.value)
@@ -150,10 +150,12 @@ const AllGamesVisibilityBar = styled.div`
   @media (max-width: ${(props) => props.theme.breakpointPhone}) {
     flex-direction: column;
     align-items: flex-start;
+  }
+`;
 
-    &.choose-tag-instruction {
-      display: none;
-    }
+const ChooseTagsInstruction = styled.span`
+  @media (max-width: ${(props) => props.theme.breakpointPhone}) {
+    display: none;
   }
 `;
 

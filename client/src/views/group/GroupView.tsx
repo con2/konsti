@@ -1,7 +1,7 @@
 import React, { ReactElement, ChangeEvent, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useStore } from "react-redux";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import {
   submitJoinGroup,
   submitCreateGroup,
@@ -251,7 +251,7 @@ export const GroupView = (): ReactElement => {
             {t("button.joinGroup")}
           </Button>
 
-          <GroupStatusMessage className={messageStyle}>
+          <GroupStatusMessage messageStyle={messageStyle}>
             {message}
           </GroupStatusMessage>
 
@@ -326,7 +326,7 @@ export const GroupView = (): ReactElement => {
                     {t("button.closeGroup")}
                   </Button>
 
-                  <GroupStatusMessage className={messageStyle}>
+                  <GroupStatusMessage messageStyle={messageStyle}>
                     {message}
                   </GroupStatusMessage>
                 </div>
@@ -372,8 +372,24 @@ export const isGroupLeader = (groupCode: string, serial: string): boolean => {
   return false;
 };
 
-const GroupStatusMessage = styled.span`
+interface GroupStatusMessageProps {
+  messageStyle: string;
+}
+
+const GroupStatusMessage = styled.span<GroupStatusMessageProps>`
   font-weight: 600;
+
+  ${(groupStatusMessageProps) =>
+    groupStatusMessageProps.messageStyle === "success" &&
+    css`
+      color: ${(props) => props.theme.success};
+    `};
+
+  ${(groupStatusMessageProps) =>
+    groupStatusMessageProps.messageStyle === "error" &&
+    css`
+      color: ${(props) => props.theme.error};
+    `};
 `;
 
 const WarningButton = styled(Button)`
