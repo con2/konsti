@@ -30,7 +30,7 @@ export const TimesDropdown = ({
   });
 
   return (
-    <div className="times-dropdown">
+    <div>
       <select onChange={onChange} value={selectedTime}>
         {sortedTimes}
       </select>

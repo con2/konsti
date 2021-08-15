@@ -41,7 +41,7 @@ export const TestTimeSelector = (): ReactElement => {
   };
 
   return (
-    <TimeSelectorElement className="time-selector">
+    <TimeSelectorElement>
       <span>{t("testTime")}</span>
       <TimesDropdown
         times={times}

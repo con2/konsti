@@ -6,7 +6,7 @@ export const LoginView = (): ReactElement => {
   const { t } = useTranslation();
 
   return (
-    <div className="login-view">
+    <div>
       <h2>{t("pageTitle.login")}</h2>
 
       <LoginForm />

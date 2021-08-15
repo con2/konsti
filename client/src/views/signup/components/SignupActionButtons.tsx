@@ -34,7 +34,7 @@ export const SignupActionButtons = ({
   const { t } = useTranslation();
 
   return (
-    <div className="signup-action-buttons-row">
+    <div>
       <Button disabled={submitting || !leader} onClick={onSubmitClick}>
         {t("button.signup")}
       </Button>

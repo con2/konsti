@@ -70,7 +70,7 @@ export const GamesByStartTimes = ({
     );
   });
 
-  return <div className="start-times-list">{startTimesList}</div>;
+  return <div>{startTimesList}</div>;
 };
 
 const GameDetailsList = styled.p`

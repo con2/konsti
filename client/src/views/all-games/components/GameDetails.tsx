@@ -158,8 +158,8 @@ export const GameDetails = (): ReactElement => {
   };
 
   return (
-    <div className="game-details-view">
-      <div className="details-button-row">
+    <div>
+      <div>
         <Button
           onClick={() => {
             if (history.action === "PUSH") {
@@ -258,7 +258,7 @@ export const GameDetails = (): ReactElement => {
       )}
 
       {!loading && !foundGame && (
-        <div className="game-not-found">
+        <div>
           {t("invalidGameId")} {gameId}.
         </div>
       )}

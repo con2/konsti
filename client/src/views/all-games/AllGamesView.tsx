@@ -118,7 +118,7 @@ export const AllGamesView = (): ReactElement => {
           <RevolvingDoorInstruction>
             {t("revolvingDoorInstruction")}
           </RevolvingDoorInstruction>
-          <div className="running-revolving-door-games">
+          <div>
             <h3>{t("currentlyRunningRevolvingDoor")}</h3>
             {getRunningRevolvingDoorGames(games, t)}
           </div>

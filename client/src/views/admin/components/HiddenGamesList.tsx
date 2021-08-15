@@ -17,7 +17,7 @@ export const HiddenGamesList = ({ hiddenGames }: Props): ReactElement => {
   ]);
 
   return (
-    <div className="hidden">
+    <div>
       <h3>{t("hiddenGames")}</h3>
 
       <ul>
