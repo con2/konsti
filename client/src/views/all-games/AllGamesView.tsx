@@ -150,10 +150,6 @@ const AllGamesVisibilityBar = styled.div`
   @media (max-width: ${(props) => props.theme.breakpointPhone}) {
     flex-direction: column;
     align-items: flex-start;
-
-    &.choose-tag-instruction {
-      display: none;
-    }
   }
 `;
 
