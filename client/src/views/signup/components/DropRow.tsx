@@ -64,14 +64,16 @@ export const DropRow = ({
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
                     >
-                      <SignupGameTitle className="break-long">
-                        {game.title}
+                      <SignupGameTitle>
+                        <BreakLongText>{game.title}</BreakLongText>
                       </SignupGameTitle>
-                      <SignupShortDescription className="break-long">
-                        {t(`programType.${game.programType}`)}:{" "}
-                        {game.shortDescription
-                          ? game.shortDescription
-                          : game.gameSystem}
+                      <SignupShortDescription>
+                        <BreakLongText>
+                          {t(`programType.${game.programType}`)}:{" "}
+                          {game.shortDescription
+                            ? game.shortDescription
+                            : game.gameSystem}
+                        </BreakLongText>
                       </SignupShortDescription>
                       <SignupPopularity>
                         {t("playerStatus")}: {t(getPopularity(game))}
@@ -153,4 +155,8 @@ const SignupShortDescription = styled.p`
 const SignupPopularity = styled.p`
   font-size: ${(props) => props.theme.fontSizeSmall};
   margin-bottom: 0;
+`;
+
+const BreakLongText = styled.span`
+  word-break: break-word;
 `;

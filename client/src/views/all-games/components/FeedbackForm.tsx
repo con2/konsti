@@ -45,8 +45,8 @@ export const FeedbackForm = ({ game }: Props): ReactElement => {
   };
 
   return (
-    <div className="feedback-form">
-      <p className="bold">{t("feedbackTitle")}</p>
+    <div>
+      <Title>{t("feedbackTitle")}</Title>
       <p>{t("feedbackInstruction")}</p>
 
       {!feedbackSent && (
@@ -82,4 +82,8 @@ const FeedbackTextarea = styled.textarea`
 
 const SuccessMessage = styled.p`
   color: ${(props) => props.theme.success};
+`;
+
+const Title = styled.p`
+  font-weight: 600;
 `;

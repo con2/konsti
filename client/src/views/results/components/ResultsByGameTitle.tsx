@@ -34,16 +34,16 @@ export const ResultsByGameTitle = ({ results }: Props): ReactElement => {
     resultsByGameTitle.push(
       <GameResult key={groupedResult}>
         <p>
-          <span className="bold">{t("gameTitle")}:</span> {groupedResult}
+          <InfoText>{t("gameTitle")}:</InfoText> {groupedResult}
         </p>
         <p>
-          <span className="bold">{t("gameInfo.location")}:</span>{" "}
+          <InfoText>{t("gameInfo.location")}:</InfoText>{" "}
           {
             _.head(groupedResults[groupedResult])?.enteredGame.gameDetails
               .location
           }
         </p>
-        <p className="bold">{t("players")}:</p>
+        <InfoTextParagraph>{t("players")}:</InfoTextParagraph>
         <ResultPlayerList>{playerList}</ResultPlayerList>
       </GameResult>
     );
@@ -59,4 +59,12 @@ const GameResult = styled.div`
 
 const ResultPlayerList = styled.div`
   padding-left: 30px;
+`;
+
+const InfoText = styled.span`
+  font-weight: 600;
+`;
+
+const InfoTextParagraph = styled.p`
+  font-weight: 600;
 `;
