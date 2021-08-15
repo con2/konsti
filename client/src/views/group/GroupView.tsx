@@ -226,10 +226,10 @@ export const GroupView = (): ReactElement => {
   );
 
   return (
-    <div className="group-view">
+    <div>
       <h2>{t("pages.group")}</h2>
 
-      <div className="group-instructions">
+      <div>
         <p>{t("groupSignupGuide")}</p>
       </div>
 
@@ -287,8 +287,8 @@ export const GroupView = (): ReactElement => {
       )}
 
       {groupLeader && inGroup && (
-        <div className="group-info">
-          <p className="group-leader-info">
+        <div>
+          <p>
             <InfoTextSpan>{t("youAreGroupLeader")}</InfoTextSpan>.{" "}
             {t("groupLeaderInfo")}
           </p>
@@ -296,7 +296,7 @@ export const GroupView = (): ReactElement => {
       )}
 
       {!groupLeader && inGroup && (
-        <div className="group-info">
+        <div>
           <p>
             <InfoTextSpan>{t("youAreInGroup")}</InfoTextSpan>.{" "}
             {t("groupMemberInfo")}
@@ -306,7 +306,7 @@ export const GroupView = (): ReactElement => {
 
       {inGroup && (
         <>
-          <div className="group-controls">
+          <div>
             {!groupLeader && (
               <Button
                 disabled={loading}

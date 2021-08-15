@@ -39,7 +39,7 @@ export const SignupView = (): ReactElement => {
   const leader = isGroupLeader(groupCode, serial);
 
   return (
-    <div className="signup-view">
+    <div>
       <SignupList games={games} signupTimes={signupTimes} leader={leader} />
     </div>
   );

@@ -18,7 +18,7 @@ export const AlgorithmResults = (): ReactElement => {
   );
 
   return (
-    <div className="results-view">
+    <div>
       {!activeSignupTime && <h2>{t("noResults")}</h2>}
       {activeSignupTime && (
         <>

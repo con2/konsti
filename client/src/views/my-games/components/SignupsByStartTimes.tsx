@@ -17,7 +17,7 @@ export const SignupsByStartTimes = ({
   const { t } = useTranslation();
 
   return (
-    <div className="start-times-list">
+    <div>
       {startTimes.map((startTime) => {
         return (
           <div key={startTime}>

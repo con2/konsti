@@ -23,7 +23,7 @@ export const MySignupsList = ({ signedGames }: Props): ReactElement => {
   );
 
   return (
-    <div className="my-signups-list">
+    <div>
       <h3>{t("signedGames")}</h3>
       <MySignupsGames>
         {signedGames.length === 0 && <span>{t("noSignedGames")}</span>}

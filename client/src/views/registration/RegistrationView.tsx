@@ -7,7 +7,7 @@ export const RegistrationView = (): ReactElement => {
   const { t } = useTranslation();
 
   return (
-    <div className="registration-view">
+    <div>
       <NotificationMessage>
         {t("pageTitle.usernamePublicWarning")}.{" "}
         {t("pageTitle.usernameDiscordInfo")}

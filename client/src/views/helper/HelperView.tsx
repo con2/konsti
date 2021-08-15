@@ -26,7 +26,7 @@ export const HelperView = (): ReactElement => {
   }, [store]);
 
   return (
-    <div className="helper-view">
+    <div>
       {sharedConfig.signupStrategy === SignupStrategy.ALGORITHM && (
         <Button
           disabled={selectedTool === "results"}

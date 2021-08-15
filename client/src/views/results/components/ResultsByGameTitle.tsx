@@ -49,7 +49,7 @@ export const ResultsByGameTitle = ({ results }: Props): ReactElement => {
     );
   }
 
-  return <div className="results-by-gametime">{resultsByGameTitle}</div>;
+  return <div>{resultsByGameTitle}</div>;
 };
 
 const GameResult = styled.div`
