@@ -5,7 +5,7 @@ import { DropRow, Props } from "client/views/signup/components/DropRow";
 
 test("should render correctly", () => {
   const props: Props = {
-    droppableId: "testId",
+    droppableId: "availableGames",
     games: [],
     label: "test label",
     showCount: true,
