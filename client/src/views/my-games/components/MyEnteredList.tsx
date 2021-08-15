@@ -35,7 +35,7 @@ export const MyEnteredList = ({
   }, [missedSignups]);
 
   return (
-    <div className="my-entered-list">
+    <div>
       <h3>{t("enteredGames")}</h3>
       <MyEnteredGames>
         {startTimes.length === 0 && <span>{t("noEnteredGames")}</span>}

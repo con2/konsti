@@ -72,7 +72,7 @@ export const DirectResults = (): ReactElement => {
   }, [searchTerm, gamesForListing]);
 
   return (
-    <div className="results-view">
+    <div>
       <h2>{t("resultsView.allSignupResults")}</h2>
 
       <SearchInput
@@ -80,7 +80,7 @@ export const DirectResults = (): ReactElement => {
         onChange={(event) => setSearchTerm(event.target.value)}
         placeholder={t("findSignupOrGame")}
       />
-      <div className="my-games-toggle-visibility">
+      <div>
         <Button onClick={() => setShowAllGames(false)} disabled={!showAllGames}>
           {t("lastStartedAndUpcomingGames")}
         </Button>

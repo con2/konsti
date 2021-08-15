@@ -40,8 +40,8 @@ export const AlgorithmResultsList = ({ results }: Props): ReactElement => {
   };
 
   return (
-    <div className="results-list">
-      <div className="results-button-row">
+    <div>
+      <div>
         <span>{t("sortBy")} </span>
         {buttons.map((name) => {
           return (

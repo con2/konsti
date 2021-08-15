@@ -45,7 +45,7 @@ export const PasswordManagement = (): ReactElement => {
   };
 
   return (
-    <div className="password-management">
+    <div>
       <h3>{t("passwordManagement.helperPasswordManagement")}</h3>
       <div>
         <p>{t("passwordManagement.userCodeOrUsername")}</p>
