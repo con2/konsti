@@ -59,12 +59,12 @@ export const GamesByStartTimes = ({
   const startTimesList = startTimes.map((startTime) => {
     return (
       <div key={startTime}>
-        <p className="bold">
+        <StyledTime>
           {timeFormatter.getWeekdayAndTime({
             time: startTime,
             capitalize: true,
           })}
-        </p>
+        </StyledTime>
         {getGamesList(startTime)}
       </div>
     );
@@ -79,4 +79,8 @@ const GameDetailsList = styled.p`
 
 const ButtonPlacement = styled.span`
   padding-left: 10px;
+`;
+
+const StyledTime = styled.p`
+  font-weight: 600;
 `;

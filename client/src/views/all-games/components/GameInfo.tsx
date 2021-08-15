@@ -14,13 +14,13 @@ export const GameInfo = ({ game }: Props): ReactElement => {
   const { t } = useTranslation();
   const { simpleDetails } = config;
 
-  if (!game) return <div className="game-details" />;
+  if (!game) return <div />;
 
   const getGenres = (genresList: readonly string[]): ReactElement[] => {
     return genresList.map((genre, i) => {
       return (
         <span key={genre}>
-          <span className="no-wrap">{t(`genre.${genre}`)}</span>
+          <NoWrapText>{t(`genre.${genre}`)}</NoWrapText>
           <span>{i !== genresList.length - 1 ? ", " : ""}</span>
         </span>
       );
@@ -31,7 +31,7 @@ export const GameInfo = ({ game }: Props): ReactElement => {
     return styles.map((style, i) => {
       return (
         <span key={style}>
-          <span className="no-wrap">{t(`gameStyle.${style}`)}</span>
+          <NoWrapText>{t(`gameStyle.${style}`)}</NoWrapText>
           <span>{i !== styles.length - 1 ? ", " : ""}</span>
         </span>
       );
@@ -43,7 +43,7 @@ export const GameInfo = ({ game }: Props): ReactElement => {
   const tagsList = tags.map((tag, i) => {
     return (
       <span key={tag}>
-        <span className="no-wrap">{t(`gameTags.${tag}`)}</span>
+        <NoWrapText>{t(`gameTags.${tag}`)}</NoWrapText>
         <span>{i !== tags.length - 1 ? ", " : ""}</span>
       </span>
     );
@@ -84,7 +84,7 @@ export const GameInfo = ({ game }: Props): ReactElement => {
   const formattedAccessibilityValues = getFormattedAccessibility();
 
   return (
-    <div className="game-details">
+    <div>
       {game.title && (
         <GameDetailsRow className="game-details-row-with-subtext">
           <GameDetailsTitleBig>{game.title}</GameDetailsTitleBig>
@@ -93,8 +93,8 @@ export const GameInfo = ({ game }: Props): ReactElement => {
 
       {!simpleDetails && game.shortDescription && (
         <GameDetailsRow className="game-details-subtext">
-          <GameDetailsTextIndent className="italic">
-            {game.shortDescription}
+          <GameDetailsTextIndent>
+            <ItalicText>{game.shortDescription}</ItalicText>
           </GameDetailsTextIndent>
         </GameDetailsRow>
       )}
@@ -147,7 +147,7 @@ export const GameInfo = ({ game }: Props): ReactElement => {
               {getFormattedStartTime(game.startTime)} -{" "}
               {getFormattedEndTime(game.endTime)}{" "}
             </span>
-            <span className="no-wrap">({getFormattedDuration(game.mins)})</span>
+            <NoWrapText>({getFormattedDuration(game.mins)})</NoWrapText>
           </GameDetailsValue>
         </GameDetailsRow>
       )}
@@ -319,4 +319,12 @@ const GameDetailsTextIndent = styled.span`
 
 const AccessibilityValue = styled.p`
   margin: 0 0 6px 0;
+`;
+
+const ItalicText = styled.span`
+  font-style: italic;
+`;
+
+const NoWrapText = styled.span`
+  white-space: nowrap;
 `;

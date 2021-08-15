@@ -270,7 +270,9 @@ export const GroupView = (): ReactElement => {
 
           {showJoinGroup && (
             <div>
-              <p className="bold">{t("joiningGroupWillCancelGames")}</p>
+              <InfoTextParagraph>
+                {t("joiningGroupWillCancelGames")}
+              </InfoTextParagraph>
 
               {joinGroupInput}
               <Button
@@ -287,7 +289,7 @@ export const GroupView = (): ReactElement => {
       {groupLeader && inGroup && (
         <div className="group-info">
           <p className="group-leader-info">
-            <span className="bold">{t("youAreGroupLeader")}</span>.{" "}
+            <InfoTextSpan>{t("youAreGroupLeader")}</InfoTextSpan>.{" "}
             {t("groupLeaderInfo")}
           </p>
         </div>
@@ -296,7 +298,7 @@ export const GroupView = (): ReactElement => {
       {!groupLeader && inGroup && (
         <div className="group-info">
           <p>
-            <span className="bold">{t("youAreInGroup")}</span>.{" "}
+            <InfoTextSpan>{t("youAreInGroup")}</InfoTextSpan>.{" "}
             {t("groupMemberInfo")}
           </p>
         </div>
@@ -392,4 +394,12 @@ const FormInput = styled.input`
   height: 34px;
   padding: 0 0 0 10px;
   width: 100%;
+`;
+
+const InfoTextParagraph = styled.p`
+  font-weight: 600;
+`;
+
+const InfoTextSpan = styled.span`
+  font-weight: 600;
 `;

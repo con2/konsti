@@ -37,17 +37,17 @@ export const HelperResultsList = (): ReactElement => {
     resultsByGameTitle.push(
       <GameResult key={groupedResult}>
         <p>
-          <span className="bold">{t("gameTitle")}:</span> {groupedResult}
+          <InfoText>{t("gameTitle")}:</InfoText> {groupedResult}
         </p>
         <p>
-          <span className="bold">{t("gameInfo.location")}:</span>{" "}
+          <InfoText>{t("gameInfo.location")}:</InfoText>{" "}
           {
             _.head(groupedResults[groupedResult])?.enteredGame.gameDetails
               .location
           }
         </p>
         <p>
-          <span className="bold">{t("players")}: </span>
+          <InfoText>{t("players")}: </InfoText>
           {playerList.length}/
           {
             _.head(groupedResults[groupedResult])?.enteredGame.gameDetails
@@ -81,4 +81,8 @@ export const HelperResultsList = (): ReactElement => {
 const GameResult = styled.div`
   border-bottom: solid 1px ${(props) => props.theme.disabled};
   padding-bottom: 10px;
+`;
+
+const InfoText = styled.span`
+  font-weight: 600;
 `;

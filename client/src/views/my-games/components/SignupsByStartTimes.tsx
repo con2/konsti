@@ -21,12 +21,12 @@ export const SignupsByStartTimes = ({
       {startTimes.map((startTime) => {
         return (
           <div key={startTime}>
-            <p className="bold">
+            <StyledTime>
               {timeFormatter.getWeekdayAndTime({
                 time: startTime,
                 capitalize: true,
               })}
-            </p>
+            </StyledTime>
             {signups.map((signup) => {
               if (signup.time === startTime) {
                 if (!signup.gameDetails) {
@@ -55,4 +55,8 @@ export const SignupsByStartTimes = ({
 
 const GameDetailsList = styled.p`
   padding-left: 30px;
+`;
+
+const StyledTime = styled.p`
+  font-weight: 600;
 `;

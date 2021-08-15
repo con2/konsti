@@ -31,12 +31,12 @@ export const ResultsByStartTimes = ({
       {startTimes.map((startTime) => {
         return (
           <div key={startTime}>
-            <p className="bold">
+            <StyledTime>
               {timeFormatter.getWeekdayAndTime({
                 time: startTime,
                 capitalize: true,
               })}
-            </p>
+            </StyledTime>
             {signups.map((signup) => {
               const cancelSignupFormVisible = showCancelSignupForm.find(
                 (signupform) => signupform === signup.gameDetails.gameId
@@ -122,4 +122,8 @@ const ButtonContainer = styled.span`
 
 const SignupMessagePlacement = styled.div`
   padding-top: 5px;
+`;
+
+const StyledTime = styled.p`
+  font-weight: 600;
 `;

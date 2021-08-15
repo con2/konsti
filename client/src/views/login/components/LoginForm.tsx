@@ -98,7 +98,7 @@ export const LoginForm = (): ReactElement => {
 };
 
 const ErrorMessage = styled.p`
-  font-weight: bold;
+  font-weight: 600;
   color: ${(props) => props.theme.error};
 `;
 
