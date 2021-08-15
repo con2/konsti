@@ -1,16 +1,18 @@
 import React, { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import { Droppable, Draggable } from "react-beautiful-dnd";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Link } from "react-router-dom";
 import { Game } from "shared/typings/models/game";
 
 export interface Props {
-  droppableId: string;
+  droppableId: "availableGames" | "selectedGames";
   games: readonly Game[];
   label: string;
   showCount: boolean;
 }
+
+type Popularity = "high-popularity" | "medium-popularity" | "low-popularity";
 
 export const DropRow = ({
   droppableId,
@@ -20,12 +22,7 @@ export const DropRow = ({
 }: Props): ReactElement => {
   const { t } = useTranslation();
 
-  const getListStyle = (dragging: boolean): string => {
-    if (dragging) return "dragging";
-    else return "";
-  };
-
-  const getPopularity = (game: Game): string => {
+  const getPopularity = (game: Game): Popularity => {
     if (game.popularity >= game.maxAttendance) return "high-popularity";
     else if (
       game.popularity >= game.maxAttendance / 2 &&
@@ -44,9 +41,8 @@ export const DropRow = ({
       <Droppable droppableId={droppableId}>
         {(provided, snapshot) => (
           <DropRowContainer
-            className={`drop-row ${droppableId} ${getListStyle(
-              snapshot.isDraggingOver
-            )}`}
+            droppableId={droppableId}
+            dragging={snapshot.isDraggingOver}
             ref={provided.innerRef}
           >
             {games.map((game, index) => (
@@ -59,7 +55,7 @@ export const DropRow = ({
                 {(provided) => (
                   <Link to={`/games/${game.gameId}`}>
                     <DraggableItem
-                      className={`${getPopularity(game)}`}
+                      popularity={getPopularity(game)}
                       ref={provided.innerRef}
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
@@ -91,19 +87,33 @@ export const DropRow = ({
   );
 };
 
-const DropRowContainer = styled.div`
+interface DropRowContainerProps {
+  dragging: boolean;
+  droppableId: "availableGames" | "selectedGames";
+}
+
+const DropRowContainer = styled.div<DropRowContainerProps>`
   background: ${(props) => props.theme.backgroundHighlight};
   min-height: 40px;
   padding: 10px;
 
-  &.dragging {
-    background: ${(props) => props.theme.backgroundDndRow};
-  }
+  ${(dropRowContainerProps) =>
+    dropRowContainerProps.dragging &&
+    css`
+      background: ${(props) => props.theme.backgroundDndRow};
+    `};
 
-  &.availableGames,
-  &.selectedGames {
-    min-height: 500px;
-  }
+  ${(dropRowContainerProps) =>
+    dropRowContainerProps.droppableId === "availableGames" &&
+    css`
+      min-height: 500px;
+    `};
+
+  ${(dropRowContainerProps) =>
+    dropRowContainerProps.droppableId === "selectedGames" &&
+    css`
+      min-height: 500px;
+    `};
 
   a {
     color: ${(props) => props.theme.mainText};
@@ -112,7 +122,11 @@ const DropRowContainer = styled.div`
   }
 `;
 
-const DraggableItem = styled.div`
+interface DraggableItemProps {
+  popularity: Popularity;
+}
+
+const DraggableItem = styled.div<DraggableItemProps>`
   background: ${(props) => props.theme.backgroundDndItem};
   border: 1px solid ${(props) => props.theme.borderInactive};
   margin: 8px 0;
@@ -125,17 +139,23 @@ const DraggableItem = styled.div`
     filter: brightness(90%);
   }
 
-  &.high-popularity {
-    background: #ffe8e8;
-  }
+  ${(draggableItemProps) =>
+    draggableItemProps.popularity === "high-popularity" &&
+    css`
+      background: #ffe8e8;
+    `};
 
-  &.medium-popularity {
-    background: #fff;
-  }
+  ${(draggableItemProps) =>
+    draggableItemProps.popularity === "medium-popularity" &&
+    css`
+      background: #fff;
+    `};
 
-  &.low-popularity {
-    background: #f0ffff;
-  }
+  ${(draggableItemProps) =>
+    draggableItemProps.popularity === "low-popularity" &&
+    css`
+      background: #f0ffff;
+    `};
 `;
 
 const SignupGameTitle = styled.p`
