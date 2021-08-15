@@ -81,24 +81,4 @@ export const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
     margin: 10px 0 0 30px;
     padding: 0;
   }
-
-  .small {
-    font-size: 14px;
-  }
-
-  .bold {
-    font-weight: 600;
-  }
-
-  .italic {
-    font-style: italic;
-  }
-
-  .no-wrap {
-    white-space: nowrap;
-  }
-
-  .break-long {
-    word-break: break-word;
-  }
 `;

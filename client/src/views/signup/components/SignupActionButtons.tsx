@@ -49,9 +49,9 @@ export const SignupActionButtons = ({
         <InfoMessage>{t("signupUnsavedChanges")}</InfoMessage>
       )}
 
-      {!leader && <p className="bold">{t("signupDisabledNotLeader")}</p>}
+      {!leader && <InfoText>{t("signupDisabledNotLeader")}</InfoText>}
       {leader && groupCode !== "0" && (
-        <p className="bold">{t("signupForWholeGroup")}</p>
+        <InfoText>{t("signupForWholeGroup")}</InfoText>
       )}
 
       <p>{signupError && <ErrorMessage>{t(signupError)} </ErrorMessage>}</p>
@@ -101,3 +101,7 @@ const checkForSignupChanges = (
     return false;
   }
 };
+
+const InfoText = styled.p`
+  font-weight: 600;
+`;

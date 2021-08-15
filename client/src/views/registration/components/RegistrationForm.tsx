@@ -139,9 +139,9 @@ export const RegistrationForm = (): ReactElement => {
               <FormFieldError>{errors.serial.message}</FormFieldError>
             )}
 
-            <label htmlFor="serial" className="small">
+            <SmallLabel htmlFor="serial">
               {t("registrationSerialHelp")}
-            </label>
+            </SmallLabel>
           </>
         )}
 
@@ -183,7 +183,7 @@ export const RegistrationForm = (): ReactElement => {
 };
 
 const ErrorMessage = styled.p`
-  font-weight: bold;
+  font-weight: 600;
   color: ${(props) => props.theme.error};
 `;
 
@@ -237,4 +237,8 @@ const FormFieldIcon = styled.span`
 const StyledCheckbox = styled.input`
   margin-right: 10px;
   width: 16px;
+`;
+
+const SmallLabel = styled.label`
+  font-size: 14px;
 `;
