@@ -67,7 +67,7 @@ export const MyGamesView = (): ReactElement => {
 
       {!isGroupLeader(groupCode, serial) && (
         <MyGamesGroupNotification>
-          <p className="bold">{t("inGroupSignups")}</p>
+          <InfoText>{t("inGroupSignups")}</InfoText>
         </MyGamesGroupNotification>
       )}
 
@@ -155,4 +155,8 @@ const MyGamesGroupNotification = styled.div`
 
 const ChangePasswordButton = styled(Button)`
   margin: 30px 0 0 0;
+`;
+
+const InfoText = styled.p`
+  font-weight: 600;
 `;
