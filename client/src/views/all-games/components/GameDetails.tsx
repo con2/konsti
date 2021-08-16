@@ -15,10 +15,13 @@ import { updateFavorite, UpdateFavoriteOpts } from "client/utils/favorite";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { Button } from "client/components/Button";
 
+interface GameParams {
+  gameId: string;
+}
+
 export const GameDetails = (): ReactElement => {
   const history = useHistory();
-  // @ts-expect-error: Property 'gameId' does not exist on type '{}'.
-  const { gameId } = useParams();
+  const { gameId } = useParams<GameParams>();
 
   const username = useAppSelector((state) => state.login.username);
   const loggedIn = useAppSelector((state) => state.login.loggedIn);
