@@ -24,21 +24,28 @@ export const combinedReducer = combineReducers({
 
 // Reducer to reset state
 const rootReducer = (
-  state: RootState,
+  state: RootState | undefined,
   action: AnyAction
 ): CombinedState<RootState> => {
-  if (action.type !== SUBMIT_LOGOUT) return combinedReducer(state, action);
+  if (action.type === SUBMIT_LOGOUT) {
+    const newState = combinedReducer(undefined, action);
 
-  const newState = combinedReducer(undefined, action);
-  newState.admin = state.admin;
-  newState.allGames = state.allGames;
-  return newState;
+    if (state?.admin) {
+      newState.admin = state.admin;
+    }
+
+    if (state?.allGames) {
+      newState.allGames = state.allGames;
+    }
+
+    return newState;
+  }
+
+  return combinedReducer(state, action);
 };
 
 export const store = configureStore({
-  // @ts-expect-error: TODO
   reducer: rootReducer,
-  // @ts-expect-error: TODO
   preloadedState: loadSession(), // Load persisted state from localStorage
   devTools: {
     trace: config.enableReduxTrace,
