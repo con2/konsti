@@ -1,6 +1,6 @@
-import { LocalStorageState } from "client/typings/redux.typings";
+import { LocalStorageState, RootState } from "client/typings/redux.typings";
 
-export const loadSession = (): string | undefined => {
+export const loadSession = (): Partial<RootState> | undefined => {
   try {
     const serializedState = localStorage.getItem("state");
     if (
