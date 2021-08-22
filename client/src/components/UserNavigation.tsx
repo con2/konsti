@@ -16,7 +16,7 @@ export const UserNavigation = (props: {
         <RouterLink
           onClick={props.onSelect}
           to="/games"
-          data-testkey="all-games-page-link"
+          data-testid="all-games-page-link"
         >
           {t("pages.allGames")}
         </RouterLink>
@@ -25,7 +25,7 @@ export const UserNavigation = (props: {
       <RouterLink
         onClick={props.onSelect}
         to="/login"
-        data-testkey="login-page-link"
+        data-testid="login-page-link"
       >
         {t("button.login")}
       </RouterLink>
@@ -34,7 +34,7 @@ export const UserNavigation = (props: {
         <RouterLink
           onClick={props.onSelect}
           to="/registration"
-          data-testkey="registration-page-link"
+          data-testid="registration-page-link"
         >
           {t("button.register")}
         </RouterLink>
