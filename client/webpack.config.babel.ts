@@ -25,18 +25,6 @@ const getEnvVariableFile = (): string | undefined => {
   }
 };
 
-const stats = {
-  // assets: false,
-  // children: false,
-  // chunks: false,
-  // hash: false,
-  // modules: false,
-  // publicPath: false,
-  // timings: false,
-  // version: false,
-  warnings: false,
-};
-
 const commonConfig: Configuration = {
   // Entry file
   entry: path.join(__dirname, "src", "index"),
@@ -112,9 +100,7 @@ const devConfig: Configuration = {
     host: "localhost",
     port: 8000,
     hot: true,
-    contentBase: path.join(__dirname, "build"),
     historyApiFallback: true, // respond to 404s with index.html
-    stats,
   },
 
   plugins: [
@@ -128,7 +114,10 @@ const prodConfig: Configuration = {
 
   mode: "production",
 
-  stats,
+  performance: {
+    maxEntrypointSize: 1024000,
+    maxAssetSize: 1024000,
+  },
 
   plugins: [
     new Dotenv({ path: getEnvVariableFile() }),
