@@ -23,7 +23,7 @@ export const Navigation = (): ReactElement => {
         <NavigationIcon
           icon={icon}
           onClick={() => setIsOpen(!isOpen)}
-          data-testkey="navigation-icon"
+          data-testid="navigation-icon"
         />
       </NavigationIconContainer>
       {isOpen && (
@@ -47,10 +47,10 @@ export const Navigation = (): ReactElement => {
           )}
           {loggedIn && (
             <LoggedUserDetails>
-              <UserInfo data-testkey="logged-user-username">
+              <UserInfo data-testid="logged-user-username">
                 {t("user")}: {username}
               </UserInfo>
-              <UserInfo data-testkey="logged-user-serial">
+              <UserInfo data-testid="logged-user-serial">
                 {t("code")}: {serial}
               </UserInfo>
             </LoggedUserDetails>
