@@ -31,7 +31,7 @@ module.exports = (api) => {
             client: "./src",
             assets: "./assets",
             shared: "../shared/",
-            cypress: "./cypress",
+            playwright: "./playwright",
           },
           extensions: [".js", ".ts", ".tsx"],
         },

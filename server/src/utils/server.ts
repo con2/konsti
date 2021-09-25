@@ -1,5 +1,7 @@
-import { Server } from "http";
+import http, { Server } from "http";
+import https from "https";
 import path from "path";
+import fs from "fs";
 import express, { Request, Response, NextFunction } from "express";
 import helmet from "helmet";
 import morgan from "morgan";
@@ -20,20 +22,20 @@ export const startServer = async (
     logger.error(error);
   }
 
-  const server = express();
+  const app = express();
 
-  server.use(helmet());
+  app.use(helmet());
 
   if (config.enableAccessLog) {
     // Set logger
     logger.info("Express: Overriding 'Express' logger");
-    server.use(morgan("dev", { stream }));
+    app.use(morgan("dev", { stream }));
   }
 
   // Parse body and populate req.body - only accepts JSON
-  server.use(express.json({ limit: "1000kb", type: "*/*" }));
+  app.use(express.json({ limit: "1000kb", type: "*/*" }));
 
-  server.use(
+  app.use(
     "/",
     (err: Error, _req: Request, res: Response, next: NextFunction) => {
       if (err) {
@@ -44,28 +46,46 @@ export const startServer = async (
     }
   );
 
-  server.use(allowCORS);
+  app.use(allowCORS);
 
-  server.use(apiRoutes);
+  app.use(apiRoutes);
 
   // Set static path
   const staticPath = path.join(__dirname, "../../", "front");
 
   // Set compression
   if (config.bundleCompression) {
-    server.use(
+    app.use(
       expressStaticGzip(staticPath, {
         enableBrotli: true,
         orderPreference: ["br", "gz"],
       })
     );
   } else {
-    server.use(express.static(staticPath));
+    app.use(express.static(staticPath));
   }
 
-  server.get("/*", (_req: Request, res: Response) => {
+  app.get("/*", (_req: Request, res: Response) => {
     res.sendFile(path.join(staticPath, "index.html"));
   });
+
+  let server: Server;
+
+  // Use https for running tests in CI
+  if (process.env.SETTINGS === "CI") {
+    const privateKey = fs.readFileSync(
+      path.join(__dirname, "../../dev-cert", "server.key"),
+      "utf8"
+    );
+    const certificate = fs.readFileSync(
+      path.join(__dirname, "../../dev-cert", "server.cert"),
+      "utf8"
+    );
+
+    server = https.createServer({ key: privateKey, cert: certificate }, app);
+  } else {
+    server = http.createServer(app);
+  }
 
   const runningServer = server.listen(port ?? process.env.PORT);
 
