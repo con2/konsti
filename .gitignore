@@ -53,9 +53,8 @@ secret
 !.yarn/versions
 .pnp.*
 
-# Cypress
-client/cypress/videos/*
-client/cypress/screenshots/*
-
 # Husky
 .husky/_/
+
+# Playwright
+test-results

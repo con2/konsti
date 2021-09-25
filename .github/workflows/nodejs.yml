@@ -12,7 +12,6 @@ jobs:
 
     env:
       CI: true
-      CYPRESS_DASHBOARD_RECORD_KEY: ${{ secrets.CYPRESS_DASHBOARD_RECORD_KEY }}
 
     steps:
       - name: Checkout code
@@ -51,6 +50,6 @@ jobs:
         run: |
           yarn test
 
-      - name: Cypress
+      - name: Playwright
         run: |
           yarn docker-compose:test
