@@ -56,6 +56,7 @@ const config: PlaywrightTestConfig = {
     video: "on",
     trace: "on-first-retry",
     headless: true,
+    ignoreHTTPSErrors: true,
   },
 };
 

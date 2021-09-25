@@ -2,21 +2,33 @@ version: "3.8"
 
 services:
   server:
-    network_mode: host
     build:
       context: ../.
       dockerfile: Dockerfile
+    ports:
+      - 5000:5000
     environment:
       - NODE_ENV=development
-      - CONN_STRING=mongodb://localhost:27017
+      - SETTINGS=CI
+      - CONN_STRING=mongodb://mongo:27017
       - PORT=5000
     depends_on:
       - mongo
 
   mongo:
-    network_mode: host
     image: mongo:4.4
     restart: always
+    ports:
+      - 27017:27017
     # environment:
     # MONGO_INITDB_ROOT_USERNAME: root
     # MONGO_INITDB_ROOT_PASSWORD: example
+
+  mongo-express:
+    image: mongo-express:0.54
+    restart: always
+    ports:
+      - 8081:8081
+    # environment:
+    # ME_CONFIG_MONGODB_ADMINUSERNAME: root
+    # ME_CONFIG_MONGODB_ADMINPASSWORD: example
