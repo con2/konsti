@@ -44,7 +44,7 @@ Registered users by year:
   - TypeScript
   - Prettier & ESlint
   - Jest
-  - Cypress
+  - Playwright
 
 - Back-end
 
@@ -60,10 +60,6 @@ Registered users by year:
   - Webpack
   - styled-components
   - stylelint
-
-## Cypress end-to-end tests
-
-See [Cypress Dashboard](https://dashboard.cypress.io/projects/btftv2) for test results.
 
 ## Supporters
 

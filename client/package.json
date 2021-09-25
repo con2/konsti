@@ -9,14 +9,11 @@
   "main": "index.tsx",
   "scripts": {
     "build:ci": "yarn clean && webpack-cli",
-    "build:cypress": "yarn run -T babel cypress --out-dir build/cypress --extensions .ts --root-mode upward",
     "build:dev": "yarn clean && webpack-cli",
     "build:prod": "yarn clean && webpack-cli",
     "build:staging": "yarn clean && webpack-cli",
     "bundle-analyzer": "webpack-cli --profile --json > stats.json && webpack-bundle-analyzer stats.json build -m server",
     "clean": "yarn run -T rimraf build",
-    "cypress:open": "cypress open",
-    "cypress:run": "cypress run",
     "eslint": "yarn run -T eslint . --ext .js,.ts,.tsx",
     "eslint-rules": "yarn run -T eslint --print-config .eslintrc.js",
     "start": "webpack serve",
@@ -25,7 +22,9 @@
     "test:coverage": "yarn run -T jest --coverage --colors",
     "test:watch": "yarn run -T jest --watch",
     "type-check": "yarn run -T tsc --noEmit",
-    "type-check:cypress": "yarn run -T tsc --noEmit --project cypress/tsconfig.json"
+    "playwright": "npx playwright install && npx playwright test --config ./playwright/",
+    "playwright:trace": "npx playwright show-trace trace.zip",
+    "playwright:debug": "yarn run -T cross-env PWDEBUG=1 npx playwright test --config ./playwright/"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "1.2.36",
@@ -54,6 +53,7 @@
   },
   "devDependencies": {
     "@axe-core/react": "4.2.2",
+    "@playwright/test": "1.15.0",
     "@pmmmwh/react-refresh-webpack-plugin": "0.5.0-rc.4",
     "@testing-library/jest-dom": "5.14.1",
     "@testing-library/react": "12.0.0",
@@ -69,7 +69,6 @@
     "babel-loader": "8.2.2",
     "clean-webpack-plugin": "4.0.0-alpha.0",
     "compression-webpack-plugin": "8.0.1",
-    "cypress": "8.3.0",
     "doiuse": "4.4.1",
     "dotenv-webpack": "7.0.3",
     "file-loader": "6.2.0",

@@ -35,12 +35,7 @@ module.exports = {
     sourceType: "module",
     impliedStrict: true,
     tsconfigRootDir: __dirname,
-    project: [
-      "tsconfig.json",
-      "client/tsconfig.json",
-      "client/cypress/tsconfig.json",
-      "server/tsconfig.json",
-    ],
+    project: ["tsconfig.json", "client/tsconfig.json", "server/tsconfig.json"],
   },
 
   settings: {
@@ -70,7 +65,6 @@ module.exports = {
 
     // eslint-plugin-jest
     "jest/no-disabled-tests": "error",
-    "jest/expect-expect": "off", // Does not work with Cypress
 
     // eslint-plugin-eslint-comments
     "eslint-comments/no-unused-disable": "error",
@@ -92,7 +86,6 @@ module.exports = {
       },
     ],
     "@typescript-eslint/no-unused-vars": "error",
-    "@typescript-eslint/triple-slash-reference": "off", // Cypress requires triple slash reference
     "@typescript-eslint/strict-boolean-expressions": "off", // Forces unwanted code style
     "@typescript-eslint/restrict-template-expressions": "off", // Requires typing catch(e) every time
     "@typescript-eslint/restrict-plus-operands": "off", // Doesn't support dynamic object occurance counting
