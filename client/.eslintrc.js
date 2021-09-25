@@ -4,19 +4,18 @@ module.exports = {
   plugins: [
     "eslint-plugin-compat",
     "eslint-plugin-react-hooks",
-    "cypress",
     "eslint-plugin-jsx-a11y",
+    "eslint-plugin-testing-library",
   ],
 
   extends: [
     "plugin:eslint-plugin-react/recommended",
-    "plugin:cypress/recommended",
     "plugin:eslint-plugin-jsx-a11y/recommended",
+    "plugin:testing-library/react",
   ],
 
   env: {
     browser: true,
-    "cypress/globals": true,
   },
 
   settings: {
@@ -41,10 +40,12 @@ module.exports = {
     // eslint-plugin-compat
     "compat/compat": "error",
 
+    // eslint-plugin-jest
+    "jest/no-done-callback": "off",
+
     // @typescript-eslint
     "@typescript-eslint/no-var-requires": "off", // Used to dynamically import dev dependencies
     "@typescript-eslint/default-param-last": "off", // Problem setting Redux reducer initial state
-    "@typescript-eslint/triple-slash-reference": "off", // Cypress requires triple slash reference
 
     // TODO: Enable these rules
     "@typescript-eslint/no-floating-promises": "off",

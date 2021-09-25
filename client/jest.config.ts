@@ -14,5 +14,5 @@ module.exports = {
 
   setupFiles: ["./src/test/setupTests.ts"],
 
-  testPathIgnorePatterns: ["cypress"],
+  testPathIgnorePatterns: ["playwright"],
 };

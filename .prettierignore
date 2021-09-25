@@ -8,5 +8,4 @@ stats.json
 build
 .yarn
 .history
-client/cypress/docker-compose.yml
 .vscode

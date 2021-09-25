@@ -9,13 +9,14 @@ services:
       - 5000:5000
     environment:
       - NODE_ENV=development
+      - SETTINGS=CI
       - CONN_STRING=mongodb://mongo:27017
       - PORT=5000
     depends_on:
       - mongo
 
   mongo:
-    image: mongo
+    image: mongo:4.4
     restart: always
     ports:
       - 27017:27017
@@ -24,7 +25,7 @@ services:
     # MONGO_INITDB_ROOT_PASSWORD: example
 
   mongo-express:
-    image: mongo-express
+    image: mongo-express:0.54
     restart: always
     ports:
       - 8081:8081

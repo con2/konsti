@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  playwright:
+    build:
+      context: ../client/playwright
+      dockerfile: Dockerfile
+    environment:
+      - PLAYWRIGHT_BASEURL=https://server:5000
+    depends_on:
+      - server
+    volumes:
+      - ../client/playwright/test-results:/playwright/test-results # In relation to root level docker-compose.yml file
+    entrypoint: /bin/sh -c "/usr/local/bin/waitforit -address=server:5000 -timeout=60 && npx playwright test"
