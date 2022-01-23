@@ -12,7 +12,7 @@ export const api: AxiosInstance = axios.create({
 
 api.interceptors.request.use((requestConfig) => {
   const authToken = getJWT();
-  if (authToken) {
+  if (authToken && requestConfig.headers) {
     requestConfig.headers.Authorization = `Bearer ${authToken}`;
   }
   return requestConfig;
