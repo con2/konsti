@@ -10,18 +10,11 @@ import { saveSignup, saveUser } from "server/features/user/userRepository";
 
 let mongoServer: MongoMemoryServer;
 
-const options = {
-  promiseLibrary: global.Promise,
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useFindAndModify: false,
-};
-
 beforeEach(async () => {
   mongoServer = new MongoMemoryServer();
   await mongoServer.start();
   const mongoUri = mongoServer.getUri();
-  await mongoose.connect(mongoUri, options);
+  await mongoose.connect(mongoUri);
 });
 
 afterEach(async () => {

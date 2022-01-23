@@ -8,11 +8,7 @@ const connectToDb = async (
   logger.info(`MongoDB: Connecting`);
 
   const options = {
-    promiseLibrary: global.Promise,
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
     dbName: config.dbName,
-    useFindAndModify: false,
   };
 
   try {
