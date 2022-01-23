@@ -9746,7 +9746,7 @@ __metadata:
     stylelint-a11y: 1.2.3
     stylelint-config-prettier: 8.0.2
     stylelint-config-recommended: 5.0.0
-    stylelint-no-unsupported-browser-features: 5.0.1
+    stylelint-no-unsupported-browser-features: 5.0.2
     webpack: 5.51.1
     webpack-bundle-analyzer: 4.4.2
     webpack-cli: 4.8.0
@@ -11967,7 +11967,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.1.4, postcss@npm:^8.2.4":
+"postcss@npm:^8.2.4, postcss@npm:^8.3.6":
   version: 8.4.5
   resolution: "postcss@npm:8.4.5"
   dependencies:
@@ -14042,16 +14042,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stylelint-no-unsupported-browser-features@npm:5.0.1":
-  version: 5.0.1
-  resolution: "stylelint-no-unsupported-browser-features@npm:5.0.1"
+"stylelint-no-unsupported-browser-features@npm:5.0.2":
+  version: 5.0.2
+  resolution: "stylelint-no-unsupported-browser-features@npm:5.0.2"
   dependencies:
     doiuse: ^4.4.1
     lodash: ^4.17.15
-    postcss: ^8.1.4
+    postcss: ^8.3.6
   peerDependencies:
     stylelint: ">=13.0.0"
-  checksum: 9569911ff7999cb2bd20d3ea99e5a5a994544dea377dc55d413e6f54aac9c07c2a65e2fe35e7b4d992c9985442b4df69d9df771cf5541c124b44d2c7d08473c6
+  checksum: 73331cffcd24497aad3520a8a640d29025fd3e95f88932ce5eabdb920e00f3452c75e4f3596efa8ed94f0a3abffa4bc40ddeec958cfdd901347ccdc570395fef
   languageName: node
   linkType: hard
 
