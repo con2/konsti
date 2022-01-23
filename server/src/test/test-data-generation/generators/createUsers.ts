@@ -1,4 +1,4 @@
-import faker from "faker";
+import faker from "@faker-js/faker";
 import { logger } from "server/utils/logger";
 import { hashPassword } from "server/utils/bcrypt";
 import { UserGroup } from "shared/typings/models/user";
