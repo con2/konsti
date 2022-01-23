@@ -191,7 +191,6 @@ export const findUserSerial = async (
 export const findGroupMembers = async (groupCode: string): Promise<User[]> => {
   let response: User[];
   try {
-    // @ts-expect-error: Returns User even though it definitely should be User[]
     response = await UserModel.find({ groupCode })
       .lean<User>()
       .populate("favoritedGames")
@@ -256,7 +255,6 @@ export const findUsers = async (): Promise<User[]> => {
   logger.debug(`MongoDB: Find all users`);
   let users: User[];
   try {
-    // @ts-expect-error: Returns User even though it definitely should be User[]
     users = await UserModel.find({})
       .lean<User>()
       .populate("favoritedGames")
