@@ -48,7 +48,7 @@
     "@babel/preset-react": "7.16.7",
     "@babel/preset-typescript": "7.16.7",
     "@babel/register": "7.16.9",
-    "@reduxjs/toolkit": "1.6.1",
+    "@reduxjs/toolkit": "1.7.1",
     "babel-plugin-lodash": "3.3.4",
     "babel-plugin-module-resolver": "4.1.0",
     "concurrently": "7.0.0",
@@ -58,10 +58,10 @@
     "rimraf": "3.0.2",
     "tsconfig-paths": "3.12.0",
     "typescript": "4.3.5",
-    "zod": "3.7.3"
+    "zod": "3.11.6"
   },
   "devDependencies": {
-    "@types/lodash": "4.14.172",
+    "@types/lodash": "4.14.178",
     "@typescript-eslint/eslint-plugin": "4.33.0",
     "@typescript-eslint/parser": "4.33.0",
     "cross-env": "7.0.3",

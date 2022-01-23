@@ -34,7 +34,6 @@ export const findResult = async (
 export const findResults = async (): Promise<ResultsCollectionEntry[]> => {
   let response: ResultsCollectionEntry[];
   try {
-    // @ts-expect-error: Returns ResultsCollectionEntry even though it definitely should be ResultsCollectionEntry[]
     response = await ResultsModel.find(
       {},
       "-_id -__v -createdAt -updatedAt -result._id"
