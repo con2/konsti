@@ -104,6 +104,7 @@ const devConfig: Configuration = {
   },
 
   plugins: [
+    // @ts-expect-error: ?
     new Dotenv({ path: "./config/dev.env" }),
     new ReactRefreshWebpackPlugin(),
   ],
@@ -120,9 +121,10 @@ const prodConfig: Configuration = {
   },
 
   plugins: [
+    // @ts-expect-error: ?
     new Dotenv({ path: getEnvVariableFile() }),
     new MomentLocalesPlugin({
-      localesToKeep: ["fi"], // “en” is built into Moment and can’t be removed
+      localesToKeep: ["fi"], // "en" is built into Moment and can't be removed
     }),
     new CompressionPlugin({
       filename: "[path][base].gz",
