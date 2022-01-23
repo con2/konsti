@@ -14,7 +14,9 @@ module.exports = {
     "length-zero-no-unit": true,
     "media-feature-name-no-unknown": null, // Doesn't work with styled-component media queries
 
+    // TODO: Enable this, broken at the moment
     // no-unsupported-browser-features
+    /*
     "plugin/no-unsupported-browser-features": [
       true,
       {
@@ -23,5 +25,6 @@ module.exports = {
         ignore: ["css-resize", "css-sticky", "css3-cursors-newer"],
       },
     ],
+    */
   },
 };
