@@ -57,8 +57,8 @@ export const Routes = (): ReactElement => {
         <Route path="/logout">
           <LogoutView />
         </Route>
-        <Redirect from="/" to="/games" />
-        <Redirect from="/*" to="/" />
+        <Route path="/" render={() => <Redirect to="/games" />} />
+        <Route path="/*" render={() => <Redirect to="/" />} />
       </Switch>
     );
   }
@@ -101,8 +101,8 @@ export const Routes = (): ReactElement => {
             <HelperView />
           </Route>
         )}
-        <Redirect from="/" to="/games" />
-        <Redirect from="/*" to="/" />
+        <Route path="/" render={() => <Redirect to="/games" />} />
+        <Route path="/*" render={() => <Redirect to="/" />} />
       </Switch>
     );
   }
@@ -121,8 +121,8 @@ export const Routes = (): ReactElement => {
       <Route path="/games">
         <AllGamesView />
       </Route>
-      <Redirect from="/" to="/games" />
-      <Redirect from="/*" to="/login" />
+      <Route path="/" render={() => <Redirect to="/games" />} />
+      <Route path="/*" render={() => <Redirect to="/login" />} />
     </Switch>
   );
 };
