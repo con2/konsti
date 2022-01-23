@@ -65,6 +65,7 @@ module.exports = {
 
     // eslint-plugin-jest
     "jest/no-disabled-tests": "error",
+    "jest/expect-expect": "off", // TODO: Enable this to detect useless tests
 
     // eslint-plugin-eslint-comments
     "eslint-comments/no-unused-disable": "error",

@@ -45,5 +45,4 @@ export const App = (): ReactElement => {
   );
 };
 
-/* eslint-disable-next-line import/no-unused-modules */
 export default App;
