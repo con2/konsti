@@ -1,4 +1,4 @@
-import faker from "faker";
+import faker from "@faker-js/faker";
 import moment from "moment";
 import { logger } from "server/utils/logger";
 import { config } from "server/config";
