@@ -7,11 +7,12 @@ import { TestTimeSelector } from "client/test/test-components/TestTimeSelector";
 import { Navigation } from "./Navigation";
 import { FirstLogin } from "./FirstLogin";
 import { useAppSelector } from "client/utils/hooks";
+import { sharedConfig } from "shared/config/sharedConfig";
 
 export const Header = (): ReactElement => {
   const { t } = useTranslation();
-  const { loadedSettings, CONVENTION_NAME, CONVENTION_YEAR, useTestTime } =
-    config;
+  const { loadedSettings, useTestTime } = config;
+  const { CONVENTION_NAME, CONVENTION_YEAR } = sharedConfig;
 
   const appOpen = useAppSelector((state) => state.admin.appOpen);
 

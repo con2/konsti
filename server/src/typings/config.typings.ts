@@ -21,7 +21,6 @@ export interface Config {
   bundleCompression: boolean;
   autoUpdateGamesEnabled: boolean;
   gameUpdateInterval: number;
-  CONVENTION_START_TIME: string;
   enableRemoveOverlapSignups: boolean;
   saveTestAssign: boolean;
   autoUpdateGamePopularityEnabled: boolean;
