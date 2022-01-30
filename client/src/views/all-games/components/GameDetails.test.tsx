@@ -5,7 +5,7 @@ import { store } from "client/utils/store";
 import { GameDetails } from "client/views/all-games/components/GameDetails";
 
 jest.mock("react-router-dom", () => ({
-  useHistory: () => {},
+  useNavigate: () => {},
   useParams: () => {
     return {
       gameId: "1234",

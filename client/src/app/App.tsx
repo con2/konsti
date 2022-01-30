@@ -1,7 +1,7 @@
 import React, { ReactElement, useEffect, useState } from "react";
 import { useStore } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
-import { Routes } from "client/app/Routes";
+import { AppRoutes } from "client/app/Routes";
 import { Header } from "client/components/Header";
 import { loadData } from "client/utils/loadData";
 import { Loading } from "client/components/Loading";
@@ -38,7 +38,7 @@ export const App = (): ReactElement => {
       {!loading && (
         <BrowserRouter>
           <Header />
-          <Routes />
+          <AppRoutes />
         </BrowserRouter>
       )}
     </>

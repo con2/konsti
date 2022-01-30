@@ -1,6 +1,6 @@
 import React, { ReactElement, useState, useEffect, ChangeEvent } from "react";
 import { useTranslation } from "react-i18next";
-import { useHistory, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import {
   submitAddSignupMessage,
@@ -15,13 +15,9 @@ import { updateFavorite, UpdateFavoriteOpts } from "client/utils/favorite";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { Button } from "client/components/Button";
 
-interface GameParams {
-  gameId: string;
-}
-
 export const GameDetails = (): ReactElement => {
-  const history = useHistory();
-  const { gameId } = useParams<GameParams>();
+  const navigate = useNavigate();
+  const { gameId } = useParams();
 
   const username = useAppSelector((state) => state.login.username);
   const loggedIn = useAppSelector((state) => state.login.loggedIn);
@@ -165,11 +161,7 @@ export const GameDetails = (): ReactElement => {
       <div>
         <Button
           onClick={() => {
-            if (history.action === "PUSH") {
-              history.goBack();
-            } else {
-              history.push("/");
-            }
+            navigate(-1);
           }}
         >
           {t("button.back")}
