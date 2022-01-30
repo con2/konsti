@@ -21,6 +21,6 @@ export const config: Config = {
   // Environment dependent
   loadedSettings: process.env.SETTINGS ?? "development",
   apiServerUrl: process.env.API_SERVER_URL ?? "http://localhost:5000",
-  useTestTime: process.env.USE_TEST_TIME === "true" || false,
+  showTestValues: process.env.SHOW_TEST_VALUES === "true" || false,
   dataUpdateInterval: Number(process.env.DATA_UPDATE_INTERVAL) ?? 60, // seconds
 };

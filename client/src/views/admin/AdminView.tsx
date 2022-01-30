@@ -8,12 +8,12 @@ import {
 } from "client/views/admin/adminThunks";
 import { submitPlayersAssign } from "client/views/results/resultsThunks";
 import { submitGamesUpdate } from "client/views/all-games/allGamesThunks";
-import { TimesDropdown } from "client/components/TimesDropdown";
 import { timeFormatter } from "client/utils/timeFormatter";
 import { Game } from "shared/typings/models/game";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { Button } from "client/components/Button";
 import { SignupMessageList } from "client/views/admin/components/SignupMessageList";
+import { Dropdown, Item } from "client/components/Dropdown";
 
 export const AdminView = (): ReactElement => {
   const games = useAppSelector((state) => state.allGames.games);
@@ -66,10 +66,18 @@ export const AdminView = (): ReactElement => {
     return visibleGames;
   };
 
-  const getStartingTimes = (): string[] => {
+  const getDropdownItems = (): Item[] => {
     const visibleGames = getVisibleGames();
     const startTimes = visibleGames.map((game) => game.startTime);
-    return [...Array.from(new Set(startTimes))].sort();
+    const times = [...Array.from(new Set(startTimes))].sort();
+
+    return times.map((time) => {
+      const formattedDate = timeFormatter.getWeekdayAndTime({
+        time,
+        capitalize: true,
+      });
+      return { value: time, title: formattedDate };
+    });
   };
 
   const submitUpdate = async (): Promise<void> => {
@@ -182,9 +190,9 @@ export const AdminView = (): ReactElement => {
             {t("button.saveTime")}
           </Button>
 
-          <TimesDropdown
-            times={getStartingTimes()}
-            selectedTime={selectedSignupTime}
+          <Dropdown
+            items={getDropdownItems()}
+            selectedValue={selectedSignupTime}
             onChange={(event: ChangeEvent<HTMLSelectElement>) =>
               setSelectedSignupTime(event.target.value)
             }

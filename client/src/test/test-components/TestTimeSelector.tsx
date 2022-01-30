@@ -2,11 +2,11 @@ import React, { ReactElement, ChangeEvent, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import _ from "lodash";
 import moment from "moment";
-import styled from "styled-components";
 import { submitSetTestTime } from "client/views/admin/adminSlice";
-import { TimesDropdown } from "client/components/TimesDropdown";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { sharedConfig } from "shared/config/sharedConfig";
+import { Dropdown } from "client/components/Dropdown";
+import { timeFormatter } from "client/utils/timeFormatter";
 
 export const TestTimeSelector = (): ReactElement => {
   const testTime: string = useAppSelector((state) => state.admin.testTime);
@@ -31,6 +31,14 @@ export const TestTimeSelector = (): ReactElement => {
     moment(CONVENTION_START_TIME).add(40, "hours").add(45, "minutes").format(),
   ];
 
+  const dropdownItems = times.map((time) => {
+    const formattedDate = timeFormatter.getWeekdayAndTime({
+      time,
+      capitalize: true,
+    });
+    return { value: time, title: formattedDate };
+  });
+
   useEffect(() => {
     const defaultTestTime = _.first(times);
     if (!testTime && defaultTestTime) setTestTime(defaultTestTime);
@@ -41,19 +49,15 @@ export const TestTimeSelector = (): ReactElement => {
   };
 
   return (
-    <TimeSelectorElement>
-      <span>{t("testTime")}</span>
-      <TimesDropdown
-        times={times}
-        selectedTime={testTime}
+    <div>
+      <span>{t("testValues.time")}</span>{" "}
+      <Dropdown
+        items={dropdownItems}
+        selectedValue={testTime}
         onChange={(event: ChangeEvent<HTMLSelectElement>) =>
           setTestTime(event.target.value)
         }
       />
-    </TimeSelectorElement>
+    </div>
   );
 };
-
-const TimeSelectorElement = styled.div`
-  height: 50px;
-`;
