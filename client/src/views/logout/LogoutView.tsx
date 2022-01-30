@@ -10,5 +10,5 @@ export const LogoutView = (): ReactElement<typeof Navigate> => {
     dispatch(submitLogout());
   });
 
-  return <Navigate to="/" />;
+  return <Navigate to="/" replace />;
 };
