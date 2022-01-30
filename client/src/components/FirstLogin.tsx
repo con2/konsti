@@ -1,9 +1,9 @@
 import React, { ReactElement, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-import { config } from "client/config";
 import { useAppSelector } from "client/utils/hooks";
 import { Button } from "./Button";
+import { sharedConfig } from "shared/config/sharedConfig";
 
 export const FirstLogin = (): ReactElement | null => {
   const { t } = useTranslation();
@@ -16,7 +16,7 @@ export const FirstLogin = (): ReactElement | null => {
       return;
     }
 
-    const firstLoginKey = `${config.CONVENTION_NAME}-${config.CONVENTION_YEAR}-${username}`;
+    const firstLoginKey = `${sharedConfig.CONVENTION_NAME}-${sharedConfig.CONVENTION_YEAR}-${username}`;
     const firstLogin = localStorage.getItem(firstLoginKey);
 
     if (firstLogin === null) {

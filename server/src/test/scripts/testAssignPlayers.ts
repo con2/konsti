@@ -8,12 +8,13 @@ import { verifyUserSignups } from "server/features/player-assignment/utils/verif
 import { verifyResults } from "server/features/player-assignment/utils/verifyResults";
 import { db } from "server/db/mongodb";
 import { AssignmentStrategy } from "shared/config/sharedConfig.types";
+import { sharedConfig } from "shared/config/sharedConfig";
 
 const testAssignPlayers = async (
   assignmentStrategy: AssignmentStrategy
 ): Promise<void> => {
-  const { CONVENTION_START_TIME, saveTestAssign, enableRemoveOverlapSignups } =
-    config;
+  const { saveTestAssign, enableRemoveOverlapSignups } = config;
+  const { CONVENTION_START_TIME } = sharedConfig;
 
   let assignResults;
 

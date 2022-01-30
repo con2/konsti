@@ -5,8 +5,8 @@ import moment from "moment";
 import styled from "styled-components";
 import { submitSetTestTime } from "client/views/admin/adminSlice";
 import { TimesDropdown } from "client/components/TimesDropdown";
-import { config } from "client/config";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
+import { sharedConfig } from "shared/config/sharedConfig";
 
 export const TestTimeSelector = (): ReactElement => {
   const testTime: string = useAppSelector((state) => state.admin.testTime);
@@ -14,7 +14,7 @@ export const TestTimeSelector = (): ReactElement => {
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
 
-  const { CONVENTION_START_TIME } = config;
+  const { CONVENTION_START_TIME } = sharedConfig;
   const times = [
     moment(CONVENTION_START_TIME).subtract(2, "hours").format(),
     moment(CONVENTION_START_TIME).format(),
