@@ -1,7 +1,7 @@
 import React, { ReactElement, useEffect, useState } from "react";
 import { useStore } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
-import { AppRoutes } from "client/app/Routes";
+import { AppRoutes } from "client/app/AppRoutes";
 import { Header } from "client/components/Header";
 import { loadData } from "client/utils/loadData";
 import { Loading } from "client/components/Loading";
