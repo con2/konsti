@@ -8,8 +8,8 @@ export const config: Config = {
 
   // Convention settings
   CONVENTION_NAME: "Ropecon" as const,
-  CONVENTION_YEAR: "2021",
-  CONVENTION_START_TIME: "2021-07-30T07:00:00Z", // UTC date
+  CONVENTION_YEAR: "2022",
+  CONVENTION_START_TIME: "2022-07-30T07:00:00Z", // UTC date
   DAY_START_TIME: 8, // 08:00
   noSignupGames: [],
   revolvingDoorEnabled: true,
