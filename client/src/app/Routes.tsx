@@ -1,5 +1,5 @@
 import React, { ReactElement } from "react";
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import { AllGamesView } from "client/views/all-games/AllGamesView";
 import { GameDetails } from "client/views/all-games/components/GameDetails";
 import { LoginView } from "client/views/login/LoginView";
@@ -16,113 +16,67 @@ import { sharedConfig } from "shared/config/sharedConfig";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
 import { isAdmin, isAdminOrHelp } from "client/utils/checkUserGroup";
 
-export const Routes = (): ReactElement => {
+export const AppRoutes = (): ReactElement => {
   const appOpen = useAppSelector((state) => state.admin.appOpen);
   const loggedIn = useAppSelector((state) => state.login.loggedIn);
   const userGroup = useAppSelector((state) => state.login.userGroup);
 
   if (!appOpen) {
     return (
-      <Switch>
-        {isAdmin(userGroup) && (
-          <Route path="/admin">
-            <AdminView />
-          </Route>
+      <Routes>
+        {isAdmin(userGroup) && <Route path="/admin" element={<AdminView />} />}
+        {isAdminOrHelp(userGroup) && (
+          <Route path="/help" element={<HelperView />} />
         )}
         {isAdminOrHelp(userGroup) && (
-          <Route path="/help">
-            <HelperView />
-          </Route>
+          <Route path="/games/:gameId" element={<GameDetails />} />
         )}
         {isAdminOrHelp(userGroup) && (
-          <Route path="/games/:gameId">
-            <GameDetails />
-          </Route>
+          <Route path="/games" element={<AllGamesView />} />
         )}
         {isAdminOrHelp(userGroup) && (
-          <Route path="/games">
-            <AllGamesView />
-          </Route>
+          <Route path="/results" element={<ResultsView />} />
         )}
-        {isAdminOrHelp(userGroup) && (
-          <Route path="/results">
-            <ResultsView />
-          </Route>
-        )}
-        {!loggedIn && (
-          <Route path="/login">
-            <LoginView />
-          </Route>
-        )}
-        <Route path="/logout">
-          <LogoutView />
-        </Route>
-        <Route path="/" render={() => <Redirect to="/games" />} />
-        <Route path="/*" render={() => <Redirect to="/" />} />
-      </Switch>
+        {!loggedIn && <Route path="/login" element={<LoginView />} />}
+        <Route path="/logout" element={<LogoutView />} />
+        <Route path="/" element={<Navigate to="/games" />} />
+        <Route path="/*" element={<Navigate to="/" />} />
+      </Routes>
     );
   }
 
   if (loggedIn) {
     return (
-      <Switch>
-        <Route path="/games/:gameId">
-          <GameDetails />
-        </Route>
-        <Route path="/games">
-          <AllGamesView />
-        </Route>
-        <Route path="/mygames">
-          <MyGamesView />
-        </Route>
+      <Routes>
+        <Route path="/games/:gameId" element={<GameDetails />} />
+        <Route path="/games" element={<AllGamesView />} />
+        <Route path="/mygames" element={<MyGamesView />} />
         {sharedConfig.signupStrategy === SignupStrategy.ALGORITHM && (
-          <Route path="/signup">
-            <SignupView />
-          </Route>
+          <Route path="/signup" element={<SignupView />} />
         )}
-        <Route path="/results">
-          <ResultsView />
-        </Route>
+        <Route path="/results" element={<ResultsView />} />
         {sharedConfig.enableGroups && (
-          <Route path="/group">
-            <GroupView />
-          </Route>
+          <Route path="/group" element={<GroupView />} />
         )}
-        {isAdmin(userGroup) && (
-          <Route path="/admin">
-            <AdminView />
-          </Route>
-        )}
-        <Route path="/logout">
-          <LogoutView />
-        </Route>
+        {isAdmin(userGroup) && <Route path="/admin" element={<AdminView />} />}
+        <Route path="/logout" element={<LogoutView />} />
         {isAdminOrHelp(userGroup) && (
-          <Route path="/help">
-            <HelperView />
-          </Route>
+          <Route path="/help" element={<HelperView />} />
         )}
-        <Route path="/" render={() => <Redirect to="/games" />} />
-        <Route path="/*" render={() => <Redirect to="/" />} />
-      </Switch>
+        <Route path="/" element={<Navigate to="/games" />} />
+        <Route path="/*" element={<Navigate to="/" />} />
+      </Routes>
     );
   }
 
   return (
-    <Switch>
-      <Route path="/login">
-        <LoginView />
-      </Route>
-      <Route path="/registration">
-        <RegistrationView />
-      </Route>
-      <Route path="/games/:gameId">
-        <GameDetails />
-      </Route>
-      <Route path="/games">
-        <AllGamesView />
-      </Route>
-      <Route path="/" render={() => <Redirect to="/games" />} />
-      <Route path="/*" render={() => <Redirect to="/login" />} />
-    </Switch>
+    <Routes>
+      <Route path="/login" element={<LoginView />} />
+      <Route path="/registration" element={<RegistrationView />} />
+      <Route path="/games/:gameId" element={<GameDetails />} />
+      <Route path="/games" element={<AllGamesView />} />
+      <Route path="/" element={<Navigate to="/games" />} />
+      <Route path="/*" element={<Navigate to="/login" />} />
+    </Routes>
   );
 };
