@@ -7,9 +7,6 @@ export const config: Config = {
   MESSAGE_DELAY: 3000, // ms
 
   // Convention settings
-  CONVENTION_NAME: "Ropecon" as const,
-  CONVENTION_YEAR: "2021",
-  CONVENTION_START_TIME: "2021-07-30T07:00:00Z", // UTC date
   DAY_START_TIME: 8, // 08:00
   noSignupGames: [],
   revolvingDoorEnabled: true,

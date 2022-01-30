@@ -1,11 +1,11 @@
 import faker from "@faker-js/faker";
 import moment from "moment";
 import { logger } from "server/utils/logger";
-import { config } from "server/config";
 import { kompassiGameMapper } from "server/utils/kompassiGameMapper";
 import { KompassiGame } from "server/typings/game.typings";
 import { Game } from "shared/typings/models/game";
 import { saveGames } from "server/features/game/gameRepository";
+import { sharedConfig } from "shared/config/sharedConfig";
 
 const GAME_ID_MAX = 10000000;
 
@@ -17,7 +17,7 @@ export const createGames = async (
 
   for (let i = 0; i < signupTimes; i += 1) {
     startingTimes.push(
-      moment(config.CONVENTION_START_TIME)
+      moment(sharedConfig.CONVENTION_START_TIME)
         .add(i + 2, "hours")
         .format()
     );
