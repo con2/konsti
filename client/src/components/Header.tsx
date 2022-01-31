@@ -8,7 +8,7 @@ import { Navigation } from "./Navigation";
 import { FirstLogin } from "./FirstLogin";
 import { useAppSelector } from "client/utils/hooks";
 import { sharedConfig } from "shared/config/sharedConfig";
-import { TestStrategySelector } from "client/test/test-components/TestStrategySelector";
+import { SignupStrategySelector } from "client/test/test-components/SignupStrategySelector";
 
 export const Header = (): ReactElement => {
   const { t } = useTranslation();
@@ -25,7 +25,7 @@ export const Header = (): ReactElement => {
         )}
 
         {loadedSettings !== "production" && showTestValues && (
-          <TestStrategySelector />
+          <SignupStrategySelector />
         )}
       </TestValuesContainer>
 
