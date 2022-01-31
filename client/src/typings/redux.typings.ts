@@ -16,7 +16,7 @@ export interface AdminState {
   appOpen: boolean;
   responseMessage: string;
   signupMessages: readonly SignupMessage[];
-  signupStrategy: SignupStrategy;
+  signupStrategy: SignupStrategy | undefined;
 }
 
 export interface UsersForGame {

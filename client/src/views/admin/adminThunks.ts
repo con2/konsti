@@ -49,6 +49,7 @@ export const submitGetSettings = (): AppThunk => {
           signupTime: settingsResponse.signupTime,
           appOpen: settingsResponse.appOpen,
           signupMessages: settingsResponse.signupMessages,
+          signupStrategy: settingsResponse.signupStrategy,
         })
       );
     }

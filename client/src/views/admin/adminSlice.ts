@@ -12,7 +12,7 @@ const initialState: AdminState = {
   appOpen: true,
   responseMessage: "",
   signupMessages: [],
-  signupStrategy: SignupStrategy.DIRECT,
+  signupStrategy: null,
 };
 
 const adminSlice = createSlice({
@@ -33,6 +33,7 @@ const adminSlice = createSlice({
         activeSignupTime: action.payload.signupTime,
         appOpen: action.payload.appOpen,
         signupMessages: action.payload.signupMessages,
+        signupStrategy: action.payload.signupStrategy,
       };
     },
 

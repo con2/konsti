@@ -15,6 +15,7 @@ export interface GetSettingsResponse {
   signupTime: string;
   status: "success";
   signupMessages: readonly SignupMessage[];
+  signupStrategy: SignupStrategy;
 }
 
 export interface PostToggleAppOpenResponse {
