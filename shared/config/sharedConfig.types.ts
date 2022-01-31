@@ -2,7 +2,6 @@ type ConventionName = "Ropecon" | "Tracon Hitpoint";
 
 export interface SharedConfig {
   appName: string;
-  signupStrategy: SignupStrategy;
   conventionType: ConventionType;
   assignmentStrategy: AssignmentStrategy;
   enableGroups: boolean;

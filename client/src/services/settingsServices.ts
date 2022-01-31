@@ -1,13 +1,16 @@
 import { AxiosResponse, AxiosError } from "axios";
 import { api } from "client/utils/api";
+import { SignupStrategy } from "shared/config/sharedConfig.types";
 import {
   SETTINGS_ENDPOINT,
+  SET_SIGNUP_STRATEGY_ENDPOINT,
   SIGNUP_MESSAGE_ENDPOINT,
   TOGGLE_APP_OPEN_ENDPOINT,
 } from "shared/constants/apiEndpoints";
 import { ServerError } from "shared/typings/api/errors";
 import {
   GetSettingsResponse,
+  PostSetSignupStrategyResponse,
   PostSignupMessageResponse,
   PostToggleAppOpenResponse,
 } from "shared/typings/api/settings";
@@ -83,6 +86,28 @@ export const deleteSignupMessage = async (
       SIGNUP_MESSAGE_ENDPOINT,
       {
         data: { gameId },
+      }
+    );
+  } catch (error) {
+    if (error?.response) {
+      const axiosError: AxiosError<ServerError> = error;
+      if (axiosError.response) return axiosError.response.data;
+    }
+    throw error;
+  }
+
+  return response.data;
+};
+
+export const postSetSignupStrategy = async (
+  signupStrategy: SignupStrategy
+): Promise<PostSetSignupStrategyResponse | ServerError> => {
+  let response;
+  try {
+    response = await api.post<PostSetSignupStrategyResponse>(
+      SET_SIGNUP_STRATEGY_ENDPOINT,
+      {
+        signupStrategy,
       }
     );
   } catch (error) {

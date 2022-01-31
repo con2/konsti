@@ -2,6 +2,7 @@ import { postHidden } from "client/services/hiddenServices";
 import {
   deleteSignupMessage,
   getSettings,
+  postSetSignupStrategy,
   postSignupMessage,
   postToggleAppOpen,
 } from "client/services/settingsServices";
@@ -14,8 +15,10 @@ import {
   submitActiveSignupTimeAsync,
   submitToggleAppOpenAsync,
   updateSignupMessages,
+  submitSetSignupStrategyAsync,
 } from "client/views/admin/adminSlice";
 import { SignupMessage } from "shared/typings/models/settings";
+import { SignupStrategy } from "shared/config/sharedConfig.types";
 
 export const submitUpdateHidden = (hiddenGames: readonly Game[]): AppThunk => {
   return async (dispatch): Promise<void> => {
@@ -46,6 +49,7 @@ export const submitGetSettings = (): AppThunk => {
           signupTime: settingsResponse.signupTime,
           appOpen: settingsResponse.appOpen,
           signupMessages: settingsResponse.signupMessages,
+          signupStrategy: settingsResponse.signupStrategy,
         })
       );
     }
@@ -109,6 +113,22 @@ export const submitDeleteSignupMessage = (gameId: string): AppThunk => {
 
     if (response?.status === "success") {
       dispatch(updateSignupMessages(response.signupMessages));
+    }
+  };
+};
+
+export const submitSetSignupStrategy = (
+  signupStrategy: SignupStrategy
+): AppThunk => {
+  return async (dispatch): Promise<void> => {
+    const response = await postSetSignupStrategy(signupStrategy);
+
+    if (response?.status === "error") {
+      return await Promise.reject(response);
+    }
+
+    if (response?.status === "success") {
+      dispatch(submitSetSignupStrategyAsync(response.signupStrategy));
     }
   };
 };

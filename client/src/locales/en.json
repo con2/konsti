@@ -246,7 +246,10 @@
     "changingPasswordSuccess": "Password changed succesfully"
   },
   "errorMessage": "We have recognised an issue that 'Signup results' under 'My Games' may be shown incorrectly and are now hidden. Please see 'All Signup Results' page for correct information.",
-  "testTime": "Test time",
+  "testValues": {
+    "time": "Test time",
+    "strategy": "Strategy"
+  },
   "signup": {
     "alreadySigned": "This game is on priority {{CURRENT_PRIORITY}} on your signups",
     "signup": "Signup",
@@ -296,5 +299,10 @@
   "login": {
     "passwordHint": "If you forgot your password, you can ask help from Ropecon Discord"
   },
-  "discordHint": "How to join Discord"
+  "discordHint": "How to join Discord",
+  "strategies": {
+    "direct": "Direct",
+    "algorithm": "Algorithm",
+    "direct+algorithm": "Direct + Algorithm"
+  }
 }

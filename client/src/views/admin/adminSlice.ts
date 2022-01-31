@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { AdminState } from "client/typings/redux.typings";
 import { SubmitGetSettingsPayload } from "client/views/admin/adminTypes";
+import { SignupStrategy } from "shared/config/sharedConfig.types";
 import { Game } from "shared/typings/models/game";
 import { SignupMessage } from "shared/typings/models/settings";
 
@@ -11,6 +12,7 @@ const initialState: AdminState = {
   appOpen: true,
   responseMessage: "",
   signupMessages: [],
+  signupStrategy: undefined,
 };
 
 const adminSlice = createSlice({
@@ -31,6 +33,7 @@ const adminSlice = createSlice({
         activeSignupTime: action.payload.signupTime,
         appOpen: action.payload.appOpen,
         signupMessages: action.payload.signupMessages,
+        signupStrategy: action.payload.signupStrategy,
       };
     },
 
@@ -40,6 +43,10 @@ const adminSlice = createSlice({
 
     submitSetTestTime(state, action: PayloadAction<string>) {
       return { ...state, testTime: action.payload };
+    },
+
+    submitSetSignupStrategyAsync(state, action: PayloadAction<SignupStrategy>) {
+      return { ...state, signupStrategy: action.payload };
     },
 
     submitToggleAppOpenAsync(state, action: PayloadAction<boolean>) {
@@ -64,6 +71,7 @@ export const {
   submitGetSettingsAsync,
   submitActiveSignupTimeAsync,
   submitSetTestTime,
+  submitSetSignupStrategyAsync,
   submitToggleAppOpenAsync,
   submitResponseMessageAsync,
   updateSignupMessages,
