@@ -6,6 +6,7 @@ interface Props {
   onClick?: MouseEventHandler;
   disabled?: boolean;
   type?: "submit" | "reset" | "button";
+  className?: string;
   selected?: boolean;
   "data-testid"?: string;
 }
@@ -15,11 +16,13 @@ export const Button = ({
   onClick,
   disabled = false,
   type = "button",
+  className,
   "data-testid": dataTestId,
   selected = false,
 }: Props): ReactElement => {
   return (
     <StyledButton
+      className={className}
       onClick={onClick}
       disabled={disabled}
       type={type}
