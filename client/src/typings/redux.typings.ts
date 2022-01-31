@@ -7,6 +7,7 @@ import { store, combinedReducer } from "client/utils/store";
 import { SelectedGame, UserGroup } from "shared/typings/models/user";
 import { SignupMessage } from "shared/typings/models/settings";
 import { UserSignup } from "shared/typings/api/games";
+import { SignupStrategy } from "shared/config/sharedConfig.types";
 
 export interface AdminState {
   hiddenGames: readonly Game[];
@@ -15,6 +16,7 @@ export interface AdminState {
   appOpen: boolean;
   responseMessage: string;
   signupMessages: readonly SignupMessage[];
+  signupStrategy: SignupStrategy;
 }
 
 export interface UsersForGame {
