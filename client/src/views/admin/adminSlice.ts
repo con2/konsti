@@ -44,7 +44,7 @@ const adminSlice = createSlice({
       return { ...state, testTime: action.payload };
     },
 
-    submitSetTestStrategyAsync(state, action: PayloadAction<SignupStrategy>) {
+    submitSetSignupStrategyAsync(state, action: PayloadAction<SignupStrategy>) {
       return { ...state, signupStrategy: action.payload };
     },
 
@@ -70,7 +70,7 @@ export const {
   submitGetSettingsAsync,
   submitActiveSignupTimeAsync,
   submitSetTestTime,
-  submitSetTestStrategyAsync,
+  submitSetSignupStrategyAsync,
   submitToggleAppOpenAsync,
   submitResponseMessageAsync,
   updateSignupMessages,

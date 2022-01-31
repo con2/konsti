@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
 import { Dropdown } from "client/components/Dropdown";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
-import { submitSetTestStrategyAsync } from "client/views/admin/adminSlice";
+import { submitSetSignupStrategy } from "client/views/admin/adminThunks";
 
 export const TestStrategySelector = (): ReactElement => {
   const signupStrategy = useAppSelector((state) => state.admin.signupStrategy);
@@ -19,10 +19,6 @@ export const TestStrategySelector = (): ReactElement => {
     },
   ];
 
-  const setTestStrategy = (strategy: SignupStrategy): void => {
-    dispatch(submitSetTestStrategyAsync(strategy));
-  };
-
   return (
     <div>
       <span>{t("testValues.strategy")}</span>{" "}
@@ -30,7 +26,9 @@ export const TestStrategySelector = (): ReactElement => {
         items={strategies}
         selectedValue={signupStrategy}
         onChange={(event: ChangeEvent<HTMLSelectElement>) =>
-          setTestStrategy(event.target.value as SignupStrategy)
+          dispatch(
+            submitSetSignupStrategy(event.target.value as SignupStrategy)
+          )
         }
       />
     </div>

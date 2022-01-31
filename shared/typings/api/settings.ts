@@ -1,3 +1,4 @@
+import { SignupStrategy } from "shared/config/sharedConfig.types";
 import { Game } from "shared/typings/models/game";
 import { SignupMessage } from "shared/typings/models/settings";
 
@@ -24,6 +25,12 @@ export interface PostToggleAppOpenResponse {
 
 export interface PostSignupMessageResponse {
   signupMessages: readonly SignupMessage[];
+  message: string;
+  status: "success";
+}
+
+export interface PostSetSignupStrategyResponse {
+  signupStrategy: SignupStrategy;
   message: string;
   status: "success";
 }
