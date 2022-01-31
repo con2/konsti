@@ -5,12 +5,14 @@ import {
   saveHidden,
   saveSignupMessage,
   delSignupMessage,
+  saveSignupStrategy,
 } from "server/features/settings/settingsRepository";
 import { logger } from "server/utils/logger";
 import { ServerError } from "shared/typings/api/errors";
 import {
   GetSettingsResponse,
   PostHiddenResponse,
+  PostSetSignupStrategyResponse,
   PostSignupMessageResponse,
   PostToggleAppOpenResponse,
 } from "shared/typings/api/settings";
@@ -18,6 +20,7 @@ import { PostSignupTimeResponse } from "shared/typings/api/signup";
 import { Game } from "shared/typings/models/game";
 import { removeHiddenGamesFromUsers } from "server/features/settings/settingsUtils";
 import { SignupMessage } from "shared/typings/models/settings";
+import { SignupStrategy } from "shared/config/sharedConfig.types";
 
 export const fetchSettings = async (): Promise<
   GetSettingsResponse | ServerError
@@ -32,6 +35,7 @@ export const fetchSettings = async (): Promise<
       signupTime: response.signupTime || "",
       appOpen: response.appOpen,
       signupMessages: response.signupMessages,
+      signupStrategy: response.signupStrategy,
     };
   } catch (error) {
     logger.error(`Settings: ${error}`);
@@ -56,6 +60,25 @@ export const toggleAppOpen = async (
   } catch (error) {
     return {
       message: "Update app open failure",
+      status: "error",
+      code: 0,
+    };
+  }
+};
+
+export const setSignupStrategy = async (
+  signupStrategy: SignupStrategy
+): Promise<PostSetSignupStrategyResponse | ServerError> => {
+  try {
+    const response = await saveSignupStrategy(signupStrategy);
+    return {
+      message: "Update signup strategy success",
+      status: "success",
+      signupStrategy: response.signupStrategy,
+    };
+  } catch (error) {
+    return {
+      message: "Update signup strategy failure",
       status: "error",
       code: 0,
     };

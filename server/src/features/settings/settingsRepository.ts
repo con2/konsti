@@ -5,6 +5,7 @@ import { GameDoc } from "server/typings/game.typings";
 import { Settings, SignupMessage } from "shared/typings/models/settings";
 import { Game } from "shared/typings/models/game";
 import { findGames } from "server/features/game/gameRepository";
+import { SignupStrategy } from "shared/config/sharedConfig.types";
 
 export const removeSettings = async (): Promise<void> => {
   logger.info("MongoDB: remove ALL settings from db");
@@ -125,6 +126,26 @@ export const saveToggleAppOpen = async (
   }
 
   logger.info(`MongoDB: App open status updated`);
+  return settings;
+};
+
+export const saveSignupStrategy = async (
+  signupStrategy: SignupStrategy
+): Promise<Settings> => {
+  let settings;
+  try {
+    settings = await SettingsModel.findOneAndUpdate(
+      {},
+      {
+        signupStrategy,
+      },
+      { new: true, upsert: true }
+    );
+  } catch (error) {
+    throw new Error(`MongoDB: Error updating signup strategy: ${error}`);
+  }
+
+  logger.info(`MongoDB: Signup strategy updated`);
   return settings;
 };
 

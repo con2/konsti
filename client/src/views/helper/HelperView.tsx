@@ -5,11 +5,12 @@ import { HelperResultsList } from "client/views/helper/components/HelperResultsL
 import { PasswordManagement } from "client/views/helper/components/PasswordManagement";
 import { loadResults, loadSettings } from "client/utils/loadData";
 import { Button } from "client/components/Button";
-import { sharedConfig } from "shared/config/sharedConfig";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
+import { useAppSelector } from "client/utils/hooks";
 
 export const HelperView = (): ReactElement => {
   const { t } = useTranslation();
+  const signupStrategy = useAppSelector((state) => state.admin.signupStrategy);
 
   const [selectedTool, setSelectedTool] = useState<string>(
     "password-management"
@@ -27,7 +28,7 @@ export const HelperView = (): ReactElement => {
 
   return (
     <div>
-      {sharedConfig.signupStrategy === SignupStrategy.ALGORITHM && (
+      {signupStrategy === SignupStrategy.ALGORITHM && (
         <Button
           disabled={selectedTool === "results"}
           onClick={() => setSelectedTool("results")}

@@ -4,7 +4,7 @@ export interface Config {
   MESSAGE_DELAY: number;
   DAY_START_TIME: number;
   apiServerUrl: string;
-  useTestTime: boolean;
+  showTestValues: boolean;
   enableReduxTrace: boolean;
   loadedSettings: string;
   enableAxe: boolean;

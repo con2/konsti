@@ -8,17 +8,27 @@ import { Navigation } from "./Navigation";
 import { FirstLogin } from "./FirstLogin";
 import { useAppSelector } from "client/utils/hooks";
 import { sharedConfig } from "shared/config/sharedConfig";
+import { SignupStrategySelector } from "client/test/test-components/SignupStrategySelector";
 
 export const Header = (): ReactElement => {
   const { t } = useTranslation();
-  const { loadedSettings, useTestTime } = config;
+  const { loadedSettings, showTestValues } = config;
   const { CONVENTION_NAME, CONVENTION_YEAR } = sharedConfig;
 
   const appOpen = useAppSelector((state) => state.admin.appOpen);
 
   return (
     <>
-      {loadedSettings !== "production" && useTestTime && <TestTimeSelector />}
+      <TestValuesContainer>
+        {loadedSettings !== "production" && showTestValues && (
+          <TestTimeSelector />
+        )}
+
+        {loadedSettings !== "production" && showTestValues && (
+          <SignupStrategySelector />
+        )}
+      </TestValuesContainer>
+
       <HeaderContainer>
         <Navigation />
 
@@ -61,4 +71,11 @@ const HeaderBar = styled.div`
 
 const ClosingMessage = styled.h2`
   text-align: center;
+`;
+
+const TestValuesContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin: 20px 0 20px 0;
 `;
