@@ -16,7 +16,6 @@ import { GroupMember } from "shared/typings/api/groups";
 import { SelectedGame } from "shared/typings/models/user";
 import { useAppSelector } from "client/utils/hooks";
 import { Button } from "client/components/Button";
-import { sharedConfig } from "shared/config/sharedConfig";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
 import { ChangePasswordForm } from "client/views/helper/components/ChangePasswordForm";
 
@@ -33,6 +32,7 @@ export const MyGamesView = (): ReactElement => {
   const enteredGames = useAppSelector((state) => state.myGames.enteredGames);
   const groupMembers = useAppSelector((state) => state.login.groupMembers);
   const testTime = useAppSelector((state) => state.admin.testTime);
+  const signupStrategy = useAppSelector((state) => state.admin.signupStrategy);
 
   const [showAllGames, setShowAllGames] = useState<boolean>(false);
   const [showChangePassword, setShowChangePassword] = useState<boolean>(false);
@@ -71,7 +71,7 @@ export const MyGamesView = (): ReactElement => {
         </MyGamesGroupNotification>
       )}
 
-      {sharedConfig.signupStrategy === SignupStrategy.ALGORITHM && (
+      {signupStrategy === SignupStrategy.ALGORITHM && (
         <MySignupsList
           signedGames={getSignedGames(
             signedGames,

@@ -20,6 +20,7 @@ export const AppRoutes = (): ReactElement => {
   const appOpen = useAppSelector((state) => state.admin.appOpen);
   const loggedIn = useAppSelector((state) => state.login.loggedIn);
   const userGroup = useAppSelector((state) => state.login.userGroup);
+  const signupStrategy = useAppSelector((state) => state.admin.signupStrategy);
 
   if (!appOpen) {
     return (
@@ -51,7 +52,7 @@ export const AppRoutes = (): ReactElement => {
         <Route path="/games/:gameId" element={<GameDetails />} />
         <Route path="/games" element={<AllGamesView />} />
         <Route path="/mygames" element={<MyGamesView />} />
-        {sharedConfig.signupStrategy === SignupStrategy.ALGORITHM && (
+        {signupStrategy === SignupStrategy.ALGORITHM && (
           <Route path="/signup" element={<SignupView />} />
         )}
         <Route path="/results" element={<ResultsView />} />

@@ -12,7 +12,7 @@ export const Navigation = (): ReactElement => {
   const loggedIn = useAppSelector((state) => state.login.loggedIn);
   const serial = useAppSelector((state) => state.login.serial);
   const { t } = useTranslation();
-  const { loadedSettings, useTestTime } = config;
+  const { loadedSettings, showTestValues } = config;
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -30,14 +30,14 @@ export const Navigation = (): ReactElement => {
         <Dimmer
           onClick={() => setIsOpen(false)}
           includeTimeSelectorHeight={
-            loadedSettings !== "production" && useTestTime
+            loadedSettings !== "production" && showTestValues
           }
         />
       )}
       {isOpen && (
         <Drawer
           includeTimeSelectorHeight={
-            loadedSettings !== "production" && useTestTime
+            loadedSettings !== "production" && showTestValues
           }
         >
           {loggedIn ? (

@@ -1,3 +1,4 @@
+import { SignupStrategy } from "shared/config/sharedConfig.types";
 import { Game } from "shared/typings/models/game";
 
 export interface Settings {
@@ -5,6 +6,7 @@ export interface Settings {
   signupTime: string;
   appOpen: boolean;
   signupMessages: SignupMessage[];
+  signupStrategy: SignupStrategy;
 }
 
 export interface SignupMessage {

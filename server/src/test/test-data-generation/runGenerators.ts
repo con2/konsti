@@ -15,7 +15,6 @@ import { generateTestUsers } from "server/test/test-data-generation/generators/g
 import { createEnteredGames } from "server/test/test-data-generation/generators/createEnteredGames";
 import { createSettings } from "server/test/test-data-generation/generators/createSettings";
 import { sharedConfig } from "shared/config/sharedConfig";
-import { SignupStrategy } from "shared/config/sharedConfig.types";
 
 const runGenerators = async (): Promise<void> => {
   if (process.env.NODE_ENV === "production") {
@@ -25,7 +24,7 @@ const runGenerators = async (): Promise<void> => {
   const commander = new Command();
 
   // Generator settings
-  const enableGroups = sharedConfig.signupStrategy === SignupStrategy.ALGORITHM;
+  const enableGroups = sharedConfig.enableGroups;
 
   // Total users: newUsersCount + groupSize * numberOfGroups + testUsersCount
   const newUsersCount = 40; // Number of individual users
