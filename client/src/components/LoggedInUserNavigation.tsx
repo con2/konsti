@@ -11,6 +11,7 @@ export const LoggedInUserNavigation = (props: {
   onSelect: () => void;
 }): ReactElement => {
   const userGroup = useAppSelector((state) => state.login.userGroup);
+  const signupStrategy = useAppSelector((state) => state.admin.signupStrategy);
   const { t } = useTranslation();
 
   return (
@@ -25,12 +26,11 @@ export const LoggedInUserNavigation = (props: {
         </RouterLink>
       )}
 
-      {isUser(userGroup) &&
-        sharedConfig.signupStrategy === SignupStrategy.ALGORITHM && (
-          <RouterLink onClick={props.onSelect} to="/signup">
-            {t("pages.signUp")}
-          </RouterLink>
-        )}
+      {isUser(userGroup) && signupStrategy === SignupStrategy.ALGORITHM && (
+        <RouterLink onClick={props.onSelect} to="/signup">
+          {t("pages.signUp")}
+        </RouterLink>
+      )}
 
       <RouterLink onClick={props.onSelect} to="/results">
         {t("pages.results")}

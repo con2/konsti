@@ -5,7 +5,6 @@ import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { updateFavorite, UpdateFavoriteOpts } from "client/utils/favorite";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
-import { sharedConfig } from "shared/config/sharedConfig";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
 import { Game } from "shared/typings/models/game";
 import { AlgorithmSignupForm } from "./AlgorithmSignupForm";
@@ -31,6 +30,7 @@ export const GameEntry = ({
   const username = useAppSelector((state) => state.login.username);
   const loggedIn = useAppSelector((state) => state.login.loggedIn);
   const userGroup = useAppSelector((state) => state.login.userGroup);
+  const signupStrategy = useAppSelector((state) => state.admin.signupStrategy);
   const favoritedGames = useAppSelector(
     (state) => state.myGames.favoritedGames
   );
@@ -42,7 +42,7 @@ export const GameEntry = ({
       (favoritedGame) => favoritedGame.gameId === game.gameId
     ) !== undefined;
 
-  const isEnterGameMode = sharedConfig.signupStrategy === SignupStrategy.DIRECT;
+  const isEnterGameMode = signupStrategy === SignupStrategy.DIRECT;
   const gameIsFull = game.maxAttendance === players;
 
   const formatDuration = (mins: number): string => {

@@ -1,7 +1,6 @@
 import {
   AssignmentStrategy,
   SharedConfig,
-  SignupStrategy,
   ConventionType,
 } from "./sharedConfig.types";
 
@@ -10,7 +9,6 @@ export const sharedConfig: SharedConfig = {
   appName: "Konsti",
 
   // Convention settings
-  signupStrategy: SignupStrategy.DIRECT,
   conventionType: ConventionType.REMOTE,
   assignmentStrategy: AssignmentStrategy.GROUP_PADG,
   enableGroups: false,

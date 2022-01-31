@@ -5,8 +5,8 @@ import useIntersectionObserver from "@react-hook/intersection-observer";
 import { timeFormatter } from "client/utils/timeFormatter";
 import { Game } from "shared/typings/models/game";
 import { SelectedGame } from "shared/typings/models/user";
-import { sharedConfig } from "shared/config/sharedConfig";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
+import { useAppSelector } from "client/utils/hooks";
 
 interface Props {
   startTime: string;
@@ -22,6 +22,7 @@ export const GameListTitle = ({
   enteredGames,
 }: Props): ReactElement => {
   const { t } = useTranslation();
+  const signupStrategy = useAppSelector((state) => state.admin.signupStrategy);
 
   const intersectionRef = useRef<HTMLDivElement | null>(null);
   const { isIntersecting } = useIntersectionObserver(intersectionRef);
@@ -51,15 +52,14 @@ export const GameListTitle = ({
     >
       <span>{formattedStartTime}</span>
 
-      {!allGamesRevolvingDoor &&
-        sharedConfig.signupStrategy === SignupStrategy.ALGORITHM && (
-          <span>
-            {" "}
-            ({t("signupOpenBetween")} {signupStartTime}-{signupEndTime})
-          </span>
-        )}
+      {!allGamesRevolvingDoor && signupStrategy === SignupStrategy.ALGORITHM && (
+        <span>
+          {" "}
+          ({t("signupOpenBetween")} {signupStartTime}-{signupEndTime})
+        </span>
+      )}
 
-      {sharedConfig.signupStrategy === SignupStrategy.DIRECT ? (
+      {signupStrategy === SignupStrategy.DIRECT ? (
         <SignupCount>
           {signedGame ? signedGame.gameDetails.title : ""}
         </SignupCount>
