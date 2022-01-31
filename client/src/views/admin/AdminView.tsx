@@ -14,6 +14,7 @@ import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { Button } from "client/components/Button";
 import { SignupMessageList } from "client/views/admin/components/SignupMessageList";
 import { Dropdown, Item } from "client/components/Dropdown";
+import { SignupStrategySelector } from "client/test/test-components/SignupStrategySelector";
 
 export const AdminView = (): ReactElement => {
   const games = useAppSelector((state) => state.allGames.games);
@@ -197,6 +198,8 @@ export const AdminView = (): ReactElement => {
               setSelectedSignupTime(event.target.value)
             }
           />
+
+          <SignupStrategySelector />
 
           <HiddenGamesList hiddenGames={hiddenGames} />
 
