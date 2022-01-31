@@ -8,6 +8,7 @@ interface Props {
   type?: "submit" | "reset" | "button";
   className?: string;
   selected?: boolean;
+  "data-testid"?: string;
 }
 
 export const Button = ({
@@ -16,6 +17,7 @@ export const Button = ({
   disabled = false,
   type = "button",
   className,
+  "data-testid": dataTestId,
   selected = false,
 }: Props): ReactElement => {
   return (
@@ -24,6 +26,7 @@ export const Button = ({
       onClick={onClick}
       disabled={disabled}
       type={type}
+      data-testid={dataTestId}
       selected={selected}
     >
       {children}
