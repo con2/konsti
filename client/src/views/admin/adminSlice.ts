@@ -12,7 +12,7 @@ const initialState: AdminState = {
   appOpen: true,
   responseMessage: "",
   signupMessages: [],
-  signupStrategy: null,
+  signupStrategy: undefined,
 };
 
 const adminSlice = createSlice({
