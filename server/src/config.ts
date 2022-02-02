@@ -72,7 +72,7 @@ const stagingConfig = {
   enableSignupTimeCheck: false,
 
   // Cron
-  autoUpdateGamesEnabled: true,
+  autoUpdateGamesEnabled: false,
   gameUpdateInterval: 4, // minutes
   autoUpdateGamePopularityEnabled: false,
   autoAssignPlayersEnabled: false,
