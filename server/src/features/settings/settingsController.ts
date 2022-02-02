@@ -74,7 +74,7 @@ export const postSignupStrategy = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${SET_SIGNUP_STRATEGY_ENDPOINT}`);
 
-  if (process.env.NODE_ENV === "production") {
+  if (process.env.SETTINGS === "production") {
     if (!isAuthorized(req.headers.authorization, UserGroup.ADMIN, "admin")) {
       return res.sendStatus(401);
     }
