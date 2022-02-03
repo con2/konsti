@@ -6,6 +6,7 @@ import { KompassiGame } from "server/typings/game.typings";
 import { Game } from "shared/typings/models/game";
 import { saveGames } from "server/features/game/gameRepository";
 import { sharedConfig } from "shared/config/sharedConfig";
+import { KompassiProgramType } from "shared/constants/kompassiProgramType";
 
 const GAME_ID_MAX = 10000000;
 
@@ -39,7 +40,7 @@ export const createGames = async (
       const kompassiGameData = {
         title: faker.random.words(3),
         description: faker.lorem.sentences(5),
-        category_title: "Roolipeli",
+        category_title: KompassiProgramType.TABLETOP_RPG,
         formatted_hosts: faker.internet.userName(),
         room_name: "Ropetaverna",
         length,
