@@ -11,7 +11,7 @@ export interface Props {
   onChange: (event: ChangeEvent<HTMLSelectElement>) => void;
   selectedValue: string;
   items: Item[];
-  loading: boolean;
+  loading?: boolean;
 }
 
 export const Dropdown = ({
