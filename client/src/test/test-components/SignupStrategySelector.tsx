@@ -1,4 +1,4 @@
-import React, { ChangeEvent, ReactElement } from "react";
+import React, { ChangeEvent, ReactElement, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
 import { Dropdown } from "client/components/Dropdown";
@@ -9,6 +9,7 @@ export const SignupStrategySelector = (): ReactElement => {
   const signupStrategy = useAppSelector((state) => state.admin.signupStrategy);
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
+  const [loading, setLoading] = useState<boolean>(false);
 
   const strategies = [
     { value: SignupStrategy.DIRECT, title: t("strategies.direct") },
@@ -25,11 +26,14 @@ export const SignupStrategySelector = (): ReactElement => {
       <Dropdown
         items={strategies}
         selectedValue={signupStrategy as string}
-        onChange={(event: ChangeEvent<HTMLSelectElement>) =>
-          dispatch(
+        onChange={async (event: ChangeEvent<HTMLSelectElement>) => {
+          setLoading(true);
+          await dispatch(
             submitSetSignupStrategy(event.target.value as SignupStrategy)
-          )
-        }
+          );
+          setLoading(false);
+        }}
+        loading={loading}
       />
     </div>
   );

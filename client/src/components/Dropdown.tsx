@@ -1,4 +1,6 @@
 import React, { ReactElement, ChangeEvent } from "react";
+import { useTranslation } from "react-i18next";
+import styled from "styled-components";
 
 export interface Item {
   value: string;
@@ -9,22 +11,30 @@ export interface Props {
   onChange: (event: ChangeEvent<HTMLSelectElement>) => void;
   selectedValue: string;
   items: Item[];
+  loading: boolean;
 }
 
 export const Dropdown = ({
   onChange,
   selectedValue,
   items,
+  loading = false,
 }: Props): ReactElement => {
+  const { t } = useTranslation();
+
   if (!items) return <div />;
 
   return (
-    <select onChange={onChange} value={selectedValue}>
+    <StyledSelect onChange={onChange} value={selectedValue}>
       {items.map((item) => (
         <option value={item.value} key={item.value}>
-          {item.title}
+          {loading ? t("loading") : item.title}
         </option>
       ))}
-    </select>
+    </StyledSelect>
   );
 };
+
+const StyledSelect = styled.select`
+  width: 200px;
+`;
