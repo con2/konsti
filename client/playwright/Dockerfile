@@ -1,6 +1,6 @@
-FROM mcr.microsoft.com/playwright:v1.15.0-focal
+FROM mcr.microsoft.com/playwright:v1.18.1-focal
 
-RUN apt-get install --no-install-recommends -y wget=1.20.3-1ubuntu1 \
+RUN apt-get install --no-install-recommends -y wget=1.20.3-1ubuntu2 \
   && wget -q -O /usr/local/bin/waitforit https://github.com/maxcnunes/waitforit/releases/download/v2.4.1/waitforit-linux_amd64 \
   && chmod +x /usr/local/bin/waitforit
 
@@ -8,6 +8,6 @@ RUN apt-get install --no-install-recommends -y wget=1.20.3-1ubuntu1 \
 
 WORKDIR /playwright
 
-RUN npm install @playwright/test@1.15.0
+RUN npm install @playwright/test@1.18.1
 
 COPY . .
