@@ -47,8 +47,11 @@ const rootReducer = (
 export const store = configureStore({
   reducer: rootReducer,
   preloadedState: loadSession(), // Load persisted state from localStorage
-  devTools: {
-    trace: config.enableReduxTrace,
-    traceLimit: 25,
-  },
+  devTools:
+    process.env.SETTINGS !== "production"
+      ? {
+          trace: config.enableReduxTrace,
+          traceLimit: 25,
+        }
+      : false,
 });
