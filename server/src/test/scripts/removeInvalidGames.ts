@@ -7,21 +7,21 @@ const removeInvalidGames = async (): Promise<void> => {
     await db.connectToDb();
   } catch (error) {
     logger.error(error);
-    throw new Error(error);
+    throw error;
   }
 
   try {
     await removeInvalidSignupsFromUsers();
   } catch (error) {
     logger.error(`Error removing invalid games: ${error}`);
-    throw new Error(error);
+    throw error;
   }
 
   try {
     await db.gracefulExit();
   } catch (error) {
     logger.error(error);
-    throw new Error(error);
+    throw error;
   }
 };
 

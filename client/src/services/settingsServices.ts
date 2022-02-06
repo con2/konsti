@@ -1,4 +1,3 @@
-import { AxiosResponse, AxiosError } from "axios";
 import { api } from "client/utils/api";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
 import {
@@ -19,104 +18,54 @@ import { SignupMessage } from "shared/typings/models/settings";
 export const getSettings = async (): Promise<
   GetSettingsResponse | ServerError
 > => {
-  let response: AxiosResponse;
-  try {
-    response = await api.get<GetSettingsResponse>(SETTINGS_ENDPOINT);
-  } catch (error) {
-    if (error?.response) {
-      const axiosError: AxiosError<ServerError> = error;
-      if (axiosError.response) return axiosError.response.data;
-    }
-    throw error;
-  }
-
+  const response = await api.get<GetSettingsResponse>(SETTINGS_ENDPOINT);
   return response.data;
 };
 
 export const postToggleAppOpen = async (
   appOpen: boolean
 ): Promise<PostToggleAppOpenResponse | ServerError> => {
-  let response;
-  try {
-    response = await api.post<PostToggleAppOpenResponse>(
-      TOGGLE_APP_OPEN_ENDPOINT,
-      {
-        appOpen,
-      }
-    );
-  } catch (error) {
-    if (error?.response) {
-      const axiosError: AxiosError<ServerError> = error;
-      if (axiosError.response) return axiosError.response.data;
+  const response = await api.post<PostToggleAppOpenResponse>(
+    TOGGLE_APP_OPEN_ENDPOINT,
+    {
+      appOpen,
     }
-    throw error;
-  }
-
+  );
   return response.data;
 };
 
 export const postSignupMessage = async (
   signupMessage: SignupMessage
 ): Promise<PostSignupMessageResponse | ServerError> => {
-  let response: AxiosResponse;
-  try {
-    response = await api.post<PostSignupMessageResponse>(
-      SIGNUP_MESSAGE_ENDPOINT,
-      {
-        signupMessage,
-      }
-    );
-  } catch (error) {
-    if (error?.response) {
-      const axiosError: AxiosError<ServerError> = error;
-      if (axiosError.response) return axiosError.response.data;
+  const response = await api.post<PostSignupMessageResponse>(
+    SIGNUP_MESSAGE_ENDPOINT,
+    {
+      signupMessage,
     }
-    throw error;
-  }
-
+  );
   return response.data;
 };
 
 export const deleteSignupMessage = async (
   gameId: string
 ): Promise<PostSignupMessageResponse | ServerError> => {
-  let response: AxiosResponse;
-  try {
-    response = await api.delete<PostSignupMessageResponse>(
-      SIGNUP_MESSAGE_ENDPOINT,
-      {
-        data: { gameId },
-      }
-    );
-  } catch (error) {
-    if (error?.response) {
-      const axiosError: AxiosError<ServerError> = error;
-      if (axiosError.response) return axiosError.response.data;
+  const response = await api.delete<PostSignupMessageResponse>(
+    SIGNUP_MESSAGE_ENDPOINT,
+    {
+      data: { gameId },
     }
-    throw error;
-  }
-
+  );
   return response.data;
 };
 
 export const postSetSignupStrategy = async (
   signupStrategy: SignupStrategy
 ): Promise<PostSetSignupStrategyResponse | ServerError> => {
-  let response;
-  try {
-    response = await api.post<PostSetSignupStrategyResponse>(
-      SET_SIGNUP_STRATEGY_ENDPOINT,
-      {
-        signupStrategy,
-      }
-    );
-  } catch (error) {
-    if (error?.response) {
-      const axiosError: AxiosError<ServerError> = error;
-      if (axiosError.response) return axiosError.response.data;
+  const response = await api.post<PostSetSignupStrategyResponse>(
+    SET_SIGNUP_STRATEGY_ENDPOINT,
+    {
+      signupStrategy,
     }
-    throw error;
-  }
-
+  );
   return response.data;
 };

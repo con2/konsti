@@ -91,10 +91,10 @@ export const GroupView = (): ReactElement => {
       ownSerial: serial,
     };
 
-    try {
-      await dispatch(submitJoinGroup(groupData));
-    } catch (error) {
-      switch (error.code) {
+    const errorCode = await dispatch(submitJoinGroup(groupData));
+
+    if (errorCode) {
+      switch (errorCode) {
         case 31:
           showMessage({
             value: t("invalidGroupCode"),
@@ -131,10 +131,10 @@ export const GroupView = (): ReactElement => {
       leaveGroup: true,
     };
 
-    try {
-      await dispatch(submitLeaveGroup(groupData));
-    } catch (error) {
-      switch (error.code) {
+    const errorCode = await dispatch(submitLeaveGroup(groupData));
+
+    if (errorCode) {
+      switch (errorCode) {
         case 36:
           showMessage({
             value: t("groupNotEmpty"),

@@ -20,15 +20,15 @@ import { SelectedGame } from "shared/typings/models/user";
 export const submitEnterGame = (
   data: PostEnteredGameParameters,
   game: SelectedGame
-): AppThunk => {
-  return async (dispatch): Promise<void> => {
+): AppThunk<Promise<number | undefined>> => {
+  return async (dispatch): Promise<number | undefined> => {
     const signupResponse = await postEnteredGame(data);
 
     if (signupResponse?.status === "error") {
       if (signupResponse.code === 51) {
         console.error("Entered game is full"); // eslint-disable-line no-console
       }
-      return await Promise.reject(signupResponse);
+      return signupResponse.code;
     }
 
     if (signupResponse?.status === "success") {
@@ -53,12 +53,14 @@ export const submitDeleteGame = (
   };
 };
 
-export const submitSignup = (signupData: SignupData): AppThunk => {
-  return async (dispatch): Promise<void> => {
+export const submitSignup = (
+  signupData: SignupData
+): AppThunk<Promise<number | undefined>> => {
+  return async (dispatch): Promise<number | undefined> => {
     const signupResponse = await postSignup(signupData);
 
     if (signupResponse?.status === "error") {
-      return await Promise.reject(signupResponse);
+      return signupResponse.code;
     }
 
     if (signupResponse?.status === "success") {

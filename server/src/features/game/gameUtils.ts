@@ -40,7 +40,7 @@ export const getGameById = async (gameId: string): Promise<GameDoc> => {
     games = await findGames();
   } catch (error) {
     logger.error(`MongoDB: Error loading games - ${error}`);
-    return error;
+    throw error;
   }
 
   const foundGame = games.find((game) => game.gameId === gameId);
