@@ -2851,14 +2851,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/styled-components@npm:5.1.21":
-  version: 5.1.21
-  resolution: "@types/styled-components@npm:5.1.21"
+"@types/styled-components@npm:5.1.22":
+  version: 5.1.22
+  resolution: "@types/styled-components@npm:5.1.22"
   dependencies:
     "@types/hoist-non-react-statics": "*"
     "@types/react": "*"
     csstype: ^3.0.2
-  checksum: d53065f65052dd407516f1d37cc9bce33df6f4da31cbc7ef5a6b1e1fed6f14497456a13d809c065c15b963d73dc9b877613e3fb8dfa66074bfac60a94e561b04
+  checksum: f25850590772ffc3da672a89f89847b92994d78c28f7d37a31a792fee868ae4b2ae040e7be1b9959631dcfbf82296b3ed1f19f4cf28bd0c82e15727c1022f01c
   languageName: node
   linkType: hard
 
@@ -4727,10 +4727,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"commander@npm:8.3.0, commander@npm:^8.2.0, commander@npm:^8.3.0":
-  version: 8.3.0
-  resolution: "commander@npm:8.3.0"
-  checksum: 0f82321821fc27b83bd409510bb9deeebcfa799ff0bf5d102128b500b7af22872c0c92cb6a0ebc5a4cf19c6b550fba9cedfa7329d18c6442a625f851377bacf0
+"commander@npm:9.0.0":
+  version: 9.0.0
+  resolution: "commander@npm:9.0.0"
+  checksum: 15066e433d528315ded8261d16bc600d1f3c5671c75021e685ae67e4d62f7551243ff28411b28dc0a6f8b23c2a0f033550ec6f3e66bdf9d11a4fdc2d33dd9802
   languageName: node
   linkType: hard
 
@@ -4752,6 +4752,13 @@ __metadata:
   version: 7.2.0
   resolution: "commander@npm:7.2.0"
   checksum: 53501cbeee61d5157546c0bef0fedb6cdfc763a882136284bed9a07225f09a14b82d2a84e7637edfd1a679fb35ed9502fd58ef1d091e6287f60d790147f68ddc
+  languageName: node
+  linkType: hard
+
+"commander@npm:^8.2.0, commander@npm:^8.3.0":
+  version: 8.3.0
+  resolution: "commander@npm:8.3.0"
+  checksum: 0f82321821fc27b83bd409510bb9deeebcfa799ff0bf5d102128b500b7af22872c0c92cb6a0ebc5a4cf19c6b550fba9cedfa7329d18c6442a625f851377bacf0
   languageName: node
   linkType: hard
 
@@ -8931,7 +8938,7 @@ __metadata:
     "@types/react-beautiful-dnd": 13.1.2
     "@types/react-dom": 17.0.11
     "@types/react-router-dom": 5.3.3
-    "@types/styled-components": 5.1.21
+    "@types/styled-components": 5.1.22
     "@welldone-software/why-did-you-render": 6.2.3
     axios: 0.25.0
     babel-loader: 8.2.3
@@ -9046,7 +9053,7 @@ __metadata:
     "@types/request-promise-native": 1.0.18
     "@types/supertest": 2.0.11
     bcryptjs: 2.4.3
-    commander: 8.3.0
+    commander: 9.0.0
     eventassigner-js: 0.1.6
     eventassigner-random: 0.2.0
     express: 4.17.2
