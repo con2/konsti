@@ -6,7 +6,7 @@ module.exports = {
 
   "*.tsx": (files) => {
     const filenames = files.join(" ");
-    return [`stylelint --config client/.stylelintrc.js ${filenames}`];
+    return [`yarn workspace konsti-client stylelint-lint-staged ${filenames}`];
   },
 
   "*.{json,md,yml}": (files) => {
