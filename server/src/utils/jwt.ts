@@ -1,4 +1,4 @@
-import jsonwebtoken from "jsonwebtoken";
+import jsonwebtoken, { TokenExpiredError } from "jsonwebtoken";
 import { config } from "server/config";
 import { JWTResult } from "server/typings/jwt.typings";
 import { UserGroup } from "shared/typings/models/user";
@@ -21,20 +21,11 @@ export const verifyJWT = (
   userGroup: UserGroup,
   username: string
 ): JWTResult => {
+  let result;
   try {
-    const result = jsonwebtoken.verify(jwt, getSecret(userGroup)) as JWTResult;
-
-    if (typeof result !== "string" && result.username === username)
-      return {
-        username: result.username,
-        userGroup: result.userGroup,
-        iat: result.iat,
-        exp: result.exp,
-        status: "success",
-        message: "success",
-      };
+    result = jsonwebtoken.verify(jwt, getSecret(userGroup)) as JWTResult;
   } catch (error) {
-    if (error.name === "TokenExpiredError") {
+    if (error instanceof TokenExpiredError) {
       return {
         status: "error",
         message: "expired jwt",
@@ -45,6 +36,16 @@ export const verifyJWT = (
       };
     }
   }
+
+  if (result?.username === username)
+    return {
+      username: result.username,
+      userGroup: result.userGroup,
+      iat: result.iat,
+      exp: result.exp,
+      status: "success",
+      message: "success",
+    };
 
   return {
     status: "error",

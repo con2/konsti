@@ -9,7 +9,7 @@ export const removeInvalidSignupsFromUsers = async (): Promise<void> => {
     users = await findUsers();
   } catch (error) {
     logger.error(`findUsers error: ${error}`);
-    throw new Error(error);
+    throw error;
   }
 
   try {
@@ -43,6 +43,6 @@ export const removeInvalidSignupsFromUsers = async (): Promise<void> => {
     );
   } catch (error) {
     logger.error(`updateUser error: ${error}`);
-    throw new Error(error);
+    throw error;
   }
 };

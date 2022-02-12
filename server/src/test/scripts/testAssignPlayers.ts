@@ -90,7 +90,7 @@ const init = async (): Promise<void> => {
     await db.connectToDb();
   } catch (error) {
     logger.error(error);
-    throw new Error(error);
+    throw error;
   }
 
   await testAssignPlayers(assignmentStrategy);

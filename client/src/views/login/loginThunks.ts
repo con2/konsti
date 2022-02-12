@@ -6,8 +6,10 @@ import { LoginFormFields, PostLoginResponse } from "shared/typings/api/login";
 import { submitLoginAsync } from "client/views/login/loginSlice";
 import { loadUser } from "client/utils/loadData";
 
-export const submitLogin = (loginFormFields: LoginFormFields): AppThunk => {
-  return async (dispatch): Promise<void> => {
+export const submitLogin = (
+  loginFormFields: LoginFormFields
+): AppThunk<Promise<string | undefined>> => {
+  return async (dispatch): Promise<string | undefined> => {
     let loginResponse: PostLoginResponse | ServerError;
     try {
       loginResponse = await postLogin(loginFormFields);
@@ -21,11 +23,11 @@ export const submitLogin = (loginFormFields: LoginFormFields): AppThunk => {
 
       switch (loginResponse.code) {
         case 21:
-          throw new Error("error.loginFailed");
+          return "error.loginFailed";
         case 22:
-          throw new Error("error.loginDisabled");
+          return "error.loginDisabled";
         default:
-          throw new Error(`error.unkown`);
+          return `error.unkown`;
       }
     }
 

@@ -7,12 +7,14 @@ import {
 } from "client/views/login/loginSlice";
 import { GroupData } from "shared/typings/api/groups";
 
-export const submitJoinGroup = (groupData: GroupData): AppThunk => {
-  return async (dispatch): Promise<void> => {
+export const submitJoinGroup = (
+  groupData: GroupData
+): AppThunk<Promise<number | undefined>> => {
+  return async (dispatch): Promise<number | undefined> => {
     const joinGroupResponse = await postGroup(groupData);
 
     if (joinGroupResponse?.status === "error") {
-      return await Promise.reject(joinGroupResponse);
+      return joinGroupResponse.code;
     }
 
     if (joinGroupResponse?.status === "success") {
@@ -56,12 +58,14 @@ export const submitGetGroup = (
   };
 };
 
-export const submitLeaveGroup = (groupData: GroupData): AppThunk => {
-  return async (dispatch): Promise<void> => {
+export const submitLeaveGroup = (
+  groupData: GroupData
+): AppThunk<Promise<number | undefined>> => {
+  return async (dispatch): Promise<number | undefined> => {
     const leaveGroupResponse = await postGroup(groupData);
 
     if (leaveGroupResponse?.status === "error") {
-      return await Promise.reject(leaveGroupResponse);
+      return leaveGroupResponse.code;
     }
 
     if (leaveGroupResponse?.status === "success") {

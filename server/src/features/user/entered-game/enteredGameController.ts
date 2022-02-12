@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { ZodError } from "zod";
 import {
   removeEnteredGame,
   storeEnteredGame,
@@ -29,9 +30,11 @@ export const postEnteredGame = async (
   try {
     PostEnteredGameParametersSchema.parse(req.body);
   } catch (error) {
-    logger.info(
-      `Error validating postEnteredGame parameters: ${error.message}`
-    );
+    if (error instanceof ZodError) {
+      logger.info(
+        `Error validating postEnteredGame parameters: ${error.message}`
+      );
+    }
     return res.sendStatus(422);
   }
 
@@ -54,9 +57,11 @@ export const deleteEnteredGame = async (
   try {
     DeleteEnteredGameParametersSchema.parse(req.body);
   } catch (error) {
-    logger.error(
-      `Error validating deleteEnteredGame parameters: ${error.message}`
-    );
+    if (error instanceof ZodError) {
+      logger.error(
+        `Error validating deleteEnteredGame parameters: ${error.message}`
+      );
+    }
     return res.sendStatus(422);
   }
 

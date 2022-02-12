@@ -30,11 +30,8 @@ export const LoginForm = (): ReactElement => {
   const onSubmit: SubmitHandler<LoginFormFields> = async (
     loginFormFields
   ): Promise<void> => {
-    try {
-      await dispatch(submitLogin(loginFormFields));
-    } catch (error) {
-      setServerError(t(error.message));
-    }
+    const errorMessage = await dispatch(submitLogin(loginFormFields));
+    errorMessage && setServerError(t(errorMessage));
   };
 
   return (

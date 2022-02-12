@@ -55,10 +55,10 @@ export const SignupList = ({
       signupTime,
     };
 
-    try {
-      await dispatch(submitSignup(signupData));
-    } catch (error) {
-      switch (error.code) {
+    const errorCode = await dispatch(submitSignup(signupData));
+
+    if (errorCode) {
+      switch (errorCode) {
         case 41:
           showMessage("signupEnded");
           return;
@@ -87,10 +87,10 @@ export const SignupList = ({
       signupTime: signupTime,
     };
 
-    try {
-      await dispatch(submitSignup(signupData));
-    } catch (error) {
-      switch (error.code) {
+    const errorCode = await dispatch(submitSignup(signupData));
+
+    if (errorCode) {
+      switch (errorCode) {
         case 41:
           showMessage("signupEnded");
           return;

@@ -78,7 +78,7 @@ export const findGames = async (): Promise<GameDoc[]> => {
     return response;
   } catch (error) {
     logger.error(`MongoDB: Error fetching games - ${error}`);
-    return error;
+    throw error;
   }
 };
 
