@@ -25,7 +25,7 @@ export const saveUserSignupResults = async (
     games = await findGames();
   } catch (error) {
     logger.error(`MongoDB: Error loading games - ${error}`);
-    return error;
+    throw error;
   }
 
   try {

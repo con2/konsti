@@ -16,7 +16,7 @@ export const removeOverlapSignups = async (
     users = await findUsers();
   } catch (error) {
     logger.error(error);
-    throw new Error(error);
+    throw error;
   }
 
   results.map((result) => {

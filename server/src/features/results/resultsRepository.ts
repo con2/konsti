@@ -60,7 +60,7 @@ export const saveResult = async (
     games = await findGames();
   } catch (error) {
     logger.error(`MongoDB: Error loading games - ${error}`);
-    return error;
+    throw error;
   }
 
   const results = signupResultData.reduce<Result[]>((acc, result) => {
@@ -96,7 +96,7 @@ export const saveResult = async (
     logger.error(
       `MongoDB: Error storing signup results for starting time ${startTime} to separate collection - ${error}`
     );
-    return error;
+    throw error;
   }
 
   return response;

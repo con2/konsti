@@ -42,11 +42,10 @@ export const RegistrationForm = (): ReactElement => {
   const onSubmit: SubmitHandler<RegistrationFormFields> = async (
     registrationFormFields
   ): Promise<void> => {
-    try {
-      await dispatch(submitRegistration(registrationFormFields));
-    } catch (error) {
-      setServerError(t(error.message));
-    }
+    const errorMessage = await dispatch(
+      submitRegistration(registrationFormFields)
+    );
+    errorMessage && setServerError(t(errorMessage));
   };
 
   return (

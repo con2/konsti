@@ -1,4 +1,3 @@
-import { AxiosResponse, AxiosError } from "axios";
 import { api } from "client/utils/api";
 import { ServerError } from "shared/typings/api/errors";
 import {
@@ -18,65 +17,36 @@ export const postRegistration = async (
 ): Promise<PostUserResponse | ServerError> => {
   const { username, password, serial } = registrationFormFields;
 
-  let response: AxiosResponse;
-  try {
-    response = await api.post<PostUserResponse>(USERS_ENDPOINT, {
-      username,
-      password,
-      serial,
-    });
-  } catch (error) {
-    if (error?.response) {
-      const axiosError: AxiosError<ServerError> = error;
-      if (axiosError.response) return axiosError.response.data;
-    }
-    throw error;
-  }
+  const response = await api.post<PostUserResponse>(USERS_ENDPOINT, {
+    username,
+    password,
+    serial,
+  });
   return response.data;
 };
 
 export const getUser = async (
   username: string
 ): Promise<GetUserResponse | ServerError> => {
-  let response: AxiosResponse;
-  try {
-    response = await api.get<GetUserResponse>(USERS_ENDPOINT, {
-      params: {
-        username,
-      },
-    });
-  } catch (error) {
-    if (error?.response) {
-      const axiosError: AxiosError<ServerError> = error;
-      if (axiosError.response) return axiosError.response.data;
-    }
-    throw error;
-  }
-
+  const response = await api.get<GetUserResponse>(USERS_ENDPOINT, {
+    params: {
+      username,
+    },
+  });
   return response.data;
 };
 
 export const getUserBySerialOrUsername = async (
   searchTerm: string
 ): Promise<GetUserBySerialResponse | ServerError> => {
-  let response: AxiosResponse;
-  try {
-    response = await api.get<GetUserBySerialResponse>(
-      USERS_BY_SERIAL_OR_USERNAME_ENDPOINT,
-      {
-        params: {
-          searchTerm,
-        },
-      }
-    );
-  } catch (error) {
-    if (error?.response) {
-      const axiosError: AxiosError<ServerError> = error;
-      if (axiosError.response) return axiosError.response.data;
+  const response = await api.get<GetUserBySerialResponse>(
+    USERS_BY_SERIAL_OR_USERNAME_ENDPOINT,
+    {
+      params: {
+        searchTerm,
+      },
     }
-    throw error;
-  }
-
+  );
   return response.data;
 };
 
@@ -85,20 +55,10 @@ export const updateUserPassword = async (
   password: string,
   requester: string
 ): Promise<PostUserResponse | ServerError> => {
-  let response: AxiosResponse;
-  try {
-    response = await api.post<PostUserResponse>(USERS_PASSWORD_ENDPOINT, {
-      username,
-      password,
-      requester,
-    });
-  } catch (error) {
-    if (error?.response) {
-      const axiosError: AxiosError<ServerError> = error;
-      if (axiosError.response) return axiosError.response.data;
-    }
-    throw error;
-  }
-
+  const response = await api.post<PostUserResponse>(USERS_PASSWORD_ENDPOINT, {
+    username,
+    password,
+    requester,
+  });
   return response.data;
 };

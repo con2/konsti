@@ -13,7 +13,7 @@ export const verifyResults = async (): Promise<void> => {
     resultsCollection = await findResults();
   } catch (error) {
     logger.error(error);
-    throw new Error(error);
+    throw error;
   }
 
   let users: User[];
@@ -21,7 +21,7 @@ export const verifyResults = async (): Promise<void> => {
     users = await findUsers();
   } catch (error) {
     logger.error(error);
-    throw new Error(error);
+    throw error;
   }
 
   logger.info("Verify all userResults have correct startTime");

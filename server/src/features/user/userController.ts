@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { validationResult } from "express-validator";
-import { z } from "zod";
+import { z, ZodError } from "zod";
 import {
   fetchUserByUsername,
   storeUser,
@@ -76,7 +76,11 @@ export const postUserPassword = async (
   try {
     parameters = PostUserPasswordParameters.parse(req.body);
   } catch (error) {
-    logger.error(`Error validating postFavorite parameters: ${error.message}`);
+    if (error instanceof ZodError) {
+      logger.error(
+        `Error validating postFavorite parameters: ${error.message}`
+      );
+    }
     return res.sendStatus(422);
   }
 
@@ -129,7 +133,11 @@ export const postFavorite = async (
   try {
     parameters = PostFavoriteParameters.parse(req.body);
   } catch (error) {
-    logger.error(`Error validating postFavorite parameters: ${error.message}`);
+    if (error instanceof ZodError) {
+      logger.error(
+        `Error validating postFavorite parameters: ${error.message}`
+      );
+    }
     return res.sendStatus(422);
   }
 
@@ -170,7 +178,9 @@ export const postGroup = async (
   try {
     parameters = PostGroupParameters.parse(req.body);
   } catch (error) {
-    logger.error(`Error validating getUser parameters: ${error.message}`);
+    if (error instanceof ZodError) {
+      logger.error(`Error validating getUser parameters: ${error.message}`);
+    }
     return res.sendStatus(422);
   }
 
@@ -206,7 +216,10 @@ export const getUser = async (
   try {
     parameters = GetUserQueryParameters.parse(req.query);
   } catch (error) {
-    logger.error(`Error validating getUser parameters: ${error.message}`);
+    if (error instanceof ZodError) {
+      logger.error(`Error validating getUser parameters: ${error.message}`);
+    }
+
     return res.sendStatus(422);
   }
 
@@ -242,9 +255,11 @@ export const getUserBySerialOrUsername = async (
   try {
     parameters = GetUserQueryParameters.parse(req.query);
   } catch (error) {
-    logger.error(
-      `Error validating getUserBySerialOrUsername parameters: ${error.message}`
-    );
+    if (error instanceof ZodError) {
+      logger.error(
+        `Error validating getUserBySerialOrUsername parameters: ${error.message}`
+      );
+    }
     return res.sendStatus(422);
   }
 
@@ -313,7 +328,9 @@ export const postSignup = async (
   try {
     parameters = PostSignupParameters.parse(req.body);
   } catch (error) {
-    logger.error(`Error validating getUser parameters: ${error.message}`);
+    if (error instanceof ZodError) {
+      logger.error(`Error validating getUser parameters: ${error.message}`);
+    }
     return res.sendStatus(422);
   }
 

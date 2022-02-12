@@ -94,15 +94,16 @@ export const AdminView = (): ReactElement => {
   const submitAssign = async (): Promise<void> => {
     setSubmitting(true);
 
-    try {
-      await dispatch(submitPlayersAssign(activeSignupTime));
-    } catch (error) {
+    const errorMessage = await dispatch(submitPlayersAssign(activeSignupTime));
+
+    if (errorMessage) {
       showMessage({
-        value: error.message,
+        value: errorMessage,
         style: "error",
       });
       return;
     }
+
     setSubmitting(false);
   };
 

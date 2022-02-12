@@ -86,7 +86,7 @@ export const fetchGames = async (): Promise<GetGamesResponse | ServerError> => {
     };
   } catch (error) {
     return {
-      message: `Downloading games failed: ${error.message}`,
+      message: `Downloading games failed`,
       status: "error",
       code: 0,
     };
