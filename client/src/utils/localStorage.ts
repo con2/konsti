@@ -1,16 +1,12 @@
 import { LocalStorageState, RootState } from "client/typings/redux.typings";
 
 export const loadSession = (): Partial<RootState> | undefined => {
-  try {
-    const serializedState = localStorage.getItem("state");
-    if (
-      (serializedState !== null || serializedState !== "") &&
-      typeof serializedState === "string"
-    ) {
-      return JSON.parse(serializedState);
-    }
-  } catch (error) {
-    throw new Error(error);
+  const serializedState = localStorage.getItem("state");
+  if (
+    (serializedState !== null || serializedState !== "") &&
+    typeof serializedState === "string"
+  ) {
+    return JSON.parse(serializedState);
   }
 };
 

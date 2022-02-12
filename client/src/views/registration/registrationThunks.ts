@@ -5,8 +5,8 @@ import { AppThunk } from "client/typings/redux.typings";
 
 export const submitRegistration = (
   registrationFormFields: RegistrationFormFields
-): AppThunk => {
-  return async (dispatch): Promise<void> => {
+): AppThunk<Promise<string | undefined>> => {
+  return async (dispatch): Promise<string | undefined> => {
     let registrationResponse;
     try {
       registrationResponse = await postRegistration(registrationFormFields);
@@ -17,11 +17,11 @@ export const submitRegistration = (
     if (registrationResponse?.status === "error") {
       switch (registrationResponse.code) {
         case 11:
-          throw new Error("error.usernameTaken");
+          return "error.usernameTaken";
         case 12:
-          throw new Error("error.invalidSerial");
+          return "error.invalidSerial";
         default:
-          throw new Error("error.unknown");
+          return "error.unknown";
       }
     }
 

@@ -33,7 +33,7 @@ const validateLogin = async (
     hashResponse = await comparePasswordHash(password, hash);
   } catch (error) {
     logger.error(`comparePasswordHash error: ${error}`);
-    throw new Error(error);
+    throw error;
   }
 
   if (hashResponse) {

@@ -43,12 +43,10 @@ export const EnterGameForm: FC<Props> = (props: Props): ReactElement => {
       message: userSignupMessage,
     };
 
-    try {
-      await dispatch(submitEnterGame(enterData, newGame));
-      await loadGames();
-      onEnterGame();
-    } catch (error) {
-      switch (error.code) {
+    const errorCode = await dispatch(submitEnterGame(enterData, newGame));
+
+    if (errorCode) {
+      switch (errorCode) {
         case 41:
           console.error("Signup ended"); // eslint-disable-line no-console
           return;
@@ -56,6 +54,9 @@ export const EnterGameForm: FC<Props> = (props: Props): ReactElement => {
           console.error("signupError"); // eslint-disable-line no-console
       }
     }
+
+    await loadGames();
+    onEnterGame();
   };
 
   return (

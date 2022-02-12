@@ -34,7 +34,7 @@ export const saveSerials = async (count: number): Promise<SerialDoc[]> => {
     return response;
   } catch (error) {
     logger.error(`MongoDB: Error saving serials data - ${error}`);
-    return error;
+    throw error;
   }
 };
 
@@ -44,7 +44,7 @@ export const findSerial = async (serial: string): Promise<boolean> => {
     response = await SerialModel.findOne({ serial }).lean<Serial>();
   } catch (error) {
     logger.error(`MongoDB: Error finding serial ${serial} - ${error}`);
-    return error;
+    throw error;
   }
 
   if (!response) {

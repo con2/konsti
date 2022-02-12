@@ -59,7 +59,7 @@ export const saveHidden = async (
     games = await findGames();
   } catch (error) {
     logger.error(`MongoDB: Error loading games - ${error}`);
-    return error;
+    throw error;
   }
 
   const formattedData = hiddenGames.reduce<Game[]>((acc, hiddenGame) => {

@@ -1,4 +1,3 @@
-import { AxiosResponse, AxiosError } from "axios";
 import { api } from "client/utils/api";
 import { ServerError } from "shared/typings/api/errors";
 import {
@@ -11,38 +10,19 @@ export const postLogin = async (
   loginFormFields: LoginFormFields
 ): Promise<PostLoginResponse | ServerError> => {
   const { username, password } = loginFormFields;
-  let response: AxiosResponse;
-  try {
-    response = await api.post<PostLoginResponse>(LOGIN_ENDPOINT, {
-      username,
-      password,
-    });
-  } catch (error) {
-    if (error?.response) {
-      const axiosError: AxiosError<ServerError> = error;
-      if (axiosError.response) return axiosError.response.data;
-    }
-    throw error;
-  }
 
+  const response = await api.post<PostLoginResponse>(LOGIN_ENDPOINT, {
+    username,
+    password,
+  });
   return response.data;
 };
 
 export const postSessionRecovery = async (
   jwt: string
 ): Promise<PostLoginResponse | ServerError> => {
-  let response: AxiosResponse;
-  try {
-    response = await api.post<PostLoginResponse>(SESSION_RESTORE_ENDPOINT, {
-      jwt,
-    });
-  } catch (error) {
-    if (error?.response) {
-      const axiosError: AxiosError<ServerError> = error;
-      if (axiosError.response) return axiosError.response.data;
-    }
-    throw error;
-  }
-
+  const response = await api.post<PostLoginResponse>(SESSION_RESTORE_ENDPOINT, {
+    jwt,
+  });
   return response.data;
 };
