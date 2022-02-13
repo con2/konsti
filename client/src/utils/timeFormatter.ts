@@ -1,12 +1,14 @@
 import moment from "moment";
-import { config } from "client/config";
 import { WeekdayAndTime } from "client/utils/utils.typings";
 import { capitalizeFirstLetter } from "client/utils/capitalizeFirstLetter";
 import { sharedConfig } from "shared/config/sharedConfig";
 
-const { SIGNUP_OPEN_TIME, SIGNUP_END_TIME, DAY_START_TIME } = config;
-
-const { CONVENTION_START_TIME } = sharedConfig;
+const {
+  SIGNUP_OPEN_TIME,
+  SIGNUP_END_TIME,
+  DAY_START_TIME,
+  CONVENTION_START_TIME,
+} = sharedConfig;
 
 const getStartTime = (startTime: string): string => {
   const timeFormat = "HH:mm";

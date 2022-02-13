@@ -2,12 +2,9 @@ import { Config } from "./typings/config.typings";
 
 export const config: Config = {
   // App settings
-  SIGNUP_END_TIME: 30, // minutes
-  SIGNUP_OPEN_TIME: 4, // hours
   MESSAGE_DELAY: 3000, // ms
 
   // Convention settings
-  DAY_START_TIME: 8, // 08:00
   noSignupGames: [],
   revolvingDoorEnabled: true,
   tagFilteringEnabled: true,
