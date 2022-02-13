@@ -13,6 +13,11 @@ export const sharedConfig: SharedConfig = {
   assignmentStrategy: AssignmentStrategy.GROUP_PADG,
   enableGroups: false,
 
+  // Signup settings
+  SIGNUP_END_TIME: 30, // minutes
+  SIGNUP_OPEN_TIME: 4, // hours
+  DAY_START_TIME: 8, // 08:00
+
   // Convention details
   CONVENTION_NAME: "Ropecon" as const,
   CONVENTION_YEAR: "2022",
