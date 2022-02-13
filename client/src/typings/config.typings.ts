@@ -1,8 +1,5 @@
 export interface Config {
-  SIGNUP_END_TIME: number;
-  SIGNUP_OPEN_TIME: number;
   MESSAGE_DELAY: number;
-  DAY_START_TIME: number;
   apiServerUrl: string;
   showTestValues: boolean;
   enableReduxTrace: boolean;

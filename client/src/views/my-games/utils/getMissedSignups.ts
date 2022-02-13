@@ -1,6 +1,6 @@
 import moment from "moment";
 import { getStartTimes } from "client/utils/getStartTimes";
-import { config } from "client/config";
+import { sharedConfig } from "shared/config/sharedConfig";
 import { getTime } from "client/utils/getTime";
 import { SelectedGame } from "shared/typings/models/user";
 
@@ -18,7 +18,7 @@ export const getMissedSignups = (
   const pastSignupTimes = signedGamesStartTimes.filter(
     (signedGamesStartTime) => {
       const signupEndTime = moment(signedGamesStartTime).subtract(
-        config.SIGNUP_END_TIME,
+        sharedConfig.SIGNUP_END_TIME,
         "minutes"
       );
 

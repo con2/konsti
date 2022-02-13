@@ -1,5 +1,5 @@
 import moment from "moment";
-import { config } from "client/config";
+import { sharedConfig } from "shared/config/sharedConfig";
 import { getStartTimes } from "./getStartTimes";
 import { Game } from "shared/typings/models/game";
 import { getTime } from "client/utils/getTime";
@@ -7,32 +7,13 @@ import { getTime } from "client/utils/getTime";
 export const getOpenStartTimes = (games: readonly Game[]): string[] => {
   const startTimes = getStartTimes(games);
 
-  const {
-    // DAY_START_TIME,
-    SIGNUP_OPEN_TIME,
-    SIGNUP_END_TIME,
-    // CONVENTION_START_TIME,
-  } = config;
+  const { SIGNUP_OPEN_TIME, SIGNUP_END_TIME } = sharedConfig;
 
   const timeNow = getTime();
 
   const earliestSignupTime = moment(timeNow)
     .add(SIGNUP_END_TIME, "minutes")
     .endOf("hour");
-
-  /*
-  if (moment(earliestSignupTime).isBefore(moment(CONVENTION_START_TIME))) {
-    earliestSignupTime = moment(CONVENTION_START_TIME)
-  } else if (
-    moment(earliestSignupTime).isBefore(
-      moment(earliestSignupTime).hours(DAY_START_TIME)
-    )
-  ) {
-    earliestSignupTime = moment(earliestSignupTime)
-      .hours(DAY_START_TIME)
-      .format('HH:mm')
-  }
-  */
 
   const minutes = moment(timeNow).format("m");
 
