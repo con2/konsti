@@ -8,6 +8,9 @@ export interface SharedConfig {
   CONVENTION_NAME: ConventionName;
   CONVENTION_YEAR: string;
   CONVENTION_START_TIME: string;
+  SIGNUP_END_TIME: number;
+  SIGNUP_OPEN_TIME: number;
+  DAY_START_TIME: number;
 }
 
 export enum SignupStrategy {
