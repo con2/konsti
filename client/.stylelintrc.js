@@ -18,7 +18,8 @@ module.exports = {
   rules: {
     // stylelint
     "length-zero-no-unit": true,
-    "media-feature-name-no-unknown": null, // Doesn't work with styled-component media queries
+    "media-feature-name-no-unknown": null, // Doesn't work with styled-components media queries
+    "function-no-unknown": null, // Doesn't work with styled-components
 
     // no-unsupported-browser-features
     "plugin/no-unsupported-browser-features": [
