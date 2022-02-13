@@ -56,14 +56,14 @@ export const GameEntry = ({
   };
 
   const formatPopularity = (popularity: number): string => {
-    let popularityStr = 'green';
+    let popularityStr = "green";
     if (popularity > 4 && popularity < 6) {
-      popularityStr = 'yellow';
+      popularityStr = "yellow";
     } else if (popularity >= 6) {
-      popularityStr = 'red';
+      popularityStr = "red";
     }
-    return popularityStr
-  }
+    return popularityStr;
+  };
   // Favorite / remove favorite clicked
   const updateFavoriteHandler = async (
     updateOpts: UpdateFavoriteOpts
@@ -77,7 +77,10 @@ export const GameEntry = ({
     <GameContainer key={game.gameId}>
       <GameHeader>
         <HeaderContainer>
-          <h3><PopularityCircle color={formatPopularity(game.popularity)} /> {game.title}</h3>
+          <h3>
+            <PopularityCircle color={formatPopularity(game.popularity)} />{" "}
+            {game.title}
+          </h3>
           <p>
             {t("signup.expectedDuration", {
               EXPECTED_DURATION: formatDuration(game.mins),
@@ -127,7 +130,7 @@ export const GameEntry = ({
           <TagColumn>
             <Tag>{t(`programType.${game.programType}`)}</Tag>
             {game.gameSystem && <Tag>{game.gameSystem}</Tag>}
-            <Tag>{t('high-popularity')}</Tag>
+            <Tag>{t("high-popularity")}</Tag>
           </TagColumn>
         </GameTags>
       </GameHeader>
@@ -239,27 +242,10 @@ const FavoriteIcon = styled(FontAwesomeIcon)`
   color: ${(props) => props.theme.favorited};
 `;
 
-const Popularity = styled.span`
-display: flex;
-flex-direction: row;
-`;
-
 const PopularityCircle = styled.div`
   height: 10px;
   width: 10px;
   background-color: ${(props) => props.color};
   border: 1px solid black;
   border-radius: 50%;
-`;
-
-const PopularityInfo = styled.p`
-  min-width: 120px;
-  height: 14px;
-  text-align: left;
-  border-radius: 4px;
-  background: grey;
-  padding: 4px;
-  margin-bottom: 4px;
-  font-size: 12px;
-  color: teal;
 `;
