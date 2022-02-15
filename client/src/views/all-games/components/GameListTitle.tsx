@@ -15,6 +15,20 @@ interface Props {
   enteredGames: readonly SelectedGame[];
 }
 
+const getSignupStrategy = (
+  gamesForStartTime: readonly Game[],
+  signupStrategy: SignupStrategy | undefined
+): SignupStrategy => {
+  if (!signupStrategy) {
+    throw new Error("No signup strategy found!");
+  }
+
+  if (signupStrategy === SignupStrategy.DIRECT_ALGORITHM) {
+    return gamesForStartTime[0].signupStrategy;
+  }
+  return signupStrategy;
+};
+
 export const GameListTitle = ({
   startTime,
   gamesForStartTime,
@@ -22,7 +36,12 @@ export const GameListTitle = ({
   enteredGames,
 }: Props): ReactElement => {
   const { t } = useTranslation();
+
   const signupStrategy = useAppSelector((state) => state.admin.signupStrategy);
+  const signupStrategyForBlock = getSignupStrategy(
+    gamesForStartTime,
+    signupStrategy
+  );
 
   const intersectionRef = useRef<HTMLDivElement | null>(null);
   const { isIntersecting } = useIntersectionObserver(intersectionRef);
@@ -52,14 +71,15 @@ export const GameListTitle = ({
     >
       <span>{formattedStartTime}</span>
 
-      {!allGamesRevolvingDoor && signupStrategy === SignupStrategy.ALGORITHM && (
-        <span>
-          {" "}
-          ({t("signupOpenBetween")} {signupStartTime}-{signupEndTime})
-        </span>
-      )}
+      {!allGamesRevolvingDoor &&
+        signupStrategyForBlock === SignupStrategy.ALGORITHM && (
+          <span>
+            {" "}
+            ({t("signupOpenBetween")} {signupStartTime}-{signupEndTime})
+          </span>
+        )}
 
-      {signupStrategy === SignupStrategy.DIRECT ? (
+      {signupStrategyForBlock === SignupStrategy.DIRECT ? (
         <SignupCount>
           {signedGame ? signedGame.gameDetails.title : ""}
         </SignupCount>
