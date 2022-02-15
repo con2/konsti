@@ -1,4 +1,5 @@
 import _ from "lodash";
+import moment, { Moment } from "moment";
 import { findGames } from "server/features/game/gameRepository";
 import { GameModel } from "server/features/game/gameSchema";
 import { removeInvalidSignupsFromUsers } from "server/features/player-assignment/utils/removeInvalidSignupsFromUsers";
@@ -8,6 +9,11 @@ import { Game } from "shared/typings/models/game";
 import { findUsers } from "server/features//user/userRepository";
 import { User } from "shared/typings/models/user";
 import { GameWithUsernames, UserSignup } from "shared/typings/api/games";
+import { SignupStrategy } from "shared/config/sharedConfig.types";
+import { sharedConfig } from "shared/config/sharedConfig";
+import { findSettings } from "server/features/settings/settingsRepository";
+import { Settings } from "shared/typings/models/settings";
+import { findTestSettings } from "server/test/test-settings/testSettingsRepository";
 
 export const removeDeletedGames = async (
   updatedGames: readonly Game[]
@@ -50,19 +56,52 @@ export const getGameById = async (gameId: string): Promise<GameDoc> => {
   return foundGame;
 };
 
-export const getGamesWithPlayers = async (
-  games: readonly Game[]
+export const enrichGames = async (
+  games: readonly GameDoc[]
 ): Promise<GameWithUsernames[]> => {
   try {
     const users = await findUsers();
+    const settings = await findSettings();
+
+    const { testTime } = await findTestSettings();
+    const currentTime =
+      process.env.SETTINGS !== "production" ? moment(testTime) : moment();
 
     return games.map((game) => {
-      return { game, users: getUsersForGame(users, game.gameId) };
+      return {
+        game: {
+          ...game.toJSON(),
+          signupStrategy: getSignupStrategyForGame(game, settings, currentTime),
+        },
+        users: getUsersForGame(users, game.gameId),
+      };
     });
   } catch (error) {
     logger.error(`getGamesWithPlayers error: ${error}`);
     return [];
   }
+};
+
+const getSignupStrategyForGame = (
+  game: GameDoc,
+  settings: Settings,
+  currentTime: Moment
+): SignupStrategy => {
+  const start = moment(game.startTime);
+  const { DIRECT_SIGNUP_START } = sharedConfig;
+
+  if (settings.signupStrategy !== SignupStrategy.DIRECT_ALGORITHM) {
+    return settings.signupStrategy;
+  }
+
+  const isAfterDirectSignupStarted = currentTime.isAfter(
+    start.subtract(DIRECT_SIGNUP_START, "minutes")
+  );
+  if (isAfterDirectSignupStarted) {
+    return SignupStrategy.DIRECT;
+  }
+
+  return SignupStrategy.ALGORITHM;
 };
 
 export const getUsersForGame = (
