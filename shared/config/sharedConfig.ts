@@ -14,8 +14,8 @@ export const sharedConfig: SharedConfig = {
   enableGroups: false,
 
   // Two phase signup settings
-  DIRECT_SIGNUP_START: 60 * 4, // minutes
-  PRE_SIGNUP_START: 60 * 2, // minutes
+  PRE_SIGNUP_START: 60 * 4, // minutes
+  DIRECT_SIGNUP_START: 60 * 2, // minutes
 
   // Algorithm signup settings
   SIGNUP_END_TIME: 30, // minutes
