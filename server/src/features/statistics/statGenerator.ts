@@ -9,21 +9,21 @@ const fixData = (): void => {
   commander
     .command("users <year> <event>")
     .description("Get user statisticss")
-    .action(async (year, event) => {
+    .action(async (year: number, event: string) => {
       await getUserStats(year, event);
     });
 
   commander
     .command("games <year> <event>")
     .description("Get game statistics")
-    .action(async (year, event) => {
+    .action(async (year: number, event: string) => {
       await getGameStats(year, event);
     });
 
   commander
     .command("results <year> <event>")
     .description("Get result statistics")
-    .action(async (year, event) => {
+    .action(async (year: number, event: string) => {
       await getResultsStats(year, event);
     });
 
