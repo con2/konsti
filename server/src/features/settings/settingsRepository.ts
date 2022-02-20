@@ -6,6 +6,7 @@ import { Settings, SignupMessage } from "shared/typings/models/settings";
 import { Game } from "shared/typings/models/game";
 import { findGames } from "server/features/game/gameRepository";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
+import { PostSettingsRequest } from "shared/typings/api/settings";
 
 export const removeSettings = async (): Promise<void> => {
   logger.info("MongoDB: remove ALL settings from db");
@@ -195,4 +196,22 @@ export const delSignupMessage = async (gameId: string): Promise<Settings> => {
 
   logger.info(`MongoDB: Signup info deleted`);
   return settings;
+};
+
+export const saveSettings = async (
+  settings: PostSettingsRequest
+): Promise<Settings> => {
+  let updatedSettings;
+  try {
+    updatedSettings = await SettingsModel.findOneAndUpdate({}, settings, {
+      new: true,
+      upsert: true,
+      fields: "-createdAt -updatedAt",
+    });
+  } catch (error) {
+    throw new Error(`MongoDB: Error updating app settings: ${error}`);
+  }
+
+  logger.info(`MongoDB: App settings updated`);
+  return updatedSettings.toJSON();
 };
