@@ -9,7 +9,7 @@ logger.debug = jest.fn();
 // Throw if errors are logged
 // Useful at times, but prevents checking if error is handled correctly
 logger.error = throwOnErrorLog
-  ? jest.fn().mockImplementation((message) => {
+  ? jest.fn().mockImplementation((message: string) => {
       throw new Error(message);
     })
   : jest.fn();
