@@ -1,6 +1,11 @@
+import { z } from "zod";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
 import { Game } from "shared/typings/models/game";
-import { SignupMessage } from "shared/typings/models/settings";
+import {
+  Settings,
+  SettingsSchema,
+  SignupMessage,
+} from "shared/typings/models/settings";
 
 export interface PostHiddenResponse {
   hiddenGames: readonly Game[];
@@ -32,6 +37,16 @@ export interface PostSignupMessageResponse {
 
 export interface PostSetSignupStrategyResponse {
   signupStrategy: SignupStrategy;
+  message: string;
+  status: "success";
+}
+
+export const PostSettingsRequestSchema = SettingsSchema.partial();
+
+export type PostSettingsRequest = z.infer<typeof PostSettingsRequestSchema>;
+
+export interface PostSettingsResponse {
+  settings: Settings;
   message: string;
   status: "success";
 }
