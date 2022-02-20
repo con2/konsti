@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { ZodError } from "zod";
 import {
   fetchSettings,
   toggleAppOpen,
@@ -7,6 +8,7 @@ import {
   storeSignupMessage,
   removeSignupMessage,
   setSignupStrategy,
+  updateSettings,
 } from "server/features/settings/settingsService";
 import { UserGroup } from "shared/typings/models/user";
 import { isAuthorized } from "server/utils/authHeader";
@@ -22,6 +24,10 @@ import {
 import { Game } from "shared/typings/models/game";
 import { SignupMessage } from "shared/typings/models/settings";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
+import {
+  PostSettingsRequest,
+  PostSettingsRequestSchema,
+} from "shared/typings/api/settings";
 
 export const postHidden = async (
   req: Request<{}, {}, { hiddenData: readonly Game[] }>,
@@ -120,5 +126,31 @@ export const deleteSignupMessage = async (
   }
 
   const response = await removeSignupMessage(req.body.gameId);
+  return res.json(response);
+};
+
+export const postSettings = async (
+  req: Request<{}, {}, PostSettingsRequest>,
+  res: Response
+): Promise<Response> => {
+  logger.info(`API call: POST ${SETTINGS_ENDPOINT}`);
+
+  if (!isAuthorized(req.headers.authorization, UserGroup.ADMIN, "admin")) {
+    return res.sendStatus(401);
+  }
+
+  let settings;
+  try {
+    settings = PostSettingsRequestSchema.parse(req.body);
+  } catch (error) {
+    if (error instanceof ZodError) {
+      logger.error(
+        `Error validating postSettings parameters: ${error.message}`
+      );
+    }
+    return res.sendStatus(422);
+  }
+
+  const response = await updateSettings(settings);
   return res.json(response);
 };

@@ -6,6 +6,7 @@ import {
   saveSignupMessage,
   delSignupMessage,
   saveSignupStrategy,
+  saveSettings,
 } from "server/features/settings/settingsRepository";
 import { logger } from "server/utils/logger";
 import { ServerError } from "shared/typings/api/errors";
@@ -13,6 +14,8 @@ import {
   GetSettingsResponse,
   PostHiddenResponse,
   PostSetSignupStrategyResponse,
+  PostSettingsRequest,
+  PostSettingsResponse,
   PostSignupMessageResponse,
   PostToggleAppOpenResponse,
 } from "shared/typings/api/settings";
@@ -179,4 +182,23 @@ export const removeSignupMessage = async (
     status: "success",
     signupMessages: settings.signupMessages,
   };
+};
+
+export const updateSettings = async (
+  settings: PostSettingsRequest
+): Promise<PostSettingsResponse | ServerError> => {
+  try {
+    const response = await saveSettings(settings);
+    return {
+      message: "Update settings success",
+      status: "success",
+      settings: response,
+    };
+  } catch (error) {
+    return {
+      message: "Update settings failure",
+      status: "error",
+      code: 0,
+    };
+  }
 };
