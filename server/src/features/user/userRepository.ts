@@ -362,7 +362,7 @@ export const saveFavorite = async (
       const gameDocInDb = games.find((game) => game.gameId === favoritedGame);
 
       if (gameDocInDb) {
-        acc.push(gameDocInDb._id);
+        acc.push(gameDocInDb._id as FavoritedGame);
       }
       return acc;
     },

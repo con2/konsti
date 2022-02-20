@@ -66,7 +66,7 @@ export const saveHidden = async (
   const formattedData = hiddenGames.reduce<Game[]>((acc, hiddenGame) => {
     const gameDocInDb = games.find((game) => game.gameId === hiddenGame.gameId);
     if (gameDocInDb) {
-      acc.push(gameDocInDb._id);
+      acc.push(gameDocInDb._id as Game);
     }
     return acc;
   }, []);
