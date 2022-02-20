@@ -9,6 +9,7 @@ import expressStaticGzip from "express-static-gzip";
 import { config } from "server/config";
 import { logger, stream } from "server/utils/logger";
 import { allowCORS } from "server/middleware/cors";
+import "server/db/mongoosePlugins"; // Must be imported before apiRoutes which loads models
 import { apiRoutes } from "server/api/apiRoutes";
 import { db } from "server/db/mongodb";
 

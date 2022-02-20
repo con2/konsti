@@ -11,6 +11,7 @@ import {
   getSettings,
   postAppOpen,
   postHidden,
+  postSettings,
   postSignupMessage,
   postSignupStrategy,
   postSignupTime,
@@ -75,6 +76,7 @@ apiRoutes.post(SIGNUP_MESSAGE_ENDPOINT, postSignupMessage);
 apiRoutes.post(SESSION_RESTORE_ENDPOINT, postSessionRestore);
 apiRoutes.post(USERS_PASSWORD_ENDPOINT, postUserPassword);
 apiRoutes.post(SET_SIGNUP_STRATEGY_ENDPOINT, postSignupStrategy);
+apiRoutes.post(SETTINGS_ENDPOINT, postSettings);
 
 /* GET routes */
 
