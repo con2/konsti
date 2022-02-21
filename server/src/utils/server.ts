@@ -66,7 +66,7 @@ export const startServer = async (
     app.use(express.static(staticPath));
   }
 
-  app.get("/*", (_req: Request, res: Response) => {
+  app.get("/", (_req: Request, res: Response) => {
     res.sendFile(path.join(staticPath, "index.html"));
   });
 

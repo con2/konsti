@@ -33,6 +33,10 @@ import {
   postUserPassword,
 } from "server/features/user/userController";
 import {
+  getTestSettings,
+  postTestSettings,
+} from "server/test/test-settings/testSettingsController";
+import {
   ASSIGNMENT_ENDPOINT,
   ENTERED_GAME_ENDPOINT,
   FAVORITE_ENDPOINT,
@@ -52,6 +56,7 @@ import {
   USERS_BY_SERIAL_OR_USERNAME_ENDPOINT,
   USERS_PASSWORD_ENDPOINT,
   SET_SIGNUP_STRATEGY_ENDPOINT,
+  TEST_SETTINGS_ENDPOINT,
 } from "shared/constants/apiEndpoints";
 
 export const apiRoutes = express.Router();
@@ -91,5 +96,12 @@ apiRoutes.get(GROUP_ENDPOINT, getGroup);
 
 apiRoutes.delete(ENTERED_GAME_ENDPOINT, deleteEnteredGame);
 apiRoutes.delete(SIGNUP_MESSAGE_ENDPOINT, deleteSignupMessage);
+
+/* DEV routes */
+
+if (process.env.SETTINGS !== "production") {
+  apiRoutes.post(TEST_SETTINGS_ENDPOINT, postTestSettings);
+  apiRoutes.get(TEST_SETTINGS_ENDPOINT, getTestSettings);
+}
 
 /* eslint-enable @typescript-eslint/no-misused-promises */
