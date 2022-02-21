@@ -11,6 +11,7 @@ import {
 } from "server/test/test-data-generation/generators/createUsers";
 import { updateGames } from "server/utils/updateGames";
 import { kompassiGameMapper } from "server/utils/kompassiGameMapper";
+import { removeTestSettings } from "server/test/test-settings/testSettingsRepository";
 
 const ADMIN_PASSWORD = "";
 const CREATE_TEST_USERS = true;
@@ -27,6 +28,7 @@ const initializeDatabase = async (): Promise<void> => {
   await removeGames();
   await removeResults();
   await removeSettings();
+  await removeTestSettings();
 
   logger.info("Create admin user");
   await createAdminUser(ADMIN_PASSWORD);
