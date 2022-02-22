@@ -6,10 +6,16 @@ import { submitGetGroup } from "client/views/group/groupThunks";
 import { submitSessionRecovery } from "client/views/login/loginThunks";
 import { store } from "client/utils/store";
 import { AppDispatch } from "client/typings/redux.typings";
+import { submitGetTestSettings } from "client/test/test-settings/testSettingsThunks";
 
 export const loadData = async (): Promise<void> => {
   // Get app settings
   await loadSettings();
+
+  // Get test settings
+  if (process.env.SETTINGS !== "production") {
+    await loadTestSettings();
+  }
 
   // Get games data
   await loadGames();
@@ -30,6 +36,11 @@ export const loadData = async (): Promise<void> => {
 export const loadSettings = async (): Promise<void> => {
   const dispatch: AppDispatch = store.dispatch;
   await dispatch(submitGetSettings());
+};
+
+export const loadTestSettings = async (): Promise<void> => {
+  const dispatch: AppDispatch = store.dispatch;
+  await dispatch(submitGetTestSettings());
 };
 
 export const loadGames = async (): Promise<void> => {
