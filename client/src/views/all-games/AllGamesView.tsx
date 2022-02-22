@@ -18,7 +18,7 @@ export const AllGamesView = (): ReactElement => {
   const { t } = useTranslation();
 
   const games = useAppSelector((state) => state.allGames.games);
-  const testTime = useAppSelector((state) => state.admin.testTime);
+  const testTime = useAppSelector((state) => state.testSettings.testTime);
   const hiddenGames = useAppSelector((state) => state.admin.hiddenGames);
 
   const [selectedView, setSelectedView] = useState<string>("upcoming");

@@ -9,7 +9,7 @@ import { useAppSelector } from "client/utils/hooks";
 export const SignupView = (): ReactElement => {
   const games = useAppSelector((state) => state.allGames.games);
   const hiddenGames = useAppSelector((state) => state.admin.hiddenGames);
-  const testTime = useAppSelector((state) => state.admin.testTime);
+  const testTime = useAppSelector((state) => state.testSettings.testTime);
   const serial = useAppSelector((state) => state.login.serial);
   const groupCode = useAppSelector((state) => state.login.groupCode);
 

@@ -1,18 +1,22 @@
-import React, { ReactElement, ChangeEvent, useEffect } from "react";
+import React, { ReactElement, ChangeEvent, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import _ from "lodash";
 import moment from "moment";
-import { submitSetTestTime } from "client/views/admin/adminSlice";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { sharedConfig } from "shared/config/sharedConfig";
 import { Dropdown } from "client/components/Dropdown";
 import { timeFormatter } from "client/utils/timeFormatter";
+import { submitSetTestSettings } from "client/test/test-settings/testSettingsThunks";
 
 export const TestTimeSelector = (): ReactElement => {
-  const testTime: string = useAppSelector((state) => state.admin.testTime);
+  const testTime: string = useAppSelector(
+    (state) => state.testSettings.testTime
+  );
 
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
+
+  const [loading, setLoading] = useState<boolean>(false);
 
   const { CONVENTION_START_TIME } = sharedConfig;
   const times = [
@@ -44,8 +48,10 @@ export const TestTimeSelector = (): ReactElement => {
     if (!testTime && defaultTestTime) setTestTime(defaultTestTime);
   });
 
-  const setTestTime = (time: string): void => {
-    dispatch(submitSetTestTime(time));
+  const setTestTime = async (time: string): Promise<void> => {
+    setLoading(true);
+    await dispatch(submitSetTestSettings({ testTime: time }));
+    setLoading(false);
   };
 
   return (
@@ -53,10 +59,11 @@ export const TestTimeSelector = (): ReactElement => {
       <span>{t("testValues.time")}</span>{" "}
       <Dropdown
         items={dropdownItems}
-        selectedValue={testTime}
-        onChange={(event: ChangeEvent<HTMLSelectElement>) =>
-          setTestTime(event.target.value)
+        selectedValue={moment(testTime).format()}
+        onChange={async (event: ChangeEvent<HTMLSelectElement>) =>
+          await setTestTime(event.target.value)
         }
+        loading={loading}
       />
     </div>
   );
