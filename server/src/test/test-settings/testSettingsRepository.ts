@@ -34,9 +34,7 @@ export const findTestSettings = async (): Promise<TestSettings> => {
     testSettings = await TestSettingsModel.findOne(
       {},
       "-signupMessages._id -_id -__v -createdAt -updatedAt"
-    )
-      .lean<TestSettings>()
-      .populate("hiddenGames");
+    ).lean<TestSettings>();
   } catch (error) {
     throw new Error(`MongoDB: Error finding test settings data: ${error}`);
   }
