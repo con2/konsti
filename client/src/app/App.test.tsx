@@ -6,6 +6,7 @@ import { App } from "client/app/App";
 import * as loadData from "client/utils/loadData";
 
 jest.spyOn(loadData, "loadSettings").mockReturnValue(Promise.resolve());
+jest.spyOn(loadData, "loadTestSettings").mockReturnValue(Promise.resolve());
 jest.spyOn(loadData, "loadGames").mockReturnValue(Promise.resolve());
 
 test("should render correctly", async () => {
