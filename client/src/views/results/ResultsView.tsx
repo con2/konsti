@@ -9,7 +9,7 @@ import { useAppSelector } from "client/utils/hooks";
 export const ResultsView = (): ReactElement => {
   const store = useStore();
 
-  const testTime = useAppSelector((state) => state.admin.testTime);
+  const testTime = useAppSelector((state) => state.testSettings.testTime);
   const signupStrategy = useAppSelector((state) => state.admin.signupStrategy);
 
   useEffect(() => {
