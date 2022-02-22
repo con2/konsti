@@ -8,7 +8,6 @@ import { SignupMessage } from "shared/typings/models/settings";
 const initialState: AdminState = {
   hiddenGames: [],
   activeSignupTime: "",
-  testTime: "",
   appOpen: true,
   responseMessage: "",
   signupMessages: [],
@@ -41,10 +40,6 @@ const adminSlice = createSlice({
       return { ...state, activeSignupTime: action.payload };
     },
 
-    submitSetTestTime(state, action: PayloadAction<string>) {
-      return { ...state, testTime: action.payload };
-    },
-
     submitSetSignupStrategyAsync(state, action: PayloadAction<SignupStrategy>) {
       return { ...state, signupStrategy: action.payload };
     },
@@ -70,7 +65,6 @@ export const {
   submitUpdateHiddenAsync,
   submitGetSettingsAsync,
   submitActiveSignupTimeAsync,
-  submitSetTestTime,
   submitSetSignupStrategyAsync,
   submitToggleAppOpenAsync,
   submitResponseMessageAsync,

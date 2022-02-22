@@ -12,6 +12,7 @@ import { myGamesReducer } from "client/views/my-games/myGamesSlice";
 import { signupReducer } from "client/views/signup/signupSlice";
 import { adminReducer } from "client/views/admin/adminSlice";
 import { resultsReducer } from "client/views/results/resultsSlice";
+import { testSettingsReducer } from "client/test/test-settings/testSettingsSlice";
 
 export const combinedReducer = combineReducers({
   allGames: allGamesReducer,
@@ -20,6 +21,7 @@ export const combinedReducer = combineReducers({
   signup: signupReducer,
   admin: adminReducer,
   results: resultsReducer,
+  testSettings: testSettingsReducer,
 });
 
 // Reducer to reset state
