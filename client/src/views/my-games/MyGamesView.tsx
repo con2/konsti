@@ -31,7 +31,7 @@ export const MyGamesView = (): ReactElement => {
   );
   const enteredGames = useAppSelector((state) => state.myGames.enteredGames);
   const groupMembers = useAppSelector((state) => state.login.groupMembers);
-  const testTime = useAppSelector((state) => state.admin.testTime);
+  const testTime = useAppSelector((state) => state.testSettings.testTime);
   const signupStrategy = useAppSelector((state) => state.admin.signupStrategy);
 
   const [showAllGames, setShowAllGames] = useState<boolean>(false);

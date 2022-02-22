@@ -4,7 +4,7 @@ import { store } from "client/utils/store";
 
 export const getTime = (): string => {
   if (config.loadedSettings !== "production" && config.showTestValues) {
-    const testTime = store.getState().admin.testTime;
+    const testTime = store.getState().testSettings.testTime;
     return testTime ?? "";
   }
 

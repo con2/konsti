@@ -12,7 +12,6 @@ import { SignupStrategy } from "shared/config/sharedConfig.types";
 export interface AdminState {
   hiddenGames: readonly Game[];
   activeSignupTime: string;
-  testTime: string;
   appOpen: boolean;
   responseMessage: string;
   signupMessages: readonly SignupMessage[];
@@ -54,6 +53,10 @@ export interface SignupState {
   signupTime: string;
   selectedGames: readonly SelectedGame[];
   unsavedChanges: boolean;
+}
+
+export interface TestSettingsState {
+  testTime: string;
 }
 
 export interface LocalStorageState {
