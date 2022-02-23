@@ -56,16 +56,22 @@ export const getGameById = async (gameId: string): Promise<GameDoc> => {
   return foundGame;
 };
 
+const getTime = async (): Promise<Moment> => {
+  if (process.env.SETTINGS !== "production") {
+    const { testTime } = await findTestSettings();
+    return moment(testTime);
+  }
+
+  return moment();
+};
+
 export const enrichGames = async (
   games: readonly GameDoc[]
 ): Promise<GameWithUsernames[]> => {
   try {
     const users = await findUsers();
     const settings = await findSettings();
-
-    const { testTime } = await findTestSettings();
-    const currentTime =
-      process.env.SETTINGS !== "production" ? moment(testTime) : moment();
+    const currentTime = await getTime();
 
     return games.map((game) => {
       return {
