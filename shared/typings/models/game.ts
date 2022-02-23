@@ -43,7 +43,7 @@ export const GameSchema = z.object({
   contentWarnings: z.string(),
   otherAuthor: z.string(),
   accessibility: AccessibilitySchema,
-  signupStrategy: z.nativeEnum(SignupStrategy),
+  signupStrategy: z.optional(z.nativeEnum(SignupStrategy)),
 });
 
 export type Game = z.infer<typeof GameSchema>;
