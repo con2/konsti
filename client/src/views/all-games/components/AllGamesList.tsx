@@ -5,6 +5,7 @@ import { GameEntry } from "./GameEntry";
 import { useAppSelector } from "client/utils/hooks";
 import { Game } from "shared/typings/models/game";
 import { GameListTitle } from "client/views/all-games/components/GameListTitle";
+import { SignupStrategy } from "shared/config/sharedConfig.types";
 
 export interface Props {
   games: readonly Game[];
@@ -26,6 +27,14 @@ export const AllGamesList = ({ games }: Props): ReactElement => {
 
   const gamesList = Object.entries(gamesByStartTime).map(
     ([startTime, gamesForStartTime]) => {
+      // TODO:  How should we handle case where not all the games inside timeslot have same signup strategy?
+      //        Should not be problem in real cases, but is it ok to fallback ALGORITHM if data is broken?
+      const timeslotSignupStrategy = gamesForStartTime.every(
+        (game) => game.signupStrategy === SignupStrategy.DIRECT
+      )
+        ? SignupStrategy.DIRECT
+        : SignupStrategy.ALGORITHM;
+
       return (
         <div key={startTime}>
           <GameListTitle
@@ -33,6 +42,7 @@ export const AllGamesList = ({ games }: Props): ReactElement => {
             gamesForStartTime={gamesForStartTime}
             signedGames={signedGames}
             enteredGames={enteredGames}
+            timeslotSignupStrategy={timeslotSignupStrategy}
           />
 
           {gamesForStartTime.map((game) => {
@@ -46,6 +56,7 @@ export const AllGamesList = ({ games }: Props): ReactElement => {
                 game={game}
                 players={gameSignups?.users.length ?? 0}
                 startTime={startTime}
+                signupStrategy={timeslotSignupStrategy}
               />
             );
           })}
