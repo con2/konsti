@@ -30,7 +30,7 @@
   },
   "config": {
     "mongodbMemoryServer": {
-      "version": "4.2.6"
+      "version": "5.0.6"
     }
   },
   "dependencies": {
