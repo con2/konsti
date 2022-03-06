@@ -9,8 +9,6 @@ services:
       - PLAYWRIGHT_BASEURL=https://server:5000
     depends_on:
       - server
-    # FIXME: Doesn't work since Playwright 0.19.0
-    # https://github.com/microsoft/playwright/issues/12106
-    #volumes:
-    #  - ../client/playwright/test-results:/playwright/test-results # In relation to root level docker-compose.yml file
+    volumes:
+      - ../client/playwright/test-results:/playwright/test-results # In relation to root level docker-compose.yml file
     entrypoint: /bin/sh -c "/usr/local/bin/waitforit -address=server:5000 -timeout=60 && npx playwright test"
