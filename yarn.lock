@@ -2,7 +2,7 @@
 # Manual changes might be lost - proceed with caution!
 
 __metadata:
-  version: 5
+  version: 6
   cacheKey: 8
 
 "@ampproject/remapping@npm:^2.1.0":
@@ -1980,9 +1980,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@playwright/test@npm:1.19.1":
-  version: 1.19.1
-  resolution: "@playwright/test@npm:1.19.1"
+"@playwright/test@npm:1.19.2":
+  version: 1.19.2
+  resolution: "@playwright/test@npm:1.19.2"
   dependencies:
     "@babel/code-frame": 7.16.7
     "@babel/core": 7.16.12
@@ -2016,7 +2016,7 @@ __metadata:
     open: 8.4.0
     pirates: 4.0.4
     pixelmatch: 5.2.1
-    playwright-core: 1.19.1
+    playwright-core: 1.19.2
     pngjs: 6.0.0
     rimraf: 3.0.2
     source-map-support: 0.4.18
@@ -2024,7 +2024,7 @@ __metadata:
     yazl: 2.5.1
   bin:
     playwright: cli.js
-  checksum: cdb7be41470a1493899dba2d2dd2a46ce0b2ed16383a9b7c7d82ad352d118a23956285e08614ba783a93cf981de8b6287c44f73ac8d2deb7aa3a2ca500250e70
+  checksum: 5d69712ff05e163fe9a7be704cb0ab8d27d24a0fc5510efb01e4d5a2162525566e7e976d102d023d8c10a7515942a270af125b840f87769ad0163cd94b4e3990
   languageName: node
   linkType: hard
 
@@ -3333,7 +3333,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"acorn@npm:^8.0.4, acorn@npm:^8.2.4, acorn@npm:^8.4.1, acorn@npm:^8.7.0":
+"acorn@npm:^8.0.4, acorn@npm:^8.2.4, acorn@npm:^8.4.1, acorn@npm:^8.5.0, acorn@npm:^8.7.0":
   version: 8.7.0
   resolution: "acorn@npm:8.7.0"
   bin:
@@ -8773,7 +8773,7 @@ __metadata:
     "@fortawesome/free-regular-svg-icons": 6.0.0
     "@fortawesome/free-solid-svg-icons": 6.0.0
     "@fortawesome/react-fontawesome": 0.1.17
-    "@playwright/test": 1.19.1
+    "@playwright/test": 1.19.2
     "@pmmmwh/react-refresh-webpack-plugin": 0.5.4
     "@react-hook/intersection-observer": 3.1.1
     "@ronilaukkarinen/stylelint-a11y": 1.2.4
@@ -10599,9 +10599,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"playwright-core@npm:1.19.1":
-  version: 1.19.1
-  resolution: "playwright-core@npm:1.19.1"
+"playwright-core@npm:1.19.2":
+  version: 1.19.2
+  resolution: "playwright-core@npm:1.19.2"
   dependencies:
     commander: 8.3.0
     debug: 4.3.3
@@ -10621,7 +10621,7 @@ __metadata:
     yazl: 2.5.1
   bin:
     playwright: cli.js
-  checksum: a88b055d1180b128bc073b58dd63aff29d1f996711e8f72cae4df03ecc8c133822caf04a9f6838b4bd3f6473b9c58661274f39e9db3b4570b18bbe0a3eef1fb6
+  checksum: 232a592e4e3f4a2253d929fd3fc63b00778daa031bf69e6d34a555e27e8e908dfb283ce8c2e05426ae8151f0a3acf6706d73f3621172917e00d28e3f67a8883d
   languageName: node
   linkType: hard
 
@@ -13143,11 +13143,11 @@ __metadata:
 
 "typescript@patch:typescript@4.5.5#~builtin<compat/typescript>":
   version: 4.5.5
-  resolution: "typescript@patch:typescript@npm%3A4.5.5#~builtin<compat/typescript>::version=4.5.5&hash=493e53"
+  resolution: "typescript@patch:typescript@npm%3A4.5.5#~builtin<compat/typescript>::version=4.5.5&hash=bda367"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: c05c318d79c690f101d7ffb34cd6c7d6bbd884d3af9cefe7749ad0cd6be43c7082f098280982ca945dcba23fde34a08fed9602bb26540936baf8c0520727d3ba
+  checksum: 858c61fa63f7274ca4aaaffeced854d550bf416cff6e558c4884041b3311fb662f476f167cf5c9f8680c607239797e26a2ee0bcc6467fbc05bfcb218e1c6c671
   languageName: node
   linkType: hard
 
