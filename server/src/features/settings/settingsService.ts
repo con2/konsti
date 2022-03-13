@@ -1,6 +1,5 @@
 import {
   findSettings,
-  saveSignupTime,
   saveHidden,
   saveSignupMessage,
   delSignupMessage,
@@ -15,7 +14,6 @@ import {
   PostSettingsResponse,
   PostSignupMessageResponse,
 } from "shared/typings/api/settings";
-import { PostSignupTimeResponse } from "shared/typings/api/signup";
 import { Game } from "shared/typings/models/game";
 import { removeHiddenGamesFromUsers } from "server/features/settings/settingsUtils";
 import { SignupMessage } from "shared/typings/models/settings";
@@ -39,25 +37,6 @@ export const fetchSettings = async (): Promise<
     logger.error(`Settings: ${error}`);
     return {
       message: "Getting settings failed",
-      status: "error",
-      code: 0,
-    };
-  }
-};
-
-export const storeSignupTime = async (
-  signupTime: string
-): Promise<PostSignupTimeResponse | ServerError> => {
-  try {
-    const response = await saveSignupTime(signupTime);
-    return {
-      message: "Signup time set success",
-      status: "success",
-      signupTime: response.signupTime,
-    };
-  } catch (error) {
-    return {
-      message: "Signup time set failure",
       status: "error",
       code: 0,
     };

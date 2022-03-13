@@ -9,12 +9,6 @@ export interface PostSignupResponse {
   status: "success";
 }
 
-export interface PostSignupTimeResponse {
-  message: string;
-  signupTime: string;
-  status: "success";
-}
-
 export interface SignupData {
   username: string;
   selectedGames: readonly SelectedGame[];
