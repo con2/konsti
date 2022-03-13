@@ -9,7 +9,6 @@ import {
 import {
   deleteSignupMessage,
   getSettings,
-  postAppOpen,
   postHidden,
   postSettings,
   postSignupMessage,
@@ -51,7 +50,6 @@ import {
   SIGNUPTIME_ENDPOINT,
   SIGNUP_ENDPOINT,
   SIGNUP_MESSAGE_ENDPOINT,
-  TOGGLE_APP_OPEN_ENDPOINT,
   USERS_ENDPOINT,
   USERS_BY_SERIAL_OR_USERNAME_ENDPOINT,
   USERS_PASSWORD_ENDPOINT,
@@ -75,7 +73,6 @@ apiRoutes.post(HIDDEN_ENDPOINT, postHidden);
 apiRoutes.post(SIGNUPTIME_ENDPOINT, postSignupTime);
 apiRoutes.post(FEEDBACK_ENDPOINT, postFeedback);
 apiRoutes.post(GROUP_ENDPOINT, postGroup);
-apiRoutes.post(TOGGLE_APP_OPEN_ENDPOINT, postAppOpen);
 apiRoutes.post(ENTERED_GAME_ENDPOINT, postEnteredGame);
 apiRoutes.post(SIGNUP_MESSAGE_ENDPOINT, postSignupMessage);
 apiRoutes.post(SESSION_RESTORE_ENDPOINT, postSessionRestore);

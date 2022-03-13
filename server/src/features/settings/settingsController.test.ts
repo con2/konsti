@@ -6,7 +6,6 @@ import {
   HIDDEN_ENDPOINT,
   SETTINGS_ENDPOINT,
   SIGNUPTIME_ENDPOINT,
-  TOGGLE_APP_OPEN_ENDPOINT,
 } from "shared/constants/apiEndpoints";
 import { UserGroup } from "shared/typings/models/user";
 import { getJWT } from "server/utils/jwt";
@@ -106,13 +105,6 @@ describe(`POST ${HIDDEN_ENDPOINT}`, () => {
 describe(`POST ${SIGNUPTIME_ENDPOINT}`, () => {
   test("should return 401 without valid authorization", async () => {
     const response = await request(server).post(SIGNUPTIME_ENDPOINT);
-    expect(response.status).toEqual(401);
-  });
-});
-
-describe(`POST ${TOGGLE_APP_OPEN_ENDPOINT}`, () => {
-  test("should return 401 without valid authorization", async () => {
-    const response = await request(server).post(TOGGLE_APP_OPEN_ENDPOINT);
     expect(response.status).toEqual(401);
   });
 });

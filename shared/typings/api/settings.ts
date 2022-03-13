@@ -23,12 +23,6 @@ export interface GetSettingsResponse {
   signupStrategy: SignupStrategy;
 }
 
-export interface PostToggleAppOpenResponse {
-  appOpen: boolean;
-  message: string;
-  status: "success";
-}
-
 export interface PostSignupMessageResponse {
   signupMessages: readonly SignupMessage[];
   message: string;

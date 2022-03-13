@@ -4,14 +4,14 @@ import {
   SETTINGS_ENDPOINT,
   SET_SIGNUP_STRATEGY_ENDPOINT,
   SIGNUP_MESSAGE_ENDPOINT,
-  TOGGLE_APP_OPEN_ENDPOINT,
 } from "shared/constants/apiEndpoints";
 import { ServerError } from "shared/typings/api/errors";
 import {
   GetSettingsResponse,
   PostSetSignupStrategyResponse,
+  PostSettingsRequest,
+  PostSettingsResponse,
   PostSignupMessageResponse,
-  PostToggleAppOpenResponse,
 } from "shared/typings/api/settings";
 import { SignupMessage } from "shared/typings/models/settings";
 
@@ -22,14 +22,12 @@ export const getSettings = async (): Promise<
   return response.data;
 };
 
-export const postToggleAppOpen = async (
-  appOpen: boolean
-): Promise<PostToggleAppOpenResponse | ServerError> => {
-  const response = await api.post<PostToggleAppOpenResponse>(
-    TOGGLE_APP_OPEN_ENDPOINT,
-    {
-      appOpen,
-    }
+export const postSettings = async (
+  settings: PostSettingsRequest
+): Promise<PostSettingsResponse | ServerError> => {
+  const response = await api.post<PostSettingsResponse>(
+    SETTINGS_ENDPOINT,
+    settings
   );
   return response.data;
 };

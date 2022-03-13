@@ -1,7 +1,6 @@
 import {
   findSettings,
   saveSignupTime,
-  saveToggleAppOpen,
   saveHidden,
   saveSignupMessage,
   delSignupMessage,
@@ -17,7 +16,6 @@ import {
   PostSettingsRequest,
   PostSettingsResponse,
   PostSignupMessageResponse,
-  PostToggleAppOpenResponse,
 } from "shared/typings/api/settings";
 import { PostSignupTimeResponse } from "shared/typings/api/signup";
 import { Game } from "shared/typings/models/game";
@@ -44,25 +42,6 @@ export const fetchSettings = async (): Promise<
     logger.error(`Settings: ${error}`);
     return {
       message: "Getting settings failed",
-      status: "error",
-      code: 0,
-    };
-  }
-};
-
-export const toggleAppOpen = async (
-  appOpen: boolean
-): Promise<PostToggleAppOpenResponse | ServerError> => {
-  try {
-    const response = await saveToggleAppOpen(appOpen);
-    return {
-      message: "Update app open success",
-      status: "success",
-      appOpen: response.appOpen,
-    };
-  } catch (error) {
-    return {
-      message: "Update app open failure",
       status: "error",
       code: 0,
     };
