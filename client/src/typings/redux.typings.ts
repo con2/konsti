@@ -67,8 +67,7 @@ export type AppDispatch = typeof store.dispatch;
 
 export type RootState = ReturnType<typeof combinedReducer>;
 
-// eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-export type AppThunk<ReturnType = void> = ThunkAction<
+export type AppThunk<ReturnType = Promise<void>> = ThunkAction<
   ReturnType,
   RootState,
   unknown,
