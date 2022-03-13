@@ -5,7 +5,6 @@ import {
   postSignupMessage,
   postSettings,
 } from "client/services/settingsServices";
-import { postSignupTime } from "client/services/signuptimeServices";
 import { Game } from "shared/typings/models/game";
 import { AppThunk } from "client/typings/redux.typings";
 import {
@@ -57,14 +56,16 @@ export const submitGetSettings = (): AppThunk => {
 
 export const submitSignupTime = (signupTime: string): AppThunk => {
   return async (dispatch): Promise<void> => {
-    const signupTimeResponse = await postSignupTime(signupTime);
+    const postSettingsResponse = await postSettings({ signupTime });
 
-    if (signupTimeResponse?.status === "error") {
-      return await Promise.reject(signupTimeResponse);
+    if (postSettingsResponse?.status === "error") {
+      return await Promise.reject(postSettingsResponse);
     }
 
-    if (signupTimeResponse?.status === "success") {
-      dispatch(submitActiveSignupTimeAsync(signupTimeResponse.signupTime));
+    if (postSettingsResponse?.status === "success") {
+      dispatch(
+        submitActiveSignupTimeAsync(postSettingsResponse.settings.signupTime)
+      );
     }
   };
 };

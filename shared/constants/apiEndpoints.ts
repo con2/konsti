@@ -7,7 +7,6 @@ export const ASSIGNMENT_ENDPOINT = "/api/assignment";
 export const SIGNUP_ENDPOINT = "/api/signup";
 export const FAVORITE_ENDPOINT = "/api/favorite";
 export const HIDDEN_ENDPOINT = "/api/hidden";
-export const SIGNUPTIME_ENDPOINT = "/api/signuptime";
 export const FEEDBACK_ENDPOINT = "/api/feedback";
 export const GROUP_ENDPOINT = "/api/group";
 export const SETTINGS_ENDPOINT = "/api/settings";

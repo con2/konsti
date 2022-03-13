@@ -12,7 +12,6 @@ import {
   postHidden,
   postSettings,
   postSignupMessage,
-  postSignupTime,
 } from "server/features/settings/settingsController";
 import {
   deleteEnteredGame,
@@ -46,7 +45,6 @@ import {
   SESSION_RESTORE_ENDPOINT,
   RESULTS_ENDPOINT,
   SETTINGS_ENDPOINT,
-  SIGNUPTIME_ENDPOINT,
   SIGNUP_ENDPOINT,
   SIGNUP_MESSAGE_ENDPOINT,
   USERS_ENDPOINT,
@@ -68,7 +66,6 @@ apiRoutes.post(ASSIGNMENT_ENDPOINT, postAssignment);
 apiRoutes.post(SIGNUP_ENDPOINT, postSignup);
 apiRoutes.post(FAVORITE_ENDPOINT, postFavorite);
 apiRoutes.post(HIDDEN_ENDPOINT, postHidden);
-apiRoutes.post(SIGNUPTIME_ENDPOINT, postSignupTime);
 apiRoutes.post(FEEDBACK_ENDPOINT, postFeedback);
 apiRoutes.post(GROUP_ENDPOINT, postGroup);
 apiRoutes.post(ENTERED_GAME_ENDPOINT, postEnteredGame);

@@ -5,7 +5,6 @@ import { startServer, closeServer } from "server/utils/server";
 import {
   HIDDEN_ENDPOINT,
   SETTINGS_ENDPOINT,
-  SIGNUPTIME_ENDPOINT,
 } from "shared/constants/apiEndpoints";
 import { UserGroup } from "shared/typings/models/user";
 import { getJWT } from "server/utils/jwt";
@@ -98,13 +97,6 @@ describe(`POST ${SETTINGS_ENDPOINT}`, () => {
 describe(`POST ${HIDDEN_ENDPOINT}`, () => {
   test("should return 401 without valid authorization", async () => {
     const response = await request(server).post(HIDDEN_ENDPOINT);
-    expect(response.status).toEqual(401);
-  });
-});
-
-describe(`POST ${SIGNUPTIME_ENDPOINT}`, () => {
-  test("should return 401 without valid authorization", async () => {
-    const response = await request(server).post(SIGNUPTIME_ENDPOINT);
     expect(response.status).toEqual(401);
   });
 });

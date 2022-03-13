@@ -2,7 +2,6 @@ import { Request, Response } from "express";
 import { ZodError } from "zod";
 import {
   fetchSettings,
-  storeSignupTime,
   storeHidden,
   storeSignupMessage,
   removeSignupMessage,
@@ -14,7 +13,6 @@ import { logger } from "server/utils/logger";
 import {
   HIDDEN_ENDPOINT,
   SETTINGS_ENDPOINT,
-  SIGNUPTIME_ENDPOINT,
   SIGNUP_MESSAGE_ENDPOINT,
 } from "shared/constants/apiEndpoints";
 import { Game } from "shared/typings/models/game";
@@ -36,21 +34,6 @@ export const postHidden = async (
 
   const hiddenData = req.body.hiddenData;
   const response = await storeHidden(hiddenData);
-  return res.json(response);
-};
-
-export const postSignupTime = async (
-  req: Request<{}, {}, { signupTime: string }>,
-  res: Response
-): Promise<Response> => {
-  logger.info(`API call: POST ${SIGNUPTIME_ENDPOINT}`);
-
-  if (!isAuthorized(req.headers.authorization, UserGroup.ADMIN, "admin")) {
-    return res.sendStatus(401);
-  }
-
-  const signupTime = req.body.signupTime;
-  const response = await storeSignupTime(signupTime);
   return res.json(response);
 };
 
