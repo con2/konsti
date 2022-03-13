@@ -5,9 +5,8 @@ import { SettingsModel } from "server/features/settings/settingsSchema";
 import { mockGame, mockGame2 } from "server/test/mock-data/mockGame";
 import {
   findSettings,
-  saveSignupTime,
-  saveToggleAppOpen,
   saveHidden,
+  saveSettings,
 } from "server/features/settings/settingsRepository";
 import { saveGames } from "server/features/game/gameRepository";
 
@@ -57,7 +56,7 @@ test("should not return hidden games that are not in DB", async () => {
 
 test("should update signup time", async () => {
   const signupTime = "2019-07-26T14:00:00.000Z";
-  await saveSignupTime(signupTime);
+  await saveSettings({ signupTime });
   const insertedSettings = await SettingsModel.findOne({});
   expect(moment(insertedSettings?.signupTime).format()).toEqual(
     moment(signupTime).format()
@@ -66,7 +65,7 @@ test("should update signup time", async () => {
 
 test("should update appOpen status", async () => {
   const appOpen = false;
-  await saveToggleAppOpen(appOpen);
+  await saveSettings({ appOpen });
   const insertedSettings = await SettingsModel.findOne({});
   expect(insertedSettings?.appOpen).toEqual(appOpen);
 });

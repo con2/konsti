@@ -9,12 +9,9 @@ import {
 import {
   deleteSignupMessage,
   getSettings,
-  postAppOpen,
   postHidden,
   postSettings,
   postSignupMessage,
-  postSignupStrategy,
-  postSignupTime,
 } from "server/features/settings/settingsController";
 import {
   deleteEnteredGame,
@@ -48,14 +45,11 @@ import {
   SESSION_RESTORE_ENDPOINT,
   RESULTS_ENDPOINT,
   SETTINGS_ENDPOINT,
-  SIGNUPTIME_ENDPOINT,
   SIGNUP_ENDPOINT,
   SIGNUP_MESSAGE_ENDPOINT,
-  TOGGLE_APP_OPEN_ENDPOINT,
   USERS_ENDPOINT,
   USERS_BY_SERIAL_OR_USERNAME_ENDPOINT,
   USERS_PASSWORD_ENDPOINT,
-  SET_SIGNUP_STRATEGY_ENDPOINT,
   TEST_SETTINGS_ENDPOINT,
 } from "shared/constants/apiEndpoints";
 
@@ -72,15 +66,12 @@ apiRoutes.post(ASSIGNMENT_ENDPOINT, postAssignment);
 apiRoutes.post(SIGNUP_ENDPOINT, postSignup);
 apiRoutes.post(FAVORITE_ENDPOINT, postFavorite);
 apiRoutes.post(HIDDEN_ENDPOINT, postHidden);
-apiRoutes.post(SIGNUPTIME_ENDPOINT, postSignupTime);
 apiRoutes.post(FEEDBACK_ENDPOINT, postFeedback);
 apiRoutes.post(GROUP_ENDPOINT, postGroup);
-apiRoutes.post(TOGGLE_APP_OPEN_ENDPOINT, postAppOpen);
 apiRoutes.post(ENTERED_GAME_ENDPOINT, postEnteredGame);
 apiRoutes.post(SIGNUP_MESSAGE_ENDPOINT, postSignupMessage);
 apiRoutes.post(SESSION_RESTORE_ENDPOINT, postSessionRestore);
 apiRoutes.post(USERS_PASSWORD_ENDPOINT, postUserPassword);
-apiRoutes.post(SET_SIGNUP_STRATEGY_ENDPOINT, postSignupStrategy);
 apiRoutes.post(SETTINGS_ENDPOINT, postSettings);
 
 /* GET routes */
