@@ -1,11 +1,8 @@
 import {
   findSettings,
-  saveSignupTime,
-  saveToggleAppOpen,
   saveHidden,
   saveSignupMessage,
   delSignupMessage,
-  saveSignupStrategy,
   saveSettings,
 } from "server/features/settings/settingsRepository";
 import { logger } from "server/utils/logger";
@@ -13,17 +10,13 @@ import { ServerError } from "shared/typings/api/errors";
 import {
   GetSettingsResponse,
   PostHiddenResponse,
-  PostSetSignupStrategyResponse,
   PostSettingsRequest,
   PostSettingsResponse,
   PostSignupMessageResponse,
-  PostToggleAppOpenResponse,
 } from "shared/typings/api/settings";
-import { PostSignupTimeResponse } from "shared/typings/api/signup";
 import { Game } from "shared/typings/models/game";
 import { removeHiddenGamesFromUsers } from "server/features/settings/settingsUtils";
 import { SignupMessage } from "shared/typings/models/settings";
-import { SignupStrategy } from "shared/config/sharedConfig.types";
 
 export const fetchSettings = async (): Promise<
   GetSettingsResponse | ServerError
@@ -44,63 +37,6 @@ export const fetchSettings = async (): Promise<
     logger.error(`Settings: ${error}`);
     return {
       message: "Getting settings failed",
-      status: "error",
-      code: 0,
-    };
-  }
-};
-
-export const toggleAppOpen = async (
-  appOpen: boolean
-): Promise<PostToggleAppOpenResponse | ServerError> => {
-  try {
-    const response = await saveToggleAppOpen(appOpen);
-    return {
-      message: "Update app open success",
-      status: "success",
-      appOpen: response.appOpen,
-    };
-  } catch (error) {
-    return {
-      message: "Update app open failure",
-      status: "error",
-      code: 0,
-    };
-  }
-};
-
-export const setSignupStrategy = async (
-  signupStrategy: SignupStrategy
-): Promise<PostSetSignupStrategyResponse | ServerError> => {
-  try {
-    const response = await saveSignupStrategy(signupStrategy);
-    return {
-      message: "Update signup strategy success",
-      status: "success",
-      signupStrategy: response.signupStrategy,
-    };
-  } catch (error) {
-    return {
-      message: "Update signup strategy failure",
-      status: "error",
-      code: 0,
-    };
-  }
-};
-
-export const storeSignupTime = async (
-  signupTime: string
-): Promise<PostSignupTimeResponse | ServerError> => {
-  try {
-    const response = await saveSignupTime(signupTime);
-    return {
-      message: "Signup time set success",
-      status: "success",
-      signupTime: response.signupTime,
-    };
-  } catch (error) {
-    return {
-      message: "Signup time set failure",
       status: "error",
       code: 0,
     };
