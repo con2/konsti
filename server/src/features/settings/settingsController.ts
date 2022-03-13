@@ -81,8 +81,10 @@ export const postSettings = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${SETTINGS_ENDPOINT}`);
 
-  if (!isAuthorized(req.headers.authorization, UserGroup.ADMIN, "admin")) {
-    return res.sendStatus(401);
+  if (process.env.SETTINGS === "production") {
+    if (!isAuthorized(req.headers.authorization, UserGroup.ADMIN, "admin")) {
+      return res.sendStatus(401);
+    }
   }
 
   let settings;
