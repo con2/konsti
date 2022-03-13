@@ -2,7 +2,6 @@ import { postHidden } from "client/services/hiddenServices";
 import {
   deleteSignupMessage,
   getSettings,
-  postSetSignupStrategy,
   postSignupMessage,
   postSettings,
 } from "client/services/settingsServices";
@@ -121,14 +120,14 @@ export const submitSetSignupStrategy = (
   signupStrategy: SignupStrategy
 ): AppThunk => {
   return async (dispatch): Promise<void> => {
-    const response = await postSetSignupStrategy(signupStrategy);
+    const response = await postSettings({ signupStrategy });
 
     if (response?.status === "error") {
       return await Promise.reject(response);
     }
 
     if (response?.status === "success") {
-      dispatch(submitSetSignupStrategyAsync(response.signupStrategy));
+      dispatch(submitSetSignupStrategyAsync(response.settings.signupStrategy));
     }
   };
 };

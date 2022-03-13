@@ -6,7 +6,6 @@ import {
   storeHidden,
   storeSignupMessage,
   removeSignupMessage,
-  setSignupStrategy,
   updateSettings,
 } from "server/features/settings/settingsService";
 import { UserGroup } from "shared/typings/models/user";
@@ -15,13 +14,11 @@ import { logger } from "server/utils/logger";
 import {
   HIDDEN_ENDPOINT,
   SETTINGS_ENDPOINT,
-  SET_SIGNUP_STRATEGY_ENDPOINT,
   SIGNUPTIME_ENDPOINT,
   SIGNUP_MESSAGE_ENDPOINT,
 } from "shared/constants/apiEndpoints";
 import { Game } from "shared/typings/models/game";
 import { SignupMessage } from "shared/typings/models/settings";
-import { SignupStrategy } from "shared/config/sharedConfig.types";
 import {
   PostSettingsRequest,
   PostSettingsRequestSchema,
@@ -54,23 +51,6 @@ export const postSignupTime = async (
 
   const signupTime = req.body.signupTime;
   const response = await storeSignupTime(signupTime);
-  return res.json(response);
-};
-
-export const postSignupStrategy = async (
-  req: Request<{}, {}, { signupStrategy: SignupStrategy }>,
-  res: Response
-): Promise<Response> => {
-  logger.info(`API call: POST ${SET_SIGNUP_STRATEGY_ENDPOINT}`);
-
-  if (process.env.SETTINGS === "production") {
-    if (!isAuthorized(req.headers.authorization, UserGroup.ADMIN, "admin")) {
-      return res.sendStatus(401);
-    }
-  }
-
-  const signupStrategy = req.body.signupStrategy;
-  const response = await setSignupStrategy(signupStrategy);
   return res.json(response);
 };
 

@@ -1,14 +1,11 @@
 import { api } from "client/utils/api";
-import { SignupStrategy } from "shared/config/sharedConfig.types";
 import {
   SETTINGS_ENDPOINT,
-  SET_SIGNUP_STRATEGY_ENDPOINT,
   SIGNUP_MESSAGE_ENDPOINT,
 } from "shared/constants/apiEndpoints";
 import { ServerError } from "shared/typings/api/errors";
 import {
   GetSettingsResponse,
-  PostSetSignupStrategyResponse,
   PostSettingsRequest,
   PostSettingsResponse,
   PostSignupMessageResponse,
@@ -51,18 +48,6 @@ export const deleteSignupMessage = async (
     SIGNUP_MESSAGE_ENDPOINT,
     {
       data: { gameId },
-    }
-  );
-  return response.data;
-};
-
-export const postSetSignupStrategy = async (
-  signupStrategy: SignupStrategy
-): Promise<PostSetSignupStrategyResponse | ServerError> => {
-  const response = await api.post<PostSetSignupStrategyResponse>(
-    SET_SIGNUP_STRATEGY_ENDPOINT,
-    {
-      signupStrategy,
     }
   );
   return response.data;

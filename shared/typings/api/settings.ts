@@ -29,12 +29,6 @@ export interface PostSignupMessageResponse {
   status: "success";
 }
 
-export interface PostSetSignupStrategyResponse {
-  signupStrategy: SignupStrategy;
-  message: string;
-  status: "success";
-}
-
 export const PostSettingsRequestSchema = SettingsSchema.partial();
 
 export type PostSettingsRequest = z.infer<typeof PostSettingsRequestSchema>;
