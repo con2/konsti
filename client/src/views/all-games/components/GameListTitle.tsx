@@ -6,13 +6,13 @@ import { timeFormatter } from "client/utils/timeFormatter";
 import { Game } from "shared/typings/models/game";
 import { SelectedGame } from "shared/typings/models/user";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
-import { useAppSelector } from "client/utils/hooks";
 
 interface Props {
   startTime: string;
   gamesForStartTime: readonly Game[];
   signedGames: readonly SelectedGame[];
   enteredGames: readonly SelectedGame[];
+  timeslotSignupStrategy: SignupStrategy;
 }
 
 export const GameListTitle = ({
@@ -20,10 +20,9 @@ export const GameListTitle = ({
   gamesForStartTime,
   signedGames,
   enteredGames,
+  timeslotSignupStrategy,
 }: Props): ReactElement => {
   const { t } = useTranslation();
-  const signupStrategy = useAppSelector((state) => state.admin.signupStrategy);
-
   const intersectionRef = useRef<HTMLDivElement | null>(null);
   const { isIntersecting } = useIntersectionObserver(intersectionRef);
 
@@ -52,14 +51,15 @@ export const GameListTitle = ({
     >
       <span>{formattedStartTime}</span>
 
-      {!allGamesRevolvingDoor && signupStrategy === SignupStrategy.ALGORITHM && (
-        <span>
-          {" "}
-          ({t("signupOpenBetween")} {signupStartTime}-{signupEndTime})
-        </span>
-      )}
+      {!allGamesRevolvingDoor &&
+        timeslotSignupStrategy === SignupStrategy.ALGORITHM && (
+          <span>
+            {" "}
+            ({t("signupOpenBetween")} {signupStartTime}-{signupEndTime})
+          </span>
+        )}
 
-      {signupStrategy === SignupStrategy.DIRECT ? (
+      {timeslotSignupStrategy === SignupStrategy.DIRECT ? (
         <SignupCount>
           {signedGame ? signedGame.gameDetails.title : ""}
         </SignupCount>

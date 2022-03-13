@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { SignupStrategy } from "shared/config/sharedConfig.types";
 
 const AccessibilitySchema = z.object({
   loudSounds: z.boolean(),
@@ -42,6 +43,7 @@ export const GameSchema = z.object({
   contentWarnings: z.string(),
   otherAuthor: z.string(),
   accessibility: AccessibilitySchema,
+  signupStrategy: z.optional(z.nativeEnum(SignupStrategy)),
 });
 
 export type Game = z.infer<typeof GameSchema>;
