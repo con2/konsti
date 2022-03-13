@@ -18,19 +18,20 @@ interface Props {
   game: Game;
   startTime: string;
   players: number;
+  signupStrategy: SignupStrategy;
 }
 
 export const GameEntry = ({
   game,
   startTime,
   players,
+  signupStrategy,
 }: Props): ReactElement => {
   const { t } = useTranslation();
 
   const username = useAppSelector((state) => state.login.username);
   const loggedIn = useAppSelector((state) => state.login.loggedIn);
   const userGroup = useAppSelector((state) => state.login.userGroup);
-  const signupStrategy = useAppSelector((state) => state.admin.signupStrategy);
   const favoritedGames = useAppSelector(
     (state) => state.myGames.favoritedGames
   );
