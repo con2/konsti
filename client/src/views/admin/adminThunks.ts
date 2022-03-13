@@ -2,11 +2,9 @@ import { postHidden } from "client/services/hiddenServices";
 import {
   deleteSignupMessage,
   getSettings,
-  postSetSignupStrategy,
   postSignupMessage,
-  postToggleAppOpen,
+  postSettings,
 } from "client/services/settingsServices";
-import { postSignupTime } from "client/services/signuptimeServices";
 import { Game } from "shared/typings/models/game";
 import { AppThunk } from "client/typings/redux.typings";
 import {
@@ -58,28 +56,30 @@ export const submitGetSettings = (): AppThunk => {
 
 export const submitSignupTime = (signupTime: string): AppThunk => {
   return async (dispatch): Promise<void> => {
-    const signupTimeResponse = await postSignupTime(signupTime);
+    const postSettingsResponse = await postSettings({ signupTime });
 
-    if (signupTimeResponse?.status === "error") {
-      return await Promise.reject(signupTimeResponse);
+    if (postSettingsResponse?.status === "error") {
+      return await Promise.reject(postSettingsResponse);
     }
 
-    if (signupTimeResponse?.status === "success") {
-      dispatch(submitActiveSignupTimeAsync(signupTimeResponse.signupTime));
+    if (postSettingsResponse?.status === "success") {
+      dispatch(
+        submitActiveSignupTimeAsync(postSettingsResponse.settings.signupTime)
+      );
     }
   };
 };
 
 export const submitToggleAppOpen = (appOpen: boolean): AppThunk => {
   return async (dispatch): Promise<void> => {
-    const appOpenResponse = await postToggleAppOpen(appOpen);
+    const postSettingsResponse = await postSettings({ appOpen });
 
-    if (appOpenResponse?.status === "error") {
-      return await Promise.reject(appOpenResponse);
+    if (postSettingsResponse?.status === "error") {
+      return await Promise.reject(postSettings);
     }
 
-    if (appOpenResponse?.status === "success") {
-      dispatch(submitToggleAppOpenAsync(appOpenResponse.appOpen));
+    if (postSettingsResponse?.status === "success") {
+      dispatch(submitToggleAppOpenAsync(postSettingsResponse.settings.appOpen));
     }
   };
 };
@@ -121,14 +121,14 @@ export const submitSetSignupStrategy = (
   signupStrategy: SignupStrategy
 ): AppThunk => {
   return async (dispatch): Promise<void> => {
-    const response = await postSetSignupStrategy(signupStrategy);
+    const response = await postSettings({ signupStrategy });
 
     if (response?.status === "error") {
       return await Promise.reject(response);
     }
 
     if (response?.status === "success") {
-      dispatch(submitSetSignupStrategyAsync(response.signupStrategy));
+      dispatch(submitSetSignupStrategyAsync(response.settings.signupStrategy));
     }
   };
 };
