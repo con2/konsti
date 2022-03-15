@@ -55,11 +55,15 @@ export const GameEntry = ({
     return `${hoursStr} ${minutesStr}`;
   };
 
-  const formatPopularity = (popularity: number): string => {
+  const formatPopularity = (
+    popularity: Number,
+    max_popularity: Number,
+    min_popularity: Number
+  ): string => {
     let popularityStr = "green";
-    if (popularity > 4 && popularity < 6) {
+    if (popularity > min_popularity && popularity < max_popularity) {
       popularityStr = "yellow";
-    } else if (popularity >= 6) {
+    } else if (popularity >= max_popularity) {
       popularityStr = "red";
     }
     return popularityStr;
@@ -77,10 +81,16 @@ export const GameEntry = ({
     <GameContainer key={game.gameId}>
       <GameHeader>
         <HeaderContainer>
-          <h3>
-            <PopularityCircle color={formatPopularity(game.popularity)} />{" "}
-            {game.title}
-          </h3>
+          <TitleContainer>
+            <PopularityCircle
+              color={formatPopularity(
+                game.popularity,
+                game.maxAttendance,
+                game.minAttendance
+              )}
+            />{" "}
+            <h3>{game.title}</h3>
+          </TitleContainer>
           <p>
             {t("signup.expectedDuration", {
               EXPECTED_DURATION: formatDuration(game.mins),
@@ -93,7 +103,9 @@ export const GameEntry = ({
             })}
           </PlayerCount>
           <PlayersNeeded visible={players < game.minAttendance}>
-            {t("signup.playerNeeded", { COUNT: game.minAttendance - players })}
+            {t("signup.playerNeeded", {
+              COUNT: game.minAttendance - players,
+            })}
           </PlayersNeeded>
         </HeaderContainer>
         <GameTags>
@@ -242,10 +254,19 @@ const FavoriteIcon = styled(FontAwesomeIcon)`
   color: ${(props) => props.theme.favorited};
 `;
 
+const TitleContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
+`;
+
 const PopularityCircle = styled.div`
+  display: flex;
   height: 10px;
   width: 10px;
   background-color: ${(props) => props.color};
   border: 1px solid black;
   border-radius: 50%;
+  margin-top: 5px;
+  margin-right: 5px;
 `;
