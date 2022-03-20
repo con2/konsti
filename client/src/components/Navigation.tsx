@@ -6,6 +6,11 @@ import { config } from "client/config";
 import { LoggedInUserNavigation } from "./LoggedInUserNavigation";
 import { UserNavigation } from "./UserNavigation";
 import { useAppSelector } from "client/utils/hooks";
+import {
+  HEADER_HEIGHT,
+  TEST_VALUES_HEIGHT,
+  TEST_VALUES_MARGIN,
+} from "client/components/Header";
 
 export const Navigation = (): ReactElement => {
   const username = useAppSelector((state) => state.login.username);
@@ -74,7 +79,10 @@ const NavigationIconContainer = styled.span`
 
 const Dimmer = styled.div<{ includeTimeSelectorHeight: boolean }>`
   position: absolute;
-  top: ${(props) => (props.includeTimeSelectorHeight ? 40 + 50 : 40)}px;
+  top: ${(props) =>
+    props.includeTimeSelectorHeight
+      ? HEADER_HEIGHT + TEST_VALUES_HEIGHT + TEST_VALUES_MARGIN * 2
+      : HEADER_HEIGHT}px;
   left: 0;
   right: 0;
   bottom: 0;
@@ -85,7 +93,10 @@ const Dimmer = styled.div<{ includeTimeSelectorHeight: boolean }>`
 
 const Drawer = styled.div<{ includeTimeSelectorHeight: boolean }>`
   position: absolute;
-  top: ${(props) => (props.includeTimeSelectorHeight ? 40 + 50 : 40)}px;
+  top: ${(props) =>
+    props.includeTimeSelectorHeight
+      ? HEADER_HEIGHT + TEST_VALUES_HEIGHT + TEST_VALUES_MARGIN * 2
+      : HEADER_HEIGHT}px;
   bottom: 0;
   width: 60%;
   z-index: 100;
