@@ -15,8 +15,8 @@ export const SignupStrategySelector = (): ReactElement => {
     { value: SignupStrategy.DIRECT, title: t("strategies.direct") },
     { value: SignupStrategy.ALGORITHM, title: t("strategies.algorithm") },
     {
-      value: SignupStrategy.DIRECT_ALGORITHM,
-      title: t("strategies.direct+algorithm"),
+      value: SignupStrategy.ALGORITHM_AND_DIRECT,
+      title: t("strategies.algorithm+direct"),
     },
   ];
 

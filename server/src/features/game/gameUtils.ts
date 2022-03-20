@@ -96,7 +96,7 @@ const getSignupStrategyForGame = (
   const start = moment(game.startTime);
   const { DIRECT_SIGNUP_START } = sharedConfig;
 
-  if (settings.signupStrategy !== SignupStrategy.DIRECT_ALGORITHM) {
+  if (settings.signupStrategy !== SignupStrategy.ALGORITHM_AND_DIRECT) {
     return settings.signupStrategy;
   }
 
