@@ -66,8 +66,12 @@ export const startServer = async (
     app.use(express.static(staticPath));
   }
 
-  app.get("/", (_req: Request, res: Response) => {
-    res.sendFile(path.join(staticPath, "index.html"));
+  app.get("/*", (req: Request, res: Response) => {
+    if (req.originalUrl.includes("/api/")) {
+      res.sendStatus(404);
+    } else {
+      res.sendFile(path.join(staticPath, "index.html"));
+    }
   });
 
   let server: Server;
