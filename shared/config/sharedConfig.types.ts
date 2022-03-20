@@ -18,7 +18,7 @@ export interface SharedConfig {
 export enum SignupStrategy {
   DIRECT = "direct",
   ALGORITHM = "algorithm",
-  DIRECT_ALGORITHM = "direct+algorithm",
+  ALGORITHM_AND_DIRECT = "algorithm+direct",
 }
 
 export enum ConventionType {
