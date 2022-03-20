@@ -71,7 +71,7 @@ export const MyGamesView = (): ReactElement => {
         </MyGamesGroupNotification>
       )}
 
-      {signupStrategy === SignupStrategy.ALGORITHM && (
+      {signupStrategy !== SignupStrategy.DIRECT && (
         <MySignupsList
           signedGames={getSignedGames(
             signedGames,
