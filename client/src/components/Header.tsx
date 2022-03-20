@@ -10,6 +10,10 @@ import { useAppSelector } from "client/utils/hooks";
 import { sharedConfig } from "shared/config/sharedConfig";
 import { SignupStrategySelector } from "client/test/test-components/SignupStrategySelector";
 
+export const TEST_VALUES_HEIGHT = 30;
+export const TEST_VALUES_MARGIN = 20;
+export const HEADER_HEIGHT = 40;
+
 export const Header = (): ReactElement => {
   const { t } = useTranslation();
   const { loadedSettings, showTestValues } = config;
@@ -19,15 +23,12 @@ export const Header = (): ReactElement => {
 
   return (
     <>
-      <TestValuesContainer>
-        {loadedSettings !== "production" && showTestValues && (
+      {loadedSettings !== "production" && showTestValues && (
+        <TestValuesContainer>
           <TestTimeSelector />
-        )}
-
-        {loadedSettings !== "production" && showTestValues && (
           <SignupStrategySelector />
-        )}
-      </TestValuesContainer>
+        </TestValuesContainer>
+      )}
 
       <HeaderContainer>
         <Navigation />
@@ -59,7 +60,7 @@ const HeaderContainer = styled.header`
   margin-bottom: 8px;
   color: #282828;
   width: 100%;
-  height: 40px;
+  height: ${HEADER_HEIGHT}px;
 `;
 
 const HeaderBar = styled.div`
@@ -77,5 +78,6 @@ const TestValuesContainer = styled.div`
   display: flex;
   flex-direction: row;
   gap: 10px;
-  margin: 20px 0 20px 0;
+  height: ${TEST_VALUES_HEIGHT}px;
+  margin: ${TEST_VALUES_MARGIN}px 0;
 `;
