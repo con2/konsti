@@ -40,7 +40,7 @@ export const AppRoutes = (): ReactElement => {
         )}
         {!loggedIn && <Route path="/login" element={<LoginView />} />}
         <Route path="/logout" element={<LogoutView />} />
-        <Route path="/" element={<Navigate to="/games" />} />
+        <Route path="/" element={<div />} />
         <Route path="/*" element={<Navigate to="/" />} />
       </Routes>
     );

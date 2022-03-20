@@ -65,7 +65,6 @@
     "@types/moment-locales-webpack-plugin": "1.2.3",
     "@types/react-beautiful-dnd": "13.1.2",
     "@types/react-dom": "17.0.14",
-    "@types/react-router-dom": "5.3.3",
     "@types/styled-components": "5.1.24",
     "@welldone-software/why-did-you-render": "6.2.3",
     "babel-loader": "8.2.3",
