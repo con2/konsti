@@ -35,7 +35,7 @@ export const ChangePasswordForm = ({
 
     if (validationError) {
       setPasswordChangeMessage(
-        <Message error={true}>{t(validationError)}</Message>
+        <Message error={true}>{validationError}</Message>
       );
       return;
     }
