@@ -304,6 +304,6 @@
   "strategies": {
     "direct": "Suora",
     "algorithm": "Algoritmi",
-    "direct+algorithm": "Suora + Algoritmi"
+    "algorithm+direct": "Algoritmi + Suora"
   }
 }
