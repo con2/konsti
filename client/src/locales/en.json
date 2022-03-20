@@ -303,6 +303,6 @@
   "strategies": {
     "direct": "Direct",
     "algorithm": "Algorithm",
-    "direct+algorithm": "Direct + Algorithm"
+    "algorithm+direct": "Algorithm + Direct"
   }
 }
