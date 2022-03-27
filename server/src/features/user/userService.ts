@@ -19,7 +19,6 @@ import {
   PostUserResponse,
 } from "shared/typings/api/users";
 import { ServerError } from "shared/typings/api/errors";
-import { Game } from "shared/typings/models/game";
 import { GetGroupReturnValue } from "server/typings/user.typings";
 import {
   PostFavoriteResponse,
@@ -248,7 +247,7 @@ export const fetchUserByUsername = async (
     status: "success",
     games: {
       enteredGames: user.enteredGames,
-      favoritedGames: user.favoritedGames as readonly Game[],
+      favoritedGames: user.favoritedGames,
       signedGames: user.signedGames,
     },
     username: user.username,

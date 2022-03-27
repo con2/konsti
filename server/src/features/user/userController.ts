@@ -78,7 +78,7 @@ export const postUserPassword = async (
   } catch (error) {
     if (error instanceof ZodError) {
       logger.error(
-        `Error validating postFavorite parameters: ${error.message}`
+        `Error validating postUserPassword parameters: ${error.message}`
       );
     }
     return res.sendStatus(422);
@@ -179,7 +179,7 @@ export const postGroup = async (
     parameters = PostGroupParameters.parse(req.body);
   } catch (error) {
     if (error instanceof ZodError) {
-      logger.error(`Error validating getUser parameters: ${error.message}`);
+      logger.error(`Error validating postGroup parameters: ${error.message}`);
     }
     return res.sendStatus(422);
   }
@@ -329,7 +329,7 @@ export const postSignup = async (
     parameters = PostSignupParameters.parse(req.body);
   } catch (error) {
     if (error instanceof ZodError) {
-      logger.error(`Error validating getUser parameters: ${error.message}`);
+      logger.error(`Error validating postSignup parameters: ${error.message}`);
     }
     return res.sendStatus(422);
   }
