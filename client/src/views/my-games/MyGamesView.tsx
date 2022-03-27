@@ -22,6 +22,7 @@ import { ChangePasswordForm } from "client/views/helper/components/ChangePasswor
 export const MyGamesView = (): ReactElement => {
   const { t } = useTranslation();
 
+  const games = useAppSelector((state) => state.allGames.games);
   const serial = useAppSelector((state) => state.login.serial);
   const username = useAppSelector((state) => state.login.username);
   const groupCode = useAppSelector((state) => state.login.groupCode);
@@ -36,6 +37,10 @@ export const MyGamesView = (): ReactElement => {
 
   const [showAllGames, setShowAllGames] = useState<boolean>(false);
   const [showChangePassword, setShowChangePassword] = useState<boolean>(false);
+
+  const fullFavoritedGames = favoritedGames.flatMap(
+    (favoritedGame) => games.find((game) => game.gameId === favoritedGame) ?? []
+  );
 
   const store = useStore();
 
@@ -61,7 +66,9 @@ export const MyGamesView = (): ReactElement => {
 
       <MyFavoritesList
         favoritedGames={
-          showAllGames ? favoritedGames : getUpcomingFavorites(favoritedGames)
+          showAllGames
+            ? fullFavoritedGames
+            : getUpcomingFavorites(fullFavoritedGames)
         }
       />
 

@@ -39,7 +39,9 @@ export const GamesByStartTimes = ({
       if (game.startTime === startTime) {
         return (
           <GameDetailsList key={game.gameId}>
-            <Link to={`/games/${game.gameId}`}>{game.title} </Link>
+            <Link to={`/games/${game.gameId}`} data-testid={"game-title"}>
+              {game.title}{" "}
+            </Link>
             <ButtonPlacement>
               <Button
                 onClick={async () => {

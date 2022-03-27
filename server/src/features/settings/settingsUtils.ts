@@ -42,7 +42,7 @@ export const removeHiddenGamesFromUsers = async (
 
         const favoritedGames = user.favoritedGames.filter((favoritedGame) => {
           const hiddenFound = hiddenGames.find((hiddenGame) => {
-            return hiddenGame.gameId === favoritedGame.gameId;
+            return hiddenGame.gameId === favoritedGame;
           });
           if (!hiddenFound) {
             return favoritedGame;

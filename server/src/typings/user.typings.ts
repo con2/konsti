@@ -1,10 +1,5 @@
 import mongoose from "mongoose";
-import {
-  FavoritedGame,
-  SelectedGame,
-  User,
-  UserGroup,
-} from "shared/typings/models/user";
+import { SelectedGame, User, UserGroup } from "shared/typings/models/user";
 
 export interface UserDoc extends User, mongoose.Document {}
 
@@ -14,7 +9,7 @@ export interface NewUserData {
   passwordHash: string | Promise<void>;
   userGroup?: UserGroup;
   groupCode?: string;
-  favoritedGames?: readonly FavoritedGame[];
+  favoritedGames?: readonly string[];
   signedGames?: readonly SelectedGame[];
   enteredGames?: readonly SelectedGame[];
 }

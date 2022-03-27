@@ -51,7 +51,7 @@ export const GameDetails = (): ReactElement => {
 
       // Check if in favorites
       favoritedGames.find((favoritedGame) => {
-        if (favoritedGame.gameId === foundGame.gameId) {
+        if (favoritedGame === foundGame.gameId) {
           setFavorited(true);
         }
       });
