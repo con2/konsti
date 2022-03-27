@@ -5,13 +5,7 @@ import { NewUserData } from "server/typings/user.typings";
 import { Serial } from "server/typings/serial.typings";
 import { GameDoc } from "server/typings/game.typings";
 import { findGames } from "server/features/game/gameRepository";
-import { Game } from "shared/typings/models/game";
-import {
-  FavoritedGame,
-  SelectedGame,
-  User,
-  UserGroup,
-} from "shared/typings/models/user";
+import { SelectedGame, User, UserGroup } from "shared/typings/models/user";
 import { SaveFavoriteRequest } from "shared/typings/api/favorite";
 import {
   DeleteEnteredGameParameters,
@@ -348,48 +342,32 @@ export const saveGroupCode = async (
 
 export const saveFavorite = async (
   favoriteData: SaveFavoriteRequest
-): Promise<readonly Game[] | null> => {
-  let games: GameDoc[];
-  try {
-    games = await findGames();
-  } catch (error) {
-    logger.error(`MongoDB: Error loading games - ${error}`);
-    throw error;
-  }
-
-  const favoritedGames = favoriteData.favoritedGames.reduce<FavoritedGame[]>(
-    (acc, favoritedGame) => {
-      const gameDocInDb = games.find((game) => game.gameId === favoritedGame);
-
-      if (gameDocInDb) {
-        acc.push(gameDocInDb._id as FavoritedGame);
-      }
-      return acc;
-    },
-    []
-  );
+): Promise<readonly string[] | null> => {
+  const { username, favoritedGames } = favoriteData;
 
   let response;
   try {
     response = await UserModel.findOneAndUpdate(
-      { username: favoriteData.username },
+      { username },
       {
         favoritedGames,
       },
-      { new: true, fields: "favoritedGames -_id" }
-    )
-      .lean<User>()
-      .populate("favoritedGames", "-_id -__v -updatedAt -createdAt");
+      { new: true, fields: "favoritedGames" }
+    ).lean();
     logger.info(
       `MongoDB: Favorite data stored for user "${favoriteData.username}"`
     );
-    return response.favoritedGames as Game[];
+    if (!response) {
+      throw new Error(`User not found`);
+    }
   } catch (error) {
     logger.error(
       `MongoDB: Error storing favorite data for user "${favoriteData.username}" - ${error}`
     );
     throw error;
   }
+
+  return response.favoritedGames;
 };
 
 export const updateEnteredGames = async (
