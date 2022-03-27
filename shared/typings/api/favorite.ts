@@ -1,7 +1,5 @@
-import { Game } from "shared/typings/models/game";
-
 export interface PostFavoriteResponse {
-  favoritedGames: readonly Game[];
+  favoritedGames: readonly string[];
   message: string;
   status: "success";
 }

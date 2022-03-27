@@ -8,6 +8,7 @@ import { SelectedGame, UserGroup } from "shared/typings/models/user";
 import { SignupMessage } from "shared/typings/models/settings";
 import { UserSignup } from "shared/typings/api/games";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
+import { UserGames } from "shared/typings/api/users";
 
 export interface AdminState {
   hiddenGames: readonly Game[];
@@ -38,11 +39,7 @@ export interface LoginState {
   groupMembers: readonly GroupMember[];
 }
 
-export interface MyGamesState {
-  enteredGames: readonly SelectedGame[];
-  favoritedGames: readonly Game[];
-  signedGames: readonly SelectedGame[];
-}
+export type MyGamesState = UserGames;
 
 export interface ResultsState {
   result: readonly Result[];
