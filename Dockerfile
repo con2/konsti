@@ -13,4 +13,4 @@ RUN yarn workspaces focus --all --production
 EXPOSE 5000
 
 # Command to run app
-CMD ["yarn", "start-and-populate-db"]
+CMD ["yarn", "start"]

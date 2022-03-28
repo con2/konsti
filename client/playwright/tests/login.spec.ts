@@ -1,6 +1,9 @@
 import { test, expect } from "@playwright/test";
+import { populateDb } from "./populateDb";
 
 test("Login", async ({ page, context }) => {
+  await populateDb();
+
   const username = "admin";
   const password = "test";
 
