@@ -8,6 +8,6 @@ RUN apt-get install --no-install-recommends -y wget=1.20.3-1ubuntu2 \
 
 WORKDIR /playwright
 
-RUN npm install @playwright/test@1.20.1
+RUN npm install @playwright/test@1.20.1 concurrently@7.0.0
 
 COPY . .
