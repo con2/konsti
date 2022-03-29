@@ -80,7 +80,7 @@ const stagingConfig = {
 
 const devConfig = {
   dbConnString: process.env.CONN_STRING ?? "mongodb://localhost:27017",
-  dbName: "konsti",
+  dbName: process.env.DB_NAME ?? "konsti",
   jwtSecretKey: "secret",
   jwtSecretKeyAdmin: "admin secret",
   jwtSecretKeyHelp: "help secret",
