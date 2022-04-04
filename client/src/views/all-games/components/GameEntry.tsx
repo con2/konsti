@@ -55,18 +55,18 @@ export const GameEntry = ({
     return `${hoursStr} ${minutesStr}`;
   };
 
-  const formatPopularity = (
-    popularity: Number,
-    max_popularity: Number,
-    min_popularity: Number
+  const formatPopularityCircleColor = (
+    numPlayers: number,
+    maxAttendance: number,
+    minAttendance: number
   ): string => {
-    let popularityStr = "green";
-    if (popularity > min_popularity && popularity < max_popularity) {
-      popularityStr = "yellow";
-    } else if (popularity >= max_popularity) {
-      popularityStr = "red";
+    let popularityColor = "success";
+    if (numPlayers > minAttendance && numPlayers < maxAttendance) {
+      popularityColor = "critical";
+    } else if (numPlayers >= maxAttendance) {
+      popularityColor = "warning";
     }
-    return popularityStr;
+    return popularityColor;
   };
   // Favorite / remove favorite clicked
   const updateFavoriteHandler = async (
@@ -77,20 +77,26 @@ export const GameEntry = ({
     await updateFavorite(updateOpts);
   };
 
+  const formatGamePopularityInfo = (
+    numPlayers: number,
+    maxAttendance: number,
+    minAttendance: number
+  ): string => {
+    const count: number = minAttendance - numPlayers;
+    let popularityInfo: string = t("signup.playerNeeded", { COUNT: count });
+    if (numPlayers > minAttendance && numPlayers < maxAttendance) {
+      popularityInfo = t("medium-popularity");
+    } else if (numPlayers >= maxAttendance) {
+      popularityInfo = t("high-popularity");
+    }
+    return popularityInfo;
+  };
+
   return (
     <GameContainer key={game.gameId}>
       <GameHeader>
         <HeaderContainer>
-          <TitleContainer>
-            <PopularityCircle
-              color={formatPopularity(
-                game.popularity,
-                game.maxAttendance,
-                game.minAttendance
-              )}
-            />{" "}
-            <h3>{game.title}</h3>
-          </TitleContainer>
+          <h3>{game.title}</h3>
           <p>
             {t("signup.expectedDuration", {
               EXPECTED_DURATION: formatDuration(game.mins),
@@ -102,11 +108,20 @@ export const GameEntry = ({
               MAX_ATTENDANCE: game.maxAttendance,
             })}
           </PlayerCount>
-          <PlayersNeeded visible={players < game.minAttendance}>
-            {t("signup.playerNeeded", {
-              COUNT: game.minAttendance - players,
-            })}
-          </PlayersNeeded>
+          <GamePopularityContainer>
+            <PopularityCircle
+              color={formatPopularityCircleColor(
+                players,
+                game.maxAttendance,
+                game.minAttendance
+              )}
+            />{" "}
+            {formatGamePopularityInfo(
+              players,
+              game.maxAttendance,
+              game.minAttendance
+            )}
+          </GamePopularityContainer>
         </HeaderContainer>
         <GameTags>
           {favorited && loggedIn && userGroup === "user" && game && (
@@ -142,7 +157,6 @@ export const GameEntry = ({
           <TagColumn>
             <Tag>{t(`programType.${game.programType}`)}</Tag>
             {game.gameSystem && <Tag>{game.gameSystem}</Tag>}
-            <Tag>{t("high-popularity")}</Tag>
           </TagColumn>
         </GameTags>
       </GameHeader>
@@ -171,10 +185,10 @@ export const GameEntry = ({
   );
 };
 
-const PlayersNeeded = styled("span")<{ visible: boolean }>`
+/* const PlayersNeeded = styled("span")<{ visible: boolean }>`
   margin-top: 8px;
   display: ${(props) => (props.visible ? "block" : "none")};
-`;
+`; */
 
 const PlayerCount = styled("span")<{ visible: boolean }>`
   margin-top: 8px;
@@ -254,18 +268,18 @@ const FavoriteIcon = styled(FontAwesomeIcon)`
   color: ${(props) => props.theme.favorited};
 `;
 
-const TitleContainer = styled.div`
+const GamePopularityContainer = styled.div`
   display: flex;
   flex-direction: row;
-  padding: 5px;
+  padding-top: 15px;
 `;
 
-const PopularityCircle = styled.div`
+const PopularityCircle = styled("div")<{ color: string }>`
   display: flex;
   height: 10px;
   width: 10px;
-  background-color: ${(props) => props.color};
-  border: 1px solid black;
+  background-color: ${(props) => props.theme[props.color]};
+  border: none;
   border-radius: 50%;
   margin-top: 5px;
   margin-right: 5px;

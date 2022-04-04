@@ -35,6 +35,7 @@ export const theme = {
   error: "#ff6a7e",
   informative: "#030303",
   warning: "#fc3d60",
+  critical: "#ffd966",
 
   breakpointPhone: "500px",
   breakpointTablet: "768px",
