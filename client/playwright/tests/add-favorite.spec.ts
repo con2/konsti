@@ -1,6 +1,9 @@
 import { test, expect } from "@playwright/test";
+import { populateDb } from "./utils";
 
-test("Add favorite", async ({ page, context }) => {
+test("Add favorite", async ({ page, context, request }) => {
+  await populateDb(request);
+
   const username = "test1";
   const password = "test";
 
