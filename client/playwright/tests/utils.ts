@@ -1,38 +1,7 @@
-import { concurrently } from "concurrently";
+import { expect, APIRequestContext } from "@playwright/test";
 
-export const populateDb = async (testName: string): Promise<void> => {
-  const { result } = concurrently([
-    {
-      command: "yarn:populate-db:dummy",
-      env: { DB_NAME: `test-${testName}` },
-    },
-  ]);
-
-  try {
-    await result;
-  } catch (error) {
-    throw Error(`Populating DB failed for ${testName}`);
-  }
-};
-
-export const startServer = async (
-  testName: string,
-  port: number
-): Promise<void> => {
-  const { result } = concurrently([
-    {
-      command: "yarn:start",
-      env: {
-        DB_NAME: `test-${testName}`,
-        PORT: port,
-        NODE_ENV: "development",
-      },
-    },
-  ]);
-
-  try {
-    await result;
-  } catch (error) {
-    throw Error(`Starting server failed for ${testName}`);
-  }
+export const populateDb = async (request: APIRequestContext): Promise<void> => {
+  const url = `${process.env.PLAYWRIGHT_BASEURL}/api/populate-db`;
+  const response = await request.post(url);
+  expect(response.status()).toBe(200);
 };

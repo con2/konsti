@@ -1,4 +1,3 @@
-import { Command } from "commander";
 import { logger } from "server/utils/logger";
 import { createGames } from "server/test/test-data-generation/generators/createGames";
 import { createSignups } from "server/test/test-data-generation/generators/createSignups";
@@ -16,12 +15,25 @@ import { createEnteredGames } from "server/test/test-data-generation/generators/
 import { createSettings } from "server/test/test-data-generation/generators/createSettings";
 import { sharedConfig } from "shared/config/sharedConfig";
 
-const runGenerators = async (): Promise<void> => {
+interface Options {
+  clean?: boolean;
+  users?: boolean;
+  games?: boolean;
+  signups?: boolean;
+  entered?: boolean;
+}
+
+interface Settings {
+  closeDb: boolean;
+}
+
+export const runGenerators = async (
+  options: Options,
+  settings: Settings
+): Promise<void> => {
   if (process.env.NODE_ENV === "production") {
     throw new Error(`Data creation not allowed in production`);
   }
-
-  const commander = new Command();
 
   // Generator settings
   const enableGroups = sharedConfig.enableGroups;
@@ -37,23 +49,6 @@ const runGenerators = async (): Promise<void> => {
   // Total games: newGamesCount * signupTimes
   const newGamesCount = 10; // How many games are available for each signup time
   const signupTimes = 3; // For how many signup times games are created
-
-  commander
-    .option("-u, --users", "Generate users")
-    .option("-s, --signups", "Generate signups")
-    .option("-e, --entered", "Generate entered games")
-    .option("-g, --games", "Generate games")
-    .option("-c, --clean", "Clean all data");
-
-  const options = commander.opts();
-
-  if (process.argv.length < 3) {
-    commander.help();
-  }
-
-  commander.parse(process.argv);
-
-  await db.connectToDb();
 
   if (options.clean) {
     logger.info("Clean all data");
@@ -106,9 +101,5 @@ const runGenerators = async (): Promise<void> => {
     await createEnteredGames();
   }
 
-  await db.gracefulExit();
+  settings.closeDb && (await db.gracefulExit());
 };
-
-runGenerators().catch((error) => {
-  logger.error(error);
-});
