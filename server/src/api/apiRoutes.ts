@@ -29,6 +29,7 @@ import {
   getUserBySerialOrUsername,
   postUserPassword,
 } from "server/features/user/userController";
+import { postPopulateDb } from "server/test/test-data-generation/testDataController";
 import {
   getTestSettings,
   postTestSettings,
@@ -51,6 +52,7 @@ import {
   USERS_BY_SERIAL_OR_USERNAME_ENDPOINT,
   USERS_PASSWORD_ENDPOINT,
   TEST_SETTINGS_ENDPOINT,
+  POPULATE_DB_ENDPOINT,
 } from "shared/constants/apiEndpoints";
 
 export const apiRoutes = express.Router();
@@ -93,6 +95,7 @@ apiRoutes.delete(SIGNUP_MESSAGE_ENDPOINT, deleteSignupMessage);
 if (process.env.SETTINGS !== "production") {
   apiRoutes.post(TEST_SETTINGS_ENDPOINT, postTestSettings);
   apiRoutes.get(TEST_SETTINGS_ENDPOINT, getTestSettings);
+  apiRoutes.post(POPULATE_DB_ENDPOINT, postPopulateDb);
 }
 
 /* eslint-enable @typescript-eslint/no-misused-promises */
