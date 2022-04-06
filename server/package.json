@@ -11,7 +11,7 @@
     "eslint": "yarn run -T eslint . --ext .js,.ts",
     "eslint-rules": "yarn run -T eslint --print-config .eslintrc.js",
     "fixer": "ts-node src/features/statistics/dataFixer.ts --",
-    "generate-data": "ts-node src/test/test-data-generation/runGenerators.ts",
+    "generate-data": "ts-node src/test/test-data-generation/parseCliOptions.ts",
     "initialize-db": "ts-node src/utils/initializeDatabase.ts",
     "generate-serials": "ts-node src/utils/generateSerials.ts",
     "lint": "yarn eslint && yarn prettier:check",

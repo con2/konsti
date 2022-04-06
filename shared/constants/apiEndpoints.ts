@@ -16,3 +16,4 @@ export const SIGNUP_MESSAGE_ENDPOINT = "/api/signup-info";
 export const SESSION_RESTORE_ENDPOINT = "/api/session-restore";
 export const USERS_PASSWORD_ENDPOINT = "/api/users/password";
 export const TEST_SETTINGS_ENDPOINT = "/api/test-settings";
+export const POPULATE_DB_ENDPOINT = "/api/populate-db";
