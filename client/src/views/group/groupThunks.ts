@@ -5,26 +5,28 @@ import {
   submitUpdateGroupAsync,
   submitUpdateGroupCodeAsync,
 } from "client/views/login/loginSlice";
-import { Group } from "shared/typings/api/groups";
+import { GroupRequest } from "shared/typings/api/groups";
 
 export const submitJoinGroup = (
-  group: Group
+  groupRequest: GroupRequest
 ): AppThunk<Promise<number | undefined>> => {
   return async (dispatch): Promise<number | undefined> => {
-    const joinGroupResponse = await postGroup(group);
+    const joinGroupResponse = await postGroup(groupRequest);
 
     if (joinGroupResponse?.status === "error") {
       return joinGroupResponse.code;
     }
 
     if (joinGroupResponse?.status === "success") {
-      dispatch(submitGetGroup(joinGroupResponse.groupCode, group.username));
+      dispatch(
+        submitGetGroup(joinGroupResponse.groupCode, groupRequest.username)
+      );
       dispatch(submitUpdateGroupCodeAsync(joinGroupResponse.groupCode));
     }
   };
 };
 
-export const submitCreateGroup = (group: Group): AppThunk => {
+export const submitCreateGroup = (group: GroupRequest): AppThunk => {
   return async (dispatch): Promise<void> => {
     const createGroupResponse = await postGroup(group);
 
@@ -57,10 +59,10 @@ export const submitGetGroup = (
 };
 
 export const submitLeaveGroup = (
-  group: Group
+  groupRequest: GroupRequest
 ): AppThunk<Promise<number | undefined>> => {
   return async (dispatch): Promise<number | undefined> => {
-    const leaveGroupResponse = await postGroup(group);
+    const leaveGroupResponse = await postGroup(groupRequest);
 
     if (leaveGroupResponse?.status === "error") {
       return leaveGroupResponse.code;

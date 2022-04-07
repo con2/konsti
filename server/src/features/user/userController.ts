@@ -25,7 +25,7 @@ import {
   USERS_PASSWORD_ENDPOINT,
 } from "shared/constants/apiEndpoints";
 import { SignupData } from "shared/typings/api/signup";
-import { Group, GroupSchema } from "shared/typings/api/groups";
+import { GroupRequest, GroupRequestSchema } from "shared/typings/api/groups";
 import { SaveFavoriteRequest } from "shared/typings/api/favorite";
 import {
   LoginFormFields,
@@ -158,14 +158,14 @@ export const postFavorite = async (
 };
 
 export const postGroup = async (
-  req: Request<{}, {}, Group>,
+  req: Request<{}, {}, GroupRequest>,
   res: Response
 ): Promise<Response> => {
   logger.info(`API call: POST ${GROUP_ENDPOINT}`);
 
-  let group: Group;
+  let groupRequest: GroupRequest;
   try {
-    group = GroupSchema.parse(req.body);
+    groupRequest = GroupRequestSchema.parse(req.body);
   } catch (error) {
     if (error instanceof ZodError) {
       logger.error(`Error validating postGroup parameters: ${error.message}`);
@@ -180,7 +180,7 @@ export const postGroup = async (
     ownSerial,
     leaveGroup,
     closeGroup,
-  } = group;
+  } = groupRequest;
 
   if (!isAuthorized(req.headers.authorization, UserGroup.USER, username)) {
     return res.sendStatus(401);

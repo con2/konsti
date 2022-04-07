@@ -13,7 +13,7 @@ export interface GetGroupResponse {
   status: "success";
 }
 
-export const GroupSchema = z.object({
+export const GroupRequestSchema = z.object({
   groupCode: z.string(),
   isGroupLeader: z.boolean(),
   ownSerial: z.string(),
@@ -22,7 +22,7 @@ export const GroupSchema = z.object({
   closeGroup: z.optional(z.boolean()),
 });
 
-export type Group = z.infer<typeof GroupSchema>;
+export type GroupRequest = z.infer<typeof GroupRequestSchema>;
 
 export interface GroupMember {
   enteredGames: readonly SelectedGame[];

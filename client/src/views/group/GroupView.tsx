@@ -14,7 +14,7 @@ import { submitSignup } from "client/views/signup/signupThunks";
 import { loadGroupMembers } from "client/utils/loadData";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { Button } from "client/components/Button";
-import { Group } from "shared/typings/api/groups";
+import { GroupRequest } from "shared/typings/api/groups";
 
 export const GroupView = (): ReactElement => {
   const username = useAppSelector((state) => state.login.username);
@@ -53,7 +53,7 @@ export const GroupView = (): ReactElement => {
   };
 
   const createGroup = async (): Promise<void> => {
-    const group: Group = {
+    const groupRequest: GroupRequest = {
       username: username,
       groupCode: serial,
       isGroupLeader: true,
@@ -61,7 +61,7 @@ export const GroupView = (): ReactElement => {
     };
 
     try {
-      await dispatch(submitCreateGroup(group));
+      await dispatch(submitCreateGroup(groupRequest));
     } catch (error) {
       showMessage({
         value: t("generalCreateGroupError"),
@@ -85,14 +85,14 @@ export const GroupView = (): ReactElement => {
   };
 
   const joinGroup = async (): Promise<void> => {
-    const group: Group = {
+    const groupRequest: GroupRequest = {
       username: username,
       groupCode: joinGroupValue,
       isGroupLeader: false,
       ownSerial: serial,
     };
 
-    const errorCode = await dispatch(submitJoinGroup(group));
+    const errorCode = await dispatch(submitJoinGroup(groupRequest));
 
     if (errorCode) {
       switch (errorCode) {
@@ -128,7 +128,7 @@ export const GroupView = (): ReactElement => {
   }): Promise<void> => {
     setLoading(true);
 
-    const group: Group = {
+    const groupRequest: GroupRequest = {
       username: username,
       groupCode: groupCode,
       isGroupLeader,
@@ -136,7 +136,7 @@ export const GroupView = (): ReactElement => {
       leaveGroup: true,
     };
 
-    const errorCode = await dispatch(submitLeaveGroup(group));
+    const errorCode = await dispatch(submitLeaveGroup(groupRequest));
 
     if (errorCode) {
       switch (errorCode) {
@@ -170,7 +170,7 @@ export const GroupView = (): ReactElement => {
     isGroupLeader: boolean;
   }): Promise<void> => {
     setLoading(true);
-    const group: Group = {
+    const groupRequest: GroupRequest = {
       username: username,
       groupCode: groupCode,
       isGroupLeader,
@@ -180,7 +180,7 @@ export const GroupView = (): ReactElement => {
     };
 
     try {
-      await dispatch(submitLeaveGroup(group));
+      await dispatch(submitLeaveGroup(groupRequest));
     } catch (error) {
       showMessage({
         value: t("generalLeaveGroupError"),
