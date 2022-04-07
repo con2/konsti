@@ -21,7 +21,11 @@ export const LoggedInUserNavigation = (props: {
       </RouterLink>
 
       {isUser(userGroup) && (
-        <RouterLink onClick={props.onSelect} to="/mygames">
+        <RouterLink
+          onClick={props.onSelect}
+          to="/mygames"
+          data-testid="my-games-page-link"
+        >
           {t("pages.myGames")}
         </RouterLink>
       )}

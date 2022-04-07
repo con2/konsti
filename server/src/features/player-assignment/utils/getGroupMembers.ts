@@ -23,7 +23,7 @@ export const getGroupMembers = (
             Object.assign({
               ...player,
               signedGames: groupLeader.signedGames,
-            })
+            }) as User
           );
         }
       }

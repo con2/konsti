@@ -5,35 +5,37 @@ import {
   submitUpdateGroupAsync,
   submitUpdateGroupCodeAsync,
 } from "client/views/login/loginSlice";
-import { GroupData } from "shared/typings/api/groups";
+import { GroupRequest } from "shared/typings/api/groups";
 
-export const submitJoinGroup = (groupData: GroupData): AppThunk => {
-  return async (dispatch): Promise<void> => {
-    const joinGroupResponse = await postGroup(groupData);
+export const submitJoinGroup = (
+  groupRequest: GroupRequest
+): AppThunk<Promise<number | undefined>> => {
+  return async (dispatch): Promise<number | undefined> => {
+    const joinGroupResponse = await postGroup(groupRequest);
 
     if (joinGroupResponse?.status === "error") {
-      return await Promise.reject(joinGroupResponse);
+      return joinGroupResponse.code;
     }
 
     if (joinGroupResponse?.status === "success") {
-      dispatch(submitGetGroup(joinGroupResponse.groupCode, groupData.username));
+      dispatch(
+        submitGetGroup(joinGroupResponse.groupCode, groupRequest.username)
+      );
       dispatch(submitUpdateGroupCodeAsync(joinGroupResponse.groupCode));
     }
   };
 };
 
-export const submitCreateGroup = (groupData: GroupData): AppThunk => {
+export const submitCreateGroup = (group: GroupRequest): AppThunk => {
   return async (dispatch): Promise<void> => {
-    const createGroupResponse = await postGroup(groupData);
+    const createGroupResponse = await postGroup(group);
 
     if (createGroupResponse?.status === "error") {
       return await Promise.reject(createGroupResponse);
     }
 
     if (createGroupResponse?.status === "success") {
-      dispatch(
-        submitGetGroup(createGroupResponse.groupCode, groupData.username)
-      );
+      dispatch(submitGetGroup(createGroupResponse.groupCode, group.username));
       dispatch(submitUpdateGroupCodeAsync(createGroupResponse.groupCode));
     }
   };
@@ -56,12 +58,14 @@ export const submitGetGroup = (
   };
 };
 
-export const submitLeaveGroup = (groupData: GroupData): AppThunk => {
-  return async (dispatch): Promise<void> => {
-    const leaveGroupResponse = await postGroup(groupData);
+export const submitLeaveGroup = (
+  groupRequest: GroupRequest
+): AppThunk<Promise<number | undefined>> => {
+  return async (dispatch): Promise<number | undefined> => {
+    const leaveGroupResponse = await postGroup(groupRequest);
 
     if (leaveGroupResponse?.status === "error") {
-      return await Promise.reject(leaveGroupResponse);
+      return leaveGroupResponse.code;
     }
 
     if (leaveGroupResponse?.status === "success") {

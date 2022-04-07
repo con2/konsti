@@ -49,10 +49,11 @@ ENABLE_MOBILE_SAFARI &&
 
 const config: PlaywrightTestConfig = {
   projects,
-  retries: 1,
+  retries: process.env.CI ? 1 : 0,
   outputDir: "./test-results",
+  workers: 1,
   use: {
-    baseURL: process.env.PLAYWRIGHT_BASEURL ?? "http://localhost:5000",
+    baseURL: process.env.PLAYWRIGHT_BASEURL ?? "http://localhost:8000",
     video: "on",
     trace: "on-first-retry",
     headless: true,

@@ -20,7 +20,6 @@ export const LoginForm = (): ReactElement => {
     handleSubmit,
     formState: { errors },
     control,
-    clearErrors,
   } = useForm<LoginFormFields>();
 
   const { isSubmitting } = useFormState({
@@ -30,11 +29,8 @@ export const LoginForm = (): ReactElement => {
   const onSubmit: SubmitHandler<LoginFormFields> = async (
     loginFormFields
   ): Promise<void> => {
-    try {
-      await dispatch(submitLogin(loginFormFields));
-    } catch (error) {
-      setServerError(t(error.message));
-    }
+    const errorMessage = await dispatch(submitLogin(loginFormFields));
+    errorMessage && setServerError(t(errorMessage));
   };
 
   return (
@@ -44,13 +40,12 @@ export const LoginForm = (): ReactElement => {
           <StyledInput
             {...register("username", {
               required: `${t(`validation.required`)}`,
+              onChange: (e) => {
+                setServerError("");
+              },
             })}
             placeholder={t("username")}
             type={"text"}
-            onChange={(e) => {
-              clearErrors("username");
-              setServerError("");
-            }}
             data-testid={"login-form-input-username"}
           />
         </StyledFormField>
@@ -65,13 +60,12 @@ export const LoginForm = (): ReactElement => {
           <StyledInput
             {...register("password", {
               required: `${t(`validation.required`)}`,
+              onChange: (e) => {
+                setServerError("");
+              },
             })}
             placeholder={t("password")}
             type={passwordVisible ? "text" : "password"}
-            onChange={(e) => {
-              clearErrors("password");
-              setServerError("");
-            }}
             data-testid={"login-form-input-password"}
           />
         </StyledFormField>

@@ -7,9 +7,11 @@ import {
 } from "./gameDataHelpers";
 import { logger } from "server/utils/logger";
 import { config } from "server/config";
+import { Game } from "shared/typings/models/game";
+import { User } from "shared/typings/models/user";
 
 export const getGameStats = (year: number, event: string): void => {
-  const games = JSON.parse(
+  const games: Game[] = JSON.parse(
     fs.readFileSync(
       `${config.statsDataDir}/${event}/${year}/games.json`,
       "utf8"
@@ -18,7 +20,7 @@ export const getGameStats = (year: number, event: string): void => {
 
   logger.info(`Loaded ${games.length} games`);
 
-  const users = JSON.parse(
+  const users: User[] = JSON.parse(
     fs.readFileSync(
       `${config.statsDataDir}/${event}/${year}/users.json`,
       "utf8"

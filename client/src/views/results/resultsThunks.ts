@@ -23,12 +23,14 @@ export const submitGetResults = (startTime: string): AppThunk => {
   };
 };
 
-export const submitPlayersAssign = (signupTime: string): AppThunk => {
-  return async (dispatch): Promise<void> => {
+export const submitPlayersAssign = (
+  signupTime: string
+): AppThunk<Promise<string | undefined>> => {
+  return async (dispatch): Promise<string | undefined> => {
     const assignResponse = await postPlayerAssignment(signupTime);
 
     if (assignResponse?.status === "error") {
-      return await Promise.reject(assignResponse);
+      return assignResponse.message;
     }
 
     if (assignResponse?.status === "success") {

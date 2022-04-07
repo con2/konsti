@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { validationResult } from "express-validator";
-import { z } from "zod";
+import { z, ZodError } from "zod";
 import {
   fetchUserByUsername,
   storeUser,
@@ -25,7 +25,7 @@ import {
   USERS_PASSWORD_ENDPOINT,
 } from "shared/constants/apiEndpoints";
 import { SignupData } from "shared/typings/api/signup";
-import { GroupData } from "shared/typings/api/groups";
+import { GroupRequest, GroupRequestSchema } from "shared/typings/api/groups";
 import { SaveFavoriteRequest } from "shared/typings/api/favorite";
 import {
   LoginFormFields,
@@ -76,7 +76,11 @@ export const postUserPassword = async (
   try {
     parameters = PostUserPasswordParameters.parse(req.body);
   } catch (error) {
-    logger.error(`Error validating postFavorite parameters: ${error.message}`);
+    if (error instanceof ZodError) {
+      logger.error(
+        `Error validating postUserPassword parameters: ${error.message}`
+      );
+    }
     return res.sendStatus(422);
   }
 
@@ -129,7 +133,11 @@ export const postFavorite = async (
   try {
     parameters = PostFavoriteParameters.parse(req.body);
   } catch (error) {
-    logger.error(`Error validating postFavorite parameters: ${error.message}`);
+    if (error instanceof ZodError) {
+      logger.error(
+        `Error validating postFavorite parameters: ${error.message}`
+      );
+    }
     return res.sendStatus(422);
   }
 
@@ -150,32 +158,29 @@ export const postFavorite = async (
 };
 
 export const postGroup = async (
-  req: Request<{}, {}, { groupData: GroupData }>,
+  req: Request<{}, {}, GroupRequest>,
   res: Response
 ): Promise<Response> => {
   logger.info(`API call: POST ${GROUP_ENDPOINT}`);
 
-  const PostGroupParameters = z.object({
-    groupData: z.object({
-      groupCode: z.string(),
-      leader: z.boolean(),
-      ownSerial: z.string(),
-      username: z.string(),
-      leaveGroup: z.optional(z.boolean()),
-      closeGroup: z.optional(z.boolean()),
-    }),
-  });
-
-  let parameters;
+  let groupRequest: GroupRequest;
   try {
-    parameters = PostGroupParameters.parse(req.body);
+    groupRequest = GroupRequestSchema.parse(req.body);
   } catch (error) {
-    logger.error(`Error validating getUser parameters: ${error.message}`);
+    if (error instanceof ZodError) {
+      logger.error(`Error validating postGroup parameters: ${error.message}`);
+    }
     return res.sendStatus(422);
   }
 
-  const { username, leader, groupCode, ownSerial, leaveGroup, closeGroup } =
-    parameters.groupData;
+  const {
+    username,
+    isGroupLeader,
+    groupCode,
+    ownSerial,
+    leaveGroup,
+    closeGroup,
+  } = groupRequest;
 
   if (!isAuthorized(req.headers.authorization, UserGroup.USER, username)) {
     return res.sendStatus(401);
@@ -183,7 +188,7 @@ export const postGroup = async (
 
   const response = await storeGroup(
     username,
-    leader,
+    isGroupLeader,
     groupCode,
     ownSerial,
     leaveGroup,
@@ -206,7 +211,10 @@ export const getUser = async (
   try {
     parameters = GetUserQueryParameters.parse(req.query);
   } catch (error) {
-    logger.error(`Error validating getUser parameters: ${error.message}`);
+    if (error instanceof ZodError) {
+      logger.error(`Error validating getUser parameters: ${error.message}`);
+    }
+
     return res.sendStatus(422);
   }
 
@@ -242,9 +250,11 @@ export const getUserBySerialOrUsername = async (
   try {
     parameters = GetUserQueryParameters.parse(req.query);
   } catch (error) {
-    logger.error(
-      `Error validating getUserBySerialOrUsername parameters: ${error.message}`
-    );
+    if (error instanceof ZodError) {
+      logger.error(
+        `Error validating getUserBySerialOrUsername parameters: ${error.message}`
+      );
+    }
     return res.sendStatus(422);
   }
 
@@ -313,7 +323,9 @@ export const postSignup = async (
   try {
     parameters = PostSignupParameters.parse(req.body);
   } catch (error) {
-    logger.error(`Error validating getUser parameters: ${error.message}`);
+    if (error instanceof ZodError) {
+      logger.error(`Error validating postSignup parameters: ${error.message}`);
+    }
     return res.sendStatus(422);
   }
 

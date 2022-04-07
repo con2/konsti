@@ -6,7 +6,7 @@ import {
 } from "client/views/my-games/components/MySignupsList";
 
 test("should render correctly", () => {
-  const props: Props = { signedGames: [] };
+  const props: Props = { signedGames: [], isGroupLeader: false };
 
   render(<MySignupsList {...props} />);
 });

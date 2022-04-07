@@ -96,6 +96,7 @@ const devConfig: Configuration = {
   devtool: config.enableReduxTrace ? "source-map" : "eval", // Use eval for best hot-loading perf
 
   // webpack-dev-server config
+  // @ts-expect-error: ?
   devServer: {
     host: "localhost",
     port: 8000,
@@ -104,7 +105,6 @@ const devConfig: Configuration = {
   },
 
   plugins: [
-    // @ts-expect-error: ?
     new Dotenv({ path: "./config/dev.env" }),
     new ReactRefreshWebpackPlugin(),
   ],
@@ -121,7 +121,6 @@ const prodConfig: Configuration = {
   },
 
   plugins: [
-    // @ts-expect-error: ?
     new Dotenv({ path: getEnvVariableFile() }),
     new MomentLocalesPlugin({
       localesToKeep: ["fi"], // "en" is built into Moment and can't be removed

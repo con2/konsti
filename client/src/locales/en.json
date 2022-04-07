@@ -56,8 +56,8 @@
   },
   "validation": {
     "required": "Required",
-    "tooLong": "Value is too long",
-    "tooShort": "Value is too short"
+    "tooLong": "Value is too long, max {{length}} characters",
+    "tooShort": "Value is too short, {{length}} characters required"
   },
   "pages": {
     "myGames": "My Games",
@@ -303,6 +303,6 @@
   "strategies": {
     "direct": "Direct",
     "algorithm": "Algorithm",
-    "direct+algorithm": "Direct + Algorithm"
+    "algorithm+direct": "Algorithm + Direct"
   }
 }

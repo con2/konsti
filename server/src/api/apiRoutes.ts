@@ -9,11 +9,9 @@ import {
 import {
   deleteSignupMessage,
   getSettings,
-  postAppOpen,
   postHidden,
+  postSettings,
   postSignupMessage,
-  postSignupStrategy,
-  postSignupTime,
 } from "server/features/settings/settingsController";
 import {
   deleteEnteredGame,
@@ -31,6 +29,11 @@ import {
   getUserBySerialOrUsername,
   postUserPassword,
 } from "server/features/user/userController";
+import { postPopulateDb } from "server/test/test-data-generation/testDataController";
+import {
+  getTestSettings,
+  postTestSettings,
+} from "server/test/test-settings/testSettingsController";
 import {
   ASSIGNMENT_ENDPOINT,
   ENTERED_GAME_ENDPOINT,
@@ -43,14 +46,13 @@ import {
   SESSION_RESTORE_ENDPOINT,
   RESULTS_ENDPOINT,
   SETTINGS_ENDPOINT,
-  SIGNUPTIME_ENDPOINT,
   SIGNUP_ENDPOINT,
   SIGNUP_MESSAGE_ENDPOINT,
-  TOGGLE_APP_OPEN_ENDPOINT,
   USERS_ENDPOINT,
   USERS_BY_SERIAL_OR_USERNAME_ENDPOINT,
   USERS_PASSWORD_ENDPOINT,
-  SET_SIGNUP_STRATEGY_ENDPOINT,
+  TEST_SETTINGS_ENDPOINT,
+  POPULATE_DB_ENDPOINT,
 } from "shared/constants/apiEndpoints";
 
 export const apiRoutes = express.Router();
@@ -66,15 +68,13 @@ apiRoutes.post(ASSIGNMENT_ENDPOINT, postAssignment);
 apiRoutes.post(SIGNUP_ENDPOINT, postSignup);
 apiRoutes.post(FAVORITE_ENDPOINT, postFavorite);
 apiRoutes.post(HIDDEN_ENDPOINT, postHidden);
-apiRoutes.post(SIGNUPTIME_ENDPOINT, postSignupTime);
 apiRoutes.post(FEEDBACK_ENDPOINT, postFeedback);
 apiRoutes.post(GROUP_ENDPOINT, postGroup);
-apiRoutes.post(TOGGLE_APP_OPEN_ENDPOINT, postAppOpen);
 apiRoutes.post(ENTERED_GAME_ENDPOINT, postEnteredGame);
 apiRoutes.post(SIGNUP_MESSAGE_ENDPOINT, postSignupMessage);
 apiRoutes.post(SESSION_RESTORE_ENDPOINT, postSessionRestore);
 apiRoutes.post(USERS_PASSWORD_ENDPOINT, postUserPassword);
-apiRoutes.post(SET_SIGNUP_STRATEGY_ENDPOINT, postSignupStrategy);
+apiRoutes.post(SETTINGS_ENDPOINT, postSettings);
 
 /* GET routes */
 
@@ -89,5 +89,13 @@ apiRoutes.get(GROUP_ENDPOINT, getGroup);
 
 apiRoutes.delete(ENTERED_GAME_ENDPOINT, deleteEnteredGame);
 apiRoutes.delete(SIGNUP_MESSAGE_ENDPOINT, deleteSignupMessage);
+
+/* DEV routes */
+
+if (process.env.SETTINGS !== "production") {
+  apiRoutes.post(TEST_SETTINGS_ENDPOINT, postTestSettings);
+  apiRoutes.get(TEST_SETTINGS_ENDPOINT, getTestSettings);
+  apiRoutes.post(POPULATE_DB_ENDPOINT, postPopulateDb);
+}
 
 /* eslint-enable @typescript-eslint/no-misused-promises */

@@ -8,7 +8,7 @@ const UserSchema = new mongoose.Schema(
     userGroup: String,
     serial: String,
     groupCode: String,
-    favoritedGames: [{ type: mongoose.Schema.Types.ObjectId, ref: "Game" }],
+    favoritedGames: [{ type: String }],
     signedGames: [
       {
         gameDetails: { type: mongoose.Schema.Types.ObjectId, ref: "Game" },

@@ -17,13 +17,13 @@ import { submitSelectedGames } from "client/views/signup/signupSlice";
 export interface Props {
   games: readonly Game[];
   signupTimes: readonly string[];
-  leader: boolean;
+  isGroupLeader: boolean;
 }
 
 export const SignupList = ({
   games,
   signupTimes,
-  leader,
+  isGroupLeader,
 }: Props): ReactElement => {
   const signupTime = useAppSelector((state) => state.signup.signupTime);
   const username = useAppSelector((state) => state.login.username);
@@ -55,10 +55,10 @@ export const SignupList = ({
       signupTime,
     };
 
-    try {
-      await dispatch(submitSignup(signupData));
-    } catch (error) {
-      switch (error.code) {
+    const errorCode = await dispatch(submitSignup(signupData));
+
+    if (errorCode) {
+      switch (errorCode) {
         case 41:
           showMessage("signupEnded");
           return;
@@ -87,10 +87,10 @@ export const SignupList = ({
       signupTime: signupTime,
     };
 
-    try {
-      await dispatch(submitSignup(signupData));
-    } catch (error) {
-      switch (error.code) {
+    const errorCode = await dispatch(submitSignup(signupData));
+
+    if (errorCode) {
+      switch (errorCode) {
         case 41:
           showMessage("signupEnded");
           return;
@@ -152,7 +152,7 @@ export const SignupList = ({
 
               <SignupActionButtons
                 submitting={submitting}
-                leader={leader}
+                isGroupLeader={isGroupLeader}
                 onSubmitClick={onSubmitClick}
                 onCancelClick={onCancelClick}
                 signupSubmitted={signupSubmitted}

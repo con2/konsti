@@ -56,8 +56,8 @@
   },
   "validation": {
     "required": "Vaadittu kenttä",
-    "tooLong": "Syöte on liian pitkä",
-    "tooShort": "Syöte on liian lyhyt"
+    "tooLong": "Syöte on liian pitkä, enintään {{length}} merkkiä",
+    "tooShort": "Syöte on liian lyhyt, vähintään {{length}} merkkiä"
   },
   "pages": {
     "myGames": "Omat pelit",
@@ -304,6 +304,6 @@
   "strategies": {
     "direct": "Suora",
     "algorithm": "Algoritmi",
-    "direct+algorithm": "Suora + Algoritmi"
+    "algorithm+direct": "Algoritmi + Suora"
   }
 }

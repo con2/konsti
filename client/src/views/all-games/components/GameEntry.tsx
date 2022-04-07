@@ -18,19 +18,20 @@ interface Props {
   game: Game;
   startTime: string;
   players: number;
+  signupStrategy: SignupStrategy;
 }
 
 export const GameEntry = ({
   game,
   startTime,
   players,
+  signupStrategy,
 }: Props): ReactElement => {
   const { t } = useTranslation();
 
   const username = useAppSelector((state) => state.login.username);
   const loggedIn = useAppSelector((state) => state.login.loggedIn);
   const userGroup = useAppSelector((state) => state.login.userGroup);
-  const signupStrategy = useAppSelector((state) => state.admin.signupStrategy);
   const favoritedGames = useAppSelector(
     (state) => state.myGames.favoritedGames
   );
@@ -38,9 +39,8 @@ export const GameEntry = ({
   const dispatch = useAppDispatch();
 
   const favorited =
-    favoritedGames.find(
-      (favoritedGame) => favoritedGame.gameId === game.gameId
-    ) !== undefined;
+    favoritedGames.find((favoritedGame) => favoritedGame === game.gameId) !==
+    undefined;
 
   const isEnterGameMode = signupStrategy === SignupStrategy.DIRECT;
   const gameIsFull = game.maxAttendance === players;
@@ -93,10 +93,10 @@ export const GameEntry = ({
   };
 
   return (
-    <GameContainer key={game.gameId}>
+    <GameContainer key={game.gameId} data-testid="game-container">
       <GameHeader>
         <HeaderContainer>
-          <h3>{game.title}</h3>
+          <h3 data-testid="game-title">{game.title}</h3>
           <p>
             {t("signup.expectedDuration", {
               EXPECTED_DURATION: formatDuration(game.mins),
@@ -135,6 +135,7 @@ export const GameEntry = ({
                   dispatch,
                 })
               }
+              data-testid={"remove-favorite-button"}
             >
               <FavoriteIcon icon="heart" />
             </FavoriteButton>
@@ -150,6 +151,7 @@ export const GameEntry = ({
                   dispatch,
                 })
               }
+              data-testid={"add-favorite-button"}
             >
               <FavoriteIcon icon={["far", "heart"]} />
             </FavoriteButton>

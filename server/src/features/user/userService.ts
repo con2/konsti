@@ -19,7 +19,6 @@ import {
   PostUserResponse,
 } from "shared/typings/api/users";
 import { ServerError } from "shared/typings/api/errors";
-import { Game } from "shared/typings/models/game";
 import { GetGroupReturnValue } from "server/typings/user.typings";
 import {
   PostFavoriteResponse,
@@ -248,7 +247,7 @@ export const fetchUserByUsername = async (
     status: "success",
     games: {
       enteredGames: user.enteredGames,
-      favoritedGames: user.favoritedGames as readonly Game[],
+      favoritedGames: user.favoritedGames,
       signedGames: user.signedGames,
     },
     username: user.username,
@@ -323,7 +322,7 @@ export const storeFavorite = async (
 
 export const storeGroup = async (
   username: string,
-  leader: boolean,
+  isGroupLeader: boolean,
   groupCode: string,
   ownSerial: string,
   leaveGroup = false,
@@ -353,7 +352,7 @@ export const storeGroup = async (
   if (leaveGroup) {
     const groupMembers = await findGroupMembers(groupCode);
 
-    if (leader && groupMembers.length > 1) {
+    if (isGroupLeader && groupMembers.length > 1) {
       return {
         message: "Leader cannot leave non-empty group",
         status: "error",
@@ -390,7 +389,7 @@ export const storeGroup = async (
   }
 
   // Create group
-  if (leader) {
+  if (isGroupLeader) {
     // Check that serial is not used
     let findGroupResponse;
     try {
@@ -443,7 +442,7 @@ export const storeGroup = async (
   }
 
   // Join group
-  if (!leader) {
+  if (!isGroupLeader) {
     // Cannot join own group
     if (ownSerial === groupCode) {
       return {

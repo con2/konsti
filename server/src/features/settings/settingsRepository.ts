@@ -1,11 +1,10 @@
-import moment from "moment";
 import { logger } from "server/utils/logger";
 import { SettingsModel } from "server/features/settings/settingsSchema";
 import { GameDoc } from "server/typings/game.typings";
 import { Settings, SignupMessage } from "shared/typings/models/settings";
 import { Game } from "shared/typings/models/game";
 import { findGames } from "server/features/game/gameRepository";
-import { SignupStrategy } from "shared/config/sharedConfig.types";
+import { PostSettingsRequest } from "shared/typings/api/settings";
 
 export const removeSettings = async (): Promise<void> => {
   logger.info("MongoDB: remove ALL settings from db");
@@ -59,13 +58,13 @@ export const saveHidden = async (
     games = await findGames();
   } catch (error) {
     logger.error(`MongoDB: Error loading games - ${error}`);
-    return error;
+    throw error;
   }
 
   const formattedData = hiddenGames.reduce<Game[]>((acc, hiddenGame) => {
     const gameDocInDb = games.find((game) => game.gameId === hiddenGame.gameId);
     if (gameDocInDb) {
-      acc.push(gameDocInDb._id);
+      acc.push(gameDocInDb._id as Game);
     }
     return acc;
   }, []);
@@ -88,64 +87,6 @@ export const saveHidden = async (
   }
 
   logger.info(`MongoDB: Hidden data updated`);
-  return settings;
-};
-
-export const saveSignupTime = async (signupTime: string): Promise<Settings> => {
-  let settings;
-  try {
-    settings = await SettingsModel.findOneAndUpdate(
-      {},
-      {
-        signupTime: signupTime ? moment(signupTime).format() : undefined,
-      },
-      { new: true, upsert: true }
-    );
-  } catch (error) {
-    throw new Error(`MongoDB: Error updating signup time: ${error}`);
-  }
-
-  logger.info(`MongoDB: Signup time updated`);
-  return settings;
-};
-
-export const saveToggleAppOpen = async (
-  appOpen: boolean
-): Promise<Settings> => {
-  let settings;
-  try {
-    settings = await SettingsModel.findOneAndUpdate(
-      {},
-      {
-        appOpen,
-      },
-      { new: true, upsert: true }
-    );
-  } catch (error) {
-    throw new Error(`MongoDB: Error updating app status: ${error}`);
-  }
-
-  logger.info(`MongoDB: App open status updated`);
-  return settings;
-};
-
-export const saveSignupStrategy = async (
-  signupStrategy: SignupStrategy
-): Promise<Settings> => {
-  let settings;
-  try {
-    settings = await SettingsModel.findOneAndUpdate(
-      {},
-      {
-        signupStrategy,
-      },
-      { new: true, upsert: true }
-    );
-  } catch (error) {
-    throw new Error(`MongoDB: Error updating signup strategy: ${error}`);
-  }
-
-  logger.info(`MongoDB: Signup strategy updated`);
   return settings;
 };
 
@@ -195,4 +136,22 @@ export const delSignupMessage = async (gameId: string): Promise<Settings> => {
 
   logger.info(`MongoDB: Signup info deleted`);
   return settings;
+};
+
+export const saveSettings = async (
+  settings: PostSettingsRequest
+): Promise<Settings> => {
+  let updatedSettings;
+  try {
+    updatedSettings = await SettingsModel.findOneAndUpdate({}, settings, {
+      new: true,
+      upsert: true,
+      fields: "-createdAt -updatedAt",
+    });
+  } catch (error) {
+    throw new Error(`MongoDB: Error updating app settings: ${error}`);
+  }
+
+  logger.info(`MongoDB: App settings updated`);
+  return updatedSettings.toJSON();
 };

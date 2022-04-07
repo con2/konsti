@@ -8,9 +8,13 @@ import { SelectedGame } from "shared/typings/models/user";
 
 export interface Props {
   signedGames: readonly SelectedGame[];
+  isGroupLeader: boolean;
 }
 
-export const MySignupsList = ({ signedGames }: Props): ReactElement => {
+export const MySignupsList = ({
+  signedGames,
+  isGroupLeader,
+}: Props): ReactElement => {
   const { t } = useTranslation();
 
   const sortedSignups = _.sortBy(signedGames, [
@@ -25,6 +29,9 @@ export const MySignupsList = ({ signedGames }: Props): ReactElement => {
   return (
     <div>
       <h3>{t("signedGames")}</h3>
+
+      {!isGroupLeader && <InfoText>{t("inGroupSignups")}</InfoText>}
+
       <MySignupsGames>
         {signedGames.length === 0 && <span>{t("noSignedGames")}</span>}
         {signedGames.length !== 0 && (
@@ -40,4 +47,8 @@ export const MySignupsList = ({ signedGames }: Props): ReactElement => {
 
 const MySignupsGames = styled.div`
   padding-left: 30px;
+`;
+
+const InfoText = styled.p`
+  font-weight: 600;
 `;

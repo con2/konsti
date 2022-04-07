@@ -7,9 +7,10 @@ import {
 } from "./userDataHelpers";
 import { logger } from "server/utils/logger";
 import { config } from "server/config";
+import { User } from "shared/typings/models/user";
 
 export const getUserStats = (year: number, event: string): void => {
-  const users = JSON.parse(
+  const users: User[] = JSON.parse(
     fs.readFileSync(
       `${config.statsDataDir}/${event}/${year}/users.json`,
       "utf8"

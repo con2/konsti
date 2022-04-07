@@ -1,12 +1,6 @@
 import axios from "axios";
-import {
-  getSettings,
-  postToggleAppOpen,
-} from "client/services/settingsServices";
-import {
-  SETTINGS_ENDPOINT,
-  TOGGLE_APP_OPEN_ENDPOINT,
-} from "shared/constants/apiEndpoints";
+import { getSettings, postSettings } from "client/services/settingsServices";
+import { SETTINGS_ENDPOINT } from "shared/constants/apiEndpoints";
 
 jest.mock("axios");
 const mockAxios = axios as jest.Mocked<typeof axios>;
@@ -27,7 +21,7 @@ test("GET settings from server", async () => {
   expect(mockAxios.get).toHaveBeenCalledWith(SETTINGS_ENDPOINT);
 });
 
-test("POST appOpen setting to server", async () => {
+test("POST setting to server", async () => {
   mockAxios.post.mockImplementation(async () => {
     return await Promise.resolve({
       status: 200,
@@ -37,11 +31,11 @@ test("POST appOpen setting to server", async () => {
 
   const appOpen = true;
 
-  const response = await postToggleAppOpen(appOpen);
+  const response = await postSettings({ appOpen });
 
   expect(response).toEqual("test response");
   expect(mockAxios.post).toHaveBeenCalledTimes(1);
-  expect(mockAxios.post).toHaveBeenCalledWith(TOGGLE_APP_OPEN_ENDPOINT, {
+  expect(mockAxios.post).toHaveBeenCalledWith(SETTINGS_ENDPOINT, {
     appOpen,
   });
 });

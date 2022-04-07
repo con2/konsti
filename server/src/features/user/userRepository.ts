@@ -5,13 +5,7 @@ import { NewUserData } from "server/typings/user.typings";
 import { Serial } from "server/typings/serial.typings";
 import { GameDoc } from "server/typings/game.typings";
 import { findGames } from "server/features/game/gameRepository";
-import { Game } from "shared/typings/models/game";
-import {
-  FavoritedGame,
-  SelectedGame,
-  User,
-  UserGroup,
-} from "shared/typings/models/user";
+import { SelectedGame, User, UserGroup } from "shared/typings/models/user";
 import { SaveFavoriteRequest } from "shared/typings/api/favorite";
 import {
   DeleteEnteredGameParameters,
@@ -50,7 +44,7 @@ export const saveUser = async (newUserData: NewUserData): Promise<User> => {
     logger.error(
       `MongoDB: Error creating new user ${newUserData.username} - ${error}`
     );
-    return error;
+    throw error;
   }
 };
 
@@ -81,7 +75,7 @@ export const updateUser = async (user: User): Promise<User | null> => {
     return response;
   } catch (error) {
     logger.error(`MongoDB: Error updating user ${user.username} - ${error}`);
-    return error;
+    throw error;
   }
 };
 
@@ -111,7 +105,7 @@ export const updateUserPassword = async (
     logger.error(
       `MongoDB: Error updating password for user ${username} - ${error}`
     );
-    return error;
+    throw error;
   }
 };
 
@@ -128,7 +122,7 @@ export const findUser = async (username: string): Promise<User | null> => {
       .populate("signedGames.gameDetails");
   } catch (error) {
     logger.error(`MongoDB: Error finding user ${username} - ${error}`);
-    return error;
+    throw error;
   }
 
   if (!response) {
@@ -156,7 +150,7 @@ export const findUserBySerial = async (
     logger.error(
       `MongoDB: Error finding user with serial ${serial} - ${error}`
     );
-    return error;
+    throw error;
   }
 
   if (!response) {
@@ -177,7 +171,7 @@ export const findUserSerial = async (
     response = await UserModel.findOne({ serial }).lean<User>();
   } catch (error) {
     logger.error(`MongoDB: Error finding Serial ${serial} - ${error}`);
-    return error;
+    throw error;
   }
 
   if (!response) {
@@ -198,7 +192,7 @@ export const findGroupMembers = async (groupCode: string): Promise<User[]> => {
       .populate("signedGames.gameDetails");
   } catch (error) {
     logger.error(`MongoDB: Error finding group ${groupCode} - ${error}`);
-    return error;
+    throw error;
   }
 
   if (!response || response.length === 0) {
@@ -221,7 +215,7 @@ export const findGroup = async (
       response = await UserModel.findOne({ groupCode, username }).lean<User>();
     } catch (error) {
       logger.error(`MongoDB: Error finding group ${groupCode} - ${error}`);
-      return error;
+      throw error;
     }
 
     if (!response) {
@@ -239,7 +233,7 @@ export const findGroup = async (
       response = await UserModel.findOne({ groupCode }).lean<User>();
     } catch (error) {
       logger.error(`MongoDB: Error finding group ${groupCode} - ${error}`);
-      return error;
+      throw error;
     }
 
     if (!response) {
@@ -274,7 +268,7 @@ export const saveSignup = async (signupData: UserSignup): Promise<User> => {
     games = await findGames();
   } catch (error) {
     logger.error(`MongoDB: Error loading games - ${error}`);
-    return error;
+    throw error;
   }
 
   const formattedData = signedGames.reduce<SelectedGame[]>(
@@ -312,7 +306,7 @@ export const saveSignup = async (signupData: UserSignup): Promise<User> => {
     logger.error(
       `MongoDB: Error storing signup data for user "${username}" - ${error}`
     );
-    return error;
+    throw error;
   }
 
   logger.debug(`MongoDB: Signup data stored for user "${username}"`);
@@ -335,7 +329,7 @@ export const saveGroupCode = async (
     logger.error(
       `MongoDB: Error storing group "${groupCode}" stored for user "${username}" - ${error}`
     );
-    return error;
+    throw error;
   }
 
   if (groupCode === "0") {
@@ -348,48 +342,32 @@ export const saveGroupCode = async (
 
 export const saveFavorite = async (
   favoriteData: SaveFavoriteRequest
-): Promise<readonly Game[] | null> => {
-  let games: GameDoc[];
-  try {
-    games = await findGames();
-  } catch (error) {
-    logger.error(`MongoDB: Error loading games - ${error}`);
-    return error;
-  }
-
-  const favoritedGames = favoriteData.favoritedGames.reduce<FavoritedGame[]>(
-    (acc, favoritedGame) => {
-      const gameDocInDb = games.find((game) => game.gameId === favoritedGame);
-
-      if (gameDocInDb) {
-        acc.push(gameDocInDb._id);
-      }
-      return acc;
-    },
-    []
-  );
+): Promise<readonly string[] | null> => {
+  const { username, favoritedGames } = favoriteData;
 
   let response;
   try {
     response = await UserModel.findOneAndUpdate(
-      { username: favoriteData.username },
+      { username },
       {
         favoritedGames,
       },
-      { new: true, fields: "favoritedGames -_id" }
-    )
-      .lean<User>()
-      .populate("favoritedGames", "-_id -__v -updatedAt -createdAt");
+      { new: true, fields: "favoritedGames" }
+    ).lean();
     logger.info(
       `MongoDB: Favorite data stored for user "${favoriteData.username}"`
     );
-    return response.favoritedGames as Game[];
+    if (!response) {
+      throw new Error(`User not found`);
+    }
   } catch (error) {
     logger.error(
       `MongoDB: Error storing favorite data for user "${favoriteData.username}" - ${error}`
     );
-    return error;
+    throw error;
   }
+
+  return response.favoritedGames;
 };
 
 export const updateEnteredGames = async (
@@ -413,7 +391,7 @@ export const updateEnteredGames = async (
     logger.error(
       `MongoDB: Error updating entered games for user ${username} - ${error}`
     );
-    return error;
+    throw error;
   }
 };
 
@@ -427,7 +405,7 @@ export const saveEnteredGame = async (
     game = await getGameById(enteredGameId);
   } catch (error) {
     logger.error(error);
-    throw new Error(error);
+    throw error;
   }
 
   let user;
@@ -454,7 +432,7 @@ export const saveEnteredGame = async (
     logger.error(
       `MongoDB: Error saving entered game for user "${username}" - ${error}`
     );
-    throw new Error(error);
+    throw error;
   }
 
   if (!user) throw new Error(`Username ${username} not found`);
@@ -473,7 +451,7 @@ export const delEnteredGame = async (
     game = await getGameById(enteredGameId);
   } catch (error) {
     logger.error(error);
-    throw new Error(error);
+    throw error;
   }
 
   let user;
@@ -498,7 +476,7 @@ export const delEnteredGame = async (
     logger.error(
       `MongoDB: Error deleting entered game from user "${username}" - ${error}`
     );
-    throw new Error(error);
+    throw error;
   }
 
   if (!user) throw new Error(`Username ${username} not found`);

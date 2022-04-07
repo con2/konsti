@@ -8,7 +8,7 @@ import { Game } from "shared/typings/models/game";
 import { PostGamesResponse, GetGamesResponse } from "shared/typings/api/games";
 import { findGames, saveGames } from "server/features/game/gameRepository";
 import { ServerError } from "shared/typings/api/errors";
-import { getGamesWithPlayers } from "./gameUtils";
+import { enrichGames } from "./gameUtils";
 
 export const storeGames = async (): Promise<
   PostGamesResponse | ServerError
@@ -77,7 +77,7 @@ export const storeGames = async (): Promise<
 export const fetchGames = async (): Promise<GetGamesResponse | ServerError> => {
   try {
     const games = await findGames();
-    const gamesWithPlayers = await getGamesWithPlayers(games);
+    const gamesWithPlayers = await enrichGames(games);
 
     return {
       message: "Games downloaded",
@@ -86,7 +86,7 @@ export const fetchGames = async (): Promise<GetGamesResponse | ServerError> => {
     };
   } catch (error) {
     return {
-      message: `Downloading games failed: ${error.message}`,
+      message: `Downloading games failed`,
       status: "error",
       code: 0,
     };

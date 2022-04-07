@@ -1,7 +1,7 @@
 import fs from "fs";
 import _ from "lodash";
 import { logger } from "server/utils/logger";
-import { FavoritedGame, SelectedGame, User } from "shared/typings/models/user";
+import { SelectedGame, User } from "shared/typings/models/user";
 import { GameDoc } from "server/typings/game.typings";
 import { ResultsCollectionEntry } from "server/typings/result.typings";
 import { writeJson } from "server/features/statistics/statsUtil";
@@ -36,14 +36,13 @@ export const gameIdFix = async (year: number, event: string): Promise<void> => {
   logger.info(`Loaded ${games.length} games`);
 
   users.forEach((user) => {
-    const tempFavoritedGames: FavoritedGame[] = [];
+    const tempFavoritedGames: string[] = [];
     const tempEnteredGames: SelectedGame[] = [];
     const tempSignedGames: SelectedGame[] = [];
 
     games.forEach((game) => {
       user.favoritedGames.forEach((favoritedGame) => {
         if (_.isEqual(game._id, favoritedGame)) {
-          // @ts-expect-error: We only want gameId as string
           tempFavoritedGames.push(game.gameId);
         }
       });

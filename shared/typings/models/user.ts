@@ -6,14 +6,10 @@ export interface User {
   userGroup: UserGroup;
   serial: string;
   groupCode: string;
-  favoritedGames: readonly FavoritedGame[];
+  favoritedGames: readonly string[];
   signedGames: readonly SelectedGame[];
   enteredGames: readonly SelectedGame[];
   createdAt: string | null;
-}
-
-export interface FavoritedGame {
-  gameId: string;
 }
 
 export interface SelectedGame {

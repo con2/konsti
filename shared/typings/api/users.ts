@@ -1,4 +1,3 @@
-import { Game } from "shared/typings/models/game";
 import { SelectedGame } from "shared/typings/models/user";
 
 export interface GetUserResponse {
@@ -23,8 +22,8 @@ export interface GetUserBySerialResponse {
   username: string;
 }
 
-interface UserGames {
+export interface UserGames {
   enteredGames: readonly SelectedGame[];
-  favoritedGames: readonly Game[];
+  favoritedGames: readonly string[];
   signedGames: readonly SelectedGame[];
 }

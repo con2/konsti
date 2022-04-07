@@ -80,11 +80,15 @@ const stagingConfig = {
 
 const devConfig = {
   dbConnString: process.env.CONN_STRING ?? "mongodb://localhost:27017",
-  dbName: "konsti",
+  dbName: process.env.DB_NAME ?? "konsti",
   jwtSecretKey: "secret",
   jwtSecretKeyAdmin: "admin secret",
   jwtSecretKeyHelp: "help secret",
-  allowedCorsOrigins: ["http://localhost:8000", "https://server:5000"],
+  allowedCorsOrigins: [
+    "http://localhost:8000",
+    "http://localhost:5000",
+    "https://server:5000",
+  ],
   useLocalProgramFile: false,
   debug: false,
   GROUP_ASSIGNMENT_ROUNDS: 1,

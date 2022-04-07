@@ -8,12 +8,17 @@ export interface SharedConfig {
   CONVENTION_NAME: ConventionName;
   CONVENTION_YEAR: string;
   CONVENTION_START_TIME: string;
+  SIGNUP_END_TIME: number;
+  SIGNUP_OPEN_TIME: number;
+  DAY_START_TIME: number;
+  DIRECT_SIGNUP_START: number;
+  PRE_SIGNUP_START: number;
 }
 
 export enum SignupStrategy {
   DIRECT = "direct",
   ALGORITHM = "algorithm",
-  DIRECT_ALGORITHM = "direct+algorithm",
+  ALGORITHM_AND_DIRECT = "algorithm+direct",
 }
 
 export enum ConventionType {

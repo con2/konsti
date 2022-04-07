@@ -3,13 +3,13 @@ import { useStore } from "react-redux";
 import { SignupList } from "client/views/signup/components/SignupList";
 import { getOpenStartTimes } from "client/utils/getOpenStartTimes";
 import { loadGroupMembers, loadUser } from "client/utils/loadData";
-import { isGroupLeader } from "client/views/group/GroupView";
+import { getIsGroupLeader } from "client/views/group/GroupView";
 import { useAppSelector } from "client/utils/hooks";
 
 export const SignupView = (): ReactElement => {
   const games = useAppSelector((state) => state.allGames.games);
   const hiddenGames = useAppSelector((state) => state.admin.hiddenGames);
-  const testTime = useAppSelector((state) => state.admin.testTime);
+  const testTime = useAppSelector((state) => state.testSettings.testTime);
   const serial = useAppSelector((state) => state.login.serial);
   const groupCode = useAppSelector((state) => state.login.groupCode);
 
@@ -36,11 +36,15 @@ export const SignupView = (): ReactElement => {
     setSignupTimes(getOpenStartTimes(visibleGames));
   }, [hiddenGames, games, testTime]);
 
-  const leader = isGroupLeader(groupCode, serial);
+  const isGroupLeader = getIsGroupLeader(groupCode, serial);
 
   return (
     <div>
-      <SignupList games={games} signupTimes={signupTimes} leader={leader} />
+      <SignupList
+        games={games}
+        signupTimes={signupTimes}
+        isGroupLeader={isGroupLeader}
+      />
     </div>
   );
 };

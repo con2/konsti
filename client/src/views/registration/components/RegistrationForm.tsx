@@ -32,7 +32,6 @@ export const RegistrationForm = (): ReactElement => {
     handleSubmit,
     formState: { errors },
     control,
-    clearErrors,
   } = useForm<RegistrationFormFields>();
 
   const { isSubmitting } = useFormState({
@@ -42,11 +41,10 @@ export const RegistrationForm = (): ReactElement => {
   const onSubmit: SubmitHandler<RegistrationFormFields> = async (
     registrationFormFields
   ): Promise<void> => {
-    try {
-      await dispatch(submitRegistration(registrationFormFields));
-    } catch (error) {
-      setServerError(t(error.message));
-    }
+    const errorMessage = await dispatch(
+      submitRegistration(registrationFormFields)
+    );
+    errorMessage && setServerError(t(errorMessage));
   };
 
   return (
@@ -61,19 +59,22 @@ export const RegistrationForm = (): ReactElement => {
                 required: `${t(`validation.required`)}`,
                 minLength: {
                   value: USERNAME_LENGTH_MIN,
-                  message: t(`validation.tooShort`),
+                  message: t(`validation.tooShort`, {
+                    length: USERNAME_LENGTH_MIN,
+                  }),
                 },
                 maxLength: {
                   value: USERNAME_LENGTH_MAX,
-                  message: t(`validation.tooLong`),
+                  message: t(`validation.tooLong`, {
+                    length: USERNAME_LENGTH_MAX,
+                  }),
+                },
+                onChange: (e) => {
+                  setServerError("");
                 },
               })}
               placeholder={t("username")}
               type={"text"}
-              onChange={(e) => {
-                clearErrors("username");
-                setServerError("");
-              }}
             />
           </StyledFormField>
         </FormRow>
@@ -89,19 +90,22 @@ export const RegistrationForm = (): ReactElement => {
                 required: `${t(`validation.required`)}`,
                 minLength: {
                   value: PASSWORD_LENGTH_MIN,
-                  message: t(`validation.tooShort`),
+                  message: t(`validation.tooShort`, {
+                    length: PASSWORD_LENGTH_MIN,
+                  }),
                 },
                 maxLength: {
                   value: PASSWORD_LENGTH_MAX,
-                  message: t(`validation.tooLong`),
+                  message: t(`validation.tooLong`, {
+                    length: PASSWORD_LENGTH_MAX,
+                  }),
+                },
+                onChange: (e) => {
+                  setServerError("");
                 },
               })}
               placeholder={t("password")}
               type={passwordVisible ? "text" : "password"}
-              onChange={(e) => {
-                clearErrors("password");
-                setServerError("");
-              }}
             />
           </StyledFormField>
 
@@ -124,13 +128,12 @@ export const RegistrationForm = (): ReactElement => {
                 <StyledInput
                   {...register("serial", {
                     required: `${t(`validation.required`)}`,
+                    onChange: (e) => {
+                      setServerError("");
+                    },
                   })}
                   placeholder={t("serial")}
                   type={"text"}
-                  onChange={(e) => {
-                    clearErrors("serial");
-                    setServerError("");
-                  }}
                 />
               </StyledFormField>
             </FormRow>
@@ -150,12 +153,11 @@ export const RegistrationForm = (): ReactElement => {
             <StyledCheckbox
               {...register("registerDescription", {
                 required: `${t(`validation.required`)}`,
+                onChange: (e) => {
+                  setServerError("");
+                },
               })}
               type={"checkbox"}
-              onChange={(e) => {
-                clearErrors("registerDescription");
-                setServerError("");
-              }}
             />
             <label htmlFor="registerDescription">
               {t("agreePrivacyPolicy")}

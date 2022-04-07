@@ -43,7 +43,19 @@ module.exports = {
     // eslint-plugin-jest
     "jest/no-done-callback": "off",
 
+    // eslint-plugin-testing-library
+    "testing-library/no-unnecessary-act": "off", // Gives false positives
+
     // @typescript-eslint
+    "@typescript-eslint/no-misused-promises": [
+      "error",
+      {
+        checksVoidReturn: {
+          attributes: false, // https://github.com/typescript-eslint/typescript-eslint/pull/4623
+        },
+      },
+    ],
+
     "@typescript-eslint/no-var-requires": "off", // Used to dynamically import dev dependencies
     "@typescript-eslint/default-param-last": "off", // Problem setting Redux reducer initial state
 
