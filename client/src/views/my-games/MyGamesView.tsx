@@ -11,7 +11,7 @@ import {
   getUpcomingFavorites,
 } from "client/utils/getUpcomingGames";
 import { loadUser, loadGames, loadGroupMembers } from "client/utils/loadData";
-import { isGroupLeader } from "client/views/group/GroupView";
+import { getIsGroupLeader } from "client/views/group/GroupView";
 import { GroupMember } from "shared/typings/api/groups";
 import { SelectedGame } from "shared/typings/models/user";
 import { useAppSelector } from "client/utils/hooks";
@@ -44,6 +44,8 @@ export const MyGamesView = (): ReactElement => {
 
   const store = useStore();
 
+  const isGroupLeader = getIsGroupLeader(groupCode, serial);
+
   useEffect(() => {
     const fetchData = async (): Promise<void> => {
       await loadGames();
@@ -72,12 +74,6 @@ export const MyGamesView = (): ReactElement => {
         }
       />
 
-      {!isGroupLeader(groupCode, serial) && (
-        <MyGamesGroupNotification>
-          <InfoText>{t("inGroupSignups")}</InfoText>
-        </MyGamesGroupNotification>
-      )}
-
       {signupStrategy !== SignupStrategy.DIRECT && (
         <MySignupsList
           signedGames={getSignedGames(
@@ -87,6 +83,7 @@ export const MyGamesView = (): ReactElement => {
             showAllGames,
             groupMembers
           )}
+          isGroupLeader={isGroupLeader}
         />
       )}
 
@@ -134,12 +131,14 @@ const getSignedGames = (
   showAllGames: boolean,
   groupMembers: readonly GroupMember[]
 ): readonly SelectedGame[] => {
-  if (isGroupLeader(groupCode, serial)) {
+  const isGroupLeader = getIsGroupLeader(groupCode, serial);
+
+  if (isGroupLeader) {
     if (!showAllGames) return getUpcomingSignedGames(signedGames);
     else return signedGames;
   }
 
-  if (!isGroupLeader(groupCode, serial)) {
+  if (!isGroupLeader) {
     const groupLeader = getGroupLeader(groupMembers);
 
     if (!showAllGames) {
@@ -156,14 +155,6 @@ const MyGamesViewContainer = styled.div`
   padding: 8px 16px;
 `;
 
-const MyGamesGroupNotification = styled.div`
-  margin: 30px 0 0 0;
-`;
-
 const ChangePasswordButton = styled(Button)`
   margin: 30px 0 0 0;
-`;
-
-const InfoText = styled.p`
-  font-weight: 600;
 `;

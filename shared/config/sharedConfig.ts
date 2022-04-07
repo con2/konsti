@@ -11,7 +11,7 @@ export const sharedConfig: SharedConfig = {
   // Convention settings
   conventionType: ConventionType.REMOTE,
   assignmentStrategy: AssignmentStrategy.GROUP_PADG,
-  enableGroups: false,
+  enableGroups: true,
 
   // Two phase signup settings
   PRE_SIGNUP_START: 60 * 4, // minutes

@@ -12,6 +12,7 @@ import { ConventionType } from "shared/config/sharedConfig.types";
 import { startTestServer, stopTestServer } from "server/test/utils/testServer";
 import { UserGroup } from "shared/typings/models/user";
 import { getJWT } from "server/utils/jwt";
+import { GroupRequest } from "shared/typings/api/groups";
 
 jest.mock("server/utils/logger");
 
@@ -264,19 +265,19 @@ describe(`POST ${GROUP_ENDPOINT}`, () => {
   test("should return 401 without valid authorization", async () => {
     const { server, mongoServer } = await startTestServer();
 
+    const groupRequest: GroupRequest = {
+      groupCode: "1234",
+      isGroupLeader: true,
+      ownSerial: "1234",
+      username: "testuser",
+      leaveGroup: false,
+      closeGroup: false,
+    };
+
     try {
       const response = await request(server)
         .post(GROUP_ENDPOINT)
-        .send({
-          groupData: {
-            groupCode: "1234",
-            leader: true,
-            ownSerial: "1234",
-            username: "testuser",
-            leaveGroup: false,
-            closeGroup: false,
-          },
-        });
+        .send(groupRequest);
       expect(response.status).toEqual(401);
     } finally {
       await stopTestServer(server, mongoServer);

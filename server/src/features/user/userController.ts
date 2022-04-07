@@ -25,7 +25,7 @@ import {
   USERS_PASSWORD_ENDPOINT,
 } from "shared/constants/apiEndpoints";
 import { SignupData } from "shared/typings/api/signup";
-import { GroupData } from "shared/typings/api/groups";
+import { GroupRequest, GroupRequestSchema } from "shared/typings/api/groups";
 import { SaveFavoriteRequest } from "shared/typings/api/favorite";
 import {
   LoginFormFields,
@@ -158,25 +158,14 @@ export const postFavorite = async (
 };
 
 export const postGroup = async (
-  req: Request<{}, {}, { groupData: GroupData }>,
+  req: Request<{}, {}, GroupRequest>,
   res: Response
 ): Promise<Response> => {
   logger.info(`API call: POST ${GROUP_ENDPOINT}`);
 
-  const PostGroupParameters = z.object({
-    groupData: z.object({
-      groupCode: z.string(),
-      leader: z.boolean(),
-      ownSerial: z.string(),
-      username: z.string(),
-      leaveGroup: z.optional(z.boolean()),
-      closeGroup: z.optional(z.boolean()),
-    }),
-  });
-
-  let parameters;
+  let groupRequest: GroupRequest;
   try {
-    parameters = PostGroupParameters.parse(req.body);
+    groupRequest = GroupRequestSchema.parse(req.body);
   } catch (error) {
     if (error instanceof ZodError) {
       logger.error(`Error validating postGroup parameters: ${error.message}`);
@@ -184,8 +173,14 @@ export const postGroup = async (
     return res.sendStatus(422);
   }
 
-  const { username, leader, groupCode, ownSerial, leaveGroup, closeGroup } =
-    parameters.groupData;
+  const {
+    username,
+    isGroupLeader,
+    groupCode,
+    ownSerial,
+    leaveGroup,
+    closeGroup,
+  } = groupRequest;
 
   if (!isAuthorized(req.headers.authorization, UserGroup.USER, username)) {
     return res.sendStatus(401);
@@ -193,7 +188,7 @@ export const postGroup = async (
 
   const response = await storeGroup(
     username,
-    leader,
+    isGroupLeader,
     groupCode,
     ownSerial,
     leaveGroup,
