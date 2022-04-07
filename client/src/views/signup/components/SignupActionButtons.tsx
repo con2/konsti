@@ -9,7 +9,7 @@ import { Button } from "client/components/Button";
 
 interface Props {
   groupCode: string;
-  leader: boolean;
+  isGroupLeader: boolean;
   onCancelClick: (event: MouseEvent) => void;
   onSubmitClick: (event: MouseEvent) => void;
   selectedGames: readonly SelectedGame[];
@@ -21,7 +21,7 @@ interface Props {
 
 export const SignupActionButtons = ({
   groupCode,
-  leader,
+  isGroupLeader,
   onCancelClick,
   onSubmitClick,
   selectedGames,
@@ -35,11 +35,11 @@ export const SignupActionButtons = ({
 
   return (
     <div>
-      <Button disabled={submitting || !leader} onClick={onSubmitClick}>
+      <Button disabled={submitting || !isGroupLeader} onClick={onSubmitClick}>
         {t("button.signup")}
       </Button>
 
-      <Button disabled={submitting || !leader} onClick={onCancelClick}>
+      <Button disabled={submitting || !isGroupLeader} onClick={onCancelClick}>
         {t("button.cancelSignup")}
       </Button>
 
@@ -49,8 +49,8 @@ export const SignupActionButtons = ({
         <InfoMessage>{t("signupUnsavedChanges")}</InfoMessage>
       )}
 
-      {!leader && <InfoText>{t("signupDisabledNotLeader")}</InfoText>}
-      {leader && groupCode !== "0" && (
+      {!isGroupLeader && <InfoText>{t("signupDisabledNotLeader")}</InfoText>}
+      {isGroupLeader && groupCode !== "0" && (
         <InfoText>{t("signupForWholeGroup")}</InfoText>
       )}
 

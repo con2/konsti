@@ -2,7 +2,7 @@ import moment from "moment";
 import { GroupMember } from "shared/typings/api/groups";
 import { Game } from "shared/typings/models/game";
 import { getTime } from "client/utils/getTime";
-import { isGroupLeader } from "client/views/group/GroupView";
+import { getIsGroupLeader } from "client/views/group/GroupView";
 import { SelectedGame } from "shared/typings/models/user";
 
 export const getUpcomingGames = (
@@ -49,11 +49,13 @@ export const getSignedGames = (
   groupMembers: readonly GroupMember[],
   getAllGames = true
 ): readonly SelectedGame[] => {
-  if (isGroupLeader(groupCode, serial)) {
+  const isGroupLeader = getIsGroupLeader(groupCode, serial);
+
+  if (isGroupLeader) {
     return !getAllGames ? getUpcomingSignedGames(signedGames) : signedGames;
   }
 
-  if (!isGroupLeader(groupCode, serial)) {
+  if (!isGroupLeader) {
     const groupLeader = getGroupLeader(groupMembers);
 
     if (!getAllGames) {
