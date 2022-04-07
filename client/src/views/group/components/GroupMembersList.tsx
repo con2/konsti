@@ -13,11 +13,11 @@ export const GroupMembersList = ({ groupMembers }: Props): ReactElement => {
   if (!groupMembers) return <GroupMembersListContainer />;
 
   const membersList = groupMembers.map((member, index) => {
-    const leader = member.serial === member.groupCode;
+    const isGroupLeader = member.serial === member.groupCode;
     return (
       <p key={member.username}>
         {index + 1}) {member.username}{" "}
-        {leader && <span>({t("groupLeader")})</span>}
+        {isGroupLeader && <span>({t("groupLeader")})</span>}
       </p>
     );
   });

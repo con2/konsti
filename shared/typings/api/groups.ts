@@ -1,3 +1,4 @@
+import { z } from "zod";
 import { SelectedGame } from "shared/typings/models/user";
 
 export interface PostGroupResponse {
@@ -12,14 +13,16 @@ export interface GetGroupResponse {
   status: "success";
 }
 
-export interface GroupData {
-  groupCode: string;
-  leader: boolean;
-  ownSerial: string;
-  username: string;
-  leaveGroup?: boolean;
-  closeGroup?: boolean;
-}
+export const GroupRequestSchema = z.object({
+  groupCode: z.string(),
+  isGroupLeader: z.boolean(),
+  ownSerial: z.string(),
+  username: z.string(),
+  leaveGroup: z.optional(z.boolean()),
+  closeGroup: z.optional(z.boolean()),
+});
+
+export type GroupRequest = z.infer<typeof GroupRequestSchema>;
 
 export interface GroupMember {
   enteredGames: readonly SelectedGame[];
