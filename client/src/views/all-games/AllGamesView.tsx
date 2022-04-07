@@ -20,6 +20,7 @@ export const AllGamesView = (): ReactElement => {
   const games = useAppSelector((state) => state.allGames.games);
   const testTime = useAppSelector((state) => state.testSettings.testTime);
   const hiddenGames = useAppSelector((state) => state.admin.hiddenGames);
+  const signupStrategy = useAppSelector((state) => state.admin.signupStrategy);
 
   const [selectedView, setSelectedView] = useState<string>("upcoming");
   const [selectedTag, setSelectedTag] = useState<string>("");
@@ -34,7 +35,7 @@ export const AllGamesView = (): ReactElement => {
       setLoading(false);
     };
     fetchData();
-  }, [store, testTime]);
+  }, [store, testTime, signupStrategy]);
 
   const visibleTags = [
     "tabletopRPG",
