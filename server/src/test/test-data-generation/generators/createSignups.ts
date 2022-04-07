@@ -111,11 +111,11 @@ const signupGroup = async (
   users: readonly User[]
 ): Promise<void> => {
   // Generate random signup data for the group leader
-  const leader = users.find((user) => user.serial === user.groupCode);
-  if (!leader) throw new Error("Error getting group leader");
+  const groupLeader = users.find((user) => user.serial === user.groupCode);
+  if (!groupLeader) throw new Error("Error getting group leader");
 
   const signupData = {
-    username: leader.username,
+    username: groupLeader.username,
     signedGames: getRandomSignup(games),
   };
 

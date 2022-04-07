@@ -17,13 +17,13 @@ import { submitSelectedGames } from "client/views/signup/signupSlice";
 export interface Props {
   games: readonly Game[];
   signupTimes: readonly string[];
-  leader: boolean;
+  isGroupLeader: boolean;
 }
 
 export const SignupList = ({
   games,
   signupTimes,
-  leader,
+  isGroupLeader,
 }: Props): ReactElement => {
   const signupTime = useAppSelector((state) => state.signup.signupTime);
   const username = useAppSelector((state) => state.login.username);
@@ -152,7 +152,7 @@ export const SignupList = ({
 
               <SignupActionButtons
                 submitting={submitting}
-                leader={leader}
+                isGroupLeader={isGroupLeader}
                 onSubmitClick={onSubmitClick}
                 onCancelClick={onCancelClick}
                 signupSubmitted={signupSubmitted}

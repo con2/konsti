@@ -5,37 +5,35 @@ import {
   submitUpdateGroupAsync,
   submitUpdateGroupCodeAsync,
 } from "client/views/login/loginSlice";
-import { GroupData } from "shared/typings/api/groups";
+import { Group } from "shared/typings/api/groups";
 
 export const submitJoinGroup = (
-  groupData: GroupData
+  group: Group
 ): AppThunk<Promise<number | undefined>> => {
   return async (dispatch): Promise<number | undefined> => {
-    const joinGroupResponse = await postGroup(groupData);
+    const joinGroupResponse = await postGroup(group);
 
     if (joinGroupResponse?.status === "error") {
       return joinGroupResponse.code;
     }
 
     if (joinGroupResponse?.status === "success") {
-      dispatch(submitGetGroup(joinGroupResponse.groupCode, groupData.username));
+      dispatch(submitGetGroup(joinGroupResponse.groupCode, group.username));
       dispatch(submitUpdateGroupCodeAsync(joinGroupResponse.groupCode));
     }
   };
 };
 
-export const submitCreateGroup = (groupData: GroupData): AppThunk => {
+export const submitCreateGroup = (group: Group): AppThunk => {
   return async (dispatch): Promise<void> => {
-    const createGroupResponse = await postGroup(groupData);
+    const createGroupResponse = await postGroup(group);
 
     if (createGroupResponse?.status === "error") {
       return await Promise.reject(createGroupResponse);
     }
 
     if (createGroupResponse?.status === "success") {
-      dispatch(
-        submitGetGroup(createGroupResponse.groupCode, groupData.username)
-      );
+      dispatch(submitGetGroup(createGroupResponse.groupCode, group.username));
       dispatch(submitUpdateGroupCodeAsync(createGroupResponse.groupCode));
     }
   };
@@ -59,10 +57,10 @@ export const submitGetGroup = (
 };
 
 export const submitLeaveGroup = (
-  groupData: GroupData
+  group: Group
 ): AppThunk<Promise<number | undefined>> => {
   return async (dispatch): Promise<number | undefined> => {
-    const leaveGroupResponse = await postGroup(groupData);
+    const leaveGroupResponse = await postGroup(group);
 
     if (leaveGroupResponse?.status === "error") {
       return leaveGroupResponse.code;

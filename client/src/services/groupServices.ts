@@ -3,16 +3,14 @@ import { ServerError } from "shared/typings/api/errors";
 import { GROUP_ENDPOINT } from "shared/constants/apiEndpoints";
 import {
   GetGroupResponse,
-  GroupData,
+  Group,
   PostGroupResponse,
 } from "shared/typings/api/groups";
 
 export const postGroup = async (
-  groupData: GroupData
+  group: Group
 ): Promise<PostGroupResponse | ServerError> => {
-  const response = await api.post<PostGroupResponse>(GROUP_ENDPOINT, {
-    groupData,
-  });
+  const response = await api.post<PostGroupResponse>(GROUP_ENDPOINT, group);
   return response.data;
 };
 

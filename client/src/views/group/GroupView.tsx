@@ -14,6 +14,7 @@ import { submitSignup } from "client/views/signup/signupThunks";
 import { loadGroupMembers } from "client/utils/loadData";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { Button } from "client/components/Button";
+import { Group } from "shared/typings/api/groups";
 
 export const GroupView = (): ReactElement => {
   const username = useAppSelector((state) => state.login.username);
@@ -52,15 +53,15 @@ export const GroupView = (): ReactElement => {
   };
 
   const createGroup = async (): Promise<void> => {
-    const groupData = {
+    const group: Group = {
       username: username,
       groupCode: serial,
-      leader: true,
+      isGroupLeader: true,
       ownSerial: serial,
     };
 
     try {
-      await dispatch(submitCreateGroup(groupData));
+      await dispatch(submitCreateGroup(group));
     } catch (error) {
       showMessage({
         value: t("generalCreateGroupError"),
@@ -84,14 +85,14 @@ export const GroupView = (): ReactElement => {
   };
 
   const joinGroup = async (): Promise<void> => {
-    const groupData = {
+    const group: Group = {
       username: username,
       groupCode: joinGroupValue,
-      leader: false,
+      isGroupLeader: false,
       ownSerial: serial,
     };
 
-    const errorCode = await dispatch(submitJoinGroup(groupData));
+    const errorCode = await dispatch(submitJoinGroup(group));
 
     if (errorCode) {
       switch (errorCode) {
@@ -120,18 +121,22 @@ export const GroupView = (): ReactElement => {
     await removeSignups();
   };
 
-  const leaveGroup = async ({ leader }: { leader: boolean }): Promise<void> => {
+  const leaveGroup = async ({
+    isGroupLeader,
+  }: {
+    isGroupLeader: boolean;
+  }): Promise<void> => {
     setLoading(true);
 
-    const groupData = {
+    const group: Group = {
       username: username,
       groupCode: groupCode,
-      leader,
+      isGroupLeader,
       ownSerial: serial,
       leaveGroup: true,
     };
 
-    const errorCode = await dispatch(submitLeaveGroup(groupData));
+    const errorCode = await dispatch(submitLeaveGroup(group));
 
     if (errorCode) {
       switch (errorCode) {
@@ -159,19 +164,23 @@ export const GroupView = (): ReactElement => {
     setCloseGroupConfirmation(value);
   };
 
-  const closeGroup = async ({ leader }: { leader: boolean }): Promise<void> => {
+  const closeGroup = async ({
+    isGroupLeader,
+  }: {
+    isGroupLeader: boolean;
+  }): Promise<void> => {
     setLoading(true);
-    const groupData = {
+    const group: Group = {
       username: username,
       groupCode: groupCode,
-      leader,
+      isGroupLeader,
       ownSerial: serial,
       leaveGroup: true,
       closeGroup: true,
     };
 
     try {
-      await dispatch(submitLeaveGroup(groupData));
+      await dispatch(submitLeaveGroup(group));
     } catch (error) {
       showMessage({
         value: t("generalLeaveGroupError"),
@@ -211,7 +220,7 @@ export const GroupView = (): ReactElement => {
     setMessageStyle("");
   };
 
-  const groupLeader = isGroupLeader(groupCode, serial);
+  const isGroupLeader = getIsGroupLeader(groupCode, serial);
   const inGroup = isInGroup();
 
   const joinGroupInput = (
@@ -286,7 +295,7 @@ export const GroupView = (): ReactElement => {
         </>
       )}
 
-      {groupLeader && inGroup && (
+      {isGroupLeader && inGroup && (
         <div>
           <p>
             <InfoTextSpan>{t("youAreGroupLeader")}</InfoTextSpan>.{" "}
@@ -295,7 +304,7 @@ export const GroupView = (): ReactElement => {
         </div>
       )}
 
-      {!groupLeader && inGroup && (
+      {!isGroupLeader && inGroup && (
         <div>
           <p>
             <InfoTextSpan>{t("youAreInGroup")}</InfoTextSpan>.{" "}
@@ -307,16 +316,16 @@ export const GroupView = (): ReactElement => {
       {inGroup && (
         <>
           <div>
-            {!groupLeader && (
+            {!isGroupLeader && (
               <Button
                 disabled={loading}
-                onClick={async () => await leaveGroup({ leader: groupLeader })}
+                onClick={async () => await leaveGroup({ isGroupLeader })}
               >
                 {t("button.leaveGroup")}
               </Button>
             )}
 
-            {groupLeader && (
+            {isGroupLeader && (
               <>
                 <div>
                   <Button
@@ -342,9 +351,7 @@ export const GroupView = (): ReactElement => {
 
                     <WarningButton
                       disabled={loading}
-                      onClick={async () =>
-                        await closeGroup({ leader: groupLeader })
-                      }
+                      onClick={async () => await closeGroup({ isGroupLeader })}
                     >
                       {t("button.closeGroup")}
                     </WarningButton>
@@ -362,7 +369,10 @@ export const GroupView = (): ReactElement => {
   );
 };
 
-export const isGroupLeader = (groupCode: string, serial: string): boolean => {
+export const getIsGroupLeader = (
+  groupCode: string,
+  serial: string
+): boolean => {
   if (groupCode === serial) {
     return true;
   }

@@ -1,6 +1,7 @@
 import axios from "axios";
 import { getGroup, postGroup } from "client/services/groupServices";
 import { GROUP_ENDPOINT } from "shared/constants/apiEndpoints";
+import { Group } from "shared/typings/api/groups";
 
 jest.mock("axios");
 const mockAxios = axios as jest.Mocked<typeof axios>;
@@ -34,18 +35,18 @@ test("POST group to server", async () => {
     });
   });
 
-  const groupData = {
+  const group: Group = {
     groupCode: "123",
-    leader: true,
+    isGroupLeader: true,
     ownSerial: "123",
     username: "test user",
     leaveGroup: false,
     closeGroup: false,
   };
 
-  const response = await postGroup(groupData);
+  const response = await postGroup(group);
 
   expect(response).toEqual("test response");
   expect(mockAxios.post).toHaveBeenCalledTimes(1);
-  expect(mockAxios.post).toHaveBeenCalledWith(GROUP_ENDPOINT, { groupData });
+  expect(mockAxios.post).toHaveBeenCalledWith(GROUP_ENDPOINT, group);
 });
