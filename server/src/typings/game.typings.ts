@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { Game } from "shared/typings/models/game";
+import { Game, GameStyle, Genre } from "shared/typings/models/game";
 
 export interface GameDoc extends Game, mongoose.Document {}
 
@@ -24,8 +24,8 @@ export interface KompassiGame {
   max_players: number;
   identifier: string;
   tags: string[];
-  genres: string[];
-  styles: string[];
+  genres: Genre[];
+  styles: GameStyle[];
   short_blurb: string;
   revolving_door: boolean;
   three_word_description: string;

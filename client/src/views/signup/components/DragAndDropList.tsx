@@ -10,6 +10,12 @@ import { DnDUpdatedPositions } from "client/views/signup/signupTypes";
 import { Game } from "shared/typings/models/game";
 import { useAppSelector } from "client/utils/hooks";
 
+enum Warning {
+  GAME_LIMIT = "gameLimitWarning",
+  GROUP_TOO_BIG = "groupTooBigWarning",
+  EMPTY = "",
+}
+
 export interface Props {
   updateSelectedGames: (newSelectedGames: readonly Game[]) => void;
   availableGames: readonly Game[];
@@ -27,7 +33,7 @@ export const DragAndDropList = ({
   const groupMembers = useAppSelector((state) => state.login.groupMembers);
 
   const [warningVisible, setWarningVisible] = useState<boolean>(false);
-  const [warning, setWarning] = useState<string>("");
+  const [warning, setWarning] = useState<Warning>(Warning.EMPTY);
 
   const getList = (id: string): readonly Game[] => {
     if (id === "availableGames") return availableGames;
@@ -35,12 +41,12 @@ export const DragAndDropList = ({
     return [];
   };
 
-  const showWarning = async (message: string): Promise<void> => {
+  const showWarning = async (message: Warning): Promise<void> => {
     setWarning(message);
     setWarningVisible(true);
     await sleep(config.MESSAGE_DELAY);
     setWarningVisible(false);
-    setWarning("");
+    setWarning(Warning.EMPTY);
   };
 
   const onDragEnd = (result: DropResult): void => {
@@ -84,7 +90,7 @@ export const DragAndDropList = ({
         destination.droppableId === "selectedGames" &&
         selectedGames.length >= 3
       ) {
-        showWarning("gameLimitWarning");
+        showWarning(Warning.GAME_LIMIT);
         return;
       }
 
@@ -95,7 +101,7 @@ export const DragAndDropList = ({
         updatedPositions.selectedGames[destination.index].maxAttendance <
           groupMembers.length
       ) {
-        showWarning("groupTooBigWarning");
+        showWarning(Warning.GROUP_TOO_BIG);
         return;
       }
 
@@ -107,7 +113,7 @@ export const DragAndDropList = ({
 
   return (
     <>
-      {warningVisible && <ErrorMessage>{t(warning)}</ErrorMessage>}
+      {warningVisible && warning && <ErrorMessage>{t(warning)}</ErrorMessage>}
       <DropRows>
         <DragDropContext onDragEnd={onDragEnd}>
           <AvailableGamesRow>
