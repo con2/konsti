@@ -92,7 +92,8 @@
   "programType": {
     "tabletopRPG": "Tabletop RPG",
     "freeformRPG": "Freeform RPG",
-    "larp": "LARP"
+    "larp": "LARP",
+    "unknown": "Unknown"
   },
   "gameStyle": {
     "serious": "Serious game style",
@@ -149,7 +150,7 @@
     "invalidSerial": "Invalid code",
     "loginFailed": "Username and password don't match",
     "loginDisabled": "Login is disabled",
-    "unkown": "Unknown error"
+    "unknown": "Unknown error"
   },
   "agreePrivacyPolicy": "I agree to the privacy policy",
   "privacyPolicyButton": "Show privacy policy",
@@ -175,8 +176,10 @@
   "signupGuideTitle": "Signup help and tips",
   "signupGuideButton": "Signup help and tips",
   "signupSaved": "Signup saved",
-  "signupError": "Signup failed",
-  "signupEnded": "Signup ended for this time",
+  "signupError": {
+    "generic": "Signup failed",
+    "signupEnded": "Signup ended for this time"
+  },
   "signupUnsavedChanges": "Unsaved changes",
   "signupResultHint": "Sign up results are visible on 'My Games' page at",
   "closingMessage": "Konsti is closed and will open closer to the next event",

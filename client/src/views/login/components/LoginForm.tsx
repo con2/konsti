@@ -6,14 +6,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button } from "client/components/Button";
 import { LoginFormFields } from "shared/typings/api/login";
 import { useAppDispatch } from "client/utils/hooks";
-import { submitLogin } from "client/views/login/loginThunks";
+import { LoginErrorMessage, submitLogin } from "client/views/login/loginThunks";
 
 export const LoginForm = (): ReactElement => {
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
 
   const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
-  const [serverError, setServerError] = useState<string>("");
+  const [serverError, setServerError] = useState<LoginErrorMessage>(
+    LoginErrorMessage.EMPTY
+  );
 
   const {
     register,
@@ -30,7 +32,7 @@ export const LoginForm = (): ReactElement => {
     loginFormFields
   ): Promise<void> => {
     const errorMessage = await dispatch(submitLogin(loginFormFields));
-    errorMessage && setServerError(t(errorMessage));
+    errorMessage && setServerError(errorMessage);
   };
 
   return (
@@ -41,7 +43,7 @@ export const LoginForm = (): ReactElement => {
             {...register("username", {
               required: `${t(`validation.required`)}`,
               onChange: (e) => {
-                setServerError("");
+                setServerError(LoginErrorMessage.EMPTY);
               },
             })}
             placeholder={t("username")}
@@ -61,7 +63,7 @@ export const LoginForm = (): ReactElement => {
             {...register("password", {
               required: `${t(`validation.required`)}`,
               onChange: (e) => {
-                setServerError("");
+                setServerError(LoginErrorMessage.EMPTY);
               },
             })}
             placeholder={t("password")}
@@ -86,7 +88,7 @@ export const LoginForm = (): ReactElement => {
         {t("button.login")}
       </Button>
 
-      {serverError && <ErrorMessage>{serverError}</ErrorMessage>}
+      {serverError && <ErrorMessage>{t(serverError)}</ErrorMessage>}
     </form>
   );
 };
