@@ -10,7 +10,10 @@ import { Button } from "client/components/Button";
 import { Paragraph } from "client/components/Paragraph";
 import { RegistrationFormFields } from "shared/typings/api/login";
 import { useAppDispatch } from "client/utils/hooks";
-import { submitRegistration } from "client/views/registration/registrationThunks";
+import {
+  submitRegistration,
+  RegistrationErrorMessage,
+} from "client/views/registration/registrationThunks";
 import {
   PASSWORD_LENGTH_MAX,
   PASSWORD_LENGTH_MIN,
@@ -25,7 +28,9 @@ export const RegistrationForm = (): ReactElement => {
   const serialRequired = sharedConfig.conventionType === ConventionType.LIVE;
 
   const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
-  const [serverError, setServerError] = useState<string>("");
+  const [serverError, setServerError] = useState<RegistrationErrorMessage>(
+    RegistrationErrorMessage.EMPTY
+  );
 
   const {
     register,
@@ -44,7 +49,7 @@ export const RegistrationForm = (): ReactElement => {
     const errorMessage = await dispatch(
       submitRegistration(registrationFormFields)
     );
-    errorMessage && setServerError(t(errorMessage));
+    errorMessage && setServerError(errorMessage);
   };
 
   return (
@@ -70,7 +75,7 @@ export const RegistrationForm = (): ReactElement => {
                   }),
                 },
                 onChange: (e) => {
-                  setServerError("");
+                  setServerError(RegistrationErrorMessage.EMPTY);
                 },
               })}
               placeholder={t("username")}
@@ -101,7 +106,7 @@ export const RegistrationForm = (): ReactElement => {
                   }),
                 },
                 onChange: (e) => {
-                  setServerError("");
+                  setServerError(RegistrationErrorMessage.EMPTY);
                 },
               })}
               placeholder={t("password")}
@@ -129,7 +134,7 @@ export const RegistrationForm = (): ReactElement => {
                   {...register("serial", {
                     required: `${t(`validation.required`)}`,
                     onChange: (e) => {
-                      setServerError("");
+                      setServerError(RegistrationErrorMessage.EMPTY);
                     },
                   })}
                   placeholder={t("serial")}
@@ -154,7 +159,7 @@ export const RegistrationForm = (): ReactElement => {
               {...register("registerDescription", {
                 required: `${t(`validation.required`)}`,
                 onChange: (e) => {
-                  setServerError("");
+                  setServerError(RegistrationErrorMessage.EMPTY);
                 },
               })}
               type={"checkbox"}
@@ -178,13 +183,15 @@ export const RegistrationForm = (): ReactElement => {
           {t("button.register")}
         </Button>
 
-        {serverError && <ErrorMessage>{serverError}</ErrorMessage>}
+        {serverError && (
+          <StyledErrorMessage>{t(serverError)}</StyledErrorMessage>
+        )}
       </form>
     </div>
   );
 };
 
-const ErrorMessage = styled.p`
+const StyledErrorMessage = styled.p`
   font-weight: 600;
   color: ${(props) => props.theme.error};
 `;

@@ -3,7 +3,7 @@ import moment from "moment";
 import { logger } from "server/utils/logger";
 import { kompassiGameMapper } from "server/utils/kompassiGameMapper";
 import { KompassiGame } from "server/typings/game.typings";
-import { Game } from "shared/typings/models/game";
+import { Game, GameStyle, Genre } from "shared/typings/models/game";
 import { saveGames } from "server/features/game/gameRepository";
 import { sharedConfig } from "shared/config/sharedConfig";
 import { KompassiProgramType } from "shared/constants/kompassiProgramType";
@@ -65,8 +65,18 @@ export const createGames = async (
           "kunniavieras",
           "perheohjelma",
         ],
-        genres: ["fantasy", "war", "exploration", "mystery", "drama"],
-        styles: ["serious", "story_driven", "character_driven"],
+        genres: [
+          Genre.FANTASY,
+          Genre.WAR,
+          Genre.EXPLORATION,
+          Genre.MYSTERY,
+          Genre.DRAMA,
+        ],
+        styles: [
+          GameStyle.SERIOUS,
+          GameStyle.STORY_DRIVEN,
+          GameStyle.CHARACTER_DRIVEN,
+        ],
         short_blurb: faker.lorem.sentence(),
         revolving_door: true,
         three_word_description: "This is example ",

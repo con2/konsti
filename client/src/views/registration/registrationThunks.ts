@@ -3,10 +3,17 @@ import { submitLogin } from "client/views/login/loginThunks";
 import { RegistrationFormFields } from "shared/typings/api/login";
 import { AppThunk } from "client/typings/redux.typings";
 
+export enum RegistrationErrorMessage {
+  USERNAME_TAKEN = "error.usernameTaken",
+  INVALID_SERIAL = "error.invalidSerial",
+  UNKNOWN = "error.unknown",
+  EMPTY = "",
+}
+
 export const submitRegistration = (
   registrationFormFields: RegistrationFormFields
-): AppThunk<Promise<string | undefined>> => {
-  return async (dispatch): Promise<string | undefined> => {
+): AppThunk<Promise<RegistrationErrorMessage | undefined>> => {
+  return async (dispatch): Promise<RegistrationErrorMessage | undefined> => {
     let registrationResponse;
     try {
       registrationResponse = await postRegistration(registrationFormFields);
@@ -17,11 +24,11 @@ export const submitRegistration = (
     if (registrationResponse?.status === "error") {
       switch (registrationResponse.code) {
         case 11:
-          return "error.usernameTaken";
+          return RegistrationErrorMessage.USERNAME_TAKEN;
         case 12:
-          return "error.invalidSerial";
+          return RegistrationErrorMessage.INVALID_SERIAL;
         default:
-          return "error.unknown";
+          return RegistrationErrorMessage.UNKNOWN;
       }
     }
 

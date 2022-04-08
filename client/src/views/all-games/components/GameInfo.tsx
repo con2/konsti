@@ -4,7 +4,21 @@ import styled, { css } from "styled-components";
 import { timeFormatter } from "client/utils/timeFormatter";
 import { getGameTags } from "client/utils/getGameTags";
 import { config } from "client/config";
-import { Game } from "shared/typings/models/game";
+import { Game, GameStyle, Genre } from "shared/typings/models/game";
+
+enum AccessibilityValue {
+  LOUD_SOUNDS = "loudSounds",
+  FLASHING_LIGHTS = "flashingLights",
+  STRONG_SMELLS = "strongSmells",
+  IRRITATE_SKIN = "irritateSkin",
+  PHYSICAL_CONTACT = "physicalContact",
+  LOW_LIGHTING = "lowLighting",
+  MOVING_AROUND = "movingAround",
+  VIDEO = "video",
+  RECORDING = "recording",
+  TEXT = "text",
+  COLOURBLIND = "colourblind",
+}
 
 interface Props {
   game: Game;
@@ -16,7 +30,7 @@ export const GameInfo = ({ game }: Props): ReactElement => {
 
   if (!game) return <div />;
 
-  const getGenres = (genresList: readonly string[]): ReactElement[] => {
+  const getGenres = (genresList: readonly Genre[]): ReactElement[] => {
     return genresList.map((genre, i) => {
       return (
         <span key={genre}>
@@ -27,7 +41,7 @@ export const GameInfo = ({ game }: Props): ReactElement => {
     });
   };
 
-  const getStyles = (styles: readonly string[]): ReactElement[] => {
+  const getStyles = (styles: readonly GameStyle[]): ReactElement[] => {
     return styles.map((style, i) => {
       return (
         <span key={style}>
@@ -71,9 +85,9 @@ export const GameInfo = ({ game }: Props): ReactElement => {
       ([accessibilityValue, value]) => {
         if (value) {
           return (
-            <AccessibilityValue key={accessibilityValue}>
-              {t(`accessibility.${accessibilityValue}`)}
-            </AccessibilityValue>
+            <StyledAccessibilityValue key={accessibilityValue}>
+              {t(`accessibility.${accessibilityValue as AccessibilityValue}`)}
+            </StyledAccessibilityValue>
           );
         }
         return [];
@@ -337,7 +351,7 @@ const GameDetailsTextIndent = styled.span`
   margin: 0 0 0 14px;
 `;
 
-const AccessibilityValue = styled.p`
+const StyledAccessibilityValue = styled.p`
   margin: 0 0 6px 0;
 `;
 

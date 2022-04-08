@@ -33,7 +33,12 @@ export const AlgorithmResultsList = ({ results }: Props): ReactElement => {
     );
   }, [searchTerm, results]);
 
-  const buttons = ["username", "gameTitle"];
+  enum Buttons {
+    USERNAME = "username",
+    GAME_TITLE = "gameTitle",
+  }
+
+  const buttons = Object.values(Buttons);
 
   const handleSearchFieldChange = (e: ChangeEvent<HTMLInputElement>): void => {
     setSearchTerm(e.target.value);
@@ -43,14 +48,14 @@ export const AlgorithmResultsList = ({ results }: Props): ReactElement => {
     <div>
       <div>
         <span>{t("sortBy")} </span>
-        {buttons.map((name) => {
+        {buttons.map((button) => {
           return (
             <Button
-              disabled={sortedBy === name}
-              onClick={() => setSortedBy(name)}
-              key={name}
+              disabled={sortedBy === button}
+              onClick={() => setSortedBy(button)}
+              key={button}
             >
-              {t(name)}
+              {t(button)}
             </Button>
           );
         })}

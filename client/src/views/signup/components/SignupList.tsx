@@ -14,6 +14,12 @@ import { filterSelectedGames } from "client/views/signup/utils/filterSelectedGam
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { submitSelectedGames } from "client/views/signup/signupSlice";
 
+export enum SignupError {
+  GENERIC = "signupError.generic",
+  SIGNUP_ENDED = "signupError.signupEnded",
+  EMPTY = "",
+}
+
 export interface Props {
   games: readonly Game[];
   signupTimes: readonly string[];
@@ -38,7 +44,10 @@ export const SignupList = ({
 
   const [submitting, setSubmitting] = useState<boolean>(false);
   const [signupSubmitted, setSignupSubmitted] = useState<boolean>(false);
-  const [signupError, setSignupError] = useState<string>("");
+
+  const [signupError, setSignupError] = useState<SignupError>(
+    SignupError.EMPTY
+  );
 
   useEffect(() => {
     if (!unsavedChanges) {
@@ -125,13 +134,13 @@ export const SignupList = ({
     if (message === "signupSubmitted") {
       setSignupSubmitted(true);
     } else if (message === "signupError") {
-      setSignupError("signupError");
+      setSignupError(SignupError.GENERIC);
     } else if (message === "signupEnded") {
-      setSignupError("signupEnded");
+      setSignupError(SignupError.SIGNUP_ENDED);
     }
     await sleep(config.MESSAGE_DELAY);
     setSignupSubmitted(false);
-    setSignupError("");
+    setSignupError(SignupError.EMPTY);
   };
 
   return (
