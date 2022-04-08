@@ -6,6 +6,7 @@ import { SelectedGame } from "shared/typings/models/user";
 import { useAppDispatch } from "client/utils/hooks";
 import { AppDispatch } from "client/typings/redux.typings";
 import { Button } from "client/components/Button";
+import { SignupError } from "client/views/signup/components/SignupList";
 
 interface Props {
   groupCode: string;
@@ -14,7 +15,7 @@ interface Props {
   onSubmitClick: (event: MouseEvent) => void;
   selectedGames: readonly SelectedGame[];
   signedGames: readonly SelectedGame[];
-  signupError: string;
+  signupError: SignupError;
   signupSubmitted: boolean;
   submitting: boolean;
 }

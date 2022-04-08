@@ -16,7 +16,8 @@ export const GroupMembersList = ({ groupMembers }: Props): ReactElement => {
     const isGroupLeader = member.serial === member.groupCode;
     return (
       <p key={member.username}>
-        {index + 1}) {member.username}{" "}
+        {index + 1}
+        {")"} {member.username}{" "}
         {isGroupLeader && <span>({t("groupLeader")})</span>}
       </p>
     );

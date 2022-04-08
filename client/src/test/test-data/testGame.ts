@@ -1,4 +1,9 @@
-import { Game } from "shared/typings/models/game";
+import {
+  Game,
+  GameStyle,
+  Genre,
+  ProgramType,
+} from "shared/typings/models/game";
 
 export const testGame: Game = {
   gameId: "p2106",
@@ -13,8 +18,18 @@ export const testGame: Game = {
     "lapsiystävällinen",
     "pöytäpelit",
   ],
-  genres: ["fantasy", "war", "exploration", "mystery", "drama"],
-  styles: ["serious", "story_driven", "character_driven"],
+  genres: [
+    Genre.FANTASY,
+    Genre.WAR,
+    Genre.EXPLORATION,
+    Genre.MYSTERY,
+    Genre.DRAMA,
+  ],
+  styles: [
+    GameStyle.SERIOUS,
+    GameStyle.STORY_DRIVEN,
+    GameStyle.CHARACTER_DRIVEN,
+  ],
   language: "fi",
   endTime: "2018-07-28T20:00:00.000Z",
   people: "Test GM",
@@ -29,7 +44,7 @@ export const testGame: Game = {
   shortDescription: "Short description",
   revolvingDoor: true,
   popularity: 0,
-  programType: "tabletopRPG",
+  programType: ProgramType.TABLETOP_RPG,
   contentWarnings: "",
   otherAuthor: "",
   accessibility: {

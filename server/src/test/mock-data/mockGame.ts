@@ -1,4 +1,9 @@
-import { Game } from "shared/typings/models/game";
+import {
+  Game,
+  GameStyle,
+  Genre,
+  ProgramType,
+} from "shared/typings/models/game";
 
 export const mockGame: Game = {
   gameId: "p2106",
@@ -13,8 +18,18 @@ export const mockGame: Game = {
     "lapsiystävällinen",
     "pöytäpelit",
   ],
-  genres: ["fantasy", "war", "exploration", "mystery", "drama"],
-  styles: ["serious", "story_driven", "character_driven"],
+  genres: [
+    Genre.FANTASY,
+    Genre.WAR,
+    Genre.EXPLORATION,
+    Genre.MYSTERY,
+    Genre.DRAMA,
+  ],
+  styles: [
+    GameStyle.SERIOUS,
+    GameStyle.STORY_DRIVEN,
+    GameStyle.CHARACTER_DRIVEN,
+  ],
   language: "fi",
   endTime: "2019-07-26T18:00:00.000Z",
   people: "Test GM",
@@ -29,7 +44,7 @@ export const mockGame: Game = {
   shortDescription: "Short description",
   revolvingDoor: true,
   popularity: 0,
-  programType: "Roolipeli",
+  programType: ProgramType.TABLETOP_RPG,
   contentWarnings: "",
   otherAuthor: "",
   accessibility: {
@@ -60,8 +75,18 @@ export const mockGame2: Game = {
     "lapsiystävällinen",
     "pöytäpelit",
   ],
-  genres: ["fantasy", "war", "exploration", "mystery", "drama"],
-  styles: ["serious", "story_driven", "character_driven"],
+  genres: [
+    Genre.FANTASY,
+    Genre.WAR,
+    Genre.EXPLORATION,
+    Genre.MYSTERY,
+    Genre.DRAMA,
+  ],
+  styles: [
+    GameStyle.SERIOUS,
+    GameStyle.STORY_DRIVEN,
+    GameStyle.CHARACTER_DRIVEN,
+  ],
   language: "fi",
   endTime: "2019-07-26T19:00:00.000Z",
   people: "Test GM",
@@ -76,7 +101,7 @@ export const mockGame2: Game = {
   shortDescription: "Short description",
   revolvingDoor: true,
   popularity: 0,
-  programType: "Roolipeli",
+  programType: ProgramType.TABLETOP_RPG,
   contentWarnings: "",
   otherAuthor: "",
   accessibility: {
