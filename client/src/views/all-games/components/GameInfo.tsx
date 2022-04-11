@@ -2,23 +2,8 @@ import React, { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import styled, { css } from "styled-components";
 import { timeFormatter } from "client/utils/timeFormatter";
-import { getGameTags } from "client/utils/getGameTags";
 import { config } from "client/config";
 import { Game, GameStyle, Genre } from "shared/typings/models/game";
-
-enum AccessibilityValue {
-  LOUD_SOUNDS = "loudSounds",
-  FLASHING_LIGHTS = "flashingLights",
-  STRONG_SMELLS = "strongSmells",
-  IRRITATE_SKIN = "irritateSkin",
-  PHYSICAL_CONTACT = "physicalContact",
-  LOW_LIGHTING = "lowLighting",
-  MOVING_AROUND = "movingAround",
-  VIDEO = "video",
-  RECORDING = "recording",
-  TEXT = "text",
-  COLOURBLIND = "colourblind",
-}
 
 interface Props {
   game: Game;
@@ -52,13 +37,11 @@ export const GameInfo = ({ game }: Props): ReactElement => {
     });
   };
 
-  const tags = getGameTags(game);
-
-  const tagsList = tags.map((tag, i) => {
+  const tagsList = game.tags.map((tag, i) => {
     return (
       <span key={tag}>
         <NoWrapText>{t(`gameTags.${tag}`)}</NoWrapText>
-        <span>{i !== tags.length - 1 ? ", " : ""}</span>
+        <span>{i !== game.tags.length - 1 ? ", " : ""}</span>
       </span>
     );
   });
@@ -81,18 +64,13 @@ export const GameInfo = ({ game }: Props): ReactElement => {
   };
 
   const getFormattedAccessibility = (): ReactElement[] => {
-    return Object.entries(game.accessibility).flatMap(
-      ([accessibilityValue, value]) => {
-        if (value) {
-          return (
-            <StyledAccessibilityValue key={accessibilityValue}>
-              {t(`accessibility.${accessibilityValue as AccessibilityValue}`)}
-            </StyledAccessibilityValue>
-          );
-        }
-        return [];
-      }
-    );
+    return game.accessibilityValues.map((accessibilityValue) => {
+      return (
+        <StyledAccessibilityValue key={accessibilityValue}>
+          {t(`accessibility.${accessibilityValue}`)}
+        </StyledAccessibilityValue>
+      );
+    });
   };
 
   const formattedAccessibilityValues = getFormattedAccessibility();
@@ -132,24 +110,6 @@ export const GameInfo = ({ game }: Props): ReactElement => {
           </GameDetailsRow>
         </>
       )}
-
-      {/*
-      {game.ageRestricted && (
-        <>
-          <GameDetailsRow rowWithSubtext={true}>
-            <GameDetailsTitle>
-              {t("gameTags.ageRestrictedTitle")}
-            </GameDetailsTitle>
-          </GameDetailsRow>
-
-          <GameDetailsRow subtext={true} gap={true}>
-            <GameDetailsTextIndent>
-              {t("gameTags.ageRestrictedLong")}
-            </GameDetailsTextIndent>
-          </GameDetailsRow>
-        </>
-      )}
-      */}
 
       {!!game.mins && (
         <GameDetailsRow>

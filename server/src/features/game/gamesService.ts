@@ -3,12 +3,12 @@ import { updateGames } from "server/utils/updateGames";
 import { updateGamePopularity } from "server/features/game-popularity/updateGamePopularity";
 import { config } from "server/config";
 import { kompassiGameMapper } from "server/utils/kompassiGameMapper";
-import { KompassiGame } from "server/typings/game.typings";
 import { Game } from "shared/typings/models/game";
 import { PostGamesResponse, GetGamesResponse } from "shared/typings/api/games";
 import { findGames, saveGames } from "server/features/game/gameRepository";
 import { ServerError } from "shared/typings/api/errors";
 import { enrichGames } from "./gameUtils";
+import { KompassiGame } from "shared/typings/models/kompassiGame";
 
 export const storeGames = async (): Promise<
   PostGamesResponse | ServerError

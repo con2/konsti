@@ -9,7 +9,7 @@ import { getUpcomingGames } from "client/utils/getUpcomingGames";
 import { loadGames } from "client/utils/loadData";
 import { config } from "client/config";
 import { Loading } from "client/components/Loading";
-import { Game } from "shared/typings/models/game";
+import { Game, ProgramType, Tag } from "shared/typings/models/game";
 import { getTime } from "client/utils/getTime";
 import { useAppSelector } from "client/utils/hooks";
 import { Button } from "client/components/Button";
@@ -37,18 +37,19 @@ export const AllGamesView = (): ReactElement => {
     fetchData();
   }, [store, testTime, signupStrategy]);
 
-  const visibleTags = [
-    "tabletopRPG",
-    "larp",
-    "in-english",
-    "aloittelijaystavallinen",
-    "childrensProgram",
-    "suitableUnder7",
-    "suitable7to12",
-    "suitableOver12",
-    "notSuitableUnder15",
-    "ageRestricted",
-  ];
+  const filters = {
+    programTypes: [ProgramType.TABLETOP_RPG, ProgramType.LARP],
+    tags: [
+      Tag.IN_ENGLISH,
+      Tag.BEGINNER_FRIENDLY,
+      Tag.CHILDRENS_PROGRAM,
+      Tag.SUITABLE_UNDER_7,
+      Tag.SUITABLE_7_TO_12,
+      Tag.SUITABLE_OVER_12,
+      Tag.NOT_SUITABLE_UNDER_15,
+      Tag.AGE_RESTRICTED,
+    ],
+  };
 
   return (
     <>
@@ -89,23 +90,18 @@ export const AllGamesView = (): ReactElement => {
             >
               <option value="">{t("allGames")}</option>
 
-              {visibleTags.map((tag) => {
+              {filters.programTypes.map((programTypes) => {
+                return (
+                  <option key={programTypes} value={programTypes}>
+                    {t(`programType.${programTypes}`)}
+                  </option>
+                );
+              })}
+
+              {filters.tags.map((tag) => {
                 return (
                   <option key={tag} value={tag}>
-                    {tag === "in-english" && t(`gameTags.inEnglish`)}
-                    {tag === "aloittelijaystavallinen" &&
-                      t(`gameTags.beginnerFriendly`)}
-                    {tag === "sopii-lapsille" && t(`gameTags.childrenFriendly`)}
-                    {tag === "tabletopRPG" && t(`programType.tabletopRPG`)}
-                    {tag === "larp" && t(`programType.larp`)}
-                    {tag === "suitableUnder7" && t(`gameTags.suitableUnder7`)}
-                    {tag === "suitable7to12" && t(`gameTags.suitable7to12`)}
-                    {tag === "suitableOver12" && t(`gameTags.suitableOver12`)}
-                    {tag === "notSuitableUnder15" &&
-                      t(`gameTags.notSuitableUnder15`)}
-                    {tag === "ageRestricted" && t(`gameTags.ageRestricted`)}
-                    {tag === "childrensProgram" &&
-                      t(`gameTags.childrensProgram`)}
+                    {t(`gameTags.${tag}`)}
                   </option>
                 );
               })}
@@ -189,33 +185,11 @@ const getTagFilteredGames = (
   selectedTag: string
 ): readonly Game[] => {
   if (!selectedTag) return games;
-
-  if (selectedTag === "aloittelijaystavallinen") {
-    return games.filter(
-      (game) =>
-        game.beginnerFriendly || game.tags.includes("aloittelijaystavallinen")
-    );
-  } else if (selectedTag === "tabletopRPG") {
-    return games.filter((game) => game.programType === "tabletopRPG");
-  } else if (selectedTag === "larp") {
-    return games.filter((game) => game.programType === "larp");
-  } else if (selectedTag === "in-english") {
-    return games.filter((game) => game.tags.includes("in-english"));
-  } else if (selectedTag === "childrensProgram") {
-    return games.filter((game) => game.tags.includes("lastenohjelma"));
-  } else if (selectedTag === "suitableUnder7") {
-    return games.filter((game) => game.tags.includes("sopii-alle-7v-"));
-  } else if (selectedTag === "suitable7to12") {
-    return games.filter((game) => game.tags.includes("sopii-7-12v-"));
-  } else if (selectedTag === "suitableOver12") {
-    return games.filter((game) => game.tags.includes("sopii-yli-12v-"));
-  } else if (selectedTag === "notSuitableUnder15") {
-    return games.filter((game) => game.tags.includes("ei-sovellu-alle-15v-"));
-  } else if (selectedTag === "ageRestricted") {
-    return games.filter((game) => game.tags.includes("vain-taysi-ikaisille"));
-  }
-
-  return games;
+  return games.filter(
+    (game) =>
+      game.programType.includes(selectedTag as ProgramType) ||
+      game.tags.includes(selectedTag as Tag)
+  );
 };
 
 const getRunningRevolvingDoorGames = (
