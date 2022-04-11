@@ -200,8 +200,8 @@ const mapGameStyles = (kompassiGame: KompassiGame): GameStyle[] => {
       case KompassiGameStyle.LIGHT:
         return GameStyle.LIGHT;
 
-      case KompassiGameStyle.RULES_HEAVE:
-        return GameStyle.RULES_HEAVE;
+      case KompassiGameStyle.RULES_HEAVY:
+        return GameStyle.RULES_HEAVY;
 
       case KompassiGameStyle.RULES_LIGHT:
         return GameStyle.RULES_LIGHT;

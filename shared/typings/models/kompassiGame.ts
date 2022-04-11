@@ -38,7 +38,7 @@ export enum KompassiGenre {
 export enum KompassiGameStyle {
   SERIOUS = "serious",
   LIGHT = "light",
-  RULES_HEAVE = "rules_heavy",
+  RULES_HEAVY = "rules_heavy",
   RULES_LIGHT = "rules_light",
   STORY_DRIVEN = "story_driven",
   CHARACTER_DRIVEN = "character_driven",
