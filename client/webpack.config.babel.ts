@@ -62,9 +62,6 @@ const commonConfig: Configuration = {
         use: [
           {
             loader: "babel-loader",
-            options: {
-              rootMode: "upward",
-            },
           },
         ],
       },

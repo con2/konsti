@@ -6,7 +6,7 @@ import {
   saveEnteredGame,
   saveUser,
 } from "server/features/user/userRepository";
-import { mockGame } from "server/test/mock-data/mockGame";
+import { testGame } from "shared/tests/testGame";
 import { saveGames } from "server/features/game/gameRepository";
 import {
   mockPostEnteredGameRequest,
@@ -38,16 +38,16 @@ test("should insert new user into collection", async () => {
 
 test("should add new enteredGame for user", async () => {
   await saveUser(mockUser);
-  await saveGames([mockGame]);
+  await saveGames([testGame]);
 
   const response = await saveEnteredGame(mockPostEnteredGameRequest);
 
-  expect(response.enteredGames[0].gameDetails.gameId).toEqual(mockGame.gameId);
+  expect(response.enteredGames[0].gameDetails.gameId).toEqual(testGame.gameId);
 });
 
 test("should delete enteredGame from user", async () => {
   await saveUser(mockUser);
-  await saveGames([mockGame]);
+  await saveGames([testGame]);
   await saveEnteredGame(mockPostEnteredGameRequest);
 
   const response = await delEnteredGame(mockPostEnteredGameRequest);
