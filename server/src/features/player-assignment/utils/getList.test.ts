@@ -1,4 +1,4 @@
-import { mockGame } from "server/test/mock-data/mockGame";
+import { testGame } from "shared/tests/testGame";
 import { getList } from "server/features/player-assignment/utils/getList";
 import { User, UserGroup } from "shared/typings/models/user";
 
@@ -11,7 +11,7 @@ const user: User = {
   favoritedGames: [],
   signedGames: [
     {
-      gameDetails: mockGame,
+      gameDetails: testGame,
       priority: 1,
       time: "2019-11-23T12:00:00+02:00",
       message: "",
@@ -43,7 +43,7 @@ const user3: User = {
   signedGames: [],
   enteredGames: [
     {
-      gameDetails: mockGame,
+      gameDetails: testGame,
       priority: 1,
       time: "2019-11-23T12:00:00+02:00",
       message: "",

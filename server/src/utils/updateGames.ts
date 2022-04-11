@@ -3,8 +3,10 @@ import path from "path";
 import request from "request-promise-native";
 import { logger } from "server/utils/logger";
 import { config } from "server/config";
-import { KompassiGame } from "server/typings/game.typings";
-import { KompassiProgramType } from "shared/constants/kompassiProgramType";
+import {
+  KompassiGame,
+  KompassiProgramType,
+} from "shared/typings/models/kompassiGame";
 
 export const updateGames = async (): Promise<readonly KompassiGame[]> => {
   let programItems: readonly KompassiGame[] = [];

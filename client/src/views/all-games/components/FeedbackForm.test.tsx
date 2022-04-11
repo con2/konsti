@@ -1,7 +1,7 @@
 import React from "react";
 import { Provider } from "react-redux";
 import { render } from "@testing-library/react";
-import { testGame } from "client/test/test-data/testGame";
+import { testGame } from "shared/tests/testGame";
 import {
   FeedbackForm,
   Props,
