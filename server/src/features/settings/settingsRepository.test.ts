@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import { MongoMemoryServer } from "mongodb-memory-server";
 import moment from "moment";
 import { SettingsModel } from "server/features/settings/settingsSchema";
-import { mockGame, mockGame2 } from "server/test/mock-data/mockGame";
+import { testGame, testGame2 } from "shared/tests/testGame";
 import {
   findSettings,
   saveHidden,
@@ -40,7 +40,7 @@ test("should set defaults if settings not found", async () => {
 });
 
 test("should update hidden games", async () => {
-  const hiddenGames = [mockGame, mockGame2];
+  const hiddenGames = [testGame, testGame2];
   await saveGames(hiddenGames);
   await saveHidden(hiddenGames);
   const insertedSettings = await SettingsModel.findOne({});
@@ -48,7 +48,7 @@ test("should update hidden games", async () => {
 });
 
 test("should not return hidden games that are not in DB", async () => {
-  const hiddenGames = [mockGame, mockGame2];
+  const hiddenGames = [testGame, testGame2];
   await saveHidden(hiddenGames);
   const insertedSettings = await SettingsModel.findOne({});
   expect(insertedSettings?.hiddenGames.length).toEqual(0);

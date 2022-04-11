@@ -1,12 +1,18 @@
 import faker from "@faker-js/faker";
 import moment from "moment";
+import { sampleSize } from "lodash";
 import { logger } from "server/utils/logger";
 import { kompassiGameMapper } from "server/utils/kompassiGameMapper";
-import { KompassiGame } from "server/typings/game.typings";
-import { Game, GameStyle, Genre } from "shared/typings/models/game";
+import { Game } from "shared/typings/models/game";
 import { saveGames } from "server/features/game/gameRepository";
 import { sharedConfig } from "shared/config/sharedConfig";
-import { KompassiProgramType } from "shared/constants/kompassiProgramType";
+import {
+  KompassiGame,
+  KompassiGameStyle,
+  KompassiGenre,
+  KompassiProgramType,
+  KompassiTag,
+} from "shared/typings/models/kompassiGame";
 
 const GAME_ID_MAX = 10000000;
 
@@ -32,8 +38,6 @@ export const createGames = async (
 
   startingTimes.forEach((startingTime) => {
     for (let i = 0; i < gameCount; i += 1) {
-      const minAttendance = faker.datatype.number({ min: 3, max: 4 });
-      const maxAttendance = faker.datatype.number({ min: 4, max: 6 });
       const startTime = startingTime;
       const length = 180;
 
@@ -48,53 +52,46 @@ export const createGames = async (
         end_time: moment(startTime).add(length, "minutes").format(),
         language: "fi",
         rpg_system: "Test gamesystem",
-        no_language: true,
-        english_ok: true,
-        children_friendly: true,
-        age_restricted: true,
-        beginner_friendly: true,
-        intended_for_experienced_participants: true,
-        min_players: minAttendance,
-        max_players: maxAttendance,
+        no_language: Math.random() < 0.5,
+        english_ok: Math.random() < 0.5,
+        children_friendly: Math.random() < 0.5,
+        age_restricted: Math.random() < 0.5,
+        beginner_friendly: Math.random() < 0.5,
+        intended_for_experienced_participants: Math.random() < 0.5,
+        is_beginner_friendly: Math.random() < 0.5,
+        min_players: faker.datatype.number({ min: 3, max: 4 }),
+        max_players: faker.datatype.number({ min: 4, max: 6 }),
         identifier: faker.datatype.number(GAME_ID_MAX).toString(),
-        tags: [
-          "in-english",
-          "sopii-lapsille",
-          "vain-taysi-ikaisille",
-          "aloittelijaystavallinen",
-          "kunniavieras",
-          "perheohjelma",
-        ],
+        tags: sampleSize(Object.values(KompassiTag), 3),
         genres: [
-          Genre.FANTASY,
-          Genre.WAR,
-          Genre.EXPLORATION,
-          Genre.MYSTERY,
-          Genre.DRAMA,
+          KompassiGenre.FANTASY,
+          KompassiGenre.WAR,
+          KompassiGenre.EXPLORATION,
+          KompassiGenre.MYSTERY,
+          KompassiGenre.DRAMA,
         ],
         styles: [
-          GameStyle.SERIOUS,
-          GameStyle.STORY_DRIVEN,
-          GameStyle.CHARACTER_DRIVEN,
+          KompassiGameStyle.SERIOUS,
+          KompassiGameStyle.STORY_DRIVEN,
+          KompassiGameStyle.CHARACTER_DRIVEN,
         ],
         short_blurb: faker.lorem.sentence(),
-        revolving_door: true,
+        revolving_door: Math.random() < 0.5,
         three_word_description: "This is example ",
-        is_beginner_friendly: true,
         content_warnings: "",
         other_author: "",
         ropecon2018_characters: 6,
-        ropecon2021_accessibility_loud_sounds: false,
-        ropecon2021_accessibility_flashing_lights: false,
-        ropecon2021_accessibility_strong_smells: false,
-        ropecon2021_accessibility_irritate_skin: false,
-        ropecon2021_accessibility_physical_contact: false,
-        ropecon2021_accessibility_low_lightning: false,
-        ropecon2021_accessibility_moving_around: false,
-        ropecon2021_accessibility_video: false,
-        ropecon2021_accessibility_recording: false,
-        ropecon2021_accessibility_text: false,
-        ropecon2021_accessibility_colourblind: false,
+        ropecon2021_accessibility_loud_sounds: Math.random() < 0.5,
+        ropecon2021_accessibility_flashing_lights: Math.random() < 0.5,
+        ropecon2021_accessibility_strong_smells: Math.random() < 0.5,
+        ropecon2021_accessibility_irritate_skin: Math.random() < 0.5,
+        ropecon2021_accessibility_physical_contact: Math.random() < 0.5,
+        ropecon2021_accessibility_low_lightning: Math.random() < 0.5,
+        ropecon2021_accessibility_moving_around: Math.random() < 0.5,
+        ropecon2021_accessibility_video: Math.random() < 0.5,
+        ropecon2021_accessibility_recording: Math.random() < 0.5,
+        ropecon2021_accessibility_text: Math.random() < 0.5,
+        ropecon2021_accessibility_colourblind: Math.random() < 0.5,
       };
 
       logger.info(`Stored game "${kompassiGameData.title}"`);

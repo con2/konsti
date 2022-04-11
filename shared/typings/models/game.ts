@@ -1,20 +1,6 @@
 import { z } from "zod";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
 
-const AccessibilitySchema = z.object({
-  loudSounds: z.boolean(),
-  flashingLights: z.boolean(),
-  strongSmells: z.boolean(),
-  irritateSkin: z.boolean(),
-  physicalContact: z.boolean(),
-  lowLighting: z.boolean(),
-  movingAround: z.boolean(),
-  video: z.boolean(),
-  recording: z.boolean(),
-  text: z.boolean(),
-  colourblind: z.boolean(),
-});
-
 export enum ProgramType {
   TABLETOP_RPG = "tabletopRPG",
   FREEFORM_RPG = "freeformRPG",
@@ -46,6 +32,36 @@ export enum GameStyle {
   COMBAT_DRIVEN = "combat_driven",
 }
 
+export enum Tag {
+  IN_ENGLISH = "inEnglish",
+  CHILDREN_FRIENDLY = "childrenFriendly",
+  AGE_RESTRICTED = "ageRestricted",
+  BEGINNER_FRIENDLY = "beginnerFriendly",
+  FOR_EXPERIENCED_PARTICIPANTS = "intendedForExperiencedParticipants",
+  GUEST_OF_HONOR = "guestOfHonor",
+  FAMILY = "family",
+  THEME_ELEMENTS = "themeElements",
+  SUITABLE_UNDER_7 = "suitableUnder7",
+  SUITABLE_7_TO_12 = "suitable7to12",
+  SUITABLE_OVER_12 = "suitableOver12",
+  NOT_SUITABLE_UNDER_15 = "notSuitableUnder15",
+  CHILDRENS_PROGRAM = "childrensProgram",
+}
+
+export enum AccessibilityValue {
+  LOUD_SOUNDS = "loudSounds",
+  FLASHING_LIGHTS = "flashingLights",
+  STRONG_SMELLS = "strongSmells",
+  IRRITATE_SKIN = "irritateSkin",
+  PHYSICAL_CONTACT = "physicalContact",
+  LOW_LIGHTING = "lowLighting",
+  MOVING_AROUND = "movingAround",
+  VIDEO = "video",
+  RECORDING = "recording",
+  TEXT = "text",
+  COLOURBLIND = "colourblind",
+}
+
 export const GameSchema = z.object({
   gameId: z.string(),
   title: z.string(),
@@ -53,7 +69,7 @@ export const GameSchema = z.object({
   location: z.string(),
   startTime: z.string(),
   mins: z.number(),
-  tags: z.array(z.string()),
+  tags: z.array(z.nativeEnum(Tag)),
   genres: z.array(z.nativeEnum(Genre)),
   styles: z.array(z.nativeEnum(GameStyle)),
   language: z.string(),
@@ -62,18 +78,13 @@ export const GameSchema = z.object({
   minAttendance: z.number(),
   maxAttendance: z.number(),
   gameSystem: z.string(),
-  englishOk: z.boolean(),
-  childrenFriendly: z.boolean(),
-  ageRestricted: z.boolean(),
-  beginnerFriendly: z.boolean(),
-  intendedForExperiencedParticipants: z.boolean(),
   popularity: z.number(),
   shortDescription: z.string(),
   revolvingDoor: z.boolean(),
   programType: z.nativeEnum(ProgramType),
   contentWarnings: z.string(),
   otherAuthor: z.string(),
-  accessibility: AccessibilitySchema,
+  accessibilityValues: z.array(z.nativeEnum(AccessibilityValue)),
   signupStrategy: z.optional(z.nativeEnum(SignupStrategy)),
 });
 

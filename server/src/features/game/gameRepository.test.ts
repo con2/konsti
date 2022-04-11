@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
 import { MongoMemoryServer } from "mongodb-memory-server";
 import { GameModel } from "server/features/game/gameSchema";
-import { mockGame } from "server/test/mock-data/mockGame";
 import { saveGames } from "server/features/game/gameRepository";
+import { testGame } from "shared/tests/testGame";
 
 let mongoServer: MongoMemoryServer;
 
@@ -19,10 +19,10 @@ afterEach(async () => {
 });
 
 test("should insert new game into collection", async () => {
-  await saveGames([mockGame]);
+  await saveGames([testGame]);
 
   const insertedGame = await GameModel.findOne({
-    gameId: mockGame.gameId,
+    gameId: testGame.gameId,
   });
-  expect(insertedGame?.gameId).toEqual(mockGame.gameId);
+  expect(insertedGame?.gameId).toEqual(testGame.gameId);
 });

@@ -83,7 +83,7 @@ module.exports = (api) => {
         "babel-plugin-module-resolver",
         {
           root: ["."],
-          alias: { shared: "./shared" },
+          alias: { shared: "../shared" },
           extensions: [".js", ".ts"],
         },
       ],
