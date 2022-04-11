@@ -22,22 +22,7 @@ module.exports = (api) => {
       ],
       "@babel/preset-react",
     ],
-    plugins: [
-      [
-        "babel-plugin-module-resolver",
-        {
-          root: ["."],
-          alias: {
-            client: "./src",
-            assets: "./assets",
-            shared: "../shared/",
-            playwright: "./playwright",
-          },
-          extensions: [".js", ".ts", ".tsx"],
-        },
-      ],
-      "babel-plugin-styled-components",
-    ],
+    plugins: ["babel-plugin-styled-components"],
   };
 
   const serverOverrides = {
@@ -83,7 +68,7 @@ module.exports = (api) => {
         "babel-plugin-module-resolver",
         {
           root: ["."],
-          alias: { shared: "../shared" },
+          alias: { shared: "./shared" },
           extensions: [".js", ".ts"],
         },
       ],
