@@ -92,8 +92,7 @@
   "programType": {
     "tabletopRPG": "Tabletop RPG",
     "freeformRPG": "Freeform RPG",
-    "larp": "LARP",
-    "unknown": "Unknown"
+    "larp": "LARP"
   },
   "gameStyle": {
     "serious": "Serious game style",

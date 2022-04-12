@@ -1,5 +1,5 @@
 import { logger } from "server/utils/logger";
-import { updateGames } from "server/utils/updateGames";
+import { getGamesFromKompassi } from "server/utils/getGamesFromKompassi";
 import { updateGamePopularity } from "server/features/game-popularity/updateGamePopularity";
 import { config } from "server/config";
 import { kompassiGameMapper } from "server/utils/kompassiGameMapper";
@@ -15,7 +15,7 @@ export const storeGames = async (): Promise<
 > => {
   let kompassiGames = [] as readonly KompassiGame[];
   try {
-    kompassiGames = await updateGames();
+    kompassiGames = await getGamesFromKompassi();
   } catch (error) {
     return {
       message: "Games db update failed",
@@ -24,15 +24,13 @@ export const storeGames = async (): Promise<
     };
   }
 
-  if (!kompassiGames || kompassiGames.length === 0) {
+  if (kompassiGames?.length === 0) {
     return {
       message: "Games db update failed: No games available",
       status: "error",
       code: 0,
     };
   }
-
-  logger.info(`Found ${kompassiGames.length} games`);
 
   let gameSaveResponse: Game[];
   try {
