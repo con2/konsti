@@ -105,12 +105,14 @@ const devConfig = {
 };
 
 const combineConfig = (): Config => {
-  if (process.env.SETTINGS === "production") {
-    return { ...commonConfig, ...prodConfig };
-  } else if (process.env.SETTINGS === "staging") {
-    return { ...commonConfig, ...stagingConfig };
+  switch (process.env.SETTINGS) {
+    case "production":
+      return { ...commonConfig, ...prodConfig };
+    case "staging":
+      return { ...commonConfig, ...stagingConfig };
+    default:
+      return { ...commonConfig, ...devConfig };
   }
-  return { ...commonConfig, ...devConfig };
 };
 
 export const config: Config = combineConfig();
