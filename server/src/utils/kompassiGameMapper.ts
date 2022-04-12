@@ -1,6 +1,5 @@
 import { uniq } from "lodash";
 import moment from "moment";
-import { logger } from "server/utils/logger";
 import {
   AccessibilityValue,
   Game,
@@ -16,6 +15,7 @@ import {
   KompassiProgramType,
   KompassiTag,
 } from "shared/typings/models/kompassiGame";
+import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 
 export const kompassiGameMapper = (
   games: readonly KompassiGame[]
@@ -42,16 +42,15 @@ export const kompassiGameMapper = (
       shortDescription: game.short_blurb || game.three_word_description,
       revolvingDoor: game.revolving_door,
       programType: mapProgramType(game),
-      popularity: 0,
-      contentWarnings: game.content_warnings ?? "",
-      otherAuthor: game.other_author ?? "",
+      contentWarnings: game.content_warnings,
+      otherAuthor: game.other_author,
       accessibilityValues: mapAccessibilityValues(game),
+      popularity: 0,
     };
   });
 };
 
 const mapProgramType = (kompassiGame: KompassiGame): ProgramType => {
-  const gameId = kompassiGame.identifier;
   const programType = kompassiGame.category_title;
 
   switch (programType) {
@@ -65,14 +64,11 @@ const mapProgramType = (kompassiGame: KompassiGame): ProgramType => {
       return ProgramType.LARP;
 
     default:
-      logger.error(`Unknown programType for game ${gameId}: ${programType}`);
-      return ProgramType.UNKNOWN;
+      return exhaustiveSwitchGuard(programType);
   }
 };
 
 const mapTags = (kompassiGame: KompassiGame): Tag[] => {
-  const gameId = kompassiGame.identifier;
-
   const tags: Tag[] = kompassiGame.tags.flatMap((tag) => {
     switch (tag) {
       case KompassiTag.IN_ENGLISH:
@@ -112,8 +108,7 @@ const mapTags = (kompassiGame: KompassiGame): Tag[] => {
         return Tag.CHILDRENS_PROGRAM;
 
       default:
-        logger.error(`Unknown tag for game ${gameId}: ${tag}`);
-        return [];
+        return exhaustiveSwitchGuard(tag);
     }
   });
 
@@ -145,9 +140,7 @@ const mapTags = (kompassiGame: KompassiGame): Tag[] => {
 };
 
 const mapGenres = (kompassiGame: KompassiGame): Genre[] => {
-  const gameId = kompassiGame.identifier;
-
-  return kompassiGame.genres.flatMap((genre) => {
+  return kompassiGame.genres.map((genre) => {
     switch (genre) {
       case KompassiGenre.FANTASY:
         return Genre.FANTASY;
@@ -183,16 +176,13 @@ const mapGenres = (kompassiGame: KompassiGame): Genre[] => {
         return Genre.ADVENTURE;
 
       default:
-        logger.error(`Unknown genre for game ${gameId}: ${genre}`);
-        return [];
+        return exhaustiveSwitchGuard(genre);
     }
   });
 };
 
 const mapGameStyles = (kompassiGame: KompassiGame): GameStyle[] => {
-  const gameId = kompassiGame.identifier;
-
-  return kompassiGame.styles.flatMap((gameStyle) => {
+  return kompassiGame.styles.map((gameStyle) => {
     switch (gameStyle) {
       case KompassiGameStyle.SERIOUS:
         return GameStyle.SERIOUS;
@@ -216,8 +206,7 @@ const mapGameStyles = (kompassiGame: KompassiGame): GameStyle[] => {
         return GameStyle.COMBAT_DRIVEN;
 
       default:
-        logger.error(`Unknown gameStyle for game ${gameId}: ${gameStyle}`);
-        return [];
+        return exhaustiveSwitchGuard(gameStyle);
     }
   });
 };
