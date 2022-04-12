@@ -15,7 +15,7 @@ import {
   KompassiProgramType,
   KompassiTag,
 } from "shared/typings/models/kompassiGame";
-import { exhausticeSwitchGuard } from "shared/utils/exhausticeSwitchGuard";
+import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 
 export const kompassiGameMapper = (
   games: readonly KompassiGame[]
@@ -64,7 +64,7 @@ const mapProgramType = (kompassiGame: KompassiGame): ProgramType => {
       return ProgramType.LARP;
 
     default:
-      return exhausticeSwitchGuard(programType);
+      return exhaustiveSwitchGuard(programType);
   }
 };
 
@@ -108,7 +108,7 @@ const mapTags = (kompassiGame: KompassiGame): Tag[] => {
         return Tag.CHILDRENS_PROGRAM;
 
       default:
-        return exhausticeSwitchGuard(tag);
+        return exhaustiveSwitchGuard(tag);
     }
   });
 
@@ -176,7 +176,7 @@ const mapGenres = (kompassiGame: KompassiGame): Genre[] => {
         return Genre.ADVENTURE;
 
       default:
-        return exhausticeSwitchGuard(genre);
+        return exhaustiveSwitchGuard(genre);
     }
   });
 };
@@ -206,7 +206,7 @@ const mapGameStyles = (kompassiGame: KompassiGame): GameStyle[] => {
         return GameStyle.COMBAT_DRIVEN;
 
       default:
-        return exhausticeSwitchGuard(gameStyle);
+        return exhaustiveSwitchGuard(gameStyle);
     }
   });
 };
