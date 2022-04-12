@@ -16,7 +16,7 @@ export const padgAssignPlayers = (
   const startingGames = getStartingGames(games, startingTime);
 
   if (startingGames.length === 0) {
-    logger.info("No starting games, stop!");
+    logger.debug("No starting games, stop!");
     return {
       results: [],
       message: "Padg Assign Result - No starting games",
@@ -33,7 +33,7 @@ export const padgAssignPlayers = (
     numberOfGroups,
   } = getRunRandomAndPadgInput(players, games, startingTime);
   if (signedGames.length === 0) {
-    logger.info("No signup wishes, stop!");
+    logger.debug("No signup wishes, stop!");
     return {
       results: [],
       message: "Padg Assign Result - No signup wishes",
