@@ -2401,13 +2401,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/caseless@npm:*":
-  version: 0.12.2
-  resolution: "@types/caseless@npm:0.12.2"
-  checksum: 430d15911184ad11e0a8aa21d1ec15fcc93b90b63570c37bf16ebd34457482bfc8de3f5eb6771e0ef986ce183270d4297823b0f492c346255967e78f7292388b
-  languageName: node
-  linkType: hard
-
 "@types/connect-history-api-fallback@npm:^1.3.5":
   version: 1.3.5
   resolution: "@types/connect-history-api-fallback@npm:1.3.5"
@@ -2745,27 +2738,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/request-promise-native@npm:1.0.18":
-  version: 1.0.18
-  resolution: "@types/request-promise-native@npm:1.0.18"
-  dependencies:
-    "@types/request": "*"
-  checksum: e25ae495d18ccd147cbacd7c746dbe05e989e6dae83c6e2f8094ff1c4e43da5f55ed288c3ca724b1f20c9271dfb909b4f68c519d3edf6a91cc96f211d42548b1
-  languageName: node
-  linkType: hard
-
-"@types/request@npm:*":
-  version: 2.48.8
-  resolution: "@types/request@npm:2.48.8"
-  dependencies:
-    "@types/caseless": "*"
-    "@types/node": "*"
-    "@types/tough-cookie": "*"
-    form-data: ^2.5.0
-  checksum: 0b7754941e08205dce51635d894ec524df276d2b83ca13b9aab723f9281acecf1108841e9554494cb1cb60f6d6ddbb47ebea97392bcf2bf607f035b3a9b4af45
-  languageName: node
-  linkType: hard
-
 "@types/retry@npm:^0.12.0":
   version: 0.12.1
   resolution: "@types/retry@npm:0.12.1"
@@ -2872,13 +2844,6 @@ __metadata:
   version: 0.2.3
   resolution: "@types/tmp@npm:0.2.3"
   checksum: 0ca45e99b3b3c6959d5c4f4555f73c8007db540cfb0fbbb9373217f9ab85e67eef75193f51a1d6564b0ee6c6f5ffa259d1034d7f7530a5b7ce80acb94cfc4daa
-  languageName: node
-  linkType: hard
-
-"@types/tough-cookie@npm:*":
-  version: 4.0.1
-  resolution: "@types/tough-cookie@npm:4.0.1"
-  checksum: 7570c1c2d74201f4ead3512cf8e4c99e97d92ab8a02ae2fb987fd720ced0ca1a2baf250c98a861a170b86762606c9bf6d32207675f13dffc5ab75c08c96578d2
   languageName: node
   linkType: hard
 
@@ -6750,17 +6715,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"form-data@npm:^2.5.0":
-  version: 2.5.1
-  resolution: "form-data@npm:2.5.1"
-  dependencies:
-    asynckit: ^0.4.0
-    combined-stream: ^1.0.6
-    mime-types: ^2.1.12
-  checksum: 5134ada56cc246b293a1ac7678dba6830000603a3979cf83ff7b2f21f2e3725202237cfb89e32bcb38a1d35727efbd3c3a22e65b42321e8ade8eec01ce755d08
-  languageName: node
-  linkType: hard
-
 "form-data@npm:^3.0.0":
   version: 3.0.1
   resolution: "form-data@npm:3.0.1"
@@ -8893,7 +8847,6 @@ __metadata:
     "@types/react-dom": 18.0.0
     "@types/styled-components": 5.1.25
     "@welldone-software/why-did-you-render": 7.0.1
-    axios: 0.26.1
     babel-loader: 8.2.4
     babel-plugin-styled-components: 2.0.7
     browserslist: 4.20.2
@@ -8954,6 +8907,7 @@ __metadata:
     "@types/lodash": 4.14.181
     "@typescript-eslint/eslint-plugin": 5.19.0
     "@typescript-eslint/parser": 5.19.0
+    axios: 0.26.1
     babel-plugin-lodash: 3.3.4
     babel-plugin-module-resolver: 4.1.0
     concurrently: 7.1.0
@@ -9001,7 +8955,6 @@ __metadata:
     "@types/morgan": 1.9.3
     "@types/node": 17.0.23
     "@types/node-schedule": 1.3.2
-    "@types/request-promise-native": 1.0.18
     "@types/supertest": 2.0.12
     bcryptjs: 2.4.3
     commander: 9.1.0
@@ -9019,7 +8972,6 @@ __metadata:
     munkres-js: 1.2.2
     node-schedule: 2.1.0
     request: 2.88.2
-    request-promise-native: 1.0.9
     supertest: 6.2.2
     ts-node: 10.7.0
     ts-node-dev: 1.1.8
@@ -9290,7 +9242,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash@npm:4.17.21, lodash@npm:^4, lodash@npm:^4.17.10, lodash@npm:^4.17.11, lodash@npm:^4.17.14, lodash@npm:^4.17.15, lodash@npm:^4.17.19, lodash@npm:^4.17.20, lodash@npm:^4.17.21, lodash@npm:^4.7.0":
+"lodash@npm:4.17.21, lodash@npm:^4, lodash@npm:^4.17.10, lodash@npm:^4.17.11, lodash@npm:^4.17.14, lodash@npm:^4.17.15, lodash@npm:^4.17.20, lodash@npm:^4.17.21, lodash@npm:^4.7.0":
   version: 4.17.21
   resolution: "lodash@npm:4.17.21"
   checksum: eb835a2e51d381e561e508ce932ea50a8e5a68f4ebdd771ea240d3048244a8d13658acbd502cd4829768c56f2e16bdd4340b9ea141297d472517b83868e677f7
@@ -11455,30 +11407,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"request-promise-core@npm:1.1.4":
-  version: 1.1.4
-  resolution: "request-promise-core@npm:1.1.4"
-  dependencies:
-    lodash: ^4.17.19
-  peerDependencies:
-    request: ^2.34
-  checksum: c798bafd552961e36fbf5023b1d081e81c3995ab390f1bc8ef38a711ba3fe4312eb94dbd61887073d7356c3499b9380947d7f62faa805797c0dc50f039425699
-  languageName: node
-  linkType: hard
-
-"request-promise-native@npm:1.0.9":
-  version: 1.0.9
-  resolution: "request-promise-native@npm:1.0.9"
-  dependencies:
-    request-promise-core: 1.1.4
-    stealthy-require: ^1.1.1
-    tough-cookie: ^2.3.3
-  peerDependencies:
-    request: ^2.34
-  checksum: 3e2c694eefac88cb20beef8911ad57a275ab3ccbae0c4ca6c679fffb09d5fd502458aab08791f0814ca914b157adab2d4e472597c97a73be702918e41725ed69
-  languageName: node
-  linkType: hard
-
 "request@npm:2.88.2":
   version: 2.88.2
   resolution: "request@npm:2.88.2"
@@ -12384,13 +12312,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"stealthy-require@npm:^1.1.1":
-  version: 1.1.1
-  resolution: "stealthy-require@npm:1.1.1"
-  checksum: 6805b857a9f3a6a1079fc6652278038b81011f2a5b22cbd559f71a6c02087e6f1df941eb10163e3fdc5391ab5807aa46758d4258547c1f5ede31e6d9bfda8dd3
-  languageName: node
-  linkType: hard
-
 "string-argv@npm:^0.3.1":
   version: 0.3.1
   resolution: "string-argv@npm:0.3.1"
@@ -12979,16 +12900,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tough-cookie@npm:^2.3.3, tough-cookie@npm:~2.5.0":
-  version: 2.5.0
-  resolution: "tough-cookie@npm:2.5.0"
-  dependencies:
-    psl: ^1.1.28
-    punycode: ^2.1.1
-  checksum: 16a8cd090224dd176eee23837cbe7573ca0fa297d7e468ab5e1c02d49a4e9a97bb05fef11320605eac516f91d54c57838a25864e8680e27b069a5231d8264977
-  languageName: node
-  linkType: hard
-
 "tough-cookie@npm:^4.0.0":
   version: 4.0.0
   resolution: "tough-cookie@npm:4.0.0"
@@ -12997,6 +12908,16 @@ __metadata:
     punycode: ^2.1.1
     universalify: ^0.1.2
   checksum: 0891b37eb7d17faa3479d47f0dce2e3007f2583094ad272f2670d120fbcc3df3b0b0a631ba96ecad49f9e2297d93ff8995ce0d3292d08dd7eabe162f5b224d69
+  languageName: node
+  linkType: hard
+
+"tough-cookie@npm:~2.5.0":
+  version: 2.5.0
+  resolution: "tough-cookie@npm:2.5.0"
+  dependencies:
+    psl: ^1.1.28
+    punycode: ^2.1.1
+  checksum: 16a8cd090224dd176eee23837cbe7573ca0fa297d7e468ab5e1c02d49a4e9a97bb05fef11320605eac516f91d54c57838a25864e8680e27b069a5231d8264977
   languageName: node
   linkType: hard
 
