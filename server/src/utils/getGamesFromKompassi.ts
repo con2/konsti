@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 import { ZodError } from "zod";
-import request from "request-promise-native";
+import axios from "axios";
 import { logger } from "server/utils/logger";
 import { config } from "server/config";
 import {
@@ -22,14 +22,19 @@ export const getGamesFromKompassi = async (): Promise<
     ? getProgramFromLocalFile()
     : await getProgramFromServer();
 
-  if (eventProgramItems?.length === 0) {
+  if (!Array.isArray(eventProgramItems)) {
+    logger.error("Invalid response format, should be array");
+    return [];
+  }
+
+  if (eventProgramItems.length === 0) {
     logger.info("No program items found");
     return [];
   }
 
   logger.info(`Loaded ${eventProgramItems.length} event program items`);
 
-  return getGamesFromProgram(eventProgramItems);
+  return getGamesFromFullProgram(eventProgramItems);
 };
 
 const getProgramFromLocalFile = (): EventProgramItem[] => {
@@ -49,23 +54,16 @@ const getProgramFromLocalFile = (): EventProgramItem[] => {
 const getProgramFromServer = async (): Promise<EventProgramItem[]> => {
   logger.info("GET event program from remote server");
 
-  const options = {
-    uri: config.dataUri,
-    headers: {
-      "User-Agent": "Request-Promise",
-    },
-    json: true,
-  };
-
   try {
-    return await request(options);
+    const response = await axios.get(config.dataUri);
+    return response.data;
   } catch (error) {
     logger.error(`Games request error: ${error}`);
     throw error;
   }
 };
 
-const getGamesFromProgram = (
+const getGamesFromFullProgram = (
   programItems: EventProgramItem[]
 ): KompassiGame[] => {
   const matchingProgramItems: EventProgramItem[] = programItems.filter(
