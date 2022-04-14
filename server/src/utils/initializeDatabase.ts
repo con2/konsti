@@ -9,7 +9,7 @@ import {
   createHelpUser,
   createTestUsers,
 } from "server/test/test-data-generation/generators/createUsers";
-import { getGamesFromKompassi } from "server/utils/getGamesFromKompassi";
+import { getGamesFromKompassi } from "server/features/game/utils/getGamesFromKompassi";
 import { kompassiGameMapper } from "server/utils/kompassiGameMapper";
 import { removeTestSettings } from "server/test/test-settings/testSettingsRepository";
 
