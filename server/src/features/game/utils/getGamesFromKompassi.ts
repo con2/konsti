@@ -23,13 +23,11 @@ export const getGamesFromKompassi = async (): Promise<
     : await getProgramFromServer();
 
   if (!Array.isArray(eventProgramItems)) {
-    logger.error("Invalid response format, should be array");
-    return [];
+    throw new Error("Invalid response format, should be array");
   }
 
   if (eventProgramItems.length === 0) {
-    logger.info("No program items found");
-    return [];
+    throw new Error("No program items found");
   }
 
   logger.info(`Loaded ${eventProgramItems.length} event program items`);
@@ -51,7 +49,7 @@ const getProgramFromLocalFile = (): EventProgramItem[] => {
   return JSON.parse(rawData);
 };
 
-const getProgramFromServer = async (): Promise<EventProgramItem[]> => {
+export const getProgramFromServer = async (): Promise<EventProgramItem[]> => {
   logger.info("GET event program from remote server");
 
   try {
@@ -111,12 +109,11 @@ const getGamesFromFullProgram = (
   );
 
   if (kompassiGames.length === 0) {
-    logger.info(
+    throw new Error(
       `No program items with following categories found: ${Object.values(
         KompassiProgramType
       ).join(", ")}`
     );
-    return [];
   }
 
   logger.info(`Found ${kompassiGames.length} games`);

@@ -1,7 +1,7 @@
 import moment from "moment";
 import schedule from "node-schedule";
 import { logger } from "server/utils/logger";
-import { getGamesFromKompassi } from "server/utils/getGamesFromKompassi";
+import { getGamesFromKompassi } from "server/features/game/utils/getGamesFromKompassi";
 import { config } from "server/config";
 import { updateGamePopularity } from "server/features/game-popularity/updateGamePopularity";
 import { removeOverlapSignups } from "server/features/player-assignment/utils/removeOverlapSignups";

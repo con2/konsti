@@ -65,13 +65,13 @@ export const mockSignup: UserSignup = {
     {
       gameDetails: testGame,
       priority: 1,
-      time: "2019-07-26T14:00:00.000Z",
+      time: testGame.startTime,
       message: "",
     },
     {
       gameDetails: testGame2,
       priority: 1,
-      time: "2019-07-26T15:00:00.000Z",
+      time: testGame2.startTime,
       message: "",
     },
   ],
@@ -81,5 +81,12 @@ export const mockPostEnteredGameRequest: PostEnteredGameParameters = {
   username: mockUser.username,
   enteredGameId: testGame.gameId,
   startTime: testGame.startTime,
+  message: "",
+};
+
+export const mockPostEnteredGameRequest2: PostEnteredGameParameters = {
+  username: mockUser.username,
+  enteredGameId: testGame2.gameId,
+  startTime: testGame2.startTime,
   message: "",
 };
