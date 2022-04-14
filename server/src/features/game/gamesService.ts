@@ -1,5 +1,5 @@
 import { logger } from "server/utils/logger";
-import { getGamesFromKompassi } from "server/utils/getGamesFromKompassi";
+import { getGamesFromKompassi } from "server/features/game/utils/getGamesFromKompassi";
 import { updateGamePopularity } from "server/features/game-popularity/updateGamePopularity";
 import { config } from "server/config";
 import { kompassiGameMapper } from "server/utils/kompassiGameMapper";
@@ -19,14 +19,6 @@ export const storeGames = async (): Promise<
   } catch (error) {
     return {
       message: "Games db update failed",
-      status: "error",
-      code: 0,
-    };
-  }
-
-  if (kompassiGames?.length === 0) {
-    return {
-      message: "Games db update failed: No games available",
       status: "error",
       code: 0,
     };
