@@ -11,6 +11,7 @@ import { AlgorithmSignupForm } from "./AlgorithmSignupForm";
 import { DirectSignupForm } from "./DirectSignupForm";
 import { Button, ButtonStyle } from "client/components/Button";
 import { SelectedGame } from "shared/typings/models/user";
+import { getUpcomingEnteredGames } from "client/utils/getUpcomingGames";
 
 const DESCRIPTION_SENTENCES_LENGTH = 3;
 const matchNextSentence = /([.?!])\s*(?=[A-Z])/g;
@@ -37,6 +38,13 @@ export const GameEntry = ({
   const userGroup = useAppSelector((state) => state.login.userGroup);
   const favoritedGames = useAppSelector(
     (state) => state.myGames.favoritedGames
+  );
+  const enteredGames = useAppSelector((state) => state.myGames.enteredGames);
+  const enteredGamesForTimeslot = getUpcomingEnteredGames(enteredGames).filter(
+    (g) => g.gameDetails.startTime === startTime
+  );
+  const isEnteredCurrentGame = enteredGames.some(
+    (g) => g.gameDetails.gameId === game.gameId
   );
 
   const dispatch = useAppDispatch();
@@ -68,8 +76,15 @@ export const GameEntry = ({
     await updateFavorite(updateOpts);
   };
 
+  const isGameDisabled =
+    !isEnteredCurrentGame && enteredGamesForTimeslot.length > 0;
   return (
-    <GameContainer key={game.gameId} data-testid="game-container">
+    <GameContainer
+      key={game.gameId}
+      disabled={isGameDisabled}
+      signed={isEnteredCurrentGame}
+      data-testid="game-container"
+    >
       <GameHeader>
         <HeaderContainer>
           <h3 data-testid="game-title">{game.title}</h3>
@@ -228,7 +243,7 @@ const Tag = styled.span`
   color: ${(props) => props.theme.textTag};
 `;
 
-const GameContainer = styled.div`
+const GameContainer = styled.div<{ disabled: boolean; signed: boolean }>`
   display: flex;
   flex-direction: column;
   padding: 8px;
@@ -239,6 +254,8 @@ const GameContainer = styled.div`
   min-height: 160px;
   box-shadow: 1px 8px 15px 0 rgba(0, 0, 0, 0.42);
   color: #3d3d3d;
+  ${(props) => props.disabled && "opacity: 50%"}
+  ${(props) => props.signed && `border-left: 5px solid ${props.theme.borderActive}`}
 `;
 
 const GameListShortDescription = styled.p`
