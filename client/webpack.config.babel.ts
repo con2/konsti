@@ -90,7 +90,7 @@ const devConfig: Configuration = {
 
   mode: "development",
 
-  devtool: config.enableReduxTrace ? "source-map" : "eval", // Use eval for best hot-loading perf
+  devtool: config.enableReduxTrace ? "source-map" : "eval-source-map",
 
   // webpack-dev-server config
   // @ts-expect-error: ?
