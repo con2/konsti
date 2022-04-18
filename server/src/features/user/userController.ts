@@ -175,7 +175,7 @@ export const postGroup = async (
 
   const {
     username,
-    isGroupLeader,
+    isGroupCreator,
     groupCode,
     ownSerial,
     leaveGroup,
@@ -188,7 +188,7 @@ export const postGroup = async (
 
   const response = await storeGroup(
     username,
-    isGroupLeader,
+    isGroupCreator,
     groupCode,
     ownSerial,
     leaveGroup,

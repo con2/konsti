@@ -39,14 +39,14 @@ export const getRunRandomAndPadgInput = (
 
   const signedGames = getSignedGames(startingGames, signupWishes);
 
-  // Get group leaders, selected players are group leaders since group members don't have signups yet
-  const groupLeaders = getSelectedPlayers(players, startingGames);
+  // Get group creators, selected players are group creators since group members don't have signups yet
+  const groupCreators = getSelectedPlayers(players, startingGames);
 
-  // Get group members based on group leaders
-  const groupMembers = getGroupMembers(groupLeaders, players);
+  // Get group members based on group creators
+  const groupMembers = getGroupMembers(groupCreators, players);
 
-  // Combine group leaders and group members
-  const allPlayers = groupLeaders.concat(groupMembers);
+  // Combine group creators and group members
+  const allPlayers = groupCreators.concat(groupMembers);
 
   // Combine users to groups, single user is size 1 group
   const playerGroups = getPlayerGroups(allPlayers);

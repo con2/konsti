@@ -220,11 +220,11 @@ export const findGroup = async (
 
     if (!response) {
       logger.info(
-        `MongoDB: Group "${groupCode}" with leader "${username}" not found`
+        `MongoDB: Group "${groupCode}" with creator "${username}" not found`
       );
     } else {
       logger.info(
-        `MongoDB: Group "${groupCode}" with leader "${username}" found`
+        `MongoDB: Group "${groupCode}" with creator "${username}" found`
       );
     }
     return response;

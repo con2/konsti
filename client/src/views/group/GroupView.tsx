@@ -56,7 +56,7 @@ export const GroupView = (): ReactElement => {
     const groupRequest: GroupRequest = {
       username: username,
       groupCode: serial,
-      isGroupLeader: true,
+      isGroupCreator: true,
       ownSerial: serial,
     };
 
@@ -88,7 +88,7 @@ export const GroupView = (): ReactElement => {
     const groupRequest: GroupRequest = {
       username: username,
       groupCode: joinGroupValue,
-      isGroupLeader: false,
+      isGroupCreator: false,
       ownSerial: serial,
     };
 
@@ -122,16 +122,16 @@ export const GroupView = (): ReactElement => {
   };
 
   const leaveGroup = async ({
-    isGroupLeader,
+    isGroupCreator,
   }: {
-    isGroupLeader: boolean;
+    isGroupCreator: boolean;
   }): Promise<void> => {
     setLoading(true);
 
     const groupRequest: GroupRequest = {
       username: username,
       groupCode: groupCode,
-      isGroupLeader,
+      isGroupCreator,
       ownSerial: serial,
       leaveGroup: true,
     };
@@ -165,15 +165,15 @@ export const GroupView = (): ReactElement => {
   };
 
   const closeGroup = async ({
-    isGroupLeader,
+    isGroupCreator,
   }: {
-    isGroupLeader: boolean;
+    isGroupCreator: boolean;
   }): Promise<void> => {
     setLoading(true);
     const groupRequest: GroupRequest = {
       username: username,
       groupCode: groupCode,
-      isGroupLeader,
+      isGroupCreator,
       ownSerial: serial,
       leaveGroup: true,
       closeGroup: true,
@@ -220,14 +220,14 @@ export const GroupView = (): ReactElement => {
     setMessageStyle("");
   };
 
-  const isGroupLeader = getIsGroupLeader(groupCode, serial);
+  const isGroupCreator = getIsGroupCreator(groupCode, serial);
   const inGroup = isInGroup();
 
   const joinGroupInput = (
     <div>
       <FormInput
         key="joinGroup"
-        placeholder={t("enterGroupLeaderCode")}
+        placeholder={t("enterGroupCreatorCode")}
         value={joinGroupValue}
         onChange={handleJoinGroupChange}
       />
@@ -267,7 +267,6 @@ export const GroupView = (): ReactElement => {
           {showCreateGroup && (
             <div>
               <p>{t("createGroupConfirmationMessage")}</p>
-              <p>{t("groupLeaderWarning")}</p>
               <Button
                 disabled={loading}
                 onClick={async () => await createGroup()}
@@ -295,16 +294,16 @@ export const GroupView = (): ReactElement => {
         </>
       )}
 
-      {isGroupLeader && inGroup && (
+      {isGroupCreator && inGroup && (
         <div>
           <p>
-            <InfoTextSpan>{t("youAreGroupLeader")}</InfoTextSpan>.{" "}
-            {t("groupLeaderInfo")}
+            <InfoTextSpan>{t("youAreGroupCreator")}</InfoTextSpan>.{" "}
+            {t("groupCreatorInfo")}
           </p>
         </div>
       )}
 
-      {!isGroupLeader && inGroup && (
+      {!isGroupCreator && inGroup && (
         <div>
           <p>
             <InfoTextSpan>{t("youAreInGroup")}</InfoTextSpan>.{" "}
@@ -316,16 +315,16 @@ export const GroupView = (): ReactElement => {
       {inGroup && (
         <>
           <div>
-            {!isGroupLeader && (
+            {!isGroupCreator && (
               <Button
                 disabled={loading}
-                onClick={async () => await leaveGroup({ isGroupLeader })}
+                onClick={async () => await leaveGroup({ isGroupCreator })}
               >
                 {t("button.leaveGroup")}
               </Button>
             )}
 
-            {isGroupLeader && (
+            {isGroupCreator && (
               <>
                 <div>
                   <Button
@@ -351,7 +350,7 @@ export const GroupView = (): ReactElement => {
 
                     <WarningButton
                       disabled={loading}
-                      onClick={async () => await closeGroup({ isGroupLeader })}
+                      onClick={async () => await closeGroup({ isGroupCreator })}
                     >
                       {t("button.closeGroup")}
                     </WarningButton>
@@ -369,7 +368,7 @@ export const GroupView = (): ReactElement => {
   );
 };
 
-export const getIsGroupLeader = (
+export const getIsGroupCreator = (
   groupCode: string,
   serial: string
 ): boolean => {

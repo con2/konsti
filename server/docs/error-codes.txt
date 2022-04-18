@@ -17,7 +17,7 @@ Groups
 33: Trying to join own group
 34: Own group already exists
 35: Failed to update group (add new or leave)
-36: Leader cannot leave non-empty group
+36: Creator cannot leave non-empty group
 
 Signup
 
