@@ -10,7 +10,7 @@ import { SignupError } from "client/views/signup/components/SignupList";
 
 interface Props {
   groupCode: string;
-  isGroupLeader: boolean;
+  isGroupCreator: boolean;
   onCancelClick: (event: MouseEvent) => void;
   onSubmitClick: (event: MouseEvent) => void;
   selectedGames: readonly SelectedGame[];
@@ -22,7 +22,7 @@ interface Props {
 
 export const SignupActionButtons = ({
   groupCode,
-  isGroupLeader,
+  isGroupCreator,
   onCancelClick,
   onSubmitClick,
   selectedGames,
@@ -36,11 +36,11 @@ export const SignupActionButtons = ({
 
   return (
     <div>
-      <Button disabled={submitting || !isGroupLeader} onClick={onSubmitClick}>
+      <Button disabled={submitting || !isGroupCreator} onClick={onSubmitClick}>
         {t("button.signup")}
       </Button>
 
-      <Button disabled={submitting || !isGroupLeader} onClick={onCancelClick}>
+      <Button disabled={submitting || !isGroupCreator} onClick={onCancelClick}>
         {t("button.cancelSignup")}
       </Button>
 
@@ -50,8 +50,8 @@ export const SignupActionButtons = ({
         <InfoMessage>{t("signupUnsavedChanges")}</InfoMessage>
       )}
 
-      {!isGroupLeader && <InfoText>{t("signupDisabledNotLeader")}</InfoText>}
-      {isGroupLeader && groupCode !== "0" && (
+      {!isGroupCreator && <InfoText>{t("signupDisabledNotCreator")}</InfoText>}
+      {isGroupCreator && groupCode !== "0" && (
         <InfoText>{t("signupForWholeGroup")}</InfoText>
       )}
 

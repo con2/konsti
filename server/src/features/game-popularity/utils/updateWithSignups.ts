@@ -8,19 +8,19 @@ export const updateWithSignups = async (
   users: User[],
   games: Game[]
 ): Promise<void> => {
-  const groupLeaders = users.filter(
+  const groupCreators = users.filter(
     (user) => user.groupCode !== "0" && user.groupCode === user.serial
   );
 
   const allUsers = users.map((user) => {
-    const foundGroupLeader = groupLeaders.find(
-      (groupLeader) =>
-        user.groupCode === groupLeader.groupCode &&
-        user.serial !== groupLeader.serial
+    const foundgroupCreator = groupCreators.find(
+      (groupCreator) =>
+        user.groupCode === groupCreator.groupCode &&
+        user.serial !== groupCreator.serial
     );
 
-    if (foundGroupLeader) {
-      return { ...user, signedGames: foundGroupLeader.signedGames };
+    if (foundgroupCreator) {
+      return { ...user, signedGames: foundgroupCreator.signedGames };
     } else return user;
   });
 

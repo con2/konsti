@@ -8,7 +8,7 @@ test("should render correctly", () => {
   const props: Props = {
     games: [],
     signupTimes: [],
-    isGroupLeader: true,
+    isGroupCreator: true,
   };
 
   render(
