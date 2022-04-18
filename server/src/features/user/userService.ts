@@ -322,7 +322,7 @@ export const storeFavorite = async (
 
 export const storeGroup = async (
   username: string,
-  isGroupLeader: boolean,
+  isGroupCreator: boolean,
   groupCode: string,
   ownSerial: string,
   leaveGroup = false,
@@ -352,9 +352,9 @@ export const storeGroup = async (
   if (leaveGroup) {
     const groupMembers = await findGroupMembers(groupCode);
 
-    if (isGroupLeader && groupMembers.length > 1) {
+    if (isGroupCreator && groupMembers.length > 1) {
       return {
-        message: "Leader cannot leave non-empty group",
+        message: "Creator cannot leave non-empty group",
         status: "error",
         code: 36,
       };
@@ -389,7 +389,7 @@ export const storeGroup = async (
   }
 
   // Create group
-  if (isGroupLeader) {
+  if (isGroupCreator) {
     // Check that serial is not used
     let findGroupResponse;
     try {
@@ -442,7 +442,7 @@ export const storeGroup = async (
   }
 
   // Join group
-  if (!isGroupLeader) {
+  if (!isGroupCreator) {
     // Cannot join own group
     if (ownSerial === groupCode) {
       return {
@@ -474,11 +474,11 @@ export const storeGroup = async (
       };
     }
 
-    // Check if group leader has created a group
+    // Check if group creator has created a group
     let findGroupResponse;
     try {
-      const leaderUsername = findSerialResponse.username;
-      findGroupResponse = await findGroup(groupCode, leaderUsername);
+      const creatorUsername = findSerialResponse.username;
+      findGroupResponse = await findGroup(groupCode, creatorUsername);
     } catch (error) {
       logger.error(`findGroup(): ${error}`);
       return {

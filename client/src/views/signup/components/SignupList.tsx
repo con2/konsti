@@ -23,13 +23,13 @@ export enum SignupError {
 export interface Props {
   games: readonly Game[];
   signupTimes: readonly string[];
-  isGroupLeader: boolean;
+  isGroupCreator: boolean;
 }
 
 export const SignupList = ({
   games,
   signupTimes,
-  isGroupLeader,
+  isGroupCreator,
 }: Props): ReactElement => {
   const signupTime = useAppSelector((state) => state.signup.signupTime);
   const username = useAppSelector((state) => state.login.username);
@@ -161,7 +161,7 @@ export const SignupList = ({
 
               <SignupActionButtons
                 submitting={submitting}
-                isGroupLeader={isGroupLeader}
+                isGroupCreator={isGroupCreator}
                 onSubmitClick={onSubmitClick}
                 onCancelClick={onCancelClick}
                 signupSubmitted={signupSubmitted}
