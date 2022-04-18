@@ -37,7 +37,7 @@ test("POST group to server", async () => {
 
   const groupRequest: GroupRequest = {
     groupCode: "123",
-    isGroupLeader: true,
+    isGroupCreator: true,
     ownSerial: "123",
     username: "test user",
     leaveGroup: false,

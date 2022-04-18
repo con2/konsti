@@ -2,7 +2,7 @@ import moment from "moment";
 import { GroupMember } from "shared/typings/api/groups";
 import { Game } from "shared/typings/models/game";
 import { getTime } from "client/utils/getTime";
-import { getIsGroupLeader } from "client/views/group/GroupView";
+import { getIsGroupCreator } from "client/views/group/GroupView";
 import { SelectedGame } from "shared/typings/models/user";
 
 export const getUpcomingGames = (
@@ -32,14 +32,14 @@ export const getUpcomingSignedGames = (
   return upcomingGames;
 };
 
-const getGroupLeader = (
+const getGroupCreator = (
   groupMembers: readonly GroupMember[]
 ): GroupMember | null => {
-  const groupLeader = groupMembers.find(
+  const groupCreator = groupMembers.find(
     (member) => member.serial === member.groupCode
   );
-  if (!groupLeader) return null;
-  return groupLeader;
+  if (!groupCreator) return null;
+  return groupCreator;
 };
 
 export const getSignedGames = (
@@ -49,21 +49,21 @@ export const getSignedGames = (
   groupMembers: readonly GroupMember[],
   getAllGames = true
 ): readonly SelectedGame[] => {
-  const isGroupLeader = getIsGroupLeader(groupCode, serial);
+  const isGroupCreator = getIsGroupCreator(groupCode, serial);
 
-  if (isGroupLeader) {
+  if (isGroupCreator) {
     return !getAllGames ? getUpcomingSignedGames(signedGames) : signedGames;
   }
 
-  if (!isGroupLeader) {
-    const groupLeader = getGroupLeader(groupMembers);
+  if (!isGroupCreator) {
+    const groupCreator = getGroupCreator(groupMembers);
 
     if (!getAllGames) {
       return getUpcomingSignedGames(
-        groupLeader ? groupLeader.signedGames : signedGames
+        groupCreator ? groupCreator.signedGames : signedGames
       );
     } else {
-      return groupLeader ? groupLeader.signedGames : signedGames;
+      return groupCreator ? groupCreator.signedGames : signedGames;
     }
   }
 

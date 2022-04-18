@@ -267,7 +267,7 @@ describe(`POST ${GROUP_ENDPOINT}`, () => {
 
     const groupRequest: GroupRequest = {
       groupCode: "1234",
-      isGroupLeader: true,
+      isGroupCreator: true,
       ownSerial: "1234",
       username: "testuser",
       leaveGroup: false,

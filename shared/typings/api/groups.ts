@@ -15,7 +15,7 @@ export interface GetGroupResponse {
 
 export const GroupRequestSchema = z.object({
   groupCode: z.string(),
-  isGroupLeader: z.boolean(),
+  isGroupCreator: z.boolean(),
   ownSerial: z.string(),
   username: z.string(),
   leaveGroup: z.optional(z.boolean()),
