@@ -16,6 +16,7 @@ import { testGame, testGame2 } from "shared/tests/testGame";
 import {
   findUser,
   saveEnteredGame,
+  saveFavorite,
   saveSignup,
   saveUser,
 } from "server/features/user/userRepository";
@@ -71,7 +72,7 @@ describe(`POST ${GAMES_ENDPOINT}`, () => {
     expect(games[0].title).toEqual(testGame.title);
   });
 
-  test("should remove games, selectedGames, and enteredGames that are not in the server response", async () => {
+  test("should remove games, selectedGames, enteredGames, and favoritedGames that are not in the server response", async () => {
     jest
       .spyOn(kompassiModule, "getProgramFromServer")
       .mockResolvedValue([testKompassiGame]);
@@ -81,6 +82,10 @@ describe(`POST ${GAMES_ENDPOINT}`, () => {
     await saveSignup(mockSignup);
     await saveEnteredGame(mockPostEnteredGameRequest);
     await saveEnteredGame(mockPostEnteredGameRequest2);
+    await saveFavorite({
+      username: mockUser.username,
+      favoritedGames: [testGame.gameId, testGame2.gameId],
+    });
 
     const response = await request(server)
       .post(GAMES_ENDPOINT)
@@ -101,6 +106,8 @@ describe(`POST ${GAMES_ENDPOINT}`, () => {
     expect(updatedUser?.enteredGames[0].gameDetails.title).toEqual(
       testGame.title
     );
+    expect(updatedUser?.favoritedGames.length).toEqual(1);
+    expect(updatedUser?.favoritedGames[0].gameId).toEqual(testGame.gameId);
   });
 
   test("should not modify anything if server response is invalid", async () => {
