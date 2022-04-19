@@ -49,7 +49,6 @@ export const saveUser = async (newUserData: NewUserData): Promise<User> => {
   }
 };
 
-// TODO: When used?
 export const updateUser = async (user: User): Promise<User | null> => {
   let response;
 
