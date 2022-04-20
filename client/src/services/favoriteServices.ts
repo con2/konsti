@@ -9,9 +9,10 @@ import {
 export const postFavorite = async (
   favoriteData: SaveFavoriteRequest
 ): Promise<PostFavoriteResponse | ServerError> => {
-  const response = await api.post<PostFavoriteResponse>(FAVORITE_ENDPOINT, {
-    favoriteData,
-  });
+  const response = await api.post<PostFavoriteResponse>(
+    FAVORITE_ENDPOINT,
+    favoriteData
+  );
 
   return response.data;
 };

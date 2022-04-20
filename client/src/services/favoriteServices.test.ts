@@ -22,7 +22,5 @@ test("POST favorited games to server", async () => {
 
   expect(response).toEqual("test response");
   expect(mockAxios.post).toHaveBeenCalledTimes(1);
-  expect(mockAxios.post).toHaveBeenCalledWith(FAVORITE_ENDPOINT, {
-    favoriteData,
-  });
+  expect(mockAxios.post).toHaveBeenCalledWith(FAVORITE_ENDPOINT, favoriteData);
 });
