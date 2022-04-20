@@ -123,10 +123,8 @@ export const postFavorite = async (
   logger.info(`API call: POST ${FAVORITE_ENDPOINT}`);
 
   const PostFavoriteParameters = z.object({
-    favoriteData: z.object({
-      username: z.string(),
-      favoritedGames: z.array(z.string()),
-    }),
+    username: z.string(),
+    favoritedGameIds: z.array(z.string()),
   });
 
   let parameters;
@@ -141,7 +139,7 @@ export const postFavorite = async (
     return res.sendStatus(422);
   }
 
-  const { favoriteData } = parameters;
+  const favoriteData = parameters;
 
   if (
     !isAuthorized(

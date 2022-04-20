@@ -84,7 +84,7 @@ describe(`POST ${GAMES_ENDPOINT}`, () => {
     await saveEnteredGame(mockPostEnteredGameRequest2);
     await saveFavorite({
       username: mockUser.username,
-      favoritedGames: [testGame.gameId, testGame2.gameId],
+      favoritedGameIds: [testGame.gameId, testGame2.gameId],
     });
 
     const response = await request(server)

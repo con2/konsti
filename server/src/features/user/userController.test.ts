@@ -13,6 +13,7 @@ import { startTestServer, stopTestServer } from "server/test/utils/testServer";
 import { UserGroup } from "shared/typings/models/user";
 import { getJWT } from "server/utils/jwt";
 import { GroupRequest } from "shared/typings/api/groups";
+import { SaveFavoriteRequest } from "shared/typings/api/favorite";
 
 jest.mock("server/utils/logger");
 
@@ -207,15 +208,15 @@ describe(`POST ${FAVORITE_ENDPOINT}`, () => {
   test("should return 401 without valid authorization", async () => {
     const { server, mongoServer } = await startTestServer();
 
+    const saveFavoriteRequest: SaveFavoriteRequest = {
+      username: "testuser",
+      favoritedGameIds: [],
+    };
+
     try {
       const response = await request(server)
         .post(FAVORITE_ENDPOINT)
-        .send({
-          favoriteData: {
-            username: "testuser",
-            favoritedGames: [],
-          },
-        });
+        .send(saveFavoriteRequest);
       expect(response.status).toEqual(401);
     } finally {
       await stopTestServer(server, mongoServer);
