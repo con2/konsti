@@ -1,4 +1,7 @@
-import { findUsers, updateUser } from "server/features/user/userRepository";
+import {
+  findUsers,
+  updateUserByUsername,
+} from "server/features/user/userRepository";
 import { logger } from "server/utils/logger";
 
 export const removeInvalidGamesFromUsers = async (): Promise<void> => {
@@ -67,7 +70,7 @@ export const removeInvalidGamesFromUsers = async (): Promise<void> => {
           changedEnteredGamesCount > 0 ||
           changedFavoritedGamesCount > 0
         ) {
-          await updateUser({
+          await updateUserByUsername({
             ...user,
             signedGames: validSignedGames,
             enteredGames: validEnteredGames,

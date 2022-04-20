@@ -1,7 +1,7 @@
 import { logger } from "server/utils/logger";
 import { UserModel } from "server/features/user/userSchema";
 import { UserSignup } from "server/typings/result.typings";
-import { NewUserData } from "server/typings/user.typings";
+import { NewUser } from "server/typings/user.typings";
 import { Serial } from "server/typings/serial.typings";
 import { GameDoc } from "server/typings/game.typings";
 import { findGames } from "server/features/game/gameRepository";
@@ -23,7 +23,7 @@ export const removeUsers = async (): Promise<void> => {
   }
 };
 
-export const saveUser = async (newUserData: NewUserData): Promise<User> => {
+export const saveUser = async (newUserData: NewUser): Promise<User> => {
   const user = new UserModel({
     username: newUserData.username,
     password: newUserData.passwordHash,
@@ -31,9 +31,9 @@ export const saveUser = async (newUserData: NewUserData): Promise<User> => {
     serial: newUserData.serial,
     groupCode:
       typeof newUserData.groupCode === "string" ? newUserData.groupCode : "0",
-    favoritedGames: newUserData.favoritedGames ?? [],
-    signedGames: newUserData.signedGames ?? [],
-    enteredGames: newUserData.enteredGames ?? [],
+    favoritedGames: [],
+    signedGames: [],
+    enteredGames: [],
   });
 
   let response;
@@ -49,20 +49,19 @@ export const saveUser = async (newUserData: NewUserData): Promise<User> => {
   }
 };
 
-export const updateUser = async (user: User): Promise<User | null> => {
+export const updateUserByUsername = async (user: User): Promise<User> => {
   let response;
 
   try {
     response = await UserModel.findOneAndUpdate(
       { username: user.username },
       {
-        userGroup:
-          typeof user.userGroup === "string" ? user.userGroup : UserGroup.USER,
+        userGroup: user.userGroup,
         serial: user.serial,
-        groupCode: typeof user.groupCode === "string" ? user.groupCode : "0",
-        favoritedGames: user.favoritedGames ?? [],
-        signedGames: user.signedGames ?? [],
-        enteredGames: user.enteredGames ?? [],
+        groupCode: user.groupCode,
+        favoritedGames: user.favoritedGames,
+        signedGames: user.signedGames,
+        enteredGames: user.enteredGames,
       },
       { new: true, fields: "-_id -__v -createdAt -updatedAt" }
     )
@@ -70,14 +69,13 @@ export const updateUser = async (user: User): Promise<User | null> => {
       .populate("favoritedGames")
       .populate("enteredGames.gameDetails")
       .populate("signedGames.gameDetails");
-
-    logger.debug(`MongoDB: User "${user.username}" updated`);
-
-    return response;
   } catch (error) {
     logger.error(`MongoDB: Error updating user ${user.username} - ${error}`);
     throw error;
   }
+
+  logger.debug(`MongoDB: User "${user.username}" updated`);
+  return response;
 };
 
 export const updateUserPassword = async (
