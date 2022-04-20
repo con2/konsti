@@ -3,15 +3,12 @@ import { SelectedGame, User, UserGroup } from "shared/typings/models/user";
 
 export interface UserDoc extends User, mongoose.Document {}
 
-export interface NewUserData {
+export interface NewUser {
   username: string;
   serial: string;
   passwordHash: string | Promise<void>;
   userGroup?: UserGroup;
   groupCode?: string;
-  favoritedGames?: readonly string[];
-  signedGames?: readonly SelectedGame[];
-  enteredGames?: readonly SelectedGame[];
 }
 
 export interface SignupWish {

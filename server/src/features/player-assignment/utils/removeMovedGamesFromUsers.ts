@@ -3,7 +3,10 @@ import { logger } from "server/utils/logger";
 import { GameDoc } from "server/typings/game.typings";
 import { Game } from "shared/typings/models/game";
 import { findGames } from "server/features/game/gameRepository";
-import { findUsers, updateUser } from "server/features/user/userRepository";
+import {
+  findUsers,
+  updateUserByUsername,
+} from "server/features/user/userRepository";
 
 export const removeMovedGamesFromUsers = async (
   updatedGames: readonly Game[]
@@ -84,7 +87,7 @@ export const removeMovedGamesFromUsers = async (
           user.signedGames.length !== signedGames.length ||
           user.enteredGames.length !== enteredGames.length
         ) {
-          await updateUser({
+          await updateUserByUsername({
             ...user,
             signedGames,
             enteredGames,

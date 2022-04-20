@@ -6,6 +6,7 @@ import { ENTERED_GAME_ENDPOINT } from "shared/constants/apiEndpoints";
 import { getJWT } from "server/utils/jwt";
 import { UserGroup } from "shared/typings/models/user";
 import {
+  mockPostEnteredGameRequest,
   mockUser,
   mockUser2,
   mockUser3,
@@ -13,8 +14,12 @@ import {
   mockUser5,
 } from "server/test/mock-data/mockUser";
 import { testGame } from "shared/tests/testGame";
-import { findUser, saveUser } from "server/features/user/userRepository";
-import { findGames, saveGames } from "server/features/game/gameRepository";
+import {
+  findUser,
+  saveEnteredGame,
+  saveUser,
+} from "server/features/user/userRepository";
+import { saveGames } from "server/features/game/gameRepository";
 
 let server: Server;
 let mongoServer: MongoMemoryServer;
@@ -331,21 +336,8 @@ describe(`DELETE ${ENTERED_GAME_ENDPOINT}`, () => {
   test("should return success when user and game are found", async () => {
     // Populate database
     await saveGames([testGame]);
-    const games = await findGames();
-
-    const mockUserWithEnteredGame = {
-      ...mockUser,
-      enteredGames: [
-        {
-          gameDetails: games[0]._id,
-          priority: 1,
-          time: testGame.startTime,
-          message: "Test message",
-        },
-      ],
-    };
-
-    await saveUser(mockUserWithEnteredGame);
+    await saveUser(mockUser);
+    await saveEnteredGame(mockPostEnteredGameRequest);
 
     // Check starting conditions
     const nonModifiedUser = await findUser(mockUser.username);
