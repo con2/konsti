@@ -344,13 +344,13 @@ export const saveGroupCode = async (
 export const saveFavorite = async (
   favoriteData: SaveFavoriteRequest
 ): Promise<readonly Game[] | null> => {
-  const { username, favoritedGames } = favoriteData;
+  const { username, favoritedGameIds } = favoriteData;
 
   const games = await findGames();
 
-  const favoritedGamesWithDocId = favoritedGames.reduce<string[]>(
-    (acc, favoritedGame) => {
-      const gameDocInDb = games.find((game) => game.gameId === favoritedGame);
+  const favoritedGames = favoritedGameIds.reduce<string[]>(
+    (acc, favoritedGameId) => {
+      const gameDocInDb = games.find((game) => game.gameId === favoritedGameId);
 
       if (gameDocInDb) {
         acc.push(gameDocInDb._id as string);
@@ -365,7 +365,7 @@ export const saveFavorite = async (
     response = await UserModel.findOneAndUpdate(
       { username },
       {
-        favoritedGames: favoritedGamesWithDocId,
+        favoritedGames,
       },
       { new: true, fields: "favoritedGames" }
     )
