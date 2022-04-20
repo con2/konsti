@@ -39,8 +39,9 @@ export const GameEntry = ({
   const dispatch = useAppDispatch();
 
   const favorited =
-    favoritedGames.find((favoritedGame) => favoritedGame === game.gameId) !==
-    undefined;
+    favoritedGames.find(
+      (favoritedGame) => favoritedGame.gameId === game.gameId
+    ) !== undefined;
 
   const isEnterGameMode = signupStrategy === SignupStrategy.DIRECT;
   const gameIsFull = game.maxAttendance === players;

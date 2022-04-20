@@ -1,5 +1,5 @@
 import { logger } from "server/utils/logger";
-import { removeInvalidSignupsFromUsers } from "server/features/player-assignment/utils/removeInvalidSignupsFromUsers";
+import { removeInvalidGamesFromUsers } from "server/features/player-assignment/utils/removeInvalidGamesFromUsers";
 import { db } from "server/db/mongodb";
 
 const removeInvalidGames = async (): Promise<void> => {
@@ -11,7 +11,7 @@ const removeInvalidGames = async (): Promise<void> => {
   }
 
   try {
-    await removeInvalidSignupsFromUsers();
+    await removeInvalidGamesFromUsers();
   } catch (error) {
     logger.error(`Error removing invalid games: ${error}`);
     throw error;

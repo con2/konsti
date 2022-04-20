@@ -1,6 +1,6 @@
 import { logger } from "server/utils/logger";
 import { runAssignmentStrategy } from "server/features/player-assignment/utils/runAssignmentStrategy";
-import { removeInvalidSignupsFromUsers } from "server/features/player-assignment/utils/removeInvalidSignupsFromUsers";
+import { removeInvalidGamesFromUsers } from "server/features/player-assignment/utils/removeInvalidGamesFromUsers";
 import { PlayerAssignmentResult } from "server/typings/result.typings";
 import { User } from "shared/typings/models/user";
 import { Game } from "shared/typings/models/game";
@@ -13,7 +13,7 @@ export const runAssignment = async (
   assignmentStrategy: AssignmentStrategy
 ): Promise<PlayerAssignmentResult> => {
   try {
-    await removeInvalidSignupsFromUsers();
+    await removeInvalidGamesFromUsers();
   } catch (error) {
     throw new Error(`Error removing invalid games: ${error}`);
   }
