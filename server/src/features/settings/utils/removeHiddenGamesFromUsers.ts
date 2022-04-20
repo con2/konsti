@@ -1,4 +1,7 @@
-import { findUsers, updateUser } from "server/features/user/userRepository";
+import {
+  findUsers,
+  updateUserByUsername,
+} from "server/features/user/userRepository";
 import { logger } from "server/utils/logger";
 import { Game } from "shared/typings/models/game";
 
@@ -54,7 +57,7 @@ export const removeHiddenGamesFromUsers = async (
           user.enteredGames.length !== enteredGames.length ||
           user.favoritedGames.length !== favoritedGames.length
         ) {
-          await updateUser({
+          await updateUserByUsername({
             ...user,
             signedGames,
             enteredGames,
