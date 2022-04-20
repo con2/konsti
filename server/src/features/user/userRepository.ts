@@ -12,6 +12,7 @@ import {
   PostEnteredGameParameters,
 } from "shared/typings/api/signup";
 import { getGameById } from "server/features/game/gameUtils";
+import { Game } from "shared/typings/models/game";
 
 export const removeUsers = async (): Promise<void> => {
   logger.info("MongoDB: remove ALL users from db");
@@ -342,18 +343,34 @@ export const saveGroupCode = async (
 
 export const saveFavorite = async (
   favoriteData: SaveFavoriteRequest
-): Promise<readonly string[] | null> => {
+): Promise<readonly Game[] | null> => {
   const { username, favoritedGames } = favoriteData;
+
+  const games = await findGames();
+
+  const favoritedGamesWithDocId = favoritedGames.reduce<string[]>(
+    (acc, favoritedGame) => {
+      const gameDocInDb = games.find((game) => game.gameId === favoritedGame);
+
+      if (gameDocInDb) {
+        acc.push(gameDocInDb._id as string);
+      }
+      return acc;
+    },
+    []
+  );
 
   let response;
   try {
     response = await UserModel.findOneAndUpdate(
       { username },
       {
-        favoritedGames,
+        favoritedGames: favoritedGamesWithDocId,
       },
       { new: true, fields: "favoritedGames" }
-    ).lean();
+    )
+      .lean<User>()
+      .populate("favoritedGames", "-_id -__v -updatedAt -createdAt");
     logger.info(
       `MongoDB: Favorite data stored for user "${favoriteData.username}"`
     );

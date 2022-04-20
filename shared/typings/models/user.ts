@@ -6,7 +6,7 @@ export interface User {
   userGroup: UserGroup;
   serial: string;
   groupCode: string;
-  favoritedGames: readonly string[];
+  favoritedGames: readonly Game[];
   signedGames: readonly SelectedGame[];
   enteredGames: readonly SelectedGame[];
   createdAt: string | null;

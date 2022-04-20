@@ -5,7 +5,7 @@ import { AppDispatch } from "client/typings/redux.typings";
 export interface UpdateFavoriteOpts {
   game: Game;
   action: string;
-  favoritedGames: readonly string[];
+  favoritedGames: readonly Game[];
   username: string;
   dispatch: AppDispatch;
 }
@@ -19,19 +19,21 @@ export const updateFavorite = async (
   if (!game || !game.gameId) return;
 
   const gameIndex = favoritedGames.findIndex(
-    (favoritedGame) => favoritedGame === game.gameId
+    (favoritedGame) => favoritedGame.gameId === game.gameId
   );
-  const allFavoritedGames = favoritedGames.slice();
+  const favoritedGameIds = favoritedGames.map(
+    (favoritedGame) => favoritedGame.gameId
+  );
 
   if (action === "add" && gameIndex === -1) {
-    allFavoritedGames.push(game.gameId);
+    favoritedGameIds.push(game.gameId);
   } else if (action === "del" && gameIndex > -1) {
-    allFavoritedGames.splice(gameIndex, 1);
+    favoritedGameIds.splice(gameIndex, 1);
   }
 
   const favoriteData = {
     username: username,
-    favoritedGames: allFavoritedGames,
+    favoritedGames: favoritedGameIds,
   };
 
   try {
