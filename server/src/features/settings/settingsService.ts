@@ -15,7 +15,7 @@ import {
   PostSignupMessageResponse,
 } from "shared/typings/api/settings";
 import { Game } from "shared/typings/models/game";
-import { removeHiddenGamesFromUsers } from "server/features/settings/settingsUtils";
+import { removeHiddenGamesFromUsers } from "server/features/settings/utils/removeHiddenGamesFromUsers";
 import { SignupMessage } from "shared/typings/models/settings";
 
 export const fetchSettings = async (): Promise<
