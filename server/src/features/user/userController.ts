@@ -125,7 +125,7 @@ export const postFavorite = async (
   const PostFavoriteParameters = z.object({
     favoriteData: z.object({
       username: z.string(),
-      favoritedGames: z.array(z.string()),
+      favoritedGameIds: z.array(z.string()),
     }),
   });
 

@@ -31,13 +31,13 @@ export const updateFavorite = async (
     favoritedGameIds.splice(gameIndex, 1);
   }
 
-  const favoriteData = {
-    username: username,
-    favoritedGames: favoritedGameIds,
-  };
-
   try {
-    await dispatch(submitUpdateFavorites(favoriteData));
+    await dispatch(
+      submitUpdateFavorites({
+        username,
+        favoritedGameIds,
+      })
+    );
   } catch (error) {
     throw new Error(`submitUpdateFavorites error: ${error}`);
   }
