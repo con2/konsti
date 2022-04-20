@@ -51,7 +51,7 @@ export const removeMovedGamesFromUsers = async (
           }
         });
 
-        if (signedGames.length) {
+        if (signedGames.length > 0) {
           logger.info(
             `Remove following moved signedGames from user ${
               user.username
@@ -70,7 +70,7 @@ export const removeMovedGamesFromUsers = async (
           }
         });
 
-        if (enteredGames.length) {
+        if (enteredGames.length > 0) {
           logger.info(
             `Remove following moved enteredGames from user ${
               user.username
