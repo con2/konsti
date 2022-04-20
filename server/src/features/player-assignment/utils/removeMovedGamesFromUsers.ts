@@ -51,6 +51,16 @@ export const removeMovedGamesFromUsers = async (
           }
         });
 
+        if (signedGames.length > 0) {
+          logger.info(
+            `Remove following moved signedGames from user ${
+              user.username
+            }: ${signedGames
+              .map((signedGame) => signedGame.gameDetails.gameId)
+              .join(", ")}`
+          );
+        }
+
         const enteredGames = user.enteredGames.filter((enteredGame) => {
           const movedFound = movedGames.find((movedGame) => {
             return movedGame.gameId === enteredGame.gameDetails.gameId;
@@ -59,6 +69,16 @@ export const removeMovedGamesFromUsers = async (
             return enteredGame;
           }
         });
+
+        if (enteredGames.length > 0) {
+          logger.info(
+            `Remove following moved enteredGames from user ${
+              user.username
+            }: ${enteredGames
+              .map((enteredGame) => enteredGame.gameDetails.gameId)
+              .join(", ")}`
+          );
+        }
 
         if (
           user.signedGames.length !== signedGames.length ||

@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { MyGamesState } from "client/typings/redux.typings";
+import { Game } from "shared/typings/models/game";
 import { SelectedGame } from "shared/typings/models/user";
 
 const initialState: MyGamesState = {
@@ -21,10 +22,7 @@ const myGamesSlice = createSlice({
       };
     },
 
-    submitUpdateFavoritesAsync(
-      state,
-      action: PayloadAction<readonly string[]>
-    ) {
+    submitUpdateFavoritesAsync(state, action: PayloadAction<readonly Game[]>) {
       return {
         ...state,
         favoritedGames: action.payload,

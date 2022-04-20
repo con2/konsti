@@ -6,6 +6,7 @@ import { GameDoc } from "server/typings/game.typings";
 import { ResultsCollectionEntry } from "server/typings/result.typings";
 import { writeJson } from "server/features/statistics/statsUtil";
 import { config } from "server/config";
+import { Game } from "shared/typings/models/game";
 
 export const gameIdFix = async (year: number, event: string): Promise<void> => {
   const users: User[] = JSON.parse(
@@ -36,14 +37,15 @@ export const gameIdFix = async (year: number, event: string): Promise<void> => {
   logger.info(`Loaded ${games.length} games`);
 
   users.forEach((user) => {
-    const tempFavoritedGames: string[] = [];
+    const tempFavoritedGames: Game[] = [];
     const tempEnteredGames: SelectedGame[] = [];
     const tempSignedGames: SelectedGame[] = [];
 
     games.forEach((game) => {
       user.favoritedGames.forEach((favoritedGame) => {
         if (_.isEqual(game._id, favoritedGame)) {
-          tempFavoritedGames.push(game.gameId);
+          // @ts-expect-error: We don't want whole game details
+          tempFavoritedGames.push({ gameId: game.gameId });
         }
       });
 

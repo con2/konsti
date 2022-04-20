@@ -4,7 +4,7 @@ import { UserModel } from "server/features/user/userSchema";
 import { GameModel } from "server/features/game/gameSchema";
 import { mockUser, mockSignup } from "server/test/mock-data/mockUser";
 import { testGame, testGame2 } from "shared/tests/testGame";
-import { removeInvalidSignupsFromUsers } from "server/features/player-assignment/utils/removeInvalidSignupsFromUsers";
+import { removeInvalidGamesFromUsers } from "server/features/player-assignment/utils/removeInvalidGamesFromUsers";
 import { saveSignup, saveUser } from "server/features/user/userRepository";
 
 let mongoServer: MongoMemoryServer;
@@ -38,7 +38,7 @@ test("should remove signups for invalid games from users", async () => {
 
   await GameModel.deleteOne({ gameId: game.gameId });
 
-  await removeInvalidSignupsFromUsers();
+  await removeInvalidGamesFromUsers();
   const updatedUser = await UserModel.findOne({
     username: mockUser.username,
   });

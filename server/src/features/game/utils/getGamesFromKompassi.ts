@@ -116,7 +116,7 @@ const getGamesFromFullProgram = (
     );
   }
 
-  logger.info(`Found ${kompassiGames.length} games`);
+  logger.info(`Found ${kompassiGames.length} valid games`);
 
   return kompassiGames;
 };
