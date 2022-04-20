@@ -15,14 +15,12 @@ test("POST favorited games to server", async () => {
 
   const favoriteData = {
     username: "test username",
-    favoritedGames: [],
+    favoritedGameIds: [],
   };
 
   const response = await postFavorite(favoriteData);
 
   expect(response).toEqual("test response");
   expect(mockAxios.post).toHaveBeenCalledTimes(1);
-  expect(mockAxios.post).toHaveBeenCalledWith(FAVORITE_ENDPOINT, {
-    favoriteData,
-  });
+  expect(mockAxios.post).toHaveBeenCalledWith(FAVORITE_ENDPOINT, favoriteData);
 });
