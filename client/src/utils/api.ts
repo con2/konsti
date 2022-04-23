@@ -17,3 +17,17 @@ api.interceptors.request.use((requestConfig) => {
   }
   return requestConfig;
 });
+
+api.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    const response = error.response;
+    const url = response.config.url;
+    const method = response.config.method;
+
+    // eslint-disable-next-line no-console
+    console.log(`Error while calling ${method} ${url}`);
+
+    return { data: { status: "error" } };
+  }
+);
