@@ -2,7 +2,7 @@ import moment from "moment";
 import { GroupMember } from "shared/typings/api/groups";
 import { Game } from "shared/typings/models/game";
 import { getTime } from "client/utils/getTime";
-import { getIsGroupCreator } from "client/views/group/GroupView";
+import { getIsGroupCreator } from "client/views/group/utils/getIsGroupCreator";
 import { SelectedGame } from "shared/typings/models/user";
 
 export const getUpcomingGames = (

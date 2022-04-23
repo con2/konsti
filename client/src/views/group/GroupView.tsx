@@ -15,6 +15,7 @@ import { loadGroupMembers } from "client/utils/loadData";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { Button } from "client/components/Button";
 import { GroupRequest } from "shared/typings/api/groups";
+import { getIsGroupCreator } from "client/views/group/utils/getIsGroupCreator";
 
 export const GroupView = (): ReactElement => {
   const username = useAppSelector((state) => state.login.username);
@@ -64,13 +65,13 @@ export const GroupView = (): ReactElement => {
       await dispatch(submitCreateGroup(groupRequest));
     } catch (error) {
       showMessage({
-        value: t("generalCreateGroupError"),
+        value: t("group.generalCreateGroupError"),
         style: "error",
       });
       return;
     }
 
-    showMessage({ value: t("groupCreated"), style: "success" });
+    showMessage({ value: t("group.groupCreated"), style: "success" });
   };
 
   // Remove all signups
@@ -98,26 +99,26 @@ export const GroupView = (): ReactElement => {
       switch (errorCode) {
         case 31:
           showMessage({
-            value: t("invalidGroupCode"),
+            value: t("group.invalidGroupCode"),
             style: "error",
           });
           return;
         case 32:
           showMessage({
-            value: t("groupNotExist"),
+            value: t("group.groupNotExist"),
             style: "error",
           });
           return;
         default:
           showMessage({
-            value: t("generalCreateGroupError"),
+            value: t("group.generalCreateGroupError"),
             style: "error",
           });
           return;
       }
     }
 
-    showMessage({ value: t("groupJoined"), style: "success" });
+    showMessage({ value: t("group.groupJoined"), style: "success" });
     await removeSignups();
   };
 
@@ -142,20 +143,20 @@ export const GroupView = (): ReactElement => {
       switch (errorCode) {
         case 36:
           showMessage({
-            value: t("groupNotEmpty"),
+            value: t("group.groupNotEmpty"),
             style: "error",
           });
           return;
         default:
           showMessage({
-            value: t("generalLeaveGroupError"),
+            value: t("group.generalLeaveGroupError"),
             style: "error",
           });
           return;
       }
     }
 
-    showMessage({ value: t("leftGroup"), style: "success" });
+    showMessage({ value: t("group.leftGroup"), style: "success" });
     setShowJoinGroup(false);
     setLoading(false);
   };
@@ -183,12 +184,12 @@ export const GroupView = (): ReactElement => {
       await dispatch(submitLeaveGroup(groupRequest));
     } catch (error) {
       showMessage({
-        value: t("generalLeaveGroupError"),
+        value: t("group.generalLeaveGroupError"),
         style: "error",
       });
     }
 
-    showMessage({ value: t("closedGroup"), style: "success" });
+    showMessage({ value: t("group.closedGroup"), style: "success" });
     toggleCloseGroupConfirmation(false);
     setLoading(false);
   };
@@ -227,7 +228,7 @@ export const GroupView = (): ReactElement => {
     <div>
       <FormInput
         key="joinGroup"
-        placeholder={t("enterGroupCreatorCode")}
+        placeholder={t("group.enterGroupCreatorCode")}
         value={joinGroupValue}
         onChange={handleJoinGroupChange}
       />
@@ -239,7 +240,7 @@ export const GroupView = (): ReactElement => {
       <h2>{t("pages.group")}</h2>
 
       <div>
-        <p>{t("groupSignupGuide")}</p>
+        <p>{t("group.groupSignupGuide")}</p>
       </div>
 
       {groupCode === "0" && !inGroup && (
@@ -266,7 +267,7 @@ export const GroupView = (): ReactElement => {
 
           {showCreateGroup && (
             <div>
-              <p>{t("createGroupConfirmationMessage")}</p>
+              <p>{t("group.createGroupConfirmationMessage")}</p>
               <Button
                 disabled={loading}
                 onClick={async () => await createGroup()}
@@ -279,7 +280,7 @@ export const GroupView = (): ReactElement => {
           {showJoinGroup && (
             <div>
               <InfoTextParagraph>
-                {t("joiningGroupWillCancelGames")}
+                {t("group.joiningGroupWillCancelGames")}
               </InfoTextParagraph>
 
               {joinGroupInput}
@@ -297,8 +298,8 @@ export const GroupView = (): ReactElement => {
       {isGroupCreator && inGroup && (
         <div>
           <p>
-            <InfoTextSpan>{t("youAreGroupCreator")}</InfoTextSpan>.{" "}
-            {t("groupCreatorInfo")}
+            <InfoTextSpan>{t("group.youAreGroupCreator")}</InfoTextSpan>.{" "}
+            {t("group.groupCreatorInfo")}
           </p>
         </div>
       )}
@@ -306,8 +307,8 @@ export const GroupView = (): ReactElement => {
       {!isGroupCreator && inGroup && (
         <div>
           <p>
-            <InfoTextSpan>{t("youAreInGroup")}</InfoTextSpan>.{" "}
-            {t("groupMemberInfo")}
+            <InfoTextSpan>{t("group.youAreInGroup")}</InfoTextSpan>.{" "}
+            {t("group.groupMemberInfo")}
           </p>
         </div>
       )}
@@ -340,7 +341,7 @@ export const GroupView = (): ReactElement => {
                 </div>
                 {closeGroupConfirmation && (
                   <div>
-                    <p>{t("closeGroupConfirmation")}</p>
+                    <p>{t("group.closeGroupConfirmation")}</p>
                     <Button
                       disabled={loading}
                       onClick={() => toggleCloseGroupConfirmation(false)}
@@ -360,25 +361,12 @@ export const GroupView = (): ReactElement => {
             )}
           </div>
 
-          <h3>{t("groupMembers")}</h3>
+          <h3>{t("group.groupMembers")}</h3>
           <GroupMembersList groupMembers={groupMembers} />
         </>
       )}
     </div>
   );
-};
-
-export const getIsGroupCreator = (
-  groupCode: string,
-  serial: string
-): boolean => {
-  if (groupCode === serial) {
-    return true;
-  }
-  if (groupCode === "0") {
-    return true;
-  }
-  return false;
 };
 
 interface GroupStatusMessageProps {

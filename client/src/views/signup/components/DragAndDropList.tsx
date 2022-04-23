@@ -12,7 +12,7 @@ import { useAppSelector } from "client/utils/hooks";
 
 enum Warning {
   GAME_LIMIT = "gameLimitWarning",
-  GROUP_TOO_BIG = "groupTooBigWarning",
+  GROUP_TOO_BIG = "group.groupTooBigWarning",
   EMPTY = "",
 }
 
