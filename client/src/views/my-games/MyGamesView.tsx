@@ -11,7 +11,7 @@ import {
   getUpcomingFavorites,
 } from "client/utils/getUpcomingGames";
 import { loadUser, loadGames, loadGroupMembers } from "client/utils/loadData";
-import { getIsGroupCreator } from "client/views/group/GroupView";
+import { getIsGroupCreator } from "client/views/group/utils/getIsGroupCreator";
 import { GroupMember } from "shared/typings/api/groups";
 import { SelectedGame } from "shared/typings/models/user";
 import { useAppSelector } from "client/utils/hooks";
