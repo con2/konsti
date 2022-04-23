@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { SIGNUP_MESSAGE_LENGTH } from "shared/constants/validation";
-import { ServerError } from "shared/typings/api/errors";
+import { ApiError } from "shared/typings/api/errors";
 import { SelectedGame } from "shared/typings/models/user";
 
 export interface PostSignupResponse {
@@ -21,7 +21,7 @@ export interface PostEnteredGameResponse {
   enteredGame: SelectedGame;
 }
 
-export interface PostEnteredGameError extends ServerError {
+export interface PostEnteredGameError extends ApiError {
   code: 0 | 51;
 }
 
