@@ -169,8 +169,6 @@
   "activeTimeDescription": "Game assignment will be done and results shown for the active time",
   "signupOpenBetween": "signup open",
   "signupOpenBetweenCapital": "Signup open ",
-  "signupResultsfor": "Signup results for games starting at",
-  "noResults": "No signup results available yet",
   "signupGuide": "* You can choose three game wishes. Your favorite game is the topmost on 'Selected games'.\n* It is recommended to choose more than one game wish for each start time.\n* Choose games by dragging from 'Open games' to 'Selected games'.\n* Signing up early does not give any advantage. Game seats are assigned 30 minutes before games start.\n* Remember to save changes.",
   "signupGuideTitle": "Signup help and tips",
   "signupGuideButton": "Signup help and tips",
@@ -271,7 +269,8 @@
     "confirm": "Confirm",
     "noSignups": "No signed up players",
     "players": "Players",
-    "noStartingGames": "No starting games"
+    "noResults": "No signup results available yet",
+    "signupResultsFor": "Signup results for games starting at"
   },
   "gameDetails": {
     "addSignupTextField": "Add signup additional info field"

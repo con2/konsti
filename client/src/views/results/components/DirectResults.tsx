@@ -9,6 +9,7 @@ import { getUsersForGameId } from "client/views/results/resultsUtils";
 import { getUpcomingGames } from "client/utils/getUpcomingGames";
 import { Button } from "client/components/Button";
 import { Game } from "shared/typings/models/game";
+import { SignupStrategy } from "shared/config/sharedConfig.types";
 
 export const DirectResults = (): ReactElement => {
   const { t } = useTranslation();
@@ -21,12 +22,11 @@ export const DirectResults = (): ReactElement => {
   const [showAllGames, setShowAllGames] = useState<boolean>(false);
   const [showSignupMessages, setShowSignupMessages] = useState<string[]>([]);
 
-  const visibleGames = games.filter((game) => {
-    const hidden = hiddenGames.find(
-      (hiddenGame) => game.gameId === hiddenGame.gameId
+  const visibleGames = games
+    .filter((game) => game.signupStrategy === SignupStrategy.DIRECT)
+    .filter((game) =>
+      hiddenGames.find((hiddenGame) => game.gameId !== hiddenGame.gameId)
     );
-    if (!hidden) return game;
-  });
 
   const filteredGames = showAllGames
     ? _.sortBy(visibleGames, "startTime")
@@ -89,9 +89,7 @@ export const DirectResults = (): ReactElement => {
         </Button>
       </div>
 
-      {filteredGames.length === 0 && (
-        <h3>{t("resultsView.noStartingGames")}</h3>
-      )}
+      {filteredGames.length === 0 && <h3>{t("resultsView.noResults")}</h3>}
 
       {Object.entries(filteredGamesForListing).map(
         ([startTime, gamesForTime]) => {
