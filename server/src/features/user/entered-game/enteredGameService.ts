@@ -5,7 +5,7 @@ import {
   findUsers,
   saveEnteredGame,
 } from "server/features/user/userRepository";
-import { ServerError } from "shared/typings/api/errors";
+import { ApiError } from "shared/typings/api/errors";
 import {
   DeleteEnteredGameParameters,
   DeleteEnteredGameResponse,
@@ -85,7 +85,7 @@ export const storeEnteredGame = async (
 
 export const removeEnteredGame = async (
   enteredGameRequest: DeleteEnteredGameParameters
-): Promise<DeleteEnteredGameResponse | ServerError> => {
+): Promise<DeleteEnteredGameResponse | ApiError> => {
   let user;
   try {
     user = await delEnteredGame(enteredGameRequest);
