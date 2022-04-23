@@ -6,7 +6,7 @@ import {
   saveSettings,
 } from "server/features/settings/settingsRepository";
 import { logger } from "server/utils/logger";
-import { ServerError } from "shared/typings/api/errors";
+import { ApiError } from "shared/typings/api/errors";
 import {
   GetSettingsResponse,
   PostHiddenResponse,
@@ -19,7 +19,7 @@ import { removeHiddenGamesFromUsers } from "server/features/settings/utils/remov
 import { SignupMessage } from "shared/typings/models/settings";
 
 export const fetchSettings = async (): Promise<
-  GetSettingsResponse | ServerError
+  GetSettingsResponse | ApiError
 > => {
   try {
     const response = await findSettings();
@@ -45,7 +45,7 @@ export const fetchSettings = async (): Promise<
 
 export const storeHidden = async (
   hiddenData: readonly Game[]
-): Promise<PostHiddenResponse | ServerError> => {
+): Promise<PostHiddenResponse | ApiError> => {
   let settings;
   try {
     settings = await saveHidden(hiddenData);
@@ -78,7 +78,7 @@ export const storeHidden = async (
 
 export const storeSignupMessage = async (
   signupMessageData: SignupMessage
-): Promise<PostSignupMessageResponse | ServerError> => {
+): Promise<PostSignupMessageResponse | ApiError> => {
   let settings;
   try {
     settings = await saveSignupMessage(signupMessageData);
@@ -100,7 +100,7 @@ export const storeSignupMessage = async (
 
 export const removeSignupMessage = async (
   gameId: string
-): Promise<PostSignupMessageResponse | ServerError> => {
+): Promise<PostSignupMessageResponse | ApiError> => {
   let settings;
   try {
     settings = await delSignupMessage(gameId);
@@ -122,7 +122,7 @@ export const removeSignupMessage = async (
 
 export const updateSettings = async (
   settings: PostSettingsRequest
-): Promise<PostSettingsResponse | ServerError> => {
+): Promise<PostSettingsResponse | ApiError> => {
   try {
     const response = await saveSettings(settings);
     return {

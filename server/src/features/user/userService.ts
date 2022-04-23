@@ -18,7 +18,7 @@ import {
   GetUserResponse,
   PostUserResponse,
 } from "shared/typings/api/users";
-import { ServerError } from "shared/typings/api/errors";
+import { ApiError } from "shared/typings/api/errors";
 import { GetGroupReturnValue } from "server/typings/user.typings";
 import {
   PostFavoriteResponse,
@@ -37,7 +37,7 @@ export const storeUser = async (
   username: string,
   password: string,
   serial: string | undefined
-): Promise<PostUserResponse | ServerError> => {
+): Promise<PostUserResponse | ApiError> => {
   if (serial === undefined) {
     return {
       message: "Invalid serial",
@@ -178,7 +178,7 @@ export const storeUser = async (
 export const storeUserPassword = async (
   username: string,
   password: string
-): Promise<PostUserResponse | ServerError> => {
+): Promise<PostUserResponse | ApiError> => {
   let passwordHash;
   try {
     passwordHash = await hashPassword(password);
@@ -218,7 +218,7 @@ export const storeUserPassword = async (
 
 export const fetchUserByUsername = async (
   username: string
-): Promise<GetUserResponse | ServerError> => {
+): Promise<GetUserResponse | ApiError> => {
   let user;
 
   if (username) {
@@ -257,7 +257,7 @@ export const fetchUserByUsername = async (
 
 export const fetchUserBySerialOrUsername = async (
   searchTerm: string
-): Promise<GetUserBySerialResponse | ServerError> => {
+): Promise<GetUserBySerialResponse | ApiError> => {
   let user;
 
   try {
@@ -293,7 +293,7 @@ export const fetchUserBySerialOrUsername = async (
 
 export const storeFavorite = async (
   favoriteData: SaveFavoriteRequest
-): Promise<PostFavoriteResponse | ServerError> => {
+): Promise<PostFavoriteResponse | ApiError> => {
   let favoritedGames;
   try {
     favoritedGames = await saveFavorite(favoriteData);
@@ -327,7 +327,7 @@ export const storeGroup = async (
   ownSerial: string,
   leaveGroup = false,
   closeGroup = false
-): Promise<PostGroupResponse | ServerError> => {
+): Promise<PostGroupResponse | ApiError> => {
   if (closeGroup) {
     const groupMembers = await findGroupMembers(groupCode);
 
@@ -535,7 +535,7 @@ export const storeGroup = async (
 
 export const fetchGroup = async (
   groupCode: string
-): Promise<GetGroupResponse | ServerError> => {
+): Promise<GetGroupResponse | ApiError> => {
   let findGroupResults: User[];
   try {
     findGroupResults = await findGroupMembers(groupCode);
@@ -569,7 +569,7 @@ export const fetchGroup = async (
 export const login = async (
   username: string,
   password: string
-): Promise<PostLoginResponse | ServerError> => {
+): Promise<PostLoginResponse | ApiError> => {
   let user;
   try {
     user = await findUser(username);
@@ -654,7 +654,7 @@ export const storeSignup = async (
   selectedGames: readonly SelectedGame[],
   username: string,
   signupTime: string
-): Promise<PostSignupResponse | ServerError> => {
+): Promise<PostSignupResponse | ApiError> => {
   if (!signupTime) {
     return {
       message: "Signup failure",

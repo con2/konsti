@@ -1,7 +1,7 @@
 import axios, { AxiosInstance } from "axios";
 import { config } from "client/config";
 import { getJWT } from "client/utils/getJWT";
-import { ServerError } from "shared/typings/api/errors";
+import { ApiError } from "shared/typings/api/errors";
 
 export const api: AxiosInstance = axios.create({
   baseURL: `${config.apiServerUrl}`,
@@ -29,7 +29,7 @@ api.interceptors.response.use(
     // eslint-disable-next-line no-console
     console.log(`Error while calling ${method} ${url}`);
 
-    const data: ServerError = {
+    const data: ApiError = {
       code: 0,
       message: "Invalid API response",
       status: "error",
