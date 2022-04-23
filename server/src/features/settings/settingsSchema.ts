@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import { SettingsDoc } from "server/typings/settings.typings";
-import { SignupStrategy } from "shared/config/sharedConfig.types";
+import { sharedConfig } from "shared/config/sharedConfig";
 
 const SettingsSchema = new mongoose.Schema(
   {
@@ -10,7 +10,10 @@ const SettingsSchema = new mongoose.Schema(
     signupTime: { type: Date, default: null },
     appOpen: { type: Boolean, default: true },
     signupMessages: [{ gameId: { type: String }, message: { type: String } }],
-    signupStrategy: { type: String, default: SignupStrategy.DIRECT },
+    signupStrategy: {
+      type: String,
+      default: sharedConfig.defaultSignupStrategy,
+    },
   },
   { timestamps: true }
 );

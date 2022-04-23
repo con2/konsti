@@ -2,6 +2,7 @@ import {
   AssignmentStrategy,
   SharedConfig,
   ConventionType,
+  SignupStrategy,
 } from "./sharedConfig.types";
 
 export const sharedConfig: SharedConfig = {
@@ -9,9 +10,10 @@ export const sharedConfig: SharedConfig = {
   appName: "Konsti",
 
   // Convention settings
-  conventionType: ConventionType.REMOTE,
+  conventionType: ConventionType.LIVE,
   assignmentStrategy: AssignmentStrategy.GROUP_PADG,
   enableGroups: true,
+  defaultSignupStrategy: SignupStrategy.ALGORITHM_AND_DIRECT,
 
   // Two phase signup settings
   PRE_SIGNUP_START: 60 * 4, // minutes
