@@ -70,7 +70,7 @@ export const HelperResultsList = (): ReactElement => {
             })}
           </span>
         ) : (
-          <span>{t("noResults")}</span>
+          <span>{t("resultsView.noResults")}</span>
         )}
       </h3>
       {resultsByGameTitle}

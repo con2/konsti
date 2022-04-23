@@ -19,11 +19,11 @@ export const AlgorithmResults = (): ReactElement => {
 
   return (
     <div>
-      {!activeSignupTime && <h2>{t("noResults")}</h2>}
+      {!activeSignupTime && <h2>{t("resultsView.noResults")}</h2>}
       {activeSignupTime && (
         <>
           <h2>
-            {t("signupResultsfor")}{" "}
+            {t("resultsView.signupResultsFor")}{" "}
             {timeFormatter.getWeekdayAndTime({
               time: activeSignupTime,
               capitalize: false,
