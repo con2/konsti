@@ -5,6 +5,7 @@ export interface SharedConfig {
   conventionType: ConventionType;
   assignmentStrategy: AssignmentStrategy;
   enableGroups: boolean;
+  defaultSignupStrategy: SignupStrategy;
   CONVENTION_NAME: ConventionName;
   CONVENTION_YEAR: string;
   CONVENTION_START_TIME: string;
