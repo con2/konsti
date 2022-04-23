@@ -1,5 +1,5 @@
 import { api } from "client/utils/api";
-import { ServerError } from "shared/typings/api/errors";
+import { ApiError } from "shared/typings/api/errors";
 import {
   ENTERED_GAME_ENDPOINT,
   SIGNUP_ENDPOINT,
@@ -16,7 +16,7 @@ import {
 
 export const postSignup = async (
   signupData: SignupData
-): Promise<PostSignupResponse | ServerError> => {
+): Promise<PostSignupResponse | ApiError> => {
   const response = await api.post<PostSignupResponse>(SIGNUP_ENDPOINT, {
     signupData,
   });
@@ -35,7 +35,7 @@ export const postEnteredGame = async (
 
 export const deleteEnteredGame = async (
   requestData: DeleteEnteredGameParameters
-): Promise<DeleteEnteredGameResponse | ServerError> => {
+): Promise<DeleteEnteredGameResponse | ApiError> => {
   const response = await api.delete<DeleteEnteredGameResponse>(
     ENTERED_GAME_ENDPOINT,
     { data: requestData }

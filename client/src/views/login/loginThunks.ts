@@ -1,7 +1,7 @@
 import { postLogin, postSessionRecovery } from "client/services/loginServices";
 import { saveSession, clearSession } from "client/utils/localStorage";
 import { AppThunk } from "client/typings/redux.typings";
-import { ServerError } from "shared/typings/api/errors";
+import { ApiError } from "shared/typings/api/errors";
 import { LoginFormFields, PostLoginResponse } from "shared/typings/api/login";
 import { submitLoginAsync } from "client/views/login/loginSlice";
 import { loadUser } from "client/utils/loadData";
@@ -17,7 +17,7 @@ export const submitLogin = (
   loginFormFields: LoginFormFields
 ): AppThunk<Promise<LoginErrorMessage | undefined>> => {
   return async (dispatch): Promise<LoginErrorMessage | undefined> => {
-    let loginResponse: PostLoginResponse | ServerError;
+    let loginResponse: PostLoginResponse | ApiError;
     try {
       loginResponse = await postLogin(loginFormFields);
     } catch (error) {
@@ -61,7 +61,7 @@ export const submitLogin = (
 
 export const submitSessionRecovery = (jwt: string): AppThunk => {
   return async (dispatch): Promise<void> => {
-    let loginResponse: PostLoginResponse | ServerError;
+    let loginResponse: PostLoginResponse | ApiError;
     try {
       loginResponse = await postSessionRecovery(jwt);
     } catch (error) {

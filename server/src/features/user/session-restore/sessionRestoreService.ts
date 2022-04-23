@@ -2,13 +2,13 @@ import { findSettings } from "server/features/settings/settingsRepository";
 import { findUser } from "server/features/user/userRepository";
 import { decodeJWT, getJWT, verifyJWT } from "server/utils/jwt";
 import { logger } from "server/utils/logger";
-import { ServerError } from "shared/typings/api/errors";
+import { ApiError } from "shared/typings/api/errors";
 import { PostLoginResponse } from "shared/typings/api/login";
 import { UserGroup } from "shared/typings/models/user";
 
 export const loginWithJwt = async (
   jwt: string
-): Promise<PostLoginResponse | ServerError> => {
+): Promise<PostLoginResponse | ApiError> => {
   // Restore session
   const jwtData = decodeJWT(jwt);
 
