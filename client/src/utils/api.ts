@@ -1,6 +1,7 @@
 import axios, { AxiosInstance } from "axios";
 import { config } from "client/config";
 import { getJWT } from "client/utils/getJWT";
+import { ServerError } from "shared/typings/api/errors";
 
 export const api: AxiosInstance = axios.create({
   baseURL: `${config.apiServerUrl}`,
@@ -17,3 +18,25 @@ api.interceptors.request.use((requestConfig) => {
   }
   return requestConfig;
 });
+
+api.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    const response = error.response;
+    const url = response.config.url;
+    const method = response.config.method;
+
+    // eslint-disable-next-line no-console
+    console.log(`Error while calling ${method} ${url}`);
+
+    const data: ServerError = {
+      code: 0,
+      message: "Invalid API response",
+      status: "error",
+    };
+
+    return {
+      data,
+    };
+  }
+);
