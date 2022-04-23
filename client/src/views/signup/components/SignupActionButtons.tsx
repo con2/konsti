@@ -50,9 +50,11 @@ export const SignupActionButtons = ({
         <InfoMessage>{t("signupUnsavedChanges")}</InfoMessage>
       )}
 
-      {!isGroupCreator && <InfoText>{t("signupDisabledNotCreator")}</InfoText>}
+      {!isGroupCreator && (
+        <InfoText>{t("group.signupDisabledNotCreator")}</InfoText>
+      )}
       {isGroupCreator && groupCode !== "0" && (
-        <InfoText>{t("signupForWholeGroup")}</InfoText>
+        <InfoText>{t("group.signupForWholeGroup")}</InfoText>
       )}
 
       <p>{signupError && <ErrorMessage>{t(signupError)} </ErrorMessage>}</p>

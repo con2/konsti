@@ -3,7 +3,7 @@ import { useStore } from "react-redux";
 import { SignupList } from "client/views/signup/components/SignupList";
 import { getOpenStartTimes } from "client/utils/getOpenStartTimes";
 import { loadGroupMembers, loadUser } from "client/utils/loadData";
-import { getIsGroupCreator } from "client/views/group/GroupView";
+import { getIsGroupCreator } from "client/views/group/utils/getIsGroupCreator";
 import { useAppSelector } from "client/utils/hooks";
 
 export const SignupView = (): ReactElement => {

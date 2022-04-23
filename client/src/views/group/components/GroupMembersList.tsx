@@ -18,7 +18,7 @@ export const GroupMembersList = ({ groupMembers }: Props): ReactElement => {
       <p key={member.username}>
         {index + 1}
         {")"} {member.username}{" "}
-        {isGroupCreator && <span>({t("groupCreator")})</span>}
+        {isGroupCreator && <span>({t("group.groupCreator")})</span>}
       </p>
     );
   });
