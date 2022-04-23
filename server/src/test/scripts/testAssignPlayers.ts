@@ -16,43 +16,26 @@ const testAssignPlayers = async (
   const { saveTestAssign, enableRemoveOverlapSignups } = config;
   const { CONVENTION_START_TIME } = sharedConfig;
 
-  let assignResults;
-
   const startingTime = moment(CONVENTION_START_TIME).add(2, "hours").format();
+  const assignResults = await runAssignment(startingTime, assignmentStrategy);
 
-  try {
-    assignResults = await runAssignment(startingTime, assignmentStrategy);
-  } catch (error) {
-    logger.error(error);
+  if (!saveTestAssign) {
     return;
   }
 
-  if (saveTestAssign) {
-    if (enableRemoveOverlapSignups) {
-      try {
-        await removeOverlapSignups(assignResults.results);
-      } catch (error) {
-        logger.error(error);
-        return;
-      }
-    }
-
-    try {
-      await saveResults(
-        assignResults.results,
-        startingTime,
-        assignResults.algorithm,
-        assignResults.message
-      );
-    } catch (error) {
-      logger.error(error);
-      return;
-    }
-
-    await verifyResults();
-
-    await verifyUserSignups();
+  if (enableRemoveOverlapSignups) {
+    await removeOverlapSignups(assignResults.results);
   }
+
+  await saveResults(
+    assignResults.results,
+    startingTime,
+    assignResults.algorithm,
+    assignResults.message
+  );
+
+  await verifyResults();
+  await verifyUserSignups();
 };
 
 const getAssignmentStrategy = (userParameter: string): AssignmentStrategy => {
@@ -77,29 +60,11 @@ const init = async (): Promise<void> => {
   }
 
   const userParameter = process.argv[2];
+  const assignmentStrategy = getAssignmentStrategy(userParameter);
 
-  let assignmentStrategy;
-  try {
-    assignmentStrategy = getAssignmentStrategy(userParameter);
-  } catch (error) {
-    logger.error(error);
-    return;
-  }
-
-  try {
-    await db.connectToDb();
-  } catch (error) {
-    logger.error(error);
-    throw error;
-  }
-
+  await db.connectToDb();
   await testAssignPlayers(assignmentStrategy);
-
-  try {
-    await db.gracefulExit();
-  } catch (error) {
-    logger.error(error);
-  }
+  await db.gracefulExit();
 };
 
 init().catch((error) => {

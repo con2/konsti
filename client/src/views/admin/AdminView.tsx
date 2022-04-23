@@ -101,7 +101,6 @@ export const AdminView = (): ReactElement => {
         value: errorMessage,
         style: "error",
       });
-      return;
     }
 
     setSubmitting(false);
