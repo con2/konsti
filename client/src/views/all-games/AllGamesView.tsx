@@ -14,6 +14,12 @@ import { getTime } from "client/utils/getTime";
 import { useAppSelector } from "client/utils/hooks";
 import { Button } from "client/components/Button";
 
+enum SelectedView {
+  ALL = "all",
+  UPCOMING = "upcoming",
+  REVOLVING_DOOR = "revolving-door",
+}
+
 export const AllGamesView = (): ReactElement => {
   const { t } = useTranslation();
 
@@ -22,7 +28,9 @@ export const AllGamesView = (): ReactElement => {
   const hiddenGames = useAppSelector((state) => state.admin.hiddenGames);
   const signupStrategy = useAppSelector((state) => state.admin.signupStrategy);
 
-  const [selectedView, setSelectedView] = useState<string>("upcoming");
+  const [selectedView, setSelectedView] = useState<SelectedView>(
+    SelectedView.UPCOMING
+  );
   const [selectedTag, setSelectedTag] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -56,23 +64,23 @@ export const AllGamesView = (): ReactElement => {
       <AllGamesVisibilityBar>
         <AllGamesToggleVisibility>
           <Button
-            onClick={() => setSelectedView("upcoming")}
-            disabled={selectedView === "upcoming"}
+            onClick={() => setSelectedView(SelectedView.UPCOMING)}
+            disabled={selectedView === SelectedView.UPCOMING}
           >
             {t("upcomingGames")}
           </Button>
 
           <Button
-            onClick={() => setSelectedView("all")}
-            disabled={selectedView === "all"}
+            onClick={() => setSelectedView(SelectedView.ALL)}
+            disabled={selectedView === SelectedView.ALL}
           >
             {t("allGames")}
           </Button>
 
           {config.revolvingDoorEnabled && (
             <Button
-              onClick={() => setSelectedView("revolving-door")}
-              disabled={selectedView === "revolving-door"}
+              onClick={() => setSelectedView(SelectedView.REVOLVING_DOOR)}
+              disabled={selectedView === SelectedView.REVOLVING_DOOR}
             >
               {t("revolvingDoor")}
             </Button>
@@ -110,7 +118,7 @@ export const AllGamesView = (): ReactElement => {
         )}
       </AllGamesVisibilityBar>
 
-      {selectedView === "revolving-door" && (
+      {selectedView === SelectedView.REVOLVING_DOOR && (
         <>
           <RevolvingDoorInstruction>
             {t("revolvingDoorInstruction")}
@@ -159,7 +167,7 @@ const ChooseTagsInstruction = styled.span`
 const getVisibleGames = (
   games: readonly Game[],
   hiddenGames: readonly Game[],
-  selectedView: string,
+  selectedView: SelectedView,
   selectedTag: string
 ): readonly Game[] => {
   const filteredGames = getTagFilteredGames(games, selectedTag);
@@ -171,9 +179,9 @@ const getVisibleGames = (
     if (!hidden) return game;
   });
 
-  if (selectedView === "upcoming") {
+  if (selectedView === SelectedView.UPCOMING) {
     return getUpcomingGames(visibleGames);
-  } else if (selectedView === "revolving-door") {
+  } else if (selectedView === SelectedView.REVOLVING_DOOR) {
     return getUpcomingGames(visibleGames).filter((game) => game.revolvingDoor);
   }
 
