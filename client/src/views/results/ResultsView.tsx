@@ -20,7 +20,10 @@ export const ResultsView = (): ReactElement => {
     fetchData();
   }, [store, testTime]);
 
-  if (signupStrategy === SignupStrategy.DIRECT) {
+  if (
+    signupStrategy === SignupStrategy.DIRECT ||
+    signupStrategy === SignupStrategy.ALGORITHM_AND_DIRECT
+  ) {
     return <DirectResults />;
   }
 

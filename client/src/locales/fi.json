@@ -169,8 +169,6 @@
   "activeTimeDescription": "Peleihin sijoittaminen suoritetaan ja tulokset näytetään aktiiviselle ajankohdalle",
   "signupOpenBetween": "ilmoittautuminen",
   "signupOpenBetweenCapital": "Ilmoittautuminen auki ",
-  "signupResultsfor": "Ilmoittautumisen tulokset peleille jotka alkavat",
-  "noResults": "Ei ilmoittautumistuloksia saatavilla vielä",
   "signupGuide": "* Voit valita kolme pelitoivetta. Suosikkipelisi on ylimmäisenä 'Valitut pelit' listalla.\n* Suosittelemme valitsemaan useamman kuin yhden pelin jokaiseen alkamisajankohtaan.\n* Valitse pelit vetämällä 'Avoimet pelit' listalta 'Valitut pelit' listalle.\n* Ilmoittautumisajankohdalla ei ole vaikutusta lopputulokseen. Pelaajat sijoitetaan peleihin 30 minuuttia ennen pelien alkua.\n* Muista tallentaa muutokset.",
   "signupGuideTitle": "Ilmoittautumisohje ja vinkkejä",
   "signupGuideButton": "Ilmoittautumisohje ja vinkkejä",
@@ -271,7 +269,8 @@
     "confirm": "Vahvista",
     "noSignups": "Ei ilmoittautuneita pelaajia",
     "players": "Pelaajia",
-    "noStartingGames": "Ei alkavia pelejä"
+    "noResults": "Ei ilmoittautumistuloksia saatavilla vielä",
+    "signupResultsFor": "Ilmoittautumisen tulokset peleille jotka alkavat"
   },
   "gameDetails": {
     "addSignupTextField": "Lisää ilmoittautumisen lisätietokenttä"
