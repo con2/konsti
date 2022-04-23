@@ -47,7 +47,19 @@ export const postAssignment = async (
     return res.sendStatus(401);
   }
 
-  const startingTime = req.body.startingTime;
+  const PostAssignmentBody = z.object({
+    startingTime: z.string().min(1),
+  });
+
+  let body;
+  try {
+    body = PostAssignmentBody.parse(req.body);
+  } catch (error) {
+    logger.error(`Parsing postAssignment() request body failed: ${error}`);
+    return res.sendStatus(422);
+  }
+
+  const startingTime = body.startingTime;
   const response = await storeAssignment(startingTime);
   return res.json(response);
 };
