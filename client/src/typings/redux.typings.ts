@@ -35,6 +35,9 @@ export interface LoginState {
   jwt: string;
   userGroup: UserGroup;
   serial: string;
+}
+
+export interface GroupState {
   groupCode: string;
   groupMembers: readonly GroupMember[];
 }

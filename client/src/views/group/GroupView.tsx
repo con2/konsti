@@ -20,8 +20,8 @@ import { getIsGroupCreator } from "client/views/group/utils/getIsGroupCreator";
 export const GroupView = (): ReactElement => {
   const username = useAppSelector((state) => state.login.username);
   const serial = useAppSelector((state) => state.login.serial);
-  const groupCode = useAppSelector((state) => state.login.groupCode);
-  const groupMembers = useAppSelector((state) => state.login.groupMembers);
+  const groupCode = useAppSelector((state) => state.group.groupCode);
+  const groupMembers = useAppSelector((state) => state.group.groupMembers);
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
 

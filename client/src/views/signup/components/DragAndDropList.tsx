@@ -29,8 +29,8 @@ export const DragAndDropList = ({
 }: Props): ReactElement => {
   const { t } = useTranslation();
 
-  const groupCode = useAppSelector((state) => state.login.groupCode);
-  const groupMembers = useAppSelector((state) => state.login.groupMembers);
+  const groupCode = useAppSelector((state) => state.group.groupCode);
+  const groupMembers = useAppSelector((state) => state.group.groupMembers);
 
   const [warningVisible, setWarningVisible] = useState<boolean>(false);
   const [warning, setWarning] = useState<Warning>(Warning.EMPTY);
