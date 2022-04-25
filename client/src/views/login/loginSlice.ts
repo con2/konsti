@@ -1,7 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { LoginState } from "client/typings/redux.typings";
 import { UserGroup } from "shared/typings/models/user";
-import { GroupMember } from "shared/typings/api/groups";
 import { SubmitLoginPayload } from "client/views/login/loginTypes";
 
 const initialState: LoginState = {
@@ -10,8 +9,6 @@ const initialState: LoginState = {
   jwt: "",
   userGroup: UserGroup.USER,
   serial: "",
-  groupCode: "0",
-  groupMembers: [],
 };
 
 const loginSlice = createSlice({
@@ -26,38 +23,11 @@ const loginSlice = createSlice({
         jwt: action.payload.jwt,
         userGroup: action.payload.userGroup,
         serial: action.payload.serial,
-        groupCode: action.payload.groupCode,
-      };
-    },
-
-    submitUpdateGroupCodeAsync(state, action: PayloadAction<string>) {
-      return {
-        ...state,
-        groupCode: action.payload,
-      };
-    },
-
-    submitLeaveGroupAsync(state, action: PayloadAction<string>) {
-      return { ...state, groupCode: action.payload, groupMembers: [] };
-    },
-
-    submitUpdateGroupAsync(
-      state,
-      action: PayloadAction<readonly GroupMember[]>
-    ) {
-      return {
-        ...state,
-        groupMembers: action.payload,
       };
     },
   },
 });
 
-export const {
-  submitLoginAsync,
-  submitUpdateGroupCodeAsync,
-  submitLeaveGroupAsync,
-  submitUpdateGroupAsync,
-} = loginSlice.actions;
+export const { submitLoginAsync } = loginSlice.actions;
 
 export const loginReducer = loginSlice.reducer;
