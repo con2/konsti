@@ -10,6 +10,7 @@ import { Game } from "shared/typings/models/game";
 import { AlgorithmSignupForm } from "./AlgorithmSignupForm";
 import { DirectSignupForm } from "./DirectSignupForm";
 import { Button } from "client/components/Button";
+import { SelectedGame } from "shared/typings/models/user";
 
 const DESCRIPTION_SENTENCES_LENGTH = 3;
 const matchNextSentence = /([.?!])\s*(?=[A-Z])/g;
@@ -19,6 +20,7 @@ interface Props {
   startTime: string;
   players: number;
   signupStrategy: SignupStrategy;
+  signedGames: readonly SelectedGame[];
 }
 
 export const GameEntry = ({
@@ -26,6 +28,7 @@ export const GameEntry = ({
   startTime,
   players,
   signupStrategy,
+  signedGames,
 }: Props): ReactElement => {
   const { t } = useTranslation();
 
@@ -143,7 +146,11 @@ export const GameEntry = ({
         />
       )}
       {loggedIn && !isEnterGameMode && (
-        <AlgorithmSignupForm game={game} startTime={startTime} />
+        <AlgorithmSignupForm
+          game={game}
+          startTime={startTime}
+          signedGames={signedGames}
+        />
       )}
     </GameContainer>
   );
