@@ -205,7 +205,7 @@
   "currentlyRunningRevolvingDoor": "Currently running games",
   "noCurrentlyRunningGames": "No running revolving door games",
   "group": {
-    "signupDisabledNotCreator": "You are group member. Signup only available to the group creator.",
+    "signupDisabledNotCreator": "You are group member. Group creator will sign up to the games for the whole group.",
     "signupForWholeGroup": "You are group creator. You can sign up to games for the whole group.",
     "inGroupSignups": "You are in a group. Following games are chosen by the group creator.",
     "closeGroupConfirmation": "Are you sure you want to close group and remove all its members?",
@@ -220,7 +220,7 @@
     "youAreInGroup": "You are in a group",
     "groupMembers": "Group members",
     "groupCreator": "group creator",
-    "groupMemberInfo": "Group creator will sign up to the games for the whole group. See selected games and signup results from 'My Games' page.",
+    "groupMemberInfo": "Group creator will sign up to the games for the whole group. See selected games from \"My Games\" page.",
     "groupCreatorInfo": "You can sign up to games for the whole group. Please make sure that the group is not too big for the selected games. Group creator cannot leave the group, but can close it. This will remove all members from the group.",
     "joiningGroupWillCancelGames": "Joining a group will cancel all signups you may have done before",
     "groupSignupGuide": "Joining a group is done with the group starter's registration code. Your own code can be found from the top of the page.",

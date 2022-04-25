@@ -205,7 +205,7 @@
   "currentlyRunningRevolvingDoor": "Käynnissä olevat pelit",
   "noCurrentlyRunningGames": "Ei käynnissä olevia pyöröovipelejä",
   "group": {
-    "signupDisabledNotCreator": "Olet ryhmän jäsen. Ilmoittautuminen sallittu vain ryhmän perustajalle.",
+    "signupDisabledNotCreator": "Olet ryhmän jäsen. Ryhmän perustaja ilmoittautuu peleihin ryhmän muiden jäsenten puolesta.",
     "signupForWholeGroup": "Olet ryhmän perustaja. Voit ilmoittautua peleihin koko ryhmän puolesta.",
     "inGroupSignups": "Olet ryhmän jäsen. Seuraavat pelit ovat ryhmän perustajan valitsemia.",
     "closeGroupConfirmation": "Oletko varma, että haluat sulkea ryhmän ja poistaa kaikki sen jäsenet?",
@@ -220,7 +220,7 @@
     "youAreInGroup": "Olet ryhmässä",
     "groupMembers": "Ryhmän jäsenet",
     "groupCreator": "ryhmän perustaja",
-    "groupMemberInfo": "Ryhmän perustaja ilmoittautuu peleihin ryhmän muiden jäsenten puolesta. Näet valitut pelit ja ilmoittautumisen tulokset 'Omat pelit' sivulta",
+    "groupMemberInfo": "Ryhmän perustaja ilmoittautuu peleihin ryhmän muiden jäsenten puolesta. Näet valitut pelit \"Omat pelit\" sivulta",
     "groupCreatorInfo": "Voit ilmoittautua peleihin koko ryhmän puolesta. Varmistathan, että ryhmä ei ole liian iso valitsemiisi peleihin liittymistä varten. Ryhmän perustaja ei voi poistua ryhmästä, mutta voi sulkea ryhmän. Tällöin kaikki ryhmän jäsenet poistetaan ryhmästä.",
     "joiningGroupWillCancelGames": "Ryhmään liittyminen peruu kaikki aikaisemmat ilmoittautumisesi",
     "groupSignupGuide": "Ryhmiin liitytään ryhmän perustajan rekisteröintikoodilla. Näet oman koodisi sivun ylälaidasta.",

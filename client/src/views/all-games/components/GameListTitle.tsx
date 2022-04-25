@@ -13,6 +13,8 @@ interface Props {
   signedGames: readonly SelectedGame[];
   enteredGames: readonly SelectedGame[];
   timeslotSignupStrategy: SignupStrategy;
+  isGroupCreator: boolean;
+  groupCode: string;
 }
 
 export const GameListTitle = ({
@@ -21,6 +23,8 @@ export const GameListTitle = ({
   signedGames,
   enteredGames,
   timeslotSignupStrategy,
+  isGroupCreator,
+  groupCode,
 }: Props): ReactElement => {
   const { t } = useTranslation();
   const intersectionRef = useRef<HTMLDivElement | null>(null);
@@ -44,29 +48,42 @@ export const GameListTitle = ({
   );
 
   return (
-    <StyledGameListTitle
+    <GameListTitleContainer
       key={startTime}
       ref={intersectionRef}
       isVisible={!!isIntersecting}
     >
-      <span>{formattedStartTime}</span>
+      <StyledGameListTitle>
+        <span>{formattedStartTime}</span>
 
-      {!allGamesRevolvingDoor &&
-        timeslotSignupStrategy === SignupStrategy.ALGORITHM && (
-          <span>
-            {" "}
-            ({t("signupOpenBetween")} {signupStartTime}-{signupEndTime})
-          </span>
+        {!allGamesRevolvingDoor &&
+          timeslotSignupStrategy === SignupStrategy.ALGORITHM && (
+            <span>
+              {" "}
+              ({t("signupOpenBetween")} {signupStartTime}-{signupEndTime})
+            </span>
+          )}
+
+        {timeslotSignupStrategy === SignupStrategy.DIRECT ? (
+          <SignupCount>
+            {signedGame ? signedGame.gameDetails.title : ""}
+          </SignupCount>
+        ) : (
+          <SignupCount>{signedGamesCount} / 3</SignupCount>
         )}
+      </StyledGameListTitle>
 
-      {timeslotSignupStrategy === SignupStrategy.DIRECT ? (
-        <SignupCount>
-          {signedGame ? signedGame.gameDetails.title : ""}
-        </SignupCount>
-      ) : (
-        <SignupCount>{signedGamesCount} / 3</SignupCount>
-      )}
-    </StyledGameListTitle>
+      {timeslotSignupStrategy === SignupStrategy.ALGORITHM &&
+        groupCode !== "0" && (
+          <GroupInfo>
+            {isGroupCreator ? (
+              <InfoText>{t("group.signupForWholeGroup")}</InfoText>
+            ) : (
+              <InfoText>{t("group.signupDisabledNotCreator")}</InfoText>
+            )}
+          </GroupInfo>
+        )}
+    </GameListTitleContainer>
   );
 };
 
@@ -74,11 +91,7 @@ const SignupCount = styled.span`
   float: right;
 `;
 
-interface StyledGameListTitleProps {
-  isVisible: boolean;
-}
-
-const StyledGameListTitle = styled.h3<StyledGameListTitleProps>`
+const GameListTitleContainer = styled.div<{ isVisible: boolean }>`
   margin: 20px 0;
   padding: 8px;
   background: #fafafa;
@@ -92,4 +105,18 @@ const StyledGameListTitle = styled.h3<StyledGameListTitleProps>`
     css`
       box-shadow: 4px 4px 45px 4px #d5d5d5;
     `};
+`;
+
+const StyledGameListTitle = styled.h3`
+  margin: 0;
+  padding: 0;
+`;
+
+const GroupInfo = styled.p`
+  margin: 0;
+  padding: 10px 0 0 0;
+`;
+
+const InfoText = styled.span`
+  font-weight: 600;
 `;

@@ -6,6 +6,8 @@ import { useAppSelector } from "client/utils/hooks";
 import { Game } from "shared/typings/models/game";
 import { GameListTitle } from "client/views/all-games/components/GameListTitle";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
+import { getIsGroupCreator } from "client/views/group/utils/getIsGroupCreator";
+import { getSignedGames } from "client/utils/getUpcomingGames";
 
 export interface Props {
   games: readonly Game[];
@@ -15,8 +17,20 @@ export const AllGamesList = ({ games }: Props): ReactElement => {
   const { t } = useTranslation();
 
   const signups = useAppSelector((state) => state.allGames.signups);
-  const signedGames = useAppSelector((state) => state.myGames.signedGames);
+  const ownSignedGames = useAppSelector((state) => state.myGames.signedGames);
   const enteredGames = useAppSelector((state) => state.myGames.enteredGames);
+  const serial = useAppSelector((state) => state.login.serial);
+  const groupCode = useAppSelector((state) => state.group.groupCode);
+  const groupMembers = useAppSelector((state) => state.group.groupMembers);
+  const isGroupCreator = getIsGroupCreator(groupCode, serial);
+
+  const ownOrGroupCreatorSignedGames = getSignedGames(
+    ownSignedGames,
+    groupCode,
+    serial,
+    groupMembers,
+    true
+  );
 
   const sortedGames = _.sortBy(games, [
     (game) => game.startTime,
@@ -40,9 +54,11 @@ export const AllGamesList = ({ games }: Props): ReactElement => {
           <GameListTitle
             startTime={startTime}
             gamesForStartTime={gamesForStartTime}
-            signedGames={signedGames}
+            signedGames={ownOrGroupCreatorSignedGames}
             enteredGames={enteredGames}
             timeslotSignupStrategy={timeslotSignupStrategy}
+            isGroupCreator={isGroupCreator}
+            groupCode={groupCode}
           />
 
           {gamesForStartTime.map((game) => {
@@ -57,6 +73,7 @@ export const AllGamesList = ({ games }: Props): ReactElement => {
                 players={gameSignups?.users.length ?? 0}
                 startTime={startTime}
                 signupStrategy={timeslotSignupStrategy}
+                signedGames={ownOrGroupCreatorSignedGames}
               />
             );
           })}
