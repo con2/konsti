@@ -4,7 +4,7 @@ import {
   submitLeaveGroupAsync,
   submitUpdateGroupAsync,
   submitUpdateGroupCodeAsync,
-} from "client/views/login/loginSlice";
+} from "client/views/group/groupSlice";
 import { GroupRequest } from "shared/typings/api/groups";
 
 export const submitJoinGroup = (

@@ -28,10 +28,10 @@ export const AlgorithmSignupForm: FC<Props> = (
   const username = useAppSelector((state) => state.login.username);
   const loggedIn = useAppSelector((state) => state.login.loggedIn);
   const serial = useAppSelector((state) => state.login.serial);
-  const groupCode = useAppSelector((state) => state.login.groupCode);
+  const groupCode = useAppSelector((state) => state.group.groupCode);
   const signedGames = useAppSelector((state) => state.myGames.signedGames);
   const enteredGames = useAppSelector((state) => state.myGames.enteredGames);
-  const groupMembers = useAppSelector((state) => state.login.groupMembers);
+  const groupMembers = useAppSelector((state) => state.group.groupMembers);
   const [signupFormOpen, setSignupFormOpen] = useState(false);
 
   const dispatch = useAppDispatch();

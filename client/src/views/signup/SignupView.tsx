@@ -11,7 +11,7 @@ export const SignupView = (): ReactElement => {
   const hiddenGames = useAppSelector((state) => state.admin.hiddenGames);
   const testTime = useAppSelector((state) => state.testSettings.testTime);
   const serial = useAppSelector((state) => state.login.serial);
-  const groupCode = useAppSelector((state) => state.login.groupCode);
+  const groupCode = useAppSelector((state) => state.group.groupCode);
 
   const [signupTimes, setSignupTimes] = useState<readonly string[]>([]);
 
