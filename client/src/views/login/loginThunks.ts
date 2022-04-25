@@ -5,6 +5,7 @@ import { ApiError } from "shared/typings/api/errors";
 import { LoginFormFields, PostLoginResponse } from "shared/typings/api/login";
 import { submitLoginAsync } from "client/views/login/loginSlice";
 import { loadUser } from "client/utils/loadData";
+import { submitUpdateGroupCodeAsync } from "client/views/group/groupSlice";
 
 export enum LoginErrorMessage {
   LOGIN_FAILED = "error.loginFailed",
@@ -50,9 +51,10 @@ export const submitLogin = (
           jwt: loginResponse.jwt,
           userGroup: loginResponse.userGroup,
           serial: loginResponse.serial,
-          groupCode: loginResponse.groupCode,
         })
       );
+
+      dispatch(submitUpdateGroupCodeAsync(loginResponse.groupCode));
 
       await loadUser();
     }
@@ -94,9 +96,10 @@ export const submitSessionRecovery = (jwt: string): AppThunk => {
           jwt: loginResponse.jwt,
           userGroup: loginResponse.userGroup,
           serial: loginResponse.serial,
-          groupCode: loginResponse.groupCode,
         })
       );
+
+      dispatch(submitUpdateGroupCodeAsync(loginResponse.groupCode));
 
       await loadUser();
     }

@@ -6,5 +6,4 @@ export interface SubmitLoginPayload {
   jwt: string;
   userGroup: UserGroup;
   serial: string;
-  groupCode: string;
 }

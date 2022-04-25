@@ -33,7 +33,7 @@ export const SignupList = ({
 }: Props): ReactElement => {
   const signupTime = useAppSelector((state) => state.signup.signupTime);
   const username = useAppSelector((state) => state.login.username);
-  const groupCode = useAppSelector((state) => state.login.groupCode);
+  const groupCode = useAppSelector((state) => state.group.groupCode);
   const hiddenGames = useAppSelector((state) => state.admin.hiddenGames);
   const signedGames = useAppSelector((state) => state.myGames.signedGames);
   const selectedGames = useAppSelector((state) => state.signup.selectedGames);

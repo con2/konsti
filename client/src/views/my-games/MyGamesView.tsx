@@ -24,13 +24,13 @@ export const MyGamesView = (): ReactElement => {
 
   const serial = useAppSelector((state) => state.login.serial);
   const username = useAppSelector((state) => state.login.username);
-  const groupCode = useAppSelector((state) => state.login.groupCode);
+  const groupCode = useAppSelector((state) => state.group.groupCode);
   const signedGames = useAppSelector((state) => state.myGames.signedGames);
   const favoritedGames = useAppSelector(
     (state) => state.myGames.favoritedGames
   );
   const enteredGames = useAppSelector((state) => state.myGames.enteredGames);
-  const groupMembers = useAppSelector((state) => state.login.groupMembers);
+  const groupMembers = useAppSelector((state) => state.group.groupMembers);
   const testTime = useAppSelector((state) => state.testSettings.testTime);
   const signupStrategy = useAppSelector((state) => state.admin.signupStrategy);
 
