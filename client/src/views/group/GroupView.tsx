@@ -10,7 +10,7 @@ import {
 import { GroupMembersList } from "client/views/group/components/GroupMembersList";
 import { sleep } from "client/utils/sleep";
 import { config } from "client/config";
-import { submitSignup } from "client/views/my-games/myGamesThunks";
+import { submitPostSignedGames } from "client/views/my-games/myGamesThunks";
 import { loadGroupMembers } from "client/utils/loadData";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { Button } from "client/components/Button";
@@ -74,15 +74,15 @@ export const GroupView = (): ReactElement => {
     showMessage({ value: t("group.groupCreated"), style: "success" });
   };
 
-  // Remove all signups
-  const removeSignups = async (): Promise<void> => {
+  // Remove all signed games
+  const removeSignedGames = async (): Promise<void> => {
     const signupData = {
       username,
       selectedGames: [],
       signupTime: "all",
     };
 
-    await dispatch(submitSignup(signupData));
+    await dispatch(submitPostSignedGames(signupData));
   };
 
   const joinGroup = async (): Promise<void> => {
@@ -119,7 +119,7 @@ export const GroupView = (): ReactElement => {
     }
 
     showMessage({ value: t("group.groupJoined"), style: "success" });
-    await removeSignups();
+    await removeSignedGames();
   };
 
   const leaveGroup = async ({

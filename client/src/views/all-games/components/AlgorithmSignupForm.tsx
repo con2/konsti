@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { Game } from "shared/typings/models/game";
 import { getUpcomingEnteredGames } from "client/utils/getUpcomingGames";
 import { SignupForm } from "./SignupForm";
-import { submitSignup } from "client/views/my-games/myGamesThunks";
+import { submitPostSignedGames } from "client/views/my-games/myGamesThunks";
 import { SelectedGame } from "shared/typings/models/user";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { isAlreadySigned } from "./allGamesUtils";
@@ -45,7 +45,7 @@ export const AlgorithmSignupForm: FC<Props> = ({
       signupTime: gameToRemove.startTime,
     };
 
-    await dispatch(submitSignup(signupData));
+    await dispatch(submitPostSignedGames(signupData));
   };
 
   const currentPriority = signedGames.find(
