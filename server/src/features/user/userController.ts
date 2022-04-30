@@ -8,7 +8,7 @@ import {
   fetchGroup,
   storeGroup,
   login,
-  storeSignup,
+  storeSignedGames,
   fetchUserBySerialOrUsername,
   storeUserPassword,
 } from "server/features/user/userService";
@@ -19,12 +19,12 @@ import {
   FAVORITE_ENDPOINT,
   GROUP_ENDPOINT,
   LOGIN_ENDPOINT,
-  SIGNUP_ENDPOINT,
+  SIGNED_GAME_ENDPOINT,
   USERS_BY_SERIAL_OR_USERNAME_ENDPOINT,
   USERS_ENDPOINT,
   USERS_PASSWORD_ENDPOINT,
 } from "shared/constants/apiEndpoints";
-import { SignupData } from "shared/typings/api/signup";
+import { SignupData } from "shared/typings/api/myGames";
 import { GroupRequest, GroupRequestSchema } from "shared/typings/api/groups";
 import { SaveFavoriteRequest } from "shared/typings/api/favorite";
 import {
@@ -296,13 +296,13 @@ export const getGroup = async (
   return res.json(response);
 };
 
-export const postSignup = async (
+export const postSignedGames = async (
   req: Request<{}, {}, { signupData: SignupData }>,
   res: Response
 ): Promise<Response> => {
-  logger.info(`API call: POST ${SIGNUP_ENDPOINT}`);
+  logger.info(`API call: POST ${SIGNED_GAME_ENDPOINT}`);
 
-  const PostSignupParameters = z.object({
+  const PostSignedGamesParameters = z.object({
     signupData: z.object({
       username: z.string(),
       selectedGames: z.array(
@@ -319,10 +319,12 @@ export const postSignup = async (
 
   let parameters;
   try {
-    parameters = PostSignupParameters.parse(req.body);
+    parameters = PostSignedGamesParameters.parse(req.body);
   } catch (error) {
     if (error instanceof ZodError) {
-      logger.error(`Error validating postSignup parameters: ${error.message}`);
+      logger.error(
+        `Error validating postSignedGames parameters: ${error.message}`
+      );
     }
     return res.sendStatus(422);
   }
@@ -333,6 +335,6 @@ export const postSignup = async (
     return res.sendStatus(401);
   }
 
-  const response = await storeSignup(selectedGames, username, signupTime);
+  const response = await storeSignedGames(selectedGames, username, signupTime);
   return res.json(response);
 };

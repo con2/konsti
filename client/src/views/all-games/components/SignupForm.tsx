@@ -1,9 +1,8 @@
 import React, { ReactElement, useRef, FormEvent } from "react";
 import { useTranslation } from "react-i18next";
 import { Game } from "shared/typings/models/game";
-import { submitSignup } from "client/views/signup/signupThunks";
+import { submitSignup } from "client/views/my-games/myGamesThunks";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
-import { submitSelectedGames } from "client/views/signup/signupSlice";
 import { Button } from "client/components/Button";
 
 interface Props {
@@ -43,7 +42,6 @@ export const SignupForm = ({
     ];
 
     const combined = selectedGames.concat(newGame);
-    dispatch(submitSelectedGames(combined));
 
     const signupData = {
       username,

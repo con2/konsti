@@ -3,10 +3,9 @@ import { useTranslation } from "react-i18next";
 import { Game } from "shared/typings/models/game";
 import { getUpcomingEnteredGames } from "client/utils/getUpcomingGames";
 import { SignupForm } from "./SignupForm";
-import { submitSignup } from "client/views/signup/signupThunks";
+import { submitSignup } from "client/views/my-games/myGamesThunks";
 import { SelectedGame } from "shared/typings/models/user";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
-import { submitSelectedGames } from "client/views/signup/signupSlice";
 import { isAlreadySigned } from "./allGamesUtils";
 import { Button } from "client/components/Button";
 import { getIsGroupCreator } from "client/views/group/utils/getIsGroupCreator";
@@ -40,7 +39,6 @@ export const AlgorithmSignupForm: FC<Props> = ({
     const newSignupData = [...signedGames, ...allEnteredGames].filter(
       (g: SelectedGame) => g.gameDetails.gameId !== gameToRemove.gameId
     );
-    dispatch(submitSelectedGames(newSignupData));
     const signupData = {
       username,
       selectedGames: newSignupData,

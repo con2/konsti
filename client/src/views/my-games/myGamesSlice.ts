@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { MyGamesState } from "client/typings/redux.typings";
+import { UserGames } from "shared/typings/api/users";
 import { Game } from "shared/typings/models/game";
 import { SelectedGame } from "shared/typings/models/user";
 
@@ -13,7 +14,7 @@ const myGamesSlice = createSlice({
   name: "myGames",
   initialState,
   reducers: {
-    submitGetUserAsync(state, action: PayloadAction<MyGamesState>) {
+    submitGetUserAsync(state, action: PayloadAction<UserGames>) {
       return {
         ...state,
         enteredGames: action.payload.enteredGames,

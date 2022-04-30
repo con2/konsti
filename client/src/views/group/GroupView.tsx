@@ -10,7 +10,7 @@ import {
 import { GroupMembersList } from "client/views/group/components/GroupMembersList";
 import { sleep } from "client/utils/sleep";
 import { config } from "client/config";
-import { submitSignup } from "client/views/signup/signupThunks";
+import { submitSignup } from "client/views/my-games/myGamesThunks";
 import { loadGroupMembers } from "client/utils/loadData";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { Button } from "client/components/Button";

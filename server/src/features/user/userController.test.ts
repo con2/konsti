@@ -3,7 +3,7 @@ import {
   FAVORITE_ENDPOINT,
   GROUP_ENDPOINT,
   LOGIN_ENDPOINT,
-  SIGNUP_ENDPOINT,
+  SIGNED_GAME_ENDPOINT,
   USERS_BY_SERIAL_OR_USERNAME_ENDPOINT,
   USERS_ENDPOINT,
   USERS_PASSWORD_ENDPOINT,
@@ -338,12 +338,12 @@ describe(`POST ${LOGIN_ENDPOINT}`, () => {
   });
 });
 
-describe(`POST ${SIGNUP_ENDPOINT}`, () => {
+describe(`POST ${SIGNED_GAME_ENDPOINT}`, () => {
   test("should return 422 without valid body", async () => {
     const { server, mongoServer } = await startTestServer();
 
     try {
-      const response = await request(server).post(SIGNUP_ENDPOINT);
+      const response = await request(server).post(SIGNED_GAME_ENDPOINT);
       expect(response.status).toEqual(422);
     } finally {
       await stopTestServer(server, mongoServer);
@@ -355,7 +355,7 @@ describe(`POST ${SIGNUP_ENDPOINT}`, () => {
 
     try {
       const response = await request(server)
-        .post(SIGNUP_ENDPOINT)
+        .post(SIGNED_GAME_ENDPOINT)
         .send({
           signupData: {
             username: "testuser",

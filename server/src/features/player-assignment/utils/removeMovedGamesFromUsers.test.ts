@@ -6,7 +6,7 @@ import { GameModel } from "server/features/game/gameSchema";
 import { mockUser, mockSignup } from "server/test/mock-data/mockUser";
 import { testGame, testGame2 } from "shared/tests/testGame";
 import { removeMovedGamesFromUsers } from "server/features/player-assignment/utils/removeMovedGamesFromUsers";
-import { saveSignup, saveUser } from "server/features/user/userRepository";
+import { saveSignedGames, saveUser } from "server/features/user/userRepository";
 
 let mongoServer: MongoMemoryServer;
 
@@ -31,7 +31,7 @@ test("should remove signups for moved games from users", async () => {
   expect(insertedGames.length).toEqual(2);
 
   await saveUser(mockUser);
-  await saveSignup(mockSignup);
+  await saveSignedGames(mockSignup);
   const insertedUser = await UserModel.findOne({
     username: mockUser.username,
   });
