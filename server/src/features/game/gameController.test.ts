@@ -17,7 +17,7 @@ import {
   findUser,
   saveEnteredGame,
   saveFavorite,
-  saveSignup,
+  saveSignedGames,
   saveUser,
 } from "server/features/user/userRepository";
 import {
@@ -79,7 +79,7 @@ describe(`POST ${GAMES_ENDPOINT}`, () => {
 
     await saveGames([testGame, testGame2]);
     await saveUser(mockUser);
-    await saveSignup(mockSignup);
+    await saveSignedGames(mockSignup);
     await saveEnteredGame(mockPostEnteredGameRequest);
     await saveEnteredGame(mockPostEnteredGameRequest2);
     await saveFavorite({
@@ -184,7 +184,7 @@ describe(`POST ${GAMES_ENDPOINT}`, () => {
 
     await saveGames([testGame, testGame2]);
     await saveUser(mockUser);
-    await saveSignup(mockSignup);
+    await saveSignedGames(mockSignup);
     await saveEnteredGame(mockPostEnteredGameRequest);
     await saveEnteredGame(mockPostEnteredGameRequest2);
 

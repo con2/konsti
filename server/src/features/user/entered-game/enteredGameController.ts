@@ -12,7 +12,7 @@ import {
   DeleteEnteredGameParametersSchema,
   PostEnteredGameParameters,
   PostEnteredGameParametersSchema,
-} from "shared/typings/api/signup";
+} from "shared/typings/api/myGames";
 import { UserGroup } from "shared/typings/models/user";
 
 export const postEnteredGame = async (

@@ -4,7 +4,10 @@ import _ from "lodash";
 import { logger } from "server/utils/logger";
 import { updateGamePopularity } from "server/features/game-popularity/updateGamePopularity";
 import { Game } from "shared/typings/models/game";
-import { findUsers, saveSignup } from "server/features/user/userRepository";
+import {
+  findUsers,
+  saveSignedGames,
+} from "server/features/user/userRepository";
 import { findGames } from "server/features/game/gameRepository";
 import { SelectedGame, User } from "shared/typings/models/user";
 
@@ -85,7 +88,7 @@ const getRandomSignup = (games: readonly Game[]): SelectedGame[] => {
 const signup = async (games: readonly Game[], user: User): Promise<User> => {
   const signedGames = getRandomSignup(games);
 
-  return await saveSignup({
+  return await saveSignedGames({
     username: user.username,
     signedGames: signedGames,
   });
@@ -119,5 +122,5 @@ const signupGroup = async (
     signedGames: getRandomSignup(games),
   };
 
-  await saveSignup(signupData);
+  await saveSignedGames(signupData);
 };

@@ -3,7 +3,7 @@ import { SIGNUP_MESSAGE_LENGTH } from "shared/constants/validation";
 import { ApiError } from "shared/typings/api/errors";
 import { SelectedGame } from "shared/typings/models/user";
 
-export interface PostSignupResponse {
+export interface PostSignedGamesResponse {
   message: string;
   signedGames: readonly SelectedGame[];
   status: "success";

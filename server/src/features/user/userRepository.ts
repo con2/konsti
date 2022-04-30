@@ -10,7 +10,7 @@ import { SaveFavoriteRequest } from "shared/typings/api/favorite";
 import {
   DeleteEnteredGameParameters,
   PostEnteredGameParameters,
-} from "shared/typings/api/signup";
+} from "shared/typings/api/myGames";
 import { getGameById } from "server/features/game/gameUtils";
 import { Game } from "shared/typings/models/game";
 
@@ -259,7 +259,9 @@ export const findUsers = async (): Promise<User[]> => {
   return users;
 };
 
-export const saveSignup = async (signupData: UserSignup): Promise<User> => {
+export const saveSignedGames = async (
+  signupData: UserSignup
+): Promise<User> => {
   const { signedGames, username } = signupData;
 
   let games: GameDoc[];
