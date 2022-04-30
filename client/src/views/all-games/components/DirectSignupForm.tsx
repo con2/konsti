@@ -2,7 +2,6 @@ import React, { FC, ReactElement, useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { Game } from "shared/typings/models/game";
-import { getUpcomingEnteredGames } from "client/utils/getUpcomingGames";
 import { EnterGameForm } from "./EnterGameForm";
 import { SelectedGame } from "shared/typings/models/user";
 import { useAppSelector } from "client/utils/hooks";
@@ -31,7 +30,7 @@ export const DirectSignupForm: FC<Props> = (
     (state) => state.admin.signupMessages
   );
 
-  const enteredGamesForTimeslot = getUpcomingEnteredGames(enteredGames).filter(
+  const enteredGamesForTimeslot = enteredGames.filter(
     (g) => g.gameDetails.startTime === startTime
   );
 

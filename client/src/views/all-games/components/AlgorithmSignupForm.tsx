@@ -1,7 +1,6 @@
 import React, { FC, ReactElement, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Game } from "shared/typings/models/game";
-import { getUpcomingEnteredGames } from "client/utils/getUpcomingGames";
 import { SignupForm } from "./SignupForm";
 import { submitPostSignedGames } from "client/views/my-games/myGamesThunks";
 import { SelectedGame } from "shared/typings/models/user";
@@ -25,7 +24,6 @@ export const AlgorithmSignupForm: FC<Props> = ({
 
   const username = useAppSelector((state) => state.login.username);
   const loggedIn = useAppSelector((state) => state.login.loggedIn);
-  const enteredGames = useAppSelector((state) => state.myGames.enteredGames);
   const serial = useAppSelector((state) => state.login.serial);
   const groupCode = useAppSelector((state) => state.group.groupCode);
   const isGroupCreator = getIsGroupCreator(groupCode, serial);
@@ -34,9 +32,8 @@ export const AlgorithmSignupForm: FC<Props> = ({
 
   const dispatch = useAppDispatch();
 
-  const removeSignup = async (gameToRemove: Game): Promise<void> => {
-    const allEnteredGames = getUpcomingEnteredGames(enteredGames);
-    const newSignupData = [...signedGames, ...allEnteredGames].filter(
+  const removeSignedGame = async (gameToRemove: Game): Promise<void> => {
+    const newSignupData = signedGames.filter(
       (g: SelectedGame) => g.gameDetails.gameId !== gameToRemove.gameId
     );
     const signupData = {
@@ -92,7 +89,7 @@ export const AlgorithmSignupForm: FC<Props> = ({
         {alreadySignedToGame && (
           <>
             {isGroupCreator && (
-              <Button onClick={async () => await removeSignup(game)}>
+              <Button onClick={async () => await removeSignedGame(game)}>
                 {t("button.cancel")}
               </Button>
             )}
