@@ -4,9 +4,9 @@ import { AppThunk } from "client/typings/redux.typings";
 import { SaveFavoriteRequest } from "shared/typings/api/favorite";
 import {
   submitDeleteEnteredAsync,
-  submitEnteredAsync,
+  submitPostEnteredGameAsync,
   submitGetUserAsync,
-  submitSignupAsync,
+  submitPostSignedGamesAsync,
   submitUpdateFavoritesAsync,
 } from "client/views/my-games/myGamesSlice";
 import {
@@ -14,7 +14,6 @@ import {
   PostEnteredGameParameters,
   SignupData,
 } from "shared/typings/api/myGames";
-import { SelectedGame } from "shared/typings/models/user";
 import {
   deleteEnteredGame,
   postEnteredGame,
@@ -63,9 +62,8 @@ export const submitUpdateFavorites = (
   };
 };
 
-export const submitEnterGame = (
-  data: PostEnteredGameParameters,
-  game: SelectedGame
+export const submitPostEnteredGame = (
+  data: PostEnteredGameParameters
 ): AppThunk<Promise<number | undefined>> => {
   return async (dispatch): Promise<number | undefined> => {
     const signupResponse = await postEnteredGame(data);
@@ -78,12 +76,12 @@ export const submitEnterGame = (
     }
 
     if (signupResponse?.status === "success") {
-      dispatch(submitEnteredAsync(game));
+      dispatch(submitPostEnteredGameAsync(signupResponse.enteredGame));
     }
   };
 };
 
-export const submitDeleteGame = (
+export const submitDeleteEnteredGame = (
   data: DeleteEnteredGameParameters
 ): AppThunk => {
   return async (dispatch): Promise<void> => {
@@ -99,7 +97,7 @@ export const submitDeleteGame = (
   };
 };
 
-export const submitSignup = (
+export const submitPostSignedGames = (
   signupData: SignupData
 ): AppThunk<Promise<number | undefined>> => {
   return async (dispatch): Promise<number | undefined> => {
@@ -110,7 +108,7 @@ export const submitSignup = (
     }
 
     if (signupResponse?.status === "success") {
-      dispatch(submitSignupAsync(signupResponse.signedGames));
+      dispatch(submitPostSignedGamesAsync(signupResponse.signedGames));
     }
   };
 };

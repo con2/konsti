@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { Game } from "shared/typings/models/game";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { Button } from "client/components/Button";
-import { submitDeleteGame } from "client/views/my-games/myGamesThunks";
+import { submitDeleteEnteredGame } from "client/views/my-games/myGamesThunks";
 import { loadGames } from "client/utils/loadData";
 
 interface Props {
@@ -25,7 +25,7 @@ export const CancelSignupForm: FC<Props> = (props: Props): ReactElement => {
   };
   const removeSignup = async (event: FormEvent): Promise<void> => {
     await dispatch(
-      submitDeleteGame({
+      submitDeleteEnteredGame({
         username,
         startTime: game.startTime,
         enteredGameId: game.gameId,

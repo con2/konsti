@@ -1,7 +1,7 @@
 import React, { ReactElement, useRef, FormEvent } from "react";
 import { useTranslation } from "react-i18next";
 import { Game } from "shared/typings/models/game";
-import { submitSignup } from "client/views/my-games/myGamesThunks";
+import { submitPostSignedGames } from "client/views/my-games/myGamesThunks";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { Button } from "client/components/Button";
 
@@ -49,7 +49,7 @@ export const SignupForm = ({
       signupTime: game.startTime,
     };
 
-    const errorCode = await dispatch(submitSignup(signupData));
+    const errorCode = await dispatch(submitPostSignedGames(signupData));
 
     if (errorCode) {
       switch (errorCode) {

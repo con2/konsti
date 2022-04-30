@@ -2,7 +2,7 @@ import React, { FC, ReactElement, FormEvent, useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { Game } from "shared/typings/models/game";
-import { submitEnterGame } from "client/views/my-games/myGamesThunks";
+import { submitPostEnteredGame } from "client/views/my-games/myGamesThunks";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { Button } from "client/components/Button";
 import { SignupMessage } from "shared/typings/models/settings";
@@ -29,13 +29,6 @@ export const EnterGameForm: FC<Props> = (props: Props): ReactElement => {
   const handleSignup = async (event: FormEvent): Promise<void> => {
     event.preventDefault();
 
-    const newGame = {
-      gameDetails: game,
-      priority: 0,
-      time: game.startTime,
-      message: "",
-    };
-
     const enterData = {
       username,
       enteredGameId: game.gameId,
@@ -43,7 +36,7 @@ export const EnterGameForm: FC<Props> = (props: Props): ReactElement => {
       message: userSignupMessage,
     };
 
-    const errorCode = await dispatch(submitEnterGame(enterData, newGame));
+    const errorCode = await dispatch(submitPostEnteredGame(enterData));
 
     if (errorCode) {
       switch (errorCode) {
