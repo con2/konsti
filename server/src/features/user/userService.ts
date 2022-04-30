@@ -11,7 +11,7 @@ import {
   findGroupMembers,
   saveGroupCode,
   findGroup,
-  saveSignup,
+  saveSignedGames,
 } from "server/features/user/userRepository";
 import {
   GetUserBySerialResponse,
@@ -29,7 +29,7 @@ import { PostLoginResponse } from "shared/typings/api/login";
 import { getJWT } from "server/utils/jwt";
 import { findSettings } from "server/features/settings/settingsRepository";
 import { SelectedGame, User } from "shared/typings/models/user";
-import { PostSignupResponse } from "shared/typings/api/signup";
+import { PostSignedGamesResponse } from "shared/typings/api/myGames";
 import { UserSignup } from "server/typings/result.typings";
 import { isValidSignupTime } from "server/features/user/userUtils";
 
@@ -650,11 +650,11 @@ export const login = async (
   }
 };
 
-export const storeSignup = async (
+export const storeSignedGames = async (
   selectedGames: readonly SelectedGame[],
   username: string,
   signupTime: string
-): Promise<PostSignupResponse | ApiError> => {
+): Promise<PostSignedGamesResponse | ApiError> => {
   if (!signupTime) {
     return {
       message: "Signup failure",
@@ -678,7 +678,7 @@ export const storeSignup = async (
   };
 
   try {
-    const response = await saveSignup(modifiedSignupData);
+    const response = await saveSignedGames(modifiedSignupData);
     return {
       message: "Signup success",
       status: "success",

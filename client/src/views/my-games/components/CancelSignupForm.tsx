@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { Button } from "client/components/Button";
 import { Game } from "shared/typings/models/game";
-import { submitDeleteGame } from "client/views/signup/signupThunks";
+import { submitDeleteGame } from "client/views/my-games/myGamesThunks";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 
 interface Props {

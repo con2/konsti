@@ -6,7 +6,7 @@ import { mockResults } from "server/test/mock-data/mockResults";
 import { testGame, testGame2 } from "shared/tests/testGame";
 import {
   findUser,
-  saveSignup,
+  saveSignedGames,
   saveUser,
 } from "server/features/user/userRepository";
 import { findGames, saveGames } from "server/features/game/gameRepository";
@@ -31,7 +31,7 @@ test("should remove overlapping signups from user", async () => {
   expect(insertedGames.length).toEqual(2);
 
   await saveUser(mockUser);
-  await saveSignup(mockSignup);
+  await saveSignedGames(mockSignup);
   const insertedUser = await findUser(mockUser.username);
   expect(insertedUser?.signedGames.length).toEqual(2);
 

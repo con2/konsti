@@ -2,7 +2,10 @@ import moment from "moment";
 import { logger } from "server/utils/logger";
 import { UserSignup } from "server/typings/result.typings";
 import { User } from "shared/typings/models/user";
-import { findUsers, saveSignup } from "server/features/user/userRepository";
+import {
+  findUsers,
+  saveSignedGames,
+} from "server/features/user/userRepository";
 import { Result } from "shared/typings/models/result";
 
 export const removeOverlapSignups = async (
@@ -54,7 +57,7 @@ export const removeOverlapSignups = async (
   try {
     await Promise.all(
       signupData.map(async (signup) => {
-        await saveSignup(signup);
+        await saveSignedGames(signup);
       })
     );
   } catch (error) {
