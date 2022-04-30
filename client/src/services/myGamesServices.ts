@@ -2,7 +2,7 @@ import { api } from "client/utils/api";
 import { ApiError } from "shared/typings/api/errors";
 import {
   ENTERED_GAME_ENDPOINT,
-  SIGNUP_ENDPOINT,
+  SIGNED_GAME_ENDPOINT,
 } from "shared/constants/apiEndpoints";
 import {
   DeleteEnteredGameParameters,
@@ -10,16 +10,19 @@ import {
   PostEnteredGameError,
   PostEnteredGameParameters,
   PostEnteredGameResponse,
-  PostSignupResponse,
+  PostSignedGamesResponse,
   SignupData,
-} from "shared/typings/api/signup";
+} from "shared/typings/api/myGames";
 
-export const postSignup = async (
+export const postSignedGames = async (
   signupData: SignupData
-): Promise<PostSignupResponse | ApiError> => {
-  const response = await api.post<PostSignupResponse>(SIGNUP_ENDPOINT, {
-    signupData,
-  });
+): Promise<PostSignedGamesResponse | ApiError> => {
+  const response = await api.post<PostSignedGamesResponse>(
+    SIGNED_GAME_ENDPOINT,
+    {
+      signupData,
+    }
+  );
   return response.data;
 };
 

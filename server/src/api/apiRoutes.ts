@@ -25,7 +25,7 @@ import {
   postGroup,
   postLogin,
   postUser,
-  postSignup,
+  postSignedGames,
   getUserBySerialOrUsername,
   postUserPassword,
 } from "server/features/user/userController";
@@ -46,7 +46,7 @@ import {
   SESSION_RESTORE_ENDPOINT,
   RESULTS_ENDPOINT,
   SETTINGS_ENDPOINT,
-  SIGNUP_ENDPOINT,
+  SIGNED_GAME_ENDPOINT,
   SIGNUP_MESSAGE_ENDPOINT,
   USERS_ENDPOINT,
   USERS_BY_SERIAL_OR_USERNAME_ENDPOINT,
@@ -65,7 +65,7 @@ apiRoutes.post(GAMES_ENDPOINT, postGame);
 apiRoutes.post(USERS_ENDPOINT, postUserValidation(), postUser);
 apiRoutes.post(LOGIN_ENDPOINT, postLoginValidation, postLogin);
 apiRoutes.post(ASSIGNMENT_ENDPOINT, postAssignment);
-apiRoutes.post(SIGNUP_ENDPOINT, postSignup);
+apiRoutes.post(SIGNED_GAME_ENDPOINT, postSignedGames);
 apiRoutes.post(FAVORITE_ENDPOINT, postFavorite);
 apiRoutes.post(HIDDEN_ENDPOINT, postHidden);
 apiRoutes.post(FEEDBACK_ENDPOINT, postFeedback);

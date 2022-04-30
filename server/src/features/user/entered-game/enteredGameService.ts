@@ -12,7 +12,7 @@ import {
   PostEnteredGameError,
   PostEnteredGameParameters,
   PostEnteredGameResponse,
-} from "shared/typings/api/signup";
+} from "shared/typings/api/myGames";
 
 export const storeEnteredGame = async (
   enteredGameRequest: PostEnteredGameParameters
