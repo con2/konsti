@@ -30,11 +30,14 @@ const myGamesSlice = createSlice({
       };
     },
 
-    submitSignupAsync(state, action: PayloadAction<readonly SelectedGame[]>) {
+    submitPostSignedGamesAsync(
+      state,
+      action: PayloadAction<readonly SelectedGame[]>
+    ) {
       return { ...state, signedGames: action.payload };
     },
 
-    submitEnteredAsync(state, action: PayloadAction<SelectedGame>) {
+    submitPostEnteredGameAsync(state, action: PayloadAction<SelectedGame>) {
       const games = [...state.enteredGames, action.payload];
       return { ...state, enteredGames: games };
     },
@@ -51,8 +54,8 @@ const myGamesSlice = createSlice({
 export const {
   submitGetUserAsync,
   submitUpdateFavoritesAsync,
-  submitSignupAsync,
-  submitEnteredAsync,
+  submitPostSignedGamesAsync,
+  submitPostEnteredGameAsync,
   submitDeleteEnteredAsync,
 } = myGamesSlice.actions;
 
