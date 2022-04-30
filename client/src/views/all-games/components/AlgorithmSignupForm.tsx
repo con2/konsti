@@ -43,6 +43,7 @@ export const AlgorithmSignupForm: FC<Props> = ({
     };
 
     await dispatch(submitPostSignedGames(signupData));
+    setSignupFormOpen(false);
   };
 
   const currentPriority = signedGames.find(
