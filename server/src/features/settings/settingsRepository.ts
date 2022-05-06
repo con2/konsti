@@ -5,6 +5,7 @@ import { Settings, SignupMessage } from "shared/typings/models/settings";
 import { Game } from "shared/typings/models/game";
 import { findGames } from "server/features/game/gameRepository";
 import { PostSettingsRequest } from "shared/typings/api/settings";
+import { SettingsDoc } from "server/typings/settings.typings";
 
 export const removeSettings = async (): Promise<void> => {
   logger.info("MongoDB: remove ALL settings from db");
@@ -143,15 +144,19 @@ export const saveSettings = async (
 ): Promise<Settings> => {
   let updatedSettings;
   try {
-    updatedSettings = await SettingsModel.findOneAndUpdate({}, settings, {
-      new: true,
-      upsert: true,
-      fields: "-createdAt -updatedAt",
-    });
+    updatedSettings = await SettingsModel.findOneAndUpdate<SettingsDoc>(
+      {},
+      settings,
+      {
+        new: true,
+        upsert: true,
+        fields: "-createdAt -updatedAt",
+      }
+    );
   } catch (error) {
     throw new Error(`MongoDB: Error updating app settings: ${error}`);
   }
 
   logger.info(`MongoDB: App settings updated`);
-  return updatedSettings.toJSON();
+  return updatedSettings.toJSON<SettingsDoc>();
 };

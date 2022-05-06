@@ -80,7 +80,7 @@ export const enrichGames = async (
     return games.map((game) => {
       return {
         game: {
-          ...game.toJSON(),
+          ...game.toJSON<GameDoc>(),
           signupStrategy: getSignupStrategyForGame(game, settings, currentTime),
         },
         users: getUsersForGame(users, game.gameId),

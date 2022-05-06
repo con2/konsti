@@ -2,6 +2,7 @@ import { logger } from "server/utils/logger";
 import { TestSettings } from "shared/test-typings/models/testSettings";
 import { TestSettingsModel } from "server/test/test-settings/testSettingsSchema";
 import { PostTestSettingsRequest } from "shared/test-typings/api/testSettings";
+import { TestSettingsDoc } from "server/typings/testSettings.typing";
 
 export const removeTestSettings = async (): Promise<void> => {
   logger.info("MongoDB: remove ALL test settings from db");
@@ -50,19 +51,16 @@ export const saveTestSettings = async (
 ): Promise<TestSettings> => {
   let updatedTestSettings;
   try {
-    updatedTestSettings = await TestSettingsModel.findOneAndUpdate(
-      {},
-      settings,
-      {
+    updatedTestSettings =
+      await TestSettingsModel.findOneAndUpdate<TestSettingsDoc>({}, settings, {
         new: true,
         upsert: true,
         fields: "-createdAt -updatedAt",
-      }
-    );
+      });
   } catch (error) {
     throw new Error(`MongoDB: Error updating test settings: ${error}`);
   }
 
   logger.info(`MongoDB: Test settings updated`);
-  return updatedTestSettings.toJSON();
+  return updatedTestSettings.toJSON<TestSettingsDoc>();
 };
