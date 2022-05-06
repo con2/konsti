@@ -44,7 +44,6 @@ export const autoUpdateGames = async (): Promise<void> => {
     }
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-misused-promises
   await schedule.scheduleJob(cronRule, callback);
 };
 
@@ -121,6 +120,5 @@ export const autoAssignPlayers = async (): Promise<void> => {
     logger.info("***** Automatic player assignment completed");
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-misused-promises
   await schedule.scheduleJob(cronRule, callback);
 };
