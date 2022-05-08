@@ -27,10 +27,9 @@ export const TestValuePicker = (): ReactElement | null => {
 
 const TestValuesContainer = styled.div`
   position: fixed;
-  z-index: 100;
   top: 0;
   left: 0;
-  margin: 0;
+  margin: 80px 0 0 0;
 `;
 
 const TestValueSelectors = styled.div`
