@@ -7,3 +7,7 @@ export const populateDb = async (request: APIRequestContext): Promise<void> => {
   const response = await request.post(url);
   expect(response.status()).toBe(200);
 };
+
+export const logTestStart = (testName: string): void => {
+  console.log(`Start test: ${testName}`); // eslint-disable-line no-console
+};
