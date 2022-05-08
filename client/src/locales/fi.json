@@ -248,6 +248,7 @@
   },
   "errorMessage": "Olemme tunnistaneet ongelman, että 'Omat pelit' sivulla näkyvät 'Ilmoittautumisen tulokset' voivat näkyä väärin ja tiedot on piilotettu. Oikeat tulokset voi katsoa 'Ilmoittautumistulokset' sivulta.",
   "testValues": {
+    "buttonText": "Testiarvot",
     "time": "Testiaika",
     "strategy": "Strategia"
   },

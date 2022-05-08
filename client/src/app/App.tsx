@@ -7,6 +7,7 @@ import { loadData } from "client/utils/loadData";
 import { Loading } from "client/components/Loading";
 import { getIconLibrary } from "client/utils/icons";
 import { config } from "client/config";
+import { TestValuePicker } from "client/components/TestValuePicker";
 
 export const App = (): ReactElement => {
   const { dataUpdateInterval } = config;
@@ -39,6 +40,7 @@ export const App = (): ReactElement => {
         <BrowserRouter>
           <Header />
           <AppRoutes />
+          <TestValuePicker />
         </BrowserRouter>
       )}
     </>
