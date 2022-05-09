@@ -54,8 +54,8 @@ const config: PlaywrightTestConfig = {
   workers: 1,
   use: {
     baseURL: process.env.PLAYWRIGHT_BASEURL ?? "http://localhost:8000",
-    video: "on",
-    trace: "on-first-retry",
+    video: process.env.CI ? "on-first-retry" : "on",
+    trace: process.env.CI ? "on-first-retry" : "on",
     headless: true,
     ignoreHTTPSErrors: true,
   },

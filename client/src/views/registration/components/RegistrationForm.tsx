@@ -175,8 +175,10 @@ export const RegistrationForm = (): ReactElement => {
         )}
 
         <Accordion toggleButton={t("privacyPolicyButton")}>
-          <h3>{t(`privacyPolicyTitle`)}</h3>
-          <Paragraph text={t("privacyPolicyText")} />
+          <PrivacyPolicyContent>
+            <h3>{t(`privacyPolicyTitle`)}</h3>
+            <Paragraph text={t("privacyPolicyText")} />
+          </PrivacyPolicyContent>
         </Accordion>
 
         <Button type="submit" disabled={isSubmitting}>
@@ -250,4 +252,8 @@ const StyledCheckbox = styled.input`
 
 const SmallLabel = styled.label`
   font-size: 14px;
+`;
+
+const PrivacyPolicyContent = styled.div`
+  padding: 0 10px;
 `;
