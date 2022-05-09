@@ -40,7 +40,6 @@ const AccordionContent = styled.div`
   box-shadow: 0 1px 0 rgba(9, 30, 66, 0.25);
   border: 1px solid ${(props) => props.theme.borderInactive};
   border-radius: 3px;
-  padding: 0 10px;
 `;
 
 const AccordionToggle = styled(Button)`

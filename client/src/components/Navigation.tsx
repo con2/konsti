@@ -2,22 +2,16 @@ import React, { ReactElement, useState } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { config } from "client/config";
 import { LoggedInUserNavigation } from "./LoggedInUserNavigation";
 import { UserNavigation } from "./UserNavigation";
 import { useAppSelector } from "client/utils/hooks";
-import {
-  HEADER_HEIGHT,
-  TEST_VALUES_HEIGHT,
-  TEST_VALUES_MARGIN,
-} from "client/components/Header";
+import { HEADER_HEIGHT } from "client/components/Header";
 
 export const Navigation = (): ReactElement => {
   const username = useAppSelector((state) => state.login.username);
   const loggedIn = useAppSelector((state) => state.login.loggedIn);
   const serial = useAppSelector((state) => state.login.serial);
   const { t } = useTranslation();
-  const { loadedSettings, showTestValues } = config;
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -31,20 +25,9 @@ export const Navigation = (): ReactElement => {
           data-testid="navigation-icon"
         />
       </NavigationIconContainer>
+      {isOpen && <Dimmer onClick={() => setIsOpen(false)} />}
       {isOpen && (
-        <Dimmer
-          onClick={() => setIsOpen(false)}
-          includeTimeSelectorHeight={
-            loadedSettings !== "production" && showTestValues
-          }
-        />
-      )}
-      {isOpen && (
-        <Drawer
-          includeTimeSelectorHeight={
-            loadedSettings !== "production" && showTestValues
-          }
-        >
+        <Drawer>
           {loggedIn ? (
             <LoggedInUserNavigation onSelect={() => setIsOpen(false)} />
           ) : (
@@ -77,12 +60,9 @@ const NavigationIconContainer = styled.span`
   height: 32px;
 `;
 
-const Dimmer = styled.div<{ includeTimeSelectorHeight: boolean }>`
+const Dimmer = styled.div`
   position: absolute;
-  top: ${(props) =>
-    props.includeTimeSelectorHeight
-      ? HEADER_HEIGHT + TEST_VALUES_HEIGHT + TEST_VALUES_MARGIN * 2
-      : HEADER_HEIGHT}px;
+  top: ${() => HEADER_HEIGHT}px;
   left: 0;
   right: 0;
   bottom: 0;
@@ -91,12 +71,9 @@ const Dimmer = styled.div<{ includeTimeSelectorHeight: boolean }>`
   z-index: 90;
 `;
 
-const Drawer = styled.div<{ includeTimeSelectorHeight: boolean }>`
+const Drawer = styled.div`
   position: absolute;
-  top: ${(props) =>
-    props.includeTimeSelectorHeight
-      ? HEADER_HEIGHT + TEST_VALUES_HEIGHT + TEST_VALUES_MARGIN * 2
-      : HEADER_HEIGHT}px;
+  top: ${() => HEADER_HEIGHT}px;
   bottom: 0;
   width: 60%;
   z-index: 100;
