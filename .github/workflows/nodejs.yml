@@ -58,5 +58,5 @@ jobs:
         uses: actions/upload-artifact@v3
         if: failure()
         with:
-          name: test-artifacts
+          name: playwright-videos
           path: client/playwright/test-results/
