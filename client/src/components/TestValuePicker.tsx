@@ -11,6 +11,8 @@ import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { submitSetTestSettings } from "client/test/test-settings/testSettingsThunks";
 
 export const TestValuePicker = (): ReactElement | null => {
+  const { loadedSettings, showTestValues } = config;
+
   const dispatch = useAppDispatch();
 
   const testTime: string = useAppSelector(
@@ -18,6 +20,10 @@ export const TestValuePicker = (): ReactElement | null => {
   );
 
   useEffect(() => {
+    if (loadedSettings === "production" || !showTestValues) {
+      return;
+    }
+
     const setInitialTestTime = async (): Promise<void> => {
       const defaultTestTime = _.first(times);
       if (!testTime && defaultTestTime) {
@@ -26,8 +32,6 @@ export const TestValuePicker = (): ReactElement | null => {
     };
     setInitialTestTime();
   });
-
-  const { loadedSettings, showTestValues } = config;
 
   if (loadedSettings === "production" || !showTestValues) {
     return null;
