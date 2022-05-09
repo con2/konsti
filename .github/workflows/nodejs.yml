@@ -53,3 +53,8 @@ jobs:
       - name: Playwright
         run: |
           yarn docker-compose:test
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: test-artifacts
+          path: client/playwright/test-results/
