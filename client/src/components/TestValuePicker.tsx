@@ -4,15 +4,12 @@ import { t } from "i18next";
 import _ from "lodash";
 import { TestTimeSelector } from "client/test/test-components/TestTimeSelector";
 import { SignupStrategySelector } from "client/test/test-components/SignupStrategySelector";
-import { config } from "client/config";
 import { Accordion } from "client/components/Accordion";
 import { times } from "client/test/test-components/testComponentUtils";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { submitSetTestSettings } from "client/test/test-settings/testSettingsThunks";
 
-export const TestValuePicker = (): ReactElement | null => {
-  const { loadedSettings, showTestValues } = config;
-
+export const TestValuePicker = (): ReactElement => {
   const dispatch = useAppDispatch();
 
   const testTime: string = useAppSelector(
@@ -20,10 +17,6 @@ export const TestValuePicker = (): ReactElement | null => {
   );
 
   useEffect(() => {
-    if (loadedSettings === "production" || !showTestValues) {
-      return;
-    }
-
     const setInitialTestTime = async (): Promise<void> => {
       const defaultTestTime = _.first(times);
       if (!testTime && defaultTestTime) {
@@ -32,10 +25,6 @@ export const TestValuePicker = (): ReactElement | null => {
     };
     setInitialTestTime();
   });
-
-  if (loadedSettings === "production" || !showTestValues) {
-    return null;
-  }
 
   return (
     <TestValuesContainer>
