@@ -24,7 +24,7 @@
     "test:watch": "yarn run -T jest --watch",
     "type-check": "yarn run -T tsc --noEmit",
     "playwright": "npx playwright install && npx playwright test --config ./playwright/",
-    "playwright:trace": "npx playwright show-trace trace.zip",
+    "playwright:trace": "npx playwright show-trace trace-1.zip",
     "playwright:debug": "yarn run -T cross-env PWDEBUG=1 npx playwright test --config ./playwright/"
   },
   "dependencies": {
