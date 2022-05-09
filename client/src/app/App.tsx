@@ -7,9 +7,10 @@ import { loadData } from "client/utils/loadData";
 import { Loading } from "client/components/Loading";
 import { getIconLibrary } from "client/utils/icons";
 import { config } from "client/config";
+import { TestValuePicker } from "client/components/TestValuePicker";
 
 export const App = (): ReactElement => {
-  const { dataUpdateInterval } = config;
+  const { dataUpdateInterval, loadedSettings, showTestValues } = config;
   const store = useStore();
 
   const [loading, setLoading] = useState<boolean>(true);
@@ -39,6 +40,10 @@ export const App = (): ReactElement => {
         <BrowserRouter>
           <Header />
           <AppRoutes />
+
+          {loadedSettings !== "production" && showTestValues && (
+            <TestValuePicker />
+          )}
         </BrowserRouter>
       )}
     </>

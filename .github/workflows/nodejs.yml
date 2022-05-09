@@ -15,7 +15,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
@@ -46,10 +46,17 @@ jobs:
         run: |
           yarn type-check
 
-      - name: Test
+      - name: Run Jest tests
         run: |
           yarn test
 
-      - name: Playwright
+      - name: Run Playwright tests
         run: |
           yarn docker-compose:test
+
+      - name: Upload test results if Playwright tests failed
+        uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: playwright-videos
+          path: client/playwright/test-results/
