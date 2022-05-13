@@ -3,14 +3,14 @@ import { Theme } from "client/theme";
 
 export const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
   html {
-    color: ${(props) => props.theme.mainText};
+    color: ${(props) => props.theme.textMain};
     display: flex;
     font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
     font-size: ${(props) => props.theme.fontSizeNormal};
   }
 
   body {
-    background: ${(props) => props.theme.bodyBackground};
+    background: ${(props) => props.theme.backgroundBody};
     padding-bottom: 32px;
     margin: 0;
     width: 100%;
@@ -18,13 +18,13 @@ export const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
 
   @media (max-width: ${(props) => props.theme.breakpointPhone}) {
     body {
-      background: ${(props) => props.theme.bodyBackground};
+      background: ${(props) => props.theme.backgroundBody};
       padding-bottom: 0;
     }
   }
 
   #main {
-    background: ${(props) => props.theme.mainBackground};
+    background: ${(props) => props.theme.backgroundMain};
     max-width: 1024px;
     margin: auto;
   }
@@ -54,17 +54,17 @@ export const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
   }
 
   input::placeholder {
-    color: ${(props) => props.theme.inputPlaceholder};
+    color: ${(props) => props.theme.inputTextPlaceholder};
   }
 
   input:focus {
-    border: 1px solid ${(props) => props.theme.inputFocusBorder};
-    box-shadow: 0 0 5px 0 ${(props) => props.theme.inputFocusBorder};
+    border: 1px solid ${(props) => props.theme.inputBorderFocus};
+    box-shadow: 0 0 5px 0 ${(props) => props.theme.inputBorderFocus};
     box-sizing: border-box;
   }
 
   a {
-    color: ${(props) => props.theme.link};
+    color: ${(props) => props.theme.textLink};
     text-decoration: underline;
   }
 

@@ -56,16 +56,16 @@ const CancelSignupButton = styled(Button)`
   width: 50%;
   background: ${(props) => props.theme.buttonCancelSignup};
   border: 1px solid ${(props) => props.theme.buttonCancelSignupBorder};
-  color: ${(props) => props.theme.mainText};
+  color: ${(props) => props.theme.textMain};
   &:hover,
   &:focus {
     border: 1px solid ${(props) => props.theme.buttonCancelSignupBorder};
     background: ${(props) => props.theme.buttonCancelSignupHover};
-    color: ${(props) => props.theme.mainText};
+    color: ${(props) => props.theme.textMain};
   }
 `;
 
 const CancelFormButton = styled(Button)`
   width: 50%;
-  border: 1px solid ${(props) => props.theme.informative};
+  border: 1px solid ${(props) => props.theme.borderInformative};
 `;

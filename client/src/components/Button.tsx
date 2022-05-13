@@ -47,18 +47,18 @@ const StyledButton = styled.button<StyledButtonProps>`
   cursor: pointer;
   margin: 10px 10px 10px 0;
   padding: 6px 20px;
-  font-size: ${(props) => props.theme.buttonFontSize};
+  font-size: ${(props) => props.theme.fontSizeSmall};
 
   ${(buttonProps) =>
     buttonProps.selected &&
     css`
-      background: ${(props) => props.theme.disabled};
+      background: ${(props) => props.theme.buttonBackgroundDisabled};
     `};
 
   ${(buttonProps) =>
     buttonProps.disabled &&
     css`
-      background: ${(props) => props.theme.disabled};
+      background: ${(props) => props.theme.buttonBackgroundDisabled};
     `};
 
   &:hover,

@@ -46,7 +46,7 @@ interface FlexTableColumnProps {
 }
 
 const FlexTableColumn = styled.div<FlexTableColumnProps>`
-  border-bottom: solid 1px ${(props) => props.theme.disabled};
+  border-bottom: solid 1px ${(props) => props.theme.borderDisabled};
   display: flex;
   flex-direction: row;
   padding: 10px 0;
