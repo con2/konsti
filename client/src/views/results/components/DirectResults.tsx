@@ -216,9 +216,9 @@ const SearchInput = styled.input`
 
 const Tag = styled.span`
   border-radius: 4px;
-  background: ${(props) => props.theme.tagBackground};
+  background: ${(props) => props.theme.backgroundTag};
   padding: 4px;
   font-size: 12px;
-  color: ${(props) => props.theme.tagTextColor};
+  color: ${(props) => props.theme.textTag};
   white-space: nowrap;
 `;

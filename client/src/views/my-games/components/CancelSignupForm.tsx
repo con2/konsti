@@ -48,15 +48,15 @@ export const CancelSignupForm: FC<Props> = (props: Props): ReactElement => {
 const CancelSignupButton = styled(Button)`
   background: ${(props) => props.theme.buttonCancelSignup};
   border: 1px solid ${(props) => props.theme.buttonCancelSignupBorder};
-  color: ${(props) => props.theme.mainText};
+  color: ${(props) => props.theme.textMain};
   &:hover,
   &:focus {
     border: 1px solid ${(props) => props.theme.buttonCancelSignupBorder};
     background: ${(props) => props.theme.buttonCancelSignupHover};
-    color: ${(props) => props.theme.mainText};
+    color: ${(props) => props.theme.textMain};
   }
 `;
 
 const CancelFormButton = styled(Button)`
-  border: 1px solid ${(props) => props.theme.informative};
+  border: 1px solid ${(props) => props.theme.borderInformative};
 `;

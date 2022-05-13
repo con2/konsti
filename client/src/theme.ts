@@ -1,54 +1,77 @@
+const white = "rgb(245,245,245)";
+const black = "rgb(3,3,3)";
+
+const redLight = "rgb(208,165,171)";
+const redLight2 = "rgb(201,179,182)";
+const red = "rgb(255,106,126)";
+const redDark = "rgb(252,61,96)";
+
+const greenLight = "rgb(235,241,222)";
+const green = "rgb(119,147,60)";
+const green2 = "rgb(60,118,61)";
+const greenDark = "rgba(171,208,165,0.27)";
+const greenDark2 = "rgba(171, 208, 165, 0.48)";
+
+const blueLight = "rgb(165,171,208)";
+const blue = "rgb(77,144,254)";
+const blueDark = "rgb(31,75,160)";
+
+const grayLight = "rgb(217,217,217)";
+const gray = "rgb(179,179,179)";
+const grayDark = "rgb(150,150,150)";
+
+const yellow = "rgb(234,234,173)";
+const yellowDark = "rgb(214,214,166)";
+
 export const theme = {
-  bodyBackground: "#f5f5f5",
-  mainBackground: "#f2f3f5",
-  backgroundActive: "#ebf1de",
-  backgroundDndItem: "#fff",
-  backgroundDndRow: "#add8e6",
-  backgroundHover: "#d9d9d9",
-  backgroundHighlight: "#f2f2f2",
-  borderActive: "#77933c",
-  borderInactive: "#969696",
-  buttonSelected: "#f2f2f2",
-  buttonText: "#282828",
-  inputPlaceholder: "#b3b3b3",
-  mainText: "#282828",
-  warningButtonText: "#000",
-  titleText: "white",
-  link: "#1f4ba0",
+  // Colors
+  backgroundActive: greenLight,
+  backgroundBody: white,
+  backgroundHighlight: white,
+  backgroundHover: grayLight,
+  backgroundMain: white,
+  backgroundTag: blueLight,
+  backgroundWarning: redDark,
 
-  inputFocusBorder: "#4d90fe",
-  buttonBorder: "#abd0a57a",
-  buttonBackground: "#f4f4f4",
+  borderActive: green,
+  borderDisabled: greenDark,
+  borderInactive: grayDark,
+  borderInformative: black,
+  borderWarning: redDark,
 
-  buttonConfirm: "#eaeaad",
-  buttonConfirmBorder: "#d6d6a6",
+  buttonBackground: white,
+  buttonBackgroundDisabled: greenDark,
+  buttonBorder: greenDark2,
+  buttonBorderConfirm: yellowDark,
+  buttonCancelSignup: redLight,
+  buttonCancelSignupBorder: redLight,
+  buttonCancelSignupHover: redLight2,
+  buttonConfirm: yellow,
+  buttonText: black,
+  buttonTextWarning: black,
 
-  buttonCancelSignup: "#d0a5ab",
-  buttonCancelSignupHover: "#c9b3b6",
-  buttonCancelSignupBorder: "#d0a5ab",
+  textError: red,
+  textLink: blueDark,
+  textMain: black,
+  textSuccess: green2,
+  textTag: white,
+  textWarning: redDark,
 
-  tagBackground: "#a5abd0",
-  tagTextColor: "#fff",
+  iconFavorited: redLight,
 
-  success: "#3c763d",
-  disabled: "#abd0a545",
-  error: "#ff6a7e",
-  informative: "#030303",
-  warning: "#fc3d60",
+  inputBorderFocus: blue,
+  inputTextPlaceholder: gray,
 
+  // Breakpoints
   breakpointPhone: "500px",
   breakpointTablet: "768px",
   breakpointDesktop: "1024px",
 
-  fontSizeBig: "20px",
-  fontSizeNormal: "16px",
+  // Font sizes
   fontSizeSmall: "14px",
-
-  iconSize: "20px",
-  buttonFontSize: "14px",
+  fontSizeNormal: "16px",
+  fontSizeLarge: "20px",
   linkFontSize: "18px",
-
-  favorited: "#D0A5AB",
 };
 
 export type Theme = typeof theme;

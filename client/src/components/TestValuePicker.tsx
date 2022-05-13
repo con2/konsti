@@ -48,5 +48,5 @@ const TestValuesContainer = styled.div`
 const TestValueSelectors = styled.div`
   width: 200px;
   padding: 4px;
-  background-color: ${(props) => props.theme.mainBackground};
+  background-color: ${(props) => props.theme.backgroundMain};
 `;

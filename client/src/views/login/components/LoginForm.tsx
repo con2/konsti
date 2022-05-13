@@ -95,13 +95,13 @@ export const LoginForm = (): ReactElement => {
 
 const ErrorMessage = styled.p`
   font-weight: 600;
-  color: ${(props) => props.theme.error};
+  color: ${(props) => props.theme.textError};
 `;
 
 const FormFieldError = styled.div`
   display: flex;
   background: ${(props) => props.theme.backgroundHighlight};
-  color: ${(props) => props.theme.error};
+  color: ${(props) => props.theme.textError};
   width: 50%;
   padding: 4px 0 4px 10px;
 
@@ -142,5 +142,5 @@ const StyledInput = styled.input`
 
 const FormFieldIcon = styled.span`
   padding: 0 0 0 8px;
-  font-size: ${(props) => props.theme.iconSize};
+  font-size: ${(props) => props.theme.fontSizeLarge};
 `;

@@ -206,11 +206,11 @@ const Tag = styled.span`
   height: 14px;
   text-align: center;
   border-radius: 4px;
-  background: ${(props) => props.theme.tagBackground};
+  background: ${(props) => props.theme.backgroundTag};
   padding: 4px;
   margin-bottom: 4px;
   font-size: 12px;
-  color: ${(props) => props.theme.tagTextColor};
+  color: ${(props) => props.theme.textTag};
 `;
 
 const GameContainer = styled.div`
@@ -236,5 +236,5 @@ const GameTags = styled.div`
 `;
 
 const FavoriteIcon = styled(FontAwesomeIcon)`
-  color: ${(props) => props.theme.favorited};
+  color: ${(props) => props.theme.iconFavorited};
 `;

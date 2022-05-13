@@ -71,7 +71,7 @@ const RouterLink = styled(NavLink)`
   padding: 10px 12px 10px 12px;
   font-size: ${(props) => props.theme.linkFontSize};
   text-decoration: none;
-  color: ${(props) => props.theme.mainText};
+  color: ${(props) => props.theme.textMain};
   border-bottom: 1px solid black;
 
   :hover,

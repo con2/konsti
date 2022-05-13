@@ -24,6 +24,6 @@ export const RegistrationView = (): ReactElement => {
 };
 
 const NotificationMessage = styled.div`
-  color: ${(props) => props.theme.warning};
+  color: ${(props) => props.theme.textWarning};
   margin: 20px 0 0 0;
 `;

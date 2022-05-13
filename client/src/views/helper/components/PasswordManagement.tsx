@@ -85,6 +85,6 @@ const Message = styled.p<MessageProps>`
   ${(messageProps) =>
     messageProps.error &&
     css`
-      color: ${(props) => props.theme.error};
+      color: ${(props) => props.theme.textError};
     `};
 `;

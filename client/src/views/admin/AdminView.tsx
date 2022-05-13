@@ -218,16 +218,16 @@ const StatusMessage = styled.p<StatusMessageProps>`
   ${(statusMessageProps) =>
     statusMessageProps.messageStyle === "success" &&
     css`
-      color: ${(props) => props.theme.success};
+      color: ${(props) => props.theme.textSuccess};
     `};
 
   ${(statusMessageProps) =>
     statusMessageProps.messageStyle === "error" &&
     css`
-      color: ${(props) => props.theme.error};
+      color: ${(props) => props.theme.textError};
     `};
 `;
 
 const ResponseMessage = styled.p`
-  color: ${(props) => props.theme.success};
+  color: ${(props) => props.theme.textSuccess};
 `;
