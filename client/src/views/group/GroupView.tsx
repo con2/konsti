@@ -379,19 +379,19 @@ const GroupStatusMessage = styled.span<GroupStatusMessageProps>`
   ${(groupStatusMessageProps) =>
     groupStatusMessageProps.messageStyle === "success" &&
     css`
-      color: ${(props) => props.theme.success};
+      color: ${(props) => props.theme.textSuccess};
     `};
 
   ${(groupStatusMessageProps) =>
     groupStatusMessageProps.messageStyle === "error" &&
     css`
-      color: ${(props) => props.theme.error};
+      color: ${(props) => props.theme.textError};
     `};
 `;
 
 const WarningButton = styled(Button)`
-  background: ${(props) => props.theme.warning};
-  color: ${(props) => props.theme.warningButtonText};
+  background: ${(props) => props.theme.backgroundWarning};
+  color: ${(props) => props.theme.buttonTextWarning};
 `;
 
 const FormInput = styled.input`

@@ -90,7 +90,7 @@ export const ChangePasswordForm = ({
 
 const FormFieldIcon = styled.span`
   padding: 0 0 0 8px;
-  font-size: ${(props) => props.theme.iconSize};
+  font-size: ${(props) => props.theme.fontSizeLarge};
 `;
 
 const FormInput = styled.input`
@@ -109,6 +109,6 @@ const Message = styled.p<MessageProps>`
   ${(messageProps) =>
     messageProps.error &&
     css`
-      color: ${(props) => props.theme.error};
+      color: ${(props) => props.theme.textError};
     `};
 `;

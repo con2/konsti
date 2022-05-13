@@ -43,7 +43,7 @@ export const FirstLogin = (): ReactElement | null => {
 };
 
 const FirstLoginContainer = styled.div`
-  border: 1px solid ${(props) => props.theme.warning};
+  border: 1px solid ${(props) => props.theme.borderWarning};
   background: #fafafa;
   padding: 8px;
 `;

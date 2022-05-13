@@ -113,7 +113,7 @@ export const DirectSignupForm: FC<Props> = (
 };
 
 const GameIsFull = styled.h4`
-  color: ${(props) => props.theme.error};
+  color: ${(props) => props.theme.textError};
 `;
 
 const SignedGameName = styled.span`

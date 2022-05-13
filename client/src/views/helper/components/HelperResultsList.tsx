@@ -79,7 +79,7 @@ export const HelperResultsList = (): ReactElement => {
 };
 
 const GameResult = styled.div`
-  border-bottom: solid 1px ${(props) => props.theme.disabled};
+  border-bottom: solid 1px ${(props) => props.theme.borderDisabled};
   padding-bottom: 10px;
 `;
 

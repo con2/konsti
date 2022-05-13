@@ -100,11 +100,11 @@ const ButtonContainer = styled.div`
 const SignupConfirmationButton = styled(Button)`
   width: 50%;
   background: ${(props) => props.theme.buttonConfirm};
-  border: 1px solid ${(props) => props.theme.buttonConfirmBorder};
-  color: ${(props) => props.theme.mainText};
+  border: 1px solid ${(props) => props.theme.buttonBorderConfirm};
+  color: ${(props) => props.theme.textMain};
 `;
 
 const SignupCancelButton = styled(Button)`
   width: 50%;
-  border: 1px solid ${(props) => props.theme.informative};
+  border: 1px solid ${(props) => props.theme.borderInformative};
 `;
