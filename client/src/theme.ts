@@ -1,4 +1,4 @@
-import { rgbToRgba } from "client/utils/rgbToRgba";
+import { addOpacity } from "client/utils/addOpacity";
 
 const white = "rgb(245,245,245)";
 const black = "rgb(3,3,3)";
@@ -45,7 +45,7 @@ export const theme = {
   buttonBorder: greenLight3,
   buttonBorderConfirm: yellowDark,
   buttonWarning: redLight,
-  buttonWarningHover: rgbToRgba(redLight, "0.80"),
+  buttonWarningHover: addOpacity(redLight, "0.80"),
   buttonBorderWarning: redLight,
   buttonConfirm: yellow,
   buttonText: black,
