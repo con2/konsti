@@ -42,6 +42,7 @@ module.exports = {
 
     // eslint-plugin-jest
     "jest/no-done-callback": "off",
+    "jest/no-standalone-expect": "off", // Does not work with Playwright tests
 
     // eslint-plugin-testing-library
     "testing-library/no-unnecessary-act": "off", // Gives false positives
