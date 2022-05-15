@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { postFeedback } from "client/services/feedbackServices";
 import { Game } from "shared/typings/models/game";
-import { Button } from "client/components/Button";
+import { Button, ButtonStyle } from "client/components/Button";
 import { useAppSelector } from "client/utils/hooks";
 
 export interface Props {
@@ -58,7 +58,7 @@ export const FeedbackForm = ({ game }: Props): ReactElement => {
           />
 
           <Button
-            disabled={submitting}
+            buttonStyle={submitting ? ButtonStyle.DISABLED : ButtonStyle.NORMAL}
             onClick={async () => await sendFeedbackEvent()}
           >
             {t("button.sendFeedback")}

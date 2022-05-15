@@ -1,16 +1,17 @@
+import { addOpacity } from "client/utils/addOpacity";
+
 const white = "rgb(245,245,245)";
 const black = "rgb(3,3,3)";
 
-const redLight = "rgb(208,165,171)";
-const redLight2 = "rgb(201,179,182)";
+const redLight = "rgb(255, 153, 153)";
 const red = "rgb(255,106,126)";
-const redDark = "rgb(252,61,96)";
+const redDark = "rgb(255 0 51)";
 
 const greenLight = "rgb(235,241,222)";
+const greenLight2 = "rgb(220,230,219)";
+const greenLight3 = "rgb(207,225,205)";
 const green = "rgb(119,147,60)";
 const green2 = "rgb(60,118,61)";
-const greenDark = "rgba(171,208,165,0.27)";
-const greenDark2 = "rgba(171, 208, 165, 0.48)";
 
 const blueLight = "rgb(165,171,208)";
 const blue = "rgb(77,144,254)";
@@ -31,21 +32,21 @@ export const theme = {
   backgroundHover: grayLight,
   backgroundMain: white,
   backgroundTag: blueLight,
-  backgroundWarning: redDark,
+  backgroundWarning: redLight,
 
   borderActive: green,
-  borderDisabled: greenDark,
+  borderDisabled: greenLight2,
   borderInactive: grayDark,
   borderInformative: black,
   borderWarning: redDark,
 
   buttonBackground: white,
-  buttonBackgroundDisabled: greenDark,
-  buttonBorder: greenDark2,
+  buttonBackgroundDisabled: greenLight2,
+  buttonBorder: greenLight3,
   buttonBorderConfirm: yellowDark,
-  buttonCancelSignup: redLight,
-  buttonCancelSignupBorder: redLight,
-  buttonCancelSignupHover: redLight2,
+  buttonWarning: redLight,
+  buttonWarningHover: addOpacity(redLight, "0.80"),
+  buttonBorderWarning: redLight,
   buttonConfirm: yellow,
   buttonText: black,
   buttonTextWarning: black,

@@ -7,7 +7,7 @@ import { timeFormatter } from "client/utils/timeFormatter";
 import { useAppSelector } from "client/utils/hooks";
 import { SelectedGame } from "shared/typings/models/user";
 import { CancelSignupForm } from "./CancelSignupForm";
-import { Button } from "client/components/Button";
+import { Button, ButtonStyle } from "client/components/Button";
 
 export interface Props {
   signups: readonly SelectedGame[];
@@ -79,7 +79,10 @@ export const ResultsByStartTimes = ({
                           onCancelSignup={onCancelSignup}
                         />
                       ) : (
-                        <Button onClick={() => onConfirmCancelSignup()}>
+                        <Button
+                          onClick={() => onConfirmCancelSignup()}
+                          buttonStyle={ButtonStyle.NORMAL}
+                        >
                           {t("button.cancelSignup")}
                         </Button>
                       )}

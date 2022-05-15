@@ -6,7 +6,7 @@ import { submitPostSignedGames } from "client/views/my-games/myGamesThunks";
 import { SelectedGame } from "shared/typings/models/user";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { isAlreadySigned } from "./allGamesUtils";
-import { Button } from "client/components/Button";
+import { Button, ButtonStyle } from "client/components/Button";
 import { getIsGroupCreator } from "client/views/group/utils/getIsGroupCreator";
 
 interface Props {
@@ -74,7 +74,10 @@ export const AlgorithmSignupForm: FC<Props> = ({
 
     if (signedGamesForTimeSlot.length < 3 && !signupFormOpen) {
       return (
-        <Button onClick={() => setSignupFormOpen(!signupFormOpen)}>
+        <Button
+          onClick={() => setSignupFormOpen(!signupFormOpen)}
+          buttonStyle={ButtonStyle.NORMAL}
+        >
           {t("signup.signup")}
         </Button>
       );
@@ -90,7 +93,10 @@ export const AlgorithmSignupForm: FC<Props> = ({
         {alreadySignedToGame && (
           <>
             {isGroupCreator && (
-              <Button onClick={async () => await removeSignedGame(game)}>
+              <Button
+                onClick={async () => await removeSignedGame(game)}
+                buttonStyle={ButtonStyle.NORMAL}
+              >
                 {t("button.cancel")}
               </Button>
             )}

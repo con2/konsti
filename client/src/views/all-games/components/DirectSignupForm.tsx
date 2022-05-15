@@ -6,7 +6,7 @@ import { EnterGameForm } from "./EnterGameForm";
 import { SelectedGame } from "shared/typings/models/user";
 import { useAppSelector } from "client/utils/hooks";
 import { isAlreadyEntered } from "./allGamesUtils";
-import { Button } from "client/components/Button";
+import { Button, ButtonStyle } from "client/components/Button";
 import { CancelSignupForm } from "./CancelSignupForm";
 
 interface Props {
@@ -59,7 +59,10 @@ export const DirectSignupForm: FC<Props> = (
 
     if (enteredGamesForTimeSlot.length === 0 && !signupFormOpen) {
       return (
-        <Button onClick={() => setSignupFormOpen(!signupFormOpen)}>
+        <Button
+          onClick={() => setSignupFormOpen(!signupFormOpen)}
+          buttonStyle={ButtonStyle.NORMAL}
+        >
           {t("signup.signup")}
         </Button>
       );
@@ -80,6 +83,7 @@ export const DirectSignupForm: FC<Props> = (
         {alreadyEnteredToGame && !cancelSignupFormOpen && (
           <Button
             onClick={() => setCancelSignupFormOpen(!cancelSignupFormOpen)}
+            buttonStyle={ButtonStyle.NORMAL}
           >
             {t("button.cancelSignup")}
           </Button>
