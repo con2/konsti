@@ -7,7 +7,7 @@ import { timeFormatter } from "client/utils/timeFormatter";
 import { useAppSelector } from "client/utils/hooks";
 import { getUsersForGameId } from "client/views/results/resultsUtils";
 import { getUpcomingGames } from "client/utils/getUpcomingGames";
-import { Button } from "client/components/Button";
+import { Button, ButtonStyle } from "client/components/Button";
 import { Game } from "shared/typings/models/game";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
 
@@ -81,10 +81,18 @@ export const DirectResults = (): ReactElement => {
         placeholder={t("findSignupOrGame")}
       />
       <div>
-        <Button onClick={() => setShowAllGames(false)} disabled={!showAllGames}>
+        <Button
+          onClick={() => setShowAllGames(false)}
+          buttonStyle={
+            !showAllGames ? ButtonStyle.DISABLED : ButtonStyle.NORMAL
+          }
+        >
           {t("lastStartedAndUpcomingGames")}
         </Button>
-        <Button onClick={() => setShowAllGames(true)} disabled={showAllGames}>
+        <Button
+          onClick={() => setShowAllGames(true)}
+          buttonStyle={showAllGames ? ButtonStyle.DISABLED : ButtonStyle.NORMAL}
+        >
           {t("allGames")}
         </Button>
       </div>

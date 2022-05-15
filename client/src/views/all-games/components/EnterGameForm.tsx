@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { Game } from "shared/typings/models/game";
 import { submitPostEnteredGame } from "client/views/my-games/myGamesThunks";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
-import { Button } from "client/components/Button";
+import { Button, ButtonStyle } from "client/components/Button";
 import { SignupMessage } from "shared/typings/models/settings";
 import { loadGames } from "client/utils/loadData";
 
@@ -71,10 +71,16 @@ export const EnterGameForm: FC<Props> = (props: Props): ReactElement => {
         </SignupMessageContainer>
       )}
       <ButtonContainer>
-        <SignupConfirmationButton onClick={handleSignup}>
+        <SignupConfirmationButton
+          onClick={handleSignup}
+          buttonStyle={ButtonStyle.NORMAL}
+        >
           {t("signup.confirm")}
         </SignupConfirmationButton>
-        <SignupCancelButton onClick={handleCancel}>
+        <SignupCancelButton
+          onClick={handleCancel}
+          buttonStyle={ButtonStyle.NORMAL}
+        >
           {t("signup.cancel")}
         </SignupCancelButton>
       </ButtonContainer>

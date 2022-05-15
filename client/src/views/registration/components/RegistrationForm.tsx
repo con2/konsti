@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Accordion } from "client/components/Accordion";
 import { sharedConfig } from "shared/config/sharedConfig";
 import { ConventionType } from "shared/config/sharedConfig.types";
-import { Button } from "client/components/Button";
+import { Button, ButtonStyle } from "client/components/Button";
 import { Paragraph } from "client/components/Paragraph";
 import { RegistrationFormFields } from "shared/typings/api/login";
 import { useAppDispatch } from "client/utils/hooks";
@@ -181,7 +181,10 @@ export const RegistrationForm = (): ReactElement => {
           </PrivacyPolicyContent>
         </Accordion>
 
-        <Button type="submit" disabled={isSubmitting}>
+        <Button
+          type="submit"
+          buttonStyle={isSubmitting ? ButtonStyle.DISABLED : ButtonStyle.NORMAL}
+        >
           {t("button.register")}
         </Button>
 

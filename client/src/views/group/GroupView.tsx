@@ -13,7 +13,7 @@ import { config } from "client/config";
 import { submitPostSignedGames } from "client/views/my-games/myGamesThunks";
 import { loadGroupMembers } from "client/utils/loadData";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
-import { Button } from "client/components/Button";
+import { Button, ButtonStyle } from "client/components/Button";
 import { GroupRequest } from "shared/typings/api/groups";
 import { getIsGroupCreator } from "client/views/group/utils/getIsGroupCreator";
 
@@ -28,11 +28,11 @@ export const GroupView = (): ReactElement => {
   const [loading, setLoading] = useState<boolean>(false);
   const [showCreateGroup, setShowCreateGroup] = useState<boolean>(false);
   const [showJoinGroup, setShowJoinGroup] = useState<boolean>(false);
+  const [closeGroupConfirmation, setCloseGroupConfirmation] =
+    useState<boolean>(false);
   const [joinGroupValue, setJoinGroupValue] = useState<string>("");
   const [message, setMessage] = useState<string>("");
   const [messageStyle, setMessageStyle] = useState<string>("");
-  const [closeGroupConfirmation, setCloseGroupConfirmation] =
-    useState<boolean>(false);
 
   const store = useStore();
 
@@ -163,6 +163,7 @@ export const GroupView = (): ReactElement => {
 
   const toggleCloseGroupConfirmation = (value: boolean): void => {
     setCloseGroupConfirmation(value);
+    setShowCreateGroup(value);
   };
 
   const closeGroup = async ({
@@ -246,16 +247,18 @@ export const GroupView = (): ReactElement => {
       {groupCode === "0" && !inGroup && (
         <>
           <Button
-            disabled={loading}
-            selected={showCreateGroup}
+            buttonStyle={
+              showCreateGroup ? ButtonStyle.DISABLED : ButtonStyle.NORMAL
+            }
             onClick={() => openGroupForming()}
           >
             {t("button.createGroup")}
           </Button>
 
           <Button
-            disabled={loading}
-            selected={showJoinGroup}
+            buttonStyle={
+              showJoinGroup ? ButtonStyle.DISABLED : ButtonStyle.NORMAL
+            }
             onClick={() => openJoinGroup()}
           >
             {t("button.joinGroup")}
@@ -269,7 +272,9 @@ export const GroupView = (): ReactElement => {
             <div>
               <p>{t("group.createGroupConfirmationMessage")}</p>
               <Button
-                disabled={loading}
+                buttonStyle={
+                  loading ? ButtonStyle.DISABLED : ButtonStyle.NORMAL
+                }
                 onClick={async () => await createGroup()}
               >
                 {t("button.joinGroupConfirmation")}
@@ -285,7 +290,9 @@ export const GroupView = (): ReactElement => {
 
               {joinGroupInput}
               <Button
-                disabled={loading}
+                buttonStyle={
+                  loading ? ButtonStyle.DISABLED : ButtonStyle.NORMAL
+                }
                 onClick={async () => await joinGroup()}
               >
                 {t("button.joinGroup")}
@@ -318,7 +325,9 @@ export const GroupView = (): ReactElement => {
           <div>
             {!isGroupCreator && (
               <Button
-                disabled={loading}
+                buttonStyle={
+                  loading ? ButtonStyle.DISABLED : ButtonStyle.NORMAL
+                }
                 onClick={async () => await leaveGroup({ isGroupCreator })}
               >
                 {t("button.leaveGroup")}
@@ -329,7 +338,11 @@ export const GroupView = (): ReactElement => {
               <>
                 <div>
                   <Button
-                    disabled={loading}
+                    buttonStyle={
+                      closeGroupConfirmation
+                        ? ButtonStyle.DISABLED
+                        : ButtonStyle.NORMAL
+                    }
                     onClick={() => toggleCloseGroupConfirmation(true)}
                   >
                     {t("button.closeGroup")}
@@ -343,18 +356,20 @@ export const GroupView = (): ReactElement => {
                   <div>
                     <p>{t("group.closeGroupConfirmation")}</p>
                     <Button
-                      disabled={loading}
+                      buttonStyle={ButtonStyle.NORMAL}
                       onClick={() => toggleCloseGroupConfirmation(false)}
                     >
                       {t("button.cancel")}
                     </Button>
 
-                    <WarningButton
-                      disabled={loading}
+                    <Button
+                      buttonStyle={
+                        loading ? ButtonStyle.DISABLED : ButtonStyle.WARNING
+                      }
                       onClick={async () => await closeGroup({ isGroupCreator })}
                     >
                       {t("button.closeGroup")}
-                    </WarningButton>
+                    </Button>
                   </div>
                 )}
               </>
@@ -387,11 +402,6 @@ const GroupStatusMessage = styled.span<GroupStatusMessageProps>`
     css`
       color: ${(props) => props.theme.textError};
     `};
-`;
-
-const WarningButton = styled(Button)`
-  background: ${(props) => props.theme.backgroundWarning};
-  color: ${(props) => props.theme.buttonTextWarning};
 `;
 
 const FormInput = styled.input`

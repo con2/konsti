@@ -4,7 +4,7 @@ import { useStore } from "react-redux";
 import { HelperResultsList } from "client/views/helper/components/HelperResultsList";
 import { PasswordManagement } from "client/views/helper/components/PasswordManagement";
 import { loadResults, loadSettings } from "client/utils/loadData";
-import { Button } from "client/components/Button";
+import { Button, ButtonStyle } from "client/components/Button";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
 import { useAppSelector } from "client/utils/hooks";
 
@@ -30,14 +30,22 @@ export const HelperView = (): ReactElement => {
     <div>
       {signupStrategy === SignupStrategy.ALGORITHM && (
         <Button
-          disabled={selectedTool === "results"}
+          buttonStyle={
+            selectedTool === "results"
+              ? ButtonStyle.DISABLED
+              : ButtonStyle.NORMAL
+          }
           onClick={() => setSelectedTool("results")}
         >
           {t("helperResults")}
         </Button>
       )}
       <Button
-        disabled={selectedTool === "password-management"}
+        buttonStyle={
+          selectedTool === "password-management"
+            ? ButtonStyle.DISABLED
+            : ButtonStyle.NORMAL
+        }
         onClick={() => setSelectedTool("password-management")}
       >
         {t("passwordManagement.helperPasswordManagement")}
