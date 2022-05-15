@@ -9,7 +9,7 @@ import { SignupStrategy } from "shared/config/sharedConfig.types";
 import { Game } from "shared/typings/models/game";
 import { AlgorithmSignupForm } from "./AlgorithmSignupForm";
 import { DirectSignupForm } from "./DirectSignupForm";
-import { Button } from "client/components/Button";
+import { Button, ButtonStyle } from "client/components/Button";
 import { SelectedGame } from "shared/typings/models/user";
 
 const DESCRIPTION_SENTENCES_LENGTH = 3;
@@ -100,6 +100,7 @@ export const GameEntry = ({
                   dispatch,
                 })
               }
+              buttonStyle={ButtonStyle.NORMAL}
               data-testid={"remove-favorite-button"}
             >
               <FavoriteIcon icon="heart" />
@@ -116,6 +117,7 @@ export const GameEntry = ({
                   dispatch,
                 })
               }
+              buttonStyle={ButtonStyle.NORMAL}
               data-testid={"add-favorite-button"}
             >
               <FavoriteIcon icon={["far", "heart"]} />

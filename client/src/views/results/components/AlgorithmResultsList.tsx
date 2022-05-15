@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { ResultsByGameTitle } from "./ResultsByGameTitle";
 import { ResultsByUsername } from "./ResultsByUsername";
 import { Result } from "shared/typings/models/result";
-import { Button } from "client/components/Button";
+import { Button, ButtonStyle } from "client/components/Button";
 
 export interface Props {
   results: readonly Result[];
@@ -51,7 +51,9 @@ export const AlgorithmResultsList = ({ results }: Props): ReactElement => {
         {buttons.map((button) => {
           return (
             <Button
-              disabled={sortedBy === button}
+              buttonStyle={
+                sortedBy === button ? ButtonStyle.DISABLED : ButtonStyle.NORMAL
+              }
               onClick={() => setSortedBy(button)}
               key={button}
             >

@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { Game } from "shared/typings/models/game";
 import { submitPostSignedGames } from "client/views/my-games/myGamesThunks";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
-import { Button } from "client/components/Button";
+import { Button, ButtonStyle } from "client/components/Button";
 
 interface Props {
   game: Game;
@@ -83,8 +83,12 @@ export const SignupForm = ({
           3
         </option>
       </select>
-      <Button onClick={handleSignup}>{t("signup.confirm")}</Button>
-      <Button onClick={handleCancel}>{t("signup.cancel")}</Button>
+      <Button onClick={handleSignup} buttonStyle={ButtonStyle.NORMAL}>
+        {t("signup.confirm")}
+      </Button>
+      <Button onClick={handleCancel} buttonStyle={ButtonStyle.NORMAL}>
+        {t("signup.cancel")}
+      </Button>
     </form>
   );
 };

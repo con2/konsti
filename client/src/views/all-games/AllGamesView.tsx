@@ -12,7 +12,7 @@ import { Loading } from "client/components/Loading";
 import { Game, ProgramType, Tag } from "shared/typings/models/game";
 import { getTime } from "client/utils/getTime";
 import { useAppSelector } from "client/utils/hooks";
-import { Button } from "client/components/Button";
+import { Button, ButtonStyle } from "client/components/Button";
 
 enum SelectedView {
   ALL = "all",
@@ -65,14 +65,22 @@ export const AllGamesView = (): ReactElement => {
         <AllGamesToggleVisibility>
           <Button
             onClick={() => setSelectedView(SelectedView.UPCOMING)}
-            disabled={selectedView === SelectedView.UPCOMING}
+            buttonStyle={
+              selectedView === SelectedView.UPCOMING
+                ? ButtonStyle.DISABLED
+                : ButtonStyle.NORMAL
+            }
           >
             {t("upcomingGames")}
           </Button>
 
           <Button
             onClick={() => setSelectedView(SelectedView.ALL)}
-            disabled={selectedView === SelectedView.ALL}
+            buttonStyle={
+              selectedView === SelectedView.ALL
+                ? ButtonStyle.DISABLED
+                : ButtonStyle.NORMAL
+            }
           >
             {t("allGames")}
           </Button>
@@ -80,7 +88,11 @@ export const AllGamesView = (): ReactElement => {
           {config.revolvingDoorEnabled && (
             <Button
               onClick={() => setSelectedView(SelectedView.REVOLVING_DOOR)}
-              disabled={selectedView === SelectedView.REVOLVING_DOOR}
+              buttonStyle={
+                selectedView === SelectedView.REVOLVING_DOOR
+                  ? ButtonStyle.DISABLED
+                  : ButtonStyle.NORMAL
+              }
             >
               {t("revolvingDoor")}
             </Button>

@@ -1,10 +1,10 @@
 const white = "rgb(245,245,245)";
 const black = "rgb(3,3,3)";
 
-const redLight = "rgb(208,165,171)";
-const redLight2 = "rgb(201,179,182)";
+const redLight = "rgb(255, 153, 153)";
+const redLight2 = "rgba(255, 153, 153, 0.80)";
 const red = "rgb(255,106,126)";
-const redDark = "rgb(252,61,96)";
+const redDark = "rgb(255 0 51)";
 
 const greenLight = "rgb(235,241,222)";
 const green = "rgb(119,147,60)";
@@ -31,7 +31,7 @@ export const theme = {
   backgroundHover: grayLight,
   backgroundMain: white,
   backgroundTag: blueLight,
-  backgroundWarning: redDark,
+  backgroundWarning: redLight,
 
   borderActive: green,
   borderDisabled: greenDark,
@@ -43,9 +43,9 @@ export const theme = {
   buttonBackgroundDisabled: greenDark,
   buttonBorder: greenDark2,
   buttonBorderConfirm: yellowDark,
-  buttonCancelSignup: redLight,
-  buttonCancelSignupBorder: redLight,
-  buttonCancelSignupHover: redLight2,
+  buttonWarning: redLight,
+  buttonWarningHover: redLight2,
+  buttonBorderWarning: redLight,
   buttonConfirm: yellow,
   buttonText: black,
   buttonTextWarning: black,
