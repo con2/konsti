@@ -3,7 +3,7 @@ import { SubmitHandler, useForm, useFormState } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Button } from "client/components/Button";
+import { Button, ButtonStyle } from "client/components/Button";
 import { LoginFormFields } from "shared/typings/api/login";
 import { useAppDispatch } from "client/utils/hooks";
 import { LoginErrorMessage, submitLogin } from "client/views/login/loginThunks";
@@ -84,7 +84,11 @@ export const LoginForm = (): ReactElement => {
         <FormFieldError>{errors.password.message}</FormFieldError>
       )}
 
-      <Button type="submit" disabled={isSubmitting} data-testid="login-button">
+      <Button
+        type="submit"
+        buttonStyle={isSubmitting ? ButtonStyle.DISABLED : ButtonStyle.NORMAL}
+        data-testid="login-button"
+      >
         {t("button.login")}
       </Button>
 

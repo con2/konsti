@@ -2,7 +2,7 @@ import React, { ReactElement, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { useAppSelector } from "client/utils/hooks";
-import { Button } from "./Button";
+import { Button, ButtonStyle } from "./Button";
 import { sharedConfig } from "shared/config/sharedConfig";
 
 export const FirstLogin = (): ReactElement | null => {
@@ -37,7 +37,12 @@ export const FirstLogin = (): ReactElement | null => {
         {t("firstLogin.serial")} <b>{serial}</b>
       </p>
       <p>{t("firstLogin.info")}</p>
-      <Button onClick={() => setIsFirstLogin(false)}>Sulje</Button>
+      <Button
+        onClick={() => setIsFirstLogin(false)}
+        buttonStyle={ButtonStyle.NORMAL}
+      >
+        Sulje
+      </Button>
     </FirstLoginContainer>
   );
 };

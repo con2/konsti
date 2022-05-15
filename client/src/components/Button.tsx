@@ -1,33 +1,37 @@
 import React, { MouseEventHandler, ReactElement, ReactNode } from "react";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
+
+export enum ButtonStyle {
+  NORMAL = "normal",
+  DISABLED = "disabled",
+  WARNING = "warning",
+}
 
 interface Props {
   children?: ReactNode;
   onClick?: MouseEventHandler;
-  disabled?: boolean;
-  type?: "submit" | "reset" | "button";
+  buttonStyle: ButtonStyle;
+  type?: "submit" | "button";
   className?: string;
-  selected?: boolean;
   "data-testid"?: string;
 }
 
 export const Button = ({
   children,
   onClick,
-  disabled = false,
+  buttonStyle,
   type = "button",
   className,
   "data-testid": dataTestId,
-  selected = false,
 }: Props): ReactElement => {
   return (
     <StyledButton
       className={className}
       onClick={onClick}
-      disabled={disabled}
       type={type}
       data-testid={dataTestId}
-      selected={selected}
+      buttonStyle={buttonStyle}
+      disabled={buttonStyle === ButtonStyle.DISABLED}
     >
       {children}
     </StyledButton>
@@ -35,40 +39,52 @@ export const Button = ({
 };
 
 interface StyledButtonProps {
-  disabled: boolean;
-  selected: boolean;
+  buttonStyle: ButtonStyle;
 }
 
 const StyledButton = styled.button<StyledButtonProps>`
-  background: ${(props) => props.theme.buttonBackground};
-  border: 1px solid ${(props) => props.theme.buttonBorder};
   border-radius: 5px;
-  color: ${(props) => props.theme.buttonText};
   cursor: pointer;
   margin: 10px 10px 10px 0;
   padding: 6px 20px;
   font-size: ${(props) => props.theme.fontSizeSmall};
 
-  ${(buttonProps) =>
-    buttonProps.selected &&
-    css`
-      background: ${(props) => props.theme.buttonBackgroundDisabled};
-    `};
+  ${(props) => {
+    switch (props.buttonStyle) {
+      case ButtonStyle.NORMAL:
+        return `
+          background: ${props.theme.buttonBackground};
+          border: 1px solid ${props.theme.buttonBorder};
+          color: ${props.theme.buttonText};
 
-  ${(buttonProps) =>
-    buttonProps.disabled &&
-    css`
-      background: ${(props) => props.theme.buttonBackgroundDisabled};
-    `};
+          &:hover,
+          &:focus {
+            background: ${props.theme.backgroundActive};
+            border: 1px solid ${props.theme.borderActive};
+            color: ${props.theme.borderActive};
+          }
+      `;
 
-  &:hover,
-  &:focus {
-    ${(buttonProps) =>
-      !buttonProps.disabled &&
-      css`
-        background: ${(props) => props.theme.backgroundActive};
-        border: 1px solid ${(props) => props.theme.borderActive};
-        color: ${(props) => props.theme.borderActive};
-      `};
-  }
+      case ButtonStyle.DISABLED:
+        return `
+          background: ${props.theme.buttonBackgroundDisabled};
+          border: 1px solid ${props.theme.buttonBorder};
+          color: ${props.theme.buttonText};
+        `;
+
+      case ButtonStyle.WARNING:
+        return `
+          background: ${props.theme.buttonWarning};
+          border: 1px solid ${props.theme.buttonBorderWarning};
+          color: ${props.theme.textMain};
+
+          &:hover,
+          &:focus {
+            border: 1px solid ${props.theme.buttonBorderWarning};
+            background: ${props.theme.buttonWarningHover};
+            color: ${props.theme.textMain};
+          }
+      `;
+    }
+  }}
 `;

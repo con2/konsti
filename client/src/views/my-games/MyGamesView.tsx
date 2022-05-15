@@ -15,7 +15,7 @@ import { getIsGroupCreator } from "client/views/group/utils/getIsGroupCreator";
 import { GroupMember } from "shared/typings/api/groups";
 import { SelectedGame } from "shared/typings/models/user";
 import { useAppSelector } from "client/utils/hooks";
-import { Button } from "client/components/Button";
+import { Button, ButtonStyle } from "client/components/Button";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
 import { ChangePasswordForm } from "client/views/helper/components/ChangePasswordForm";
 
@@ -53,10 +53,18 @@ export const MyGamesView = (): ReactElement => {
   return (
     <MyGamesViewContainer>
       <div>
-        <Button onClick={() => setShowAllGames(false)} disabled={!showAllGames}>
+        <Button
+          onClick={() => setShowAllGames(false)}
+          buttonStyle={
+            !showAllGames ? ButtonStyle.DISABLED : ButtonStyle.NORMAL
+          }
+        >
           {t("lastStartedAndUpcomingGames")}
         </Button>
-        <Button onClick={() => setShowAllGames(true)} disabled={showAllGames}>
+        <Button
+          onClick={() => setShowAllGames(true)}
+          buttonStyle={showAllGames ? ButtonStyle.DISABLED : ButtonStyle.NORMAL}
+        >
           {t("allGames")}
         </Button>
       </div>
@@ -94,7 +102,9 @@ export const MyGamesView = (): ReactElement => {
       />
 
       <ChangePasswordButton
-        selected={showChangePassword}
+        buttonStyle={
+          showChangePassword ? ButtonStyle.DISABLED : ButtonStyle.NORMAL
+        }
         onClick={() => setShowChangePassword(!showChangePassword)}
       >
         {t("myGamesView.changePassword")}
