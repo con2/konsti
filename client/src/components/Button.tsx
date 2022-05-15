@@ -31,6 +31,7 @@ export const Button = ({
       type={type}
       data-testid={dataTestId}
       buttonStyle={buttonStyle}
+      disabled={buttonStyle === ButtonStyle.DISABLED}
     >
       {children}
     </StyledButton>
