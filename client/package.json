@@ -53,7 +53,7 @@
   },
   "devDependencies": {
     "@axe-core/react": "4.4.2",
-    "@playwright/test": "1.22.0",
+    "@playwright/test": "1.22.1",
     "@pmmmwh/react-refresh-webpack-plugin": "0.5.6",
     "@ronilaukkarinen/stylelint-a11y": "1.2.4",
     "@stylelint/postcss-css-in-js": "0.38.0",
@@ -66,7 +66,7 @@
     "@welldone-software/why-did-you-render": "7.0.1",
     "babel-loader": "8.2.5",
     "clean-webpack-plugin": "4.0.0",
-    "compression-webpack-plugin": "9.2.0",
+    "compression-webpack-plugin": "10.0.0",
     "doiuse": "4.4.1",
     "dotenv-webpack": "7.1.0",
     "file-loader": "6.2.0",
