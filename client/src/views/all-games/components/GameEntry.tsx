@@ -74,9 +74,22 @@ export const GameEntry = ({
         <HeaderContainer>
           <h3 data-testid="game-title">{game.title}</h3>
           <p>
-            {t("signup.expectedDuration", {
-              EXPECTED_DURATION: formatDuration(game.mins),
-            })}
+            <RowItem>
+              {t("signup.expectedDuration", {
+                EXPECTED_DURATION: formatDuration(game.mins),
+              })}
+            </RowItem>
+
+            <RowItem>
+              {game.minAttendance === game.maxAttendance
+                ? t("signup.playerCount", {
+                    MAX_ATTENDANCE: game.maxAttendance,
+                  })
+                : t("signup.playerRange", {
+                    MIN_ATTENDANCE: game.minAttendance,
+                    MAX_ATTENDANCE: game.maxAttendance,
+                  })}
+            </RowItem>
           </p>
           <PlayerCount visible={isEnterGameMode}>
             {t("signup.signupCount", {
@@ -239,4 +252,8 @@ const GameTags = styled.div`
 
 const FavoriteIcon = styled(FontAwesomeIcon)`
   color: ${(props) => props.theme.iconFavorited};
+`;
+
+const RowItem = styled.span`
+  padding-right: 12px;
 `;

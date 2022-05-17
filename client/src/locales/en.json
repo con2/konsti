@@ -265,7 +265,9 @@
     "playerNeeded": "Need {{COUNT}} players!",
     "gameIsFull": "Game is full",
     "confirmCancelSignup": "Confirm signup cancellation",
-    "expectedDuration": "Duration {{EXPECTED_DURATION}}"
+    "expectedDuration": "Duration {{EXPECTED_DURATION}}",
+    "playerCount": "Players {{MAX_ATTENDANCE}}",
+    "playerRange": "Players {{MIN_ATTENDANCE}} - {{MAX_ATTENDANCE}}"
   },
   "resultsView": {
     "allSignupResults": "Signup overview and players",
