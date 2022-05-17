@@ -30,7 +30,7 @@ export const SignupMessageList = ({
           if (!foundGame) return [];
 
           return (
-            <li key={signupMessage.gameId}>
+            <li key={`${signupMessage.gameId}-${signupMessage.message}`}>
               <Link to={`/games/${signupMessage.gameId}`}>
                 {foundGame.title}
               </Link>
