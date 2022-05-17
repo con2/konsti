@@ -9,6 +9,7 @@ import { SignupMessage } from "shared/typings/models/settings";
 import { UserSignup } from "shared/typings/api/games";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
 import { UserGames } from "shared/typings/api/users";
+import { ErrorMessage } from "client/components/ErrorBar";
 
 export interface AdminState {
   hiddenGames: readonly Game[];
@@ -17,6 +18,7 @@ export interface AdminState {
   responseMessage: string;
   signupMessages: readonly SignupMessage[];
   signupStrategy: SignupStrategy | undefined;
+  errors: readonly ErrorMessage[];
 }
 
 export interface UsersForGame {
