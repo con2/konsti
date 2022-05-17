@@ -38,7 +38,7 @@ const initializeDatabase = async (): Promise<void> => {
 
   if (CREATE_TEST_USERS) {
     logger.info("Create test users");
-    await createTestUsers(5);
+    await createTestUsers({ userCount: 5 });
   }
 
   logger.info("Download games from Kompassi");
