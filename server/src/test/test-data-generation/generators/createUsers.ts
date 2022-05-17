@@ -35,7 +35,13 @@ export const createHelpUser = async (): Promise<void> => {
   await saveUser(registrationData);
 };
 
-const createTestUser = async (userNumber: number): Promise<void> => {
+interface CreateTestUserParams {
+  userNumber: number;
+}
+
+const createTestUser = async ({
+  userNumber,
+}: CreateTestUserParams): Promise<void> => {
   logger.info(`Generate data for user "test${userNumber}:test"`);
 
   const registrationData: NewUser = {
@@ -48,22 +54,36 @@ const createTestUser = async (userNumber: number): Promise<void> => {
   await saveUser(registrationData);
 };
 
-export const createTestUsers = async (number: number): Promise<void> => {
-  for (let i = 0; i < number; i += 1) {
-    await createTestUser(i + 1);
+interface CreateTestUsersParams {
+  userCount: number;
+  inSameGroup?: boolean;
+}
+
+export const createTestUsers = async ({
+  userCount,
+  inSameGroup = false,
+}: CreateTestUsersParams): Promise<void> => {
+  for (let i = 0; i < userCount; i += 1) {
+    await createTestUser({ userNumber: i + 1 });
   }
 };
+
+interface CreateUserParams {
+  groupCode: string;
+  groupMemberCount: number;
+  testUsers?: boolean;
+  userNumber?: number;
+}
 
 const createUser = async ({
   groupCode,
   groupMemberCount,
-}: {
-  groupCode: string;
-  groupMemberCount: number;
-}): Promise<void> => {
+  testUsers = false,
+  userNumber = 0,
+}: CreateUserParams): Promise<void> => {
   const registrationData: NewUser = {
-    username: faker.internet.userName(),
-    passwordHash: "testPass", // Skip hashing to save time
+    username: testUsers ? `group${userNumber}` : faker.internet.userName(),
+    passwordHash: testUsers ? await hashPassword("test") : "testPass", // Skip hashing to save time
     userGroup: UserGroup.USER,
     serial:
       groupMemberCount === 0
@@ -75,14 +95,33 @@ const createUser = async ({
   await saveUser(registrationData);
 };
 
-export const createUsersInGroup = async (count: number): Promise<void> => {
+interface CreateUsersInGroupParams {
+  groupSize: number;
+  testUsers: boolean;
+}
+
+export const createUsersInGroup = async ({
+  groupSize,
+  testUsers,
+}: CreateUsersInGroupParams): Promise<void> => {
   const groupCode = faker.datatype.number(SERIAL_MAX).toString();
 
-  logger.info(`Generate data for ${count} users in group ${groupCode}`);
+  logger.info(`Generate data for ${groupSize} users in group ${groupCode}`);
 
   const promises: Array<Promise<void>> = [];
-  for (let groupMemberCount = 0; groupMemberCount < count; groupMemberCount++) {
-    promises.push(createUser({ groupCode, groupMemberCount }));
+  for (
+    let groupMemberCount = 0;
+    groupMemberCount < groupSize;
+    groupMemberCount++
+  ) {
+    promises.push(
+      createUser({
+        groupCode,
+        groupMemberCount,
+        testUsers,
+        userNumber: groupMemberCount + 1,
+      })
+    );
   }
 
   await Promise.all(promises);

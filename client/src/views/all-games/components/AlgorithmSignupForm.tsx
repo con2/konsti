@@ -8,6 +8,8 @@ import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { isAlreadySigned } from "./allGamesUtils";
 import { Button, ButtonStyle } from "client/components/Button";
 import { getIsGroupCreator } from "client/views/group/utils/getIsGroupCreator";
+import { addError } from "client/views/admin/adminSlice";
+import { ErrorMessage } from "client/components/ErrorBar";
 
 interface Props {
   game: Game;
@@ -26,6 +28,7 @@ export const AlgorithmSignupForm: FC<Props> = ({
   const loggedIn = useAppSelector((state) => state.login.loggedIn);
   const serial = useAppSelector((state) => state.login.serial);
   const groupCode = useAppSelector((state) => state.group.groupCode);
+  const groupMembers = useAppSelector((state) => state.group.groupMembers);
   const isGroupCreator = getIsGroupCreator(groupCode, serial);
 
   const [signupFormOpen, setSignupFormOpen] = useState(false);
@@ -75,7 +78,13 @@ export const AlgorithmSignupForm: FC<Props> = ({
     if (signedGamesForTimeSlot.length < 3 && !signupFormOpen) {
       return (
         <Button
-          onClick={() => setSignupFormOpen(!signupFormOpen)}
+          onClick={() => {
+            if (groupMembers.length > game.maxAttendance) {
+              dispatch(addError(ErrorMessage.GROUP_TOO_BIG));
+            } else {
+              setSignupFormOpen(!signupFormOpen);
+            }
+          }}
           buttonStyle={ButtonStyle.NORMAL}
         >
           {t("signup.signup")}

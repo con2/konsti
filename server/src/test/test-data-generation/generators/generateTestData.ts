@@ -37,10 +37,13 @@ export const generateTestUsers = async (
   await createAdminUser();
   await createHelpUser();
 
-  if (testUsersCount) await createTestUsers(testUsersCount);
+  if (testUsersCount) await createTestUsers({ userCount: testUsersCount });
   if (newUsersCount) await createIndividualUsers(newUsersCount);
 
   for (let i = 0; i < numberOfGroups; i++) {
-    await createUsersInGroup(groupSize);
+    if (i === 0) {
+      await createUsersInGroup({ groupSize, testUsers: true });
+    }
+    await createUsersInGroup({ groupSize, testUsers: false });
   }
 };

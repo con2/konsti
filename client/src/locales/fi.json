@@ -265,7 +265,9 @@
     "playerNeeded": "Tarvitaan vielä {{COUNT}} pelaajaa!",
     "gameIsFull": "Peli on täynnä",
     "confirmCancelSignup": "Vahvista ilmoittautumisen peruminen",
-    "expectedDuration": "Pelin kesto {{EXPECTED_DURATION}}"
+    "expectedDuration": "Pelin kesto {{EXPECTED_DURATION}}",
+    "playerCount": "Pelaajia {{MAX_ATTENDANCE}}",
+    "playerRange": "Pelaajia {{MIN_ATTENDANCE}} - {{MAX_ATTENDANCE}}"
   },
   "resultsView": {
     "allSignupResults": "Pelien ilmoittautumistilanne ja pelaajat",

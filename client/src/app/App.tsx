@@ -8,6 +8,7 @@ import { Loading } from "client/components/Loading";
 import { getIconLibrary } from "client/utils/icons";
 import { config } from "client/config";
 import { TestValuePicker } from "client/components/TestValuePicker";
+import { ErrorBar } from "client/components/ErrorBar";
 
 export const App = (): ReactElement => {
   const { dataUpdateInterval, loadedSettings, showTestValues } = config;
@@ -39,6 +40,7 @@ export const App = (): ReactElement => {
       {!loading && (
         <BrowserRouter>
           <Header />
+          <ErrorBar />
           <AppRoutes />
 
           {loadedSettings !== "production" && showTestValues && (
