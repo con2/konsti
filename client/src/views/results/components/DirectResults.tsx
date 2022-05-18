@@ -25,7 +25,7 @@ export const DirectResults = (): ReactElement => {
   const visibleGames = games
     .filter((game) => game.signupStrategy === SignupStrategy.DIRECT)
     .filter((game) =>
-      hiddenGames.find((hiddenGame) => game.gameId !== hiddenGame.gameId)
+      hiddenGames.every((hiddenGame) => game.gameId !== hiddenGame.gameId)
     );
 
   const filteredGames = showAllGames
