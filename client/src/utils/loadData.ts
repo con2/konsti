@@ -38,7 +38,7 @@ export const loadSettings = async (): Promise<void> => {
   await dispatch(submitGetSettings());
 };
 
-export const loadTestSettings = async (): Promise<void> => {
+const loadTestSettings = async (): Promise<void> => {
   const dispatch: AppDispatch = store.dispatch;
   await dispatch(submitGetTestSettings());
 };
