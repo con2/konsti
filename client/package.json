@@ -69,6 +69,7 @@
     "dotenv-webpack": "7.1.0",
     "file-loader": "6.2.0",
     "html-webpack-plugin": "5.5.0",
+    "jest-environment-jsdom": "28.1.0",
     "moment-locales-webpack-plugin": "1.2.0",
     "postcss": "8.4.14",
     "postcss-syntax": "0.36.2",
