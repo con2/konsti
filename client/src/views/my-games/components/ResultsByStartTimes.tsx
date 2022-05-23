@@ -9,7 +9,7 @@ import { SelectedGame } from "shared/typings/models/user";
 import { CancelSignupForm } from "./CancelSignupForm";
 import { Button, ButtonStyle } from "client/components/Button";
 
-export interface Props {
+interface Props {
   signups: readonly SelectedGame[];
   startTimes: readonly string[];
   missedSignups: readonly string[];
