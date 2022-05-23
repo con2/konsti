@@ -39,7 +39,7 @@ export const removeMovedGamesFromUsers = async (
     users = await findUsers();
   } catch (error) {
     logger.error(`findUsers error: ${error}`);
-    return await Promise.reject(error);
+    throw error;
   }
 
   try {

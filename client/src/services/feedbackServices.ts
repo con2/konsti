@@ -1,13 +1,13 @@
 import { api } from "client/utils/api";
 import { ApiError } from "shared/typings/api/errors";
-import { FEEDBACK_ENDPOINT } from "shared/constants/apiEndpoints";
+import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { PostFeedbackResponse } from "shared/typings/api/feedback";
 import { Feedback } from "shared/typings/models/feedback";
 
 export const postFeedback = async (
   feedbackData: Feedback
 ): Promise<PostFeedbackResponse | ApiError> => {
-  const response = await api.post<PostFeedbackResponse>(FEEDBACK_ENDPOINT, {
+  const response = await api.post<PostFeedbackResponse>(ApiEndpoint.FEEDBACK, {
     feedback: feedbackData.feedback,
     gameId: feedbackData.gameId,
     username: feedbackData.username,

@@ -1,19 +1,20 @@
-export const USERS_ENDPOINT = "/api/users";
-export const USERS_BY_SERIAL_OR_USERNAME_ENDPOINT =
-  "/api/users/serial-or-username";
-export const GAMES_ENDPOINT = "/api/games";
-export const LOGIN_ENDPOINT = "/api/login";
-export const ASSIGNMENT_ENDPOINT = "/api/assignment";
-export const SIGNED_GAME_ENDPOINT = "/api/signed-game";
-export const FAVORITE_ENDPOINT = "/api/favorite";
-export const HIDDEN_ENDPOINT = "/api/hidden";
-export const FEEDBACK_ENDPOINT = "/api/feedback";
-export const GROUP_ENDPOINT = "/api/group";
-export const SETTINGS_ENDPOINT = "/api/settings";
-export const RESULTS_ENDPOINT = "/api/results";
-export const ENTERED_GAME_ENDPOINT = "/api/entered-game";
-export const SIGNUP_MESSAGE_ENDPOINT = "/api/signup-info";
-export const SESSION_RESTORE_ENDPOINT = "/api/session-restore";
-export const USERS_PASSWORD_ENDPOINT = "/api/users/password";
-export const TEST_SETTINGS_ENDPOINT = "/api/test-settings";
-export const POPULATE_DB_ENDPOINT = "/api/populate-db";
+export enum ApiEndpoint {
+  USERS = "/api/users",
+  USERS_BY_SERIAL_OR_USERNAME = "/api/users/serial-or-username",
+  GAMES = "/api/games",
+  LOGIN = "/api/login",
+  ASSIGNMENT = "/api/assignment",
+  SIGNED_GAME = "/api/signed-game",
+  FAVORITE = "/api/favorite",
+  HIDDEN = "/api/hidden",
+  FEEDBACK = "/api/feedback",
+  GROUP = "/api/group",
+  SETTINGS = "/api/settings",
+  RESULTS = "/api/results",
+  ENTERED_GAME = "/api/entered-game",
+  SIGNUP_MESSAGE = "/api/signup-info",
+  SESSION_RESTORE = "/api/session-restore",
+  USERS_PASSWORD = "/api/users/password",
+  TEST_SETTINGS = "/api/test-settings",
+  POPULATE_DB = "/api/populate-db",
+}

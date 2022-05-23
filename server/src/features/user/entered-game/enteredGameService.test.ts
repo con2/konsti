@@ -2,7 +2,7 @@ import { Server } from "http";
 import request from "supertest";
 import { MongoMemoryServer } from "mongodb-memory-server";
 import { startServer, closeServer } from "server/utils/server";
-import { ENTERED_GAME_ENDPOINT } from "shared/constants/apiEndpoints";
+import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { getJWT } from "server/utils/jwt";
 import { UserGroup } from "shared/typings/models/user";
 import {
@@ -37,15 +37,15 @@ afterEach(async () => {
   await mongoServer.stop();
 });
 
-describe(`POST ${ENTERED_GAME_ENDPOINT}`, () => {
+describe(`POST ${ApiEndpoint.ENTERED_GAME}`, () => {
   test("should return 401 without valid authorization", async () => {
-    const response = await request(server).post(ENTERED_GAME_ENDPOINT);
+    const response = await request(server).post(ApiEndpoint.ENTERED_GAME);
     expect(response.status).toEqual(401);
   });
 
   test("should return 422 with invalid parameters", async () => {
     const response = await request(server)
-      .post(ENTERED_GAME_ENDPOINT)
+      .post(ApiEndpoint.ENTERED_GAME)
       .send({
         username: mockUser.username,
         enteredGameId: "ABCD1234",
@@ -59,7 +59,7 @@ describe(`POST ${ENTERED_GAME_ENDPOINT}`, () => {
 
   test("should return 422 if signup message is too long", async () => {
     const response = await request(server)
-      .post(ENTERED_GAME_ENDPOINT)
+      .post(ApiEndpoint.ENTERED_GAME)
       .send({
         username: mockUser.username,
         enteredGameId: testGame.gameId,
@@ -78,7 +78,7 @@ describe(`POST ${ENTERED_GAME_ENDPOINT}`, () => {
     await saveUser(mockUser);
 
     const response = await request(server)
-      .post(ENTERED_GAME_ENDPOINT)
+      .post(ApiEndpoint.ENTERED_GAME)
       .send({
         username: mockUser.username,
         enteredGameId: "invalid_game_id",
@@ -97,7 +97,7 @@ describe(`POST ${ENTERED_GAME_ENDPOINT}`, () => {
     await saveGames([testGame]);
 
     const response = await request(server)
-      .post(ENTERED_GAME_ENDPOINT)
+      .post(ApiEndpoint.ENTERED_GAME)
       .send({
         username: "user_not_found",
         enteredGameId: testGame.gameId,
@@ -123,7 +123,7 @@ describe(`POST ${ENTERED_GAME_ENDPOINT}`, () => {
 
     // Update entered games
     const response = await request(server)
-      .post(ENTERED_GAME_ENDPOINT)
+      .post(ApiEndpoint.ENTERED_GAME)
       .send({
         username: mockUser.username,
         enteredGameId: testGame.gameId,
@@ -160,7 +160,7 @@ describe(`POST ${ENTERED_GAME_ENDPOINT}`, () => {
     // SIGNUP 1
 
     const response = await request(server)
-      .post(ENTERED_GAME_ENDPOINT)
+      .post(ApiEndpoint.ENTERED_GAME)
       .send({
         username: mockUser.username,
         enteredGameId: testGame.gameId,
@@ -179,7 +179,7 @@ describe(`POST ${ENTERED_GAME_ENDPOINT}`, () => {
     // SIGNUP 2
 
     const response2 = await request(server)
-      .post(ENTERED_GAME_ENDPOINT)
+      .post(ApiEndpoint.ENTERED_GAME)
       .send({
         username: mockUser2.username,
         enteredGameId: testGame.gameId,
@@ -198,7 +198,7 @@ describe(`POST ${ENTERED_GAME_ENDPOINT}`, () => {
     // SIGNUP 3
 
     const response3 = await request(server)
-      .post(ENTERED_GAME_ENDPOINT)
+      .post(ApiEndpoint.ENTERED_GAME)
       .send({
         username: mockUser3.username,
         enteredGameId: testGame.gameId,
@@ -217,7 +217,7 @@ describe(`POST ${ENTERED_GAME_ENDPOINT}`, () => {
     // SIGNUP 4
 
     const response4 = await request(server)
-      .post(ENTERED_GAME_ENDPOINT)
+      .post(ApiEndpoint.ENTERED_GAME)
       .send({
         username: mockUser4.username,
         enteredGameId: testGame.gameId,
@@ -236,7 +236,7 @@ describe(`POST ${ENTERED_GAME_ENDPOINT}`, () => {
     // SIGNUP 5
 
     const response5 = await request(server)
-      .post(ENTERED_GAME_ENDPOINT)
+      .post(ApiEndpoint.ENTERED_GAME)
       .send({
         username: mockUser5.username,
         enteredGameId: testGame.gameId,
@@ -280,15 +280,15 @@ describe(`POST ${ENTERED_GAME_ENDPOINT}`, () => {
   });
 });
 
-describe(`DELETE ${ENTERED_GAME_ENDPOINT}`, () => {
+describe(`DELETE ${ApiEndpoint.ENTERED_GAME}`, () => {
   test("should return 401 without valid authorization", async () => {
-    const response = await request(server).delete(ENTERED_GAME_ENDPOINT);
+    const response = await request(server).delete(ApiEndpoint.ENTERED_GAME);
     expect(response.status).toEqual(401);
   });
 
   test("should return 422 with invalid parameters", async () => {
     const response = await request(server)
-      .delete(ENTERED_GAME_ENDPOINT)
+      .delete(ApiEndpoint.ENTERED_GAME)
       .send({
         username: "testuser",
         enteredGameId: "ABCD1234",
@@ -301,7 +301,7 @@ describe(`DELETE ${ENTERED_GAME_ENDPOINT}`, () => {
     await saveUser(mockUser);
 
     const response = await request(server)
-      .delete(ENTERED_GAME_ENDPOINT)
+      .delete(ApiEndpoint.ENTERED_GAME)
       .send({
         username: mockUser.username,
         enteredGameId: "invalid_game_id",
@@ -319,7 +319,7 @@ describe(`DELETE ${ENTERED_GAME_ENDPOINT}`, () => {
     await saveGames([testGame]);
 
     const response = await request(server)
-      .delete(ENTERED_GAME_ENDPOINT)
+      .delete(ApiEndpoint.ENTERED_GAME)
       .send({
         username: "user_not_found",
         enteredGameId: testGame.gameId,
@@ -345,7 +345,7 @@ describe(`DELETE ${ENTERED_GAME_ENDPOINT}`, () => {
 
     // Update entered games
     const response = await request(server)
-      .delete(ENTERED_GAME_ENDPOINT)
+      .delete(ApiEndpoint.ENTERED_GAME)
       .send({
         username: mockUser.username,
         enteredGameId: testGame.gameId,

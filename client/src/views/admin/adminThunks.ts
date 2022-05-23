@@ -23,7 +23,7 @@ export const submitUpdateHidden = (hiddenGames: readonly Game[]): AppThunk => {
     const updateHiddenResponse = await postHidden(hiddenGames);
 
     if (updateHiddenResponse?.status === "error") {
-      return await Promise.reject(updateHiddenResponse);
+      // TODO
     }
 
     if (updateHiddenResponse?.status === "success") {
@@ -37,7 +37,7 @@ export const submitGetSettings = (): AppThunk => {
     const settingsResponse = await getSettings();
 
     if (settingsResponse?.status === "error") {
-      return await Promise.reject(settingsResponse);
+      // TODO
     }
 
     if (settingsResponse?.status === "success") {
@@ -59,7 +59,7 @@ export const submitSignupTime = (signupTime: string): AppThunk => {
     const postSettingsResponse = await postSettings({ signupTime });
 
     if (postSettingsResponse?.status === "error") {
-      return await Promise.reject(postSettingsResponse);
+      // TODO
     }
 
     if (postSettingsResponse?.status === "success") {
@@ -75,7 +75,7 @@ export const submitToggleAppOpen = (appOpen: boolean): AppThunk => {
     const postSettingsResponse = await postSettings({ appOpen });
 
     if (postSettingsResponse?.status === "error") {
-      return await Promise.reject(postSettings);
+      // TODO
     }
 
     if (postSettingsResponse?.status === "success") {
@@ -94,7 +94,7 @@ export const submitAddSignupMessage = (
     });
 
     if (response?.status === "error") {
-      return await Promise.reject(response);
+      // TODO
     }
 
     if (response?.status === "success") {
@@ -108,7 +108,7 @@ export const submitDeleteSignupMessage = (gameId: string): AppThunk => {
     const response = await deleteSignupMessage(gameId);
 
     if (response?.status === "error") {
-      return await Promise.reject(response);
+      // TODO
     }
 
     if (response?.status === "success") {
@@ -124,7 +124,7 @@ export const submitSetSignupStrategy = (
     const response = await postSettings({ signupStrategy });
 
     if (response?.status === "error") {
-      return await Promise.reject(response);
+      // TODO
     }
 
     if (response?.status === "success") {

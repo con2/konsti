@@ -31,7 +31,7 @@ export const submitCreateGroup = (group: GroupRequest): AppThunk => {
     const createGroupResponse = await postGroup(group);
 
     if (createGroupResponse?.status === "error") {
-      return await Promise.reject(createGroupResponse);
+      // TODO
     }
 
     if (createGroupResponse?.status === "success") {
@@ -49,7 +49,7 @@ export const submitGetGroup = (
     const getGroupResponse = await getGroup(groupCode, username);
 
     if (getGroupResponse?.status === "error") {
-      return await Promise.reject(getGroupResponse);
+      // TODO
     }
 
     if (getGroupResponse?.status === "success") {

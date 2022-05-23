@@ -2,7 +2,7 @@ import { Server } from "http";
 import request from "supertest";
 import { MongoMemoryServer } from "mongodb-memory-server";
 import { startServer, closeServer } from "server/utils/server";
-import { RESULTS_ENDPOINT } from "shared/constants/apiEndpoints";
+import { ApiEndpoint } from "shared/constants/apiEndpoints";
 
 let server: Server;
 let mongoServer: MongoMemoryServer;
@@ -20,7 +20,7 @@ afterEach(async () => {
   await mongoServer.stop();
 });
 
-test(`GET ${RESULTS_ENDPOINT} should return 422 without any parameters`, async () => {
-  const response = await request(server).get(RESULTS_ENDPOINT);
+test(`GET ${ApiEndpoint.RESULTS} should return 422 without any parameters`, async () => {
+  const response = await request(server).get(ApiEndpoint.RESULTS);
   expect(response.status).toEqual(422);
 });

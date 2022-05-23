@@ -25,7 +25,7 @@ export const submitGetUser = (username: string): AppThunk => {
     const getUserResponse = await getUser(username);
 
     if (getUserResponse?.status === "error") {
-      return await Promise.reject(getUserResponse);
+      // TODO
     }
 
     if (getUserResponse?.status === "success") {
@@ -51,7 +51,7 @@ export const submitUpdateFavorites = (
     const updateFavoriteResponse = await postFavorite(favoriteData);
 
     if (updateFavoriteResponse?.status === "error") {
-      return await Promise.reject(updateFavoriteResponse);
+      // TODO
     }
 
     if (updateFavoriteResponse?.status === "success") {
@@ -88,7 +88,7 @@ export const submitDeleteEnteredGame = (
     const signupResponse = await deleteEnteredGame(data);
 
     if (signupResponse?.status === "error") {
-      return await Promise.reject(signupResponse);
+      // TODO
     }
 
     if (signupResponse?.status === "success") {

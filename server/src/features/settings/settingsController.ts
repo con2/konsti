@@ -10,11 +10,7 @@ import {
 import { UserGroup } from "shared/typings/models/user";
 import { isAuthorized } from "server/utils/authHeader";
 import { logger } from "server/utils/logger";
-import {
-  HIDDEN_ENDPOINT,
-  SETTINGS_ENDPOINT,
-  SIGNUP_MESSAGE_ENDPOINT,
-} from "shared/constants/apiEndpoints";
+import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { Game } from "shared/typings/models/game";
 import { SignupMessage } from "shared/typings/models/settings";
 import {
@@ -26,7 +22,7 @@ export const postHidden = async (
   req: Request<{}, {}, { hiddenData: readonly Game[] }>,
   res: Response
 ): Promise<Response> => {
-  logger.info(`API call: POST ${HIDDEN_ENDPOINT}`);
+  logger.info(`API call: POST ${ApiEndpoint.HIDDEN}`);
 
   if (!isAuthorized(req.headers.authorization, UserGroup.ADMIN, "admin")) {
     return res.sendStatus(401);
@@ -41,7 +37,7 @@ export const getSettings = async (
   _req: Request,
   res: Response
 ): Promise<Response> => {
-  logger.info(`API call: GET ${SETTINGS_ENDPOINT}`);
+  logger.info(`API call: GET ${ApiEndpoint.SETTINGS}`);
 
   const response = await fetchSettings();
   return res.json(response);
@@ -51,7 +47,7 @@ export const postSignupMessage = async (
   req: Request<{}, {}, { signupMessage: SignupMessage }>,
   res: Response
 ): Promise<Response> => {
-  logger.info(`API call: POST ${SIGNUP_MESSAGE_ENDPOINT}`);
+  logger.info(`API call: POST ${ApiEndpoint.SIGNUP_MESSAGE}`);
 
   if (!isAuthorized(req.headers.authorization, UserGroup.ADMIN, "admin")) {
     return res.sendStatus(401);
@@ -65,7 +61,7 @@ export const deleteSignupMessage = async (
   req: Request<{}, {}, { gameId: string }>,
   res: Response
 ): Promise<Response> => {
-  logger.info(`API call: DELETE ${SIGNUP_MESSAGE_ENDPOINT}`);
+  logger.info(`API call: DELETE ${ApiEndpoint.SIGNUP_MESSAGE}`);
 
   if (!isAuthorized(req.headers.authorization, UserGroup.ADMIN, "admin")) {
     return res.sendStatus(401);
@@ -79,7 +75,7 @@ export const postSettings = async (
   req: Request<{}, {}, PostSettingsRequest>,
   res: Response
 ): Promise<Response> => {
-  logger.info(`API call: POST ${SETTINGS_ENDPOINT}`);
+  logger.info(`API call: POST ${ApiEndpoint.SETTINGS}`);
 
   if (process.env.SETTINGS === "production") {
     if (!isAuthorized(req.headers.authorization, UserGroup.ADMIN, "admin")) {

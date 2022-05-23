@@ -64,7 +64,7 @@ export const saveGames = async (games: readonly Game[]): Promise<Game[]> => {
     );
   } catch (error) {
     logger.error(`Error saving games to db: ${error}`);
-    return await Promise.reject(error);
+    throw error;
   }
 
   logger.debug("MongoDB: Games saved to DB successfully");

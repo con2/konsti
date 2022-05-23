@@ -1,21 +1,18 @@
 import request from "supertest";
-import {
-  HIDDEN_ENDPOINT,
-  SETTINGS_ENDPOINT,
-} from "shared/constants/apiEndpoints";
+import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { UserGroup } from "shared/typings/models/user";
 import { getJWT } from "server/utils/jwt";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
 import { startTestServer, stopTestServer } from "server/test/utils/testServer";
 
-describe(`GET ${SETTINGS_ENDPOINT}`, () => {
+describe(`GET ${ApiEndpoint.SETTINGS}`, () => {
   process.env.SETTINGS = "production";
 
   test("should return 200", async () => {
     const { server, mongoServer } = await startTestServer();
 
     try {
-      const response = await request(server).get(SETTINGS_ENDPOINT);
+      const response = await request(server).get(ApiEndpoint.SETTINGS);
       expect(response.status).toEqual(200);
     } finally {
       await stopTestServer(server, mongoServer);
@@ -23,14 +20,14 @@ describe(`GET ${SETTINGS_ENDPOINT}`, () => {
   });
 });
 
-describe(`POST ${SETTINGS_ENDPOINT}`, () => {
+describe(`POST ${ApiEndpoint.SETTINGS}`, () => {
   process.env.SETTINGS = "production";
 
   test("should return 401 without authorization", async () => {
     const { server, mongoServer } = await startTestServer();
 
     try {
-      const response = await request(server).post(SETTINGS_ENDPOINT);
+      const response = await request(server).post(ApiEndpoint.SETTINGS);
       expect(response.status).toEqual(401);
     } finally {
       await stopTestServer(server, mongoServer);
@@ -42,7 +39,7 @@ describe(`POST ${SETTINGS_ENDPOINT}`, () => {
 
     try {
       const response = await request(server)
-        .post(SETTINGS_ENDPOINT)
+        .post(ApiEndpoint.SETTINGS)
         .set("Authorization", `Bearer ${getJWT(UserGroup.USER, "testuser")}`);
       expect(response.status).toEqual(401);
     } finally {
@@ -55,7 +52,7 @@ describe(`POST ${SETTINGS_ENDPOINT}`, () => {
 
     try {
       const response = await request(server)
-        .post(SETTINGS_ENDPOINT)
+        .post(ApiEndpoint.SETTINGS)
         .send({ appOpen: "not boolean" })
         .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
 
@@ -81,7 +78,7 @@ describe(`POST ${SETTINGS_ENDPOINT}`, () => {
     try {
       // Full update
       const fullUpdateResponse = await request(server)
-        .post(SETTINGS_ENDPOINT)
+        .post(ApiEndpoint.SETTINGS)
         .send(testSettings)
         .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
 
@@ -94,7 +91,7 @@ describe(`POST ${SETTINGS_ENDPOINT}`, () => {
 
       // Partial update
       const partialUpdateResponse = await request(server)
-        .post(SETTINGS_ENDPOINT)
+        .post(ApiEndpoint.SETTINGS)
         .send({ signupStrategy: SignupStrategy.DIRECT })
         .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
 
@@ -110,14 +107,14 @@ describe(`POST ${SETTINGS_ENDPOINT}`, () => {
   });
 });
 
-describe(`POST ${HIDDEN_ENDPOINT}`, () => {
+describe(`POST ${ApiEndpoint.HIDDEN}`, () => {
   process.env.SETTINGS = "production";
 
   test("should return 401 without valid authorization", async () => {
     const { server, mongoServer } = await startTestServer();
 
     try {
-      const response = await request(server).post(HIDDEN_ENDPOINT);
+      const response = await request(server).post(ApiEndpoint.HIDDEN);
       expect(response.status).toEqual(401);
     } finally {
       await stopTestServer(server, mongoServer);
