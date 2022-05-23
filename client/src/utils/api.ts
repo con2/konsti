@@ -9,9 +9,9 @@ import { store } from "client/utils/store";
 import { ErrorMessage } from "client/components/ErrorBar";
 
 enum HttpMethod {
-  GET = "get",
-  POST = "post",
-  DELETE = "delete",
+  GET = "GET",
+  POST = "POST",
+  DELETE = "DELETE",
 }
 
 export const api: AxiosInstance = axios.create({
