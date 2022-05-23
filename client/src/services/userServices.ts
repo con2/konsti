@@ -1,10 +1,6 @@
 import { api } from "client/utils/api";
 import { ApiError } from "shared/typings/api/errors";
-import {
-  USERS_BY_SERIAL_OR_USERNAME_ENDPOINT,
-  USERS_ENDPOINT,
-  USERS_PASSWORD_ENDPOINT,
-} from "shared/constants/apiEndpoints";
+import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
   GetUserBySerialResponse,
   GetUserResponse,
@@ -17,7 +13,7 @@ export const postRegistration = async (
 ): Promise<PostUserResponse | ApiError> => {
   const { username, password, serial } = registrationFormFields;
 
-  const response = await api.post<PostUserResponse>(USERS_ENDPOINT, {
+  const response = await api.post<PostUserResponse>(ApiEndpoint.USERS, {
     username,
     password,
     serial,
@@ -28,7 +24,7 @@ export const postRegistration = async (
 export const getUser = async (
   username: string
 ): Promise<GetUserResponse | ApiError> => {
-  const response = await api.get<GetUserResponse>(USERS_ENDPOINT, {
+  const response = await api.get<GetUserResponse>(ApiEndpoint.USERS, {
     params: {
       username,
     },
@@ -40,7 +36,7 @@ export const getUserBySerialOrUsername = async (
   searchTerm: string
 ): Promise<GetUserBySerialResponse | ApiError> => {
   const response = await api.get<GetUserBySerialResponse>(
-    USERS_BY_SERIAL_OR_USERNAME_ENDPOINT,
+    ApiEndpoint.USERS_BY_SERIAL_OR_USERNAME,
     {
       params: {
         searchTerm,
@@ -55,10 +51,13 @@ export const updateUserPassword = async (
   password: string,
   requester: string
 ): Promise<PostUserResponse | ApiError> => {
-  const response = await api.post<PostUserResponse>(USERS_PASSWORD_ENDPOINT, {
-    username,
-    password,
-    requester,
-  });
+  const response = await api.post<PostUserResponse>(
+    ApiEndpoint.USERS_PASSWORD,
+    {
+      username,
+      password,
+      requester,
+    }
+  );
   return response.data;
 };

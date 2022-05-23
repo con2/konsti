@@ -1,9 +1,6 @@
 import { api } from "client/utils/api";
 import { ApiError } from "shared/typings/api/errors";
-import {
-  ENTERED_GAME_ENDPOINT,
-  SIGNED_GAME_ENDPOINT,
-} from "shared/constants/apiEndpoints";
+import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
   DeleteEnteredGameParameters,
   DeleteEnteredGameResponse,
@@ -18,7 +15,7 @@ export const postSignedGames = async (
   signupData: SignupData
 ): Promise<PostSignedGamesResponse | ApiError> => {
   const response = await api.post<PostSignedGamesResponse>(
-    SIGNED_GAME_ENDPOINT,
+    ApiEndpoint.SIGNED_GAME,
     {
       signupData,
     }
@@ -30,7 +27,7 @@ export const postEnteredGame = async (
   requestData: PostEnteredGameParameters
 ): Promise<PostEnteredGameResponse | PostEnteredGameError> => {
   const response = await api.post<PostEnteredGameResponse>(
-    ENTERED_GAME_ENDPOINT,
+    ApiEndpoint.ENTERED_GAME,
     requestData
   );
   return response.data;
@@ -40,7 +37,7 @@ export const deleteEnteredGame = async (
   requestData: DeleteEnteredGameParameters
 ): Promise<DeleteEnteredGameResponse | ApiError> => {
   const response = await api.delete<DeleteEnteredGameResponse>(
-    ENTERED_GAME_ENDPOINT,
+    ApiEndpoint.ENTERED_GAME,
     { data: requestData }
   );
   return response.data;

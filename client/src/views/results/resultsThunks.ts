@@ -9,7 +9,7 @@ export const submitGetResults = (startTime: string): AppThunk => {
     const getResultsResponse = await getResults(startTime);
 
     if (getResultsResponse?.status === "error") {
-      return await Promise.reject(getResultsResponse);
+      // TODO
     }
 
     if (getResultsResponse?.status === "success") {

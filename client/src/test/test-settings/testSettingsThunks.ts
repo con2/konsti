@@ -11,7 +11,7 @@ export const submitGetTestSettings = (): AppThunk => {
     const response = await getTestSettings();
 
     if (response?.status === "error") {
-      return await Promise.reject(response);
+      // TODO
     }
 
     if (response?.status === "success") {
@@ -31,7 +31,7 @@ export const submitSetTestSettings = ({
     });
 
     if (response?.status === "error") {
-      return await Promise.reject(response);
+      // TODO
     }
 
     if (response?.status === "success") {
