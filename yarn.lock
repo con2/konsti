@@ -2025,9 +2025,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pmmmwh/react-refresh-webpack-plugin@npm:0.5.6":
-  version: 0.5.6
-  resolution: "@pmmmwh/react-refresh-webpack-plugin@npm:0.5.6"
+"@pmmmwh/react-refresh-webpack-plugin@npm:0.5.7":
+  version: 0.5.7
+  resolution: "@pmmmwh/react-refresh-webpack-plugin@npm:0.5.7"
   dependencies:
     ansi-html-community: ^0.0.8
     common-path-prefix: ^3.0.0
@@ -2060,7 +2060,7 @@ __metadata:
       optional: true
     webpack-plugin-serve:
       optional: true
-  checksum: 21ab1157c3b8f5d9a1114cc25f14692757506aa47117ffdeeaf484a71ceeba114d9f9a33b705c51b0991f66f573dc30298eb246b939b4e5afb7592add25fb987
+  checksum: 3490649181878cc8808fb91f3870ef095e5a1fb9647b3ac83740df07379c9d1cf540f24bf2b09d5f26a3a8c805b2c6b9c5be7192bdb9317d0ffffa67426e9f66
   languageName: node
   linkType: hard
 
@@ -4599,9 +4599,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"concurrently@npm:7.2.0":
-  version: 7.2.0
-  resolution: "concurrently@npm:7.2.0"
+"concurrently@npm:7.2.1":
+  version: 7.2.1
+  resolution: "concurrently@npm:7.2.1"
   dependencies:
     chalk: ^4.1.0
     date-fns: ^2.16.1
@@ -4614,7 +4614,7 @@ __metadata:
     yargs: ^17.3.1
   bin:
     concurrently: dist/bin/concurrently.js
-  checksum: 363506e777c623f922b0cb370e80a776e1ee37a0970aae9862ed51cc613d74b224122ac66829115cc2ee876427e820ae0989a89f1f081575516b9a6739517b51
+  checksum: 384e9f48f2c53a7c46b1bb1143b9dba734953c587e0c080db0c6e71dd4a58f556d096fe4fd9d2d9c601ba7ae8e6c06d452c162bbc2b6a4b16c080c1c4b8e81b4
   languageName: node
   linkType: hard
 
@@ -6130,13 +6130,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"express-validator@npm:6.14.0":
-  version: 6.14.0
-  resolution: "express-validator@npm:6.14.0"
+"express-validator@npm:6.14.1":
+  version: 6.14.1
+  resolution: "express-validator@npm:6.14.1"
   dependencies:
     lodash: ^4.17.21
     validator: ^13.7.0
-  checksum: e43ba1f18a4f02d784e44e13b1b43269a61f9d9283f31e51c230ff6d31591b3d67ad89e444a0941c0688bfd220049087e606bb61569c0eb8df2f118b866cfb43
+  checksum: 89fcb9982a298f4885741e2540217811575afe09799039fd25eab462acd95d684b14dac230d57414cd1cd5bb119f9fca97b6cbf493be36a06b0ee6e5493df2d8
   languageName: node
   linkType: hard
 
@@ -7152,12 +7152,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"i18next@npm:21.8.3":
-  version: 21.8.3
-  resolution: "i18next@npm:21.8.3"
+"i18next@npm:21.8.4":
+  version: 21.8.4
+  resolution: "i18next@npm:21.8.4"
   dependencies:
     "@babel/runtime": ^7.17.2
-  checksum: c1b6c57255befb716e0b491d50584f9d0875f3f848b4b5a192421dc6302453d73f4f646eca5526eaea3874d742c5d1ff73ceffa3bbc84a5621a4183f71952432
+  checksum: 6ebe9b16014057d924c8c1dc5f5b1648485c6c27ce469cb7674aa01b79e30d9d80ca541571c43253c65f5633d5490248563d2f62f759f48b57640de0f9f7307f
   languageName: node
   linkType: hard
 
@@ -8439,7 +8439,7 @@ __metadata:
     "@fortawesome/free-solid-svg-icons": 6.1.1
     "@fortawesome/react-fontawesome": 0.1.18
     "@playwright/test": 1.22.2
-    "@pmmmwh/react-refresh-webpack-plugin": 0.5.6
+    "@pmmmwh/react-refresh-webpack-plugin": 0.5.7
     "@react-hook/intersection-observer": 3.1.1
     "@reduxjs/toolkit": 1.8.1
     "@ronilaukkarinen/stylelint-a11y": 1.2.4
@@ -8461,7 +8461,7 @@ __metadata:
     dotenv-webpack: 7.1.0
     file-loader: 6.2.0
     html-webpack-plugin: 5.5.0
-    i18next: 21.8.3
+    i18next: 21.8.4
     i18next-browser-languagedetector: 6.1.4
     jest-environment-jsdom: 28.1.0
     moment-locales-webpack-plugin: 1.2.0
@@ -8472,7 +8472,7 @@ __metadata:
     react-hook-form: 7.31.2
     react-i18next: 11.16.9
     react-is: 18.1.0
-    react-redux: 8.0.1
+    react-redux: 8.0.2
     react-refresh: 0.13.0
     react-router-dom: 6.3.0
     redux: 4.2.0
@@ -8514,7 +8514,7 @@ __metadata:
     axios: 0.27.2
     babel-plugin-lodash: 3.3.4
     babel-plugin-module-resolver: 4.1.0
-    concurrently: 7.2.0
+    concurrently: 7.2.1
     cross-env: 7.0.3
     eslint: 8.16.0
     eslint-config-prettier: 8.5.0
@@ -8545,7 +8545,7 @@ __metadata:
     ts-jest: 28.0.2
     tsconfig-paths: 4.0.0
     typescript: 4.6.4
-    zod: 3.17.0
+    zod: 3.17.2
   languageName: unknown
   linkType: soft
 
@@ -8566,7 +8566,7 @@ __metadata:
     eventassigner-random: 0.2.0
     express: 4.18.1
     express-static-gzip: 2.1.7
-    express-validator: 6.14.0
+    express-validator: 6.14.1
     generate-serial-number: 0.0.3
     helmet: 5.1.0
     jsonwebtoken: 8.5.1
@@ -9667,11 +9667,11 @@ __metadata:
   linkType: hard
 
 "nth-check@npm:^2.0.1":
-  version: 2.0.1
-  resolution: "nth-check@npm:2.0.1"
+  version: 2.1.1
+  resolution: "nth-check@npm:2.1.1"
   dependencies:
     boolbase: ^1.0.0
-  checksum: 5386d035c48438ff304fe687704d93886397349d1bed136de97aeae464caba10e8ffac55a04b215b86b3bc8897f33e0a5aa1045a9d8b2f251ae61b2a3ad3e450
+  checksum: 5afc3dafcd1573b08877ca8e6148c52abd565f1d06b1eb08caf982e3fa289a82f2cae697ffb55b5021e146d60443f1590a5d6b944844e944714a5b549675bcd3
   languageName: node
   linkType: hard
 
@@ -10528,9 +10528,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-redux@npm:8.0.1":
-  version: 8.0.1
-  resolution: "react-redux@npm:8.0.1"
+"react-redux@npm:8.0.2":
+  version: 8.0.2
+  resolution: "react-redux@npm:8.0.2"
   dependencies:
     "@babel/runtime": ^7.12.1
     "@types/hoist-non-react-statics": ^3.3.1
@@ -10556,7 +10556,7 @@ __metadata:
       optional: true
     redux:
       optional: true
-  checksum: d7c004b4bfb4e4cd9a5fc21fa30734cf2fc1c04b1483f0c0ea1446e00b7792e9d7ef16cf62d38254f68f6058bac34f759da6a204772a0982e029d2e83cc80512
+  checksum: 44c1739c45dad04ecc65a290897c73828ff0bf43f2b7618ed5ef6d4ceecedae38e76cecd189a5ecedf579c28ead05427bc000fb45ad30b9fcd5c2be27cd3ac73
   languageName: node
   linkType: hard
 
@@ -13334,9 +13334,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"zod@npm:3.17.0":
-  version: 3.17.0
-  resolution: "zod@npm:3.17.0"
-  checksum: 6dfaf360d4abc427f8655ad1f6e6ba55009ab34c795fb068410337b5a40aee8257a95432ca856b27fe57aada217154fa2e4b609e0d6ea1ec58df05c9c19c6b93
+"zod@npm:3.17.2":
+  version: 3.17.2
+  resolution: "zod@npm:3.17.2"
+  checksum: 25e89f180ce9811682b1a894e3014cbd57c473fd46880d1787c90bf4ef7eb0b9109acb230f5b663ff0cfdfa4cc6b0bca60ae8efcb45ae7ae66cc37e72b894ded
   languageName: node
   linkType: hard
