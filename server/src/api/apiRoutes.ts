@@ -34,26 +34,7 @@ import {
   getTestSettings,
   postTestSettings,
 } from "server/test/test-settings/testSettingsController";
-import {
-  ASSIGNMENT_ENDPOINT,
-  ENTERED_GAME_ENDPOINT,
-  FAVORITE_ENDPOINT,
-  FEEDBACK_ENDPOINT,
-  GAMES_ENDPOINT,
-  GROUP_ENDPOINT,
-  HIDDEN_ENDPOINT,
-  LOGIN_ENDPOINT,
-  SESSION_RESTORE_ENDPOINT,
-  RESULTS_ENDPOINT,
-  SETTINGS_ENDPOINT,
-  SIGNED_GAME_ENDPOINT,
-  SIGNUP_MESSAGE_ENDPOINT,
-  USERS_ENDPOINT,
-  USERS_BY_SERIAL_OR_USERNAME_ENDPOINT,
-  USERS_PASSWORD_ENDPOINT,
-  TEST_SETTINGS_ENDPOINT,
-  POPULATE_DB_ENDPOINT,
-} from "shared/constants/apiEndpoints";
+import { ApiEndpoint } from "shared/constants/apiEndpoints";
 
 export const apiRoutes = express.Router();
 
@@ -61,41 +42,44 @@ export const apiRoutes = express.Router();
 
 /* POST routes */
 
-apiRoutes.post(GAMES_ENDPOINT, postGame);
-apiRoutes.post(USERS_ENDPOINT, postUserValidation(), postUser);
-apiRoutes.post(LOGIN_ENDPOINT, postLoginValidation, postLogin);
-apiRoutes.post(ASSIGNMENT_ENDPOINT, postAssignment);
-apiRoutes.post(SIGNED_GAME_ENDPOINT, postSignedGames);
-apiRoutes.post(FAVORITE_ENDPOINT, postFavorite);
-apiRoutes.post(HIDDEN_ENDPOINT, postHidden);
-apiRoutes.post(FEEDBACK_ENDPOINT, postFeedback);
-apiRoutes.post(GROUP_ENDPOINT, postGroup);
-apiRoutes.post(ENTERED_GAME_ENDPOINT, postEnteredGame);
-apiRoutes.post(SIGNUP_MESSAGE_ENDPOINT, postSignupMessage);
-apiRoutes.post(SESSION_RESTORE_ENDPOINT, postSessionRestore);
-apiRoutes.post(USERS_PASSWORD_ENDPOINT, postUserPassword);
-apiRoutes.post(SETTINGS_ENDPOINT, postSettings);
+apiRoutes.post(ApiEndpoint.GAMES, postGame);
+apiRoutes.post(ApiEndpoint.USERS, postUserValidation(), postUser);
+apiRoutes.post(ApiEndpoint.LOGIN, postLoginValidation, postLogin);
+apiRoutes.post(ApiEndpoint.ASSIGNMENT, postAssignment);
+apiRoutes.post(ApiEndpoint.SIGNED_GAME, postSignedGames);
+apiRoutes.post(ApiEndpoint.FAVORITE, postFavorite);
+apiRoutes.post(ApiEndpoint.HIDDEN, postHidden);
+apiRoutes.post(ApiEndpoint.FEEDBACK, postFeedback);
+apiRoutes.post(ApiEndpoint.GROUP, postGroup);
+apiRoutes.post(ApiEndpoint.ENTERED_GAME, postEnteredGame);
+apiRoutes.post(ApiEndpoint.SIGNUP_MESSAGE, postSignupMessage);
+apiRoutes.post(ApiEndpoint.SESSION_RESTORE, postSessionRestore);
+apiRoutes.post(ApiEndpoint.USERS_PASSWORD, postUserPassword);
+apiRoutes.post(ApiEndpoint.SETTINGS, postSettings);
 
 /* GET routes */
 
-apiRoutes.get(GAMES_ENDPOINT, getGames);
-apiRoutes.get(USERS_ENDPOINT, getUser);
-apiRoutes.get(USERS_BY_SERIAL_OR_USERNAME_ENDPOINT, getUserBySerialOrUsername);
-apiRoutes.get(SETTINGS_ENDPOINT, getSettings);
-apiRoutes.get(RESULTS_ENDPOINT, getResults);
-apiRoutes.get(GROUP_ENDPOINT, getGroup);
+apiRoutes.get(ApiEndpoint.GAMES, getGames);
+apiRoutes.get(ApiEndpoint.USERS, getUser);
+apiRoutes.get(
+  ApiEndpoint.USERS_BY_SERIAL_OR_USERNAME,
+  getUserBySerialOrUsername
+);
+apiRoutes.get(ApiEndpoint.SETTINGS, getSettings);
+apiRoutes.get(ApiEndpoint.RESULTS, getResults);
+apiRoutes.get(ApiEndpoint.GROUP, getGroup);
 
 /* DELETE routes */
 
-apiRoutes.delete(ENTERED_GAME_ENDPOINT, deleteEnteredGame);
-apiRoutes.delete(SIGNUP_MESSAGE_ENDPOINT, deleteSignupMessage);
+apiRoutes.delete(ApiEndpoint.ENTERED_GAME, deleteEnteredGame);
+apiRoutes.delete(ApiEndpoint.SIGNUP_MESSAGE, deleteSignupMessage);
 
 /* DEV routes */
 
 if (process.env.SETTINGS !== "production") {
-  apiRoutes.post(TEST_SETTINGS_ENDPOINT, postTestSettings);
-  apiRoutes.get(TEST_SETTINGS_ENDPOINT, getTestSettings);
-  apiRoutes.post(POPULATE_DB_ENDPOINT, postPopulateDb);
+  apiRoutes.post(ApiEndpoint.TEST_SETTINGS, postTestSettings);
+  apiRoutes.get(ApiEndpoint.TEST_SETTINGS, getTestSettings);
+  apiRoutes.post(ApiEndpoint.POPULATE_DB, postPopulateDb);
 }
 
 /* eslint-enable @typescript-eslint/no-misused-promises */

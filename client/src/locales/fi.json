@@ -309,5 +309,6 @@
     "direct": "Suora",
     "algorithm": "Algoritmi",
     "algorithm+direct": "Algoritmi + Suora"
-  }
+  },
+  "apiError": "Virhe kutsuessa {{method}} {{url}}"
 }

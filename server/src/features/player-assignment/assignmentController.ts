@@ -3,7 +3,7 @@ import { removeOverlapSignups } from "server/features/player-assignment/utils/re
 import { saveResults } from "server/features/player-assignment/utils/saveResults";
 import { runAssignment } from "server/features/player-assignment/runAssignment";
 import { config } from "server/config";
-import { ASSIGNMENT_ENDPOINT } from "shared/constants/apiEndpoints";
+import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { PostPlayerAssignmentResponse } from "shared/typings/api/assignment";
 import { ApiError } from "shared/typings/api/errors";
 import { sharedConfig } from "shared/config/sharedConfig";
@@ -12,7 +12,7 @@ import { sharedConfig } from "shared/config/sharedConfig";
 export const storeAssignment = async (
   startingTime: string
 ): Promise<PostPlayerAssignmentResponse | ApiError> => {
-  logger.info(`API call: POST ${ASSIGNMENT_ENDPOINT}`);
+  logger.info(`API call: POST ${ApiEndpoint.ASSIGNMENT}`);
 
   if (!startingTime) {
     return {

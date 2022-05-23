@@ -8,6 +8,7 @@ import { HEADER_HEIGHT } from "client/components/Header";
 
 export enum ErrorMessage {
   GROUP_TOO_BIG = "group.groupTooBigWarning",
+  API_ERROR = "apiError",
 }
 
 export const ErrorBar = (): ReactElement | null => {

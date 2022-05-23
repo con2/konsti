@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { ZodError } from "zod";
 import { logger } from "server/utils/logger";
-import { TEST_SETTINGS_ENDPOINT } from "shared/constants/apiEndpoints";
+import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
   fetchTestSettings,
   updateTestSettings,
@@ -15,7 +15,7 @@ export const getTestSettings = async (
   _req: Request,
   res: Response
 ): Promise<Response> => {
-  logger.info(`API call: GET ${TEST_SETTINGS_ENDPOINT}`);
+  logger.info(`API call: GET ${ApiEndpoint.TEST_SETTINGS}`);
 
   const response = await fetchTestSettings();
   return res.json(response);
@@ -25,7 +25,7 @@ export const postTestSettings = async (
   req: Request<{}, {}, PostTestSettingsRequest>,
   res: Response
 ): Promise<Response> => {
-  logger.info(`API call: POST ${TEST_SETTINGS_ENDPOINT}`);
+  logger.info(`API call: POST ${ApiEndpoint.TEST_SETTINGS}`);
 
   let testSettings;
   try {

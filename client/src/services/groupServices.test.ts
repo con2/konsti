@@ -1,6 +1,6 @@
 import axios from "axios";
 import { getGroup, postGroup } from "client/services/groupServices";
-import { GROUP_ENDPOINT } from "shared/constants/apiEndpoints";
+import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { GroupRequest } from "shared/typings/api/groups";
 
 jest.mock("axios");
@@ -22,7 +22,7 @@ test("GET group from server", async () => {
 
   expect(response).toEqual("test response");
   expect(mockAxios.get).toHaveBeenCalledTimes(1);
-  expect(mockAxios.get).toHaveBeenCalledWith(GROUP_ENDPOINT, {
+  expect(mockAxios.get).toHaveBeenCalledWith(ApiEndpoint.GROUP, {
     params: { groupCode, username },
   });
 });
@@ -48,5 +48,5 @@ test("POST group to server", async () => {
 
   expect(response).toEqual("test response");
   expect(mockAxios.post).toHaveBeenCalledTimes(1);
-  expect(mockAxios.post).toHaveBeenCalledWith(GROUP_ENDPOINT, groupRequest);
+  expect(mockAxios.post).toHaveBeenCalledWith(ApiEndpoint.GROUP, groupRequest);
 });
