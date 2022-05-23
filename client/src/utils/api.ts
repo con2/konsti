@@ -1,7 +1,6 @@
 import axios, { AxiosInstance } from "axios";
 import { config } from "client/config";
 import { getJWT } from "client/utils/getJWT";
-import { addError } from "client/views/admin/adminSlice";
 import { ApiError } from "shared/typings/api/errors";
 
 export const api: AxiosInstance = axios.create({
@@ -29,8 +28,6 @@ api.interceptors.response.use(
 
     // eslint-disable-next-line no-console
     console.log(`Error while calling ${method} ${url}`);
-
-    addError();
 
     const data: ApiError = {
       code: 0,
