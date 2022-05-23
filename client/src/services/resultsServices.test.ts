@@ -1,6 +1,6 @@
 import axios from "axios";
 import { getResults } from "client/services/resultsServices";
-import { RESULTS_ENDPOINT } from "shared/constants/apiEndpoints";
+import { ApiEndpoint } from "shared/constants/apiEndpoints";
 
 jest.mock("axios");
 const mockAxios = axios as jest.Mocked<typeof axios>;
@@ -20,7 +20,7 @@ test("GET results from server", async () => {
 
   expect(response).toEqual("test response");
   expect(mockAxios.get).toHaveBeenCalledTimes(1);
-  expect(mockAxios.get).toHaveBeenCalledWith(RESULTS_ENDPOINT, {
+  expect(mockAxios.get).toHaveBeenCalledWith(ApiEndpoint.RESULTS, {
     params: { startTime },
   });
 });

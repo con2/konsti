@@ -18,7 +18,7 @@ export const submitRegistration = (
     try {
       registrationResponse = await postRegistration(registrationFormFields);
     } catch (error) {
-      return await Promise.reject(error);
+      // TODO
     }
 
     if (registrationResponse?.status === "error") {

@@ -3,7 +3,7 @@ import request from "supertest";
 import { MongoMemoryServer } from "mongodb-memory-server";
 import moment from "moment";
 import { startServer, closeServer } from "server/utils/server";
-import { GAMES_ENDPOINT } from "shared/constants/apiEndpoints";
+import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { getJWT } from "server/utils/jwt";
 import { UserGroup } from "shared/typings/models/user";
 import * as kompassiModule from "server/features/game/utils/getGamesFromKompassi";
@@ -43,16 +43,16 @@ afterEach(async () => {
   await mongoServer.stop();
 });
 
-describe(`GET ${GAMES_ENDPOINT}`, () => {
+describe(`GET ${ApiEndpoint.GAMES}`, () => {
   test(`should return 200`, async () => {
-    const response = await request(server).get(GAMES_ENDPOINT);
+    const response = await request(server).get(ApiEndpoint.GAMES);
     expect(response.status).toEqual(200);
   });
 });
 
-describe(`POST ${GAMES_ENDPOINT}`, () => {
+describe(`POST ${ApiEndpoint.GAMES}`, () => {
   test(`should return 401 without valid authorization`, async () => {
-    const response = await request(server).post(GAMES_ENDPOINT);
+    const response = await request(server).post(ApiEndpoint.GAMES);
     expect(response.status).toEqual(401);
   });
 
@@ -62,7 +62,7 @@ describe(`POST ${GAMES_ENDPOINT}`, () => {
       .mockResolvedValue([testKompassiGame]);
 
     const response = await request(server)
-      .post(GAMES_ENDPOINT)
+      .post(ApiEndpoint.GAMES)
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
     expect(response.status).toEqual(200);
 
@@ -88,7 +88,7 @@ describe(`POST ${GAMES_ENDPOINT}`, () => {
     });
 
     const response = await request(server)
-      .post(GAMES_ENDPOINT)
+      .post(ApiEndpoint.GAMES)
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
     expect(response.status).toEqual(200);
 
@@ -119,7 +119,7 @@ describe(`POST ${GAMES_ENDPOINT}`, () => {
     await saveGames([testGame, testGame2]);
 
     const response = await request(server)
-      .post(GAMES_ENDPOINT)
+      .post(ApiEndpoint.GAMES)
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
     expect(response.status).toEqual(200);
 
@@ -136,7 +136,7 @@ describe(`POST ${GAMES_ENDPOINT}`, () => {
     await saveGames([testGame, testGame2]);
 
     const response = await request(server)
-      .post(GAMES_ENDPOINT)
+      .post(ApiEndpoint.GAMES)
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
     expect(response.status).toEqual(200);
 
@@ -161,7 +161,7 @@ describe(`POST ${GAMES_ENDPOINT}`, () => {
     await saveGames([testGame, testGame2]);
 
     const response = await request(server)
-      .post(GAMES_ENDPOINT)
+      .post(ApiEndpoint.GAMES)
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
     expect(response.status).toEqual(200);
 
@@ -189,7 +189,7 @@ describe(`POST ${GAMES_ENDPOINT}`, () => {
     await saveEnteredGame(mockPostEnteredGameRequest2);
 
     const response = await request(server)
-      .post(GAMES_ENDPOINT)
+      .post(ApiEndpoint.GAMES)
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
     expect(response.status).toEqual(200);
 

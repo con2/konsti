@@ -37,7 +37,7 @@ export const removeDeletedGames = async (
       await removeGames(deletedGameIds);
     } catch (error) {
       logger.error(`Error removing deleted games: ${error}`);
-      return await Promise.reject(error);
+      throw error;
     }
   }
 

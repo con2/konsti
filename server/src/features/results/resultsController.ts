@@ -5,16 +5,13 @@ import { fetchResults } from "server/features/results/resultsService";
 import { UserGroup } from "shared/typings/models/user";
 import { isAuthorized } from "server/utils/authHeader";
 import { logger } from "server/utils/logger";
-import {
-  ASSIGNMENT_ENDPOINT,
-  RESULTS_ENDPOINT,
-} from "shared/constants/apiEndpoints";
+import { ApiEndpoint } from "shared/constants/apiEndpoints";
 
 export const getResults = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  logger.info(`API call: GET ${RESULTS_ENDPOINT}`);
+  logger.info(`API call: GET ${ApiEndpoint.RESULTS}`);
 
   const GetResultsQueryParameters = z.object({
     startTime: z.string(),
@@ -41,7 +38,7 @@ export const postAssignment = async (
   req: Request<{}, {}, { startingTime: string }>,
   res: Response
 ): Promise<Response> => {
-  logger.info(`API call: POST ${ASSIGNMENT_ENDPOINT}`);
+  logger.info(`API call: POST ${ApiEndpoint.ASSIGNMENT}`);
 
   if (!isAuthorized(req.headers.authorization, UserGroup.ADMIN, "admin")) {
     return res.sendStatus(401);

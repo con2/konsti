@@ -3,13 +3,13 @@ import { isAuthorized } from "server/utils/authHeader";
 import { UserGroup } from "shared/typings/models/user";
 import { fetchGames, storeGames } from "server/features/game/gamesService";
 import { logger } from "server/utils/logger";
-import { GAMES_ENDPOINT } from "shared/constants/apiEndpoints";
+import { ApiEndpoint } from "shared/constants/apiEndpoints";
 
 export const postGame = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  logger.info(`API call: POST ${GAMES_ENDPOINT}`);
+  logger.info(`API call: POST ${ApiEndpoint.GAMES}`);
 
   if (!isAuthorized(req.headers.authorization, UserGroup.ADMIN, "admin")) {
     return res.sendStatus(401);
@@ -23,7 +23,7 @@ export const getGames = async (
   _req: Request,
   res: Response
 ): Promise<Response> => {
-  logger.info(`API call: GET ${GAMES_ENDPOINT}`);
+  logger.info(`API call: GET ${ApiEndpoint.GAMES}`);
 
   const response = await fetchGames();
   return res.json(response);

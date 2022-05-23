@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { logger } from "server/utils/logger";
-import { POPULATE_DB_ENDPOINT } from "shared/constants/apiEndpoints";
+import { ApiEndpoint } from "shared/constants/apiEndpoints";
 
 import { runGenerators } from "server/test/test-data-generation/runGenerators";
 
@@ -8,7 +8,7 @@ export const postPopulateDb = async (
   req: Request<{}, {}, null>,
   res: Response
 ): Promise<Response> => {
-  logger.info(`API call: POST ${POPULATE_DB_ENDPOINT}`);
+  logger.info(`API call: POST ${ApiEndpoint.POPULATE_DB}`);
   await runGenerators(
     { clean: true, users: true, games: true, signups: true, entered: true },
     { closeDb: false }

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { postPlayerAssignment } from "client/services/assignmentServices";
-import { ASSIGNMENT_ENDPOINT } from "shared/constants/apiEndpoints";
+import { ApiEndpoint } from "shared/constants/apiEndpoints";
 
 jest.mock("axios");
 const mockAxios = axios as jest.Mocked<typeof axios>;
@@ -19,7 +19,7 @@ test("POST player assignment to server", async () => {
 
   expect(response).toEqual("test response");
   expect(mockAxios.post).toHaveBeenCalledTimes(1);
-  expect(mockAxios.post).toHaveBeenCalledWith(ASSIGNMENT_ENDPOINT, {
+  expect(mockAxios.post).toHaveBeenCalledWith(ApiEndpoint.ASSIGNMENT, {
     startingTime: signupTime,
   });
 });

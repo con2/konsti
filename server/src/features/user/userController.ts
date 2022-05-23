@@ -15,15 +15,7 @@ import {
 import { UserGroup } from "shared/typings/models/user";
 import { isAuthorized } from "server/utils/authHeader";
 import { logger } from "server/utils/logger";
-import {
-  FAVORITE_ENDPOINT,
-  GROUP_ENDPOINT,
-  LOGIN_ENDPOINT,
-  SIGNED_GAME_ENDPOINT,
-  USERS_BY_SERIAL_OR_USERNAME_ENDPOINT,
-  USERS_ENDPOINT,
-  USERS_PASSWORD_ENDPOINT,
-} from "shared/constants/apiEndpoints";
+import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { SignupData } from "shared/typings/api/myGames";
 import { GroupRequest, GroupRequestSchema } from "shared/typings/api/groups";
 import { SaveFavoriteRequest } from "shared/typings/api/favorite";
@@ -41,7 +33,7 @@ export const postUser = async (
   req: Request<{}, {}, RegistrationFormFields>,
   res: Response
 ): Promise<Response> => {
-  logger.info(`API call: POST ${USERS_ENDPOINT}`);
+  logger.info(`API call: POST ${ApiEndpoint.USERS}`);
 
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -64,7 +56,7 @@ export const postUserPassword = async (
   req: Request<{}, {}, UpdateUserPasswordRequest>,
   res: Response
 ): Promise<Response> => {
-  logger.info(`API call: POST ${USERS_PASSWORD_ENDPOINT}`);
+  logger.info(`API call: POST ${ApiEndpoint.USERS_PASSWORD}`);
 
   const PostUserPasswordParameters = z.object({
     username: z.string(),
@@ -104,7 +96,7 @@ export const postLogin = async (
   req: Request<{}, {}, LoginFormFields>,
   res: Response
 ): Promise<Response> => {
-  logger.info(`API call: POST ${LOGIN_ENDPOINT}`);
+  logger.info(`API call: POST ${ApiEndpoint.LOGIN}`);
 
   const { username, password } = req.body;
 
@@ -120,7 +112,7 @@ export const postFavorite = async (
   req: Request<{}, {}, { favoriteData: SaveFavoriteRequest }>,
   res: Response
 ): Promise<Response> => {
-  logger.info(`API call: POST ${FAVORITE_ENDPOINT}`);
+  logger.info(`API call: POST ${ApiEndpoint.FAVORITE}`);
 
   const PostFavoriteParameters = z.object({
     username: z.string(),
@@ -159,7 +151,7 @@ export const postGroup = async (
   req: Request<{}, {}, GroupRequest>,
   res: Response
 ): Promise<Response> => {
-  logger.info(`API call: POST ${GROUP_ENDPOINT}`);
+  logger.info(`API call: POST ${ApiEndpoint.GROUP}`);
 
   let groupRequest: GroupRequest;
   try {
@@ -199,7 +191,7 @@ export const getUser = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  logger.info(`API call: GET ${USERS_ENDPOINT}`);
+  logger.info(`API call: GET ${ApiEndpoint.USERS}`);
 
   const GetUserQueryParameters = z.object({
     username: z.string(),
@@ -234,7 +226,7 @@ export const getUserBySerialOrUsername = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  logger.info(`API call: GET ${USERS_BY_SERIAL_OR_USERNAME_ENDPOINT}`);
+  logger.info(`API call: GET ${ApiEndpoint.USERS_BY_SERIAL_OR_USERNAME}`);
 
   if (!isAuthorized(req.headers.authorization, UserGroup.HELP, "ropetiski")) {
     return res.sendStatus(401);
@@ -271,7 +263,7 @@ export const getGroup = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  logger.info(`API call: GET ${GROUP_ENDPOINT}`);
+  logger.info(`API call: GET ${ApiEndpoint.GROUP}`);
 
   const GetGroupQueryParameters = z.object({
     groupCode: z.string(),
@@ -300,7 +292,7 @@ export const postSignedGames = async (
   req: Request<{}, {}, { signupData: SignupData }>,
   res: Response
 ): Promise<Response> => {
-  logger.info(`API call: POST ${SIGNED_GAME_ENDPOINT}`);
+  logger.info(`API call: POST ${ApiEndpoint.SIGNED_GAME}`);
 
   const PostSignedGamesParameters = z.object({
     signupData: z.object({

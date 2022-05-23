@@ -1,7 +1,18 @@
 import axios, { AxiosInstance } from "axios";
+import { t } from "i18next";
 import { config } from "client/config";
 import { getJWT } from "client/utils/getJWT";
+import { addError } from "client/views/admin/adminSlice";
+import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { ApiError } from "shared/typings/api/errors";
+import { store } from "client/utils/store";
+import { ErrorMessage } from "client/components/ErrorBar";
+
+enum HttpMethod {
+  GET = "GET",
+  POST = "POST",
+  DELETE = "DELETE",
+}
 
 export const api: AxiosInstance = axios.create({
   baseURL: `${config.apiServerUrl}`,
@@ -23,11 +34,10 @@ api.interceptors.response.use(
   (response) => response,
   (error) => {
     const response = error.response;
-    const url = response.config.url;
-    const method = response.config.method;
+    const method: HttpMethod = response.config.method.toUpperCase();
+    const url: ApiEndpoint = response.config.url;
 
-    // eslint-disable-next-line no-console
-    console.log(`Error while calling ${method} ${url}`);
+    store.dispatch(addError(t(ErrorMessage.API_ERROR, { method, url })));
 
     const data: ApiError = {
       code: 0,

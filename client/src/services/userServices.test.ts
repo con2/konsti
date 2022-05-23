@@ -5,11 +5,7 @@ import {
   postRegistration,
   updateUserPassword,
 } from "client/services/userServices";
-import {
-  USERS_BY_SERIAL_OR_USERNAME_ENDPOINT,
-  USERS_ENDPOINT,
-  USERS_PASSWORD_ENDPOINT,
-} from "shared/constants/apiEndpoints";
+import { ApiEndpoint } from "shared/constants/apiEndpoints";
 
 jest.mock("axios");
 const mockAxios = axios as jest.Mocked<typeof axios>;
@@ -29,7 +25,7 @@ test("GET user from server", async () => {
 
   expect(response).toEqual("test response");
   expect(mockAxios.get).toHaveBeenCalledTimes(1);
-  expect(mockAxios.get).toHaveBeenCalledWith(USERS_ENDPOINT, {
+  expect(mockAxios.get).toHaveBeenCalledWith(ApiEndpoint.USERS, {
     params: { username },
   });
 });
@@ -50,7 +46,7 @@ test("GET user by serial from server", async () => {
   expect(response).toEqual("test response");
   expect(mockAxios.get).toHaveBeenCalledTimes(1);
   expect(mockAxios.get).toHaveBeenCalledWith(
-    USERS_BY_SERIAL_OR_USERNAME_ENDPOINT,
+    ApiEndpoint.USERS_BY_SERIAL_OR_USERNAME,
     {
       params: { searchTerm: serial },
     }
@@ -80,7 +76,7 @@ test("POST registration to server", async () => {
 
   expect(response).toEqual("test response");
   expect(mockAxios.post).toHaveBeenCalledTimes(1);
-  expect(mockAxios.post).toHaveBeenCalledWith(USERS_ENDPOINT, {
+  expect(mockAxios.post).toHaveBeenCalledWith(ApiEndpoint.USERS, {
     username,
     password,
     serial,
@@ -103,7 +99,7 @@ test("POST new user password to server", async () => {
 
   expect(response).toEqual("test response");
   expect(mockAxios.post).toHaveBeenCalledTimes(1);
-  expect(mockAxios.post).toHaveBeenCalledWith(USERS_PASSWORD_ENDPOINT, {
+  expect(mockAxios.post).toHaveBeenCalledWith(ApiEndpoint.USERS_PASSWORD, {
     username,
     password,
     requester,
