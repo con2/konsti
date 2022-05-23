@@ -8,7 +8,7 @@ import { ApiError } from "shared/typings/api/errors";
 import { store } from "client/utils/store";
 import { ErrorMessage } from "client/components/ErrorBar";
 
-enum HttpMethods {
+enum HttpMethod {
   GET = "get",
   POST = "post",
   DELETE = "delete",
@@ -34,7 +34,7 @@ api.interceptors.response.use(
   (response) => response,
   (error) => {
     const response = error.response;
-    const method: HttpMethods = response.config.method.toUpperCase();
+    const method: HttpMethod = response.config.method.toUpperCase();
     const url: ApiEndpoint = response.config.url;
 
     store.dispatch(addError(t(ErrorMessage.API_ERROR, { method, url })));
