@@ -5,7 +5,7 @@ import _ from "lodash";
 import { timeFormatter } from "client/utils/timeFormatter";
 import { Game } from "shared/typings/models/game";
 
-export interface Props {
+interface Props {
   hiddenGames: readonly Game[];
 }
 

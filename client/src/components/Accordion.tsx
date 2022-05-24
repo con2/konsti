@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
 import { Button, ButtonStyle } from "client/components/Button";
 
-export interface Props {
+interface Props {
   toggleButton: string | ReactElement;
   children?: ReactNode;
   initialValue?: boolean;
