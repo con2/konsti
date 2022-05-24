@@ -4,7 +4,7 @@ import _ from "lodash";
 import styled, { css } from "styled-components";
 import { Result } from "shared/typings/models/result";
 
-export interface Props {
+interface Props {
   results: readonly Result[];
 }
 

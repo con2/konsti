@@ -6,7 +6,7 @@ import { getStartTimes } from "client/utils/getStartTimes";
 import { SignupsByStartTimes } from "./SignupsByStartTimes";
 import { SelectedGame } from "shared/typings/models/user";
 
-export interface Props {
+interface Props {
   signedGames: readonly SelectedGame[];
   isGroupCreator: boolean;
 }

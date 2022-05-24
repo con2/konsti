@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { timeFormatter } from "client/utils/timeFormatter";
 import { SelectedGame } from "shared/typings/models/user";
 
-export interface Props {
+interface Props {
   signups: SelectedGame[];
   startTimes: readonly string[];
 }

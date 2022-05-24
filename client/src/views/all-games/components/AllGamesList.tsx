@@ -9,7 +9,7 @@ import { SignupStrategy } from "shared/config/sharedConfig.types";
 import { getIsGroupCreator } from "client/views/group/utils/getIsGroupCreator";
 import { getSignedGames } from "client/utils/getUpcomingGames";
 
-export interface Props {
+interface Props {
   games: readonly Game[];
 }
 

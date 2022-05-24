@@ -6,7 +6,7 @@ import { getStartTimes } from "client/utils/getStartTimes";
 import { GamesByStartTimes } from "./GamesByStartTimes";
 import { Game } from "shared/typings/models/game";
 
-export interface Props {
+interface Props {
   favoritedGames: readonly Game[];
 }
 

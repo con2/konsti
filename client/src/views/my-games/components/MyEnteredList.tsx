@@ -6,7 +6,7 @@ import { ResultsByStartTimes } from "./ResultsByStartTimes";
 import { getMissedSignups } from "client/views/my-games/utils/getMissedSignups";
 import { SelectedGame } from "shared/typings/models/user";
 
-export interface Props {
+interface Props {
   enteredGames: readonly SelectedGame[];
   signedGames: readonly SelectedGame[];
 }
