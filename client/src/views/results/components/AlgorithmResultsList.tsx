@@ -6,7 +6,7 @@ import { ResultsByUsername } from "./ResultsByUsername";
 import { Result } from "shared/typings/models/result";
 import { Button, ButtonStyle } from "client/components/Button";
 
-export interface Props {
+interface Props {
   results: readonly Result[];
 }
 

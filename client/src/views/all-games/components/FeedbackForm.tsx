@@ -6,7 +6,7 @@ import { Game } from "shared/typings/models/game";
 import { Button, ButtonStyle } from "client/components/Button";
 import { useAppSelector } from "client/utils/hooks";
 
-export interface Props {
+interface Props {
   game: Game;
 }
 

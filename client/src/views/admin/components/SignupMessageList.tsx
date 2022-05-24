@@ -5,7 +5,7 @@ import { Game } from "shared/typings/models/game";
 import { SignupMessage } from "shared/typings/models/settings";
 import { timeFormatter } from "client/utils/timeFormatter";
 
-export interface Props {
+interface Props {
   signupMessages: readonly SignupMessage[];
   games: readonly Game[];
 }

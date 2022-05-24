@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { GroupMember } from "shared/typings/api/groups";
 
-export interface Props {
+interface Props {
   groupMembers: readonly GroupMember[];
 }
 

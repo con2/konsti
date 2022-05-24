@@ -8,7 +8,7 @@ import { Button, ButtonStyle } from "client/components/Button";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { updateFavorite } from "client/utils/favorite";
 
-export interface Props {
+interface Props {
   games: readonly Game[];
   startTimes: readonly string[];
 }
