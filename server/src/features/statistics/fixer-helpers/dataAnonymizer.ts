@@ -1,5 +1,5 @@
 import fs from "fs";
-import faker from "@faker-js/faker";
+import { faker } from "@faker-js/faker";
 import { logger } from "server/utils/logger";
 import { User } from "shared/typings/models/user";
 import { ResultsCollectionEntry } from "server/typings/result.typings";
