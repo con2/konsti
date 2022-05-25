@@ -1,4 +1,4 @@
-import faker from "@faker-js/faker";
+import { faker } from "@faker-js/faker";
 import moment from "moment";
 import { sampleSize } from "lodash";
 import { logger } from "server/utils/logger";
