@@ -1,4 +1,4 @@
-import faker from "@faker-js/faker";
+import { faker } from "@faker-js/faker";
 import { logger } from "server/utils/logger";
 import {
   findUsers,
