@@ -7,6 +7,7 @@ import { Button, ButtonStyle } from "client/components/Button";
 import { LoginFormFields } from "shared/typings/api/login";
 import { useAppDispatch } from "client/utils/hooks";
 import { LoginErrorMessage, submitLogin } from "client/views/login/loginThunks";
+import { ErrorMessage } from "client/components/ErrorMessage";
 
 export const LoginForm = (): ReactElement => {
   const dispatch = useAppDispatch();
@@ -92,15 +93,15 @@ export const LoginForm = (): ReactElement => {
         {t("button.login")}
       </Button>
 
-      {serverError && <ErrorMessage>{t(serverError)}</ErrorMessage>}
+      {serverError && (
+        <ErrorMessage
+          message={t(serverError)}
+          closeError={() => setServerError(LoginErrorMessage.EMPTY)}
+        />
+      )}
     </form>
   );
 };
-
-const ErrorMessage = styled.p`
-  font-weight: 600;
-  color: ${(props) => props.theme.textError};
-`;
 
 const FormFieldError = styled.div`
   display: flex;

@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import _ from "lodash";
-import { ErrorMessage } from "client/components/ErrorBar";
+import { ErrorMessageType } from "client/components/ErrorBar";
 import { AdminState } from "client/typings/redux.typings";
 import { SubmitGetSettingsPayload } from "client/views/admin/adminTypes";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
@@ -62,14 +62,14 @@ const adminSlice = createSlice({
       return { ...state, signupMessages: action.payload };
     },
 
-    addError(state, action: PayloadAction<ErrorMessage>) {
+    addError(state, action: PayloadAction<ErrorMessageType>) {
       return {
         ...state,
         errors: _.uniq([...state.errors, action.payload]),
       };
     },
 
-    removeError(state, action: PayloadAction<ErrorMessage>) {
+    removeError(state, action: PayloadAction<ErrorMessageType>) {
       return {
         ...state,
         errors: state.errors.filter((error) => error !== action.payload),
