@@ -6,7 +6,7 @@ import { addError } from "client/views/admin/adminSlice";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { ApiError } from "shared/typings/api/errors";
 import { store } from "client/utils/store";
-import { ErrorMessage } from "client/components/ErrorBar";
+import { ErrorMessageType } from "client/components/ErrorBar";
 
 enum HttpMethod {
   GET = "GET",
@@ -37,7 +37,7 @@ api.interceptors.response.use(
     const method: HttpMethod = response.config.method.toUpperCase();
     const url: ApiEndpoint = response.config.url;
 
-    store.dispatch(addError(t(ErrorMessage.API_ERROR, { method, url })));
+    store.dispatch(addError(t(ErrorMessageType.API_ERROR, { method, url })));
 
     const data: ApiError = {
       code: 0,

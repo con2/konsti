@@ -4,7 +4,7 @@ import { AppThunk } from "client/typings/redux.typings";
 import { ApiError } from "shared/typings/api/errors";
 import { LoginFormFields, PostLoginResponse } from "shared/typings/api/login";
 import { submitLoginAsync } from "client/views/login/loginSlice";
-import { loadUser } from "client/utils/loadData";
+import { loadGroupMembers, loadUser } from "client/utils/loadData";
 import { submitUpdateGroupCodeAsync } from "client/views/group/groupSlice";
 
 export enum LoginErrorMessage {
@@ -57,6 +57,7 @@ export const submitLogin = (
       dispatch(submitUpdateGroupCodeAsync(loginResponse.groupCode));
 
       await loadUser();
+      await loadGroupMembers();
     }
   };
 };
@@ -100,8 +101,6 @@ export const submitSessionRecovery = (jwt: string): AppThunk => {
       );
 
       dispatch(submitUpdateGroupCodeAsync(loginResponse.groupCode));
-
-      await loadUser();
     }
   };
 };
