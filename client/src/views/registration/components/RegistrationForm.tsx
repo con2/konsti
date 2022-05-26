@@ -20,6 +20,7 @@ import {
   USERNAME_LENGTH_MAX,
   USERNAME_LENGTH_MIN,
 } from "shared/constants/validation";
+import { ErrorMessage } from "client/components/ErrorMessage";
 
 export const RegistrationForm = (): ReactElement => {
   const dispatch = useAppDispatch();
@@ -189,17 +190,15 @@ export const RegistrationForm = (): ReactElement => {
         </Button>
 
         {serverError && (
-          <StyledErrorMessage>{t(serverError)}</StyledErrorMessage>
+          <ErrorMessage
+            message={t(serverError)}
+            closeError={() => setServerError(RegistrationErrorMessage.EMPTY)}
+          />
         )}
       </form>
     </div>
   );
 };
-
-const StyledErrorMessage = styled.p`
-  font-weight: 600;
-  color: ${(props) => props.theme.textError};
-`;
 
 const StyledInput = styled.input`
   border: 1px solid ${(props) => props.theme.borderInactive};

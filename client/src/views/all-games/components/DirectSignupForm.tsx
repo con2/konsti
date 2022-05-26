@@ -71,49 +71,49 @@ export const DirectSignupForm: FC<Props> = (
     return null;
   };
 
-  if (loggedIn) {
-    return (
-      <>
-        {signupForDirect(
-          alreadyEnteredToGame,
-          enteredGamesForTimeslot,
-          gameIsFull
-        )}
-        {gameIsFull && <GameIsFull>{t("signup.gameIsFull")}</GameIsFull>}
-        {alreadyEnteredToGame && !cancelSignupFormOpen && (
-          <Button
-            onClick={() => setCancelSignupFormOpen(!cancelSignupFormOpen)}
-            buttonStyle={ButtonStyle.NORMAL}
-          >
-            {t("button.cancelSignup")}
-          </Button>
-        )}
-        {alreadyEnteredToGame && cancelSignupFormOpen && (
-          <CancelSignupForm
-            game={game}
-            onCancelSignup={() => {
-              setCancelSignupFormOpen(false);
-            }}
-            onCancelForm={() => {
-              setCancelSignupFormOpen(false);
-            }}
-          />
-        )}
-        {signupFormOpen && !alreadyEnteredToGame && !gameIsFull && (
-          <EnterGameForm
-            game={game}
-            signupMessage={AdditionalInfoMessages.find(
-              ({ gameId }) => gameId === game.gameId
-            )}
-            onEnterGame={() => setSignupFormOpen(false)}
-            onCancelSignup={() => setSignupFormOpen(false)}
-          />
-        )}
-      </>
-    );
+  if (!loggedIn) {
+    return null;
   }
 
-  return null;
+  return (
+    <>
+      {signupForDirect(
+        alreadyEnteredToGame,
+        enteredGamesForTimeslot,
+        gameIsFull
+      )}
+      {gameIsFull && <GameIsFull>{t("signup.gameIsFull")}</GameIsFull>}
+      {alreadyEnteredToGame && !cancelSignupFormOpen && (
+        <Button
+          onClick={() => setCancelSignupFormOpen(!cancelSignupFormOpen)}
+          buttonStyle={ButtonStyle.NORMAL}
+        >
+          {t("button.cancelSignup")}
+        </Button>
+      )}
+      {alreadyEnteredToGame && cancelSignupFormOpen && (
+        <CancelSignupForm
+          game={game}
+          onCancelSignup={() => {
+            setCancelSignupFormOpen(false);
+          }}
+          onCancelForm={() => {
+            setCancelSignupFormOpen(false);
+          }}
+        />
+      )}
+      {signupFormOpen && !alreadyEnteredToGame && !gameIsFull && (
+        <EnterGameForm
+          game={game}
+          signupMessage={AdditionalInfoMessages.find(
+            ({ gameId }) => gameId === game.gameId
+          )}
+          onEnterGame={() => setSignupFormOpen(false)}
+          onCancelSignup={() => setSignupFormOpen(false)}
+        />
+      )}
+    </>
+  );
 };
 
 const GameIsFull = styled.h4`

@@ -8,8 +8,7 @@ import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { isAlreadySigned } from "./allGamesUtils";
 import { Button, ButtonStyle } from "client/components/Button";
 import { getIsGroupCreator } from "client/views/group/utils/getIsGroupCreator";
-import { addError } from "client/views/admin/adminSlice";
-import { ErrorMessage } from "client/components/ErrorBar";
+import { ErrorMessage } from "client/components/ErrorMessage";
 
 interface Props {
   game: Game;
@@ -32,6 +31,7 @@ export const AlgorithmSignupForm: FC<Props> = ({
   const isGroupCreator = getIsGroupCreator(groupCode, serial);
 
   const [signupFormOpen, setSignupFormOpen] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const dispatch = useAppDispatch();
 
@@ -80,7 +80,7 @@ export const AlgorithmSignupForm: FC<Props> = ({
         <Button
           onClick={() => {
             if (groupMembers.length > game.maxAttendance) {
-              dispatch(addError(ErrorMessage.GROUP_TOO_BIG));
+              setErrorMessage(t("group.groupTooBigWarning"));
             } else {
               setSignupFormOpen(!signupFormOpen);
             }
@@ -95,37 +95,41 @@ export const AlgorithmSignupForm: FC<Props> = ({
     return null;
   };
 
-  if (loggedIn) {
-    return (
-      <>
-        {signupForAlgorithm(alreadySignedToGame, signedGamesForTimeslot)}
-        {alreadySignedToGame && (
-          <>
-            {isGroupCreator && (
-              <Button
-                onClick={async () => await removeSignedGame(game)}
-                buttonStyle={ButtonStyle.NORMAL}
-              >
-                {t("button.cancel")}
-              </Button>
-            )}
-            <p>
-              {t("signup.alreadySigned", {
-                CURRENT_PRIORITY: currentPriority,
-              })}
-            </p>
-          </>
-        )}
-        {signupFormOpen && !alreadySignedToGame && (
-          <SignupForm
-            game={game}
-            startTime={startTime}
-            onCancel={() => setSignupFormOpen(false)}
-          />
-        )}
-      </>
-    );
+  if (!loggedIn) {
+    return null;
   }
 
-  return null;
+  return (
+    <>
+      {signupForAlgorithm(alreadySignedToGame, signedGamesForTimeslot)}
+      {alreadySignedToGame && (
+        <>
+          {isGroupCreator && (
+            <Button
+              onClick={async () => await removeSignedGame(game)}
+              buttonStyle={ButtonStyle.NORMAL}
+            >
+              {t("button.cancel")}
+            </Button>
+          )}
+          <p>
+            {t("signup.alreadySigned", {
+              CURRENT_PRIORITY: currentPriority,
+            })}
+          </p>
+        </>
+      )}
+      {signupFormOpen && !alreadySignedToGame && (
+        <SignupForm
+          game={game}
+          startTime={startTime}
+          onCancel={() => setSignupFormOpen(false)}
+        />
+      )}
+      <ErrorMessage
+        message={errorMessage}
+        closeError={() => setErrorMessage("")}
+      />
+    </>
+  );
 };

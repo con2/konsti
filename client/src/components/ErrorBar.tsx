@@ -6,8 +6,7 @@ import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { removeError } from "client/views/admin/adminSlice";
 import { HEADER_HEIGHT } from "client/components/Header";
 
-export enum ErrorMessage {
-  GROUP_TOO_BIG = "group.groupTooBigWarning",
+export enum ErrorMessageType {
   API_ERROR = "apiError",
 }
 
