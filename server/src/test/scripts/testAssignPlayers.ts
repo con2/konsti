@@ -39,17 +39,11 @@ const testAssignPlayers = async (
 };
 
 const getAssignmentStrategy = (userParameter: string): AssignmentStrategy => {
-  if (
-    userParameter === AssignmentStrategy.MUNKRES ||
-    userParameter === AssignmentStrategy.GROUP ||
-    userParameter === AssignmentStrategy.PADG ||
-    userParameter === AssignmentStrategy.GROUP_PADG
-  ) {
-    return userParameter;
+  const strategies = Object.values(AssignmentStrategy);
+  if (strategies.includes(userParameter as AssignmentStrategy)) {
+    return userParameter as AssignmentStrategy;
   } else {
-    throw new Error(
-      'Give valid strategy parameter, possible: "munkres", "group", "padg", "group+padg"'
-    );
+    throw new Error(`Give valid strategy parameter: ${strategies.join(", ")}`);
   }
 };
 
