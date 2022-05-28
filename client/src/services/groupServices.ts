@@ -4,12 +4,13 @@ import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
   GetGroupResponse,
   GroupRequest,
+  PostGroupError,
   PostGroupResponse,
 } from "shared/typings/api/groups";
 
 export const postGroup = async (
   groupRequest: GroupRequest
-): Promise<PostGroupResponse | ApiError> => {
+): Promise<PostGroupResponse | PostGroupError> => {
   const response = await api.post<PostGroupResponse>(
     ApiEndpoint.GROUP,
     groupRequest

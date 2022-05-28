@@ -1,10 +1,22 @@
 import { z } from "zod";
 import { SelectedGame } from "shared/typings/models/user";
+import { ApiError } from "shared/typings/api/errors";
 
 export interface PostGroupResponse {
   groupCode: string;
   message: string;
   status: "success";
+}
+
+export interface PostGroupError extends ApiError {
+  errorId:
+    | "unknown"
+    | "creatorCannotLeaveNonEmpty"
+    | "groupUpdateFailed"
+    | "groupExists"
+    | "cannotJoinOwnGroup"
+    | "invalidGroupCode"
+    | "groupDoesNotExist";
 }
 
 export interface GetGroupResponse {

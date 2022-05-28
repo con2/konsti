@@ -25,7 +25,7 @@ export const storeEnteredGame = async (
     return {
       message: `Entered game not found`,
       status: "error",
-      code: 0,
+      errorId: "unknown",
     };
   }
 
@@ -40,7 +40,7 @@ export const storeEnteredGame = async (
     return {
       message: `Error counting users for game`,
       status: "error",
-      code: 0,
+      errorId: "unknown",
     };
   }
 
@@ -48,7 +48,7 @@ export const storeEnteredGame = async (
     return {
       message: `Entered game is full`,
       status: "error",
-      code: 51,
+      errorId: "gameFull",
     };
   }
 
@@ -59,7 +59,7 @@ export const storeEnteredGame = async (
     return {
       message: `Store entered game failure: ${error}`,
       status: "error",
-      code: 0,
+      errorId: "unknown",
     };
   }
 
@@ -79,7 +79,7 @@ export const storeEnteredGame = async (
   return {
     message: "Store entered game failure",
     status: "error",
-    code: 0,
+    errorId: "unknown",
   };
 };
 
@@ -93,7 +93,7 @@ export const removeEnteredGame = async (
     return {
       message: "Delete entered game failure",
       status: "error",
-      code: 0,
+      errorId: "unknown",
     };
   }
 
@@ -107,6 +107,6 @@ export const removeEnteredGame = async (
   return {
     message: "Delete entered game failure",
     status: "error",
-    code: 0,
+    errorId: "unknown",
   };
 };

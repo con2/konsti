@@ -53,7 +53,7 @@ export const SignupForm = ({
 
     if (errorCode) {
       switch (errorCode) {
-        case 41:
+        case "signupEnded":
           console.error("Signup ended"); // eslint-disable-line no-console
           return;
         default:

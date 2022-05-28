@@ -38,7 +38,7 @@ export const fetchSettings = async (): Promise<
     return {
       message: "Getting settings failed",
       status: "error",
-      code: 0,
+      errorId: "unknown",
     };
   }
 };
@@ -54,7 +54,7 @@ export const storeHidden = async (
     return {
       message: "Update hidden failure",
       status: "error",
-      code: 0,
+      errorId: "unknown",
     };
   }
 
@@ -65,7 +65,7 @@ export const storeHidden = async (
     return {
       message: "Update hidden failure",
       status: "error",
-      code: 0,
+      errorId: "unknown",
     };
   }
 
@@ -87,7 +87,7 @@ export const storeSignupMessage = async (
     return {
       message: "saveSignupMessage failure",
       status: "error",
-      code: 0,
+      errorId: "unknown",
     };
   }
 
@@ -109,7 +109,7 @@ export const removeSignupMessage = async (
     return {
       message: "delSignupMessage failure",
       status: "error",
-      code: 0,
+      errorId: "unknown",
     };
   }
 
@@ -134,7 +134,7 @@ export const updateSettings = async (
     return {
       message: "Update settings failure",
       status: "error",
-      code: 0,
+      errorId: "unknown",
     };
   }
 };

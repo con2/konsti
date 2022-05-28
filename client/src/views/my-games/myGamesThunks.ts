@@ -75,12 +75,12 @@ export const submitPostEnteredGame = (
     const signupResponse = await postEnteredGame(data);
 
     if (signupResponse?.status === "error") {
-      switch (signupResponse.code) {
+      switch (signupResponse.errorId) {
         /*
-        case 41:
+        case 'signupEnded':
           return "Signup ended";
         */
-        case 51:
+        case "gameFull":
           return PostEnteredGameError.GAME_FULL;
         default:
           return PostEnteredGameError.UNKNOWN;
@@ -111,12 +111,12 @@ export const submitDeleteEnteredGame = (
 
 export const submitPostSignedGames = (
   signupData: SignupData
-): AppThunk<Promise<number | undefined>> => {
-  return async (dispatch): Promise<number | undefined> => {
+): AppThunk<Promise<string | undefined>> => {
+  return async (dispatch): Promise<string | undefined> => {
     const signupResponse = await postSignedGames(signupData);
 
     if (signupResponse?.status === "error") {
-      return signupResponse.code;
+      return signupResponse.errorId;
     }
 
     if (signupResponse?.status === "success") {
