@@ -62,17 +62,29 @@ export const submitUpdateFavorites = (
   };
 };
 
+export enum PostEnteredGameError {
+  GAME_FULL = "signup.gameIsFull",
+  UNKNOWN = "signupError.generic",
+  EMPTY = "",
+}
+
 export const submitPostEnteredGame = (
   data: PostEnteredGameParameters
-): AppThunk<Promise<number | undefined>> => {
-  return async (dispatch): Promise<number | undefined> => {
+): AppThunk<Promise<PostEnteredGameError | undefined>> => {
+  return async (dispatch): Promise<PostEnteredGameError | undefined> => {
     const signupResponse = await postEnteredGame(data);
 
     if (signupResponse?.status === "error") {
-      if (signupResponse.code === 51) {
-        console.error("Entered game is full"); // eslint-disable-line no-console
+      switch (signupResponse.code) {
+        /*
+        case 41:
+          return "Signup ended";
+        */
+        case 51:
+          return PostEnteredGameError.GAME_FULL;
+        default:
+          return PostEnteredGameError.UNKNOWN;
       }
-      return signupResponse.code;
     }
 
     if (signupResponse?.status === "success") {

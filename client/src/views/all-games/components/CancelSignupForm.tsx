@@ -41,7 +41,7 @@ export const CancelSignupForm: FC<Props> = (props: Props): ReactElement => {
         onClick={removeSignup}
         buttonStyle={ButtonStyle.WARNING}
       >
-        {t("signup.confirmCancelSignup")} 123
+        {t("signup.confirmCancelSignup")}
       </CancelSignupButton>
       <CancelFormButton onClick={handleCancel} buttonStyle={ButtonStyle.NORMAL}>
         {t("signup.cancel")}

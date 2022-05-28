@@ -34,8 +34,8 @@ api.interceptors.response.use(
   (response) => response,
   (error) => {
     const response = error.response;
-    const method: HttpMethod = response.config.method.toUpperCase();
-    const url: ApiEndpoint = response.config.url;
+    const method: HttpMethod = response.config?.method.toUpperCase();
+    const url: ApiEndpoint = response.config?.url;
 
     store.dispatch(addError(t(ErrorMessageType.API_ERROR, { method, url })));
 
