@@ -2,11 +2,15 @@ import React, { FC, ReactElement, FormEvent, useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { Game } from "shared/typings/models/game";
-import { submitPostEnteredGame } from "client/views/my-games/myGamesThunks";
+import {
+  PostEnteredGameError,
+  submitPostEnteredGame,
+} from "client/views/my-games/myGamesThunks";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { Button, ButtonStyle } from "client/components/Button";
 import { SignupMessage } from "shared/typings/models/settings";
 import { loadGames } from "client/utils/loadData";
+import { ErrorMessage } from "client/components/ErrorMessage";
 
 interface Props {
   game: Game;
@@ -21,6 +25,9 @@ export const EnterGameForm: FC<Props> = (props: Props): ReactElement => {
   const dispatch = useAppDispatch();
   const username = useAppSelector((state) => state.login.username);
   const [userSignupMessage, setUserSignupMessage] = useState<string>("");
+  const [errorMessage, setErrorMessage] = useState<PostEnteredGameError>(
+    PostEnteredGameError.EMPTY
+  );
 
   const handleCancel = (): void => {
     onCancelSignup();
@@ -36,16 +43,10 @@ export const EnterGameForm: FC<Props> = (props: Props): ReactElement => {
       message: userSignupMessage,
     };
 
-    const errorCode = await dispatch(submitPostEnteredGame(enterData));
-
-    if (errorCode) {
-      switch (errorCode) {
-        case 41:
-          console.error("Signup ended"); // eslint-disable-line no-console
-          return;
-        default:
-          console.error("signupError"); // eslint-disable-line no-console
-      }
+    const error = await dispatch(submitPostEnteredGame(enterData));
+    if (error) {
+      setErrorMessage(error);
+      return;
     }
 
     await loadGames();
@@ -84,6 +85,12 @@ export const EnterGameForm: FC<Props> = (props: Props): ReactElement => {
           {t("signup.cancel")}
         </SignupCancelButton>
       </ButtonContainer>
+      {errorMessage && (
+        <ErrorMessage
+          message={t(errorMessage)}
+          closeError={() => setErrorMessage(PostEnteredGameError.EMPTY)}
+        />
+      )}
     </SignupForm>
   );
 };
