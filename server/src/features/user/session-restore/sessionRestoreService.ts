@@ -2,13 +2,12 @@ import { findSettings } from "server/features/settings/settingsRepository";
 import { findUser } from "server/features/user/userRepository";
 import { decodeJWT, getJWT, verifyJWT } from "server/utils/jwt";
 import { logger } from "server/utils/logger";
-import { ApiError } from "shared/typings/api/errors";
-import { PostLoginResponse } from "shared/typings/api/login";
+import { PostLoginError, PostLoginResponse } from "shared/typings/api/login";
 import { UserGroup } from "shared/typings/models/user";
 
 export const loginWithJwt = async (
   jwt: string
-): Promise<PostLoginResponse | ApiError> => {
+): Promise<PostLoginResponse | PostLoginError> => {
   // Restore session
   const jwtData = decodeJWT(jwt);
 
@@ -16,7 +15,7 @@ export const loginWithJwt = async (
     return {
       message: "Invalid jwt",
       status: "error",
-      code: 0,
+      errorId: "unknown",
     };
   }
 
@@ -30,7 +29,7 @@ export const loginWithJwt = async (
     return {
       message: "Invalid userGroup",
       status: "error",
-      code: 0,
+      errorId: "unknown",
     };
   }
 
@@ -40,7 +39,7 @@ export const loginWithJwt = async (
     return {
       message: "Login expired",
       status: "error",
-      code: 0,
+      errorId: "unknown",
     };
   }
 
@@ -53,14 +52,14 @@ export const loginWithJwt = async (
       return {
         message: "Session restore error",
         status: "error",
-        code: 0,
+        errorId: "unknown",
       };
     }
 
     if (!user) {
       logger.info(`Login: User "${username}" not found`);
       return {
-        code: 21,
+        errorId: "loginFailed",
         message: "User login error",
         status: "error",
       };
@@ -74,13 +73,13 @@ export const loginWithJwt = async (
       return {
         message: "User login error",
         status: "error",
-        code: 0,
+        errorId: "unknown",
       };
     }
 
     if (!settingsResponse.appOpen && user.userGroup === "user") {
       return {
-        code: 22,
+        errorId: "loginDisabled",
         message: "User login disabled",
         status: "error",
       };
@@ -100,6 +99,6 @@ export const loginWithJwt = async (
   return {
     message: "Restoring session failed",
     status: "error",
-    code: 0,
+    errorId: "unknown",
   };
 };

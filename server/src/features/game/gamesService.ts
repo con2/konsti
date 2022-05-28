@@ -18,7 +18,7 @@ export const storeGames = async (): Promise<PostGamesResponse | ApiError> => {
     return {
       message: "Games db update failed",
       status: "error",
-      code: 0,
+      errorId: "unknown",
     };
   }
 
@@ -30,7 +30,7 @@ export const storeGames = async (): Promise<PostGamesResponse | ApiError> => {
     return {
       message: "Games db update failed: Saving games failed",
       status: "error",
-      code: 0,
+      errorId: "unknown",
     };
   }
 
@@ -38,7 +38,7 @@ export const storeGames = async (): Promise<PostGamesResponse | ApiError> => {
     return {
       message: "Games db update failed: No save response",
       status: "error",
-      code: 0,
+      errorId: "unknown",
     };
   }
 
@@ -50,7 +50,7 @@ export const storeGames = async (): Promise<PostGamesResponse | ApiError> => {
       return {
         message: "Game popularity update failed",
         status: "error",
-        code: 0,
+        errorId: "unknown",
       };
     }
   }
@@ -76,7 +76,7 @@ export const fetchGames = async (): Promise<GetGamesResponse | ApiError> => {
     return {
       message: `Downloading games failed`,
       status: "error",
-      code: 0,
+      errorId: "unknown",
     };
   }
 };

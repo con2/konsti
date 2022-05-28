@@ -16,6 +16,7 @@ import {
 import {
   GetUserBySerialResponse,
   GetUserResponse,
+  PostUserError,
   PostUserResponse,
 } from "shared/typings/api/users";
 import { ApiError } from "shared/typings/api/errors";
@@ -24,12 +25,19 @@ import {
   PostFavoriteResponse,
   SaveFavoriteRequest,
 } from "shared/typings/api/favorite";
-import { GetGroupResponse, PostGroupResponse } from "shared/typings/api/groups";
-import { PostLoginResponse } from "shared/typings/api/login";
+import {
+  GetGroupResponse,
+  PostGroupError,
+  PostGroupResponse,
+} from "shared/typings/api/groups";
+import { PostLoginError, PostLoginResponse } from "shared/typings/api/login";
 import { getJWT } from "server/utils/jwt";
 import { findSettings } from "server/features/settings/settingsRepository";
 import { SelectedGame, User } from "shared/typings/models/user";
-import { PostSignedGamesResponse } from "shared/typings/api/myGames";
+import {
+  PostSignedGamesError,
+  PostSignedGamesResponse,
+} from "shared/typings/api/myGames";
 import { UserSignup } from "server/typings/result.typings";
 import { isValidSignupTime } from "server/features/user/userUtils";
 
@@ -37,12 +45,12 @@ export const storeUser = async (
   username: string,
   password: string,
   serial: string | undefined
-): Promise<PostUserResponse | ApiError> => {
+): Promise<PostUserResponse | PostUserError> => {
   if (serial === undefined) {
     return {
       message: "Invalid serial",
       status: "error",
-      code: 12,
+      errorId: "invalidSerial",
     };
   }
 
@@ -52,7 +60,7 @@ export const storeUser = async (
   } catch (error) {
     logger.error(`Error finding serial: ${error}`);
     return {
-      code: 10,
+      errorId: "unknown",
       message: "Finding serial failed",
       status: "error",
     };
@@ -62,7 +70,7 @@ export const storeUser = async (
   if (!serialFound) {
     logger.info("User: Serial is not valid");
     return {
-      code: 12,
+      errorId: "invalidSerial",
       message: "Invalid serial",
       status: "error",
     };
@@ -78,7 +86,7 @@ export const storeUser = async (
   } catch (error) {
     logger.error(`findUser(): ${error}`);
     return {
-      code: 10,
+      errorId: "unknown",
       message: "Finding user failed",
       status: "error",
     };
@@ -87,7 +95,7 @@ export const storeUser = async (
   if (user) {
     logger.info(`User: Username "${username}" is already registered`);
     return {
-      code: 11,
+      errorId: "usernameNotFree",
       message: "Username in already registered",
       status: "error",
     };
@@ -102,7 +110,7 @@ export const storeUser = async (
     } catch (error) {
       logger.error(`findSerial(): ${error}`);
       return {
-        code: 10,
+        errorId: "unknown",
         message: "Finding serial failed",
         status: "error",
       };
@@ -112,7 +120,7 @@ export const storeUser = async (
     if (serialResponse) {
       logger.info("User: Serial used");
       return {
-        code: 12,
+        errorId: "invalidSerial",
         message: "Invalid serial",
         status: "error",
       };
@@ -126,7 +134,7 @@ export const storeUser = async (
       } catch (error) {
         logger.error(`hashPassword(): ${error}`);
         return {
-          code: 10,
+          errorId: "unknown",
           message: "Hashing password failed",
           status: "error",
         };
@@ -135,7 +143,7 @@ export const storeUser = async (
       if (!passwordHash) {
         logger.info("User: Serial used");
         return {
-          code: 12,
+          errorId: "invalidSerial",
           message: "Invalid serial",
           status: "error",
         };
@@ -152,7 +160,7 @@ export const storeUser = async (
         } catch (error) {
           logger.error(`saveUser(): ${error}`);
           return {
-            code: 10,
+            errorId: "unknown",
             message: "User registration failed",
             status: "error",
           };
@@ -171,7 +179,7 @@ export const storeUser = async (
   return {
     message: "Unknown error",
     status: "error",
-    code: 0,
+    errorId: "unknown",
   };
 };
 
@@ -187,7 +195,7 @@ export const storeUserPassword = async (
     return {
       message: "Password change error",
       status: "error",
-      code: 0,
+      errorId: "unknown",
     };
   }
 
@@ -198,7 +206,7 @@ export const storeUserPassword = async (
     return {
       message: "Password change error",
       status: "error",
-      code: 0,
+      errorId: "unknown",
     };
   }
 
@@ -212,7 +220,7 @@ export const storeUserPassword = async (
   return {
     message: "Unknown error",
     status: "error",
-    code: 0,
+    errorId: "unknown",
   };
 };
 
@@ -229,7 +237,7 @@ export const fetchUserByUsername = async (
       return {
         message: "Getting user data failed",
         status: "error",
-        code: 0,
+        errorId: "unknown",
       };
     }
   }
@@ -238,7 +246,7 @@ export const fetchUserByUsername = async (
     return {
       message: `User ${username} not found`,
       status: "error",
-      code: 0,
+      errorId: "unknown",
     };
   }
 
@@ -271,7 +279,7 @@ export const fetchUserBySerialOrUsername = async (
     return {
       message: "Getting user data failed",
       status: "error",
-      code: 0,
+      errorId: "unknown",
     };
   }
 
@@ -279,7 +287,7 @@ export const fetchUserBySerialOrUsername = async (
     return {
       message: `User with search term ${searchTerm} not found`,
       status: "error",
-      code: 0,
+      errorId: "unknown",
     };
   }
 
@@ -301,7 +309,7 @@ export const storeFavorite = async (
     return {
       message: "Update favorite failure",
       status: "error",
-      code: 0,
+      errorId: "unknown",
     };
   }
 
@@ -316,7 +324,7 @@ export const storeFavorite = async (
   return {
     message: "Update favorite failure",
     status: "error",
-    code: 0,
+    errorId: "unknown",
   };
 };
 
@@ -327,7 +335,7 @@ export const storeGroup = async (
   ownSerial: string,
   leaveGroup = false,
   closeGroup = false
-): Promise<PostGroupResponse | ApiError> => {
+): Promise<PostGroupResponse | PostGroupError> => {
   if (closeGroup) {
     const groupMembers = await findGroupMembers(groupCode);
 
@@ -356,7 +364,7 @@ export const storeGroup = async (
       return {
         message: "Creator cannot leave non-empty group",
         status: "error",
-        code: 36,
+        errorId: "creatorCannotLeaveNonEmpty",
       };
     }
 
@@ -368,7 +376,7 @@ export const storeGroup = async (
       return {
         message: "Failed to leave group",
         status: "error",
-        code: 35,
+        errorId: "groupUpdateFailed",
       };
     }
 
@@ -383,7 +391,7 @@ export const storeGroup = async (
       return {
         message: "Failed to leave group",
         status: "error",
-        code: 35,
+        errorId: "groupUpdateFailed",
       };
     }
   }
@@ -400,7 +408,7 @@ export const storeGroup = async (
       return {
         message: "Own group already exists",
         status: "error",
-        code: 34,
+        errorId: "groupExists",
       };
     }
 
@@ -409,7 +417,7 @@ export const storeGroup = async (
       return {
         message: "Own group already exists",
         status: "error",
-        code: 34,
+        errorId: "groupExists",
       };
     }
 
@@ -422,7 +430,7 @@ export const storeGroup = async (
       return {
         message: "Save group failure",
         status: "error",
-        code: 30,
+        errorId: "unknown",
       };
     }
 
@@ -436,7 +444,7 @@ export const storeGroup = async (
       return {
         message: "Save group failure",
         status: "error",
-        code: 30,
+        errorId: "unknown",
       };
     }
   }
@@ -448,7 +456,7 @@ export const storeGroup = async (
       return {
         message: "Cannot join own group",
         status: "error",
-        code: 33,
+        errorId: "cannotJoinOwnGroup",
       };
     }
 
@@ -461,7 +469,7 @@ export const storeGroup = async (
       return {
         message: "Error finding serial",
         status: "error",
-        code: 31,
+        errorId: "invalidGroupCode",
       };
     }
 
@@ -470,7 +478,7 @@ export const storeGroup = async (
       return {
         message: "Invalid group code",
         status: "error",
-        code: 31,
+        errorId: "invalidGroupCode",
       };
     }
 
@@ -484,7 +492,7 @@ export const storeGroup = async (
       return {
         message: "Error finding group",
         status: "error",
-        code: 32,
+        errorId: "groupDoesNotExist",
       };
     }
 
@@ -493,7 +501,7 @@ export const storeGroup = async (
       return {
         message: "Group does not exist",
         status: "error",
-        code: 32,
+        errorId: "groupDoesNotExist",
       };
     }
 
@@ -506,7 +514,7 @@ export const storeGroup = async (
       return {
         message: "Error saving group",
         status: "error",
-        code: 30,
+        errorId: "unknown",
       };
     }
 
@@ -521,7 +529,7 @@ export const storeGroup = async (
       return {
         message: "Failed to update group",
         status: "error",
-        code: 30,
+        errorId: "unknown",
       };
     }
   }
@@ -529,7 +537,7 @@ export const storeGroup = async (
   return {
     message: "Unknown error",
     status: "error",
-    code: 0,
+    errorId: "unknown",
   };
 };
 
@@ -561,7 +569,7 @@ export const fetchGroup = async (
     return {
       message: "Getting group members failed",
       status: "error",
-      code: 0,
+      errorId: "unknown",
     };
   }
 };
@@ -569,7 +577,7 @@ export const fetchGroup = async (
 export const login = async (
   username: string,
   password: string
-): Promise<PostLoginResponse | ApiError> => {
+): Promise<PostLoginResponse | PostLoginError> => {
   let user;
   try {
     user = await findUser(username);
@@ -578,14 +586,14 @@ export const login = async (
     return {
       message: "User login error",
       status: "error",
-      code: 0,
+      errorId: "unknown",
     };
   }
 
   if (!user) {
     logger.info(`Login: User "${username}" not found`);
     return {
-      code: 21,
+      errorId: "loginFailed",
       message: "User login error",
       status: "error",
     };
@@ -599,13 +607,13 @@ export const login = async (
     return {
       message: "User login error",
       status: "error",
-      code: 0,
+      errorId: "unknown",
     };
   }
 
   if (!settingsResponse.appOpen && user.userGroup === "user") {
     return {
-      code: 22,
+      errorId: "loginDisabled",
       message: "User login disabled",
       status: "error",
     };
@@ -635,7 +643,7 @@ export const login = async (
       logger.info(`Login: Password for user "${username}" doesn't match`);
 
       return {
-        code: 21,
+        errorId: "loginFailed",
         message: "User login error",
         status: "error",
       };
@@ -645,7 +653,7 @@ export const login = async (
     return {
       message: "User login error",
       status: "error",
-      code: 0,
+      errorId: "unknown",
     };
   }
 };
@@ -654,19 +662,19 @@ export const storeSignedGames = async (
   selectedGames: readonly SelectedGame[],
   username: string,
   signupTime: string
-): Promise<PostSignedGamesResponse | ApiError> => {
+): Promise<PostSignedGamesResponse | PostSignedGamesError> => {
   if (!signupTime) {
     return {
       message: "Signup failure",
       status: "error",
-      code: 0,
+      errorId: "unknown",
     };
   }
 
   const validSignupTime = isValidSignupTime(signupTime);
   if (!validSignupTime) {
     return {
-      code: 41,
+      errorId: "signupEnded",
       message: "Signup failure",
       status: "error",
     };
@@ -688,7 +696,7 @@ export const storeSignedGames = async (
     return {
       message: "Signup failure",
       status: "error",
-      code: 0,
+      errorId: "unknown",
     };
   }
 };

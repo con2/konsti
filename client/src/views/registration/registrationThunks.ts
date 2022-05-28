@@ -22,10 +22,10 @@ export const submitRegistration = (
     }
 
     if (registrationResponse?.status === "error") {
-      switch (registrationResponse.code) {
-        case 11:
+      switch (registrationResponse.errorId) {
+        case "usernameNotFree":
           return RegistrationErrorMessage.USERNAME_TAKEN;
-        case 12:
+        case "invalidSerial":
           return RegistrationErrorMessage.INVALID_SERIAL;
         default:
           return RegistrationErrorMessage.UNKNOWN;

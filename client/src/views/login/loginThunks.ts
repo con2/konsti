@@ -29,10 +29,10 @@ export const submitLogin = (
     if (loginResponse?.status === "error") {
       clearSession();
 
-      switch (loginResponse.code) {
-        case 21:
+      switch (loginResponse.errorId) {
+        case "loginFailed":
           return LoginErrorMessage.LOGIN_FAILED;
-        case 22:
+        case "loginDisabled":
           return LoginErrorMessage.LOGIN_DISABLED;
         default:
           return LoginErrorMessage.UNKNOWN;
@@ -75,13 +75,13 @@ export const submitSessionRecovery = (jwt: string): AppThunk => {
     if (loginResponse?.status === "error") {
       clearSession();
 
-      switch (loginResponse.code) {
-        case 21:
+      switch (loginResponse.errorId) {
+        case "loginFailed":
           throw new Error("error.loginFailed");
-        case 22:
+        case "loginDisabled":
           throw new Error("error.loginDisabled");
         default:
-          throw new Error(`error.unkown`);
+          throw new Error(`error.unknown`);
       }
     }
 
