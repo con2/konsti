@@ -33,9 +33,18 @@ api.interceptors.request.use((requestConfig) => {
 api.interceptors.response.use(
   (response) => response,
   (error) => {
+    if (error.code === "ERR_NETWORK") {
+      store.dispatch(addError(t(ErrorMessageType.NETWORK_ERROR)));
+      return {
+        code: 0,
+        message: "Network error",
+        status: "error",
+      };
+    }
+
     const response = error.response;
-    const method: HttpMethod = response.config?.method.toUpperCase();
-    const url: ApiEndpoint = response.config?.url;
+    const method: HttpMethod = response.config.method.toUpperCase();
+    const url: ApiEndpoint = response.config.url;
 
     store.dispatch(addError(t(ErrorMessageType.API_ERROR, { method, url })));
 
