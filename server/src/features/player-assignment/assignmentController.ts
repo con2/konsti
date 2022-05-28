@@ -18,7 +18,7 @@ export const storeAssignment = async (
     return {
       message: "Invalid starting time",
       status: "error",
-      code: 0,
+      errorId: "unknown",
     };
   }
 
@@ -33,7 +33,7 @@ export const storeAssignment = async (
     return {
       message: "Players assign failure",
       status: "error",
-      code: 0,
+      errorId: "unknown",
     };
   }
 
@@ -41,7 +41,7 @@ export const storeAssignment = async (
     return {
       message: "Players assign failure",
       status: "error",
-      code: 0,
+      errorId: "unknown",
     };
   }
 
@@ -57,7 +57,7 @@ export const storeAssignment = async (
     return {
       message: "Players assign failure",
       status: "error",
-      code: 0,
+      errorId: "unknown",
     };
   }
 
@@ -71,7 +71,7 @@ export const storeAssignment = async (
       return {
         message: "Players assign failure",
         status: "error",
-        code: 0,
+        errorId: "unknown",
       };
     }
   }

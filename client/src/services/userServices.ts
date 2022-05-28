@@ -4,13 +4,14 @@ import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
   GetUserBySerialResponse,
   GetUserResponse,
+  PostUserError,
   PostUserResponse,
 } from "shared/typings/api/users";
 import { RegistrationFormFields } from "shared/typings/api/login";
 
 export const postRegistration = async (
   registrationFormFields: RegistrationFormFields
-): Promise<PostUserResponse | ApiError> => {
+): Promise<PostUserResponse | PostUserError> => {
   const { username, password, serial } = registrationFormFields;
 
   const response = await api.post<PostUserResponse>(ApiEndpoint.USERS, {

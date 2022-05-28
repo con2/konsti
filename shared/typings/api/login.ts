@@ -1,3 +1,4 @@
+import { ApiError } from "shared/typings/api/errors";
 import { UserGroup } from "shared/typings/models/user";
 
 export interface PostLoginResponse {
@@ -8,6 +9,10 @@ export interface PostLoginResponse {
   status: "success";
   userGroup: UserGroup;
   username: string;
+}
+
+export interface PostLoginError extends ApiError {
+  errorId: "unknown" | "loginFailed" | "loginDisabled";
 }
 
 export interface LoginFormFields {
