@@ -9,6 +9,10 @@ export interface PostSignedGamesResponse {
   status: "success";
 }
 
+export interface PostSignedGamesError extends ApiError {
+  errorId: "unknown" | "signupEnded";
+}
+
 export interface SignupData {
   username: string;
   selectedGames: readonly SelectedGame[];
@@ -22,7 +26,7 @@ export interface PostEnteredGameResponse {
 }
 
 export interface PostEnteredGameError extends ApiError {
-  code: 0 | 51;
+  errorId: "unknown" | "gameFull";
 }
 
 export interface DeleteEnteredGameResponse {

@@ -14,7 +14,7 @@ export const fetchResults = async (
     return {
       message: "Getting results failed",
       status: "error",
-      code: 0,
+      errorId: "unknown",
     };
   }
 

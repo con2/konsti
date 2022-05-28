@@ -93,17 +93,17 @@ export const GroupView = (): ReactElement => {
       ownSerial: serial,
     };
 
-    const errorCode = await dispatch(submitJoinGroup(groupRequest));
+    const error = await dispatch(submitJoinGroup(groupRequest));
 
-    if (errorCode) {
-      switch (errorCode) {
-        case 31:
+    if (error) {
+      switch (error) {
+        case "invalidGroupCode":
           showMessage({
             value: t("group.invalidGroupCode"),
             style: "error",
           });
           return;
-        case 32:
+        case "groupDoesNotExist":
           showMessage({
             value: t("group.groupNotExist"),
             style: "error",
@@ -137,11 +137,11 @@ export const GroupView = (): ReactElement => {
       leaveGroup: true,
     };
 
-    const errorCode = await dispatch(submitLeaveGroup(groupRequest));
+    const error = await dispatch(submitLeaveGroup(groupRequest));
 
-    if (errorCode) {
-      switch (errorCode) {
-        case 36:
+    if (error) {
+      switch (error) {
+        case "creatorCannotLeaveNonEmpty":
           showMessage({
             value: t("group.groupNotEmpty"),
             style: "error",

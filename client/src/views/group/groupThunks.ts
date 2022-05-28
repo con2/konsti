@@ -9,12 +9,12 @@ import { GroupRequest } from "shared/typings/api/groups";
 
 export const submitJoinGroup = (
   groupRequest: GroupRequest
-): AppThunk<Promise<number | undefined>> => {
-  return async (dispatch): Promise<number | undefined> => {
+): AppThunk<Promise<string | undefined>> => {
+  return async (dispatch): Promise<string | undefined> => {
     const joinGroupResponse = await postGroup(groupRequest);
 
     if (joinGroupResponse?.status === "error") {
-      return joinGroupResponse.code;
+      return joinGroupResponse.errorId;
     }
 
     if (joinGroupResponse?.status === "success") {
@@ -60,12 +60,12 @@ export const submitGetGroup = (
 
 export const submitLeaveGroup = (
   groupRequest: GroupRequest
-): AppThunk<Promise<number | undefined>> => {
-  return async (dispatch): Promise<number | undefined> => {
+): AppThunk<Promise<string | undefined>> => {
+  return async (dispatch): Promise<string | undefined> => {
     const leaveGroupResponse = await postGroup(groupRequest);
 
     if (leaveGroupResponse?.status === "error") {
-      return leaveGroupResponse.code;
+      return leaveGroupResponse.errorId;
     }
 
     if (leaveGroupResponse?.status === "success") {

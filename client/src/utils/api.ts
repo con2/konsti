@@ -36,7 +36,7 @@ api.interceptors.response.use(
     if (error.code === "ERR_NETWORK") {
       store.dispatch(addError(t(ErrorMessageType.NETWORK_ERROR)));
       return {
-        code: 0,
+        errorId: "unknown",
         message: "Network error",
         status: "error",
       };
@@ -49,7 +49,7 @@ api.interceptors.response.use(
     store.dispatch(addError(t(ErrorMessageType.API_ERROR, { method, url })));
 
     const data: ApiError = {
-      code: 0,
+      errorId: "unknown",
       message: "Invalid API response",
       status: "error",
     };

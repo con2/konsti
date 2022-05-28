@@ -16,7 +16,7 @@ export const storeFeedback = async (
     return {
       message: "Post feedback failure",
       status: "error",
-      code: 0,
+      errorId: "unknown",
     };
   }
 };

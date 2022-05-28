@@ -26,7 +26,7 @@ export const fetchTestSettings = async (): Promise<
     return {
       message: "Getting test settings failed",
       status: "error",
-      code: 0,
+      errorId: "unknown",
     };
   }
 };
@@ -45,7 +45,7 @@ export const updateTestSettings = async (
     return {
       message: "Update test settings failure",
       status: "error",
-      code: 0,
+      errorId: "unknown",
     };
   }
 };
