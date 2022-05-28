@@ -310,5 +310,8 @@
     "algorithm": "Algorithm",
     "algorithm+direct": "Algorithm + Direct"
   },
-  "apiError": "Error while calling {{method}} {{url}}"
+  "backendError": {
+    "apiError": "Error while calling {{method}} {{url}}",
+    "networkError": "Network error, connection to server failed"
+  }
 }
