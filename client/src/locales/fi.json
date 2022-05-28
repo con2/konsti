@@ -310,5 +310,8 @@
     "algorithm": "Algoritmi",
     "algorithm+direct": "Algoritmi + Suora"
   },
-  "apiError": "Virhe kutsuessa {{method}} {{url}}"
+  "backendError": {
+    "apiError": "Virhe kutsuessa {{method}} {{url}}",
+    "networkError": "Verkkovirhe, yhteys palvelimeen epäonnistui"
+  }
 }

@@ -7,7 +7,8 @@ import { removeError } from "client/views/admin/adminSlice";
 import { HEADER_HEIGHT } from "client/components/Header";
 
 export enum ErrorMessageType {
-  API_ERROR = "apiError",
+  NETWORK_ERROR = "backendError.networkError",
+  API_ERROR = "backendError.apiError",
 }
 
 export const ErrorBar = (): ReactElement | null => {
