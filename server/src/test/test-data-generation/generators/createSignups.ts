@@ -4,12 +4,10 @@ import _ from "lodash";
 import { logger } from "server/utils/logger";
 import { updateGamePopularity } from "server/features/game-popularity/updateGamePopularity";
 import { Game } from "shared/typings/models/game";
-import {
-  findUsers,
-  saveSignedGames,
-} from "server/features/user/userRepository";
+import { findUsers } from "server/features/user/userRepository";
 import { findGames } from "server/features/game/gameRepository";
 import { SelectedGame, User } from "shared/typings/models/user";
+import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
 
 export const createSignups = async (): Promise<void> => {
   const games = await findGames();
