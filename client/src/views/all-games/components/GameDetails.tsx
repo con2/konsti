@@ -161,7 +161,8 @@ export const GameDetails = (): ReactElement => {
       <div>
         <Button
           onClick={() => {
-            navigate(-1);
+            // Navigate to front page if no previous page exists
+            window.history.state?.idx > 0 ? navigate(-1) : navigate("/");
           }}
           buttonStyle={ButtonStyle.NORMAL}
         >
