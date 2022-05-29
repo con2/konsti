@@ -19,6 +19,7 @@ import {
   postEnteredGame,
   postSignedGames,
 } from "client/services/myGamesServices";
+import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 
 export const submitGetUser = (username: string): AppThunk => {
   return async (dispatch): Promise<void> => {
@@ -65,6 +66,7 @@ export const submitUpdateFavorites = (
 export enum PostEnteredGameError {
   GAME_FULL = "signup.gameIsFull",
   UNKNOWN = "signupError.generic",
+  SIGNUP_ENDED = "signupError.signupEnded",
   EMPTY = "",
 }
 
@@ -76,14 +78,14 @@ export const submitPostEnteredGame = (
 
     if (signupResponse?.status === "error") {
       switch (signupResponse.errorId) {
-        /*
-        case 'signupEnded':
-          return "Signup ended";
-        */
+        case "signupEnded":
+          return PostEnteredGameError.SIGNUP_ENDED;
         case "gameFull":
           return PostEnteredGameError.GAME_FULL;
-        default:
+        case "unknown":
           return PostEnteredGameError.UNKNOWN;
+        default:
+          exhaustiveSwitchGuard(signupResponse.errorId);
       }
     }
 

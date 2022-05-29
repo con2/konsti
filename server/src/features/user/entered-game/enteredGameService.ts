@@ -5,6 +5,7 @@ import {
   saveEnteredGame,
 } from "server/features/user/entered-game/enteredGameRepository";
 import { findUsers } from "server/features/user/userRepository";
+import { isValidSignupTime } from "server/features/user/userUtils";
 import { ApiError } from "shared/typings/api/errors";
 import {
   DeleteEnteredGameParameters,
@@ -17,9 +18,20 @@ import {
 export const storeEnteredGame = async (
   enteredGameRequest: PostEnteredGameParameters
 ): Promise<PostEnteredGameResponse | PostEnteredGameError> => {
+  const { startTime, enteredGameId } = enteredGameRequest;
+
+  const validSignupTime = isValidSignupTime(startTime);
+  if (!validSignupTime) {
+    return {
+      errorId: "signupEnded",
+      message: "Signup time ended",
+      status: "error",
+    };
+  }
+
   let game;
   try {
-    game = await findGameById(enteredGameRequest.enteredGameId);
+    game = await findGameById(enteredGameId);
     if (!game) throw new Error("Entered game not found");
   } catch (error) {
     return {
@@ -32,10 +44,7 @@ export const storeEnteredGame = async (
   let usersForGame;
   try {
     const users = await findUsers();
-    usersForGame = await getUsersForGame(
-      users,
-      enteredGameRequest.enteredGameId
-    );
+    usersForGame = await getUsersForGame(users, enteredGameId);
   } catch (error) {
     return {
       message: `Error counting users for game`,
@@ -64,8 +73,7 @@ export const storeEnteredGame = async (
   }
 
   const newEnteredGame = user.enteredGames.find(
-    (enteredGame) =>
-      enteredGame.gameDetails.gameId === enteredGameRequest.enteredGameId
+    (enteredGame) => enteredGame.gameDetails.gameId === enteredGameId
   );
 
   if (user && newEnteredGame) {
