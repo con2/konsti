@@ -17,15 +17,17 @@ import {
   deleteEnteredGame,
   postEnteredGame,
 } from "server/features/user/entered-game/enteredGameController";
-import { postSessionRestore } from "server/features/user/session-restore/sessionRestoreController";
+import { postFavorite } from "server/features/user/favorite-game/favoriteGameController";
 import {
   getGroup,
-  getUser,
-  postFavorite,
   postGroup,
-  postLogin,
+} from "server/features/user/group/groupController";
+import { postLogin } from "server/features/user/login/loginController";
+import { postSessionRestore } from "server/features/user/session-restore/sessionRestoreController";
+import { postSignedGames } from "server/features/user/signed-game/signedGameController";
+import {
+  getUser,
   postUser,
-  postSignedGames,
   getUserBySerialOrUsername,
   postUserPassword,
 } from "server/features/user/userController";

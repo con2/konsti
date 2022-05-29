@@ -8,7 +8,7 @@ export interface ResultDoc extends Result, mongoose.Document {
   message: string;
 }
 
-export interface UserSignup {
+export interface UserSignedGames {
   username: string;
   signedGames: readonly SelectedGame[];
 }
