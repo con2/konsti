@@ -26,7 +26,7 @@ export interface PostEnteredGameResponse {
 }
 
 export interface PostEnteredGameError extends ApiError {
-  errorId: "unknown" | "gameFull";
+  errorId: "unknown" | "gameFull" | "signupEnded";
 }
 
 export interface DeleteEnteredGameResponse {

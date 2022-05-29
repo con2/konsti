@@ -2,6 +2,7 @@ import { postRegistration } from "client/services/userServices";
 import { submitLogin } from "client/views/login/loginThunks";
 import { RegistrationFormFields } from "shared/typings/api/login";
 import { AppThunk } from "client/typings/redux.typings";
+import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 
 export enum RegistrationErrorMessage {
   USERNAME_TAKEN = "error.usernameTaken",
@@ -27,8 +28,10 @@ export const submitRegistration = (
           return RegistrationErrorMessage.USERNAME_TAKEN;
         case "invalidSerial":
           return RegistrationErrorMessage.INVALID_SERIAL;
-        default:
+        case "unknown":
           return RegistrationErrorMessage.UNKNOWN;
+        default:
+          exhaustiveSwitchGuard(registrationResponse.errorId);
       }
     }
 
