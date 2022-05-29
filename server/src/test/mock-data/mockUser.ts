@@ -1,6 +1,6 @@
 import { testGame, testGame2 } from "shared/tests/testGame";
 import { NewUser } from "server/typings/user.typings";
-import { UserSignup } from "server/typings/result.typings";
+import { UserSignedGames } from "server/typings/result.typings";
 import { UserGroup } from "shared/typings/models/user";
 import { PostEnteredGameParameters } from "shared/typings/api/myGames";
 
@@ -44,7 +44,7 @@ export const mockUser5: NewUser = {
   groupCode: "0",
 };
 
-export const mockSignup: UserSignup = {
+export const mockSignup: UserSignedGames = {
   username: "Test User",
   signedGames: [
     {

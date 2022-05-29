@@ -14,12 +14,9 @@ import {
   mockUser5,
 } from "server/test/mock-data/mockUser";
 import { testGame } from "shared/tests/testGame";
-import {
-  findUser,
-  saveEnteredGame,
-  saveUser,
-} from "server/features/user/userRepository";
+import { findUser, saveUser } from "server/features/user/userRepository";
 import { saveGames } from "server/features/game/gameRepository";
+import { saveEnteredGame } from "server/features/user/entered-game/enteredGameRepository";
 
 let server: Server;
 let mongoServer: MongoMemoryServer;

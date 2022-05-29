@@ -6,7 +6,8 @@ import { GameModel } from "server/features/game/gameSchema";
 import { mockUser, mockSignup } from "server/test/mock-data/mockUser";
 import { testGame, testGame2 } from "shared/tests/testGame";
 import { removeMovedGamesFromUsers } from "server/features/player-assignment/utils/removeMovedGamesFromUsers";
-import { saveSignedGames, saveUser } from "server/features/user/userRepository";
+import { saveUser } from "server/features/user/userRepository";
+import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
 
 let mongoServer: MongoMemoryServer;
 

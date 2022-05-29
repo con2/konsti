@@ -2,9 +2,9 @@ import { findGameById } from "server/features/game/gameRepository";
 import { getUsersForGame } from "server/features/game/gameUtils";
 import {
   delEnteredGame,
-  findUsers,
   saveEnteredGame,
-} from "server/features/user/userRepository";
+} from "server/features/user/entered-game/enteredGameRepository";
+import { findUsers } from "server/features/user/userRepository";
 import { ApiError } from "shared/typings/api/errors";
 import {
   DeleteEnteredGameParameters,
