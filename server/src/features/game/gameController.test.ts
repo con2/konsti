@@ -13,19 +13,16 @@ import {
 } from "server/test/mock-data/mockKompassiGame";
 import { findGames, saveGames } from "server/features/game/gameRepository";
 import { testGame, testGame2 } from "shared/tests/testGame";
-import {
-  findUser,
-  saveEnteredGame,
-  saveFavorite,
-  saveSignedGames,
-  saveUser,
-} from "server/features/user/userRepository";
+import { findUser, saveUser } from "server/features/user/userRepository";
 import {
   mockPostEnteredGameRequest,
   mockPostEnteredGameRequest2,
   mockSignup,
   mockUser,
 } from "server/test/mock-data/mockUser";
+import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
+import { saveEnteredGame } from "server/features/user/entered-game/enteredGameRepository";
+import { saveFavorite } from "server/features/user/favorite-game/favoriteGameRepository";
 
 let server: Server;
 let mongoServer: MongoMemoryServer;
