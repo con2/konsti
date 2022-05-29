@@ -1,10 +1,10 @@
+import _ from "lodash";
 import { isValidSignupTime } from "server/features/user/userUtils";
 import {
   PostSignedGamesError,
   PostSignedGamesResponse,
 } from "shared/typings/api/myGames";
 import { SelectedGame } from "shared/typings/models/user";
-import { UserSignedGames } from "server/typings/result.typings";
 import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
 
 export const storeSignedGames = async (
@@ -29,13 +29,22 @@ export const storeSignedGames = async (
     };
   }
 
-  const modifiedSignupData: UserSignedGames = {
-    signedGames: selectedGames,
-    username,
-  };
+  // Check for duplicate priorities, ie. some kind of error
+  const priorities = selectedGames.map((selectedGame) => selectedGame.priority);
+  const uniqPriorities = _.uniq(priorities);
+  if (priorities.length !== uniqPriorities.length) {
+    return {
+      message: "Duplicate priority score found",
+      status: "error",
+      errorId: "samePriority",
+    };
+  }
 
   try {
-    const response = await saveSignedGames(modifiedSignupData);
+    const response = await saveSignedGames({
+      signedGames: selectedGames,
+      username,
+    });
     return {
       message: "Signup success",
       status: "success",

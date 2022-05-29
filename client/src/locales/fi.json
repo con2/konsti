@@ -175,7 +175,8 @@
   "signupSaved": "Ilmoittautuminen tallennettu",
   "signupError": {
     "generic": "Ilmoittautuminen epäonnistui",
-    "signupEnded": "Ilmoittautuminen päättynyt"
+    "signupEnded": "Ilmoittautuminen päättynyt",
+    "samePriority": "Prioriteetti on jo valittu"
   },
   "signupUnsavedChanges": "Tallentamattomia muutoksia",
   "signupResultHint": "Voit katsoa ilmoittautumistulokset 'Omat pelit' sivulta klo",

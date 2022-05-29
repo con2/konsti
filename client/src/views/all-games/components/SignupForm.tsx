@@ -1,9 +1,14 @@
-import React, { ReactElement, useRef, FormEvent } from "react";
+import React, { ReactElement, useRef, FormEvent, useState } from "react";
 import { useTranslation } from "react-i18next";
+import styled from "styled-components";
 import { Game } from "shared/typings/models/game";
-import { submitPostSignedGames } from "client/views/my-games/myGamesThunks";
+import {
+  PostSignedGamesErrorMessage,
+  submitPostSignedGames,
+} from "client/views/my-games/myGamesThunks";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { Button, ButtonStyle } from "client/components/Button";
+import { ErrorMessage } from "client/components/ErrorMessage";
 
 interface Props {
   game: Game;
@@ -18,9 +23,12 @@ export const SignupForm = ({
 }: Props): ReactElement => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
-  const selectedGames = useAppSelector((state) => state.myGames.signedGames);
+  const signedGames = useAppSelector((state) => state.myGames.signedGames);
   const username = useAppSelector((state) => state.login.username);
   const priorityRef = useRef<HTMLSelectElement>(null);
+  const [errorMessage, setErrorMessage] = useState<PostSignedGamesErrorMessage>(
+    PostSignedGamesErrorMessage.EMPTY
+  );
 
   const handleCancel = (): void => {
     onCancel();
@@ -41,30 +49,22 @@ export const SignupForm = ({
       },
     ];
 
-    const combined = selectedGames.concat(newGame);
+    const error = await dispatch(
+      submitPostSignedGames({
+        username,
+        selectedGames: signedGames.concat(newGame),
+        signupTime: game.startTime,
+      })
+    );
 
-    const signupData = {
-      username,
-      selectedGames: combined,
-      signupTime: game.startTime,
-    };
-
-    const errorCode = await dispatch(submitPostSignedGames(signupData));
-
-    if (errorCode) {
-      switch (errorCode) {
-        case "signupEnded":
-          console.error("Signup ended"); // eslint-disable-line no-console
-          return;
-        default:
-          console.error("signupError"); // eslint-disable-line no-console
-      }
+    if (error) {
+      setErrorMessage(error);
     }
   };
 
-  const selectedPriorities = selectedGames
-    .filter((selectedGame) => selectedGame.gameDetails.startTime === startTime)
-    .map((selectedGame) => selectedGame.priority);
+  const selectedPriorities = signedGames
+    .filter((signedGame) => signedGame.gameDetails.startTime === startTime)
+    .map((signedGame) => signedGame.priority);
 
   const isAlreadySelected = (priority: number): boolean =>
     selectedPriorities.includes(priority);
@@ -72,7 +72,7 @@ export const SignupForm = ({
   return (
     <form>
       {t("signup.gamePriority")}{" "}
-      <select ref={priorityRef}>
+      <StyledSelect ref={priorityRef}>
         <option disabled={isAlreadySelected(1)} value="1">
           1
         </option>
@@ -82,13 +82,23 @@ export const SignupForm = ({
         <option disabled={isAlreadySelected(3)} value="3">
           3
         </option>
-      </select>
+      </StyledSelect>
       <Button onClick={handleSignup} buttonStyle={ButtonStyle.NORMAL}>
         {t("signup.confirm")}
       </Button>
       <Button onClick={handleCancel} buttonStyle={ButtonStyle.NORMAL}>
         {t("signup.cancel")}
       </Button>
+      {errorMessage && (
+        <ErrorMessage
+          message={t(errorMessage)}
+          closeError={() => setErrorMessage(PostSignedGamesErrorMessage.EMPTY)}
+        />
+      )}
     </form>
   );
 };
+
+const StyledSelect = styled.select`
+  margin-right: 10px;
+`;
