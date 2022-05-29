@@ -175,7 +175,8 @@
   "signupSaved": "Signup saved",
   "signupError": {
     "generic": "Signup failed",
-    "signupEnded": "Signup ended"
+    "signupEnded": "Signup ended",
+    "samePriority": "Priority already selected"
   },
   "signupUnsavedChanges": "Unsaved changes",
   "signupResultHint": "Sign up results are visible on 'My Games' page at",

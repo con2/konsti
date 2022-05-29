@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { Game } from "shared/typings/models/game";
 import {
-  PostEnteredGameError,
+  PostEnteredGameErrorMessage,
   submitPostEnteredGame,
 } from "client/views/my-games/myGamesThunks";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
@@ -25,8 +25,8 @@ export const EnterGameForm: FC<Props> = (props: Props): ReactElement => {
   const dispatch = useAppDispatch();
   const username = useAppSelector((state) => state.login.username);
   const [userSignupMessage, setUserSignupMessage] = useState<string>("");
-  const [errorMessage, setErrorMessage] = useState<PostEnteredGameError>(
-    PostEnteredGameError.EMPTY
+  const [errorMessage, setErrorMessage] = useState<PostEnteredGameErrorMessage>(
+    PostEnteredGameErrorMessage.EMPTY
   );
 
   const handleCancel = (): void => {
@@ -88,7 +88,7 @@ export const EnterGameForm: FC<Props> = (props: Props): ReactElement => {
       {errorMessage && (
         <ErrorMessage
           message={t(errorMessage)}
-          closeError={() => setErrorMessage(PostEnteredGameError.EMPTY)}
+          closeError={() => setErrorMessage(PostEnteredGameErrorMessage.EMPTY)}
         />
       )}
     </SignupForm>
