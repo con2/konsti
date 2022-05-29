@@ -175,7 +175,7 @@
   "signupSaved": "Signup saved",
   "signupError": {
     "generic": "Signup failed",
-    "signupEnded": "Signup ended for this time"
+    "signupEnded": "Signup ended"
   },
   "signupUnsavedChanges": "Unsaved changes",
   "signupResultHint": "Sign up results are visible on 'My Games' page at",
