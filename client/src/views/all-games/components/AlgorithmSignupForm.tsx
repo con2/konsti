@@ -39,14 +39,16 @@ export const AlgorithmSignupForm: FC<Props> = ({
     const newSignupData = signedGames.filter(
       (g: SelectedGame) => g.gameDetails.gameId !== gameToRemove.gameId
     );
-    const signupData = {
-      username,
-      selectedGames: newSignupData,
-      signupTime: gameToRemove.startTime,
-    };
 
-    await dispatch(submitPostSignedGames(signupData));
-    setSignupFormOpen(false);
+    const error = await dispatch(
+      submitPostSignedGames({
+        username,
+        selectedGames: newSignupData,
+        signupTime: gameToRemove.startTime,
+      })
+    );
+
+    error ? setErrorMessage(t(error)) : setSignupFormOpen(false);
   };
 
   const currentPriority = signedGames.find(
@@ -112,6 +114,12 @@ export const AlgorithmSignupForm: FC<Props> = ({
               {t("button.cancel")}
             </Button>
           )}
+
+          <ErrorMessage
+            message={errorMessage}
+            closeError={() => setErrorMessage("")}
+          />
+
           <p>
             {t("signup.alreadySigned", {
               CURRENT_PRIORITY: currentPriority,
@@ -126,10 +134,6 @@ export const AlgorithmSignupForm: FC<Props> = ({
           onCancel={() => setSignupFormOpen(false)}
         />
       )}
-      <ErrorMessage
-        message={errorMessage}
-        closeError={() => setErrorMessage("")}
-      />
     </>
   );
 };

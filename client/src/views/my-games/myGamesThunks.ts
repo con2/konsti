@@ -63,7 +63,7 @@ export const submitUpdateFavorites = (
   };
 };
 
-export enum PostEnteredGameError {
+export enum PostEnteredGameErrorMessage {
   GAME_FULL = "signup.gameIsFull",
   UNKNOWN = "signupError.generic",
   SIGNUP_ENDED = "signupError.signupEnded",
@@ -72,18 +72,18 @@ export enum PostEnteredGameError {
 
 export const submitPostEnteredGame = (
   data: PostEnteredGameParameters
-): AppThunk<Promise<PostEnteredGameError | undefined>> => {
-  return async (dispatch): Promise<PostEnteredGameError | undefined> => {
+): AppThunk<Promise<PostEnteredGameErrorMessage | undefined>> => {
+  return async (dispatch): Promise<PostEnteredGameErrorMessage | undefined> => {
     const signupResponse = await postEnteredGame(data);
 
     if (signupResponse?.status === "error") {
       switch (signupResponse.errorId) {
         case "signupEnded":
-          return PostEnteredGameError.SIGNUP_ENDED;
+          return PostEnteredGameErrorMessage.SIGNUP_ENDED;
         case "gameFull":
-          return PostEnteredGameError.GAME_FULL;
+          return PostEnteredGameErrorMessage.GAME_FULL;
         case "unknown":
-          return PostEnteredGameError.UNKNOWN;
+          return PostEnteredGameErrorMessage.UNKNOWN;
         default:
           exhaustiveSwitchGuard(signupResponse.errorId);
       }
@@ -111,14 +111,30 @@ export const submitDeleteEnteredGame = (
   };
 };
 
+export enum PostSignedGamesErrorMessage {
+  SIGNUP_ENDED = "signupError.signupEnded",
+  SAME_PRIORITY = "signupError.samePriority",
+  UNKNOWN = "signupError.generic",
+  EMPTY = "",
+}
+
 export const submitPostSignedGames = (
   signupData: SignupData
-): AppThunk<Promise<string | undefined>> => {
-  return async (dispatch): Promise<string | undefined> => {
+): AppThunk<Promise<PostSignedGamesErrorMessage | undefined>> => {
+  return async (dispatch): Promise<PostSignedGamesErrorMessage | undefined> => {
     const signupResponse = await postSignedGames(signupData);
 
     if (signupResponse?.status === "error") {
-      return signupResponse.errorId;
+      switch (signupResponse.errorId) {
+        case "signupEnded":
+          return PostSignedGamesErrorMessage.SIGNUP_ENDED;
+        case "samePriority":
+          return PostSignedGamesErrorMessage.SAME_PRIORITY;
+        case "unknown":
+          return PostSignedGamesErrorMessage.UNKNOWN;
+        default:
+          exhaustiveSwitchGuard(signupResponse.errorId);
+      }
     }
 
     if (signupResponse?.status === "success") {

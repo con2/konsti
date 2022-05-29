@@ -10,7 +10,7 @@ export interface PostSignedGamesResponse {
 }
 
 export interface PostSignedGamesError extends ApiError {
-  errorId: "unknown" | "signupEnded";
+  errorId: "unknown" | "signupEnded" | "samePriority";
 }
 
 export interface SignupData {
