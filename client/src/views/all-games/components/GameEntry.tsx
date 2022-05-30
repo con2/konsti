@@ -11,7 +11,11 @@ import { AlgorithmSignupForm } from "./AlgorithmSignupForm";
 import { DirectSignupForm } from "./DirectSignupForm";
 import { Button, ButtonStyle } from "client/components/Button";
 import { SelectedGame } from "shared/typings/models/user";
-import { getUpcomingEnteredGames } from "client/utils/getUpcomingGames";
+import {
+  getUpcomingEnteredGames,
+  getUpcomingSignedGames,
+} from "client/utils/getUpcomingGames";
+import { isAlreadyEntered, isAlreadySigned } from "./allGamesUtils";
 
 const DESCRIPTION_SENTENCES_LENGTH = 3;
 const matchNextSentence = /([.?!])\s*(?=[A-Z])/g;
@@ -41,11 +45,13 @@ export const GameEntry = ({
   );
   const enteredGames = useAppSelector((state) => state.myGames.enteredGames);
   const enteredGamesForTimeslot = getUpcomingEnteredGames(enteredGames).filter(
-    (g) => g.gameDetails.startTime === startTime
+    ({ gameDetails }) => gameDetails.startTime === startTime
   );
-  const isEnteredCurrentGame = enteredGames.some(
-    (g) => g.gameDetails.gameId === game.gameId
+  const isEnteredCurrentGame = isAlreadyEntered(game, enteredGames);
+  const signedGamesForTimeslot = getUpcomingSignedGames(signedGames).filter(
+    ({ gameDetails }) => gameDetails.startTime === startTime
   );
+  const isSignedForCurrentGame = isAlreadySigned(game, signedGames);
 
   const dispatch = useAppDispatch();
 
@@ -77,12 +83,13 @@ export const GameEntry = ({
   };
 
   const isGameDisabled =
-    !isEnteredCurrentGame && enteredGamesForTimeslot.length > 0;
+    (!isEnteredCurrentGame && enteredGamesForTimeslot.length > 0) ||
+    (!isSignedForCurrentGame && signedGamesForTimeslot.length === 3);
   return (
     <GameContainer
       key={game.gameId}
       disabled={isGameDisabled}
-      signed={isEnteredCurrentGame}
+      signed={Boolean(isEnteredCurrentGame || isSignedForCurrentGame)}
       data-testid="game-container"
     >
       <GameHeader>
@@ -255,7 +262,8 @@ const GameContainer = styled.div<{ disabled: boolean; signed: boolean }>`
   box-shadow: 1px 8px 15px 0 rgba(0, 0, 0, 0.42);
   color: #3d3d3d;
   ${(props) => props.disabled && "opacity: 50%"}
-  ${(props) => props.signed && `border-left: 5px solid ${props.theme.borderActive}`}
+  ${(props) =>
+    props.signed && `border-left: 5px solid ${props.theme.borderActive}`}
 `;
 
 const GameListShortDescription = styled.p`
