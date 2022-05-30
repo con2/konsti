@@ -104,7 +104,7 @@ export const GameEntry = ({
           </p>
           <PlayerCount visible={isEnterGameMode}>
             {t("signup.signupCount", {
-              PLAYERS: players,
+              PLAYERS: game.popularity - game.maxAttendance,
               MAX_ATTENDANCE: game.maxAttendance,
             })}
           </PlayerCount>
@@ -115,9 +115,9 @@ export const GameEntry = ({
                 game.maxAttendance,
                 game.minAttendance
               )}
-            />{" "}
+            />{" "} {game.popularity} {" " + game.minAttendance + " " + players}
             {formatGamePopularityInfo(
-              players,
+              game.popularity,
               game.maxAttendance,
               game.minAttendance
             )}
