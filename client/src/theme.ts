@@ -51,6 +51,9 @@ export const theme = {
   buttonText: black,
   buttonTextWarning: black,
 
+  errorCloseButtonBackground: redLight,
+  errorCloseButtonBorder: red,
+
   textError: red,
   textLink: blueDark,
   textMain: black,
