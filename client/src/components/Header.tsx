@@ -1,6 +1,8 @@
 import React, { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { LanguageSelector } from "client/components/LanguageSelector";
 import { Navigation } from "./Navigation";
 import { FirstLogin } from "./FirstLogin";
@@ -23,7 +25,13 @@ export const Header = (): ReactElement => {
         <HeaderBar>
           {t("appDescription", { CONVENTION_NAME, CONVENTION_YEAR })}
         </HeaderBar>
-        <HeaderLanguageSelector />
+
+        <div>
+          <StyledLink to={"/about"}>
+            <StyledIcon icon="circle-question" />
+          </StyledLink>
+          <HeaderLanguageSelector />
+        </div>
       </HeaderContainer>
 
       {!appOpen && <ClosingMessage>{t("closingMessage")}</ClosingMessage>}
@@ -59,4 +67,16 @@ const HeaderBar = styled.div`
 
 const ClosingMessage = styled.h2`
   text-align: center;
+`;
+
+const StyledLink = styled(Link)`
+  margin-right: 12px;
+`;
+
+const StyledIcon = styled(FontAwesomeIcon)`
+  cursor: pointer;
+  font-size: ${(props) => props.theme.fontSizeLarge};
+  vertical-align: middle;
+  margin-bottom: 1px;
+  color: ${(props) => props.theme.textMain};
 `;

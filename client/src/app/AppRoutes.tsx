@@ -13,6 +13,7 @@ import { HelperView } from "client/views/helper/HelperView";
 import { useAppSelector } from "client/utils/hooks";
 import { sharedConfig } from "shared/config/sharedConfig";
 import { isAdmin, isAdminOrHelp } from "client/utils/checkUserGroup";
+import { AboutView } from "client/views/about/AboutView";
 
 export const AppRoutes = (): ReactElement => {
   const appOpen = useAppSelector((state) => state.admin.appOpen);
@@ -24,19 +25,16 @@ export const AppRoutes = (): ReactElement => {
       <Routes>
         {isAdmin(userGroup) && <Route path="/admin" element={<AdminView />} />}
         {isAdminOrHelp(userGroup) && (
-          <Route path="/help" element={<HelperView />} />
-        )}
-        {isAdminOrHelp(userGroup) && (
-          <Route path="/games/:gameId" element={<GameDetails />} />
-        )}
-        {isAdminOrHelp(userGroup) && (
-          <Route path="/games" element={<AllGamesView />} />
-        )}
-        {isAdminOrHelp(userGroup) && (
-          <Route path="/results" element={<ResultsView />} />
+          <>
+            <Route path="/help" element={<HelperView />} />
+            <Route path="/games/:gameId" element={<GameDetails />} />
+            <Route path="/games" element={<AllGamesView />} />
+            <Route path="/results" element={<ResultsView />} />
+          </>
         )}
         {!loggedIn && <Route path="/login" element={<LoginView />} />}
         <Route path="/logout" element={<LogoutView />} />
+        <Route path="/about" element={<AboutView />} />
         <Route path="/" element={<div />} />
         <Route path="/*" element={<Navigate to="/" />} />
       </Routes>
@@ -58,6 +56,7 @@ export const AppRoutes = (): ReactElement => {
         {isAdminOrHelp(userGroup) && (
           <Route path="/help" element={<HelperView />} />
         )}
+        <Route path="/about" element={<AboutView />} />
         <Route path="/" element={<Navigate to="/games" />} />
         <Route path="/*" element={<Navigate to="/" />} />
       </Routes>
@@ -70,6 +69,7 @@ export const AppRoutes = (): ReactElement => {
       <Route path="/registration" element={<RegistrationView />} />
       <Route path="/games/:gameId" element={<GameDetails />} />
       <Route path="/games" element={<AllGamesView />} />
+      <Route path="/about" element={<AboutView />} />
       <Route path="/" element={<Navigate to="/games" />} />
       <Route path="/*" element={<Navigate to="/login" />} />
     </Routes>
