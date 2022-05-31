@@ -314,5 +314,9 @@
   "backendError": {
     "apiError": "Error while calling {{method}} {{url}}",
     "networkError": "Network error, connection to server failed"
+  },
+  "aboutView": {
+    "title": "What is Konsti?",
+    "description": "Konsti is signup application designed for Finnish conventions"
   }
 }
