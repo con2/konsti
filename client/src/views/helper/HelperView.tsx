@@ -8,12 +8,17 @@ import { Button, ButtonStyle } from "client/components/Button";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
 import { useAppSelector } from "client/utils/hooks";
 
+enum HelperTool {
+  RESULTS = "results",
+  PASSWORD_MANAGEMENT = "passwordManagement",
+}
+
 export const HelperView = (): ReactElement => {
   const { t } = useTranslation();
   const signupStrategy = useAppSelector((state) => state.admin.signupStrategy);
 
-  const [selectedTool, setSelectedTool] = useState<string>(
-    "password-management"
+  const [selectedTool, setSelectedTool] = useState<HelperTool>(
+    HelperTool.PASSWORD_MANAGEMENT
   );
 
   const store = useStore();
@@ -31,28 +36,31 @@ export const HelperView = (): ReactElement => {
       {signupStrategy === SignupStrategy.ALGORITHM && (
         <Button
           buttonStyle={
-            selectedTool === "results"
+            selectedTool === HelperTool.RESULTS
               ? ButtonStyle.DISABLED
               : ButtonStyle.NORMAL
           }
-          onClick={() => setSelectedTool("results")}
+          onClick={() => setSelectedTool(HelperTool.RESULTS)}
         >
           {t("helperResults")}
         </Button>
       )}
+
       <Button
         buttonStyle={
-          selectedTool === "password-management"
+          selectedTool === HelperTool.PASSWORD_MANAGEMENT
             ? ButtonStyle.DISABLED
             : ButtonStyle.NORMAL
         }
-        onClick={() => setSelectedTool("password-management")}
+        onClick={() => setSelectedTool(HelperTool.PASSWORD_MANAGEMENT)}
       >
         {t("passwordManagement.helperPasswordManagement")}
       </Button>
 
-      {selectedTool === "results" && <HelperResultsList />}
-      {selectedTool === "password-management" && <PasswordManagement />}
+      {selectedTool === HelperTool.RESULTS && <HelperResultsList />}
+      {selectedTool === HelperTool.PASSWORD_MANAGEMENT && (
+        <PasswordManagement />
+      )}
     </div>
   );
 };
