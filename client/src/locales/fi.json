@@ -314,5 +314,9 @@
   "backendError": {
     "apiError": "Virhe kutsuessa {{method}} {{url}}",
     "networkError": "Verkkovirhe, yhteys palvelimeen epäonnistui"
+  },
+  "aboutView": {
+    "title": "Mikä on Konsti?",
+    "description": "Konsti on ilmoittautumissovellus, joka on suunniteltu suomalaisille coneille."
   }
 }

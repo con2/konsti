@@ -9,6 +9,7 @@ import {
   faTimes as fasTimes,
   faComment as fasComment,
   faXmark as fasXmark,
+  faCircleQuestion as fasCircleQuestion,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faHeart as farHeart,
@@ -27,6 +28,7 @@ export const getIconLibrary = (): void => {
     fasTimes,
     farComment,
     fasComment,
-    fasXmark
+    fasXmark,
+    fasCircleQuestion
   );
 };
