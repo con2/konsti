@@ -45,13 +45,13 @@
     "generate-serial-number": "0.0.3",
     "helmet": "5.1.0",
     "jsonwebtoken": "8.5.1",
-    "mongoose": "6.3.4",
+    "mongoose": "6.3.5",
     "morgan": "1.10.0",
     "munkres-js": "1.2.2",
     "node-schedule": "2.1.0",
     "ts-node": "10.8.0",
     "winston": "3.7.2",
-    "winston-daily-rotate-file": "4.6.1"
+    "winston-daily-rotate-file": "4.7.1"
   },
   "devDependencies": {
     "@types/bcryptjs": "2.4.2",
@@ -62,7 +62,7 @@
     "@types/supertest": "2.0.12",
     "mongodb-memory-server": "8.6.0",
     "supertest": "6.2.3",
-    "ts-node-dev": "1.1.8"
+    "ts-node-dev": "2.0.0"
   },
   "peerDependenciesMeta": {
     "typescript": {
