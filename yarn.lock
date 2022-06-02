@@ -5929,12 +5929,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eventassigner-random@npm:0.2.0":
-  version: 0.2.0
-  resolution: "eventassigner-random@npm:0.2.0"
+"eventassigner-random@file:../EventAssigner-random/eventassigner-random-0.1.2.tgz::locator=konsti-monorepo%40workspace%3A.":
+  version: 0.1.2
+  resolution: "eventassigner-random@file:../EventAssigner-random/eventassigner-random-0.1.2.tgz::locator=konsti-monorepo%40workspace%3A."
   dependencies:
     rimraf: ^3.0.2
-  checksum: 22e395667be923abda395fe7ca6d06eb34ec219d9602df00aa3c0758f451281df15184eec2cb15f1f2d433f803df9c19f1cb1c12bc750898c0eda967b6e4bd24
+  checksum: 48d6ae31410dfdbc1c585d070d827767946a5e97bbc1af7d3a0317e3a9c390c99a5a7e5dd78b7b8b2ad829638500cd98f969a0e873f1ec81d23298b0c96a651a
+  languageName: node
+  linkType: hard
+
+"eventassigner-random@npm:0.3.0":
+  version: 0.3.0
+  resolution: "eventassigner-random@npm:0.3.0"
+  dependencies:
+    rimraf: ^3.0.2
+  checksum: 55e964390059e8b3b412ce14294127fbae2c33ca05aa913d6745f4b217ac4ef55a3ca0285f422a6fa3577a7d56d10734def0c04ed933880f6b0739d67fd8df25
   languageName: node
   linkType: hard
 
@@ -8409,6 +8418,7 @@ __metadata:
     eslint-plugin-react-hooks: 4.5.0
     eslint-plugin-testing-library: 5.5.1
     eslint-plugin-unicorn: 42.0.0
+    eventassigner-random: ../EventAssigner-random/eventassigner-random-0.1.2.tgz
     husky: 8.0.1
     is-ci: 3.0.1
     jest: 28.1.0
@@ -8439,7 +8449,7 @@ __metadata:
     bcryptjs: 2.4.3
     commander: 9.3.0
     eventassigner-js: 0.1.6
-    eventassigner-random: 0.2.0
+    eventassigner-random: 0.3.0
     express: 4.18.1
     express-static-gzip: 2.1.7
     express-validator: 6.14.1
