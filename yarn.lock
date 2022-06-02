@@ -5929,15 +5929,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eventassigner-random@file:../EventAssigner-random/eventassigner-random-0.1.2.tgz::locator=konsti-monorepo%40workspace%3A.":
-  version: 0.1.2
-  resolution: "eventassigner-random@file:../EventAssigner-random/eventassigner-random-0.1.2.tgz::locator=konsti-monorepo%40workspace%3A."
-  dependencies:
-    rimraf: ^3.0.2
-  checksum: 48d6ae31410dfdbc1c585d070d827767946a5e97bbc1af7d3a0317e3a9c390c99a5a7e5dd78b7b8b2ad829638500cd98f969a0e873f1ec81d23298b0c96a651a
-  languageName: node
-  linkType: hard
-
 "eventassigner-random@npm:0.3.0":
   version: 0.3.0
   resolution: "eventassigner-random@npm:0.3.0"
@@ -8418,7 +8409,6 @@ __metadata:
     eslint-plugin-react-hooks: 4.5.0
     eslint-plugin-testing-library: 5.5.1
     eslint-plugin-unicorn: 42.0.0
-    eventassigner-random: ../EventAssigner-random/eventassigner-random-0.1.2.tgz
     husky: 8.0.1
     is-ci: 3.0.1
     jest: 28.1.0
