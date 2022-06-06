@@ -5939,12 +5939,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eventassigner-random@npm:0.2.0":
-  version: 0.2.0
-  resolution: "eventassigner-random@npm:0.2.0"
+"eventassigner-random@npm:0.3.0":
+  version: 0.3.0
+  resolution: "eventassigner-random@npm:0.3.0"
   dependencies:
     rimraf: ^3.0.2
-  checksum: 22e395667be923abda395fe7ca6d06eb34ec219d9602df00aa3c0758f451281df15184eec2cb15f1f2d433f803df9c19f1cb1c12bc750898c0eda967b6e4bd24
+  checksum: 55e964390059e8b3b412ce14294127fbae2c33ca05aa913d6745f4b217ac4ef55a3ca0285f422a6fa3577a7d56d10734def0c04ed933880f6b0739d67fd8df25
   languageName: node
   linkType: hard
 
@@ -8449,7 +8449,7 @@ __metadata:
     bcryptjs: 2.4.3
     commander: 9.3.0
     eventassigner-js: 0.1.6
-    eventassigner-random: 0.2.0
+    eventassigner-random: 0.3.0
     express: 4.18.1
     express-static-gzip: 2.1.7
     express-validator: 6.14.1
