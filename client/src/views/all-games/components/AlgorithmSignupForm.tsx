@@ -1,61 +1,54 @@
 import React, { FC, ReactElement, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Game } from "shared/typings/models/game";
-import {
-  getSignedGames,
-  getUpcomingEnteredGames,
-} from "client/utils/getUpcomingGames";
 import { SignupForm } from "./SignupForm";
-import { submitSignup } from "client/views/signup/signupThunks";
+import { submitPostSignedGames } from "client/views/my-games/myGamesThunks";
 import { SelectedGame } from "shared/typings/models/user";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
-import { submitSelectedGames } from "client/views/signup/signupSlice";
 import { isAlreadySigned } from "./allGamesUtils";
-import { Button } from "client/components/Button";
+import { Button, ButtonStyle } from "client/components/Button";
+import { getIsGroupCreator } from "client/views/group/utils/getIsGroupCreator";
+import { ErrorMessage } from "client/components/ErrorMessage";
 
 interface Props {
   game: Game;
   startTime: string;
+  signedGames: readonly SelectedGame[];
 }
 
-export const AlgorithmSignupForm: FC<Props> = (
-  props: Props
-): ReactElement | null => {
-  const { game, startTime } = props;
-
+export const AlgorithmSignupForm: FC<Props> = ({
+  game,
+  startTime,
+  signedGames,
+}: Props): ReactElement | null => {
   const { t } = useTranslation();
 
   const username = useAppSelector((state) => state.login.username);
   const loggedIn = useAppSelector((state) => state.login.loggedIn);
   const serial = useAppSelector((state) => state.login.serial);
-  const groupCode = useAppSelector((state) => state.login.groupCode);
-  const signedGames = useAppSelector((state) => state.myGames.signedGames);
-  const enteredGames = useAppSelector((state) => state.myGames.enteredGames);
-  const groupMembers = useAppSelector((state) => state.login.groupMembers);
+  const groupCode = useAppSelector((state) => state.group.groupCode);
+  const groupMembers = useAppSelector((state) => state.group.groupMembers);
+  const isGroupCreator = getIsGroupCreator(groupCode, serial);
+
   const [signupFormOpen, setSignupFormOpen] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const dispatch = useAppDispatch();
 
-  const removeSignup = async (gameToRemove: Game): Promise<void> => {
-    const allSignedGames = getSignedGames(
-      signedGames,
-      groupCode,
-      serial,
-      groupMembers,
-      true
-    );
-    const allEnteredGames = getUpcomingEnteredGames(enteredGames);
-    const newSignupData = [...allSignedGames, ...allEnteredGames].filter(
+  const removeSignedGame = async (gameToRemove: Game): Promise<void> => {
+    const newSignupData = signedGames.filter(
       (g: SelectedGame) => g.gameDetails.gameId !== gameToRemove.gameId
     );
-    dispatch(submitSelectedGames(newSignupData));
-    const signupData = {
-      username,
-      selectedGames: newSignupData,
-      signupTime: gameToRemove.startTime,
-    };
 
-    await dispatch(submitSignup(signupData));
+    const error = await dispatch(
+      submitPostSignedGames({
+        username,
+        selectedGames: newSignupData,
+        signupTime: gameToRemove.startTime,
+      })
+    );
+
+    error ? setErrorMessage(t(error)) : setSignupFormOpen(false);
   };
 
   const currentPriority = signedGames.find(
@@ -66,13 +59,7 @@ export const AlgorithmSignupForm: FC<Props> = (
     (g) => g.gameDetails.startTime === startTime
   );
 
-  const alreadySignedToGame = isAlreadySigned(
-    game,
-    signedGames,
-    groupCode,
-    serial,
-    groupMembers
-  );
+  const alreadySignedToGame = isAlreadySigned(game, signedGames);
 
   const signupForAlgorithm = (
     alreadySigned: boolean,
@@ -82,13 +69,26 @@ export const AlgorithmSignupForm: FC<Props> = (
       return null;
     }
 
+    if (!isGroupCreator) {
+      return null;
+    }
+
     if (signedGamesForTimeSlot.length >= 3) {
       return <p>{t("signup.cannotSignupMoreGames")}</p>;
     }
 
     if (signedGamesForTimeSlot.length < 3 && !signupFormOpen) {
       return (
-        <Button onClick={() => setSignupFormOpen(!signupFormOpen)}>
+        <Button
+          onClick={() => {
+            if (groupMembers.length > game.maxAttendance) {
+              setErrorMessage(t("group.groupTooBigWarning"));
+            } else {
+              setSignupFormOpen(!signupFormOpen);
+            }
+          }}
+          buttonStyle={ButtonStyle.NORMAL}
+        >
           {t("signup.signup")}
         </Button>
       );
@@ -97,32 +97,43 @@ export const AlgorithmSignupForm: FC<Props> = (
     return null;
   };
 
-  if (loggedIn) {
-    return (
-      <>
-        {signupForAlgorithm(alreadySignedToGame, signedGamesForTimeslot)}
-        {alreadySignedToGame && (
-          <>
-            <Button onClick={async () => await removeSignup(game)}>
-              {t("button.cancel")}
-            </Button>
-            <p>
-              {t("signup.alreadySigned", {
-                CURRENT_PRIORITY: currentPriority,
-              })}
-            </p>
-          </>
-        )}
-        {signupFormOpen && !alreadySignedToGame && (
-          <SignupForm
-            game={game}
-            startTime={startTime}
-            onCancel={() => setSignupFormOpen(false)}
-          />
-        )}
-      </>
-    );
+  if (!loggedIn) {
+    return null;
   }
 
-  return null;
+  return (
+    <>
+      {signupForAlgorithm(alreadySignedToGame, signedGamesForTimeslot)}
+      {alreadySignedToGame && (
+        <>
+          {isGroupCreator && (
+            <Button
+              onClick={async () => await removeSignedGame(game)}
+              buttonStyle={ButtonStyle.NORMAL}
+            >
+              {t("button.cancel")}
+            </Button>
+          )}
+
+          <ErrorMessage
+            message={errorMessage}
+            closeError={() => setErrorMessage("")}
+          />
+
+          <p>
+            {t("signup.alreadySigned", {
+              CURRENT_PRIORITY: currentPriority,
+            })}
+          </p>
+        </>
+      )}
+      {signupFormOpen && !alreadySignedToGame && (
+        <SignupForm
+          game={game}
+          startTime={startTime}
+          onCancel={() => setSignupFormOpen(false)}
+        />
+      )}
+    </>
+  );
 };

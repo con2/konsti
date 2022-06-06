@@ -9,10 +9,16 @@ import { getUpcomingGames } from "client/utils/getUpcomingGames";
 import { loadGames } from "client/utils/loadData";
 import { config } from "client/config";
 import { Loading } from "client/components/Loading";
-import { Game } from "shared/typings/models/game";
+import { Game, ProgramType, Tag } from "shared/typings/models/game";
 import { getTime } from "client/utils/getTime";
 import { useAppSelector } from "client/utils/hooks";
-import { Button } from "client/components/Button";
+import { Button, ButtonStyle } from "client/components/Button";
+
+enum SelectedView {
+  ALL = "all",
+  UPCOMING = "upcoming",
+  REVOLVING_DOOR = "revolving-door",
+}
 
 export const AllGamesView = (): ReactElement => {
   const { t } = useTranslation();
@@ -20,8 +26,11 @@ export const AllGamesView = (): ReactElement => {
   const games = useAppSelector((state) => state.allGames.games);
   const testTime = useAppSelector((state) => state.testSettings.testTime);
   const hiddenGames = useAppSelector((state) => state.admin.hiddenGames);
+  const signupStrategy = useAppSelector((state) => state.admin.signupStrategy);
 
-  const [selectedView, setSelectedView] = useState<string>("upcoming");
+  const [selectedView, setSelectedView] = useState<SelectedView>(
+    SelectedView.UPCOMING
+  );
   const [selectedTag, setSelectedTag] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -34,43 +43,56 @@ export const AllGamesView = (): ReactElement => {
       setLoading(false);
     };
     fetchData();
-  }, [store, testTime]);
+  }, [store, testTime, signupStrategy]);
 
-  const visibleTags = [
-    "tabletopRPG",
-    "larp",
-    "in-english",
-    "aloittelijaystavallinen",
-    "childrensProgram",
-    "suitableUnder7",
-    "suitable7to12",
-    "suitableOver12",
-    "notSuitableUnder15",
-    "ageRestricted",
-  ];
+  const filters = {
+    programTypes: [ProgramType.TABLETOP_RPG, ProgramType.LARP],
+    tags: [
+      Tag.IN_ENGLISH,
+      Tag.BEGINNER_FRIENDLY,
+      Tag.CHILDRENS_PROGRAM,
+      Tag.SUITABLE_UNDER_7,
+      Tag.SUITABLE_7_TO_12,
+      Tag.SUITABLE_OVER_12,
+      Tag.NOT_SUITABLE_UNDER_15,
+      Tag.AGE_RESTRICTED,
+    ],
+  };
 
   return (
     <>
       <AllGamesVisibilityBar>
         <AllGamesToggleVisibility>
           <Button
-            onClick={() => setSelectedView("upcoming")}
-            disabled={selectedView === "upcoming"}
+            onClick={() => setSelectedView(SelectedView.UPCOMING)}
+            buttonStyle={
+              selectedView === SelectedView.UPCOMING
+                ? ButtonStyle.DISABLED
+                : ButtonStyle.NORMAL
+            }
           >
             {t("upcomingGames")}
           </Button>
 
           <Button
-            onClick={() => setSelectedView("all")}
-            disabled={selectedView === "all"}
+            onClick={() => setSelectedView(SelectedView.ALL)}
+            buttonStyle={
+              selectedView === SelectedView.ALL
+                ? ButtonStyle.DISABLED
+                : ButtonStyle.NORMAL
+            }
           >
             {t("allGames")}
           </Button>
 
           {config.revolvingDoorEnabled && (
             <Button
-              onClick={() => setSelectedView("revolving-door")}
-              disabled={selectedView === "revolving-door"}
+              onClick={() => setSelectedView(SelectedView.REVOLVING_DOOR)}
+              buttonStyle={
+                selectedView === SelectedView.REVOLVING_DOOR
+                  ? ButtonStyle.DISABLED
+                  : ButtonStyle.NORMAL
+              }
             >
               {t("revolvingDoor")}
             </Button>
@@ -88,23 +110,18 @@ export const AllGamesView = (): ReactElement => {
             >
               <option value="">{t("allGames")}</option>
 
-              {visibleTags.map((tag) => {
+              {filters.programTypes.map((programTypes) => {
+                return (
+                  <option key={programTypes} value={programTypes}>
+                    {t(`programType.${programTypes}`)}
+                  </option>
+                );
+              })}
+
+              {filters.tags.map((tag) => {
                 return (
                   <option key={tag} value={tag}>
-                    {tag === "in-english" && t(`gameTags.inEnglish`)}
-                    {tag === "aloittelijaystavallinen" &&
-                      t(`gameTags.beginnerFriendly`)}
-                    {tag === "sopii-lapsille" && t(`gameTags.childrenFriendly`)}
-                    {tag === "tabletopRPG" && t(`programType.tabletopRPG`)}
-                    {tag === "larp" && t(`programType.larp`)}
-                    {tag === "suitableUnder7" && t(`gameTags.suitableUnder7`)}
-                    {tag === "suitable7to12" && t(`gameTags.suitable7to12`)}
-                    {tag === "suitableOver12" && t(`gameTags.suitableOver12`)}
-                    {tag === "notSuitableUnder15" &&
-                      t(`gameTags.notSuitableUnder15`)}
-                    {tag === "ageRestricted" && t(`gameTags.ageRestricted`)}
-                    {tag === "childrensProgram" &&
-                      t(`gameTags.childrensProgram`)}
+                    {t(`gameTags.${tag}`)}
                   </option>
                 );
               })}
@@ -113,7 +130,7 @@ export const AllGamesView = (): ReactElement => {
         )}
       </AllGamesVisibilityBar>
 
-      {selectedView === "revolving-door" && (
+      {selectedView === SelectedView.REVOLVING_DOOR && (
         <>
           <RevolvingDoorInstruction>
             {t("revolvingDoorInstruction")}
@@ -162,7 +179,7 @@ const ChooseTagsInstruction = styled.span`
 const getVisibleGames = (
   games: readonly Game[],
   hiddenGames: readonly Game[],
-  selectedView: string,
+  selectedView: SelectedView,
   selectedTag: string
 ): readonly Game[] => {
   const filteredGames = getTagFilteredGames(games, selectedTag);
@@ -174,9 +191,9 @@ const getVisibleGames = (
     if (!hidden) return game;
   });
 
-  if (selectedView === "upcoming") {
+  if (selectedView === SelectedView.UPCOMING) {
     return getUpcomingGames(visibleGames);
-  } else if (selectedView === "revolving-door") {
+  } else if (selectedView === SelectedView.REVOLVING_DOOR) {
     return getUpcomingGames(visibleGames).filter((game) => game.revolvingDoor);
   }
 
@@ -188,33 +205,11 @@ const getTagFilteredGames = (
   selectedTag: string
 ): readonly Game[] => {
   if (!selectedTag) return games;
-
-  if (selectedTag === "aloittelijaystavallinen") {
-    return games.filter(
-      (game) =>
-        game.beginnerFriendly || game.tags.includes("aloittelijaystavallinen")
-    );
-  } else if (selectedTag === "tabletopRPG") {
-    return games.filter((game) => game.programType === "tabletopRPG");
-  } else if (selectedTag === "larp") {
-    return games.filter((game) => game.programType === "larp");
-  } else if (selectedTag === "in-english") {
-    return games.filter((game) => game.tags.includes("in-english"));
-  } else if (selectedTag === "childrensProgram") {
-    return games.filter((game) => game.tags.includes("lastenohjelma"));
-  } else if (selectedTag === "suitableUnder7") {
-    return games.filter((game) => game.tags.includes("sopii-alle-7v-"));
-  } else if (selectedTag === "suitable7to12") {
-    return games.filter((game) => game.tags.includes("sopii-7-12v-"));
-  } else if (selectedTag === "suitableOver12") {
-    return games.filter((game) => game.tags.includes("sopii-yli-12v-"));
-  } else if (selectedTag === "notSuitableUnder15") {
-    return games.filter((game) => game.tags.includes("ei-sovellu-alle-15v-"));
-  } else if (selectedTag === "ageRestricted") {
-    return games.filter((game) => game.tags.includes("vain-taysi-ikaisille"));
-  }
-
-  return games;
+  return games.filter(
+    (game) =>
+      game.programType.includes(selectedTag as ProgramType) ||
+      game.tags.includes(selectedTag as Tag)
+  );
 };
 
 const getRunningRevolvingDoorGames = (

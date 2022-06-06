@@ -4,17 +4,17 @@ import {
   submitLeaveGroupAsync,
   submitUpdateGroupAsync,
   submitUpdateGroupCodeAsync,
-} from "client/views/login/loginSlice";
+} from "client/views/group/groupSlice";
 import { GroupRequest } from "shared/typings/api/groups";
 
 export const submitJoinGroup = (
   groupRequest: GroupRequest
-): AppThunk<Promise<number | undefined>> => {
-  return async (dispatch): Promise<number | undefined> => {
+): AppThunk<Promise<string | undefined>> => {
+  return async (dispatch): Promise<string | undefined> => {
     const joinGroupResponse = await postGroup(groupRequest);
 
     if (joinGroupResponse?.status === "error") {
-      return joinGroupResponse.code;
+      return joinGroupResponse.errorId;
     }
 
     if (joinGroupResponse?.status === "success") {
@@ -31,7 +31,7 @@ export const submitCreateGroup = (group: GroupRequest): AppThunk => {
     const createGroupResponse = await postGroup(group);
 
     if (createGroupResponse?.status === "error") {
-      return await Promise.reject(createGroupResponse);
+      // TODO
     }
 
     if (createGroupResponse?.status === "success") {
@@ -49,7 +49,7 @@ export const submitGetGroup = (
     const getGroupResponse = await getGroup(groupCode, username);
 
     if (getGroupResponse?.status === "error") {
-      return await Promise.reject(getGroupResponse);
+      // TODO
     }
 
     if (getGroupResponse?.status === "success") {
@@ -60,12 +60,12 @@ export const submitGetGroup = (
 
 export const submitLeaveGroup = (
   groupRequest: GroupRequest
-): AppThunk<Promise<number | undefined>> => {
-  return async (dispatch): Promise<number | undefined> => {
+): AppThunk<Promise<string | undefined>> => {
+  return async (dispatch): Promise<string | undefined> => {
     const leaveGroupResponse = await postGroup(groupRequest);
 
     if (leaveGroupResponse?.status === "error") {
-      return leaveGroupResponse.code;
+      return leaveGroupResponse.errorId;
     }
 
     if (leaveGroupResponse?.status === "success") {

@@ -6,17 +6,21 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Accordion } from "client/components/Accordion";
 import { sharedConfig } from "shared/config/sharedConfig";
 import { ConventionType } from "shared/config/sharedConfig.types";
-import { Button } from "client/components/Button";
+import { Button, ButtonStyle } from "client/components/Button";
 import { Paragraph } from "client/components/Paragraph";
 import { RegistrationFormFields } from "shared/typings/api/login";
 import { useAppDispatch } from "client/utils/hooks";
-import { submitRegistration } from "client/views/registration/registrationThunks";
+import {
+  submitRegistration,
+  RegistrationErrorMessage,
+} from "client/views/registration/registrationThunks";
 import {
   PASSWORD_LENGTH_MAX,
   PASSWORD_LENGTH_MIN,
   USERNAME_LENGTH_MAX,
   USERNAME_LENGTH_MIN,
 } from "shared/constants/validation";
+import { ErrorMessage } from "client/components/ErrorMessage";
 
 export const RegistrationForm = (): ReactElement => {
   const dispatch = useAppDispatch();
@@ -25,7 +29,9 @@ export const RegistrationForm = (): ReactElement => {
   const serialRequired = sharedConfig.conventionType === ConventionType.LIVE;
 
   const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
-  const [serverError, setServerError] = useState<string>("");
+  const [serverError, setServerError] = useState<RegistrationErrorMessage>(
+    RegistrationErrorMessage.EMPTY
+  );
 
   const {
     register,
@@ -44,7 +50,7 @@ export const RegistrationForm = (): ReactElement => {
     const errorMessage = await dispatch(
       submitRegistration(registrationFormFields)
     );
-    errorMessage && setServerError(t(errorMessage));
+    errorMessage && setServerError(errorMessage);
   };
 
   return (
@@ -70,7 +76,7 @@ export const RegistrationForm = (): ReactElement => {
                   }),
                 },
                 onChange: (e) => {
-                  setServerError("");
+                  setServerError(RegistrationErrorMessage.EMPTY);
                 },
               })}
               placeholder={t("username")}
@@ -101,7 +107,7 @@ export const RegistrationForm = (): ReactElement => {
                   }),
                 },
                 onChange: (e) => {
-                  setServerError("");
+                  setServerError(RegistrationErrorMessage.EMPTY);
                 },
               })}
               placeholder={t("password")}
@@ -129,7 +135,7 @@ export const RegistrationForm = (): ReactElement => {
                   {...register("serial", {
                     required: `${t(`validation.required`)}`,
                     onChange: (e) => {
-                      setServerError("");
+                      setServerError(RegistrationErrorMessage.EMPTY);
                     },
                   })}
                   placeholder={t("serial")}
@@ -154,7 +160,7 @@ export const RegistrationForm = (): ReactElement => {
               {...register("registerDescription", {
                 required: `${t(`validation.required`)}`,
                 onChange: (e) => {
-                  setServerError("");
+                  setServerError(RegistrationErrorMessage.EMPTY);
                 },
               })}
               type={"checkbox"}
@@ -170,24 +176,29 @@ export const RegistrationForm = (): ReactElement => {
         )}
 
         <Accordion toggleButton={t("privacyPolicyButton")}>
-          <h3>{t(`privacyPolicyTitle`)}</h3>
-          <Paragraph text={t("privacyPolicyText")} />
+          <PrivacyPolicyContent>
+            <h3>{t(`privacyPolicyTitle`)}</h3>
+            <Paragraph text={t("privacyPolicyText")} />
+          </PrivacyPolicyContent>
         </Accordion>
 
-        <Button type="submit" disabled={isSubmitting}>
+        <Button
+          type="submit"
+          buttonStyle={isSubmitting ? ButtonStyle.DISABLED : ButtonStyle.NORMAL}
+        >
           {t("button.register")}
         </Button>
 
-        {serverError && <ErrorMessage>{serverError}</ErrorMessage>}
+        {serverError && (
+          <ErrorMessage
+            message={t(serverError)}
+            closeError={() => setServerError(RegistrationErrorMessage.EMPTY)}
+          />
+        )}
       </form>
     </div>
   );
 };
-
-const ErrorMessage = styled.p`
-  font-weight: 600;
-  color: ${(props) => props.theme.error};
-`;
 
 const StyledInput = styled.input`
   border: 1px solid ${(props) => props.theme.borderInactive};
@@ -222,7 +233,7 @@ const StyledFormField = styled.div`
 const FormFieldError = styled.div`
   display: flex;
   background: ${(props) => props.theme.backgroundHighlight};
-  color: ${(props) => props.theme.error};
+  color: ${(props) => props.theme.textError};
   width: 50%;
   padding: 4px 0 4px 10px;
 
@@ -233,7 +244,7 @@ const FormFieldError = styled.div`
 
 const FormFieldIcon = styled.span`
   padding: 0 0 0 8px;
-  font-size: ${(props) => props.theme.iconSize};
+  font-size: ${(props) => props.theme.fontSizeLarge};
 `;
 
 const StyledCheckbox = styled.input`
@@ -243,4 +254,8 @@ const StyledCheckbox = styled.input`
 
 const SmallLabel = styled.label`
   font-size: 14px;
+`;
+
+const PrivacyPolicyContent = styled.div`
+  padding: 0 10px;
 `;

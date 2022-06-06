@@ -149,7 +149,7 @@
     "invalidSerial": "Invalid code",
     "loginFailed": "Username and password don't match",
     "loginDisabled": "Login is disabled",
-    "unkown": "Unknown error"
+    "unknown": "Unknown error"
   },
   "agreePrivacyPolicy": "I agree to the privacy policy",
   "privacyPolicyButton": "Show privacy policy",
@@ -169,14 +169,15 @@
   "activeTimeDescription": "Game assignment will be done and results shown for the active time",
   "signupOpenBetween": "signup open",
   "signupOpenBetweenCapital": "Signup open ",
-  "signupResultsfor": "Signup results for games starting at",
-  "noResults": "No signup results available yet",
   "signupGuide": "* You can choose three game wishes. Your favorite game is the topmost on 'Selected games'.\n* It is recommended to choose more than one game wish for each start time.\n* Choose games by dragging from 'Open games' to 'Selected games'.\n* Signing up early does not give any advantage. Game seats are assigned 30 minutes before games start.\n* Remember to save changes.",
   "signupGuideTitle": "Signup help and tips",
   "signupGuideButton": "Signup help and tips",
   "signupSaved": "Signup saved",
-  "signupError": "Signup failed",
-  "signupEnded": "Signup ended for this time",
+  "signupError": {
+    "generic": "Signup failed",
+    "signupEnded": "Signup ended",
+    "samePriority": "Priority already selected"
+  },
   "signupUnsavedChanges": "Unsaved changes",
   "signupResultHint": "Sign up results are visible on 'My Games' page at",
   "closingMessage": "Konsti is closed and will open closer to the next event",
@@ -186,30 +187,6 @@
   },
   "details": "details",
   "gameLimitWarning": "Only three selected games allowed",
-  "groupTooBigWarning": "Group is bigger than the maximum number of players",
-  "enterGroupMemberCode": "User's code",
-  "enterGroupLeaderCode": "Group leader's code",
-  "joinGroup": "Join group",
-  "addGroupMember": "Add group member",
-  "createGroupConfirmationMessage": "Do you want to create a group?",
-  "youAreGroupLeader": "You are group leader",
-  "youAreInGroup": "You are in a group",
-  "groupMembers": "Group members",
-  "groupLeader": "group leader",
-  "groupMemberInfo": "Group leader will sign up to the games for the whole group. See selected games and signup results from 'My Games' page.",
-  "groupLeaderInfo": "You can sign up to games for the whole group. You can sign to games from 'Sign Up' page. Please make sure that the group is not too big for the selected games. Group leader cannot leave the group, but can close it. This will remove all members from the group.",
-  "groupLeaderWarning": "Group leader cannot leave the group if there are other members",
-  "joiningGroupWillCancelGames": "Joining a group will cancel all signups you may have done before",
-  "groupSignupGuide": "Joining a group is done with the group starter's registration code. Your own code can be found from the top of the page.",
-  "groupCreated": "Group created",
-  "invalidGroupCode": "Invalid code",
-  "groupNotExist": "Group does not exist",
-  "generalCreateGroupError": "Error creating group",
-  "groupJoined": "Joined a group",
-  "generalJoinGroupError": "Error joining group",
-  "leftGroup": "Left group",
-  "closedGroup": "Group closed",
-  "groupNotEmpty": "Leader cannot leave non-empty group",
   "noSignupResult": "You didn't get into a game for this starting time",
   "invalidGameId": "Game not found. Invalid game ID",
   "feedbackTitle": "Feedback",
@@ -228,11 +205,36 @@
   "revolvingDoorInstruction": "You can join revolving door games at any time if there are free seats in the table",
   "currentlyRunningRevolvingDoor": "Currently running games",
   "noCurrentlyRunningGames": "No running revolving door games",
-  "signupDisabledNotLeader": "You are in a group. Signup only available to the group leader.",
-  "signupForWholeGroup": "You are group leader. You can sign up to games for the whole group.",
-  "inGroupSignups": "You are in a group. Following 'Selected games' are chosen by the group leader.",
-  "closeGroupConfirmation": "Are you sure you want to close group and remove all its members?",
-  "generalLeaveGroupError": "Error leaving group",
+  "group": {
+    "signupDisabledNotCreator": "You are group member. Group creator will sign up to the games for the whole group.",
+    "signupForWholeGroup": "You are group creator. You can sign up to games for the whole group.",
+    "inGroupSignups": "You are in a group. Following games are chosen by the group creator.",
+    "closeGroupConfirmation": "Are you sure you want to close group and remove all its members?",
+    "generalLeaveGroupError": "Error leaving group",
+    "groupTooBigWarning": "Group is bigger than the maximum number of players",
+    "enterGroupMemberCode": "User's code",
+    "enterGroupCreatorCode": "Group creator's code",
+    "joinGroup": "Join group",
+    "addGroupMember": "Add group member",
+    "createGroupConfirmationMessage": "Do you want to create a group?",
+    "youAreGroupCreator": "You are group creator",
+    "youAreInGroup": "You are in a group",
+    "groupMembers": "Group members",
+    "groupCreator": "group creator",
+    "groupMemberInfo": "Group creator will sign up to the games for the whole group. See selected games from \"My Games\" page.",
+    "groupCreatorInfo": "You can sign up to games for the whole group. Please make sure that the group is not too big for the selected games. Group creator cannot leave the group, but can close it. This will remove all members from the group.",
+    "joiningGroupWillCancelGames": "Joining a group will cancel all signups you may have done before",
+    "groupSignupGuide": "Joining a group is done with the group starter's registration code. Your own code can be found from the top of the page.",
+    "groupCreated": "Group created",
+    "invalidGroupCode": "Invalid code",
+    "groupNotExist": "Group does not exist",
+    "generalCreateGroupError": "Error creating group",
+    "groupJoined": "Joined a group",
+    "generalJoinGroupError": "Error joining group",
+    "leftGroup": "Left group",
+    "closedGroup": "Group closed",
+    "groupNotEmpty": "Group creator cannot leave non-empty group"
+  },
   "signupResults": "Signup results",
   "helperResults": "Results",
   "passwordManagement": {
@@ -247,6 +249,7 @@
   },
   "errorMessage": "We have recognised an issue that 'Signup results' under 'My Games' may be shown incorrectly and are now hidden. Please see 'All Signup Results' page for correct information.",
   "testValues": {
+    "buttonText": "Test values",
     "time": "Test time",
     "strategy": "Strategy"
   },
@@ -263,14 +266,17 @@
     "playerNeeded": "Need {{COUNT}} players!",
     "gameIsFull": "Game is full",
     "confirmCancelSignup": "Confirm signup cancellation",
-    "expectedDuration": "Duration {{EXPECTED_DURATION}}"
+    "expectedDuration": "Duration {{EXPECTED_DURATION}}",
+    "playerCount": "Players {{MAX_ATTENDANCE}}",
+    "playerRange": "Players {{MIN_ATTENDANCE}} - {{MAX_ATTENDANCE}}"
   },
   "resultsView": {
     "allSignupResults": "Signup overview and players",
     "confirm": "Confirm",
     "noSignups": "No signed up players",
     "players": "Players",
-    "noStartingGames": "No starting games"
+    "noResults": "No signup results available yet",
+    "signupResultsFor": "Signup results for games starting at"
   },
   "gameDetails": {
     "addSignupTextField": "Add signup additional info field"
@@ -304,5 +310,13 @@
     "direct": "Direct",
     "algorithm": "Algorithm",
     "algorithm+direct": "Algorithm + Direct"
+  },
+  "backendError": {
+    "apiError": "Error while calling {{method}} {{url}}",
+    "networkError": "Network error, connection to server failed"
+  },
+  "aboutView": {
+    "title": "What is Konsti?",
+    "description": "Konsti is signup application designed for Finnish conventions"
   }
 }

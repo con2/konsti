@@ -1,42 +1,37 @@
 import React, { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { LanguageSelector } from "client/components/LanguageSelector";
-import { config } from "client/config";
-import { TestTimeSelector } from "client/test/test-components/TestTimeSelector";
 import { Navigation } from "./Navigation";
 import { FirstLogin } from "./FirstLogin";
 import { useAppSelector } from "client/utils/hooks";
 import { sharedConfig } from "shared/config/sharedConfig";
-import { SignupStrategySelector } from "client/test/test-components/SignupStrategySelector";
 
-export const TEST_VALUES_HEIGHT = 30;
-export const TEST_VALUES_MARGIN = 20;
 export const HEADER_HEIGHT = 40;
 
 export const Header = (): ReactElement => {
   const { t } = useTranslation();
-  const { loadedSettings, showTestValues } = config;
   const { CONVENTION_NAME, CONVENTION_YEAR } = sharedConfig;
 
   const appOpen = useAppSelector((state) => state.admin.appOpen);
 
   return (
     <>
-      {loadedSettings !== "production" && showTestValues && (
-        <TestValuesContainer>
-          <TestTimeSelector />
-          <SignupStrategySelector />
-        </TestValuesContainer>
-      )}
-
       <HeaderContainer>
         <Navigation />
 
         <HeaderBar>
           {t("appDescription", { CONVENTION_NAME, CONVENTION_YEAR })}
         </HeaderBar>
-        <HeaderLanguageSelector />
+
+        <div>
+          <StyledLink to={"/about"}>
+            <StyledIcon icon="circle-question" />
+          </StyledLink>
+          <HeaderLanguageSelector />
+        </div>
       </HeaderContainer>
 
       {!appOpen && <ClosingMessage>{t("closingMessage")}</ClosingMessage>}
@@ -74,10 +69,14 @@ const ClosingMessage = styled.h2`
   text-align: center;
 `;
 
-const TestValuesContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-  height: ${TEST_VALUES_HEIGHT}px;
-  margin: ${TEST_VALUES_MARGIN}px 0;
+const StyledLink = styled(Link)`
+  margin-right: 12px;
+`;
+
+const StyledIcon = styled(FontAwesomeIcon)`
+  cursor: pointer;
+  font-size: ${(props) => props.theme.fontSizeLarge};
+  vertical-align: middle;
+  margin-bottom: 1px;
+  color: ${(props) => props.theme.textMain};
 `;

@@ -3,16 +3,30 @@ import { postFavorite } from "client/services/favoriteServices";
 import { AppThunk } from "client/typings/redux.typings";
 import { SaveFavoriteRequest } from "shared/typings/api/favorite";
 import {
+  submitDeleteEnteredAsync,
+  submitPostEnteredGameAsync,
   submitGetUserAsync,
+  submitPostSignedGamesAsync,
   submitUpdateFavoritesAsync,
 } from "client/views/my-games/myGamesSlice";
+import {
+  DeleteEnteredGameParameters,
+  PostEnteredGameParameters,
+  SignupData,
+} from "shared/typings/api/myGames";
+import {
+  deleteEnteredGame,
+  postEnteredGame,
+  postSignedGames,
+} from "client/services/myGamesServices";
+import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 
 export const submitGetUser = (username: string): AppThunk => {
   return async (dispatch): Promise<void> => {
     const getUserResponse = await getUser(username);
 
     if (getUserResponse?.status === "error") {
-      return await Promise.reject(getUserResponse);
+      // TODO
     }
 
     if (getUserResponse?.status === "success") {
@@ -38,13 +52,93 @@ export const submitUpdateFavorites = (
     const updateFavoriteResponse = await postFavorite(favoriteData);
 
     if (updateFavoriteResponse?.status === "error") {
-      return await Promise.reject(updateFavoriteResponse);
+      // TODO
     }
 
     if (updateFavoriteResponse?.status === "success") {
       dispatch(
         submitUpdateFavoritesAsync(updateFavoriteResponse.favoritedGames)
       );
+    }
+  };
+};
+
+export enum PostEnteredGameErrorMessage {
+  GAME_FULL = "signup.gameIsFull",
+  UNKNOWN = "signupError.generic",
+  SIGNUP_ENDED = "signupError.signupEnded",
+  EMPTY = "",
+}
+
+export const submitPostEnteredGame = (
+  data: PostEnteredGameParameters
+): AppThunk<Promise<PostEnteredGameErrorMessage | undefined>> => {
+  return async (dispatch): Promise<PostEnteredGameErrorMessage | undefined> => {
+    const signupResponse = await postEnteredGame(data);
+
+    if (signupResponse?.status === "error") {
+      switch (signupResponse.errorId) {
+        case "signupEnded":
+          return PostEnteredGameErrorMessage.SIGNUP_ENDED;
+        case "gameFull":
+          return PostEnteredGameErrorMessage.GAME_FULL;
+        case "unknown":
+          return PostEnteredGameErrorMessage.UNKNOWN;
+        default:
+          exhaustiveSwitchGuard(signupResponse.errorId);
+      }
+    }
+
+    if (signupResponse?.status === "success") {
+      dispatch(submitPostEnteredGameAsync(signupResponse.enteredGame));
+    }
+  };
+};
+
+export const submitDeleteEnteredGame = (
+  data: DeleteEnteredGameParameters
+): AppThunk => {
+  return async (dispatch): Promise<void> => {
+    const signupResponse = await deleteEnteredGame(data);
+
+    if (signupResponse?.status === "error") {
+      // TODO
+    }
+
+    if (signupResponse?.status === "success") {
+      dispatch(submitDeleteEnteredAsync(data.enteredGameId));
+    }
+  };
+};
+
+export enum PostSignedGamesErrorMessage {
+  SIGNUP_ENDED = "signupError.signupEnded",
+  SAME_PRIORITY = "signupError.samePriority",
+  UNKNOWN = "signupError.generic",
+  EMPTY = "",
+}
+
+export const submitPostSignedGames = (
+  signupData: SignupData
+): AppThunk<Promise<PostSignedGamesErrorMessage | undefined>> => {
+  return async (dispatch): Promise<PostSignedGamesErrorMessage | undefined> => {
+    const signupResponse = await postSignedGames(signupData);
+
+    if (signupResponse?.status === "error") {
+      switch (signupResponse.errorId) {
+        case "signupEnded":
+          return PostSignedGamesErrorMessage.SIGNUP_ENDED;
+        case "samePriority":
+          return PostSignedGamesErrorMessage.SAME_PRIORITY;
+        case "unknown":
+          return PostSignedGamesErrorMessage.UNKNOWN;
+        default:
+          exhaustiveSwitchGuard(signupResponse.errorId);
+      }
+    }
+
+    if (signupResponse?.status === "success") {
+      dispatch(submitPostSignedGamesAsync(signupResponse.signedGames));
     }
   };
 };

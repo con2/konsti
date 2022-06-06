@@ -4,11 +4,11 @@ import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { timeFormatter } from "client/utils/timeFormatter";
 import { Game } from "shared/typings/models/game";
-import { Button } from "client/components/Button";
+import { Button, ButtonStyle } from "client/components/Button";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { updateFavorite } from "client/utils/favorite";
 
-export interface Props {
+interface Props {
   games: readonly Game[];
   startTimes: readonly string[];
 }
@@ -47,6 +47,7 @@ export const GamesByStartTimes = ({
                 onClick={async () => {
                   await removeFavorite(game);
                 }}
+                buttonStyle={ButtonStyle.NORMAL}
               >
                 {" "}
                 {t("button.removeFavorite")}{" "}

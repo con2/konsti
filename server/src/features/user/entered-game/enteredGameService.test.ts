@@ -2,19 +2,21 @@ import { Server } from "http";
 import request from "supertest";
 import { MongoMemoryServer } from "mongodb-memory-server";
 import { startServer, closeServer } from "server/utils/server";
-import { ENTERED_GAME_ENDPOINT } from "shared/constants/apiEndpoints";
+import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { getJWT } from "server/utils/jwt";
 import { UserGroup } from "shared/typings/models/user";
 import {
+  mockPostEnteredGameRequest,
   mockUser,
   mockUser2,
   mockUser3,
   mockUser4,
   mockUser5,
 } from "server/test/mock-data/mockUser";
-import { mockGame } from "server/test/mock-data/mockGame";
+import { testGame } from "shared/tests/testGame";
 import { findUser, saveUser } from "server/features/user/userRepository";
-import { findGames, saveGames } from "server/features/game/gameRepository";
+import { saveGames } from "server/features/game/gameRepository";
+import { saveEnteredGame } from "server/features/user/entered-game/enteredGameRepository";
 
 let server: Server;
 let mongoServer: MongoMemoryServer;
@@ -32,15 +34,15 @@ afterEach(async () => {
   await mongoServer.stop();
 });
 
-describe(`POST ${ENTERED_GAME_ENDPOINT}`, () => {
+describe(`POST ${ApiEndpoint.ENTERED_GAME}`, () => {
   test("should return 401 without valid authorization", async () => {
-    const response = await request(server).post(ENTERED_GAME_ENDPOINT);
+    const response = await request(server).post(ApiEndpoint.ENTERED_GAME);
     expect(response.status).toEqual(401);
   });
 
   test("should return 422 with invalid parameters", async () => {
     const response = await request(server)
-      .post(ENTERED_GAME_ENDPOINT)
+      .post(ApiEndpoint.ENTERED_GAME)
       .send({
         username: mockUser.username,
         enteredGameId: "ABCD1234",
@@ -54,11 +56,11 @@ describe(`POST ${ENTERED_GAME_ENDPOINT}`, () => {
 
   test("should return 422 if signup message is too long", async () => {
     const response = await request(server)
-      .post(ENTERED_GAME_ENDPOINT)
+      .post(ApiEndpoint.ENTERED_GAME)
       .send({
         username: mockUser.username,
-        enteredGameId: mockGame.gameId,
-        startTime: mockGame.startTime,
+        enteredGameId: testGame.gameId,
+        startTime: testGame.startTime,
         message:
           "Test message Test message Test message Test message Test message Test message Test message Test message Test message Test message Test message Test message Test message",
       })
@@ -73,7 +75,7 @@ describe(`POST ${ENTERED_GAME_ENDPOINT}`, () => {
     await saveUser(mockUser);
 
     const response = await request(server)
-      .post(ENTERED_GAME_ENDPOINT)
+      .post(ApiEndpoint.ENTERED_GAME)
       .send({
         username: mockUser.username,
         enteredGameId: "invalid_game_id",
@@ -89,14 +91,14 @@ describe(`POST ${ENTERED_GAME_ENDPOINT}`, () => {
   });
 
   test("should return error when user is not found", async () => {
-    await saveGames([mockGame]);
+    await saveGames([testGame]);
 
     const response = await request(server)
-      .post(ENTERED_GAME_ENDPOINT)
+      .post(ApiEndpoint.ENTERED_GAME)
       .send({
         username: "user_not_found",
-        enteredGameId: mockGame.gameId,
-        startTime: mockGame.startTime,
+        enteredGameId: testGame.gameId,
+        startTime: testGame.startTime,
         message: "",
       })
       .set(
@@ -109,7 +111,7 @@ describe(`POST ${ENTERED_GAME_ENDPOINT}`, () => {
 
   test("should return success when user and game are found", async () => {
     // Populate database
-    await saveGames([mockGame]);
+    await saveGames([testGame]);
     await saveUser(mockUser);
 
     // Check starting conditions
@@ -118,11 +120,11 @@ describe(`POST ${ENTERED_GAME_ENDPOINT}`, () => {
 
     // Update entered games
     const response = await request(server)
-      .post(ENTERED_GAME_ENDPOINT)
+      .post(ApiEndpoint.ENTERED_GAME)
       .send({
         username: mockUser.username,
-        enteredGameId: mockGame.gameId,
-        startTime: mockGame.startTime,
+        enteredGameId: testGame.gameId,
+        startTime: testGame.startTime,
         message: "Test message",
       })
       .set(
@@ -138,14 +140,14 @@ describe(`POST ${ENTERED_GAME_ENDPOINT}`, () => {
     // Check database
     const modifiedUser = await findUser(mockUser.username);
     expect(modifiedUser?.enteredGames[0].gameDetails.gameId).toEqual(
-      mockGame.gameId
+      testGame.gameId
     );
     expect(modifiedUser?.enteredGames[0].message).toEqual("Test message");
   });
 
   test("should return error when game is full", async () => {
     // Populate database
-    await saveGames([mockGame]);
+    await saveGames([testGame]);
     await saveUser(mockUser);
     await saveUser(mockUser2);
     await saveUser(mockUser3);
@@ -155,11 +157,11 @@ describe(`POST ${ENTERED_GAME_ENDPOINT}`, () => {
     // SIGNUP 1
 
     const response = await request(server)
-      .post(ENTERED_GAME_ENDPOINT)
+      .post(ApiEndpoint.ENTERED_GAME)
       .send({
         username: mockUser.username,
-        enteredGameId: mockGame.gameId,
-        startTime: mockGame.startTime,
+        enteredGameId: testGame.gameId,
+        startTime: testGame.startTime,
         message: "Test message",
       })
       .set(
@@ -174,11 +176,11 @@ describe(`POST ${ENTERED_GAME_ENDPOINT}`, () => {
     // SIGNUP 2
 
     const response2 = await request(server)
-      .post(ENTERED_GAME_ENDPOINT)
+      .post(ApiEndpoint.ENTERED_GAME)
       .send({
         username: mockUser2.username,
-        enteredGameId: mockGame.gameId,
-        startTime: mockGame.startTime,
+        enteredGameId: testGame.gameId,
+        startTime: testGame.startTime,
         message: "Test message",
       })
       .set(
@@ -193,11 +195,11 @@ describe(`POST ${ENTERED_GAME_ENDPOINT}`, () => {
     // SIGNUP 3
 
     const response3 = await request(server)
-      .post(ENTERED_GAME_ENDPOINT)
+      .post(ApiEndpoint.ENTERED_GAME)
       .send({
         username: mockUser3.username,
-        enteredGameId: mockGame.gameId,
-        startTime: mockGame.startTime,
+        enteredGameId: testGame.gameId,
+        startTime: testGame.startTime,
         message: "Test message",
       })
       .set(
@@ -212,11 +214,11 @@ describe(`POST ${ENTERED_GAME_ENDPOINT}`, () => {
     // SIGNUP 4
 
     const response4 = await request(server)
-      .post(ENTERED_GAME_ENDPOINT)
+      .post(ApiEndpoint.ENTERED_GAME)
       .send({
         username: mockUser4.username,
-        enteredGameId: mockGame.gameId,
-        startTime: mockGame.startTime,
+        enteredGameId: testGame.gameId,
+        startTime: testGame.startTime,
         message: "Test message",
       })
       .set(
@@ -231,11 +233,11 @@ describe(`POST ${ENTERED_GAME_ENDPOINT}`, () => {
     // SIGNUP 5
 
     const response5 = await request(server)
-      .post(ENTERED_GAME_ENDPOINT)
+      .post(ApiEndpoint.ENTERED_GAME)
       .send({
         username: mockUser5.username,
-        enteredGameId: mockGame.gameId,
-        startTime: mockGame.startTime,
+        enteredGameId: testGame.gameId,
+        startTime: testGame.startTime,
         message: "Test message",
       })
       .set(
@@ -246,28 +248,28 @@ describe(`POST ${ENTERED_GAME_ENDPOINT}`, () => {
     expect(response5.status).toEqual(200);
     expect(response5.body.message).toEqual("Entered game is full");
     expect(response5.body.status).toEqual("error");
-    expect(response5.body.code).toEqual(51);
+    expect(response5.body.errorId).toEqual("gameFull");
 
     // Check results
 
     const modifiedUser = await findUser(mockUser.username);
     expect(modifiedUser?.enteredGames[0].gameDetails.gameId).toEqual(
-      mockGame.gameId
+      testGame.gameId
     );
 
     const modifiedUser2 = await findUser(mockUser2.username);
     expect(modifiedUser2?.enteredGames[0].gameDetails.gameId).toEqual(
-      mockGame.gameId
+      testGame.gameId
     );
 
     const modifiedUser3 = await findUser(mockUser3.username);
     expect(modifiedUser3?.enteredGames[0].gameDetails.gameId).toEqual(
-      mockGame.gameId
+      testGame.gameId
     );
 
     const modifiedUser4 = await findUser(mockUser4.username);
     expect(modifiedUser4?.enteredGames[0].gameDetails.gameId).toEqual(
-      mockGame.gameId
+      testGame.gameId
     );
 
     const modifiedUser5 = await findUser(mockUser5.username);
@@ -275,15 +277,15 @@ describe(`POST ${ENTERED_GAME_ENDPOINT}`, () => {
   });
 });
 
-describe(`DELETE ${ENTERED_GAME_ENDPOINT}`, () => {
+describe(`DELETE ${ApiEndpoint.ENTERED_GAME}`, () => {
   test("should return 401 without valid authorization", async () => {
-    const response = await request(server).delete(ENTERED_GAME_ENDPOINT);
+    const response = await request(server).delete(ApiEndpoint.ENTERED_GAME);
     expect(response.status).toEqual(401);
   });
 
   test("should return 422 with invalid parameters", async () => {
     const response = await request(server)
-      .delete(ENTERED_GAME_ENDPOINT)
+      .delete(ApiEndpoint.ENTERED_GAME)
       .send({
         username: "testuser",
         enteredGameId: "ABCD1234",
@@ -296,7 +298,7 @@ describe(`DELETE ${ENTERED_GAME_ENDPOINT}`, () => {
     await saveUser(mockUser);
 
     const response = await request(server)
-      .delete(ENTERED_GAME_ENDPOINT)
+      .delete(ApiEndpoint.ENTERED_GAME)
       .send({
         username: mockUser.username,
         enteredGameId: "invalid_game_id",
@@ -311,14 +313,14 @@ describe(`DELETE ${ENTERED_GAME_ENDPOINT}`, () => {
   });
 
   test("should return error when user is not found", async () => {
-    await saveGames([mockGame]);
+    await saveGames([testGame]);
 
     const response = await request(server)
-      .delete(ENTERED_GAME_ENDPOINT)
+      .delete(ApiEndpoint.ENTERED_GAME)
       .send({
         username: "user_not_found",
-        enteredGameId: mockGame.gameId,
-        startTime: mockGame.startTime,
+        enteredGameId: testGame.gameId,
+        startTime: testGame.startTime,
       })
       .set(
         "Authorization",
@@ -330,22 +332,9 @@ describe(`DELETE ${ENTERED_GAME_ENDPOINT}`, () => {
 
   test("should return success when user and game are found", async () => {
     // Populate database
-    await saveGames([mockGame]);
-    const games = await findGames();
-
-    const mockUserWithEnteredGame = {
-      ...mockUser,
-      enteredGames: [
-        {
-          gameDetails: games[0]._id,
-          priority: 1,
-          time: mockGame.startTime,
-          message: "Test message",
-        },
-      ],
-    };
-
-    await saveUser(mockUserWithEnteredGame);
+    await saveGames([testGame]);
+    await saveUser(mockUser);
+    await saveEnteredGame(mockPostEnteredGameRequest);
 
     // Check starting conditions
     const nonModifiedUser = await findUser(mockUser.username);
@@ -353,11 +342,11 @@ describe(`DELETE ${ENTERED_GAME_ENDPOINT}`, () => {
 
     // Update entered games
     const response = await request(server)
-      .delete(ENTERED_GAME_ENDPOINT)
+      .delete(ApiEndpoint.ENTERED_GAME)
       .send({
         username: mockUser.username,
-        enteredGameId: mockGame.gameId,
-        startTime: mockGame.startTime,
+        enteredGameId: testGame.gameId,
+        startTime: testGame.startTime,
       })
       .set(
         "Authorization",

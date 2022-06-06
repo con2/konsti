@@ -2,11 +2,15 @@ import React, { FC, ReactElement, FormEvent, useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { Game } from "shared/typings/models/game";
-import { submitEnterGame } from "client/views/signup/signupThunks";
+import {
+  PostEnteredGameErrorMessage,
+  submitPostEnteredGame,
+} from "client/views/my-games/myGamesThunks";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
-import { Button } from "client/components/Button";
+import { Button, ButtonStyle } from "client/components/Button";
 import { SignupMessage } from "shared/typings/models/settings";
 import { loadGames } from "client/utils/loadData";
+import { ErrorMessage } from "client/components/ErrorMessage";
 
 interface Props {
   game: Game;
@@ -21,6 +25,9 @@ export const EnterGameForm: FC<Props> = (props: Props): ReactElement => {
   const dispatch = useAppDispatch();
   const username = useAppSelector((state) => state.login.username);
   const [userSignupMessage, setUserSignupMessage] = useState<string>("");
+  const [errorMessage, setErrorMessage] = useState<PostEnteredGameErrorMessage>(
+    PostEnteredGameErrorMessage.EMPTY
+  );
 
   const handleCancel = (): void => {
     onCancelSignup();
@@ -29,13 +36,6 @@ export const EnterGameForm: FC<Props> = (props: Props): ReactElement => {
   const handleSignup = async (event: FormEvent): Promise<void> => {
     event.preventDefault();
 
-    const newGame = {
-      gameDetails: game,
-      priority: 0,
-      time: game.startTime,
-      message: "",
-    };
-
     const enterData = {
       username,
       enteredGameId: game.gameId,
@@ -43,16 +43,10 @@ export const EnterGameForm: FC<Props> = (props: Props): ReactElement => {
       message: userSignupMessage,
     };
 
-    const errorCode = await dispatch(submitEnterGame(enterData, newGame));
-
-    if (errorCode) {
-      switch (errorCode) {
-        case 41:
-          console.error("Signup ended"); // eslint-disable-line no-console
-          return;
-        default:
-          console.error("signupError"); // eslint-disable-line no-console
-      }
+    const error = await dispatch(submitPostEnteredGame(enterData));
+    if (error) {
+      setErrorMessage(error);
+      return;
     }
 
     await loadGames();
@@ -78,13 +72,25 @@ export const EnterGameForm: FC<Props> = (props: Props): ReactElement => {
         </SignupMessageContainer>
       )}
       <ButtonContainer>
-        <SignupConfirmationButton onClick={handleSignup}>
+        <SignupConfirmationButton
+          onClick={handleSignup}
+          buttonStyle={ButtonStyle.NORMAL}
+        >
           {t("signup.confirm")}
         </SignupConfirmationButton>
-        <SignupCancelButton onClick={handleCancel}>
+        <SignupCancelButton
+          onClick={handleCancel}
+          buttonStyle={ButtonStyle.NORMAL}
+        >
           {t("signup.cancel")}
         </SignupCancelButton>
       </ButtonContainer>
+      {errorMessage && (
+        <ErrorMessage
+          message={t(errorMessage)}
+          closeError={() => setErrorMessage(PostEnteredGameErrorMessage.EMPTY)}
+        />
+      )}
     </SignupForm>
   );
 };
@@ -107,11 +113,11 @@ const ButtonContainer = styled.div`
 const SignupConfirmationButton = styled(Button)`
   width: 50%;
   background: ${(props) => props.theme.buttonConfirm};
-  border: 1px solid ${(props) => props.theme.buttonConfirmBorder};
-  color: ${(props) => props.theme.mainText};
+  border: 1px solid ${(props) => props.theme.buttonBorderConfirm};
+  color: ${(props) => props.theme.textMain};
 `;
 
 const SignupCancelButton = styled(Button)`
   width: 50%;
-  border: 1px solid ${(props) => props.theme.informative};
+  border: 1px solid ${(props) => props.theme.borderInformative};
 `;

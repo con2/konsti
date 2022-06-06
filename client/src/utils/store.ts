@@ -9,19 +9,19 @@ import { SUBMIT_LOGOUT } from "client/typings/logoutActions.typings";
 import { allGamesReducer } from "client/views/all-games/allGamesSlice";
 import { loginReducer } from "client/views/login/loginSlice";
 import { myGamesReducer } from "client/views/my-games/myGamesSlice";
-import { signupReducer } from "client/views/signup/signupSlice";
 import { adminReducer } from "client/views/admin/adminSlice";
 import { resultsReducer } from "client/views/results/resultsSlice";
 import { testSettingsReducer } from "client/test/test-settings/testSettingsSlice";
+import { groupReducer } from "client/views/group/groupSlice";
 
 export const combinedReducer = combineReducers({
   allGames: allGamesReducer,
   login: loginReducer,
   myGames: myGamesReducer,
-  signup: signupReducer,
   admin: adminReducer,
   results: resultsReducer,
   testSettings: testSettingsReducer,
+  group: groupReducer,
 });
 
 // Reducer to reset state

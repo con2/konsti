@@ -4,16 +4,21 @@ import { useStore } from "react-redux";
 import { HelperResultsList } from "client/views/helper/components/HelperResultsList";
 import { PasswordManagement } from "client/views/helper/components/PasswordManagement";
 import { loadResults, loadSettings } from "client/utils/loadData";
-import { Button } from "client/components/Button";
+import { Button, ButtonStyle } from "client/components/Button";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
 import { useAppSelector } from "client/utils/hooks";
+
+enum HelperTool {
+  RESULTS = "results",
+  PASSWORD_MANAGEMENT = "passwordManagement",
+}
 
 export const HelperView = (): ReactElement => {
   const { t } = useTranslation();
   const signupStrategy = useAppSelector((state) => state.admin.signupStrategy);
 
-  const [selectedTool, setSelectedTool] = useState<string>(
-    "password-management"
+  const [selectedTool, setSelectedTool] = useState<HelperTool>(
+    HelperTool.PASSWORD_MANAGEMENT
   );
 
   const store = useStore();
@@ -30,21 +35,32 @@ export const HelperView = (): ReactElement => {
     <div>
       {signupStrategy === SignupStrategy.ALGORITHM && (
         <Button
-          disabled={selectedTool === "results"}
-          onClick={() => setSelectedTool("results")}
+          buttonStyle={
+            selectedTool === HelperTool.RESULTS
+              ? ButtonStyle.DISABLED
+              : ButtonStyle.NORMAL
+          }
+          onClick={() => setSelectedTool(HelperTool.RESULTS)}
         >
           {t("helperResults")}
         </Button>
       )}
+
       <Button
-        disabled={selectedTool === "password-management"}
-        onClick={() => setSelectedTool("password-management")}
+        buttonStyle={
+          selectedTool === HelperTool.PASSWORD_MANAGEMENT
+            ? ButtonStyle.DISABLED
+            : ButtonStyle.NORMAL
+        }
+        onClick={() => setSelectedTool(HelperTool.PASSWORD_MANAGEMENT)}
       >
         {t("passwordManagement.helperPasswordManagement")}
       </Button>
 
-      {selectedTool === "results" && <HelperResultsList />}
-      {selectedTool === "password-management" && <PasswordManagement />}
+      {selectedTool === HelperTool.RESULTS && <HelperResultsList />}
+      {selectedTool === HelperTool.PASSWORD_MANAGEMENT && (
+        <PasswordManagement />
+      )}
     </div>
   );
 };

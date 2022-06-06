@@ -1,17 +1,17 @@
 import { api } from "client/utils/api";
-import { ServerError } from "shared/typings/api/errors";
+import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
-  LOGIN_ENDPOINT,
-  SESSION_RESTORE_ENDPOINT,
-} from "shared/constants/apiEndpoints";
-import { LoginFormFields, PostLoginResponse } from "shared/typings/api/login";
+  LoginFormFields,
+  PostLoginError,
+  PostLoginResponse,
+} from "shared/typings/api/login";
 
 export const postLogin = async (
   loginFormFields: LoginFormFields
-): Promise<PostLoginResponse | ServerError> => {
+): Promise<PostLoginResponse | PostLoginError> => {
   const { username, password } = loginFormFields;
 
-  const response = await api.post<PostLoginResponse>(LOGIN_ENDPOINT, {
+  const response = await api.post<PostLoginResponse>(ApiEndpoint.LOGIN, {
     username,
     password,
   });
@@ -20,9 +20,12 @@ export const postLogin = async (
 
 export const postSessionRecovery = async (
   jwt: string
-): Promise<PostLoginResponse | ServerError> => {
-  const response = await api.post<PostLoginResponse>(SESSION_RESTORE_ENDPOINT, {
-    jwt,
-  });
+): Promise<PostLoginResponse | PostLoginError> => {
+  const response = await api.post<PostLoginResponse>(
+    ApiEndpoint.SESSION_RESTORE,
+    {
+      jwt,
+    }
+  );
   return response.data;
 };

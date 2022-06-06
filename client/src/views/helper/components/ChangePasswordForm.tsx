@@ -2,7 +2,7 @@ import React, { ChangeEvent, ReactElement, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled, { css } from "styled-components";
 import { useTranslation } from "react-i18next";
-import { Button } from "client/components/Button";
+import { Button, ButtonStyle } from "client/components/Button";
 import { updateUserPassword } from "client/services/userServices";
 import { passwordLength } from "client/utils/validate";
 import { useAppSelector } from "client/utils/hooks";
@@ -74,7 +74,9 @@ export const ChangePasswordForm = ({
         value={changePasswordInput}
         onChange={handlePasswordChange}
       />
-      <Button onClick={submitUpdatePassword}>{t("button.save")}</Button>
+      <Button onClick={submitUpdatePassword} buttonStyle={ButtonStyle.NORMAL}>
+        {t("button.save")}
+      </Button>
 
       <FormFieldIcon>
         <FontAwesomeIcon
@@ -90,7 +92,7 @@ export const ChangePasswordForm = ({
 
 const FormFieldIcon = styled.span`
   padding: 0 0 0 8px;
-  font-size: ${(props) => props.theme.iconSize};
+  font-size: ${(props) => props.theme.fontSizeLarge};
 `;
 
 const FormInput = styled.input`
@@ -109,6 +111,6 @@ const Message = styled.p<MessageProps>`
   ${(messageProps) =>
     messageProps.error &&
     css`
-      color: ${(props) => props.theme.error};
+      color: ${(props) => props.theme.textError};
     `};
 `;

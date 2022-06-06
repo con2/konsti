@@ -11,7 +11,7 @@ import { submitGamesUpdate } from "client/views/all-games/allGamesThunks";
 import { timeFormatter } from "client/utils/timeFormatter";
 import { Game } from "shared/typings/models/game";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
-import { Button } from "client/components/Button";
+import { Button, ButtonStyle } from "client/components/Button";
 import { SignupMessageList } from "client/views/admin/components/SignupMessageList";
 import { Dropdown, Item } from "client/components/Dropdown";
 import { SignupStrategySelector } from "client/test/test-components/SignupStrategySelector";
@@ -101,7 +101,6 @@ export const AdminView = (): ReactElement => {
         value: errorMessage,
         style: "error",
       });
-      return;
     }
 
     setSubmitting(false);
@@ -131,7 +130,7 @@ export const AdminView = (): ReactElement => {
     <div>
       <div>
         <Button
-          disabled={submitting}
+          buttonStyle={submitting ? ButtonStyle.DISABLED : ButtonStyle.NORMAL}
           onClick={() => {
             submitUpdate();
           }}
@@ -140,7 +139,7 @@ export const AdminView = (): ReactElement => {
         </Button>
 
         <Button
-          disabled={submitting}
+          buttonStyle={submitting ? ButtonStyle.DISABLED : ButtonStyle.NORMAL}
           onClick={() => {
             submitAssign();
           }}
@@ -149,7 +148,7 @@ export const AdminView = (): ReactElement => {
         </Button>
 
         <Button
-          disabled={submitting}
+          buttonStyle={submitting ? ButtonStyle.DISABLED : ButtonStyle.NORMAL}
           onClick={() => {
             toggleAppOpen();
           }}
@@ -184,7 +183,7 @@ export const AdminView = (): ReactElement => {
           </div>
 
           <Button
-            disabled={submitting}
+            buttonStyle={submitting ? ButtonStyle.DISABLED : ButtonStyle.NORMAL}
             onClick={() => {
               submitTime();
             }}
@@ -219,16 +218,16 @@ const StatusMessage = styled.p<StatusMessageProps>`
   ${(statusMessageProps) =>
     statusMessageProps.messageStyle === "success" &&
     css`
-      color: ${(props) => props.theme.success};
+      color: ${(props) => props.theme.textSuccess};
     `};
 
   ${(statusMessageProps) =>
     statusMessageProps.messageStyle === "error" &&
     css`
-      color: ${(props) => props.theme.error};
+      color: ${(props) => props.theme.textError};
     `};
 `;
 
 const ResponseMessage = styled.p`
-  color: ${(props) => props.theme.success};
+  color: ${(props) => props.theme.textSuccess};
 `;

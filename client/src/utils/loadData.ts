@@ -38,7 +38,7 @@ export const loadSettings = async (): Promise<void> => {
   await dispatch(submitGetSettings());
 };
 
-export const loadTestSettings = async (): Promise<void> => {
+const loadTestSettings = async (): Promise<void> => {
   const dispatch: AppDispatch = store.dispatch;
   await dispatch(submitGetTestSettings());
 };
@@ -86,7 +86,8 @@ export const loadUser = async (): Promise<void> => {
 export const loadGroupMembers = async (): Promise<void> => {
   const state = store.getState();
   const dispatch: AppDispatch = store.dispatch;
-  const { loggedIn, groupCode, username } = state.login;
+  const { loggedIn, username } = state.login;
+  const { groupCode } = state.group;
 
   if (loggedIn && groupCode !== "0") {
     await dispatch(submitGetGroup(groupCode, username));

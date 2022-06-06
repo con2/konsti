@@ -1,23 +1,20 @@
 import { api } from "client/utils/api";
-import { ServerError } from "shared/typings/api/errors";
-import {
-  USERS_BY_SERIAL_OR_USERNAME_ENDPOINT,
-  USERS_ENDPOINT,
-  USERS_PASSWORD_ENDPOINT,
-} from "shared/constants/apiEndpoints";
+import { ApiError } from "shared/typings/api/errors";
+import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
   GetUserBySerialResponse,
   GetUserResponse,
+  PostUserError,
   PostUserResponse,
 } from "shared/typings/api/users";
 import { RegistrationFormFields } from "shared/typings/api/login";
 
 export const postRegistration = async (
   registrationFormFields: RegistrationFormFields
-): Promise<PostUserResponse | ServerError> => {
+): Promise<PostUserResponse | PostUserError> => {
   const { username, password, serial } = registrationFormFields;
 
-  const response = await api.post<PostUserResponse>(USERS_ENDPOINT, {
+  const response = await api.post<PostUserResponse>(ApiEndpoint.USERS, {
     username,
     password,
     serial,
@@ -27,8 +24,8 @@ export const postRegistration = async (
 
 export const getUser = async (
   username: string
-): Promise<GetUserResponse | ServerError> => {
-  const response = await api.get<GetUserResponse>(USERS_ENDPOINT, {
+): Promise<GetUserResponse | ApiError> => {
+  const response = await api.get<GetUserResponse>(ApiEndpoint.USERS, {
     params: {
       username,
     },
@@ -38,9 +35,9 @@ export const getUser = async (
 
 export const getUserBySerialOrUsername = async (
   searchTerm: string
-): Promise<GetUserBySerialResponse | ServerError> => {
+): Promise<GetUserBySerialResponse | ApiError> => {
   const response = await api.get<GetUserBySerialResponse>(
-    USERS_BY_SERIAL_OR_USERNAME_ENDPOINT,
+    ApiEndpoint.USERS_BY_SERIAL_OR_USERNAME,
     {
       params: {
         searchTerm,
@@ -54,11 +51,14 @@ export const updateUserPassword = async (
   username: string,
   password: string,
   requester: string
-): Promise<PostUserResponse | ServerError> => {
-  const response = await api.post<PostUserResponse>(USERS_PASSWORD_ENDPOINT, {
-    username,
-    password,
-    requester,
-  });
+): Promise<PostUserResponse | ApiError> => {
+  const response = await api.post<PostUserResponse>(
+    ApiEndpoint.USERS_PASSWORD,
+    {
+      username,
+      password,
+      requester,
+    }
+  );
   return response.data;
 };

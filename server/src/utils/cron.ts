@@ -1,7 +1,7 @@
 import moment from "moment";
 import schedule from "node-schedule";
 import { logger } from "server/utils/logger";
-import { updateGames } from "server/utils/updateGames";
+import { getGamesFromKompassi } from "server/features/game/utils/getGamesFromKompassi";
 import { config } from "server/config";
 import { updateGamePopularity } from "server/features/game-popularity/updateGamePopularity";
 import { removeOverlapSignups } from "server/features/player-assignment/utils/removeOverlapSignups";
@@ -29,7 +29,7 @@ export const autoUpdateGames = async (): Promise<void> => {
     if (autoUpdateGamesEnabled) {
       logger.info("----> Auto update games");
       try {
-        const kompassiGames = await updateGames();
+        const kompassiGames = await getGamesFromKompassi();
         await saveGames(kompassiGameMapper(kompassiGames));
         logger.info("***** Games auto update completed");
       } catch (error) {
@@ -44,7 +44,6 @@ export const autoUpdateGames = async (): Promise<void> => {
     }
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-misused-promises
   await schedule.scheduleJob(cronRule, callback);
 };
 
@@ -121,6 +120,5 @@ export const autoAssignPlayers = async (): Promise<void> => {
     logger.info("***** Automatic player assignment completed");
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-misused-promises
   await schedule.scheduleJob(cronRule, callback);
 };

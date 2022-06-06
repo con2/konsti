@@ -1,5 +1,5 @@
 import request from "supertest";
-import { TEST_SETTINGS_ENDPOINT } from "shared/constants/apiEndpoints";
+import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { startTestServer, stopTestServer } from "server/test/utils/testServer";
 
 jest.mock("server/utils/logger");
@@ -8,13 +8,13 @@ afterEach(() => {
   jest.resetModules();
 });
 
-describe(`GET ${TEST_SETTINGS_ENDPOINT}`, () => {
+describe(`GET ${ApiEndpoint.TEST_SETTINGS}`, () => {
   test("should return 404 on production", async () => {
     process.env.SETTINGS = "production";
     const { server, mongoServer } = await startTestServer();
 
     try {
-      const response = await request(server).get(TEST_SETTINGS_ENDPOINT);
+      const response = await request(server).get(ApiEndpoint.TEST_SETTINGS);
       expect(response.status).toEqual(404);
     } finally {
       await stopTestServer(server, mongoServer);
@@ -26,7 +26,7 @@ describe(`GET ${TEST_SETTINGS_ENDPOINT}`, () => {
     const { server, mongoServer } = await startTestServer();
 
     try {
-      const response = await request(server).get(TEST_SETTINGS_ENDPOINT);
+      const response = await request(server).get(ApiEndpoint.TEST_SETTINGS);
       expect(response.status).toEqual(200);
       expect(response.body).toEqual({
         status: "success",
@@ -39,13 +39,13 @@ describe(`GET ${TEST_SETTINGS_ENDPOINT}`, () => {
   });
 });
 
-describe(`POST ${TEST_SETTINGS_ENDPOINT}`, () => {
+describe(`POST ${ApiEndpoint.TEST_SETTINGS}`, () => {
   test("should return 404 on production", async () => {
     process.env.SETTINGS = "production";
     const { server, mongoServer } = await startTestServer();
 
     try {
-      const response = await request(server).post(TEST_SETTINGS_ENDPOINT);
+      const response = await request(server).post(ApiEndpoint.TEST_SETTINGS);
       expect(response.status).toEqual(404);
     } finally {
       await stopTestServer(server, mongoServer);
@@ -58,7 +58,7 @@ describe(`POST ${TEST_SETTINGS_ENDPOINT}`, () => {
 
     try {
       const response = await request(server)
-        .post(TEST_SETTINGS_ENDPOINT)
+        .post(ApiEndpoint.TEST_SETTINGS)
         .send({ testTime: 12345 });
       expect(response.status).toEqual(422);
     } finally {
@@ -76,7 +76,7 @@ describe(`POST ${TEST_SETTINGS_ENDPOINT}`, () => {
       };
 
       const response = await request(server)
-        .post(TEST_SETTINGS_ENDPOINT)
+        .post(ApiEndpoint.TEST_SETTINGS)
         .send(testSettings);
 
       expect(response.status).toEqual(200);

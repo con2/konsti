@@ -1,11 +1,7 @@
 import { logger } from "server/utils/logger";
 import { createGames } from "server/test/test-data-generation/generators/createGames";
 import { createSignups } from "server/test/test-data-generation/generators/createSignups";
-import {
-  removeEnteredGames,
-  removeSignedGames,
-  removeUsers,
-} from "server/features/user/userRepository";
+import { removeUsers } from "server/features/user/userRepository";
 import { removeResults } from "server/features/results/resultsRepository";
 import { removeGames } from "server/features/game/gameRepository";
 import { removeSettings } from "server/features/settings/settingsRepository";
@@ -14,6 +10,8 @@ import { generateTestUsers } from "server/test/test-data-generation/generators/g
 import { createEnteredGames } from "server/test/test-data-generation/generators/createEnteredGames";
 import { createSettings } from "server/test/test-data-generation/generators/createSettings";
 import { sharedConfig } from "shared/config/sharedConfig";
+import { removeEnteredGames } from "server/features/user/entered-game/enteredGameRepository";
+import { removeSignedGames } from "server/features/user/signed-game/signedGameRepository";
 
 interface Options {
   clean?: boolean;
@@ -41,7 +39,7 @@ export const runGenerators = async (
   // Total users: newUsersCount + groupSize * numberOfGroups + testUsersCount
   const newUsersCount = 5; // Number of individual users
 
-  const groupSize = enableGroups ? 3 : 0; // How many users in each group
+  const groupSize = enableGroups ? 4 : 0; // How many users in each group
   const numberOfGroups = enableGroups ? 15 : 0; // Number of groups
 
   const testUsersCount = 5; // Number of test users

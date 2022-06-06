@@ -1,5 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { MyGamesState } from "client/typings/redux.typings";
+import { UserGames } from "shared/typings/api/users";
+import { Game } from "shared/typings/models/game";
 import { SelectedGame } from "shared/typings/models/user";
 
 const initialState: MyGamesState = {
@@ -12,7 +14,7 @@ const myGamesSlice = createSlice({
   name: "myGames",
   initialState,
   reducers: {
-    submitGetUserAsync(state, action: PayloadAction<MyGamesState>) {
+    submitGetUserAsync(state, action: PayloadAction<UserGames>) {
       return {
         ...state,
         enteredGames: action.payload.enteredGames,
@@ -21,21 +23,21 @@ const myGamesSlice = createSlice({
       };
     },
 
-    submitUpdateFavoritesAsync(
-      state,
-      action: PayloadAction<readonly string[]>
-    ) {
+    submitUpdateFavoritesAsync(state, action: PayloadAction<readonly Game[]>) {
       return {
         ...state,
         favoritedGames: action.payload,
       };
     },
 
-    submitSignupAsync(state, action: PayloadAction<readonly SelectedGame[]>) {
+    submitPostSignedGamesAsync(
+      state,
+      action: PayloadAction<readonly SelectedGame[]>
+    ) {
       return { ...state, signedGames: action.payload };
     },
 
-    submitEnteredAsync(state, action: PayloadAction<SelectedGame>) {
+    submitPostEnteredGameAsync(state, action: PayloadAction<SelectedGame>) {
       const games = [...state.enteredGames, action.payload];
       return { ...state, enteredGames: games };
     },
@@ -52,8 +54,8 @@ const myGamesSlice = createSlice({
 export const {
   submitGetUserAsync,
   submitUpdateFavoritesAsync,
-  submitSignupAsync,
-  submitEnteredAsync,
+  submitPostSignedGamesAsync,
+  submitPostEnteredGameAsync,
   submitDeleteEnteredAsync,
 } = myGamesSlice.actions;
 

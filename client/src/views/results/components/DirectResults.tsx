@@ -7,8 +7,9 @@ import { timeFormatter } from "client/utils/timeFormatter";
 import { useAppSelector } from "client/utils/hooks";
 import { getUsersForGameId } from "client/views/results/resultsUtils";
 import { getUpcomingGames } from "client/utils/getUpcomingGames";
-import { Button } from "client/components/Button";
+import { Button, ButtonStyle } from "client/components/Button";
 import { Game } from "shared/typings/models/game";
+import { SignupStrategy } from "shared/config/sharedConfig.types";
 
 export const DirectResults = (): ReactElement => {
   const { t } = useTranslation();
@@ -21,12 +22,11 @@ export const DirectResults = (): ReactElement => {
   const [showAllGames, setShowAllGames] = useState<boolean>(false);
   const [showSignupMessages, setShowSignupMessages] = useState<string[]>([]);
 
-  const visibleGames = games.filter((game) => {
-    const hidden = hiddenGames.find(
-      (hiddenGame) => game.gameId === hiddenGame.gameId
+  const visibleGames = games
+    .filter((game) => game.signupStrategy === SignupStrategy.DIRECT)
+    .filter((game) =>
+      hiddenGames.every((hiddenGame) => game.gameId !== hiddenGame.gameId)
     );
-    if (!hidden) return game;
-  });
 
   const filteredGames = showAllGames
     ? _.sortBy(visibleGames, "startTime")
@@ -81,17 +81,23 @@ export const DirectResults = (): ReactElement => {
         placeholder={t("findSignupOrGame")}
       />
       <div>
-        <Button onClick={() => setShowAllGames(false)} disabled={!showAllGames}>
+        <Button
+          onClick={() => setShowAllGames(false)}
+          buttonStyle={
+            !showAllGames ? ButtonStyle.DISABLED : ButtonStyle.NORMAL
+          }
+        >
           {t("lastStartedAndUpcomingGames")}
         </Button>
-        <Button onClick={() => setShowAllGames(true)} disabled={showAllGames}>
+        <Button
+          onClick={() => setShowAllGames(true)}
+          buttonStyle={showAllGames ? ButtonStyle.DISABLED : ButtonStyle.NORMAL}
+        >
           {t("allGames")}
         </Button>
       </div>
 
-      {filteredGames.length === 0 && (
-        <h3>{t("resultsView.noStartingGames")}</h3>
-      )}
+      {filteredGames.length === 0 && <h3>{t("resultsView.noResults")}</h3>}
 
       {Object.entries(filteredGamesForListing).map(
         ([startTime, gamesForTime]) => {
@@ -218,9 +224,9 @@ const SearchInput = styled.input`
 
 const Tag = styled.span`
   border-radius: 4px;
-  background: ${(props) => props.theme.tagBackground};
+  background: ${(props) => props.theme.backgroundTag};
   padding: 4px;
   font-size: 12px;
-  color: ${(props) => props.theme.tagTextColor};
+  color: ${(props) => props.theme.textTag};
   white-space: nowrap;
 `;

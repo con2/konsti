@@ -9,7 +9,7 @@ import {
   createHelpUser,
   createTestUsers,
 } from "server/test/test-data-generation/generators/createUsers";
-import { updateGames } from "server/utils/updateGames";
+import { getGamesFromKompassi } from "server/features/game/utils/getGamesFromKompassi";
 import { kompassiGameMapper } from "server/utils/kompassiGameMapper";
 import { removeTestSettings } from "server/test/test-settings/testSettingsRepository";
 
@@ -38,11 +38,11 @@ const initializeDatabase = async (): Promise<void> => {
 
   if (CREATE_TEST_USERS) {
     logger.info("Create test users");
-    await createTestUsers(5);
+    await createTestUsers({ userCount: 5 });
   }
 
   logger.info("Download games from Kompassi");
-  const kompassiGames = await updateGames();
+  const kompassiGames = await getGamesFromKompassi();
   await saveGames(kompassiGameMapper(kompassiGames));
 
   await db.gracefulExit();

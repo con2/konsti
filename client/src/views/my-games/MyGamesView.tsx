@@ -11,40 +11,35 @@ import {
   getUpcomingFavorites,
 } from "client/utils/getUpcomingGames";
 import { loadUser, loadGames, loadGroupMembers } from "client/utils/loadData";
-import { getIsGroupLeader } from "client/views/group/GroupView";
+import { getIsGroupCreator } from "client/views/group/utils/getIsGroupCreator";
 import { GroupMember } from "shared/typings/api/groups";
 import { SelectedGame } from "shared/typings/models/user";
 import { useAppSelector } from "client/utils/hooks";
-import { Button } from "client/components/Button";
+import { Button, ButtonStyle } from "client/components/Button";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
 import { ChangePasswordForm } from "client/views/helper/components/ChangePasswordForm";
 
 export const MyGamesView = (): ReactElement => {
   const { t } = useTranslation();
 
-  const games = useAppSelector((state) => state.allGames.games);
   const serial = useAppSelector((state) => state.login.serial);
   const username = useAppSelector((state) => state.login.username);
-  const groupCode = useAppSelector((state) => state.login.groupCode);
+  const groupCode = useAppSelector((state) => state.group.groupCode);
   const signedGames = useAppSelector((state) => state.myGames.signedGames);
   const favoritedGames = useAppSelector(
     (state) => state.myGames.favoritedGames
   );
   const enteredGames = useAppSelector((state) => state.myGames.enteredGames);
-  const groupMembers = useAppSelector((state) => state.login.groupMembers);
+  const groupMembers = useAppSelector((state) => state.group.groupMembers);
   const testTime = useAppSelector((state) => state.testSettings.testTime);
   const signupStrategy = useAppSelector((state) => state.admin.signupStrategy);
 
   const [showAllGames, setShowAllGames] = useState<boolean>(false);
   const [showChangePassword, setShowChangePassword] = useState<boolean>(false);
 
-  const fullFavoritedGames = favoritedGames.flatMap(
-    (favoritedGame) => games.find((game) => game.gameId === favoritedGame) ?? []
-  );
-
   const store = useStore();
 
-  const isGroupLeader = getIsGroupLeader(groupCode, serial);
+  const isGroupCreator = getIsGroupCreator(groupCode, serial);
 
   useEffect(() => {
     const fetchData = async (): Promise<void> => {
@@ -58,19 +53,25 @@ export const MyGamesView = (): ReactElement => {
   return (
     <MyGamesViewContainer>
       <div>
-        <Button onClick={() => setShowAllGames(false)} disabled={!showAllGames}>
+        <Button
+          onClick={() => setShowAllGames(false)}
+          buttonStyle={
+            !showAllGames ? ButtonStyle.DISABLED : ButtonStyle.NORMAL
+          }
+        >
           {t("lastStartedAndUpcomingGames")}
         </Button>
-        <Button onClick={() => setShowAllGames(true)} disabled={showAllGames}>
+        <Button
+          onClick={() => setShowAllGames(true)}
+          buttonStyle={showAllGames ? ButtonStyle.DISABLED : ButtonStyle.NORMAL}
+        >
           {t("allGames")}
         </Button>
       </div>
 
       <MyFavoritesList
         favoritedGames={
-          showAllGames
-            ? fullFavoritedGames
-            : getUpcomingFavorites(fullFavoritedGames)
+          showAllGames ? favoritedGames : getUpcomingFavorites(favoritedGames)
         }
       />
 
@@ -83,7 +84,7 @@ export const MyGamesView = (): ReactElement => {
             showAllGames,
             groupMembers
           )}
-          isGroupLeader={isGroupLeader}
+          isGroupCreator={isGroupCreator}
         />
       )}
 
@@ -101,7 +102,9 @@ export const MyGamesView = (): ReactElement => {
       />
 
       <ChangePasswordButton
-        selected={showChangePassword}
+        buttonStyle={
+          showChangePassword ? ButtonStyle.DISABLED : ButtonStyle.NORMAL
+        }
         onClick={() => setShowChangePassword(!showChangePassword)}
       >
         {t("myGamesView.changePassword")}
@@ -114,14 +117,14 @@ export const MyGamesView = (): ReactElement => {
   );
 };
 
-const getGroupLeader = (
+const getGroupCreator = (
   groupMembers: readonly GroupMember[]
 ): GroupMember | null => {
-  const groupLeader = groupMembers.find(
+  const groupCreator = groupMembers.find(
     (member) => member.serial === member.groupCode
   );
-  if (!groupLeader) return null;
-  return groupLeader;
+  if (!groupCreator) return null;
+  return groupCreator;
 };
 
 const getSignedGames = (
@@ -131,21 +134,21 @@ const getSignedGames = (
   showAllGames: boolean,
   groupMembers: readonly GroupMember[]
 ): readonly SelectedGame[] => {
-  const isGroupLeader = getIsGroupLeader(groupCode, serial);
+  const isGroupCreator = getIsGroupCreator(groupCode, serial);
 
-  if (isGroupLeader) {
+  if (isGroupCreator) {
     if (!showAllGames) return getUpcomingSignedGames(signedGames);
     else return signedGames;
   }
 
-  if (!isGroupLeader) {
-    const groupLeader = getGroupLeader(groupMembers);
+  if (!isGroupCreator) {
+    const groupCreator = getGroupCreator(groupMembers);
 
     if (!showAllGames) {
       return getUpcomingSignedGames(
-        groupLeader ? groupLeader.signedGames : signedGames
+        groupCreator ? groupCreator.signedGames : signedGames
       );
-    } else return groupLeader ? groupLeader.signedGames : signedGames;
+    } else return groupCreator ? groupCreator.signedGames : signedGames;
   }
 
   return signedGames;

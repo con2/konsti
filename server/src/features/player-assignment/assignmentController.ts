@@ -3,22 +3,22 @@ import { removeOverlapSignups } from "server/features/player-assignment/utils/re
 import { saveResults } from "server/features/player-assignment/utils/saveResults";
 import { runAssignment } from "server/features/player-assignment/runAssignment";
 import { config } from "server/config";
-import { ASSIGNMENT_ENDPOINT } from "shared/constants/apiEndpoints";
+import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { PostPlayerAssignmentResponse } from "shared/typings/api/assignment";
-import { ServerError } from "shared/typings/api/errors";
+import { ApiError } from "shared/typings/api/errors";
 import { sharedConfig } from "shared/config/sharedConfig";
 
 // Assign players to games
 export const storeAssignment = async (
   startingTime: string
-): Promise<PostPlayerAssignmentResponse | ServerError> => {
-  logger.info(`API call: POST ${ASSIGNMENT_ENDPOINT}`);
+): Promise<PostPlayerAssignmentResponse | ApiError> => {
+  logger.info(`API call: POST ${ApiEndpoint.ASSIGNMENT}`);
 
   if (!startingTime) {
     return {
       message: "Invalid starting time",
       status: "error",
-      code: 0,
+      errorId: "unknown",
     };
   }
 
@@ -33,7 +33,7 @@ export const storeAssignment = async (
     return {
       message: "Players assign failure",
       status: "error",
-      code: 0,
+      errorId: "unknown",
     };
   }
 
@@ -41,7 +41,7 @@ export const storeAssignment = async (
     return {
       message: "Players assign failure",
       status: "error",
-      code: 0,
+      errorId: "unknown",
     };
   }
 
@@ -57,7 +57,7 @@ export const storeAssignment = async (
     return {
       message: "Players assign failure",
       status: "error",
-      code: 0,
+      errorId: "unknown",
     };
   }
 
@@ -71,7 +71,7 @@ export const storeAssignment = async (
       return {
         message: "Players assign failure",
         status: "error",
-        code: 0,
+        errorId: "unknown",
       };
     }
   }

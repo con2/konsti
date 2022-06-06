@@ -1,16 +1,28 @@
 import { postLogin, postSessionRecovery } from "client/services/loginServices";
 import { saveSession, clearSession } from "client/utils/localStorage";
 import { AppThunk } from "client/typings/redux.typings";
-import { ServerError } from "shared/typings/api/errors";
-import { LoginFormFields, PostLoginResponse } from "shared/typings/api/login";
+import {
+  LoginFormFields,
+  PostLoginError,
+  PostLoginResponse,
+} from "shared/typings/api/login";
 import { submitLoginAsync } from "client/views/login/loginSlice";
-import { loadUser } from "client/utils/loadData";
+import { loadGroupMembers, loadUser } from "client/utils/loadData";
+import { submitUpdateGroupCodeAsync } from "client/views/group/groupSlice";
+import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
+
+export enum LoginErrorMessage {
+  LOGIN_FAILED = "error.loginFailed",
+  LOGIN_DISABLED = "error.loginDisabled",
+  UNKNOWN = "error.unknown",
+  EMPTY = "",
+}
 
 export const submitLogin = (
   loginFormFields: LoginFormFields
-): AppThunk<Promise<string | undefined>> => {
-  return async (dispatch): Promise<string | undefined> => {
-    let loginResponse: PostLoginResponse | ServerError;
+): AppThunk<Promise<LoginErrorMessage | undefined>> => {
+  return async (dispatch): Promise<LoginErrorMessage | undefined> => {
+    let loginResponse: PostLoginResponse | PostLoginError;
     try {
       loginResponse = await postLogin(loginFormFields);
     } catch (error) {
@@ -21,13 +33,15 @@ export const submitLogin = (
     if (loginResponse?.status === "error") {
       clearSession();
 
-      switch (loginResponse.code) {
-        case 21:
-          return "error.loginFailed";
-        case 22:
-          return "error.loginDisabled";
+      switch (loginResponse.errorId) {
+        case "loginFailed":
+          return LoginErrorMessage.LOGIN_FAILED;
+        case "loginDisabled":
+          return LoginErrorMessage.LOGIN_DISABLED;
+        case "unknown":
+          return LoginErrorMessage.UNKNOWN;
         default:
-          return `error.unkown`;
+          exhaustiveSwitchGuard(loginResponse.errorId);
       }
     }
 
@@ -43,18 +57,20 @@ export const submitLogin = (
           jwt: loginResponse.jwt,
           userGroup: loginResponse.userGroup,
           serial: loginResponse.serial,
-          groupCode: loginResponse.groupCode,
         })
       );
 
+      dispatch(submitUpdateGroupCodeAsync(loginResponse.groupCode));
+
       await loadUser();
+      await loadGroupMembers();
     }
   };
 };
 
 export const submitSessionRecovery = (jwt: string): AppThunk => {
   return async (dispatch): Promise<void> => {
-    let loginResponse: PostLoginResponse | ServerError;
+    let loginResponse: PostLoginResponse | PostLoginError;
     try {
       loginResponse = await postSessionRecovery(jwt);
     } catch (error) {
@@ -65,13 +81,15 @@ export const submitSessionRecovery = (jwt: string): AppThunk => {
     if (loginResponse?.status === "error") {
       clearSession();
 
-      switch (loginResponse.code) {
-        case 21:
+      switch (loginResponse.errorId) {
+        case "loginFailed":
           throw new Error("error.loginFailed");
-        case 22:
+        case "loginDisabled":
           throw new Error("error.loginDisabled");
+        case "unknown":
+          throw new Error(`error.unknown`);
         default:
-          throw new Error(`error.unkown`);
+          exhaustiveSwitchGuard(loginResponse.errorId);
       }
     }
 
@@ -87,11 +105,10 @@ export const submitSessionRecovery = (jwt: string): AppThunk => {
           jwt: loginResponse.jwt,
           userGroup: loginResponse.userGroup,
           serial: loginResponse.serial,
-          groupCode: loginResponse.groupCode,
         })
       );
 
-      await loadUser();
+      dispatch(submitUpdateGroupCodeAsync(loginResponse.groupCode));
     }
   };
 };

@@ -6,7 +6,7 @@ import {
   saveSettings,
 } from "server/features/settings/settingsRepository";
 import { logger } from "server/utils/logger";
-import { ServerError } from "shared/typings/api/errors";
+import { ApiError } from "shared/typings/api/errors";
 import {
   GetSettingsResponse,
   PostHiddenResponse,
@@ -15,11 +15,11 @@ import {
   PostSignupMessageResponse,
 } from "shared/typings/api/settings";
 import { Game } from "shared/typings/models/game";
-import { removeHiddenGamesFromUsers } from "server/features/settings/settingsUtils";
+import { removeHiddenGamesFromUsers } from "server/features/settings/utils/removeHiddenGamesFromUsers";
 import { SignupMessage } from "shared/typings/models/settings";
 
 export const fetchSettings = async (): Promise<
-  GetSettingsResponse | ServerError
+  GetSettingsResponse | ApiError
 > => {
   try {
     const response = await findSettings();
@@ -38,14 +38,14 @@ export const fetchSettings = async (): Promise<
     return {
       message: "Getting settings failed",
       status: "error",
-      code: 0,
+      errorId: "unknown",
     };
   }
 };
 
 export const storeHidden = async (
   hiddenData: readonly Game[]
-): Promise<PostHiddenResponse | ServerError> => {
+): Promise<PostHiddenResponse | ApiError> => {
   let settings;
   try {
     settings = await saveHidden(hiddenData);
@@ -54,7 +54,7 @@ export const storeHidden = async (
     return {
       message: "Update hidden failure",
       status: "error",
-      code: 0,
+      errorId: "unknown",
     };
   }
 
@@ -65,7 +65,7 @@ export const storeHidden = async (
     return {
       message: "Update hidden failure",
       status: "error",
-      code: 0,
+      errorId: "unknown",
     };
   }
 
@@ -78,7 +78,7 @@ export const storeHidden = async (
 
 export const storeSignupMessage = async (
   signupMessageData: SignupMessage
-): Promise<PostSignupMessageResponse | ServerError> => {
+): Promise<PostSignupMessageResponse | ApiError> => {
   let settings;
   try {
     settings = await saveSignupMessage(signupMessageData);
@@ -87,7 +87,7 @@ export const storeSignupMessage = async (
     return {
       message: "saveSignupMessage failure",
       status: "error",
-      code: 0,
+      errorId: "unknown",
     };
   }
 
@@ -100,7 +100,7 @@ export const storeSignupMessage = async (
 
 export const removeSignupMessage = async (
   gameId: string
-): Promise<PostSignupMessageResponse | ServerError> => {
+): Promise<PostSignupMessageResponse | ApiError> => {
   let settings;
   try {
     settings = await delSignupMessage(gameId);
@@ -109,7 +109,7 @@ export const removeSignupMessage = async (
     return {
       message: "delSignupMessage failure",
       status: "error",
-      code: 0,
+      errorId: "unknown",
     };
   }
 
@@ -122,7 +122,7 @@ export const removeSignupMessage = async (
 
 export const updateSettings = async (
   settings: PostSettingsRequest
-): Promise<PostSettingsResponse | ServerError> => {
+): Promise<PostSettingsResponse | ApiError> => {
   try {
     const response = await saveSettings(settings);
     return {
@@ -134,7 +134,7 @@ export const updateSettings = async (
     return {
       message: "Update settings failure",
       status: "error",
-      code: 0,
+      errorId: "unknown",
     };
   }
 };

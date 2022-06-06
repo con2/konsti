@@ -1,16 +1,16 @@
 import { api } from "client/utils/api";
-import { TEST_SETTINGS_ENDPOINT } from "shared/constants/apiEndpoints";
-import { ServerError } from "shared/typings/api/errors";
+import { ApiEndpoint } from "shared/constants/apiEndpoints";
+import { ApiError } from "shared/typings/api/errors";
 import {
   GetTestSettingsResponse,
   PostTestSettingsResponse,
 } from "shared/test-typings/api/testSettings";
 
 export const getTestSettings = async (): Promise<
-  GetTestSettingsResponse | ServerError
+  GetTestSettingsResponse | ApiError
 > => {
   const response = await api.get<GetTestSettingsResponse>(
-    TEST_SETTINGS_ENDPOINT
+    ApiEndpoint.TEST_SETTINGS
   );
   return response.data;
 };
@@ -19,9 +19,9 @@ export const postTestSettings = async ({
   testTime,
 }: {
   testTime: string;
-}): Promise<PostTestSettingsResponse | ServerError> => {
+}): Promise<PostTestSettingsResponse | ApiError> => {
   const response = await api.post<PostTestSettingsResponse>(
-    TEST_SETTINGS_ENDPOINT,
+    ApiEndpoint.TEST_SETTINGS,
     {
       testTime,
     }

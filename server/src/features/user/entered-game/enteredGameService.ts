@@ -2,45 +2,54 @@ import { findGameById } from "server/features/game/gameRepository";
 import { getUsersForGame } from "server/features/game/gameUtils";
 import {
   delEnteredGame,
-  findUsers,
   saveEnteredGame,
-} from "server/features/user/userRepository";
-import { ServerError } from "shared/typings/api/errors";
+} from "server/features/user/entered-game/enteredGameRepository";
+import { findUsers } from "server/features/user/userRepository";
+import { isValidSignupTime } from "server/features/user/userUtils";
+import { ApiError } from "shared/typings/api/errors";
 import {
   DeleteEnteredGameParameters,
   DeleteEnteredGameResponse,
   PostEnteredGameError,
   PostEnteredGameParameters,
   PostEnteredGameResponse,
-} from "shared/typings/api/signup";
+} from "shared/typings/api/myGames";
 
 export const storeEnteredGame = async (
   enteredGameRequest: PostEnteredGameParameters
 ): Promise<PostEnteredGameResponse | PostEnteredGameError> => {
+  const { startTime, enteredGameId } = enteredGameRequest;
+
+  const validSignupTime = isValidSignupTime(startTime);
+  if (!validSignupTime) {
+    return {
+      errorId: "signupEnded",
+      message: "Signup time ended",
+      status: "error",
+    };
+  }
+
   let game;
   try {
-    game = await findGameById(enteredGameRequest.enteredGameId);
+    game = await findGameById(enteredGameId);
     if (!game) throw new Error("Entered game not found");
   } catch (error) {
     return {
       message: `Entered game not found`,
       status: "error",
-      code: 0,
+      errorId: "unknown",
     };
   }
 
   let usersForGame;
   try {
     const users = await findUsers();
-    usersForGame = await getUsersForGame(
-      users,
-      enteredGameRequest.enteredGameId
-    );
+    usersForGame = await getUsersForGame(users, enteredGameId);
   } catch (error) {
     return {
       message: `Error counting users for game`,
       status: "error",
-      code: 0,
+      errorId: "unknown",
     };
   }
 
@@ -48,7 +57,7 @@ export const storeEnteredGame = async (
     return {
       message: `Entered game is full`,
       status: "error",
-      code: 51,
+      errorId: "gameFull",
     };
   }
 
@@ -59,13 +68,12 @@ export const storeEnteredGame = async (
     return {
       message: `Store entered game failure: ${error}`,
       status: "error",
-      code: 0,
+      errorId: "unknown",
     };
   }
 
   const newEnteredGame = user.enteredGames.find(
-    (enteredGame) =>
-      enteredGame.gameDetails.gameId === enteredGameRequest.enteredGameId
+    (enteredGame) => enteredGame.gameDetails.gameId === enteredGameId
   );
 
   if (user && newEnteredGame) {
@@ -79,13 +87,13 @@ export const storeEnteredGame = async (
   return {
     message: "Store entered game failure",
     status: "error",
-    code: 0,
+    errorId: "unknown",
   };
 };
 
 export const removeEnteredGame = async (
   enteredGameRequest: DeleteEnteredGameParameters
-): Promise<DeleteEnteredGameResponse | ServerError> => {
+): Promise<DeleteEnteredGameResponse | ApiError> => {
   let user;
   try {
     user = await delEnteredGame(enteredGameRequest);
@@ -93,7 +101,7 @@ export const removeEnteredGame = async (
     return {
       message: "Delete entered game failure",
       status: "error",
-      code: 0,
+      errorId: "unknown",
     };
   }
 
@@ -107,6 +115,6 @@ export const removeEnteredGame = async (
   return {
     message: "Delete entered game failure",
     status: "error",
-    code: 0,
+    errorId: "unknown",
   };
 };

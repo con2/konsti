@@ -1,5 +1,6 @@
 import "core-js/stable";
 import "regenerator-runtime/runtime";
+import { createRoot } from "react-dom/client";
 import React, { Suspense, lazy } from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
@@ -42,9 +43,10 @@ const loader = (
 );
 
 const render = (): void => {
-  const rootReactElement = document.getElementById("main");
+  const container = document.getElementById("main") as HTMLElement;
+  const root = createRoot(container);
 
-  ReactDOM.render(
+  root.render(
     // <React.StrictMode>
     <Provider store={store}>
       <ThemeProvider theme={theme}>
@@ -53,9 +55,8 @@ const render = (): void => {
           <App />
         </Suspense>
       </ThemeProvider>
-    </Provider>,
-    // </React.StrictMode>,
-    rootReactElement
+    </Provider>
+    // </React.StrictMode>
   );
 };
 

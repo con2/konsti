@@ -3,14 +3,14 @@ import { isAuthorized } from "server/utils/authHeader";
 import { UserGroup } from "shared/typings/models/user";
 import { storeFeedback } from "server/features/feedback/feedbackService";
 import { logger } from "server/utils/logger";
-import { FEEDBACK_ENDPOINT } from "shared/constants/apiEndpoints";
+import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { Feedback, FeedbackSchema } from "shared/typings/models/feedback";
 
 export const postFeedback = async (
   req: Request<{}, {}, Feedback>,
   res: Response
 ): Promise<Response> => {
-  logger.info(`API call: POST ${FEEDBACK_ENDPOINT}`);
+  logger.info(`API call: POST ${ApiEndpoint.FEEDBACK}`);
 
   let parameters;
   try {

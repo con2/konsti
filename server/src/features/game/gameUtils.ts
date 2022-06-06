@@ -1,8 +1,6 @@
 import _ from "lodash";
 import moment, { Moment } from "moment";
-import { findGames } from "server/features/game/gameRepository";
-import { GameModel } from "server/features/game/gameSchema";
-import { removeInvalidSignupsFromUsers } from "server/features/player-assignment/utils/removeInvalidSignupsFromUsers";
+import { findGames, removeGames } from "server/features/game/gameRepository";
 import { GameDoc } from "server/typings/game.typings";
 import { logger } from "server/utils/logger";
 import { Game } from "shared/typings/models/game";
@@ -17,27 +15,33 @@ import { findTestSettings } from "server/test/test-settings/testSettingsReposito
 
 export const removeDeletedGames = async (
   updatedGames: readonly Game[]
-): Promise<void> => {
+): Promise<number> => {
+  logger.info("Remove deleted games");
+
   const currentGames = await findGames();
 
   const deletedGames = _.differenceBy(currentGames, updatedGames, "gameId");
 
-  if (deletedGames && deletedGames.length !== 0) {
-    logger.info(`Found ${deletedGames.length} deleted games, remove...`);
+  if (deletedGames.length > 0) {
+    const deletedGameIds = deletedGames.map(
+      (deletedGame) => deletedGame.gameId
+    );
+
+    logger.info(
+      `Found ${
+        deletedGames.length
+      } deleted games to be removed: ${deletedGameIds.join(", ")}`
+    );
 
     try {
-      await Promise.all(
-        deletedGames.map(async (deletedGame) => {
-          await GameModel.deleteOne({ gameId: deletedGame.gameId });
-        })
-      );
+      await removeGames(deletedGameIds);
     } catch (error) {
       logger.error(`Error removing deleted games: ${error}`);
-      return await Promise.reject(error);
+      throw error;
     }
-
-    await removeInvalidSignupsFromUsers();
   }
+
+  return deletedGames.length ?? 0;
 };
 
 export const getGameById = async (gameId: string): Promise<GameDoc> => {
@@ -76,7 +80,7 @@ export const enrichGames = async (
     return games.map((game) => {
       return {
         game: {
-          ...game.toJSON(),
+          ...game.toJSON<GameDoc>(),
           signupStrategy: getSignupStrategyForGame(game, settings, currentTime),
         },
         users: getUsersForGame(users, game.gameId),

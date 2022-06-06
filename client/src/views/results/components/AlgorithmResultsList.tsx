@@ -4,9 +4,9 @@ import styled from "styled-components";
 import { ResultsByGameTitle } from "./ResultsByGameTitle";
 import { ResultsByUsername } from "./ResultsByUsername";
 import { Result } from "shared/typings/models/result";
-import { Button } from "client/components/Button";
+import { Button, ButtonStyle } from "client/components/Button";
 
-export interface Props {
+interface Props {
   results: readonly Result[];
 }
 
@@ -33,7 +33,12 @@ export const AlgorithmResultsList = ({ results }: Props): ReactElement => {
     );
   }, [searchTerm, results]);
 
-  const buttons = ["username", "gameTitle"];
+  enum Buttons {
+    USERNAME = "username",
+    GAME_TITLE = "gameTitle",
+  }
+
+  const buttons = Object.values(Buttons);
 
   const handleSearchFieldChange = (e: ChangeEvent<HTMLInputElement>): void => {
     setSearchTerm(e.target.value);
@@ -43,14 +48,16 @@ export const AlgorithmResultsList = ({ results }: Props): ReactElement => {
     <div>
       <div>
         <span>{t("sortBy")} </span>
-        {buttons.map((name) => {
+        {buttons.map((button) => {
           return (
             <Button
-              disabled={sortedBy === name}
-              onClick={() => setSortedBy(name)}
-              key={name}
+              buttonStyle={
+                sortedBy === button ? ButtonStyle.DISABLED : ButtonStyle.NORMAL
+              }
+              onClick={() => setSortedBy(button)}
+              key={button}
             >
-              {t(name)}
+              {t(button)}
             </Button>
           );
         })}

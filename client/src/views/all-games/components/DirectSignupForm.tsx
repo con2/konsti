@@ -2,12 +2,11 @@ import React, { FC, ReactElement, useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { Game } from "shared/typings/models/game";
-import { getUpcomingEnteredGames } from "client/utils/getUpcomingGames";
 import { EnterGameForm } from "./EnterGameForm";
 import { SelectedGame } from "shared/typings/models/user";
 import { useAppSelector } from "client/utils/hooks";
 import { isAlreadyEntered } from "./allGamesUtils";
-import { Button } from "client/components/Button";
+import { Button, ButtonStyle } from "client/components/Button";
 import { CancelSignupForm } from "./CancelSignupForm";
 
 interface Props {
@@ -31,7 +30,7 @@ export const DirectSignupForm: FC<Props> = (
     (state) => state.admin.signupMessages
   );
 
-  const enteredGamesForTimeslot = getUpcomingEnteredGames(enteredGames).filter(
+  const enteredGamesForTimeslot = enteredGames.filter(
     (g) => g.gameDetails.startTime === startTime
   );
 
@@ -60,7 +59,10 @@ export const DirectSignupForm: FC<Props> = (
 
     if (enteredGamesForTimeSlot.length === 0 && !signupFormOpen) {
       return (
-        <Button onClick={() => setSignupFormOpen(!signupFormOpen)}>
+        <Button
+          onClick={() => setSignupFormOpen(!signupFormOpen)}
+          buttonStyle={ButtonStyle.NORMAL}
+        >
           {t("signup.signup")}
         </Button>
       );
@@ -69,52 +71,53 @@ export const DirectSignupForm: FC<Props> = (
     return null;
   };
 
-  if (loggedIn) {
-    return (
-      <>
-        {signupForDirect(
-          alreadyEnteredToGame,
-          enteredGamesForTimeslot,
-          gameIsFull
-        )}
-        {gameIsFull && <GameIsFull>{t("signup.gameIsFull")}</GameIsFull>}
-        {alreadyEnteredToGame && !cancelSignupFormOpen && (
-          <Button
-            onClick={() => setCancelSignupFormOpen(!cancelSignupFormOpen)}
-          >
-            {t("button.cancelSignup")}
-          </Button>
-        )}
-        {alreadyEnteredToGame && cancelSignupFormOpen && (
-          <CancelSignupForm
-            game={game}
-            onCancelSignup={() => {
-              setCancelSignupFormOpen(false);
-            }}
-            onCancelForm={() => {
-              setCancelSignupFormOpen(false);
-            }}
-          />
-        )}
-        {signupFormOpen && !alreadyEnteredToGame && !gameIsFull && (
-          <EnterGameForm
-            game={game}
-            signupMessage={AdditionalInfoMessages.find(
-              ({ gameId }) => gameId === game.gameId
-            )}
-            onEnterGame={() => setSignupFormOpen(false)}
-            onCancelSignup={() => setSignupFormOpen(false)}
-          />
-        )}
-      </>
-    );
+  if (!loggedIn) {
+    return null;
   }
 
-  return null;
+  return (
+    <>
+      {signupForDirect(
+        alreadyEnteredToGame,
+        enteredGamesForTimeslot,
+        gameIsFull
+      )}
+      {gameIsFull && <GameIsFull>{t("signup.gameIsFull")}</GameIsFull>}
+      {alreadyEnteredToGame && !cancelSignupFormOpen && (
+        <Button
+          onClick={() => setCancelSignupFormOpen(!cancelSignupFormOpen)}
+          buttonStyle={ButtonStyle.NORMAL}
+        >
+          {t("button.cancelSignup")}
+        </Button>
+      )}
+      {alreadyEnteredToGame && cancelSignupFormOpen && (
+        <CancelSignupForm
+          game={game}
+          onCancelSignup={() => {
+            setCancelSignupFormOpen(false);
+          }}
+          onCancelForm={() => {
+            setCancelSignupFormOpen(false);
+          }}
+        />
+      )}
+      {signupFormOpen && !alreadyEnteredToGame && !gameIsFull && (
+        <EnterGameForm
+          game={game}
+          signupMessage={AdditionalInfoMessages.find(
+            ({ gameId }) => gameId === game.gameId
+          )}
+          onEnterGame={() => setSignupFormOpen(false)}
+          onCancelSignup={() => setSignupFormOpen(false)}
+        />
+      )}
+    </>
+  );
 };
 
 const GameIsFull = styled.h4`
-  color: ${(props) => props.theme.error};
+  color: ${(props) => props.theme.textError};
 `;
 
 const SignedGameName = styled.span`

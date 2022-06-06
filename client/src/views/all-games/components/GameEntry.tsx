@@ -9,7 +9,8 @@ import { SignupStrategy } from "shared/config/sharedConfig.types";
 import { Game } from "shared/typings/models/game";
 import { AlgorithmSignupForm } from "./AlgorithmSignupForm";
 import { DirectSignupForm } from "./DirectSignupForm";
-import { Button } from "client/components/Button";
+import { Button, ButtonStyle } from "client/components/Button";
+import { SelectedGame } from "shared/typings/models/user";
 
 const DESCRIPTION_SENTENCES_LENGTH = 3;
 const matchNextSentence = /([.?!])\s*(?=[A-Z])/g;
@@ -19,6 +20,7 @@ interface Props {
   startTime: string;
   players: number;
   signupStrategy: SignupStrategy;
+  signedGames: readonly SelectedGame[];
 }
 
 export const GameEntry = ({
@@ -26,6 +28,7 @@ export const GameEntry = ({
   startTime,
   players,
   signupStrategy,
+  signedGames,
 }: Props): ReactElement => {
   const { t } = useTranslation();
 
@@ -39,8 +42,9 @@ export const GameEntry = ({
   const dispatch = useAppDispatch();
 
   const favorited =
-    favoritedGames.find((favoritedGame) => favoritedGame === game.gameId) !==
-    undefined;
+    favoritedGames.find(
+      (favoritedGame) => favoritedGame.gameId === game.gameId
+    ) !== undefined;
 
   const isEnterGameMode = signupStrategy === SignupStrategy.DIRECT;
   const gameIsFull = game.maxAttendance === players;
@@ -98,9 +102,22 @@ export const GameEntry = ({
         <HeaderContainer>
           <h3 data-testid="game-title">{game.title}</h3>
           <p>
-            {t("signup.expectedDuration", {
-              EXPECTED_DURATION: formatDuration(game.mins),
-            })}
+            <RowItem>
+              {t("signup.expectedDuration", {
+                EXPECTED_DURATION: formatDuration(game.mins),
+              })}
+            </RowItem>
+
+            <RowItem>
+              {game.minAttendance === game.maxAttendance
+                ? t("signup.playerCount", {
+                    MAX_ATTENDANCE: game.maxAttendance,
+                  })
+                : t("signup.playerRange", {
+                    MIN_ATTENDANCE: game.minAttendance,
+                    MAX_ATTENDANCE: game.maxAttendance,
+                  })}
+            </RowItem>
           </p>
           <PlayerCount visible={isEnterGameMode}>
             {t("signup.signupCount", {
@@ -135,6 +152,7 @@ export const GameEntry = ({
                   dispatch,
                 })
               }
+              buttonStyle={ButtonStyle.NORMAL}
               data-testid={"remove-favorite-button"}
             >
               <FavoriteIcon icon="heart" />
@@ -151,6 +169,7 @@ export const GameEntry = ({
                   dispatch,
                 })
               }
+              buttonStyle={ButtonStyle.NORMAL}
               data-testid={"add-favorite-button"}
             >
               <FavoriteIcon icon={["far", "heart"]} />
@@ -181,7 +200,11 @@ export const GameEntry = ({
         />
       )}
       {loggedIn && !isEnterGameMode && (
-        <AlgorithmSignupForm game={game} startTime={startTime} />
+        <AlgorithmSignupForm
+          game={game}
+          startTime={startTime}
+          signedGames={signedGames}
+        />
       )}
     </GameContainer>
   );
@@ -237,11 +260,11 @@ const Tag = styled.span`
   height: 14px;
   text-align: center;
   border-radius: 4px;
-  background: ${(props) => props.theme.tagBackground};
+  background: ${(props) => props.theme.backgroundTag};
   padding: 4px;
   margin-bottom: 4px;
   font-size: 12px;
-  color: ${(props) => props.theme.tagTextColor};
+  color: ${(props) => props.theme.textTag};
 `;
 
 const GameContainer = styled.div`
@@ -267,7 +290,11 @@ const GameTags = styled.div`
 `;
 
 const FavoriteIcon = styled(FontAwesomeIcon)`
-  color: ${(props) => props.theme.favorited};
+  color: ${(props) => props.theme.iconFavorited};
+`;
+
+const RowItem = styled.span`
+  padding-right: 12px;
 `;
 
 const GamePopularityContainer = styled.div`

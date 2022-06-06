@@ -7,7 +7,7 @@ export interface Item {
   title: string;
 }
 
-export interface Props {
+interface Props {
   onChange: (event: ChangeEvent<HTMLSelectElement>) => void;
   selectedValue: string;
   items: Item[];

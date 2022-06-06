@@ -13,7 +13,7 @@ import { Loading } from "client/components/Loading";
 import { Game } from "shared/typings/models/game";
 import { updateFavorite, UpdateFavoriteOpts } from "client/utils/favorite";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
-import { Button } from "client/components/Button";
+import { Button, ButtonStyle } from "client/components/Button";
 
 export const GameDetails = (): ReactElement => {
   const navigate = useNavigate();
@@ -51,7 +51,7 @@ export const GameDetails = (): ReactElement => {
 
       // Check if in favorites
       favoritedGames.find((favoritedGame) => {
-        if (favoritedGame === foundGame.gameId) {
+        if (favoritedGame.gameId === foundGame.gameId) {
           setFavorited(true);
         }
       });
@@ -161,15 +161,17 @@ export const GameDetails = (): ReactElement => {
       <div>
         <Button
           onClick={() => {
-            navigate(-1);
+            // Navigate to front page if no previous page exists
+            window.history.state?.idx > 0 ? navigate(-1) : navigate("/");
           }}
+          buttonStyle={ButtonStyle.NORMAL}
         >
           {t("button.back")}
         </Button>
 
         {favorited && loggedIn && userGroup === "user" && foundGame && (
           <Button
-            disabled={submitting}
+            buttonStyle={submitting ? ButtonStyle.DISABLED : ButtonStyle.NORMAL}
             onClick={async () => await updateFavoriteHandler("del")}
           >
             {t("button.removeFavorite")}
@@ -178,7 +180,7 @@ export const GameDetails = (): ReactElement => {
 
         {!favorited && loggedIn && userGroup === "user" && foundGame && (
           <Button
-            disabled={submitting}
+            buttonStyle={submitting ? ButtonStyle.DISABLED : ButtonStyle.NORMAL}
             onClick={async () => await updateFavoriteHandler("add")}
           >
             {t("button.favorite")}
@@ -187,7 +189,7 @@ export const GameDetails = (): ReactElement => {
 
         {hidden && loggedIn && userGroup === "admin" && foundGame && (
           <Button
-            disabled={submitting}
+            buttonStyle={submitting ? ButtonStyle.DISABLED : ButtonStyle.NORMAL}
             onClick={async () => await updateHidden("del")}
           >
             {t("button.show")}
@@ -196,7 +198,7 @@ export const GameDetails = (): ReactElement => {
 
         {!hidden && loggedIn && userGroup === "admin" && foundGame && (
           <Button
-            disabled={submitting}
+            buttonStyle={submitting ? ButtonStyle.DISABLED : ButtonStyle.NORMAL}
             onClick={async () => await updateHidden("add")}
           >
             {t("button.hide")}
@@ -209,7 +211,9 @@ export const GameDetails = (): ReactElement => {
           userGroup === "admin" &&
           foundGame && (
             <Button
-              disabled={submitting}
+              buttonStyle={
+                submitting ? ButtonStyle.DISABLED : ButtonStyle.NORMAL
+              }
               onClick={() => setSignupMessageInputVisible(true)}
             >
               {t("button.addSignupMessage")}
@@ -222,7 +226,9 @@ export const GameDetails = (): ReactElement => {
           userGroup === "admin" &&
           foundGame && (
             <Button
-              disabled={submitting}
+              buttonStyle={
+                submitting ? ButtonStyle.DISABLED : ButtonStyle.NORMAL
+              }
               onClick={() => setSignupMessageInputVisible(false)}
             >
               {t("button.cancel")}
@@ -230,7 +236,10 @@ export const GameDetails = (): ReactElement => {
           )}
 
         {hasSignupMessage && loggedIn && userGroup === "admin" && foundGame && (
-          <Button disabled={submitting} onClick={onClickDeleteSignupMessage}>
+          <Button
+            buttonStyle={submitting ? ButtonStyle.DISABLED : ButtonStyle.NORMAL}
+            onClick={onClickDeleteSignupMessage}
+          >
             {t("button.removeSignupMessage")}
           </Button>
         )}
@@ -248,7 +257,12 @@ export const GameDetails = (): ReactElement => {
             value={signupMessageInput}
             onChange={handleSignupMessageChange}
           />
-          <Button onClick={onClickAddSignupMessage}>{t("button.save")}</Button>
+          <Button
+            onClick={onClickAddSignupMessage}
+            buttonStyle={ButtonStyle.NORMAL}
+          >
+            {t("button.save")}
+          </Button>
         </>
       )}
 

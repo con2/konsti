@@ -1,17 +1,18 @@
 import { api } from "client/utils/api";
-import { ServerError } from "shared/typings/api/errors";
-import { GROUP_ENDPOINT } from "shared/constants/apiEndpoints";
+import { ApiError } from "shared/typings/api/errors";
+import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
   GetGroupResponse,
   GroupRequest,
+  PostGroupError,
   PostGroupResponse,
 } from "shared/typings/api/groups";
 
 export const postGroup = async (
   groupRequest: GroupRequest
-): Promise<PostGroupResponse | ServerError> => {
+): Promise<PostGroupResponse | PostGroupError> => {
   const response = await api.post<PostGroupResponse>(
-    GROUP_ENDPOINT,
+    ApiEndpoint.GROUP,
     groupRequest
   );
   return response.data;
@@ -20,8 +21,8 @@ export const postGroup = async (
 export const getGroup = async (
   groupCode: string,
   username: string
-): Promise<GetGroupResponse | ServerError> => {
-  const response = await api.get<GetGroupResponse>(GROUP_ENDPOINT, {
+): Promise<GetGroupResponse | ApiError> => {
+  const response = await api.get<GetGroupResponse>(ApiEndpoint.GROUP, {
     params: {
       groupCode,
       username,

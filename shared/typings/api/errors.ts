@@ -1,5 +1,5 @@
-export interface ServerError {
-  code: number;
+export interface ApiError {
+  errorId: string;
   message: string;
   status: "error";
 }

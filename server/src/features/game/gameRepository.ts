@@ -4,11 +4,15 @@ import { removeMovedGamesFromUsers } from "server/features/player-assignment/uti
 import { GameDoc } from "server/typings/game.typings";
 import { Game } from "shared/typings/models/game";
 import { removeDeletedGames } from "server/features/game/gameUtils";
+import { removeInvalidGamesFromUsers } from "server/features/player-assignment/utils/removeInvalidGamesFromUsers";
 
-export const removeGames = async (): Promise<void> => {
-  logger.info("MongoDB: remove ALL games from db");
+export const removeGames = async (gameIds?: string[]): Promise<void> => {
+  logger.info(
+    `MongoDB: remove games from db: ${gameIds ? gameIds.join(", ") : "ALL"}`
+  );
+
   try {
-    await GameModel.deleteMany({});
+    await GameModel.deleteMany(gameIds ? { gameId: { $in: gameIds } } : {});
   } catch (error) {
     throw new Error(`MongoDB: Error removing games - ${error}`);
   }
@@ -17,7 +21,10 @@ export const removeGames = async (): Promise<void> => {
 export const saveGames = async (games: readonly Game[]): Promise<Game[]> => {
   logger.info("MongoDB: Store games to DB");
 
-  await removeDeletedGames(games);
+  const deletedGamesCount = await removeDeletedGames(games);
+  if (deletedGamesCount > 0) {
+    await removeInvalidGamesFromUsers();
+  }
   await removeMovedGamesFromUsers(games);
 
   try {
@@ -41,18 +48,12 @@ export const saveGames = async (games: readonly Game[]): Promise<Game[]> => {
             minAttendance: game.minAttendance,
             maxAttendance: game.maxAttendance,
             gameSystem: game.gameSystem,
-            englishOk: game.englishOk,
-            childrenFriendly: game.childrenFriendly,
-            ageRestricted: game.ageRestricted,
-            beginnerFriendly: game.beginnerFriendly,
-            intendedForExperiencedParticipants:
-              game.intendedForExperiencedParticipants,
             shortDescription: game.shortDescription,
             revolvingDoor: game.revolvingDoor,
             programType: game.programType,
             contentWarnings: game.contentWarnings,
             otherAuthor: game.otherAuthor,
-            accessibility: game.accessibility,
+            accessibilityValues: game.accessibilityValues,
           },
           {
             upsert: true,
@@ -63,7 +64,7 @@ export const saveGames = async (games: readonly Game[]): Promise<Game[]> => {
     );
   } catch (error) {
     logger.error(`Error saving games to db: ${error}`);
-    return await Promise.reject(error);
+    throw error;
   }
 
   logger.debug("MongoDB: Games saved to DB successfully");

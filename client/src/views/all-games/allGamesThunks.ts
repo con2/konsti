@@ -7,7 +7,7 @@ export const submitGetGames = (): AppThunk => {
     const getGamesResponse = await getGames();
 
     if (getGamesResponse?.status === "error") {
-      return await Promise.reject(getGamesResponse);
+      // TODO
     }
 
     if (getGamesResponse?.status === "success") {
@@ -21,7 +21,7 @@ export const submitGamesUpdate = (): AppThunk => {
     const gamesUpdateResponse = await postGamesUpdate();
 
     if (gamesUpdateResponse?.status === "error") {
-      return await Promise.reject(gamesUpdateResponse);
+      // TODO
     }
 
     if (gamesUpdateResponse?.status === "success") {

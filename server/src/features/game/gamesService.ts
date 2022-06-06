@@ -1,38 +1,26 @@
 import { logger } from "server/utils/logger";
-import { updateGames } from "server/utils/updateGames";
+import { getGamesFromKompassi } from "server/features/game/utils/getGamesFromKompassi";
 import { updateGamePopularity } from "server/features/game-popularity/updateGamePopularity";
 import { config } from "server/config";
 import { kompassiGameMapper } from "server/utils/kompassiGameMapper";
-import { KompassiGame } from "server/typings/game.typings";
 import { Game } from "shared/typings/models/game";
 import { PostGamesResponse, GetGamesResponse } from "shared/typings/api/games";
 import { findGames, saveGames } from "server/features/game/gameRepository";
-import { ServerError } from "shared/typings/api/errors";
+import { ApiError } from "shared/typings/api/errors";
 import { enrichGames } from "./gameUtils";
+import { KompassiGame } from "shared/typings/models/kompassiGame";
 
-export const storeGames = async (): Promise<
-  PostGamesResponse | ServerError
-> => {
+export const storeGames = async (): Promise<PostGamesResponse | ApiError> => {
   let kompassiGames = [] as readonly KompassiGame[];
   try {
-    kompassiGames = await updateGames();
+    kompassiGames = await getGamesFromKompassi();
   } catch (error) {
     return {
       message: "Games db update failed",
       status: "error",
-      code: 0,
+      errorId: "unknown",
     };
   }
-
-  if (!kompassiGames || kompassiGames.length === 0) {
-    return {
-      message: "Games db update failed: No games available",
-      status: "error",
-      code: 0,
-    };
-  }
-
-  logger.info(`Found ${kompassiGames.length} games`);
 
   let gameSaveResponse: Game[];
   try {
@@ -42,7 +30,7 @@ export const storeGames = async (): Promise<
     return {
       message: "Games db update failed: Saving games failed",
       status: "error",
-      code: 0,
+      errorId: "unknown",
     };
   }
 
@@ -50,7 +38,7 @@ export const storeGames = async (): Promise<
     return {
       message: "Games db update failed: No save response",
       status: "error",
-      code: 0,
+      errorId: "unknown",
     };
   }
 
@@ -62,7 +50,7 @@ export const storeGames = async (): Promise<
       return {
         message: "Game popularity update failed",
         status: "error",
-        code: 0,
+        errorId: "unknown",
       };
     }
   }
@@ -74,7 +62,7 @@ export const storeGames = async (): Promise<
   };
 };
 
-export const fetchGames = async (): Promise<GetGamesResponse | ServerError> => {
+export const fetchGames = async (): Promise<GetGamesResponse | ApiError> => {
   try {
     const games = await findGames();
     const gamesWithPlayers = await enrichGames(games);
@@ -88,7 +76,7 @@ export const fetchGames = async (): Promise<GetGamesResponse | ServerError> => {
     return {
       message: `Downloading games failed`,
       status: "error",
-      code: 0,
+      errorId: "unknown",
     };
   }
 };

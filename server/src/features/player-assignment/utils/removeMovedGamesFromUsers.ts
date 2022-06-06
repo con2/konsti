@@ -3,7 +3,10 @@ import { logger } from "server/utils/logger";
 import { GameDoc } from "server/typings/game.typings";
 import { Game } from "shared/typings/models/game";
 import { findGames } from "server/features/game/gameRepository";
-import { findUsers, updateUser } from "server/features/user/userRepository";
+import {
+  findUsers,
+  updateUserByUsername,
+} from "server/features/user/userRepository";
 
 export const removeMovedGamesFromUsers = async (
   updatedGames: readonly Game[]
@@ -36,7 +39,7 @@ export const removeMovedGamesFromUsers = async (
     users = await findUsers();
   } catch (error) {
     logger.error(`findUsers error: ${error}`);
-    return await Promise.reject(error);
+    throw error;
   }
 
   try {
@@ -51,6 +54,16 @@ export const removeMovedGamesFromUsers = async (
           }
         });
 
+        if (signedGames.length > 0) {
+          logger.info(
+            `Remove following moved signedGames from user ${
+              user.username
+            }: ${signedGames
+              .map((signedGame) => signedGame.gameDetails.gameId)
+              .join(", ")}`
+          );
+        }
+
         const enteredGames = user.enteredGames.filter((enteredGame) => {
           const movedFound = movedGames.find((movedGame) => {
             return movedGame.gameId === enteredGame.gameDetails.gameId;
@@ -60,11 +73,21 @@ export const removeMovedGamesFromUsers = async (
           }
         });
 
+        if (enteredGames.length > 0) {
+          logger.info(
+            `Remove following moved enteredGames from user ${
+              user.username
+            }: ${enteredGames
+              .map((enteredGame) => enteredGame.gameDetails.gameId)
+              .join(", ")}`
+          );
+        }
+
         if (
           user.signedGames.length !== signedGames.length ||
           user.enteredGames.length !== enteredGames.length
         ) {
-          await updateUser({
+          await updateUserByUsername({
             ...user,
             signedGames,
             enteredGames,

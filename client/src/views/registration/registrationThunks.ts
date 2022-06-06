@@ -2,26 +2,36 @@ import { postRegistration } from "client/services/userServices";
 import { submitLogin } from "client/views/login/loginThunks";
 import { RegistrationFormFields } from "shared/typings/api/login";
 import { AppThunk } from "client/typings/redux.typings";
+import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
+
+export enum RegistrationErrorMessage {
+  USERNAME_TAKEN = "error.usernameTaken",
+  INVALID_SERIAL = "error.invalidSerial",
+  UNKNOWN = "error.unknown",
+  EMPTY = "",
+}
 
 export const submitRegistration = (
   registrationFormFields: RegistrationFormFields
-): AppThunk<Promise<string | undefined>> => {
-  return async (dispatch): Promise<string | undefined> => {
+): AppThunk<Promise<RegistrationErrorMessage | undefined>> => {
+  return async (dispatch): Promise<RegistrationErrorMessage | undefined> => {
     let registrationResponse;
     try {
       registrationResponse = await postRegistration(registrationFormFields);
     } catch (error) {
-      return await Promise.reject(error);
+      // TODO
     }
 
     if (registrationResponse?.status === "error") {
-      switch (registrationResponse.code) {
-        case 11:
-          return "error.usernameTaken";
-        case 12:
-          return "error.invalidSerial";
+      switch (registrationResponse.errorId) {
+        case "usernameNotFree":
+          return RegistrationErrorMessage.USERNAME_TAKEN;
+        case "invalidSerial":
+          return RegistrationErrorMessage.INVALID_SERIAL;
+        case "unknown":
+          return RegistrationErrorMessage.UNKNOWN;
         default:
-          return "error.unknown";
+          exhaustiveSwitchGuard(registrationResponse.errorId);
       }
     }
 

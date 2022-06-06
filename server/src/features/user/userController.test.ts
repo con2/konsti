@@ -1,18 +1,9 @@
 import request from "supertest";
-import {
-  FAVORITE_ENDPOINT,
-  GROUP_ENDPOINT,
-  LOGIN_ENDPOINT,
-  SIGNUP_ENDPOINT,
-  USERS_BY_SERIAL_OR_USERNAME_ENDPOINT,
-  USERS_ENDPOINT,
-  USERS_PASSWORD_ENDPOINT,
-} from "shared/constants/apiEndpoints";
+import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { ConventionType } from "shared/config/sharedConfig.types";
 import { startTestServer, stopTestServer } from "server/test/utils/testServer";
 import { UserGroup } from "shared/typings/models/user";
 import { getJWT } from "server/utils/jwt";
-import { GroupRequest } from "shared/typings/api/groups";
 
 jest.mock("server/utils/logger");
 
@@ -20,12 +11,12 @@ afterEach(() => {
   jest.resetModules();
 });
 
-describe(`GET ${USERS_ENDPOINT}`, () => {
+describe(`GET ${ApiEndpoint.USERS}`, () => {
   test("should return 422 without valid body", async () => {
     const { server, mongoServer } = await startTestServer();
 
     try {
-      const response = await request(server).get(USERS_ENDPOINT);
+      const response = await request(server).get(ApiEndpoint.USERS);
       expect(response.status).toEqual(422);
     } finally {
       await stopTestServer(server, mongoServer);
@@ -37,7 +28,7 @@ describe(`GET ${USERS_ENDPOINT}`, () => {
 
     try {
       const response = await request(server)
-        .get(USERS_ENDPOINT)
+        .get(ApiEndpoint.USERS)
         .query({ username: "testuser" });
       expect(response.status).toEqual(401);
     } finally {
@@ -46,13 +37,13 @@ describe(`GET ${USERS_ENDPOINT}`, () => {
   });
 });
 
-describe(`GET ${USERS_BY_SERIAL_OR_USERNAME_ENDPOINT}`, () => {
+describe(`GET ${ApiEndpoint.USERS_BY_SERIAL_OR_USERNAME}`, () => {
   test("should return 401 without valid authorization", async () => {
     const { server, mongoServer } = await startTestServer();
 
     try {
       const response = await request(server).get(
-        USERS_BY_SERIAL_OR_USERNAME_ENDPOINT
+        ApiEndpoint.USERS_BY_SERIAL_OR_USERNAME
       );
       expect(response.status).toEqual(401);
     } finally {
@@ -65,7 +56,7 @@ describe(`GET ${USERS_BY_SERIAL_OR_USERNAME_ENDPOINT}`, () => {
 
     try {
       const response = await request(server)
-        .get(USERS_BY_SERIAL_OR_USERNAME_ENDPOINT)
+        .get(ApiEndpoint.USERS_BY_SERIAL_OR_USERNAME)
         .set("Authorization", `Bearer ${getJWT(UserGroup.HELP, "ropetiski")}`);
       expect(response.status).toEqual(422);
     } finally {
@@ -74,12 +65,12 @@ describe(`GET ${USERS_BY_SERIAL_OR_USERNAME_ENDPOINT}`, () => {
   });
 });
 
-describe(`POST ${USERS_ENDPOINT}`, () => {
+describe(`POST ${ApiEndpoint.USERS}`, () => {
   test("should return 422 without username", async () => {
     const { server, mongoServer } = await startTestServer();
 
     try {
-      const response = await request(server).post(USERS_ENDPOINT).send({
+      const response = await request(server).post(ApiEndpoint.USERS).send({
         password: "testpass",
         serial: "testserial",
       });
@@ -93,7 +84,7 @@ describe(`POST ${USERS_ENDPOINT}`, () => {
     const { server, mongoServer } = await startTestServer();
 
     try {
-      const response = await request(server).post(USERS_ENDPOINT).send({
+      const response = await request(server).post(ApiEndpoint.USERS).send({
         username: "testuser",
         serial: "testserial",
       });
@@ -111,7 +102,7 @@ describe(`POST ${USERS_ENDPOINT}`, () => {
     const { server, mongoServer } = await startTestServer();
 
     try {
-      const response = await request(server).post(USERS_ENDPOINT).send({
+      const response = await request(server).post(ApiEndpoint.USERS).send({
         username: "testuser",
         password: "testpass",
       });
@@ -129,7 +120,7 @@ describe(`POST ${USERS_ENDPOINT}`, () => {
     const { server, mongoServer } = await startTestServer();
 
     try {
-      const response = await request(server).post(USERS_ENDPOINT).send({
+      const response = await request(server).post(ApiEndpoint.USERS).send({
         username: "testuser",
         password: "testpass",
       });
@@ -140,13 +131,13 @@ describe(`POST ${USERS_ENDPOINT}`, () => {
   });
 });
 
-describe(`POST ${USERS_PASSWORD_ENDPOINT}`, () => {
+describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
   test("should return 422 without valid body", async () => {
     const { server, mongoServer } = await startTestServer();
 
     try {
       const response = await request(server)
-        .post(USERS_PASSWORD_ENDPOINT)
+        .post(ApiEndpoint.USERS_PASSWORD)
         .send({
           username: "testuser",
         });
@@ -161,7 +152,7 @@ describe(`POST ${USERS_PASSWORD_ENDPOINT}`, () => {
 
     try {
       const response = await request(server)
-        .post(USERS_PASSWORD_ENDPOINT)
+        .post(ApiEndpoint.USERS_PASSWORD)
         .send({
           username: "testuser",
           password: "testpass",
@@ -178,7 +169,7 @@ describe(`POST ${USERS_PASSWORD_ENDPOINT}`, () => {
 
     try {
       const response = await request(server)
-        .post(USERS_PASSWORD_ENDPOINT)
+        .post(ApiEndpoint.USERS_PASSWORD)
         .send({
           username: "testuser",
           password: "testpass",
@@ -186,183 +177,6 @@ describe(`POST ${USERS_PASSWORD_ENDPOINT}`, () => {
         })
         .set("Authorization", `Bearer ${getJWT(UserGroup.USER, "testuser")}`);
       expect(response.status).toEqual(200);
-    } finally {
-      await stopTestServer(server, mongoServer);
-    }
-  });
-});
-
-describe(`POST ${FAVORITE_ENDPOINT}`, () => {
-  test("should return 422 without valid body", async () => {
-    const { server, mongoServer } = await startTestServer();
-
-    try {
-      const response = await request(server).post(FAVORITE_ENDPOINT);
-      expect(response.status).toEqual(422);
-    } finally {
-      await stopTestServer(server, mongoServer);
-    }
-  });
-
-  test("should return 401 without valid authorization", async () => {
-    const { server, mongoServer } = await startTestServer();
-
-    try {
-      const response = await request(server)
-        .post(FAVORITE_ENDPOINT)
-        .send({
-          favoriteData: {
-            username: "testuser",
-            favoritedGames: [],
-          },
-        });
-      expect(response.status).toEqual(401);
-    } finally {
-      await stopTestServer(server, mongoServer);
-    }
-  });
-});
-
-describe(`GET ${GROUP_ENDPOINT}`, () => {
-  test("should return 422 without valid body", async () => {
-    const { server, mongoServer } = await startTestServer();
-
-    try {
-      const response = await request(server).get(GROUP_ENDPOINT);
-      expect(response.status).toEqual(422);
-    } finally {
-      await stopTestServer(server, mongoServer);
-    }
-  });
-
-  test("should return 401 without valid authorization", async () => {
-    const { server, mongoServer } = await startTestServer();
-
-    try {
-      const response = await request(server).get(GROUP_ENDPOINT).query({
-        username: "testuser",
-        groupCode: "1234",
-      });
-      expect(response.status).toEqual(401);
-    } finally {
-      await stopTestServer(server, mongoServer);
-    }
-  });
-});
-
-describe(`POST ${GROUP_ENDPOINT}`, () => {
-  test("should return 422 without valid body", async () => {
-    const { server, mongoServer } = await startTestServer();
-
-    try {
-      const response = await request(server).post(GROUP_ENDPOINT);
-      expect(response.status).toEqual(422);
-    } finally {
-      await stopTestServer(server, mongoServer);
-    }
-  });
-
-  test("should return 401 without valid authorization", async () => {
-    const { server, mongoServer } = await startTestServer();
-
-    const groupRequest: GroupRequest = {
-      groupCode: "1234",
-      isGroupLeader: true,
-      ownSerial: "1234",
-      username: "testuser",
-      leaveGroup: false,
-      closeGroup: false,
-    };
-
-    try {
-      const response = await request(server)
-        .post(GROUP_ENDPOINT)
-        .send(groupRequest);
-      expect(response.status).toEqual(401);
-    } finally {
-      await stopTestServer(server, mongoServer);
-    }
-  });
-});
-
-describe(`POST ${LOGIN_ENDPOINT}`, () => {
-  test("should return 422 without any parameters", async () => {
-    const { server, mongoServer } = await startTestServer();
-
-    try {
-      const response = await request(server).post(LOGIN_ENDPOINT);
-      expect(response.status).toEqual(422);
-    } finally {
-      await stopTestServer(server, mongoServer);
-    }
-  });
-
-  test("should return 422 if username is found but password is missing", async () => {
-    const { server, mongoServer } = await startTestServer();
-
-    try {
-      const response = await request(server).post(LOGIN_ENDPOINT).send({
-        username: "testuser",
-      });
-      expect(response.status).toEqual(422);
-    } finally {
-      await stopTestServer(server, mongoServer);
-    }
-  });
-
-  test("should return 422 if password is found but username is missing", async () => {
-    const { server, mongoServer } = await startTestServer();
-
-    try {
-      const response = await request(server).post(LOGIN_ENDPOINT).send({
-        password: "testpass",
-      });
-      expect(response.status).toEqual(422);
-    } finally {
-      await stopTestServer(server, mongoServer);
-    }
-  });
-
-  test("should return 200 if password and username are found", async () => {
-    const { server, mongoServer } = await startTestServer();
-
-    try {
-      const response = await request(server)
-        .post(LOGIN_ENDPOINT)
-        .send({ username: "testuser", password: "testpass" });
-      expect(response.status).toEqual(200);
-    } finally {
-      await stopTestServer(server, mongoServer);
-    }
-  });
-});
-
-describe(`POST ${SIGNUP_ENDPOINT}`, () => {
-  test("should return 422 without valid body", async () => {
-    const { server, mongoServer } = await startTestServer();
-
-    try {
-      const response = await request(server).post(SIGNUP_ENDPOINT);
-      expect(response.status).toEqual(422);
-    } finally {
-      await stopTestServer(server, mongoServer);
-    }
-  });
-
-  test("should return 401 without valid authorization", async () => {
-    const { server, mongoServer } = await startTestServer();
-
-    try {
-      const response = await request(server)
-        .post(SIGNUP_ENDPOINT)
-        .send({
-          signupData: {
-            username: "testuser",
-            selectedGames: [],
-            signupTime: "2019-11-23T08:00:00Z",
-          },
-        });
-      expect(response.status).toEqual(401);
     } finally {
       await stopTestServer(server, mongoServer);
     }

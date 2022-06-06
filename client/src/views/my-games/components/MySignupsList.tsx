@@ -6,14 +6,14 @@ import { getStartTimes } from "client/utils/getStartTimes";
 import { SignupsByStartTimes } from "./SignupsByStartTimes";
 import { SelectedGame } from "shared/typings/models/user";
 
-export interface Props {
+interface Props {
   signedGames: readonly SelectedGame[];
-  isGroupLeader: boolean;
+  isGroupCreator: boolean;
 }
 
 export const MySignupsList = ({
   signedGames,
-  isGroupLeader,
+  isGroupCreator,
 }: Props): ReactElement => {
   const { t } = useTranslation();
 
@@ -30,7 +30,7 @@ export const MySignupsList = ({
     <div>
       <h3>{t("signedGames")}</h3>
 
-      {!isGroupLeader && <InfoText>{t("inGroupSignups")}</InfoText>}
+      {!isGroupCreator && <InfoText>{t("group.inGroupSignups")}</InfoText>}
 
       <MySignupsGames>
         {signedGames.length === 0 && <span>{t("noSignedGames")}</span>}

@@ -1,15 +1,16 @@
 import moment from "moment";
 import { logger } from "server/utils/logger";
-import { UserSignup } from "server/typings/result.typings";
+import { UserSignedGames } from "server/typings/result.typings";
 import { User } from "shared/typings/models/user";
-import { findUsers, saveSignup } from "server/features/user/userRepository";
+import { findUsers } from "server/features/user/userRepository";
 import { Result } from "shared/typings/models/result";
+import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
 
 export const removeOverlapSignups = async (
   results: readonly Result[]
 ): Promise<void> => {
   logger.debug("Find overlapping signups");
-  const signupData: UserSignup[] = [];
+  const signupData: UserSignedGames[] = [];
 
   let users: User[];
   try {
@@ -54,7 +55,7 @@ export const removeOverlapSignups = async (
   try {
     await Promise.all(
       signupData.map(async (signup) => {
-        await saveSignup(signup);
+        await saveSignedGames(signup);
       })
     );
   } catch (error) {

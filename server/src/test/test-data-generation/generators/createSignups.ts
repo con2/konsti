@@ -1,12 +1,13 @@
-import faker from "@faker-js/faker";
+import { faker } from "@faker-js/faker";
 import moment from "moment";
 import _ from "lodash";
 import { logger } from "server/utils/logger";
 import { updateGamePopularity } from "server/features/game-popularity/updateGamePopularity";
 import { Game } from "shared/typings/models/game";
-import { findUsers, saveSignup } from "server/features/user/userRepository";
+import { findUsers } from "server/features/user/userRepository";
 import { findGames } from "server/features/game/gameRepository";
 import { SelectedGame, User } from "shared/typings/models/user";
+import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
 
 export const createSignups = async (): Promise<void> => {
   const games = await findGames();
@@ -85,7 +86,7 @@ const getRandomSignup = (games: readonly Game[]): SelectedGame[] => {
 const signup = async (games: readonly Game[], user: User): Promise<User> => {
   const signedGames = getRandomSignup(games);
 
-  return await saveSignup({
+  return await saveSignedGames({
     username: user.username,
     signedGames: signedGames,
   });
@@ -110,14 +111,14 @@ const signupGroup = async (
   games: readonly Game[],
   users: readonly User[]
 ): Promise<void> => {
-  // Generate random signup data for the group leader
-  const groupLeader = users.find((user) => user.serial === user.groupCode);
-  if (!groupLeader) throw new Error("Error getting group leader");
+  // Generate random signup data for the group creator
+  const groupCreator = users.find((user) => user.serial === user.groupCode);
+  if (!groupCreator) throw new Error("Error getting group creator");
 
   const signupData = {
-    username: groupLeader.username,
+    username: groupCreator.username,
     signedGames: getRandomSignup(games),
   };
 
-  await saveSignup(signupData);
+  await saveSignedGames(signupData);
 };

@@ -4,11 +4,12 @@ import { Game } from "shared/typings/models/game";
 import { GroupMember } from "shared/typings/api/groups";
 import { Result } from "shared/typings/models/result";
 import { store, combinedReducer } from "client/utils/store";
-import { SelectedGame, UserGroup } from "shared/typings/models/user";
+import { UserGroup } from "shared/typings/models/user";
 import { SignupMessage } from "shared/typings/models/settings";
 import { UserSignup } from "shared/typings/api/games";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
 import { UserGames } from "shared/typings/api/users";
+import { ErrorMessageType } from "client/components/ErrorBar";
 
 export interface AdminState {
   hiddenGames: readonly Game[];
@@ -17,6 +18,7 @@ export interface AdminState {
   responseMessage: string;
   signupMessages: readonly SignupMessage[];
   signupStrategy: SignupStrategy | undefined;
+  errors: readonly ErrorMessageType[];
 }
 
 export interface UsersForGame {
@@ -35,21 +37,18 @@ export interface LoginState {
   jwt: string;
   userGroup: UserGroup;
   serial: string;
+}
+
+export interface GroupState {
   groupCode: string;
   groupMembers: readonly GroupMember[];
 }
 
-export type MyGamesState = UserGames;
+export interface MyGamesState extends UserGames {}
 
 export interface ResultsState {
   result: readonly Result[];
   startTime: string;
-}
-
-export interface SignupState {
-  signupTime: string;
-  selectedGames: readonly SelectedGame[];
-  unsavedChanges: boolean;
 }
 
 export interface TestSettingsState {

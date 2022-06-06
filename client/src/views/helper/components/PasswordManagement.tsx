@@ -2,7 +2,7 @@ import React, { ReactElement, ChangeEvent, useState } from "react";
 import { useTranslation } from "react-i18next";
 import styled, { css } from "styled-components";
 import { getUserBySerialOrUsername } from "client/services/userServices";
-import { Button } from "client/components/Button";
+import { Button, ButtonStyle } from "client/components/Button";
 import { ChangePasswordForm } from "client/views/helper/components/ChangePasswordForm";
 
 export const PasswordManagement = (): ReactElement => {
@@ -55,7 +55,9 @@ export const PasswordManagement = (): ReactElement => {
           value={userSerialInput}
           onChange={handleSerialChange}
         />
-        <Button onClick={submitGetUser}>{t("button.find")}</Button>
+        <Button onClick={submitGetUser} buttonStyle={ButtonStyle.NORMAL}>
+          {t("button.find")}
+        </Button>
 
         {userFoundMessage}
       </div>
@@ -85,6 +87,6 @@ const Message = styled.p<MessageProps>`
   ${(messageProps) =>
     messageProps.error &&
     css`
-      color: ${(props) => props.theme.error};
+      color: ${(props) => props.theme.textError};
     `};
 `;

@@ -3,8 +3,8 @@ import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { Game } from "shared/typings/models/game";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
-import { Button } from "client/components/Button";
-import { submitDeleteGame } from "client/views/signup/signupThunks";
+import { Button, ButtonStyle } from "client/components/Button";
+import { submitDeleteEnteredGame } from "client/views/my-games/myGamesThunks";
 import { loadGames } from "client/utils/loadData";
 
 interface Props {
@@ -25,7 +25,7 @@ export const CancelSignupForm: FC<Props> = (props: Props): ReactElement => {
   };
   const removeSignup = async (event: FormEvent): Promise<void> => {
     await dispatch(
-      submitDeleteGame({
+      submitDeleteEnteredGame({
         username,
         startTime: game.startTime,
         enteredGameId: game.gameId,
@@ -37,10 +37,13 @@ export const CancelSignupForm: FC<Props> = (props: Props): ReactElement => {
 
   return (
     <ButtonContainer>
-      <CancelSignupButton onClick={removeSignup}>
+      <CancelSignupButton
+        onClick={removeSignup}
+        buttonStyle={ButtonStyle.WARNING}
+      >
         {t("signup.confirmCancelSignup")}
       </CancelSignupButton>
-      <CancelFormButton onClick={handleCancel}>
+      <CancelFormButton onClick={handleCancel} buttonStyle={ButtonStyle.NORMAL}>
         {t("signup.cancel")}
       </CancelFormButton>
     </ButtonContainer>
@@ -54,18 +57,8 @@ const ButtonContainer = styled.div`
 
 const CancelSignupButton = styled(Button)`
   width: 50%;
-  background: ${(props) => props.theme.buttonCancelSignup};
-  border: 1px solid ${(props) => props.theme.buttonCancelSignupBorder};
-  color: ${(props) => props.theme.mainText};
-  &:hover,
-  &:focus {
-    border: 1px solid ${(props) => props.theme.buttonCancelSignupBorder};
-    background: ${(props) => props.theme.buttonCancelSignupHover};
-    color: ${(props) => props.theme.mainText};
-  }
 `;
 
 const CancelFormButton = styled(Button)`
   width: 50%;
-  border: 1px solid ${(props) => props.theme.informative};
 `;

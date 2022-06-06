@@ -4,9 +4,10 @@ import { MongoMemoryServer } from "mongodb-memory-server";
 import { UserModel } from "server/features/user/userSchema";
 import { GameModel } from "server/features/game/gameSchema";
 import { mockUser, mockSignup } from "server/test/mock-data/mockUser";
-import { mockGame, mockGame2 } from "server/test/mock-data/mockGame";
+import { testGame, testGame2 } from "shared/tests/testGame";
 import { removeMovedGamesFromUsers } from "server/features/player-assignment/utils/removeMovedGamesFromUsers";
-import { saveSignup, saveUser } from "server/features/user/userRepository";
+import { saveUser } from "server/features/user/userRepository";
+import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
 
 let mongoServer: MongoMemoryServer;
 
@@ -23,15 +24,15 @@ afterEach(async () => {
 });
 
 test("should remove signups for moved games from users", async () => {
-  const game = new GameModel(mockGame);
+  const game = new GameModel(testGame);
   await game.save();
-  const game2 = new GameModel(mockGame2);
+  const game2 = new GameModel(testGame2);
   await game2.save();
   const insertedGames = await GameModel.find({});
   expect(insertedGames.length).toEqual(2);
 
   await saveUser(mockUser);
-  await saveSignup(mockSignup);
+  await saveSignedGames(mockSignup);
   const insertedUser = await UserModel.findOne({
     username: mockUser.username,
   });

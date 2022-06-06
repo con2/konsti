@@ -20,7 +20,7 @@ export const groupAssignPlayers = (
   const startingGames = getStartingGames(games, startingTime);
 
   if (startingGames.length === 0) {
-    logger.info("No starting games, stop!");
+    logger.debug("No starting games, stop!");
     return {
       results: [],
       message: "Group Assign Result - No starting games",
@@ -32,7 +32,7 @@ export const groupAssignPlayers = (
   const signupWishes = getSignupWishes(players);
 
   if (signupWishes.length === 0) {
-    logger.info("No signup wishes, stop!");
+    logger.debug("No signup wishes, stop!");
     return {
       results: [],
       message: "Group Assign Result - No signup wishes",
@@ -43,10 +43,10 @@ export const groupAssignPlayers = (
 
   const signedGames = getSignedGames(startingGames, signupWishes);
 
-  // Selected players are group leaders since group members don't have signups at this point
-  const groupLeaders = getSelectedPlayers(players, startingGames);
-  const groupMembers = getGroupMembers(groupLeaders, players);
-  const allPlayers = groupLeaders.concat(groupMembers);
+  // Selected players are group creators since group members don't have signups at this point
+  const groupCreators = getSelectedPlayers(players, startingGames);
+  const groupMembers = getGroupMembers(groupCreators, players);
+  const allPlayers = groupCreators.concat(groupMembers);
   // Single user is size 1 group
   const playerGroups = getPlayerGroups(allPlayers);
 

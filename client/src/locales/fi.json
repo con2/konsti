@@ -133,7 +133,6 @@
     "notSuitableUnder15": "Ei sovellu alle 15-vuotiaille",
     "childrensProgram": "Lastenohjelma"
   },
-
   "pageTitle": {
     "login": "Kirjaudu sisään",
     "registration": "Rekisteröi käyttäjätunnus",
@@ -150,7 +149,7 @@
     "invalidSerial": "Epäkelpo rekisteröitymiskoodi",
     "loginFailed": "Käyttäjänimi ja salasana eivät täsmää",
     "loginDisabled": "Kirjautuminen on suljettu",
-    "unkown": "Tuntematon virhe"
+    "unknown": "Tuntematon virhe"
   },
   "agreePrivacyPolicy": "Hyväksyn tietosuojaselosteen",
   "privacyPolicyButton": "Näytä tietosuojaseloste",
@@ -170,14 +169,15 @@
   "activeTimeDescription": "Peleihin sijoittaminen suoritetaan ja tulokset näytetään aktiiviselle ajankohdalle",
   "signupOpenBetween": "ilmoittautuminen",
   "signupOpenBetweenCapital": "Ilmoittautuminen auki ",
-  "signupResultsfor": "Ilmoittautumisen tulokset peleille jotka alkavat",
-  "noResults": "Ei ilmoittautumistuloksia saatavilla vielä",
   "signupGuide": "* Voit valita kolme pelitoivetta. Suosikkipelisi on ylimmäisenä 'Valitut pelit' listalla.\n* Suosittelemme valitsemaan useamman kuin yhden pelin jokaiseen alkamisajankohtaan.\n* Valitse pelit vetämällä 'Avoimet pelit' listalta 'Valitut pelit' listalle.\n* Ilmoittautumisajankohdalla ei ole vaikutusta lopputulokseen. Pelaajat sijoitetaan peleihin 30 minuuttia ennen pelien alkua.\n* Muista tallentaa muutokset.",
   "signupGuideTitle": "Ilmoittautumisohje ja vinkkejä",
   "signupGuideButton": "Ilmoittautumisohje ja vinkkejä",
   "signupSaved": "Ilmoittautuminen tallennettu",
-  "signupError": "Ilmoittautuminen epäonnistui",
-  "signupEnded": "Ilmoittautuminen päättynyt tälle ajankohdalle",
+  "signupError": {
+    "generic": "Ilmoittautuminen epäonnistui",
+    "signupEnded": "Ilmoittautuminen päättynyt",
+    "samePriority": "Prioriteetti on jo valittu"
+  },
   "signupUnsavedChanges": "Tallentamattomia muutoksia",
   "signupResultHint": "Voit katsoa ilmoittautumistulokset 'Omat pelit' sivulta klo",
   "closingMessage": "Konsti on suljettu ja avautuu lähempänä seuraavaa tapahtumaa",
@@ -187,30 +187,6 @@
   },
   "details": "lisätietoja",
   "gameLimitWarning": "Voit valita enintään kolme peliä",
-  "groupTooBigWarning": "Ryhmä on suurempi kuin suurin sallittu pelaajamäärä",
-  "enterGroupMemberCode": "Käyttäjän koodi",
-  "enterGroupLeaderCode": "Ryhmänjohtajan koodi",
-  "joinGroup": "Liity ryhmään",
-  "addGroupMember": "Lisää jäsen ryhmään",
-  "createGroupConfirmationMessage": "Halutko luoda ryhmän?",
-  "youAreGroupLeader": "Olet ryhmän johtaja",
-  "youAreInGroup": "Olet ryhmässä",
-  "groupMembers": "Ryhmän jäsenet",
-  "groupLeader": "ryhmänjohtaja",
-  "groupMemberInfo": "Ryhmänjohtaja ilmoittautuu peleihin ryhmän muiden jäsenten puolesta. Näet valitut pelit ja ilmoittautumisen tulokset 'Omat pelit' sivulta",
-  "groupLeaderInfo": "Voit ilmoittautua peleihin koko ryhmän puolesta. Voit ilmoittautua peleihin 'Ilmoittaudu' sivulla. Varmistathan, että ryhmä ei ole liian iso valitsemiisi peleihin liittymistä varten. Ryhmänjohtaja ei voi poistua ryhmästä, mutta voi sulkea ryhmän. Tällöin kaikki ryhmän jäsenet poistetaan ryhmästä.",
-  "groupLeaderWarning": "Ryhmänjohtaja ei voi poistua ryhmästä, jos ryhmässä on muita jäseniä",
-  "joiningGroupWillCancelGames": "Ryhmään liittyminen peruu kaikki aikaisemmat ilmoittautumisesi",
-  "groupSignupGuide": "Ryhmiin liitytään ryhmän perustajan rekisteröintikoodilla. Näet oman koodisi sivun ylälaidasta.",
-  "groupCreated": "Ryhmä luotu",
-  "invalidGroupCode": "Epäkelko koodi",
-  "groupNotExist": "Ryhmää ei ole olemassa",
-  "generalCreateGroupError": "Virhe ryhmää luodessa",
-  "groupJoined": "Ryhmään liitytty",
-  "generalJoinGroupError": "Virhe ryhmään liittyessä",
-  "leftGroup": "Poistuit ryhmästä",
-  "closedGroup": "Ryhmä suljettu",
-  "groupNotEmpty": "Johtaja ei voi poistua ryhmästä, jossa on muita jäseniä",
   "noSignupResult": "Et mahtunut peliin tällä alkamisajankohdalla",
   "invalidGameId": "Peliä ei löydy. Viallinen pelitunniste",
   "feedbackTitle": "Palaute",
@@ -229,11 +205,36 @@
   "revolvingDoorInstruction": "Pyöröovipeleihin voi liittyä koska tahansa, jos pelipöydässä on tilaa",
   "currentlyRunningRevolvingDoor": "Käynnissä olevat pelit",
   "noCurrentlyRunningGames": "Ei käynnissä olevia pyöröovipelejä",
-  "signupDisabledNotLeader": "Olet ryhmässä. Ilmoittautuminen sallittu vain ryhmän johtajalle.",
-  "signupForWholeGroup": "Olet ryhmän johtaja. Voit ilmoittautua peleihin koko ryhmän puolesta.",
-  "inGroupSignups": "Olet ryhmän jäsen. Seuraavat 'Valitut pelit' ovat ryhmänjohtajan valitsemia.",
-  "closeGroupConfirmation": "Oletko varma, että haluat sulkea ryhmän ja poistaa kaikki sen jäsenet?",
-  "generalLeaveGroupError": "Virhe ryhmästä poistuessa",
+  "group": {
+    "signupDisabledNotCreator": "Olet ryhmän jäsen. Ryhmän perustaja ilmoittautuu peleihin ryhmän muiden jäsenten puolesta.",
+    "signupForWholeGroup": "Olet ryhmän perustaja. Voit ilmoittautua peleihin koko ryhmän puolesta.",
+    "inGroupSignups": "Olet ryhmän jäsen. Seuraavat pelit ovat ryhmän perustajan valitsemia.",
+    "closeGroupConfirmation": "Oletko varma, että haluat sulkea ryhmän ja poistaa kaikki sen jäsenet?",
+    "generalLeaveGroupError": "Virhe ryhmästä poistuessa",
+    "groupTooBigWarning": "Ryhmä on suurempi kuin suurin sallittu pelaajamäärä",
+    "enterGroupMemberCode": "Käyttäjän koodi",
+    "enterGroupCreatorCode": "Ryhmän perustajan koodi",
+    "joinGroup": "Liity ryhmään",
+    "addGroupMember": "Lisää jäsen ryhmään",
+    "createGroupConfirmationMessage": "Halutko luoda ryhmän?",
+    "youAreGroupCreator": "Olet ryhmän perustaja",
+    "youAreInGroup": "Olet ryhmässä",
+    "groupMembers": "Ryhmän jäsenet",
+    "groupCreator": "ryhmän perustaja",
+    "groupMemberInfo": "Ryhmän perustaja ilmoittautuu peleihin ryhmän muiden jäsenten puolesta. Näet valitut pelit \"Omat pelit\" sivulta",
+    "groupCreatorInfo": "Voit ilmoittautua peleihin koko ryhmän puolesta. Varmistathan, että ryhmä ei ole liian iso valitsemiisi peleihin liittymistä varten. Ryhmän perustaja ei voi poistua ryhmästä, mutta voi sulkea ryhmän. Tällöin kaikki ryhmän jäsenet poistetaan ryhmästä.",
+    "joiningGroupWillCancelGames": "Ryhmään liittyminen peruu kaikki aikaisemmat ilmoittautumisesi",
+    "groupSignupGuide": "Ryhmiin liitytään ryhmän perustajan rekisteröintikoodilla. Näet oman koodisi sivun ylälaidasta.",
+    "groupCreated": "Ryhmä luotu",
+    "invalidGroupCode": "Epäkelko koodi",
+    "groupNotExist": "Ryhmää ei ole olemassa",
+    "generalCreateGroupError": "Virhe ryhmää luodessa",
+    "groupJoined": "Ryhmään liitytty",
+    "generalJoinGroupError": "Virhe ryhmään liittyessä",
+    "leftGroup": "Poistuit ryhmästä",
+    "closedGroup": "Ryhmä suljettu",
+    "groupNotEmpty": "Ryhmän perustaja ei voi poistua ryhmästä, jossa on muita jäseniä"
+  },
   "signupResults": "Ilmoittautumisen tulokset",
   "helperResults": "Tulokset",
   "passwordManagement": {
@@ -248,6 +249,7 @@
   },
   "errorMessage": "Olemme tunnistaneet ongelman, että 'Omat pelit' sivulla näkyvät 'Ilmoittautumisen tulokset' voivat näkyä väärin ja tiedot on piilotettu. Oikeat tulokset voi katsoa 'Ilmoittautumistulokset' sivulta.",
   "testValues": {
+    "buttonText": "Testiarvot",
     "time": "Testiaika",
     "strategy": "Strategia"
   },
@@ -264,14 +266,17 @@
     "playerNeeded": "Tarvitaan vielä {{COUNT}} pelaajaa!",
     "gameIsFull": "Peli on täynnä",
     "confirmCancelSignup": "Vahvista ilmoittautumisen peruminen",
-    "expectedDuration": "Pelin kesto {{EXPECTED_DURATION}}"
+    "expectedDuration": "Pelin kesto {{EXPECTED_DURATION}}",
+    "playerCount": "Pelaajia {{MAX_ATTENDANCE}}",
+    "playerRange": "Pelaajia {{MIN_ATTENDANCE}} - {{MAX_ATTENDANCE}}"
   },
   "resultsView": {
     "allSignupResults": "Pelien ilmoittautumistilanne ja pelaajat",
     "confirm": "Vahvista",
     "noSignups": "Ei ilmoittautuneita pelaajia",
     "players": "Pelaajia",
-    "noStartingGames": "Ei alkavia pelejä"
+    "noResults": "Ei ilmoittautumistuloksia saatavilla vielä",
+    "signupResultsFor": "Ilmoittautumisen tulokset peleille jotka alkavat"
   },
   "gameDetails": {
     "addSignupTextField": "Lisää ilmoittautumisen lisätietokenttä"
@@ -305,5 +310,13 @@
     "direct": "Suora",
     "algorithm": "Algoritmi",
     "algorithm+direct": "Algoritmi + Suora"
+  },
+  "backendError": {
+    "apiError": "Virhe kutsuessa {{method}} {{url}}",
+    "networkError": "Verkkovirhe, yhteys palvelimeen epäonnistui"
+  },
+  "aboutView": {
+    "title": "Mikä on Konsti?",
+    "description": "Konsti on ilmoittautumissovellus, joka on suunniteltu suomalaisille coneille."
   }
 }

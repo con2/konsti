@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { GroupMember } from "shared/typings/api/groups";
 
-export interface Props {
+interface Props {
   groupMembers: readonly GroupMember[];
 }
 
@@ -13,11 +13,12 @@ export const GroupMembersList = ({ groupMembers }: Props): ReactElement => {
   if (!groupMembers) return <GroupMembersListContainer />;
 
   const membersList = groupMembers.map((member, index) => {
-    const isGroupLeader = member.serial === member.groupCode;
+    const isGroupCreator = member.serial === member.groupCode;
     return (
       <p key={member.username}>
-        {index + 1}) {member.username}{" "}
-        {isGroupLeader && <span>({t("groupLeader")})</span>}
+        {index + 1}
+        {")"} {member.username}{" "}
+        {isGroupCreator && <span>({t("group.groupCreator")})</span>}
       </p>
     );
   });

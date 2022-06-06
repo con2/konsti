@@ -4,44 +4,26 @@ import { z, ZodError } from "zod";
 import {
   fetchUserByUsername,
   storeUser,
-  storeFavorite,
-  fetchGroup,
-  storeGroup,
-  login,
-  storeSignup,
   fetchUserBySerialOrUsername,
   storeUserPassword,
 } from "server/features/user/userService";
 import { UserGroup } from "shared/typings/models/user";
 import { isAuthorized } from "server/utils/authHeader";
 import { logger } from "server/utils/logger";
+import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
-  FAVORITE_ENDPOINT,
-  GROUP_ENDPOINT,
-  LOGIN_ENDPOINT,
-  SIGNUP_ENDPOINT,
-  USERS_BY_SERIAL_OR_USERNAME_ENDPOINT,
-  USERS_ENDPOINT,
-  USERS_PASSWORD_ENDPOINT,
-} from "shared/constants/apiEndpoints";
-import { SignupData } from "shared/typings/api/signup";
-import { GroupRequest, GroupRequestSchema } from "shared/typings/api/groups";
-import { SaveFavoriteRequest } from "shared/typings/api/favorite";
-import {
-  LoginFormFields,
   RegistrationFormFields,
   UpdateUserPasswordRequest,
 } from "shared/typings/api/login";
 import { sharedConfig } from "shared/config/sharedConfig";
 import { ConventionType } from "shared/config/sharedConfig.types";
 import { createSerial } from "./userUtils";
-import { GameSchema } from "shared/typings/models/game";
 
 export const postUser = async (
   req: Request<{}, {}, RegistrationFormFields>,
   res: Response
 ): Promise<Response> => {
-  logger.info(`API call: POST ${USERS_ENDPOINT}`);
+  logger.info(`API call: POST ${ApiEndpoint.USERS}`);
 
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -64,7 +46,7 @@ export const postUserPassword = async (
   req: Request<{}, {}, UpdateUserPasswordRequest>,
   res: Response
 ): Promise<Response> => {
-  logger.info(`API call: POST ${USERS_PASSWORD_ENDPOINT}`);
+  logger.info(`API call: POST ${ApiEndpoint.USERS_PASSWORD}`);
 
   const PostUserPasswordParameters = z.object({
     username: z.string(),
@@ -100,108 +82,11 @@ export const postUserPassword = async (
   return res.json(response);
 };
 
-export const postLogin = async (
-  req: Request<{}, {}, LoginFormFields>,
-  res: Response
-): Promise<Response> => {
-  logger.info(`API call: POST ${LOGIN_ENDPOINT}`);
-
-  const { username, password } = req.body;
-
-  if (!username || !password) {
-    return res.sendStatus(422);
-  }
-
-  const response = await login(username, password);
-  return res.json(response);
-};
-
-export const postFavorite = async (
-  req: Request<{}, {}, { favoriteData: SaveFavoriteRequest }>,
-  res: Response
-): Promise<Response> => {
-  logger.info(`API call: POST ${FAVORITE_ENDPOINT}`);
-
-  const PostFavoriteParameters = z.object({
-    favoriteData: z.object({
-      username: z.string(),
-      favoritedGames: z.array(z.string()),
-    }),
-  });
-
-  let parameters;
-  try {
-    parameters = PostFavoriteParameters.parse(req.body);
-  } catch (error) {
-    if (error instanceof ZodError) {
-      logger.error(
-        `Error validating postFavorite parameters: ${error.message}`
-      );
-    }
-    return res.sendStatus(422);
-  }
-
-  const { favoriteData } = parameters;
-
-  if (
-    !isAuthorized(
-      req.headers.authorization,
-      UserGroup.USER,
-      favoriteData.username
-    )
-  ) {
-    return res.sendStatus(401);
-  }
-
-  const response = await storeFavorite(favoriteData);
-  return res.json(response);
-};
-
-export const postGroup = async (
-  req: Request<{}, {}, GroupRequest>,
-  res: Response
-): Promise<Response> => {
-  logger.info(`API call: POST ${GROUP_ENDPOINT}`);
-
-  let groupRequest: GroupRequest;
-  try {
-    groupRequest = GroupRequestSchema.parse(req.body);
-  } catch (error) {
-    if (error instanceof ZodError) {
-      logger.error(`Error validating postGroup parameters: ${error.message}`);
-    }
-    return res.sendStatus(422);
-  }
-
-  const {
-    username,
-    isGroupLeader,
-    groupCode,
-    ownSerial,
-    leaveGroup,
-    closeGroup,
-  } = groupRequest;
-
-  if (!isAuthorized(req.headers.authorization, UserGroup.USER, username)) {
-    return res.sendStatus(401);
-  }
-
-  const response = await storeGroup(
-    username,
-    isGroupLeader,
-    groupCode,
-    ownSerial,
-    leaveGroup,
-    closeGroup
-  );
-  return res.json(response);
-};
-
 export const getUser = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  logger.info(`API call: GET ${USERS_ENDPOINT}`);
+  logger.info(`API call: GET ${ApiEndpoint.USERS}`);
 
   const GetUserQueryParameters = z.object({
     username: z.string(),
@@ -236,7 +121,7 @@ export const getUserBySerialOrUsername = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  logger.info(`API call: GET ${USERS_BY_SERIAL_OR_USERNAME_ENDPOINT}`);
+  logger.info(`API call: GET ${ApiEndpoint.USERS_BY_SERIAL_OR_USERNAME}`);
 
   if (!isAuthorized(req.headers.authorization, UserGroup.HELP, "ropetiski")) {
     return res.sendStatus(401);
@@ -266,75 +151,5 @@ export const getUserBySerialOrUsername = async (
 
   const response = await fetchUserBySerialOrUsername(searchTerm);
 
-  return res.json(response);
-};
-
-export const getGroup = async (
-  req: Request,
-  res: Response
-): Promise<Response> => {
-  logger.info(`API call: GET ${GROUP_ENDPOINT}`);
-
-  const GetGroupQueryParameters = z.object({
-    groupCode: z.string(),
-    username: z.string(),
-  });
-
-  let parameters;
-
-  try {
-    parameters = GetGroupQueryParameters.parse(req.query);
-  } catch (error) {
-    return res.sendStatus(422);
-  }
-
-  const { groupCode, username } = parameters;
-
-  if (!isAuthorized(req.headers.authorization, UserGroup.USER, username)) {
-    return res.sendStatus(401);
-  }
-
-  const response = await fetchGroup(groupCode);
-  return res.json(response);
-};
-
-export const postSignup = async (
-  req: Request<{}, {}, { signupData: SignupData }>,
-  res: Response
-): Promise<Response> => {
-  logger.info(`API call: POST ${SIGNUP_ENDPOINT}`);
-
-  const PostSignupParameters = z.object({
-    signupData: z.object({
-      username: z.string(),
-      selectedGames: z.array(
-        z.object({
-          gameDetails: GameSchema,
-          priority: z.number(),
-          time: z.string(),
-          message: z.string(),
-        })
-      ),
-      signupTime: z.string(),
-    }),
-  });
-
-  let parameters;
-  try {
-    parameters = PostSignupParameters.parse(req.body);
-  } catch (error) {
-    if (error instanceof ZodError) {
-      logger.error(`Error validating postSignup parameters: ${error.message}`);
-    }
-    return res.sendStatus(422);
-  }
-
-  const { selectedGames, username, signupTime } = parameters.signupData;
-
-  if (!isAuthorized(req.headers.authorization, UserGroup.USER, username)) {
-    return res.sendStatus(401);
-  }
-
-  const response = await storeSignup(selectedGames, username, signupTime);
   return res.json(response);
 };

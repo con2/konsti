@@ -4,7 +4,7 @@ import _ from "lodash";
 import styled from "styled-components";
 import { Result } from "shared/typings/models/result";
 
-export interface Props {
+interface Props {
   results: readonly Result[];
 }
 
@@ -53,7 +53,7 @@ export const ResultsByGameTitle = ({ results }: Props): ReactElement => {
 };
 
 const GameResult = styled.div`
-  border-bottom: solid 1px ${(props) => props.theme.disabled};
+  border-bottom: solid 1px ${(props) => props.theme.borderDisabled};
   padding-bottom: 10px;
 `;
 

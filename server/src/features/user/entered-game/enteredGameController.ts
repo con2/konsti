@@ -6,20 +6,20 @@ import {
 } from "server/features/user/entered-game/enteredGameService";
 import { isAuthorized } from "server/utils/authHeader";
 import { logger } from "server/utils/logger";
-import { ENTERED_GAME_ENDPOINT } from "shared/constants/apiEndpoints";
+import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
   DeleteEnteredGameParameters,
   DeleteEnteredGameParametersSchema,
   PostEnteredGameParameters,
   PostEnteredGameParametersSchema,
-} from "shared/typings/api/signup";
+} from "shared/typings/api/myGames";
 import { UserGroup } from "shared/typings/models/user";
 
 export const postEnteredGame = async (
   req: Request<{}, {}, PostEnteredGameParameters>,
   res: Response
 ): Promise<Response> => {
-  logger.info(`API call: POST ${ENTERED_GAME_ENDPOINT}`);
+  logger.info(`API call: POST ${ApiEndpoint.ENTERED_GAME}`);
 
   const { username } = req.body;
 
@@ -46,7 +46,7 @@ export const deleteEnteredGame = async (
   req: Request<{}, {}, DeleteEnteredGameParameters>,
   res: Response
 ): Promise<Response> => {
-  logger.info(`API call: DELETE ${ENTERED_GAME_ENDPOINT}`);
+  logger.info(`API call: DELETE ${ApiEndpoint.ENTERED_GAME}`);
 
   const { username } = req.body;
 

@@ -1,11 +1,11 @@
 import { logger } from "server/utils/logger";
 import { findResult } from "server/features/results/resultsRepository";
-import { ServerError } from "shared/typings/api/errors";
+import { ApiError } from "shared/typings/api/errors";
 import { GetResultsResponse } from "shared/typings/api/results";
 
 export const fetchResults = async (
   startTime: string
-): Promise<GetResultsResponse | ServerError> => {
+): Promise<GetResultsResponse | ApiError> => {
   let results;
   try {
     results = await findResult(startTime);
@@ -14,7 +14,7 @@ export const fetchResults = async (
     return {
       message: "Getting results failed",
       status: "error",
-      code: 0,
+      errorId: "unknown",
     };
   }
 
