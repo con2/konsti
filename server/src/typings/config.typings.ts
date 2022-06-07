@@ -20,7 +20,7 @@ export interface Config {
   RANDOM_ASSIGNMENT_ROUNDS: number;
   bundleCompression: boolean;
   autoUpdateGamesEnabled: boolean;
-  gameUpdateInterval: number;
+  gameUpdateInterval: string;
   enableRemoveOverlapSignups: boolean;
   saveTestAssign: boolean;
   autoUpdateGamePopularityEnabled: boolean;
@@ -31,4 +31,6 @@ export interface Config {
   enableSignupTimeCheck: boolean;
   firtSignupBonus: number;
   statsDataDir: string;
+  autoAssignDelay: number;
+  autoAssignInterval: string;
 }
