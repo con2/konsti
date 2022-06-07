@@ -18,19 +18,19 @@ const {
   gameUpdateInterval,
   autoUpdateGamePopularityEnabled,
   autoAssignPlayersEnabled,
+  autoAssignDelay,
+  autoAssignInterval,
 } = config;
 
 const { assignmentStrategy } = sharedConfig;
 
 export const startCronJobs = async (): Promise<void> => {
   if (autoUpdateGamesEnabled || autoUpdateGamePopularityEnabled) {
-    const gameUpdatecronRule = `*/${gameUpdateInterval} * * * *`;
-    await schedule.scheduleJob(gameUpdatecronRule, autoUpdateGames);
+    await schedule.scheduleJob(gameUpdateInterval, autoUpdateGames);
   }
 
   if (autoAssignPlayersEnabled) {
-    const autoAssingCronRule = `*/30 * * * *`;
-    await schedule.scheduleJob(autoAssingCronRule, autoAssignPlayers);
+    await schedule.scheduleJob(autoAssignInterval, autoAssignPlayers);
   }
 };
 
@@ -62,15 +62,17 @@ const autoAssignPlayers = async (): Promise<void> => {
 
   const startTime = moment().endOf("hour").add(1, "seconds").format();
 
-  logger.info("Auto assign: Wait 10s for final requests");
-  await sleep(10000);
+  logger.info(
+    `Auto assign: Wait ${autoAssignDelay / 1000}s for final requests`
+  );
+  await sleep(autoAssignDelay);
   logger.info("Auto assign: Waiting done, start assignment");
 
   let assignResults;
   try {
     assignResults = await runAssignment(startTime, assignmentStrategy);
     if (assignResults.results.length === 0) {
-      // throw new Error("No results");
+      throw new Error("No results");
     }
   } catch (error) {
     logger.error(`Auto assignment failed: ${error}`);
