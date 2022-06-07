@@ -27,12 +27,12 @@ const testAssignPlayers = async (
     await removeOverlapSignups(assignResults.results);
   }
 
-  await saveResults(
-    assignResults.results,
+  await saveResults({
+    results: assignResults.results,
     startingTime,
-    assignResults.algorithm,
-    assignResults.message
-  );
+    algorithm: assignResults.algorithm,
+    message: assignResults.message,
+  });
 
   await verifyResults();
   await verifyUserSignups();
