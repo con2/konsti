@@ -111,7 +111,7 @@ const devConfig = {
   autoUpdateGamePopularityEnabled: false,
 
   // Player assign cron
-  autoAssignPlayersEnabled: true,
+  autoAssignPlayersEnabled: false,
   autoAssignInterval: `*/15 * * * * *`,
   autoAssignDelay: 1000 * 1,
 };
