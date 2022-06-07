@@ -1,18 +1,14 @@
 import { startServer, closeServer } from "server/utils/server";
 import { logger } from "server/utils/logger";
-import { autoUpdateGames, autoAssignPlayers } from "server/utils/cron";
+import { startCronJobs } from "server/utils/cron";
 import { config } from "server/config";
 
 const startApp = async (): Promise<void> => {
-  // Start cronjob to auto update games from Kompassi
-  autoUpdateGames().catch((error) => {
-    logger.error(error);
-  });
-
-  // Start cronjob to automatically assing players
-  autoAssignPlayers().catch((error) => {
-    logger.error(error);
-  });
+  try {
+    await startCronJobs();
+  } catch (error) {
+    logger.error(`Cronjob failed: ${error}`);
+  }
 
   const server = await startServer(config.dbConnString, config.port);
 
