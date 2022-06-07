@@ -92,6 +92,7 @@ const SignupCount = styled.span`
 `;
 
 const GameListTitleContainer = styled.div<{ isVisible: boolean }>`
+  z-index: 2;
   margin: 20px 0;
   padding: 8px;
   background: #fafafa;
