@@ -46,11 +46,15 @@ const prodConfig = {
   updateGamePopularityEnabled: true,
   enableSignupTimeCheck: true,
 
-  // Cron
+  // Game update cron
   autoUpdateGamesEnabled: true,
-  gameUpdateInterval: 4, // minutes
+  gameUpdateInterval: `*/4 * * * *`,
   autoUpdateGamePopularityEnabled: true,
+
+  // Player assign cron
   autoAssignPlayersEnabled: true,
+  autoAssignInterval: `*/30 * * * *`,
+  autoAssignDelay: 1000 * 10,
 };
 
 const stagingConfig = {
@@ -71,11 +75,15 @@ const stagingConfig = {
   updateGamePopularityEnabled: true,
   enableSignupTimeCheck: false,
 
-  // Cron
+  // Game update cron
   autoUpdateGamesEnabled: false,
-  gameUpdateInterval: 4, // minutes
+  gameUpdateInterval: `*/4 * * * *`,
   autoUpdateGamePopularityEnabled: false,
+
+  // Player assign cron
   autoAssignPlayersEnabled: false,
+  autoAssignInterval: `*/30 * * * *`,
+  autoAssignDelay: 1000 * 10,
 };
 
 const devConfig = {
@@ -97,11 +105,15 @@ const devConfig = {
   updateGamePopularityEnabled: true,
   enableSignupTimeCheck: false,
 
-  // Cron
+  // Game update cron
   autoUpdateGamesEnabled: false,
-  gameUpdateInterval: 4, // minutes
+  gameUpdateInterval: `*/10 * * * *`,
   autoUpdateGamePopularityEnabled: false,
+
+  // Player assign cron
   autoAssignPlayersEnabled: false,
+  autoAssignInterval: `*/15 * * * * *`,
+  autoAssignDelay: 1000 * 1,
 };
 
 const combineConfig = (): Config => {
