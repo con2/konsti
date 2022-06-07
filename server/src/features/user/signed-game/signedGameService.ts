@@ -30,14 +30,19 @@ export const storeSignedGames = async (
   }
 
   // Check for duplicate priorities, ie. some kind of error
-  const priorities = selectedGames.map((selectedGame) => selectedGame.priority);
-  const uniqPriorities = _.uniq(priorities);
-  if (priorities.length !== uniqPriorities.length) {
-    return {
-      message: "Duplicate priority score found",
-      status: "error",
-      errorId: "samePriority",
-    };
+  const gamesByTimeslot = _.groupBy(selectedGames, (game) => game.time);
+
+  for (const [, games] of Object.entries(gamesByTimeslot)) {
+    const priorities = games.map((selectedGame) => selectedGame.priority);
+    const uniqPriorities = _.uniq(priorities);
+
+    if (priorities.length !== uniqPriorities.length) {
+      return {
+        message: "Duplicate priority score found",
+        status: "error",
+        errorId: "samePriority",
+      };
+    }
   }
 
   try {
