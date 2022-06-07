@@ -3,12 +3,19 @@ import { saveUserSignupResults } from "server/features/player-assignment/utils/s
 import { Result } from "shared/typings/models/result";
 import { saveResult } from "server/features/results/resultsRepository";
 
-export const saveResults = async (
-  results: readonly Result[],
-  startingTime: string,
-  algorithm: string,
-  message: string
-): Promise<void> => {
+interface SaveResultsParams {
+  results: readonly Result[];
+  startingTime: string;
+  algorithm: string;
+  message: string;
+}
+
+export const saveResults = async ({
+  results,
+  startingTime,
+  algorithm,
+  message,
+}: SaveResultsParams): Promise<void> => {
   try {
     logger.info(
       `Save all signup results to separate collection for starting time ${startingTime}`

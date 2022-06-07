@@ -46,12 +46,12 @@ export const storeAssignment = async (
   }
 
   try {
-    await saveResults(
-      assignResults.results,
+    await saveResults({
+      results: assignResults.results,
       startingTime,
-      assignResults.algorithm,
-      assignResults.message
-    );
+      algorithm: assignResults.algorithm,
+      message: assignResults.message,
+    });
   } catch (error) {
     logger.error(`saveResult error: ${error}`);
     return {

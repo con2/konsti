@@ -64,12 +64,12 @@ describe("Assignment with valid data", () => {
     }
 
     try {
-      await saveResults(
-        assignResults.results,
+      await saveResults({
+        results: assignResults.results,
         startingTime,
-        assignResults.algorithm,
-        assignResults.message
-      );
+        algorithm: assignResults.algorithm,
+        message: assignResults.message,
+      });
     } catch (error) {
       return logger.error(error);
     }
@@ -94,12 +94,12 @@ describe("Assignment with valid data", () => {
     }
 
     try {
-      await saveResults(
-        assignResults2.results,
+      await saveResults({
+        results: assignResults2.results,
         startingTime,
-        assignResults2.algorithm,
-        assignResults2.message
-      );
+        algorithm: assignResults2.algorithm,
+        message: assignResults2.message,
+      });
     } catch (error) {
       return logger.error(error);
     }
@@ -129,12 +129,12 @@ describe("Assignment with valid data", () => {
     }
 
     try {
-      await saveResults(
-        assignResults.results,
+      await saveResults({
+        results: assignResults.results,
         startingTime,
-        assignResults.algorithm,
-        assignResults.message
-      );
+        algorithm: assignResults.algorithm,
+        message: assignResults.message,
+      });
     } catch (error) {
       return logger.error(error);
     }
@@ -159,12 +159,12 @@ describe("Assignment with valid data", () => {
     }
 
     try {
-      await saveResults(
-        assignResults2.results,
+      await saveResults({
+        results: assignResults2.results,
         startingTime,
-        assignResults2.algorithm,
-        assignResults2.message
-      );
+        algorithm: assignResults2.algorithm,
+        message: assignResults2.message,
+      });
     } catch (error) {
       return logger.error(error);
     }
@@ -193,12 +193,12 @@ describe("Assignment with valid data", () => {
     }
 
     try {
-      await saveResults(
-        assignResults.results,
+      await saveResults({
+        results: assignResults.results,
         startingTime,
-        assignResults.algorithm,
-        assignResults.message
-      );
+        algorithm: assignResults.algorithm,
+        message: assignResults.message,
+      });
     } catch (error) {
       return logger.error(error);
     }
@@ -223,12 +223,12 @@ describe("Assignment with valid data", () => {
     }
 
     try {
-      await saveResults(
-        assignResults2.results,
+      await saveResults({
+        results: assignResults2.results,
         startingTime,
-        assignResults2.algorithm,
-        assignResults2.message
-      );
+        algorithm: assignResults2.algorithm,
+        message: assignResults2.message,
+      });
     } catch (error) {
       return logger.error(error);
     }
@@ -258,12 +258,12 @@ describe("Assignment with valid data", () => {
     }
 
     try {
-      await saveResults(
-        assignResults.results,
+      await saveResults({
+        results: assignResults.results,
         startingTime,
-        assignResults.algorithm,
-        assignResults.message
-      );
+        algorithm: assignResults.algorithm,
+        message: assignResults.message,
+      });
     } catch (error) {
       return logger.error(error);
     }
@@ -288,12 +288,12 @@ describe("Assignment with valid data", () => {
     }
 
     try {
-      await saveResults(
-        assignResults2.results,
+      await saveResults({
+        results: assignResults2.results,
         startingTime,
-        assignResults2.algorithm,
-        assignResults2.message
-      );
+        algorithm: assignResults2.algorithm,
+        message: assignResults2.message,
+      });
     } catch (error) {
       return logger.error(error);
     }
@@ -323,12 +323,12 @@ describe("Assignment with valid data", () => {
     }
 
     try {
-      await saveResults(
-        assignResults.results,
+      await saveResults({
+        results: assignResults.results,
         startingTime,
-        assignResults.algorithm,
-        assignResults.message
-      );
+        algorithm: assignResults.algorithm,
+        message: assignResults.message,
+      });
     } catch (error) {
       return logger.error(error);
     }
@@ -353,12 +353,12 @@ describe("Assignment with valid data", () => {
     }
 
     try {
-      await saveResults(
-        assignResults2.results,
+      await saveResults({
+        results: assignResults2.results,
         startingTime,
-        assignResults2.algorithm,
-        assignResults2.message
-      );
+        algorithm: assignResults2.algorithm,
+        message: assignResults2.message,
+      });
     } catch (error) {
       return logger.error(error);
     }
@@ -382,12 +382,12 @@ describe("Assignment with valid data", () => {
     expect(assignResults.status).toEqual("success");
 
     try {
-      await saveResults(
-        assignResults.results,
+      await saveResults({
+        results: assignResults.results,
         startingTime,
-        assignResults.algorithm,
-        assignResults.message
-      );
+        algorithm: assignResults.algorithm,
+        message: assignResults.message,
+      });
     } catch (error) {
       return logger.error(error);
     }
@@ -410,12 +410,12 @@ describe("Assignment with valid data", () => {
     expect(assignResults2.status).toEqual("success");
 
     try {
-      await saveResults(
-        assignResults2.results,
-        startingTime2,
-        assignResults2.algorithm,
-        assignResults2.message
-      );
+      await saveResults({
+        results: assignResults2.results,
+        startingTime: startingTime2,
+        algorithm: assignResults2.algorithm,
+        message: assignResults2.message,
+      });
     } catch (error) {
       return logger.error(error);
     }
