@@ -1,4 +1,39 @@
-import { Config, GameUpdateMethod } from "server/typings/config.typings";
+enum GameUpdateMethod {
+  signups = "signups",
+  assign = "assign",
+}
+
+interface Config {
+  port: number;
+  debug: boolean;
+  logDir: string;
+  enableAccessLog: boolean;
+  dbConnString: string;
+  dbName: string;
+  jwtSecretKey: string;
+  jwtSecretKeyAdmin: string;
+  jwtSecretKeyHelp: string;
+  allowedCorsOrigins: readonly string[];
+  dataUri: string;
+  GROUP_ASSIGNMENT_ROUNDS: number;
+  PADG_ASSIGNMENT_ROUNDS: number;
+  RANDOM_ASSIGNMENT_ROUNDS: number;
+  bundleCompression: boolean;
+  autoUpdateGamesEnabled: boolean;
+  gameUpdateInterval: string;
+  enableRemoveOverlapSignups: boolean;
+  saveTestAssign: boolean;
+  autoUpdateGamePopularityEnabled: boolean;
+  gamePopularityUpdateMethod: GameUpdateMethod;
+  updateGamePopularityEnabled: boolean;
+  useLocalProgramFile: boolean;
+  autoAssignPlayersEnabled: boolean;
+  enableSignupTimeCheck: boolean;
+  firtSignupBonus: number;
+  statsDataDir: string;
+  autoAssignDelay: number;
+  autoAssignInterval: string;
+}
 
 const commonConfig = {
   // Server settings
@@ -53,7 +88,7 @@ const prodConfig = {
 
   // Player assign cron
   autoAssignPlayersEnabled: true,
-  autoAssignInterval: `*/30 * * * *`,
+  autoAssignInterval: `0,15,30,45 * * * *`,
   autoAssignDelay: 1000 * 10,
 };
 
@@ -82,7 +117,7 @@ const stagingConfig = {
 
   // Player assign cron
   autoAssignPlayersEnabled: false,
-  autoAssignInterval: `*/30 * * * *`,
+  autoAssignInterval: `0,15,30,45 * * * *`,
   autoAssignDelay: 1000 * 10,
 };
 
@@ -112,7 +147,7 @@ const devConfig = {
 
   // Player assign cron
   autoAssignPlayersEnabled: false,
-  autoAssignInterval: `*/15 * * * * *`,
+  autoAssignInterval: `0,15,30,45 * * * * *`,
   autoAssignDelay: 1000 * 1,
 };
 
