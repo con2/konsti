@@ -7,6 +7,9 @@ import { Game } from "shared/typings/models/game";
 import { findUsers } from "server/features/user/userRepository";
 import { findGames } from "server/features/game/gameRepository";
 import { AssignmentStrategy } from "shared/config/sharedConfig.types";
+import { config } from "server/config";
+import { removeOverlapSignups } from "server/features/player-assignment/utils/removeOverlapSignups";
+import { saveResults } from "server/features/player-assignment/utils/saveResults";
 
 export const runAssignment = async (
   startingTime: string,
@@ -43,6 +46,32 @@ export const runAssignment = async (
     );
   } catch (error) {
     throw new Error(`Player assign error: ${error}`);
+  }
+
+  if (assignResults.results.length === 0) {
+    logger.warn(`No assign results for starting time ${startingTime}`);
+  }
+
+  try {
+    await saveResults({
+      results: assignResults.results,
+      startingTime,
+      algorithm: assignResults.algorithm,
+      message: assignResults.message,
+    });
+  } catch (error) {
+    logger.error(`saveResult error: ${error}`);
+    throw new Error("Saving results failed");
+  }
+
+  if (config.enableRemoveOverlapSignups) {
+    try {
+      logger.info("Remove overlapping signups");
+      await removeOverlapSignups(assignResults.results);
+    } catch (error) {
+      logger.error(`removeOverlapSignups error: ${error}`);
+      throw new Error("Removing overlap signups failed");
+    }
   }
 
   return assignResults;
