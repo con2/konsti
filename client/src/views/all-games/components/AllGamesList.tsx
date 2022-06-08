@@ -8,6 +8,7 @@ import { GameListTitle } from "client/views/all-games/components/GameListTitle";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
 import { getIsGroupCreator } from "client/views/group/utils/getIsGroupCreator";
 import { getSignedGames } from "client/utils/getUpcomingGames";
+import { getPhaseGap } from "client/utils/getTime";
 
 interface Props {
   games: readonly Game[];
@@ -74,6 +75,7 @@ export const AllGamesList = ({ games }: Props): ReactElement => {
                 startTime={startTime}
                 signupStrategy={timeslotSignupStrategy}
                 signedGames={ownOrGroupCreatorSignedGames}
+                phaseGap={getPhaseGap(startTime)}
               />
             );
           })}

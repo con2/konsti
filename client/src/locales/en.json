@@ -268,7 +268,8 @@
     "confirmCancelSignup": "Confirm signup cancellation",
     "expectedDuration": "Duration {{EXPECTED_DURATION}}",
     "playerCount": "Players {{MAX_ATTENDANCE}}",
-    "playerRange": "Players {{MIN_ATTENDANCE}} - {{MAX_ATTENDANCE}}"
+    "playerRange": "Players {{MIN_ATTENDANCE}} - {{MAX_ATTENDANCE}}",
+    "signupOpens": "Signup opens"
   },
   "resultsView": {
     "allSignupResults": "Signup overview and players",

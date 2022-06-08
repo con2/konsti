@@ -14,6 +14,7 @@ export interface SharedConfig {
   DAY_START_TIME: number;
   DIRECT_SIGNUP_START: number;
   PRE_SIGNUP_START: number;
+  PHASE_GAP: number;
 }
 
 export enum SignupStrategy {
