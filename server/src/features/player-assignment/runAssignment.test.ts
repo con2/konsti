@@ -48,7 +48,10 @@ describe("Assignment with valid data", () => {
 
     // FIRST RUN
 
-    const assignResults = await runAssignment(startingTime, assignmentStrategy);
+    const assignResults = await runAssignment({
+      assignmentStrategy,
+      startingTime,
+    });
     expect(assignResults.status).toEqual("success");
 
     await verifyUserSignups();
@@ -56,10 +59,10 @@ describe("Assignment with valid data", () => {
 
     // SECOND RUN
 
-    const assignResults2 = await runAssignment(
+    const assignResults2 = await runAssignment({
+      assignmentStrategy,
       startingTime,
-      assignmentStrategy
-    );
+    });
     expect(assignResults2.status).toEqual("success");
 
     await verifyUserSignups();
@@ -73,7 +76,10 @@ describe("Assignment with valid data", () => {
 
     // FIRST RUN
 
-    const assignResults = await runAssignment(startingTime, assignmentStrategy);
+    const assignResults = await runAssignment({
+      assignmentStrategy,
+      startingTime,
+    });
     expect(assignResults.status).toEqual("success");
 
     await verifyUserSignups();
@@ -81,10 +87,10 @@ describe("Assignment with valid data", () => {
 
     // SECOND RUN
 
-    const assignResults2 = await runAssignment(
+    const assignResults2 = await runAssignment({
+      assignmentStrategy,
       startingTime,
-      assignmentStrategy
-    );
+    });
     expect(assignResults2.status).toEqual("success");
 
     await verifyUserSignups();
@@ -98,7 +104,10 @@ describe("Assignment with valid data", () => {
 
     // FIRST RUN
 
-    const assignResults = await runAssignment(startingTime, assignmentStrategy);
+    const assignResults = await runAssignment({
+      assignmentStrategy,
+      startingTime,
+    });
     expect(assignResults.status).toEqual("success");
 
     await verifyUserSignups();
@@ -106,10 +115,10 @@ describe("Assignment with valid data", () => {
 
     // SECOND RUN
 
-    const assignResults2 = await runAssignment(
+    const assignResults2 = await runAssignment({
+      assignmentStrategy,
       startingTime,
-      assignmentStrategy
-    );
+    });
     expect(assignResults2.status).toEqual("success");
 
     await verifyUserSignups();
@@ -123,7 +132,10 @@ describe("Assignment with valid data", () => {
 
     // FIRST RUN
 
-    const assignResults = await runAssignment(startingTime, assignmentStrategy);
+    const assignResults = await runAssignment({
+      assignmentStrategy,
+      startingTime,
+    });
     expect(assignResults.status).toEqual("success");
 
     await verifyUserSignups();
@@ -131,10 +143,10 @@ describe("Assignment with valid data", () => {
 
     // SECOND RUN
 
-    const assignResults2 = await runAssignment(
+    const assignResults2 = await runAssignment({
+      assignmentStrategy,
       startingTime,
-      assignmentStrategy
-    );
+    });
     expect(assignResults2.status).toEqual("success");
 
     await verifyUserSignups();
@@ -148,7 +160,10 @@ describe("Assignment with valid data", () => {
 
     // FIRST RUN
 
-    const assignResults = await runAssignment(startingTime, assignmentStrategy);
+    const assignResults = await runAssignment({
+      assignmentStrategy,
+      startingTime,
+    });
     expect(assignResults.status).toEqual("success");
 
     await verifyUserSignups();
@@ -156,10 +171,10 @@ describe("Assignment with valid data", () => {
 
     // SECOND RUN
 
-    const assignResults2 = await runAssignment(
+    const assignResults2 = await runAssignment({
+      assignmentStrategy,
       startingTime,
-      assignmentStrategy
-    );
+    });
     expect(assignResults2.status).toEqual("success");
 
     await verifyUserSignups();
@@ -173,7 +188,10 @@ describe("Assignment with valid data", () => {
 
     // FIRST RUN
 
-    const assignResults = await runAssignment(startingTime, assignmentStrategy);
+    const assignResults = await runAssignment({
+      assignmentStrategy,
+      startingTime,
+    });
     expect(assignResults.status).toEqual("success");
 
     await verifyUserSignups();
@@ -185,10 +203,10 @@ describe("Assignment with valid data", () => {
       .add(4, "hours")
       .format();
 
-    const assignResults2 = await runAssignment(
-      startingTime2,
-      assignmentStrategy
-    );
+    const assignResults2 = await runAssignment({
+      assignmentStrategy,
+      startingTime: startingTime2,
+    });
     expect(assignResults2.status).toEqual("success");
 
     await verifyUserSignups();
@@ -220,7 +238,10 @@ describe("Assignment with no games", () => {
     const assignmentStrategy = AssignmentStrategy.GROUP;
     const startingTime = moment(CONVENTION_START_TIME).add(2, "hours").format();
 
-    const assignResults = await runAssignment(startingTime, assignmentStrategy);
+    const assignResults = await runAssignment({
+      assignmentStrategy,
+      startingTime,
+    });
     expect(assignResults.status).toEqual("error: no starting games");
   });
 
@@ -229,7 +250,10 @@ describe("Assignment with no games", () => {
     const assignmentStrategy = AssignmentStrategy.PADG;
     const startingTime = moment(CONVENTION_START_TIME).add(2, "hours").format();
 
-    const assignResults = await runAssignment(startingTime, assignmentStrategy);
+    const assignResults = await runAssignment({
+      assignmentStrategy,
+      startingTime,
+    });
     expect(assignResults.status).toEqual("error: no starting games");
   });
 
@@ -238,7 +262,10 @@ describe("Assignment with no games", () => {
     const assignmentStrategy = AssignmentStrategy.RANDOM;
     const startingTime = moment(CONVENTION_START_TIME).add(2, "hours").format();
 
-    const assignResults = await runAssignment(startingTime, assignmentStrategy);
+    const assignResults = await runAssignment({
+      assignmentStrategy,
+      startingTime,
+    });
     expect(assignResults.status).toEqual("error: no starting games");
   });
 
@@ -247,7 +274,10 @@ describe("Assignment with no games", () => {
     const assignmentStrategy = AssignmentStrategy.GROUP_PADG;
     const startingTime = moment(CONVENTION_START_TIME).add(2, "hours").format();
 
-    const assignResults = await runAssignment(startingTime, assignmentStrategy);
+    const assignResults = await runAssignment({
+      assignmentStrategy,
+      startingTime,
+    });
     expect(assignResults.status).toEqual("error: no starting games");
   });
 
@@ -256,7 +286,10 @@ describe("Assignment with no games", () => {
     const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
     const startingTime = moment(CONVENTION_START_TIME).add(2, "hours").format();
 
-    const assignResults = await runAssignment(startingTime, assignmentStrategy);
+    const assignResults = await runAssignment({
+      assignmentStrategy,
+      startingTime,
+    });
     expect(assignResults.status).toEqual("error: no starting games");
   });
 });
@@ -285,7 +318,10 @@ describe("Assignment with no players", () => {
     const assignmentStrategy = AssignmentStrategy.GROUP;
     const startingTime = moment(CONVENTION_START_TIME).add(2, "hours").format();
 
-    const assignResults = await runAssignment(startingTime, assignmentStrategy);
+    const assignResults = await runAssignment({
+      assignmentStrategy,
+      startingTime,
+    });
     expect(assignResults.status).toEqual("error: no signup wishes");
   });
 
@@ -294,7 +330,10 @@ describe("Assignment with no players", () => {
     const assignmentStrategy = AssignmentStrategy.PADG;
     const startingTime = moment(CONVENTION_START_TIME).add(2, "hours").format();
 
-    const assignResults = await runAssignment(startingTime, assignmentStrategy);
+    const assignResults = await runAssignment({
+      assignmentStrategy,
+      startingTime,
+    });
     expect(assignResults.status).toEqual("error: no signup wishes");
   });
 
@@ -303,7 +342,10 @@ describe("Assignment with no players", () => {
     const assignmentStrategy = AssignmentStrategy.RANDOM;
     const startingTime = moment(CONVENTION_START_TIME).add(2, "hours").format();
 
-    const assignResults = await runAssignment(startingTime, assignmentStrategy);
+    const assignResults = await runAssignment({
+      assignmentStrategy,
+      startingTime,
+    });
     expect(assignResults.status).toEqual("error: no signup wishes");
   });
 
@@ -312,7 +354,10 @@ describe("Assignment with no players", () => {
     const assignmentStrategy = AssignmentStrategy.GROUP_PADG;
     const startingTime = moment(CONVENTION_START_TIME).add(2, "hours").format();
 
-    const assignResults = await runAssignment(startingTime, assignmentStrategy);
+    const assignResults = await runAssignment({
+      assignmentStrategy,
+      startingTime,
+    });
     expect(assignResults.status).toEqual("error: no signup wishes");
   });
 
@@ -321,7 +366,10 @@ describe("Assignment with no players", () => {
     const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
     const startingTime = moment(CONVENTION_START_TIME).add(2, "hours").format();
 
-    const assignResults = await runAssignment(startingTime, assignmentStrategy);
+    const assignResults = await runAssignment({
+      assignmentStrategy,
+      startingTime,
+    });
     expect(assignResults.status).toEqual("error: no signup wishes");
   });
 });
