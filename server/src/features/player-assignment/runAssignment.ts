@@ -10,11 +10,36 @@ import { AssignmentStrategy } from "shared/config/sharedConfig.types";
 import { config } from "server/config";
 import { removeOverlapSignups } from "server/features/player-assignment/utils/removeOverlapSignups";
 import { saveResults } from "server/features/player-assignment/utils/saveResults";
+import { getDynamicStartingTime } from "server/features/player-assignment/utils/getDynamicStartingTime";
+import { sleep } from "server/utils/sleep";
 
-export const runAssignment = async (
-  startingTime: string,
-  assignmentStrategy: AssignmentStrategy
-): Promise<PlayerAssignmentResult> => {
+interface RunAssignmentParams {
+  assignmentStrategy: AssignmentStrategy;
+  startingTime?: string;
+  useDynamicStartingTime?: boolean;
+  assignmentDelay?: number;
+}
+
+export const runAssignment = async ({
+  assignmentStrategy,
+  startingTime,
+  useDynamicStartingTime = false,
+  assignmentDelay = 0,
+}: RunAssignmentParams): Promise<PlayerAssignmentResult> => {
+  const assignmentTime = useDynamicStartingTime
+    ? await getDynamicStartingTime()
+    : startingTime;
+
+  if (!assignmentTime) {
+    throw new Error(`Missing assignment time`);
+  }
+
+  if (assignmentDelay) {
+    logger.info(`Wait ${assignmentDelay / 1000}s for final requests`);
+    await sleep(assignmentDelay);
+    logger.info("Waiting done, start assignment");
+  }
+
   try {
     await removeInvalidGamesFromUsers();
   } catch (error) {
@@ -41,7 +66,7 @@ export const runAssignment = async (
     assignResults = runAssignmentStrategy(
       users,
       games,
-      startingTime,
+      assignmentTime,
       assignmentStrategy
     );
   } catch (error) {
@@ -49,13 +74,13 @@ export const runAssignment = async (
   }
 
   if (assignResults.results.length === 0) {
-    logger.warn(`No assign results for starting time ${startingTime}`);
+    logger.warn(`No assign results for starting time ${assignmentTime}`);
   }
 
   try {
     await saveResults({
       results: assignResults.results,
-      startingTime,
+      startingTime: assignmentTime,
       algorithm: assignResults.algorithm,
       message: assignResults.message,
     });

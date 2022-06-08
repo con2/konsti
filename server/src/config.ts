@@ -33,6 +33,7 @@ interface Config {
   statsDataDir: string;
   autoAssignDelay: number;
   autoAssignInterval: string;
+  useTestTime: boolean;
 }
 
 const commonConfig = {
@@ -81,6 +82,9 @@ const prodConfig = {
   updateGamePopularityEnabled: true,
   enableSignupTimeCheck: true,
 
+  // Dev
+  useTestTime: false,
+
   // Game update cron
   autoUpdateGamesEnabled: true,
   gameUpdateInterval: `*/4 * * * *`,
@@ -110,13 +114,16 @@ const stagingConfig = {
   updateGamePopularityEnabled: true,
   enableSignupTimeCheck: false,
 
+  // Dev
+  useTestTime: true,
+
   // Game update cron
   autoUpdateGamesEnabled: false,
   gameUpdateInterval: `*/4 * * * *`,
   autoUpdateGamePopularityEnabled: false,
 
   // Player assign cron
-  autoAssignPlayersEnabled: false,
+  autoAssignPlayersEnabled: true,
   autoAssignInterval: `0,15,30,45 * * * *`,
   autoAssignDelay: 1000 * 10,
 };
@@ -139,6 +146,9 @@ const devConfig = {
   RANDOM_ASSIGNMENT_ROUNDS: 10,
   updateGamePopularityEnabled: true,
   enableSignupTimeCheck: false,
+
+  // Dev
+  useTestTime: true,
 
   // Game update cron
   autoUpdateGamesEnabled: false,

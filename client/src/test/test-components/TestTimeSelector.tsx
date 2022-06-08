@@ -18,10 +18,7 @@ export const TestTimeSelector = ({ testTime }: Props): ReactElement => {
   const [loading, setLoading] = useState<boolean>(false);
 
   const dropdownItems = times.map((time) => {
-    const formattedDate = timeFormatter.getWeekdayAndTime({
-      time,
-      capitalize: true,
-    });
+    const formattedDate = timeFormatter.getDateAndTime(time);
     return { value: time, title: formattedDate };
   });
 

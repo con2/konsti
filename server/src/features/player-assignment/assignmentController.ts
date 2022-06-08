@@ -13,10 +13,10 @@ export const storeAssignment = async (
 
   let assignResults;
   try {
-    assignResults = await runAssignment(
+    assignResults = await runAssignment({
+      assignmentStrategy: sharedConfig.assignmentStrategy,
       startingTime,
-      sharedConfig.assignmentStrategy
-    );
+    });
   } catch (error) {
     logger.error(`Player assign error: ${error}`);
     return {
