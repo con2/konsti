@@ -2,8 +2,6 @@ import moment from "moment";
 import { logger } from "server/utils/logger";
 import { runAssignment } from "server/features/player-assignment/runAssignment";
 import { config } from "server/config";
-import { saveResults } from "server/features/player-assignment/utils/saveResults";
-import { removeOverlapSignups } from "server/features/player-assignment/utils/removeOverlapSignups";
 import { verifyUserSignups } from "server/features/player-assignment/utils/verifyUserSignups";
 import { verifyResults } from "server/features/player-assignment/utils/verifyResults";
 import { db } from "server/db/mongodb";
@@ -13,26 +11,15 @@ import { sharedConfig } from "shared/config/sharedConfig";
 const testAssignPlayers = async (
   assignmentStrategy: AssignmentStrategy
 ): Promise<void> => {
-  const { saveTestAssign, enableRemoveOverlapSignups } = config;
+  const { saveTestAssign } = config;
   const { CONVENTION_START_TIME } = sharedConfig;
 
   const startingTime = moment(CONVENTION_START_TIME).add(2, "hours").format();
-  const assignResults = await runAssignment(startingTime, assignmentStrategy);
+  await runAssignment(startingTime, assignmentStrategy);
 
   if (!saveTestAssign) {
     return;
   }
-
-  if (enableRemoveOverlapSignups) {
-    await removeOverlapSignups(assignResults.results);
-  }
-
-  await saveResults({
-    results: assignResults.results,
-    startingTime,
-    algorithm: assignResults.algorithm,
-    message: assignResults.message,
-  });
 
   await verifyResults();
   await verifyUserSignups();

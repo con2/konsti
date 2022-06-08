@@ -4,14 +4,11 @@ import { logger } from "server/utils/logger";
 import { getGamesFromKompassi } from "server/features/game/utils/getGamesFromKompassi";
 import { config } from "server/config";
 import { updateGamePopularity } from "server/features/game-popularity/updateGamePopularity";
-import { removeOverlapSignups } from "server/features/player-assignment/utils/removeOverlapSignups";
 import { runAssignment } from "server/features/player-assignment/runAssignment";
-import { saveResults } from "server/features/player-assignment/utils/saveResults";
 import { sleep } from "server/utils/sleep";
 import { kompassiGameMapper } from "server/utils/kompassiGameMapper";
 import { saveGames } from "server/features/game/gameRepository";
 import { sharedConfig } from "shared/config/sharedConfig";
-import { saveSettings } from "server/features/settings/settingsRepository";
 
 const {
   autoUpdateGamesEnabled,
@@ -68,51 +65,11 @@ const autoAssignPlayers = async (): Promise<void> => {
   await sleep(autoAssignDelay);
   logger.info("Auto assign: Waiting done, start assignment");
 
-  let assignResults;
   try {
-    assignResults = await runAssignment(startTime, assignmentStrategy);
-    if (assignResults.results.length === 0) {
-      throw new Error("No results");
-    }
+    await runAssignment(startTime, assignmentStrategy);
   } catch (error) {
     logger.error(`Auto assignment failed: ${error}`);
     return;
-  }
-
-  // Save results
-  try {
-    await saveResults({
-      results: assignResults.results,
-      startingTime: startTime,
-      algorithm: assignResults.algorithm,
-      message: assignResults.message,
-    });
-  } catch (error) {
-    logger.error(`Auto assign: saving results failed: ${error}`);
-  }
-
-  // Set which results are shown
-  try {
-    await saveSettings({ signupTime: startTime });
-  } catch (error) {
-    logger.error(
-      `Auto assign: saving time for visible results failed: ${error}`
-    );
-  }
-
-  // Remove overlapping signups
-  if (config.enableRemoveOverlapSignups) {
-    logger.info("Auto assign: Remove overlapping signups");
-
-    if (assignResults) {
-      try {
-        await removeOverlapSignups(assignResults.results);
-      } catch (error) {
-        logger.error(
-          `Auto assign: removing overlapping sigups failed: ${error}`
-        );
-      }
-    }
   }
 
   logger.info("***** Automatic player assignment completed");
