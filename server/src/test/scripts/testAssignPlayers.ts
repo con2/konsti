@@ -15,7 +15,10 @@ const testAssignPlayers = async (
   const { CONVENTION_START_TIME } = sharedConfig;
 
   const startingTime = moment(CONVENTION_START_TIME).add(2, "hours").format();
-  await runAssignment(startingTime, assignmentStrategy);
+  await runAssignment({
+    assignmentStrategy,
+    startingTime,
+  });
 
   if (!saveTestAssign) {
     return;

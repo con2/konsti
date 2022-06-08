@@ -57,7 +57,7 @@ const autoUpdateGames = async (): Promise<void> => {
 const autoAssignPlayers = async (): Promise<void> => {
   logger.info("----> Auto assign players");
 
-  const startTime = moment().endOf("hour").add(1, "seconds").format();
+  const startingTime = moment().endOf("hour").add(1, "seconds").format();
 
   logger.info(
     `Auto assign: Wait ${autoAssignDelay / 1000}s for final requests`
@@ -66,7 +66,11 @@ const autoAssignPlayers = async (): Promise<void> => {
   logger.info("Auto assign: Waiting done, start assignment");
 
   try {
-    await runAssignment(startTime, assignmentStrategy);
+    await runAssignment({
+      assignmentStrategy,
+      startingTime,
+      useDynamicStartingTime: true,
+    });
   } catch (error) {
     logger.error(`Auto assignment failed: ${error}`);
     return;
