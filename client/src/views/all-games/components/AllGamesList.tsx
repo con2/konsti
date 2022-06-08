@@ -8,7 +8,7 @@ import { GameListTitle } from "client/views/all-games/components/GameListTitle";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
 import { getIsGroupCreator } from "client/views/group/utils/getIsGroupCreator";
 import { getSignedGames } from "client/utils/getUpcomingGames";
-import { getPhaseGap } from "client/utils/getTime";
+import { getPhaseGap } from "client/utils/getPhaseGap";
 
 interface Props {
   games: readonly Game[];
