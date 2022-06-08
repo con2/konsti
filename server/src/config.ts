@@ -87,7 +87,7 @@ const prodConfig = {
   autoUpdateGamePopularityEnabled: true,
 
   // Player assign cron
-  autoAssignPlayersEnabled: false,
+  autoAssignPlayersEnabled: true,
   autoAssignInterval: `0,15,30,45 * * * *`,
   autoAssignDelay: 1000 * 10,
 };
@@ -116,7 +116,7 @@ const stagingConfig = {
   autoUpdateGamePopularityEnabled: false,
 
   // Player assign cron
-  autoAssignPlayersEnabled: false,
+  autoAssignPlayersEnabled: true,
   autoAssignInterval: `0,15,30,45 * * * *`,
   autoAssignDelay: 1000 * 10,
 };
@@ -146,7 +146,7 @@ const devConfig = {
   autoUpdateGamePopularityEnabled: false,
 
   // Player assign cron
-  autoAssignPlayersEnabled: true,
+  autoAssignPlayersEnabled: false,
   autoAssignInterval: `0,15,30,45 * * * * *`,
   autoAssignDelay: 1000 * 1,
 };
