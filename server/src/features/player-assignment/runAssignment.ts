@@ -11,21 +11,34 @@ import { config } from "server/config";
 import { removeOverlapSignups } from "server/features/player-assignment/utils/removeOverlapSignups";
 import { saveResults } from "server/features/player-assignment/utils/saveResults";
 import { getDynamicStartingTime } from "server/features/player-assignment/utils/getDynamicStartingTime";
+import { sleep } from "server/utils/sleep";
 
 interface RunAssignmentParams {
   assignmentStrategy: AssignmentStrategy;
-  startingTime: string;
+  startingTime?: string;
   useDynamicStartingTime?: boolean;
+  assignmentDelay?: number;
 }
 
 export const runAssignment = async ({
-  startingTime,
   assignmentStrategy,
+  startingTime,
   useDynamicStartingTime = false,
+  assignmentDelay = 0,
 }: RunAssignmentParams): Promise<PlayerAssignmentResult> => {
   const assignmentTime = useDynamicStartingTime
     ? await getDynamicStartingTime()
     : startingTime;
+
+  if (!assignmentTime) {
+    throw new Error(`Missing assignment time`);
+  }
+
+  if (assignmentDelay) {
+    logger.info(`Wait ${assignmentDelay / 1000}s for final requests`);
+    await sleep(assignmentDelay);
+    logger.info("Waiting done, start assignment");
+  }
 
   try {
     await removeInvalidGamesFromUsers();

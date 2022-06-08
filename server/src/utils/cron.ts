@@ -1,11 +1,9 @@
-import moment from "moment";
 import schedule from "node-schedule";
 import { logger } from "server/utils/logger";
 import { getGamesFromKompassi } from "server/features/game/utils/getGamesFromKompassi";
 import { config } from "server/config";
 import { updateGamePopularity } from "server/features/game-popularity/updateGamePopularity";
 import { runAssignment } from "server/features/player-assignment/runAssignment";
-import { sleep } from "server/utils/sleep";
 import { kompassiGameMapper } from "server/utils/kompassiGameMapper";
 import { saveGames } from "server/features/game/gameRepository";
 import { sharedConfig } from "shared/config/sharedConfig";
@@ -57,19 +55,11 @@ const autoUpdateGames = async (): Promise<void> => {
 const autoAssignPlayers = async (): Promise<void> => {
   logger.info("----> Auto assign players");
 
-  const startingTime = moment().endOf("hour").add(1, "seconds").format();
-
-  logger.info(
-    `Auto assign: Wait ${autoAssignDelay / 1000}s for final requests`
-  );
-  await sleep(autoAssignDelay);
-  logger.info("Auto assign: Waiting done, start assignment");
-
   try {
     await runAssignment({
       assignmentStrategy,
-      startingTime,
       useDynamicStartingTime: true,
+      assignmentDelay: autoAssignDelay,
     });
   } catch (error) {
     logger.error(`Auto assignment failed: ${error}`);
