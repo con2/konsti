@@ -6,6 +6,7 @@ import {
 } from "server/features/user/entered-game/enteredGameRepository";
 import { findUsers } from "server/features/user/userRepository";
 import { isValidSignupTime } from "server/features/user/userUtils";
+import { getPhaseGap } from "server/utils/getPhaseGap";
 import { ApiError } from "shared/typings/api/errors";
 import {
   DeleteEnteredGameParameters,
@@ -19,6 +20,19 @@ export const storeEnteredGame = async (
   enteredGameRequest: PostEnteredGameParameters
 ): Promise<PostEnteredGameResponse | PostEnteredGameError> => {
   const { startTime, enteredGameId } = enteredGameRequest;
+
+  try {
+    const phaseGap = await getPhaseGap(startTime);
+    if (phaseGap.waitingForPhaseGapToEnd) {
+      throw new Error("Waiting for phase gap to end");
+    }
+  } catch (error) {
+    return {
+      errorId: "phaseGap",
+      message: "Waiting for phase gap to end",
+      status: "error",
+    };
+  }
 
   const validSignupTime = isValidSignupTime(startTime);
   if (!validSignupTime) {

@@ -176,7 +176,8 @@
   "signupError": {
     "generic": "Ilmoittautuminen epäonnistui",
     "signupEnded": "Ilmoittautuminen päättynyt",
-    "samePriority": "Prioriteetti on jo valittu"
+    "samePriority": "Prioriteetti on jo valittu",
+    "phaseGap": "Ilmoittautuminen ei ole vielä auki"
   },
   "signupUnsavedChanges": "Tallentamattomia muutoksia",
   "signupResultHint": "Voit katsoa ilmoittautumistulokset 'Omat pelit' sivulta klo",
@@ -268,7 +269,8 @@
     "confirmCancelSignup": "Vahvista ilmoittautumisen peruminen",
     "expectedDuration": "Pelin kesto {{EXPECTED_DURATION}}",
     "playerCount": "Pelaajia {{MAX_ATTENDANCE}}",
-    "playerRange": "Pelaajia {{MIN_ATTENDANCE}} - {{MAX_ATTENDANCE}}"
+    "playerRange": "Pelaajia {{MIN_ATTENDANCE}} - {{MAX_ATTENDANCE}}",
+    "signupOpens": "Ilmoittautuminen aukeaa"
   },
   "resultsView": {
     "allSignupResults": "Pelien ilmoittautumistilanne ja pelaajat",

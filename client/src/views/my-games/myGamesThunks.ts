@@ -67,6 +67,7 @@ export enum PostEnteredGameErrorMessage {
   GAME_FULL = "signup.gameIsFull",
   UNKNOWN = "signupError.generic",
   SIGNUP_ENDED = "signupError.signupEnded",
+  PHASE_GAP = "signupError.phaseGap",
   EMPTY = "",
 }
 
@@ -82,6 +83,8 @@ export const submitPostEnteredGame = (
           return PostEnteredGameErrorMessage.SIGNUP_ENDED;
         case "gameFull":
           return PostEnteredGameErrorMessage.GAME_FULL;
+        case "phaseGap":
+          return PostEnteredGameErrorMessage.PHASE_GAP;
         case "unknown":
           return PostEnteredGameErrorMessage.UNKNOWN;
         default:
