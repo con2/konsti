@@ -8,18 +8,22 @@ import { useAppSelector } from "client/utils/hooks";
 import { isAlreadyEntered } from "./allGamesUtils";
 import { Button, ButtonStyle } from "client/components/Button";
 import { CancelSignupForm } from "./CancelSignupForm";
+import { PhaseGap } from "client/utils/getPhaseGap";
+import { timeFormatter } from "client/utils/timeFormatter";
 
 interface Props {
   game: Game;
   startTime: string;
   gameIsFull: boolean;
+  phaseGap: PhaseGap;
 }
 
-export const DirectSignupForm: FC<Props> = (
-  props: Props
-): ReactElement | null => {
-  const { game, startTime, gameIsFull } = props;
-
+export const DirectSignupForm: FC<Props> = ({
+  game,
+  startTime,
+  gameIsFull,
+  phaseGap,
+}: Props): ReactElement | null => {
   const { t } = useTranslation();
 
   const loggedIn = useAppSelector((state) => state.login.loggedIn);
@@ -53,6 +57,15 @@ export const DirectSignupForm: FC<Props> = (
             {enteredGamesForTimeslot[0].gameDetails.title}
           </SignedGameName>
           . {t("signup.cannotSignupMoreThanOneGame")}
+        </p>
+      );
+    }
+
+    if (phaseGap.waitingForPhaseGapToEnd) {
+      return (
+        <p>
+          {t("signup.signupOpens")}{" "}
+          {timeFormatter.getTime(phaseGap.phaseGapEndTime)}
         </p>
       );
     }

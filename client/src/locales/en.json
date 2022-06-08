@@ -176,7 +176,8 @@
   "signupError": {
     "generic": "Signup failed",
     "signupEnded": "Signup ended",
-    "samePriority": "Priority already selected"
+    "samePriority": "Priority already selected",
+    "phaseGap": "Signup not open yet"
   },
   "signupUnsavedChanges": "Unsaved changes",
   "signupResultHint": "Sign up results are visible on 'My Games' page at",
@@ -268,7 +269,8 @@
     "confirmCancelSignup": "Confirm signup cancellation",
     "expectedDuration": "Duration {{EXPECTED_DURATION}}",
     "playerCount": "Players {{MAX_ATTENDANCE}}",
-    "playerRange": "Players {{MIN_ATTENDANCE}} - {{MAX_ATTENDANCE}}"
+    "playerRange": "Players {{MIN_ATTENDANCE}} - {{MAX_ATTENDANCE}}",
+    "signupOpens": "Signup opens"
   },
   "resultsView": {
     "allSignupResults": "Signup overview and players",
