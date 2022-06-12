@@ -22,16 +22,16 @@ export const Header = (): ReactElement => {
       <HeaderContainer>
         <Navigation />
 
-        <HeaderBar>
+        <HeaderTitle>
           {t("appDescription", { CONVENTION_NAME, CONVENTION_YEAR })}
-        </HeaderBar>
+        </HeaderTitle>
 
-        <div>
+        <HeaderRightSideContainer>
           <StyledLink to={"/about"}>
             <StyledIcon icon="circle-question" />
           </StyledLink>
           <HeaderLanguageSelector />
-        </div>
+        </HeaderRightSideContainer>
       </HeaderContainer>
 
       {!appOpen && <ClosingMessage>{t("closingMessage")}</ClosingMessage>}
@@ -58,7 +58,7 @@ const HeaderContainer = styled.header`
   height: ${HEADER_HEIGHT}px;
 `;
 
-const HeaderBar = styled.div`
+const HeaderTitle = styled.div`
   display: flex;
   flex: 0 1 auto;
   align-items: center;
@@ -79,4 +79,8 @@ const StyledIcon = styled(FontAwesomeIcon)`
   vertical-align: middle;
   margin-bottom: 1px;
   color: ${(props) => props.theme.textMain};
+`;
+
+const HeaderRightSideContainer = styled.div`
+  white-space: nowrap;
 `;
