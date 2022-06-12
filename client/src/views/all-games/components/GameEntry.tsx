@@ -116,15 +116,21 @@ export const GameEntry = ({
                   })}
             </RowItem>
           </p>
-          <PlayerCount visible={isEnterGameMode}>
-            {t("signup.signupCount", {
-              PLAYERS: players,
-              MAX_ATTENDANCE: game.maxAttendance,
-            })}
-          </PlayerCount>
-          <PlayersNeeded visible={players < game.minAttendance}>
-            {t("signup.playerNeeded", { COUNT: game.minAttendance - players })}
-          </PlayersNeeded>
+          {isEnterGameMode && (
+            <>
+              <PlayerCount>
+                {t("signup.signupCount", {
+                  PLAYERS: players,
+                  MAX_ATTENDANCE: game.maxAttendance,
+                })}
+              </PlayerCount>
+              <PlayersNeeded visible={players < game.minAttendance}>
+                {t("signup.playerNeeded", {
+                  COUNT: game.minAttendance - players,
+                })}
+              </PlayersNeeded>
+            </>
+          )}
         </HeaderContainer>
         <GameTags>
           {favorited && loggedIn && userGroup === "user" && game && (
@@ -202,9 +208,8 @@ const PlayersNeeded = styled("span")<{ visible: boolean }>`
   display: ${(props) => (props.visible ? "block" : "none")};
 `;
 
-const PlayerCount = styled("span")<{ visible: boolean }>`
+const PlayerCount = styled("span")`
   margin-top: 8px;
-  display: ${(props) => (props.visible ? "block" : "none")};
 `;
 
 const FavoriteButton = styled(Button)`
