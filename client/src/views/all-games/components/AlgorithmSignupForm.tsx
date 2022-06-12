@@ -115,11 +115,6 @@ export const AlgorithmSignupForm: FC<Props> = ({
             </Button>
           )}
 
-          <ErrorMessage
-            message={errorMessage}
-            closeError={() => setErrorMessage("")}
-          />
-
           <p>
             {t("signup.alreadySigned", {
               CURRENT_PRIORITY: currentPriority,
@@ -127,6 +122,12 @@ export const AlgorithmSignupForm: FC<Props> = ({
           </p>
         </>
       )}
+
+      <ErrorMessage
+        message={errorMessage}
+        closeError={() => setErrorMessage("")}
+      />
+
       {signupFormOpen && !alreadySignedToGame && (
         <SignupForm
           game={game}
