@@ -33,6 +33,7 @@ export const theme = {
   backgroundMain: white,
   backgroundTag: blueLight,
   backgroundWarning: redLight,
+  backgroundDisabled: grayLight,
 
   borderActive: green,
   borderDisabled: greenLight2,
