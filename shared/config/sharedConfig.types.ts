@@ -1,20 +1,6 @@
-type ConventionName = "Ropecon" | "Tracon Hitpoint";
-
-export interface SharedConfig {
-  appName: string;
-  conventionType: ConventionType;
-  assignmentStrategy: AssignmentStrategy;
-  enableGroups: boolean;
-  defaultSignupStrategy: SignupStrategy;
-  CONVENTION_NAME: ConventionName;
-  CONVENTION_YEAR: string;
-  CONVENTION_START_TIME: string;
-  SIGNUP_END_TIME: number;
-  SIGNUP_OPEN_TIME: number;
-  DAY_START_TIME: number;
-  DIRECT_SIGNUP_START: number;
-  PRE_SIGNUP_START: number;
-  PHASE_GAP: number;
+export enum ConventionName {
+  ROPECON = "Ropecon",
+  TRACON_HITPOINT = "Tracon Hitpoint",
 }
 
 export enum SignupStrategy {
