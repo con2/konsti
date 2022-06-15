@@ -18,7 +18,7 @@ export const getMissedSignups = (
   const pastSignupTimes = signedGamesStartTimes.filter(
     (signedGamesStartTime) => {
       const signupEndTime = moment(signedGamesStartTime).subtract(
-        sharedConfig.SIGNUP_END_TIME,
+        sharedConfig.DIRECT_SIGNUP_START,
         "minutes"
       );
 
