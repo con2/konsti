@@ -54,13 +54,12 @@ export const GameListTitle = ({
       isVisible={!!isIntersecting}
     >
       <StyledGameListTitle>
-        <span>{formattedStartTime}</span>
+        <StartTime>{formattedStartTime}</StartTime>
 
         {!allGamesRevolvingDoor &&
           timeslotSignupStrategy === SignupStrategy.ALGORITHM && (
             <span>
-              {" "}
-              ({t("signupOpenBetween")} {signupStartTime}-{signupEndTime})
+              ({t("preSignupOpenBetween")} {signupStartTime}-{signupEndTime})
             </span>
           )}
 
@@ -120,4 +119,8 @@ const GroupInfo = styled.p`
 
 const InfoText = styled.span`
   font-weight: 600;
+`;
+
+const StartTime = styled.span`
+  padding-right: 6px;
 `;
