@@ -1,9 +1,26 @@
 import {
   AssignmentStrategy,
-  SharedConfig,
+  ConventionName,
   ConventionType,
   SignupStrategy,
 } from "./sharedConfig.types";
+
+interface SharedConfig {
+  appName: string;
+  conventionType: ConventionType;
+  assignmentStrategy: AssignmentStrategy;
+  enableGroups: boolean;
+  defaultSignupStrategy: SignupStrategy;
+  CONVENTION_NAME: ConventionName;
+  CONVENTION_YEAR: string;
+  CONVENTION_START_TIME: string;
+  SIGNUP_END_TIME: number;
+  SIGNUP_OPEN_TIME: number;
+  DAY_START_TIME: number;
+  DIRECT_SIGNUP_START: number;
+  PRE_SIGNUP_START: number;
+  PHASE_GAP: number;
+}
 
 export const sharedConfig: SharedConfig = {
   // App info
@@ -25,7 +42,7 @@ export const sharedConfig: SharedConfig = {
   SIGNUP_OPEN_TIME: 4, // hours
 
   // Convention details
-  CONVENTION_NAME: "Ropecon" as const,
+  CONVENTION_NAME: ConventionName.ROPECON,
   CONVENTION_YEAR: "2022",
   CONVENTION_START_TIME: "2022-07-30T07:00:00Z", // UTC date
   DAY_START_TIME: 8, // 08:00
