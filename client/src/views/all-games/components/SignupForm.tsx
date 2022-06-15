@@ -73,15 +73,15 @@ export const SignupForm = ({
     <form>
       {t("signup.gamePriority")}{" "}
       <StyledSelect ref={priorityRef}>
-        <option disabled={isAlreadySelected(1)} value="1">
+        <StyledOption disabled={isAlreadySelected(1)} value="1">
           1
-        </option>
-        <option disabled={isAlreadySelected(2)} value="2">
+        </StyledOption>
+        <StyledOption disabled={isAlreadySelected(2)} value="2">
           2
-        </option>
-        <option disabled={isAlreadySelected(3)} value="3">
+        </StyledOption>
+        <StyledOption disabled={isAlreadySelected(3)} value="3">
           3
-        </option>
+        </StyledOption>
       </StyledSelect>
       <Button onClick={handleSignup} buttonStyle={ButtonStyle.NORMAL}>
         {t("signup.confirm")}
@@ -101,4 +101,11 @@ export const SignupForm = ({
 
 const StyledSelect = styled.select`
   margin-right: 10px;
+`;
+
+const StyledOption = styled.option<{ disabled: boolean }>`
+  background-color: ${(props) =>
+    props.disabled
+      ? props.theme.backgroundDisabled
+      : props.theme.backgroundMain};
 `;
