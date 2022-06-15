@@ -1,50 +1,33 @@
 import moment from "moment";
-import { WeekdayAndTime } from "client/utils/utils.typings";
 import { capitalizeFirstLetter } from "client/utils/capitalizeFirstLetter";
 import { sharedConfig } from "shared/config/sharedConfig";
 
-const {
-  SIGNUP_OPEN_TIME,
-  SIGNUP_END_TIME,
-  DAY_START_TIME,
-  CONVENTION_START_TIME,
-} = sharedConfig;
+const { PRE_SIGNUP_START, DIRECT_SIGNUP_START } = sharedConfig;
 
 const getStartTime = (startTime: string): string => {
   const timeFormat = "HH:mm";
 
-  // Signup starts before convention
-  if (
-    moment(startTime)
-      .subtract(SIGNUP_OPEN_TIME, "hours")
-      .isBefore(moment(CONVENTION_START_TIME))
-  ) {
-    return moment(CONVENTION_START_TIME).format(timeFormat);
-  }
-  // Signup starts before earliest signup time for a day
-  else if (
-    moment(startTime)
-      .subtract(SIGNUP_OPEN_TIME, "hours")
-      .isBefore(moment(startTime).hours(DAY_START_TIME))
-  ) {
-    return moment(startTime).hours(DAY_START_TIME).format(timeFormat);
-  }
-  // Valid signup start time
-  else {
-    return moment(startTime)
-      .subtract(SIGNUP_OPEN_TIME, "hours")
-      .format(timeFormat);
-  }
+  return moment(startTime)
+    .subtract(PRE_SIGNUP_START, "minutes")
+    .format(timeFormat);
 };
 
 const getEndTime = (startTime: string): string => {
   const timeFormat = "HH:mm";
   return moment(startTime)
-    .subtract(SIGNUP_END_TIME, "minutes")
+    .subtract(DIRECT_SIGNUP_START, "minutes")
     .format(timeFormat);
 };
 
-const getWeekdayAndTime = ({ time, capitalize }: WeekdayAndTime): string => {
+interface WeekdayAndTime {
+  time: string;
+  capitalize?: boolean;
+}
+
+const getWeekdayAndTime = ({
+  time,
+  capitalize = false,
+}: WeekdayAndTime): string => {
   const timeFormat = "dddd HH:mm";
   const formattedTime = moment(time).format(timeFormat);
   if (capitalize) return capitalizeFirstLetter(formattedTime);
@@ -53,6 +36,11 @@ const getWeekdayAndTime = ({ time, capitalize }: WeekdayAndTime): string => {
 
 const getDateAndTime = (time: string): string => {
   const timeFormat = "DD.M.YYYY HH:mm";
+  return moment(time).format(timeFormat);
+};
+
+const getDate = (time: string): string => {
+  const timeFormat = "DD.M.YYYY";
   return moment(time).format(timeFormat);
 };
 
@@ -66,5 +54,6 @@ export const timeFormatter = {
   getEndTime,
   getWeekdayAndTime,
   getDateAndTime,
+  getDate,
   getTime,
 };
