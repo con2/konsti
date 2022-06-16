@@ -6,7 +6,7 @@ import { useAppSelector } from "client/utils/hooks";
 import { Game } from "shared/typings/models/game";
 import { GameListTitle } from "client/views/all-games/components/GameListTitle";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
-import { getIsGroupCreator } from "client/views/group/utils/getIsGroupCreator";
+import { getIsGroupCreator } from "client/views/group/groupUtils";
 import { getSignedGames } from "client/utils/getUpcomingGames";
 import { getPhaseGap } from "client/utils/getPhaseGap";
 

@@ -12,7 +12,7 @@ export interface PostGroupError extends ApiError {
   errorId:
     | "unknown"
     | "creatorCannotLeaveNonEmpty"
-    | "groupUpdateFailed"
+    | "failedToLeave"
     | "groupExists"
     | "cannotJoinOwnGroup"
     | "invalidGroupCode"
@@ -23,6 +23,10 @@ export interface GetGroupResponse {
   message: string;
   results: GroupMember[];
   status: "success";
+}
+
+export interface GetGroupError extends ApiError {
+  errorId: "unknown";
 }
 
 export const GroupRequestSchema = z.object({
