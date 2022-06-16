@@ -6,8 +6,8 @@ import {
 import { findUserSerial } from "server/features/user/userRepository";
 import { GetGroupReturnValue } from "server/typings/user.typings";
 import { logger } from "server/utils/logger";
-import { ApiError } from "shared/typings/api/errors";
 import {
+  GetGroupError,
   GetGroupResponse,
   PostGroupError,
   PostGroupResponse,
@@ -62,7 +62,7 @@ export const storeGroup = async (
       return {
         message: "Failed to leave group",
         status: "error",
-        errorId: "groupUpdateFailed",
+        errorId: "failedToLeave",
       };
     }
 
@@ -77,7 +77,7 @@ export const storeGroup = async (
       return {
         message: "Failed to leave group",
         status: "error",
-        errorId: "groupUpdateFailed",
+        errorId: "failedToLeave",
       };
     }
   }
@@ -229,7 +229,7 @@ export const storeGroup = async (
 
 export const fetchGroup = async (
   groupCode: string
-): Promise<GetGroupResponse | ApiError> => {
+): Promise<GetGroupResponse | GetGroupError> => {
   let findGroupResults: User[];
   try {
     findGroupResults = await findGroupMembers(groupCode);
