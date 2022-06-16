@@ -206,6 +206,10 @@
   "currentlyRunningRevolvingDoor": "Käynnissä olevat pelit",
   "noCurrentlyRunningGames": "Ei käynnissä olevia pyöröovipelejä",
   "group": {
+    "error": {
+      "cannotUseOwnSerial": "Et voi käyttää omaa koodia ryhmään liittymisessä",
+      "groupExists": "Ryhmä on jo olemassa"
+    },
     "signupDisabledNotCreator": "Olet ryhmän jäsen. Ryhmän perustaja ilmoittautuu peleihin ryhmän muiden jäsenten puolesta.",
     "signupForWholeGroup": "Olet ryhmän perustaja. Voit ilmoittautua peleihin koko ryhmän puolesta.",
     "inGroupSignups": "Olet ryhmän jäsen. Seuraavat pelit ovat ryhmän perustajan valitsemia.",
@@ -225,14 +229,10 @@
     "groupCreatorInfo": "Voit ilmoittautua peleihin koko ryhmän puolesta. Varmistathan, että ryhmä ei ole liian iso valitsemiisi peleihin liittymistä varten. Ryhmän perustaja ei voi poistua ryhmästä, mutta voi sulkea ryhmän. Tällöin kaikki ryhmän jäsenet poistetaan ryhmästä.",
     "joiningGroupWillCancelGames": "Ryhmään liittyminen peruu kaikki aikaisemmat ilmoittautumisesi",
     "groupSignupGuide": "Ryhmiin liitytään ryhmän perustajan rekisteröintikoodilla. Näet oman koodisi sivun ylälaidasta.",
-    "groupCreated": "Ryhmä luotu",
-    "invalidGroupCode": "Epäkelko koodi",
+    "invalidGroupCode": "Virheellinen koodi",
     "groupNotExist": "Ryhmää ei ole olemassa",
-    "generalCreateGroupError": "Virhe ryhmää luodessa",
-    "groupJoined": "Ryhmään liitytty",
+    "generalGroupError": "Virhe ryhmää päivittäessä",
     "generalJoinGroupError": "Virhe ryhmään liittyessä",
-    "leftGroup": "Poistuit ryhmästä",
-    "closedGroup": "Ryhmä suljettu",
     "groupNotEmpty": "Ryhmän perustaja ei voi poistua ryhmästä, jossa on muita jäseniä"
   },
   "signupResults": "Ilmoittautumisen tulokset",

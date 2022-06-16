@@ -206,6 +206,10 @@
   "currentlyRunningRevolvingDoor": "Currently running games",
   "noCurrentlyRunningGames": "No running revolving door games",
   "group": {
+    "error": {
+      "cannotUseOwnSerial": "Cannot use own serial to join group",
+      "groupExists": "Group already exists"
+    },
     "signupDisabledNotCreator": "You are group member. Group creator will sign up to the games for the whole group.",
     "signupForWholeGroup": "You are group creator. You can sign up to games for the whole group.",
     "inGroupSignups": "You are in a group. Following games are chosen by the group creator.",
@@ -225,14 +229,10 @@
     "groupCreatorInfo": "You can sign up to games for the whole group. Please make sure that the group is not too big for the selected games. Group creator cannot leave the group, but can close it. This will remove all members from the group.",
     "joiningGroupWillCancelGames": "Joining a group will cancel all signups you may have done before",
     "groupSignupGuide": "Joining a group is done with the group starter's registration code. Your own code can be found from the top of the page.",
-    "groupCreated": "Group created",
     "invalidGroupCode": "Invalid code",
     "groupNotExist": "Group does not exist",
-    "generalCreateGroupError": "Error creating group",
-    "groupJoined": "Joined a group",
+    "generalGroupError": "Error updating group",
     "generalJoinGroupError": "Error joining group",
-    "leftGroup": "Left group",
-    "closedGroup": "Group closed",
     "groupNotEmpty": "Group creator cannot leave non-empty group"
   },
   "signupResults": "Signup results",

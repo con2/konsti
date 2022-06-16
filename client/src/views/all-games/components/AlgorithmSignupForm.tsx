@@ -7,7 +7,7 @@ import { SelectedGame } from "shared/typings/models/user";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { isAlreadySigned } from "./allGamesUtils";
 import { Button, ButtonStyle } from "client/components/Button";
-import { getIsGroupCreator } from "client/views/group/utils/getIsGroupCreator";
+import { getIsGroupCreator } from "client/views/group/groupUtils";
 import { ErrorMessage } from "client/components/ErrorMessage";
 
 interface Props {

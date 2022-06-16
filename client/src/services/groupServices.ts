@@ -1,7 +1,7 @@
 import { api } from "client/utils/api";
-import { ApiError } from "shared/typings/api/errors";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
+  GetGroupError,
   GetGroupResponse,
   GroupRequest,
   PostGroupError,
@@ -21,7 +21,7 @@ export const postGroup = async (
 export const getGroup = async (
   groupCode: string,
   username: string
-): Promise<GetGroupResponse | ApiError> => {
+): Promise<GetGroupResponse | GetGroupError> => {
   const response = await api.get<GetGroupResponse>(ApiEndpoint.GROUP, {
     params: {
       groupCode,
