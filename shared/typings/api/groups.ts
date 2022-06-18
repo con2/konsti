@@ -16,7 +16,8 @@ export interface PostGroupError extends ApiError {
     | "groupExists"
     | "cannotJoinOwnGroup"
     | "invalidGroupCode"
-    | "groupDoesNotExist";
+    | "groupDoesNotExist"
+    | "removePreviousSignupsFailed";
 }
 
 export interface GetGroupResponse {

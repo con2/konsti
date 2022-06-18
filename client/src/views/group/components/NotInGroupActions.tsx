@@ -1,4 +1,4 @@
-import React, { ChangeEvent, ReactElement, useEffect, useState } from "react";
+import React, { ChangeEvent, ReactElement, useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { Button, ButtonStyle } from "client/components/Button";
@@ -9,55 +9,42 @@ import {
 } from "client/views/group/groupThunks";
 import { useAppDispatch } from "client/utils/hooks";
 import { GroupRequest } from "shared/typings/api/groups";
-import { submitPostSignedGames } from "client/views/my-games/myGamesThunks";
 import { ErrorMessage } from "client/components/ErrorMessage";
 
 interface Props {
-  showCreateGroup: boolean;
-  showJoinGroup: boolean;
-  setShowCreateGroup: React.Dispatch<React.SetStateAction<boolean>>;
-  setShowJoinGroup: React.Dispatch<React.SetStateAction<boolean>>;
   username: string;
   serial: string;
-  loading: boolean;
 }
 
 export const NotInGroupActions = ({
-  showCreateGroup,
-  showJoinGroup,
-  setShowCreateGroup,
-  setShowJoinGroup,
   username,
   serial,
-  loading,
 }: Props): ReactElement => {
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
 
+  const [loading, setLoading] = useState<boolean>(false);
+  const [showCreateGroup, setShowCreateGroup] = useState<boolean>(false);
+  const [showJoinGroup, setShowJoinGroup] = useState<boolean>(false);
   const [joinGroupValue, setJoinGroupValue] = useState<string>("");
   const [serverError, setServerError] = useState<PostGroupErrorMessage>(
     PostGroupErrorMessage.EMPTY
   );
 
-  useEffect(() => {
-    return () => {
-      if (serverError !== PostGroupErrorMessage.EMPTY) {
-        setServerError(PostGroupErrorMessage.EMPTY);
-      }
-    };
-  });
-
-  const openGroupForming = (): void => {
+  const openCreateGroup = (): void => {
+    setServerError(PostGroupErrorMessage.EMPTY);
     setShowCreateGroup(true);
     setShowJoinGroup(false);
   };
 
   const openJoinGroup = (): void => {
+    setServerError(PostGroupErrorMessage.EMPTY);
     setShowJoinGroup(true);
     setShowCreateGroup(false);
   };
 
   const createGroup = async (): Promise<void> => {
+    setLoading(true);
     const groupRequest: GroupRequest = {
       username: username,
       groupCode: serial,
@@ -69,10 +56,17 @@ export const NotInGroupActions = ({
 
     if (errorMessage) {
       setServerError(errorMessage);
+    } else {
+      setServerError(PostGroupErrorMessage.EMPTY);
+      setShowCreateGroup(false);
     }
+
+    setLoading(false);
   };
 
   const joinGroup = async (): Promise<void> => {
+    setLoading(true);
+
     const groupRequest: GroupRequest = {
       username: username,
       groupCode: joinGroupValue,
@@ -84,20 +78,12 @@ export const NotInGroupActions = ({
 
     if (errorMessage) {
       setServerError(errorMessage);
-      return;
+    } else {
+      setServerError(PostGroupErrorMessage.EMPTY);
+      setShowCreateGroup(false);
     }
 
-    await removeSignedGames();
-  };
-
-  const removeSignedGames = async (): Promise<void> => {
-    const signupData = {
-      username,
-      selectedGames: [],
-      signupTime: "all",
-    };
-
-    await dispatch(submitPostSignedGames(signupData));
+    setLoading(false);
   };
 
   const handleJoinGroupChange = (
@@ -112,7 +98,7 @@ export const NotInGroupActions = ({
         buttonStyle={
           showCreateGroup ? ButtonStyle.DISABLED : ButtonStyle.NORMAL
         }
-        onClick={() => openGroupForming()}
+        onClick={() => openCreateGroup()}
       >
         {t("button.createGroup")}
       </Button>

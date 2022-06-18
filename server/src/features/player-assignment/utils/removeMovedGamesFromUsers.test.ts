@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 import { MongoMemoryServer } from "mongodb-memory-server";
 import { UserModel } from "server/features/user/userSchema";
 import { GameModel } from "server/features/game/gameSchema";
-import { mockUser, mockSignup } from "server/test/mock-data/mockUser";
+import { mockUser, mockSignedGames } from "server/test/mock-data/mockUser";
 import { testGame, testGame2 } from "shared/tests/testGame";
 import { removeMovedGamesFromUsers } from "server/features/player-assignment/utils/removeMovedGamesFromUsers";
 import { saveUser } from "server/features/user/userRepository";
@@ -32,7 +32,10 @@ test("should remove signups for moved games from users", async () => {
   expect(insertedGames.length).toEqual(2);
 
   await saveUser(mockUser);
-  await saveSignedGames(mockSignup);
+  await saveSignedGames({
+    username: mockUser.username,
+    signedGames: mockSignedGames,
+  });
   const insertedUser = await UserModel.findOne({
     username: mockUser.username,
   });

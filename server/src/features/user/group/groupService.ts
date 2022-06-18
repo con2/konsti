@@ -3,6 +3,7 @@ import {
   findGroupMembers,
   saveGroupCode,
 } from "server/features/user/group/groupRepository";
+import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
 import { findUserSerial } from "server/features/user/userRepository";
 import { GetGroupReturnValue } from "server/typings/user.typings";
 import { logger } from "server/utils/logger";
@@ -188,6 +189,21 @@ export const storeGroup = async (
         message: "Group does not exist",
         status: "error",
         errorId: "groupDoesNotExist",
+      };
+    }
+
+    // Clean previous signups
+    try {
+      await saveSignedGames({
+        signedGames: [],
+        username,
+      });
+    } catch (error) {
+      logger.error(`saveSignedGames(): ${error}`);
+      return {
+        message: "Error removing previous signups",
+        status: "error",
+        errorId: "removePreviousSignupsFailed",
       };
     }
 

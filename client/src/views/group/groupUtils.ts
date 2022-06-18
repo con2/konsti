@@ -10,3 +10,10 @@ export const getIsGroupCreator = (
   }
   return false;
 };
+
+export const getIsInGroup = (groupCode: string): boolean => {
+  if (groupCode && groupCode !== "0") {
+    return true;
+  }
+  return false;
+};
