@@ -208,7 +208,8 @@
   "group": {
     "error": {
       "cannotUseOwnSerial": "Cannot use own serial to join group",
-      "groupExists": "Group already exists"
+      "groupExists": "Group already exists",
+      "removePreviousSignupsFailed": "Error deleting previous signups, try again"
     },
     "signupDisabledNotCreator": "You are group member. Group creator will sign up to the games for the whole group.",
     "signupForWholeGroup": "You are group creator. You can sign up to games for the whole group.",

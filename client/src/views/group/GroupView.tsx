@@ -1,11 +1,11 @@
-import React, { ReactElement, useState, useEffect } from "react";
+import React, { ReactElement, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useStore } from "react-redux";
 import styled from "styled-components";
 import { GroupMembersList } from "client/views/group/components/GroupMembersList";
 import { loadGroupMembers } from "client/utils/loadData";
 import { useAppSelector } from "client/utils/hooks";
-import { getIsGroupCreator } from "client/views/group/groupUtils";
+import { getIsGroupCreator, getIsInGroup } from "client/views/group/groupUtils";
 import { NotInGroupActions } from "client/views/group/components/NotInGroupActions";
 import { GroupCreatorActions } from "client/views/group/components/GroupCreatorActions";
 import { GroupMemberActions } from "client/views/group/components/GroupMemberActions";
@@ -17,10 +17,6 @@ export const GroupView = (): ReactElement => {
   const groupMembers = useAppSelector((state) => state.group.groupMembers);
   const { t } = useTranslation();
 
-  const [loading, setLoading] = useState<boolean>(false);
-  const [showCreateGroup, setShowCreateGroup] = useState<boolean>(false);
-  const [showJoinGroup, setShowJoinGroup] = useState<boolean>(false);
-
   const store = useStore();
 
   useEffect(() => {
@@ -30,69 +26,44 @@ export const GroupView = (): ReactElement => {
     fetchData();
   }, [store]);
 
-  const isInGroup = (): boolean => {
-    if (groupCode && groupCode !== "0") {
-      return true;
-    }
-    return false;
-  };
-
   const isGroupCreator = getIsGroupCreator(groupCode, serial);
-  const inGroup = isInGroup();
+  const isInGroup = getIsInGroup(groupCode);
 
   return (
     <div className="group-view">
       <h2>{t("pages.group")}</h2>
       <p>{t("group.groupSignupGuide")}</p>
 
-      {isGroupCreator && inGroup && (
-        <p>
-          <InfoTextSpan>{t("group.youAreGroupCreator")}</InfoTextSpan>.{" "}
-          {t("group.groupCreatorInfo")}
-        </p>
-      )}
+      {!isInGroup && <NotInGroupActions username={username} serial={serial} />}
 
-      {!isGroupCreator && inGroup && (
-        <p>
-          <InfoTextSpan>{t("group.youAreInGroup")}</InfoTextSpan>.{" "}
-          {t("group.groupMemberInfo")}
-        </p>
-      )}
-
-      {groupCode === "0" && !inGroup && (
-        <NotInGroupActions
-          showCreateGroup={showCreateGroup}
-          showJoinGroup={showJoinGroup}
-          setShowCreateGroup={setShowCreateGroup}
-          setShowJoinGroup={setShowJoinGroup}
-          username={username}
-          serial={serial}
-          loading={loading}
-        />
-      )}
-
-      {inGroup && (
+      {isInGroup && (
         <>
-          {!isGroupCreator && (
-            <GroupMemberActions
-              username={username}
-              groupCode={groupCode}
-              serial={serial}
-              setLoading={setLoading}
-              setShowJoinGroup={setShowJoinGroup}
-              loading={loading}
-            />
+          {isGroupCreator && (
+            <>
+              <p>
+                <BoldText>{t("group.youAreGroupCreator")}</BoldText>.{" "}
+                {t("group.groupCreatorInfo")}
+              </p>
+              <GroupCreatorActions
+                username={username}
+                groupCode={groupCode}
+                serial={serial}
+              />
+            </>
           )}
 
-          {isGroupCreator && (
-            <GroupCreatorActions
-              username={username}
-              groupCode={groupCode}
-              serial={serial}
-              loading={loading}
-              setLoading={setLoading}
-              setShowCreateGroup={setShowCreateGroup}
-            />
+          {!isGroupCreator && (
+            <>
+              <p>
+                <BoldText>{t("group.youAreInGroup")}</BoldText>.{" "}
+                {t("group.groupMemberInfo")}
+              </p>
+              <GroupMemberActions
+                username={username}
+                groupCode={groupCode}
+                serial={serial}
+              />
+            </>
           )}
 
           <h3>{t("group.groupMembers")}</h3>
@@ -103,6 +74,6 @@ export const GroupView = (): ReactElement => {
   );
 };
 
-const InfoTextSpan = styled.span`
+const BoldText = styled.span`
   font-weight: 600;
 `;

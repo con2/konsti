@@ -16,6 +16,7 @@ export enum PostGroupErrorMessage {
   FAILED_TO_LEAVE = "group.generalLeaveGroupError",
   CANNOT_JOIN_OWN_GROUP = "group.error.cannotUseOwnSerial",
   GROUP_EXISTS = "group.error.groupExists",
+  REMOVE_PREVIOUS_SIGNUPS_FAILED = "group.error.removePreviousSignupsFailed",
   EMPTY = "",
 }
 
@@ -39,6 +40,8 @@ export const submitJoinGroup = (
           return PostGroupErrorMessage.GROUP_NOT_EXIST;
         case "cannotJoinOwnGroup":
           return PostGroupErrorMessage.CANNOT_JOIN_OWN_GROUP;
+        case "removePreviousSignupsFailed":
+          return PostGroupErrorMessage.REMOVE_PREVIOUS_SIGNUPS_FAILED;
         // Leave group
         case "creatorCannotLeaveNonEmpty":
           return PostGroupErrorMessage.CREATOR_CANNOT_LEAVE_NON_EMPTY;
@@ -79,6 +82,8 @@ export const submitCreateGroup = (
           return PostGroupErrorMessage.GROUP_NOT_EXIST;
         case "cannotJoinOwnGroup":
           return PostGroupErrorMessage.CANNOT_JOIN_OWN_GROUP;
+        case "removePreviousSignupsFailed":
+          return PostGroupErrorMessage.REMOVE_PREVIOUS_SIGNUPS_FAILED;
         // Leave group
         case "creatorCannotLeaveNonEmpty":
           return PostGroupErrorMessage.CREATOR_CANNOT_LEAVE_NON_EMPTY;
@@ -139,6 +144,8 @@ export const submitLeaveGroup = (
           return PostGroupErrorMessage.GROUP_NOT_EXIST;
         case "cannotJoinOwnGroup":
           return PostGroupErrorMessage.CANNOT_JOIN_OWN_GROUP;
+        case "removePreviousSignupsFailed":
+          return PostGroupErrorMessage.REMOVE_PREVIOUS_SIGNUPS_FAILED;
         // Leave group
         case "creatorCannotLeaveNonEmpty":
           return PostGroupErrorMessage.CREATOR_CANNOT_LEAVE_NON_EMPTY;
