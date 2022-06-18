@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import { MongoMemoryServer } from "mongodb-memory-server";
 import { removeOverlapSignups } from "server/features/player-assignment/utils/removeOverlapSignups";
-import { mockUser, mockSignup } from "server/test/mock-data/mockUser";
+import { mockUser, mockSignedGames } from "server/test/mock-data/mockUser";
 import { mockResults } from "server/test/mock-data/mockResults";
 import { testGame, testGame2 } from "shared/tests/testGame";
 import { findUser, saveUser } from "server/features/user/userRepository";
@@ -28,7 +28,10 @@ test("should remove overlapping signups from user", async () => {
   expect(insertedGames.length).toEqual(2);
 
   await saveUser(mockUser);
-  await saveSignedGames(mockSignup);
+  await saveSignedGames({
+    username: mockUser.username,
+    signedGames: mockSignedGames,
+  });
   const insertedUser = await findUser(mockUser.username);
   expect(insertedUser?.signedGames.length).toEqual(2);
 

@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect, useState } from "react";
+import React, { ReactElement, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Button, ButtonStyle } from "client/components/Button";
 import { GroupRequest } from "shared/typings/api/groups";
@@ -13,18 +13,12 @@ interface Props {
   username: string;
   groupCode: string;
   serial: string;
-  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
-  setShowJoinGroup: React.Dispatch<React.SetStateAction<boolean>>;
-  loading: boolean;
 }
 
 export const GroupMemberActions = ({
   username,
   groupCode,
   serial,
-  setLoading,
-  setShowJoinGroup,
-  loading,
 }: Props): ReactElement => {
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
@@ -32,14 +26,7 @@ export const GroupMemberActions = ({
   const [serverError, setServerError] = useState<PostGroupErrorMessage>(
     PostGroupErrorMessage.EMPTY
   );
-
-  useEffect(() => {
-    return () => {
-      if (serverError !== PostGroupErrorMessage.EMPTY) {
-        setServerError(PostGroupErrorMessage.EMPTY);
-      }
-    };
-  });
+  const [loading, setLoading] = useState<boolean>(false);
 
   const leaveGroup = async (): Promise<void> => {
     setLoading(true);
@@ -56,11 +43,10 @@ export const GroupMemberActions = ({
 
     if (errorMessage) {
       setServerError(errorMessage);
-      setLoading(false);
-      return;
+    } else {
+      setServerError(PostGroupErrorMessage.EMPTY);
     }
 
-    setShowJoinGroup(false);
     setLoading(false);
   };
 

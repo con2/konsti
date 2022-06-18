@@ -8,26 +8,26 @@ import { isAuthorized } from "server/utils/authHeader";
 import { UserGroup } from "shared/typings/models/user";
 import { storeSignedGames } from "server/features/user/signed-game/signedGameService";
 
+const PostSignedGamesParameters = z.object({
+  signupData: z.object({
+    username: z.string(),
+    selectedGames: z.array(
+      z.object({
+        gameDetails: GameSchema,
+        priority: z.number(),
+        time: z.string(),
+        message: z.string(),
+      })
+    ),
+    signupTime: z.string(),
+  }),
+});
+
 export const postSignedGames = async (
   req: Request<{}, {}, { signupData: SignupData }>,
   res: Response
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.SIGNED_GAME}`);
-
-  const PostSignedGamesParameters = z.object({
-    signupData: z.object({
-      username: z.string(),
-      selectedGames: z.array(
-        z.object({
-          gameDetails: GameSchema,
-          priority: z.number(),
-          time: z.string(),
-          message: z.string(),
-        })
-      ),
-      signupTime: z.string(),
-    }),
-  });
 
   let parameters;
   try {
