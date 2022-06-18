@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect, useState } from "react";
+import React, { ReactElement, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Button, ButtonStyle } from "client/components/Button";
 import {
@@ -13,35 +13,22 @@ interface Props {
   username: string;
   groupCode: string;
   serial: string;
-  loading: boolean;
-  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
-  setShowCreateGroup: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const GroupCreatorActions = ({
   username,
   groupCode,
   serial,
-  loading,
-  setLoading,
-  setShowCreateGroup,
 }: Props): ReactElement => {
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
 
-  const [closeGroupConfirmation, setCloseGroupConfirmation] =
+  const [loading, setLoading] = useState<boolean>(false);
+  const [showCloseGroupConfirmation, setShowCloseGroupConfirmation] =
     useState<boolean>(false);
   const [serverError, setServerError] = useState<PostGroupErrorMessage>(
     PostGroupErrorMessage.EMPTY
   );
-
-  useEffect(() => {
-    return () => {
-      if (serverError !== PostGroupErrorMessage.EMPTY) {
-        setServerError(PostGroupErrorMessage.EMPTY);
-      }
-    };
-  });
 
   const closeGroup = async (): Promise<void> => {
     setLoading(true);
@@ -58,17 +45,12 @@ export const GroupCreatorActions = ({
 
     if (errorMessage) {
       setServerError(errorMessage);
-      setLoading(false);
-      return;
+    } else {
+      setServerError(PostGroupErrorMessage.EMPTY);
+      setShowCloseGroupConfirmation(false);
     }
 
-    toggleCloseGroupConfirmation(false);
     setLoading(false);
-  };
-
-  const toggleCloseGroupConfirmation = (value: boolean): void => {
-    setCloseGroupConfirmation(value);
-    setShowCreateGroup(value);
   };
 
   return (
@@ -76,20 +58,22 @@ export const GroupCreatorActions = ({
       <div>
         <Button
           buttonStyle={
-            closeGroupConfirmation ? ButtonStyle.DISABLED : ButtonStyle.NORMAL
+            showCloseGroupConfirmation
+              ? ButtonStyle.DISABLED
+              : ButtonStyle.NORMAL
           }
-          onClick={() => toggleCloseGroupConfirmation(true)}
+          onClick={() => setShowCloseGroupConfirmation(true)}
         >
           {t("button.closeGroup")}
         </Button>
       </div>
 
-      {closeGroupConfirmation && (
+      {showCloseGroupConfirmation && (
         <div>
           <p>{t("group.closeGroupConfirmation")}</p>
           <Button
             buttonStyle={ButtonStyle.NORMAL}
-            onClick={() => toggleCloseGroupConfirmation(false)}
+            onClick={() => setShowCloseGroupConfirmation(false)}
           >
             {t("button.cancel")}
           </Button>

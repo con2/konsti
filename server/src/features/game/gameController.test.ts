@@ -18,7 +18,7 @@ import { findUser, saveUser } from "server/features/user/userRepository";
 import {
   mockPostEnteredGameRequest,
   mockPostEnteredGameRequest2,
-  mockSignup,
+  mockSignedGames,
   mockUser,
 } from "server/test/mock-data/mockUser";
 import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
@@ -77,7 +77,10 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
 
     await saveGames([testGame, testGame2]);
     await saveUser(mockUser);
-    await saveSignedGames(mockSignup);
+    await saveSignedGames({
+      username: mockUser.username,
+      signedGames: mockSignedGames,
+    });
     await saveEnteredGame(mockPostEnteredGameRequest);
     await saveEnteredGame(mockPostEnteredGameRequest2);
     await saveFavorite({
@@ -184,7 +187,10 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
 
     await saveGames([testGame, testGame2]);
     await saveUser(mockUser);
-    await saveSignedGames(mockSignup);
+    await saveSignedGames({
+      username: mockUser.username,
+      signedGames: mockSignedGames,
+    });
     await saveEnteredGame(mockPostEnteredGameRequest);
     await saveEnteredGame(mockPostEnteredGameRequest2);
 
