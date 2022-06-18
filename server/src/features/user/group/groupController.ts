@@ -15,6 +15,7 @@ export const postGroup = async (
   res: Response
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.GROUP}`);
+
   let groupRequest: GroupRequest;
   try {
     groupRequest = GroupRequestSchema.parse(req.body);
