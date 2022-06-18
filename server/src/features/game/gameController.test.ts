@@ -2,6 +2,7 @@ import { Server } from "http";
 import request from "supertest";
 import { MongoMemoryServer } from "mongodb-memory-server";
 import moment from "moment";
+import _ from "lodash";
 import { startServer, closeServer } from "server/utils/server";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { getJWT } from "server/utils/jwt";
@@ -123,8 +124,9 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
     const games = await findGames();
 
     expect(games.length).toEqual(2);
-    expect(games[0].title).toEqual(testGame.title);
-    expect(games[1].title).toEqual(testGame2.title);
+    const sortedGames = _.sortBy(games, "title");
+    expect(sortedGames[0].title).toEqual(testGame.title);
+    expect(sortedGames[1].title).toEqual(testGame2.title);
   });
 
   test("should not modify anything if server response is empty array", async () => {
@@ -140,8 +142,9 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
     const games = await findGames();
 
     expect(games.length).toEqual(2);
-    expect(games[0].title).toEqual(testGame.title);
-    expect(games[1].title).toEqual(testGame2.title);
+    const sortedGames = _.sortBy(games, "title");
+    expect(sortedGames[0].title).toEqual(testGame.title);
+    expect(sortedGames[1].title).toEqual(testGame2.title);
   });
 
   test("should update changed game details", async () => {
