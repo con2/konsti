@@ -24,19 +24,19 @@ export const storeGroup = async (
   closeGroup = false
 ): Promise<PostGroupResponse | PostGroupError> => {
   if (isGroupCreator) {
+    if (closeGroup) {
+      return await closeGroupFunction(groupCode);
+    }
+
     return await createGroup(username, groupCode);
   }
 
   if (!isGroupCreator) {
+    if (leaveGroup) {
+      return await leaveGroupFunction(username);
+    }
+
     return await joinGroup(username, groupCode, ownSerial);
-  }
-
-  if (closeGroup) {
-    return await closeGroupFunction(groupCode);
-  }
-
-  if (leaveGroup) {
-    return await leaveGroupFunction(username);
   }
 
   return {
