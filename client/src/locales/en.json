@@ -209,7 +209,8 @@
     "error": {
       "cannotUseOwnSerial": "Cannot use own serial to join group",
       "groupExists": "Group already exists",
-      "removePreviousSignupsFailed": "Error deleting previous signups, try again"
+      "removePreviousSignupsFailed": "Error deleting previous signups, try again",
+      "onlyCreatorCanCloseGroup": "Only group creator can close group"
     },
     "signupDisabledNotCreator": "You are group member. Group creator will sign up to the games for the whole group.",
     "signupForWholeGroup": "You are group creator. You can sign up to games for the whole group.",
@@ -233,8 +234,7 @@
     "invalidGroupCode": "Invalid code",
     "groupNotExist": "Group does not exist",
     "generalGroupError": "Error updating group",
-    "generalJoinGroupError": "Error joining group",
-    "groupNotEmpty": "Group creator cannot leave non-empty group"
+    "generalJoinGroupError": "Error joining group"
   },
   "signupResults": "Signup results",
   "helperResults": "Results",

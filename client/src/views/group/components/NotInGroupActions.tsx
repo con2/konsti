@@ -3,12 +3,12 @@ import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { Button, ButtonStyle } from "client/components/Button";
 import {
-  PostGroupErrorMessage,
+  PostCreateGroupErrorMessage,
+  PostJoinGroupErrorMessage,
   submitCreateGroup,
   submitJoinGroup,
 } from "client/views/group/groupThunks";
 import { useAppDispatch } from "client/utils/hooks";
-import { GroupRequest } from "shared/typings/api/groups";
 import { ErrorMessage } from "client/components/ErrorMessage";
 
 interface Props {
@@ -27,37 +27,36 @@ export const NotInGroupActions = ({
   const [showCreateGroup, setShowCreateGroup] = useState<boolean>(false);
   const [showJoinGroup, setShowJoinGroup] = useState<boolean>(false);
   const [joinGroupValue, setJoinGroupValue] = useState<string>("");
-  const [serverError, setServerError] = useState<PostGroupErrorMessage>(
-    PostGroupErrorMessage.EMPTY
-  );
+  const [serverError, setServerError] = useState<
+    PostJoinGroupErrorMessage | PostCreateGroupErrorMessage | null
+  >(null);
 
   const openCreateGroup = (): void => {
-    setServerError(PostGroupErrorMessage.EMPTY);
+    setServerError(null);
     setShowCreateGroup(true);
     setShowJoinGroup(false);
   };
 
   const openJoinGroup = (): void => {
-    setServerError(PostGroupErrorMessage.EMPTY);
+    setServerError(null);
     setShowJoinGroup(true);
     setShowCreateGroup(false);
   };
 
   const createGroup = async (): Promise<void> => {
     setLoading(true);
-    const groupRequest: GroupRequest = {
-      username: username,
-      groupCode: serial,
-      isGroupCreator: true,
-      ownSerial: serial,
-    };
 
-    const errorMessage = await dispatch(submitCreateGroup(groupRequest));
+    const errorMessage = await dispatch(
+      submitCreateGroup({
+        username: username,
+        groupCode: serial,
+      })
+    );
 
     if (errorMessage) {
       setServerError(errorMessage);
     } else {
-      setServerError(PostGroupErrorMessage.EMPTY);
+      setServerError(null);
       setShowCreateGroup(false);
     }
 
@@ -67,19 +66,18 @@ export const NotInGroupActions = ({
   const joinGroup = async (): Promise<void> => {
     setLoading(true);
 
-    const groupRequest: GroupRequest = {
-      username: username,
-      groupCode: joinGroupValue,
-      isGroupCreator: false,
-      ownSerial: serial,
-    };
-
-    const errorMessage = await dispatch(submitJoinGroup(groupRequest));
+    const errorMessage = await dispatch(
+      submitJoinGroup({
+        username: username,
+        groupCode: joinGroupValue,
+        ownSerial: serial,
+      })
+    );
 
     if (errorMessage) {
       setServerError(errorMessage);
     } else {
-      setServerError(PostGroupErrorMessage.EMPTY);
+      setServerError(null);
       setShowCreateGroup(false);
     }
 
@@ -147,7 +145,7 @@ export const NotInGroupActions = ({
       {serverError && (
         <ErrorMessage
           message={t(serverError)}
-          closeError={() => setServerError(PostGroupErrorMessage.EMPTY)}
+          closeError={() => setServerError(null)}
         />
       )}
     </>
