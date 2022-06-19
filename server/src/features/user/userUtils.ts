@@ -1,27 +1,23 @@
-import moment, { Moment } from "moment";
+import { Moment } from "moment";
 import { logger } from "server/utils/logger";
 import { saveSerials } from "server/features/serial/serialRepository";
 import { SerialDoc } from "server/typings/serial.typings";
 
 interface IsValidSignupTimeParams {
-  signupTime: string;
+  startTime: Moment;
   timeNow: Moment;
 }
 
 export const isValidSignupTime = ({
-  signupTime,
+  startTime,
   timeNow,
 }: IsValidSignupTimeParams): boolean => {
-  if (moment(signupTime).isBefore(timeNow)) {
-    const error = `Signup time ${moment(
-      signupTime
-    ).format()} does not match: too late`;
-
-    logger.debug(error);
-
+  if (startTime.isAfter(timeNow)) {
+    logger.warn(
+      `Invalid signup time: startTime: ${startTime.format()}, timeNow: ${timeNow.format()}`
+    );
     return false;
   }
-
   return true;
 };
 

@@ -76,7 +76,7 @@ export const DirectSignupForm: FC<Props> = ({
           onClick={() => setSignupFormOpen(!signupFormOpen)}
           buttonStyle={ButtonStyle.NORMAL}
         >
-          {t("signup.signup")}
+          {t("signup.directSignup")}
         </Button>
       );
     }
