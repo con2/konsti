@@ -89,7 +89,7 @@ export const AlgorithmSignupForm: FC<Props> = ({
           }}
           buttonStyle={ButtonStyle.NORMAL}
         >
-          {t("signup.signup")}
+          {t("signup.preSignup")}
         </Button>
       );
     }
@@ -116,7 +116,7 @@ export const AlgorithmSignupForm: FC<Props> = ({
           )}
 
           <p>
-            {t("signup.alreadySigned", {
+            {t("signup.alreadyPreSigned", {
               CURRENT_PRIORITY: currentPriority,
             })}
           </p>
