@@ -1,12 +1,13 @@
 import { findGameById } from "server/features/game/gameRepository";
 import { getUsersForGame } from "server/features/game/gameUtils";
+import { getTime } from "server/features/player-assignment/utils/getTime";
 import {
   delEnteredGame,
   saveEnteredGame,
 } from "server/features/user/entered-game/enteredGameRepository";
 import { findUsers } from "server/features/user/userRepository";
 import { isValidSignupTime } from "server/features/user/userUtils";
-import { getPhaseGap } from "server/utils/getPhaseGap";
+import { getPhaseGap } from "shared/utils/getPhaseGap";
 import { ApiError } from "shared/typings/api/errors";
 import {
   DeleteEnteredGameParameters,
@@ -22,7 +23,8 @@ export const storeEnteredGame = async (
   const { startTime, enteredGameId } = enteredGameRequest;
 
   try {
-    const phaseGap = await getPhaseGap(startTime);
+    const timeNow = await getTime();
+    const phaseGap = await getPhaseGap({ startTime, timeNow });
     if (phaseGap.waitingForPhaseGapToEnd) {
       throw new Error("Waiting for phase gap to end");
     }
@@ -34,7 +36,7 @@ export const storeEnteredGame = async (
     };
   }
 
-  const validSignupTime = isValidSignupTime(startTime);
+  const validSignupTime = await isValidSignupTime(startTime);
   if (!validSignupTime) {
     return {
       errorId: "signupEnded",

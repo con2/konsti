@@ -16,7 +16,7 @@ import {
   getUpcomingSignedGames,
 } from "client/utils/getUpcomingGames";
 import { isAlreadyEntered, isAlreadySigned } from "./allGamesUtils";
-import { PhaseGap } from "client/utils/getPhaseGap";
+import { PhaseGap } from "shared/utils/getPhaseGap";
 
 const DESCRIPTION_SENTENCES_LENGTH = 3;
 const matchNextSentence = /([.?!])\s*(?=[A-Z])/g;

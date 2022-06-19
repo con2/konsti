@@ -28,7 +28,6 @@ interface Config {
   updateGamePopularityEnabled: boolean;
   useLocalProgramFile: boolean;
   autoAssignPlayersEnabled: boolean;
-  enableSignupTimeCheck: boolean;
   firtSignupBonus: number;
   statsDataDir: string;
   autoAssignDelay: number;
@@ -80,7 +79,6 @@ const prodConfig = {
   PADG_ASSIGNMENT_ROUNDS: 300,
   RANDOM_ASSIGNMENT_ROUNDS: 300,
   updateGamePopularityEnabled: true,
-  enableSignupTimeCheck: true,
 
   // Dev
   useTestTime: false,
@@ -112,7 +110,6 @@ const stagingConfig = {
   PADG_ASSIGNMENT_ROUNDS: 300,
   RANDOM_ASSIGNMENT_ROUNDS: 300,
   updateGamePopularityEnabled: true,
-  enableSignupTimeCheck: false,
 
   // Dev
   useTestTime: true,
@@ -145,7 +142,6 @@ const devConfig = {
   PADG_ASSIGNMENT_ROUNDS: 300,
   RANDOM_ASSIGNMENT_ROUNDS: 10,
   updateGamePopularityEnabled: true,
-  enableSignupTimeCheck: false,
 
   // Dev
   useTestTime: true,

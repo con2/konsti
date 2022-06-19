@@ -20,7 +20,7 @@ export const storeSignedGames = async (
     };
   }
 
-  const validSignupTime = isValidSignupTime(signupTime);
+  const validSignupTime = await isValidSignupTime(signupTime);
   if (!validSignupTime) {
     return {
       errorId: "signupEnded",

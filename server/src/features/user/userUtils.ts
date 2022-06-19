@@ -1,13 +1,13 @@
 import moment from "moment";
-import { config } from "server/config";
 import { logger } from "server/utils/logger";
 import { saveSerials } from "server/features/serial/serialRepository";
 import { SerialDoc } from "server/typings/serial.typings";
+import { getTime } from "server/features/player-assignment/utils/getTime";
 
-export const isValidSignupTime = (signupTime: string): boolean => {
-  if (!config.enableSignupTimeCheck) return true;
-
-  const timeNow = moment();
+export const isValidSignupTime = async (
+  signupTime: string
+): Promise<boolean> => {
+  const timeNow = await getTime();
 
   if (moment(signupTime).isBefore(timeNow)) {
     const error = `Signup time ${moment(
