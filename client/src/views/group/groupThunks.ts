@@ -32,10 +32,8 @@ export const submitCreateGroup = (
 
     if (createGroupResponse?.status === "error") {
       switch (createGroupResponse.errorId) {
-        // Create group
         case "groupExists":
           return PostCreateGroupErrorMessage.GROUP_EXISTS;
-        // Unknown
         case "unknown":
           return PostCreateGroupErrorMessage.UNKNOWN;
         default:
