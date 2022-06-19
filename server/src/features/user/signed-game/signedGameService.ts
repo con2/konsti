@@ -6,6 +6,7 @@ import {
 } from "shared/typings/api/myGames";
 import { SelectedGame } from "shared/typings/models/user";
 import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
+import { getTime } from "server/features/player-assignment/utils/getTime";
 
 export const storeSignedGames = async (
   selectedGames: readonly SelectedGame[],
@@ -20,7 +21,9 @@ export const storeSignedGames = async (
     };
   }
 
-  const validSignupTime = await isValidSignupTime(signupTime);
+  const timeNow = await getTime();
+
+  const validSignupTime = isValidSignupTime({ signupTime, timeNow });
   if (!validSignupTime) {
     return {
       errorId: "signupEnded",

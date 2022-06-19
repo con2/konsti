@@ -21,9 +21,9 @@ export const storeEnteredGame = async (
   enteredGameRequest: PostEnteredGameParameters
 ): Promise<PostEnteredGameResponse | PostEnteredGameError> => {
   const { startTime, enteredGameId } = enteredGameRequest;
+  const timeNow = await getTime();
 
   try {
-    const timeNow = await getTime();
     const phaseGap = await getPhaseGap({ startTime, timeNow });
     if (phaseGap.waitingForPhaseGapToEnd) {
       throw new Error("Waiting for phase gap to end");
@@ -36,7 +36,7 @@ export const storeEnteredGame = async (
     };
   }
 
-  const validSignupTime = await isValidSignupTime(startTime);
+  const validSignupTime = isValidSignupTime({ signupTime: startTime, timeNow });
   if (!validSignupTime) {
     return {
       errorId: "signupEnded",
