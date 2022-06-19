@@ -1,3 +1,4 @@
+import moment from "moment";
 import { findGameById } from "server/features/game/gameRepository";
 import { getUsersForGame } from "server/features/game/gameUtils";
 import { getTime } from "server/features/player-assignment/utils/getTime";
@@ -36,7 +37,11 @@ export const storeEnteredGame = async (
     };
   }
 
-  const validSignupTime = isValidSignupTime({ signupTime: startTime, timeNow });
+  const validSignupTime = isValidSignupTime({
+    startTime: moment(startTime),
+    timeNow,
+  });
+
   if (!validSignupTime) {
     return {
       errorId: "signupEnded",

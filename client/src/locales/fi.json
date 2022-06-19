@@ -255,8 +255,9 @@
     "strategy": "Strategia"
   },
   "signup": {
-    "alreadySigned": "Peli on ilmoittautumisissa sijalla {{CURRENT_PRIORITY}}",
-    "signup": "Ilmoittaudu",
+    "alreadyPreSigned": "Peli on ennakkoilmoittautumisissa sijalla {{CURRENT_PRIORITY}}",
+    "directSignup": "Ilmoittaudu",
+    "preSignup": "Ennakkoilmoittaudu",
     "cannotSignupMoreGames": "Voit ilmoittautua vain kolmeen peliin per alkamisaika",
     "gamePriority": "Peli on toiveissani sijalla",
     "confirm": "Vahvista",
