@@ -1,55 +1,81 @@
-import { postGroup, getGroup } from "client/services/groupServices";
+import {
+  postCreateGroup,
+  getGroup,
+  postJoinGroup,
+  postLeaveGroup,
+  postCloseGroup,
+} from "client/services/groupServices";
 import { AppThunk } from "client/typings/redux.typings";
 import {
   submitLeaveGroupAsync,
   submitUpdateGroupAsync,
   submitUpdateGroupCodeAsync,
 } from "client/views/group/groupSlice";
-import { GroupRequest } from "shared/typings/api/groups";
+import {
+  CloseGroupRequest,
+  CreateGroupRequest,
+  JoinGroupRequest,
+  LeaveGroupRequest,
+} from "shared/typings/api/groups";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 
-export enum PostGroupErrorMessage {
+export enum PostCreateGroupErrorMessage {
+  UNKNOWN = "group.generalGroupError",
+  GROUP_EXISTS = "group.error.groupExists",
+}
+
+export const submitCreateGroup = (
+  group: CreateGroupRequest
+): AppThunk<Promise<PostCreateGroupErrorMessage | undefined>> => {
+  return async (dispatch): Promise<PostCreateGroupErrorMessage | undefined> => {
+    const createGroupResponse = await postCreateGroup(group);
+
+    if (createGroupResponse?.status === "error") {
+      switch (createGroupResponse.errorId) {
+        // Create group
+        case "groupExists":
+          return PostCreateGroupErrorMessage.GROUP_EXISTS;
+        // Unknown
+        case "unknown":
+          return PostCreateGroupErrorMessage.UNKNOWN;
+        default:
+          exhaustiveSwitchGuard(createGroupResponse.errorId);
+      }
+    }
+
+    if (createGroupResponse?.status === "success") {
+      dispatch(submitGetGroup(createGroupResponse.groupCode, group.username));
+      dispatch(submitUpdateGroupCodeAsync(createGroupResponse.groupCode));
+    }
+  };
+};
+
+export enum PostJoinGroupErrorMessage {
   INVALID_GROUP_CODE = "group.invalidGroupCode",
   GROUP_NOT_EXIST = "group.groupNotExist",
   UNKNOWN = "group.generalGroupError",
-  FAILED_TO_LEAVE = "group.generalLeaveGroupError",
   CANNOT_JOIN_OWN_GROUP = "group.error.cannotUseOwnSerial",
-  GROUP_EXISTS = "group.error.groupExists",
   REMOVE_PREVIOUS_SIGNUPS_FAILED = "group.error.removePreviousSignupsFailed",
-  EMPTY = "",
-}
-
-enum GetGroupErrorMessage {
-  UNKNOWN = "group.generalGroupError",
-  EMPTY = "",
 }
 
 export const submitJoinGroup = (
-  groupRequest: GroupRequest
-): AppThunk<Promise<PostGroupErrorMessage | undefined>> => {
-  return async (dispatch): Promise<PostGroupErrorMessage | undefined> => {
-    const joinGroupResponse = await postGroup(groupRequest);
+  groupRequest: JoinGroupRequest
+): AppThunk<Promise<PostJoinGroupErrorMessage | undefined>> => {
+  return async (dispatch): Promise<PostJoinGroupErrorMessage | undefined> => {
+    const joinGroupResponse = await postJoinGroup(groupRequest);
 
     if (joinGroupResponse?.status === "error") {
       switch (joinGroupResponse.errorId) {
-        // Join group
         case "invalidGroupCode":
-          return PostGroupErrorMessage.INVALID_GROUP_CODE;
+          return PostJoinGroupErrorMessage.INVALID_GROUP_CODE;
         case "groupDoesNotExist":
-          return PostGroupErrorMessage.GROUP_NOT_EXIST;
+          return PostJoinGroupErrorMessage.GROUP_NOT_EXIST;
         case "cannotJoinOwnGroup":
-          return PostGroupErrorMessage.CANNOT_JOIN_OWN_GROUP;
+          return PostJoinGroupErrorMessage.CANNOT_JOIN_OWN_GROUP;
         case "removePreviousSignupsFailed":
-          return PostGroupErrorMessage.REMOVE_PREVIOUS_SIGNUPS_FAILED;
-        // Leave group
-        case "failedToLeave":
-          return PostGroupErrorMessage.FAILED_TO_LEAVE;
-        // Create group
-        case "groupExists":
-          return PostGroupErrorMessage.GROUP_EXISTS;
-        // Unknown
+          return PostJoinGroupErrorMessage.REMOVE_PREVIOUS_SIGNUPS_FAILED;
         case "unknown":
-          return PostGroupErrorMessage.UNKNOWN;
+          return PostJoinGroupErrorMessage.UNKNOWN;
         default:
           exhaustiveSwitchGuard(joinGroupResponse.errorId);
       }
@@ -64,43 +90,62 @@ export const submitJoinGroup = (
   };
 };
 
-export const submitCreateGroup = (
-  group: GroupRequest
-): AppThunk<Promise<PostGroupErrorMessage | undefined>> => {
-  return async (dispatch): Promise<PostGroupErrorMessage | undefined> => {
-    const createGroupResponse = await postGroup(group);
+export enum PostLeaveGroupErrorMessage {
+  UNKNOWN = "group.generalGroupError",
+  FAILED_TO_LEAVE = "group.generalLeaveGroupError",
+}
 
-    if (createGroupResponse?.status === "error") {
-      switch (createGroupResponse.errorId) {
-        // Join group
-        case "invalidGroupCode":
-          return PostGroupErrorMessage.INVALID_GROUP_CODE;
-        case "groupDoesNotExist":
-          return PostGroupErrorMessage.GROUP_NOT_EXIST;
-        case "cannotJoinOwnGroup":
-          return PostGroupErrorMessage.CANNOT_JOIN_OWN_GROUP;
-        case "removePreviousSignupsFailed":
-          return PostGroupErrorMessage.REMOVE_PREVIOUS_SIGNUPS_FAILED;
-        // Leave group
+export const submitLeaveGroup = (
+  groupRequest: LeaveGroupRequest
+): AppThunk<Promise<PostLeaveGroupErrorMessage | undefined>> => {
+  return async (dispatch): Promise<PostLeaveGroupErrorMessage | undefined> => {
+    const leaveGroupResponse = await postLeaveGroup(groupRequest);
+
+    if (leaveGroupResponse?.status === "error") {
+      switch (leaveGroupResponse.errorId) {
         case "failedToLeave":
-          return PostGroupErrorMessage.FAILED_TO_LEAVE;
-        // Create group
-        case "groupExists":
-          return PostGroupErrorMessage.GROUP_EXISTS;
-        // Unknown
+          return PostLeaveGroupErrorMessage.FAILED_TO_LEAVE;
         case "unknown":
-          return PostGroupErrorMessage.UNKNOWN;
+          return PostLeaveGroupErrorMessage.UNKNOWN;
         default:
-          exhaustiveSwitchGuard(createGroupResponse.errorId);
+          exhaustiveSwitchGuard(leaveGroupResponse.errorId);
       }
     }
 
-    if (createGroupResponse?.status === "success") {
-      dispatch(submitGetGroup(createGroupResponse.groupCode, group.username));
-      dispatch(submitUpdateGroupCodeAsync(createGroupResponse.groupCode));
+    if (leaveGroupResponse?.status === "success") {
+      dispatch(submitLeaveGroupAsync(leaveGroupResponse.groupCode));
     }
   };
 };
+
+export enum PostCloseGroupErrorMessage {
+  UNKNOWN = "group.generalGroupError",
+}
+
+export const submitCloseGroup = (
+  groupRequest: CloseGroupRequest
+): AppThunk<Promise<PostCloseGroupErrorMessage | undefined>> => {
+  return async (dispatch): Promise<PostCloseGroupErrorMessage | undefined> => {
+    const leaveGroupResponse = await postCloseGroup(groupRequest);
+
+    if (leaveGroupResponse?.status === "error") {
+      switch (leaveGroupResponse.errorId) {
+        case "unknown":
+          return PostCloseGroupErrorMessage.UNKNOWN;
+        default:
+          exhaustiveSwitchGuard(leaveGroupResponse.errorId);
+      }
+    }
+
+    if (leaveGroupResponse?.status === "success") {
+      dispatch(submitLeaveGroupAsync(leaveGroupResponse.groupCode));
+    }
+  };
+};
+
+enum GetGroupErrorMessage {
+  UNKNOWN = "group.generalGroupError",
+}
 
 export const submitGetGroup = (
   groupCode: string,
@@ -120,43 +165,6 @@ export const submitGetGroup = (
 
     if (getGroupResponse?.status === "success") {
       dispatch(submitUpdateGroupAsync(getGroupResponse.results));
-    }
-  };
-};
-
-export const submitLeaveGroup = (
-  groupRequest: GroupRequest
-): AppThunk<Promise<PostGroupErrorMessage | undefined>> => {
-  return async (dispatch): Promise<PostGroupErrorMessage | undefined> => {
-    const leaveGroupResponse = await postGroup(groupRequest);
-
-    if (leaveGroupResponse?.status === "error") {
-      switch (leaveGroupResponse.errorId) {
-        // Join group
-        case "invalidGroupCode":
-          return PostGroupErrorMessage.INVALID_GROUP_CODE;
-        case "groupDoesNotExist":
-          return PostGroupErrorMessage.GROUP_NOT_EXIST;
-        case "cannotJoinOwnGroup":
-          return PostGroupErrorMessage.CANNOT_JOIN_OWN_GROUP;
-        case "removePreviousSignupsFailed":
-          return PostGroupErrorMessage.REMOVE_PREVIOUS_SIGNUPS_FAILED;
-        // Leave group
-        case "failedToLeave":
-          return PostGroupErrorMessage.FAILED_TO_LEAVE;
-        // Create group
-        case "groupExists":
-          return PostGroupErrorMessage.GROUP_EXISTS;
-        // Unknown
-        case "unknown":
-          return PostGroupErrorMessage.UNKNOWN;
-        default:
-          exhaustiveSwitchGuard(leaveGroupResponse.errorId);
-      }
-    }
-
-    if (leaveGroupResponse?.status === "success") {
-      dispatch(submitLeaveGroupAsync(leaveGroupResponse.groupCode));
     }
   };
 };

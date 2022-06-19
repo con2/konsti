@@ -2,12 +2,11 @@ import React, { ReactElement, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Button, ButtonStyle } from "client/components/Button";
 import {
-  PostGroupErrorMessage,
-  submitLeaveGroup,
+  PostCloseGroupErrorMessage,
+  submitCloseGroup,
 } from "client/views/group/groupThunks";
 import { useAppDispatch } from "client/utils/hooks";
 import { ErrorMessage } from "client/components/ErrorMessage";
-import { GroupRequest } from "shared/typings/api/groups";
 
 interface Props {
   username: string;
@@ -26,27 +25,23 @@ export const GroupCreatorActions = ({
   const [loading, setLoading] = useState<boolean>(false);
   const [showCloseGroupConfirmation, setShowCloseGroupConfirmation] =
     useState<boolean>(false);
-  const [serverError, setServerError] = useState<PostGroupErrorMessage>(
-    PostGroupErrorMessage.EMPTY
-  );
+  const [serverError, setServerError] =
+    useState<PostCloseGroupErrorMessage | null>(null);
 
   const closeGroup = async (): Promise<void> => {
     setLoading(true);
-    const groupRequest: GroupRequest = {
-      username: username,
-      groupCode: groupCode,
-      isGroupCreator: true,
-      ownSerial: serial,
-      leaveGroup: true,
-      closeGroup: true,
-    };
 
-    const errorMessage = await dispatch(submitLeaveGroup(groupRequest));
+    const errorMessage = await dispatch(
+      submitCloseGroup({
+        username: username,
+        groupCode: groupCode,
+      })
+    );
 
     if (errorMessage) {
       setServerError(errorMessage);
     } else {
-      setServerError(PostGroupErrorMessage.EMPTY);
+      setServerError(null);
       setShowCloseGroupConfirmation(false);
     }
 
@@ -90,7 +85,7 @@ export const GroupCreatorActions = ({
       {serverError && (
         <ErrorMessage
           message={t(serverError)}
-          closeError={() => setServerError(PostGroupErrorMessage.EMPTY)}
+          closeError={() => setServerError(null)}
         />
       )}
     </>

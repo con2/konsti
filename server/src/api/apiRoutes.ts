@@ -20,7 +20,10 @@ import {
 import { postFavorite } from "server/features/user/favorite-game/favoriteGameController";
 import {
   getGroup,
+  postCloseGroup,
   postGroup,
+  postJoinGroup,
+  postLeaveGroup,
 } from "server/features/user/group/groupController";
 import { postLogin } from "server/features/user/login/loginController";
 import { postSessionRestore } from "server/features/user/session-restore/sessionRestoreController";
@@ -53,6 +56,9 @@ apiRoutes.post(ApiEndpoint.FAVORITE, postFavorite);
 apiRoutes.post(ApiEndpoint.HIDDEN, postHidden);
 apiRoutes.post(ApiEndpoint.FEEDBACK, postFeedback);
 apiRoutes.post(ApiEndpoint.GROUP, postGroup);
+apiRoutes.post(ApiEndpoint.JOIN_GROUP, postJoinGroup);
+apiRoutes.post(ApiEndpoint.LEAVE_GROUP, postLeaveGroup);
+apiRoutes.post(ApiEndpoint.CLOSE_GROUP, postCloseGroup);
 apiRoutes.post(ApiEndpoint.ENTERED_GAME, postEnteredGame);
 apiRoutes.post(ApiEndpoint.SIGNUP_MESSAGE, postSignupMessage);
 apiRoutes.post(ApiEndpoint.SESSION_RESTORE, postSessionRestore);

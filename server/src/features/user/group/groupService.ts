@@ -10,46 +10,18 @@ import { logger } from "server/utils/logger";
 import {
   GetGroupError,
   GetGroupResponse,
-  PostGroupError,
+  PostCloseGroupError,
+  PostCreateGroupError,
   PostGroupResponse,
+  PostJoinGroupError,
+  PostLeaveGroupError,
 } from "shared/typings/api/groups";
 import { User } from "shared/typings/models/user";
 
-export const storeGroup = async (
-  username: string,
-  isGroupCreator: boolean,
-  groupCode: string,
-  ownSerial: string,
-  leaveGroup = false,
-  closeGroup = false
-): Promise<PostGroupResponse | PostGroupError> => {
-  if (isGroupCreator) {
-    if (closeGroup) {
-      return await closeGroupFunction(groupCode);
-    }
-
-    return await createGroup(username, groupCode);
-  }
-
-  if (!isGroupCreator) {
-    if (leaveGroup) {
-      return await leaveGroupFunction(username);
-    }
-
-    return await joinGroup(username, groupCode, ownSerial);
-  }
-
-  return {
-    message: "Unknown error",
-    status: "error",
-    errorId: "unknown",
-  };
-};
-
-const createGroup = async (
+export const createGroup = async (
   username: string,
   groupCode: string
-): Promise<PostGroupResponse | PostGroupError> => {
+): Promise<PostGroupResponse | PostCreateGroupError> => {
   let findGroupResponse;
   try {
     // Check if group exists
@@ -100,11 +72,11 @@ const createGroup = async (
   };
 };
 
-const joinGroup = async (
+export const joinGroup = async (
   username: string,
   groupCode: string,
   ownSerial: string
-): Promise<PostGroupResponse | PostGroupError> => {
+): Promise<PostGroupResponse | PostJoinGroupError> => {
   // Cannot join own group
   if (ownSerial === groupCode) {
     return {
@@ -202,9 +174,39 @@ const joinGroup = async (
   };
 };
 
-const closeGroupFunction = async (
+export const leaveGroupFunction = async (
+  username: string
+): Promise<PostGroupResponse | PostLeaveGroupError> => {
+  let saveGroupResponse;
+  try {
+    saveGroupResponse = await saveGroupCode("0", username);
+  } catch (error) {
+    logger.error(`Failed to leave group: ${error}`);
+    return {
+      message: "Failed to leave group",
+      status: "error",
+      errorId: "failedToLeave",
+    };
+  }
+
+  if (saveGroupResponse) {
+    return {
+      message: "Leave group success",
+      status: "success",
+      groupCode: saveGroupResponse.groupCode,
+    };
+  }
+
+  return {
+    message: "Failed to leave group",
+    status: "error",
+    errorId: "failedToLeave",
+  };
+};
+
+export const closeGroupFunction = async (
   groupCode: string
-): Promise<PostGroupResponse | PostGroupError> => {
+): Promise<PostGroupResponse | PostCloseGroupError> => {
   let groupMembers;
   try {
     groupMembers = await findGroupMembers(groupCode);
@@ -235,36 +237,6 @@ const closeGroupFunction = async (
     message: "Group closed successfully",
     status: "success",
     groupCode: "0",
-  };
-};
-
-const leaveGroupFunction = async (
-  username: string
-): Promise<PostGroupResponse | PostGroupError> => {
-  let saveGroupResponse;
-  try {
-    saveGroupResponse = await saveGroupCode("0", username);
-  } catch (error) {
-    logger.error(`Failed to leave group: ${error}`);
-    return {
-      message: "Failed to leave group",
-      status: "error",
-      errorId: "failedToLeave",
-    };
-  }
-
-  if (saveGroupResponse) {
-    return {
-      message: "Leave group success",
-      status: "success",
-      groupCode: saveGroupResponse.groupCode,
-    };
-  }
-
-  return {
-    message: "Failed to leave group",
-    status: "error",
-    errorId: "failedToLeave",
   };
 };
 
