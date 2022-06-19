@@ -255,8 +255,9 @@
     "strategy": "Strategy"
   },
   "signup": {
-    "alreadySigned": "This game is on priority {{CURRENT_PRIORITY}} on your signups",
-    "signup": "Signup",
+    "alreadyPreSigned": "This game is on priority {{CURRENT_PRIORITY}} on your pre-signups",
+    "directSignup": "Signup",
+    "preSignup": "Pre-signup",
     "cannotSignupMoreGames": "You can signup up to three games for the timeslot",
     "gamePriority": "Game priority for me is",
     "confirm": "Confirm",

@@ -205,6 +205,7 @@ export const GameEntry = ({
 
 const PlayersNeeded = styled("span")<{ visible: boolean }>`
   margin-top: 8px;
+  margin-bottom: 14px;
   display: ${(props) => (props.visible ? "block" : "none")};
 `;
 
@@ -275,9 +276,10 @@ const GameContainer = styled.div<{ disabled: boolean; signed: boolean }>`
     props.signed && `border-left: 5px solid ${props.theme.borderActive}`}
 `;
 
-const GameListShortDescription = styled.p`
+const GameListShortDescription = styled.div`
   font-size: ${(props) => props.theme.fontSizeSmall};
   font-style: italic;
+  margin-bottom: 14px;
 `;
 
 const GameTags = styled.div`

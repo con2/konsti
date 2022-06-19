@@ -1,12 +1,10 @@
 import _ from "lodash";
-import { isValidSignupTime } from "server/features/user/userUtils";
 import {
   PostSignedGamesError,
   PostSignedGamesResponse,
 } from "shared/typings/api/myGames";
 import { SelectedGame } from "shared/typings/models/user";
 import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
-import { getTime } from "server/features/player-assignment/utils/getTime";
 
 export const storeSignedGames = async (
   selectedGames: readonly SelectedGame[],
@@ -18,17 +16,6 @@ export const storeSignedGames = async (
       message: "Signup failure",
       status: "error",
       errorId: "unknown",
-    };
-  }
-
-  const timeNow = await getTime();
-
-  const validSignupTime = isValidSignupTime({ signupTime, timeNow });
-  if (!validSignupTime) {
-    return {
-      errorId: "signupEnded",
-      message: "Signup failure",
-      status: "error",
     };
   }
 

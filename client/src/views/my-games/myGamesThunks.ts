@@ -115,7 +115,6 @@ export const submitDeleteEnteredGame = (
 };
 
 export enum PostSignedGamesErrorMessage {
-  SIGNUP_ENDED = "signupError.signupEnded",
   SAME_PRIORITY = "signupError.samePriority",
   UNKNOWN = "signupError.generic",
   EMPTY = "",
@@ -129,8 +128,6 @@ export const submitPostSignedGames = (
 
     if (signupResponse?.status === "error") {
       switch (signupResponse.errorId) {
-        case "signupEnded":
-          return PostSignedGamesErrorMessage.SIGNUP_ENDED;
         case "samePriority":
           return PostSignedGamesErrorMessage.SAME_PRIORITY;
         case "unknown":
