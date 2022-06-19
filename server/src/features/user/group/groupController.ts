@@ -15,11 +15,11 @@ import {
 import { isAuthorized } from "server/utils/authHeader";
 import { UserGroup } from "shared/typings/models/user";
 import {
-  closeGroupFunction,
+  closeGroup,
   createGroup,
   fetchGroup,
   joinGroup,
-  leaveGroupFunction,
+  leaveGroup,
 } from "server/features/user/group/groupService";
 
 export const postGroup = async (
@@ -96,7 +96,7 @@ export const postLeaveGroup = async (
     return res.sendStatus(401);
   }
 
-  const response = await leaveGroupFunction(username);
+  const response = await leaveGroup(username);
   return res.json(response);
 };
 
@@ -122,7 +122,7 @@ export const postCloseGroup = async (
     return res.sendStatus(401);
   }
 
-  const response = await closeGroupFunction(groupCode);
+  const response = await closeGroup(groupCode);
   return res.json(response);
 };
 

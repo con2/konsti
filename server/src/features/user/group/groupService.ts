@@ -174,7 +174,7 @@ export const joinGroup = async (
   };
 };
 
-export const leaveGroupFunction = async (
+export const leaveGroup = async (
   username: string
 ): Promise<PostGroupResponse | PostLeaveGroupError> => {
   let saveGroupResponse;
@@ -204,7 +204,7 @@ export const leaveGroupFunction = async (
   };
 };
 
-export const closeGroupFunction = async (
+export const closeGroup = async (
   groupCode: string
 ): Promise<PostGroupResponse | PostCloseGroupError> => {
   let groupMembers;
