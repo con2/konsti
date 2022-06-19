@@ -11,7 +11,7 @@ import { SignupStrategy } from "shared/config/sharedConfig.types";
 import { sharedConfig } from "shared/config/sharedConfig";
 import { findSettings } from "server/features/settings/settingsRepository";
 import { Settings } from "shared/typings/models/settings";
-import { findTestSettings } from "server/test/test-settings/testSettingsRepository";
+import { getTime } from "server/features/player-assignment/utils/getTime";
 
 export const removeDeletedGames = async (
   updatedGames: readonly Game[]
@@ -58,15 +58,6 @@ export const getGameById = async (gameId: string): Promise<GameDoc> => {
   if (!foundGame) throw new Error(`Game ${gameId} not found`);
 
   return foundGame;
-};
-
-const getTime = async (): Promise<Moment> => {
-  if (process.env.SETTINGS !== "production") {
-    const { testTime } = await findTestSettings();
-    return moment(testTime);
-  }
-
-  return moment();
 };
 
 export const enrichGames = async (

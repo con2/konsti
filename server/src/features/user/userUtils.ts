@@ -1,14 +1,17 @@
-import moment from "moment";
-import { config } from "server/config";
+import moment, { Moment } from "moment";
 import { logger } from "server/utils/logger";
 import { saveSerials } from "server/features/serial/serialRepository";
 import { SerialDoc } from "server/typings/serial.typings";
 
-export const isValidSignupTime = (signupTime: string): boolean => {
-  if (!config.enableSignupTimeCheck) return true;
+interface IsValidSignupTimeParams {
+  signupTime: string;
+  timeNow: Moment;
+}
 
-  const timeNow = moment();
-
+export const isValidSignupTime = ({
+  signupTime,
+  timeNow,
+}: IsValidSignupTimeParams): boolean => {
   if (moment(signupTime).isBefore(timeNow)) {
     const error = `Signup time ${moment(
       signupTime
