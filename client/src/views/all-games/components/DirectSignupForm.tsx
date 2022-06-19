@@ -8,7 +8,7 @@ import { useAppSelector } from "client/utils/hooks";
 import { isAlreadyEntered } from "./allGamesUtils";
 import { Button, ButtonStyle } from "client/components/Button";
 import { CancelSignupForm } from "./CancelSignupForm";
-import { PhaseGap } from "client/utils/getPhaseGap";
+import { PhaseGap } from "shared/utils/getPhaseGap";
 import { timeFormatter } from "client/utils/timeFormatter";
 
 interface Props {
