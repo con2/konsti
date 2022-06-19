@@ -205,7 +205,8 @@ export const leaveGroup = async (
 };
 
 export const closeGroup = async (
-  groupCode: string
+  groupCode: string,
+  username: string
 ): Promise<PostGroupResponse | PostCloseGroupError> => {
   let groupMembers;
   try {
@@ -216,6 +217,19 @@ export const closeGroup = async (
       message: "Unknown error",
       status: "error",
       errorId: "unknown",
+    };
+  }
+
+  // Check if group creator, only creator can close group
+  const groupCreator = groupMembers.find(
+    (groupMember) => groupMember.username === username
+  );
+
+  if (groupCreator?.serial !== groupCode) {
+    return {
+      message: "Only group creator can close group",
+      status: "error",
+      errorId: "onlyCreatorCanCloseGroup",
     };
   }
 

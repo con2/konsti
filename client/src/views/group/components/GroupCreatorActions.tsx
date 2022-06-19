@@ -64,11 +64,14 @@ export const GroupCreatorActions = ({
       </div>
 
       {showCloseGroupConfirmation && (
-        <div>
+        <>
           <p>{t("group.closeGroupConfirmation")}</p>
           <Button
             buttonStyle={ButtonStyle.NORMAL}
-            onClick={() => setShowCloseGroupConfirmation(false)}
+            onClick={() => {
+              setShowCloseGroupConfirmation(false);
+              setServerError(null);
+            }}
           >
             {t("button.cancel")}
           </Button>
@@ -79,7 +82,7 @@ export const GroupCreatorActions = ({
           >
             {t("button.closeGroup")}
           </Button>
-        </div>
+        </>
       )}
 
       {serverError && (

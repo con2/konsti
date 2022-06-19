@@ -209,7 +209,8 @@
     "error": {
       "cannotUseOwnSerial": "Et voi käyttää omaa koodia ryhmään liittymisessä",
       "groupExists": "Ryhmä on jo olemassa",
-      "removePreviousSignupsFailed": "Virhe aikaisempia ilmoittautumisia poistaessa, yritä uudelleen"
+      "removePreviousSignupsFailed": "Virhe aikaisempia ilmoittautumisia poistaessa, yritä uudelleen",
+      "onlyCreatorCanCloseGroup": "Vain ryhmän perustaja voi sulkea ryhmän"
     },
     "signupDisabledNotCreator": "Olet ryhmän jäsen. Ryhmän perustaja ilmoittautuu peleihin ryhmän muiden jäsenten puolesta.",
     "signupForWholeGroup": "Olet ryhmän perustaja. Voit ilmoittautua peleihin koko ryhmän puolesta.",

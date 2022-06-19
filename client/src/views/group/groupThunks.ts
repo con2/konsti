@@ -118,6 +118,7 @@ export const submitLeaveGroup = (
 
 export enum PostCloseGroupErrorMessage {
   UNKNOWN = "group.generalGroupError",
+  ONLY_CREATOR_CAN_CLOSE = "group.error.onlyCreatorCanCloseGroup",
 }
 
 export const submitCloseGroup = (
@@ -128,6 +129,8 @@ export const submitCloseGroup = (
 
     if (leaveGroupResponse?.status === "error") {
       switch (leaveGroupResponse.errorId) {
+        case "onlyCreatorCanCloseGroup":
+          return PostCloseGroupErrorMessage.ONLY_CREATOR_CAN_CLOSE;
         case "unknown":
           return PostCloseGroupErrorMessage.UNKNOWN;
         default:

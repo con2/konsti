@@ -122,7 +122,7 @@ export const postCloseGroup = async (
     return res.sendStatus(401);
   }
 
-  const response = await closeGroup(groupCode);
+  const response = await closeGroup(groupCode, username);
   return res.json(response);
 };
 

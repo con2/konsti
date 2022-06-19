@@ -26,7 +26,7 @@ export interface PostLeaveGroupError extends ApiError {
 }
 
 export interface PostCloseGroupError extends ApiError {
-  errorId: "unknown";
+  errorId: "unknown" | "onlyCreatorCanCloseGroup";
 }
 
 export interface GetGroupResponse {
