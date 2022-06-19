@@ -62,7 +62,6 @@ export const getGroup = async (
   });
 
   let parameters;
-
   try {
     parameters = GetGroupQueryParameters.parse(req.query);
   } catch (error) {

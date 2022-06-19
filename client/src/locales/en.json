@@ -233,8 +233,7 @@
     "invalidGroupCode": "Invalid code",
     "groupNotExist": "Group does not exist",
     "generalGroupError": "Error updating group",
-    "generalJoinGroupError": "Error joining group",
-    "groupNotEmpty": "Group creator cannot leave non-empty group"
+    "generalJoinGroupError": "Error joining group"
   },
   "signupResults": "Signup results",
   "helperResults": "Results",

@@ -11,7 +11,6 @@ export interface PostGroupResponse {
 export interface PostGroupError extends ApiError {
   errorId:
     | "unknown"
-    | "creatorCannotLeaveNonEmpty"
     | "failedToLeave"
     | "groupExists"
     | "cannotJoinOwnGroup"

@@ -233,8 +233,7 @@
     "invalidGroupCode": "Virheellinen koodi",
     "groupNotExist": "Ryhmää ei ole olemassa",
     "generalGroupError": "Virhe ryhmää päivittäessä",
-    "generalJoinGroupError": "Virhe ryhmään liittyessä",
-    "groupNotEmpty": "Ryhmän perustaja ei voi poistua ryhmästä, jossa on muita jäseniä"
+    "generalJoinGroupError": "Virhe ryhmään liittyessä"
   },
   "signupResults": "Ilmoittautumisen tulokset",
   "helperResults": "Tulokset",
