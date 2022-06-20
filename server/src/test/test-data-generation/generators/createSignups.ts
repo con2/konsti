@@ -1,5 +1,5 @@
 import { faker } from "@faker-js/faker";
-import moment from "moment";
+import dayjs from "dayjs";
 import _ from "lodash";
 import { logger } from "server/utils/logger";
 import { updateGamePopularity } from "server/features/game-popularity/updateGamePopularity";
@@ -42,15 +42,14 @@ const getRandomSignup = (games: readonly Game[]): SelectedGame[] => {
   const signedGames = [] as SelectedGame[];
   let randomIndex;
 
-  const startTimes = games.map((game) => moment(game.startTime).utc().format());
+  const startTimes = games.map((game) => dayjs(game.startTime).format());
   const uniqueTimes = Array.from(new Set(startTimes));
 
   // Select random games for each starting time
   uniqueTimes.forEach((startingTime) => {
     logger.debug(`Generate signups for time ${startingTime}`);
     const gamesForTime = games.filter(
-      (game) =>
-        moment(game.startTime).format() === moment(startingTime).format()
+      (game) => dayjs(game.startTime).format() === dayjs(startingTime).format()
     );
 
     const numberOfSignups = Math.min(gamesForTime.length, 3);

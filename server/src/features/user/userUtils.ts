@@ -1,11 +1,11 @@
-import { Moment } from "moment";
+import { Dayjs } from "dayjs";
 import { logger } from "server/utils/logger";
 import { saveSerials } from "server/features/serial/serialRepository";
 import { SerialDoc } from "server/typings/serial.typings";
 
 interface IsValidSignupTimeParams {
-  startTime: Moment;
-  timeNow: Moment;
+  startTime: Dayjs;
+  timeNow: Dayjs;
 }
 
 export const isValidSignupTime = ({

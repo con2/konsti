@@ -1,8 +1,8 @@
 import React, { ReactElement, ChangeEvent } from "react";
 import { useTranslation } from "react-i18next";
 import { TFunction } from "i18next";
-import moment from "moment";
 import styled from "styled-components";
+import { setLocale } from "shared/utils/setLocale";
 
 export const LanguageSelector = (): ReactElement => {
   const { t, i18n } = useTranslation();
@@ -14,7 +14,7 @@ export const LanguageSelector = (): ReactElement => {
 
   const setLanguage = (event: ChangeEvent<HTMLSelectElement>): void => {
     toggle(event.target.value);
-    moment.locale(event.target.value);
+    setLocale(event.target.value);
   };
 
   return (

@@ -2,7 +2,7 @@ import React, { ReactElement, ChangeEvent, useState, useEffect } from "react";
 import { useStore } from "react-redux";
 import { Link } from "react-router-dom";
 import { TFunction, useTranslation } from "react-i18next";
-import moment from "moment";
+import dayjs from "dayjs";
 import styled from "styled-components";
 import { AllGamesList } from "client/views/all-games/components/AllGamesList";
 import { getUpcomingGames } from "client/utils/getUpcomingGames";
@@ -220,8 +220,8 @@ const getRunningRevolvingDoorGames = (
   const runningGames = games.filter((game) => {
     return (
       game.revolvingDoor &&
-      moment(game.startTime).isBefore(timeNow) &&
-      moment(game.endTime).isAfter(timeNow)
+      dayjs(game.startTime).isBefore(timeNow) &&
+      dayjs(game.endTime).isAfter(timeNow)
     );
   });
 

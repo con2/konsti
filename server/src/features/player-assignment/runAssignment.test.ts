@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import { MongoMemoryServer } from "mongodb-memory-server";
-import moment from "moment";
+import dayjs from "dayjs";
 import { runAssignment } from "server/features/player-assignment/runAssignment";
 import { generateTestData } from "server/test/test-data-generation/generators/generateTestData";
 import { verifyUserSignups } from "server/features/player-assignment/utils/verifyUserSignups";
@@ -44,7 +44,7 @@ describe("Assignment with valid data", () => {
   test("should return success with group strategy", async () => {
     const { CONVENTION_START_TIME } = sharedConfig;
     const assignmentStrategy = AssignmentStrategy.GROUP;
-    const startingTime = moment(CONVENTION_START_TIME).add(2, "hours").format();
+    const startingTime = dayjs(CONVENTION_START_TIME).add(2, "hours").format();
 
     // FIRST RUN
 
@@ -72,7 +72,7 @@ describe("Assignment with valid data", () => {
   test("should return success with padg strategy", async () => {
     const { CONVENTION_START_TIME } = sharedConfig;
     const assignmentStrategy = AssignmentStrategy.PADG;
-    const startingTime = moment(CONVENTION_START_TIME).add(2, "hours").format();
+    const startingTime = dayjs(CONVENTION_START_TIME).add(2, "hours").format();
 
     // FIRST RUN
 
@@ -100,7 +100,7 @@ describe("Assignment with valid data", () => {
   test("should return success with random strategy", async () => {
     const { CONVENTION_START_TIME } = sharedConfig;
     const assignmentStrategy = AssignmentStrategy.RANDOM;
-    const startingTime = moment(CONVENTION_START_TIME).add(2, "hours").format();
+    const startingTime = dayjs(CONVENTION_START_TIME).add(2, "hours").format();
 
     // FIRST RUN
 
@@ -128,7 +128,7 @@ describe("Assignment with valid data", () => {
   test("should return success with group+padg strategy", async () => {
     const { CONVENTION_START_TIME } = sharedConfig;
     const assignmentStrategy = AssignmentStrategy.GROUP_PADG;
-    const startingTime = moment(CONVENTION_START_TIME).add(2, "hours").format();
+    const startingTime = dayjs(CONVENTION_START_TIME).add(2, "hours").format();
 
     // FIRST RUN
 
@@ -156,7 +156,7 @@ describe("Assignment with valid data", () => {
   test("should return success with random+padg strategy", async () => {
     const { CONVENTION_START_TIME } = sharedConfig;
     const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
-    const startingTime = moment(CONVENTION_START_TIME).add(2, "hours").format();
+    const startingTime = dayjs(CONVENTION_START_TIME).add(2, "hours").format();
 
     // FIRST RUN
 
@@ -184,7 +184,7 @@ describe("Assignment with valid data", () => {
   test("should return valid results after multiple executions on different times", async () => {
     const { CONVENTION_START_TIME } = sharedConfig;
     const assignmentStrategy = AssignmentStrategy.GROUP;
-    const startingTime = moment(CONVENTION_START_TIME).add(2, "hours").format();
+    const startingTime = dayjs(CONVENTION_START_TIME).add(2, "hours").format();
 
     // FIRST RUN
 
@@ -199,9 +199,7 @@ describe("Assignment with valid data", () => {
 
     // SECOND RUN
 
-    const startingTime2 = moment(CONVENTION_START_TIME)
-      .add(4, "hours")
-      .format();
+    const startingTime2 = dayjs(CONVENTION_START_TIME).add(4, "hours").format();
 
     const assignResults2 = await runAssignment({
       assignmentStrategy,
@@ -236,7 +234,7 @@ describe("Assignment with no games", () => {
   test("should return error with group strategy", async () => {
     const { CONVENTION_START_TIME } = sharedConfig;
     const assignmentStrategy = AssignmentStrategy.GROUP;
-    const startingTime = moment(CONVENTION_START_TIME).add(2, "hours").format();
+    const startingTime = dayjs(CONVENTION_START_TIME).add(2, "hours").format();
 
     const assignResults = await runAssignment({
       assignmentStrategy,
@@ -248,7 +246,7 @@ describe("Assignment with no games", () => {
   test("should return error with padg strategy", async () => {
     const { CONVENTION_START_TIME } = sharedConfig;
     const assignmentStrategy = AssignmentStrategy.PADG;
-    const startingTime = moment(CONVENTION_START_TIME).add(2, "hours").format();
+    const startingTime = dayjs(CONVENTION_START_TIME).add(2, "hours").format();
 
     const assignResults = await runAssignment({
       assignmentStrategy,
@@ -260,7 +258,7 @@ describe("Assignment with no games", () => {
   test("should return error with random strategy", async () => {
     const { CONVENTION_START_TIME } = sharedConfig;
     const assignmentStrategy = AssignmentStrategy.RANDOM;
-    const startingTime = moment(CONVENTION_START_TIME).add(2, "hours").format();
+    const startingTime = dayjs(CONVENTION_START_TIME).add(2, "hours").format();
 
     const assignResults = await runAssignment({
       assignmentStrategy,
@@ -272,7 +270,7 @@ describe("Assignment with no games", () => {
   test("should return error with group+padg strategy", async () => {
     const { CONVENTION_START_TIME } = sharedConfig;
     const assignmentStrategy = AssignmentStrategy.GROUP_PADG;
-    const startingTime = moment(CONVENTION_START_TIME).add(2, "hours").format();
+    const startingTime = dayjs(CONVENTION_START_TIME).add(2, "hours").format();
 
     const assignResults = await runAssignment({
       assignmentStrategy,
@@ -284,7 +282,7 @@ describe("Assignment with no games", () => {
   test("should return error with random+padg strategy", async () => {
     const { CONVENTION_START_TIME } = sharedConfig;
     const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
-    const startingTime = moment(CONVENTION_START_TIME).add(2, "hours").format();
+    const startingTime = dayjs(CONVENTION_START_TIME).add(2, "hours").format();
 
     const assignResults = await runAssignment({
       assignmentStrategy,
@@ -316,7 +314,7 @@ describe("Assignment with no players", () => {
   test("should return error with group strategy", async () => {
     const { CONVENTION_START_TIME } = sharedConfig;
     const assignmentStrategy = AssignmentStrategy.GROUP;
-    const startingTime = moment(CONVENTION_START_TIME).add(2, "hours").format();
+    const startingTime = dayjs(CONVENTION_START_TIME).add(2, "hours").format();
 
     const assignResults = await runAssignment({
       assignmentStrategy,
@@ -328,7 +326,7 @@ describe("Assignment with no players", () => {
   test("should return error with padg strategy", async () => {
     const { CONVENTION_START_TIME } = sharedConfig;
     const assignmentStrategy = AssignmentStrategy.PADG;
-    const startingTime = moment(CONVENTION_START_TIME).add(2, "hours").format();
+    const startingTime = dayjs(CONVENTION_START_TIME).add(2, "hours").format();
 
     const assignResults = await runAssignment({
       assignmentStrategy,
@@ -340,7 +338,7 @@ describe("Assignment with no players", () => {
   test("should return error with random strategy", async () => {
     const { CONVENTION_START_TIME } = sharedConfig;
     const assignmentStrategy = AssignmentStrategy.RANDOM;
-    const startingTime = moment(CONVENTION_START_TIME).add(2, "hours").format();
+    const startingTime = dayjs(CONVENTION_START_TIME).add(2, "hours").format();
 
     const assignResults = await runAssignment({
       assignmentStrategy,
@@ -352,7 +350,7 @@ describe("Assignment with no players", () => {
   test("should return error with group+padg strategy", async () => {
     const { CONVENTION_START_TIME } = sharedConfig;
     const assignmentStrategy = AssignmentStrategy.GROUP_PADG;
-    const startingTime = moment(CONVENTION_START_TIME).add(2, "hours").format();
+    const startingTime = dayjs(CONVENTION_START_TIME).add(2, "hours").format();
 
     const assignResults = await runAssignment({
       assignmentStrategy,
@@ -364,7 +362,7 @@ describe("Assignment with no players", () => {
   test("should return error with random+padg strategy", async () => {
     const { CONVENTION_START_TIME } = sharedConfig;
     const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
-    const startingTime = moment(CONVENTION_START_TIME).add(2, "hours").format();
+    const startingTime = dayjs(CONVENTION_START_TIME).add(2, "hours").format();
 
     const assignResults = await runAssignment({
       assignmentStrategy,

@@ -1,4 +1,4 @@
-import moment from "moment";
+import dayjs from "dayjs";
 import { logger } from "server/utils/logger";
 import { GameDoc } from "server/typings/game.typings";
 import { Game } from "shared/typings/models/game";
@@ -24,8 +24,8 @@ export const removeMovedGamesFromUsers = async (
     return updatedGames.find((updatedGame) => {
       return (
         currentGame.gameId === updatedGame.gameId &&
-        moment(currentGame.startTime).format() !==
-          moment(updatedGame.startTime).format()
+        dayjs(currentGame.startTime).format() !==
+          dayjs(updatedGame.startTime).format()
       );
     });
   });

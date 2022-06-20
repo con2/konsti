@@ -1,4 +1,4 @@
-import moment from "moment";
+import dayjs from "dayjs";
 import { logger } from "server/utils/logger";
 import { Result } from "shared/typings/models/result";
 import { GameDoc } from "server/typings/game.typings";
@@ -51,7 +51,7 @@ const getCurrentEnteredGames = (
 ): SelectedGame[] => {
   const existingEnteredGames = user.enteredGames.filter(
     (enteredGame) =>
-      moment(enteredGame.time).format() !== moment(startingTime).format()
+      dayjs(enteredGame.time).format() !== dayjs(startingTime).format()
   );
 
   const foundResult = results.find(

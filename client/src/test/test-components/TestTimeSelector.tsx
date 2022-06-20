@@ -1,6 +1,6 @@
 import React, { ReactElement, ChangeEvent, useState } from "react";
 import { useTranslation } from "react-i18next";
-import moment from "moment";
+import dayjs from "dayjs";
 import { useAppDispatch } from "client/utils/hooks";
 import { Dropdown } from "client/components/Dropdown";
 import { timeFormatter } from "client/utils/timeFormatter";
@@ -35,7 +35,7 @@ export const TestTimeSelector = ({ testTime }: Props): ReactElement => {
       <span>{t("testValues.time")}</span>{" "}
       <Dropdown
         items={dropdownItems}
-        selectedValue={moment(testTime).format()}
+        selectedValue={dayjs(testTime).format()}
         onChange={async (event: ChangeEvent<HTMLSelectElement>) =>
           await setTestTime(event.target.value)
         }
