@@ -29,9 +29,8 @@ export const RegistrationForm = (): ReactElement => {
   const serialRequired = sharedConfig.conventionType === ConventionType.LIVE;
 
   const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
-  const [serverError, setServerError] = useState<RegistrationErrorMessage>(
-    RegistrationErrorMessage.EMPTY
-  );
+  const [serverError, setServerError] =
+    useState<RegistrationErrorMessage | null>(null);
 
   const {
     register,
@@ -76,7 +75,7 @@ export const RegistrationForm = (): ReactElement => {
                   }),
                 },
                 onChange: (e) => {
-                  setServerError(RegistrationErrorMessage.EMPTY);
+                  setServerError(null);
                 },
               })}
               placeholder={t("username")}
@@ -107,7 +106,7 @@ export const RegistrationForm = (): ReactElement => {
                   }),
                 },
                 onChange: (e) => {
-                  setServerError(RegistrationErrorMessage.EMPTY);
+                  setServerError(null);
                 },
               })}
               placeholder={t("password")}
@@ -135,7 +134,7 @@ export const RegistrationForm = (): ReactElement => {
                   {...register("serial", {
                     required: `${t(`validation.required`)}`,
                     onChange: (e) => {
-                      setServerError(RegistrationErrorMessage.EMPTY);
+                      setServerError(null);
                     },
                   })}
                   placeholder={t("serial")}
@@ -160,7 +159,7 @@ export const RegistrationForm = (): ReactElement => {
               {...register("registerDescription", {
                 required: `${t(`validation.required`)}`,
                 onChange: (e) => {
-                  setServerError(RegistrationErrorMessage.EMPTY);
+                  setServerError(null);
                 },
               })}
               type={"checkbox"}
@@ -192,7 +191,7 @@ export const RegistrationForm = (): ReactElement => {
         {serverError && (
           <ErrorMessage
             message={t(serverError)}
-            closeError={() => setServerError(RegistrationErrorMessage.EMPTY)}
+            closeError={() => setServerError(null)}
           />
         )}
       </form>

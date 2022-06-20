@@ -25,9 +25,8 @@ export const EnterGameForm: FC<Props> = (props: Props): ReactElement => {
   const dispatch = useAppDispatch();
   const username = useAppSelector((state) => state.login.username);
   const [userSignupMessage, setUserSignupMessage] = useState<string>("");
-  const [errorMessage, setErrorMessage] = useState<PostEnteredGameErrorMessage>(
-    PostEnteredGameErrorMessage.EMPTY
-  );
+  const [errorMessage, setErrorMessage] =
+    useState<PostEnteredGameErrorMessage | null>(null);
 
   const handleCancel = (): void => {
     onCancelSignup();
@@ -88,7 +87,7 @@ export const EnterGameForm: FC<Props> = (props: Props): ReactElement => {
       {errorMessage && (
         <ErrorMessage
           message={t(errorMessage)}
-          closeError={() => setErrorMessage(PostEnteredGameErrorMessage.EMPTY)}
+          closeError={() => setErrorMessage(null)}
         />
       )}
     </SignupForm>

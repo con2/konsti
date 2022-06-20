@@ -1,4 +1,5 @@
-import moment, { Moment } from "moment";
+import _ from "lodash";
+import { Moment } from "moment";
 import { sharedConfig } from "shared/config/sharedConfig";
 
 const { DIRECT_SIGNUP_START, PHASE_GAP } = sharedConfig;
@@ -9,7 +10,7 @@ export interface PhaseGap {
 }
 
 interface GetPhaseGapParams {
-  startTime: string;
+  startTime: Moment;
   timeNow: Moment;
 }
 
@@ -17,8 +18,12 @@ export const getPhaseGap = ({
   startTime,
   timeNow,
 }: GetPhaseGapParams): PhaseGap => {
-  const startTimeWithPhaseGap = moment(startTime).add(PHASE_GAP, "minutes");
-  const currentTimeWithDirectSignupDuration = timeNow.add(
+  // Parameter values are mutated otherwise
+  const startTimeCopy = _.cloneDeep(startTime);
+  const timeNowCopy = _.cloneDeep(timeNow);
+
+  const startTimeWithPhaseGap = startTimeCopy.add(PHASE_GAP, "minutes");
+  const currentTimeWithDirectSignupDuration = timeNowCopy.add(
     DIRECT_SIGNUP_START,
     "minutes"
   );

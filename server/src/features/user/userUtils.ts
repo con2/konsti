@@ -12,9 +12,9 @@ export const isValidSignupTime = ({
   startTime,
   timeNow,
 }: IsValidSignupTimeParams): boolean => {
-  if (startTime.isAfter(timeNow)) {
+  if (timeNow.isAfter(startTime)) {
     logger.warn(
-      `Invalid signup time: startTime: ${startTime.format()}, timeNow: ${timeNow.format()}`
+      `Invalid signup time: timeNow: ${timeNow.format()}, startTime: ${startTime.format()}`
     );
     return false;
   }

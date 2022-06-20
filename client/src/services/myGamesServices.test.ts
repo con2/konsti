@@ -16,7 +16,7 @@ test("POST signed games to server", async () => {
   const signupData = {
     username: "test username",
     selectedGames: [],
-    signupTime: "2019-07-26T13:00:00Z",
+    startTime: "2019-07-26T13:00:00Z",
   };
 
   const response = await postSignedGames(signupData);
