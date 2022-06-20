@@ -4,13 +4,13 @@ import { createRoot } from "react-dom/client";
 import React, { Suspense, lazy } from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import moment from "moment";
 import { ThemeProvider } from "styled-components";
 import loaderImage from "assets/loading.gif";
 import { config } from "client/config";
 import { getLanguage } from "client/utils/localStorage";
 import { theme } from "client/theme";
 import { GlobalStyle } from "client/globalStyle";
+import { setLocale } from "shared/utils/setLocale";
 
 // Initialized i18next instance
 import "client/utils/i18n";
@@ -18,7 +18,7 @@ import "client/utils/i18n";
 // Redux store
 import { store } from "client/utils/store";
 
-moment.locale(getLanguage());
+setLocale(getLanguage());
 
 // Root component
 const App = lazy(async () => await import("client/app/App"));

@@ -1,4 +1,4 @@
-import moment from "moment";
+import dayjs from "dayjs";
 import _ from "lodash";
 import { logger } from "server/utils/logger";
 import { Game } from "shared/typings/models/game";
@@ -87,7 +87,7 @@ export const getDemandByTime = (
 
   for (const startTime in maximumNumberOfPlayersByTime) {
     logger.info(
-      `Demand for ${moment(startTime).format("DD.M.YYYY HH:mm")}: ${
+      `Demand for ${dayjs(startTime).format("DD.M.YYYY HH:mm")}: ${
         signupsByTime[startTime]
       }/${maximumNumberOfPlayersByTime[startTime]} (${toPercent(
         signupsByTime[startTime] / maximumNumberOfPlayersByTime[startTime]

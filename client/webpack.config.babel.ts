@@ -2,7 +2,6 @@ import path from "path";
 import { CleanWebpackPlugin } from "clean-webpack-plugin";
 import CompressionPlugin from "compression-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
-import MomentLocalesPlugin from "moment-locales-webpack-plugin";
 import Dotenv from "dotenv-webpack";
 import { Configuration } from "webpack";
 import { merge } from "webpack-merge";
@@ -119,9 +118,6 @@ const prodConfig: Configuration = {
 
   plugins: [
     new Dotenv({ path: getEnvVariableFile() }),
-    new MomentLocalesPlugin({
-      localesToKeep: ["fi"], // "en" is built into Moment and can't be removed
-    }),
     new CompressionPlugin({
       filename: "[path][base].gz",
       algorithm: "gzip",

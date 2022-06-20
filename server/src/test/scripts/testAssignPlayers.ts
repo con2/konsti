@@ -1,4 +1,4 @@
-import moment from "moment";
+import dayjs from "dayjs";
 import { logger } from "server/utils/logger";
 import { runAssignment } from "server/features/player-assignment/runAssignment";
 import { config } from "server/config";
@@ -14,7 +14,7 @@ const testAssignPlayers = async (
   const { saveTestAssign } = config;
   const { CONVENTION_START_TIME } = sharedConfig;
 
-  const startingTime = moment(CONVENTION_START_TIME).add(2, "hours").format();
+  const startingTime = dayjs(CONVENTION_START_TIME).add(2, "hours").format();
   await runAssignment({
     assignmentStrategy,
     startingTime,

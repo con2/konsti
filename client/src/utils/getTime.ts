@@ -1,12 +1,12 @@
-import moment, { Moment } from "moment";
+import dayjs, { Dayjs } from "dayjs";
 import { config } from "client/config";
 import { store } from "client/utils/store";
 
-export const getTime = (): Moment => {
+export const getTime = (): Dayjs => {
   if (config.loadedSettings !== "production" && config.showTestValues) {
     const testTime = store.getState().testSettings.testTime;
-    return moment(testTime);
+    return dayjs(testTime);
   }
 
-  return moment();
+  return dayjs();
 };

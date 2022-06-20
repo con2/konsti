@@ -1,4 +1,4 @@
-import moment from "moment";
+import dayjs from "dayjs";
 import _ from "lodash";
 import { Group } from "server/typings/padgRandomAssign.typings";
 import { User } from "shared/typings/models/user";
@@ -20,7 +20,7 @@ export const getGroups = (
       pref: firstMember.signedGames
         .filter(
           (signedGame) =>
-            moment(signedGame.time).format() === moment(startingTime).format()
+            dayjs(signedGame.time).format() === dayjs(startingTime).format()
         )
         .map((signedGame) => signedGame.gameDetails.gameId),
     };

@@ -2508,17 +2508,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/moment-locales-webpack-plugin@npm:1.2.3":
-  version: 1.2.3
-  resolution: "@types/moment-locales-webpack-plugin@npm:1.2.3"
-  dependencies:
-    "@types/node": "*"
-    tapable: ^2.2.0
-    webpack: ^5
-  checksum: 08ea58cf50d275575de837763b7adab5b66b43c1403c6982282dee24d5b0903f2bcfc72e041312479f84461d910479d58f2734005df47421045f7b711b72fe3a
-  languageName: node
-  linkType: hard
-
 "@types/morgan@npm:1.9.3":
   version: 1.9.3
   resolution: "@types/morgan@npm:1.9.3"
@@ -4818,10 +4807,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"date-fns@npm:^2.16.1":
+"date-fns@npm:2.28.0, date-fns@npm:^2.16.1":
   version: 2.28.0
   resolution: "date-fns@npm:2.28.0"
   checksum: a0516b2e4f99b8bffc6cc5193349f185f195398385bdcaf07f17c2c4a24473c99d933eb0018be4142a86a6d46cb0b06be6440ad874f15e795acbedd6fd727a1f
+  languageName: node
+  linkType: hard
+
+"dayjs@npm:1.11.3":
+  version: 1.11.3
+  resolution: "dayjs@npm:1.11.3"
+  checksum: c87e06b562a51ae6568cc5b840c7579d82a0f8af7163128c858fe512d3d71d07bd8e8e464b8cc41b8698a9e26b80ab2c082d14a1cd4c33df5692d77ccdfc5a43
   languageName: node
   linkType: hard
 
@@ -8306,7 +8302,6 @@ __metadata:
     "@ronilaukkarinen/stylelint-a11y": 1.2.4
     "@stylelint/postcss-css-in-js": 0.38.0
     "@types/dotenv-webpack": 7.0.3
-    "@types/moment-locales-webpack-plugin": 1.2.3
     "@types/react-dom": 18.0.5
     "@types/styled-components": 5.1.25
     "@welldone-software/why-did-you-render": 7.0.1
@@ -8323,7 +8318,6 @@ __metadata:
     i18next: 21.8.10
     i18next-browser-languagedetector: 6.1.4
     jest-environment-jsdom: 28.1.1
-    moment-locales-webpack-plugin: 1.2.0
     postcss: 8.4.14
     postcss-syntax: 0.36.2
     react: 18.2.0
@@ -8351,8 +8345,6 @@ __metadata:
   peerDependenciesMeta:
     "@babel/core":
       optional: true
-    moment:
-      optional: true
   languageName: unknown
   linkType: soft
 
@@ -8376,6 +8368,8 @@ __metadata:
     babel-plugin-module-resolver: 4.1.0
     concurrently: 7.2.2
     cross-env: 7.0.3
+    date-fns: 2.28.0
+    dayjs: 1.11.3
     eslint: 8.18.0
     eslint-config-prettier: 8.5.0
     eslint-config-standard-with-typescript: 21.0.1
@@ -8398,7 +8392,6 @@ __metadata:
     jest: 28.1.1
     lint-staged: 12.5.0
     lodash: 4.17.21
-    moment: 2.29.3
     ncp: 2.0.0
     prettier: 2.7.1
     rimraf: 3.0.2
@@ -8625,13 +8618,6 @@ __metadata:
   version: 4.0.8
   resolution: "lodash.debounce@npm:4.0.8"
   checksum: a3f527d22c548f43ae31c861ada88b2637eb48ac6aa3eb56e82d44917971b8aa96fbb37aa60efea674dc4ee8c42074f90f7b1f772e9db375435f6c83a19b3bc6
-  languageName: node
-  linkType: hard
-
-"lodash.difference@npm:^4.5.0":
-  version: 4.5.0
-  resolution: "lodash.difference@npm:4.5.0"
-  checksum: ecee276aa578f300e79350805a14a51be8d1f12b3c1389a19996d8ab516f814211a5f65c68331571ecdad96522b863ccc484b55504ce8c9947212a29f8857d5a
   languageName: node
   linkType: hard
 
@@ -9127,19 +9113,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"moment-locales-webpack-plugin@npm:1.2.0":
-  version: 1.2.0
-  resolution: "moment-locales-webpack-plugin@npm:1.2.0"
-  dependencies:
-    lodash.difference: ^4.5.0
-  peerDependencies:
-    moment: ^2.8.0
-    webpack: ^1 || ^2 || ^3 || ^4 || ^5
-  checksum: bb5daebfc2f2bd0c003b9d576893531edc6ac3c884c77fc4c3a7c8d228340c9a26a5c7676c8e4505922eebb1309f2defbcf619a1706d7d7e579039690df2487b
-  languageName: node
-  linkType: hard
-
-"moment@npm:2.29.3, moment@npm:^2.29.1":
+"moment@npm:^2.29.1":
   version: 2.29.3
   resolution: "moment@npm:2.29.3"
   checksum: 2e780e36d9a1823c08a1b6313cbb08bd01ecbb2a9062095820a34f42c878991ccba53abaa6abb103fd5c01e763724f295162a8c50b7e95b4f1c992ef0772d3f0
