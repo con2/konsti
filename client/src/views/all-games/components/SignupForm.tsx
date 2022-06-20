@@ -26,9 +26,8 @@ export const SignupForm = ({
   const signedGames = useAppSelector((state) => state.myGames.signedGames);
   const username = useAppSelector((state) => state.login.username);
   const priorityRef = useRef<HTMLSelectElement>(null);
-  const [errorMessage, setErrorMessage] = useState<PostSignedGamesErrorMessage>(
-    PostSignedGamesErrorMessage.EMPTY
-  );
+  const [errorMessage, setErrorMessage] =
+    useState<PostSignedGamesErrorMessage | null>(null);
 
   const handleCancel = (): void => {
     onCancel();
@@ -53,12 +52,14 @@ export const SignupForm = ({
       submitPostSignedGames({
         username,
         selectedGames: signedGames.concat(newGame),
-        signupTime: game.startTime,
+        startTime: game.startTime,
       })
     );
 
     if (error) {
       setErrorMessage(error);
+    } else {
+      setErrorMessage(null);
     }
   };
 
@@ -92,7 +93,7 @@ export const SignupForm = ({
       {errorMessage && (
         <ErrorMessage
           message={t(errorMessage)}
-          closeError={() => setErrorMessage(PostSignedGamesErrorMessage.EMPTY)}
+          closeError={() => setErrorMessage(null)}
         />
       )}
     </form>

@@ -19,7 +19,7 @@ const PostSignedGamesParameters = z.object({
         message: z.string(),
       })
     ),
-    signupTime: z.string(),
+    startTime: z.string(),
   }),
 });
 
@@ -41,12 +41,12 @@ export const postSignedGames = async (
     return res.sendStatus(422);
   }
 
-  const { selectedGames, username, signupTime } = parameters.signupData;
+  const { selectedGames, username, startTime } = parameters.signupData;
 
   if (!isAuthorized(req.headers.authorization, UserGroup.USER, username)) {
     return res.sendStatus(401);
   }
 
-  const response = await storeSignedGames(selectedGames, username, signupTime);
+  const response = await storeSignedGames(selectedGames, username, startTime);
   return res.json(response);
 };

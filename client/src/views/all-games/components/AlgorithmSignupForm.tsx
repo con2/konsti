@@ -44,7 +44,7 @@ export const AlgorithmSignupForm: FC<Props> = ({
       submitPostSignedGames({
         username,
         selectedGames: newSignupData,
-        signupTime: gameToRemove.startTime,
+        startTime: gameToRemove.startTime,
       })
     );
 

@@ -10,13 +10,13 @@ export interface PostSignedGamesResponse {
 }
 
 export interface PostSignedGamesError extends ApiError {
-  errorId: "unknown" | "samePriority";
+  errorId: "unknown" | "signupEnded" | "samePriority";
 }
 
 export interface SignupData {
   username: string;
   selectedGames: readonly SelectedGame[];
-  signupTime: string;
+  startTime: string;
 }
 
 export interface PostEnteredGameResponse {
