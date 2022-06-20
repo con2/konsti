@@ -220,7 +220,6 @@
     "groupTooBigWarning": "Group is bigger than the maximum number of players",
     "enterGroupMemberCode": "User's code",
     "enterGroupCreatorCode": "Group creator's code",
-    "joinGroup": "Join group",
     "addGroupMember": "Add group member",
     "createGroupConfirmationMessage": "Do you want to create a group?",
     "youAreGroupCreator": "You are group creator",
