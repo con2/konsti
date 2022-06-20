@@ -1,10 +1,13 @@
-import moment from "moment";
+import dayjs from "dayjs";
+import isBetween from "dayjs/plugin/isBetween"; // ES 2015
 import { logger } from "server/utils/logger";
 import { UserSignedGames } from "server/typings/result.typings";
 import { User } from "shared/typings/models/user";
 import { findUsers } from "server/features/user/userRepository";
 import { Result } from "shared/typings/models/result";
 import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
+
+dayjs.extend(isBetween);
 
 export const removeOverlapSignups = async (
   results: readonly Result[]
@@ -35,9 +38,9 @@ export const removeOverlapSignups = async (
 
     const newSignedGames = signedUser?.signedGames.filter((signedGame) => {
       // If signed game takes place during the length of entered game, cancel it
-      return !moment(signedGame.gameDetails.startTime).isBetween(
-        moment(enteredGame.startTime).add(1, "minutes"),
-        moment(enteredGame.endTime)
+      return !dayjs(signedGame.gameDetails.startTime).isBetween(
+        dayjs(enteredGame.startTime).add(1, "minutes"),
+        dayjs(enteredGame.endTime)
       );
     });
 

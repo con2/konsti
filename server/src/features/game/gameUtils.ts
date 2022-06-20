@@ -1,5 +1,5 @@
 import _ from "lodash";
-import moment, { Moment } from "moment";
+import dayjs, { Dayjs } from "dayjs";
 import { findGames, removeGames } from "server/features/game/gameRepository";
 import { GameDoc } from "server/typings/game.typings";
 import { logger } from "server/utils/logger";
@@ -86,9 +86,9 @@ export const enrichGames = async (
 const getSignupStrategyForGame = (
   game: GameDoc,
   settings: Settings,
-  currentTime: Moment
+  currentTime: Dayjs
 ): SignupStrategy => {
-  const start = moment(game.startTime);
+  const start = dayjs(game.startTime);
   const { DIRECT_SIGNUP_START } = sharedConfig;
 
   if (settings.signupStrategy !== SignupStrategy.ALGORITHM_AND_DIRECT) {

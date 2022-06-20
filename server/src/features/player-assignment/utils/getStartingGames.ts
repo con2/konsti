@@ -1,4 +1,4 @@
-import moment from "moment";
+import dayjs from "dayjs";
 import { logger } from "server/utils/logger";
 import { Game } from "shared/typings/models/game";
 
@@ -8,11 +8,11 @@ export const getStartingGames = (
 ): readonly Game[] => {
   logger.debug("Get starting games");
   const startingGames = [] as Game[];
-  const selectedStartingTime = moment(startingTime).format();
+  const selectedStartingTime = dayjs(startingTime).format();
 
   // Get games that start at defined time
   games.forEach((game) => {
-    const gameStartingTime = moment(game.startTime).format();
+    const gameStartingTime = dayjs(game.startTime).format();
     if (gameStartingTime === selectedStartingTime) {
       startingGames.push(game);
     }

@@ -1,5 +1,5 @@
 import { uniq } from "lodash";
-import moment from "moment";
+import dayjs from "dayjs";
 import {
   AccessibilityValue,
   Game,
@@ -26,15 +26,15 @@ export const kompassiGameMapper = (
       title: game.title,
       description: game.description,
       location: game.room_name,
-      startTime: moment(game.start_time).format(),
+      startTime: dayjs(game.start_time).format(),
       mins: game.length,
       tags: mapTags(game),
       genres: mapGenres(game),
       styles: mapGameStyles(game),
       language: game.language,
       endTime:
-        moment(game.end_time).format() ||
-        moment(game.start_time).add(game.length, "minutes").format(),
+        dayjs(game.end_time).format() ||
+        dayjs(game.start_time).add(game.length, "minutes").format(),
       people: game.formatted_hosts,
       minAttendance: game.min_players,
       maxAttendance: game.max_players || game.ropecon2018_characters,

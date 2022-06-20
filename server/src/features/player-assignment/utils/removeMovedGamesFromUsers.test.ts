@@ -1,4 +1,4 @@
-import moment from "moment";
+import dayjs from "dayjs";
 import mongoose from "mongoose";
 import { MongoMemoryServer } from "mongodb-memory-server";
 import { UserModel } from "server/features/user/userSchema";
@@ -44,7 +44,7 @@ test("should remove signups for moved games from users", async () => {
   await GameModel.updateOne(
     { gameId: game.gameId },
     {
-      startTime: moment(game.startTime).add(1, "hours").format(),
+      startTime: dayjs(game.startTime).add(1, "hours").format(),
     }
   );
 

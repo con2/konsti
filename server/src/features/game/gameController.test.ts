@@ -1,7 +1,7 @@
 import { Server } from "http";
 import request from "supertest";
 import { MongoMemoryServer } from "mongodb-memory-server";
-import moment from "moment";
+import dayjs from "dayjs";
 import _ from "lodash";
 import { startServer, closeServer } from "server/utils/server";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
@@ -152,7 +152,7 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
 
   test("should update changed game details", async () => {
     const newDescription = "new description";
-    const newStartTime = moment(testGame.startTime).add(1, "hours").format();
+    const newStartTime = dayjs(testGame.startTime).add(1, "hours").format();
     jest.spyOn(kompassiModule, "getProgramFromServer").mockResolvedValue([
       {
         ...testKompassiGame,
@@ -171,12 +171,12 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
     const games = await findGames();
 
     expect(games.length).toEqual(1);
-    expect(moment(games[0].startTime).format()).toEqual(newStartTime);
+    expect(dayjs(games[0].startTime).format()).toEqual(newStartTime);
     expect(games[0].description).toEqual(newDescription);
   });
 
   test("should remove selectedGames and enteredGames if game start time changes", async () => {
-    const newStartTime = moment(testGame.startTime).add(1, "hours").format();
+    const newStartTime = dayjs(testGame.startTime).add(1, "hours").format();
     jest.spyOn(kompassiModule, "getProgramFromServer").mockResolvedValue([
       {
         ...testKompassiGame,
