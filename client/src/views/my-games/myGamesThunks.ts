@@ -68,7 +68,6 @@ export enum PostEnteredGameErrorMessage {
   UNKNOWN = "signupError.generic",
   SIGNUP_ENDED = "signupError.signupEnded",
   PHASE_GAP = "signupError.phaseGap",
-  EMPTY = "",
 }
 
 export const submitPostEnteredGame = (
@@ -115,9 +114,9 @@ export const submitDeleteEnteredGame = (
 };
 
 export enum PostSignedGamesErrorMessage {
+  SIGNUP_ENDED = "signupError.signupEnded",
   SAME_PRIORITY = "signupError.samePriority",
   UNKNOWN = "signupError.generic",
-  EMPTY = "",
 }
 
 export const submitPostSignedGames = (
@@ -128,6 +127,8 @@ export const submitPostSignedGames = (
 
     if (signupResponse?.status === "error") {
       switch (signupResponse.errorId) {
+        case "signupEnded":
+          return PostSignedGamesErrorMessage.SIGNUP_ENDED;
         case "samePriority":
           return PostSignedGamesErrorMessage.SAME_PRIORITY;
         case "unknown":

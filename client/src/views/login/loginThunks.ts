@@ -15,7 +15,6 @@ export enum LoginErrorMessage {
   LOGIN_FAILED = "error.loginFailed",
   LOGIN_DISABLED = "error.loginDisabled",
   UNKNOWN = "error.unknown",
-  EMPTY = "",
 }
 
 export const submitLogin = (

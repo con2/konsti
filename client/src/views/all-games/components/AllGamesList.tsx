@@ -1,6 +1,7 @@
 import React, { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import _ from "lodash";
+import moment from "moment";
 import { GameEntry } from "./GameEntry";
 import { useAppSelector } from "client/utils/hooks";
 import { Game } from "shared/typings/models/game";
@@ -76,7 +77,10 @@ export const AllGamesList = ({ games }: Props): ReactElement => {
                 startTime={startTime}
                 signupStrategy={timeslotSignupStrategy}
                 signedGames={ownOrGroupCreatorSignedGames}
-                phaseGap={getPhaseGap({ startTime, timeNow: getTime() })}
+                phaseGap={getPhaseGap({
+                  startTime: moment(startTime),
+                  timeNow: getTime(),
+                })}
               />
             );
           })}

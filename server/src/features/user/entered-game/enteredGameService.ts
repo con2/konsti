@@ -25,7 +25,7 @@ export const storeEnteredGame = async (
   const timeNow = await getTime();
 
   try {
-    const phaseGap = await getPhaseGap({ startTime, timeNow });
+    const phaseGap = await getPhaseGap({ startTime: moment(timeNow), timeNow });
     if (phaseGap.waitingForPhaseGapToEnd) {
       throw new Error("Waiting for phase gap to end");
     }

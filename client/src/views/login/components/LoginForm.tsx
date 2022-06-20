@@ -14,8 +14,8 @@ export const LoginForm = (): ReactElement => {
   const { t } = useTranslation();
 
   const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
-  const [serverError, setServerError] = useState<LoginErrorMessage>(
-    LoginErrorMessage.EMPTY
+  const [serverError, setServerError] = useState<LoginErrorMessage | null>(
+    null
   );
 
   const {
@@ -44,7 +44,7 @@ export const LoginForm = (): ReactElement => {
             {...register("username", {
               required: `${t(`validation.required`)}`,
               onChange: (e) => {
-                setServerError(LoginErrorMessage.EMPTY);
+                setServerError(null);
               },
             })}
             placeholder={t("username")}
@@ -64,7 +64,7 @@ export const LoginForm = (): ReactElement => {
             {...register("password", {
               required: `${t(`validation.required`)}`,
               onChange: (e) => {
-                setServerError(LoginErrorMessage.EMPTY);
+                setServerError(null);
               },
             })}
             placeholder={t("password")}
@@ -96,7 +96,7 @@ export const LoginForm = (): ReactElement => {
       {serverError && (
         <ErrorMessage
           message={t(serverError)}
-          closeError={() => setServerError(LoginErrorMessage.EMPTY)}
+          closeError={() => setServerError(null)}
         />
       )}
     </form>

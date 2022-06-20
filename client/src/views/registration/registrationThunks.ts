@@ -8,7 +8,6 @@ export enum RegistrationErrorMessage {
   USERNAME_TAKEN = "error.usernameTaken",
   INVALID_SERIAL = "error.invalidSerial",
   UNKNOWN = "error.unknown",
-  EMPTY = "",
 }
 
 export const submitRegistration = (
