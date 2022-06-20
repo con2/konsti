@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { timeFormatter } from "client/utils/timeFormatter";
 import { useAppSelector } from "client/utils/hooks";
 import { SelectedGame } from "shared/typings/models/user";
-import { CancelSignupForm } from "./CancelSignupForm";
+import { CancelSignupForm } from "client/views/all-games/components/CancelSignupForm";
 import { Button, ButtonStyle } from "client/components/Button";
 
 interface Props {
@@ -62,6 +62,7 @@ export const ResultsByStartTimes = ({
                   signup.gameDetails.gameId,
                 ]);
               };
+
               if (signup.time === startTime) {
                 const showSignupMessage = signupMessages.find(
                   (message) => message.gameId === signup.gameDetails.gameId
@@ -71,6 +72,7 @@ export const ResultsByStartTimes = ({
                     <Link to={`/games/${signup.gameDetails.gameId}`}>
                       {signup.gameDetails.title}
                     </Link>
+
                     <ButtonContainer>
                       {cancelSignupFormVisible ? (
                         <CancelSignupForm
@@ -87,6 +89,7 @@ export const ResultsByStartTimes = ({
                         </Button>
                       )}
                     </ButtonContainer>
+
                     {!!showSignupMessage && (
                       <SignupMessagePlacement>
                         <FontAwesomeIcon icon={"comment"} />
@@ -99,6 +102,7 @@ export const ResultsByStartTimes = ({
                 );
               }
             })}
+
             {missedSignups.map((missedSignup) => {
               if (missedSignup === startTime) {
                 return (
@@ -116,10 +120,12 @@ export const ResultsByStartTimes = ({
 };
 
 const GameDetailsList = styled.div`
+  display: flex;
+  align-items: center;
   padding-left: 30px;
 `;
 
-const ButtonContainer = styled.span`
+const ButtonContainer = styled.div`
   padding-left: 10px;
 `;
 

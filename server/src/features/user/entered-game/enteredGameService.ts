@@ -9,8 +9,8 @@ import {
 import { findUsers } from "server/features/user/userRepository";
 import { isValidSignupTime } from "server/features/user/userUtils";
 import { getPhaseGap } from "shared/utils/getPhaseGap";
-import { ApiError } from "shared/typings/api/errors";
 import {
+  DeleteEnteredGameError,
   DeleteEnteredGameParameters,
   DeleteEnteredGameResponse,
   PostEnteredGameError,
@@ -114,7 +114,24 @@ export const storeEnteredGame = async (
 
 export const removeEnteredGame = async (
   enteredGameRequest: DeleteEnteredGameParameters
-): Promise<DeleteEnteredGameResponse | ApiError> => {
+): Promise<DeleteEnteredGameResponse | DeleteEnteredGameError> => {
+  const { startTime } = enteredGameRequest;
+
+  const timeNow = await getTime();
+
+  const validSignupTime = isValidSignupTime({
+    startTime: dayjs(startTime),
+    timeNow,
+  });
+
+  if (!validSignupTime) {
+    return {
+      errorId: "signupEnded",
+      message: "Signup failure",
+      status: "error",
+    };
+  }
+
   let user;
   try {
     user = await delEnteredGame(enteredGameRequest);
