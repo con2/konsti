@@ -1,11 +1,15 @@
-import React, { FC, ReactElement, FormEvent } from "react";
+import React, { FC, ReactElement, FormEvent, useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { Game } from "shared/typings/models/game";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { Button, ButtonStyle } from "client/components/Button";
-import { submitDeleteEnteredGame } from "client/views/my-games/myGamesThunks";
+import {
+  DeleteEnteredGameErrorMessage,
+  submitDeleteEnteredGame,
+} from "client/views/my-games/myGamesThunks";
 import { loadGames } from "client/utils/loadData";
+import { ErrorMessage } from "client/components/ErrorMessage";
 
 interface Props {
   game: Game;
@@ -20,33 +24,53 @@ export const CancelSignupForm: FC<Props> = (props: Props): ReactElement => {
   const dispatch = useAppDispatch();
   const username = useAppSelector((state) => state.login.username);
 
+  const [serverError, setServerError] =
+    useState<DeleteEnteredGameErrorMessage | null>(null);
+
   const handleCancel = (): void => {
     onCancelForm();
   };
   const removeSignup = async (event: FormEvent): Promise<void> => {
-    await dispatch(
+    const errorMessage = await dispatch(
       submitDeleteEnteredGame({
         username,
         startTime: game.startTime,
         enteredGameId: game.gameId,
       })
     );
-    await loadGames();
-    onCancelSignup();
+
+    if (errorMessage) {
+      setServerError(errorMessage);
+    } else {
+      await loadGames();
+      onCancelSignup();
+    }
   };
 
   return (
-    <ButtonContainer>
-      <CancelSignupButton
-        onClick={removeSignup}
-        buttonStyle={ButtonStyle.WARNING}
-      >
-        {t("signup.confirmCancelSignup")}
-      </CancelSignupButton>
-      <CancelFormButton onClick={handleCancel} buttonStyle={ButtonStyle.NORMAL}>
-        {t("signup.cancel")}
-      </CancelFormButton>
-    </ButtonContainer>
+    <>
+      <ButtonContainer>
+        <CancelSignupButton
+          onClick={removeSignup}
+          buttonStyle={ButtonStyle.WARNING}
+        >
+          {t("signup.confirmCancelSignup")}
+        </CancelSignupButton>
+        <CancelFormButton
+          onClick={handleCancel}
+          buttonStyle={ButtonStyle.NORMAL}
+        >
+          {t("signup.cancel")}
+        </CancelFormButton>
+      </ButtonContainer>
+
+      {serverError && (
+        <ErrorMessage
+          message={t(serverError)}
+          closeError={() => setServerError(null)}
+        />
+      )}
+    </>
   );
 };
 
@@ -60,5 +84,6 @@ const CancelSignupButton = styled(Button)`
 `;
 
 const CancelFormButton = styled(Button)`
+  border: 1px solid ${(props) => props.theme.borderInformative};
   width: 50%;
 `;

@@ -97,16 +97,29 @@ export const submitPostEnteredGame = (
   };
 };
 
+export enum DeleteEnteredGameErrorMessage {
+  UNKNOWN = "signupError.generic",
+  SIGNUP_ENDED = "signupError.signupEnded",
+}
+
 export const submitDeleteEnteredGame = (
   data: DeleteEnteredGameParameters
-): AppThunk => {
-  return async (dispatch): Promise<void> => {
+): AppThunk<Promise<DeleteEnteredGameErrorMessage | undefined>> => {
+  return async (
+    dispatch
+  ): Promise<DeleteEnteredGameErrorMessage | undefined> => {
     const signupResponse = await deleteEnteredGame(data);
 
     if (signupResponse?.status === "error") {
-      // TODO
+      switch (signupResponse.errorId) {
+        case "signupEnded":
+          return DeleteEnteredGameErrorMessage.SIGNUP_ENDED;
+        case "unknown":
+          return DeleteEnteredGameErrorMessage.UNKNOWN;
+        default:
+          exhaustiveSwitchGuard(signupResponse.errorId);
+      }
     }
-
     if (signupResponse?.status === "success") {
       dispatch(submitDeleteEnteredAsync(data.enteredGameId));
     }

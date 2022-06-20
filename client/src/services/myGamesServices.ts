@@ -1,7 +1,7 @@
 import { api } from "client/utils/api";
-import { ApiError } from "shared/typings/api/errors";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
+  DeleteEnteredGameError,
   DeleteEnteredGameParameters,
   DeleteEnteredGameResponse,
   PostEnteredGameError,
@@ -36,7 +36,7 @@ export const postEnteredGame = async (
 
 export const deleteEnteredGame = async (
   requestData: DeleteEnteredGameParameters
-): Promise<DeleteEnteredGameResponse | ApiError> => {
+): Promise<DeleteEnteredGameResponse | DeleteEnteredGameError> => {
   const response = await api.delete<DeleteEnteredGameResponse>(
     ApiEndpoint.ENTERED_GAME,
     { data: requestData }
