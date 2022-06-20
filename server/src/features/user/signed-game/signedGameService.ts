@@ -1,5 +1,5 @@
 import _ from "lodash";
-import moment from "moment";
+import dayjs from "dayjs";
 import {
   PostSignedGamesError,
   PostSignedGamesResponse,
@@ -17,7 +17,7 @@ export const storeSignedGames = async (
   const timeNow = await getTime();
 
   const validSignupTime = isValidSignupTime({
-    startTime: moment(startTime),
+    startTime: dayjs(startTime),
     timeNow,
   });
 

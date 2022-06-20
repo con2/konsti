@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import { MongoMemoryServer } from "mongodb-memory-server";
-import moment from "moment";
+import dayjs from "dayjs";
 import { SettingsModel } from "server/features/settings/settingsSchema";
 import { testGame, testGame2 } from "shared/tests/testGame";
 import {
@@ -58,8 +58,8 @@ test("should update signup time", async () => {
   const signupTime = "2019-07-26T14:00:00.000Z";
   await saveSettings({ signupTime });
   const insertedSettings = await SettingsModel.findOne({});
-  expect(moment(insertedSettings?.signupTime).format()).toEqual(
-    moment(signupTime).format()
+  expect(dayjs(insertedSettings?.signupTime).format()).toEqual(
+    dayjs(signupTime).format()
   );
 });
 

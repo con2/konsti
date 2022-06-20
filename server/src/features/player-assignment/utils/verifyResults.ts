@@ -1,4 +1,4 @@
-import moment from "moment";
+import dayjs from "dayjs";
 import { logger } from "server/utils/logger";
 import { User } from "shared/typings/models/user";
 import { ResultsCollectionEntry } from "server/typings/result.typings";
@@ -29,13 +29,13 @@ export const verifyResults = async (): Promise<void> => {
   resultsCollection.map((result) => {
     result.results.map((userResult) => {
       if (
-        moment(userResult.enteredGame.time).format() !==
-        moment(result.startTime).format()
+        dayjs(userResult.enteredGame.time).format() !==
+        dayjs(result.startTime).format()
       ) {
         logger.error(
           `Invalid time for "${
             userResult.enteredGame.gameDetails.title
-          }" - actual: ${moment(
+          }" - actual: ${dayjs(
             userResult.enteredGame.time
           ).format()}, expected: ${result.startTime}`
         );
@@ -50,7 +50,7 @@ export const verifyResults = async (): Promise<void> => {
 
     user.enteredGames.forEach((enteredGame) => {
       const results = resultsCollection.find((result) =>
-        moment(result.startTime).isSame(moment(enteredGame.time))
+        dayjs(result.startTime).isSame(dayjs(enteredGame.time))
       );
 
       if (!results) {

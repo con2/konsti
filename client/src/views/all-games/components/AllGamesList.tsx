@@ -1,7 +1,7 @@
 import React, { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import _ from "lodash";
-import moment from "moment";
+import dayjs from "dayjs";
 import { GameEntry } from "./GameEntry";
 import { useAppSelector } from "client/utils/hooks";
 import { Game } from "shared/typings/models/game";
@@ -78,7 +78,7 @@ export const AllGamesList = ({ games }: Props): ReactElement => {
                 signupStrategy={timeslotSignupStrategy}
                 signedGames={ownOrGroupCreatorSignedGames}
                 phaseGap={getPhaseGap({
-                  startTime: moment(startTime),
+                  startTime: dayjs(startTime),
                   timeNow: getTime(),
                 })}
               />

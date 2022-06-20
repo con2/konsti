@@ -1,5 +1,5 @@
 import { faker } from "@faker-js/faker";
-import moment from "moment";
+import dayjs from "dayjs";
 import { sampleSize } from "lodash";
 import { logger } from "server/utils/logger";
 import { kompassiGameMapper } from "server/utils/kompassiGameMapper";
@@ -24,7 +24,7 @@ export const createGames = async (
 
   for (let i = 0; i < signupTimes; i += 1) {
     startingTimes.push(
-      moment(sharedConfig.CONVENTION_START_TIME)
+      dayjs(sharedConfig.CONVENTION_START_TIME)
         .add(i + 2, "hours")
         .format()
     );
@@ -48,8 +48,8 @@ export const createGames = async (
         formatted_hosts: faker.internet.userName(),
         room_name: "Ropetaverna",
         length,
-        start_time: moment(startTime).format(),
-        end_time: moment(startTime).add(length, "minutes").format(),
+        start_time: dayjs(startTime).format(),
+        end_time: dayjs(startTime).add(length, "minutes").format(),
         language: "fi",
         rpg_system: "Test gamesystem",
         no_language: Math.random() < 0.5,

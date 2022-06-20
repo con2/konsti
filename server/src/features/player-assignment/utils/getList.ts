@@ -1,5 +1,5 @@
 import _ from "lodash";
-import moment from "moment";
+import dayjs from "dayjs";
 import { ListItem } from "server/typings/padgRandomAssign.typings";
 import { getAssignmentBonus } from "server/features/player-assignment/utils/getAssignmentBonus";
 import { SelectedGame, User } from "shared/typings/models/user";
@@ -16,7 +16,7 @@ export const getList = (
     return firstMember.signedGames
       .filter(
         (signedGame) =>
-          moment(signedGame.time).format() === moment(startingTime).format()
+          dayjs(signedGame.time).format() === dayjs(startingTime).format()
       )
       .map((signedGame) => {
         return {

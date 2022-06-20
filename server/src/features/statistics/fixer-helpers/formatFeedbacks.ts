@@ -1,15 +1,16 @@
 import fs from "fs";
 import _ from "lodash";
-import moment from "moment";
+import dayjs from "dayjs";
 import { z } from "zod";
 import { logger } from "server/utils/logger";
 import { GameSchema } from "shared/typings/models/game";
 import { writeJson } from "server/features/statistics/statsUtil";
 import { FeedbackSchema } from "shared/typings/models/feedback";
 import { config } from "server/config";
+import { setLocale } from "shared/utils/setLocale";
 
 export const formatFeedbacks = (year: number, event: string): void => {
-  moment.locale("fi");
+  setLocale("fi");
 
   const feedbacksJson = fs.readFileSync(
     `${config.statsDataDir}/${event}/${year}/secret/feedbacks.json`,
@@ -38,7 +39,7 @@ export const formatFeedbacks = (year: number, event: string): void => {
       ...feedback,
       title: foundGame?.title,
       people: foundGame?.people,
-      startTime: moment(foundGame?.startTime).format("dddd HH:mm"),
+      startTime: dayjs(foundGame?.startTime).format("dddd HH:mm"),
     };
   });
 
