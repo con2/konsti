@@ -141,7 +141,7 @@
   },
   "user": "Käyttäjä",
   "favoritedGames": "Suosikkipelit",
-  "signedGames": "Valitut pelit",
+  "preSignedGames": "Ennakkoilmoittautumiset",
   "enteredGames": "Ilmoittautumiset",
   "hiddenGames": "Piilotetut pelit",
   "error": {

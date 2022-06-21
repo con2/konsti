@@ -141,7 +141,7 @@
   },
   "user": "User",
   "favoritedGames": "Favorited games",
-  "signedGames": "Selected games",
+  "preSignedGames": "Pre-signups",
   "enteredGames": "Signups",
   "hiddenGames": "Hidden games",
   "error": {
