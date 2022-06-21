@@ -4,12 +4,18 @@ import { useTranslation } from "react-i18next";
 import { Game } from "shared/typings/models/game";
 import { EnterGameForm } from "./EnterGameForm";
 import { SelectedGame } from "shared/typings/models/user";
-import { useAppSelector } from "client/utils/hooks";
+import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { isAlreadyEntered } from "./allGamesUtils";
 import { Button, ButtonStyle } from "client/components/Button";
 import { CancelSignupForm } from "./CancelSignupForm";
 import { PhaseGap } from "shared/utils/getPhaseGap";
 import { timeFormatter } from "client/utils/timeFormatter";
+import {
+  DeleteEnteredGameErrorMessage,
+  submitDeleteEnteredGame,
+} from "client/views/my-games/myGamesThunks";
+import { loadGames } from "client/utils/loadData";
+import { ErrorMessage } from "client/components/ErrorMessage";
 
 interface Props {
   game: Game;
@@ -24,21 +30,43 @@ export const DirectSignupForm: FC<Props> = ({
   gameIsFull,
   phaseGap,
 }: Props): ReactElement | null => {
+  const dispatch = useAppDispatch();
   const { t } = useTranslation();
 
   const loggedIn = useAppSelector((state) => state.login.loggedIn);
+  const username = useAppSelector((state) => state.login.username);
   const enteredGames = useAppSelector((state) => state.myGames.enteredGames);
-  const [signupFormOpen, setSignupFormOpen] = useState(false);
-  const [cancelSignupFormOpen, setCancelSignupFormOpen] = useState(false);
-  const AdditionalInfoMessages = useAppSelector(
+  const additionalInfoMessages = useAppSelector(
     (state) => state.admin.signupMessages
   );
+
+  const [signupFormOpen, setSignupFormOpen] = useState(false);
+  const [cancelSignupFormOpen, setCancelSignupFormOpen] = useState(false);
+  const [serverError, setServerError] =
+    useState<DeleteEnteredGameErrorMessage | null>(null);
 
   const enteredGamesForTimeslot = enteredGames.filter(
     (g) => g.gameDetails.startTime === startTime
   );
 
   const alreadyEnteredToGame = isAlreadyEntered(game, enteredGames);
+
+  const removeSignup = async (): Promise<void> => {
+    const errorMessage = await dispatch(
+      submitDeleteEnteredGame({
+        username,
+        startTime: game.startTime,
+        enteredGameId: game.gameId,
+      })
+    );
+
+    if (errorMessage) {
+      setServerError(errorMessage);
+    } else {
+      await loadGames();
+      setCancelSignupFormOpen(false);
+    }
+  };
 
   const signupForDirect = (
     alreadySigned: boolean,
@@ -98,7 +126,7 @@ export const DirectSignupForm: FC<Props> = ({
       {gameIsFull && <GameIsFull>{t("signup.gameIsFull")}</GameIsFull>}
       {alreadyEnteredToGame && !cancelSignupFormOpen && (
         <Button
-          onClick={() => setCancelSignupFormOpen(!cancelSignupFormOpen)}
+          onClick={() => setCancelSignupFormOpen(true)}
           buttonStyle={ButtonStyle.NORMAL}
         >
           {t("button.cancelSignup")}
@@ -106,23 +134,27 @@ export const DirectSignupForm: FC<Props> = ({
       )}
       {alreadyEnteredToGame && cancelSignupFormOpen && (
         <CancelSignupForm
-          game={game}
-          onCancelSignup={() => {
-            setCancelSignupFormOpen(false);
-          }}
           onCancelForm={() => {
             setCancelSignupFormOpen(false);
           }}
+          onConfirmForm={async () => await removeSignup()}
         />
       )}
       {signupFormOpen && !alreadyEnteredToGame && !gameIsFull && (
         <EnterGameForm
           game={game}
-          signupMessage={AdditionalInfoMessages.find(
+          signupMessage={additionalInfoMessages.find(
             ({ gameId }) => gameId === game.gameId
           )}
           onEnterGame={() => setSignupFormOpen(false)}
           onCancelSignup={() => setSignupFormOpen(false)}
+        />
+      )}
+
+      {serverError && (
+        <ErrorMessage
+          message={t(serverError)}
+          closeError={() => setServerError(null)}
         />
       )}
     </>

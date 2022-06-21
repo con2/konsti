@@ -43,6 +43,7 @@ const TestValuesContainer = styled.div`
   top: 0;
   left: 0;
   margin: 80px 0 0 0;
+  z-index: 10;
 `;
 
 const TestValueSelectors = styled.div`
