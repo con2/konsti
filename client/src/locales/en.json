@@ -141,7 +141,7 @@
   },
   "user": "User",
   "favoritedGames": "Favorited games",
-  "signedGames": "Selected games",
+  "preSignedGames": "Pre-signups",
   "enteredGames": "Signups",
   "hiddenGames": "Hidden games",
   "error": {
@@ -187,7 +187,7 @@
   },
   "details": "details",
   "gameLimitWarning": "Only three selected games allowed",
-  "noSignupResult": "You didn't get into a game for this starting time",
+  "noPreSignupResult": "You didn't get into a game during pre-signup",
   "invalidGameId": "Game not found. Invalid game ID",
   "feedbackTitle": "Feedback",
   "feedbackInstruction": "Did you enjoy the game? Send feedback to the game master! They will receive it after the event.",
