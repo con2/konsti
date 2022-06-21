@@ -187,7 +187,7 @@
   },
   "details": "lisätietoja",
   "gameLimitWarning": "Voit valita enintään kolme peliä",
-  "noSignupResult": "Et mahtunut peliin tällä alkamisajankohdalla",
+  "noPreSignupResult": "Et mahtunut peliin ennakkoilmoittautumisessa",
   "invalidGameId": "Peliä ei löydy. Viallinen pelitunniste",
   "feedbackTitle": "Palaute",
   "feedbackInstruction": "Piditkö pelistä? Lähetä palautetta pelinjohtajalle! Palautteet toimitetaan tapahtuman jälkeen.",
