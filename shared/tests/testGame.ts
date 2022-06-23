@@ -43,6 +43,7 @@ export const testGame: Game = {
     AccessibilityValue.MOVING_AROUND,
     AccessibilityValue.FLASHING_LIGHTS,
   ],
+  otherInaccessibility: "",
 };
 
 export const testGame2: Game = {
@@ -81,4 +82,5 @@ export const testGame2: Game = {
     AccessibilityValue.MOVING_AROUND,
     AccessibilityValue.FLASHING_LIGHTS,
   ],
+  otherInaccessibility: "",
 };

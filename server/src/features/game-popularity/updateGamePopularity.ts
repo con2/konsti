@@ -7,9 +7,12 @@ import { Game } from "shared/typings/models/game";
 import { findUsers } from "server/features/user/userRepository";
 import { findGames } from "server/features/game/gameRepository";
 
+const { gamePopularityUpdateMethod } = config;
+
 export const updateGamePopularity = async (): Promise<void> => {
-  logger.info("Calculate game popularity");
-  const { gamePopularityUpdateMethod } = config;
+  logger.info(
+    `Calculate game popularity using "${gamePopularityUpdateMethod}" method`
+  );
 
   let users: User[] = [];
   try {

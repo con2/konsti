@@ -4,7 +4,7 @@ import { sharedConfig } from "shared/config/sharedConfig";
 const { CONVENTION_START_TIME, PHASE_GAP } = sharedConfig;
 
 export const testTimes = [
-  dayjs(CONVENTION_START_TIME).subtract(2, "hours").format(),
+  dayjs(CONVENTION_START_TIME).subtract(1, "hours").format(),
   dayjs(CONVENTION_START_TIME).format(),
   dayjs(CONVENTION_START_TIME)
     .add(PHASE_GAP - 2, "minutes")

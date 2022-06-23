@@ -33,6 +33,7 @@ interface Config {
   autoAssignDelay: number;
   autoAssignInterval: string;
   useTestTime: boolean;
+  localKompassiFile: string;
 }
 
 const commonConfig = {
@@ -61,6 +62,9 @@ const commonConfig = {
 
   // Statistics
   statsDataDir: "src/features/statistics/datafiles",
+
+  // Testing
+  localKompassiFile: "program-ropecon-2022-test.json",
 };
 
 const prodConfig = {
@@ -136,7 +140,7 @@ const devConfig = {
     "http://localhost:5000",
     "https://server:5000",
   ],
-  useLocalProgramFile: false,
+  useLocalProgramFile: true,
   debug: false,
   GROUP_ASSIGNMENT_ROUNDS: 1,
   PADG_ASSIGNMENT_ROUNDS: 300,

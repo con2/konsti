@@ -16,6 +16,7 @@ export const updateWithAssign = async (
   );
 
   let results = [] as readonly Result[];
+
   _.forEach(groupedGames, (value, key) => {
     const assignmentResult = padgAssignPlayers(users, games, key);
     results = results.concat(assignmentResult.results);

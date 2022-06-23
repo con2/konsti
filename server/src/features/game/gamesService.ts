@@ -15,8 +15,9 @@ export const storeGames = async (): Promise<PostGamesResponse | ApiError> => {
   try {
     kompassiGames = await getGamesFromKompassi();
   } catch (error) {
+    logger.error(`Loading games from Kompassi failed: ${error}`);
     return {
-      message: "Games db update failed",
+      message: "Loading games from Kompassi failed",
       status: "error",
       errorId: "unknown",
     };
