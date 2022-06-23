@@ -41,7 +41,7 @@ export const createGames = async (
       const startTime = startingTime;
       const length = 180;
 
-      const kompassiGameData = {
+      const kompassiGameData: KompassiGame = {
         title: faker.random.words(3),
         description: faker.lorem.sentences(5),
         category_title: KompassiProgramType.TABLETOP_RPG,
@@ -52,13 +52,6 @@ export const createGames = async (
         end_time: dayjs(startTime).add(length, "minutes").format(),
         language: "fi",
         rpg_system: "Test gamesystem",
-        no_language: Math.random() < 0.5,
-        english_ok: Math.random() < 0.5,
-        children_friendly: Math.random() < 0.5,
-        age_restricted: Math.random() < 0.5,
-        beginner_friendly: Math.random() < 0.5,
-        intended_for_experienced_participants: Math.random() < 0.5,
-        is_beginner_friendly: Math.random() < 0.5,
         min_players: faker.datatype.number({ min: 2, max: 3 }),
         max_players: faker.datatype.number({ min: 3, max: 4 }),
         identifier: faker.datatype.number(GAME_ID_MAX).toString(),
@@ -67,7 +60,6 @@ export const createGames = async (
         styles: sampleSize(Object.values(KompassiGameStyle), 2),
         short_blurb: faker.lorem.sentence(),
         revolving_door: Math.random() < 0.5,
-        three_word_description: "This is example ",
         content_warnings: "Content warning",
         other_author: "Other author",
         ropecon2018_characters: 6,

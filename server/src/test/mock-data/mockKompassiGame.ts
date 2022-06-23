@@ -1,12 +1,13 @@
 import { testGame, testGame2 } from "shared/tests/testGame";
 import {
+  KompassiGame,
   KompassiGameStyle,
   KompassiGenre,
   KompassiProgramType,
   KompassiTag,
 } from "shared/typings/models/kompassiGame";
 
-export const testKompassiGame = {
+export const testKompassiGame: KompassiGame = {
   title: testGame.title,
   description: testGame.description,
   category_title: KompassiProgramType.TABLETOP_RPG,
@@ -17,13 +18,6 @@ export const testKompassiGame = {
   end_time: testGame.endTime,
   language: testGame.language,
   rpg_system: testGame.gameSystem,
-  no_language: false,
-  english_ok: false,
-  children_friendly: false,
-  age_restricted: false,
-  beginner_friendly: false,
-  intended_for_experienced_participants: false,
-  is_beginner_friendly: false,
   min_players: testGame.minAttendance,
   max_players: testGame.maxAttendance,
   identifier: testGame.gameId,
@@ -32,7 +26,6 @@ export const testKompassiGame = {
   styles: [KompassiGameStyle.CHARACTER_DRIVEN, KompassiGameStyle.RULES_LIGHT],
   short_blurb: testGame.shortDescription,
   revolving_door: false,
-  three_word_description: testGame.shortDescription,
   content_warnings: testGame.contentWarnings,
   other_author: testGame.otherAuthor,
   ropecon2018_characters: testGame.maxAttendance,
@@ -53,7 +46,7 @@ export const testKompassiGame = {
   type_of_game_program: "",
 };
 
-export const testKompassiGame2 = {
+export const testKompassiGame2: KompassiGame = {
   title: testGame2.title,
   description: testGame2.description,
   category_title: KompassiProgramType.TABLETOP_RPG,
@@ -64,13 +57,6 @@ export const testKompassiGame2 = {
   end_time: testGame2.endTime,
   language: testGame2.language,
   rpg_system: testGame2.gameSystem,
-  no_language: false,
-  english_ok: false,
-  children_friendly: false,
-  age_restricted: false,
-  beginner_friendly: false,
-  intended_for_experienced_participants: false,
-  is_beginner_friendly: false,
   min_players: testGame2.minAttendance,
   max_players: testGame2.maxAttendance,
   identifier: testGame2.gameId,
@@ -79,7 +65,6 @@ export const testKompassiGame2 = {
   styles: [KompassiGameStyle.CHARACTER_DRIVEN, KompassiGameStyle.RULES_LIGHT],
   short_blurb: testGame2.shortDescription,
   revolving_door: false,
-  three_word_description: testGame2.shortDescription,
   content_warnings: testGame2.contentWarnings,
   other_author: testGame2.otherAuthor,
   ropecon2018_characters: testGame2.maxAttendance,
