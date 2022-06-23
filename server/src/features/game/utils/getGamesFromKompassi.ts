@@ -20,9 +20,7 @@ const { useLocalProgramFile, localKompassiFile } = config;
 export const getGamesFromKompassi = async (): Promise<
   readonly KompassiGame[]
 > => {
-  const eventProgramItems = useLocalProgramFile
-    ? getProgramFromLocalFile()
-    : await getProgramFromServer();
+  const eventProgramItems = await getEventProgramItems();
 
   if (!Array.isArray(eventProgramItems)) {
     throw new Error("Invalid response format, should be array");
@@ -35,6 +33,12 @@ export const getGamesFromKompassi = async (): Promise<
   logger.info(`Loaded ${eventProgramItems.length} event program items`);
 
   return getGamesFromFullProgram(eventProgramItems);
+};
+
+export const getEventProgramItems = async (): Promise<EventProgramItem[]> => {
+  return useLocalProgramFile
+    ? getProgramFromLocalFile()
+    : await getProgramFromServer();
 };
 
 const getProgramFromLocalFile = (): EventProgramItem[] => {
@@ -51,7 +55,7 @@ const getProgramFromLocalFile = (): EventProgramItem[] => {
   return JSON.parse(rawData);
 };
 
-export const getProgramFromServer = async (): Promise<EventProgramItem[]> => {
+const getProgramFromServer = async (): Promise<EventProgramItem[]> => {
   logger.info("GET event program from remote server");
 
   try {
