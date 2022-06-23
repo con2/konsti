@@ -39,5 +39,5 @@ export const sharedConfig: SharedConfig = {
   CONVENTION_YEAR: "2022",
 
   // Test values
-  CONVENTION_START_TIME: "2022-07-30T07:00:00Z", // UTC date
+  CONVENTION_START_TIME: "2022-07-29T12:00:00Z", // UTC date
 };

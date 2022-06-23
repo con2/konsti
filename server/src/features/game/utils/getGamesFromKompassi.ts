@@ -15,12 +15,12 @@ import {
 
 type EventProgramItem = KompassiGame;
 
+const { useLocalProgramFile, localKompassiFile } = config;
+
 export const getGamesFromKompassi = async (): Promise<
   readonly KompassiGame[]
 > => {
-  const eventProgramItems = config.useLocalProgramFile
-    ? getProgramFromLocalFile()
-    : await getProgramFromServer();
+  const eventProgramItems = await getEventProgramItems();
 
   if (!Array.isArray(eventProgramItems)) {
     throw new Error("Invalid response format, should be array");
@@ -35,13 +35,19 @@ export const getGamesFromKompassi = async (): Promise<
   return getGamesFromFullProgram(eventProgramItems);
 };
 
+export const getEventProgramItems = async (): Promise<EventProgramItem[]> => {
+  return useLocalProgramFile
+    ? getProgramFromLocalFile()
+    : await getProgramFromServer();
+};
+
 const getProgramFromLocalFile = (): EventProgramItem[] => {
   logger.info("GET event program from local filesystem");
 
   const rawData = fs.readFileSync(
     path.join(
       __dirname,
-      "../test/kompassi-data-dumps/program-ropecon-2019.json"
+      `../../../test/kompassi-data-dumps/${localKompassiFile}`
     ),
     "utf8"
   );
@@ -49,7 +55,7 @@ const getProgramFromLocalFile = (): EventProgramItem[] => {
   return JSON.parse(rawData);
 };
 
-export const getProgramFromServer = async (): Promise<EventProgramItem[]> => {
+const getProgramFromServer = async (): Promise<EventProgramItem[]> => {
   logger.info("GET event program from remote server");
 
   try {
@@ -64,9 +70,25 @@ export const getProgramFromServer = async (): Promise<EventProgramItem[]> => {
 const getGamesFromFullProgram = (
   programItems: EventProgramItem[]
 ): KompassiGame[] => {
-  const matchingProgramItems: EventProgramItem[] = programItems.filter(
-    (programItem) =>
-      Object.values(KompassiProgramType).includes(programItem.category_title)
+  const matchingProgramItems: EventProgramItem[] = programItems.flatMap(
+    (programItem) => {
+      // Take program items with valid program type
+      if (
+        !Object.values(KompassiProgramType).includes(programItem.category_title)
+      ) {
+        return [];
+      }
+
+      // Only include board game programs which are tournaments
+      if (
+        programItem.category_title === KompassiProgramType.BOARD_GAME &&
+        programItem.type_of_game_program !== "tmnt"
+      ) {
+        return [];
+      }
+
+      return programItem;
+    }
   );
 
   logger.info(`Found ${matchingProgramItems.length} matching program items`);

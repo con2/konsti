@@ -21,10 +21,8 @@ export const removeGames = async (gameIds?: string[]): Promise<void> => {
 export const saveGames = async (games: readonly Game[]): Promise<Game[]> => {
   logger.info("MongoDB: Store games to DB");
 
-  const deletedGamesCount = await removeDeletedGames(games);
-  if (deletedGamesCount > 0) {
-    await removeInvalidGamesFromUsers();
-  }
+  await removeDeletedGames(games);
+  await removeInvalidGamesFromUsers();
   await removeMovedGamesFromUsers(games);
 
   try {
@@ -54,6 +52,7 @@ export const saveGames = async (games: readonly Game[]): Promise<Game[]> => {
             contentWarnings: game.contentWarnings,
             otherAuthor: game.otherAuthor,
             accessibilityValues: game.accessibilityValues,
+            otherInaccessibility: game.otherInaccessibility,
           },
           {
             upsert: true,
