@@ -65,6 +65,9 @@ const mapProgramType = (kompassiGame: KompassiGame): ProgramType => {
     case KompassiProgramType.LARP:
       return ProgramType.LARP;
 
+    case KompassiProgramType.BOARD_GAME:
+      return ProgramType.BOARD_GAME;
+
     default:
       return exhaustiveSwitchGuard(programType);
   }

@@ -4,6 +4,7 @@ export enum KompassiProgramType {
   TABLETOP_RPG = "Roolipeli / Pen & Paper RPG",
   FREEFORM_RPG = "Freeform",
   LARP = "LARP",
+  BOARD_GAME = "Pelitiski: Lautapeli / Board game",
 }
 
 export enum KompassiTag {

@@ -66,9 +66,25 @@ export const getProgramFromServer = async (): Promise<EventProgramItem[]> => {
 const getGamesFromFullProgram = (
   programItems: EventProgramItem[]
 ): KompassiGame[] => {
-  const matchingProgramItems: EventProgramItem[] = programItems.filter(
-    (programItem) =>
-      Object.values(KompassiProgramType).includes(programItem.category_title)
+  const matchingProgramItems: EventProgramItem[] = programItems.flatMap(
+    (programItem) => {
+      // Take program items with valid program type
+      if (
+        !Object.values(KompassiProgramType).includes(programItem.category_title)
+      ) {
+        return [];
+      }
+
+      // Only include board game programs which are tournaments
+      if (
+        programItem.category_title === KompassiProgramType.BOARD_GAME &&
+        programItem.type_of_game_program !== "tmnt"
+      ) {
+        return [];
+      }
+
+      return programItem;
+    }
   );
 
   logger.info(`Found ${matchingProgramItems.length} matching program items`);
