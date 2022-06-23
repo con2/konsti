@@ -92,7 +92,6 @@
   },
   "programType": {
     "tabletopRPG": "Tabletop RPG",
-    "freeformRPG": "Freeform RPG",
     "larp": "LARP",
     "boardGame": "Board game"
   },
@@ -125,7 +124,6 @@
     "ageRestrictedTitle": "This game's age limit is 18+",
     "ageRestrictedLong": "Players may be asked to verify their age",
     "beginnerFriendly": "Beginner friendly",
-    "intendedForExperiencedParticipants": "Experienced participants preferred",
     "guestOfHonor": "Guest of Honor game",
     "family": "Suitable for families",
     "themeElements": "Theme: Elements",

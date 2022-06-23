@@ -2,7 +2,6 @@ import { z } from "zod";
 
 export enum KompassiProgramType {
   TABLETOP_RPG = "Roolipeli / Pen & Paper RPG",
-  FREEFORM_RPG = "Freeform",
   LARP = "LARP",
   BOARD_GAME = "Pelitiski: Lautapeli / Board game",
 }
@@ -98,30 +97,6 @@ export const KompassiGameSchema = z
       .string()
       .nullish()
       .transform((val) => val ?? ""),
-    no_language: z
-      .boolean()
-      .nullish()
-      .transform((val) => val ?? false),
-    english_ok: z
-      .boolean()
-      .nullish()
-      .transform((val) => val ?? false),
-    children_friendly: z
-      .boolean()
-      .nullish()
-      .transform((val) => val ?? false),
-    age_restricted: z
-      .boolean()
-      .nullish()
-      .transform((val) => val ?? false),
-    beginner_friendly: z
-      .boolean()
-      .nullish()
-      .transform((val) => val ?? false),
-    intended_for_experienced_participants: z
-      .boolean()
-      .nullish()
-      .transform((val) => val ?? false),
     min_players: z
       .number()
       .nullish()
@@ -147,14 +122,6 @@ export const KompassiGameSchema = z
       .nullish()
       .transform((val) => val ?? ""),
     revolving_door: z
-      .boolean()
-      .nullish()
-      .transform((val) => val ?? false),
-    three_word_description: z
-      .string()
-      .nullish()
-      .transform((val) => val ?? ""),
-    is_beginner_friendly: z
       .boolean()
       .nullish()
       .transform((val) => val ?? false),

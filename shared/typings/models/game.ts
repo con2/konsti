@@ -3,7 +3,6 @@ import { SignupStrategy } from "shared/config/sharedConfig.types";
 
 export enum ProgramType {
   TABLETOP_RPG = "tabletopRPG",
-  FREEFORM_RPG = "freeformRPG",
   LARP = "larp",
   BOARD_GAME = "boardGame",
 }
@@ -37,7 +36,6 @@ export enum Tag {
   CHILDREN_FRIENDLY = "childrenFriendly",
   AGE_RESTRICTED = "ageRestricted",
   BEGINNER_FRIENDLY = "beginnerFriendly",
-  FOR_EXPERIENCED_PARTICIPANTS = "intendedForExperiencedParticipants",
   GUEST_OF_HONOR = "guestOfHonor",
   FAMILY = "family",
   THEME_ELEMENTS = "themeElements",

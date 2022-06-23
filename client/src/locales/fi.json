@@ -92,7 +92,6 @@
   },
   "programType": {
     "tabletopRPG": "Pöytäroolipeli",
-    "freeformRPG": "Freeform-roolipeli",
     "larp": "LARP",
     "boardGame": "Lautapeli"
   },
@@ -125,7 +124,6 @@
     "ageRestrictedTitle": "Tämän pelin ikäraja on 18+",
     "ageRestrictedLong": "Pelaajia voidaan pyytää todistamaan ikänsä",
     "beginnerFriendly": "Aloittelijaystävällinen",
-    "intendedForExperiencedParticipants": "Peli suosii kokeneita pelaajia",
     "guestOfHonor": "Kunniavieraspeli",
     "family": "Sopii perheille",
     "themeElements": "Teema: Elementit",

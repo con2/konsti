@@ -39,11 +39,11 @@ export const kompassiGameMapper = (
       minAttendance: game.min_players,
       maxAttendance: game.max_players || game.ropecon2018_characters,
       gameSystem: game.rpg_system,
-      shortDescription: game.short_blurb || game.three_word_description,
+      shortDescription: game.short_blurb,
       revolvingDoor: game.revolving_door,
       programType: mapProgramType(game),
       contentWarnings:
-        game.content_warnings ?? game.ropecon2022_content_warnings,
+        game.content_warnings || game.ropecon2022_content_warnings,
       otherAuthor: game.other_author,
       accessibilityValues: mapAccessibilityValues(game),
       popularity: 0,
@@ -58,9 +58,6 @@ const mapProgramType = (kompassiGame: KompassiGame): ProgramType => {
   switch (programType) {
     case KompassiProgramType.TABLETOP_RPG:
       return ProgramType.TABLETOP_RPG;
-
-    case KompassiProgramType.FREEFORM_RPG:
-      return ProgramType.FREEFORM_RPG;
 
     case KompassiProgramType.LARP:
       return ProgramType.LARP;
@@ -143,30 +140,6 @@ const mapTags = (kompassiGame: KompassiGame): Tag[] => {
         return exhaustiveSwitchGuard(tag);
     }
   });
-
-  if (kompassiGame.intended_for_experienced_participants) {
-    tags.push(Tag.FOR_EXPERIENCED_PARTICIPANTS);
-  }
-
-  if (kompassiGame.english_ok) {
-    tags.push(Tag.IN_ENGLISH);
-  }
-
-  if (kompassiGame.children_friendly) {
-    tags.push(Tag.CHILDREN_FRIENDLY);
-  }
-
-  if (kompassiGame.age_restricted) {
-    tags.push(Tag.AGE_RESTRICTED);
-  }
-
-  if (kompassiGame.beginner_friendly) {
-    tags.push(Tag.BEGINNER_FRIENDLY);
-  }
-
-  if (kompassiGame.is_beginner_friendly) {
-    tags.push(Tag.BEGINNER_FRIENDLY);
-  }
 
   return uniq(tags);
 };
