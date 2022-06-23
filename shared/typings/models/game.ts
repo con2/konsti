@@ -45,6 +45,12 @@ export enum Tag {
   SUITABLE_OVER_12 = "suitableOver12",
   NOT_SUITABLE_UNDER_15 = "notSuitableUnder15",
   CHILDRENS_PROGRAM = "childrensProgram",
+  SUUNNATTU_ALLE_10V = "suitableUnder10",
+  SUUNNATTU_ALAIKAISILLE = "forMinors",
+  SUUNNATTU_TAYSIIKAISILLE = "forAdults",
+  TEEMA_YSTAVYYS = "themeFriendship",
+  DEMO = "demo",
+  KILPAILUTURNAUS = "tournament",
 }
 
 export enum AccessibilityValue {
@@ -59,6 +65,7 @@ export enum AccessibilityValue {
   RECORDING = "recording",
   TEXT = "text",
   COLOURBLIND = "colourblind",
+  REMAINING_ONE_PLACE = "remainingOnePlace",
 }
 
 export const GameSchema = z.object({
@@ -85,6 +92,7 @@ export const GameSchema = z.object({
   otherAuthor: z.string(),
   accessibilityValues: z.array(z.nativeEnum(AccessibilityValue)),
   signupStrategy: z.optional(z.nativeEnum(SignupStrategy)),
+  otherInaccessibility: z.string(),
 });
 
 export type Game = z.infer<typeof GameSchema>;

@@ -47,6 +47,10 @@ export const testKompassiGame = {
   ropecon2021_accessibility_recording: false,
   ropecon2021_accessibility_text: false,
   ropecon2021_accessibility_colourblind: false,
+  ropecon2022_accessibility_remaining_one_place: false,
+  ropecon2022_content_warnings: "Content warning",
+  ropecon2021_accessibility_inaccessibility: "Other inaccessibility",
+  type_of_game_program: "",
 };
 
 export const testKompassiGame2 = {
@@ -90,4 +94,8 @@ export const testKompassiGame2 = {
   ropecon2021_accessibility_recording: false,
   ropecon2021_accessibility_text: false,
   ropecon2021_accessibility_colourblind: false,
+  ropecon2022_accessibility_remaining_one_place: false,
+  ropecon2022_content_warnings: "Content warning",
+  ropecon2021_accessibility_inaccessibility: "Other inaccessibility",
+  type_of_game_program: "",
 };

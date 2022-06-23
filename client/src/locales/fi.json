@@ -87,7 +87,8 @@
     "readMore": "Lue lisää",
     "contentWarnings": "Sisältövaroitukset",
     "otherAuthor": "Pelin kirjoittaja",
-    "accessibility": "Esteettömyys"
+    "accessibility": "Esteettömyys",
+    "otherInaccessibility": "Muu esteellisyys"
   },
   "programType": {
     "tabletopRPG": "Pöytäroolipeli",
@@ -131,7 +132,13 @@
     "suitable7to12": "Sopii 7-12-vuotiaille",
     "suitableOver12": "Sopii yli 12-vuotiaille",
     "notSuitableUnder15": "Ei sovellu alle 15-vuotiaille",
-    "childrensProgram": "Lastenohjelma"
+    "childrensProgram": "Lastenohjelma",
+    "suitableUnder10": "Sopii alle 10-vuotiaille",
+    "forMinors": "Suunnattu alaikäisille",
+    "forAdults": "Suunnattu täysi-ikäisille",
+    "themeFriendship": "Teema: Ystävyys",
+    "demo": "Demo",
+    "tournament": "Turnaus"
   },
   "pageTitle": {
     "login": "Kirjaudu sisään",
@@ -212,7 +219,7 @@
       "removePreviousSignupsFailed": "Virhe aikaisempia ilmoittautumisia poistaessa, yritä uudelleen",
       "onlyCreatorCanCloseGroup": "Vain ryhmän perustaja voi sulkea ryhmän"
     },
-    "signupDisabledNotCreator": "Olet ryhmän jäsen. Ryhmän perustaja ilmoittautuu peleihin ryhmän muiden jäsenten puolesta.",
+    "signupDisabledNotCreator": "Olet ryhmän jäsen. Ryhmän perustaja ennakkoilmoittautuu peleihin ryhmän jäsenten puolesta.",
     "signupForWholeGroup": "Olet ryhmän perustaja. Voit ilmoittautua peleihin koko ryhmän puolesta.",
     "inGroupSignups": "Olet ryhmän jäsen. Seuraavat pelit ovat ryhmän perustajan valitsemia.",
     "closeGroupConfirmation": "Oletko varma, että haluat sulkea ryhmän ja poistaa kaikki sen jäsenet?",
@@ -302,7 +309,8 @@
     "video": "Ohjelmanumerossa katsotaan video, jossa ei ole tekstitystä kuulorajoitteisille",
     "recording": "Osallistuminen edellyttää sellaisen äänitteen kuuntelemista, josta ei ole tekstiversiota kuulorajoitteisille",
     "text": "Osallistuminen vaatii pitkien tekstien itsenäistä lukemista, eikä tekstejä ole mahdollista saada äänitteinä näkörajoitteisille",
-    "colourblind": "Ohjelmanumerossa käytettävät materiaalit voivat tuottaa haasteita värisokeille"
+    "colourblind": "Ohjelmanumerossa käytettävät materiaalit voivat tuottaa haasteita värisokeille",
+    "remainingOnePlace": "Vaatii pitkää paikallaan oloa ilman mahdollisuutta taukoihin ja liikkumiseen"
   },
   "login": {
     "passwordHint": "Jos unohdit salasanasi, voit pyytää apua Ropeconin Discordista"

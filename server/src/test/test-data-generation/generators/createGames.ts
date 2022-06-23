@@ -68,8 +68,8 @@ export const createGames = async (
         short_blurb: faker.lorem.sentence(),
         revolving_door: Math.random() < 0.5,
         three_word_description: "This is example ",
-        content_warnings: "",
-        other_author: "",
+        content_warnings: "Content warning",
+        other_author: "Other author",
         ropecon2018_characters: 6,
         ropecon2021_accessibility_loud_sounds: Math.random() < 0.5,
         ropecon2021_accessibility_flashing_lights: Math.random() < 0.5,
@@ -82,6 +82,10 @@ export const createGames = async (
         ropecon2021_accessibility_recording: Math.random() < 0.5,
         ropecon2021_accessibility_text: Math.random() < 0.5,
         ropecon2021_accessibility_colourblind: Math.random() < 0.5,
+        ropecon2022_accessibility_remaining_one_place: Math.random() < 0.5,
+        ropecon2022_content_warnings: "Content warning",
+        ropecon2021_accessibility_inaccessibility: "Other inaccessibility",
+        type_of_game_program: "",
       };
 
       logger.info(`Stored game "${kompassiGameData.title}"`);

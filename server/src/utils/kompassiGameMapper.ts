@@ -42,10 +42,12 @@ export const kompassiGameMapper = (
       shortDescription: game.short_blurb || game.three_word_description,
       revolvingDoor: game.revolving_door,
       programType: mapProgramType(game),
-      contentWarnings: game.content_warnings,
+      contentWarnings:
+        game.content_warnings ?? game.ropecon2022_content_warnings,
       otherAuthor: game.other_author,
       accessibilityValues: mapAccessibilityValues(game),
       popularity: 0,
+      otherInaccessibility: game.ropecon2021_accessibility_inaccessibility,
     };
   });
 };
@@ -106,6 +108,33 @@ const mapTags = (kompassiGame: KompassiGame): Tag[] => {
 
       case KompassiTag.LASTENOHJELMA:
         return Tag.CHILDRENS_PROGRAM;
+
+      case KompassiTag.SUUNNATTU_ALLE_10V:
+        return Tag.SUUNNATTU_ALLE_10V;
+
+      case KompassiTag.SUUNNATTU_ALAIKAISILLE:
+        return Tag.SUUNNATTU_ALAIKAISILLE;
+
+      case KompassiTag.SUUNNATTU_TAYSIIKAISILLE:
+        return Tag.SUUNNATTU_TAYSIIKAISILLE;
+
+      case KompassiTag.TEEMA_YSTAVYYS:
+        return Tag.TEEMA_YSTAVYYS;
+
+      case KompassiTag.DEMO:
+        return Tag.DEMO;
+
+      case KompassiTag.KILPAILUTURNAUS:
+        return Tag.KILPAILUTURNAUS;
+
+      // We don't want to show these in UI
+      case KompassiTag.AIHE_FIGUPELIT:
+      case KompassiTag.AIHE_KORTTIPELIT:
+      case KompassiTag.AIHE_LARPIT:
+      case KompassiTag.AIHE_LAUTAPELIT:
+      case KompassiTag.AIHE_POYTAROOLIPELIT:
+      case KompassiTag.HISTORIA:
+        return [];
 
       default:
         return exhaustiveSwitchGuard(tag);
@@ -258,6 +287,10 @@ const mapAccessibilityValues = (
 
   if (kompassiGame.ropecon2021_accessibility_colourblind) {
     accessibilityValues.push(AccessibilityValue.COLOURBLIND);
+  }
+
+  if (kompassiGame.ropecon2022_accessibility_remaining_one_place) {
+    accessibilityValues.push(AccessibilityValue.REMAINING_ONE_PLACE);
   }
 
   return accessibilityValues;

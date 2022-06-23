@@ -15,10 +15,12 @@ import {
 
 type EventProgramItem = KompassiGame;
 
+const { useLocalProgramFile, localKompassiFile } = config;
+
 export const getGamesFromKompassi = async (): Promise<
   readonly KompassiGame[]
 > => {
-  const eventProgramItems = config.useLocalProgramFile
+  const eventProgramItems = useLocalProgramFile
     ? getProgramFromLocalFile()
     : await getProgramFromServer();
 
@@ -41,7 +43,7 @@ const getProgramFromLocalFile = (): EventProgramItem[] => {
   const rawData = fs.readFileSync(
     path.join(
       __dirname,
-      "../test/kompassi-data-dumps/program-ropecon-2019.json"
+      `../../../test/kompassi-data-dumps/${localKompassiFile}`
     ),
     "utf8"
   );

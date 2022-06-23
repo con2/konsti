@@ -87,7 +87,8 @@
     "readMore": "Read more",
     "contentWarnings": "Content warnings",
     "otherAuthor": "Game designer",
-    "accessibility": "Accessibility"
+    "accessibility": "Accessibility",
+    "otherInaccessibility": "Other inaccessibility"
   },
   "programType": {
     "tabletopRPG": "Tabletop RPG",
@@ -127,11 +128,17 @@
     "guestOfHonor": "Guest of Honor game",
     "family": "Suitable for families",
     "themeElements": "Theme: Elements",
-    "suitableUnder7": "Suitable for children under 7",
-    "suitable7to12": "Suitable for children aged 7-12",
-    "suitableOver12": "Suitable for children aged 12+",
-    "notSuitableUnder15": "Not suitable for children under 15",
-    "childrensProgram": "Programme for children"
+    "suitableUnder7": "Suitable for ages under 7",
+    "suitable7to12": "Suitable for ages 7-12",
+    "suitableOver12": "Suitable for ages 12+",
+    "notSuitableUnder15": "Not suitable for ages under 15",
+    "childrensProgram": "Programme for children",
+    "suitableUnder10": "Suitable for ages below 10",
+    "forMinors": "For minors",
+    "forAdults": "For adults",
+    "themeFriendship": "Theme: Friendship",
+    "demo": "Demo",
+    "tournament": "Tournament"
   },
   "pageTitle": {
     "login": "Please login",
@@ -212,7 +219,7 @@
       "removePreviousSignupsFailed": "Error deleting previous signups, try again",
       "onlyCreatorCanCloseGroup": "Only group creator can close group"
     },
-    "signupDisabledNotCreator": "You are group member. Group creator will sign up to the games for the whole group.",
+    "signupDisabledNotCreator": "You are group member. Group creator will pre sign-up to the games for the whole group.",
     "signupForWholeGroup": "You are group creator. You can sign up to games for the whole group.",
     "inGroupSignups": "You are in a group. Following games are chosen by the group creator.",
     "closeGroupConfirmation": "Are you sure you want to close group and remove all its members?",
@@ -302,7 +309,8 @@
     "video": "The game involves watching a video without subtitles for the hearing impaired",
     "recording": "Participation requires listening to a recording that does not have a text version for the hearing impaired",
     "text": "Participation involves reading long texts independently, and the texts are not available as recordings for those with visual impairment",
-    "colourblind": "Material used in the game can cause problems for the colourblind"
+    "colourblind": "Material used in the game can cause problems for the colourblind",
+    "remainingOnePlace": "Requires staying still for a long time without possibility of breaks or movement"
   },
   "login": {
     "passwordHint": "If you forgot your password, you can ask help from Ropecon Discord"

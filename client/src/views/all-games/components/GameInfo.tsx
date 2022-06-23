@@ -182,6 +182,15 @@ export const GameInfo = ({ game }: Props): ReactElement => {
         </GameDetailsRow>
       )}
 
+      {game.otherInaccessibility && (
+        <GameDetailsRow>
+          <GameDetailsTitle twoColumns={true}>
+            {t("gameInfo.otherInaccessibility")}
+          </GameDetailsTitle>
+          <GameDetailsValue>{game.otherInaccessibility}</GameDetailsValue>
+        </GameDetailsRow>
+      )}
+
       {game.description && (
         <>
           <GameDetailsRow>
