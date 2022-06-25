@@ -59,19 +59,6 @@ export const GameEntry = ({
     return `${hoursStr} ${minutesStr}`;
   };
 
-  const formatPopularityCircleColor = (
-    numPlayers: number,
-    maxAttendance: number,
-    minAttendance: number
-  ): string => {
-    let popularityColor = "success";
-    if (numPlayers > minAttendance && numPlayers < maxAttendance) {
-      popularityColor = "critical";
-    } else if (numPlayers >= maxAttendance) {
-      popularityColor = "warning";
-    }
-    return popularityColor;
-  };
   // Favorite / remove favorite clicked
   const updateFavoriteHandler = async (
     updateOpts: UpdateFavoriteOpts
@@ -88,7 +75,7 @@ export const GameEntry = ({
   ): string => {
     const count: number = minAttendance - numPlayers;
     let popularityInfo: string = t("signup.playerNeeded", { COUNT: count });
-    if (numPlayers > minAttendance && numPlayers < maxAttendance) {
+    if (numPlayers >= minAttendance && numPlayers < maxAttendance) {
       popularityInfo = t("medium-popularity");
     } else if (numPlayers >= maxAttendance) {
       popularityInfo = t("high-popularity");
@@ -126,13 +113,8 @@ export const GameEntry = ({
             })}
           </PlayerCount>
           <GamePopularityContainer>
-            <PopularityCircle
-              color={formatPopularityCircleColor(
-                players,
-                game.maxAttendance,
-                game.minAttendance
-              )}
-            />{" "} {game.popularity} {" " + game.minAttendance + " " + players}
+            {" "}
+            {game.popularity} {" " + game.minAttendance + " " + players}
             {formatGamePopularityInfo(
               game.popularity,
               game.maxAttendance,
@@ -301,15 +283,4 @@ const GamePopularityContainer = styled.div`
   display: flex;
   flex-direction: row;
   padding-top: 15px;
-`;
-
-const PopularityCircle = styled("div")<{ color: string }>`
-  display: flex;
-  height: 10px;
-  width: 10px;
-  background-color: ${(props) => props.theme[props.color]};
-  border: none;
-  border-radius: 50%;
-  margin-top: 5px;
-  margin-right: 5px;
 `;
