@@ -7,12 +7,12 @@ import styled from "styled-components";
 import { AllGamesList } from "client/views/all-games/components/AllGamesList";
 import { getUpcomingGames } from "client/utils/getUpcomingGames";
 import { loadGames } from "client/utils/loadData";
-import { config } from "client/config";
 import { Loading } from "client/components/Loading";
 import { Game, ProgramType, Tag } from "shared/typings/models/game";
 import { getTime } from "client/utils/getTime";
 import { useAppSelector } from "client/utils/hooks";
 import { Button, ButtonStyle } from "client/components/Button";
+import { selectActiveGames } from "client/views/admin/adminSlice";
 
 enum SelectedView {
   ALL = "all",
@@ -23,10 +23,13 @@ enum SelectedView {
 export const AllGamesView = (): ReactElement => {
   const { t } = useTranslation();
 
-  const games = useAppSelector((state) => state.allGames.games);
+  const games = useAppSelector(selectActiveGames);
   const testTime = useAppSelector((state) => state.testSettings.testTime);
   const hiddenGames = useAppSelector((state) => state.admin.hiddenGames);
   const signupStrategy = useAppSelector((state) => state.admin.signupStrategy);
+  const activeProgramType = useAppSelector(
+    (state) => state.admin.activeProgramType
+  );
 
   const [selectedView, setSelectedView] = useState<SelectedView>(
     SelectedView.UPCOMING
@@ -45,19 +48,16 @@ export const AllGamesView = (): ReactElement => {
     fetchData();
   }, [store, testTime, signupStrategy]);
 
-  const filters = {
-    programTypes: [ProgramType.TABLETOP_RPG, ProgramType.LARP],
-    tags: [
-      Tag.IN_ENGLISH,
-      Tag.BEGINNER_FRIENDLY,
-      Tag.CHILDRENS_PROGRAM,
-      Tag.SUITABLE_UNDER_7,
-      Tag.SUITABLE_7_TO_12,
-      Tag.SUITABLE_OVER_12,
-      Tag.NOT_SUITABLE_UNDER_15,
-      Tag.AGE_RESTRICTED,
-    ],
-  };
+  const filters = [
+    Tag.IN_ENGLISH,
+    Tag.BEGINNER_FRIENDLY,
+    Tag.CHILDRENS_PROGRAM,
+    Tag.SUITABLE_UNDER_7,
+    Tag.SUITABLE_7_TO_12,
+    Tag.SUITABLE_OVER_12,
+    Tag.NOT_SUITABLE_UNDER_15,
+    Tag.AGE_RESTRICTED,
+  ];
 
   return (
     <>
@@ -85,7 +85,7 @@ export const AllGamesView = (): ReactElement => {
             {t("allGames")}
           </Button>
 
-          {config.revolvingDoorEnabled && (
+          {activeProgramType === ProgramType.TABLETOP_RPG && (
             <Button
               onClick={() => setSelectedView(SelectedView.REVOLVING_DOOR)}
               buttonStyle={
@@ -99,35 +99,25 @@ export const AllGamesView = (): ReactElement => {
           )}
         </AllGamesToggleVisibility>
 
-        {config.tagFilteringEnabled && (
-          <TagsDropdown>
-            <ChooseTagsInstruction>{t("chooseTag")} </ChooseTagsInstruction>
-            <select
-              onChange={(event: ChangeEvent<HTMLSelectElement>) =>
-                setSelectedTag(event.target.value)
-              }
-              value={selectedTag}
-            >
-              <option value="">{t("allGames")}</option>
+        <TagsDropdown>
+          <ChooseTagsInstruction>{t("chooseTag")} </ChooseTagsInstruction>
+          <select
+            onChange={(event: ChangeEvent<HTMLSelectElement>) =>
+              setSelectedTag(event.target.value)
+            }
+            value={selectedTag}
+          >
+            <option value="">{t("allGames")}</option>
 
-              {filters.programTypes.map((programTypes) => {
-                return (
-                  <option key={programTypes} value={programTypes}>
-                    {t(`programType.${programTypes}`)}
-                  </option>
-                );
-              })}
-
-              {filters.tags.map((tag) => {
-                return (
-                  <option key={tag} value={tag}>
-                    {t(`gameTags.${tag}`)}
-                  </option>
-                );
-              })}
-            </select>
-          </TagsDropdown>
-        )}
+            {filters.map((filter) => {
+              return (
+                <option key={filter} value={filter}>
+                  {t(`gameTags.${filter}`)}
+                </option>
+              );
+            })}
+          </select>
+        </TagsDropdown>
       </AllGamesVisibilityBar>
 
       {selectedView === SelectedView.REVOLVING_DOOR && (

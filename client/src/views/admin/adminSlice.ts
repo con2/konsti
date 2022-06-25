@@ -1,10 +1,10 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import _ from "lodash";
 import { ErrorMessageType } from "client/components/ErrorBar";
-import { AdminState } from "client/typings/redux.typings";
+import { AdminState, RootState } from "client/typings/redux.typings";
 import { SubmitGetSettingsPayload } from "client/views/admin/adminTypes";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
-import { Game } from "shared/typings/models/game";
+import { Game, ProgramType } from "shared/typings/models/game";
 import { SignupMessage } from "shared/typings/models/settings";
 
 const initialState: AdminState = {
@@ -15,6 +15,7 @@ const initialState: AdminState = {
   signupMessages: [],
   signupStrategy: undefined,
   errors: [],
+  activeProgramType: ProgramType.TABLETOP_RPG,
 };
 
 const adminSlice = createSlice({
@@ -75,6 +76,10 @@ const adminSlice = createSlice({
         errors: state.errors.filter((error) => error !== action.payload),
       };
     },
+
+    setActiveProgramType(state, action: PayloadAction<ProgramType>) {
+      return { ...state, activeProgramType: action.payload };
+    },
   },
 });
 
@@ -88,6 +93,20 @@ export const {
   updateSignupMessages,
   addError,
   removeError,
+  setActiveProgramType,
 } = adminSlice.actions;
 
 export const adminReducer = adminSlice.reducer;
+
+// SELECTORS
+
+const selectGames = (state: RootState): readonly Game[] => state.allGames.games;
+const selectActiveProgramType = (state: RootState): ProgramType =>
+  state.admin.activeProgramType;
+
+export const selectActiveGames = createSelector(
+  [selectGames, selectActiveProgramType],
+  (games, activeProgramType) => {
+    return games.filter((game) => game.programType === activeProgramType);
+  }
+);

@@ -37,9 +37,6 @@ export const GameListTitle = ({
   const signupStartTime = timeFormatter.getStartTime(startTime);
   const signupEndTime = timeFormatter.getEndTime(startTime);
 
-  const allGamesRevolvingDoor = gamesForStartTime.every(
-    (game) => game?.revolvingDoor
-  );
   const signedGamesCount = signedGames.filter(
     (game) => game.gameDetails.startTime === startTime
   ).length;
@@ -56,12 +53,11 @@ export const GameListTitle = ({
       <StyledGameListTitle>
         <StartTime>{formattedStartTime}</StartTime>
 
-        {!allGamesRevolvingDoor &&
-          timeslotSignupStrategy === SignupStrategy.ALGORITHM && (
-            <span>
-              ({t("preSignupOpenBetween")} {signupStartTime}-{signupEndTime})
-            </span>
-          )}
+        {timeslotSignupStrategy === SignupStrategy.ALGORITHM && (
+          <span>
+            ({t("preSignupOpenBetween")} {signupStartTime}-{signupEndTime})
+          </span>
+        )}
 
         {timeslotSignupStrategy === SignupStrategy.DIRECT ? (
           <SignupCount>
