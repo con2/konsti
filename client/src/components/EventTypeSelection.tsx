@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { ProgramType } from "shared/typings/models/game";
 import { setActiveProgramType } from "client/views/admin/adminSlice";
 import { Dropdown } from "client/components/Dropdown";
+import { saveSession } from "client/utils/localStorage";
 
 export const ProgramTypeSelection = (): ReactElement => {
   const { t } = useTranslation();
@@ -27,9 +28,13 @@ export const ProgramTypeSelection = (): ReactElement => {
       <Dropdown
         items={dropdownItems}
         selectedValue={activeProgramType}
-        onChange={(event: ChangeEvent<HTMLSelectElement>) =>
-          dispatch(setActiveProgramType(event.target.value as ProgramType))
-        }
+        onChange={(event: ChangeEvent<HTMLSelectElement>) => {
+          const programType = event.target.value as ProgramType;
+          dispatch(setActiveProgramType(programType));
+          saveSession({
+            admin: { activeProgramType: programType },
+          });
+        }}
         loading={false}
       />
     </>
