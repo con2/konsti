@@ -1,6 +1,6 @@
 {
   "appTitle": "Konsti",
-  "appDescription": "{{CONVENTION_NAME}} {{CONVENTION_YEAR}} roolipeli & LARP ilmoittautuminen",
+  "appDescription": "{{CONVENTION_NAME}} {{CONVENTION_YEAR}} peli-ilmoittautuminen",
   "footer": "Alaviite",
   "button": {
     "logout": "Kirjaudu ulos",
@@ -324,5 +324,6 @@
   "aboutView": {
     "title": "Mikä on Konsti?",
     "description": "Konsti on ilmoittautumissovellus, joka on suunniteltu suomalaisille coneille."
-  }
+  },
+  "selectedProgramType": "Valittu ohjelmatyyppi"
 }

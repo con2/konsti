@@ -324,5 +324,6 @@
   "aboutView": {
     "title": "What is Konsti?",
     "description": "Konsti is signup application designed for Finnish conventions"
-  }
+  },
+  "selectedProgramType": "Selected program type"
 }
