@@ -9,6 +9,7 @@ import { getIconLibrary } from "client/utils/icons";
 import { config } from "client/config";
 import { TestValuePicker } from "client/components/TestValuePicker";
 import { ErrorBar } from "client/components/ErrorBar";
+import { ProgramTypeSelection } from "client/components/EventTypeSelection";
 
 export const App = (): ReactElement => {
   const { dataUpdateInterval, loadedSettings, showTestValues } = config;
@@ -41,6 +42,7 @@ export const App = (): ReactElement => {
         <BrowserRouter>
           <Header />
           <ErrorBar />
+          <ProgramTypeSelection />
           <AppRoutes />
 
           {loadedSettings !== "production" && showTestValues && (
