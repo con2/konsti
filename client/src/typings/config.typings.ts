@@ -8,7 +8,4 @@ export interface Config {
   enableWhyDidYouRender: boolean;
   dataUpdateInterval: number;
   noSignupGames: string[];
-  revolvingDoorEnabled: boolean;
-  tagFilteringEnabled: boolean;
-  simpleDetails: boolean;
 }

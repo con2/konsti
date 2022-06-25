@@ -14,6 +14,7 @@ import { Game } from "shared/typings/models/game";
 import { updateFavorite, UpdateFavoriteOpts } from "client/utils/favorite";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { Button, ButtonStyle } from "client/components/Button";
+import { selectActiveGames } from "client/views/admin/adminSlice";
 
 export const GameDetails = (): ReactElement => {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ export const GameDetails = (): ReactElement => {
 
   const username = useAppSelector((state) => state.login.username);
   const loggedIn = useAppSelector((state) => state.login.loggedIn);
-  const games = useAppSelector((state) => state.allGames.games);
+  const games = useAppSelector(selectActiveGames);
   const userGroup = useAppSelector((state) => state.login.userGroup);
   const favoritedGames = useAppSelector(
     (state) => state.myGames.favoritedGames

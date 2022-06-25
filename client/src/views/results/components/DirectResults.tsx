@@ -10,11 +10,12 @@ import { getUpcomingGames } from "client/utils/getUpcomingGames";
 import { Button, ButtonStyle } from "client/components/Button";
 import { Game } from "shared/typings/models/game";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
+import { selectActiveGames } from "client/views/admin/adminSlice";
 
 export const DirectResults = (): ReactElement => {
   const { t } = useTranslation();
 
-  const games = useAppSelector((state) => state.allGames.games);
+  const games = useAppSelector(selectActiveGames);
   const signups = useAppSelector((state) => state.allGames.signups);
   const signupMessages = useAppSelector((state) => state.admin.signupMessages);
   const hiddenGames = useAppSelector((state) => state.admin.hiddenGames);

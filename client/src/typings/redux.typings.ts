@@ -1,6 +1,6 @@
 import { ThunkAction } from "redux-thunk";
 import { Action } from "redux";
-import { Game } from "shared/typings/models/game";
+import { Game, ProgramType } from "shared/typings/models/game";
 import { GroupMember } from "shared/typings/api/groups";
 import { Result } from "shared/typings/models/result";
 import { store, combinedReducer } from "client/utils/store";
@@ -19,6 +19,7 @@ export interface AdminState {
   signupMessages: readonly SignupMessage[];
   signupStrategy: SignupStrategy | undefined;
   errors: readonly ErrorMessageType[];
+  activeProgramType: ProgramType;
 }
 
 export interface UsersForGame {

@@ -18,6 +18,7 @@ import { useAppSelector } from "client/utils/hooks";
 import { Button, ButtonStyle } from "client/components/Button";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
 import { ChangePasswordForm } from "client/views/helper/components/ChangePasswordForm";
+import { ProgramType } from "shared/typings/models/game";
 
 export const MyGamesView = (): ReactElement => {
   const { t } = useTranslation();
@@ -33,6 +34,9 @@ export const MyGamesView = (): ReactElement => {
   const groupMembers = useAppSelector((state) => state.group.groupMembers);
   const testTime = useAppSelector((state) => state.testSettings.testTime);
   const signupStrategy = useAppSelector((state) => state.admin.signupStrategy);
+  const activeProgramType = useAppSelector(
+    (state) => state.admin.activeProgramType
+  );
 
   const [showAllGames, setShowAllGames] = useState<boolean>(false);
   const [showChangePassword, setShowChangePassword] = useState<boolean>(false);
@@ -75,18 +79,19 @@ export const MyGamesView = (): ReactElement => {
         }
       />
 
-      {signupStrategy !== SignupStrategy.DIRECT && (
-        <MySignupsList
-          signedGames={getSignedGames(
-            signedGames,
-            groupCode,
-            serial,
-            showAllGames,
-            groupMembers
-          )}
-          isGroupCreator={isGroupCreator}
-        />
-      )}
+      {signupStrategy !== SignupStrategy.DIRECT &&
+        activeProgramType === ProgramType.TABLETOP_RPG && (
+          <MySignupsList
+            signedGames={getSignedGames(
+              signedGames,
+              groupCode,
+              serial,
+              showAllGames,
+              groupMembers
+            )}
+            isGroupCreator={isGroupCreator}
+          />
+        )}
 
       <MyEnteredList
         enteredGames={

@@ -82,5 +82,7 @@ const StyledIcon = styled(FontAwesomeIcon)`
 `;
 
 const HeaderRightSideContainer = styled.div`
+  display: flex;
+  align-items: center;
   white-space: nowrap;
 `;

@@ -6,9 +6,6 @@ export const config: Config = {
 
   // Convention settings
   noSignupGames: [],
-  revolvingDoorEnabled: true,
-  tagFilteringEnabled: true,
-  simpleDetails: true,
 
   // Dev
   enableReduxTrace: false,
