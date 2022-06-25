@@ -16,7 +16,7 @@ export interface PostSignedGamesError extends ApiError {
 export interface SignupData {
   username: string;
   selectedGames: readonly SelectedGame[];
-  signupTime: string;
+  startTime: string;
 }
 
 export interface PostEnteredGameResponse {
@@ -26,7 +26,11 @@ export interface PostEnteredGameResponse {
 }
 
 export interface PostEnteredGameError extends ApiError {
-  errorId: "unknown" | "gameFull" | "signupEnded";
+  errorId: "unknown" | "gameFull" | "signupEnded" | "phaseGap";
+}
+
+export interface DeleteEnteredGameError extends ApiError {
+  errorId: "unknown" | "signupEnded";
 }
 
 export interface DeleteEnteredGameResponse {

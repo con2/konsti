@@ -87,12 +87,13 @@
     "readMore": "Read more",
     "contentWarnings": "Content warnings",
     "otherAuthor": "Game designer",
-    "accessibility": "Accessibility"
+    "accessibility": "Accessibility",
+    "otherInaccessibility": "Other inaccessibility"
   },
   "programType": {
     "tabletopRPG": "Tabletop RPG",
-    "freeformRPG": "Freeform RPG",
-    "larp": "LARP"
+    "larp": "LARP",
+    "boardGame": "Board game"
   },
   "gameStyle": {
     "serious": "Serious game style",
@@ -123,15 +124,20 @@
     "ageRestrictedTitle": "This game's age limit is 18+",
     "ageRestrictedLong": "Players may be asked to verify their age",
     "beginnerFriendly": "Beginner friendly",
-    "intendedForExperiencedParticipants": "Experienced participants preferred",
     "guestOfHonor": "Guest of Honor game",
     "family": "Suitable for families",
     "themeElements": "Theme: Elements",
-    "suitableUnder7": "Suitable for children under 7",
-    "suitable7to12": "Suitable for children aged 7-12",
-    "suitableOver12": "Suitable for children aged 12+",
-    "notSuitableUnder15": "Not suitable for children under 15",
-    "childrensProgram": "Programme for children"
+    "suitableUnder7": "Suitable for ages under 7",
+    "suitable7to12": "Suitable for ages 7-12",
+    "suitableOver12": "Suitable for ages 12+",
+    "notSuitableUnder15": "Not suitable for ages under 15",
+    "childrensProgram": "Programme for children",
+    "suitableUnder10": "Suitable for ages below 10",
+    "forMinors": "For minors",
+    "forAdults": "For adults",
+    "themeFriendship": "Theme: Friendship",
+    "demo": "Demo",
+    "tournament": "Tournament"
   },
   "pageTitle": {
     "login": "Please login",
@@ -141,7 +147,7 @@
   },
   "user": "User",
   "favoritedGames": "Favorited games",
-  "signedGames": "Selected games",
+  "preSignedGames": "Pre-signups",
   "enteredGames": "Signups",
   "hiddenGames": "Hidden games",
   "error": {
@@ -167,8 +173,7 @@
   "activeTime": "Active time",
   "noActiveTime": "Active time not selected",
   "activeTimeDescription": "Game assignment will be done and results shown for the active time",
-  "signupOpenBetween": "signup open",
-  "signupOpenBetweenCapital": "Signup open ",
+  "preSignupOpenBetween": "pre-signup open",
   "signupGuide": "* You can choose three game wishes. Your favorite game is the topmost on 'Selected games'.\n* It is recommended to choose more than one game wish for each start time.\n* Choose games by dragging from 'Open games' to 'Selected games'.\n* Signing up early does not give any advantage. Game seats are assigned 30 minutes before games start.\n* Remember to save changes.",
   "signupGuideTitle": "Signup help and tips",
   "signupGuideButton": "Signup help and tips",
@@ -176,7 +181,8 @@
   "signupError": {
     "generic": "Signup failed",
     "signupEnded": "Signup ended",
-    "samePriority": "Priority already selected"
+    "samePriority": "Priority already selected",
+    "phaseGap": "Signup not open yet"
   },
   "signupUnsavedChanges": "Unsaved changes",
   "signupResultHint": "Sign up results are visible on 'My Games' page at",
@@ -187,7 +193,7 @@
   },
   "details": "details",
   "gameLimitWarning": "Only three selected games allowed",
-  "noSignupResult": "You didn't get into a game for this starting time",
+  "noPreSignupResult": "You didn't get into a game during pre-signup",
   "invalidGameId": "Game not found. Invalid game ID",
   "feedbackTitle": "Feedback",
   "feedbackInstruction": "Did you enjoy the game? Send feedback to the game master! They will receive it after the event.",
@@ -206,7 +212,13 @@
   "currentlyRunningRevolvingDoor": "Currently running games",
   "noCurrentlyRunningGames": "No running revolving door games",
   "group": {
-    "signupDisabledNotCreator": "You are group member. Group creator will sign up to the games for the whole group.",
+    "error": {
+      "cannotUseOwnSerial": "Cannot use own serial to join group",
+      "groupExists": "Group already exists",
+      "removePreviousSignupsFailed": "Error deleting previous signups, try again",
+      "onlyCreatorCanCloseGroup": "Only group creator can close group"
+    },
+    "signupDisabledNotCreator": "You are group member. Group creator will pre sign-up to the games for the whole group.",
     "signupForWholeGroup": "You are group creator. You can sign up to games for the whole group.",
     "inGroupSignups": "You are in a group. Following games are chosen by the group creator.",
     "closeGroupConfirmation": "Are you sure you want to close group and remove all its members?",
@@ -214,7 +226,6 @@
     "groupTooBigWarning": "Group is bigger than the maximum number of players",
     "enterGroupMemberCode": "User's code",
     "enterGroupCreatorCode": "Group creator's code",
-    "joinGroup": "Join group",
     "addGroupMember": "Add group member",
     "createGroupConfirmationMessage": "Do you want to create a group?",
     "youAreGroupCreator": "You are group creator",
@@ -225,15 +236,10 @@
     "groupCreatorInfo": "You can sign up to games for the whole group. Please make sure that the group is not too big for the selected games. Group creator cannot leave the group, but can close it. This will remove all members from the group.",
     "joiningGroupWillCancelGames": "Joining a group will cancel all signups you may have done before",
     "groupSignupGuide": "Joining a group is done with the group starter's registration code. Your own code can be found from the top of the page.",
-    "groupCreated": "Group created",
     "invalidGroupCode": "Invalid code",
     "groupNotExist": "Group does not exist",
-    "generalCreateGroupError": "Error creating group",
-    "groupJoined": "Joined a group",
-    "generalJoinGroupError": "Error joining group",
-    "leftGroup": "Left group",
-    "closedGroup": "Group closed",
-    "groupNotEmpty": "Group creator cannot leave non-empty group"
+    "generalGroupError": "Error updating group",
+    "generalJoinGroupError": "Error joining group"
   },
   "signupResults": "Signup results",
   "helperResults": "Results",
@@ -254,8 +260,9 @@
     "strategy": "Strategy"
   },
   "signup": {
-    "alreadySigned": "This game is on priority {{CURRENT_PRIORITY}} on your signups",
-    "signup": "Signup",
+    "alreadyPreSigned": "This game is on priority {{CURRENT_PRIORITY}} on your pre-signups",
+    "directSignup": "Signup",
+    "preSignup": "Pre-signup",
     "cannotSignupMoreGames": "You can signup up to three games for the timeslot",
     "gamePriority": "Game priority for me is",
     "confirm": "Confirm",
@@ -268,7 +275,8 @@
     "confirmCancelSignup": "Confirm signup cancellation",
     "expectedDuration": "Duration {{EXPECTED_DURATION}}",
     "playerCount": "Players {{MAX_ATTENDANCE}}",
-    "playerRange": "Players {{MIN_ATTENDANCE}} - {{MAX_ATTENDANCE}}"
+    "playerRange": "Players {{MIN_ATTENDANCE}} - {{MAX_ATTENDANCE}}",
+    "signupOpens": "Signup opens"
   },
   "resultsView": {
     "allSignupResults": "Signup overview and players",
@@ -300,7 +308,8 @@
     "video": "The game involves watching a video without subtitles for the hearing impaired",
     "recording": "Participation requires listening to a recording that does not have a text version for the hearing impaired",
     "text": "Participation involves reading long texts independently, and the texts are not available as recordings for those with visual impairment",
-    "colourblind": "Material used in the game can cause problems for the colourblind"
+    "colourblind": "Material used in the game can cause problems for the colourblind",
+    "remainingOnePlace": "Requires staying still for a long time without possibility of breaks or movement"
   },
   "login": {
     "passwordHint": "If you forgot your password, you can ask help from Ropecon Discord"

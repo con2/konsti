@@ -1,8 +1,8 @@
-import moment from "moment";
+import dayjs from "dayjs";
 import { GroupMember } from "shared/typings/api/groups";
 import { Game } from "shared/typings/models/game";
 import { getTime } from "client/utils/getTime";
-import { getIsGroupCreator } from "client/views/group/utils/getIsGroupCreator";
+import { getIsGroupCreator } from "client/views/group/groupUtils";
 import { SelectedGame } from "shared/typings/models/user";
 
 export const getUpcomingGames = (
@@ -12,7 +12,7 @@ export const getUpcomingGames = (
   const timeNow = getTime();
 
   const upcomingGames = games.filter((game) =>
-    moment(game.startTime).add(offsetByHours, "hours").isAfter(timeNow)
+    dayjs(game.startTime).add(offsetByHours, "hours").isAfter(timeNow)
   );
 
   return upcomingGames;
@@ -24,7 +24,7 @@ export const getUpcomingSignedGames = (
   const timeNow = getTime();
 
   const upcomingGames = signedGames.filter((signedGame) => {
-    return moment(signedGame.gameDetails.startTime)
+    return dayjs(signedGame.gameDetails.startTime)
       .add(1, "hours")
       .isAfter(timeNow);
   });
@@ -76,7 +76,7 @@ export const getUpcomingEnteredGames = (
   const timeNow = getTime();
 
   const upcomingGames = enteredGames.filter((enteredGame) =>
-    moment(enteredGame.gameDetails.startTime).add(1, "hours").isAfter(timeNow)
+    dayjs(enteredGame.gameDetails.startTime).add(1, "hours").isAfter(timeNow)
   );
 
   return upcomingGames;
@@ -88,7 +88,7 @@ export const getUpcomingFavorites = (
   const timeNow = getTime();
 
   const upcomingGames = favoritedGames.filter((favoritedGame) =>
-    moment(favoritedGame.startTime).add(1, "hours").isAfter(timeNow)
+    dayjs(favoritedGame.startTime).add(1, "hours").isAfter(timeNow)
   );
 
   return upcomingGames;

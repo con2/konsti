@@ -67,7 +67,7 @@ export enum PostEnteredGameErrorMessage {
   GAME_FULL = "signup.gameIsFull",
   UNKNOWN = "signupError.generic",
   SIGNUP_ENDED = "signupError.signupEnded",
-  EMPTY = "",
+  PHASE_GAP = "signupError.phaseGap",
 }
 
 export const submitPostEnteredGame = (
@@ -82,6 +82,8 @@ export const submitPostEnteredGame = (
           return PostEnteredGameErrorMessage.SIGNUP_ENDED;
         case "gameFull":
           return PostEnteredGameErrorMessage.GAME_FULL;
+        case "phaseGap":
+          return PostEnteredGameErrorMessage.PHASE_GAP;
         case "unknown":
           return PostEnteredGameErrorMessage.UNKNOWN;
         default:
@@ -95,16 +97,29 @@ export const submitPostEnteredGame = (
   };
 };
 
+export enum DeleteEnteredGameErrorMessage {
+  UNKNOWN = "signupError.generic",
+  SIGNUP_ENDED = "signupError.signupEnded",
+}
+
 export const submitDeleteEnteredGame = (
   data: DeleteEnteredGameParameters
-): AppThunk => {
-  return async (dispatch): Promise<void> => {
+): AppThunk<Promise<DeleteEnteredGameErrorMessage | undefined>> => {
+  return async (
+    dispatch
+  ): Promise<DeleteEnteredGameErrorMessage | undefined> => {
     const signupResponse = await deleteEnteredGame(data);
 
     if (signupResponse?.status === "error") {
-      // TODO
+      switch (signupResponse.errorId) {
+        case "signupEnded":
+          return DeleteEnteredGameErrorMessage.SIGNUP_ENDED;
+        case "unknown":
+          return DeleteEnteredGameErrorMessage.UNKNOWN;
+        default:
+          exhaustiveSwitchGuard(signupResponse.errorId);
+      }
     }
-
     if (signupResponse?.status === "success") {
       dispatch(submitDeleteEnteredAsync(data.enteredGameId));
     }
@@ -115,7 +130,6 @@ export enum PostSignedGamesErrorMessage {
   SIGNUP_ENDED = "signupError.signupEnded",
   SAME_PRIORITY = "signupError.samePriority",
   UNKNOWN = "signupError.generic",
-  EMPTY = "",
 }
 
 export const submitPostSignedGames = (

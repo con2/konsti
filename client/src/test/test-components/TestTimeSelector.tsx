@@ -1,11 +1,11 @@
 import React, { ReactElement, ChangeEvent, useState } from "react";
 import { useTranslation } from "react-i18next";
-import moment from "moment";
+import dayjs from "dayjs";
 import { useAppDispatch } from "client/utils/hooks";
 import { Dropdown } from "client/components/Dropdown";
 import { timeFormatter } from "client/utils/timeFormatter";
 import { submitSetTestSettings } from "client/test/test-settings/testSettingsThunks";
-import { times } from "client/test/test-components/testComponentUtils";
+import { testTimes } from "client/test/test-components/testComponentUtils";
 
 interface Props {
   testTime: string;
@@ -17,11 +17,10 @@ export const TestTimeSelector = ({ testTime }: Props): ReactElement => {
 
   const [loading, setLoading] = useState<boolean>(false);
 
-  const dropdownItems = times.map((time) => {
-    const formattedDate = timeFormatter.getWeekdayAndTime({
+  const dropdownItems = testTimes.map((time) => {
+    const formattedDate = `${timeFormatter.getWeekdayAndTime({
       time,
-      capitalize: true,
-    });
+    })} (${timeFormatter.getDate(time)})`;
     return { value: time, title: formattedDate };
   });
 
@@ -36,7 +35,7 @@ export const TestTimeSelector = ({ testTime }: Props): ReactElement => {
       <span>{t("testValues.time")}</span>{" "}
       <Dropdown
         items={dropdownItems}
-        selectedValue={moment(testTime).format()}
+        selectedValue={dayjs(testTime).format()}
         onChange={async (event: ChangeEvent<HTMLSelectElement>) =>
           await setTestTime(event.target.value)
         }

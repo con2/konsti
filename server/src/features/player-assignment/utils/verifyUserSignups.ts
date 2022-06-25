@@ -1,4 +1,4 @@
-import moment from "moment";
+import dayjs from "dayjs";
 import { logger } from "server/utils/logger";
 import { User } from "shared/typings/models/user";
 import { findUsers } from "server/features/user/userRepository";
@@ -22,7 +22,7 @@ export const verifyUserSignups = async (): Promise<void> => {
       const gameFound = !!groupCreator.signedGames.find(
         (signedGame) =>
           signedGame.gameDetails.gameId === enteredGame.gameDetails.gameId &&
-          moment(signedGame.gameDetails.startTime).isSame(
+          dayjs(signedGame.gameDetails.startTime).isSame(
             enteredGame.gameDetails.startTime
           )
       );

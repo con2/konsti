@@ -26,9 +26,8 @@ export const SignupForm = ({
   const signedGames = useAppSelector((state) => state.myGames.signedGames);
   const username = useAppSelector((state) => state.login.username);
   const priorityRef = useRef<HTMLSelectElement>(null);
-  const [errorMessage, setErrorMessage] = useState<PostSignedGamesErrorMessage>(
-    PostSignedGamesErrorMessage.EMPTY
-  );
+  const [errorMessage, setErrorMessage] =
+    useState<PostSignedGamesErrorMessage | null>(null);
 
   const handleCancel = (): void => {
     onCancel();
@@ -53,12 +52,14 @@ export const SignupForm = ({
       submitPostSignedGames({
         username,
         selectedGames: signedGames.concat(newGame),
-        signupTime: game.startTime,
+        startTime: game.startTime,
       })
     );
 
     if (error) {
       setErrorMessage(error);
+    } else {
+      setErrorMessage(null);
     }
   };
 
@@ -73,15 +74,15 @@ export const SignupForm = ({
     <form>
       {t("signup.gamePriority")}{" "}
       <StyledSelect ref={priorityRef}>
-        <option disabled={isAlreadySelected(1)} value="1">
+        <StyledOption disabled={isAlreadySelected(1)} value="1">
           1
-        </option>
-        <option disabled={isAlreadySelected(2)} value="2">
+        </StyledOption>
+        <StyledOption disabled={isAlreadySelected(2)} value="2">
           2
-        </option>
-        <option disabled={isAlreadySelected(3)} value="3">
+        </StyledOption>
+        <StyledOption disabled={isAlreadySelected(3)} value="3">
           3
-        </option>
+        </StyledOption>
       </StyledSelect>
       <Button onClick={handleSignup} buttonStyle={ButtonStyle.NORMAL}>
         {t("signup.confirm")}
@@ -92,7 +93,7 @@ export const SignupForm = ({
       {errorMessage && (
         <ErrorMessage
           message={t(errorMessage)}
-          closeError={() => setErrorMessage(PostSignedGamesErrorMessage.EMPTY)}
+          closeError={() => setErrorMessage(null)}
         />
       )}
     </form>
@@ -101,4 +102,11 @@ export const SignupForm = ({
 
 const StyledSelect = styled.select`
   margin-right: 10px;
+`;
+
+const StyledOption = styled.option<{ disabled: boolean }>`
+  background-color: ${(props) =>
+    props.disabled
+      ? props.theme.backgroundDisabled
+      : props.theme.backgroundMain};
 `;

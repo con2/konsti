@@ -7,8 +7,9 @@ import { SelectedGame } from "shared/typings/models/user";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { isAlreadySigned } from "./allGamesUtils";
 import { Button, ButtonStyle } from "client/components/Button";
-import { getIsGroupCreator } from "client/views/group/utils/getIsGroupCreator";
+import { getIsGroupCreator } from "client/views/group/groupUtils";
 import { ErrorMessage } from "client/components/ErrorMessage";
+import { CancelSignupForm } from "client/views/all-games/components/CancelSignupForm";
 
 interface Props {
   game: Game;
@@ -31,6 +32,7 @@ export const AlgorithmSignupForm: FC<Props> = ({
   const isGroupCreator = getIsGroupCreator(groupCode, serial);
 
   const [signupFormOpen, setSignupFormOpen] = useState(false);
+  const [cancelSignupFormOpen, setCancelSignupFormOpen] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
   const dispatch = useAppDispatch();
@@ -44,11 +46,16 @@ export const AlgorithmSignupForm: FC<Props> = ({
       submitPostSignedGames({
         username,
         selectedGames: newSignupData,
-        signupTime: gameToRemove.startTime,
+        startTime: gameToRemove.startTime,
       })
     );
 
-    error ? setErrorMessage(t(error)) : setSignupFormOpen(false);
+    if (error) {
+      setErrorMessage(t(error));
+    } else {
+      setCancelSignupFormOpen(false);
+      setSignupFormOpen(false);
+    }
   };
 
   const currentPriority = signedGames.find(
@@ -61,72 +68,68 @@ export const AlgorithmSignupForm: FC<Props> = ({
 
   const alreadySignedToGame = isAlreadySigned(game, signedGames);
 
-  const signupForAlgorithm = (
-    alreadySigned: boolean,
-    signedGamesForTimeSlot: readonly SelectedGame[]
-  ): JSX.Element | null => {
-    if (alreadySigned) {
-      return null;
-    }
-
-    if (!isGroupCreator) {
-      return null;
-    }
-
-    if (signedGamesForTimeSlot.length >= 3) {
-      return <p>{t("signup.cannotSignupMoreGames")}</p>;
-    }
-
-    if (signedGamesForTimeSlot.length < 3 && !signupFormOpen) {
-      return (
-        <Button
-          onClick={() => {
-            if (groupMembers.length > game.maxAttendance) {
-              setErrorMessage(t("group.groupTooBigWarning"));
-            } else {
-              setSignupFormOpen(!signupFormOpen);
-            }
-          }}
-          buttonStyle={ButtonStyle.NORMAL}
-        >
-          {t("signup.signup")}
-        </Button>
-      );
-    }
-
-    return null;
-  };
-
   if (!loggedIn) {
     return null;
   }
 
   return (
     <>
-      {signupForAlgorithm(alreadySignedToGame, signedGamesForTimeslot)}
+      {!alreadySignedToGame && isGroupCreator && (
+        <>
+          {signedGamesForTimeslot.length >= 3 && (
+            <p>{t("signup.cannotSignupMoreGames")}</p>
+          )}
+
+          {signedGamesForTimeslot.length < 3 && !signupFormOpen && (
+            <Button
+              onClick={() => {
+                if (groupMembers.length > game.maxAttendance) {
+                  setErrorMessage(t("group.groupTooBigWarning"));
+                } else {
+                  setSignupFormOpen(true);
+                }
+              }}
+              buttonStyle={ButtonStyle.NORMAL}
+            >
+              {t("signup.preSignup")}
+            </Button>
+          )}
+        </>
+      )}
+
       {alreadySignedToGame && (
         <>
-          {isGroupCreator && (
+          {isGroupCreator && !cancelSignupFormOpen && (
             <Button
-              onClick={async () => await removeSignedGame(game)}
+              onClick={() => setCancelSignupFormOpen(true)}
               buttonStyle={ButtonStyle.NORMAL}
             >
               {t("button.cancel")}
             </Button>
           )}
 
-          <ErrorMessage
-            message={errorMessage}
-            closeError={() => setErrorMessage("")}
-          />
+          {cancelSignupFormOpen && (
+            <CancelSignupForm
+              onCancelForm={() => {
+                setCancelSignupFormOpen(false);
+              }}
+              onConfirmForm={async () => await removeSignedGame(game)}
+            />
+          )}
 
           <p>
-            {t("signup.alreadySigned", {
+            {t("signup.alreadyPreSigned", {
               CURRENT_PRIORITY: currentPriority,
             })}
           </p>
         </>
       )}
+
+      <ErrorMessage
+        message={errorMessage}
+        closeError={() => setErrorMessage("")}
+      />
+
       {signupFormOpen && !alreadySignedToGame && (
         <SignupForm
           game={game}

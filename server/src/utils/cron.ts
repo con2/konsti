@@ -1,124 +1,70 @@
-import moment from "moment";
 import schedule from "node-schedule";
 import { logger } from "server/utils/logger";
 import { getGamesFromKompassi } from "server/features/game/utils/getGamesFromKompassi";
 import { config } from "server/config";
 import { updateGamePopularity } from "server/features/game-popularity/updateGamePopularity";
-import { removeOverlapSignups } from "server/features/player-assignment/utils/removeOverlapSignups";
 import { runAssignment } from "server/features/player-assignment/runAssignment";
-import { saveResults } from "server/features/player-assignment/utils/saveResults";
-import { sleep } from "server/utils/sleep";
 import { kompassiGameMapper } from "server/utils/kompassiGameMapper";
 import { saveGames } from "server/features/game/gameRepository";
 import { sharedConfig } from "shared/config/sharedConfig";
-import { saveSettings } from "server/features/settings/settingsRepository";
 
 const {
   autoUpdateGamesEnabled,
   gameUpdateInterval,
   autoUpdateGamePopularityEnabled,
   autoAssignPlayersEnabled,
+  autoAssignDelay,
+  autoAssignInterval,
 } = config;
 
-export const autoUpdateGames = async (): Promise<void> => {
-  if (!autoUpdateGamesEnabled && !autoUpdateGamePopularityEnabled) return;
+const { assignmentStrategy } = sharedConfig;
 
-  const cronRule = `*/${gameUpdateInterval} * * * *`;
+export const startCronJobs = async (): Promise<void> => {
+  if (autoUpdateGamesEnabled || autoUpdateGamePopularityEnabled) {
+    await schedule.scheduleJob(gameUpdateInterval, autoUpdateGames);
+  }
 
-  const callback = async (): Promise<void> => {
-    if (autoUpdateGamesEnabled) {
-      logger.info("----> Auto update games");
-      try {
-        const kompassiGames = await getGamesFromKompassi();
-        await saveGames(kompassiGameMapper(kompassiGames));
-        logger.info("***** Games auto update completed");
-      } catch (error) {
-        logger.error(`autoUpdateGames() failed: ${error}`);
-      }
-    }
-
-    if (autoUpdateGamePopularityEnabled) {
-      logger.info("----> Auto update game popularity");
-      await updateGamePopularity();
-      logger.info("***** Game popularity auto update completed");
-    }
-  };
-
-  await schedule.scheduleJob(cronRule, callback);
+  if (autoAssignPlayersEnabled) {
+    await schedule.scheduleJob(autoAssignInterval, autoAssignPlayers);
+  }
 };
 
-export const autoAssignPlayers = async (): Promise<void> => {
-  if (!autoAssignPlayersEnabled) return;
-
-  const cronRule = `30 * * * *`;
-
-  const callback = async (): Promise<void> => {
-    logger.info("----> Auto assign players");
-    // 30 * * * * -> “At minute 30.”
-    // */1 * * * * -> “Every minute”
-
-    const startTime = moment().endOf("hour").add(1, "seconds").format();
-
-    /*
-    const startTime = moment(config.CONVENTION_START_TIME)
-      .add(2, 'hours')
-      .format();
-    */
-
-    // Wait for final signup requests
-    logger.info("Wait 10s for final requests");
-    await sleep(10000);
-
-    logger.info("Waiting done, start assignment");
-
-    let assignResults;
+const autoUpdateGames = async (): Promise<void> => {
+  if (autoUpdateGamesEnabled) {
+    logger.info("----> Auto update games");
     try {
-      assignResults = await runAssignment(
-        startTime,
-        sharedConfig.assignmentStrategy
-      );
+      const kompassiGames = await getGamesFromKompassi();
+      await saveGames(kompassiGameMapper(kompassiGames));
+      logger.info("***** Games auto update completed");
     } catch (error) {
-      logger.error(error);
+      logger.error(`Games auto update failed: ${error}`);
     }
+  }
 
-    // console.log('>>> assignResults: ', assignResults)
-
-    if (assignResults?.results.length === 0) return;
-
-    // Save results
+  if (autoUpdateGamePopularityEnabled) {
+    logger.info("----> Auto update game popularity");
     try {
-      await saveResults(
-        assignResults ? assignResults.results : [],
-        startTime,
-        assignResults ? assignResults.algorithm : "",
-        assignResults ? assignResults.message : ""
-      );
+      await updateGamePopularity();
     } catch (error) {
-      logger.error(`saveResult error: ${error}`);
+      logger.error(`Game popularity auto update failed: ${error}`);
     }
+    logger.info("***** Game popularity auto update completed");
+  }
+};
 
-    // Set which results are shown
-    try {
-      await saveSettings({ signupTime: startTime });
-    } catch (error) {
-      logger.error(`saveSignupTime error: ${error}`);
-    }
+const autoAssignPlayers = async (): Promise<void> => {
+  logger.info("----> Auto assign players");
 
-    // Remove overlapping signups
-    if (config.enableRemoveOverlapSignups) {
-      logger.info("Remove overlapping signups");
+  try {
+    await runAssignment({
+      assignmentStrategy,
+      useDynamicStartingTime: true,
+      assignmentDelay: autoAssignDelay,
+    });
+  } catch (error) {
+    logger.error(`Auto assignment failed: ${error}`);
+    return;
+  }
 
-      if (assignResults) {
-        try {
-          await removeOverlapSignups(assignResults.results);
-        } catch (error) {
-          logger.error(`removeOverlapSignups error: ${error}`);
-        }
-      }
-    }
-
-    logger.info("***** Automatic player assignment completed");
-  };
-
-  await schedule.scheduleJob(cronRule, callback);
+  logger.info("***** Automatic player assignment completed");
 };

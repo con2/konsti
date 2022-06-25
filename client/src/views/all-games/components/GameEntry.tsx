@@ -11,6 +11,12 @@ import { AlgorithmSignupForm } from "./AlgorithmSignupForm";
 import { DirectSignupForm } from "./DirectSignupForm";
 import { Button, ButtonStyle } from "client/components/Button";
 import { SelectedGame } from "shared/typings/models/user";
+import {
+  getUpcomingEnteredGames,
+  getUpcomingSignedGames,
+} from "client/utils/getUpcomingGames";
+import { isAlreadyEntered, isAlreadySigned } from "./allGamesUtils";
+import { PhaseGap } from "shared/utils/getPhaseGap";
 
 const DESCRIPTION_SENTENCES_LENGTH = 3;
 const matchNextSentence = /([.?!])\s*(?=[A-Z])/g;
@@ -21,6 +27,7 @@ interface Props {
   players: number;
   signupStrategy: SignupStrategy;
   signedGames: readonly SelectedGame[];
+  phaseGap: PhaseGap;
 }
 
 export const GameEntry = ({
@@ -29,6 +36,7 @@ export const GameEntry = ({
   players,
   signupStrategy,
   signedGames,
+  phaseGap,
 }: Props): ReactElement => {
   const { t } = useTranslation();
 
@@ -38,6 +46,15 @@ export const GameEntry = ({
   const favoritedGames = useAppSelector(
     (state) => state.myGames.favoritedGames
   );
+  const enteredGames = useAppSelector((state) => state.myGames.enteredGames);
+  const enteredGamesForTimeslot = getUpcomingEnteredGames(enteredGames).filter(
+    ({ gameDetails }) => gameDetails.startTime === startTime
+  );
+  const isEnteredCurrentGame = isAlreadyEntered(game, enteredGames);
+  const signedGamesForTimeslot = getUpcomingSignedGames(signedGames).filter(
+    ({ gameDetails }) => gameDetails.startTime === startTime
+  );
+  const isSignedForCurrentGame = isAlreadySigned(game, signedGames);
 
   const dispatch = useAppDispatch();
 
@@ -59,6 +76,21 @@ export const GameEntry = ({
     return `${hoursStr} ${minutesStr}`;
   };
 
+  const formatPopularity = (game: Game): string => {
+    let msg = "";
+    if (game.popularity < game.minAttendance) {
+      msg = "vähän kiinnostusta";
+    } else if (
+      game.popularity >= game.minAttendance &&
+      game.popularity <= game.maxAttendance
+    ) {
+      msg = "Toteutumassa";
+    } else if (game.popularity > game.maxAttendance) {
+      msg = "Liikaa kiinnostusta";
+    }
+    return msg;
+  };
+
   // Favorite / remove favorite clicked
   const updateFavoriteHandler = async (
     updateOpts: UpdateFavoriteOpts
@@ -68,23 +100,16 @@ export const GameEntry = ({
     await updateFavorite(updateOpts);
   };
 
-  const formatGamePopularityInfo = (
-    numPlayers: number,
-    maxAttendance: number,
-    minAttendance: number
-  ): string => {
-    const count: number = minAttendance - numPlayers;
-    let popularityInfo: string = t("signup.playerNeeded", { COUNT: count });
-    if (numPlayers >= minAttendance && numPlayers < maxAttendance) {
-      popularityInfo = t("medium-popularity");
-    } else if (numPlayers >= maxAttendance) {
-      popularityInfo = t("high-popularity");
-    }
-    return popularityInfo;
-  };
-
+  const isGameDisabled =
+    (!isEnteredCurrentGame && enteredGamesForTimeslot.length > 0) ||
+    (!isSignedForCurrentGame && signedGamesForTimeslot.length === 3);
   return (
-    <GameContainer key={game.gameId} data-testid="game-container">
+    <GameContainer
+      key={game.gameId}
+      disabled={isGameDisabled}
+      signed={Boolean(isEnteredCurrentGame || isSignedForCurrentGame)}
+      data-testid="game-container"
+    >
       <GameHeader>
         <HeaderContainer>
           <h3 data-testid="game-title">{game.title}</h3>
@@ -106,20 +131,23 @@ export const GameEntry = ({
                   })}
             </RowItem>
           </p>
-          <PlayerCount visible={isEnterGameMode}>
-            {t("signup.signupCount", {
-              PLAYERS: game.popularity - game.maxAttendance,
-              MAX_ATTENDANCE: game.maxAttendance,
-            })}
-          </PlayerCount>
+          {isEnterGameMode && (
+            <>
+              <PlayerCount>
+                {t("signup.signupCount", {
+                  PLAYERS: players,
+                  MAX_ATTENDANCE: game.maxAttendance,
+                })}
+              </PlayerCount>
+              <PlayersNeeded visible={players < game.minAttendance}>
+                {t("signup.playerNeeded", {
+                  COUNT: game.minAttendance - players,
+                })}
+              </PlayersNeeded>
+            </>
+          )}
           <GamePopularityContainer>
-            {" "}
-            {game.popularity} {" " + game.minAttendance + " " + players}
-            {formatGamePopularityInfo(
-              game.popularity,
-              game.maxAttendance,
-              game.minAttendance
-            )}
+            {formatPopularity(game)}
           </GamePopularityContainer>
         </HeaderContainer>
         <GameTags>
@@ -179,6 +207,7 @@ export const GameEntry = ({
           game={game}
           gameIsFull={gameIsFull}
           startTime={startTime}
+          phaseGap={phaseGap}
         />
       )}
       {loggedIn && !isEnterGameMode && (
@@ -192,14 +221,14 @@ export const GameEntry = ({
   );
 };
 
-/* const PlayersNeeded = styled("span")<{ visible: boolean }>`
+const PlayersNeeded = styled("span")<{ visible: boolean }>`
   margin-top: 8px;
+  margin-bottom: 14px;
   display: ${(props) => (props.visible ? "block" : "none")};
-`; */
+`;
 
-const PlayerCount = styled("span")<{ visible: boolean }>`
+const PlayerCount = styled("span")`
   margin-top: 8px;
-  display: ${(props) => (props.visible ? "block" : "none")};
 `;
 
 const FavoriteButton = styled(Button)`
@@ -249,7 +278,7 @@ const Tag = styled.span`
   color: ${(props) => props.theme.textTag};
 `;
 
-const GameContainer = styled.div`
+const GameContainer = styled.div<{ disabled: boolean; signed: boolean }>`
   display: flex;
   flex-direction: column;
   padding: 8px;
@@ -260,11 +289,15 @@ const GameContainer = styled.div`
   min-height: 160px;
   box-shadow: 1px 8px 15px 0 rgba(0, 0, 0, 0.42);
   color: #3d3d3d;
+  ${(props) => props.disabled && "opacity: 50%"}
+  ${(props) =>
+    props.signed && `border-left: 5px solid ${props.theme.borderActive}`}
 `;
 
-const GameListShortDescription = styled.p`
+const GameListShortDescription = styled.div`
   font-size: ${(props) => props.theme.fontSizeSmall};
   font-style: italic;
+  margin-bottom: 14px;
 `;
 
 const GameTags = styled.div`
@@ -282,5 +315,5 @@ const RowItem = styled.span`
 const GamePopularityContainer = styled.div`
   display: flex;
   flex-direction: row;
-  padding-top: 15px;
+  margin-bottom: 5px;
 `;

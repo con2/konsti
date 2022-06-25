@@ -1,24 +1,23 @@
-import moment from "moment";
-import { config } from "server/config";
+import { Dayjs } from "dayjs";
 import { logger } from "server/utils/logger";
 import { saveSerials } from "server/features/serial/serialRepository";
 import { SerialDoc } from "server/typings/serial.typings";
 
-export const isValidSignupTime = (signupTime: string): boolean => {
-  if (!config.enableSignupTimeCheck) return true;
+interface IsValidSignupTimeParams {
+  startTime: Dayjs;
+  timeNow: Dayjs;
+}
 
-  const timeNow = moment();
-
-  if (moment(signupTime).isBefore(timeNow)) {
-    const error = `Signup time ${moment(
-      signupTime
-    ).format()} does not match: too late`;
-
-    logger.debug(error);
-
+export const isValidSignupTime = ({
+  startTime,
+  timeNow,
+}: IsValidSignupTimeParams): boolean => {
+  if (timeNow.isAfter(startTime)) {
+    logger.warn(
+      `Invalid signup time: timeNow: ${timeNow.format()}, startTime: ${startTime.format()}`
+    );
     return false;
   }
-
   return true;
 };
 

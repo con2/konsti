@@ -1,4 +1,40 @@
-import { Config, GameUpdateMethod } from "server/typings/config.typings";
+enum GameUpdateMethod {
+  signups = "signups",
+  assign = "assign",
+}
+
+interface Config {
+  port: number;
+  debug: boolean;
+  logDir: string;
+  enableAccessLog: boolean;
+  dbConnString: string;
+  dbName: string;
+  jwtSecretKey: string;
+  jwtSecretKeyAdmin: string;
+  jwtSecretKeyHelp: string;
+  allowedCorsOrigins: readonly string[];
+  dataUri: string;
+  GROUP_ASSIGNMENT_ROUNDS: number;
+  PADG_ASSIGNMENT_ROUNDS: number;
+  RANDOM_ASSIGNMENT_ROUNDS: number;
+  bundleCompression: boolean;
+  autoUpdateGamesEnabled: boolean;
+  gameUpdateInterval: string;
+  enableRemoveOverlapSignups: boolean;
+  saveTestAssign: boolean;
+  autoUpdateGamePopularityEnabled: boolean;
+  gamePopularityUpdateMethod: GameUpdateMethod;
+  updateGamePopularityEnabled: boolean;
+  useLocalProgramFile: boolean;
+  autoAssignPlayersEnabled: boolean;
+  firtSignupBonus: number;
+  statsDataDir: string;
+  autoAssignDelay: number;
+  autoAssignInterval: string;
+  useTestTime: boolean;
+  localKompassiFile: string;
+}
 
 const commonConfig = {
   // Server settings
@@ -26,6 +62,9 @@ const commonConfig = {
 
   // Statistics
   statsDataDir: "src/features/statistics/datafiles",
+
+  // Testing
+  localKompassiFile: "program-ropecon-2022-test.json",
 };
 
 const prodConfig = {
@@ -44,13 +83,19 @@ const prodConfig = {
   PADG_ASSIGNMENT_ROUNDS: 300,
   RANDOM_ASSIGNMENT_ROUNDS: 300,
   updateGamePopularityEnabled: true,
-  enableSignupTimeCheck: true,
 
-  // Cron
+  // Dev
+  useTestTime: false,
+
+  // Game update cron
   autoUpdateGamesEnabled: true,
-  gameUpdateInterval: 4, // minutes
+  gameUpdateInterval: `*/4 * * * *`,
   autoUpdateGamePopularityEnabled: true,
+
+  // Player assign cron
   autoAssignPlayersEnabled: true,
+  autoAssignInterval: `0,15,30,45 * * * *`,
+  autoAssignDelay: 1000 * 10,
 };
 
 const stagingConfig = {
@@ -69,13 +114,19 @@ const stagingConfig = {
   PADG_ASSIGNMENT_ROUNDS: 300,
   RANDOM_ASSIGNMENT_ROUNDS: 300,
   updateGamePopularityEnabled: true,
-  enableSignupTimeCheck: false,
 
-  // Cron
+  // Dev
+  useTestTime: true,
+
+  // Game update cron
   autoUpdateGamesEnabled: false,
-  gameUpdateInterval: 4, // minutes
+  gameUpdateInterval: `*/4 * * * *`,
   autoUpdateGamePopularityEnabled: false,
-  autoAssignPlayersEnabled: false,
+
+  // Player assign cron
+  autoAssignPlayersEnabled: true,
+  autoAssignInterval: `0,15,30,45 * * * *`,
+  autoAssignDelay: 1000 * 10,
 };
 
 const devConfig = {
@@ -89,19 +140,25 @@ const devConfig = {
     "http://localhost:5000",
     "https://server:5000",
   ],
-  useLocalProgramFile: false,
+  useLocalProgramFile: true,
   debug: false,
   GROUP_ASSIGNMENT_ROUNDS: 1,
   PADG_ASSIGNMENT_ROUNDS: 300,
   RANDOM_ASSIGNMENT_ROUNDS: 10,
   updateGamePopularityEnabled: true,
-  enableSignupTimeCheck: false,
 
-  // Cron
+  // Dev
+  useTestTime: true,
+
+  // Game update cron
   autoUpdateGamesEnabled: false,
-  gameUpdateInterval: 4, // minutes
+  gameUpdateInterval: `*/10 * * * *`,
   autoUpdateGamePopularityEnabled: false,
+
+  // Player assign cron
   autoAssignPlayersEnabled: false,
+  autoAssignInterval: `0,15,30,45 * * * * *`,
+  autoAssignDelay: 1000 * 1,
 };
 
 const combineConfig = (): Config => {

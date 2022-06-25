@@ -1,7 +1,8 @@
 import { Server } from "http";
 import request from "supertest";
 import { MongoMemoryServer } from "mongodb-memory-server";
-import moment from "moment";
+import dayjs from "dayjs";
+import _ from "lodash";
 import { startServer, closeServer } from "server/utils/server";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { getJWT } from "server/utils/jwt";
@@ -17,7 +18,7 @@ import { findUser, saveUser } from "server/features/user/userRepository";
 import {
   mockPostEnteredGameRequest,
   mockPostEnteredGameRequest2,
-  mockSignup,
+  mockSignedGames,
   mockUser,
 } from "server/test/mock-data/mockUser";
 import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
@@ -55,7 +56,7 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
 
   test("should return 200 with valid authorization and add games to DB", async () => {
     jest
-      .spyOn(kompassiModule, "getProgramFromServer")
+      .spyOn(kompassiModule, "getEventProgramItems")
       .mockResolvedValue([testKompassiGame]);
 
     const response = await request(server)
@@ -71,12 +72,15 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
 
   test("should remove games, selectedGames, enteredGames, and favoritedGames that are not in the server response", async () => {
     jest
-      .spyOn(kompassiModule, "getProgramFromServer")
+      .spyOn(kompassiModule, "getEventProgramItems")
       .mockResolvedValue([testKompassiGame]);
 
     await saveGames([testGame, testGame2]);
     await saveUser(mockUser);
-    await saveSignedGames(mockSignup);
+    await saveSignedGames({
+      username: mockUser.username,
+      signedGames: mockSignedGames,
+    });
     await saveEnteredGame(mockPostEnteredGameRequest);
     await saveEnteredGame(mockPostEnteredGameRequest2);
     await saveFavorite({
@@ -109,7 +113,7 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
 
   test("should not modify anything if server response is invalid", async () => {
     jest
-      .spyOn(kompassiModule, "getProgramFromServer")
+      .spyOn(kompassiModule, "getEventProgramItems")
       // @ts-expect-error: Invalid value for testing
       .mockResolvedValue({ value: "broken response" });
 
@@ -123,12 +127,13 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
     const games = await findGames();
 
     expect(games.length).toEqual(2);
-    expect(games[0].title).toEqual(testGame.title);
-    expect(games[1].title).toEqual(testGame2.title);
+    const sortedGames = _.sortBy(games, "title");
+    expect(sortedGames[0].title).toEqual(testGame.title);
+    expect(sortedGames[1].title).toEqual(testGame2.title);
   });
 
   test("should not modify anything if server response is empty array", async () => {
-    jest.spyOn(kompassiModule, "getProgramFromServer").mockResolvedValue([]);
+    jest.spyOn(kompassiModule, "getEventProgramItems").mockResolvedValue([]);
 
     await saveGames([testGame, testGame2]);
 
@@ -140,14 +145,15 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
     const games = await findGames();
 
     expect(games.length).toEqual(2);
-    expect(games[0].title).toEqual(testGame.title);
-    expect(games[1].title).toEqual(testGame2.title);
+    const sortedGames = _.sortBy(games, "title");
+    expect(sortedGames[0].title).toEqual(testGame.title);
+    expect(sortedGames[1].title).toEqual(testGame2.title);
   });
 
   test("should update changed game details", async () => {
     const newDescription = "new description";
-    const newStartTime = moment(testGame.startTime).add(1, "hours").format();
-    jest.spyOn(kompassiModule, "getProgramFromServer").mockResolvedValue([
+    const newStartTime = dayjs(testGame.startTime).add(1, "hours").format();
+    jest.spyOn(kompassiModule, "getEventProgramItems").mockResolvedValue([
       {
         ...testKompassiGame,
         start_time: newStartTime,
@@ -165,13 +171,13 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
     const games = await findGames();
 
     expect(games.length).toEqual(1);
-    expect(moment(games[0].startTime).format()).toEqual(newStartTime);
+    expect(dayjs(games[0].startTime).format()).toEqual(newStartTime);
     expect(games[0].description).toEqual(newDescription);
   });
 
   test("should remove selectedGames and enteredGames if game start time changes", async () => {
-    const newStartTime = moment(testGame.startTime).add(1, "hours").format();
-    jest.spyOn(kompassiModule, "getProgramFromServer").mockResolvedValue([
+    const newStartTime = dayjs(testGame.startTime).add(1, "hours").format();
+    jest.spyOn(kompassiModule, "getEventProgramItems").mockResolvedValue([
       {
         ...testKompassiGame,
         start_time: newStartTime,
@@ -181,7 +187,10 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
 
     await saveGames([testGame, testGame2]);
     await saveUser(mockUser);
-    await saveSignedGames(mockSignup);
+    await saveSignedGames({
+      username: mockUser.username,
+      signedGames: mockSignedGames,
+    });
     await saveEnteredGame(mockPostEnteredGameRequest);
     await saveEnteredGame(mockPostEnteredGameRequest2);
 

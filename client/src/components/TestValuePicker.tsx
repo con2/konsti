@@ -5,7 +5,7 @@ import _ from "lodash";
 import { TestTimeSelector } from "client/test/test-components/TestTimeSelector";
 import { SignupStrategySelector } from "client/test/test-components/SignupStrategySelector";
 import { Accordion } from "client/components/Accordion";
-import { times } from "client/test/test-components/testComponentUtils";
+import { testTimes } from "client/test/test-components/testComponentUtils";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { submitSetTestSettings } from "client/test/test-settings/testSettingsThunks";
 
@@ -18,7 +18,7 @@ export const TestValuePicker = (): ReactElement => {
 
   useEffect(() => {
     const setInitialTestTime = async (): Promise<void> => {
-      const defaultTestTime = _.first(times);
+      const defaultTestTime = _.first(testTimes);
       if (!testTime && defaultTestTime) {
         await dispatch(submitSetTestSettings({ testTime: defaultTestTime }));
       }
@@ -43,6 +43,7 @@ const TestValuesContainer = styled.div`
   top: 0;
   left: 0;
   margin: 80px 0 0 0;
+  z-index: 10;
 `;
 
 const TestValueSelectors = styled.div`

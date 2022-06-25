@@ -3,233 +3,260 @@ import {
   findGroupMembers,
   saveGroupCode,
 } from "server/features/user/group/groupRepository";
+import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
 import { findUserSerial } from "server/features/user/userRepository";
 import { GetGroupReturnValue } from "server/typings/user.typings";
 import { logger } from "server/utils/logger";
-import { ApiError } from "shared/typings/api/errors";
 import {
+  GetGroupError,
   GetGroupResponse,
-  PostGroupError,
+  PostCloseGroupError,
+  PostCreateGroupError,
   PostGroupResponse,
+  PostJoinGroupError,
+  PostLeaveGroupError,
 } from "shared/typings/api/groups";
 import { User } from "shared/typings/models/user";
 
-export const storeGroup = async (
+export const createGroup = async (
   username: string,
-  isGroupCreator: boolean,
-  groupCode: string,
-  ownSerial: string,
-  leaveGroup = false,
-  closeGroup = false
-): Promise<PostGroupResponse | PostGroupError> => {
-  if (closeGroup) {
-    const groupMembers = await findGroupMembers(groupCode);
-
-    try {
-      await Promise.all(
-        groupMembers.map(async (groupMember) => {
-          await saveGroupCode("0", groupMember.username);
-        })
-      );
-    } catch (error) {
-      logger.error(`findGroupMembers: ${error}`);
-      throw new Error("Error closing group");
-    }
-
+  groupCode: string
+): Promise<PostGroupResponse | PostCreateGroupError> => {
+  let findGroupResponse;
+  try {
+    // Check if group exists
+    findGroupResponse = await findGroup(groupCode, username);
+  } catch (error) {
+    logger.error(`findUser(): ${error}`);
     return {
-      message: "Group closed successfully",
-      status: "success",
-      groupCode: "0",
+      message: "Own group already exists",
+      status: "error",
+      errorId: "groupExists",
     };
   }
 
-  if (leaveGroup) {
-    const groupMembers = await findGroupMembers(groupCode);
-
-    if (isGroupCreator && groupMembers.length > 1) {
-      return {
-        message: "Creator cannot leave non-empty group",
-        status: "error",
-        errorId: "creatorCannotLeaveNonEmpty",
-      };
-    }
-
-    let saveGroupResponse;
-    try {
-      saveGroupResponse = await saveGroupCode("0", username);
-    } catch (error) {
-      logger.error(`Failed to leave group: ${error}`);
-      return {
-        message: "Failed to leave group",
-        status: "error",
-        errorId: "groupUpdateFailed",
-      };
-    }
-
-    if (saveGroupResponse) {
-      return {
-        message: "Leave group success",
-        status: "success",
-        groupCode: saveGroupResponse.groupCode,
-      };
-    } else {
-      logger.error("Failed to leave group");
-      return {
-        message: "Failed to leave group",
-        status: "error",
-        errorId: "groupUpdateFailed",
-      };
-    }
+  if (findGroupResponse) {
+    // Group exists
+    return {
+      message: "Own group already exists",
+      status: "error",
+      errorId: "groupExists",
+    };
   }
 
-  // Create group
-  if (isGroupCreator) {
-    // Check that serial is not used
-    let findGroupResponse;
-    try {
-      // Check if group exists
-      findGroupResponse = await findGroup(groupCode, username);
-    } catch (error) {
-      logger.error(`findUser(): ${error}`);
-      return {
-        message: "Own group already exists",
-        status: "error",
-        errorId: "groupExists",
-      };
-    }
-
-    if (findGroupResponse) {
-      // Group exists
-      return {
-        message: "Own group already exists",
-        status: "error",
-        errorId: "groupExists",
-      };
-    }
-
-    // No existing group, create
-    let saveGroupResponse;
-    try {
-      saveGroupResponse = await saveGroupCode(groupCode, username);
-    } catch (error) {
-      logger.error(`saveGroup(): ${error}`);
-      return {
-        message: "Save group failure",
-        status: "error",
-        errorId: "unknown",
-      };
-    }
-
-    if (saveGroupResponse) {
-      return {
-        message: "Create group success",
-        status: "success",
-        groupCode: saveGroupResponse.groupCode,
-      };
-    } else {
-      return {
-        message: "Save group failure",
-        status: "error",
-        errorId: "unknown",
-      };
-    }
+  // No existing group, create
+  let saveGroupResponse;
+  try {
+    saveGroupResponse = await saveGroupCode(groupCode, username);
+  } catch (error) {
+    logger.error(`saveGroup(): ${error}`);
+    return {
+      message: "Save group failure",
+      status: "error",
+      errorId: "unknown",
+    };
   }
 
-  // Join group
-  if (!isGroupCreator) {
-    // Cannot join own group
-    if (ownSerial === groupCode) {
-      return {
-        message: "Cannot join own group",
-        status: "error",
-        errorId: "cannotJoinOwnGroup",
-      };
-    }
-
-    // Check if code is valid
-    let findSerialResponse;
-    try {
-      findSerialResponse = await findUserSerial({ serial: groupCode });
-    } catch (error) {
-      logger.error(`findSerial(): ${error}`);
-      return {
-        message: "Error finding serial",
-        status: "error",
-        errorId: "invalidGroupCode",
-      };
-    }
-
-    // Code is valid
-    if (!findSerialResponse) {
-      return {
-        message: "Invalid group code",
-        status: "error",
-        errorId: "invalidGroupCode",
-      };
-    }
-
-    // Check if group creator has created a group
-    let findGroupResponse;
-    try {
-      const creatorUsername = findSerialResponse.username;
-      findGroupResponse = await findGroup(groupCode, creatorUsername);
-    } catch (error) {
-      logger.error(`findGroup(): ${error}`);
-      return {
-        message: "Error finding group",
-        status: "error",
-        errorId: "groupDoesNotExist",
-      };
-    }
-
-    // No existing group, cannot join
-    if (!findGroupResponse) {
-      return {
-        message: "Group does not exist",
-        status: "error",
-        errorId: "groupDoesNotExist",
-      };
-    }
-
-    // Group exists, join
-    let saveGroupResponse;
-    try {
-      saveGroupResponse = await saveGroupCode(groupCode, username);
-    } catch (error) {
-      logger.error(`saveGroup(): ${error}`);
-      return {
-        message: "Error saving group",
-        status: "error",
-        errorId: "unknown",
-      };
-    }
-
-    if (saveGroupResponse) {
-      return {
-        message: "Joined to group success",
-        status: "success",
-        groupCode: saveGroupResponse.groupCode,
-      };
-    } else {
-      logger.error("Failed to sign to group");
-      return {
-        message: "Failed to update group",
-        status: "error",
-        errorId: "unknown",
-      };
-    }
+  if (saveGroupResponse) {
+    return {
+      message: "Create group success",
+      status: "success",
+      groupCode: saveGroupResponse.groupCode,
+    };
   }
 
   return {
-    message: "Unknown error",
+    message: "Save group failure",
     status: "error",
     errorId: "unknown",
   };
 };
 
+export const joinGroup = async (
+  username: string,
+  groupCode: string,
+  ownSerial: string
+): Promise<PostGroupResponse | PostJoinGroupError> => {
+  // Cannot join own group
+  if (ownSerial === groupCode) {
+    return {
+      message: "Cannot join own group",
+      status: "error",
+      errorId: "cannotJoinOwnGroup",
+    };
+  }
+
+  // Check if code is valid
+  let findSerialResponse;
+  try {
+    findSerialResponse = await findUserSerial({ serial: groupCode });
+  } catch (error) {
+    logger.error(`findSerial(): ${error}`);
+    return {
+      message: "Error finding serial",
+      status: "error",
+      errorId: "invalidGroupCode",
+    };
+  }
+
+  if (!findSerialResponse) {
+    // Invalid code
+    return {
+      message: "Invalid group code",
+      status: "error",
+      errorId: "invalidGroupCode",
+    };
+  }
+
+  // Check if group with code exists
+  let findGroupResponse;
+  try {
+    const creatorUsername = findSerialResponse.username;
+    findGroupResponse = await findGroup(groupCode, creatorUsername);
+  } catch (error) {
+    logger.error(`findGroup(): ${error}`);
+    return {
+      message: "Error finding group",
+      status: "error",
+      errorId: "groupDoesNotExist",
+    };
+  }
+
+  if (!findGroupResponse) {
+    // No existing group, cannot join
+    return {
+      message: "Group does not exist",
+      status: "error",
+      errorId: "groupDoesNotExist",
+    };
+  }
+
+  // Clean previous signups
+  try {
+    await saveSignedGames({
+      signedGames: [],
+      username,
+    });
+  } catch (error) {
+    logger.error(`saveSignedGames(): ${error}`);
+    return {
+      message: "Error removing previous signups",
+      status: "error",
+      errorId: "removePreviousSignupsFailed",
+    };
+  }
+
+  // Group exists, join
+  let saveGroupResponse;
+  try {
+    saveGroupResponse = await saveGroupCode(groupCode, username);
+  } catch (error) {
+    logger.error(`saveGroup(): ${error}`);
+    return {
+      message: "Error saving group",
+      status: "error",
+      errorId: "unknown",
+    };
+  }
+
+  if (saveGroupResponse) {
+    return {
+      message: "Joined to group success",
+      status: "success",
+      groupCode: saveGroupResponse.groupCode,
+    };
+  }
+
+  return {
+    message: "Failed to update group",
+    status: "error",
+    errorId: "unknown",
+  };
+};
+
+export const leaveGroup = async (
+  username: string
+): Promise<PostGroupResponse | PostLeaveGroupError> => {
+  let saveGroupResponse;
+  try {
+    saveGroupResponse = await saveGroupCode("0", username);
+  } catch (error) {
+    logger.error(`Failed to leave group: ${error}`);
+    return {
+      message: "Failed to leave group",
+      status: "error",
+      errorId: "failedToLeave",
+    };
+  }
+
+  if (saveGroupResponse) {
+    return {
+      message: "Leave group success",
+      status: "success",
+      groupCode: saveGroupResponse.groupCode,
+    };
+  }
+
+  return {
+    message: "Failed to leave group",
+    status: "error",
+    errorId: "failedToLeave",
+  };
+};
+
+export const closeGroup = async (
+  groupCode: string,
+  username: string
+): Promise<PostGroupResponse | PostCloseGroupError> => {
+  let groupMembers;
+  try {
+    groupMembers = await findGroupMembers(groupCode);
+  } catch (error) {
+    logger.error(`findGroupMembers error: ${error}`);
+    return {
+      message: "Unknown error",
+      status: "error",
+      errorId: "unknown",
+    };
+  }
+
+  // Check if group creator, only creator can close group
+  const groupCreator = groupMembers.find(
+    (groupMember) => groupMember.username === username
+  );
+
+  if (groupCreator?.serial !== groupCode) {
+    return {
+      message: "Only group creator can close group",
+      status: "error",
+      errorId: "onlyCreatorCanCloseGroup",
+    };
+  }
+
+  try {
+    const leaveGroupPromises = groupMembers.map(async (groupMember) => {
+      await saveGroupCode("0", groupMember.username);
+    });
+    await Promise.all(leaveGroupPromises);
+  } catch (error) {
+    logger.error(`saveGroupCode error: ${error}`);
+    return {
+      message: "Unknown error",
+      status: "error",
+      errorId: "unknown",
+    };
+  }
+
+  return {
+    message: "Group closed successfully",
+    status: "success",
+    groupCode: "0",
+  };
+};
+
 export const fetchGroup = async (
   groupCode: string
-): Promise<GetGroupResponse | ApiError> => {
+): Promise<GetGroupResponse | GetGroupError> => {
   let findGroupResults: User[];
   try {
     findGroupResults = await findGroupMembers(groupCode);
@@ -251,7 +278,7 @@ export const fetchGroup = async (
       results: returnData,
     };
   } catch (error) {
-    logger.error(`Results: ${error}`);
+    logger.error(`Failed to get group: ${error}`);
     return {
       message: "Getting group members failed",
       status: "error",

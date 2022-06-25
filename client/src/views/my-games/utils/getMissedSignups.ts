@@ -1,4 +1,4 @@
-import moment from "moment";
+import dayjs from "dayjs";
 import { getStartTimes } from "client/utils/getStartTimes";
 import { sharedConfig } from "shared/config/sharedConfig";
 import { getTime } from "client/utils/getTime";
@@ -17,12 +17,12 @@ export const getMissedSignups = (
   // Get signup times for past signed games
   const pastSignupTimes = signedGamesStartTimes.filter(
     (signedGamesStartTime) => {
-      const signupEndTime = moment(signedGamesStartTime).subtract(
-        sharedConfig.SIGNUP_END_TIME,
+      const signupEndTime = dayjs(signedGamesStartTime).subtract(
+        sharedConfig.DIRECT_SIGNUP_START,
         "minutes"
       );
 
-      if (signupEndTime.isBefore(moment(timeNow))) {
+      if (signupEndTime.isBefore(dayjs(timeNow))) {
         return signedGamesStartTime;
       }
     }

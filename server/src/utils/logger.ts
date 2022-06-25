@@ -46,7 +46,7 @@ export const logger = createLogger({
         }),
         printf((info) => {
           return `${info.timestamp} ${info.level}: ${formatMessage(
-            info.message
+            info.message as string | object
           )}`;
         })
       ),

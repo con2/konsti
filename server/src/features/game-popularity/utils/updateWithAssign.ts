@@ -1,4 +1,4 @@
-import moment from "moment";
+import dayjs from "dayjs";
 import _ from "lodash";
 import { logger } from "server/utils/logger";
 import { padgAssignPlayers } from "server/features/player-assignment/padg/padgAssignPlayers";
@@ -12,10 +12,11 @@ export const updateWithAssign = async (
   games: readonly Game[]
 ): Promise<void> => {
   const groupedGames = _.groupBy(games, (game) =>
-    moment(game.startTime).utc().format()
+    dayjs(game.startTime).format()
   );
 
   let results = [] as readonly Result[];
+
   _.forEach(groupedGames, (value, key) => {
     const assignmentResult = padgAssignPlayers(users, games, key);
     results = results.concat(assignmentResult.results);

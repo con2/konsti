@@ -7,11 +7,39 @@ import { Game } from "shared/typings/models/game";
 import { findUsers } from "server/features/user/userRepository";
 import { findGames } from "server/features/game/gameRepository";
 import { AssignmentStrategy } from "shared/config/sharedConfig.types";
+import { config } from "server/config";
+import { removeOverlapSignups } from "server/features/player-assignment/utils/removeOverlapSignups";
+import { saveResults } from "server/features/player-assignment/utils/saveResults";
+import { getDynamicStartingTime } from "server/features/player-assignment/utils/getDynamicStartingTime";
+import { sleep } from "server/utils/sleep";
 
-export const runAssignment = async (
-  startingTime: string,
-  assignmentStrategy: AssignmentStrategy
-): Promise<PlayerAssignmentResult> => {
+interface RunAssignmentParams {
+  assignmentStrategy: AssignmentStrategy;
+  startingTime?: string;
+  useDynamicStartingTime?: boolean;
+  assignmentDelay?: number;
+}
+
+export const runAssignment = async ({
+  assignmentStrategy,
+  startingTime,
+  useDynamicStartingTime = false,
+  assignmentDelay = 0,
+}: RunAssignmentParams): Promise<PlayerAssignmentResult> => {
+  const assignmentTime = useDynamicStartingTime
+    ? await getDynamicStartingTime()
+    : startingTime;
+
+  if (!assignmentTime) {
+    throw new Error(`Missing assignment time`);
+  }
+
+  if (assignmentDelay) {
+    logger.info(`Wait ${assignmentDelay / 1000}s for final requests`);
+    await sleep(assignmentDelay);
+    logger.info("Waiting done, start assignment");
+  }
+
   try {
     await removeInvalidGamesFromUsers();
   } catch (error) {
@@ -38,11 +66,37 @@ export const runAssignment = async (
     assignResults = runAssignmentStrategy(
       users,
       games,
-      startingTime,
+      assignmentTime,
       assignmentStrategy
     );
   } catch (error) {
     throw new Error(`Player assign error: ${error}`);
+  }
+
+  if (assignResults.results.length === 0) {
+    logger.warn(`No assign results for starting time ${assignmentTime}`);
+  }
+
+  try {
+    await saveResults({
+      results: assignResults.results,
+      startingTime: assignmentTime,
+      algorithm: assignResults.algorithm,
+      message: assignResults.message,
+    });
+  } catch (error) {
+    logger.error(`saveResult error: ${error}`);
+    throw new Error("Saving results failed");
+  }
+
+  if (config.enableRemoveOverlapSignups) {
+    try {
+      logger.info("Remove overlapping signups");
+      await removeOverlapSignups(assignResults.results);
+    } catch (error) {
+      logger.error(`removeOverlapSignups error: ${error}`);
+      throw new Error("Removing overlap signups failed");
+    }
   }
 
   return assignResults;
