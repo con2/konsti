@@ -17,6 +17,8 @@ export const ErrorBar = (): ReactElement | null => {
 
   const errors = useAppSelector((state) => state.admin.errors);
 
+  if (!errors) return null;
+
   const errorList = errors.map((error) => {
     return (
       <StyledError
