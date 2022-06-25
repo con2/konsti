@@ -58,6 +58,7 @@ export interface TestSettingsState {
 
 export interface LocalStorageState {
   login: { jwt: string };
+  admin: { activeProgramType: ProgramType };
 }
 
 export type AppDispatch = typeof store.dispatch;
