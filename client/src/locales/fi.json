@@ -62,7 +62,6 @@
   "pages": {
     "myGames": "Omat pelit",
     "allGames": "Kaikki pelit",
-    "signUp": "Ilmoittaudu",
     "admin": "Ylläpito",
     "results": "Ilmoittautumistulokset",
     "group": "Ryhmä"
@@ -118,11 +117,9 @@
     "adventure": "Seikkailu"
   },
   "gameTags": {
-    "inEnglish": "Voidaan pelata englanniksi",
+    "inEnglish": "Pelataan englanniksi",
     "childrenFriendly": "Lapsiystävällinen",
     "ageRestricted": "Vain täysi-ikäisille",
-    "ageRestrictedTitle": "Tämän pelin ikäraja on 18+",
-    "ageRestrictedLong": "Pelaajia voidaan pyytää todistamaan ikänsä",
     "beginnerFriendly": "Aloittelijaystävällinen",
     "guestOfHonor": "Kunniavieraspeli",
     "family": "Sopii perheille",

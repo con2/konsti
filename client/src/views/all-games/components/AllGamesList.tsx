@@ -6,11 +6,11 @@ import { GameEntry } from "./GameEntry";
 import { useAppSelector } from "client/utils/hooks";
 import { Game } from "shared/typings/models/game";
 import { GameListTitle } from "client/views/all-games/components/GameListTitle";
-import { SignupStrategy } from "shared/config/sharedConfig.types";
 import { getIsGroupCreator } from "client/views/group/groupUtils";
 import { getSignedGames } from "client/utils/getUpcomingGames";
 import { getPhaseGap } from "shared/utils/getPhaseGap";
 import { getTime } from "client/utils/getTime";
+import { getTimeslotSignupStrategy } from "client/views/all-games/allGamesUtils";
 
 interface Props {
   games: readonly Game[];
@@ -23,6 +23,9 @@ export const AllGamesList = ({ games }: Props): ReactElement => {
   const ownSignedGames = useAppSelector((state) => state.myGames.signedGames);
   const enteredGames = useAppSelector((state) => state.myGames.enteredGames);
   const serial = useAppSelector((state) => state.login.serial);
+  const activeProgramType = useAppSelector(
+    (state) => state.admin.activeProgramType
+  );
   const groupCode = useAppSelector((state) => state.group.groupCode);
   const groupMembers = useAppSelector((state) => state.group.groupMembers);
   const isGroupCreator = getIsGroupCreator(groupCode, serial);
@@ -44,13 +47,10 @@ export const AllGamesList = ({ games }: Props): ReactElement => {
 
   const gamesList = Object.entries(gamesByStartTime).map(
     ([startTime, gamesForStartTime]) => {
-      // TODO:  How should we handle case where not all the games inside timeslot have same signup strategy?
-      //        Should not be problem in real cases, but is it ok to fallback ALGORITHM if data is broken?
-      const timeslotSignupStrategy = gamesForStartTime.every(
-        (game) => game.signupStrategy === SignupStrategy.DIRECT
-      )
-        ? SignupStrategy.DIRECT
-        : SignupStrategy.ALGORITHM;
+      const timeslotSignupStrategy = getTimeslotSignupStrategy(
+        gamesForStartTime,
+        activeProgramType
+      );
 
       return (
         <div key={startTime}>

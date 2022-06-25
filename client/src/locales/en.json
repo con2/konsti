@@ -62,7 +62,6 @@
   "pages": {
     "myGames": "My Games",
     "allGames": "All Games",
-    "signUp": "Sign Up",
     "admin": "Admin",
     "results": "All Signup Results",
     "group": "Group"
@@ -118,11 +117,9 @@
     "adventure": "Adventure"
   },
   "gameTags": {
-    "inEnglish": "Can be played in English",
+    "inEnglish": "Played in English",
     "childrenFriendly": "Children friendly",
     "ageRestricted": "For players over 18 only",
-    "ageRestrictedTitle": "This game's age limit is 18+",
-    "ageRestrictedLong": "Players may be asked to verify their age",
     "beginnerFriendly": "Beginner friendly",
     "guestOfHonor": "Guest of Honor game",
     "family": "Suitable for families",

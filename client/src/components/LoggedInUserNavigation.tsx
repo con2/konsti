@@ -4,15 +4,13 @@ import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 import { useAppSelector } from "client/utils/hooks";
 import { sharedConfig } from "shared/config/sharedConfig";
-import { SignupStrategy } from "shared/config/sharedConfig.types";
 import { isAdmin, isAdminOrHelp, isUser } from "client/utils/checkUserGroup";
 
 export const LoggedInUserNavigation = (props: {
   onSelect: () => void;
 }): ReactElement => {
-  const userGroup = useAppSelector((state) => state.login.userGroup);
-  const signupStrategy = useAppSelector((state) => state.admin.signupStrategy);
   const { t } = useTranslation();
+  const userGroup = useAppSelector((state) => state.login.userGroup);
 
   return (
     <StyledRoutes>
@@ -27,12 +25,6 @@ export const LoggedInUserNavigation = (props: {
           data-testid="my-games-page-link"
         >
           {t("pages.myGames")}
-        </RouterLink>
-      )}
-
-      {isUser(userGroup) && signupStrategy === SignupStrategy.ALGORITHM && (
-        <RouterLink onClick={props.onSelect} to="/signup">
-          {t("pages.signUp")}
         </RouterLink>
       )}
 
