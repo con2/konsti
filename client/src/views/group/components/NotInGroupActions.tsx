@@ -14,11 +14,13 @@ import { ErrorMessage } from "client/components/ErrorMessage";
 interface Props {
   username: string;
   serial: string;
+  disabled: boolean;
 }
 
 export const NotInGroupActions = ({
   username,
   serial,
+  disabled,
 }: Props): ReactElement => {
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
@@ -102,7 +104,9 @@ export const NotInGroupActions = ({
       </Button>
 
       <Button
-        buttonStyle={showJoinGroup ? ButtonStyle.DISABLED : ButtonStyle.NORMAL}
+        buttonStyle={
+          showJoinGroup || disabled ? ButtonStyle.DISABLED : ButtonStyle.NORMAL
+        }
         onClick={() => openJoinGroup()}
       >
         {t("button.joinGroup")}
