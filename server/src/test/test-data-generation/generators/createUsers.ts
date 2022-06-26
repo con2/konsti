@@ -23,10 +23,10 @@ export const createAdminUser = async (password?: string): Promise<void> => {
 };
 
 export const createHelpUser = async (): Promise<void> => {
-  logger.info(`Generate data for help user "ropetiski:test"`);
+  logger.info(`Generate data for help user "helper:test"`);
 
   const registrationData: NewUser = {
-    username: "ropetiski",
+    username: "helper",
     passwordHash: await hashPassword("test"),
     userGroup: UserGroup.HELP,
     serial: faker.datatype.number(10000000).toString(),
