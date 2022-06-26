@@ -15,7 +15,7 @@ import { selectActiveGames } from "client/views/admin/adminSlice";
 export const DirectResults = (): ReactElement => {
   const { t } = useTranslation();
 
-  const games = useAppSelector(selectActiveGames);
+  const activeGames = useAppSelector(selectActiveGames);
   const signups = useAppSelector((state) => state.allGames.signups);
   const signupMessages = useAppSelector((state) => state.admin.signupMessages);
   const hiddenGames = useAppSelector((state) => state.admin.hiddenGames);
@@ -23,10 +23,10 @@ export const DirectResults = (): ReactElement => {
   const [showAllGames, setShowAllGames] = useState<boolean>(false);
   const [showSignupMessages, setShowSignupMessages] = useState<string[]>([]);
 
-  const visibleGames = games
-    .filter((game) => game.signupStrategy === SignupStrategy.DIRECT)
-    .filter((game) =>
-      hiddenGames.every((hiddenGame) => game.gameId !== hiddenGame.gameId)
+  const visibleGames = activeGames
+    .filter((activeGame) => activeGame.signupStrategy === SignupStrategy.DIRECT)
+    .filter((activeGame) =>
+      hiddenGames.every((hiddenGame) => activeGame.gameId !== hiddenGame.gameId)
     );
 
   const filteredGames = showAllGames

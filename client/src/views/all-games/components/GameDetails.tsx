@@ -14,25 +14,27 @@ import { Game } from "shared/typings/models/game";
 import { updateFavorite, UpdateFavoriteOpts } from "client/utils/favorite";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { Button, ButtonStyle } from "client/components/Button";
-import { selectActiveGames } from "client/views/admin/adminSlice";
+import { setActiveProgramType } from "client/views/admin/adminSlice";
 
 export const GameDetails = (): ReactElement => {
+  const dispatch = useAppDispatch();
+  const { t } = useTranslation();
+
   const navigate = useNavigate();
   const { gameId } = useParams();
 
   const username = useAppSelector((state) => state.login.username);
   const loggedIn = useAppSelector((state) => state.login.loggedIn);
-  const games = useAppSelector(selectActiveGames);
+  const games = useAppSelector((state) => state.allGames.games);
   const userGroup = useAppSelector((state) => state.login.userGroup);
   const favoritedGames = useAppSelector(
     (state) => state.myGames.favoritedGames
   );
   const hiddenGames = useAppSelector((state) => state.admin.hiddenGames);
   const signupMessages = useAppSelector((state) => state.admin.signupMessages);
-  const dispatch = useAppDispatch();
-  const { t } = useTranslation();
-
-  const foundGame = games.find((game) => game.gameId === gameId);
+  const activeProgramType = useAppSelector(
+    (state) => state.admin.activeProgramType
+  );
 
   const [hidden, setHidden] = useState<boolean>(false);
   const [favorited, setFavorited] = useState<boolean>(false);
@@ -43,6 +45,12 @@ export const GameDetails = (): ReactElement => {
   const [signupMessageInput, setSignupMessageInput] = useState<string>("");
   const [signupMessageInputVisible, setSignupMessageInputVisible] =
     useState<boolean>(false);
+
+  const foundGame = games.find((game) => game.gameId === gameId);
+
+  if (foundGame && foundGame.programType !== activeProgramType) {
+    dispatch(setActiveProgramType(foundGame.programType));
+  }
 
   useEffect(() => {
     setLoading(true);
