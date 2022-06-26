@@ -47,26 +47,24 @@ export const PasswordManagement = (): ReactElement => {
   return (
     <div>
       <h3>{t("passwordManagement.helperPasswordManagement")}</h3>
-      <div>
-        <p>{t("passwordManagement.userCodeOrUsername")}</p>
-        <FormInput
-          key="user-serial"
-          placeholder={t("passwordManagement.userCodeOrUsername")}
-          value={userSerialInput}
-          onChange={handleSerialChange}
-        />
-        <Button onClick={submitGetUser} buttonStyle={ButtonStyle.NORMAL}>
-          {t("button.find")}
-        </Button>
+      <p>{t("passwordManagement.userCodeOrUsername")}</p>
 
-        {userFoundMessage}
-      </div>
+      <FormInput
+        key="user-serial"
+        placeholder={t("passwordManagement.userCodeOrUsername")}
+        value={userSerialInput}
+        onChange={handleSerialChange}
+      />
 
-      <div>
-        {changePasswordInputVisible && (
-          <ChangePasswordForm serial={serial} username={username} />
-        )}
-      </div>
+      <Button onClick={submitGetUser} buttonStyle={ButtonStyle.NORMAL}>
+        {t("button.find")}
+      </Button>
+
+      {userFoundMessage}
+
+      {changePasswordInputVisible && (
+        <ChangePasswordForm serial={serial} username={username} />
+      )}
     </div>
   );
 };

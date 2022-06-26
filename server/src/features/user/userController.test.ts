@@ -57,7 +57,7 @@ describe(`GET ${ApiEndpoint.USERS_BY_SERIAL_OR_USERNAME}`, () => {
     try {
       const response = await request(server)
         .get(ApiEndpoint.USERS_BY_SERIAL_OR_USERNAME)
-        .set("Authorization", `Bearer ${getJWT(UserGroup.HELP, "ropetiski")}`);
+        .set("Authorization", `Bearer ${getJWT(UserGroup.HELP, "helper")}`);
       expect(response.status).toEqual(422);
     } finally {
       await stopTestServer(server, mongoServer);
