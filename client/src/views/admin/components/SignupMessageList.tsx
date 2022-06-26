@@ -35,6 +35,7 @@ export const SignupMessageList = ({
                 {foundGame.title}
               </Link>
               : {signupMessage.message} -{" "}
+              {t(`programType.${foundGame.programType}`)} -{" "}
               {timeFormatter.getWeekdayAndTime({
                 time: foundGame.startTime,
                 capitalize: false,
