@@ -2,6 +2,7 @@ import React, { ReactElement, useEffect, useState } from "react";
 import { useStore } from "react-redux";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { MySignupsList } from "client/views/my-games/components/MySignupsList";
 import { MyFavoritesList } from "client/views/my-games/components/MyFavoritesList";
 import { MyEnteredList } from "client/views/my-games/components/MyEnteredList";
@@ -107,12 +108,13 @@ export const MyGamesView = (): ReactElement => {
       />
 
       <ChangePasswordButton
-        buttonStyle={
-          showChangePassword ? ButtonStyle.DISABLED : ButtonStyle.NORMAL
-        }
+        buttonStyle={ButtonStyle.NORMAL}
         onClick={() => setShowChangePassword(!showChangePassword)}
       >
-        {t("myGamesView.changePassword")}
+        <>
+          <AngleIcon icon={showChangePassword ? "angle-up" : "angle-down"} />
+          {t("myGamesView.changePassword")}
+        </>
       </ChangePasswordButton>
 
       {showChangePassword && (
@@ -165,4 +167,9 @@ const MyGamesViewContainer = styled.div`
 
 const ChangePasswordButton = styled(Button)`
   margin: 30px 0 0 0;
+`;
+
+const AngleIcon = styled(FontAwesomeIcon)`
+  margin: 0 10px 0 0;
+  font-size: 18px;
 `;
