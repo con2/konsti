@@ -15,10 +15,9 @@ import { Button, ButtonStyle } from "client/components/Button";
 import { SignupMessageList } from "client/views/admin/components/SignupMessageList";
 import { Dropdown, Item } from "client/components/Dropdown";
 import { SignupStrategySelector } from "client/test/test-components/SignupStrategySelector";
-import { selectActiveGames } from "client/views/admin/adminSlice";
 
 export const AdminView = (): ReactElement => {
-  const games = useAppSelector(selectActiveGames);
+  const games = useAppSelector((state) => state.allGames.games);
   const activeSignupTime = useAppSelector(
     (state) => state.admin.activeSignupTime
   );
