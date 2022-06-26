@@ -23,7 +23,7 @@ enum SelectedView {
 export const AllGamesView = (): ReactElement => {
   const { t } = useTranslation();
 
-  const games = useAppSelector(selectActiveGames);
+  const activeGames = useAppSelector(selectActiveGames);
   const testTime = useAppSelector((state) => state.testSettings.testTime);
   const hiddenGames = useAppSelector((state) => state.admin.hiddenGames);
   const signupStrategy = useAppSelector((state) => state.admin.signupStrategy);
@@ -127,7 +127,7 @@ export const AllGamesView = (): ReactElement => {
           </RevolvingDoorInstruction>
           <div>
             <h3>{t("currentlyRunningRevolvingDoor")}</h3>
-            {getRunningRevolvingDoorGames(games, t)}
+            {getRunningRevolvingDoorGames(activeGames, t)}
           </div>
         </>
       )}
@@ -136,7 +136,12 @@ export const AllGamesView = (): ReactElement => {
         <Loading />
       ) : (
         <AllGamesList
-          games={getVisibleGames(games, hiddenGames, selectedView, selectedTag)}
+          games={getVisibleGames(
+            activeGames,
+            hiddenGames,
+            selectedView,
+            selectedTag
+          )}
         />
       )}
     </>
