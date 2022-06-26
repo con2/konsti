@@ -35,7 +35,7 @@ Registered users by year:
 
   - **Admin**: admin:test
   - **Users**: test1:test | test2:test | test3:test
-  - **Helpers**: ropetiski:test
+  - **Helpers**: helper:test
 
 ## Tech
 
