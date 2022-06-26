@@ -16,7 +16,7 @@ export const createEnteredGames = async (): Promise<void> => {
   const settings = await findSettings();
 
   const users = allUsers.filter(
-    (user) => user.username !== "admin" && user.username !== "ropetiski"
+    (user) => user.username !== "admin" && user.username !== "helper"
   );
 
   logger.info(`EnteredGames: ${games.length} games`);

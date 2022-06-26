@@ -14,7 +14,7 @@ export const createSignups = async (): Promise<void> => {
   const allUsers = await findUsers();
 
   const users = allUsers.filter(
-    (user) => user.username !== "admin" && user.username !== "ropetiski"
+    (user) => user.username !== "admin" && user.username !== "helper"
   );
 
   logger.info(`Signup: ${games.length} games`);
@@ -98,7 +98,7 @@ const signupMultiple = async (
   const promises: Array<Promise<User>> = [];
 
   for (const user of users) {
-    if (user.username !== "admin" && user.username !== "ropetiski") {
+    if (user.username !== "admin" && user.username !== "helper") {
       promises.push(signup(games, user));
     }
   }
