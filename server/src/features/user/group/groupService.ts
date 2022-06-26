@@ -6,7 +6,7 @@ import {
   saveGroupCode,
 } from "server/features/user/group/groupRepository";
 import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
-import { findUser } from "server/features/user/userRepository";
+import { findUser, findUserSerial } from "server/features/user/userRepository";
 import { GetGroupReturnValue } from "server/typings/user.typings";
 import { logger } from "server/utils/logger";
 import {
@@ -114,7 +114,20 @@ export const joinGroup = async (
     };
   }
 
-  if (!userResponse?.serial) {
+  // Check if code is valid
+  let findSerialResponse;
+  try {
+    findSerialResponse = await findUserSerial({ serial: groupCode });
+  } catch (error) {
+    logger.error(`findSerial(): ${error}`);
+    return {
+      message: "Error finding serial",
+      status: "error",
+      errorId: "invalidGroupCode",
+    };
+  }
+
+  if (!findSerialResponse?.serial) {
     // Invalid code
     return {
       message: "Invalid group code",
@@ -126,7 +139,7 @@ export const joinGroup = async (
   // Check if group with code exists
   let findGroupResponse;
   try {
-    const creatorUsername = userResponse.username;
+    const creatorUsername = findSerialResponse.username;
     findGroupResponse = await findGroup(groupCode, creatorUsername);
   } catch (error) {
     logger.error(`findGroup(): ${error}`);
