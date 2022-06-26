@@ -1,10 +1,12 @@
+import dayjs from "dayjs";
+import { getTime } from "server/features/player-assignment/utils/getTime";
 import {
   findGroup,
   findGroupMembers,
   saveGroupCode,
 } from "server/features/user/group/groupRepository";
 import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
-import { findUserSerial } from "server/features/user/userRepository";
+import { findUser } from "server/features/user/userRepository";
 import { GetGroupReturnValue } from "server/typings/user.typings";
 import { logger } from "server/utils/logger";
 import {
@@ -86,20 +88,33 @@ export const joinGroup = async (
     };
   }
 
-  // Check if code is valid
-  let findSerialResponse;
+  let userResponse;
   try {
-    findSerialResponse = await findUserSerial({ serial: groupCode });
+    userResponse = await findUser(username);
   } catch (error) {
-    logger.error(`findSerial(): ${error}`);
+    logger.error(`findUser(): ${error}`);
     return {
-      message: "Error finding serial",
+      message: "Error finding user",
       status: "error",
-      errorId: "invalidGroupCode",
+      errorId: "unknown",
     };
   }
 
-  if (!findSerialResponse) {
+  const timeNow = await getTime();
+  const userHasEnteredGames = userResponse?.enteredGames.some((selectedGame) =>
+    timeNow.isBefore(dayjs(selectedGame.time))
+  );
+
+  // User cannot have entered games in future when joining in group
+  if (userHasEnteredGames) {
+    return {
+      message: "Entered games in future",
+      status: "error",
+      errorId: "userHasSignedGames",
+    };
+  }
+
+  if (!userResponse?.serial) {
     // Invalid code
     return {
       message: "Invalid group code",
@@ -111,7 +126,7 @@ export const joinGroup = async (
   // Check if group with code exists
   let findGroupResponse;
   try {
-    const creatorUsername = findSerialResponse.username;
+    const creatorUsername = userResponse.username;
     findGroupResponse = await findGroup(groupCode, creatorUsername);
   } catch (error) {
     logger.error(`findGroup(): ${error}`);
