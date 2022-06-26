@@ -216,6 +216,8 @@
       "onlyCreatorCanCloseGroup": "Vain ryhmän perustaja voi sulkea ryhmän",
       "userHasSignedGames": "Sinulla on jo ilmoittautumisia peleihin. Poista ilmoittautumiset ennen kuin liityt ryhmään."
     },
+    "hasEnteredFollowingGames": "Olet jo päässyt seuraaviin peleihin:",
+    "cancelSignupBeforeJoiningGroup": "Peruuta ilmoittaumisesi yllä oleviin peleihin ennen kuin voit ilmoittautua ryhmään.",
     "signupDisabledNotCreator": "Olet ryhmän jäsen. Ryhmän perustaja ennakkoilmoittautuu peleihin ryhmän jäsenten puolesta.",
     "signupForWholeGroup": "Olet ryhmän perustaja. Voit ilmoittautua peleihin koko ryhmän puolesta.",
     "inGroupSignups": "Olet ryhmän jäsen. Seuraavat pelit ovat ryhmän perustajan valitsemia.",
