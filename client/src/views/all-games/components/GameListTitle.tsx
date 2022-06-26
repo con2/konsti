@@ -51,7 +51,12 @@ export const GameListTitle = ({
       isVisible={!!isIntersecting}
     >
       <StyledGameListTitle>
-        <StartTime>{formattedStartTime}</StartTime>
+        <StartTimeContainer>
+          <StartTime>{formattedStartTime}</StartTime>
+          {timeslotSignupStrategy === SignupStrategy.ALGORITHM && (
+            <SignupCount>{signedGamesCount} / 3</SignupCount>
+          )}
+        </StartTimeContainer>
 
         {timeslotSignupStrategy === SignupStrategy.ALGORITHM && (
           <span>
@@ -59,12 +64,10 @@ export const GameListTitle = ({
           </span>
         )}
 
-        {timeslotSignupStrategy === SignupStrategy.DIRECT ? (
+        {timeslotSignupStrategy === SignupStrategy.DIRECT && (
           <SignupCount>
             {signedGame ? signedGame.gameDetails.title : ""}
           </SignupCount>
-        ) : (
-          <SignupCount>{signedGamesCount} / 3</SignupCount>
         )}
       </StyledGameListTitle>
 
@@ -81,6 +84,11 @@ export const GameListTitle = ({
     </GameListTitleContainer>
   );
 };
+
+const StartTimeContainer = styled.span`
+  display: flex;
+  justify-content: space-between;
+`;
 
 const SignupCount = styled.span`
   float: right;
@@ -104,6 +112,8 @@ const GameListTitleContainer = styled.div<{ isVisible: boolean }>`
 `;
 
 const StyledGameListTitle = styled.h3`
+  display: flex;
+  flex-direction: column;
   margin: 0;
   padding: 0;
 `;
