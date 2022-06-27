@@ -56,7 +56,6 @@ export const AllGamesList = ({ games }: Props): ReactElement => {
         <div key={startTime}>
           <GameListTitle
             startTime={startTime}
-            gamesForStartTime={gamesForStartTime}
             signedGames={ownOrGroupCreatorSignedGames}
             enteredGames={enteredGames}
             timeslotSignupStrategy={timeslotSignupStrategy}

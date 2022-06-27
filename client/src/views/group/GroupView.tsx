@@ -46,11 +46,7 @@ export const GroupView = (): ReactElement => {
                 <BoldText>{t("group.youAreGroupCreator")}</BoldText>.{" "}
                 {t("group.groupCreatorInfo")}
               </p>
-              <GroupCreatorActions
-                username={username}
-                groupCode={groupCode}
-                serial={serial}
-              />
+              <GroupCreatorActions username={username} groupCode={groupCode} />
             </>
           )}
 
@@ -60,11 +56,7 @@ export const GroupView = (): ReactElement => {
                 <BoldText>{t("group.youAreInGroup")}</BoldText>.{" "}
                 {t("group.groupMemberInfo")}
               </p>
-              <GroupMemberActions
-                username={username}
-                groupCode={groupCode}
-                serial={serial}
-              />
+              <GroupMemberActions username={username} />
             </>
           )}
 

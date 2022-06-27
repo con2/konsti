@@ -3,13 +3,11 @@ import styled, { css } from "styled-components";
 import { useTranslation } from "react-i18next";
 import useIntersectionObserver from "@react-hook/intersection-observer";
 import { timeFormatter } from "client/utils/timeFormatter";
-import { Game } from "shared/typings/models/game";
 import { SelectedGame } from "shared/typings/models/user";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
 
 interface Props {
   startTime: string;
-  gamesForStartTime: readonly Game[];
   signedGames: readonly SelectedGame[];
   enteredGames: readonly SelectedGame[];
   timeslotSignupStrategy: SignupStrategy;
@@ -19,7 +17,6 @@ interface Props {
 
 export const GameListTitle = ({
   startTime,
-  gamesForStartTime,
   signedGames,
   enteredGames,
   timeslotSignupStrategy,

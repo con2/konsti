@@ -56,6 +56,6 @@ const sortList = (list: ListItem[], i: number): ListItem[] => {
     case 1:
       return _.sortBy(list, "size");
     default:
-      return list.sort((a, b) => 0.5 - Math.random());
+      return list.sort((_a, _b) => 0.5 - Math.random());
   }
 };

@@ -117,9 +117,7 @@ export const MyGamesView = (): ReactElement => {
         </>
       </ChangePasswordButton>
 
-      {showChangePassword && (
-        <ChangePasswordForm serial={serial} username={username} />
-      )}
+      {showChangePassword && <ChangePasswordForm username={username} />}
     </MyGamesViewContainer>
   );
 };

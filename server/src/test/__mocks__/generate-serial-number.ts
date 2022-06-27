@@ -29,7 +29,7 @@ function _nextArrayElement(arr: string[]): string {
   return arr[ind];
 }
 
-function generate(count: number): string {
+function generate(_count: number): string {
   return _nextArrayElement(serials);
 }
 
