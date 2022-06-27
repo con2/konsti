@@ -74,7 +74,7 @@ export const RegistrationForm = (): ReactElement => {
                     length: USERNAME_LENGTH_MAX,
                   }),
                 },
-                onChange: (e) => {
+                onChange: () => {
                   setServerError(null);
                 },
               })}
@@ -105,7 +105,7 @@ export const RegistrationForm = (): ReactElement => {
                     length: PASSWORD_LENGTH_MAX,
                   }),
                 },
-                onChange: (e) => {
+                onChange: () => {
                   setServerError(null);
                 },
               })}
@@ -133,7 +133,7 @@ export const RegistrationForm = (): ReactElement => {
                 <StyledInput
                   {...register("serial", {
                     required: `${t(`validation.required`)}`,
-                    onChange: (e) => {
+                    onChange: () => {
                       setServerError(null);
                     },
                   })}
@@ -158,7 +158,7 @@ export const RegistrationForm = (): ReactElement => {
             <StyledCheckbox
               {...register("registerDescription", {
                 required: `${t(`validation.required`)}`,
-                onChange: (e) => {
+                onChange: () => {
                   setServerError(null);
                 },
               })}

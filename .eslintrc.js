@@ -86,7 +86,10 @@ module.exports = {
         format: ["PascalCase"],
       },
     ],
-    "@typescript-eslint/no-unused-vars": "error",
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      { vars: "all", args: "all", argsIgnorePattern: "^_" },
+    ],
     "@typescript-eslint/strict-boolean-expressions": "off", // Forces unwanted code style
     "@typescript-eslint/restrict-template-expressions": "off", // Requires typing catch(e) every time
     "@typescript-eslint/restrict-plus-operands": "off", // Doesn't support dynamic object occurance counting
