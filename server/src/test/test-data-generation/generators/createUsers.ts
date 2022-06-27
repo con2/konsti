@@ -61,7 +61,6 @@ interface CreateTestUsersParams {
 
 export const createTestUsers = async ({
   userCount,
-  inSameGroup = false,
 }: CreateTestUsersParams): Promise<void> => {
   for (let i = 0; i < userCount; i += 1) {
     await createTestUser({ userNumber: i + 1 });

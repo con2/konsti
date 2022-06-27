@@ -10,15 +10,9 @@ import { ErrorMessage } from "client/components/ErrorMessage";
 
 interface Props {
   username: string;
-  groupCode: string;
-  serial: string;
 }
 
-export const GroupMemberActions = ({
-  username,
-  groupCode,
-  serial,
-}: Props): ReactElement => {
+export const GroupMemberActions = ({ username }: Props): ReactElement => {
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
 
