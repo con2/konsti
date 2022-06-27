@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 import { logTestStart, populateDb } from "./utils";
 
-test("Login", async ({ page, context, request }) => {
+test("Login", async ({ page, request }) => {
   logTestStart("Login");
   await populateDb(request);
 

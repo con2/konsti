@@ -27,7 +27,7 @@ export const createSettings = async ({
   if (signupMessages) {
     const games = await findGames();
 
-    const promises = testMessages.map(async (testMessage, index) => {
+    const promises = testMessages.map(async (_testMessage, index) => {
       const randomGame = games[Math.floor(Math.random() * games.length)];
 
       logger.info(

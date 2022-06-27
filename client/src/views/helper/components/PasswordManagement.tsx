@@ -8,7 +8,6 @@ import { ChangePasswordForm } from "client/views/helper/components/ChangePasswor
 export const PasswordManagement = (): ReactElement => {
   const { t } = useTranslation();
 
-  const [serial, setSerial] = useState<string>("");
   const [username, setUsername] = useState<string>("");
   const [userSerialInput, setUserSerialInput] = useState<string>("");
   const [changePasswordInputVisible, setChangePasswordInputVisible] =
@@ -34,7 +33,6 @@ export const PasswordManagement = (): ReactElement => {
           {response.serial})
         </Message>
       );
-      setSerial(response.serial);
       setUsername(response.username);
       setChangePasswordInputVisible(true);
     }
@@ -62,9 +60,7 @@ export const PasswordManagement = (): ReactElement => {
 
       {userFoundMessage}
 
-      {changePasswordInputVisible && (
-        <ChangePasswordForm serial={serial} username={username} />
-      )}
+      {changePasswordInputVisible && <ChangePasswordForm username={username} />}
     </div>
   );
 };

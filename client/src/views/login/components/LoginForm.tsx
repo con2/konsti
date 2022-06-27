@@ -43,7 +43,7 @@ export const LoginForm = (): ReactElement => {
           <StyledInput
             {...register("username", {
               required: `${t(`validation.required`)}`,
-              onChange: (e) => {
+              onChange: () => {
                 setServerError(null);
               },
             })}
@@ -63,7 +63,7 @@ export const LoginForm = (): ReactElement => {
           <StyledInput
             {...register("password", {
               required: `${t(`validation.required`)}`,
-              onChange: (e) => {
+              onChange: () => {
                 setServerError(null);
               },
             })}
