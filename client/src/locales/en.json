@@ -232,7 +232,7 @@
     "groupMemberInfo": "Group creator will sign up to the games for the whole group. See selected games from \"My Games\" page.",
     "groupCreatorInfo": "You can sign up to games for the whole group. Please make sure that the group is not too big for the selected games. Group creator cannot leave the group, but can close it. This will remove all members from the group.",
     "joiningGroupWillCancelGames": "Joining a group will cancel all signups you may have done before",
-    "groupSignupGuide": "Joining a group is done with the group starter's registration code. Your own code can be found from the top of the page.",
+    "groupSignupGuide": "In a group you can pre-signup to same games. Joining a group is done with the group starter's registration code. Your own code is:",
     "invalidGroupCode": "Invalid code",
     "groupNotExist": "Group does not exist",
     "generalGroupError": "Error updating group",
