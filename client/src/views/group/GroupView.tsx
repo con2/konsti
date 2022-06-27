@@ -32,7 +32,9 @@ export const GroupView = (): ReactElement => {
   return (
     <div className="group-view">
       <h2>{t("pages.group")}</h2>
-      <p>{t("group.groupSignupGuide")}</p>
+      <p>
+        {t("group.groupSignupGuide")} <BoldText>{serial}</BoldText>.
+      </p>
 
       {!isInGroup && <NotInGroupActions username={username} serial={serial} />}
 
