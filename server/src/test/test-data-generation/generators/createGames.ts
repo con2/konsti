@@ -13,6 +13,7 @@ import {
   KompassiProgramType,
   KompassiTag,
 } from "shared/typings/models/kompassiGame";
+import { TOURNAMENT_EVENT_TYPE } from "server/features/game/utils/getGamesFromKompassi";
 
 const GAME_ID_MAX = 10000000;
 
@@ -30,59 +31,66 @@ export const createGames = async (
     );
   }
 
-  logger.info(
-    `Generate data for ${gameCount} games for ${signupTimes} starting times`
-  );
+  const kompassiGames: KompassiGame[] = [];
 
-  const kompassiGames = [] as KompassiGame[];
+  const programTypes = Object.values(KompassiProgramType);
 
-  startingTimes.forEach((startingTime) => {
-    for (let i = 0; i < gameCount; i += 1) {
-      const startTime = startingTime;
-      const length = 180;
+  programTypes.map((programType) => {
+    logger.info(
+      `Generate data for ${gameCount} programs of type "${programType}" for ${signupTimes} starting times`
+    );
 
-      const kompassiGameData: KompassiGame = {
-        title: faker.random.words(3),
-        description: faker.lorem.sentences(5),
-        category_title: KompassiProgramType.TABLETOP_RPG,
-        formatted_hosts: faker.internet.userName(),
-        room_name: "Ropetaverna",
-        length,
-        start_time: dayjs(startTime).format(),
-        end_time: dayjs(startTime).add(length, "minutes").format(),
-        language: "fi",
-        rpg_system: "Test gamesystem",
-        min_players: faker.datatype.number({ min: 2, max: 3 }),
-        max_players: faker.datatype.number({ min: 3, max: 4 }),
-        identifier: faker.datatype.number(GAME_ID_MAX).toString(),
-        tags: sampleSize(Object.values(KompassiTag), 3),
-        genres: sampleSize(Object.values(KompassiGenre), 2),
-        styles: sampleSize(Object.values(KompassiGameStyle), 2),
-        short_blurb: faker.lorem.sentence(),
-        revolving_door: Math.random() < 0.5,
-        content_warnings: "Content warning",
-        other_author: "Other author",
-        ropecon2018_characters: 6,
-        ropecon2021_accessibility_loud_sounds: Math.random() < 0.5,
-        ropecon2021_accessibility_flashing_lights: Math.random() < 0.5,
-        ropecon2021_accessibility_strong_smells: Math.random() < 0.5,
-        ropecon2021_accessibility_irritate_skin: Math.random() < 0.5,
-        ropecon2021_accessibility_physical_contact: Math.random() < 0.5,
-        ropecon2021_accessibility_low_lightning: Math.random() < 0.5,
-        ropecon2021_accessibility_moving_around: Math.random() < 0.5,
-        ropecon2021_accessibility_video: Math.random() < 0.5,
-        ropecon2021_accessibility_recording: Math.random() < 0.5,
-        ropecon2021_accessibility_text: Math.random() < 0.5,
-        ropecon2021_accessibility_colourblind: Math.random() < 0.5,
-        ropecon2022_accessibility_remaining_one_place: Math.random() < 0.5,
-        ropecon2022_content_warnings: "Content warning",
-        ropecon2021_accessibility_inaccessibility: "Other inaccessibility",
-        type_of_game_program: "",
-      };
+    startingTimes.forEach((startingTime) => {
+      for (let i = 0; i < gameCount; i += 1) {
+        const startTime = startingTime;
+        const length = 180;
 
-      logger.info(`Stored game "${kompassiGameData.title}"`);
-      kompassiGames.push(kompassiGameData);
-    }
+        const kompassiGameData: KompassiGame = {
+          title: faker.random.words(3),
+          description: faker.lorem.sentences(5),
+          category_title: programType,
+          formatted_hosts: faker.internet.userName(),
+          room_name: "Ropetaverna",
+          length,
+          start_time: dayjs(startTime).format(),
+          end_time: dayjs(startTime).add(length, "minutes").format(),
+          language: "fi",
+          rpg_system: "Test gamesystem",
+          min_players: faker.datatype.number({ min: 2, max: 3 }),
+          max_players: faker.datatype.number({ min: 3, max: 4 }),
+          identifier: faker.datatype.number(GAME_ID_MAX).toString(),
+          tags: sampleSize(Object.values(KompassiTag), 3),
+          genres: sampleSize(Object.values(KompassiGenre), 2),
+          styles: sampleSize(Object.values(KompassiGameStyle), 2),
+          short_blurb: faker.lorem.sentence(),
+          revolving_door: Math.random() < 0.5,
+          content_warnings: "Content warning",
+          other_author: "Other author",
+          ropecon2018_characters: 6,
+          ropecon2021_accessibility_loud_sounds: Math.random() < 0.5,
+          ropecon2021_accessibility_flashing_lights: Math.random() < 0.5,
+          ropecon2021_accessibility_strong_smells: Math.random() < 0.5,
+          ropecon2021_accessibility_irritate_skin: Math.random() < 0.5,
+          ropecon2021_accessibility_physical_contact: Math.random() < 0.5,
+          ropecon2021_accessibility_low_lightning: Math.random() < 0.5,
+          ropecon2021_accessibility_moving_around: Math.random() < 0.5,
+          ropecon2021_accessibility_video: Math.random() < 0.5,
+          ropecon2021_accessibility_recording: Math.random() < 0.5,
+          ropecon2021_accessibility_text: Math.random() < 0.5,
+          ropecon2021_accessibility_colourblind: Math.random() < 0.5,
+          ropecon2022_accessibility_remaining_one_place: Math.random() < 0.5,
+          ropecon2022_content_warnings: "Content warning",
+          ropecon2021_accessibility_inaccessibility: "Other inaccessibility",
+          type_of_game_program:
+            programType === KompassiProgramType.BOARD_GAME
+              ? TOURNAMENT_EVENT_TYPE
+              : "",
+        };
+
+        logger.info(`Stored game "${kompassiGameData.title}"`);
+        kompassiGames.push(kompassiGameData);
+      }
+    });
   });
 
   return await saveGames(kompassiGameMapper(kompassiGames));
