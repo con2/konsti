@@ -21,6 +21,7 @@ import { getSignedGames } from "client/views/my-games/utils/getSignedGames";
 import {
   selectActiveEnteredGames,
   selectActiveFavoritedGames,
+  selectActiveSignedGames,
 } from "client/views/my-games/myGamesSlice";
 
 export const MyGamesView = (): ReactElement => {
@@ -29,7 +30,7 @@ export const MyGamesView = (): ReactElement => {
   const serial = useAppSelector((state) => state.login.serial);
   const username = useAppSelector((state) => state.login.username);
   const groupCode = useAppSelector((state) => state.group.groupCode);
-  const signedGames = useAppSelector((state) => state.myGames.signedGames);
+  const activeSignedGames = useAppSelector(selectActiveSignedGames);
   const activeFavoritedGames = useAppSelector(selectActiveFavoritedGames);
   const activeEnteredGames = useAppSelector(selectActiveEnteredGames);
   const groupMembers = useAppSelector((state) => state.group.groupMembers);
@@ -86,7 +87,7 @@ export const MyGamesView = (): ReactElement => {
         activeProgramType === ProgramType.TABLETOP_RPG && (
           <MySignupsList
             signedGames={getSignedGames(
-              signedGames,
+              activeSignedGames,
               groupCode,
               serial,
               showAllGames,
@@ -103,7 +104,7 @@ export const MyGamesView = (): ReactElement => {
             : getUpcomingEnteredGames(activeEnteredGames)
         }
         signedGames={getSignedGames(
-          signedGames,
+          activeSignedGames,
           groupCode,
           serial,
           showAllGames,
