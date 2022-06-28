@@ -23,6 +23,7 @@ export const SignupForm = ({
 }: Props): ReactElement => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
+  // We need all signed games here
   const signedGames = useAppSelector((state) => state.myGames.signedGames);
   const username = useAppSelector((state) => state.login.username);
   const priorityRef = useRef<HTMLSelectElement>(null);
