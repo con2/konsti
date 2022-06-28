@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 import { GroupMember } from "shared/typings/api/groups";
-import { Game } from "shared/typings/models/game";
+import { Game, ProgramType } from "shared/typings/models/game";
 import { getTime } from "client/utils/getTime";
 import { getIsGroupCreator } from "client/views/group/groupUtils";
 import { SelectedGame } from "shared/typings/models/user";
@@ -47,6 +47,7 @@ export const getSignedGames = (
   groupCode: string,
   serial: string,
   groupMembers: readonly GroupMember[],
+  activeProgramType: ProgramType,
   getAllGames = true
 ): readonly SelectedGame[] => {
   const isGroupCreator = getIsGroupCreator(groupCode, serial);
@@ -57,14 +58,15 @@ export const getSignedGames = (
 
   if (!isGroupCreator) {
     const groupCreator = getGroupCreator(groupMembers);
+    if (!groupCreator) return [];
 
-    if (!getAllGames) {
-      return getUpcomingSignedGames(
-        groupCreator ? groupCreator.signedGames : signedGames
-      );
-    } else {
-      return groupCreator ? groupCreator.signedGames : signedGames;
-    }
+    const groupCreatorActiveSignedGames = groupCreator.signedGames.filter(
+      (signedGame) => signedGame.gameDetails.programType === activeProgramType
+    );
+
+    return getAllGames
+      ? groupCreatorActiveSignedGames
+      : getUpcomingSignedGames(groupCreatorActiveSignedGames);
   }
 
   return signedGames;
