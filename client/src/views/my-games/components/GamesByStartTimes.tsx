@@ -78,8 +78,9 @@ export const GamesByStartTimes = ({
   );
 };
 
-const GameDetailsList = styled.span`
+const GameDetailsList = styled.p`
   padding-left: 30px;
+  margin: 0;
 `;
 
 const ButtonPlacement = styled.span`
