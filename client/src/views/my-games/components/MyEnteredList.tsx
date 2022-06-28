@@ -31,11 +31,7 @@ export const MyEnteredList = ({
 
   useEffect(() => {
     setStartTimes(
-      enteredGames
-        .map((enteredGame) => {
-          return enteredGame.time;
-        })
-        .concat(missedSignups)
+      enteredGames.map((enteredGame) => enteredGame.time).concat(missedSignups)
     );
   }, [missedSignups]);
 

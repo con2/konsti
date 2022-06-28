@@ -58,14 +58,14 @@ export const GamesByStartTimes = ({
                     </Link>
 
                     <ButtonPlacement>
-                      <StyledButton
+                      <Button
                         onClick={async () => {
                           await removeFavorite(game);
                         }}
                         buttonStyle={ButtonStyle.NORMAL}
                       >
                         {t("button.removeFavorite")}
-                      </StyledButton>
+                      </Button>
                     </ButtonPlacement>
                   </GameDetailsList>
                 );
@@ -89,8 +89,4 @@ const ButtonPlacement = styled.span`
 const StyledTime = styled.p`
   font-weight: 600;
   margin: 10px 0;
-`;
-
-const StyledButton = styled(Button)`
-  margin: 0;
 `;
