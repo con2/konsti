@@ -3,7 +3,7 @@ import dayjs from "dayjs";
 import _ from "lodash";
 import { logger } from "server/utils/logger";
 import { updateGamePopularity } from "server/features/game-popularity/updateGamePopularity";
-import { Game } from "shared/typings/models/game";
+import { Game, ProgramType } from "shared/typings/models/game";
 import { findUsers } from "server/features/user/userRepository";
 import { findGames } from "server/features/game/gameRepository";
 import { SelectedGame, User } from "shared/typings/models/user";
@@ -42,14 +42,21 @@ const getRandomSignup = (games: readonly Game[]): SelectedGame[] => {
   const signedGames = [] as SelectedGame[];
   let randomIndex;
 
-  const startTimes = games.map((game) => dayjs(game.startTime).format());
+  const activeGames = games.filter(
+    (game) => game.programType === ProgramType.TABLETOP_RPG
+  );
+
+  const startTimes = activeGames.map((activeGame) =>
+    dayjs(activeGame.startTime).format()
+  );
   const uniqueTimes = Array.from(new Set(startTimes));
 
   // Select random games for each starting time
   uniqueTimes.forEach((startingTime) => {
     logger.debug(`Generate signups for time ${startingTime}`);
-    const gamesForTime = games.filter(
-      (game) => dayjs(game.startTime).format() === dayjs(startingTime).format()
+    const gamesForTime = activeGames.filter(
+      (activeGame) =>
+        dayjs(activeGame.startTime).format() === dayjs(startingTime).format()
     );
 
     const numberOfSignups = Math.min(gamesForTime.length, 3);
