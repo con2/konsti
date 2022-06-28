@@ -45,7 +45,7 @@ export const runGenerators = async (
   const testUsersCount = 5; // Number of test users
 
   // Total games: newGamesCount * signupTimes
-  const newGamesCount = 10; // How many games are available for each signup time
+  const newGamesCount = 10; // How many games are available for each signup time for each program type
   const signupTimes = 3; // For how many signup times games are created
 
   if (options.clean) {
