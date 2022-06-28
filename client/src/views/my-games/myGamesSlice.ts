@@ -73,16 +73,18 @@ const selectActiveProgramType = (state: RootState): ProgramType =>
 
 export const selectActiveEnteredGames = createSelector(
   [selectEnteredGames, selectActiveProgramType],
-  (games, activeProgramType) => {
-    return games.filter(
-      (game) => game.gameDetails.programType === activeProgramType
+  (enteredGames, activeProgramType) => {
+    return enteredGames.filter(
+      (enteredGame) => enteredGame.gameDetails.programType === activeProgramType
     );
   }
 );
 
 export const selectActiveFavoritedGames = createSelector(
   [selectFavoritedGames, selectActiveProgramType],
-  (games, activeProgramType) => {
-    return games.filter((game) => game.programType === activeProgramType);
+  (favoritedGames, activeProgramType) => {
+    return favoritedGames.filter(
+      (favoritedGame) => favoritedGame.programType === activeProgramType
+    );
   }
 );
