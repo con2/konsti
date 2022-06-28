@@ -9,13 +9,18 @@ import { getIsGroupCreator, getIsInGroup } from "client/views/group/groupUtils";
 import { NotInGroupActions } from "client/views/group/components/NotInGroupActions";
 import { GroupCreatorActions } from "client/views/group/components/GroupCreatorActions";
 import { GroupMemberActions } from "client/views/group/components/GroupMemberActions";
+import { ProgramType } from "shared/typings/models/game";
 
 export const GroupView = (): ReactElement => {
+  const { t } = useTranslation();
+
   const username = useAppSelector((state) => state.login.username);
   const serial = useAppSelector((state) => state.login.serial);
   const groupCode = useAppSelector((state) => state.group.groupCode);
   const groupMembers = useAppSelector((state) => state.group.groupMembers);
-  const { t } = useTranslation();
+  const activeProgramType = useAppSelector(
+    (state) => state.admin.activeProgramType
+  );
 
   const store = useStore();
 
@@ -32,36 +37,47 @@ export const GroupView = (): ReactElement => {
   return (
     <div className="group-view">
       <h2>{t("pages.group")}</h2>
-      <p>
-        {t("group.groupSignupGuide")} <BoldText>{serial}</BoldText>.
-      </p>
+      <p>{t("group.groupPreSignupGuide")}</p>
 
-      {!isInGroup && <NotInGroupActions username={username} serial={serial} />}
-
-      {isInGroup && (
+      {activeProgramType !== ProgramType.TABLETOP_RPG ? (
+        <p>{t("group.groupPreSignupTabletopOnly")}</p>
+      ) : (
         <>
-          {isGroupCreator && (
+          <p>
+            {t("group.groupSignupGuide")} <BoldText>{serial}</BoldText>.
+          </p>
+          {!isInGroup && (
+            <NotInGroupActions username={username} serial={serial} />
+          )}
+          {isInGroup && (
             <>
-              <p>
-                <BoldText>{t("group.youAreGroupCreator")}</BoldText>.{" "}
-                {t("group.groupCreatorInfo")}
-              </p>
-              <GroupCreatorActions username={username} groupCode={groupCode} />
+              {isGroupCreator && (
+                <>
+                  <p>
+                    <BoldText>{t("group.youAreGroupCreator")}</BoldText>.{" "}
+                    {t("group.groupCreatorInfo")}
+                  </p>
+                  <GroupCreatorActions
+                    username={username}
+                    groupCode={groupCode}
+                  />
+                </>
+              )}
+
+              {!isGroupCreator && (
+                <>
+                  <p>
+                    <BoldText>{t("group.youAreInGroup")}</BoldText>.{" "}
+                    {t("group.groupMemberInfo")}
+                  </p>
+                  <GroupMemberActions username={username} />
+                </>
+              )}
+
+              <h3>{t("group.groupMembers")}</h3>
+              <GroupMembersList groupMembers={groupMembers} />
             </>
           )}
-
-          {!isGroupCreator && (
-            <>
-              <p>
-                <BoldText>{t("group.youAreInGroup")}</BoldText>.{" "}
-                {t("group.groupMemberInfo")}
-              </p>
-              <GroupMemberActions username={username} />
-            </>
-          )}
-
-          <h3>{t("group.groupMembers")}</h3>
-          <GroupMembersList groupMembers={groupMembers} />
         </>
       )}
     </div>
