@@ -19,7 +19,7 @@ export const ResultsByStartTimes = ({
   const { t } = useTranslation();
 
   return (
-    <div>
+    <>
       {startTimes.map((startTime) => {
         return (
           <div key={startTime}>
@@ -52,7 +52,7 @@ export const ResultsByStartTimes = ({
           </div>
         );
       })}
-    </div>
+    </>
   );
 };
 
@@ -64,4 +64,5 @@ const GameDetailsList = styled.div`
 
 const StyledTime = styled.p`
   font-weight: 600;
+  margin: 10px 0;
 `;

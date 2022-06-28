@@ -5,15 +5,18 @@ import styled from "styled-components";
 import { ResultsByStartTimes } from "./ResultsByStartTimes";
 import { getMissedSignups } from "client/views/my-games/utils/getMissedSignups";
 import { SelectedGame } from "shared/typings/models/user";
+import { ProgramType } from "shared/typings/models/game";
 
 interface Props {
   enteredGames: readonly SelectedGame[];
   signedGames: readonly SelectedGame[];
+  activeProgramType: ProgramType;
 }
 
 export const MyEnteredList = ({
   enteredGames,
   signedGames,
+  activeProgramType,
 }: Props): ReactElement => {
   const { t } = useTranslation();
 
@@ -21,14 +24,16 @@ export const MyEnteredList = ({
   const [startTimes, setStartTimes] = useState<string[]>([]);
 
   useEffect(() => {
-    setMissedSignups(getMissedSignups(signedGames, enteredGames));
-  }, [signedGames, enteredGames]);
+    setMissedSignups(
+      getMissedSignups(signedGames, enteredGames, activeProgramType)
+    );
+  }, [signedGames, enteredGames, activeProgramType]);
 
   useEffect(() => {
     setStartTimes(
       enteredGames
-        .map((sortedEnteredGame) => {
-          return sortedEnteredGame.time;
+        .map((enteredGame) => {
+          return enteredGame.time;
         })
         .concat(missedSignups)
     );
@@ -39,6 +44,7 @@ export const MyEnteredList = ({
       <h3>{t("enteredGames")}</h3>
       <MyEnteredGames>
         {startTimes.length === 0 && <span>{t("noEnteredGames")}</span>}
+
         {startTimes.length !== 0 && (
           <ResultsByStartTimes
             signups={_.sortBy(enteredGames, [

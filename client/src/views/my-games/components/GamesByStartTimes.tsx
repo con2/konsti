@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import React, { Fragment, ReactElement } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
@@ -34,49 +34,51 @@ export const GamesByStartTimes = ({
     });
   };
 
-  const getGamesList = (startTime: string): Array<ReactElement | undefined> => {
-    return games.map((game) => {
-      if (game.startTime === startTime) {
+  return (
+    <>
+      {startTimes.map((startTime) => {
         return (
-          <GameDetailsList key={game.gameId}>
-            <Link to={`/games/${game.gameId}`} data-testid={"game-title"}>
-              {game.title}{" "}
-            </Link>
-            <ButtonPlacement>
-              <Button
-                onClick={async () => {
-                  await removeFavorite(game);
-                }}
-                buttonStyle={ButtonStyle.NORMAL}
-              >
-                {" "}
-                {t("button.removeFavorite")}{" "}
-              </Button>
-            </ButtonPlacement>
-          </GameDetailsList>
+          <Fragment key={startTime}>
+            <StyledTime>
+              {timeFormatter.getWeekdayAndTime({
+                time: startTime,
+                capitalize: true,
+              })}
+            </StyledTime>
+
+            {games.map((game) => {
+              if (game.startTime === startTime) {
+                return (
+                  <GameDetailsList key={game.gameId}>
+                    <Link
+                      to={`/games/${game.gameId}`}
+                      data-testid={"game-title"}
+                    >
+                      {game.title}
+                    </Link>
+
+                    <ButtonPlacement>
+                      <StyledButton
+                        onClick={async () => {
+                          await removeFavorite(game);
+                        }}
+                        buttonStyle={ButtonStyle.NORMAL}
+                      >
+                        {t("button.removeFavorite")}
+                      </StyledButton>
+                    </ButtonPlacement>
+                  </GameDetailsList>
+                );
+              }
+            })}
+          </Fragment>
         );
-      }
-    });
-  };
-
-  const startTimesList = startTimes.map((startTime) => {
-    return (
-      <div key={startTime}>
-        <StyledTime>
-          {timeFormatter.getWeekdayAndTime({
-            time: startTime,
-            capitalize: true,
-          })}
-        </StyledTime>
-        {getGamesList(startTime)}
-      </div>
-    );
-  });
-
-  return <div>{startTimesList}</div>;
+      })}
+    </>
+  );
 };
 
-const GameDetailsList = styled.p`
+const GameDetailsList = styled.span`
   padding-left: 30px;
 `;
 
@@ -86,4 +88,9 @@ const ButtonPlacement = styled.span`
 
 const StyledTime = styled.p`
   font-weight: 600;
+  margin: 10px 0;
+`;
+
+const StyledButton = styled(Button)`
+  margin: 0;
 `;

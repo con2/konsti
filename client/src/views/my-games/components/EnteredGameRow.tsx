@@ -74,12 +74,12 @@ export const EnteredGameRow = ({
             onConfirmForm={async () => await removeSignup()}
           />
         ) : (
-          <Button
+          <StyledButton
             onClick={() => setCancelSignupFormOpen(true)}
             buttonStyle={ButtonStyle.NORMAL}
           >
             {t("button.cancelSignup")}
-          </Button>
+          </StyledButton>
         )}
       </ButtonContainer>
 
@@ -114,4 +114,8 @@ const ButtonContainer = styled.div`
 
 const SignupMessagePlacement = styled.div`
   padding-top: 5px;
+`;
+
+const StyledButton = styled(Button)`
+  margin: 0;
 `;

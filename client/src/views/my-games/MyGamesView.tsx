@@ -7,19 +7,21 @@ import { MySignupsList } from "client/views/my-games/components/MySignupsList";
 import { MyFavoritesList } from "client/views/my-games/components/MyFavoritesList";
 import { MyEnteredList } from "client/views/my-games/components/MyEnteredList";
 import {
-  getUpcomingSignedGames,
   getUpcomingEnteredGames,
   getUpcomingFavorites,
 } from "client/utils/getUpcomingGames";
 import { loadUser, loadGames, loadGroupMembers } from "client/utils/loadData";
 import { getIsGroupCreator } from "client/views/group/groupUtils";
-import { GroupMember } from "shared/typings/api/groups";
-import { SelectedGame } from "shared/typings/models/user";
 import { useAppSelector } from "client/utils/hooks";
 import { Button, ButtonStyle } from "client/components/Button";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
 import { ChangePasswordForm } from "client/views/helper/components/ChangePasswordForm";
 import { ProgramType } from "shared/typings/models/game";
+import { getSignedGames } from "client/views/my-games/utils/getSignedGames";
+import {
+  selectActiveEnteredGames,
+  selectActiveFavoritedGames,
+} from "client/views/my-games/myGamesSlice";
 
 export const MyGamesView = (): ReactElement => {
   const { t } = useTranslation();
@@ -28,10 +30,8 @@ export const MyGamesView = (): ReactElement => {
   const username = useAppSelector((state) => state.login.username);
   const groupCode = useAppSelector((state) => state.group.groupCode);
   const signedGames = useAppSelector((state) => state.myGames.signedGames);
-  const favoritedGames = useAppSelector(
-    (state) => state.myGames.favoritedGames
-  );
-  const enteredGames = useAppSelector((state) => state.myGames.enteredGames);
+  const activeFavoritedGames = useAppSelector(selectActiveFavoritedGames);
+  const activeEnteredGames = useAppSelector(selectActiveEnteredGames);
   const groupMembers = useAppSelector((state) => state.group.groupMembers);
   const testTime = useAppSelector((state) => state.testSettings.testTime);
   const signupStrategy = useAppSelector((state) => state.admin.signupStrategy);
@@ -76,7 +76,9 @@ export const MyGamesView = (): ReactElement => {
 
       <MyFavoritesList
         favoritedGames={
-          showAllGames ? favoritedGames : getUpcomingFavorites(favoritedGames)
+          showAllGames
+            ? activeFavoritedGames
+            : getUpcomingFavorites(activeFavoritedGames)
         }
       />
 
@@ -96,7 +98,9 @@ export const MyGamesView = (): ReactElement => {
 
       <MyEnteredList
         enteredGames={
-          showAllGames ? enteredGames : getUpcomingEnteredGames(enteredGames)
+          showAllGames
+            ? activeEnteredGames
+            : getUpcomingEnteredGames(activeEnteredGames)
         }
         signedGames={getSignedGames(
           signedGames,
@@ -105,6 +109,7 @@ export const MyGamesView = (): ReactElement => {
           showAllGames,
           groupMembers
         )}
+        activeProgramType={activeProgramType}
       />
 
       <ChangePasswordButton
@@ -120,43 +125,6 @@ export const MyGamesView = (): ReactElement => {
       {showChangePassword && <ChangePasswordForm username={username} />}
     </MyGamesViewContainer>
   );
-};
-
-const getGroupCreator = (
-  groupMembers: readonly GroupMember[]
-): GroupMember | null => {
-  const groupCreator = groupMembers.find(
-    (member) => member.serial === member.groupCode
-  );
-  if (!groupCreator) return null;
-  return groupCreator;
-};
-
-const getSignedGames = (
-  signedGames: readonly SelectedGame[],
-  groupCode: string,
-  serial: string,
-  showAllGames: boolean,
-  groupMembers: readonly GroupMember[]
-): readonly SelectedGame[] => {
-  const isGroupCreator = getIsGroupCreator(groupCode, serial);
-
-  if (isGroupCreator) {
-    if (!showAllGames) return getUpcomingSignedGames(signedGames);
-    else return signedGames;
-  }
-
-  if (!isGroupCreator) {
-    const groupCreator = getGroupCreator(groupMembers);
-
-    if (!showAllGames) {
-      return getUpcomingSignedGames(
-        groupCreator ? groupCreator.signedGames : signedGames
-      );
-    } else return groupCreator ? groupCreator.signedGames : signedGames;
-  }
-
-  return signedGames;
 };
 
 const MyGamesViewContainer = styled.div`
