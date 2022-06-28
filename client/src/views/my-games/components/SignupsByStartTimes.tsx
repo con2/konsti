@@ -24,6 +24,7 @@ export const SignupsByStartTimes = ({
                 capitalize: true,
               })}
             </StyledTime>
+
             {signups.map((signup) => {
               if (signup.time === startTime) {
                 return (
@@ -48,4 +49,5 @@ const GameDetailsList = styled.p`
 
 const StyledTime = styled.p`
   font-weight: 600;
+  margin: 10px 0;
 `;
