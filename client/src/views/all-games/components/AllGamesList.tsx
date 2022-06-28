@@ -34,14 +34,14 @@ export const AllGamesList = ({ games }: Props): ReactElement => {
   const groupMembers = useAppSelector((state) => state.group.groupMembers);
   const isGroupCreator = getIsGroupCreator(groupCode, serial);
 
-  const ownOrGroupCreatorSignedGames = getSignedGames(
-    activeSignedGames,
+  const ownOrGroupCreatorSignedGames = getSignedGames({
+    signedGames: activeSignedGames,
     groupCode,
     serial,
     groupMembers,
     activeProgramType,
-    true
-  );
+    getAllGames: true,
+  });
 
   const sortedGames = _.sortBy(games, [
     (game) => game.startTime,

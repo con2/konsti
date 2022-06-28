@@ -42,18 +42,27 @@ const getGroupCreator = (
   return groupCreator;
 };
 
-export const getSignedGames = (
-  signedGames: readonly SelectedGame[],
-  groupCode: string,
-  serial: string,
-  groupMembers: readonly GroupMember[],
-  activeProgramType: ProgramType,
-  getAllGames = true
-): readonly SelectedGame[] => {
+interface GetSignedGamesParams {
+  signedGames: readonly SelectedGame[];
+  groupCode: string;
+  serial: string;
+  groupMembers: readonly GroupMember[];
+  activeProgramType: ProgramType;
+  getAllGames: boolean;
+}
+
+export const getSignedGames = ({
+  signedGames,
+  groupCode,
+  serial,
+  groupMembers,
+  activeProgramType,
+  getAllGames = true,
+}: GetSignedGamesParams): readonly SelectedGame[] => {
   const isGroupCreator = getIsGroupCreator(groupCode, serial);
 
   if (isGroupCreator) {
-    return !getAllGames ? getUpcomingSignedGames(signedGames) : signedGames;
+    return getAllGames ? signedGames : getUpcomingSignedGames(signedGames);
   }
 
   if (!isGroupCreator) {

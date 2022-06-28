@@ -7,6 +7,7 @@ import { MySignupsList } from "client/views/my-games/components/MySignupsList";
 import { MyFavoritesList } from "client/views/my-games/components/MyFavoritesList";
 import { MyEnteredList } from "client/views/my-games/components/MyEnteredList";
 import {
+  getSignedGames,
   getUpcomingEnteredGames,
   getUpcomingFavorites,
 } from "client/utils/getUpcomingGames";
@@ -17,7 +18,6 @@ import { Button, ButtonStyle } from "client/components/Button";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
 import { ChangePasswordForm } from "client/views/helper/components/ChangePasswordForm";
 import { ProgramType } from "shared/typings/models/game";
-import { getSignedGames } from "client/views/my-games/utils/getSignedGames";
 import {
   selectActiveEnteredGames,
   selectActiveFavoritedGames,
@@ -86,13 +86,14 @@ export const MyGamesView = (): ReactElement => {
       {signupStrategy !== SignupStrategy.DIRECT &&
         activeProgramType === ProgramType.TABLETOP_RPG && (
           <MySignupsList
-            signedGames={getSignedGames(
-              activeSignedGames,
+            signedGames={getSignedGames({
+              signedGames: activeSignedGames,
               groupCode,
               serial,
-              showAllGames,
-              groupMembers
-            )}
+              getAllGames: showAllGames,
+              groupMembers,
+              activeProgramType,
+            })}
             isGroupCreator={isGroupCreator}
           />
         )}
@@ -103,13 +104,14 @@ export const MyGamesView = (): ReactElement => {
             ? activeEnteredGames
             : getUpcomingEnteredGames(activeEnteredGames)
         }
-        signedGames={getSignedGames(
-          activeSignedGames,
+        signedGames={getSignedGames({
+          signedGames: activeSignedGames,
           groupCode,
           serial,
-          showAllGames,
-          groupMembers
-        )}
+          getAllGames: showAllGames,
+          groupMembers,
+          activeProgramType,
+        })}
         activeProgramType={activeProgramType}
       />
 
