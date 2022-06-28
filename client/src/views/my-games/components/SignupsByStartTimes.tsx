@@ -29,6 +29,7 @@ export const SignupsByStartTimes = ({
               if (signup.time === startTime) {
                 return (
                   <GameDetailsList key={signup.gameDetails.gameId}>
+                    {`${signup.priority}) `}
                     <Link to={`/games/${signup.gameDetails.gameId}`}>
                       {signup.gameDetails.title}
                     </Link>

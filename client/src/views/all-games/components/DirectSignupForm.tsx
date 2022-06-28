@@ -16,6 +16,7 @@ import {
 } from "client/views/my-games/myGamesThunks";
 import { loadGames } from "client/utils/loadData";
 import { ErrorMessage } from "client/components/ErrorMessage";
+import { selectActiveEnteredGames } from "client/views/my-games/myGamesSlice";
 
 interface Props {
   game: Game;
@@ -35,7 +36,7 @@ export const DirectSignupForm: FC<Props> = ({
 
   const loggedIn = useAppSelector((state) => state.login.loggedIn);
   const username = useAppSelector((state) => state.login.username);
-  const enteredGames = useAppSelector((state) => state.myGames.enteredGames);
+  const activeEnteredGames = useAppSelector(selectActiveEnteredGames);
   const additionalInfoMessages = useAppSelector(
     (state) => state.admin.signupMessages
   );
@@ -45,11 +46,11 @@ export const DirectSignupForm: FC<Props> = ({
   const [serverError, setServerError] =
     useState<DeleteEnteredGameErrorMessage | null>(null);
 
-  const enteredGamesForTimeslot = enteredGames.filter(
+  const enteredGamesForTimeslot = activeEnteredGames.filter(
     (g) => g.gameDetails.startTime === startTime
   );
 
-  const alreadyEnteredToGame = isAlreadyEntered(game, enteredGames);
+  const alreadyEnteredToGame = isAlreadyEntered(game, activeEnteredGames);
 
   const removeSignup = async (): Promise<void> => {
     const errorMessage = await dispatch(

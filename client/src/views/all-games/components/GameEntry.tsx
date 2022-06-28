@@ -27,6 +27,7 @@ interface Props {
   players: number;
   signupStrategy: SignupStrategy;
   signedGames: readonly SelectedGame[];
+  enteredGames: readonly SelectedGame[];
   phaseGap: PhaseGap;
 }
 
@@ -36,6 +37,7 @@ export const GameEntry = ({
   players,
   signupStrategy,
   signedGames,
+  enteredGames,
   phaseGap,
 }: Props): ReactElement => {
   const { t } = useTranslation();
@@ -46,7 +48,6 @@ export const GameEntry = ({
   const favoritedGames = useAppSelector(
     (state) => state.myGames.favoritedGames
   );
-  const enteredGames = useAppSelector((state) => state.myGames.enteredGames);
   const enteredGamesForTimeslot = getUpcomingEnteredGames(enteredGames).filter(
     ({ gameDetails }) => gameDetails.startTime === startTime
   );
@@ -88,6 +89,7 @@ export const GameEntry = ({
   const isGameDisabled =
     (!isEnteredCurrentGame && enteredGamesForTimeslot.length > 0) ||
     (!isSignedForCurrentGame && signedGamesForTimeslot.length === 3);
+
   return (
     <GameContainer
       key={game.gameId}

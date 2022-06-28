@@ -7,6 +7,7 @@ import { MySignupsList } from "client/views/my-games/components/MySignupsList";
 import { MyFavoritesList } from "client/views/my-games/components/MyFavoritesList";
 import { MyEnteredList } from "client/views/my-games/components/MyEnteredList";
 import {
+  getSignedGames,
   getUpcomingEnteredGames,
   getUpcomingFavorites,
 } from "client/utils/getUpcomingGames";
@@ -17,10 +18,10 @@ import { Button, ButtonStyle } from "client/components/Button";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
 import { ChangePasswordForm } from "client/views/helper/components/ChangePasswordForm";
 import { ProgramType } from "shared/typings/models/game";
-import { getSignedGames } from "client/views/my-games/utils/getSignedGames";
 import {
   selectActiveEnteredGames,
   selectActiveFavoritedGames,
+  selectActiveSignedGames,
 } from "client/views/my-games/myGamesSlice";
 
 export const MyGamesView = (): ReactElement => {
@@ -29,7 +30,7 @@ export const MyGamesView = (): ReactElement => {
   const serial = useAppSelector((state) => state.login.serial);
   const username = useAppSelector((state) => state.login.username);
   const groupCode = useAppSelector((state) => state.group.groupCode);
-  const signedGames = useAppSelector((state) => state.myGames.signedGames);
+  const activeSignedGames = useAppSelector(selectActiveSignedGames);
   const activeFavoritedGames = useAppSelector(selectActiveFavoritedGames);
   const activeEnteredGames = useAppSelector(selectActiveEnteredGames);
   const groupMembers = useAppSelector((state) => state.group.groupMembers);
@@ -85,13 +86,14 @@ export const MyGamesView = (): ReactElement => {
       {signupStrategy !== SignupStrategy.DIRECT &&
         activeProgramType === ProgramType.TABLETOP_RPG && (
           <MySignupsList
-            signedGames={getSignedGames(
-              signedGames,
+            signedGames={getSignedGames({
+              signedGames: activeSignedGames,
               groupCode,
               serial,
-              showAllGames,
-              groupMembers
-            )}
+              getAllGames: showAllGames,
+              groupMembers,
+              activeProgramType,
+            })}
             isGroupCreator={isGroupCreator}
           />
         )}
@@ -102,13 +104,14 @@ export const MyGamesView = (): ReactElement => {
             ? activeEnteredGames
             : getUpcomingEnteredGames(activeEnteredGames)
         }
-        signedGames={getSignedGames(
-          signedGames,
+        signedGames={getSignedGames({
+          signedGames: activeSignedGames,
           groupCode,
           serial,
-          showAllGames,
-          groupMembers
-        )}
+          getAllGames: showAllGames,
+          groupMembers,
+          activeProgramType,
+        })}
         activeProgramType={activeProgramType}
       />
 
