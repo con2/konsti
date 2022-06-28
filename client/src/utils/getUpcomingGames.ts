@@ -57,7 +57,7 @@ export const getSignedGames = ({
   serial,
   groupMembers,
   activeProgramType,
-  getAllGames = true,
+  getAllGames,
 }: GetSignedGamesParams): readonly SelectedGame[] => {
   const isGroupCreator = getIsGroupCreator(groupCode, serial);
 
