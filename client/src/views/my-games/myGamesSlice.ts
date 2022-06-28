@@ -65,6 +65,8 @@ export const myGamesReducer = myGamesSlice.reducer;
 
 const selectEnteredGames = (state: RootState): readonly SelectedGame[] =>
   state.myGames.enteredGames;
+const selectSignedGames = (state: RootState): readonly SelectedGame[] =>
+  state.myGames.signedGames;
 const selectFavoritedGames = (state: RootState): readonly Game[] =>
   state.myGames.favoritedGames;
 
@@ -76,6 +78,15 @@ export const selectActiveEnteredGames = createSelector(
   (enteredGames, activeProgramType) => {
     return enteredGames.filter(
       (enteredGame) => enteredGame.gameDetails.programType === activeProgramType
+    );
+  }
+);
+
+export const selectActiveSignedGames = createSelector(
+  [selectSignedGames, selectActiveProgramType],
+  (signedGames, activeProgramType) => {
+    return signedGames.filter(
+      (signedGame) => signedGame.gameDetails.programType === activeProgramType
     );
   }
 );
