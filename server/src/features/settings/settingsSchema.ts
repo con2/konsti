@@ -9,7 +9,13 @@ const SettingsSchema = new mongoose.Schema(
     ],
     signupTime: { type: Date, default: null },
     appOpen: { type: Boolean, default: true },
-    signupMessages: [{ gameId: { type: String }, message: { type: String } }],
+    signupMessages: [
+      {
+        gameId: { type: String },
+        message: { type: String },
+        private: { type: Boolean },
+      },
+    ],
     signupStrategy: {
       type: String,
       default: sharedConfig.defaultSignupStrategy,

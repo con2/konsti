@@ -91,6 +91,7 @@ export const submitAddSignupMessage = (
     const response = await postSignupMessage({
       gameId: signupMessage.gameId,
       message: signupMessage.message,
+      private: signupMessage.private,
     });
 
     if (response?.status === "error") {

@@ -150,7 +150,7 @@ export const saveSettings = async (
       {
         new: true,
         upsert: true,
-        fields: "-createdAt -updatedAt",
+        fields: "-createdAt -updatedAt -_id -__v -signupMessages._id",
       }
     );
   } catch (error) {
