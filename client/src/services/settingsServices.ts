@@ -9,18 +9,10 @@ import {
 } from "shared/typings/api/settings";
 import { SignupMessage } from "shared/typings/models/settings";
 
-export interface GetSettingsParams {
-  includePrivateMessages: boolean;
-}
-
-export const getSettings = async ({
-  includePrivateMessages,
-}: GetSettingsParams): Promise<GetSettingsResponse | ApiError> => {
-  const response = await api.get<GetSettingsResponse>(ApiEndpoint.SETTINGS, {
-    params: {
-      includePrivateMessages,
-    },
-  });
+export const getSettings = async (): Promise<
+  GetSettingsResponse | ApiError
+> => {
+  const response = await api.get<GetSettingsResponse>(ApiEndpoint.SETTINGS);
   return response.data;
 };
 

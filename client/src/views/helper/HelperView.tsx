@@ -27,7 +27,7 @@ export const HelperView = (): ReactElement => {
 
   useEffect(() => {
     const fetchData = async (): Promise<void> => {
-      await loadSettings({ includePrivateMessages: true });
+      await loadSettings();
       await loadResults();
     };
     fetchData();

@@ -14,7 +14,7 @@ export const ResultsView = (): ReactElement => {
 
   useEffect(() => {
     const fetchData = async (): Promise<void> => {
-      await loadSettings({ includePrivateMessages: false });
+      await loadSettings();
       await loadResults();
     };
     fetchData();

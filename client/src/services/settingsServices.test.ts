@@ -14,7 +14,7 @@ test("GET settings from server", async () => {
       })
   );
 
-  const response = await getSettings({ includePrivateMessages: false });
+  const response = await getSettings();
 
   expect(response).toEqual("test response");
   expect(mockAxios.get).toHaveBeenCalledTimes(1);
