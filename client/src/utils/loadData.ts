@@ -7,10 +7,11 @@ import { submitSessionRecovery } from "client/views/login/loginThunks";
 import { store } from "client/utils/store";
 import { AppDispatch } from "client/typings/redux.typings";
 import { submitGetTestSettings } from "client/test/test-settings/testSettingsThunks";
+import { GetSettingsParams } from "client/services/settingsServices";
 
 export const loadData = async (): Promise<void> => {
   // Get app settings
-  await loadSettings();
+  await loadSettings({ includePrivateMessages: false });
 
   // Get test settings
   if (process.env.SETTINGS !== "production") {
@@ -33,9 +34,15 @@ export const loadData = async (): Promise<void> => {
   await loadGroupMembers();
 };
 
-export const loadSettings = async (): Promise<void> => {
+export const loadSettings = async ({
+  includePrivateMessages,
+}: GetSettingsParams): Promise<void> => {
   const dispatch: AppDispatch = store.dispatch;
-  await dispatch(submitGetSettings());
+  await dispatch(
+    submitGetSettings({
+      includePrivateMessages,
+    })
+  );
 };
 
 const loadTestSettings = async (): Promise<void> => {

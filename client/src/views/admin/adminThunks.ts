@@ -4,6 +4,7 @@ import {
   getSettings,
   postSignupMessage,
   postSettings,
+  GetSettingsParams,
 } from "client/services/settingsServices";
 import { Game } from "shared/typings/models/game";
 import { AppThunk } from "client/typings/redux.typings";
@@ -32,9 +33,13 @@ export const submitUpdateHidden = (hiddenGames: readonly Game[]): AppThunk => {
   };
 };
 
-export const submitGetSettings = (): AppThunk => {
+export const submitGetSettings = ({
+  includePrivateMessages,
+}: GetSettingsParams): AppThunk => {
   return async (dispatch): Promise<void> => {
-    const settingsResponse = await getSettings();
+    const settingsResponse = await getSettings({
+      includePrivateMessages,
+    });
 
     if (settingsResponse?.status === "error") {
       // TODO
@@ -91,6 +96,7 @@ export const submitAddSignupMessage = (
     const response = await postSignupMessage({
       gameId: signupMessage.gameId,
       message: signupMessage.message,
+      private: signupMessage.private,
     });
 
     if (response?.status === "error") {

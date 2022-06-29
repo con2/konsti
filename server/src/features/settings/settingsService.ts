@@ -18,9 +18,9 @@ import { Game } from "shared/typings/models/game";
 import { removeHiddenGamesFromUsers } from "server/features/settings/utils/removeHiddenGamesFromUsers";
 import { SignupMessage } from "shared/typings/models/settings";
 
-export const fetchSettings = async (): Promise<
-  GetSettingsResponse | ApiError
-> => {
+export const fetchSettings = async (
+  includePrivateMessages: boolean
+): Promise<GetSettingsResponse | ApiError> => {
   try {
     const response = await findSettings();
 
@@ -30,7 +30,11 @@ export const fetchSettings = async (): Promise<
       hiddenGames: response.hiddenGames,
       signupTime: response.signupTime || "",
       appOpen: response.appOpen,
-      signupMessages: response.signupMessages,
+      signupMessages: includePrivateMessages
+        ? response.signupMessages
+        : response.signupMessages.filter(
+            (signupMessage) => !signupMessage.private
+          ),
       signupStrategy: response.signupStrategy,
     };
   } catch (error) {

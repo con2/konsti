@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { ZodError } from "zod";
+import { z, ZodError } from "zod";
 import {
   fetchSettings,
   storeHidden,
@@ -34,12 +34,31 @@ export const postHidden = async (
 };
 
 export const getSettings = async (
-  _req: Request,
+  req: Request,
   res: Response
 ): Promise<Response> => {
   logger.info(`API call: GET ${ApiEndpoint.SETTINGS}`);
 
-  const response = await fetchSettings();
+  const GetSettingsQueryParameters = z.object({
+    includePrivateMessages: z.string(),
+  });
+
+  let parameters;
+  try {
+    parameters = GetSettingsQueryParameters.parse(req.query);
+  } catch (error) {
+    return res.sendStatus(422);
+  }
+
+  const { includePrivateMessages } = parameters;
+
+  if (includePrivateMessages === "true") {
+    if (!isAuthorized(req.headers.authorization, UserGroup.HELP, "helper")) {
+      return res.sendStatus(401);
+    }
+  }
+
+  const response = await fetchSettings(includePrivateMessages === "true");
   return res.json(response);
 };
 

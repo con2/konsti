@@ -37,6 +37,7 @@ export const createSettings = async ({
       await saveSignupMessage({
         gameId: randomGame.gameId,
         message: testMessages[index],
+        private: false,
       });
     });
 
