@@ -327,5 +327,12 @@
     "title": "Mikä on Konsti?",
     "description": "Konsti on ilmoittautumissovellus, joka on suunniteltu suomalaisille coneille."
   },
-  "selectedProgramType": "Valittu ohjelmatyyppi"
+  "selectedProgramType": "Valittu ohjelmatyyppi",
+  "yes": "Kyllä",
+  "no": "Ei",
+  "createPrivateMessage": "Luo yksityinen viesti",
+  "private": "Yksityinen",
+  "helperView": {
+    "privateSignupMessagesInfo": "Yksityiset ilmoittautumisen lisätiedot turnausten osallistujien tavoittamiseen."
+  }
 }

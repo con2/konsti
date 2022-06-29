@@ -5,6 +5,7 @@ import { GameSchema } from "shared/typings/models/game";
 const SignupMessageSchema = z.object({
   gameId: z.string(),
   message: z.string(),
+  private: z.boolean(),
 });
 
 export type SignupMessage = z.infer<typeof SignupMessageSchema>;
