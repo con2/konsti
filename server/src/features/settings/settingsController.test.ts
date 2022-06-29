@@ -15,7 +15,6 @@ describe(`GET ${ApiEndpoint.SETTINGS}`, () => {
     try {
       const response = await request(server).get(ApiEndpoint.SETTINGS);
       expect(response.status).toEqual(200);
-      expect(response.body.signupMessages.length).toEqual(1);
     } finally {
       await stopTestServer(server, mongoServer);
     }
