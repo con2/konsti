@@ -327,5 +327,12 @@
     "title": "What is Konsti?",
     "description": "Konsti is signup application designed for Finnish conventions"
   },
-  "selectedProgramType": "Selected program type"
+  "selectedProgramType": "Selected program type",
+  "yes": "Yes",
+  "no": "No",
+  "createPrivateMessage": "Create private message",
+  "private": "Private",
+  "helperView": {
+    "privateSignupMessagesInfo": "Private signup info for contacting tournament participants"
+  }
 }

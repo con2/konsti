@@ -4,6 +4,7 @@ import { UserGroup } from "shared/typings/models/user";
 import { getJWT } from "server/utils/jwt";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
 import { startTestServer, stopTestServer } from "server/test/utils/testServer";
+import { SignupMessage } from "shared/typings/models/settings";
 
 describe(`GET ${ApiEndpoint.SETTINGS}`, () => {
   process.env.SETTINGS = "production";
@@ -65,7 +66,11 @@ describe(`POST ${ApiEndpoint.SETTINGS}`, () => {
   test("should return updated settings with full or partial update", async () => {
     const { server, mongoServer } = await startTestServer();
 
-    const testSignupMessage = { gameId: "12345", message: "Test message" };
+    const testSignupMessage: SignupMessage = {
+      gameId: "123456",
+      message: "Test message",
+      private: false,
+    };
 
     const testSettings = {
       hiddenGames: [],

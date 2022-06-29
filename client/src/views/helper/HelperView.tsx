@@ -7,10 +7,12 @@ import { loadResults, loadSettings } from "client/utils/loadData";
 import { Button, ButtonStyle } from "client/components/Button";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
 import { useAppSelector } from "client/utils/hooks";
+import { PrivateSignupMessages } from "client/views/helper/components/PrivateSignupMessages";
 
 enum HelperTool {
   RESULTS = "results",
   PASSWORD_MANAGEMENT = "passwordManagement",
+  PRIVATE_SIGNUP_MESSAGES = "privateSignupMessages",
 }
 
 export const HelperView = (): ReactElement => {
@@ -18,7 +20,7 @@ export const HelperView = (): ReactElement => {
   const signupStrategy = useAppSelector((state) => state.admin.signupStrategy);
 
   const [selectedTool, setSelectedTool] = useState<HelperTool>(
-    HelperTool.PASSWORD_MANAGEMENT
+    HelperTool.PRIVATE_SIGNUP_MESSAGES
   );
 
   const store = useStore();
@@ -48,6 +50,17 @@ export const HelperView = (): ReactElement => {
 
       <Button
         buttonStyle={
+          selectedTool === HelperTool.PRIVATE_SIGNUP_MESSAGES
+            ? ButtonStyle.DISABLED
+            : ButtonStyle.NORMAL
+        }
+        onClick={() => setSelectedTool(HelperTool.PRIVATE_SIGNUP_MESSAGES)}
+      >
+        {t("signupMessages")}
+      </Button>
+
+      <Button
+        buttonStyle={
           selectedTool === HelperTool.PASSWORD_MANAGEMENT
             ? ButtonStyle.DISABLED
             : ButtonStyle.NORMAL
@@ -60,6 +73,9 @@ export const HelperView = (): ReactElement => {
       {selectedTool === HelperTool.RESULTS && <HelperResultsList />}
       {selectedTool === HelperTool.PASSWORD_MANAGEMENT && (
         <PasswordManagement />
+      )}
+      {selectedTool === HelperTool.PRIVATE_SIGNUP_MESSAGES && (
+        <PrivateSignupMessages />
       )}
     </div>
   );

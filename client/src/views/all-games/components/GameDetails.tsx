@@ -15,6 +15,7 @@ import { updateFavorite, UpdateFavoriteOpts } from "client/utils/favorite";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { Button, ButtonStyle } from "client/components/Button";
 import { setActiveProgramType } from "client/views/admin/adminSlice";
+import { Dropdown } from "client/components/Dropdown";
 
 export const GameDetails = (): ReactElement => {
   const dispatch = useAppDispatch();
@@ -41,6 +42,8 @@ export const GameDetails = (): ReactElement => {
   const [hasSignupMessage, setHasSignupMessage] = useState<boolean>(false);
   const [submitting, setSubmitting] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
+  const [createPrivateSignupMessage, setCreatePrivateSignupMessage] =
+    useState<boolean>(false);
 
   const [signupMessageInput, setSignupMessageInput] = useState<string>("");
   const [signupMessageInputVisible, setSignupMessageInputVisible] =
@@ -153,6 +156,7 @@ export const GameDetails = (): ReactElement => {
       submitAddSignupMessage({
         gameId: foundGame.gameId,
         message: signupMessageInput,
+        private: createPrivateSignupMessage,
       })
     );
     setSignupMessageInputVisible(false);
@@ -266,12 +270,28 @@ export const GameDetails = (): ReactElement => {
             value={signupMessageInput}
             onChange={handleSignupMessageChange}
           />
-          <Button
-            onClick={onClickAddSignupMessage}
-            buttonStyle={ButtonStyle.NORMAL}
-          >
-            {t("button.save")}
-          </Button>
+
+          <PrivateMessageText>{t("createPrivateMessage")}</PrivateMessageText>
+
+          <Dropdown
+            items={[
+              { value: "no", title: t("no") },
+              { value: "yes", title: t("yes") },
+            ]}
+            selectedValue={createPrivateSignupMessage ? "yes" : "no"}
+            onChange={(event: ChangeEvent<HTMLSelectElement>) =>
+              setCreatePrivateSignupMessage(event.target.value === "yes")
+            }
+          />
+
+          <p>
+            <Button
+              onClick={onClickAddSignupMessage}
+              buttonStyle={ButtonStyle.NORMAL}
+            >
+              {t("button.save")}
+            </Button>
+          </p>
         </>
       )}
 
@@ -307,4 +327,9 @@ const FormInput = styled.input`
   height: 34px;
   padding: 0 0 0 10px;
   width: 100%;
+  margin-bottom: 8px;
+`;
+
+const PrivateMessageText = styled.span`
+  margin-right: 8px;
 `;
