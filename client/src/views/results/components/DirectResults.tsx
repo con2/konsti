@@ -102,6 +102,10 @@ export const DirectResults = (): ReactElement => {
 
       {Object.entries(filteredGamesForListing).map(
         ([startTime, gamesForTime]) => {
+          const sortedGamesForTime = _.sortBy(gamesForTime, [
+            (game) => game.title.toLocaleLowerCase(),
+          ]);
+
           return (
             <TimeSlot key={startTime}>
               <h3>
@@ -112,7 +116,7 @@ export const DirectResults = (): ReactElement => {
               </h3>
 
               <Games>
-                {gamesForTime.map((game) => {
+                {sortedGamesForTime.map((game) => {
                   const signupMessage = signupMessages.find(
                     (message) => message.gameId === game.gameId
                   );
