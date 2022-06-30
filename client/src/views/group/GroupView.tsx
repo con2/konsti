@@ -12,6 +12,7 @@ import { GroupCreatorActions } from "client/views/group/components/GroupCreatorA
 import { GroupMemberActions } from "client/views/group/components/GroupMemberActions";
 import { ProgramType } from "shared/typings/models/game";
 import { getTime } from "client/utils/getTime";
+import { selectActiveEnteredGames } from "client/views/my-games/myGamesSlice";
 
 export const GroupView = (): ReactElement => {
   const username = useAppSelector((state) => state.login.username);
@@ -21,7 +22,7 @@ export const GroupView = (): ReactElement => {
   const activeProgramType = useAppSelector(
     (state) => state.admin.activeProgramType
   );
-  const enteredGames = useAppSelector((state) => state.myGames.enteredGames);
+  const activeEnteredGames = useAppSelector(selectActiveEnteredGames);
   const { t } = useTranslation();
 
   const store = useStore();
@@ -36,7 +37,7 @@ export const GroupView = (): ReactElement => {
   const isGroupCreator = getIsGroupCreator(groupCode, serial);
   const isInGroup = getIsInGroup(groupCode);
   const timeNow = getTime();
-  const enteredGamesAfterNow = enteredGames.filter((game) =>
+  const enteredGamesAfterNow = activeEnteredGames.filter((game) =>
     timeNow.isBefore(dayjs(game.time))
   );
   const hasEnteredGames = enteredGamesAfterNow.length > 0;
@@ -46,26 +47,6 @@ export const GroupView = (): ReactElement => {
       <h2>{t("pages.group")}</h2>
       <p>{t("group.groupPreSignupGuide")}</p>
 
-      {!isInGroup && hasEnteredGames && (
-        <EnteredGamesContainer>
-          <BoldText>{t("group.hasEnteredFollowingGames")}</BoldText>
-          <ul>
-            {enteredGames.map((game) => (
-              <li key={game.gameDetails.gameId}>{game.gameDetails.title}</li>
-            ))}
-          </ul>
-          <BoldText>{t("group.cancelSignupBeforeJoiningGroup")}</BoldText>
-        </EnteredGamesContainer>
-      )}
-
-      {!isInGroup && (
-        <NotInGroupActions
-          disabled={hasEnteredGames}
-          username={username}
-          serial={serial}
-        />
-      )}
-
       {activeProgramType !== ProgramType.TABLETOP_RPG ? (
         <p>{t("group.groupPreSignupTabletopOnly")}</p>
       ) : (
@@ -73,6 +54,33 @@ export const GroupView = (): ReactElement => {
           <p>
             {t("group.groupSignupGuide")} <BoldText>{serial}</BoldText>.
           </p>
+
+          {!isInGroup && (
+            <>
+              {hasEnteredGames && (
+                <EnteredGamesContainer>
+                  <BoldText>{t("group.hasEnteredFollowingGames")}</BoldText>
+                  <ul>
+                    {activeEnteredGames.map((game) => (
+                      <li key={game.gameDetails.gameId}>
+                        {game.gameDetails.title}
+                      </li>
+                    ))}
+                  </ul>
+                  <BoldText>
+                    {t("group.cancelSignupBeforeJoiningGroup")}
+                  </BoldText>
+                </EnteredGamesContainer>
+              )}
+
+              <NotInGroupActions
+                disabled={hasEnteredGames}
+                username={username}
+                serial={serial}
+              />
+            </>
+          )}
+
           {isInGroup && (
             <>
               {isGroupCreator && (
