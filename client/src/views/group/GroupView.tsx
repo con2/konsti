@@ -100,11 +100,6 @@ export const GroupView = (): ReactElement => {
 
               <h3>{t("group.groupMembers")}</h3>
               <GroupMembersList groupMembers={groupMembers} />
-              <p>
-                <BoldText>{t("group.youAreInGroup")}</BoldText>.{" "}
-                {t("group.groupMemberInfo")}
-              </p>
-              <GroupMemberActions username={username} />
             </>
           )}
         </>
