@@ -21,7 +21,7 @@ export const GroupView = (): ReactElement => {
   const activeProgramType = useAppSelector(
     (state) => state.admin.activeProgramType
   );
-  const games = useAppSelector((state) => state.myGames.enteredGames);
+  const enteredGames = useAppSelector((state) => state.myGames.enteredGames);
   const { t } = useTranslation();
 
   const store = useStore();
@@ -36,10 +36,10 @@ export const GroupView = (): ReactElement => {
   const isGroupCreator = getIsGroupCreator(groupCode, serial);
   const isInGroup = getIsInGroup(groupCode);
   const timeNow = getTime();
-  const enteredGames = games.filter((game) =>
+  const enteredGamesAfterNow = enteredGames.filter((game) =>
     timeNow.isBefore(dayjs(game.time))
   );
-  const hasEnteredGames = enteredGames.length > 0;
+  const hasEnteredGames = enteredGamesAfterNow.length > 0;
 
   return (
     <div className="group-view">
