@@ -42,7 +42,7 @@ export const theme = {
   borderWarning: redDark,
 
   buttonBackground: white,
-  buttonBackgroundDisabled: greenLight2,
+  buttonBackgroundDisabled: gray,
   buttonBorder: greenLight3,
   buttonBorderConfirm: yellowDark,
   buttonWarning: redLight,

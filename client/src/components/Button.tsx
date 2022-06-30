@@ -70,6 +70,8 @@ const StyledButton = styled.button<StyledButtonProps>`
           background: ${props.theme.buttonBackgroundDisabled};
           border: 1px solid ${props.theme.buttonBorder};
           color: ${props.theme.buttonText};
+          opacity: 0.5;
+          cursor: not-allowed;
         `;
 
       case ButtonStyle.WARNING:
