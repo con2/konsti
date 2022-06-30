@@ -285,7 +285,8 @@
     "playerRange": "Players {{MIN_ATTENDANCE}} - {{MAX_ATTENDANCE}}",
     "signupOpens": "Signup opens",
     "preSignupOpens": "Pre-signup opens",
-    "signupAlwaysOpen": "Signup for special always open"
+    "signupAlwaysOpen": "Signup for special always open",
+    "inGroupWarning": "If you signup to game you will be removed from group you are in"
   },
   "resultsView": {
     "allSignupResults": "Signup overview and players",
