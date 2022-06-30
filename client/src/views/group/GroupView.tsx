@@ -46,26 +46,6 @@ export const GroupView = (): ReactElement => {
       <h2>{t("pages.group")}</h2>
       <p>{t("group.groupPreSignupGuide")}</p>
 
-      {!isInGroup && hasEnteredGames && (
-        <EnteredGamesContainer>
-          <BoldText>{t("group.hasEnteredFollowingGames")}</BoldText>
-          <ul>
-            {enteredGames.map((game) => (
-              <li key={game.gameDetails.gameId}>{game.gameDetails.title}</li>
-            ))}
-          </ul>
-          <BoldText>{t("group.cancelSignupBeforeJoiningGroup")}</BoldText>
-        </EnteredGamesContainer>
-      )}
-
-      {!isInGroup && (
-        <NotInGroupActions
-          disabled={hasEnteredGames}
-          username={username}
-          serial={serial}
-        />
-      )}
-
       {activeProgramType !== ProgramType.TABLETOP_RPG ? (
         <p>{t("group.groupPreSignupTabletopOnly")}</p>
       ) : (
@@ -73,6 +53,29 @@ export const GroupView = (): ReactElement => {
           <p>
             {t("group.groupSignupGuide")} <BoldText>{serial}</BoldText>.
           </p>
+
+          {!isInGroup && hasEnteredGames && (
+            <EnteredGamesContainer>
+              <BoldText>{t("group.hasEnteredFollowingGames")}</BoldText>
+              <ul>
+                {enteredGames.map((game) => (
+                  <li key={game.gameDetails.gameId}>
+                    {game.gameDetails.title}
+                  </li>
+                ))}
+              </ul>
+              <BoldText>{t("group.cancelSignupBeforeJoiningGroup")}</BoldText>
+            </EnteredGamesContainer>
+          )}
+
+          {!isInGroup && (
+            <NotInGroupActions
+              disabled={hasEnteredGames}
+              username={username}
+              serial={serial}
+            />
+          )}
+
           {isInGroup && (
             <>
               {isGroupCreator && (
