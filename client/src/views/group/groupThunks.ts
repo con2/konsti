@@ -54,6 +54,7 @@ export enum PostJoinGroupErrorMessage {
   UNKNOWN = "group.generalGroupError",
   CANNOT_JOIN_OWN_GROUP = "group.error.cannotUseOwnSerial",
   REMOVE_PREVIOUS_SIGNUPS_FAILED = "group.error.removePreviousSignupsFailed",
+  USER_HAS_SIGNED_GAMES = "group.error.userHasSignedGames",
 }
 
 export const submitJoinGroup = (
@@ -72,6 +73,8 @@ export const submitJoinGroup = (
           return PostJoinGroupErrorMessage.CANNOT_JOIN_OWN_GROUP;
         case "removePreviousSignupsFailed":
           return PostJoinGroupErrorMessage.REMOVE_PREVIOUS_SIGNUPS_FAILED;
+        case "userHasSignedGames":
+          return PostJoinGroupErrorMessage.USER_HAS_SIGNED_GAMES;
         case "unknown":
           return PostJoinGroupErrorMessage.UNKNOWN;
         default:
