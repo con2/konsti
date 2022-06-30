@@ -55,26 +55,30 @@ export const GroupView = (): ReactElement => {
             {t("group.groupSignupGuide")} <BoldText>{serial}</BoldText>.
           </p>
 
-          {!isInGroup && hasEnteredGames && (
-            <EnteredGamesContainer>
-              <BoldText>{t("group.hasEnteredFollowingGames")}</BoldText>
-              <ul>
-                {activeEnteredGames.map((game) => (
-                  <li key={game.gameDetails.gameId}>
-                    {game.gameDetails.title}
-                  </li>
-                ))}
-              </ul>
-              <BoldText>{t("group.cancelSignupBeforeJoiningGroup")}</BoldText>
-            </EnteredGamesContainer>
-          )}
-
           {!isInGroup && (
-            <NotInGroupActions
-              disabled={hasEnteredGames}
-              username={username}
-              serial={serial}
-            />
+            <>
+              {hasEnteredGames && (
+                <EnteredGamesContainer>
+                  <BoldText>{t("group.hasEnteredFollowingGames")}</BoldText>
+                  <ul>
+                    {activeEnteredGames.map((game) => (
+                      <li key={game.gameDetails.gameId}>
+                        {game.gameDetails.title}
+                      </li>
+                    ))}
+                  </ul>
+                  <BoldText>
+                    {t("group.cancelSignupBeforeJoiningGroup")}
+                  </BoldText>
+                </EnteredGamesContainer>
+              )}
+
+              <NotInGroupActions
+                disabled={hasEnteredGames}
+                username={username}
+                serial={serial}
+              />
+            </>
           )}
 
           {isInGroup && (
