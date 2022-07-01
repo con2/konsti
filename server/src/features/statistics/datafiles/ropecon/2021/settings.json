@@ -7,7 +7,7 @@
     ],
     "signupTime": null,
     "appOpen": false,
-    "signupMessages": [
+    "signupQuestions": [
       {
         "gameId": "p4699",
         "message": "Hahmoluokka ja taso / Character class and level"
