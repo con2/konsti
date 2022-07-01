@@ -7,7 +7,7 @@ import {
   submitToggleAppOpen,
 } from "client/views/admin/adminThunks";
 import { submitPlayersAssign } from "client/views/results/resultsThunks";
-import { submitGamesUpdate } from "client/views/all-games/allGamesThunks";
+import { submitUpdateGames } from "client/views/all-games/allGamesThunks";
 import { timeFormatter } from "client/utils/timeFormatter";
 import { Game } from "shared/typings/models/game";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
@@ -84,7 +84,7 @@ export const AdminView = (): ReactElement => {
   const submitUpdate = async (): Promise<void> => {
     setSubmitting(true);
     try {
-      await dispatch(submitGamesUpdate());
+      await dispatch(submitUpdateGames());
     } catch (error) {
       console.log(`submitGamesUpdate error:`, error); // eslint-disable-line no-console
     }

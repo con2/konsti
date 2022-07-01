@@ -4,13 +4,19 @@ import { updateGamePopularity } from "server/features/game-popularity/updateGame
 import { config } from "server/config";
 import { kompassiGameMapper } from "server/utils/kompassiGameMapper";
 import { Game } from "shared/typings/models/game";
-import { PostGamesResponse, GetGamesResponse } from "shared/typings/api/games";
+import {
+  PostUpdateGamesResponse,
+  GetGamesResponse,
+  PostUpdateGamesError,
+  GetGamesError,
+} from "shared/typings/api/games";
 import { findGames, saveGames } from "server/features/game/gameRepository";
-import { ApiError } from "shared/typings/api/errors";
 import { enrichGames } from "./gameUtils";
 import { KompassiGame } from "shared/typings/models/kompassiGame";
 
-export const storeGames = async (): Promise<PostGamesResponse | ApiError> => {
+export const updateGames = async (): Promise<
+  PostUpdateGamesResponse | PostUpdateGamesError
+> => {
   let kompassiGames = [] as readonly KompassiGame[];
   try {
     kompassiGames = await getGamesFromKompassi();
@@ -63,7 +69,9 @@ export const storeGames = async (): Promise<PostGamesResponse | ApiError> => {
   };
 };
 
-export const fetchGames = async (): Promise<GetGamesResponse | ApiError> => {
+export const fetchGames = async (): Promise<
+  GetGamesResponse | GetGamesError
+> => {
   try {
     const games = await findGames();
     const gamesWithPlayers = await enrichGames(games);
