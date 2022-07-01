@@ -56,7 +56,11 @@ export const EnterGameForm: FC<Props> = (props: Props): ReactElement => {
     <SignupForm>
       {signupQuestion && (
         <SignupQuestionContainer>
-          <span>{signupQuestion.message}</span>
+          <span>
+            {signupQuestion.message}{" "}
+            {signupQuestion.private &&
+              `(${t("privateOnlyVisibleToOrganizers")})`}
+          </span>
           <textarea
             onChange={(evt) => {
               if (evt.target.value.length > 140) {
