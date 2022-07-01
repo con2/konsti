@@ -45,7 +45,10 @@ export const saveSession = (state: Partial<LocalStorageState>): void => {
 
 export const clearSession = (): void => {
   try {
+    const oldSession = loadSession();
     localStorage.removeItem("state");
+    const newSession = _.omit(oldSession, "login");
+    saveSession(newSession);
   } catch (error) {
     console.error(error); // eslint-disable-line no-console
   }
