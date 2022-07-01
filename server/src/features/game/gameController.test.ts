@@ -24,6 +24,7 @@ import {
 import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
 import { saveEnteredGame } from "server/features/user/entered-game/enteredGameRepository";
 import { saveFavorite } from "server/features/user/favorite-game/favoriteGameRepository";
+import { saveSignupMessage } from "server/features/settings/settingsRepository";
 
 let server: Server;
 let mongoServer: MongoMemoryServer;
@@ -45,6 +46,39 @@ describe(`GET ${ApiEndpoint.GAMES}`, () => {
   test(`should return 200`, async () => {
     const response = await request(server).get(ApiEndpoint.GAMES);
     expect(response.status).toEqual(200);
+  });
+
+  test(`should not return private signup messages`, async () => {
+    await saveGames([testGame, testGame2]);
+    await saveUser(mockUser);
+
+    const publicMessage = "Answer to public message";
+    await saveEnteredGame({
+      ...mockPostEnteredGameRequest,
+      message: publicMessage,
+    });
+    await saveEnteredGame({
+      ...mockPostEnteredGameRequest2,
+      message: "Answer to private message",
+    });
+
+    await saveSignupMessage({
+      gameId: testGame.gameId,
+      message: "public message",
+      private: false,
+    });
+    await saveSignupMessage({
+      gameId: testGame2.gameId,
+      message: "private message",
+      private: true,
+    });
+
+    const response = await request(server).get(ApiEndpoint.GAMES);
+    expect(response.status).toEqual(200);
+
+    const sortedGames = _.sortBy(response.body.games, "title");
+    expect(sortedGames[0].users[0].signupMessage).toEqual(publicMessage);
+    expect(sortedGames[1].users[0].signupMessage).toEqual("");
   });
 });
 
