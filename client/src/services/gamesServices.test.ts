@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getGames, postGamesUpdate } from "client/services/gamesServices";
+import { getGames, postUpdateGames } from "client/services/gamesServices";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 
 jest.mock("axios");
@@ -29,7 +29,7 @@ test("POST games update to server", async () => {
     });
   });
 
-  const response = await postGamesUpdate();
+  const response = await postUpdateGames();
 
   expect(response).toEqual("test response");
   expect(mockAxios.post).toHaveBeenCalledTimes(1);

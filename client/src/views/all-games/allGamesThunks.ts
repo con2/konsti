@@ -1,4 +1,4 @@
-import { getGames, postGamesUpdate } from "client/services/gamesServices";
+import { getGames, postUpdateGames } from "client/services/gamesServices";
 import { AppThunk } from "client/typings/redux.typings";
 import { submitGetGamesAsync } from "client/views/all-games/allGamesSlice";
 
@@ -16,9 +16,9 @@ export const submitGetGames = (): AppThunk => {
   };
 };
 
-export const submitGamesUpdate = (): AppThunk => {
+export const submitUpdateGames = (): AppThunk => {
   return async (dispatch): Promise<void> => {
-    const gamesUpdateResponse = await postGamesUpdate();
+    const gamesUpdateResponse = await postUpdateGames();
 
     if (gamesUpdateResponse?.status === "error") {
       // TODO

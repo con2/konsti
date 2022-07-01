@@ -1,7 +1,7 @@
 import express from "express";
 import { postUserValidation, postLoginValidation } from "server/api/validation";
 import { postFeedback } from "server/features/feedback/feedbackController";
-import { getGames, postGame } from "server/features/game/gameController";
+import { getGames, postUpdateGames } from "server/features/game/gameController";
 import {
   getResults,
   postAssignment,
@@ -47,7 +47,7 @@ export const apiRoutes = express.Router();
 
 /* POST routes */
 
-apiRoutes.post(ApiEndpoint.GAMES, postGame);
+apiRoutes.post(ApiEndpoint.GAMES, postUpdateGames);
 apiRoutes.post(ApiEndpoint.USERS, postUserValidation(), postUser);
 apiRoutes.post(ApiEndpoint.LOGIN, postLoginValidation, postLogin);
 apiRoutes.post(ApiEndpoint.ASSIGNMENT, postAssignment);
