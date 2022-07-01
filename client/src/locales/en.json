@@ -296,7 +296,7 @@
     "info": "This message is shown to you only when you first login. You can also find code from the navigation."
   },
   "myGamesView": {
-    "yourAnswer": "Your answer to field",
+    "yourAnswer": "Your answer to question",
     "changePassword": "Change password"
   },
   "accessibility": {
@@ -335,6 +335,7 @@
   "no": "No",
   "createPrivateQuestion": "Create private question",
   "private": "Private",
+  "privateOnlyVisibleToOrganizers": "Only visible to organizers",
   "helperView": {
     "privateSignupMessagesInfo": "Private signup info for contacting tournament participants"
   }
