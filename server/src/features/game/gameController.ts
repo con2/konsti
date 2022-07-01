@@ -1,11 +1,11 @@
 import { Request, Response } from "express";
 import { isAuthorized } from "server/utils/authHeader";
 import { UserGroup } from "shared/typings/models/user";
-import { fetchGames, storeGames } from "server/features/game/gamesService";
+import { fetchGames, updateGames } from "server/features/game/gamesService";
 import { logger } from "server/utils/logger";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 
-export const postGame = async (
+export const postUpdateGames = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
@@ -15,7 +15,7 @@ export const postGame = async (
     return res.sendStatus(401);
   }
 
-  const response = await storeGames();
+  const response = await updateGames();
   return res.json(response);
 };
 

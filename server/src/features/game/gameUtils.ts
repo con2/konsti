@@ -44,22 +44,6 @@ export const removeDeletedGames = async (
   return deletedGames.length ?? 0;
 };
 
-export const getGameById = async (gameId: string): Promise<GameDoc> => {
-  let games: GameDoc[];
-  try {
-    games = await findGames();
-  } catch (error) {
-    logger.error(`MongoDB: Error loading games - ${error}`);
-    throw error;
-  }
-
-  const foundGame = games.find((game) => game.gameId === gameId);
-
-  if (!foundGame) throw new Error(`Game ${gameId} not found`);
-
-  return foundGame;
-};
-
 export const enrichGames = async (
   games: readonly GameDoc[]
 ): Promise<GameWithUsernames[]> => {

@@ -1,10 +1,10 @@
 import { db } from "server/db/mongodb";
-import { storeGames } from "server/features/game/gamesService";
+import { updateGames } from "server/features/game/gamesService";
 import { logger } from "server/utils/logger";
 
 const loadKompassiDataToDb = async (): Promise<void> => {
   await db.connectToDb();
-  await storeGames();
+  await updateGames();
   await db.gracefulExit();
 };
 

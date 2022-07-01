@@ -1,4 +1,4 @@
-import { getGameById } from "server/features/game/gameUtils";
+import { findGameById } from "server/features/game/gameRepository";
 import { UserModel } from "server/features/user/userSchema";
 import { logger } from "server/utils/logger";
 import {
@@ -39,7 +39,7 @@ export const saveEnteredGame = async (
 
   let game;
   try {
-    game = await getGameById(enteredGameId);
+    game = await findGameById(enteredGameId);
   } catch (error) {
     logger.error(error);
     throw error;
@@ -85,7 +85,7 @@ export const delEnteredGame = async (
 
   let game;
   try {
-    game = await getGameById(enteredGameId);
+    game = await findGameById(enteredGameId);
   } catch (error) {
     logger.error(error);
     throw error;

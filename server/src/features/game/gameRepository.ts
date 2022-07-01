@@ -82,16 +82,19 @@ export const findGames = async (): Promise<GameDoc[]> => {
   }
 };
 
-export const findGameById = async (gameId: string): Promise<GameDoc | null> => {
+export const findGameById = async (gameId: string): Promise<GameDoc> => {
+  logger.debug(`MongoDB: Find game with id ${gameId}`);
+
   let response;
   try {
     response = await GameModel.findOne({ gameId });
-    logger.debug(`MongoDB: Find game with id ${gameId}`);
-    return response;
+    if (!response) throw new Error(`Game ${gameId} not found`);
   } catch (error) {
     logger.error(`MongoDB: Error fetching gameId ${gameId} - ${error}`);
-    return null;
+    throw error;
   }
+
+  return response;
 };
 
 export const saveGamePopularity = async (

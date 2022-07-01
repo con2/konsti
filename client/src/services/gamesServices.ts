@@ -1,12 +1,16 @@
 import { api } from "client/utils/api";
 import { ApiError } from "shared/typings/api/errors";
-import { PostGamesResponse, GetGamesResponse } from "shared/typings/api/games";
+import {
+  PostUpdateGamesResponse,
+  GetGamesResponse,
+  PostUpdateGamesError,
+} from "shared/typings/api/games";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 
-export const postGamesUpdate = async (): Promise<
-  PostGamesResponse | ApiError
+export const postUpdateGames = async (): Promise<
+  PostUpdateGamesResponse | PostUpdateGamesError
 > => {
-  const response = await api.post<PostGamesResponse>(ApiEndpoint.GAMES);
+  const response = await api.post<PostUpdateGamesResponse>(ApiEndpoint.GAMES);
   return response.data;
 };
 
