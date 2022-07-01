@@ -10,7 +10,7 @@ import { GameWithUsernames, UserSignup } from "shared/typings/api/games";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
 import { sharedConfig } from "shared/config/sharedConfig";
 import { findSettings } from "server/features/settings/settingsRepository";
-import { Settings, SignupMessage } from "shared/typings/models/settings";
+import { Settings, SignupQuestion } from "shared/typings/models/settings";
 import { getTime } from "server/features/player-assignment/utils/getTime";
 
 export const removeDeletedGames = async (
@@ -53,7 +53,7 @@ export const enrichGames = async (
     const currentTime = await getTime();
 
     return games.map((game) => {
-      const signupMessage = settings.signupMessages.find(
+      const signupQuestion = settings.signupQuestions.find(
         (message) => message.gameId === game.gameId
       );
       return {
@@ -61,7 +61,7 @@ export const enrichGames = async (
           ...game.toJSON<GameDoc>(),
           signupStrategy: getSignupStrategyForGame(game, settings, currentTime),
         },
-        users: getUsersForGame(users, game.gameId, signupMessage),
+        users: getUsersForGame(users, game.gameId, signupQuestion),
       };
     });
   } catch (error) {
@@ -95,7 +95,7 @@ const getSignupStrategyForGame = (
 export const getUsersForGame = (
   users: User[],
   gameId: string,
-  signupMessage?: SignupMessage | undefined
+  signupQuestion?: SignupQuestion | undefined
 ): UserSignup[] => {
   const usersForGame = users.filter(
     (user) =>
@@ -111,16 +111,16 @@ export const getUsersForGame = (
 
     return {
       username: user.username,
-      signupMessage: getSignupMessage(signupMessage, enteredGame),
+      signupMessage: getSignupMessage(signupQuestion, enteredGame),
     };
   });
 };
 
 const getSignupMessage = (
-  signupMessage: SignupMessage | undefined,
+  signupQuestion: SignupQuestion | undefined,
   enteredGame: SelectedGame | undefined
 ): string => {
-  if (!signupMessage || signupMessage.private) {
+  if (!signupQuestion || signupQuestion.private) {
     return "";
   }
 

@@ -30,8 +30,8 @@ export const createEnteredGames = async (): Promise<void> => {
       return;
     }
 
-    const foundSignupMessage = settings.signupMessages.find(
-      (signupMessage) => signupMessage.gameId === randomGame.gameId
+    const foundSignupQuestion = settings.signupQuestions.find(
+      (signupQuestion) => signupQuestion.gameId === randomGame.gameId
     );
 
     const usersCount = getRandomInt(1, randomGame.maxAttendance);
@@ -44,7 +44,7 @@ export const createEnteredGames = async (): Promise<void> => {
         username: user.username,
         enteredGameId: randomGame.gameId,
         startTime: randomGame.startTime,
-        message: foundSignupMessage?.message ? faker.lorem.words(4) : "",
+        message: foundSignupQuestion?.message ? faker.lorem.words(4) : "",
       });
     });
   });

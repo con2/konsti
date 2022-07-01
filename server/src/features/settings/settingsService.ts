@@ -1,8 +1,8 @@
 import {
   findSettings,
   saveHidden,
-  saveSignupMessage,
-  delSignupMessage,
+  saveSignupQuestion,
+  delSignupQuestion,
   saveSettings,
 } from "server/features/settings/settingsRepository";
 import { logger } from "server/utils/logger";
@@ -12,11 +12,11 @@ import {
   PostHiddenResponse,
   PostSettingsRequest,
   PostSettingsResponse,
-  PostSignupMessageResponse,
+  PostSignupQuestionResponse,
 } from "shared/typings/api/settings";
 import { Game } from "shared/typings/models/game";
 import { removeHiddenGamesFromUsers } from "server/features/settings/utils/removeHiddenGamesFromUsers";
-import { SignupMessage } from "shared/typings/models/settings";
+import { SignupQuestion } from "shared/typings/models/settings";
 
 export const fetchSettings = async (): Promise<
   GetSettingsResponse | ApiError
@@ -30,7 +30,7 @@ export const fetchSettings = async (): Promise<
       hiddenGames: response.hiddenGames,
       signupTime: response.signupTime || "",
       appOpen: response.appOpen,
-      signupMessages: response.signupMessages,
+      signupQuestions: response.signupQuestions,
       signupStrategy: response.signupStrategy,
     };
   } catch (error) {
@@ -76,47 +76,47 @@ export const storeHidden = async (
   };
 };
 
-export const storeSignupMessage = async (
-  signupMessageData: SignupMessage
-): Promise<PostSignupMessageResponse | ApiError> => {
+export const storeSignupQuestion = async (
+  signupQuestionData: SignupQuestion
+): Promise<PostSignupQuestionResponse | ApiError> => {
   let settings;
   try {
-    settings = await saveSignupMessage(signupMessageData);
+    settings = await saveSignupQuestion(signupQuestionData);
   } catch (error) {
-    logger.error(`saveSignupMessage error: ${error}`);
+    logger.error(`saveSignupQuestion error: ${error}`);
     return {
-      message: "saveSignupMessage failure",
+      message: "saveSignupQuestion failure",
       status: "error",
       errorId: "unknown",
     };
   }
 
   return {
-    message: "saveSignupMessage success",
+    message: "saveSignupQuestion success",
     status: "success",
-    signupMessages: settings.signupMessages,
+    signupQuestions: settings.signupQuestions,
   };
 };
 
-export const removeSignupMessage = async (
+export const removeSignupQuestion = async (
   gameId: string
-): Promise<PostSignupMessageResponse | ApiError> => {
+): Promise<PostSignupQuestionResponse | ApiError> => {
   let settings;
   try {
-    settings = await delSignupMessage(gameId);
+    settings = await delSignupQuestion(gameId);
   } catch (error) {
-    logger.error(`delSignupMessage error: ${error}`);
+    logger.error(`delSignupQuestion error: ${error}`);
     return {
-      message: "delSignupMessage failure",
+      message: "delSignupQuestion failure",
       status: "error",
       errorId: "unknown",
     };
   }
 
   return {
-    message: "delSignupMessage success",
+    message: "delSignupQuestion success",
     status: "success",
-    signupMessages: settings.signupMessages,
+    signupQuestions: settings.signupQuestions,
   };
 };
 

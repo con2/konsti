@@ -2,14 +2,14 @@ import { logger } from "server/utils/logger";
 import { findGames } from "server/features/game/gameRepository";
 import {
   findSettings,
-  saveSignupMessage,
+  saveSignupQuestion,
 } from "server/features/settings/settingsRepository";
 
 interface CreateSettingsParameters {
-  signupMessages: boolean;
+  signupQuestions: boolean;
 }
 
-const testMessages = [
+const testQuestions = [
   "Character class and level",
   "Do you like cake?",
   "Have you played this before?",
@@ -18,25 +18,25 @@ const testMessages = [
 ];
 
 export const createSettings = async ({
-  signupMessages,
+  signupQuestions,
 }: CreateSettingsParameters): Promise<void> => {
   logger.info(`Generate settings data`);
 
   await findSettings();
 
-  if (signupMessages) {
+  if (signupQuestions) {
     const games = await findGames();
 
-    const promises = testMessages.map(async (_testMessage, index) => {
+    const promises = testQuestions.map(async (testQuestion) => {
       const randomGame = games[Math.floor(Math.random() * games.length)];
 
       logger.info(
-        `Add test message "${testMessages[index]}" to game "${randomGame.title}"`
+        `Add test question "${testQuestion}" to game "${randomGame.title}"`
       );
 
-      await saveSignupMessage({
+      await saveSignupQuestion({
         gameId: randomGame.gameId,
-        message: testMessages[index],
+        message: testQuestion,
         private: false,
       });
     });

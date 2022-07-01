@@ -30,8 +30,8 @@
     "helper": "Apuja",
     "find": "Etsi",
     "save": "Tallenna",
-    "addSignupMessage": "Lisää tekstikenttä",
-    "removeSignupMessage": "Poista tekstikenttä"
+    "addSignupQuestion": "Lisää ilmoittautumiskysymys",
+    "removeSignupQuestion": "Poista ilmoittautumiskysymys"
   },
   "username": "Käyttäjänimi",
   "password": "Salasana",
@@ -163,8 +163,8 @@
   "noFavoritedGames": "Ei suosikkipelejä",
   "noEnteredGames": "Ei ilmoittautumisia",
   "noHiddenGames": "Ei piilotettuja pelejä",
-  "noSignupMessages": "Ei ilmoittautumisten lisätietoja",
-  "signupMessages": "Ilmoittautumisen lisätiedot",
+  "noSignupQuestions": "Ei ilmoittautumisten lisätietokysymystä",
+  "signupQuestions": "Ilmoittautumisen lisätietokysymykset",
   "noOpenSignups": "Ei avoimia ilmoittautumisia",
   "signupOpen": "Ilmoittautuminen auki seuraaville alkamisajoille",
   "activeTime": "Aktiinen aika",
@@ -333,7 +333,7 @@
   "selectedProgramType": "Valittu ohjelmatyyppi",
   "yes": "Kyllä",
   "no": "Ei",
-  "createPrivateMessage": "Luo yksityinen viesti",
+  "createPrivateQuestion": "Luo yksityinen kysymys",
   "private": "Yksityinen",
   "helperView": {
     "privateSignupMessagesInfo": "Yksityiset ilmoittautumisen lisätiedot turnausten osallistujien tavoittamiseen."

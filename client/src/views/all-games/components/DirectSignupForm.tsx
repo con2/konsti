@@ -37,8 +37,8 @@ export const DirectSignupForm: FC<Props> = ({
   const loggedIn = useAppSelector((state) => state.login.loggedIn);
   const username = useAppSelector((state) => state.login.username);
   const activeEnteredGames = useAppSelector(selectActiveEnteredGames);
-  const additionalInfoMessages = useAppSelector(
-    (state) => state.admin.signupMessages
+  const signupQuestions = useAppSelector(
+    (state) => state.admin.signupQuestions
   );
 
   const [signupFormOpen, setSignupFormOpen] = useState(false);
@@ -144,7 +144,7 @@ export const DirectSignupForm: FC<Props> = ({
       {signupFormOpen && !alreadyEnteredToGame && !gameIsFull && (
         <EnterGameForm
           game={game}
-          signupMessage={additionalInfoMessages.find(
+          signupQuestion={signupQuestions.find(
             ({ gameId }) => gameId === game.gameId
           )}
           onEnterGame={() => setSignupFormOpen(false)}

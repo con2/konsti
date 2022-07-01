@@ -15,7 +15,7 @@ export enum ApiEndpoint {
   SETTINGS = "/api/settings",
   RESULTS = "/api/results",
   ENTERED_GAME = "/api/entered-game",
-  SIGNUP_MESSAGE = "/api/signup-message",
+  SIGNUP_QUESTION = "/api/signup-question",
   SESSION_RESTORE = "/api/session-restore",
   USERS_PASSWORD = "/api/users/password",
   TEST_SETTINGS = "/api/test-settings",

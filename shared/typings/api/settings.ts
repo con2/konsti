@@ -4,7 +4,7 @@ import { Game } from "shared/typings/models/game";
 import {
   Settings,
   SettingsSchema,
-  SignupMessage,
+  SignupQuestion,
 } from "shared/typings/models/settings";
 
 export interface PostHiddenResponse {
@@ -19,12 +19,12 @@ export interface GetSettingsResponse {
   message: string;
   signupTime: string;
   status: "success";
-  signupMessages: readonly SignupMessage[];
+  signupQuestions: readonly SignupQuestion[];
   signupStrategy: SignupStrategy;
 }
 
-export interface PostSignupMessageResponse {
-  signupMessages: readonly SignupMessage[];
+export interface PostSignupQuestionResponse {
+  signupQuestions: readonly SignupQuestion[];
   message: string;
   status: "success";
 }

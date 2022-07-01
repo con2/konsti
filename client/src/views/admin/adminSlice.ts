@@ -5,14 +5,14 @@ import { AdminState, RootState } from "client/typings/redux.typings";
 import { SubmitGetSettingsPayload } from "client/views/admin/adminTypes";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
 import { Game, ProgramType } from "shared/typings/models/game";
-import { SignupMessage } from "shared/typings/models/settings";
+import { SignupQuestion } from "shared/typings/models/settings";
 
 const initialState: AdminState = {
   hiddenGames: [],
   activeSignupTime: "",
   appOpen: true,
   responseMessage: "",
-  signupMessages: [],
+  signupQuestions: [],
   signupStrategy: undefined,
   errors: [],
   activeProgramType: ProgramType.TABLETOP_RPG,
@@ -35,7 +35,7 @@ const adminSlice = createSlice({
         hiddenGames: action.payload.hiddenGames,
         activeSignupTime: action.payload.signupTime,
         appOpen: action.payload.appOpen,
-        signupMessages: action.payload.signupMessages,
+        signupQuestions: action.payload.signupQuestions,
         signupStrategy: action.payload.signupStrategy,
       };
     },
@@ -56,11 +56,11 @@ const adminSlice = createSlice({
       return { ...state, responseMessage: action.payload };
     },
 
-    updateSignupMessages(
+    updateSignupQuestions(
       state,
-      action: PayloadAction<readonly SignupMessage[]>
+      action: PayloadAction<readonly SignupQuestion[]>
     ) {
-      return { ...state, signupMessages: action.payload };
+      return { ...state, signupQuestions: action.payload };
     },
 
     addError(state, action: PayloadAction<ErrorMessageType>) {
@@ -90,7 +90,7 @@ export const {
   submitSetSignupStrategyAsync,
   submitToggleAppOpenAsync,
   submitResponseMessageAsync,
-  updateSignupMessages,
+  updateSignupQuestions,
   addError,
   removeError,
   setActiveProgramType,
