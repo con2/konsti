@@ -56,7 +56,7 @@ export const HelperView = (): ReactElement => {
         }
         onClick={() => setSelectedTool(HelperTool.PRIVATE_SIGNUP_MESSAGES)}
       >
-        {t("signupMessages")}
+        {t("signupQuestions")}
       </Button>
 
       <Button

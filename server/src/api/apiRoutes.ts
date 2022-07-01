@@ -7,11 +7,11 @@ import {
   postAssignment,
 } from "server/features/results/resultsController";
 import {
-  deleteSignupMessage,
+  deleteSignupQuestion,
   getSettings,
   postHidden,
   postSettings,
-  postSignupMessage,
+  postSignupQuestion,
 } from "server/features/settings/settingsController";
 import {
   deleteEnteredGame,
@@ -60,7 +60,7 @@ apiRoutes.post(ApiEndpoint.JOIN_GROUP, postJoinGroup);
 apiRoutes.post(ApiEndpoint.LEAVE_GROUP, postLeaveGroup);
 apiRoutes.post(ApiEndpoint.CLOSE_GROUP, postCloseGroup);
 apiRoutes.post(ApiEndpoint.ENTERED_GAME, postEnteredGame);
-apiRoutes.post(ApiEndpoint.SIGNUP_MESSAGE, postSignupMessage);
+apiRoutes.post(ApiEndpoint.SIGNUP_QUESTION, postSignupQuestion);
 apiRoutes.post(ApiEndpoint.SESSION_RESTORE, postSessionRestore);
 apiRoutes.post(ApiEndpoint.USERS_PASSWORD, postUserPassword);
 apiRoutes.post(ApiEndpoint.SETTINGS, postSettings);
@@ -80,7 +80,7 @@ apiRoutes.get(ApiEndpoint.GROUP, getGroup);
 /* DELETE routes */
 
 apiRoutes.delete(ApiEndpoint.ENTERED_GAME, deleteEnteredGame);
-apiRoutes.delete(ApiEndpoint.SIGNUP_MESSAGE, deleteSignupMessage);
+apiRoutes.delete(ApiEndpoint.SIGNUP_QUESTION, deleteSignupQuestion);
 
 /* DEV routes */
 

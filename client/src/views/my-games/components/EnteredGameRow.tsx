@@ -27,14 +27,16 @@ export const EnteredGameRow = ({
   const { t } = useTranslation();
 
   const username = useAppSelector((state) => state.login.username);
-  const signupMessages = useAppSelector((state) => state.admin.signupMessages);
+  const signupQuestions = useAppSelector(
+    (state) => state.admin.signupQuestions
+  );
 
   const [cancelSignupFormOpen, setCancelSignupFormOpen] = useState(false);
   const [serverError, setServerError] =
     useState<DeleteEnteredGameErrorMessage | null>(null);
 
-  const signupMessage = signupMessages.find(
-    (message) => message.gameId === signup.gameDetails.gameId
+  const signupQuestion = signupQuestions.find(
+    (question) => question.gameId === signup.gameDetails.gameId
   );
 
   const removeSignup = async (): Promise<void> => {
@@ -83,13 +85,13 @@ export const EnteredGameRow = ({
         )}
       </ButtonContainer>
 
-      {!!signupMessage && (
-        <SignupMessagePlacement>
+      {!!signupQuestion && (
+        <SignupQuestionPlacement>
           <FontAwesomeIcon icon={"comment"} />
-          {` ${t("myGamesView.yourAnswer")} "${signupMessage.message}": ${
+          {` ${t("myGamesView.yourAnswer")} "${signupQuestion.message}": ${
             signup.message
           }`}
-        </SignupMessagePlacement>
+        </SignupQuestionPlacement>
       )}
 
       {serverError && (
@@ -112,6 +114,6 @@ const ButtonContainer = styled.div`
   padding-left: 10px;
 `;
 
-const SignupMessagePlacement = styled.div`
+const SignupQuestionPlacement = styled.div`
   padding-top: 5px;
 `;

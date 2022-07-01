@@ -95,7 +95,7 @@ export const runGenerators = async (
     !options.clean && (await removeEnteredGames());
     !options.clean && (await removeResults());
 
-    await createSettings({ signupMessages: true });
+    await createSettings({ signupQuestions: true });
     await createEnteredGames();
   }
 
