@@ -40,6 +40,10 @@ const rootReducer = (
       newState.allGames = state.allGames;
     }
 
+    if (config.loadedSettings !== "production" && state?.testSettings) {
+      newState.testSettings = state.testSettings;
+    }
+
     return newState;
   }
 
