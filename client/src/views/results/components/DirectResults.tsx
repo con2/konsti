@@ -25,6 +25,10 @@ export const DirectResults = (): ReactElement => {
   const [showAllGames, setShowAllGames] = useState<boolean>(false);
   const [showSignupMessages, setShowSignupMessages] = useState<string[]>([]);
 
+  const publicSignupQuestions = signupQuestions.filter(
+    (signupQuestion) => !signupQuestion.private
+  );
+
   const visibleGames = activeGames
     .filter((activeGame) => activeGame.signupStrategy === SignupStrategy.DIRECT)
     .filter((activeGame) =>
@@ -119,7 +123,7 @@ export const DirectResults = (): ReactElement => {
 
               <Games>
                 {sortedGamesForTime.map((game) => {
-                  const signupQuestion = signupQuestions.find(
+                  const signupQuestion = publicSignupQuestions.find(
                     (question) => question.gameId === game.gameId
                   );
                   const signupMessagesVisible = showSignupMessages.find(

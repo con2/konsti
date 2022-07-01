@@ -296,7 +296,7 @@
     "info": "Tämä viesti näytetään vain ensimmäisen kirjautumisesi yhteydessä. Löydät koodin myös navigaation takaa."
   },
   "myGamesView": {
-    "yourAnswer": "Vastauksesi kenttään",
+    "yourAnswer": "Vastauksesi kysymykseen",
     "changePassword": "Vaihda salasana"
   },
   "accessibility": {
@@ -335,6 +335,7 @@
   "no": "Ei",
   "createPrivateQuestion": "Luo yksityinen kysymys",
   "private": "Yksityinen",
+  "privateOnlyVisibleToOrganizers": "Näkyy ainoastaan järjestäjille",
   "helperView": {
     "privateSignupMessagesInfo": "Yksityiset ilmoittautumisen lisätiedot turnausten osallistujien tavoittamiseen."
   }
