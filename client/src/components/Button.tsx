@@ -48,6 +48,7 @@ const StyledButton = styled.button<StyledButtonProps>`
   margin: 10px 10px 10px 0;
   padding: 6px 20px;
   font-size: ${(props) => props.theme.fontSizeSmall};
+  white-space: nowrap;
 
   ${(props) => {
     switch (props.buttonStyle) {
