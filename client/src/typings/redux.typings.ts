@@ -5,7 +5,7 @@ import { GroupMember } from "shared/typings/api/groups";
 import { Result } from "shared/typings/models/result";
 import { store, combinedReducer } from "client/utils/store";
 import { UserGroup } from "shared/typings/models/user";
-import { SignupMessage } from "shared/typings/models/settings";
+import { SignupQuestion } from "shared/typings/models/settings";
 import { UserSignup } from "shared/typings/api/games";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
 import { UserGames } from "shared/typings/api/users";
@@ -16,7 +16,7 @@ export interface AdminState {
   activeSignupTime: string;
   appOpen: boolean;
   responseMessage: string;
-  signupMessages: readonly SignupMessage[];
+  signupQuestions: readonly SignupQuestion[];
   signupStrategy: SignupStrategy | undefined;
   errors: readonly ErrorMessageType[];
   activeProgramType: ProgramType;

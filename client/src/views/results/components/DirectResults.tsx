@@ -17,7 +17,9 @@ export const DirectResults = (): ReactElement => {
 
   const activeGames = useAppSelector(selectActiveGames);
   const signups = useAppSelector((state) => state.allGames.signups);
-  const signupMessages = useAppSelector((state) => state.admin.signupMessages);
+  const signupQuestions = useAppSelector(
+    (state) => state.admin.signupQuestions
+  );
   const hiddenGames = useAppSelector((state) => state.admin.hiddenGames);
 
   const [showAllGames, setShowAllGames] = useState<boolean>(false);
@@ -117,8 +119,8 @@ export const DirectResults = (): ReactElement => {
 
               <Games>
                 {sortedGamesForTime.map((game) => {
-                  const signupMessage = signupMessages.find(
-                    (message) => message.gameId === game.gameId
+                  const signupQuestion = signupQuestions.find(
+                    (question) => question.gameId === game.gameId
                   );
                   const signupMessagesVisible = showSignupMessages.find(
                     (message) => message === game.gameId
@@ -130,7 +132,7 @@ export const DirectResults = (): ReactElement => {
                       <h4 key={game.gameId}>
                         {game.title}{" "}
                         <Tag>{t(`programType.${game.programType}`)}</Tag>{" "}
-                        {!!signupMessage &&
+                        {!!signupQuestion &&
                           (signupMessagesVisible ? (
                             <FontAwesomeIcon
                               icon={"comment"}
@@ -161,9 +163,9 @@ export const DirectResults = (): ReactElement => {
                       </PlayerCount>
 
                       {signupMessagesVisible && (
-                        <SignupMessageQuestion>
-                          {signupMessage?.message}
-                        </SignupMessageQuestion>
+                        <SignupQuestion>
+                          {signupQuestion?.message}
+                        </SignupQuestion>
                       )}
 
                       <PlayerList>
@@ -215,7 +217,7 @@ const PlayerCount = styled.div`
   padding: 0 0 0 10px;
 `;
 
-const SignupMessageQuestion = styled.p`
+const SignupQuestion = styled.p`
   font-weight: 600;
 `;
 

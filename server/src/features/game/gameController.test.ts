@@ -24,7 +24,7 @@ import {
 import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
 import { saveEnteredGame } from "server/features/user/entered-game/enteredGameRepository";
 import { saveFavorite } from "server/features/user/favorite-game/favoriteGameRepository";
-import { saveSignupMessage } from "server/features/settings/settingsRepository";
+import { saveSignupQuestion } from "server/features/settings/settingsRepository";
 
 let server: Server;
 let mongoServer: MongoMemoryServer;
@@ -62,12 +62,12 @@ describe(`GET ${ApiEndpoint.GAMES}`, () => {
       message: "Answer to private message",
     });
 
-    await saveSignupMessage({
+    await saveSignupQuestion({
       gameId: testGame.gameId,
       message: "public message",
       private: false,
     });
-    await saveSignupMessage({
+    await saveSignupQuestion({
       gameId: testGame2.gameId,
       message: "private message",
       private: true,

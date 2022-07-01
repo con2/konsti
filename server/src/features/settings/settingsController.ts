@@ -3,8 +3,8 @@ import { ZodError } from "zod";
 import {
   fetchSettings,
   storeHidden,
-  storeSignupMessage,
-  removeSignupMessage,
+  storeSignupQuestion,
+  removeSignupQuestion,
   updateSettings,
 } from "server/features/settings/settingsService";
 import { UserGroup } from "shared/typings/models/user";
@@ -12,7 +12,7 @@ import { isAuthorized } from "server/utils/authHeader";
 import { logger } from "server/utils/logger";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { Game } from "shared/typings/models/game";
-import { SignupMessage } from "shared/typings/models/settings";
+import { SignupQuestion } from "shared/typings/models/settings";
 import {
   PostSettingsRequest,
   PostSettingsRequestSchema,
@@ -43,31 +43,31 @@ export const getSettings = async (
   return res.json(response);
 };
 
-export const postSignupMessage = async (
-  req: Request<{}, {}, { signupMessage: SignupMessage }>,
+export const postSignupQuestion = async (
+  req: Request<{}, {}, { signupQuestion: SignupQuestion }>,
   res: Response
 ): Promise<Response> => {
-  logger.info(`API call: POST ${ApiEndpoint.SIGNUP_MESSAGE}`);
+  logger.info(`API call: POST ${ApiEndpoint.SIGNUP_QUESTION}`);
 
   if (!isAuthorized(req.headers.authorization, UserGroup.ADMIN, "admin")) {
     return res.sendStatus(401);
   }
 
-  const response = await storeSignupMessage(req.body.signupMessage);
+  const response = await storeSignupQuestion(req.body.signupQuestion);
   return res.json(response);
 };
 
-export const deleteSignupMessage = async (
+export const deleteSignupQuestion = async (
   req: Request<{}, {}, { gameId: string }>,
   res: Response
 ): Promise<Response> => {
-  logger.info(`API call: DELETE ${ApiEndpoint.SIGNUP_MESSAGE}`);
+  logger.info(`API call: DELETE ${ApiEndpoint.SIGNUP_QUESTION}`);
 
   if (!isAuthorized(req.headers.authorization, UserGroup.ADMIN, "admin")) {
     return res.sendStatus(401);
   }
 
-  const response = await removeSignupMessage(req.body.gameId);
+  const response = await removeSignupQuestion(req.body.gameId);
   return res.json(response);
 };
 

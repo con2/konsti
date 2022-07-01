@@ -7,29 +7,31 @@ export const PrivateSignupMessages = (): ReactElement => {
   const { t } = useTranslation();
 
   const games = useAppSelector((state) => state.allGames.games);
-  const signupMessages = useAppSelector((state) => state.admin.signupMessages);
+  const signupQuestions = useAppSelector(
+    (state) => state.admin.signupQuestions
+  );
 
-  const privateSignupMessages = signupMessages.filter(
-    (signupMessage) => signupMessage.private
+  const privateSignupQuestions = signupQuestions.filter(
+    (signupQuestion) => signupQuestion.private
   );
 
   return (
     <div>
-      <h3>{t("signupMessages")}</h3>
+      <h3>{t("signupQuestions")}</h3>
       <p>{t("helperView.privateSignupMessagesInfo")}</p>
 
-      {privateSignupMessages.map((signupMessage) => {
+      {privateSignupQuestions.map((signupQuestion) => {
         const matchingGame = games.find(
-          (game) => game.gameId === signupMessage.gameId
+          (game) => game.gameId === signupQuestion.gameId
         );
         if (!matchingGame) return null;
 
         return (
-          <p key={signupMessage.gameId}>
+          <p key={signupQuestion.gameId}>
             <Link to={`/games/${matchingGame.gameId}`}>
               {matchingGame.title}
             </Link>{" "}
-            {signupMessage.message}
+            {signupQuestion.message}
           </p>
         );
       })}

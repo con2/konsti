@@ -30,8 +30,8 @@
     "helper": "Helper",
     "find": "Find",
     "save": "Save",
-    "addSignupMessage": "Add textfield",
-    "removeSignupMessage": "Delete textfield"
+    "addSignupQuestion": "Add signup question",
+    "removeSignupQuestion": "Delete signup question"
   },
   "username": "Username",
   "password": "Password",
@@ -163,8 +163,8 @@
   "noFavoritedGames": "No favorited games",
   "noEnteredGames": "No signups",
   "noHiddenGames": "No hidden games",
-  "noSignupMessages": "No signup messages",
-  "signupMessages": "Signup messages",
+  "noSignupQuestions": "No signup questions",
+  "signupQuestions": "Signup questions",
   "noOpenSignups": "No open signups",
   "signupOpen": "Signup open for the following times",
   "activeTime": "Active time",
@@ -333,7 +333,7 @@
   "selectedProgramType": "Selected program type",
   "yes": "Yes",
   "no": "No",
-  "createPrivateMessage": "Create private message",
+  "createPrivateQuestion": "Create private question",
   "private": "Private",
   "helperView": {
     "privateSignupMessagesInfo": "Private signup info for contacting tournament participants"

@@ -3,41 +3,41 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Game } from "shared/typings/models/game";
-import { SignupMessage } from "shared/typings/models/settings";
+import { SignupQuestion } from "shared/typings/models/settings";
 import { timeFormatter } from "client/utils/timeFormatter";
 
 interface Props {
-  signupMessages: readonly SignupMessage[];
+  signupQuestions: readonly SignupQuestion[];
   games: readonly Game[];
 }
 
-export const SignupMessageList = ({
-  signupMessages,
+export const SignupQuestionList = ({
+  signupQuestions,
   games,
 }: Props): ReactElement => {
   const { t } = useTranslation();
 
   return (
     <div>
-      <h3>{t("signupMessages")}</h3>
+      <h3>{t("signupQuestions")}</h3>
 
       <ul>
-        {signupMessages.length === 0 && <span>{t("noSignupMessages")}</span>}
+        {signupQuestions.length === 0 && <span>{t("noSignupQuestions")}</span>}
 
-        {signupMessages.flatMap((signupMessage) => {
+        {signupQuestions.flatMap((signupQuestion) => {
           const foundGame = games.find(
-            (game) => game.gameId === signupMessage.gameId
+            (game) => game.gameId === signupQuestion.gameId
           );
           if (!foundGame) return [];
 
           return (
-            <li key={`${signupMessage.gameId}-${signupMessage.message}`}>
-              <Link to={`/games/${signupMessage.gameId}`}>
+            <li key={`${signupQuestion.gameId}-${signupQuestion.message}`}>
+              <Link to={`/games/${signupQuestion.gameId}`}>
                 {foundGame.title}
               </Link>
-              : {signupMessage.message}{" "}
-              {signupMessage.private && <BoldText>({t("private")})</BoldText>} -{" "}
-              {t(`programType.${foundGame.programType}`)} -{" "}
+              : {signupQuestion.message}{" "}
+              {signupQuestion.private && <BoldText>({t("private")})</BoldText>}{" "}
+              - {t(`programType.${foundGame.programType}`)} -{" "}
               {timeFormatter.getWeekdayAndTime({
                 time: foundGame.startTime,
                 capitalize: false,
