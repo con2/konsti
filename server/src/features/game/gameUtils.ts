@@ -5,12 +5,12 @@ import { GameDoc } from "server/typings/game.typings";
 import { logger } from "server/utils/logger";
 import { Game } from "shared/typings/models/game";
 import { findUsers } from "server/features//user/userRepository";
-import { User } from "shared/typings/models/user";
+import { SelectedGame, User } from "shared/typings/models/user";
 import { GameWithUsernames, UserSignup } from "shared/typings/api/games";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
 import { sharedConfig } from "shared/config/sharedConfig";
 import { findSettings } from "server/features/settings/settingsRepository";
-import { Settings } from "shared/typings/models/settings";
+import { Settings, SignupMessage } from "shared/typings/models/settings";
 import { getTime } from "server/features/player-assignment/utils/getTime";
 
 export const removeDeletedGames = async (
@@ -53,12 +53,15 @@ export const enrichGames = async (
     const currentTime = await getTime();
 
     return games.map((game) => {
+      const signupMessage = settings.signupMessages.find(
+        (message) => message.gameId === game.gameId
+      );
       return {
         game: {
           ...game.toJSON<GameDoc>(),
           signupStrategy: getSignupStrategyForGame(game, settings, currentTime),
         },
-        users: getUsersForGame(users, game.gameId),
+        users: getUsersForGame(users, game.gameId, signupMessage),
       };
     });
   } catch (error) {
@@ -91,7 +94,8 @@ const getSignupStrategyForGame = (
 
 export const getUsersForGame = (
   users: User[],
-  gameId: string
+  gameId: string,
+  signupMessage?: SignupMessage | undefined
 ): UserSignup[] => {
   const usersForGame = users.filter(
     (user) =>
@@ -107,7 +111,18 @@ export const getUsersForGame = (
 
     return {
       username: user.username,
-      signupMessage: enteredGame?.message ?? "",
+      signupMessage: getSignupMessage(signupMessage, enteredGame),
     };
   });
+};
+
+const getSignupMessage = (
+  signupMessage: SignupMessage | undefined,
+  enteredGame: SelectedGame | undefined
+): string => {
+  if (!signupMessage || signupMessage.private) {
+    return "";
+  }
+
+  return enteredGame?.message ?? "";
 };
