@@ -36,7 +36,11 @@ export const runRandomAssignment = (
   const assignResults = eventAssignment(input);
 
   if (isCheckResult(assignResults)) {
-    throw new Error(`Random assignment error: ${assignResults.msg}`);
+    throw new Error(
+      `Random assignment failed: ${assignResults.msg}. Input: ${JSON.stringify(
+        input
+      )}`
+    );
   }
 
   const results = formatResults(assignResults, playerGroups);
