@@ -21,7 +21,11 @@ export const runPadgAssignment = (
 
   if (!assignResults) {
     throw new Error(
-      `Padg assignment failed with input: groups: ${groups}, events: ${events}, list: ${list}, updateL: ${updateL}`
+      `Padg assignment failed with input: groups: ${JSON.stringify(
+        groups
+      )}, events: ${JSON.stringify(events)}, list: ${JSON.stringify(
+        list
+      )}, updateL: ${updateL}`
     );
   }
 
