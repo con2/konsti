@@ -14,9 +14,11 @@ import {
   submitToggleAppOpenAsync,
   updateSignupQuestions,
   submitSetSignupStrategyAsync,
+  submitGetSignupMessagesAsync,
 } from "client/views/admin/adminSlice";
 import { SignupQuestion } from "shared/typings/models/settings";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
+import { getSignupMessages } from "client/services/userServices";
 
 export const submitUpdateHidden = (hiddenGames: readonly Game[]): AppThunk => {
   return async (dispatch): Promise<void> => {
@@ -130,6 +132,20 @@ export const submitSetSignupStrategy = (
 
     if (response?.status === "success") {
       dispatch(submitSetSignupStrategyAsync(response.settings.signupStrategy));
+    }
+  };
+};
+
+export const submitGetSignupMessages = (): AppThunk => {
+  return async (dispatch): Promise<void> => {
+    const response = await getSignupMessages();
+
+    if (response?.status === "error") {
+      // TODO
+    }
+
+    if (response?.status === "success") {
+      dispatch(submitGetSignupMessagesAsync(response.signupMessages));
     }
   };
 };
