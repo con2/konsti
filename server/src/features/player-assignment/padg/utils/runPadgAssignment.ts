@@ -20,7 +20,13 @@ export const runPadgAssignment = (
   const assignResults = assignPadg(groups, events, list, updateL);
 
   if (!assignResults) {
-    throw new Error("Padg assignment error");
+    throw new Error(
+      `Padg assignment failed with input: groups: ${JSON.stringify(
+        groups
+      )}, events: ${JSON.stringify(events)}, list: ${JSON.stringify(
+        list
+      )}, updateL: ${updateL}`
+    );
   }
 
   const results = formatResults(assignResults, playerGroups);
