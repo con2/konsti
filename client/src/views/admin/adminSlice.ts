@@ -6,16 +6,24 @@ import { SubmitGetSettingsPayload } from "client/views/admin/adminTypes";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
 import { Game, ProgramType } from "shared/typings/models/game";
 import { SignupQuestion } from "shared/typings/models/settings";
+import { SignupMessage } from "shared/typings/models/signupMessage";
+import { loadSession } from "client/utils/localStorage";
 
-const initialState: AdminState = {
-  hiddenGames: [],
-  activeSignupTime: "",
-  appOpen: true,
-  responseMessage: "",
-  signupQuestions: [],
-  signupStrategy: undefined,
-  errors: [],
-  activeProgramType: ProgramType.TABLETOP_RPG,
+const initialState = (): AdminState => {
+  const persistedState = loadSession();
+
+  return {
+    hiddenGames: [],
+    activeSignupTime: "",
+    appOpen: true,
+    responseMessage: "",
+    signupQuestions: [],
+    signupStrategy: undefined,
+    errors: [],
+    activeProgramType:
+      persistedState?.admin?.activeProgramType ?? ProgramType.TABLETOP_RPG,
+    signupMessages: [],
+  };
 };
 
 const adminSlice = createSlice({
@@ -80,6 +88,13 @@ const adminSlice = createSlice({
     setActiveProgramType(state, action: PayloadAction<ProgramType>) {
       return { ...state, activeProgramType: action.payload };
     },
+
+    submitGetSignupMessagesAsync(
+      state,
+      action: PayloadAction<SignupMessage[]>
+    ) {
+      return { ...state, signupMessages: action.payload };
+    },
   },
 });
 
@@ -94,6 +109,7 @@ export const {
   addError,
   removeError,
   setActiveProgramType,
+  submitGetSignupMessagesAsync,
 } = adminSlice.actions;
 
 export const adminReducer = adminSlice.reducer;
