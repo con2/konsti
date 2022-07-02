@@ -28,6 +28,7 @@ import {
 import { postLogin } from "server/features/user/login/loginController";
 import { postSessionRestore } from "server/features/user/session-restore/sessionRestoreController";
 import { postSignedGames } from "server/features/user/signed-game/signedGameController";
+import { getSignupMessages } from "server/features/user/signup-message/signupMessageController";
 import {
   getUser,
   postUser,
@@ -76,6 +77,7 @@ apiRoutes.get(
 apiRoutes.get(ApiEndpoint.SETTINGS, getSettings);
 apiRoutes.get(ApiEndpoint.RESULTS, getResults);
 apiRoutes.get(ApiEndpoint.GROUP, getGroup);
+apiRoutes.get(ApiEndpoint.SIGNUP_MESSAGE, getSignupMessages);
 
 /* DELETE routes */
 

@@ -1,0 +1,84 @@
+import { Server } from "http";
+import request from "supertest";
+import { MongoMemoryServer } from "mongodb-memory-server";
+import { ApiEndpoint } from "shared/constants/apiEndpoints";
+import { getJWT } from "server/utils/jwt";
+import { UserGroup } from "shared/typings/models/user";
+import { closeServer, startServer } from "server/utils/server";
+import { saveGames } from "server/features/game/gameRepository";
+import { saveUser } from "server/features/user/userRepository";
+import { saveEnteredGame } from "server/features/user/entered-game/enteredGameRepository";
+import {
+  mockPostEnteredGameRequest,
+  mockPostEnteredGameRequest2,
+  mockUser,
+} from "server/test/mock-data/mockUser";
+import { testGame, testGame2 } from "shared/tests/testGame";
+import { SignupQuestion } from "shared/typings/models/settings";
+import { saveSignupQuestion } from "server/features/settings/settingsRepository";
+
+let server: Server;
+let mongoServer: MongoMemoryServer;
+let mongoUri: string;
+
+beforeEach(async () => {
+  mongoServer = new MongoMemoryServer();
+  await mongoServer.start();
+  mongoUri = mongoServer.getUri();
+  server = await startServer(mongoUri);
+});
+
+afterEach(async () => {
+  await closeServer(server);
+  await mongoServer.stop();
+});
+
+describe(`GET ${ApiEndpoint.SIGNUP_MESSAGE}`, () => {
+  test("should return 401 without authorization", async () => {
+    const response = await request(server).get(ApiEndpoint.SIGNUP_MESSAGE);
+    expect(response.status).toEqual(401);
+  });
+
+  test("should return 401 with normal user authorization", async () => {
+    const response = await request(server)
+      .get(ApiEndpoint.SIGNUP_MESSAGE)
+      .set("Authorization", `Bearer ${getJWT(UserGroup.USER, "testUser")}`);
+    expect(response.status).toEqual(401);
+  });
+
+  test("should return 200 with helper authorization", async () => {
+    const testSignupQuestion: SignupQuestion = {
+      gameId: testGame.gameId,
+      message: "Public signup question",
+      private: false,
+    };
+
+    const testSignupQuestion2: SignupQuestion = {
+      gameId: testGame2.gameId,
+      message: "Private signup question",
+      private: true,
+    };
+
+    await saveSignupQuestion(testSignupQuestion);
+    await saveSignupQuestion(testSignupQuestion2);
+
+    await saveGames([testGame, testGame2]);
+    await saveUser(mockUser);
+
+    await saveEnteredGame({
+      ...mockPostEnteredGameRequest,
+      message: "Answer to public message",
+    });
+    await saveEnteredGame({
+      ...mockPostEnteredGameRequest2,
+      message: "Answer to private message",
+    });
+
+    const response = await request(server)
+      .get(ApiEndpoint.SIGNUP_MESSAGE)
+      .set("Authorization", `Bearer ${getJWT(UserGroup.HELP, "helper")}`);
+
+    expect(response.status).toEqual(200);
+    expect(response.body.signupMessages.length).toEqual(2);
+  });
+});
