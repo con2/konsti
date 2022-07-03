@@ -4,7 +4,7 @@ import { SignupStrategy } from "shared/config/sharedConfig.types";
 export enum ProgramType {
   TABLETOP_RPG = "tabletopRPG",
   LARP = "larp",
-  BOARD_GAME = "boardGame",
+  TOURNAMENT = "tournament",
 }
 
 export enum Genre {

@@ -92,7 +92,12 @@
   "programType": {
     "tabletopRPG": "Pöytäroolipeli",
     "larp": "LARP",
-    "boardGame": "Lautapeli"
+    "tournament": "Turnaus"
+  },
+  "programTypePlural": {
+    "tabletopRPG": "Pöytäroolipelit",
+    "larp": "LARP",
+    "tournament": "Turnaukset"
   },
   "gameStyle": {
     "serious": "Vakava pelityyli",
