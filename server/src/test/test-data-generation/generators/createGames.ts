@@ -17,27 +17,22 @@ import { TOURNAMENT_EVENT_TYPE } from "server/features/game/utils/getGamesFromKo
 
 const GAME_ID_MAX = 10000000;
 
-export const createGames = async (
-  gameCount: number,
-  signupTimes: number
-): Promise<Game[]> => {
-  const startingTimes = [] as string[];
+const startingTimes = [
+  dayjs(sharedConfig.CONVENTION_START_TIME).format(),
+  dayjs(sharedConfig.CONVENTION_START_TIME).add(2, "hours").format(),
+  dayjs(sharedConfig.CONVENTION_START_TIME).add(3, "hours").format(),
+  dayjs(sharedConfig.CONVENTION_START_TIME).add(1, "days").format(),
+  dayjs(sharedConfig.CONVENTION_START_TIME).add(2, "days").format(),
+];
 
-  for (let i = 0; i < signupTimes; i += 1) {
-    startingTimes.push(
-      dayjs(sharedConfig.CONVENTION_START_TIME)
-        .add(i + 2, "hours")
-        .format()
-    );
-  }
-
+export const createGames = async (gameCount: number): Promise<Game[]> => {
   const kompassiGames: KompassiGame[] = [];
 
   const programTypes = Object.values(KompassiProgramType);
 
   programTypes.map((programType) => {
     logger.info(
-      `Generate data for ${gameCount} programs of type "${programType}" for ${signupTimes} starting times`
+      `Generate data for ${gameCount} programs of type "${programType}" for ${startingTimes.length} starting times`
     );
 
     startingTimes.forEach((startingTime) => {
@@ -56,8 +51,14 @@ export const createGames = async (
           end_time: dayjs(startTime).add(length, "minutes").format(),
           language: "fi",
           rpg_system: "Test gamesystem",
-          min_players: faker.datatype.number({ min: 2, max: 3 }),
-          max_players: faker.datatype.number({ min: 3, max: 4 }),
+          min_players:
+            programType === KompassiProgramType.BOARD_GAME
+              ? faker.datatype.number({ min: 6, max: 10 })
+              : faker.datatype.number({ min: 2, max: 3 }),
+          max_players:
+            programType === KompassiProgramType.BOARD_GAME
+              ? faker.datatype.number({ min: 12, max: 20 })
+              : faker.datatype.number({ min: 3, max: 4 }),
           identifier: faker.datatype.number(GAME_ID_MAX).toString(),
           tags: sampleSize(Object.values(KompassiTag), 3),
           genres: sampleSize(Object.values(KompassiGenre), 2),

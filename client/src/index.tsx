@@ -5,6 +5,8 @@ import React, { Suspense, lazy } from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { ThemeProvider } from "styled-components";
+import dayjs from "dayjs";
+import isBetween from "dayjs/plugin/isBetween";
 import loaderImage from "assets/loading.gif";
 import { config } from "client/config";
 import { getLanguage } from "client/utils/localStorage";
@@ -18,6 +20,7 @@ import "client/utils/i18n";
 // Redux store
 import { store } from "client/utils/store";
 
+dayjs.extend(isBetween);
 setLocale(getLanguage());
 
 // Root component

@@ -29,15 +29,13 @@ describe("Assignment with valid data", () => {
     const numberOfGroups = 5;
     const newGamesCount = 10;
     const testUsersCount = 0;
-    const signupTimes = 3;
 
     await generateTestData(
       newUsersCount,
       newGamesCount,
       groupSize,
       numberOfGroups,
-      testUsersCount,
-      signupTimes
+      testUsersCount
     );
   });
 
@@ -199,7 +197,7 @@ describe("Assignment with valid data", () => {
 
     // SECOND RUN
 
-    const startingTime2 = dayjs(CONVENTION_START_TIME).add(4, "hours").format();
+    const startingTime2 = dayjs(CONVENTION_START_TIME).add(3, "hours").format();
 
     const assignResults2 = await runAssignment({
       assignmentStrategy,
@@ -219,15 +217,13 @@ describe("Assignment with no games", () => {
     const numberOfGroups = 0;
     const newGamesCount = 0;
     const testUsersCount = 0;
-    const signupTimes = 3;
 
     await generateTestData(
       newUsersCount,
       newGamesCount,
       groupSize,
       numberOfGroups,
-      testUsersCount,
-      signupTimes
+      testUsersCount
     );
   });
 
@@ -299,15 +295,13 @@ describe("Assignment with no players", () => {
     const numberOfGroups = 0;
     const newGamesCount = 1;
     const testUsersCount = 0;
-    const signupTimes = 3;
 
     await generateTestData(
       newUsersCount,
       newGamesCount,
       groupSize,
       numberOfGroups,
-      testUsersCount,
-      signupTimes
+      testUsersCount
     );
   });
 

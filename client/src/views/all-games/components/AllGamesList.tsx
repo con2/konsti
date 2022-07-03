@@ -1,15 +1,12 @@
 import React, { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import _ from "lodash";
-import dayjs from "dayjs";
 import { GameEntry } from "./GameEntry";
 import { useAppSelector } from "client/utils/hooks";
 import { Game } from "shared/typings/models/game";
 import { GameListTitle } from "client/views/all-games/components/GameListTitle";
 import { getIsGroupCreator } from "client/views/group/groupUtils";
 import { getSignedGames } from "client/utils/getUpcomingGames";
-import { getPhaseGap } from "shared/utils/getPhaseGap";
-import { getTime } from "client/utils/getTime";
 import { getTimeslotSignupStrategy } from "client/views/all-games/allGamesUtils";
 import {
   selectActiveEnteredGames,
@@ -82,10 +79,6 @@ export const AllGamesList = ({ games }: Props): ReactElement => {
                 signupStrategy={timeslotSignupStrategy}
                 signedGames={ownOrGroupCreatorSignedGames}
                 enteredGames={activeEnteredGames}
-                phaseGap={getPhaseGap({
-                  startTime: dayjs(startTime),
-                  timeNow: getTime(),
-                })}
               />
             );
           })}
