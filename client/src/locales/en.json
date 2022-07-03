@@ -92,7 +92,12 @@
   "programType": {
     "tabletopRPG": "Tabletop RPG",
     "larp": "LARP",
-    "boardGame": "Board game"
+    "tournament": "Tournament"
+  },
+  "programTypePlural": {
+    "tabletopRPG": "Tabletop RPG",
+    "larp": "LARP",
+    "tournament": "Tournaments"
   },
   "gameStyle": {
     "serious": "Serious game style",
