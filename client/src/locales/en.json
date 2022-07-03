@@ -184,7 +184,7 @@
     "generic": "Signup failed",
     "signupEnded": "Signup ended",
     "samePriority": "Priority already selected",
-    "phaseGap": "Signup not open yet"
+    "signupNotOpenYet": "Signup not open yet"
   },
   "signupUnsavedChanges": "Unsaved changes",
   "signupResultHint": "Sign up results are visible on 'My Games' page at",
