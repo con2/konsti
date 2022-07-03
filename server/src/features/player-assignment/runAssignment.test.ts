@@ -197,7 +197,7 @@ describe("Assignment with valid data", () => {
 
     // SECOND RUN
 
-    const startingTime2 = dayjs(CONVENTION_START_TIME).add(4, "hours").format();
+    const startingTime2 = dayjs(CONVENTION_START_TIME).add(3, "hours").format();
 
     const assignResults2 = await runAssignment({
       assignmentStrategy,

@@ -57,7 +57,7 @@ export const createGames = async (gameCount: number): Promise<Game[]> => {
               : faker.datatype.number({ min: 2, max: 3 }),
           max_players:
             programType === KompassiProgramType.BOARD_GAME
-              ? faker.datatype.number({ min: 10, max: 20 })
+              ? faker.datatype.number({ min: 12, max: 20 })
               : faker.datatype.number({ min: 3, max: 4 }),
           identifier: faker.datatype.number(GAME_ID_MAX).toString(),
           tags: sampleSize(Object.values(KompassiTag), 3),
