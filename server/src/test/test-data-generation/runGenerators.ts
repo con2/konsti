@@ -44,9 +44,8 @@ export const runGenerators = async (
 
   const testUsersCount = 5; // Number of test users
 
-  // Total games: newGamesCount * signupTimes
+  // Total games: newGamesCount
   const newGamesCount = 10; // How many games are available for each signup time for each program type
-  const signupTimes = 3; // For how many signup times games are created
 
   if (options.clean) {
     logger.info("Clean all data");
@@ -77,7 +76,7 @@ export const runGenerators = async (
     !options.clean && (await removeGames());
     !options.clean && (await removeResults());
 
-    await createGames(newGamesCount, signupTimes);
+    await createGames(newGamesCount);
   }
 
   if (options.signups) {

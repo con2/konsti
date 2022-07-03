@@ -3,12 +3,10 @@ import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { Game } from "shared/typings/models/game";
 import { EnterGameForm } from "./EnterGameForm";
-import { SelectedGame } from "shared/typings/models/user";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { isAlreadyEntered } from "./allGamesUtils";
 import { Button, ButtonStyle } from "client/components/Button";
 import { CancelSignupForm } from "./CancelSignupForm";
-import { PhaseGap } from "shared/utils/getPhaseGap";
 import { timeFormatter } from "client/utils/timeFormatter";
 import {
   DeleteEnteredGameErrorMessage,
@@ -17,19 +15,19 @@ import {
 import { loadGames } from "client/utils/loadData";
 import { ErrorMessage } from "client/components/ErrorMessage";
 import { selectActiveEnteredGames } from "client/views/my-games/myGamesSlice";
+import { getTime } from "client/utils/getTime";
+import { getDirectSignupStartTime } from "shared/utils/getDirectSignupStartTime";
 
 interface Props {
   game: Game;
   startTime: string;
   gameIsFull: boolean;
-  phaseGap: PhaseGap;
 }
 
 export const DirectSignupForm: FC<Props> = ({
   game,
   startTime,
   gameIsFull,
-  phaseGap,
 }: Props): ReactElement | null => {
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
@@ -69,49 +67,8 @@ export const DirectSignupForm: FC<Props> = ({
     }
   };
 
-  const signupForDirect = (
-    alreadySigned: boolean,
-    enteredGamesForTimeSlot: readonly SelectedGame[],
-    isFull: boolean
-  ): JSX.Element | null => {
-    if (alreadySigned || isFull) {
-      return null;
-    }
-
-    if (enteredGamesForTimeSlot.length === 1) {
-      return (
-        <p>
-          {t("signup.alreadySignedToGame")}{" "}
-          <SignedGameName>
-            {enteredGamesForTimeslot[0].gameDetails.title}
-          </SignedGameName>
-          . {t("signup.cannotSignupMoreThanOneGame")}
-        </p>
-      );
-    }
-
-    if (phaseGap.waitingForPhaseGapToEnd) {
-      return (
-        <p>
-          {t("signup.signupOpens")}{" "}
-          {timeFormatter.getTime(phaseGap.phaseGapEndTime)}
-        </p>
-      );
-    }
-
-    if (enteredGamesForTimeSlot.length === 0 && !signupFormOpen) {
-      return (
-        <Button
-          onClick={() => setSignupFormOpen(!signupFormOpen)}
-          buttonStyle={ButtonStyle.NORMAL}
-        >
-          {t("signup.directSignup")}
-        </Button>
-      );
-    }
-
-    return null;
-  };
+  const timeNow = getTime();
+  const directSignupStartTime = getDirectSignupStartTime(game, timeNow);
 
   if (!loggedIn) {
     return null;
@@ -119,37 +76,77 @@ export const DirectSignupForm: FC<Props> = ({
 
   return (
     <>
-      {signupForDirect(
-        alreadyEnteredToGame,
-        enteredGamesForTimeslot,
-        gameIsFull
-      )}
       {gameIsFull && <GameIsFull>{t("signup.gameIsFull")}</GameIsFull>}
-      {alreadyEnteredToGame && !cancelSignupFormOpen && (
-        <Button
-          onClick={() => setCancelSignupFormOpen(true)}
-          buttonStyle={ButtonStyle.NORMAL}
-        >
-          {t("button.cancelSignup")}
-        </Button>
-      )}
-      {alreadyEnteredToGame && cancelSignupFormOpen && (
-        <CancelSignupForm
-          onCancelForm={() => {
-            setCancelSignupFormOpen(false);
-          }}
-          onConfirmForm={async () => await removeSignup()}
-        />
-      )}
-      {signupFormOpen && !alreadyEnteredToGame && !gameIsFull && (
-        <EnterGameForm
-          game={game}
-          signupQuestion={signupQuestions.find(
-            ({ gameId }) => gameId === game.gameId
+
+      {!alreadyEnteredToGame && !gameIsFull && (
+        <>
+          {enteredGamesForTimeslot.length === 1 && (
+            <p>
+              {t("signup.alreadySignedToGame")}{" "}
+              <SignedGameName>
+                {enteredGamesForTimeslot[0].gameDetails.title}
+              </SignedGameName>
+              . {t("signup.cannotSignupMoreThanOneGame")}
+            </p>
           )}
-          onEnterGame={() => setSignupFormOpen(false)}
-          onCancelSignup={() => setSignupFormOpen(false)}
-        />
+
+          {enteredGamesForTimeslot.length === 0 && (
+            <>
+              {directSignupStartTime && (
+                <p>
+                  {t("signup.signupOpens")}{" "}
+                  <BoldText>
+                    {timeFormatter.getWeekdayAndTime({
+                      time: directSignupStartTime,
+                    })}
+                  </BoldText>
+                </p>
+              )}
+
+              {!signupFormOpen && !directSignupStartTime && (
+                <Button
+                  onClick={() => setSignupFormOpen(!signupFormOpen)}
+                  buttonStyle={ButtonStyle.NORMAL}
+                >
+                  {t("signup.directSignup")}
+                </Button>
+              )}
+
+              {signupFormOpen && (
+                <EnterGameForm
+                  game={game}
+                  signupQuestion={signupQuestions.find(
+                    ({ gameId }) => gameId === game.gameId
+                  )}
+                  onEnterGame={() => setSignupFormOpen(false)}
+                  onCancelSignup={() => setSignupFormOpen(false)}
+                />
+              )}
+            </>
+          )}
+        </>
+      )}
+
+      {alreadyEnteredToGame && (
+        <>
+          {!cancelSignupFormOpen && (
+            <Button
+              onClick={() => setCancelSignupFormOpen(true)}
+              buttonStyle={ButtonStyle.NORMAL}
+            >
+              {t("button.cancelSignup")}
+            </Button>
+          )}
+
+          {cancelSignupFormOpen && (
+            <CancelSignupForm
+              onCancelForm={() => {
+                setCancelSignupFormOpen(false);
+              }}
+              onConfirmForm={async () => await removeSignup()}
+            />
+          )}
+        </>
       )}
 
       {serverError && (
@@ -167,5 +164,9 @@ const GameIsFull = styled.h4`
 `;
 
 const SignedGameName = styled.span`
+  font-weight: 600;
+`;
+
+const BoldText = styled.span`
   font-weight: 600;
 `;
