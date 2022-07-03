@@ -286,7 +286,8 @@
     "signupOpens": "Signup opens",
     "preSignupOpens": "Pre-signup opens",
     "signupAlwaysOpen": "Signup for special always open",
-    "inGroupWarning": "If you signup to game you will be removed from group you are in"
+    "inGroupWarning": "If you signup to game you will be removed from group you are in",
+    "groupCreatorWarning": "If you signup to game the group you created will be destroyed"
   },
   "resultsView": {
     "allSignupResults": "Signup overview and players",
