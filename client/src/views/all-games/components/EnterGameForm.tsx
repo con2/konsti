@@ -11,9 +11,11 @@ import { Button, ButtonStyle } from "client/components/Button";
 import { SignupQuestion } from "shared/typings/models/settings";
 import { loadGames } from "client/utils/loadData";
 import { ErrorMessage } from "client/components/ErrorMessage";
-import { getIsInGroup } from "client/views/group/groupUtils";
+import { getIsGroupCreator, getIsInGroup } from "client/views/group/groupUtils";
 import {
+  PostCloseGroupErrorMessage,
   PostLeaveGroupErrorMessage,
+  submitCloseGroup,
   submitLeaveGroup,
 } from "client/views/group/groupThunks";
 
@@ -29,12 +31,17 @@ export const EnterGameForm: FC<Props> = (props: Props): ReactElement => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const username = useAppSelector((state) => state.login.username);
+  const serial = useAppSelector((state) => state.login.serial);
   const [userSignupMessage, setUserSignupMessage] = useState<string>("");
   const [errorMessage, setErrorMessage] = useState<
-    PostEnteredGameErrorMessage | PostLeaveGroupErrorMessage | null
+    | PostEnteredGameErrorMessage
+    | PostLeaveGroupErrorMessage
+    | PostCloseGroupErrorMessage
+    | null
   >(null);
   const groupCode = useAppSelector((state) => state.group.groupCode);
   const isInGroup = getIsInGroup(groupCode);
+  const isGroupCreator = getIsGroupCreator(groupCode, serial);
 
   const handleCancel = (): void => {
     onCancelSignup();
@@ -50,15 +57,33 @@ export const EnterGameForm: FC<Props> = (props: Props): ReactElement => {
       message: userSignupMessage,
     };
 
-    const leaveGroupRequest = {
-      username,
-    };
+    if (isInGroup && !isGroupCreator) {
+      const leaveGroupRequest = {
+        username,
+      };
 
-    const leaveGroupError = await dispatch(submitLeaveGroup(leaveGroupRequest));
+      const leaveGroupError = await dispatch(
+        submitLeaveGroup(leaveGroupRequest)
+      );
 
-    if (leaveGroupError) {
-      setErrorMessage(leaveGroupError);
-      return;
+      if (leaveGroupError) {
+        setErrorMessage(leaveGroupError);
+        return;
+      }
+    } else if (isInGroup && isGroupCreator) {
+      const closeGroupRequest = {
+        username,
+        groupCode,
+      };
+
+      const closeGroupError = await dispatch(
+        submitCloseGroup(closeGroupRequest)
+      );
+
+      if (closeGroupError) {
+        setErrorMessage(closeGroupError);
+        return;
+      }
     }
 
     const error = await dispatch(submitPostEnteredGame(enterData));
@@ -73,7 +98,12 @@ export const EnterGameForm: FC<Props> = (props: Props): ReactElement => {
 
   return (
     <SignupForm>
-      {isInGroup && <Warning>{t("signup.inGroupWarning")}</Warning>}
+      {isInGroup && !isGroupCreator && (
+        <Warning>{t("signup.inGroupWarning")}</Warning>
+      )}
+      {isInGroup && isGroupCreator && (
+        <Warning>{t("signup.groupCreatorWarning")}</Warning>
+      )}
       {signupQuestion && (
         <SignupQuestionContainer>
           <span>

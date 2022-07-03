@@ -286,7 +286,8 @@
     "signupOpens": "Ilmoittautuminen aukeaa",
     "preSignupOpens": "Ennakkoilmoittautuminen aukeaa",
     "signupAlwaysOpen": "Ilmoittautuminen erikoispeliin aina auki",
-    "inGroupWarning": "Jos ilmoittaudut peliin sinut poistetaan ryhmästäsi"
+    "inGroupWarning": "Jos ilmoittaudut peliin sinut poistetaan ryhmästäsi",
+    "groupCreatorWarning": "Jos ilmoittaudut peliin perustamasi ryhmä hajoitetaan"
   },
   "resultsView": {
     "allSignupResults": "Ilmoittautumistilanne ja pelaajat",
