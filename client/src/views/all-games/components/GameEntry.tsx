@@ -16,7 +16,6 @@ import {
   getUpcomingSignedGames,
 } from "client/utils/getUpcomingGames";
 import { isAlreadyEntered, isAlreadySigned } from "./allGamesUtils";
-import { PhaseGap } from "shared/utils/getPhaseGap";
 
 const DESCRIPTION_SENTENCES_LENGTH = 3;
 const matchNextSentence = /([.?!])\s*(?=[A-Z])/g;
@@ -28,7 +27,6 @@ interface Props {
   signupStrategy: SignupStrategy;
   signedGames: readonly SelectedGame[];
   enteredGames: readonly SelectedGame[];
-  phaseGap: PhaseGap;
 }
 
 export const GameEntry = ({
@@ -38,7 +36,6 @@ export const GameEntry = ({
   signupStrategy,
   signedGames,
   enteredGames,
-  phaseGap,
 }: Props): ReactElement => {
   const { t } = useTranslation();
 
@@ -191,7 +188,6 @@ export const GameEntry = ({
           game={game}
           gameIsFull={gameIsFull}
           startTime={startTime}
-          phaseGap={phaseGap}
         />
       )}
       {loggedIn && !isEnterGameMode && (

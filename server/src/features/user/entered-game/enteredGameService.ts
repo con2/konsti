@@ -8,7 +8,6 @@ import {
 } from "server/features/user/entered-game/enteredGameRepository";
 import { findUsers } from "server/features/user/userRepository";
 import { isValidSignupTime } from "server/features/user/userUtils";
-import { getPhaseGap } from "shared/utils/getPhaseGap";
 import {
   DeleteEnteredGameError,
   DeleteEnteredGameParameters,
@@ -17,6 +16,8 @@ import {
   PostEnteredGameParameters,
   PostEnteredGameResponse,
 } from "shared/typings/api/myGames";
+import { getDirectSignupStartTime } from "shared/utils/getDirectSignupStartTime";
+import { logger } from "server/utils/logger";
 
 export const storeEnteredGame = async (
   enteredGameRequest: PostEnteredGameParameters
@@ -24,14 +25,26 @@ export const storeEnteredGame = async (
   const { startTime, enteredGameId } = enteredGameRequest;
   const timeNow = await getTime();
 
+  let game;
   try {
-    const phaseGap = await getPhaseGap({ startTime: dayjs(timeNow), timeNow });
-    if (phaseGap.waitingForPhaseGapToEnd) {
-      throw new Error("Waiting for phase gap to end");
-    }
+    game = await findGameById(enteredGameId);
+    if (!game) throw new Error("Entered game not found");
   } catch (error) {
     return {
-      errorId: "phaseGap",
+      message: `Entered game not found`,
+      status: "error",
+      errorId: "unknown",
+    };
+  }
+
+  const directSignupStartTime = getDirectSignupStartTime(game, timeNow);
+
+  if (directSignupStartTime) {
+    logger.error(
+      `Signup for game ${enteredGameId} not open yet, opens ${directSignupStartTime}`
+    );
+    return {
+      errorId: "signupNotOpenYet",
       message: "Waiting for phase gap to end",
       status: "error",
     };
@@ -47,18 +60,6 @@ export const storeEnteredGame = async (
       errorId: "signupEnded",
       message: "Signup time ended",
       status: "error",
-    };
-  }
-
-  let game;
-  try {
-    game = await findGameById(enteredGameId);
-    if (!game) throw new Error("Entered game not found");
-  } catch (error) {
-    return {
-      message: `Entered game not found`,
-      status: "error",
-      errorId: "unknown",
     };
   }
 
