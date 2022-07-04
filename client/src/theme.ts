@@ -13,7 +13,7 @@ const greenLight3 = "rgb(207,225,205)";
 const green = "rgb(119,147,60)";
 const green2 = "rgb(60,118,61)";
 
-const blueLight = "rgb(165,171,208)";
+const blueLight = "rgb(117,123,165)";
 const blue = "rgb(77,144,254)";
 const blueDark = "rgb(31,75,160)";
 
