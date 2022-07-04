@@ -17,6 +17,7 @@ import {
 } from "client/utils/getUpcomingGames";
 import { isAlreadyEntered, isAlreadySigned } from "./allGamesUtils";
 import { PhaseGap } from "shared/utils/getPhaseGap";
+import { formatPopularity } from "./PopularityInfo";
 
 const DESCRIPTION_SENTENCES_LENGTH = 3;
 const matchNextSentence = /([.?!])\s*(?=[A-Z])/g;
@@ -76,21 +77,6 @@ export const GameEntry = ({
     return `${hoursStr} ${minutesStr}`;
   };
 
-  const formatPopularity = (game: Game): string => {
-    let msg = "";
-    if (game.popularity < game.minAttendance) {
-      msg = "vähän kiinnostusta";
-    } else if (
-      game.popularity >= game.minAttendance &&
-      game.popularity <= game.maxAttendance
-    ) {
-      msg = "Toteutumassa";
-    } else if (game.popularity > game.maxAttendance) {
-      msg = "Liikaa kiinnostusta";
-    }
-    return msg;
-  };
-
   // Favorite / remove favorite clicked
   const updateFavoriteHandler = async (
     updateOpts: UpdateFavoriteOpts
@@ -146,9 +132,13 @@ export const GameEntry = ({
               </PlayersNeeded>
             </>
           )}
-          <GamePopularityContainer>
-            {formatPopularity(game)}
-          </GamePopularityContainer>
+          {!isEnterGameMode &&
+            formatPopularity(
+              game.minAttendance,
+              game.maxAttendance,
+              game.popularity,
+              true
+            )}
         </HeaderContainer>
         <GameTags>
           {favorited && loggedIn && userGroup === "user" && game && (
@@ -310,10 +300,4 @@ const FavoriteIcon = styled(FontAwesomeIcon)`
 
 const RowItem = styled.span`
   padding-right: 12px;
-`;
-
-const GamePopularityContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 5px;
 `;

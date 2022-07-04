@@ -50,7 +50,6 @@ export enum Tag {
   TEEMA_YSTAVYYS = "themeFriendship",
   DEMO = "demo",
   KILPAILUTURNAUS = "tournament",
-  SUUNNATTU_KOKENEILLE = "intendedForExperiencedParticipants",
 }
 
 export enum AccessibilityValue {

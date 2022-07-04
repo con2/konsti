@@ -74,6 +74,11 @@ export const theme = {
   fontSizeNormal: "16px",
   fontSizeLarge: "20px",
   linkFontSize: "18px",
+
+  // Game popularity icon colors
+  popularityLow: "navy",
+  popularityMedium: "darkgreen",
+  popularityHigh: "darkorange",
 };
 
 export type Theme = typeof theme;
