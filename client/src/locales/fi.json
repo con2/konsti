@@ -143,9 +143,7 @@
   },
   "pageTitle": {
     "login": "Kirjaudu sisään",
-    "registration": "Rekisteröi käyttäjätunnus",
-    "usernamePublicWarning": "Käyttäjänimi on julkinen",
-    "usernameDiscordInfo": "Käytä samaa käyttäjänimeä kuin Ropeconin Discordissa, että pelinjohtajan on helppo tunnistaa pelaajansa."
+    "registration": "Rekisteröi käyttäjätunnus"
   },
   "user": "Käyttäjä",
   "favoritedGames": "Suosikkipelit",
@@ -280,13 +278,13 @@
     "playerNeeded": "Tarvitaan vielä {{COUNT}} pelaajaa!",
     "gameIsFull": "Peli on täynnä",
     "confirmCancelSignup": "Vahvista",
-    "expectedDuration": "Pelin kesto {{EXPECTED_DURATION}}",
+    "expectedDuration": "Kesto {{EXPECTED_DURATION}}",
     "playerCount": "Pelaajia {{MAX_ATTENDANCE}}",
     "playerRange": "Pelaajia {{MIN_ATTENDANCE}} - {{MAX_ATTENDANCE}}",
     "signupOpens": "Ilmoittautuminen aukeaa"
   },
   "resultsView": {
-    "allSignupResults": "Pelien ilmoittautumistilanne ja pelaajat",
+    "allSignupResults": "Ilmoittautumistilanne ja pelaajat",
     "confirm": "Vahvista",
     "noSignups": "Ei ilmoittautuneita pelaajia",
     "players": "Pelaajia",
@@ -318,10 +316,6 @@
     "colourblind": "Ohjelmanumerossa käytettävät materiaalit voivat tuottaa haasteita värisokeille",
     "remainingOnePlace": "Vaatii pitkää paikallaan oloa ilman mahdollisuutta taukoihin ja liikkumiseen"
   },
-  "login": {
-    "passwordHint": "Jos unohdit salasanasi, voit pyytää apua Ropeconin Discordista"
-  },
-  "discordHint": "Ohjeet Discordiin liittymiseen",
   "strategies": {
     "direct": "Suora",
     "algorithm": "Algoritmi",
