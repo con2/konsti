@@ -1,20 +1,28 @@
-import React, { ReactElement, useEffect } from "react";
+import React, { ReactElement, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import _ from "lodash";
 import styled from "styled-components";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { submitGetSignupMessages } from "client/views/admin/adminThunks";
+import { Game } from "shared/typings/models/game";
 
 export const PrivateSignupMessages = (): ReactElement => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
+
+  const [searchTerm, setSearchTerm] = useState<string>("");
+  const [filteredGames, setFilteredGames] = useState<readonly Game[]>([]);
 
   const games = useAppSelector((state) => state.allGames.games);
   const signupQuestions = useAppSelector(
     (state) => state.admin.signupQuestions
   );
   const signupMessages = useAppSelector((state) => state.admin.signupMessages);
+
+  const privateSignupQuestions = signupQuestions.filter(
+    (signupQuestion) => signupQuestion.private
+  );
 
   const privateSignupMessages = signupMessages.filter(
     (signupMessage) => signupMessage.private
@@ -26,31 +34,68 @@ export const PrivateSignupMessages = (): ReactElement => {
     dispatch(submitGetSignupMessages());
   }, []);
 
+  useEffect(() => {
+    if (searchTerm.length === 0) {
+      setFilteredGames(games);
+      return;
+    }
+
+    const gamesFilteredBySearchTerm = games.filter((game) => {
+      return (
+        game.title.toLocaleLowerCase().includes(searchTerm) ||
+        privateSignupMessages.find(
+          (signupMessage) =>
+            signupMessage.username.toLocaleLowerCase().includes(searchTerm) &&
+            signupMessage.gameId === game.gameId
+        )
+      );
+    });
+
+    setFilteredGames(gamesFilteredBySearchTerm);
+  }, [searchTerm, games]);
+
   return (
     <div>
       <h3>{t("helperView.signupQuestionAnswers")}</h3>
       <p>{t("helperView.privateSignupMessagesInfo")}</p>
 
-      {Object.entries(groupedSignupMessages).map(([gameId, answers]) => {
-        const matchingGame = games.find((game) => game.gameId === gameId);
+      <SearchInput
+        type="text"
+        onChange={(event) => setSearchTerm(event.target.value)}
+        placeholder={t("findSignupOrGame")}
+      />
+
+      {privateSignupQuestions.map((signupQuestion) => {
+        const matchingGame = filteredGames.find(
+          (game) => game.gameId === signupQuestion.gameId
+        );
         if (!matchingGame) return null;
 
-        const matchingSignupQuestion = signupQuestions.find(
-          (signupQuestion) => signupQuestion.gameId === gameId
-        );
-        if (!matchingSignupQuestion) return null;
+        const matchingSignupMessages =
+          groupedSignupMessages[signupQuestion.gameId];
 
         return (
-          <SingleGameAnswers key={gameId}>
+          <SingleGameAnswers key={signupQuestion.gameId}>
             <Link to={`/games/${matchingGame.gameId}`}>
               {matchingGame.title}
             </Link>{" "}
-            <p>{matchingSignupQuestion?.message}</p>
-            {answers.map((answer) => (
-              <li key={answer.username}>
-                {answer.username}: {answer.message}
-              </li>
-            ))}
+            <Answers>
+              <BoldText>{t("helperView.question")}: </BoldText>{" "}
+              {signupQuestion.message}
+              {matchingSignupMessages ? (
+                <SignupAnswersContainer>
+                  {matchingSignupMessages.map((answer) => (
+                    <SignupAnswer key={answer.username}>
+                      <BoldText>{answer.username}:</BoldText> {answer.message}
+                    </SignupAnswer>
+                  ))}
+                </SignupAnswersContainer>
+              ) : (
+                <SignupAnswersContainer>
+                  {t("helperView.noPrivateSignupMessages")}
+                </SignupAnswersContainer>
+              )}
+            </Answers>
           </SingleGameAnswers>
         );
       })}
@@ -60,4 +105,30 @@ export const PrivateSignupMessages = (): ReactElement => {
 
 const SingleGameAnswers = styled.div`
   margin-bottom: 16px;
+`;
+
+const Answers = styled.div`
+  margin: 16px 0 0 20px;
+`;
+
+const BoldText = styled.span`
+  font-weight: 600;
+`;
+
+const SignupAnswersContainer = styled.div`
+  margin: 16px 0 0 20px;
+`;
+
+const SignupAnswer = styled.li`
+  list-style-type: none;
+  margin: 0 0 6px 0;
+`;
+
+const SearchInput = styled.input`
+  border: 1px solid ${(props) => props.theme.borderInactive};
+  color: ${(props) => props.theme.buttonText};
+  height: 34px;
+  padding: 0 0 0 10px;
+  margin-bottom: 20px;
+  width: 100%;
 `;

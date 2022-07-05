@@ -1,46 +1,43 @@
+import { faker } from "@faker-js/faker";
 import { logger } from "server/utils/logger";
 import { findGames } from "server/features/game/gameRepository";
 import {
   findSettings,
   saveSignupQuestion,
 } from "server/features/settings/settingsRepository";
+import { shuffleArray } from "server/utils/shuffleArray";
 
-interface CreateSettingsParameters {
-  signupQuestions: boolean;
-}
+const NUMBER_OF_TEST_QUESTIONS = 20;
 
-const testQuestions = [
-  "Character class and level",
-  "Do you like cake?",
-  "Have you played this before?",
-  "Can you make it in time?",
-  "Do you know the place?",
-];
+const testQuestions = (): string[] => {
+  const questions = [];
+  for (let i = 0; i < NUMBER_OF_TEST_QUESTIONS; i++) {
+    questions.push(faker.lorem.sentence());
+  }
+  return questions;
+};
 
-export const createSettings = async ({
-  signupQuestions,
-}: CreateSettingsParameters): Promise<void> => {
+export const createSettings = async (): Promise<void> => {
   logger.info(`Generate settings data`);
 
   await findSettings();
 
-  if (signupQuestions) {
-    const games = await findGames();
+  const games = await findGames();
+  const shuffledGames = shuffleArray(games);
 
-    const promises = testQuestions.map(async (testQuestion) => {
-      const randomGame = games[Math.floor(Math.random() * games.length)];
+  const promises = testQuestions().map(async (testQuestion, index) => {
+    const randomGame = shuffledGames[index];
 
-      logger.info(
-        `Add test question "${testQuestion}" to game "${randomGame.title}"`
-      );
+    logger.info(
+      `Add test question "${testQuestion}" to game "${randomGame.title}"`
+    );
 
-      await saveSignupQuestion({
-        gameId: randomGame.gameId,
-        message: testQuestion,
-        private: false,
-      });
+    await saveSignupQuestion({
+      gameId: randomGame.gameId,
+      message: testQuestion,
+      private: Math.random() < 0.5,
     });
+  });
 
-    await Promise.all(promises);
-  }
+  await Promise.all(promises);
 };
