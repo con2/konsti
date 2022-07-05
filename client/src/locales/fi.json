@@ -337,6 +337,8 @@
   "privateOnlyVisibleToOrganizers": "Näkyy ainoastaan järjestäjille",
   "helperView": {
     "signupQuestionAnswers": "Ilmoittautumiskysymysten vastaukset",
-    "privateSignupMessagesInfo": "Yksityiset ilmoittautumisen lisätiedot turnausten osallistujien tavoittamiseen."
+    "privateSignupMessagesInfo": "Yksityiset ilmoittautumisen lisätiedot turnausten osallistujien tavoittamiseen.",
+    "noPrivateSignupMessages": "Ei vastauksia",
+    "question": "Kysymys"
   }
 }
