@@ -77,10 +77,11 @@ export const runGenerators = async (
     !options.clean && (await removeResults());
 
     await createGames(newGamesCount);
+    await createSettings();
   }
 
   if (options.signups) {
-    logger.info("Generate signups");
+    logger.info("Generate signed games");
 
     !options.clean && (await removeSignedGames());
     !options.clean && (await removeResults());
@@ -89,12 +90,11 @@ export const runGenerators = async (
   }
 
   if (options.entered) {
-    logger.info("Generate signups");
+    logger.info("Generate entered games");
 
     !options.clean && (await removeEnteredGames());
     !options.clean && (await removeResults());
 
-    await createSettings({ signupQuestions: true });
     await createEnteredGames();
   }
 
