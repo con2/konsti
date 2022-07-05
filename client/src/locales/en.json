@@ -143,9 +143,7 @@
   },
   "pageTitle": {
     "login": "Please login",
-    "registration": "Please register user account",
-    "usernamePublicWarning": "Please note that the username is public",
-    "usernameDiscordInfo": "Use same username as in Ropecon Discord server, so gamemasters can easily identify their players."
+    "registration": "Please register user account"
   },
   "user": "User",
   "favoritedGames": "Favorited games",
@@ -318,10 +316,6 @@
     "colourblind": "Material used in the game can cause problems for the colourblind",
     "remainingOnePlace": "Requires staying still for a long time without possibility of breaks or movement"
   },
-  "login": {
-    "passwordHint": "If you forgot your password, you can ask help from Ropecon Discord"
-  },
-  "discordHint": "How to join Discord",
   "strategies": {
     "direct": "Direct",
     "algorithm": "Algorithm",
