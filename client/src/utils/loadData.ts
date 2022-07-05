@@ -1,6 +1,9 @@
 import { submitGetResults } from "client/views/results/resultsThunks";
 import { submitGetGames } from "client/views/all-games/allGamesThunks";
-import { submitGetSettings } from "client/views/admin/adminThunks";
+import {
+  submitGetSettings,
+  submitGetSignupMessages,
+} from "client/views/admin/adminThunks";
 import { submitGetUser } from "client/views/my-games/myGamesThunks";
 import { submitGetGroup } from "client/views/group/groupThunks";
 import { submitSessionRecovery } from "client/views/login/loginThunks";
@@ -92,4 +95,9 @@ export const loadGroupMembers = async (): Promise<void> => {
   if (loggedIn && groupCode !== "0") {
     await dispatch(submitGetGroup(groupCode, username));
   }
+};
+
+export const loadSignupMessages = async (): Promise<void> => {
+  const dispatch: AppDispatch = store.dispatch;
+  await dispatch(submitGetSignupMessages());
 };

@@ -337,6 +337,8 @@
   "privateOnlyVisibleToOrganizers": "Only visible to organizers",
   "helperView": {
     "signupQuestionAnswers": "Signup question answers",
-    "privateSignupMessagesInfo": "Private signup info for contacting tournament participants"
+    "privateSignupMessagesInfo": "Private signup info for contacting tournament participants",
+    "noPrivateSignupMessages": "No answers",
+    "question": "Question"
   }
 }

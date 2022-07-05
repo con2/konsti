@@ -3,7 +3,11 @@ import { useTranslation } from "react-i18next";
 import { useStore } from "react-redux";
 import { HelperResultsList } from "client/views/helper/components/HelperResultsList";
 import { PasswordManagement } from "client/views/helper/components/PasswordManagement";
-import { loadResults, loadSettings } from "client/utils/loadData";
+import {
+  loadResults,
+  loadSettings,
+  loadSignupMessages,
+} from "client/utils/loadData";
 import { Button, ButtonStyle } from "client/components/Button";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
 import { useAppSelector } from "client/utils/hooks";
@@ -29,6 +33,7 @@ export const HelperView = (): ReactElement => {
     const fetchData = async (): Promise<void> => {
       await loadSettings();
       await loadResults();
+      await loadSignupMessages();
     };
     fetchData();
   }, [store]);
@@ -56,7 +61,7 @@ export const HelperView = (): ReactElement => {
         }
         onClick={() => setSelectedTool(HelperTool.PRIVATE_SIGNUP_MESSAGES)}
       >
-        {t("signupQuestions")}
+        {t("helperView.signupQuestionAnswers")}
       </Button>
 
       <Button

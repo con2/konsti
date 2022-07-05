@@ -1,4 +1,5 @@
 import { faker } from "@faker-js/faker";
+import _ from "lodash";
 import { logger } from "server/utils/logger";
 import { findUsers } from "server/features/user/userRepository";
 import { findGames } from "server/features/game/gameRepository";
@@ -11,7 +12,6 @@ export const createEnteredGames = async (): Promise<void> => {
   logger.info(`Generate EnteredGames data`);
 
   const games = await findGames();
-
   const allUsers = await findUsers();
   const settings = await findSettings();
 
@@ -23,31 +23,40 @@ export const createEnteredGames = async (): Promise<void> => {
   logger.info(`EnteredGames: ${users.length} users`);
 
   const shuffledGames = shuffleArray(games);
-  let currentIndex = 0;
 
-  const promises = shuffledGames.flatMap((randomGame) => {
-    if (currentIndex > users.length) {
-      return;
-    }
+  const gamesByProgramType = _.groupBy(shuffledGames, "programType");
 
-    const foundSignupQuestion = settings.signupQuestions.find(
-      (signupQuestion) => signupQuestion.gameId === randomGame.gameId
-    );
+  const promises = Object.entries(gamesByProgramType).flatMap(
+    ([_programType, gamesForProgamType]) => {
+      let currentIndex = 0;
 
-    const usersCount = getRandomInt(1, randomGame.maxAttendance);
-    const usersChunk = users.slice(currentIndex, currentIndex + usersCount);
+      return gamesForProgamType.flatMap((randomGame) => {
+        if (currentIndex > users.length) {
+          return [];
+        }
 
-    currentIndex += usersCount;
+        const foundSignupQuestion = settings.signupQuestions.find(
+          (signupQuestion) => signupQuestion.gameId === randomGame.gameId
+        );
 
-    return usersChunk.map(async (user) => {
-      await saveEnteredGame({
-        username: user.username,
-        enteredGameId: randomGame.gameId,
-        startTime: randomGame.startTime,
-        message: foundSignupQuestion?.message ? faker.lorem.words(4) : "",
+        const usersCount = getRandomInt(1, randomGame.maxAttendance);
+        const usersChunk = users.slice(currentIndex, currentIndex + usersCount);
+
+        currentIndex += usersCount;
+
+        return usersChunk.map(async (user) => {
+          await saveEnteredGame({
+            username: user.username,
+            enteredGameId: randomGame.gameId,
+            startTime: randomGame.startTime,
+            message: foundSignupQuestion?.message ? faker.lorem.words(4) : "",
+          });
+        });
       });
-    });
-  });
+    }
+  );
 
   await Promise.all(promises);
+
+  logger.info(`Generated ${promises.length} entered games`);
 };
