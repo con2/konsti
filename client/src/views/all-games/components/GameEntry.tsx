@@ -74,24 +74,26 @@ export const GameEntry = ({
     return `${hoursStr} ${minutesStr}`;
   };
 
-  // Favorite / remove favorite clicked
   const updateFavoriteHandler = async (
     updateOpts: UpdateFavoriteOpts
   ): Promise<void> => {
     if (!updateOpts?.game || !updateOpts?.game?.gameId) return;
-
     await updateFavorite(updateOpts);
   };
 
-  const isGameDisabled =
-    (!isEnteredCurrentGame && enteredGamesForTimeslot.length > 0) ||
-    (!isSignedForCurrentGame && signedGamesForTimeslot.length === 3);
+  const isGameDisabled = isEnterGameMode
+    ? !isEnteredCurrentGame && enteredGamesForTimeslot.length > 0
+    : !isSignedForCurrentGame && signedGamesForTimeslot.length === 3;
+
+  const isGameSigned = isEnterGameMode
+    ? isEnteredCurrentGame
+    : isSignedForCurrentGame;
 
   return (
     <GameContainer
       key={game.gameId}
       disabled={isGameDisabled}
-      signed={Boolean(isEnteredCurrentGame || isSignedForCurrentGame)}
+      signed={isGameSigned}
       data-testid="game-container"
     >
       <GameHeader>
