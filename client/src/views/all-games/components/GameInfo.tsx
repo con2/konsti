@@ -2,7 +2,6 @@ import React, { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import styled, { css } from "styled-components";
 import { timeFormatter } from "client/utils/timeFormatter";
-import { config } from "client/config";
 import { Game, GameStyle, Genre } from "shared/typings/models/game";
 
 interface Props {
@@ -11,7 +10,6 @@ interface Props {
 
 export const GameInfo = ({ game }: Props): ReactElement => {
   const { t } = useTranslation();
-  const { simpleDetails } = config;
 
   if (!game) return <div />;
 
@@ -83,7 +81,7 @@ export const GameInfo = ({ game }: Props): ReactElement => {
         </GameDetailsRow>
       )}
 
-      {!simpleDetails && game.shortDescription && (
+      {game.shortDescription && (
         <GameDetailsRow subtext={true}>
           <GameDetailsTextIndent>
             <ItalicText>{game.shortDescription}</ItalicText>
@@ -202,7 +200,7 @@ export const GameInfo = ({ game }: Props): ReactElement => {
         </>
       )}
 
-      {!simpleDetails && game.gameSystem && (
+      {game.gameSystem && (
         <GameDetailsRow>
           <GameDetailsTitle twoColumns={true}>
             {t("gameInfo.gamesystem")}

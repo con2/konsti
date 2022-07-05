@@ -8,7 +8,6 @@ import { ChangePasswordForm } from "client/views/helper/components/ChangePasswor
 export const PasswordManagement = (): ReactElement => {
   const { t } = useTranslation();
 
-  const [serial, setSerial] = useState<string>("");
   const [username, setUsername] = useState<string>("");
   const [userSerialInput, setUserSerialInput] = useState<string>("");
   const [changePasswordInputVisible, setChangePasswordInputVisible] =
@@ -34,7 +33,6 @@ export const PasswordManagement = (): ReactElement => {
           {response.serial})
         </Message>
       );
-      setSerial(response.serial);
       setUsername(response.username);
       setChangePasswordInputVisible(true);
     }
@@ -47,26 +45,22 @@ export const PasswordManagement = (): ReactElement => {
   return (
     <div>
       <h3>{t("passwordManagement.helperPasswordManagement")}</h3>
-      <div>
-        <p>{t("passwordManagement.userCodeOrUsername")}</p>
-        <FormInput
-          key="user-serial"
-          placeholder={t("passwordManagement.userCodeOrUsername")}
-          value={userSerialInput}
-          onChange={handleSerialChange}
-        />
-        <Button onClick={submitGetUser} buttonStyle={ButtonStyle.NORMAL}>
-          {t("button.find")}
-        </Button>
+      <p>{t("passwordManagement.userCodeOrUsername")}</p>
 
-        {userFoundMessage}
-      </div>
+      <FormInput
+        key="user-serial"
+        placeholder={t("passwordManagement.userCodeOrUsername")}
+        value={userSerialInput}
+        onChange={handleSerialChange}
+      />
 
-      <div>
-        {changePasswordInputVisible && (
-          <ChangePasswordForm serial={serial} username={username} />
-        )}
-      </div>
+      <Button onClick={submitGetUser} buttonStyle={ButtonStyle.NORMAL}>
+        {t("button.find")}
+      </Button>
+
+      {userFoundMessage}
+
+      {changePasswordInputVisible && <ChangePasswordForm username={username} />}
     </div>
   );
 };

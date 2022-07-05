@@ -1,6 +1,7 @@
 import { Server } from "http";
 import request from "supertest";
 import { MongoMemoryServer } from "mongodb-memory-server";
+import dayjs from "dayjs";
 import { startServer, closeServer } from "server/utils/server";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { getJWT } from "server/utils/jwt";
@@ -17,6 +18,7 @@ import { testGame } from "shared/tests/testGame";
 import { findUser, saveUser } from "server/features/user/userRepository";
 import { saveGames } from "server/features/game/gameRepository";
 import { saveEnteredGame } from "server/features/user/entered-game/enteredGameRepository";
+import { saveTestSettings } from "server/test/test-settings/testSettingsRepository";
 
 let server: Server;
 let mongoServer: MongoMemoryServer;
@@ -107,6 +109,32 @@ describe(`POST ${ApiEndpoint.ENTERED_GAME}`, () => {
       );
     expect(response.status).toEqual(200);
     expect(response.body.status).toEqual("error");
+  });
+
+  test("should return error when signup is not yet open", async () => {
+    await saveGames([testGame]);
+    await saveUser(mockUser);
+    await saveTestSettings({
+      // This test time should land to phaseGap
+      testTime: dayjs(testGame.startTime).subtract(2, "hours").format(),
+    });
+
+    const response = await request(server)
+      .post(ApiEndpoint.ENTERED_GAME)
+      .send({
+        username: mockUser.username,
+        enteredGameId: testGame.gameId,
+        startTime: testGame.startTime,
+        message: "",
+      })
+      .set(
+        "Authorization",
+        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`
+      );
+
+    expect(response.status).toEqual(200);
+    expect(response.body.status).toEqual("error");
+    expect(response.body.errorId).toEqual("signupNotOpenYet");
   });
 
   test("should return success when user and game are found", async () => {

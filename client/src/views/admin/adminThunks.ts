@@ -1,8 +1,8 @@
 import { postHidden } from "client/services/hiddenServices";
 import {
-  deleteSignupMessage,
+  deleteSignupQuestion,
   getSettings,
-  postSignupMessage,
+  postSignupQuestion,
   postSettings,
 } from "client/services/settingsServices";
 import { Game } from "shared/typings/models/game";
@@ -12,11 +12,13 @@ import {
   submitGetSettingsAsync,
   submitActiveSignupTimeAsync,
   submitToggleAppOpenAsync,
-  updateSignupMessages,
+  updateSignupQuestions,
   submitSetSignupStrategyAsync,
+  submitGetSignupMessagesAsync,
 } from "client/views/admin/adminSlice";
-import { SignupMessage } from "shared/typings/models/settings";
+import { SignupQuestion } from "shared/typings/models/settings";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
+import { getSignupMessages } from "client/services/userServices";
 
 export const submitUpdateHidden = (hiddenGames: readonly Game[]): AppThunk => {
   return async (dispatch): Promise<void> => {
@@ -46,7 +48,7 @@ export const submitGetSettings = (): AppThunk => {
           hiddenGames: settingsResponse.hiddenGames,
           signupTime: settingsResponse.signupTime,
           appOpen: settingsResponse.appOpen,
-          signupMessages: settingsResponse.signupMessages,
+          signupQuestions: settingsResponse.signupQuestions,
           signupStrategy: settingsResponse.signupStrategy,
         })
       );
@@ -84,13 +86,14 @@ export const submitToggleAppOpen = (appOpen: boolean): AppThunk => {
   };
 };
 
-export const submitAddSignupMessage = (
-  signupMessage: SignupMessage
+export const submitAddSignupQuestion = (
+  signupQuestion: SignupQuestion
 ): AppThunk => {
   return async (dispatch): Promise<void> => {
-    const response = await postSignupMessage({
-      gameId: signupMessage.gameId,
-      message: signupMessage.message,
+    const response = await postSignupQuestion({
+      gameId: signupQuestion.gameId,
+      message: signupQuestion.message,
+      private: signupQuestion.private,
     });
 
     if (response?.status === "error") {
@@ -98,21 +101,21 @@ export const submitAddSignupMessage = (
     }
 
     if (response?.status === "success") {
-      dispatch(updateSignupMessages(response.signupMessages));
+      dispatch(updateSignupQuestions(response.signupQuestions));
     }
   };
 };
 
-export const submitDeleteSignupMessage = (gameId: string): AppThunk => {
+export const submitDeleteSignupQuestion = (gameId: string): AppThunk => {
   return async (dispatch): Promise<void> => {
-    const response = await deleteSignupMessage(gameId);
+    const response = await deleteSignupQuestion(gameId);
 
     if (response?.status === "error") {
       // TODO
     }
 
     if (response?.status === "success") {
-      dispatch(updateSignupMessages(response.signupMessages));
+      dispatch(updateSignupQuestions(response.signupQuestions));
     }
   };
 };
@@ -129,6 +132,20 @@ export const submitSetSignupStrategy = (
 
     if (response?.status === "success") {
       dispatch(submitSetSignupStrategyAsync(response.settings.signupStrategy));
+    }
+  };
+};
+
+export const submitGetSignupMessages = (): AppThunk => {
+  return async (dispatch): Promise<void> => {
+    const response = await getSignupMessages();
+
+    if (response?.status === "error") {
+      // TODO
+    }
+
+    if (response?.status === "success") {
+      dispatch(submitGetSignupMessagesAsync(response.signupMessages));
     }
   };
 };

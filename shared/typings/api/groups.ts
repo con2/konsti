@@ -18,7 +18,8 @@ export interface PostJoinGroupError extends ApiError {
     | "cannotJoinOwnGroup"
     | "invalidGroupCode"
     | "groupDoesNotExist"
-    | "removePreviousSignupsFailed";
+    | "removePreviousSignupsFailed"
+    | "userHasSignedGames";
 }
 
 export interface PostLeaveGroupError extends ApiError {

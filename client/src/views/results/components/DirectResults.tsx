@@ -10,22 +10,29 @@ import { getUpcomingGames } from "client/utils/getUpcomingGames";
 import { Button, ButtonStyle } from "client/components/Button";
 import { Game } from "shared/typings/models/game";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
+import { selectActiveGames } from "client/views/admin/adminSlice";
 
 export const DirectResults = (): ReactElement => {
   const { t } = useTranslation();
 
-  const games = useAppSelector((state) => state.allGames.games);
+  const activeGames = useAppSelector(selectActiveGames);
   const signups = useAppSelector((state) => state.allGames.signups);
-  const signupMessages = useAppSelector((state) => state.admin.signupMessages);
+  const signupQuestions = useAppSelector(
+    (state) => state.admin.signupQuestions
+  );
   const hiddenGames = useAppSelector((state) => state.admin.hiddenGames);
 
   const [showAllGames, setShowAllGames] = useState<boolean>(false);
   const [showSignupMessages, setShowSignupMessages] = useState<string[]>([]);
 
-  const visibleGames = games
-    .filter((game) => game.signupStrategy === SignupStrategy.DIRECT)
-    .filter((game) =>
-      hiddenGames.every((hiddenGame) => game.gameId !== hiddenGame.gameId)
+  const publicSignupQuestions = signupQuestions.filter(
+    (signupQuestion) => !signupQuestion.private
+  );
+
+  const visibleGames = activeGames
+    .filter((activeGame) => activeGame.signupStrategy === SignupStrategy.DIRECT)
+    .filter((activeGame) =>
+      hiddenGames.every((hiddenGame) => activeGame.gameId !== hiddenGame.gameId)
     );
 
   const filteredGames = showAllGames
@@ -101,6 +108,10 @@ export const DirectResults = (): ReactElement => {
 
       {Object.entries(filteredGamesForListing).map(
         ([startTime, gamesForTime]) => {
+          const sortedGamesForTime = _.sortBy(gamesForTime, [
+            (game) => game.title.toLocaleLowerCase(),
+          ]);
+
           return (
             <TimeSlot key={startTime}>
               <h3>
@@ -111,9 +122,9 @@ export const DirectResults = (): ReactElement => {
               </h3>
 
               <Games>
-                {gamesForTime.map((game) => {
-                  const signupMessage = signupMessages.find(
-                    (message) => message.gameId === game.gameId
+                {sortedGamesForTime.map((game) => {
+                  const signupQuestion = publicSignupQuestions.find(
+                    (question) => question.gameId === game.gameId
                   );
                   const signupMessagesVisible = showSignupMessages.find(
                     (message) => message === game.gameId
@@ -125,7 +136,7 @@ export const DirectResults = (): ReactElement => {
                       <h4 key={game.gameId}>
                         {game.title}{" "}
                         <Tag>{t(`programType.${game.programType}`)}</Tag>{" "}
-                        {!!signupMessage &&
+                        {!!signupQuestion &&
                           (signupMessagesVisible ? (
                             <FontAwesomeIcon
                               icon={"comment"}
@@ -156,9 +167,9 @@ export const DirectResults = (): ReactElement => {
                       </PlayerCount>
 
                       {signupMessagesVisible && (
-                        <SignupMessageQuestion>
-                          {signupMessage?.message}
-                        </SignupMessageQuestion>
+                        <SignupQuestion>
+                          {signupQuestion?.message}
+                        </SignupQuestion>
                       )}
 
                       <PlayerList>
@@ -210,7 +221,7 @@ const PlayerCount = styled.div`
   padding: 0 0 0 10px;
 `;
 
-const SignupMessageQuestion = styled.p`
+const SignupQuestion = styled.p`
   font-weight: 600;
 `;
 

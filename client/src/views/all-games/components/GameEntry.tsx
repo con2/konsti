@@ -16,8 +16,11 @@ import {
   getUpcomingSignedGames,
 } from "client/utils/getUpcomingGames";
 import { isAlreadyEntered, isAlreadySigned } from "./allGamesUtils";
+<<<<<<< HEAD
 import { PhaseGap } from "shared/utils/getPhaseGap";
 import { formatPopularity } from "./PopularityInfo";
+=======
+>>>>>>> master
 
 const DESCRIPTION_SENTENCES_LENGTH = 3;
 const matchNextSentence = /([.?!])\s*(?=[A-Z])/g;
@@ -28,7 +31,7 @@ interface Props {
   players: number;
   signupStrategy: SignupStrategy;
   signedGames: readonly SelectedGame[];
-  phaseGap: PhaseGap;
+  enteredGames: readonly SelectedGame[];
 }
 
 export const GameEntry = ({
@@ -37,7 +40,7 @@ export const GameEntry = ({
   players,
   signupStrategy,
   signedGames,
-  phaseGap,
+  enteredGames,
 }: Props): ReactElement => {
   const { t } = useTranslation();
 
@@ -47,7 +50,6 @@ export const GameEntry = ({
   const favoritedGames = useAppSelector(
     (state) => state.myGames.favoritedGames
   );
-  const enteredGames = useAppSelector((state) => state.myGames.enteredGames);
   const enteredGamesForTimeslot = getUpcomingEnteredGames(enteredGames).filter(
     ({ gameDetails }) => gameDetails.startTime === startTime
   );
@@ -77,23 +79,26 @@ export const GameEntry = ({
     return `${hoursStr} ${minutesStr}`;
   };
 
-  // Favorite / remove favorite clicked
   const updateFavoriteHandler = async (
     updateOpts: UpdateFavoriteOpts
   ): Promise<void> => {
     if (!updateOpts?.game || !updateOpts?.game?.gameId) return;
-
     await updateFavorite(updateOpts);
   };
 
-  const isGameDisabled =
-    (!isEnteredCurrentGame && enteredGamesForTimeslot.length > 0) ||
-    (!isSignedForCurrentGame && signedGamesForTimeslot.length === 3);
+  const isGameDisabled = isEnterGameMode
+    ? !isEnteredCurrentGame && enteredGamesForTimeslot.length > 0
+    : !isSignedForCurrentGame && signedGamesForTimeslot.length === 3;
+
+  const isGameSigned = isEnterGameMode
+    ? isEnteredCurrentGame
+    : isSignedForCurrentGame;
+
   return (
     <GameContainer
       key={game.gameId}
       disabled={isGameDisabled}
-      signed={Boolean(isEnteredCurrentGame || isSignedForCurrentGame)}
+      signed={isGameSigned}
       data-testid="game-container"
     >
       <GameHeader>
@@ -197,7 +202,6 @@ export const GameEntry = ({
           game={game}
           gameIsFull={gameIsFull}
           startTime={startTime}
-          phaseGap={phaseGap}
         />
       )}
       {loggedIn && !isEnterGameMode && (

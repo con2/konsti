@@ -1,4 +1,14 @@
-import { Config } from "./typings/config.typings";
+interface Config {
+  MESSAGE_DELAY: number;
+  apiServerUrl: string;
+  showTestValues: boolean;
+  enableReduxTrace: boolean;
+  loadedSettings: string;
+  enableAxe: boolean;
+  enableWhyDidYouRender: boolean;
+  dataUpdateInterval: number;
+  noSignupGames: string[];
+}
 
 export const config: Config = {
   // App settings
@@ -6,9 +16,6 @@ export const config: Config = {
 
   // Convention settings
   noSignupGames: [],
-  revolvingDoorEnabled: true,
-  tagFilteringEnabled: true,
-  simpleDetails: true,
 
   // Dev
   enableReduxTrace: false,

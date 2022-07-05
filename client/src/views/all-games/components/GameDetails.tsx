@@ -3,8 +3,8 @@ import { useTranslation } from "react-i18next";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import {
-  submitAddSignupMessage,
-  submitDeleteSignupMessage,
+  submitAddSignupQuestion,
+  submitDeleteSignupQuestion,
   submitUpdateHidden,
 } from "client/views/admin/adminThunks";
 import { FeedbackForm } from "client/views/all-games/components/FeedbackForm";
@@ -14,8 +14,13 @@ import { Game } from "shared/typings/models/game";
 import { updateFavorite, UpdateFavoriteOpts } from "client/utils/favorite";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { Button, ButtonStyle } from "client/components/Button";
+import { setActiveProgramType } from "client/views/admin/adminSlice";
+import { Dropdown } from "client/components/Dropdown";
 
 export const GameDetails = (): ReactElement => {
+  const dispatch = useAppDispatch();
+  const { t } = useTranslation();
+
   const navigate = useNavigate();
   const { gameId } = useParams();
 
@@ -27,21 +32,30 @@ export const GameDetails = (): ReactElement => {
     (state) => state.myGames.favoritedGames
   );
   const hiddenGames = useAppSelector((state) => state.admin.hiddenGames);
-  const signupMessages = useAppSelector((state) => state.admin.signupMessages);
-  const dispatch = useAppDispatch();
-  const { t } = useTranslation();
-
-  const foundGame = games.find((game) => game.gameId === gameId);
+  const signupQuestions = useAppSelector(
+    (state) => state.admin.signupQuestions
+  );
+  const activeProgramType = useAppSelector(
+    (state) => state.admin.activeProgramType
+  );
 
   const [hidden, setHidden] = useState<boolean>(false);
   const [favorited, setFavorited] = useState<boolean>(false);
-  const [hasSignupMessage, setHasSignupMessage] = useState<boolean>(false);
+  const [hasSignupQuestion, setHasSignupQuestion] = useState<boolean>(false);
   const [submitting, setSubmitting] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
-
-  const [signupMessageInput, setSignupMessageInput] = useState<string>("");
-  const [signupMessageInputVisible, setSignupMessageInputVisible] =
+  const [createPrivateSignupQuestion, setCreatePrivateSignupQuestion] =
     useState<boolean>(false);
+
+  const [signupQuestionInput, setSignupQuestionInput] = useState<string>("");
+  const [signupQuestionInputVisible, setSignupQuestionInputVisible] =
+    useState<boolean>(false);
+
+  const foundGame = games.find((game) => game.gameId === gameId);
+
+  if (foundGame && foundGame.programType !== activeProgramType) {
+    dispatch(setActiveProgramType(foundGame.programType));
+  }
 
   useEffect(() => {
     setLoading(true);
@@ -63,17 +77,17 @@ export const GameDetails = (): ReactElement => {
         }
       });
 
-      // Check if signup message exinsts
-      signupMessages.find((signupMessageForGame) => {
-        if (signupMessageForGame.gameId === foundGame.gameId) {
-          setHasSignupMessage(true);
+      // Check if signup question exists
+      signupQuestions.find((signupQuestion) => {
+        if (signupQuestion.gameId === foundGame.gameId) {
+          setHasSignupQuestion(true);
         }
       });
     };
 
     checkGameState();
     setLoading(false);
-  }, [foundGame, favoritedGames, hiddenGames, signupMessages]);
+  }, [foundGame, favoritedGames, hiddenGames, signupQuestions]);
 
   // Favorite / remove favorite clicked
   const updateFavoriteHandler = async (action: string): Promise<void> => {
@@ -132,28 +146,29 @@ export const GameDetails = (): ReactElement => {
     }
   };
 
-  const handleSignupMessageChange = (
+  const handleSignupQuestionChange = (
     event: ChangeEvent<HTMLInputElement>
   ): void => {
-    setSignupMessageInput(event.target.value);
+    setSignupQuestionInput(event.target.value);
   };
 
-  const onClickAddSignupMessage = (): void => {
+  const onClickAddSignupQuestion = (): void => {
     if (!foundGame) return;
     dispatch(
-      submitAddSignupMessage({
+      submitAddSignupQuestion({
         gameId: foundGame.gameId,
-        message: signupMessageInput,
+        message: signupQuestionInput,
+        private: createPrivateSignupQuestion,
       })
     );
-    setSignupMessageInputVisible(false);
-    setSignupMessageInput("");
+    setSignupQuestionInputVisible(false);
+    setSignupQuestionInput("");
   };
 
-  const onClickDeleteSignupMessage = (): void => {
+  const onClickDeleteSignupQuestion = (): void => {
     if (!foundGame) return;
-    dispatch(submitDeleteSignupMessage(foundGame.gameId));
-    setHasSignupMessage(false);
+    dispatch(submitDeleteSignupQuestion(foundGame.gameId));
+    setHasSignupQuestion(false);
   };
 
   return (
@@ -205,8 +220,8 @@ export const GameDetails = (): ReactElement => {
           </Button>
         )}
 
-        {!hasSignupMessage &&
-          !signupMessageInputVisible &&
+        {!hasSignupQuestion &&
+          !signupQuestionInputVisible &&
           loggedIn &&
           userGroup === "admin" &&
           foundGame && (
@@ -214,14 +229,14 @@ export const GameDetails = (): ReactElement => {
               buttonStyle={
                 submitting ? ButtonStyle.DISABLED : ButtonStyle.NORMAL
               }
-              onClick={() => setSignupMessageInputVisible(true)}
+              onClick={() => setSignupQuestionInputVisible(true)}
             >
-              {t("button.addSignupMessage")}
+              {t("button.addSignupQuestion")}
             </Button>
           )}
 
-        {!hasSignupMessage &&
-          signupMessageInputVisible &&
+        {!hasSignupQuestion &&
+          signupQuestionInputVisible &&
           loggedIn &&
           userGroup === "admin" &&
           foundGame && (
@@ -229,40 +244,58 @@ export const GameDetails = (): ReactElement => {
               buttonStyle={
                 submitting ? ButtonStyle.DISABLED : ButtonStyle.NORMAL
               }
-              onClick={() => setSignupMessageInputVisible(false)}
+              onClick={() => setSignupQuestionInputVisible(false)}
             >
               {t("button.cancel")}
             </Button>
           )}
 
-        {hasSignupMessage && loggedIn && userGroup === "admin" && foundGame && (
+        {hasSignupQuestion && loggedIn && userGroup === "admin" && foundGame && (
           <Button
             buttonStyle={submitting ? ButtonStyle.DISABLED : ButtonStyle.NORMAL}
-            onClick={onClickDeleteSignupMessage}
+            onClick={onClickDeleteSignupQuestion}
           >
-            {t("button.removeSignupMessage")}
+            {t("button.removeSignupQuestion")}
           </Button>
         )}
       </div>
 
       {loading && <Loading />}
 
-      {signupMessageInputVisible && (
+      {signupQuestionInputVisible && (
         <>
           <p>{t("gameDetails.addSignupTextField")}</p>
           <FormInput
             type={"text"}
             key="new-password"
             placeholder={t("gameDetails.addSignupTextField")}
-            value={signupMessageInput}
-            onChange={handleSignupMessageChange}
+            value={signupQuestionInput}
+            onChange={handleSignupQuestionChange}
           />
-          <Button
-            onClick={onClickAddSignupMessage}
-            buttonStyle={ButtonStyle.NORMAL}
-          >
-            {t("button.save")}
-          </Button>
+
+          <PrivateQuestionText>
+            {t("createPrivateQuestion")}
+          </PrivateQuestionText>
+
+          <Dropdown
+            items={[
+              { value: "no", title: t("no") },
+              { value: "yes", title: t("yes") },
+            ]}
+            selectedValue={createPrivateSignupQuestion ? "yes" : "no"}
+            onChange={(event: ChangeEvent<HTMLSelectElement>) =>
+              setCreatePrivateSignupQuestion(event.target.value === "yes")
+            }
+          />
+
+          <p>
+            <Button
+              onClick={onClickAddSignupQuestion}
+              buttonStyle={ButtonStyle.NORMAL}
+            >
+              {t("button.save")}
+            </Button>
+          </p>
         </>
       )}
 
@@ -298,4 +331,9 @@ const FormInput = styled.input`
   height: 34px;
   padding: 0 0 0 10px;
   width: 100%;
+  margin-bottom: 8px;
+`;
+
+const PrivateQuestionText = styled.span`
+  margin-right: 8px;
 `;

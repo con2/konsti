@@ -7,12 +7,12 @@ import {
   submitToggleAppOpen,
 } from "client/views/admin/adminThunks";
 import { submitPlayersAssign } from "client/views/results/resultsThunks";
-import { submitGamesUpdate } from "client/views/all-games/allGamesThunks";
+import { submitUpdateGames } from "client/views/all-games/allGamesThunks";
 import { timeFormatter } from "client/utils/timeFormatter";
 import { Game } from "shared/typings/models/game";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { Button, ButtonStyle } from "client/components/Button";
-import { SignupMessageList } from "client/views/admin/components/SignupMessageList";
+import { SignupQuestionList } from "client/views/admin/components/SignupQuestionList";
 import { Dropdown, Item } from "client/components/Dropdown";
 import { SignupStrategySelector } from "client/test/test-components/SignupStrategySelector";
 
@@ -23,7 +23,9 @@ export const AdminView = (): ReactElement => {
   );
   const appOpen = useAppSelector((state) => state.admin.appOpen);
   const hiddenGames = useAppSelector((state) => state.admin.hiddenGames);
-  const signupMessages = useAppSelector((state) => state.admin.signupMessages);
+  const signupQuestions = useAppSelector(
+    (state) => state.admin.signupQuestions
+  );
   const responseMessage = useAppSelector(
     (state) => state.admin.responseMessage
   );
@@ -84,7 +86,7 @@ export const AdminView = (): ReactElement => {
   const submitUpdate = async (): Promise<void> => {
     setSubmitting(true);
     try {
-      await dispatch(submitGamesUpdate());
+      await dispatch(submitUpdateGames());
     } catch (error) {
       console.log(`submitGamesUpdate error:`, error); // eslint-disable-line no-console
     }
@@ -203,7 +205,7 @@ export const AdminView = (): ReactElement => {
 
           <HiddenGamesList hiddenGames={hiddenGames} />
 
-          <SignupMessageList signupMessages={signupMessages} games={games} />
+          <SignupQuestionList signupQuestions={signupQuestions} games={games} />
         </>
       )}
     </div>

@@ -45,12 +45,12 @@
     "generate-serial-number": "0.0.3",
     "helmet": "5.1.0",
     "jsonwebtoken": "8.5.1",
-    "mongoose": "6.4.0",
+    "mongoose": "6.4.1",
     "morgan": "1.10.0",
     "munkres-js": "1.2.2",
     "node-schedule": "2.1.0",
     "ts-node": "10.8.1",
-    "winston": "3.7.2",
+    "winston": "3.8.1",
     "winston-daily-rotate-file": "4.7.1"
   },
   "devDependencies": {
@@ -60,7 +60,7 @@
     "@types/node": "18.0.0",
     "@types/node-schedule": "2.1.0",
     "@types/supertest": "2.0.12",
-    "mongodb-memory-server": "8.7.0",
+    "mongodb-memory-server": "8.7.2",
     "supertest": "6.2.3",
     "ts-node-dev": "2.0.0"
   },

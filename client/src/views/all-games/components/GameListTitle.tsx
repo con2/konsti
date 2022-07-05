@@ -3,13 +3,11 @@ import styled, { css } from "styled-components";
 import { useTranslation } from "react-i18next";
 import useIntersectionObserver from "@react-hook/intersection-observer";
 import { timeFormatter } from "client/utils/timeFormatter";
-import { Game } from "shared/typings/models/game";
 import { SelectedGame } from "shared/typings/models/user";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
 
 interface Props {
   startTime: string;
-  gamesForStartTime: readonly Game[];
   signedGames: readonly SelectedGame[];
   enteredGames: readonly SelectedGame[];
   timeslotSignupStrategy: SignupStrategy;
@@ -19,7 +17,6 @@ interface Props {
 
 export const GameListTitle = ({
   startTime,
-  gamesForStartTime,
   signedGames,
   enteredGames,
   timeslotSignupStrategy,
@@ -37,9 +34,6 @@ export const GameListTitle = ({
   const signupStartTime = timeFormatter.getStartTime(startTime);
   const signupEndTime = timeFormatter.getEndTime(startTime);
 
-  const allGamesRevolvingDoor = gamesForStartTime.every(
-    (game) => game?.revolvingDoor
-  );
   const signedGamesCount = signedGames.filter(
     (game) => game.gameDetails.startTime === startTime
   ).length;
@@ -54,21 +48,23 @@ export const GameListTitle = ({
       isVisible={!!isIntersecting}
     >
       <StyledGameListTitle>
-        <StartTime>{formattedStartTime}</StartTime>
-
-        {!allGamesRevolvingDoor &&
-          timeslotSignupStrategy === SignupStrategy.ALGORITHM && (
-            <span>
-              ({t("preSignupOpenBetween")} {signupStartTime}-{signupEndTime})
-            </span>
+        <StartTimeContainer>
+          <StartTime>{formattedStartTime}</StartTime>
+          {timeslotSignupStrategy === SignupStrategy.ALGORITHM && (
+            <SignupCount>{signedGamesCount} / 3</SignupCount>
           )}
+        </StartTimeContainer>
 
-        {timeslotSignupStrategy === SignupStrategy.DIRECT ? (
+        {timeslotSignupStrategy === SignupStrategy.ALGORITHM && (
+          <span>
+            ({t("preSignupOpenBetween")} {signupStartTime}-{signupEndTime})
+          </span>
+        )}
+
+        {timeslotSignupStrategy === SignupStrategy.DIRECT && (
           <SignupCount>
             {signedGame ? signedGame.gameDetails.title : ""}
           </SignupCount>
-        ) : (
-          <SignupCount>{signedGamesCount} / 3</SignupCount>
         )}
       </StyledGameListTitle>
 
@@ -85,6 +81,11 @@ export const GameListTitle = ({
     </GameListTitleContainer>
   );
 };
+
+const StartTimeContainer = styled.span`
+  display: flex;
+  justify-content: space-between;
+`;
 
 const SignupCount = styled.span`
   float: right;
@@ -108,6 +109,8 @@ const GameListTitleContainer = styled.div<{ isVisible: boolean }>`
 `;
 
 const StyledGameListTitle = styled.h3`
+  display: flex;
+  flex-direction: column;
   margin: 0;
   padding: 0;
 `;

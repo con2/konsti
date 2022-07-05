@@ -8,19 +8,19 @@ import {
 } from "client/views/my-games/myGamesThunks";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { Button, ButtonStyle } from "client/components/Button";
-import { SignupMessage } from "shared/typings/models/settings";
+import { SignupQuestion } from "shared/typings/models/settings";
 import { loadGames } from "client/utils/loadData";
 import { ErrorMessage } from "client/components/ErrorMessage";
 
 interface Props {
   game: Game;
-  signupMessage: SignupMessage | undefined;
+  signupQuestion: SignupQuestion | undefined;
   onEnterGame: () => void;
   onCancelSignup: () => void;
 }
 
 export const EnterGameForm: FC<Props> = (props: Props): ReactElement => {
-  const { game, onEnterGame, onCancelSignup, signupMessage } = props;
+  const { game, onEnterGame, onCancelSignup, signupQuestion } = props;
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const username = useAppSelector((state) => state.login.username);
@@ -54,9 +54,13 @@ export const EnterGameForm: FC<Props> = (props: Props): ReactElement => {
 
   return (
     <SignupForm>
-      {signupMessage && (
-        <SignupMessageContainer>
-          <span>{signupMessage.message}</span>
+      {signupQuestion && (
+        <SignupQuestionContainer>
+          <span>
+            {signupQuestion.message}{" "}
+            {signupQuestion.private &&
+              `(${t("privateOnlyVisibleToOrganizers")})`}
+          </span>
           <textarea
             onChange={(evt) => {
               if (evt.target.value.length > 140) {
@@ -68,7 +72,7 @@ export const EnterGameForm: FC<Props> = (props: Props): ReactElement => {
             value={userSignupMessage}
           />
           <span>{userSignupMessage.length} / 140</span>
-        </SignupMessageContainer>
+        </SignupQuestionContainer>
       )}
       <ButtonContainer>
         <SignupConfirmationButton
@@ -99,7 +103,7 @@ const SignupForm = styled.form`
   flex-direction: column;
 `;
 
-const SignupMessageContainer = styled.div`
+const SignupQuestionContainer = styled.div`
   display: flex;
   flex-direction: column;
 `;

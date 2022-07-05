@@ -15,6 +15,8 @@ import {
 
 type EventProgramItem = KompassiGame;
 
+export const TOURNAMENT_EVENT_TYPE = "tmnt";
+
 const { useLocalProgramFile, localKompassiFile } = config;
 
 export const getGamesFromKompassi = async (): Promise<
@@ -82,7 +84,7 @@ const getGamesFromFullProgram = (
       // Only include board game programs which are tournaments
       if (
         programItem.category_title === KompassiProgramType.BOARD_GAME &&
-        programItem.type_of_game_program !== "tmnt"
+        programItem.type_of_game_program !== TOURNAMENT_EVENT_TYPE
       ) {
         return [];
       }

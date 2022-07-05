@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { timeFormatter } from "client/utils/timeFormatter";
 import { SelectedGame } from "shared/typings/models/user";
-import { formatPopularity } from "client/views/all-games/components/PopularityInfo";
+import { formatPopularity } from "client/components/PopularityInfo";
 
 interface Props {
   signups: SelectedGame[];
@@ -25,11 +25,13 @@ export const SignupsByStartTimes = ({
                 capitalize: true,
               })}
             </StyledTime>
+
             {signups.map((signup) => {
               if (signup.time === startTime) {
                 return (
-                  <GameDetailsContainer>
-                    <GameDetailsList key={signup.gameDetails.gameId}>
+                  <GameDetailsContainer key={signup.gameDetails.gameId}>
+                    <GameDetailsList>
+                      {`${signup.priority}) `}
                       <Link to={`/games/${signup.gameDetails.gameId}`}>
                         {signup.gameDetails.title}
                       </Link>
@@ -67,4 +69,5 @@ const PopularityContainer = styled.div`
 `;
 const StyledTime = styled.p`
   font-weight: 600;
+  margin: 10px 0;
 `;

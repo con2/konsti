@@ -5,12 +5,12 @@ import { GameDoc } from "server/typings/game.typings";
 import { logger } from "server/utils/logger";
 import { Game } from "shared/typings/models/game";
 import { findUsers } from "server/features//user/userRepository";
-import { User } from "shared/typings/models/user";
+import { SelectedGame, User } from "shared/typings/models/user";
 import { GameWithUsernames, UserSignup } from "shared/typings/api/games";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
 import { sharedConfig } from "shared/config/sharedConfig";
 import { findSettings } from "server/features/settings/settingsRepository";
-import { Settings } from "shared/typings/models/settings";
+import { Settings, SignupQuestion } from "shared/typings/models/settings";
 import { getTime } from "server/features/player-assignment/utils/getTime";
 
 export const removeDeletedGames = async (
@@ -44,22 +44,6 @@ export const removeDeletedGames = async (
   return deletedGames.length ?? 0;
 };
 
-export const getGameById = async (gameId: string): Promise<GameDoc> => {
-  let games: GameDoc[];
-  try {
-    games = await findGames();
-  } catch (error) {
-    logger.error(`MongoDB: Error loading games - ${error}`);
-    throw error;
-  }
-
-  const foundGame = games.find((game) => game.gameId === gameId);
-
-  if (!foundGame) throw new Error(`Game ${gameId} not found`);
-
-  return foundGame;
-};
-
 export const enrichGames = async (
   games: readonly GameDoc[]
 ): Promise<GameWithUsernames[]> => {
@@ -69,12 +53,15 @@ export const enrichGames = async (
     const currentTime = await getTime();
 
     return games.map((game) => {
+      const signupQuestion = settings.signupQuestions.find(
+        (message) => message.gameId === game.gameId
+      );
       return {
         game: {
           ...game.toJSON<GameDoc>(),
           signupStrategy: getSignupStrategyForGame(game, settings, currentTime),
         },
-        users: getUsersForGame(users, game.gameId),
+        users: getUsersForGame(users, game.gameId, signupQuestion),
       };
     });
   } catch (error) {
@@ -107,7 +94,8 @@ const getSignupStrategyForGame = (
 
 export const getUsersForGame = (
   users: User[],
-  gameId: string
+  gameId: string,
+  signupQuestion?: SignupQuestion | undefined
 ): UserSignup[] => {
   const usersForGame = users.filter(
     (user) =>
@@ -123,7 +111,18 @@ export const getUsersForGame = (
 
     return {
       username: user.username,
-      signupMessage: enteredGame?.message ?? "",
+      signupMessage: getSignupMessage(signupQuestion, enteredGame),
     };
   });
+};
+
+const getSignupMessage = (
+  signupQuestion: SignupQuestion | undefined,
+  enteredGame: SelectedGame | undefined
+): string => {
+  if (!signupQuestion || signupQuestion.private) {
+    return "";
+  }
+
+  return enteredGame?.message ?? "";
 };

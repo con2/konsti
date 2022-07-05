@@ -2,18 +2,19 @@ import { z } from "zod";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
 import { GameSchema } from "shared/typings/models/game";
 
-const SignupMessageSchema = z.object({
+const SignupQuestionSchema = z.object({
   gameId: z.string(),
   message: z.string(),
+  private: z.boolean(),
 });
 
-export type SignupMessage = z.infer<typeof SignupMessageSchema>;
+export type SignupQuestion = z.infer<typeof SignupQuestionSchema>;
 
 export const SettingsSchema = z.object({
   hiddenGames: z.array(GameSchema),
   signupTime: z.string(),
   appOpen: z.boolean(),
-  signupMessages: z.array(SignupMessageSchema),
+  signupQuestions: z.array(SignupQuestionSchema),
   signupStrategy: z.nativeEnum(SignupStrategy),
 });
 

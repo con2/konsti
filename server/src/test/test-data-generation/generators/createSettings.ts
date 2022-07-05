@@ -1,45 +1,43 @@
+import { faker } from "@faker-js/faker";
 import { logger } from "server/utils/logger";
 import { findGames } from "server/features/game/gameRepository";
 import {
   findSettings,
-  saveSignupMessage,
+  saveSignupQuestion,
 } from "server/features/settings/settingsRepository";
+import { shuffleArray } from "server/utils/shuffleArray";
 
-interface CreateSettingsParameters {
-  signupMessages: boolean;
-}
+const NUMBER_OF_TEST_QUESTIONS = 20;
 
-const testMessages = [
-  "Character class and level",
-  "Do you like cake?",
-  "Have you played this before?",
-  "Can you make it in time?",
-  "Do you know the place?",
-];
+const testQuestions = (): string[] => {
+  const questions = [];
+  for (let i = 0; i < NUMBER_OF_TEST_QUESTIONS; i++) {
+    questions.push(faker.lorem.sentence());
+  }
+  return questions;
+};
 
-export const createSettings = async ({
-  signupMessages,
-}: CreateSettingsParameters): Promise<void> => {
+export const createSettings = async (): Promise<void> => {
   logger.info(`Generate settings data`);
 
   await findSettings();
 
-  if (signupMessages) {
-    const games = await findGames();
+  const games = await findGames();
+  const shuffledGames = shuffleArray(games);
 
-    const promises = testMessages.map(async (testMessage, index) => {
-      const randomGame = games[Math.floor(Math.random() * games.length)];
+  const promises = testQuestions().map(async (testQuestion, index) => {
+    const randomGame = shuffledGames[index];
 
-      logger.info(
-        `Add test message "${testMessages[index]}" to game "${randomGame.title}"`
-      );
+    logger.info(
+      `Add test question "${testQuestion}" to game "${randomGame.title}"`
+    );
 
-      await saveSignupMessage({
-        gameId: randomGame.gameId,
-        message: testMessages[index],
-      });
+    await saveSignupQuestion({
+      gameId: randomGame.gameId,
+      message: testQuestion,
+      private: Math.random() < 0.5,
     });
+  });
 
-    await Promise.all(promises);
-  }
+  await Promise.all(promises);
 };

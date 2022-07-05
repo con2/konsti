@@ -1,16 +1,17 @@
 import React, { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import _ from "lodash";
-import dayjs from "dayjs";
 import { GameEntry } from "./GameEntry";
 import { useAppSelector } from "client/utils/hooks";
 import { Game } from "shared/typings/models/game";
 import { GameListTitle } from "client/views/all-games/components/GameListTitle";
-import { SignupStrategy } from "shared/config/sharedConfig.types";
 import { getIsGroupCreator } from "client/views/group/groupUtils";
 import { getSignedGames } from "client/utils/getUpcomingGames";
-import { getPhaseGap } from "shared/utils/getPhaseGap";
-import { getTime } from "client/utils/getTime";
+import { getTimeslotSignupStrategy } from "client/views/all-games/allGamesUtils";
+import {
+  selectActiveEnteredGames,
+  selectActiveSignedGames,
+} from "client/views/my-games/myGamesSlice";
 
 interface Props {
   games: readonly Game[];
@@ -20,20 +21,24 @@ export const AllGamesList = ({ games }: Props): ReactElement => {
   const { t } = useTranslation();
 
   const signups = useAppSelector((state) => state.allGames.signups);
-  const ownSignedGames = useAppSelector((state) => state.myGames.signedGames);
-  const enteredGames = useAppSelector((state) => state.myGames.enteredGames);
+  const activeSignedGames = useAppSelector(selectActiveSignedGames);
+  const activeEnteredGames = useAppSelector(selectActiveEnteredGames);
   const serial = useAppSelector((state) => state.login.serial);
+  const activeProgramType = useAppSelector(
+    (state) => state.admin.activeProgramType
+  );
   const groupCode = useAppSelector((state) => state.group.groupCode);
   const groupMembers = useAppSelector((state) => state.group.groupMembers);
   const isGroupCreator = getIsGroupCreator(groupCode, serial);
 
-  const ownOrGroupCreatorSignedGames = getSignedGames(
-    ownSignedGames,
+  const ownOrGroupCreatorSignedGames = getSignedGames({
+    signedGames: activeSignedGames,
     groupCode,
     serial,
     groupMembers,
-    true
-  );
+    activeProgramType,
+    getAllGames: true,
+  });
 
   const sortedGames = _.sortBy(games, [
     (game) => game.startTime,
@@ -44,21 +49,17 @@ export const AllGamesList = ({ games }: Props): ReactElement => {
 
   const gamesList = Object.entries(gamesByStartTime).map(
     ([startTime, gamesForStartTime]) => {
-      // TODO:  How should we handle case where not all the games inside timeslot have same signup strategy?
-      //        Should not be problem in real cases, but is it ok to fallback ALGORITHM if data is broken?
-      const timeslotSignupStrategy = gamesForStartTime.every(
-        (game) => game.signupStrategy === SignupStrategy.DIRECT
-      )
-        ? SignupStrategy.DIRECT
-        : SignupStrategy.ALGORITHM;
+      const timeslotSignupStrategy = getTimeslotSignupStrategy(
+        gamesForStartTime,
+        activeProgramType
+      );
 
       return (
         <div key={startTime}>
           <GameListTitle
             startTime={startTime}
-            gamesForStartTime={gamesForStartTime}
             signedGames={ownOrGroupCreatorSignedGames}
-            enteredGames={enteredGames}
+            enteredGames={activeEnteredGames}
             timeslotSignupStrategy={timeslotSignupStrategy}
             isGroupCreator={isGroupCreator}
             groupCode={groupCode}
@@ -77,10 +78,7 @@ export const AllGamesList = ({ games }: Props): ReactElement => {
                 startTime={startTime}
                 signupStrategy={timeslotSignupStrategy}
                 signedGames={ownOrGroupCreatorSignedGames}
-                phaseGap={getPhaseGap({
-                  startTime: dayjs(startTime),
-                  timeNow: getTime(),
-                })}
+                enteredGames={activeEnteredGames}
               />
             );
           })}

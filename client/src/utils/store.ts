@@ -1,7 +1,6 @@
 import { combineReducers, CombinedState, AnyAction } from "redux";
 import { configureStore } from "@reduxjs/toolkit";
 import { config } from "client/config";
-import { loadSession } from "client/utils/localStorage";
 import { RootState } from "client/typings/redux.typings";
 import { SUBMIT_LOGOUT } from "client/typings/logoutActions.typings";
 
@@ -40,6 +39,10 @@ const rootReducer = (
       newState.allGames = state.allGames;
     }
 
+    if (config.loadedSettings !== "production" && state?.testSettings) {
+      newState.testSettings = state.testSettings;
+    }
+
     return newState;
   }
 
@@ -48,7 +51,6 @@ const rootReducer = (
 
 export const store = configureStore({
   reducer: rootReducer,
-  preloadedState: loadSession(), // Load persisted state from localStorage
   devTools:
     process.env.SETTINGS !== "production"
       ? {

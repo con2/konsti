@@ -3,7 +3,7 @@ import { sharedConfig } from "shared/config/sharedConfig";
 
 const { DIRECT_SIGNUP_START, PHASE_GAP } = sharedConfig;
 
-export interface PhaseGap {
+interface PhaseGap {
   waitingForPhaseGapToEnd: boolean;
   phaseGapEndTime: string;
 }

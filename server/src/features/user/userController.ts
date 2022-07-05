@@ -68,7 +68,7 @@ export const postUserPassword = async (
 
   const { username, password, requester } = parameters;
 
-  if (requester === "ropetiski") {
+  if (requester === "helper") {
     if (!isAuthorized(req.headers.authorization, UserGroup.HELP, requester)) {
       return res.sendStatus(401);
     }
@@ -123,7 +123,7 @@ export const getUserBySerialOrUsername = async (
 ): Promise<Response> => {
   logger.info(`API call: GET ${ApiEndpoint.USERS_BY_SERIAL_OR_USERNAME}`);
 
-  if (!isAuthorized(req.headers.authorization, UserGroup.HELP, "ropetiski")) {
+  if (!isAuthorized(req.headers.authorization, UserGroup.HELP, "helper")) {
     return res.sendStatus(401);
   }
 

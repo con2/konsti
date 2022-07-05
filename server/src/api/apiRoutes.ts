@@ -1,17 +1,17 @@
 import express from "express";
 import { postUserValidation, postLoginValidation } from "server/api/validation";
 import { postFeedback } from "server/features/feedback/feedbackController";
-import { getGames, postGame } from "server/features/game/gameController";
+import { getGames, postUpdateGames } from "server/features/game/gameController";
 import {
   getResults,
   postAssignment,
 } from "server/features/results/resultsController";
 import {
-  deleteSignupMessage,
+  deleteSignupQuestion,
   getSettings,
   postHidden,
   postSettings,
-  postSignupMessage,
+  postSignupQuestion,
 } from "server/features/settings/settingsController";
 import {
   deleteEnteredGame,
@@ -28,6 +28,7 @@ import {
 import { postLogin } from "server/features/user/login/loginController";
 import { postSessionRestore } from "server/features/user/session-restore/sessionRestoreController";
 import { postSignedGames } from "server/features/user/signed-game/signedGameController";
+import { getSignupMessages } from "server/features/user/signup-message/signupMessageController";
 import {
   getUser,
   postUser,
@@ -47,7 +48,7 @@ export const apiRoutes = express.Router();
 
 /* POST routes */
 
-apiRoutes.post(ApiEndpoint.GAMES, postGame);
+apiRoutes.post(ApiEndpoint.GAMES, postUpdateGames);
 apiRoutes.post(ApiEndpoint.USERS, postUserValidation(), postUser);
 apiRoutes.post(ApiEndpoint.LOGIN, postLoginValidation, postLogin);
 apiRoutes.post(ApiEndpoint.ASSIGNMENT, postAssignment);
@@ -60,7 +61,7 @@ apiRoutes.post(ApiEndpoint.JOIN_GROUP, postJoinGroup);
 apiRoutes.post(ApiEndpoint.LEAVE_GROUP, postLeaveGroup);
 apiRoutes.post(ApiEndpoint.CLOSE_GROUP, postCloseGroup);
 apiRoutes.post(ApiEndpoint.ENTERED_GAME, postEnteredGame);
-apiRoutes.post(ApiEndpoint.SIGNUP_MESSAGE, postSignupMessage);
+apiRoutes.post(ApiEndpoint.SIGNUP_QUESTION, postSignupQuestion);
 apiRoutes.post(ApiEndpoint.SESSION_RESTORE, postSessionRestore);
 apiRoutes.post(ApiEndpoint.USERS_PASSWORD, postUserPassword);
 apiRoutes.post(ApiEndpoint.SETTINGS, postSettings);
@@ -76,11 +77,12 @@ apiRoutes.get(
 apiRoutes.get(ApiEndpoint.SETTINGS, getSettings);
 apiRoutes.get(ApiEndpoint.RESULTS, getResults);
 apiRoutes.get(ApiEndpoint.GROUP, getGroup);
+apiRoutes.get(ApiEndpoint.SIGNUP_MESSAGE, getSignupMessages);
 
 /* DELETE routes */
 
 apiRoutes.delete(ApiEndpoint.ENTERED_GAME, deleteEnteredGame);
-apiRoutes.delete(ApiEndpoint.SIGNUP_MESSAGE, deleteSignupMessage);
+apiRoutes.delete(ApiEndpoint.SIGNUP_QUESTION, deleteSignupQuestion);
 
 /* DEV routes */
 

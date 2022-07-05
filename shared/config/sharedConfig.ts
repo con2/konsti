@@ -1,9 +1,16 @@
+import dayjs, { Dayjs } from "dayjs";
+import { ProgramType } from "shared/typings/models/game";
 import {
   AssignmentStrategy,
   ConventionName,
   ConventionType,
   SignupStrategy,
 } from "./sharedConfig.types";
+
+interface SignupWindow {
+  signupWindowStart: Dayjs;
+  signupWindowClose: Dayjs;
+}
 
 interface SharedConfig {
   appName: string;
@@ -17,6 +24,7 @@ interface SharedConfig {
   DIRECT_SIGNUP_START: number;
   PRE_SIGNUP_START: number;
   PHASE_GAP: number;
+  directSignupWindows: Record<ProgramType, SignupWindow[]>;
 }
 
 export const sharedConfig: SharedConfig = {
@@ -28,6 +36,40 @@ export const sharedConfig: SharedConfig = {
   assignmentStrategy: AssignmentStrategy.RANDOM_PADG,
   enableGroups: true,
   defaultSignupStrategy: SignupStrategy.ALGORITHM_AND_DIRECT,
+
+  directSignupWindows: {
+    tabletopRPG: [],
+    larp: [
+      // Friday
+      {
+        signupWindowStart: dayjs("2022-07-29T12:00:00Z"), // Fri 15:00
+        signupWindowClose: dayjs("2022-07-29T21:00:00Z"), // Fri 24:00
+      },
+      // Saturday morning / day
+      {
+        signupWindowStart: dayjs("2022-07-29T15:00:00Z"), // Fri 18:00
+        signupWindowClose: dayjs("2022-07-30T15:00:00Z"), // Sat 18:00
+      },
+      // Saturday evening
+      {
+        signupWindowStart: dayjs("2022-07-30T08:00:00Z"), // Sat 11:00
+        signupWindowClose: dayjs("2022-07-30T21:00:00Z"), // Sat 24:00
+      },
+      // Sunday
+      {
+        signupWindowStart: dayjs("2022-07-30T12:00:00Z"), // Sat 15:00
+        signupWindowClose: dayjs("2022-07-31T21:00:00Z"), // Sun 24:00
+      },
+    ],
+
+    tournament: [
+      // Friday to sunday, open whole convention
+      {
+        signupWindowStart: dayjs("2022-07-29T12:00:00Z"), // Fri 15:00
+        signupWindowClose: dayjs("2022-07-31T21:00:00Z"), // Sun 24:00
+      },
+    ],
+  },
 
   // Two phase signup settings
   PRE_SIGNUP_START: 60 * 4, // minutes

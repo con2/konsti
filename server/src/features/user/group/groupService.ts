@@ -1,10 +1,12 @@
+import dayjs from "dayjs";
+import { getTime } from "server/features/player-assignment/utils/getTime";
 import {
   findGroup,
   findGroupMembers,
   saveGroupCode,
 } from "server/features/user/group/groupRepository";
 import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
-import { findUserSerial } from "server/features/user/userRepository";
+import { findUser, findUserSerial } from "server/features/user/userRepository";
 import { GetGroupReturnValue } from "server/typings/user.typings";
 import { logger } from "server/utils/logger";
 import {
@@ -86,6 +88,32 @@ export const joinGroup = async (
     };
   }
 
+  let userResponse;
+  try {
+    userResponse = await findUser(username);
+  } catch (error) {
+    logger.error(`findUser(): ${error}`);
+    return {
+      message: "Error finding user",
+      status: "error",
+      errorId: "unknown",
+    };
+  }
+
+  const timeNow = await getTime();
+  const userHasEnteredGames = userResponse?.enteredGames.some((selectedGame) =>
+    timeNow.isBefore(dayjs(selectedGame.time))
+  );
+
+  // User cannot have entered games in future when joining in group
+  if (userHasEnteredGames) {
+    return {
+      message: "Entered games in future",
+      status: "error",
+      errorId: "userHasSignedGames",
+    };
+  }
+
   // Check if code is valid
   let findSerialResponse;
   try {
@@ -99,7 +127,7 @@ export const joinGroup = async (
     };
   }
 
-  if (!findSerialResponse) {
+  if (!findSerialResponse?.serial) {
     // Invalid code
     return {
       message: "Invalid group code",

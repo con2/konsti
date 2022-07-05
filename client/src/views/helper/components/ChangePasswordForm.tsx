@@ -8,14 +8,10 @@ import { passwordLength } from "client/utils/validate";
 import { useAppSelector } from "client/utils/hooks";
 
 interface Props {
-  serial: string;
   username: string;
 }
 
-export const ChangePasswordForm = ({
-  serial,
-  username,
-}: Props): ReactElement => {
+export const ChangePasswordForm = ({ username }: Props): ReactElement => {
   const { t } = useTranslation();
 
   const requester = useAppSelector((state) => state.login.username);

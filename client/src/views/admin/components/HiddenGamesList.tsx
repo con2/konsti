@@ -28,6 +28,8 @@ export const HiddenGamesList = ({ hiddenGames }: Props): ReactElement => {
             <Link to={`/games/${game.gameId}`}>{game.title}</Link>
 
             {" - "}
+            {t(`programType.${game.programType}`)}
+            {" - "}
 
             {timeFormatter.getWeekdayAndTime({
               time: game.startTime,

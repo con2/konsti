@@ -8,6 +8,10 @@ import {
   PostUserResponse,
 } from "shared/typings/api/users";
 import { RegistrationFormFields } from "shared/typings/api/login";
+import {
+  GetSignupMessagesError,
+  GetSignupMessagesResponse,
+} from "shared/typings/models/signupMessage";
 
 export const postRegistration = async (
   registrationFormFields: RegistrationFormFields
@@ -59,6 +63,15 @@ export const updateUserPassword = async (
       password,
       requester,
     }
+  );
+  return response.data;
+};
+
+export const getSignupMessages = async (): Promise<
+  GetSignupMessagesResponse | GetSignupMessagesError
+> => {
+  const response = await api.get<GetSignupMessagesResponse>(
+    ApiEndpoint.SIGNUP_MESSAGE
   );
   return response.data;
 };

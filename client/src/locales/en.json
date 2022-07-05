@@ -30,8 +30,8 @@
     "helper": "Helper",
     "find": "Find",
     "save": "Save",
-    "addSignupMessage": "Add textfield",
-    "removeSignupMessage": "Delete textfield"
+    "addSignupQuestion": "Add signup question",
+    "removeSignupQuestion": "Delete signup question"
   },
   "username": "Username",
   "password": "Password",
@@ -62,7 +62,6 @@
   "pages": {
     "myGames": "My Games",
     "allGames": "All Games",
-    "signUp": "Sign Up",
     "admin": "Admin",
     "results": "All Signup Results",
     "group": "Group"
@@ -93,7 +92,12 @@
   "programType": {
     "tabletopRPG": "Tabletop RPG",
     "larp": "LARP",
-    "boardGame": "Board game"
+    "tournament": "Tournament"
+  },
+  "programTypePlural": {
+    "tabletopRPG": "Tabletop RPG",
+    "larp": "LARP",
+    "tournament": "Tournaments"
   },
   "gameStyle": {
     "serious": "Serious game style",
@@ -118,11 +122,9 @@
     "adventure": "Adventure"
   },
   "gameTags": {
-    "inEnglish": "Can be played in English",
+    "inEnglish": "Played in English",
     "childrenFriendly": "Children friendly",
     "ageRestricted": "For players over 18 only",
-    "ageRestrictedTitle": "This game's age limit is 18+",
-    "ageRestrictedLong": "Players may be asked to verify their age",
     "beginnerFriendly": "Beginner friendly",
     "guestOfHonor": "Guest of Honor game",
     "family": "Suitable for families",
@@ -141,9 +143,7 @@
   },
   "pageTitle": {
     "login": "Please login",
-    "registration": "Please register user account",
-    "usernamePublicWarning": "Please note that the username is public",
-    "usernameDiscordInfo": "Use same username as in Ropecon Discord server, so gamemasters can easily identify their players."
+    "registration": "Please register user account"
   },
   "user": "User",
   "favoritedGames": "Favorited games",
@@ -166,8 +166,8 @@
   "noFavoritedGames": "No favorited games",
   "noEnteredGames": "No signups",
   "noHiddenGames": "No hidden games",
-  "noSignupMessages": "No signup messages",
-  "signupMessages": "Signup messages",
+  "noSignupQuestions": "No signup questions",
+  "signupQuestions": "Signup questions",
   "noOpenSignups": "No open signups",
   "signupOpen": "Signup open for the following times",
   "activeTime": "Active time",
@@ -182,7 +182,7 @@
     "generic": "Signup failed",
     "signupEnded": "Signup ended",
     "samePriority": "Priority already selected",
-    "phaseGap": "Signup not open yet"
+    "signupNotOpenYet": "Signup not open yet"
   },
   "signupUnsavedChanges": "Unsaved changes",
   "signupResultHint": "Sign up results are visible on 'My Games' page at",
@@ -216,8 +216,11 @@
       "cannotUseOwnSerial": "Cannot use own serial to join group",
       "groupExists": "Group already exists",
       "removePreviousSignupsFailed": "Error deleting previous signups, try again",
-      "onlyCreatorCanCloseGroup": "Only group creator can close group"
+      "onlyCreatorCanCloseGroup": "Only group creator can close group",
+      "userHasSignedGames": "You already have entered games. Cancel those games before joining group."
     },
+    "hasEnteredFollowingGames": "You are already entered following games:",
+    "cancelSignupBeforeJoiningGroup": "Cancel those games before you can join the group.",
     "signupDisabledNotCreator": "You are group member. Group creator will pre sign-up to the games for the whole group.",
     "signupForWholeGroup": "You are group creator. You can sign up to games for the whole group.",
     "inGroupSignups": "You are in a group. Following games are chosen by the group creator.",
@@ -235,7 +238,9 @@
     "groupMemberInfo": "Group creator will sign up to the games for the whole group. See selected games from \"My Games\" page.",
     "groupCreatorInfo": "You can sign up to games for the whole group. Please make sure that the group is not too big for the selected games. Group creator cannot leave the group, but can close it. This will remove all members from the group.",
     "joiningGroupWillCancelGames": "Joining a group will cancel all signups you may have done before",
-    "groupSignupGuide": "Joining a group is done with the group starter's registration code. Your own code can be found from the top of the page.",
+    "groupPreSignupGuide": "Group can pre-signup to same games.",
+    "groupSignupGuide": "You can join group with group starter's registration code. Your own code is:",
+    "groupPreSignupTabletopOnly": "Only tabletop RPGs support pre-signup.",
     "invalidGroupCode": "Invalid code",
     "groupNotExist": "Group does not exist",
     "generalGroupError": "Error updating group",
@@ -294,7 +299,7 @@
     "info": "This message is shown to you only when you first login. You can also find code from the navigation."
   },
   "myGamesView": {
-    "yourAnswer": "Your answer to field",
+    "yourAnswer": "Your answer to question",
     "changePassword": "Change password"
   },
   "accessibility": {
@@ -311,10 +316,6 @@
     "colourblind": "Material used in the game can cause problems for the colourblind",
     "remainingOnePlace": "Requires staying still for a long time without possibility of breaks or movement"
   },
-  "login": {
-    "passwordHint": "If you forgot your password, you can ask help from Ropecon Discord"
-  },
-  "discordHint": "How to join Discord",
   "strategies": {
     "direct": "Direct",
     "algorithm": "Algorithm",
@@ -332,5 +333,17 @@
     "low": "Need more players",
     "medium": "Enough players to run",
     "high": "More interested players than seats"
+  },
+  "selectedProgramType": "Selected program type",
+  "yes": "Yes",
+  "no": "No",
+  "createPrivateQuestion": "Create private question",
+  "private": "Private",
+  "privateOnlyVisibleToOrganizers": "Only visible to organizers",
+  "helperView": {
+    "signupQuestionAnswers": "Signup question answers",
+    "privateSignupMessagesInfo": "Private signup info for contacting tournament participants",
+    "noPrivateSignupMessages": "No answers",
+    "question": "Question"
   }
 }

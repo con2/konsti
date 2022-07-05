@@ -5,9 +5,9 @@ import {
   GetSettingsResponse,
   PostSettingsRequest,
   PostSettingsResponse,
-  PostSignupMessageResponse,
+  PostSignupQuestionResponse,
 } from "shared/typings/api/settings";
-import { SignupMessage } from "shared/typings/models/settings";
+import { SignupQuestion } from "shared/typings/models/settings";
 
 export const getSettings = async (): Promise<
   GetSettingsResponse | ApiError
@@ -26,23 +26,23 @@ export const postSettings = async (
   return response.data;
 };
 
-export const postSignupMessage = async (
-  signupMessage: SignupMessage
-): Promise<PostSignupMessageResponse | ApiError> => {
-  const response = await api.post<PostSignupMessageResponse>(
-    ApiEndpoint.SIGNUP_MESSAGE,
+export const postSignupQuestion = async (
+  signupQuestion: SignupQuestion
+): Promise<PostSignupQuestionResponse | ApiError> => {
+  const response = await api.post<PostSignupQuestionResponse>(
+    ApiEndpoint.SIGNUP_QUESTION,
     {
-      signupMessage,
+      signupQuestion,
     }
   );
   return response.data;
 };
 
-export const deleteSignupMessage = async (
+export const deleteSignupQuestion = async (
   gameId: string
-): Promise<PostSignupMessageResponse | ApiError> => {
-  const response = await api.delete<PostSignupMessageResponse>(
-    ApiEndpoint.SIGNUP_MESSAGE,
+): Promise<PostSignupQuestionResponse | ApiError> => {
+  const response = await api.delete<PostSignupQuestionResponse>(
+    ApiEndpoint.SIGNUP_QUESTION,
     {
       data: { gameId },
     }

@@ -23,10 +23,10 @@ export const createAdminUser = async (password?: string): Promise<void> => {
 };
 
 export const createHelpUser = async (): Promise<void> => {
-  logger.info(`Generate data for help user "ropetiski:test"`);
+  logger.info(`Generate data for help user "helper:test"`);
 
   const registrationData: NewUser = {
-    username: "ropetiski",
+    username: "helper",
     passwordHash: await hashPassword("test"),
     userGroup: UserGroup.HELP,
     serial: faker.datatype.number(10000000).toString(),
@@ -61,7 +61,6 @@ interface CreateTestUsersParams {
 
 export const createTestUsers = async ({
   userCount,
-  inSameGroup = false,
 }: CreateTestUsersParams): Promise<void> => {
   for (let i = 0; i < userCount; i += 1) {
     await createTestUser({ userNumber: i + 1 });
