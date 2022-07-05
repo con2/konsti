@@ -3,13 +3,11 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import _ from "lodash";
 import styled from "styled-components";
-import { useAppDispatch, useAppSelector } from "client/utils/hooks";
-import { submitGetSignupMessages } from "client/views/admin/adminThunks";
+import { useAppSelector } from "client/utils/hooks";
 import { Game } from "shared/typings/models/game";
 
 export const PrivateSignupMessages = (): ReactElement => {
   const { t } = useTranslation();
-  const dispatch = useAppDispatch();
 
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [filteredGames, setFilteredGames] = useState<readonly Game[]>([]);
@@ -29,10 +27,6 @@ export const PrivateSignupMessages = (): ReactElement => {
   );
 
   const groupedSignupMessages = _.groupBy(privateSignupMessages, "gameId");
-
-  useEffect(() => {
-    dispatch(submitGetSignupMessages());
-  }, []);
 
   useEffect(() => {
     if (searchTerm.length === 0) {
