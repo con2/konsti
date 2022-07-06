@@ -8,7 +8,7 @@ import { writeJson } from "server/features/statistics/statsUtil";
 import { config } from "server/config";
 import { Game } from "shared/typings/models/game";
 
-export const gameIdFix = async (year: number, event: string): Promise<void> => {
+export const gameIdFix = (year: number, event: string): void => {
   const users: User[] = JSON.parse(
     fs.readFileSync(
       `${config.statsDataDir}/${event}/${year}/users.json`,
@@ -88,6 +88,6 @@ export const gameIdFix = async (year: number, event: string): Promise<void> => {
     });
   });
 
-  await writeJson(year, event, "users", users);
-  await writeJson(year, event, "results", results);
+  writeJson(year, event, "users", users);
+  writeJson(year, event, "results", results);
 };

@@ -10,29 +10,29 @@ const fixData = (): void => {
   commander
     .command("anonymize <year> <event>")
     .description("Anonymize users and results")
-    .action(async (year: number, event: string) => {
-      await anonymizeData(year, event);
+    .action((year: number, event: string) => {
+      anonymizeData(year, event);
     });
 
   commander
     .command("gameid <year> <event>")
     .description("Fix game ids for users and results")
-    .action(async (year: number, event: string) => {
-      await gameIdFix(year, event);
+    .action((year: number, event: string) => {
+      gameIdFix(year, event);
     });
 
   commander
     .command("wild <year> <event> <datatype>")
     .description("Implement new fix logic")
-    .action(async (year: number, event: string, datatype: string) => {
-      await wildFix(year, event, datatype);
+    .action((year: number, event: string, datatype: string) => {
+      wildFix(year, event, datatype);
     });
 
   commander
     .command("feedback-format <year> <event>")
     .description("Format feedbacks")
-    .action(async (year: number, event: string) => {
-      await formatFeedbacks(year, event);
+    .action((year: number, event: string) => {
+      formatFeedbacks(year, event);
     });
 
   if (process.argv.length < 4) {

@@ -66,7 +66,7 @@ export const storeEnteredGame = async (
   let usersForGame;
   try {
     const users = await findUsers();
-    usersForGame = await getUsersForGame(users, enteredGameId);
+    usersForGame = getUsersForGame(users, enteredGameId);
   } catch (error) {
     return {
       message: `Error counting users for game`,

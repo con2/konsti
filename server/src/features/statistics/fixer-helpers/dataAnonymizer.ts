@@ -6,10 +6,7 @@ import { ResultsCollectionEntry } from "server/typings/result.typings";
 import { writeJson } from "server/features/statistics/statsUtil";
 import { config } from "server/config";
 
-export const anonymizeData = async (
-  year: number,
-  event: string
-): Promise<void> => {
+export const anonymizeData = (year: number, event: string): void => {
   const users: User[] = JSON.parse(
     fs.readFileSync(
       `${config.statsDataDir}/${event}/${year}/users.json`,
@@ -40,6 +37,6 @@ export const anonymizeData = async (
     user.username = randomUsername;
   });
 
-  await writeJson(year, event, "users", users);
-  await writeJson(year, event, "results", results);
+  writeJson(year, event, "users", users);
+  writeJson(year, event, "results", results);
 };
