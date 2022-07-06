@@ -21,7 +21,7 @@ test("Add favorite", async ({ page, request }) => {
 
   // Favorite first game
   await page.waitForSelector("data-testid=game-container");
-  const firstGame = await page.locator("data-testid=game-container >> nth=0");
+  const firstGame = page.locator("data-testid=game-container >> nth=0");
 
   const favoritedGameTitle = await firstGame
     .locator("data-testid=game-title")
@@ -33,7 +33,7 @@ test("Add favorite", async ({ page, request }) => {
   await page.click("data-testid=navigation-icon");
   await page.click("data-testid=my-games-page-link");
 
-  const favoritedGames = await page.locator("data-testid=favorited-games-list");
+  const favoritedGames = page.locator("data-testid=favorited-games-list");
 
   const myGamesGameTitle = await favoritedGames
     .locator("data-testid=game-title")

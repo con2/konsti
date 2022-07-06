@@ -4,11 +4,7 @@ import { startCronJobs } from "server/utils/cron";
 import { config } from "server/config";
 
 const startApp = async (): Promise<void> => {
-  try {
-    await startCronJobs();
-  } catch (error) {
-    logger.error(`Cronjob failed: ${error}`);
-  }
+  startCronJobs();
 
   const server = await startServer(config.dbConnString, config.port);
 
