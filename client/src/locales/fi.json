@@ -322,8 +322,10 @@
     "algorithm+direct": "Algoritmi + Suora"
   },
   "backendError": {
-    "apiError": "Virhe kutsuessa {{method}} {{url}}",
-    "networkError": "Verkkovirhe, yhteys palvelimeen epäonnistui"
+    "apiError": "Virhe kutsuessa {{method}} {{url}}: {{errorReason}}",
+    "networkError": "Verkkovirhe, yhteys palvelimeen epäonnistui",
+    "unauthorized": "Ei käyttöoikeutta",
+    "invalidRequest": "Virheellinen kutsu"
   },
   "aboutView": {
     "title": "Mikä on Konsti?",
