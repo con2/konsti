@@ -73,8 +73,8 @@ export const saveGroupCode = async (
 
   try {
     response = await UserModel.findOneAndUpdate(
-      { username: username },
-      { groupCode: groupCode },
+      { username },
+      { groupCode },
       { new: true, fields: "groupCode" }
     ).lean<User>();
   } catch (error) {

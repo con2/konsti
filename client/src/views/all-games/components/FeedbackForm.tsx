@@ -26,7 +26,7 @@ export const FeedbackForm = ({ game }: Props): ReactElement => {
     const feedbackData = {
       gameId: game.gameId,
       feedback: feedbackValue,
-      username: username,
+      username,
     };
 
     try {

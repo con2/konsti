@@ -14,7 +14,7 @@ export const createAdminUser = async (password?: string): Promise<void> => {
 
   const registrationData: NewUser = {
     username: "admin",
-    passwordHash: passwordHash,
+    passwordHash,
     userGroup: UserGroup.ADMIN,
     serial: faker.datatype.number(10000000).toString(),
   };
