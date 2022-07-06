@@ -10,12 +10,15 @@ import { config } from "client/config";
 import { TestValuePicker } from "client/components/TestValuePicker";
 import { ErrorBar } from "client/components/ErrorBar";
 import { ProgramTypeSelection } from "client/components/EventTypeSelection";
+import { useAppSelector } from "client/utils/hooks";
 
 export const App = (): ReactElement => {
   const { dataUpdateInterval, loadedSettings, showTestValues } = config;
   const store = useStore();
 
   const [loading, setLoading] = useState<boolean>(true);
+
+  const appOpen = useAppSelector((state) => state.admin.appOpen);
 
   useEffect(() => {
     setLoading(true);
@@ -42,7 +45,7 @@ export const App = (): ReactElement => {
         <BrowserRouter>
           <Header />
           <ErrorBar />
-          <ProgramTypeSelection />
+          {appOpen && <ProgramTypeSelection />}
           <AppRoutes />
 
           {loadedSettings !== "production" && showTestValues && (
