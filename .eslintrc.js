@@ -52,6 +52,7 @@ module.exports = {
     "no-param-reassign": "error",
     "no-restricted-imports": ["error", { patterns: ["../*"] }],
     "no-console": "error",
+    "object-shorthand": "error",
     "array-callback-return": "off",
     "no-shadow": "off", // Required by @typescript-eslint/no-shadow
 

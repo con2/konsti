@@ -94,7 +94,7 @@ const signup = async (games: readonly Game[], user: User): Promise<User> => {
 
   return await saveSignedGames({
     username: user.username,
-    signedGames: signedGames,
+    signedGames,
   });
 };
 

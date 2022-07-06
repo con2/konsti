@@ -1,22 +1,20 @@
 module.exports = {
   ignorePatterns: ["node_modules", "lib", "coverage", "front"],
 
-  plugins: ["eslint-plugin-node"],
+  plugins: ["eslint-plugin-n"],
 
-  extends: ["plugin:eslint-plugin-node/recommended"],
+  extends: ["plugin:eslint-plugin-n/recommended"],
 
   env: {
     node: true,
   },
 
   rules: {
-    // eslint-plugin-import
-    "node/no-unpublished-import": "off", // Gives error when tests are in same folder as tested code
-
-    // eslint-plugin-node
-    "node/no-unsupported-features/es-syntax": "off", // Import and export declarations are not supported yet
-    "node/no-missing-import": "off", // Not working with babel-plugin-module-resolver and handled by eslint-plugin-import
-    "node/no-extraneous-import": "off", // Doesn't work with Yarn workspace dependencies
+    // eslint-plugin-n
+    "n/no-unpublished-import": "off", // Gives error when tests are in same folder as tested code
+    "n/no-unsupported-features/es-syntax": "off", // Import and export declarations are not supported yet
+    "n/no-missing-import": "off", // Not working with babel-plugin-module-resolver and handled by eslint-plugin-import
+    "n/no-extraneous-import": "off", // Doesn't work with Yarn workspace dependencies
 
     // @typescript-eslint
     "@typescript-eslint/strict-boolean-expressions": "off", // Forces unwanted code style
