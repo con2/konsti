@@ -19,13 +19,13 @@ const {
 
 const { assignmentStrategy } = sharedConfig;
 
-export const startCronJobs = async (): Promise<void> => {
+export const startCronJobs = (): void => {
   if (autoUpdateGamesEnabled || autoUpdateGamePopularityEnabled) {
-    await schedule.scheduleJob(gameUpdateInterval, autoUpdateGames);
+    schedule.scheduleJob(gameUpdateInterval, autoUpdateGames);
   }
 
   if (autoAssignPlayersEnabled) {
-    await schedule.scheduleJob(autoAssignInterval, autoAssignPlayers);
+    schedule.scheduleJob(autoAssignInterval, autoAssignPlayers);
   }
 };
 
