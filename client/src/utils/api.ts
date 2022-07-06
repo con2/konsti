@@ -46,7 +46,11 @@ api.interceptors.response.use(
     const method: HttpMethod = response.config.method.toUpperCase();
     const url: ApiEndpoint = response.config.url;
 
-    store.dispatch(addError(t(ErrorMessageType.API_ERROR, { method, url })));
+    const errorReason = getErrorReason(Number(response.status) || 0);
+
+    store.dispatch(
+      addError(t(ErrorMessageType.API_ERROR, { method, url, errorReason }))
+    );
 
     const data: ApiError = {
       errorId: "unknown",
@@ -59,3 +63,14 @@ api.interceptors.response.use(
     };
   }
 );
+
+const getErrorReason = (status: number): string => {
+  switch (status) {
+    case 401:
+      return t("backendError.unauthorized");
+    case 422:
+      return t("backendError.invalidRequest");
+    default:
+      return t("error.unknown");
+  }
+};
