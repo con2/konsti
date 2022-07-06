@@ -34,7 +34,6 @@ export const createSettings = async (): Promise<void> => {
 
     await saveSignupQuestion({
       gameId: randomGame.gameId,
-      // TODO: If private, add email + phone
       message: testQuestion,
       private: Math.random() < 0.5,
     });

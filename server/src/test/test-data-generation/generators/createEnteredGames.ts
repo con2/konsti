@@ -49,7 +49,6 @@ export const createEnteredGames = async (): Promise<void> => {
             username: user.username,
             enteredGameId: randomGame.gameId,
             startTime: randomGame.startTime,
-            // TODO: If private, add email + phone
             message: foundSignupQuestion?.message ? faker.lorem.words(4) : "",
           });
         });
