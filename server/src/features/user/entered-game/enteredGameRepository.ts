@@ -55,7 +55,7 @@ export const saveEnteredGame = async (
             gameDetails: game._id,
             priority: 1,
             time: startTime,
-            message: message,
+            message,
           },
         },
       },

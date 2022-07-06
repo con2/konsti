@@ -31,8 +31,8 @@ export const GroupCreatorActions = ({
 
     const errorMessage = await dispatch(
       submitCloseGroup({
-        username: username,
-        groupCode: groupCode,
+        username,
+        groupCode,
       })
     );
 

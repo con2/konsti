@@ -23,7 +23,7 @@ export const fetchResults = async (
       message: "Getting results success",
       status: "success",
       results: [],
-      startTime: startTime,
+      startTime,
     };
   }
 

@@ -50,7 +50,7 @@ export const NotInGroupActions = ({
 
     const errorMessage = await dispatch(
       submitCreateGroup({
-        username: username,
+        username,
         groupCode: serial,
       })
     );
@@ -70,7 +70,7 @@ export const NotInGroupActions = ({
 
     const errorMessage = await dispatch(
       submitJoinGroup({
-        username: username,
+        username,
         groupCode: joinGroupValue,
         ownSerial: serial,
       })
