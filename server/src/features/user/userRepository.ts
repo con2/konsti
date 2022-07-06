@@ -76,9 +76,9 @@ export const updateUserPassword = async (
 
   try {
     response = await UserModel.findOneAndUpdate(
-      { username: username },
+      { username },
       {
-        password: password,
+        password,
       },
       { new: true, fields: "-_id -__v -createdAt -updatedAt" }
     )

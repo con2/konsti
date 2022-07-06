@@ -1,6 +1,7 @@
 import request from "supertest";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { startTestServer, stopTestServer } from "server/test/utils/testServer";
+import { TestSettings } from "shared/test-typings/models/testSettings";
 
 jest.mock("server/utils/logger");
 
@@ -71,7 +72,7 @@ describe(`POST ${ApiEndpoint.TEST_SETTINGS}`, () => {
     const { server, mongoServer } = await startTestServer();
 
     try {
-      const testSettings = {
+      const testSettings: TestSettings = {
         testTime: "2021-07-16T14:28:01.316Z",
       };
 
@@ -83,7 +84,7 @@ describe(`POST ${ApiEndpoint.TEST_SETTINGS}`, () => {
       expect(response.body).toEqual({
         status: "success",
         message: "Update test settings success",
-        testSettings: testSettings,
+        testSettings,
       });
     } finally {
       await stopTestServer(server, mongoServer);

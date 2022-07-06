@@ -40,7 +40,7 @@ export const saveSignedGames = async (
   let signupResponse;
   try {
     signupResponse = await UserModel.findOneAndUpdate(
-      { username: username },
+      { username },
       {
         signedGames: formattedData,
       },
