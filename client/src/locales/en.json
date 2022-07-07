@@ -331,6 +331,11 @@
     "title": "What is Konsti?",
     "description": "Konsti is signup application designed for Finnish conventions"
   },
+  "gamePopularity": {
+    "low": "Need more players",
+    "medium": "Enough players to run",
+    "high": "More interested players than seats"
+  },
   "selectedProgramType": "Selected program type",
   "yes": "Yes",
   "no": "No",
