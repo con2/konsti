@@ -41,7 +41,7 @@ export const FirstLogin = (): ReactElement | null => {
         onClick={() => setIsFirstLogin(false)}
         buttonStyle={ButtonStyle.NORMAL}
       >
-        Sulje
+        {t("button.close")}
       </Button>
     </FirstLoginContainer>
   );

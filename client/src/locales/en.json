@@ -31,7 +31,8 @@
     "find": "Find",
     "save": "Save",
     "addSignupQuestion": "Add signup question",
-    "removeSignupQuestion": "Delete signup question"
+    "removeSignupQuestion": "Delete signup question",
+    "close": "Close"
   },
   "username": "Username",
   "password": "Password",
