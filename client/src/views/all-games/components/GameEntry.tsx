@@ -16,11 +16,7 @@ import {
   getUpcomingSignedGames,
 } from "client/utils/getUpcomingGames";
 import { isAlreadyEntered, isAlreadySigned } from "./allGamesUtils";
-<<<<<<< HEAD
-import { PhaseGap } from "shared/utils/getPhaseGap";
-import { formatPopularity } from "./PopularityInfo";
-=======
->>>>>>> master
+import { PopularityInfo } from "client/components/PopularityInfo";
 
 const DESCRIPTION_SENTENCES_LENGTH = 3;
 const matchNextSentence = /([.?!])\s*(?=[A-Z])/g;
@@ -94,6 +90,12 @@ export const GameEntry = ({
     ? isEnteredCurrentGame
     : isSignedForCurrentGame;
 
+  const popularityProps = {
+    minAttendance: game.minAttendance,
+    maxAttendance: game.maxAttendance,
+    popularity: game.popularity,
+    includeMsg: true,
+  };
   return (
     <GameContainer
       key={game.gameId}
@@ -137,13 +139,7 @@ export const GameEntry = ({
               </PlayersNeeded>
             </>
           )}
-          {!isEnterGameMode &&
-            formatPopularity(
-              game.minAttendance,
-              game.maxAttendance,
-              game.popularity,
-              true
-            )}
+          {!isEnterGameMode && PopularityInfo(popularityProps)}
         </HeaderContainer>
         <GameTags>
           {favorited && loggedIn && userGroup === "user" && game && (

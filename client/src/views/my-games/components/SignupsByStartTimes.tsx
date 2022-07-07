@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { timeFormatter } from "client/utils/timeFormatter";
 import { SelectedGame } from "shared/typings/models/user";
-import { formatPopularity } from "client/components/PopularityInfo";
+import { PopularityInfo } from "client/components/PopularityInfo";
 
 interface Props {
   signups: SelectedGame[];
@@ -28,6 +28,12 @@ export const SignupsByStartTimes = ({
 
             {signups.map((signup) => {
               if (signup.time === startTime) {
+                const popularityProps = {
+                  minAttendance: signup.gameDetails.minAttendance,
+                  maxAttendance: signup.gameDetails.maxAttendance,
+                  popularity: signup.gameDetails.popularity,
+                  includeMsg: false,
+                };
                 return (
                   <GameDetailsContainer key={signup.gameDetails.gameId}>
                     <GameDetailsList>
@@ -37,12 +43,7 @@ export const SignupsByStartTimes = ({
                       </Link>
                     </GameDetailsList>
                     <PopularityContainer>
-                      {formatPopularity(
-                        signup.gameDetails.minAttendance,
-                        signup.gameDetails.maxAttendance,
-                        signup.gameDetails.popularity,
-                        false
-                      )}
+                      {PopularityInfo(popularityProps)}
                     </PopularityContainer>
                   </GameDetailsContainer>
                 );

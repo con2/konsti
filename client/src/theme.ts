@@ -24,6 +24,8 @@ const grayDark = "rgb(150,150,150)";
 const yellow = "rgb(234,234,173)";
 const yellowDark = "rgb(214,214,166)";
 
+const magenta = "rgb(255, 0, 255)";
+
 export const theme = {
   // Colors
   backgroundActive: greenLight,
@@ -79,9 +81,9 @@ export const theme = {
   linkFontSize: "18px",
 
   // Game popularity icon colors
-  popularityLow: "navy",
-  popularityMedium: "darkgreen",
-  popularityHigh: "darkorange",
+  popularityLow: blue,
+  popularityMedium: magenta,
+  popularityHigh: redDark,
 };
 
 export type Theme = typeof theme;

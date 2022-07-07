@@ -1,32 +1,37 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { t } from "i18next";
-import React, { ReactElement } from "react";
+import React, { ReactElement, useState, useEffect } from "react";
 import styled from "styled-components";
 import { theme } from "client/theme";
 
-export const formatPopularity = (
-  minAttendance: number,
-  maxAttendance: number,
-  popularity: number,
-  includeMsg: boolean
-): ReactElement => {
-  let msg = "";
-  let color = "black";
-  let icon: IconProp = "thermometer-empty";
-  if (popularity < minAttendance) {
-    msg = t("gamePopularity.low");
-    color = theme.popularityLow;
-    icon = "thermometer-empty";
-  } else if (popularity >= minAttendance && popularity < maxAttendance) {
-    msg = t("gamePopularity.medium");
-    color = theme.popularityMedium;
-    icon = "thermometer-half";
-  } else if (popularity >= maxAttendance) {
-    msg = t("gamePopularity.high");
-    color = theme.popularityHigh;
-    icon = "thermometer-full";
-  }
+interface Props {
+  minAttendance: number;
+  maxAttendance: number;
+  popularity: number;
+  includeMsg: boolean;
+}
+
+export const PopularityInfo = ({
+  minAttendance,
+  maxAttendance,
+  popularity,
+  includeMsg,
+}: Props): ReactElement => {
+  const [msg, setMsg] = useState<string>(t("gamePopularity.low"));
+  const [color, setColor] = useState<string>(theme.popularityLow);
+  const [icon, setIcon] = useState<IconProp>("thermometer-empty");
+  useEffect(() => {
+    if (popularity >= minAttendance && popularity < maxAttendance) {
+      setMsg(t("gamePopularity.medium"));
+      setColor(theme.popularityMedium);
+      setIcon("thermometer-half");
+    } else if (popularity >= maxAttendance) {
+      setMsg(t("gamePopularity.high"));
+      setColor(theme.popularityHigh);
+      setIcon("thermometer-full");
+    }
+  });
   return (
     <GamePopularityContainer>
       <GamePopularityIcon icon={icon} color={color} /> {includeMsg && msg}
