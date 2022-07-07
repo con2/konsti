@@ -15,4 +15,10 @@ module.exports = {
   setupFiles: ["./src/test/setupTests.ts"],
 
   testPathIgnorePatterns: ["playwright"],
+
+  globals: {
+    "ts-jest": {
+      isolatedModules: true,
+    },
+  },
 };
