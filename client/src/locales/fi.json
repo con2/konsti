@@ -31,7 +31,8 @@
     "find": "Etsi",
     "save": "Tallenna",
     "addSignupQuestion": "Lisää ilmoittautumiskysymys",
-    "removeSignupQuestion": "Poista ilmoittautumiskysymys"
+    "removeSignupQuestion": "Poista ilmoittautumiskysymys",
+    "close": "Sulje"
   },
   "username": "Käyttäjänimi",
   "password": "Salasana",
