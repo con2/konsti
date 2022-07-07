@@ -331,6 +331,11 @@
     "title": "Mikä on Konsti?",
     "description": "Konsti on ilmoittautumissovellus, joka on suunniteltu suomalaisille coneille."
   },
+  "gamePopularity": {
+    "low": "Tarvitaan lisää pelaajia",
+    "medium": "Tarpeeksi pelaajia toteutuakseen",
+    "high": "Enemmän kiinnostuneita kuin paikkoja"
+  },
   "selectedProgramType": "Valittu ohjelmatyyppi",
   "yes": "Kyllä",
   "no": "Ei",
