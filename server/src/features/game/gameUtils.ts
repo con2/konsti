@@ -4,14 +4,17 @@ import { findGames, removeGames } from "server/features/game/gameRepository";
 import { GameDoc } from "server/typings/game.typings";
 import { logger } from "server/utils/logger";
 import { Game } from "shared/typings/models/game";
-import { findUsers } from "server/features//user/userRepository";
-import { SelectedGame, User } from "shared/typings/models/user";
 import { GameWithUsernames, UserSignup } from "shared/typings/api/games";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
 import { sharedConfig } from "shared/config/sharedConfig";
 import { findSettings } from "server/features/settings/settingsRepository";
 import { Settings, SignupQuestion } from "shared/typings/models/settings";
 import { getTime } from "server/features/player-assignment/utils/getTime";
+import {
+  delSignupsByGameIds,
+  findSignups,
+} from "server/features/signup/signupRepository";
+import { Signup } from "server/features/signup/signup.typings";
 
 export const removeDeletedGames = async (
   updatedGames: readonly Game[]
@@ -34,6 +37,13 @@ export const removeDeletedGames = async (
     );
 
     try {
+      await delSignupsByGameIds(deletedGameIds);
+    } catch (error) {
+      logger.error(`Error removing deleted games: ${error}`);
+      throw error;
+    }
+
+    try {
       await removeGames(deletedGameIds);
     } catch (error) {
       logger.error(`Error removing deleted games: ${error}`);
@@ -48,7 +58,7 @@ export const enrichGames = async (
   games: readonly GameDoc[]
 ): Promise<GameWithUsernames[]> => {
   try {
-    const users = await findUsers();
+    const signups = await findSignups();
     const settings = await findSettings();
     const currentTime = await getTime();
 
@@ -61,7 +71,7 @@ export const enrichGames = async (
           ...game.toJSON<GameDoc>(),
           signupStrategy: getSignupStrategyForGame(game, settings, currentTime),
         },
-        users: getUsersForGame(users, game.gameId, signupQuestion),
+        users: getSignupsForGame(signups, game.gameId, signupQuestion),
       };
     });
   } catch (error) {
@@ -92,37 +102,34 @@ const getSignupStrategyForGame = (
   return SignupStrategy.ALGORITHM;
 };
 
-export const getUsersForGame = (
-  users: User[],
+const getSignupsForGame = (
+  signups: Signup[],
   gameId: string,
   signupQuestion?: SignupQuestion | undefined
 ): UserSignup[] => {
-  const usersForGame = users.filter(
-    (user) =>
-      user.enteredGames.filter(
-        (enteredGame) => enteredGame.gameDetails.gameId === gameId
-      ).length > 0
+  const signupsForGame = signups.filter(
+    (signup) => signup.game.gameId === gameId
   );
 
-  return usersForGame.map((user) => {
-    const enteredGame = user.enteredGames.find(
-      (game) => game.gameDetails.gameId === gameId
-    );
-
-    return {
-      username: user.username,
-      signupMessage: getSignupMessage(signupQuestion, enteredGame),
-    };
+  const formattedSignupsForGame = signupsForGame.flatMap((signupForGame) => {
+    return signupForGame.userSignups.map((userSignups) => {
+      return {
+        username: userSignups.username,
+        signupMessage: getSignupMessage(signupQuestion, userSignups.message),
+      };
+    });
   });
+
+  return formattedSignupsForGame;
 };
 
 const getSignupMessage = (
   signupQuestion: SignupQuestion | undefined,
-  enteredGame: SelectedGame | undefined
+  signupMessage: string
 ): string => {
   if (!signupQuestion || signupQuestion.private) {
     return "";
   }
 
-  return enteredGame?.message ?? "";
+  return signupMessage ?? "";
 };

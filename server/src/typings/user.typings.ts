@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { SelectedGame, User, UserGroup } from "shared/typings/models/user";
+import { User, UserGroup } from "shared/typings/models/user";
 
 export interface UserDoc extends User, mongoose.Document {}
 
@@ -20,12 +20,4 @@ export interface SignupWish {
 export interface PlayerIdWithPriority {
   playerId: number;
   priorityValue: number;
-}
-
-export interface GetGroupReturnValue {
-  groupCode: string;
-  signedGames: readonly SelectedGame[];
-  enteredGames: readonly SelectedGame[];
-  serial: string;
-  username: string;
 }

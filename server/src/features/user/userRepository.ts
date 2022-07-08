@@ -23,7 +23,6 @@ export const saveUser = async (newUserData: NewUser): Promise<User> => {
       typeof newUserData.groupCode === "string" ? newUserData.groupCode : "0",
     favoritedGames: [],
     signedGames: [],
-    enteredGames: [],
   });
 
   let response;
@@ -51,13 +50,11 @@ export const updateUserByUsername = async (user: User): Promise<User> => {
         groupCode: user.groupCode,
         favoritedGames: user.favoritedGames,
         signedGames: user.signedGames,
-        enteredGames: user.enteredGames,
       },
       { new: true, fields: "-_id -__v -createdAt -updatedAt" }
     )
       .lean<User>()
       .populate("favoritedGames")
-      .populate("enteredGames.gameDetails")
       .populate("signedGames.gameDetails");
   } catch (error) {
     logger.error(`MongoDB: Error updating user ${user.username} - ${error}`);
@@ -84,7 +81,6 @@ export const updateUserPassword = async (
     )
       .lean<User>()
       .populate("favoritedGames")
-      .populate("enteredGames.gameDetails")
       .populate("signedGames.gameDetails");
 
     logger.debug(`MongoDB: Password for user "${username}" updated`);
@@ -101,13 +97,9 @@ export const updateUserPassword = async (
 export const findUser = async (username: string): Promise<User | null> => {
   let response;
   try {
-    response = await UserModel.findOne(
-      { username },
-      "-signedGames._id -enteredGames._id"
-    )
+    response = await UserModel.findOne({ username }, "-signedGames._id")
       .lean<User>()
       .populate("favoritedGames")
-      .populate("enteredGames.gameDetails")
       .populate("signedGames.gameDetails");
   } catch (error) {
     logger.error(`MongoDB: Error finding user ${username} - ${error}`);
@@ -127,13 +119,9 @@ export const findUserBySerial = async (
 ): Promise<User | null> => {
   let response;
   try {
-    response = await UserModel.findOne(
-      { serial },
-      "-signedGames._id -enteredGames._id"
-    )
+    response = await UserModel.findOne({ serial }, "-signedGames._id")
       .lean<User>()
       .populate("favoritedGames")
-      .populate("enteredGames.gameDetails")
       .populate("signedGames.gameDetails");
   } catch (error) {
     logger.error(
@@ -178,7 +166,6 @@ export const findUsers = async (): Promise<User[]> => {
     users = await UserModel.find({})
       .lean<User>()
       .populate("favoritedGames")
-      .populate("enteredGames.gameDetails")
       .populate("signedGames.gameDetails");
   } catch (error) {
     throw new Error(`MongoDB: Error fetching users - ${error}`);

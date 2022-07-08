@@ -1,3 +1,4 @@
+import { delSignupsByGameIds } from "server/features/signup/signupRepository";
 import {
   findUsers,
   updateUserByUsername,
@@ -22,52 +23,48 @@ export const removeHiddenGamesFromUsers = async (
     throw error;
   }
 
+  const userPromises = users.map(async (user) => {
+    const signedGames = user.signedGames.filter((signedGame) => {
+      const hiddenFound = hiddenGames.find((hiddenGame) => {
+        return hiddenGame.gameId === signedGame.gameDetails.gameId;
+      });
+      if (!hiddenFound) {
+        return signedGame;
+      }
+    });
+
+    const favoritedGames = user.favoritedGames.filter((favoritedGame) => {
+      const hiddenFound = hiddenGames.find((hiddenGame) => {
+        return hiddenGame.gameId === favoritedGame.gameId;
+      });
+      if (!hiddenFound) {
+        return favoritedGame;
+      }
+    });
+
+    if (
+      user.signedGames.length !== signedGames.length ||
+      user.favoritedGames.length !== favoritedGames.length
+    ) {
+      await updateUserByUsername({
+        ...user,
+        signedGames,
+        favoritedGames,
+      });
+    }
+  });
+
   try {
-    await Promise.all(
-      users.map(async (user) => {
-        const signedGames = user.signedGames.filter((signedGame) => {
-          const hiddenFound = hiddenGames.find((hiddenGame) => {
-            return hiddenGame.gameId === signedGame.gameDetails.gameId;
-          });
-          if (!hiddenFound) {
-            return signedGame;
-          }
-        });
-
-        const enteredGames = user.enteredGames.filter((enteredGame) => {
-          const hiddenFound = hiddenGames.find((hiddenGame) => {
-            return hiddenGame.gameId === enteredGame.gameDetails.gameId;
-          });
-          if (!hiddenFound) {
-            return enteredGame;
-          }
-        });
-
-        const favoritedGames = user.favoritedGames.filter((favoritedGame) => {
-          const hiddenFound = hiddenGames.find((hiddenGame) => {
-            return hiddenGame.gameId === favoritedGame.gameId;
-          });
-          if (!hiddenFound) {
-            return favoritedGame;
-          }
-        });
-
-        if (
-          user.signedGames.length !== signedGames.length ||
-          user.enteredGames.length !== enteredGames.length ||
-          user.favoritedGames.length !== favoritedGames.length
-        ) {
-          await updateUserByUsername({
-            ...user,
-            signedGames,
-            enteredGames,
-            favoritedGames,
-          });
-        }
-      })
-    );
+    await Promise.all(userPromises);
   } catch (error) {
     logger.error(`updateUser error: ${error}`);
+  }
+
+  const hiddenGameIds = hiddenGames.map((hiddenGame) => hiddenGame.gameId);
+  try {
+    await delSignupsByGameIds(hiddenGameIds);
+  } catch (error) {
+    logger.error(`delSignupsByGameIds error: ${error}`);
   }
 
   logger.info(`Hidden games removed from users`);

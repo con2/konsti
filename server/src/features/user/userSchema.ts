@@ -17,14 +17,6 @@ const UserSchema = new mongoose.Schema(
         message: String,
       },
     ],
-    enteredGames: [
-      {
-        gameDetails: { type: mongoose.Schema.Types.ObjectId, ref: "Game" },
-        priority: Number,
-        time: Date,
-        message: String,
-      },
-    ],
   },
   { timestamps: true }
 );

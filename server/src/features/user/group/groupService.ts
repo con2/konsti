@@ -1,17 +1,18 @@
 import dayjs from "dayjs";
 import { getTime } from "server/features/player-assignment/utils/getTime";
+import { findUserSignups } from "server/features/signup/signupRepository";
 import {
   findGroup,
   findGroupMembers,
   saveGroupCode,
 } from "server/features/user/group/groupRepository";
 import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
-import { findUser, findUserSerial } from "server/features/user/userRepository";
-import { GetGroupReturnValue } from "server/typings/user.typings";
+import { findUserSerial } from "server/features/user/userRepository";
 import { logger } from "server/utils/logger";
 import {
   GetGroupError,
   GetGroupResponse,
+  GroupMember,
   PostCloseGroupError,
   PostCreateGroupError,
   PostGroupResponse,
@@ -88,27 +89,28 @@ export const joinGroup = async (
     };
   }
 
-  let userResponse;
+  let signups;
   try {
-    userResponse = await findUser(username);
+    signups = await findUserSignups(username);
   } catch (error) {
-    logger.error(`findUser(): ${error}`);
+    logger.error(`findUserSignups(): ${error}`);
     return {
-      message: "Error finding user",
+      message: "Error finding signups",
       status: "error",
       errorId: "unknown",
     };
   }
 
   const timeNow = await getTime();
-  const userHasEnteredGames = userResponse?.enteredGames.some((selectedGame) =>
-    timeNow.isBefore(dayjs(selectedGame.time))
+  const userSignups = signups.flatMap((signup) => signup.userSignups);
+  const userHasSignups = userSignups.some((userSignup) =>
+    timeNow.isBefore(dayjs(userSignup.time))
   );
 
-  // User cannot have entered games in future when joining in group
-  if (userHasEnteredGames) {
+  // User cannot have signups in future when joining in group
+  if (userHasSignups) {
     return {
-      message: "Entered games in future",
+      message: "Signup in future",
       status: "error",
       errorId: "userHasSignedGames",
     };
@@ -289,12 +291,11 @@ export const fetchGroup = async (
   try {
     findGroupResults = await findGroupMembers(groupCode);
 
-    const returnData: GetGroupReturnValue[] = [];
+    const returnData: GroupMember[] = [];
     for (const findGroupResult of findGroupResults) {
       returnData.push({
         groupCode: findGroupResult.groupCode,
         signedGames: findGroupResult.signedGames,
-        enteredGames: findGroupResult.enteredGames,
         serial: findGroupResult.serial,
         username: findGroupResult.username,
       });

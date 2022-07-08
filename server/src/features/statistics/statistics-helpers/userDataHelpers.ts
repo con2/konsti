@@ -7,14 +7,17 @@ import { toPercent } from "server/features/statistics/statsUtil";
 export const getUsersWithoutGames = (
   users: readonly User[]
 ): readonly User[] => {
-  let counter = 0;
+  const counter = 0;
   const usersWithoutGames = [] as User[];
+  // TODO: Update to use signup collection
+  /*
   users.forEach((user) => {
     if (user.enteredGames.length === 0 && user.signedGames.length !== 0) {
       usersWithoutGames.push(user);
       counter += 1;
     }
   });
+  */
 
   logger.info(
     `Players without any entered games: ${counter}/${users.length} (${toPercent(
@@ -78,7 +81,9 @@ export const getUsersSignupCount = (users: readonly User[]): void => {
   );
 };
 
-export const getUsersWithAllGames = (users: readonly User[]): void => {
+export const getUsersWithAllGames = (_users: readonly User[]): void => {
+  // TODO: Update to use signup collection
+  /*
   let counter = 0;
 
   users.forEach((user) => {
@@ -94,4 +99,5 @@ export const getUsersWithAllGames = (users: readonly User[]): void => {
       users.length
     } (${toPercent(counter / users.length)}%)`
   );
+  */
 };

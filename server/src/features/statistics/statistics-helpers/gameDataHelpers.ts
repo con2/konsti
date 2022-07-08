@@ -2,7 +2,7 @@ import dayjs from "dayjs";
 import _ from "lodash";
 import { logger } from "server/utils/logger";
 import { Game } from "shared/typings/models/game";
-import { User } from "shared/typings/models/user";
+import { SelectedGame, User } from "shared/typings/models/user";
 import { getMaximumNumberOfPlayersByTime } from "./resultDataHelpers";
 import {
   StringNumberObject,
@@ -19,8 +19,10 @@ export const getGamesByStartingTime = (
   return gamesByTime;
 };
 
-const getUsersByGames = (users: readonly User[]): StringNumberObject => {
-  const enteredGames = users.flatMap((user) => user.enteredGames);
+const getUsersByGames = (_users: readonly User[]): StringNumberObject => {
+  // TODO: Update to use signup collection
+  // const enteredGames = users.flatMap((user) => user.enteredGames);
+  const enteredGames: SelectedGame[] = [];
   const usersByGames = _.countBy(enteredGames, "gameDetails.gameId");
   return usersByGames;
 };

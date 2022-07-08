@@ -6,11 +6,13 @@ import { getStartingGames } from "server/features/player-assignment/utils/getSta
 import { getRunRandomAndPadgInput } from "server/features/player-assignment/utils/getRunRandomAndPadgInput";
 import { runPadgAssignment } from "server/features/player-assignment/padg/utils/runPadgAssignment";
 import { logger } from "server/utils/logger";
+import { Signup } from "server/features/signup/signup.typings";
 
 export const padgAssignPlayers = (
   players: readonly User[],
   games: readonly Game[],
-  startingTime: string
+  startingTime: string,
+  signups: readonly Signup[]
 ): PlayerAssignmentResult => {
   logger.debug(`***** Run Padg Assignment for ${startingTime}`);
   const startingGames = getStartingGames(games, startingTime);
@@ -50,7 +52,8 @@ export const padgAssignPlayers = (
   const assignmentResult = runPadgAssignment(
     signedGames,
     playerGroups,
-    startingTime
+    startingTime,
+    signups
   );
 
   const selectedUniqueGames = _.uniq(

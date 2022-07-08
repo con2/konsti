@@ -8,7 +8,6 @@ export const findGroupMembers = async (groupCode: string): Promise<User[]> => {
     response = await UserModel.find({ groupCode })
       .lean<User>()
       .populate("favoritedGames")
-      .populate("enteredGames.gameDetails")
       .populate("signedGames.gameDetails");
   } catch (error) {
     logger.error(`MongoDB: Error finding group ${groupCode} - ${error}`);

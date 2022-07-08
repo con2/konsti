@@ -11,7 +11,7 @@ import {
 export const removeMovedGamesFromUsers = async (
   updatedGames: readonly Game[]
 ): Promise<void> => {
-  logger.info("Remove moved games from users");
+  logger.info("Remove moved signed games from users");
 
   let currentGames: GameDoc[] = [];
   try {
@@ -42,59 +42,36 @@ export const removeMovedGamesFromUsers = async (
     throw error;
   }
 
+  const promises = users.map(async (user) => {
+    const signedGames = user.signedGames.filter((signedGame) => {
+      const movedFound = movedGames.find((movedGame) => {
+        return movedGame.gameId === signedGame.gameDetails.gameId;
+      });
+      if (!movedFound) {
+        return signedGame;
+      }
+    });
+
+    if (signedGames.length > 0) {
+      logger.info(
+        `Remove following moved signedGames from user ${
+          user.username
+        }: ${signedGames
+          .map((signedGame) => signedGame.gameDetails.gameId)
+          .join(", ")}`
+      );
+    }
+
+    if (user.signedGames.length !== signedGames.length) {
+      await updateUserByUsername({
+        ...user,
+        signedGames,
+      });
+    }
+  });
+
   try {
-    await Promise.all(
-      users.map(async (user) => {
-        const signedGames = user.signedGames.filter((signedGame) => {
-          const movedFound = movedGames.find((movedGame) => {
-            return movedGame.gameId === signedGame.gameDetails.gameId;
-          });
-          if (!movedFound) {
-            return signedGame;
-          }
-        });
-
-        if (signedGames.length > 0) {
-          logger.info(
-            `Remove following moved signedGames from user ${
-              user.username
-            }: ${signedGames
-              .map((signedGame) => signedGame.gameDetails.gameId)
-              .join(", ")}`
-          );
-        }
-
-        const enteredGames = user.enteredGames.filter((enteredGame) => {
-          const movedFound = movedGames.find((movedGame) => {
-            return movedGame.gameId === enteredGame.gameDetails.gameId;
-          });
-          if (!movedFound) {
-            return enteredGame;
-          }
-        });
-
-        if (enteredGames.length > 0) {
-          logger.info(
-            `Remove following moved enteredGames from user ${
-              user.username
-            }: ${enteredGames
-              .map((enteredGame) => enteredGame.gameDetails.gameId)
-              .join(", ")}`
-          );
-        }
-
-        if (
-          user.signedGames.length !== signedGames.length ||
-          user.enteredGames.length !== enteredGames.length
-        ) {
-          await updateUserByUsername({
-            ...user,
-            signedGames,
-            enteredGames,
-          });
-        }
-      })
-    );
+    await Promise.all(promises);
   } catch (error) {
     logger.error(`updateUser error: ${error}`);
     throw new Error("No assign results");

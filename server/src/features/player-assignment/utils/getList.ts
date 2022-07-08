@@ -3,10 +3,12 @@ import dayjs from "dayjs";
 import { ListItem } from "server/typings/padgRandomAssign.typings";
 import { getAssignmentBonus } from "server/features/player-assignment/utils/getAssignmentBonus";
 import { SelectedGame, User } from "shared/typings/models/user";
+import { Signup } from "server/features/signup/signup.typings";
 
 export const getList = (
   playerGroups: readonly User[][],
-  startingTime: string
+  startingTime: string,
+  signups: readonly Signup[]
 ): ListItem[] => {
   return playerGroups.flatMap((playerGroup) => {
     const firstMember = _.first(playerGroup);
@@ -26,14 +28,18 @@ export const getList = (
               : firstMember.serial,
           size: playerGroup.length,
           event: signedGame.gameDetails.gameId,
-          gain: getGain(signedGame, playerGroup),
+          gain: getGain(signedGame, playerGroup, signups),
         };
       });
   });
 };
 
-const getGain = (signedGame: SelectedGame, playerGroup: User[]): number => {
-  const bonus = getAssignmentBonus(playerGroup);
+const getGain = (
+  signedGame: SelectedGame,
+  playerGroup: User[],
+  signups: readonly Signup[]
+): number => {
+  const bonus = getAssignmentBonus(playerGroup, signups);
 
   switch (signedGame.priority) {
     case 1:
