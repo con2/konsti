@@ -31,6 +31,7 @@ export enum KompassiTag {
   AIHE_LARPIT = "aihe-larpit",
   AIHE_LAUTAPELIT = "aihe-lautapelit",
   AIHE_POYTAROOLIPELIT = "aihe-poytaroolipelit",
+  PELI = "peli",
 }
 
 export enum KompassiGenre {
