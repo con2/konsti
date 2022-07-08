@@ -1,9 +1,9 @@
 import dayjs from "dayjs";
 import { logger } from "server/utils/logger";
-import { User } from "shared/typings/models/user";
 import { ResultsCollectionEntry } from "server/typings/result.typings";
-import { findUsers } from "server/features/user/userRepository";
 import { findResults } from "server/features/results/resultsRepository";
+import { findSignups } from "server/features/signup/signupRepository";
+import { Signup } from "server/features/signup/signup.typings";
 
 export const verifyResults = async (): Promise<void> => {
   logger.info(`Verify results and user entered games match`);
@@ -16,9 +16,9 @@ export const verifyResults = async (): Promise<void> => {
     throw error;
   }
 
-  let users: User[];
+  let signups: Signup[];
   try {
-    users = await findUsers();
+    signups = await findSignups();
   } catch (error) {
     logger.error(error);
     throw error;
@@ -43,72 +43,71 @@ export const verifyResults = async (): Promise<void> => {
     });
   });
 
-  logger.info("Check if user enteredGames match userResults");
+  logger.info("Check if user signups match userResults");
 
-  users.forEach((user) => {
-    if (!user.enteredGames.length) return;
+  signups.forEach((signup) => {
+    if (!signup.userSignups.length) return;
 
-    user.enteredGames.forEach((enteredGame) => {
+    signup.userSignups.forEach((userSignup) => {
       const results = resultsCollection.find((result) =>
-        dayjs(result.startTime).isSame(dayjs(enteredGame.time))
+        dayjs(result.startTime).isSame(dayjs(userSignup.time))
       );
 
       if (!results) {
-        logger.error(`No saved results for starting time ${enteredGame.time}`);
-        return;
+        throw new Error(
+          `No saved results for starting time ${userSignup.time}`
+        );
       }
 
       const matchingResult = results.results.find((userResult) => {
-        if (!enteredGame.gameDetails) {
-          logger.error(`Game details missing for entered game`);
-          return;
+        if (!signup.game) {
+          throw new Error(`Game details missing for signup`);
         }
 
         if (!userResult.enteredGame.gameDetails) {
-          logger.error(`Game details missing for result`);
-          return;
+          throw new Error(`Game details missing for result`);
         }
 
         if (
-          enteredGame.gameDetails.gameId ===
-            userResult.enteredGame.gameDetails.gameId &&
-          user.username === userResult.username
+          signup.game.gameId === userResult.enteredGame.gameDetails.gameId &&
+          userSignup.username === userResult.username
         ) {
           logger.debug(
-            `Match for game "${enteredGame.gameDetails.title}" and user "${user.username}"`
+            `Match for game "${signup.game.title}" and user "${userSignup.username}"`
           );
           return userResult;
         }
       });
 
       if (!matchingResult) {
-        logger.error(
-          `No matching result for user "${user.username}" and game "${enteredGame.gameDetails.title}"`
+        throw new Error(
+          `No matching result for user "${userSignup.username}" and game "${signup.game.title}"`
         );
       }
     });
   });
 
-  logger.info("Check if results match user enteredGames");
+  logger.info("Check if results match signups");
 
   resultsCollection.forEach((results) => {
     results.results.forEach((result) => {
-      const foundUser = users.find((user) => user.username === result.username);
-
-      if (!foundUser) {
-        logger.error("No user found for result");
-        return;
-      }
-
-      const gameFound = foundUser.enteredGames.find(
-        (enteredGame) =>
-          enteredGame.gameDetails.gameId ===
-          result.enteredGame.gameDetails.gameId
+      const foundSignup = signups.find(
+        (signup) => signup.game.gameId === result.enteredGame.gameDetails.gameId
       );
 
-      if (!gameFound) {
-        logger.error(
-          `No entered game found for user "${foundUser.username}" and result "${result.enteredGame.gameDetails?.title}"`
+      if (!foundSignup) {
+        throw new Error(
+          `No signup found for game ${result.enteredGame.gameDetails.title}`
+        );
+      }
+
+      const foundUserSignup = foundSignup.userSignups.find(
+        (userSignup) => userSignup.username === result.username
+      );
+
+      if (!foundUserSignup) {
+        throw new Error(
+          `No signup found for user "${result.username}" and result "${result.enteredGame.gameDetails.title}"`
         );
       }
     });

@@ -1,9 +1,5 @@
 import { Request, Response } from "express";
 import { ZodError } from "zod";
-import {
-  removeEnteredGame,
-  storeEnteredGame,
-} from "server/features/user/entered-game/enteredGameService";
 import { isAuthorized } from "server/utils/authHeader";
 import { logger } from "server/utils/logger";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
@@ -14,12 +10,16 @@ import {
   PostEnteredGameParametersSchema,
 } from "shared/typings/api/myGames";
 import { UserGroup } from "shared/typings/models/user";
+import {
+  removeSignup,
+  storeSignup,
+} from "server/features/signup/signupService";
 
-export const postEnteredGame = async (
+export const postSignup = async (
   req: Request<{}, {}, PostEnteredGameParameters>,
   res: Response
 ): Promise<Response> => {
-  logger.info(`API call: POST ${ApiEndpoint.ENTERED_GAME}`);
+  logger.info(`API call: POST ${ApiEndpoint.SIGNUP}`);
 
   const { username } = req.body;
 
@@ -31,22 +31,20 @@ export const postEnteredGame = async (
     PostEnteredGameParametersSchema.parse(req.body);
   } catch (error) {
     if (error instanceof ZodError) {
-      logger.info(
-        `Error validating postEnteredGame parameters: ${error.message}`
-      );
+      logger.info(`Error validating postSignup parameters: ${error.message}`);
     }
     return res.sendStatus(422);
   }
 
-  const response = await storeEnteredGame(req.body);
+  const response = await storeSignup(req.body);
   return res.json(response);
 };
 
-export const deleteEnteredGame = async (
+export const deleteSignup = async (
   req: Request<{}, {}, DeleteEnteredGameParameters>,
   res: Response
 ): Promise<Response> => {
-  logger.info(`API call: DELETE ${ApiEndpoint.ENTERED_GAME}`);
+  logger.info(`API call: DELETE ${ApiEndpoint.SIGNUP}`);
 
   const { username } = req.body;
 
@@ -59,12 +57,12 @@ export const deleteEnteredGame = async (
   } catch (error) {
     if (error instanceof ZodError) {
       logger.error(
-        `Error validating deleteEnteredGame parameters: ${error.message}`
+        `Error validating deleteSignup parameters: ${error.message}`
       );
     }
     return res.sendStatus(422);
   }
 
-  const response = await removeEnteredGame(req.body);
+  const response = await removeSignup(req.body);
   return res.json(response);
 };

@@ -7,10 +7,7 @@ import {
   mockPostEnteredGameRequest,
   mockUser,
 } from "server/test/mock-data/mockUser";
-import {
-  delEnteredGame,
-  saveEnteredGame,
-} from "server/features/user/entered-game/enteredGameRepository";
+import { delSignup, saveSignup } from "server/features/signup/signupRepository";
 
 let mongoServer: MongoMemoryServer;
 
@@ -26,21 +23,22 @@ afterEach(async () => {
   await mongoServer.stop();
 });
 
-test("should add new enteredGame for user", async () => {
+test("should add new signup for user", async () => {
   await saveUser(mockUser);
   await saveGames([testGame]);
 
-  const response = await saveEnteredGame(mockPostEnteredGameRequest);
+  const response = await saveSignup(mockPostEnteredGameRequest);
 
-  expect(response.enteredGames[0].gameDetails.gameId).toEqual(testGame.gameId);
+  expect(response.game.gameId).toEqual(testGame.gameId);
+  expect(response.userSignups[0].username).toEqual(mockUser.username);
 });
 
-test("should delete enteredGame from user", async () => {
+test("should delete signup from user", async () => {
   await saveUser(mockUser);
   await saveGames([testGame]);
-  await saveEnteredGame(mockPostEnteredGameRequest);
+  await saveSignup(mockPostEnteredGameRequest);
 
-  const response = await delEnteredGame(mockPostEnteredGameRequest);
+  const response = await delSignup(mockPostEnteredGameRequest);
 
-  expect(response.enteredGames.length).toEqual(0);
+  expect(response.userSignups.length).toEqual(0);
 });

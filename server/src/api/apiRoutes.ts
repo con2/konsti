@@ -14,9 +14,9 @@ import {
   postSignupQuestion,
 } from "server/features/settings/settingsController";
 import {
-  deleteEnteredGame,
-  postEnteredGame,
-} from "server/features/user/entered-game/enteredGameController";
+  deleteSignup,
+  postSignup,
+} from "server/features/signup/signupController";
 import { postFavorite } from "server/features/user/favorite-game/favoriteGameController";
 import {
   getGroup,
@@ -60,11 +60,11 @@ apiRoutes.post(ApiEndpoint.GROUP, postGroup);
 apiRoutes.post(ApiEndpoint.JOIN_GROUP, postJoinGroup);
 apiRoutes.post(ApiEndpoint.LEAVE_GROUP, postLeaveGroup);
 apiRoutes.post(ApiEndpoint.CLOSE_GROUP, postCloseGroup);
-apiRoutes.post(ApiEndpoint.ENTERED_GAME, postEnteredGame);
 apiRoutes.post(ApiEndpoint.SIGNUP_QUESTION, postSignupQuestion);
 apiRoutes.post(ApiEndpoint.SESSION_RESTORE, postSessionRestore);
 apiRoutes.post(ApiEndpoint.USERS_PASSWORD, postUserPassword);
 apiRoutes.post(ApiEndpoint.SETTINGS, postSettings);
+apiRoutes.post(ApiEndpoint.SIGNUP, postSignup);
 
 /* GET routes */
 
@@ -81,8 +81,8 @@ apiRoutes.get(ApiEndpoint.SIGNUP_MESSAGE, getSignupMessages);
 
 /* DELETE routes */
 
-apiRoutes.delete(ApiEndpoint.ENTERED_GAME, deleteEnteredGame);
 apiRoutes.delete(ApiEndpoint.SIGNUP_QUESTION, deleteSignupQuestion);
+apiRoutes.delete(ApiEndpoint.SIGNUP, deleteSignup);
 
 /* DEV routes */
 

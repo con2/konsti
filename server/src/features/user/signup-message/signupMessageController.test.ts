@@ -7,7 +7,6 @@ import { UserGroup } from "shared/typings/models/user";
 import { closeServer, startServer } from "server/utils/server";
 import { saveGames } from "server/features/game/gameRepository";
 import { saveUser } from "server/features/user/userRepository";
-import { saveEnteredGame } from "server/features/user/entered-game/enteredGameRepository";
 import {
   mockPostEnteredGameRequest,
   mockPostEnteredGameRequest2,
@@ -16,6 +15,7 @@ import {
 import { testGame, testGame2 } from "shared/tests/testGame";
 import { SignupQuestion } from "shared/typings/models/settings";
 import { saveSignupQuestion } from "server/features/settings/settingsRepository";
+import { saveSignup } from "server/features/signup/signupRepository";
 
 let server: Server;
 let mongoServer: MongoMemoryServer;
@@ -65,11 +65,11 @@ describe(`GET ${ApiEndpoint.SIGNUP_MESSAGE}`, () => {
     await saveGames([testGame, testGame2]);
     await saveUser(mockUser);
 
-    await saveEnteredGame({
+    await saveSignup({
       ...mockPostEnteredGameRequest,
       message: "Answer to public message",
     });
-    await saveEnteredGame({
+    await saveSignup({
       ...mockPostEnteredGameRequest2,
       message: "Answer to private message",
     });

@@ -8,7 +8,6 @@ export interface User {
   groupCode: string;
   favoritedGames: readonly Game[];
   signedGames: readonly SelectedGame[];
-  enteredGames: readonly SelectedGame[];
   createdAt: string | null;
 }
 

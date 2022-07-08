@@ -1,6 +1,7 @@
 import { Server } from "http";
 import request from "supertest";
 import { MongoMemoryServer } from "mongodb-memory-server";
+import dayjs from "dayjs";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
   CloseGroupRequest,
@@ -12,6 +13,7 @@ import { UserGroup } from "shared/typings/models/user";
 import { getJWT } from "server/utils/jwt";
 import { findUser, saveUser } from "server/features/user/userRepository";
 import {
+  mockPostEnteredGameRequest,
   mockSignedGames,
   mockUser,
   mockUser2,
@@ -20,6 +22,8 @@ import { saveSignedGames } from "server/features/user/signed-game/signedGameRepo
 import { saveGames } from "server/features/game/gameRepository";
 import { testGame, testGame2 } from "shared/tests/testGame";
 import { closeServer, startServer } from "server/utils/server";
+import { saveSignup } from "server/features/signup/signupRepository";
+import { saveTestSettings } from "server/test/test-settings/testSettingsRepository";
 
 let server: Server;
 let mongoServer: MongoMemoryServer;
@@ -49,6 +53,31 @@ describe(`GET ${ApiEndpoint.GROUP}`, () => {
       groupCode: "1234",
     });
     expect(response.status).toEqual(401);
+  });
+
+  test("should return group members", async () => {
+    await saveGames([testGame]);
+    await saveUser({ ...mockUser, groupCode: mockUser.serial });
+    await saveUser({ ...mockUser2, groupCode: mockUser.serial });
+    await saveSignup({
+      ...mockPostEnteredGameRequest,
+      username: mockUser2.username,
+    });
+
+    const response = await request(server)
+      .get(ApiEndpoint.GROUP)
+      .query({
+        username: mockUser2.username,
+        groupCode: mockUser.serial,
+      })
+      .set(
+        "Authorization",
+        `Bearer ${getJWT(UserGroup.USER, mockUser2.username)}`
+      );
+
+    expect(response.status).toEqual(200);
+    expect(response.body.status).toEqual("success");
+    expect(response.body.results.length).toEqual(2);
   });
 });
 
@@ -114,7 +143,7 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
 
   test("should join group", async () => {
     await saveGames([testGame, testGame2]);
-    await saveUser({ ...mockUser, groupCode: "1234ABCD" });
+    await saveUser({ ...mockUser, groupCode: mockUser.serial });
     await saveUser(mockUser2);
     const userWithSignups = await saveSignedGames({
       signedGames: mockSignedGames,
@@ -141,6 +170,38 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
     expect(updatedUser?.groupCode).toEqual(mockUser.serial);
     expect(updatedUser?.signedGames.length).toEqual(0);
   });
+
+  test("should return error if existing upcoming signups", async () => {
+    await saveTestSettings({
+      testTime: dayjs(testGame.startTime).subtract(2, "hours").format(),
+    });
+
+    await saveGames([testGame]);
+    await saveUser({ ...mockUser, groupCode: mockUser.serial });
+    await saveUser(mockUser2);
+    await saveSignup({
+      ...mockPostEnteredGameRequest,
+      username: mockUser2.username,
+    });
+
+    const groupRequest: JoinGroupRequest = {
+      groupCode: mockUser.serial,
+      ownSerial: mockUser2.serial,
+      username: mockUser2.username,
+    };
+
+    const response = await request(server)
+      .post(ApiEndpoint.JOIN_GROUP)
+      .send(groupRequest)
+      .set(
+        "Authorization",
+        `Bearer ${getJWT(UserGroup.USER, mockUser2.username)}`
+      );
+
+    expect(response.status).toEqual(200);
+    expect(response.body.status).toEqual("error");
+    expect(response.body.message).toEqual("Signup in future");
+  });
 });
 
 describe(`POST ${ApiEndpoint.LEAVE_GROUP}`, () => {
@@ -161,8 +222,8 @@ describe(`POST ${ApiEndpoint.LEAVE_GROUP}`, () => {
   });
 
   test("should leave group", async () => {
-    await saveUser({ ...mockUser, groupCode: "1234ABCD" });
-    await saveUser({ ...mockUser2, groupCode: "1234ABCD" });
+    await saveUser({ ...mockUser, groupCode: mockUser.serial });
+    await saveUser({ ...mockUser2, groupCode: mockUser.serial });
 
     const groupRequest: LeaveGroupRequest = {
       username: mockUser2.username,
@@ -201,8 +262,8 @@ describe(`POST ${ApiEndpoint.CLOSE_GROUP}`, () => {
   });
 
   test("should close group and remove all group members", async () => {
-    await saveUser({ ...mockUser, groupCode: "1234ABCD" });
-    await saveUser({ ...mockUser2, groupCode: "1234ABCD" });
+    await saveUser({ ...mockUser, groupCode: mockUser.serial });
+    await saveUser({ ...mockUser2, groupCode: mockUser.serial });
 
     const groupRequest: CloseGroupRequest = {
       groupCode: mockUser.serial,

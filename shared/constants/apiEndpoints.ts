@@ -14,11 +14,11 @@ export enum ApiEndpoint {
   CLOSE_GROUP = "/api/close-group",
   SETTINGS = "/api/settings",
   RESULTS = "/api/results",
-  ENTERED_GAME = "/api/entered-game",
   SIGNUP_QUESTION = "/api/signup-question",
   SIGNUP_MESSAGE = "/api/signup-message",
   SESSION_RESTORE = "/api/session-restore",
   USERS_PASSWORD = "/api/users/password",
   TEST_SETTINGS = "/api/test-settings",
   POPULATE_DB = "/api/populate-db",
+  SIGNUP = "/api/signup",
 }

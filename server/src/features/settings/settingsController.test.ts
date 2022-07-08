@@ -5,6 +5,21 @@ import { getJWT } from "server/utils/jwt";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
 import { startTestServer, stopTestServer } from "server/test/utils/testServer";
 import { Settings, SignupQuestion } from "shared/typings/models/settings";
+import { testGame, testGame2 } from "shared/tests/testGame";
+import { saveGames } from "server/features/game/gameRepository";
+import { findUser, saveUser } from "server/features/user/userRepository";
+import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
+import {
+  findUserSignups,
+  saveSignup,
+} from "server/features/signup/signupRepository";
+import { saveFavorite } from "server/features/user/favorite-game/favoriteGameRepository";
+import {
+  mockPostEnteredGameRequest,
+  mockPostEnteredGameRequest2,
+  mockSignedGames,
+  mockUser,
+} from "server/test/mock-data/mockUser";
 
 describe(`GET ${ApiEndpoint.SETTINGS}`, () => {
   process.env.SETTINGS = "production";
@@ -121,6 +136,45 @@ describe(`POST ${ApiEndpoint.HIDDEN}`, () => {
     try {
       const response = await request(server).post(ApiEndpoint.HIDDEN);
       expect(response.status).toEqual(401);
+    } finally {
+      await stopTestServer(server, mongoServer);
+    }
+  });
+
+  test("should remove hidden game from users", async () => {
+    const { server, mongoServer } = await startTestServer();
+
+    try {
+      await saveGames([testGame, testGame2]);
+      await saveUser(mockUser);
+      await saveSignedGames({
+        username: mockUser.username,
+        signedGames: mockSignedGames,
+      });
+      await saveSignup(mockPostEnteredGameRequest);
+      await saveSignup(mockPostEnteredGameRequest2);
+      await saveFavorite({
+        username: mockUser.username,
+        favoritedGameIds: [testGame.gameId, testGame2.gameId],
+      });
+
+      const response = await request(server)
+        .post(ApiEndpoint.HIDDEN)
+        .send({ hiddenData: [testGame] })
+        .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+
+      expect(response.status).toEqual(200);
+
+      const updatedUser = await findUser(mockUser.username);
+      expect(updatedUser?.signedGames.length).toEqual(1);
+      expect(updatedUser?.signedGames[0].gameDetails.title).toEqual(
+        testGame2.title
+      );
+      expect(updatedUser?.favoritedGames.length).toEqual(1);
+
+      const signups = await findUserSignups(mockUser.username);
+      expect(signups.length).toEqual(1);
+      expect(signups[0].userSignups[0].username).toEqual(mockUser.username);
     } finally {
       await stopTestServer(server, mongoServer);
     }

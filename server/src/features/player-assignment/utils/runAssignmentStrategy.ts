@@ -7,12 +7,14 @@ import { User } from "shared/typings/models/user";
 import { Game } from "shared/typings/models/game";
 import { PlayerAssignmentResult } from "server/typings/result.typings";
 import { AssignmentStrategy } from "shared/config/sharedConfig.types";
+import { Signup } from "server/features/signup/signup.typings";
 
 export const runAssignmentStrategy = (
   players: readonly User[],
   games: readonly Game[],
   startingTime: string,
-  assignmentStrategy: AssignmentStrategy
+  assignmentStrategy: AssignmentStrategy,
+  signups: readonly Signup[]
 ): PlayerAssignmentResult => {
   logger.info(
     `Received data for ${players.length} players and ${games.length} games`
@@ -29,12 +31,12 @@ export const runAssignmentStrategy = (
   } else if (assignmentStrategy === "group") {
     return groupAssignPlayers(players, games, startingTime);
   } else if (assignmentStrategy === "padg") {
-    return padgAssignPlayers(players, games, startingTime);
+    return padgAssignPlayers(players, games, startingTime, signups);
   } else if (assignmentStrategy === "random") {
-    return randomAssignPlayers(players, games, startingTime);
+    return randomAssignPlayers(players, games, startingTime, signups);
   } else if (assignmentStrategy === "group+padg") {
     const groupResult = groupAssignPlayers(players, games, startingTime);
-    const padgResult = padgAssignPlayers(players, games, startingTime);
+    const padgResult = padgAssignPlayers(players, games, startingTime, signups);
 
     logger.info(
       `Group result: ${groupResult.results.length} players, Padg result: ${padgResult.results.length} players`
@@ -48,8 +50,13 @@ export const runAssignmentStrategy = (
       return padgResult;
     }
   } else if (assignmentStrategy === "random+padg") {
-    const randomResult = randomAssignPlayers(players, games, startingTime);
-    const padgResult = padgAssignPlayers(players, games, startingTime);
+    const randomResult = randomAssignPlayers(
+      players,
+      games,
+      startingTime,
+      signups
+    );
+    const padgResult = padgAssignPlayers(players, games, startingTime, signups);
     logger.info(
       `Random result: ${randomResult.results.length} players, Padg result: ${padgResult.results.length} players`
     );
