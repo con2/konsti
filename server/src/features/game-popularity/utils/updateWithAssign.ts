@@ -6,10 +6,12 @@ import { User } from "shared/typings/models/user";
 import { Game } from "shared/typings/models/game";
 import { Result } from "shared/typings/models/result";
 import { saveGamePopularity } from "server/features/game/gameRepository";
+import { Signup } from "server/features/signup/signup.typings";
 
 export const updateWithAssign = async (
   users: readonly User[],
-  games: readonly Game[]
+  games: readonly Game[],
+  signups: readonly Signup[]
 ): Promise<void> => {
   const groupedGames = _.groupBy(games, (game) =>
     dayjs(game.startTime).format()
@@ -17,8 +19,13 @@ export const updateWithAssign = async (
 
   let results = [] as readonly Result[];
 
-  _.forEach(groupedGames, (_value, key) => {
-    const assignmentResult = padgAssignPlayers(users, games, key);
+  _.forEach(groupedGames, (_value, startingTime) => {
+    const assignmentResult = padgAssignPlayers(
+      users,
+      games,
+      startingTime,
+      signups
+    );
     results = results.concat(assignmentResult.results);
   });
 

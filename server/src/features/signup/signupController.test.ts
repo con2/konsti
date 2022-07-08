@@ -1,5 +1,5 @@
 import { Server } from "http";
-import request from "supertest";
+import request, { Test } from "supertest";
 import { MongoMemoryServer } from "mongodb-memory-server";
 import dayjs from "dayjs";
 import { startServer, closeServer } from "server/utils/server";
@@ -15,10 +15,15 @@ import {
   mockUser5,
 } from "server/test/mock-data/mockUser";
 import { testGame } from "shared/tests/testGame";
-import { findUser, saveUser } from "server/features/user/userRepository";
+import { saveUser } from "server/features/user/userRepository";
 import { saveGames } from "server/features/game/gameRepository";
-import { saveEnteredGame } from "server/features/user/entered-game/enteredGameRepository";
 import { saveTestSettings } from "server/test/test-settings/testSettingsRepository";
+import {
+  findSignups,
+  findUserSignups,
+  saveSignup,
+} from "server/features/signup/signupRepository";
+import { NewUser } from "server/typings/user.typings";
 
 let server: Server;
 let mongoServer: MongoMemoryServer;
@@ -36,15 +41,15 @@ afterEach(async () => {
   await mongoServer.stop();
 });
 
-describe(`POST ${ApiEndpoint.ENTERED_GAME}`, () => {
+describe(`POST ${ApiEndpoint.SIGNUP}`, () => {
   test("should return 401 without valid authorization", async () => {
-    const response = await request(server).post(ApiEndpoint.ENTERED_GAME);
+    const response = await request(server).post(ApiEndpoint.SIGNUP);
     expect(response.status).toEqual(401);
   });
 
   test("should return 422 with invalid parameters", async () => {
     const response = await request(server)
-      .post(ApiEndpoint.ENTERED_GAME)
+      .post(ApiEndpoint.SIGNUP)
       .send({
         username: mockUser.username,
         enteredGameId: "ABCD1234",
@@ -58,7 +63,7 @@ describe(`POST ${ApiEndpoint.ENTERED_GAME}`, () => {
 
   test("should return 422 if signup message is too long", async () => {
     const response = await request(server)
-      .post(ApiEndpoint.ENTERED_GAME)
+      .post(ApiEndpoint.SIGNUP)
       .send({
         username: mockUser.username,
         enteredGameId: testGame.gameId,
@@ -77,7 +82,7 @@ describe(`POST ${ApiEndpoint.ENTERED_GAME}`, () => {
     await saveUser(mockUser);
 
     const response = await request(server)
-      .post(ApiEndpoint.ENTERED_GAME)
+      .post(ApiEndpoint.SIGNUP)
       .send({
         username: mockUser.username,
         enteredGameId: "invalid_game_id",
@@ -90,13 +95,14 @@ describe(`POST ${ApiEndpoint.ENTERED_GAME}`, () => {
       );
     expect(response.status).toEqual(200);
     expect(response.body.status).toEqual("error");
+    expect(response.body.message).toEqual("Signed game not found");
   });
 
   test("should return error when user is not found", async () => {
     await saveGames([testGame]);
 
     const response = await request(server)
-      .post(ApiEndpoint.ENTERED_GAME)
+      .post(ApiEndpoint.SIGNUP)
       .send({
         username: "user_not_found",
         enteredGameId: testGame.gameId,
@@ -109,6 +115,7 @@ describe(`POST ${ApiEndpoint.ENTERED_GAME}`, () => {
       );
     expect(response.status).toEqual(200);
     expect(response.body.status).toEqual("error");
+    expect(response.body.message).toEqual("Error finding user");
   });
 
   test("should return error when signup is not yet open", async () => {
@@ -120,7 +127,7 @@ describe(`POST ${ApiEndpoint.ENTERED_GAME}`, () => {
     });
 
     const response = await request(server)
-      .post(ApiEndpoint.ENTERED_GAME)
+      .post(ApiEndpoint.SIGNUP)
       .send({
         username: mockUser.username,
         enteredGameId: testGame.gameId,
@@ -143,12 +150,12 @@ describe(`POST ${ApiEndpoint.ENTERED_GAME}`, () => {
     await saveUser(mockUser);
 
     // Check starting conditions
-    const nonModifiedUser = await findUser(mockUser.username);
-    expect(nonModifiedUser?.enteredGames.length).toEqual(0);
+    const nonModifiedSignups = await findUserSignups(mockUser.username);
+    expect(nonModifiedSignups?.length).toEqual(0);
 
     // Update entered games
     const response = await request(server)
-      .post(ApiEndpoint.ENTERED_GAME)
+      .post(ApiEndpoint.SIGNUP)
       .send({
         username: mockUser.username,
         enteredGameId: testGame.gameId,
@@ -162,158 +169,70 @@ describe(`POST ${ApiEndpoint.ENTERED_GAME}`, () => {
 
     // Check API response
     expect(response.status).toEqual(200);
-    expect(response.body.message).toEqual("Store entered game success");
+    expect(response.body.message).toEqual("Store signup success");
     expect(response.body.status).toEqual("success");
 
     // Check database
-    const modifiedUser = await findUser(mockUser.username);
-    expect(modifiedUser?.enteredGames[0].gameDetails.gameId).toEqual(
-      testGame.gameId
-    );
-    expect(modifiedUser?.enteredGames[0].message).toEqual("Test message");
+    const modifiedSignups = await findUserSignups(mockUser.username);
+
+    expect(modifiedSignups?.[0].game.gameId).toEqual(testGame.gameId);
+    expect(modifiedSignups?.[0].userSignups[0].message).toEqual("Test message");
   });
 
-  test("should return error when game is full", async () => {
+  test("should not sign too many players to game", async () => {
+    const maxAttendance = 2;
+
     // Populate database
-    await saveGames([testGame]);
+    await saveGames([{ ...testGame, maxAttendance }]);
     await saveUser(mockUser);
     await saveUser(mockUser2);
     await saveUser(mockUser3);
     await saveUser(mockUser4);
     await saveUser(mockUser5);
 
-    // SIGNUP 1
+    const makeRequest = async (user: NewUser): Promise<Test> => {
+      return await request(server)
+        .post(ApiEndpoint.SIGNUP)
+        .send({
+          username: user.username,
+          enteredGameId: testGame.gameId,
+          startTime: testGame.startTime,
+          message: "Test message",
+        })
+        .set(
+          "Authorization",
+          `Bearer ${getJWT(UserGroup.USER, user.username)}`
+        );
+    };
 
-    const response = await request(server)
-      .post(ApiEndpoint.ENTERED_GAME)
-      .send({
-        username: mockUser.username,
-        enteredGameId: testGame.gameId,
-        startTime: testGame.startTime,
-        message: "Test message",
-      })
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`
-      );
-
-    expect(response.status).toEqual(200);
-    expect(response.body.message).toEqual("Store entered game success");
-    expect(response.body.status).toEqual("success");
-
-    // SIGNUP 2
-
-    const response2 = await request(server)
-      .post(ApiEndpoint.ENTERED_GAME)
-      .send({
-        username: mockUser2.username,
-        enteredGameId: testGame.gameId,
-        startTime: testGame.startTime,
-        message: "Test message",
-      })
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser2.username)}`
-      );
-
-    expect(response2.status).toEqual(200);
-    expect(response2.body.message).toEqual("Store entered game success");
-    expect(response2.body.status).toEqual("success");
-
-    // SIGNUP 3
-
-    const response3 = await request(server)
-      .post(ApiEndpoint.ENTERED_GAME)
-      .send({
-        username: mockUser3.username,
-        enteredGameId: testGame.gameId,
-        startTime: testGame.startTime,
-        message: "Test message",
-      })
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser3.username)}`
-      );
-
-    expect(response3.status).toEqual(200);
-    expect(response3.body.message).toEqual("Store entered game success");
-    expect(response3.body.status).toEqual("success");
-
-    // SIGNUP 4
-
-    const response4 = await request(server)
-      .post(ApiEndpoint.ENTERED_GAME)
-      .send({
-        username: mockUser4.username,
-        enteredGameId: testGame.gameId,
-        startTime: testGame.startTime,
-        message: "Test message",
-      })
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser4.username)}`
-      );
-
-    expect(response4.status).toEqual(200);
-    expect(response4.body.message).toEqual("Store entered game success");
-    expect(response4.body.status).toEqual("success");
-
-    // SIGNUP 5
-
-    const response5 = await request(server)
-      .post(ApiEndpoint.ENTERED_GAME)
-      .send({
-        username: mockUser5.username,
-        enteredGameId: testGame.gameId,
-        startTime: testGame.startTime,
-        message: "Test message",
-      })
-      .set(
-        "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser5.username)}`
-      );
-
-    expect(response5.status).toEqual(200);
-    expect(response5.body.message).toEqual("Entered game is full");
-    expect(response5.body.status).toEqual("error");
-    expect(response5.body.errorId).toEqual("gameFull");
+    await Promise.all([
+      makeRequest(mockUser),
+      makeRequest(mockUser2),
+      makeRequest(mockUser3),
+      makeRequest(mockUser4),
+      makeRequest(mockUser5),
+    ]);
 
     // Check results
 
-    const modifiedUser = await findUser(mockUser.username);
-    expect(modifiedUser?.enteredGames[0].gameDetails.gameId).toEqual(
-      testGame.gameId
+    const signups = await findSignups();
+    const matchingSignup = signups?.find(
+      (signup) => signup.game.gameId === testGame.gameId
     );
-
-    const modifiedUser2 = await findUser(mockUser2.username);
-    expect(modifiedUser2?.enteredGames[0].gameDetails.gameId).toEqual(
-      testGame.gameId
-    );
-
-    const modifiedUser3 = await findUser(mockUser3.username);
-    expect(modifiedUser3?.enteredGames[0].gameDetails.gameId).toEqual(
-      testGame.gameId
-    );
-
-    const modifiedUser4 = await findUser(mockUser4.username);
-    expect(modifiedUser4?.enteredGames[0].gameDetails.gameId).toEqual(
-      testGame.gameId
-    );
-
-    const modifiedUser5 = await findUser(mockUser5.username);
-    expect(modifiedUser5?.enteredGames.length).toEqual(0);
+    expect(matchingSignup?.userSignups.length).toEqual(maxAttendance);
+    expect(matchingSignup?.count).toEqual(maxAttendance);
   });
 });
 
-describe(`DELETE ${ApiEndpoint.ENTERED_GAME}`, () => {
+describe(`DELETE ${ApiEndpoint.SIGNUP}`, () => {
   test("should return 401 without valid authorization", async () => {
-    const response = await request(server).delete(ApiEndpoint.ENTERED_GAME);
+    const response = await request(server).delete(ApiEndpoint.SIGNUP);
     expect(response.status).toEqual(401);
   });
 
   test("should return 422 with invalid parameters", async () => {
     const response = await request(server)
-      .delete(ApiEndpoint.ENTERED_GAME)
+      .delete(ApiEndpoint.SIGNUP)
       .send({
         username: "testuser",
         enteredGameId: "ABCD1234",
@@ -326,7 +245,7 @@ describe(`DELETE ${ApiEndpoint.ENTERED_GAME}`, () => {
     await saveUser(mockUser);
 
     const response = await request(server)
-      .delete(ApiEndpoint.ENTERED_GAME)
+      .delete(ApiEndpoint.SIGNUP)
       .send({
         username: mockUser.username,
         enteredGameId: "invalid_game_id",
@@ -338,13 +257,14 @@ describe(`DELETE ${ApiEndpoint.ENTERED_GAME}`, () => {
       );
     expect(response.status).toEqual(200);
     expect(response.body.status).toEqual("error");
+    expect(response.body.message).toEqual("Delete signup failure");
   });
 
-  test("should return error when user is not found", async () => {
+  test("should return error when signup is not found", async () => {
     await saveGames([testGame]);
 
     const response = await request(server)
-      .delete(ApiEndpoint.ENTERED_GAME)
+      .delete(ApiEndpoint.SIGNUP)
       .send({
         username: "user_not_found",
         enteredGameId: testGame.gameId,
@@ -356,21 +276,24 @@ describe(`DELETE ${ApiEndpoint.ENTERED_GAME}`, () => {
       );
     expect(response.status).toEqual(200);
     expect(response.body.status).toEqual("error");
+    expect(response.body.message).toEqual("Delete signup failure");
   });
 
   test("should return success when user and game are found", async () => {
     // Populate database
     await saveGames([testGame]);
     await saveUser(mockUser);
-    await saveEnteredGame(mockPostEnteredGameRequest);
+    await saveSignup(mockPostEnteredGameRequest);
 
     // Check starting conditions
-    const nonModifiedUser = await findUser(mockUser.username);
-    expect(nonModifiedUser?.enteredGames.length).toEqual(1);
+    const nonModifiedSignup = await findUserSignups(mockUser.username);
+
+    expect(nonModifiedSignup?.[0].game.gameId).toEqual(testGame.gameId);
+    expect(nonModifiedSignup?.[0].userSignups.length).toEqual(1);
 
     // Update entered games
     const response = await request(server)
-      .delete(ApiEndpoint.ENTERED_GAME)
+      .delete(ApiEndpoint.SIGNUP)
       .send({
         username: mockUser.username,
         enteredGameId: testGame.gameId,
@@ -383,11 +306,11 @@ describe(`DELETE ${ApiEndpoint.ENTERED_GAME}`, () => {
 
     // Check API response
     expect(response.status).toEqual(200);
-    expect(response.body.message).toEqual("Delete entered game success");
+    expect(response.body.message).toEqual("Delete signup success");
     expect(response.body.status).toEqual("success");
 
     // Check database
-    const modifiedUser = await findUser(mockUser.username);
-    expect(modifiedUser?.enteredGames.length).toEqual(0);
+    const modifiedSignup = await findUserSignups(mockUser.username);
+    expect(modifiedSignup?.length).toEqual(0);
   });
 });

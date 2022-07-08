@@ -12,6 +12,8 @@ import { removeOverlapSignups } from "server/features/player-assignment/utils/re
 import { saveResults } from "server/features/player-assignment/utils/saveResults";
 import { getDynamicStartingTime } from "server/features/player-assignment/utils/getDynamicStartingTime";
 import { sleep } from "server/utils/sleep";
+import { Signup } from "server/features/signup/signup.typings";
+import { findSignups } from "server/features/signup/signupRepository";
 
 interface RunAssignmentParams {
   assignmentStrategy: AssignmentStrategy;
@@ -61,13 +63,22 @@ export const runAssignment = async ({
     throw new Error(`findGames error: ${error}`);
   }
 
+  let signups: readonly Signup[] = [];
+  try {
+    signups = await findSignups();
+  } catch (error) {
+    logger.error(`findSignups error: ${error}`);
+    throw new Error(`findSignups error: ${error}`);
+  }
+
   let assignResults;
   try {
     assignResults = runAssignmentStrategy(
       users,
       games,
       assignmentTime,
-      assignmentStrategy
+      assignmentStrategy,
+      signups
     );
   } catch (error) {
     throw new Error(`Player assign error: ${error}`);
@@ -86,7 +97,7 @@ export const runAssignment = async ({
     });
   } catch (error) {
     logger.error(`saveResult error: ${error}`);
-    throw new Error("Saving results failed");
+    throw new Error(`Saving results failed: ${error}`);
   }
 
   if (config.enableRemoveOverlapSignups) {

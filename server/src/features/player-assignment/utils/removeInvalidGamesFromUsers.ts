@@ -33,21 +33,6 @@ export const removeInvalidGamesFromUsers = async (): Promise<void> => {
           );
         }
 
-        const validEnteredGames = user.enteredGames.filter((enteredGame) => {
-          if (enteredGame.gameDetails !== null) {
-            return enteredGame.gameDetails;
-          }
-        });
-
-        const changedEnteredGamesCount =
-          user.enteredGames.length - validEnteredGames.length;
-
-        if (changedEnteredGamesCount > 0) {
-          logger.info(
-            `Remove ${changedEnteredGamesCount} invalid enteredGames from user ${user.username}`
-          );
-        }
-
         const validFavoritedGames = user.favoritedGames.filter(
           (favoritedGame) => {
             if (favoritedGame !== null) {
@@ -65,15 +50,10 @@ export const removeInvalidGamesFromUsers = async (): Promise<void> => {
           );
         }
 
-        if (
-          changedSignedGamesCount > 0 ||
-          changedEnteredGamesCount > 0 ||
-          changedFavoritedGamesCount > 0
-        ) {
+        if (changedSignedGamesCount > 0 || changedFavoritedGamesCount > 0) {
           await updateUserByUsername({
             ...user,
             signedGames: validSignedGames,
-            enteredGames: validEnteredGames,
             favoritedGames: validFavoritedGames,
           });
         }

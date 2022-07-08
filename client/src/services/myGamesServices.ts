@@ -28,7 +28,7 @@ export const postEnteredGame = async (
   requestData: PostEnteredGameParameters
 ): Promise<PostEnteredGameResponse | PostEnteredGameError> => {
   const response = await api.post<PostEnteredGameResponse>(
-    ApiEndpoint.ENTERED_GAME,
+    ApiEndpoint.SIGNUP,
     requestData
   );
   return response.data;
@@ -38,7 +38,7 @@ export const deleteEnteredGame = async (
   requestData: DeleteEnteredGameParameters
 ): Promise<DeleteEnteredGameResponse | DeleteEnteredGameError> => {
   const response = await api.delete<DeleteEnteredGameResponse>(
-    ApiEndpoint.ENTERED_GAME,
+    ApiEndpoint.SIGNUP,
     { data: requestData }
   );
   return response.data;

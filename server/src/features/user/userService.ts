@@ -15,6 +15,8 @@ import {
   PostUserResponse,
 } from "shared/typings/api/users";
 import { ApiError } from "shared/typings/api/errors";
+import { findUserSignups } from "server/features/signup/signupRepository";
+import { SelectedGame } from "shared/typings/models/user";
 
 export const storeUser = async (
   username: string,
@@ -203,10 +205,12 @@ export const fetchUserByUsername = async (
   username: string
 ): Promise<GetUserResponse | ApiError> => {
   let user;
+  let signups;
 
   if (username) {
     try {
       user = await findUser(username);
+      signups = await findUserSignups(username);
     } catch (error) {
       logger.error(`findUser(): ${error}`);
       return {
@@ -225,11 +229,26 @@ export const fetchUserByUsername = async (
     };
   }
 
+  const enteredGames: SelectedGame[] = signups
+    ? signups.flatMap((signup) => {
+        const signupForUser = signup.userSignups.find(
+          (userSignup) => userSignup.username === username
+        );
+        if (!signupForUser) return [];
+        return {
+          gameDetails: signup.game,
+          priority: signupForUser.priority,
+          time: signupForUser.time,
+          message: signupForUser.message,
+        };
+      })
+    : [];
+
   return {
     message: "Getting user data success",
     status: "success",
     games: {
-      enteredGames: user.enteredGames,
+      enteredGames,
       favoritedGames: user.favoritedGames,
       signedGames: user.signedGames,
     },

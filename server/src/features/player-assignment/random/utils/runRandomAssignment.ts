@@ -13,15 +13,17 @@ import {
   PadgRandomAssignResults,
 } from "server/typings/padgRandomAssign.typings";
 import { User } from "shared/typings/models/user";
+import { Signup } from "server/features/signup/signup.typings";
 
 export const runRandomAssignment = (
   signedGames: readonly Game[],
   playerGroups: readonly User[][],
-  startingTime: string
+  startingTime: string,
+  signups: readonly Signup[]
 ): AssignmentStrategyResult => {
   const groups = getGroups(playerGroups, startingTime);
   const events = getRandomAssignEvents(signedGames);
-  const list = getList(playerGroups, startingTime);
+  const list = getList(playerGroups, startingTime, signups);
   const updateL = (input: RandomAssignUpdateLInput): ListItem[] => input.L;
 
   const { RANDOM_ASSIGNMENT_ROUNDS } = config;

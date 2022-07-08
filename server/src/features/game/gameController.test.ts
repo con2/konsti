@@ -22,9 +22,12 @@ import {
   mockUser,
 } from "server/test/mock-data/mockUser";
 import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
-import { saveEnteredGame } from "server/features/user/entered-game/enteredGameRepository";
 import { saveFavorite } from "server/features/user/favorite-game/favoriteGameRepository";
 import { saveSignupQuestion } from "server/features/settings/settingsRepository";
+import {
+  findUserSignups,
+  saveSignup,
+} from "server/features/signup/signupRepository";
 
 let server: Server;
 let mongoServer: MongoMemoryServer;
@@ -53,11 +56,11 @@ describe(`GET ${ApiEndpoint.GAMES}`, () => {
     await saveUser(mockUser);
 
     const publicMessage = "Answer to public message";
-    await saveEnteredGame({
+    await saveSignup({
       ...mockPostEnteredGameRequest,
       message: publicMessage,
     });
-    await saveEnteredGame({
+    await saveSignup({
       ...mockPostEnteredGameRequest2,
       message: "Answer to private message",
     });
@@ -104,7 +107,7 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
     expect(games[0].title).toEqual(testGame.title);
   });
 
-  test("should remove games, selectedGames, enteredGames, and favoritedGames that are not in the server response", async () => {
+  test("should remove games, selectedGames, signups, and favoritedGames that are not in the server response", async () => {
     jest
       .spyOn(kompassiModule, "getEventProgramItems")
       .mockResolvedValue([testKompassiGame]);
@@ -115,8 +118,8 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
       username: mockUser.username,
       signedGames: mockSignedGames,
     });
-    await saveEnteredGame(mockPostEnteredGameRequest);
-    await saveEnteredGame(mockPostEnteredGameRequest2);
+    await saveSignup(mockPostEnteredGameRequest);
+    await saveSignup(mockPostEnteredGameRequest2);
     await saveFavorite({
       username: mockUser.username,
       favoritedGameIds: [testGame.gameId, testGame2.gameId],
@@ -128,7 +131,6 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
     expect(response.status).toEqual(200);
 
     const games = await findGames();
-
     expect(games.length).toEqual(1);
     expect(games[0].title).toEqual(testGame.title);
 
@@ -137,12 +139,12 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
     expect(updatedUser?.signedGames[0].gameDetails.title).toEqual(
       testGame.title
     );
-    expect(updatedUser?.enteredGames.length).toEqual(1);
-    expect(updatedUser?.enteredGames[0].gameDetails.title).toEqual(
-      testGame.title
-    );
     expect(updatedUser?.favoritedGames.length).toEqual(1);
     expect(updatedUser?.favoritedGames[0].gameId).toEqual(testGame.gameId);
+
+    const updatedSignups = await findUserSignups(mockUser.username);
+    expect(updatedSignups.length).toEqual(1);
+    expect(updatedSignups[0].game.title).toEqual(testGame.title);
   });
 
   test("should not modify anything if server response is invalid", async () => {
@@ -209,7 +211,7 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
     expect(games[0].description).toEqual(newDescription);
   });
 
-  test("should remove selectedGames and enteredGames if game start time changes", async () => {
+  test("should remove selectedGames but not signups or favoritedGames if game start time changes", async () => {
     const newStartTime = dayjs(testGame.startTime).add(1, "hours").format();
     jest.spyOn(kompassiModule, "getEventProgramItems").mockResolvedValue([
       {
@@ -225,8 +227,12 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
       username: mockUser.username,
       signedGames: mockSignedGames,
     });
-    await saveEnteredGame(mockPostEnteredGameRequest);
-    await saveEnteredGame(mockPostEnteredGameRequest2);
+    await saveSignup(mockPostEnteredGameRequest);
+    await saveSignup(mockPostEnteredGameRequest2);
+    await saveFavorite({
+      username: mockUser.username,
+      favoritedGameIds: [testGame.gameId, testGame2.gameId],
+    });
 
     const response = await request(server)
       .post(ApiEndpoint.GAMES)
@@ -238,9 +244,11 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
     expect(updatedUser?.signedGames[0].gameDetails.title).toEqual(
       testGame2.title
     );
-    expect(updatedUser?.enteredGames.length).toEqual(1);
-    expect(updatedUser?.enteredGames[0].gameDetails.title).toEqual(
-      testGame2.title
-    );
+    expect(updatedUser?.favoritedGames.length).toEqual(2);
+
+    const signups = await findUserSignups(mockUser.username);
+    expect(signups.length).toEqual(2);
+    expect(signups[0].userSignups[0].username).toEqual(mockUser.username);
+    expect(signups[1].userSignups[0].username).toEqual(mockUser.username);
   });
 });

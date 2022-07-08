@@ -1,19 +1,19 @@
 import { findSettings } from "server/features/settings/settingsRepository";
-import { findUsers } from "server/features/user/userRepository";
+import { Signup } from "server/features/signup/signup.typings";
+import { findSignups } from "server/features/signup/signupRepository";
 import { Settings } from "shared/typings/models/settings";
 import {
   GetSignupMessagesError,
   GetSignupMessagesResponse,
 } from "shared/typings/models/signupMessage";
-import { User } from "shared/typings/models/user";
 
 export const fetchSignupMessages = async (): Promise<
   GetSignupMessagesResponse | GetSignupMessagesError
 > => {
-  let users: User[];
+  let signups: Signup[];
   let settings: Settings;
   try {
-    users = await findUsers();
+    signups = await findSignups();
     settings = await findSettings();
   } catch (error) {
     return {
@@ -23,18 +23,18 @@ export const fetchSignupMessages = async (): Promise<
     };
   }
 
-  const signupMessages = users.flatMap((user) => {
-    return user.enteredGames.flatMap((enteredGame) => {
-      if (enteredGame.message) {
+  const signupMessages = signups.flatMap((signup) => {
+    return signup.userSignups.flatMap((userSignup) => {
+      if (userSignup.message) {
         const signupQuestion = settings.signupQuestions.find(
-          (question) => question.gameId === enteredGame.gameDetails.gameId
+          (question) => question.gameId === signup.game.gameId
         );
         if (!signupQuestion) return [];
 
         return {
-          gameId: enteredGame.gameDetails.gameId,
-          username: user.username,
-          message: enteredGame.message,
+          gameId: signup.game.gameId,
+          username: userSignup.username,
+          message: userSignup.message,
           private: signupQuestion?.private,
         };
       }

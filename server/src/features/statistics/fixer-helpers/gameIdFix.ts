@@ -38,7 +38,7 @@ export const gameIdFix = (year: number, event: string): void => {
 
   users.forEach((user) => {
     const tempFavoritedGames: Game[] = [];
-    const tempEnteredGames: SelectedGame[] = [];
+    // const tempEnteredGames: SelectedGame[] = [];
     const tempSignedGames: SelectedGame[] = [];
 
     games.forEach((game) => {
@@ -49,6 +49,8 @@ export const gameIdFix = (year: number, event: string): void => {
         }
       });
 
+      // TODO: Update to use signup collection
+      /*
       user.enteredGames.forEach((enteredGame) => {
         if (_.isEqual(game._id, enteredGame.gameDetails)) {
           tempEnteredGames.push({
@@ -58,6 +60,7 @@ export const gameIdFix = (year: number, event: string): void => {
           });
         }
       });
+      */
 
       user.signedGames.forEach((signedGame) => {
         if (_.isEqual(game._id, signedGame.gameDetails)) {
@@ -71,7 +74,7 @@ export const gameIdFix = (year: number, event: string): void => {
     });
 
     user.favoritedGames = tempFavoritedGames;
-    user.enteredGames = tempEnteredGames;
+    // user.enteredGames = tempEnteredGames;
     user.signedGames = tempSignedGames;
   });
 
