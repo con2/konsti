@@ -16,13 +16,17 @@ import {
   KompassiTag,
 } from "shared/typings/models/kompassiGame";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
+import { logger } from "server/utils/logger";
 
 export const kompassiGameMapper = (
   games: readonly KompassiGame[]
 ): readonly Game[] => {
   return games.flatMap((game) => {
     const validEndTime = dayjs(game.end_time).isValid();
-    if (!validEndTime) return [];
+    if (!validEndTime) {
+      logger.warn(`Game "${game.title}" has invalid end time, skipping...`);
+      return [];
+    }
 
     return {
       gameId: game.identifier,
@@ -64,6 +68,9 @@ const mapProgramType = (kompassiGame: KompassiGame): ProgramType => {
       return ProgramType.LARP;
 
     case KompassiProgramType.BOARD_GAME:
+    case KompassiProgramType.CARD_GAME:
+    case KompassiProgramType.MINIATURE_WARGAME:
+    case KompassiProgramType.OTHER:
       return ProgramType.TOURNAMENT;
 
     default:
