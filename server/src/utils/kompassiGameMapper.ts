@@ -20,7 +20,10 @@ import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 export const kompassiGameMapper = (
   games: readonly KompassiGame[]
 ): readonly Game[] => {
-  return games.map((game) => {
+  return games.flatMap((game) => {
+    const validEndTime = dayjs(game.end_time).isValid();
+    if (!validEndTime) return [];
+
     return {
       gameId: game.identifier,
       title: game.title,
@@ -32,9 +35,7 @@ export const kompassiGameMapper = (
       genres: mapGenres(game),
       styles: mapGameStyles(game),
       language: game.language,
-      endTime:
-        dayjs(game.end_time).format() ||
-        dayjs(game.start_time).add(game.length, "minutes").format(),
+      endTime: dayjs(game.end_time).format(),
       people: game.formatted_hosts,
       minAttendance: game.min_players,
       maxAttendance: game.max_players || game.ropecon2018_characters,
@@ -134,6 +135,7 @@ const mapTags = (kompassiGame: KompassiGame): Tag[] => {
       case KompassiTag.AIHE_LAUTAPELIT:
       case KompassiTag.AIHE_POYTAROOLIPELIT:
       case KompassiTag.HISTORIA:
+      case KompassiTag.PELI:
         return [];
 
       default:
