@@ -1,12 +1,6 @@
 import dayjs from "dayjs";
 import { findGameById } from "server/features/game/gameRepository";
-import { getUsersForGame } from "server/features/game/gameUtils";
 import { getTime } from "server/features/player-assignment/utils/getTime";
-import {
-  delEnteredGame,
-  saveEnteredGame,
-} from "server/features/user/entered-game/enteredGameRepository";
-import { findUsers } from "server/features/user/userRepository";
 import { isValidSignupTime } from "server/features/user/userUtils";
 import {
   DeleteEnteredGameError,
@@ -18,11 +12,13 @@ import {
 } from "shared/typings/api/myGames";
 import { getDirectSignupStartTime } from "shared/utils/getDirectSignupStartTime";
 import { logger } from "server/utils/logger";
+import { delSignup, saveSignup } from "server/features/signup/signupRepository";
+import { findUser } from "server/features/user/userRepository";
 
-export const storeEnteredGame = async (
-  enteredGameRequest: PostEnteredGameParameters
+export const storeSignup = async (
+  signupRequest: PostEnteredGameParameters
 ): Promise<PostEnteredGameResponse | PostEnteredGameError> => {
-  const { startTime, enteredGameId } = enteredGameRequest;
+  const { startTime, enteredGameId, username } = signupRequest;
   const timeNow = await getTime();
 
   let game;
@@ -31,7 +27,7 @@ export const storeEnteredGame = async (
     if (!game) throw new Error("Entered game not found");
   } catch (error) {
     return {
-      message: `Entered game not found`,
+      message: `Signed game not found`,
       status: "error",
       errorId: "unknown",
     };
@@ -63,60 +59,56 @@ export const storeEnteredGame = async (
     };
   }
 
-  let usersForGame;
   try {
-    const users = await findUsers();
-    usersForGame = getUsersForGame(users, enteredGameId);
+    const user = await findUser(username);
+    if (!user) throw new Error("User not found");
   } catch (error) {
     return {
-      message: `Error counting users for game`,
+      message: `Error finding user`,
       status: "error",
       errorId: "unknown",
     };
   }
 
-  if (usersForGame.length >= game.maxAttendance) {
-    return {
-      message: `Entered game is full`,
-      status: "error",
-      errorId: "gameFull",
-    };
-  }
-
-  let user;
+  let signup;
   try {
-    user = await saveEnteredGame(enteredGameRequest);
+    signup = await saveSignup(signupRequest);
   } catch (error) {
     return {
-      message: `Store entered game failure: ${error}`,
+      message: `Store signup failure: ${error}`,
       status: "error",
       errorId: "unknown",
     };
   }
 
-  const newEnteredGame = user.enteredGames.find(
-    (enteredGame) => enteredGame.gameDetails.gameId === enteredGameId
+  const newSignup = signup.userSignups.find(
+    (userSignup) => userSignup.username === username
   );
 
-  if (user && newEnteredGame) {
+  if (signup && newSignup) {
     return {
-      message: "Store entered game success",
+      message: "Store signup success",
       status: "success",
-      enteredGame: newEnteredGame,
+      enteredGame: {
+        gameDetails: signup.game,
+        priority: newSignup.priority,
+        time: newSignup.time,
+        message: newSignup.message,
+      },
     };
   }
 
   return {
-    message: "Store entered game failure",
+    message: "Store signup failure for unknown reason",
     status: "error",
     errorId: "unknown",
   };
 };
 
-export const removeEnteredGame = async (
-  enteredGameRequest: DeleteEnteredGameParameters
+export const removeSignup = async (
+  signupRequest: DeleteEnteredGameParameters
 ): Promise<DeleteEnteredGameResponse | DeleteEnteredGameError> => {
-  const { startTime } = enteredGameRequest;
+  const { startTime } = signupRequest;
 
   const timeNow = await getTime();
 
@@ -133,26 +125,26 @@ export const removeEnteredGame = async (
     };
   }
 
-  let user;
+  let signup;
   try {
-    user = await delEnteredGame(enteredGameRequest);
+    signup = await delSignup(signupRequest);
   } catch (error) {
     return {
-      message: "Delete entered game failure",
+      message: "Delete signup failure",
       status: "error",
       errorId: "unknown",
     };
   }
 
-  if (user) {
+  if (signup) {
     return {
-      message: "Delete entered game success",
+      message: "Delete signup success",
       status: "success",
     };
   }
 
   return {
-    message: "Delete entered game failure",
+    message: "Delete signup failure for unknown reason",
     status: "error",
     errorId: "unknown",
   };

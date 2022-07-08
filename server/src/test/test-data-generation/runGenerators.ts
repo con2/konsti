@@ -1,17 +1,17 @@
 import { logger } from "server/utils/logger";
 import { createGames } from "server/test/test-data-generation/generators/createGames";
-import { createSignups } from "server/test/test-data-generation/generators/createSignups";
+import { createSignedGames } from "server/test/test-data-generation/generators/createSignedGames";
 import { removeUsers } from "server/features/user/userRepository";
 import { removeResults } from "server/features/results/resultsRepository";
 import { removeGames } from "server/features/game/gameRepository";
 import { removeSettings } from "server/features/settings/settingsRepository";
 import { db } from "server/db/mongodb";
 import { generateTestUsers } from "server/test/test-data-generation/generators/generateTestData";
-import { createEnteredGames } from "server/test/test-data-generation/generators/createEnteredGames";
+import { createSignups } from "server/test/test-data-generation/generators/createSignups";
 import { createSettings } from "server/test/test-data-generation/generators/createSettings";
 import { sharedConfig } from "shared/config/sharedConfig";
-import { removeEnteredGames } from "server/features/user/entered-game/enteredGameRepository";
 import { removeSignedGames } from "server/features/user/signed-game/signedGameRepository";
+import { removeSignups } from "server/features/signup/signupRepository";
 
 interface Options {
   clean?: boolean;
@@ -52,6 +52,7 @@ export const runGenerators = async (
 
     await removeUsers();
     await removeGames();
+    await removeSignups();
     await removeResults();
     await removeSettings();
   }
@@ -86,16 +87,16 @@ export const runGenerators = async (
     !options.clean && (await removeSignedGames());
     !options.clean && (await removeResults());
 
-    await createSignups();
+    await createSignedGames();
   }
 
   if (options.entered) {
-    logger.info("Generate entered games");
+    logger.info("Generate signups");
 
-    !options.clean && (await removeEnteredGames());
+    !options.clean && (await removeSignups());
     !options.clean && (await removeResults());
 
-    await createEnteredGames();
+    await createSignups();
   }
 
   settings.closeDb && (await db.gracefulExit());

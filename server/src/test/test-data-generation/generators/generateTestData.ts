@@ -6,7 +6,7 @@ import {
   createHelpUser,
 } from "server/test/test-data-generation/generators/createUsers";
 import { createGames } from "server/test/test-data-generation/generators/createGames";
-import { createSignups } from "server/test/test-data-generation/generators/createSignups";
+import { createSignedGames } from "server/test/test-data-generation/generators/createSignedGames";
 
 export const generateTestData = async (
   newUsersCount: number,
@@ -24,7 +24,7 @@ export const generateTestData = async (
 
   await createGames(newGamesCount);
 
-  await createSignups();
+  await createSignedGames();
 };
 
 export const generateTestUsers = async (

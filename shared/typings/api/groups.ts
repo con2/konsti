@@ -69,7 +69,6 @@ export const CloseGroupRequestSchema = z.object({
 export type CloseGroupRequest = z.infer<typeof CloseGroupRequestSchema>;
 
 export interface GroupMember {
-  enteredGames: readonly SelectedGame[];
   groupCode: string;
   serial: string;
   signedGames: readonly SelectedGame[];

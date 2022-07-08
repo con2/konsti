@@ -1,16 +1,21 @@
 import { config } from "server/config";
+import { Signup } from "server/features/signup/signup.typings";
 import { User } from "shared/typings/models/user";
 
-export const getAssignmentBonus = (playerGroup: User[]): number => {
-  const groupMembersWithEnteredGames = playerGroup.reduce((acc, curr) => {
-    if (curr.enteredGames.length > 0) {
-      return acc + 1;
-    }
-    return acc;
-  }, 0);
+export const getAssignmentBonus = (
+  playerGroup: User[],
+  signups: readonly Signup[]
+): number => {
+  const groupMembersWithSignups = playerGroup.flatMap((groupMember) => {
+    return signups.flatMap((signup) => {
+      return signup.userSignups.filter(
+        (userSignup) => userSignup.username === groupMember.username
+      );
+    });
+  });
 
-  const averageEnteredGames = groupMembersWithEnteredGames / playerGroup.length;
+  const averageSignups = groupMembersWithSignups.length / playerGroup.length;
 
-  const bonus = averageEnteredGames < 0.5 ? config.firtSignupBonus : 0;
+  const bonus = averageSignups < 0.5 ? config.firtSignupBonus : 0;
   return bonus;
 };

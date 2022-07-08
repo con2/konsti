@@ -6,11 +6,13 @@ import { User } from "shared/typings/models/user";
 import { Game } from "shared/typings/models/game";
 import { PlayerAssignmentResult } from "server/typings/result.typings";
 import { getRunRandomAndPadgInput } from "server/features/player-assignment/utils/getRunRandomAndPadgInput";
+import { Signup } from "server/features/signup/signup.typings";
 
 export const randomAssignPlayers = (
   players: readonly User[],
   games: readonly Game[],
-  startingTime: string
+  startingTime: string,
+  signups: readonly Signup[]
 ): PlayerAssignmentResult => {
   logger.debug(`***** Run Random Assignment for ${startingTime}`);
   const startingGames = getStartingGames(games, startingTime);
@@ -49,7 +51,8 @@ export const randomAssignPlayers = (
   const assignmentResult = runRandomAssignment(
     signedGames,
     playerGroups,
-    startingTime
+    startingTime,
+    signups
   );
 
   const selectedUniqueGames = _.uniq(
