@@ -57,7 +57,7 @@ const commonConfig = {
   saveTestAssign: true,
 
   // Convention settings
-  dataUri: "https://kompassi.eu/api/v1/events/ropecon2021/programme/ropecon",
+  dataUri: "https://kompassi.eu/api/v1/events/ropecon2022/programme/ropecon",
   firtSignupBonus: 20,
 
   // Statistics
@@ -119,9 +119,9 @@ const stagingConfig = {
   useTestTime: true,
 
   // Game update cron
-  autoUpdateGamesEnabled: false,
+  autoUpdateGamesEnabled: true,
   gameUpdateInterval: `*/4 * * * *`,
-  autoUpdateGamePopularityEnabled: false,
+  autoUpdateGamePopularityEnabled: true,
 
   // Player assign cron
   autoAssignPlayersEnabled: true,
@@ -140,7 +140,7 @@ const devConfig = {
     "http://localhost:5000",
     "https://server:5000",
   ],
-  useLocalProgramFile: true,
+  useLocalProgramFile: false,
   debug: false,
   GROUP_ASSIGNMENT_ROUNDS: 1,
   PADG_ASSIGNMENT_ROUNDS: 300,
