@@ -69,6 +69,13 @@ const getProgramFromServer = async (): Promise<EventProgramItem[]> => {
   }
 };
 
+const tournamentProgramTypes = [
+  KompassiProgramType.BOARD_GAME,
+  KompassiProgramType.CARD_GAME,
+  KompassiProgramType.MINIATURE_WARGAME,
+  KompassiProgramType.OTHER,
+];
+
 const getGamesFromFullProgram = (
   programItems: EventProgramItem[]
 ): KompassiGame[] => {
@@ -81,9 +88,10 @@ const getGamesFromFullProgram = (
         return [];
       }
 
-      // Only include board game programs which are tournaments
+      // Tournaments have multple different program types
+      // Take events with type_of_game_program: TOURNAMENT_EVENT_TYPE
       if (
-        programItem.category_title === KompassiProgramType.BOARD_GAME &&
+        tournamentProgramTypes.includes(programItem.category_title) &&
         programItem.type_of_game_program !== TOURNAMENT_EVENT_TYPE
       ) {
         return [];
