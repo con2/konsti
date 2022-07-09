@@ -44,12 +44,12 @@ export enum Tag {
   SUITABLE_OVER_12 = "suitableOver12",
   NOT_SUITABLE_UNDER_15 = "notSuitableUnder15",
   CHILDRENS_PROGRAM = "childrensProgram",
-  SUUNNATTU_ALLE_10V = "suitableUnder10",
-  SUUNNATTU_ALAIKAISILLE = "forMinors",
-  SUUNNATTU_TAYSIIKAISILLE = "forAdults",
-  TEEMA_YSTAVYYS = "themeFriendship",
+  SUITABLE_UNDER_10 = "suitableUnder10",
+  FOR_MINORS = "forMinors",
+  FOR_ADULTS = "forAdults",
+  THEME_FRIENDSHIP = "themeFriendship",
   DEMO = "demo",
-  KILPAILUTURNAUS = "tournament",
+  TOURNAMENT = "tournament",
 }
 
 export enum AccessibilityValue {

@@ -118,22 +118,22 @@ const mapTags = (kompassiGame: KompassiGame): Tag[] => {
         return Tag.CHILDRENS_PROGRAM;
 
       case KompassiTag.SUUNNATTU_ALLE_10V:
-        return Tag.SUUNNATTU_ALLE_10V;
+        return Tag.SUITABLE_UNDER_10;
 
       case KompassiTag.SUUNNATTU_ALAIKAISILLE:
-        return Tag.SUUNNATTU_ALAIKAISILLE;
+        return Tag.FOR_MINORS;
 
       case KompassiTag.SUUNNATTU_TAYSIIKAISILLE:
-        return Tag.SUUNNATTU_TAYSIIKAISILLE;
+        return Tag.FOR_ADULTS;
 
       case KompassiTag.TEEMA_YSTAVYYS:
-        return Tag.TEEMA_YSTAVYYS;
+        return Tag.THEME_FRIENDSHIP;
 
       case KompassiTag.DEMO:
         return Tag.DEMO;
 
       case KompassiTag.KILPAILUTURNAUS:
-        return Tag.KILPAILUTURNAUS;
+        return Tag.TOURNAMENT;
 
       // We don't want to show these in UI
       case KompassiTag.AIHE_FIGUPELIT:
