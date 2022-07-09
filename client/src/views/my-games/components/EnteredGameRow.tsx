@@ -108,8 +108,8 @@ export const EnteredGameRow = ({
 
 const GameDetailsList = styled.div`
   display: flex;
-  align-items: center;
-  padding-left: 30px;
+  flex-direction: column;
+  padding-left: 10px;
 `;
 
 const ButtonContainer = styled.div`

@@ -2,6 +2,7 @@ import React, { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import _ from "lodash";
 import { Game } from "shared/typings/models/game";
 import { SignupQuestion } from "shared/typings/models/settings";
 import { timeFormatter } from "client/utils/timeFormatter";
@@ -17,6 +18,21 @@ export const SignupQuestionList = ({
 }: Props): ReactElement => {
   const { t } = useTranslation();
 
+  const signupQuestionsWithGames = signupQuestions.flatMap(
+    (privateSignupQuestion) => {
+      const matchingGame = games.find(
+        (game) => game.gameId === privateSignupQuestion.gameId
+      );
+      if (!matchingGame) return [];
+      return { ...privateSignupQuestion, game: matchingGame };
+    }
+  );
+
+  const sortedSignupQuestions = _.sortBy(signupQuestionsWithGames, [
+    "game.startTime",
+    (signupQuestion) => signupQuestion.game.title.toLocaleLowerCase(),
+  ]);
+
   return (
     <div>
       <h3>{t("signupQuestions")}</h3>
@@ -24,7 +40,7 @@ export const SignupQuestionList = ({
       <ul>
         {signupQuestions.length === 0 && <span>{t("noSignupQuestions")}</span>}
 
-        {signupQuestions.flatMap((signupQuestion) => {
+        {sortedSignupQuestions.flatMap((signupQuestion) => {
           const foundGame = games.find(
             (game) => game.gameId === signupQuestion.gameId
           );

@@ -12,7 +12,7 @@ export const getUpcomingGames = (
   const timeNow = getTime();
 
   const upcomingGames = games.filter((game) =>
-    dayjs(game.startTime).add(offsetByHours, "hours").isAfter(timeNow)
+    dayjs(game.startTime).add(offsetByHours, "hours").isSameOrAfter(timeNow)
   );
 
   return upcomingGames;
