@@ -9,6 +9,13 @@ export enum KompassiProgramType {
   OTHER = "Pelitiski: Muu / Other",
 }
 
+export const tournamentProgramTypes = [
+  KompassiProgramType.BOARD_GAME,
+  KompassiProgramType.CARD_GAME,
+  KompassiProgramType.MINIATURE_WARGAME,
+  KompassiProgramType.OTHER,
+];
+
 export enum KompassiTag {
   IN_ENGLISH = "in-english",
   SOPII_LAPSILLE = "sopii-lapsille",

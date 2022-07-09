@@ -87,12 +87,12 @@ export const EnteredGameRow = ({
 
       {!!signupQuestion && (
         <SignupQuestionPlacement>
-          <FontAwesomeIcon icon={"comment"} />
-          {` ${t("myGamesView.yourAnswer")} "${signupQuestion.message}": ${
-            signup.message
-          } ${
-            signupQuestion.private && `(${t("privateOnlyVisibleToOrganizers")})`
-          }`}
+          <FontAwesomeIcon icon={["far", "comment"]} />
+          {` ${t("myGamesView.yourAnswer")} "${signupQuestion.message}"${
+            signupQuestion.private
+              ? ` (${t("privateOnlyVisibleToOrganizers")})`
+              : ""
+          }: ${signup.message}`}
         </SignupQuestionPlacement>
       )}
 
@@ -108,8 +108,8 @@ export const EnteredGameRow = ({
 
 const GameDetailsList = styled.div`
   display: flex;
-  align-items: center;
-  padding-left: 30px;
+  flex-direction: column;
+  padding-left: 10px;
 `;
 
 const ButtonContainer = styled.div`
