@@ -98,6 +98,11 @@ export const PrivateSignupMessages = (): ReactElement => {
                     <Link to={`/games/${signupQuestionWithGame.game.gameId}`}>
                       {signupQuestionWithGame.game.title}
                     </Link>{" "}
+                    (
+                    {t(
+                      `programType.${signupQuestionWithGame.game.programType}`
+                    )}
+                    )
                     <Answers>
                       <BoldText>{t("helperView.question")}: </BoldText>{" "}
                       {signupQuestionWithGame.message}
