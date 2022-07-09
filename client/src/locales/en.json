@@ -49,6 +49,7 @@
   "player": "Player",
   "find": "Find",
   "findSignupOrGame": "Game title or username",
+  "findSignupOrGameSystem": "Game title or system",
   "language": {
     "english": "English",
     "englishShort": "EN",
