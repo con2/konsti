@@ -348,5 +348,9 @@
     "privateSignupMessagesInfo": "Yksityiset ilmoittautumisen lisätiedot turnausten osallistujien tavoittamiseen.",
     "noPrivateSignupMessages": "Ei vastauksia",
     "question": "Kysymys"
+  },
+  "loginView": {
+    "oldAccountsNotWorking": "Aikaisempien tapahtumien käyttäjätilit eivät ole käytössä",
+    "noAccountRegister": "Ei käyttäjätiliä? Rekisteröidy"
   }
 }
