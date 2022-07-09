@@ -7,6 +7,7 @@ import { Provider } from "react-redux";
 import { ThemeProvider } from "styled-components";
 import dayjs from "dayjs";
 import isBetween from "dayjs/plugin/isBetween";
+import isSameOrAfter from "dayjs/plugin/isSameOrAfter";
 import loaderImage from "assets/loading.gif";
 import { config } from "client/config";
 import { getLanguage } from "client/utils/localStorage";
@@ -21,6 +22,7 @@ import "client/utils/i18n";
 import { store } from "client/utils/store";
 
 dayjs.extend(isBetween);
+dayjs.extend(isSameOrAfter);
 setLocale(getLanguage());
 
 // Root component

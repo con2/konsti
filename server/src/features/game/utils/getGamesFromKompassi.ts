@@ -11,6 +11,7 @@ import {
   KompassiGenre,
   KompassiProgramType,
   KompassiTag,
+  tournamentProgramTypes,
 } from "shared/typings/models/kompassiGame";
 
 type EventProgramItem = KompassiGame;
@@ -68,13 +69,6 @@ const getProgramFromServer = async (): Promise<EventProgramItem[]> => {
     throw error;
   }
 };
-
-const tournamentProgramTypes = [
-  KompassiProgramType.BOARD_GAME,
-  KompassiProgramType.CARD_GAME,
-  KompassiProgramType.MINIATURE_WARGAME,
-  KompassiProgramType.OTHER,
-];
 
 const getGamesFromFullProgram = (
   programItems: EventProgramItem[]
