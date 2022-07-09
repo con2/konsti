@@ -53,6 +53,8 @@ export const AppRoutes = (): ReactElement => {
         )}
         {isAdmin(userGroup) && <Route path="/admin" element={<AdminView />} />}
         <Route path="/logout" element={<LogoutView />} />
+        {/* Login path is required for after login redirect to work */}
+        <Route path="/login" element={<LoginView />} />
         {isAdminOrHelp(userGroup) && (
           <Route path="/help" element={<HelperView />} />
         )}
