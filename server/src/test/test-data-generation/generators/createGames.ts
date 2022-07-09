@@ -12,6 +12,7 @@ import {
   KompassiGenre,
   KompassiProgramType,
   KompassiTag,
+  tournamentProgramTypes,
 } from "shared/typings/models/kompassiGame";
 import { TOURNAMENT_EVENT_TYPE } from "server/features/game/utils/getGamesFromKompassi";
 
@@ -51,14 +52,12 @@ export const createGames = async (gameCount: number): Promise<Game[]> => {
           end_time: dayjs(startTime).add(length, "minutes").format(),
           language: "fi",
           rpg_system: "Test gamesystem",
-          min_players:
-            programType === KompassiProgramType.BOARD_GAME
-              ? faker.datatype.number({ min: 6, max: 10 })
-              : faker.datatype.number({ min: 2, max: 3 }),
-          max_players:
-            programType === KompassiProgramType.BOARD_GAME
-              ? faker.datatype.number({ min: 12, max: 20 })
-              : faker.datatype.number({ min: 3, max: 4 }),
+          min_players: tournamentProgramTypes.includes(programType)
+            ? faker.datatype.number({ min: 6, max: 10 })
+            : faker.datatype.number({ min: 2, max: 3 }),
+          max_players: tournamentProgramTypes.includes(programType)
+            ? faker.datatype.number({ min: 12, max: 20 })
+            : faker.datatype.number({ min: 3, max: 4 }),
           identifier: faker.datatype.number(GAME_ID_MAX).toString(),
           tags: sampleSize(Object.values(KompassiTag), 3),
           genres: sampleSize(Object.values(KompassiGenre), 2),
