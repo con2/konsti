@@ -348,5 +348,9 @@
     "privateSignupMessagesInfo": "Private signup info for contacting tournament participants",
     "noPrivateSignupMessages": "No answers",
     "question": "Question"
+  },
+  "loginView": {
+    "oldAccountsNotWorking": "Accounts from old events don't work anymore",
+    "noAccountRegister": "No account? Register"
   }
 }
