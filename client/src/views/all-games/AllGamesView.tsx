@@ -10,7 +10,7 @@ import { loadGames } from "client/utils/loadData";
 import { Loading } from "client/components/Loading";
 import { Game, ProgramType, Tag } from "shared/typings/models/game";
 import { getTime } from "client/utils/getTime";
-import { useAppSelector } from "client/utils/hooks";
+import { useAppSelector, useDebounce } from "client/utils/hooks";
 import { Button, ButtonStyle } from "client/components/Button";
 import { selectActiveGames } from "client/views/admin/adminSlice";
 
@@ -39,6 +39,8 @@ export const AllGamesView = (): ReactElement => {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [filteredGames, setFilteredGames] = useState<readonly Game[]>([]);
 
+  const debouncedSearchTerm = useDebounce<string>(searchTerm, 500);
+
   const store = useStore();
 
   useEffect(() => {
@@ -51,20 +53,20 @@ export const AllGamesView = (): ReactElement => {
   }, [store, testTime, signupStrategy]);
 
   useEffect(() => {
-    if (searchTerm.length === 0) {
+    if (debouncedSearchTerm.length === 0) {
       setFilteredGames(activeGames);
       return;
     }
 
     const gamesFilteredBySearchTerm = activeGames.filter((activeGame) => {
       return (
-        activeGame.title.toLocaleLowerCase().includes(searchTerm) ||
-        activeGame.gameSystem.toLocaleLowerCase().includes(searchTerm)
+        activeGame.title.toLocaleLowerCase().includes(debouncedSearchTerm) ||
+        activeGame.gameSystem.toLocaleLowerCase().includes(debouncedSearchTerm)
       );
     });
 
     setFilteredGames(gamesFilteredBySearchTerm);
-  }, [searchTerm, activeGames]);
+  }, [debouncedSearchTerm, activeGames]);
 
   const filters = [
     Tag.IN_ENGLISH,
