@@ -5,23 +5,29 @@ import { sharedConfig } from "shared/config/sharedConfig";
 
 const SettingsSchema = new mongoose.Schema(
   {
-    hiddenGames: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Game",
-        default: [],
-        required: true,
-      },
-    ],
+    hiddenGames: {
+      type: [
+        {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "Game",
+          default: [],
+          required: true,
+        },
+      ],
+      required: true,
+    },
     signupTime: { type: Date, default: null },
     appOpen: { type: Boolean, default: true, required: true },
-    signupQuestions: [
-      {
-        gameId: RequiredString,
-        message: RequiredString,
-        private: RequiredBoolean,
-      },
-    ],
+    signupQuestions: {
+      type: [
+        {
+          gameId: RequiredString,
+          message: RequiredString,
+          private: RequiredBoolean,
+        },
+      ],
+      required: true,
+    },
     signupStrategy: {
       type: String,
       default: sharedConfig.defaultSignupStrategy,

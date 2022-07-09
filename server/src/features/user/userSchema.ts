@@ -13,21 +13,27 @@ const UserSchema = new mongoose.Schema(
     userGroup: RequiredString,
     serial: RequiredString,
     groupCode: RequiredString,
-    favoritedGames: [
-      { type: mongoose.Schema.Types.ObjectId, ref: "Game", required: true },
-    ],
-    signedGames: [
-      {
-        gameDetails: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: "Game",
-          required: true,
+    favoritedGames: {
+      type: [
+        { type: mongoose.Schema.Types.ObjectId, ref: "Game", required: true },
+      ],
+      required: true,
+    },
+    signedGames: {
+      type: [
+        {
+          gameDetails: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Game",
+            required: true,
+          },
+          priority: RequiredNumber,
+          time: RequiredDate,
+          message: RequiredString,
         },
-        priority: RequiredNumber,
-        time: RequiredDate,
-        message: RequiredString,
-      },
-    ],
+      ],
+      required: true,
+    },
   },
   { timestamps: true }
 );

@@ -9,14 +9,17 @@ import { SignupDoc } from "server/features/signup/signup.typings";
 const SignupSchema = new mongoose.Schema(
   {
     game: { type: mongoose.Schema.Types.ObjectId, ref: "Game", required: true },
-    userSignups: [
-      {
-        username: RequiredString,
-        priority: RequiredNumber,
-        time: RequiredDate,
-        message: RequiredString,
-      },
-    ],
+    userSignups: {
+      type: [
+        {
+          username: RequiredString,
+          priority: RequiredNumber,
+          time: RequiredDate,
+          message: RequiredString,
+        },
+      ],
+      required: true,
+    },
     count: { type: Number, default: 0, required: true },
   },
   { timestamps: true }

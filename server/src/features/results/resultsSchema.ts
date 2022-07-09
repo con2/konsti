@@ -8,20 +8,23 @@ import { ResultDoc } from "server/typings/result.typings";
 
 const ResultsSchema = new mongoose.Schema(
   {
-    results: [
-      {
-        username: RequiredString,
-        enteredGame: {
-          gameDetails: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Game",
-            required: true,
+    results: {
+      type: [
+        {
+          username: RequiredString,
+          enteredGame: {
+            gameDetails: {
+              type: mongoose.Schema.Types.ObjectId,
+              ref: "Game",
+              required: true,
+            },
+            priority: RequiredNumber,
+            time: RequiredDate,
           },
-          priority: RequiredNumber,
-          time: RequiredDate,
         },
-      },
-    ],
+      ],
+      required: true,
+    },
     startTime: RequiredDate,
     algorithm: RequiredString,
     message: RequiredString,
