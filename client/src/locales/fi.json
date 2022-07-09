@@ -49,6 +49,7 @@
   "player": "Pelaaja",
   "find": "Etsi",
   "findSignupOrGame": "Pelin nimi tai käyttäjänimi",
+  "findSignupOrGameSystem": "Pelin nimi tai järjestelmä",
   "language": {
     "english": "Englanti",
     "englishShort": "EN",
