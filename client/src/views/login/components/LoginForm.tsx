@@ -35,7 +35,13 @@ export const LoginForm = (): ReactElement => {
     loginFormFields
   ): Promise<void> => {
     const errorMessage = await dispatch(submitLogin(loginFormFields));
-    errorMessage ? setServerError(errorMessage) : navigate(-1);
+    if (errorMessage) {
+      setServerError(errorMessage);
+      return;
+    }
+
+    // Navigate to previus page or front page if no previous page exists
+    window.history.state?.idx > 0 ? navigate(-1) : navigate("/");
   };
 
   return (
