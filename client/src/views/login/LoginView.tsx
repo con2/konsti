@@ -1,10 +1,19 @@
-import React, { ReactElement } from "react";
+import React, { ReactElement, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { LoginForm } from "client/views/login/components/LoginForm";
+import { useAppSelector } from "client/utils/hooks";
 
 export const LoginView = (): ReactElement => {
   const { t } = useTranslation();
+  const loggedIn = useAppSelector((state) => state.login.loggedIn);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (loggedIn) {
+      navigate("/");
+    }
+  }, []);
 
   return (
     <div>
