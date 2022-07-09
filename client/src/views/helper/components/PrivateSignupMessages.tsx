@@ -5,6 +5,7 @@ import _ from "lodash";
 import styled from "styled-components";
 import { useAppSelector } from "client/utils/hooks";
 import { Game } from "shared/typings/models/game";
+import { timeFormatter } from "client/utils/timeFormatter";
 
 export const PrivateSignupMessages = (): ReactElement => {
   const { t } = useTranslation();
@@ -20,6 +21,21 @@ export const PrivateSignupMessages = (): ReactElement => {
 
   const privateSignupQuestions = signupQuestions.filter(
     (signupQuestion) => signupQuestion.private
+  );
+
+  const signupQuestionsWithGames = privateSignupQuestions.flatMap(
+    (privateSignupQuestion) => {
+      const matchingGame = filteredGames.find(
+        (game) => game.gameId === privateSignupQuestion.gameId
+      );
+      if (!matchingGame) return [];
+      return { ...privateSignupQuestion, game: matchingGame };
+    }
+  );
+
+  const groupedSignupQuestions = _.groupBy(
+    _.sortBy(signupQuestionsWithGames, "game.startTime"),
+    "game.startTime"
   );
 
   const privateSignupMessages = signupMessages.filter(
@@ -59,40 +75,59 @@ export const PrivateSignupMessages = (): ReactElement => {
         placeholder={t("findSignupOrGame")}
       />
 
-      {privateSignupQuestions.map((signupQuestion) => {
-        const matchingGame = filteredGames.find(
-          (game) => game.gameId === signupQuestion.gameId
-        );
-        if (!matchingGame) return null;
+      {Object.entries(groupedSignupQuestions).map(
+        ([startTime, signupQuestionsWithGame]) => {
+          const sortedSignupQuestions = _.sortBy(signupQuestionsWithGame, [
+            (signupQuestion) => signupQuestion.game.title.toLocaleLowerCase(),
+          ]);
 
-        const matchingSignupMessages =
-          groupedSignupMessages[signupQuestion.gameId];
+          return (
+            <div key={startTime}>
+              <h3>
+                {timeFormatter.getWeekdayAndTime({
+                  time: startTime,
+                  capitalize: true,
+                })}
+              </h3>
+              {sortedSignupQuestions.map((signupQuestionWithGame) => {
+                const matchingSignupMessages =
+                  groupedSignupMessages[signupQuestionWithGame.gameId];
 
-        return (
-          <SingleGameAnswers key={signupQuestion.gameId}>
-            <Link to={`/games/${matchingGame.gameId}`}>
-              {matchingGame.title}
-            </Link>{" "}
-            <Answers>
-              <BoldText>{t("helperView.question")}: </BoldText>{" "}
-              {signupQuestion.message}
-              {matchingSignupMessages ? (
-                <SignupAnswersContainer>
-                  {matchingSignupMessages.map((answer) => (
-                    <SignupAnswer key={answer.username}>
-                      <BoldText>{answer.username}:</BoldText> {answer.message}
-                    </SignupAnswer>
-                  ))}
-                </SignupAnswersContainer>
-              ) : (
-                <SignupAnswersContainer>
-                  {t("helperView.noPrivateSignupMessages")}
-                </SignupAnswersContainer>
-              )}
-            </Answers>
-          </SingleGameAnswers>
-        );
-      })}
+                return (
+                  <SingleGameAnswers key={signupQuestionWithGame.gameId}>
+                    <Link to={`/games/${signupQuestionWithGame.game.gameId}`}>
+                      {signupQuestionWithGame.game.title}
+                    </Link>{" "}
+                    (
+                    {t(
+                      `programType.${signupQuestionWithGame.game.programType}`
+                    )}
+                    )
+                    <Answers>
+                      <BoldText>{t("helperView.question")}: </BoldText>{" "}
+                      {signupQuestionWithGame.message}
+                      {matchingSignupMessages ? (
+                        <SignupAnswersContainer>
+                          {matchingSignupMessages.map((answer) => (
+                            <SignupAnswer key={answer.username}>
+                              <BoldText>{answer.username}:</BoldText>{" "}
+                              {answer.message}
+                            </SignupAnswer>
+                          ))}
+                        </SignupAnswersContainer>
+                      ) : (
+                        <SignupAnswersContainer>
+                          {t("helperView.noPrivateSignupMessages")}
+                        </SignupAnswersContainer>
+                      )}
+                    </Answers>
+                  </SingleGameAnswers>
+                );
+              })}
+            </div>
+          );
+        }
+      )}
     </div>
   );
 };
