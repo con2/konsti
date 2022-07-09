@@ -2,6 +2,7 @@ import React, { ReactElement, useState } from "react";
 import { SubmitHandler, useForm, useFormState } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, ButtonStyle } from "client/components/Button";
 import { LoginFormFields } from "shared/typings/api/login";
@@ -12,6 +13,7 @@ import { ErrorMessage } from "client/components/ErrorMessage";
 export const LoginForm = (): ReactElement => {
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
   const [serverError, setServerError] = useState<LoginErrorMessage | null>(
@@ -33,7 +35,13 @@ export const LoginForm = (): ReactElement => {
     loginFormFields
   ): Promise<void> => {
     const errorMessage = await dispatch(submitLogin(loginFormFields));
-    errorMessage && setServerError(errorMessage);
+    if (errorMessage) {
+      setServerError(errorMessage);
+      return;
+    }
+
+    // Navigate to previus page or front page if no previous page exists
+    window.history.state?.idx > 0 ? navigate(-1) : navigate("/");
   };
 
   return (
