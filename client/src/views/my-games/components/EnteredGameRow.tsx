@@ -87,7 +87,7 @@ export const EnteredGameRow = ({
 
       {!!signupQuestion && (
         <SignupQuestionPlacement>
-          <FontAwesomeIcon icon={"comment"} />
+          <FontAwesomeIcon icon={["far", "comment"]} />
           {` ${t("myGamesView.yourAnswer")} "${signupQuestion.message}": ${
             signup.message
           } ${
