@@ -88,11 +88,11 @@ export const EnteredGameRow = ({
       {!!signupQuestion && (
         <SignupQuestionPlacement>
           <FontAwesomeIcon icon={["far", "comment"]} />
-          {` ${t("myGamesView.yourAnswer")} "${signupQuestion.message}": ${
-            signup.message
-          } ${
-            signupQuestion.private && `(${t("privateOnlyVisibleToOrganizers")})`
-          }`}
+          {` ${t("myGamesView.yourAnswer")} "${signupQuestion.message}"${
+            signupQuestion.private
+              ? ` (${t("privateOnlyVisibleToOrganizers")})`
+              : ""
+          }: ${signup.message}`}
         </SignupQuestionPlacement>
       )}
 
