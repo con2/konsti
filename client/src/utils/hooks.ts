@@ -9,6 +9,7 @@ export const useAppDispatch = (): AppDispatch => useDispatch<AppDispatch>();
 // Use instead of plain `useSelector`
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 
+// https://usehooks-ts.com/react-hook/use-debounce
 export const useDebounce = <T>(value: T, delay?: number): T => {
   const [debouncedValue, setDebouncedValue] = useState<T>(value);
 
