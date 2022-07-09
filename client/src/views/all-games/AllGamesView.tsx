@@ -10,7 +10,7 @@ import { loadGames } from "client/utils/loadData";
 import { Loading } from "client/components/Loading";
 import { Game, ProgramType, Tag } from "shared/typings/models/game";
 import { getTime } from "client/utils/getTime";
-import { useAppSelector } from "client/utils/hooks";
+import { useAppSelector, useDebounce } from "client/utils/hooks";
 import { Button, ButtonStyle } from "client/components/Button";
 import { selectActiveGames } from "client/views/admin/adminSlice";
 
@@ -36,6 +36,10 @@ export const AllGamesView = (): ReactElement => {
   );
   const [selectedTag, setSelectedTag] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
+  const [searchTerm, setSearchTerm] = useState<string>("");
+  const [filteredGames, setFilteredGames] = useState<readonly Game[]>([]);
+
+  const debouncedSearchTerm = useDebounce<string>(searchTerm, 500);
 
   const store = useStore();
 
@@ -47,6 +51,22 @@ export const AllGamesView = (): ReactElement => {
     };
     fetchData();
   }, [store, testTime, signupStrategy]);
+
+  useEffect(() => {
+    if (debouncedSearchTerm.length === 0) {
+      setFilteredGames(activeGames);
+      return;
+    }
+
+    const gamesFilteredBySearchTerm = activeGames.filter((activeGame) => {
+      return (
+        activeGame.title.toLocaleLowerCase().includes(debouncedSearchTerm) ||
+        activeGame.gameSystem.toLocaleLowerCase().includes(debouncedSearchTerm)
+      );
+    });
+
+    setFilteredGames(gamesFilteredBySearchTerm);
+  }, [debouncedSearchTerm, activeGames]);
 
   const filters = [
     Tag.IN_ENGLISH,
@@ -128,12 +148,18 @@ export const AllGamesView = (): ReactElement => {
         </>
       )}
 
+      <SearchInput
+        type="text"
+        onChange={(event) => setSearchTerm(event.target.value)}
+        placeholder={t("findSignupOrGameSystem")}
+      />
+
       {loading ? (
         <Loading />
       ) : (
         <AllGamesList
           games={getVisibleGames(
-            activeGames,
+            filteredGames,
             hiddenGames,
             selectedView,
             selectedTag
@@ -243,4 +269,13 @@ const AllGamesToggleVisibility = styled.div`
 
 const TagsDropdown = styled.div`
   margin: 10px 0 0 0;
+`;
+
+const SearchInput = styled.input`
+  border: 1px solid ${(props) => props.theme.borderInactive};
+  color: ${(props) => props.theme.buttonText};
+  height: 34px;
+  padding: 0 0 0 10px;
+  margin: 20px 0 0 0;
+  width: 100%;
 `;
