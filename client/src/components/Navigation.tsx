@@ -6,12 +6,15 @@ import { LoggedInUserNavigation } from "./LoggedInUserNavigation";
 import { UserNavigation } from "./UserNavigation";
 import { useAppSelector } from "client/utils/hooks";
 import { HEADER_HEIGHT } from "client/components/Header";
+import { config } from "client/config";
+import { TestValuePicker } from "client/components/TestValuePicker";
 
 export const Navigation = (): ReactElement => {
   const username = useAppSelector((state) => state.login.username);
   const loggedIn = useAppSelector((state) => state.login.loggedIn);
   const serial = useAppSelector((state) => state.login.serial);
   const { t } = useTranslation();
+  const { loadedSettings, showTestValues } = config;
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -33,6 +36,11 @@ export const Navigation = (): ReactElement => {
           ) : (
             <UserNavigation onSelect={() => setIsOpen(false)} />
           )}
+
+          {loadedSettings !== "production" && showTestValues && (
+            <TestValuePicker />
+          )}
+
           {loggedIn && (
             <LoggedUserDetails>
               <UserInfo data-testid="logged-user-username">
