@@ -27,27 +27,18 @@ export const TestValuePicker = (): ReactElement => {
   });
 
   return (
-    <TestValuesContainer>
+    <div>
       <Accordion toggleButton={t("testValues.buttonText")}>
         <TestValueSelectors>
           <TestTimeSelector testTime={testTime} />
           <SignupStrategySelector />
         </TestValueSelectors>
       </Accordion>
-    </TestValuesContainer>
+    </div>
   );
 };
 
-const TestValuesContainer = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  margin: 80px 0 0 0;
-  z-index: 10;
-`;
-
 const TestValueSelectors = styled.div`
-  width: 200px;
   padding: 4px;
   background-color: ${(props) => props.theme.backgroundMain};
 `;
