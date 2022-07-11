@@ -284,7 +284,7 @@
     "playerCount": "Players {{MAX_ATTENDANCE}}",
     "playerRange": "Players {{MIN_ATTENDANCE}} - {{MAX_ATTENDANCE}}",
     "signupOpens": "Signup opens",
-    "preSignupOpens": "Pre-signups opens"
+    "preSignupOpens": "Pre-signup opens"
   },
   "resultsView": {
     "allSignupResults": "Signup overview and players",
