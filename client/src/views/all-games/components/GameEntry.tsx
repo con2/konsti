@@ -90,12 +90,6 @@ export const GameEntry = ({
     ? isEnteredCurrentGame
     : isSignedForCurrentGame;
 
-  const popularityProps = {
-    minAttendance: game.minAttendance,
-    maxAttendance: game.maxAttendance,
-    popularity: game.popularity,
-    includeMsg: true,
-  };
   return (
     <GameContainer
       key={game.gameId}
@@ -139,7 +133,14 @@ export const GameEntry = ({
               </PlayersNeeded>
             </>
           )}
-          {!isEnterGameMode && PopularityInfo(popularityProps)}
+          {!isEnterGameMode && (
+            <PopularityInfo
+              minAttendance={game.minAttendance}
+              maxAttendance={game.maxAttendance}
+              popularity={game.popularity}
+              includeMsg={true}
+            />
+          )}
         </HeaderContainer>
         <GameTags>
           {favorited && loggedIn && userGroup === "user" && game && (
