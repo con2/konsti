@@ -1,5 +1,7 @@
 import React, { FC, ReactElement, useState } from "react";
 import { useTranslation } from "react-i18next";
+import dayjs from "dayjs";
+import styled from "styled-components";
 import { Game } from "shared/typings/models/game";
 import { SignupForm } from "./SignupForm";
 import { submitPostSignedGames } from "client/views/my-games/myGamesThunks";
@@ -10,6 +12,11 @@ import { Button, ButtonStyle } from "client/components/Button";
 import { getIsGroupCreator } from "client/views/group/groupUtils";
 import { ErrorMessage } from "client/components/ErrorMessage";
 import { CancelSignupForm } from "client/views/all-games/components/CancelSignupForm";
+import { timeFormatter } from "client/utils/timeFormatter";
+import { getTime } from "client/utils/getTime";
+import { sharedConfig } from "shared/config/sharedConfig";
+
+const { PRE_SIGNUP_START } = sharedConfig;
 
 interface Props {
   game: Game;
@@ -23,6 +30,7 @@ export const AlgorithmSignupForm: FC<Props> = ({
   signedGames,
 }: Props): ReactElement | null => {
   const { t } = useTranslation();
+  const dispatch = useAppDispatch();
 
   const username = useAppSelector((state) => state.login.username);
   const loggedIn = useAppSelector((state) => state.login.loggedIn);
@@ -34,8 +42,6 @@ export const AlgorithmSignupForm: FC<Props> = ({
   const [signupFormOpen, setSignupFormOpen] = useState(false);
   const [cancelSignupFormOpen, setCancelSignupFormOpen] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-
-  const dispatch = useAppDispatch();
 
   const removeSignedGame = async (gameToRemove: Game): Promise<void> => {
     const newSignupData = signedGames.filter(
@@ -68,6 +74,12 @@ export const AlgorithmSignupForm: FC<Props> = ({
 
   const alreadySignedToGame = isAlreadySigned(game, signedGames);
 
+  const signupStartTime = dayjs(startTime)
+    .subtract(PRE_SIGNUP_START, "minutes")
+    .format();
+  const timeNow = getTime();
+  const preSignupOpen = dayjs(signupStartTime).isBefore(timeNow);
+
   if (!loggedIn) {
     return null;
   }
@@ -80,20 +92,33 @@ export const AlgorithmSignupForm: FC<Props> = ({
             <p>{t("signup.cannotSignupMoreGames")}</p>
           )}
 
-          {signedGamesForTimeslot.length < 3 && !signupFormOpen && (
-            <Button
-              onClick={() => {
-                if (groupMembers.length > game.maxAttendance) {
-                  setErrorMessage(t("group.groupTooBigWarning"));
-                } else {
-                  setSignupFormOpen(true);
-                }
-              }}
-              buttonStyle={ButtonStyle.NORMAL}
-            >
-              {t("signup.preSignup")}
-            </Button>
+          {!preSignupOpen && (
+            <p>
+              {t("signup.preSignupOpens")}{" "}
+              <BoldText>
+                {timeFormatter.getWeekdayAndTime({
+                  time: signupStartTime,
+                })}
+              </BoldText>
+            </p>
           )}
+
+          {preSignupOpen &&
+            signedGamesForTimeslot.length < 3 &&
+            !signupFormOpen && (
+              <Button
+                onClick={() => {
+                  if (groupMembers.length > game.maxAttendance) {
+                    setErrorMessage(t("group.groupTooBigWarning"));
+                  } else {
+                    setSignupFormOpen(true);
+                  }
+                }}
+                buttonStyle={ButtonStyle.NORMAL}
+              >
+                {t("signup.preSignup")}
+              </Button>
+            )}
         </>
       )}
 
@@ -140,3 +165,7 @@ export const AlgorithmSignupForm: FC<Props> = ({
     </>
   );
 };
+
+const BoldText = styled.span`
+  font-weight: 600;
+`;
