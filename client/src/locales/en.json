@@ -283,7 +283,8 @@
     "expectedDuration": "Duration {{EXPECTED_DURATION}}",
     "playerCount": "Players {{MAX_ATTENDANCE}}",
     "playerRange": "Players {{MIN_ATTENDANCE}} - {{MAX_ATTENDANCE}}",
-    "signupOpens": "Signup opens"
+    "signupOpens": "Signup opens",
+    "preSignupOpens": "Pre-signups opens"
   },
   "resultsView": {
     "allSignupResults": "Signup overview and players",

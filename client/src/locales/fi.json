@@ -283,7 +283,8 @@
     "expectedDuration": "Kesto {{EXPECTED_DURATION}}",
     "playerCount": "Pelaajia {{MAX_ATTENDANCE}}",
     "playerRange": "Pelaajia {{MIN_ATTENDANCE}} - {{MAX_ATTENDANCE}}",
-    "signupOpens": "Ilmoittautuminen aukeaa"
+    "signupOpens": "Ilmoittautuminen aukeaa",
+    "preSignupOpens": "Ennakkoilmoittautuminen aukeaa"
   },
   "resultsView": {
     "allSignupResults": "Ilmoittautumistilanne ja pelaajat",
