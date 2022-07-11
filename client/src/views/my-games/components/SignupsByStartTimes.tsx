@@ -28,12 +28,6 @@ export const SignupsByStartTimes = ({
 
             {signups.map((signup) => {
               if (signup.time === startTime) {
-                const popularityProps = {
-                  minAttendance: signup.gameDetails.minAttendance,
-                  maxAttendance: signup.gameDetails.maxAttendance,
-                  popularity: signup.gameDetails.popularity,
-                  includeMsg: false,
-                };
                 return (
                   <GameDetailsContainer key={signup.gameDetails.gameId}>
                     <GameDetailsList>
@@ -43,7 +37,12 @@ export const SignupsByStartTimes = ({
                       </Link>
                     </GameDetailsList>
                     <PopularityContainer>
-                      {PopularityInfo(popularityProps)}
+                      <PopularityInfo
+                        minAttendance={signup.gameDetails.minAttendance}
+                        maxAttendance={signup.gameDetails.maxAttendance}
+                        popularity={signup.gameDetails.popularity}
+                        includeMsg={false}
+                      />
                     </PopularityContainer>
                   </GameDetailsContainer>
                 );
