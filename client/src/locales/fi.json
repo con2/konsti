@@ -284,7 +284,8 @@
     "playerCount": "Pelaajia {{MAX_ATTENDANCE}}",
     "playerRange": "Pelaajia {{MIN_ATTENDANCE}} - {{MAX_ATTENDANCE}}",
     "signupOpens": "Ilmoittautuminen aukeaa",
-    "preSignupOpens": "Ennakkoilmoittautuminen aukeaa"
+    "preSignupOpens": "Ennakkoilmoittautuminen aukeaa",
+    "signupAlwaysOpen": "Ilmoittautuminen erikoispeliin aina auki"
   },
   "resultsView": {
     "allSignupResults": "Ilmoittautumistilanne ja pelaajat",
