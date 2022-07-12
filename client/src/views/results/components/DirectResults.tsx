@@ -140,29 +140,6 @@ export const DirectResults = (): ReactElement => {
                       <ResultTitle key={game.gameId}>
                         {game.title}{" "}
                         <Tag>{t(`programType.${game.programType}`)}</Tag>{" "}
-                        {!!signupQuestion &&
-                          (signupMessagesVisible ? (
-                            <FontAwesomeIcon
-                              icon={"comment"}
-                              onClick={() =>
-                                setShowSignupMessages(
-                                  showSignupMessages.filter(
-                                    (message) => message !== game.gameId
-                                  )
-                                )
-                              }
-                            />
-                          ) : (
-                            <FontAwesomeIcon
-                              icon={["far", "comment"]}
-                              onClick={() =>
-                                setShowSignupMessages([
-                                  ...showSignupMessages,
-                                  game.gameId,
-                                ])
-                              }
-                            />
-                          ))}
                       </ResultTitle>
 
                       <PlayerContainer>
@@ -182,16 +159,45 @@ export const DirectResults = (): ReactElement => {
                           <span>
                             {t("resultsView.players")}: {users.length}/
                             {game.maxAttendance}
+                            {!!signupQuestion &&
+                              (signupMessagesVisible ? (
+                                <CommentIcon
+                                  icon={"comment"}
+                                  onClick={(event) => {
+                                    event.preventDefault();
+                                    event.stopPropagation();
+                                    setShowSignupMessages(
+                                      showSignupMessages.filter(
+                                        (message) => message !== game.gameId
+                                      )
+                                    );
+                                  }}
+                                />
+                              ) : (
+                                <CommentIcon
+                                  icon={["far", "comment"]}
+                                  onClick={(event) => {
+                                    event.preventDefault();
+                                    event.stopPropagation();
+                                    setShowSignupMessages([
+                                      ...showSignupMessages,
+                                      game.gameId,
+                                    ]);
+                                  }}
+                                />
+                              ))}
                           </span>
                           <FontAwesomeIcon
-                            icon={[
-                              "fas",
-                              playerListVisible ? "angle-up" : "angle-down",
-                            ]}
+                            icon={playerListVisible ? "angle-up" : "angle-down"}
                           />
                         </PlayerCount>
                         {playerListVisible && (
                           <PlayerList>
+                            {signupMessagesVisible && (
+                              <SignupQuestion>
+                                {signupQuestion?.message}
+                              </SignupQuestion>
+                            )}
                             {users.length === 0 ? (
                               <p>{t("resultsView.noSignups")}</p>
                             ) : (
@@ -207,12 +213,6 @@ export const DirectResults = (): ReactElement => {
                           </PlayerList>
                         )}
                       </PlayerContainer>
-
-                      {signupMessagesVisible && (
-                        <SignupQuestion>
-                          {signupQuestion?.message}
-                        </SignupQuestion>
-                      )}
                     </div>
                   );
                 })}
@@ -224,6 +224,10 @@ export const DirectResults = (): ReactElement => {
     </div>
   );
 };
+
+const CommentIcon = styled(FontAwesomeIcon)`
+  margin-left: 8px;
+`;
 
 const ResultTitle = styled.h4`
   display: flex;
