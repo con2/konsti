@@ -69,13 +69,15 @@ export const EnteredGameRow = ({
       </div>
       <ButtonContainer>
         {cancelSignupFormOpen ? (
-          <CancelSignupForm
-            onCancelForm={() => {
-              setServerError(null);
-              setCancelSignupFormOpen(false);
-            }}
-            onConfirmForm={async () => await removeSignup()}
-          />
+          <CancelSignupFormContainer>
+            <CancelSignupForm
+              onCancelForm={() => {
+                setServerError(null);
+                setCancelSignupFormOpen(false);
+              }}
+              onConfirmForm={async () => await removeSignup()}
+            />
+          </CancelSignupFormContainer>
         ) : (
           <Button
             onClick={() => setCancelSignupFormOpen(true)}
@@ -119,4 +121,8 @@ const ButtonContainer = styled.div`
 
 const SignupQuestionPlacement = styled.div`
   padding-top: 5px;
+`;
+
+const CancelSignupFormContainer = styled.div`
+  max-width: 240px;
 `;
