@@ -24,6 +24,7 @@ const grayDark = "rgb(150,150,150)";
 
 const yellow = "rgb(234,234,173)";
 const yellowDark = "rgb(214,214,166)";
+const yellowLight = "rgb(255,255,170)";
 
 const magenta = "rgb(255, 0, 255)";
 
@@ -72,6 +73,8 @@ export const theme = {
 
   resultsFoldBackground: grayLighter,
   resultsFoldBorder: gray,
+  warningBackground: yellowLight,
+  warningBorder: yellow,
 
   // Breakpoints
   breakpointPhone: "500px",
