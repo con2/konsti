@@ -1,4 +1,10 @@
-import React, { ReactElement, ChangeEvent, useState, useEffect } from "react";
+import React, {
+  ReactElement,
+  ChangeEvent,
+  useState,
+  useEffect,
+  useMemo,
+} from "react";
 import { useStore } from "react-redux";
 import { Link } from "react-router-dom";
 import { TFunction, useTranslation } from "react-i18next";
@@ -39,7 +45,7 @@ export const AllGamesView = (): ReactElement => {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [filteredGames, setFilteredGames] = useState<readonly Game[]>([]);
 
-  const debouncedSearchTerm = useDebounce<string>(searchTerm, 500);
+  const debouncedSearchTerm = useDebounce<string>(searchTerm, 300);
 
   const store = useStore();
 
@@ -74,6 +80,19 @@ export const AllGamesView = (): ReactElement => {
     Tag.SUITABLE_UNDER_10,
     Tag.AGE_RESTRICTED,
   ];
+
+  const memoizedGames = useMemo(() => {
+    return (
+      <AllGamesList
+        games={getVisibleGames(
+          filteredGames,
+          hiddenGames,
+          selectedView,
+          selectedTag
+        )}
+      />
+    );
+  }, [filteredGames, hiddenGames, selectedView, selectedTag]);
 
   return (
     <>
@@ -154,18 +173,7 @@ export const AllGamesView = (): ReactElement => {
         placeholder={t("findSignupOrGameSystem")}
       />
 
-      {loading ? (
-        <Loading />
-      ) : (
-        <AllGamesList
-          games={getVisibleGames(
-            filteredGames,
-            hiddenGames,
-            selectedView,
-            selectedTag
-          )}
-        />
-      )}
+      {loading ? <Loading /> : memoizedGames}
     </>
   );
 };
