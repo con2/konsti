@@ -25,6 +25,7 @@ interface SharedConfig {
   PRE_SIGNUP_START: number;
   PHASE_GAP: number;
   directSignupWindows: Record<ProgramType, SignupWindow[]>;
+  directSignupAlwaysOpen: string[];
 }
 
 export const sharedConfig: SharedConfig = {
@@ -70,6 +71,8 @@ export const sharedConfig: SharedConfig = {
       },
     ],
   },
+
+  directSignupAlwaysOpen: ["p5344"], // PFS multi-table special: Pathfinder Society #3-99 Fate in the Future
 
   // Two phase signup settings
   PRE_SIGNUP_START: 60 * 4, // minutes
