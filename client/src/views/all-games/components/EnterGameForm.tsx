@@ -1,7 +1,7 @@
 import React, { FC, ReactElement, FormEvent, useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
-import { Game } from "shared/typings/models/game";
+import { Game, ProgramType } from "shared/typings/models/game";
 import {
   PostEnteredGameErrorMessage,
   submitPostEnteredGame,
@@ -57,32 +57,34 @@ export const EnterGameForm: FC<Props> = (props: Props): ReactElement => {
       message: userSignupMessage,
     };
 
-    if (isInGroup && !isGroupCreator) {
-      const leaveGroupRequest = {
-        username,
-      };
+    if (game.programType === ProgramType.TABLETOP_RPG) {
+      if (isInGroup && !isGroupCreator) {
+        const leaveGroupRequest = {
+          username,
+        };
 
-      const leaveGroupError = await dispatch(
-        submitLeaveGroup(leaveGroupRequest)
-      );
+        const leaveGroupError = await dispatch(
+          submitLeaveGroup(leaveGroupRequest)
+        );
 
-      if (leaveGroupError) {
-        setErrorMessage(leaveGroupError);
-        return;
-      }
-    } else if (isInGroup && isGroupCreator) {
-      const closeGroupRequest = {
-        username,
-        groupCode,
-      };
+        if (leaveGroupError) {
+          setErrorMessage(leaveGroupError);
+          return;
+        }
+      } else if (isInGroup && isGroupCreator) {
+        const closeGroupRequest = {
+          username,
+          groupCode,
+        };
 
-      const closeGroupError = await dispatch(
-        submitCloseGroup(closeGroupRequest)
-      );
+        const closeGroupError = await dispatch(
+          submitCloseGroup(closeGroupRequest)
+        );
 
-      if (closeGroupError) {
-        setErrorMessage(closeGroupError);
-        return;
+        if (closeGroupError) {
+          setErrorMessage(closeGroupError);
+          return;
+        }
       }
     }
 
@@ -98,12 +100,16 @@ export const EnterGameForm: FC<Props> = (props: Props): ReactElement => {
 
   return (
     <SignupForm>
-      {isInGroup && !isGroupCreator && (
-        <Warning>{t("signup.inGroupWarning")}</Warning>
-      )}
-      {isInGroup && isGroupCreator && (
-        <Warning>{t("signup.groupCreatorWarning")}</Warning>
-      )}
+      {isInGroup &&
+        !isGroupCreator &&
+        game.programType === ProgramType.TABLETOP_RPG && (
+          <Warning>{t("signup.inGroupWarning")}</Warning>
+        )}
+      {isInGroup &&
+        isGroupCreator &&
+        game.programType === ProgramType.TABLETOP_RPG && (
+          <Warning>{t("signup.groupCreatorWarning")}</Warning>
+        )}
       {signupQuestion && (
         <SignupQuestionContainer>
           <span>
