@@ -96,7 +96,9 @@ export const NotInGroupActions = ({
     <>
       <Button
         buttonStyle={
-          showCreateGroup ? ButtonStyle.DISABLED : ButtonStyle.NORMAL
+          showCreateGroup || disabled
+            ? ButtonStyle.DISABLED
+            : ButtonStyle.NORMAL
         }
         onClick={() => openCreateGroup()}
       >
