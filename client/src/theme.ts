@@ -17,6 +17,7 @@ const blueLight = "rgb(165,171,208)";
 const blue = "rgb(77,144,254)";
 const blueDark = "rgb(31,75,160)";
 
+const grayLighter = "rgb(232,232,232)";
 const grayLight = "rgb(217,217,217)";
 const gray = "rgb(179,179,179)";
 const grayDark = "rgb(150,150,150)";
@@ -68,6 +69,9 @@ export const theme = {
 
   inputBorderFocus: blue,
   inputTextPlaceholder: gray,
+
+  resultsFoldBackground: grayLighter,
+  resultsFoldBorder: gray,
 
   // Breakpoints
   breakpointPhone: "500px",
