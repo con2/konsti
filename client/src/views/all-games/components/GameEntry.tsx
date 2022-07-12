@@ -17,6 +17,7 @@ import {
 } from "client/utils/getUpcomingGames";
 import { isAlreadyEntered, isAlreadySigned } from "./allGamesUtils";
 import { PopularityInfo } from "client/components/PopularityInfo";
+import { sharedConfig } from "shared/config/sharedConfig";
 
 const DESCRIPTION_SENTENCES_LENGTH = 3;
 const matchNextSentence = /([.?!])\s*(?=[A-Z])/g;
@@ -57,12 +58,17 @@ export const GameEntry = ({
 
   const dispatch = useAppDispatch();
 
+  const signupAlwaysOpen = sharedConfig.directSignupAlwaysOpen.includes(
+    game.gameId
+  );
+
   const favorited =
     favoritedGames.find(
       (favoritedGame) => favoritedGame.gameId === game.gameId
     ) !== undefined;
 
-  const isEnterGameMode = signupStrategy === SignupStrategy.DIRECT;
+  const isEnterGameMode =
+    signupStrategy === SignupStrategy.DIRECT || signupAlwaysOpen;
   const gameIsFull = game.maxAttendance === players;
 
   const formatDuration = (mins: number): string => {
@@ -100,6 +106,11 @@ export const GameEntry = ({
       <GameHeader>
         <HeaderContainer>
           <h3 data-testid="game-title">{game.title}</h3>
+          {signupAlwaysOpen && (
+            <SignupAlwaysOpenHelp>
+              {t("signup.signupAlwaysOpen")}
+            </SignupAlwaysOpenHelp>
+          )}
           <p>
             <RowItem>
               {t("signup.expectedDuration", {
@@ -301,4 +312,9 @@ const FavoriteIcon = styled(FontAwesomeIcon)`
 
 const RowItem = styled.span`
   padding-right: 12px;
+`;
+
+const SignupAlwaysOpenHelp = styled.span`
+  font-weight: 600;
+  margin-top: 10px;
 `;
