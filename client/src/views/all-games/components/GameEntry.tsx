@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { updateFavorite, UpdateFavoriteOpts } from "client/utils/favorite";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
-import { Game } from "shared/typings/models/game";
+import { Game, Tag } from "shared/typings/models/game";
 import { AlgorithmSignupForm } from "./AlgorithmSignupForm";
 import { DirectSignupForm } from "./DirectSignupForm";
 import { Button, ButtonStyle } from "client/components/Button";
@@ -113,9 +113,11 @@ export const GameEntry = ({
           )}
           <GameTags>
             <TagColumn>
-              <Tag>{t(`programType.${game.programType}`)}</Tag>
-              {game.gameSystem && <Tag>{game.gameSystem}</Tag>}
-              {game.language && <Tag>{game.language}</Tag>}
+              <GameTag>{t(`programType.${game.programType}`)}</GameTag>
+              {game.gameSystem && <GameTag>{game.gameSystem}</GameTag>}
+              {game.tags.includes(Tag.IN_ENGLISH) && (
+                <GameTag>{t("gameTags.inEnglish")}</GameTag>
+              )}
             </TagColumn>
           </GameTags>
           <p>
@@ -259,7 +261,7 @@ const HeaderContainer = styled.div`
   }
 `;
 
-const Tag = styled.span`
+const GameTag = styled.span`
   height: 14px;
   text-align: center;
   background: ${(props) => props.theme.backgroundTag};
