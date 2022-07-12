@@ -62,10 +62,11 @@ export const EnteredGameRow = ({
 
   return (
     <GameDetailsList key={signup.gameDetails.gameId}>
-      <Link to={`/games/${signup.gameDetails.gameId}`}>
-        {signup.gameDetails.title}
-      </Link>
-
+      <div>
+        <Link to={`/games/${signup.gameDetails.gameId}`}>
+          {signup.gameDetails.title}
+        </Link>
+      </div>
       <ButtonContainer>
         {cancelSignupFormOpen ? (
           <CancelSignupForm
