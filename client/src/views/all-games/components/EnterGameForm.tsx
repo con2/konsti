@@ -1,7 +1,7 @@
 import React, { FC, ReactElement, FormEvent, useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
-import { Game } from "shared/typings/models/game";
+import { Game, ProgramType } from "shared/typings/models/game";
 import {
   PostEnteredGameErrorMessage,
   submitPostEnteredGame,
@@ -11,6 +11,13 @@ import { Button, ButtonStyle } from "client/components/Button";
 import { SignupQuestion } from "shared/typings/models/settings";
 import { loadGames } from "client/utils/loadData";
 import { ErrorMessage } from "client/components/ErrorMessage";
+import { getIsGroupCreator, getIsInGroup } from "client/views/group/groupUtils";
+import {
+  PostCloseGroupErrorMessage,
+  PostLeaveGroupErrorMessage,
+  submitCloseGroup,
+  submitLeaveGroup,
+} from "client/views/group/groupThunks";
 
 interface Props {
   game: Game;
@@ -24,9 +31,17 @@ export const EnterGameForm: FC<Props> = (props: Props): ReactElement => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const username = useAppSelector((state) => state.login.username);
+  const serial = useAppSelector((state) => state.login.serial);
   const [userSignupMessage, setUserSignupMessage] = useState<string>("");
-  const [errorMessage, setErrorMessage] =
-    useState<PostEnteredGameErrorMessage | null>(null);
+  const [errorMessage, setErrorMessage] = useState<
+    | PostEnteredGameErrorMessage
+    | PostLeaveGroupErrorMessage
+    | PostCloseGroupErrorMessage
+    | null
+  >(null);
+  const groupCode = useAppSelector((state) => state.group.groupCode);
+  const isInGroup = getIsInGroup(groupCode);
+  const isGroupCreator = getIsGroupCreator(groupCode, serial);
 
   const handleCancel = (): void => {
     onCancelSignup();
@@ -42,6 +57,37 @@ export const EnterGameForm: FC<Props> = (props: Props): ReactElement => {
       message: userSignupMessage,
     };
 
+    if (game.programType === ProgramType.TABLETOP_RPG) {
+      if (isInGroup && !isGroupCreator) {
+        const leaveGroupRequest = {
+          username,
+        };
+
+        const leaveGroupError = await dispatch(
+          submitLeaveGroup(leaveGroupRequest)
+        );
+
+        if (leaveGroupError) {
+          setErrorMessage(leaveGroupError);
+          return;
+        }
+      } else if (isInGroup && isGroupCreator) {
+        const closeGroupRequest = {
+          username,
+          groupCode,
+        };
+
+        const closeGroupError = await dispatch(
+          submitCloseGroup(closeGroupRequest)
+        );
+
+        if (closeGroupError) {
+          setErrorMessage(closeGroupError);
+          return;
+        }
+      }
+    }
+
     const error = await dispatch(submitPostEnteredGame(enterData));
     if (error) {
       setErrorMessage(error);
@@ -54,6 +100,16 @@ export const EnterGameForm: FC<Props> = (props: Props): ReactElement => {
 
   return (
     <SignupForm>
+      {isInGroup &&
+        !isGroupCreator &&
+        game.programType === ProgramType.TABLETOP_RPG && (
+          <Warning>{t("signup.inGroupWarning")}</Warning>
+        )}
+      {isInGroup &&
+        isGroupCreator &&
+        game.programType === ProgramType.TABLETOP_RPG && (
+          <Warning>{t("signup.groupCreatorWarning")}</Warning>
+        )}
       {signupQuestion && (
         <SignupQuestionContainer>
           <span>
@@ -97,6 +153,13 @@ export const EnterGameForm: FC<Props> = (props: Props): ReactElement => {
     </SignupForm>
   );
 };
+
+const Warning = styled.span`
+  background-color: ${(props) => props.theme.warningBackground};
+  border: 1px solid ${(props) => props.theme.warningBorder};
+  border-radius: 4px;
+  padding: 6px;
+`;
 
 const SignupForm = styled.form`
   display: flex;
