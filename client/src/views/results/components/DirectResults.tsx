@@ -24,6 +24,7 @@ export const DirectResults = (): ReactElement => {
 
   const [showAllGames, setShowAllGames] = useState<boolean>(false);
   const [showSignupMessages, setShowSignupMessages] = useState<string[]>([]);
+  const [showPlayers, setShowPlayers] = useState<string[]>([]);
 
   const publicSignupQuestions = signupQuestions.filter(
     (signupQuestion) => !signupQuestion.private
@@ -129,63 +130,89 @@ export const DirectResults = (): ReactElement => {
                   const signupMessagesVisible = showSignupMessages.find(
                     (message) => message === game.gameId
                   );
+                  const playerListVisible = showPlayers.find(
+                    (players) => players === game.gameId
+                  );
                   const users = getUsersForGameId(game.gameId, signups);
 
                   return (
                     <div key={game.gameId}>
-                      <h4 key={game.gameId}>
+                      <ResultTitle key={game.gameId}>
                         {game.title}{" "}
                         <Tag>{t(`programType.${game.programType}`)}</Tag>{" "}
-                        {!!signupQuestion &&
-                          (signupMessagesVisible ? (
-                            <FontAwesomeIcon
-                              icon={"comment"}
-                              onClick={() =>
-                                setShowSignupMessages(
-                                  showSignupMessages.filter(
-                                    (message) => message !== game.gameId
-                                  )
+                      </ResultTitle>
+
+                      <PlayerContainer>
+                        <PlayerCount
+                          onClick={() => {
+                            if (playerListVisible) {
+                              setShowPlayers(
+                                showPlayers.filter(
+                                  (gameId) => gameId !== game.gameId
                                 )
-                              }
-                            />
-                          ) : (
-                            <FontAwesomeIcon
-                              icon={["far", "comment"]}
-                              onClick={() =>
-                                setShowSignupMessages([
-                                  ...showSignupMessages,
-                                  game.gameId,
-                                ])
-                              }
-                            />
-                          ))}
-                      </h4>
-
-                      <PlayerCount>
-                        {t("resultsView.players")}: {users.length}/
-                        {game.maxAttendance}
-                      </PlayerCount>
-
-                      {signupMessagesVisible && (
-                        <SignupQuestion>
-                          {signupQuestion?.message}
-                        </SignupQuestion>
-                      )}
-
-                      <PlayerList>
-                        {users.length === 0 ? (
-                          <p>{t("resultsView.noSignups")}</p>
-                        ) : (
-                          users.map((user) => (
-                            <p key={user.username}>
-                              {user.username}
-                              {signupMessagesVisible && (
-                                <span>: {user.signupMessage}</span>
-                              )}
-                            </p>
-                          ))
+                              );
+                            } else {
+                              setShowPlayers([...showPlayers, game.gameId]);
+                            }
+                          }}
+                        >
+                          <span>
+                            {t("resultsView.players")}: {users.length}/
+                            {game.maxAttendance}
+                            {!!signupQuestion &&
+                              (signupMessagesVisible ? (
+                                <CommentIcon
+                                  icon={"comment"}
+                                  onClick={(event) => {
+                                    event.preventDefault();
+                                    event.stopPropagation();
+                                    setShowSignupMessages(
+                                      showSignupMessages.filter(
+                                        (message) => message !== game.gameId
+                                      )
+                                    );
+                                  }}
+                                />
+                              ) : (
+                                <CommentIcon
+                                  icon={["far", "comment"]}
+                                  onClick={(event) => {
+                                    event.preventDefault();
+                                    event.stopPropagation();
+                                    setShowSignupMessages([
+                                      ...showSignupMessages,
+                                      game.gameId,
+                                    ]);
+                                  }}
+                                />
+                              ))}
+                          </span>
+                          <FontAwesomeIcon
+                            icon={playerListVisible ? "angle-up" : "angle-down"}
+                          />
+                        </PlayerCount>
+                        {playerListVisible && (
+                          <PlayerList>
+                            {signupMessagesVisible && (
+                              <SignupQuestion>
+                                {signupQuestion?.message}
+                              </SignupQuestion>
+                            )}
+                            {users.length === 0 ? (
+                              <p>{t("resultsView.noSignups")}</p>
+                            ) : (
+                              users.map((user) => (
+                                <p key={user.username}>
+                                  {user.username}
+                                  {signupMessagesVisible && (
+                                    <span>: {user.signupMessage}</span>
+                                  )}
+                                </p>
+                              ))
+                            )}
+                          </PlayerList>
                         )}
-                      </PlayerList>
+                      </PlayerContainer>
                     </div>
                   );
                 })}
@@ -197,6 +224,16 @@ export const DirectResults = (): ReactElement => {
     </div>
   );
 };
+
+const CommentIcon = styled(FontAwesomeIcon)`
+  margin-left: 8px;
+`;
+
+const ResultTitle = styled.h4`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 4px;
+`;
 
 const TimeSlot = styled.div`
   border-radius: 4px;
@@ -217,8 +254,17 @@ const PlayerList = styled.div`
   padding: 0 0 0 30px;
 `;
 
+const PlayerContainer = styled.div`
+  border: 1px solid ${(props) => props.theme.resultsFoldBorder};
+  border-radius: 4px;
+  background-color: ${(props) => props.theme.resultsFoldBackground};
+`;
+
 const PlayerCount = styled.div`
-  padding: 0 0 0 10px;
+  display: flex;
+  justify-content: space-between;
+  padding: 4px;
+  cursor: pointer;
 `;
 
 const SignupQuestion = styled.p`
@@ -240,4 +286,6 @@ const Tag = styled.span`
   font-size: 12px;
   color: ${(props) => props.theme.textTag};
   white-space: nowrap;
+  margin-top: 4px;
+  max-width: fit-content;
 `;
