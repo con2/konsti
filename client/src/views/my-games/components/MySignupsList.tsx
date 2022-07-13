@@ -28,7 +28,7 @@ export const MySignupsList = ({
 
   return (
     <div>
-      <h3>{t("preSignedGames")}</h3>
+      <h3>{t("lotterySignedGames")}</h3>
 
       {!isGroupCreator && <InfoText>{t("group.inGroupSignups")}</InfoText>}
 

@@ -45,10 +45,10 @@ export const GroupView = (): ReactElement => {
   return (
     <div className="group-view">
       <h2>{t("pages.group")}</h2>
-      <p>{t("group.groupPreSignupGuide")}</p>
+      <p>{t("group.groupLotterySignupGuide")}</p>
 
       {activeProgramType !== ProgramType.TABLETOP_RPG ? (
-        <p>{t("group.groupPreSignupTabletopOnly")}</p>
+        <p>{t("group.groupLotterySignupTabletopOnly")}</p>
       ) : (
         <>
           <p>
