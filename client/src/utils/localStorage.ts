@@ -1,7 +1,6 @@
 import _ from "lodash";
 import { z } from "zod";
-import { PreloadedState } from "@reduxjs/toolkit";
-import { LocalStorageState, RootState } from "client/typings/redux.typings";
+import { LocalStorageState } from "client/typings/redux.typings";
 import { ProgramType } from "shared/typings/models/game";
 
 const LocalStorageSchema = z.object({
@@ -11,7 +10,13 @@ const LocalStorageSchema = z.object({
 
 type LocalStorage = z.infer<typeof LocalStorageSchema>;
 
-export const loadSession = (): PreloadedState<RootState> | undefined => {
+export enum LocalStorageValue {
+  ALL_GAMES_SEARCH_TERM = "allGamesSearchTerm",
+  ALL_GAMES_TAG = "allGamesTag",
+  ALL_GAMES_SELECTED_VIEW = "allGamesSelectedView",
+}
+
+export const loadSession = (): LocalStorage | undefined => {
   const serializedState = localStorage.getItem("state");
   if (!serializedState) return undefined;
 
@@ -24,7 +29,6 @@ export const loadSession = (): PreloadedState<RootState> | undefined => {
   }
 
   if (parsedSession) {
-    // @ts-expect-error: TODO: Figure out why this doesn't work, should accept partial return value
     return parsedSession;
   }
 
@@ -49,6 +53,9 @@ export const clearSession = (): void => {
     localStorage.removeItem("state");
     const newSession = _.omit(oldSession, "login");
     saveSession(newSession);
+    Object.values(LocalStorageValue).map((value) => {
+      localStorage.removeItem(value);
+    });
   } catch (error) {
     console.error(error); // eslint-disable-line no-console
   }

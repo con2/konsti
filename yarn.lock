@@ -8297,6 +8297,7 @@ __metadata:
     stylelint-config-recommended: 8.0.0
     stylelint-config-styled-components: 0.1.1
     stylelint-no-unsupported-browser-features: 5.0.3
+    use-debounce: 8.0.1
     webpack: 5.73.0
     webpack-bundle-analyzer: 4.5.0
     webpack-cli: 4.10.0
@@ -12358,6 +12359,15 @@ __metadata:
   dependencies:
     punycode: ^2.1.0
   checksum: 7167432de6817fe8e9e0c9684f1d2de2bb688c94388f7569f7dbdb1587c9f4ca2a77962f134ec90be0cc4d004c939ff0d05acc9f34a0db39a3c797dada262633
+  languageName: node
+  linkType: hard
+
+"use-debounce@npm:8.0.1":
+  version: 8.0.1
+  resolution: "use-debounce@npm:8.0.1"
+  peerDependencies:
+    react: ">=16.8.0"
+  checksum: c66cb9a33b7b141232432dbdbdceb35573da8efd340e60c7f42e00f36e06c897818b731d9a9211d137a98dfb4acd5d686ff9bbe98b5990411ea6e67ee6e5a83d
   languageName: node
   linkType: hard
 

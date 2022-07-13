@@ -6,6 +6,7 @@ import styled from "styled-components";
 import { useAppSelector } from "client/utils/hooks";
 import { Game } from "shared/typings/models/game";
 import { timeFormatter } from "client/utils/timeFormatter";
+import { Input } from "client/components/Input";
 
 export const PrivateSignupMessages = (): ReactElement => {
   const { t } = useTranslation();
@@ -69,10 +70,12 @@ export const PrivateSignupMessages = (): ReactElement => {
       <h3>{t("helperView.signupQuestionAnswers")}</h3>
       <p>{t("helperView.privateSignupMessagesInfo")}</p>
 
-      <SearchInput
+      <Input
         type="text"
+        value={searchTerm}
         onChange={(event) => setSearchTerm(event.target.value)}
         placeholder={t("findSignupOrGame")}
+        resetValue={() => setSearchTerm("")}
       />
 
       {Object.entries(groupedSignupQuestions).map(
@@ -151,13 +154,4 @@ const SignupAnswersContainer = styled.div`
 const SignupAnswer = styled.li`
   list-style-type: none;
   margin: 0 0 6px 0;
-`;
-
-const SearchInput = styled.input`
-  border: 1px solid ${(props) => props.theme.borderInactive};
-  color: ${(props) => props.theme.buttonText};
-  height: 34px;
-  padding: 0 0 0 10px;
-  margin-bottom: 20px;
-  width: 100%;
 `;
