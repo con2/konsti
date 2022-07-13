@@ -223,7 +223,7 @@
     },
     "hasEnteredFollowingGames": "You are already entered following games:",
     "cancelSignupBeforeJoiningGroup": "Cancel those games before you can join the group.",
-    "signupDisabledNotCreator": "You are group member. Group creator will pre sign-up to the games for the whole group.",
+    "signupDisabledNotCreator": "You are group member. Group creator will lottery sign-up for the whole group.",
     "signupForWholeGroup": "You are group creator. You can sign up to games for the whole group.",
     "inGroupSignups": "You are in a group. Following games are chosen by the group creator.",
     "closeGroupConfirmation": "Are you sure you want to close group and remove all its members?",

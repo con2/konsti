@@ -223,7 +223,7 @@
     },
     "hasEnteredFollowingGames": "Olet jo päässyt seuraaviin peleihin:",
     "cancelSignupBeforeJoiningGroup": "Peruuta ilmoittaumisesi yllä oleviin peleihin ennen kuin voit ilmoittautua ryhmään.",
-    "signupDisabledNotCreator": "Olet ryhmän jäsen. Ryhmän perustaja ennakkoilmoittautuu peleihin ryhmän jäsenten puolesta.",
+    "signupDisabledNotCreator": "Olet ryhmän jäsen. Ryhmän perustaja ilmoittautuu arvontaan ryhmän jäsenten puolesta.",
     "signupForWholeGroup": "Olet ryhmän perustaja. Voit ilmoittautua peleihin koko ryhmän puolesta.",
     "inGroupSignups": "Olet ryhmän jäsen. Seuraavat pelit ovat ryhmän perustajan valitsemia.",
     "closeGroupConfirmation": "Oletko varma, että haluat sulkea ryhmän ja poistaa kaikki sen jäsenet?",
