@@ -44,7 +44,7 @@ export const ResultsByStartTimes = ({
               if (missedSignup === startTime) {
                 return (
                   <GameDetailsList key={missedSignup}>
-                    {t("noPreSignupResult")}
+                    {t("noLotterySignupResult")}
                   </GameDetailsList>
                 );
               }
