@@ -57,7 +57,7 @@ export const GameListTitle = ({
 
         {timeslotSignupStrategy === SignupStrategy.ALGORITHM && (
           <span>
-            ({t("preSignupOpenBetween")} {signupStartTime}-{signupEndTime})
+            ({t("lotterySignupOpenBetween")} {signupStartTime}-{signupEndTime})
           </span>
         )}
 

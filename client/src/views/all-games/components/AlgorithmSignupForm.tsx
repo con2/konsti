@@ -78,7 +78,7 @@ export const AlgorithmSignupForm: FC<Props> = ({
     .subtract(PRE_SIGNUP_START, "minutes")
     .format();
   const timeNow = getTime();
-  const preSignupOpen = dayjs(signupStartTime).isBefore(timeNow);
+  const lotterySignupOpen = dayjs(signupStartTime).isBefore(timeNow);
 
   if (!loggedIn) {
     return null;
@@ -92,9 +92,9 @@ export const AlgorithmSignupForm: FC<Props> = ({
             <p>{t("signup.cannotSignupMoreGames")}</p>
           )}
 
-          {!preSignupOpen && (
+          {!lotterySignupOpen && (
             <p>
-              {t("signup.preSignupOpens")}{" "}
+              {t("signup.lotterySignupOpens")}{" "}
               <BoldText>
                 {timeFormatter.getWeekdayAndTime({
                   time: signupStartTime,
@@ -103,7 +103,7 @@ export const AlgorithmSignupForm: FC<Props> = ({
             </p>
           )}
 
-          {preSignupOpen &&
+          {lotterySignupOpen &&
             signedGamesForTimeslot.length < 3 &&
             !signupFormOpen && (
               <Button
@@ -116,7 +116,7 @@ export const AlgorithmSignupForm: FC<Props> = ({
                 }}
                 buttonStyle={ButtonStyle.NORMAL}
               >
-                {t("signup.preSignup")}
+                {t("signup.lotterySignup")}
               </Button>
             )}
         </>
@@ -143,7 +143,7 @@ export const AlgorithmSignupForm: FC<Props> = ({
           )}
 
           <p>
-            {t("signup.alreadyPreSigned", {
+            {t("signup.alreadyLotterySigned", {
               CURRENT_PRIORITY: currentPriority,
             })}
           </p>
