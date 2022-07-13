@@ -12,6 +12,7 @@ module.exports = {
     "plugin:eslint-plugin-react/recommended",
     "plugin:eslint-plugin-jsx-a11y/recommended",
     "plugin:testing-library/react",
+    "plugin:react-hooks/recommended",
   ],
 
   env: {
@@ -36,6 +37,7 @@ module.exports = {
 
     // eslint-plugin-react-hooks
     "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "error",
 
     // eslint-plugin-compat
     "compat/compat": "error",

@@ -21,6 +21,7 @@ export const PopularityInfo = ({
   const [msg, setMsg] = useState<string>(t("gamePopularity.low"));
   const [color, setColor] = useState<string>(theme.popularityLow);
   const [icon, setIcon] = useState<IconProp>("thermometer-empty");
+
   useEffect(() => {
     if (popularity >= minAttendance && popularity < maxAttendance) {
       setMsg(t("gamePopularity.medium"));
@@ -31,7 +32,8 @@ export const PopularityInfo = ({
       setColor(theme.popularityHigh);
       setIcon("thermometer-full");
     }
-  });
+  }, [maxAttendance, minAttendance, popularity]);
+
   return (
     <GamePopularityContainer>
       <GamePopularityIcon icon={icon} color={color} /> {includeMsg && msg}

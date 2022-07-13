@@ -52,7 +52,7 @@ export const DirectResults = (): ReactElement => {
     }
 
     setGamesForListing(filteredGames);
-  }, [filteredGames]);
+  }, [filteredGames, gamesForListing]);
 
   useEffect(() => {
     if (searchTerm.length === 0) {
@@ -77,7 +77,7 @@ export const DirectResults = (): ReactElement => {
     );
 
     setFilteredGamesForListing(gamesByStartTime);
-  }, [searchTerm, gamesForListing]);
+  }, [searchTerm, gamesForListing, signups]);
 
   return (
     <div>
