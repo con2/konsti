@@ -11,6 +11,7 @@ import { Button, ButtonStyle } from "client/components/Button";
 import { Game } from "shared/typings/models/game";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
 import { selectActiveGames } from "client/views/admin/adminSlice";
+import { Input } from "client/components/Input";
 
 export const DirectResults = (): ReactElement => {
   const { t } = useTranslation();
@@ -83,10 +84,12 @@ export const DirectResults = (): ReactElement => {
     <div>
       <h2>{t("resultsView.allSignupResults")}</h2>
 
-      <SearchInput
+      <Input
         type="text"
+        value={searchTerm}
         onChange={(event) => setSearchTerm(event.target.value)}
         placeholder={t("findSignupOrGame")}
+        resetValue={() => setSearchTerm("")}
       />
       <div>
         <Button
@@ -269,14 +272,6 @@ const PlayerCount = styled.div`
 
 const SignupQuestion = styled.p`
   font-weight: 600;
-`;
-
-const SearchInput = styled.input`
-  border: 1px solid ${(props) => props.theme.borderInactive};
-  color: ${(props) => props.theme.buttonText};
-  height: 34px;
-  padding: 0 0 0 10px;
-  width: 100%;
 `;
 
 const Tag = styled.span`
