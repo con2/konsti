@@ -357,5 +357,6 @@
   "loginView": {
     "oldAccountsNotWorking": "Aikaisempien tapahtumien käyttäjätilit eivät ole käytössä",
     "noAccountRegister": "Ei käyttäjätiliä? Rekisteröidy"
-  }
+  },
+  "resetInput": "Tyhjennä syöte"
 }
