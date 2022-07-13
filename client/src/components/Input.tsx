@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { ChangeEvent, ReactElement } from "react";
+import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 
 interface Props {
@@ -17,6 +18,8 @@ export const Input = ({
   placeholder,
   resetValue,
 }: Props): ReactElement => {
+  const { t } = useTranslation();
+
   return (
     <InputContainer>
       <StyledInput
@@ -26,7 +29,11 @@ export const Input = ({
         placeholder={placeholder}
       />
 
-      <StyledIcon onClick={resetValue} icon="xmark" />
+      <StyledIcon
+        onClick={resetValue}
+        icon="xmark"
+        aria-label={t("resetInput")}
+      />
     </InputContainer>
   );
 };
