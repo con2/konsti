@@ -62,7 +62,7 @@ export const PrivateSignupMessages = (): ReactElement => {
     });
 
     setFilteredGames(gamesFilteredBySearchTerm);
-  }, [searchTerm, games]);
+  }, [searchTerm, games, privateSignupMessages]);
 
   return (
     <div>

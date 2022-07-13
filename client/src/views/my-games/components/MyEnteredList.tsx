@@ -33,7 +33,7 @@ export const MyEnteredList = ({
     setStartTimes(
       enteredGames.map((enteredGame) => enteredGame.time).concat(missedSignups)
     );
-  }, [missedSignups]);
+  }, [missedSignups, enteredGames]);
 
   return (
     <div>

@@ -13,7 +13,7 @@ export const LoginView = (): ReactElement => {
     if (loggedIn) {
       navigate("/");
     }
-  }, []);
+  }, [loggedIn, navigate]);
 
   return (
     <div>
