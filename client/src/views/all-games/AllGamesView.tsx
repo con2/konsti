@@ -10,15 +10,18 @@ import { Link } from "react-router-dom";
 import { TFunction, useTranslation } from "react-i18next";
 import dayjs from "dayjs";
 import styled from "styled-components";
+import { useDebounce } from "use-debounce";
 import { AllGamesList } from "client/views/all-games/components/AllGamesList";
 import { getUpcomingGames } from "client/utils/getUpcomingGames";
 import { loadGames } from "client/utils/loadData";
 import { Loading } from "client/components/Loading";
 import { Game, ProgramType, Tag } from "shared/typings/models/game";
 import { getTime } from "client/utils/getTime";
-import { useAppSelector, useDebounce } from "client/utils/hooks";
+import { useAppSelector } from "client/utils/hooks";
 import { Button, ButtonStyle } from "client/components/Button";
 import { selectActiveGames } from "client/views/admin/adminSlice";
+import { Input } from "client/components/Input";
+import { LocalStorageValue } from "client/utils/localStorage";
 
 enum SelectedView {
   ALL = "all",
@@ -45,12 +48,31 @@ export const AllGamesView = (): ReactElement => {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [filteredGames, setFilteredGames] = useState<readonly Game[]>([]);
 
-  const debouncedSearchTerm = useDebounce<string>(searchTerm, 300);
+  const [debouncedSearchTerm] = useDebounce(searchTerm, 300, {
+    leading: true,
+  });
 
   const store = useStore();
 
   useEffect(() => {
     setLoading(true);
+
+    const loadLocalStorageValues = (): void => {
+      const savedSearchTerm = localStorage.getItem(
+        LocalStorageValue.ALL_GAMES_SEARCH_TERM
+      );
+      setSearchTerm(savedSearchTerm ?? "");
+
+      const savedTag = localStorage.getItem(LocalStorageValue.ALL_GAMES_TAG);
+      setSelectedTag(savedTag ?? "");
+
+      const savedSelectedView = localStorage.getItem(
+        LocalStorageValue.ALL_GAMES_SELECTED_VIEW
+      );
+      setSelectedView((savedSelectedView as SelectedView) ?? "");
+    };
+    loadLocalStorageValues();
+
     const fetchData = async (): Promise<void> => {
       await loadGames();
       setLoading(false);
@@ -59,6 +81,11 @@ export const AllGamesView = (): ReactElement => {
   }, [store, testTime, signupStrategy]);
 
   useEffect(() => {
+    localStorage.setItem(
+      LocalStorageValue.ALL_GAMES_SEARCH_TERM,
+      debouncedSearchTerm
+    );
+
     if (debouncedSearchTerm.length === 0) {
       setFilteredGames(activeGames);
       return;
@@ -94,12 +121,20 @@ export const AllGamesView = (): ReactElement => {
     );
   }, [filteredGames, hiddenGames, selectedView, selectedTag]);
 
+  const setView = (selecterView: SelectedView): void => {
+    setSelectedView(selecterView);
+    localStorage.setItem(
+      LocalStorageValue.ALL_GAMES_SELECTED_VIEW,
+      selecterView
+    );
+  };
+
   return (
     <>
       <AllGamesVisibilityBar>
         <AllGamesToggleVisibility>
           <Button
-            onClick={() => setSelectedView(SelectedView.UPCOMING)}
+            onClick={() => setView(SelectedView.UPCOMING)}
             buttonStyle={
               selectedView === SelectedView.UPCOMING
                 ? ButtonStyle.DISABLED
@@ -110,7 +145,7 @@ export const AllGamesView = (): ReactElement => {
           </Button>
 
           <Button
-            onClick={() => setSelectedView(SelectedView.ALL)}
+            onClick={() => setView(SelectedView.ALL)}
             buttonStyle={
               selectedView === SelectedView.ALL
                 ? ButtonStyle.DISABLED
@@ -122,7 +157,7 @@ export const AllGamesView = (): ReactElement => {
 
           {activeProgramType === ProgramType.TABLETOP_RPG && (
             <Button
-              onClick={() => setSelectedView(SelectedView.REVOLVING_DOOR)}
+              onClick={() => setView(SelectedView.REVOLVING_DOOR)}
               buttonStyle={
                 selectedView === SelectedView.REVOLVING_DOOR
                   ? ButtonStyle.DISABLED
@@ -137,9 +172,11 @@ export const AllGamesView = (): ReactElement => {
         <TagsDropdown>
           <ChooseTagsInstruction>{t("chooseTag")} </ChooseTagsInstruction>
           <select
-            onChange={(event: ChangeEvent<HTMLSelectElement>) =>
-              setSelectedTag(event.target.value)
-            }
+            onChange={(event: ChangeEvent<HTMLSelectElement>) => {
+              const tag = event.target.value;
+              setSelectedTag(tag);
+              localStorage.setItem(LocalStorageValue.ALL_GAMES_TAG, tag);
+            }}
             value={selectedTag}
           >
             <option value="">{t("allGames")}</option>
@@ -167,10 +204,12 @@ export const AllGamesView = (): ReactElement => {
         </>
       )}
 
-      <SearchInput
+      <Input
         type="text"
+        value={searchTerm}
         onChange={(event) => setSearchTerm(event.target.value)}
         placeholder={t("findSignupOrGameSystem")}
+        resetValue={() => setSearchTerm("")}
       />
 
       {loading ? <Loading /> : memoizedGames}
@@ -277,13 +316,4 @@ const AllGamesToggleVisibility = styled.div`
 
 const TagsDropdown = styled.div`
   margin: 10px 0 0 0;
-`;
-
-const SearchInput = styled.input`
-  border: 1px solid ${(props) => props.theme.borderInactive};
-  color: ${(props) => props.theme.buttonText};
-  height: 34px;
-  padding: 0 0 0 10px;
-  margin: 20px 0 0 0;
-  width: 100%;
 `;
