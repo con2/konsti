@@ -125,12 +125,9 @@ export const AllGamesView = (): ReactElement => {
     );
   }, [filteredGames, hiddenGames, selectedView, selectedTag]);
 
-  const setView = (selecterView: SelectedView): void => {
-    setSelectedView(selecterView);
-    sessionStorage.setItem(
-      SessionStorageValue.ALL_GAMES_SELECTED_VIEW,
-      selecterView
-    );
+  const setView = (view: SelectedView): void => {
+    setSelectedView(view);
+    sessionStorage.setItem(SessionStorageValue.ALL_GAMES_SELECTED_VIEW, view);
   };
 
   return (
