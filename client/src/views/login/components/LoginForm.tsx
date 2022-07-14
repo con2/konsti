@@ -85,6 +85,11 @@ export const LoginForm = (): ReactElement => {
           <FontAwesomeIcon
             icon={passwordVisible ? "eye-slash" : "eye"}
             onClick={() => setPasswordVisible(!passwordVisible)}
+            aria-label={
+              passwordVisible
+                ? t("iconAltText.hidePassword")
+                : t("iconAltText.showPassword")
+            }
           />
         </FormFieldIcon>
       </FormRow>

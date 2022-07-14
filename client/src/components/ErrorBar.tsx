@@ -28,7 +28,10 @@ export const ErrorBar = (): ReactElement | null => {
         <span>{t(error)}</span>{" "}
         <span>
           {" "}
-          <FontAwesomeIcon icon="xmark" />
+          <FontAwesomeIcon
+            icon="xmark"
+            aria-label={t("iconAltText.closeError")}
+          />
         </span>
       </StyledError>
     );

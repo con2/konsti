@@ -358,5 +358,21 @@
     "oldAccountsNotWorking": "Aikaisempien tapahtumien käyttäjätilit eivät ole käytössä",
     "noAccountRegister": "Ei käyttäjätiliä? Rekisteröidy"
   },
-  "resetInput": "Tyhjennä syöte"
+  "iconAltText": {
+    "resetInput": "Tyhjennä syöte",
+    "openAccordion": "Avaa haitarivalikko",
+    "closeAccordion": "Sulje haitarivalikko",
+    "closeError": "Sulje virhe",
+    "aboutKonsti": "Tietoa Konstista",
+    "openNavigation": "Avaa navigaatiovalikko",
+    "closeNavigation": "Sulje navigaatiovalikko",
+    "addFavorite": "Lisää suosikki",
+    "deleteFavorite": "Poista suosikki",
+    "openChangePassword": "Avaa salasanan vaihto",
+    "closeChangePassword": "Sulje salasanan vaihto",
+    "openPlayerList": "Avaa pelaajalista",
+    "closePlayerList": "Sulje pelaajalista",
+    "showPassword": "Näytä salasana",
+    "hidePassword": "Piilota salasana"
+  }
 }

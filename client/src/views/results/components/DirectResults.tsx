@@ -192,6 +192,11 @@ export const DirectResults = (): ReactElement => {
                           </span>
                           <FontAwesomeIcon
                             icon={playerListVisible ? "angle-up" : "angle-down"}
+                            aria-label={
+                              playerListVisible
+                                ? t("iconAltText.closePlayerList")
+                                : t("iconAltText.openPlayerList")
+                            }
                           />
                         </PlayerCount>
                         {playerListVisible && (
