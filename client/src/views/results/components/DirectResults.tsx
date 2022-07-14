@@ -158,6 +158,11 @@ export const DirectResults = (): ReactElement => {
                               setShowPlayers([...showPlayers, game.gameId]);
                             }
                           }}
+                          aria-label={
+                            playerListVisible
+                              ? t("iconAltText.closePlayerList")
+                              : t("iconAltText.openPlayerList")
+                          }
                         >
                           <span>
                             {t("resultsView.players")}: {users.length}/
@@ -192,11 +197,7 @@ export const DirectResults = (): ReactElement => {
                           </span>
                           <FontAwesomeIcon
                             icon={playerListVisible ? "angle-up" : "angle-down"}
-                            aria-label={
-                              playerListVisible
-                                ? t("iconAltText.closePlayerList")
-                                : t("iconAltText.openPlayerList")
-                            }
+                            aria-hidden="true"
                           />
                         </PlayerCount>
                         {playerListVisible && (
