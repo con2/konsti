@@ -10,12 +10,6 @@ const LocalStorageSchema = z.object({
 
 type LocalStorage = z.infer<typeof LocalStorageSchema>;
 
-export enum LocalStorageValue {
-  ALL_GAMES_SEARCH_TERM = "allGamesSearchTerm",
-  ALL_GAMES_TAG = "allGamesTag",
-  ALL_GAMES_SELECTED_VIEW = "allGamesSelectedView",
-}
-
 export const loadSession = (): LocalStorage | undefined => {
   const serializedState = localStorage.getItem("state");
   if (!serializedState) return undefined;
@@ -53,12 +47,22 @@ export const clearSession = (): void => {
     localStorage.removeItem("state");
     const newSession = _.omit(oldSession, "login");
     saveSession(newSession);
-    Object.values(LocalStorageValue).map((value) => {
-      localStorage.removeItem(value);
-    });
+    clearSessionStorage();
   } catch (error) {
     console.error(error); // eslint-disable-line no-console
   }
+};
+
+export enum SessionStorageValue {
+  ALL_GAMES_SEARCH_TERM = "allGamesSearchTerm",
+  ALL_GAMES_TAG = "allGamesTag",
+  ALL_GAMES_SELECTED_VIEW = "allGamesSelectedView",
+}
+
+const clearSessionStorage = (): void => {
+  Object.values(SessionStorageValue).map((value) => {
+    sessionStorage.removeItem(value);
+  });
 };
 
 export const getLanguage = (): string => {

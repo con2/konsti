@@ -21,7 +21,7 @@ import { useAppSelector } from "client/utils/hooks";
 import { Button, ButtonStyle } from "client/components/Button";
 import { selectActiveGames } from "client/views/admin/adminSlice";
 import { Input } from "client/components/Input";
-import { LocalStorageValue } from "client/utils/localStorage";
+import { SessionStorageValue } from "client/utils/localStorage";
 
 enum SelectedView {
   ALL = "all",
@@ -57,21 +57,25 @@ export const AllGamesView = (): ReactElement => {
   useEffect(() => {
     setLoading(true);
 
-    const loadLocalStorageValues = (): void => {
-      const savedSearchTerm = localStorage.getItem(
-        LocalStorageValue.ALL_GAMES_SEARCH_TERM
+    const loadSessionStorageValues = (): void => {
+      const savedSearchTerm = sessionStorage.getItem(
+        SessionStorageValue.ALL_GAMES_SEARCH_TERM
       );
       setSearchTerm(savedSearchTerm ?? "");
 
-      const savedTag = localStorage.getItem(LocalStorageValue.ALL_GAMES_TAG);
+      const savedTag = sessionStorage.getItem(
+        SessionStorageValue.ALL_GAMES_TAG
+      );
       setSelectedTag(savedTag ?? "");
 
-      const savedSelectedView = localStorage.getItem(
-        LocalStorageValue.ALL_GAMES_SELECTED_VIEW
+      const savedSelectedView = sessionStorage.getItem(
+        SessionStorageValue.ALL_GAMES_SELECTED_VIEW
       );
-      setSelectedView((savedSelectedView as SelectedView) ?? "");
+      setSelectedView(
+        (savedSelectedView as SelectedView) ?? SelectedView.UPCOMING
+      );
     };
-    loadLocalStorageValues();
+    loadSessionStorageValues();
 
     const fetchData = async (): Promise<void> => {
       await loadGames();
@@ -81,8 +85,8 @@ export const AllGamesView = (): ReactElement => {
   }, [store, testTime, signupStrategy]);
 
   useEffect(() => {
-    localStorage.setItem(
-      LocalStorageValue.ALL_GAMES_SEARCH_TERM,
+    sessionStorage.setItem(
+      SessionStorageValue.ALL_GAMES_SEARCH_TERM,
       debouncedSearchTerm
     );
 
@@ -121,12 +125,9 @@ export const AllGamesView = (): ReactElement => {
     );
   }, [filteredGames, hiddenGames, selectedView, selectedTag]);
 
-  const setView = (selecterView: SelectedView): void => {
-    setSelectedView(selecterView);
-    localStorage.setItem(
-      LocalStorageValue.ALL_GAMES_SELECTED_VIEW,
-      selecterView
-    );
+  const setView = (view: SelectedView): void => {
+    setSelectedView(view);
+    sessionStorage.setItem(SessionStorageValue.ALL_GAMES_SELECTED_VIEW, view);
   };
 
   return (
@@ -175,7 +176,7 @@ export const AllGamesView = (): ReactElement => {
             onChange={(event: ChangeEvent<HTMLSelectElement>) => {
               const tag = event.target.value;
               setSelectedTag(tag);
-              localStorage.setItem(LocalStorageValue.ALL_GAMES_TAG, tag);
+              sessionStorage.setItem(SessionStorageValue.ALL_GAMES_TAG, tag);
             }}
             value={selectedTag}
           >
