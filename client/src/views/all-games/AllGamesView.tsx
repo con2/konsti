@@ -71,7 +71,9 @@ export const AllGamesView = (): ReactElement => {
       const savedSelectedView = sessionStorage.getItem(
         SessionStorageValue.ALL_GAMES_SELECTED_VIEW
       );
-      setSelectedView((savedSelectedView as SelectedView) ?? "");
+      setSelectedView(
+        (savedSelectedView as SelectedView) ?? SelectedView.UPCOMING
+      );
     };
     loadSessionStorageValues();
 
