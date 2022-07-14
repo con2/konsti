@@ -365,11 +365,14 @@
     "closeError": "Close error",
     "aboutKonsti": "About Konsti",
     "openNavigation": "Open navigation menu",
+    "closeNavigation": "Close navigation menu",
     "addFavorite": "Add favorite",
     "deleteFavorite": "Delete favorite",
     "openChangePassword": "Open change password",
     "closeChangePassword": "Close change password",
     "openPlayerList": "Open player list",
-    "closePlayerList": "Close player list"
+    "closePlayerList": "Close player list",
+    "showPassword": "Show password",
+    "hidePassword": "Hide password"
   }
 }

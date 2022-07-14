@@ -365,11 +365,14 @@
     "closeError": "Sulje virhe",
     "aboutKonsti": "Tietoa Konstista",
     "openNavigation": "Avaa navigaatiovalikko",
+    "closeNavigation": "Sulje navigaatiovalikko",
     "addFavorite": "Lisää suosikki",
     "deleteFavorite": "Poista suosikki",
     "openChangePassword": "Avaa salasanan vaihto",
     "closeChangePassword": "Sulje salasanan vaihto",
     "openPlayerList": "Avaa pelaajalista",
-    "closePlayerList": "Sulje pelaajalista"
+    "closePlayerList": "Sulje pelaajalista",
+    "showPassword": "Näytä salasana",
+    "hidePassword": "Piilota salasana"
   }
 }
