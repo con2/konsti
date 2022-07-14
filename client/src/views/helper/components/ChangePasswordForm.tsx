@@ -78,6 +78,11 @@ export const ChangePasswordForm = ({ username }: Props): ReactElement => {
         <FontAwesomeIcon
           icon={passwordFieldType === "password" ? "eye" : "eye-slash"}
           onClick={togglePasswordVisibility}
+          aria-label={
+            passwordFieldType === "password"
+              ? t("iconAltText.showPassword")
+              : t("iconAltText.hidePassword")
+          }
         />
       </FormFieldIcon>
 
