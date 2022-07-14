@@ -14,6 +14,7 @@ interface Props {
   type?: "submit" | "button";
   className?: string;
   "data-testid"?: string;
+  "aria-label"?: string;
 }
 
 export const Button = ({
@@ -23,6 +24,7 @@ export const Button = ({
   type = "button",
   className,
   "data-testid": dataTestId,
+  "aria-label": ariaLabel,
 }: Props): ReactElement => {
   return (
     <StyledButton
@@ -32,6 +34,7 @@ export const Button = ({
       data-testid={dataTestId}
       buttonStyle={buttonStyle}
       disabled={buttonStyle === ButtonStyle.DISABLED}
+      aria-label={ariaLabel}
     >
       {children}
     </StyledButton>
