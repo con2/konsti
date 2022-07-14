@@ -175,8 +175,9 @@ export const GameEntry = ({
             }
             buttonStyle={ButtonStyle.NORMAL}
             data-testid={"remove-favorite-button"}
+            aria-label={t("iconAltText.deleteFavorite")}
           >
-            <FavoriteIcon icon="heart" />
+            <FavoriteIcon icon="heart" aria-hidden="true" />
           </FavoriteButton>
         )}
         {!favorited && loggedIn && userGroup === "user" && game && (
@@ -192,8 +193,9 @@ export const GameEntry = ({
             }
             buttonStyle={ButtonStyle.NORMAL}
             data-testid={"add-favorite-button"}
+            aria-label={t("iconAltText.addFavorite")}
           >
-            <FavoriteIcon icon={["far", "heart"]} />
+            <FavoriteIcon icon={["far", "heart"]} aria-hidden="true" />
           </FavoriteButton>
         )}
       </GameHeader>

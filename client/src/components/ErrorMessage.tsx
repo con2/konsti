@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { ReactElement } from "react";
+import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 
 interface Props {
@@ -11,11 +12,17 @@ export const ErrorMessage = ({
   message,
   closeError,
 }: Props): ReactElement | null => {
+  const { t } = useTranslation();
+
   if (!message) return null;
   return (
     <ErrorContainer>
       <StyledErrorMessage>{message}</StyledErrorMessage>
-      <StyledIcon onClick={closeError} icon="xmark" />
+      <StyledIcon
+        onClick={closeError}
+        icon="xmark"
+        aria-label={t("iconAltText.closeError")}
+      />
     </ErrorContainer>
   );
 };

@@ -32,7 +32,7 @@ export const Input = ({
       <StyledIcon
         onClick={resetValue}
         icon="xmark"
-        aria-label={t("resetInput")}
+        aria-label={t("iconAltText.resetInput")}
       />
     </InputContainer>
   );
