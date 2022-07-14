@@ -36,7 +36,8 @@ export const PopularityInfo = ({
 
   return (
     <GamePopularityContainer>
-      <GamePopularityIcon icon={icon} color={color} /> {includeMsg && msg}
+      <GamePopularityIcon icon={icon} color={color} aria-hidden="true" />{" "}
+      {includeMsg && msg}
     </GamePopularityContainer>
   );
 };

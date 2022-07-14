@@ -120,7 +120,14 @@ export const MyGamesView = (): ReactElement => {
         onClick={() => setShowChangePassword(!showChangePassword)}
       >
         <>
-          <AngleIcon icon={showChangePassword ? "angle-up" : "angle-down"} />
+          <AngleIcon
+            icon={showChangePassword ? "angle-up" : "angle-down"}
+            aria-label={
+              showChangePassword
+                ? t("iconAltText.closeChangePassword")
+                : t("iconAltText.openChangePassword")
+            }
+          />
           {t("myGamesView.changePassword")}
         </>
       </ChangePasswordButton>

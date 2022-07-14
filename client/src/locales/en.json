@@ -358,5 +358,18 @@
     "oldAccountsNotWorking": "Accounts from old events don't work anymore",
     "noAccountRegister": "No account? Register"
   },
-  "resetInput": "Reset input"
+  "iconAltText": {
+    "resetInput": "Reset input",
+    "openAccordion": "Open accordion menu",
+    "closeAccordion": "Close accordion menu",
+    "closeError": "Close error",
+    "aboutKonsti": "About Konsti",
+    "openNavigation": "Open navigation menu",
+    "addFavorite": "Add favorite",
+    "deleteFavorite": "Delete favorite",
+    "openChangePassword": "Open change password",
+    "closeChangePassword": "Close change password",
+    "openPlayerList": "Open player list",
+    "closePlayerList": "Close player list"
+  }
 }

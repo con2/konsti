@@ -28,7 +28,10 @@ export const Header = (): ReactElement => {
 
         <HeaderRightSideContainer>
           <StyledLink to={"/about"}>
-            <StyledIcon icon="circle-question" />
+            <StyledIcon
+              icon="circle-question"
+              aria-label={t("iconAltText.aboutKonsti")}
+            />
           </StyledLink>
           <HeaderLanguageSelector />
         </HeaderRightSideContainer>

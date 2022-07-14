@@ -1,6 +1,7 @@
 import React, { ReactElement, ReactNode, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
 import { Button, ButtonStyle } from "client/components/Button";
 
 interface Props {
@@ -14,6 +15,8 @@ export const Accordion = ({
   children,
   initialValue = false,
 }: Props): ReactElement => {
+  const { t } = useTranslation();
+
   const [open, setOpen] = useState<boolean>(initialValue);
 
   const onClick = (): void => {
@@ -26,7 +29,16 @@ export const Accordion = ({
         onClick={() => onClick()}
         buttonStyle={ButtonStyle.NORMAL}
       >
-        {<AccordionIcon icon={open ? "angle-up" : "angle-down"} />}
+        {
+          <AccordionIcon
+            icon={open ? "angle-up" : "angle-down"}
+            aria-label={
+              open
+                ? t("iconAltText.closeAccordion")
+                : t("iconAltText.openAccordion")
+            }
+          />
+        }
         {toggleButton}
       </AccordionToggle>
 

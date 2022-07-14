@@ -25,6 +25,7 @@ export const Navigation = (): ReactElement => {
         <NavigationIcon
           icon={icon}
           onClick={() => setIsOpen(!isOpen)}
+          aria-label={t("iconAltText.openNavigation")}
           data-testid="navigation-icon"
         />
       </NavigationIconContainer>

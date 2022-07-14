@@ -118,6 +118,7 @@ export const RegistrationForm = (): ReactElement => {
             <FontAwesomeIcon
               icon={passwordVisible ? "eye-slash" : "eye"}
               onClick={() => setPasswordVisible(!passwordVisible)}
+              aria-hidden="true"
             />
           </FormFieldIcon>
         </FormRow>
