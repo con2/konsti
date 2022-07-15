@@ -8,6 +8,7 @@ interface Config {
   enableWhyDidYouRender: boolean;
   dataUpdateInterval: number;
   noSignupGames: string[];
+  enableStrategyTestValue: boolean;
 }
 
 export const config: Config = {
@@ -21,6 +22,7 @@ export const config: Config = {
   enableReduxTrace: false,
   enableAxe: false,
   enableWhyDidYouRender: false,
+  enableStrategyTestValue: false,
 
   // Environment dependent
   loadedSettings: process.env.SETTINGS ?? "development",
