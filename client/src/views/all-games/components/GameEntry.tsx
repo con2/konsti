@@ -299,6 +299,12 @@ const GameContainer = styled.div<{ disabled: boolean; signed: boolean }>`
   min-height: 160px;
   box-shadow: 1px 8px 15px 0 rgba(0, 0, 0, 0.42);
   color: #3d3d3d;
+
+  @media (max-width: ${(props) => props.theme.breakpointPhone}) {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
   ${(props) => props.disabled && "opacity: 50%"}
   ${(props) =>
     props.signed && `border-left: 5px solid ${props.theme.borderActive}`}

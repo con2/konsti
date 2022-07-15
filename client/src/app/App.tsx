@@ -1,6 +1,7 @@
 import React, { ReactElement, useEffect, useState } from "react";
 import { useStore } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
+import styled from "styled-components";
 import { AppRoutes } from "client/app/AppRoutes";
 import { Header } from "client/components/Header";
 import { loadData } from "client/utils/loadData";
@@ -10,6 +11,7 @@ import { config } from "client/config";
 import { ErrorBar } from "client/components/ErrorBar";
 import { ProgramTypeSelection } from "client/components/EventTypeSelection";
 import { useAppSelector } from "client/utils/hooks";
+import { MOBILE_MARGIN } from "client/globalStyle";
 
 export const App = (): ReactElement => {
   const { dataUpdateInterval } = config;
@@ -45,11 +47,20 @@ export const App = (): ReactElement => {
           <Header />
           <ErrorBar />
           {appOpen && <ProgramTypeSelection />}
-          <AppRoutes />
+          <AppContainer>
+            <AppRoutes />
+          </AppContainer>
         </BrowserRouter>
       )}
     </>
   );
 };
+
+const AppContainer = styled.div`
+  @media (max-width: ${(props) => props.theme.breakpointPhone}) {
+    margin-left: ${MOBILE_MARGIN}px;
+    margin-right: ${MOBILE_MARGIN}px;
+  }
+`;
 
 export default App;
