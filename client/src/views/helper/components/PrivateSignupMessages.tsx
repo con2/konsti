@@ -53,10 +53,14 @@ export const PrivateSignupMessages = (): ReactElement => {
 
     const gamesFilteredBySearchTerm = games.filter((game) => {
       return (
-        game.title.toLocaleLowerCase().includes(searchTerm) ||
+        game.title
+          .toLocaleLowerCase()
+          .includes(searchTerm.toLocaleLowerCase()) ||
         privateSignupMessages.find(
           (signupMessage) =>
-            signupMessage.username.toLocaleLowerCase().includes(searchTerm) &&
+            signupMessage.username
+              .toLocaleLowerCase()
+              .includes(searchTerm.toLocaleLowerCase()) &&
             signupMessage.gameId === game.gameId
         )
       );

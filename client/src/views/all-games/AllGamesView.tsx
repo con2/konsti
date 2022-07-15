@@ -97,8 +97,12 @@ export const AllGamesView = (): ReactElement => {
 
     const gamesFilteredBySearchTerm = activeGames.filter((activeGame) => {
       return (
-        activeGame.title.toLocaleLowerCase().includes(debouncedSearchTerm) ||
-        activeGame.gameSystem.toLocaleLowerCase().includes(debouncedSearchTerm)
+        activeGame.title
+          .toLocaleLowerCase()
+          .includes(debouncedSearchTerm.toLocaleLowerCase()) ||
+        activeGame.gameSystem
+          .toLocaleLowerCase()
+          .includes(debouncedSearchTerm.toLocaleLowerCase())
       );
     });
 
