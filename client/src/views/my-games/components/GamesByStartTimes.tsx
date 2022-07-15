@@ -79,10 +79,14 @@ export const GamesByStartTimes = ({
 };
 
 const GameDetailsList = styled.p`
+  display: flex;
+  align-items: center;
   margin: 0 0 0 30px;
 
   @media (max-width: ${(props) => props.theme.breakpointPhone}) {
     margin-left: 10px;
+    flex-direction: column;
+    align-items: flex-start;
   }
 `;
 
