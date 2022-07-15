@@ -239,7 +239,7 @@ const PlayerCount = styled("span")`
 `;
 
 const FavoriteButton = styled(Button)`
-  margin: 0 16px;
+  margin: 0 0 0 16px;
   width: 60px;
   max-height: 50px;
 `;

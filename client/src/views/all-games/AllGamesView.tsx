@@ -146,7 +146,7 @@ export const AllGamesView = (): ReactElement => {
                 : ButtonStyle.NORMAL
             }
           >
-            {t("upcomingGames")}
+            {t("upcoming")}
           </Button>
 
           <Button
@@ -157,7 +157,7 @@ export const AllGamesView = (): ReactElement => {
                 : ButtonStyle.NORMAL
             }
           >
-            {t("allGames")}
+            {t("all")}
           </Button>
 
           {activeProgramType === ProgramType.TABLETOP_RPG && (
@@ -175,7 +175,7 @@ export const AllGamesView = (): ReactElement => {
         </AllGamesToggleVisibility>
 
         <TagsDropdown>
-          <ChooseTagsInstruction>{t("chooseTag")} </ChooseTagsInstruction>
+          <span>{t("chooseTag")} </span>
           <select
             onChange={(event: ChangeEvent<HTMLSelectElement>) => {
               const tag = event.target.value;
@@ -236,12 +236,6 @@ const AllGamesVisibilityBar = styled.div`
   @media (max-width: ${(props) => props.theme.breakpointPhone}) {
     flex-direction: column;
     align-items: flex-start;
-  }
-`;
-
-const ChooseTagsInstruction = styled.span`
-  @media (max-width: ${(props) => props.theme.breakpointPhone}) {
-    display: none;
   }
 `;
 

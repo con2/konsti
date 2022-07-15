@@ -65,13 +65,13 @@ export const MyGamesView = (): ReactElement => {
             !showAllGames ? ButtonStyle.DISABLED : ButtonStyle.NORMAL
           }
         >
-          {t("lastStartedAndUpcomingGames")}
+          {t("lastStartedAndUpcoming")}
         </Button>
         <Button
           onClick={() => setShowAllGames(true)}
           buttonStyle={showAllGames ? ButtonStyle.DISABLED : ButtonStyle.NORMAL}
         >
-          {t("allGames")}
+          {t("all")}
         </Button>
       </div>
 
@@ -139,7 +139,12 @@ export const MyGamesView = (): ReactElement => {
 };
 
 const MyGamesViewContainer = styled.div`
-  padding: 8px 16px;
+  margin: 8px 16px 8px 16px;
+
+  @media (max-width: ${(props) => props.theme.breakpointPhone}) {
+    margin-left: 0;
+    margin-right: 0;
+  }
 `;
 
 const ChangePasswordButton = styled(Button)`
