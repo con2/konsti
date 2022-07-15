@@ -5,7 +5,7 @@ import { Dropdown } from "client/components/Dropdown";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { submitSetSignupStrategy } from "client/views/admin/adminThunks";
 
-export const SignupStrategySelector = (): ReactElement | null => {
+export const SignupStrategySelector = (): ReactElement => {
   const signupStrategy = useAppSelector((state) => state.admin.signupStrategy);
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
