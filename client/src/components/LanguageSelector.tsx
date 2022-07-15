@@ -36,4 +36,5 @@ export const LanguageSelector = (): ReactElement => {
 const LanguageSelectorContainer = styled.select`
   height: 30px;
   width: 60px;
+  margin: 0 8px 0 0;
 `;
