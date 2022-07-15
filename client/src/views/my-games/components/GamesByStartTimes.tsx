@@ -81,6 +81,7 @@ export const GamesByStartTimes = ({
 const GameDetailsList = styled.p`
   display: flex;
   align-items: center;
+  flex-direction: row;
   margin: 0 0 0 30px;
 
   @media (max-width: ${(props) => props.theme.breakpointPhone}) {

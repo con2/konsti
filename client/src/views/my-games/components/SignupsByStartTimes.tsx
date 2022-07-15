@@ -57,12 +57,11 @@ export const SignupsByStartTimes = ({
 const GameDetailsContainer = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  max-width: 400px;
   margin: 0 0 6px 30px;
 
   @media (max-width: ${(props) => props.theme.breakpointPhone}) {
     margin-left: 10px;
+    justify-content: space-between;
   }
 `;
 
