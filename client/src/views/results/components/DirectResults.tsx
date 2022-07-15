@@ -99,13 +99,13 @@ export const DirectResults = (): ReactElement => {
             !showAllGames ? ButtonStyle.DISABLED : ButtonStyle.NORMAL
           }
         >
-          {t("lastStartedAndUpcomingGames")}
+          {t("lastStartedAndUpcoming")}
         </Button>
         <Button
           onClick={() => setShowAllGames(true)}
           buttonStyle={showAllGames ? ButtonStyle.DISABLED : ButtonStyle.NORMAL}
         >
-          {t("allGames")}
+          {t("all")}
         </Button>
       </div>
 
@@ -238,10 +238,11 @@ const CommentIcon = styled(FontAwesomeIcon)`
   margin-left: 8px;
 `;
 
-const ResultTitle = styled.h4`
+const ResultTitle = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 4px;
+  font-weight: 600;
 `;
 
 const TimeSlot = styled.div`
@@ -256,7 +257,11 @@ const Games = styled.div`
   display: grid;
   grid-gap: 30px;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  padding: 0 10px 0 30px;
+  margin: 0 10px 0 30px;
+
+  @media (max-width: ${(props) => props.theme.breakpointPhone}) {
+    margin-left: 10px;
+  }
 `;
 
 const PlayerList = styled.div`

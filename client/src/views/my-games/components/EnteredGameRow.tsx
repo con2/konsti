@@ -111,8 +111,14 @@ export const EnteredGameRow = ({
 
 const GameDetailsList = styled.div`
   display: flex;
-  flex-direction: column;
+  align-items: center;
   padding-left: 10px;
+
+  @media (max-width: ${(props) => props.theme.breakpointPhone}) {
+    margin-left: 10px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
 `;
 
 const ButtonContainer = styled.div`

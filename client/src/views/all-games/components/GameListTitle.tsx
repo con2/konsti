@@ -94,7 +94,7 @@ const SignupCount = styled.span`
 
 const GameListTitleContainer = styled.div<{ isVisible: boolean }>`
   z-index: 2;
-  margin: 20px -${MOBILE_MARGIN}px 20px -${MOBILE_MARGIN}px;
+  margin: 20px 0 20px 0;
   padding: 8px;
   background: #fafafa;
   border-bottom: 1px solid #d5d5d5;
@@ -107,6 +107,11 @@ const GameListTitleContainer = styled.div<{ isVisible: boolean }>`
     css`
       box-shadow: 4px 4px 45px 4px #d5d5d5;
     `};
+
+  @media (max-width: ${(props) => props.theme.breakpointPhone}) {
+    margin-left: -${MOBILE_MARGIN}px;
+    margin-right: -${MOBILE_MARGIN}px;
+  }
 `;
 
 const StyledGameListTitle = styled.h3`
