@@ -160,10 +160,24 @@ export const storeUser = async (
   };
 };
 
+const PASSWORD_CHANGE_NOT_ALLOWED = ["admin", "helper"];
+
 export const storeUserPassword = async (
   username: string,
-  password: string
+  password: string,
+  requester: string
 ): Promise<PostUserResponse | ApiError> => {
+  if (
+    requester === "helper" &&
+    PASSWORD_CHANGE_NOT_ALLOWED.includes(username)
+  ) {
+    return {
+      message: "Password change not allowed",
+      status: "error",
+      errorId: "notAllowed",
+    };
+  }
+
   let passwordHash;
   try {
     passwordHash = await hashPassword(password);
@@ -192,12 +206,6 @@ export const storeUserPassword = async (
     status: "success",
     username: "notAvailable",
     password: "notAvailable",
-  };
-
-  return {
-    message: "Unknown error",
-    status: "error",
-    errorId: "unknown",
   };
 };
 
