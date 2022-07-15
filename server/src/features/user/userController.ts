@@ -72,13 +72,17 @@ export const postUserPassword = async (
     if (!isAuthorized(req.headers.authorization, UserGroup.HELP, requester)) {
       return res.sendStatus(401);
     }
+  } else if (requester === "admin") {
+    if (!isAuthorized(req.headers.authorization, UserGroup.ADMIN, requester)) {
+      return res.sendStatus(401);
+    }
   } else {
     if (!isAuthorized(req.headers.authorization, UserGroup.USER, username)) {
       return res.sendStatus(401);
     }
   }
 
-  const response = await storeUserPassword(username, password);
+  const response = await storeUserPassword(username, password, requester);
   return res.json(response);
 };
 
@@ -123,7 +127,19 @@ export const getUserBySerialOrUsername = async (
 ): Promise<Response> => {
   logger.info(`API call: GET ${ApiEndpoint.USERS_BY_SERIAL_OR_USERNAME}`);
 
-  if (!isAuthorized(req.headers.authorization, UserGroup.HELP, "helper")) {
+  const helperAuth = isAuthorized(
+    req.headers.authorization,
+    UserGroup.HELP,
+    "helper"
+  );
+
+  const adminAuth = isAuthorized(
+    req.headers.authorization,
+    UserGroup.ADMIN,
+    "admin"
+  );
+
+  if (!helperAuth && !adminAuth) {
     return res.sendStatus(401);
   }
 

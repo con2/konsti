@@ -164,7 +164,7 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
     }
   });
 
-  test("should return 200 with valid body and authorization", async () => {
+  test("should allow user to change own password", async () => {
     const { server, mongoServer } = await startTestServer();
 
     try {
@@ -177,6 +177,106 @@ describe(`POST ${ApiEndpoint.USERS_PASSWORD}`, () => {
         })
         .set("Authorization", `Bearer ${getJWT(UserGroup.USER, "testuser")}`);
       expect(response.status).toEqual(200);
+      expect(response.body.status).toEqual("success");
+    } finally {
+      await stopTestServer(server, mongoServer);
+    }
+  });
+
+  test("should not allow user to change other user's password", async () => {
+    const { server, mongoServer } = await startTestServer();
+
+    try {
+      const response = await request(server)
+        .post(ApiEndpoint.USERS_PASSWORD)
+        .send({
+          username: "another_user",
+          password: "testpass",
+          requester: "testuser",
+        })
+        .set("Authorization", `Bearer ${getJWT(UserGroup.USER, "testuser")}`);
+      expect(response.status).toEqual(401);
+    } finally {
+      await stopTestServer(server, mongoServer);
+    }
+  });
+
+  test("should allow helper to change other user's password", async () => {
+    const { server, mongoServer } = await startTestServer();
+
+    try {
+      const response = await request(server)
+        .post(ApiEndpoint.USERS_PASSWORD)
+        .send({
+          username: "another_user",
+          password: "testpass",
+          requester: "helper",
+        })
+        .set("Authorization", `Bearer ${getJWT(UserGroup.HELP, "helper")}`);
+      expect(response.status).toEqual(200);
+      expect(response.body.status).toEqual("success");
+    } finally {
+      await stopTestServer(server, mongoServer);
+    }
+  });
+
+  test("should not allow helper to change password for 'admin' or 'helper' users", async () => {
+    const { server, mongoServer } = await startTestServer();
+
+    try {
+      const response = await request(server)
+        .post(ApiEndpoint.USERS_PASSWORD)
+        .send({
+          username: "admin",
+          password: "testpass",
+          requester: "helper",
+        })
+        .set("Authorization", `Bearer ${getJWT(UserGroup.HELP, "helper")}`);
+      expect(response.status).toEqual(200);
+      expect(response.body.status).toEqual("error");
+      expect(response.body.errorId).toEqual("notAllowed");
+
+      const response2 = await request(server)
+        .post(ApiEndpoint.USERS_PASSWORD)
+        .send({
+          username: "helper",
+          password: "testpass",
+          requester: "helper",
+        })
+        .set("Authorization", `Bearer ${getJWT(UserGroup.HELP, "helper")}`);
+      expect(response2.status).toEqual(200);
+      expect(response2.body.status).toEqual("error");
+      expect(response2.body.errorId).toEqual("notAllowed");
+    } finally {
+      await stopTestServer(server, mongoServer);
+    }
+  });
+
+  test("should allow admin to change password for 'admin' or 'helper' users", async () => {
+    const { server, mongoServer } = await startTestServer();
+
+    try {
+      const response = await request(server)
+        .post(ApiEndpoint.USERS_PASSWORD)
+        .send({
+          username: "admin",
+          password: "testpass",
+          requester: "admin",
+        })
+        .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+      expect(response.status).toEqual(200);
+      expect(response.body.status).toEqual("success");
+
+      const response2 = await request(server)
+        .post(ApiEndpoint.USERS_PASSWORD)
+        .send({
+          username: "helper",
+          password: "testpass",
+          requester: "admin",
+        })
+        .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+      expect(response2.status).toEqual(200);
+      expect(response2.body.status).toEqual("success");
     } finally {
       await stopTestServer(server, mongoServer);
     }
