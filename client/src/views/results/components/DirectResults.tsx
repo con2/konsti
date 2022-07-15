@@ -9,7 +9,6 @@ import { getUsersForGameId } from "client/views/results/resultsUtils";
 import { getUpcomingGames } from "client/utils/getUpcomingGames";
 import { Button, ButtonStyle } from "client/components/Button";
 import { Game } from "shared/typings/models/game";
-import { SignupStrategy } from "shared/config/sharedConfig.types";
 import { selectActiveGames } from "client/views/admin/adminSlice";
 import { Input } from "client/components/Input";
 
@@ -31,11 +30,9 @@ export const DirectResults = (): ReactElement => {
     (signupQuestion) => !signupQuestion.private
   );
 
-  const visibleGames = activeGames
-    .filter((activeGame) => activeGame.signupStrategy === SignupStrategy.DIRECT)
-    .filter((activeGame) =>
-      hiddenGames.every((hiddenGame) => activeGame.gameId !== hiddenGame.gameId)
-    );
+  const visibleGames = activeGames.filter((activeGame) =>
+    hiddenGames.every((hiddenGame) => activeGame.gameId !== hiddenGame.gameId)
+  );
 
   const filteredGames = showAllGames
     ? _.sortBy(visibleGames, "startTime")
