@@ -28,8 +28,8 @@ export const findSignups = async (): Promise<Signup[]> => {
   }
 
   if (!response) {
-    return [];
     logger.info(`MongoDB: Signups not found`);
+    return [];
   }
 
   logger.debug(`MongoDB: Signups found`);
