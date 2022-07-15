@@ -13,6 +13,7 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
+    "allowUnreachableCode": false,
     "paths": {
       "client/*": ["client/src/*"],
       "server/*": ["server/src/*"],
