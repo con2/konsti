@@ -62,9 +62,13 @@ export const DirectResults = (): ReactElement => {
     const gamesFilteredBySearchTerm = gamesForListing.filter((game) => {
       const users = getUsersForGameId(game.gameId, signups);
       return (
-        game.title.toLocaleLowerCase().includes(searchTerm) ||
+        game.title
+          .toLocaleLowerCase()
+          .includes(searchTerm.toLocaleLowerCase()) ||
         users.some((user) =>
-          user.username.toLocaleLowerCase().includes(searchTerm)
+          user.username
+            .toLocaleLowerCase()
+            .includes(searchTerm.toLocaleLowerCase())
         )
       );
     });
