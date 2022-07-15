@@ -56,5 +56,9 @@ export const MyEnteredList = ({
 };
 
 const MyEnteredGames = styled.div`
-  padding-left: 30px;
+  margin-left: 30px;
+
+  @media (max-width: ${(props) => props.theme.breakpointPhone}) {
+    margin-left: 10px;
+  }
 `;

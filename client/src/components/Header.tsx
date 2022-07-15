@@ -62,7 +62,8 @@ const HeaderTitle = styled.div`
   display: flex;
   flex: 0 1 auto;
   align-items: center;
-  justify-content: space-between;
+  text-align: center;
+  margin: 4px 8px 4px 8px;
 `;
 
 const ClosingMessage = styled.h2`

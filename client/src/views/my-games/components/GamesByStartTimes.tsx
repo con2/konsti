@@ -79,8 +79,11 @@ export const GamesByStartTimes = ({
 };
 
 const GameDetailsList = styled.p`
-  padding-left: 30px;
-  margin: 0;
+  margin: 0 0 0 30px;
+
+  @media (max-width: ${(props) => props.theme.breakpointPhone}) {
+    margin-left: 10px;
+  }
 `;
 
 const ButtonPlacement = styled.span`
