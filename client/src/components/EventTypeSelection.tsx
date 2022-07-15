@@ -6,6 +6,7 @@ import { ProgramType } from "shared/typings/models/game";
 import { setActiveProgramType } from "client/views/admin/adminSlice";
 import { Dropdown } from "client/components/Dropdown";
 import { saveSession } from "client/utils/localStorage";
+import { MOBILE_MARGIN } from "client/globalStyle";
 
 export const ProgramTypeSelection = (): ReactElement => {
   const { t } = useTranslation();
@@ -23,7 +24,7 @@ export const ProgramTypeSelection = (): ReactElement => {
   }));
 
   return (
-    <>
+    <EventTypeSelectionContainer>
       <InfoText>{t("selectedProgramType")}</InfoText>
       <Dropdown
         items={dropdownItems}
@@ -37,9 +38,16 @@ export const ProgramTypeSelection = (): ReactElement => {
         }}
         loading={false}
       />
-    </>
+    </EventTypeSelectionContainer>
   );
 };
+
+const EventTypeSelectionContainer = styled.div`
+  @media (max-width: ${(props) => props.theme.breakpointPhone}) {
+    margin-left: ${MOBILE_MARGIN}px;
+    margin-right: ${MOBILE_MARGIN}px;
+  }
+`;
 
 const InfoText = styled.span`
   margin-right: 8px;

@@ -5,6 +5,7 @@ import useIntersectionObserver from "@react-hook/intersection-observer";
 import { timeFormatter } from "client/utils/timeFormatter";
 import { SelectedGame } from "shared/typings/models/user";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
+import { MOBILE_MARGIN } from "client/globalStyle";
 
 interface Props {
   startTime: string;
@@ -93,7 +94,7 @@ const SignupCount = styled.span`
 
 const GameListTitleContainer = styled.div<{ isVisible: boolean }>`
   z-index: 2;
-  margin: 20px 0;
+  margin: 20px -${MOBILE_MARGIN}px 20px -${MOBILE_MARGIN}px;
   padding: 8px;
   background: #fafafa;
   border-bottom: 1px solid #d5d5d5;
