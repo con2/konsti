@@ -46,7 +46,11 @@ export const MySignupsList = ({
 };
 
 const MySignupsGames = styled.div`
-  padding-left: 30px;
+  margin-left: 30px;
+
+  @media (max-width: ${(props) => props.theme.breakpointPhone}) {
+    margin-left: 10px;
+  }
 `;
 
 const InfoText = styled.p`

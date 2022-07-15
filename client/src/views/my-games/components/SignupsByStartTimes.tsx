@@ -30,12 +30,12 @@ export const SignupsByStartTimes = ({
               if (signup.time === startTime) {
                 return (
                   <GameDetailsContainer key={signup.gameDetails.gameId}>
-                    <GameDetailsList>
-                      {`${signup.priority}) `}
-                      <Link to={`/games/${signup.gameDetails.gameId}`}>
+                    <RowLeftSide>
+                      <SignupPriority>{`${signup.priority})`}</SignupPriority>
+                      <StyledLink to={`/games/${signup.gameDetails.gameId}`}>
                         {signup.gameDetails.title}
-                      </Link>
-                    </GameDetailsList>
+                      </StyledLink>
+                    </RowLeftSide>
                     <PopularityContainer>
                       <PopularityInfo
                         minAttendance={signup.gameDetails.minAttendance}
@@ -57,17 +57,34 @@ export const SignupsByStartTimes = ({
 const GameDetailsContainer = styled.div`
   display: flex;
   flex-direction: row;
+  margin: 0 0 6px 30px;
+
+  @media (max-width: ${(props) => props.theme.breakpointPhone}) {
+    margin-left: 10px;
+    justify-content: space-between;
+  }
 `;
 
-const GameDetailsList = styled.p`
-  padding-left: 30px;
+const RowLeftSide = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+const StyledLink = styled(Link)`
+  display: flex;
+  width: fit-content;
 `;
 
 const PopularityContainer = styled.div`
-  margin-top: 15px;
-  padding-left: 10px;
+  margin-left: 10px;
 `;
+
 const StyledTime = styled.p`
   font-weight: 600;
   margin: 10px 0;
+`;
+
+const SignupPriority = styled.span`
+  vertical-align: text-bottom;
+
+  margin-right: 4px;
 `;
