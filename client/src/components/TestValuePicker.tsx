@@ -8,6 +8,7 @@ import { Accordion } from "client/components/Accordion";
 import { testTimes } from "client/test/test-components/testComponentUtils";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { submitSetTestSettings } from "client/test/test-settings/testSettingsThunks";
+import { config } from "client/config";
 
 export const TestValuePicker = (): ReactElement => {
   const dispatch = useAppDispatch();
@@ -31,7 +32,7 @@ export const TestValuePicker = (): ReactElement => {
       <Accordion toggleButton={t("testValues.buttonText")}>
         <TestValueSelectors>
           <TestTimeSelector testTime={testTime} />
-          <SignupStrategySelector />
+          {config.enableStrategyTestValue && <SignupStrategySelector />}
         </TestValueSelectors>
       </Accordion>
     </div>

@@ -4,7 +4,6 @@ import { SignupStrategy } from "shared/config/sharedConfig.types";
 import { Dropdown } from "client/components/Dropdown";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { submitSetSignupStrategy } from "client/views/admin/adminThunks";
-import { config } from "client/config";
 
 export const SignupStrategySelector = (): ReactElement | null => {
   const signupStrategy = useAppSelector((state) => state.admin.signupStrategy);
@@ -20,10 +19,6 @@ export const SignupStrategySelector = (): ReactElement | null => {
       title: t("strategies.algorithm+direct"),
     },
   ];
-
-  if (!config.enableStrategyTestValue) {
-    return null;
-  }
 
   return (
     <div>
