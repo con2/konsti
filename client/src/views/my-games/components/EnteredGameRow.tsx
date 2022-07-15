@@ -62,31 +62,31 @@ export const EnteredGameRow = ({
 
   return (
     <GameDetailsList key={signup.gameDetails.gameId}>
-      <div>
+      <GameTitleAndButtons>
         <Link to={`/games/${signup.gameDetails.gameId}`}>
           {signup.gameDetails.title}
         </Link>
-      </div>
-      <ButtonContainer>
-        {cancelSignupFormOpen ? (
-          <CancelSignupFormContainer>
-            <CancelSignupForm
-              onCancelForm={() => {
-                setServerError(null);
-                setCancelSignupFormOpen(false);
-              }}
-              onConfirmForm={async () => await removeSignup()}
-            />
-          </CancelSignupFormContainer>
-        ) : (
-          <Button
-            onClick={() => setCancelSignupFormOpen(true)}
-            buttonStyle={ButtonStyle.NORMAL}
-          >
-            {t("button.cancelSignup")}
-          </Button>
-        )}
-      </ButtonContainer>
+        <ButtonContainer>
+          {cancelSignupFormOpen ? (
+            <CancelSignupFormContainer>
+              <CancelSignupForm
+                onCancelForm={() => {
+                  setServerError(null);
+                  setCancelSignupFormOpen(false);
+                }}
+                onConfirmForm={async () => await removeSignup()}
+              />
+            </CancelSignupFormContainer>
+          ) : (
+            <Button
+              onClick={() => setCancelSignupFormOpen(true)}
+              buttonStyle={ButtonStyle.NORMAL}
+            >
+              {t("button.cancelSignup")}
+            </Button>
+          )}
+        </ButtonContainer>
+      </GameTitleAndButtons>
 
       {!!signupQuestion && (
         <SignupQuestionPlacement>
@@ -111,11 +111,20 @@ export const EnteredGameRow = ({
 
 const GameDetailsList = styled.div`
   display: flex;
-  align-items: center;
+  flex-direction: column;
   padding-left: 10px;
 
   @media (max-width: ${(props) => props.theme.breakpointPhone}) {
     margin-left: 10px;
+  }
+`;
+
+const GameTitleAndButtons = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  @media (max-width: ${(props) => props.theme.breakpointPhone}) {
     flex-direction: column;
     align-items: flex-start;
   }
