@@ -67,7 +67,7 @@ export const PrivateSignupMessages = (): ReactElement => {
     });
 
     setFilteredGames(gamesFilteredBySearchTerm);
-  }, [searchTerm, games, privateSignupMessages]);
+  }, [searchTerm, games]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div>
