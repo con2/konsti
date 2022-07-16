@@ -146,6 +146,10 @@ const prodConfig: Configuration = {
       configFile: "sentry.properties",
       org: "konsti",
       project: "konsti-frontend",
+      errorHandler: (err, _invokeErr, compilation) => {
+        // @ts-expect-error: Types not available
+        compilation.warnings.push("Sentry CLI Plugin: " + err.message);
+      },
     }),
   ],
 
