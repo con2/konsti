@@ -113,7 +113,7 @@ export const AllGamesView = (): ReactElement => {
   const filters = [
     Tag.IN_ENGLISH,
     Tag.BEGINNER_FRIENDLY,
-    Tag.FOR_MINORS,
+    Tag.SUITABLE_UNDER_10,
     Tag.AGE_RESTRICTED,
   ];
 
