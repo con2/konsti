@@ -51,4 +51,8 @@ const EventTypeSelectionContainer = styled.div`
 
 const InfoText = styled.span`
   margin-right: 8px;
+
+  @media (max-width: ${(props) => props.theme.breakpointPhone}) {
+    display: none;
+  }
 `;
