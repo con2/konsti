@@ -46,6 +46,10 @@ const EventTypeSelectionContainer = styled.div`
   @media (max-width: ${(props) => props.theme.breakpointPhone}) {
     margin-left: ${MOBILE_MARGIN}px;
     margin-right: ${MOBILE_MARGIN}px;
+
+    select {
+      width: 45%;
+    }
   }
 `;
 

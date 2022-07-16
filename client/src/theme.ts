@@ -77,8 +77,7 @@ export const theme = {
   warningBorder: yellow,
 
   // Breakpoints
-  breakpointPhone: "500px",
-  breakpointTablet: "768px",
+  breakpointPhone: "768px",
   breakpointDesktop: "1024px",
 
   // Font sizes

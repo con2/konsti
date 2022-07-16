@@ -113,7 +113,7 @@ export const AllGamesView = (): ReactElement => {
   const filters = [
     Tag.IN_ENGLISH,
     Tag.BEGINNER_FRIENDLY,
-    Tag.SUITABLE_UNDER_10,
+    Tag.FOR_MINORS,
     Tag.AGE_RESTRICTED,
   ];
 
@@ -310,6 +310,7 @@ const RevolvingDoorInstruction = styled.div`
 
 const AllGamesToggleVisibility = styled.div`
   margin: 10px 0 0 0;
+
   button {
     margin-top: 0;
     margin-bottom: 0;
@@ -321,8 +322,13 @@ const TagsDropdown = styled.div`
 
   @media (max-width: ${(props) => props.theme.breakpointPhone}) {
     position: absolute;
+    width: 100%;
     top: ${HEADER_HEIGHT - 1}px;
-    right: 10px;
+    left: 50%;
+
+    select {
+      max-width: 45%;
+    }
   }
 `;
 
