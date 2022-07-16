@@ -6,6 +6,8 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { ThemeProvider } from "styled-components";
 import dayjs from "dayjs";
+import * as Sentry from "@sentry/react";
+import { BrowserTracing } from "@sentry/tracing";
 import isBetween from "dayjs/plugin/isBetween";
 import isSameOrAfter from "dayjs/plugin/isSameOrAfter";
 import loaderImage from "assets/loading.gif";
@@ -39,6 +41,16 @@ if (enableAxe && process.env.NODE_ENV === "development") {
   const axe = require("@axe-core/react");
   axe(React, ReactDOM, 1000);
 }
+
+Sentry.init({
+  dsn: "https://446b1c1e5b3048c4bb00b19b74aa55e6@o1321706.ingest.sentry.io/6578391",
+  integrations: [
+    new BrowserTracing({
+      tracingOrigins: ["localhost", "test.ropekonsti.fi", "ropekonsti.fi"],
+    }),
+  ],
+  tracesSampleRate: 0.2,
+});
 
 // Suspend fallback element
 const loader = (

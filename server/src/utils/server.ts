@@ -3,6 +3,8 @@ import https from "https";
 import path from "path";
 import fs from "fs";
 import express, { Request, Response, NextFunction } from "express";
+import * as Sentry from "@sentry/node";
+import * as Tracing from "@sentry/tracing";
 import helmet from "helmet";
 import morgan from "morgan";
 import expressStaticGzip from "express-static-gzip";
@@ -25,7 +27,37 @@ export const startServer = async (
 
   const app = express();
 
+  Sentry.init({
+    dsn: "https://ab176c60aac24be8af2f6c790f1437ac@o1321706.ingest.sentry.io/6578390",
+    integrations: [
+      // Enable HTTP calls tracing
+      new Sentry.Integrations.Http({ tracing: true }),
+      // Enable Express.js middleware tracing
+      new Tracing.Integrations.Express({
+        // To trace all requests to the default router
+        app,
+      }),
+    ],
+    tracesSampleRate: 0.2,
+  });
+
+  // The request handler must be the first middleware on the app
+  // RequestHandler creates a separate execution context using domains, so that every
+  // transaction/span/breadcrumb is attached to its own Hub instance
+  app.use(Sentry.Handlers.requestHandler());
+
+  // TracingHandler creates a trace for every incoming request
+  app.use(Sentry.Handlers.tracingHandler());
+
   app.use(helmet());
+
+  app.use(
+    helmet.contentSecurityPolicy({
+      directives: {
+        "connect-src": ["'self'", "*.sentry.io"],
+      },
+    })
+  );
 
   if (config.enableAccessLog) {
     // Set logger
@@ -73,6 +105,9 @@ export const startServer = async (
       res.sendFile(path.join(staticPath, "index.html"));
     }
   });
+
+  // The error handler must be before any other error middleware and after all controllers
+  app.use(Sentry.Handlers.errorHandler());
 
   let server: Server;
 

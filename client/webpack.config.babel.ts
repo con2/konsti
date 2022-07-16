@@ -6,6 +6,7 @@ import Dotenv from "dotenv-webpack";
 import { Configuration } from "webpack";
 import { merge } from "webpack-merge";
 import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
+import SentryCliPlugin from "@sentry/webpack-plugin";
 import { config } from "client/config";
 import { sharedConfig } from "shared/config/sharedConfig";
 
@@ -110,6 +111,7 @@ const prodConfig: Configuration = {
   target: "browserslist",
 
   mode: "production",
+  devtool: "source-map",
 
   performance: {
     maxEntrypointSize: 1024000,
@@ -131,6 +133,19 @@ const prodConfig: Configuration = {
       test: /\.(js|html|svg)$/,
       threshold: 10240,
       minRatio: 0.8,
+    }),
+    new SentryCliPlugin({
+      include: "./build",
+      ignoreFile: ".sentrycliignore",
+      ignore: [
+        "node_modules",
+        "webpack.config.babel.ts",
+        ".eslintrc.js",
+        "babel.config.js",
+      ],
+      configFile: "sentry.properties",
+      org: "konsti",
+      project: "konsti-frontend",
     }),
   ],
 
