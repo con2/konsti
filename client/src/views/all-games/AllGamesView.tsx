@@ -22,6 +22,7 @@ import { Button, ButtonStyle } from "client/components/Button";
 import { selectActiveGames } from "client/views/admin/adminSlice";
 import { Input } from "client/components/Input";
 import { SessionStorageValue } from "client/utils/localStorage";
+import { HEADER_HEIGHT } from "client/components/Header";
 
 enum SelectedView {
   ALL = "all",
@@ -175,7 +176,7 @@ export const AllGamesView = (): ReactElement => {
         </AllGamesToggleVisibility>
 
         <TagsDropdown>
-          <span>{t("chooseTag")} </span>
+          <ChooseTagsInstruction>{t("chooseTag")} </ChooseTagsInstruction>
           <select
             onChange={(event: ChangeEvent<HTMLSelectElement>) => {
               const tag = event.target.value;
@@ -308,11 +309,31 @@ const RevolvingDoorInstruction = styled.div`
 `;
 
 const AllGamesToggleVisibility = styled.div`
+  margin: 10px 0 0 0;
+
   button {
-    margin: 10px 10px 0 0;
+    margin-top: 0;
+    margin-bottom: 0;
   }
 `;
 
 const TagsDropdown = styled.div`
   margin: 10px 0 0 0;
+
+  @media (max-width: ${(props) => props.theme.breakpointPhone}) {
+    position: absolute;
+    width: 100%;
+    top: ${HEADER_HEIGHT - 1}px;
+    left: 50%;
+
+    select {
+      max-width: 45%;
+    }
+  }
+`;
+
+const ChooseTagsInstruction = styled.span`
+  @media (max-width: ${(props) => props.theme.breakpointPhone}) {
+    display: none;
+  }
 `;
