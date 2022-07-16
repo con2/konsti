@@ -309,8 +309,10 @@ const RevolvingDoorInstruction = styled.div`
 `;
 
 const AllGamesToggleVisibility = styled.div`
+  margin: 10px 0 0 0;
   button {
-    margin: 10px 10px 0 0;
+    margin-top: 0;
+    margin-bottom: 0;
   }
 `;
 
