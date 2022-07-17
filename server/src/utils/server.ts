@@ -86,13 +86,14 @@ export const startServer = async ({
     app.use(morgan("dev", { stream }));
   }
 
-  // Parse body and populate req.body - only accepts JSON
+  app.use(express.text({ type: "text/plain" }));
   app.use(express.json({ limit: "1000kb", type: "*/*" }));
 
   app.use(
     "/",
     (err: Error, _req: Request, res: Response, next: NextFunction) => {
       if (err) {
+        logger.error(`Invalid request: ${JSON.stringify(err)}`);
         return res.sendStatus(400);
       } else {
         return next();
