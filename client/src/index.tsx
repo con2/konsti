@@ -48,6 +48,8 @@ const getDsn = (): string | undefined => {
       return "https://5b75f3722ea14d6d9307f4c736b3b58a@o1321706.ingest.sentry.io/6579203";
     case "staging":
       return "https://446b1c1e5b3048c4bb00b19b74aa55e6@o1321706.ingest.sentry.io/6578391";
+    case "development":
+      return "https://1fb97a74de6a44e3b16e8d29aeec3363@o1321706.ingest.sentry.io/6579491";
     default:
       return undefined;
   }
@@ -61,6 +63,8 @@ Sentry.init({
     }),
   ],
   tracesSampleRate: 0.2,
+  normalizeDepth: 10,
+  environment: process.env.SETTINGS,
 });
 
 // Suspend fallback element

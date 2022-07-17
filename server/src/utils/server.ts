@@ -40,6 +40,8 @@ export const startServer = async ({
         return "https://0278d6bfb3f04c70acf826ecbd86ae58@o1321706.ingest.sentry.io/6579204";
       case "staging":
         return "https://ab176c60aac24be8af2f6c790f1437ac@o1321706.ingest.sentry.io/6578390";
+      case "development":
+        return "https://6f41ef28d9664c1a8c3e25f58cecacf7@o1321706.ingest.sentry.io/6579493";
       default:
         return undefined;
     }
@@ -57,6 +59,7 @@ export const startServer = async ({
       }),
     ],
     tracesSampleRate: 0.2,
+    environment: process.env.SETTINGS,
   });
 
   // The request handler must be the first middleware on the app
@@ -115,6 +118,10 @@ export const startServer = async ({
   } else {
     app.use(express.static(staticPath));
   }
+
+  app.get("/debug-sentry", (_req: Request, _res: Response) => {
+    throw new Error("Test Sentry error");
+  });
 
   app.get("/*", (req: Request, res: Response) => {
     if (req.originalUrl.includes("/api/")) {
