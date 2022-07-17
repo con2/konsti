@@ -86,7 +86,7 @@ export const startServer = async ({
     app.use(morgan("dev", { stream }));
   }
 
-  app.use(express.text({ type: "text/plain" }));
+  app.use(express.text({ limit: "1000kb", type: "text/plain" }));
   app.use(express.json({ limit: "1000kb", type: "*/*" }));
 
   app.use(
