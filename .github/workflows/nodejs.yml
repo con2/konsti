@@ -13,6 +13,8 @@ jobs:
     env:
       CI: true
 
+    timeout-minutes: 20
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
