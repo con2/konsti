@@ -6,7 +6,6 @@ import {
   getResults,
   postAssignment,
 } from "server/features/results/resultsController";
-import { postSentryTunnel } from "server/features/sentry-tunnel/sentryTunnelController";
 import {
   deleteSignupQuestion,
   getSettings,
@@ -66,7 +65,6 @@ apiRoutes.post(ApiEndpoint.SESSION_RESTORE, postSessionRestore);
 apiRoutes.post(ApiEndpoint.USERS_PASSWORD, postUserPassword);
 apiRoutes.post(ApiEndpoint.SETTINGS, postSettings);
 apiRoutes.post(ApiEndpoint.SIGNUP, postSignup);
-apiRoutes.post(ApiEndpoint.SENTRY_TUNNEL, postSentryTunnel);
 
 /* GET routes */
 

@@ -57,16 +57,14 @@ const sentryReduxEnhancer = Sentry.createReduxEnhancer({
       ...state,
       allGames: {
         ...state.allGames,
-        games: state.allGames.games.map((game) => game.gameId),
+        games: `Games count: ${state.allGames.games.length}`,
+        signups: `Signups count: ${state.allGames.signups.length}`,
       },
       admin: {
         ...state.admin,
-        hiddenGames: state.admin.hiddenGames.map(
-          (hiddenGame) => hiddenGame.gameId
-        ),
-        signupQuestions: state.admin.signupQuestions.map(
-          (signupQuestion) => signupQuestion.gameId
-        ),
+        hiddenGames: `Hidden games count: ${state.admin.hiddenGames.length}`,
+        signupQuestions: `Signup questions count: ${state.admin.signupQuestions.length}`,
+        signupMessages: `Signup messages count: ${state.admin.signupMessages.length}`,
       },
     };
 
