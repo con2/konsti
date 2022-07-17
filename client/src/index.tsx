@@ -42,14 +42,14 @@ if (enableAxe && process.env.NODE_ENV === "development") {
   axe(React, ReactDOM, 1000);
 }
 
-const getDsn = (): string => {
+const getDsn = (): string | undefined => {
   switch (process.env.SETTINGS) {
     case "production":
       return "https://5b75f3722ea14d6d9307f4c736b3b58a@o1321706.ingest.sentry.io/6579203";
     case "staging":
       return "https://446b1c1e5b3048c4bb00b19b74aa55e6@o1321706.ingest.sentry.io/6578391";
     default:
-      return "";
+      return undefined;
   }
 };
 
