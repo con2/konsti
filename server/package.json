@@ -17,7 +17,7 @@
     "lint": "yarn eslint && yarn prettier:check",
     "remove-invalid-games": "yarn run -T cross-env NODE_ENV=development ts-node src/test/scripts/removeInvalidGames.ts",
     "start": "ts-node src/index.ts",
-    "start:dev": "yarn run -T cross-env NODE_ENV=development ts-node-dev -r tsconfig-paths/register --respawn --transpile-only src/index.ts",
+    "start:dev": "yarn run -T cross-env NODE_ENV=development SETTINGS=development ts-node-dev -r tsconfig-paths/register --respawn --transpile-only src/index.ts",
     "stats": "ts-node src/features/statistics/statGenerator.ts --",
     "test": "yarn run -T jest",
     "test-assign": "yarn run -T cross-env NODE_ENV=development ts-node src/test/scripts/testAssignPlayers.ts",

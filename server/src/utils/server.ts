@@ -14,6 +14,8 @@ import { allowCORS } from "server/middleware/cors";
 import "server/db/mongoosePlugins"; // Must be imported before apiRoutes which loads models
 import { apiRoutes } from "server/api/apiRoutes";
 import { db } from "server/db/mongodb";
+import { ApiEndpoint } from "shared/constants/apiEndpoints";
+import { postSentryTunnel } from "server/features/sentry-tunnel/sentryTunnelController";
 
 interface StartServerParams {
   dbConnString: string;
@@ -86,6 +88,18 @@ export const startServer = async ({
     app.use(morgan("dev", { stream }));
   }
 
+  // Sentry tunnel endpoint which accepts text/plain payload
+  app.post(
+    ApiEndpoint.SENTRY_TUNNEL,
+    express.text({
+      limit: "1000kb",
+      type: "text/plain",
+    }),
+    async (req, res) => {
+      await postSentryTunnel(req, res);
+    }
+  );
+
   // Parse body and populate req.body - only accepts JSON
   app.use(express.json({ limit: "1000kb", type: "*/*" }));
 
@@ -93,6 +107,7 @@ export const startServer = async ({
     "/",
     (err: Error, _req: Request, res: Response, next: NextFunction) => {
       if (err) {
+        logger.error(`Invalid request: ${JSON.stringify(err)}`);
         return res.sendStatus(400);
       } else {
         return next();
