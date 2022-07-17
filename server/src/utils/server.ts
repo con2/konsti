@@ -15,10 +15,16 @@ import "server/db/mongoosePlugins"; // Must be imported before apiRoutes which l
 import { apiRoutes } from "server/api/apiRoutes";
 import { db } from "server/db/mongodb";
 
-export const startServer = async (
-  dbConnString: string,
-  port?: number
-): Promise<Server> => {
+interface StartServerParams {
+  dbConnString: string;
+  port?: number;
+  enableSentry?: boolean;
+}
+export const startServer = async ({
+  dbConnString,
+  port,
+  enableSentry = true,
+}: StartServerParams): Promise<Server> => {
   try {
     await db.connectToDb(dbConnString);
   } catch (error) {
@@ -28,6 +34,7 @@ export const startServer = async (
   const app = express();
 
   const getDsn = (): string => {
+    if (!enableSentry) return "";
     switch (process.env.SETTINGS) {
       case "production":
         return "https://0278d6bfb3f04c70acf826ecbd86ae58@o1321706.ingest.sentry.io/6579204";
