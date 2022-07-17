@@ -25,6 +25,8 @@ const getEnvVariableFile = (): string | undefined => {
   }
 };
 
+require("dotenv").config({ path: getEnvVariableFile() });
+
 const commonConfig: Configuration = {
   // Entry file
   entry: path.join(__dirname, "src", "index"),
@@ -144,8 +146,6 @@ const prodConfig: Configuration = {
         "babel.config.js",
       ],
       configFile: "sentry.properties",
-      org: "konsti",
-      project: "konsti-frontend",
       errorHandler: (err, _invokeErr, compilation) => {
         // @ts-expect-error: Types not available
         compilation.warnings.push("Sentry CLI Plugin: " + err.message);

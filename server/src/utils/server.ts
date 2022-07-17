@@ -27,8 +27,19 @@ export const startServer = async (
 
   const app = express();
 
+  const getDsn = (): string => {
+    switch (process.env.SETTINGS) {
+      case "production":
+        return "https://0278d6bfb3f04c70acf826ecbd86ae58@o1321706.ingest.sentry.io/6579204";
+      case "staging":
+        return "https://ab176c60aac24be8af2f6c790f1437ac@o1321706.ingest.sentry.io/6578390";
+      default:
+        return "";
+    }
+  };
+
   Sentry.init({
-    dsn: "https://ab176c60aac24be8af2f6c790f1437ac@o1321706.ingest.sentry.io/6578390",
+    dsn: getDsn(),
     integrations: [
       // Enable HTTP calls tracing
       new Sentry.Integrations.Http({ tracing: true }),
