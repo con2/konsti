@@ -37,7 +37,7 @@ beforeEach(async () => {
   mongoServer = new MongoMemoryServer();
   await mongoServer.start();
   mongoUri = mongoServer.getUri();
-  server = await startServer(mongoUri);
+  server = await startServer({ dbConnString: mongoUri });
 });
 
 afterEach(async () => {

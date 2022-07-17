@@ -6,7 +6,10 @@ import { config } from "server/config";
 const startApp = async (): Promise<void> => {
   startCronJobs();
 
-  const server = await startServer(config.dbConnString, config.port);
+  const server = await startServer({
+    dbConnString: config.dbConnString,
+    port: config.port,
+  });
 
   process.on("SIGINT", () => {
     closeServer(server).catch((error) => {
