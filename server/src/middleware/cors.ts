@@ -15,7 +15,7 @@ export const allowCORS = (
     res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS");
     res.setHeader(
       "Access-Control-Allow-Headers",
-      "Content-Type, Authorization"
+      "Content-Type, Authorization, Baggage, Sentry-Trace"
     );
   } else if (!origin) {
     // logger.info(`CORS: Same origin`)

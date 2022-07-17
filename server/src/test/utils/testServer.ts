@@ -11,7 +11,10 @@ export const startTestServer = async (): Promise<StartTestServerReturn> => {
   await mongoServer.start();
   const mongoUri = mongoServer.getUri();
   const module = await import("server/utils/server");
-  const server = await module.startServer(mongoUri);
+  const server = await module.startServer({
+    dbConnString: mongoUri,
+    enableSentry: false,
+  });
 
   return { server, mongoServer };
 };
