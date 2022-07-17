@@ -1,9 +1,7 @@
 import {
   createIndividualUsers,
-  createAdminUser,
   createTestUsers,
   createUsersInGroup,
-  createHelpUser,
 } from "server/test/test-data-generation/generators/createUsers";
 import { createGames } from "server/test/test-data-generation/generators/createGames";
 import { createSignedGames } from "server/test/test-data-generation/generators/createSignedGames";
@@ -33,9 +31,6 @@ export const generateTestUsers = async (
   numberOfGroups: number,
   testUsersCount: number
 ): Promise<void> => {
-  await createAdminUser();
-  await createHelpUser();
-
   if (testUsersCount) await createTestUsers({ userCount: testUsersCount });
   if (newUsersCount) await createIndividualUsers(newUsersCount);
 

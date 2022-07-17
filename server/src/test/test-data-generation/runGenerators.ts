@@ -12,6 +12,10 @@ import { createSettings } from "server/test/test-data-generation/generators/crea
 import { sharedConfig } from "shared/config/sharedConfig";
 import { removeSignedGames } from "server/features/user/signed-game/signedGameRepository";
 import { removeSignups } from "server/features/signup/signupRepository";
+import {
+  createAdminUser,
+  createHelpUser,
+} from "server/test/test-data-generation/generators/createUsers";
 
 interface Options {
   clean?: boolean;
@@ -56,6 +60,10 @@ export const runGenerators = async (
     await removeResults();
     await removeSettings();
   }
+
+  // Always create admin and helper
+  await createAdminUser();
+  await createHelpUser();
 
   if (options.users) {
     logger.info("Generate users");
