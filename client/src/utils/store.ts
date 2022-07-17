@@ -1,5 +1,6 @@
 import { combineReducers, CombinedState, AnyAction } from "redux";
 import { configureStore } from "@reduxjs/toolkit";
+import * as Sentry from "@sentry/react";
 import { config } from "client/config";
 import { RootState } from "client/typings/redux.typings";
 import { SUBMIT_LOGOUT } from "client/typings/logoutActions.typings";
@@ -49,6 +50,27 @@ const rootReducer = (
   return combinedReducer(state, action);
 };
 
+const sentryReduxEnhancer = Sentry.createReduxEnhancer({
+  stateTransformer: (state: RootState) => {
+    // Transform the state to remove unnecessary data
+    const transformedState = {
+      ...state,
+      allGames: {
+        ...state.allGames,
+        games: state.allGames.games.map((game) => game.gameId),
+      },
+      admin: {
+        ...state.admin,
+        hiddenGames: state.admin.hiddenGames.map(
+          (hiddenGame) => hiddenGame.gameId
+        ),
+      },
+    };
+
+    return transformedState;
+  },
+});
+
 export const store = configureStore({
   reducer: rootReducer,
   devTools:
@@ -58,4 +80,5 @@ export const store = configureStore({
           traceLimit: 25,
         }
       : false,
+  enhancers: [sentryReduxEnhancer],
 });

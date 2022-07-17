@@ -206,6 +206,17 @@ export const AdminView = (): ReactElement => {
           <HiddenGamesList hiddenGames={hiddenGames} />
 
           <SignupQuestionList signupQuestions={signupQuestions} games={games} />
+
+          <Button
+            buttonStyle={ButtonStyle.NORMAL}
+            onClick={() => {
+              const testValue = undefined;
+              // @ts-expect-error: Sentry test value
+              console.log(testValue.value); // eslint-disable-line no-console
+            }}
+          >
+            {t("button.close")}
+          </Button>
         </>
       )}
     </div>
