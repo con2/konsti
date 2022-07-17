@@ -51,6 +51,15 @@ const rootReducer = (
 };
 
 const sentryReduxEnhancer = Sentry.createReduxEnhancer({
+  actionTransformer: (action) => {
+    // Don't send large payload to sentry
+    if (action.type === "allGames/submitGetGamesAsync") {
+      return null;
+    }
+
+    return action;
+  },
+
   stateTransformer: (state: RootState) => {
     // Transform the state to remove unnecessary data
     const transformedState = {
