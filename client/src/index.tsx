@@ -22,6 +22,7 @@ import "client/utils/i18n";
 
 // Redux store
 import { store } from "client/utils/store";
+import { ApiEndpoint } from "shared/constants/apiEndpoints";
 
 dayjs.extend(isBetween);
 dayjs.extend(isSameOrAfter);
@@ -65,6 +66,7 @@ Sentry.init({
   tracesSampleRate: 0.2,
   normalizeDepth: 10,
   environment: process.env.SETTINGS,
+  tunnel: ApiEndpoint.SENTRY_TUNNEL,
 });
 
 // Suspend fallback element
