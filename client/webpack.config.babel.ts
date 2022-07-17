@@ -6,6 +6,7 @@ import Dotenv from "dotenv-webpack";
 import { Configuration } from "webpack";
 import { merge } from "webpack-merge";
 import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
+import SentryCliPlugin from "@sentry/webpack-plugin";
 import { config } from "client/config";
 import { sharedConfig } from "shared/config/sharedConfig";
 
@@ -23,6 +24,8 @@ const getEnvVariableFile = (): string | undefined => {
       return "./config/dev.env";
   }
 };
+
+require("dotenv").config({ path: getEnvVariableFile() });
 
 const commonConfig: Configuration = {
   // Entry file
@@ -110,6 +113,7 @@ const prodConfig: Configuration = {
   target: "browserslist",
 
   mode: "production",
+  devtool: "source-map",
 
   performance: {
     maxEntrypointSize: 1024000,
@@ -131,6 +135,21 @@ const prodConfig: Configuration = {
       test: /\.(js|html|svg)$/,
       threshold: 10240,
       minRatio: 0.8,
+    }),
+    new SentryCliPlugin({
+      include: "./build",
+      ignoreFile: ".sentrycliignore",
+      ignore: [
+        "node_modules",
+        "webpack.config.babel.ts",
+        ".eslintrc.js",
+        "babel.config.js",
+      ],
+      configFile: "sentry.properties",
+      errorHandler: (err, _invokeErr, compilation) => {
+        // @ts-expect-error: Types not available
+        compilation.warnings.push("Sentry CLI Plugin: " + err.message);
+      },
     }),
   ],
 
