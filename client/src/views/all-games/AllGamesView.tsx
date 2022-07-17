@@ -23,6 +23,7 @@ import { selectActiveGames } from "client/views/admin/adminSlice";
 import { Input } from "client/components/Input";
 import { SessionStorageValue } from "client/utils/localStorage";
 import { HEADER_HEIGHT } from "client/components/Header";
+import { MOBILE_MARGIN } from "client/globalStyle";
 
 enum SelectedView {
   ALL = "all",
@@ -322,11 +323,12 @@ const TagsDropdown = styled.div`
 
   @media (max-width: ${(props) => props.theme.breakpointPhone}) {
     position: absolute;
-    width: 100%;
     top: ${HEADER_HEIGHT - 1}px;
-    left: 50%;
+    left: ${MOBILE_MARGIN}px;
+    right: ${MOBILE_MARGIN}px;
 
     select {
+      float: right;
       max-width: 45%;
     }
   }
