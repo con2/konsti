@@ -43,14 +43,17 @@ api.interceptors.response.use(
     }
 
     const response = error.response;
-    const method: HttpMethod = response.config.method.toUpperCase();
-    const url: ApiEndpoint = response.config.url;
 
-    const errorReason = getErrorReason(Number(response.status) || 0);
+    if (response) {
+      const method: HttpMethod = response.config.method.toUpperCase();
+      const url: ApiEndpoint = response.config.url;
 
-    store.dispatch(
-      addError(t(ErrorMessageType.API_ERROR, { method, url, errorReason }))
-    );
+      const errorReason = getErrorReason(Number(response.status) || 0);
+
+      store.dispatch(
+        addError(t(ErrorMessageType.API_ERROR, { method, url, errorReason }))
+      );
+    }
 
     const data: ApiError = {
       errorId: "unknown",
