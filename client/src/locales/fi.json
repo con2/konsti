@@ -288,7 +288,8 @@
     "lotterySignupOpens": "Arvontaan ilmoittautuminen aukeaa",
     "signupAlwaysOpen": "Ilmoittautuminen erikoispeliin aina auki",
     "inGroupWarning": "Jos ilmoittaudut peliin sinut poistetaan ryhmästäsi",
-    "groupCreatorWarning": "Jos ilmoittaudut peliin perustamasi ryhmä hajoitetaan"
+    "groupCreatorWarning": "Jos ilmoittaudut peliin perustamasi ryhmä hajoitetaan",
+    "currentSignupGame": "Olet ilmoittautunut tähän peliin."
   },
   "resultsView": {
     "allSignupResults": "Ilmoittautumistilanne ja pelaajat",

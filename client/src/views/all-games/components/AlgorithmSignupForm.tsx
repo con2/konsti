@@ -124,10 +124,16 @@ export const AlgorithmSignupForm: FC<Props> = ({
 
       {alreadySignedToGame && (
         <>
+          <SignedGameContainer>
+            {t("signup.alreadyLotterySigned", {
+              CURRENT_PRIORITY: currentPriority,
+            })}
+          </SignedGameContainer>
+
           {isGroupCreator && !cancelSignupFormOpen && (
             <Button
               onClick={() => setCancelSignupFormOpen(true)}
-              buttonStyle={ButtonStyle.NORMAL}
+              buttonStyle={ButtonStyle.WARNING}
             >
               {t("button.cancel")}
             </Button>
@@ -141,12 +147,6 @@ export const AlgorithmSignupForm: FC<Props> = ({
               onConfirmForm={async () => await removeSignedGame(game)}
             />
           )}
-
-          <p>
-            {t("signup.alreadyLotterySigned", {
-              CURRENT_PRIORITY: currentPriority,
-            })}
-          </p>
         </>
       )}
 
@@ -165,6 +165,14 @@ export const AlgorithmSignupForm: FC<Props> = ({
     </>
   );
 };
+
+const SignedGameContainer = styled.div`
+  border: 1px solid ${(props) => props.theme.infoBorder};
+  padding: 8px 6px;
+  border-radius: 5px;
+  border-left: 5px solid ${(props) => props.theme.infoBorder};
+  background-color: ${(props) => props.theme.infoBackground};
+`;
 
 const BoldText = styled.span`
   font-weight: 600;

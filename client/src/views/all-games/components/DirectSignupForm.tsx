@@ -81,13 +81,13 @@ export const DirectSignupForm: FC<Props> = ({
       {!alreadyEnteredToGame && !gameIsFull && (
         <>
           {enteredGamesForTimeslot.length === 1 && (
-            <p>
+            <SignedGameContainer>
               {t("signup.alreadySignedToGame")}{" "}
               <SignedGameName>
                 {enteredGamesForTimeslot[0].gameDetails.title}
               </SignedGameName>
               . {t("signup.cannotSignupMoreThanOneGame")}
-            </p>
+            </SignedGameContainer>
           )}
 
           {enteredGamesForTimeslot.length === 0 && (
@@ -129,10 +129,13 @@ export const DirectSignupForm: FC<Props> = ({
 
       {alreadyEnteredToGame && (
         <>
+          <SignedGameContainer>
+            {t("signup.currentSignupGame")}
+          </SignedGameContainer>
           {!cancelSignupFormOpen && (
             <Button
               onClick={() => setCancelSignupFormOpen(true)}
-              buttonStyle={ButtonStyle.NORMAL}
+              buttonStyle={ButtonStyle.WARNING}
             >
               {t("button.cancelSignup")}
             </Button>
@@ -158,6 +161,14 @@ export const DirectSignupForm: FC<Props> = ({
     </>
   );
 };
+
+const SignedGameContainer = styled.div`
+  border: 1px solid ${(props) => props.theme.infoBorder};
+  padding: 8px 6px;
+  border-radius: 5px;
+  border-left: 5px solid ${(props) => props.theme.infoBorder};
+  background-color: ${(props) => props.theme.infoBackground};
+`;
 
 const GameIsFull = styled.h4`
   color: ${(props) => props.theme.textError};
