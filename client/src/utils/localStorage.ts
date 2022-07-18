@@ -79,3 +79,6 @@ export const getLanguage = (): string => {
 
   return "eng";
 };
+
+export const newUpdatePageReloadKey = "newUpdatePageReload";
+export const newUpdatePageReloadValue = "pageReloaded";
