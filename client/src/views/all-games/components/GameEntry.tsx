@@ -264,7 +264,8 @@ const HeaderContainer = styled.div`
 `;
 
 const GameTag = styled.span`
-  height: 14px;
+  display: flex;
+  align-items: center;
   text-align: center;
   background: ${(props) => props.theme.backgroundTag};
   padding: 4px 8px;
