@@ -65,27 +65,27 @@ const sentryReduxEnhancer = Sentry.createReduxEnhancer({
     const transformedState = {
       ...state,
       allGames: {
-        ...state.allGames,
-        games: `Games count: ${state.allGames.games.length}`,
-        signups: `Signups count: ${state.allGames.signups.length}`,
+        ...state?.allGames,
+        games: `Games count: ${state?.allGames?.games?.length}`,
+        signups: `Signups count: ${state?.allGames?.signups?.length}`,
       },
       admin: {
-        ...state.admin,
-        hiddenGames: `Hidden games count: ${state.admin.hiddenGames.length}`,
-        signupQuestions: `Signup questions count: ${state.admin.signupQuestions.length}`,
-        signupMessages: `Signup messages count: ${state.admin.signupMessages.length}`,
+        ...state?.admin,
+        hiddenGames: `Hidden games count: ${state?.admin?.hiddenGames?.length}`,
+        signupQuestions: `Signup questions count: ${state?.admin?.signupQuestions?.length}`,
+        signupMessages: `Signup messages count: ${state?.admin?.signupMessages?.length}`,
       },
       myGames: {
-        ...state.myGames,
-        enteredGames: state.myGames.enteredGames.map((enteredGame) => ({
+        ...state?.myGames,
+        enteredGames: state?.myGames?.enteredGames?.map((enteredGame) => ({
           ...enteredGame,
           gameDetails: enteredGame.gameDetails.gameId,
         })),
-        signedGames: state.myGames.signedGames.map((signedGame) => ({
+        signedGames: state?.myGames?.signedGames?.map((signedGame) => ({
           ...signedGame,
           gameDetails: signedGame.gameDetails.gameId,
         })),
-        favoritedGames: state.myGames.favoritedGames.map(
+        favoritedGames: state?.myGames?.favoritedGames?.map(
           (favoritedGame) => favoritedGame.gameId
         ),
       },
