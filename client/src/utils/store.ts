@@ -75,6 +75,20 @@ const sentryReduxEnhancer = Sentry.createReduxEnhancer({
         signupQuestions: `Signup questions count: ${state.admin.signupQuestions.length}`,
         signupMessages: `Signup messages count: ${state.admin.signupMessages.length}`,
       },
+      myGames: {
+        ...state.myGames,
+        enteredGames: state.myGames.enteredGames.map((enteredGame) => ({
+          ...enteredGame,
+          gameDetails: enteredGame.gameDetails.gameId,
+        })),
+        signedGames: state.myGames.signedGames.map((signedGame) => ({
+          ...signedGame,
+          gameDetails: signedGame.gameDetails.gameId,
+        })),
+        favoritedGames: state.myGames.favoritedGames.map(
+          (favoritedGame) => favoritedGame.gameId
+        ),
+      },
     };
 
     return transformedState;
