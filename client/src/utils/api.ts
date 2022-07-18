@@ -33,7 +33,7 @@ api.interceptors.request.use((requestConfig) => {
 api.interceptors.response.use(
   (response) => response,
   (error) => {
-    if (error.code === "ERR_NETWORK") {
+    if (error.code === "ERR_NETWORK" || !error.response) {
       store.dispatch(addError(t(ErrorMessageType.NETWORK_ERROR)));
       return {
         errorId: "unknown",
@@ -44,16 +44,14 @@ api.interceptors.response.use(
 
     const response = error.response;
 
-    if (response) {
-      const method: HttpMethod = response.config.method.toUpperCase();
-      const url: ApiEndpoint = response.config.url;
-      const errorReason = getErrorReason(Number(response.status) || 0);
-      store.dispatch(
-        addError(t(ErrorMessageType.API_ERROR, { method, url, errorReason }))
-      );
-    } else {
-      store.dispatch(addError(t(ErrorMessageType.NETWORK_ERROR)));
-    }
+    const method: HttpMethod = response.config.method.toUpperCase();
+    const url: ApiEndpoint = response.config.url;
+
+    const errorReason = getErrorReason(Number(response.status) || 0);
+
+    store.dispatch(
+      addError(t(ErrorMessageType.API_ERROR, { method, url, errorReason }))
+    );
 
     const data: ApiError = {
       errorId: "unknown",
