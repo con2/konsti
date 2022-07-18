@@ -16,6 +16,7 @@ import { apiRoutes } from "server/api/apiRoutes";
 import { db } from "server/db/mongodb";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { postSentryTunnel } from "server/features/sentry-tunnel/sentryTunnelController";
+import { sharedConfig } from "shared/config/sharedConfig";
 
 interface StartServerParams {
   dbConnString: string;
@@ -60,7 +61,7 @@ export const startServer = async ({
         app,
       }),
     ],
-    tracesSampleRate: 0.2,
+    tracesSampleRate: sharedConfig.tracesSampleRate,
     environment: process.env.SETTINGS,
   });
 
