@@ -8,6 +8,8 @@ import { Dropdown } from "client/components/Dropdown";
 import { saveSession } from "client/utils/localStorage";
 import { MOBILE_MARGIN } from "client/globalStyle";
 
+export const ROW_HEIGHT = 32;
+
 export const ProgramTypeSelection = (): ReactElement => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
@@ -43,6 +45,8 @@ export const ProgramTypeSelection = (): ReactElement => {
 };
 
 const EventTypeSelectionContainer = styled.div`
+  height: ${ROW_HEIGHT}px;
+
   @media (max-width: ${(props) => props.theme.breakpointPhone}) {
     margin-left: ${MOBILE_MARGIN}px;
     margin-right: ${MOBILE_MARGIN}px;
