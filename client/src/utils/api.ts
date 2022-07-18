@@ -43,7 +43,6 @@ api.interceptors.response.use(
     }
 
     const response = error.response;
-
     const method: HttpMethod = response.config.method.toUpperCase();
     const url: ApiEndpoint = response.config.url;
 
