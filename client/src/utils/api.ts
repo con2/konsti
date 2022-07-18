@@ -33,7 +33,7 @@ api.interceptors.request.use((requestConfig) => {
 api.interceptors.response.use(
   (response) => response,
   (error) => {
-    if (error.code === "ERR_NETWORK") {
+    if (error.code === "ERR_NETWORK" || !error.response) {
       store.dispatch(addError(t(ErrorMessageType.NETWORK_ERROR)));
       return {
         errorId: "unknown",
