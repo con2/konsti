@@ -12,7 +12,11 @@ import isBetween from "dayjs/plugin/isBetween";
 import isSameOrAfter from "dayjs/plugin/isSameOrAfter";
 import loaderImage from "assets/loading.gif";
 import { config } from "client/config";
-import { getLanguage } from "client/utils/localStorage";
+import {
+  getLanguage,
+  newUpdatePageReloadKey,
+  newUpdatePageReloadValue,
+} from "client/utils/localStorage";
 import { theme } from "client/theme";
 import { GlobalStyle } from "client/globalStyle";
 import { setLocale } from "shared/utils/setLocale";
@@ -66,6 +70,18 @@ Sentry.init({
   normalizeDepth: 10,
   environment: process.env.SETTINGS,
   tunnel: ApiEndpoint.SENTRY_TUNNEL,
+});
+
+// Add event listener to reload page if trying to load old bundle version
+window.addEventListener("error", (error) => {
+  if (/Loading chunk [\d]+ failed/.test(error.message)) {
+    const oldValue = localStorage.getItem(newUpdatePageReloadKey);
+
+    if (oldValue !== newUpdatePageReloadValue) {
+      localStorage.setItem(newUpdatePageReloadKey, newUpdatePageReloadValue);
+      window.location.reload();
+    }
+  }
 });
 
 // Suspend fallback element

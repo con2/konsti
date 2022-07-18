@@ -12,6 +12,7 @@ import { ErrorBar } from "client/components/ErrorBar";
 import { ProgramTypeSelection } from "client/components/EventTypeSelection";
 import { useAppSelector } from "client/utils/hooks";
 import { MOBILE_MARGIN } from "client/globalStyle";
+import { newUpdatePageReloadKey } from "client/utils/localStorage";
 
 export const App = (): ReactElement => {
   const { dataUpdateInterval } = config;
@@ -22,6 +23,9 @@ export const App = (): ReactElement => {
   const appOpen = useAppSelector((state) => state.admin.appOpen);
 
   useEffect(() => {
+    // Successful app load -> reset update reload state
+    localStorage.removeItem(newUpdatePageReloadKey);
+
     setLoading(true);
     const fetchData = async (): Promise<void> => {
       await loadData();
