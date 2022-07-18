@@ -47,9 +47,7 @@ api.interceptors.response.use(
     if (response) {
       const method: HttpMethod = response.config.method.toUpperCase();
       const url: ApiEndpoint = response.config.url;
-
       const errorReason = getErrorReason(Number(response.status) || 0);
-
       store.dispatch(
         addError(t(ErrorMessageType.API_ERROR, { method, url, errorReason }))
       );
