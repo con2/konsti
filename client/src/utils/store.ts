@@ -80,6 +80,7 @@ const sentryReduxEnhancer = Sentry.createReduxEnhancer({
         enteredGames: state?.myGames?.enteredGames?.map((enteredGame) => ({
           ...enteredGame,
           gameDetails: enteredGame?.gameDetails?.gameId,
+          message: "<Message hidden>",
         })),
         signedGames: state?.myGames?.signedGames?.map((signedGame) => ({
           ...signedGame,
