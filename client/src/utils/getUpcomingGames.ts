@@ -18,7 +18,7 @@ export const getUpcomingGames = (
   return upcomingGames;
 };
 
-export const getUpcomingSignedGames = (
+const getUpcomingSignedGames = (
   signedGames: readonly SelectedGame[]
 ): readonly SelectedGame[] => {
   const timeNow = getTime();
