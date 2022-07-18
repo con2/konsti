@@ -26,6 +26,7 @@ interface SharedConfig {
   PHASE_GAP: number;
   directSignupWindows: Record<ProgramType, SignupWindow[]>;
   directSignupAlwaysOpen: string[];
+  tracesSampleRate: number;
 }
 
 export const sharedConfig: SharedConfig = {
@@ -82,6 +83,9 @@ export const sharedConfig: SharedConfig = {
   // Convention info
   CONVENTION_NAME: ConventionName.ROPECON,
   CONVENTION_YEAR: "2022",
+
+  // Sentry
+  tracesSampleRate: 0.0,
 
   // Test values
   CONVENTION_START_TIME: "2022-07-29T12:00:00Z", // UTC date
