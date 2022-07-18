@@ -79,14 +79,14 @@ const sentryReduxEnhancer = Sentry.createReduxEnhancer({
         ...state?.myGames,
         enteredGames: state?.myGames?.enteredGames?.map((enteredGame) => ({
           ...enteredGame,
-          gameDetails: enteredGame.gameDetails.gameId,
+          gameDetails: enteredGame?.gameDetails?.gameId,
         })),
         signedGames: state?.myGames?.signedGames?.map((signedGame) => ({
           ...signedGame,
-          gameDetails: signedGame.gameDetails.gameId,
+          gameDetails: signedGame?.gameDetails?.gameId,
         })),
         favoritedGames: state?.myGames?.favoritedGames?.map(
-          (favoritedGame) => favoritedGame.gameId
+          (favoritedGame) => favoritedGame?.gameId
         ),
       },
     };
