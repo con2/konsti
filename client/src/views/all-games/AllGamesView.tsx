@@ -22,8 +22,7 @@ import { Button, ButtonStyle } from "client/components/Button";
 import { selectActiveGames } from "client/views/admin/adminSlice";
 import { Input } from "client/components/Input";
 import { SessionStorageValue } from "client/utils/localStorage";
-import { HEADER_HEIGHT } from "client/components/Header";
-import { MOBILE_MARGIN } from "client/globalStyle";
+import { ROW_HEIGHT } from "client/components/EventTypeSelection";
 
 enum SelectedView {
   ALL = "all",
@@ -139,7 +138,7 @@ export const AllGamesView = (): ReactElement => {
   return (
     <>
       <AllGamesVisibilityBar>
-        <AllGamesToggleVisibility>
+        <ViewButtons>
           <Button
             onClick={() => setView(SelectedView.UPCOMING)}
             buttonStyle={
@@ -174,29 +173,31 @@ export const AllGamesView = (): ReactElement => {
               {t("revolvingDoor")}
             </Button>
           )}
-        </AllGamesToggleVisibility>
+        </ViewButtons>
 
-        <TagsDropdown>
-          <ChooseTagsInstruction>{t("chooseTag")} </ChooseTagsInstruction>
-          <select
-            onChange={(event: ChangeEvent<HTMLSelectElement>) => {
-              const tag = event.target.value;
-              setSelectedTag(tag);
-              sessionStorage.setItem(SessionStorageValue.ALL_GAMES_TAG, tag);
-            }}
-            value={selectedTag}
-          >
-            <option value="">{t("allGames")}</option>
+        <TagsDropdownContainer>
+          <TagsDropdown>
+            <ChooseTagsInstruction>{t("chooseTag")} </ChooseTagsInstruction>
+            <select
+              onChange={(event: ChangeEvent<HTMLSelectElement>) => {
+                const tag = event.target.value;
+                setSelectedTag(tag);
+                sessionStorage.setItem(SessionStorageValue.ALL_GAMES_TAG, tag);
+              }}
+              value={selectedTag}
+            >
+              <option value="">{t("allGames")}</option>
 
-            {filters.map((filter) => {
-              return (
-                <option key={filter} value={filter}>
-                  {t(`gameTags.${filter}`)}
-                </option>
-              );
-            })}
-          </select>
-        </TagsDropdown>
+              {filters.map((filter) => {
+                return (
+                  <option key={filter} value={filter}>
+                    {t(`gameTags.${filter}`)}
+                  </option>
+                );
+              })}
+            </select>
+          </TagsDropdown>
+        </TagsDropdownContainer>
       </AllGamesVisibilityBar>
 
       {selectedView === SelectedView.REVOLVING_DOOR && (
@@ -223,23 +224,6 @@ export const AllGamesView = (): ReactElement => {
     </>
   );
 };
-
-const GameListShortDescription = styled.p`
-  font-size: ${(props) => props.theme.fontSizeSmall};
-  font-style: italic;
-  margin: 4px 0 8px 14px;
-`;
-
-const AllGamesVisibilityBar = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  @media (max-width: ${(props) => props.theme.breakpointPhone}) {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-`;
 
 const getVisibleGames = (
   games: readonly Game[],
@@ -305,12 +289,15 @@ const getRunningRevolvingDoorGames = (
   });
 };
 
-const RevolvingDoorInstruction = styled.div`
-  margin: 20px 0 0 14px;
+const AllGamesVisibilityBar = styled.div`
+  display: flex;
+  justify-content: space-between;
 `;
 
-const AllGamesToggleVisibility = styled.div`
+const ViewButtons = styled.div`
   margin: 10px 0 0 0;
+  white-space: nowrap;
+  height: ${ROW_HEIGHT}px;
 
   button {
     margin-top: 0;
@@ -318,19 +305,19 @@ const AllGamesToggleVisibility = styled.div`
   }
 `;
 
+const TagsDropdownContainer = styled.div`
+  position: relative;
+`;
+
 const TagsDropdown = styled.div`
   margin: 10px 0 0 0;
+  height: ${ROW_HEIGHT}px;
 
   @media (max-width: ${(props) => props.theme.breakpointPhone}) {
     position: absolute;
-    top: ${HEADER_HEIGHT - 1}px;
-    left: ${MOBILE_MARGIN}px;
-    right: ${MOBILE_MARGIN}px;
-
-    select {
-      float: right;
-      max-width: 45%;
-    }
+    margin: 0;
+    bottom: 42px;
+    right: 0;
   }
 `;
 
@@ -338,4 +325,14 @@ const ChooseTagsInstruction = styled.span`
   @media (max-width: ${(props) => props.theme.breakpointPhone}) {
     display: none;
   }
+`;
+
+const GameListShortDescription = styled.p`
+  font-size: ${(props) => props.theme.fontSizeSmall};
+  font-style: italic;
+  margin: 4px 0 8px 14px;
+`;
+
+const RevolvingDoorInstruction = styled.div`
+  margin: 20px 0 0 14px;
 `;
