@@ -22,7 +22,6 @@ import { Button, ButtonStyle } from "client/components/Button";
 import { selectActiveGames } from "client/views/admin/adminSlice";
 import { Input } from "client/components/Input";
 import { SessionStorageValue } from "client/utils/localStorage";
-import { MOBILE_MARGIN } from "client/globalStyle";
 import { ROW_HEIGHT } from "client/components/EventTypeSelection";
 
 enum SelectedView {
@@ -312,13 +311,13 @@ const TagsDropdownContainer = styled.div`
 
 const TagsDropdown = styled.div`
   margin: 10px 0 0 0;
-  right: ${MOBILE_MARGIN}px;
   height: ${ROW_HEIGHT}px;
 
   @media (max-width: ${(props) => props.theme.breakpointPhone}) {
     position: absolute;
     margin: 0;
     bottom: 42px;
+    right: 0;
   }
 `;
 
