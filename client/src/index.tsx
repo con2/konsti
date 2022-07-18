@@ -16,13 +16,12 @@ import { getLanguage } from "client/utils/localStorage";
 import { theme } from "client/theme";
 import { GlobalStyle } from "client/globalStyle";
 import { setLocale } from "shared/utils/setLocale";
+import { sharedConfig } from "shared/config/sharedConfig";
+import { ApiEndpoint } from "shared/constants/apiEndpoints";
+import { store } from "client/utils/store";
 
 // Initialized i18next instance
 import "client/utils/i18n";
-
-// Redux store
-import { store } from "client/utils/store";
-import { ApiEndpoint } from "shared/constants/apiEndpoints";
 
 dayjs.extend(isBetween);
 dayjs.extend(isSameOrAfter);
@@ -63,7 +62,7 @@ Sentry.init({
       tracingOrigins: ["localhost", "test.ropekonsti.fi", "ropekonsti.fi"],
     }),
   ],
-  tracesSampleRate: 0.2,
+  tracesSampleRate: sharedConfig.tracesSampleRate,
   normalizeDepth: 10,
   environment: process.env.SETTINGS,
   tunnel: ApiEndpoint.SENTRY_TUNNEL,
