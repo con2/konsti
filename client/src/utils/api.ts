@@ -53,6 +53,8 @@ api.interceptors.response.use(
       store.dispatch(
         addError(t(ErrorMessageType.API_ERROR, { method, url, errorReason }))
       );
+    } else {
+      store.dispatch(addError(t(ErrorMessageType.NETWORK_ERROR)));
     }
 
     const data: ApiError = {
