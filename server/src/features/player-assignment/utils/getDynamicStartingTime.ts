@@ -8,6 +8,7 @@ export const getDynamicStartingTime = async (): Promise<string> => {
   const timeNow = await getTime();
 
   const dynamicStartingTime = timeNow
+    .startOf("minute")
     .add(DIRECT_SIGNUP_START, "minutes")
     .format();
 

@@ -29,6 +29,14 @@ export const startCronJobs = (): void => {
   }
 };
 
+export const stopCronJobs = (): void => {
+  const jobList = schedule.scheduledJobs;
+
+  Object.values(jobList).map((job) => {
+    schedule.cancelJob(job.name);
+  });
+};
+
 const autoUpdateGames = async (): Promise<void> => {
   if (autoUpdateGamesEnabled) {
     logger.info("----> Auto update games");
