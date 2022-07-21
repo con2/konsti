@@ -29,7 +29,11 @@ const startingTimes = [
 export const createGames = async (gameCount: number): Promise<Game[]> => {
   const kompassiGames: KompassiGame[] = [];
 
-  const programTypes = Object.values(KompassiProgramType);
+  const programTypes = [
+    KompassiProgramType.TABLETOP_RPG,
+    KompassiProgramType.LARP,
+    KompassiProgramType.BOARD_GAME,
+  ];
 
   programTypes.map((programType) => {
     logger.info(
