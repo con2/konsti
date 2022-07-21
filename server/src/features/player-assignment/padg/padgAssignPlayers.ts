@@ -70,7 +70,7 @@ export const padgAssignPlayers = (
     signedGames.length
   } (${Math.round((selectedUniqueGames.length / signedGames.length) * 100)}%)`;
 
-  logger.info(`${message}`);
+  logger.debug(`${message}`);
 
   return Object.assign({
     ...assignmentResult,
