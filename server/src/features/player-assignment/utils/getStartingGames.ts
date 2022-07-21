@@ -8,12 +8,12 @@ export const getStartingGames = (
 ): readonly Game[] => {
   logger.debug("Get starting games");
   const startingGames = [] as Game[];
-  const selectedStartingTime = dayjs(startingTime).format();
+  const selectedStartingTime = dayjs(startingTime);
 
   // Get games that start at defined time
   games.forEach((game) => {
-    const gameStartingTime = dayjs(game.startTime).format();
-    if (gameStartingTime === selectedStartingTime) {
+    const gameStartingTime = dayjs(game.startTime);
+    if (gameStartingTime.isSame(selectedStartingTime, "minute")) {
       startingGames.push(game);
     }
   });

@@ -69,6 +69,8 @@ export const randomAssignPlayers = (
     signedGames.length
   } (${Math.round((selectedUniqueGames.length / signedGames.length) * 100)}%)`;
 
+  logger.info(`${message}`);
+
   return Object.assign({
     ...assignmentResult,
     message,

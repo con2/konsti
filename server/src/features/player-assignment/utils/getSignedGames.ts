@@ -23,7 +23,7 @@ export const getSignedGames = (
     }
   });
 
-  logger.debug(
+  logger.info(
     `Found ${signedGames.length} games that have signup wishes and ${minAttendance}-${maxAttendance} available seats`
   );
 
