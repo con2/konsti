@@ -17,6 +17,7 @@ import { db } from "server/db/mongodb";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { postSentryTunnel } from "server/features/sentry-tunnel/sentryTunnelController";
 import { sharedConfig } from "shared/config/sharedConfig";
+import { stopCronJobs } from "server/utils/cron";
 
 interface StartServerParams {
   dbConnString: string;
@@ -180,6 +181,7 @@ export const startServer = async ({
 };
 
 export const closeServer = async (server: Server): Promise<void> => {
+  stopCronJobs();
   server.close();
 
   try {
