@@ -14,6 +14,7 @@ const green = "rgb(119,147,60)";
 const green2 = "rgb(60,118,61)";
 
 const blueLight = "rgb(117,123,165)";
+const blueLight2 = "rgb(144, 211, 255)";
 const blue = "rgb(77,144,254)";
 const blueDark = "rgb(31,75,160)";
 
@@ -75,6 +76,9 @@ export const theme = {
   resultsFoldBorder: gray,
   warningBackground: yellowLight,
   warningBorder: yellow,
+
+  infoBorder: blueLight2,
+  infoBackground: addOpacity(blueLight2, "0.23"),
 
   // Breakpoints
   breakpointPhone: "768px",

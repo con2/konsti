@@ -11,10 +11,6 @@ import { AlgorithmSignupForm } from "./AlgorithmSignupForm";
 import { DirectSignupForm } from "./DirectSignupForm";
 import { Button, ButtonStyle } from "client/components/Button";
 import { SelectedGame } from "shared/typings/models/user";
-import {
-  getUpcomingEnteredGames,
-  getUpcomingSignedGames,
-} from "client/utils/getUpcomingGames";
 import { isAlreadyEntered, isAlreadySigned } from "./allGamesUtils";
 import { PopularityInfo } from "client/components/PopularityInfo";
 import { sharedConfig } from "shared/config/sharedConfig";
@@ -47,13 +43,7 @@ export const GameEntry = ({
   const favoritedGames = useAppSelector(
     (state) => state.myGames.favoritedGames
   );
-  const enteredGamesForTimeslot = getUpcomingEnteredGames(enteredGames).filter(
-    ({ gameDetails }) => gameDetails.startTime === startTime
-  );
   const isEnteredCurrentGame = isAlreadyEntered(game, enteredGames);
-  const signedGamesForTimeslot = getUpcomingSignedGames(signedGames).filter(
-    ({ gameDetails }) => gameDetails.startTime === startTime
-  );
   const isSignedForCurrentGame = isAlreadySigned(game, signedGames);
 
   const dispatch = useAppDispatch();
@@ -88,10 +78,6 @@ export const GameEntry = ({
     await updateFavorite(updateOpts);
   };
 
-  const isGameDisabled = isEnterGameMode
-    ? !isEnteredCurrentGame && enteredGamesForTimeslot.length > 0
-    : !isSignedForCurrentGame && signedGamesForTimeslot.length === 3;
-
   const isGameSigned = isEnterGameMode
     ? isEnteredCurrentGame
     : isSignedForCurrentGame;
@@ -99,7 +85,6 @@ export const GameEntry = ({
   return (
     <GameContainer
       key={game.gameId}
-      disabled={isGameDisabled}
       signed={isGameSigned}
       data-testid="game-container"
     >
@@ -289,7 +274,7 @@ const GameMoreInfoRow = styled(GameEntryRow)`
   align-items: center;
 `;
 
-const GameContainer = styled.div<{ disabled: boolean; signed: boolean }>`
+const GameContainer = styled.div<{ signed: boolean }>`
   display: flex;
   flex-direction: column;
   padding: 8px;
@@ -306,9 +291,9 @@ const GameContainer = styled.div<{ disabled: boolean; signed: boolean }>`
     margin-right: 0;
   }
 
-  ${(props) => props.disabled && "opacity: 50%"}
+  ${(props) => props.signed && `border: 1px solid ${props.theme.infoBorder};`}
   ${(props) =>
-    props.signed && `border-left: 5px solid ${props.theme.borderActive}`}
+    props.signed && `border-left: 5px solid ${props.theme.infoBorder};`}
 `;
 
 const GameListShortDescription = styled.div`
