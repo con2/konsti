@@ -13,6 +13,7 @@ import { ProgramTypeSelection } from "client/components/EventTypeSelection";
 import { useAppSelector } from "client/utils/hooks";
 import { MOBILE_MARGIN } from "client/globalStyle";
 import { newUpdatePageReloadKey } from "client/utils/localStorage";
+import { isAdmin } from "client/utils/checkUserGroup";
 
 export const App = (): ReactElement => {
   const { dataUpdateInterval } = config;
@@ -21,6 +22,7 @@ export const App = (): ReactElement => {
   const [loading, setLoading] = useState<boolean>(true);
 
   const appOpen = useAppSelector((state) => state.admin.appOpen);
+  const userGroup = useAppSelector((state) => state.login.userGroup);
 
   useEffect(() => {
     // Successful app load -> reset update reload state
@@ -50,7 +52,7 @@ export const App = (): ReactElement => {
         <BrowserRouter>
           <Header />
           <ErrorBar />
-          {appOpen && <ProgramTypeSelection />}
+          {(appOpen || isAdmin(userGroup)) && <ProgramTypeSelection />}
           <AppContainer>
             <AppRoutes />
           </AppContainer>
