@@ -94,7 +94,7 @@ export const startServer = async ({
   app.post(
     ApiEndpoint.SENTRY_TUNNEL,
     express.text({
-      limit: "1000kb",
+      limit: "5000kb", // limit: 5MB
       type: "text/plain",
     }),
     async (req, res) => {
@@ -103,7 +103,7 @@ export const startServer = async ({
   );
 
   // Parse body and populate req.body - only accepts JSON
-  app.use(express.json({ limit: "1000kb", type: "*/*" }));
+  app.use(express.json({ limit: "1000kb", type: "*/*" })); // limit: 1MB
 
   app.use(
     "/",
