@@ -1,13 +1,60 @@
-import React, { ReactElement } from "react";
+import React, { ReactElement, useState } from "react";
 import { useTranslation } from "react-i18next";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import { Button, ButtonStyle } from "client/components/Button";
+import aboutKonstiFi from "client/markdown/AboutKonstiFi.md";
+import aboutKonstiEn from "client/markdown/AboutKonstiEn.md";
+import konstiFaqFi from "client/markdown/KonstiFaqFi.md";
+import konstiFaqEn from "client/markdown/KonstiFaqEn.md";
+
+enum AboutSection {
+  FAQ = "faq",
+  GENERAL = "general",
+}
 
 export const AboutView = (): ReactElement => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+
+  const [selectedSection, setSelectedSection] = useState<AboutSection>(
+    AboutSection.GENERAL
+  );
 
   return (
-    <>
-      <h2>{t("aboutView.title")}</h2>
-      <div>{t("aboutView.description")}</div>
-    </>
+    <div>
+      <Button
+        buttonStyle={
+          selectedSection === AboutSection.GENERAL
+            ? ButtonStyle.DISABLED
+            : ButtonStyle.NORMAL
+        }
+        onClick={() => setSelectedSection(AboutSection.GENERAL)}
+      >
+        {t("aboutView.general")}
+      </Button>
+
+      <Button
+        buttonStyle={
+          selectedSection === AboutSection.FAQ
+            ? ButtonStyle.DISABLED
+            : ButtonStyle.NORMAL
+        }
+        onClick={() => setSelectedSection(AboutSection.FAQ)}
+      >
+        {t("aboutView.faq")}
+      </Button>
+
+      {selectedSection === AboutSection.GENERAL && (
+        <ReactMarkdown remarkPlugins={[remarkGfm]}>
+          {i18n.language === "fi" ? aboutKonstiFi : aboutKonstiEn}
+        </ReactMarkdown>
+      )}
+
+      {selectedSection === AboutSection.FAQ && (
+        <ReactMarkdown remarkPlugins={[remarkGfm]}>
+          {i18n.language === "fi" ? konstiFaqFi : konstiFaqEn}
+        </ReactMarkdown>
+      )}
+    </div>
   );
 };
