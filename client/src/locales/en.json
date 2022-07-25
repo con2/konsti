@@ -334,8 +334,8 @@
     "invalidRequest": "Invalid request"
   },
   "aboutView": {
-    "title": "What is Konsti?",
-    "description": "Konsti is signup application designed for Finnish conventions"
+    "general": "What is Konsti?",
+    "faq": "Konsti FAQ"
   },
   "gamePopularity": {
     "low": "Need more players",
