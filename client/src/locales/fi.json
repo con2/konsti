@@ -334,8 +334,8 @@
     "invalidRequest": "Virheellinen kutsu"
   },
   "aboutView": {
-    "title": "Mikä on Konsti?",
-    "description": "Konsti on ilmoittautumissovellus, joka on suunniteltu suomalaisille coneille."
+    "general": "Mikä on Konsti?",
+    "faq": "Konsti FAQ"
   },
   "gamePopularity": {
     "low": "Tarvitaan lisää pelaajia",

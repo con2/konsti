@@ -51,7 +51,7 @@ describe("Assignment with valid data", () => {
       startingTime,
     });
     expect(assignResults.status).toEqual("success");
-    expect(assignResults.results.length).toBeGreaterThanOrEqual(25);
+    expect(assignResults.results.length).toBeGreaterThanOrEqual(20);
 
     await verifyUserSignups();
     await verifyResults();
@@ -63,7 +63,7 @@ describe("Assignment with valid data", () => {
       startingTime,
     });
     expect(assignResults2.status).toEqual("success");
-    expect(assignResults2.results.length).toBeGreaterThanOrEqual(25);
+    expect(assignResults2.results.length).toBeGreaterThanOrEqual(20);
 
     await verifyUserSignups();
     await verifyResults();
@@ -81,7 +81,7 @@ describe("Assignment with valid data", () => {
       startingTime,
     });
     expect(assignResults.status).toEqual("success");
-    expect(assignResults.results.length).toBeGreaterThanOrEqual(25);
+    expect(assignResults.results.length).toBeGreaterThanOrEqual(20);
 
     await verifyUserSignups();
     await verifyResults();
@@ -93,7 +93,7 @@ describe("Assignment with valid data", () => {
       startingTime,
     });
     expect(assignResults2.status).toEqual("success");
-    expect(assignResults2.results.length).toBeGreaterThanOrEqual(25);
+    expect(assignResults2.results.length).toBeGreaterThanOrEqual(20);
 
     await verifyUserSignups();
     await verifyResults();
@@ -111,7 +111,7 @@ describe("Assignment with valid data", () => {
       startingTime,
     });
     expect(assignResults.status).toEqual("success");
-    expect(assignResults.results.length).toBeGreaterThanOrEqual(25);
+    expect(assignResults.results.length).toBeGreaterThanOrEqual(20);
 
     await verifyUserSignups();
     await verifyResults();
@@ -123,7 +123,7 @@ describe("Assignment with valid data", () => {
       startingTime,
     });
     expect(assignResults2.status).toEqual("success");
-    expect(assignResults2.results.length).toBeGreaterThanOrEqual(25);
+    expect(assignResults2.results.length).toBeGreaterThanOrEqual(20);
 
     await verifyUserSignups();
     await verifyResults();
@@ -141,7 +141,7 @@ describe("Assignment with valid data", () => {
       startingTime,
     });
     expect(assignResults.status).toEqual("success");
-    expect(assignResults.results.length).toBeGreaterThanOrEqual(25);
+    expect(assignResults.results.length).toBeGreaterThanOrEqual(20);
 
     await verifyUserSignups();
     await verifyResults();
@@ -153,7 +153,7 @@ describe("Assignment with valid data", () => {
       startingTime,
     });
     expect(assignResults2.status).toEqual("success");
-    expect(assignResults2.results.length).toBeGreaterThanOrEqual(25);
+    expect(assignResults2.results.length).toBeGreaterThanOrEqual(20);
 
     await verifyUserSignups();
     await verifyResults();
@@ -171,7 +171,7 @@ describe("Assignment with valid data", () => {
       startingTime,
     });
     expect(assignResults.status).toEqual("success");
-    expect(assignResults.results.length).toBeGreaterThanOrEqual(25);
+    expect(assignResults.results.length).toBeGreaterThanOrEqual(20);
 
     await verifyUserSignups();
     await verifyResults();
@@ -183,7 +183,7 @@ describe("Assignment with valid data", () => {
       startingTime,
     });
     expect(assignResults2.status).toEqual("success");
-    expect(assignResults2.results.length).toBeGreaterThanOrEqual(25);
+    expect(assignResults2.results.length).toBeGreaterThanOrEqual(20);
 
     await verifyUserSignups();
     await verifyResults();
@@ -201,7 +201,7 @@ describe("Assignment with valid data", () => {
       startingTime,
     });
     expect(assignResults.status).toEqual("success");
-    expect(assignResults.results.length).toBeGreaterThanOrEqual(25);
+    expect(assignResults.results.length).toBeGreaterThanOrEqual(20);
 
     await verifyUserSignups();
     await verifyResults();
