@@ -161,8 +161,6 @@
   },
   "agreePrivacyPolicy": "Hyväksyn tietosuojaselosteen",
   "privacyPolicyButton": "Näytä tietosuojaseloste",
-  "privacyPolicyTitle": "Tietosuojaseloste",
-  "privacyPolicyText": "Roolipeli-ilmoittautumisjärjestelmän toteuttaa Arttu Hanska (email arttu.hanska@gmail.com). Järjestelmä pyörii Yhdysvaltain lainsäädännön alaisuudessa. Peli-ilmoittautumisista tallennetaan oheiset tiedot järjestelmään. Yksilöivät henkilötiedot poistetaan järjestelmästä tapahtuman päätyttyä, mutta ei-yksilöivä tieto voidaan julkaista käytettäväksi tilastointitarkoituksiin.\nTallennettavat tiedot:\n- Yksilöllinen vapaavalintainen käyttäjätunnus\n- Käyttäjätunnuksen salasanan tiiviste\n- Käyttäjän valitsemien pelien tiedot: suosikit, ilmoittautumiset, pelit joihin käyttäjä on sijoitettu\n- Muut käyttäjät, joiden kanssa käyttäjä on muodostanut ryhmän\nhttps://aws.amazon.com/compliance/gdpr-center/",
   "registrationSerialHelp": "Nouda rekisteröintikoodi larp/ropetiskiltä tai pelitiskiltä",
   "noSignedGames": "Ei valittuja pelejä",
   "noFavoritedGames": "Ei suosikkipelejä",

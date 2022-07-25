@@ -83,6 +83,10 @@ const commonConfig: Configuration = {
         test: /\.svg$/,
         use: ["@svgr/webpack"],
       },
+      {
+        test: /\.md$/,
+        use: "raw-loader",
+      },
     ],
   },
 };
