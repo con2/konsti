@@ -85,6 +85,7 @@ const commonConfig: Configuration = {
       },
       {
         test: /\.md$/,
+        // TODO: Replace with Asset Module: https://webpack.js.org/guides/asset-modules/
         use: "raw-loader",
       },
     ],
