@@ -198,7 +198,7 @@
   "noLotterySignupResult": "You didn't get into a game during lottery",
   "invalidGameId": "Game not found. Invalid game ID",
   "feedbackTitle": "Feedback",
-  "feedbackInstruction": "Did you enjoy the game? Send feedback to the game master! They will receive it after the event.",
+  "feedbackInstruction": "Did you enjoy the game? Send feedback to the game organizer! They will receive it after the event.",
   "noProgramItemsAvailable": "No games found",
   "noGamesInDatabase": "No games in database",
   "upcoming": "Upcoming",

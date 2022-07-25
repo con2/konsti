@@ -198,7 +198,7 @@
   "noLotterySignupResult": "Et mahtunut peliin arvonnassa",
   "invalidGameId": "Peliä ei löydy. Viallinen pelitunniste",
   "feedbackTitle": "Palaute",
-  "feedbackInstruction": "Piditkö pelistä? Lähetä palautetta pelinjohtajalle! Palautteet toimitetaan tapahtuman jälkeen.",
+  "feedbackInstruction": "Piditkö pelistä? Lähetä palautetta pelin järjestäjälle! Palautteet toimitetaan tapahtuman jälkeen.",
   "noProgramItemsAvailable": "Ei näytettäviä pelejä",
   "noGamesInDatabase": "Ei pelejä tietokannassa",
   "upcoming": "Tulevat",
