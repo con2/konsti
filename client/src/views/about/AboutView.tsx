@@ -3,10 +3,10 @@ import { useTranslation } from "react-i18next";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Button, ButtonStyle } from "client/components/Button";
-import aboutKonstiFi from "client/markdown/aboutKonstiFi.md";
-import aboutKonstiEn from "client/markdown/aboutKonstiEn.md";
-import konstiFaqFi from "client/markdown/konstiFaqFi.md";
-import konstiFaqEn from "client/markdown/konstiFaqEn.md";
+import aboutKonstiFi from "client/markdown/AboutKonstiFi.md";
+import aboutKonstiEn from "client/markdown/AboutKonstiEn.md";
+import konstiFaqFi from "client/markdown/KonstiFaqFi.md";
+import konstiFaqEn from "client/markdown/KonstiFaqEn.md";
 
 enum AboutSection {
   FAQ = "faq",
