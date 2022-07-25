@@ -3,11 +3,12 @@ import { SubmitHandler, useForm, useFormState } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import { Accordion } from "client/components/Accordion";
 import { sharedConfig } from "shared/config/sharedConfig";
 import { ConventionType } from "shared/config/sharedConfig.types";
 import { Button, ButtonStyle } from "client/components/Button";
-import { Paragraph } from "client/components/Paragraph";
 import { RegistrationFormFields } from "shared/typings/api/login";
 import { useAppDispatch } from "client/utils/hooks";
 import {
@@ -21,10 +22,12 @@ import {
   USERNAME_LENGTH_MIN,
 } from "shared/constants/validation";
 import { ErrorMessage } from "client/components/ErrorMessage";
+import privacyPolicyFi from "client/markdown/PrivacyPolicyFi.md";
+import privacyPolicyEn from "client/markdown/PrivacyPolicyEn.md";
 
 export const RegistrationForm = (): ReactElement => {
   const dispatch = useAppDispatch();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const serialRequired = sharedConfig.conventionType === ConventionType.LIVE;
 
@@ -181,8 +184,9 @@ export const RegistrationForm = (): ReactElement => {
 
         <Accordion toggleButton={t("privacyPolicyButton")}>
           <PrivacyPolicyContent>
-            <h3>{t(`privacyPolicyTitle`)}</h3>
-            <Paragraph text={t("privacyPolicyText")} />
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>
+              {i18n.language === "fi" ? privacyPolicyFi : privacyPolicyEn}
+            </ReactMarkdown>
           </PrivacyPolicyContent>
         </Accordion>
 
