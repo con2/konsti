@@ -142,7 +142,7 @@ const devConfig = {
   ],
   useLocalProgramFile: false,
   debug: false,
-  GROUP_ASSIGNMENT_ROUNDS: 1,
+  GROUP_ASSIGNMENT_ROUNDS: 10,
   PADG_ASSIGNMENT_ROUNDS: 300,
   RANDOM_ASSIGNMENT_ROUNDS: 10,
   updateGamePopularityEnabled: true,
