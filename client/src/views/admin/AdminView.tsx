@@ -15,6 +15,7 @@ import { Button, ButtonStyle } from "client/components/Button";
 import { SignupQuestionList } from "client/views/admin/components/SignupQuestionList";
 import { Dropdown, Item } from "client/components/Dropdown";
 import { SignupStrategySelector } from "client/test/test-components/SignupStrategySelector";
+import { sharedConfig } from "shared/config/sharedConfig";
 
 export const AdminView = (): ReactElement => {
   const games = useAppSelector((state) => state.allGames.games);
@@ -209,16 +210,18 @@ export const AdminView = (): ReactElement => {
         </>
       )}
 
-      <Button
-        buttonStyle={ButtonStyle.NORMAL}
-        onClick={() => {
-          const testValue = undefined;
-          // @ts-expect-error: Sentry test value
-          console.log(testValue.value); // eslint-disable-line no-console
-        }}
-      >
-        {t("button.close")}
-      </Button>
+      {sharedConfig.enableSentryTesting && (
+        <Button
+          buttonStyle={ButtonStyle.NORMAL}
+          onClick={() => {
+            const testValue = undefined;
+            // @ts-expect-error: Sentry test value
+            console.log(testValue.value); // eslint-disable-line no-console
+          }}
+        >
+          {t("button.close")}
+        </Button>
+      )}
     </div>
   );
 };

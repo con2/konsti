@@ -136,9 +136,11 @@ export const startServer = async ({
     app.use(express.static(staticPath));
   }
 
-  app.get("/debug-sentry", (_req: Request, _res: Response) => {
-    throw new Error("Test Sentry error");
-  });
+  if (sharedConfig.enableSentryTesting) {
+    app.get("/debug-sentry", (_req: Request, _res: Response) => {
+      throw new Error("Test Sentry error");
+    });
+  }
 
   app.get("/*", (req: Request, res: Response) => {
     if (req.originalUrl.includes("/api/")) {
