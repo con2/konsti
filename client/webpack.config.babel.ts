@@ -83,6 +83,11 @@ const commonConfig: Configuration = {
         test: /\.svg$/,
         use: ["@svgr/webpack"],
       },
+      {
+        test: /\.md$/,
+        // TODO: Replace with Asset Module: https://webpack.js.org/guides/asset-modules/
+        use: "raw-loader",
+      },
     ],
   },
 };
