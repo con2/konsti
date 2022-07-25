@@ -109,7 +109,7 @@ export const startServer = async ({
     "/",
     (err: Error, _req: Request, res: Response, next: NextFunction) => {
       if (err) {
-        logger.error(`Invalid request: ${JSON.stringify(err)}`);
+        logger.warn(`Invalid request: ${JSON.stringify(err)}`);
         return res.sendStatus(400);
       } else {
         return next();
