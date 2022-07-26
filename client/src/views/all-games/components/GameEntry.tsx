@@ -314,7 +314,11 @@ const RowItem = styled.span`
   padding-right: 12px;
 `;
 
-const SignupAlwaysOpenHelp = styled.span`
-  font-weight: 600;
-  margin-top: 10px;
+const SignupAlwaysOpenHelp = styled.div`
+  margin: 6px 0 6px 0;
+  border: 1px solid ${(props) => props.theme.infoBorder};
+  padding: 8px 6px;
+  border-radius: 5px;
+  border-left: 5px solid ${(props) => props.theme.infoBorder};
+  background-color: ${(props) => props.theme.infoBackground};
 `;

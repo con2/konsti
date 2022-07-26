@@ -74,7 +74,10 @@ export const sharedConfig: SharedConfig = {
     ],
   },
 
-  directSignupAlwaysOpen: ["p5344"], // PFS multi-table special: Pathfinder Society #3-99 Fate in the Future
+  directSignupAlwaysOpen: [
+    "p5344", // PFS multi-table special: Pathfinder Society #3-99 Fate in the Future
+    "p5825", // Corporations 2.0
+  ],
 
   // Two phase signup settings
   PRE_SIGNUP_START: 60 * 4, // minutes
