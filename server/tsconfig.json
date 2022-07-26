@@ -11,7 +11,8 @@
   "files": [
     "src/typings/declarations/eventassigner-js.d.ts",
     "src/typings/declarations/munkres-js.d.ts",
-    "src/typings/declarations/generate-serial-number.d.ts"
+    "src/typings/declarations/generate-serial-number.d.ts",
+    "src/typings/declarations/global.d.ts"
   ],
   "include": ["**/*.js", "**/*.ts", "./.eslintrc.js"],
   "exclude": ["./node_modules", "./lib", "./coverage", "./front"]
