@@ -7,6 +7,7 @@ import {
   DeleteEnteredGameParameters,
   PostEnteredGameParameters,
 } from "shared/typings/api/myGames";
+import { ProgramType } from "shared/typings/models/game";
 
 export const removeSignups = async (): Promise<void> => {
   logger.info("MongoDB: remove ALL signups from db");
@@ -41,7 +42,7 @@ export interface FindSignupsByStartTimeResponse extends UserSignup {
   gameId: string;
 }
 
-export const findSignupsByStartTime = async (
+export const findRpgSignupsByStartTime = async (
   startTime: string
 ): Promise<FindSignupsByStartTimeResponse[]> => {
   let response: Signup[];
@@ -68,6 +69,9 @@ export const findSignupsByStartTime = async (
 
   const formattedResponse: FindSignupsByStartTimeResponse[] = response.flatMap(
     (signup) => {
+      if (signup.game.programType !== ProgramType.TABLETOP_RPG) {
+        return [];
+      }
       return signup.userSignups.map((userSignup) => ({
         ...userSignup,
         gameId: signup.game.gameId,
@@ -249,9 +253,13 @@ export const delSignupsByStartTime = async (
     throw error;
   }
 
-  // Don't remove directSignupAlwaysOpen games
+  // Only remove TABLETOP_RPG signups and don't remove directSignupAlwaysOpen signups
   const doNotRemoveGameIds = games
-    .filter((game) => sharedConfig.directSignupAlwaysOpen.includes(game.gameId))
+    .filter(
+      (game) =>
+        sharedConfig.directSignupAlwaysOpen.includes(game.gameId) ||
+        game.programType !== ProgramType.TABLETOP_RPG
+    )
     .map((game) => game._id);
 
   let response;

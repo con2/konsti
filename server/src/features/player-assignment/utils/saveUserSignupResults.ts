@@ -2,7 +2,7 @@ import { Result } from "shared/typings/models/result";
 import {
   delSignup,
   delSignupsByStartTime,
-  findSignupsByStartTime,
+  findRpgSignupsByStartTime,
   FindSignupsByStartTimeResponse,
   saveSignup,
 } from "server/features/signup/signupRepository";
@@ -16,7 +16,7 @@ export const saveUserSignupResults = async (
 
   let signups: FindSignupsByStartTimeResponse[];
   try {
-    signups = await findSignupsByStartTime(startingTime);
+    signups = await findRpgSignupsByStartTime(startingTime);
   } catch (error) {
     logger.error(error);
     throw error;
