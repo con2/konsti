@@ -13,6 +13,9 @@ import { GroupMemberActions } from "client/views/group/components/GroupMemberAct
 import { ProgramType } from "shared/typings/models/game";
 import { getTime } from "client/utils/getTime";
 import { selectActiveEnteredGames } from "client/views/my-games/myGamesSlice";
+import { sharedConfig } from "shared/config/sharedConfig";
+
+const { directSignupAlwaysOpen } = sharedConfig;
 
 export const GroupView = (): ReactElement => {
   const username = useAppSelector((state) => state.login.username);
@@ -34,10 +37,15 @@ export const GroupView = (): ReactElement => {
     fetchData();
   }, [store]);
 
+  const filteredActiveEnteredGames = activeEnteredGames.filter(
+    (activeEnteredGame) =>
+      !directSignupAlwaysOpen.includes(activeEnteredGame.gameDetails.gameId)
+  );
+
   const isGroupCreator = getIsGroupCreator(groupCode, serial);
   const isInGroup = getIsInGroup(groupCode);
   const timeNow = getTime();
-  const enteredGamesAfterNow = activeEnteredGames.filter((game) =>
+  const enteredGamesAfterNow = filteredActiveEnteredGames.filter((game) =>
     timeNow.isBefore(dayjs(game.time))
   );
   const hasEnteredGames = enteredGamesAfterNow.length > 0;
@@ -61,7 +69,7 @@ export const GroupView = (): ReactElement => {
                 <EnteredGamesContainer>
                   <BoldText>{t("group.hasEnteredFollowingGames")}</BoldText>
                   <ul>
-                    {activeEnteredGames.map((game) => (
+                    {filteredActiveEnteredGames.map((game) => (
                       <li key={game.gameDetails.gameId}>
                         {game.gameDetails.title}
                       </li>
