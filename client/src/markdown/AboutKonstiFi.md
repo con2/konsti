@@ -10,7 +10,7 @@ Konstin käytössä auttavat Pelitiski (Halli 3) ja Larp/Rope-tiski (Eteläisen 
 
 ## Miten Konstia käytetään?
 
-Konstia voi käyttää internet-selaimen avulla omalla älypuhelimella, tabletilla tai kannettavalla.
+Konsti on verkkosovellus, jota voi käyttää internet-selaimen avulla omalla älypuhelimella, tabletilla tai kannettavalla.
 
 ### Tilin luominen ja sisäänkirjautuminen
 
@@ -24,7 +24,9 @@ Rekisteröintikoodin lisäksi tarvitset käyttäjänimen ja salasanan. Rekister�
 
 ### Ohjelmatyypin valinta
 
-Sivun yläreunassa on valikko, josta voit valita minkä ohjelmatyypin ilmoittautumisia haluat selata. Huomaa, että ohjelmatyypin valinta vaikuttaa näkymään myös Omat pelit -osiossa suosikkeja ja ilmoittautumisia tarkasteltaessa: voin nähdä kerrallaan siis vain yhden ohjelmatyypin pelit.
+Sivun yläreunassa on valikko, josta voit valita minkä ohjelmatyypin pelejä haluat selata: pöytäroolipelit, larpit tai turnaukset.
+
+Huomaa, että ohjelmatyypin valinta vaikuttaa näkymään myös Omat pelit -osiossa suosikkeja ja ilmoittautumisia tarkasteltaessa: voin nähdä kerrallaan siis vain yhden ohjelmatyypin pelit.
 
 ### Pelien selaaminen Konstissa
 
@@ -54,7 +56,7 @@ Arvonnan ja katveajan jälkeen alkaa ns. toinen vaihe eli suorailmoittautuminen.
 
 ### Pyöröovipelit
 
-Pyöröovipelien ideana on että pelaajat voivat lähteä kesken pelin ja paikkoja voi täyttää yhtä luonnollisesti. Pyöröovipelin alkuun voi ilmoittautua normaalisti, mutta kun peli alkaa, se näkyy koko toimintansa ajan Konstin ilmottautumissivulla painettaessa "Pyöröovi" -nappia. Käynnissä olevista pyöröovipeleistä saa lisätietoa klikkaamalla.
+Pyöröovipelien ideana on että pelaajat voivat lähteä kesken pelin ja paikkoja voi täyttää yhtä luonnollisesti. Pyöröovipelin alkuun voi ilmoittautua normaalisti, mutta kun peli alkaa, se näkyy koko toimintansa ajan Konstin ilmottautumissivulla painettaessa "Pyöröovi" -nappia.
 
 ## Miten ilmoittaudun larppeihin?
 
@@ -64,9 +66,13 @@ Merkittävään osaan larppeja ilmoittaudutaan tänä vuonna Kosti-sovelluksen k
 
 Larppien ilmot aukeavat tiettyihin aikoihin. Konstissa ilmoittautuminen perjantai-illan larppeihi alkaa heti klo 15 tapahtuman ovien auettua, ja lauantai-aamupäivän larppeihin vastaavasti perjantaina klo 18. Ilmoittautuminen lauantai-illan larppeihin ilmoittautuminen avautuu Konstissa puolestaan lauantaina klo 11, ja vastaavasti sunnuntain larppeihin lauantaina klo 15.
 
+### Miksi larppia X ei löydy Konstista?
+
+Kaikkiin tänä vuonna Ropeconin ohjelmassa oleviin larppeihin ei kuitenkaan ilmoittauduta Konstin kautta. Joihinkin larppeihin ilmoittaudutaan Larp/Rope-tiskin kautta, sillä ilmoittautumisen yhteydessä pelaajat valitsevat oman hahmonsa ja heille jaetaan lisämateriaalia.
+
 ## Miten ilmoittaudun turnauksiin?
 
-Konstissa voi selata turnauksia valitsemalla sivun yläosan valikosta ohjelmatyypiksi Turnaukset. Turnauksiin ilmoittautuminen sujuu Konstin kautta hyvin samaan tapaan, kuin esimerkiksi roolipeleihin ja larppeihin.
+Konstissa voi selata turnauksia valitsemalla sivun yläosan valikosta ohjelmatyypiksi Turnaukset. Turnauksiin ilmoittautuminen sujuu Konstin kautta hyvin samaan tapaan, kuin esimerkiksi roolipeleihin ja larppeihin, mutta joillakin eroavaisuuksilla:
 
 ### Turnauksissa käytössä vain suorailmoittautuminen
 
@@ -79,3 +85,9 @@ Ilmoittautuminen kaikkiin Ropeconin aikana tapahtuviin turnauksiin avautuu jo he
 ### Muistathan antaa yhteystietosi palkintoja varten
 
 Turnausten ilmoittautumisen yhteydessä Konstissa kysytään käyttäjältä myös nimeä ja yhteystietoja (sähköpostia ja puhelinnumeroa), jotta turnausten voittajiin ja muihin mahdollisiin palkintojen saajiin saadaan myöhemmin tarvittaessa yhteys ja palkinnot löytävät perille oikeille omistajilleen. Nämä tiedot eivät näy Konstissa julkisesti muille käyttäjille, vaan ovat vain kyseisen turnauksen järjestäjien nähtävissä. Muistathan siis lisätä nimesi ja yhteystietosi ilmoittautumisen yhteydessä!
+
+### Miksi turnausta X ei löydy Konstista?
+
+Ropeconissa on tänäkin vuonna laaja valikoima erilaisia turnauksia, mutta aivan kaikkien niiden ilmoittautuminen ei kuitenkaan tapahdu Konstin kautta. Esimerkiksi ennakkoilmoittautuminen figuturnauksiin on tapahtunut jo kauan ennen tapahtumaa harrastajien omien foorumien kautta, ja moni MTG-turnauksista hyödyntää ilmoittautumisissa puolestaan omaa sovellustaan. Lisäksi tämän vuoden Ropeconissa pelattavat Vampire: the Eternal Struggle -korttipelin EM-turnausten ilmoittautumiset tapahtuvat Konstin ulkopuolella: ilmoittautuminen näihin tapahtuu henkilökohtaisesti paikan päällä VTES-turnausalueella Siivessä huoneessa 208.
+
+Jos et löydä etsimääsi turnausta Konstista ja haluat varmistaa, mitä kautta siihen tulisi ilmoittautua, voit aina tulla kysymään asiasta Pelitiskiltä - vapaaehtoisemme auttavat sinua mielellään tarvittaessa myös Konstin käytössä!
