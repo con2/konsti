@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { useAppSelector } from "client/utils/hooks";
 import { Button, ButtonStyle } from "./Button";
 import { sharedConfig } from "shared/config/sharedConfig";
+import { MOBILE_MARGIN } from "client/globalStyle";
 
 export const FirstLogin = (): ReactElement | null => {
   const { t } = useTranslation();
@@ -51,4 +52,10 @@ const FirstLoginContainer = styled.div`
   border: 1px solid ${(props) => props.theme.borderWarning};
   background: #fafafa;
   padding: 8px;
+  margin: 0 0 10px 0;
+
+  @media (max-width: ${(props) => props.theme.breakpointPhone}) {
+    margin-left: ${MOBILE_MARGIN}px;
+    margin-right: ${MOBILE_MARGIN}px;
+  }
 `;
