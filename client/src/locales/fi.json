@@ -284,7 +284,7 @@
     "playerRange": "Pelaajia {{MIN_ATTENDANCE}} - {{MAX_ATTENDANCE}}",
     "signupOpens": "Ilmoittautuminen aukeaa",
     "lotterySignupOpens": "Arvontaan ilmoittautuminen aukeaa",
-    "signupAlwaysOpen": "Ilmoittautuminen erikoispeliin aina auki",
+    "signupAlwaysOpen": "Ilmoittautuminen aina auki",
     "inGroupWarning": "Jos ilmoittaudut peliin sinut poistetaan ryhmästäsi",
     "groupCreatorWarning": "Jos ilmoittaudut peliin perustamasi ryhmä hajoitetaan",
     "currentSignupGame": "Olet ilmoittautunut tähän peliin."

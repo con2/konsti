@@ -284,7 +284,7 @@
     "playerRange": "Players {{MIN_ATTENDANCE}} - {{MAX_ATTENDANCE}}",
     "signupOpens": "Signup opens",
     "lotterySignupOpens": "Lottery signup opens",
-    "signupAlwaysOpen": "Signup for special always open",
+    "signupAlwaysOpen": "Signup always open",
     "inGroupWarning": "If you signup to game you will be removed from group you are in",
     "groupCreatorWarning": "If you signup to game the group you created will be destroyed",
     "currentSignupGame": "You have signed up to this game."
