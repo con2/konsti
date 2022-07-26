@@ -334,5 +334,10 @@ const GameListShortDescription = styled.p`
 `;
 
 const RevolvingDoorInstruction = styled.div`
-  margin: 20px 0 0 14px;
+  margin: 6px 0 0 0;
+  border: 1px solid ${(props) => props.theme.infoBorder};
+  padding: 8px 6px;
+  border-radius: 5px;
+  border-left: 5px solid ${(props) => props.theme.infoBorder};
+  background-color: ${(props) => props.theme.infoBackground};
 `;
