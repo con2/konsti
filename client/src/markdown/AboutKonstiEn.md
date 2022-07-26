@@ -4,7 +4,7 @@ Konsti app is an [open-source sign-up application](https://github.com/ropekonsti
 
 ## Ropecon 2022
 
-In Ropecon 2022, you can sign-up to role-playing games, larps, and game tournaments in Konsti.
+In Ropecon 2022, you can sign-up to tabletop role-playing games, larps, and game tournaments in Konsti.
 
 Gaming Desk (Hall 3) and Larp/RPG Desk (Southern Entrance lobby) will help you with using Konsti. You can also get registration code or borrow tablets to use Konsti from the desks.
 
