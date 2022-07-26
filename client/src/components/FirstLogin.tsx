@@ -58,4 +58,9 @@ const FirstLoginContainer = styled.div`
     margin-left: ${MOBILE_MARGIN}px;
     margin-right: ${MOBILE_MARGIN}px;
   }
+
+  @media (max-width: ${(props) => props.theme.breakpointDesktop}) {
+    margin-left: ${MOBILE_MARGIN}px;
+    margin-right: ${MOBILE_MARGIN}px;
+  }
 `;
