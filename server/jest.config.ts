@@ -9,7 +9,7 @@ module.exports = {
   modulePathIgnorePatterns: ["./lib"],
 
   setupFiles: ["./src/test/setupTests.ts"],
-  setupFilesAfterEnv: ["./src/test/setupTestsAfterEnv.ts"],
+  setupFilesAfterEnv: ["./src/test/setupTestsAfterEnv.ts", "jest-extended/all"],
 
   moduleNameMapper: {
     "^server(.*)$": "<rootDir>/src/$1",

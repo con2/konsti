@@ -10,6 +10,10 @@ import { sharedConfig } from "shared/config/sharedConfig";
 
 let mongoServer: MongoMemoryServer;
 
+// This needs to be adjusted if test data is changed
+const expectedResultsCount = 20;
+const groupTestUsers = ["group1", "group2", "group3"];
+
 beforeEach(async () => {
   mongoServer = new MongoMemoryServer();
   await mongoServer.start();
@@ -51,7 +55,14 @@ describe("Assignment with valid data", () => {
       startingTime,
     });
     expect(assignResults.status).toEqual("success");
-    expect(assignResults.results.length).toBeGreaterThanOrEqual(20);
+    expect(assignResults.results.length).toBeGreaterThanOrEqual(
+      expectedResultsCount
+    );
+
+    const groupResults = assignResults.results.filter((result) =>
+      groupTestUsers.includes(result.username)
+    );
+    expect(groupResults.length).toBeOneOf([groupTestUsers.length, 0]);
 
     await verifyUserSignups();
     await verifyResults();
@@ -63,7 +74,14 @@ describe("Assignment with valid data", () => {
       startingTime,
     });
     expect(assignResults2.status).toEqual("success");
-    expect(assignResults2.results.length).toBeGreaterThanOrEqual(20);
+    expect(assignResults2.results.length).toBeGreaterThanOrEqual(
+      expectedResultsCount
+    );
+
+    const groupResults2 = assignResults2.results.filter((result) =>
+      groupTestUsers.includes(result.username)
+    );
+    expect(groupResults2.length).toBeOneOf([groupTestUsers.length, 0]);
 
     await verifyUserSignups();
     await verifyResults();
@@ -81,7 +99,14 @@ describe("Assignment with valid data", () => {
       startingTime,
     });
     expect(assignResults.status).toEqual("success");
-    expect(assignResults.results.length).toBeGreaterThanOrEqual(20);
+    expect(assignResults.results.length).toBeGreaterThanOrEqual(
+      expectedResultsCount
+    );
+
+    const groupResults = assignResults.results.filter((result) =>
+      groupTestUsers.includes(result.username)
+    );
+    expect(groupResults.length).toBeOneOf([groupTestUsers.length, 0]);
 
     await verifyUserSignups();
     await verifyResults();
@@ -93,7 +118,14 @@ describe("Assignment with valid data", () => {
       startingTime,
     });
     expect(assignResults2.status).toEqual("success");
-    expect(assignResults2.results.length).toBeGreaterThanOrEqual(20);
+    expect(assignResults2.results.length).toBeGreaterThanOrEqual(
+      expectedResultsCount
+    );
+
+    const groupResults2 = assignResults2.results.filter((result) =>
+      groupTestUsers.includes(result.username)
+    );
+    expect(groupResults2.length).toBeOneOf([groupTestUsers.length, 0]);
 
     await verifyUserSignups();
     await verifyResults();
@@ -111,7 +143,14 @@ describe("Assignment with valid data", () => {
       startingTime,
     });
     expect(assignResults.status).toEqual("success");
-    expect(assignResults.results.length).toBeGreaterThanOrEqual(20);
+    expect(assignResults.results.length).toBeGreaterThanOrEqual(
+      expectedResultsCount
+    );
+
+    const groupResults = assignResults.results.filter((result) =>
+      groupTestUsers.includes(result.username)
+    );
+    expect(groupResults.length).toBeOneOf([groupTestUsers.length, 0]);
 
     await verifyUserSignups();
     await verifyResults();
@@ -123,7 +162,14 @@ describe("Assignment with valid data", () => {
       startingTime,
     });
     expect(assignResults2.status).toEqual("success");
-    expect(assignResults2.results.length).toBeGreaterThanOrEqual(20);
+    expect(assignResults2.results.length).toBeGreaterThanOrEqual(
+      expectedResultsCount
+    );
+
+    const groupResults2 = assignResults2.results.filter((result) =>
+      groupTestUsers.includes(result.username)
+    );
+    expect(groupResults2.length).toBeOneOf([groupTestUsers.length, 0]);
 
     await verifyUserSignups();
     await verifyResults();
@@ -141,7 +187,14 @@ describe("Assignment with valid data", () => {
       startingTime,
     });
     expect(assignResults.status).toEqual("success");
-    expect(assignResults.results.length).toBeGreaterThanOrEqual(20);
+    expect(assignResults.results.length).toBeGreaterThanOrEqual(
+      expectedResultsCount
+    );
+
+    const groupResults = assignResults.results.filter((result) =>
+      groupTestUsers.includes(result.username)
+    );
+    expect(groupResults.length).toBeOneOf([groupTestUsers.length, 0]);
 
     await verifyUserSignups();
     await verifyResults();
@@ -153,7 +206,14 @@ describe("Assignment with valid data", () => {
       startingTime,
     });
     expect(assignResults2.status).toEqual("success");
-    expect(assignResults2.results.length).toBeGreaterThanOrEqual(20);
+    expect(assignResults2.results.length).toBeGreaterThanOrEqual(
+      expectedResultsCount
+    );
+
+    const groupResults2 = assignResults2.results.filter((result) =>
+      groupTestUsers.includes(result.username)
+    );
+    expect(groupResults2.length).toBeOneOf([groupTestUsers.length, 0]);
 
     await verifyUserSignups();
     await verifyResults();
@@ -171,7 +231,14 @@ describe("Assignment with valid data", () => {
       startingTime,
     });
     expect(assignResults.status).toEqual("success");
-    expect(assignResults.results.length).toBeGreaterThanOrEqual(20);
+    expect(assignResults.results.length).toBeGreaterThanOrEqual(
+      expectedResultsCount
+    );
+
+    const groupResults = assignResults.results.filter((result) =>
+      groupTestUsers.includes(result.username)
+    );
+    expect(groupResults.length).toBeOneOf([groupTestUsers.length, 0]);
 
     await verifyUserSignups();
     await verifyResults();
@@ -183,7 +250,14 @@ describe("Assignment with valid data", () => {
       startingTime,
     });
     expect(assignResults2.status).toEqual("success");
-    expect(assignResults2.results.length).toBeGreaterThanOrEqual(20);
+    expect(assignResults2.results.length).toBeGreaterThanOrEqual(
+      expectedResultsCount
+    );
+
+    const groupResults2 = assignResults2.results.filter((result) =>
+      groupTestUsers.includes(result.username)
+    );
+    expect(groupResults2.length).toBeOneOf([groupTestUsers.length, 0]);
 
     await verifyUserSignups();
     await verifyResults();
@@ -201,7 +275,14 @@ describe("Assignment with valid data", () => {
       startingTime,
     });
     expect(assignResults.status).toEqual("success");
-    expect(assignResults.results.length).toBeGreaterThanOrEqual(20);
+    expect(assignResults.results.length).toBeGreaterThanOrEqual(
+      expectedResultsCount
+    );
+
+    const groupResults = assignResults.results.filter((result) =>
+      groupTestUsers.includes(result.username)
+    );
+    expect(groupResults.length).toBeOneOf([groupTestUsers.length, 0]);
 
     await verifyUserSignups();
     await verifyResults();
@@ -216,8 +297,14 @@ describe("Assignment with valid data", () => {
     });
     expect(assignResults2.status).toEqual("success");
     // Second assignment has less available players -> less results
-    // Disabled because can return 0
-    // expect(assignResults2.results.length).toBeGreaterThanOrEqual(3);
+    expect(assignResults2.results.length).toBeGreaterThanOrEqual(
+      expectedResultsCount - assignResults.results.length
+    );
+
+    const groupResults2 = assignResults2.results.filter((result) =>
+      groupTestUsers.includes(result.username)
+    );
+    expect(groupResults2.length).toBeOneOf([groupTestUsers.length, 0]);
 
     await verifyUserSignups();
     await verifyResults();

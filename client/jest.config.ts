@@ -13,6 +13,7 @@ module.exports = {
   },
 
   setupFiles: ["./src/test/setupTests.ts"],
+  setupFilesAfterEnv: ["jest-extended/all"],
 
   testPathIgnorePatterns: ["playwright"],
 
