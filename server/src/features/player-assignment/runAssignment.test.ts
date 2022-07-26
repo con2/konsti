@@ -28,7 +28,7 @@ afterEach(async () => {
 
 describe("Assignment with valid data", () => {
   beforeEach(async () => {
-    const newUsersCount = expectedResultsCount;
+    const newUsersCount = 20;
     const groupSize = 3;
     const numberOfGroups = 5;
     const newGamesCount = 10;
