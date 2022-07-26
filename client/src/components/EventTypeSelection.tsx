@@ -55,6 +55,11 @@ const EventTypeSelectionContainer = styled.div`
       width: 45%;
     }
   }
+
+  @media (max-width: ${(props) => props.theme.breakpointDesktop}) {
+    margin-left: ${MOBILE_MARGIN}px;
+    margin-right: ${MOBILE_MARGIN}px;
+  }
 `;
 
 const InfoText = styled.span`

@@ -112,6 +112,11 @@ const GameListTitleContainer = styled.div<{ isVisible: boolean }>`
     margin-left: -${MOBILE_MARGIN}px;
     margin-right: -${MOBILE_MARGIN}px;
   }
+
+  @media (max-width: ${(props) => props.theme.breakpointDesktop}) {
+    margin-left: -${MOBILE_MARGIN}px;
+    margin-right: -${MOBILE_MARGIN}px;
+  }
 `;
 
 const StyledGameListTitle = styled.h3`
