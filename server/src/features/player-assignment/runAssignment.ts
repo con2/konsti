@@ -14,6 +14,9 @@ import { getDynamicStartingTime } from "server/features/player-assignment/utils/
 import { sleep } from "server/utils/sleep";
 import { Signup } from "server/features/signup/signup.typings";
 import { findSignups } from "server/features/signup/signupRepository";
+import { sharedConfig } from "shared/config/sharedConfig";
+
+const { directSignupAlwaysOpen } = sharedConfig;
 
 interface RunAssignmentParams {
   assignmentStrategy: AssignmentStrategy;
@@ -55,6 +58,16 @@ export const runAssignment = async ({
     throw new Error(`findUsers error: ${error}`);
   }
 
+  // "directSignupAlwaysOpen" signed games are not included in assignment
+  const filteredUsers = users.map((user) => {
+    const matchingSignedGames = user.signedGames.filter(
+      (signedGame) =>
+        !directSignupAlwaysOpen.includes(signedGame.gameDetails.gameId)
+    );
+
+    return { ...user, signedGames: matchingSignedGames };
+  });
+
   let games: readonly Game[] = [];
   try {
     games = await findGames();
@@ -62,6 +75,11 @@ export const runAssignment = async ({
     logger.error(`findGames error: ${error}`);
     throw new Error(`findGames error: ${error}`);
   }
+
+  // "directSignupAlwaysOpen" games are not included in assignment
+  const filteredGames = games.filter(
+    (game) => !directSignupAlwaysOpen.includes(game.gameId)
+  );
 
   let signups: readonly Signup[] = [];
   try {
@@ -74,8 +92,8 @@ export const runAssignment = async ({
   let assignResults;
   try {
     assignResults = runAssignmentStrategy(
-      users,
-      games,
+      filteredUsers,
+      filteredGames,
       assignmentTime,
       assignmentStrategy,
       signups

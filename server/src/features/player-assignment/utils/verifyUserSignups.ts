@@ -6,7 +6,7 @@ import { findSignups } from "server/features/signup/signupRepository";
 import { Signup } from "server/features/signup/signup.typings";
 
 export const verifyUserSignups = async (): Promise<void> => {
-  logger.info("Verify entered games and signups match for users");
+  logger.info("Verify signed games and signups match for users");
 
   let users: User[];
   try {

@@ -1,7 +1,8 @@
-import { findGameById } from "server/features/game/gameRepository";
-import { Signup } from "server/features/signup/signup.typings";
+import { findGameById, findGames } from "server/features/game/gameRepository";
+import { Signup, UserSignup } from "server/features/signup/signup.typings";
 import { SignupModel } from "server/features/signup/signupSchema";
 import { logger } from "server/utils/logger";
+import { sharedConfig } from "shared/config/sharedConfig";
 import {
   DeleteEnteredGameParameters,
   PostEnteredGameParameters,
@@ -34,6 +35,47 @@ export const findSignups = async (): Promise<Signup[]> => {
 
   logger.debug(`MongoDB: Signups found`);
   return response;
+};
+
+export interface FindSignupsByStartTimeResponse extends UserSignup {
+  gameId: string;
+}
+
+export const findSignupsByStartTime = async (
+  startTime: string
+): Promise<FindSignupsByStartTimeResponse[]> => {
+  let response: Signup[];
+  try {
+    response = await SignupModel.find(
+      { "userSignups.time": startTime },
+      "-createdAt -updatedAt -_id -__v"
+    )
+      .lean<Signup>()
+      .populate("game", "-createdAt -updatedAt -_id -__v");
+  } catch (error) {
+    logger.error(
+      `MongoDB: Error finding signups for time ${startTime} - ${error}`
+    );
+    throw error;
+  }
+
+  if (!response) {
+    logger.info(`MongoDB: Signups for time "${startTime}" not found`);
+    return [];
+  }
+
+  logger.debug(`MongoDB: Found signups for time "${startTime}"`);
+
+  const formattedResponse: FindSignupsByStartTimeResponse[] = response.flatMap(
+    (signup) => {
+      return signup.userSignups.map((userSignup) => ({
+        ...userSignup,
+        gameId: signup.game.gameId,
+      }));
+    }
+  );
+
+  return formattedResponse;
 };
 
 export const findUserSignups = async (username: string): Promise<Signup[]> => {
@@ -199,9 +241,25 @@ export const delSignupsByGameIds = async (
 export const delSignupsByStartTime = async (
   startTime: string
 ): Promise<number> => {
+  let games;
+  try {
+    games = await findGames();
+  } catch (error) {
+    logger.error(`MongoDB: Error loading games - ${error}`);
+    throw error;
+  }
+
+  // Don't remove directSignupAlwaysOpen games
+  const doNotRemoveGameIds = games
+    .filter((game) => sharedConfig.directSignupAlwaysOpen.includes(game.gameId))
+    .map((game) => game._id);
+
   let response;
   try {
-    response = await SignupModel.deleteMany({ "userSignups.time": startTime });
+    response = await SignupModel.deleteMany({
+      "userSignups.time": startTime,
+      game: { $nin: doNotRemoveGameIds },
+    });
   } catch (error) {
     logger.error(`MongoDB: Error removing invalid signup - ${error}`);
     throw error;
