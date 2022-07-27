@@ -4,6 +4,8 @@ import { ResultsCollectionEntry } from "server/typings/result.typings";
 import { findResults } from "server/features/results/resultsRepository";
 import { findSignups } from "server/features/signup/signupRepository";
 import { Signup } from "server/features/signup/signup.typings";
+import { sharedConfig } from "shared/config/sharedConfig";
+import { ProgramType } from "shared/typings/models/game";
 
 export const verifyResults = async (): Promise<void> => {
   logger.info(`Verify results and user entered games match`);
@@ -46,7 +48,13 @@ export const verifyResults = async (): Promise<void> => {
   logger.info("Check if user signups match userResults");
 
   signups.forEach((signup) => {
-    if (!signup.userSignups.length) return;
+    if (
+      !signup.userSignups.length ||
+      signup.game.programType !== ProgramType.TABLETOP_RPG ||
+      sharedConfig.directSignupAlwaysOpen.includes(signup.game.gameId)
+    ) {
+      return;
+    }
 
     signup.userSignups.forEach((userSignup) => {
       const results = resultsCollection.find((result) =>

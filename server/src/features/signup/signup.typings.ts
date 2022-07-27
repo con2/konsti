@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import { Game } from "shared/typings/models/game";
 
-interface UserSignup {
+export interface UserSignup {
   username: string;
   priority: number;
   time: string;

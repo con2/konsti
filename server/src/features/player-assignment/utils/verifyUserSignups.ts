@@ -4,9 +4,11 @@ import { User } from "shared/typings/models/user";
 import { findUsers } from "server/features/user/userRepository";
 import { findSignups } from "server/features/signup/signupRepository";
 import { Signup } from "server/features/signup/signup.typings";
+import { ProgramType } from "shared/typings/models/game";
+import { sharedConfig } from "shared/config/sharedConfig";
 
 export const verifyUserSignups = async (): Promise<void> => {
-  logger.info("Verify entered games and signups match for users");
+  logger.info("Verify signed games and signups match for users");
 
   let users: User[];
   try {
@@ -25,6 +27,13 @@ export const verifyUserSignups = async (): Promise<void> => {
   }
 
   signups.map(({ game, userSignups }) => {
+    if (
+      game.programType !== ProgramType.TABLETOP_RPG ||
+      sharedConfig.directSignupAlwaysOpen.includes(game.gameId)
+    ) {
+      return;
+    }
+
     // Verify group member signups match with group creators signedGames
     // If not in group -> user is group creator
 
