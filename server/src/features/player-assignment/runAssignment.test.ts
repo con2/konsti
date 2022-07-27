@@ -395,6 +395,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
         ...testGame2,
         startTime: testGame.startTime,
         gameId: directSignupAlwaysOpenId,
+        minAttendance: 1,
       },
     ]);
     await saveUser(mockUser);
@@ -402,16 +403,17 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
 
     await saveSignedGames({
       username: mockUser.username,
-      signedGames: [mockSignedGames[0]],
-    });
-    // directSignupAlwaysOpen signed game should be ignored
-    await saveSignedGames({
-      username: mockUser2.username,
       signedGames: [
+        { ...mockSignedGames[0], priority: 2 },
         {
-          ...mockSignedGames[1],
-          gameDetails: { ...testGame2, gameId: directSignupAlwaysOpenId },
+          // directSignupAlwaysOpen signed game should be ignored
+          gameDetails: {
+            ...testGame2,
+            gameId: directSignupAlwaysOpenId,
+          },
+          priority: 1,
           time: testGame.startTime,
+          message: "",
         },
       ],
     });
@@ -434,6 +436,9 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     });
     expect(assignResults.status).toEqual("success");
     expect(assignResults.results.length).toEqual(1);
+    assignResults.results.map((result) => {
+      expect(result.enteredGame.gameDetails.gameId).toEqual(testGame.gameId);
+    });
 
     const signupsAfterUpdate = await findSignups();
 
@@ -471,11 +476,29 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
 
     await saveSignedGames({
       username: mockUser.username,
-      signedGames: [mockSignedGames[0]],
+      signedGames: [
+        { ...mockSignedGames[0], priority: 2 },
+        {
+          // directSignupAlwaysOpen signed game should be ignored
+          gameDetails: { ...testGame2, gameId: directSignupAlwaysOpenId },
+          priority: 1,
+          time: testGame.startTime,
+          message: "",
+        },
+      ],
     });
     await saveSignedGames({
       username: mockUser2.username,
-      signedGames: [mockSignedGames[0]],
+      signedGames: [
+        { ...mockSignedGames[0], priority: 2 },
+        {
+          // directSignupAlwaysOpen signed game should be ignored
+          gameDetails: { ...testGame2, gameId: directSignupAlwaysOpenId },
+          priority: 1,
+          time: testGame.startTime,
+          message: "",
+        },
+      ],
     });
 
     // This should be removed and re-added by assignment
@@ -496,6 +519,9 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     });
     expect(assignResults.status).toEqual("success");
     expect(assignResults.results.length).toEqual(2);
+    assignResults.results.map((result) => {
+      expect(result.enteredGame.gameDetails.gameId).toEqual(testGame.gameId);
+    });
 
     const signupsAfterUpdate = await findSignups();
 
