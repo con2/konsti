@@ -112,7 +112,7 @@ export const EnteredGameRow = ({
 const GameDetailsList = styled.div`
   display: flex;
   flex-direction: column;
-  padding-left: 10px;
+  margin-left: 30px;
 
   @media (max-width: ${(props) => props.theme.breakpointPhone}) {
     margin-left: 10px;
@@ -132,6 +132,10 @@ const GameTitleAndButtons = styled.div`
 
 const ButtonContainer = styled.div`
   padding-left: 10px;
+
+  @media (max-width: ${(props) => props.theme.breakpointPhone}) {
+    padding-left: 0;
+  }
 `;
 
 const SignupQuestionPlacement = styled.div`
