@@ -14,6 +14,9 @@ import { useAppSelector } from "client/utils/hooks";
 import { MOBILE_MARGIN } from "client/globalStyle";
 import { newUpdatePageReloadKey } from "client/utils/localStorage";
 import { isAdmin } from "client/utils/checkUserGroup";
+import { timeFormatter } from "client/utils/timeFormatter";
+
+const { loadedSettings, showTestValues } = config;
 
 export const App = (): ReactElement => {
   const { dataUpdateInterval } = config;
@@ -23,6 +26,7 @@ export const App = (): ReactElement => {
 
   const appOpen = useAppSelector((state) => state.admin.appOpen);
   const userGroup = useAppSelector((state) => state.login.userGroup);
+  const testTime = useAppSelector((state) => state.testSettings.testTime);
 
   useEffect(() => {
     // Successful app load -> reset update reload state
@@ -50,6 +54,9 @@ export const App = (): ReactElement => {
 
       {!loading && (
         <BrowserRouter>
+          {loadedSettings !== "production" && showTestValues && (
+            <TestTime>{timeFormatter.getTime(testTime)}</TestTime>
+          )}
           <Header />
           <ErrorBar />
           {(appOpen || isAdmin(userGroup)) && <ProgramTypeSelection />}
@@ -71,6 +78,18 @@ const AppContainer = styled.div`
   @media (max-width: ${(props) => props.theme.breakpointDesktop}) {
     margin-left: ${MOBILE_MARGIN}px;
     margin-right: ${MOBILE_MARGIN}px;
+  }
+`;
+
+const TestTime = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  font-size: 30px;
+  color: red;
+
+  @media (max-width: ${(props) => props.theme.breakpointDesktop}) {
+    display: none;
   }
 `;
 
