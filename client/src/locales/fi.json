@@ -1,7 +1,6 @@
 {
   "appTitle": "Konsti",
   "appDescription": "{{CONVENTION_NAME}} {{CONVENTION_YEAR}} peli-ilmoittautuminen",
-  "footer": "Alaviite",
   "button": {
     "logout": "Kirjaudu ulos",
     "login": "Kirjaudu",
@@ -20,8 +19,7 @@
     "feedbackSent": "Palaute lähetetty",
     "createGroup": "Luo ryhmä",
     "joinGroup": "Liity ryhmään",
-    "addMember": "Lisää jäsen",
-    "joinGroupConfirmation": "Luo",
+    "createGroupConfirmation": "Luo",
     "leaveGroup": "Poistu ryhmästä",
     "closeGroup": "Sulje ryhmä",
     "closeApp": "Sulje Konsti",
@@ -76,7 +74,6 @@
     "location": "Pelihuone",
     "numberOfPlayers": "Pelaajamäärä",
     "duration": "kesto",
-    "gamemaster": "Pelinjohtaja(t)",
     "tags": "Tagit",
     "time": "Aloitusaika",
     "gamesystem": "Pelijärjestelmä",
@@ -87,7 +84,7 @@
     "programType": "Ohjelmatyyppi",
     "readMore": "Lue lisää",
     "contentWarnings": "Sisältövaroitukset",
-    "otherAuthor": "Pelin kirjoittaja",
+    "otherAuthor": "Pelin suunnittelija",
     "accessibility": "Esteettömyys",
     "otherInaccessibility": "Muu esteellisyys"
   },
@@ -104,11 +101,11 @@
   "gameStyle": {
     "serious": "Vakava pelityyli",
     "light": "Kevyt pelityyli",
-    "rules_heavy": "Raskaat säännöt",
-    "rules_light": "Kevyet säännöt",
-    "story_driven": "Tarinavetoinen",
-    "character_driven": "Hahmovetoinen",
-    "combat_driven": "Taisteluvetoinen"
+    "rulesHeavy": "Raskaat säännöt",
+    "rulesLight": "Kevyet säännöt",
+    "storyDriven": "Tarinavetoinen",
+    "characterDriven": "Hahmovetoinen",
+    "combatDriven": "Taisteluvetoinen"
   },
   "genre": {
     "fantasy": "Fantasia",
@@ -154,7 +151,7 @@
   "hiddenGames": "Piilotetut pelit",
   "error": {
     "usernameTaken": "Käyttäjänimi on jo olemassa",
-    "invalidSerial": "Epäkelpo rekisteröitymiskoodi",
+    "invalidSerial": "Epäkelpo rekisteröintikoodi",
     "loginFailed": "Käyttäjänimi ja salasana eivät täsmää",
     "loginDisabled": "Kirjautuminen on suljettu",
     "unknown": "Tuntematon virhe"
@@ -174,9 +171,6 @@
   "noActiveTime": "Aktiivista aikaa ei valittuna",
   "activeTimeDescription": "Peleihin sijoittaminen suoritetaan ja tulokset näytetään aktiiviselle ajankohdalle",
   "lotterySignupOpenBetween": "arvontaan ilmoittautuminen",
-  "signupGuide": "* Voit valita kolme pelitoivetta. Suosikkipelisi on ylimmäisenä 'Valitut pelit' listalla.\n* Suosittelemme valitsemaan useamman kuin yhden pelin jokaiseen alkamisajankohtaan.\n* Valitse pelit vetämällä 'Avoimet pelit' listalta 'Valitut pelit' listalle.\n* Ilmoittautumisajankohdalla ei ole vaikutusta lopputulokseen. Pelaajat sijoitetaan peleihin 30 minuuttia ennen pelien alkua.\n* Muista tallentaa muutokset.",
-  "signupGuideTitle": "Ilmoittautumisohje ja vinkkejä",
-  "signupGuideButton": "Ilmoittautumisohje ja vinkkejä",
   "signupSaved": "Ilmoittautuminen tallennettu",
   "signupError": {
     "generic": "Ilmoittautuminen epäonnistui",
@@ -221,22 +215,21 @@
       "userHasSignedGames": "Sinulla on jo ilmoittautumisia peleihin. Poista ilmoittautumiset ennen kuin liityt ryhmään."
     },
     "hasEnteredFollowingGames": "Olet jo päässyt seuraaviin peleihin:",
-    "cancelSignupBeforeJoiningGroup": "Peruuta ilmoittaumisesi yllä oleviin peleihin ennen kuin voit ilmoittautua ryhmään.",
+    "cancelSignupBeforeJoiningOrCreatingGroup": "Peruuta ilmoittaumisesi yllä oleviin peleihin ennen kuin voit luoda ryhmän tai liittyä ryhmään.",
     "signupDisabledNotCreator": "Olet ryhmän jäsen. Ryhmän perustaja ilmoittautuu arvontaan ryhmän jäsenten puolesta.",
     "signupForWholeGroup": "Olet ryhmän perustaja. Voit ilmoittautua arvontaan koko ryhmän puolesta.",
-    "inGroupSignups": "Olet ryhmän jäsen. Seuraavat pelit ovat ryhmän perustajan valitsemia.",
+    "inGroupSignups": "Olet ryhmän jäsen. Seuraavat arvonta-ilmoittautumiset ovat ryhmän perustajan valitsemia.",
     "closeGroupConfirmation": "Oletko varma, että haluat sulkea ryhmän ja poistaa kaikki sen jäsenet?",
     "generalLeaveGroupError": "Virhe ryhmästä poistuessa",
     "groupTooBigWarning": "Ryhmä on suurempi kuin suurin sallittu pelaajamäärä",
     "enterGroupMemberCode": "Käyttäjän koodi",
     "enterGroupCreatorCode": "Ryhmän perustajan koodi",
-    "addGroupMember": "Lisää jäsen ryhmään",
     "createGroupConfirmationMessage": "Halutko luoda ryhmän?",
     "youAreGroupCreator": "Olet ryhmän perustaja",
     "youAreInGroup": "Olet ryhmässä",
     "groupMembers": "Ryhmän jäsenet",
     "groupCreator": "ryhmän perustaja",
-    "groupMemberInfo": "Ryhmän perustaja ilmoittautuu peleihin ryhmän muiden jäsenten puolesta. Näet valitut pelit \"Omat pelit\" sivulta",
+    "groupMemberInfo": "Ryhmän perustaja ilmoittautuu arvontaan ryhmän muiden jäsenten puolesta. Näet valitut pelit \"Omat pelit\" sivulta",
     "groupCreatorInfo": "Voit ilmoittautua arvontaan koko ryhmän puolesta. Varmistathan, että ryhmä ei ole liian iso valitsemiisi peleihin liittymistä varten. Ryhmän perustaja ei voi poistua ryhmästä, mutta voi sulkea ryhmän. Tällöin kaikki ryhmän jäsenet poistetaan ryhmästä.",
     "joiningGroupWillCancelLotterySignups": "Ryhmään liittyminen peruu kaikki aikaisemmat arvonta-ilmoittautumisesi",
     "groupLotterySignupGuide": "Ryhmä voi ilmoittutua samoihin peleihin arvontaa varten.",
@@ -259,7 +252,6 @@
     "changingPasswordError": "Virhe salasanaa vaihtaessa",
     "changingPasswordSuccess": "Salasana vaihdettu onnistuneesti"
   },
-  "errorMessage": "Olemme tunnistaneet ongelman, että 'Omat pelit' sivulla näkyvät 'Ilmoittautumisen tulokset' voivat näkyä väärin ja tiedot on piilotettu. Oikeat tulokset voi katsoa 'Ilmoittautumistulokset' sivulta.",
   "testValues": {
     "buttonText": "Testiarvot",
     "time": "Testiaika",
@@ -269,7 +261,7 @@
     "alreadyLotterySigned": "Peli on arvontavaihtoehdoissa sijalla {{CURRENT_PRIORITY}}",
     "directSignup": "Ilmoittaudu",
     "lotterySignup": "Ilmoittaudu arvontaan",
-    "cannotSignupMoreGames": "Voit ilmoittautua vain kolmeen peliin per alkamisaika",
+    "cannotSignupMoreGames": "Voit valita enintään kolme arvontapeliä per alkamisaika",
     "gamePriority": "Peli on toiveissani sijalla",
     "confirm": "Vahvista",
     "cancel": "Peruuta",
@@ -301,7 +293,7 @@
     "addSignupTextField": "Lisää ilmoittautumisen lisätietokenttä"
   },
   "firstLogin": {
-    "serial": "Ota koodi säilöön salasanan palauttamista varten:",
+    "serial": "Ota koodi talteen salasanan palauttamista varten:",
     "info": "Tämä viesti näytetään vain ensimmäisen kirjautumisesi yhteydessä. Löydät koodin myös navigaation takaa."
   },
   "myGamesView": {

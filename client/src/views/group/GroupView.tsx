@@ -76,7 +76,7 @@ export const GroupView = (): ReactElement => {
                     ))}
                   </ul>
                   <BoldText>
-                    {t("group.cancelSignupBeforeJoiningGroup")}
+                    {t("group.cancelSignupBeforeJoiningOrCreatingGroup")}
                   </BoldText>
                 </EnteredGamesContainer>
               )}

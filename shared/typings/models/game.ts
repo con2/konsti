@@ -24,11 +24,11 @@ export enum Genre {
 export enum GameStyle {
   SERIOUS = "serious",
   LIGHT = "light",
-  RULES_HEAVY = "rules_heavy",
-  RULES_LIGHT = "rules_light",
-  STORY_DRIVEN = "story_driven",
-  CHARACTER_DRIVEN = "character_driven",
-  COMBAT_DRIVEN = "combat_driven",
+  RULES_HEAVY = "rulesHeavy",
+  RULES_LIGHT = "rulesLight",
+  STORY_DRIVEN = "storyDriven",
+  CHARACTER_DRIVEN = "characterDriven",
+  COMBAT_DRIVEN = "combatDriven",
 }
 
 export enum Tag {
