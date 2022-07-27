@@ -13,8 +13,13 @@ export const getGroups = (
       throw new Error("Padg assign: error getting first member");
     }
 
+    const signedGamesForStartTime = firstMember.signedGames.filter(
+      (signedGame) =>
+        dayjs(signedGame.time).format() === dayjs(startingTime).format()
+    );
+
     const sortedSignedGames = _.sortBy(
-      firstMember.signedGames,
+      signedGamesForStartTime,
       (signedGame) => signedGame.priority
     );
 
@@ -24,12 +29,9 @@ export const getGroups = (
           ? firstMember.groupCode
           : firstMember.serial,
       size: playerGroup.length,
-      pref: sortedSignedGames
-        .filter(
-          (signedGame) =>
-            dayjs(signedGame.time).format() === dayjs(startingTime).format()
-        )
-        .map((signedGame) => signedGame.gameDetails.gameId),
+      pref: sortedSignedGames.map(
+        (signedGame) => signedGame.gameDetails.gameId
+      ),
     };
   });
 };
