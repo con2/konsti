@@ -14,6 +14,9 @@ import { useAppSelector } from "client/utils/hooks";
 import { MOBILE_MARGIN } from "client/globalStyle";
 import { newUpdatePageReloadKey } from "client/utils/localStorage";
 import { isAdmin } from "client/utils/checkUserGroup";
+import { TestTime } from "client/components/TestTime";
+
+const { loadedSettings, showTestValues } = config;
 
 export const App = (): ReactElement => {
   const { dataUpdateInterval } = config;
@@ -50,6 +53,7 @@ export const App = (): ReactElement => {
 
       {!loading && (
         <BrowserRouter>
+          {loadedSettings !== "production" && showTestValues && <TestTime />}
           <Header />
           <ErrorBar />
           {(appOpen || isAdmin(userGroup)) && <ProgramTypeSelection />}

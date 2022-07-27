@@ -61,10 +61,6 @@ export const runGenerators = async (
     await removeSettings();
   }
 
-  // Always create admin and helper
-  await createAdminUser();
-  await createHelpUser();
-
   if (options.users) {
     logger.info("Generate users");
 
@@ -78,6 +74,10 @@ export const runGenerators = async (
       testUsersCount
     );
   }
+
+  // Always create admin and helper
+  await createAdminUser();
+  await createHelpUser();
 
   if (options.games) {
     logger.info("Generate games");
