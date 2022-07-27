@@ -129,7 +129,7 @@ export const NotInGroupActions = ({
       {showJoinGroup && (
         <>
           <InfoTextParagraph>
-            {t("group.joiningGroupWillCancelGames")}
+            {t("group.joiningGroupWillCancelLotterySignups")}
           </InfoTextParagraph>
 
           <FormInput
