@@ -347,11 +347,29 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
 
     await saveSignedGames({
       username: mockUser.username,
-      signedGames: [mockSignedGames[0]],
+      signedGames: [
+        { ...mockSignedGames[0], priority: 2 },
+        {
+          // non-RPG signed game should be ignored
+          gameDetails: { ...testGame2, programType: ProgramType.LARP },
+          priority: 1,
+          time: testGame.startTime,
+          message: "",
+        },
+      ],
     });
     await saveSignedGames({
       username: mockUser2.username,
-      signedGames: [mockSignedGames[0]],
+      signedGames: [
+        { ...mockSignedGames[0], priority: 2 },
+        {
+          // non-RPG signed game should be ignored
+          gameDetails: { ...testGame2, programType: ProgramType.LARP },
+          priority: 1,
+          time: testGame.startTime,
+          message: "",
+        },
+      ],
     });
 
     // This should not be removed

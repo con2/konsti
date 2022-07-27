@@ -3,7 +3,7 @@ import { runAssignmentStrategy } from "server/features/player-assignment/utils/r
 import { removeInvalidGamesFromUsers } from "server/features/player-assignment/utils/removeInvalidGamesFromUsers";
 import { PlayerAssignmentResult } from "server/typings/result.typings";
 import { User } from "shared/typings/models/user";
-import { Game } from "shared/typings/models/game";
+import { Game, ProgramType } from "shared/typings/models/game";
 import { findUsers } from "server/features/user/userRepository";
 import { findGames } from "server/features/game/gameRepository";
 import { AssignmentStrategy } from "shared/config/sharedConfig.types";
@@ -58,11 +58,12 @@ export const runAssignment = async ({
     throw new Error(`findUsers error: ${error}`);
   }
 
-  // "directSignupAlwaysOpen" signed games are not included in assignment
+  // Only include TABLETOP_RPG and don't include "directSignupAlwaysOpen" games
   const filteredUsers = users.map((user) => {
     const matchingSignedGames = user.signedGames.filter(
       (signedGame) =>
-        !directSignupAlwaysOpen.includes(signedGame.gameDetails.gameId)
+        !directSignupAlwaysOpen.includes(signedGame.gameDetails.gameId) &&
+        signedGame.gameDetails.programType === ProgramType.TABLETOP_RPG
     );
 
     return { ...user, signedGames: matchingSignedGames };
@@ -76,9 +77,11 @@ export const runAssignment = async ({
     throw new Error(`findGames error: ${error}`);
   }
 
-  // "directSignupAlwaysOpen" games are not included in assignment
+  // Only include TABLETOP_RPG and don't include "directSignupAlwaysOpen" games
   const filteredGames = games.filter(
-    (game) => !directSignupAlwaysOpen.includes(game.gameId)
+    (game) =>
+      !directSignupAlwaysOpen.includes(game.gameId) &&
+      game.programType === ProgramType.TABLETOP_RPG
   );
 
   let signups: readonly Signup[] = [];
