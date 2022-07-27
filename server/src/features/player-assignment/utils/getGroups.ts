@@ -9,20 +9,29 @@ export const getGroups = (
 ): Group[] => {
   return playerGroups.map((playerGroup) => {
     const firstMember = _.first(playerGroup);
-    if (!firstMember)
+    if (!firstMember) {
       throw new Error("Padg assign: error getting first member");
+    }
+
+    const signedGamesForStartTime = firstMember.signedGames.filter(
+      (signedGame) =>
+        dayjs(signedGame.time).format() === dayjs(startingTime).format()
+    );
+
+    const sortedSignedGames = _.sortBy(
+      signedGamesForStartTime,
+      (signedGame) => signedGame.priority
+    );
+
     return {
       id:
         firstMember.groupCode !== "0"
           ? firstMember.groupCode
           : firstMember.serial,
       size: playerGroup.length,
-      pref: firstMember.signedGames
-        .filter(
-          (signedGame) =>
-            dayjs(signedGame.time).format() === dayjs(startingTime).format()
-        )
-        .map((signedGame) => signedGame.gameDetails.gameId),
+      pref: sortedSignedGames.map(
+        (signedGame) => signedGame.gameDetails.gameId
+      ),
     };
   });
 };

@@ -1,11 +1,13 @@
-import { findGameById } from "server/features/game/gameRepository";
-import { Signup } from "server/features/signup/signup.typings";
+import { findGameById, findGames } from "server/features/game/gameRepository";
+import { Signup, UserSignup } from "server/features/signup/signup.typings";
 import { SignupModel } from "server/features/signup/signupSchema";
 import { logger } from "server/utils/logger";
+import { sharedConfig } from "shared/config/sharedConfig";
 import {
   DeleteEnteredGameParameters,
   PostEnteredGameParameters,
 } from "shared/typings/api/myGames";
+import { ProgramType } from "shared/typings/models/game";
 
 export const removeSignups = async (): Promise<void> => {
   logger.info("MongoDB: remove ALL signups from db");
@@ -34,6 +36,49 @@ export const findSignups = async (): Promise<Signup[]> => {
 
   logger.debug(`MongoDB: Signups found`);
   return response;
+};
+
+export interface FindRpgSignupsByStartTimeResponse extends UserSignup {
+  gameId: string;
+}
+
+export const findRpgSignupsByStartTime = async (
+  startTime: string
+): Promise<FindRpgSignupsByStartTimeResponse[]> => {
+  let response: Signup[];
+  try {
+    response = await SignupModel.find(
+      { "userSignups.time": startTime },
+      "-createdAt -updatedAt -_id -__v"
+    )
+      .lean<Signup>()
+      .populate("game", "-createdAt -updatedAt -_id -__v");
+  } catch (error) {
+    logger.error(
+      `MongoDB: Error finding signups for time ${startTime} - ${error}`
+    );
+    throw error;
+  }
+
+  if (!response) {
+    logger.info(`MongoDB: Signups for time "${startTime}" not found`);
+    return [];
+  }
+
+  logger.debug(`MongoDB: Found signups for time "${startTime}"`);
+
+  const formattedResponse: FindRpgSignupsByStartTimeResponse[] =
+    response.flatMap((signup) => {
+      if (signup.game.programType !== ProgramType.TABLETOP_RPG) {
+        return [];
+      }
+      return signup.userSignups.map((userSignup) => ({
+        ...userSignup,
+        gameId: signup.game.gameId,
+      }));
+    });
+
+  return formattedResponse;
 };
 
 export const findUserSignups = async (username: string): Promise<Signup[]> => {
@@ -196,12 +241,32 @@ export const delSignupsByGameIds = async (
   return responses;
 };
 
-export const delSignupsByStartTime = async (
+export const delRpgSignupsByStartTime = async (
   startTime: string
 ): Promise<number> => {
+  let games;
+  try {
+    games = await findGames();
+  } catch (error) {
+    logger.error(`MongoDB: Error loading games - ${error}`);
+    throw error;
+  }
+
+  // Only remove TABLETOP_RPG signups and don't remove directSignupAlwaysOpen signups
+  const doNotRemoveGameIds = games
+    .filter(
+      (game) =>
+        sharedConfig.directSignupAlwaysOpen.includes(game.gameId) ||
+        game.programType !== ProgramType.TABLETOP_RPG
+    )
+    .map((game) => game._id);
+
   let response;
   try {
-    response = await SignupModel.deleteMany({ "userSignups.time": startTime });
+    response = await SignupModel.deleteMany({
+      "userSignups.time": startTime,
+      game: { $nin: doNotRemoveGameIds },
+    });
   } catch (error) {
     logger.error(`MongoDB: Error removing invalid signup - ${error}`);
     throw error;
