@@ -25,11 +25,12 @@ export const testTimes = [
   dayjs(CONVENTION_START_TIME).add(3, "hours").format(),
   dayjs(CONVENTION_START_TIME).add(5, "hours").format(),
   dayjs(CONVENTION_START_TIME).add(8, "hours").format(),
-  dayjs(CONVENTION_START_TIME).add(10, "hours").format(),
 
   // Saturday
+  dayjs(CONVENTION_START_TIME).add(10, "hours").format(),
   dayjs(CONVENTION_START_TIME).add(15, "hours").format(),
   dayjs(CONVENTION_START_TIME).add(16, "hours").format(),
+  dayjs(CONVENTION_START_TIME).add(18, "hours").format(),
   dayjs(CONVENTION_START_TIME).add(24, "hours").format(),
   dayjs(CONVENTION_START_TIME).add(28, "hours").format(),
   dayjs(CONVENTION_START_TIME).add(32, "hours").format(),
