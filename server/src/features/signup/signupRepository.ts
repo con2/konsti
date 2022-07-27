@@ -38,13 +38,13 @@ export const findSignups = async (): Promise<Signup[]> => {
   return response;
 };
 
-export interface FindSignupsByStartTimeResponse extends UserSignup {
+export interface FindRpgSignupsByStartTimeResponse extends UserSignup {
   gameId: string;
 }
 
 export const findRpgSignupsByStartTime = async (
   startTime: string
-): Promise<FindSignupsByStartTimeResponse[]> => {
+): Promise<FindRpgSignupsByStartTimeResponse[]> => {
   let response: Signup[];
   try {
     response = await SignupModel.find(
@@ -67,8 +67,8 @@ export const findRpgSignupsByStartTime = async (
 
   logger.debug(`MongoDB: Found signups for time "${startTime}"`);
 
-  const formattedResponse: FindSignupsByStartTimeResponse[] = response.flatMap(
-    (signup) => {
+  const formattedResponse: FindRpgSignupsByStartTimeResponse[] =
+    response.flatMap((signup) => {
       if (signup.game.programType !== ProgramType.TABLETOP_RPG) {
         return [];
       }
@@ -76,8 +76,7 @@ export const findRpgSignupsByStartTime = async (
         ...userSignup,
         gameId: signup.game.gameId,
       }));
-    }
-  );
+    });
 
   return formattedResponse;
 };

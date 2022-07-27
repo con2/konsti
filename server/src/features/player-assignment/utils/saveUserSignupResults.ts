@@ -3,7 +3,7 @@ import {
   delSignup,
   delSignupsByStartTime,
   findRpgSignupsByStartTime,
-  FindSignupsByStartTimeResponse,
+  FindRpgSignupsByStartTimeResponse,
   saveSignup,
 } from "server/features/signup/signupRepository";
 import { logger } from "server/utils/logger";
@@ -14,7 +14,7 @@ export const saveUserSignupResults = async (
 ): Promise<void> => {
   await delSignupsByStartTime(startingTime);
 
-  let signups: FindSignupsByStartTimeResponse[];
+  let signups: FindRpgSignupsByStartTimeResponse[];
   try {
     signups = await findRpgSignupsByStartTime(startingTime);
   } catch (error) {
