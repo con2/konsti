@@ -121,7 +121,7 @@ export const NotInGroupActions = ({
             buttonStyle={loading ? ButtonStyle.DISABLED : ButtonStyle.NORMAL}
             onClick={async () => await createGroup()}
           >
-            {t("button.joinGroupConfirmation")}
+            {t("button.createGroupConfirmation")}
           </Button>
         </>
       )}

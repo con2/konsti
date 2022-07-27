@@ -1,7 +1,6 @@
 {
   "appTitle": "Konsti",
   "appDescription": "{{CONVENTION_NAME}} {{CONVENTION_YEAR}} game signup",
-  "footer": "Footer",
   "button": {
     "logout": "Logout",
     "login": "Login",
@@ -20,8 +19,7 @@
     "feedbackSent": "Feedback sent",
     "createGroup": "Create group",
     "joinGroup": "Join group",
-    "addMember": "Add member",
-    "joinGroupConfirmation": "Create",
+    "createGroupConfirmation": "Create",
     "leaveGroup": "Leave group",
     "closeGroup": "Close group",
     "closeApp": "Close Konsti",
@@ -76,7 +74,6 @@
     "location": "Game room",
     "numberOfPlayers": "Number of players",
     "duration": "length",
-    "gamemaster": "Game master(s)",
     "tags": "Tags",
     "time": "Starting time",
     "gamesystem": "Game system",
@@ -104,11 +101,11 @@
   "gameStyle": {
     "serious": "Serious game style",
     "light": "Light game style",
-    "rules_heavy": "Rules heavy",
-    "rules_light": "Rules light",
-    "story_driven": "Story driven",
-    "character_driven": "Character driven",
-    "combat_driven": "Combat driven"
+    "rulesHeavy": "Rules heavy",
+    "rulesLight": "Rules light",
+    "storyDriven": "Story driven",
+    "characterDriven": "Character driven",
+    "combatDriven": "Combat driven"
   },
   "genre": {
     "fantasy": "Fantasy",
@@ -174,9 +171,6 @@
   "noActiveTime": "Active time not selected",
   "activeTimeDescription": "Game assignment will be done and results shown for the active time",
   "lotterySignupOpenBetween": "lottery signup open",
-  "signupGuide": "* You can choose three game wishes. Your favorite game is the topmost on 'Selected games'.\n* It is recommended to choose more than one game wish for each start time.\n* Choose games by dragging from 'Open games' to 'Selected games'.\n* Signing up early does not give any advantage. Game seats are assigned 30 minutes before games start.\n* Remember to save changes.",
-  "signupGuideTitle": "Signup help and tips",
-  "signupGuideButton": "Signup help and tips",
   "signupSaved": "Signup saved",
   "signupError": {
     "generic": "Signup failed",
@@ -221,22 +215,21 @@
       "userHasSignedGames": "You already have entered games. Cancel those games before joining group."
     },
     "hasEnteredFollowingGames": "You are already entered following games:",
-    "cancelSignupBeforeJoiningGroup": "Cancel those games before you can join the group.",
+    "cancelSignupBeforeJoiningOrCreatingGroup": "Cancel those games before you can create or join a group.",
     "signupDisabledNotCreator": "You are group member. Group creator will lottery sign-up for the whole group.",
     "signupForWholeGroup": "You are group creator. You can sign up to lottery for the whole group.",
-    "inGroupSignups": "You are in a group. Following games are chosen by the group creator.",
+    "inGroupSignups": "You are in a group. Following lottery signups are chosen by the group creator.",
     "closeGroupConfirmation": "Are you sure you want to close group and remove all its members?",
     "generalLeaveGroupError": "Error leaving group",
     "groupTooBigWarning": "Group is bigger than the maximum number of players",
     "enterGroupMemberCode": "User's code",
     "enterGroupCreatorCode": "Group creator's code",
-    "addGroupMember": "Add group member",
     "createGroupConfirmationMessage": "Do you want to create a group?",
     "youAreGroupCreator": "You are group creator",
     "youAreInGroup": "You are in a group",
     "groupMembers": "Group members",
     "groupCreator": "group creator",
-    "groupMemberInfo": "Group creator will sign up to the games for the whole group. See selected games from \"My Games\" page.",
+    "groupMemberInfo": "Group creator will sign up to the lottery for the whole group. See selected games from \"My Games\" page.",
     "groupCreatorInfo": "You can sign up to lottery for the whole group. Please make sure that the group is not too big for the selected games. Group creator cannot leave the group, but can close it. This will remove all members from the group.",
     "joiningGroupWillCancelLotterySignups": "Joining a group will cancel all lottery signups you may have done before",
     "groupLotterySignupGuide": "Group can signup to same games for lottery.",
@@ -259,17 +252,16 @@
     "changingPasswordError": "Error changing password",
     "changingPasswordSuccess": "Password changed succesfully"
   },
-  "errorMessage": "We have recognised an issue that 'Signup results' under 'My Games' may be shown incorrectly and are now hidden. Please see 'All Signup Results' page for correct information.",
   "testValues": {
     "buttonText": "Test values",
     "time": "Test time",
     "strategy": "Strategy"
   },
   "signup": {
-    "alreadyLotterySigned": "This game is on priority {{CURRENT_PRIORITY}} on your lottery signups",
+    "alreadyLotterySigned": "This game is priority {{CURRENT_PRIORITY}} on your lottery signups",
     "directSignup": "Signup",
     "lotterySignup": "Lottery signup",
-    "cannotSignupMoreGames": "You can signup up to three games for the timeslot",
+    "cannotSignupMoreGames": "You can select up to three lottery games for the timeslot",
     "gamePriority": "Game priority for me is",
     "confirm": "Confirm",
     "cancel": "Cancel",
