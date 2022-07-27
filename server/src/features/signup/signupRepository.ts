@@ -241,7 +241,7 @@ export const delSignupsByGameIds = async (
   return responses;
 };
 
-export const delSignupsByStartTime = async (
+export const delRpgSignupsByStartTime = async (
   startTime: string
 ): Promise<number> => {
   let games;

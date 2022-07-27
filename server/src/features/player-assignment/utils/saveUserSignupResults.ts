@@ -1,7 +1,7 @@
 import { Result } from "shared/typings/models/result";
 import {
   delSignup,
-  delSignupsByStartTime,
+  delRpgSignupsByStartTime,
   findRpgSignupsByStartTime,
   FindRpgSignupsByStartTimeResponse,
   saveSignup,
@@ -12,7 +12,7 @@ export const saveUserSignupResults = async (
   startingTime: string,
   results: readonly Result[]
 ): Promise<void> => {
-  await delSignupsByStartTime(startingTime);
+  await delRpgSignupsByStartTime(startingTime);
 
   let rpgSignupsByStartTime: FindRpgSignupsByStartTimeResponse[];
   try {
