@@ -4,7 +4,6 @@ import dayjs from "dayjs";
 import { runAssignment } from "server/features/player-assignment/runAssignment";
 import { generateTestData } from "server/test/test-data-generation/generators/generateTestData";
 import { verifyUserSignups } from "server/features/player-assignment/utils/verifyUserSignups";
-import { verifyResults } from "server/features/player-assignment/utils/verifyResults";
 import { AssignmentStrategy } from "shared/config/sharedConfig.types";
 import { sharedConfig } from "shared/config/sharedConfig";
 import { saveUser } from "server/features/user/userRepository";
@@ -82,7 +81,6 @@ describe("Assignment with valid data", () => {
     expect(groupResults.length).toBeOneOf([groupTestUsers.length, 0]);
 
     await verifyUserSignups();
-    await verifyResults();
 
     // SECOND RUN
 
@@ -101,7 +99,6 @@ describe("Assignment with valid data", () => {
     expect(groupResults2.length).toBeOneOf([groupTestUsers.length, 0]);
 
     await verifyUserSignups();
-    await verifyResults();
   });
 
   test("should return success with padg strategy", async () => {
@@ -126,7 +123,6 @@ describe("Assignment with valid data", () => {
     expect(groupResults.length).toBeOneOf([groupTestUsers.length, 0]);
 
     await verifyUserSignups();
-    await verifyResults();
 
     // SECOND RUN
 
@@ -145,7 +141,6 @@ describe("Assignment with valid data", () => {
     expect(groupResults2.length).toBeOneOf([groupTestUsers.length, 0]);
 
     await verifyUserSignups();
-    await verifyResults();
   });
 
   test("should return success with random strategy", async () => {
@@ -170,7 +165,6 @@ describe("Assignment with valid data", () => {
     expect(groupResults.length).toBeOneOf([groupTestUsers.length, 0]);
 
     await verifyUserSignups();
-    await verifyResults();
 
     // SECOND RUN
 
@@ -189,7 +183,6 @@ describe("Assignment with valid data", () => {
     expect(groupResults2.length).toBeOneOf([groupTestUsers.length, 0]);
 
     await verifyUserSignups();
-    await verifyResults();
   });
 
   test("should return success with group+padg strategy", async () => {
@@ -214,7 +207,6 @@ describe("Assignment with valid data", () => {
     expect(groupResults.length).toBeOneOf([groupTestUsers.length, 0]);
 
     await verifyUserSignups();
-    await verifyResults();
 
     // SECOND RUN
 
@@ -233,7 +225,6 @@ describe("Assignment with valid data", () => {
     expect(groupResults2.length).toBeOneOf([groupTestUsers.length, 0]);
 
     await verifyUserSignups();
-    await verifyResults();
   });
 
   test("should return success with random+padg strategy", async () => {
@@ -258,7 +249,6 @@ describe("Assignment with valid data", () => {
     expect(groupResults.length).toBeOneOf([groupTestUsers.length, 0]);
 
     await verifyUserSignups();
-    await verifyResults();
 
     // SECOND RUN
 
@@ -277,7 +267,6 @@ describe("Assignment with valid data", () => {
     expect(groupResults2.length).toBeOneOf([groupTestUsers.length, 0]);
 
     await verifyUserSignups();
-    await verifyResults();
   });
 
   test("should return valid results after multiple executions on different times", async () => {
@@ -302,7 +291,6 @@ describe("Assignment with valid data", () => {
     expect(groupResults.length).toBeOneOf([groupTestUsers.length, 0]);
 
     await verifyUserSignups();
-    await verifyResults();
 
     // SECOND RUN
 
@@ -324,7 +312,6 @@ describe("Assignment with valid data", () => {
     expect(groupResults2.length).toBeOneOf([groupTestUsers.length, 0]);
 
     await verifyUserSignups();
-    await verifyResults();
   });
 });
 
