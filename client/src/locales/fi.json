@@ -159,8 +159,8 @@
     "loginDisabled": "Kirjautuminen on suljettu",
     "unknown": "Tuntematon virhe"
   },
-  "agreePrivacyPolicy": "Hyväksyn tietosuojaselosteen",
-  "privacyPolicyButton": "Näytä tietosuojaseloste",
+  "agreePrivacyPolicy": "Hyväksyn rekisteriselosteen",
+  "privacyPolicyButton": "Näytä rekisteriseloste",
   "registrationSerialHelp": "Nouda rekisteröintikoodi larp/ropetiskiltä tai pelitiskiltä",
   "noSignedGames": "Ei valittuja pelejä",
   "noFavoritedGames": "Ei suosikkipelejä",

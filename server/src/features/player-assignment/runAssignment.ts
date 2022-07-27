@@ -3,7 +3,7 @@ import { runAssignmentStrategy } from "server/features/player-assignment/utils/r
 import { removeInvalidGamesFromUsers } from "server/features/player-assignment/utils/removeInvalidGamesFromUsers";
 import { PlayerAssignmentResult } from "server/typings/result.typings";
 import { User } from "shared/typings/models/user";
-import { Game } from "shared/typings/models/game";
+import { Game, ProgramType } from "shared/typings/models/game";
 import { findUsers } from "server/features/user/userRepository";
 import { findGames } from "server/features/game/gameRepository";
 import { AssignmentStrategy } from "shared/config/sharedConfig.types";
@@ -14,6 +14,9 @@ import { getDynamicStartingTime } from "server/features/player-assignment/utils/
 import { sleep } from "server/utils/sleep";
 import { Signup } from "server/features/signup/signup.typings";
 import { findSignups } from "server/features/signup/signupRepository";
+import { sharedConfig } from "shared/config/sharedConfig";
+
+const { directSignupAlwaysOpen } = sharedConfig;
 
 interface RunAssignmentParams {
   assignmentStrategy: AssignmentStrategy;
@@ -55,6 +58,17 @@ export const runAssignment = async ({
     throw new Error(`findUsers error: ${error}`);
   }
 
+  // Only include TABLETOP_RPG and don't include "directSignupAlwaysOpen" games
+  const filteredUsers = users.map((user) => {
+    const matchingSignedGames = user.signedGames.filter(
+      (signedGame) =>
+        !directSignupAlwaysOpen.includes(signedGame.gameDetails.gameId) &&
+        signedGame.gameDetails.programType === ProgramType.TABLETOP_RPG
+    );
+
+    return { ...user, signedGames: matchingSignedGames };
+  });
+
   let games: readonly Game[] = [];
   try {
     games = await findGames();
@@ -62,6 +76,13 @@ export const runAssignment = async ({
     logger.error(`findGames error: ${error}`);
     throw new Error(`findGames error: ${error}`);
   }
+
+  // Only include TABLETOP_RPG and don't include "directSignupAlwaysOpen" games
+  const filteredGames = games.filter(
+    (game) =>
+      !directSignupAlwaysOpen.includes(game.gameId) &&
+      game.programType === ProgramType.TABLETOP_RPG
+  );
 
   let signups: readonly Signup[] = [];
   try {
@@ -74,8 +95,8 @@ export const runAssignment = async ({
   let assignResults;
   try {
     assignResults = runAssignmentStrategy(
-      users,
-      games,
+      filteredUsers,
+      filteredGames,
       assignmentTime,
       assignmentStrategy,
       signups
