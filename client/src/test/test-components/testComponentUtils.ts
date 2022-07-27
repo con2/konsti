@@ -18,6 +18,10 @@ export const testTimes = [
   dayjs(CONVENTION_START_TIME).add(45, "minutes").format(),
   dayjs(CONVENTION_START_TIME).add(1, "hours").format(),
   dayjs(CONVENTION_START_TIME).add(2, "hours").format(),
+  dayjs(CONVENTION_START_TIME)
+    .add(2, "hours")
+    .add(PHASE_GAP - 2, "minutes")
+    .format(),
   dayjs(CONVENTION_START_TIME).add(3, "hours").format(),
   dayjs(CONVENTION_START_TIME).add(5, "hours").format(),
   dayjs(CONVENTION_START_TIME).add(8, "hours").format(),
