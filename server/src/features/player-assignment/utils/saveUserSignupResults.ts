@@ -16,6 +16,7 @@ export const saveUserSignupResults = async (
 
   let rpgSignupsByStartTime: FindRpgSignupsByStartTimeResponse[];
   try {
+    // Only directSignupAlwaysOpen signups should be remaining
     rpgSignupsByStartTime = await findRpgSignupsByStartTime(startingTime);
   } catch (error) {
     logger.error(error);
