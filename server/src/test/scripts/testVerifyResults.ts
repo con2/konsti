@@ -1,17 +1,10 @@
 import { logger } from "server/utils/logger";
-import { verifyResults } from "server/features/player-assignment/utils/verifyResults";
 import { verifyUserSignups } from "server/features/player-assignment/utils/verifyUserSignups";
 import { db } from "server/db/mongodb";
 
 const testVerifyResults = async (): Promise<void> => {
   try {
     await db.connectToDb();
-  } catch (error) {
-    logger.error(error);
-  }
-
-  try {
-    await verifyResults();
   } catch (error) {
     logger.error(error);
   }
