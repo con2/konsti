@@ -14,9 +14,9 @@ export const saveUserSignupResults = async (
 ): Promise<void> => {
   await delSignupsByStartTime(startingTime);
 
-  let signups: FindRpgSignupsByStartTimeResponse[];
+  let rpgSignupsByStartTime: FindRpgSignupsByStartTimeResponse[];
   try {
-    signups = await findRpgSignupsByStartTime(startingTime);
+    rpgSignupsByStartTime = await findRpgSignupsByStartTime(startingTime);
   } catch (error) {
     logger.error(error);
     throw error;
@@ -26,7 +26,7 @@ export const saveUserSignupResults = async (
   // ... and no new result -> don't remove
   // ... and new result -> remove
   const deletePromises = results.map(async (result) => {
-    const existingSignup = signups.find(
+    const existingSignup = rpgSignupsByStartTime.find(
       (signup) => signup.username === result.username
     );
 
