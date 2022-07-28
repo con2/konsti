@@ -60,6 +60,7 @@ export const EnterGameForm: FC<Props> = (props: Props): ReactElement => {
       message: userSignupMessage,
     };
 
+    // TODO: This logic should be on backend
     if (
       game.programType === ProgramType.TABLETOP_RPG &&
       !directSignupAlwaysOpen.includes(game.gameId)
