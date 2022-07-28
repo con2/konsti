@@ -11,6 +11,7 @@ import { Button, ButtonStyle } from "client/components/Button";
 import { Game } from "shared/typings/models/game";
 import { selectActiveGames } from "client/views/admin/adminSlice";
 import { Input } from "client/components/Input";
+import { MULTIPLE_WHITESPACES_REGEX } from "client/views/all-games/AllGamesView";
 
 export const DirectResults = (): ReactElement => {
   const { t } = useTranslation();
@@ -63,6 +64,7 @@ export const DirectResults = (): ReactElement => {
       const users = getUsersForGameId(game.gameId, signups);
       return (
         game.title
+          .replace(MULTIPLE_WHITESPACES_REGEX, " ")
           .toLocaleLowerCase()
           .includes(searchTerm.toLocaleLowerCase()) ||
         users.some((user) =>
