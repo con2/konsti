@@ -234,7 +234,7 @@
     "groupCreatorInfo": "You can sign up to lottery for the whole group. Please make sure that the group is not too big for the selected games. Group creator cannot leave the group, but can close it. This will remove all members from the group.",
     "joiningGroupWillCancelLotterySignups": "Joining a group will cancel all lottery signups you may have done before",
     "groupLotterySignupGuide": "Group can signup to same games for lottery.",
-    "groupSignupGuide": "You can join group with group starter's registration code. Your own code is:",
+    "groupSignupGuide": "You can join group with group creator's registration code. Your own code is:",
     "groupLotterySignupTabletopOnly": "Only tabletop RPGs support lottery signup.",
     "invalidGroupCode": "Invalid code",
     "groupNotExist": "Group does not exist",
