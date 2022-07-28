@@ -1,6 +1,7 @@
 import React, { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import styled, { css } from "styled-components";
+import { isNil } from "lodash";
 import { timeFormatter } from "client/utils/timeFormatter";
 import { Game, GameStyle, Genre } from "shared/typings/models/game";
 
@@ -227,7 +228,7 @@ export const GameInfo = ({ game }: Props): ReactElement => {
         </GameDetailsRow>
       )}
 
-      {!!game.minAttendance && !!game.maxAttendance && (
+      {!isNil(game.minAttendance) && !isNil(game.maxAttendance) && (
         <GameDetailsRow>
           <GameDetailsTitle twoColumns={true}>
             {t("gameInfo.numberOfPlayers")}
