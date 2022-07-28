@@ -9,7 +9,7 @@ export interface PostGroupResponse {
 }
 
 export interface PostCreateGroupError extends ApiError {
-  errorId: "unknown" | "groupExists";
+  errorId: "unknown" | "groupExists" | "userHasSignedGames";
 }
 
 export interface PostJoinGroupError extends ApiError {
