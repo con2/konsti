@@ -542,6 +542,82 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
   });
 });
 
+describe("Assignment with first time bonus", () => {
+  test("should assign user without previous RPG signup", async () => {
+    const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
+    const startingTime = testGame.startTime;
+    const larpGameId = "AIAHHUA";
+
+    // Populate database
+    await saveGames([
+      { ...testGame, minAttendance: 1, maxAttendance: 1 },
+      testGame2,
+      { ...testGame2, programType: ProgramType.LARP, gameId: larpGameId },
+    ]);
+    await saveUser(mockUser);
+    await saveUser(mockUser2);
+
+    await saveSignedGames({
+      username: mockUser.username,
+      signedGames: [{ ...mockSignedGames[0], priority: 1 }],
+    });
+
+    await saveSignedGames({
+      username: mockUser2.username,
+      signedGames: [{ ...mockSignedGames[0], priority: 3 }],
+    });
+
+    await saveSignup({
+      ...mockPostEnteredGameRequest2,
+      username: mockUser.username,
+      startTime: dayjs(testGame.startTime).subtract(1, "hours").format(),
+    });
+
+    // Larp signup should not affect the bonus
+    await saveSignup({
+      username: mockUser2.username,
+      enteredGameId: larpGameId,
+      startTime: dayjs(testGame.startTime).subtract(1, "hours").format(),
+      message: "",
+    });
+
+    const signupsBeforeUpdate = await findSignups();
+    expect(signupsBeforeUpdate.length).toEqual(2);
+
+    const assignResults = await runAssignment({
+      assignmentStrategy,
+      startingTime,
+    });
+
+    expect(assignResults.status).toEqual("success");
+    expect(assignResults.results.length).toEqual(1);
+
+    const signupsAfterUpdate = await findSignups();
+
+    const assignmentSignup = signupsAfterUpdate.find(
+      (signup) => signup.game.gameId === testGame.gameId
+    );
+
+    const previousRpgSignup = signupsAfterUpdate.find(
+      (signup) => signup.game.gameId === testGame2.gameId
+    );
+
+    const previousLarpSignup = signupsAfterUpdate.find(
+      (signup) => signup.game.gameId === larpGameId
+    );
+
+    expect(assignmentSignup?.userSignups[0].username).toEqual(
+      mockUser2.username
+    );
+    expect(previousRpgSignup?.userSignups[0].username).toEqual(
+      mockUser.username
+    );
+    expect(previousLarpSignup?.userSignups[0].username).toEqual(
+      mockUser2.username
+    );
+  });
+});
+
 describe("Assignment with no games", () => {
   beforeEach(async () => {
     const newUsersCount = 1;
