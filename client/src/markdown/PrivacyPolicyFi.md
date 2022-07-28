@@ -1,6 +1,6 @@
 ### Rekisteriseloste
 
-Rekisterinpitäjä on Arttu Hanska (sähköposti: arttu.hanska@gmail.com). Tämä rekisteriseloste käsittelee Konsti ilmoittautumissovelluksen käyttäjätietoja. Tietojen käsittelyn tarkoitus on mahdollistaa tapahtumiin ilmoittautuminen järjestelmää käyttävissä tapahtumissa.
+Rekisterinpitäjä on Arttu Hanska (sähköposti: arttu.hanska@gmail.com). Tämä rekisteriseloste käsittelee Konsti ilmoittautumissovelluksen käyttäjätietoja. Tietojen käsittelyn tarkoitus on mahdollistaa ohjelmanumeroihin ilmoittautuminen järjestelmää käyttävissä tapahtumissa.
 
 Seuraavat tiedot tallennetaan:
 
@@ -9,7 +9,7 @@ Seuraavat tiedot tallennetaan:
 - Käyttäjän valitsemien pelien tiedot: suosikit, ilmoittautumiset
 - Muut käyttäjät, joiden kanssa käyttäjä on muodostanut ryhmän
 - Avoimena tekstinä syötettävät tiedot, kuten nimi, sähköposti tai puhelinnumero. Tapahtumanjärjestäjät voivat käyttää näitä yhteydenottoa varten
-- Ajankohtia sekä IP-osoitteen sisältävä Käyttöloki
+- Ajankohtia sekä IP-osoitteen sisältävä käyttöloki
 
 Rekisterin tiedot ovat peräisin rekisteröidyltä itseltään. Rekisterin tiedot voidaan luovuttaa kyseisen tapahtuman järjestäjille.
 
