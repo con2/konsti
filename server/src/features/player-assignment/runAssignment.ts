@@ -106,7 +106,12 @@ export const runAssignment = async ({
   }
 
   if (assignResults.results.length === 0) {
-    logger.warn(`No assign results for starting time ${assignmentTime}`);
+    logger.warn(
+      `No assign results for starting time ${assignmentTime}: ${JSON.stringify(
+        assignResults
+      )}`
+    );
+    return assignResults;
   }
 
   try {
