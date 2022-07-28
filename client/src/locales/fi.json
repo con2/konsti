@@ -212,7 +212,8 @@
       "groupExists": "Ryhmä on jo olemassa",
       "removePreviousSignupsFailed": "Virhe aikaisempia ilmoittautumisia poistaessa, yritä uudelleen",
       "onlyCreatorCanCloseGroup": "Vain ryhmän perustaja voi sulkea ryhmän",
-      "userHasSignedGames": "Sinulla on jo ilmoittautumisia peleihin. Poista ilmoittautumiset ennen kuin liityt ryhmään."
+      "userHasSignedGames": "Sinulla on jo ilmoittautumisia peleihin. Poista ilmoittautumiset ennen kuin liityt ryhmään.",
+      "creatorHasSignedGames": "Sinulla on jo ilmoittautumisia peleihin. Poista ilmoittautumiset ennen kuin voit luoda ryhmän."
     },
     "hasEnteredFollowingGames": "Olet jo päässyt seuraaviin peleihin:",
     "cancelSignupBeforeJoiningOrCreatingGroup": "Peruuta ilmoittaumisesi yllä oleviin peleihin ennen kuin voit luoda ryhmän tai liittyä ryhmään.",
