@@ -7,6 +7,7 @@ import { useAppSelector } from "client/utils/hooks";
 import { Game } from "shared/typings/models/game";
 import { timeFormatter } from "client/utils/timeFormatter";
 import { Input } from "client/components/Input";
+import { MULTIPLE_WHITESPACES_REGEX } from "client/views/all-games/AllGamesView";
 
 export const PrivateSignupMessages = (): ReactElement => {
   const { t } = useTranslation();
@@ -54,6 +55,7 @@ export const PrivateSignupMessages = (): ReactElement => {
     const gamesFilteredBySearchTerm = games.filter((game) => {
       return (
         game.title
+          .replace(MULTIPLE_WHITESPACES_REGEX, " ")
           .toLocaleLowerCase()
           .includes(searchTerm.toLocaleLowerCase()) ||
         privateSignupMessages.find(
