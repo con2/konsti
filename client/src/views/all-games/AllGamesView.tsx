@@ -24,6 +24,8 @@ import { Input } from "client/components/Input";
 import { SessionStorageValue } from "client/utils/localStorage";
 import { ROW_HEIGHT } from "client/components/EventTypeSelection";
 
+export const MULTIPLE_WHITESPACES_REGEX = /\s\s+/g;
+
 enum SelectedView {
   ALL = "all",
   UPCOMING = "upcoming",
@@ -106,9 +108,11 @@ export const AllGamesView = (): ReactElement => {
     const gamesFilteredBySearchTerm = activeGames.filter((activeGame) => {
       return (
         activeGame.title
+          .replace(MULTIPLE_WHITESPACES_REGEX, " ")
           .toLocaleLowerCase()
           .includes(debouncedSearchTerm.toLocaleLowerCase()) ||
         activeGame.gameSystem
+          .replace(MULTIPLE_WHITESPACES_REGEX, " ")
           .toLocaleLowerCase()
           .includes(debouncedSearchTerm.toLocaleLowerCase())
       );
