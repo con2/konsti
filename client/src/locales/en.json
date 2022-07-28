@@ -212,10 +212,11 @@
       "groupExists": "Group already exists",
       "removePreviousSignupsFailed": "Error deleting previous signups, try again",
       "onlyCreatorCanCloseGroup": "Only group creator can close group",
-      "userHasSignedGames": "You already have entered games. Cancel those games before joining group."
+      "userHasSignedGames": "You already have signed games. Cancel those signups before joining group.",
+      "creatorHasSignedGames": "You already have signed games. Cancel those signups before creating a group."
     },
-    "hasEnteredFollowingGames": "You are already entered following games:",
-    "cancelSignupBeforeJoiningOrCreatingGroup": "Cancel those games before you can create or join a group.",
+    "hasEnteredFollowingGames": "You have already signed to following games:",
+    "cancelSignupBeforeJoiningOrCreatingGroup": "Cancel those signups before you can create or join a group.",
     "signupDisabledNotCreator": "You are group member. Group creator will lottery sign-up for the whole group.",
     "signupForWholeGroup": "You are group creator. You can sign up to lottery for the whole group.",
     "inGroupSignups": "You are in a group. Following lottery signups are chosen by the group creator.",

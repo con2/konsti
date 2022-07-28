@@ -9,6 +9,7 @@ import {
 import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
 import { findUserSerial } from "server/features/user/userRepository";
 import { logger } from "server/utils/logger";
+import { sharedConfig } from "shared/config/sharedConfig";
 import {
   GetGroupError,
   GetGroupResponse,
@@ -21,10 +22,43 @@ import {
 } from "shared/typings/api/groups";
 import { User } from "shared/typings/models/user";
 
+const { directSignupAlwaysOpen } = sharedConfig;
+
 export const createGroup = async (
   username: string,
   groupCode: string
 ): Promise<PostGroupResponse | PostCreateGroupError> => {
+  let signups;
+  try {
+    signups = await findUserSignups(username);
+  } catch (error) {
+    logger.error(`findUserSignups(): ${error}`);
+    return {
+      message: "Error finding signups",
+      status: "error",
+      errorId: "unknown",
+    };
+  }
+
+  const filteredSignups = signups.filter(
+    (signup) => !directSignupAlwaysOpen.includes(signup.game.gameId)
+  );
+
+  const timeNow = await getTime();
+  const userSignups = filteredSignups.flatMap((signup) => signup.userSignups);
+  const userHasSignups = userSignups.some((userSignup) =>
+    timeNow.isBefore(dayjs(userSignup.time))
+  );
+
+  // User cannot have signups in future when creating a group
+  if (userHasSignups) {
+    return {
+      message: "Signup in future",
+      status: "error",
+      errorId: "userHasSignedGames",
+    };
+  }
+
   let findGroupResponse;
   try {
     // Check if group exists
@@ -101,8 +135,12 @@ export const joinGroup = async (
     };
   }
 
+  const filteredSignups = signups.filter(
+    (signup) => !directSignupAlwaysOpen.includes(signup.game.gameId)
+  );
+
   const timeNow = await getTime();
-  const userSignups = signups.flatMap((signup) => signup.userSignups);
+  const userSignups = filteredSignups.flatMap((signup) => signup.userSignups);
   const userHasSignups = userSignups.some((userSignup) =>
     timeNow.isBefore(dayjs(userSignup.time))
   );

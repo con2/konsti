@@ -22,6 +22,7 @@ import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 export enum PostCreateGroupErrorMessage {
   UNKNOWN = "group.generalGroupError",
   GROUP_EXISTS = "group.error.groupExists",
+  CREATOR_HAS_SIGNED_GAMES = "group.error.creatorHasSignedGames",
 }
 
 export const submitCreateGroup = (
@@ -34,6 +35,8 @@ export const submitCreateGroup = (
       switch (createGroupResponse.errorId) {
         case "groupExists":
           return PostCreateGroupErrorMessage.GROUP_EXISTS;
+        case "userHasSignedGames":
+          return PostCreateGroupErrorMessage.CREATOR_HAS_SIGNED_GAMES;
         case "unknown":
           return PostCreateGroupErrorMessage.UNKNOWN;
         default:
