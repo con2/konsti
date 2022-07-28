@@ -18,6 +18,9 @@ import {
   submitCloseGroup,
   submitLeaveGroup,
 } from "client/views/group/groupThunks";
+import { sharedConfig } from "shared/config/sharedConfig";
+
+const { directSignupAlwaysOpen } = sharedConfig;
 
 interface Props {
   game: Game;
@@ -57,7 +60,10 @@ export const EnterGameForm: FC<Props> = (props: Props): ReactElement => {
       message: userSignupMessage,
     };
 
-    if (game.programType === ProgramType.TABLETOP_RPG) {
+    if (
+      game.programType === ProgramType.TABLETOP_RPG &&
+      !directSignupAlwaysOpen.includes(game.gameId)
+    ) {
       if (isInGroup && !isGroupCreator) {
         const leaveGroupRequest = {
           username,
@@ -100,16 +106,18 @@ export const EnterGameForm: FC<Props> = (props: Props): ReactElement => {
 
   return (
     <SignupForm>
-      {isInGroup &&
-        !isGroupCreator &&
-        game.programType === ProgramType.TABLETOP_RPG && (
-          <Warning>{t("signup.inGroupWarning")}</Warning>
+      {game.programType === ProgramType.TABLETOP_RPG &&
+        !directSignupAlwaysOpen.includes(game.gameId) && (
+          <>
+            {isInGroup && !isGroupCreator && (
+              <Warning>{t("signup.inGroupWarning")}</Warning>
+            )}
+            {isInGroup && isGroupCreator && (
+              <Warning>{t("signup.groupCreatorWarning")}</Warning>
+            )}
+          </>
         )}
-      {isInGroup &&
-        isGroupCreator &&
-        game.programType === ProgramType.TABLETOP_RPG && (
-          <Warning>{t("signup.groupCreatorWarning")}</Warning>
-        )}
+
       {signupQuestion && (
         <SignupQuestionContainer>
           <span>
