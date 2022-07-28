@@ -204,7 +204,7 @@
   "playerStatus": "Player status",
   "revolvingDoor": "Revolving door",
   "revolvingDoorInstruction": "You can join revolving door games at any time if there are free seats in the table",
-  "currentlyRunningRevolvingDoor": "Currently running games",
+  "currentlyRunningRevolvingDoor": "Currently running revolving door games",
   "noCurrentlyRunningGames": "No running revolving door games",
   "group": {
     "error": {
