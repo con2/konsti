@@ -204,7 +204,7 @@
   "playerStatus": "Pelaajatilanne",
   "revolvingDoor": "Pyöröovi",
   "revolvingDoorInstruction": "Pyöröovipeleihin voi liittyä koska tahansa, jos pelipöydässä on tilaa",
-  "currentlyRunningRevolvingDoor": "Käynnissä olevat pelit",
+  "currentlyRunningRevolvingDoor": "Käynnissä olevat pyöröovipelit",
   "noCurrentlyRunningGames": "Ei käynnissä olevia pyöröovipelejä",
   "group": {
     "error": {
