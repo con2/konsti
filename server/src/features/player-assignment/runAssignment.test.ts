@@ -544,6 +544,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
 
 describe("Assignment with first time bonus", () => {
   test("should assign user without previous RPG signup", async () => {
+    const directSignupAlwaysOpenId = sharedConfig.directSignupAlwaysOpen[0];
     const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
     const startingTime = testGame.startTime;
     const larpGameId = "AIAHHUA";
@@ -553,6 +554,10 @@ describe("Assignment with first time bonus", () => {
       { ...testGame, minAttendance: 1, maxAttendance: 1 },
       testGame2,
       { ...testGame2, programType: ProgramType.LARP, gameId: larpGameId },
+      {
+        ...testGame2,
+        gameId: directSignupAlwaysOpenId,
+      },
     ]);
     await saveUser(mockUser);
     await saveUser(mockUser2);
@@ -581,8 +586,16 @@ describe("Assignment with first time bonus", () => {
       message: "",
     });
 
+    // directSignupAlwaysOpen signup should not affect the bonus
+    await saveSignup({
+      username: mockUser2.username,
+      enteredGameId: directSignupAlwaysOpenId,
+      startTime: dayjs(testGame.startTime).subtract(2, "hours").format(),
+      message: "",
+    });
+
     const signupsBeforeUpdate = await findSignups();
-    expect(signupsBeforeUpdate.length).toEqual(2);
+    expect(signupsBeforeUpdate.length).toEqual(3);
 
     const assignResults = await runAssignment({
       assignmentStrategy,
@@ -606,6 +619,10 @@ describe("Assignment with first time bonus", () => {
       (signup) => signup.game.gameId === larpGameId
     );
 
+    const previousDirectSignupAlwaysOpenSignup = signupsAfterUpdate.find(
+      (signup) => signup.game.gameId === directSignupAlwaysOpenId
+    );
+
     expect(assignmentSignup?.userSignups[0].username).toEqual(
       mockUser2.username
     );
@@ -615,6 +632,9 @@ describe("Assignment with first time bonus", () => {
     expect(previousLarpSignup?.userSignups[0].username).toEqual(
       mockUser2.username
     );
+    expect(
+      previousDirectSignupAlwaysOpenSignup?.userSignups[0].username
+    ).toEqual(mockUser2.username);
   });
 });
 
