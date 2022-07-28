@@ -51,9 +51,9 @@ const rootReducer = (
 };
 
 const ignoredActions = [
-  "allGames/submitGetGamesAsync",
-  "admin/submitGetSettingsAsync",
-  "admin/submitGetSignupMessagesAsync",
+  "allGames/submitGetGamesAsync", // Games is huge
+  "admin/submitGetSettingsAsync", // HiddenGames is huge
+  "admin/submitGetSignupMessagesAsync", // Private
 ];
 
 const sentryReduxEnhancer = Sentry.createReduxEnhancer({
