@@ -58,7 +58,7 @@ const ignoredActions = [
 
 const sentryReduxEnhancer = Sentry.createReduxEnhancer({
   actionTransformer: (action) => {
-    // Don't send large payloads or responses to sentry
+    // Don't send large payloads or private data to sentry
     if (ignoredActions.includes(action.type as string)) {
       return null;
     }
