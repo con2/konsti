@@ -1,9 +1,15 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 import React, { ReactElement, useState, useEffect } from "react";
 import styled from "styled-components";
 import { theme } from "client/theme";
+
+enum PopularityLevel {
+  LOW = "gamePopularity.low",
+  MEDIUM = "gamePopularity.medium",
+  HIGH = "gamePopularity.high",
+}
 
 interface Props {
   minAttendance: number;
@@ -18,17 +24,19 @@ export const PopularityInfo = ({
   popularity,
   includeMsg,
 }: Props): ReactElement => {
-  const [msg, setMsg] = useState<string>(t("gamePopularity.low"));
+  const { t } = useTranslation();
+
+  const [msg, setMsg] = useState<PopularityLevel>(PopularityLevel.LOW);
   const [color, setColor] = useState<string>(theme.popularityLow);
   const [icon, setIcon] = useState<IconProp>("thermometer-empty");
 
   useEffect(() => {
     if (popularity >= minAttendance && popularity < maxAttendance) {
-      setMsg(t("gamePopularity.medium"));
+      setMsg(PopularityLevel.MEDIUM);
       setColor(theme.popularityMedium);
       setIcon("thermometer-half");
     } else if (popularity >= maxAttendance) {
-      setMsg(t("gamePopularity.high"));
+      setMsg(PopularityLevel.HIGH);
       setColor(theme.popularityHigh);
       setIcon("thermometer-full");
     }
@@ -37,7 +45,7 @@ export const PopularityInfo = ({
   return (
     <GamePopularityContainer>
       <GamePopularityIcon icon={icon} color={color} aria-hidden="true" />{" "}
-      {includeMsg && msg}
+      {includeMsg && <span>{t(msg)}</span>}
     </GamePopularityContainer>
   );
 };
