@@ -53,6 +53,13 @@ export const AllGamesView = (): ReactElement => {
     leading: true,
   });
 
+  const activeVisibleGames = activeGames.filter((game) => {
+    const hidden = hiddenGames.find(
+      (hiddenGame) => game.gameId === hiddenGame.gameId
+    );
+    if (!hidden) return game;
+  });
+
   const store = useStore();
 
   useEffect(() => {
@@ -207,7 +214,7 @@ export const AllGamesView = (): ReactElement => {
           </RevolvingDoorInstruction>
           <div>
             <h3>{t("currentlyRunningRevolvingDoor")}</h3>
-            {getRunningRevolvingDoorGames(activeGames, t)}
+            {getRunningRevolvingDoorGames(activeVisibleGames, t)}
           </div>
         </>
       )}
