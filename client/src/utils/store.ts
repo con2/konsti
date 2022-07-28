@@ -53,6 +53,7 @@ const rootReducer = (
 const ignoredActions = [
   "allGames/submitGetGamesAsync",
   "admin/submitGetSettingsAsync",
+  "admin/submitGetSignupMessagesAsync",
 ];
 
 const sentryReduxEnhancer = Sentry.createReduxEnhancer({
