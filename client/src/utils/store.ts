@@ -50,10 +50,16 @@ const rootReducer = (
   return combinedReducer(state, action);
 };
 
+const ignoredActions = [
+  "allGames/submitGetGamesAsync", // Games is huge
+  "admin/submitGetSettingsAsync", // HiddenGames is huge
+  "admin/submitGetSignupMessagesAsync", // Private
+];
+
 const sentryReduxEnhancer = Sentry.createReduxEnhancer({
   actionTransformer: (action) => {
-    // Don't send large payload to sentry
-    if (action.type === "allGames/submitGetGamesAsync") {
+    // Don't send large payloads or private data to sentry
+    if (ignoredActions.includes(action.type as string)) {
       return null;
     }
 
