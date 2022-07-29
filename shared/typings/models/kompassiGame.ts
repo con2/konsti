@@ -42,6 +42,7 @@ export enum KompassiTag {
   AIHE_LAUTAPELIT = "aihe-lautapelit",
   AIHE_POYTAROOLIPELIT = "aihe-poytaroolipelit",
   PELI = "peli",
+  YOUTUBE = "youtube",
 }
 
 export enum KompassiGenre {

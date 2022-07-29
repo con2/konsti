@@ -143,6 +143,7 @@ const mapTags = (kompassiGame: KompassiGame): Tag[] => {
       case KompassiTag.AIHE_POYTAROOLIPELIT:
       case KompassiTag.HISTORIA:
       case KompassiTag.PELI:
+      case KompassiTag.YOUTUBE:
         return [];
 
       default:
