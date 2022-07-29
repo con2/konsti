@@ -59,7 +59,7 @@ export const GameEntry = ({
 
   const isEnterGameMode =
     signupStrategy === SignupStrategy.DIRECT || signupAlwaysOpen;
-  const gameIsFull = game.maxAttendance === players;
+  const gameIsFull = players >= game.maxAttendance;
 
   const formatDuration = (mins: number): string => {
     const hours = Math.floor(mins / 60);
