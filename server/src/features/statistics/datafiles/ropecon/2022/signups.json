@@ -1,0 +1,8372 @@
+[
+  {
+    "game": { "gameId": "p5344" },
+    "count": 28,
+    "createdAt": "2022-07-28T17:50:57.929Z",
+    "updatedAt": "2022-07-30T08:50:55.253Z",
+    "userSignups": [
+      {
+        "username": "815795",
+        "priority": 0,
+        "time": "2022-07-30T09:00:00Z",
+        "message": "<redacted>"
+      },
+      {
+        "username": "129921",
+        "priority": 0,
+        "time": "2022-07-30T09:00:00Z",
+        "message": "<redacted>"
+      },
+      {
+        "username": "87501",
+        "priority": 0,
+        "time": "2022-07-30T09:00:00Z",
+        "message": "<redacted>"
+      },
+      {
+        "username": "987073",
+        "priority": 0,
+        "time": "2022-07-30T09:00:00Z",
+        "message": "<redacted>"
+      },
+      {
+        "username": "375661",
+        "priority": 0,
+        "time": "2022-07-30T09:00:00Z",
+        "message": "<redacted>"
+      },
+      {
+        "username": "544940",
+        "priority": 0,
+        "time": "2022-07-30T09:00:00Z",
+        "message": "<redacted>"
+      },
+      {
+        "username": "616247",
+        "priority": 0,
+        "time": "2022-07-30T09:00:00Z",
+        "message": "<redacted>"
+      },
+      {
+        "username": "572326",
+        "priority": 0,
+        "time": "2022-07-30T09:00:00Z",
+        "message": "<redacted>"
+      },
+      {
+        "username": "639831",
+        "priority": 0,
+        "time": "2022-07-30T09:00:00Z",
+        "message": "<redacted>"
+      },
+      {
+        "username": "762024",
+        "priority": 0,
+        "time": "2022-07-30T09:00:00Z",
+        "message": "<redacted>"
+      },
+      {
+        "username": "46822",
+        "priority": 0,
+        "time": "2022-07-30T09:00:00Z",
+        "message": "<redacted>"
+      },
+      {
+        "username": "511576",
+        "priority": 0,
+        "time": "2022-07-30T09:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "567438",
+        "priority": 0,
+        "time": "2022-07-30T09:00:00Z",
+        "message": "<redacted>"
+      },
+      {
+        "username": "595085",
+        "priority": 0,
+        "time": "2022-07-30T09:00:00Z",
+        "message": "<redacted>"
+      },
+      {
+        "username": "765048",
+        "priority": 0,
+        "time": "2022-07-30T09:00:00Z",
+        "message": "<redacted>"
+      },
+      {
+        "username": "602703",
+        "priority": 0,
+        "time": "2022-07-30T09:00:00Z",
+        "message": "<redacted>"
+      },
+      {
+        "username": "827408",
+        "priority": 0,
+        "time": "2022-07-30T09:00:00Z",
+        "message": "<redacted>"
+      },
+      {
+        "username": "234160",
+        "priority": 0,
+        "time": "2022-07-30T09:00:00Z",
+        "message": "<redacted>"
+      },
+      {
+        "username": "540076",
+        "priority": 0,
+        "time": "2022-07-30T09:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "647131",
+        "priority": 0,
+        "time": "2022-07-30T09:00:00Z",
+        "message": "<redacted>"
+      },
+      {
+        "username": "629928",
+        "priority": 0,
+        "time": "2022-07-30T09:00:00Z",
+        "message": "<redacted>"
+      },
+      {
+        "username": "745797",
+        "priority": 0,
+        "time": "2022-07-30T09:00:00Z",
+        "message": "<redacted>"
+      },
+      {
+        "username": "758579",
+        "priority": 0,
+        "time": "2022-07-30T09:00:00Z",
+        "message": "<redacted>"
+      },
+      {
+        "username": "480967",
+        "priority": 0,
+        "time": "2022-07-30T09:00:00Z",
+        "message": "<redacted>"
+      },
+      {
+        "username": "975920",
+        "priority": 0,
+        "time": "2022-07-30T09:00:00Z",
+        "message": "<redacted>"
+      },
+      {
+        "username": "914442",
+        "priority": 0,
+        "time": "2022-07-30T09:00:00Z",
+        "message": "<redacted>"
+      },
+      {
+        "username": "866950",
+        "priority": 0,
+        "time": "2022-07-30T09:00:00Z",
+        "message": "<redacted>"
+      },
+      {
+        "username": "627805",
+        "priority": 0,
+        "time": "2022-07-30T09:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5340" },
+    "count": 4,
+    "createdAt": "2022-07-29T12:00:47.343Z",
+    "updatedAt": "2022-07-29T20:00:27.189Z",
+    "userSignups": [
+      {
+        "username": "74166",
+        "priority": 0,
+        "time": "2022-07-29T13:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "531231",
+        "priority": 0,
+        "time": "2022-07-29T13:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "46822",
+        "priority": 0,
+        "time": "2022-07-29T13:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "480967",
+        "priority": 0,
+        "time": "2022-07-29T13:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5422" },
+    "count": 3,
+    "createdAt": "2022-07-29T12:01:41.859Z",
+    "updatedAt": "2022-07-29T20:00:27.189Z",
+    "userSignups": [
+      {
+        "username": "31527",
+        "priority": 0,
+        "time": "2022-07-29T13:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "11396",
+        "priority": 0,
+        "time": "2022-07-29T13:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "99286",
+        "priority": 0,
+        "time": "2022-07-29T13:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "378051",
+        "priority": 0,
+        "time": "2022-07-29T13:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "83520",
+        "priority": 0,
+        "time": "2022-07-29T13:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5266" },
+    "count": 5,
+    "createdAt": "2022-07-29T12:01:46.023Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z",
+    "userSignups": [
+      {
+        "username": "614684",
+        "priority": 0,
+        "time": "2022-07-29T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "280564",
+        "priority": 0,
+        "time": "2022-07-29T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "65864",
+        "priority": 0,
+        "time": "2022-07-29T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "40622",
+        "priority": 0,
+        "time": "2022-07-29T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "655685",
+        "priority": 0,
+        "time": "2022-07-29T15:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p4867" },
+    "count": 5,
+    "createdAt": "2022-07-29T12:01:57.453Z",
+    "updatedAt": "2022-07-29T20:00:27.189Z",
+    "userSignups": [
+      {
+        "username": "110736",
+        "priority": 0,
+        "time": "2022-07-29T13:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "404615",
+        "priority": 0,
+        "time": "2022-07-29T13:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "899439",
+        "priority": 0,
+        "time": "2022-07-29T13:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "314827",
+        "priority": 0,
+        "time": "2022-07-29T13:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "543707",
+        "priority": 0,
+        "time": "2022-07-29T13:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5117" },
+    "count": 6,
+    "createdAt": "2022-07-29T12:02:12.545Z",
+    "updatedAt": "2022-07-29T20:00:27.189Z",
+    "userSignups": [
+      {
+        "username": "481131",
+        "priority": 0,
+        "time": "2022-07-29T13:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "288827",
+        "priority": 0,
+        "time": "2022-07-29T13:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "810395",
+        "priority": 0,
+        "time": "2022-07-29T13:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "394278",
+        "priority": 0,
+        "time": "2022-07-29T13:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "784540",
+        "priority": 0,
+        "time": "2022-07-29T13:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "964196",
+        "priority": 0,
+        "time": "2022-07-29T13:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5113" },
+    "count": 3,
+    "createdAt": "2022-07-29T12:02:13.867Z",
+    "updatedAt": "2022-07-29T20:00:27.189Z",
+    "userSignups": [
+      {
+        "username": "487218",
+        "priority": 0,
+        "time": "2022-07-29T13:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "130672",
+        "priority": 0,
+        "time": "2022-07-29T13:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "937690",
+        "priority": 0,
+        "time": "2022-07-29T13:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5576" },
+    "count": 3,
+    "createdAt": "2022-07-29T12:02:58.942Z",
+    "updatedAt": "2022-07-29T20:00:27.189Z",
+    "userSignups": [
+      {
+        "username": "853239",
+        "priority": 0,
+        "time": "2022-07-29T13:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "908223",
+        "priority": 0,
+        "time": "2022-07-29T13:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "33782",
+        "priority": 0,
+        "time": "2022-07-29T13:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p4872" },
+    "count": 10,
+    "createdAt": "2022-07-29T12:04:02.074Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z",
+    "userSignups": [
+      {
+        "username": "803532",
+        "priority": 0,
+        "time": "2022-07-29T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "872206",
+        "priority": 0,
+        "time": "2022-07-29T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "174218",
+        "priority": 0,
+        "time": "2022-07-29T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "49332",
+        "priority": 0,
+        "time": "2022-07-29T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "711547",
+        "priority": 0,
+        "time": "2022-07-29T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "306981",
+        "priority": 0,
+        "time": "2022-07-29T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "513103",
+        "priority": 0,
+        "time": "2022-07-29T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "811519",
+        "priority": 0,
+        "time": "2022-07-29T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "302092",
+        "priority": 0,
+        "time": "2022-07-29T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "227127",
+        "priority": 0,
+        "time": "2022-07-29T17:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5691" },
+    "count": 2,
+    "createdAt": "2022-07-29T12:04:23.737Z",
+    "updatedAt": "2022-07-30T06:28:39.548Z",
+    "userSignups": [
+      {
+        "username": "899439",
+        "priority": 0,
+        "time": "2022-07-30T19:00:00Z",
+        "message": "<redacted>"
+      },
+      {
+        "username": "26348",
+        "priority": 0,
+        "time": "2022-07-30T19:00:00Z",
+        "message": "<redacted>"
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5468" },
+    "count": 4,
+    "createdAt": "2022-07-29T12:04:24.041Z",
+    "updatedAt": "2022-07-29T20:00:27.189Z",
+    "userSignups": [
+      {
+        "username": "803532",
+        "priority": 0,
+        "time": "2022-07-29T13:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "412161",
+        "priority": 0,
+        "time": "2022-07-29T13:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "59732",
+        "priority": 0,
+        "time": "2022-07-29T13:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "982046",
+        "priority": 0,
+        "time": "2022-07-29T13:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5081" },
+    "count": 9,
+    "createdAt": "2022-07-29T12:04:26.887Z",
+    "updatedAt": "2022-07-29T20:00:27.188Z",
+    "userSignups": [
+      {
+        "username": "894122",
+        "priority": 0,
+        "time": "2022-07-29T13:00:00Z",
+        "message": "<redacted>"
+      },
+      {
+        "username": "852669",
+        "priority": 0,
+        "time": "2022-07-29T13:00:00Z",
+        "message": "<redacted>"
+      },
+      {
+        "username": "666413",
+        "priority": 0,
+        "time": "2022-07-29T13:00:00Z",
+        "message": "<redacted>"
+      },
+      {
+        "username": "929957",
+        "priority": 0,
+        "time": "2022-07-29T13:00:00Z",
+        "message": "<redacted>"
+      },
+      {
+        "username": "16941",
+        "priority": 0,
+        "time": "2022-07-29T13:00:00Z",
+        "message": "<redacted>"
+      },
+      {
+        "username": "648897",
+        "priority": 0,
+        "time": "2022-07-29T13:00:00Z",
+        "message": "<redacted>"
+      },
+      {
+        "username": "966946",
+        "priority": 0,
+        "time": "2022-07-29T13:00:00Z",
+        "message": "<redacted>"
+      },
+      {
+        "username": "652179",
+        "priority": 0,
+        "time": "2022-07-29T13:00:00Z",
+        "message": "<redacted>"
+      },
+      {
+        "username": "894663",
+        "priority": 0,
+        "time": "2022-07-29T13:00:00Z",
+        "message": "<redacted>"
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5519" },
+    "count": 6,
+    "createdAt": "2022-07-29T12:05:08.712Z",
+    "updatedAt": "2022-07-29T20:00:27.189Z",
+    "userSignups": [
+      {
+        "username": "178863",
+        "priority": 0,
+        "time": "2022-07-29T13:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "614861",
+        "priority": 0,
+        "time": "2022-07-29T13:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "345148",
+        "priority": 0,
+        "time": "2022-07-29T13:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "927240",
+        "priority": 0,
+        "time": "2022-07-29T13:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "745132",
+        "priority": 0,
+        "time": "2022-07-29T13:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "737335",
+        "priority": 0,
+        "time": "2022-07-29T13:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5762" },
+    "count": 5,
+    "createdAt": "2022-07-29T12:06:22.32Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z",
+    "userSignups": [
+      {
+        "username": "678277",
+        "priority": 0,
+        "time": "2022-07-29T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "764489",
+        "priority": 0,
+        "time": "2022-07-29T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "670932",
+        "priority": 0,
+        "time": "2022-07-29T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "586777",
+        "priority": 0,
+        "time": "2022-07-29T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "997371",
+        "priority": 0,
+        "time": "2022-07-29T15:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5668" },
+    "count": 7,
+    "createdAt": "2022-07-29T12:06:40.09Z",
+    "updatedAt": "2022-07-29T20:00:27.189Z",
+    "userSignups": [
+      {
+        "username": "685501",
+        "priority": 0,
+        "time": "2022-07-29T13:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "826426",
+        "priority": 0,
+        "time": "2022-07-29T13:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "755547",
+        "priority": 0,
+        "time": "2022-07-29T13:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "25944",
+        "priority": 0,
+        "time": "2022-07-29T13:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "69477",
+        "priority": 0,
+        "time": "2022-07-29T13:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "324721",
+        "priority": 0,
+        "time": "2022-07-29T13:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "115286",
+        "priority": 0,
+        "time": "2022-07-29T13:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5757" },
+    "count": 4,
+    "createdAt": "2022-07-29T12:06:58.482Z",
+    "updatedAt": "2022-07-29T20:00:27.189Z",
+    "userSignups": [
+      {
+        "username": "632831",
+        "priority": 0,
+        "time": "2022-07-29T13:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "475577",
+        "priority": 0,
+        "time": "2022-07-29T13:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "144564",
+        "priority": 0,
+        "time": "2022-07-29T13:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "254323",
+        "priority": 0,
+        "time": "2022-07-29T13:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5475" },
+    "count": 5,
+    "createdAt": "2022-07-29T12:07:44.073Z",
+    "updatedAt": "2022-07-29T20:00:27.189Z",
+    "userSignups": [
+      {
+        "username": "694616",
+        "priority": 0,
+        "time": "2022-07-29T13:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "921613",
+        "priority": 0,
+        "time": "2022-07-29T13:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "719534",
+        "priority": 0,
+        "time": "2022-07-29T13:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "541040",
+        "priority": 0,
+        "time": "2022-07-29T13:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "944179",
+        "priority": 0,
+        "time": "2022-07-29T13:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5763" },
+    "count": 5,
+    "createdAt": "2022-07-29T12:08:06.608Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z",
+    "userSignups": [
+      {
+        "username": "227127",
+        "priority": 0,
+        "time": "2022-07-29T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "301904",
+        "priority": 0,
+        "time": "2022-07-29T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "483908",
+        "priority": 0,
+        "time": "2022-07-29T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "188656",
+        "priority": 0,
+        "time": "2022-07-29T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "110613",
+        "priority": 0,
+        "time": "2022-07-29T15:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5662" },
+    "count": 5,
+    "createdAt": "2022-07-29T12:15:15.143Z",
+    "updatedAt": "2022-07-29T20:00:27.189Z",
+    "userSignups": [
+      {
+        "username": "614861",
+        "priority": 0,
+        "time": "2022-07-29T14:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "927786",
+        "priority": 0,
+        "time": "2022-07-29T14:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "96157",
+        "priority": 0,
+        "time": "2022-07-29T14:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "530101",
+        "priority": 0,
+        "time": "2022-07-29T14:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "401713",
+        "priority": 0,
+        "time": "2022-07-29T14:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5431" },
+    "count": 5,
+    "createdAt": "2022-07-29T12:15:18.686Z",
+    "updatedAt": "2022-07-29T20:00:27.189Z",
+    "userSignups": [
+      {
+        "username": "553492",
+        "priority": 0,
+        "time": "2022-07-29T14:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "461818",
+        "priority": 0,
+        "time": "2022-07-29T14:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "785920",
+        "priority": 0,
+        "time": "2022-07-29T14:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "315770",
+        "priority": 0,
+        "time": "2022-07-29T14:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "983378",
+        "priority": 0,
+        "time": "2022-07-29T14:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5487" },
+    "count": 4,
+    "createdAt": "2022-07-29T12:15:21.804Z",
+    "updatedAt": "2022-07-29T20:00:27.189Z",
+    "userSignups": [
+      {
+        "username": "447167",
+        "priority": 0,
+        "time": "2022-07-29T14:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "485147",
+        "priority": 0,
+        "time": "2022-07-29T14:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "271919",
+        "priority": 0,
+        "time": "2022-07-29T14:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "539753",
+        "priority": 0,
+        "time": "2022-07-29T14:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5635" },
+    "count": 5,
+    "createdAt": "2022-07-29T12:15:24.933Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z",
+    "userSignups": [
+      {
+        "username": "67298",
+        "priority": 0,
+        "time": "2022-07-29T14:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "968308",
+        "priority": 0,
+        "time": "2022-07-29T14:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "212089",
+        "priority": 0,
+        "time": "2022-07-29T14:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "420141",
+        "priority": 0,
+        "time": "2022-07-29T14:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "606267",
+        "priority": 0,
+        "time": "2022-07-29T14:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5190" },
+    "count": 5,
+    "createdAt": "2022-07-29T12:15:42.18Z",
+    "updatedAt": "2022-07-29T20:00:27.189Z",
+    "userSignups": [
+      {
+        "username": "492558",
+        "priority": 0,
+        "time": "2022-07-29T14:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "906518",
+        "priority": 0,
+        "time": "2022-07-29T14:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "582241",
+        "priority": 0,
+        "time": "2022-07-29T14:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "462664",
+        "priority": 0,
+        "time": "2022-07-29T14:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "801673",
+        "priority": 0,
+        "time": "2022-07-29T14:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p4961" },
+    "count": 2,
+    "createdAt": "2022-07-29T12:16:21.726Z",
+    "updatedAt": "2022-07-29T20:00:27.189Z",
+    "userSignups": [
+      {
+        "username": "623335",
+        "priority": 0,
+        "time": "2022-07-29T14:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "996626",
+        "priority": 0,
+        "time": "2022-07-29T14:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5587" },
+    "count": 4,
+    "createdAt": "2022-07-29T12:21:00.207Z",
+    "updatedAt": "2022-07-29T20:00:27.189Z",
+    "userSignups": [
+      {
+        "username": "62531",
+        "priority": 0,
+        "time": "2022-07-29T14:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "589801",
+        "priority": 0,
+        "time": "2022-07-29T14:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "815795",
+        "priority": 0,
+        "time": "2022-07-29T14:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "418445",
+        "priority": 0,
+        "time": "2022-07-29T14:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5341" },
+    "count": 0,
+    "createdAt": "2022-07-29T12:30:21.178Z",
+    "updatedAt": "2022-07-29T20:00:27.189Z",
+    "userSignups": []
+  },
+  {
+    "game": { "gameId": "p5618" },
+    "count": 5,
+    "createdAt": "2022-07-29T12:35:23.245Z",
+    "updatedAt": "2022-07-29T20:00:27.193Z",
+    "userSignups": [
+      {
+        "username": "261587",
+        "priority": 0,
+        "time": "2022-07-29T14:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "310202",
+        "priority": 0,
+        "time": "2022-07-29T14:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "776065",
+        "priority": 0,
+        "time": "2022-07-29T14:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "949696",
+        "priority": 0,
+        "time": "2022-07-29T14:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "595945",
+        "priority": 0,
+        "time": "2022-07-29T14:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5535" },
+    "count": 5,
+    "createdAt": "2022-07-29T12:48:14.223Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z",
+    "userSignups": [
+      {
+        "username": "257154",
+        "priority": 0,
+        "time": "2022-07-29T14:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "425383",
+        "priority": 0,
+        "time": "2022-07-29T14:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "155848",
+        "priority": 0,
+        "time": "2022-07-29T14:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "902450",
+        "priority": 0,
+        "time": "2022-07-29T14:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "362690",
+        "priority": 0,
+        "time": "2022-07-29T14:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5810" },
+    "count": 0,
+    "createdAt": "2022-07-29T12:48:51.817Z",
+    "updatedAt": "2022-07-29T20:00:27.193Z",
+    "userSignups": []
+  },
+  {
+    "game": { "gameId": "p5464" },
+    "count": 0,
+    "createdAt": "2022-07-29T12:48:56.733Z",
+    "updatedAt": "2022-07-29T20:00:27.189Z",
+    "userSignups": []
+  },
+  {
+    "game": { "gameId": "p5570" },
+    "count": 2,
+    "createdAt": "2022-07-29T12:49:00.848Z",
+    "updatedAt": "2022-07-29T23:07:16.666Z",
+    "userSignups": [
+      {
+        "username": "3720",
+        "priority": 0,
+        "time": "2022-07-30T07:00:00Z",
+        "message": "<redacted>"
+      },
+      {
+        "username": "60572",
+        "priority": 0,
+        "time": "2022-07-30T07:00:00Z",
+        "message": "<redacted>"
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5207" },
+    "count": 5,
+    "createdAt": "2022-07-29T12:49:05.626Z",
+    "updatedAt": "2022-07-30T08:41:49.206Z",
+    "userSignups": [
+      {
+        "username": "71725",
+        "priority": 0,
+        "time": "2022-07-30T09:00:00Z",
+        "message": "<redacted>"
+      },
+      {
+        "username": "899483",
+        "priority": 0,
+        "time": "2022-07-30T09:00:00Z",
+        "message": "<redacted>"
+      },
+      {
+        "username": "335391",
+        "priority": 0,
+        "time": "2022-07-30T09:00:00Z",
+        "message": "<redacted>"
+      },
+      {
+        "username": "161870",
+        "priority": 0,
+        "time": "2022-07-30T09:00:00Z",
+        "message": "<redacted>"
+      },
+      {
+        "username": "116283",
+        "priority": 0,
+        "time": "2022-07-30T09:00:00Z",
+        "message": "<redacted>"
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5465" },
+    "count": 7,
+    "createdAt": "2022-07-29T12:49:09.908Z",
+    "updatedAt": "2022-07-30T14:37:23.07Z",
+    "userSignups": [
+      {
+        "username": "681766",
+        "priority": 0,
+        "time": "2022-07-30T15:00:00Z",
+        "message": "<redacted>"
+      },
+      {
+        "username": "667318",
+        "priority": 0,
+        "time": "2022-07-30T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "405309",
+        "priority": 0,
+        "time": "2022-07-30T15:00:00Z",
+        "message": "<redacted>"
+      },
+      {
+        "username": "769426",
+        "priority": 0,
+        "time": "2022-07-30T15:00:00Z",
+        "message": "<redacted>"
+      },
+      {
+        "username": "274011",
+        "priority": 0,
+        "time": "2022-07-30T15:00:00Z",
+        "message": "<redacted>"
+      },
+      {
+        "username": "391723",
+        "priority": 0,
+        "time": "2022-07-30T15:00:00Z",
+        "message": "<redacted>"
+      },
+      {
+        "username": "929408",
+        "priority": 0,
+        "time": "2022-07-30T15:00:00Z",
+        "message": "<redacted>"
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5571" },
+    "count": 4,
+    "createdAt": "2022-07-29T12:49:17.966Z",
+    "updatedAt": "2022-07-29T23:08:09.307Z",
+    "userSignups": [
+      {
+        "username": "929542",
+        "priority": 0,
+        "time": "2022-07-31T07:00:00Z",
+        "message": "<redacted>"
+      },
+      {
+        "username": "479167",
+        "priority": 0,
+        "time": "2022-07-31T07:00:00Z",
+        "message": "<redacted>"
+      },
+      {
+        "username": "68674",
+        "priority": 0,
+        "time": "2022-07-31T07:00:00Z",
+        "message": "<redacted>"
+      },
+      {
+        "username": "60572",
+        "priority": 0,
+        "time": "2022-07-31T07:00:00Z",
+        "message": "<redacted>"
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5335" },
+    "count": 9,
+    "createdAt": "2022-07-29T12:49:23.43Z",
+    "updatedAt": "2022-07-31T07:51:12.794Z",
+    "userSignups": [
+      {
+        "username": "608036",
+        "priority": 0,
+        "time": "2022-07-31T08:00:00Z",
+        "message": "<redacted>"
+      },
+      {
+        "username": "680013",
+        "priority": 0,
+        "time": "2022-07-31T08:00:00Z",
+        "message": "<redacted>"
+      },
+      {
+        "username": "587497",
+        "priority": 0,
+        "time": "2022-07-31T08:00:00Z",
+        "message": "<redacted>"
+      },
+      {
+        "username": "147722",
+        "priority": 0,
+        "time": "2022-07-31T08:00:00Z",
+        "message": "<redacted>"
+      },
+      {
+        "username": "340423",
+        "priority": 0,
+        "time": "2022-07-31T08:00:00Z",
+        "message": "<redacted>"
+      },
+      {
+        "username": "263187",
+        "priority": 0,
+        "time": "2022-07-31T08:00:00Z",
+        "message": "<redacted>"
+      },
+      {
+        "username": "31349",
+        "priority": 0,
+        "time": "2022-07-31T08:00:00Z",
+        "message": "<redacted>"
+      },
+      {
+        "username": "956457",
+        "priority": 0,
+        "time": "2022-07-31T08:00:00Z",
+        "message": "<redacted>"
+      },
+      {
+        "username": "172218",
+        "priority": 0,
+        "time": "2022-07-31T08:00:00Z",
+        "message": "<redacted>"
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5825" },
+    "count": 30,
+    "createdAt": "2022-07-29T12:50:27.328Z",
+    "updatedAt": "2022-07-30T10:54:46.364Z",
+    "userSignups": [
+      {
+        "username": "24434",
+        "priority": 0,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "886926",
+        "priority": 0,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "960198",
+        "priority": 0,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "430913",
+        "priority": 0,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "912466",
+        "priority": 0,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "339425",
+        "priority": 0,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "373305",
+        "priority": 0,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "805062",
+        "priority": 0,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "459517",
+        "priority": 0,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "556025",
+        "priority": 0,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "657305",
+        "priority": 0,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "347207",
+        "priority": 0,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "599747",
+        "priority": 0,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "598995",
+        "priority": 0,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "628609",
+        "priority": 0,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "160931",
+        "priority": 0,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "847696",
+        "priority": 0,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "862103",
+        "priority": 0,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "894615",
+        "priority": 0,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "888100",
+        "priority": 0,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "797746",
+        "priority": 0,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "58019",
+        "priority": 0,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "796541",
+        "priority": 0,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "35034",
+        "priority": 0,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "236565",
+        "priority": 0,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "713142",
+        "priority": 0,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "895701",
+        "priority": 0,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "929083",
+        "priority": 0,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "868904",
+        "priority": 0,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "166376",
+        "priority": 0,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5664" },
+    "count": 4,
+    "createdAt": "2022-07-29T13:00:11.302Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z",
+    "userSignups": [
+      {
+        "username": "99090",
+        "priority": 1,
+        "time": "2022-07-29T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "291101",
+        "priority": 1,
+        "time": "2022-07-29T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "770511",
+        "priority": 1,
+        "time": "2022-07-29T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "545503",
+        "priority": 1,
+        "time": "2022-07-29T15:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5263" },
+    "count": 5,
+    "createdAt": "2022-07-29T13:00:11.309Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z",
+    "userSignups": [
+      {
+        "username": "451394",
+        "priority": 2,
+        "time": "2022-07-29T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "113213",
+        "priority": 0,
+        "time": "2022-07-29T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "900020",
+        "priority": 0,
+        "time": "2022-07-29T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "745468",
+        "priority": 0,
+        "time": "2022-07-29T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "777030",
+        "priority": 0,
+        "time": "2022-07-29T15:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5414" },
+    "count": 4,
+    "createdAt": "2022-07-29T13:00:11.312Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z",
+    "userSignups": [
+      {
+        "username": "254323",
+        "priority": 1,
+        "time": "2022-07-29T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "345030",
+        "priority": 0,
+        "time": "2022-07-29T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "253582",
+        "priority": 0,
+        "time": "2022-07-29T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "916556",
+        "priority": 0,
+        "time": "2022-07-29T15:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5620" },
+    "count": 5,
+    "createdAt": "2022-07-29T13:15:17.744Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z",
+    "userSignups": [
+      {
+        "username": "296478",
+        "priority": 0,
+        "time": "2022-07-29T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "113933",
+        "priority": 0,
+        "time": "2022-07-29T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "558898",
+        "priority": 0,
+        "time": "2022-07-29T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "637270",
+        "priority": 0,
+        "time": "2022-07-29T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "353008",
+        "priority": 0,
+        "time": "2022-07-29T15:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5088" },
+    "count": 4,
+    "createdAt": "2022-07-29T13:15:38.896Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z",
+    "userSignups": [
+      {
+        "username": "418708",
+        "priority": 0,
+        "time": "2022-07-29T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "908989",
+        "priority": 0,
+        "time": "2022-07-29T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "730147",
+        "priority": 0,
+        "time": "2022-07-29T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "660728",
+        "priority": 0,
+        "time": "2022-07-29T15:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5510" },
+    "count": 4,
+    "createdAt": "2022-07-29T13:15:56.652Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z",
+    "userSignups": [
+      {
+        "username": "279332",
+        "priority": 0,
+        "time": "2022-07-29T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "991023",
+        "priority": 0,
+        "time": "2022-07-29T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "315669",
+        "priority": 0,
+        "time": "2022-07-29T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "814392",
+        "priority": 0,
+        "time": "2022-07-29T15:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5565" },
+    "count": 6,
+    "createdAt": "2022-07-29T14:00:11.428Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z",
+    "userSignups": [
+      {
+        "username": "693202",
+        "priority": 1,
+        "time": "2022-07-29T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "109754",
+        "priority": 1,
+        "time": "2022-07-29T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "601627",
+        "priority": 1,
+        "time": "2022-07-29T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "841756",
+        "priority": 0,
+        "time": "2022-07-29T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "466457",
+        "priority": 0,
+        "time": "2022-07-29T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "221846",
+        "priority": 0,
+        "time": "2022-07-29T16:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5630" },
+    "count": 8,
+    "createdAt": "2022-07-29T14:00:11.432Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z",
+    "userSignups": [
+      {
+        "username": "849979",
+        "priority": 1,
+        "time": "2022-07-29T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "323506",
+        "priority": 1,
+        "time": "2022-07-29T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "747542",
+        "priority": 1,
+        "time": "2022-07-29T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "144564",
+        "priority": 2,
+        "time": "2022-07-29T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "784665",
+        "priority": 1,
+        "time": "2022-07-29T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "391781",
+        "priority": 1,
+        "time": "2022-07-29T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "832499",
+        "priority": 1,
+        "time": "2022-07-29T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "20339",
+        "priority": 0,
+        "time": "2022-07-29T16:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5538" },
+    "count": 5,
+    "createdAt": "2022-07-29T14:00:11.434Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z",
+    "userSignups": [
+      {
+        "username": "258303",
+        "priority": 2,
+        "time": "2022-07-29T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "938746",
+        "priority": 1,
+        "time": "2022-07-29T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "379675",
+        "priority": 1,
+        "time": "2022-07-29T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "543707",
+        "priority": 1,
+        "time": "2022-07-29T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "228288",
+        "priority": 1,
+        "time": "2022-07-29T16:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5653" },
+    "count": 5,
+    "createdAt": "2022-07-29T14:00:11.439Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z",
+    "userSignups": [
+      {
+        "username": "541311",
+        "priority": 1,
+        "time": "2022-07-29T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "474302",
+        "priority": 1,
+        "time": "2022-07-29T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "523433",
+        "priority": 1,
+        "time": "2022-07-29T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "329596",
+        "priority": 1,
+        "time": "2022-07-29T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "474050",
+        "priority": 0,
+        "time": "2022-07-29T16:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5670" },
+    "count": 5,
+    "createdAt": "2022-07-29T14:00:11.44Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z",
+    "userSignups": [
+      {
+        "username": "889552",
+        "priority": 1,
+        "time": "2022-07-29T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "566404",
+        "priority": 1,
+        "time": "2022-07-29T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "485147",
+        "priority": 2,
+        "time": "2022-07-29T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "912466",
+        "priority": 0,
+        "time": "2022-07-29T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "793483",
+        "priority": 0,
+        "time": "2022-07-29T16:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5560" },
+    "count": 5,
+    "createdAt": "2022-07-29T14:00:11.451Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z",
+    "userSignups": [
+      {
+        "username": "812729",
+        "priority": 1,
+        "time": "2022-07-29T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "545873",
+        "priority": 0,
+        "time": "2022-07-29T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "967676",
+        "priority": 0,
+        "time": "2022-07-29T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "778761",
+        "priority": 0,
+        "time": "2022-07-29T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "387713",
+        "priority": 0,
+        "time": "2022-07-29T16:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5611" },
+    "count": 4,
+    "createdAt": "2022-07-29T14:00:11.453Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z",
+    "userSignups": [
+      {
+        "username": "174035",
+        "priority": 1,
+        "time": "2022-07-29T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "496409",
+        "priority": 3,
+        "time": "2022-07-29T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "839911",
+        "priority": 1,
+        "time": "2022-07-29T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "230368",
+        "priority": 1,
+        "time": "2022-07-29T16:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5672" },
+    "count": 5,
+    "createdAt": "2022-07-29T14:00:11.46Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z",
+    "userSignups": [
+      {
+        "username": "242785",
+        "priority": 3,
+        "time": "2022-07-29T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "716821",
+        "priority": 1,
+        "time": "2022-07-29T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "429412",
+        "priority": 3,
+        "time": "2022-07-29T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "692189",
+        "priority": 3,
+        "time": "2022-07-29T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "832606",
+        "priority": 1,
+        "time": "2022-07-29T16:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5068" },
+    "count": 5,
+    "createdAt": "2022-07-29T15:00:12.526Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z",
+    "userSignups": [
+      {
+        "username": "318047",
+        "priority": 1,
+        "time": "2022-07-29T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "288827",
+        "priority": 1,
+        "time": "2022-07-29T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "648528",
+        "priority": 1,
+        "time": "2022-07-29T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "147152",
+        "priority": 1,
+        "time": "2022-07-29T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "153567",
+        "priority": 1,
+        "time": "2022-07-29T17:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5265" },
+    "count": 5,
+    "createdAt": "2022-07-29T15:00:12.531Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z",
+    "userSignups": [
+      {
+        "username": "310202",
+        "priority": 1,
+        "time": "2022-07-29T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "99473",
+        "priority": 1,
+        "time": "2022-07-29T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "910499",
+        "priority": 1,
+        "time": "2022-07-29T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "472335",
+        "priority": 1,
+        "time": "2022-07-29T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "623335",
+        "priority": 1,
+        "time": "2022-07-29T17:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5353" },
+    "count": 4,
+    "createdAt": "2022-07-29T15:00:12.54Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z",
+    "userSignups": [
+      {
+        "username": "716711",
+        "priority": 1,
+        "time": "2022-07-29T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "815795",
+        "priority": 1,
+        "time": "2022-07-29T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "769301",
+        "priority": 2,
+        "time": "2022-07-29T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "511576",
+        "priority": 1,
+        "time": "2022-07-29T17:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5536" },
+    "count": 5,
+    "createdAt": "2022-07-29T15:00:12.542Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z",
+    "userSignups": [
+      {
+        "username": "810395",
+        "priority": 2,
+        "time": "2022-07-29T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "203925",
+        "priority": 3,
+        "time": "2022-07-29T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "33782",
+        "priority": 3,
+        "time": "2022-07-29T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "847717",
+        "priority": 3,
+        "time": "2022-07-29T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "843692",
+        "priority": 3,
+        "time": "2022-07-29T17:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5474" },
+    "count": 5,
+    "createdAt": "2022-07-29T15:00:12.545Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z",
+    "userSignups": [
+      {
+        "username": "530101",
+        "priority": 1,
+        "time": "2022-07-29T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "456038",
+        "priority": 1,
+        "time": "2022-07-29T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "113337",
+        "priority": 1,
+        "time": "2022-07-29T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "480007",
+        "priority": 1,
+        "time": "2022-07-29T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "878043",
+        "priority": 1,
+        "time": "2022-07-29T17:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5755" },
+    "count": 5,
+    "createdAt": "2022-07-29T15:00:12.551Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z",
+    "userSignups": [
+      {
+        "username": "935278",
+        "priority": 1,
+        "time": "2022-07-29T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "144026",
+        "priority": 0,
+        "time": "2022-07-29T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "96256",
+        "priority": 0,
+        "time": "2022-07-29T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "431830",
+        "priority": 0,
+        "time": "2022-07-29T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "223400",
+        "priority": 0,
+        "time": "2022-07-29T17:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5459" },
+    "count": 5,
+    "createdAt": "2022-07-29T15:00:12.557Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z",
+    "userSignups": [
+      {
+        "username": "454383",
+        "priority": 1,
+        "time": "2022-07-29T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "316534",
+        "priority": 2,
+        "time": "2022-07-29T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "934675",
+        "priority": 1,
+        "time": "2022-07-29T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "22255",
+        "priority": 1,
+        "time": "2022-07-29T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "178282",
+        "priority": 0,
+        "time": "2022-07-29T17:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5342" },
+    "count": 0,
+    "createdAt": "2022-07-29T15:00:12.562Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z",
+    "userSignups": []
+  },
+  {
+    "game": { "gameId": "p5657" },
+    "count": 5,
+    "createdAt": "2022-07-29T15:00:12.569Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z",
+    "userSignups": [
+      {
+        "username": "226189",
+        "priority": 1,
+        "time": "2022-07-29T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "545873",
+        "priority": 1,
+        "time": "2022-07-29T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "475577",
+        "priority": 1,
+        "time": "2022-07-29T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "632831",
+        "priority": 1,
+        "time": "2022-07-29T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "606267",
+        "priority": 2,
+        "time": "2022-07-29T17:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5643" },
+    "count": 8,
+    "createdAt": "2022-07-29T15:00:14.728Z",
+    "updatedAt": "2022-07-30T10:25:27.669Z",
+    "userSignups": [
+      {
+        "username": "964196",
+        "priority": 0,
+        "time": "2022-07-30T12:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "53693",
+        "priority": 0,
+        "time": "2022-07-30T12:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "411426",
+        "priority": 0,
+        "time": "2022-07-30T12:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "875167",
+        "priority": 0,
+        "time": "2022-07-30T12:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "803532",
+        "priority": 0,
+        "time": "2022-07-30T12:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "496409",
+        "priority": 0,
+        "time": "2022-07-30T12:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "905450",
+        "priority": 0,
+        "time": "2022-07-30T12:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "119436",
+        "priority": 0,
+        "time": "2022-07-30T12:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5354" },
+    "count": 26,
+    "createdAt": "2022-07-29T15:00:15.901Z",
+    "updatedAt": "2022-07-30T10:53:54.094Z",
+    "userSignups": [
+      {
+        "username": "227127",
+        "priority": 0,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "328216",
+        "priority": 0,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "110613",
+        "priority": 0,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "280670",
+        "priority": 0,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "9928",
+        "priority": 0,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "113337",
+        "priority": 0,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "10644",
+        "priority": 0,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "791598",
+        "priority": 0,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "814839",
+        "priority": 0,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "832995",
+        "priority": 0,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "558064",
+        "priority": 0,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "299272",
+        "priority": 0,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "65864",
+        "priority": 0,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "655685",
+        "priority": 0,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "413981",
+        "priority": 0,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "678277",
+        "priority": 0,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "7058",
+        "priority": 0,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "219217",
+        "priority": 0,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "263187",
+        "priority": 0,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "364729",
+        "priority": 0,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "231112",
+        "priority": 0,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "896137",
+        "priority": 0,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "906099",
+        "priority": 0,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "503667",
+        "priority": 0,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "929668",
+        "priority": 0,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "301904",
+        "priority": 0,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5158" },
+    "count": 7,
+    "createdAt": "2022-07-29T15:00:36.055Z",
+    "updatedAt": "2022-07-30T06:53:21.868Z",
+    "userSignups": [
+      {
+        "username": "660728",
+        "priority": 0,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "582033",
+        "priority": 0,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "899264",
+        "priority": 0,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "678277",
+        "priority": 0,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "445685",
+        "priority": 0,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "927786",
+        "priority": 0,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "49332",
+        "priority": 0,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p4878" },
+    "count": 3,
+    "createdAt": "2022-07-29T15:18:42.198Z",
+    "updatedAt": "2022-07-30T06:56:29.228Z",
+    "userSignups": [
+      {
+        "username": "711547",
+        "priority": 0,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "475577",
+        "priority": 0,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "632831",
+        "priority": 0,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5843" },
+    "count": 4,
+    "createdAt": "2022-07-29T15:55:43.286Z",
+    "updatedAt": "2022-07-29T20:00:27.193Z",
+    "userSignups": [
+      {
+        "username": "548268",
+        "priority": 0,
+        "time": "2022-07-29T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "714429",
+        "priority": 0,
+        "time": "2022-07-29T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "418105",
+        "priority": 0,
+        "time": "2022-07-29T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "314827",
+        "priority": 0,
+        "time": "2022-07-29T17:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5665" },
+    "count": 3,
+    "createdAt": "2022-07-29T16:00:12.108Z",
+    "updatedAt": "2022-07-29T20:00:27.192Z",
+    "userSignups": [
+      {
+        "username": "345148",
+        "priority": 2,
+        "time": "2022-07-29T18:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "8966",
+        "priority": 2,
+        "time": "2022-07-29T18:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "617129",
+        "priority": 0,
+        "time": "2022-07-29T18:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5640" },
+    "count": 5,
+    "createdAt": "2022-07-29T16:00:12.118Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z",
+    "userSignups": [
+      {
+        "username": "722229",
+        "priority": 1,
+        "time": "2022-07-29T18:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "264756",
+        "priority": 2,
+        "time": "2022-07-29T18:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "637270",
+        "priority": 2,
+        "time": "2022-07-29T18:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "215784",
+        "priority": 1,
+        "time": "2022-07-29T18:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "848435",
+        "priority": 1,
+        "time": "2022-07-29T18:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5467" },
+    "count": 5,
+    "createdAt": "2022-07-29T16:00:12.119Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z",
+    "userSignups": [
+      {
+        "username": "558898",
+        "priority": 1,
+        "time": "2022-07-29T18:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "264185",
+        "priority": 2,
+        "time": "2022-07-29T18:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "87605",
+        "priority": 2,
+        "time": "2022-07-29T18:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "502820",
+        "priority": 1,
+        "time": "2022-07-29T18:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "82255",
+        "priority": 0,
+        "time": "2022-07-29T18:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5334" },
+    "count": 4,
+    "createdAt": "2022-07-29T16:00:12.121Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z",
+    "userSignups": [
+      {
+        "username": "660141",
+        "priority": 1,
+        "time": "2022-07-29T18:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "905769",
+        "priority": 1,
+        "time": "2022-07-29T18:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "974419",
+        "priority": 2,
+        "time": "2022-07-29T18:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "660728",
+        "priority": 0,
+        "time": "2022-07-29T18:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5673" },
+    "count": 4,
+    "createdAt": "2022-07-29T16:00:12.122Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z",
+    "userSignups": [
+      {
+        "username": "621110",
+        "priority": 1,
+        "time": "2022-07-29T18:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "584809",
+        "priority": 1,
+        "time": "2022-07-29T18:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "16085",
+        "priority": 1,
+        "time": "2022-07-29T18:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "998133",
+        "priority": 1,
+        "time": "2022-07-29T18:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5524" },
+    "count": 4,
+    "createdAt": "2022-07-29T16:00:12.123Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z",
+    "userSignups": [
+      {
+        "username": "336070",
+        "priority": 1,
+        "time": "2022-07-29T18:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "408651",
+        "priority": 1,
+        "time": "2022-07-29T18:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "362690",
+        "priority": 1,
+        "time": "2022-07-29T18:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "571619",
+        "priority": 0,
+        "time": "2022-07-29T18:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5609" },
+    "count": 5,
+    "createdAt": "2022-07-29T16:00:12.124Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z",
+    "userSignups": [
+      {
+        "username": "691237",
+        "priority": 1,
+        "time": "2022-07-29T18:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "550116",
+        "priority": 1,
+        "time": "2022-07-29T18:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "730166",
+        "priority": 1,
+        "time": "2022-07-29T18:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "728319",
+        "priority": 1,
+        "time": "2022-07-29T18:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "96157",
+        "priority": 1,
+        "time": "2022-07-29T18:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5845" },
+    "count": 4,
+    "createdAt": "2022-07-29T16:20:14.171Z",
+    "updatedAt": "2022-07-29T20:00:27.193Z",
+    "userSignups": [
+      {
+        "username": "960198",
+        "priority": 0,
+        "time": "2022-07-29T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "423695",
+        "priority": 0,
+        "time": "2022-07-29T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "565456",
+        "priority": 0,
+        "time": "2022-07-29T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "275116",
+        "priority": 0,
+        "time": "2022-07-29T17:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5622" },
+    "count": 5,
+    "createdAt": "2022-07-29T17:00:11.716Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z",
+    "userSignups": [
+      {
+        "username": "178863",
+        "priority": 1,
+        "time": "2022-07-29T19:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "464758",
+        "priority": 1,
+        "time": "2022-07-29T19:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "779350",
+        "priority": 1,
+        "time": "2022-07-29T19:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "365748",
+        "priority": 1,
+        "time": "2022-07-29T19:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "754211",
+        "priority": 1,
+        "time": "2022-07-29T19:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5396" },
+    "count": 4,
+    "createdAt": "2022-07-29T17:00:11.756Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z",
+    "userSignups": [
+      {
+        "username": "808095",
+        "priority": 2,
+        "time": "2022-07-29T19:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "708181",
+        "priority": 1,
+        "time": "2022-07-29T19:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "10936",
+        "priority": 1,
+        "time": "2022-07-29T19:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "412161",
+        "priority": 1,
+        "time": "2022-07-29T19:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5064" },
+    "count": 6,
+    "createdAt": "2022-07-29T17:00:11.759Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z",
+    "userSignups": [
+      {
+        "username": "861953",
+        "priority": 2,
+        "time": "2022-07-29T19:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "569702",
+        "priority": 3,
+        "time": "2022-07-29T19:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "67086",
+        "priority": 1,
+        "time": "2022-07-29T19:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "344159",
+        "priority": 1,
+        "time": "2022-07-29T19:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "422913",
+        "priority": 1,
+        "time": "2022-07-29T19:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "484215",
+        "priority": 1,
+        "time": "2022-07-29T19:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5844" },
+    "count": 4,
+    "createdAt": "2022-07-29T17:00:11.76Z",
+    "updatedAt": "2022-07-29T20:00:27.193Z",
+    "userSignups": [
+      {
+        "username": "397388",
+        "priority": 1,
+        "time": "2022-07-29T19:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "553492",
+        "priority": 1,
+        "time": "2022-07-29T19:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "62531",
+        "priority": 2,
+        "time": "2022-07-29T19:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "895701",
+        "priority": 2,
+        "time": "2022-07-29T19:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5047" },
+    "count": 5,
+    "createdAt": "2022-07-29T17:00:11.761Z",
+    "updatedAt": "2022-07-29T20:00:27.191Z",
+    "userSignups": [
+      {
+        "username": "616310",
+        "priority": 2,
+        "time": "2022-07-29T19:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "418105",
+        "priority": 2,
+        "time": "2022-07-29T19:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "431830",
+        "priority": 2,
+        "time": "2022-07-29T19:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "152787",
+        "priority": 0,
+        "time": "2022-07-29T19:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "956859",
+        "priority": 0,
+        "time": "2022-07-29T19:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p4956" },
+    "count": 5,
+    "createdAt": "2022-07-29T17:00:11.765Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z",
+    "userSignups": [
+      {
+        "username": "268489",
+        "priority": 1,
+        "time": "2022-07-29T19:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "504641",
+        "priority": 1,
+        "time": "2022-07-29T19:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "192565",
+        "priority": 1,
+        "time": "2022-07-29T19:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "174035",
+        "priority": 1,
+        "time": "2022-07-29T19:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "790596",
+        "priority": 0,
+        "time": "2022-07-29T19:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5727" },
+    "count": 8,
+    "createdAt": "2022-07-29T19:00:11.249Z",
+    "updatedAt": "2022-07-29T20:11:45.635Z",
+    "userSignups": [
+      {
+        "username": "553492",
+        "priority": 1,
+        "time": "2022-07-29T21:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "496409",
+        "priority": 1,
+        "time": "2022-07-29T21:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "939247",
+        "priority": 1,
+        "time": "2022-07-29T21:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "254323",
+        "priority": 1,
+        "time": "2022-07-29T21:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "30042",
+        "priority": 1,
+        "time": "2022-07-29T21:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "716711",
+        "priority": 1,
+        "time": "2022-07-29T21:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "799060",
+        "priority": 0,
+        "time": "2022-07-29T21:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "314827",
+        "priority": 0,
+        "time": "2022-07-29T21:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5659" },
+    "count": 0,
+    "createdAt": "2022-07-29T20:00:27.189Z",
+    "updatedAt": "2022-07-29T20:00:27.189Z",
+    "userSignups": []
+  },
+  {
+    "game": { "gameId": "p5644" },
+    "count": 0,
+    "createdAt": "2022-07-29T20:00:27.189Z",
+    "updatedAt": "2022-07-29T20:00:27.189Z",
+    "userSignups": []
+  },
+  {
+    "game": { "gameId": "p5753" },
+    "count": 0,
+    "createdAt": "2022-07-29T20:00:27.189Z",
+    "updatedAt": "2022-07-29T20:00:27.189Z",
+    "userSignups": []
+  },
+  {
+    "game": { "gameId": "p5548" },
+    "count": 0,
+    "createdAt": "2022-07-29T20:00:27.189Z",
+    "updatedAt": "2022-07-29T20:00:27.189Z",
+    "userSignups": []
+  },
+  {
+    "game": { "gameId": "p5549" },
+    "count": 0,
+    "createdAt": "2022-07-29T20:00:27.19Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z",
+    "userSignups": []
+  },
+  {
+    "game": { "gameId": "p5671" },
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.19Z",
+    "updatedAt": "2022-07-30T12:00:23.593Z",
+    "userSignups": [
+      {
+        "username": "396128",
+        "priority": 2,
+        "time": "2022-07-30T14:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "908989",
+        "priority": 1,
+        "time": "2022-07-30T14:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "113933",
+        "priority": 1,
+        "time": "2022-07-30T14:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "74166",
+        "priority": 1,
+        "time": "2022-07-30T14:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p4874" },
+    "count": 0,
+    "createdAt": "2022-07-29T20:00:27.19Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z",
+    "userSignups": []
+  },
+  {
+    "game": { "gameId": "p5220" },
+    "count": 6,
+    "createdAt": "2022-07-29T20:00:27.19Z",
+    "updatedAt": "2022-07-30T05:00:15.708Z",
+    "userSignups": [
+      {
+        "username": "378051",
+        "priority": 2,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "927240",
+        "priority": 3,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "899439",
+        "priority": 1,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "996273",
+        "priority": 1,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "336070",
+        "priority": 2,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "571091",
+        "priority": 1,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5646" },
+    "count": 0,
+    "createdAt": "2022-07-29T20:00:27.19Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z",
+    "userSignups": []
+  },
+  {
+    "game": { "gameId": "p5438" },
+    "count": 0,
+    "createdAt": "2022-07-29T20:00:27.19Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z",
+    "userSignups": []
+  },
+  {
+    "game": { "gameId": "p5352" },
+    "count": 0,
+    "createdAt": "2022-07-29T20:00:27.19Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z",
+    "userSignups": []
+  },
+  {
+    "game": { "gameId": "p5677" },
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.19Z",
+    "updatedAt": "2022-07-30T06:14:18.189Z",
+    "userSignups": [
+      {
+        "username": "485147",
+        "priority": 2,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "254323",
+        "priority": 1,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "839911",
+        "priority": 1,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "314827",
+        "priority": 1,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "178863",
+        "priority": 0,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5660" },
+    "count": 0,
+    "createdAt": "2022-07-29T20:00:27.19Z",
+    "updatedAt": "2022-07-29T20:00:27.19Z",
+    "userSignups": []
+  },
+  {
+    "game": { "gameId": "p5118" },
+    "count": 6,
+    "createdAt": "2022-07-29T20:00:27.19Z",
+    "updatedAt": "2022-07-30T05:00:15.728Z",
+    "userSignups": [
+      {
+        "username": "708333",
+        "priority": 1,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "641320",
+        "priority": 1,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "550016",
+        "priority": 2,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "778761",
+        "priority": 1,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "893901",
+        "priority": 2,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "804595",
+        "priority": 2,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5567" },
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.19Z",
+    "updatedAt": "2022-07-30T05:00:15.683Z",
+    "userSignups": [
+      {
+        "username": "288827",
+        "priority": 1,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "345030",
+        "priority": 3,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "205563",
+        "priority": 1,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "69825",
+        "priority": 1,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "275116",
+        "priority": 2,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5171" },
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.19Z",
+    "updatedAt": "2022-07-30T05:00:15.721Z",
+    "userSignups": [
+      {
+        "username": "74166",
+        "priority": 3,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "776065",
+        "priority": 1,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "261587",
+        "priority": 1,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "598995",
+        "priority": 3,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "866950",
+        "priority": 1,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p4850" },
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.19Z",
+    "updatedAt": "2022-07-30T06:03:37.777Z",
+    "userSignups": [
+      {
+        "username": "212089",
+        "priority": 2,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "956939",
+        "priority": 1,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "397388",
+        "priority": 3,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "153739",
+        "priority": 1,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "11396",
+        "priority": 0,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p4962" },
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.19Z",
+    "updatedAt": "2022-07-30T06:56:46.064Z",
+    "userSignups": [
+      {
+        "username": "553492",
+        "priority": 0,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "796541",
+        "priority": 0,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "935278",
+        "priority": 0,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "583140",
+        "priority": 0,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5675" },
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.19Z",
+    "updatedAt": "2022-07-30T05:00:15.726Z",
+    "userSignups": [
+      {
+        "username": "528877",
+        "priority": 1,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "756686",
+        "priority": 1,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "952272",
+        "priority": 1,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "412161",
+        "priority": 2,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5575" },
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.19Z",
+    "updatedAt": "2022-07-30T05:46:06.921Z",
+    "userSignups": [
+      {
+        "username": "264714",
+        "priority": 2,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "21639",
+        "priority": 1,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "310202",
+        "priority": 2,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "82545",
+        "priority": 0,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5395" },
+    "count": 3,
+    "createdAt": "2022-07-29T20:00:27.19Z",
+    "updatedAt": "2022-07-30T05:56:11.123Z",
+    "userSignups": [
+      {
+        "username": "552980",
+        "priority": 1,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "534801",
+        "priority": 0,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "914746",
+        "priority": 0,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5579" },
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.19Z",
+    "updatedAt": "2022-07-30T05:00:15.705Z",
+    "userSignups": [
+      {
+        "username": "269997",
+        "priority": 3,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "800077",
+        "priority": 1,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "64159",
+        "priority": 2,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "794220",
+        "priority": 1,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "859838",
+        "priority": 1,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5580" },
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T05:32:15.864Z",
+    "userSignups": [
+      {
+        "username": "230368",
+        "priority": 1,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "678087",
+        "priority": 1,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "449257",
+        "priority": 0,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "691237",
+        "priority": 0,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5666" },
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.19Z",
+    "updatedAt": "2022-07-30T05:00:15.711Z",
+    "userSignups": [
+      {
+        "username": "280564",
+        "priority": 3,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "841756",
+        "priority": 1,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "870169",
+        "priority": 1,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "566861",
+        "priority": 3,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5754" },
+    "count": 0,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-29T20:00:27.191Z",
+    "userSignups": []
+  },
+  {
+    "game": { "gameId": "p5749" },
+    "count": 6,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T06:53:20.677Z",
+    "userSignups": [
+      {
+        "username": "715305",
+        "priority": 1,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "307247",
+        "priority": 3,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "242785",
+        "priority": 1,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "429412",
+        "priority": 1,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "645740",
+        "priority": 0,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "143667",
+        "priority": 0,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5477" },
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T05:00:15.72Z",
+    "userSignups": [
+      {
+        "username": "908989",
+        "priority": 2,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "181031",
+        "priority": 1,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "64663",
+        "priority": 1,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "979422",
+        "priority": 1,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "742777",
+        "priority": 1,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5550" },
+    "count": 0,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-29T20:00:27.191Z",
+    "userSignups": []
+  },
+  {
+    "game": { "gameId": "p5629" },
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T06:18:37.429Z",
+    "userSignups": [
+      {
+        "username": "22255",
+        "priority": 1,
+        "time": "2022-07-30T08:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "268489",
+        "priority": 1,
+        "time": "2022-07-30T08:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "848435",
+        "priority": 1,
+        "time": "2022-07-30T08:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "548268",
+        "priority": 1,
+        "time": "2022-07-30T08:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "606267",
+        "priority": 0,
+        "time": "2022-07-30T08:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5608" },
+    "count": 7,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T06:51:43.908Z",
+    "userSignups": [
+      {
+        "username": "394278",
+        "priority": 1,
+        "time": "2022-07-30T08:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "251303",
+        "priority": 1,
+        "time": "2022-07-30T08:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "567606",
+        "priority": 1,
+        "time": "2022-07-30T08:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "249975",
+        "priority": 1,
+        "time": "2022-07-30T08:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "297832",
+        "priority": 1,
+        "time": "2022-07-30T08:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "722229",
+        "priority": 0,
+        "time": "2022-07-30T08:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "504641",
+        "priority": 0,
+        "time": "2022-07-30T08:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5288" },
+    "count": 3,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T07:55:16.589Z",
+    "userSignups": [
+      {
+        "username": "716711",
+        "priority": 1,
+        "time": "2022-07-30T08:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "814392",
+        "priority": 1,
+        "time": "2022-07-30T08:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "645740",
+        "priority": 0,
+        "time": "2022-07-30T08:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p4847" },
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T06:00:13.394Z",
+    "userSignups": [
+      {
+        "username": "474050",
+        "priority": 2,
+        "time": "2022-07-30T08:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "542571",
+        "priority": 1,
+        "time": "2022-07-30T08:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "697680",
+        "priority": 1,
+        "time": "2022-07-30T08:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "181631",
+        "priority": 2,
+        "time": "2022-07-30T08:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "156339",
+        "priority": 2,
+        "time": "2022-07-30T08:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5588" },
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T08:57:12.88Z",
+    "userSignups": [
+      {
+        "username": "18808",
+        "priority": 1,
+        "time": "2022-07-30T09:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "115004",
+        "priority": 2,
+        "time": "2022-07-30T09:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "432087",
+        "priority": 2,
+        "time": "2022-07-30T09:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "506597",
+        "priority": 1,
+        "time": "2022-07-30T09:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5551" },
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T07:50:05.163Z",
+    "userSignups": [
+      {
+        "username": "745132",
+        "priority": 2,
+        "time": "2022-07-30T08:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "749392",
+        "priority": 1,
+        "time": "2022-07-30T08:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "96157",
+        "priority": 1,
+        "time": "2022-07-30T08:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "302826",
+        "priority": 2,
+        "time": "2022-07-30T08:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "692706",
+        "priority": 0,
+        "time": "2022-07-30T08:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5415" },
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T07:05:19.805Z",
+    "userSignups": [
+      {
+        "username": "523433",
+        "priority": 1,
+        "time": "2022-07-30T08:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "333697",
+        "priority": 1,
+        "time": "2022-07-30T08:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "59732",
+        "priority": 0,
+        "time": "2022-07-30T08:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "221846",
+        "priority": 0,
+        "time": "2022-07-30T08:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5391" },
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T07:15:25.091Z",
+    "userSignups": [
+      {
+        "username": "543710",
+        "priority": 1,
+        "time": "2022-07-30T09:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "692189",
+        "priority": 1,
+        "time": "2022-07-30T09:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "836057",
+        "priority": 2,
+        "time": "2022-07-30T09:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "113213",
+        "priority": 0,
+        "time": "2022-07-30T09:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5429" },
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T07:00:13.812Z",
+    "userSignups": [
+      {
+        "username": "545873",
+        "priority": 2,
+        "time": "2022-07-30T09:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "70430",
+        "priority": 1,
+        "time": "2022-07-30T09:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "656412",
+        "priority": 1,
+        "time": "2022-07-30T09:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "618819",
+        "priority": 1,
+        "time": "2022-07-30T09:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "909469",
+        "priority": 1,
+        "time": "2022-07-30T09:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5192" },
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T07:00:13.822Z",
+    "userSignups": [
+      {
+        "username": "860318",
+        "priority": 2,
+        "time": "2022-07-30T09:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "82255",
+        "priority": 1,
+        "time": "2022-07-30T09:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "640435",
+        "priority": 2,
+        "time": "2022-07-30T09:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "793503",
+        "priority": 1,
+        "time": "2022-07-30T09:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "215784",
+        "priority": 1,
+        "time": "2022-07-30T09:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5231" },
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T08:11:32.055Z",
+    "userSignups": [
+      {
+        "username": "968308",
+        "priority": 1,
+        "time": "2022-07-30T09:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "604817",
+        "priority": 3,
+        "time": "2022-07-30T09:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "531481",
+        "priority": 1,
+        "time": "2022-07-30T09:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "614861",
+        "priority": 0,
+        "time": "2022-07-30T09:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "179819",
+        "priority": 0,
+        "time": "2022-07-30T09:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5624" },
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T08:15:17.258Z",
+    "userSignups": [
+      {
+        "username": "364796",
+        "priority": 1,
+        "time": "2022-07-30T10:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "278784",
+        "priority": 1,
+        "time": "2022-07-30T10:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "143791",
+        "priority": 1,
+        "time": "2022-07-30T10:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "5603",
+        "priority": 1,
+        "time": "2022-07-30T10:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "872623",
+        "priority": 0,
+        "time": "2022-07-30T10:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5652" },
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T08:00:15.595Z",
+    "userSignups": [
+      {
+        "username": "442271",
+        "priority": 1,
+        "time": "2022-07-30T10:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "349986",
+        "priority": 1,
+        "time": "2022-07-30T10:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "27542",
+        "priority": 1,
+        "time": "2022-07-30T10:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "398380",
+        "priority": 1,
+        "time": "2022-07-30T10:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "749535",
+        "priority": 1,
+        "time": "2022-07-30T10:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5552" },
+    "count": 0,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-29T20:00:27.191Z",
+    "userSignups": []
+  },
+  {
+    "game": { "gameId": "p5486" },
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T08:00:15.586Z",
+    "userSignups": [
+      {
+        "username": "451394",
+        "priority": 2,
+        "time": "2022-07-30T10:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "666692",
+        "priority": 1,
+        "time": "2022-07-30T10:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "913388",
+        "priority": 1,
+        "time": "2022-07-30T10:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "719534",
+        "priority": 1,
+        "time": "2022-07-30T10:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5574" },
+    "count": 8,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T08:00:15.587Z",
+    "userSignups": [
+      {
+        "username": "797904",
+        "priority": 1,
+        "time": "2022-07-30T10:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "617129",
+        "priority": 2,
+        "time": "2022-07-30T10:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "404114",
+        "priority": 3,
+        "time": "2022-07-30T10:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "790596",
+        "priority": 1,
+        "time": "2022-07-30T10:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "92861",
+        "priority": 1,
+        "time": "2022-07-30T10:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "118014",
+        "priority": 2,
+        "time": "2022-07-30T10:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "934996",
+        "priority": 2,
+        "time": "2022-07-30T10:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "550116",
+        "priority": 1,
+        "time": "2022-07-30T10:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5723" },
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T09:48:03.404Z",
+    "userSignups": [
+      {
+        "username": "369551",
+        "priority": 1,
+        "time": "2022-07-30T10:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "745468",
+        "priority": 1,
+        "time": "2022-07-30T10:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "62531",
+        "priority": 1,
+        "time": "2022-07-30T10:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "485662",
+        "priority": 1,
+        "time": "2022-07-30T10:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "804595",
+        "priority": 0,
+        "time": "2022-07-30T10:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5598" },
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T08:00:15.59Z",
+    "userSignups": [
+      {
+        "username": "529456",
+        "priority": 2,
+        "time": "2022-07-30T10:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "502820",
+        "priority": 1,
+        "time": "2022-07-30T10:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "740078",
+        "priority": 1,
+        "time": "2022-07-30T10:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "683547",
+        "priority": 2,
+        "time": "2022-07-30T10:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "94071",
+        "priority": 2,
+        "time": "2022-07-30T10:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5530" },
+    "count": 6,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T09:00:17.302Z",
+    "userSignups": [
+      {
+        "username": "323506",
+        "priority": 1,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "33782",
+        "priority": 1,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "240487",
+        "priority": 2,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "56403",
+        "priority": 1,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "74166",
+        "priority": 2,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "8247",
+        "priority": 2,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5181" },
+    "count": 1,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T10:59:14.557Z",
+    "userSignups": [
+      {
+        "username": "57295",
+        "priority": 0,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5627" },
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T09:35:59.603Z",
+    "userSignups": [
+      {
+        "username": "538587",
+        "priority": 2,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "387713",
+        "priority": 2,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "546042",
+        "priority": 1,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "945716",
+        "priority": 1,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "296478",
+        "priority": 0,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5451" },
+    "count": 3,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T10:43:27.985Z",
+    "userSignups": [
+      {
+        "username": "492558",
+        "priority": 1,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "534367",
+        "priority": 2,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "966987",
+        "priority": 1,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5531" },
+    "count": 6,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T10:43:56.477Z",
+    "userSignups": [
+      {
+        "username": "963935",
+        "priority": 1,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "967676",
+        "priority": 3,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "566861",
+        "priority": 2,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "187272",
+        "priority": 3,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "683986",
+        "priority": 2,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "710972",
+        "priority": 0,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5546" },
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T09:00:17.3Z",
+    "userSignups": [
+      {
+        "username": "910499",
+        "priority": 1,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "280564",
+        "priority": 1,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "413929",
+        "priority": 1,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "746713",
+        "priority": 1,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "800993",
+        "priority": 1,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5114" },
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T10:27:38.438Z",
+    "userSignups": [
+      {
+        "username": "657703",
+        "priority": 1,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "750568",
+        "priority": 1,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "927240",
+        "priority": 1,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "130302",
+        "priority": 0,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5561" },
+    "count": 0,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-29T20:00:27.191Z",
+    "userSignups": []
+  },
+  {
+    "game": { "gameId": "p5553" },
+    "count": 0,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-29T20:00:27.191Z",
+    "userSignups": []
+  },
+  {
+    "game": { "gameId": "p5045" },
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T10:00:17.095Z",
+    "userSignups": [
+      {
+        "username": "178863",
+        "priority": 1,
+        "time": "2022-07-30T12:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "865068",
+        "priority": 1,
+        "time": "2022-07-30T12:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "722229",
+        "priority": 1,
+        "time": "2022-07-30T12:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "418003",
+        "priority": 1,
+        "time": "2022-07-30T12:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "359355",
+        "priority": 1,
+        "time": "2022-07-30T12:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5607" },
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T10:00:17.096Z",
+    "userSignups": [
+      {
+        "username": "625220",
+        "priority": 1,
+        "time": "2022-07-30T12:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "285092",
+        "priority": 1,
+        "time": "2022-07-30T12:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "718802",
+        "priority": 1,
+        "time": "2022-07-30T12:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "998133",
+        "priority": 1,
+        "time": "2022-07-30T12:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5634" },
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T10:17:14.156Z",
+    "userSignups": [
+      {
+        "username": "685501",
+        "priority": 1,
+        "time": "2022-07-30T12:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "342053",
+        "priority": 1,
+        "time": "2022-07-30T12:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "703072",
+        "priority": 1,
+        "time": "2022-07-30T12:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "359328",
+        "priority": 1,
+        "time": "2022-07-30T12:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "212089",
+        "priority": 0,
+        "time": "2022-07-30T12:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5631" },
+    "count": 8,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T10:00:17.102Z",
+    "userSignups": [
+      {
+        "username": "378051",
+        "priority": 1,
+        "time": "2022-07-30T12:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "778761",
+        "priority": 1,
+        "time": "2022-07-30T12:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "730166",
+        "priority": 1,
+        "time": "2022-07-30T12:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "742603",
+        "priority": 3,
+        "time": "2022-07-30T12:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "686672",
+        "priority": 1,
+        "time": "2022-07-30T12:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "728319",
+        "priority": 1,
+        "time": "2022-07-30T12:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "367107",
+        "priority": 1,
+        "time": "2022-07-30T12:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "823624",
+        "priority": 1,
+        "time": "2022-07-30T12:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5267" },
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T11:41:31.739Z",
+    "userSignups": [
+      {
+        "username": "935173",
+        "priority": 1,
+        "time": "2022-07-30T13:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "719225",
+        "priority": 1,
+        "time": "2022-07-30T13:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "678710",
+        "priority": 1,
+        "time": "2022-07-30T13:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "427083",
+        "priority": 0,
+        "time": "2022-07-30T13:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "637270",
+        "priority": 0,
+        "time": "2022-07-30T13:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p4957" },
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T11:54:04.909Z",
+    "userSignups": [
+      {
+        "username": "955006",
+        "priority": 1,
+        "time": "2022-07-30T12:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "545455",
+        "priority": 1,
+        "time": "2022-07-30T12:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "158394",
+        "priority": 1,
+        "time": "2022-07-30T12:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "397388",
+        "priority": 2,
+        "time": "2022-07-30T12:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "623335",
+        "priority": 0,
+        "time": "2022-07-30T12:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5541" },
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T11:00:22.749Z",
+    "userSignups": [
+      {
+        "username": "852449",
+        "priority": 1,
+        "time": "2022-07-30T13:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "376038",
+        "priority": 1,
+        "time": "2022-07-30T13:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "327105",
+        "priority": 1,
+        "time": "2022-07-30T13:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "280564",
+        "priority": 1,
+        "time": "2022-07-30T13:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "736117",
+        "priority": 1,
+        "time": "2022-07-30T13:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5566" },
+    "count": 6,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T12:43:42.903Z",
+    "userSignups": [
+      {
+        "username": "956939",
+        "priority": 1,
+        "time": "2022-07-30T13:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "275116",
+        "priority": 2,
+        "time": "2022-07-30T13:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "409207",
+        "priority": 1,
+        "time": "2022-07-30T13:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "148420",
+        "priority": 2,
+        "time": "2022-07-30T13:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "603235",
+        "priority": 0,
+        "time": "2022-07-30T13:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "60723",
+        "priority": 0,
+        "time": "2022-07-30T13:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5724" },
+    "count": 6,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T11:15:35.163Z",
+    "userSignups": [
+      {
+        "username": "504641",
+        "priority": 1,
+        "time": "2022-07-30T13:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "257154",
+        "priority": 2,
+        "time": "2022-07-30T13:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "554535",
+        "priority": 1,
+        "time": "2022-07-30T13:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "871150",
+        "priority": 1,
+        "time": "2022-07-30T13:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "734531",
+        "priority": 2,
+        "time": "2022-07-30T13:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "153567",
+        "priority": 0,
+        "time": "2022-07-30T13:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5600" },
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T11:00:22.758Z",
+    "userSignups": [
+      {
+        "username": "144564",
+        "priority": 1,
+        "time": "2022-07-30T13:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "28470",
+        "priority": 1,
+        "time": "2022-07-30T13:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "733279",
+        "priority": 1,
+        "time": "2022-07-30T13:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "791268",
+        "priority": 1,
+        "time": "2022-07-30T13:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "100671",
+        "priority": 1,
+        "time": "2022-07-30T13:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5554" },
+    "count": 0,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-29T20:00:27.191Z",
+    "userSignups": []
+  },
+  {
+    "game": { "gameId": "p4842" },
+    "count": 0,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-29T20:00:27.191Z",
+    "userSignups": []
+  },
+  {
+    "game": { "gameId": "p5180" },
+    "count": 0,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-29T20:00:27.191Z",
+    "userSignups": []
+  },
+  {
+    "game": { "gameId": "p5508" },
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T12:51:20.822Z",
+    "userSignups": [
+      {
+        "username": "901890",
+        "priority": 1,
+        "time": "2022-07-30T14:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "528877",
+        "priority": 1,
+        "time": "2022-07-30T14:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "10936",
+        "priority": 1,
+        "time": "2022-07-30T14:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "250691",
+        "priority": 0,
+        "time": "2022-07-30T14:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "676071",
+        "priority": 0,
+        "time": "2022-07-30T14:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5063" },
+    "count": 6,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T12:00:23.59Z",
+    "userSignups": [
+      {
+        "username": "508232",
+        "priority": 1,
+        "time": "2022-07-30T14:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "291591",
+        "priority": 1,
+        "time": "2022-07-30T14:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "249975",
+        "priority": 1,
+        "time": "2022-07-30T14:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "834484",
+        "priority": 2,
+        "time": "2022-07-30T14:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "268489",
+        "priority": 1,
+        "time": "2022-07-30T14:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "435371",
+        "priority": 1,
+        "time": "2022-07-30T14:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5012" },
+    "count": 0,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-29T20:00:27.191Z",
+    "userSignups": []
+  },
+  {
+    "game": { "gameId": "p5667" },
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T14:28:20.861Z",
+    "userSignups": [
+      {
+        "username": "784540",
+        "priority": 1,
+        "time": "2022-07-30T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "269997",
+        "priority": 3,
+        "time": "2022-07-30T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "876041",
+        "priority": 2,
+        "time": "2022-07-30T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "967676",
+        "priority": 0,
+        "time": "2022-07-30T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "796541",
+        "priority": 0,
+        "time": "2022-07-30T15:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5473" },
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T13:00:28.362Z",
+    "userSignups": [
+      {
+        "username": "553492",
+        "priority": 1,
+        "time": "2022-07-30T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "418708",
+        "priority": 1,
+        "time": "2022-07-30T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "558898",
+        "priority": 1,
+        "time": "2022-07-30T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "532065",
+        "priority": 1,
+        "time": "2022-07-30T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "386602",
+        "priority": 1,
+        "time": "2022-07-30T15:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5599" },
+    "count": 6,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-30T13:15:13.582Z",
+    "userSignups": [
+      {
+        "username": "254323",
+        "priority": 1,
+        "time": "2022-07-30T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "666413",
+        "priority": 2,
+        "time": "2022-07-30T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "948741",
+        "priority": 1,
+        "time": "2022-07-30T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "397514",
+        "priority": 1,
+        "time": "2022-07-30T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "867228",
+        "priority": 1,
+        "time": "2022-07-30T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "412161",
+        "priority": 0,
+        "time": "2022-07-30T15:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5615" },
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-30T14:00:28.321Z",
+    "userSignups": [
+      {
+        "username": "587991",
+        "priority": 1,
+        "time": "2022-07-30T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "296478",
+        "priority": 1,
+        "time": "2022-07-30T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "617129",
+        "priority": 1,
+        "time": "2022-07-30T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "697668",
+        "priority": 1,
+        "time": "2022-07-30T16:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5752" },
+    "count": 6,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-30T13:15:21.062Z",
+    "userSignups": [
+      {
+        "username": "314827",
+        "priority": 1,
+        "time": "2022-07-30T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "790596",
+        "priority": 2,
+        "time": "2022-07-30T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "605552",
+        "priority": 1,
+        "time": "2022-07-30T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "708075",
+        "priority": 1,
+        "time": "2022-07-30T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "824626",
+        "priority": 1,
+        "time": "2022-07-30T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "514167",
+        "priority": 0,
+        "time": "2022-07-30T15:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5346" },
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-30T14:00:28.3Z",
+    "userSignups": [
+      {
+        "username": "614861",
+        "priority": 2,
+        "time": "2022-07-30T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "912466",
+        "priority": 2,
+        "time": "2022-07-30T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "805062",
+        "priority": 2,
+        "time": "2022-07-30T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "767329",
+        "priority": 1,
+        "time": "2022-07-30T16:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5604" },
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-30T13:00:28.398Z",
+    "userSignups": [
+      {
+        "username": "709028",
+        "priority": 1,
+        "time": "2022-07-30T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "418614",
+        "priority": 1,
+        "time": "2022-07-30T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "62531",
+        "priority": 1,
+        "time": "2022-07-30T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "471151",
+        "priority": 3,
+        "time": "2022-07-30T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "740078",
+        "priority": 1,
+        "time": "2022-07-30T15:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5417" },
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-30T13:00:28.393Z",
+    "userSignups": [
+      {
+        "username": "474050",
+        "priority": 1,
+        "time": "2022-07-30T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "565456",
+        "priority": 1,
+        "time": "2022-07-30T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "862778",
+        "priority": 3,
+        "time": "2022-07-30T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "104737",
+        "priority": 3,
+        "time": "2022-07-30T15:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5610" },
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-30T14:15:10.124Z",
+    "userSignups": [
+      {
+        "username": "96157",
+        "priority": 1,
+        "time": "2022-07-30T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "74166",
+        "priority": 1,
+        "time": "2022-07-30T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "856643",
+        "priority": 1,
+        "time": "2022-07-30T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "448964",
+        "priority": 1,
+        "time": "2022-07-30T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "754609",
+        "priority": 0,
+        "time": "2022-07-30T16:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5556" },
+    "count": 0,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-29T20:00:27.192Z",
+    "userSignups": []
+  },
+  {
+    "game": { "gameId": "p5533" },
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-30T14:00:28.311Z",
+    "userSignups": [
+      {
+        "username": "378051",
+        "priority": 1,
+        "time": "2022-07-30T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "484215",
+        "priority": 1,
+        "time": "2022-07-30T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "200958",
+        "priority": 1,
+        "time": "2022-07-30T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "96256",
+        "priority": 2,
+        "time": "2022-07-30T16:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5760" },
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-30T13:00:28.388Z",
+    "userSignups": [
+      {
+        "username": "999471",
+        "priority": 2,
+        "time": "2022-07-30T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "958122",
+        "priority": 2,
+        "time": "2022-07-30T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "955735",
+        "priority": 2,
+        "time": "2022-07-30T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "622536",
+        "priority": 1,
+        "time": "2022-07-30T15:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5345" },
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-30T14:00:28.317Z",
+    "userSignups": [
+      {
+        "username": "622536",
+        "priority": 1,
+        "time": "2022-07-30T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "149023",
+        "priority": 1,
+        "time": "2022-07-30T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "142855",
+        "priority": 1,
+        "time": "2022-07-30T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "292529",
+        "priority": 1,
+        "time": "2022-07-30T16:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5348" },
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-30T15:49:07.747Z",
+    "userSignups": [
+      {
+        "username": "511576",
+        "priority": 1,
+        "time": "2022-07-30T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "349986",
+        "priority": 2,
+        "time": "2022-07-30T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "749535",
+        "priority": 2,
+        "time": "2022-07-30T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "27542",
+        "priority": 2,
+        "time": "2022-07-30T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "398380",
+        "priority": 2,
+        "time": "2022-07-30T16:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5085" },
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-30T13:00:28.38Z",
+    "userSignups": [
+      {
+        "username": "258303",
+        "priority": 1,
+        "time": "2022-07-30T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "281529",
+        "priority": 1,
+        "time": "2022-07-30T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "645740",
+        "priority": 2,
+        "time": "2022-07-30T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "359312",
+        "priority": 1,
+        "time": "2022-07-30T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "654388",
+        "priority": 1,
+        "time": "2022-07-30T15:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5347" },
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-30T14:00:28.31Z",
+    "userSignups": [
+      {
+        "username": "815795",
+        "priority": 1,
+        "time": "2022-07-30T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "315669",
+        "priority": 1,
+        "time": "2022-07-30T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "703072",
+        "priority": 3,
+        "time": "2022-07-30T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "506597",
+        "priority": 2,
+        "time": "2022-07-30T16:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5559" },
+    "count": 6,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-30T16:19:28.667Z",
+    "userSignups": [
+      {
+        "username": "445685",
+        "priority": 1,
+        "time": "2022-07-30T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "107034",
+        "priority": 2,
+        "time": "2022-07-30T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "660728",
+        "priority": 2,
+        "time": "2022-07-30T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "829762",
+        "priority": 1,
+        "time": "2022-07-30T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "828014",
+        "priority": 2,
+        "time": "2022-07-30T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "143667",
+        "priority": 0,
+        "time": "2022-07-30T17:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5590" },
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-30T15:39:14.619Z",
+    "userSignups": [
+      {
+        "username": "769301",
+        "priority": 1,
+        "time": "2022-07-30T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "403493",
+        "priority": 1,
+        "time": "2022-07-30T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "546042",
+        "priority": 2,
+        "time": "2022-07-30T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "927240",
+        "priority": 3,
+        "time": "2022-07-30T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "492558",
+        "priority": 0,
+        "time": "2022-07-30T17:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5641" },
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-30T15:00:29.832Z",
+    "userSignups": [
+      {
+        "username": "648054",
+        "priority": 1,
+        "time": "2022-07-30T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "623335",
+        "priority": 2,
+        "time": "2022-07-30T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "538587",
+        "priority": 3,
+        "time": "2022-07-30T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "378826",
+        "priority": 1,
+        "time": "2022-07-30T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "244660",
+        "priority": 1,
+        "time": "2022-07-30T17:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5476" },
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-30T15:58:53.246Z",
+    "userSignups": [
+      {
+        "username": "145374",
+        "priority": 1,
+        "time": "2022-07-30T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "387947",
+        "priority": 3,
+        "time": "2022-07-30T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "625706",
+        "priority": 1,
+        "time": "2022-07-30T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "715305",
+        "priority": 1,
+        "time": "2022-07-30T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "367107",
+        "priority": 0,
+        "time": "2022-07-30T17:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5460" },
+    "count": 6,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-30T16:29:05.216Z",
+    "userSignups": [
+      {
+        "username": "15204",
+        "priority": 1,
+        "time": "2022-07-30T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "516337",
+        "priority": 1,
+        "time": "2022-07-30T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "301835",
+        "priority": 1,
+        "time": "2022-07-30T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "887838",
+        "priority": 1,
+        "time": "2022-07-30T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "272917",
+        "priority": 0,
+        "time": "2022-07-30T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "345148",
+        "priority": 0,
+        "time": "2022-07-30T17:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5193" },
+    "count": 3,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-30T16:53:30.075Z",
+    "userSignups": [
+      {
+        "username": "345030",
+        "priority": 1,
+        "time": "2022-07-30T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "714196",
+        "priority": 1,
+        "time": "2022-07-30T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "797746",
+        "priority": 2,
+        "time": "2022-07-30T17:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5568" },
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-30T16:47:02.941Z",
+    "userSignups": [
+      {
+        "username": "703904",
+        "priority": 1,
+        "time": "2022-07-30T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "654388",
+        "priority": 1,
+        "time": "2022-07-30T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "266770",
+        "priority": 1,
+        "time": "2022-07-30T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "615047",
+        "priority": 1,
+        "time": "2022-07-30T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "550116",
+        "priority": 0,
+        "time": "2022-07-30T17:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5623" },
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-30T16:38:07.922Z",
+    "userSignups": [
+      {
+        "username": "895701",
+        "priority": 1,
+        "time": "2022-07-30T18:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "344159",
+        "priority": 1,
+        "time": "2022-07-30T18:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "753488",
+        "priority": 1,
+        "time": "2022-07-30T18:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "606267",
+        "priority": 3,
+        "time": "2022-07-30T18:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "397388",
+        "priority": 0,
+        "time": "2022-07-30T18:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5621" },
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-30T17:22:28.213Z",
+    "userSignups": [
+      {
+        "username": "428045",
+        "priority": 1,
+        "time": "2022-07-30T18:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "868904",
+        "priority": 0,
+        "time": "2022-07-30T18:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "444909",
+        "priority": 0,
+        "time": "2022-07-30T18:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "18808",
+        "priority": 0,
+        "time": "2022-07-30T18:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "62531",
+        "priority": 0,
+        "time": "2022-07-30T18:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5721" },
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-30T16:18:09.518Z",
+    "userSignups": [
+      {
+        "username": "424481",
+        "priority": 1,
+        "time": "2022-07-30T18:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "264386",
+        "priority": 1,
+        "time": "2022-07-30T18:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "363694",
+        "priority": 1,
+        "time": "2022-07-30T18:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "804595",
+        "priority": 1,
+        "time": "2022-07-30T18:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "810395",
+        "priority": 0,
+        "time": "2022-07-30T18:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5397" },
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-30T17:00:29.331Z",
+    "userSignups": [
+      {
+        "username": "150210",
+        "priority": 1,
+        "time": "2022-07-30T19:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "514167",
+        "priority": 1,
+        "time": "2022-07-30T19:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "600173",
+        "priority": 1,
+        "time": "2022-07-30T19:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "154905",
+        "priority": 1,
+        "time": "2022-07-30T19:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5537" },
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-30T17:52:42.718Z",
+    "userSignups": [
+      {
+        "username": "817113",
+        "priority": 1,
+        "time": "2022-07-30T18:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "921613",
+        "priority": 1,
+        "time": "2022-07-30T18:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "99286",
+        "priority": 1,
+        "time": "2022-07-30T18:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "762536",
+        "priority": 2,
+        "time": "2022-07-30T18:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "422913",
+        "priority": 0,
+        "time": "2022-07-30T18:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5471" },
+    "count": 2,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-30T20:01:35.771Z",
+    "userSignups": [
+      {
+        "username": "998990",
+        "priority": 1,
+        "time": "2022-07-30T21:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "440685",
+        "priority": 1,
+        "time": "2022-07-30T21:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "523785",
+        "priority": 1,
+        "time": "2022-07-30T21:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "699450",
+        "priority": 1,
+        "time": "2022-07-30T21:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "701999",
+        "priority": 3,
+        "time": "2022-07-30T21:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "126270",
+        "priority": 1,
+        "time": "2022-07-30T21:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "113629",
+        "priority": 1,
+        "time": "2022-07-30T21:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "979422",
+        "priority": 0,
+        "time": "2022-07-30T21:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5648" },
+    "count": 0,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-29T20:00:27.192Z",
+    "userSignups": []
+  },
+  {
+    "game": { "gameId": "p5650" },
+    "count": 0,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-29T20:00:27.192Z",
+    "userSignups": []
+  },
+  {
+    "game": { "gameId": "p5735" },
+    "count": 0,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-29T20:00:27.192Z",
+    "userSignups": []
+  },
+  {
+    "game": { "gameId": "p5087" },
+    "count": 0,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-29T20:00:27.192Z",
+    "userSignups": []
+  },
+  {
+    "game": { "gameId": "p5661" },
+    "count": 0,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-29T20:00:27.192Z",
+    "userSignups": []
+  },
+  {
+    "game": { "gameId": "p5557" },
+    "count": 0,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-29T20:00:27.192Z",
+    "userSignups": []
+  },
+  {
+    "game": { "gameId": "p5625" },
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-31T05:00:38.048Z",
+    "userSignups": [
+      {
+        "username": "212089",
+        "priority": 2,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "259756",
+        "priority": 1,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "866260",
+        "priority": 3,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "279332",
+        "priority": 3,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "745132",
+        "priority": 3,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5333" },
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-31T06:31:33.62Z",
+    "userSignups": [
+      {
+        "username": "152787",
+        "priority": 1,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "683986",
+        "priority": 1,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "314827",
+        "priority": 0,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "373305",
+        "priority": 0,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5597" },
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-31T05:00:38.046Z",
+    "userSignups": [
+      {
+        "username": "342053",
+        "priority": 3,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "794220",
+        "priority": 2,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "800077",
+        "priority": 2,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "859838",
+        "priority": 2,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "16085",
+        "priority": 1,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p4955" },
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-31T05:00:38.044Z",
+    "userSignups": [
+      {
+        "username": "937690",
+        "priority": 1,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "471151",
+        "priority": 2,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "754989",
+        "priority": 3,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "460267",
+        "priority": 1,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "62531",
+        "priority": 3,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5619" },
+    "count": 0,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-31T06:26:01.532Z",
+    "userSignups": []
+  },
+  {
+    "game": { "gameId": "p5679" },
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-31T05:15:10.725Z",
+    "userSignups": [
+      {
+        "username": "952272",
+        "priority": 1,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "793889",
+        "priority": 1,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "69825",
+        "priority": 2,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "505217",
+        "priority": 1,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "785920",
+        "priority": 0,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5413" },
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-31T05:00:38.037Z",
+    "userSignups": [
+      {
+        "username": "612168",
+        "priority": 3,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "353065",
+        "priority": 3,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "240786",
+        "priority": 3,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "660141",
+        "priority": 1,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5669" },
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-31T06:15:48.461Z",
+    "userSignups": [
+      {
+        "username": "674811",
+        "priority": 3,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "847717",
+        "priority": 3,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "203925",
+        "priority": 3,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "843692",
+        "priority": 3,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "278784",
+        "priority": 0,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5676" },
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-31T05:18:55.417Z",
+    "userSignups": [
+      {
+        "username": "504641",
+        "priority": 2,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "268489",
+        "priority": 1,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "81142",
+        "priority": 3,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "967676",
+        "priority": 0,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "692706",
+        "priority": 0,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5115" },
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-31T05:15:04.644Z",
+    "userSignups": [
+      {
+        "username": "538587",
+        "priority": 3,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "814392",
+        "priority": 2,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "313323",
+        "priority": 1,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "333697",
+        "priority": 0,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5751" },
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-31T05:00:38.039Z",
+    "userSignups": [
+      {
+        "username": "302826",
+        "priority": 1,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "895701",
+        "priority": 1,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "231112",
+        "priority": 3,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "266798",
+        "priority": 2,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "841756",
+        "priority": 2,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5636" },
+    "count": 6,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-31T05:00:38.051Z",
+    "userSignups": [
+      {
+        "username": "377113",
+        "priority": 1,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "921438",
+        "priority": 1,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "401713",
+        "priority": 2,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "398530",
+        "priority": 1,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "855524",
+        "priority": 2,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "790596",
+        "priority": 1,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5349" },
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-31T05:15:18.615Z",
+    "userSignups": [
+      {
+        "username": "598995",
+        "priority": 1,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "762024",
+        "priority": 1,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "504001",
+        "priority": 1,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "829140",
+        "priority": 1,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "866950",
+        "priority": 0,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5539" },
+    "count": 0,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-29T20:00:27.192Z",
+    "userSignups": []
+  },
+  {
+    "game": { "gameId": "p5759" },
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-31T05:00:38.009Z",
+    "userSignups": [
+      {
+        "username": "804595",
+        "priority": 1,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "801673",
+        "priority": 1,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "531481",
+        "priority": 1,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "292529",
+        "priority": 1,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5632" },
+    "count": 7,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-31T07:22:04.26Z",
+    "userSignups": [
+      {
+        "username": "221846",
+        "priority": 1,
+        "time": "2022-07-31T08:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "497931",
+        "priority": 1,
+        "time": "2022-07-31T08:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "822363",
+        "priority": 1,
+        "time": "2022-07-31T08:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "627805",
+        "priority": 0,
+        "time": "2022-07-31T08:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "975350",
+        "priority": 0,
+        "time": "2022-07-31T08:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "355135",
+        "priority": 0,
+        "time": "2022-07-31T08:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "143667",
+        "priority": 0,
+        "time": "2022-07-31T08:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5461" },
+    "count": 1,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-31T06:15:40.796Z",
+    "userSignups": [
+      {
+        "username": "710972",
+        "priority": 0,
+        "time": "2022-07-31T08:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5596" },
+    "count": 6,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-31T07:04:34.806Z",
+    "userSignups": [
+      {
+        "username": "349986",
+        "priority": 1,
+        "time": "2022-07-31T08:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "27542",
+        "priority": 1,
+        "time": "2022-07-31T08:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "442271",
+        "priority": 1,
+        "time": "2022-07-31T08:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "398380",
+        "priority": 1,
+        "time": "2022-07-31T08:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "749535",
+        "priority": 1,
+        "time": "2022-07-31T08:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "553492",
+        "priority": 0,
+        "time": "2022-07-31T08:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5046" },
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-31T07:53:30.387Z",
+    "userSignups": [
+      {
+        "username": "746713",
+        "priority": 1,
+        "time": "2022-07-31T08:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "380748",
+        "priority": 3,
+        "time": "2022-07-31T08:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "722229",
+        "priority": 0,
+        "time": "2022-07-31T08:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "178863",
+        "priority": 0,
+        "time": "2022-07-31T08:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "616310",
+        "priority": 0,
+        "time": "2022-07-31T08:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5170" },
+    "count": 0,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-29T20:00:27.192Z",
+    "userSignups": []
+  },
+  {
+    "game": { "gameId": "p5470" },
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T05:00:15.724Z",
+    "userSignups": [
+      {
+        "username": "118014",
+        "priority": 3,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "934996",
+        "priority": 3,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "123693",
+        "priority": 1,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "54963",
+        "priority": 1,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5765" },
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-31T07:08:56.912Z",
+    "userSignups": [
+      {
+        "username": "543707",
+        "priority": 0,
+        "time": "2022-07-31T08:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "327105",
+        "priority": 0,
+        "time": "2022-07-31T08:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "793503",
+        "priority": 0,
+        "time": "2022-07-31T08:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "530101",
+        "priority": 0,
+        "time": "2022-07-31T08:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5720" },
+    "count": 7,
+    "createdAt": "2022-07-29T20:00:27.193Z",
+    "updatedAt": "2022-07-31T08:18:16.079Z",
+    "userSignups": [
+      {
+        "username": "264185",
+        "priority": 0,
+        "time": "2022-07-31T08:30:00Z",
+        "message": ""
+      },
+      {
+        "username": "543707",
+        "priority": 0,
+        "time": "2022-07-31T08:30:00Z",
+        "message": ""
+      },
+      {
+        "username": "87605",
+        "priority": 0,
+        "time": "2022-07-31T08:30:00Z",
+        "message": ""
+      },
+      {
+        "username": "255826",
+        "priority": 0,
+        "time": "2022-07-31T08:30:00Z",
+        "message": ""
+      },
+      {
+        "username": "711547",
+        "priority": 0,
+        "time": "2022-07-31T08:30:00Z",
+        "message": ""
+      },
+      {
+        "username": "902784",
+        "priority": 0,
+        "time": "2022-07-31T08:30:00Z",
+        "message": ""
+      },
+      {
+        "username": "567437",
+        "priority": 0,
+        "time": "2022-07-31T08:30:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5106" },
+    "count": 6,
+    "createdAt": "2022-07-29T20:00:27.193Z",
+    "updatedAt": "2022-07-30T13:58:32.054Z",
+    "userSignups": [
+      {
+        "username": "53693",
+        "priority": 0,
+        "time": "2022-07-31T08:30:00Z",
+        "message": ""
+      },
+      {
+        "username": "219217",
+        "priority": 0,
+        "time": "2022-07-31T08:30:00Z",
+        "message": ""
+      },
+      {
+        "username": "584019",
+        "priority": 0,
+        "time": "2022-07-31T08:30:00Z",
+        "message": ""
+      },
+      {
+        "username": "357403",
+        "priority": 0,
+        "time": "2022-07-31T08:30:00Z",
+        "message": ""
+      },
+      {
+        "username": "40622",
+        "priority": 0,
+        "time": "2022-07-31T08:30:00Z",
+        "message": ""
+      },
+      {
+        "username": "683547",
+        "priority": 0,
+        "time": "2022-07-31T08:30:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5534" },
+    "count": 8,
+    "createdAt": "2022-07-29T20:00:27.193Z",
+    "updatedAt": "2022-07-31T07:25:24.17Z",
+    "userSignups": [
+      {
+        "username": "968308",
+        "priority": 1,
+        "time": "2022-07-31T09:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "699450",
+        "priority": 1,
+        "time": "2022-07-31T09:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "716711",
+        "priority": 2,
+        "time": "2022-07-31T09:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "396128",
+        "priority": 2,
+        "time": "2022-07-31T09:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "600831",
+        "priority": 3,
+        "time": "2022-07-31T09:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "801673",
+        "priority": 1,
+        "time": "2022-07-31T09:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "345030",
+        "priority": 3,
+        "time": "2022-07-31T09:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "944179",
+        "priority": 3,
+        "time": "2022-07-31T09:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5398" },
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.191Z",
+    "updatedAt": "2022-07-30T13:00:28.387Z",
+    "userSignups": [
+      {
+        "username": "45210",
+        "priority": 3,
+        "time": "2022-07-30T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "710972",
+        "priority": 2,
+        "time": "2022-07-30T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "160038",
+        "priority": 1,
+        "time": "2022-07-30T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "774965",
+        "priority": 1,
+        "time": "2022-07-30T15:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5432" },
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.193Z",
+    "updatedAt": "2022-07-31T07:00:33.266Z",
+    "userSignups": [
+      {
+        "username": "683833",
+        "priority": 1,
+        "time": "2022-07-31T09:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "505217",
+        "priority": 1,
+        "time": "2022-07-31T09:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "280670",
+        "priority": 1,
+        "time": "2022-07-31T09:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "676875",
+        "priority": 1,
+        "time": "2022-07-31T09:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "110613",
+        "priority": 1,
+        "time": "2022-07-31T09:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5589" },
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.193Z",
+    "updatedAt": "2022-07-31T07:00:33.268Z",
+    "userSignups": [
+      {
+        "username": "606267",
+        "priority": 1,
+        "time": "2022-07-31T09:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "462664",
+        "priority": 1,
+        "time": "2022-07-31T09:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "708333",
+        "priority": 3,
+        "time": "2022-07-31T09:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "641320",
+        "priority": 3,
+        "time": "2022-07-31T09:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "258303",
+        "priority": 1,
+        "time": "2022-07-31T09:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5484" },
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.193Z",
+    "updatedAt": "2022-07-31T07:00:33.267Z",
+    "userSignups": [
+      {
+        "username": "18808",
+        "priority": 1,
+        "time": "2022-07-31T09:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "785920",
+        "priority": 1,
+        "time": "2022-07-31T09:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "275116",
+        "priority": 1,
+        "time": "2022-07-31T09:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "429412",
+        "priority": 1,
+        "time": "2022-07-31T09:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "242785",
+        "priority": 1,
+        "time": "2022-07-31T09:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5545" },
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.193Z",
+    "updatedAt": "2022-07-31T07:00:33.245Z",
+    "userSignups": [
+      {
+        "username": "418445",
+        "priority": 1,
+        "time": "2022-07-31T09:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "543710",
+        "priority": 1,
+        "time": "2022-07-31T09:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "413929",
+        "priority": 1,
+        "time": "2022-07-31T09:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "637270",
+        "priority": 1,
+        "time": "2022-07-31T09:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "150210",
+        "priority": 1,
+        "time": "2022-07-31T09:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5351" },
+    "count": 0,
+    "createdAt": "2022-07-29T20:00:27.193Z",
+    "updatedAt": "2022-07-31T09:53:43.164Z",
+    "userSignups": [
+      {
+        "username": "794300",
+        "priority": 1,
+        "time": "2022-07-31T10:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5350" },
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.193Z",
+    "updatedAt": "2022-07-31T07:15:45.052Z",
+    "userSignups": [
+      {
+        "username": "361096",
+        "priority": 1,
+        "time": "2022-07-31T09:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "614861",
+        "priority": 3,
+        "time": "2022-07-31T09:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "567606",
+        "priority": 1,
+        "time": "2022-07-31T09:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "20339",
+        "priority": 0,
+        "time": "2022-07-31T09:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5758" },
+    "count": 0,
+    "createdAt": "2022-07-29T20:00:27.193Z",
+    "updatedAt": "2022-07-29T20:00:27.193Z",
+    "userSignups": []
+  },
+  {
+    "game": { "gameId": "p5543" },
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.193Z",
+    "updatedAt": "2022-07-31T07:00:33.264Z",
+    "userSignups": [
+      {
+        "username": "666660",
+        "priority": 1,
+        "time": "2022-07-31T09:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "587991",
+        "priority": 2,
+        "time": "2022-07-31T09:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "839734",
+        "priority": 2,
+        "time": "2022-07-31T09:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "649807",
+        "priority": 1,
+        "time": "2022-07-31T09:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "409346",
+        "priority": 1,
+        "time": "2022-07-31T09:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5616" },
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.193Z",
+    "updatedAt": "2022-07-31T08:00:34.588Z",
+    "userSignups": [
+      {
+        "username": "425468",
+        "priority": 2,
+        "time": "2022-07-31T10:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "60723",
+        "priority": 3,
+        "time": "2022-07-31T10:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "817113",
+        "priority": 1,
+        "time": "2022-07-31T10:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "780591",
+        "priority": 1,
+        "time": "2022-07-31T10:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5722" },
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.193Z",
+    "updatedAt": "2022-07-31T08:00:34.581Z",
+    "userSignups": [
+      {
+        "username": "589801",
+        "priority": 1,
+        "time": "2022-07-31T10:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "902450",
+        "priority": 1,
+        "time": "2022-07-31T10:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "584809",
+        "priority": 2,
+        "time": "2022-07-31T10:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "126270",
+        "priority": 1,
+        "time": "2022-07-31T10:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "972205",
+        "priority": 1,
+        "time": "2022-07-31T10:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5191" },
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.193Z",
+    "updatedAt": "2022-07-31T09:45:53.423Z",
+    "userSignups": [
+      {
+        "username": "754211",
+        "priority": 2,
+        "time": "2022-07-31T10:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "753488",
+        "priority": 1,
+        "time": "2022-07-31T10:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "991023",
+        "priority": 3,
+        "time": "2022-07-31T10:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "418708",
+        "priority": 0,
+        "time": "2022-07-31T10:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "543707",
+        "priority": 0,
+        "time": "2022-07-31T10:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5558" },
+    "count": 0,
+    "createdAt": "2022-07-29T20:00:27.193Z",
+    "updatedAt": "2022-07-29T20:00:27.193Z",
+    "userSignups": []
+  },
+  {
+    "game": { "gameId": "p5726" },
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.193Z",
+    "updatedAt": "2022-07-31T08:00:34.565Z",
+    "userSignups": [
+      {
+        "username": "908989",
+        "priority": 1,
+        "time": "2022-07-31T10:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "269997",
+        "priority": 1,
+        "time": "2022-07-31T10:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "387947",
+        "priority": 1,
+        "time": "2022-07-31T10:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "362690",
+        "priority": 1,
+        "time": "2022-07-31T10:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "756686",
+        "priority": 3,
+        "time": "2022-07-31T10:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5581" },
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.193Z",
+    "updatedAt": "2022-07-31T09:04:34.25Z",
+    "userSignups": [
+      {
+        "username": "181031",
+        "priority": 1,
+        "time": "2022-07-31T10:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "740078",
+        "priority": 1,
+        "time": "2022-07-31T10:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "694616",
+        "priority": 1,
+        "time": "2022-07-31T10:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "310202",
+        "priority": 0,
+        "time": "2022-07-31T10:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5658" },
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.193Z",
+    "updatedAt": "2022-07-31T08:00:34.595Z",
+    "userSignups": [
+      {
+        "username": "566861",
+        "priority": 1,
+        "time": "2022-07-31T10:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "578571",
+        "priority": 1,
+        "time": "2022-07-31T10:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "397388",
+        "priority": 1,
+        "time": "2022-07-31T10:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "113826",
+        "priority": 1,
+        "time": "2022-07-31T10:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "815795",
+        "priority": 1,
+        "time": "2022-07-31T10:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5663" },
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.193Z",
+    "updatedAt": "2022-07-31T05:00:38.047Z",
+    "userSignups": [
+      {
+        "username": "914746",
+        "priority": 1,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "492558",
+        "priority": 2,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "64159",
+        "priority": 2,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "848435",
+        "priority": 1,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "144564",
+        "priority": 2,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5540" },
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.193Z",
+    "updatedAt": "2022-07-31T05:00:38.052Z",
+    "userSignups": [
+      {
+        "username": "872623",
+        "priority": 2,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "728319",
+        "priority": 2,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "730166",
+        "priority": 2,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "364796",
+        "priority": 2,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "715305",
+        "priority": 2,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5594" },
+    "count": 16,
+    "createdAt": "2022-07-29T20:00:27.193Z",
+    "updatedAt": "2022-07-30T15:57:07.942Z",
+    "userSignups": [
+      {
+        "username": "475577",
+        "priority": 0,
+        "time": "2022-07-30T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "834043",
+        "priority": 0,
+        "time": "2022-07-30T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "53693",
+        "priority": 0,
+        "time": "2022-07-30T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "632831",
+        "priority": 0,
+        "time": "2022-07-30T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "174218",
+        "priority": 0,
+        "time": "2022-07-30T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "793503",
+        "priority": 0,
+        "time": "2022-07-30T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "886926",
+        "priority": 0,
+        "time": "2022-07-30T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "528516",
+        "priority": 0,
+        "time": "2022-07-30T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "902784",
+        "priority": 0,
+        "time": "2022-07-30T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "60125",
+        "priority": 0,
+        "time": "2022-07-30T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "496409",
+        "priority": 0,
+        "time": "2022-07-30T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "683547",
+        "priority": 0,
+        "time": "2022-07-30T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "747542",
+        "priority": 0,
+        "time": "2022-07-30T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "717827",
+        "priority": 0,
+        "time": "2022-07-30T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "583140",
+        "priority": 0,
+        "time": "2022-07-30T16:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "171556",
+        "priority": 0,
+        "time": "2022-07-30T16:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5647" },
+    "count": 0,
+    "createdAt": "2022-07-29T20:00:27.193Z",
+    "updatedAt": "2022-07-29T20:00:27.193Z",
+    "userSignups": []
+  },
+  {
+    "game": { "gameId": "p5835" },
+    "count": 0,
+    "createdAt": "2022-07-29T20:00:27.193Z",
+    "updatedAt": "2022-07-29T20:00:27.193Z",
+    "userSignups": []
+  },
+  {
+    "game": { "gameId": "p5645" },
+    "count": 0,
+    "createdAt": "2022-07-29T20:00:27.193Z",
+    "updatedAt": "2022-07-29T20:00:27.193Z",
+    "userSignups": []
+  },
+  {
+    "game": { "gameId": "p5651" },
+    "count": 0,
+    "createdAt": "2022-07-29T20:00:27.193Z",
+    "updatedAt": "2022-07-29T20:00:27.193Z",
+    "userSignups": []
+  },
+  {
+    "game": { "gameId": "p5649" },
+    "count": 0,
+    "createdAt": "2022-07-29T20:00:27.193Z",
+    "updatedAt": "2022-07-29T20:00:27.193Z",
+    "userSignups": []
+  },
+  {
+    "game": { "gameId": "p5626" },
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.193Z",
+    "updatedAt": "2022-07-30T06:48:10.97Z",
+    "userSignups": [
+      {
+        "username": "968308",
+        "priority": 0,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "730166",
+        "priority": 0,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "728319",
+        "priority": 0,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "986650",
+        "priority": 0,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "517761",
+        "priority": 0,
+        "time": "2022-07-30T07:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5842" },
+    "count": 0,
+    "createdAt": "2022-07-29T20:00:27.193Z",
+    "updatedAt": "2022-07-29T20:00:27.193Z",
+    "userSignups": []
+  },
+  {
+    "game": { "gameId": "p5847" },
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.193Z",
+    "updatedAt": "2022-07-30T09:00:17.312Z",
+    "userSignups": [
+      {
+        "username": "397514",
+        "priority": 2,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "466457",
+        "priority": 1,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "433863",
+        "priority": 1,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "948741",
+        "priority": 2,
+        "time": "2022-07-30T11:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5848" },
+    "count": 2,
+    "createdAt": "2022-07-29T20:00:27.193Z",
+    "updatedAt": "2022-07-30T16:29:17.126Z",
+    "userSignups": [
+      {
+        "username": "745468",
+        "priority": 1,
+        "time": "2022-07-30T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "794220",
+        "priority": 1,
+        "time": "2022-07-30T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "234517",
+        "priority": 0,
+        "time": "2022-07-30T17:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "419021",
+        "priority": 0,
+        "time": "2022-07-30T17:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5851" },
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.193Z",
+    "updatedAt": "2022-07-30T17:34:48.535Z",
+    "userSignups": [
+      {
+        "username": "699450",
+        "priority": 1,
+        "time": "2022-07-30T19:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "342870",
+        "priority": 1,
+        "time": "2022-07-30T19:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "878043",
+        "priority": 1,
+        "time": "2022-07-30T19:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "678053",
+        "priority": 0,
+        "time": "2022-07-30T19:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5853" },
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.193Z",
+    "updatedAt": "2022-07-30T07:00:13.817Z",
+    "userSignups": [
+      {
+        "username": "913250",
+        "priority": 1,
+        "time": "2022-07-30T09:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "413981",
+        "priority": 1,
+        "time": "2022-07-30T09:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "221846",
+        "priority": 2,
+        "time": "2022-07-30T09:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "975270",
+        "priority": 1,
+        "time": "2022-07-30T09:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5852" },
+    "count": 4,
+    "createdAt": "2022-07-29T20:00:27.193Z",
+    "updatedAt": "2022-07-31T07:00:33.263Z",
+    "userSignups": [
+      {
+        "username": "21639",
+        "priority": 1,
+        "time": "2022-07-31T09:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "548268",
+        "priority": 1,
+        "time": "2022-07-31T09:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "701999",
+        "priority": 3,
+        "time": "2022-07-31T09:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "387713",
+        "priority": 1,
+        "time": "2022-07-31T09:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5725" },
+    "count": 0,
+    "createdAt": "2022-07-29T20:00:27.193Z",
+    "updatedAt": "2022-07-29T20:00:27.193Z",
+    "userSignups": []
+  },
+  {
+    "game": { "gameId": "p5764" },
+    "count": 5,
+    "createdAt": "2022-07-29T20:00:27.192Z",
+    "updatedAt": "2022-07-31T06:39:57.777Z",
+    "userSignups": [
+      {
+        "username": "964196",
+        "priority": 0,
+        "time": "2022-07-31T08:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "964196",
+        "priority": 0,
+        "time": "2022-07-31T08:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "714429",
+        "priority": 0,
+        "time": "2022-07-31T08:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "66347",
+        "priority": 0,
+        "time": "2022-07-31T08:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "957541",
+        "priority": 0,
+        "time": "2022-07-31T08:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5628" },
+    "count": 5,
+    "createdAt": "2022-07-30T13:00:28.372Z",
+    "updatedAt": "2022-07-30T13:00:28.391Z",
+    "userSignups": [
+      {
+        "username": "641320",
+        "priority": 2,
+        "time": "2022-07-30T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "404615",
+        "priority": 1,
+        "time": "2022-07-30T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "761750",
+        "priority": 1,
+        "time": "2022-07-30T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "110736",
+        "priority": 1,
+        "time": "2022-07-30T15:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "280121",
+        "priority": 1,
+        "time": "2022-07-30T15:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5858" },
+    "count": 5,
+    "createdAt": "2022-07-30T17:00:29.32Z",
+    "updatedAt": "2022-07-30T17:00:29.332Z",
+    "userSignups": [
+      {
+        "username": "264756",
+        "priority": 2,
+        "time": "2022-07-30T19:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "140088",
+        "priority": 1,
+        "time": "2022-07-30T19:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "347236",
+        "priority": 1,
+        "time": "2022-07-30T19:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "740895",
+        "priority": 1,
+        "time": "2022-07-30T19:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "78089",
+        "priority": 1,
+        "time": "2022-07-30T19:00:00Z",
+        "message": ""
+      }
+    ]
+  },
+  {
+    "game": { "gameId": "p5678" },
+    "count": 5,
+    "createdAt": "2022-07-31T05:00:37.962Z",
+    "updatedAt": "2022-07-31T05:34:23.75Z",
+    "userSignups": [
+      {
+        "username": "899439",
+        "priority": 3,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "192565",
+        "priority": 2,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "362690",
+        "priority": 3,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "158394",
+        "priority": 1,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      },
+      {
+        "username": "839911",
+        "priority": 0,
+        "time": "2022-07-31T07:00:00Z",
+        "message": ""
+      }
+    ]
+  }
+]
