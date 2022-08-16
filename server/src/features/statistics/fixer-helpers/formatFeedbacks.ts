@@ -36,14 +36,18 @@ export const formatFeedbacks = (year: number, event: string): void => {
   const formattedFeedbacks = filteredFeedbacks.map((feedback) => {
     const foundGame = games.find((game) => game.gameId === feedback.gameId);
     return {
-      ...feedback,
-      title: foundGame?.title,
-      people: foundGame?.people,
+      feedback: feedback.feedback,
+      game: foundGame?.title,
+      organizer: foundGame?.people,
       startTime: dayjs(foundGame?.startTime).format("dddd HH:mm"),
+      programType: foundGame?.programType,
     };
   });
 
-  const groupedFeedbacks = _.groupBy(formattedFeedbacks, "people");
+  const groupedFeedbacks = _.groupBy(
+    formattedFeedbacks,
+    (feedback) => feedback.organizer
+  );
 
   writeJson(year, event, "feedback", groupedFeedbacks);
 };
