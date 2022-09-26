@@ -78,15 +78,20 @@
     "time": "Aloitusaika",
     "gamesystem": "Pelijärjestelmä",
     "genres": "Genret",
+    "organiser": "Järjestäjä",
     "shortDescription": "Lyhyt kuvaus",
     "revolvingDoor": "Tämä on pyöröovipeli",
     "revolvingDoorDescription": "Voit liittyä peliin koska tahansa, jos pelipöydässä on tilaa",
     "programType": "Ohjelmatyyppi",
-    "readMore": "Lue lisää",
+    "showMore": "Näytä lisää",
+    "showMoreAriaLabel": "Näytä lisää pelistä",
+    "showLess": "Näytä vähemmän",
+    "showLessAriaLabel": "Näytä vähemmän pelistä",
     "contentWarnings": "Sisältövaroitukset",
     "otherAuthor": "Pelin suunnittelija",
     "accessibility": "Esteettömyys",
-    "otherInaccessibility": "Muu esteellisyys"
+    "otherInaccessibility": "Muu esteellisyys",
+    "adminActions": "Ylläpito"
   },
   "programType": {
     "tabletopRPG": "Pöytäroolipeli",
@@ -338,7 +343,7 @@
   "selectedProgramType": "Valittu ohjelmatyyppi",
   "yes": "Kyllä",
   "no": "Ei",
-  "createPrivateQuestion": "Luo yksityinen kysymys",
+  "privateQuestion": "Yksityinen kysymys",
   "private": "Yksityinen",
   "privateOnlyVisibleToOrganizers": "Näkyy ainoastaan järjestäjille",
   "helperView": {
