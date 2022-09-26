@@ -1,6 +1,5 @@
 import React, { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { updateFavorite, UpdateFavoriteOpts } from "client/utils/favorite";
@@ -14,9 +13,7 @@ import { SelectedGame } from "shared/typings/models/user";
 import { isAlreadyEntered, isAlreadySigned } from "./allGamesUtils";
 import { PopularityInfo } from "client/components/PopularityInfo";
 import { sharedConfig } from "shared/config/sharedConfig";
-
-const DESCRIPTION_SENTENCES_LENGTH = 3;
-const matchNextSentence = /([.?!])\s*(?=[A-Z])/g;
+import { GameDetailsView } from "client/views/all-games/components/GameDetailsView";
 
 interface Props {
   game: Game;
@@ -184,17 +181,7 @@ export const GameEntry = ({
           </FavoriteButton>
         )}
       </GameHeader>
-      <GameMoreInfoRow>
-        <GameListShortDescription>
-          {game.shortDescription ??
-            game.description
-              .replace(matchNextSentence, "$1|")
-              .split("|")
-              .slice(0, DESCRIPTION_SENTENCES_LENGTH)
-              .join(" ")}{" "}
-          <Link to={`/games/${game.gameId}`}>{t("gameInfo.readMore")}</Link>
-        </GameListShortDescription>
-      </GameMoreInfoRow>
+      <GameDetailsView game={game} />
       {loggedIn && isEnterGameMode && (
         <DirectSignupForm
           game={game}
@@ -269,11 +256,6 @@ const TagColumn = styled.div`
   margin-top: 4px;
 `;
 
-const GameMoreInfoRow = styled(GameEntryRow)`
-  justify-content: space-between;
-  align-items: center;
-`;
-
 const GameContainer = styled.div<{ signed: boolean }>`
   display: flex;
   flex-direction: column;
@@ -294,12 +276,6 @@ const GameContainer = styled.div<{ signed: boolean }>`
   ${(props) => props.signed && `border: 1px solid ${props.theme.infoBorder};`}
   ${(props) =>
     props.signed && `border-left: 5px solid ${props.theme.infoBorder};`}
-`;
-
-const GameListShortDescription = styled.div`
-  font-size: ${(props) => props.theme.fontSizeSmall};
-  font-style: italic;
-  margin-bottom: 14px;
 `;
 
 const GameTags = styled.div`
