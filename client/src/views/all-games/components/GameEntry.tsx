@@ -2,6 +2,7 @@ import React, { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 import { updateFavorite, UpdateFavoriteOpts } from "client/utils/favorite";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
@@ -22,6 +23,7 @@ interface Props {
   signupStrategy: SignupStrategy;
   signedGames: readonly SelectedGame[];
   enteredGames: readonly SelectedGame[];
+  isAlwaysExpanded: boolean;
 }
 
 export const GameEntry = ({
@@ -31,6 +33,7 @@ export const GameEntry = ({
   signupStrategy,
   signedGames,
   enteredGames,
+  isAlwaysExpanded,
 }: Props): ReactElement => {
   const { t } = useTranslation();
 
@@ -87,7 +90,9 @@ export const GameEntry = ({
     >
       <GameHeader>
         <HeaderContainer>
-          <h3 data-testid="game-title">{game.title}</h3>
+          <StyledLink to={`/games/${game.gameId}`}>
+            <h3 data-testid="game-title">{game.title}</h3>
+          </StyledLink>
           {signupAlwaysOpen && (
             <SignupAlwaysOpenHelp>
               {t("signup.signupAlwaysOpen")}
@@ -181,7 +186,7 @@ export const GameEntry = ({
           </FavoriteButton>
         )}
       </GameHeader>
-      <GameDetailsView game={game} />
+      <GameDetailsView game={game} isAlwaysExpanded={isAlwaysExpanded} />
       {loggedIn && isEnterGameMode && (
         <DirectSignupForm
           game={game}
@@ -297,4 +302,9 @@ const SignupAlwaysOpenHelp = styled.div`
   border-radius: 5px;
   border-left: 5px solid ${(props) => props.theme.infoBorder};
   background-color: ${(props) => props.theme.infoBackground};
+`;
+
+const StyledLink = styled(Link)`
+  color: inherit;
+  text-decoration: inherit;
 `;

@@ -73,6 +73,7 @@ export const AllGamesList = ({ games }: Props): ReactElement => {
             return (
               <GameEntry
                 key={game.gameId}
+                isAlwaysExpanded={false}
                 game={game}
                 players={gameSignups?.users.length ?? 0}
                 startTime={startTime}

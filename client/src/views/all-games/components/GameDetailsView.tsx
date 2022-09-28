@@ -7,11 +7,15 @@ import { ExpandedGameDescription } from "client/views/all-games/components/Expan
 const DESCRIPTION_SENTENCES_LENGTH = 3;
 const matchNextSentence = /([.?!])\s*(?=[A-Z])/g;
 
-export interface Props {
+interface Props {
   game: Game;
+  isAlwaysExpanded: boolean;
 }
 
-export const GameDetailsView = ({ game }: Props): ReactElement => {
+export const GameDetailsView = ({
+  game,
+  isAlwaysExpanded,
+}: Props): ReactElement => {
   const { t } = useTranslation();
 
   const shortDescription = useMemo(
@@ -25,7 +29,7 @@ export const GameDetailsView = ({ game }: Props): ReactElement => {
     [game]
   );
 
-  const [isExpanded, setIsExpanded] = useState<boolean>(false);
+  const [isExpanded, setIsExpanded] = useState<boolean>(isAlwaysExpanded);
 
   const onButtonClick = (): void => {
     setIsExpanded(!isExpanded);
@@ -44,15 +48,17 @@ export const GameDetailsView = ({ game }: Props): ReactElement => {
           <ExpandedGameDescription game={game} />
         </ExpandedDescriptionContainer>
       )}
-      <ExpandButton
-        aria-controls={id}
-        aria-expanded={isExpanded}
-        aria-label={buttonAriaLabel}
-        onClick={onButtonClick}
-        role="button"
-      >
-        {isExpanded ? t("gameInfo.showLess") : t("gameInfo.showMore")}
-      </ExpandButton>
+      {!isAlwaysExpanded && (
+        <ExpandButton
+          aria-controls={id}
+          aria-expanded={isExpanded}
+          aria-label={buttonAriaLabel}
+          onClick={onButtonClick}
+          role="button"
+        >
+          {isExpanded ? t("gameInfo.showLess") : t("gameInfo.showMore")}
+        </ExpandButton>
+      )}
     </>
   );
 };
