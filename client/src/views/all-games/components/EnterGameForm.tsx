@@ -19,6 +19,7 @@ import {
   submitLeaveGroup,
 } from "client/views/group/groupThunks";
 import { sharedConfig } from "shared/config/sharedConfig";
+import { Textarea } from "client/components/TextArea";
 
 const { directSignupAlwaysOpen } = sharedConfig;
 
@@ -126,7 +127,7 @@ export const EnterGameForm: FC<Props> = (props: Props): ReactElement => {
             {signupQuestion.private &&
               `(${t("privateOnlyVisibleToOrganizers")})`}
           </span>
-          <textarea
+          <Textarea
             onChange={(evt) => {
               if (evt.target.value.length > 140) {
                 return;

@@ -196,8 +196,12 @@ export const AdminActionCard = ({ game }: Props): ReactElement => {
 const Container = styled.div`
   border: 1px solid ${(props) => props.theme.borderActive};
   border-radius: 4px;
-  margin: 8px;
+  margin: 8px 0;
   padding: 0 8px;
+  h4 {
+    margin-bottom: 4px;
+    margin-top: 16px;
+  }
 `;
 
 const HeaderContainer = styled.div`
