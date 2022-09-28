@@ -65,8 +65,8 @@ export const GameEntry = ({
     const hours = Math.floor(mins / 60);
     const minutes = mins % 60;
 
-    const hoursStr = hours === 0 ? "" : `${hours}h`;
-    const minutesStr = minutes === 0 ? "" : `${minutes}min`;
+    const hoursStr = hours === 0 ? "" : `${hours} h`;
+    const minutesStr = minutes === 0 ? "" : `${minutes} min`;
 
     return `${hoursStr} ${minutesStr}`;
   };
@@ -236,16 +236,17 @@ const HeaderContainer = styled.div`
   flex-direction: column;
 
   h3 {
-    margin: 0;
+    margin: 8px 0 4px 0;
   }
 `;
 
 const GameTag = styled.span`
   display: flex;
+  border-radius: 8px;
   align-items: center;
   text-align: center;
   background: ${(props) => props.theme.backgroundTag};
-  padding: 4px 8px;
+  padding: 5px 8px;
   margin-bottom: 4px;
   font-size: 12px;
   color: ${(props) => props.theme.textTag};

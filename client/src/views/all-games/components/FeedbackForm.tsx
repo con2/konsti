@@ -5,6 +5,7 @@ import { postFeedback } from "client/services/feedbackServices";
 import { Game } from "shared/typings/models/game";
 import { Button, ButtonStyle } from "client/components/Button";
 import { useAppSelector } from "client/utils/hooks";
+import { Textarea } from "client/components/TextArea";
 
 interface Props {
   game: Game;
@@ -73,11 +74,11 @@ export const FeedbackForm = ({ game }: Props): ReactElement => {
   );
 };
 
-const FeedbackTextarea = styled.textarea`
-  width: 95%;
-  border: 1px solid black;
-  resize: none;
-  overflow: auto;
+const FeedbackTextarea = styled(Textarea)`
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 `;
 
 const SuccessMessage = styled.p`
