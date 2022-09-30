@@ -23,19 +23,30 @@ Registered users by year:
   - Docker
   - Yarn
 
-- Run
+  - Run
 
-  ```
-  yarn docker-compose:start
+  ```shell
+  yarn
+  yarn docker:db
+  yarn run populate-db:dummy
+  yarn start:dev
   ```
 
-- Open `localhost:5000`
+- Open `localhost:8000`
 
 - Login credentials for different roles
 
   - **Admin**: admin:test
   - **Users**: test1:test | test2:test | test3:test
   - **Helpers**: helper:test
+
+You can also run the project completely in Docker:
+
+```shell
+yarn docker-compose:start
+```
+
+In this case, access the frontend at `localhost:5000`
 
 ## Tech
 
