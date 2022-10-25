@@ -1,6 +1,7 @@
 import React, { ReactElement, useMemo, useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Game } from "shared/typings/models/game";
 import { ExpandedGameDescription } from "client/views/all-games/components/ExpandedGameDescription";
 
@@ -43,25 +44,41 @@ export const GameDetailsView = ({
   return (
     <>
       <span>{`${shortDescription} `}</span>
+      {!isAlwaysExpanded && (
+        <ButtonContainer>
+          <ExpandButton
+            aria-controls={id}
+            aria-expanded={isExpanded}
+            aria-label={buttonAriaLabel}
+            onClick={onButtonClick}
+            role="button"
+          >
+            {isExpanded ? t("gameInfo.showLess") : t("gameInfo.showMore")}
+          </ExpandButton>
+          <ArrowIcon
+            aria-hidden="true"
+            icon={isExpanded ? "angle-up" : "angle-down"}
+          />
+        </ButtonContainer>
+      )}
       {isExpanded && (
         <ExpandedDescriptionContainer id={id}>
           <ExpandedGameDescription game={game} />
         </ExpandedDescriptionContainer>
       )}
-      {!isAlwaysExpanded && (
-        <ExpandButton
-          aria-controls={id}
-          aria-expanded={isExpanded}
-          aria-label={buttonAriaLabel}
-          onClick={onButtonClick}
-          role="button"
-        >
-          {isExpanded ? t("gameInfo.showLess") : t("gameInfo.showMore")}
-        </ExpandButton>
-      )}
     </>
   );
 };
+
+const ArrowIcon = styled(FontAwesomeIcon)`
+  margin: 0 0 4px 8px;
+  font-size: 16px;
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
 
 const ExpandButton = styled.p`
   cursor: pointer;
