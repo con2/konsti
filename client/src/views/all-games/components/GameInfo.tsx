@@ -76,26 +76,6 @@ export const GameInfo = ({ game }: Props): ReactElement => {
 
   return (
     <div>
-      {game.title && (
-        <GameDetailsRow rowWithSubtext={true}>
-          <GameDetailsTitleBig>{game.title}</GameDetailsTitleBig>
-        </GameDetailsRow>
-      )}
-
-      {game.shortDescription && (
-        <GameDetailsRow subtext={true}>
-          <GameDetailsTextIndent>
-            <ItalicText>{game.shortDescription}</ItalicText>
-          </GameDetailsTextIndent>
-        </GameDetailsRow>
-      )}
-
-      {game.people && (
-        <GameDetailsRow gap={true}>
-          <GameDetailsTextIndent>{game.people}</GameDetailsTextIndent>
-        </GameDetailsRow>
-      )}
-
       {game.revolvingDoor && (
         <>
           <GameDetailsRow rowWithSubtext={true}>
@@ -154,21 +134,32 @@ export const GameInfo = ({ game }: Props): ReactElement => {
         </GameDetailsRow>
       )}
 
+      {game.people && (
+        <GameDetailsRow>
+          <GameDetailsTitle twoColumns={true}>
+            {t("gameInfo.organiser")}
+          </GameDetailsTitle>
+          <GameDetailsValue>{game.people}</GameDetailsValue>
+        </GameDetailsRow>
+      )}
+
+      {game.description && (
+        <>
+          <GameDetailsRow>
+            <GameDetailsTitle>{t("gameInfo.description")}</GameDetailsTitle>
+          </GameDetailsRow>
+          <GameDetailsRow gap={true}>
+            <span>{game.description}</span>
+          </GameDetailsRow>
+        </>
+      )}
+
       {game.contentWarnings && game.contentWarnings !== "-" && (
         <GameDetailsRow>
           <GameDetailsTitle twoColumns={true}>
             {t("gameInfo.contentWarnings")}
           </GameDetailsTitle>
           <GameDetailsValue>{game.contentWarnings}</GameDetailsValue>
-        </GameDetailsRow>
-      )}
-
-      {game.otherAuthor && (
-        <GameDetailsRow>
-          <GameDetailsTitle twoColumns={true}>
-            {t("gameInfo.otherAuthor")}
-          </GameDetailsTitle>
-          <GameDetailsValue>{game.otherAuthor}</GameDetailsValue>
         </GameDetailsRow>
       )}
 
@@ -190,23 +181,21 @@ export const GameInfo = ({ game }: Props): ReactElement => {
         </GameDetailsRow>
       )}
 
-      {game.description && (
-        <>
-          <GameDetailsRow>
-            <GameDetailsTitle>{t("gameInfo.description")}</GameDetailsTitle>
-          </GameDetailsRow>
-          <GameDetailsRow gap={true}>
-            <span>{game.description}</span>
-          </GameDetailsRow>
-        </>
-      )}
-
       {game.gameSystem && (
         <GameDetailsRow>
           <GameDetailsTitle twoColumns={true}>
             {t("gameInfo.gamesystem")}
           </GameDetailsTitle>
           <GameDetailsValue>{game.gameSystem}</GameDetailsValue>
+        </GameDetailsRow>
+      )}
+
+      {game.otherAuthor && (
+        <GameDetailsRow>
+          <GameDetailsTitle twoColumns={true}>
+            {t("gameInfo.otherAuthor")}
+          </GameDetailsTitle>
+          <GameDetailsValue>{game.otherAuthor}</GameDetailsValue>
         </GameDetailsRow>
       )}
 
@@ -277,12 +266,6 @@ const GameDetailsRow = styled.div<GameDetailsRowProps>`
     `};
 `;
 
-const GameDetailsTitleBig = styled.h3`
-  font-weight: 600;
-  padding: 0 10px 0 0;
-  margin: 0;
-`;
-
 interface GameDetailsTitleProps {
   twoColumns?: boolean;
 }
@@ -321,10 +304,6 @@ const GameDetailsTextIndent = styled.span`
 
 const StyledAccessibilityValue = styled.p`
   margin: 0 0 6px 0;
-`;
-
-const ItalicText = styled.span`
-  font-style: italic;
 `;
 
 const NoWrapText = styled.span`

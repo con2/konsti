@@ -78,15 +78,20 @@
     "time": "Starting time",
     "gamesystem": "Game system",
     "genres": "Genres",
+    "organiser": "Organiser",
     "shortDescription": "Short description",
     "revolvingDoor": "This is a revolving door game",
     "revolvingDoorDescription": "You can join this game at any time if there are free seats",
     "programType": "Program type",
-    "readMore": "Read more",
+    "showMore": "Show more",
+    "showMoreAriaLabel": "Show more on game",
+    "showLess": "Show less",
+    "showLessAriaLabel": "Show less on game",
     "contentWarnings": "Content warnings",
     "otherAuthor": "Game designer",
     "accessibility": "Accessibility",
-    "otherInaccessibility": "Other inaccessibility"
+    "otherInaccessibility": "Other inaccessibility",
+    "adminActions": "Admin actions"
   },
   "programType": {
     "tabletopRPG": "Tabletop RPG",
@@ -260,7 +265,7 @@
   },
   "signup": {
     "alreadyLotterySigned": "This game is priority {{CURRENT_PRIORITY}} on your lottery signups",
-    "directSignup": "Signup",
+    "directSignup": "Sign up",
     "lotterySignup": "Lottery signup",
     "cannotSignupMoreGames": "You can select up to three lottery games for the timeslot",
     "gamePriority": "Game priority for me is",
@@ -338,7 +343,7 @@
   "selectedProgramType": "Selected program type",
   "yes": "Yes",
   "no": "No",
-  "createPrivateQuestion": "Create private question",
+  "privateQuestion": "Private question",
   "private": "Private",
   "privateOnlyVisibleToOrganizers": "Only visible to organizers",
   "helperView": {
