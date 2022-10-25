@@ -4,8 +4,7 @@ import { useTranslation } from "react-i18next";
 import { Game } from "shared/typings/models/game";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { Button, ButtonStyle } from "client/components/Button";
-// eslint-disable-next-line no-restricted-imports
-import loaderImage from "../../../../assets/loading.gif";
+import loaderImage from "assets/loading.gif";
 import {
   submitAddSignupQuestion,
   submitDeleteSignupQuestion,
