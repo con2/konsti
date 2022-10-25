@@ -23,7 +23,7 @@ Registered users by year:
   - Docker
   - Yarn
 
-  - Run
+- Run
 
   ```shell
   yarn
@@ -46,7 +46,7 @@ You can also run the project completely in Docker:
 yarn docker-compose:start
 ```
 
-In this case, access the frontend at `localhost:5000`
+In this case, access the frontend at `localhost:5000`.
 
 ## Tech
 
