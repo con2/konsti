@@ -5,6 +5,7 @@ import { postFeedback } from "client/services/feedbackServices";
 import { Game } from "shared/typings/models/game";
 import { Button, ButtonStyle } from "client/components/Button";
 import { useAppSelector } from "client/utils/hooks";
+import { TextArea } from "client/components/TextArea";
 
 interface Props {
   game: Game;
@@ -51,10 +52,9 @@ export const FeedbackForm = ({ game }: Props): ReactElement => {
 
       {!feedbackSent && (
         <>
-          <FeedbackTextarea
+          <FeedbackTextArea
             value={feedbackValue}
             onChange={handleFeedbackChange}
-            rows={4}
           />
 
           <Button
@@ -73,11 +73,9 @@ export const FeedbackForm = ({ game }: Props): ReactElement => {
   );
 };
 
-const FeedbackTextarea = styled.textarea`
-  width: 95%;
-  border: 1px solid black;
-  resize: none;
-  overflow: auto;
+const FeedbackTextArea = styled(TextArea)`
+  width: 100%;
+  box-sizing: border-box;
 `;
 
 const SuccessMessage = styled.p`

@@ -1,8 +1,8 @@
 import React, { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 import { updateFavorite, UpdateFavoriteOpts } from "client/utils/favorite";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
@@ -14,9 +14,7 @@ import { SelectedGame } from "shared/typings/models/user";
 import { isAlreadyEntered, isAlreadySigned } from "./allGamesUtils";
 import { PopularityInfo } from "client/components/PopularityInfo";
 import { sharedConfig } from "shared/config/sharedConfig";
-
-const DESCRIPTION_SENTENCES_LENGTH = 3;
-const matchNextSentence = /([.?!])\s*(?=[A-Z])/g;
+import { GameDetailsView } from "client/views/all-games/components/GameDetailsView";
 
 interface Props {
   game: Game;
@@ -25,6 +23,7 @@ interface Props {
   signupStrategy: SignupStrategy;
   signedGames: readonly SelectedGame[];
   enteredGames: readonly SelectedGame[];
+  isAlwaysExpanded: boolean;
 }
 
 export const GameEntry = ({
@@ -34,6 +33,7 @@ export const GameEntry = ({
   signupStrategy,
   signedGames,
   enteredGames,
+  isAlwaysExpanded,
 }: Props): ReactElement => {
   const { t } = useTranslation();
 
@@ -65,8 +65,8 @@ export const GameEntry = ({
     const hours = Math.floor(mins / 60);
     const minutes = mins % 60;
 
-    const hoursStr = hours === 0 ? "" : `${hours}h`;
-    const minutesStr = minutes === 0 ? "" : `${minutes}min`;
+    const hoursStr = hours === 0 ? "" : `${hours} h`;
+    const minutesStr = minutes === 0 ? "" : `${minutes} min`;
 
     return `${hoursStr} ${minutesStr}`;
   };
@@ -90,7 +90,9 @@ export const GameEntry = ({
     >
       <GameHeader>
         <HeaderContainer>
-          <h3 data-testid="game-title">{game.title}</h3>
+          <StyledLink to={`/games/${game.gameId}`}>
+            <h3 data-testid="game-title">{game.title}</h3>
+          </StyledLink>
           {signupAlwaysOpen && (
             <SignupAlwaysOpenHelp>
               {t("signup.signupAlwaysOpen")}
@@ -184,17 +186,7 @@ export const GameEntry = ({
           </FavoriteButton>
         )}
       </GameHeader>
-      <GameMoreInfoRow>
-        <GameListShortDescription>
-          {game.shortDescription ??
-            game.description
-              .replace(matchNextSentence, "$1|")
-              .split("|")
-              .slice(0, DESCRIPTION_SENTENCES_LENGTH)
-              .join(" ")}{" "}
-          <Link to={`/games/${game.gameId}`}>{t("gameInfo.readMore")}</Link>
-        </GameListShortDescription>
-      </GameMoreInfoRow>
+      <GameDetailsView game={game} isAlwaysExpanded={isAlwaysExpanded} />
       {loggedIn && isEnterGameMode && (
         <DirectSignupForm
           game={game}
@@ -244,16 +236,17 @@ const HeaderContainer = styled.div`
   flex-direction: column;
 
   h3 {
-    margin: 0;
+    margin: 8px 0 4px 0;
   }
 `;
 
 const GameTag = styled.span`
   display: flex;
+  border-radius: 8px;
   align-items: center;
   text-align: center;
   background: ${(props) => props.theme.backgroundTag};
-  padding: 4px 8px;
+  padding: 5px 8px;
   margin-bottom: 4px;
   font-size: 12px;
   color: ${(props) => props.theme.textTag};
@@ -267,11 +260,6 @@ const GameTag = styled.span`
 const TagColumn = styled.div`
   display: flex;
   margin-top: 4px;
-`;
-
-const GameMoreInfoRow = styled(GameEntryRow)`
-  justify-content: space-between;
-  align-items: center;
 `;
 
 const GameContainer = styled.div<{ signed: boolean }>`
@@ -296,12 +284,6 @@ const GameContainer = styled.div<{ signed: boolean }>`
     props.signed && `border-left: 5px solid ${props.theme.infoBorder};`}
 `;
 
-const GameListShortDescription = styled.div`
-  font-size: ${(props) => props.theme.fontSizeSmall};
-  font-style: italic;
-  margin-bottom: 14px;
-`;
-
 const GameTags = styled.div`
   display: flex;
 `;
@@ -321,4 +303,9 @@ const SignupAlwaysOpenHelp = styled.div`
   border-radius: 5px;
   border-left: 5px solid ${(props) => props.theme.infoBorder};
   background-color: ${(props) => props.theme.infoBackground};
+`;
+
+const StyledLink = styled(Link)`
+  color: inherit;
+  text-decoration: inherit;
 `;
