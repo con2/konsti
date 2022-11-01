@@ -29,7 +29,7 @@ export const ProgramTypeSelection = (): ReactElement => {
     <EventTypeSelectionContainer>
       <InfoText>{t("selectedProgramType")}</InfoText>
       <Dropdown
-        items={dropdownItems}
+        options={dropdownItems}
         selectedValue={activeProgramType}
         onChange={(event: ChangeEvent<HTMLSelectElement>) => {
           const programType = event.target.value as ProgramType;

@@ -23,6 +23,7 @@ import { selectActiveGames } from "client/views/admin/adminSlice";
 import { Input } from "client/components/Input";
 import { SessionStorageValue } from "client/utils/localStorage";
 import { ROW_HEIGHT } from "client/components/EventTypeSelection";
+import { Dropdown } from "client/components/Dropdown";
 
 export const MULTIPLE_WHITESPACES_REGEX = /\s\s+/g;
 
@@ -141,6 +142,14 @@ export const AllGamesView = (): ReactElement => {
     );
   }, [filteredGames, hiddenGames, selectedView, selectedTag]);
 
+  const options = [
+    { value: "", title: t("allGames") },
+    filters.map((filter) => ({
+      value: filter,
+      title: t(`gameTags.${filter}`),
+    })),
+  ].flat();
+
   const setView = (view: SelectedView): void => {
     setSelectedView(view);
     sessionStorage.setItem(SessionStorageValue.ALL_GAMES_SELECTED_VIEW, view);
@@ -189,24 +198,15 @@ export const AllGamesView = (): ReactElement => {
         <TagsDropdownContainer>
           <TagsDropdown>
             <ChooseTagsInstruction>{t("chooseTag")} </ChooseTagsInstruction>
-            <select
+            <Dropdown
               onChange={(event: ChangeEvent<HTMLSelectElement>) => {
                 const tag = event.target.value;
                 setSelectedTag(tag);
                 sessionStorage.setItem(SessionStorageValue.ALL_GAMES_TAG, tag);
               }}
-              value={selectedTag}
-            >
-              <option value="">{t("allGames")}</option>
-
-              {filters.map((filter) => {
-                return (
-                  <option key={filter} value={filter}>
-                    {t(`gameTags.${filter}`)}
-                  </option>
-                );
-              })}
-            </select>
+              options={options}
+              selectedValue={selectedTag}
+            />
           </TagsDropdown>
         </TagsDropdownContainer>
       </AllGamesVisibilityBar>
