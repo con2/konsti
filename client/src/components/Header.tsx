@@ -86,4 +86,5 @@ const HeaderRightSideContainer = styled.div`
   display: flex;
   align-items: center;
   white-space: nowrap;
+  margin-right: 8px;
 `;
