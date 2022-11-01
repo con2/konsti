@@ -13,7 +13,7 @@ import { Game } from "shared/typings/models/game";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { Button, ButtonStyle } from "client/components/Button";
 import { SignupQuestionList } from "client/views/admin/components/SignupQuestionList";
-import { Dropdown, Item } from "client/components/Dropdown";
+import { Dropdown, Option } from "client/components/Dropdown";
 import { SignupStrategySelector } from "client/test/test-components/SignupStrategySelector";
 import { sharedConfig } from "shared/config/sharedConfig";
 
@@ -70,7 +70,7 @@ export const AdminView = (): ReactElement => {
     return visibleGames;
   };
 
-  const getDropdownItems = (): Item[] => {
+  const getDropdownItems = (): Option[] => {
     const visibleGames = getVisibleGames();
     const startTimes = visibleGames.map((game) => game.startTime);
     const times = [...Array.from(new Set(startTimes))].sort();
@@ -195,7 +195,7 @@ export const AdminView = (): ReactElement => {
           </Button>
 
           <Dropdown
-            items={getDropdownItems()}
+            options={getDropdownItems()}
             selectedValue={selectedSignupTime}
             onChange={(event: ChangeEvent<HTMLSelectElement>) =>
               setSelectedSignupTime(event.target.value)
