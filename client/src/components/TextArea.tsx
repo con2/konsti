@@ -30,5 +30,14 @@ const StyledTextArea = styled.textarea`
   border: 1px solid ${(props) => props.theme.borderInactive};
   resize: none;
   overflow: auto;
-  border-radius: 4px;
+  border-radius: 6px;
+
+  &:focus {
+    outline: 2px solid ${(props) => props.theme.inputBorderFocus};
+    border: none;
+  }
+
+  &::placeholder {
+    color: ${(props) => props.theme.inputTextPlaceholder};
+  }
 `;
