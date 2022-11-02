@@ -45,21 +45,6 @@ export const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
     font-size: ${(props) => props.theme.fontSizeNormal};
   }
 
-  input {
-    border-radius: 6px;
-    box-sizing: border-box;
-  }
-
-  input::placeholder {
-    color: ${(props) => props.theme.inputTextPlaceholder};
-  }
-
-  input:focus {
-    border: 1px solid ${(props) => props.theme.inputBorderFocus};
-    box-shadow: 0 0 5px 0 ${(props) => props.theme.inputBorderFocus};
-    box-sizing: border-box;
-  }
-
   a {
     color: ${(props) => props.theme.textLink};
     text-decoration: underline;
