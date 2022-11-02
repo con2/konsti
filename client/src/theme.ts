@@ -93,7 +93,7 @@ export const theme = {
 
   iconFavorited: red.light,
 
-  inputBorderFocus: blue,
+  inputBorderFocus: mainColor.primary,
   inputTextPlaceholder: gray.light,
 
   resultsFoldBackground: gray.lighter,
