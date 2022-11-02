@@ -5,12 +5,14 @@ import { useTranslation } from "react-i18next";
 import { Button, ButtonStyle } from "client/components/Button";
 
 interface Props {
+  buttonStyle?: ButtonStyle;
   toggleButton: string | ReactElement;
   children?: ReactNode;
   initialValue?: boolean;
 }
 
 export const Accordion = ({
+  buttonStyle = ButtonStyle.SECONDARY,
   toggleButton,
   children,
   initialValue = false,
@@ -27,7 +29,7 @@ export const Accordion = ({
     <div>
       <AccordionToggle
         onClick={() => onClick()}
-        buttonStyle={ButtonStyle.NORMAL}
+        buttonStyle={buttonStyle}
         aria-label={
           open
             ? t("iconAltText.closeAccordion")

@@ -133,7 +133,8 @@ export const AdminView = (): ReactElement => {
     <div>
       <div>
         <Button
-          buttonStyle={submitting ? ButtonStyle.DISABLED : ButtonStyle.NORMAL}
+          disabled={submitting}
+          buttonStyle={ButtonStyle.PRIMARY}
           onClick={() => {
             submitUpdate();
           }}
@@ -142,7 +143,8 @@ export const AdminView = (): ReactElement => {
         </Button>
 
         <Button
-          buttonStyle={submitting ? ButtonStyle.DISABLED : ButtonStyle.NORMAL}
+          disabled={submitting}
+          buttonStyle={ButtonStyle.PRIMARY}
           onClick={() => {
             submitAssign();
           }}
@@ -151,7 +153,8 @@ export const AdminView = (): ReactElement => {
         </Button>
 
         <Button
-          buttonStyle={submitting ? ButtonStyle.DISABLED : ButtonStyle.NORMAL}
+          disabled={submitting}
+          buttonStyle={ButtonStyle.PRIMARY}
           onClick={() => {
             toggleAppOpen();
           }}
@@ -186,7 +189,8 @@ export const AdminView = (): ReactElement => {
           </div>
 
           <Button
-            buttonStyle={submitting ? ButtonStyle.DISABLED : ButtonStyle.NORMAL}
+            disabled={submitting}
+            buttonStyle={ButtonStyle.PRIMARY}
             onClick={() => {
               submitTime();
             }}
@@ -212,7 +216,7 @@ export const AdminView = (): ReactElement => {
 
       {sharedConfig.enableSentryTesting && (
         <Button
-          buttonStyle={ButtonStyle.NORMAL}
+          buttonStyle={ButtonStyle.PRIMARY}
           onClick={() => {
             const testValue = undefined;
             // @ts-expect-error: Sentry test value

@@ -114,7 +114,7 @@ export const AlgorithmSignupForm: FC<Props> = ({
                     setSignupFormOpen(true);
                   }
                 }}
-                buttonStyle={ButtonStyle.NORMAL}
+                buttonStyle={ButtonStyle.PRIMARY}
               >
                 {t("signup.lotterySignup")}
               </Button>
@@ -133,7 +133,7 @@ export const AlgorithmSignupForm: FC<Props> = ({
           {isGroupCreator && !cancelSignupFormOpen && (
             <Button
               onClick={() => setCancelSignupFormOpen(true)}
-              buttonStyle={ButtonStyle.WARNING}
+              buttonStyle={ButtonStyle.SECONDARY}
             >
               {t("button.cancel")}
             </Button>

@@ -160,35 +160,26 @@ export const AllGamesView = (): ReactElement => {
       <AllGamesVisibilityBar>
         <ViewButtons>
           <Button
+            disabled={selectedView === SelectedView.UPCOMING}
+            buttonStyle={ButtonStyle.SECONDARY}
             onClick={() => setView(SelectedView.UPCOMING)}
-            buttonStyle={
-              selectedView === SelectedView.UPCOMING
-                ? ButtonStyle.DISABLED
-                : ButtonStyle.NORMAL
-            }
           >
             {t("upcoming")}
           </Button>
 
           <Button
+            disabled={selectedView === SelectedView.ALL}
+            buttonStyle={ButtonStyle.SECONDARY}
             onClick={() => setView(SelectedView.ALL)}
-            buttonStyle={
-              selectedView === SelectedView.ALL
-                ? ButtonStyle.DISABLED
-                : ButtonStyle.NORMAL
-            }
           >
             {t("all")}
           </Button>
 
           {activeProgramType === ProgramType.TABLETOP_RPG && (
             <Button
+              disabled={selectedView === SelectedView.REVOLVING_DOOR}
+              buttonStyle={ButtonStyle.SECONDARY}
               onClick={() => setView(SelectedView.REVOLVING_DOOR)}
-              buttonStyle={
-                selectedView === SelectedView.REVOLVING_DOOR
-                  ? ButtonStyle.DISABLED
-                  : ButtonStyle.NORMAL
-              }
             >
               {t("revolvingDoor")}
             </Button>

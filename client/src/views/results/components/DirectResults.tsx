@@ -97,15 +97,15 @@ export const DirectResults = (): ReactElement => {
       <div>
         <Button
           onClick={() => setShowAllGames(false)}
-          buttonStyle={
-            !showAllGames ? ButtonStyle.DISABLED : ButtonStyle.NORMAL
-          }
+          disabled={!showAllGames}
+          buttonStyle={ButtonStyle.SECONDARY}
         >
           {t("lastStartedAndUpcoming")}
         </Button>
         <Button
+          disabled={showAllGames}
           onClick={() => setShowAllGames(true)}
-          buttonStyle={showAllGames ? ButtonStyle.DISABLED : ButtonStyle.NORMAL}
+          buttonStyle={ButtonStyle.SECONDARY}
         >
           {t("all")}
         </Button>

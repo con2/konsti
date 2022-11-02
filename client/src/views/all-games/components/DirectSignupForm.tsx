@@ -106,7 +106,7 @@ export const DirectSignupForm: FC<Props> = ({
               {!signupFormOpen && !directSignupStartTime && (
                 <Button
                   onClick={() => setSignupFormOpen(!signupFormOpen)}
-                  buttonStyle={ButtonStyle.NORMAL}
+                  buttonStyle={ButtonStyle.PRIMARY}
                 >
                   {t("signup.directSignup")}
                 </Button>
@@ -135,7 +135,7 @@ export const DirectSignupForm: FC<Props> = ({
           {!cancelSignupFormOpen && (
             <Button
               onClick={() => setCancelSignupFormOpen(true)}
-              buttonStyle={ButtonStyle.WARNING}
+              buttonStyle={ButtonStyle.SECONDARY}
             >
               {t("button.cancelSignup")}
             </Button>

@@ -160,7 +160,7 @@ export const GameEntry = ({
                 dispatch,
               })
             }
-            buttonStyle={ButtonStyle.NORMAL}
+            buttonStyle={ButtonStyle.SECONDARY}
             data-testid={"remove-favorite-button"}
             aria-label={t("iconAltText.deleteFavorite")}
           >
@@ -178,7 +178,7 @@ export const GameEntry = ({
                 dispatch,
               })
             }
-            buttonStyle={ButtonStyle.NORMAL}
+            buttonStyle={ButtonStyle.SECONDARY}
             data-testid={"add-favorite-button"}
             aria-label={t("iconAltText.addFavorite")}
           >
