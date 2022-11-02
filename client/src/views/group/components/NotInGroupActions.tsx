@@ -95,20 +95,16 @@ export const NotInGroupActions = ({
   return (
     <>
       <Button
-        buttonStyle={
-          showCreateGroup || disabled
-            ? ButtonStyle.DISABLED
-            : ButtonStyle.NORMAL
-        }
+        disabled={showCreateGroup || disabled}
+        buttonStyle={ButtonStyle.PRIMARY}
         onClick={() => openCreateGroup()}
       >
         {t("button.createGroup")}
       </Button>
 
       <Button
-        buttonStyle={
-          showJoinGroup || disabled ? ButtonStyle.DISABLED : ButtonStyle.NORMAL
-        }
+        disabled={showJoinGroup || disabled}
+        buttonStyle={ButtonStyle.PRIMARY}
         onClick={() => openJoinGroup()}
       >
         {t("button.joinGroup")}
@@ -118,7 +114,8 @@ export const NotInGroupActions = ({
         <>
           <p>{t("group.createGroupConfirmationMessage")}</p>
           <Button
-            buttonStyle={loading ? ButtonStyle.DISABLED : ButtonStyle.NORMAL}
+            disabled={loading}
+            buttonStyle={ButtonStyle.PRIMARY}
             onClick={async () => await createGroup()}
           >
             {t("button.createGroupConfirmation")}
@@ -140,7 +137,8 @@ export const NotInGroupActions = ({
           />
 
           <Button
-            buttonStyle={loading ? ButtonStyle.DISABLED : ButtonStyle.NORMAL}
+            disabled={loading}
+            buttonStyle={ButtonStyle.PRIMARY}
             onClick={async () => await joinGroup()}
           >
             {t("button.joinGroup")}

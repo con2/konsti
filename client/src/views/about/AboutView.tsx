@@ -23,22 +23,15 @@ export const AboutView = (): ReactElement => {
   return (
     <div>
       <Button
-        buttonStyle={
-          selectedSection === AboutSection.GENERAL
-            ? ButtonStyle.DISABLED
-            : ButtonStyle.NORMAL
-        }
+        disabled={selectedSection === AboutSection.GENERAL}
+        buttonStyle={ButtonStyle.SECONDARY}
         onClick={() => setSelectedSection(AboutSection.GENERAL)}
       >
         {t("aboutView.general")}
       </Button>
-
       <Button
-        buttonStyle={
-          selectedSection === AboutSection.FAQ
-            ? ButtonStyle.DISABLED
-            : ButtonStyle.NORMAL
-        }
+        disabled={selectedSection === AboutSection.FAQ}
+        buttonStyle={ButtonStyle.SECONDARY}
         onClick={() => setSelectedSection(AboutSection.FAQ)}
       >
         {t("aboutView.faq")}

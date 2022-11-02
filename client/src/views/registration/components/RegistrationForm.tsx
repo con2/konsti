@@ -191,8 +191,9 @@ export const RegistrationForm = (): ReactElement => {
         </Accordion>
 
         <Button
+          disabled={isSubmitting}
           type="submit"
-          buttonStyle={isSubmitting ? ButtonStyle.DISABLED : ButtonStyle.NORMAL}
+          buttonStyle={ButtonStyle.PRIMARY}
         >
           {t("button.register")}
         </Button>

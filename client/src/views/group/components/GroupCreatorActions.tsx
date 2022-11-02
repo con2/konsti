@@ -50,11 +50,8 @@ export const GroupCreatorActions = ({
     <>
       <div>
         <Button
-          buttonStyle={
-            showCloseGroupConfirmation
-              ? ButtonStyle.DISABLED
-              : ButtonStyle.NORMAL
-          }
+          disabled={showCloseGroupConfirmation}
+          buttonStyle={ButtonStyle.PRIMARY}
           onClick={() => setShowCloseGroupConfirmation(true)}
         >
           {t("button.closeGroup")}
@@ -65,7 +62,7 @@ export const GroupCreatorActions = ({
         <>
           <p>{t("group.closeGroupConfirmation")}</p>
           <Button
-            buttonStyle={ButtonStyle.NORMAL}
+            buttonStyle={ButtonStyle.SECONDARY}
             onClick={() => {
               setShowCloseGroupConfirmation(false);
               setServerError(null);
@@ -75,7 +72,8 @@ export const GroupCreatorActions = ({
           </Button>
 
           <Button
-            buttonStyle={loading ? ButtonStyle.DISABLED : ButtonStyle.WARNING}
+            disabled={loading}
+            buttonStyle={ButtonStyle.PRIMARY}
             onClick={async () => await closeGroup()}
           >
             {t("button.closeGroup")}

@@ -42,11 +42,8 @@ export const HelperView = (): ReactElement => {
     <div>
       {signupStrategy === SignupStrategy.ALGORITHM && (
         <Button
-          buttonStyle={
-            selectedTool === HelperTool.RESULTS
-              ? ButtonStyle.DISABLED
-              : ButtonStyle.NORMAL
-          }
+          disabled={selectedTool === HelperTool.RESULTS}
+          buttonStyle={ButtonStyle.SECONDARY}
           onClick={() => setSelectedTool(HelperTool.RESULTS)}
         >
           {t("helperResults")}
@@ -54,22 +51,16 @@ export const HelperView = (): ReactElement => {
       )}
 
       <Button
-        buttonStyle={
-          selectedTool === HelperTool.PRIVATE_SIGNUP_MESSAGES
-            ? ButtonStyle.DISABLED
-            : ButtonStyle.NORMAL
-        }
+        disabled={selectedTool === HelperTool.PRIVATE_SIGNUP_MESSAGES}
+        buttonStyle={ButtonStyle.SECONDARY}
         onClick={() => setSelectedTool(HelperTool.PRIVATE_SIGNUP_MESSAGES)}
       >
         {t("helperView.signupQuestionAnswers")}
       </Button>
 
       <Button
-        buttonStyle={
-          selectedTool === HelperTool.PASSWORD_MANAGEMENT
-            ? ButtonStyle.DISABLED
-            : ButtonStyle.NORMAL
-        }
+        disabled={selectedTool === HelperTool.PASSWORD_MANAGEMENT}
+        buttonStyle={ButtonStyle.SECONDARY}
         onClick={() => setSelectedTool(HelperTool.PASSWORD_MANAGEMENT)}
       >
         {t("passwordManagement.helperPasswordManagement")}

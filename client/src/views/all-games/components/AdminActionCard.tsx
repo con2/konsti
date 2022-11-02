@@ -126,14 +126,16 @@ export const AdminActionCard = ({ game }: Props): ReactElement => {
         )}
       </HeaderContainer>
       <Button
-        buttonStyle={submitting ? ButtonStyle.DISABLED : ButtonStyle.NORMAL}
+        disabled={submitting}
+        buttonStyle={ButtonStyle.PRIMARY}
         onClick={async () => await updateHidden()}
       >
         {hidden ? t("button.show") : t("button.hide")}
       </Button>
       {hasSignupQuestion && (
         <Button
-          buttonStyle={submitting ? ButtonStyle.DISABLED : ButtonStyle.NORMAL}
+          disabled={submitting}
+          buttonStyle={ButtonStyle.PRIMARY}
           onClick={deleteSignupQuestion}
         >
           {t("button.removeSignupQuestion")}
@@ -141,7 +143,8 @@ export const AdminActionCard = ({ game }: Props): ReactElement => {
       )}
       {!hasSignupQuestion && !signupQuestionInputVisible && (
         <Button
-          buttonStyle={submitting ? ButtonStyle.DISABLED : ButtonStyle.NORMAL}
+          disabled={submitting}
+          buttonStyle={ButtonStyle.PRIMARY}
           onClick={() =>
             setSignupQuestionInputVisible(!signupQuestionInputVisible)
           }
@@ -173,14 +176,13 @@ export const AdminActionCard = ({ game }: Props): ReactElement => {
           <p>
             <Button
               onClick={addSignupQuestion}
-              buttonStyle={ButtonStyle.NORMAL}
+              buttonStyle={ButtonStyle.PRIMARY}
             >
               {t("button.save")}
             </Button>
             <Button
-              buttonStyle={
-                submitting ? ButtonStyle.DISABLED : ButtonStyle.NORMAL
-              }
+              disabled={submitting}
+              buttonStyle={ButtonStyle.SECONDARY}
               onClick={() => setSignupQuestionInputVisible(false)}
             >
               {t("button.cancel")}

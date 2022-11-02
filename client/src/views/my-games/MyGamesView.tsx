@@ -60,16 +60,16 @@ export const MyGamesView = (): ReactElement => {
     <MyGamesViewContainer>
       <div>
         <Button
+          disabled={!showAllGames}
           onClick={() => setShowAllGames(false)}
-          buttonStyle={
-            !showAllGames ? ButtonStyle.DISABLED : ButtonStyle.NORMAL
-          }
+          buttonStyle={ButtonStyle.SECONDARY}
         >
           {t("lastStartedAndUpcoming")}
         </Button>
         <Button
+          disabled={showAllGames}
           onClick={() => setShowAllGames(true)}
-          buttonStyle={showAllGames ? ButtonStyle.DISABLED : ButtonStyle.NORMAL}
+          buttonStyle={ButtonStyle.SECONDARY}
         >
           {t("all")}
         </Button>
@@ -116,7 +116,7 @@ export const MyGamesView = (): ReactElement => {
       />
 
       <ChangePasswordButton
-        buttonStyle={ButtonStyle.NORMAL}
+        buttonStyle={ButtonStyle.PRIMARY}
         onClick={() => setShowChangePassword(!showChangePassword)}
         aria-label={
           showChangePassword

@@ -62,7 +62,7 @@ export const GamesByStartTimes = ({
                         onClick={async () => {
                           await removeFavorite(game);
                         }}
-                        buttonStyle={ButtonStyle.NORMAL}
+                        buttonStyle={ButtonStyle.SECONDARY}
                       >
                         {t("button.removeFavorite")}
                       </Button>

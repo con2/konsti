@@ -1,14 +1,14 @@
 import React, { MouseEventHandler, ReactElement, ReactNode } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export enum ButtonStyle {
-  NORMAL = "normal",
-  DISABLED = "disabled",
-  WARNING = "warning",
+  PRIMARY = "primary",
+  SECONDARY = "secondary",
 }
 
 interface Props {
   children?: ReactNode;
+  disabled?: boolean;
   onClick?: MouseEventHandler;
   buttonStyle: ButtonStyle;
   type?: "submit" | "button";
@@ -19,6 +19,7 @@ interface Props {
 
 export const Button = ({
   children,
+  disabled,
   onClick,
   buttonStyle,
   type = "button",
@@ -33,7 +34,7 @@ export const Button = ({
       type={type}
       data-testid={dataTestId}
       buttonStyle={buttonStyle}
-      disabled={buttonStyle === ButtonStyle.DISABLED}
+      disabled={disabled}
       aria-label={ariaLabel}
     >
       {children}
@@ -45,52 +46,71 @@ interface StyledButtonProps {
   buttonStyle: ButtonStyle;
 }
 
+const disabledButton = css`
+  opacity: 0.4;
+  cursor: not-allowed;
+`;
+
 const StyledButton = styled.button<StyledButtonProps>`
-  border-radius: 5px;
+  border-radius: 6px;
   cursor: pointer;
-  margin: 10px 10px 10px 0;
-  padding: 6px 20px;
+  box-shadow: rgba(0, 0, 0, 0.18) 0 3px 5px;
   font-size: ${(props) => props.theme.fontSizeSmall};
   white-space: nowrap;
 
   ${(props) => {
-    switch (props.buttonStyle) {
-      case ButtonStyle.NORMAL:
-        return `
-          background: ${props.theme.buttonBackground};
-          border: 1px solid ${props.theme.buttonBorder};
-          color: ${props.theme.buttonText};
-
-          &:hover,
-          &:focus {
-            background: ${props.theme.backgroundActive};
-            border: 1px solid ${props.theme.borderActive};
-            color: ${props.theme.borderActive};
-          }
-      `;
-
-      case ButtonStyle.DISABLED:
-        return `
-          background: ${props.theme.buttonBackgroundDisabled};
-          border: 1px solid ${props.theme.buttonBorder};
-          color: ${props.theme.buttonText};
-          opacity: 0.5;
-          cursor: not-allowed;
-        `;
-
-      case ButtonStyle.WARNING:
-        return `
-          background: ${props.theme.buttonWarning};
-          border: 1px solid ${props.theme.buttonBorderWarning};
+    if (props.disabled && props.buttonStyle === ButtonStyle.SECONDARY) {
+      return `
+          background: ${props.theme.buttonSecondaryBackground};
+          border: 2px solid ${props.theme.buttonSecondaryBorder};
           color: ${props.theme.textMain};
+          padding: 6px 20px;
 
-          &:hover,
-          &:focus {
-            border: 1px solid ${props.theme.buttonBorderWarning};
-            background: ${props.theme.buttonWarningHover};
+          ${disabledButton}`;
+    }
+    if (!props.disabled && props.buttonStyle === ButtonStyle.SECONDARY) {
+      return `
+          background: ${props.theme.buttonSecondaryBackground};
+          border: 2px solid ${props.theme.buttonSecondaryBorder};
+          color: ${props.theme.textMain};
+          padding: 6px 20px;
+
+          &:hover {
+            background: ${props.theme.buttonSecondaryHover};
             color: ${props.theme.textMain};
+          }
+
+          &:active {
+            background: ${props.theme.buttonSecondaryClicked};
+            box-shadow: none;
           }
       `;
     }
+    if (props.disabled && props.buttonStyle === ButtonStyle.PRIMARY) {
+      return `
+          background: ${props.theme.buttonPrimaryBackground};
+          border: none;
+          color: ${props.theme.buttonPrimaryText};
+          padding: 8px 20px;
+
+          ${disabledButton}
+      `;
+    }
+
+    return `
+          background: ${props.theme.buttonPrimaryBackground};
+          border: none;
+          color: ${props.theme.buttonPrimaryText};
+          padding: 8px 20px;
+
+          &:hover {
+            background: ${props.theme.buttonPrimaryHover};
+            color: ${props.theme.buttonPrimaryText};
+            }
+            &:active {
+            background: ${props.theme.buttonPrimaryClicked};
+            box-shadow: none;
+            }
+      `;
   }}
 `;
