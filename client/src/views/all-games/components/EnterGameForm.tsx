@@ -141,18 +141,12 @@ export const EnterGameForm: FC<Props> = (props: Props): ReactElement => {
         </SignupQuestionContainer>
       )}
       <ButtonContainer>
-        <SignupConfirmationButton
-          onClick={handleSignup}
-          buttonStyle={ButtonStyle.NORMAL}
-        >
+        <Button onClick={handleSignup} buttonStyle={ButtonStyle.PRIMARY}>
           {t("signup.confirm")}
-        </SignupConfirmationButton>
-        <SignupCancelButton
-          onClick={handleCancel}
-          buttonStyle={ButtonStyle.NORMAL}
-        >
+        </Button>
+        <Button onClick={handleCancel} buttonStyle={ButtonStyle.SECONDARY}>
           {t("signup.cancel")}
-        </SignupCancelButton>
+        </Button>
       </ButtonContainer>
       {errorMessage && (
         <ErrorMessage
@@ -184,16 +178,4 @@ const SignupQuestionContainer = styled.div`
 const ButtonContainer = styled.div`
   display: flex;
   flex-direction: row;
-`;
-
-const SignupConfirmationButton = styled(Button)`
-  width: 50%;
-  background: ${(props) => props.theme.buttonConfirm};
-  border: 1px solid ${(props) => props.theme.buttonBorderConfirm};
-  color: ${(props) => props.theme.textMain};
-`;
-
-const SignupCancelButton = styled(Button)`
-  width: 50%;
-  border: 1px solid ${(props) => props.theme.borderInformative};
 `;

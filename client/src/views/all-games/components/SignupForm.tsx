@@ -100,10 +100,10 @@ export const SignupForm = ({
         options={options}
         selectedValue={firstOption.toString()}
       />
-      <Button onClick={handleSignup} buttonStyle={ButtonStyle.NORMAL}>
+      <Button onClick={handleSignup} buttonStyle={ButtonStyle.PRIMARY}>
         {t("signup.confirm")}
       </Button>
-      <Button onClick={handleCancel} buttonStyle={ButtonStyle.NORMAL}>
+      <Button onClick={handleCancel} buttonStyle={ButtonStyle.SECONDARY}>
         {t("signup.cancel")}
       </Button>
       {errorMessage && (

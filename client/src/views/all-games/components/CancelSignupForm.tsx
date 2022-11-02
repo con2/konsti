@@ -16,19 +16,16 @@ export const CancelSignupForm = ({
 
   return (
     <ButtonContainer>
-      <CancelSignupButton
-        onClick={onConfirmForm}
-        buttonStyle={ButtonStyle.WARNING}
-      >
+      <Button onClick={onConfirmForm} buttonStyle={ButtonStyle.PRIMARY}>
         {t("signup.confirmCancelSignup")}
-      </CancelSignupButton>
+      </Button>
 
-      <CancelFormButton
+      <Button
         onClick={() => onCancelForm()}
-        buttonStyle={ButtonStyle.NORMAL}
+        buttonStyle={ButtonStyle.SECONDARY}
       >
         {t("signup.cancel")}
-      </CancelFormButton>
+      </Button>
     </ButtonContainer>
   );
 };
@@ -36,13 +33,4 @@ export const CancelSignupForm = ({
 const ButtonContainer = styled.div`
   display: flex;
   flex-direction: row;
-`;
-
-const CancelSignupButton = styled(Button)`
-  width: 50%;
-`;
-
-const CancelFormButton = styled(Button)`
-  border: 1px solid ${(props) => props.theme.borderInformative};
-  width: 50%;
 `;

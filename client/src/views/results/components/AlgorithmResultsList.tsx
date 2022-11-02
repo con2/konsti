@@ -51,9 +51,8 @@ export const AlgorithmResultsList = ({ results }: Props): ReactElement => {
         {buttons.map((button) => {
           return (
             <Button
-              buttonStyle={
-                sortedBy === button ? ButtonStyle.DISABLED : ButtonStyle.NORMAL
-              }
+              disabled={sortedBy === button}
+              buttonStyle={ButtonStyle.PRIMARY}
               onClick={() => setSortedBy(button)}
               key={button}
             >

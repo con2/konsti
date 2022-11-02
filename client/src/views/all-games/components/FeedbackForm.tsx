@@ -58,7 +58,8 @@ export const FeedbackForm = ({ game }: Props): ReactElement => {
           />
 
           <Button
-            buttonStyle={submitting ? ButtonStyle.DISABLED : ButtonStyle.NORMAL}
+            disabled={submitting}
+            buttonStyle={ButtonStyle.SECONDARY}
             onClick={async () => await sendFeedbackEvent()}
           >
             {t("button.sendFeedback")}

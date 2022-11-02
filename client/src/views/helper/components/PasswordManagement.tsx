@@ -54,7 +54,7 @@ export const PasswordManagement = (): ReactElement => {
         onChange={handleSerialChange}
       />
 
-      <Button onClick={submitGetUser} buttonStyle={ButtonStyle.NORMAL}>
+      <Button onClick={submitGetUser} buttonStyle={ButtonStyle.PRIMARY}>
         {t("button.find")}
       </Button>
 

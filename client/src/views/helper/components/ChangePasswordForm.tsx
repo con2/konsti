@@ -70,7 +70,7 @@ export const ChangePasswordForm = ({ username }: Props): ReactElement => {
         value={changePasswordInput}
         onChange={handlePasswordChange}
       />
-      <Button onClick={submitUpdatePassword} buttonStyle={ButtonStyle.NORMAL}>
+      <Button onClick={submitUpdatePassword} buttonStyle={ButtonStyle.PRIMARY}>
         {t("button.save")}
       </Button>
 

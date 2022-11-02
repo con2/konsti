@@ -100,7 +100,8 @@ export const LoginForm = (): ReactElement => {
 
       <Button
         type="submit"
-        buttonStyle={isSubmitting ? ButtonStyle.DISABLED : ButtonStyle.NORMAL}
+        disabled={isSubmitting}
+        buttonStyle={ButtonStyle.PRIMARY}
         data-testid="login-button"
       >
         {t("button.login")}

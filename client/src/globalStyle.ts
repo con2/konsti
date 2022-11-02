@@ -32,12 +32,6 @@ export const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
     }
   }
 
-  select {
-    font-size: ${(props) => props.theme.fontSizeNormal};
-    padding: 4px;
-    border-radius: 4px;
-  }
-
   input[type='text'],
   input[type='number'],
   input[type='password'],
