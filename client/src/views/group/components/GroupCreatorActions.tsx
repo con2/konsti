@@ -7,6 +7,7 @@ import {
 } from "client/views/group/groupThunks";
 import { useAppDispatch } from "client/utils/hooks";
 import { ErrorMessage } from "client/components/ErrorMessage";
+import { ButtonGroup } from "client/components/ButtonGroup";
 
 interface Props {
   username: string;
@@ -61,23 +62,25 @@ export const GroupCreatorActions = ({
       {showCloseGroupConfirmation && (
         <>
           <p>{t("group.closeGroupConfirmation")}</p>
-          <Button
-            buttonStyle={ButtonStyle.SECONDARY}
-            onClick={() => {
-              setShowCloseGroupConfirmation(false);
-              setServerError(null);
-            }}
-          >
-            {t("button.cancel")}
-          </Button>
+          <ButtonGroup>
+            <Button
+              buttonStyle={ButtonStyle.SECONDARY}
+              onClick={() => {
+                setShowCloseGroupConfirmation(false);
+                setServerError(null);
+              }}
+            >
+              {t("button.cancel")}
+            </Button>
 
-          <Button
-            disabled={loading}
-            buttonStyle={ButtonStyle.PRIMARY}
-            onClick={async () => await closeGroup()}
-          >
-            {t("button.closeGroup")}
-          </Button>
+            <Button
+              disabled={loading}
+              buttonStyle={ButtonStyle.PRIMARY}
+              onClick={async () => await closeGroup()}
+            >
+              {t("button.closeGroup")}
+            </Button>
+          </ButtonGroup>
         </>
       )}
 

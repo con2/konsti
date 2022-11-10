@@ -10,6 +10,7 @@ import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { Button, ButtonStyle } from "client/components/Button";
 import { ErrorMessage } from "client/components/ErrorMessage";
 import { Dropdown } from "client/components/Dropdown";
+import { ButtonGroup } from "client/components/ButtonGroup";
 
 interface Props {
   game: Game;
@@ -100,12 +101,14 @@ export const SignupForm = ({
         options={options}
         selectedValue={firstOption.toString()}
       />
-      <Button onClick={handleSignup} buttonStyle={ButtonStyle.PRIMARY}>
-        {t("signup.confirm")}
-      </Button>
-      <Button onClick={handleCancel} buttonStyle={ButtonStyle.SECONDARY}>
-        {t("signup.cancel")}
-      </Button>
+      <ButtonGroup>
+        <Button onClick={handleSignup} buttonStyle={ButtonStyle.PRIMARY}>
+          {t("signup.confirm")}
+        </Button>
+        <Button onClick={handleCancel} buttonStyle={ButtonStyle.SECONDARY}>
+          {t("signup.cancel")}
+        </Button>
+      </ButtonGroup>
       {errorMessage && (
         <ErrorMessage
           message={t(errorMessage)}

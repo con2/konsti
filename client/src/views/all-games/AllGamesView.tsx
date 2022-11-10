@@ -24,6 +24,7 @@ import { Input } from "client/components/Input";
 import { SessionStorageValue } from "client/utils/localStorage";
 import { ROW_HEIGHT } from "client/components/EventTypeSelection";
 import { Dropdown } from "client/components/Dropdown";
+import { ButtonGroup } from "client/components/ButtonGroup";
 
 export const MULTIPLE_WHITESPACES_REGEX = /\s\s+/g;
 
@@ -159,31 +160,33 @@ export const AllGamesView = (): ReactElement => {
     <>
       <AllGamesVisibilityBar>
         <ViewButtons>
-          <Button
-            disabled={selectedView === SelectedView.UPCOMING}
-            buttonStyle={ButtonStyle.SECONDARY}
-            onClick={() => setView(SelectedView.UPCOMING)}
-          >
-            {t("upcoming")}
-          </Button>
-
-          <Button
-            disabled={selectedView === SelectedView.ALL}
-            buttonStyle={ButtonStyle.SECONDARY}
-            onClick={() => setView(SelectedView.ALL)}
-          >
-            {t("all")}
-          </Button>
-
-          {activeProgramType === ProgramType.TABLETOP_RPG && (
+          <ButtonGroup>
             <Button
-              disabled={selectedView === SelectedView.REVOLVING_DOOR}
+              disabled={selectedView === SelectedView.UPCOMING}
               buttonStyle={ButtonStyle.SECONDARY}
-              onClick={() => setView(SelectedView.REVOLVING_DOOR)}
+              onClick={() => setView(SelectedView.UPCOMING)}
             >
-              {t("revolvingDoor")}
+              {t("upcoming")}
             </Button>
-          )}
+
+            <Button
+              disabled={selectedView === SelectedView.ALL}
+              buttonStyle={ButtonStyle.SECONDARY}
+              onClick={() => setView(SelectedView.ALL)}
+            >
+              {t("all")}
+            </Button>
+
+            {activeProgramType === ProgramType.TABLETOP_RPG && (
+              <Button
+                disabled={selectedView === SelectedView.REVOLVING_DOOR}
+                buttonStyle={ButtonStyle.SECONDARY}
+                onClick={() => setView(SelectedView.REVOLVING_DOOR)}
+              >
+                {t("revolvingDoor")}
+              </Button>
+            )}
+          </ButtonGroup>
         </ViewButtons>
 
         <TagsDropdownContainer>
@@ -300,11 +303,6 @@ const ViewButtons = styled.div`
   margin: 10px 0 0 0;
   white-space: nowrap;
   height: ${ROW_HEIGHT}px;
-
-  button {
-    margin-top: 0;
-    margin-bottom: 0;
-  }
 `;
 
 const TagsDropdownContainer = styled.div`

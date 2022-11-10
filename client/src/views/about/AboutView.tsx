@@ -7,6 +7,7 @@ import aboutKonstiFi from "client/markdown/AboutKonstiFi.md";
 import aboutKonstiEn from "client/markdown/AboutKonstiEn.md";
 import konstiFaqFi from "client/markdown/KonstiFaqFi.md";
 import konstiFaqEn from "client/markdown/KonstiFaqEn.md";
+import { ButtonGroup } from "client/components/ButtonGroup";
 
 enum AboutSection {
   FAQ = "faq",
@@ -22,21 +23,22 @@ export const AboutView = (): ReactElement => {
 
   return (
     <div>
-      <Button
-        disabled={selectedSection === AboutSection.GENERAL}
-        buttonStyle={ButtonStyle.SECONDARY}
-        onClick={() => setSelectedSection(AboutSection.GENERAL)}
-      >
-        {t("aboutView.general")}
-      </Button>
-      <Button
-        disabled={selectedSection === AboutSection.FAQ}
-        buttonStyle={ButtonStyle.SECONDARY}
-        onClick={() => setSelectedSection(AboutSection.FAQ)}
-      >
-        {t("aboutView.faq")}
-      </Button>
-
+      <ButtonGroup>
+        <Button
+          disabled={selectedSection === AboutSection.GENERAL}
+          buttonStyle={ButtonStyle.SECONDARY}
+          onClick={() => setSelectedSection(AboutSection.GENERAL)}
+        >
+          {t("aboutView.general")}
+        </Button>
+        <Button
+          disabled={selectedSection === AboutSection.FAQ}
+          buttonStyle={ButtonStyle.SECONDARY}
+          onClick={() => setSelectedSection(AboutSection.FAQ)}
+        >
+          {t("aboutView.faq")}
+        </Button>
+      </ButtonGroup>
       {selectedSection === AboutSection.GENERAL && (
         <ReactMarkdown remarkPlugins={[remarkGfm]}>
           {i18n.language === "fi" ? aboutKonstiFi : aboutKonstiEn}

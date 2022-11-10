@@ -12,6 +12,7 @@ import { Button, ButtonStyle } from "client/components/Button";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
 import { useAppSelector } from "client/utils/hooks";
 import { PrivateSignupMessages } from "client/views/helper/components/PrivateSignupMessages";
+import { ButtonGroup } from "client/components/ButtonGroup";
 
 enum HelperTool {
   RESULTS = "results",
@@ -40,32 +41,33 @@ export const HelperView = (): ReactElement => {
 
   return (
     <div>
-      {signupStrategy === SignupStrategy.ALGORITHM && (
+      <ButtonGroup>
+        {signupStrategy === SignupStrategy.ALGORITHM && (
+          <Button
+            disabled={selectedTool === HelperTool.RESULTS}
+            buttonStyle={ButtonStyle.SECONDARY}
+            onClick={() => setSelectedTool(HelperTool.RESULTS)}
+          >
+            {t("helperResults")}
+          </Button>
+        )}
+
         <Button
-          disabled={selectedTool === HelperTool.RESULTS}
+          disabled={selectedTool === HelperTool.PRIVATE_SIGNUP_MESSAGES}
           buttonStyle={ButtonStyle.SECONDARY}
-          onClick={() => setSelectedTool(HelperTool.RESULTS)}
+          onClick={() => setSelectedTool(HelperTool.PRIVATE_SIGNUP_MESSAGES)}
         >
-          {t("helperResults")}
+          {t("helperView.signupQuestionAnswers")}
         </Button>
-      )}
 
-      <Button
-        disabled={selectedTool === HelperTool.PRIVATE_SIGNUP_MESSAGES}
-        buttonStyle={ButtonStyle.SECONDARY}
-        onClick={() => setSelectedTool(HelperTool.PRIVATE_SIGNUP_MESSAGES)}
-      >
-        {t("helperView.signupQuestionAnswers")}
-      </Button>
-
-      <Button
-        disabled={selectedTool === HelperTool.PASSWORD_MANAGEMENT}
-        buttonStyle={ButtonStyle.SECONDARY}
-        onClick={() => setSelectedTool(HelperTool.PASSWORD_MANAGEMENT)}
-      >
-        {t("passwordManagement.helperPasswordManagement")}
-      </Button>
-
+        <Button
+          disabled={selectedTool === HelperTool.PASSWORD_MANAGEMENT}
+          buttonStyle={ButtonStyle.SECONDARY}
+          onClick={() => setSelectedTool(HelperTool.PASSWORD_MANAGEMENT)}
+        >
+          {t("passwordManagement.helperPasswordManagement")}
+        </Button>
+      </ButtonGroup>
       {selectedTool === HelperTool.RESULTS && <HelperResultsList />}
       {selectedTool === HelperTool.PASSWORD_MANAGEMENT && (
         <PasswordManagement />

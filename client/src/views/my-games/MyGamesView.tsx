@@ -23,6 +23,7 @@ import {
   selectActiveFavoritedGames,
   selectActiveSignedGames,
 } from "client/views/my-games/myGamesSlice";
+import { ButtonGroup } from "client/components/ButtonGroup";
 
 export const MyGamesView = (): ReactElement => {
   const { t } = useTranslation();
@@ -58,7 +59,7 @@ export const MyGamesView = (): ReactElement => {
 
   return (
     <MyGamesViewContainer>
-      <div>
+      <ButtonGroup>
         <Button
           disabled={!showAllGames}
           onClick={() => setShowAllGames(false)}
@@ -73,7 +74,7 @@ export const MyGamesView = (): ReactElement => {
         >
           {t("all")}
         </Button>
-      </div>
+      </ButtonGroup>
 
       <MyFavoritesList
         favoritedGames={

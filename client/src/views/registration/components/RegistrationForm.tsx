@@ -182,13 +182,13 @@ export const RegistrationForm = (): ReactElement => {
           <FormFieldError>{errors.registerDescription.message}</FormFieldError>
         )}
 
-        <Accordion toggleButton={t("privacyPolicyButton")}>
+        <PrivacyPolicyAccordion toggleButton={t("privacyPolicyButton")}>
           <PrivacyPolicyContent>
             <ReactMarkdown remarkPlugins={[remarkGfm]}>
               {i18n.language === "fi" ? privacyPolicyFi : privacyPolicyEn}
             </ReactMarkdown>
           </PrivacyPolicyContent>
-        </Accordion>
+        </PrivacyPolicyAccordion>
 
         <Button
           disabled={isSubmitting}
@@ -263,6 +263,10 @@ const StyledCheckbox = styled.input`
 
 const SmallLabel = styled.label`
   font-size: 14px;
+`;
+
+const PrivacyPolicyAccordion = styled(Accordion)`
+  margin-bottom: 16px;
 `;
 
 const PrivacyPolicyContent = styled.div`

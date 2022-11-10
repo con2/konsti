@@ -14,15 +14,19 @@ export const TestValuePicker = (): ReactElement => {
 
   return (
     <div>
-      <Accordion toggleButton={t("testValues.buttonText")}>
+      <StyledAccordion toggleButton={t("testValues.buttonText")}>
         <TestValueSelectors>
           <TestTimeSelector testTime={testTime} />
           {config.enableStrategyTestValue && <SignupStrategySelector />}
         </TestValueSelectors>
-      </Accordion>
+      </StyledAccordion>
     </div>
   );
 };
+
+const StyledAccordion = styled(Accordion)`
+  margin: 8px;
+`;
 
 const TestValueSelectors = styled.div`
   padding: 4px;

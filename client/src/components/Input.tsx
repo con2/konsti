@@ -8,7 +8,7 @@ interface Props {
   value: string;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
   placeholder: string;
-  resetValue: () => void;
+  resetValue?: () => void;
 }
 
 export const Input = ({
@@ -29,11 +29,13 @@ export const Input = ({
         placeholder={placeholder}
       />
 
-      <StyledIcon
-        onClick={resetValue}
-        icon="xmark"
-        aria-label={t("iconAltText.resetInput")}
-      />
+      {resetValue && (
+        <StyledIcon
+          onClick={resetValue}
+          icon="xmark"
+          aria-label={t("iconAltText.resetInput")}
+        />
+      )}
     </InputContainer>
   );
 };
