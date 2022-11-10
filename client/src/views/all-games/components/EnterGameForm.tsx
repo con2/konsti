@@ -20,6 +20,7 @@ import {
 } from "client/views/group/groupThunks";
 import { sharedConfig } from "shared/config/sharedConfig";
 import { TextArea } from "client/components/TextArea";
+import { ButtonGroup } from "client/components/ButtonGroup";
 
 const { directSignupAlwaysOpen } = sharedConfig;
 
@@ -140,14 +141,14 @@ export const EnterGameForm: FC<Props> = (props: Props): ReactElement => {
           <span>{userSignupMessage.length} / 140</span>
         </SignupQuestionContainer>
       )}
-      <ButtonContainer>
+      <ButtonGroup>
         <Button onClick={handleSignup} buttonStyle={ButtonStyle.PRIMARY}>
           {t("signup.confirm")}
         </Button>
         <Button onClick={handleCancel} buttonStyle={ButtonStyle.SECONDARY}>
           {t("signup.cancel")}
         </Button>
-      </ButtonContainer>
+      </ButtonGroup>
       {errorMessage && (
         <ErrorMessage
           message={t(errorMessage)}
@@ -173,9 +174,4 @@ const SignupForm = styled.form`
 const SignupQuestionContainer = styled.div`
   display: flex;
   flex-direction: column;
-`;
-
-const ButtonContainer = styled.div`
-  display: flex;
-  flex-direction: row;
 `;

@@ -16,6 +16,7 @@ import { SignupQuestionList } from "client/views/admin/components/SignupQuestion
 import { Dropdown, Option } from "client/components/Dropdown";
 import { SignupStrategySelector } from "client/test/test-components/SignupStrategySelector";
 import { sharedConfig } from "shared/config/sharedConfig";
+import { ButtonGroup } from "client/components/ButtonGroup";
 
 export const AdminView = (): ReactElement => {
   const games = useAppSelector((state) => state.allGames.games);
@@ -131,7 +132,7 @@ export const AdminView = (): ReactElement => {
 
   return (
     <div>
-      <div>
+      <ButtonGroup>
         <Button
           disabled={submitting}
           buttonStyle={ButtonStyle.PRIMARY}
@@ -161,7 +162,7 @@ export const AdminView = (): ReactElement => {
         >
           {appOpen ? t("button.closeApp") : t("button.openApp")}
         </Button>
-      </div>
+      </ButtonGroup>
 
       {submitting && <p>{t("loading")}</p>}
 
@@ -188,24 +189,25 @@ export const AdminView = (): ReactElement => {
             {!activeSignupTime && <p>{t("noActiveTime")}</p>}
           </div>
 
-          <Button
-            disabled={submitting}
-            buttonStyle={ButtonStyle.PRIMARY}
-            onClick={() => {
-              submitTime();
-            }}
-          >
-            {t("button.saveTime")}
-          </Button>
+          <ButtonGroup>
+            <Button
+              disabled={submitting}
+              buttonStyle={ButtonStyle.PRIMARY}
+              onClick={() => {
+                submitTime();
+              }}
+            >
+              {t("button.saveTime")}
+            </Button>
 
-          <Dropdown
-            options={getDropdownItems()}
-            selectedValue={selectedSignupTime}
-            onChange={(event: ChangeEvent<HTMLSelectElement>) =>
-              setSelectedSignupTime(event.target.value)
-            }
-          />
-
+            <Dropdown
+              options={getDropdownItems()}
+              selectedValue={selectedSignupTime}
+              onChange={(event: ChangeEvent<HTMLSelectElement>) =>
+                setSelectedSignupTime(event.target.value)
+              }
+            />
+          </ButtonGroup>
           <SignupStrategySelector />
 
           <HiddenGamesList hiddenGames={hiddenGames} />

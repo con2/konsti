@@ -10,6 +10,8 @@ import {
   submitDeleteSignupQuestion,
   submitUpdateHidden,
 } from "client/views/admin/adminThunks";
+import { ButtonGroup } from "client/components/ButtonGroup";
+import { Input } from "client/components/Input";
 
 interface Props {
   game: Game;
@@ -125,37 +127,42 @@ export const AdminActionCard = ({ game }: Props): ReactElement => {
           <img alt={t("loading")} src={loaderImage} height="24" width="24" />
         )}
       </HeaderContainer>
-      <Button
-        disabled={submitting}
-        buttonStyle={ButtonStyle.PRIMARY}
-        onClick={async () => await updateHidden()}
-      >
-        {hidden ? t("button.show") : t("button.hide")}
-      </Button>
-      {hasSignupQuestion && (
+      <ButtonGroup>
         <Button
+          key="hideButton"
           disabled={submitting}
           buttonStyle={ButtonStyle.PRIMARY}
-          onClick={deleteSignupQuestion}
+          onClick={async () => await updateHidden()}
         >
-          {t("button.removeSignupQuestion")}
+          {hidden ? t("button.show") : t("button.hide")}
         </Button>
-      )}
-      {!hasSignupQuestion && !signupQuestionInputVisible && (
-        <Button
-          disabled={submitting}
-          buttonStyle={ButtonStyle.PRIMARY}
-          onClick={() =>
-            setSignupQuestionInputVisible(!signupQuestionInputVisible)
-          }
-        >
-          {t("button.addSignupQuestion")}
-        </Button>
-      )}
+        {hasSignupQuestion && (
+          <Button
+            key="signUpButton"
+            disabled={submitting}
+            buttonStyle={ButtonStyle.PRIMARY}
+            onClick={deleteSignupQuestion}
+          >
+            {t("button.removeSignupQuestion")}
+          </Button>
+        )}
+        {!hasSignupQuestion && !signupQuestionInputVisible && (
+          <Button
+            key="addSignUpQuestionButton"
+            disabled={submitting}
+            buttonStyle={ButtonStyle.PRIMARY}
+            onClick={() =>
+              setSignupQuestionInputVisible(!signupQuestionInputVisible)
+            }
+          >
+            {t("button.addSignupQuestion")}
+          </Button>
+        )}
+      </ButtonGroup>
       {signupQuestionInputVisible && (
         <>
           <p>{t("gameDetails.addSignupTextField")}</p>
-          <FormInput
+          <Input
             type={"text"}
             key="new-password"
             placeholder={t("gameDetails.addSignupTextField")}
@@ -173,7 +180,7 @@ export const AdminActionCard = ({ game }: Props): ReactElement => {
           <label id="private-question-checkbox-label">
             {t("privateQuestion")}
           </label>
-          <p>
+          <ButtonGroup>
             <Button
               onClick={addSignupQuestion}
               buttonStyle={ButtonStyle.PRIMARY}
@@ -187,7 +194,7 @@ export const AdminActionCard = ({ game }: Props): ReactElement => {
             >
               {t("button.cancel")}
             </Button>
-          </p>
+          </ButtonGroup>
         </>
       )}
     </Container>
@@ -198,10 +205,10 @@ const Container = styled.div`
   border: 1px solid ${(props) => props.theme.borderActive};
   border-radius: 4px;
   margin: 8px 0;
-  padding: 0 8px;
+  padding: 16px 8px 8px 8px;
   h4 {
     margin-bottom: 4px;
-    margin-top: 16px;
+    margin-top: 4px;
   }
 `;
 
@@ -209,13 +216,4 @@ const HeaderContainer = styled.div`
   align-items: center;
   display: flex;
   gap: 8px;
-`;
-
-const FormInput = styled.input`
-  border: 1px solid ${(props) => props.theme.borderInactive};
-  color: ${(props) => props.theme.buttonText};
-  height: 34px;
-  padding: 0 0 0 10px;
-  width: 100%;
-  margin-bottom: 8px;
 `;

@@ -2,6 +2,7 @@ import React, { ReactElement } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { Button, ButtonStyle } from "client/components/Button";
+import { ButtonGroup } from "client/components/ButtonGroup";
 
 interface Props {
   onCancelForm: () => void;
@@ -15,7 +16,7 @@ export const CancelSignupForm = ({
   const { t } = useTranslation();
 
   return (
-    <ButtonContainer>
+    <ButtonGroup>
       <Button onClick={onConfirmForm} buttonStyle={ButtonStyle.PRIMARY}>
         {t("signup.confirmCancelSignup")}
       </Button>
@@ -26,11 +27,6 @@ export const CancelSignupForm = ({
       >
         {t("signup.cancel")}
       </Button>
-    </ButtonContainer>
+    </ButtonGroup>
   );
 };
-
-const ButtonContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-`;

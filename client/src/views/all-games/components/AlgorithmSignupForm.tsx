@@ -106,7 +106,7 @@ export const AlgorithmSignupForm: FC<Props> = ({
           {lotterySignupOpen &&
             signedGamesForTimeslot.length < 3 &&
             !signupFormOpen && (
-              <Button
+              <ButtonWithMargin
                 onClick={() => {
                   if (groupMembers.length > game.maxAttendance) {
                     setErrorMessage(t("group.groupTooBigWarning"));
@@ -117,7 +117,7 @@ export const AlgorithmSignupForm: FC<Props> = ({
                 buttonStyle={ButtonStyle.PRIMARY}
               >
                 {t("signup.lotterySignup")}
-              </Button>
+              </ButtonWithMargin>
             )}
         </>
       )}
@@ -131,12 +131,12 @@ export const AlgorithmSignupForm: FC<Props> = ({
           </SignedGameContainer>
 
           {isGroupCreator && !cancelSignupFormOpen && (
-            <Button
+            <ButtonWithMargin
               onClick={() => setCancelSignupFormOpen(true)}
               buttonStyle={ButtonStyle.SECONDARY}
             >
               {t("button.cancel")}
-            </Button>
+            </ButtonWithMargin>
           )}
 
           {cancelSignupFormOpen && (
@@ -169,6 +169,7 @@ export const AlgorithmSignupForm: FC<Props> = ({
 const SignedGameContainer = styled.div`
   border: 1px solid ${(props) => props.theme.infoBorder};
   padding: 8px 6px;
+  margin-bottom: 8px;
   border-radius: 5px;
   border-left: 5px solid ${(props) => props.theme.infoBorder};
   background-color: ${(props) => props.theme.infoBackground};
@@ -176,4 +177,8 @@ const SignedGameContainer = styled.div`
 
 const BoldText = styled.span`
   font-weight: 600;
+`;
+
+const ButtonWithMargin = styled(Button)`
+  margin-bottom: 8px;
 `;
