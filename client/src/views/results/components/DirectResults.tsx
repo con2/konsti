@@ -12,6 +12,7 @@ import { Game } from "shared/typings/models/game";
 import { selectActiveGames } from "client/views/admin/adminSlice";
 import { Input } from "client/components/Input";
 import { MULTIPLE_WHITESPACES_REGEX } from "client/views/all-games/AllGamesView";
+import { ButtonGroup } from "client/components/ButtonGroup";
 
 export const DirectResults = (): ReactElement => {
   const { t } = useTranslation();
@@ -94,7 +95,7 @@ export const DirectResults = (): ReactElement => {
         placeholder={t("findSignupOrGame")}
         resetValue={() => setSearchTerm("")}
       />
-      <div>
+      <ButtonGroup>
         <Button
           onClick={() => setShowAllGames(false)}
           disabled={!showAllGames}
@@ -109,7 +110,7 @@ export const DirectResults = (): ReactElement => {
         >
           {t("all")}
         </Button>
-      </div>
+      </ButtonGroup>
 
       {filteredGames.length === 0 && <h3>{t("resultsView.noResults")}</h3>}
 

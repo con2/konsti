@@ -9,6 +9,7 @@ interface Props {
   toggleButton: string | ReactElement;
   children?: ReactNode;
   initialValue?: boolean;
+  className?: string;
 }
 
 export const Accordion = ({
@@ -16,6 +17,7 @@ export const Accordion = ({
   toggleButton,
   children,
   initialValue = false,
+  className,
 }: Props): ReactElement => {
   const { t } = useTranslation();
 
@@ -26,7 +28,7 @@ export const Accordion = ({
   };
 
   return (
-    <div>
+    <div className={className}>
       <AccordionToggle
         onClick={() => onClick()}
         buttonStyle={buttonStyle}
