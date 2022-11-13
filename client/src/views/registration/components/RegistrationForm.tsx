@@ -262,7 +262,7 @@ const StyledCheckbox = styled.input`
 `;
 
 const SmallLabel = styled.label`
-  font-size: 14px;
+  font-size: ${(props) => props.theme.fontSizeSmaller};
 `;
 
 const PrivacyPolicyAccordion = styled(Accordion)`

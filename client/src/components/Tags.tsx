@@ -28,6 +28,6 @@ const TagElement = styled.span`
   text-align: center;
   padding: 5px 8px;
   margin-bottom: 4px;
-  font-size: 12px;
+  font-size: ${(props) => props.theme.fontSizeSmaller};
   color: ${(props) => props.theme.textTag};
 `;
