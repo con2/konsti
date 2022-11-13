@@ -13,6 +13,7 @@ import { selectActiveGames } from "client/views/admin/adminSlice";
 import { Input } from "client/components/Input";
 import { MULTIPLE_WHITESPACES_REGEX } from "client/views/all-games/AllGamesView";
 import { ButtonGroup } from "client/components/ButtonGroup";
+import { Tags } from "client/components/Tags";
 
 export const DirectResults = (): ReactElement => {
   const { t } = useTranslation();
@@ -144,11 +145,8 @@ export const DirectResults = (): ReactElement => {
 
                   return (
                     <div key={game.gameId}>
-                      <ResultTitle key={game.gameId}>
-                        {game.title}{" "}
-                        <Tag>{t(`programType.${game.programType}`)}</Tag>{" "}
-                      </ResultTitle>
-
+                      <ResultTitle key={game.gameId}>{game.title} </ResultTitle>
+                      <Tags tags={[t(`programType.${game.programType}`)]} />
                       <PlayerContainer>
                         <PlayerCount
                           onClick={() => {
@@ -286,15 +284,4 @@ const PlayerCount = styled.div`
 
 const SignupQuestion = styled.p`
   font-weight: 600;
-`;
-
-const Tag = styled.span`
-  border-radius: 4px;
-  background: ${(props) => props.theme.backgroundTag};
-  padding: 4px;
-  font-size: 12px;
-  color: ${(props) => props.theme.textTag};
-  white-space: nowrap;
-  margin-top: 4px;
-  max-width: fit-content;
 `;

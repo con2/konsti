@@ -15,6 +15,7 @@ import { isAlreadyEntered, isAlreadySigned } from "./allGamesUtils";
 import { PopularityInfo } from "client/components/PopularityInfo";
 import { sharedConfig } from "shared/config/sharedConfig";
 import { GameDetailsView } from "client/views/all-games/components/GameDetailsView";
+import { Tags } from "client/components/Tags";
 
 interface Props {
   game: Game;
@@ -82,6 +83,14 @@ export const GameEntry = ({
     ? isEnteredCurrentGame
     : isSignedForCurrentGame;
 
+  const tags = [t(`programType.${game.programType}`)];
+  if (game.gameSystem) {
+    tags.push(game.gameSystem);
+  }
+  if (game.tags.includes(Tag.IN_ENGLISH)) {
+    tags.push(t("gameTags.inEnglish"));
+  }
+
   return (
     <GameContainer
       key={game.gameId}
@@ -98,15 +107,7 @@ export const GameEntry = ({
               {t("signup.signupAlwaysOpen")}
             </SignupAlwaysOpenHelp>
           )}
-          <GameTags>
-            <TagColumn>
-              <GameTag>{t(`programType.${game.programType}`)}</GameTag>
-              {game.gameSystem && <GameTag>{game.gameSystem}</GameTag>}
-              {game.tags.includes(Tag.IN_ENGLISH) && (
-                <GameTag>{t("gameTags.inEnglish")}</GameTag>
-              )}
-            </TagColumn>
-          </GameTags>
+          <Tags tags={tags} />
           <p>
             <RowItem>
               {t("signup.expectedDuration", {
