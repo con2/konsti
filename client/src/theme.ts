@@ -55,10 +55,10 @@ const mainColor: Palette = green;
 
 export const theme = {
   // Colors
-  backgroundActive: mainColor.light,
   backgroundBody: white,
   backgroundHighlight: white,
-  backgroundHover: gray.light,
+  backgroundHover: addOpacity(mainColor.primary, "0.3"),
+  backgroundSelected: addOpacity(mainColor.primary, "0.6"),
   backgroundMain: white,
   backgroundTag: addOpacity(mainColor.primary, "0.3"),
   backgroundWarning: red.lighter,
@@ -67,7 +67,6 @@ export const theme = {
   borderActive: mainColor.primary,
   borderDisabled: mainColor.lighter,
   borderInactive: gray.primary,
-  borderInformative: black,
   borderWarning: red.primary,
 
   buttonPrimaryBackground: mainColor.primary,
@@ -80,31 +79,24 @@ export const theme = {
   buttonSecondaryClicked: addOpacity(mainColor.primary, "0.5"),
 
   buttonBackgroundDisabled: gray.light,
-  buttonBorderConfirm: yellow.light,
-  buttonWarning: red.light,
-  buttonWarningHover: addOpacity(red.light, "0.80"),
-  buttonBorderWarning: red.light,
-  buttonConfirm: yellow.light,
   buttonText: black,
-  buttonTextWarning: black,
 
   errorCloseButtonBackground: red.light,
   errorCloseButtonBorder: red.primary,
 
   textError: red.primary,
-  textLink: blue.dark,
+  textLink: mainColor.dark,
   textMain: black,
   textSuccess: mainColor.dark,
   textTag: black,
-  textWarning: red.primary,
 
   iconFavorited: red.light,
 
   inputBorderFocus: mainColor.primary,
   inputTextPlaceholder: gray.light,
 
-  resultsFoldBackground: gray.lighter,
-  resultsFoldBorder: gray,
+  resultsFoldBackground: white,
+  resultsFoldBorder: gray.primary,
   warningBackground: yellow.lighter,
   warningBorder: yellow.primary,
 
@@ -116,6 +108,7 @@ export const theme = {
   breakpointDesktop: "1024px",
 
   // Font sizes
+  fontSizeSmaller: "12px",
   fontSizeSmall: "14px",
   fontSizeNormal: "16px",
   fontSizeLarge: "20px",
