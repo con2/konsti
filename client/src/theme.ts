@@ -60,7 +60,7 @@ export const theme = {
   backgroundHighlight: white,
   backgroundHover: gray.light,
   backgroundMain: white,
-  backgroundTag: blue.light,
+  backgroundTag: addOpacity(mainColor.primary, "0.3"),
   backgroundWarning: red.lighter,
   backgroundDisabled: gray.light,
 
@@ -95,7 +95,7 @@ export const theme = {
   textLink: blue.dark,
   textMain: black,
   textSuccess: mainColor.dark,
-  textTag: white,
+  textTag: black,
   textWarning: red.primary,
 
   iconFavorited: red.light,
