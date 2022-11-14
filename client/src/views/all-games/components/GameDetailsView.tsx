@@ -46,6 +46,10 @@ export const GameDetailsView = ({
       <span>{`${shortDescription} `}</span>
       {!isAlwaysExpanded && (
         <ButtonContainer>
+          <ArrowIcon
+            aria-hidden="true"
+            icon={isExpanded ? "angle-up" : "angle-down"}
+          />
           <ExpandButton
             aria-controls={id}
             aria-expanded={isExpanded}
@@ -55,10 +59,6 @@ export const GameDetailsView = ({
           >
             {isExpanded ? t("gameInfo.showLess") : t("gameInfo.showMore")}
           </ExpandButton>
-          <ArrowIcon
-            aria-hidden="true"
-            icon={isExpanded ? "angle-up" : "angle-down"}
-          />
         </ButtonContainer>
       )}
       {isExpanded && (
@@ -71,7 +71,7 @@ export const GameDetailsView = ({
 };
 
 const ArrowIcon = styled(FontAwesomeIcon)`
-  margin: 0 0 4px 8px;
+  margin: 0 8px 4px 0;
   font-size: 16px;
 `;
 

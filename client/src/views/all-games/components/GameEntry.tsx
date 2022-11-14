@@ -241,28 +241,6 @@ const HeaderContainer = styled.div`
   }
 `;
 
-const GameTag = styled.span`
-  display: flex;
-  border-radius: 8px;
-  align-items: center;
-  text-align: center;
-  background: ${(props) => props.theme.backgroundTag};
-  padding: 5px 8px;
-  margin-bottom: 4px;
-  font-size: 12px;
-  color: ${(props) => props.theme.textTag};
-  margin-left: 8px;
-
-  &:first-child {
-    margin-left: 0;
-  }
-`;
-
-const TagColumn = styled.div`
-  display: flex;
-  margin-top: 4px;
-`;
-
 const GameContainer = styled.div<{ signed: boolean }>`
   display: flex;
   flex-direction: column;
@@ -272,7 +250,7 @@ const GameContainer = styled.div<{ signed: boolean }>`
   border-radius: 4px;
   background: #fafafa;
   min-height: 160px;
-  box-shadow: 1px 8px 15px 0 rgba(0, 0, 0, 0.42);
+  box-shadow: 1px 6px 12px 0 rgba(0, 0, 0, 0.34);
   color: #3d3d3d;
 
   @media (max-width: ${(props) => props.theme.breakpointPhone}) {
@@ -280,13 +258,11 @@ const GameContainer = styled.div<{ signed: boolean }>`
     margin-right: 0;
   }
 
-  ${(props) => props.signed && `border: 1px solid ${props.theme.infoBorder};`}
   ${(props) =>
-    props.signed && `border-left: 5px solid ${props.theme.infoBorder};`}
-`;
-
-const GameTags = styled.div`
-  display: flex;
+    props.signed && `border: 1px solid ${props.theme.borderCardHighlight};`}
+  ${(props) =>
+    props.signed &&
+    `border-left: 5px solid ${props.theme.borderCardHighlight};`}
 `;
 
 const FavoriteIcon = styled(FontAwesomeIcon)`
