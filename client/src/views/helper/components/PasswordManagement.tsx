@@ -4,7 +4,7 @@ import styled, { css } from "styled-components";
 import { getUserBySerialOrUsername } from "client/services/userServices";
 import { Button, ButtonStyle } from "client/components/Button";
 import { ChangePasswordForm } from "client/views/helper/components/ChangePasswordForm";
-import { Input } from "client/components/Input";
+import { ControlledInput } from "client/components/ControlledInput";
 
 export const PasswordManagement = (): ReactElement => {
   const { t } = useTranslation();
@@ -48,8 +48,7 @@ export const PasswordManagement = (): ReactElement => {
       <h3>{t("passwordManagement.helperPasswordManagement")}</h3>
       <p>{t("passwordManagement.userCodeOrUsername")}</p>
 
-      <Input
-        type="text"
+      <ControlledInput
         key="user-serial"
         placeholder={t("passwordManagement.userCodeOrUsername")}
         value={userSerialInput}

@@ -10,7 +10,7 @@ import { getUpcomingGames } from "client/utils/getUpcomingGames";
 import { Button, ButtonStyle } from "client/components/Button";
 import { Game } from "shared/typings/models/game";
 import { selectActiveGames } from "client/views/admin/adminSlice";
-import { Input } from "client/components/Input";
+import { ControlledInput } from "client/components/ControlledInput";
 import { MULTIPLE_WHITESPACES_REGEX } from "client/views/all-games/AllGamesView";
 import { ButtonGroup } from "client/components/ButtonGroup";
 import { Tags } from "client/components/Tags";
@@ -89,8 +89,7 @@ export const DirectResults = (): ReactElement => {
     <div>
       <h2>{t("resultsView.allSignupResults")}</h2>
 
-      <Input
-        type="text"
+      <ControlledInput
         value={searchTerm}
         onChange={(event) => setSearchTerm(event.target.value)}
         placeholder={t("findSignupOrGame")}
