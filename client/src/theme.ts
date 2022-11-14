@@ -68,6 +68,7 @@ export const theme = {
   borderDisabled: mainColor.lighter,
   borderInactive: gray.primary,
   borderWarning: red.primary,
+  borderCardHighlight: mainColor.light,
 
   buttonPrimaryBackground: mainColor.primary,
   buttonPrimaryHover: addOpacity(mainColor.dark, "0.85"),

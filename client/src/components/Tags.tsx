@@ -18,6 +18,7 @@ export const Tags = ({ tags }: Props): ReactElement => {
 const TagsContainer = styled.div`
   display: flex;
   gap: 8px;
+  flex-wrap: wrap;
 `;
 
 const TagElement = styled.span`
@@ -30,4 +31,6 @@ const TagElement = styled.span`
   margin-bottom: 4px;
   font-size: ${(props) => props.theme.fontSizeSmaller};
   color: ${(props) => props.theme.textTag};
+  white-space: nowrap;
+  text-overflow: ellipsis;
 `;
