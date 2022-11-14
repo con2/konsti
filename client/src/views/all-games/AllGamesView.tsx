@@ -159,54 +159,46 @@ export const AllGamesView = (): ReactElement => {
   return (
     <>
       <HeaderContainer>
-        <AllGamesVisibilityBar>
-          <ButtonGroup>
+        <ButtonGroup>
+          <Button
+            disabled={selectedView === SelectedView.UPCOMING}
+            buttonStyle={ButtonStyle.SECONDARY}
+            onClick={() => setView(SelectedView.UPCOMING)}
+          >
+            {t("upcoming")}
+          </Button>
+
+          <Button
+            disabled={selectedView === SelectedView.ALL}
+            buttonStyle={ButtonStyle.SECONDARY}
+            onClick={() => setView(SelectedView.ALL)}
+          >
+            {t("all")}
+          </Button>
+
+          {activeProgramType === ProgramType.TABLETOP_RPG && (
             <Button
-              disabled={selectedView === SelectedView.UPCOMING}
+              disabled={selectedView === SelectedView.REVOLVING_DOOR}
               buttonStyle={ButtonStyle.SECONDARY}
-              onClick={() => setView(SelectedView.UPCOMING)}
+              onClick={() => setView(SelectedView.REVOLVING_DOOR)}
             >
-              {t("upcoming")}
+              {t("revolvingDoor")}
             </Button>
+          )}
+        </ButtonGroup>
 
-            <Button
-              disabled={selectedView === SelectedView.ALL}
-              buttonStyle={ButtonStyle.SECONDARY}
-              onClick={() => setView(SelectedView.ALL)}
-            >
-              {t("all")}
-            </Button>
-
-            {activeProgramType === ProgramType.TABLETOP_RPG && (
-              <Button
-                disabled={selectedView === SelectedView.REVOLVING_DOOR}
-                buttonStyle={ButtonStyle.SECONDARY}
-                onClick={() => setView(SelectedView.REVOLVING_DOOR)}
-              >
-                {t("revolvingDoor")}
-              </Button>
-            )}
-          </ButtonGroup>
-
-          <TagsDropdownContainer>
-            <TagsDropdown>
-              <ChooseTagsInstruction>{t("chooseTag")} </ChooseTagsInstruction>
-              <Dropdown
-                onChange={(event: ChangeEvent<HTMLSelectElement>) => {
-                  const tag = event.target.value;
-                  setSelectedTag(tag);
-                  sessionStorage.setItem(
-                    SessionStorageValue.ALL_GAMES_TAG,
-                    tag
-                  );
-                }}
-                options={options}
-                selectedValue={selectedTag}
-              />
-            </TagsDropdown>
-          </TagsDropdownContainer>
-        </AllGamesVisibilityBar>
-
+        <div>
+          <ChooseTagsInstruction>{t("chooseTag")} </ChooseTagsInstruction>
+          <Dropdown
+            onChange={(event: ChangeEvent<HTMLSelectElement>) => {
+              const tag = event.target.value;
+              setSelectedTag(tag);
+              sessionStorage.setItem(SessionStorageValue.ALL_GAMES_TAG, tag);
+            }}
+            options={options}
+            selectedValue={selectedTag}
+          />
+        </div>
         {selectedView === SelectedView.REVOLVING_DOOR && (
           <>
             <RevolvingDoorInstruction>
@@ -299,27 +291,6 @@ const HeaderContainer = styled.div`
   display: flex;
   gap: 8px;
   flex-direction: column;
-`;
-
-const AllGamesVisibilityBar = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
-
-const TagsDropdownContainer = styled.div`
-  position: relative;
-`;
-
-const TagsDropdown = styled.div`
-  margin: 10px 0 0 0;
-  height: ${ROW_HEIGHT}px;
-
-  @media (max-width: ${(props) => props.theme.breakpointPhone}) {
-    position: absolute;
-    margin: 0;
-    bottom: 42px;
-    right: 0;
-  }
 `;
 
 const ChooseTagsInstruction = styled.span`
