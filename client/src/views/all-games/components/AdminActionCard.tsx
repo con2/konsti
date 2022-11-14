@@ -11,7 +11,7 @@ import {
   submitUpdateHidden,
 } from "client/views/admin/adminThunks";
 import { ButtonGroup } from "client/components/ButtonGroup";
-import { Input } from "client/components/Input";
+import { ControlledInput } from "client/components/ControlledInput";
 
 interface Props {
   game: Game;
@@ -162,8 +162,7 @@ export const AdminActionCard = ({ game }: Props): ReactElement => {
       {signupQuestionInputVisible && (
         <>
           <p>{t("gameDetails.addSignupTextField")}</p>
-          <Input
-            type={"text"}
+          <ControlledInput
             key="new-password"
             placeholder={t("gameDetails.addSignupTextField")}
             value={signupQuestionInput}

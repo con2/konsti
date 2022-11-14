@@ -20,7 +20,7 @@ import { getTime } from "client/utils/getTime";
 import { useAppSelector } from "client/utils/hooks";
 import { Button, ButtonStyle } from "client/components/Button";
 import { selectActiveGames } from "client/views/admin/adminSlice";
-import { Input } from "client/components/Input";
+import { ControlledInput } from "client/components/ControlledInput";
 import { SessionStorageValue } from "client/utils/localStorage";
 import { ROW_HEIGHT } from "client/components/EventTypeSelection";
 import { Dropdown } from "client/components/Dropdown";
@@ -158,8 +158,8 @@ export const AllGamesView = (): ReactElement => {
 
   return (
     <>
-      <AllGamesVisibilityBar>
-        <ViewButtons>
+      <HeaderContainer>
+        <AllGamesVisibilityBar>
           <ButtonGroup>
             <Button
               disabled={selectedView === SelectedView.UPCOMING}
@@ -187,44 +187,45 @@ export const AllGamesView = (): ReactElement => {
               </Button>
             )}
           </ButtonGroup>
-        </ViewButtons>
 
-        <TagsDropdownContainer>
-          <TagsDropdown>
-            <ChooseTagsInstruction>{t("chooseTag")} </ChooseTagsInstruction>
-            <Dropdown
-              onChange={(event: ChangeEvent<HTMLSelectElement>) => {
-                const tag = event.target.value;
-                setSelectedTag(tag);
-                sessionStorage.setItem(SessionStorageValue.ALL_GAMES_TAG, tag);
-              }}
-              options={options}
-              selectedValue={selectedTag}
-            />
-          </TagsDropdown>
-        </TagsDropdownContainer>
-      </AllGamesVisibilityBar>
+          <TagsDropdownContainer>
+            <TagsDropdown>
+              <ChooseTagsInstruction>{t("chooseTag")} </ChooseTagsInstruction>
+              <Dropdown
+                onChange={(event: ChangeEvent<HTMLSelectElement>) => {
+                  const tag = event.target.value;
+                  setSelectedTag(tag);
+                  sessionStorage.setItem(
+                    SessionStorageValue.ALL_GAMES_TAG,
+                    tag
+                  );
+                }}
+                options={options}
+                selectedValue={selectedTag}
+              />
+            </TagsDropdown>
+          </TagsDropdownContainer>
+        </AllGamesVisibilityBar>
 
-      {selectedView === SelectedView.REVOLVING_DOOR && (
-        <>
-          <RevolvingDoorInstruction>
-            {t("revolvingDoorInstruction")}
-          </RevolvingDoorInstruction>
-          <div>
-            <h3>{t("currentlyRunningRevolvingDoor")}</h3>
-            {getRunningRevolvingDoorGames(activeVisibleGames, t)}
-          </div>
-        </>
-      )}
+        {selectedView === SelectedView.REVOLVING_DOOR && (
+          <>
+            <RevolvingDoorInstruction>
+              {t("revolvingDoorInstruction")}
+            </RevolvingDoorInstruction>
+            <div>
+              <h3>{t("currentlyRunningRevolvingDoor")}</h3>
+              {getRunningRevolvingDoorGames(activeVisibleGames, t)}
+            </div>
+          </>
+        )}
 
-      <Input
-        type="text"
-        value={searchTerm}
-        onChange={(event) => setSearchTerm(event.target.value)}
-        placeholder={t("findSignupOrGameSystem")}
-        resetValue={() => setSearchTerm("")}
-      />
-
+        <ControlledInput
+          value={searchTerm}
+          onChange={(event) => setSearchTerm(event.target.value)}
+          placeholder={t("findSignupOrGameSystem")}
+          resetValue={() => setSearchTerm("")}
+        />
+      </HeaderContainer>
       {loading ? <Loading /> : memoizedGames}
     </>
   );
@@ -294,15 +295,15 @@ const getRunningRevolvingDoorGames = (
   });
 };
 
+const HeaderContainer = styled.div`
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+`;
+
 const AllGamesVisibilityBar = styled.div`
   display: flex;
   justify-content: space-between;
-`;
-
-const ViewButtons = styled.div`
-  margin: 10px 0 0 0;
-  white-space: nowrap;
-  height: ${ROW_HEIGHT}px;
 `;
 
 const TagsDropdownContainer = styled.div`
