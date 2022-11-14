@@ -6,7 +6,7 @@ import { Button, ButtonStyle } from "client/components/Button";
 import { updateUserPassword } from "client/services/userServices";
 import { passwordLength } from "client/utils/validate";
 import { useAppSelector } from "client/utils/hooks";
-import { Input } from "client/components/Input";
+import { ControlledInput } from "client/components/ControlledInput";
 
 interface Props {
   username: string;
@@ -64,7 +64,7 @@ export const ChangePasswordForm = ({ username }: Props): ReactElement => {
   return (
     <>
       <p>{t("passwordManagement.newPassword")}</p>
-      <Input
+      <ControlledInput
         type={passwordFieldType}
         key="new-password"
         placeholder={t("passwordManagement.newPassword")}

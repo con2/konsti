@@ -9,6 +9,7 @@ import { LoginFormFields } from "shared/typings/api/login";
 import { useAppDispatch } from "client/utils/hooks";
 import { LoginErrorMessage, submitLogin } from "client/views/login/loginThunks";
 import { ErrorMessage } from "client/components/ErrorMessage";
+import { Input } from "client/components/Input";
 
 export const LoginForm = (): ReactElement => {
   const dispatch = useAppDispatch();
@@ -40,26 +41,24 @@ export const LoginForm = (): ReactElement => {
       return;
     }
 
-    // Navigate to previus page or front page if no previous page exists
+    // Navigate to previous page or front page if no previous page exists
     window.history.state?.idx > 0 ? navigate(-1) : navigate("/");
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <StyledForm onSubmit={handleSubmit(onSubmit)}>
       <FormRow>
-        <StyledFormField>
-          <StyledInput
-            {...register("username", {
-              required: `${t(`validation.required`)}`,
-              onChange: () => {
-                setServerError(null);
-              },
-            })}
-            placeholder={t("username")}
-            type={"text"}
-            data-testid={"login-form-input-username"}
-          />
-        </StyledFormField>
+        <StyledInput
+          {...register("username", {
+            required: `${t(`validation.required`)}`,
+            onChange: () => {
+              setServerError(null);
+            },
+          })}
+          placeholder={t("username")}
+          type={"text"}
+          data-testid={"login-form-input-username"}
+        />
       </FormRow>
 
       {errors.username && (
@@ -67,20 +66,17 @@ export const LoginForm = (): ReactElement => {
       )}
 
       <FormRow>
-        <StyledFormField>
-          <StyledInput
-            {...register("password", {
-              required: `${t(`validation.required`)}`,
-              onChange: () => {
-                setServerError(null);
-              },
-            })}
-            placeholder={t("password")}
-            type={passwordVisible ? "text" : "password"}
-            data-testid={"login-form-input-password"}
-          />
-        </StyledFormField>
-
+        <StyledInput
+          {...register("password", {
+            required: `${t(`validation.required`)}`,
+            onChange: () => {
+              setServerError(null);
+            },
+          })}
+          placeholder={t("password")}
+          type={passwordVisible ? "text" : "password"}
+          data-testid={"login-form-input-password"}
+        />
         <FormFieldIcon>
           <FontAwesomeIcon
             icon={passwordVisible ? "eye-slash" : "eye"}
@@ -98,14 +94,16 @@ export const LoginForm = (): ReactElement => {
         <FormFieldError>{errors.password.message}</FormFieldError>
       )}
 
-      <Button
-        type="submit"
-        disabled={isSubmitting}
-        buttonStyle={ButtonStyle.PRIMARY}
-        data-testid="login-button"
-      >
-        {t("button.login")}
-      </Button>
+      <FormRow>
+        <Button
+          type="submit"
+          disabled={isSubmitting}
+          buttonStyle={ButtonStyle.PRIMARY}
+          data-testid="login-button"
+        >
+          {t("button.login")}
+        </Button>
+      </FormRow>
 
       {serverError && (
         <ErrorMessage
@@ -113,7 +111,7 @@ export const LoginForm = (): ReactElement => {
           closeError={() => setServerError(null)}
         />
       )}
-    </form>
+    </StyledForm>
   );
 };
 
@@ -122,11 +120,15 @@ const FormFieldError = styled.div`
   background: ${(props) => props.theme.backgroundHighlight};
   color: ${(props) => props.theme.textError};
   width: 50%;
-  padding: 4px 0 4px 10px;
+  padding: 0 10px;
 
   @media (max-width: ${(props) => props.theme.breakpointPhone}) {
     width: 100%;
   }
+`;
+
+const StyledInput = styled(Input)`
+  width: min(250px, 100%);
 `;
 
 const FormRow = styled.div`
@@ -142,24 +144,12 @@ const FormRow = styled.div`
   }
 `;
 
-const StyledFormField = styled.div`
-  align-items: center;
-  display: flex;
-  flex: 0 1 auto;
-  flex-direction: row;
-  padding: 8px 0;
-  width: 80%;
-`;
-
-const StyledInput = styled.input`
-  border: 1px solid ${(props) => props.theme.borderInactive};
-  color: ${(props) => props.theme.buttonText};
-  height: 34px;
-  padding: 0 0 0 10px;
-  width: 100%;
-`;
-
 const FormFieldIcon = styled.span`
-  padding: 0 0 0 8px;
   font-size: ${(props) => props.theme.fontSizeLarge};
+`;
+
+const StyledForm = styled.form`
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
 `;

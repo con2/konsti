@@ -11,7 +11,7 @@ import {
 import { useAppDispatch } from "client/utils/hooks";
 import { ErrorMessage } from "client/components/ErrorMessage";
 import { ButtonGroup } from "client/components/ButtonGroup";
-import { Input } from "client/components/Input";
+import { ControlledInput } from "client/components/ControlledInput";
 
 interface Props {
   username: string;
@@ -132,12 +132,11 @@ export const NotInGroupActions = ({
             {t("group.joiningGroupWillCancelLotterySignups")}
           </InfoTextParagraph>
 
-          <Input
+          <ControlledInput
             key="joinGroup"
             placeholder={t("group.enterGroupCreatorCode")}
             value={joinGroupValue}
             onChange={handleJoinGroupChange}
-            type="text"
           />
 
           <ButtonWithMargin

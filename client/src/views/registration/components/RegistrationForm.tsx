@@ -1,7 +1,7 @@
 import React, { ReactElement, useState } from "react";
 import { SubmitHandler, useForm, useFormState } from "react-hook-form";
 import { useTranslation } from "react-i18next";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -24,6 +24,7 @@ import {
 import { ErrorMessage } from "client/components/ErrorMessage";
 import privacyPolicyFi from "client/markdown/PrivacyPolicyFi.md";
 import privacyPolicyEn from "client/markdown/PrivacyPolicyEn.md";
+import { Input } from "client/components/Input";
 
 export const RegistrationForm = (): ReactElement => {
   const dispatch = useAppDispatch();
@@ -59,32 +60,30 @@ export const RegistrationForm = (): ReactElement => {
     <div>
       <h2>{t("pageTitle.registration")}</h2>
 
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <StyledForm onSubmit={handleSubmit(onSubmit)}>
         <FormRow>
-          <StyledFormField>
-            <StyledInput
-              {...register("username", {
-                required: `${t(`validation.required`)}`,
-                minLength: {
-                  value: USERNAME_LENGTH_MIN,
-                  message: t(`validation.tooShort`, {
-                    length: USERNAME_LENGTH_MIN,
-                  }),
-                },
-                maxLength: {
-                  value: USERNAME_LENGTH_MAX,
-                  message: t(`validation.tooLong`, {
-                    length: USERNAME_LENGTH_MAX,
-                  }),
-                },
-                onChange: () => {
-                  setServerError(null);
-                },
-              })}
-              placeholder={t("username")}
-              type={"text"}
-            />
-          </StyledFormField>
+          <StyledInput
+            {...register("username", {
+              required: `${t(`validation.required`)}`,
+              minLength: {
+                value: USERNAME_LENGTH_MIN,
+                message: t(`validation.tooShort`, {
+                  length: USERNAME_LENGTH_MIN,
+                }),
+              },
+              maxLength: {
+                value: USERNAME_LENGTH_MAX,
+                message: t(`validation.tooLong`, {
+                  length: USERNAME_LENGTH_MAX,
+                }),
+              },
+              onChange: () => {
+                setServerError(null);
+              },
+            })}
+            placeholder={t("username")}
+            type={"text"}
+          />
         </FormRow>
 
         {errors.username && (
@@ -92,30 +91,28 @@ export const RegistrationForm = (): ReactElement => {
         )}
 
         <FormRow>
-          <StyledFormField>
-            <StyledInput
-              {...register("password", {
-                required: `${t(`validation.required`)}`,
-                minLength: {
-                  value: PASSWORD_LENGTH_MIN,
-                  message: t(`validation.tooShort`, {
-                    length: PASSWORD_LENGTH_MIN,
-                  }),
-                },
-                maxLength: {
-                  value: PASSWORD_LENGTH_MAX,
-                  message: t(`validation.tooLong`, {
-                    length: PASSWORD_LENGTH_MAX,
-                  }),
-                },
-                onChange: () => {
-                  setServerError(null);
-                },
-              })}
-              placeholder={t("password")}
-              type={passwordVisible ? "text" : "password"}
-            />
-          </StyledFormField>
+          <StyledInput
+            {...register("password", {
+              required: `${t(`validation.required`)}`,
+              minLength: {
+                value: PASSWORD_LENGTH_MIN,
+                message: t(`validation.tooShort`, {
+                  length: PASSWORD_LENGTH_MIN,
+                }),
+              },
+              maxLength: {
+                value: PASSWORD_LENGTH_MAX,
+                message: t(`validation.tooLong`, {
+                  length: PASSWORD_LENGTH_MAX,
+                }),
+              },
+              onChange: () => {
+                setServerError(null);
+              },
+            })}
+            placeholder={t("password")}
+            type={passwordVisible ? "text" : "password"}
+          />
 
           <FormFieldIcon>
             <FontAwesomeIcon
@@ -137,18 +134,16 @@ export const RegistrationForm = (): ReactElement => {
         {serialRequired && (
           <>
             <FormRow>
-              <StyledFormField>
-                <StyledInput
-                  {...register("serial", {
-                    required: `${t(`validation.required`)}`,
-                    onChange: () => {
-                      setServerError(null);
-                    },
-                  })}
-                  placeholder={t("serial")}
-                  type={"text"}
-                />
-              </StyledFormField>
+              <StyledInput
+                {...register("serial", {
+                  required: `${t(`validation.required`)}`,
+                  onChange: () => {
+                    setServerError(null);
+                  },
+                })}
+                placeholder={t("serial")}
+                type={"text"}
+              />
             </FormRow>
 
             {errors.serial && (
@@ -162,41 +157,39 @@ export const RegistrationForm = (): ReactElement => {
         )}
 
         <FormRow>
-          <StyledFormField>
-            <StyledCheckbox
-              {...register("registerDescription", {
-                required: `${t(`validation.required`)}`,
-                onChange: () => {
-                  setServerError(null);
-                },
-              })}
-              type={"checkbox"}
-            />
-            <label htmlFor="registerDescription">
-              {t("agreePrivacyPolicy")}
-            </label>
-          </StyledFormField>
+          <StyledCheckbox
+            {...register("registerDescription", {
+              required: `${t(`validation.required`)}`,
+              onChange: () => {
+                setServerError(null);
+              },
+            })}
+            type={"checkbox"}
+          />
+          <label htmlFor="registerDescription">{t("agreePrivacyPolicy")}</label>
         </FormRow>
 
         {errors.registerDescription && (
           <FormFieldError>{errors.registerDescription.message}</FormFieldError>
         )}
 
-        <PrivacyPolicyAccordion toggleButton={t("privacyPolicyButton")}>
+        <Accordion toggleButton={t("privacyPolicyButton")}>
           <PrivacyPolicyContent>
             <ReactMarkdown remarkPlugins={[remarkGfm]}>
               {i18n.language === "fi" ? privacyPolicyFi : privacyPolicyEn}
             </ReactMarkdown>
           </PrivacyPolicyContent>
-        </PrivacyPolicyAccordion>
+        </Accordion>
 
-        <Button
-          disabled={isSubmitting}
-          type="submit"
-          buttonStyle={ButtonStyle.PRIMARY}
-        >
-          {t("button.register")}
-        </Button>
+        <FormRow>
+          <Button
+            disabled={isSubmitting}
+            type="submit"
+            buttonStyle={ButtonStyle.PRIMARY}
+          >
+            {t("button.register")}
+          </Button>
+        </FormRow>
 
         {serverError && (
           <ErrorMessage
@@ -204,17 +197,20 @@ export const RegistrationForm = (): ReactElement => {
             closeError={() => setServerError(null)}
           />
         )}
-      </form>
+      </StyledForm>
     </div>
   );
 };
 
-const StyledInput = styled.input`
-  border: 1px solid ${(props) => props.theme.borderInactive};
-  color: ${(props) => props.theme.buttonText};
-  height: 34px;
-  padding: 0 0 0 10px;
-  width: 100%;
+const widthDefinition = css`
+  width: 50%;
+  @media (max-width: ${(props) => props.theme.breakpointPhone}) {
+    width: 100%;
+  }
+`;
+
+const StyledInput = styled(Input)`
+  width: min(250px, 100%);
 `;
 
 const FormRow = styled.div`
@@ -222,33 +218,18 @@ const FormRow = styled.div`
   display: flex;
   flex: 0 1 auto;
   flex-direction: row;
-  width: 50%;
   justify-content: flex-start;
 
-  @media (max-width: ${(props) => props.theme.breakpointPhone}) {
-    width: 100%;
-  }
-`;
-
-const StyledFormField = styled.div`
-  align-items: center;
-  display: flex;
-  flex: 0 1 auto;
-  flex-direction: row;
-  padding: 8px 0;
-  width: 80%;
+  ${widthDefinition}
 `;
 
 const FormFieldError = styled.div`
   display: flex;
   background: ${(props) => props.theme.backgroundHighlight};
   color: ${(props) => props.theme.textError};
-  width: 50%;
   padding: 4px 0 4px 10px;
 
-  @media (max-width: ${(props) => props.theme.breakpointPhone}) {
-    width: 100%;
-  }
+  ${widthDefinition}
 `;
 
 const FormFieldIcon = styled.span`
@@ -265,10 +246,12 @@ const SmallLabel = styled.label`
   font-size: ${(props) => props.theme.fontSizeSmaller};
 `;
 
-const PrivacyPolicyAccordion = styled(Accordion)`
-  margin-bottom: 16px;
-`;
-
 const PrivacyPolicyContent = styled.div`
   padding: 0 10px;
+`;
+
+const StyledForm = styled.form`
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
 `;

@@ -5,6 +5,7 @@ import { ResultsByGameTitle } from "./ResultsByGameTitle";
 import { ResultsByUsername } from "./ResultsByUsername";
 import { Result } from "shared/typings/models/result";
 import { Button, ButtonStyle } from "client/components/Button";
+import { Input } from "client/components/Input";
 
 interface Props {
   results: readonly Result[];
@@ -63,7 +64,7 @@ export const AlgorithmResultsList = ({ results }: Props): ReactElement => {
         <FindField>
           <span>{t("find")} </span>
           <span>
-            <Input
+            <StyledInput
               type="text"
               value={searchTerm}
               onChange={handleSearchFieldChange}
@@ -87,7 +88,7 @@ const FindField = styled.div`
   margin: 10px auto;
 `;
 
-const Input = styled.input`
+const StyledInput = styled(Input)`
   &:active,
   &:focus {
     min-height: 25px;
