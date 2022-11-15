@@ -135,7 +135,7 @@ export const AlgorithmSignupForm: FC<Props> = ({
               onClick={() => setCancelSignupFormOpen(true)}
               buttonStyle={ButtonStyle.SECONDARY}
             >
-              {t("button.cancel")}
+              {t("button.cancelSignup")}
             </ButtonWithMargin>
           )}
 

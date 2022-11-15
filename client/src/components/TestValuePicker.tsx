@@ -14,7 +14,10 @@ export const TestValuePicker = (): ReactElement => {
 
   return (
     <div>
-      <StyledAccordion toggleButton={t("testValues.buttonText")}>
+      <StyledAccordion
+        accordionOpenText={t("testValues.buttonText")}
+        accordionClosedText={t("testValues.buttonText")}
+      >
         <TestValueSelectors>
           <TestTimeSelector testTime={testTime} />
           {config.enableStrategyTestValue && <SignupStrategySelector />}

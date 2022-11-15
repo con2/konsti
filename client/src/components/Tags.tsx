@@ -24,7 +24,7 @@ const TagsContainer = styled.div`
 const TagElement = styled.span`
   display: flex;
   background-color: ${(props) => props.theme.backgroundTag};
-  border-radius: 1000px; // Something big to round corners fully
+  border-radius: 100px;
   align-items: center;
   text-align: center;
   padding: 5px 8px;
