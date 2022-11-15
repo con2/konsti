@@ -97,6 +97,7 @@ const StyledButton = styled.button<StyledButtonProps>`
       `;
     }
 
+    // Default: primary, not disabled
     return `
           background: ${props.theme.buttonPrimaryBackground};
           border: none;

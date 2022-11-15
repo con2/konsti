@@ -91,7 +91,7 @@ export const theme = {
   textSuccess: mainColor.dark,
   textTag: black,
 
-  iconFavorited: red.light,
+  iconFavorited: mainColor.primary,
 
   inputBorderFocus: mainColor.primary,
   inputTextPlaceholder: gray.light,
