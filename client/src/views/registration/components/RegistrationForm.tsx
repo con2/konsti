@@ -173,7 +173,10 @@ export const RegistrationForm = (): ReactElement => {
           <FormFieldError>{errors.registerDescription.message}</FormFieldError>
         )}
 
-        <Accordion toggleButton={t("privacyPolicyButton")}>
+        <Accordion
+          accordionOpenText={t("privacyPolicyButtonOpen")}
+          accordionClosedText={t("privacyPolicyButtonClosed")}
+        >
           <PrivacyPolicyContent>
             <ReactMarkdown remarkPlugins={[remarkGfm]}>
               {i18n.language === "fi" ? privacyPolicyFi : privacyPolicyEn}

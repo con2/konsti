@@ -40,7 +40,7 @@ export const FavoriteButton = ({
       data-testid={dataTestId}
       aria-label={t(ariaLabelKey)}
     >
-      <FavoriteIcon buttonSize={buttonSize} icon={icon} aria-hidden="true" />
+      <FavoriteIcon $buttonSize={buttonSize} icon={icon} aria-hidden="true" />
     </StyledButton>
   );
 };
@@ -59,7 +59,8 @@ const StyledButton = styled.button<Props>`
     props.buttonSize === FavoriteButtonSize.SMALL ? smallSize : largeSize};
   background-color: ${(props) => props.theme.buttonSecondaryBackground};
 
-  &:hover {
+  &:hover,
+  &:focus-visible {
     background: ${(props) => props.theme.buttonSecondaryHover};
     color: ${(props) => props.theme.textMain};
   }
@@ -70,14 +71,12 @@ const StyledButton = styled.button<Props>`
   }
 `;
 
-interface IconProps {
-  buttonSize: FavoriteButtonSize;
-}
-
-const FavoriteIcon = styled(FontAwesomeIcon)<IconProps>`
+const FavoriteIcon = styled(FontAwesomeIcon)<{
+  $buttonSize: FavoriteButtonSize;
+}>`
   color: ${(props) => props.theme.iconFavorited};
   font-size: ${(props) =>
-    props.buttonSize === FavoriteButtonSize.SMALL
+    props.$buttonSize === FavoriteButtonSize.SMALL
       ? props.theme.fontSizeNormal
       : props.theme.fontSizeLarge};
 `;

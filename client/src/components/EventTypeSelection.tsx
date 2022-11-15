@@ -8,7 +8,7 @@ import { Dropdown } from "client/components/Dropdown";
 import { saveSession } from "client/utils/localStorage";
 import { MOBILE_MARGIN } from "client/globalStyle";
 
-export const ROW_HEIGHT = 32;
+const ROW_HEIGHT = 32;
 
 export const ProgramTypeSelection = (): ReactElement => {
   const { t } = useTranslation();

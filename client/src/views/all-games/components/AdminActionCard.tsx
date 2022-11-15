@@ -134,7 +134,7 @@ export const AdminActionCard = ({ game }: Props): ReactElement => {
           buttonStyle={ButtonStyle.PRIMARY}
           onClick={async () => await updateHidden()}
         >
-          {hidden ? t("button.show") : t("button.hide")}
+          {hidden ? t("button.showGame") : t("button.hideGame")}
         </Button>
         {hasSignupQuestion && (
           <Button
