@@ -1,7 +1,6 @@
 import React, { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import { updateFavorite, UpdateFavoriteOpts } from "client/utils/favorite";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
@@ -9,13 +8,13 @@ import { SignupStrategy } from "shared/config/sharedConfig.types";
 import { Game, Tag } from "shared/typings/models/game";
 import { AlgorithmSignupForm } from "./AlgorithmSignupForm";
 import { DirectSignupForm } from "./DirectSignupForm";
-import { Button, ButtonStyle } from "client/components/Button";
 import { SelectedGame } from "shared/typings/models/user";
 import { isAlreadyEntered, isAlreadySigned } from "./allGamesUtils";
 import { PopularityInfo } from "client/components/PopularityInfo";
 import { sharedConfig } from "shared/config/sharedConfig";
 import { GameDetailsView } from "client/views/all-games/components/GameDetailsView";
 import { Tags } from "client/components/Tags";
+import { FavoriteButton } from "client/components/FavoriteButton";
 
 interface Props {
   game: Game;
@@ -150,41 +149,19 @@ export const GameEntry = ({
             />
           )}
         </HeaderContainer>
-        {favorited && loggedIn && userGroup === "user" && game && (
+        {loggedIn && userGroup === "user" && game && (
           <FavoriteButton
+            isFavorite={favorited}
             onClick={async () =>
               await updateFavoriteHandler({
                 game,
-                action: "del",
+                action: favorited ? "del" : "add",
                 favoritedGames,
                 username,
                 dispatch,
               })
             }
-            buttonStyle={ButtonStyle.SECONDARY}
-            data-testid={"remove-favorite-button"}
-            aria-label={t("iconAltText.deleteFavorite")}
-          >
-            <FavoriteIcon icon="heart" aria-hidden="true" />
-          </FavoriteButton>
-        )}
-        {!favorited && loggedIn && userGroup === "user" && game && (
-          <FavoriteButton
-            onClick={async () =>
-              await updateFavoriteHandler({
-                game,
-                action: "add",
-                favoritedGames,
-                username,
-                dispatch,
-              })
-            }
-            buttonStyle={ButtonStyle.SECONDARY}
-            data-testid={"add-favorite-button"}
-            aria-label={t("iconAltText.addFavorite")}
-          >
-            <FavoriteIcon icon={["far", "heart"]} aria-hidden="true" />
-          </FavoriteButton>
+          />
         )}
       </GameHeader>
       <GameDetailsView game={game} isAlwaysExpanded={isAlwaysExpanded} />
@@ -214,12 +191,6 @@ const PlayersNeeded = styled("span")<{ visible: boolean }>`
 
 const PlayerCount = styled("span")`
   margin-top: 8px;
-`;
-
-const FavoriteButton = styled(Button)`
-  margin: 0 0 0 16px;
-  width: 60px;
-  max-height: 50px;
 `;
 
 const GameEntryRow = styled.div`
@@ -263,10 +234,6 @@ const GameContainer = styled.div<{ signed: boolean }>`
   ${(props) =>
     props.signed &&
     `border-left: 5px solid ${props.theme.borderCardHighlight};`}
-`;
-
-const FavoriteIcon = styled(FontAwesomeIcon)`
-  color: ${(props) => props.theme.iconFavorited};
 `;
 
 const RowItem = styled.span`
