@@ -1,5 +1,4 @@
 import React, { ReactElement } from "react";
-import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { Button, ButtonStyle } from "client/components/Button";
 import { ButtonGroup } from "client/components/ButtonGroup";
@@ -25,7 +24,7 @@ export const CancelSignupForm = ({
         onClick={() => onCancelForm()}
         buttonStyle={ButtonStyle.SECONDARY}
       >
-        {t("signup.cancel")}
+        {t("signup.confirmCancellation")}
       </Button>
     </ButtonGroup>
   );

@@ -48,6 +48,7 @@ interface StyledButtonProps {
 
 const disabledButton = css`
   opacity: 0.4;
+  /* stylelint-disable-next-line plugin/no-unsupported-browser-features -- Seems to actually work on Safari */
   cursor: not-allowed;
 `;
 
@@ -75,7 +76,7 @@ const StyledButton = styled.button<StyledButtonProps>`
           color: ${props.theme.textMain};
           padding: 6px 20px;
 
-          &:hover {
+          &:hover, &:focus-visible {
             background: ${props.theme.buttonSecondaryHover};
             color: ${props.theme.textMain};
           }
@@ -104,11 +105,11 @@ const StyledButton = styled.button<StyledButtonProps>`
           color: ${props.theme.buttonPrimaryText};
           padding: 8px 20px;
 
-          &:hover {
+          &:hover, &:focus-visible {
             background: ${props.theme.buttonPrimaryHover};
             color: ${props.theme.buttonPrimaryText};
             }
-            &:active {
+          &:active {
             background: ${props.theme.buttonPrimaryClicked};
             box-shadow: none;
             }

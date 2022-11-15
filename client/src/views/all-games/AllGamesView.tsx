@@ -22,7 +22,6 @@ import { Button, ButtonStyle } from "client/components/Button";
 import { selectActiveGames } from "client/views/admin/adminSlice";
 import { ControlledInput } from "client/components/ControlledInput";
 import { SessionStorageValue } from "client/utils/localStorage";
-import { ROW_HEIGHT } from "client/components/EventTypeSelection";
 import { Dropdown } from "client/components/Dropdown";
 import { ButtonGroup } from "client/components/ButtonGroup";
 
