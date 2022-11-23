@@ -20,9 +20,10 @@ import { getTime } from "client/utils/getTime";
 import { useAppSelector } from "client/utils/hooks";
 import { Button, ButtonStyle } from "client/components/Button";
 import { selectActiveGames } from "client/views/admin/adminSlice";
-import { Input } from "client/components/Input";
+import { ControlledInput } from "client/components/ControlledInput";
 import { SessionStorageValue } from "client/utils/localStorage";
-import { ROW_HEIGHT } from "client/components/EventTypeSelection";
+import { Dropdown } from "client/components/Dropdown";
+import { ButtonGroup } from "client/components/ButtonGroup";
 
 export const MULTIPLE_WHITESPACES_REGEX = /\s\s+/g;
 
@@ -141,6 +142,14 @@ export const AllGamesView = (): ReactElement => {
     );
   }, [filteredGames, hiddenGames, selectedView, selectedTag]);
 
+  const options = [
+    { value: "", title: t("allGames") },
+    filters.map((filter) => ({
+      value: filter,
+      title: t(`gameTags.${filter}`),
+    })),
+  ].flat();
+
   const setView = (view: SelectedView): void => {
     setSelectedView(view);
     sessionStorage.setItem(SessionStorageValue.ALL_GAMES_SELECTED_VIEW, view);
@@ -148,89 +157,66 @@ export const AllGamesView = (): ReactElement => {
 
   return (
     <>
-      <AllGamesVisibilityBar>
-        <ViewButtons>
+      <HeaderContainer>
+        <ButtonGroup>
           <Button
+            disabled={selectedView === SelectedView.UPCOMING}
+            buttonStyle={ButtonStyle.SECONDARY}
             onClick={() => setView(SelectedView.UPCOMING)}
-            buttonStyle={
-              selectedView === SelectedView.UPCOMING
-                ? ButtonStyle.DISABLED
-                : ButtonStyle.NORMAL
-            }
           >
             {t("upcoming")}
           </Button>
 
           <Button
+            disabled={selectedView === SelectedView.ALL}
+            buttonStyle={ButtonStyle.SECONDARY}
             onClick={() => setView(SelectedView.ALL)}
-            buttonStyle={
-              selectedView === SelectedView.ALL
-                ? ButtonStyle.DISABLED
-                : ButtonStyle.NORMAL
-            }
           >
             {t("all")}
           </Button>
 
           {activeProgramType === ProgramType.TABLETOP_RPG && (
             <Button
+              disabled={selectedView === SelectedView.REVOLVING_DOOR}
+              buttonStyle={ButtonStyle.SECONDARY}
               onClick={() => setView(SelectedView.REVOLVING_DOOR)}
-              buttonStyle={
-                selectedView === SelectedView.REVOLVING_DOOR
-                  ? ButtonStyle.DISABLED
-                  : ButtonStyle.NORMAL
-              }
             >
               {t("revolvingDoor")}
             </Button>
           )}
-        </ViewButtons>
+        </ButtonGroup>
 
-        <TagsDropdownContainer>
-          <TagsDropdown>
-            <ChooseTagsInstruction>{t("chooseTag")} </ChooseTagsInstruction>
-            <select
-              onChange={(event: ChangeEvent<HTMLSelectElement>) => {
-                const tag = event.target.value;
-                setSelectedTag(tag);
-                sessionStorage.setItem(SessionStorageValue.ALL_GAMES_TAG, tag);
-              }}
-              value={selectedTag}
-            >
-              <option value="">{t("allGames")}</option>
+        <div>
+          <ChooseTagsInstruction>{t("chooseTag")} </ChooseTagsInstruction>
+          <Dropdown
+            onChange={(event: ChangeEvent<HTMLSelectElement>) => {
+              const tag = event.target.value;
+              setSelectedTag(tag);
+              sessionStorage.setItem(SessionStorageValue.ALL_GAMES_TAG, tag);
+            }}
+            options={options}
+            selectedValue={selectedTag}
+          />
+        </div>
+        {selectedView === SelectedView.REVOLVING_DOOR && (
+          <>
+            <RevolvingDoorInstruction>
+              {t("revolvingDoorInstruction")}
+            </RevolvingDoorInstruction>
+            <div>
+              <h3>{t("currentlyRunningRevolvingDoor")}</h3>
+              {getRunningRevolvingDoorGames(activeVisibleGames, t)}
+            </div>
+          </>
+        )}
 
-              {filters.map((filter) => {
-                return (
-                  <option key={filter} value={filter}>
-                    {t(`gameTags.${filter}`)}
-                  </option>
-                );
-              })}
-            </select>
-          </TagsDropdown>
-        </TagsDropdownContainer>
-      </AllGamesVisibilityBar>
-
-      {selectedView === SelectedView.REVOLVING_DOOR && (
-        <>
-          <RevolvingDoorInstruction>
-            {t("revolvingDoorInstruction")}
-          </RevolvingDoorInstruction>
-          <div>
-            <h3>{t("currentlyRunningRevolvingDoor")}</h3>
-            {getRunningRevolvingDoorGames(activeVisibleGames, t)}
-          </div>
-        </>
-      )}
-
-      <Input
-        type="text"
-        value={searchTerm}
-        onChange={(event) => setSearchTerm(event.target.value)}
-        placeholder={t("findSignupOrGameSystem")}
-        resetValue={() => setSearchTerm("")}
-      />
-
+        <ControlledInput
+          value={searchTerm}
+          onChange={(event) => setSearchTerm(event.target.value)}
+          placeholder={t("findSignupOrGameSystem")}
+          resetValue={() => setSearchTerm("")}
+        />
+      </HeaderContainer>
       {loading ? <Loading /> : memoizedGames}
     </>
   );
@@ -300,36 +286,10 @@ const getRunningRevolvingDoorGames = (
   });
 };
 
-const AllGamesVisibilityBar = styled.div`
+const HeaderContainer = styled.div`
   display: flex;
-  justify-content: space-between;
-`;
-
-const ViewButtons = styled.div`
-  margin: 10px 0 0 0;
-  white-space: nowrap;
-  height: ${ROW_HEIGHT}px;
-
-  button {
-    margin-top: 0;
-    margin-bottom: 0;
-  }
-`;
-
-const TagsDropdownContainer = styled.div`
-  position: relative;
-`;
-
-const TagsDropdown = styled.div`
-  margin: 10px 0 0 0;
-  height: ${ROW_HEIGHT}px;
-
-  @media (max-width: ${(props) => props.theme.breakpointPhone}) {
-    position: absolute;
-    margin: 0;
-    bottom: 42px;
-    right: 0;
-  }
+  gap: 8px;
+  flex-direction: column;
 `;
 
 const ChooseTagsInstruction = styled.span`

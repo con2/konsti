@@ -34,7 +34,7 @@ export const TestTimeSelector = ({ testTime }: Props): ReactElement => {
     <div>
       <span>{t("testValues.time")}</span>{" "}
       <Dropdown
-        items={dropdownItems}
+        options={dropdownItems}
         selectedValue={dayjs(testTime).format()}
         onChange={async (event: ChangeEvent<HTMLSelectElement>) =>
           await setTestTime(event.target.value)

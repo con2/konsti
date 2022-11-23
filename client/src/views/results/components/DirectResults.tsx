@@ -10,8 +10,10 @@ import { getUpcomingGames } from "client/utils/getUpcomingGames";
 import { Button, ButtonStyle } from "client/components/Button";
 import { Game } from "shared/typings/models/game";
 import { selectActiveGames } from "client/views/admin/adminSlice";
-import { Input } from "client/components/Input";
+import { ControlledInput } from "client/components/ControlledInput";
 import { MULTIPLE_WHITESPACES_REGEX } from "client/views/all-games/AllGamesView";
+import { ButtonGroup } from "client/components/ButtonGroup";
+import { Tags } from "client/components/Tags";
 
 export const DirectResults = (): ReactElement => {
   const { t } = useTranslation();
@@ -87,29 +89,28 @@ export const DirectResults = (): ReactElement => {
     <div>
       <h2>{t("resultsView.allSignupResults")}</h2>
 
-      <Input
-        type="text"
+      <ControlledInput
         value={searchTerm}
         onChange={(event) => setSearchTerm(event.target.value)}
         placeholder={t("findSignupOrGame")}
         resetValue={() => setSearchTerm("")}
       />
-      <div>
+      <ButtonGroup>
         <Button
           onClick={() => setShowAllGames(false)}
-          buttonStyle={
-            !showAllGames ? ButtonStyle.DISABLED : ButtonStyle.NORMAL
-          }
+          disabled={!showAllGames}
+          buttonStyle={ButtonStyle.SECONDARY}
         >
           {t("lastStartedAndUpcoming")}
         </Button>
         <Button
+          disabled={showAllGames}
           onClick={() => setShowAllGames(true)}
-          buttonStyle={showAllGames ? ButtonStyle.DISABLED : ButtonStyle.NORMAL}
+          buttonStyle={ButtonStyle.SECONDARY}
         >
           {t("all")}
         </Button>
-      </div>
+      </ButtonGroup>
 
       {filteredGames.length === 0 && <h3>{t("resultsView.noResults")}</h3>}
 
@@ -143,11 +144,8 @@ export const DirectResults = (): ReactElement => {
 
                   return (
                     <div key={game.gameId}>
-                      <ResultTitle key={game.gameId}>
-                        {game.title}{" "}
-                        <Tag>{t(`programType.${game.programType}`)}</Tag>{" "}
-                      </ResultTitle>
-
+                      <ResultTitle key={game.gameId}>{game.title} </ResultTitle>
+                      <Tags tags={[t(`programType.${game.programType}`)]} />
                       <PlayerContainer>
                         <PlayerCount
                           onClick={() => {
@@ -285,15 +283,4 @@ const PlayerCount = styled.div`
 
 const SignupQuestion = styled.p`
   font-weight: 600;
-`;
-
-const Tag = styled.span`
-  border-radius: 4px;
-  background: ${(props) => props.theme.backgroundTag};
-  padding: 4px;
-  font-size: 12px;
-  color: ${(props) => props.theme.textTag};
-  white-space: nowrap;
-  margin-top: 4px;
-  max-width: fit-content;
 `;

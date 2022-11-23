@@ -6,7 +6,7 @@ import styled from "styled-components";
 import { useAppSelector } from "client/utils/hooks";
 import { Game } from "shared/typings/models/game";
 import { timeFormatter } from "client/utils/timeFormatter";
-import { Input } from "client/components/Input";
+import { ControlledInput } from "client/components/ControlledInput";
 import { MULTIPLE_WHITESPACES_REGEX } from "client/views/all-games/AllGamesView";
 
 export const PrivateSignupMessages = (): ReactElement => {
@@ -76,8 +76,7 @@ export const PrivateSignupMessages = (): ReactElement => {
       <h3>{t("helperView.signupQuestionAnswers")}</h3>
       <p>{t("helperView.privateSignupMessagesInfo")}</p>
 
-      <Input
-        type="text"
+      <ControlledInput
         value={searchTerm}
         onChange={(event) => setSearchTerm(event.target.value)}
         placeholder={t("findSignupOrGame")}

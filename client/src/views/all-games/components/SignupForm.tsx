@@ -1,4 +1,4 @@
-import React, { ReactElement, useRef, FormEvent, useState } from "react";
+import React, { ReactElement, FormEvent, useState, ChangeEvent } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { Game } from "shared/typings/models/game";
@@ -9,12 +9,16 @@ import {
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { Button, ButtonStyle } from "client/components/Button";
 import { ErrorMessage } from "client/components/ErrorMessage";
+import { Dropdown } from "client/components/Dropdown";
+import { ButtonGroup } from "client/components/ButtonGroup";
 
 interface Props {
   game: Game;
   startTime: string;
   onCancel: () => void;
 }
+
+const OPTIONS = [1, 2, 3];
 
 export const SignupForm = ({
   game,
@@ -26,9 +30,25 @@ export const SignupForm = ({
   // We need all signed games here
   const signedGames = useAppSelector((state) => state.myGames.signedGames);
   const username = useAppSelector((state) => state.login.username);
-  const priorityRef = useRef<HTMLSelectElement>(null);
+
+  const selectedPriorities = signedGames
+    .filter((signedGame) => signedGame.gameDetails.startTime === startTime)
+    .map((signedGame) => signedGame.priority);
+
+  const firstUnselected = OPTIONS.filter(
+    (option) => !selectedPriorities.includes(option)
+  );
+
+  const firstOption = firstUnselected.length > 0 ? firstUnselected[0] : 1;
+
+  const [priority, setPriority] = useState<number | null>(firstOption);
+
   const [errorMessage, setErrorMessage] =
     useState<PostSignedGamesErrorMessage | null>(null);
+
+  const onChange = (event: ChangeEvent<HTMLSelectElement>): void => {
+    setPriority(parseInt(event.target.value, 10));
+  };
 
   const handleCancel = (): void => {
     onCancel();
@@ -36,14 +56,14 @@ export const SignupForm = ({
 
   const handleSignup = async (event: FormEvent): Promise<void> => {
     event.preventDefault();
-    if (!priorityRef.current) {
+    if (!priority) {
       return;
     }
 
     const newGame = [
       {
         gameDetails: game,
-        priority: parseInt(priorityRef.current.value, 10),
+        priority,
         time: game.startTime,
         message: "",
       },
@@ -64,33 +84,31 @@ export const SignupForm = ({
     }
   };
 
-  const selectedPriorities = signedGames
-    .filter((signedGame) => signedGame.gameDetails.startTime === startTime)
-    .map((signedGame) => signedGame.priority);
-
-  const isAlreadySelected = (priority: number): boolean =>
-    selectedPriorities.includes(priority);
+  const options = OPTIONS.map((n) => {
+    const nStr = n.toString(10);
+    return {
+      value: nStr,
+      title: nStr,
+      disabled: selectedPriorities.includes(n),
+    };
+  });
 
   return (
     <form>
       {t("signup.gamePriority")}{" "}
-      <StyledSelect ref={priorityRef}>
-        <StyledOption disabled={isAlreadySelected(1)} value="1">
-          1
-        </StyledOption>
-        <StyledOption disabled={isAlreadySelected(2)} value="2">
-          2
-        </StyledOption>
-        <StyledOption disabled={isAlreadySelected(3)} value="3">
-          3
-        </StyledOption>
-      </StyledSelect>
-      <Button onClick={handleSignup} buttonStyle={ButtonStyle.NORMAL}>
-        {t("signup.confirm")}
-      </Button>
-      <Button onClick={handleCancel} buttonStyle={ButtonStyle.NORMAL}>
-        {t("signup.cancel")}
-      </Button>
+      <StyledDropdown
+        onChange={onChange}
+        options={options}
+        selectedValue={firstOption.toString()}
+      />
+      <ButtonGroup>
+        <Button onClick={handleSignup} buttonStyle={ButtonStyle.PRIMARY}>
+          {t("signup.confirm")}
+        </Button>
+        <Button onClick={handleCancel} buttonStyle={ButtonStyle.SECONDARY}>
+          {t("signup.cancel")}
+        </Button>
+      </ButtonGroup>
       {errorMessage && (
         <ErrorMessage
           message={t(errorMessage)}
@@ -101,13 +119,6 @@ export const SignupForm = ({
   );
 };
 
-const StyledSelect = styled.select`
-  margin-right: 10px;
-`;
-
-const StyledOption = styled.option<{ disabled: boolean }>`
-  background-color: ${(props) =>
-    props.disabled
-      ? props.theme.backgroundDisabled
-      : props.theme.backgroundMain};
+const StyledDropdown = styled(Dropdown)`
+  margin-right: 8px;
 `;

@@ -7,6 +7,7 @@ import {
 } from "client/views/group/groupThunks";
 import { useAppDispatch } from "client/utils/hooks";
 import { ErrorMessage } from "client/components/ErrorMessage";
+import { ButtonGroup } from "client/components/ButtonGroup";
 
 interface Props {
   username: string;
@@ -50,11 +51,8 @@ export const GroupCreatorActions = ({
     <>
       <div>
         <Button
-          buttonStyle={
-            showCloseGroupConfirmation
-              ? ButtonStyle.DISABLED
-              : ButtonStyle.NORMAL
-          }
+          disabled={showCloseGroupConfirmation}
+          buttonStyle={ButtonStyle.PRIMARY}
           onClick={() => setShowCloseGroupConfirmation(true)}
         >
           {t("button.closeGroup")}
@@ -64,22 +62,25 @@ export const GroupCreatorActions = ({
       {showCloseGroupConfirmation && (
         <>
           <p>{t("group.closeGroupConfirmation")}</p>
-          <Button
-            buttonStyle={ButtonStyle.NORMAL}
-            onClick={() => {
-              setShowCloseGroupConfirmation(false);
-              setServerError(null);
-            }}
-          >
-            {t("button.cancel")}
-          </Button>
+          <ButtonGroup>
+            <Button
+              buttonStyle={ButtonStyle.SECONDARY}
+              onClick={() => {
+                setShowCloseGroupConfirmation(false);
+                setServerError(null);
+              }}
+            >
+              {t("button.cancel")}
+            </Button>
 
-          <Button
-            buttonStyle={loading ? ButtonStyle.DISABLED : ButtonStyle.WARNING}
-            onClick={async () => await closeGroup()}
-          >
-            {t("button.closeGroup")}
-          </Button>
+            <Button
+              disabled={loading}
+              buttonStyle={ButtonStyle.PRIMARY}
+              onClick={async () => await closeGroup()}
+            >
+              {t("button.closeGroup")}
+            </Button>
+          </ButtonGroup>
         </>
       )}
 

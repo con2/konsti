@@ -20,6 +20,7 @@ import {
 } from "client/views/group/groupThunks";
 import { sharedConfig } from "shared/config/sharedConfig";
 import { TextArea } from "client/components/TextArea";
+import { ButtonGroup } from "client/components/ButtonGroup";
 
 const { directSignupAlwaysOpen } = sharedConfig;
 
@@ -140,20 +141,14 @@ export const EnterGameForm: FC<Props> = (props: Props): ReactElement => {
           <span>{userSignupMessage.length} / 140</span>
         </SignupQuestionContainer>
       )}
-      <ButtonContainer>
-        <SignupConfirmationButton
-          onClick={handleSignup}
-          buttonStyle={ButtonStyle.NORMAL}
-        >
+      <ButtonGroup>
+        <Button onClick={handleSignup} buttonStyle={ButtonStyle.PRIMARY}>
           {t("signup.confirm")}
-        </SignupConfirmationButton>
-        <SignupCancelButton
-          onClick={handleCancel}
-          buttonStyle={ButtonStyle.NORMAL}
-        >
+        </Button>
+        <Button onClick={handleCancel} buttonStyle={ButtonStyle.SECONDARY}>
           {t("signup.cancel")}
-        </SignupCancelButton>
-      </ButtonContainer>
+        </Button>
+      </ButtonGroup>
       {errorMessage && (
         <ErrorMessage
           message={t(errorMessage)}
@@ -179,21 +174,4 @@ const SignupForm = styled.form`
 const SignupQuestionContainer = styled.div`
   display: flex;
   flex-direction: column;
-`;
-
-const ButtonContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-`;
-
-const SignupConfirmationButton = styled(Button)`
-  width: 50%;
-  background: ${(props) => props.theme.buttonConfirm};
-  border: 1px solid ${(props) => props.theme.buttonBorderConfirm};
-  color: ${(props) => props.theme.textMain};
-`;
-
-const SignupCancelButton = styled(Button)`
-  width: 50%;
-  border: 1px solid ${(props) => props.theme.borderInformative};
 `;

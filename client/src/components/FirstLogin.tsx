@@ -40,7 +40,7 @@ export const FirstLogin = (): ReactElement | null => {
       <p>{t("firstLogin.info")}</p>
       <Button
         onClick={() => setIsFirstLogin(false)}
-        buttonStyle={ButtonStyle.NORMAL}
+        buttonStyle={ButtonStyle.PRIMARY}
       >
         {t("button.close")}
       </Button>

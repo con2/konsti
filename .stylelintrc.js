@@ -27,7 +27,12 @@ module.exports = {
       {
         severity: "error",
         ignorePartialSupport: true,
-        ignore: ["css-resize", "css-sticky", "css3-cursors-newer"],
+        ignore: [
+          "css-resize",
+          "css-sticky",
+          "css3-cursors-newer",
+          "css3-cursors",
+        ],
       },
     ],
   },

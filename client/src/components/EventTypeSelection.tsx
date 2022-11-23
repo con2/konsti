@@ -8,7 +8,7 @@ import { Dropdown } from "client/components/Dropdown";
 import { saveSession } from "client/utils/localStorage";
 import { MOBILE_MARGIN } from "client/globalStyle";
 
-export const ROW_HEIGHT = 32;
+const ROW_HEIGHT = 32;
 
 export const ProgramTypeSelection = (): ReactElement => {
   const { t } = useTranslation();
@@ -29,7 +29,7 @@ export const ProgramTypeSelection = (): ReactElement => {
     <EventTypeSelectionContainer>
       <InfoText>{t("selectedProgramType")}</InfoText>
       <Dropdown
-        items={dropdownItems}
+        options={dropdownItems}
         selectedValue={activeProgramType}
         onChange={(event: ChangeEvent<HTMLSelectElement>) => {
           const programType = event.target.value as ProgramType;
