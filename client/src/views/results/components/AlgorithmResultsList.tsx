@@ -5,7 +5,7 @@ import { ResultsByGameTitle } from "./ResultsByGameTitle";
 import { ResultsByUsername } from "./ResultsByUsername";
 import { Result } from "shared/typings/models/result";
 import { Button, ButtonStyle } from "client/components/Button";
-import { Input } from "client/components/Input";
+import { UncontrolledInput } from "client/components/UncontrolledInput";
 
 interface Props {
   results: readonly Result[];
@@ -88,7 +88,7 @@ const FindField = styled.div`
   margin: 10px auto;
 `;
 
-const StyledInput = styled(Input)`
+const StyledInput = styled(UncontrolledInput)`
   &:active,
   &:focus {
     min-height: 25px;

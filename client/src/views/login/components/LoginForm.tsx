@@ -9,7 +9,7 @@ import { LoginFormFields } from "shared/typings/api/login";
 import { useAppDispatch } from "client/utils/hooks";
 import { LoginErrorMessage, submitLogin } from "client/views/login/loginThunks";
 import { ErrorMessage } from "client/components/ErrorMessage";
-import { Input } from "client/components/Input";
+import { UncontrolledInput } from "client/components/UncontrolledInput";
 
 export const LoginForm = (): ReactElement => {
   const dispatch = useAppDispatch();
@@ -127,7 +127,7 @@ const FormFieldError = styled.div`
   }
 `;
 
-const StyledInput = styled(Input)`
+const StyledInput = styled(UncontrolledInput)`
   width: min(250px, 100%);
 `;
 

@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { ChangeEvent, ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-import { Input } from "client/components/Input";
+import { UncontrolledInput } from "client/components/UncontrolledInput";
 
 interface Props {
   type?: string;
@@ -23,7 +23,7 @@ export const ControlledInput = ({
 
   return (
     <InputContainer>
-      <Input
+      <UncontrolledInput
         type={type}
         value={value}
         onChange={onChange}

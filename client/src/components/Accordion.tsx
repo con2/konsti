@@ -6,16 +6,16 @@ import { Button, ButtonStyle } from "client/components/Button";
 
 interface Props {
   buttonStyle?: ButtonStyle;
-  accordionClosedText: string;
-  accordionOpenText: string;
+  openAccordionText: string;
+  closeAccordionText: string;
   children?: ReactNode;
   initialValue?: boolean;
   className?: string;
 }
 
 export const Accordion = ({
-  accordionOpenText,
-  accordionClosedText,
+  closeAccordionText,
+  openAccordionText,
   buttonStyle = ButtonStyle.SECONDARY,
   children,
   initialValue = false,
@@ -45,7 +45,7 @@ export const Accordion = ({
           aria-hidden="true"
         />
 
-        {open ? accordionOpenText : accordionClosedText}
+        {open ? closeAccordionText : openAccordionText}
       </AccordionToggle>
 
       {open && (

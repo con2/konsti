@@ -24,7 +24,7 @@ import {
 import { ErrorMessage } from "client/components/ErrorMessage";
 import privacyPolicyFi from "client/markdown/PrivacyPolicyFi.md";
 import privacyPolicyEn from "client/markdown/PrivacyPolicyEn.md";
-import { Input } from "client/components/Input";
+import { UncontrolledInput } from "client/components/UncontrolledInput";
 
 export const RegistrationForm = (): ReactElement => {
   const dispatch = useAppDispatch();
@@ -174,8 +174,8 @@ export const RegistrationForm = (): ReactElement => {
         )}
 
         <Accordion
-          accordionOpenText={t("privacyPolicyButtonOpen")}
-          accordionClosedText={t("privacyPolicyButtonClosed")}
+          closeAccordionText={t("hidePrivacyPolicy")}
+          openAccordionText={t("showPrivacyPolicy")}
         >
           <PrivacyPolicyContent>
             <ReactMarkdown remarkPlugins={[remarkGfm]}>
@@ -212,7 +212,7 @@ const widthDefinition = css`
   }
 `;
 
-const StyledInput = styled(Input)`
+const StyledInput = styled(UncontrolledInput)`
   width: min(250px, 100%);
 `;
 

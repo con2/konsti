@@ -48,7 +48,6 @@ interface StyledButtonProps {
 
 const disabledButton = css`
   opacity: 0.4;
-  /* stylelint-disable-next-line plugin/no-unsupported-browser-features -- Seems to actually work on Safari */
   cursor: not-allowed;
 `;
 
