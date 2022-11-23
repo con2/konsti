@@ -1,12 +1,14 @@
 import React, { Fragment, ReactElement } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { useTranslation } from "react-i18next";
 import { timeFormatter } from "client/utils/timeFormatter";
 import { Game } from "shared/typings/models/game";
-import { Button, ButtonStyle } from "client/components/Button";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { updateFavorite } from "client/utils/favorite";
+import {
+  FavoriteButton,
+  FavoriteButtonSize,
+} from "client/components/FavoriteButton";
 
 interface Props {
   games: readonly Game[];
@@ -17,7 +19,6 @@ export const GamesByStartTimes = ({
   games,
   startTimes,
 }: Props): ReactElement => {
-  const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const username = useAppSelector((state) => state.login.username);
   const favoritedGames = useAppSelector(
@@ -49,7 +50,7 @@ export const GamesByStartTimes = ({
             {games.map((game) => {
               if (game.startTime === startTime) {
                 return (
-                  <GameDetailsList key={game.gameId}>
+                  <GameDetailsRow key={game.gameId}>
                     <Link
                       to={`/games/${game.gameId}`}
                       data-testid={"game-title"}
@@ -58,16 +59,15 @@ export const GamesByStartTimes = ({
                     </Link>
 
                     <ButtonPlacement>
-                      <Button
+                      <FavoriteButton
+                        buttonSize={FavoriteButtonSize.SMALL}
+                        isFavorite={true}
                         onClick={async () => {
                           await removeFavorite(game);
                         }}
-                        buttonStyle={ButtonStyle.NORMAL}
-                      >
-                        {t("button.removeFavorite")}
-                      </Button>
+                      />
                     </ButtonPlacement>
-                  </GameDetailsList>
+                  </GameDetailsRow>
                 );
               }
             })}
@@ -78,16 +78,14 @@ export const GamesByStartTimes = ({
   );
 };
 
-const GameDetailsList = styled.p`
+const GameDetailsRow = styled.p`
   display: flex;
   align-items: center;
-  flex-direction: row;
-  margin: 0 0 0 30px;
+  margin: 0 0 8px 30px;
 
   @media (max-width: ${(props) => props.theme.breakpointPhone}) {
-    margin-left: 10px;
-    flex-direction: column;
-    align-items: flex-start;
+    margin: 0 0 8px 10px;
+    justify-content: space-between;
   }
 `;
 

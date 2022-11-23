@@ -13,9 +13,10 @@ import { Game } from "shared/typings/models/game";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { Button, ButtonStyle } from "client/components/Button";
 import { SignupQuestionList } from "client/views/admin/components/SignupQuestionList";
-import { Dropdown, Item } from "client/components/Dropdown";
+import { Dropdown, Option } from "client/components/Dropdown";
 import { SignupStrategySelector } from "client/test/test-components/SignupStrategySelector";
 import { sharedConfig } from "shared/config/sharedConfig";
+import { ButtonGroup } from "client/components/ButtonGroup";
 
 export const AdminView = (): ReactElement => {
   const games = useAppSelector((state) => state.allGames.games);
@@ -70,7 +71,7 @@ export const AdminView = (): ReactElement => {
     return visibleGames;
   };
 
-  const getDropdownItems = (): Item[] => {
+  const getDropdownItems = (): Option[] => {
     const visibleGames = getVisibleGames();
     const startTimes = visibleGames.map((game) => game.startTime);
     const times = [...Array.from(new Set(startTimes))].sort();
@@ -131,9 +132,10 @@ export const AdminView = (): ReactElement => {
 
   return (
     <div>
-      <div>
+      <ButtonGroup>
         <Button
-          buttonStyle={submitting ? ButtonStyle.DISABLED : ButtonStyle.NORMAL}
+          disabled={submitting}
+          buttonStyle={ButtonStyle.PRIMARY}
           onClick={() => {
             submitUpdate();
           }}
@@ -142,7 +144,8 @@ export const AdminView = (): ReactElement => {
         </Button>
 
         <Button
-          buttonStyle={submitting ? ButtonStyle.DISABLED : ButtonStyle.NORMAL}
+          disabled={submitting}
+          buttonStyle={ButtonStyle.PRIMARY}
           onClick={() => {
             submitAssign();
           }}
@@ -151,14 +154,15 @@ export const AdminView = (): ReactElement => {
         </Button>
 
         <Button
-          buttonStyle={submitting ? ButtonStyle.DISABLED : ButtonStyle.NORMAL}
+          disabled={submitting}
+          buttonStyle={ButtonStyle.PRIMARY}
           onClick={() => {
             toggleAppOpen();
           }}
         >
           {appOpen ? t("button.closeApp") : t("button.openApp")}
         </Button>
-      </div>
+      </ButtonGroup>
 
       {submitting && <p>{t("loading")}</p>}
 
@@ -185,23 +189,25 @@ export const AdminView = (): ReactElement => {
             {!activeSignupTime && <p>{t("noActiveTime")}</p>}
           </div>
 
-          <Button
-            buttonStyle={submitting ? ButtonStyle.DISABLED : ButtonStyle.NORMAL}
-            onClick={() => {
-              submitTime();
-            }}
-          >
-            {t("button.saveTime")}
-          </Button>
+          <ButtonGroup>
+            <Button
+              disabled={submitting}
+              buttonStyle={ButtonStyle.PRIMARY}
+              onClick={() => {
+                submitTime();
+              }}
+            >
+              {t("button.saveTime")}
+            </Button>
 
-          <Dropdown
-            items={getDropdownItems()}
-            selectedValue={selectedSignupTime}
-            onChange={(event: ChangeEvent<HTMLSelectElement>) =>
-              setSelectedSignupTime(event.target.value)
-            }
-          />
-
+            <Dropdown
+              options={getDropdownItems()}
+              selectedValue={selectedSignupTime}
+              onChange={(event: ChangeEvent<HTMLSelectElement>) =>
+                setSelectedSignupTime(event.target.value)
+              }
+            />
+          </ButtonGroup>
           <SignupStrategySelector />
 
           <HiddenGamesList hiddenGames={hiddenGames} />
@@ -212,7 +218,7 @@ export const AdminView = (): ReactElement => {
 
       {sharedConfig.enableSentryTesting && (
         <Button
-          buttonStyle={ButtonStyle.NORMAL}
+          buttonStyle={ButtonStyle.PRIMARY}
           onClick={() => {
             const testValue = undefined;
             // @ts-expect-error: Sentry test value

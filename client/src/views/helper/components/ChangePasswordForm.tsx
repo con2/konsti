@@ -6,6 +6,7 @@ import { Button, ButtonStyle } from "client/components/Button";
 import { updateUserPassword } from "client/services/userServices";
 import { passwordLength } from "client/utils/validate";
 import { useAppSelector } from "client/utils/hooks";
+import { ControlledInput } from "client/components/ControlledInput";
 
 interface Props {
   username: string;
@@ -63,16 +64,19 @@ export const ChangePasswordForm = ({ username }: Props): ReactElement => {
   return (
     <>
       <p>{t("passwordManagement.newPassword")}</p>
-      <FormInput
+      <ControlledInput
         type={passwordFieldType}
         key="new-password"
         placeholder={t("passwordManagement.newPassword")}
         value={changePasswordInput}
         onChange={handlePasswordChange}
       />
-      <Button onClick={submitUpdatePassword} buttonStyle={ButtonStyle.NORMAL}>
+      <ButtonWithMargin
+        onClick={submitUpdatePassword}
+        buttonStyle={ButtonStyle.PRIMARY}
+      >
         {t("button.save")}
-      </Button>
+      </ButtonWithMargin>
 
       <FormFieldIcon>
         <FontAwesomeIcon
@@ -96,14 +100,6 @@ const FormFieldIcon = styled.span`
   font-size: ${(props) => props.theme.fontSizeLarge};
 `;
 
-const FormInput = styled.input`
-  border: 1px solid ${(props) => props.theme.borderInactive};
-  color: ${(props) => props.theme.buttonText};
-  height: 34px;
-  padding: 0 0 0 10px;
-  width: 100%;
-`;
-
 interface MessageProps {
   error?: boolean;
 }
@@ -114,4 +110,8 @@ const Message = styled.p<MessageProps>`
     css`
       color: ${(props) => props.theme.textError};
     `};
+`;
+
+const ButtonWithMargin = styled(Button)`
+  margin-top: 8px;
 `;

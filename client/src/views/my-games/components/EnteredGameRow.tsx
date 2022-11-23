@@ -80,7 +80,7 @@ export const EnteredGameRow = ({
           ) : (
             <Button
               onClick={() => setCancelSignupFormOpen(true)}
-              buttonStyle={ButtonStyle.NORMAL}
+              buttonStyle={ButtonStyle.PRIMARY}
             >
               {t("button.cancelSignup")}
             </Button>

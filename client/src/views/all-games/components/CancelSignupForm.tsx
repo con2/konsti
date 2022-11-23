@@ -1,7 +1,7 @@
 import React, { ReactElement } from "react";
-import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { Button, ButtonStyle } from "client/components/Button";
+import { ButtonGroup } from "client/components/ButtonGroup";
 
 interface Props {
   onCancelForm: () => void;
@@ -15,34 +15,17 @@ export const CancelSignupForm = ({
   const { t } = useTranslation();
 
   return (
-    <ButtonContainer>
-      <CancelSignupButton
-        onClick={onConfirmForm}
-        buttonStyle={ButtonStyle.WARNING}
-      >
-        {t("signup.confirmCancelSignup")}
-      </CancelSignupButton>
+    <ButtonGroup>
+      <Button onClick={onConfirmForm} buttonStyle={ButtonStyle.PRIMARY}>
+        {t("signup.confirmCancellation")}
+      </Button>
 
-      <CancelFormButton
+      <Button
         onClick={() => onCancelForm()}
-        buttonStyle={ButtonStyle.NORMAL}
+        buttonStyle={ButtonStyle.SECONDARY}
       >
-        {t("signup.cancel")}
-      </CancelFormButton>
-    </ButtonContainer>
+        {t("signup.staySignedUp")}
+      </Button>
+    </ButtonGroup>
   );
 };
-
-const ButtonContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-`;
-
-const CancelSignupButton = styled(Button)`
-  width: 50%;
-`;
-
-const CancelFormButton = styled(Button)`
-  border: 1px solid ${(props) => props.theme.borderInformative};
-  width: 50%;
-`;

@@ -5,15 +5,21 @@ import { useTranslation } from "react-i18next";
 import { Button, ButtonStyle } from "client/components/Button";
 
 interface Props {
-  toggleButton: string | ReactElement;
+  buttonStyle?: ButtonStyle;
+  openAccordionText: string;
+  closeAccordionText: string;
   children?: ReactNode;
   initialValue?: boolean;
+  className?: string;
 }
 
 export const Accordion = ({
-  toggleButton,
+  closeAccordionText,
+  openAccordionText,
+  buttonStyle = ButtonStyle.SECONDARY,
   children,
   initialValue = false,
+  className,
 }: Props): ReactElement => {
   const { t } = useTranslation();
 
@@ -24,10 +30,10 @@ export const Accordion = ({
   };
 
   return (
-    <div>
+    <div className={className}>
       <AccordionToggle
         onClick={() => onClick()}
-        buttonStyle={ButtonStyle.NORMAL}
+        buttonStyle={buttonStyle}
         aria-label={
           open
             ? t("iconAltText.closeAccordion")
@@ -39,7 +45,7 @@ export const Accordion = ({
           aria-hidden="true"
         />
 
-        {toggleButton}
+        {open ? closeAccordionText : openAccordionText}
       </AccordionToggle>
 
       {open && (

@@ -23,6 +23,7 @@ import {
   selectActiveFavoritedGames,
   selectActiveSignedGames,
 } from "client/views/my-games/myGamesSlice";
+import { ButtonGroup } from "client/components/ButtonGroup";
 
 export const MyGamesView = (): ReactElement => {
   const { t } = useTranslation();
@@ -58,22 +59,22 @@ export const MyGamesView = (): ReactElement => {
 
   return (
     <MyGamesViewContainer>
-      <div>
+      <ButtonGroup>
         <Button
+          disabled={!showAllGames}
           onClick={() => setShowAllGames(false)}
-          buttonStyle={
-            !showAllGames ? ButtonStyle.DISABLED : ButtonStyle.NORMAL
-          }
+          buttonStyle={ButtonStyle.SECONDARY}
         >
           {t("lastStartedAndUpcoming")}
         </Button>
         <Button
+          disabled={showAllGames}
           onClick={() => setShowAllGames(true)}
-          buttonStyle={showAllGames ? ButtonStyle.DISABLED : ButtonStyle.NORMAL}
+          buttonStyle={ButtonStyle.SECONDARY}
         >
           {t("all")}
         </Button>
-      </div>
+      </ButtonGroup>
 
       <MyFavoritesList
         favoritedGames={
@@ -116,7 +117,7 @@ export const MyGamesView = (): ReactElement => {
       />
 
       <ChangePasswordButton
-        buttonStyle={ButtonStyle.NORMAL}
+        buttonStyle={ButtonStyle.PRIMARY}
         onClick={() => setShowChangePassword(!showChangePassword)}
         aria-label={
           showChangePassword

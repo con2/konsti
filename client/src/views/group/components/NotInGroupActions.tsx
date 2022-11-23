@@ -10,6 +10,8 @@ import {
 } from "client/views/group/groupThunks";
 import { useAppDispatch } from "client/utils/hooks";
 import { ErrorMessage } from "client/components/ErrorMessage";
+import { ButtonGroup } from "client/components/ButtonGroup";
+import { ControlledInput } from "client/components/ControlledInput";
 
 interface Props {
   username: string;
@@ -94,31 +96,29 @@ export const NotInGroupActions = ({
 
   return (
     <>
-      <Button
-        buttonStyle={
-          showCreateGroup || disabled
-            ? ButtonStyle.DISABLED
-            : ButtonStyle.NORMAL
-        }
-        onClick={() => openCreateGroup()}
-      >
-        {t("button.createGroup")}
-      </Button>
+      <ButtonGroup>
+        <Button
+          disabled={showCreateGroup || disabled}
+          buttonStyle={ButtonStyle.PRIMARY}
+          onClick={() => openCreateGroup()}
+        >
+          {t("button.createGroup")}
+        </Button>
 
-      <Button
-        buttonStyle={
-          showJoinGroup || disabled ? ButtonStyle.DISABLED : ButtonStyle.NORMAL
-        }
-        onClick={() => openJoinGroup()}
-      >
-        {t("button.joinGroup")}
-      </Button>
-
+        <Button
+          disabled={showJoinGroup || disabled}
+          buttonStyle={ButtonStyle.PRIMARY}
+          onClick={() => openJoinGroup()}
+        >
+          {t("button.joinGroup")}
+        </Button>
+      </ButtonGroup>
       {showCreateGroup && (
         <>
           <p>{t("group.createGroupConfirmationMessage")}</p>
           <Button
-            buttonStyle={loading ? ButtonStyle.DISABLED : ButtonStyle.NORMAL}
+            disabled={loading}
+            buttonStyle={ButtonStyle.PRIMARY}
             onClick={async () => await createGroup()}
           >
             {t("button.createGroupConfirmation")}
@@ -132,19 +132,20 @@ export const NotInGroupActions = ({
             {t("group.joiningGroupWillCancelLotterySignups")}
           </InfoTextParagraph>
 
-          <FormInput
+          <ControlledInput
             key="joinGroup"
             placeholder={t("group.enterGroupCreatorCode")}
             value={joinGroupValue}
             onChange={handleJoinGroupChange}
           />
 
-          <Button
-            buttonStyle={loading ? ButtonStyle.DISABLED : ButtonStyle.NORMAL}
+          <ButtonWithMargin
+            disabled={loading}
+            buttonStyle={ButtonStyle.PRIMARY}
             onClick={async () => await joinGroup()}
           >
             {t("button.joinGroup")}
-          </Button>
+          </ButtonWithMargin>
         </>
       )}
 
@@ -158,12 +159,8 @@ export const NotInGroupActions = ({
   );
 };
 
-const FormInput = styled.input`
-  border: 1px solid ${(props) => props.theme.borderInactive};
-  color: ${(props) => props.theme.buttonText};
-  height: 34px;
-  padding: 0 0 0 10px;
-  width: 100%;
+const ButtonWithMargin = styled(Button)`
+  margin-top: 8px;
 `;
 
 const InfoTextParagraph = styled.p`

@@ -41,7 +41,8 @@ export const GroupMemberActions = ({ username }: Props): ReactElement => {
   return (
     <>
       <Button
-        buttonStyle={loading ? ButtonStyle.DISABLED : ButtonStyle.NORMAL}
+        disabled={loading}
+        buttonStyle={ButtonStyle.PRIMARY}
         onClick={async () => await leaveGroup()}
       >
         {t("button.leaveGroup")}

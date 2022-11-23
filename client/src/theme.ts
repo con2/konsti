@@ -1,99 +1,124 @@
 import { addOpacity } from "client/utils/addOpacity";
 
+interface Palette {
+  lighter: string;
+  light: string;
+  primary: string;
+  dark: string;
+  darker: string;
+}
+
 const white = "rgb(245,245,245)";
 const black = "rgb(3,3,3)";
 
-const redLight = "rgb(255, 153, 153)";
-const red = "rgb(255,106,126)";
-const redDark = "rgb(255 0 51)";
+const green = {
+  lighter: "rgb(127,199,130)",
+  light: "rgb(85,180,88)",
+  primary: "rgb(62,142,65)",
+  dark: "rgb(44,99,45)",
+  darker: "rgb(25,57,26)",
+};
 
-const greenLight = "rgb(235,241,222)";
-const greenLight2 = "rgb(220,230,219)";
-const greenLight3 = "rgb(207,225,205)";
-const green = "rgb(119,147,60)";
-const green2 = "rgb(60,118,61)";
+const red = {
+  lighter: "rgb(255,92,105)",
+  light: "rgb(255,51,68)",
+  primary: "rgb(245,0,20)",
+  dark: "rgb(184,0,15)",
+  darker: "rgb(122,0,10)",
+};
 
-const blueLight = "rgb(117,123,165)";
-const blueLight2 = "rgb(144, 211, 255)";
-const blue = "rgb(77,144,254)";
-const blueDark = "rgb(31,75,160)";
+const blue = {
+  lighter: "rgb(118,155,229)",
+  light: "rgb(67,117,219)",
+  primary: "rgb(36,87,188)",
+  dark: "rgb(26,63,137)",
+  darker: "rgb(16,39,86)",
+};
 
-const grayLighter = "rgb(232,232,232)";
-const grayLight = "rgb(217,217,217)";
-const gray = "rgb(179,179,179)";
-const grayDark = "rgb(150,150,150)";
+const yellow = {
+  lighter: "rgb(254,239,175)",
+  light: "rgb(253,227,114)",
+  primary: "rgb(252,216,54)",
+  dark: "rgb(242,198,2)",
+  darker: "rgb(182,149,2)",
+};
 
-const yellow = "rgb(234,234,173)";
-const yellowDark = "rgb(214,214,166)";
-const yellowLight = "rgb(255,255,170)";
+const gray = {
+  lighter: "rgb(184,184,184)",
+  light: "rgb(153,153,153)",
+  primary: "rgb(122,122,122)",
+  dark: "rgb(82,82,82)",
+  darker: "rgb(51,51,51)",
+};
 
-const magenta = "rgb(255, 0, 255)";
+const mainColor: Palette = green;
 
 export const theme = {
   // Colors
-  backgroundActive: greenLight,
   backgroundBody: white,
   backgroundHighlight: white,
-  backgroundHover: grayLight,
+  backgroundHover: addOpacity(mainColor.primary, "0.3"),
+  backgroundSelected: addOpacity(mainColor.primary, "0.6"),
   backgroundMain: white,
-  backgroundTag: blueLight,
-  backgroundWarning: redLight,
-  backgroundDisabled: grayLight,
+  backgroundTag: addOpacity(mainColor.primary, "0.3"),
+  backgroundWarning: red.lighter,
+  backgroundDisabled: gray.light,
 
-  borderActive: green,
-  borderDisabled: greenLight2,
-  borderInactive: grayDark,
-  borderInformative: black,
-  borderWarning: redDark,
+  borderActive: mainColor.primary,
+  borderDisabled: mainColor.lighter,
+  borderInactive: gray.primary,
+  borderWarning: red.primary,
+  borderCardHighlight: mainColor.light,
 
-  buttonBackground: white,
-  buttonBackgroundDisabled: gray,
-  buttonBorder: greenLight3,
-  buttonBorderConfirm: yellowDark,
-  buttonWarning: redLight,
-  buttonWarningHover: addOpacity(redLight, "0.80"),
-  buttonBorderWarning: redLight,
-  buttonConfirm: yellow,
+  buttonPrimaryBackground: mainColor.primary,
+  buttonPrimaryHover: addOpacity(mainColor.dark, "0.85"),
+  buttonPrimaryClicked: mainColor.dark,
+  buttonPrimaryText: white,
+  buttonSecondaryBackground: white,
+  buttonSecondaryBorder: mainColor.primary,
+  buttonSecondaryHover: addOpacity(mainColor.primary, "0.25"),
+  buttonSecondaryClicked: addOpacity(mainColor.primary, "0.5"),
+
+  buttonBackgroundDisabled: gray.light,
   buttonText: black,
-  buttonTextWarning: black,
 
-  errorCloseButtonBackground: redLight,
-  errorCloseButtonBorder: red,
+  errorCloseButtonBackground: red.light,
+  errorCloseButtonBorder: red.primary,
 
-  textError: red,
-  textLink: blueDark,
+  textError: red.primary,
+  textLink: mainColor.dark,
   textMain: black,
-  textSuccess: green2,
-  textTag: white,
-  textWarning: redDark,
+  textSuccess: mainColor.dark,
+  textTag: black,
 
-  iconFavorited: redLight,
+  iconFavorited: mainColor.primary,
 
-  inputBorderFocus: blue,
-  inputTextPlaceholder: gray,
+  inputBorderFocus: mainColor.primary,
+  inputTextPlaceholder: gray.light,
 
-  resultsFoldBackground: grayLighter,
-  resultsFoldBorder: gray,
-  warningBackground: yellowLight,
-  warningBorder: yellow,
+  resultsFoldBackground: white,
+  resultsFoldBorder: gray.primary,
+  warningBackground: yellow.lighter,
+  warningBorder: yellow.primary,
 
-  infoBorder: blueLight2,
-  infoBackground: addOpacity(blueLight2, "0.23"),
+  infoBorder: blue.light,
+  infoBackground: addOpacity(blue.light, "0.23"),
 
   // Breakpoints
   breakpointPhone: "768px",
   breakpointDesktop: "1024px",
 
   // Font sizes
+  fontSizeSmaller: "12px",
   fontSizeSmall: "14px",
   fontSizeNormal: "16px",
   fontSizeLarge: "20px",
   linkFontSize: "18px",
 
   // Game popularity icon colors
-  popularityLow: blue,
-  popularityMedium: magenta,
-  popularityHigh: redDark,
+  popularityLow: blue.primary,
+  popularityMedium: green.primary,
+  popularityHigh: red.primary,
 };
 
 export type Theme = typeof theme;
