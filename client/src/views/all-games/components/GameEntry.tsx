@@ -1,7 +1,6 @@
 import React, { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import { updateFavorite, UpdateFavoriteOpts } from "client/utils/favorite";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
@@ -9,12 +8,13 @@ import { SignupStrategy } from "shared/config/sharedConfig.types";
 import { Game, Tag } from "shared/typings/models/game";
 import { AlgorithmSignupForm } from "./AlgorithmSignupForm";
 import { DirectSignupForm } from "./DirectSignupForm";
-import { Button, ButtonStyle } from "client/components/Button";
 import { SelectedGame } from "shared/typings/models/user";
 import { isAlreadyEntered, isAlreadySigned } from "./allGamesUtils";
 import { PopularityInfo } from "client/components/PopularityInfo";
 import { sharedConfig } from "shared/config/sharedConfig";
 import { GameDetailsView } from "client/views/all-games/components/GameDetailsView";
+import { Tags } from "client/components/Tags";
+import { FavoriteButton } from "client/components/FavoriteButton";
 
 interface Props {
   game: Game;
@@ -82,6 +82,14 @@ export const GameEntry = ({
     ? isEnteredCurrentGame
     : isSignedForCurrentGame;
 
+  const tags = [t(`programType.${game.programType}`)];
+  if (game.gameSystem) {
+    tags.push(game.gameSystem);
+  }
+  if (game.tags.includes(Tag.IN_ENGLISH)) {
+    tags.push(t("gameTags.inEnglish"));
+  }
+
   return (
     <GameContainer
       key={game.gameId}
@@ -98,15 +106,7 @@ export const GameEntry = ({
               {t("signup.signupAlwaysOpen")}
             </SignupAlwaysOpenHelp>
           )}
-          <GameTags>
-            <TagColumn>
-              <GameTag>{t(`programType.${game.programType}`)}</GameTag>
-              {game.gameSystem && <GameTag>{game.gameSystem}</GameTag>}
-              {game.tags.includes(Tag.IN_ENGLISH) && (
-                <GameTag>{t("gameTags.inEnglish")}</GameTag>
-              )}
-            </TagColumn>
-          </GameTags>
+          <Tags tags={tags} />
           <p>
             <RowItem>
               {t("signup.expectedDuration", {
@@ -149,41 +149,19 @@ export const GameEntry = ({
             />
           )}
         </HeaderContainer>
-        {favorited && loggedIn && userGroup === "user" && game && (
+        {loggedIn && userGroup === "user" && game && (
           <FavoriteButton
+            isFavorite={favorited}
             onClick={async () =>
               await updateFavoriteHandler({
                 game,
-                action: "del",
+                action: favorited ? "del" : "add",
                 favoritedGames,
                 username,
                 dispatch,
               })
             }
-            buttonStyle={ButtonStyle.NORMAL}
-            data-testid={"remove-favorite-button"}
-            aria-label={t("iconAltText.deleteFavorite")}
-          >
-            <FavoriteIcon icon="heart" aria-hidden="true" />
-          </FavoriteButton>
-        )}
-        {!favorited && loggedIn && userGroup === "user" && game && (
-          <FavoriteButton
-            onClick={async () =>
-              await updateFavoriteHandler({
-                game,
-                action: "add",
-                favoritedGames,
-                username,
-                dispatch,
-              })
-            }
-            buttonStyle={ButtonStyle.NORMAL}
-            data-testid={"add-favorite-button"}
-            aria-label={t("iconAltText.addFavorite")}
-          >
-            <FavoriteIcon icon={["far", "heart"]} aria-hidden="true" />
-          </FavoriteButton>
+          />
         )}
       </GameHeader>
       <GameDetailsView game={game} isAlwaysExpanded={isAlwaysExpanded} />
@@ -215,12 +193,6 @@ const PlayerCount = styled("span")`
   margin-top: 8px;
 `;
 
-const FavoriteButton = styled(Button)`
-  margin: 0 0 0 16px;
-  width: 60px;
-  max-height: 50px;
-`;
-
 const GameEntryRow = styled.div`
   display: flex;
   flex-direction: row;
@@ -240,28 +212,6 @@ const HeaderContainer = styled.div`
   }
 `;
 
-const GameTag = styled.span`
-  display: flex;
-  border-radius: 8px;
-  align-items: center;
-  text-align: center;
-  background: ${(props) => props.theme.backgroundTag};
-  padding: 5px 8px;
-  margin-bottom: 4px;
-  font-size: 12px;
-  color: ${(props) => props.theme.textTag};
-  margin-left: 8px;
-
-  &:first-child {
-    margin-left: 0;
-  }
-`;
-
-const TagColumn = styled.div`
-  display: flex;
-  margin-top: 4px;
-`;
-
 const GameContainer = styled.div<{ signed: boolean }>`
   display: flex;
   flex-direction: column;
@@ -271,7 +221,7 @@ const GameContainer = styled.div<{ signed: boolean }>`
   border-radius: 4px;
   background: #fafafa;
   min-height: 160px;
-  box-shadow: 1px 8px 15px 0 rgba(0, 0, 0, 0.42);
+  box-shadow: 1px 6px 12px 0 rgba(0, 0, 0, 0.34);
   color: #3d3d3d;
 
   @media (max-width: ${(props) => props.theme.breakpointPhone}) {
@@ -279,17 +229,11 @@ const GameContainer = styled.div<{ signed: boolean }>`
     margin-right: 0;
   }
 
-  ${(props) => props.signed && `border: 1px solid ${props.theme.infoBorder};`}
   ${(props) =>
-    props.signed && `border-left: 5px solid ${props.theme.infoBorder};`}
-`;
-
-const GameTags = styled.div`
-  display: flex;
-`;
-
-const FavoriteIcon = styled(FontAwesomeIcon)`
-  color: ${(props) => props.theme.iconFavorited};
+    props.signed && `border: 1px solid ${props.theme.borderCardHighlight};`}
+  ${(props) =>
+    props.signed &&
+    `border-left: 5px solid ${props.theme.borderCardHighlight};`}
 `;
 
 const RowItem = styled.span`

@@ -104,12 +104,12 @@ export const DirectSignupForm: FC<Props> = ({
               )}
 
               {!signupFormOpen && !directSignupStartTime && (
-                <Button
+                <ButtonWithMargin
                   onClick={() => setSignupFormOpen(!signupFormOpen)}
-                  buttonStyle={ButtonStyle.NORMAL}
+                  buttonStyle={ButtonStyle.PRIMARY}
                 >
                   {t("signup.directSignup")}
-                </Button>
+                </ButtonWithMargin>
               )}
 
               {signupFormOpen && (
@@ -133,12 +133,12 @@ export const DirectSignupForm: FC<Props> = ({
             {t("signup.currentSignupGame")}
           </SignedGameContainer>
           {!cancelSignupFormOpen && (
-            <Button
+            <ButtonWithMargin
               onClick={() => setCancelSignupFormOpen(true)}
-              buttonStyle={ButtonStyle.WARNING}
+              buttonStyle={ButtonStyle.SECONDARY}
             >
               {t("button.cancelSignup")}
-            </Button>
+            </ButtonWithMargin>
           )}
 
           {cancelSignupFormOpen && (
@@ -180,4 +180,8 @@ const SignedGameName = styled.span`
 
 const BoldText = styled.span`
   font-weight: 600;
+`;
+
+const ButtonWithMargin = styled(Button)`
+  margin: 8px 0;
 `;

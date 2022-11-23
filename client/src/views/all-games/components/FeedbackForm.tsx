@@ -57,12 +57,13 @@ export const FeedbackForm = ({ game }: Props): ReactElement => {
             onChange={handleFeedbackChange}
           />
 
-          <Button
-            buttonStyle={submitting ? ButtonStyle.DISABLED : ButtonStyle.NORMAL}
+          <ButtonWithMargin
+            disabled={submitting}
+            buttonStyle={ButtonStyle.SECONDARY}
             onClick={async () => await sendFeedbackEvent()}
           >
             {t("button.sendFeedback")}
-          </Button>
+          </ButtonWithMargin>
         </>
       )}
 
@@ -84,4 +85,8 @@ const SuccessMessage = styled.p`
 
 const Title = styled.p`
   font-weight: 600;
+`;
+
+const ButtonWithMargin = styled(Button)`
+  margin: 8px 0;
 `;

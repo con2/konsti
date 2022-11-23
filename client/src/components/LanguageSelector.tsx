@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { TFunction } from "i18next";
 import styled from "styled-components";
 import { setLocale } from "shared/utils/setLocale";
+import { Dropdown } from "client/components/Dropdown";
 
 export const LanguageSelector = (): ReactElement => {
   const { t, i18n } = useTranslation();
@@ -17,24 +18,22 @@ export const LanguageSelector = (): ReactElement => {
     setLocale(event.target.value);
   };
 
+  const options = [
+    { value: "en", title: t("language.englishShort") },
+    { value: "fi", title: t("language.finnishShort") },
+  ];
+
   return (
     <LanguageSelectorContainer
       id="language"
-      value={language}
+      selectedValue={language}
       onChange={setLanguage}
-    >
-      <option title={t("language.english")} value="en">
-        {t("language.englishShort")}
-      </option>
-      <option title={t("language.finnish")} value="fi">
-        {t("language.finnishShort")}
-      </option>
-    </LanguageSelectorContainer>
+      options={options}
+    />
   );
 };
 
-const LanguageSelectorContainer = styled.select`
+const LanguageSelectorContainer = styled(Dropdown)`
   height: 30px;
   width: 60px;
-  margin: 0 8px 0 0;
 `;

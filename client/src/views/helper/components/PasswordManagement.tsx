@@ -4,6 +4,7 @@ import styled, { css } from "styled-components";
 import { getUserBySerialOrUsername } from "client/services/userServices";
 import { Button, ButtonStyle } from "client/components/Button";
 import { ChangePasswordForm } from "client/views/helper/components/ChangePasswordForm";
+import { ControlledInput } from "client/components/ControlledInput";
 
 export const PasswordManagement = (): ReactElement => {
   const { t } = useTranslation();
@@ -47,16 +48,19 @@ export const PasswordManagement = (): ReactElement => {
       <h3>{t("passwordManagement.helperPasswordManagement")}</h3>
       <p>{t("passwordManagement.userCodeOrUsername")}</p>
 
-      <FormInput
+      <ControlledInput
         key="user-serial"
         placeholder={t("passwordManagement.userCodeOrUsername")}
         value={userSerialInput}
         onChange={handleSerialChange}
       />
 
-      <Button onClick={submitGetUser} buttonStyle={ButtonStyle.NORMAL}>
+      <ButtonWithMargin
+        onClick={submitGetUser}
+        buttonStyle={ButtonStyle.PRIMARY}
+      >
         {t("button.find")}
-      </Button>
+      </ButtonWithMargin>
 
       {userFoundMessage}
 
@@ -64,14 +68,6 @@ export const PasswordManagement = (): ReactElement => {
     </div>
   );
 };
-
-const FormInput = styled.input`
-  border: 1px solid ${(props) => props.theme.borderInactive};
-  color: ${(props) => props.theme.buttonText};
-  height: 34px;
-  padding: 0 0 0 10px;
-  width: 100%;
-`;
 
 interface MessageProps {
   error?: boolean;
@@ -83,4 +79,8 @@ const Message = styled.p<MessageProps>`
     css`
       color: ${(props) => props.theme.textError};
     `};
+`;
+
+const ButtonWithMargin = styled(Button)`
+  margin-top: 8px;
 `;
