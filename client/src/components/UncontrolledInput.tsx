@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Input = styled.input`
+export const UncontrolledInput = styled.input`
   border: 1px solid ${(props) => props.theme.borderInactive};
   box-sizing: border-box;
   border-radius: 6px;
