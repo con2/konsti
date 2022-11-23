@@ -17,14 +17,14 @@ export const CancelSignupForm = ({
   return (
     <ButtonGroup>
       <Button onClick={onConfirmForm} buttonStyle={ButtonStyle.PRIMARY}>
-        {t("signup.confirmCancelSignup")}
+        {t("signup.confirmCancellation")}
       </Button>
 
       <Button
         onClick={() => onCancelForm()}
         buttonStyle={ButtonStyle.SECONDARY}
       >
-        {t("signup.confirmCancellation")}
+        {t("signup.staySignedUp")}
       </Button>
     </ButtonGroup>
   );

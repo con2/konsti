@@ -15,8 +15,8 @@ export const TestValuePicker = (): ReactElement => {
   return (
     <div>
       <StyledAccordion
-        accordionOpenText={t("testValues.buttonText")}
-        accordionClosedText={t("testValues.buttonText")}
+        closeAccordionText={t("testValues.buttonText")}
+        openAccordionText={t("testValues.buttonText")}
       >
         <TestValueSelectors>
           <TestTimeSelector testTime={testTime} />
