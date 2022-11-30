@@ -8,7 +8,7 @@ export const wwwRedirect = (
 ): void => {
   const host = req.get("host");
   if (!host) {
-    return;
+    return next();
   }
 
   const hostHasWww = /^www\./.test(host);
@@ -22,5 +22,5 @@ export const wwwRedirect = (
     return res.redirect(301, `${protocol}://${hostWithoutWww}${req.url}`);
   }
 
-  next();
+  return next();
 };
