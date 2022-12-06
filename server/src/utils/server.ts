@@ -18,6 +18,7 @@ import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { postSentryTunnel } from "server/features/sentry-tunnel/sentryTunnelController";
 import { sharedConfig } from "shared/config/sharedConfig";
 import { stopCronJobs } from "server/utils/cron";
+import { wwwRedirect } from "server/middleware/wwwRedirect";
 
 interface StartServerParams {
   dbConnString: string;
@@ -118,6 +119,7 @@ export const startServer = async ({
   );
 
   app.use(allowCORS);
+  app.use(wwwRedirect);
 
   app.use(apiRoutes);
 
