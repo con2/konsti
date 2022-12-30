@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import { MongoMemoryServer } from "mongodb-memory-server";
+import dayjs from "dayjs";
 import { saveUser } from "server/features/user/userRepository";
 import { testGame } from "shared/tests/testGame";
 import { saveGames } from "server/features/game/gameRepository";
@@ -39,6 +40,19 @@ test("should delete signup from user", async () => {
   await saveSignup(mockPostEnteredGameRequest);
 
   const response = await delSignup(mockPostEnteredGameRequest);
+
+  expect(response.userSignups.length).toEqual(0);
+});
+
+test("should delete signup from user even if signup time is different", async () => {
+  await saveUser(mockUser);
+  await saveGames([testGame]);
+  await saveSignup(mockPostEnteredGameRequest);
+
+  const response = await delSignup({
+    ...mockPostEnteredGameRequest,
+    startTime: dayjs(testGame.startTime).add(1, "hours").format(),
+  });
 
   expect(response.userSignups.length).toEqual(0);
 });
