@@ -179,6 +179,7 @@
   "signupSaved": "Signup saved",
   "signupError": {
     "generic": "Signup failed",
+    "cancelFailed": "Error canceling signup",
     "signupEnded": "Signup ended",
     "samePriority": "Priority already selected",
     "signupNotOpenYet": "Signup not open yet"
