@@ -78,7 +78,7 @@ In this case, access the frontend at `localhost:5000`.
 
 Konsti development supported by
 
-[![Reaktor logo](/client/assets/reaktor-logo.png)](https://www.reaktor.com)
+[![Reaktor logo](/client/assets/reaktor-logo.png)](https://www.reaktor.com)&nbsp;&nbsp;&nbsp;
 [![Sovellin logo](/client/assets/sovellin-logo.png)](https://www.sovellin.com)&nbsp;&nbsp;&nbsp;
 [![BrowserStack logo](/client/assets/browserstack-logo.png)](https://www.browserstack.com)
 [![Sentry logo](/client/assets/sentry-logo.png)](https://sentry.io)
