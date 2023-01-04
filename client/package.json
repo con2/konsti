@@ -57,7 +57,7 @@
   },
   "devDependencies": {
     "@axe-core/react": "4.4.3",
-    "@playwright/test": "1.23.1",
+    "@playwright/test": "1.29.1",
     "@pmmmwh/react-refresh-webpack-plugin": "0.5.10",
     "@ronilaukkarinen/stylelint-a11y": "1.2.4",
     "@sentry/webpack-plugin": "1.20.0",
