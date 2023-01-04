@@ -100,7 +100,6 @@ const devConfig: Configuration = {
   devtool: config.enableReduxTrace ? "source-map" : "eval-source-map",
 
   // webpack-dev-server config
-  // @ts-expect-error: ?
   devServer: {
     host: "localhost",
     port: 8000,
@@ -109,6 +108,7 @@ const devConfig: Configuration = {
   },
 
   plugins: [
+    // @ts-expect-error: ?
     new Dotenv({ path: "./config/dev.env" }),
     new ReactRefreshWebpackPlugin(),
   ],
@@ -126,6 +126,7 @@ const prodConfig: Configuration = {
   },
 
   plugins: [
+    // @ts-expect-error: ?
     new Dotenv({ path: getEnvVariableFile() }),
     new CompressionPlugin({
       filename: "[path][base].gz",
