@@ -4,6 +4,7 @@ import CompressionPlugin from "compression-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import Dotenv from "dotenv-webpack";
 import { Configuration } from "webpack";
+import "webpack-dev-server";
 import { merge } from "webpack-merge";
 import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
 import SentryCliPlugin from "@sentry/webpack-plugin";
@@ -108,7 +109,6 @@ const devConfig: Configuration = {
   },
 
   plugins: [
-    // @ts-expect-error: ?
     new Dotenv({ path: "./config/dev.env" }),
     new ReactRefreshWebpackPlugin(),
   ],
@@ -126,7 +126,6 @@ const prodConfig: Configuration = {
   },
 
   plugins: [
-    // @ts-expect-error: ?
     new Dotenv({ path: getEnvVariableFile() }),
     new CompressionPlugin({
       filename: "[path][base].gz",
