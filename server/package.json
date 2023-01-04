@@ -51,7 +51,7 @@
     "morgan": "1.10.0",
     "munkres-js": "1.2.2",
     "node-schedule": "2.1.0",
-    "ts-node": "10.8.2",
+    "ts-node": "10.9.1",
     "winston": "3.8.1",
     "winston-daily-rotate-file": "4.7.1"
   },
