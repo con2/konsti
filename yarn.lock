@@ -5029,7 +5029,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"bson@npm:^4.6.2, bson@npm:^4.6.3, bson@npm:^4.7.0":
+"bson@npm:^4.7.0":
   version: 4.7.0
   resolution: "bson@npm:4.7.0"
   dependencies:
@@ -6050,13 +6050,6 @@ __metadata:
   version: 1.0.0
   resolution: "delegates@npm:1.0.0"
   checksum: a51744d9b53c164ba9c0492471a1a2ffa0b6727451bdc89e31627fdf4adda9d51277cfcbfb20f0a6f08ccb3c436f341df3e92631a3440226d93a8971724771fd
-  languageName: node
-  linkType: hard
-
-"denque@npm:^2.0.1":
-  version: 2.1.0
-  resolution: "denque@npm:2.1.0"
-  checksum: 1d4ae1d05e59ac3a3481e7b478293f4b4c813819342273f3d5b826c7ffa9753c520919ba264f377e09108d24ec6cf0ec0ac729a5686cbb8f32d797126c5dae74
   languageName: node
   linkType: hard
 
@@ -9478,10 +9471,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"kareem@npm:2.4.1":
-  version: 2.4.1
-  resolution: "kareem@npm:2.4.1"
-  checksum: 83c8d8f5ea82e58fa9f43f62f65576ac32fc7c5f817deb2708c68996eb586bf3dc236404a4570c548730a041e29a6553f61f8a744fa96a1093e5dc28b4ce598f
+"kareem@npm:2.5.0":
+  version: 2.5.0
+  resolution: "kareem@npm:2.5.0"
+  checksum: 292e80b32fb44e1801c5eb25b150e4b42e6ddf8a9c38ac67f99d4e7164dc7d9e874ea9b6ffaa42d6c3e76c8dd28ae5723643f3b5c8cb5c481af07118ce1475e3
   languageName: node
   linkType: hard
 
@@ -9660,7 +9653,7 @@ __metadata:
     helmet: 6.0.1
     jsonwebtoken: 9.0.0
     mongodb-memory-server: 8.7.2
-    mongoose: 6.4.3
+    mongoose: 6.8.2
     morgan: 1.10.0
     munkres-js: 1.2.2
     node-schedule: 2.1.0
@@ -10840,7 +10833,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mongodb-connection-string-url@npm:^2.5.2, mongodb-connection-string-url@npm:^2.5.4":
+"mongodb-connection-string-url@npm:^2.5.4":
   version: 2.6.0
   resolution: "mongodb-connection-string-url@npm:2.6.0"
   dependencies:
@@ -10884,19 +10877,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mongodb@npm:4.7.0":
-  version: 4.7.0
-  resolution: "mongodb@npm:4.7.0"
+"mongodb@npm:4.12.1":
+  version: 4.12.1
+  resolution: "mongodb@npm:4.12.1"
   dependencies:
-    bson: ^4.6.3
-    denque: ^2.0.1
-    mongodb-connection-string-url: ^2.5.2
+    "@aws-sdk/credential-providers": ^3.186.0
+    bson: ^4.7.0
+    mongodb-connection-string-url: ^2.5.4
     saslprep: ^1.0.3
-    socks: ^2.6.2
+    socks: ^2.7.1
   dependenciesMeta:
+    "@aws-sdk/credential-providers":
+      optional: true
     saslprep:
       optional: true
-  checksum: 6c8ddf1d14a4392d83702aa532e5a1e6deaa501cfd66e352a1226358422716e340465ca4b0f2c5d8f660bf15c06456059953fb99482f714c1dab408ecfe3aeea
+  checksum: 84590484b2c93bce849ec1e334b064e983444ed73942061c91e09556348c80db9d4a40544b927cd795bdfbfc51d1b713a7df5ced4ecf13cd00fab5e3c3e32ada
   languageName: node
   linkType: hard
 
@@ -10918,18 +10913,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mongoose@npm:6.4.3":
-  version: 6.4.3
-  resolution: "mongoose@npm:6.4.3"
+"mongoose@npm:6.8.2":
+  version: 6.8.2
+  resolution: "mongoose@npm:6.8.2"
   dependencies:
-    bson: ^4.6.2
-    kareem: 2.4.1
-    mongodb: 4.7.0
+    bson: ^4.7.0
+    kareem: 2.5.0
+    mongodb: 4.12.1
     mpath: 0.9.0
     mquery: 4.0.3
     ms: 2.1.3
-    sift: 16.0.0
-  checksum: 016bfaf417cf423d801415a7bbb82bca5d721732ed7938d6a8e5c856cd14fc8b95cfa490fd0cca65363c22790b5c6bd961ec42f65f8377e8bf1a1e00a59caf86
+    sift: 16.0.1
+  checksum: ff1ae68726124855954d24d575c81d9b737abfea6a051c12621acf40d4f044ecf530dabafd29e70cb8bf4aef18de8f1504c872c11d6db85bfd2a32b9d75b2ab2
   languageName: node
   linkType: hard
 
@@ -12967,10 +12962,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sift@npm:16.0.0":
-  version: 16.0.0
-  resolution: "sift@npm:16.0.0"
-  checksum: 88d5754afe16fbaf4274223e492f4aa382c44070bc63b84b9dcfe0f16f65ff64361c4e642b2ae65dfe33a85170a6ecc378ca44487302a88835f58fe152e62894
+"sift@npm:16.0.1":
+  version: 16.0.1
+  resolution: "sift@npm:16.0.1"
+  checksum: 5fe18a517a20c35e0c05238797cc605094a6cb602b08c4661268c415b71a10f1a55ee4cc8728552e390e7cb4683a33bcbd68d7971eb44645cc6211e2f00dd233
   languageName: node
   linkType: hard
 
