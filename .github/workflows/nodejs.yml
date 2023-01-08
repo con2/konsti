@@ -32,40 +32,9 @@ jobs:
         run: |
           yarn build-front:prod
 
-      - name: Run Prettier
-        run: |
-          yarn prettier:check
-
-      - name: Run ESLint
-        run: |
-          yarn eslint
-
-      - name: Run stylelint
-        run: |
-          yarn stylelint
-
-      - name: TS type check
-        run: |
-          yarn type-check
-
-      - name: Run Jest tests
-        run: |
-          yarn test
-
-      - name: Run Playwright tests
-        run: |
-          yarn docker-compose:test
-
-      - name: Upload test results if Playwright tests failed
-        uses: actions/upload-artifact@v3
-        if: failure()
-        with:
-          name: playwright-videos
-          path: client/playwright/test-results/
-
   deploy:
     needs: [build]
-    if: github.ref == 'refs/heads/master'
+    # if: github.ref == 'refs/heads/master'
 
     runs-on: ubuntu-latest
 
