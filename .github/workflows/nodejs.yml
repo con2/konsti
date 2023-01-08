@@ -54,6 +54,10 @@ jobs:
           path: build-files
           key: ${{ runner.os }}-build-files
 
+      - name: Check cache hit
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: exit 1
+
       - name: Build container
         run: |
           yarn docker:build
