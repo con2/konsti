@@ -7,7 +7,8 @@ import React, {
 } from "react";
 import { useStore } from "react-redux";
 import { Link } from "react-router-dom";
-import { TFunction, useTranslation } from "react-i18next";
+import { TFunction } from "i18next";
+import { useTranslation } from "react-i18next";
 import dayjs from "dayjs";
 import styled from "styled-components";
 import { useDebounce } from "use-debounce";

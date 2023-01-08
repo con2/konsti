@@ -28,6 +28,7 @@ i18next
       order: ["localStorage"],
     },
     defaultNS,
+    returnNull: false,
   });
 
 type Equals<X, Y> = [X, Y] extends [Y, X] ? true : false;
