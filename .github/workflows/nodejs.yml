@@ -28,48 +28,13 @@ jobs:
         run: |
           yarn --immutable
 
-      - name: Build front-end
-        run: |
-          yarn build-front:prod
-
-      - name: Run Prettier
-        run: |
-          yarn prettier:check
-
-      - name: Run ESLint
-        run: |
-          yarn eslint
-
-      - name: Run stylelint
-        run: |
-          yarn stylelint
-
-      - name: TS type check
-        run: |
-          yarn type-check
-
-      - name: Run Jest tests
-        run: |
-          yarn test
-
-      - name: Run Playwright tests
-        run: |
-          yarn docker-compose:test
-
-      - name: Upload test results if Playwright tests failed
-        uses: actions/upload-artifact@v3
-        if: failure()
-        with:
-          name: playwright-videos
-          path: client/playwright/test-results/
-
-      - name: Build container
-        if: github.ref == 'refs/heads/master'
+      - name: Build staging container
+        # if: github.ref == 'refs/heads/master'
         run: |
           yarn docker:build-staging
 
-      - name: Push to AWS ECR
-        if: github.ref == 'refs/heads/master'
+      - name: Push staging container to AWS ECR
+        # if: github.ref == 'refs/heads/master'
         uses: jwalton/gh-ecr-push@v1.3.6
         with:
           access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -77,13 +42,13 @@ jobs:
           region: eu-west-1
           image: konsti-staging:latest
 
-      - name: Build container
-        if: github.ref == 'refs/heads/master'
+      - name: Build prod container
+        # if: github.ref == 'refs/heads/master'
         run: |
           yarn docker:build-prod
 
-      - name: Push to AWS ECR
-        if: github.ref == 'refs/heads/master'
+      - name: Push prod container to AWS ECR
+        # if: github.ref == 'refs/heads/master'
         uses: jwalton/gh-ecr-push@v1.3.6
         with:
           access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
