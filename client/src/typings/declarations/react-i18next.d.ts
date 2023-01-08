@@ -4,6 +4,6 @@ import { defaultNS, resources } from "client/utils/i18n";
 declare module "react-i18next" {
   interface CustomTypeOptions {
     defaultNS: typeof defaultNS;
-    resources: typeof resources["en"];
+    resources: (typeof resources)["en"];
   }
 }
