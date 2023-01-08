@@ -1,6 +1,6 @@
 name: Node CI
 
-on: [push]
+on: [push, workflow_dispatch]
 
 jobs:
   build:
@@ -62,3 +62,20 @@ jobs:
         with:
           name: playwright-videos
           path: client/playwright/test-results/
+
+  deploy:
+    needs: [build]
+    if: github.ref == 'refs/heads/master'
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Build container
+        run: |
+          yarn docker:build
+
+      - name: Push to Amazon ECR
+        uses: jwalton/gh-ecr-push@v1.3.6
+        with:
+          region: eu-west-1
+          image: konsti:latest
