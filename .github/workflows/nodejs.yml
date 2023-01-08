@@ -32,38 +32,20 @@ jobs:
         run: |
           yarn build-front:prod
 
+      - name: Build container
+        if: github.ref == 'refs/heads/master'
+        run: |
+          yarn docker:build
+
+      - name: Push to Amazon ECR
+        if: github.ref == 'refs/heads/master'
+        uses: jwalton/gh-ecr-push@v1.3.6
+        with:
+          region: eu-west-1
+          image: konsti:latest
+
   #      - name: Cache build files
   #        uses: actions/cache@v3
   #        with:
   #          path: build-files
   #          key: build-files
-
-  deploy:
-    needs: [build]
-    # if: github.ref == 'refs/heads/master'
-
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      #      - uses: actions/cache/restore@v3
-      #        id: cache
-      #        with:
-      #          path: build-files
-      #          key: build-files
-
-      #      - name: Check cache hit
-      #        if: steps.cache.outputs.cache-hit != 'true'
-      #        run: exit 1
-
-      - name: Build container
-        run: |
-          yarn docker:build
-
-      - name: Push to Amazon ECR
-        uses: jwalton/gh-ecr-push@v1.3.6
-        with:
-          region: eu-west-1
-          image: konsti:latest
