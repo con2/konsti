@@ -66,7 +66,7 @@ jobs:
       - name: Build container
         if: github.ref == 'refs/heads/master'
         run: |
-          yarn docker:build
+          yarn docker:build-staging
 
       - name: Push to AWS ECR
         if: github.ref == 'refs/heads/master'
@@ -75,4 +75,18 @@ jobs:
           access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           region: eu-west-1
-          image: konsti:latest
+          image: konsti-staging:latest
+
+      - name: Build container
+        if: github.ref == 'refs/heads/master'
+        run: |
+          yarn docker:build-prod
+
+      - name: Push to AWS ECR
+        if: github.ref == 'refs/heads/master'
+        uses: jwalton/gh-ecr-push@v1.3.6
+        with:
+          access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          region: eu-west-1
+          image: konsti-prod:latest
