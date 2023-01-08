@@ -32,6 +32,12 @@ jobs:
         run: |
           yarn build-front:prod
 
+      - name: Cache build files
+        uses: actions/cache@v3
+        with:
+          path: build-files
+          key: ${{ runner.os }}-build-files
+
   deploy:
     needs: [build]
     # if: github.ref == 'refs/heads/master'
@@ -39,6 +45,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - uses: actions/cache/restore@v3
+        id: cache
+        with:
+          path: build-files
+          key: ${{ runner.os }}-build-files
+
       - name: Build container
         run: |
           yarn docker:build
