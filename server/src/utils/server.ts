@@ -114,7 +114,7 @@ export const startServer = async ({
         logger.warn(`Invalid request: ${JSON.stringify(err)}`);
         return res.sendStatus(400);
       } else {
-        return next();
+        next();
       }
     }
   );

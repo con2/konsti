@@ -23,5 +23,5 @@ export const allowCORS = (
     logger.info(`CORS: Block from ${origin}`);
   }
 
-  return next();
+  next();
 };

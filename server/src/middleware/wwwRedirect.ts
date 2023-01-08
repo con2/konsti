@@ -8,7 +8,8 @@ export const wwwRedirect = (
 ): void => {
   const host = req.get("host");
   if (!host) {
-    return next();
+    next();
+    return; // Not actually reached but required by TS
   }
 
   const hostHasWww = /^www\./.test(host);
@@ -19,8 +20,8 @@ export const wwwRedirect = (
     const protocol = req.protocol;
     const hostWithoutWww = host.replace(/^www\./, "");
 
-    return res.redirect(301, `${protocol}://${hostWithoutWww}${req.url}`);
+    res.redirect(301, `${protocol}://${hostWithoutWww}${req.url}`);
   }
 
-  return next();
+  next();
 };
