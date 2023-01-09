@@ -36,8 +36,8 @@
     "start": "yarn workspace konsti-server start",
     "stylelint": "yarn workspace konsti-client stylelint",
     "test-assign": "yarn workspace konsti-server test-assign",
-    "test:watch": "jest --watch",
-    "test": "jest",
+    "test:watch": "yarn jest --watch",
+    "test": "yarn jest",
     "type-check": "tsc --noEmit",
     "update-yarn": "yarn set version stable && yarn plugin import interactive-tools && yarn plugin import workspace-tools"
   },
