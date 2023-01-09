@@ -20,7 +20,8 @@
     "docker-compose:test": "yarn build-front:ci && docker compose -f ./docker/docker-compose.yml -f ./client/playwright/docker-compose.yml up --attach playwright --attach server --build --remove-orphans --exit-code-from playwright --abort-on-container-exit",
     "docker:build-prod": "yarn build-front:prod && docker build . -t konsti-prod",
     "docker:build-staging": "yarn build-front:staging && docker build . -t konsti-staging",
-    "docker:start": "docker run -p 5000:5000 -d --env-file ./docker/docker-dev.env konsti",
+    "docker:build-dev": "yarn build-front:dev && docker build . -t konsti-dev",
+    "docker:start": "docker run -p 5000:5000 -d --env-file ./docker/docker-dev.env konsti-dev",
     "docker:db": "docker run -p 27017:27017 -d mongo:5.0.6-focal",
     "eslint-rules": "eslint --print-config .eslintrc.js",
     "eslint:client": "yarn workspace konsti-client eslint",
@@ -95,7 +96,7 @@
     "ts-jest": "28.0.5"
   },
   "engines": {
-    "node": ">=14.17.x"
+    "node": ">=18.13.0"
   },
   "packageManager": "yarn@3.3.1"
 }
