@@ -62,3 +62,31 @@ jobs:
         with:
           name: playwright-videos
           path: client/playwright/test-results/
+
+      - name: Build staging container
+        if: github.ref == 'refs/heads/master'
+        run: |
+          yarn docker:build-staging
+
+      - name: Push staging container to AWS ECR
+        if: github.ref == 'refs/heads/master'
+        uses: jwalton/gh-ecr-push@v1.3.6
+        with:
+          access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          region: eu-west-1
+          image: konsti-staging:latest
+
+      - name: Build prod container
+        if: github.ref == 'refs/heads/master'
+        run: |
+          yarn docker:build-prod
+
+      - name: Push prod container to AWS ECR
+        if: github.ref == 'refs/heads/master'
+        uses: jwalton/gh-ecr-push@v1.3.6
+        with:
+          access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          region: eu-west-1
+          image: konsti-prod:latest
