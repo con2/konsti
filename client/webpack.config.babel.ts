@@ -4,6 +4,7 @@ import CompressionPlugin from "compression-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import Dotenv from "dotenv-webpack";
 import { Configuration } from "webpack";
+import "webpack-dev-server";
 import { merge } from "webpack-merge";
 import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
 import SentryCliPlugin from "@sentry/webpack-plugin";
@@ -100,7 +101,6 @@ const devConfig: Configuration = {
   devtool: config.enableReduxTrace ? "source-map" : "eval-source-map",
 
   // webpack-dev-server config
-  // @ts-expect-error: ?
   devServer: {
     host: "localhost",
     port: 8000,

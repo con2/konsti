@@ -42,9 +42,9 @@ export const DirectResults = (): ReactElement => {
     : _.sortBy(getUpcomingGames(visibleGames, 1), "startTime");
 
   const [gamesForListing, setGamesForListing] = useState<readonly Game[]>([]);
-  const [filteredGamesForListing, setFilteredGamesForListing] = useState<{
-    [key: string]: Game[];
-  }>({});
+  const [filteredGamesForListing, setFilteredGamesForListing] = useState<
+    Record<string, Game[]>
+  >({});
   const [searchTerm, setSearchTerm] = useState<string>("");
 
   useEffect(() => {

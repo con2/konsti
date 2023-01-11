@@ -36,7 +36,7 @@ export const saveResult = async (
   startTime: string,
   algorithm: string,
   message: string
-): Promise<ResultsCollectionEntry> => {
+): Promise<void> => {
   let games: GameDoc[] = [];
   try {
     games = await findGames();
@@ -64,9 +64,8 @@ export const saveResult = async (
     return acc;
   }, []);
 
-  let response;
   try {
-    response = await ResultsModel.replaceOne(
+    await ResultsModel.replaceOne(
       { startTime },
       { startTime, results, algorithm, message },
       { upsert: true }
@@ -80,6 +79,4 @@ export const saveResult = async (
     );
     throw error;
   }
-
-  return response;
 };
