@@ -1,7 +1,6 @@
-export interface StringNumberObject {
-  [key: string]: number;
-}
+export type StringNumberObject = Record<string, number>;
 
-export interface PriorityObject {
-  [key: string]: { first: number; second: number; third: number };
-}
+export type PriorityObject = Record<
+  string,
+  { first: number; second: number; third: number }
+>;

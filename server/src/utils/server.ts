@@ -98,6 +98,7 @@ export const startServer = async ({
       limit: "5000kb", // limit: 5MB
       type: "text/plain",
     }),
+    /* eslint-disable-next-line @typescript-eslint/no-misused-promises */
     async (req, res) => {
       await postSentryTunnel(req, res);
     }
@@ -113,7 +114,7 @@ export const startServer = async ({
         logger.warn(`Invalid request: ${JSON.stringify(err)}`);
         return res.sendStatus(400);
       } else {
-        return next();
+        next();
       }
     }
   );

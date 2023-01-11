@@ -4,8 +4,6 @@ module.exports = {
 
   clearMocks: true,
 
-  coverageDirectory: "coverage",
-
   moduleNameMapper: {
     "\\.(jpg|png|gif|svg)$": "<rootDir>/src/test/__mocks__/binaryMock.ts",
     "^client(.*)$": "<rootDir>/src/$1",
@@ -16,10 +14,4 @@ module.exports = {
   setupFilesAfterEnv: ["jest-extended/all"],
 
   testPathIgnorePatterns: ["playwright"],
-
-  globals: {
-    "ts-jest": {
-      isolatedModules: true,
-    },
-  },
 };

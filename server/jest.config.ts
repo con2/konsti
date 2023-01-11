@@ -4,8 +4,6 @@ module.exports = {
 
   clearMocks: true,
 
-  coverageDirectory: "coverage",
-
   modulePathIgnorePatterns: ["./lib"],
 
   setupFiles: ["./src/test/setupTests.ts"],
@@ -14,11 +12,5 @@ module.exports = {
   moduleNameMapper: {
     "^server(.*)$": "<rootDir>/src/$1",
     "^shared(.*)$": "<rootDir>/../shared/$1",
-  },
-
-  globals: {
-    "ts-jest": {
-      isolatedModules: true,
-    },
   },
 };

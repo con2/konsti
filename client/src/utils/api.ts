@@ -25,6 +25,7 @@ export const api: AxiosInstance = axios.create({
 api.interceptors.request.use((requestConfig) => {
   const authToken = getJWT();
   if (authToken && requestConfig.headers) {
+    // @ts-expect-error: Bug: https://github.com/axios/axios/issues/5416
     requestConfig.headers.Authorization = `Bearer ${authToken}`;
   }
   return requestConfig;
