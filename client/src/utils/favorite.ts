@@ -16,7 +16,7 @@ export const updateFavorite = async (
   const { game, action, favoritedGames, username, dispatch } =
     updateFavoriteOpts;
 
-  if (!game || !game.gameId) return;
+  if (!game?.gameId) return;
 
   const gameIndex = favoritedGames.findIndex(
     (favoritedGame) => favoritedGame.gameId === game.gameId

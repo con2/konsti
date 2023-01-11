@@ -58,6 +58,12 @@ module.exports = {
         },
       },
     ],
+    "@typescript-eslint/no-confusing-void-expression": [
+      "error",
+      {
+        ignoreArrowShorthand: true,
+      },
+    ],
 
     "@typescript-eslint/no-var-requires": "off", // Used to dynamically import dev dependencies
     "@typescript-eslint/default-param-last": "off", // Problem setting Redux reducer initial state
