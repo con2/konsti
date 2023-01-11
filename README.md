@@ -15,6 +15,7 @@ Registered users by year:
 - Ropecon 2019: 920 (live, eventassigner-js + brute force approximation)
 - Tracon Hitpoint 2019: 150 (live, eventassigner-js + brute force approximation)
 - Ropecon 2021: 150 (remote, direct signup)
+- Ropecon 2022: 1080 (live, assignment + direct signup)
 
 ## Quick Start
 
@@ -38,6 +39,7 @@ Registered users by year:
 
   - **Admin**: admin:test
   - **Users**: test1:test | test2:test | test3:test
+  - **Users in same group**: group1:test | group2:test | group3:test
   - **Helpers**: helper:test
 
 You can also run the project completely in Docker:
@@ -76,8 +78,7 @@ In this case, access the frontend at `localhost:5000`.
 
 Konsti development supported by
 
-<a href="https://www.reaktor.com/"><img src="/client/assets/reaktor-logo.png"></a> &nbsp;&nbsp;&nbsp; <a href="https://www.sovellin.com/"><img src="/client/assets/sovellin-logo.png"></a>
-
-Mobile testing supported by <a href="https://www.browserstack.com/">BrowserStack</a>
-
-<a href="https://www.browserstack.com/"><img src="/client/assets/browserstack-logo.png" height="40"></a>
+[![Reaktor logo](/client/assets/reaktor-logo.png)](https://www.reaktor.com)&nbsp;&nbsp;&nbsp;
+[![Sovellin logo](/client/assets/sovellin-logo.png)](https://www.sovellin.com)&nbsp;&nbsp;&nbsp;
+[![BrowserStack logo](/client/assets/browserstack-logo.png)](https://www.browserstack.com)
+[![Sentry logo](/client/assets/sentry-logo.png)](https://sentry.io)
