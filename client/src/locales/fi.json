@@ -179,6 +179,7 @@
   "signupSaved": "Ilmoittautuminen tallennettu",
   "signupError": {
     "generic": "Ilmoittautuminen epäonnistui",
+    "cancelFailed": "Virhe ilmoittautumista peruessa",
     "signupEnded": "Ilmoittautuminen päättynyt",
     "samePriority": "Prioriteetti on jo valittu",
     "signupNotOpenYet": "Ilmoittautuminen ei ole vielä auki"
