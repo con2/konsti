@@ -98,7 +98,7 @@ export const submitPostEnteredGame = (
 };
 
 export enum DeleteEnteredGameErrorMessage {
-  UNKNOWN = "signupError.generic",
+  UNKNOWN = "signupError.cancelFailed",
   SIGNUP_ENDED = "signupError.signupEnded",
 }
 

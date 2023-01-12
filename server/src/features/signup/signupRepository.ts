@@ -164,7 +164,7 @@ export const saveSignup = async (
 export const delSignup = async (
   signupRequest: DeleteEnteredGameParameters
 ): Promise<Signup> => {
-  const { username, enteredGameId, startTime } = signupRequest;
+  const { username, enteredGameId } = signupRequest;
 
   let game;
   try {
@@ -182,7 +182,6 @@ export const delSignup = async (
         $pull: {
           userSignups: {
             username,
-            time: startTime,
           },
         },
         $inc: { count: -1 },
@@ -198,7 +197,19 @@ export const delSignup = async (
     throw error;
   }
 
-  if (!signup) throw new Error(`Signup for user ${username} not found`);
+  if (!signup) {
+    throw new Error(`Signups for game ${game.gameId} not found`);
+  }
+
+  const signupStillRemaining = signup.userSignups.some(
+    (userSignup) => userSignup.username === username
+  );
+
+  if (signupStillRemaining) {
+    throw new Error(
+      `Error removing signup for game ${game.gameId} from user ${username}`
+    );
+  }
 
   logger.info(`MongoDB: Signup removed from user "${username}"`);
   return signup;
