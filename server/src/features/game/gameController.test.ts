@@ -188,6 +188,7 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
 
   test("should update changed game details", async () => {
     const newDescription = "new description";
+    // Kompassi uses UTC times, by default dayjs returns local time
     const newStartTime = dayjs(testGame.startTime)
       .utc()
       .add(1, "hours")
@@ -216,7 +217,11 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
   });
 
   test("should remove selectedGames but not signups or favoritedGames if game start time changes", async () => {
-    const newStartTime = dayjs(testGame.startTime).add(1, "hours").format();
+    // Kompassi uses UTC times, by default dayjs returns local time
+    const newStartTime = dayjs(testGame.startTime)
+      .utc()
+      .add(1, "hours")
+      .format();
     jest.spyOn(kompassiModule, "getEventProgramItems").mockResolvedValue([
       {
         ...testKompassiGame,
