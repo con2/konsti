@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import utc from "dayjs/plugin/utc"; // ES 2015
+import utc from "dayjs/plugin/utc";
 import { logger } from "server/utils/logger";
 
 dayjs.extend(utc);
