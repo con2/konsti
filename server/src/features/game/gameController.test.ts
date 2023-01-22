@@ -188,7 +188,11 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
 
   test("should update changed game details", async () => {
     const newDescription = "new description";
-    const newStartTime = dayjs(testGame.startTime).add(1, "hours").format();
+    const newStartTime = dayjs(testGame.startTime)
+      .utc()
+      .add(1, "hours")
+      .format();
+
     jest.spyOn(kompassiModule, "getEventProgramItems").mockResolvedValue([
       {
         ...testKompassiGame,
@@ -207,7 +211,7 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
     const games = await findGames();
 
     expect(games.length).toEqual(1);
-    expect(dayjs(games[0].startTime).format()).toEqual(newStartTime);
+    expect(dayjs(games[0].startTime).utc().format()).toEqual(newStartTime);
     expect(games[0].description).toEqual(newDescription);
   });
 

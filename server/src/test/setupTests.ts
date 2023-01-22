@@ -1,4 +1,8 @@
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc"; // ES 2015
 import { logger } from "server/utils/logger";
+
+dayjs.extend(utc);
 
 const throwOnErrorLog = false;
 
