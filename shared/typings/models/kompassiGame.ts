@@ -72,143 +72,41 @@ export enum KompassiGameStyle {
 export const KompassiGameSchema = z
   .object({
     identifier: z.string(),
-    title: z
-      .string()
-      .nullish()
-      .transform((val) => val ?? ""),
-    description: z
-      .string()
-      .nullish()
-      .transform((val) => val ?? ""),
+    title: z.string().catch(""),
+    description: z.string().catch(""),
     category_title: z.nativeEnum(KompassiProgramType),
-    formatted_hosts: z
-      .string()
-      .nullish()
-      .transform((val) => val ?? ""),
-    room_name: z
-      .string()
-      .nullish()
-      .transform((val) => val ?? ""),
-    length: z
-      .number()
-      .nullish()
-      .transform((val) => val ?? 0),
-    start_time: z
-      .string()
-      .nullish()
-      .transform((val) => val ?? ""),
-    end_time: z
-      .string()
-      .nullish()
-      .transform((val) => val ?? ""),
-    language: z
-      .string()
-      .nullish()
-      .transform((val) => val ?? ""),
-    rpg_system: z
-      .string()
-      .nullish()
-      .transform((val) => val ?? ""),
-    min_players: z
-      .number()
-      .nullish()
-      .transform((val) => val ?? 0),
-    max_players: z
-      .number()
-      .nullish()
-      .transform((val) => val ?? 0),
-    tags: z
-      .array(z.nativeEnum(KompassiTag))
-      .nullish()
-      .transform((val) => val ?? []),
-    genres: z
-      .array(z.nativeEnum(KompassiGenre))
-      .nullish()
-      .transform((val) => val ?? []),
-    styles: z
-      .array(z.nativeEnum(KompassiGameStyle))
-      .nullish()
-      .transform((val) => val ?? []),
-    short_blurb: z
-      .string()
-      .nullish()
-      .transform((val) => val ?? ""),
-    revolving_door: z
-      .boolean()
-      .nullish()
-      .transform((val) => val ?? false),
-    content_warnings: z
-      .string()
-      .nullish()
-      .transform((val) => val ?? ""),
-    other_author: z
-      .string()
-      .nullish()
-      .transform((val) => val ?? ""),
-    ropecon2018_characters: z
-      .number()
-      .nullish()
-      .transform((val) => val ?? 0),
-    ropecon2021_accessibility_loud_sounds: z
-      .boolean()
-      .nullish()
-      .transform((val) => val ?? false),
-    ropecon2021_accessibility_flashing_lights: z
-      .boolean()
-      .nullish()
-      .transform((val) => val ?? false),
-    ropecon2021_accessibility_strong_smells: z
-      .boolean()
-      .nullish()
-      .transform((val) => val ?? false),
-    ropecon2021_accessibility_irritate_skin: z
-      .boolean()
-      .nullish()
-      .transform((val) => val ?? false),
-    ropecon2021_accessibility_physical_contact: z
-      .boolean()
-      .nullish()
-      .transform((val) => val ?? false),
-    ropecon2021_accessibility_low_lightning: z
-      .boolean()
-      .nullish()
-      .transform((val) => val ?? false),
-    ropecon2021_accessibility_moving_around: z
-      .boolean()
-      .nullish()
-      .transform((val) => val ?? false),
-    ropecon2021_accessibility_video: z
-      .boolean()
-      .nullish()
-      .transform((val) => val ?? false),
-    ropecon2021_accessibility_recording: z
-      .boolean()
-      .nullish()
-      .transform((val) => val ?? false),
-    ropecon2021_accessibility_text: z
-      .boolean()
-      .nullish()
-      .transform((val) => val ?? false),
-    ropecon2021_accessibility_colourblind: z
-      .boolean()
-      .nullish()
-      .transform((val) => val ?? false),
-    ropecon2022_accessibility_remaining_one_place: z
-      .boolean()
-      .nullish()
-      .transform((val) => val ?? false),
-    ropecon2022_content_warnings: z
-      .string()
-      .nullish()
-      .transform((val) => val ?? ""),
-    ropecon2021_accessibility_inaccessibility: z
-      .string()
-      .nullish()
-      .transform((val) => val ?? ""),
-    type_of_game_program: z
-      .string()
-      .nullish()
-      .transform((val) => val ?? ""),
+    formatted_hosts: z.string().catch(""),
+    room_name: z.string().catch(""),
+    length: z.number().catch(0),
+    start_time: z.string().datetime().catch(""),
+    end_time: z.string().datetime().catch(""),
+    language: z.string().catch(""),
+    rpg_system: z.string().catch(""),
+    min_players: z.number().catch(0),
+    max_players: z.number().catch(0),
+    tags: z.array(z.nativeEnum(KompassiTag)).catch([]),
+    genres: z.array(z.nativeEnum(KompassiGenre)).catch([]),
+    styles: z.array(z.nativeEnum(KompassiGameStyle)).catch([]),
+    short_blurb: z.string().catch(""),
+    revolving_door: z.boolean().catch(false),
+    content_warnings: z.string().catch(""),
+    other_author: z.string().catch(""),
+    ropecon2018_characters: z.number().catch(0),
+    ropecon2021_accessibility_loud_sounds: z.boolean().catch(false),
+    ropecon2021_accessibility_flashing_lights: z.boolean().catch(false),
+    ropecon2021_accessibility_strong_smells: z.boolean().catch(false),
+    ropecon2021_accessibility_irritate_skin: z.boolean().catch(false),
+    ropecon2021_accessibility_physical_contact: z.boolean().catch(false),
+    ropecon2021_accessibility_low_lightning: z.boolean().catch(false),
+    ropecon2021_accessibility_moving_around: z.boolean().catch(false),
+    ropecon2021_accessibility_video: z.boolean().catch(false),
+    ropecon2021_accessibility_recording: z.boolean().catch(false),
+    ropecon2021_accessibility_text: z.boolean().catch(false),
+    ropecon2021_accessibility_colourblind: z.boolean().catch(false),
+    ropecon2022_accessibility_remaining_one_place: z.boolean().catch(false),
+    ropecon2022_content_warnings: z.string().catch(""),
+    ropecon2021_accessibility_inaccessibility: z.string().catch(""),
+    type_of_game_program: z.string().catch(""),
   })
   .strict();
 
