@@ -188,7 +188,7 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
 
   test("should update changed game details", async () => {
     const newDescription = "new description";
-    // Kompassi returns UTC times, by default dayjs returns local time
+    // Kompassi returns UTC time, by default dayjs returns local time
     const newStartTime = dayjs(testGame.startTime)
       .utc()
       .add(1, "hours")
@@ -217,7 +217,7 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
   });
 
   test("should remove selectedGames but not signups or favoritedGames if game start time changes", async () => {
-    // Kompassi returns UTC times, by default dayjs returns local time
+    // Kompassi returns UTC time, by default dayjs returns local time
     const newStartTime = dayjs(testGame.startTime)
       .utc()
       .add(1, "hours")
