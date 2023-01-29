@@ -38,7 +38,9 @@ api.interceptors.response.use(
       !error.response ||
       error.response.status === 0
     ) {
-      store.dispatch(addError(t(ErrorMessageType.NETWORK_ERROR)));
+      store.dispatch(
+        addError(t(ErrorMessageType.NETWORK_ERROR) as ErrorMessageType)
+      );
       return {
         errorId: "unknown",
         message: "Network error",
@@ -53,7 +55,14 @@ api.interceptors.response.use(
     const errorReason = getErrorReason(Number(response.status) || 0);
 
     store.dispatch(
-      addError(t(ErrorMessageType.API_ERROR, { method, url, errorReason }))
+      addError(
+        // @ts-expect-error: i18next bug
+        t(ErrorMessageType.API_ERROR, {
+          method,
+          url,
+          errorReason,
+        }) as ErrorMessageType
+      )
     );
 
     const data: ApiError = {
@@ -71,10 +80,13 @@ api.interceptors.response.use(
 const getErrorReason = (status: number): string => {
   switch (status) {
     case 401:
+      // @ts-expect-error: i18next bug
       return t("backendError.unauthorized");
     case 422:
+      // @ts-expect-error: i18next bug
       return t("backendError.invalidRequest");
     default:
+      // @ts-expect-error: i18next bug
       return t("error.unknown");
   }
 };

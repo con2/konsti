@@ -14,6 +14,7 @@ export const TestValuePicker = (): ReactElement => {
 
   return (
     <div>
+      {/* @ts-expect-error: i18next bug */}
       <StyledAccordion
         closeAccordionText={t("testValues.buttonText")}
         openAccordionText={t("testValues.buttonText")}
