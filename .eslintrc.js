@@ -113,5 +113,6 @@ module.exports = {
     "@typescript-eslint/no-unsafe-assignment": "off",
     "@typescript-eslint/no-unsafe-call": "off",
     "@typescript-eslint/unbound-method": "off",
+    "@typescript-eslint/consistent-type-imports": "off", // Tooling lacking, try again once TS 5.0 is released: https://devblogs.microsoft.com/typescript/announcing-typescript-5-0-beta/#verbatimmodulesyntax
   },
 };
