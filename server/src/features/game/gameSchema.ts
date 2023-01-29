@@ -26,6 +26,7 @@ const gameSchema = new mongoose.Schema(
     otherAuthor: String,
     accessibilityValues: Array,
     otherInaccessibility: String,
+    entryFee: Number,
   },
   { timestamps: true }
 );

@@ -42,6 +42,7 @@ export const sharedConfig: SharedConfig = {
 
   directSignupWindows: {
     tabletopRPG: [],
+
     larp: [
       // Friday
       {
@@ -66,6 +67,14 @@ export const sharedConfig: SharedConfig = {
     ],
 
     tournament: [
+      // Friday to sunday, open whole convention
+      {
+        signupWindowStart: dayjs("2022-07-29T12:00:00Z"), // Fri 15:00
+        signupWindowClose: dayjs("2022-07-31T21:00:00Z"), // Sun 24:00
+      },
+    ],
+
+    workshop: [
       // Friday to sunday, open whole convention
       {
         signupWindowStart: dayjs("2022-07-29T12:00:00Z"), // Fri 15:00

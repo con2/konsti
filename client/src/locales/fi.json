@@ -95,12 +95,14 @@
   "programType": {
     "tabletopRPG": "Pöytäroolipeli",
     "larp": "LARP",
-    "tournament": "Turnaus"
+    "tournament": "Turnaus",
+    "workshop": "Työpaja"
   },
   "programTypePlural": {
     "tabletopRPG": "Pöytäroolipelit",
     "larp": "LARP",
-    "tournament": "Turnaukset"
+    "tournament": "Turnaukset",
+    "workshop": "Työpajat"
   },
   "gameStyle": {
     "serious": "Vakava pelityyli",
@@ -282,6 +284,8 @@
     "expectedDuration": "Kesto {{EXPECTED_DURATION}}",
     "playerCount": "Pelaajia {{MAX_ATTENDANCE}}",
     "playerRange": "Pelaajia {{MIN_ATTENDANCE}} - {{MAX_ATTENDANCE}}",
+    "participantCount": "Osallistujia {{MAX_ATTENDANCE}}",
+    "participantRange": "Osallistujia {{MIN_ATTENDANCE}} - {{MAX_ATTENDANCE}}",
     "signupOpens": "Ilmoittautuminen aukeaa",
     "lotterySignupOpens": "Arvontaan ilmoittautuminen aukeaa",
     "signupAlwaysOpen": "Ilmoittautuminen aina auki",
