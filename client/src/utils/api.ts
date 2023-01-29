@@ -56,6 +56,7 @@ api.interceptors.response.use(
 
     store.dispatch(
       addError(
+        // @ts-expect-error: i18next bug
         t(ErrorMessageType.API_ERROR, {
           method,
           url,
@@ -79,10 +80,13 @@ api.interceptors.response.use(
 const getErrorReason = (status: number): string => {
   switch (status) {
     case 401:
+      // @ts-expect-error: i18next bug
       return t("backendError.unauthorized");
     case 422:
+      // @ts-expect-error: i18next bug
       return t("backendError.invalidRequest");
     default:
+      // @ts-expect-error: i18next bug
       return t("error.unknown");
   }
 };

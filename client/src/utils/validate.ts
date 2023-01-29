@@ -6,8 +6,10 @@ import {
 
 export const passwordLength = (value: string): string | null => {
   if (value.length < PASSWORD_LENGTH_MIN)
+    // @ts-expect-error: i18next bug
     return t("validation.tooShort", { length: PASSWORD_LENGTH_MIN });
   if (value.length > PASSWORD_LENGTH_MAX)
+    // @ts-expect-error: i18next bug
     return t("validation.tooLong", { length: PASSWORD_LENGTH_MAX });
   return null;
 };
