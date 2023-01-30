@@ -1,4 +1,7 @@
+import mongoose from "mongoose";
 import { logger } from "server/utils/logger";
+
+mongoose.set("strictQuery", false);
 
 const throwOnErrorLog = false;
 
