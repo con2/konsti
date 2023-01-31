@@ -1,5 +1,9 @@
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
 import mongoose from "mongoose";
 import { logger } from "server/utils/logger";
+
+dayjs.extend(utc);
 
 mongoose.set("strictQuery", false);
 
