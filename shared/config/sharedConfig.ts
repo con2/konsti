@@ -42,6 +42,7 @@ export const sharedConfig: SharedConfig = {
 
   directSignupWindows: {
     tabletopRPG: [],
+
     larp: [
       // Friday
       {
@@ -72,6 +73,14 @@ export const sharedConfig: SharedConfig = {
         signupWindowClose: dayjs("2022-07-31T21:00:00Z"), // Sun 24:00
       },
     ],
+
+    workshop: [
+      // Friday to sunday, open whole convention
+      {
+        signupWindowStart: dayjs("2022-07-29T12:00:00Z"), // Fri 15:00
+        signupWindowClose: dayjs("2022-07-31T21:00:00Z"), // Sun 24:00
+      },
+    ],
   },
 
   directSignupAlwaysOpen: [
@@ -86,7 +95,7 @@ export const sharedConfig: SharedConfig = {
 
   // Convention info
   CONVENTION_NAME: ConventionName.ROPECON,
-  CONVENTION_YEAR: "2022",
+  CONVENTION_YEAR: "2023",
 
   // Sentry
   tracesSampleRate: 0.0,

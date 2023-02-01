@@ -1,6 +1,6 @@
 {
   "appTitle": "Konsti",
-  "appDescription": "{{CONVENTION_NAME}} {{CONVENTION_YEAR}} game signup",
+  "appDescription": "{{CONVENTION_NAME}} {{CONVENTION_YEAR}} signup",
   "button": {
     "logout": "Logout",
     "login": "Login",
@@ -95,12 +95,14 @@
   "programType": {
     "tabletopRPG": "Tabletop RPG",
     "larp": "LARP",
-    "tournament": "Tournament"
+    "tournament": "Tournament",
+    "workshop": "Workshop"
   },
   "programTypePlural": {
     "tabletopRPG": "Tabletop RPG",
     "larp": "LARP",
-    "tournament": "Tournaments"
+    "tournament": "Tournaments",
+    "workshop": "Workshops"
   },
   "gameStyle": {
     "serious": "Serious game style",
@@ -274,7 +276,7 @@
     "cancel": "Cancel",
     "alreadySignedToGame": "You already signed to game",
     "cannotSignupMoreThanOneGame": "You cannot sign up to other games starting at the same time.",
-    "signupCount": "{{PLAYERS}} / {{MAX_ATTENDANCE}} players",
+    "signupCount": "{{PLAYERS}} / {{MAX_ATTENDANCE}} participants",
     "playerNeeded": "Need {{COUNT}} players!",
     "gameIsFull": "Game is full",
     "confirmCancellation": "Confirm cancellation",
@@ -282,6 +284,8 @@
     "expectedDuration": "Duration {{EXPECTED_DURATION}}",
     "playerCount": "Players {{MAX_ATTENDANCE}}",
     "playerRange": "Players {{MIN_ATTENDANCE}} - {{MAX_ATTENDANCE}}",
+    "participantCount": "Participants {{MAX_ATTENDANCE}}",
+    "participantRange": "Participants {{MIN_ATTENDANCE}} - {{MAX_ATTENDANCE}}",
     "signupOpens": "Signup opens",
     "lotterySignupOpens": "Lottery signup opens",
     "signupAlwaysOpen": "Signup always open",
