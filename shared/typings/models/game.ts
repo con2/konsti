@@ -5,6 +5,7 @@ export enum ProgramType {
   TABLETOP_RPG = "tabletopRPG",
   LARP = "larp",
   TOURNAMENT = "tournament",
+  WORKSHOP = "workshop",
 }
 
 export enum Genre {
