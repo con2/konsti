@@ -1,6 +1,6 @@
 {
   "appTitle": "Konsti",
-  "appDescription": "{{CONVENTION_NAME}} {{CONVENTION_YEAR}} peli-ilmoittautuminen",
+  "appDescription": "{{CONVENTION_NAME}} {{CONVENTION_YEAR}} ilmoittautuminen",
   "button": {
     "logout": "Kirjaudu ulos",
     "login": "Kirjaudu",

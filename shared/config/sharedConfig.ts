@@ -95,7 +95,7 @@ export const sharedConfig: SharedConfig = {
 
   // Convention info
   CONVENTION_NAME: ConventionName.ROPECON,
-  CONVENTION_YEAR: "2022",
+  CONVENTION_YEAR: "2023",
 
   // Sentry
   tracesSampleRate: 0.0,

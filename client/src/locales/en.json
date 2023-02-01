@@ -1,6 +1,6 @@
 {
   "appTitle": "Konsti",
-  "appDescription": "{{CONVENTION_NAME}} {{CONVENTION_YEAR}} game signup",
+  "appDescription": "{{CONVENTION_NAME}} {{CONVENTION_YEAR}} signup",
   "button": {
     "logout": "Logout",
     "login": "Login",
@@ -276,7 +276,7 @@
     "cancel": "Cancel",
     "alreadySignedToGame": "You already signed to game",
     "cannotSignupMoreThanOneGame": "You cannot sign up to other games starting at the same time.",
-    "signupCount": "{{PLAYERS}} / {{MAX_ATTENDANCE}} signed",
+    "signupCount": "{{PLAYERS}} / {{MAX_ATTENDANCE}} participants",
     "playerNeeded": "Need {{COUNT}} players!",
     "gameIsFull": "Game is full",
     "confirmCancellation": "Confirm cancellation",

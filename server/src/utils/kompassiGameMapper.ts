@@ -73,7 +73,7 @@ const mapProgramType = (kompassiGame: KompassiGame): ProgramType => {
     case KompassiProgramType.OTHER:
       return ProgramType.TOURNAMENT;
 
-    case KompassiProgramType.WORKSHOP_FIGURINES:
+    case KompassiProgramType.WORKSHOP_MINIATURE:
     case KompassiProgramType.WORKSHOP_CRAFTS:
     case KompassiProgramType.WORKSHOP_MUSIC:
     case KompassiProgramType.WORKSHOP_OTHER:
