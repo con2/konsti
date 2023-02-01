@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { updateFavorite, UpdateFavoriteOpts } from "client/utils/favorite";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
-import { Game, Tag } from "shared/typings/models/game";
+import { Game, ProgramType, Tag } from "shared/typings/models/game";
 import { AlgorithmSignupForm } from "./AlgorithmSignupForm";
 import { DirectSignupForm } from "./DirectSignupForm";
 import { SelectedGame } from "shared/typings/models/user";
@@ -90,6 +90,18 @@ export const GameEntry = ({
     tags.push(t("gameTags.inEnglish"));
   }
 
+  enum AttendeeType {
+    Player = "player",
+    Participant = "participant",
+  }
+
+  const getAttendeeType = (): AttendeeType => {
+    if (game.programType === ProgramType.WORKSHOP) {
+      return AttendeeType.Participant;
+    }
+    return AttendeeType.Player;
+  };
+
   return (
     <GameContainer
       key={game.gameId}
@@ -115,14 +127,16 @@ export const GameEntry = ({
             </RowItem>
 
             <RowItem>
-              {game.minAttendance === game.maxAttendance
-                ? t("signup.playerCount", {
-                    MAX_ATTENDANCE: game.maxAttendance,
-                  })
-                : t("signup.playerRange", {
-                    MIN_ATTENDANCE: game.minAttendance,
-                    MAX_ATTENDANCE: game.maxAttendance,
-                  })}
+              {game.minAttendance === game.maxAttendance &&
+                t(`signup.${getAttendeeType()}Count`, {
+                  MAX_ATTENDANCE: game.maxAttendance,
+                })}
+
+              {game.minAttendance !== game.maxAttendance &&
+                t(`signup.${getAttendeeType()}Range`, {
+                  MIN_ATTENDANCE: game.minAttendance,
+                  MAX_ATTENDANCE: game.maxAttendance,
+                })}
             </RowItem>
           </p>
           {isEnterGameMode && (

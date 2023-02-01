@@ -7,6 +7,10 @@ export enum KompassiProgramType {
   CARD_GAME = "Pelitiski: Korttipeli / Card game",
   MINIATURE_WARGAME = "Pelitiski: Figupeli / Miniature wargame",
   OTHER = "Pelitiski: Muu / Other",
+  WORKSHOP_MINIATURE = "Työpaja: figut / Workshop: miniature figurines",
+  WORKSHOP_CRAFTS = "Työpaja: käsityö / Workshop: crafts",
+  WORKSHOP_MUSIC = "Työpaja: musiikki / Workshop: music",
+  WORKSHOP_OTHER = "Työpaja: muu / Other workshop",
 }
 
 export const tournamentProgramTypes = [
