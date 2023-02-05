@@ -94,6 +94,7 @@ module.exports = {
     "@typescript-eslint/strict-boolean-expressions": "off", // Forces unwanted code style
     "@typescript-eslint/restrict-template-expressions": "off", // Requires typing catch(e) every time
     "@typescript-eslint/restrict-plus-operands": "off", // Doesn't support dynamic object occurance counting
+    "@typescript-eslint/key-spacing": "off", // Formatting handled by prettier
 
     // eslint-plugin-ban
     "ban/ban": [
