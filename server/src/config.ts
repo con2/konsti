@@ -34,6 +34,7 @@ interface Config {
   autoAssignInterval: string;
   useTestTime: boolean;
   localKompassiFile: string;
+  enableSentryInDev: boolean;
 }
 
 const commonConfig = {
@@ -65,6 +66,7 @@ const commonConfig = {
 
   // Testing
   localKompassiFile: "program-ropecon-2022-test.json",
+  enableSentryInDev: false,
 };
 
 const prodConfig = {
