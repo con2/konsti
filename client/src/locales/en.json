@@ -378,5 +378,10 @@
     "closePlayerList": "Close player list",
     "showPassword": "Show password",
     "hidePassword": "Hide password"
+  },
+  "admin": {
+    "sentryTesting": "Sentry testing",
+    "sentryClientTest": "Client test",
+    "sentryBackendTest": "Backend test"
   }
 }
