@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import styled, { css } from "styled-components";
 import { HiddenGamesList } from "client/views/admin/components/HiddenGamesList";
 import {
+  submitGetSentryTest,
   submitSignupTime,
   submitToggleAppOpen,
 } from "client/views/admin/adminThunks";
@@ -15,7 +16,6 @@ import { Button, ButtonStyle } from "client/components/Button";
 import { SignupQuestionList } from "client/views/admin/components/SignupQuestionList";
 import { Dropdown, Option } from "client/components/Dropdown";
 import { SignupStrategySelector } from "client/test/test-components/SignupStrategySelector";
-import { sharedConfig } from "shared/config/sharedConfig";
 import { ButtonGroup } from "client/components/ButtonGroup";
 
 export const AdminView = (): ReactElement => {
@@ -216,18 +216,27 @@ export const AdminView = (): ReactElement => {
         </>
       )}
 
-      {sharedConfig.enableSentryTesting && (
+      <h3>{t("admin.sentryTesting")}</h3>
+      <ButtonGroup>
         <Button
           buttonStyle={ButtonStyle.PRIMARY}
           onClick={() => {
-            const testValue = undefined;
+            const value = undefined;
             // @ts-expect-error: Sentry test value
-            console.log(testValue.value); // eslint-disable-line no-console
+            console.log(value.sentryTestValue); // eslint-disable-line no-console
           }}
         >
-          {t("button.close")}
+          {t("admin.sentryClientTest")}
         </Button>
-      )}
+        <Button
+          buttonStyle={ButtonStyle.PRIMARY}
+          onClick={async () => {
+            await dispatch(submitGetSentryTest());
+          }}
+        >
+          {t("admin.sentryBackendTest")}
+        </Button>
+      </ButtonGroup>
     </div>
   );
 };

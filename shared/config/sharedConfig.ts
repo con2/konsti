@@ -27,7 +27,6 @@ interface SharedConfig {
   directSignupWindows: Record<ProgramType, SignupWindow[]>;
   directSignupAlwaysOpen: string[];
   tracesSampleRate: number;
-  enableSentryTesting: boolean;
 }
 
 export const sharedConfig: SharedConfig = {
@@ -99,7 +98,6 @@ export const sharedConfig: SharedConfig = {
 
   // Sentry
   tracesSampleRate: 0.0,
-  enableSentryTesting: false,
 
   // Test values
   CONVENTION_START_TIME: "2022-07-29T12:00:00Z", // UTC date

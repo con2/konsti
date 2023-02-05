@@ -22,4 +22,5 @@ export enum ApiEndpoint {
   POPULATE_DB = "/api/populate-db",
   SIGNUP = "/api/signup",
   SENTRY_TUNNEL = "/api/sentry",
+  SENTRY_TEST = "/api/sentry-test",
 }

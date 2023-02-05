@@ -4,7 +4,6 @@ import path from "path";
 import fs from "fs";
 import express, { Request, Response, NextFunction } from "express";
 import * as Sentry from "@sentry/node";
-import * as Tracing from "@sentry/tracing";
 import helmet from "helmet";
 import morgan from "morgan";
 import expressStaticGzip from "express-static-gzip";
@@ -14,11 +13,9 @@ import { allowCORS } from "server/middleware/cors";
 import "server/db/mongoosePlugins"; // Must be imported before apiRoutes which loads models
 import { apiRoutes } from "server/api/apiRoutes";
 import { db } from "server/db/mongodb";
-import { ApiEndpoint } from "shared/constants/apiEndpoints";
-import { postSentryTunnel } from "server/features/sentry-tunnel/sentryTunnelController";
-import { sharedConfig } from "shared/config/sharedConfig";
 import { stopCronJobs } from "server/utils/cron";
 import { wwwRedirect } from "server/middleware/wwwRedirect";
+import { initSentry } from "server/utils/sentry";
 
 interface StartServerParams {
   dbConnString: string;
@@ -38,71 +35,16 @@ export const startServer = async ({
 
   const app = express();
 
-  const getDsn = (): string | undefined => {
-    if (!enableSentry) return undefined;
-    switch (process.env.SETTINGS) {
-      case "production":
-        return "https://0278d6bfb3f04c70acf826ecbd86ae58@o1321706.ingest.sentry.io/6579204";
-      case "staging":
-        return "https://ab176c60aac24be8af2f6c790f1437ac@o1321706.ingest.sentry.io/6578390";
-      case "development":
-        return "https://6f41ef28d9664c1a8c3e25f58cecacf7@o1321706.ingest.sentry.io/6579493";
-      default:
-        return undefined;
-    }
-  };
-
-  Sentry.init({
-    dsn: getDsn(),
-    integrations: [
-      // Enable HTTP calls tracing
-      new Sentry.Integrations.Http({ tracing: true }),
-      // Enable Express.js middleware tracing
-      new Tracing.Integrations.Express({
-        // To trace all requests to the default router
-        app,
-      }),
-    ],
-    tracesSampleRate: sharedConfig.tracesSampleRate,
-    environment: process.env.SETTINGS,
-  });
-
-  // The request handler must be the first middleware on the app
-  // RequestHandler creates a separate execution context using domains, so that every
-  // transaction/span/breadcrumb is attached to its own Hub instance
-  app.use(Sentry.Handlers.requestHandler());
-
-  // TracingHandler creates a trace for every incoming request
-  app.use(Sentry.Handlers.tracingHandler());
+  // Must be the first middleware on the app
+  initSentry(app, enableSentry);
 
   app.use(helmet());
-
-  app.use(
-    helmet.contentSecurityPolicy({
-      directives: {
-        "connect-src": ["'self'", "*.sentry.io"],
-      },
-    })
-  );
 
   if (config.enableAccessLog) {
     // Set logger
     logger.info("Express: Overriding 'Express' logger");
     app.use(morgan("dev", { stream }));
   }
-
-  // Sentry tunnel endpoint which accepts text/plain payload
-  app.post(
-    ApiEndpoint.SENTRY_TUNNEL,
-    express.text({
-      limit: "5000kb", // limit: 5MB
-      type: "text/plain",
-    }),
-    /* eslint-disable-next-line @typescript-eslint/no-misused-promises */
-    async (req, res) => {
-      await postSentryTunnel(req, res);
-    }
-  );
 
   // Parse body and populate req.body - only accepts JSON
   app.use(express.json({ limit: "1000kb", type: "*/*" })); // limit: 1MB
@@ -137,12 +79,6 @@ export const startServer = async ({
     );
   } else {
     app.use(express.static(staticPath));
-  }
-
-  if (sharedConfig.enableSentryTesting) {
-    app.get("/debug-sentry", (_req: Request, _res: Response) => {
-      throw new Error("Test Sentry error");
-    });
   }
 
   app.get("/*", (req: Request, res: Response) => {

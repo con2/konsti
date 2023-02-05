@@ -378,5 +378,10 @@
     "closePlayerList": "Sulje pelaajalista",
     "showPassword": "Näytä salasana",
     "hidePassword": "Piilota salasana"
+  },
+  "admin": {
+    "sentryTesting": "Sentryn testaus",
+    "sentryClientTest": "Client-testi",
+    "sentryBackendTest": "Backend-testi"
   }
 }
