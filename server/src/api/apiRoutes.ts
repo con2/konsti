@@ -6,6 +6,7 @@ import {
   getResults,
   postAssignment,
 } from "server/features/results/resultsController";
+import { getSentryTest } from "server/features/sentry-tunnel/sentryTunnelController";
 import {
   deleteSignupQuestion,
   getSettings,
@@ -78,6 +79,7 @@ apiRoutes.get(ApiEndpoint.SETTINGS, getSettings);
 apiRoutes.get(ApiEndpoint.RESULTS, getResults);
 apiRoutes.get(ApiEndpoint.GROUP, getGroup);
 apiRoutes.get(ApiEndpoint.SIGNUP_MESSAGE, getSignupMessages);
+apiRoutes.get(ApiEndpoint.SENTRY_TEST, getSentryTest);
 
 /* DELETE routes */
 

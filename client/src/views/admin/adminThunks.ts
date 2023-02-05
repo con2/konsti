@@ -19,6 +19,7 @@ import {
 import { SignupQuestion } from "shared/typings/models/settings";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
 import { getSignupMessages } from "client/services/userServices";
+import { getSentryTest } from "client/views/admin/adminService";
 
 export const submitUpdateHidden = (hiddenGames: readonly Game[]): AppThunk => {
   return async (dispatch): Promise<void> => {
@@ -147,5 +148,11 @@ export const submitGetSignupMessages = (): AppThunk => {
     if (response?.status === "success") {
       dispatch(submitGetSignupMessagesAsync(response.signupMessages));
     }
+  };
+};
+
+export const submitGetSentryTest = (): AppThunk => {
+  return async (_dispatch): Promise<void> => {
+    await getSentryTest();
   };
 };
