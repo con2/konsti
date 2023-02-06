@@ -1,28 +1,39 @@
 import request from "supertest";
+import { MongoMemoryServer } from "mongodb-memory-server";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { startTestServer, stopTestServer } from "server/test/utils/testServer";
 import { SaveFavoriteRequest } from "shared/typings/api/favorite";
 
 jest.mock("server/utils/logger");
 
+let mongoServer: MongoMemoryServer;
+
+beforeAll(async () => {
+  mongoServer = await MongoMemoryServer.create();
+});
+
 afterEach(() => {
   jest.resetModules();
 });
 
+afterAll(async () => {
+  await mongoServer.stop();
+});
+
 describe(`POST ${ApiEndpoint.FAVORITE}`, () => {
   test("should return 422 without valid body", async () => {
-    const { server, mongoServer } = await startTestServer();
+    const { server } = await startTestServer(mongoServer.getUri());
 
     try {
       const response = await request(server).post(ApiEndpoint.FAVORITE);
       expect(response.status).toEqual(422);
     } finally {
-      await stopTestServer(server, mongoServer);
+      await stopTestServer(server);
     }
   });
 
   test("should return 401 without valid authorization", async () => {
-    const { server, mongoServer } = await startTestServer();
+    const { server } = await startTestServer(mongoServer.getUri());
 
     const saveFavoriteRequest: SaveFavoriteRequest = {
       username: "testuser",
@@ -35,7 +46,7 @@ describe(`POST ${ApiEndpoint.FAVORITE}`, () => {
         .send(saveFavoriteRequest);
       expect(response.status).toEqual(401);
     } finally {
-      await stopTestServer(server, mongoServer);
+      await stopTestServer(server);
     }
   });
 });
