@@ -7,12 +7,10 @@ interface StartTestServerReturn {
 }
 
 export const startTestServer = async (): Promise<StartTestServerReturn> => {
-  const mongoServer = new MongoMemoryServer();
-  await mongoServer.start();
-  const mongoUri = mongoServer.getUri();
+  const mongoServer = await MongoMemoryServer.create();
   const module = await import("server/utils/server");
   const server = await module.startServer({
-    dbConnString: mongoUri,
+    dbConnString: mongoServer.getUri(),
     enableSentry: false,
   });
 

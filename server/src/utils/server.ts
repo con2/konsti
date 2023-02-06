@@ -20,15 +20,17 @@ import { initSentry } from "server/utils/sentry";
 interface StartServerParams {
   dbConnString: string;
   port?: number;
+  dbName?: string;
   enableSentry?: boolean;
 }
 export const startServer = async ({
   dbConnString,
   port,
+  dbName,
   enableSentry = true,
 }: StartServerParams): Promise<Server> => {
   try {
-    await db.connectToDb(dbConnString);
+    await db.connectToDb(dbConnString, dbName);
   } catch (error) {
     logger.error(error);
   }

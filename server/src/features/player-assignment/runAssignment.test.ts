@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import { MongoMemoryServer } from "mongodb-memory-server";
 import dayjs from "dayjs";
+import { faker } from "@faker-js/faker";
 import { runAssignment } from "server/features/player-assignment/runAssignment";
 import { generateTestData } from "server/test/test-data-generation/generators/generateTestData";
 import { verifyUserSignups } from "server/features/player-assignment/utils/verifyUserSignups";
@@ -30,15 +31,21 @@ let mongoServer: MongoMemoryServer;
 const expectedResultsCount = 20;
 const groupTestUsers = ["group1", "group2", "group3"];
 
+beforeAll(async () => {
+  mongoServer = await MongoMemoryServer.create();
+});
+
 beforeEach(async () => {
-  mongoServer = new MongoMemoryServer();
-  await mongoServer.start();
-  const mongoUri = mongoServer.getUri();
-  await mongoose.connect(mongoUri);
+  await mongoose.connect(mongoServer.getUri(), {
+    dbName: faker.random.alphaNumeric(10),
+  });
 });
 
 afterEach(async () => {
   await mongoose.disconnect();
+});
+
+afterAll(async () => {
   await mongoServer.stop();
 });
 

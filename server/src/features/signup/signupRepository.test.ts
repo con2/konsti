@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import { MongoMemoryServer } from "mongodb-memory-server";
+import { faker } from "@faker-js/faker";
 import dayjs from "dayjs";
 import { saveUser } from "server/features/user/userRepository";
 import { testGame } from "shared/tests/testGame";
@@ -12,15 +13,21 @@ import { delSignup, saveSignup } from "server/features/signup/signupRepository";
 
 let mongoServer: MongoMemoryServer;
 
+beforeAll(async () => {
+  mongoServer = await MongoMemoryServer.create();
+});
+
 beforeEach(async () => {
-  mongoServer = new MongoMemoryServer();
-  await mongoServer.start();
-  const mongoUri = mongoServer.getUri();
-  await mongoose.connect(mongoUri);
+  await mongoose.connect(mongoServer.getUri(), {
+    dbName: faker.random.alphaNumeric(10),
+  });
 });
 
 afterEach(async () => {
   await mongoose.disconnect();
+});
+
+afterAll(async () => {
   await mongoServer.stop();
 });
 
