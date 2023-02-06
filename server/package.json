@@ -29,11 +29,6 @@
     "load-kompassi-data": "yarn run -T cross-env NODE_ENV=development ts-node src/test/scripts/loadKompassiDataToDb.ts",
     "update-signups": "yarn run -T cross-env NODE_ENV=development ts-node src/test/scripts/updateSignups.ts"
   },
-  "config": {
-    "mongodbMemoryServer": {
-      "version": "5.0.6"
-    }
-  },
   "dependencies": {
     "@faker-js/faker": "7.6.0",
     "@sentry/node": "7.36.0",
