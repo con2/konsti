@@ -20,7 +20,7 @@
     "docker:build-staging": "yarn build-front:staging && docker build . -t konsti-staging",
     "docker:build-dev": "yarn build-front:dev && docker build . -t konsti-dev",
     "docker:start": "docker run -p 5000:5000 -d --env-file ./docker/docker-dev.env konsti-dev",
-    "docker:db": "docker run -p 27017:27017 -d mongo:5.0.14-focal",
+    "docker:db": "docker run -p 27017:27017 -d mongo:5.0.6-focal",
     "eslint-rules": "eslint --print-config .eslintrc.js",
     "eslint:client": "yarn workspace konsti-client eslint",
     "eslint:server": "yarn workspace konsti-server eslint",
