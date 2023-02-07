@@ -21,3 +21,5 @@ logger.error = throwOnErrorLog
       throw new Error(message);
     })
   : jest.fn();
+
+process.env.MONGOMS_VERSION = "5.0.14";

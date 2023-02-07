@@ -3,12 +3,13 @@ import { logger } from "server/utils/logger";
 import { config } from "server/config";
 
 const connectToDb = async (
-  dbConnString: string = config.dbConnString
+  dbConnString: string = config.dbConnString,
+  dbName: string = config.dbName
 ): Promise<void> => {
   logger.info(`MongoDB: Connecting`);
 
   const options = {
-    dbName: config.dbName,
+    dbName,
   };
 
   mongoose.set("strictQuery", false);
