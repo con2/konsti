@@ -1,5 +1,6 @@
-module.exports = {
-  preset: "ts-jest",
+import type { JestConfigWithTsJest } from "ts-jest";
+
+const jestConfig: JestConfigWithTsJest = {
   testEnvironment: "jsdom",
 
   clearMocks: true,
@@ -14,4 +15,16 @@ module.exports = {
   setupFilesAfterEnv: ["jest-extended/all"],
 
   testPathIgnorePatterns: ["playwright"],
+
+  transform: {
+    "^.+\\.tsx?$": [
+      "ts-jest",
+      {
+        isolatedModules: true,
+      },
+    ],
+  },
 };
+
+/* eslint-disable-next-line import/no-unused-modules */
+export default jestConfig;

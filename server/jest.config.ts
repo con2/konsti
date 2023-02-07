@@ -1,5 +1,6 @@
-module.exports = {
-  preset: "ts-jest",
+import type { JestConfigWithTsJest } from "ts-jest";
+
+const jestConfig: JestConfigWithTsJest = {
   testEnvironment: "node",
 
   clearMocks: true,
@@ -13,4 +14,16 @@ module.exports = {
     "^server(.*)$": "<rootDir>/src/$1",
     "^shared(.*)$": "<rootDir>/../shared/$1",
   },
+
+  transform: {
+    "^.+\\.tsx?$": [
+      "ts-jest",
+      {
+        isolatedModules: true,
+      },
+    ],
+  },
 };
+
+/* eslint-disable-next-line import/no-unused-modules */
+export default jestConfig;
