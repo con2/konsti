@@ -32,122 +32,110 @@ afterAll(async () => {
   await mongoServer.stop();
 });
 
-describe("Assignment with valid data", () => {
-  beforeEach(async () => {
-    const newUsersCount = 20;
-    const groupSize = 3;
-    const numberOfGroups = 5;
-    const newGamesCount = 10;
-    const testUsersCount = 0;
+test("Assignment with valid data should return success with group strategy", async () => {
+  const newUsersCount = 20;
+  const groupSize = 3;
+  const numberOfGroups = 5;
+  const newGamesCount = 10;
+  const testUsersCount = 0;
 
-    await generateTestData(
-      newUsersCount,
-      newGamesCount,
-      groupSize,
-      numberOfGroups,
-      testUsersCount
-    );
+  await generateTestData(
+    newUsersCount,
+    newGamesCount,
+    groupSize,
+    numberOfGroups,
+    testUsersCount
+  );
+
+  const { CONVENTION_START_TIME } = sharedConfig;
+  const assignmentStrategy = AssignmentStrategy.GROUP;
+  const startingTime = dayjs(CONVENTION_START_TIME).add(2, "hours").format();
+
+  // FIRST RUN
+
+  const assignResults = await runAssignment({
+    assignmentStrategy,
+    startingTime,
   });
+  expect(assignResults.status).toEqual("success");
+  expect(assignResults.results.length).toBeGreaterThanOrEqual(
+    expectedResultsCount
+  );
 
-  test("should return success with group strategy", async () => {
-    const { CONVENTION_START_TIME } = sharedConfig;
-    const assignmentStrategy = AssignmentStrategy.GROUP;
-    const startingTime = dayjs(CONVENTION_START_TIME).add(2, "hours").format();
+  const groupResults = assignResults.results.filter((result) =>
+    groupTestUsers.includes(result.username)
+  );
+  expect(groupResults.length).toBeOneOf([groupTestUsers.length, 0]);
 
-    // FIRST RUN
+  await verifyUserSignups();
 
-    const assignResults = await runAssignment({
-      assignmentStrategy,
-      startingTime,
-    });
-    expect(assignResults.status).toEqual("success");
-    expect(assignResults.results.length).toBeGreaterThanOrEqual(
-      expectedResultsCount
-    );
+  // SECOND RUN
 
-    const groupResults = assignResults.results.filter((result) =>
-      groupTestUsers.includes(result.username)
-    );
-    expect(groupResults.length).toBeOneOf([groupTestUsers.length, 0]);
-
-    await verifyUserSignups();
-
-    // SECOND RUN
-
-    const assignResults2 = await runAssignment({
-      assignmentStrategy,
-      startingTime,
-    });
-    expect(assignResults2.status).toEqual("success");
-    expect(assignResults2.results.length).toBeGreaterThanOrEqual(
-      expectedResultsCount
-    );
-
-    const groupResults2 = assignResults2.results.filter((result) =>
-      groupTestUsers.includes(result.username)
-    );
-    expect(groupResults2.length).toBeOneOf([groupTestUsers.length, 0]);
-
-    await verifyUserSignups();
+  const assignResults2 = await runAssignment({
+    assignmentStrategy,
+    startingTime,
   });
+  expect(assignResults2.status).toEqual("success");
+  expect(assignResults2.results.length).toBeGreaterThanOrEqual(
+    expectedResultsCount
+  );
+
+  const groupResults2 = assignResults2.results.filter((result) =>
+    groupTestUsers.includes(result.username)
+  );
+  expect(groupResults2.length).toBeOneOf([groupTestUsers.length, 0]);
+
+  await verifyUserSignups();
 });
 
-describe("Assignment with no games", () => {
-  beforeEach(async () => {
-    const newUsersCount = 1;
-    const groupSize = 0;
-    const numberOfGroups = 0;
-    const newGamesCount = 0;
-    const testUsersCount = 0;
+test("Assignment with no games should return error with group strategy", async () => {
+  const newUsersCount = 1;
+  const groupSize = 0;
+  const numberOfGroups = 0;
+  const newGamesCount = 0;
+  const testUsersCount = 0;
 
-    await generateTestData(
-      newUsersCount,
-      newGamesCount,
-      groupSize,
-      numberOfGroups,
-      testUsersCount
-    );
+  await generateTestData(
+    newUsersCount,
+    newGamesCount,
+    groupSize,
+    numberOfGroups,
+    testUsersCount
+  );
+
+  const { CONVENTION_START_TIME } = sharedConfig;
+  const assignmentStrategy = AssignmentStrategy.GROUP;
+  const startingTime = dayjs(CONVENTION_START_TIME).add(2, "hours").format();
+
+  const assignResults = await runAssignment({
+    assignmentStrategy,
+    startingTime,
   });
-
-  test("should return error with group strategy", async () => {
-    const { CONVENTION_START_TIME } = sharedConfig;
-    const assignmentStrategy = AssignmentStrategy.GROUP;
-    const startingTime = dayjs(CONVENTION_START_TIME).add(2, "hours").format();
-
-    const assignResults = await runAssignment({
-      assignmentStrategy,
-      startingTime,
-    });
-    expect(assignResults.status).toEqual("error: no starting games");
-  });
+  expect(assignResults.status).toEqual("error: no starting games");
 });
 
-describe("Assignment with no players", () => {
-  beforeEach(async () => {
-    const newUsersCount = 0;
-    const groupSize = 0;
-    const numberOfGroups = 0;
-    const newGamesCount = 1;
-    const testUsersCount = 0;
+test("Assignment with no players should return error with group strategy", async () => {
+  const newUsersCount = 0;
+  const groupSize = 0;
+  const numberOfGroups = 0;
+  const newGamesCount = 1;
+  const testUsersCount = 0;
 
-    await generateTestData(
-      newUsersCount,
-      newGamesCount,
-      groupSize,
-      numberOfGroups,
-      testUsersCount
-    );
+  await generateTestData(
+    newUsersCount,
+    newGamesCount,
+    groupSize,
+    numberOfGroups,
+    testUsersCount
+  );
+
+  const { CONVENTION_START_TIME } = sharedConfig;
+  const assignmentStrategy = AssignmentStrategy.GROUP;
+  const startingTime = dayjs(CONVENTION_START_TIME).add(2, "hours").format();
+
+  const assignResults = await runAssignment({
+    assignmentStrategy,
+    startingTime,
   });
-
-  test("should return error with group strategy", async () => {
-    const { CONVENTION_START_TIME } = sharedConfig;
-    const assignmentStrategy = AssignmentStrategy.GROUP;
-    const startingTime = dayjs(CONVENTION_START_TIME).add(2, "hours").format();
-
-    const assignResults = await runAssignment({
-      assignmentStrategy,
-      startingTime,
-    });
-    expect(assignResults.status).toEqual("error: no signup wishes");
-  });
+  expect(assignResults.status).toEqual("error: no signup wishes");
 });
