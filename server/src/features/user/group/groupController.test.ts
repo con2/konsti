@@ -37,6 +37,7 @@ beforeEach(async () => {
   server = await startServer({
     dbConnString: mongoServer.getUri(),
     dbName: faker.random.alphaNumeric(10),
+    enableSentry: false,
   });
 });
 
