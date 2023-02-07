@@ -1,7 +1,6 @@
 import type { JestConfigWithTsJest } from "ts-jest";
 
 const jestConfig: JestConfigWithTsJest = {
-  preset: "ts-jest",
   projects: ["client", "server"],
   coverageDirectory: "coverage",
 };
