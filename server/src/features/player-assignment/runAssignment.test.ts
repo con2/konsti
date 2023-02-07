@@ -49,8 +49,7 @@ afterAll(async () => {
   await mongoServer.stop();
 });
 
-/* eslint-disable-next-line jest/no-disabled-tests */
-describe.skip("Assignment with valid data", () => {
+describe("Assignment with valid data", () => {
   beforeEach(async () => {
     const newUsersCount = 20;
     const groupSize = 3;
@@ -113,8 +112,7 @@ describe.skip("Assignment with valid data", () => {
   });
 });
 
-/* eslint-disable-next-line jest/no-disabled-tests */
-describe.skip("Assignment with multiple program types and directSignupAlwaysOpen", () => {
+describe("Assignment with multiple program types and directSignupAlwaysOpen", () => {
   test("should not remove signups of non-RPG program types", async () => {
     const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
     const startingTime = testGame.startTime;
@@ -341,8 +339,7 @@ describe.skip("Assignment with multiple program types and directSignupAlwaysOpen
   });
 });
 
-/* eslint-disable-next-line jest/no-disabled-tests */
-describe.skip("Assignment with first time bonus", () => {
+describe("Assignment with first time bonus", () => {
   test("should assign user without previous RPG signup", async () => {
     const directSignupAlwaysOpenId = sharedConfig.directSignupAlwaysOpen[0];
     const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
