@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import { MongoMemoryServer } from "mongodb-memory-server";
+import { faker } from "@faker-js/faker";
 import { removeOverlapSignups } from "server/features/player-assignment/utils/removeOverlapSignups";
 import { mockUser, mockSignedGames } from "server/test/mock-data/mockUser";
 import { mockResults } from "server/test/mock-data/mockResults";
@@ -10,15 +11,21 @@ import { saveSignedGames } from "server/features/user/signed-game/signedGameRepo
 
 let mongoServer: MongoMemoryServer;
 
+beforeAll(async () => {
+  mongoServer = await MongoMemoryServer.create();
+});
+
 beforeEach(async () => {
-  mongoServer = new MongoMemoryServer();
-  await mongoServer.start();
-  const mongoUri = mongoServer.getUri();
-  await mongoose.connect(mongoUri);
+  await mongoose.connect(mongoServer.getUri(), {
+    dbName: faker.random.alphaNumeric(10),
+  });
 });
 
 afterEach(async () => {
   await mongoose.disconnect();
+});
+
+afterEach(async () => {
   await mongoServer.stop();
 });
 

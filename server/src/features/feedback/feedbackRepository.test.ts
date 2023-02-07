@@ -1,19 +1,26 @@
 import mongoose from "mongoose";
 import { MongoMemoryServer } from "mongodb-memory-server";
+import { faker } from "@faker-js/faker";
 import { FeedbackModel } from "server/features/feedback/feedbackSchema";
 import { saveFeedback } from "server/features/feedback/feedbackRepository";
 
 let mongoServer: MongoMemoryServer;
 
+beforeAll(async () => {
+  mongoServer = await MongoMemoryServer.create();
+});
+
 beforeEach(async () => {
-  mongoServer = new MongoMemoryServer();
-  await mongoServer.start();
-  const mongoUri = mongoServer.getUri();
-  await mongoose.connect(mongoUri);
+  await mongoose.connect(mongoServer.getUri(), {
+    dbName: faker.random.alphaNumeric(10),
+  });
 });
 
 afterEach(async () => {
   await mongoose.disconnect();
+});
+
+afterAll(async () => {
   await mongoServer.stop();
 });
 

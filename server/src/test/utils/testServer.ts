@@ -1,29 +1,24 @@
 import { Server } from "http";
-import { MongoMemoryServer } from "mongodb-memory-server";
+import { faker } from "@faker-js/faker";
 
 interface StartTestServerReturn {
   server: Server;
-  mongoServer: MongoMemoryServer;
 }
 
-export const startTestServer = async (): Promise<StartTestServerReturn> => {
-  const mongoServer = new MongoMemoryServer();
-  await mongoServer.start();
-  const mongoUri = mongoServer.getUri();
+export const startTestServer = async (
+  dbConnString: string
+): Promise<StartTestServerReturn> => {
   const module = await import("server/utils/server");
   const server = await module.startServer({
-    dbConnString: mongoUri,
+    dbConnString,
     enableSentry: false,
+    dbName: faker.random.alphaNumeric(10),
   });
 
-  return { server, mongoServer };
+  return { server };
 };
 
-export const stopTestServer = async (
-  server: Server,
-  mongoServer: MongoMemoryServer
-): Promise<void> => {
+export const stopTestServer = async (server: Server): Promise<void> => {
   const module = await import("server/utils/server");
   await module.closeServer(server);
-  await mongoServer.stop();
 };
