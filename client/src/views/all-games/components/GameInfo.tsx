@@ -279,15 +279,11 @@ const GameDetailsTitle = styled.span<GameDetailsTitleProps>`
     gameDetailsTitleProps.twoColumns &&
     css`
       width: 25%;
-    `};
 
-  @media (max-width: ${(props) => props.theme.breakpointPhone}) {
-    ${(gameDetailsTitleProps) =>
-      gameDetailsTitleProps.twoColumns &&
-      css`
+      @media (max-width: ${(props) => props.theme.breakpointPhone}) {
         width: 40%;
-      `};
-  }
+      }
+    `};
 `;
 
 const GameDetailsValue = styled.span`
