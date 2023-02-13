@@ -3,11 +3,10 @@ module.exports = {
 
   extends: [
     "stylelint-config-recommended",
-    "stylelint-config-prettier",
     "@ronilaukkarinen/stylelint-a11y/recommended",
   ],
 
-  customSyntax: "@stylelint/postcss-css-in-js",
+  customSyntax: "postcss-styled-syntax",
 
   ignoreFiles: ["build/**/*", "coverage/**/*"],
 
@@ -18,8 +17,6 @@ module.exports = {
   rules: {
     // stylelint
     "length-zero-no-unit": true,
-    "media-feature-name-no-unknown": null, // Doesn't work with styled-components media queries
-    "function-no-unknown": null, // Doesn't work with styled-components
 
     // no-unsupported-browser-features
     "plugin/no-unsupported-browser-features": [
@@ -27,12 +24,7 @@ module.exports = {
       {
         severity: "error",
         ignorePartialSupport: true,
-        ignore: [
-          "css-resize",
-          "css-sticky",
-          "css3-cursors-newer",
-          "css3-cursors",
-        ],
+        ignore: ["css-resize", "css3-cursors"],
       },
     ],
   },
