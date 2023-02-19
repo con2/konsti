@@ -53,7 +53,9 @@ const getDsn = (): string | undefined => {
     case "staging":
       return "https://446b1c1e5b3048c4bb00b19b74aa55e6@o1321706.ingest.sentry.io/6578391";
     case "development":
-      return "https://1fb97a74de6a44e3b16e8d29aeec3363@o1321706.ingest.sentry.io/6579491";
+      return sharedConfig.enableSentryInDev
+        ? "https://1fb97a74de6a44e3b16e8d29aeec3363@o1321706.ingest.sentry.io/6579491"
+        : undefined;
     default:
       return undefined;
   }
