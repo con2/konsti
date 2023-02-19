@@ -51,13 +51,6 @@ export const GamesByStartTimes = ({
               if (game.startTime === startTime) {
                 return (
                   <GameDetailsRow key={game.gameId}>
-                    <Link
-                      to={`/games/${game.gameId}`}
-                      data-testid={"game-title"}
-                    >
-                      {game.title}
-                    </Link>
-
                     <ButtonPlacement>
                       <FavoriteButton
                         buttonSize={FavoriteButtonSize.SMALL}
@@ -67,6 +60,12 @@ export const GamesByStartTimes = ({
                         }}
                       />
                     </ButtonPlacement>
+                    <Link
+                      to={`/games/${game.gameId}`}
+                      data-testid={"game-title"}
+                    >
+                      {game.title}
+                    </Link>
                   </GameDetailsRow>
                 );
               }
@@ -79,18 +78,17 @@ export const GamesByStartTimes = ({
 };
 
 const GameDetailsRow = styled.p`
-  display: flex;
   align-items: center;
-  margin: 0 0 8px 30px;
+  justify-content: left;
+  margin: 0 0 8px 0;
 
   @media (max-width: ${(props) => props.theme.breakpointPhone}) {
-    margin: 0 0 8px 10px;
-    justify-content: space-between;
+    margin: 0 0 8px 0;
   }
 `;
 
 const ButtonPlacement = styled.span`
-  padding-left: 10px;
+  padding-right: 4px;
 `;
 
 const StyledTime = styled.p`
