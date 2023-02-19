@@ -68,6 +68,15 @@ jobs:
         run: |
           yarn docker:build-staging
 
+      - name: Push staging container to AWS ECR
+        if: github.ref == 'refs/heads/main'
+        uses: jwalton/gh-ecr-push@v1.3.6
+        with:
+          access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          region: eu-west-1
+          image: konsti-staging:latest
+
       - name: Create frontend-staging Sentry release
         if: github.ref == 'refs/heads/main'
         uses: getsentry/action-release@v1
@@ -86,19 +95,19 @@ jobs:
           SENTRY_ORG: konsti
           SENTRY_PROJECT: konsti-backend-staging
 
-      - name: Push staging container to AWS ECR
+      - name: Build prod container
+        if: github.ref == 'refs/heads/main'
+        run: |
+          yarn docker:build-prod
+
+      - name: Push prod container to AWS ECR
         if: github.ref == 'refs/heads/main'
         uses: jwalton/gh-ecr-push@v1.3.6
         with:
           access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           region: eu-west-1
-          image: konsti-staging:latest
-
-      - name: Build prod container
-        if: github.ref == 'refs/heads/main'
-        run: |
-          yarn docker:build-prod
+          image: konsti-prod:latest
 
       - name: Create frontend-prod Sentry release
         if: github.ref == 'refs/heads/main'
@@ -117,12 +126,3 @@ jobs:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
           SENTRY_ORG: konsti
           SENTRY_PROJECT: konsti-backend-prod
-
-      - name: Push prod container to AWS ECR
-        if: github.ref == 'refs/heads/main'
-        uses: jwalton/gh-ecr-push@v1.3.6
-        with:
-          access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          region: eu-west-1
-          image: konsti-prod:latest
