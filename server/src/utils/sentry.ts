@@ -2,7 +2,6 @@ import * as Sentry from "@sentry/node";
 import * as Tracing from "@sentry/tracing";
 import express, { Express } from "express";
 import helmet from "helmet";
-import { config } from "server/config";
 import { postSentryTunnel } from "server/features/sentry-tunnel/sentryTunnelController";
 import { sharedConfig } from "shared/config/sharedConfig";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
@@ -61,7 +60,7 @@ const getDsn = (enableSentry: boolean): string | undefined => {
     case "staging":
       return "https://ab176c60aac24be8af2f6c790f1437ac@o1321706.ingest.sentry.io/6578390";
     case "development":
-      return config.enableSentryInDev
+      return sharedConfig.enableSentryInDev
         ? "https://6f41ef28d9664c1a8c3e25f58cecacf7@o1321706.ingest.sentry.io/6579493"
         : undefined;
     default:

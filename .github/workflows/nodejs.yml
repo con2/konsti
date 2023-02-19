@@ -77,6 +77,24 @@ jobs:
           region: eu-west-1
           image: konsti-staging:latest
 
+      - name: Create frontend-staging Sentry release
+        if: github.ref == 'refs/heads/main'
+        uses: getsentry/action-release@v1
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          SENTRY_ORG: konsti
+          SENTRY_PROJECT: konsti-frontend-staging
+        with:
+          sourcemaps: "./client/build"
+
+      - name: Create backend-staging Sentry release
+        if: github.ref == 'refs/heads/main'
+        uses: getsentry/action-release@v1
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          SENTRY_ORG: konsti
+          SENTRY_PROJECT: konsti-backend-staging
+
       - name: Build prod container
         if: github.ref == 'refs/heads/main'
         run: |
@@ -90,3 +108,21 @@ jobs:
           secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           region: eu-west-1
           image: konsti-prod:latest
+
+      - name: Create frontend-prod Sentry release
+        if: github.ref == 'refs/heads/main'
+        uses: getsentry/action-release@v1
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          SENTRY_ORG: konsti
+          SENTRY_PROJECT: konsti-frontend-prod
+        with:
+          sourcemaps: "./client/build"
+
+      - name: Create backend-prod Sentry release
+        if: github.ref == 'refs/heads/main'
+        uses: getsentry/action-release@v1
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          SENTRY_ORG: konsti
+          SENTRY_PROJECT: konsti-backend-prod
