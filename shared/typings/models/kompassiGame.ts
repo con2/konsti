@@ -20,6 +20,13 @@ export const tournamentProgramTypes = [
   KompassiProgramType.OTHER,
 ];
 
+export const workshopProgramTypes = [
+  KompassiProgramType.WORKSHOP_CRAFTS,
+  KompassiProgramType.WORKSHOP_MINIATURE,
+  KompassiProgramType.WORKSHOP_MUSIC,
+  KompassiProgramType.WORKSHOP_OTHER,
+];
+
 export enum KompassiTag {
   IN_ENGLISH = "in-english",
   SOPII_LAPSILLE = "sopii-lapsille",
@@ -111,6 +118,7 @@ export const KompassiGameSchema = z
     ropecon2022_content_warnings: z.string().catch(""),
     ropecon2021_accessibility_inaccessibility: z.string().catch(""),
     type_of_game_program: z.string().catch(""),
+    entry_fee: z.number().catch(0),
   })
   .strict();
 

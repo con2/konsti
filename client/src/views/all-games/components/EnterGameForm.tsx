@@ -149,6 +149,13 @@ export const EnterGameForm: FC<Props> = (props: Props): ReactElement => {
           {t("signup.cancel")}
         </Button>
       </ButtonGroup>
+      {game.entryFee > 0 && (
+        <span>
+          {t("signup.entryFeeInfo", {
+            ENTRY_FEE: game.entryFee,
+          })}
+        </span>
+      )}
       {errorMessage && (
         <ErrorMessage
           message={t(errorMessage)}

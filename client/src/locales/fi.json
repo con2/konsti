@@ -291,7 +291,9 @@
     "signupAlwaysOpen": "Ilmoittautuminen aina auki",
     "inGroupWarning": "Jos ilmoittaudut peliin sinut poistetaan ryhmästäsi",
     "groupCreatorWarning": "Jos ilmoittaudut peliin perustamasi ryhmä hajoitetaan",
-    "currentSignupGame": "Olet ilmoittautunut tähän peliin."
+    "currentSignupGame": "Olet ilmoittautunut tähän peliin.",
+    "entryFee": "Osallistumismaksu {{ENTRY_FEE}}€",
+    "entryFeeInfo": "Ilmoittautumalla hyväksyn osallistumismaksun {{ENTRY_FEE}}€"
   },
   "resultsView": {
     "allSignupResults": "Ilmoittautumistilanne ja pelaajat",

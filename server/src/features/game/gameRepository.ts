@@ -53,6 +53,7 @@ export const saveGames = async (games: readonly Game[]): Promise<Game[]> => {
             otherAuthor: game.otherAuthor,
             accessibilityValues: game.accessibilityValues,
             otherInaccessibility: game.otherInaccessibility,
+            entryFee: game.entryFee,
           },
           {
             upsert: true,

@@ -291,7 +291,9 @@
     "signupAlwaysOpen": "Signup always open",
     "inGroupWarning": "If you signup to game you will be removed from group you are in",
     "groupCreatorWarning": "If you signup to game the group you created will be destroyed",
-    "currentSignupGame": "You have signed up to this game."
+    "currentSignupGame": "You have signed up to this game.",
+    "entryFee": "Entry fee {{ENTRY_FEE}}€",
+    "entryFeeInfo": "By signing up I agree to pay the entry fee {{ENTRY_FEE}}€"
   },
   "resultsView": {
     "allSignupResults": "Signup overview and players",
