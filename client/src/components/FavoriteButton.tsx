@@ -46,18 +46,17 @@ export const FavoriteButton = ({
 };
 
 const smallSize = "32px";
-const largeSize = "48px";
+const largeSize = "44px";
 
 const StyledButton = styled.button<Props>`
   border-radius: 100px;
   border: none;
   cursor: pointer;
-  box-shadow: rgba(0, 0, 0, 0.15) 0 3px 5px;
   width: ${(props) =>
     props.buttonSize === FavoriteButtonSize.SMALL ? smallSize : largeSize};
   height: ${(props) =>
     props.buttonSize === FavoriteButtonSize.SMALL ? smallSize : largeSize};
-  background-color: ${(props) => props.theme.buttonSecondaryBackground};
+  background-color: inherit;
 
   &:hover,
   &:focus-visible {
@@ -67,7 +66,6 @@ const StyledButton = styled.button<Props>`
 
   &:active {
     background: ${(props) => props.theme.buttonSecondaryClicked};
-    box-shadow: none;
   }
 `;
 
@@ -77,6 +75,6 @@ const FavoriteIcon = styled(FontAwesomeIcon)<{
   color: ${(props) => props.theme.iconFavorited};
   font-size: ${(props) =>
     props.$buttonSize === FavoriteButtonSize.SMALL
-      ? props.theme.fontSizeNormal
-      : props.theme.fontSizeLarge};
+      ? props.theme.iconSizeSmall
+      : props.theme.iconSizeLarge};
 `;

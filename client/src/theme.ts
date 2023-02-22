@@ -115,6 +115,11 @@ export const theme = {
   fontSizeLarge: "20px",
   linkFontSize: "18px",
 
+  // Icon sizes
+  iconSizeSmall: "16px",
+  iconSizeNormal: "20px",
+  iconSizeLarge: "24px",
+
   // Game popularity icon colors
   popularityLow: blue.primary,
   popularityMedium: green.primary,
