@@ -291,9 +291,15 @@
     "signupAlwaysOpen": "Ilmoittautuminen aina auki",
     "inGroupWarning": "Jos ilmoittaudut peliin sinut poistetaan ryhmästäsi",
     "groupCreatorWarning": "Jos ilmoittaudut peliin perustamasi ryhmä hajoitetaan",
-    "currentSignupGame": "Olet ilmoittautunut tähän peliin.",
-    "entryFee": "Osallistumismaksu {{ENTRY_FEE}}€",
-    "entryFeeInfo": "Ilmoittautumalla hyväksyn osallistumismaksun {{ENTRY_FEE}}€"
+    "currentSignup": "Olet ilmoittautunut tähän {{PROGRAM_TYPE}}.",
+    "entryFee": "Osallistumismaksu {{ENTRY_FEE}} €",
+    "entryFeeInfo": "Ymmärrän, että työpajaan osallistuminen maksaa {{ENTRY_FEE}} €."
+  },
+  "signupProgramType": {
+    "tabletopRPG": "peliin",
+    "larp": "larppiin",
+    "tournament": "turnaukseen",
+    "workshop": "työpajaan"
   },
   "resultsView": {
     "allSignupResults": "Ilmoittautumistilanne ja pelaajat",

@@ -291,9 +291,15 @@
     "signupAlwaysOpen": "Signup always open",
     "inGroupWarning": "If you signup to game you will be removed from group you are in",
     "groupCreatorWarning": "If you signup to game the group you created will be destroyed",
-    "currentSignupGame": "You have signed up to this game.",
-    "entryFee": "Entry fee {{ENTRY_FEE}}€",
-    "entryFeeInfo": "By signing up I agree to pay the entry fee {{ENTRY_FEE}}€"
+    "currentSignup": "You have signed up to this {{PROGRAM_TYPE}}.",
+    "entryFee": "Entry fee €{{ENTRY_FEE}}",
+    "entryFeeInfo": "I understand that participation in the workshop costs €{{ENTRY_FEE}}."
+  },
+  "signupProgramType": {
+    "tabletopRPG": "game",
+    "larp": "larp",
+    "tournament": "tournament",
+    "workshop": "workshop"
   },
   "resultsView": {
     "allSignupResults": "Signup overview and players",

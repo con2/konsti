@@ -38,6 +38,7 @@ export const EnterGameForm: FC<Props> = (props: Props): ReactElement => {
   const username = useAppSelector((state) => state.login.username);
   const serial = useAppSelector((state) => state.login.serial);
   const [userSignupMessage, setUserSignupMessage] = useState<string>("");
+  const [agreeEntryFee, setAgreeEntryFee] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<
     | PostEnteredGameErrorMessage
     | PostLeaveGroupErrorMessage
@@ -141,21 +142,38 @@ export const EnterGameForm: FC<Props> = (props: Props): ReactElement => {
           <span>{userSignupMessage.length} / 140</span>
         </SignupQuestionContainer>
       )}
+
+      {game.entryFee > 0 && (
+        <div>
+          <input
+            type="checkbox"
+            checked={agreeEntryFee}
+            onChange={() => {
+              setAgreeEntryFee(!agreeEntryFee);
+            }}
+            aria-labelledby={"entry-fee-agree-checkbox-label"}
+          />
+          <label id="entry-fee-agree-checkbox-label">
+            {t("signup.entryFeeInfo", {
+              ENTRY_FEE: game.entryFee,
+            })}{" "}
+          </label>
+        </div>
+      )}
+
       <ButtonGroup>
-        <Button onClick={handleSignup} buttonStyle={ButtonStyle.PRIMARY}>
+        <Button
+          onClick={handleSignup}
+          buttonStyle={ButtonStyle.PRIMARY}
+          disabled={game.entryFee > 0 && !agreeEntryFee}
+        >
           {t("signup.confirm")}
         </Button>
         <Button onClick={handleCancel} buttonStyle={ButtonStyle.SECONDARY}>
           {t("signup.cancel")}
         </Button>
       </ButtonGroup>
-      {game.entryFee > 0 && (
-        <span>
-          {t("signup.entryFeeInfo", {
-            ENTRY_FEE: game.entryFee,
-          })}
-        </span>
-      )}
+
       {errorMessage && (
         <ErrorMessage
           message={t(errorMessage)}
