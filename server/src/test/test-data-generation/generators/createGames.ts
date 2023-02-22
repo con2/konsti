@@ -13,6 +13,7 @@ import {
   KompassiProgramType,
   KompassiTag,
   tournamentProgramTypes,
+  workshopProgramTypes,
 } from "shared/typings/models/kompassiGame";
 import { TOURNAMENT_EVENT_TYPE } from "server/features/game/utils/getGamesFromKompassi";
 
@@ -26,6 +27,30 @@ const startingTimes = [
   dayjs(sharedConfig.CONVENTION_START_TIME).add(2, "days").format(),
 ];
 
+const getMinPlayers = (programType: KompassiProgramType): number => {
+  if (tournamentProgramTypes.includes(programType)) {
+    return faker.datatype.number({ min: 6, max: 10 });
+  }
+
+  if (workshopProgramTypes.includes(programType)) {
+    return 0;
+  }
+
+  return faker.datatype.number({ min: 2, max: 3 });
+};
+
+const getMaxPlayers = (programType: KompassiProgramType): number => {
+  if (tournamentProgramTypes.includes(programType)) {
+    return faker.datatype.number({ min: 12, max: 20 });
+  }
+
+  if (workshopProgramTypes.includes(programType)) {
+    return faker.datatype.number({ min: 12, max: 20 });
+  }
+
+  return faker.datatype.number({ min: 3, max: 4 });
+};
+
 export const createGames = async (gameCount: number): Promise<Game[]> => {
   const kompassiGames: KompassiGame[] = [];
 
@@ -33,6 +58,7 @@ export const createGames = async (gameCount: number): Promise<Game[]> => {
     KompassiProgramType.TABLETOP_RPG,
     KompassiProgramType.LARP,
     KompassiProgramType.BOARD_GAME,
+    KompassiProgramType.WORKSHOP_MINIATURE,
   ];
 
   programTypes.map((programType) => {
@@ -55,13 +81,12 @@ export const createGames = async (gameCount: number): Promise<Game[]> => {
           start_time: dayjs(startTime).format(),
           end_time: dayjs(startTime).add(length, "minutes").format(),
           language: "fi",
-          rpg_system: "Test gamesystem",
-          min_players: tournamentProgramTypes.includes(programType)
-            ? faker.datatype.number({ min: 6, max: 10 })
-            : faker.datatype.number({ min: 2, max: 3 }),
-          max_players: tournamentProgramTypes.includes(programType)
-            ? faker.datatype.number({ min: 12, max: 20 })
-            : faker.datatype.number({ min: 3, max: 4 }),
+          rpg_system:
+            programType === KompassiProgramType.TABLETOP_RPG
+              ? "Test gamesystem"
+              : "",
+          min_players: getMinPlayers(programType),
+          max_players: getMaxPlayers(programType),
           identifier: faker.datatype.number(GAME_ID_MAX).toString(),
           tags: sampleSize(Object.values(KompassiTag), 3),
           genres: sampleSize(Object.values(KompassiGenre), 2),
@@ -89,6 +114,7 @@ export const createGames = async (gameCount: number): Promise<Game[]> => {
             programType === KompassiProgramType.BOARD_GAME
               ? TOURNAMENT_EVENT_TYPE
               : "",
+          entry_fee: workshopProgramTypes.includes(programType) ? 5 : 0,
         };
 
         logger.info(`Stored game "${kompassiGameData.title}"`);
