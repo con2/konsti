@@ -93,6 +93,7 @@ export const GameSchema = z.object({
   accessibilityValues: z.array(z.nativeEnum(AccessibilityValue)),
   signupStrategy: z.optional(z.nativeEnum(SignupStrategy)),
   otherInaccessibility: z.string(),
+  entryFee: z.number(),
 });
 
 export type Game = z.infer<typeof GameSchema>;

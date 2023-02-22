@@ -44,6 +44,7 @@ export const testKompassiGame: KompassiGame = {
   ropecon2022_content_warnings: "Content warning",
   ropecon2021_accessibility_inaccessibility: "Other inaccessibility",
   type_of_game_program: "",
+  entry_fee: 0,
 };
 
 export const testKompassiGame2: KompassiGame = {
@@ -83,4 +84,5 @@ export const testKompassiGame2: KompassiGame = {
   ropecon2022_content_warnings: "Content warning",
   ropecon2021_accessibility_inaccessibility: "Other inaccessibility",
   type_of_game_program: "",
+  entry_fee: 0,
 };
