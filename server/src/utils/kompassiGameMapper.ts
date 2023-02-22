@@ -53,6 +53,7 @@ export const kompassiGameMapper = (
       accessibilityValues: mapAccessibilityValues(game),
       popularity: 0,
       otherInaccessibility: game.ropecon2021_accessibility_inaccessibility,
+      entryFee: game.entry_fee,
     };
   });
 };

@@ -138,6 +138,13 @@ export const GameEntry = ({
                   MAX_ATTENDANCE: game.maxAttendance,
                 })}
             </RowItem>
+
+            <RowItem>
+              {game.entryFee > 0 &&
+                t(`signup.entryFee`, {
+                  ENTRY_FEE: game.entryFee,
+                })}
+            </RowItem>
           </p>
           {isEnterGameMode && (
             <>

@@ -130,7 +130,9 @@ export const DirectSignupForm: FC<Props> = ({
       {alreadyEnteredToGame && (
         <>
           <SignedGameContainer>
-            {t("signup.currentSignupGame")}
+            {t("signup.currentSignup", {
+              PROGRAM_TYPE: t(`signupProgramType.${game.programType}`),
+            })}
           </SignedGameContainer>
           {!cancelSignupFormOpen && (
             <ButtonWithMargin
