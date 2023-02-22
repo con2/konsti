@@ -75,6 +75,6 @@ const FavoriteIcon = styled(FontAwesomeIcon)<{
   color: ${(props) => props.theme.iconFavorited};
   font-size: ${(props) =>
     props.$buttonSize === FavoriteButtonSize.SMALL
-      ? props.theme.fontSizeNormal
-      : props.theme.fontSizeLarger};
+      ? props.theme.iconSizeSmall
+      : props.theme.iconSizeLarge};
 `;

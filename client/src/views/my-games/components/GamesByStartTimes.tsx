@@ -51,15 +51,13 @@ export const GamesByStartTimes = ({
               if (game.startTime === startTime) {
                 return (
                   <GameDetailsRow key={game.gameId}>
-                    <ButtonPlacement>
-                      <FavoriteButton
-                        buttonSize={FavoriteButtonSize.SMALL}
-                        isFavorite={true}
-                        onClick={async () => {
-                          await removeFavorite(game);
-                        }}
-                      />
-                    </ButtonPlacement>
+                    <FavoriteButton
+                      buttonSize={FavoriteButtonSize.SMALL}
+                      isFavorite={true}
+                      onClick={async () => {
+                        await removeFavorite(game);
+                      }}
+                    />
                     <Link
                       to={`/games/${game.gameId}`}
                       data-testid={"game-title"}
@@ -85,10 +83,6 @@ const GameDetailsRow = styled.p`
   @media (max-width: ${(props) => props.theme.breakpointPhone}) {
     margin: 0 0 8px 0;
   }
-`;
-
-const ButtonPlacement = styled.span`
-  padding-right: 4px;
 `;
 
 const StyledTime = styled.p`
