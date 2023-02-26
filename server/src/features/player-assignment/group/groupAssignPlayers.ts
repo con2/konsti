@@ -9,7 +9,10 @@ import { getGroupMembers } from "server/features/player-assignment/utils/getGrou
 import { getHappiness } from "server/features/player-assignment/group/utils/getHappiness";
 import { User } from "shared/typings/models/user";
 import { Game } from "shared/typings/models/game";
-import { PlayerAssignmentResult } from "server/typings/result.typings";
+import {
+  AssignmentResultStatus,
+  PlayerAssignmentResult,
+} from "server/typings/result.typings";
 
 export const groupAssignPlayers = (
   players: readonly User[],
@@ -25,7 +28,7 @@ export const groupAssignPlayers = (
       results: [],
       message: "Group Assign Result - No starting games",
       algorithm: "group",
-      status: "error: no starting games",
+      status: AssignmentResultStatus.NO_STARTING_GAMES,
     };
   }
 
@@ -37,7 +40,7 @@ export const groupAssignPlayers = (
       results: [],
       message: "Group Assign Result - No signup wishes",
       algorithm: "group",
-      status: "error: no signup wishes",
+      status: AssignmentResultStatus.NO_SIGNUP_WISHES,
     };
   }
 
