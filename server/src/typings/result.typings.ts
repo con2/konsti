@@ -13,11 +13,17 @@ export interface UserSignedGames {
   signedGames: readonly SelectedGame[];
 }
 
+export enum AssignmentResultStatus {
+  SUCCESS = "success",
+  NO_STARTING_GAMES = "noStartingGames",
+  NO_SIGNUP_WISHES = "noSignupWishes",
+}
+
 export interface PlayerAssignmentResult {
   results: readonly Result[];
   message: string;
   algorithm: string;
-  status: string;
+  status: AssignmentResultStatus;
 }
 
 export interface ResultsCollectionEntry {
