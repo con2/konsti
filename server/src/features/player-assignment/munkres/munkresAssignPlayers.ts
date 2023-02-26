@@ -13,7 +13,10 @@ import { getRemovedPlayer } from "server/features/player-assignment/munkres/util
 import { buildSignupResults } from "server/features/player-assignment/munkres/utils/buildSignupResults";
 import { User } from "shared/typings/models/user";
 import { Game } from "shared/typings/models/game";
-import { PlayerAssignmentResult } from "server/typings/result.typings";
+import {
+  AssignmentResultStatus,
+  PlayerAssignmentResult,
+} from "server/typings/result.typings";
 
 export const munkresAssignPlayers = (
   players: readonly User[],
@@ -86,6 +89,6 @@ export const munkresAssignPlayers = (
     results: signupResults,
     message,
     algorithm: "munkres",
-    status: "success",
+    status: AssignmentResultStatus.SUCCESS,
   };
 };

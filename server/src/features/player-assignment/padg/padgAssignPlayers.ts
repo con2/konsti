@@ -1,7 +1,10 @@
 import _ from "lodash";
 import { User } from "shared/typings/models/user";
 import { Game } from "shared/typings/models/game";
-import { PlayerAssignmentResult } from "server/typings/result.typings";
+import {
+  AssignmentResultStatus,
+  PlayerAssignmentResult,
+} from "server/typings/result.typings";
 import { getStartingGames } from "server/features/player-assignment/utils/getStartingGames";
 import { getRunRandomAndPadgInput } from "server/features/player-assignment/utils/getRunRandomAndPadgInput";
 import { runPadgAssignment } from "server/features/player-assignment/padg/utils/runPadgAssignment";
@@ -23,7 +26,7 @@ export const padgAssignPlayers = (
       results: [],
       message: "Padg Assign Result - No starting games",
       algorithm: "padg",
-      status: "error: no starting games",
+      status: AssignmentResultStatus.NO_STARTING_GAMES,
     };
   }
 
@@ -40,7 +43,7 @@ export const padgAssignPlayers = (
       results: [],
       message: "Padg Assign Result - No signup wishes",
       algorithm: "padg",
-      status: "error: no signup wishes",
+      status: AssignmentResultStatus.NO_SIGNUP_WISHES,
     };
   }
 

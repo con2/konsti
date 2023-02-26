@@ -4,7 +4,10 @@ import { getStartingGames } from "server/features/player-assignment/utils/getSta
 import { runRandomAssignment } from "server/features/player-assignment/random/utils/runRandomAssignment";
 import { User } from "shared/typings/models/user";
 import { Game } from "shared/typings/models/game";
-import { PlayerAssignmentResult } from "server/typings/result.typings";
+import {
+  AssignmentResultStatus,
+  PlayerAssignmentResult,
+} from "server/typings/result.typings";
 import { getRunRandomAndPadgInput } from "server/features/player-assignment/utils/getRunRandomAndPadgInput";
 import { Signup } from "server/features/signup/signup.typings";
 
@@ -23,7 +26,7 @@ export const randomAssignPlayers = (
       results: [],
       message: "Random Assign Result - No starting games",
       algorithm: "Random",
-      status: "error: no starting games",
+      status: AssignmentResultStatus.NO_STARTING_GAMES,
     };
   }
   const {
@@ -40,7 +43,7 @@ export const randomAssignPlayers = (
       results: [],
       message: "Random Assign Result - No signup wishes",
       algorithm: "Random",
-      status: "error: no signup wishes",
+      status: AssignmentResultStatus.NO_SIGNUP_WISHES,
     };
   }
   logger.debug(`Games with signups: ${signedGames.length}`);
