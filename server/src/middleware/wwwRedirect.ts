@@ -7,10 +7,8 @@ export const wwwRedirect = (
   next: NextFunction
 ): void => {
   const host = req.get("host");
-  const isHttp = req.protocol === "http";
 
-  // Skip redirect with http connection because App Runner automatically redirects to https and second redirect will return error
-  if (!host || isHttp) {
+  if (!host) {
     next();
     return; // Not actually reached but required by TS
   }
@@ -23,7 +21,10 @@ export const wwwRedirect = (
     const protocol = req.protocol;
     const hostWithoutWww = host.replace(/^www\./, "");
 
-    res.redirect(301, `${protocol}://${hostWithoutWww}${req.url}`);
+    // App Runner automatically redirects http -> https and second redirect will return error
+    if (!res.headersSent) {
+      res.redirect(301, `${protocol}://${hostWithoutWww}${req.url}`);
+    }
   }
 
   next();
