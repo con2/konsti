@@ -7,6 +7,7 @@ import { generateTestData } from "server/test/test-data-generation/generators/ge
 import { verifyUserSignups } from "server/features/player-assignment/utils/verifyUserSignups";
 import { AssignmentStrategy } from "shared/config/sharedConfig.types";
 import { sharedConfig } from "shared/config/sharedConfig";
+import { AssignmentResultStatus } from "server/typings/result.typings";
 
 let mongoServer: MongoMemoryServer;
 
@@ -111,7 +112,9 @@ test("Assignment with no games should return error with random+padg strategy", a
     assignmentStrategy,
     startingTime,
   });
-  expect(assignResults.status).toEqual("error: no starting games");
+  expect(assignResults.status).toEqual(
+    AssignmentResultStatus.NO_STARTING_GAMES
+  );
 });
 
 test("Assignment with no players should return error with random+padg strategy", async () => {
@@ -137,5 +140,5 @@ test("Assignment with no players should return error with random+padg strategy",
     assignmentStrategy,
     startingTime,
   });
-  expect(assignResults.status).toEqual("error: no signup wishes");
+  expect(assignResults.status).toEqual(AssignmentResultStatus.NO_SIGNUP_WISHES);
 });
