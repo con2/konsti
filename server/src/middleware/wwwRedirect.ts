@@ -21,10 +21,8 @@ export const wwwRedirect = (
     const protocol = req.protocol;
     const hostWithoutWww = host.replace(/^www\./, "");
 
-    // App Runner automatically redirects http -> https and second redirect will return error
-    if (!res.headersSent) {
-      res.redirect(301, `${protocol}://${hostWithoutWww}${req.url}`);
-    }
+    res.redirect(301, `${protocol}://${hostWithoutWww}${req.url}`);
+    return;
   }
 
   next();
