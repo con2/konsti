@@ -12,8 +12,6 @@ const connectToDb = async (
     dbName,
   };
 
-  mongoose.set("strictQuery", false);
-
   try {
     await mongoose.connect(dbConnString, options);
   } catch (error) {
