@@ -282,10 +282,8 @@
     "confirmCancellation": "Confirm cancellation",
     "staySignedUp": "Stay signed up",
     "expectedDuration": "Duration {{EXPECTED_DURATION}}",
-    "playerCount": "Players {{MAX_ATTENDANCE}}",
-    "playerRange": "Players {{MIN_ATTENDANCE}} - {{MAX_ATTENDANCE}}",
-    "participantCount": "Participants {{MAX_ATTENDANCE}}",
-    "participantRange": "Participants {{MIN_ATTENDANCE}} - {{MAX_ATTENDANCE}}",
+    "attendeeCount": "{{ATTENDEE_TYPE}} {{MAX_ATTENDANCE}}",
+    "attendeeRange": "{{ATTENDEE_TYPE}} {{MIN_ATTENDANCE}} - {{MAX_ATTENDANCE}}",
     "signupOpens": "Signup opens",
     "lotterySignupOpens": "Lottery signup opens",
     "signupAlwaysOpen": "Signup always open",
@@ -294,6 +292,10 @@
     "currentSignup": "You have signed up to this {{PROGRAM_TYPE}}.",
     "entryFee": "Entry fee €{{ENTRY_FEE}}",
     "entryFeeInfo": "I understand that participation in the workshop costs €{{ENTRY_FEE}}."
+  },
+  "attendeeTypePlural": {
+    "player": "Players",
+    "participant": "Participants"
   },
   "signupProgramType": {
     "tabletopRPG": "game",
