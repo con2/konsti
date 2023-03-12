@@ -144,7 +144,12 @@ export const AllGamesView = (): ReactElement => {
   }, [filteredGames, hiddenGames, selectedView, selectedTag]);
 
   const options = [
-    { value: "", title: t("allGames") },
+    {
+      value: "",
+      title: t("allProgramItems", {
+        PROGRAM_TYPE: t(`programTypePlural.${activeProgramType}`),
+      }),
+    },
     filters.map((filter) => ({
       value: filter,
       title: t(`gameTags.${filter}`),
@@ -214,7 +219,15 @@ export const AllGamesView = (): ReactElement => {
         <ControlledInput
           value={searchTerm}
           onChange={(event) => setSearchTerm(event.target.value)}
-          placeholder={t("findSignupOrGameSystem")}
+          placeholder={
+            activeProgramType === ProgramType.TABLETOP_RPG
+              ? t("searchWithTitleOrSystem", {
+                  PROGRAM_TYPE: t(`programTypeGenetive.${activeProgramType}`),
+                })
+              : t("searchWithTitle", {
+                  PROGRAM_TYPE: t(`programTypeGenetive.${activeProgramType}`),
+                })
+          }
           resetValue={() => setSearchTerm("")}
         />
       </HeaderContainer>
