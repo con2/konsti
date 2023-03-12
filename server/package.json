@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "@faker-js/faker": "7.6.0",
-    "@sentry/node": "7.41.0",
+    "@sentry/node": "7.42.0",
     "bcryptjs": "2.4.3",
     "commander": "10.0.0",
     "eventassigner-js": "0.1.6",
@@ -54,7 +54,7 @@
     "@types/bcryptjs": "2.4.2",
     "@types/jsonwebtoken": "9.0.1",
     "@types/morgan": "1.9.4",
-    "@types/node": "18.14.6",
+    "@types/node": "18.15.0",
     "@types/node-schedule": "2.1.0",
     "@types/supertest": "2.0.12",
     "mongodb-memory-server": "8.12.0",
