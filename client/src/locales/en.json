@@ -311,10 +311,10 @@
     "workshop": "workshops"
   },
   "programTypeGenetive": {
-    "tabletopRPG": "Game's",
-    "larp": "Larp's",
-    "tournament": "Tournament's",
-    "workshop": "Workshop's"
+    "tabletopRPG": "Game",
+    "larp": "Larp",
+    "tournament": "Tournament",
+    "workshop": "Workshop"
   },
   "resultsView": {
     "allSignupResults": "Signup overview and players",
