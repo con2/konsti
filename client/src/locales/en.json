@@ -46,7 +46,8 @@
   "player": "Player",
   "find": "Find",
   "findSignupOrGame": "Game title or username",
-  "findSignupOrGameSystem": "Game title or system",
+  "searchWithTitle": "{{PROGRAM_TYPE}} title",
+  "searchWithTitle_tabletopRPG": "{{PROGRAM_TYPE}} title or system",
   "language": {
     "english": "English",
     "englishShort": "EN",
@@ -60,7 +61,7 @@
   },
   "pages": {
     "myGames": "My Games",
-    "allGames": "All Games",
+    "programList": "Program List",
     "admin": "Admin",
     "results": "All Signup Results",
     "group": "Group"
@@ -98,7 +99,7 @@
     "tournament": "Tournament",
     "workshop": "Workshop"
   },
-  "programTypePlural": {
+  "programTypeSelection": {
     "tabletopRPG": "Tabletop RPG",
     "larp": "LARP",
     "tournament": "Tournaments",
@@ -203,7 +204,7 @@
   "noGamesInDatabase": "No games in database",
   "upcoming": "Upcoming",
   "all": "All",
-  "allGames": "All games",
+  "allProgramItems": "All {{PROGRAM_TYPE}}",
   "lastStartedAndUpcoming": "Last started and upcoming",
   "chooseTag": "Choose tag",
   "high-popularity": "More interested players than seats",
@@ -302,6 +303,18 @@
     "larp": "larp",
     "tournament": "tournament",
     "workshop": "workshop"
+  },
+  "programTypePlural": {
+    "tabletopRPG": "games",
+    "larp": "larps",
+    "tournament": "tournaments",
+    "workshop": "workshops"
+  },
+  "programTypeGenetive": {
+    "tabletopRPG": "Game's",
+    "larp": "Larp's",
+    "tournament": "Tournament's",
+    "workshop": "Workshop's"
   },
   "resultsView": {
     "allSignupResults": "Signup overview and players",

@@ -30,7 +30,7 @@ Please note that selecting a programme type affects not only the list of games t
 
 ### Browsing games in the Konsti app
 
-All games -page shows the list of games the user can sign up for via the Konsti app. Games are sorted by their starting time and listed underneath headers displaying the date, the starting time of the game, and the number of games you have signed up for within that time slot. If the sign-up has not yet started, the header will also display when the sign-up period takes place and whether it will be a lottery sign-up or a direct sign-up.
+Program List -page shows the list of games the user can sign up for via the Konsti app. Games are sorted by their starting time and listed underneath headers displaying the date, the starting time of the game, and the number of games you have signed up for within that time slot. If the sign-up has not yet started, the header will also display when the sign-up period takes place and whether it will be a lottery sign-up or a direct sign-up.
 
 Next is perhaps the most important information for the users of Konsti: how many people have already signed up for the game and how many can still sign up. In the case of direct sign-ups, the number of people signed up for each game is updated and visible in real-time. However, when signing up for role-playing games using the lottery sign-up, if the lottery sign-up period is still ongoing, this number will not change until the lottery sign-up period is over and the algorithm has allocated users in games.
 

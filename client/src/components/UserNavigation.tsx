@@ -16,9 +16,9 @@ export const UserNavigation = (props: {
         <RouterLink
           onClick={props.onSelect}
           to="/games"
-          data-testid="all-games-page-link"
+          data-testid="program-list-page-link"
         >
-          {t("pages.allGames")}
+          {t("pages.programList")}
         </RouterLink>
       )}
 

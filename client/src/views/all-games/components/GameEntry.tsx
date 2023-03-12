@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { updateFavorite, UpdateFavoriteOpts } from "client/utils/favorite";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
-import { Game, ProgramType, Tag } from "shared/typings/models/game";
+import { Game, Tag } from "shared/typings/models/game";
 import { AlgorithmSignupForm } from "./AlgorithmSignupForm";
 import { DirectSignupForm } from "./DirectSignupForm";
 import { SelectedGame } from "shared/typings/models/user";
@@ -15,6 +15,7 @@ import { sharedConfig } from "shared/config/sharedConfig";
 import { GameDetailsView } from "client/views/all-games/components/GameDetailsView";
 import { Tags } from "client/components/Tags";
 import { FavoriteButton } from "client/components/FavoriteButton";
+import { getAttendeeType } from "client/utils/getAttendeeType";
 
 interface Props {
   game: Game;
@@ -90,18 +91,6 @@ export const GameEntry = ({
     tags.push(t("gameTags.inEnglish"));
   }
 
-  enum AttendeeType {
-    Player = "player",
-    Participant = "participant",
-  }
-
-  const getAttendeeType = (): AttendeeType => {
-    if (game.programType === ProgramType.WORKSHOP) {
-      return AttendeeType.Participant;
-    }
-    return AttendeeType.Player;
-  };
-
   return (
     <GameContainer
       key={game.gameId}
@@ -129,13 +118,17 @@ export const GameEntry = ({
             <RowItem>
               {game.minAttendance === game.maxAttendance &&
                 t(`signup.attendeeCount`, {
-                  ATTENDEE_TYPE: t(`attendeeTypePlural.${getAttendeeType()}`),
+                  ATTENDEE_TYPE: t(
+                    `attendeeTypePlural.${getAttendeeType(game.programType)}`
+                  ),
                   MAX_ATTENDANCE: game.maxAttendance,
                 })}
 
               {game.minAttendance !== game.maxAttendance &&
                 t(`signup.attendeeRange`, {
-                  ATTENDEE_TYPE: t(`attendeeTypePlural.${getAttendeeType()}`),
+                  ATTENDEE_TYPE: t(
+                    `attendeeTypePlural.${getAttendeeType(game.programType)}`
+                  ),
                   MIN_ATTENDANCE: game.minAttendance,
                   MAX_ATTENDANCE: game.maxAttendance,
                 })}

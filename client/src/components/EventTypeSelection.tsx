@@ -22,7 +22,7 @@ export const ProgramTypeSelection = (): ReactElement => {
 
   const dropdownItems = programTypes.map((programType) => ({
     value: programType,
-    title: t(`programTypePlural.${programType}`),
+    title: t(`programTypeSelection.${programType}`),
   }));
 
   return (
