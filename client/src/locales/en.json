@@ -47,7 +47,7 @@
   "find": "Find",
   "findSignupOrGame": "Game title or username",
   "searchWithTitle": "{{PROGRAM_TYPE}} title",
-  "searchWithTitle_tabletopRPG": "{{PROGRAM_TYPE}} title or system",
+  "searchWithTitleOrSystem": "{{PROGRAM_TYPE}} title or system",
   "language": {
     "english": "English",
     "englishShort": "EN",

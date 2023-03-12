@@ -47,7 +47,7 @@
   "find": "Etsi",
   "findSignupOrGame": "Pelin nimi tai käyttäjänimi",
   "searchWithTitle": "{{PROGRAM_TYPE}} nimi",
-  "searchWithTitle_tabletopRPG": "{{PROGRAM_TYPE}} nimi tai järjestelmä",
+  "searchWithTitleOrSystem": "{{PROGRAM_TYPE}} nimi tai järjestelmä",
   "language": {
     "english": "Englanti",
     "englishShort": "EN",

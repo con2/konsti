@@ -219,10 +219,15 @@ export const AllGamesView = (): ReactElement => {
         <ControlledInput
           value={searchTerm}
           onChange={(event) => setSearchTerm(event.target.value)}
-          placeholder={t("searchWithTitle", {
-            context: activeProgramType,
-            PROGRAM_TYPE: t(`programTypeGenetive.${activeProgramType}`),
-          })}
+          placeholder={
+            activeProgramType === ProgramType.TABLETOP_RPG
+              ? t("searchWithTitleOrSystem", {
+                  PROGRAM_TYPE: t(`programTypeGenetive.${activeProgramType}`),
+                })
+              : t("searchWithTitle", {
+                  PROGRAM_TYPE: t(`programTypeGenetive.${activeProgramType}`),
+                })
+          }
           resetValue={() => setSearchTerm("")}
         />
       </HeaderContainer>
