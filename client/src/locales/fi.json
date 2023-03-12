@@ -282,10 +282,8 @@
     "confirmCancellation": "Vahvista peruutus",
     "staySignedUp": "Pysy ilmoittautuneena",
     "expectedDuration": "Kesto {{EXPECTED_DURATION}}",
-    "playerCount": "Pelaajia {{MAX_ATTENDANCE}}",
-    "playerRange": "Pelaajia {{MIN_ATTENDANCE}} - {{MAX_ATTENDANCE}}",
-    "participantCount": "Osallistujia {{MAX_ATTENDANCE}}",
-    "participantRange": "Osallistujia {{MIN_ATTENDANCE}} - {{MAX_ATTENDANCE}}",
+    "attendeeCount": "{{ATTENDEE_TYPE}} {{MAX_ATTENDANCE}}",
+    "attendeeRange": "{{ATTENDEE_TYPE}} {{MIN_ATTENDANCE}} - {{MAX_ATTENDANCE}}",
     "signupOpens": "Ilmoittautuminen aukeaa",
     "lotterySignupOpens": "Arvontaan ilmoittautuminen aukeaa",
     "signupAlwaysOpen": "Ilmoittautuminen aina auki",
@@ -294,6 +292,10 @@
     "currentSignup": "Olet ilmoittautunut tähän {{PROGRAM_TYPE}}.",
     "entryFee": "Osallistumismaksu {{ENTRY_FEE}} €",
     "entryFeeInfo": "Ymmärrän, että työpajaan osallistuminen maksaa {{ENTRY_FEE}} €."
+  },
+  "attendeeTypePlural": {
+    "player": "Pelaajia",
+    "participant": "Osallistujia"
   },
   "signupProgramType": {
     "tabletopRPG": "peliin",
