@@ -128,12 +128,14 @@ export const GameEntry = ({
 
             <RowItem>
               {game.minAttendance === game.maxAttendance &&
-                t(`signup.${getAttendeeType()}Count`, {
+                t(`signup.attendeeCount`, {
+                  ATTENDEE_TYPE: t(`attendeeTypePlural.${getAttendeeType()}`),
                   MAX_ATTENDANCE: game.maxAttendance,
                 })}
 
               {game.minAttendance !== game.maxAttendance &&
-                t(`signup.${getAttendeeType()}Range`, {
+                t(`signup.attendeeRange`, {
+                  ATTENDEE_TYPE: t(`attendeeTypePlural.${getAttendeeType()}`),
                   MIN_ATTENDANCE: game.minAttendance,
                   MAX_ATTENDANCE: game.maxAttendance,
                 })}
