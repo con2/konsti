@@ -30,7 +30,7 @@ Huomaa, että ohjelmatyypin valinta vaikuttaa näkymään myös Omat pelit -osio
 
 ### Pelien selaaminen Konstissa
 
-Kaikki pelit -sivulla avautuu lista peleistä, joihin Konstin kautta voi ilmoittautua. Pelit on jaoteltu päivän ja pelin alkamis kellonajan mukaan. Jos ilmoittautuminen ei ole vielä alkanut, päivämäärän ja kellonajan alla näkyy myös tieto siitä, mihin aikaan ilmoittautuminen kyseisiin peleihin on avoinna ja onko kyseessä arvontaan ilmoittautuminen vai suora ilmoittautuminen.
+Ohjelmalista -sivulla avautuu lista peleistä, joihin Konstin kautta voi ilmoittautua. Pelit on jaoteltu päivän ja pelin alkamis kellonajan mukaan. Jos ilmoittautuminen ei ole vielä alkanut, päivämäärän ja kellonajan alla näkyy myös tieto siitä, mihin aikaan ilmoittautuminen kyseisiin peleihin on avoinna ja onko kyseessä arvontaan ilmoittautuminen vai suora ilmoittautuminen.
 
 Näiden tietojen alla näkyy Konstin käyttäjien näkökulmasta kenties se tärkein tieto: tieto siitä, kuinka monta pelaajaa kyseiseen peliin on ilmoittautunut, ja kuinka monta vielä mahtuu mukaan. Kun käytössä on suorailmoittautuminen, päivittyy ilmoittautuneiden lukumäärä reaaliaikaisesti. Mikäli käytössä on arvonta-ilmoittautuminen (roolipelit) ja sen ilmoittautumisaika on vielä käynnissä, ilmoittautuneiden pelaajien lukumäärä ei muutu vielä arvontaan ilmoittautumisen yhteydessä, vaan päivittyy vasta, kun paikat on arvottu.
 

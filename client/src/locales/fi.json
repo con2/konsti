@@ -46,7 +46,8 @@
   "player": "Pelaaja",
   "find": "Etsi",
   "findSignupOrGame": "Pelin nimi tai käyttäjänimi",
-  "findSignupOrGameSystem": "Pelin nimi tai järjestelmä",
+  "searchWithTitle": "{{PROGRAM_TYPE}} nimi",
+  "searchWithTitleOrSystem": "{{PROGRAM_TYPE}} nimi tai järjestelmä",
   "language": {
     "english": "Englanti",
     "englishShort": "EN",
@@ -60,7 +61,7 @@
   },
   "pages": {
     "myGames": "Omat pelit",
-    "allGames": "Kaikki pelit",
+    "programList": "Ohjelmalista",
     "admin": "Ylläpito",
     "results": "Ilmoittautumistulokset",
     "group": "Ryhmä"
@@ -98,7 +99,7 @@
     "tournament": "Turnaus",
     "workshop": "Työpaja"
   },
-  "programTypePlural": {
+  "programTypeSelection": {
     "tabletopRPG": "Pöytäroolipelit",
     "larp": "LARP",
     "tournament": "Turnaukset",
@@ -203,7 +204,7 @@
   "noGamesInDatabase": "Ei pelejä tietokannassa",
   "upcoming": "Tulevat",
   "all": "Kaikki",
-  "allGames": "Kaikki pelit",
+  "allProgramItems": "Kaikki {{PROGRAM_TYPE}}",
   "lastStartedAndUpcoming": "Viimeksi alkaneet ja tulevat",
   "chooseTag": "Valitse tagi",
   "high-popularity": "Enemmän kiinnostuneita kuin paikkoja",
@@ -302,6 +303,18 @@
     "larp": "larppiin",
     "tournament": "turnaukseen",
     "workshop": "työpajaan"
+  },
+  "programTypePlural": {
+    "tabletopRPG": "pelit",
+    "larp": "larpit",
+    "tournament": "turnaukset",
+    "workshop": "työpajat"
+  },
+  "programTypeGenetive": {
+    "tabletopRPG": "Pelin",
+    "larp": "Larpin",
+    "tournament": "Turnauksen",
+    "workshop": "Työpajan"
   },
   "resultsView": {
     "allSignupResults": "Ilmoittautumistilanne ja pelaajat",
