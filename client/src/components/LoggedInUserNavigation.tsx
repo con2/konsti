@@ -15,7 +15,7 @@ export const LoggedInUserNavigation = (props: {
   return (
     <StyledRoutes>
       <RouterLink onClick={props.onSelect} to="/games">
-        {t("pages.allGames")}
+        {t("pages.programList")}
       </RouterLink>
 
       {isUser(userGroup) && (
