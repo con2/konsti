@@ -2267,7 +2267,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/register@npm:7.21.0, @babel/register@npm:^7.18.9":
+"@babel/register@npm:^7.18.9":
   version: 7.21.0
   resolution: "@babel/register@npm:7.21.0"
   dependencies:
@@ -9766,7 +9766,6 @@ __metadata:
     "@babel/preset-env": 7.20.2
     "@babel/preset-react": 7.18.6
     "@babel/preset-typescript": 7.21.0
-    "@babel/register": 7.21.0
     "@sentry/tracing": 7.42.0
     "@types/jest": 29.4.0
     "@types/lodash": 4.14.191
