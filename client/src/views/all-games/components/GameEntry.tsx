@@ -119,23 +119,16 @@ export const GameEntry = ({
             <RowItem>
               {game.minAttendance === game.maxAttendance &&
                 _.capitalize(
-                  t(`signup.attendeeCount`, {
-                    ATTENDEE_TYPE: t(
-                      `attendeeTypePlural.${getAttendeeType(game.programType)}`
-                    ),
-                    MAX_ATTENDANCE: game.maxAttendance,
-                  })
+                  `${t(
+                    `attendeeTypePlural.${getAttendeeType(game.programType)}`
+                  )} ${game.maxAttendance}`
                 )}
 
               {game.minAttendance !== game.maxAttendance &&
                 _.capitalize(
-                  t(`signup.attendeeRange`, {
-                    ATTENDEE_TYPE: t(
-                      `attendeeTypePlural.${getAttendeeType(game.programType)}`
-                    ),
-                    MIN_ATTENDANCE: game.minAttendance,
-                    MAX_ATTENDANCE: game.maxAttendance,
-                  })
+                  `${t(
+                    `attendeeTypePlural.${getAttendeeType(game.programType)}`
+                  )} ${game.minAttendance} - ${game.maxAttendance}`
                 )}
             </RowItem>
 

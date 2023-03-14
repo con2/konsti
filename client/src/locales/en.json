@@ -283,8 +283,6 @@
     "confirmCancellation": "Confirm cancellation",
     "staySignedUp": "Stay signed up",
     "expectedDuration": "Duration {{EXPECTED_DURATION}}",
-    "attendeeCount": "{{ATTENDEE_TYPE}} {{MAX_ATTENDANCE}}",
-    "attendeeRange": "{{ATTENDEE_TYPE}} {{MIN_ATTENDANCE}} - {{MAX_ATTENDANCE}}",
     "signupOpens": "Signup opens",
     "lotterySignupOpens": "Lottery signup opens",
     "signupAlwaysOpen": "Signup always open",
