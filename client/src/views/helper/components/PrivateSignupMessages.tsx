@@ -20,6 +20,9 @@ export const PrivateSignupMessages = (): ReactElement => {
     (state) => state.admin.signupQuestions
   );
   const signupMessages = useAppSelector((state) => state.admin.signupMessages);
+  const activeProgramType = useAppSelector(
+    (state) => state.admin.activeProgramType
+  );
 
   const privateSignupQuestions = signupQuestions.filter(
     (signupQuestion) => signupQuestion.private
@@ -79,7 +82,9 @@ export const PrivateSignupMessages = (): ReactElement => {
       <ControlledInput
         value={searchTerm}
         onChange={(event) => setSearchTerm(event.target.value)}
-        placeholder={t("findSignupOrGame")}
+        placeholder={t("findTitleOrUsername", {
+          PROGRAM_TYPE: t(`programTypeGenetive.${activeProgramType}`),
+        })}
         resetValue={() => setSearchTerm("")}
       />
 
