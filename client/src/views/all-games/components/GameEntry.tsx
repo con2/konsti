@@ -2,7 +2,7 @@ import React, { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { capitalize } from "lodash";
+import _ from "lodash";
 import { updateFavorite, UpdateFavoriteOpts } from "client/utils/favorite";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
@@ -118,7 +118,7 @@ export const GameEntry = ({
 
             <RowItem>
               {game.minAttendance === game.maxAttendance &&
-                capitalize(
+                _.capitalize(
                   t(`signup.attendeeCount`, {
                     ATTENDEE_TYPE: t(
                       `attendeeTypePlural.${getAttendeeType(game.programType)}`
@@ -128,7 +128,7 @@ export const GameEntry = ({
                 )}
 
               {game.minAttendance !== game.maxAttendance &&
-                capitalize(
+                _.capitalize(
                   t(`signup.attendeeRange`, {
                     ATTENDEE_TYPE: t(
                       `attendeeTypePlural.${getAttendeeType(game.programType)}`

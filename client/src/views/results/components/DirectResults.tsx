@@ -1,4 +1,4 @@
-import _, { capitalize } from "lodash";
+import _ from "lodash";
 import React, { ReactElement, useEffect, useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
@@ -167,7 +167,7 @@ export const DirectResults = (): ReactElement => {
                           }}
                         >
                           <span>
-                            {capitalize(
+                            {_.capitalize(
                               t(
                                 `attendeeTypePlural.${getAttendeeType(
                                   game.programType
