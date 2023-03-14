@@ -2,6 +2,7 @@ import React, { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { capitalize } from "lodash";
 import { updateFavorite, UpdateFavoriteOpts } from "client/utils/favorite";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
@@ -117,21 +118,25 @@ export const GameEntry = ({
 
             <RowItem>
               {game.minAttendance === game.maxAttendance &&
-                t(`signup.attendeeCount`, {
-                  ATTENDEE_TYPE: t(
-                    `attendeeTypePlural.${getAttendeeType(game.programType)}`
-                  ),
-                  MAX_ATTENDANCE: game.maxAttendance,
-                })}
+                capitalize(
+                  t(`signup.attendeeCount`, {
+                    ATTENDEE_TYPE: t(
+                      `attendeeTypePlural.${getAttendeeType(game.programType)}`
+                    ),
+                    MAX_ATTENDANCE: game.maxAttendance,
+                  })
+                )}
 
               {game.minAttendance !== game.maxAttendance &&
-                t(`signup.attendeeRange`, {
-                  ATTENDEE_TYPE: t(
-                    `attendeeTypePlural.${getAttendeeType(game.programType)}`
-                  ),
-                  MIN_ATTENDANCE: game.minAttendance,
-                  MAX_ATTENDANCE: game.maxAttendance,
-                })}
+                capitalize(
+                  t(`signup.attendeeRange`, {
+                    ATTENDEE_TYPE: t(
+                      `attendeeTypePlural.${getAttendeeType(game.programType)}`
+                    ),
+                    MIN_ATTENDANCE: game.minAttendance,
+                    MAX_ATTENDANCE: game.maxAttendance,
+                  })
+                )}
             </RowItem>
 
             <RowItem>

@@ -45,7 +45,7 @@
   "players": "Players",
   "player": "Player",
   "find": "Find",
-  "findSignupOrGame": "Game title or username",
+  "findTitleOrUsername": "{{PROGRAM_TYPE}} title or username",
   "searchWithTitle": "{{PROGRAM_TYPE}} title",
   "searchWithTitleOrSystem": "{{PROGRAM_TYPE}} title or system",
   "language": {
@@ -63,7 +63,7 @@
     "myGames": "My Games",
     "programList": "Program List",
     "admin": "Admin",
-    "results": "All Signup Results",
+    "results": "Signup Results",
     "group": "Group"
   },
   "gameInfo": {
@@ -277,7 +277,7 @@
     "cancel": "Cancel",
     "alreadySignedToGame": "You already signed to game",
     "cannotSignupMoreThanOneGame": "You cannot sign up to other games starting at the same time.",
-    "signupCount": "{{PLAYERS}} / {{MAX_ATTENDANCE}} participants",
+    "signupCount": "{{PLAYERS}} / {{MAX_ATTENDANCE}} signed up",
     "playerNeeded": "Need {{COUNT}} players!",
     "gameIsFull": "Game is full",
     "confirmCancellation": "Confirm cancellation",
@@ -295,8 +295,8 @@
     "entryFeeInfo": "I understand that participation in the workshop costs €{{ENTRY_FEE}}."
   },
   "attendeeTypePlural": {
-    "player": "Players",
-    "participant": "Participants"
+    "player": "players",
+    "participant": "participants"
   },
   "signupProgramType": {
     "tabletopRPG": "game",
@@ -317,10 +317,9 @@
     "workshop": "Workshop"
   },
   "resultsView": {
-    "allSignupResults": "Signup overview and players",
+    "allSignupResults": "Signup Results",
     "confirm": "Confirm",
-    "noSignups": "No signed up players",
-    "players": "Players",
+    "noSignups": "No signed up {{ATTENDEE_TYPE}}",
     "noResults": "No signup results available yet",
     "signupResultsFor": "Signup results for games starting at"
   },

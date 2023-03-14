@@ -1,4 +1,4 @@
-import _ from "lodash";
+import _, { capitalize } from "lodash";
 import React, { ReactElement, useEffect, useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
@@ -14,11 +14,15 @@ import { ControlledInput } from "client/components/ControlledInput";
 import { MULTIPLE_WHITESPACES_REGEX } from "client/views/all-games/AllGamesView";
 import { ButtonGroup } from "client/components/ButtonGroup";
 import { Tags } from "client/components/Tags";
+import { getAttendeeType } from "client/utils/getAttendeeType";
 
 export const DirectResults = (): ReactElement => {
   const { t } = useTranslation();
 
   const activeGames = useAppSelector(selectActiveGames);
+  const activeProgramType = useAppSelector(
+    (state) => state.admin.activeProgramType
+  );
   const signups = useAppSelector((state) => state.allGames.signups);
   const signupQuestions = useAppSelector(
     (state) => state.admin.signupQuestions
@@ -92,7 +96,9 @@ export const DirectResults = (): ReactElement => {
       <ControlledInput
         value={searchTerm}
         onChange={(event) => setSearchTerm(event.target.value)}
-        placeholder={t("findSignupOrGame")}
+        placeholder={t("findTitleOrUsername", {
+          PROGRAM_TYPE: t(`programTypeGenetive.${activeProgramType}`),
+        })}
         resetValue={() => setSearchTerm("")}
       />
       <ButtonGroup>
@@ -145,7 +151,7 @@ export const DirectResults = (): ReactElement => {
                   return (
                     <div key={game.gameId}>
                       <ResultTitle key={game.gameId}>{game.title} </ResultTitle>
-                      <Tags tags={[t(`programType.${game.programType}`)]} />
+                      <Tags tags={[t(`programType.${activeProgramType}`)]} />
                       <PlayerContainer>
                         <PlayerCount
                           onClick={() => {
@@ -161,8 +167,14 @@ export const DirectResults = (): ReactElement => {
                           }}
                         >
                           <span>
-                            {t("resultsView.players")}: {users.length}/
-                            {game.maxAttendance}
+                            {capitalize(
+                              t(
+                                `attendeeTypePlural.${getAttendeeType(
+                                  game.programType
+                                )}`
+                              )
+                            )}
+                            : {users.length}/{game.maxAttendance}
                             {!!signupQuestion &&
                               (signupMessagesVisible ? (
                                 <CommentIcon
@@ -208,7 +220,15 @@ export const DirectResults = (): ReactElement => {
                               </SignupQuestion>
                             )}
                             {users.length === 0 ? (
-                              <p>{t("resultsView.noSignups")}</p>
+                              <p>
+                                {t("resultsView.noSignups", {
+                                  ATTENDEE_TYPE: t(
+                                    `attendeeTypePlural.${getAttendeeType(
+                                      activeProgramType
+                                    )}`
+                                  ),
+                                })}
+                              </p>
                             ) : (
                               users.map((user) => (
                                 <p key={user.username}>

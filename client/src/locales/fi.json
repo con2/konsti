@@ -45,7 +45,7 @@
   "players": "Pelaajat",
   "player": "Pelaaja",
   "find": "Etsi",
-  "findSignupOrGame": "Pelin nimi tai käyttäjänimi",
+  "findTitleOrUsername": "{{PROGRAM_TYPE}} nimi tai käyttäjänimi",
   "searchWithTitle": "{{PROGRAM_TYPE}} nimi",
   "searchWithTitleOrSystem": "{{PROGRAM_TYPE}} nimi tai järjestelmä",
   "language": {
@@ -295,8 +295,8 @@
     "entryFeeInfo": "Ymmärrän, että työpajaan osallistuminen maksaa {{ENTRY_FEE}} €."
   },
   "attendeeTypePlural": {
-    "player": "Pelaajia",
-    "participant": "Osallistujia"
+    "player": "pelaajia",
+    "participant": "osallistujia"
   },
   "signupProgramType": {
     "tabletopRPG": "peliin",
@@ -317,10 +317,9 @@
     "workshop": "Työpajan"
   },
   "resultsView": {
-    "allSignupResults": "Ilmoittautumistilanne ja pelaajat",
+    "allSignupResults": "Ilmoittautumistulokset",
     "confirm": "Vahvista",
-    "noSignups": "Ei ilmoittautuneita pelaajia",
-    "players": "Pelaajia",
+    "noSignups": "Ei ilmoittautuneita {{ATTENDEE_TYPE}}",
     "noResults": "Ei ilmoittautumistuloksia saatavilla vielä",
     "signupResultsFor": "Ilmoittautumisen tulokset peleille jotka alkavat"
   },
