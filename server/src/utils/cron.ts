@@ -35,6 +35,8 @@ export const stopCronJobs = (): void => {
   Object.values(jobList).map((job) => {
     schedule.cancelJob(job.name);
   });
+
+  logger.info("CronJobs stopped");
 };
 
 const autoUpdateGames = async (): Promise<void> => {
