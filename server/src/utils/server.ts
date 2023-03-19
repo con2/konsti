@@ -139,5 +139,4 @@ export const closeServer = async (
   }
 
   logger.info("Shutdown completed, bye");
-  process.kill(process.pid, signal);
 };
