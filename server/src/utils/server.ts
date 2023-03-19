@@ -96,7 +96,7 @@ export const startServer = async ({
 
   let server: Server;
 
-  // Use https for running tests in CI
+  // Use https for running Playwright tests in CI
   if (process.env.SETTINGS === "CI") {
     const privateKey = fs.readFileSync(
       path.join(__dirname, "../../dev-cert", "server.key"),
@@ -123,9 +123,14 @@ export const startServer = async ({
   return runningServer;
 };
 
-export const closeServer = async (server: Server): Promise<void> => {
+export const closeServer = async (
+  server: Server,
+  signal?: string
+): Promise<void> => {
+  logger.info(`Received signal to terminate: ${signal}`);
   stopCronJobs();
   server.close();
+  logger.info("Server closed");
 
   try {
     await db.gracefulExit();
@@ -133,5 +138,6 @@ export const closeServer = async (server: Server): Promise<void> => {
     logger.error(error);
   }
 
-  logger.info("Server closed");
+  logger.info("Shutdown completed, bye");
+  process.kill(process.pid, signal);
 };
