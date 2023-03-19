@@ -11,13 +11,13 @@ const startApp = async (): Promise<void> => {
     port: config.port,
   });
 
-  process.on("SIGINT", () => {
-    closeServer(server).catch((error) => {
+  process.once("SIGINT", (signal: string) => {
+    closeServer(server, signal).catch((error) => {
       logger.error(error);
     });
   });
-  process.on("SIGTERM", () => {
-    closeServer(server).catch((error) => {
+  process.once("SIGTERM", (signal: string) => {
+    closeServer(server, signal).catch((error) => {
       logger.error(error);
     });
   });
