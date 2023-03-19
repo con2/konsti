@@ -58,11 +58,11 @@
     "ncp": "2.0.0",
     "rimraf": "4.4.0",
     "tsconfig-paths": "4.1.2",
-    "typescript": "4.9.5",
+    "typescript": "5.0.2",
     "zod": "3.21.4"
   },
   "devDependencies": {
-    "@types/jest": "29.4.1",
+    "@types/jest": "29.5.0",
     "@types/lodash": "4.14.191",
     "@typescript-eslint/eslint-plugin": "5.55.0",
     "@typescript-eslint/parser": "5.55.0",
@@ -95,7 +95,7 @@
   "engines": {
     "node": ">=18.13.0"
   },
-  "packageManager": "yarn@3.4.1",
+  "packageManager": "yarn@3.5.0",
   "resolutions": {
     "babel-plugin-lodash/@babel/types": "7.20.7"
   }
