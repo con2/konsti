@@ -8,6 +8,7 @@ import aboutKonstiEn from "client/markdown/AboutKonstiEn.md";
 import konstiFaqFi from "client/markdown/KonstiFaqFi.md";
 import konstiFaqEn from "client/markdown/KonstiFaqEn.md";
 import { ButtonGroup } from "client/components/ButtonGroup";
+import { Tabs } from "client/components/Tabs";
 
 enum AboutSection {
   FAQ = "faq",
@@ -20,6 +21,15 @@ export const AboutView = (): ReactElement => {
   const [selectedSection, setSelectedSection] = useState<AboutSection>(
     AboutSection.GENERAL
   );
+
+  /*
+        <Tabs
+        tabContents={[
+          { headerText: "test", path: "foo", content: Foo },
+          { headerText: "test2", path: "bar", content: Bar },
+        ]}
+      />
+   */
 
   return (
     <div>
