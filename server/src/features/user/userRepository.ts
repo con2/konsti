@@ -61,6 +61,12 @@ export const updateUserByUsername = async (user: User): Promise<User> => {
     throw error;
   }
 
+  if (!response) {
+    const error = `MongoDB: Error updating user ${user.username}: user not found`;
+    logger.error(error);
+    throw new Error(error);
+  }
+
   logger.debug(`MongoDB: User "${user.username}" updated`);
   return response;
 };
