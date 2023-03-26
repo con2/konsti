@@ -5,14 +5,14 @@
     "logout": "Logout",
     "login": "Login",
     "register": "Register",
-    "updateDb": "Update games database",
-    "assignPlayers": "Assign players",
+    "updateDb": "Update program database",
+    "assignAttendees": "Assign players",
     "signup": "Save",
     "cancelSignup": "Cancel signup",
     "back": "Back",
     "favorite": "Favorite",
-    "hideGame": "Hide game",
-    "showGame": "Unhide game",
+    "hideProgramItem": "Hide program item",
+    "showProgramItem": "Unhide program item",
     "saveTime": "Save active time",
     "sendFeedback": "Send feedback",
     "feedbackSent": "Feedback sent",
@@ -60,23 +60,21 @@
     "tooShort": "Value is too short, {{length}} characters required"
   },
   "pages": {
-    "myGames": "My Games",
+    "myProgram": "My Program",
     "programList": "Program List",
     "admin": "Admin",
     "results": "Signup Results",
     "group": "Group"
   },
   "gameInfo": {
-    "title": "Title",
     "gameStyle": "Game style",
     "runTime": "Time",
     "description": "Description",
-    "location": "Game room",
-    "numberOfPlayers": "Number of players",
+    "location": "Location",
     "duration": "length",
     "tags": "Tags",
     "time": "Starting time",
-    "gamesystem": "Game system",
+    "gameSystem": "Game system",
     "genres": "Genres",
     "organiser": "Organiser",
     "shortDescription": "Short description",
@@ -84,11 +82,11 @@
     "revolvingDoorDescription": "You can join this game at any time if there are free seats",
     "programType": "Program type",
     "showMore": "Show more",
-    "showMoreAriaLabel": "Show more on game",
+    "showMoreAriaLabel": "Show more on program item",
     "showLess": "Show less",
-    "showLessAriaLabel": "Show less on game",
+    "showLessAriaLabel": "Show less on program item",
     "contentWarnings": "Content warnings",
-    "otherAuthor": "Game designer",
+    "otherAuthor": "Designer",
     "accessibility": "Accessibility",
     "otherInaccessibility": "Other inaccessibility",
     "adminActions": "Admin actions"
@@ -152,10 +150,10 @@
     "registration": "Please register user account"
   },
   "user": "User",
-  "favoritedGames": "Favorited games",
+  "favoritedProgramItems": "Favorites",
   "lotterySignedGames": "Lottery signups",
   "enteredGames": "Signups",
-  "hiddenGames": "Hidden games",
+  "hiddenProgramItems": "Hidden program items",
   "error": {
     "usernameTaken": "Username already taken",
     "invalidSerial": "Invalid code",
@@ -168,9 +166,9 @@
   "hidePrivacyPolicy": "Hide privacy policy",
   "registrationSerialHelp": "Get registration code from Larp/RPG Desk or Gaming Desk",
   "noSignedGames": "No selected games",
-  "noFavoritedGames": "No favorited games",
+  "noFavoritedProgramItems": "No favorites",
   "noEnteredGames": "No signups",
-  "noHiddenGames": "No hidden games",
+  "noHiddenProgramItems": "No hidden program items",
   "noSignupQuestions": "No signup questions",
   "signupQuestions": "Signup questions",
   "noOpenSignups": "No open signups",
@@ -188,18 +186,13 @@
     "signupNotOpenYet": "Signup not open yet"
   },
   "signupUnsavedChanges": "Unsaved changes",
-  "signupResultHint": "Sign up results are visible on 'My Games' page at",
   "closingMessage": "Konsti is closed and will open closer to the next event",
-  "signupView": {
-    "signupOpenGames": "Open games",
-    "selectedGames": "Selected games"
-  },
   "details": "details",
   "gameLimitWarning": "Only three selected games allowed",
   "noLotterySignupResult": "You didn't get into a game during lottery",
-  "invalidGameId": "Game not found. Invalid game ID",
+  "invalidProgramItemId": "Program item not found, invalid ID",
   "feedbackTitle": "Feedback",
-  "feedbackInstruction": "Did you enjoy the game? Send feedback to the game organizer! They will receive it after the event.",
+  "feedbackInstruction": "Did you enjoy the {{PROGRAM_TYPE}}? Send feedback to the organizer! They will receive it after the event.",
   "noProgramItemsAvailable": "No games found",
   "noGamesInDatabase": "No games in database",
   "upcoming": "Upcoming",
@@ -207,10 +200,6 @@
   "allProgramItems": "All {{PROGRAM_TYPE}}",
   "lastStartedAndUpcoming": "Last started and upcoming",
   "chooseTag": "Choose tag",
-  "high-popularity": "More interested players than seats",
-  "medium-popularity": "Enough players to run",
-  "low-popularity": "More players needed",
-  "playerStatus": "Player status",
   "revolvingDoor": "Revolving door",
   "revolvingDoorInstruction": "You can join revolving door games at any time if there are free seats in the table",
   "currentlyRunningRevolvingDoor": "Currently running revolving door games",
@@ -239,7 +228,7 @@
     "youAreInGroup": "You are in a group",
     "groupMembers": "Group members",
     "groupCreator": "group creator",
-    "groupMemberInfo": "Group creator will sign up to the lottery for the whole group. See selected games from \"My Games\" page.",
+    "groupMemberInfo": "Group creator will sign up to the lottery for the whole group. See selected games from \"My Program\" page.",
     "groupCreatorInfo": "You can sign up to lottery for the whole group. Please make sure that the group is not too big for the selected games. Group creator cannot leave the group, but can close it. This will remove all members from the group.",
     "joiningGroupWillCancelLotterySignups": "Joining a group will cancel all lottery signups you may have done before",
     "groupLotterySignupGuide": "Group can signup to same games for lottery.",
@@ -275,10 +264,10 @@
     "gamePriority": "Game priority for me is",
     "confirm": "Confirm",
     "cancel": "Cancel",
-    "alreadySignedToGame": "You already signed to game",
-    "cannotSignupMoreThanOneGame": "You cannot sign up to other games starting at the same time.",
+    "alreadySignedToGame": "You already signed to {{PROGRAM_TYPE}}",
+    "cannotSignupMoreThanOneGame": "You cannot sign up to other {{PROGRAM_TYPE}} starting at the same time.",
     "signupCount": "{{PLAYERS}} / {{MAX_ATTENDANCE}} signed up",
-    "playerNeeded": "Need {{COUNT}} players!",
+    "attendeesNeeded": "Need {{COUNT}} {{ATTENDEE_TYPE}}!",
     "gameIsFull": "Game is full",
     "confirmCancellation": "Confirm cancellation",
     "staySignedUp": "Stay signed up",
@@ -292,7 +281,15 @@
     "entryFee": "Entry fee €{{ENTRY_FEE}}",
     "entryFeeInfo": "I understand that participation in the workshop costs €{{ENTRY_FEE}}."
   },
+  "attendeeType": {
+    "player": "player",
+    "participant": "participant"
+  },
   "attendeeTypePlural": {
+    "player": "players",
+    "participant": "participants"
+  },
+  "attendeeTypePartitive": {
     "player": "players",
     "participant": "participants"
   },
@@ -314,6 +311,18 @@
     "tournament": "Tournament",
     "workshop": "Workshop"
   },
+  "programTypeElative": {
+    "tabletopRPG": "game",
+    "larp": "larp",
+    "tournament": "tournament",
+    "workshop": "workshops"
+  },
+  "programTypeIllative": {
+    "tabletopRPG": "games",
+    "larp": "larps",
+    "tournament": "tournaments",
+    "workshop": "workshops"
+  },
   "resultsView": {
     "allSignupResults": "Signup Results",
     "confirm": "Confirm",
@@ -328,7 +337,7 @@
     "serial": "Save this code for recovering your password:",
     "info": "This message is shown to you only when you first login. You can also find code from the navigation."
   },
-  "myGamesView": {
+  "myProgramView": {
     "yourAnswer": "Your answer to question",
     "changePassword": "Change password"
   },
@@ -394,8 +403,8 @@
     "deleteFavorite": "Delete favorite",
     "openChangePassword": "Open change password",
     "closeChangePassword": "Close change password",
-    "openPlayerList": "Open player list",
-    "closePlayerList": "Close player list",
+    "openAttendeeList": "Open {{ATTENDEE_TYPE}} list",
+    "closeAttendeeList": "Close {{ATTENDEE_TYPE}} list",
     "showPassword": "Show password",
     "hidePassword": "Hide password"
   },

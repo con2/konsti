@@ -26,7 +26,7 @@ In addition to the registration code, you need to register a new account is an u
 
 At the top of the page on the left is a new selector that lets you choose which types of games you want to browse: tabletop role-playing games, larps or game tournaments.
 
-Please note that selecting a programme type affects not only the list of games to browse on the main view of the app, but also what games are visible when browsing the games you have signed up for or favorited in the My Games section: only games from one programme type are visible at once.
+Please note that selecting a programme type affects not only the list of games to browse on the main view of the app, but also what games are visible when browsing the games you have signed up for or favorited in the My Program section: only games from one programme type are visible at once.
 
 ### Browsing games in the Konsti app
 
@@ -38,13 +38,13 @@ At the bottom of the info card of each game there is a Read more link. Clicking 
 
 ### Signing up for games
 
-If the sign-up period for a game is ongoing, a Sign-up or Lottery sign-up button can be seen at the bottom of the game's info card. As long as the game has not yet started, you can cancel your sign-up for a game either from the game list or from the My Games section in the side navigation bar by pressing the Cancel sign-up button.
+If the sign-up period for a game is ongoing, a Sign-up or Lottery sign-up button can be seen at the bottom of the game's info card. As long as the game has not yet started, you can cancel your sign-up for a game either from the game list or from the My Program section in the side navigation bar by pressing the Cancel sign-up button.
 
 Different types of game programme have slightly different sign-up processes due to the nature of their games.
 
 ### Favorited games
 
-Adding games and tournaments to your favorites in Konsti is a great way to keep track of games that you find interesting: you can browse the games you have favorited later through the My Games section in the navigation sidebar. You can add games to favorites from the game list by clicking the heart icon located in the upper right corner of the game's info card.
+Adding games and tournaments to your favorites in Konsti is a great way to keep track of games that you find interesting: you can browse the games you have favorited later through the My Program section in the navigation sidebar. You can add games to favorites from the game list by clicking the heart icon located in the upper right corner of the game's info card.
 
 ## How to sign up for role-playing games?
 

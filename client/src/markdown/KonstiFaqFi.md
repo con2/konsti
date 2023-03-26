@@ -26,7 +26,7 @@ Pelitiskiltä ja Larp/Rope-tiskiltä on mahdollista saada Konstiin rekisteröity
 
 ## En löydä peliä / turnausta X Konstista?
 
-Olethan tarkistanut, että valittuna on etsimääsi peliä vastaava ohjelmatyyppi? Ohjelmatyypin valinta vaikuttaa paitsi pelilistaan, mutta myös esimerkiksi omien ilmoittautumisten pelilistaan Omat pelit -osiossa. Niin ikään kannattaa tarkistaa myös, mikä tägi on valittuna.
+Olethan tarkistanut, että valittuna on etsimääsi peliä vastaava ohjelmatyyppi? Ohjelmatyypin valinta vaikuttaa paitsi pelilistaan, mutta myös esimerkiksi omien ilmoittautumisten pelilistaan Oma ohjelmani -osiossa. Niin ikään kannattaa tarkistaa myös, mikä tägi on valittuna.
 
 Jos peliä ei kuitenkaan millään löydy Konstista, voi myös olla, ettei kyseiseen roolipeliin, larppiin tai turnaukseen ilmoittauduta Konstin kautta, vaan jotain muuta kautta. Epäselvissä tapauksissa kannattaa varmistaa asia kysymällä neuvoa Pelitiskiltä tai Larp/Rope-tiskiltä, niin ilmoittautumistapa selviää!
 

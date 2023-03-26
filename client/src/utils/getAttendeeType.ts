@@ -5,8 +5,10 @@ enum AttendeeType {
   Participant = "participant",
 }
 
+const attendeeTypeParticipant = [ProgramType.TOURNAMENT, ProgramType.WORKSHOP];
+
 export const getAttendeeType = (programType: ProgramType): AttendeeType => {
-  if (programType === ProgramType.WORKSHOP) {
+  if (attendeeTypeParticipant.includes(programType)) {
     return AttendeeType.Participant;
   }
   return AttendeeType.Player;

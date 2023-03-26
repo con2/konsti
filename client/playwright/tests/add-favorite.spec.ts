@@ -29,7 +29,7 @@ test("Add favorite", async ({ page, request }) => {
 
   await firstGame.locator("data-testid=add-favorite-button").click();
 
-  // Go to My Games and check favorited game title
+  // Go to My Program and check favorited game title
   await page.click("data-testid=navigation-icon");
   await page.click("data-testid=my-games-page-link");
 

@@ -26,7 +26,7 @@ Rekisteröintikoodin lisäksi tarvitset käyttäjänimen ja salasanan. Rekister�
 
 Sivun yläreunassa on valikko, josta voit valita minkä ohjelmatyypin pelejä haluat selata: pöytäroolipelit, larpit tai turnaukset.
 
-Huomaa, että ohjelmatyypin valinta vaikuttaa näkymään myös Omat pelit -osiossa suosikkeja ja ilmoittautumisia tarkasteltaessa: voin nähdä kerrallaan siis vain yhden ohjelmatyypin pelit.
+Huomaa, että ohjelmatyypin valinta vaikuttaa näkymään myös Oma ohjelmani -osiossa suosikkeja ja ilmoittautumisia tarkasteltaessa: voin nähdä kerrallaan siis vain yhden ohjelmatyypin pelit.
 
 ### Pelien selaaminen Konstissa
 
@@ -38,13 +38,13 @@ Kunkin pelin infolaatikossa on myös Lue lisää -linkki, jota klikkaamalla pä�
 
 ### Ilmoittautuminen
 
-Jos kyseisen pelin ilmoittautumisaika on käynnissä, näkyy pelin tietojen alla Ilmoittaudu -painike. Jo tehdyn ilmoittautumisen voi halutessaan myös perua joko suoraan pelilistasta tai hampurilaisvalikon Omat pelit -näkymästä painamalla Peru ilmoittautuminen -painiketta.
+Jos kyseisen pelin ilmoittautumisaika on käynnissä, näkyy pelin tietojen alla Ilmoittaudu -painike. Jo tehdyn ilmoittautumisen voi halutessaan myös perua joko suoraan pelilistasta tai hampurilaisvalikon Oma ohjelmani -näkymästä painamalla Peru ilmoittautuminen -painiketta.
 
 Eri ohjelmatyypeillä on käytössä hieman erilaisia ilmoittautumiskäytäntöjä näiden erityispiirteistä johtuen.
 
 ### Suosikkipelit
 
-Pelin lisääminen suosikkeihin on kätevä tapa merkitä muistiin itseä kiinnostavia pelejä ja ne on helppo löytää myöhemmin hampurilaisvalikossa sijaitsevan Omat pelit -osion kautta. Voit lisätä pelejä suosikkeihin pelilistasta kunkin pelin infolaatikon oikeassa yläkulmassa sijaitsevan sydän-painikkeen avulla.
+Pelin lisääminen suosikkeihin on kätevä tapa merkitä muistiin itseä kiinnostavia pelejä ja ne on helppo löytää myöhemmin hampurilaisvalikossa sijaitsevan Oma ohjelmani -osion kautta. Voit lisätä pelejä suosikkeihin pelilistasta kunkin pelin infolaatikon oikeassa yläkulmassa sijaitsevan sydän-painikkeen avulla.
 
 ## Miten ilmoittaudun roolipeleihin?
 

@@ -4,7 +4,10 @@ import dayjs from "dayjs";
 import styled from "styled-components";
 import { Game } from "shared/typings/models/game";
 import { SignupForm } from "./SignupForm";
-import { submitPostSignedGames } from "client/views/my-games/myGamesThunks";
+import {
+  PostSignedGamesErrorMessage,
+  submitPostSignedGames,
+} from "client/views/my-games/myGamesThunks";
 import { SelectedGame } from "shared/typings/models/user";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { isAlreadySigned } from "./allGamesUtils";
@@ -24,6 +27,10 @@ interface Props {
   signedGames: readonly SelectedGame[];
 }
 
+enum ClientError {
+  GROUP_TOO_BIG = "group.groupTooBigWarning",
+}
+
 export const AlgorithmSignupForm: FC<Props> = ({
   game,
   startTime,
@@ -41,7 +48,9 @@ export const AlgorithmSignupForm: FC<Props> = ({
 
   const [signupFormOpen, setSignupFormOpen] = useState(false);
   const [cancelSignupFormOpen, setCancelSignupFormOpen] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState<
+    ClientError | PostSignedGamesErrorMessage | null
+  >(null);
 
   const removeSignedGame = async (gameToRemove: Game): Promise<void> => {
     const newSignupData = signedGames.filter(
@@ -57,7 +66,7 @@ export const AlgorithmSignupForm: FC<Props> = ({
     );
 
     if (error) {
-      setErrorMessage(t(error));
+      setErrorMessage(error);
     } else {
       setCancelSignupFormOpen(false);
       setSignupFormOpen(false);
@@ -109,7 +118,7 @@ export const AlgorithmSignupForm: FC<Props> = ({
               <ButtonWithMargin
                 onClick={() => {
                   if (groupMembers.length > game.maxAttendance) {
-                    setErrorMessage(t("group.groupTooBigWarning"));
+                    setErrorMessage(ClientError.GROUP_TOO_BIG);
                   } else {
                     setSignupFormOpen(true);
                   }
@@ -150,10 +159,12 @@ export const AlgorithmSignupForm: FC<Props> = ({
         </>
       )}
 
-      <ErrorMessage
-        message={errorMessage}
-        closeError={() => setErrorMessage("")}
-      />
+      {errorMessage && (
+        <ErrorMessage
+          message={t(errorMessage)}
+          closeError={() => setErrorMessage(null)}
+        />
+      )}
 
       {signupFormOpen && !alreadySignedToGame && (
         <SignupForm
