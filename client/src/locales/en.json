@@ -153,7 +153,7 @@
   "favoritedPrograms": "Favorites",
   "lotterySignedGames": "Lottery signups",
   "enteredGames": "Signups",
-  "hiddenPrograms": "Hidden programs",
+  "hiddenProgramItems": "Hidden program items",
   "error": {
     "usernameTaken": "Username already taken",
     "invalidSerial": "Invalid code",
@@ -168,7 +168,7 @@
   "noSignedGames": "No selected games",
   "noFavorites": "No favorites",
   "noEnteredGames": "No signups",
-  "noHiddenPrograms": "No hidden programs",
+  "noHiddenProgramItems": "No hidden program items",
   "noSignupQuestions": "No signup questions",
   "signupQuestions": "Signup questions",
   "noOpenSignups": "No open signups",

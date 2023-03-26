@@ -153,7 +153,7 @@
   "favoritedPrograms": "Suosikit",
   "lotterySignedGames": "Arvontaan ilmoittautumiset",
   "enteredGames": "Ilmoittautumiset",
-  "hiddenPrograms": "Piilotetut ohjelmat",
+  "hiddenProgramItems": "Piilotetut ohjelmanumerot",
   "error": {
     "usernameTaken": "Käyttäjänimi on jo olemassa",
     "invalidSerial": "Epäkelpo rekisteröintikoodi",
@@ -168,7 +168,7 @@
   "noSignedGames": "Ei valittuja pelejä",
   "noFavorites": "Ei suosikkeja",
   "noEnteredGames": "Ei ilmoittautumisia",
-  "noHiddenPrograms": "Ei piilotettuja ohjelmia",
+  "noHiddenProgramItems": "Ei piilotettuja ohjelmanumeroita",
   "noSignupQuestions": "Ei ilmoittautumisten lisätietokysymystä",
   "signupQuestions": "Ilmoittautumisen lisätietokysymykset",
   "noOpenSignups": "Ei avoimia ilmoittautumisia",
