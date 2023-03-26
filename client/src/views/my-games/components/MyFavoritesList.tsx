@@ -22,9 +22,11 @@ export const MyFavoritesList = ({ favoritedGames }: Props): ReactElement => {
 
   return (
     <div data-testid="favorited-games-list">
-      <h3>{t("favoritedPrograms")}</h3>
+      <h3>{t("favoritedProgramItems")}</h3>
       <MyFavoritesGames>
-        {favoritedGames.length === 0 && <span>{t("noFavorites")}</span>}
+        {favoritedGames.length === 0 && (
+          <span>{t("noFavoritedProgramItems")}</span>
+        )}
         {favoritedGames.length !== 0 && (
           <GamesByStartTimes games={sortedGames} startTimes={startTimes} />
         )}
