@@ -148,8 +148,11 @@ export const GameEntry = ({
                 })}
               </PlayerCount>
               <PlayersNeeded visible={players < game.minAttendance}>
-                {t("signup.playerNeeded", {
+                {t("signup.attendeesNeeded", {
                   COUNT: game.minAttendance - players,
+                  ATTENDEE_TYPE: t(
+                    `attendeeTypePartitive.${getAttendeeType(game.programType)}`
+                  ),
                 })}
               </PlayersNeeded>
             </>

@@ -1,7 +1,6 @@
 import React, { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import styled, { css } from "styled-components";
-import { isNil } from "lodash";
 import { timeFormatter } from "client/utils/timeFormatter";
 import { Game, GameStyle, Genre } from "shared/typings/models/game";
 
@@ -105,6 +104,15 @@ export const GameInfo = ({ game }: Props): ReactElement => {
         </GameDetailsRow>
       )}
 
+      {game.location && (
+        <GameDetailsRow>
+          <GameDetailsTitle twoColumns={true}>
+            {t("gameInfo.location")}
+          </GameDetailsTitle>
+          <GameDetailsValue>{game.location}</GameDetailsValue>
+        </GameDetailsRow>
+      )}
+
       {game.programType && (
         <GameDetailsRow>
           <GameDetailsTitle twoColumns={true}>
@@ -149,7 +157,7 @@ export const GameInfo = ({ game }: Props): ReactElement => {
             <GameDetailsTitle>{t("gameInfo.description")}</GameDetailsTitle>
           </GameDetailsRow>
           <GameDetailsRow gap={true}>
-            <span>{game.description}</span>
+            <Description>{game.description}</Description>
           </GameDetailsRow>
         </>
       )}
@@ -184,7 +192,7 @@ export const GameInfo = ({ game }: Props): ReactElement => {
       {game.gameSystem && (
         <GameDetailsRow>
           <GameDetailsTitle twoColumns={true}>
-            {t("gameInfo.gamesystem")}
+            {t("gameInfo.gameSystem")}
           </GameDetailsTitle>
           <GameDetailsValue>{game.gameSystem}</GameDetailsValue>
         </GameDetailsRow>
@@ -205,28 +213,6 @@ export const GameInfo = ({ game }: Props): ReactElement => {
             {t("gameInfo.gameStyle")}
           </GameDetailsTitle>
           <GameDetailsValue>{getStyles(game.styles)}</GameDetailsValue>
-        </GameDetailsRow>
-      )}
-
-      {game.location && (
-        <GameDetailsRow>
-          <GameDetailsTitle twoColumns={true}>
-            {t("gameInfo.location")}
-          </GameDetailsTitle>
-          <GameDetailsValue>{game.location}</GameDetailsValue>
-        </GameDetailsRow>
-      )}
-
-      {!isNil(game.minAttendance) && !isNil(game.maxAttendance) && (
-        <GameDetailsRow>
-          <GameDetailsTitle twoColumns={true}>
-            {t("gameInfo.numberOfPlayers")}
-          </GameDetailsTitle>
-          <GameDetailsValue>
-            {game.minAttendance === game.maxAttendance
-              ? game.minAttendance
-              : `${game.minAttendance} - ${game.maxAttendance}`}
-          </GameDetailsValue>
         </GameDetailsRow>
       )}
     </div>
@@ -304,4 +290,8 @@ const StyledAccessibilityValue = styled.p`
 
 const NoWrapText = styled.span`
   white-space: nowrap;
+`;
+
+const Description = styled.span`
+  margin: 0 0 0 20px;
 `;

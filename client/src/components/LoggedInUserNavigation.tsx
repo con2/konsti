@@ -24,7 +24,7 @@ export const LoggedInUserNavigation = (props: {
           to="/mygames"
           data-testid="my-games-page-link"
         >
-          {t("pages.myGames")}
+          {t("pages.myProgram")}
         </RouterLink>
       )}
 

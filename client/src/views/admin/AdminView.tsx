@@ -150,7 +150,7 @@ export const AdminView = (): ReactElement => {
             submitAssign();
           }}
         >
-          {t("button.assignPlayers")}
+          {t("button.assignAttendees")}
         </Button>
 
         <Button

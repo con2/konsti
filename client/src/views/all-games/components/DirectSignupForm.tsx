@@ -82,11 +82,16 @@ export const DirectSignupForm: FC<Props> = ({
         <>
           {enteredGamesForTimeslot.length === 1 && (
             <SignedGameContainer>
-              {t("signup.alreadySignedToGame")}{" "}
+              {t("signup.alreadySignedToGame", {
+                PROGRAM_TYPE: t(`signupProgramType.${game.programType}`),
+              })}{" "}
               <SignedGameName>
                 {enteredGamesForTimeslot[0].gameDetails.title}
               </SignedGameName>
-              . {t("signup.cannotSignupMoreThanOneGame")}
+              .{" "}
+              {t("signup.cannotSignupMoreThanOneGame", {
+                PROGRAM_TYPE: t(`programTypeIllative.${game.programType}`),
+              })}
             </SignedGameContainer>
           )}
 
