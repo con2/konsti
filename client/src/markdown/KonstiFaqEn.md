@@ -26,7 +26,7 @@ It is possible to borrow a tablet at the Gaming Desk or at the Larp/RPG Desk to 
 
 ## Why can't I find game / tournament X in the Konsti app?
 
-Have you checked that you have selected the correct programme type in the selector? The selected programme type affects not only the list of games to be browsed, but the list of games you have signed up for in the My Games section. It can also be useful to check which tag is selected, as they can also filter the list of games that are visible.
+Have you checked that you have selected the correct programme type in the selector? The selected programme type affects not only the list of games to be browsed, but the list of games you have signed up for in the My Program section. It can also be useful to check which tag is selected, as they can also filter the list of games that are visible.
 
 If you still cannot find the game or tournament you are looking for in the Konsti app, it is possible that the sign-up process for that particular game or tournament is not done via the Konsti app but in some other way. If you are unsure, you can always confirm the sign-up method for a certain game or tournament from the Gaming Desk or the Larp/RPG Desk.
 
