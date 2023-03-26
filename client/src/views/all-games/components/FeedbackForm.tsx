@@ -48,7 +48,11 @@ export const FeedbackForm = ({ game }: Props): ReactElement => {
   return (
     <div>
       <Title>{t("feedbackTitle")}</Title>
-      <p>{t("feedbackInstruction")}</p>
+      <p>
+        {t("feedbackInstruction", {
+          PROGRAM_TYPE: t(`programTypeElative.${game.programType}`),
+        })}
+      </p>
 
       {!feedbackSent && (
         <>

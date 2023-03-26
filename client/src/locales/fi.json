@@ -5,14 +5,14 @@
     "logout": "Kirjaudu ulos",
     "login": "Kirjaudu",
     "register": "Luo tili",
-    "updateDb": "Päivitä pelitietokanta",
-    "assignPlayers": "Sijoita pelaajat",
+    "updateDb": "Päivitä ohjelmatietokanta",
+    "assignAttendees": "Sijoita pelaajat",
     "signup": "Tallenna",
     "cancelSignup": "Peru ilmoittautuminen",
     "back": "Takaisin",
     "favorite": "Lisää suosikkeihin",
-    "hideGame": "Piilota peli",
-    "showGame": "Poista piilotus",
+    "hideProgramItem": "Piilota ohjelmanumero",
+    "showProgramItem": "Poista piilotus",
     "saveTime": "Tallenna aktiivinen aika",
     "sendFeedback": "Lähetä palautetta",
     "feedbackSent": "Palaute lähetetty",
@@ -60,23 +60,21 @@
     "tooShort": "Syöte on liian lyhyt, vähintään {{length}} merkkiä"
   },
   "pages": {
-    "myGames": "Omat pelit",
+    "myProgram": "Oma ohjelmani",
     "programList": "Ohjelmalista",
     "admin": "Ylläpito",
     "results": "Ilmoittautumistulokset",
     "group": "Ryhmä"
   },
   "gameInfo": {
-    "title": "Pelin nimi",
     "gameStyle": "Pelityyli",
     "runTime": "Aika",
     "description": "Kuvaus",
-    "location": "Pelihuone",
-    "numberOfPlayers": "Pelaajamäärä",
+    "location": "Sijainti",
     "duration": "kesto",
     "tags": "Tagit",
     "time": "Aloitusaika",
-    "gamesystem": "Pelijärjestelmä",
+    "gameSystem": "Pelijärjestelmä",
     "genres": "Genret",
     "organiser": "Järjestäjä",
     "shortDescription": "Lyhyt kuvaus",
@@ -84,11 +82,11 @@
     "revolvingDoorDescription": "Voit liittyä peliin koska tahansa, jos pelipöydässä on tilaa",
     "programType": "Ohjelmatyyppi",
     "showMore": "Näytä lisää",
-    "showMoreAriaLabel": "Näytä lisää pelistä",
+    "showMoreAriaLabel": "Näytä lisää ohjelmanumerosta",
     "showLess": "Näytä vähemmän",
-    "showLessAriaLabel": "Näytä vähemmän pelistä",
+    "showLessAriaLabel": "Näytä vähemmän ohjelmanumerosta",
     "contentWarnings": "Sisältövaroitukset",
-    "otherAuthor": "Pelin suunnittelija",
+    "otherAuthor": "Suunnittelija",
     "accessibility": "Esteettömyys",
     "otherInaccessibility": "Muu esteellisyys",
     "adminActions": "Ylläpito"
@@ -152,10 +150,10 @@
     "registration": "Rekisteröi käyttäjätunnus"
   },
   "user": "Käyttäjä",
-  "favoritedGames": "Suosikkipelit",
+  "favoritedProgramItems": "Suosikit",
   "lotterySignedGames": "Arvontaan ilmoittautumiset",
   "enteredGames": "Ilmoittautumiset",
-  "hiddenGames": "Piilotetut pelit",
+  "hiddenProgramItems": "Piilotetut ohjelmanumerot",
   "error": {
     "usernameTaken": "Käyttäjänimi on jo olemassa",
     "invalidSerial": "Epäkelpo rekisteröintikoodi",
@@ -168,9 +166,9 @@
   "hidePrivacyPolicy": "Piilota rekisteriseloste",
   "registrationSerialHelp": "Nouda rekisteröintikoodi larp/ropetiskiltä tai pelitiskiltä",
   "noSignedGames": "Ei valittuja pelejä",
-  "noFavoritedGames": "Ei suosikkipelejä",
+  "noFavoritedProgramItems": "Ei suosikkeja",
   "noEnteredGames": "Ei ilmoittautumisia",
-  "noHiddenGames": "Ei piilotettuja pelejä",
+  "noHiddenProgramItems": "Ei piilotettuja ohjelmanumeroita",
   "noSignupQuestions": "Ei ilmoittautumisten lisätietokysymystä",
   "signupQuestions": "Ilmoittautumisen lisätietokysymykset",
   "noOpenSignups": "Ei avoimia ilmoittautumisia",
@@ -188,18 +186,13 @@
     "signupNotOpenYet": "Ilmoittautuminen ei ole vielä auki"
   },
   "signupUnsavedChanges": "Tallentamattomia muutoksia",
-  "signupResultHint": "Voit katsoa ilmoittautumistulokset 'Omat pelit' sivulta klo",
   "closingMessage": "Konsti on suljettu ja avautuu lähempänä seuraavaa tapahtumaa",
-  "signupView": {
-    "signupOpenGames": "Avoimet pelit",
-    "selectedGames": "Valitut pelit"
-  },
   "details": "lisätietoja",
   "gameLimitWarning": "Voit valita enintään kolme peliä",
   "noLotterySignupResult": "Et mahtunut peliin arvonnassa",
-  "invalidGameId": "Peliä ei löydy. Viallinen pelitunniste",
+  "invalidProgramItemId": "Ohjelmanumeroa ei löydy, viallinen tunniste",
   "feedbackTitle": "Palaute",
-  "feedbackInstruction": "Piditkö pelistä? Lähetä palautetta pelin järjestäjälle! Palautteet toimitetaan tapahtuman jälkeen.",
+  "feedbackInstruction": "Piditkö {{PROGRAM_TYPE}}? Lähetä palautetta järjestäjälle! Palautteet toimitetaan tapahtuman jälkeen.",
   "noProgramItemsAvailable": "Ei näytettäviä pelejä",
   "noGamesInDatabase": "Ei pelejä tietokannassa",
   "upcoming": "Tulevat",
@@ -207,10 +200,6 @@
   "allProgramItems": "Kaikki {{PROGRAM_TYPE}}",
   "lastStartedAndUpcoming": "Viimeksi alkaneet ja tulevat",
   "chooseTag": "Valitse tagi",
-  "high-popularity": "Enemmän kiinnostuneita kuin paikkoja",
-  "medium-popularity": "Toteutumassa",
-  "low-popularity": "Tarvitaan lisää pelaajia",
-  "playerStatus": "Pelaajatilanne",
   "revolvingDoor": "Pyöröovi",
   "revolvingDoorInstruction": "Pyöröovipeleihin voi liittyä koska tahansa, jos pelipöydässä on tilaa",
   "currentlyRunningRevolvingDoor": "Käynnissä olevat pyöröovipelit",
@@ -239,7 +228,7 @@
     "youAreInGroup": "Olet ryhmässä",
     "groupMembers": "Ryhmän jäsenet",
     "groupCreator": "ryhmän perustaja",
-    "groupMemberInfo": "Ryhmän perustaja ilmoittautuu arvontaan ryhmän muiden jäsenten puolesta. Näet valitut pelit \"Omat pelit\" sivulta",
+    "groupMemberInfo": "Ryhmän perustaja ilmoittautuu arvontaan ryhmän muiden jäsenten puolesta. Näet valitut pelit \"Oma ohjelmani\" sivulta",
     "groupCreatorInfo": "Voit ilmoittautua arvontaan koko ryhmän puolesta. Varmistathan, että ryhmä ei ole liian iso valitsemiisi peleihin liittymistä varten. Ryhmän perustaja ei voi poistua ryhmästä, mutta voi sulkea ryhmän. Tällöin kaikki ryhmän jäsenet poistetaan ryhmästä.",
     "joiningGroupWillCancelLotterySignups": "Ryhmään liittyminen peruu kaikki aikaisemmat arvonta-ilmoittautumisesi",
     "groupLotterySignupGuide": "Ryhmä voi ilmoittutua samoihin peleihin arvontaa varten.",
@@ -275,10 +264,10 @@
     "gamePriority": "Peli on toiveissani sijalla",
     "confirm": "Vahvista",
     "cancel": "Peruuta",
-    "alreadySignedToGame": "Olet ilmoittautunut peliin",
-    "cannotSignupMoreThanOneGame": "Et voi ilmoittautua muihin samaan aikaan alkaviin peleihin.",
+    "alreadySignedToGame": "Olet ilmoittautunut {{PROGRAM_TYPE}}",
+    "cannotSignupMoreThanOneGame": "Et voi ilmoittautua muihin samaan aikaan alkaviin {{PROGRAM_TYPE}}.",
     "signupCount": "{{PLAYERS}} / {{MAX_ATTENDANCE}} ilmoittautunutta",
-    "playerNeeded": "Tarvitaan vielä {{COUNT}} pelaajaa!",
+    "attendeesNeeded": "Tarvitaan vielä {{COUNT}} {{ATTENDEE_TYPE}}!",
     "gameIsFull": "Peli on täynnä",
     "confirmCancellation": "Vahvista peruutus",
     "staySignedUp": "Pysy ilmoittautuneena",
@@ -292,9 +281,17 @@
     "entryFee": "Osallistumismaksu {{ENTRY_FEE}} €",
     "entryFeeInfo": "Ymmärrän, että työpajaan osallistuminen maksaa {{ENTRY_FEE}} €."
   },
+  "attendeeType": {
+    "player": "pelaaja",
+    "participant": "osallistuja"
+  },
   "attendeeTypePlural": {
     "player": "pelaajia",
     "participant": "osallistujia"
+  },
+  "attendeeTypePartitive": {
+    "player": "pelaajaa",
+    "participant": "osallistujaa"
   },
   "signupProgramType": {
     "tabletopRPG": "peliin",
@@ -314,6 +311,18 @@
     "tournament": "Turnauksen",
     "workshop": "Työpajan"
   },
+  "programTypeElative": {
+    "tabletopRPG": "pelistä",
+    "larp": "larpista",
+    "tournament": "turnauksesta",
+    "workshop": "työpajasta"
+  },
+  "programTypeIllative": {
+    "tabletopRPG": "peleihin",
+    "larp": "larppeihin",
+    "tournament": "turnauksiin",
+    "workshop": "työpajoihin"
+  },
   "resultsView": {
     "allSignupResults": "Ilmoittautumistulokset",
     "confirm": "Vahvista",
@@ -328,7 +337,7 @@
     "serial": "Ota koodi talteen salasanan palauttamista varten:",
     "info": "Tämä viesti näytetään vain ensimmäisen kirjautumisesi yhteydessä. Löydät koodin myös navigaation takaa."
   },
-  "myGamesView": {
+  "myProgramView": {
     "yourAnswer": "Vastauksesi kysymykseen",
     "changePassword": "Vaihda salasana"
   },
@@ -394,8 +403,8 @@
     "deleteFavorite": "Poista suosikki",
     "openChangePassword": "Avaa salasanan vaihto",
     "closeChangePassword": "Sulje salasanan vaihto",
-    "openPlayerList": "Avaa pelaajalista",
-    "closePlayerList": "Sulje pelaajalista",
+    "openAttendeeList": "Avaa {{ATTENDEE_TYPE}}lista",
+    "closeAttendeeList": "Sulje {{ATTENDEE_TYPE}}lista",
     "showPassword": "Näytä salasana",
     "hidePassword": "Piilota salasana"
   },

@@ -75,7 +75,7 @@ export const GameDetails = (): ReactElement => {
       )}
       {!loading && !foundGame && (
         <div>
-          {t("invalidGameId")} {gameId}.
+          {t("invalidProgramItemId")} {gameId}.
         </div>
       )}
     </div>
