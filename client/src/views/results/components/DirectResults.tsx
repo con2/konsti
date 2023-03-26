@@ -207,8 +207,20 @@ export const DirectResults = (): ReactElement => {
                             icon={playerListVisible ? "angle-up" : "angle-down"}
                             aria-label={
                               playerListVisible
-                                ? t("iconAltText.closePlayerList")
-                                : t("iconAltText.openPlayerList")
+                                ? t("iconAltText.closeAttendeeList", {
+                                    ATTENDEE_TYPE: t(
+                                      `attendeeType.${getAttendeeType(
+                                        activeProgramType
+                                      )}`
+                                    ),
+                                  })
+                                : t("iconAltText.openAttendeeList", {
+                                    ATTENDEE_TYPE: t(
+                                      `attendeeType.${getAttendeeType(
+                                        activeProgramType
+                                      )}`
+                                    ),
+                                  })
                             }
                           />
                         </PlayerCount>

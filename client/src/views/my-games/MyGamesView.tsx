@@ -130,7 +130,7 @@ export const MyGamesView = (): ReactElement => {
             icon={showChangePassword ? "angle-up" : "angle-down"}
             aria-hidden="true"
           />
-          {t("myGamesView.changePassword")}
+          {t("myProgramView.changePassword")}
         </>
       </ChangePasswordButton>
 

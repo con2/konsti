@@ -6,7 +6,7 @@
     "login": "Kirjaudu",
     "register": "Luo tili",
     "updateDb": "Päivitä pelitietokanta",
-    "assignPlayers": "Sijoita pelaajat",
+    "assignAttendees": "Sijoita pelaajat",
     "signup": "Tallenna",
     "cancelSignup": "Peru ilmoittautuminen",
     "back": "Takaisin",
@@ -60,7 +60,7 @@
     "tooShort": "Syöte on liian lyhyt, vähintään {{length}} merkkiä"
   },
   "pages": {
-    "myGames": "Omat pelit",
+    "myProgram": "Oma ohjelmani",
     "programList": "Ohjelmalista",
     "admin": "Ylläpito",
     "results": "Ilmoittautumistulokset",
@@ -71,12 +71,11 @@
     "gameStyle": "Pelityyli",
     "runTime": "Aika",
     "description": "Kuvaus",
-    "location": "Pelihuone",
-    "numberOfPlayers": "Pelaajamäärä",
+    "location": "Sijainti",
     "duration": "kesto",
     "tags": "Tagit",
     "time": "Aloitusaika",
-    "gamesystem": "Pelijärjestelmä",
+    "gameSystem": "Pelijärjestelmä",
     "genres": "Genret",
     "organiser": "Järjestäjä",
     "shortDescription": "Lyhyt kuvaus",
@@ -207,10 +206,6 @@
   "allProgramItems": "Kaikki {{PROGRAM_TYPE}}",
   "lastStartedAndUpcoming": "Viimeksi alkaneet ja tulevat",
   "chooseTag": "Valitse tagi",
-  "high-popularity": "Enemmän kiinnostuneita kuin paikkoja",
-  "medium-popularity": "Toteutumassa",
-  "low-popularity": "Tarvitaan lisää pelaajia",
-  "playerStatus": "Pelaajatilanne",
   "revolvingDoor": "Pyöröovi",
   "revolvingDoorInstruction": "Pyöröovipeleihin voi liittyä koska tahansa, jos pelipöydässä on tilaa",
   "currentlyRunningRevolvingDoor": "Käynnissä olevat pyöröovipelit",
@@ -278,7 +273,7 @@
     "alreadySignedToGame": "Olet ilmoittautunut peliin",
     "cannotSignupMoreThanOneGame": "Et voi ilmoittautua muihin samaan aikaan alkaviin peleihin.",
     "signupCount": "{{PLAYERS}} / {{MAX_ATTENDANCE}} ilmoittautunutta",
-    "playerNeeded": "Tarvitaan vielä {{COUNT}} pelaajaa!",
+    "attendeesNeeded": "Tarvitaan vielä {{COUNT}} {{ATTENDEE_TYPE}}!",
     "gameIsFull": "Peli on täynnä",
     "confirmCancellation": "Vahvista peruutus",
     "staySignedUp": "Pysy ilmoittautuneena",
@@ -292,9 +287,17 @@
     "entryFee": "Osallistumismaksu {{ENTRY_FEE}} €",
     "entryFeeInfo": "Ymmärrän, että työpajaan osallistuminen maksaa {{ENTRY_FEE}} €."
   },
+  "attendeeType": {
+    "player": "pelaaja",
+    "participant": "osallistuja"
+  },
   "attendeeTypePlural": {
     "player": "pelaajia",
     "participant": "osallistujia"
+  },
+  "attendeeTypePartitive": {
+    "player": "pelaajaa",
+    "participant": "osallistujaa"
   },
   "signupProgramType": {
     "tabletopRPG": "peliin",
@@ -328,7 +331,7 @@
     "serial": "Ota koodi talteen salasanan palauttamista varten:",
     "info": "Tämä viesti näytetään vain ensimmäisen kirjautumisesi yhteydessä. Löydät koodin myös navigaation takaa."
   },
-  "myGamesView": {
+  "myProgramView": {
     "yourAnswer": "Vastauksesi kysymykseen",
     "changePassword": "Vaihda salasana"
   },
@@ -394,8 +397,8 @@
     "deleteFavorite": "Poista suosikki",
     "openChangePassword": "Avaa salasanan vaihto",
     "closeChangePassword": "Sulje salasanan vaihto",
-    "openPlayerList": "Avaa pelaajalista",
-    "closePlayerList": "Sulje pelaajalista",
+    "openAttendeeList": "Avaa {{ATTENDEE_TYPE}}lista",
+    "closeAttendeeList": "Sulje {{ATTENDEE_TYPE}}lista",
     "showPassword": "Näytä salasana",
     "hidePassword": "Piilota salasana"
   },

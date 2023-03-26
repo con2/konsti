@@ -6,7 +6,7 @@
     "login": "Login",
     "register": "Register",
     "updateDb": "Update games database",
-    "assignPlayers": "Assign players",
+    "assignAttendees": "Assign players",
     "signup": "Save",
     "cancelSignup": "Cancel signup",
     "back": "Back",
@@ -60,7 +60,7 @@
     "tooShort": "Value is too short, {{length}} characters required"
   },
   "pages": {
-    "myGames": "My Games",
+    "myProgram": "My Program",
     "programList": "Program List",
     "admin": "Admin",
     "results": "Signup Results",
@@ -71,12 +71,11 @@
     "gameStyle": "Game style",
     "runTime": "Time",
     "description": "Description",
-    "location": "Game room",
-    "numberOfPlayers": "Number of players",
+    "location": "Location",
     "duration": "length",
     "tags": "Tags",
     "time": "Starting time",
-    "gamesystem": "Game system",
+    "gameSystem": "Game system",
     "genres": "Genres",
     "organiser": "Organiser",
     "shortDescription": "Short description",
@@ -207,10 +206,6 @@
   "allProgramItems": "All {{PROGRAM_TYPE}}",
   "lastStartedAndUpcoming": "Last started and upcoming",
   "chooseTag": "Choose tag",
-  "high-popularity": "More interested players than seats",
-  "medium-popularity": "Enough players to run",
-  "low-popularity": "More players needed",
-  "playerStatus": "Player status",
   "revolvingDoor": "Revolving door",
   "revolvingDoorInstruction": "You can join revolving door games at any time if there are free seats in the table",
   "currentlyRunningRevolvingDoor": "Currently running revolving door games",
@@ -278,7 +273,7 @@
     "alreadySignedToGame": "You already signed to game",
     "cannotSignupMoreThanOneGame": "You cannot sign up to other games starting at the same time.",
     "signupCount": "{{PLAYERS}} / {{MAX_ATTENDANCE}} signed up",
-    "playerNeeded": "Need {{COUNT}} players!",
+    "attendeesNeeded": "Need {{COUNT}} {{ATTENDEE_TYPE}}!",
     "gameIsFull": "Game is full",
     "confirmCancellation": "Confirm cancellation",
     "staySignedUp": "Stay signed up",
@@ -292,7 +287,15 @@
     "entryFee": "Entry fee €{{ENTRY_FEE}}",
     "entryFeeInfo": "I understand that participation in the workshop costs €{{ENTRY_FEE}}."
   },
+  "attendeeType": {
+    "player": "player",
+    "participant": "participant"
+  },
   "attendeeTypePlural": {
+    "player": "players",
+    "participant": "participants"
+  },
+  "attendeeTypePartitive": {
     "player": "players",
     "participant": "participants"
   },
@@ -328,7 +331,7 @@
     "serial": "Save this code for recovering your password:",
     "info": "This message is shown to you only when you first login. You can also find code from the navigation."
   },
-  "myGamesView": {
+  "myProgramView": {
     "yourAnswer": "Your answer to question",
     "changePassword": "Change password"
   },
@@ -394,8 +397,8 @@
     "deleteFavorite": "Delete favorite",
     "openChangePassword": "Open change password",
     "closeChangePassword": "Close change password",
-    "openPlayerList": "Open player list",
-    "closePlayerList": "Close player list",
+    "openAttendeeList": "Open {{ATTENDEE_TYPE}} list",
+    "closeAttendeeList": "Close {{ATTENDEE_TYPE}} list",
     "showPassword": "Show password",
     "hidePassword": "Hide password"
   },
