@@ -28,7 +28,6 @@ export const fetchSettings = async (): Promise<
       message: "Getting settings success",
       status: "success",
       hiddenGames: response.hiddenGames,
-      signupTime: response.signupTime || "",
       appOpen: response.appOpen,
       signupQuestions: response.signupQuestions,
       signupStrategy: response.signupStrategy,

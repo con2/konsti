@@ -4,10 +4,9 @@ import styled, { css } from "styled-components";
 import { HiddenGamesList } from "client/views/admin/components/HiddenGamesList";
 import {
   submitGetSentryTest,
-  submitSignupTime,
+  submitPlayersAssign,
   submitToggleAppOpen,
 } from "client/views/admin/adminThunks";
-import { submitPlayersAssign } from "client/views/results/resultsThunks";
 import { submitUpdateGames } from "client/views/all-games/allGamesThunks";
 import { timeFormatter } from "client/utils/timeFormatter";
 import { Game } from "shared/typings/models/game";
@@ -20,37 +19,17 @@ import { ButtonGroup } from "client/components/ButtonGroup";
 
 export const AdminView = (): ReactElement => {
   const games = useAppSelector((state) => state.allGames.games);
-  const activeSignupTime = useAppSelector(
-    (state) => state.admin.activeSignupTime
-  );
   const appOpen = useAppSelector((state) => state.admin.appOpen);
   const hiddenGames = useAppSelector((state) => state.admin.hiddenGames);
   const signupQuestions = useAppSelector(
     (state) => state.admin.signupQuestions
   );
-  const responseMessage = useAppSelector(
-    (state) => state.admin.responseMessage
+  const assignmentResponseMessage = useAppSelector(
+    (state) => state.admin.assignmentResponseMessage
   );
 
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
-
-  const [submitting, setSubmitting] = useState<boolean>(false);
-  const [message, setMessage] = useState<string>("");
-  const [messageStyle, setMessageStyle] = useState<string>("");
-  const [selectedSignupTime, setSelectedSignupTime] =
-    useState<string>(activeSignupTime);
-
-  const showMessage = ({
-    value,
-    style,
-  }: {
-    value: string;
-    style: string;
-  }): void => {
-    setMessage(value);
-    setMessageStyle(style);
-  };
 
   const getVisibleGames = (): readonly Game[] => {
     if (!hiddenGames) return games;
@@ -71,7 +50,7 @@ export const AdminView = (): ReactElement => {
     return visibleGames;
   };
 
-  const getDropdownItems = (): Option[] => {
+  const getDropdownOptions = (): Option[] => {
     const visibleGames = getVisibleGames();
     const startTimes = visibleGames.map((game) => game.startTime);
     const times = [...Array.from(new Set(startTimes))].sort();
@@ -83,6 +62,25 @@ export const AdminView = (): ReactElement => {
       });
       return { value: time, title: formattedDate };
     });
+  };
+
+  const assignmentTimeDropdownValues = getDropdownOptions();
+  const [submitting, setSubmitting] = useState<boolean>(false);
+  const [message, setMessage] = useState<string>("");
+  const [messageStyle, setMessageStyle] = useState<string>("");
+  const [selectedAssignmentTime, setSelectedAssignmentTime] = useState<string>(
+    assignmentTimeDropdownValues[0].value
+  );
+
+  const showMessage = ({
+    value,
+    style,
+  }: {
+    value: string;
+    style: string;
+  }): void => {
+    setMessage(value);
+    setMessageStyle(style);
   };
 
   const submitUpdate = async (): Promise<void> => {
@@ -98,7 +96,9 @@ export const AdminView = (): ReactElement => {
   const submitAssign = async (): Promise<void> => {
     setSubmitting(true);
 
-    const errorMessage = await dispatch(submitPlayersAssign(activeSignupTime));
+    const errorMessage = await dispatch(
+      submitPlayersAssign(selectedAssignmentTime)
+    );
 
     if (errorMessage) {
       showMessage({
@@ -107,16 +107,6 @@ export const AdminView = (): ReactElement => {
       });
     }
 
-    setSubmitting(false);
-  };
-
-  const submitTime = async (): Promise<void> => {
-    setSubmitting(true);
-    try {
-      await dispatch(submitSignupTime(selectedSignupTime));
-    } catch (error) {
-      console.log(`submitSignupTime error:`, error); // eslint-disable-line no-console
-    }
     setSubmitting(false);
   };
 
@@ -147,16 +137,6 @@ export const AdminView = (): ReactElement => {
           disabled={submitting}
           buttonStyle={ButtonStyle.PRIMARY}
           onClick={() => {
-            submitAssign();
-          }}
-        >
-          {t("button.assignAttendees")}
-        </Button>
-
-        <Button
-          disabled={submitting}
-          buttonStyle={ButtonStyle.PRIMARY}
-          onClick={() => {
             toggleAppOpen();
           }}
         >
@@ -164,57 +144,44 @@ export const AdminView = (): ReactElement => {
         </Button>
       </ButtonGroup>
 
-      {submitting && <p>{t("loading")}</p>}
-
-      <ResponseMessage>{responseMessage}</ResponseMessage>
-
       {(!games || games.length === 0) && <p>{t("noGamesInDatabase")}</p>}
 
-      {games && games.length !== 0 && (
+      <ButtonGroup>
+        <Button
+          disabled={submitting}
+          buttonStyle={ButtonStyle.PRIMARY}
+          onClick={() => {
+            submitAssign();
+          }}
+        >
+          {t("button.assignAttendees")}
+        </Button>
+        <Dropdown
+          options={getDropdownOptions()}
+          selectedValue={selectedAssignmentTime}
+          onChange={(event: ChangeEvent<HTMLSelectElement>) =>
+            setSelectedAssignmentTime(event.target.value)
+          }
+        />
+      </ButtonGroup>
+
+      {!submitting && (
         <>
           <StatusMessage messageStyle={messageStyle}>{message}</StatusMessage>
 
-          <p>{t("activeTimeDescription")}</p>
-
-          <div>
-            {activeSignupTime && (
-              <p>
-                {t("activeTime")}:{" "}
-                {timeFormatter.getWeekdayAndTime({
-                  time: activeSignupTime,
-                  capitalize: true,
-                })}
-              </p>
-            )}
-            {!activeSignupTime && <p>{t("noActiveTime")}</p>}
-          </div>
-
-          <ButtonGroup>
-            <Button
-              disabled={submitting}
-              buttonStyle={ButtonStyle.PRIMARY}
-              onClick={() => {
-                submitTime();
-              }}
-            >
-              {t("button.saveTime")}
-            </Button>
-
-            <Dropdown
-              options={getDropdownItems()}
-              selectedValue={selectedSignupTime}
-              onChange={(event: ChangeEvent<HTMLSelectElement>) =>
-                setSelectedSignupTime(event.target.value)
-              }
-            />
-          </ButtonGroup>
-          <SignupStrategySelector />
-
-          <HiddenGamesList hiddenGames={hiddenGames} />
-
-          <SignupQuestionList signupQuestions={signupQuestions} games={games} />
+          <AssignmentResponseMessage>
+            {assignmentResponseMessage}
+          </AssignmentResponseMessage>
         </>
       )}
+
+      {submitting && <p>{t("loading")}</p>}
+
+      <SignupStrategySelector />
+
+      <HiddenGamesList hiddenGames={hiddenGames} />
+
+      <SignupQuestionList signupQuestions={signupQuestions} games={games} />
 
       <h3>{t("admin.sentryTesting")}</h3>
       <ButtonGroup>
@@ -259,6 +226,6 @@ const StatusMessage = styled.p<StatusMessageProps>`
     `};
 `;
 
-const ResponseMessage = styled.p`
+const AssignmentResponseMessage = styled.p`
   color: ${(props) => props.theme.textSuccess};
 `;

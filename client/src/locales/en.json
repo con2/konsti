@@ -42,8 +42,6 @@
   "hide": "Hide",
   "sortBy": "Sort by",
   "gameTitle": "Game Title",
-  "players": "Players",
-  "player": "Player",
   "find": "Find",
   "findTitleOrUsername": "{{PROGRAM_TYPE}} title or username",
   "searchWithTitle": "{{PROGRAM_TYPE}} title",
@@ -173,9 +171,6 @@
   "signupQuestions": "Signup questions",
   "noOpenSignups": "No open signups",
   "signupOpen": "Signup open for the following times",
-  "activeTime": "Active time",
-  "noActiveTime": "Active time not selected",
-  "activeTimeDescription": "Game assignment will be done and results shown for the active time",
   "lotterySignupOpenBetween": "lottery signup open",
   "signupSaved": "Signup saved",
   "signupError": {
