@@ -12,6 +12,7 @@
     "build:dev": "yarn clean && webpack-cli",
     "build:prod": "yarn clean && webpack-cli",
     "build:staging": "yarn clean && webpack-cli",
+    "build:rapucon": "yarn clean && webpack-cli",
     "bundle-analyzer": "webpack-cli --profile --json > stats.json && webpack-bundle-analyzer stats.json build -m server",
     "clean": "yarn run -T rimraf build",
     "eslint": "yarn run -T eslint . --ext .js,.ts,.tsx",
