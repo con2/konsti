@@ -4,11 +4,6 @@ export enum SignupStrategy {
   ALGORITHM_AND_DIRECT = "algorithm+direct",
 }
 
-export enum ConventionType {
-  REMOTE = "remote",
-  LIVE = "live",
-}
-
 export enum AssignmentStrategy {
   MUNKRES = "munkres",
   GROUP = "group",

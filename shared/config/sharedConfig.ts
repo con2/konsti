@@ -1,10 +1,6 @@
 import dayjs, { Dayjs } from "dayjs";
 import { ProgramType } from "shared/typings/models/game";
-import {
-  AssignmentStrategy,
-  ConventionType,
-  SignupStrategy,
-} from "./sharedConfig.types";
+import { AssignmentStrategy, SignupStrategy } from "./sharedConfig.types";
 
 interface SignupWindow {
   signupWindowStart: Dayjs;
@@ -13,7 +9,6 @@ interface SignupWindow {
 
 interface SharedConfig {
   appName: string;
-  conventionType: ConventionType;
   assignmentStrategy: AssignmentStrategy;
   enableGroups: boolean;
   defaultSignupStrategy: SignupStrategy;
@@ -27,6 +22,7 @@ interface SharedConfig {
   directSignupAlwaysOpen: string[];
   tracesSampleRate: number;
   enableSentryInDev: boolean;
+  requireRegistrationCode: boolean;
 }
 
 // Convention days
@@ -39,7 +35,7 @@ export const sharedConfig: SharedConfig = {
   appName: "Konsti",
 
   // Convention settings
-  conventionType: ConventionType.LIVE,
+  requireRegistrationCode: false,
   assignmentStrategy: AssignmentStrategy.RANDOM_PADG,
   enableGroups: false,
   defaultSignupStrategy: SignupStrategy.ALGORITHM_AND_DIRECT,
