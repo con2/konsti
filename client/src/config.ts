@@ -9,6 +9,7 @@ interface Config {
   dataUpdateInterval: number;
   noSignupGames: string[];
   enableStrategyTestValue: boolean;
+  enableRevolvingDoor: boolean;
 }
 
 export const config: Config = {
@@ -17,6 +18,7 @@ export const config: Config = {
 
   // Convention settings
   noSignupGames: [],
+  enableRevolvingDoor: false,
 
   // Dev
   enableReduxTrace: false,

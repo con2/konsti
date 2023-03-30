@@ -41,7 +41,7 @@ export const sharedConfig: SharedConfig = {
   // Convention settings
   conventionType: ConventionType.LIVE,
   assignmentStrategy: AssignmentStrategy.RANDOM_PADG,
-  enableGroups: true,
+  enableGroups: false,
   defaultSignupStrategy: SignupStrategy.ALGORITHM_AND_DIRECT,
 
   directSignupWindows: {

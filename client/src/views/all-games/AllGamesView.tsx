@@ -25,6 +25,7 @@ import { ControlledInput } from "client/components/ControlledInput";
 import { SessionStorageValue } from "client/utils/localStorage";
 import { Dropdown } from "client/components/Dropdown";
 import { ButtonGroup } from "client/components/ButtonGroup";
+import { config } from "client/config";
 
 export const MULTIPLE_WHITESPACES_REGEX = /\s\s+/g;
 
@@ -181,15 +182,16 @@ export const AllGamesView = (): ReactElement => {
             {t("all")}
           </Button>
 
-          {activeProgramType === ProgramType.TABLETOP_RPG && (
-            <Button
-              disabled={selectedView === SelectedView.REVOLVING_DOOR}
-              buttonStyle={ButtonStyle.SECONDARY}
-              onClick={() => setView(SelectedView.REVOLVING_DOOR)}
-            >
-              {t("revolvingDoor")}
-            </Button>
-          )}
+          {config.enableRevolvingDoor &&
+            activeProgramType === ProgramType.TABLETOP_RPG && (
+              <Button
+                disabled={selectedView === SelectedView.REVOLVING_DOOR}
+                buttonStyle={ButtonStyle.SECONDARY}
+                onClick={() => setView(SelectedView.REVOLVING_DOOR)}
+              >
+                {t("revolvingDoor")}
+              </Button>
+            )}
         </ButtonGroup>
 
         <div>
