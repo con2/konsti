@@ -10,7 +10,6 @@ import { allGamesReducer } from "client/views/all-games/allGamesSlice";
 import { loginReducer } from "client/views/login/loginSlice";
 import { myGamesReducer } from "client/views/my-games/myGamesSlice";
 import { adminReducer } from "client/views/admin/adminSlice";
-import { resultsReducer } from "client/views/results/resultsSlice";
 import { testSettingsReducer } from "client/test/test-settings/testSettingsSlice";
 import { groupReducer } from "client/views/group/groupSlice";
 
@@ -19,7 +18,6 @@ export const combinedReducer = combineReducers({
   login: loginReducer,
   myGames: myGamesReducer,
   admin: adminReducer,
-  results: resultsReducer,
   testSettings: testSettingsReducer,
   group: groupReducer,
 });

@@ -17,7 +17,6 @@ export interface GetSettingsResponse {
   appOpen: boolean;
   hiddenGames: readonly Game[];
   message: string;
-  signupTime: string;
   status: "success";
   signupQuestions: readonly SignupQuestion[];
   signupStrategy: SignupStrategy;

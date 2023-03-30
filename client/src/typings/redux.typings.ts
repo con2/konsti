@@ -2,7 +2,6 @@ import { ThunkAction } from "redux-thunk";
 import { Action } from "redux";
 import { Game, ProgramType } from "shared/typings/models/game";
 import { GroupMember } from "shared/typings/api/groups";
-import { Result } from "shared/typings/models/result";
 import { store, combinedReducer } from "client/utils/store";
 import { UserGroup } from "shared/typings/models/user";
 import { SignupQuestion } from "shared/typings/models/settings";
@@ -14,9 +13,9 @@ import { SignupMessage } from "shared/typings/models/signupMessage";
 
 export interface AdminState {
   hiddenGames: readonly Game[];
-  activeSignupTime: string;
+  activeAssignmentTime: string;
   appOpen: boolean;
-  responseMessage: string;
+  assignmentResponseMessage: string;
   signupQuestions: readonly SignupQuestion[];
   signupStrategy: SignupStrategy | undefined;
   errors: readonly ErrorMessageType[];
@@ -48,11 +47,6 @@ export interface GroupState {
 }
 
 export interface MyGamesState extends UserGames {}
-
-export interface ResultsState {
-  result: readonly Result[];
-  startTime: string;
-}
 
 export interface TestSettingsState {
   testTime: string;

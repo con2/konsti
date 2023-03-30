@@ -24,7 +24,7 @@
     "eslint-rules": "eslint --print-config .eslintrc.js",
     "eslint:client": "yarn workspace konsti-client eslint",
     "eslint:server": "yarn workspace konsti-server eslint",
-    "eslint": "eslint . --ext .js,.ts,.tsx --cache",
+    "eslint": "eslint . --ext .js,.ts,.tsx",
     "lint": "yarn eslint && yarn stylelint && yarn prettier:check",
     "populate-db:dummy": "yarn workspace konsti-server generate-data -ugcs",
     "populate-db:kompassi": "yarn workspace konsti-server generate-data -c && yarn workspace konsti-server load-kompassi-data && yarn workspace konsti-server generate-data -us ",
