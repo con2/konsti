@@ -162,6 +162,8 @@ const getWebpackConfig = (): Configuration | undefined => {
       return merge(commonConfig, prodConfig);
     case "build:staging":
       return merge(commonConfig, prodConfig);
+    case "build:rapucon":
+      return merge(commonConfig, prodConfig);
     case "build:dev":
       return merge(commonConfig, prodConfig);
     case "build:ci":

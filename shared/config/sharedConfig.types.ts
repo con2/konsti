@@ -1,8 +1,3 @@
-export enum ConventionName {
-  ROPECON = "Ropecon",
-  TRACON_HITPOINT = "Tracon Hitpoint",
-}
-
 export enum SignupStrategy {
   DIRECT = "direct",
   ALGORITHM = "algorithm",

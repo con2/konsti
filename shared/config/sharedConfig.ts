@@ -2,7 +2,6 @@ import dayjs, { Dayjs } from "dayjs";
 import { ProgramType } from "shared/typings/models/game";
 import {
   AssignmentStrategy,
-  ConventionName,
   ConventionType,
   SignupStrategy,
 } from "./sharedConfig.types";
@@ -18,7 +17,7 @@ interface SharedConfig {
   assignmentStrategy: AssignmentStrategy;
   enableGroups: boolean;
   defaultSignupStrategy: SignupStrategy;
-  CONVENTION_NAME: ConventionName;
+  CONVENTION_NAME: string;
   CONVENTION_YEAR: string;
   CONVENTION_START_TIME: string;
   DIRECT_SIGNUP_START: number;
@@ -119,7 +118,7 @@ export const sharedConfig: SharedConfig = {
   PHASE_GAP: 15, // minutes
 
   // Convention info
-  CONVENTION_NAME: ConventionName.ROPECON,
+  CONVENTION_NAME: "Rapucon",
   CONVENTION_YEAR: "2023",
 
   // Sentry
