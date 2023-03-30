@@ -10,16 +10,17 @@ import { AppThunk } from "client/typings/redux.typings";
 import {
   submitUpdateHiddenAsync,
   submitGetSettingsAsync,
-  submitActiveSignupTimeAsync,
   submitToggleAppOpenAsync,
   updateSignupQuestions,
   submitSetSignupStrategyAsync,
   submitGetSignupMessagesAsync,
+  submitAssignmentResponseMessageAsync,
 } from "client/views/admin/adminSlice";
 import { SignupQuestion } from "shared/typings/models/settings";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
 import { getSignupMessages } from "client/services/userServices";
 import { getSentryTest } from "client/views/admin/adminService";
+import { postPlayerAssignment } from "client/services/assignmentServices";
 
 export const submitUpdateHidden = (hiddenGames: readonly Game[]): AppThunk => {
   return async (dispatch): Promise<void> => {
@@ -47,27 +48,10 @@ export const submitGetSettings = (): AppThunk => {
       dispatch(
         submitGetSettingsAsync({
           hiddenGames: settingsResponse.hiddenGames,
-          signupTime: settingsResponse.signupTime,
           appOpen: settingsResponse.appOpen,
           signupQuestions: settingsResponse.signupQuestions,
           signupStrategy: settingsResponse.signupStrategy,
         })
-      );
-    }
-  };
-};
-
-export const submitSignupTime = (signupTime: string): AppThunk => {
-  return async (dispatch): Promise<void> => {
-    const postSettingsResponse = await postSettings({ signupTime });
-
-    if (postSettingsResponse?.status === "error") {
-      // TODO
-    }
-
-    if (postSettingsResponse?.status === "success") {
-      dispatch(
-        submitActiveSignupTimeAsync(postSettingsResponse.settings.signupTime)
       );
     }
   };
@@ -154,5 +138,21 @@ export const submitGetSignupMessages = (): AppThunk => {
 export const submitGetSentryTest = (): AppThunk => {
   return async (_dispatch): Promise<void> => {
     await getSentryTest();
+  };
+};
+
+export const submitPlayersAssign = (
+  signupTime: string
+): AppThunk<Promise<string | undefined>> => {
+  return async (dispatch): Promise<string | undefined> => {
+    const assignResponse = await postPlayerAssignment(signupTime);
+
+    if (assignResponse?.status === "error") {
+      return assignResponse.message;
+    }
+
+    dispatch(
+      submitAssignmentResponseMessageAsync(assignResponse.resultMessage)
+    );
   };
 };

@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
 import { MongoMemoryServer } from "mongodb-memory-server";
 import { faker } from "@faker-js/faker";
-import dayjs from "dayjs";
 import { SettingsModel } from "server/features/settings/settingsSchema";
 import { testGame, testGame2 } from "shared/tests/testGame";
 import {
@@ -42,7 +41,6 @@ test("should set defaults if settings not found", async () => {
   expect(insertedSettings?.hiddenGames.length).toEqual(
     defaultSettings.hiddenGames.length
   );
-  expect(insertedSettings?.signupTime).toEqual(defaultSettings.signupTime);
   expect(insertedSettings?.appOpen).toEqual(defaultSettings.appOpen);
 });
 
@@ -59,15 +57,6 @@ test("should not return hidden games that are not in DB", async () => {
   await saveHidden(hiddenGames);
   const insertedSettings = await SettingsModel.findOne({});
   expect(insertedSettings?.hiddenGames.length).toEqual(0);
-});
-
-test("should update signup time", async () => {
-  const signupTime = "2019-07-26T14:00:00.000Z";
-  await saveSettings({ signupTime });
-  const insertedSettings = await SettingsModel.findOne({});
-  expect(dayjs(insertedSettings?.signupTime).format()).toEqual(
-    dayjs(signupTime).format()
-  );
 });
 
 test("should update appOpen status", async () => {
