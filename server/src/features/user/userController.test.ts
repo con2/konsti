@@ -106,7 +106,7 @@ describe(`POST ${ApiEndpoint.USERS}`, () => {
 
   test("should return 422 without serial if code is required", async () => {
     jest.mock("shared/config/sharedConfig", () => ({
-      sharedConfig: { requireRegistrationCode: false },
+      sharedConfig: { requireRegistrationCode: true },
     }));
 
     const { server } = await startTestServer(mongoServer.getUri());
@@ -124,7 +124,7 @@ describe(`POST ${ApiEndpoint.USERS}`, () => {
 
   test("should return 200 without serial if code is not required", async () => {
     jest.mock("shared/config/sharedConfig", () => ({
-      sharedConfig: { requireRegistrationCode: true },
+      sharedConfig: { requireRegistrationCode: false },
     }));
 
     const { server } = await startTestServer(mongoServer.getUri());
