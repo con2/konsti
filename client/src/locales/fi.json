@@ -42,8 +42,6 @@
   "hide": "Piilota",
   "sortBy": "Järjestys",
   "gameTitle": "Pelin nimi",
-  "players": "Pelaajat",
-  "player": "Pelaaja",
   "find": "Etsi",
   "findTitleOrUsername": "{{PROGRAM_TYPE}} nimi tai käyttäjänimi",
   "searchWithTitle": "{{PROGRAM_TYPE}} nimi",

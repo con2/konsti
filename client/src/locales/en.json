@@ -42,8 +42,6 @@
   "hide": "Hide",
   "sortBy": "Sort by",
   "gameTitle": "Game Title",
-  "players": "Players",
-  "player": "Player",
   "find": "Find",
   "findTitleOrUsername": "{{PROGRAM_TYPE}} title or username",
   "searchWithTitle": "{{PROGRAM_TYPE}} title",
