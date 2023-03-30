@@ -1,4 +1,3 @@
-import { submitGetResults } from "client/views/results/resultsThunks";
 import { submitGetGames } from "client/views/all-games/allGamesThunks";
 import {
   submitGetSettings,
@@ -25,9 +24,6 @@ export const loadData = async (): Promise<void> => {
 
   // Check if existing user session
   await recoverSession();
-
-  // Get assignment results
-  await loadResults();
 
   // Get user data
   await loadUser();
@@ -62,17 +58,6 @@ const recoverSession = async (): Promise<void> => {
     } catch (error) {
       console.log(`Error loading saved session, reset session...`); // eslint-disable-line no-console
     }
-  }
-};
-
-export const loadResults = async (): Promise<void> => {
-  const state = store.getState();
-  const dispatch: AppDispatch = store.dispatch;
-  const { loggedIn } = state.login;
-  const { activeSignupTime } = state.admin;
-
-  if (loggedIn && activeSignupTime) {
-    await dispatch(submitGetResults(activeSignupTime));
   }
 };
 

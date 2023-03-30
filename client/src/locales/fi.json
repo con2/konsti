@@ -42,8 +42,6 @@
   "hide": "Piilota",
   "sortBy": "Järjestys",
   "gameTitle": "Pelin nimi",
-  "players": "Pelaajat",
-  "player": "Pelaaja",
   "find": "Etsi",
   "findTitleOrUsername": "{{PROGRAM_TYPE}} nimi tai käyttäjänimi",
   "searchWithTitle": "{{PROGRAM_TYPE}} nimi",
@@ -173,9 +171,6 @@
   "signupQuestions": "Ilmoittautumisen lisätietokysymykset",
   "noOpenSignups": "Ei avoimia ilmoittautumisia",
   "signupOpen": "Ilmoittautuminen auki seuraaville alkamisajoille",
-  "activeTime": "Aktiinen aika",
-  "noActiveTime": "Aktiivista aikaa ei valittuna",
-  "activeTimeDescription": "Peleihin sijoittaminen suoritetaan ja tulokset näytetään aktiiviselle ajankohdalle",
   "lotterySignupOpenBetween": "arvontaan ilmoittautuminen",
   "signupSaved": "Ilmoittautuminen tallennettu",
   "signupError": {

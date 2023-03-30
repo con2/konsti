@@ -100,7 +100,6 @@ describe(`POST ${ApiEndpoint.SETTINGS}`, () => {
 
     const testSettings: Settings = {
       hiddenGames: [],
-      signupTime: "2021-07-16T14:28:01.316Z",
       appOpen: true,
       signupQuestions: [testSignupQuestion],
       signupStrategy: SignupStrategy.ALGORITHM,

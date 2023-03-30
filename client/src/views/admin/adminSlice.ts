@@ -14,9 +14,9 @@ const initialState = (): AdminState => {
 
   return {
     hiddenGames: [],
-    activeSignupTime: "",
+    activeAssignmentTime: "",
     appOpen: true,
-    responseMessage: "",
+    assignmentResponseMessage: "",
     signupQuestions: [],
     signupStrategy: undefined,
     errors: [],
@@ -41,15 +41,10 @@ const adminSlice = createSlice({
       return {
         ...state,
         hiddenGames: action.payload.hiddenGames,
-        activeSignupTime: action.payload.signupTime,
         appOpen: action.payload.appOpen,
         signupQuestions: action.payload.signupQuestions,
         signupStrategy: action.payload.signupStrategy,
       };
-    },
-
-    submitActiveSignupTimeAsync(state, action: PayloadAction<string>) {
-      return { ...state, activeSignupTime: action.payload };
     },
 
     submitSetSignupStrategyAsync(state, action: PayloadAction<SignupStrategy>) {
@@ -60,8 +55,8 @@ const adminSlice = createSlice({
       return { ...state, appOpen: action.payload };
     },
 
-    submitResponseMessageAsync(state, action: PayloadAction<string>) {
-      return { ...state, responseMessage: action.payload };
+    submitAssignmentResponseMessageAsync(state, action: PayloadAction<string>) {
+      return { ...state, assignmentResponseMessage: action.payload };
     },
 
     updateSignupQuestions(
@@ -101,10 +96,9 @@ const adminSlice = createSlice({
 export const {
   submitUpdateHiddenAsync,
   submitGetSettingsAsync,
-  submitActiveSignupTimeAsync,
   submitSetSignupStrategyAsync,
   submitToggleAppOpenAsync,
-  submitResponseMessageAsync,
+  submitAssignmentResponseMessageAsync,
   updateSignupQuestions,
   addError,
   removeError,
