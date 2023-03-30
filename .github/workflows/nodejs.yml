@@ -126,3 +126,17 @@ jobs:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
           SENTRY_ORG: konsti
           SENTRY_PROJECT: konsti-backend-prod
+
+      - name: Build Rapucon prod container
+        if: github.ref == 'refs/heads/rapucon-2023'
+        run: |
+          yarn docker:build-prod
+
+      - name: Push Rapucon prod container to AWS ECR
+        if: github.ref == 'refs/heads/rapucon-2023'
+        uses: jwalton/gh-ecr-push@v1.3.6
+        with:
+          access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          region: eu-west-1
+          image: konsti-rapucon:latest
