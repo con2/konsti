@@ -127,12 +127,12 @@ jobs:
           SENTRY_ORG: konsti
           SENTRY_PROJECT: konsti-backend-prod
 
-      - name: Build Rapucon prod container
+      - name: Build Rapucon container
         if: github.ref == 'refs/heads/rapucon-2023'
         run: |
-          yarn docker:build-prod
+          yarn docker:build-rapucon
 
-      - name: Push Rapucon prod container to AWS ECR
+      - name: Push Rapucon container to AWS ECR
         if: github.ref == 'refs/heads/rapucon-2023'
         uses: jwalton/gh-ecr-push@v1.3.6
         with:

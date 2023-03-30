@@ -17,6 +17,7 @@
     "docker-compose:stop": "cross-env APP_SETTINGS=development docker compose -f ./docker/docker-compose.yml down --remove-orphans",
     "docker-compose:test": "yarn build-front:ci && cross-env APP_SETTINGS=CI docker compose -f ./docker/docker-compose.yml -f ./client/playwright/docker-compose.yml up --attach playwright --attach server --build --remove-orphans --exit-code-from playwright --abort-on-container-exit",
     "docker:build-prod": "yarn build-front:prod && docker build . -t konsti-prod",
+    "docker:build-rapucon": "yarn build-front:prod && docker build . -t konsti-rapucon",
     "docker:build-staging": "yarn build-front:staging && docker build . -t konsti-staging",
     "docker:build-dev": "yarn build-front:dev && docker build . -t konsti-dev",
     "docker:start-dev-with-local-db": "yarn docker:build-dev && docker run -p 5000:5000 -d --env-file ./docker/docker-dev.env konsti-dev",
