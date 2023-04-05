@@ -1,6 +1,7 @@
 import React, { FC, ReactElement, useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
+import _ from "lodash";
 import { Game } from "shared/typings/models/game";
 import { EnterGameForm } from "./EnterGameForm";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
@@ -76,7 +77,15 @@ export const DirectSignupForm: FC<Props> = ({
 
   return (
     <>
-      {gameIsFull && <GameIsFull>{t("signup.gameIsFull")}</GameIsFull>}
+      {gameIsFull && (
+        <GameIsFull>
+          {_.capitalize(
+            t("signup.programItemIsFull", {
+              PROGRAM_TYPE: t(`signupProgramType.${game.programType}`),
+            })
+          )}
+        </GameIsFull>
+      )}
 
       {!alreadyEnteredToGame && !gameIsFull && (
         <>
