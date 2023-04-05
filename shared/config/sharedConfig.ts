@@ -30,6 +30,11 @@ interface SharedConfig {
   enableSentryInDev: boolean;
 }
 
+// Convention days
+const friday = "2022-07-29";
+const saturday = "2022-07-30";
+const sunday = "2022-07-31";
+
 export const sharedConfig: SharedConfig = {
   // App info
   appName: "Konsti",
@@ -46,39 +51,59 @@ export const sharedConfig: SharedConfig = {
     larp: [
       // Friday
       {
-        signupWindowStart: dayjs("2022-07-29T12:00:00Z"), // Fri 15:00
-        signupWindowClose: dayjs("2022-07-29T21:00:00Z"), // Fri 24:00
+        signupWindowStart: dayjs(`${friday}T12:00:00Z`), // Fri 15:00
+        signupWindowClose: dayjs(`${friday}T21:00:00Z`), // Fri 24:00
       },
       // Saturday morning / day
       {
-        signupWindowStart: dayjs("2022-07-29T15:00:00Z"), // Fri 18:00
-        signupWindowClose: dayjs("2022-07-30T15:00:00Z"), // Sat 18:00
+        signupWindowStart: dayjs(`${friday}T15:00:00Z`), // Fri 18:00
+        signupWindowClose: dayjs(`${saturday}T15:00:00Z`), // Sat 18:00
       },
       // Saturday evening
       {
-        signupWindowStart: dayjs("2022-07-30T08:00:00Z"), // Sat 11:00
-        signupWindowClose: dayjs("2022-07-30T21:00:00Z"), // Sat 24:00
+        signupWindowStart: dayjs(`${saturday}T08:00:00Z`), // Sat 11:00
+        signupWindowClose: dayjs(`${saturday}T21:00:00Z`), // Sat 24:00
       },
       // Sunday
       {
-        signupWindowStart: dayjs("2022-07-30T12:00:00Z"), // Sat 15:00
-        signupWindowClose: dayjs("2022-07-31T21:00:00Z"), // Sun 24:00
+        signupWindowStart: dayjs(`${saturday}T12:00:00Z`), // Sat 15:00
+        signupWindowClose: dayjs(`${sunday}T21:00:00Z`), // Sun 24:00
       },
     ],
 
     tournament: [
       // Friday to sunday, open whole convention
       {
-        signupWindowStart: dayjs("2022-07-29T12:00:00Z"), // Fri 15:00
-        signupWindowClose: dayjs("2022-07-31T21:00:00Z"), // Sun 24:00
+        signupWindowStart: dayjs(`${friday}T12:00:00Z`), // Fri 15:00
+        signupWindowClose: dayjs(`${sunday}T21:00:00Z`), // Sun 24:00
       },
     ],
 
     workshop: [
-      // Friday to sunday, open whole convention
+      // Friday
       {
-        signupWindowStart: dayjs("2022-07-29T12:00:00Z"), // Fri 15:00
-        signupWindowClose: dayjs("2022-07-31T21:00:00Z"), // Sun 24:00
+        signupWindowStart: dayjs(`${friday}T12:00:00Z`), // Fri 15:00
+        signupWindowClose: dayjs(`${friday}T21:00:00Z`), // Fri 24:00
+      },
+      // Saturday morning / day
+      {
+        signupWindowStart: dayjs(`${friday}T15:00:00Z`), // Fri 18:00
+        signupWindowClose: dayjs(`${saturday}T11:00:00Z`), // Sat 14:00
+      },
+      // Saturday day / evening
+      {
+        signupWindowStart: dayjs(`${saturday}T06:00:00Z`), // Sat 09:00
+        signupWindowClose: dayjs(`${saturday}T21:00:00Z`), // Sat 24:00
+      },
+      // Saturday evening / sunday morning
+      {
+        signupWindowStart: dayjs(`${saturday}T15:00:00Z`), // Sat 18:00
+        signupWindowClose: dayjs(`${sunday}T11:00:00Z`), // Sun 14:00
+      },
+      // Sunday
+      {
+        signupWindowStart: dayjs(`${sunday}T06:00:00Z`), // Sun 09:00
+        signupWindowClose: dayjs(`${sunday}T21:00:00Z`), // Sun 24:00
       },
     ],
   },
