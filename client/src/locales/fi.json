@@ -263,7 +263,7 @@
     "cannotSignupMoreThanOneGame": "Et voi ilmoittautua muihin samaan aikaan alkaviin {{PROGRAM_TYPE}}.",
     "signupCount": "{{PLAYERS}} / {{MAX_ATTENDANCE}} ilmoittautunutta",
     "attendeesNeeded": "Tarvitaan vielä {{COUNT}} {{ATTENDEE_TYPE}}!",
-    "gameIsFull": "Peli on täynnä",
+    "programItemIsFull": "{{PROGRAM_TYPE}} on täynnä",
     "confirmCancellation": "Vahvista peruutus",
     "staySignedUp": "Pysy ilmoittautuneena",
     "expectedDuration": "Kesto {{EXPECTED_DURATION}}",
