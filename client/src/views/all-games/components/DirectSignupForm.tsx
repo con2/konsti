@@ -1,7 +1,6 @@
 import React, { FC, ReactElement, useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
-import _ from "lodash";
 import { Game } from "shared/typings/models/game";
 import { EnterGameForm } from "./EnterGameForm";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
@@ -79,11 +78,9 @@ export const DirectSignupForm: FC<Props> = ({
     <>
       {gameIsFull && (
         <GameIsFull>
-          {_.capitalize(
-            t("signup.programItemIsFull", {
-              PROGRAM_TYPE: t(`signupProgramType.${game.programType}`),
-            })
-          )}
+          {t("signup.programItemIsFull", {
+            PROGRAM_TYPE: t(`programType.${game.programType}`),
+          })}
         </GameIsFull>
       )}
 
@@ -92,14 +89,16 @@ export const DirectSignupForm: FC<Props> = ({
           {enteredGamesForTimeslot.length === 1 && (
             <SignedGameContainer>
               {t("signup.alreadySignedToGame", {
-                PROGRAM_TYPE: t(`signupProgramType.${game.programType}`),
+                PROGRAM_TYPE: t(`programTypeIllative.${game.programType}`),
               })}{" "}
               <SignedGameName>
                 {enteredGamesForTimeslot[0].gameDetails.title}
               </SignedGameName>
               .{" "}
               {t("signup.cannotSignupMoreThanOneGame", {
-                PROGRAM_TYPE: t(`programTypeIllative.${game.programType}`),
+                PROGRAM_TYPE: t(
+                  `programTypeIllativePlural.${game.programType}`
+                ),
               })}
             </SignedGameContainer>
           )}
@@ -145,7 +144,7 @@ export const DirectSignupForm: FC<Props> = ({
         <>
           <SignedGameContainer>
             {t("signup.currentSignup", {
-              PROGRAM_TYPE: t(`signupProgramType.${game.programType}`),
+              PROGRAM_TYPE: t(`programTypeIllative.${game.programType}`),
             })}
           </SignedGameContainer>
           {!cancelSignupFormOpen && (

@@ -178,7 +178,8 @@
     "cancelFailed": "Virhe ilmoittautumista peruessa",
     "signupEnded": "Ilmoittautuminen päättynyt",
     "samePriority": "Prioriteetti on jo valittu",
-    "signupNotOpenYet": "Ilmoittautuminen ei ole vielä auki"
+    "signupNotOpenYet": "Ilmoittautuminen ei ole vielä auki",
+    "programFull": "Ohjelma on täynnä"
   },
   "signupUnsavedChanges": "Tallentamattomia muutoksia",
   "closingMessage": "Konsti on suljettu ja avautuu lähempänä seuraavaa tapahtumaa",
@@ -288,12 +289,6 @@
     "player": "pelaajaa",
     "participant": "osallistujaa"
   },
-  "signupProgramType": {
-    "tabletopRPG": "peliin",
-    "larp": "larppiin",
-    "tournament": "turnaukseen",
-    "workshop": "työpajaan"
-  },
   "programTypePlural": {
     "tabletopRPG": "pelit",
     "larp": "larpit",
@@ -313,6 +308,12 @@
     "workshop": "työpajasta"
   },
   "programTypeIllative": {
+    "tabletopRPG": "peliin",
+    "larp": "larppiin",
+    "tournament": "turnaukseen",
+    "workshop": "työpajaan"
+  },
+  "programTypeIllativePlural": {
     "tabletopRPG": "peleihin",
     "larp": "larppeihin",
     "tournament": "turnauksiin",
