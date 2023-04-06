@@ -78,7 +78,7 @@ export const DirectSignupForm: FC<Props> = ({
     <>
       {gameIsFull && (
         <GameIsFull>
-          {t("signup.programItemIsFull", {
+          {t("signup.programItemFull", {
             PROGRAM_TYPE: t(`programType.${game.programType}`),
           })}
         </GameIsFull>
