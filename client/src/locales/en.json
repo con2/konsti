@@ -178,7 +178,8 @@
     "cancelFailed": "Error canceling signup",
     "signupEnded": "Signup ended",
     "samePriority": "Priority already selected",
-    "signupNotOpenYet": "Signup not open yet"
+    "signupNotOpenYet": "Signup not open yet",
+    "programFull": "Program is full"
   },
   "signupUnsavedChanges": "Unsaved changes",
   "closingMessage": "Konsti is closed and will open closer to the next event",
@@ -263,7 +264,7 @@
     "cannotSignupMoreThanOneGame": "You cannot sign up to other {{PROGRAM_TYPE}} starting at the same time.",
     "signupCount": "{{PLAYERS}} / {{MAX_ATTENDANCE}} signed up",
     "attendeesNeeded": "Need {{COUNT}} {{ATTENDEE_TYPE}}!",
-    "programItemIsFull": "{{PROGRAM_TYPE}} is full",
+    "programItemFull": "{{PROGRAM_TYPE}} is full",
     "confirmCancellation": "Confirm cancellation",
     "staySignedUp": "Stay signed up",
     "expectedDuration": "Duration {{EXPECTED_DURATION}}",
@@ -288,12 +289,6 @@
     "player": "players",
     "participant": "participants"
   },
-  "signupProgramType": {
-    "tabletopRPG": "game",
-    "larp": "larp",
-    "tournament": "tournament",
-    "workshop": "workshop"
-  },
   "programTypePlural": {
     "tabletopRPG": "games",
     "larp": "larps",
@@ -313,6 +308,12 @@
     "workshop": "workshops"
   },
   "programTypeIllative": {
+    "tabletopRPG": "game",
+    "larp": "larp",
+    "tournament": "tournament",
+    "workshop": "workshop"
+  },
+  "programTypeIllativePlural": {
     "tabletopRPG": "games",
     "larp": "larps",
     "tournament": "tournaments",

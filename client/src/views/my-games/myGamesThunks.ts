@@ -64,7 +64,7 @@ export const submitUpdateFavorites = (
 };
 
 export enum PostEnteredGameErrorMessage {
-  GAME_FULL = "signup.programItemIsFull",
+  GAME_FULL = "signupError.programFull",
   UNKNOWN = "signupError.generic",
   SIGNUP_ENDED = "signupError.signupEnded",
   SIGNUP_NOT_OPEN_YET = "signupError.signupNotOpenYet",
