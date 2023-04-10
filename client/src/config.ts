@@ -10,6 +10,7 @@ interface Config {
   noSignupGames: string[];
   enableStrategyTestValue: boolean;
   enableRevolvingDoor: boolean;
+  enableOrganizerFeedback: boolean;
 }
 
 export const config: Config = {
@@ -19,6 +20,7 @@ export const config: Config = {
   // Convention settings
   noSignupGames: [],
   enableRevolvingDoor: false,
+  enableOrganizerFeedback: false,
 
   // Dev
   enableReduxTrace: false,
