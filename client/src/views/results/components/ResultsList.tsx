@@ -15,6 +15,7 @@ import { MULTIPLE_WHITESPACES_REGEX } from "client/views/all-games/AllGamesView"
 import { ButtonGroup } from "client/components/ButtonGroup";
 import { Tags } from "client/components/Tags";
 import { getAttendeeType } from "client/utils/getAttendeeType";
+import { sharedConfig } from "shared/config/sharedConfig";
 
 export const DirectResults = (): ReactElement => {
   const { t } = useTranslation();
@@ -151,7 +152,9 @@ export const DirectResults = (): ReactElement => {
                   return (
                     <div key={game.gameId}>
                       <ResultTitle key={game.gameId}>{game.title} </ResultTitle>
-                      <Tags tags={[t(`programType.${activeProgramType}`)]} />
+                      {sharedConfig.activeProgramTypes.length > 1 && (
+                        <Tags tags={[t(`programType.${activeProgramType}`)]} />
+                      )}
                       <PlayerContainer>
                         <PlayerCount
                           onClick={() => {
