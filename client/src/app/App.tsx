@@ -47,6 +47,9 @@ export const App = (): ReactElement => {
 
   getIconLibrary();
 
+  const showProgramTypeSelection =
+    (appOpen || isAdmin(userGroup)) && config.activeProgramTypes.length > 1;
+
   return (
     <>
       {loading && <Loading />}
@@ -56,7 +59,7 @@ export const App = (): ReactElement => {
           {loadedSettings !== "production" && showTestValues && <TestTime />}
           <Header />
           <ErrorBar />
-          {(appOpen || isAdmin(userGroup)) && <ProgramTypeSelection />}
+          {showProgramTypeSelection && <ProgramTypeSelection />}
           <AppContainer>
             <AppRoutes />
           </AppContainer>

@@ -8,10 +8,19 @@ import { Game, ProgramType } from "shared/typings/models/game";
 import { SignupQuestion } from "shared/typings/models/settings";
 import { SignupMessage } from "shared/typings/models/signupMessage";
 import { loadSession } from "client/utils/localStorage";
+import { config } from "client/config";
 
-const initialState = (): AdminState => {
+const getInitialActiveProgramType = (): ProgramType => {
   const persistedState = loadSession();
 
+  if (config.activeProgramTypes.length === 1) {
+    return config.activeProgramTypes[0];
+  }
+
+  return persistedState?.admin?.activeProgramType ?? ProgramType.TABLETOP_RPG;
+};
+
+const initialState = (): AdminState => {
   return {
     hiddenGames: [],
     activeAssignmentTime: "",
@@ -20,8 +29,7 @@ const initialState = (): AdminState => {
     signupQuestions: [],
     signupStrategy: undefined,
     errors: [],
-    activeProgramType:
-      persistedState?.admin?.activeProgramType ?? ProgramType.TABLETOP_RPG,
+    activeProgramType: getInitialActiveProgramType(),
     signupMessages: [],
   };
 };

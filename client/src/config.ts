@@ -1,3 +1,5 @@
+import { ProgramType } from "shared/typings/models/game";
+
 interface Config {
   MESSAGE_DELAY: number;
   apiServerUrl: string;
@@ -10,6 +12,7 @@ interface Config {
   noSignupGames: string[];
   enableStrategyTestValue: boolean;
   enableRevolvingDoor: boolean;
+  activeProgramTypes: ProgramType[];
 }
 
 export const config: Config = {
@@ -19,6 +22,7 @@ export const config: Config = {
   // Convention settings
   noSignupGames: [],
   enableRevolvingDoor: false,
+  activeProgramTypes: [ProgramType.TABLETOP_RPG],
 
   // Dev
   enableReduxTrace: false,
