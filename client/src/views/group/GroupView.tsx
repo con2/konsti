@@ -15,7 +15,7 @@ import { getTime } from "client/utils/getTime";
 import { selectActiveEnteredGames } from "client/views/my-games/myGamesSlice";
 import { sharedConfig } from "shared/config/sharedConfig";
 
-const { directSignupAlwaysOpen } = sharedConfig;
+const { directSignupAlwaysOpenIds } = sharedConfig;
 
 export const GroupView = (): ReactElement => {
   const username = useAppSelector((state) => state.login.username);
@@ -39,7 +39,7 @@ export const GroupView = (): ReactElement => {
 
   const filteredActiveEnteredGames = activeEnteredGames.filter(
     (activeEnteredGame) =>
-      !directSignupAlwaysOpen.includes(activeEnteredGame.gameDetails.gameId)
+      !directSignupAlwaysOpenIds.includes(activeEnteredGame.gameDetails.gameId)
   );
 
   const isGroupCreator = getIsGroupCreator(groupCode, serial);

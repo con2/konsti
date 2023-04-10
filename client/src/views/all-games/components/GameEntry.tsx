@@ -50,7 +50,7 @@ export const GameEntry = ({
 
   const dispatch = useAppDispatch();
 
-  const signupAlwaysOpen = sharedConfig.directSignupAlwaysOpen.includes(
+  const signupAlwaysOpen = sharedConfig.directSignupAlwaysOpenIds.includes(
     game.gameId
   );
 

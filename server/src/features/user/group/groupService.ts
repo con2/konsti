@@ -22,7 +22,7 @@ import {
 } from "shared/typings/api/groups";
 import { User } from "shared/typings/models/user";
 
-const { directSignupAlwaysOpen } = sharedConfig;
+const { directSignupAlwaysOpenIds } = sharedConfig;
 
 export const createGroup = async (
   username: string,
@@ -41,7 +41,7 @@ export const createGroup = async (
   }
 
   const filteredSignups = signups.filter(
-    (signup) => !directSignupAlwaysOpen.includes(signup.game.gameId)
+    (signup) => !directSignupAlwaysOpenIds.includes(signup.game.gameId)
   );
 
   const timeNow = await getTime();
@@ -136,7 +136,7 @@ export const joinGroup = async (
   }
 
   const filteredSignups = signups.filter(
-    (signup) => !directSignupAlwaysOpen.includes(signup.game.gameId)
+    (signup) => !directSignupAlwaysOpenIds.includes(signup.game.gameId)
   );
 
   const timeNow = await getTime();

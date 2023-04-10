@@ -18,7 +18,7 @@ interface SharedConfig {
   PRE_SIGNUP_START: number;
   PHASE_GAP: number;
   directSignupWindows: Record<ProgramType, SignupWindow[]>;
-  directSignupAlwaysOpen: string[];
+  directSignupAlwaysOpenIds: string[];
   tracesSampleRate: number;
   enableSentryInDev: boolean;
   requireRegistrationCode: boolean;
@@ -103,7 +103,7 @@ export const sharedConfig: SharedConfig = {
     ],
   },
 
-  directSignupAlwaysOpen: [
+  directSignupAlwaysOpenIds: [
     "p5344", // PFS multi-table special: Pathfinder Society #3-99 Fate in the Future
     "p5825", // Corporations 2.0
   ],
