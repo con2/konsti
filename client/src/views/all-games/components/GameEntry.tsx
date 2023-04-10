@@ -181,14 +181,7 @@ export const GameEntry = ({
           />
         )}
       </GameHeader>
-      <GameDetailsView game={game} isAlwaysExpanded={isAlwaysExpanded} />
-      {loggedIn && isEnterGameMode && (
-        <DirectSignupForm
-          game={game}
-          gameIsFull={gameIsFull}
-          startTime={startTime}
-        />
-      )}
+
       {loggedIn && !isEnterGameMode && (
         <AlgorithmSignupForm
           game={game}
@@ -196,6 +189,16 @@ export const GameEntry = ({
           signedGames={signedGames}
         />
       )}
+
+      {loggedIn && isEnterGameMode && (
+        <DirectSignupForm
+          game={game}
+          gameIsFull={gameIsFull}
+          startTime={startTime}
+        />
+      )}
+
+      <GameDetailsView game={game} isAlwaysExpanded={isAlwaysExpanded} />
     </GameContainer>
   );
 };
