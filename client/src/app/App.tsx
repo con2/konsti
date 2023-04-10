@@ -15,6 +15,7 @@ import { MOBILE_MARGIN } from "client/globalStyle";
 import { newUpdatePageReloadKey } from "client/utils/localStorage";
 import { isAdmin } from "client/utils/checkUserGroup";
 import { TestTime } from "client/components/TestTime";
+import { sharedConfig } from "shared/config/sharedConfig";
 
 const { loadedSettings, showTestValues } = config;
 
@@ -48,7 +49,8 @@ export const App = (): ReactElement => {
   getIconLibrary();
 
   const showProgramTypeSelection =
-    (appOpen || isAdmin(userGroup)) && config.activeProgramTypes.length > 1;
+    (appOpen || isAdmin(userGroup)) &&
+    sharedConfig.activeProgramTypes.length > 1;
 
   return (
     <>

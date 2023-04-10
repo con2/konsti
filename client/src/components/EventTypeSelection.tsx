@@ -7,7 +7,7 @@ import { setActiveProgramType } from "client/views/admin/adminSlice";
 import { Dropdown } from "client/components/Dropdown";
 import { saveSession } from "client/utils/localStorage";
 import { MOBILE_MARGIN } from "client/globalStyle";
-import { config } from "client/config";
+import { sharedConfig } from "shared/config/sharedConfig";
 
 const ROW_HEIGHT = 32;
 
@@ -19,7 +19,7 @@ export const ProgramTypeSelection = (): ReactElement => {
     (state) => state.admin.activeProgramType
   );
 
-  const programTypes = config.activeProgramTypes;
+  const programTypes = sharedConfig.activeProgramTypes;
 
   const dropdownItems = programTypes.map((programType) => ({
     value: programType,

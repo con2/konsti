@@ -8,7 +8,6 @@ interface SignupWindow {
 }
 
 interface SharedConfig {
-  appName: string;
   assignmentStrategy: AssignmentStrategy;
   enableGroups: boolean;
   defaultSignupStrategy: SignupStrategy;
@@ -23,6 +22,7 @@ interface SharedConfig {
   tracesSampleRate: number;
   enableSentryInDev: boolean;
   requireRegistrationCode: boolean;
+  activeProgramTypes: ProgramType[];
 }
 
 // Convention days
@@ -31,14 +31,12 @@ const saturday = "2022-07-30";
 const sunday = "2022-07-31";
 
 export const sharedConfig: SharedConfig = {
-  // App info
-  appName: "Konsti",
-
   // Convention settings
   requireRegistrationCode: false,
   assignmentStrategy: AssignmentStrategy.RANDOM_PADG,
   enableGroups: false,
   defaultSignupStrategy: SignupStrategy.ALGORITHM_AND_DIRECT,
+  activeProgramTypes: [ProgramType.TABLETOP_RPG],
 
   directSignupWindows: {
     tabletopRPG: [],

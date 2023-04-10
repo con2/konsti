@@ -8,8 +8,6 @@ import "webpack-dev-server";
 import { merge } from "webpack-merge";
 import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
 import { config } from "./src/config";
-/* eslint-disable-next-line no-restricted-imports */
-import { sharedConfig } from "../shared/config/sharedConfig";
 
 const TARGET = process.env.npm_lifecycle_event;
 
@@ -49,7 +47,7 @@ const commonConfig: Configuration = {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: sharedConfig.appName,
+      title: "Konsti",
       favicon: path.resolve(__dirname, "assets", "favicon.png"),
       template: path.resolve(__dirname, "src", "index.html"),
     }),

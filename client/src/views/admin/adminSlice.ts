@@ -8,13 +8,13 @@ import { Game, ProgramType } from "shared/typings/models/game";
 import { SignupQuestion } from "shared/typings/models/settings";
 import { SignupMessage } from "shared/typings/models/signupMessage";
 import { loadSession } from "client/utils/localStorage";
-import { config } from "client/config";
+import { sharedConfig } from "shared/config/sharedConfig";
 
 const getInitialActiveProgramType = (): ProgramType => {
   const persistedState = loadSession();
 
-  if (config.activeProgramTypes.length === 1) {
-    return config.activeProgramTypes[0];
+  if (sharedConfig.activeProgramTypes.length === 1) {
+    return sharedConfig.activeProgramTypes[0];
   }
 
   return persistedState?.admin?.activeProgramType ?? ProgramType.TABLETOP_RPG;
