@@ -87,7 +87,9 @@ export const AlgorithmSignupForm: FC<Props> = ({
     .subtract(PRE_SIGNUP_START, "minutes")
     .format();
   const timeNow = getTime();
-  const lotterySignupOpen = dayjs(signupStartTime).isBefore(timeNow);
+  const lotterySignupOpen =
+    dayjs(signupStartTime).isBefore(timeNow) ||
+    sharedConfig.lotterySignupAlwaysOpen;
 
   if (!loggedIn) {
     return null;

@@ -185,6 +185,8 @@ export const GameEntry = ({
         )}
       </GameHeader>
 
+      <GameDetailsView game={game} isAlwaysExpanded={isAlwaysExpanded} />
+
       {loggedIn && !isEnterGameMode && (
         <AlgorithmSignupForm
           game={game}
@@ -200,8 +202,6 @@ export const GameEntry = ({
           startTime={startTime}
         />
       )}
-
-      <GameDetailsView game={game} isAlwaysExpanded={isAlwaysExpanded} />
     </GameContainer>
   );
 };
