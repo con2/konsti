@@ -11,6 +11,7 @@ interface Config {
   enableStrategyTestValue: boolean;
   enableRevolvingDoor: boolean;
   enableOrganizerFeedback: boolean;
+  enableTagDropdown: boolean;
 }
 
 export const config: Config = {
@@ -21,6 +22,7 @@ export const config: Config = {
   noSignupGames: [],
   enableRevolvingDoor: false,
   enableOrganizerFeedback: false,
+  enableTagDropdown: false,
 
   // Dev
   enableReduxTrace: false,

@@ -194,18 +194,21 @@ export const AllGamesView = (): ReactElement => {
             )}
         </ButtonGroup>
 
-        <div>
-          <ChooseTagsInstruction>{t("chooseTag")} </ChooseTagsInstruction>
-          <Dropdown
-            onChange={(event: ChangeEvent<HTMLSelectElement>) => {
-              const tag = event.target.value;
-              setSelectedTag(tag);
-              sessionStorage.setItem(SessionStorageValue.ALL_GAMES_TAG, tag);
-            }}
-            options={options}
-            selectedValue={selectedTag}
-          />
-        </div>
+        {config.enableTagDropdown && (
+          <div>
+            <ChooseTagsInstruction>{t("chooseTag")} </ChooseTagsInstruction>
+            <Dropdown
+              onChange={(event: ChangeEvent<HTMLSelectElement>) => {
+                const tag = event.target.value;
+                setSelectedTag(tag);
+                sessionStorage.setItem(SessionStorageValue.ALL_GAMES_TAG, tag);
+              }}
+              options={options}
+              selectedValue={selectedTag}
+            />
+          </div>
+        )}
+
         {selectedView === SelectedView.REVOLVING_DOOR && (
           <>
             <RevolvingDoorInstruction>
