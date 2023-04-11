@@ -12,6 +12,7 @@ interface Config {
   enableRevolvingDoor: boolean;
   enableOrganizerFeedback: boolean;
   enableTagDropdown: boolean;
+  alwaysShowAllProgramItems: boolean;
 }
 
 export const config: Config = {
@@ -23,6 +24,7 @@ export const config: Config = {
   enableRevolvingDoor: false,
   enableOrganizerFeedback: false,
   enableTagDropdown: false,
+  alwaysShowAllProgramItems: true,
 
   // Dev
   enableReduxTrace: false,

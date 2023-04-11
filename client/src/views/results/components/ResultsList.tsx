@@ -16,6 +16,7 @@ import { ButtonGroup } from "client/components/ButtonGroup";
 import { Tags } from "client/components/Tags";
 import { getAttendeeType } from "client/utils/getAttendeeType";
 import { sharedConfig } from "shared/config/sharedConfig";
+import { config } from "client/config";
 
 export const DirectResults = (): ReactElement => {
   const { t } = useTranslation();
@@ -30,7 +31,9 @@ export const DirectResults = (): ReactElement => {
   );
   const hiddenGames = useAppSelector((state) => state.admin.hiddenGames);
 
-  const [showAllGames, setShowAllGames] = useState<boolean>(false);
+  const [showAllGames, setShowAllGames] = useState<boolean>(
+    config.alwaysShowAllProgramItems
+  );
   const [showSignupMessages, setShowSignupMessages] = useState<string[]>([]);
   const [showPlayers, setShowPlayers] = useState<string[]>([]);
 
@@ -102,22 +105,25 @@ export const DirectResults = (): ReactElement => {
         })}
         resetValue={() => setSearchTerm("")}
       />
-      <ButtonGroup>
-        <Button
-          onClick={() => setShowAllGames(false)}
-          disabled={!showAllGames}
-          buttonStyle={ButtonStyle.SECONDARY}
-        >
-          {t("lastStartedAndUpcoming")}
-        </Button>
-        <Button
-          disabled={showAllGames}
-          onClick={() => setShowAllGames(true)}
-          buttonStyle={ButtonStyle.SECONDARY}
-        >
-          {t("all")}
-        </Button>
-      </ButtonGroup>
+
+      {!config.alwaysShowAllProgramItems && (
+        <ButtonGroup>
+          <Button
+            onClick={() => setShowAllGames(false)}
+            disabled={!showAllGames}
+            buttonStyle={ButtonStyle.SECONDARY}
+          >
+            {t("lastStartedAndUpcoming")}
+          </Button>
+          <Button
+            disabled={showAllGames}
+            onClick={() => setShowAllGames(true)}
+            buttonStyle={ButtonStyle.SECONDARY}
+          >
+            {t("all")}
+          </Button>
+        </ButtonGroup>
+      )}
 
       {filteredGames.length === 0 && <h3>{t("resultsView.noResults")}</h3>}
 

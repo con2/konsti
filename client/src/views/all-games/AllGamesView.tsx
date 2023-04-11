@@ -46,9 +46,11 @@ export const AllGamesView = (): ReactElement => {
     (state) => state.admin.activeProgramType
   );
 
-  const [selectedView, setSelectedView] = useState<SelectedView>(
-    SelectedView.UPCOMING
-  );
+  const defaultView = config.alwaysShowAllProgramItems
+    ? SelectedView.ALL
+    : SelectedView.UPCOMING;
+
+  const [selectedView, setSelectedView] = useState<SelectedView>(defaultView);
   const [selectedTag, setSelectedTag] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [searchTerm, setSearchTerm] = useState<string>("");
@@ -166,21 +168,25 @@ export const AllGamesView = (): ReactElement => {
     <>
       <HeaderContainer>
         <ButtonGroup>
-          <Button
-            disabled={selectedView === SelectedView.UPCOMING}
-            buttonStyle={ButtonStyle.SECONDARY}
-            onClick={() => setView(SelectedView.UPCOMING)}
-          >
-            {t("upcoming")}
-          </Button>
+          {!config.alwaysShowAllProgramItems && (
+            <>
+              <Button
+                disabled={selectedView === SelectedView.UPCOMING}
+                buttonStyle={ButtonStyle.SECONDARY}
+                onClick={() => setView(SelectedView.UPCOMING)}
+              >
+                {t("upcoming")}
+              </Button>
 
-          <Button
-            disabled={selectedView === SelectedView.ALL}
-            buttonStyle={ButtonStyle.SECONDARY}
-            onClick={() => setView(SelectedView.ALL)}
-          >
-            {t("all")}
-          </Button>
+              <Button
+                disabled={selectedView === SelectedView.ALL}
+                buttonStyle={ButtonStyle.SECONDARY}
+                onClick={() => setView(SelectedView.ALL)}
+              >
+                {t("all")}
+              </Button>
+            </>
+          )}
 
           {config.enableRevolvingDoor &&
             activeProgramType === ProgramType.TABLETOP_RPG && (
