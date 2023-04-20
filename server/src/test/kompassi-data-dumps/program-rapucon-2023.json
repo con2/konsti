@@ -48,19 +48,19 @@
     "max_players": 5
   },
   {
-    "title": "L&L: Kallosaaren Haaksirikkoiset (pelautus 1)",
+    "title": "One Ring 2e: Seikkailuja Konnussa",
     "identifier": "rapucon-5",
-    "description": "\"Valtamerialus Vicaticin neitsytmatka päättyy törmäykseen jättiläiskilpikonnan kanssa. Muutama onnekas onnistuu kuitenkin pelastautumaan läheiselle saarelle. Mutta mikä tämä saari on ja miksei sitä oltu merkattu edes karttaan?\"\r\n\r\nSelviytymisseikkailu autiolla ja tuntemattomalla saarella, joka kätkee sisäänsä salaisuuksia. Pelisysteeminä Legendoja & Lohikäärmeitä (pohjautuu Dungeons&Dragons-pelin 5. laitokseen). Pelimekaniikkoja on siis tiedossa, mutta niiden hallintaa ei edellytetä. Valmiit 3. tason hahmot.",
+    "description": "One Ring-pelin 2. laitoksen Starter Setistä pelataan 1-2 skenaariota jaksamisen ja ehtimisen mukaan.\r\n\r\nHahmot ovat hobitteja ja seikkailut ovat varsin jännittäviä; ne saattavat ulottua jopa Konnun pohjois-neljännyksen äärirajoille. Kastuvatko villasukat? Jääkö toinen aamiainen välistä?",
     "category_title": "Roolipeli / Pen & Paper RPG",
     "formatted_hosts": "Tuomas H",
     "room_name": "Päätalo, työhuone",
     "start_time": "2023-05-05T17:00:00Z",
     "end_time": "2023-05-05T21:30:00Z",
-    "min_players": 4,
+    "min_players": 3,
     "max_players": 5
   },
   {
-    "title": "L&L: Kallosaaren Haaksirikkoiset (pelautus 2)",
+    "title": "L&L: Kallosaaren Haaksirikkoiset",
     "identifier": "rapucon-6",
     "description": "\"Valtamerialus Vicaticin neitsytmatka päättyy törmäykseen jättiläiskilpikonnan kanssa. Muutama onnekas onnistuu kuitenkin pelastautumaan läheiselle saarelle. Mutta mikä tämä saari on ja miksei sitä oltu merkattu edes karttaan?\"\r\n\r\nSelviytymisseikkailu autiolla ja tuntemattomalla saarella, joka kätkee sisäänsä salaisuuksia. Pelisysteeminä Legendoja & Lohikäärmeitä (pohjautuu Dungeons&Dragons-pelin 5. laitokseen). Pelimekaniikkoja on siis tiedossa, mutta niiden hallintaa ei edellytetä. Valmiit 3. tason hahmot.",
     "category_title": "Roolipeli / Pen & Paper RPG",
