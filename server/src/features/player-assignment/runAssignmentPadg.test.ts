@@ -1,3 +1,11 @@
+import {
+  expect,
+  test,
+  afterAll,
+  afterEach,
+  beforeAll,
+  beforeEach,
+} from "vitest";
 import mongoose from "mongoose";
 import { MongoMemoryServer } from "mongodb-memory-server";
 import dayjs from "dayjs";
@@ -66,7 +74,12 @@ test("Assignment with valid data should return success with padg strategy", asyn
   const groupResults = assignResults.results.filter((result) =>
     groupTestUsers.includes(result.username)
   );
-  expect(groupResults.length).toBeOneOf([groupTestUsers.length, 0]);
+
+  if (groupResults.length) {
+    expect(groupResults.length).toEqual(groupTestUsers.length);
+  } else {
+    expect(groupResults.length).toEqual(0);
+  }
 
   await verifyUserSignups();
 
@@ -84,7 +97,12 @@ test("Assignment with valid data should return success with padg strategy", asyn
   const groupResults2 = assignResults2.results.filter((result) =>
     groupTestUsers.includes(result.username)
   );
-  expect(groupResults2.length).toBeOneOf([groupTestUsers.length, 0]);
+
+  if (groupResults2.length) {
+    expect(groupResults2.length).toEqual(groupTestUsers.length);
+  } else {
+    expect(groupResults2.length).toEqual(0);
+  }
 
   await verifyUserSignups();
 });

@@ -1,12 +1,19 @@
+import {
+  expect,
+  test,
+  vi,
+  afterAll,
+  afterEach,
+  beforeAll,
+  describe,
+} from "vitest";
 import request from "supertest";
 import { MongoMemoryServer } from "mongodb-memory-server";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
-import { ConventionType } from "shared/config/sharedConfig.types";
 import { startTestServer, stopTestServer } from "server/test/utils/testServer";
 import { UserGroup } from "shared/typings/models/user";
 import { getJWT } from "server/utils/jwt";
-
-jest.mock("server/utils/logger");
+import { ConventionType } from "shared/config/sharedConfig.types";
 
 let mongoServer: MongoMemoryServer;
 
@@ -15,7 +22,7 @@ beforeAll(async () => {
 });
 
 afterEach(() => {
-  jest.resetModules();
+  vi.resetModules();
 });
 
 afterAll(async () => {
@@ -106,7 +113,7 @@ describe(`POST ${ApiEndpoint.USERS}`, () => {
   });
 
   test("should return 422 without serial if convention is live", async () => {
-    jest.mock("shared/config/sharedConfig", () => ({
+    vi.doMock("shared/config/sharedConfig", () => ({
       sharedConfig: { conventionType: ConventionType.LIVE },
     }));
 
@@ -124,7 +131,7 @@ describe(`POST ${ApiEndpoint.USERS}`, () => {
   });
 
   test("should return 200 without serial if convention is remote", async () => {
-    jest.mock("shared/config/sharedConfig", () => ({
+    vi.doMock("shared/config/sharedConfig", () => ({
       sharedConfig: { conventionType: ConventionType.REMOTE },
     }));
 

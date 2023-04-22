@@ -48,7 +48,7 @@ jobs:
         run: |
           yarn type-check
 
-      - name: Run Jest tests
+      - name: Run Vitest tests
         run: |
           yarn test
 
