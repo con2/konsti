@@ -13,8 +13,6 @@ import { startTestServer, stopTestServer } from "server/test/utils/testServer";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { SignupData } from "shared/typings/api/myGames";
 
-vi.mock("server/utils/logger");
-
 let mongoServer: MongoMemoryServer;
 
 beforeAll(async () => {

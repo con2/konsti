@@ -12,8 +12,6 @@ import { MongoMemoryServer } from "mongodb-memory-server";
 import { startTestServer, stopTestServer } from "server/test/utils/testServer";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 
-vi.mock("server/utils/logger");
-
 let mongoServer: MongoMemoryServer;
 
 beforeAll(async () => {

@@ -15,8 +15,6 @@ import { UserGroup } from "shared/typings/models/user";
 import { getJWT } from "server/utils/jwt";
 import { ConventionType } from "shared/config/sharedConfig.types";
 
-vi.mock("server/utils/logger");
-
 let mongoServer: MongoMemoryServer;
 
 beforeAll(async () => {
