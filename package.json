@@ -38,8 +38,8 @@
     "start": "yarn workspace konsti-server start",
     "stylelint": "yarn workspace konsti-client stylelint",
     "test-assign": "yarn workspace konsti-server test-assign",
-    "test:watch": "yarn vitest --watch",
-    "test": "yarn vitest",
+    "test:watch": "yarn vitest watch",
+    "test": "yarn vitest run",
     "type-check": "tsc --noEmit",
     "update-yarn": "yarn set version stable && yarn plugin import interactive-tools && yarn plugin import workspace-tools"
   },

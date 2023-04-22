@@ -66,7 +66,6 @@ module.exports = {
     // eslint-plugin-vitest
     "vitest/no-disabled-tests": "error",
     "vitest/no-focused-tests": "error",
-    "vitest/expect-expect": "off", // TODO: Enable this to detect useless tests
     "vitest/prefer-to-be": "off", // Don't want this
 
     // eslint-plugin-eslint-comments
