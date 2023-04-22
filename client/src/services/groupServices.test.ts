@@ -5,13 +5,14 @@ import { CreateGroupRequest } from "shared/typings/api/groups";
 import { api } from "client/utils/api";
 
 test("GET group from server", async () => {
-  const spy = vi.spyOn(api, "get").mockResolvedValue("");
+  const spy = vi.spyOn(api, "get").mockResolvedValue({ data: "test response" });
 
   const groupCode = "123";
   const username = "test user";
 
-  await getGroup(groupCode, username);
+  const response = await getGroup(groupCode, username);
 
+  expect(response).toEqual("test response");
   expect(spy).toHaveBeenCalledTimes(1);
   expect(spy).toHaveBeenCalledWith(ApiEndpoint.GROUP, {
     params: { groupCode, username },
@@ -19,15 +20,18 @@ test("GET group from server", async () => {
 });
 
 test("POST group to server", async () => {
-  const spy = vi.spyOn(api, "post").mockResolvedValue("");
+  const spy = vi
+    .spyOn(api, "post")
+    .mockResolvedValue({ data: "test response" });
 
   const groupRequest: CreateGroupRequest = {
     groupCode: "123",
     username: "test user",
   };
 
-  await postCreateGroup(groupRequest);
+  const response = await postCreateGroup(groupRequest);
 
+  expect(response).toEqual("test response");
   expect(spy).toHaveBeenCalledTimes(1);
   expect(spy).toHaveBeenCalledWith(ApiEndpoint.GROUP, groupRequest);
 });

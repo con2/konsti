@@ -5,11 +5,14 @@ import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { api } from "client/utils/api";
 
 test("POST hidden games to server", async () => {
-  const spy = vi.spyOn(api, "post").mockResolvedValue("");
+  const spy = vi
+    .spyOn(api, "post")
+    .mockResolvedValue({ data: "test response" });
   const hiddenData: Game[] = [];
 
-  await postHidden(hiddenData);
+  const response = await postHidden(hiddenData);
 
+  expect(response).toEqual("test response");
   expect(spy).toHaveBeenCalledTimes(1);
   expect(spy).toHaveBeenCalledWith(ApiEndpoint.HIDDEN, {
     hiddenData,

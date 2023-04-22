@@ -4,15 +4,18 @@ import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { api } from "client/utils/api";
 
 test("POST favorited games to server", async () => {
-  const spy = vi.spyOn(api, "post").mockResolvedValue("");
+  const spy = vi
+    .spyOn(api, "post")
+    .mockResolvedValue({ data: "test response" });
 
   const favoriteData = {
     username: "test username",
     favoritedGameIds: [],
   };
 
-  await postFavorite(favoriteData);
+  const response = await postFavorite(favoriteData);
 
+  expect(response).toEqual("test response");
   expect(spy).toHaveBeenCalledTimes(1);
   expect(spy).toHaveBeenCalledWith(ApiEndpoint.FAVORITE, favoriteData);
 });

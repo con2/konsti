@@ -4,7 +4,9 @@ import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { api } from "client/utils/api";
 
 test("POST login to server", async () => {
-  const spy = vi.spyOn(api, "post").mockResolvedValue("");
+  const spy = vi
+    .spyOn(api, "post")
+    .mockResolvedValue({ data: "test response" });
 
   const username = "test username";
   const password = "test password";
@@ -14,8 +16,9 @@ test("POST login to server", async () => {
     password,
   };
 
-  await postLogin(loginData);
+  const response = await postLogin(loginData);
 
+  expect(response).toEqual("test response");
   expect(spy).toHaveBeenCalledTimes(1);
   expect(spy).toHaveBeenCalledWith(ApiEndpoint.LOGIN, {
     username,
