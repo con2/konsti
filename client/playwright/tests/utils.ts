@@ -5,7 +5,7 @@ export const populateDb = async (request: APIRequestContext): Promise<void> => {
     process.env.PLAYWRIGHT_BASEURL ?? `http://localhost:5000`
   }/api/populate-db`;
   const response = await request.post(url);
-  expect(response.status()).toEqual(200);
+  expect(response.status()).toBe(200);
 };
 
 export const logTestStart = (testName: string): void => {
