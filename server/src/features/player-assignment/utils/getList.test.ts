@@ -1,3 +1,4 @@
+import { expect, test } from "vitest";
 import { testGame } from "shared/tests/testGame";
 import { getList } from "server/features/player-assignment/utils/getList";
 import { User, UserGroup } from "shared/typings/models/user";

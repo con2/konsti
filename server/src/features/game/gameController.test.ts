@@ -4,11 +4,21 @@ import { MongoMemoryServer } from "mongodb-memory-server";
 import { faker } from "@faker-js/faker";
 import dayjs from "dayjs";
 import _ from "lodash";
+import {
+  expect,
+  test,
+  vi,
+  afterAll,
+  afterEach,
+  beforeAll,
+  beforeEach,
+  describe,
+} from "vitest";
 import { startServer, closeServer } from "server/utils/server";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { getJWT } from "server/utils/jwt";
 import { UserGroup } from "shared/typings/models/user";
-import * as kompassiModule from "server/features/game/utils/getGamesFromKompassi";
+import { testHelperWrapper } from "server/features/game/utils/getGamesFromKompassi";
 import {
   testKompassiGame,
   testKompassiGame2,
@@ -100,14 +110,15 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
   });
 
   test("should return 200 with valid authorization and add games to DB", async () => {
-    jest
-      .spyOn(kompassiModule, "getEventProgramItems")
+    const spy = vi
+      .spyOn(testHelperWrapper, "getEventProgramItems")
       .mockResolvedValue([testKompassiGame]);
 
     const response = await request(server)
       .post(ApiEndpoint.GAMES)
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
     expect(response.status).toEqual(200);
+    expect(spy).toHaveBeenCalledTimes(1);
 
     const games = await findGames();
 
@@ -116,9 +127,9 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
   });
 
   test("should remove games, selectedGames, signups, and favoritedGames that are not in the server response", async () => {
-    jest
-      .spyOn(kompassiModule, "getEventProgramItems")
-      .mockResolvedValue([testKompassiGame]);
+    vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue([
+      testKompassiGame,
+    ]);
 
     await saveGames([testGame, testGame2]);
     await saveUser(mockUser);
@@ -156,8 +167,7 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
   });
 
   test("should not modify anything if server response is invalid", async () => {
-    jest
-      .spyOn(kompassiModule, "getEventProgramItems")
+    vi.spyOn(testHelperWrapper, "getEventProgramItems")
       // @ts-expect-error: Invalid value for testing
       .mockResolvedValue({ value: "broken response" });
 
@@ -177,7 +187,7 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
   });
 
   test("should not modify anything if server response is empty array", async () => {
-    jest.spyOn(kompassiModule, "getEventProgramItems").mockResolvedValue([]);
+    vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue([]);
 
     await saveGames([testGame, testGame2]);
 
@@ -202,7 +212,7 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
       .add(1, "hours")
       .format();
 
-    jest.spyOn(kompassiModule, "getEventProgramItems").mockResolvedValue([
+    vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue([
       {
         ...testKompassiGame,
         start_time: newStartTime,
@@ -230,7 +240,7 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
       .utc()
       .add(1, "hours")
       .format();
-    jest.spyOn(kompassiModule, "getEventProgramItems").mockResolvedValue([
+    vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue([
       {
         ...testKompassiGame,
         start_time: newStartTime,
