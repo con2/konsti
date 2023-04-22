@@ -1,9 +1,18 @@
+import {
+  expect,
+  test,
+  vi,
+  afterAll,
+  afterEach,
+  beforeAll,
+  describe,
+} from "vitest";
 import request from "supertest";
 import { MongoMemoryServer } from "mongodb-memory-server";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { startTestServer, stopTestServer } from "server/test/utils/testServer";
 
-jest.mock("server/utils/logger");
+vi.mock("server/utils/logger");
 
 let mongoServer: MongoMemoryServer;
 
@@ -12,7 +21,7 @@ beforeAll(async () => {
 });
 
 afterEach(() => {
-  jest.resetModules();
+  vi.resetModules();
 });
 
 afterAll(async () => {

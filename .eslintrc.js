@@ -6,7 +6,7 @@ module.exports = {
   plugins: [
     "eslint-plugin-ban",
     "eslint-plugin-compat",
-    "eslint-plugin-jest",
+    "eslint-plugin-vitest",
     "eslint-plugin-prettier",
     "eslint-plugin-promise",
     "eslint-plugin-import",
@@ -18,7 +18,7 @@ module.exports = {
     "eslint-config-standard-with-typescript",
     "eslint-config-prettier",
     "plugin:eslint-plugin-eslint-comments/recommended",
-    "plugin:eslint-plugin-jest/recommended",
+    "plugin:eslint-plugin-vitest/recommended",
     "plugin:eslint-plugin-promise/recommended",
     "plugin:eslint-plugin-import/errors",
     "plugin:eslint-plugin-import/typescript",
@@ -28,7 +28,6 @@ module.exports = {
 
   env: {
     es2021: true,
-    jest: true,
   },
 
   parserOptions: {
@@ -64,9 +63,11 @@ module.exports = {
     "import/no-unresolved": "off",
     "import/order": ["error", { groups: ["builtin", "external"] }],
 
-    // eslint-plugin-jest
-    "jest/no-disabled-tests": "error",
-    "jest/expect-expect": "off", // TODO: Enable this to detect useless tests
+    // eslint-plugin-vitest
+    "vitest/no-disabled-tests": "error",
+    "vitest/no-focused-tests": "error",
+    "vitest/expect-expect": "off", // TODO: Enable this to detect useless tests
+    "vitest/prefer-to-be": "off", // Don't want this
 
     // eslint-plugin-eslint-comments
     "eslint-comments/no-unused-disable": "error",

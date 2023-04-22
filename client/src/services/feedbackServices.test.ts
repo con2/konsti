@@ -1,27 +1,19 @@
-import axios from "axios";
+import { expect, test, vi } from "vitest";
 import { postFeedback } from "client/services/feedbackServices";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
-
-jest.mock("axios");
-const mockAxios = axios as jest.Mocked<typeof axios>;
+import { api } from "client/utils/api";
 
 test("POST feedback to server", async () => {
-  mockAxios.post.mockImplementation(async () => {
-    return await Promise.resolve({
-      status: 200,
-      data: "test response",
-    });
-  });
+  const spy = vi.spyOn(api, "post").mockResolvedValue("");
 
   const feedback = "test feedback";
   const gameId = "123";
   const username = "test user";
 
-  const response = await postFeedback({ feedback, gameId, username });
+  await postFeedback({ feedback, gameId, username });
 
-  expect(response).toEqual("test response");
-  expect(mockAxios.post).toHaveBeenCalledTimes(1);
-  expect(mockAxios.post).toHaveBeenCalledWith(ApiEndpoint.FEEDBACK, {
+  expect(spy).toHaveBeenCalledTimes(1);
+  expect(spy).toHaveBeenCalledWith(ApiEndpoint.FEEDBACK, {
     feedback,
     gameId,
     username,

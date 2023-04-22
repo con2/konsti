@@ -23,5 +23,5 @@ test("Login", async ({ page, request }) => {
   await page.click("data-testid=navigation-icon");
 
   const text = await page.innerText("data-testid=logged-user-username");
-  expect(text).toBe(`User: ${username}`);
+  expect(text).toEqual(`User: ${username}`);
 });

@@ -23,7 +23,7 @@ const { useLocalProgramFile, localKompassiFile } = config;
 export const getGamesFromKompassi = async (): Promise<
   readonly KompassiGame[]
 > => {
-  const eventProgramItems = await getEventProgramItems();
+  const eventProgramItems = await testHelperWrapper.getEventProgramItems();
 
   if (!Array.isArray(eventProgramItems)) {
     throw new Error("Invalid response format, should be array");
@@ -38,10 +38,16 @@ export const getGamesFromKompassi = async (): Promise<
   return getGamesFromFullProgram(eventProgramItems);
 };
 
-export const getEventProgramItems = async (): Promise<EventProgramItem[]> => {
+const getEventProgramItems = async (): Promise<EventProgramItem[]> => {
   return useLocalProgramFile
     ? getProgramFromLocalFile()
     : await getProgramFromServer();
+};
+
+// This helper wrapper is needed to make Vitest spyOn() work
+//  https://github.com/vitest-dev/vitest/issues/1329
+export const testHelperWrapper = {
+  getEventProgramItems,
 };
 
 const getProgramFromLocalFile = (): EventProgramItem[] => {

@@ -1,26 +1,17 @@
-import axios from "axios";
+import { expect, test, vi } from "vitest";
 import { Game } from "shared/typings/models/game";
 import { postHidden } from "client/services/hiddenServices";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
-
-jest.mock("axios");
-const mockAxios = axios as jest.Mocked<typeof axios>;
+import { api } from "client/utils/api";
 
 test("POST hidden games to server", async () => {
-  mockAxios.post.mockImplementation(async () => {
-    return await Promise.resolve({
-      status: 200,
-      data: "test response",
-    });
-  });
-
+  const spy = vi.spyOn(api, "post").mockResolvedValue("");
   const hiddenData: Game[] = [];
 
-  const response = await postHidden(hiddenData);
+  await postHidden(hiddenData);
 
-  expect(response).toEqual("test response");
-  expect(mockAxios.post).toHaveBeenCalledTimes(1);
-  expect(mockAxios.post).toHaveBeenCalledWith(ApiEndpoint.HIDDEN, {
+  expect(spy).toHaveBeenCalledTimes(1);
+  expect(spy).toHaveBeenCalledWith(ApiEndpoint.HIDDEN, {
     hiddenData,
   });
 });

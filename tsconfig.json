@@ -28,7 +28,8 @@
     ".eslintrc.js",
     "babel.config.js",
     "lint-staged.config.js",
-    "jest.config.ts"
+    "vitest.config.ts",
+    "vitest.workspace.ts"
   ],
   "exclude": ["node_modules", "server/lib", "server/coverage"]
 }

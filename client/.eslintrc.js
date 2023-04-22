@@ -42,9 +42,9 @@ module.exports = {
     // eslint-plugin-compat
     "compat/compat": "error",
 
-    // eslint-plugin-jest
-    "jest/no-done-callback": "off",
-    "jest/no-standalone-expect": "off", // Does not work with Playwright tests
+    // eslint-plugin-vitest
+    "vitest/no-done-callback": "off",
+    "vitest/no-standalone-expect": "off", // Does not work with Playwright tests
 
     // eslint-plugin-testing-library
     "testing-library/no-unnecessary-act": "off", // Gives false positives

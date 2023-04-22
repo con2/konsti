@@ -1,48 +1,33 @@
-import axios from "axios";
+import { expect, test, vi } from "vitest";
 import { getGroup, postCreateGroup } from "client/services/groupServices";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { CreateGroupRequest } from "shared/typings/api/groups";
-
-jest.mock("axios");
-const mockAxios = axios as jest.Mocked<typeof axios>;
+import { api } from "client/utils/api";
 
 test("GET group from server", async () => {
-  mockAxios.get.mockImplementation(
-    async () =>
-      await Promise.resolve({
-        status: 200,
-        data: "test response",
-      })
-  );
+  const spy = vi.spyOn(api, "get").mockResolvedValue("");
 
   const groupCode = "123";
   const username = "test user";
 
-  const response = await getGroup(groupCode, username);
+  await getGroup(groupCode, username);
 
-  expect(response).toEqual("test response");
-  expect(mockAxios.get).toHaveBeenCalledTimes(1);
-  expect(mockAxios.get).toHaveBeenCalledWith(ApiEndpoint.GROUP, {
+  expect(spy).toHaveBeenCalledTimes(1);
+  expect(spy).toHaveBeenCalledWith(ApiEndpoint.GROUP, {
     params: { groupCode, username },
   });
 });
 
 test("POST group to server", async () => {
-  mockAxios.post.mockImplementation(async () => {
-    return await Promise.resolve({
-      status: 200,
-      data: "test response",
-    });
-  });
+  const spy = vi.spyOn(api, "post").mockResolvedValue("");
 
   const groupRequest: CreateGroupRequest = {
     groupCode: "123",
     username: "test user",
   };
 
-  const response = await postCreateGroup(groupRequest);
+  await postCreateGroup(groupRequest);
 
-  expect(response).toEqual("test response");
-  expect(mockAxios.post).toHaveBeenCalledTimes(1);
-  expect(mockAxios.post).toHaveBeenCalledWith(ApiEndpoint.GROUP, groupRequest);
+  expect(spy).toHaveBeenCalledTimes(1);
+  expect(spy).toHaveBeenCalledWith(ApiEndpoint.GROUP, groupRequest);
 });

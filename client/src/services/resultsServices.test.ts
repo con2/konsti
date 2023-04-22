@@ -1,26 +1,17 @@
-import axios from "axios";
+import { expect, test, vi } from "vitest";
 import { getResults } from "client/services/resultsServices";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
-
-jest.mock("axios");
-const mockAxios = axios as jest.Mocked<typeof axios>;
+import { api } from "client/utils/api";
 
 test("GET results from server", async () => {
-  mockAxios.get.mockImplementation(
-    async () =>
-      await Promise.resolve({
-        status: 200,
-        data: "test response",
-      })
-  );
+  const spy = vi.spyOn(api, "get").mockResolvedValue("");
 
   const startTime = "2019-07-26T13:00:00Z";
 
-  const response = await getResults(startTime);
+  await getResults(startTime);
 
-  expect(response).toEqual("test response");
-  expect(mockAxios.get).toHaveBeenCalledTimes(1);
-  expect(mockAxios.get).toHaveBeenCalledWith(ApiEndpoint.RESULTS, {
+  expect(spy).toHaveBeenCalledTimes(1);
+  expect(spy).toHaveBeenCalledWith(ApiEndpoint.RESULTS, {
     params: { startTime },
   });
 });

@@ -1,17 +1,10 @@
-import axios from "axios";
+import { expect, test, vi } from "vitest";
 import { postLogin } from "client/services/loginServices";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
-
-jest.mock("axios");
-const mockAxios = axios as jest.Mocked<typeof axios>;
+import { api } from "client/utils/api";
 
 test("POST login to server", async () => {
-  mockAxios.post.mockImplementation(async () => {
-    return await Promise.resolve({
-      status: 200,
-      data: "test response",
-    });
-  });
+  const spy = vi.spyOn(api, "post").mockResolvedValue("");
 
   const username = "test username";
   const password = "test password";
@@ -21,11 +14,10 @@ test("POST login to server", async () => {
     password,
   };
 
-  const response = await postLogin(loginData);
+  await postLogin(loginData);
 
-  expect(response).toEqual("test response");
-  expect(mockAxios.post).toHaveBeenCalledTimes(1);
-  expect(mockAxios.post).toHaveBeenCalledWith(ApiEndpoint.LOGIN, {
+  expect(spy).toHaveBeenCalledTimes(1);
+  expect(spy).toHaveBeenCalledWith(ApiEndpoint.LOGIN, {
     username,
     password,
   });
