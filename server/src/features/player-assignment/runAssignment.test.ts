@@ -1,3 +1,12 @@
+import {
+  expect,
+  test,
+  afterAll,
+  afterEach,
+  beforeAll,
+  beforeEach,
+  describe,
+} from "vitest";
 import mongoose from "mongoose";
 import { MongoMemoryServer } from "mongodb-memory-server";
 import dayjs from "dayjs";
@@ -85,7 +94,12 @@ describe("Assignment with valid data", () => {
     const groupResults = assignResults.results.filter((result) =>
       groupTestUsers.includes(result.username)
     );
-    expect(groupResults.length).toBeOneOf([groupTestUsers.length, 0]);
+
+    if (groupResults.length) {
+      expect(groupResults.length).toEqual(groupTestUsers.length);
+    } else {
+      expect(groupResults.length).toEqual(0);
+    }
 
     await verifyUserSignups();
 
@@ -106,14 +120,20 @@ describe("Assignment with valid data", () => {
     const groupResults2 = assignResults2.results.filter((result) =>
       groupTestUsers.includes(result.username)
     );
-    expect(groupResults2.length).toBeOneOf([groupTestUsers.length, 0]);
+
+    if (groupResults2.length) {
+      expect(groupResults2.length).toEqual(groupTestUsers.length);
+    } else {
+      expect(groupResults2.length).toEqual(0);
+    }
 
     await verifyUserSignups();
   });
 });
 
 describe("Assignment with multiple program types and directSignupAlwaysOpen", () => {
-  // eslint-disable-next-line jest/no-disabled-tests
+  // TODO: Use dynamic sharedConfig.activeProgramTypes
+  // eslint-disable-next-line vitest/no-disabled-tests
   test.skip("should not remove signups of non-RPG program types", async () => {
     const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
     const startingTime = testGame.startTime;
