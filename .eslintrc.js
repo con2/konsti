@@ -12,6 +12,7 @@ module.exports = {
     "eslint-plugin-import",
     "@typescript-eslint",
     "eslint-plugin-unicorn",
+    "eslint-plugin-no-only-tests",
   ],
 
   extends: [
@@ -67,6 +68,9 @@ module.exports = {
     "vitest/no-disabled-tests": "error",
     "vitest/no-focused-tests": "error",
     "vitest/prefer-to-be": "off", // Don't want this
+
+    // eslint-plugin-no-only-tests
+    "no-only-tests/no-only-tests": "error", // vitest/no-focused-tests doesn't work
 
     // eslint-plugin-eslint-comments
     "eslint-comments/no-unused-disable": "error",
