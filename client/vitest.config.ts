@@ -5,9 +5,7 @@ import { defineConfig } from "vitest/config";
 export default defineConfig({
   test: {
     environment: "jsdom",
-    clearMocks: true,
     setupFiles: ["./src/test/setupTests.ts"],
-    globals: true,
     testTimeout: 60000,
     exclude: ["playwright"],
   },
