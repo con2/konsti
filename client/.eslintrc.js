@@ -42,12 +42,11 @@ module.exports = {
     // eslint-plugin-compat
     "compat/compat": "error",
 
-    // eslint-plugin-jest
-    "jest/no-done-callback": "off",
-    "jest/no-standalone-expect": "off", // Does not work with Playwright tests
-
     // eslint-plugin-testing-library
     "testing-library/no-unnecessary-act": "off", // Gives false positives
+
+    // "eslint-plugin-jsx-a11y",
+    "jsx-a11y/no-onchange": "off", // TODO: Enable
 
     // @typescript-eslint
     "@typescript-eslint/no-misused-promises": [
@@ -67,9 +66,6 @@ module.exports = {
 
     "@typescript-eslint/no-var-requires": "off", // Used to dynamically import dev dependencies
     "@typescript-eslint/default-param-last": "off", // Problem setting Redux reducer initial state
-
-    // TODO: Enable these rules
-    "@typescript-eslint/no-floating-promises": "off",
-    "jsx-a11y/no-onchange": "off",
+    "@typescript-eslint/no-floating-promises": "off", // TODO: Enable
   },
 };

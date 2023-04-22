@@ -1,9 +1,49 @@
+import {
+  expect,
+  test,
+  vi,
+  afterAll,
+  afterEach,
+  beforeAll,
+  beforeEach,
+} from "vitest";
 import mongoose from "mongoose";
 import { MongoMemoryServer } from "mongodb-memory-server";
 import { faker } from "@faker-js/faker";
 import { saveSerials } from "server/features/serial/serialRepository";
 
-jest.mock("generate-serial-number");
+vi.mock("generate-serial-number", () => {
+  const serials: string[] = [
+    "a1234",
+    "a1234",
+    "b5225",
+    "c2512",
+    "a1234", // this is a duplicate and should not be saved
+    "d1232",
+    "a1234",
+    "b5225",
+    "c2512",
+    "a1234", // this is a duplicate and should not be saved
+    "d1232",
+    "e12039",
+    "f1259105",
+  ];
+
+  let ind = -1;
+
+  function _nextArrayElement(arr: string[]): string {
+    ind += 1;
+    return arr[ind];
+  }
+
+  function generate(_count: number): string {
+    return _nextArrayElement(serials);
+  }
+
+  return {
+    default: { generate },
+  };
+});
 
 let mongoServer: MongoMemoryServer;
 

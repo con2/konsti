@@ -38,8 +38,8 @@
     "start": "yarn workspace konsti-server start",
     "stylelint": "yarn workspace konsti-client stylelint",
     "test-assign": "yarn workspace konsti-server test-assign",
-    "test:watch": "yarn jest --watch",
-    "test": "yarn jest",
+    "test:watch": "yarn vitest watch",
+    "test": "yarn vitest run",
     "type-check": "tsc --noEmit",
     "update-yarn": "yarn set version stable && yarn plugin import interactive-tools && yarn plugin import workspace-tools"
   },
@@ -64,8 +64,8 @@
     "zod": "3.21.4"
   },
   "devDependencies": {
-    "@types/jest": "29.5.0",
     "@types/lodash": "4.14.191",
+    "@types/prettier": "2.7.2",
     "@typescript-eslint/eslint-plugin": "5.56.0",
     "@typescript-eslint/parser": "5.56.0",
     "cross-env": "7.0.3",
@@ -77,22 +77,21 @@
     "eslint-plugin-compat": "4.1.2",
     "eslint-plugin-eslint-comments": "3.2.0",
     "eslint-plugin-import": "2.27.5",
-    "eslint-plugin-jest": "27.2.1",
     "eslint-plugin-jsx-a11y": "6.7.1",
     "eslint-plugin-n": "15.6.1",
+    "eslint-plugin-no-only-tests": "3.1.0",
     "eslint-plugin-prettier": "4.2.1",
     "eslint-plugin-promise": "6.1.1",
     "eslint-plugin-react": "7.32.2",
     "eslint-plugin-react-hooks": "4.6.0",
     "eslint-plugin-testing-library": "5.10.2",
     "eslint-plugin-unicorn": "46.0.0",
+    "eslint-plugin-vitest": "0.1.4",
     "husky": "8.0.3",
     "is-ci": "3.0.1",
-    "jest": "29.5.0",
-    "jest-extended": "3.2.4",
     "lint-staged": "13.2.0",
     "prettier": "2.8.7",
-    "ts-jest": "29.0.5"
+    "vitest": "0.30.1"
   },
   "engines": {
     "node": ">=18.13.0"
