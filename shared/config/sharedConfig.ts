@@ -25,6 +25,7 @@ interface SharedConfig {
   activeProgramTypes: ProgramType[];
   manualSignupMode: SignupStrategy.ALGORITHM | SignupStrategy.DIRECT | "none";
   signupOpen: boolean;
+  resultsVisible: boolean;
 }
 
 // Convention days
@@ -40,6 +41,7 @@ export const sharedConfig: SharedConfig = {
   defaultSignupStrategy: SignupStrategy.ALGORITHM,
   manualSignupMode: SignupStrategy.ALGORITHM,
   signupOpen: true,
+  resultsVisible: false,
   activeProgramTypes: [ProgramType.TABLETOP_RPG],
 
   directSignupWindows: {

@@ -1,5 +1,5 @@
 import _ from "lodash";
-import React, { ReactElement, useEffect, useState } from "react";
+import React, { ReactElement, useEffect, useMemo, useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -17,6 +17,7 @@ import { Tags } from "client/components/Tags";
 import { getAttendeeType } from "client/utils/getAttendeeType";
 import { sharedConfig } from "shared/config/sharedConfig";
 import { config } from "client/config";
+import { isAdminOrHelp } from "client/utils/checkUserGroup";
 
 export const DirectResults = (): ReactElement => {
   const { t } = useTranslation();
@@ -26,6 +27,14 @@ export const DirectResults = (): ReactElement => {
     (state) => state.admin.activeProgramType
   );
   const signups = useAppSelector((state) => state.allGames.signups);
+  const userGroup = useAppSelector((state) => state.login.userGroup);
+  isAdminOrHelp(userGroup);
+  const showResults = sharedConfig.resultsVisible || isAdminOrHelp(userGroup);
+
+  const visibleSignups = useMemo(() => {
+    return showResults ? signups : [];
+  }, [signups, showResults]);
+
   const signupQuestions = useAppSelector(
     (state) => state.admin.signupQuestions
   );
@@ -71,7 +80,7 @@ export const DirectResults = (): ReactElement => {
     }
 
     const gamesFilteredBySearchTerm = gamesForListing.filter((game) => {
-      const users = getUsersForGameId(game.gameId, signups);
+      const users = getUsersForGameId(game.gameId, visibleSignups);
       return (
         game.title
           .replace(MULTIPLE_WHITESPACES_REGEX, " ")
@@ -91,7 +100,7 @@ export const DirectResults = (): ReactElement => {
     );
 
     setFilteredGamesForListing(gamesByStartTime);
-  }, [searchTerm, gamesForListing, signups]);
+  }, [searchTerm, gamesForListing, visibleSignups]);
 
   return (
     <div>
@@ -153,7 +162,7 @@ export const DirectResults = (): ReactElement => {
                   const playerListVisible = showPlayers.find(
                     (players) => players === game.gameId
                   );
-                  const users = getUsersForGameId(game.gameId, signups);
+                  const users = getUsersForGameId(game.gameId, visibleSignups);
 
                   return (
                     <div key={game.gameId}>
