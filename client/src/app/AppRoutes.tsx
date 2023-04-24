@@ -1,5 +1,6 @@
 import React, { ReactElement } from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { AllGamesView } from "client/views/all-games/AllGamesView";
 import { GameDetails } from "client/views/all-games/components/GameDetails";
 import { LoginView } from "client/views/login/LoginView";
@@ -18,6 +19,8 @@ import { FaqView } from "client/views/about/FaqView";
 import { Tabs } from "client/components/Tabs";
 
 export const AppRoutes = (): ReactElement => {
+  const { t } = useTranslation();
+
   const appOpen = useAppSelector((state) => state.admin.appOpen);
   const loggedIn = useAppSelector((state) => state.login.loggedIn);
   const userGroup = useAppSelector((state) => state.login.userGroup);
@@ -41,8 +44,16 @@ export const AppRoutes = (): ReactElement => {
           element={
             <Tabs
               tabContents={[
-                { headerText: "faq", path: "faq", element: <FaqView /> },
-                { headerText: "about", path: "about", element: <AboutView /> },
+                {
+                  headerText: t("aboutView.general"),
+                  path: "about",
+                  element: <AboutView />,
+                },
+                {
+                  headerText: t("aboutView.faq"),
+                  path: "faq",
+                  element: <FaqView />,
+                },
               ]}
             />
           }
@@ -75,8 +86,16 @@ export const AppRoutes = (): ReactElement => {
           element={
             <Tabs
               tabContents={[
-                { headerText: "faq", path: "faq", element: <FaqView /> },
-                { headerText: "about", path: "about", element: <AboutView /> },
+                {
+                  headerText: t("aboutView.general"),
+                  path: "about",
+                  element: <AboutView />,
+                },
+                {
+                  headerText: t("aboutView.faq"),
+                  path: "faq",
+                  element: <FaqView />,
+                },
               ]}
             />
           }
@@ -98,8 +117,16 @@ export const AppRoutes = (): ReactElement => {
         element={
           <Tabs
             tabContents={[
-              { headerText: "faq", path: "faq", element: <FaqView /> },
-              { headerText: "about", path: "about", element: <AboutView /> },
+              {
+                headerText: t("aboutView.general"),
+                path: "about",
+                element: <AboutView />,
+              },
+              {
+                headerText: t("aboutView.faq"),
+                path: "faq",
+                element: <FaqView />,
+              },
             ]}
           />
         }
