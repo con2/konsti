@@ -16,8 +16,9 @@ import { newUpdatePageReloadKey } from "client/utils/localStorage";
 import { isAdmin } from "client/utils/checkUserGroup";
 import { TestTime } from "client/components/TestTime";
 import { sharedConfig } from "shared/config/sharedConfig";
+import { Announcement } from "client/components/Announcement";
 
-const { loadedSettings, showTestValues } = config;
+const { loadedSettings, showTestValues, showAnnouncement } = config;
 
 export const App = (): ReactElement => {
   const { dataUpdateInterval } = config;
@@ -61,6 +62,7 @@ export const App = (): ReactElement => {
           {loadedSettings !== "production" && showTestValues && <TestTime />}
           <Header />
           <ErrorBar />
+          {showAnnouncement && <Announcement />}
           {showProgramTypeSelection && <ProgramTypeSelection />}
           <AppContainer>
             <AppRoutes />

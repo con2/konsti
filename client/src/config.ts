@@ -13,6 +13,7 @@ interface Config {
   enableOrganizerFeedback: boolean;
   enableTagDropdown: boolean;
   alwaysShowAllProgramItems: boolean;
+  showAnnouncement: boolean;
 }
 
 export const config: Config = {
@@ -25,6 +26,7 @@ export const config: Config = {
   enableOrganizerFeedback: false,
   enableTagDropdown: false,
   alwaysShowAllProgramItems: true,
+  showAnnouncement: false,
 
   // Dev
   enableReduxTrace: false,

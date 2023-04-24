@@ -65,7 +65,7 @@ const clearSessionStorage = (): void => {
   });
 };
 
-export const getLanguage = (): string => {
+export const getLocalStorageLanguage = (): string => {
   let language;
   try {
     language = localStorage.getItem("i18nextLng");

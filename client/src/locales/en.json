@@ -1,6 +1,7 @@
 {
   "appTitle": "Konsti",
   "appDescription": "{{CONVENTION_NAME}} {{CONVENTION_YEAR}} signup",
+  "announcement": "Signup has ended. Results will be released soon.",
   "button": {
     "logout": "Logout",
     "login": "Login",
