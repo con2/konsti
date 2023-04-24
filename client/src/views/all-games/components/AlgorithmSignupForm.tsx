@@ -18,6 +18,7 @@ import { CancelSignupForm } from "client/views/all-games/components/CancelSignup
 import { timeFormatter } from "client/utils/timeFormatter";
 import { getTime } from "client/utils/getTime";
 import { sharedConfig } from "shared/config/sharedConfig";
+import { SignupStrategy } from "shared/config/sharedConfig.types";
 
 const { PRE_SIGNUP_START } = sharedConfig;
 
@@ -89,7 +90,7 @@ export const AlgorithmSignupForm: FC<Props> = ({
   const timeNow = getTime();
   const lotterySignupOpen =
     dayjs(signupStartTime).isBefore(timeNow) ||
-    sharedConfig.lotterySignupAlwaysOpen;
+    sharedConfig.manualSignupMode === SignupStrategy.ALGORITHM;
 
   if (!loggedIn) {
     return null;

@@ -60,7 +60,9 @@ export const GameEntry = ({
     ) !== undefined;
 
   const isEnterGameMode =
-    signupStrategy === SignupStrategy.DIRECT || signupAlwaysOpen;
+    sharedConfig.manualSignupMode === SignupStrategy.DIRECT ||
+    signupStrategy === SignupStrategy.DIRECT ||
+    signupAlwaysOpen;
   const gameIsFull = players >= game.maxAttendance;
 
   const formatDuration = (mins: number): string => {
@@ -187,20 +189,24 @@ export const GameEntry = ({
 
       <GameDetailsView game={game} isAlwaysExpanded={isAlwaysExpanded} />
 
-      {loggedIn && !isEnterGameMode && (
-        <AlgorithmSignupForm
-          game={game}
-          startTime={startTime}
-          signedGames={signedGames}
-        />
-      )}
+      {sharedConfig.signupOpen && (
+        <>
+          {loggedIn && !isEnterGameMode && (
+            <AlgorithmSignupForm
+              game={game}
+              startTime={startTime}
+              signedGames={signedGames}
+            />
+          )}
 
-      {loggedIn && isEnterGameMode && (
-        <DirectSignupForm
-          game={game}
-          gameIsFull={gameIsFull}
-          startTime={startTime}
-        />
+          {loggedIn && isEnterGameMode && (
+            <DirectSignupForm
+              game={game}
+              gameIsFull={gameIsFull}
+              startTime={startTime}
+            />
+          )}
+        </>
       )}
     </GameContainer>
   );

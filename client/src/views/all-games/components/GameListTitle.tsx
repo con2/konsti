@@ -57,7 +57,7 @@ export const GameListTitle = ({
           )}
         </StartTimeContainer>
 
-        {!sharedConfig.lotterySignupAlwaysOpen &&
+        {sharedConfig.manualSignupMode === "none" &&
           timeslotSignupStrategy === SignupStrategy.ALGORITHM && (
             <span>
               ({t("lotterySignupOpenBetween")} {signupStartTime}-{signupEndTime}

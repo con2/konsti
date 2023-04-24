@@ -23,7 +23,8 @@ interface SharedConfig {
   enableSentryInDev: boolean;
   requireRegistrationCode: boolean;
   activeProgramTypes: ProgramType[];
-  lotterySignupAlwaysOpen: boolean;
+  manualSignupMode: SignupStrategy.ALGORITHM | SignupStrategy.DIRECT | "none";
+  signupOpen: boolean;
 }
 
 // Convention days
@@ -37,7 +38,8 @@ export const sharedConfig: SharedConfig = {
   assignmentStrategy: AssignmentStrategy.RANDOM_PADG,
   enableGroups: false,
   defaultSignupStrategy: SignupStrategy.ALGORITHM,
-  lotterySignupAlwaysOpen: true,
+  manualSignupMode: SignupStrategy.ALGORITHM,
+  signupOpen: true,
   activeProgramTypes: [ProgramType.TABLETOP_RPG],
 
   directSignupWindows: {
