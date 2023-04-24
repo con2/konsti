@@ -1,5 +1,6 @@
 import React, { ReactElement } from "react";
 import { Navigate, NavLink, Route, Routes } from "react-router-dom";
+import styled from "styled-components";
 
 interface TabContent {
   headerText: string;
@@ -13,16 +14,16 @@ interface Props {
 
 export const Tabs = ({ tabContents }: Props): ReactElement => {
   return (
-    <div>
-      <nav>
-        <ul>
+    <>
+      <TabsNav>
+        <TabsList>
           {tabContents.map((t) => (
-            <li key={t.headerText}>
-              <NavLink to={t.path}>{t.headerText}</NavLink>
-            </li>
+            <ListItem key={t.headerText}>
+              <Link to={t.path}>{t.headerText}</Link>
+            </ListItem>
           ))}
-        </ul>
-      </nav>
+        </TabsList>
+      </TabsNav>
       <Routes>
         <Route
           path={""}
@@ -32,6 +33,25 @@ export const Tabs = ({ tabContents }: Props): ReactElement => {
           <Route path={t.path} element={t.element} key={t.path} />
         ))}
       </Routes>
-    </div>
+    </>
   );
 };
+
+const TabsNav = styled.nav`
+  display: flex;
+`;
+
+const TabsList = styled.ul`
+  list-style-type: none;
+  margin-left: 0;
+`;
+
+const ListItem = styled.li`
+  float: left;
+  padding-right: 16px;
+`;
+
+const Link = styled(NavLink)`
+  text-decoration: none;
+  font-size: ${(props) => props.theme.linkFontSize};
+`;
