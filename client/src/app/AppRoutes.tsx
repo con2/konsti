@@ -1,6 +1,7 @@
 import React, { ReactElement } from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { IconName } from "@fortawesome/free-solid-svg-icons";
 import { AllGamesView } from "client/views/all-games/AllGamesView";
 import { GameDetails } from "client/views/all-games/components/GameDetails";
 import { LoginView } from "client/views/login/LoginView";
@@ -25,6 +26,21 @@ export const AppRoutes = (): ReactElement => {
   const loggedIn = useAppSelector((state) => state.login.loggedIn);
   const userGroup = useAppSelector((state) => state.login.userGroup);
 
+  const aboutTabs = [
+    {
+      headerText: t("aboutView.general"),
+      path: "about",
+      element: <AboutView />,
+      icon: "info" as IconName,
+    },
+    {
+      headerText: t("aboutView.faq"),
+      path: "faq",
+      element: <FaqView />,
+      icon: "question" as IconName,
+    },
+  ];
+
   if (!appOpen) {
     return (
       <Routes>
@@ -39,25 +55,7 @@ export const AppRoutes = (): ReactElement => {
         )}
         {!loggedIn && <Route path="/login" element={<LoginView />} />}
         <Route path="/logout" element={<LogoutView />} />
-        <Route
-          path="/about/*"
-          element={
-            <Tabs
-              tabContents={[
-                {
-                  headerText: t("aboutView.general"),
-                  path: "about",
-                  element: <AboutView />,
-                },
-                {
-                  headerText: t("aboutView.faq"),
-                  path: "faq",
-                  element: <FaqView />,
-                },
-              ]}
-            />
-          }
-        />
+        <Route path="/about/*" element={<Tabs tabContents={aboutTabs} />} />
         <Route path="/" element={<div />} />
         <Route path="/*" element={<Navigate to="/" />} />
       </Routes>
@@ -81,25 +79,7 @@ export const AppRoutes = (): ReactElement => {
         {isAdminOrHelp(userGroup) && (
           <Route path="/help" element={<HelperView />} />
         )}
-        <Route
-          path="/about/*"
-          element={
-            <Tabs
-              tabContents={[
-                {
-                  headerText: t("aboutView.general"),
-                  path: "about",
-                  element: <AboutView />,
-                },
-                {
-                  headerText: t("aboutView.faq"),
-                  path: "faq",
-                  element: <FaqView />,
-                },
-              ]}
-            />
-          }
-        />
+        <Route path="/about/*" element={<Tabs tabContents={aboutTabs} />} />
         <Route path="/" element={<Navigate to="/games" />} />
         <Route path="/*" element={<Navigate to="/" />} />
       </Routes>
@@ -112,25 +92,7 @@ export const AppRoutes = (): ReactElement => {
       <Route path="/registration" element={<RegistrationView />} />
       <Route path="/games/:gameId" element={<GameDetails />} />
       <Route path="/games" element={<AllGamesView />} />
-      <Route
-        path="/about/*"
-        element={
-          <Tabs
-            tabContents={[
-              {
-                headerText: t("aboutView.general"),
-                path: "about",
-                element: <AboutView />,
-              },
-              {
-                headerText: t("aboutView.faq"),
-                path: "faq",
-                element: <FaqView />,
-              },
-            ]}
-          />
-        }
-      />
+      <Route path="/about/*" element={<Tabs tabContents={aboutTabs} />} />
       <Route path="/" element={<Navigate to="/games" />} />
       <Route path="/*" element={<Navigate to="/login" />} />
     </Routes>

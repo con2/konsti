@@ -1,11 +1,14 @@
 import React, { ReactElement } from "react";
 import { Navigate, NavLink, Route, Routes } from "react-router-dom";
 import styled from "styled-components";
+import { IconName } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 interface TabContent {
   headerText: string;
   path: string;
   element: React.ReactNode;
+  icon?: IconName;
 }
 
 interface Props {
@@ -19,7 +22,10 @@ export const Tabs = ({ tabContents }: Props): ReactElement => {
         <TabsList>
           {tabContents.map((t) => (
             <ListItem key={t.headerText}>
-              <Link to={t.path}>{t.headerText}</Link>
+              <StyledLink to={t.path}>
+                {t.icon && <StyledIcon icon={t.icon} aria-hidden={true} />}
+                {t.headerText}
+              </StyledLink>
             </ListItem>
           ))}
         </TabsList>
@@ -51,7 +57,13 @@ const ListItem = styled.li`
   padding-right: 16px;
 `;
 
-const Link = styled(NavLink)`
+const StyledLink = styled(NavLink)`
   text-decoration: none;
-  font-size: ${(props) => props.theme.linkFontSize};
+  font-size: ${(props) => props.theme.fontSizeLarge};
+`;
+
+const StyledIcon = styled(FontAwesomeIcon)`
+  font-size: ${(props) => props.theme.fontSizeLarge};
+  color: ${(props) => props.theme.textLink};
+  margin-right: 6px;
 `;
