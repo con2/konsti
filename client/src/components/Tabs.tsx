@@ -45,6 +45,8 @@ export const Tabs = ({ tabContents }: Props): ReactElement => {
 
 const TabsNav = styled.nav`
   display: flex;
+  border-bottom: 1px solid ${(props) => props.theme.tabBorder};
+  padding-bottom: 6px;
 `;
 
 const TabsList = styled.ul`
@@ -55,15 +57,25 @@ const TabsList = styled.ul`
 const ListItem = styled.li`
   float: left;
   padding-right: 16px;
+
+  @media (min-width: ${(props) => props.theme.breakpointDesktop}) {
+    padding-right: 24px;
+  }
 `;
 
 const StyledLink = styled(NavLink)`
   text-decoration: none;
   font-size: ${(props) => props.theme.fontSizeLarge};
+  color: ${(props) => props.theme.textInactiveTab};
+  padding-bottom: 5px;
+
+  &.active {
+    color: ${(props) => props.theme.textActiveTab};
+    border-bottom: 2px solid ${(props) => props.theme.textActiveTab};
+  }
 `;
 
 const StyledIcon = styled(FontAwesomeIcon)`
   font-size: ${(props) => props.theme.fontSizeLarge};
-  color: ${(props) => props.theme.textLink};
   margin-right: 6px;
 `;
