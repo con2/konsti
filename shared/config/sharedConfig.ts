@@ -40,7 +40,7 @@ export const sharedConfig: SharedConfig = {
   enableGroups: false,
   defaultSignupStrategy: SignupStrategy.ALGORITHM,
   manualSignupMode: SignupStrategy.ALGORITHM,
-  signupOpen: true,
+  signupOpen: false,
   resultsVisible: false,
   activeProgramTypes: [ProgramType.TABLETOP_RPG],
 

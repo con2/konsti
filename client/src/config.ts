@@ -26,7 +26,7 @@ export const config: Config = {
   enableOrganizerFeedback: false,
   enableTagDropdown: false,
   alwaysShowAllProgramItems: true,
-  showAnnouncement: false,
+  showAnnouncement: true,
 
   // Dev
   enableReduxTrace: false,
