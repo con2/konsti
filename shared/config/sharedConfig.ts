@@ -36,7 +36,7 @@ const sunday = "2022-07-31";
 export const sharedConfig: SharedConfig = {
   // Convention settings
   requireRegistrationCode: false,
-  assignmentStrategy: AssignmentStrategy.PADG,
+  assignmentStrategy: AssignmentStrategy.RANDOM_PADG,
   enableGroups: false,
   defaultSignupStrategy: SignupStrategy.ALGORITHM,
   manualSignupMode: SignupStrategy.ALGORITHM,
