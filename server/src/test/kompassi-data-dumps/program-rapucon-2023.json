@@ -57,7 +57,7 @@
     "start_time": "2023-05-05T17:00:00Z",
     "end_time": "2023-05-05T21:30:00Z",
     "min_players": 3,
-    "max_players": 5
+    "max_players": 6
   },
   {
     "title": "L&L: Kallosaaren Haaksirikkoiset",
@@ -105,7 +105,7 @@
     "start_time": "2023-05-05T17:00:00Z",
     "end_time": "2023-05-05T22:00:00Z",
     "min_players": 3,
-    "max_players": 4
+    "max_players": 5
   },
   {
     "title": "Valmiustaso uhkakuvaan nähden: tyydyttävä",
@@ -141,7 +141,7 @@
     "start_time": "2023-05-05T17:00:00Z",
     "end_time": "2023-05-05T21:30:00Z",
     "min_players": 3,
-    "max_players": 4
+    "max_players": 5
   },
   {
     "title": "+H: Ensikohtaaminen (Blåfjella-Skjækerfjella)",
