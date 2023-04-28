@@ -214,7 +214,6 @@ export const GameEntry = ({
 
 const PlayersNeeded = styled("span")<{ visible: boolean }>`
   margin-top: 8px;
-  margin-bottom: 14px;
   display: ${(props) => (props.visible ? "block" : "none")};
 `;
 
@@ -229,7 +228,7 @@ const GameEntryRow = styled.div`
 
 const GameHeader = styled(GameEntryRow)`
   justify-content: space-between;
-  margin-bottom: 8px;
+  margin-bottom: 14px;
 `;
 
 const HeaderContainer = styled.div`
