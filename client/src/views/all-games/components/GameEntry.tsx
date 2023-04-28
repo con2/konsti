@@ -189,24 +189,20 @@ export const GameEntry = ({
 
       <GameDetailsView game={game} isAlwaysExpanded={isAlwaysExpanded} />
 
-      {sharedConfig.signupOpen && (
-        <>
-          {loggedIn && !isEnterGameMode && (
-            <AlgorithmSignupForm
-              game={game}
-              startTime={startTime}
-              signedGames={signedGames}
-            />
-          )}
+      {loggedIn && !isEnterGameMode && (
+        <AlgorithmSignupForm
+          game={game}
+          startTime={startTime}
+          signedGames={signedGames}
+        />
+      )}
 
-          {loggedIn && isEnterGameMode && (
-            <DirectSignupForm
-              game={game}
-              gameIsFull={gameIsFull}
-              startTime={startTime}
-            />
-          )}
-        </>
+      {loggedIn && isEnterGameMode && (
+        <DirectSignupForm
+          game={game}
+          gameIsFull={gameIsFull}
+          startTime={startTime}
+        />
       )}
     </GameContainer>
   );

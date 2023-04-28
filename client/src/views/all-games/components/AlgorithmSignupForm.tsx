@@ -39,6 +39,7 @@ export const AlgorithmSignupForm: FC<Props> = ({
 }: Props): ReactElement | null => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
+  const { signupOpen, manualSignupMode } = sharedConfig;
 
   const username = useAppSelector((state) => state.login.username);
   const loggedIn = useAppSelector((state) => state.login.loggedIn);
@@ -90,7 +91,7 @@ export const AlgorithmSignupForm: FC<Props> = ({
   const timeNow = getTime();
   const lotterySignupOpen =
     dayjs(signupStartTime).isBefore(timeNow) ||
-    sharedConfig.manualSignupMode === SignupStrategy.ALGORITHM;
+    manualSignupMode === SignupStrategy.ALGORITHM;
 
   if (!loggedIn) {
     return null;
@@ -98,7 +99,7 @@ export const AlgorithmSignupForm: FC<Props> = ({
 
   return (
     <>
-      {!alreadySignedToGame && isGroupCreator && (
+      {signupOpen && !alreadySignedToGame && isGroupCreator && (
         <>
           {signedGamesForTimeslot.length >= 3 && (
             <p>{t("signup.cannotSignupMoreGames")}</p>
@@ -142,22 +143,26 @@ export const AlgorithmSignupForm: FC<Props> = ({
             })}
           </SignedGameContainer>
 
-          {isGroupCreator && !cancelSignupFormOpen && (
-            <ButtonWithMargin
-              onClick={() => setCancelSignupFormOpen(true)}
-              buttonStyle={ButtonStyle.SECONDARY}
-            >
-              {t("button.cancelSignup")}
-            </ButtonWithMargin>
-          )}
+          {signupOpen && (
+            <>
+              {isGroupCreator && !cancelSignupFormOpen && (
+                <ButtonWithMargin
+                  onClick={() => setCancelSignupFormOpen(true)}
+                  buttonStyle={ButtonStyle.SECONDARY}
+                >
+                  {t("button.cancelSignup")}
+                </ButtonWithMargin>
+              )}
 
-          {cancelSignupFormOpen && (
-            <CancelSignupForm
-              onCancelForm={() => {
-                setCancelSignupFormOpen(false);
-              }}
-              onConfirmForm={async () => await removeSignedGame(game)}
-            />
+              {cancelSignupFormOpen && (
+                <CancelSignupForm
+                  onCancelForm={() => {
+                    setCancelSignupFormOpen(false);
+                  }}
+                  onConfirmForm={async () => await removeSignedGame(game)}
+                />
+              )}
+            </>
           )}
         </>
       )}
