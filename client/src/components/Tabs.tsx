@@ -67,15 +67,15 @@ const StyledLink = styled(NavLink)`
   text-decoration: none;
   font-size: ${(props) => props.theme.fontSizeLarge};
   color: ${(props) => props.theme.textInactiveTab};
-  padding-bottom: 5px;
+  padding-bottom: 4px;
 
   &.active {
     color: ${(props) => props.theme.textActiveTab};
-    border-bottom: 2px solid ${(props) => props.theme.textActiveTab};
+    border-bottom: 3px solid ${(props) => props.theme.textActiveTab};
   }
 `;
 
 const StyledIcon = styled(FontAwesomeIcon)`
-  font-size: ${(props) => props.theme.fontSizeLarge};
+  font-size: ${(props) => props.theme.iconSizeNormal};
   margin-right: 6px;
 `;
