@@ -13,6 +13,8 @@ import {
   faThermometerEmpty as fasThermometerEmpty,
   faThermometerHalf as fasThermometerHalf,
   faThermometerFull as fasThermometerFull,
+  faQuestion as fasQuestion,
+  faInfo as fasInfo,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faHeart as farHeart,
@@ -35,6 +37,8 @@ export const getIconLibrary = (): void => {
     fasCircleQuestion,
     fasThermometerEmpty,
     fasThermometerHalf,
-    fasThermometerFull
+    fasThermometerFull,
+    fasQuestion,
+    fasInfo
   );
 };

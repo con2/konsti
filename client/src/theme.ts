@@ -87,6 +87,9 @@ export const theme = {
 
   textError: red.primary,
   textLink: mainColor.dark,
+  textActiveTab: mainColor.dark,
+  textInactiveTab: gray.darker,
+  tabBorder: gray.light,
   textMain: black,
   textSuccess: mainColor.dark,
   textTag: black,
