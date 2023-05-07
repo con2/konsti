@@ -364,8 +364,8 @@
     "invalidRequest": "Virheellinen kutsu"
   },
   "aboutView": {
-    "general": "Mikä on Konsti?",
-    "faq": "Konsti FAQ"
+    "general": "Mikä Konsti?",
+    "faq": "FAQ"
   },
   "gamePopularity": {
     "low": "Tarvitaan lisää pelaajia",
