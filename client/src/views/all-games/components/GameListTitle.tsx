@@ -6,6 +6,7 @@ import { timeFormatter } from "client/utils/timeFormatter";
 import { SelectedGame } from "shared/typings/models/user";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
 import { MOBILE_MARGIN } from "client/globalStyle";
+import { sharedConfig } from "shared/config/sharedConfig";
 
 interface Props {
   startTime: string;
@@ -56,11 +57,13 @@ export const GameListTitle = ({
           )}
         </StartTimeContainer>
 
-        {timeslotSignupStrategy === SignupStrategy.ALGORITHM && (
-          <span>
-            ({t("lotterySignupOpenBetween")} {signupStartTime}-{signupEndTime})
-          </span>
-        )}
+        {sharedConfig.manualSignupMode === "none" &&
+          timeslotSignupStrategy === SignupStrategy.ALGORITHM && (
+            <span>
+              ({t("lotterySignupOpenBetween")} {signupStartTime}-{signupEndTime}
+              )
+            </span>
+          )}
 
         {timeslotSignupStrategy === SignupStrategy.DIRECT && (
           <SignupCount>

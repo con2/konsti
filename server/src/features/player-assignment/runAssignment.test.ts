@@ -132,6 +132,7 @@ describe("Assignment with valid data", () => {
 });
 
 describe("Assignment with multiple program types and directSignupAlwaysOpen", () => {
+  // TODO: Use dynamic sharedConfig.activeProgramTypes
   test("should not remove signups of non-RPG program types", async () => {
     const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
     const startingTime = testGame.startTime;
@@ -205,7 +206,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
   });
 
   test("should not remove directSignupAlwaysOpen signups if user doesn't have updated result", async () => {
-    const directSignupAlwaysOpenId = sharedConfig.directSignupAlwaysOpen[0];
+    const directSignupAlwaysOpenId = sharedConfig.directSignupAlwaysOpenIds[0];
     const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
     const startingTime = testGame.startTime;
 
@@ -279,7 +280,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
   });
 
   test("should update directSignupAlwaysOpen signup with assignment signup if user has updated result", async () => {
-    const directSignupAlwaysOpenId = sharedConfig.directSignupAlwaysOpen[0];
+    const directSignupAlwaysOpenId = sharedConfig.directSignupAlwaysOpenIds[0];
     const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
     const startingTime = testGame.startTime;
 
@@ -360,7 +361,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
 
 describe("Assignment with first time bonus", () => {
   test("should assign user without previous RPG signup", async () => {
-    const directSignupAlwaysOpenId = sharedConfig.directSignupAlwaysOpen[0];
+    const directSignupAlwaysOpenId = sharedConfig.directSignupAlwaysOpenIds[0];
     const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
     const startingTime = testGame.startTime;
     const larpGameId = "AIAHHUA";

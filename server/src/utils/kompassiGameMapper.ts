@@ -34,7 +34,9 @@ export const kompassiGameMapper = (
       description: game.description,
       location: game.room_name,
       startTime: dayjs(game.start_time).format(),
-      mins: game.length,
+      mins:
+        game.length ||
+        dayjs(game.end_time).diff(dayjs(game.start_time), "minute"),
       tags: mapTags(game),
       genres: mapGenres(game),
       styles: mapGameStyles(game),

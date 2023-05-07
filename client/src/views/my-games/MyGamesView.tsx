@@ -24,6 +24,7 @@ import {
   selectActiveSignedGames,
 } from "client/views/my-games/myGamesSlice";
 import { ButtonGroup } from "client/components/ButtonGroup";
+import { config } from "client/config";
 
 export const MyGamesView = (): ReactElement => {
   const { t } = useTranslation();
@@ -41,7 +42,9 @@ export const MyGamesView = (): ReactElement => {
     (state) => state.admin.activeProgramType
   );
 
-  const [showAllGames, setShowAllGames] = useState<boolean>(false);
+  const [showAllGames, setShowAllGames] = useState<boolean>(
+    config.alwaysShowAllProgramItems
+  );
   const [showChangePassword, setShowChangePassword] = useState<boolean>(false);
 
   const store = useStore();
@@ -59,22 +62,24 @@ export const MyGamesView = (): ReactElement => {
 
   return (
     <MyGamesViewContainer>
-      <ButtonGroup>
-        <Button
-          disabled={!showAllGames}
-          onClick={() => setShowAllGames(false)}
-          buttonStyle={ButtonStyle.SECONDARY}
-        >
-          {t("lastStartedAndUpcoming")}
-        </Button>
-        <Button
-          disabled={showAllGames}
-          onClick={() => setShowAllGames(true)}
-          buttonStyle={ButtonStyle.SECONDARY}
-        >
-          {t("all")}
-        </Button>
-      </ButtonGroup>
+      {!config.alwaysShowAllProgramItems && (
+        <ButtonGroup>
+          <Button
+            disabled={!showAllGames}
+            onClick={() => setShowAllGames(false)}
+            buttonStyle={ButtonStyle.SECONDARY}
+          >
+            {t("lastStartedAndUpcoming")}
+          </Button>
+          <Button
+            disabled={showAllGames}
+            onClick={() => setShowAllGames(true)}
+            buttonStyle={ButtonStyle.SECONDARY}
+          >
+            {t("all")}
+          </Button>
+        </ButtonGroup>
+      )}
 
       <MyFavoritesList
         favoritedGames={

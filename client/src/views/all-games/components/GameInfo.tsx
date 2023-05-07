@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import styled, { css } from "styled-components";
 import { timeFormatter } from "client/utils/timeFormatter";
 import { Game, GameStyle, Genre } from "shared/typings/models/game";
+import { sharedConfig } from "shared/config/sharedConfig";
 
 interface Props {
   game: Game;
@@ -113,7 +114,7 @@ export const GameInfo = ({ game }: Props): ReactElement => {
         </GameDetailsRow>
       )}
 
-      {game.programType && (
+      {sharedConfig.activeProgramTypes.length > 1 && game.programType && (
         <GameDetailsRow>
           <GameDetailsTitle twoColumns={true}>
             {t("gameInfo.programType")}

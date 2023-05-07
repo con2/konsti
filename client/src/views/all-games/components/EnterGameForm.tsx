@@ -22,7 +22,7 @@ import { sharedConfig } from "shared/config/sharedConfig";
 import { TextArea } from "client/components/TextArea";
 import { ButtonGroup } from "client/components/ButtonGroup";
 
-const { directSignupAlwaysOpen } = sharedConfig;
+const { directSignupAlwaysOpenIds } = sharedConfig;
 
 interface Props {
   game: Game;
@@ -66,7 +66,7 @@ export const EnterGameForm: FC<Props> = (props: Props): ReactElement => {
     // TODO: This logic should be on backend
     if (
       game.programType === ProgramType.TABLETOP_RPG &&
-      !directSignupAlwaysOpen.includes(game.gameId)
+      !directSignupAlwaysOpenIds.includes(game.gameId)
     ) {
       if (isInGroup && !isGroupCreator) {
         const leaveGroupRequest = {
@@ -111,7 +111,7 @@ export const EnterGameForm: FC<Props> = (props: Props): ReactElement => {
   return (
     <SignupForm>
       {game.programType === ProgramType.TABLETOP_RPG &&
-        !directSignupAlwaysOpen.includes(game.gameId) && (
+        !directSignupAlwaysOpenIds.includes(game.gameId) && (
           <>
             {isInGroup && !isGroupCreator && (
               <Warning>{t("signup.inGroupWarning")}</Warning>

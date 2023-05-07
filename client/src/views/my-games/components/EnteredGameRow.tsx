@@ -13,6 +13,7 @@ import { CancelSignupForm } from "client/views/all-games/components/CancelSignup
 import { Button, ButtonStyle } from "client/components/Button";
 import { ErrorMessage } from "client/components/ErrorMessage";
 import { loadGames } from "client/utils/loadData";
+import { sharedConfig } from "shared/config/sharedConfig";
 
 interface Props {
   signup: SelectedGame;
@@ -66,26 +67,28 @@ export const EnteredGameRow = ({
         <Link to={`/games/${signup.gameDetails.gameId}`}>
           {signup.gameDetails.title}
         </Link>
-        <ButtonContainer>
-          {cancelSignupFormOpen ? (
-            <CancelSignupFormContainer>
-              <CancelSignupForm
-                onCancelForm={() => {
-                  setServerError(null);
-                  setCancelSignupFormOpen(false);
-                }}
-                onConfirmForm={async () => await removeSignup()}
-              />
-            </CancelSignupFormContainer>
-          ) : (
-            <Button
-              onClick={() => setCancelSignupFormOpen(true)}
-              buttonStyle={ButtonStyle.PRIMARY}
-            >
-              {t("button.cancelSignup")}
-            </Button>
-          )}
-        </ButtonContainer>
+        {sharedConfig.signupOpen && (
+          <ButtonContainer>
+            {cancelSignupFormOpen ? (
+              <CancelSignupFormContainer>
+                <CancelSignupForm
+                  onCancelForm={() => {
+                    setServerError(null);
+                    setCancelSignupFormOpen(false);
+                  }}
+                  onConfirmForm={async () => await removeSignup()}
+                />
+              </CancelSignupFormContainer>
+            ) : (
+              <Button
+                onClick={() => setCancelSignupFormOpen(true)}
+                buttonStyle={ButtonStyle.PRIMARY}
+              >
+                {t("button.cancelSignup")}
+              </Button>
+            )}
+          </ButtonContainer>
+        )}
       </GameTitleAndButtons>
 
       {!!signupQuestion && (
