@@ -17,6 +17,7 @@ import { ErrorMessage } from "client/components/ErrorMessage";
 import { selectActiveEnteredGames } from "client/views/my-games/myGamesSlice";
 import { getTime } from "client/utils/getTime";
 import { getDirectSignupStartTime } from "shared/utils/getDirectSignupStartTime";
+import { sharedConfig } from "shared/config/sharedConfig";
 
 interface Props {
   game: Game;
@@ -31,6 +32,7 @@ export const DirectSignupForm: FC<Props> = ({
 }: Props): ReactElement | null => {
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
+  const { signupOpen } = sharedConfig;
 
   const loggedIn = useAppSelector((state) => state.login.loggedIn);
   const username = useAppSelector((state) => state.login.username);
@@ -76,7 +78,7 @@ export const DirectSignupForm: FC<Props> = ({
 
   return (
     <>
-      {gameIsFull && (
+      {signupOpen && gameIsFull && (
         <GameIsFull>
           {t("signup.programItemFull", {
             PROGRAM_TYPE: t(`programType.${game.programType}`),
@@ -84,7 +86,7 @@ export const DirectSignupForm: FC<Props> = ({
         </GameIsFull>
       )}
 
-      {!alreadyEnteredToGame && !gameIsFull && (
+      {signupOpen && !alreadyEnteredToGame && !gameIsFull && (
         <>
           {enteredGamesForTimeslot.length === 1 && (
             <SignedGameContainer>
@@ -147,22 +149,27 @@ export const DirectSignupForm: FC<Props> = ({
               PROGRAM_TYPE: t(`programTypeIllative.${game.programType}`),
             })}
           </SignedGameContainer>
-          {!cancelSignupFormOpen && (
-            <ButtonWithMargin
-              onClick={() => setCancelSignupFormOpen(true)}
-              buttonStyle={ButtonStyle.SECONDARY}
-            >
-              {t("button.cancelSignup")}
-            </ButtonWithMargin>
-          )}
 
-          {cancelSignupFormOpen && (
-            <CancelSignupForm
-              onCancelForm={() => {
-                setCancelSignupFormOpen(false);
-              }}
-              onConfirmForm={async () => await removeSignup()}
-            />
+          {signupOpen && (
+            <>
+              {!cancelSignupFormOpen && (
+                <ButtonWithMargin
+                  onClick={() => setCancelSignupFormOpen(true)}
+                  buttonStyle={ButtonStyle.SECONDARY}
+                >
+                  {t("button.cancelSignup")}
+                </ButtonWithMargin>
+              )}
+
+              {cancelSignupFormOpen && (
+                <CancelSignupForm
+                  onCancelForm={() => {
+                    setCancelSignupFormOpen(false);
+                  }}
+                  onConfirmForm={async () => await removeSignup()}
+                />
+              )}
+            </>
           )}
         </>
       )}

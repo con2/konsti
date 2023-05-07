@@ -11,7 +11,7 @@ export const getAssignmentBonus = (
   const signupsAffectingBonus = signups.filter(
     (signup) =>
       signup.game.programType === ProgramType.TABLETOP_RPG &&
-      !sharedConfig.directSignupAlwaysOpen.includes(signup.game.gameId)
+      !sharedConfig.directSignupAlwaysOpenIds.includes(signup.game.gameId)
   );
 
   const groupMembersWithSignups = playerGroup.flatMap((groupMember) => {

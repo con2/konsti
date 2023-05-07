@@ -1,17 +1,7 @@
-export enum ConventionName {
-  ROPECON = "Ropecon",
-  TRACON_HITPOINT = "Tracon Hitpoint",
-}
-
 export enum SignupStrategy {
   DIRECT = "direct",
   ALGORITHM = "algorithm",
   ALGORITHM_AND_DIRECT = "algorithm+direct",
-}
-
-export enum ConventionType {
-  REMOTE = "remote",
-  LIVE = "live",
 }
 
 export enum AssignmentStrategy {

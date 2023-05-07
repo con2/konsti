@@ -13,7 +13,6 @@ import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { startTestServer, stopTestServer } from "server/test/utils/testServer";
 import { UserGroup } from "shared/typings/models/user";
 import { getJWT } from "server/utils/jwt";
-import { ConventionType } from "shared/config/sharedConfig.types";
 
 let mongoServer: MongoMemoryServer;
 
@@ -112,9 +111,9 @@ describe(`POST ${ApiEndpoint.USERS}`, () => {
     }
   });
 
-  test("should return 422 without serial if convention is live", async () => {
+  test("should return 422 without serial if code is required", async () => {
     vi.doMock("shared/config/sharedConfig", () => ({
-      sharedConfig: { conventionType: ConventionType.LIVE },
+      sharedConfig: { requireRegistrationCode: true },
     }));
 
     const { server } = await startTestServer(mongoServer.getUri());
@@ -130,9 +129,9 @@ describe(`POST ${ApiEndpoint.USERS}`, () => {
     }
   });
 
-  test("should return 200 without serial if convention is remote", async () => {
+  test("should return 200 without serial if code is not required", async () => {
     vi.doMock("shared/config/sharedConfig", () => ({
-      sharedConfig: { conventionType: ConventionType.REMOTE },
+      sharedConfig: { requireRegistrationCode: false },
     }));
 
     const { server } = await startTestServer(mongoServer.getUri());

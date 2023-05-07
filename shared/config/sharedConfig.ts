@@ -1,11 +1,6 @@
 import dayjs, { Dayjs } from "dayjs";
 import { ProgramType } from "shared/typings/models/game";
-import {
-  AssignmentStrategy,
-  ConventionName,
-  ConventionType,
-  SignupStrategy,
-} from "./sharedConfig.types";
+import { AssignmentStrategy, SignupStrategy } from "./sharedConfig.types";
 
 interface SignupWindow {
   signupWindowStart: Dayjs;
@@ -13,21 +8,24 @@ interface SignupWindow {
 }
 
 interface SharedConfig {
-  appName: string;
-  conventionType: ConventionType;
   assignmentStrategy: AssignmentStrategy;
   enableGroups: boolean;
   defaultSignupStrategy: SignupStrategy;
-  CONVENTION_NAME: ConventionName;
+  CONVENTION_NAME: string;
   CONVENTION_YEAR: string;
   CONVENTION_START_TIME: string;
   DIRECT_SIGNUP_START: number;
   PRE_SIGNUP_START: number;
   PHASE_GAP: number;
   directSignupWindows: Record<ProgramType, SignupWindow[]>;
-  directSignupAlwaysOpen: string[];
+  directSignupAlwaysOpenIds: string[];
   tracesSampleRate: number;
   enableSentryInDev: boolean;
+  requireRegistrationCode: boolean;
+  activeProgramTypes: ProgramType[];
+  manualSignupMode: SignupStrategy.ALGORITHM | SignupStrategy.DIRECT | "none";
+  signupOpen: boolean;
+  resultsVisible: boolean;
 }
 
 // Convention days
@@ -36,14 +34,20 @@ const saturday = "2022-07-30";
 const sunday = "2022-07-31";
 
 export const sharedConfig: SharedConfig = {
-  // App info
-  appName: "Konsti",
-
   // Convention settings
-  conventionType: ConventionType.LIVE,
+  requireRegistrationCode: true,
   assignmentStrategy: AssignmentStrategy.RANDOM_PADG,
   enableGroups: true,
   defaultSignupStrategy: SignupStrategy.ALGORITHM_AND_DIRECT,
+  manualSignupMode: "none",
+  signupOpen: true,
+  resultsVisible: true,
+  activeProgramTypes: [
+    ProgramType.TABLETOP_RPG,
+    ProgramType.LARP,
+    ProgramType.TOURNAMENT,
+    ProgramType.WORKSHOP,
+  ],
 
   directSignupWindows: {
     tabletopRPG: [],
@@ -108,7 +112,7 @@ export const sharedConfig: SharedConfig = {
     ],
   },
 
-  directSignupAlwaysOpen: [
+  directSignupAlwaysOpenIds: [
     "p5344", // PFS multi-table special: Pathfinder Society #3-99 Fate in the Future
     "p5825", // Corporations 2.0
   ],
@@ -119,7 +123,7 @@ export const sharedConfig: SharedConfig = {
   PHASE_GAP: 15, // minutes
 
   // Convention info
-  CONVENTION_NAME: ConventionName.ROPECON,
+  CONVENTION_NAME: "Ropecon",
   CONVENTION_YEAR: "2023",
 
   // Sentry

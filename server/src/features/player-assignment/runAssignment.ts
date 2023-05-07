@@ -16,7 +16,7 @@ import { Signup } from "server/features/signup/signup.typings";
 import { findSignups } from "server/features/signup/signupRepository";
 import { sharedConfig } from "shared/config/sharedConfig";
 
-const { directSignupAlwaysOpen } = sharedConfig;
+const { directSignupAlwaysOpenIds } = sharedConfig;
 
 interface RunAssignmentParams {
   assignmentStrategy: AssignmentStrategy;
@@ -62,7 +62,7 @@ export const runAssignment = async ({
   const filteredUsers = users.map((user) => {
     const matchingSignedGames = user.signedGames.filter(
       (signedGame) =>
-        !directSignupAlwaysOpen.includes(signedGame.gameDetails.gameId) &&
+        !directSignupAlwaysOpenIds.includes(signedGame.gameDetails.gameId) &&
         signedGame.gameDetails.programType === ProgramType.TABLETOP_RPG
     );
 
@@ -80,7 +80,7 @@ export const runAssignment = async ({
   // Only include TABLETOP_RPG and don't include "directSignupAlwaysOpen" games
   const filteredGames = games.filter(
     (game) =>
-      !directSignupAlwaysOpen.includes(game.gameId) &&
+      !directSignupAlwaysOpenIds.includes(game.gameId) &&
       game.programType === ProgramType.TABLETOP_RPG
   );
 

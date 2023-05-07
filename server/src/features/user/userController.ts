@@ -16,7 +16,6 @@ import {
   UpdateUserPasswordRequest,
 } from "shared/typings/api/login";
 import { sharedConfig } from "shared/config/sharedConfig";
-import { ConventionType } from "shared/config/sharedConfig.types";
 import { createSerial } from "./userUtils";
 
 export const postUser = async (
@@ -32,7 +31,7 @@ export const postUser = async (
 
   const { username, password } = req.body;
   let serial;
-  if (sharedConfig.conventionType === ConventionType.REMOTE) {
+  if (!sharedConfig.requireRegistrationCode) {
     const serialDoc = await createSerial();
     serial = serialDoc[0].serial;
   } else {
