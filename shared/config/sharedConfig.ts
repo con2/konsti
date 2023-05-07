@@ -38,9 +38,9 @@ export const sharedConfig: SharedConfig = {
   requireRegistrationCode: false,
   assignmentStrategy: AssignmentStrategy.RANDOM_PADG,
   enableGroups: false,
-  defaultSignupStrategy: SignupStrategy.ALGORITHM,
+  defaultSignupStrategy: SignupStrategy.ALGORITHM_AND_DIRECT,
   manualSignupMode: SignupStrategy.DIRECT,
-  signupOpen: false,
+  signupOpen: true,
   resultsVisible: true,
   activeProgramTypes: [ProgramType.TABLETOP_RPG],
 
