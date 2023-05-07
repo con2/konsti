@@ -90,9 +90,7 @@ export const AllGamesView = (): ReactElement => {
       const savedSelectedView = sessionStorage.getItem(
         SessionStorageValue.ALL_GAMES_SELECTED_VIEW
       );
-      setSelectedView(
-        (savedSelectedView as SelectedView) ?? SelectedView.UPCOMING
-      );
+      setSelectedView((savedSelectedView as SelectedView) ?? defaultView);
     };
     loadSessionStorageValues();
 
@@ -101,7 +99,7 @@ export const AllGamesView = (): ReactElement => {
       setLoading(false);
     };
     fetchData();
-  }, [store, testTime, signupStrategy]);
+  }, [store, testTime, signupStrategy, defaultView]);
 
   useEffect(() => {
     sessionStorage.setItem(
@@ -142,15 +140,10 @@ export const AllGamesView = (): ReactElement => {
   const memoizedGames = useMemo(() => {
     return (
       <AllGamesList
-        games={getVisibleGames(
-          filteredGames,
-          hiddenGames,
-          selectedView,
-          selectedTag
-        )}
+        games={getVisibleGames(filteredGames, selectedView, selectedTag)}
       />
     );
-  }, [filteredGames, hiddenGames, selectedView, selectedTag]);
+  }, [filteredGames, selectedView, selectedTag]);
 
   const options = [
     {
@@ -255,26 +248,18 @@ export const AllGamesView = (): ReactElement => {
 
 const getVisibleGames = (
   games: readonly Game[],
-  hiddenGames: readonly Game[],
   selectedView: SelectedView,
   selectedTag: string
 ): readonly Game[] => {
   const filteredGames = getTagFilteredGames(games, selectedTag);
 
-  const visibleGames = filteredGames.filter((game) => {
-    const hidden = hiddenGames.find(
-      (hiddenGame) => game.gameId === hiddenGame.gameId
-    );
-    if (!hidden) return game;
-  });
-
   if (selectedView === SelectedView.UPCOMING) {
-    return getUpcomingGames(visibleGames);
+    return getUpcomingGames(filteredGames);
   } else if (selectedView === SelectedView.REVOLVING_DOOR) {
-    return getUpcomingGames(visibleGames).filter((game) => game.revolvingDoor);
+    return getUpcomingGames(filteredGames).filter((game) => game.revolvingDoor);
   }
 
-  return visibleGames;
+  return filteredGames;
 };
 
 const getTagFilteredGames = (
