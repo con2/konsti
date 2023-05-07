@@ -60,12 +60,16 @@ export const AllGamesView = (): ReactElement => {
     leading: true,
   });
 
-  const activeVisibleGames = activeGames.filter((game) => {
-    const hidden = hiddenGames.find(
-      (hiddenGame) => game.gameId === hiddenGame.gameId
-    );
-    if (!hidden) return game;
-  });
+  const activeVisibleGames = useMemo(
+    () =>
+      activeGames.filter((game) => {
+        const hidden = hiddenGames.find(
+          (hiddenGame) => game.gameId === hiddenGame.gameId
+        );
+        if (!hidden) return game;
+      }),
+    [activeGames, hiddenGames]
+  );
 
   const store = useStore();
 
@@ -106,25 +110,27 @@ export const AllGamesView = (): ReactElement => {
     );
 
     if (debouncedSearchTerm.length === 0) {
-      setFilteredGames(activeGames);
+      setFilteredGames(activeVisibleGames);
       return;
     }
 
-    const gamesFilteredBySearchTerm = activeGames.filter((activeGame) => {
-      return (
-        activeGame.title
-          .replace(MULTIPLE_WHITESPACES_REGEX, " ")
-          .toLocaleLowerCase()
-          .includes(debouncedSearchTerm.toLocaleLowerCase()) ||
-        activeGame.gameSystem
-          .replace(MULTIPLE_WHITESPACES_REGEX, " ")
-          .toLocaleLowerCase()
-          .includes(debouncedSearchTerm.toLocaleLowerCase())
-      );
-    });
+    const gamesFilteredBySearchTerm = activeVisibleGames.filter(
+      (activeGame) => {
+        return (
+          activeGame.title
+            .replace(MULTIPLE_WHITESPACES_REGEX, " ")
+            .toLocaleLowerCase()
+            .includes(debouncedSearchTerm.toLocaleLowerCase()) ||
+          activeGame.gameSystem
+            .replace(MULTIPLE_WHITESPACES_REGEX, " ")
+            .toLocaleLowerCase()
+            .includes(debouncedSearchTerm.toLocaleLowerCase())
+        );
+      }
+    );
 
     setFilteredGames(gamesFilteredBySearchTerm);
-  }, [debouncedSearchTerm, activeGames]);
+  }, [debouncedSearchTerm, activeVisibleGames]);
 
   const filters = [
     Tag.IN_ENGLISH,
