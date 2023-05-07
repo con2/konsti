@@ -27,46 +27,17 @@ export const ProgramTypeSelection = (): ReactElement => {
   }));
 
   return (
-    <EventTypeSelectionContainer>
-      <InfoText>{t("selectedProgramType")}</InfoText>
-      <Dropdown
-        options={dropdownItems}
-        selectedValue={activeProgramType}
-        onChange={(event: ChangeEvent<HTMLSelectElement>) => {
-          const programType = event.target.value as ProgramType;
-          dispatch(setActiveProgramType(programType));
-          saveSession({
-            admin: { activeProgramType: programType },
-          });
-        }}
-        loading={false}
-      />
-    </EventTypeSelectionContainer>
+    <Dropdown
+      options={dropdownItems}
+      selectedValue={activeProgramType}
+      onChange={(event: ChangeEvent<HTMLSelectElement>) => {
+        const programType = event.target.value as ProgramType;
+        dispatch(setActiveProgramType(programType));
+        saveSession({
+          admin: { activeProgramType: programType },
+        });
+      }}
+      loading={false}
+    />
   );
 };
-
-const EventTypeSelectionContainer = styled.div`
-  height: ${ROW_HEIGHT}px;
-
-  @media (max-width: ${(props) => props.theme.breakpointPhone}) {
-    margin-left: ${MOBILE_MARGIN}px;
-    margin-right: ${MOBILE_MARGIN}px;
-
-    select {
-      width: 45%;
-    }
-  }
-
-  @media (max-width: ${(props) => props.theme.breakpointDesktop}) {
-    margin-left: ${MOBILE_MARGIN}px;
-    margin-right: ${MOBILE_MARGIN}px;
-  }
-`;
-
-const InfoText = styled.span`
-  margin-right: 8px;
-
-  @media (max-width: ${(props) => props.theme.breakpointPhone}) {
-    display: none;
-  }
-`;

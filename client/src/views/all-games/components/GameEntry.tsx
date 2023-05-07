@@ -245,7 +245,7 @@ const GameContainer = styled.div<{ signed: boolean }>`
   border-radius: 4px;
   background: #fafafa;
   min-height: 160px;
-  box-shadow: 1px 6px 12px 0 rgba(0, 0, 0, 0.34);
+  box-shadow: ${(props) => props.theme.shadowLower};
   color: #3d3d3d;
 
   @media (max-width: ${(props) => props.theme.breakpointPhone}) {

@@ -1,8 +1,7 @@
-import { ReactElement, ChangeEvent, useState, useEffect, useMemo } from "react";
+import { ReactElement, useState, useEffect, useMemo } from "react";
 import { useStore } from "react-redux";
 import { Link } from "react-router-dom";
 import { TFunction } from "i18next";
-import { useTranslation } from "react-i18next";
 import dayjs from "dayjs";
 import styled from "styled-components";
 import { useDebounce } from "use-debounce";
@@ -13,57 +12,30 @@ import { Loading } from "client/components/Loading";
 import { Game, ProgramType, Tag } from "shared/typings/models/game";
 import { getTime } from "client/utils/getTime";
 import { useAppSelector } from "client/utils/hooks";
-import { Button, ButtonStyle } from "client/components/Button";
 import { selectActiveGames } from "client/views/admin/adminSlice";
-import { ControlledInput } from "client/components/ControlledInput";
 import { SessionStorageValue } from "client/utils/localStorage";
-import { Dropdown } from "client/components/Dropdown";
-import { ButtonGroup } from "client/components/ButtonGroup";
-import { config } from "client/config";
+import {
+  SearchAndFilterCard,
+  StartingTimeOption,
+} from "client/views/all-games/components/SearchAndFilterCard";
 
 export const MULTIPLE_WHITESPACES_REGEX = /\s\s+/g;
 
-enum SelectedView {
-  ALL = "all",
-  UPCOMING = "upcoming",
-  REVOLVING_DOOR = "revolving-door",
-}
-
 export const AllGamesView = (): ReactElement => {
-  const { t } = useTranslation();
-
   const activeGames = useAppSelector(selectActiveGames);
   const testTime = useAppSelector((state) => state.testSettings.testTime);
   const hiddenGames = useAppSelector((state) => state.admin.hiddenGames);
   const signupStrategy = useAppSelector((state) => state.admin.signupStrategy);
-  const activeProgramType = useAppSelector(
-    (state) => state.admin.activeProgramType
-  );
 
-  const defaultView = config.alwaysShowAllProgramItems
-    ? SelectedView.ALL
-    : SelectedView.UPCOMING;
-
-  const [selectedView, setSelectedView] = useState<SelectedView>(defaultView);
   const [selectedTag, setSelectedTag] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [filteredGames, setFilteredGames] = useState<readonly Game[]>([]);
+  const [selectedStartingTime, setSelectedStartingTime] = useState<string>("");
 
   const [debouncedSearchTerm] = useDebounce(searchTerm, 300, {
     leading: true,
   });
-
-  const activeVisibleGames = useMemo(
-    () =>
-      activeGames.filter((game) => {
-        const hidden = hiddenGames.find(
-          (hiddenGame) => game.gameId === hiddenGame.gameId
-        );
-        if (!hidden) return game;
-      }),
-    [activeGames, hiddenGames]
-  );
 
   const store = useStore();
 
@@ -81,10 +53,10 @@ export const AllGamesView = (): ReactElement => {
       );
       setSelectedTag(savedTag ?? "");
 
-      const savedSelectedView = sessionStorage.getItem(
-        SessionStorageValue.ALL_GAMES_SELECTED_VIEW
+      const savedStartingTime = sessionStorage.getItem(
+        SessionStorageValue.ALL_GAMES_STARTING_TIME
       );
-      setSelectedView((savedSelectedView as SelectedView) ?? defaultView);
+      setSelectedStartingTime(savedStartingTime ?? "");
     };
     loadSessionStorageValues();
 
@@ -93,7 +65,7 @@ export const AllGamesView = (): ReactElement => {
       setLoading(false);
     };
     fetchData();
-  }, [store, testTime, signupStrategy, defaultView]);
+  }, [store, testTime, signupStrategy]);
 
   useEffect(() => {
     sessionStorage.setItem(
@@ -102,11 +74,11 @@ export const AllGamesView = (): ReactElement => {
     );
 
     if (debouncedSearchTerm.length === 0) {
-      setFilteredGames(activeVisibleGames);
+      setFilteredGames(activeGames);
       return;
     }
 
-    const gamesFilteredBySearchTerm = activeVisibleGames.filter(
+    const gamesFilteredBySearchTerm = activeGames.filter(
       (activeGame) => {
         return (
           activeGame.title
@@ -122,119 +94,28 @@ export const AllGamesView = (): ReactElement => {
     );
 
     setFilteredGames(gamesFilteredBySearchTerm);
-  }, [debouncedSearchTerm, activeVisibleGames]);
-
-  const filters = [
-    Tag.IN_ENGLISH,
-    Tag.BEGINNER_FRIENDLY,
-    Tag.SUITABLE_UNDER_10,
-    Tag.AGE_RESTRICTED,
-  ];
+  }, [debouncedSearchTerm, activeGames]);
 
   const memoizedGames = useMemo(() => {
     return (
       <AllGamesList
-        games={getVisibleGames(filteredGames, selectedView, selectedTag)}
+        games={getVisibleGames(
+          filteredGames,
+          hiddenGames,
+          selectedStartingTime,
+          selectedTag
+        )}
       />
     );
-  }, [filteredGames, selectedView, selectedTag]);
-
-  const options = [
-    {
-      value: "",
-      title: t("allProgramItems", {
-        PROGRAM_TYPE: t(`programTypePlural.${activeProgramType}`),
-      }),
-    },
-    filters.map((filter) => ({
-      value: filter,
-      title: t(`gameTags.${filter}`),
-    })),
-  ].flat();
-
-  const setView = (view: SelectedView): void => {
-    setSelectedView(view);
-    sessionStorage.setItem(SessionStorageValue.ALL_GAMES_SELECTED_VIEW, view);
-  };
+  }, [filteredGames, hiddenGames, selectedStartingTime, selectedTag]);
 
   return (
     <>
-      <HeaderContainer>
-        <ButtonGroup>
-          {!config.alwaysShowAllProgramItems && (
-            <>
-              <Button
-                disabled={selectedView === SelectedView.UPCOMING}
-                buttonStyle={ButtonStyle.SECONDARY}
-                onClick={() => setView(SelectedView.UPCOMING)}
-              >
-                {t("upcoming")}
-              </Button>
-
-              <Button
-                disabled={selectedView === SelectedView.ALL}
-                buttonStyle={ButtonStyle.SECONDARY}
-                onClick={() => setView(SelectedView.ALL)}
-              >
-                {t("all")}
-              </Button>
-            </>
-          )}
-
-          {config.enableRevolvingDoor &&
-            activeProgramType === ProgramType.TABLETOP_RPG && (
-              <Button
-                disabled={selectedView === SelectedView.REVOLVING_DOOR}
-                buttonStyle={ButtonStyle.SECONDARY}
-                onClick={() => setView(SelectedView.REVOLVING_DOOR)}
-              >
-                {t("revolvingDoor")}
-              </Button>
-            )}
-        </ButtonGroup>
-
-        {config.enableTagDropdown && (
-          <div>
-            <ChooseTagsInstruction>{t("chooseTag")} </ChooseTagsInstruction>
-            <Dropdown
-              onChange={(event: ChangeEvent<HTMLSelectElement>) => {
-                const tag = event.target.value;
-                setSelectedTag(tag);
-                sessionStorage.setItem(SessionStorageValue.ALL_GAMES_TAG, tag);
-              }}
-              options={options}
-              selectedValue={selectedTag}
-            />
-          </div>
-        )}
-
-        {selectedView === SelectedView.REVOLVING_DOOR && (
-          <>
-            <RevolvingDoorInstruction>
-              {t("revolvingDoorInstruction")}
-            </RevolvingDoorInstruction>
-            <div>
-              <h3>{t("currentlyRunningRevolvingDoor")}</h3>
-              {getRunningRevolvingDoorGames(activeVisibleGames, t)}
-            </div>
-          </>
-        )}
-
-        <ControlledInput
-          value={searchTerm}
-          onChange={(event) => setSearchTerm(event.target.value)}
-          placeholder={
-            activeProgramType === ProgramType.TABLETOP_RPG
-              ? t("searchWithTitleOrSystem", {
-                  PROGRAM_TYPE: t(`programTypeGenetive.${activeProgramType}`),
-                })
-              : t("searchWithTitle", {
-                  PROGRAM_TYPE: t(`programTypeGenetive.${activeProgramType}`),
-                })
-          }
-          resetValue={() => setSearchTerm("")}
-        />
-      </HeaderContainer>
+      <SearchAndFilterCard
+        onTagChange={setSelectedTag}
+        onSelectedStartingTimeChange={setSelectedStartingTime}
+        onSearchTermChange={setSearchTerm}
+      />
       {loading ? <Loading /> : memoizedGames}
     </>
   );
@@ -242,14 +123,15 @@ export const AllGamesView = (): ReactElement => {
 
 const getVisibleGames = (
   games: readonly Game[],
-  selectedView: SelectedView,
+  hiddenGames: readonly Game[],
+  selectedView: string,
   selectedTag: string
 ): readonly Game[] => {
   const filteredGames = getTagFilteredGames(games, selectedTag);
 
-  if (selectedView === SelectedView.UPCOMING) {
+  if (selectedView === StartingTimeOption.UPCOMING) {
     return getUpcomingGames(filteredGames);
-  } else if (selectedView === SelectedView.REVOLVING_DOOR) {
+  } else if (selectedView === StartingTimeOption.REVOLVING_DOOR) {
     return getUpcomingGames(filteredGames).filter((game) => game.revolvingDoor);
   }
 
@@ -296,29 +178,8 @@ const getRunningRevolvingDoorGames = (
   });
 };
 
-const HeaderContainer = styled.div`
-  display: flex;
-  gap: 8px;
-  flex-direction: column;
-`;
-
-const ChooseTagsInstruction = styled.span`
-  @media (max-width: ${(props) => props.theme.breakpointPhone}) {
-    display: none;
-  }
-`;
-
 const GameListShortDescription = styled.p`
   font-size: ${(props) => props.theme.fontSizeSmall};
   font-style: italic;
   margin: 4px 0 8px 14px;
-`;
-
-const RevolvingDoorInstruction = styled.div`
-  margin: 6px 0 0 0;
-  border: 1px solid ${(props) => props.theme.infoBorder};
-  padding: 8px 6px;
-  border-radius: 5px;
-  border-left: 5px solid ${(props) => props.theme.infoBorder};
-  background-color: ${(props) => props.theme.infoBackground};
 `;

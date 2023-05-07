@@ -196,6 +196,7 @@
   "all": "Kaikki",
   "allProgramItems": "Kaikki {{PROGRAM_TYPE}}",
   "lastStartedAndUpcoming": "Viimeksi alkaneet ja tulevat",
+  "startingTime": "Aloitusaika",
   "chooseTag": "Valitse tagi",
   "revolvingDoor": "Pyöröovi",
   "revolvingDoorInstruction": "Pyöröovipeleihin voi liittyä koska tahansa, jos pelipöydässä on tilaa",

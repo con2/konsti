@@ -9,11 +9,8 @@ import { Loading } from "client/components/Loading";
 import { getIconLibrary } from "client/utils/icons";
 import { config } from "client/config";
 import { ErrorBar } from "client/components/ErrorBar";
-import { ProgramTypeSelection } from "client/components/EventTypeSelection";
-import { useAppSelector } from "client/utils/hooks";
 import { MOBILE_MARGIN } from "client/globalStyle";
 import { newUpdatePageReloadKey } from "client/utils/localStorage";
-import { isAdmin } from "client/utils/checkUserGroup";
 import { TestTime } from "client/components/TestTime";
 import { sharedConfig } from "shared/config/sharedConfig";
 import { Announcement } from "client/components/Announcement";
@@ -25,9 +22,6 @@ export const App = (): ReactElement => {
   const store = useStore();
 
   const [loading, setLoading] = useState<boolean>(true);
-
-  const appOpen = useAppSelector((state) => state.admin.appOpen);
-  const userGroup = useAppSelector((state) => state.login.userGroup);
 
   useEffect(() => {
     // Successful app load -> reset update reload state
@@ -63,7 +57,6 @@ export const App = (): ReactElement => {
           <Header />
           <ErrorBar />
           {showAnnouncement && <Announcement />}
-          {showProgramTypeSelection && <ProgramTypeSelection />}
           <AppContainer>
             <AppRoutes />
           </AppContainer>
