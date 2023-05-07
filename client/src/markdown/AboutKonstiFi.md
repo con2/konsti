@@ -2,10 +2,6 @@
 
 Konsti on suomalaisille con-tapahtumille suunniteltu [avoimen lähdekoodin ilmoittautumissovellus](https://github.com/ropekonsti/konsti), jota kehittää ja ylläpitää joukko vapaaehtoisia koodaajia. Konsti on ollut käytössä Ropeconissa jo vuodesta 2017 lähtien. Konstin avulla peleihin ilmoittautuminen tapahtuu joko niin, että paikat arvotaan, tai sitten peleihin voidaan ilmoittautua ilmoittautumisjärjestyksessä. Konstia ja sen arvonta-algoritmia on kehitetty vuosien saatossa jatkuvasti eteenpäin.
 
-## Rapucon 2023
-
-Infosivua ei ole päivitetty Rapucon 2023 tapahtumalle. Suurin osa sisällöstä on silti oikein, mutta osa voi koskea Ropecon 2022 tapahtumaa.
-
 ## Ropecon 2022
 
 Konstin kautta voi ilmoittautua Ropeconissa 2022 pöytäroolipeleihin, larppeihin ja turnauksiin.

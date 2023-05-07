@@ -2,10 +2,6 @@
 
 Konsti app is an [open-source sign-up application](https://github.com/ropekonsti/konsti) designed for Finnish conventions developed and maintained by a group of volunteer programmers. Konsti has been in use at Ropecon since 2017. Signing up for games via the app can be done either by a lottery, or directly in the order of enrollment. The team has continued to work on and improve the Konsti app and its lottery algorithm throughout the years.
 
-## Rapucon 2023
-
-Info page is not updated for Rapucon 2023. Most info is still valid but some may only apply to Ropecon 2022.
-
 ## Ropecon 2022
 
 In Ropecon 2022, you can sign-up to tabletop role-playing games, larps, and game tournaments in Konsti.

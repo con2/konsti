@@ -59,13 +59,13 @@ const commonConfig = {
   // Convention settings
   dataUri: "https://kompassi.eu/api/v1/events/ropecon2022/programme/ropecon",
   firtSignupBonus: 20,
-  useLocalProgramFile: true,
+  useLocalProgramFile: false,
 
   // Statistics
   statsDataDir: "src/features/statistics/datafiles",
 
   // Testing
-  localKompassiFile: "program-rapucon-2023.json",
+  localKompassiFile: "program-ropecon-2022-test.json",
 };
 
 const prodConfig = {
@@ -88,7 +88,7 @@ const prodConfig = {
   useTestTime: false,
 
   // Game update cron
-  autoUpdateGamesEnabled: false,
+  autoUpdateGamesEnabled: true,
   gameUpdateInterval: `*/4 * * * *`,
   autoUpdateGamePopularityEnabled: true,
 

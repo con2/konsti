@@ -19,8 +19,6 @@ const getEnvVariableFile = (): string | undefined => {
       return "./config/staging.env";
     case "build:ci":
       return "./config/ci.env";
-    case "build:rapucon":
-      return "./config/rapucon.env";
     default:
       return "./config/dev.env";
   }
@@ -159,8 +157,6 @@ const getWebpackConfig = (): Configuration | undefined => {
     case "build:prod":
       return merge(commonConfig, prodConfig);
     case "build:staging":
-      return merge(commonConfig, prodConfig);
-    case "build:rapucon":
       return merge(commonConfig, prodConfig);
     case "build:dev":
       return merge(commonConfig, prodConfig);

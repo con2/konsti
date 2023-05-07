@@ -133,8 +133,7 @@ describe("Assignment with valid data", () => {
 
 describe("Assignment with multiple program types and directSignupAlwaysOpen", () => {
   // TODO: Use dynamic sharedConfig.activeProgramTypes
-  // eslint-disable-next-line vitest/no-disabled-tests
-  test.skip("should not remove signups of non-RPG program types", async () => {
+  test("should not remove signups of non-RPG program types", async () => {
     const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
     const startingTime = testGame.startTime;
 

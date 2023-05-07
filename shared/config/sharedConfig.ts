@@ -35,14 +35,19 @@ const sunday = "2022-07-31";
 
 export const sharedConfig: SharedConfig = {
   // Convention settings
-  requireRegistrationCode: false,
+  requireRegistrationCode: true,
   assignmentStrategy: AssignmentStrategy.RANDOM_PADG,
-  enableGroups: false,
-  defaultSignupStrategy: SignupStrategy.ALGORITHM,
-  manualSignupMode: SignupStrategy.DIRECT,
-  signupOpen: false,
+  enableGroups: true,
+  defaultSignupStrategy: SignupStrategy.ALGORITHM_AND_DIRECT,
+  manualSignupMode: "none",
+  signupOpen: true,
   resultsVisible: true,
-  activeProgramTypes: [ProgramType.TABLETOP_RPG],
+  activeProgramTypes: [
+    ProgramType.TABLETOP_RPG,
+    ProgramType.LARP,
+    ProgramType.TOURNAMENT,
+    ProgramType.WORKSHOP,
+  ],
 
   directSignupWindows: {
     tabletopRPG: [],
@@ -118,7 +123,7 @@ export const sharedConfig: SharedConfig = {
   PHASE_GAP: 15, // minutes
 
   // Convention info
-  CONVENTION_NAME: "Rapucon",
+  CONVENTION_NAME: "Ropecon",
   CONVENTION_YEAR: "2023",
 
   // Sentry

@@ -22,10 +22,10 @@ export const config: Config = {
 
   // Convention settings
   noSignupGames: [],
-  enableRevolvingDoor: false,
-  enableOrganizerFeedback: false,
-  enableTagDropdown: false,
-  alwaysShowAllProgramItems: true,
+  enableRevolvingDoor: true,
+  enableOrganizerFeedback: true,
+  enableTagDropdown: true,
+  alwaysShowAllProgramItems: false,
   showAnnouncement: false,
 
   // Dev
