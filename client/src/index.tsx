@@ -13,7 +13,7 @@ import isSameOrAfter from "dayjs/plugin/isSameOrAfter";
 import loaderImage from "assets/loading.gif";
 import { config } from "client/config";
 import {
-  getLanguage,
+  getLocalStorageLanguage,
   newUpdatePageReloadKey,
   newUpdatePageReloadValue,
 } from "client/utils/localStorage";
@@ -29,7 +29,7 @@ import "client/utils/i18n";
 
 dayjs.extend(isBetween);
 dayjs.extend(isSameOrAfter);
-setLocale(getLanguage());
+setLocale(getLocalStorageLanguage());
 
 // Root component
 const App = lazy(async () => await import("client/app/App"));

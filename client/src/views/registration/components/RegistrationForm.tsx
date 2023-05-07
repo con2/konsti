@@ -7,7 +7,6 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Accordion } from "client/components/Accordion";
 import { sharedConfig } from "shared/config/sharedConfig";
-import { ConventionType } from "shared/config/sharedConfig.types";
 import { Button, ButtonStyle } from "client/components/Button";
 import { RegistrationFormFields } from "shared/typings/api/login";
 import { useAppDispatch } from "client/utils/hooks";
@@ -29,8 +28,6 @@ import { UncontrolledInput } from "client/components/UncontrolledInput";
 export const RegistrationForm = (): ReactElement => {
   const dispatch = useAppDispatch();
   const { t, i18n } = useTranslation();
-
-  const serialRequired = sharedConfig.conventionType === ConventionType.LIVE;
 
   const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
   const [serverError, setServerError] =
@@ -131,7 +128,7 @@ export const RegistrationForm = (): ReactElement => {
           <FormFieldError>{errors.password.message}</FormFieldError>
         )}
 
-        {serialRequired && (
+        {sharedConfig.requireRegistrationCode && (
           <>
             <FormRow>
               <StyledInput

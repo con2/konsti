@@ -9,6 +9,11 @@ interface Config {
   dataUpdateInterval: number;
   noSignupGames: string[];
   enableStrategyTestValue: boolean;
+  enableRevolvingDoor: boolean;
+  enableOrganizerFeedback: boolean;
+  enableTagDropdown: boolean;
+  alwaysShowAllProgramItems: boolean;
+  showAnnouncement: boolean;
 }
 
 export const config: Config = {
@@ -17,6 +22,11 @@ export const config: Config = {
 
   // Convention settings
   noSignupGames: [],
+  enableRevolvingDoor: true,
+  enableOrganizerFeedback: true,
+  enableTagDropdown: true,
+  alwaysShowAllProgramItems: false,
+  showAnnouncement: false,
 
   // Dev
   enableReduxTrace: false,

@@ -267,7 +267,7 @@ export const delRpgSignupsByStartTime = async (
   const doNotRemoveGameIds = games
     .filter(
       (game) =>
-        sharedConfig.directSignupAlwaysOpen.includes(game.gameId) ||
+        sharedConfig.directSignupAlwaysOpenIds.includes(game.gameId) ||
         game.programType !== ProgramType.TABLETOP_RPG
     )
     .map((game) => game._id);

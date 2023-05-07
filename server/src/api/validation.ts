@@ -1,6 +1,5 @@
 import { check, ValidationChain } from "express-validator";
 import { sharedConfig } from "shared/config/sharedConfig";
-import { ConventionType } from "shared/config/sharedConfig.types";
 import {
   PASSWORD_LENGTH_MAX,
   PASSWORD_LENGTH_MIN,
@@ -24,7 +23,7 @@ export const postUserValidation = (): ValidationChain[] => {
       .escape(),
   ];
 
-  if (sharedConfig.conventionType === ConventionType.LIVE) {
+  if (sharedConfig.requireRegistrationCode) {
     validation.push(check("serial").not().isEmpty().trim().escape());
   }
 

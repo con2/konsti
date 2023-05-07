@@ -29,7 +29,7 @@ export const verifyUserSignups = async (): Promise<void> => {
   signups.map(({ game, userSignups }) => {
     if (
       game.programType !== ProgramType.TABLETOP_RPG ||
-      sharedConfig.directSignupAlwaysOpen.includes(game.gameId)
+      sharedConfig.directSignupAlwaysOpenIds.includes(game.gameId)
     ) {
       return;
     }

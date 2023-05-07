@@ -6,6 +6,7 @@ import { ResultsByStartTimes } from "./ResultsByStartTimes";
 import { getMissedSignups } from "client/views/my-games/utils/getMissedSignups";
 import { SelectedGame } from "shared/typings/models/user";
 import { ProgramType } from "shared/typings/models/game";
+import { sharedConfig } from "shared/config/sharedConfig";
 
 interface Props {
   enteredGames: readonly SelectedGame[];
@@ -39,9 +40,11 @@ export const MyEnteredList = ({
     <div>
       <h3>{t("enteredGames")}</h3>
       <MyEnteredGames>
-        {startTimes.length === 0 && <span>{t("noEnteredGames")}</span>}
+        {(!sharedConfig.resultsVisible || startTimes.length === 0) && (
+          <span>{t("noEnteredGames")}</span>
+        )}
 
-        {startTimes.length !== 0 && (
+        {sharedConfig.resultsVisible && startTimes.length !== 0 && (
           <ResultsByStartTimes
             signups={_.sortBy(enteredGames, [
               (enteredGame) => enteredGame.time,

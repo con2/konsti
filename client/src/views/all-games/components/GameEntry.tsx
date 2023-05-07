@@ -50,7 +50,7 @@ export const GameEntry = ({
 
   const dispatch = useAppDispatch();
 
-  const signupAlwaysOpen = sharedConfig.directSignupAlwaysOpen.includes(
+  const signupAlwaysOpen = sharedConfig.directSignupAlwaysOpenIds.includes(
     game.gameId
   );
 
@@ -60,7 +60,9 @@ export const GameEntry = ({
     ) !== undefined;
 
   const isEnterGameMode =
-    signupStrategy === SignupStrategy.DIRECT || signupAlwaysOpen;
+    sharedConfig.manualSignupMode === SignupStrategy.DIRECT ||
+    signupStrategy === SignupStrategy.DIRECT ||
+    signupAlwaysOpen;
   const gameIsFull = players >= game.maxAttendance;
 
   const formatDuration = (mins: number): string => {
@@ -84,7 +86,10 @@ export const GameEntry = ({
     ? isEnteredCurrentGame
     : isSignedForCurrentGame;
 
-  const tags = [t(`programType.${game.programType}`)];
+  const tags = [];
+  if (sharedConfig.activeProgramTypes.length > 1) {
+    tags.push(t(`programType.${game.programType}`));
+  }
   if (game.gameSystem) {
     tags.push(game.gameSystem);
   }
@@ -181,19 +186,22 @@ export const GameEntry = ({
           />
         )}
       </GameHeader>
+
       <GameDetailsView game={game} isAlwaysExpanded={isAlwaysExpanded} />
-      {loggedIn && isEnterGameMode && (
-        <DirectSignupForm
-          game={game}
-          gameIsFull={gameIsFull}
-          startTime={startTime}
-        />
-      )}
+
       {loggedIn && !isEnterGameMode && (
         <AlgorithmSignupForm
           game={game}
           startTime={startTime}
           signedGames={signedGames}
+        />
+      )}
+
+      {loggedIn && isEnterGameMode && (
+        <DirectSignupForm
+          game={game}
+          gameIsFull={gameIsFull}
+          startTime={startTime}
         />
       )}
     </GameContainer>
@@ -202,7 +210,6 @@ export const GameEntry = ({
 
 const PlayersNeeded = styled("span")<{ visible: boolean }>`
   margin-top: 8px;
-  margin-bottom: 14px;
   display: ${(props) => (props.visible ? "block" : "none")};
 `;
 
@@ -217,7 +224,7 @@ const GameEntryRow = styled.div`
 
 const GameHeader = styled(GameEntryRow)`
   justify-content: space-between;
-  margin-bottom: 8px;
+  margin-bottom: 14px;
 `;
 
 const HeaderContainer = styled.div`

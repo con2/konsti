@@ -59,6 +59,7 @@ const commonConfig = {
   // Convention settings
   dataUri: "https://kompassi.eu/api/v1/events/ropecon2022/programme/ropecon",
   firtSignupBonus: 20,
+  useLocalProgramFile: false,
 
   // Statistics
   statsDataDir: "src/features/statistics/datafiles",
@@ -77,7 +78,6 @@ const prodConfig = {
     typeof process.env.CORS_WHITELIST === "string"
       ? process.env.CORS_WHITELIST.split(";")
       : [],
-  useLocalProgramFile: false,
   debug: process.env.DEBUG === "true" || false,
   GROUP_ASSIGNMENT_ROUNDS: 300,
   PADG_ASSIGNMENT_ROUNDS: 300,
@@ -108,7 +108,6 @@ const stagingConfig = {
     typeof process.env.CORS_WHITELIST === "string"
       ? process.env.CORS_WHITELIST.split(";")
       : [],
-  useLocalProgramFile: false,
   debug: process.env.DEBUG === "true" || false,
   GROUP_ASSIGNMENT_ROUNDS: 300,
   PADG_ASSIGNMENT_ROUNDS: 300,
@@ -140,7 +139,6 @@ const devConfig = {
     "http://localhost:5000",
     "https://server:5000",
   ],
-  useLocalProgramFile: false,
   debug: false,
   GROUP_ASSIGNMENT_ROUNDS: 10,
   PADG_ASSIGNMENT_ROUNDS: 300,

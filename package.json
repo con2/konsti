@@ -34,7 +34,7 @@
     "prettier:check": "prettier --check \"./**/*.{js,json,md,ts,tsx,yml}\"",
     "prettier:write": "prettier --write \"./**/*.{js,json,md,ts,tsx,yml}\"",
     "server": "yarn workspace konsti-server start:dev",
-    "start:dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
+    "start:dev": "yarn docker:db && concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
     "start": "yarn workspace konsti-server start",
     "stylelint": "yarn workspace konsti-client stylelint",
     "test-assign": "yarn workspace konsti-server test-assign",
