@@ -43,7 +43,7 @@ export const postUser = async (
       .optional()
       .refine((input) => {
         if (sharedConfig.requireRegistrationCode) {
-          if (input?.trim().length === 0) {
+          if (!input || input.trim().length === 0) {
             return false;
           }
         }
