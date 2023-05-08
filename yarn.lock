@@ -8247,10 +8247,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"helmet@npm:6.0.1":
-  version: 6.0.1
-  resolution: "helmet@npm:6.0.1"
-  checksum: 1ca20d0b7888b6208130bbb50d183e68d53bb5fa0caead2106226d6d53216dfc893b4b5c07528304e342884f75d87702003b80884b065cb5dcbc705fb4a6ad52
+"helmet@npm:7.0.0":
+  version: 7.0.0
+  resolution: "helmet@npm:7.0.0"
+  checksum: 3622b8b68b7ac4736369fe7717adb5b87ddcdcda7c11c13277d79fb5670acab032e8c971835565b1d2144d234f3e0dbcd327a44249b9e61f0f64c0c753faf1bc
   languageName: node
   linkType: hard
 
@@ -9484,7 +9484,7 @@ __metadata:
     express-static-gzip: 2.1.7
     express-validator: 6.15.0
     generate-serial-number: 0.0.3
-    helmet: 6.0.1
+    helmet: 7.0.0
     jsonwebtoken: 9.0.0
     mongodb-memory-server: 8.12.2
     mongoose: 7.1.0

@@ -40,7 +40,7 @@
     "express-static-gzip": "2.1.7",
     "express-validator": "6.15.0",
     "generate-serial-number": "0.0.3",
-    "helmet": "6.0.1",
+    "helmet": "7.0.0",
     "jsonwebtoken": "9.0.0",
     "mongoose": "7.1.0",
     "morgan": "1.10.0",
