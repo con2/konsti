@@ -11,14 +11,14 @@ export const postLogin = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.LOGIN}`);
 
-  const PostUserPasswordParameters = z.object({
+  const PostLoginParameters = z.object({
     username: z.string(),
     password: z.string(),
   });
 
   let parameters;
   try {
-    parameters = PostUserPasswordParameters.parse(req.body);
+    parameters = PostLoginParameters.parse(req.body);
   } catch (error) {
     if (error instanceof ZodError) {
       logger.error(`Error validating postLogin parameters: ${error.message}`);
