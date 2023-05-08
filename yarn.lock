@@ -3571,10 +3571,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:18.15.10":
-  version: 18.15.10
-  resolution: "@types/node@npm:18.15.10"
-  checksum: 9aeae0b683eda82892def5315812bdee3f1a28c4898b7e70f8e2514564538b16c4dccbe8339c1266f8fc1d707a48f152689264a854f5ebc2eba5011e793612d9
+"@types/node@npm:18.16.5":
+  version: 18.16.5
+  resolution: "@types/node@npm:18.16.5"
+  checksum: b6df96a76a7655cd944794197cf63f5269e5034041bc355f4f243cb3f185ad3e1948011b6f0ac66c22434e50bc53a20ec3a9d95ad284f0e3819813d309d1650b
   languageName: node
   linkType: hard
 
@@ -5860,7 +5860,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"core-js@npm:3.29.1, core-js@npm:^3.26.0":
+"core-js@npm:3.30.2":
+  version: 3.30.2
+  resolution: "core-js@npm:3.30.2"
+  checksum: 73d47e2b9d9f502800973982d08e995bbf04832e20b04e04be31dd7607247158271315e9328788a2408190e291c7ffbefad141167b1e57dea9f983e1e723541e
+  languageName: node
+  linkType: hard
+
+"core-js@npm:^3.26.0":
   version: 3.29.1
   resolution: "core-js@npm:3.29.1"
   checksum: b38446dbfcfd3887b3d4922990da487e2c95044cb4c5717aaf95e786a4c6b218f05c056c7ed6c699169b9794a49fec890e402659d54661fc56965a0eb717e7bd
@@ -9352,7 +9359,7 @@ __metadata:
     browserslist: 4.21.5
     clean-webpack-plugin: 4.0.0
     compression-webpack-plugin: 10.0.0
-    core-js: 3.29.1
+    core-js: 3.30.2
     doiuse: 4.4.1
     dotenv-webpack: 8.0.1
     file-loader: 6.2.0
@@ -9455,7 +9462,7 @@ __metadata:
     "@types/bcryptjs": 2.4.2
     "@types/jsonwebtoken": 9.0.2
     "@types/morgan": 1.9.4
-    "@types/node": 18.15.10
+    "@types/node": 18.16.5
     "@types/node-schedule": 2.1.0
     "@types/supertest": 2.0.12
     bcryptjs: 2.4.3
