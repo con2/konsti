@@ -5,11 +5,15 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Button, ButtonStyle } from "client/components/Button";
-import { LoginFormFields } from "shared/typings/api/login";
 import { useAppDispatch } from "client/utils/hooks";
 import { LoginErrorMessage, submitLogin } from "client/views/login/loginThunks";
 import { ErrorMessage } from "client/components/ErrorMessage";
 import { UncontrolledInput } from "client/components/UncontrolledInput";
+
+export interface LoginFormFields {
+  username: string;
+  password: string;
+}
 
 export const LoginForm = (): ReactElement => {
   const dispatch = useAppDispatch();
