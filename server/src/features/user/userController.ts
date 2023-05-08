@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-import { validationResult } from "express-validator";
 import { z, ZodError } from "zod";
 import {
   fetchUserByUsername,
@@ -11,31 +10,64 @@ import { UserGroup } from "shared/typings/models/user";
 import { isAuthorized } from "server/utils/authHeader";
 import { logger } from "server/utils/logger";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
-import {
-  RegistrationFormFields,
-  UpdateUserPasswordRequest,
-} from "shared/typings/api/login";
+import { UpdateUserPasswordRequest } from "shared/typings/api/login";
 import { sharedConfig } from "shared/config/sharedConfig";
 import { createSerial } from "./userUtils";
+import {
+  PASSWORD_LENGTH_MAX,
+  PASSWORD_LENGTH_MIN,
+  USERNAME_LENGTH_MAX,
+  USERNAME_LENGTH_MIN,
+} from "shared/constants/validation";
+import { PostUserRequest } from "shared/typings/api/users";
 
 export const postUser = async (
-  req: Request<{}, {}, RegistrationFormFields>,
+  req: Request<{}, {}, PostUserRequest>,
   res: Response
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.USERS}`);
 
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
+  const PostUserParameters = z.object({
+    username: z
+      .string()
+      .trim()
+      .min(USERNAME_LENGTH_MIN)
+      .max(USERNAME_LENGTH_MAX),
+    password: z
+      .string()
+      .trim()
+      .min(PASSWORD_LENGTH_MIN)
+      .max(PASSWORD_LENGTH_MAX),
+    serial: z
+      .string()
+      .optional()
+      .refine((input) => {
+        if (sharedConfig.requireRegistrationCode) {
+          if (!input || input.trim().length === 0) {
+            return false;
+          }
+        }
+        return true;
+      }),
+  });
+
+  let parameters;
+  try {
+    parameters = PostUserParameters.parse(req.body);
+  } catch (error) {
+    if (error instanceof ZodError) {
+      logger.error(`Error validating postUser parameters: ${error.message}`);
+    }
     return res.sendStatus(422);
   }
 
-  const { username, password } = req.body;
+  const { username, password } = parameters;
   let serial;
   if (!sharedConfig.requireRegistrationCode) {
     const serialDoc = await createSerial();
     serial = serialDoc[0].serial;
   } else {
-    serial = req.body.serial;
+    serial = parameters.serial;
   }
   const response = await storeUser(username, password, serial);
   return res.json(response);

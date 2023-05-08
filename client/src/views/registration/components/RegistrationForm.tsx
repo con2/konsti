@@ -8,7 +8,6 @@ import remarkGfm from "remark-gfm";
 import { Accordion } from "client/components/Accordion";
 import { sharedConfig } from "shared/config/sharedConfig";
 import { Button, ButtonStyle } from "client/components/Button";
-import { RegistrationFormFields } from "shared/typings/api/login";
 import { useAppDispatch } from "client/utils/hooks";
 import {
   submitRegistration,
@@ -24,6 +23,13 @@ import { ErrorMessage } from "client/components/ErrorMessage";
 import privacyPolicyFi from "client/markdown/PrivacyPolicyFi.md";
 import privacyPolicyEn from "client/markdown/PrivacyPolicyEn.md";
 import { UncontrolledInput } from "client/components/UncontrolledInput";
+
+export interface RegistrationFormFields {
+  password: string;
+  username: string;
+  registerDescription: boolean;
+  serial?: string;
+}
 
 export const RegistrationForm = (): ReactElement => {
   const dispatch = useAppDispatch();

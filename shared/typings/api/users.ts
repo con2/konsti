@@ -10,6 +10,12 @@ export interface GetUserResponse {
   username: string;
 }
 
+export interface PostUserRequest {
+  username: string;
+  password: string;
+  serial?: string;
+}
+
 export interface PostUserResponse {
   message: string;
   password: string;

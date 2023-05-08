@@ -1,15 +1,12 @@
 import { postLogin, postSessionRecovery } from "client/services/loginServices";
 import { saveSession, clearSession } from "client/utils/localStorage";
 import { AppThunk } from "client/typings/redux.typings";
-import {
-  LoginFormFields,
-  PostLoginError,
-  PostLoginResponse,
-} from "shared/typings/api/login";
+import { PostLoginError, PostLoginResponse } from "shared/typings/api/login";
 import { submitLoginAsync } from "client/views/login/loginSlice";
 import { loadGroupMembers, loadUser } from "client/utils/loadData";
 import { submitUpdateGroupCodeAsync } from "client/views/group/groupSlice";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
+import { LoginFormFields } from "client/views/login/components/LoginForm";
 
 export enum LoginErrorMessage {
   LOGIN_FAILED = "error.loginFailed",
