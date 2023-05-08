@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "@faker-js/faker": "7.6.0",
-    "@sentry/node": "7.45.0",
+    "@sentry/node": "7.51.1",
     "bcryptjs": "2.4.3",
     "commander": "10.0.0",
     "eventassigner-js": "0.1.6",
