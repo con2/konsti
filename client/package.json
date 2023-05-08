@@ -52,7 +52,7 @@
     "redux-thunk": "2.4.2",
     "regenerator-runtime": "0.13.11",
     "remark-gfm": "3.0.1",
-    "styled-components": "5.3.9",
+    "styled-components": "6.0.0-rc.1",
     "use-debounce": "9.0.3"
   },
   "devDependencies": {
@@ -78,8 +78,8 @@
     "postcss-syntax": "0.36.2",
     "raw-loader": "4.0.2",
     "react-refresh": "0.14.0",
-    "stylelint": "15.3.0",
-    "stylelint-config-recommended": "11.0.0",
+    "stylelint": "15.6.1",
+    "stylelint-config-recommended": "12.0.0",
     "stylelint-no-unsupported-browser-features": "6.1.0",
     "webpack": "5.76.3",
     "webpack-bundle-analyzer": "4.8.0",
