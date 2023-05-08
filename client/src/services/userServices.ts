@@ -7,7 +7,7 @@ import {
   PostUserError,
   PostUserResponse,
 } from "shared/typings/api/users";
-import { RegistrationFormFields } from "shared/typings/api/login";
+import { RegistrationFormFields } from "client/views/registration/components/RegistrationForm";
 import {
   GetSignupMessagesError,
   GetSignupMessagesResponse,

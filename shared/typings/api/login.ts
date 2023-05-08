@@ -1,6 +1,11 @@
 import { ApiError } from "shared/typings/api/errors";
 import { UserGroup } from "shared/typings/models/user";
 
+export interface PostLoginRequest {
+  username: string;
+  password: string;
+}
+
 export interface PostLoginResponse {
   groupCode: string;
   jwt: string;
@@ -15,20 +20,8 @@ export interface PostLoginError extends ApiError {
   errorId: "unknown" | "loginFailed" | "loginDisabled";
 }
 
-export interface LoginFormFields {
-  username: string;
-  password: string;
-}
-
 export interface SessionRecoveryRequest {
   jwt: string;
-}
-
-export interface RegistrationFormFields {
-  password: string;
-  registerDescription: boolean;
-  serial?: string;
-  username: string;
 }
 
 export interface UpdateUserPasswordRequest {

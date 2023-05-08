@@ -1,10 +1,7 @@
 import { api } from "client/utils/api";
+import { LoginFormFields } from "client/views/login/components/LoginForm";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
-import {
-  LoginFormFields,
-  PostLoginError,
-  PostLoginResponse,
-} from "shared/typings/api/login";
+import { PostLoginError, PostLoginResponse } from "shared/typings/api/login";
 
 export const postLogin = async (
   loginFormFields: LoginFormFields
