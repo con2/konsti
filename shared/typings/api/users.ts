@@ -5,7 +5,7 @@ import { SelectedGame } from "shared/typings/models/user";
 export interface PostUserRequest {
   username: string;
   password: string;
-  serial: string;
+  serial?: string;
 }
 
 export interface GetUserResponse {
