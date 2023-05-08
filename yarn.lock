@@ -6991,16 +6991,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"express-validator@npm:6.15.0":
-  version: 6.15.0
-  resolution: "express-validator@npm:6.15.0"
-  dependencies:
-    lodash: ^4.17.21
-    validator: ^13.9.0
-  checksum: 05c6883c7c4313bed11acd77cf81b3f25516418c27283d897e8f245f9591c11757511430d0c65a073a70fcd85346afd8fb23070a498020809bfe8cbbf62d3772
-  languageName: node
-  linkType: hard
-
 "express@npm:4.18.2, express@npm:^4.17.3":
   version: 4.18.2
   resolution: "express@npm:4.18.2"
@@ -9034,7 +9024,6 @@ __metadata:
     eventassigner-random: 0.3.1
     express: 4.18.2
     express-static-gzip: 2.1.7
-    express-validator: 6.15.0
     generate-serial-number: 0.0.3
     helmet: 7.0.0
     jsonwebtoken: 9.0.0
@@ -13934,13 +13923,6 @@ __metadata:
     spdx-correct: ^3.0.0
     spdx-expression-parse: ^3.0.0
   checksum: 35703ac889d419cf2aceef63daeadbe4e77227c39ab6287eeb6c1b36a746b364f50ba22e88591f5d017bc54685d8137bc2d328d0a896e4d3fd22093c0f32a9ad
-  languageName: node
-  linkType: hard
-
-"validator@npm:^13.9.0":
-  version: 13.9.0
-  resolution: "validator@npm:13.9.0"
-  checksum: e2c936f041f61faa42bafd17c6faddf939498666cd82e88d733621c286893730b008959f4cb12ab3e236148a4f3805c30b85e3dcf5e0efd8b0cbcd36c02bfc0c
   languageName: node
   linkType: hard
 

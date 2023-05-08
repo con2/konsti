@@ -1,6 +1,6 @@
 import { postRegistration } from "client/services/userServices";
 import { submitLogin } from "client/views/login/loginThunks";
-import { RegistrationFormFields } from "shared/typings/api/login";
+import { RegistrationFormFields } from "client/views/registration/components/RegistrationForm";
 import { AppThunk } from "client/typings/redux.typings";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 

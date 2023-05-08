@@ -38,7 +38,6 @@
     "eventassigner-random": "0.3.1",
     "express": "4.18.2",
     "express-static-gzip": "2.1.7",
-    "express-validator": "6.15.0",
     "generate-serial-number": "0.0.3",
     "helmet": "7.0.0",
     "jsonwebtoken": "9.0.0",
