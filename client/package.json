@@ -72,7 +72,7 @@
     "dotenv-webpack": "8.0.1",
     "file-loader": "6.2.0",
     "html-webpack-plugin": "5.5.1",
-    "jsdom": "21.1.2",
+    "jsdom": "22.0.0",
     "postcss": "8.4.23",
     "postcss-styled-syntax": "0.4.0",
     "postcss-syntax": "0.36.2",
