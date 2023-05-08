@@ -3004,19 +3004,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@playwright/test@npm:1.32.1":
-  version: 1.32.1
-  resolution: "@playwright/test@npm:1.32.1"
+"@playwright/test@npm:1.33.0":
+  version: 1.33.0
+  resolution: "@playwright/test@npm:1.33.0"
   dependencies:
     "@types/node": "*"
     fsevents: 2.3.2
-    playwright-core: 1.32.1
+    playwright-core: 1.33.0
   dependenciesMeta:
     fsevents:
       optional: true
   bin:
     playwright: cli.js
-  checksum: f997f3d235cdd5fc3e42eb89d639bc4cc4ee2817ddb7b7a7494a856194fa626dd4dafd62ee7815a4a0e751ede0b55aa68811d766c1d3c07c0a4e4513c17ac1f6
+  checksum: cec3215fc92c1cb9f5bfba357ea1cbe97b54979ab82f9d34a2287b1687cda5e0966b8ea7290dcd35416e18668e56d5781b6b8c4cec64baf12f3ae8dde0f68f5e
   languageName: node
   linkType: hard
 
@@ -9162,7 +9162,7 @@ __metadata:
     "@fortawesome/free-regular-svg-icons": 6.3.0
     "@fortawesome/free-solid-svg-icons": 6.3.0
     "@fortawesome/react-fontawesome": 0.2.0
-    "@playwright/test": 1.32.1
+    "@playwright/test": 1.33.0
     "@pmmmwh/react-refresh-webpack-plugin": 0.5.10
     "@react-hook/intersection-observer": 3.1.1
     "@reduxjs/toolkit": 1.9.3
@@ -11526,12 +11526,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"playwright-core@npm:1.32.1":
-  version: 1.32.1
-  resolution: "playwright-core@npm:1.32.1"
+"playwright-core@npm:1.33.0":
+  version: 1.33.0
+  resolution: "playwright-core@npm:1.33.0"
   bin:
     playwright: cli.js
-  checksum: 796185e605df3c970885845c1fbf2de53db5d089d37946850483797c91b81ab9dc87c3440695e96a8c92613324ef3deaea698afaf2c379548a23f8ce074931de
+  checksum: 5fb7bda06a8b73b56b85b5a0b8f711211dde57a375d9379289e22239b2de879c6d93c8fdc9ba44b932bf100914ab1ca1a55697ad88440fdd0a39101fc020b77f
   languageName: node
   linkType: hard
 
