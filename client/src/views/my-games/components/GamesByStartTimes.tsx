@@ -1,4 +1,4 @@
-import React, { Fragment, ReactElement } from "react";
+import { Fragment, ReactElement } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { timeFormatter } from "client/utils/timeFormatter";

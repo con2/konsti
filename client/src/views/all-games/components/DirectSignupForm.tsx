@@ -1,4 +1,4 @@
-import React, { FC, ReactElement, useState } from "react";
+import { ReactElement, useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { Game } from "shared/typings/models/game";
@@ -25,7 +25,7 @@ interface Props {
   gameIsFull: boolean;
 }
 
-export const DirectSignupForm: FC<Props> = ({
+export const DirectSignupForm = ({
   game,
   startTime,
   gameIsFull,

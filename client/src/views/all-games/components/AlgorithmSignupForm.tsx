@@ -1,4 +1,4 @@
-import React, { FC, ReactElement, useState } from "react";
+import { ReactElement, useState } from "react";
 import { useTranslation } from "react-i18next";
 import dayjs from "dayjs";
 import styled from "styled-components";
@@ -32,7 +32,7 @@ enum ClientError {
   GROUP_TOO_BIG = "group.groupTooBigWarning",
 }
 
-export const AlgorithmSignupForm: FC<Props> = ({
+export const AlgorithmSignupForm = ({
   game,
   startTime,
   signedGames,

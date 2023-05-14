@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect, useState } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import { useStore } from "react-redux";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";

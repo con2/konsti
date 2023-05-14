@@ -1,4 +1,4 @@
-import React, { ReactElement, ChangeEvent, useState } from "react";
+import { ReactElement, ChangeEvent, useState } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { postFeedback } from "client/services/feedbackServices";

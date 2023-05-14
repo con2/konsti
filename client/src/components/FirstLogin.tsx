@@ -1,4 +1,4 @@
-import React, { ReactElement, useState, useEffect } from "react";
+import { ReactElement, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { useAppSelector } from "client/utils/hooks";

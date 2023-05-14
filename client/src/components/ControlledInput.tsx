@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { ChangeEvent, ReactElement } from "react";
+import { ChangeEvent, ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { UncontrolledInput } from "client/components/UncontrolledInput";
