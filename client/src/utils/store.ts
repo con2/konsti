@@ -1,6 +1,6 @@
 import { combineReducers, CombinedState, AnyAction } from "redux";
 import { configureStore } from "@reduxjs/toolkit";
-import * as Sentry from "@sentry/react";
+import { createReduxEnhancer } from "@sentry/react";
 import { config } from "client/config";
 import { RootState } from "client/typings/redux.typings";
 import { SUBMIT_LOGOUT } from "client/typings/logoutActions.typings";
@@ -54,7 +54,7 @@ const ignoredActions = [
   "admin/submitGetSignupMessagesAsync", // Private
 ];
 
-const sentryReduxEnhancer = Sentry.createReduxEnhancer({
+const sentryReduxEnhancer = createReduxEnhancer({
   actionTransformer: (action) => {
     // Don't send large payloads or private data to sentry
     if (ignoredActions.includes(action.type as string)) {

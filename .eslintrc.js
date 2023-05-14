@@ -40,9 +40,10 @@ module.exports = {
 
   settings: {
     "import/resolver": {
-      "babel-module": {
-        babelOptions: { rootMode: "upward" },
-      },
+      typescript: { alwaysTryTypes: true },
+    },
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"],
     },
     "import/internal-regex": "shared",
   },
@@ -63,6 +64,8 @@ module.exports = {
     "import/no-unused-modules": ["error", { unusedExports: true }],
     "import/no-unresolved": "off",
     "import/order": ["error", { groups: ["builtin", "external"] }],
+    "import/no-namespace": "error", // Don't want to use namespace imports
+    "import/namespace": "off", // Don't want to use namespace imports
 
     // eslint-plugin-vitest
     "vitest/no-disabled-tests": "error",
