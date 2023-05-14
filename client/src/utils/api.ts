@@ -15,7 +15,7 @@ enum HttpMethod {
 }
 
 const axiosInstance: AxiosInstance = axios.create({
-  baseURL: `${config.apiServerUrl}`,
+  baseURL: config.apiServerUrl,
   timeout: 60000, // 60s
   headers: {
     "Content-Type": "application/json",
