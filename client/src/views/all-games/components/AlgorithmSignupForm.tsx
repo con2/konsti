@@ -1,4 +1,4 @@
-import React, { FC, ReactElement, useState } from "react";
+import { FC, ReactElement, useState } from "react";
 import { useTranslation } from "react-i18next";
 import dayjs from "dayjs";
 import styled from "styled-components";

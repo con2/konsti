@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect } from "react";
+import { ReactElement, useEffect } from "react";
 import { useStore } from "react-redux";
 import { loadSettings } from "client/utils/loadData";
 import { DirectResults } from "client/views/results/components/ResultsList";

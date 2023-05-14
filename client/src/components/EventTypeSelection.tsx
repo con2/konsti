@@ -1,4 +1,4 @@
-import React, { ChangeEvent, ReactElement } from "react";
+import { ChangeEvent, ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";

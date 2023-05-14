@@ -1,4 +1,4 @@
-import React, { FC, ReactElement, FormEvent, useState } from "react";
+import { FC, ReactElement, FormEvent, useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { Game, ProgramType } from "shared/typings/models/game";
