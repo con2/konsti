@@ -7,7 +7,6 @@ import { Provider } from "react-redux";
 import { ThemeProvider } from "styled-components";
 import dayjs from "dayjs";
 import * as Sentry from "@sentry/react";
-import { BrowserTracing } from "@sentry/tracing";
 import isBetween from "dayjs/plugin/isBetween";
 import isSameOrAfter from "dayjs/plugin/isSameOrAfter";
 import loaderImage from "assets/loading.gif";
@@ -64,7 +63,7 @@ const getDsn = (): string | undefined => {
 Sentry.init({
   dsn: getDsn(),
   integrations: [
-    new BrowserTracing({
+    new Sentry.BrowserTracing({
       tracingOrigins: ["localhost", "test.ropekonsti.fi", "ropekonsti.fi"],
     }),
   ],

@@ -16,7 +16,7 @@ export const createAdminUser = async (password?: string): Promise<void> => {
     username: "admin",
     passwordHash,
     userGroup: UserGroup.ADMIN,
-    serial: faker.datatype.number(10000000).toString(),
+    serial: faker.number.int(10000000).toString(),
   };
 
   await saveUser(registrationData);
@@ -29,7 +29,7 @@ export const createHelpUser = async (): Promise<void> => {
     username: "helper",
     passwordHash: await hashPassword("test"),
     userGroup: UserGroup.HELP,
-    serial: faker.datatype.number(10000000).toString(),
+    serial: faker.number.int(10000000).toString(),
   };
 
   await saveUser(registrationData);
@@ -48,7 +48,7 @@ const createTestUser = async ({
     username: `test${userNumber}`,
     passwordHash: await hashPassword("test"),
     userGroup: UserGroup.USER,
-    serial: faker.datatype.number(10000000).toString(),
+    serial: faker.number.int(10000000).toString(),
   };
 
   await saveUser(registrationData);
@@ -87,7 +87,7 @@ const createUser = async ({
     serial:
       groupMemberCount === 0
         ? groupCode
-        : faker.datatype.number(SERIAL_MAX).toString(),
+        : faker.number.int(SERIAL_MAX).toString(),
     groupCode,
   };
 
@@ -103,7 +103,7 @@ export const createUsersInGroup = async ({
   groupSize,
   testUsers,
 }: CreateUsersInGroupParams): Promise<void> => {
-  const groupCode = faker.datatype.number(SERIAL_MAX).toString();
+  const groupCode = faker.number.int(SERIAL_MAX).toString();
 
   logger.info(`Generate data for ${groupSize} users in group ${groupCode}`);
 

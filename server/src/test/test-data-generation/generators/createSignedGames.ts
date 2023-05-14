@@ -62,7 +62,7 @@ const getRandomSignup = (games: readonly Game[]): SelectedGame[] => {
     const numberOfSignups = Math.min(gamesForTime.length, 3);
 
     for (let i = 0; i < numberOfSignups; i += 1) {
-      randomIndex = faker.datatype.number({
+      randomIndex = faker.number.int({
         min: 0,
         max: gamesForTime.length - 1,
       });
