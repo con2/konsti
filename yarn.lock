@@ -3726,7 +3726,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/utils@npm:5.59.5, @typescript-eslint/utils@npm:^5.58.0, @typescript-eslint/utils@npm:^5.59.2":
+"@typescript-eslint/utils@npm:5.59.5, @typescript-eslint/utils@npm:^5.57.0, @typescript-eslint/utils@npm:^5.58.0, @typescript-eslint/utils@npm:^5.59.2":
   version: 5.59.5
   resolution: "@typescript-eslint/utils@npm:5.59.5"
   dependencies:
@@ -6544,6 +6544,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"eslint-plugin-deprecation@npm:1.4.1":
+  version: 1.4.1
+  resolution: "eslint-plugin-deprecation@npm:1.4.1"
+  dependencies:
+    "@typescript-eslint/utils": ^5.57.0
+    tslib: ^2.3.1
+    tsutils: ^3.21.0
+  peerDependencies:
+    eslint: ^6.0.0 || ^7.0.0 || ^8.0.0
+    typescript: ^3.7.5 || ^4.0.0 || ^5.0.0
+  checksum: 75c7535d820d1749664705724cc979d706da126a2277f2937467f70156a2c220b10c66670f18226801c9555e4cd02312d353936f14d5752c2d2c648455fe5769
+  languageName: node
+  linkType: hard
+
 "eslint-plugin-es@npm:^4.1.0":
   version: 4.1.0
   resolution: "eslint-plugin-es@npm:4.1.0"
@@ -8982,6 +8996,7 @@ __metadata:
     eslint-import-resolver-babel-module: 5.3.2
     eslint-plugin-ban: 1.6.0
     eslint-plugin-compat: 4.1.4
+    eslint-plugin-deprecation: 1.4.1
     eslint-plugin-eslint-comments: 3.2.0
     eslint-plugin-import: 2.27.5
     eslint-plugin-jsx-a11y: 6.7.1
