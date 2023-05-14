@@ -105,7 +105,7 @@ module.exports = {
     ],
 
     // eslint-plugin-deprecation
-    "deprecation/deprecation": "error", // or "error" to have stricter rule
+    "deprecation/deprecation": "error",
 
     // eslint-plugin-unicorn
     "unicorn/no-useless-undefined": ["error", { checkArguments: true }],
