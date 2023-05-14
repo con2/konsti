@@ -1,4 +1,4 @@
-import * as Sentry from "@sentry/node";
+import { init, Integrations, Handlers } from "@sentry/node";
 import express, { Express } from "express";
 import helmet from "helmet";
 import { postSentryTunnel } from "server/features/sentry-tunnel/sentryTunnelController";
@@ -6,13 +6,13 @@ import { sharedConfig } from "shared/config/sharedConfig";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 
 export const initSentry = (app: Express, enableSentry: boolean): void => {
-  Sentry.init({
+  init({
     dsn: getDsn(enableSentry),
     integrations: [
       // Enable HTTP calls tracing
-      new Sentry.Integrations.Http({ tracing: true }),
+      new Integrations.Http({ tracing: true }),
       // Enable Express.js middleware tracing
-      new Sentry.Integrations.Express({
+      new Integrations.Express({
         // To trace all requests to the default router
         app,
       }),
@@ -24,10 +24,10 @@ export const initSentry = (app: Express, enableSentry: boolean): void => {
   // The request handler must be the first middleware on the app
   // RequestHandler creates a separate execution context using domains, so that every
   // transaction/span/breadcrumb is attached to its own Hub instance
-  app.use(Sentry.Handlers.requestHandler());
+  app.use(Handlers.requestHandler());
 
   // TracingHandler creates a trace for every incoming request
-  app.use(Sentry.Handlers.tracingHandler());
+  app.use(Handlers.tracingHandler());
 
   app.use(
     helmet.contentSecurityPolicy({
