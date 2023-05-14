@@ -1,5 +1,4 @@
 import * as Sentry from "@sentry/node";
-import * as Tracing from "@sentry/tracing";
 import express, { Express } from "express";
 import helmet from "helmet";
 import { postSentryTunnel } from "server/features/sentry-tunnel/sentryTunnelController";
@@ -13,7 +12,7 @@ export const initSentry = (app: Express, enableSentry: boolean): void => {
       // Enable HTTP calls tracing
       new Sentry.Integrations.Http({ tracing: true }),
       // Enable Express.js middleware tracing
-      new Tracing.Integrations.Express({
+      new Sentry.Integrations.Express({
         // To trace all requests to the default router
         app,
       }),

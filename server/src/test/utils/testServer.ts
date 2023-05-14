@@ -12,7 +12,7 @@ export const startTestServer = async (
   const server = await module.startServer({
     dbConnString,
     enableSentry: false,
-    dbName: faker.random.alphaNumeric(10),
+    dbName: faker.string.alphanumeric(10),
   });
 
   return { server };

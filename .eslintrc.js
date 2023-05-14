@@ -12,6 +12,7 @@ module.exports = {
     "eslint-plugin-import",
     "@typescript-eslint",
     "eslint-plugin-unicorn",
+    "eslint-plugin-deprecation",
   ],
 
   extends: [
@@ -102,6 +103,9 @@ module.exports = {
       { name: "useDispatch", message: "Please use useAppDispatch()" },
       { name: "useSelector", message: "Please use useAppSelector()" },
     ],
+
+    // eslint-plugin-deprecation
+    "deprecation/deprecation": "error",
 
     // eslint-plugin-unicorn
     "unicorn/no-useless-undefined": ["error", { checkArguments: true }],
