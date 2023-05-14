@@ -25,7 +25,7 @@ beforeAll(async () => {
 
 beforeEach(async () => {
   await mongoose.connect(mongoServer.getUri(), {
-    dbName: faker.random.alphaNumeric(10),
+    dbName: faker.string.alphanumeric(10),
   });
 });
 
