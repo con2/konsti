@@ -5,6 +5,7 @@ import {
   GetUserBySerialResponse,
   GetUserResponse,
   PostUserError,
+  PostUserRequest,
   PostUserResponse,
 } from "shared/typings/api/users";
 import { RegistrationFormFields } from "client/views/registration/components/RegistrationForm";
@@ -18,11 +19,14 @@ export const postRegistration = async (
 ): Promise<PostUserResponse | PostUserError> => {
   const { username, password, serial } = registrationFormFields;
 
-  const response = await api.post<PostUserResponse>(ApiEndpoint.USERS, {
-    username,
-    password,
-    serial,
-  });
+  const response = await api.post<PostUserResponse, PostUserRequest>(
+    ApiEndpoint.USERS,
+    {
+      username,
+      password,
+      serial,
+    }
+  );
   return response.data;
 };
 
