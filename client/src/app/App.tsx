@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect, useState } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import { useStore } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import styled from "styled-components";

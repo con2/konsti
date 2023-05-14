@@ -1,4 +1,4 @@
-import React, { ReactElement, FormEvent, useState, ChangeEvent } from "react";
+import { ReactElement, FormEvent, useState, ChangeEvent } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { Game } from "shared/typings/models/game";

@@ -1,4 +1,4 @@
-import React, { FC, ReactElement, FormEvent, useState } from "react";
+import { ReactElement, FormEvent, useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { Game, ProgramType } from "shared/typings/models/game";
@@ -31,7 +31,7 @@ interface Props {
   onCancelSignup: () => void;
 }
 
-export const EnterGameForm: FC<Props> = (props: Props): ReactElement => {
+export const EnterGameForm = (props: Props): ReactElement => {
   const { game, onEnterGame, onCancelSignup, signupQuestion } = props;
   const { t } = useTranslation();
   const dispatch = useAppDispatch();

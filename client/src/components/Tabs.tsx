@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import { ReactElement } from "react";
 import { Navigate, NavLink, Route, Routes } from "react-router-dom";
 import styled from "styled-components";
 import { IconName } from "@fortawesome/free-solid-svg-icons";
