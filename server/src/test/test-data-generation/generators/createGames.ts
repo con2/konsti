@@ -29,26 +29,26 @@ const startingTimes = [
 
 const getMinPlayers = (programType: KompassiProgramType): number => {
   if (tournamentProgramTypes.includes(programType)) {
-    return faker.datatype.number({ min: 6, max: 10 });
+    return faker.number.int({ min: 6, max: 10 });
   }
 
   if (workshopProgramTypes.includes(programType)) {
     return 0;
   }
 
-  return faker.datatype.number({ min: 2, max: 3 });
+  return faker.number.int({ min: 2, max: 3 });
 };
 
 const getMaxPlayers = (programType: KompassiProgramType): number => {
   if (tournamentProgramTypes.includes(programType)) {
-    return faker.datatype.number({ min: 12, max: 20 });
+    return faker.number.int({ min: 12, max: 20 });
   }
 
   if (workshopProgramTypes.includes(programType)) {
-    return faker.datatype.number({ min: 12, max: 20 });
+    return faker.number.int({ min: 12, max: 20 });
   }
 
-  return faker.datatype.number({ min: 3, max: 4 });
+  return faker.number.int({ min: 3, max: 4 });
 };
 
 export const createGames = async (gameCount: number): Promise<Game[]> => {
@@ -72,7 +72,7 @@ export const createGames = async (gameCount: number): Promise<Game[]> => {
         const length = 180;
 
         const kompassiGameData: KompassiGame = {
-          title: faker.random.words(3),
+          title: faker.word.words(3),
           description: faker.lorem.sentences(5),
           category_title: programType,
           formatted_hosts: faker.internet.userName(),
@@ -87,7 +87,7 @@ export const createGames = async (gameCount: number): Promise<Game[]> => {
               : "",
           min_players: getMinPlayers(programType),
           max_players: getMaxPlayers(programType),
-          identifier: faker.datatype.number(GAME_ID_MAX).toString(),
+          identifier: faker.number.int(GAME_ID_MAX).toString(),
           tags: sampleSize(Object.values(KompassiTag), 3),
           genres: sampleSize(Object.values(KompassiGenre), 2),
           styles: sampleSize(Object.values(KompassiGameStyle), 2),

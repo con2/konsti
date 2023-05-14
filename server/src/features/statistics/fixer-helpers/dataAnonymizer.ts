@@ -30,7 +30,7 @@ export const anonymizeData = (year: number, event: string): void => {
   );
 
   users.forEach((user) => {
-    const randomUsername = faker.datatype.number(1000000).toString();
+    const randomUsername = faker.number.int(1000000).toString();
 
     results.forEach((result) => {
       result.results.forEach((userResult) => {
