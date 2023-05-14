@@ -1,4 +1,4 @@
-import React, { MouseEventHandler, ReactElement } from "react";
+import { MouseEventHandler, ReactElement } from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useTranslation } from "react-i18next";

@@ -1,4 +1,4 @@
-import React, { ChangeEvent, ReactElement, useState } from "react";
+import { ChangeEvent, ReactElement, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
 import { Dropdown } from "client/components/Dropdown";

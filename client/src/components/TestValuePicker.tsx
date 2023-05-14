@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import { ReactElement } from "react";
 import styled from "styled-components";
 import { t } from "i18next";
 import { TestTimeSelector } from "client/test/test-components/TestTimeSelector";

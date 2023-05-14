@@ -20,7 +20,12 @@ module.exports = (api) => {
           corejs: "3",
         },
       ],
-      "@babel/preset-react",
+      [
+        "@babel/preset-react",
+        {
+          runtime: "automatic",
+        },
+      ],
     ],
     plugins: ["babel-plugin-styled-components"],
   };
