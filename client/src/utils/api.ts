@@ -1,4 +1,4 @@
-import axios, { AxiosInstance } from "axios";
+import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 import { t } from "i18next";
 import { config } from "client/config";
 import { getJWT } from "client/utils/getJWT";
@@ -14,15 +14,16 @@ enum HttpMethod {
   DELETE = "DELETE",
 }
 
-export const api: AxiosInstance = axios.create({
-  baseURL: `${config.apiServerUrl}`,
+const axiosInstance: AxiosInstance = axios.create({
+  baseURL: config.apiServerUrl,
   timeout: 60000, // 60s
   headers: {
     "Content-Type": "application/json",
   },
 });
 
-api.interceptors.request.use((requestConfig) => {
+// Auth interceptor
+axiosInstance.interceptors.request.use((requestConfig) => {
   const authToken = getJWT();
   if (authToken && requestConfig.headers) {
     requestConfig.headers.Authorization = `Bearer ${authToken}`;
@@ -30,7 +31,8 @@ api.interceptors.request.use((requestConfig) => {
   return requestConfig;
 });
 
-api.interceptors.response.use(
+// Error interceptor
+axiosInstance.interceptors.response.use(
   (response) => response,
   (error) => {
     if (
@@ -89,4 +91,28 @@ const getErrorReason = (status: number): string => {
       // @ts-expect-error: i18next bug
       return t("error.unknown");
   }
+};
+
+export const api = {
+  post: async <RES = unknown, REQ = unknown, R = AxiosResponse<RES>>(
+    url: string,
+    data?: REQ,
+    axiosRequestConfig?: AxiosRequestConfig<REQ>
+  ): Promise<R> => {
+    return await axiosInstance.post(url, data, axiosRequestConfig);
+  },
+
+  get: async <T = unknown, D = unknown, R = AxiosResponse<T>>(
+    url: string,
+    axiosRequestConfig?: AxiosRequestConfig<D>
+  ): Promise<R> => {
+    return await axiosInstance.get(url, axiosRequestConfig);
+  },
+
+  delete: async <T = unknown, D = unknown, R = AxiosResponse<T>>(
+    url: string,
+    axiosRequestConfig?: AxiosRequestConfig<D>
+  ): Promise<R> => {
+    return await axiosInstance.get(url, axiosRequestConfig);
+  },
 };
