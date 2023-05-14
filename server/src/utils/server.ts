@@ -3,7 +3,7 @@ import https from "https";
 import path from "path";
 import fs from "fs";
 import express, { Request, Response, NextFunction } from "express";
-import * as Sentry from "@sentry/node";
+import { Handlers } from "@sentry/node";
 import helmet from "helmet";
 import morgan from "morgan";
 import expressStaticGzip from "express-static-gzip";
@@ -92,7 +92,7 @@ export const startServer = async ({
   });
 
   // The error handler must be before any other error middleware and after all controllers
-  app.use(Sentry.Handlers.errorHandler());
+  app.use(Handlers.errorHandler());
 
   let server: Server;
 
