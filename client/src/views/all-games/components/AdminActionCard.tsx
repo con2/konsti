@@ -1,10 +1,10 @@
 import React, { ChangeEvent, ReactElement, useEffect, useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
+import loaderImage from "assets/loading.gif";
 import { Game } from "shared/typings/models/game";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { Button, ButtonStyle } from "client/components/Button";
-import loaderImage from "assets/loading.gif";
 import {
   submitAddSignupQuestion,
   submitDeleteSignupQuestion,
