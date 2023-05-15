@@ -49,6 +49,12 @@ jobs:
         run: |
           yarn type-check
 
+      - name: Cache MongoDB binary
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/mongodb-binaries
+          key: ${{ runner.os }}-mongodb
+
       - name: Run Vitest tests
         run: |
           yarn test
