@@ -23,6 +23,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
+          cache: "yarn"
 
       - name: Yarn install
         run: |
@@ -47,6 +48,12 @@ jobs:
       - name: TS type check
         run: |
           yarn type-check
+
+      - name: Cache MongoDB binary
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/mongodb-binaries
+          key: ${{ runner.os }}-mongodb
 
       - name: Run Vitest tests
         run: |
