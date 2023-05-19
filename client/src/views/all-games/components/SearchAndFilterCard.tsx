@@ -9,7 +9,23 @@ import { SessionStorageValue } from "client/utils/localStorage";
 import { ControlledInput } from "client/components/ControlledInput";
 import { RadioButton } from "client/components/RadioButton";
 
-export const SearchAndFilterCard = (): ReactElement => {
+export enum StartingTimeOption {
+  UPCOMING = "upcoming",
+  ALL = "all",
+  REVOLVING_DOOR = "revolvingDoor",
+}
+
+interface Props {
+  onTagChange: React.Dispatch<React.SetStateAction<string>>;
+  onSelectedStartingTimeChange: React.Dispatch<React.SetStateAction<string>>;
+  onSearchTermChange: React.Dispatch<React.SetStateAction<string>>;
+}
+
+export const SearchAndFilterCard = ({
+  onTagChange,
+  onSelectedStartingTimeChange,
+  onSearchTermChange,
+}: Props): ReactElement => {
   const filters = [
     Tag.IN_ENGLISH,
     Tag.BEGINNER_FRIENDLY,
@@ -17,17 +33,14 @@ export const SearchAndFilterCard = (): ReactElement => {
     Tag.AGE_RESTRICTED,
   ];
 
-  const startingTimeOptions = ["upcoming", "all", "revolvingDoor"];
-
   const { t } = useTranslation();
   const activeProgramType = useAppSelector(
     (state) => state.admin.activeProgramType
   );
 
   const [selectedTag, setSelectedTag] = useState<string>("");
-  const [selectedStartingTime, setSelectedStartingTime] = useState<string>(
-    startingTimeOptions[0]
-  );
+  const [selectedStartingTime, setSelectedStartingTime] =
+    useState<StartingTimeOption>(StartingTimeOption.UPCOMING);
   const [searchTerm, setSearchTerm] = useState<string>("");
 
   const tagOptions = [
@@ -52,6 +65,7 @@ export const SearchAndFilterCard = (): ReactElement => {
       <Dropdown
         onChange={(event: ChangeEvent<HTMLSelectElement>) => {
           const tag = event.target.value;
+          onTagChange(tag);
           setSelectedTag(tag);
           sessionStorage.setItem(SessionStorageValue.ALL_GAMES_TAG, tag);
         }}
@@ -61,17 +75,22 @@ export const SearchAndFilterCard = (): ReactElement => {
 
       <label>{t("startingTime")}</label>
       <RadioButtonGroup>
-        {startingTimeOptions.map((option) => (
+        {Object.keys(StartingTimeOption).map((option) => (
           <RadioButton
             id={option}
             key={option}
-            label={t(option)}
-            checked={selectedStartingTime === option}
+            label={t(StartingTimeOption[option])}
+            checked={selectedStartingTime === StartingTimeOption[option]}
             onChange={() => {
-              setSelectedStartingTime(option);
+              setSelectedStartingTime(
+                StartingTimeOption[option] as StartingTimeOption
+              );
+              onSelectedStartingTimeChange(
+                StartingTimeOption[option] as String
+              );
               sessionStorage.setItem(
                 SessionStorageValue.ALL_GAMES_STARTING_TIME,
-                option
+                StartingTimeOption[option] as StartingTimeOption
               );
             }}
           />
@@ -81,7 +100,10 @@ export const SearchAndFilterCard = (): ReactElement => {
       <label>{t("find")}</label>
       <ControlledInput
         value={searchTerm}
-        onChange={(event) => setSearchTerm(event.target.value)}
+        onChange={(event) => {
+          setSearchTerm(event.target.value);
+          onSearchTermChange(event.target.value);
+        }}
         placeholder={
           activeProgramType === ProgramType.TABLETOP_RPG
             ? t("searchWithTitleOrSystem", {

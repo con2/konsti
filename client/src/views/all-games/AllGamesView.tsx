@@ -1,16 +1,11 @@
 import { ReactElement, useState, useEffect, useMemo } from "react";
 import { useStore } from "react-redux";
-import { Link } from "react-router-dom";
-import { TFunction } from "i18next";
-import dayjs from "dayjs";
-import styled from "styled-components";
 import { useDebounce } from "use-debounce";
 import { AllGamesList } from "client/views/all-games/components/AllGamesList";
 import { getUpcomingGames } from "client/utils/getUpcomingGames";
 import { loadGames } from "client/utils/loadData";
 import { Loading } from "client/components/Loading";
 import { Game, ProgramType, Tag } from "shared/typings/models/game";
-import { getTime } from "client/utils/getTime";
 import { useAppSelector } from "client/utils/hooks";
 import { selectActiveGames } from "client/views/admin/adminSlice";
 import { SessionStorageValue } from "client/utils/localStorage";
@@ -149,37 +144,3 @@ const getTagFilteredGames = (
       game.tags.includes(selectedTag as Tag)
   );
 };
-
-const getRunningRevolvingDoorGames = (
-  games: readonly Game[],
-  t: TFunction
-): ReactElement | ReactElement[] => {
-  const timeNow = getTime();
-  const runningGames = games.filter((game) => {
-    return (
-      game.revolvingDoor &&
-      dayjs(game.startTime).isBefore(timeNow) &&
-      dayjs(game.endTime).isAfter(timeNow)
-    );
-  });
-
-  if (!runningGames || runningGames.length === 0) {
-    return <p>{t("noCurrentlyRunningGames")}</p>;
-  }
-  return runningGames.map((game) => {
-    return (
-      <div key={game.gameId}>
-        <Link to={`/games/${game.gameId}`}>{game.title}</Link>{" "}
-        <GameListShortDescription>
-          {game.shortDescription ? game.shortDescription : game.gameSystem}
-        </GameListShortDescription>
-      </div>
-    );
-  });
-};
-
-const GameListShortDescription = styled.p`
-  font-size: ${(props) => props.theme.fontSizeSmall};
-  font-style: italic;
-  margin: 4px 0 8px 14px;
-`;
