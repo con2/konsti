@@ -1,7 +1,7 @@
 import { getUser } from "client/services/userServices";
 import { postFavorite } from "client/services/favoriteServices";
 import { AppThunk } from "client/typings/redux.typings";
-import { SaveFavoriteRequest } from "shared/typings/api/favorite";
+import { PostFavoriteRequest } from "shared/typings/api/favorite";
 import {
   submitDeleteEnteredAsync,
   submitPostEnteredGameAsync,
@@ -10,8 +10,8 @@ import {
   submitUpdateFavoritesAsync,
 } from "client/views/my-games/myGamesSlice";
 import {
-  DeleteEnteredGameParameters,
-  PostEnteredGameParameters,
+  DeleteEnteredGameRequest,
+  PostEnteredGameRequest,
   SignupData,
 } from "shared/typings/api/myGames";
 import {
@@ -46,7 +46,7 @@ export const submitGetUser = (username: string): AppThunk => {
 };
 
 export const submitUpdateFavorites = (
-  favoriteData: SaveFavoriteRequest
+  favoriteData: PostFavoriteRequest
 ): AppThunk => {
   return async (dispatch): Promise<void> => {
     const updateFavoriteResponse = await postFavorite(favoriteData);
@@ -71,7 +71,7 @@ export enum PostEnteredGameErrorMessage {
 }
 
 export const submitPostEnteredGame = (
-  data: PostEnteredGameParameters
+  data: PostEnteredGameRequest
 ): AppThunk<Promise<PostEnteredGameErrorMessage | undefined>> => {
   return async (dispatch): Promise<PostEnteredGameErrorMessage | undefined> => {
     const signupResponse = await postEnteredGame(data);
@@ -103,7 +103,7 @@ export enum DeleteEnteredGameErrorMessage {
 }
 
 export const submitDeleteEnteredGame = (
-  data: DeleteEnteredGameParameters
+  data: DeleteEnteredGameRequest
 ): AppThunk<Promise<DeleteEnteredGameErrorMessage | undefined>> => {
   return async (
     dispatch

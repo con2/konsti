@@ -1,8 +1,19 @@
 import { z } from "zod";
-import { SelectedGame } from "shared/typings/models/user";
 import { ApiError } from "shared/typings/api/errors";
+import { GroupMember } from "shared/typings/models/groups";
 
-export interface PostGroupResponse {
+// POST: Create group
+
+export const PostCreateGroupRequestSchema = z.object({
+  groupCode: z.string(),
+  username: z.string(),
+});
+
+export type PostCreateGroupRequest = z.infer<
+  typeof PostCreateGroupRequestSchema
+>;
+
+export interface PostCreateGroupResponse {
   groupCode: string;
   message: string;
   status: "success";
@@ -10,6 +21,22 @@ export interface PostGroupResponse {
 
 export interface PostCreateGroupError extends ApiError {
   errorId: "unknown" | "groupExists" | "userHasSignedGames";
+}
+
+// POST: Join group
+
+export const PostJoinGroupRequestSchema = z.object({
+  groupCode: z.string(),
+  ownSerial: z.string(),
+  username: z.string(),
+});
+
+export type PostJoinGroupRequest = z.infer<typeof PostJoinGroupRequestSchema>;
+
+export interface PostJoinGroupResponse {
+  groupCode: string;
+  message: string;
+  status: "success";
 }
 
 export interface PostJoinGroupError extends ApiError {
@@ -22,13 +49,51 @@ export interface PostJoinGroupError extends ApiError {
     | "userHasSignedGames";
 }
 
+// POST: Leave group
+
+export const PostLeaveGroupRequestSchema = z.object({
+  username: z.string(),
+});
+
+export type PostLeaveGroupRequest = z.infer<typeof PostLeaveGroupRequestSchema>;
+
+export interface PostLeaveGroupResponse {
+  groupCode: string;
+  message: string;
+  status: "success";
+}
+
 export interface PostLeaveGroupError extends ApiError {
   errorId: "unknown" | "failedToLeave";
+}
+
+// POST: Close group
+
+export const PostCloseGroupRequestSchema = z.object({
+  groupCode: z.string(),
+  username: z.string(),
+});
+
+export type PostCloseGroupRequest = z.infer<typeof PostCloseGroupRequestSchema>;
+
+export interface PostCloseGroupResponse {
+  groupCode: string;
+  message: string;
+  status: "success";
 }
 
 export interface PostCloseGroupError extends ApiError {
   errorId: "unknown" | "onlyCreatorCanCloseGroup";
 }
+
+// GET group
+
+export const GetGroupRequestSchema = z.object({
+  groupCode: z.string(),
+  username: z.string(),
+});
+
+export type GetGroupRequest = z.infer<typeof GetGroupRequestSchema>;
 
 export interface GetGroupResponse {
   message: string;
@@ -38,39 +103,4 @@ export interface GetGroupResponse {
 
 export interface GetGroupError extends ApiError {
   errorId: "unknown";
-}
-
-export const CreateGroupRequestSchema = z.object({
-  groupCode: z.string(),
-  username: z.string(),
-});
-
-export type CreateGroupRequest = z.infer<typeof CreateGroupRequestSchema>;
-
-export const JoinGroupRequestSchema = z.object({
-  groupCode: z.string(),
-  ownSerial: z.string(),
-  username: z.string(),
-});
-
-export type JoinGroupRequest = z.infer<typeof JoinGroupRequestSchema>;
-
-export const LeaveGroupRequestSchema = z.object({
-  username: z.string(),
-});
-
-export type LeaveGroupRequest = z.infer<typeof LeaveGroupRequestSchema>;
-
-export const CloseGroupRequestSchema = z.object({
-  groupCode: z.string(),
-  username: z.string(),
-});
-
-export type CloseGroupRequest = z.infer<typeof CloseGroupRequestSchema>;
-
-export interface GroupMember {
-  groupCode: string;
-  serial: string;
-  signedGames: readonly SelectedGame[];
-  username: string;
 }

@@ -1,12 +1,12 @@
 import { findGames } from "server/features/game/gameRepository";
 import { UserModel } from "server/features/user/userSchema";
 import { logger } from "server/utils/logger";
-import { SaveFavoriteRequest } from "shared/typings/api/favorite";
+import { PostFavoriteRequest } from "shared/typings/api/favorite";
 import { Game } from "shared/typings/models/game";
 import { User } from "shared/typings/models/user";
 
 export const saveFavorite = async (
-  favoriteData: SaveFavoriteRequest
+  favoriteData: PostFavoriteRequest
 ): Promise<readonly Game[] | null> => {
   const { username, favoritedGameIds } = favoriteData;
 

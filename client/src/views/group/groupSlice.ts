@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { GroupState } from "client/typings/redux.typings";
-import { GroupMember } from "shared/typings/api/groups";
+import { GroupMember } from "shared/typings/models/groups";
 
 const initialState: GroupState = {
   groupCode: "0",
