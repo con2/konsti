@@ -58,86 +58,113 @@ export const SearchAndFilterCard = ({
 
   return (
     <Container>
-      <label>{t("selectedProgramType")}</label>
-      <ProgramTypeSelection />
+      <InputContainer>
+        <StyledLabel htmlFor="programTypeSelection">
+          {t("selectedProgramType")}
+        </StyledLabel>
+        <ProgramTypeSelection id="programTypeSelection" />
+      </InputContainer>
 
-      <label>{t("chooseTag")}</label>
-      <Dropdown
-        onChange={(event: ChangeEvent<HTMLSelectElement>) => {
-          const tag = event.target.value;
-          onTagChange(tag);
-          setSelectedTag(tag);
-          sessionStorage.setItem(SessionStorageValue.ALL_GAMES_TAG, tag);
-        }}
-        options={tagOptions}
-        selectedValue={selectedTag}
-      />
+      <InputContainer>
+        <StyledLabel htmlFor="tagSelection">{t("chooseTag")}</StyledLabel>
+        <Dropdown
+          id="tagSelection"
+          onChange={(event: ChangeEvent<HTMLSelectElement>) => {
+            const tag = event.target.value;
+            onTagChange(tag);
+            setSelectedTag(tag);
+            sessionStorage.setItem(SessionStorageValue.ALL_GAMES_TAG, tag);
+          }}
+          options={tagOptions}
+          selectedValue={selectedTag}
+        />
+      </InputContainer>
 
-      <label>{t("startingTime")}</label>
-      <RadioButtonGroup>
-        {Object.keys(StartingTimeOption).map((option) => (
-          <RadioButton
-            id={option}
-            key={option}
-            label={t(StartingTimeOption[option])}
-            checked={selectedStartingTime === StartingTimeOption[option]}
-            onChange={() => {
-              setSelectedStartingTime(
-                StartingTimeOption[option] as StartingTimeOption
-              );
-              onSelectedStartingTimeChange(
-                StartingTimeOption[option] as String
-              );
-              sessionStorage.setItem(
-                SessionStorageValue.ALL_GAMES_STARTING_TIME,
-                StartingTimeOption[option] as StartingTimeOption
-              );
-            }}
-          />
-        ))}
-      </RadioButtonGroup>
+      <InputContainer>
+        <StyledLabel htmlFor="startingTimeSelection">
+          {t("startingTime")}
+        </StyledLabel>
+        <RadioButtonGroup id="startingTimeSelection">
+          {Object.keys(StartingTimeOption).map((option) => (
+            <RadioButton
+              id={option}
+              key={option}
+              label={t(StartingTimeOption[option])}
+              checked={selectedStartingTime === StartingTimeOption[option]}
+              onChange={() => {
+                setSelectedStartingTime(
+                  StartingTimeOption[option] as StartingTimeOption
+                );
+                onSelectedStartingTimeChange(
+                  StartingTimeOption[option] as String
+                );
+                sessionStorage.setItem(
+                  SessionStorageValue.ALL_GAMES_STARTING_TIME,
+                  StartingTimeOption[option] as StartingTimeOption
+                );
+              }}
+            />
+          ))}
+        </RadioButtonGroup>
+      </InputContainer>
 
-      <label>{t("find")}</label>
-      <ControlledInput
-        value={searchTerm}
-        onChange={(event) => {
-          setSearchTerm(event.target.value);
-          onSearchTermChange(event.target.value);
-        }}
-        placeholder={
-          activeProgramType === ProgramType.TABLETOP_RPG
-            ? t("searchWithTitleOrSystem", {
-                PROGRAM_TYPE: t(`programTypeGenetive.${activeProgramType}`),
-              })
-            : t("searchWithTitle", {
-                PROGRAM_TYPE: t(`programTypeGenetive.${activeProgramType}`),
-              })
-        }
-        resetValue={() => setSearchTerm("")}
-      />
+      <InputContainer>
+        <StyledLabel htmlFor="find">{t("find")}</StyledLabel>
+        <ControlledInput
+          id="find"
+          value={searchTerm}
+          onChange={(event) => {
+            setSearchTerm(event.target.value);
+            onSearchTermChange(event.target.value);
+          }}
+          placeholder={
+            activeProgramType === ProgramType.TABLETOP_RPG
+              ? t("searchWithTitleOrSystem", {
+                  PROGRAM_TYPE: t(`programTypeGenetive.${activeProgramType}`),
+                })
+              : t("searchWithTitle", {
+                  PROGRAM_TYPE: t(`programTypeGenetive.${activeProgramType}`),
+                })
+          }
+          resetValue={() => setSearchTerm("")}
+        />
+      </InputContainer>
     </Container>
   );
 };
 
 const Container = styled.div`
   display: grid;
+  row-gap: 16px;
+  column-gap: 24px;
   margin: 20px 0 20px 0;
-  padding: 8px;
+  padding: 16px 8px 16px 8px;
   border: 1px solid #ddd;
   border-radius: 4px;
   background: #fafafa;
   box-shadow: ${(props) => props.theme.shadowLower};
 
+  grid-template-columns: 1fr 1fr;
+
   @media (max-width: ${(props) => props.theme.breakpointPhone}) {
-    margin-left: 0;
-    margin-right: 0;
+    grid-template-columns: 1fr;
   }
 `;
 
 const RadioButtonGroup = styled.fieldset`
   border: none;
-  margin-left: 0;
+  margin: -6px 0 -8px 0;
   padding-left: 0;
+  display: flex;
+  flex-direction: column;
+`;
+
+const StyledLabel = styled.label`
+  padding: 0 0 2px 4px;
+  font-size: ${(props) => props.theme.fontSizeSmall};
+`;
+
+const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
 `;

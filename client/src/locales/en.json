@@ -196,7 +196,7 @@
   "all": "All",
   "allProgramItems": "All {{PROGRAM_TYPE}}",
   "lastStartedAndUpcoming": "Last started and upcoming",
-  "chooseTag": "Choose tag",
+  "chooseTag": "Tag",
   "startingTime": "Starting time",
   "revolvingDoor": "Revolving door",
   "revolvingDoorInstruction": "You can join revolving door games at any time if there are free seats in the table",
@@ -373,7 +373,7 @@
     "medium": "Enough players to run",
     "high": "More interested players than seats"
   },
-  "selectedProgramType": "Selected program type",
+  "selectedProgramType": "Program type",
   "yes": "Yes",
   "no": "No",
   "privateQuestion": "Private question",
