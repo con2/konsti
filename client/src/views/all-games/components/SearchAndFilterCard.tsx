@@ -8,6 +8,7 @@ import { Dropdown } from "client/components/Dropdown";
 import { SessionStorageValue } from "client/utils/localStorage";
 import { ControlledInput } from "client/components/ControlledInput";
 import { RadioButton } from "client/components/RadioButton";
+import { RevolvingDoorGamesInfo } from "client/views/all-games/components/RevolvingDoorGamesInfo";
 
 export enum StartingTimeOption {
   UPCOMING = "upcoming",
@@ -129,6 +130,11 @@ export const SearchAndFilterCard = ({
           resetValue={() => setSearchTerm("")}
         />
       </InputContainer>
+      {selectedStartingTime === StartingTimeOption.REVOLVING_DOOR && (
+        <RevolvingDoorGamesInfoContainer>
+          <RevolvingDoorGamesInfo />
+        </RevolvingDoorGamesInfoContainer>
+      )}
     </Container>
   );
 };
@@ -167,4 +173,8 @@ const StyledLabel = styled.label`
 const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
+`;
+
+const RevolvingDoorGamesInfoContainer = styled.div`
+  grid-column: 1/-1;
 `;

@@ -13,7 +13,6 @@ import {
   SearchAndFilterCard,
   StartingTimeOption,
 } from "client/views/all-games/components/SearchAndFilterCard";
-import { RevolvingDoorGamesInfo } from "client/views/all-games/components/RevolvingDoorGamesInfo";
 
 export const MULTIPLE_WHITESPACES_REGEX = /\s\s+/g;
 
@@ -112,9 +111,6 @@ export const AllGamesView = (): ReactElement => {
         onSelectedStartingTimeChange={setSelectedStartingTime}
         onSearchTermChange={setSearchTerm}
       />
-      {selectedStartingTime === StartingTimeOption.REVOLVING_DOOR && (
-        <RevolvingDoorGamesInfo />
-      )}
       {loading ? <Loading /> : memoizedGames}
     </>
   );

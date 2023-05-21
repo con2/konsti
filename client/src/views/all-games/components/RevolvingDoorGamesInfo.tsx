@@ -57,12 +57,7 @@ const GameListShortDescription = styled.p`
 
 const Container = styled.div`
   display: grid;
-  margin: 20px 0 20px 0;
-  padding: 8px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
   background: #fafafa;
-  box-shadow: ${(props) => props.theme.shadowLower};
 
   @media (max-width: ${(props) => props.theme.breakpointPhone}) {
     margin-left: 0;
