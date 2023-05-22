@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { ZodError } from "zod";
 import { isAuthorized } from "server/utils/authHeader";
 import { UserGroup } from "shared/typings/models/user";
 import { storeFeedback } from "server/features/feedback/feedbackService";
@@ -20,16 +21,19 @@ export const postFeedback = async (
     return res.sendStatus(401);
   }
 
-  let parameters;
+  let body;
   try {
-    parameters = PostFeedbackRequestSchema.parse(req.body);
+    body = PostFeedbackRequestSchema.parse(req.body);
   } catch (error) {
+    if (error instanceof ZodError) {
+      logger.error(`Error validating postFeedback body: ${error.message}`);
+    }
     return res.sendStatus(422);
   }
 
   const response = await storeFeedback({
-    gameId: parameters.gameId,
-    feedback: parameters.feedback,
+    gameId: body.gameId,
+    feedback: body.feedback,
     username,
   });
   return res.json(response);

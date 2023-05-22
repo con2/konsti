@@ -21,19 +21,17 @@ export const postSignedGames = async (
     return res.sendStatus(401);
   }
 
-  let parameters;
+  let body;
   try {
-    parameters = PostSignedGamesRequestSchema.parse(req.body);
+    body = PostSignedGamesRequestSchema.parse(req.body);
   } catch (error) {
     if (error instanceof ZodError) {
-      logger.error(
-        `Error validating postSignedGames parameters: ${error.message}`
-      );
+      logger.error(`Error validating postSignedGames body: ${error.message}`);
     }
     return res.sendStatus(422);
   }
 
-  const { selectedGames, startTime } = parameters;
+  const { selectedGames, startTime } = body;
 
   const response = await storeSignedGames(selectedGames, username, startTime);
   return res.json(response);

@@ -26,16 +26,17 @@ export const postSignup = async (
     return res.sendStatus(401);
   }
 
+  let body;
   try {
-    PostEnteredGameRequestSchema.parse(req.body);
+    body = PostEnteredGameRequestSchema.parse(req.body);
   } catch (error) {
     if (error instanceof ZodError) {
-      logger.info(`Error validating postSignup parameters: ${error.message}`);
+      logger.info(`Error validating postSignup body: ${error.message}`);
     }
     return res.sendStatus(422);
   }
 
-  const response = await storeSignup(req.body);
+  const response = await storeSignup(body);
   return res.json(response);
 };
 
@@ -50,17 +51,16 @@ export const deleteSignup = async (
     return res.sendStatus(401);
   }
 
+  let body;
   try {
-    DeleteEnteredGameRequestSchema.parse(req.body);
+    body = DeleteEnteredGameRequestSchema.parse(req.body);
   } catch (error) {
     if (error instanceof ZodError) {
-      logger.error(
-        `Error validating deleteSignup parameters: ${error.message}`
-      );
+      logger.error(`Error validating deleteSignup body: ${error.message}`);
     }
     return res.sendStatus(422);
   }
 
-  const response = await removeSignup(req.body);
+  const response = await removeSignup(body);
   return res.json(response);
 };

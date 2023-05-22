@@ -21,21 +21,19 @@ export const postFavorite = async (
     return res.sendStatus(401);
   }
 
-  let parameters;
+  let body;
   try {
-    parameters = PostFavoriteRequestSchema.parse(req.body);
+    body = PostFavoriteRequestSchema.parse(req.body);
   } catch (error) {
     if (error instanceof ZodError) {
-      logger.error(
-        `Error validating postFavorite parameters: ${error.message}`
-      );
+      logger.error(`Error validating postFavorite body: ${error.message}`);
     }
     return res.sendStatus(422);
   }
 
   const response = await storeFavorite({
     username,
-    favoritedGameIds: parameters.favoritedGameIds,
+    favoritedGameIds: body.favoritedGameIds,
   });
   return res.json(response);
 };

@@ -86,18 +86,16 @@ export const postSettings = async (
     return res.sendStatus(401);
   }
 
-  let settings;
+  let body;
   try {
-    settings = PostSettingsRequestSchema.parse(req.body);
+    body = PostSettingsRequestSchema.parse(req.body);
   } catch (error) {
     if (error instanceof ZodError) {
-      logger.error(
-        `Error validating postSettings parameters: ${error.message}`
-      );
+      logger.error(`Error validating postSettings body: ${error.message}`);
     }
     return res.sendStatus(422);
   }
 
-  const response = await updateSettings(settings);
+  const response = await updateSettings(body);
   return res.json(response);
 };

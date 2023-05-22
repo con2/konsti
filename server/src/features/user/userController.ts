@@ -27,23 +27,23 @@ export const postUser = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.USERS}`);
 
-  let parameters;
+  let body;
   try {
-    parameters = PostUserRequestSchema.parse(req.body);
+    body = PostUserRequestSchema.parse(req.body);
   } catch (error) {
     if (error instanceof ZodError) {
-      logger.error(`Error validating postUser parameters: ${error.message}`);
+      logger.error(`Error validating postUser body: ${error.message}`);
     }
     return res.sendStatus(422);
   }
 
-  const { username, password } = parameters;
+  const { username, password } = body;
   let serial;
   if (!sharedConfig.requireRegistrationCode) {
     const serialDoc = await createSerial();
     serial = serialDoc[0].serial;
   } else {
-    serial = parameters.serial;
+    serial = body.serial;
   }
   const response = await storeUser(username, password, serial);
   return res.json(response);
@@ -64,19 +64,17 @@ export const postUserPassword = async (
     return res.sendStatus(401);
   }
 
-  let parameters;
+  let body;
   try {
-    parameters = PostUpdateUserPasswordRequestSchema.parse(req.body);
+    body = PostUpdateUserPasswordRequestSchema.parse(req.body);
   } catch (error) {
     if (error instanceof ZodError) {
-      logger.error(
-        `Error validating postUserPassword parameters: ${error.message}`
-      );
+      logger.error(`Error validating postUserPassword body: ${error.message}`);
     }
     return res.sendStatus(422);
   }
 
-  const { userToUpdateUsername, password } = parameters;
+  const { userToUpdateUsername, password } = body;
 
   if (
     requesterUsername !== userToUpdateUsername &&
@@ -123,19 +121,19 @@ export const getUserBySerialOrUsername = async (
     return res.sendStatus(401);
   }
 
-  let parameters;
+  let params;
   try {
-    parameters = GetUserBySerialRequestSchema.parse(req.query);
+    params = GetUserBySerialRequestSchema.parse(req.query);
   } catch (error) {
     if (error instanceof ZodError) {
       logger.error(
-        `Error validating getUserBySerialOrUsername parameters: ${error.message}`
+        `Error validating getUserBySerialOrUsername params: ${error.message}`
       );
     }
     return res.sendStatus(422);
   }
 
-  const { searchTerm } = parameters;
+  const { searchTerm } = params;
 
   if (!searchTerm) {
     return res.sendStatus(422);

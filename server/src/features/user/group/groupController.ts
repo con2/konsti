@@ -33,19 +33,17 @@ export const postCreateGroup = async (
     return res.sendStatus(401);
   }
 
-  let groupRequest: PostCreateGroupRequest;
+  let body;
   try {
-    groupRequest = PostCreateGroupRequestSchema.parse(req.body);
+    body = PostCreateGroupRequestSchema.parse(req.body);
   } catch (error) {
     if (error instanceof ZodError) {
-      logger.error(
-        `Error validating postCreateGroup parameters: ${error.message}`
-      );
+      logger.error(`Error validating postCreateGroup body: ${error.message}`);
     }
     return res.sendStatus(422);
   }
 
-  const { groupCode } = groupRequest;
+  const { groupCode } = body;
 
   const response = await createGroup(username, groupCode);
   return res.json(response);
@@ -62,19 +60,17 @@ export const postJoinGroup = async (
     return res.sendStatus(401);
   }
 
-  let groupRequest: PostJoinGroupRequest;
+  let body;
   try {
-    groupRequest = PostJoinGroupRequestSchema.parse(req.body);
+    body = PostJoinGroupRequestSchema.parse(req.body);
   } catch (error) {
     if (error instanceof ZodError) {
-      logger.error(
-        `Error validating postJoinGroup parameters: ${error.message}`
-      );
+      logger.error(`Error validating postJoinGroup body: ${error.message}`);
     }
     return res.sendStatus(422);
   }
 
-  const { groupCode, ownSerial } = groupRequest;
+  const { groupCode, ownSerial } = body;
 
   const response = await joinGroup(username, groupCode, ownSerial);
   return res.json(response);
@@ -106,19 +102,17 @@ export const postCloseGroup = async (
     return res.sendStatus(401);
   }
 
-  let groupRequest: PostCloseGroupRequest;
+  let body;
   try {
-    groupRequest = PostCloseGroupRequestSchema.parse(req.body);
+    body = PostCloseGroupRequestSchema.parse(req.body);
   } catch (error) {
     if (error instanceof ZodError) {
-      logger.error(
-        `Error validating postCloseGroup parameters: ${error.message}`
-      );
+      logger.error(`Error validating postCloseGroup body: ${error.message}`);
     }
     return res.sendStatus(422);
   }
 
-  const { groupCode } = groupRequest;
+  const { groupCode } = body;
 
   const response = await closeGroup(groupCode, username);
   return res.json(response);
@@ -135,14 +129,17 @@ export const getGroup = async (
     return res.sendStatus(401);
   }
 
-  let parameters;
+  let params;
   try {
-    parameters = GetGroupRequestSchema.parse(req.query);
+    params = GetGroupRequestSchema.parse(req.query);
   } catch (error) {
+    if (error instanceof ZodError) {
+      logger.error(`Error validating getGroup params: ${error.message}`);
+    }
     return res.sendStatus(422);
   }
 
-  const { groupCode } = parameters;
+  const { groupCode } = params;
 
   const response = await fetchGroup(groupCode);
   return res.json(response);
