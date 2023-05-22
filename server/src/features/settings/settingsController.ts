@@ -11,15 +11,16 @@ import { UserGroup } from "shared/typings/models/user";
 import { isAuthorized } from "server/utils/authHeader";
 import { logger } from "server/utils/logger";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
-import { Game } from "shared/typings/models/game";
-import { SignupQuestion } from "shared/typings/models/settings";
 import {
+  DeleteSignupQuestionRequest,
+  PostHiddenRequest,
   PostSettingsRequest,
   PostSettingsRequestSchema,
+  PostSignupQuestionRequest,
 } from "shared/typings/api/settings";
 
 export const postHidden = async (
-  req: Request<{}, {}, { hiddenData: readonly Game[] }>,
+  req: Request<{}, {}, PostHiddenRequest>,
   res: Response
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.HIDDEN}`);
@@ -34,7 +35,7 @@ export const postHidden = async (
 };
 
 export const getSettings = async (
-  _req: Request,
+  _req: Request<{}, {}, {}>,
   res: Response
 ): Promise<Response> => {
   logger.info(`API call: GET ${ApiEndpoint.SETTINGS}`);
@@ -44,7 +45,7 @@ export const getSettings = async (
 };
 
 export const postSignupQuestion = async (
-  req: Request<{}, {}, { signupQuestion: SignupQuestion }>,
+  req: Request<{}, {}, PostSignupQuestionRequest>,
   res: Response
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.SIGNUP_QUESTION}`);
@@ -58,7 +59,7 @@ export const postSignupQuestion = async (
 };
 
 export const deleteSignupQuestion = async (
-  req: Request<{}, {}, { gameId: string }>,
+  req: Request<{}, {}, DeleteSignupQuestionRequest>,
   res: Response
 ): Promise<Response> => {
   logger.info(`API call: DELETE ${ApiEndpoint.SIGNUP_QUESTION}`);

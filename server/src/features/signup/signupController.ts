@@ -4,10 +4,10 @@ import { isAuthorized } from "server/utils/authHeader";
 import { logger } from "server/utils/logger";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
-  DeleteEnteredGameParameters,
-  DeleteEnteredGameParametersSchema,
-  PostEnteredGameParameters,
-  PostEnteredGameParametersSchema,
+  DeleteEnteredGameRequest,
+  DeleteEnteredGameRequestSchema,
+  PostEnteredGameRequest,
+  PostEnteredGameRequestSchema,
 } from "shared/typings/api/myGames";
 import { UserGroup } from "shared/typings/models/user";
 import {
@@ -16,7 +16,7 @@ import {
 } from "server/features/signup/signupService";
 
 export const postSignup = async (
-  req: Request<{}, {}, PostEnteredGameParameters>,
+  req: Request<{}, {}, PostEnteredGameRequest>,
   res: Response
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.SIGNUP}`);
@@ -28,7 +28,7 @@ export const postSignup = async (
   }
 
   try {
-    PostEnteredGameParametersSchema.parse(req.body);
+    PostEnteredGameRequestSchema.parse(req.body);
   } catch (error) {
     if (error instanceof ZodError) {
       logger.info(`Error validating postSignup parameters: ${error.message}`);
@@ -41,7 +41,7 @@ export const postSignup = async (
 };
 
 export const deleteSignup = async (
-  req: Request<{}, {}, DeleteEnteredGameParameters>,
+  req: Request<{}, {}, DeleteEnteredGameRequest>,
   res: Response
 ): Promise<Response> => {
   logger.info(`API call: DELETE ${ApiEndpoint.SIGNUP}`);
@@ -53,7 +53,7 @@ export const deleteSignup = async (
   }
 
   try {
-    DeleteEnteredGameParametersSchema.parse(req.body);
+    DeleteEnteredGameRequestSchema.parse(req.body);
   } catch (error) {
     if (error instanceof ZodError) {
       logger.error(

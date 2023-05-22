@@ -93,8 +93,12 @@ const getErrorReason = (status: number): string => {
   }
 };
 
+interface AxiosRequestConfigGet<REQ> extends AxiosRequestConfig<REQ> {
+  params?: REQ;
+}
+
 export const api = {
-  post: async <RES = unknown, REQ = unknown, R = AxiosResponse<RES>>(
+  post: async <RES = never, REQ = never, R = AxiosResponse<RES>>(
     url: string,
     data?: REQ,
     axiosRequestConfig?: AxiosRequestConfig<REQ>
@@ -102,16 +106,16 @@ export const api = {
     return await axiosInstance.post(url, data, axiosRequestConfig);
   },
 
-  get: async <T = unknown, D = unknown, R = AxiosResponse<T>>(
+  get: async <RES = never, REQ = never, R = AxiosResponse<RES>>(
     url: string,
-    axiosRequestConfig?: AxiosRequestConfig<D>
+    axiosRequestConfig?: AxiosRequestConfigGet<REQ>
   ): Promise<R> => {
     return await axiosInstance.get(url, axiosRequestConfig);
   },
 
-  delete: async <T = unknown, D = unknown, R = AxiosResponse<T>>(
+  delete: async <RES = never, REQ = never, R = AxiosResponse<RES>>(
     url: string,
-    axiosRequestConfig?: AxiosRequestConfig<D>
+    axiosRequestConfig?: AxiosRequestConfig<REQ>
   ): Promise<R> => {
     return await axiosInstance.get(url, axiosRequestConfig);
   },

@@ -14,10 +14,10 @@ import { faker } from "@faker-js/faker";
 import dayjs from "dayjs";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
-  CloseGroupRequest,
-  CreateGroupRequest,
-  JoinGroupRequest,
-  LeaveGroupRequest,
+  PostCloseGroupRequest,
+  PostCreateGroupRequest,
+  PostJoinGroupRequest,
+  PostLeaveGroupRequest,
 } from "shared/typings/api/groups";
 import { UserGroup } from "shared/typings/models/user";
 import { getJWT } from "server/utils/jwt";
@@ -105,7 +105,7 @@ describe(`POST ${ApiEndpoint.GROUP}`, () => {
   });
 
   test("should return 401 without valid authorization", async () => {
-    const groupRequest: CreateGroupRequest = {
+    const groupRequest: PostCreateGroupRequest = {
       groupCode: "1234",
       username: "testuser",
     };
@@ -120,7 +120,7 @@ describe(`POST ${ApiEndpoint.GROUP}`, () => {
     const user = await saveUser(mockUser);
     expect(user.groupCode).toEqual("0");
 
-    const groupRequest: CreateGroupRequest = {
+    const groupRequest: PostCreateGroupRequest = {
       groupCode: mockUser.serial,
       username: mockUser.username,
     };
@@ -146,7 +146,7 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
   });
 
   test("should return 401 without valid authorization", async () => {
-    const groupRequest: JoinGroupRequest = {
+    const groupRequest: PostJoinGroupRequest = {
       groupCode: "1234",
       ownSerial: "1234",
       username: "testuser",
@@ -168,7 +168,7 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
     });
     expect(userWithSignups.signedGames.length).toEqual(2);
 
-    const groupRequest: JoinGroupRequest = {
+    const groupRequest: PostJoinGroupRequest = {
       groupCode: mockUser.serial,
       ownSerial: mockUser2.serial,
       username: mockUser2.username,
@@ -201,7 +201,7 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
       username: mockUser2.username,
     });
 
-    const groupRequest: JoinGroupRequest = {
+    const groupRequest: PostJoinGroupRequest = {
       groupCode: mockUser.serial,
       ownSerial: mockUser2.serial,
       username: mockUser2.username,
@@ -228,7 +228,7 @@ describe(`POST ${ApiEndpoint.LEAVE_GROUP}`, () => {
   });
 
   test("should return 401 without valid authorization", async () => {
-    const groupRequest: LeaveGroupRequest = {
+    const groupRequest: PostLeaveGroupRequest = {
       username: "testuser",
     };
 
@@ -242,7 +242,7 @@ describe(`POST ${ApiEndpoint.LEAVE_GROUP}`, () => {
     await saveUser({ ...mockUser, groupCode: mockUser.serial });
     await saveUser({ ...mockUser2, groupCode: mockUser.serial });
 
-    const groupRequest: LeaveGroupRequest = {
+    const groupRequest: PostLeaveGroupRequest = {
       username: mockUser2.username,
     };
 
@@ -267,7 +267,7 @@ describe(`POST ${ApiEndpoint.CLOSE_GROUP}`, () => {
   });
 
   test("should return 401 without valid authorization", async () => {
-    const groupRequest: CloseGroupRequest = {
+    const groupRequest: PostCloseGroupRequest = {
       groupCode: "1234",
       username: "testuser",
     };
@@ -282,7 +282,7 @@ describe(`POST ${ApiEndpoint.CLOSE_GROUP}`, () => {
     await saveUser({ ...mockUser, groupCode: mockUser.serial });
     await saveUser({ ...mockUser2, groupCode: mockUser.serial });
 
-    const groupRequest: CloseGroupRequest = {
+    const groupRequest: PostCloseGroupRequest = {
       groupCode: mockUser.serial,
       username: mockUser.username,
     };

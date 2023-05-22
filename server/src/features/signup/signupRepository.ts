@@ -4,8 +4,8 @@ import { SignupModel } from "server/features/signup/signupSchema";
 import { logger } from "server/utils/logger";
 import { sharedConfig } from "shared/config/sharedConfig";
 import {
-  DeleteEnteredGameParameters,
-  PostEnteredGameParameters,
+  DeleteEnteredGameRequest,
+  PostEnteredGameRequest,
 } from "shared/typings/api/myGames";
 import { ProgramType } from "shared/typings/models/game";
 
@@ -107,7 +107,7 @@ export const findUserSignups = async (username: string): Promise<Signup[]> => {
 };
 
 export const saveSignup = async (
-  signupsRequest: PostEnteredGameParameters
+  signupsRequest: PostEnteredGameRequest
 ): Promise<Signup> => {
   const { username, enteredGameId, startTime, message } = signupsRequest;
 
@@ -162,7 +162,7 @@ export const saveSignup = async (
 };
 
 export const delSignup = async (
-  signupRequest: DeleteEnteredGameParameters
+  signupRequest: DeleteEnteredGameRequest
 ): Promise<Signup> => {
   const { username, enteredGameId } = signupRequest;
 

@@ -1,9 +1,12 @@
 import { Request, Response } from "express";
-import { ZodError, z } from "zod";
+import { ZodError } from "zod";
 import { login } from "server/features/user/login/loginService";
 import { logger } from "server/utils/logger";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
-import { PostLoginRequest } from "shared/typings/api/login";
+import {
+  PostLoginRequest,
+  PostLoginRequestSchema,
+} from "shared/typings/api/login";
 
 export const postLogin = async (
   req: Request<{}, {}, PostLoginRequest>,
@@ -11,14 +14,9 @@ export const postLogin = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.LOGIN}`);
 
-  const PostLoginParameters = z.object({
-    username: z.string(),
-    password: z.string(),
-  });
-
   let parameters;
   try {
-    parameters = PostLoginParameters.parse(req.body);
+    parameters = PostLoginRequestSchema.parse(req.body);
   } catch (error) {
     if (error instanceof ZodError) {
       logger.error(`Error validating postLogin parameters: ${error.message}`);

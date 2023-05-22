@@ -6,7 +6,7 @@ import { logger } from "server/utils/logger";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 
 export const postUpdateGames = async (
-  req: Request,
+  req: Request<{}, {}, {}>,
   res: Response
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.GAMES}`);
@@ -20,7 +20,7 @@ export const postUpdateGames = async (
 };
 
 export const getGames = async (
-  _req: Request,
+  _req: Request<{}, {}, {}>,
   res: Response
 ): Promise<Response> => {
   logger.info(`API call: GET ${ApiEndpoint.GAMES}`);

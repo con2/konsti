@@ -11,7 +11,7 @@ import request from "supertest";
 import { MongoMemoryServer } from "mongodb-memory-server";
 import { startTestServer, stopTestServer } from "server/test/utils/testServer";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
-import { SignupData } from "shared/typings/api/myGames";
+import { PostSignedGamesRequest } from "shared/typings/api/myGames";
 
 let mongoServer: MongoMemoryServer;
 
@@ -42,7 +42,7 @@ describe(`POST ${ApiEndpoint.SIGNED_GAME}`, () => {
   test("should return 401 without valid authorization", async () => {
     const { server } = await startTestServer(mongoServer.getUri());
 
-    const signupData: SignupData = {
+    const signupData: PostSignedGamesRequest = {
       username: "testuser",
       selectedGames: [],
       startTime: "2019-11-23T08:00:00Z",
@@ -51,9 +51,7 @@ describe(`POST ${ApiEndpoint.SIGNED_GAME}`, () => {
     try {
       const response = await request(server)
         .post(ApiEndpoint.SIGNED_GAME)
-        .send({
-          signupData,
-        });
+        .send(signupData);
       expect(response.status).toEqual(401);
     } finally {
       await stopTestServer(server);

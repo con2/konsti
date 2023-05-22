@@ -11,7 +11,7 @@ import request from "supertest";
 import { MongoMemoryServer } from "mongodb-memory-server";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { startTestServer, stopTestServer } from "server/test/utils/testServer";
-import { SaveFavoriteRequest } from "shared/typings/api/favorite";
+import { PostFavoriteRequest } from "shared/typings/api/favorite";
 
 let mongoServer: MongoMemoryServer;
 
@@ -42,7 +42,7 @@ describe(`POST ${ApiEndpoint.FAVORITE}`, () => {
   test("should return 401 without valid authorization", async () => {
     const { server } = await startTestServer(mongoServer.getUri());
 
-    const saveFavoriteRequest: SaveFavoriteRequest = {
+    const saveFavoriteRequest: PostFavoriteRequest = {
       username: "testuser",
       favoritedGameIds: [],
     };

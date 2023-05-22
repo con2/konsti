@@ -7,11 +7,19 @@ import {
   SignupQuestion,
 } from "shared/typings/models/settings";
 
+// POST hidden
+
+export interface PostHiddenRequest {
+  hiddenData: readonly Game[];
+}
+
 export interface PostHiddenResponse {
   hiddenGames: readonly Game[];
   message: string;
   status: "success";
 }
+
+// GET settings
 
 export interface GetSettingsResponse {
   appOpen: boolean;
@@ -22,11 +30,27 @@ export interface GetSettingsResponse {
   signupStrategy: SignupStrategy;
 }
 
+// POST signup question
+
+export interface PostSignupQuestionRequest {
+  signupQuestion: SignupQuestion;
+}
+
 export interface PostSignupQuestionResponse {
   signupQuestions: readonly SignupQuestion[];
   message: string;
   status: "success";
 }
+
+// DELETE signup question
+
+export interface DeleteSignupQuestionRequest {
+  gameId: string;
+}
+
+export type DeleteSignupQuestionResponse = PostSignupQuestionResponse;
+
+// POST settings
 
 export const PostSettingsRequestSchema = SettingsSchema.partial();
 

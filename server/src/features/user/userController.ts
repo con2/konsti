@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { z, ZodError } from "zod";
+import { ZodError } from "zod";
 import {
   fetchUserByUsername,
   storeUser,
@@ -10,16 +10,18 @@ import { UserGroup } from "shared/typings/models/user";
 import { isAuthorized } from "server/utils/authHeader";
 import { logger } from "server/utils/logger";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
-import { UpdateUserPasswordRequest } from "shared/typings/api/login";
 import { sharedConfig } from "shared/config/sharedConfig";
 import { createSerial } from "./userUtils";
 import {
-  PASSWORD_LENGTH_MAX,
-  PASSWORD_LENGTH_MIN,
-  USERNAME_LENGTH_MAX,
-  USERNAME_LENGTH_MIN,
-} from "shared/constants/validation";
-import { PostUserRequest } from "shared/typings/api/users";
+  GetUserBySerialRequest,
+  GetUserBySerialRequestSchema,
+  GetUserRequest,
+  GetUserRequestSchema,
+  PostUserRequest,
+  PostUpdateUserPasswordRequest,
+  PostUpdateUserPasswordRequestSchema,
+  PostUserRequestSchema,
+} from "shared/typings/api/users";
 
 export const postUser = async (
   req: Request<{}, {}, PostUserRequest>,
@@ -27,33 +29,9 @@ export const postUser = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.USERS}`);
 
-  const PostUserParameters = z.object({
-    username: z
-      .string()
-      .trim()
-      .min(USERNAME_LENGTH_MIN)
-      .max(USERNAME_LENGTH_MAX),
-    password: z
-      .string()
-      .trim()
-      .min(PASSWORD_LENGTH_MIN)
-      .max(PASSWORD_LENGTH_MAX),
-    serial: z
-      .string()
-      .optional()
-      .refine((input) => {
-        if (sharedConfig.requireRegistrationCode) {
-          if (!input || input.trim().length === 0) {
-            return false;
-          }
-        }
-        return true;
-      }),
-  });
-
   let parameters;
   try {
-    parameters = PostUserParameters.parse(req.body);
+    parameters = PostUserRequestSchema.parse(req.body);
   } catch (error) {
     if (error instanceof ZodError) {
       logger.error(`Error validating postUser parameters: ${error.message}`);
@@ -74,20 +52,14 @@ export const postUser = async (
 };
 
 export const postUserPassword = async (
-  req: Request<{}, {}, UpdateUserPasswordRequest>,
+  req: Request<{}, {}, PostUpdateUserPasswordRequest>,
   res: Response
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.USERS_PASSWORD}`);
 
-  const PostUserPasswordParameters = z.object({
-    username: z.string(),
-    password: z.string(),
-    requester: z.string(),
-  });
-
   let parameters;
   try {
-    parameters = PostUserPasswordParameters.parse(req.body);
+    parameters = PostUpdateUserPasswordRequestSchema.parse(req.body);
   } catch (error) {
     if (error instanceof ZodError) {
       logger.error(
@@ -118,18 +90,14 @@ export const postUserPassword = async (
 };
 
 export const getUser = async (
-  req: Request,
+  req: Request<{}, {}, GetUserRequest>,
   res: Response
 ): Promise<Response> => {
   logger.info(`API call: GET ${ApiEndpoint.USERS}`);
 
-  const GetUserQueryParameters = z.object({
-    username: z.string(),
-  });
-
   let parameters;
   try {
-    parameters = GetUserQueryParameters.parse(req.query);
+    parameters = GetUserRequestSchema.parse(req.query);
   } catch (error) {
     if (error instanceof ZodError) {
       logger.error(`Error validating getUser parameters: ${error.message}`);
@@ -153,7 +121,7 @@ export const getUser = async (
 };
 
 export const getUserBySerialOrUsername = async (
-  req: Request,
+  req: Request<{}, {}, GetUserBySerialRequest>,
   res: Response
 ): Promise<Response> => {
   logger.info(`API call: GET ${ApiEndpoint.USERS_BY_SERIAL_OR_USERNAME}`);
@@ -174,13 +142,9 @@ export const getUserBySerialOrUsername = async (
     return res.sendStatus(401);
   }
 
-  const GetUserQueryParameters = z.object({
-    searchTerm: z.string(),
-  });
-
   let parameters;
   try {
-    parameters = GetUserQueryParameters.parse(req.query);
+    parameters = GetUserBySerialRequestSchema.parse(req.query);
   } catch (error) {
     if (error instanceof ZodError) {
       logger.error(
