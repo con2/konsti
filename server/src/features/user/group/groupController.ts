@@ -1,16 +1,18 @@
 import { Request, Response } from "express";
-import { z, ZodError } from "zod";
+import { ZodError } from "zod";
 import { logger } from "server/utils/logger";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
-  CloseGroupRequest,
-  CloseGroupRequestSchema,
-  CreateGroupRequest,
-  CreateGroupRequestSchema,
-  JoinGroupRequest,
-  JoinGroupRequestSchema,
-  LeaveGroupRequest,
-  LeaveGroupRequestSchema,
+  GetGroupRequest,
+  GetGroupRequestSchema,
+  PostCloseGroupRequest,
+  PostCloseGroupRequestSchema,
+  PostCreateGroupRequest,
+  PostCreateGroupRequestSchema,
+  PostJoinGroupRequest,
+  PostJoinGroupRequestSchema,
+  PostLeaveGroupRequest,
+  PostLeaveGroupRequestSchema,
 } from "shared/typings/api/groups";
 import { isAuthorized } from "server/utils/authHeader";
 import { UserGroup } from "shared/typings/models/user";
@@ -22,18 +24,20 @@ import {
   leaveGroup,
 } from "server/features/user/group/groupService";
 
-export const postGroup = async (
-  req: Request<{}, {}, CreateGroupRequest>,
+export const postCreateGroup = async (
+  req: Request<{}, {}, PostCreateGroupRequest>,
   res: Response
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.GROUP}`);
 
-  let groupRequest: CreateGroupRequest;
+  let groupRequest: PostCreateGroupRequest;
   try {
-    groupRequest = CreateGroupRequestSchema.parse(req.body);
+    groupRequest = PostCreateGroupRequestSchema.parse(req.body);
   } catch (error) {
     if (error instanceof ZodError) {
-      logger.error(`Error validating postGroup parameters: ${error.message}`);
+      logger.error(
+        `Error validating postCreateGroup parameters: ${error.message}`
+      );
     }
     return res.sendStatus(422);
   }
@@ -49,17 +53,19 @@ export const postGroup = async (
 };
 
 export const postJoinGroup = async (
-  req: Request<{}, {}, JoinGroupRequest>,
+  req: Request<{}, {}, PostJoinGroupRequest>,
   res: Response
 ): Promise<Response> => {
-  logger.info(`API call: POST ${ApiEndpoint.GROUP}`);
+  logger.info(`API call: POST ${ApiEndpoint.JOIN_GROUP}`);
 
-  let groupRequest: JoinGroupRequest;
+  let groupRequest: PostJoinGroupRequest;
   try {
-    groupRequest = JoinGroupRequestSchema.parse(req.body);
+    groupRequest = PostJoinGroupRequestSchema.parse(req.body);
   } catch (error) {
     if (error instanceof ZodError) {
-      logger.error(`Error validating postGroup parameters: ${error.message}`);
+      logger.error(
+        `Error validating postJoinGroup parameters: ${error.message}`
+      );
     }
     return res.sendStatus(422);
   }
@@ -75,17 +81,19 @@ export const postJoinGroup = async (
 };
 
 export const postLeaveGroup = async (
-  req: Request<{}, {}, LeaveGroupRequest>,
+  req: Request<{}, {}, PostLeaveGroupRequest>,
   res: Response
 ): Promise<Response> => {
-  logger.info(`API call: POST ${ApiEndpoint.GROUP}`);
+  logger.info(`API call: POST ${ApiEndpoint.LEAVE_GROUP}`);
 
-  let groupRequest: LeaveGroupRequest;
+  let groupRequest: PostLeaveGroupRequest;
   try {
-    groupRequest = LeaveGroupRequestSchema.parse(req.body);
+    groupRequest = PostLeaveGroupRequestSchema.parse(req.body);
   } catch (error) {
     if (error instanceof ZodError) {
-      logger.error(`Error validating postGroup parameters: ${error.message}`);
+      logger.error(
+        `Error validating postLeaveGroup parameters: ${error.message}`
+      );
     }
     return res.sendStatus(422);
   }
@@ -101,17 +109,19 @@ export const postLeaveGroup = async (
 };
 
 export const postCloseGroup = async (
-  req: Request<{}, {}, CloseGroupRequest>,
+  req: Request<{}, {}, PostCloseGroupRequest>,
   res: Response
 ): Promise<Response> => {
-  logger.info(`API call: POST ${ApiEndpoint.GROUP}`);
+  logger.info(`API call: POST ${ApiEndpoint.CLOSE_GROUP}`);
 
-  let groupRequest: CloseGroupRequest;
+  let groupRequest: PostCloseGroupRequest;
   try {
-    groupRequest = CloseGroupRequestSchema.parse(req.body);
+    groupRequest = PostCloseGroupRequestSchema.parse(req.body);
   } catch (error) {
     if (error instanceof ZodError) {
-      logger.error(`Error validating postGroup parameters: ${error.message}`);
+      logger.error(
+        `Error validating postCloseGroup parameters: ${error.message}`
+      );
     }
     return res.sendStatus(422);
   }
@@ -127,19 +137,14 @@ export const postCloseGroup = async (
 };
 
 export const getGroup = async (
-  req: Request,
+  req: Request<{}, {}, GetGroupRequest>,
   res: Response
 ): Promise<Response> => {
   logger.info(`API call: GET ${ApiEndpoint.GROUP}`);
 
-  const GetGroupQueryParameters = z.object({
-    groupCode: z.string(),
-    username: z.string(),
-  });
-
   let parameters;
   try {
-    parameters = GetGroupQueryParameters.parse(req.query);
+    parameters = GetGroupRequestSchema.parse(req.query);
   } catch (error) {
     return res.sendStatus(422);
   }

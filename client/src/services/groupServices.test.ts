@@ -1,7 +1,7 @@
 import { expect, test, vi } from "vitest";
 import { getGroup, postCreateGroup } from "client/services/groupServices";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
-import { CreateGroupRequest } from "shared/typings/api/groups";
+import { PostCreateGroupRequest } from "shared/typings/api/groups";
 import { api } from "client/utils/api";
 
 test("GET group from server", async () => {
@@ -24,7 +24,7 @@ test("POST group to server", async () => {
     .spyOn(api, "post")
     .mockResolvedValue({ data: "test response" });
 
-  const groupRequest: CreateGroupRequest = {
+  const groupRequest: PostCreateGroupRequest = {
     groupCode: "123",
     username: "test user",
   };

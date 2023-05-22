@@ -11,15 +11,18 @@ import { findUserSerial } from "server/features/user/userRepository";
 import { logger } from "server/utils/logger";
 import { sharedConfig } from "shared/config/sharedConfig";
 import {
+  PostCloseGroupResponse,
+  PostCreateGroupResponse,
   GetGroupError,
   GetGroupResponse,
-  GroupMember,
+  PostJoinGroupResponse,
+  PostLeaveGroupResponse,
   PostCloseGroupError,
   PostCreateGroupError,
-  PostGroupResponse,
   PostJoinGroupError,
   PostLeaveGroupError,
 } from "shared/typings/api/groups";
+import { GroupMember } from "shared/typings/models/groups";
 import { User } from "shared/typings/models/user";
 
 const { directSignupAlwaysOpenIds } = sharedConfig;
@@ -27,7 +30,7 @@ const { directSignupAlwaysOpenIds } = sharedConfig;
 export const createGroup = async (
   username: string,
   groupCode: string
-): Promise<PostGroupResponse | PostCreateGroupError> => {
+): Promise<PostCreateGroupResponse | PostCreateGroupError> => {
   let signups;
   try {
     signups = await findUserSignups(username);
@@ -113,7 +116,7 @@ export const joinGroup = async (
   username: string,
   groupCode: string,
   ownSerial: string
-): Promise<PostGroupResponse | PostJoinGroupError> => {
+): Promise<PostJoinGroupResponse | PostJoinGroupError> => {
   // Cannot join own group
   if (ownSerial === groupCode) {
     return {
@@ -244,7 +247,7 @@ export const joinGroup = async (
 
 export const leaveGroup = async (
   username: string
-): Promise<PostGroupResponse | PostLeaveGroupError> => {
+): Promise<PostLeaveGroupResponse | PostLeaveGroupError> => {
   let saveGroupResponse;
   try {
     saveGroupResponse = await saveGroupCode("0", username);
@@ -275,7 +278,7 @@ export const leaveGroup = async (
 export const closeGroup = async (
   groupCode: string,
   username: string
-): Promise<PostGroupResponse | PostCloseGroupError> => {
+): Promise<PostCloseGroupResponse | PostCloseGroupError> => {
   let groupMembers;
   try {
     groupMembers = await findGroupMembers(groupCode);

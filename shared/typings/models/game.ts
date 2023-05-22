@@ -97,3 +97,13 @@ export const GameSchema = z.object({
 });
 
 export type Game = z.infer<typeof GameSchema>;
+
+export interface GameWithUsernames {
+  game: Game;
+  users: UserSignup[];
+}
+
+export interface UserSignup {
+  username: string;
+  signupMessage: string;
+}

@@ -23,3 +23,9 @@ export enum UserGroup {
   ADMIN = "admin",
   HELP = "help",
 }
+
+export interface UserGames {
+  enteredGames: readonly SelectedGame[];
+  favoritedGames: readonly Game[];
+  signedGames: readonly SelectedGame[];
+}

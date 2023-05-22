@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import { GroupMember } from "shared/typings/api/groups";
+import { GroupMember } from "shared/typings/models/groups";
 import { Game, ProgramType } from "shared/typings/models/game";
 import { getTime } from "client/utils/getTime";
 import { getIsGroupCreator } from "client/views/group/groupUtils";

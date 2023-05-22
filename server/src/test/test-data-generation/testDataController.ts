@@ -5,7 +5,7 @@ import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { runGenerators } from "server/test/test-data-generation/runGenerators";
 
 export const postPopulateDb = async (
-  _req: Request<{}, {}, null>,
+  _req: Request<{}, {}, {}>,
   res: Response
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.POPULATE_DB}`);

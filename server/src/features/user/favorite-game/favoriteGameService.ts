@@ -2,11 +2,11 @@ import { saveFavorite } from "server/features/user/favorite-game/favoriteGameRep
 import { ApiError } from "shared/typings/api/errors";
 import {
   PostFavoriteResponse,
-  SaveFavoriteRequest,
+  PostFavoriteRequest,
 } from "shared/typings/api/favorite";
 
 export const storeFavorite = async (
-  favoriteData: SaveFavoriteRequest
+  favoriteData: PostFavoriteRequest
 ): Promise<PostFavoriteResponse | ApiError> => {
   let favoritedGames;
   try {

@@ -4,10 +4,10 @@ import { getTime } from "server/features/player-assignment/utils/getTime";
 import { isValidSignupTime } from "server/features/user/userUtils";
 import {
   DeleteEnteredGameError,
-  DeleteEnteredGameParameters,
+  DeleteEnteredGameRequest,
   DeleteEnteredGameResponse,
   PostEnteredGameError,
-  PostEnteredGameParameters,
+  PostEnteredGameRequest,
   PostEnteredGameResponse,
 } from "shared/typings/api/myGames";
 import { getDirectSignupStartTime } from "shared/utils/getDirectSignupStartTime";
@@ -16,7 +16,7 @@ import { delSignup, saveSignup } from "server/features/signup/signupRepository";
 import { findUser } from "server/features/user/userRepository";
 
 export const storeSignup = async (
-  signupRequest: PostEnteredGameParameters
+  signupRequest: PostEnteredGameRequest
 ): Promise<PostEnteredGameResponse | PostEnteredGameError> => {
   const { startTime, enteredGameId, username } = signupRequest;
   const timeNow = await getTime();
@@ -106,7 +106,7 @@ export const storeSignup = async (
 };
 
 export const removeSignup = async (
-  signupRequest: DeleteEnteredGameParameters
+  signupRequest: DeleteEnteredGameRequest
 ): Promise<DeleteEnteredGameResponse | DeleteEnteredGameError> => {
   const { startTime } = signupRequest;
 
