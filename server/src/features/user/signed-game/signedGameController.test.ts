@@ -51,9 +51,7 @@ describe(`POST ${ApiEndpoint.SIGNED_GAME}`, () => {
     try {
       const response = await request(server)
         .post(ApiEndpoint.SIGNED_GAME)
-        .send({
-          signupData,
-        });
+        .send(signupData);
       expect(response.status).toEqual(401);
     } finally {
       await stopTestServer(server);

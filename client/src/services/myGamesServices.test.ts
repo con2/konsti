@@ -18,7 +18,5 @@ test("POST signed games to server", async () => {
 
   expect(response).toEqual("test response");
   expect(spy).toHaveBeenCalledTimes(1);
-  expect(spy).toHaveBeenCalledWith(ApiEndpoint.SIGNED_GAME, {
-    signupData,
-  });
+  expect(spy).toHaveBeenCalledWith(ApiEndpoint.SIGNED_GAME, signupData);
 });
