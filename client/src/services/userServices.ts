@@ -2,17 +2,19 @@ import { api } from "client/utils/api";
 import { ApiError } from "shared/typings/api/errors";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
+  GetSignupMessagesError,
+  GetSignupMessagesResponse,
+  GetUserBySerialRequest,
   GetUserBySerialResponse,
+  GetUserRequest,
   GetUserResponse,
+  PostUpdateUserPasswordRequest,
+  PostUpdateUserPasswordResponse,
   PostUserError,
   PostUserRequest,
   PostUserResponse,
 } from "shared/typings/api/users";
 import { RegistrationFormFields } from "client/views/registration/components/RegistrationForm";
-import {
-  GetSignupMessagesError,
-  GetSignupMessagesResponse,
-} from "shared/typings/models/signupMessage";
 
 export const postRegistration = async (
   registrationFormFields: RegistrationFormFields
@@ -33,25 +35,28 @@ export const postRegistration = async (
 export const getUser = async (
   username: string
 ): Promise<GetUserResponse | ApiError> => {
-  const response = await api.get<GetUserResponse>(ApiEndpoint.USERS, {
-    params: {
-      username,
-    },
-  });
+  const response = await api.get<GetUserResponse, GetUserRequest>(
+    ApiEndpoint.USERS,
+    {
+      params: {
+        username,
+      },
+    }
+  );
   return response.data;
 };
 
 export const getUserBySerialOrUsername = async (
   searchTerm: string
 ): Promise<GetUserBySerialResponse | ApiError> => {
-  const response = await api.get<GetUserBySerialResponse>(
-    ApiEndpoint.USERS_BY_SERIAL_OR_USERNAME,
-    {
-      params: {
-        searchTerm,
-      },
-    }
-  );
+  const response = await api.get<
+    GetUserBySerialResponse,
+    GetUserBySerialRequest
+  >(ApiEndpoint.USERS_BY_SERIAL_OR_USERNAME, {
+    params: {
+      searchTerm,
+    },
+  });
   return response.data;
 };
 
@@ -59,22 +64,22 @@ export const updateUserPassword = async (
   username: string,
   password: string,
   requester: string
-): Promise<PostUserResponse | ApiError> => {
-  const response = await api.post<PostUserResponse>(
-    ApiEndpoint.USERS_PASSWORD,
-    {
-      username,
-      password,
-      requester,
-    }
-  );
+): Promise<PostUpdateUserPasswordResponse | ApiError> => {
+  const response = await api.post<
+    PostUpdateUserPasswordResponse,
+    PostUpdateUserPasswordRequest
+  >(ApiEndpoint.USERS_PASSWORD, {
+    username,
+    password,
+    requester,
+  });
   return response.data;
 };
 
 export const getSignupMessages = async (): Promise<
   GetSignupMessagesResponse | GetSignupMessagesError
 > => {
-  const response = await api.get<GetSignupMessagesResponse>(
+  const response = await api.get<GetSignupMessagesResponse, {}>(
     ApiEndpoint.SIGNUP_MESSAGE
   );
   return response.data;

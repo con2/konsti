@@ -2,10 +2,10 @@ import { Request, Response } from "express";
 import { loginWithJwt } from "server/features/user/session-restore/sessionRestoreService";
 import { logger } from "server/utils/logger";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
-import { SessionRecoveryRequest } from "shared/typings/api/login";
+import { PostSessionRecoveryRequest } from "shared/typings/api/login";
 
 export const postSessionRestore = async (
-  req: Request<{}, {}, SessionRecoveryRequest>,
+  req: Request<{}, {}, PostSessionRecoveryRequest>,
   res: Response
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.SESSION_RESTORE}`);

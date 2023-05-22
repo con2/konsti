@@ -12,10 +12,10 @@ import {
   submitUpdateGroupCodeAsync,
 } from "client/views/group/groupSlice";
 import {
-  CloseGroupRequest,
-  CreateGroupRequest,
-  JoinGroupRequest,
-  LeaveGroupRequest,
+  PostCloseGroupRequest,
+  PostCreateGroupRequest,
+  PostJoinGroupRequest,
+  PostLeaveGroupRequest,
 } from "shared/typings/api/groups";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 
@@ -26,7 +26,7 @@ export enum PostCreateGroupErrorMessage {
 }
 
 export const submitCreateGroup = (
-  group: CreateGroupRequest
+  group: PostCreateGroupRequest
 ): AppThunk<Promise<PostCreateGroupErrorMessage | undefined>> => {
   return async (dispatch): Promise<PostCreateGroupErrorMessage | undefined> => {
     const createGroupResponse = await postCreateGroup(group);
@@ -61,7 +61,7 @@ export enum PostJoinGroupErrorMessage {
 }
 
 export const submitJoinGroup = (
-  groupRequest: JoinGroupRequest
+  groupRequest: PostJoinGroupRequest
 ): AppThunk<Promise<PostJoinGroupErrorMessage | undefined>> => {
   return async (dispatch): Promise<PostJoinGroupErrorMessage | undefined> => {
     const joinGroupResponse = await postJoinGroup(groupRequest);
@@ -100,7 +100,7 @@ export enum PostLeaveGroupErrorMessage {
 }
 
 export const submitLeaveGroup = (
-  groupRequest: LeaveGroupRequest
+  groupRequest: PostLeaveGroupRequest
 ): AppThunk<Promise<PostLeaveGroupErrorMessage | undefined>> => {
   return async (dispatch): Promise<PostLeaveGroupErrorMessage | undefined> => {
     const leaveGroupResponse = await postLeaveGroup(groupRequest);
@@ -128,7 +128,7 @@ export enum PostCloseGroupErrorMessage {
 }
 
 export const submitCloseGroup = (
-  groupRequest: CloseGroupRequest
+  groupRequest: PostCloseGroupRequest
 ): AppThunk<Promise<PostCloseGroupErrorMessage | undefined>> => {
   return async (dispatch): Promise<PostCloseGroupErrorMessage | undefined> => {
     const leaveGroupResponse = await postCloseGroup(groupRequest);

@@ -1,11 +1,11 @@
 import { findSettings } from "server/features/settings/settingsRepository";
 import { Signup } from "server/features/signup/signup.typings";
 import { findSignups } from "server/features/signup/signupRepository";
-import { Settings } from "shared/typings/models/settings";
 import {
   GetSignupMessagesError,
   GetSignupMessagesResponse,
-} from "shared/typings/models/signupMessage";
+} from "shared/typings/api/users";
+import { Settings } from "shared/typings/models/settings";
 
 export const fetchSignupMessages = async (): Promise<
   GetSignupMessagesResponse | GetSignupMessagesError

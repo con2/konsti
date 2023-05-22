@@ -10,11 +10,13 @@ import { ApiEndpoint } from "shared/constants/apiEndpoints";
 export const postUpdateGames = async (): Promise<
   PostUpdateGamesResponse | PostUpdateGamesError
 > => {
-  const response = await api.post<PostUpdateGamesResponse>(ApiEndpoint.GAMES);
+  const response = await api.post<PostUpdateGamesResponse, {}>(
+    ApiEndpoint.GAMES
+  );
   return response.data;
 };
 
 export const getGames = async (): Promise<GetGamesResponse | ApiError> => {
-  const response = await api.get<GetGamesResponse>(ApiEndpoint.GAMES);
+  const response = await api.get<GetGamesResponse, {}>(ApiEndpoint.GAMES);
   return response.data;
 };

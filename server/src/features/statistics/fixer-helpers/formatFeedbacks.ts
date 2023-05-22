@@ -5,7 +5,7 @@ import { z } from "zod";
 import { logger } from "server/utils/logger";
 import { GameSchema } from "shared/typings/models/game";
 import { writeJson } from "server/features/statistics/statsUtil";
-import { FeedbackSchema } from "shared/typings/models/feedback";
+import { PostFeedbackRequestSchema } from "shared/typings/api/feedback";
 import { config } from "server/config";
 import { setLocale } from "shared/utils/setLocale";
 
@@ -17,7 +17,9 @@ export const formatFeedbacks = (year: number, event: string): void => {
     "utf8"
   );
 
-  const feedbacks = z.array(FeedbackSchema).parse(JSON.parse(feedbacksJson));
+  const feedbacks = z
+    .array(PostFeedbackRequestSchema)
+    .parse(JSON.parse(feedbacksJson));
 
   logger.info(`Loaded ${feedbacks.length} feedbacks`);
 

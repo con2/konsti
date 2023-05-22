@@ -2,14 +2,14 @@ import { api } from "client/utils/api";
 import { ApiError } from "shared/typings/api/errors";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
-  SaveFavoriteRequest,
+  PostFavoriteRequest,
   PostFavoriteResponse,
 } from "shared/typings/api/favorite";
 
 export const postFavorite = async (
-  favoriteData: SaveFavoriteRequest
+  favoriteData: PostFavoriteRequest
 ): Promise<PostFavoriteResponse | ApiError> => {
-  const response = await api.post<PostFavoriteResponse>(
+  const response = await api.post<PostFavoriteResponse, PostFavoriteRequest>(
     ApiEndpoint.FAVORITE,
     favoriteData
   );
