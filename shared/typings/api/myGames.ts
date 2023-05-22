@@ -7,25 +7,17 @@ import { GameSchema } from "shared/typings/models/game";
 // POST signed games
 
 export const PostSignedGamesRequestSchema = z.object({
-  signupData: z.object({
-    username: z.string(),
-    selectedGames: z.array(
-      z.object({
-        gameDetails: GameSchema,
-        priority: z.number(),
-        time: z.string(),
-        message: z.string(),
-      })
-    ),
-    startTime: z.string(),
-  }),
+  username: z.string(),
+  selectedGames: z.array(
+    z.object({
+      gameDetails: GameSchema,
+      priority: z.number(),
+      time: z.string(),
+      message: z.string(),
+    })
+  ),
+  startTime: z.string(),
 });
-
-export interface SignupData {
-  username: string;
-  selectedGames: SelectedGame[];
-  startTime: string;
-}
 
 export type PostSignedGamesRequest = z.infer<
   typeof PostSignedGamesRequestSchema

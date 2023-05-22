@@ -12,7 +12,7 @@ import {
 import {
   DeleteEnteredGameRequest,
   PostEnteredGameRequest,
-  SignupData,
+  PostSignedGamesRequest,
 } from "shared/typings/api/myGames";
 import {
   deleteEnteredGame,
@@ -133,7 +133,7 @@ export enum PostSignedGamesErrorMessage {
 }
 
 export const submitPostSignedGames = (
-  signupData: SignupData
+  signupData: PostSignedGamesRequest
 ): AppThunk<Promise<PostSignedGamesErrorMessage | undefined>> => {
   return async (dispatch): Promise<PostSignedGamesErrorMessage | undefined> => {
     const signupResponse = await postSignedGames(signupData);

@@ -28,7 +28,7 @@ export const postSignedGames = async (
     return res.sendStatus(422);
   }
 
-  const { selectedGames, username, startTime } = parameters.signupData;
+  const { selectedGames, username, startTime } = parameters;
 
   if (!isAuthorized(req.headers.authorization, UserGroup.USER, username)) {
     return res.sendStatus(401);

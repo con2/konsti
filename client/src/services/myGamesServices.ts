@@ -10,18 +10,15 @@ import {
   PostSignedGamesError,
   PostSignedGamesRequest,
   PostSignedGamesResponse,
-  SignupData,
 } from "shared/typings/api/myGames";
 
 export const postSignedGames = async (
-  signupData: SignupData
+  signupData: PostSignedGamesRequest
 ): Promise<PostSignedGamesResponse | PostSignedGamesError> => {
   const response = await api.post<
     PostSignedGamesResponse,
     PostSignedGamesRequest
-  >(ApiEndpoint.SIGNED_GAME, {
-    signupData,
-  });
+  >(ApiEndpoint.SIGNED_GAME, signupData);
   return response.data;
 };
 
