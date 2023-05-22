@@ -11,7 +11,8 @@ export const getSignupMessages = async (
 ): Promise<Response> => {
   logger.info(`API call: GET ${ApiEndpoint.SIGNUP_MESSAGE}`);
 
-  if (!isAuthorized(req.headers.authorization, UserGroup.HELP, "helper")) {
+  const username = isAuthorized(req.headers.authorization, UserGroup.HELP);
+  if (!username) {
     return res.sendStatus(401);
   }
 

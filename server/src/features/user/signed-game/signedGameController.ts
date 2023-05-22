@@ -16,6 +16,11 @@ export const postSignedGames = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.SIGNED_GAME}`);
 
+  const username = isAuthorized(req.headers.authorization, UserGroup.USER);
+  if (!username) {
+    return res.sendStatus(401);
+  }
+
   let parameters;
   try {
     parameters = PostSignedGamesRequestSchema.parse(req.body);
@@ -28,11 +33,7 @@ export const postSignedGames = async (
     return res.sendStatus(422);
   }
 
-  const { selectedGames, username, startTime } = parameters;
-
-  if (!isAuthorized(req.headers.authorization, UserGroup.USER, username)) {
-    return res.sendStatus(401);
-  }
+  const { selectedGames, startTime } = parameters;
 
   const response = await storeSignedGames(selectedGames, username, startTime);
   return res.json(response);

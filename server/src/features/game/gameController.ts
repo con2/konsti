@@ -11,7 +11,8 @@ export const postUpdateGames = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.GAMES}`);
 
-  if (!isAuthorized(req.headers.authorization, UserGroup.ADMIN, "admin")) {
+  const username = isAuthorized(req.headers.authorization, UserGroup.ADMIN);
+  if (!username) {
     return res.sendStatus(401);
   }
 

@@ -15,6 +15,11 @@ export const postFeedback = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.FEEDBACK}`);
 
+  const username = isAuthorized(req.headers.authorization, UserGroup.USER);
+  if (!username) {
+    return res.sendStatus(401);
+  }
+
   let parameters;
   try {
     parameters = PostFeedbackRequestSchema.parse(req.body);
@@ -22,16 +27,10 @@ export const postFeedback = async (
     return res.sendStatus(422);
   }
 
-  if (
-    !isAuthorized(
-      req.headers.authorization,
-      UserGroup.USER,
-      parameters.username
-    )
-  ) {
-    return res.sendStatus(401);
-  }
-
-  const response = await storeFeedback(parameters);
+  const response = await storeFeedback({
+    gameId: parameters.gameId,
+    feedback: parameters.feedback,
+    username,
+  });
   return res.json(response);
 };

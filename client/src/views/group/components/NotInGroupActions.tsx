@@ -20,7 +20,6 @@ interface Props {
 }
 
 export const NotInGroupActions = ({
-  username,
   serial,
   disabled,
 }: Props): ReactElement => {
@@ -52,7 +51,6 @@ export const NotInGroupActions = ({
 
     const errorMessage = await dispatch(
       submitCreateGroup({
-        username,
         groupCode: serial,
       })
     );
@@ -72,7 +70,6 @@ export const NotInGroupActions = ({
 
     const errorMessage = await dispatch(
       submitJoinGroup({
-        username,
         groupCode: joinGroupValue,
         ownSerial: serial,
       })

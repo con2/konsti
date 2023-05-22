@@ -22,7 +22,8 @@ export const getSentryTest = (
 ): Response => {
   logger.info(`API call: POST ${ApiEndpoint.SENTRY_TEST}`);
 
-  if (!isAuthorized(req.headers.authorization, UserGroup.ADMIN, "admin")) {
+  const username = isAuthorized(req.headers.authorization, UserGroup.ADMIN);
+  if (!username) {
     return res.sendStatus(401);
   }
 

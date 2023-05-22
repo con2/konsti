@@ -12,12 +12,6 @@ import { sharedConfig } from "shared/config/sharedConfig";
 
 // GET user
 
-export const GetUserRequestSchema = z.object({
-  username: z.string(),
-});
-
-export type GetUserRequest = z.infer<typeof GetUserRequestSchema>;
-
 export interface GetUserResponse {
   games: UserGames;
   message: string;
@@ -60,9 +54,8 @@ export interface PostUserError extends ApiError {
 // POST update user password
 
 export const PostUpdateUserPasswordRequestSchema = z.object({
-  username: z.string(),
+  userToUpdateUsername: z.string(),
   password: z.string(),
-  requester: z.string(),
 });
 
 export type PostUpdateUserPasswordRequest = z.infer<

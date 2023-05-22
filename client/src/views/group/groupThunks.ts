@@ -15,7 +15,6 @@ import {
   PostCloseGroupRequest,
   PostCreateGroupRequest,
   PostJoinGroupRequest,
-  PostLeaveGroupRequest,
 } from "shared/typings/api/groups";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 
@@ -45,7 +44,7 @@ export const submitCreateGroup = (
     }
 
     if (createGroupResponse?.status === "success") {
-      dispatch(submitGetGroup(createGroupResponse.groupCode, group.username));
+      dispatch(submitGetGroup(createGroupResponse.groupCode));
       dispatch(submitUpdateGroupCodeAsync(createGroupResponse.groupCode));
     }
   };
@@ -86,9 +85,7 @@ export const submitJoinGroup = (
     }
 
     if (joinGroupResponse?.status === "success") {
-      dispatch(
-        submitGetGroup(joinGroupResponse.groupCode, groupRequest.username)
-      );
+      dispatch(submitGetGroup(joinGroupResponse.groupCode));
       dispatch(submitUpdateGroupCodeAsync(joinGroupResponse.groupCode));
     }
   };
@@ -99,11 +96,11 @@ export enum PostLeaveGroupErrorMessage {
   FAILED_TO_LEAVE = "group.generalLeaveGroupError",
 }
 
-export const submitLeaveGroup = (
-  groupRequest: PostLeaveGroupRequest
-): AppThunk<Promise<PostLeaveGroupErrorMessage | undefined>> => {
+export const submitLeaveGroup = (): AppThunk<
+  Promise<PostLeaveGroupErrorMessage | undefined>
+> => {
   return async (dispatch): Promise<PostLeaveGroupErrorMessage | undefined> => {
-    const leaveGroupResponse = await postLeaveGroup(groupRequest);
+    const leaveGroupResponse = await postLeaveGroup();
 
     if (leaveGroupResponse?.status === "error") {
       switch (leaveGroupResponse.errorId) {
@@ -155,11 +152,10 @@ enum GetGroupErrorMessage {
 }
 
 export const submitGetGroup = (
-  groupCode: string,
-  username: string
+  groupCode: string
 ): AppThunk<Promise<GetGroupErrorMessage | undefined>> => {
   return async (dispatch): Promise<GetGroupErrorMessage | undefined> => {
-    const getGroupResponse = await getGroup(groupCode, username);
+    const getGroupResponse = await getGroup(groupCode);
 
     if (getGroupResponse?.status === "error") {
       switch (getGroupResponse.errorId) {

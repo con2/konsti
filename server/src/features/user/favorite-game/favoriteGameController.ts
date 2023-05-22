@@ -16,6 +16,11 @@ export const postFavorite = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.FAVORITE}`);
 
+  const username = isAuthorized(req.headers.authorization, UserGroup.USER);
+  if (!username) {
+    return res.sendStatus(401);
+  }
+
   let parameters;
   try {
     parameters = PostFavoriteRequestSchema.parse(req.body);
@@ -28,18 +33,9 @@ export const postFavorite = async (
     return res.sendStatus(422);
   }
 
-  const favoriteData = parameters;
-
-  if (
-    !isAuthorized(
-      req.headers.authorization,
-      UserGroup.USER,
-      favoriteData.username
-    )
-  ) {
-    return res.sendStatus(401);
-  }
-
-  const response = await storeFavorite(favoriteData);
+  const response = await storeFavorite({
+    username,
+    favoritedGameIds: parameters.favoritedGameIds,
+  });
   return res.json(response);
 };

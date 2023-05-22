@@ -7,7 +7,6 @@ import { GameSchema } from "shared/typings/models/game";
 // POST signed games
 
 export const PostSignedGamesRequestSchema = z.object({
-  username: z.string(),
   selectedGames: z.array(
     z.object({
       gameDetails: GameSchema,

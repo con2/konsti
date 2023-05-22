@@ -41,7 +41,6 @@ export const AlgorithmSignupForm = ({
   const dispatch = useAppDispatch();
   const { signupOpen, manualSignupMode } = sharedConfig;
 
-  const username = useAppSelector((state) => state.login.username);
   const loggedIn = useAppSelector((state) => state.login.loggedIn);
   const serial = useAppSelector((state) => state.login.serial);
   const groupCode = useAppSelector((state) => state.group.groupCode);
@@ -61,7 +60,6 @@ export const AlgorithmSignupForm = ({
 
     const error = await dispatch(
       submitPostSignedGames({
-        username,
         selectedGames: newSignupData,
         startTime: gameToRemove.startTime,
       })

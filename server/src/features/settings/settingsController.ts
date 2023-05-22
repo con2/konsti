@@ -25,7 +25,8 @@ export const postHidden = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.HIDDEN}`);
 
-  if (!isAuthorized(req.headers.authorization, UserGroup.ADMIN, "admin")) {
+  const username = isAuthorized(req.headers.authorization, UserGroup.ADMIN);
+  if (!username) {
     return res.sendStatus(401);
   }
 
@@ -50,7 +51,8 @@ export const postSignupQuestion = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.SIGNUP_QUESTION}`);
 
-  if (!isAuthorized(req.headers.authorization, UserGroup.ADMIN, "admin")) {
+  const username = isAuthorized(req.headers.authorization, UserGroup.ADMIN);
+  if (!username) {
     return res.sendStatus(401);
   }
 
@@ -64,7 +66,8 @@ export const deleteSignupQuestion = async (
 ): Promise<Response> => {
   logger.info(`API call: DELETE ${ApiEndpoint.SIGNUP_QUESTION}`);
 
-  if (!isAuthorized(req.headers.authorization, UserGroup.ADMIN, "admin")) {
+  const username = isAuthorized(req.headers.authorization, UserGroup.ADMIN);
+  if (!username) {
     return res.sendStatus(401);
   }
 
@@ -78,7 +81,8 @@ export const postSettings = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.SETTINGS}`);
 
-  if (!isAuthorized(req.headers.authorization, UserGroup.ADMIN, "admin")) {
+  const username = isAuthorized(req.headers.authorization, UserGroup.ADMIN);
+  if (!username) {
     return res.sendStatus(401);
   }
 

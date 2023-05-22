@@ -6,7 +6,6 @@ import {
   GetSignupMessagesResponse,
   GetUserBySerialRequest,
   GetUserBySerialResponse,
-  GetUserRequest,
   GetUserResponse,
   PostUpdateUserPasswordRequest,
   PostUpdateUserPasswordResponse,
@@ -35,14 +34,11 @@ export const postRegistration = async (
 export const getUser = async (
   username: string
 ): Promise<GetUserResponse | ApiError> => {
-  const response = await api.get<GetUserResponse, GetUserRequest>(
-    ApiEndpoint.USERS,
-    {
-      params: {
-        username,
-      },
-    }
-  );
+  const response = await api.get<GetUserResponse, {}>(ApiEndpoint.USERS, {
+    params: {
+      username,
+    },
+  });
   return response.data;
 };
 
@@ -61,17 +57,15 @@ export const getUserBySerialOrUsername = async (
 };
 
 export const updateUserPassword = async (
-  username: string,
-  password: string,
-  requester: string
+  userToUpdateUsername: string,
+  password: string
 ): Promise<PostUpdateUserPasswordResponse | ApiError> => {
   const response = await api.post<
     PostUpdateUserPasswordResponse,
     PostUpdateUserPasswordRequest
   >(ApiEndpoint.USERS_PASSWORD, {
-    username,
+    userToUpdateUsername,
     password,
-    requester,
   });
   return response.data;
 };

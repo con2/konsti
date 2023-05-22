@@ -29,3 +29,8 @@ export interface UserGames {
   favoritedGames: readonly Game[];
   signedGames: readonly SelectedGame[];
 }
+
+export interface NewFavorite {
+  username: string;
+  favoritedGameIds: string[];
+}

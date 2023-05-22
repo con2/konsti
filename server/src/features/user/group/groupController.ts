@@ -11,8 +11,6 @@ import {
   PostCreateGroupRequestSchema,
   PostJoinGroupRequest,
   PostJoinGroupRequestSchema,
-  PostLeaveGroupRequest,
-  PostLeaveGroupRequestSchema,
 } from "shared/typings/api/groups";
 import { isAuthorized } from "server/utils/authHeader";
 import { UserGroup } from "shared/typings/models/user";
@@ -30,6 +28,11 @@ export const postCreateGroup = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.GROUP}`);
 
+  const username = isAuthorized(req.headers.authorization, UserGroup.USER);
+  if (!username) {
+    return res.sendStatus(401);
+  }
+
   let groupRequest: PostCreateGroupRequest;
   try {
     groupRequest = PostCreateGroupRequestSchema.parse(req.body);
@@ -42,11 +45,7 @@ export const postCreateGroup = async (
     return res.sendStatus(422);
   }
 
-  const { username, groupCode } = groupRequest;
-
-  if (!isAuthorized(req.headers.authorization, UserGroup.USER, username)) {
-    return res.sendStatus(401);
-  }
+  const { groupCode } = groupRequest;
 
   const response = await createGroup(username, groupCode);
   return res.json(response);
@@ -57,6 +56,11 @@ export const postJoinGroup = async (
   res: Response
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.JOIN_GROUP}`);
+
+  const username = isAuthorized(req.headers.authorization, UserGroup.USER);
+  if (!username) {
+    return res.sendStatus(401);
+  }
 
   let groupRequest: PostJoinGroupRequest;
   try {
@@ -70,37 +74,20 @@ export const postJoinGroup = async (
     return res.sendStatus(422);
   }
 
-  const { username, groupCode, ownSerial } = groupRequest;
-
-  if (!isAuthorized(req.headers.authorization, UserGroup.USER, username)) {
-    return res.sendStatus(401);
-  }
+  const { groupCode, ownSerial } = groupRequest;
 
   const response = await joinGroup(username, groupCode, ownSerial);
   return res.json(response);
 };
 
 export const postLeaveGroup = async (
-  req: Request<{}, {}, PostLeaveGroupRequest>,
+  req: Request<{}, {}, {}>,
   res: Response
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.LEAVE_GROUP}`);
 
-  let groupRequest: PostLeaveGroupRequest;
-  try {
-    groupRequest = PostLeaveGroupRequestSchema.parse(req.body);
-  } catch (error) {
-    if (error instanceof ZodError) {
-      logger.error(
-        `Error validating postLeaveGroup parameters: ${error.message}`
-      );
-    }
-    return res.sendStatus(422);
-  }
-
-  const { username } = groupRequest;
-
-  if (!isAuthorized(req.headers.authorization, UserGroup.USER, username)) {
+  const username = isAuthorized(req.headers.authorization, UserGroup.USER);
+  if (!username) {
     return res.sendStatus(401);
   }
 
@@ -114,6 +101,11 @@ export const postCloseGroup = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.CLOSE_GROUP}`);
 
+  const username = isAuthorized(req.headers.authorization, UserGroup.USER);
+  if (!username) {
+    return res.sendStatus(401);
+  }
+
   let groupRequest: PostCloseGroupRequest;
   try {
     groupRequest = PostCloseGroupRequestSchema.parse(req.body);
@@ -126,11 +118,7 @@ export const postCloseGroup = async (
     return res.sendStatus(422);
   }
 
-  const { username, groupCode } = groupRequest;
-
-  if (!isAuthorized(req.headers.authorization, UserGroup.USER, username)) {
-    return res.sendStatus(401);
-  }
+  const { groupCode } = groupRequest;
 
   const response = await closeGroup(groupCode, username);
   return res.json(response);
@@ -142,6 +130,11 @@ export const getGroup = async (
 ): Promise<Response> => {
   logger.info(`API call: GET ${ApiEndpoint.GROUP}`);
 
+  const username = isAuthorized(req.headers.authorization, UserGroup.USER);
+  if (!username) {
+    return res.sendStatus(401);
+  }
+
   let parameters;
   try {
     parameters = GetGroupRequestSchema.parse(req.query);
@@ -149,11 +142,7 @@ export const getGroup = async (
     return res.sendStatus(422);
   }
 
-  const { groupCode, username } = parameters;
-
-  if (!isAuthorized(req.headers.authorization, UserGroup.USER, username)) {
-    return res.sendStatus(401);
-  }
+  const { groupCode } = parameters;
 
   const response = await fetchGroup(groupCode);
   return res.json(response);
