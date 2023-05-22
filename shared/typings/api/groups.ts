@@ -33,11 +33,7 @@ export const PostJoinGroupRequestSchema = z.object({
 
 export type PostJoinGroupRequest = z.infer<typeof PostJoinGroupRequestSchema>;
 
-export interface PostJoinGroupResponse {
-  groupCode: string;
-  message: string;
-  status: "success";
-}
+export type PostJoinGroupResponse = PostCreateGroupResponse;
 
 export interface PostJoinGroupError extends ApiError {
   errorId:
@@ -57,11 +53,7 @@ export const PostLeaveGroupRequestSchema = z.object({
 
 export type PostLeaveGroupRequest = z.infer<typeof PostLeaveGroupRequestSchema>;
 
-export interface PostLeaveGroupResponse {
-  groupCode: string;
-  message: string;
-  status: "success";
-}
+export type PostLeaveGroupResponse = PostCreateGroupResponse;
 
 export interface PostLeaveGroupError extends ApiError {
   errorId: "unknown" | "failedToLeave";
@@ -76,11 +68,7 @@ export const PostCloseGroupRequestSchema = z.object({
 
 export type PostCloseGroupRequest = z.infer<typeof PostCloseGroupRequestSchema>;
 
-export interface PostCloseGroupResponse {
-  groupCode: string;
-  message: string;
-  status: "success";
-}
+export type PostCloseGroupResponse = PostCreateGroupResponse;
 
 export interface PostCloseGroupError extends ApiError {
   errorId: "unknown" | "onlyCreatorCanCloseGroup";

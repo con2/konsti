@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { z, ZodError } from "zod";
+import { ZodError } from "zod";
 import {
   fetchUserByUsername,
   storeUser,
@@ -13,12 +13,6 @@ import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { sharedConfig } from "shared/config/sharedConfig";
 import { createSerial } from "./userUtils";
 import {
-  PASSWORD_LENGTH_MAX,
-  PASSWORD_LENGTH_MIN,
-  USERNAME_LENGTH_MAX,
-  USERNAME_LENGTH_MIN,
-} from "shared/constants/validation";
-import {
   GetUserBySerialRequest,
   GetUserBySerialRequestSchema,
   GetUserRequest,
@@ -26,6 +20,7 @@ import {
   PostUserRequest,
   PostUpdateUserPasswordRequest,
   PostUpdateUserPasswordRequestSchema,
+  PostUserRequestSchema,
 } from "shared/typings/api/users";
 
 export const postUser = async (
@@ -34,33 +29,9 @@ export const postUser = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.USERS}`);
 
-  const PostUserParameters = z.object({
-    username: z
-      .string()
-      .trim()
-      .min(USERNAME_LENGTH_MIN)
-      .max(USERNAME_LENGTH_MAX),
-    password: z
-      .string()
-      .trim()
-      .min(PASSWORD_LENGTH_MIN)
-      .max(PASSWORD_LENGTH_MAX),
-    serial: z
-      .string()
-      .optional()
-      .refine((input) => {
-        if (sharedConfig.requireRegistrationCode) {
-          if (!input || input.trim().length === 0) {
-            return false;
-          }
-        }
-        return true;
-      }),
-  });
-
   let parameters;
   try {
-    parameters = PostUserParameters.parse(req.body);
+    parameters = PostUserRequestSchema.parse(req.body);
   } catch (error) {
     if (error instanceof ZodError) {
       logger.error(`Error validating postUser parameters: ${error.message}`);

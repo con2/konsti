@@ -93,7 +93,7 @@ const getErrorReason = (status: number): string => {
   }
 };
 
-interface EnchancedAxiosRequestConfig<REQ> extends AxiosRequestConfig<REQ> {
+interface AxiosRequestConfigGet<REQ> extends AxiosRequestConfig<REQ> {
   params?: REQ;
 }
 
@@ -108,7 +108,7 @@ export const api = {
 
   get: async <RES = never, REQ = never, R = AxiosResponse<RES>>(
     url: string,
-    axiosRequestConfig?: EnchancedAxiosRequestConfig<REQ>
+    axiosRequestConfig?: AxiosRequestConfigGet<REQ>
   ): Promise<R> => {
     return await axiosInstance.get(url, axiosRequestConfig);
   },

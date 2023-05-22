@@ -3,8 +3,11 @@ import dayjs, { Dayjs } from "dayjs";
 import { findGames, removeGames } from "server/features/game/gameRepository";
 import { GameDoc } from "server/typings/game.typings";
 import { logger } from "server/utils/logger";
-import { Game } from "shared/typings/models/game";
-import { GameWithUsernames, UserSignup } from "shared/typings/api/games";
+import {
+  Game,
+  GameWithUsernames,
+  UserSignup,
+} from "shared/typings/models/game";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
 import { sharedConfig } from "shared/config/sharedConfig";
 import { findSettings } from "server/features/settings/settingsRepository";

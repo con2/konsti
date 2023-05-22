@@ -1,11 +1,10 @@
 import { ThunkAction } from "redux-thunk";
 import { Action } from "redux";
-import { Game, ProgramType } from "shared/typings/models/game";
+import { Game, ProgramType, UserSignup } from "shared/typings/models/game";
 import { GroupMember } from "shared/typings/models/groups";
 import { store, combinedReducer } from "client/utils/store";
 import { UserGames, UserGroup } from "shared/typings/models/user";
 import { SignupQuestion } from "shared/typings/models/settings";
-import { UserSignup } from "shared/typings/api/games";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
 import { ErrorMessageType } from "client/components/ErrorBar";
 import { SignupMessage } from "shared/typings/models/signupMessage";

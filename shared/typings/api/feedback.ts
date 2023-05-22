@@ -1,5 +1,7 @@
 import { z } from "zod";
 
+// POST feedback
+
 export const PostFeedbackRequestSchema = z.object({
   gameId: z.string(),
   feedback: z.string(),

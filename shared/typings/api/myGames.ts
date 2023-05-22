@@ -4,6 +4,8 @@ import { ApiError } from "shared/typings/api/errors";
 import { SelectedGame } from "shared/typings/models/user";
 import { GameSchema } from "shared/typings/models/game";
 
+// POST signed games
+
 export const PostSignedGamesRequestSchema = z.object({
   signupData: z.object({
     username: z.string(),
@@ -39,6 +41,8 @@ export interface PostSignedGamesError extends ApiError {
   errorId: "unknown" | "signupEnded" | "samePriority";
 }
 
+// POST entered game
+
 export const PostEnteredGameRequestSchema = z.object({
   username: z.string(),
   enteredGameId: z.string(),
@@ -59,6 +63,8 @@ export interface PostEnteredGameResponse {
 export interface PostEnteredGameError extends ApiError {
   errorId: "unknown" | "gameFull" | "signupEnded" | "signupNotOpenYet";
 }
+
+// DELETE entered game
 
 export const DeleteEnteredGameRequestSchema = z.object({
   username: z.string(),

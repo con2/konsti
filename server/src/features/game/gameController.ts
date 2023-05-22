@@ -5,7 +5,6 @@ import { fetchGames, updateGames } from "server/features/game/gamesService";
 import { logger } from "server/utils/logger";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 
-// TODO: No body, should be GET
 export const postUpdateGames = async (
   req: Request<{}, {}, {}>,
   res: Response
