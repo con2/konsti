@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { ZodError } from "zod";
-import { isAuthorized } from "server/utils/authHeader";
+import { getAuthorizedUsername } from "server/utils/authHeader";
 import { logger } from "server/utils/logger";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
@@ -21,7 +21,10 @@ export const postSignup = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.SIGNUP}`);
 
-  const username = isAuthorized(req.headers.authorization, UserGroup.USER);
+  const username = getAuthorizedUsername(
+    req.headers.authorization,
+    UserGroup.USER
+  );
   if (!username) {
     return res.sendStatus(401);
   }
@@ -46,7 +49,10 @@ export const deleteSignup = async (
 ): Promise<Response> => {
   logger.info(`API call: DELETE ${ApiEndpoint.SIGNUP}`);
 
-  const username = isAuthorized(req.headers.authorization, UserGroup.USER);
+  const username = getAuthorizedUsername(
+    req.headers.authorization,
+    UserGroup.USER
+  );
   if (!username) {
     return res.sendStatus(401);
   }

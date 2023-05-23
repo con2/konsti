@@ -12,7 +12,7 @@ import {
   PostJoinGroupRequest,
   PostJoinGroupRequestSchema,
 } from "shared/typings/api/groups";
-import { isAuthorized } from "server/utils/authHeader";
+import { getAuthorizedUsername } from "server/utils/authHeader";
 import { UserGroup } from "shared/typings/models/user";
 import {
   closeGroup,
@@ -28,7 +28,10 @@ export const postCreateGroup = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.GROUP}`);
 
-  const username = isAuthorized(req.headers.authorization, UserGroup.USER);
+  const username = getAuthorizedUsername(
+    req.headers.authorization,
+    UserGroup.USER
+  );
   if (!username) {
     return res.sendStatus(401);
   }
@@ -55,7 +58,10 @@ export const postJoinGroup = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.JOIN_GROUP}`);
 
-  const username = isAuthorized(req.headers.authorization, UserGroup.USER);
+  const username = getAuthorizedUsername(
+    req.headers.authorization,
+    UserGroup.USER
+  );
   if (!username) {
     return res.sendStatus(401);
   }
@@ -82,7 +88,10 @@ export const postLeaveGroup = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.LEAVE_GROUP}`);
 
-  const username = isAuthorized(req.headers.authorization, UserGroup.USER);
+  const username = getAuthorizedUsername(
+    req.headers.authorization,
+    UserGroup.USER
+  );
   if (!username) {
     return res.sendStatus(401);
   }
@@ -97,7 +106,10 @@ export const postCloseGroup = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.CLOSE_GROUP}`);
 
-  const username = isAuthorized(req.headers.authorization, UserGroup.USER);
+  const username = getAuthorizedUsername(
+    req.headers.authorization,
+    UserGroup.USER
+  );
   if (!username) {
     return res.sendStatus(401);
   }
@@ -124,7 +136,10 @@ export const getGroup = async (
 ): Promise<Response> => {
   logger.info(`API call: GET ${ApiEndpoint.GROUP}`);
 
-  const username = isAuthorized(req.headers.authorization, UserGroup.USER);
+  const username = getAuthorizedUsername(
+    req.headers.authorization,
+    UserGroup.USER
+  );
   if (!username) {
     return res.sendStatus(401);
   }

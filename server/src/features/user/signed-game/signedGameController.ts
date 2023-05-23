@@ -6,7 +6,7 @@ import {
   PostSignedGamesRequest,
   PostSignedGamesRequestSchema,
 } from "shared/typings/api/myGames";
-import { isAuthorized } from "server/utils/authHeader";
+import { getAuthorizedUsername } from "server/utils/authHeader";
 import { UserGroup } from "shared/typings/models/user";
 import { storeSignedGames } from "server/features/user/signed-game/signedGameService";
 
@@ -16,7 +16,10 @@ export const postSignedGames = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.SIGNED_GAME}`);
 
-  const username = isAuthorized(req.headers.authorization, UserGroup.USER);
+  const username = getAuthorizedUsername(
+    req.headers.authorization,
+    UserGroup.USER
+  );
   if (!username) {
     return res.sendStatus(401);
   }

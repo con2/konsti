@@ -2,7 +2,7 @@ import { getJwtResponse } from "server/utils/jwt";
 import { logger } from "server/utils/logger";
 import { UserGroup } from "shared/typings/models/user";
 
-export const isAuthorized = (
+export const getAuthorizedUsername = (
   authHeader: string | undefined,
   requiredUserGroup: UserGroup | UserGroup[]
 ): string | null => {

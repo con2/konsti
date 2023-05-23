@@ -3,7 +3,7 @@ import { ZodError } from "zod";
 import { storeAssignment } from "server/features/player-assignment/assignmentController";
 import { fetchResults } from "server/features/results/resultsService";
 import { UserGroup } from "shared/typings/models/user";
-import { isAuthorized } from "server/utils/authHeader";
+import { getAuthorizedUsername } from "server/utils/authHeader";
 import { logger } from "server/utils/logger";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
@@ -47,7 +47,10 @@ export const postAssignment = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.ASSIGNMENT}`);
 
-  const username = isAuthorized(req.headers.authorization, UserGroup.ADMIN);
+  const username = getAuthorizedUsername(
+    req.headers.authorization,
+    UserGroup.ADMIN
+  );
   if (!username) {
     return res.sendStatus(401);
   }

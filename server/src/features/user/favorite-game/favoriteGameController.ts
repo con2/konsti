@@ -6,7 +6,7 @@ import {
   PostFavoriteRequest,
   PostFavoriteRequestSchema,
 } from "shared/typings/api/favorite";
-import { isAuthorized } from "server/utils/authHeader";
+import { getAuthorizedUsername } from "server/utils/authHeader";
 import { UserGroup } from "shared/typings/models/user";
 import { storeFavorite } from "server/features/user/favorite-game/favoriteGameService";
 
@@ -16,7 +16,10 @@ export const postFavorite = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.FAVORITE}`);
 
-  const username = isAuthorized(req.headers.authorization, UserGroup.USER);
+  const username = getAuthorizedUsername(
+    req.headers.authorization,
+    UserGroup.USER
+  );
   if (!username) {
     return res.sendStatus(401);
   }

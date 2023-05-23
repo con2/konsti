@@ -7,7 +7,7 @@ import {
   storeUserPassword,
 } from "server/features/user/userService";
 import { UserGroup } from "shared/typings/models/user";
-import { isAuthorized } from "server/utils/authHeader";
+import { getAuthorizedUsername } from "server/utils/authHeader";
 import { logger } from "server/utils/logger";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { sharedConfig } from "shared/config/sharedConfig";
@@ -55,7 +55,7 @@ export const postUserPassword = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.USERS_PASSWORD}`);
 
-  const requesterUsername = isAuthorized(req.headers.authorization, [
+  const requesterUsername = getAuthorizedUsername(req.headers.authorization, [
     UserGroup.USER,
     UserGroup.HELP,
     UserGroup.ADMIN,
@@ -98,7 +98,10 @@ export const getUser = async (
 ): Promise<Response> => {
   logger.info(`API call: GET ${ApiEndpoint.USERS}`);
 
-  const username = isAuthorized(req.headers.authorization, UserGroup.USER);
+  const username = getAuthorizedUsername(
+    req.headers.authorization,
+    UserGroup.USER
+  );
   if (!username) {
     return res.sendStatus(401);
   }
@@ -113,7 +116,7 @@ export const getUserBySerialOrUsername = async (
 ): Promise<Response> => {
   logger.info(`API call: GET ${ApiEndpoint.USERS_BY_SERIAL_OR_USERNAME}`);
 
-  const username = isAuthorized(req.headers.authorization, [
+  const username = getAuthorizedUsername(req.headers.authorization, [
     UserGroup.HELP,
     UserGroup.ADMIN,
   ]);

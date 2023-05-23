@@ -8,7 +8,7 @@ import {
   updateSettings,
 } from "server/features/settings/settingsService";
 import { UserGroup } from "shared/typings/models/user";
-import { isAuthorized } from "server/utils/authHeader";
+import { getAuthorizedUsername } from "server/utils/authHeader";
 import { logger } from "server/utils/logger";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
@@ -25,7 +25,10 @@ export const postHidden = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.HIDDEN}`);
 
-  const username = isAuthorized(req.headers.authorization, UserGroup.ADMIN);
+  const username = getAuthorizedUsername(
+    req.headers.authorization,
+    UserGroup.ADMIN
+  );
   if (!username) {
     return res.sendStatus(401);
   }
@@ -51,7 +54,10 @@ export const postSignupQuestion = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.SIGNUP_QUESTION}`);
 
-  const username = isAuthorized(req.headers.authorization, UserGroup.ADMIN);
+  const username = getAuthorizedUsername(
+    req.headers.authorization,
+    UserGroup.ADMIN
+  );
   if (!username) {
     return res.sendStatus(401);
   }
@@ -66,7 +72,10 @@ export const deleteSignupQuestion = async (
 ): Promise<Response> => {
   logger.info(`API call: DELETE ${ApiEndpoint.SIGNUP_QUESTION}`);
 
-  const username = isAuthorized(req.headers.authorization, UserGroup.ADMIN);
+  const username = getAuthorizedUsername(
+    req.headers.authorization,
+    UserGroup.ADMIN
+  );
   if (!username) {
     return res.sendStatus(401);
   }
@@ -81,7 +90,10 @@ export const postSettings = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.SETTINGS}`);
 
-  const username = isAuthorized(req.headers.authorization, UserGroup.ADMIN);
+  const username = getAuthorizedUsername(
+    req.headers.authorization,
+    UserGroup.ADMIN
+  );
   if (!username) {
     return res.sendStatus(401);
   }

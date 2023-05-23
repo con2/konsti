@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { isAuthorized } from "server/utils/authHeader";
+import { getAuthorizedUsername } from "server/utils/authHeader";
 import { UserGroup } from "shared/typings/models/user";
 import { fetchGames, updateGames } from "server/features/game/gamesService";
 import { logger } from "server/utils/logger";
@@ -11,7 +11,10 @@ export const postUpdateGames = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.GAMES}`);
 
-  const username = isAuthorized(req.headers.authorization, UserGroup.ADMIN);
+  const username = getAuthorizedUsername(
+    req.headers.authorization,
+    UserGroup.ADMIN
+  );
   if (!username) {
     return res.sendStatus(401);
   }
