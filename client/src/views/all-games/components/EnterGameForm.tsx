@@ -69,13 +69,7 @@ export const EnterGameForm = (props: Props): ReactElement => {
       !directSignupAlwaysOpenIds.includes(game.gameId)
     ) {
       if (isInGroup && !isGroupCreator) {
-        const leaveGroupRequest = {
-          username,
-        };
-
-        const leaveGroupError = await dispatch(
-          submitLeaveGroup(leaveGroupRequest)
-        );
+        const leaveGroupError = await dispatch(submitLeaveGroup());
 
         if (leaveGroupError) {
           setErrorMessage(leaveGroupError);

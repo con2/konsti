@@ -6,7 +6,7 @@ import {
   PostSignedGamesRequest,
   PostSignedGamesRequestSchema,
 } from "shared/typings/api/myGames";
-import { isAuthorized } from "server/utils/authHeader";
+import { getAuthorizedUsername } from "server/utils/authHeader";
 import { UserGroup } from "shared/typings/models/user";
 import { storeSignedGames } from "server/features/user/signed-game/signedGameService";
 
@@ -16,23 +16,25 @@ export const postSignedGames = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.SIGNED_GAME}`);
 
-  let parameters;
+  const username = getAuthorizedUsername(
+    req.headers.authorization,
+    UserGroup.USER
+  );
+  if (!username) {
+    return res.sendStatus(401);
+  }
+
+  let body;
   try {
-    parameters = PostSignedGamesRequestSchema.parse(req.body);
+    body = PostSignedGamesRequestSchema.parse(req.body);
   } catch (error) {
     if (error instanceof ZodError) {
-      logger.error(
-        `Error validating postSignedGames parameters: ${error.message}`
-      );
+      logger.error(`Error validating postSignedGames body: ${error.message}`);
     }
     return res.sendStatus(422);
   }
 
-  const { selectedGames, username, startTime } = parameters;
-
-  if (!isAuthorized(req.headers.authorization, UserGroup.USER, username)) {
-    return res.sendStatus(401);
-  }
+  const { selectedGames, startTime } = body;
 
   const response = await storeSignedGames(selectedGames, username, startTime);
   return res.json(response);

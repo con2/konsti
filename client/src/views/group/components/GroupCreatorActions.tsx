@@ -14,10 +14,7 @@ interface Props {
   groupCode: string;
 }
 
-export const GroupCreatorActions = ({
-  username,
-  groupCode,
-}: Props): ReactElement => {
+export const GroupCreatorActions = ({ groupCode }: Props): ReactElement => {
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
 
@@ -32,7 +29,6 @@ export const GroupCreatorActions = ({
 
     const errorMessage = await dispatch(
       submitCloseGroup({
-        username,
         groupCode,
       })
     );

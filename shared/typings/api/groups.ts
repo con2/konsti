@@ -6,7 +6,6 @@ import { GroupMember } from "shared/typings/models/groups";
 
 export const PostCreateGroupRequestSchema = z.object({
   groupCode: z.string(),
-  username: z.string(),
 });
 
 export type PostCreateGroupRequest = z.infer<
@@ -28,7 +27,6 @@ export interface PostCreateGroupError extends ApiError {
 export const PostJoinGroupRequestSchema = z.object({
   groupCode: z.string(),
   ownSerial: z.string(),
-  username: z.string(),
 });
 
 export type PostJoinGroupRequest = z.infer<typeof PostJoinGroupRequestSchema>;
@@ -47,12 +45,6 @@ export interface PostJoinGroupError extends ApiError {
 
 // POST: Leave group
 
-export const PostLeaveGroupRequestSchema = z.object({
-  username: z.string(),
-});
-
-export type PostLeaveGroupRequest = z.infer<typeof PostLeaveGroupRequestSchema>;
-
 export type PostLeaveGroupResponse = PostCreateGroupResponse;
 
 export interface PostLeaveGroupError extends ApiError {
@@ -63,7 +55,6 @@ export interface PostLeaveGroupError extends ApiError {
 
 export const PostCloseGroupRequestSchema = z.object({
   groupCode: z.string(),
-  username: z.string(),
 });
 
 export type PostCloseGroupRequest = z.infer<typeof PostCloseGroupRequestSchema>;
@@ -78,7 +69,6 @@ export interface PostCloseGroupError extends ApiError {
 
 export const GetGroupRequestSchema = z.object({
   groupCode: z.string(),
-  username: z.string(),
 });
 
 export type GetGroupRequest = z.infer<typeof GetGroupRequestSchema>;

@@ -29,7 +29,6 @@ export const SignupForm = ({
   const dispatch = useAppDispatch();
   // We need all signed games here
   const signedGames = useAppSelector((state) => state.myGames.signedGames);
-  const username = useAppSelector((state) => state.login.username);
 
   const selectedPriorities = signedGames
     .filter((signedGame) => signedGame.gameDetails.startTime === startTime)
@@ -71,7 +70,6 @@ export const SignupForm = ({
 
     const error = await dispatch(
       submitPostSignedGames({
-        username,
         selectedGames: signedGames.concat(newGame),
         startTime: game.startTime,
       })

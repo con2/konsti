@@ -33,7 +33,7 @@ export const loginWithJwt = async (
     };
   }
 
-  const jwtResponse = verifyJWT(jwt, userGroup, username);
+  const jwtResponse = verifyJWT(jwt, userGroup);
 
   if (jwtResponse.status === "error") {
     return {

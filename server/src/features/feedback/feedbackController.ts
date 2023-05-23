@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
-import { isAuthorized } from "server/utils/authHeader";
+import { ZodError } from "zod";
+import { getAuthorizedUsername } from "server/utils/authHeader";
 import { UserGroup } from "shared/typings/models/user";
 import { storeFeedback } from "server/features/feedback/feedbackService";
 import { logger } from "server/utils/logger";
@@ -15,23 +16,28 @@ export const postFeedback = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.FEEDBACK}`);
 
-  let parameters;
-  try {
-    parameters = PostFeedbackRequestSchema.parse(req.body);
-  } catch (error) {
-    return res.sendStatus(422);
-  }
-
-  if (
-    !isAuthorized(
-      req.headers.authorization,
-      UserGroup.USER,
-      parameters.username
-    )
-  ) {
+  const username = getAuthorizedUsername(
+    req.headers.authorization,
+    UserGroup.USER
+  );
+  if (!username) {
     return res.sendStatus(401);
   }
 
-  const response = await storeFeedback(parameters);
+  let body;
+  try {
+    body = PostFeedbackRequestSchema.parse(req.body);
+  } catch (error) {
+    if (error instanceof ZodError) {
+      logger.error(`Error validating postFeedback body: ${error.message}`);
+    }
+    return res.sendStatus(422);
+  }
+
+  const response = await storeFeedback({
+    gameId: body.gameId,
+    feedback: body.feedback,
+    username,
+  });
   return res.json(response);
 };

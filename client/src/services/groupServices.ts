@@ -6,7 +6,6 @@ import {
   PostCreateGroupRequest,
   PostCreateGroupError,
   PostJoinGroupRequest,
-  PostLeaveGroupRequest,
   PostCloseGroupRequest,
   PostJoinGroupError,
   PostLeaveGroupError,
@@ -38,13 +37,12 @@ export const postJoinGroup = async (
   return response.data;
 };
 
-export const postLeaveGroup = async (
-  groupRequest: PostLeaveGroupRequest
-): Promise<PostLeaveGroupResponse | PostLeaveGroupError> => {
-  const response = await api.post<
-    PostLeaveGroupResponse,
-    PostLeaveGroupRequest
-  >(ApiEndpoint.LEAVE_GROUP, groupRequest);
+export const postLeaveGroup = async (): Promise<
+  PostLeaveGroupResponse | PostLeaveGroupError
+> => {
+  const response = await api.post<PostLeaveGroupResponse, {}>(
+    ApiEndpoint.LEAVE_GROUP
+  );
   return response.data;
 };
 
@@ -53,21 +51,19 @@ export const postCloseGroup = async (
 ): Promise<PostCloseGroupResponse | PostCloseGroupError> => {
   const response = await api.post<
     PostCloseGroupResponse,
-    PostLeaveGroupRequest
+    PostCloseGroupRequest
   >(ApiEndpoint.CLOSE_GROUP, groupRequest);
   return response.data;
 };
 
 export const getGroup = async (
-  groupCode: string,
-  username: string
+  groupCode: string
 ): Promise<GetGroupResponse | GetGroupError> => {
   const response = await api.get<GetGroupResponse, GetGroupRequest>(
     ApiEndpoint.GROUP,
     {
       params: {
         groupCode,
-        username,
       },
     }
   );

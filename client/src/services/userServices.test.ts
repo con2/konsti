@@ -68,17 +68,15 @@ test("POST new user password to server", async () => {
     .spyOn(api, "post")
     .mockResolvedValue({ data: "test response" });
 
-  const username = "test username";
+  const userToUpdateUsername = "test username";
   const password = "test password";
-  const requester = "test requester";
 
-  const response = await updateUserPassword(username, password, requester);
+  const response = await updateUserPassword(userToUpdateUsername, password);
 
   expect(response).toEqual("test response");
   expect(spy).toHaveBeenCalledTimes(1);
   expect(spy).toHaveBeenCalledWith(ApiEndpoint.USERS_PASSWORD, {
-    username,
+    userToUpdateUsername,
     password,
-    requester,
   });
 });
