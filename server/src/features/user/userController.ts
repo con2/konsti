@@ -7,7 +7,7 @@ import {
   storeUserPassword,
 } from "server/features/user/userService";
 import { UserGroup } from "shared/typings/models/user";
-import { isAuthorized } from "server/utils/authHeader";
+import { getAuthorizedUsername } from "server/utils/authHeader";
 import { logger } from "server/utils/logger";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { sharedConfig } from "shared/config/sharedConfig";
@@ -15,8 +15,6 @@ import { createSerial } from "./userUtils";
 import {
   GetUserBySerialRequest,
   GetUserBySerialRequestSchema,
-  GetUserRequest,
-  GetUserRequestSchema,
   PostUserRequest,
   PostUpdateUserPasswordRequest,
   PostUpdateUserPasswordRequestSchema,
@@ -29,23 +27,23 @@ export const postUser = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.USERS}`);
 
-  let parameters;
+  let body;
   try {
-    parameters = PostUserRequestSchema.parse(req.body);
+    body = PostUserRequestSchema.parse(req.body);
   } catch (error) {
     if (error instanceof ZodError) {
-      logger.error(`Error validating postUser parameters: ${error.message}`);
+      logger.error(`Error validating postUser body: ${error.message}`);
     }
     return res.sendStatus(422);
   }
 
-  const { username, password } = parameters;
+  const { username, password } = body;
   let serial;
   if (!sharedConfig.requireRegistrationCode) {
     const serialDoc = await createSerial();
     serial = serialDoc[0].serial;
   } else {
-    serial = parameters.serial;
+    serial = body.serial;
   }
   const response = await storeUser(username, password, serial);
   return res.json(response);
@@ -57,63 +55,55 @@ export const postUserPassword = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.USERS_PASSWORD}`);
 
-  let parameters;
+  const requesterUsername = getAuthorizedUsername(req.headers.authorization, [
+    UserGroup.USER,
+    UserGroup.HELP,
+    UserGroup.ADMIN,
+  ]);
+  if (!requesterUsername) {
+    return res.sendStatus(401);
+  }
+
+  let body;
   try {
-    parameters = PostUpdateUserPasswordRequestSchema.parse(req.body);
+    body = PostUpdateUserPasswordRequestSchema.parse(req.body);
   } catch (error) {
     if (error instanceof ZodError) {
-      logger.error(
-        `Error validating postUserPassword parameters: ${error.message}`
-      );
+      logger.error(`Error validating postUserPassword body: ${error.message}`);
     }
     return res.sendStatus(422);
   }
 
-  const { username, password, requester } = parameters;
+  const { userToUpdateUsername, password } = body;
 
-  if (requester === "helper") {
-    if (!isAuthorized(req.headers.authorization, UserGroup.HELP, requester)) {
-      return res.sendStatus(401);
-    }
-  } else if (requester === "admin") {
-    if (!isAuthorized(req.headers.authorization, UserGroup.ADMIN, requester)) {
-      return res.sendStatus(401);
-    }
-  } else {
-    if (!isAuthorized(req.headers.authorization, UserGroup.USER, username)) {
-      return res.sendStatus(401);
-    }
+  if (
+    requesterUsername !== userToUpdateUsername &&
+    requesterUsername !== "helper" &&
+    requesterUsername !== "admin"
+  ) {
+    return res.sendStatus(401);
   }
 
-  const response = await storeUserPassword(username, password, requester);
+  const response = await storeUserPassword(
+    userToUpdateUsername,
+    password,
+    requesterUsername
+  );
   return res.json(response);
 };
 
 export const getUser = async (
-  req: Request<{}, {}, GetUserRequest>,
+  req: Request<{}, {}, {}>,
   res: Response
 ): Promise<Response> => {
   logger.info(`API call: GET ${ApiEndpoint.USERS}`);
 
-  let parameters;
-  try {
-    parameters = GetUserRequestSchema.parse(req.query);
-  } catch (error) {
-    if (error instanceof ZodError) {
-      logger.error(`Error validating getUser parameters: ${error.message}`);
-    }
-
-    return res.sendStatus(422);
-  }
-
-  const { username } = parameters;
-
-  if (!isAuthorized(req.headers.authorization, UserGroup.USER, username)) {
-    return res.sendStatus(401);
-  }
-
+  const username = getAuthorizedUsername(
+    req.headers.authorization,
+    UserGroup.USER
+  );
   if (!username) {
-    return res.sendStatus(422);
+    return res.sendStatus(401);
   }
 
   const response = await fetchUserByUsername(username);
@@ -126,35 +116,27 @@ export const getUserBySerialOrUsername = async (
 ): Promise<Response> => {
   logger.info(`API call: GET ${ApiEndpoint.USERS_BY_SERIAL_OR_USERNAME}`);
 
-  const helperAuth = isAuthorized(
-    req.headers.authorization,
+  const username = getAuthorizedUsername(req.headers.authorization, [
     UserGroup.HELP,
-    "helper"
-  );
-
-  const adminAuth = isAuthorized(
-    req.headers.authorization,
     UserGroup.ADMIN,
-    "admin"
-  );
-
-  if (!helperAuth && !adminAuth) {
+  ]);
+  if (!username) {
     return res.sendStatus(401);
   }
 
-  let parameters;
+  let params;
   try {
-    parameters = GetUserBySerialRequestSchema.parse(req.query);
+    params = GetUserBySerialRequestSchema.parse(req.query);
   } catch (error) {
     if (error instanceof ZodError) {
       logger.error(
-        `Error validating getUserBySerialOrUsername parameters: ${error.message}`
+        `Error validating getUserBySerialOrUsername params: ${error.message}`
       );
     }
     return res.sendStatus(422);
   }
 
-  const { searchTerm } = parameters;
+  const { searchTerm } = params;
 
   if (!searchTerm) {
     return res.sendStatus(422);

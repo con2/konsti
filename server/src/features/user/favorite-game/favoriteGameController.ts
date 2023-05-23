@@ -6,7 +6,7 @@ import {
   PostFavoriteRequest,
   PostFavoriteRequestSchema,
 } from "shared/typings/api/favorite";
-import { isAuthorized } from "server/utils/authHeader";
+import { getAuthorizedUsername } from "server/utils/authHeader";
 import { UserGroup } from "shared/typings/models/user";
 import { storeFavorite } from "server/features/user/favorite-game/favoriteGameService";
 
@@ -16,30 +16,27 @@ export const postFavorite = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.FAVORITE}`);
 
-  let parameters;
+  const username = getAuthorizedUsername(
+    req.headers.authorization,
+    UserGroup.USER
+  );
+  if (!username) {
+    return res.sendStatus(401);
+  }
+
+  let body;
   try {
-    parameters = PostFavoriteRequestSchema.parse(req.body);
+    body = PostFavoriteRequestSchema.parse(req.body);
   } catch (error) {
     if (error instanceof ZodError) {
-      logger.error(
-        `Error validating postFavorite parameters: ${error.message}`
-      );
+      logger.error(`Error validating postFavorite body: ${error.message}`);
     }
     return res.sendStatus(422);
   }
 
-  const favoriteData = parameters;
-
-  if (
-    !isAuthorized(
-      req.headers.authorization,
-      UserGroup.USER,
-      favoriteData.username
-    )
-  ) {
-    return res.sendStatus(401);
-  }
-
-  const response = await storeFavorite(favoriteData);
+  const response = await storeFavorite({
+    username,
+    favoritedGameIds: body.favoritedGameIds,
+  });
   return res.json(response);
 };

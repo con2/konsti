@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { postFeedback } from "client/services/feedbackServices";
 import { Game } from "shared/typings/models/game";
 import { Button, ButtonStyle } from "client/components/Button";
-import { useAppSelector } from "client/utils/hooks";
 import { TextArea } from "client/components/TextArea";
 
 interface Props {
@@ -12,8 +11,6 @@ interface Props {
 }
 
 export const FeedbackForm = ({ game }: Props): ReactElement => {
-  const username = useAppSelector((state) => state.login.username);
-
   const [submitting, setSubmitting] = useState<boolean>(false);
   const [feedbackValue, setFeedbackValue] = useState<string>("");
   const [feedbackSent, setFeedbackSent] = useState<boolean>(false);
@@ -24,14 +21,8 @@ export const FeedbackForm = ({ game }: Props): ReactElement => {
   const sendFeedbackEvent = async (): Promise<void> => {
     setSubmitting(true);
 
-    const feedbackData = {
-      gameId: game.gameId,
-      feedback: feedbackValue,
-      username,
-    };
-
     try {
-      await postFeedback(feedbackData);
+      await postFeedback(game.gameId, feedbackValue);
     } catch (error) {
       console.log(`postFeedback error:`, error); // eslint-disable-line no-console
     }

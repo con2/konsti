@@ -3,7 +3,7 @@ import { logger } from "server/utils/logger";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { resendSentryRequest } from "server/features/sentry-tunnel/sentryTunnelService";
 import { UserGroup } from "shared/typings/models/user";
-import { isAuthorized } from "server/utils/authHeader";
+import { getAuthorizedUsername } from "server/utils/authHeader";
 
 export const postSentryTunnel = async (
   req: Request<{}, {}, null>,
@@ -22,7 +22,11 @@ export const getSentryTest = (
 ): Response => {
   logger.info(`API call: POST ${ApiEndpoint.SENTRY_TEST}`);
 
-  if (!isAuthorized(req.headers.authorization, UserGroup.ADMIN, "admin")) {
+  const username = getAuthorizedUsername(
+    req.headers.authorization,
+    UserGroup.ADMIN
+  );
+  if (!username) {
     return res.sendStatus(401);
   }
 

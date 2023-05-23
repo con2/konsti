@@ -1,7 +1,6 @@
 import { getUser } from "client/services/userServices";
 import { postFavorite } from "client/services/favoriteServices";
 import { AppThunk } from "client/typings/redux.typings";
-import { PostFavoriteRequest } from "shared/typings/api/favorite";
 import {
   submitDeleteEnteredAsync,
   submitPostEnteredGameAsync,
@@ -20,6 +19,7 @@ import {
   postSignedGames,
 } from "client/services/myGamesServices";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
+import { NewFavorite } from "shared/typings/models/user";
 
 export const submitGetUser = (username: string): AppThunk => {
   return async (dispatch): Promise<void> => {
@@ -45,9 +45,7 @@ export const submitGetUser = (username: string): AppThunk => {
   };
 };
 
-export const submitUpdateFavorites = (
-  favoriteData: PostFavoriteRequest
-): AppThunk => {
+export const submitUpdateFavorites = (favoriteData: NewFavorite): AppThunk => {
   return async (dispatch): Promise<void> => {
     const updateFavoriteResponse = await postFavorite(favoriteData);
 

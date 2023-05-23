@@ -14,17 +14,17 @@ export const postLogin = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.LOGIN}`);
 
-  let parameters;
+  let body;
   try {
-    parameters = PostLoginRequestSchema.parse(req.body);
+    body = PostLoginRequestSchema.parse(req.body);
   } catch (error) {
     if (error instanceof ZodError) {
-      logger.error(`Error validating postLogin parameters: ${error.message}`);
+      logger.error(`Error validating postLogin body: ${error.message}`);
     }
     return res.sendStatus(422);
   }
 
-  const { username, password } = parameters;
+  const { username, password } = body;
   const response = await login(username, password);
   return res.json(response);
 };

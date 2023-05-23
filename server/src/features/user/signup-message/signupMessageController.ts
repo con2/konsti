@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { logger } from "server/utils/logger";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
-import { isAuthorized } from "server/utils/authHeader";
+import { getAuthorizedUsername } from "server/utils/authHeader";
 import { UserGroup } from "shared/typings/models/user";
 import { fetchSignupMessages } from "server/features/user/signup-message/signupMessageService";
 
@@ -11,7 +11,11 @@ export const getSignupMessages = async (
 ): Promise<Response> => {
   logger.info(`API call: GET ${ApiEndpoint.SIGNUP_MESSAGE}`);
 
-  if (!isAuthorized(req.headers.authorization, UserGroup.HELP, "helper")) {
+  const username = getAuthorizedUsername(
+    req.headers.authorization,
+    UserGroup.HELP
+  );
+  if (!username) {
     return res.sendStatus(401);
   }
 

@@ -5,17 +5,16 @@ import {
   PostFeedbackRequest,
   PostFeedbackResponse,
 } from "shared/typings/api/feedback";
-import { Feedback } from "shared/typings/models/feedback";
 
 export const postFeedback = async (
-  feedbackData: Feedback
+  gameId: string,
+  feedback: string
 ): Promise<PostFeedbackResponse | ApiError> => {
   const response = await api.post<PostFeedbackResponse, PostFeedbackRequest>(
     ApiEndpoint.FEEDBACK,
     {
-      feedback: feedbackData.feedback,
-      gameId: feedbackData.gameId,
-      username: feedbackData.username,
+      gameId,
+      feedback,
     }
   );
 

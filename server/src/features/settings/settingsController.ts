@@ -8,7 +8,7 @@ import {
   updateSettings,
 } from "server/features/settings/settingsService";
 import { UserGroup } from "shared/typings/models/user";
-import { isAuthorized } from "server/utils/authHeader";
+import { getAuthorizedUsername } from "server/utils/authHeader";
 import { logger } from "server/utils/logger";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
@@ -25,7 +25,11 @@ export const postHidden = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.HIDDEN}`);
 
-  if (!isAuthorized(req.headers.authorization, UserGroup.ADMIN, "admin")) {
+  const username = getAuthorizedUsername(
+    req.headers.authorization,
+    UserGroup.ADMIN
+  );
+  if (!username) {
     return res.sendStatus(401);
   }
 
@@ -50,7 +54,11 @@ export const postSignupQuestion = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.SIGNUP_QUESTION}`);
 
-  if (!isAuthorized(req.headers.authorization, UserGroup.ADMIN, "admin")) {
+  const username = getAuthorizedUsername(
+    req.headers.authorization,
+    UserGroup.ADMIN
+  );
+  if (!username) {
     return res.sendStatus(401);
   }
 
@@ -64,7 +72,11 @@ export const deleteSignupQuestion = async (
 ): Promise<Response> => {
   logger.info(`API call: DELETE ${ApiEndpoint.SIGNUP_QUESTION}`);
 
-  if (!isAuthorized(req.headers.authorization, UserGroup.ADMIN, "admin")) {
+  const username = getAuthorizedUsername(
+    req.headers.authorization,
+    UserGroup.ADMIN
+  );
+  if (!username) {
     return res.sendStatus(401);
   }
 
@@ -78,22 +90,24 @@ export const postSettings = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.SETTINGS}`);
 
-  if (!isAuthorized(req.headers.authorization, UserGroup.ADMIN, "admin")) {
+  const username = getAuthorizedUsername(
+    req.headers.authorization,
+    UserGroup.ADMIN
+  );
+  if (!username) {
     return res.sendStatus(401);
   }
 
-  let settings;
+  let body;
   try {
-    settings = PostSettingsRequestSchema.parse(req.body);
+    body = PostSettingsRequestSchema.parse(req.body);
   } catch (error) {
     if (error instanceof ZodError) {
-      logger.error(
-        `Error validating postSettings parameters: ${error.message}`
-      );
+      logger.error(`Error validating postSettings body: ${error.message}`);
     }
     return res.sendStatus(422);
   }
 
-  const response = await updateSettings(settings);
+  const response = await updateSettings(body);
   return res.json(response);
 };
