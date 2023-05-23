@@ -17,7 +17,6 @@ import {
   PostCloseGroupRequest,
   PostCreateGroupRequest,
   PostJoinGroupRequest,
-  PostLeaveGroupRequest,
 } from "shared/typings/api/groups";
 import { UserGroup } from "shared/typings/models/user";
 import { getJWT } from "server/utils/jwt";
@@ -59,17 +58,19 @@ afterAll(async () => {
 });
 
 describe(`GET ${ApiEndpoint.GROUP}`, () => {
-  test("should return 422 without valid body", async () => {
+  test("should return 401 without valid authorization", async () => {
     const response = await request(server).get(ApiEndpoint.GROUP);
-    expect(response.status).toEqual(422);
+    expect(response.status).toEqual(401);
   });
 
-  test("should return 401 without valid authorization", async () => {
-    const response = await request(server).get(ApiEndpoint.GROUP).query({
-      username: "testuser",
-      groupCode: "1234",
-    });
-    expect(response.status).toEqual(401);
+  test("should return 422 without valid body", async () => {
+    const response = await request(server)
+      .get(ApiEndpoint.GROUP)
+      .set(
+        "Authorization",
+        `Bearer ${getJWT(UserGroup.USER, mockUser2.username)}`
+      );
+    expect(response.status).toEqual(422);
   });
 
   test("should return group members", async () => {
@@ -99,21 +100,16 @@ describe(`GET ${ApiEndpoint.GROUP}`, () => {
 });
 
 describe(`POST ${ApiEndpoint.GROUP}`, () => {
-  test("should return 422 without valid body", async () => {
+  test("should return 401 without valid authorization", async () => {
     const response = await request(server).post(ApiEndpoint.GROUP);
-    expect(response.status).toEqual(422);
+    expect(response.status).toEqual(401);
   });
 
-  test("should return 401 without valid authorization", async () => {
-    const groupRequest: PostCreateGroupRequest = {
-      groupCode: "1234",
-      username: "testuser",
-    };
-
+  test("should return 422 without valid body", async () => {
     const response = await request(server)
       .post(ApiEndpoint.GROUP)
-      .send(groupRequest);
-    expect(response.status).toEqual(401);
+      .set("Authorization", `Bearer ${getJWT(UserGroup.USER, "testuser")}`);
+    expect(response.status).toEqual(422);
   });
 
   test("should create group", async () => {
@@ -122,7 +118,6 @@ describe(`POST ${ApiEndpoint.GROUP}`, () => {
 
     const groupRequest: PostCreateGroupRequest = {
       groupCode: mockUser.serial,
-      username: mockUser.username,
     };
 
     const response = await request(server)
@@ -140,22 +135,19 @@ describe(`POST ${ApiEndpoint.GROUP}`, () => {
 });
 
 describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
-  test("should return 422 without valid body", async () => {
+  test("should return 401 without valid authorization", async () => {
     const response = await request(server).post(ApiEndpoint.JOIN_GROUP);
-    expect(response.status).toEqual(422);
+    expect(response.status).toEqual(401);
   });
 
-  test("should return 401 without valid authorization", async () => {
-    const groupRequest: PostJoinGroupRequest = {
-      groupCode: "1234",
-      ownSerial: "1234",
-      username: "testuser",
-    };
-
+  test("should return 422 without valid body", async () => {
     const response = await request(server)
       .post(ApiEndpoint.JOIN_GROUP)
-      .send(groupRequest);
-    expect(response.status).toEqual(401);
+      .set(
+        "Authorization",
+        `Bearer ${getJWT(UserGroup.USER, mockUser2.username)}`
+      );
+    expect(response.status).toEqual(422);
   });
 
   test("should join group", async () => {
@@ -171,7 +163,6 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
     const groupRequest: PostJoinGroupRequest = {
       groupCode: mockUser.serial,
       ownSerial: mockUser2.serial,
-      username: mockUser2.username,
     };
 
     const response = await request(server)
@@ -204,7 +195,6 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
     const groupRequest: PostJoinGroupRequest = {
       groupCode: mockUser.serial,
       ownSerial: mockUser2.serial,
-      username: mockUser2.username,
     };
 
     const response = await request(server)
@@ -222,19 +212,8 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
 });
 
 describe(`POST ${ApiEndpoint.LEAVE_GROUP}`, () => {
-  test("should return 422 without valid body", async () => {
-    const response = await request(server).post(ApiEndpoint.LEAVE_GROUP);
-    expect(response.status).toEqual(422);
-  });
-
   test("should return 401 without valid authorization", async () => {
-    const groupRequest: PostLeaveGroupRequest = {
-      username: "testuser",
-    };
-
-    const response = await request(server)
-      .post(ApiEndpoint.LEAVE_GROUP)
-      .send(groupRequest);
+    const response = await request(server).post(ApiEndpoint.LEAVE_GROUP);
     expect(response.status).toEqual(401);
   });
 
@@ -242,13 +221,8 @@ describe(`POST ${ApiEndpoint.LEAVE_GROUP}`, () => {
     await saveUser({ ...mockUser, groupCode: mockUser.serial });
     await saveUser({ ...mockUser2, groupCode: mockUser.serial });
 
-    const groupRequest: PostLeaveGroupRequest = {
-      username: mockUser2.username,
-    };
-
     const response = await request(server)
       .post(ApiEndpoint.LEAVE_GROUP)
-      .send(groupRequest)
       .set(
         "Authorization",
         `Bearer ${getJWT(UserGroup.USER, mockUser2.username)}`
@@ -261,21 +235,19 @@ describe(`POST ${ApiEndpoint.LEAVE_GROUP}`, () => {
 });
 
 describe(`POST ${ApiEndpoint.CLOSE_GROUP}`, () => {
-  test("should return 422 without valid body", async () => {
+  test("should return 401 without valid authorization", async () => {
     const response = await request(server).post(ApiEndpoint.CLOSE_GROUP);
-    expect(response.status).toEqual(422);
+    expect(response.status).toEqual(401);
   });
 
-  test("should return 401 without valid authorization", async () => {
-    const groupRequest: PostCloseGroupRequest = {
-      groupCode: "1234",
-      username: "testuser",
-    };
-
+  test("should return 422 without valid body", async () => {
     const response = await request(server)
       .post(ApiEndpoint.CLOSE_GROUP)
-      .send(groupRequest);
-    expect(response.status).toEqual(401);
+      .set(
+        "Authorization",
+        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`
+      );
+    expect(response.status).toEqual(422);
   });
 
   test("should close group and remove all group members", async () => {
@@ -284,7 +256,6 @@ describe(`POST ${ApiEndpoint.CLOSE_GROUP}`, () => {
 
     const groupRequest: PostCloseGroupRequest = {
       groupCode: mockUser.serial,
-      username: mockUser.username,
     };
 
     const response = await request(server)

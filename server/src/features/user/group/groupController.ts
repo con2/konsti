@@ -11,10 +11,8 @@ import {
   PostCreateGroupRequestSchema,
   PostJoinGroupRequest,
   PostJoinGroupRequestSchema,
-  PostLeaveGroupRequest,
-  PostLeaveGroupRequestSchema,
 } from "shared/typings/api/groups";
-import { isAuthorized } from "server/utils/authHeader";
+import { getAuthorizedUsername } from "server/utils/authHeader";
 import { UserGroup } from "shared/typings/models/user";
 import {
   closeGroup,
@@ -30,23 +28,25 @@ export const postCreateGroup = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.GROUP}`);
 
-  let groupRequest: PostCreateGroupRequest;
+  const username = getAuthorizedUsername(
+    req.headers.authorization,
+    UserGroup.USER
+  );
+  if (!username) {
+    return res.sendStatus(401);
+  }
+
+  let body;
   try {
-    groupRequest = PostCreateGroupRequestSchema.parse(req.body);
+    body = PostCreateGroupRequestSchema.parse(req.body);
   } catch (error) {
     if (error instanceof ZodError) {
-      logger.error(
-        `Error validating postCreateGroup parameters: ${error.message}`
-      );
+      logger.error(`Error validating postCreateGroup body: ${error.message}`);
     }
     return res.sendStatus(422);
   }
 
-  const { username, groupCode } = groupRequest;
-
-  if (!isAuthorized(req.headers.authorization, UserGroup.USER, username)) {
-    return res.sendStatus(401);
-  }
+  const { groupCode } = body;
 
   const response = await createGroup(username, groupCode);
   return res.json(response);
@@ -58,49 +58,41 @@ export const postJoinGroup = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.JOIN_GROUP}`);
 
-  let groupRequest: PostJoinGroupRequest;
+  const username = getAuthorizedUsername(
+    req.headers.authorization,
+    UserGroup.USER
+  );
+  if (!username) {
+    return res.sendStatus(401);
+  }
+
+  let body;
   try {
-    groupRequest = PostJoinGroupRequestSchema.parse(req.body);
+    body = PostJoinGroupRequestSchema.parse(req.body);
   } catch (error) {
     if (error instanceof ZodError) {
-      logger.error(
-        `Error validating postJoinGroup parameters: ${error.message}`
-      );
+      logger.error(`Error validating postJoinGroup body: ${error.message}`);
     }
     return res.sendStatus(422);
   }
 
-  const { username, groupCode, ownSerial } = groupRequest;
-
-  if (!isAuthorized(req.headers.authorization, UserGroup.USER, username)) {
-    return res.sendStatus(401);
-  }
+  const { groupCode, ownSerial } = body;
 
   const response = await joinGroup(username, groupCode, ownSerial);
   return res.json(response);
 };
 
 export const postLeaveGroup = async (
-  req: Request<{}, {}, PostLeaveGroupRequest>,
+  req: Request<{}, {}, {}>,
   res: Response
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.LEAVE_GROUP}`);
 
-  let groupRequest: PostLeaveGroupRequest;
-  try {
-    groupRequest = PostLeaveGroupRequestSchema.parse(req.body);
-  } catch (error) {
-    if (error instanceof ZodError) {
-      logger.error(
-        `Error validating postLeaveGroup parameters: ${error.message}`
-      );
-    }
-    return res.sendStatus(422);
-  }
-
-  const { username } = groupRequest;
-
-  if (!isAuthorized(req.headers.authorization, UserGroup.USER, username)) {
+  const username = getAuthorizedUsername(
+    req.headers.authorization,
+    UserGroup.USER
+  );
+  if (!username) {
     return res.sendStatus(401);
   }
 
@@ -114,23 +106,25 @@ export const postCloseGroup = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.CLOSE_GROUP}`);
 
-  let groupRequest: PostCloseGroupRequest;
+  const username = getAuthorizedUsername(
+    req.headers.authorization,
+    UserGroup.USER
+  );
+  if (!username) {
+    return res.sendStatus(401);
+  }
+
+  let body;
   try {
-    groupRequest = PostCloseGroupRequestSchema.parse(req.body);
+    body = PostCloseGroupRequestSchema.parse(req.body);
   } catch (error) {
     if (error instanceof ZodError) {
-      logger.error(
-        `Error validating postCloseGroup parameters: ${error.message}`
-      );
+      logger.error(`Error validating postCloseGroup body: ${error.message}`);
     }
     return res.sendStatus(422);
   }
 
-  const { username, groupCode } = groupRequest;
-
-  if (!isAuthorized(req.headers.authorization, UserGroup.USER, username)) {
-    return res.sendStatus(401);
-  }
+  const { groupCode } = body;
 
   const response = await closeGroup(groupCode, username);
   return res.json(response);
@@ -142,18 +136,25 @@ export const getGroup = async (
 ): Promise<Response> => {
   logger.info(`API call: GET ${ApiEndpoint.GROUP}`);
 
-  let parameters;
+  const username = getAuthorizedUsername(
+    req.headers.authorization,
+    UserGroup.USER
+  );
+  if (!username) {
+    return res.sendStatus(401);
+  }
+
+  let params;
   try {
-    parameters = GetGroupRequestSchema.parse(req.query);
+    params = GetGroupRequestSchema.parse(req.query);
   } catch (error) {
+    if (error instanceof ZodError) {
+      logger.error(`Error validating getGroup params: ${error.message}`);
+    }
     return res.sendStatus(422);
   }
 
-  const { groupCode, username } = parameters;
-
-  if (!isAuthorized(req.headers.authorization, UserGroup.USER, username)) {
-    return res.sendStatus(401);
-  }
+  const { groupCode } = params;
 
   const response = await fetchGroup(groupCode);
   return res.json(response);

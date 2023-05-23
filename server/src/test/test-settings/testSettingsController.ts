@@ -27,18 +27,16 @@ export const postTestSettings = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.TEST_SETTINGS}`);
 
-  let testSettings;
+  let body;
   try {
-    testSettings = PostTestSettingsRequestSchema.parse(req.body);
+    body = PostTestSettingsRequestSchema.parse(req.body);
   } catch (error) {
     if (error instanceof ZodError) {
-      logger.error(
-        `Error validating postTestSettings parameters: ${error.message}`
-      );
+      logger.error(`Error validating postTestSettings body: ${error.message}`);
     }
     return res.sendStatus(422);
   }
 
-  const response = await updateTestSettings(testSettings);
+  const response = await updateTestSettings(body);
   return res.json(response);
 };

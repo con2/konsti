@@ -1,8 +1,9 @@
 import { Request, Response } from "express";
+import { ZodError } from "zod";
 import { storeAssignment } from "server/features/player-assignment/assignmentController";
 import { fetchResults } from "server/features/results/resultsService";
 import { UserGroup } from "shared/typings/models/user";
-import { isAuthorized } from "server/utils/authHeader";
+import { getAuthorizedUsername } from "server/utils/authHeader";
 import { logger } from "server/utils/logger";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
@@ -20,14 +21,17 @@ export const getResults = async (
 ): Promise<Response> => {
   logger.info(`API call: GET ${ApiEndpoint.RESULTS}`);
 
-  let parameters;
+  let body;
   try {
-    parameters = GetResultsRequestSchema.parse(req.query);
+    body = GetResultsRequestSchema.parse(req.query);
   } catch (error) {
+    if (error instanceof ZodError) {
+      logger.error(`Error validating getResults body: ${error.message}`);
+    }
     return res.sendStatus(422);
   }
 
-  const { startTime } = parameters;
+  const { startTime } = body;
 
   if (!startTime) {
     return res.sendStatus(422);
@@ -43,7 +47,11 @@ export const postAssignment = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.ASSIGNMENT}`);
 
-  if (!isAuthorized(req.headers.authorization, UserGroup.ADMIN, "admin")) {
+  const username = getAuthorizedUsername(
+    req.headers.authorization,
+    UserGroup.ADMIN
+  );
+  if (!username) {
     return res.sendStatus(401);
   }
 

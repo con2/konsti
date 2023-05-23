@@ -10,15 +10,13 @@ test("POST feedback to server", async () => {
 
   const feedback = "test feedback";
   const gameId = "123";
-  const username = "test user";
 
-  const response = await postFeedback({ feedback, gameId, username });
+  const response = await postFeedback(gameId, feedback);
 
   expect(response).toEqual("test response");
   expect(spy).toHaveBeenCalledTimes(1);
   expect(spy).toHaveBeenCalledWith(ApiEndpoint.FEEDBACK, {
     feedback,
     gameId,
-    username,
   });
 });

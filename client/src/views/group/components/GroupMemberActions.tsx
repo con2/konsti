@@ -8,11 +8,7 @@ import {
 } from "client/views/group/groupThunks";
 import { ErrorMessage } from "client/components/ErrorMessage";
 
-interface Props {
-  username: string;
-}
-
-export const GroupMemberActions = ({ username }: Props): ReactElement => {
+export const GroupMemberActions = (): ReactElement => {
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
 
@@ -23,11 +19,7 @@ export const GroupMemberActions = ({ username }: Props): ReactElement => {
   const leaveGroup = async (): Promise<void> => {
     setLoading(true);
 
-    const errorMessage = await dispatch(
-      submitLeaveGroup({
-        username,
-      })
-    );
+    const errorMessage = await dispatch(submitLeaveGroup());
 
     if (errorMessage) {
       setServerError(errorMessage);
