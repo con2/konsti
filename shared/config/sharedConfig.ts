@@ -128,7 +128,7 @@ export const sharedConfig: SharedConfig = {
 
   // Sentry
   tracesSampleRate: 0.0,
-  enableSentryInDev: true,
+  enableSentryInDev: false,
 
   // Test values
   CONVENTION_START_TIME: "2022-07-29T12:00:00Z", // UTC date
