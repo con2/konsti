@@ -16,6 +16,9 @@ export const initSentry = (app: Express, enableSentry: boolean): void => {
         // To trace all requests to the default router
         app,
       }),
+      new Integrations.OnUnhandledRejection({
+        mode: "none",
+      }),
     ],
     tracesSampleRate: sharedConfig.tracesSampleRate,
     environment: process.env.SETTINGS,
@@ -51,7 +54,7 @@ export const initSentry = (app: Express, enableSentry: boolean): void => {
   );
 };
 
-const getDsn = (enableSentry: boolean): string | undefined => {
+export const getDsn = (enableSentry: boolean): string | undefined => {
   if (!enableSentry) return undefined;
   switch (process.env.SETTINGS) {
     case "production":
