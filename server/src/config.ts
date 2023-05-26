@@ -6,7 +6,6 @@ enum GameUpdateMethod {
 interface Config {
   port: number;
   debug: boolean;
-  logDir: string;
   enableAccessLog: boolean;
   dbConnString: string;
   dbName: string;
@@ -46,7 +45,6 @@ const commonConfig = {
   debug: false,
 
   // Logging
-  logDir: "./logs",
   enableAccessLog: false,
 
   // App settings
