@@ -1,20 +1,8 @@
-import fs from "fs";
 import { createLogger, format, Logger, transports } from "winston";
-import "winston-daily-rotate-file";
+import Sentry from "winston-transport-sentry-node";
+import { Integrations } from "@sentry/node";
 import { config } from "server/config";
-
-const { combine, printf, colorize, timestamp, json, errors } = format;
-const { logDir, debug } = config;
-
-// Create logs directory if it does not exist
-if (!fs.existsSync(logDir)) {
-  fs.mkdirSync(logDir);
-}
-
-const loggerLevel = (): string => {
-  if (debug) return "debug";
-  else return "info";
-};
+import { getDsn } from "server/utils/sentry";
 
 const formatMessage = (message: string | object): string => {
   if (typeof message === "string") {
@@ -24,32 +12,47 @@ const formatMessage = (message: string | object): string => {
   }
 };
 
-export const logger = createLogger({
-  format: errors({ stack: true }),
-  transports: [
-    new transports.DailyRotateFile({
-      level: "info", // info, debug, warn, error
-      filename: `${logDir}/%DATE%.log`,
-      datePattern: "YYYY-MM-DD",
-      maxSize: "20m",
-      // maxFiles: '14d',
-      zippedArchive: false,
-      format: combine(timestamp(), json()),
-    }),
+const consoleOutputFormat = config.consoleLogFormatJson
+  ? format.combine(
+      format.timestamp(),
+      format.printf((info) => {
+        return JSON.stringify({
+          level: info.level,
+          message: info.message,
+          timestamp: info.timestamp,
+        });
+      })
+    )
+  : format.combine(
+      format.colorize(),
+      format.timestamp({
+        format: "HH:mm:ss",
+      }),
+      format.printf((info) => {
+        return `${info.timestamp} ${info.level}: ${formatMessage(
+          info.message as string | object
+        )}`;
+      })
+    );
 
+export const logger = createLogger({
+  transports: [
     new transports.Console({
-      level: loggerLevel(),
-      format: combine(
-        colorize(),
-        timestamp({
-          format: "HH:mm:ss",
-        }),
-        printf((info) => {
-          return `${info.timestamp} ${info.level}: ${formatMessage(
-            info.message as string | object
-          )}`;
-        })
-      ),
+      level: config.debug ? "debug" : "info",
+      handleExceptions: true,
+      handleRejections: true,
+      format: consoleOutputFormat,
+    }),
+    new Sentry({
+      sentry: {
+        dsn: getDsn(true),
+        integrations: [
+          new Integrations.OnUnhandledRejection({
+            mode: "none",
+          }),
+        ],
+      },
+      level: "error",
     }),
   ],
   exitOnError: false,

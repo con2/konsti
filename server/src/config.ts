@@ -6,7 +6,6 @@ enum GameUpdateMethod {
 interface Config {
   port: number;
   debug: boolean;
-  logDir: string;
   enableAccessLog: boolean;
   dbConnString: string;
   dbName: string;
@@ -34,6 +33,7 @@ interface Config {
   autoAssignInterval: string;
   useTestTime: boolean;
   localKompassiFile: string;
+  consoleLogFormatJson: boolean;
 }
 
 const commonConfig = {
@@ -45,7 +45,6 @@ const commonConfig = {
   debug: false,
 
   // Logging
-  logDir: "./logs",
   enableAccessLog: false,
 
   // App settings
@@ -83,6 +82,7 @@ const prodConfig = {
   PADG_ASSIGNMENT_ROUNDS: 300,
   RANDOM_ASSIGNMENT_ROUNDS: 300,
   updateGamePopularityEnabled: true,
+  consoleLogFormatJson: true,
 
   // Dev
   useTestTime: false,
@@ -113,6 +113,7 @@ const stagingConfig = {
   PADG_ASSIGNMENT_ROUNDS: 300,
   RANDOM_ASSIGNMENT_ROUNDS: 300,
   updateGamePopularityEnabled: true,
+  consoleLogFormatJson: true,
 
   // Dev
   useTestTime: true,
@@ -144,6 +145,7 @@ const devConfig = {
   PADG_ASSIGNMENT_ROUNDS: 300,
   RANDOM_ASSIGNMENT_ROUNDS: 10,
   updateGamePopularityEnabled: true,
+  consoleLogFormatJson: false,
 
   // Dev
   useTestTime: true,
