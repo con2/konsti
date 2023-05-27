@@ -107,6 +107,7 @@ const devConfig: Configuration = {
   },
 
   plugins: [
+    // @ts-expect-error: ???
     new Dotenv({ path: "./config/dev.env" }),
     new ReactRefreshWebpackPlugin(),
   ],
@@ -124,6 +125,7 @@ const prodConfig: Configuration = {
   },
 
   plugins: [
+    // @ts-expect-error: ???
     new Dotenv({ path: getEnvVariableFile() }),
     new CompressionPlugin({
       filename: "[path][base].gz",
