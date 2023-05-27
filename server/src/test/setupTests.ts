@@ -21,4 +21,4 @@ logger.error = throwOnErrorLog
     })
   : vi.fn().mockImplementation(() => {});
 
-process.env.MONGOMS_VERSION = "5.0.14";
+process.env.MONGOMS_VERSION = "6.0.6";

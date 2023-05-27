@@ -16,7 +16,7 @@ services:
       - mongo
 
   mongo:
-    image: mongo:5.0.14-focal
+    image: mongo:6.0.6-jammy
     restart: always
     ports:
       - 27017:27017
