@@ -1,11 +1,17 @@
 import { logger } from "server/utils/logger";
 import { SettingsModel } from "server/features/settings/settingsSchema";
-import { GameDoc } from "server/typings/game.typings";
 import { Settings, SignupQuestion } from "shared/typings/models/settings";
 import { Game } from "shared/typings/models/game";
 import { findGames } from "server/features/game/gameRepository";
 import { PostSettingsRequest } from "shared/typings/api/settings";
 import { SettingsDoc } from "server/typings/settings.typings";
+import {
+  AsyncResult,
+  isErrorResult,
+  unwrapResult,
+  makeSuccessResult,
+} from "shared/utils/asyncResult";
+import { MongoDbError } from "shared/typings/api/errors";
 
 export const removeSettings = async (): Promise<void> => {
   logger.info("MongoDB: remove ALL settings from db");
@@ -53,15 +59,14 @@ export const findSettings = async (): Promise<Settings> => {
 
 export const saveHidden = async (
   hiddenGames: readonly Game[]
-): Promise<Settings> => {
-  let games: GameDoc[];
-  try {
-    games = await findGames();
-  } catch (error) {
-    logger.error(`MongoDB: Error loading games - ${error}`);
-    throw error;
+): Promise<AsyncResult<Settings, MongoDbError>> => {
+  const gamesAsyncResult = await findGames();
+
+  if (isErrorResult(gamesAsyncResult)) {
+    return gamesAsyncResult;
   }
 
+  const games = unwrapResult(gamesAsyncResult);
   const formattedData = hiddenGames.reduce<Game[]>((acc, hiddenGame) => {
     const gameDocInDb = games.find((game) => game.gameId === hiddenGame.gameId);
     if (gameDocInDb) {
@@ -88,7 +93,7 @@ export const saveHidden = async (
   }
 
   logger.info(`MongoDB: Hidden data updated`);
-  return settings;
+  return makeSuccessResult(settings);
 };
 
 export const saveSignupQuestion = async (

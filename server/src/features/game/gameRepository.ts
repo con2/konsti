@@ -3,8 +3,14 @@ import { GameModel } from "server/features/game/gameSchema";
 import { removeMovedGamesFromUsers } from "server/features/player-assignment/utils/removeMovedGamesFromUsers";
 import { GameDoc } from "server/typings/game.typings";
 import { Game } from "shared/typings/models/game";
+import {
+  makeSuccessResult,
+  AsyncResult,
+  makeErrorResult,
+} from "shared/utils/asyncResult";
 import { removeDeletedGames } from "server/features/game/gameUtils";
 import { removeInvalidGamesFromUsers } from "server/features/player-assignment/utils/removeInvalidGamesFromUsers";
+import { MongoDbError } from "shared/typings/api/errors";
 
 export const removeGames = async (gameIds?: string[]): Promise<void> => {
   logger.info(
@@ -18,7 +24,9 @@ export const removeGames = async (gameIds?: string[]): Promise<void> => {
   }
 };
 
-export const saveGames = async (games: readonly Game[]): Promise<Game[]> => {
+export const saveGames = async (
+  games: readonly Game[]
+): Promise<AsyncResult<Game[], MongoDbError>> => {
   logger.info("MongoDB: Store games to DB");
 
   await removeDeletedGames(games);
@@ -64,22 +72,24 @@ export const saveGames = async (games: readonly Game[]): Promise<Game[]> => {
     );
   } catch (error) {
     logger.error(`Error saving games to db: ${error}`);
-    throw error;
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 
   logger.debug("MongoDB: Games saved to DB successfully");
   return await findGames();
 };
 
-export const findGames = async (): Promise<GameDoc[]> => {
+export const findGames = async (): Promise<
+  AsyncResult<GameDoc[], MongoDbError>
+> => {
   let response;
   try {
     response = await GameModel.find({});
     logger.debug(`MongoDB: Find all games`);
-    return response;
+    return makeSuccessResult(response);
   } catch (error) {
     logger.error(`MongoDB: Error fetching games - ${error}`);
-    throw error;
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
 

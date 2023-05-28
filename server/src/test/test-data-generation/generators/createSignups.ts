@@ -7,11 +7,14 @@ import { findSettings } from "server/features/settings/settingsRepository";
 import { shuffleArray } from "server/utils/shuffleArray";
 import { getRandomInt } from "server/features/player-assignment/utils/getRandomInt";
 import { saveSignup } from "server/features/signup/signupRepository";
+import { unsafelyUnfurlAsyncResult } from "server/test/utils/unsafelyUnfurlAsyncResult";
 
 export const createSignups = async (): Promise<void> => {
   logger.info(`Generate signup data`);
 
-  const games = await findGames();
+  const gamesAsyncResult = await findGames();
+  const games = unsafelyUnfurlAsyncResult(gamesAsyncResult);
+
   const allUsers = await findUsers();
   const settings = await findSettings();
 

@@ -110,9 +110,6 @@ module.exports = {
     // eslint-plugin-deprecation
     "deprecation/deprecation": "error",
 
-    // eslint-plugin-unicorn
-    "unicorn/no-useless-undefined": ["error", { checkArguments: true }],
-
     // TODO: Enable these rules
     "@typescript-eslint/ban-types": "off",
     "@typescript-eslint/no-empty-function": "off",

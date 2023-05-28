@@ -17,6 +17,7 @@ import {
 import { Game } from "shared/typings/models/game";
 import { removeHiddenGamesFromUsers } from "server/features/settings/utils/removeHiddenGamesFromUsers";
 import { SignupQuestion } from "shared/typings/models/settings";
+import { isErrorResult, unwrapResult } from "shared/utils/asyncResult";
 
 export const fetchSettings = async (): Promise<
   GetSettingsResponse | ApiError
@@ -45,17 +46,16 @@ export const fetchSettings = async (): Promise<
 export const storeHidden = async (
   hiddenData: readonly Game[]
 ): Promise<PostHiddenResponse | ApiError> => {
-  let settings;
-  try {
-    settings = await saveHidden(hiddenData);
-  } catch (error) {
-    logger.error(`saveHidden error: ${error}`);
+  const settingsAsyncResult = await saveHidden(hiddenData);
+  if (isErrorResult(settingsAsyncResult)) {
     return {
       message: "Update hidden failure",
       status: "error",
       errorId: "unknown",
     };
   }
+
+  const settings = unwrapResult(settingsAsyncResult);
 
   try {
     await removeHiddenGamesFromUsers(settings.hiddenGames);

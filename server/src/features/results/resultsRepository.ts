@@ -1,9 +1,16 @@
 import { logger } from "server/utils/logger";
 import { ResultsModel } from "server/features/results/resultsSchema";
 import { ResultsCollectionEntry } from "server/typings/result.typings";
-import { GameDoc } from "server/typings/game.typings";
 import { findGames } from "server/features/game/gameRepository";
 import { Result } from "shared/typings/models/result";
+import {
+  AsyncResult,
+  isErrorResult,
+  makeErrorResult,
+  makeSuccessResult,
+  unwrapResult,
+} from "shared/utils/asyncResult";
+import { MongoDbError } from "shared/typings/api/errors";
 
 export const removeResults = async (): Promise<void> => {
   logger.info("MongoDB: remove ALL results from db");
@@ -36,15 +43,14 @@ export const saveResult = async (
   startTime: string,
   algorithm: string,
   message: string
-): Promise<void> => {
-  let games: GameDoc[] = [];
-  try {
-    games = await findGames();
-  } catch (error) {
-    logger.error(`MongoDB: Error loading games - ${error}`);
-    throw error;
+): Promise<AsyncResult<void, MongoDbError>> => {
+  const gamesAsyncResult = await findGames();
+
+  if (isErrorResult(gamesAsyncResult)) {
+    return gamesAsyncResult;
   }
 
+  const games = unwrapResult(gamesAsyncResult);
   const results = signupResultData.reduce<Result[]>((acc, result) => {
     const gameDocInDb = games.find(
       (game) => game.gameId === result.enteredGame.gameDetails.gameId
@@ -77,6 +83,8 @@ export const saveResult = async (
     logger.error(
       `MongoDB: Error storing signup results for starting time ${startTime} to separate collection - ${error}`
     );
-    throw error;
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
+
+  return makeSuccessResult(undefined);
 };

@@ -16,6 +16,7 @@ import { verifyUserSignups } from "server/features/player-assignment/utils/verif
 import { AssignmentStrategy } from "shared/config/sharedConfig.types";
 import { sharedConfig } from "shared/config/sharedConfig";
 import { AssignmentResultStatus } from "server/typings/result.typings";
+import { unsafelyUnfurlAsyncResult } from "server/test/utils/unsafelyUnfurlAsyncResult";
 
 let mongoServer: MongoMemoryServer;
 
@@ -62,10 +63,12 @@ test("Assignment with valid data should return success with random strategy", as
 
   // FIRST RUN
 
-  const assignResults = await runAssignment({
+  const assignResultsAsyncResult = await runAssignment({
     assignmentStrategy,
     startingTime,
   });
+  const assignResults = unsafelyUnfurlAsyncResult(assignResultsAsyncResult);
+
   expect(assignResults.status).toEqual("success");
   expect(assignResults.results.length).toBeGreaterThanOrEqual(
     expectedResultsCount
@@ -85,10 +88,12 @@ test("Assignment with valid data should return success with random strategy", as
 
   // SECOND RUN
 
-  const assignResults2 = await runAssignment({
+  const assignResultsEither2 = await runAssignment({
     assignmentStrategy,
     startingTime,
   });
+  const assignResults2 = unsafelyUnfurlAsyncResult(assignResultsEither2);
+
   expect(assignResults2.status).toEqual("success");
   expect(assignResults2.results.length).toBeGreaterThanOrEqual(
     expectedResultsCount
@@ -126,10 +131,12 @@ test("Assignment with no games should return error with random strategy", async 
   const assignmentStrategy = AssignmentStrategy.RANDOM;
   const startingTime = dayjs(CONVENTION_START_TIME).add(2, "hours").format();
 
-  const assignResults = await runAssignment({
+  const assignResultsAsyncResult = await runAssignment({
     assignmentStrategy,
     startingTime,
   });
+  const assignResults = unsafelyUnfurlAsyncResult(assignResultsAsyncResult);
+
   expect(assignResults.status).toEqual(
     AssignmentResultStatus.NO_STARTING_GAMES
   );
@@ -154,9 +161,11 @@ test("Assignment with no players should return error with random strategy", asyn
   const assignmentStrategy = AssignmentStrategy.RANDOM;
   const startingTime = dayjs(CONVENTION_START_TIME).add(2, "hours").format();
 
-  const assignResults = await runAssignment({
+  const assignResultsAsyncResult = await runAssignment({
     assignmentStrategy,
     startingTime,
   });
+  const assignResults = unsafelyUnfurlAsyncResult(assignResultsAsyncResult);
+
   expect(assignResults.status).toEqual(AssignmentResultStatus.NO_SIGNUP_WISHES);
 });

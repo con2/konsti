@@ -8,6 +8,7 @@ import { SelectedGame } from "shared/typings/models/user";
 import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
 import { getTime } from "server/features/player-assignment/utils/getTime";
 import { isValidSignupTime } from "server/features/user/userUtils";
+import { isErrorResult, unwrapResult } from "shared/utils/asyncResult";
 
 export const storeSignedGames = async (
   selectedGames: readonly SelectedGame[],
@@ -45,21 +46,24 @@ export const storeSignedGames = async (
     }
   }
 
-  try {
-    const response = await saveSignedGames({
-      signedGames: selectedGames,
-      username,
-    });
-    return {
-      message: "Signup success",
-      status: "success",
-      signedGames: response.signedGames,
-    };
-  } catch (error) {
+  const responseAsyncResult = await saveSignedGames({
+    signedGames: selectedGames,
+    username,
+  });
+
+  if (isErrorResult(responseAsyncResult)) {
     return {
       message: "Signup failure",
       status: "error",
       errorId: "unknown",
     };
   }
+
+  const response = unwrapResult(responseAsyncResult);
+
+  return {
+    message: "Signup success",
+    status: "success",
+    signedGames: response.signedGames,
+  };
 };

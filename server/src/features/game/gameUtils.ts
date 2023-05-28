@@ -18,14 +18,25 @@ import {
   findSignups,
 } from "server/features/signup/signupRepository";
 import { Signup } from "server/features/signup/signup.typings";
+import {
+  AsyncResult,
+  isErrorResult,
+  makeSuccessResult,
+  unwrapResult,
+} from "shared/utils/asyncResult";
+import { MongoDbError } from "shared/typings/api/errors";
 
 export const removeDeletedGames = async (
   updatedGames: readonly Game[]
-): Promise<number> => {
+): Promise<AsyncResult<number, MongoDbError>> => {
   logger.info("Remove deleted games");
 
-  const currentGames = await findGames();
+  const currentGamesAsyncResult = await findGames();
+  if (isErrorResult(currentGamesAsyncResult)) {
+    return currentGamesAsyncResult;
+  }
 
+  const currentGames = unwrapResult(currentGamesAsyncResult);
   const deletedGames = _.differenceBy(currentGames, updatedGames, "gameId");
 
   if (deletedGames.length > 0) {
@@ -54,7 +65,7 @@ export const removeDeletedGames = async (
     }
   }
 
-  return deletedGames.length ?? 0;
+  return makeSuccessResult(deletedGames.length ?? 0);
 };
 
 export const enrichGames = async (

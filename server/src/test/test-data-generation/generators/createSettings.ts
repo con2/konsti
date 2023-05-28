@@ -6,6 +6,7 @@ import {
   saveSignupQuestion,
 } from "server/features/settings/settingsRepository";
 import { shuffleArray } from "server/utils/shuffleArray";
+import { unsafelyUnfurlAsyncResult } from "server/test/utils/unsafelyUnfurlAsyncResult";
 
 const NUMBER_OF_TEST_QUESTIONS = 20;
 
@@ -22,7 +23,8 @@ export const createSettings = async (): Promise<void> => {
 
   await findSettings();
 
-  const games = await findGames();
+  const gamesAsyncResult = await findGames();
+  const games = unsafelyUnfurlAsyncResult(gamesAsyncResult);
   const shuffledGames = shuffleArray(games);
 
   const promises = testQuestions().map(async (testQuestion, index) => {

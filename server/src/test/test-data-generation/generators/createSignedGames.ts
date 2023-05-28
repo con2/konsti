@@ -8,9 +8,11 @@ import { findUsers } from "server/features/user/userRepository";
 import { findGames } from "server/features/game/gameRepository";
 import { SelectedGame, User } from "shared/typings/models/user";
 import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
+import { unsafelyUnfurlAsyncResult } from "server/test/utils/unsafelyUnfurlAsyncResult";
 
 export const createSignedGames = async (): Promise<void> => {
-  const games = await findGames();
+  const gamesAsyncResult = await findGames();
+  const games = unsafelyUnfurlAsyncResult(gamesAsyncResult);
   const allUsers = await findUsers();
 
   const users = allUsers.filter(
@@ -92,10 +94,11 @@ const getRandomSignup = (games: readonly Game[]): SelectedGame[] => {
 const signup = async (games: readonly Game[], user: User): Promise<User> => {
   const signedGames = getRandomSignup(games);
 
-  return await saveSignedGames({
+  const userAsyncResult = await saveSignedGames({
     username: user.username,
     signedGames,
   });
+  return unsafelyUnfurlAsyncResult(userAsyncResult);
 };
 
 const signupMultiple = async (

@@ -3,7 +3,6 @@ import { getGamesFromKompassi } from "server/features/game/utils/getGamesFromKom
 import { updateGamePopularity } from "server/features/game-popularity/updateGamePopularity";
 import { config } from "server/config";
 import { kompassiGameMapper } from "server/utils/kompassiGameMapper";
-import { Game } from "shared/typings/models/game";
 import {
   PostUpdateGamesResponse,
   GetGamesResponse,
@@ -13,6 +12,7 @@ import {
 import { findGames, saveGames } from "server/features/game/gameRepository";
 import { enrichGames } from "./gameUtils";
 import { KompassiGame } from "shared/typings/models/kompassiGame";
+import { isErrorResult, unwrapResult } from "shared/utils/asyncResult";
 
 export const updateGames = async (): Promise<
   PostUpdateGamesResponse | PostUpdateGamesError
@@ -29,11 +29,11 @@ export const updateGames = async (): Promise<
     };
   }
 
-  let gameSaveResponse: Game[];
-  try {
-    gameSaveResponse = await saveGames(kompassiGameMapper(kompassiGames));
-  } catch (error) {
-    logger.error(`saveGames error: ${error}`);
+  const saveGamesAsyncResult = await saveGames(
+    kompassiGameMapper(kompassiGames)
+  );
+
+  if (isErrorResult(saveGamesAsyncResult)) {
     return {
       message: "Games db update failed: Saving games failed",
       status: "error",
@@ -41,6 +41,7 @@ export const updateGames = async (): Promise<
     };
   }
 
+  const gameSaveResponse = unwrapResult(saveGamesAsyncResult);
   if (!gameSaveResponse) {
     return {
       message: "Games db update failed: No save response",
@@ -72,8 +73,19 @@ export const updateGames = async (): Promise<
 export const fetchGames = async (): Promise<
   GetGamesResponse | GetGamesError
 > => {
+  const gamesAsyncResult = await findGames();
+
+  if (isErrorResult(gamesAsyncResult)) {
+    return {
+      message: `Downloading games failed`,
+      status: "error",
+      errorId: "unknown",
+    };
+  }
+
+  const games = unwrapResult(gamesAsyncResult);
+
   try {
-    const games = await findGames();
     const gamesWithPlayers = await enrichGames(games);
 
     return {

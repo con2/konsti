@@ -3,11 +3,18 @@ import { Signup, UserSignup } from "server/features/signup/signup.typings";
 import { SignupModel } from "server/features/signup/signupSchema";
 import { logger } from "server/utils/logger";
 import { sharedConfig } from "shared/config/sharedConfig";
+import { MongoDbError } from "shared/typings/api/errors";
 import {
   DeleteEnteredGameRequest,
   PostEnteredGameRequest,
 } from "shared/typings/api/myGames";
 import { ProgramType } from "shared/typings/models/game";
+import {
+  AsyncResult,
+  isErrorResult,
+  makeSuccessResult,
+  unwrapResult,
+} from "shared/utils/asyncResult";
 
 export const removeSignups = async (): Promise<void> => {
   logger.info("MongoDB: remove ALL signups from db");
@@ -254,14 +261,14 @@ export const delSignupsByGameIds = async (
 
 export const delRpgSignupsByStartTime = async (
   startTime: string
-): Promise<number> => {
-  let games;
-  try {
-    games = await findGames();
-  } catch (error) {
-    logger.error(`MongoDB: Error loading games - ${error}`);
-    throw error;
+): Promise<AsyncResult<number, MongoDbError>> => {
+  const gamesAsyncResult = await findGames();
+
+  if (isErrorResult(gamesAsyncResult)) {
+    return gamesAsyncResult;
   }
+
+  const games = unwrapResult(gamesAsyncResult);
 
   // Only remove TABLETOP_RPG signups and don't remove directSignupAlwaysOpen signups
   const doNotRemoveGameIds = games
@@ -287,5 +294,5 @@ export const delRpgSignupsByStartTime = async (
     `MongoDB: Deleted ${response.deletedCount} signups for startTime: ${startTime}`
   );
 
-  return response.deletedCount;
+  return makeSuccessResult(response.deletedCount);
 };

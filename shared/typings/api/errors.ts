@@ -7,3 +7,7 @@ export interface ApiError {
   message: string;
   status: "error";
 }
+
+export enum MongoDbError {
+  UNKNOWN_ERROR = "unknownError",
+}

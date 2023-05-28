@@ -3,7 +3,7 @@ import { runAssignmentStrategy } from "server/features/player-assignment/utils/r
 import { removeInvalidGamesFromUsers } from "server/features/player-assignment/utils/removeInvalidGamesFromUsers";
 import { PlayerAssignmentResult } from "server/typings/result.typings";
 import { User } from "shared/typings/models/user";
-import { Game, ProgramType } from "shared/typings/models/game";
+import { ProgramType } from "shared/typings/models/game";
 import { findUsers } from "server/features/user/userRepository";
 import { findGames } from "server/features/game/gameRepository";
 import { AssignmentStrategy } from "shared/config/sharedConfig.types";
@@ -15,6 +15,13 @@ import { sleep } from "server/utils/sleep";
 import { Signup } from "server/features/signup/signup.typings";
 import { findSignups } from "server/features/signup/signupRepository";
 import { sharedConfig } from "shared/config/sharedConfig";
+import {
+  AsyncResult,
+  isErrorResult,
+  makeSuccessResult,
+  unwrapResult,
+} from "shared/utils/asyncResult";
+import { MongoDbError } from "shared/typings/api/errors";
 
 const { directSignupAlwaysOpenIds } = sharedConfig;
 
@@ -30,7 +37,9 @@ export const runAssignment = async ({
   startingTime,
   useDynamicStartingTime = false,
   assignmentDelay = 0,
-}: RunAssignmentParams): Promise<PlayerAssignmentResult> => {
+}: RunAssignmentParams): Promise<
+  AsyncResult<PlayerAssignmentResult, MongoDbError>
+> => {
   const assignmentTime = useDynamicStartingTime
     ? await getDynamicStartingTime()
     : startingTime;
@@ -69,13 +78,13 @@ export const runAssignment = async ({
     return { ...user, signedGames: matchingSignedGames };
   });
 
-  let games: readonly Game[] = [];
-  try {
-    games = await findGames();
-  } catch (error) {
-    logger.error(`findGames error: ${error}`);
-    throw new Error(`findGames error: ${error}`);
+  const gamesAsyncResult = await findGames();
+
+  if (isErrorResult(gamesAsyncResult)) {
+    return gamesAsyncResult;
   }
+
+  const games = unwrapResult(gamesAsyncResult);
 
   // Only include TABLETOP_RPG and don't include "directSignupAlwaysOpen" games
   const filteredGames = games.filter(
@@ -111,7 +120,7 @@ export const runAssignment = async ({
         assignResults
       )}`
     );
-    return assignResults;
+    return makeSuccessResult(assignResults);
   }
 
   try {
@@ -136,5 +145,5 @@ export const runAssignment = async ({
     }
   }
 
-  return assignResults;
+  return makeSuccessResult(assignResults);
 };
