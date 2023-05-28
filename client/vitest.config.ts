@@ -6,7 +6,6 @@ export default defineConfig({
   test: {
     environment: "jsdom",
     setupFiles: ["./src/test/setupTests.ts"],
-    testTimeout: 60000,
     exclude: ["playwright"],
   },
   resolve: {
