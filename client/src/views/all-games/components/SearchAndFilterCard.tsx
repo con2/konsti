@@ -141,7 +141,10 @@ export const SearchAndFilterCard = ({
                   PROGRAM_TYPE: t(`programTypeGenetive.${activeProgramType}`),
                 })
           }
-          resetValue={() => setSearchTerm("")}
+          resetValue={() => {
+            setSearchTerm("");
+            onSearchTermChange("");
+          }}
         />
       </InputContainer>
       {selectedStartingTime === StartingTimeOption.REVOLVING_DOOR && (
