@@ -1,4 +1,4 @@
-import React, { ChangeEvent, ReactElement, useState } from "react";
+import React, { ChangeEvent, ReactElement, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { ProgramTypeSelection } from "client/components/EventTypeSelection";
@@ -56,6 +56,20 @@ export const SearchAndFilterCard = ({
       title: t(`gameTags.${filter}`),
     })),
   ].flat();
+
+  useEffect(() => {
+    setSelectedTag(
+      sessionStorage.getItem(SessionStorageValue.ALL_GAMES_TAG) ?? ""
+    );
+    setSelectedStartingTime(
+      (sessionStorage.getItem(
+        SessionStorageValue.ALL_GAMES_STARTING_TIME
+      ) as StartingTimeOption) ?? StartingTimeOption.UPCOMING
+    );
+    setSearchTerm(
+      sessionStorage.getItem(SessionStorageValue.ALL_GAMES_SEARCH_TERM) ?? ""
+    );
+  }, []);
 
   return (
     <Container>
