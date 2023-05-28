@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { SIGNUP_MESSAGE_LENGTH } from "shared/constants/validation";
-import { ApiError } from "shared/typings/api/errors";
+import { ApiError, ApiResult } from "shared/typings/api/errors";
 import { SelectedGame } from "shared/typings/models/user";
 import { GameSchema } from "shared/typings/models/game";
 
@@ -22,10 +22,9 @@ export type PostSignedGamesRequest = z.infer<
   typeof PostSignedGamesRequestSchema
 >;
 
-export interface PostSignedGamesResponse {
+export interface PostSignedGamesResponse extends ApiResult {
   message: string;
   signedGames: readonly SelectedGame[];
-  status: "success";
 }
 
 export interface PostSignedGamesError extends ApiError {
@@ -45,9 +44,8 @@ export type PostEnteredGameRequest = z.infer<
   typeof PostEnteredGameRequestSchema
 >;
 
-export interface PostEnteredGameResponse {
+export interface PostEnteredGameResponse extends ApiResult {
   message: string;
-  status: "success";
   enteredGame: SelectedGame;
 }
 
@@ -67,9 +65,8 @@ export type DeleteEnteredGameRequest = z.infer<
   typeof DeleteEnteredGameRequestSchema
 >;
 
-export interface DeleteEnteredGameResponse {
+export interface DeleteEnteredGameResponse extends ApiResult {
   message: string;
-  status: "success";
 }
 
 export interface DeleteEnteredGameError extends ApiError {

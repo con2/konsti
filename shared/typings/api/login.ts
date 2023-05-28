@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { ApiError } from "shared/typings/api/errors";
+import { ApiError, ApiResult } from "shared/typings/api/errors";
 import { UserGroup } from "shared/typings/models/user";
 
 // POST login
@@ -11,12 +11,11 @@ export const PostLoginRequestSchema = z.object({
 
 export type PostLoginRequest = z.infer<typeof PostLoginRequestSchema>;
 
-export interface PostLoginResponse {
+export interface PostLoginResponse extends ApiResult {
   groupCode: string;
   jwt: string;
   message: string;
   serial: string;
-  status: "success";
   userGroup: UserGroup;
   username: string;
 }
