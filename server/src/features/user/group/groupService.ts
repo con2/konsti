@@ -24,6 +24,7 @@ import {
 } from "shared/typings/api/groups";
 import { GroupMember } from "shared/typings/models/groups";
 import { User } from "shared/typings/models/user";
+import { isErrorResult, unwrapResult } from "shared/utils/asyncResult";
 
 const { directSignupAlwaysOpenIds } = sharedConfig;
 
@@ -158,17 +159,18 @@ export const joinGroup = async (
   }
 
   // Check if code is valid
-  let findSerialResponse;
-  try {
-    findSerialResponse = await findUserSerial({ serial: groupCode });
-  } catch (error) {
-    logger.error(`findSerial(): ${error}`);
+  const findSerialResponseAsyncResult = await findUserSerial({
+    serial: groupCode,
+  });
+  if (isErrorResult(findSerialResponseAsyncResult)) {
     return {
       message: "Error finding serial",
       status: "error",
       errorId: "invalidGroupCode",
     };
   }
+
+  const findSerialResponse = unwrapResult(findSerialResponseAsyncResult);
 
   if (!findSerialResponse?.serial) {
     // Invalid code

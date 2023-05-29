@@ -17,6 +17,7 @@ import {
 import { ApiError } from "shared/typings/api/errors";
 import { findUserSignups } from "server/features/signup/signupRepository";
 import { SelectedGame } from "shared/typings/models/user";
+import { isErrorResult, unwrapResult } from "shared/utils/asyncResult";
 
 export const storeUser = async (
   username: string,
@@ -212,26 +213,32 @@ export const storeUserPassword = async (
 export const fetchUserByUsername = async (
   username: string
 ): Promise<GetUserResponse | ApiError> => {
-  let user;
-  let signups;
-
-  if (username) {
-    try {
-      user = await findUser(username);
-      signups = await findUserSignups(username);
-    } catch (error) {
-      logger.error(`findUser(): ${error}`);
-      return {
-        message: "Getting user data failed",
-        status: "error",
-        errorId: "unknown",
-      };
-    }
+  const userAsyncResult = await findUser(username);
+  if (isErrorResult(userAsyncResult)) {
+    return {
+      message: "Getting user data failed",
+      status: "error",
+      errorId: "unknown",
+    };
   }
 
+  const user = unwrapResult(userAsyncResult);
   if (!user) {
     return {
       message: `User ${username} not found`,
+      status: "error",
+      errorId: "unknown",
+    };
+  }
+
+  let signups;
+
+  try {
+    signups = await findUserSignups(username);
+  } catch (error) {
+    logger.error(`findUser(): ${error}`);
+    return {
+      message: "Getting user data failed",
       status: "error",
       errorId: "unknown",
     };
@@ -268,22 +275,38 @@ export const fetchUserByUsername = async (
 export const fetchUserBySerialOrUsername = async (
   searchTerm: string
 ): Promise<GetUserBySerialResponse | ApiError> => {
-  let user;
-
-  try {
-    user = await findUserBySerial(searchTerm);
-
-    if (user === null) {
-      user = await findUser(searchTerm);
-    }
-  } catch (error) {
-    logger.error(`fetchUserBySerialOrUsername(): ${error}`);
+  // Try to find user first with serial
+  const userBySerialAsyncResult = await findUserBySerial(searchTerm);
+  if (isErrorResult(userBySerialAsyncResult)) {
     return {
       message: "Getting user data failed",
       status: "error",
       errorId: "unknown",
     };
   }
+
+  const userBySerial = unwrapResult(userBySerialAsyncResult);
+
+  if (userBySerial) {
+    return {
+      message: "Getting user data success",
+      status: "success",
+      serial: userBySerial.serial,
+      username: userBySerial.username,
+    };
+  }
+
+  // If serial find fails, use username
+  const userAsyncResult = await findUser(searchTerm);
+  if (isErrorResult(userAsyncResult)) {
+    return {
+      message: "Getting user data failed",
+      status: "error",
+      errorId: "unknown",
+    };
+  }
+
+  const user = unwrapResult(userAsyncResult);
 
   if (!user) {
     return {

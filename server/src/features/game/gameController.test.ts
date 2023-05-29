@@ -157,7 +157,8 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
     expect(games.length).toEqual(1);
     expect(games[0].title).toEqual(testGame.title);
 
-    const updatedUser = await findUser(mockUser.username);
+    const updatedUserAsyncResult = await findUser(mockUser.username);
+    const updatedUser = unsafelyUnwrapResult(updatedUserAsyncResult);
     expect(updatedUser?.signedGames.length).toEqual(1);
     expect(updatedUser?.signedGames[0].gameDetails.title).toEqual(
       testGame.title
@@ -273,7 +274,8 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
     expect(response.status).toEqual(200);
 
-    const updatedUser = await findUser(mockUser.username);
+    const updatedUserAsyncResult = await findUser(mockUser.username);
+    const updatedUser = unsafelyUnwrapResult(updatedUserAsyncResult);
     expect(updatedUser?.signedGames.length).toEqual(1);
     expect(updatedUser?.signedGames[0].gameDetails.title).toEqual(
       testGame2.title

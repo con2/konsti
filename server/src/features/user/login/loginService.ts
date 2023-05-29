@@ -4,22 +4,22 @@ import { getJWT } from "server/utils/jwt";
 import { findSettings } from "server/features/settings/settingsRepository";
 import { findUser } from "server/features/user/userRepository";
 import { logger } from "server/utils/logger";
+import { isErrorResult, unwrapResult } from "shared/utils/asyncResult";
 
 export const login = async (
   username: string,
   password: string
 ): Promise<PostLoginResponse | PostLoginError> => {
-  let user;
-  try {
-    user = await findUser(username);
-  } catch (error) {
-    logger.error(`Login: ${error}`);
+  const userAsyncResult = await findUser(username);
+  if (isErrorResult(userAsyncResult)) {
     return {
       message: "User login error",
       status: "error",
       errorId: "unknown",
     };
   }
+
+  const user = unwrapResult(userAsyncResult);
 
   if (!user) {
     logger.info(`Login: User "${username}" not found`);

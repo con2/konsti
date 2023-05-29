@@ -66,10 +66,18 @@ export const storeSignup = async (
     };
   }
 
-  try {
-    const user = await findUser(username);
-    if (!user) throw new Error("User not found");
-  } catch (error) {
+  const userAsyncResult = await findUser(username);
+  if (isErrorResult(userAsyncResult)) {
+    return {
+      message: `Error finding user`,
+      status: "error",
+      errorId: "unknown",
+    };
+  }
+
+  const user = unwrapResult(userAsyncResult);
+
+  if (!user) {
     return {
       message: `Error finding user`,
       status: "error",

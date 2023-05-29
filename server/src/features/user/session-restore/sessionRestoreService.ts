@@ -4,6 +4,7 @@ import { decodeJWT, getJWT, verifyJWT } from "server/utils/jwt";
 import { logger } from "server/utils/logger";
 import { PostLoginError, PostLoginResponse } from "shared/typings/api/login";
 import { UserGroup } from "shared/typings/models/user";
+import { isErrorResult, unwrapResult } from "shared/utils/asyncResult";
 
 export const loginWithJwt = async (
   jwt: string
@@ -44,17 +45,16 @@ export const loginWithJwt = async (
   }
 
   if (typeof jwtResponse.username === "string") {
-    let user;
-    try {
-      user = await findUser(jwtResponse.username);
-    } catch (error) {
-      logger.error(`Login: ${error}`);
+    const userAsyncResult = await findUser(jwtResponse.username);
+    if (isErrorResult(userAsyncResult)) {
       return {
         message: "Session restore error",
         status: "error",
         errorId: "unknown",
       };
     }
+
+    const user = unwrapResult(userAsyncResult);
 
     if (!user) {
       logger.info(`Login: User "${username}" not found`);

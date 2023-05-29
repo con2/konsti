@@ -106,69 +106,66 @@ export const updateUserPassword = async (
   }
 };
 
-export const findUser = async (username: string): Promise<User | null> => {
-  let response;
+export const findUser = async (
+  username: string
+): Promise<AsyncResult<User | null, MongoDbError>> => {
   try {
-    response = await UserModel.findOne({ username }, "-signedGames._id")
+    const response = await UserModel.findOne({ username }, "-signedGames._id")
       .lean<User>()
       .populate("favoritedGames")
       .populate("signedGames.gameDetails");
+    if (!response) {
+      logger.info(`MongoDB: User "${username}" not found`);
+    } else {
+      logger.debug(`MongoDB: Found user "${username}"`);
+    }
+    return makeSuccessResult(response);
   } catch (error) {
     logger.error(`MongoDB: Error finding user ${username} - ${error}`);
-    throw error;
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
-
-  if (!response) {
-    logger.info(`MongoDB: User "${username}" not found`);
-  } else {
-    logger.debug(`MongoDB: Found user "${username}"`);
-  }
-  return response;
 };
 
 export const findUserBySerial = async (
   serial: string
-): Promise<User | null> => {
-  let response;
+): Promise<AsyncResult<User | null, MongoDbError>> => {
   try {
-    response = await UserModel.findOne({ serial }, "-signedGames._id")
+    const response = await UserModel.findOne({ serial }, "-signedGames._id")
       .lean<User>()
       .populate("favoritedGames")
       .populate("signedGames.gameDetails");
+
+    if (!response) {
+      logger.info(`MongoDB: User with serial "${serial}" not found`);
+    } else {
+      logger.debug(`MongoDB: Found user with serial "${serial}"`);
+    }
+    return makeSuccessResult(response);
   } catch (error) {
     logger.error(
       `MongoDB: Error finding user with serial ${serial} - ${error}`
     );
-    throw error;
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
-
-  if (!response) {
-    logger.info(`MongoDB: User with serial "${serial}" not found`);
-  } else {
-    logger.debug(`MongoDB: Found user with serial "${serial}"`);
-  }
-  return response;
 };
 
 export const findUserSerial = async (
   serialData: Serial
-): Promise<User | null> => {
+): Promise<AsyncResult<User | null, MongoDbError>> => {
   const serial = serialData.serial;
 
-  let response;
   try {
-    response = await UserModel.findOne({ serial }).lean<User>();
+    const response = await UserModel.findOne({ serial }).lean<User>();
+    if (!response) {
+      logger.info(`MongoDB: Serial "${serial}" not found`);
+    } else {
+      logger.debug(`MongoDB: Found Serial "${serial}"`);
+    }
+    return makeSuccessResult(response);
   } catch (error) {
     logger.error(`MongoDB: Error finding Serial ${serial} - ${error}`);
-    throw error;
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
-
-  if (!response) {
-    logger.info(`MongoDB: Serial "${serial}" not found`);
-  } else {
-    logger.debug(`MongoDB: Found Serial "${serial}"`);
-  }
-  return response;
 };
 
 export const findUsers = async (): Promise<

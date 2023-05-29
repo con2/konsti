@@ -130,7 +130,8 @@ describe(`POST ${ApiEndpoint.GROUP}`, () => {
       );
 
     expect(response.status).toEqual(200);
-    const updatedUser = await findUser(mockUser.username);
+    const updatedUserAsyncResult = await findUser(mockUser.username);
+    const updatedUser = unsafelyUnwrapResult(updatedUserAsyncResult);
     expect(updatedUser?.groupCode).toEqual(user.serial);
   });
 });
@@ -176,7 +177,8 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
       );
 
     expect(response.status).toEqual(200);
-    const updatedUser = await findUser(mockUser2.username);
+    const updatedUserAsyncResult = await findUser(mockUser2.username);
+    const updatedUser = unsafelyUnwrapResult(updatedUserAsyncResult);
     expect(updatedUser?.groupCode).toEqual(mockUser.serial);
     expect(updatedUser?.signedGames.length).toEqual(0);
   });
@@ -231,7 +233,8 @@ describe(`POST ${ApiEndpoint.LEAVE_GROUP}`, () => {
       );
 
     expect(response.status).toEqual(200);
-    const updatedUser = await findUser(mockUser2.username);
+    const updatedUserAsyncResult = await findUser(mockUser2.username);
+    const updatedUser = unsafelyUnwrapResult(updatedUserAsyncResult);
     expect(updatedUser?.groupCode).toEqual("0");
   });
 });
@@ -269,9 +272,11 @@ describe(`POST ${ApiEndpoint.CLOSE_GROUP}`, () => {
       );
 
     expect(response.status).toEqual(200);
-    const updatedUser = await findUser(mockUser2.username);
+    const updatedUserAsyncResult = await findUser(mockUser2.username);
+    const updatedUser = unsafelyUnwrapResult(updatedUserAsyncResult);
     expect(updatedUser?.groupCode).toEqual("0");
-    const updatedUser2 = await findUser(mockUser2.username);
+    const updatedUserAsyncResult2 = await findUser(mockUser2.username);
+    const updatedUser2 = unsafelyUnwrapResult(updatedUserAsyncResult2);
     expect(updatedUser2?.groupCode).toEqual("0");
   });
 });
