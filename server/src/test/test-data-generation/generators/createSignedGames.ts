@@ -8,7 +8,7 @@ import { findUsers } from "server/features/user/userRepository";
 import { findGames } from "server/features/game/gameRepository";
 import { SelectedGame, User } from "shared/typings/models/user";
 import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
-import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnfurlAsyncResult";
+import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 
 export const createSignedGames = async (): Promise<void> => {
   const gamesAsyncResult = await findGames();

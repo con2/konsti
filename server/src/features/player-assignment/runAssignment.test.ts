@@ -33,7 +33,7 @@ import {
 } from "server/test/mock-data/mockUser";
 import { ProgramType } from "shared/typings/models/game";
 import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
-import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnfurlAsyncResult";
+import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 
 let mongoServer: MongoMemoryServer;
 

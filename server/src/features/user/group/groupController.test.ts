@@ -33,7 +33,7 @@ import { testGame, testGame2 } from "shared/tests/testGame";
 import { closeServer, startServer } from "server/utils/server";
 import { saveSignup } from "server/features/signup/signupRepository";
 import { saveTestSettings } from "server/test/test-settings/testSettingsRepository";
-import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnfurlAsyncResult";
+import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 
 let server: Server;
 let mongoServer: MongoMemoryServer;

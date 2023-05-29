@@ -9,7 +9,7 @@ import { testGame, testGame2 } from "shared/tests/testGame";
 import { findUser, saveUser } from "server/features/user/userRepository";
 import { findGames, saveGames } from "server/features/game/gameRepository";
 import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
-import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnfurlAsyncResult";
+import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 
 let mongoServer: MongoMemoryServer;
 

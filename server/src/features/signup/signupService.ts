@@ -14,6 +14,7 @@ import { getDirectSignupStartTime } from "shared/utils/getDirectSignupStartTime"
 import { logger } from "server/utils/logger";
 import { delSignup, saveSignup } from "server/features/signup/signupRepository";
 import { findUser } from "server/features/user/userRepository";
+import { isErrorResult, unwrapResult } from "shared/utils/asyncResult";
 
 export const storeSignup = async (
   signupRequest: PostEnteredGameRequest
@@ -21,11 +22,17 @@ export const storeSignup = async (
   const { startTime, enteredGameId, username } = signupRequest;
   const timeNow = await getTime();
 
-  let game;
-  try {
-    game = await findGameById(enteredGameId);
-    if (!game) throw new Error("Entered game not found");
-  } catch (error) {
+  const gameAsyncResult = await findGameById(enteredGameId);
+  if (isErrorResult(gameAsyncResult)) {
+    return {
+      message: `Signed game not found`,
+      status: "error",
+      errorId: "unknown",
+    };
+  }
+
+  const game = unwrapResult(gameAsyncResult);
+  if (!game) {
     return {
       message: `Signed game not found`,
       status: "error",
@@ -70,16 +77,16 @@ export const storeSignup = async (
     };
   }
 
-  let signup;
-  try {
-    signup = await saveSignup(signupRequest);
-  } catch (error) {
+  const signupAsyncResult = await saveSignup(signupRequest);
+  if (isErrorResult(signupAsyncResult)) {
     return {
-      message: `Store signup failure: ${error}`,
+      message: `Store signup failure`,
       status: "error",
       errorId: "unknown",
     };
   }
+
+  const signup = unwrapResult(signupAsyncResult);
 
   const newSignup = signup.userSignups.find(
     (userSignup) => userSignup.username === username

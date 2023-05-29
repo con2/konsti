@@ -10,4 +10,5 @@ export interface ApiError {
 
 export enum MongoDbError {
   UNKNOWN_ERROR = "unknownError",
+  GAME_NOT_FOUND = "gameNotFound",
 }

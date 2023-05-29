@@ -6,7 +6,7 @@ import {
   saveSignupQuestion,
 } from "server/features/settings/settingsRepository";
 import { shuffleArray } from "server/utils/shuffleArray";
-import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnfurlAsyncResult";
+import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 
 const NUMBER_OF_TEST_QUESTIONS = 20;
 

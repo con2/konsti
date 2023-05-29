@@ -39,7 +39,7 @@ import {
   findUserSignups,
   saveSignup,
 } from "server/features/signup/signupRepository";
-import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnfurlAsyncResult";
+import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 
 let server: Server;
 let mongoServer: MongoMemoryServer;
