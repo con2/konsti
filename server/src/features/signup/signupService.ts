@@ -132,16 +132,16 @@ export const removeSignup = async (
     };
   }
 
-  let signup;
-  try {
-    signup = await delSignup(signupRequest);
-  } catch (error) {
+  const signupAsyncResult = await delSignup(signupRequest);
+  if (isErrorResult(signupAsyncResult)) {
     return {
       message: "Delete signup failure",
       status: "error",
       errorId: "unknown",
     };
   }
+
+  const signup = unwrapResult(signupAsyncResult);
 
   if (signup) {
     return {
