@@ -1,7 +1,7 @@
 import { AsyncResult, isErrorResult } from "shared/utils/asyncResult";
 
 // Use for tests and test data generation only!
-export function unsafelyUnfurlAsyncResult<T, Err>(
+export function unsafelyUnwrapResult<T, Err>(
   result: AsyncResult<T, Err>
 ): T | never {
   if (isErrorResult(result)) {

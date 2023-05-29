@@ -9,7 +9,7 @@ import { testGame, testGame2 } from "shared/tests/testGame";
 import { findUser, saveUser } from "server/features/user/userRepository";
 import { findGames, saveGames } from "server/features/game/gameRepository";
 import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
-import { unsafelyUnfurlAsyncResult } from "server/test/utils/unsafelyUnfurlAsyncResult";
+import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnfurlAsyncResult";
 
 let mongoServer: MongoMemoryServer;
 
@@ -34,7 +34,7 @@ afterEach(async () => {
 test("should remove overlapping signups from user", async () => {
   await saveGames([testGame, testGame2]);
   const insertedGamesAsyncResult = await findGames();
-  const insertedGames = unsafelyUnfurlAsyncResult(insertedGamesAsyncResult);
+  const insertedGames = unsafelyUnwrapResult(insertedGamesAsyncResult);
   expect(insertedGames.length).toEqual(2);
 
   await saveUser(mockUser);

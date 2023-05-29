@@ -39,7 +39,7 @@ import {
   findUserSignups,
   saveSignup,
 } from "server/features/signup/signupRepository";
-import { unsafelyUnfurlAsyncResult } from "server/test/utils/unsafelyUnfurlAsyncResult";
+import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnfurlAsyncResult";
 
 let server: Server;
 let mongoServer: MongoMemoryServer;
@@ -122,7 +122,7 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
     expect(spy).toHaveBeenCalledTimes(1);
 
     const gamesAsyncResult = await findGames();
-    const games = unsafelyUnfurlAsyncResult(gamesAsyncResult);
+    const games = unsafelyUnwrapResult(gamesAsyncResult);
 
     expect(games.length).toEqual(1);
     expect(games[0].title).toEqual(testGame.title);
@@ -152,7 +152,7 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
     expect(response.status).toEqual(200);
 
     const gamesAsyncResult = await findGames();
-    const games = unsafelyUnfurlAsyncResult(gamesAsyncResult);
+    const games = unsafelyUnwrapResult(gamesAsyncResult);
 
     expect(games.length).toEqual(1);
     expect(games[0].title).toEqual(testGame.title);
@@ -183,7 +183,7 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
     expect(response.status).toEqual(200);
 
     const gamesAsyncResult = await findGames();
-    const games = unsafelyUnfurlAsyncResult(gamesAsyncResult);
+    const games = unsafelyUnwrapResult(gamesAsyncResult);
 
     expect(games.length).toEqual(2);
     const sortedGames = _.sortBy(games, "title");
@@ -202,7 +202,7 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
     expect(response.status).toEqual(200);
 
     const gamesAsyncResult = await findGames();
-    const games = unsafelyUnfurlAsyncResult(gamesAsyncResult);
+    const games = unsafelyUnwrapResult(gamesAsyncResult);
 
     expect(games.length).toEqual(2);
     const sortedGames = _.sortBy(games, "title");
@@ -234,7 +234,7 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
     expect(response.status).toEqual(200);
 
     const gamesAsyncResult = await findGames();
-    const games = unsafelyUnfurlAsyncResult(gamesAsyncResult);
+    const games = unsafelyUnwrapResult(gamesAsyncResult);
 
     expect(games.length).toEqual(1);
     expect(dayjs(games[0].startTime).utc().format()).toEqual(newStartTime);

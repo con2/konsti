@@ -33,7 +33,7 @@ import { testGame, testGame2 } from "shared/tests/testGame";
 import { closeServer, startServer } from "server/utils/server";
 import { saveSignup } from "server/features/signup/signupRepository";
 import { saveTestSettings } from "server/test/test-settings/testSettingsRepository";
-import { unsafelyUnfurlAsyncResult } from "server/test/utils/unsafelyUnfurlAsyncResult";
+import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnfurlAsyncResult";
 
 let server: Server;
 let mongoServer: MongoMemoryServer;
@@ -159,9 +159,7 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
       signedGames: mockSignedGames,
       username: mockUser2.username,
     });
-    const userWithSignups = unsafelyUnfurlAsyncResult(
-      userWithSignupsAsyncResult
-    );
+    const userWithSignups = unsafelyUnwrapResult(userWithSignupsAsyncResult);
     expect(userWithSignups.signedGames.length).toEqual(2);
 
     const groupRequest: PostJoinGroupRequest = {

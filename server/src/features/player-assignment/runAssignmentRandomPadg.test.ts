@@ -16,7 +16,7 @@ import { verifyUserSignups } from "server/features/player-assignment/utils/verif
 import { AssignmentStrategy } from "shared/config/sharedConfig.types";
 import { sharedConfig } from "shared/config/sharedConfig";
 import { AssignmentResultStatus } from "server/typings/result.typings";
-import { unsafelyUnfurlAsyncResult } from "server/test/utils/unsafelyUnfurlAsyncResult";
+import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnfurlAsyncResult";
 
 let mongoServer: MongoMemoryServer;
 
@@ -67,7 +67,7 @@ test("Assignment with valid data should return success with random+padg strategy
     assignmentStrategy,
     startingTime,
   });
-  const assignResults = unsafelyUnfurlAsyncResult(assignResultsAsyncResult);
+  const assignResults = unsafelyUnwrapResult(assignResultsAsyncResult);
 
   expect(assignResults.status).toEqual("success");
   expect(assignResults.results.length).toBeGreaterThanOrEqual(
@@ -92,7 +92,7 @@ test("Assignment with valid data should return success with random+padg strategy
     assignmentStrategy,
     startingTime,
   });
-  const assignResults2 = unsafelyUnfurlAsyncResult(assignResultsEither2);
+  const assignResults2 = unsafelyUnwrapResult(assignResultsEither2);
 
   expect(assignResults2.status).toEqual("success");
   expect(assignResults2.results.length).toBeGreaterThanOrEqual(
@@ -135,7 +135,7 @@ test("Assignment with no games should return error with random+padg strategy", a
     assignmentStrategy,
     startingTime,
   });
-  const assignResults = unsafelyUnfurlAsyncResult(assignResultsAsyncResult);
+  const assignResults = unsafelyUnwrapResult(assignResultsAsyncResult);
 
   expect(assignResults.status).toEqual(
     AssignmentResultStatus.NO_STARTING_GAMES
@@ -165,7 +165,7 @@ test("Assignment with no players should return error with random+padg strategy",
     assignmentStrategy,
     startingTime,
   });
-  const assignResults = unsafelyUnfurlAsyncResult(assignResultsAsyncResult);
+  const assignResults = unsafelyUnwrapResult(assignResultsAsyncResult);
 
   expect(assignResults.status).toEqual(AssignmentResultStatus.NO_SIGNUP_WISHES);
 });
