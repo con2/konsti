@@ -39,7 +39,10 @@ export const saveGames = async (
     return removeDeletedGamesAsyncResult;
   }
 
-  await removeInvalidGamesFromUsers();
+  const removeInvalidGamesAsyncResult = await removeInvalidGamesFromUsers();
+  if (isErrorResult(removeInvalidGamesAsyncResult)) {
+    return removeInvalidGamesAsyncResult;
+  }
 
   const removeMovedGamesAsyncResult = await removeMovedGamesFromUsers(games);
   if (isErrorResult(removeMovedGamesAsyncResult)) {

@@ -2,7 +2,6 @@ import { logger } from "server/utils/logger";
 import { updateWithSignups } from "server/features/game-popularity/utils/updateWithSignups";
 import { updateWithAssign } from "server/features/game-popularity/utils/updateWithAssign";
 import { config } from "server/config";
-import { User } from "shared/typings/models/user";
 import { findUsers } from "server/features/user/userRepository";
 import { findGames } from "server/features/game/gameRepository";
 import { findSignups } from "server/features/signup/signupRepository";
@@ -24,12 +23,12 @@ export const updateGamePopularity = async (): Promise<
     `Calculate game popularity using "${gamePopularityUpdateMethod}" method`
   );
 
-  let users: User[] = [];
-  try {
-    users = await findUsers();
-  } catch (error) {
-    logger.error(`findUsers error: ${error}`);
+  const usersAsyncResult = await findUsers();
+  if (isErrorResult(usersAsyncResult)) {
+    return usersAsyncResult;
   }
+
+  const users = unwrapResult(usersAsyncResult);
 
   const gamesAsyncResult = await findGames();
 

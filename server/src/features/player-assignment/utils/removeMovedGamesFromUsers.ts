@@ -43,13 +43,12 @@ export const removeMovedGamesFromUsers = async (
 
   logger.info(`Found ${movedGames.length} moved games`);
 
-  let users;
-  try {
-    users = await findUsers();
-  } catch (error) {
-    logger.error(`findUsers error: ${error}`);
-    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+  const usersAsyncResult = await findUsers();
+  if (isErrorResult(usersAsyncResult)) {
+    return usersAsyncResult;
   }
+
+  const users = unwrapResult(usersAsyncResult);
 
   const promises = users.map(async (user) => {
     const signedGames = user.signedGames.filter((signedGame) => {

@@ -15,7 +15,9 @@ export const createSignups = async (): Promise<void> => {
   const gamesAsyncResult = await findGames();
   const games = unsafelyUnwrapResult(gamesAsyncResult);
 
-  const allUsers = await findUsers();
+  const allUsersAsyncResult = await findUsers();
+  const allUsers = unsafelyUnwrapResult(allUsersAsyncResult);
+
   const settings = await findSettings();
 
   const users = allUsers.filter(

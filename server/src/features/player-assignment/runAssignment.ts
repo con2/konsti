@@ -2,7 +2,6 @@ import { logger } from "server/utils/logger";
 import { runAssignmentStrategy } from "server/features/player-assignment/utils/runAssignmentStrategy";
 import { removeInvalidGamesFromUsers } from "server/features/player-assignment/utils/removeInvalidGamesFromUsers";
 import { PlayerAssignmentResult } from "server/typings/result.typings";
-import { User } from "shared/typings/models/user";
 import { ProgramType } from "shared/typings/models/game";
 import { findUsers } from "server/features/user/userRepository";
 import { findGames } from "server/features/game/gameRepository";
@@ -60,12 +59,12 @@ export const runAssignment = async ({
     throw new Error(`Error removing invalid games: ${error}`);
   }
 
-  let users: readonly User[] = [];
-  try {
-    users = await findUsers();
-  } catch (error) {
-    throw new Error(`findUsers error: ${error}`);
+  const usersAsyncResult = await findUsers();
+  if (isErrorResult(usersAsyncResult)) {
+    return usersAsyncResult;
   }
+
+  const users = unwrapResult(usersAsyncResult);
 
   // Only include TABLETOP_RPG and don't include "directSignupAlwaysOpen" games
   const filteredUsers = users.map((user) => {

@@ -6,17 +6,25 @@ import { findSignups } from "server/features/signup/signupRepository";
 import { Signup } from "server/features/signup/signup.typings";
 import { ProgramType } from "shared/typings/models/game";
 import { sharedConfig } from "shared/config/sharedConfig";
+import {
+  AsyncResult,
+  isErrorResult,
+  makeSuccessResult,
+  unwrapResult,
+} from "shared/utils/asyncResult";
+import { MongoDbError } from "shared/typings/api/errors";
 
-export const verifyUserSignups = async (): Promise<void> => {
+export const verifyUserSignups = async (): Promise<
+  AsyncResult<void, MongoDbError>
+> => {
   logger.info("Verify signed games and signups match for users");
 
-  let users: User[];
-  try {
-    users = await findUsers();
-  } catch (error) {
-    logger.error(error);
-    throw error;
+  const usersAsyncResult = await findUsers();
+  if (isErrorResult(usersAsyncResult)) {
+    return usersAsyncResult;
   }
+
+  const users = unwrapResult(usersAsyncResult);
 
   let signups: Signup[];
   try {
@@ -61,6 +69,8 @@ export const verifyUserSignups = async (): Promise<void> => {
       }
     });
   });
+
+  return makeSuccessResult(undefined);
 };
 
 const getGroupCreator = (users: User[], user: User): User => {

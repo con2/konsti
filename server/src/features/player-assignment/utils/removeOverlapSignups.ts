@@ -2,26 +2,31 @@ import dayjs from "dayjs";
 import isBetween from "dayjs/plugin/isBetween"; // ES 2015
 import { logger } from "server/utils/logger";
 import { UserSignedGames } from "server/typings/result.typings";
-import { User } from "shared/typings/models/user";
 import { findUsers } from "server/features/user/userRepository";
 import { Result } from "shared/typings/models/result";
 import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
+import {
+  AsyncResult,
+  isErrorResult,
+  makeSuccessResult,
+  unwrapResult,
+} from "shared/utils/asyncResult";
+import { MongoDbError } from "shared/typings/api/errors";
 
 dayjs.extend(isBetween);
 
 export const removeOverlapSignups = async (
   results: readonly Result[]
-): Promise<void> => {
+): Promise<AsyncResult<void, MongoDbError>> => {
   logger.debug("Find overlapping signups");
   const signupData: UserSignedGames[] = [];
 
-  let users: User[];
-  try {
-    users = await findUsers();
-  } catch (error) {
-    logger.error(error);
-    throw error;
+  const usersAsyncResult = await findUsers();
+  if (isErrorResult(usersAsyncResult)) {
+    return usersAsyncResult;
   }
+
+  const users = unwrapResult(usersAsyncResult);
 
   results.map((result) => {
     const enteredGame = result.enteredGame.gameDetails;
@@ -64,4 +69,6 @@ export const removeOverlapSignups = async (
   } catch (error) {
     throw new Error(`No assign results: saveSignup error: ${error}`);
   }
+
+  return makeSuccessResult(undefined);
 };

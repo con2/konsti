@@ -3,17 +3,26 @@ import {
   updateUserByUsername,
 } from "server/features/user/userRepository";
 import { logger } from "server/utils/logger";
+import { MongoDbError } from "shared/typings/api/errors";
+import {
+  AsyncResult,
+  isErrorResult,
+  makeErrorResult,
+  makeSuccessResult,
+  unwrapResult,
+} from "shared/utils/asyncResult";
 
-export const removeInvalidGamesFromUsers = async (): Promise<void> => {
+export const removeInvalidGamesFromUsers = async (): Promise<
+  AsyncResult<void, MongoDbError>
+> => {
   logger.info("Remove invalid games from users");
 
-  let users;
-  try {
-    users = await findUsers();
-  } catch (error) {
-    logger.error(`findUsers error: ${error}`);
-    throw error;
+  const usersAsyncResult = await findUsers();
+  if (isErrorResult(usersAsyncResult)) {
+    return usersAsyncResult;
   }
+
+  const users = unwrapResult(usersAsyncResult);
 
   try {
     await Promise.all(
@@ -61,6 +70,8 @@ export const removeInvalidGamesFromUsers = async (): Promise<void> => {
     );
   } catch (error) {
     logger.error(`updateUser error: ${error}`);
-    throw error;
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
+
+  return makeSuccessResult(undefined);
 };

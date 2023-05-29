@@ -13,7 +13,8 @@ import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 export const createSignedGames = async (): Promise<void> => {
   const gamesAsyncResult = await findGames();
   const games = unsafelyUnwrapResult(gamesAsyncResult);
-  const allUsers = await findUsers();
+  const allUsersAsyncResult = await findUsers();
+  const allUsers = unsafelyUnwrapResult(allUsersAsyncResult);
 
   const users = allUsers.filter(
     (user) => user.username !== "admin" && user.username !== "helper"

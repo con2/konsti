@@ -3,6 +3,12 @@ import { UserModel } from "server/features/user/userSchema";
 import { NewUser } from "server/typings/user.typings";
 import { Serial } from "server/typings/serial.typings";
 import { User, UserGroup } from "shared/typings/models/user";
+import {
+  AsyncResult,
+  makeErrorResult,
+  makeSuccessResult,
+} from "shared/utils/asyncResult";
+import { MongoDbError } from "shared/typings/api/errors";
 
 export const removeUsers = async (): Promise<void> => {
   logger.info("MongoDB: remove ALL users from db");
@@ -165,16 +171,18 @@ export const findUserSerial = async (
   return response;
 };
 
-export const findUsers = async (): Promise<User[]> => {
+export const findUsers = async (): Promise<
+  AsyncResult<User[], MongoDbError>
+> => {
   logger.debug(`MongoDB: Find all users`);
-  let users: User[];
   try {
-    users = await UserModel.find({})
-      .lean<User>()
+    const users = await UserModel.find({})
+      .lean<User[]>()
       .populate("favoritedGames")
       .populate("signedGames.gameDetails");
+    return makeSuccessResult(users);
   } catch (error) {
-    throw new Error(`MongoDB: Error fetching users - ${error}`);
+    logger.error(`MongoDB: Error fetching users - ${error}`);
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
-  return users;
 };
