@@ -12,17 +12,24 @@ import {
 } from "shared/utils/asyncResult";
 import { MongoDbError } from "shared/typings/api/errors";
 
-export const removeResults = async (): Promise<void> => {
+export const removeResults = async (): Promise<
+  AsyncResult<void, MongoDbError>
+> => {
   logger.info("MongoDB: remove ALL results from db");
-  await ResultsModel.deleteMany({});
+  try {
+    await ResultsModel.deleteMany({});
+    return makeSuccessResult(undefined);
+  } catch (error) {
+    logger.error(`MongoDB: Error removing ALL results - ${error}`);
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+  }
 };
 
 export const findResult = async (
   startTime: string
-): Promise<ResultsCollectionEntry | null> => {
-  let response;
+): Promise<AsyncResult<ResultsCollectionEntry | null, MongoDbError>> => {
   try {
-    response = await ResultsModel.findOne(
+    const response = await ResultsModel.findOne(
       { startTime },
       "-_id -__v -createdAt -updatedAt -result._id"
     )
@@ -30,12 +37,13 @@ export const findResult = async (
       .sort({ createdAt: -1 })
       .populate("results.enteredGame.gameDetails");
     logger.debug(`MongoDB: Results data found for time ${startTime}`);
+    return makeSuccessResult(response);
   } catch (error) {
-    throw new Error(
+    logger.error(
       `MongoDB: Error finding results data for time ${startTime} - ${error}`
     );
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
-  return response;
 };
 
 export const saveResult = async (
