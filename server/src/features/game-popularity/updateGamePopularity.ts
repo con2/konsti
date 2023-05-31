@@ -45,10 +45,23 @@ export const updateGamePopularity = async (): Promise<
     logger.error(`findSignups error: ${error}`);
   }
 
-  if (gamePopularityUpdateMethod === "signups")
-    await updateWithSignups(users, games);
-  else if (gamePopularityUpdateMethod === "assign")
-    await updateWithAssign(users, games, signups);
+  if (gamePopularityUpdateMethod === "signups") {
+    const updateWithSignupsAsyncResult = await updateWithSignups(users, games);
+    if (isErrorResult(updateWithSignupsAsyncResult)) {
+      return updateWithSignupsAsyncResult;
+    }
+  }
+
+  if (gamePopularityUpdateMethod === "assign") {
+    const updateWithAssignAsyncResult = await updateWithAssign(
+      users,
+      games,
+      signups
+    );
+    if (isErrorResult(updateWithAssignAsyncResult)) {
+      return updateWithAssignAsyncResult;
+    }
+  }
 
   logger.info("Game popularity updated");
 
