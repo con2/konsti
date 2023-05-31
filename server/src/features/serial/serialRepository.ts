@@ -45,20 +45,22 @@ export const saveSerials = async (
   }
 };
 
-export const findSerial = async (serial: string): Promise<boolean> => {
+export const findSerial = async (
+  serial: string
+): Promise<AsyncResult<boolean, MongoDbError>> => {
   let response;
   try {
     response = await SerialModel.findOne({ serial }).lean<Serial>();
   } catch (error) {
     logger.error(`MongoDB: Error finding serial ${serial} - ${error}`);
-    throw error;
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 
   if (!response) {
     logger.debug(`MongoDB: Serial "${serial}" not found`);
-    return false;
+    return makeSuccessResult(false);
   } else {
     logger.debug(`MongoDB: Found serial "${serial}"`);
-    return true;
+    return makeSuccessResult(true);
   }
 };

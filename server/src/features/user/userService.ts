@@ -50,17 +50,16 @@ export const storeUser = async (
     };
   }
 
-  let serialFound = false;
-  try {
-    serialFound = await findSerial(serial);
-  } catch (error) {
-    logger.error(`Error finding serial: ${error}`);
+  const serialFoundAsyncResult = await findSerial(serial);
+  if (isErrorResult(serialFoundAsyncResult)) {
     return {
       errorId: "unknown",
       message: "Finding serial failed",
       status: "error",
     };
   }
+
+  const serialFound = unwrapResult(serialFoundAsyncResult);
 
   // Check for valid serial
   if (!serialFound) {
