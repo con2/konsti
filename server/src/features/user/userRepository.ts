@@ -86,11 +86,9 @@ export const updateUserByUsername = async (
 export const updateUserPassword = async (
   username: string,
   password: string
-): Promise<User | null> => {
-  let response;
-
+): Promise<AsyncResult<User | null, MongoDbError>> => {
   try {
-    response = await UserModel.findOneAndUpdate(
+    const response = await UserModel.findOneAndUpdate(
       { username },
       {
         password,
@@ -100,15 +98,13 @@ export const updateUserPassword = async (
       .lean<User>()
       .populate("favoritedGames")
       .populate("signedGames.gameDetails");
-
     logger.debug(`MongoDB: Password for user "${username}" updated`);
-
-    return response;
+    return makeSuccessResult(response);
   } catch (error) {
     logger.error(
       `MongoDB: Error updating password for user ${username} - ${error}`
     );
-    throw error;
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
 

@@ -190,10 +190,12 @@ export const storeUserPassword = async (
     };
   }
 
-  try {
-    await updateUserPassword(username, passwordHash);
-  } catch (error) {
-    logger.error(`updateUserPassword error: ${error}`);
+  const updateUserPasswordAsyncResult = await updateUserPassword(
+    username,
+    passwordHash
+  );
+
+  if (isErrorResult(updateUserPasswordAsyncResult)) {
     return {
       message: "Password change error",
       status: "error",
