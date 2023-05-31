@@ -113,7 +113,7 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
   test("should return 200 with valid authorization and add games to DB", async () => {
     const spy = vi
       .spyOn(testHelperWrapper, "getEventProgramItems")
-      .mockResolvedValue([testKompassiGame]);
+      .mockResolvedValue({ kind: "success", value: [testKompassiGame] });
 
     const response = await request(server)
       .post(ApiEndpoint.GAMES)
@@ -129,9 +129,10 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
   });
 
   test("should remove games, selectedGames, signups, and favoritedGames that are not in the server response", async () => {
-    vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue([
-      testKompassiGame,
-    ]);
+    vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
+      kind: "success",
+      value: [testKompassiGame],
+    });
 
     await saveGames([testGame, testGame2]);
     await saveUser(mockUser);
@@ -193,7 +194,10 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
   });
 
   test("should not modify anything if server response is empty array", async () => {
-    vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue([]);
+    vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
+      kind: "success",
+      value: [],
+    });
 
     await saveGames([testGame, testGame2]);
 
@@ -219,13 +223,16 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
       .add(1, "hours")
       .format();
 
-    vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue([
-      {
-        ...testKompassiGame,
-        start_time: newStartTime,
-        description: newDescription,
-      },
-    ]);
+    vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
+      kind: "success",
+      value: [
+        {
+          ...testKompassiGame,
+          start_time: newStartTime,
+          description: newDescription,
+        },
+      ],
+    });
 
     await saveGames([testGame, testGame2]);
 
@@ -248,13 +255,17 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
       .utc()
       .add(1, "hours")
       .format();
-    vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue([
-      {
-        ...testKompassiGame,
-        start_time: newStartTime,
-      },
-      testKompassiGame2,
-    ]);
+
+    vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
+      kind: "success",
+      value: [
+        {
+          ...testKompassiGame,
+          start_time: newStartTime,
+        },
+        testKompassiGame2,
+      ],
+    });
 
     await saveGames([testGame, testGame2]);
     await saveUser(mockUser);

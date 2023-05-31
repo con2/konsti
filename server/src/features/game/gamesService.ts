@@ -1,4 +1,3 @@
-import { logger } from "server/utils/logger";
 import { getGamesFromKompassi } from "server/features/game/utils/getGamesFromKompassi";
 import { updateGamePopularity } from "server/features/game-popularity/updateGamePopularity";
 import { config } from "server/config";
@@ -11,17 +10,13 @@ import {
 } from "shared/typings/api/games";
 import { findGames, saveGames } from "server/features/game/gameRepository";
 import { enrichGames } from "./gameUtils";
-import { KompassiGame } from "shared/typings/models/kompassiGame";
 import { isErrorResult, unwrapResult } from "shared/utils/asyncResult";
 
 export const updateGames = async (): Promise<
   PostUpdateGamesResponse | PostUpdateGamesError
 > => {
-  let kompassiGames = [] as readonly KompassiGame[];
-  try {
-    kompassiGames = await getGamesFromKompassi();
-  } catch (error) {
-    logger.error(`Loading games from Kompassi failed: ${error}`);
+  const kompassiGamesAsyncResult = await getGamesFromKompassi();
+  if (isErrorResult(kompassiGamesAsyncResult)) {
     return {
       message: "Loading games from Kompassi failed",
       status: "error",
@@ -29,10 +24,11 @@ export const updateGames = async (): Promise<
     };
   }
 
+  const kompassiGames = unwrapResult(kompassiGamesAsyncResult);
+
   const saveGamesAsyncResult = await saveGames(
     kompassiGameMapper(kompassiGames)
   );
-
   if (isErrorResult(saveGamesAsyncResult)) {
     return {
       message: "Games db update failed: Saving games failed",
@@ -51,10 +47,8 @@ export const updateGames = async (): Promise<
   }
 
   if (config.updateGamePopularityEnabled) {
-    try {
-      await updateGamePopularity();
-    } catch (error) {
-      logger.error(`updateGamePopularity: ${error}`);
+    const updateGamePopularityAsyncResult = await updateGamePopularity();
+    if (isErrorResult(updateGamePopularityAsyncResult)) {
       return {
         message: "Game popularity update failed",
         status: "error",

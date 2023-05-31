@@ -14,3 +14,9 @@ export enum MongoDbError {
   NO_HIDDEN_GAMES = "noHiddenGames",
   USER_NOT_FOUND = "userNotFound",
 }
+
+export enum KompassiError {
+  UNKNOWN_ERROR = "unknownError",
+  NO_PROGRAM_ITEMS = "noProgramItems",
+  INVALID_RESPONSE = "invalidResponse",
+}

@@ -12,6 +12,7 @@ import {
 import { getGamesFromKompassi } from "server/features/game/utils/getGamesFromKompassi";
 import { kompassiGameMapper } from "server/utils/kompassiGameMapper";
 import { removeTestSettings } from "server/test/test-settings/testSettingsRepository";
+import { isErrorResult, unwrapResult } from "shared/utils/asyncResult";
 
 const ADMIN_PASSWORD = "";
 const CREATE_TEST_USERS = true;
@@ -42,7 +43,11 @@ const initializeDatabase = async (): Promise<void> => {
   }
 
   logger.info("Download games from Kompassi");
-  const kompassiGames = await getGamesFromKompassi();
+  const kompassiGamesAsyncResult = await getGamesFromKompassi();
+  if (isErrorResult(kompassiGamesAsyncResult)) {
+    throw new Error("Unable to load Kompassi games");
+  }
+  const kompassiGames = unwrapResult(kompassiGamesAsyncResult);
   await saveGames(kompassiGameMapper(kompassiGames));
 
   await db.gracefulExit();
