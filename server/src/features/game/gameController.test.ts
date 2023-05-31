@@ -113,7 +113,7 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
   test("should return 200 with valid authorization and add games to DB", async () => {
     const spy = vi
       .spyOn(testHelperWrapper, "getEventProgramItems")
-      .mockResolvedValue({ kind: "success", value: [testKompassiGame] });
+      .mockResolvedValue({ value: [testKompassiGame] });
 
     const response = await request(server)
       .post(ApiEndpoint.GAMES)
@@ -130,7 +130,6 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
 
   test("should remove games, selectedGames, signups, and favoritedGames that are not in the server response", async () => {
     vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
-      kind: "success",
       value: [testKompassiGame],
     });
 
@@ -195,7 +194,6 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
 
   test("should not modify anything if server response is empty array", async () => {
     vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
-      kind: "success",
       value: [],
     });
 
@@ -224,7 +222,6 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
       .format();
 
     vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
-      kind: "success",
       value: [
         {
           ...testKompassiGame,
@@ -257,7 +254,6 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
       .format();
 
     vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
-      kind: "success",
       value: [
         {
           ...testKompassiGame,
