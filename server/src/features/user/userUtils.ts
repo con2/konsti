@@ -2,6 +2,8 @@ import { Dayjs } from "dayjs";
 import { logger } from "server/utils/logger";
 import { saveSerials } from "server/features/serial/serialRepository";
 import { SerialDoc } from "server/typings/serial.typings";
+import { AsyncResult } from "shared/utils/asyncResult";
+import { MongoDbError } from "shared/typings/api/errors";
 
 interface IsValidSignupTimeParams {
   startTime: Dayjs;
@@ -21,6 +23,8 @@ export const isValidSignupTime = ({
   return true;
 };
 
-export const createSerial = async (): Promise<SerialDoc[]> => {
+export const createSerial = async (): Promise<
+  AsyncResult<SerialDoc[], MongoDbError>
+> => {
   return await saveSerials(1);
 };

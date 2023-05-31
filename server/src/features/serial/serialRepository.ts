@@ -2,8 +2,16 @@ import generator from "generate-serial-number";
 import { logger } from "server/utils/logger";
 import { SerialModel } from "server/features/serial/serialSchema";
 import { SerialDoc, Serial } from "server/typings/serial.typings";
+import {
+  AsyncResult,
+  makeErrorResult,
+  makeSuccessResult,
+} from "shared/utils/asyncResult";
+import { MongoDbError } from "shared/typings/api/errors";
 
-export const saveSerials = async (count: number): Promise<SerialDoc[]> => {
+export const saveSerials = async (
+  count: number
+): Promise<AsyncResult<SerialDoc[], MongoDbError>> => {
   const serialDocs = [] as SerialDoc[];
   // create serials
   for (let i = 1; i <= count; i += 1) {
@@ -25,16 +33,15 @@ export const saveSerials = async (count: number): Promise<SerialDoc[]> => {
     logger.info(`${serial}`);
   }
 
-  let response: SerialDoc[];
   try {
-    response = await SerialModel.create(serialDocs);
+    const response = await SerialModel.create(serialDocs);
     logger.info(
       `MongoDB: Serials data saved. (${serialDocs.length} serials saved)`
     );
-    return response;
+    return makeSuccessResult(response);
   } catch (error) {
     logger.error(`MongoDB: Error saving serials data - ${error}`);
-    throw error;
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
 

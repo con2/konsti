@@ -18,12 +18,30 @@ import { ApiError } from "shared/typings/api/errors";
 import { findUserSignups } from "server/features/signup/signupRepository";
 import { SelectedGame } from "shared/typings/models/user";
 import { isErrorResult, unwrapResult } from "shared/utils/asyncResult";
+import { sharedConfig } from "shared/config/sharedConfig";
+import { createSerial } from "server/features/user/userUtils";
 
 export const storeUser = async (
   username: string,
   password: string,
-  serial: string | undefined
+  maybeSerial: string | undefined
 ): Promise<PostUserResponse | PostUserError> => {
+  let serial;
+  if (!sharedConfig.requireRegistrationCode) {
+    const serialDocAsyncResult = await createSerial();
+    if (isErrorResult(serialDocAsyncResult)) {
+      return {
+        message: "Error creating serial for new user",
+        status: "error",
+        errorId: "unknown",
+      };
+    }
+    const serialDoc = unwrapResult(serialDocAsyncResult);
+    serial = serialDoc[0].serial;
+  } else {
+    serial = maybeSerial;
+  }
+
   if (serial === undefined) {
     return {
       message: "Invalid serial",
