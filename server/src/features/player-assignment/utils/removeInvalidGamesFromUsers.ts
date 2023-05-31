@@ -24,52 +24,54 @@ export const removeInvalidGamesFromUsers = async (): Promise<
 
   const users = unwrapResult(usersAsyncResult);
 
-  try {
-    await Promise.all(
-      users.map(async (user) => {
-        const validSignedGames = user.signedGames.filter((signedGame) => {
-          if (signedGame.gameDetails !== null) {
-            return signedGame.gameDetails;
-          }
-        });
+  const promises = users.map(async (user) => {
+    const validSignedGames = user.signedGames.filter((signedGame) => {
+      if (signedGame.gameDetails !== null) {
+        return signedGame.gameDetails;
+      }
+    });
 
-        const changedSignedGamesCount =
-          user.signedGames.length - validSignedGames.length;
+    const changedSignedGamesCount =
+      user.signedGames.length - validSignedGames.length;
 
-        if (changedSignedGamesCount > 0) {
-          logger.info(
-            `Remove ${changedSignedGamesCount} invalid signedGames from user ${user.username}`
-          );
-        }
+    if (changedSignedGamesCount > 0) {
+      logger.info(
+        `Remove ${changedSignedGamesCount} invalid signedGames from user ${user.username}`
+      );
+    }
 
-        const validFavoritedGames = user.favoritedGames.filter(
-          (favoritedGame) => {
-            if (favoritedGame !== null) {
-              return favoritedGame;
-            }
-          }
-        );
+    const validFavoritedGames = user.favoritedGames.filter((favoritedGame) => {
+      if (favoritedGame !== null) {
+        return favoritedGame;
+      }
+    });
 
-        const changedFavoritedGamesCount =
-          user.favoritedGames.length - validFavoritedGames.length;
+    const changedFavoritedGamesCount =
+      user.favoritedGames.length - validFavoritedGames.length;
 
-        if (changedFavoritedGamesCount > 0) {
-          logger.info(
-            `Remove ${changedFavoritedGamesCount} invalid favoritedGames from user ${user.username}`
-          );
-        }
+    if (changedFavoritedGamesCount > 0) {
+      logger.info(
+        `Remove ${changedFavoritedGamesCount} invalid favoritedGames from user ${user.username}`
+      );
+    }
 
-        if (changedSignedGamesCount > 0 || changedFavoritedGamesCount > 0) {
-          await updateUserByUsername({
-            ...user,
-            signedGames: validSignedGames,
-            favoritedGames: validFavoritedGames,
-          });
-        }
-      })
-    );
-  } catch (error) {
-    logger.error(`updateUser error: ${error}`);
+    if (changedSignedGamesCount > 0 || changedFavoritedGamesCount > 0) {
+      const updateUserByUsernameAsyncResult = await updateUserByUsername({
+        ...user,
+        signedGames: validSignedGames,
+        favoritedGames: validFavoritedGames,
+      });
+      if (isErrorResult(updateUserByUsernameAsyncResult)) {
+        return updateUserByUsernameAsyncResult;
+      }
+    }
+
+    return makeSuccessResult(undefined);
+  });
+
+  const results = await Promise.all(promises);
+  const someUpdateFailed = results.some((result) => isErrorResult(result));
+  if (someUpdateFailed) {
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 

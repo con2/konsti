@@ -114,7 +114,8 @@ describe(`POST ${ApiEndpoint.GROUP}`, () => {
   });
 
   test("should create group", async () => {
-    const user = await saveUser(mockUser);
+    const userAsyncResult = await saveUser(mockUser);
+    const user = unsafelyUnwrapResult(userAsyncResult);
     expect(user.groupCode).toEqual("0");
 
     const groupRequest: PostCreateGroupRequest = {

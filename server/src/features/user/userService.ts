@@ -128,21 +128,20 @@ export const storeUser = async (
       }
 
       if (passwordHash) {
-        let saveUserResponse;
-        try {
-          saveUserResponse = await saveUser({
-            username,
-            passwordHash,
-            serial,
-          });
-        } catch (error) {
-          logger.error(`saveUser(): ${error}`);
+        const saveUserResponseAsyncResult = await saveUser({
+          username,
+          passwordHash,
+          serial,
+        });
+        if (isErrorResult(saveUserResponseAsyncResult)) {
           return {
             errorId: "unknown",
             message: "User registration failed",
             status: "error",
           };
         }
+
+        const saveUserResponse = unwrapResult(saveUserResponseAsyncResult);
 
         return {
           message: "User registration success",

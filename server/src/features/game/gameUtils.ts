@@ -50,11 +50,11 @@ export const removeDeletedGames = async (
       } deleted games to be removed: ${deletedGameIds.join(", ")}`
     );
 
-    try {
-      await delSignupsByGameIds(deletedGameIds);
-    } catch (error) {
-      logger.error(`Error removing deleted games: ${error}`);
-      throw error;
+    const delSignupsByGameIdsAsyncResult = await delSignupsByGameIds(
+      deletedGameIds
+    );
+    if (isErrorResult(delSignupsByGameIdsAsyncResult)) {
+      return delSignupsByGameIdsAsyncResult;
     }
 
     const removeGamesAsyncResult = await removeGames(deletedGameIds);

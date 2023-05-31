@@ -12,4 +12,5 @@ export enum MongoDbError {
   UNKNOWN_ERROR = "unknownError",
   GAME_NOT_FOUND = "gameNotFound",
   NO_HIDDEN_GAMES = "noHiddenGames",
+  USER_NOT_FOUND = "userNotFound",
 }

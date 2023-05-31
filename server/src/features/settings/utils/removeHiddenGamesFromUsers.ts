@@ -55,25 +55,31 @@ export const removeHiddenGamesFromUsers = async (
       user.signedGames.length !== signedGames.length ||
       user.favoritedGames.length !== favoritedGames.length
     ) {
-      await updateUserByUsername({
+      const updateUserByUsernameAsyncResult = await updateUserByUsername({
         ...user,
         signedGames,
         favoritedGames,
       });
+      if (isErrorResult(updateUserByUsernameAsyncResult)) {
+        return updateUserByUsernameAsyncResult;
+      }
     }
+
+    return makeSuccessResult(undefined);
   });
 
-  try {
-    await Promise.all(userPromises);
-  } catch (error) {
-    logger.error(`updateUser error: ${error}`);
+  const results = await Promise.all(userPromises);
+  const someUpdateFailed = results.some((result) => isErrorResult(result));
+  if (someUpdateFailed) {
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 
   const hiddenGameIds = hiddenGames.map((hiddenGame) => hiddenGame.gameId);
-  try {
-    await delSignupsByGameIds(hiddenGameIds);
-  } catch (error) {
-    logger.error(`delSignupsByGameIds error: ${error}`);
+  const delSignupsByGameIdsAsyncResult = await delSignupsByGameIds(
+    hiddenGameIds
+  );
+  if (isErrorResult(delSignupsByGameIdsAsyncResult)) {
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 
   logger.info(`Hidden games removed from users`);

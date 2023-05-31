@@ -71,18 +71,23 @@ export const removeMovedGamesFromUsers = async (
     }
 
     if (user.signedGames.length !== signedGames.length) {
-      await updateUserByUsername({
+      const updateUserByUsernameAsyncResult = await updateUserByUsername({
         ...user,
         signedGames,
       });
+      if (isErrorResult(updateUserByUsernameAsyncResult)) {
+        return updateUserByUsernameAsyncResult;
+      }
     }
+
+    return makeSuccessResult(undefined);
   });
 
-  try {
-    await Promise.all(promises);
-    return makeSuccessResult(undefined);
-  } catch (error) {
-    logger.error(`updateUser error: ${error}`);
+  const results = await Promise.all(promises);
+  const someUpdateFailed = results.some((result) => isErrorResult(result));
+  if (someUpdateFailed) {
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
+
+  return makeSuccessResult(undefined);
 };

@@ -10,16 +10,22 @@ import {
 } from "shared/utils/asyncResult";
 import { MongoDbError } from "shared/typings/api/errors";
 
-export const removeUsers = async (): Promise<void> => {
+export const removeUsers = async (): Promise<
+  AsyncResult<void, MongoDbError>
+> => {
   logger.info("MongoDB: remove ALL users from db");
   try {
     await UserModel.deleteMany({});
+    return makeSuccessResult(undefined);
   } catch (error) {
-    throw new Error(`MongoDB: Error removing users: ${error}`);
+    logger.error(`MongoDB: Error removing users: ${error}`);
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
 
-export const saveUser = async (newUserData: NewUser): Promise<User> => {
+export const saveUser = async (
+  newUserData: NewUser
+): Promise<AsyncResult<User, MongoDbError>> => {
   const user = new UserModel({
     username: newUserData.username,
     password: newUserData.passwordHash,
@@ -31,24 +37,23 @@ export const saveUser = async (newUserData: NewUser): Promise<User> => {
     signedGames: [],
   });
 
-  let response;
   try {
-    response = await user.save();
+    const response = await user.save();
     logger.debug(`MongoDB: User "${newUserData.username}" saved to DB`);
-    return response;
+    return makeSuccessResult(response);
   } catch (error) {
     logger.error(
       `MongoDB: Error creating new user ${newUserData.username} - ${error}`
     );
-    throw error;
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
 
-export const updateUserByUsername = async (user: User): Promise<User> => {
-  let response;
-
+export const updateUserByUsername = async (
+  user: User
+): Promise<AsyncResult<User, MongoDbError>> => {
   try {
-    response = await UserModel.findOneAndUpdate(
+    const response = await UserModel.findOneAndUpdate(
       { username: user.username },
       {
         userGroup: user.userGroup,
@@ -62,19 +67,20 @@ export const updateUserByUsername = async (user: User): Promise<User> => {
       .lean<User>()
       .populate("favoritedGames")
       .populate("signedGames.gameDetails");
+
+    if (!response) {
+      logger.error(
+        `MongoDB: Error updating user ${user.username}: user not found`
+      );
+      return makeErrorResult(MongoDbError.USER_NOT_FOUND);
+    }
+
+    logger.debug(`MongoDB: User "${user.username}" updated`);
+    return makeSuccessResult(response);
   } catch (error) {
     logger.error(`MongoDB: Error updating user ${user.username} - ${error}`);
-    throw error;
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
-
-  if (!response) {
-    const error = `MongoDB: Error updating user ${user.username}: user not found`;
-    logger.error(error);
-    throw new Error(error);
-  }
-
-  logger.debug(`MongoDB: User "${user.username}" updated`);
-  return response;
 };
 
 export const updateUserPassword = async (
