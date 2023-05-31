@@ -23,7 +23,7 @@ import {
   selectActiveFavoritedGames,
   selectActiveSignedGames,
 } from "client/views/my-games/myGamesSlice";
-import { ButtonGroup } from "client/components/ButtonGroup";
+import { RadioButton } from "client/components/RadioButton";
 import { config } from "client/config";
 
 export const MyGamesView = (): ReactElement => {
@@ -63,24 +63,21 @@ export const MyGamesView = (): ReactElement => {
   return (
     <MyGamesViewContainer>
       {!config.alwaysShowAllProgramItems && (
-        <ButtonGroup>
-          <Button
-            disabled={!showAllGames}
-            onClick={() => setShowAllGames(false)}
-            buttonStyle={ButtonStyle.SECONDARY}
-          >
-            {t("lastStartedAndUpcoming")}
-          </Button>
-          <Button
-            disabled={showAllGames}
-            onClick={() => setShowAllGames(true)}
-            buttonStyle={ButtonStyle.SECONDARY}
-          >
-            {t("all")}
-          </Button>
-        </ButtonGroup>
+        <RadioButtonGroup>
+          <RadioButton
+            checked={!showAllGames}
+            id={"upcoming"}
+            label={t("lastStartedAndUpcoming")}
+            onChange={() => setShowAllGames(false)}
+          />
+          <RadioButton
+            checked={showAllGames}
+            id={"all"}
+            label={t("all")}
+            onChange={() => setShowAllGames(true)}
+          />
+        </RadioButtonGroup>
       )}
-
       <MyFavoritesList
         favoritedGames={
           showAllGames
@@ -160,4 +157,12 @@ const ChangePasswordButton = styled(Button)`
 const AngleIcon = styled(FontAwesomeIcon)`
   margin: 0 10px 0 0;
   font-size: 18px;
+`;
+
+const RadioButtonGroup = styled.fieldset`
+  border: none;
+  margin-bottom: -8px;
+  padding-left: 0;
+  display: flex;
+  flex-direction: column;
 `;
