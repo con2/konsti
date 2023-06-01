@@ -3,64 +3,82 @@ import { TestSettings } from "shared/test-typings/models/testSettings";
 import { TestSettingsModel } from "server/test/test-settings/testSettingsSchema";
 import { PostTestSettingsRequest } from "shared/test-typings/api/testSettings";
 import { TestSettingsDoc } from "server/typings/testSettings.typing";
+import {
+  AsyncResult,
+  isErrorResult,
+  makeErrorResult,
+  makeSuccessResult,
+  unwrapResult,
+} from "shared/utils/asyncResult";
+import { MongoDbError } from "shared/typings/api/errors";
 
-export const removeTestSettings = async (): Promise<void> => {
+export const removeTestSettings = async (): Promise<
+  AsyncResult<void, MongoDbError>
+> => {
   logger.info("MongoDB: remove ALL test settings from db");
   try {
     await TestSettingsModel.deleteMany({});
+    return makeSuccessResult(undefined);
   } catch (error) {
-    throw new Error(`MongoDB: Error removing test settings: ${error}`);
+    logger.error(`MongoDB: Error removing test settings: ${error}`);
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
 
-const createTestSettings = async (): Promise<TestSettings> => {
+const createTestSettings = async (): Promise<
+  AsyncResult<TestSettings, MongoDbError>
+> => {
   logger.info("MongoDB: Create default test settings");
-
   const defaultSettings = new TestSettingsModel();
 
-  let testSettings;
   try {
-    testSettings = await defaultSettings.save();
+    const testSettings = await defaultSettings.save();
+    logger.info(`MongoDB: Default test settings saved to DB`);
+    return makeSuccessResult(testSettings);
   } catch (error) {
-    throw new Error(`MongoDB: Add default test settings error: ${error}`);
+    logger.error(`MongoDB: Add default test settings error: ${error}`);
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
-
-  logger.info(`MongoDB: Default test settings saved to DB`);
-  return testSettings;
 };
 
-export const findTestSettings = async (): Promise<TestSettings> => {
-  let testSettings;
+export const findTestSettings = async (): Promise<
+  AsyncResult<TestSettings, MongoDbError>
+> => {
   try {
-    testSettings = await TestSettingsModel.findOne(
+    const testSettings = await TestSettingsModel.findOne(
       {},
       "-_id -__v -createdAt -updatedAt"
     ).lean<TestSettings>();
+    if (!testSettings) {
+      const createTestSettingsAsyncResult = await createTestSettings();
+      if (isErrorResult(createTestSettingsAsyncResult)) {
+        return createTestSettingsAsyncResult;
+      }
+      const defaultTestSettings = unwrapResult(createTestSettingsAsyncResult);
+      return makeSuccessResult(defaultTestSettings);
+    }
+    logger.debug(`MongoDB: Test settings data found`);
+    return makeSuccessResult(testSettings);
   } catch (error) {
-    throw new Error(`MongoDB: Error finding test settings data: ${error}`);
+    logger.error(`MongoDB: Error finding test settings data: ${error}`);
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
-
-  if (!testSettings) return await createTestSettings();
-
-  logger.debug(`MongoDB: Test settings data found`);
-  return testSettings;
 };
 
 export const saveTestSettings = async (
   settings: PostTestSettingsRequest
-): Promise<TestSettings> => {
-  let updatedTestSettings;
+): Promise<AsyncResult<TestSettings, MongoDbError>> => {
   try {
-    updatedTestSettings =
+    const updatedTestSettings =
       await TestSettingsModel.findOneAndUpdate<TestSettingsDoc>({}, settings, {
         new: true,
         upsert: true,
         fields: "-createdAt -updatedAt",
       });
+    logger.info(`MongoDB: Test settings updated`);
+    return makeSuccessResult(updatedTestSettings.toJSON<TestSettingsDoc>());
   } catch (error) {
-    throw new Error(`MongoDB: Error updating test settings: ${error}`);
+    logger.error(`MongoDB: Error updating test settings: ${error}`);
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
-
-  logger.info(`MongoDB: Test settings updated`);
-  return updatedTestSettings.toJSON<TestSettingsDoc>();
 };

@@ -21,7 +21,6 @@ import { Signup } from "server/features/signup/signup.typings";
 import {
   AsyncResult,
   isErrorResult,
-  makeErrorResult,
   makeSuccessResult,
   unwrapResult,
 } from "shared/utils/asyncResult";
@@ -84,27 +83,26 @@ export const enrichGames = async (
 
   const signups = unwrapResult(signupsAsyncResult);
 
-  try {
-    const currentTime = await getTime();
-
-    const enrichedGames = games.map((game) => {
-      const signupQuestion = settings.signupQuestions.find(
-        (message) => message.gameId === game.gameId
-      );
-      return {
-        game: {
-          ...game.toJSON<GameDoc>(),
-          signupStrategy: getSignupStrategyForGame(game, settings, currentTime),
-        },
-        users: getSignupsForGame(signups, game.gameId, signupQuestion),
-      };
-    });
-
-    return makeSuccessResult(enrichedGames);
-  } catch (error) {
-    logger.error(`getGamesWithPlayers error: ${error}`);
-    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+  const currentTimeAsyncResult = await getTime();
+  if (isErrorResult(currentTimeAsyncResult)) {
+    return currentTimeAsyncResult;
   }
+
+  const currentTime = unwrapResult(currentTimeAsyncResult);
+  const enrichedGames = games.map((game) => {
+    const signupQuestion = settings.signupQuestions.find(
+      (message) => message.gameId === game.gameId
+    );
+    return {
+      game: {
+        ...game.toJSON<GameDoc>(),
+        signupStrategy: getSignupStrategyForGame(game, settings, currentTime),
+      },
+      users: getSignupsForGame(signups, game.gameId, signupQuestion),
+    };
+  });
+
+  return makeSuccessResult(enrichedGames);
 };
 
 const getSignupStrategyForGame = (

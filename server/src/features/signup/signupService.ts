@@ -20,7 +20,16 @@ export const storeSignup = async (
   signupRequest: PostEnteredGameRequest
 ): Promise<PostEnteredGameResponse | PostEnteredGameError> => {
   const { startTime, enteredGameId, username } = signupRequest;
-  const timeNow = await getTime();
+  const timeNowAsyncResult = await getTime();
+  if (isErrorResult(timeNowAsyncResult)) {
+    return {
+      message: `Unable to get current time`,
+      status: "error",
+      errorId: "unknown",
+    };
+  }
+
+  const timeNow = unwrapResult(timeNowAsyncResult);
 
   const gameAsyncResult = await findGameById(enteredGameId);
   if (isErrorResult(gameAsyncResult)) {
@@ -125,7 +134,16 @@ export const removeSignup = async (
 ): Promise<DeleteEnteredGameResponse | DeleteEnteredGameError> => {
   const { startTime } = signupRequest;
 
-  const timeNow = await getTime();
+  const timeNowAsyncResult = await getTime();
+  if (isErrorResult(timeNowAsyncResult)) {
+    return {
+      message: `Unable to get current time`,
+      status: "error",
+      errorId: "unknown",
+    };
+  }
+
+  const timeNow = unwrapResult(timeNowAsyncResult);
 
   const validSignupTime = isValidSignupTime({
     startTime: dayjs(startTime),

@@ -15,8 +15,16 @@ export const storeSignedGames = async (
   username: string,
   startTime: string
 ): Promise<PostSignedGamesResponse | PostSignedGamesError> => {
-  const timeNow = await getTime();
+  const timeNowAsyncResult = await getTime();
+  if (isErrorResult(timeNowAsyncResult)) {
+    return {
+      message: `Unable to get current time`,
+      status: "error",
+      errorId: "unknown",
+    };
+  }
 
+  const timeNow = unwrapResult(timeNowAsyncResult);
   const validSignupTime = isValidSignupTime({
     startTime: dayjs(startTime),
     timeNow,

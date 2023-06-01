@@ -38,9 +38,14 @@ export const runAssignment = async ({
 }: RunAssignmentParams): Promise<
   AsyncResult<PlayerAssignmentResult, MongoDbError>
 > => {
-  const assignmentTime = useDynamicStartingTime
+  const assignmentTimeAsyncResult = useDynamicStartingTime
     ? await getDynamicStartingTime()
-    : startingTime;
+    : makeSuccessResult(startingTime);
+  if (isErrorResult(assignmentTimeAsyncResult)) {
+    return assignmentTimeAsyncResult;
+  }
+
+  const assignmentTime = unwrapResult(assignmentTimeAsyncResult);
 
   if (!assignmentTime) {
     throw new Error(`Missing assignment time`);

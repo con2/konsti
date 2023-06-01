@@ -45,7 +45,17 @@ export const createGroup = async (
     (signup) => !directSignupAlwaysOpenIds.includes(signup.game.gameId)
   );
 
-  const timeNow = await getTime();
+  const timeNowAsyncResult = await getTime();
+  if (isErrorResult(timeNowAsyncResult)) {
+    return {
+      message: `Unable to get current time`,
+      status: "error",
+      errorId: "unknown",
+    };
+  }
+
+  const timeNow = unwrapResult(timeNowAsyncResult);
+
   const userSignups = filteredSignups.flatMap((signup) => signup.userSignups);
   const userHasSignups = userSignups.some((userSignup) =>
     timeNow.isBefore(dayjs(userSignup.time))
@@ -137,7 +147,17 @@ export const joinGroup = async (
     (signup) => !directSignupAlwaysOpenIds.includes(signup.game.gameId)
   );
 
-  const timeNow = await getTime();
+  const timeNowAsyncResult = await getTime();
+  if (isErrorResult(timeNowAsyncResult)) {
+    return {
+      message: `Unable to get current time`,
+      status: "error",
+      errorId: "unknown",
+    };
+  }
+
+  const timeNow = unwrapResult(timeNowAsyncResult);
+
   const userSignups = filteredSignups.flatMap((signup) => signup.userSignups);
   const userHasSignups = userSignups.some((userSignup) =>
     timeNow.isBefore(dayjs(userSignup.time))
