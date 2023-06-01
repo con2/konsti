@@ -32,7 +32,9 @@ export const unwrapResult: UnwrapResult = <T, Err>({
   if (error !== undefined) {
     return error as NonNullable<Err>; // Typescript is getting confused and returning this type as `T | undefined` unless we add the type assertion
   }
-  throw new Error(`Received no value or error at runtime when opening Either`);
+  throw new Error(
+    `Received no value or error at runtime when opening AsyncResult`
+  );
 };
 
 export const isSuccessResult = <T, Err>(
