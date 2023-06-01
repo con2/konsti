@@ -78,17 +78,18 @@ export const storeHidden = async (
 export const storeSignupQuestion = async (
   signupQuestionData: SignupQuestion
 ): Promise<PostSignupQuestionResponse | ApiError> => {
-  let settings;
-  try {
-    settings = await saveSignupQuestion(signupQuestionData);
-  } catch (error) {
-    logger.error(`saveSignupQuestion error: ${error}`);
+  const saveSignupQuestionAsyncResult = await saveSignupQuestion(
+    signupQuestionData
+  );
+  if (isErrorResult(saveSignupQuestionAsyncResult)) {
     return {
       message: "saveSignupQuestion failure",
       status: "error",
       errorId: "unknown",
     };
   }
+
+  const settings = unwrapResult(saveSignupQuestionAsyncResult);
 
   return {
     message: "saveSignupQuestion success",
@@ -100,17 +101,16 @@ export const storeSignupQuestion = async (
 export const removeSignupQuestion = async (
   gameId: string
 ): Promise<PostSignupQuestionResponse | ApiError> => {
-  let settings;
-  try {
-    settings = await delSignupQuestion(gameId);
-  } catch (error) {
-    logger.error(`delSignupQuestion error: ${error}`);
+  const delSignupQuestionAsyncResult = await delSignupQuestion(gameId);
+  if (isErrorResult(delSignupQuestionAsyncResult)) {
     return {
       message: "delSignupQuestion failure",
       status: "error",
       errorId: "unknown",
     };
   }
+
+  const settings = unwrapResult(delSignupQuestionAsyncResult);
 
   return {
     message: "delSignupQuestion success",
@@ -122,18 +122,20 @@ export const removeSignupQuestion = async (
 export const updateSettings = async (
   settings: PostSettingsRequest
 ): Promise<PostSettingsResponse | ApiError> => {
-  try {
-    const response = await saveSettings(settings);
-    return {
-      message: "Update settings success",
-      status: "success",
-      settings: response,
-    };
-  } catch (error) {
+  const saveSettingsAsyncResult = await saveSettings(settings);
+  if (isErrorResult(saveSettingsAsyncResult)) {
     return {
       message: "Update settings failure",
       status: "error",
       errorId: "unknown",
     };
   }
+
+  const response = unwrapResult(saveSettingsAsyncResult);
+
+  return {
+    message: "Update settings success",
+    status: "success",
+    settings: response,
+  };
 };

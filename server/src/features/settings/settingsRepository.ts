@@ -109,10 +109,9 @@ export const saveHidden = async (
 
 export const saveSignupQuestion = async (
   signupQuestionData: SignupQuestion
-): Promise<Settings> => {
-  let settings;
+): Promise<AsyncResult<Settings, MongoDbError>> => {
   try {
-    settings = await SettingsModel.findOneAndUpdate(
+    const settings = await SettingsModel.findOneAndUpdate(
       {},
       {
         $push: { signupQuestions: signupQuestionData },
@@ -123,18 +122,19 @@ export const saveSignupQuestion = async (
         fields: "-signupQuestions._id -_id -__v -createdAt -updatedAt",
       }
     );
+    logger.info(`MongoDB: Signup question updated`);
+    return makeSuccessResult(settings);
   } catch (error) {
-    throw new Error(`MongoDB: Error updating signup info games: ${error}`);
+    logger.error(`MongoDB: Error updating signup info games: ${error}`);
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
-
-  logger.info(`MongoDB: Signup question updated`);
-  return settings;
 };
 
-export const delSignupQuestion = async (gameId: string): Promise<Settings> => {
-  let settings;
+export const delSignupQuestion = async (
+  gameId: string
+): Promise<AsyncResult<Settings, MongoDbError>> => {
   try {
-    settings = await SettingsModel.findOneAndUpdate(
+    const settings = await SettingsModel.findOneAndUpdate(
       {},
       {
         $pull: { signupQuestions: { gameId } },
@@ -145,22 +145,22 @@ export const delSignupQuestion = async (gameId: string): Promise<Settings> => {
       }
     );
     if (!settings) {
-      throw new Error("Signup question not found");
+      logger.error("MongoDB: Signup question not found");
+      return makeErrorResult(MongoDbError.SIGNUP_QUESTION_NOT_FOUND);
     }
+    logger.info(`MongoDB: Signup info deleted`);
+    return makeSuccessResult(settings);
   } catch (error) {
-    throw new Error(`MongoDB: Error deleting signup info games: ${error}`);
+    logger.error(`MongoDB: Error deleting signup info games: ${error}`);
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
-
-  logger.info(`MongoDB: Signup info deleted`);
-  return settings;
 };
 
 export const saveSettings = async (
   settings: PostSettingsRequest
-): Promise<Settings> => {
-  let updatedSettings;
+): Promise<AsyncResult<Settings, MongoDbError>> => {
   try {
-    updatedSettings = await SettingsModel.findOneAndUpdate<SettingsDoc>(
+    const updatedSettings = await SettingsModel.findOneAndUpdate<SettingsDoc>(
       {},
       settings,
       {
@@ -169,10 +169,10 @@ export const saveSettings = async (
         fields: "-createdAt -updatedAt -_id -__v -signupQuestions._id",
       }
     );
+    logger.info(`MongoDB: App settings updated`);
+    return makeSuccessResult(updatedSettings.toJSON<SettingsDoc>());
   } catch (error) {
-    throw new Error(`MongoDB: Error updating app settings: ${error}`);
+    logger.error(`MongoDB: Error updating app settings: ${error}`);
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
-
-  logger.info(`MongoDB: App settings updated`);
-  return updatedSettings.toJSON<SettingsDoc>();
 };

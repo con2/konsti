@@ -13,6 +13,7 @@ export enum MongoDbError {
   GAME_NOT_FOUND = "gameNotFound",
   NO_HIDDEN_GAMES = "noHiddenGames",
   USER_NOT_FOUND = "userNotFound",
+  SIGNUP_QUESTION_NOT_FOUND = "signupQuestionNotFound",
 }
 
 export enum KompassiError {
