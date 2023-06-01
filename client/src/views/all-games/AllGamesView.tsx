@@ -19,7 +19,6 @@ export const MULTIPLE_WHITESPACES_REGEX = /\s\s+/g;
 export const AllGamesView = (): ReactElement => {
   const activeGames = useAppSelector(selectActiveGames);
   const testTime = useAppSelector((state) => state.testSettings.testTime);
-  const hiddenGames = useAppSelector((state) => state.admin.hiddenGames);
   const signupStrategy = useAppSelector((state) => state.admin.signupStrategy);
 
   const [selectedTag, setSelectedTag] = useState<string>("");
@@ -73,20 +72,18 @@ export const AllGamesView = (): ReactElement => {
       return;
     }
 
-    const gamesFilteredBySearchTerm = activeGames.filter(
-      (activeGame) => {
-        return (
-          activeGame.title
-            .replace(MULTIPLE_WHITESPACES_REGEX, " ")
-            .toLocaleLowerCase()
-            .includes(debouncedSearchTerm.toLocaleLowerCase()) ||
-          activeGame.gameSystem
-            .replace(MULTIPLE_WHITESPACES_REGEX, " ")
-            .toLocaleLowerCase()
-            .includes(debouncedSearchTerm.toLocaleLowerCase())
-        );
-      }
-    );
+    const gamesFilteredBySearchTerm = activeGames.filter((activeGame) => {
+      return (
+        activeGame.title
+          .replace(MULTIPLE_WHITESPACES_REGEX, " ")
+          .toLocaleLowerCase()
+          .includes(debouncedSearchTerm.toLocaleLowerCase()) ||
+        activeGame.gameSystem
+          .replace(MULTIPLE_WHITESPACES_REGEX, " ")
+          .toLocaleLowerCase()
+          .includes(debouncedSearchTerm.toLocaleLowerCase())
+      );
+    });
 
     setFilteredGames(gamesFilteredBySearchTerm);
   }, [debouncedSearchTerm, activeGames]);
@@ -96,13 +93,12 @@ export const AllGamesView = (): ReactElement => {
       <AllGamesList
         games={getVisibleGames(
           filteredGames,
-          hiddenGames,
           selectedStartingTime,
           selectedTag
         )}
       />
     );
-  }, [filteredGames, hiddenGames, selectedStartingTime, selectedTag]);
+  }, [filteredGames, selectedStartingTime, selectedTag]);
 
   return (
     <>
@@ -118,7 +114,6 @@ export const AllGamesView = (): ReactElement => {
 
 const getVisibleGames = (
   games: readonly Game[],
-  hiddenGames: readonly Game[],
   selectedView: string,
   selectedTag: string
 ): readonly Game[] => {

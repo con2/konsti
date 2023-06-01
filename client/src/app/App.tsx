@@ -12,7 +12,6 @@ import { ErrorBar } from "client/components/ErrorBar";
 import { MOBILE_MARGIN } from "client/globalStyle";
 import { newUpdatePageReloadKey } from "client/utils/localStorage";
 import { TestTime } from "client/components/TestTime";
-import { sharedConfig } from "shared/config/sharedConfig";
 import { Announcement } from "client/components/Announcement";
 
 const { loadedSettings, showTestValues, showAnnouncement } = config;
@@ -42,10 +41,6 @@ export const App = (): ReactElement => {
   }, [store, dataUpdateInterval]);
 
   getIconLibrary();
-
-  const showProgramTypeSelection =
-    (appOpen || isAdmin(userGroup)) &&
-    sharedConfig.activeProgramTypes.length > 1;
 
   return (
     <>
