@@ -54,47 +54,45 @@ export const findSignups = async (): Promise<
   }
 };
 
-export interface FindRpgSignupsByStartTimeResponse extends UserSignup {
+interface FindRpgSignupsByStartTimeResponse extends UserSignup {
   gameId: string;
 }
 
 export const findRpgSignupsByStartTime = async (
   startTime: string
-): Promise<FindRpgSignupsByStartTimeResponse[]> => {
-  let response: Signup[];
+): Promise<AsyncResult<FindRpgSignupsByStartTimeResponse[], MongoDbError>> => {
   try {
-    response = await SignupModel.find(
+    const response = await SignupModel.find(
       { "userSignups.time": startTime },
       "-createdAt -updatedAt -_id -__v"
     )
-      .lean<Signup>()
+      .lean<Signup[]>()
       .populate("game", "-createdAt -updatedAt -_id -__v");
+    if (!response) {
+      logger.info(`MongoDB: Signups for time "${startTime}" not found`);
+      return makeSuccessResult([]);
+    }
+
+    logger.debug(`MongoDB: Found signups for time "${startTime}"`);
+
+    const formattedResponse: FindRpgSignupsByStartTimeResponse[] =
+      response.flatMap((signup) => {
+        if (signup.game.programType !== ProgramType.TABLETOP_RPG) {
+          return [];
+        }
+        return signup.userSignups.map((userSignup) => ({
+          ...userSignup,
+          gameId: signup.game.gameId,
+        }));
+      });
+
+    return makeSuccessResult(formattedResponse);
   } catch (error) {
     logger.error(
       `MongoDB: Error finding signups for time ${startTime} - ${error}`
     );
-    throw error;
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
-
-  if (!response) {
-    logger.info(`MongoDB: Signups for time "${startTime}" not found`);
-    return [];
-  }
-
-  logger.debug(`MongoDB: Found signups for time "${startTime}"`);
-
-  const formattedResponse: FindRpgSignupsByStartTimeResponse[] =
-    response.flatMap((signup) => {
-      if (signup.game.programType !== ProgramType.TABLETOP_RPG) {
-        return [];
-      }
-      return signup.userSignups.map((userSignup) => ({
-        ...userSignup,
-        gameId: signup.game.gameId,
-      }));
-    });
-
-  return formattedResponse;
 };
 
 export const findUserSignups = async (username: string): Promise<Signup[]> => {
