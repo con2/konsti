@@ -26,3 +26,7 @@ export enum KompassiError {
 export enum AssignmentError {
   UNKNOWN_ERROR = "unknownError",
 }
+
+export enum BcryptError {
+  UNKNOWN_ERROR = "unknownError",
+}

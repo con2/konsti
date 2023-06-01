@@ -50,40 +50,39 @@ export const login = async (
   }
 
   // User exists
-  let validLogin;
-  try {
-    validLogin = await validateLogin(password, user.password);
 
-    logger.info(
-      `Login: User "${user.username}" with "${user.userGroup}" user group`
-    );
-
-    if (validLogin) {
-      logger.info(`Login: Password for user "${username}" matches`);
-      return {
-        message: "User login success",
-        status: "success",
-        username: user.username,
-        userGroup: user.userGroup,
-        serial: user.serial,
-        groupCode: user.groupCode,
-        jwt: getJWT(user.userGroup, user.username),
-      };
-    } else {
-      logger.info(`Login: Password for user "${username}" doesn't match`);
-
-      return {
-        errorId: "loginFailed",
-        message: "User login error",
-        status: "error",
-      };
-    }
-  } catch (error) {
-    logger.error(`Login: ${error}`);
+  const validLoginAsyncResult = await validateLogin(password, user.password);
+  if (isErrorResult(validLoginAsyncResult)) {
     return {
+      errorId: "loginFailed",
       message: "User login error",
       status: "error",
-      errorId: "unknown",
+    };
+  }
+
+  const validLogin = unwrapResult(validLoginAsyncResult);
+
+  logger.info(
+    `Login: User "${user.username}" with "${user.userGroup}" user group`
+  );
+
+  if (validLogin) {
+    logger.info(`Login: Password for user "${username}" matches`);
+    return {
+      message: "User login success",
+      status: "success",
+      username: user.username,
+      userGroup: user.userGroup,
+      serial: user.serial,
+      groupCode: user.groupCode,
+      jwt: getJWT(user.userGroup, user.username),
+    };
+  } else {
+    logger.info(`Login: Password for user "${username}" doesn't match`);
+    return {
+      errorId: "loginFailed",
+      message: "User login error",
+      status: "error",
     };
   }
 };

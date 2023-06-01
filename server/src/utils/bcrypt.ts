@@ -1,5 +1,11 @@
 import bcrypt from "bcryptjs";
 import { logger } from "server/utils/logger";
+import { BcryptError } from "shared/typings/api/errors";
+import {
+  AsyncResult,
+  makeErrorResult,
+  makeSuccessResult,
+} from "shared/utils/asyncResult";
 
 const saltLength = 10;
 
@@ -27,20 +33,20 @@ const comparePasswordHash = async (
 const validateLogin = async (
   password: string,
   hash: string
-): Promise<boolean> => {
+): Promise<AsyncResult<boolean, BcryptError>> => {
   let hashResponse;
   try {
     hashResponse = await comparePasswordHash(password, hash);
   } catch (error) {
     logger.error(`comparePasswordHash error: ${error}`);
-    throw error;
+    return makeErrorResult(BcryptError.UNKNOWN_ERROR);
   }
 
   if (hashResponse) {
-    return true;
+    return makeSuccessResult(true);
   }
 
-  return false;
+  return makeSuccessResult(false);
 };
 
 export { hashPassword, validateLogin };
