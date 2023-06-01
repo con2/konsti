@@ -82,7 +82,15 @@ export const groupAssignPlayers = (
 
   const result = unwrapResult(resultAsyncResult);
 
-  getHappiness(result.results, playerGroups, allPlayers, startingTime);
+  const getHappinessAsyncResult = getHappiness(
+    result.results,
+    playerGroups,
+    allPlayers,
+    startingTime
+  );
+  if (isErrorResult(getHappinessAsyncResult)) {
+    return getHappinessAsyncResult;
+  }
 
   logger.debug(`${result.message}`);
 
