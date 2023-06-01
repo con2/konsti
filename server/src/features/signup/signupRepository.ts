@@ -303,20 +303,17 @@ export const delRpgSignupsByStartTime = async (
     )
     .map((game) => game._id);
 
-  let response;
   try {
-    response = await SignupModel.deleteMany({
+    const response = await SignupModel.deleteMany({
       "userSignups.time": startTime,
       game: { $nin: doNotRemoveGameIds },
     });
+    logger.info(
+      `MongoDB: Deleted ${response.deletedCount} signups for startTime: ${startTime}`
+    );
+    return makeSuccessResult(response.deletedCount);
   } catch (error) {
     logger.error(`MongoDB: Error removing invalid signup - ${error}`);
-    throw error;
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
-
-  logger.info(
-    `MongoDB: Deleted ${response.deletedCount} signups for startTime: ${startTime}`
-  );
-
-  return makeSuccessResult(response.deletedCount);
 };
