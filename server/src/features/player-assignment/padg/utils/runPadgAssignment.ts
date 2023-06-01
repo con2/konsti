@@ -23,7 +23,11 @@ export const runPadgAssignment = (
   startingTime: string,
   signups: readonly Signup[]
 ): AsyncResult<AssignmentStrategyResult, AssignmentError> => {
-  const groups = getGroups(playerGroups, startingTime);
+  const groupsAsyncResult = getGroups(playerGroups, startingTime);
+  if (isErrorResult(groupsAsyncResult)) {
+    return groupsAsyncResult;
+  }
+  const groups = unwrapResult(groupsAsyncResult);
   const events = getEvents(signedGames);
   const list = getList(playerGroups, startingTime, signups);
   const updateL = (input: Input): string => input.list;

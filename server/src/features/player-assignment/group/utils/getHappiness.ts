@@ -53,7 +53,11 @@ export const getHappiness = (
     return [];
   });
 
-  const groups = getGroups(playerGroups, startingTime);
+  const groupsAsyncResult = getGroups(playerGroups, startingTime);
+  if (isErrorResult(groupsAsyncResult)) {
+    return groupsAsyncResult;
+  }
+  const groups = unwrapResult(groupsAsyncResult);
   const happiness = calculateHappiness(_.uniqBy(successResults, "id"), groups);
   logger.debug(`Group assignment completed with happiness ${happiness}%`);
 

@@ -30,7 +30,11 @@ export const runRandomAssignment = (
   startingTime: string,
   signups: readonly Signup[]
 ): AsyncResult<AssignmentStrategyResult, AssignmentError> => {
-  const groups = getGroups(playerGroups, startingTime);
+  const groupsAsyncResult = getGroups(playerGroups, startingTime);
+  if (isErrorResult(groupsAsyncResult)) {
+    return groupsAsyncResult;
+  }
+  const groups = unwrapResult(groupsAsyncResult);
   const events = getRandomAssignEvents(signedGames);
   const list = getList(playerGroups, startingTime, signups);
   const updateL = (input: RandomAssignUpdateLInput): ListItem[] => input.L;

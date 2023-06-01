@@ -1,16 +1,27 @@
 import dayjs from "dayjs";
 import _ from "lodash";
 import { Group } from "server/typings/padgRandomAssign.typings";
+import { logger } from "server/utils/logger";
+import { AssignmentError } from "shared/typings/api/errors";
 import { User } from "shared/typings/models/user";
+import {
+  AsyncResult,
+  isErrorResult,
+  isSuccessResult,
+  makeErrorResult,
+  makeSuccessResult,
+  unwrapResult,
+} from "shared/utils/asyncResult";
 
 export const getGroups = (
   playerGroups: readonly User[][],
   startingTime: string
-): Group[] => {
-  return playerGroups.map((playerGroup) => {
+): AsyncResult<Group[], AssignmentError> => {
+  const results = playerGroups.map((playerGroup) => {
     const firstMember = _.first(playerGroup);
     if (!firstMember) {
-      throw new Error("Padg assign: error getting first member");
+      logger.error("Padg assign: error getting first member");
+      return makeErrorResult(AssignmentError.UNKNOWN_ERROR);
     }
 
     const signedGamesForStartTime = firstMember.signedGames.filter(
@@ -23,7 +34,7 @@ export const getGroups = (
       (signedGame) => signedGame.priority
     );
 
-    return {
+    return makeSuccessResult({
       id:
         firstMember.groupCode !== "0"
           ? firstMember.groupCode
@@ -32,6 +43,20 @@ export const getGroups = (
       pref: sortedSignedGames.map(
         (signedGame) => signedGame.gameDetails.gameId
       ),
-    };
+    });
   });
+
+  const someResultFailed = results.some((result) => isErrorResult(result));
+  if (someResultFailed) {
+    return makeErrorResult(AssignmentError.UNKNOWN_ERROR);
+  }
+
+  const successResults = results.flatMap((result) => {
+    if (isSuccessResult(result)) {
+      return unwrapResult(result);
+    }
+    return [];
+  });
+
+  return makeSuccessResult(successResults);
 };
