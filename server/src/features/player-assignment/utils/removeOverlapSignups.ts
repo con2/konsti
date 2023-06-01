@@ -8,6 +8,7 @@ import { saveSignedGames } from "server/features/user/signed-game/signedGameRepo
 import {
   AsyncResult,
   isErrorResult,
+  makeErrorResult,
   makeSuccessResult,
   unwrapResult,
 } from "shared/utils/asyncResult";
@@ -60,14 +61,20 @@ export const removeOverlapSignups = async (
     });
   });
 
-  try {
-    await Promise.all(
-      signupData.map(async (signup) => {
-        await saveSignedGames(signup);
-      })
-    );
-  } catch (error) {
-    throw new Error(`No assign results: saveSignup error: ${error}`);
+  const promises = signupData.map(async (signup) => {
+    const saveSignedGamesAsyncResult = await saveSignedGames(signup);
+    if (isErrorResult(saveSignedGamesAsyncResult)) {
+      return saveSignedGamesAsyncResult;
+    }
+    return makeSuccessResult(undefined);
+  });
+
+  const saveResults = await Promise.all(promises);
+  const someResultFailed = saveResults.some((saveResult) =>
+    isErrorResult(saveResult)
+  );
+  if (someResultFailed) {
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 
   return makeSuccessResult(undefined);

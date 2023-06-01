@@ -8,6 +8,7 @@ import { sharedConfig } from "shared/config/sharedConfig";
 import {
   AsyncResult,
   isErrorResult,
+  makeErrorResult,
   makeSuccessResult,
   unwrapResult,
 } from "shared/utils/asyncResult";
@@ -49,10 +50,16 @@ export const verifyUserSignups = async (): Promise<
       );
 
       if (!matchingUser) {
-        throw new Error(`No matcing user: "${userSignup.username}"`);
+        logger.error(`No matcing user: "${userSignup.username}"`);
+        return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
       }
 
-      const groupCreator = getGroupCreator(users, matchingUser);
+      const groupCreatorAsyncResult = getGroupCreator(users, matchingUser);
+      if (isErrorResult(groupCreatorAsyncResult)) {
+        return groupCreatorAsyncResult;
+      }
+
+      const groupCreator = unwrapResult(groupCreatorAsyncResult);
 
       const matchingCreatorSignedGame = groupCreator.signedGames.find(
         (creatorSignedGame) =>
@@ -61,9 +68,10 @@ export const verifyUserSignups = async (): Promise<
       );
 
       if (!matchingCreatorSignedGame) {
-        throw new Error(
+        logger.error(
           `No matching signed game found from group creator: "${userSignup.username}" - "${game.title}"`
         );
+        return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
       }
     });
   });
@@ -71,7 +79,10 @@ export const verifyUserSignups = async (): Promise<
   return makeSuccessResult(undefined);
 };
 
-const getGroupCreator = (users: User[], user: User): User => {
+const getGroupCreator = (
+  users: User[],
+  user: User
+): AsyncResult<User, MongoDbError> => {
   // User is group member, not group creators -> find group creator
   if (user.groupCode !== "0" && user.groupCode !== user.serial) {
     const groupCreator = users.find(
@@ -79,12 +90,13 @@ const getGroupCreator = (users: User[], user: User): User => {
     );
 
     if (groupCreator) {
-      return groupCreator;
+      return makeSuccessResult(groupCreator);
     } else {
-      throw new Error(`Group creator not found for user ${user.username}`);
+      logger.error(`Group creator not found for user ${user.username}`);
+      return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
   }
 
   // User is group creator
-  return user;
+  return makeSuccessResult(user);
 };
