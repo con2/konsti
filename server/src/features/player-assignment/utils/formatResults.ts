@@ -1,18 +1,26 @@
 import _ from "lodash";
 import { PadgRandomAssignResults } from "server/typings/padgRandomAssign.typings";
+import { logger } from "server/utils/logger";
+import { AssignmentError } from "shared/typings/api/errors";
 import { Result } from "shared/typings/models/result";
 import { SelectedGame, User } from "shared/typings/models/user";
+import {
+  AsyncResult,
+  makeErrorResult,
+  makeSuccessResult,
+} from "shared/utils/asyncResult";
 
 export const formatResults = (
   assignResults: PadgRandomAssignResults,
   playerGroups: readonly User[][]
-): readonly Result[] => {
+): AsyncResult<readonly Result[], AssignmentError> => {
   const selectedPlayers = playerGroups
     .filter((playerGroup) => {
       const firstMember = _.first(playerGroup);
 
       if (!firstMember) {
-        throw new Error("Padg assign: error getting first member");
+        logger.error("Padg assign: error getting first member");
+        return makeErrorResult(AssignmentError.UNKNOWN_ERROR);
       }
 
       return assignResults.find(
@@ -46,5 +54,5 @@ export const formatResults = (
     return acc;
   }, []);
 
-  return results;
+  return makeSuccessResult(results);
 };

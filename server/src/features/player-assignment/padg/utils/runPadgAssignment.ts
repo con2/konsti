@@ -9,8 +9,10 @@ import { User } from "shared/typings/models/user";
 import { Signup } from "server/features/signup/signup.typings";
 import {
   AsyncResult,
+  isErrorResult,
   makeErrorResult,
   makeSuccessResult,
+  unwrapResult,
 } from "shared/utils/asyncResult";
 import { AssignmentError } from "shared/typings/api/errors";
 import { logger } from "server/utils/logger";
@@ -39,8 +41,12 @@ export const runPadgAssignment = (
     return makeErrorResult(AssignmentError.UNKNOWN_ERROR);
   }
 
-  const results = formatResults(assignResults, playerGroups);
+  const resultsAsyncResult = formatResults(assignResults, playerGroups);
+  if (isErrorResult(resultsAsyncResult)) {
+    return resultsAsyncResult;
+  }
 
+  const results = unwrapResult(resultsAsyncResult);
   const message = "Padg assignment completed";
 
   return makeSuccessResult({ results, message });
