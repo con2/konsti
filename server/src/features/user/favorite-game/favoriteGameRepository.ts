@@ -9,6 +9,7 @@ import {
   isErrorResult,
   unwrapResult,
   makeSuccessResult,
+  makeErrorResult,
 } from "shared/utils/asyncResult";
 
 export const saveFavorite = async (
@@ -36,9 +37,8 @@ export const saveFavorite = async (
     []
   );
 
-  let response;
   try {
-    response = await UserModel.findOneAndUpdate(
+    const response = await UserModel.findOneAndUpdate(
       { username },
       {
         favoritedGames,
@@ -51,14 +51,14 @@ export const saveFavorite = async (
       `MongoDB: Favorite data stored for user "${favoriteData.username}"`
     );
     if (!response) {
-      throw new Error(`User not found`);
+      logger.error(`MongoDB: User not found`);
+      return makeErrorResult(MongoDbError.USER_NOT_FOUND);
     }
+    return makeSuccessResult(response.favoritedGames);
   } catch (error) {
     logger.error(
       `MongoDB: Error storing favorite data for user "${favoriteData.username}" - ${error}`
     );
-    throw error;
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
-
-  return makeSuccessResult(response.favoritedGames);
 };
