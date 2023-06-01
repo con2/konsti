@@ -21,6 +21,7 @@ import { Signup } from "server/features/signup/signup.typings";
 import {
   AsyncResult,
   isErrorResult,
+  makeErrorResult,
   makeSuccessResult,
   unwrapResult,
 } from "shared/utils/asyncResult";
@@ -68,13 +69,19 @@ export const removeDeletedGames = async (
 
 export const enrichGames = async (
   games: readonly GameDoc[]
-): Promise<GameWithUsernames[]> => {
+): Promise<AsyncResult<GameWithUsernames[], MongoDbError>> => {
+  const settingsAsyncResult = await findSettings();
+  if (isErrorResult(settingsAsyncResult)) {
+    return settingsAsyncResult;
+  }
+
+  const settings = unwrapResult(settingsAsyncResult);
+
   try {
     const signups = await findSignups();
-    const settings = await findSettings();
     const currentTime = await getTime();
 
-    return games.map((game) => {
+    const enrichedGames = games.map((game) => {
       const signupQuestion = settings.signupQuestions.find(
         (message) => message.gameId === game.gameId
       );
@@ -86,9 +93,11 @@ export const enrichGames = async (
         users: getSignupsForGame(signups, game.gameId, signupQuestion),
       };
     });
+
+    return makeSuccessResult(enrichedGames);
   } catch (error) {
     logger.error(`getGamesWithPlayers error: ${error}`);
-    return [];
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
 

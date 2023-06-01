@@ -22,25 +22,25 @@ import { isErrorResult, unwrapResult } from "shared/utils/asyncResult";
 export const fetchSettings = async (): Promise<
   GetSettingsResponse | ApiError
 > => {
-  try {
-    const response = await findSettings();
-
-    return {
-      message: "Getting settings success",
-      status: "success",
-      hiddenGames: response.hiddenGames,
-      appOpen: response.appOpen,
-      signupQuestions: response.signupQuestions,
-      signupStrategy: response.signupStrategy,
-    };
-  } catch (error) {
-    logger.error(`Settings: ${error}`);
+  const findSettingsAsyncResult = await findSettings();
+  if (isErrorResult(findSettingsAsyncResult)) {
     return {
       message: "Getting settings failed",
       status: "error",
       errorId: "unknown",
     };
   }
+
+  const settings = unwrapResult(findSettingsAsyncResult);
+
+  return {
+    message: "Getting settings success",
+    status: "success",
+    hiddenGames: settings.hiddenGames,
+    appOpen: settings.appOpen,
+    signupQuestions: settings.signupQuestions,
+    signupStrategy: settings.signupStrategy,
+  };
 };
 
 export const storeHidden = async (

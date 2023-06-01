@@ -30,11 +30,8 @@ export const login = async (
     };
   }
 
-  let settingsResponse;
-  try {
-    settingsResponse = await findSettings();
-  } catch (error) {
-    logger.error(`Login: ${error}`);
+  const findSettingsAsyncResult = await findSettings();
+  if (isErrorResult(findSettingsAsyncResult)) {
     return {
       message: "User login error",
       status: "error",
@@ -42,7 +39,9 @@ export const login = async (
     };
   }
 
-  if (!settingsResponse.appOpen && user.userGroup === "user") {
+  const settings = unwrapResult(findSettingsAsyncResult);
+
+  if (!settings.appOpen && user.userGroup === "user") {
     return {
       errorId: "loginDisabled",
       message: "User login disabled",

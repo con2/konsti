@@ -10,58 +10,70 @@ import {
   isErrorResult,
   unwrapResult,
   makeSuccessResult,
+  makeErrorResult,
 } from "shared/utils/asyncResult";
 import { MongoDbError } from "shared/typings/api/errors";
 
-export const removeSettings = async (): Promise<void> => {
+export const removeSettings = async (): Promise<
+  AsyncResult<void, MongoDbError>
+> => {
   logger.info("MongoDB: remove ALL settings from db");
   try {
     await SettingsModel.deleteMany({});
+    return makeSuccessResult(undefined);
   } catch (error) {
-    throw new Error(`MongoDB: Error removing settings: ${error}`);
+    logger.error(`MongoDB: Error removing settings: ${error}`);
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
 
-const createSettings = async (): Promise<Settings> => {
+const createSettings = async (): Promise<
+  AsyncResult<Settings, MongoDbError>
+> => {
   logger.info("MongoDB: Create default settings");
-
   const defaultSettings = new SettingsModel();
-
-  let settings;
   try {
-    settings = await defaultSettings.save();
+    const settings = await defaultSettings.save();
+    logger.info(`MongoDB: Default settings saved to DB`);
+    return makeSuccessResult(settings);
   } catch (error) {
-    throw new Error(`MongoDB: Add default settings error: ${error}`);
+    logger.error(`MongoDB: Add default settings error: ${error}`);
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
-
-  logger.info(`MongoDB: Default settings saved to DB`);
-  return settings;
 };
 
-export const findSettings = async (): Promise<Settings> => {
-  let settings;
+export const findSettings = async (): Promise<
+  AsyncResult<Settings, MongoDbError>
+> => {
   try {
-    settings = await SettingsModel.findOne(
+    const settings = await SettingsModel.findOne(
       {},
       "-signupQuestions._id -_id -__v -createdAt -updatedAt"
     )
       .lean<Settings>()
       .populate("hiddenGames");
+
+    if (!settings) {
+      const createSettingsAsyncResult = await createSettings();
+      if (isErrorResult(createSettingsAsyncResult)) {
+        return createSettingsAsyncResult;
+      }
+      const defaultSettings = unwrapResult(createSettingsAsyncResult);
+      return makeSuccessResult(defaultSettings);
+    }
+
+    logger.debug(`MongoDB: Settings data found`);
+    return makeSuccessResult(settings);
   } catch (error) {
-    throw new Error(`MongoDB: Error finding settings data: ${error}`);
+    logger.error(`MongoDB: Error finding settings data: ${error}`);
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
-
-  if (!settings) return await createSettings();
-
-  logger.debug(`MongoDB: Settings data found`);
-  return settings;
 };
 
 export const saveHidden = async (
   hiddenGames: readonly Game[]
 ): Promise<AsyncResult<Settings, MongoDbError>> => {
   const gamesAsyncResult = await findGames();
-
   if (isErrorResult(gamesAsyncResult)) {
     return gamesAsyncResult;
   }
@@ -75,9 +87,8 @@ export const saveHidden = async (
     return acc;
   }, []);
 
-  let settings;
   try {
-    settings = await SettingsModel.findOneAndUpdate(
+    const settings = await SettingsModel.findOneAndUpdate(
       {},
       {
         hiddenGames: formattedData,
@@ -88,12 +99,12 @@ export const saveHidden = async (
         fields: "-_id -__v -createdAt -updatedAt",
       }
     ).populate("hiddenGames");
+    logger.info(`MongoDB: Hidden data updated`);
+    return makeSuccessResult(settings);
   } catch (error) {
-    throw new Error(`MongoDB: Error updating hidden games: ${error}`);
+    logger.error(`MongoDB: Error updating hidden games: ${error}`);
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
-
-  logger.info(`MongoDB: Hidden data updated`);
-  return makeSuccessResult(settings);
 };
 
 export const saveSignupQuestion = async (

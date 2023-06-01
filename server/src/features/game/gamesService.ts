@@ -79,19 +79,20 @@ export const fetchGames = async (): Promise<
 
   const games = unwrapResult(gamesAsyncResult);
 
-  try {
-    const gamesWithPlayers = await enrichGames(games);
-
-    return {
-      message: "Games downloaded",
-      status: "success",
-      games: gamesWithPlayers,
-    };
-  } catch (error) {
+  const gamesWithPlayersAsyncResult = await enrichGames(games);
+  if (isErrorResult(gamesWithPlayersAsyncResult)) {
     return {
       message: `Downloading games failed`,
       status: "error",
       errorId: "unknown",
     };
   }
+
+  const gamesWithPlayers = unwrapResult(gamesWithPlayersAsyncResult);
+
+  return {
+    message: "Games downloaded",
+    status: "success",
+    games: gamesWithPlayers,
+  };
 };

@@ -18,7 +18,8 @@ export const createSignups = async (): Promise<void> => {
   const allUsersAsyncResult = await findUsers();
   const allUsers = unsafelyUnwrapResult(allUsersAsyncResult);
 
-  const settings = await findSettings();
+  const findSettingsAsyncResult = await findSettings();
+  const settings = unsafelyUnwrapResult(findSettingsAsyncResult);
 
   const users = allUsers.filter(
     (user) => user.username !== "admin" && user.username !== "helper"

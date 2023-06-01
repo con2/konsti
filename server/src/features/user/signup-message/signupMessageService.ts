@@ -5,16 +5,26 @@ import {
   GetSignupMessagesError,
   GetSignupMessagesResponse,
 } from "shared/typings/api/users";
-import { Settings } from "shared/typings/models/settings";
+import { isErrorResult, unwrapResult } from "shared/utils/asyncResult";
 
 export const fetchSignupMessages = async (): Promise<
   GetSignupMessagesResponse | GetSignupMessagesError
 > => {
+  const findSettingsAsyncResult = await findSettings();
+  if (isErrorResult(findSettingsAsyncResult)) {
+    return {
+      message: "Error loading data from DB",
+      status: "error",
+      errorId: "unknown",
+    };
+  }
+
+  const settings = unwrapResult(findSettingsAsyncResult);
+
   let signups: Signup[];
-  let settings: Settings;
+
   try {
     signups = await findSignups();
-    settings = await findSettings();
   } catch (error) {
     return {
       message: "Error loading data from DB",
