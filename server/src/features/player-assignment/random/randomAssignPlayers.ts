@@ -10,24 +10,31 @@ import {
 } from "server/typings/result.typings";
 import { getRunRandomAndPadgInput } from "server/features/player-assignment/utils/getRunRandomAndPadgInput";
 import { Signup } from "server/features/signup/signup.typings";
+import {
+  AsyncResult,
+  isErrorResult,
+  makeSuccessResult,
+  unwrapResult,
+} from "shared/utils/asyncResult";
+import { AssignmentError } from "shared/typings/api/errors";
 
 export const randomAssignPlayers = (
   players: readonly User[],
   games: readonly Game[],
   startingTime: string,
   signups: readonly Signup[]
-): PlayerAssignmentResult => {
+): AsyncResult<PlayerAssignmentResult, AssignmentError> => {
   logger.debug(`***** Run Random Assignment for ${startingTime}`);
   const startingGames = getStartingGames(games, startingTime);
 
   if (startingGames.length === 0) {
     logger.debug("No starting games, stop!");
-    return {
+    return makeSuccessResult({
       results: [],
       message: "Random Assign Result - No starting games",
       algorithm: "Random",
       status: AssignmentResultStatus.NO_STARTING_GAMES,
-    };
+    });
   }
   const {
     signedGames,
@@ -39,24 +46,29 @@ export const randomAssignPlayers = (
 
   if (signedGames.length === 0) {
     logger.debug("No signup wishes, stop!");
-    return {
+    return makeSuccessResult({
       results: [],
       message: "Random Assign Result - No signup wishes",
       algorithm: "Random",
       status: AssignmentResultStatus.NO_SIGNUP_WISHES,
-    };
+    });
   }
   logger.debug(`Games with signups: ${signedGames.length}`);
   logger.debug(
     `Selected players: ${allPlayers.length} (${numberOfIndividuals} individual, ${numberOfGroups} groups)`
   );
 
-  const assignmentResult = runRandomAssignment(
+  const assignmentResultAsyncResult = runRandomAssignment(
     signedGames,
     playerGroups,
     startingTime,
     signups
   );
+  if (isErrorResult(assignmentResultAsyncResult)) {
+    return assignmentResultAsyncResult;
+  }
+
+  const assignmentResult = unwrapResult(assignmentResultAsyncResult);
 
   const selectedUniqueGames = _.uniq(
     assignmentResult.results.map(
@@ -74,10 +86,12 @@ export const randomAssignPlayers = (
 
   logger.debug(`${message}`);
 
-  return Object.assign({
-    ...assignmentResult,
-    message,
-    algorithm: "Random",
-    status: "success",
-  });
+  return makeSuccessResult(
+    Object.assign({
+      ...assignmentResult,
+      message,
+      algorithm: "Random",
+      status: "success",
+    })
+  );
 };

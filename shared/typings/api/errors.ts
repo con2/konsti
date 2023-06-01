@@ -22,3 +22,7 @@ export enum KompassiError {
   NO_PROGRAM_ITEMS = "noProgramItems",
   INVALID_RESPONSE = "invalidResponse",
 }
+
+export enum AssignmentError {
+  UNKNOWN_ERROR = "unknownError",
+}

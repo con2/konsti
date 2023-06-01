@@ -11,12 +11,12 @@ import {
   makeSuccessResult,
   unwrapResult,
 } from "shared/utils/asyncResult";
-import { MongoDbError } from "shared/typings/api/errors";
+import { AssignmentError, MongoDbError } from "shared/typings/api/errors";
 
 const { gamePopularityUpdateMethod } = config;
 
 export const updateGamePopularity = async (): Promise<
-  AsyncResult<void, MongoDbError>
+  AsyncResult<void, MongoDbError | AssignmentError>
 > => {
   logger.info(
     `Calculate game popularity using "${gamePopularityUpdateMethod}" method`

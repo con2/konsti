@@ -14,13 +14,20 @@ import {
 } from "server/typings/padgRandomAssign.typings";
 import { User } from "shared/typings/models/user";
 import { Signup } from "server/features/signup/signup.typings";
+import {
+  AsyncResult,
+  makeErrorResult,
+  makeSuccessResult,
+} from "shared/utils/asyncResult";
+import { AssignmentError } from "shared/typings/api/errors";
+import { logger } from "server/utils/logger";
 
 export const runRandomAssignment = (
   signedGames: readonly Game[],
   playerGroups: readonly User[][],
   startingTime: string,
   signups: readonly Signup[]
-): AssignmentStrategyResult => {
+): AsyncResult<AssignmentStrategyResult, AssignmentError> => {
   const groups = getGroups(playerGroups, startingTime);
   const events = getRandomAssignEvents(signedGames);
   const list = getList(playerGroups, startingTime, signups);
@@ -38,18 +45,19 @@ export const runRandomAssignment = (
   const assignResults = eventAssignment(input);
 
   if (isCheckResult(assignResults)) {
-    throw new Error(
+    logger.error(
       `Random assignment failed: ${assignResults.msg}. Input: ${JSON.stringify(
         input
       )}`
     );
+    return makeErrorResult(AssignmentError.UNKNOWN_ERROR);
   }
 
   const results = formatResults(assignResults, playerGroups);
 
   const message = "Random assignment completed";
 
-  return { results, message };
+  return makeSuccessResult({ results, message });
 };
 
 const isCheckResult = (

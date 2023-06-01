@@ -6,11 +6,17 @@ import { Game } from "shared/typings/models/game";
 import { GroupAssignResult } from "server/typings/groupAssign.typings";
 import { Result } from "shared/typings/models/result";
 import { SelectedGame, User } from "shared/typings/models/user";
+import {
+  AsyncResult,
+  makeErrorResult,
+  makeSuccessResult,
+} from "shared/utils/asyncResult";
+import { AssignmentError } from "shared/typings/api/errors";
 
 export const runGroupAssignment = (
   playerGroups: readonly User[][],
   signedGames: readonly Game[]
-): GroupAssignResult => {
+): AsyncResult<GroupAssignResult, AssignmentError> => {
   const signupResults: Result[] = [];
   let matchingGroups: User[][] = [];
   let selectedGroups: User[][] = [];
@@ -133,9 +139,10 @@ export const runGroupAssignment = (
             groupMember.signedGames
           );
 
-          if (!enteredGame)
-            throw new Error("Unable to find entered game from signed games");
-
+          if (!enteredGame) {
+            logger.error("Unable to find entered game from signed games");
+            return makeErrorResult(AssignmentError.UNKNOWN_ERROR);
+          }
           signupResults.push({
             username: groupMember.username,
             enteredGame,
@@ -168,12 +175,12 @@ export const runGroupAssignment = (
     logger.debug(`**************`);
   }
 
-  return {
+  return makeSuccessResult({
     score,
     signupResults,
     playerCounter,
     gameCounter,
-  };
+  });
 };
 
 const findEnteredGame = (

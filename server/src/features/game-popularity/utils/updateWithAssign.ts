@@ -11,14 +11,15 @@ import {
   isErrorResult,
   makeErrorResult,
   makeSuccessResult,
+  unwrapResult,
 } from "shared/utils/asyncResult";
-import { MongoDbError } from "shared/typings/api/errors";
+import { AssignmentError, MongoDbError } from "shared/typings/api/errors";
 
 export const updateWithAssign = async (
   users: readonly User[],
   games: readonly Game[],
   signups: readonly Signup[]
-): Promise<AsyncResult<void, MongoDbError>> => {
+): Promise<AsyncResult<void, MongoDbError | AssignmentError>> => {
   const groupedGames = _.groupBy(games, (game) =>
     dayjs(game.startTime).format()
   );
@@ -26,12 +27,16 @@ export const updateWithAssign = async (
   let results = [] as readonly Result[];
 
   _.forEach(groupedGames, (_value, startingTime) => {
-    const assignmentResult = padgAssignPlayers(
+    const assignmentResultAsyncResult = padgAssignPlayers(
       users,
       games,
       startingTime,
       signups
     );
+    if (isErrorResult(assignmentResultAsyncResult)) {
+      return assignmentResultAsyncResult;
+    }
+    const assignmentResult = unwrapResult(assignmentResultAsyncResult);
     results = results.concat(assignmentResult.results);
   });
 

@@ -10,24 +10,31 @@ import { getRunRandomAndPadgInput } from "server/features/player-assignment/util
 import { runPadgAssignment } from "server/features/player-assignment/padg/utils/runPadgAssignment";
 import { logger } from "server/utils/logger";
 import { Signup } from "server/features/signup/signup.typings";
+import {
+  AsyncResult,
+  isErrorResult,
+  makeSuccessResult,
+  unwrapResult,
+} from "shared/utils/asyncResult";
+import { AssignmentError } from "shared/typings/api/errors";
 
 export const padgAssignPlayers = (
   players: readonly User[],
   games: readonly Game[],
   startingTime: string,
   signups: readonly Signup[]
-): PlayerAssignmentResult => {
+): AsyncResult<PlayerAssignmentResult, AssignmentError> => {
   logger.debug(`***** Run Padg Assignment for ${startingTime}`);
   const startingGames = getStartingGames(games, startingTime);
 
   if (startingGames.length === 0) {
     logger.debug("No starting games, stop!");
-    return {
+    return makeSuccessResult({
       results: [],
       message: "Padg Assign Result - No starting games",
       algorithm: "padg",
       status: AssignmentResultStatus.NO_STARTING_GAMES,
-    };
+    });
   }
 
   const {
@@ -39,12 +46,12 @@ export const padgAssignPlayers = (
   } = getRunRandomAndPadgInput(players, games, startingTime);
   if (signedGames.length === 0) {
     logger.debug("No signup wishes, stop!");
-    return {
+    return makeSuccessResult({
       results: [],
       message: "Padg Assign Result - No signup wishes",
       algorithm: "padg",
       status: AssignmentResultStatus.NO_SIGNUP_WISHES,
-    };
+    });
   }
 
   logger.debug(`Games with signups: ${signedGames.length}`);
@@ -52,12 +59,17 @@ export const padgAssignPlayers = (
     `Selected players: ${allPlayers.length} (${numberOfIndividuals} individual, ${numberOfGroups} groups)`
   );
 
-  const assignmentResult = runPadgAssignment(
+  const assignmentResultAsyncResult = runPadgAssignment(
     signedGames,
     playerGroups,
     startingTime,
     signups
   );
+  if (isErrorResult(assignmentResultAsyncResult)) {
+    return assignmentResultAsyncResult;
+  }
+
+  const assignmentResult = unwrapResult(assignmentResultAsyncResult);
 
   const selectedUniqueGames = _.uniq(
     assignmentResult.results.map(
@@ -75,10 +87,12 @@ export const padgAssignPlayers = (
 
   logger.debug(`${message}`);
 
-  return Object.assign({
-    ...assignmentResult,
-    message,
-    algorithm: "padg",
-    status: "success",
-  });
+  return makeSuccessResult(
+    Object.assign({
+      ...assignmentResult,
+      message,
+      algorithm: "padg",
+      status: "success",
+    })
+  );
 };

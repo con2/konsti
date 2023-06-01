@@ -13,35 +13,42 @@ import {
   AssignmentResultStatus,
   PlayerAssignmentResult,
 } from "server/typings/result.typings";
+import {
+  AsyncResult,
+  isErrorResult,
+  makeSuccessResult,
+  unwrapResult,
+} from "shared/utils/asyncResult";
+import { AssignmentError } from "shared/typings/api/errors";
 
 export const groupAssignPlayers = (
   players: readonly User[],
   games: readonly Game[],
   startingTime: string
-): PlayerAssignmentResult => {
+): AsyncResult<PlayerAssignmentResult, AssignmentError> => {
   logger.debug(`***** Run Group Assignment for ${startingTime}`);
   const startingGames = getStartingGames(games, startingTime);
 
   if (startingGames.length === 0) {
     logger.debug("No starting games, stop!");
-    return {
+    return makeSuccessResult({
       results: [],
       message: "Group Assign Result - No starting games",
       algorithm: "group",
       status: AssignmentResultStatus.NO_STARTING_GAMES,
-    };
+    });
   }
 
   const signupWishes = getSignupWishes(players);
 
   if (signupWishes.length === 0) {
     logger.debug("No signup wishes, stop!");
-    return {
+    return makeSuccessResult({
       results: [],
       message: "Group Assign Result - No signup wishes",
       algorithm: "group",
       status: AssignmentResultStatus.NO_SIGNUP_WISHES,
-    };
+    });
   }
 
   const signedGames = getSignedGames(startingGames, signupWishes);
@@ -68,15 +75,22 @@ export const groupAssignPlayers = (
     `Selected players: ${allPlayers.length} (${numberOfIndividuals} individual, ${numberOfGroups} groups)`
   );
 
-  const result = assignGroups(allPlayers, signedGames, playerGroups);
+  const resultAsyncResult = assignGroups(allPlayers, signedGames, playerGroups);
+  if (isErrorResult(resultAsyncResult)) {
+    return resultAsyncResult;
+  }
+
+  const result = unwrapResult(resultAsyncResult);
 
   getHappiness(result.results, playerGroups, allPlayers, startingTime);
 
   logger.debug(`${result.message}`);
 
-  return Object.assign({
-    ...result,
-    algorithm: "group",
-    status: "success",
-  });
+  return makeSuccessResult(
+    Object.assign({
+      ...result,
+      algorithm: "group",
+      status: "success",
+    })
+  );
 };

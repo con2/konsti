@@ -456,6 +456,7 @@ describe("Assignment with first time bonus", () => {
       assignmentStrategy,
       startingTime,
     });
+
     const assignResults = unsafelyUnwrapResult(assignResultsAsyncResult);
 
     expect(assignResults.status).toEqual("success");
