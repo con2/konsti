@@ -168,7 +168,12 @@ describe(`POST ${ApiEndpoint.SIGNUP}`, () => {
     await saveUser(mockUser);
 
     // Check starting conditions
-    const nonModifiedSignups = await findUserSignups(mockUser.username);
+    const nonModifiedSignupsAsyncResult = await findUserSignups(
+      mockUser.username
+    );
+    const nonModifiedSignups = unsafelyUnwrapResult(
+      nonModifiedSignupsAsyncResult
+    );
     expect(nonModifiedSignups?.length).toEqual(0);
 
     // Update entered games
@@ -191,7 +196,8 @@ describe(`POST ${ApiEndpoint.SIGNUP}`, () => {
     expect(response.body.status).toEqual("success");
 
     // Check database
-    const modifiedSignups = await findUserSignups(mockUser.username);
+    const modifiedSignupsAsyncResult = await findUserSignups(mockUser.username);
+    const modifiedSignups = unsafelyUnwrapResult(modifiedSignupsAsyncResult);
 
     expect(modifiedSignups?.[0].game.gameId).toEqual(testGame.gameId);
     expect(modifiedSignups?.[0].userSignups[0].message).toEqual("Test message");
@@ -305,7 +311,12 @@ describe(`DELETE ${ApiEndpoint.SIGNUP}`, () => {
     await saveSignup(mockPostEnteredGameRequest);
 
     // Check starting conditions
-    const nonModifiedSignup = await findUserSignups(mockUser.username);
+    const nonModifiedSignupAsyncResult = await findUserSignups(
+      mockUser.username
+    );
+    const nonModifiedSignup = unsafelyUnwrapResult(
+      nonModifiedSignupAsyncResult
+    );
 
     expect(nonModifiedSignup?.[0].game.gameId).toEqual(testGame.gameId);
     expect(nonModifiedSignup?.[0].userSignups.length).toEqual(1);
@@ -329,7 +340,8 @@ describe(`DELETE ${ApiEndpoint.SIGNUP}`, () => {
     expect(response.body.status).toEqual("success");
 
     // Check database
-    const modifiedSignup = await findUserSignups(mockUser.username);
+    const modifiedSignupAsyncResult = await findUserSignups(mockUser.username);
+    const modifiedSignup = unsafelyUnwrapResult(modifiedSignupAsyncResult);
     expect(modifiedSignup?.length).toEqual(0);
   });
 });

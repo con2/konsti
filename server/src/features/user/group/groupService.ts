@@ -32,17 +32,16 @@ export const createGroup = async (
   username: string,
   groupCode: string
 ): Promise<PostCreateGroupResponse | PostCreateGroupError> => {
-  let signups;
-  try {
-    signups = await findUserSignups(username);
-  } catch (error) {
-    logger.error(`findUserSignups(): ${error}`);
+  const signupsAsyncResult = await findUserSignups(username);
+  if (isErrorResult(signupsAsyncResult)) {
     return {
       message: "Error finding signups",
       status: "error",
       errorId: "unknown",
     };
   }
+
+  const signups = unwrapResult(signupsAsyncResult);
 
   const filteredSignups = signups.filter(
     (signup) => !directSignupAlwaysOpenIds.includes(signup.game.gameId)
@@ -127,17 +126,16 @@ export const joinGroup = async (
     };
   }
 
-  let signups;
-  try {
-    signups = await findUserSignups(username);
-  } catch (error) {
-    logger.error(`findUserSignups(): ${error}`);
+  const signupsAsyncResult = await findUserSignups(username);
+  if (isErrorResult(signupsAsyncResult)) {
     return {
       message: "Error finding signups",
       status: "error",
       errorId: "unknown",
     };
   }
+
+  const signups = unwrapResult(signupsAsyncResult);
 
   const filteredSignups = signups.filter(
     (signup) => !directSignupAlwaysOpenIds.includes(signup.game.gameId)

@@ -95,29 +95,29 @@ export const findRpgSignupsByStartTime = async (
   }
 };
 
-export const findUserSignups = async (username: string): Promise<Signup[]> => {
-  let response: Signup[];
+export const findUserSignups = async (
+  username: string
+): Promise<AsyncResult<Signup[], MongoDbError>> => {
   try {
-    response = await SignupModel.find(
+    const response = await SignupModel.find(
       { "userSignups.username": username },
       "-createdAt -updatedAt -_id -__v"
     )
-      .lean<Signup>()
+      .lean<Signup[]>()
       .populate("game", "-createdAt -updatedAt -_id -__v");
+    if (!response) {
+      logger.info(`MongoDB: Signups for user "${username}" not found`);
+      return makeSuccessResult([]);
+    }
+
+    logger.debug(`MongoDB: Found signups for user "${username}"`);
+    return makeSuccessResult(response);
   } catch (error) {
     logger.error(
       `MongoDB: Error finding signups for user ${username} - ${error}`
     );
-    throw error;
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
-
-  if (!response) {
-    logger.info(`MongoDB: Signups for user "${username}" not found`);
-    return [];
-  }
-
-  logger.debug(`MongoDB: Found signups for user "${username}"`);
-  return response;
 };
 
 export const saveSignup = async (

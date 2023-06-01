@@ -249,18 +249,16 @@ export const fetchUserByUsername = async (
     };
   }
 
-  let signups;
-
-  try {
-    signups = await findUserSignups(username);
-  } catch (error) {
-    logger.error(`findUser(): ${error}`);
+  const signupsAsyncResult = await findUserSignups(username);
+  if (isErrorResult(signupsAsyncResult)) {
     return {
       message: "Getting user data failed",
       status: "error",
       errorId: "unknown",
     };
   }
+
+  const signups = unwrapResult(signupsAsyncResult);
 
   const enteredGames: SelectedGame[] = signups
     ? signups.flatMap((signup) => {

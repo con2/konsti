@@ -163,7 +163,8 @@ describe(`POST ${ApiEndpoint.HIDDEN}`, () => {
     );
     expect(updatedUser?.favoritedGames.length).toEqual(1);
 
-    const signups = await findUserSignups(mockUser.username);
+    const signupsAsyncResult = await findUserSignups(mockUser.username);
+    const signups = unsafelyUnwrapResult(signupsAsyncResult);
     expect(signups.length).toEqual(1);
     expect(signups[0].userSignups[0].username).toEqual(mockUser.username);
   });

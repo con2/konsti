@@ -187,7 +187,12 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
       startTime: testGame.startTime,
     });
 
-    const signupsBeforeUpdate = await findUserSignups(mockUser.username);
+    const signupsBeforeUpdateAsyncResult = await findUserSignups(
+      mockUser.username
+    );
+    const signupsBeforeUpdate = unsafelyUnwrapResult(
+      signupsBeforeUpdateAsyncResult
+    );
     expect(signupsBeforeUpdate.length).toEqual(1);
 
     const assignResultsAsyncResult = await runAssignment({
@@ -199,7 +204,12 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     expect(assignResults.status).toEqual("success");
     expect(assignResults.results.length).toEqual(2);
 
-    const signupsAfterUpdate = await findUserSignups(mockUser.username);
+    const signupsAfterUpdateAsyncResult = await findUserSignups(
+      mockUser.username
+    );
+    const signupsAfterUpdate = unsafelyUnwrapResult(
+      signupsAfterUpdateAsyncResult
+    );
 
     const larpSignup = signupsAfterUpdate.find(
       (signup) => signup.game.programType === ProgramType.LARP
