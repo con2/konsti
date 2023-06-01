@@ -22,8 +22,6 @@ import {
   PostJoinGroupError,
   PostLeaveGroupError,
 } from "shared/typings/api/groups";
-import { GroupMember } from "shared/typings/models/groups";
-import { User } from "shared/typings/models/user";
 import { isErrorResult, unwrapResult } from "shared/utils/asyncResult";
 
 const { directSignupAlwaysOpenIds } = sharedConfig;
@@ -62,18 +60,17 @@ export const createGroup = async (
     };
   }
 
-  let findGroupResponse;
-  try {
-    // Check if group exists
-    findGroupResponse = await findGroup(groupCode, username);
-  } catch (error) {
-    logger.error(`findUser(): ${error}`);
+  // Check if group exists
+  const findGroupResponseAsyncResult = await findGroup(groupCode, username);
+  if (isErrorResult(findGroupResponseAsyncResult)) {
     return {
       message: "Own group already exists",
       status: "error",
       errorId: "groupExists",
     };
   }
+
+  const findGroupResponse = unwrapResult(findGroupResponseAsyncResult);
 
   if (findGroupResponse) {
     // Group exists
@@ -180,18 +177,20 @@ export const joinGroup = async (
   }
 
   // Check if group with code exists
-  let findGroupResponse;
-  try {
-    const creatorUsername = findSerialResponse.username;
-    findGroupResponse = await findGroup(groupCode, creatorUsername);
-  } catch (error) {
-    logger.error(`findGroup(): ${error}`);
+  const creatorUsername = findSerialResponse.username;
+  const findGroupResponseAsyncResult = await findGroup(
+    groupCode,
+    creatorUsername
+  );
+  if (isErrorResult(findGroupResponseAsyncResult)) {
     return {
       message: "Error finding group",
       status: "error",
       errorId: "groupDoesNotExist",
     };
   }
+
+  const findGroupResponse = unwrapResult(findGroupResponseAsyncResult);
 
   if (!findGroupResponse) {
     // No existing group, cannot join
@@ -279,17 +278,16 @@ export const closeGroup = async (
   groupCode: string,
   username: string
 ): Promise<PostCloseGroupResponse | PostCloseGroupError> => {
-  let groupMembers;
-  try {
-    groupMembers = await findGroupMembers(groupCode);
-  } catch (error) {
-    logger.error(`findGroupMembers error: ${error}`);
+  const groupMembersAsyncResult = await findGroupMembers(groupCode);
+  if (isErrorResult(groupMembersAsyncResult)) {
     return {
       message: "Unknown error",
       status: "error",
       errorId: "unknown",
     };
   }
+
+  const groupMembers = unwrapResult(groupMembersAsyncResult);
 
   // Check if group creator, only creator can close group
   const groupCreator = groupMembers.find(
@@ -328,31 +326,27 @@ export const closeGroup = async (
 export const fetchGroup = async (
   groupCode: string
 ): Promise<GetGroupResponse | GetGroupError> => {
-  let findGroupResults: User[];
-  try {
-    findGroupResults = await findGroupMembers(groupCode);
-
-    const returnData: GroupMember[] = [];
-    for (const findGroupResult of findGroupResults) {
-      returnData.push({
-        groupCode: findGroupResult.groupCode,
-        signedGames: findGroupResult.signedGames,
-        serial: findGroupResult.serial,
-        username: findGroupResult.username,
-      });
-    }
-
-    return {
-      message: "Getting group members success",
-      status: "success",
-      results: returnData,
-    };
-  } catch (error) {
-    logger.error(`Failed to get group: ${error}`);
+  const findGroupResultsAsyncResult = await findGroupMembers(groupCode);
+  if (isErrorResult(findGroupResultsAsyncResult)) {
     return {
       message: "Getting group members failed",
       status: "error",
       errorId: "unknown",
     };
   }
+
+  const findGroupResults = unwrapResult(findGroupResultsAsyncResult);
+
+  const returnData = findGroupResults.map((result) => ({
+    groupCode: result.groupCode,
+    signedGames: result.signedGames,
+    serial: result.serial,
+    username: result.username,
+  }));
+
+  return {
+    message: "Getting group members success",
+    status: "success",
+    results: returnData,
+  };
 };
