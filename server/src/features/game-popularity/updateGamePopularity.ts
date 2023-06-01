@@ -5,7 +5,6 @@ import { config } from "server/config";
 import { findUsers } from "server/features/user/userRepository";
 import { findGames } from "server/features/game/gameRepository";
 import { findSignups } from "server/features/signup/signupRepository";
-import { Signup } from "server/features/signup/signup.typings";
 import {
   AsyncResult,
   isErrorResult,
@@ -38,12 +37,12 @@ export const updateGamePopularity = async (): Promise<
 
   const games = unwrapResult(gamesAsyncResult);
 
-  let signups: Signup[] = [];
-  try {
-    signups = await findSignups();
-  } catch (error) {
-    logger.error(`findSignups error: ${error}`);
+  const signupsAsyncResult = await findSignups();
+  if (isErrorResult(signupsAsyncResult)) {
+    return signupsAsyncResult;
   }
+
+  const signups = unwrapResult(signupsAsyncResult);
 
   if (gamePopularityUpdateMethod === "signups") {
     const updateWithSignupsAsyncResult = await updateWithSignups(users, games);

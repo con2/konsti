@@ -1,5 +1,4 @@
 import { findSettings } from "server/features/settings/settingsRepository";
-import { Signup } from "server/features/signup/signup.typings";
 import { findSignups } from "server/features/signup/signupRepository";
 import {
   GetSignupMessagesError,
@@ -21,17 +20,16 @@ export const fetchSignupMessages = async (): Promise<
 
   const settings = unwrapResult(findSettingsAsyncResult);
 
-  let signups: Signup[];
-
-  try {
-    signups = await findSignups();
-  } catch (error) {
+  const signupsAsyncResult = await findSignups();
+  if (isErrorResult(signupsAsyncResult)) {
     return {
       message: "Error loading data from DB",
       status: "error",
       errorId: "unknown",
     };
   }
+
+  const signups = unwrapResult(signupsAsyncResult);
 
   const signupMessages = signups.flatMap((signup) => {
     return signup.userSignups.flatMap((userSignup) => {

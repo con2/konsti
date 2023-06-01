@@ -77,8 +77,14 @@ export const enrichGames = async (
 
   const settings = unwrapResult(settingsAsyncResult);
 
+  const signupsAsyncResult = await findSignups();
+  if (isErrorResult(signupsAsyncResult)) {
+    return signupsAsyncResult;
+  }
+
+  const signups = unwrapResult(signupsAsyncResult);
+
   try {
-    const signups = await findSignups();
     const currentTime = await getTime();
 
     const enrichedGames = games.map((game) => {

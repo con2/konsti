@@ -18,33 +18,40 @@ import {
   unwrapResult,
 } from "shared/utils/asyncResult";
 
-export const removeSignups = async (): Promise<void> => {
+export const removeSignups = async (): Promise<
+  AsyncResult<void, MongoDbError>
+> => {
   logger.info("MongoDB: remove ALL signups from db");
   try {
     await SignupModel.deleteMany({});
+    return makeSuccessResult(undefined);
   } catch (error) {
-    throw new Error(`MongoDB: Error removing signups: ${error}`);
+    logger.error(`MongoDB: Error removing signups: ${error}`);
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
 
-export const findSignups = async (): Promise<Signup[]> => {
-  let response: Signup[];
+export const findSignups = async (): Promise<
+  AsyncResult<Signup[], MongoDbError>
+> => {
   try {
-    response = await SignupModel.find({}, "-createdAt -updatedAt -_id -__v")
-      .lean<Signup>()
+    const response = await SignupModel.find(
+      {},
+      "-createdAt -updatedAt -_id -__v"
+    )
+      .lean<Signup[]>()
       .populate("game", "-createdAt -updatedAt -_id -__v");
+
+    if (!response) {
+      logger.info(`MongoDB: Signups not found`);
+      return makeSuccessResult([]);
+    }
+    logger.debug(`MongoDB: Signups found`);
+    return makeSuccessResult(response);
   } catch (error) {
     logger.error(`MongoDB: Error finding signups: ${error}`);
-    throw error;
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
-
-  if (!response) {
-    logger.info(`MongoDB: Signups not found`);
-    return [];
-  }
-
-  logger.debug(`MongoDB: Signups found`);
-  return response;
 };
 
 export interface FindRpgSignupsByStartTimeResponse extends UserSignup {

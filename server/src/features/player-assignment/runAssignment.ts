@@ -11,7 +11,6 @@ import { removeOverlapSignups } from "server/features/player-assignment/utils/re
 import { saveResults } from "server/features/player-assignment/utils/saveResults";
 import { getDynamicStartingTime } from "server/features/player-assignment/utils/getDynamicStartingTime";
 import { sleep } from "server/utils/sleep";
-import { Signup } from "server/features/signup/signup.typings";
 import { findSignups } from "server/features/signup/signupRepository";
 import { sharedConfig } from "shared/config/sharedConfig";
 import {
@@ -92,13 +91,12 @@ export const runAssignment = async ({
       game.programType === ProgramType.TABLETOP_RPG
   );
 
-  let signups: readonly Signup[] = [];
-  try {
-    signups = await findSignups();
-  } catch (error) {
-    logger.error(`findSignups error: ${error}`);
-    throw new Error(`findSignups error: ${error}`);
+  const signupsAsyncResult = await findSignups();
+  if (isErrorResult(signupsAsyncResult)) {
+    return signupsAsyncResult;
   }
+
+  const signups = unwrapResult(signupsAsyncResult);
 
   let assignResults;
   try {

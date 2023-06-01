@@ -3,7 +3,6 @@ import { logger } from "server/utils/logger";
 import { User } from "shared/typings/models/user";
 import { findUsers } from "server/features/user/userRepository";
 import { findSignups } from "server/features/signup/signupRepository";
-import { Signup } from "server/features/signup/signup.typings";
 import { ProgramType } from "shared/typings/models/game";
 import { sharedConfig } from "shared/config/sharedConfig";
 import {
@@ -26,13 +25,12 @@ export const verifyUserSignups = async (): Promise<
 
   const users = unwrapResult(usersAsyncResult);
 
-  let signups: Signup[];
-  try {
-    signups = await findSignups();
-  } catch (error) {
-    logger.error(error);
-    throw error;
+  const signupsAsyncResult = await findSignups();
+  if (isErrorResult(signupsAsyncResult)) {
+    return signupsAsyncResult;
   }
+
+  const signups = unwrapResult(signupsAsyncResult);
 
   signups.map(({ game, userSignups }) => {
     if (

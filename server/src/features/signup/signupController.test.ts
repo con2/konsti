@@ -34,6 +34,7 @@ import {
   saveSignup,
 } from "server/features/signup/signupRepository";
 import { NewUser } from "server/typings/user.typings";
+import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 
 let server: Server;
 let mongoServer: MongoMemoryServer;
@@ -232,8 +233,9 @@ describe(`POST ${ApiEndpoint.SIGNUP}`, () => {
 
     // Check results
 
-    const signups = await findSignups();
-    const matchingSignup = signups?.find(
+    const signupsAsyncResult = await findSignups();
+    const signups = unsafelyUnwrapResult(signupsAsyncResult);
+    const matchingSignup = signups.find(
       (signup) => signup.game.gameId === testGame.gameId
     );
     expect(matchingSignup?.userSignups.length).toEqual(maxAttendance);
