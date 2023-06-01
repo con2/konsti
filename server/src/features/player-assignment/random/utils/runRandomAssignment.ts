@@ -36,7 +36,11 @@ export const runRandomAssignment = (
   }
   const groups = unwrapResult(groupsAsyncResult);
   const events = getRandomAssignEvents(signedGames);
-  const list = getList(playerGroups, startingTime, signups);
+  const listAsyncResult = getList(playerGroups, startingTime, signups);
+  if (isErrorResult(listAsyncResult)) {
+    return listAsyncResult;
+  }
+  const list = unwrapResult(listAsyncResult);
   const updateL = (input: RandomAssignUpdateLInput): ListItem[] => input.L;
 
   const { RANDOM_ASSIGNMENT_ROUNDS } = config;

@@ -29,7 +29,11 @@ export const runPadgAssignment = (
   }
   const groups = unwrapResult(groupsAsyncResult);
   const events = getEvents(signedGames);
-  const list = getList(playerGroups, startingTime, signups);
+  const listAsyncResult = getList(playerGroups, startingTime, signups);
+  if (isErrorResult(listAsyncResult)) {
+    return listAsyncResult;
+  }
+  const list = unwrapResult(listAsyncResult);
   const updateL = (input: Input): string => input.list;
 
   const assignResults = assignPadg(groups, events, list, updateL);
