@@ -82,17 +82,16 @@ export const createGroup = async (
   }
 
   // No existing group, create
-  let saveGroupResponse;
-  try {
-    saveGroupResponse = await saveGroupCode(groupCode, username);
-  } catch (error) {
-    logger.error(`saveGroup(): ${error}`);
+  const saveGroupResponseAsyncResult = await saveGroupCode(groupCode, username);
+  if (isErrorResult(saveGroupResponseAsyncResult)) {
     return {
       message: "Save group failure",
       status: "error",
       errorId: "unknown",
     };
   }
+
+  const saveGroupResponse = unwrapResult(saveGroupResponseAsyncResult);
 
   if (saveGroupResponse) {
     return {
@@ -217,17 +216,16 @@ export const joinGroup = async (
   }
 
   // Group exists, join
-  let saveGroupResponse;
-  try {
-    saveGroupResponse = await saveGroupCode(groupCode, username);
-  } catch (error) {
-    logger.error(`saveGroup(): ${error}`);
+  const saveGroupResponseAsyncResult = await saveGroupCode(groupCode, username);
+  if (isErrorResult(saveGroupResponseAsyncResult)) {
     return {
       message: "Error saving group",
       status: "error",
       errorId: "unknown",
     };
   }
+
+  const saveGroupResponse = unwrapResult(saveGroupResponseAsyncResult);
 
   if (saveGroupResponse) {
     return {
@@ -247,17 +245,16 @@ export const joinGroup = async (
 export const leaveGroup = async (
   username: string
 ): Promise<PostLeaveGroupResponse | PostLeaveGroupError> => {
-  let saveGroupResponse;
-  try {
-    saveGroupResponse = await saveGroupCode("0", username);
-  } catch (error) {
-    logger.error(`Failed to leave group: ${error}`);
+  const saveGroupResponseAsyncResult = await saveGroupCode("0", username);
+  if (isErrorResult(saveGroupResponseAsyncResult)) {
     return {
       message: "Failed to leave group",
       status: "error",
       errorId: "failedToLeave",
     };
   }
+
+  const saveGroupResponse = unwrapResult(saveGroupResponseAsyncResult);
 
   if (saveGroupResponse) {
     return {

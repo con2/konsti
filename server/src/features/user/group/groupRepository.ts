@@ -73,26 +73,25 @@ export const findGroup = async (
 export const saveGroupCode = async (
   groupCode: string,
   username: string
-): Promise<User | null> => {
-  let response;
-
+): Promise<AsyncResult<User | null, MongoDbError>> => {
   try {
-    response = await UserModel.findOneAndUpdate(
+    const response = await UserModel.findOneAndUpdate(
       { username },
       { groupCode },
       { new: true, fields: "groupCode" }
     ).lean<User>();
+    if (groupCode === "0") {
+      logger.info(`MongoDB: User "${username}" left group`);
+    } else {
+      logger.info(
+        `MongoDB: Group "${groupCode}" stored for user "${username}"`
+      );
+    }
+    return makeSuccessResult(response);
   } catch (error) {
     logger.error(
       `MongoDB: Error storing group "${groupCode}" stored for user "${username}" - ${error}`
     );
-    throw error;
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
-
-  if (groupCode === "0") {
-    logger.info(`MongoDB: User "${username}" left group`);
-  } else {
-    logger.info(`MongoDB: Group "${groupCode}" stored for user "${username}"`);
-  }
-  return response;
 };
