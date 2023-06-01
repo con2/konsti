@@ -35,7 +35,15 @@ export const runAssignmentStrategy = (
   logger.info(`Assign strategy: ${assignmentStrategy}`);
 
   if (assignmentStrategy === AssignmentStrategy.MUNKRES) {
-    const munkresResult = munkresAssignPlayers(players, games, startingTime);
+    const munkresResultAsyncResult = munkresAssignPlayers(
+      players,
+      games,
+      startingTime
+    );
+    if (isErrorResult(munkresResultAsyncResult)) {
+      return munkresResultAsyncResult;
+    }
+    const munkresResult = unwrapResult(munkresResultAsyncResult);
     return makeSuccessResult(munkresResult);
   }
 
