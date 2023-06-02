@@ -8,14 +8,23 @@ import { SelectedGame } from "shared/typings/models/user";
 import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
 import { getTime } from "server/features/player-assignment/utils/getTime";
 import { isValidSignupTime } from "server/features/user/userUtils";
+import { isErrorResult, unwrapResult } from "shared/utils/result";
 
 export const storeSignedGames = async (
   selectedGames: readonly SelectedGame[],
   username: string,
   startTime: string
 ): Promise<PostSignedGamesResponse | PostSignedGamesError> => {
-  const timeNow = await getTime();
+  const timeNowResult = await getTime();
+  if (isErrorResult(timeNowResult)) {
+    return {
+      message: `Unable to get current time`,
+      status: "error",
+      errorId: "unknown",
+    };
+  }
 
+  const timeNow = unwrapResult(timeNowResult);
   const validSignupTime = isValidSignupTime({
     startTime: dayjs(startTime),
     timeNow,
@@ -45,21 +54,24 @@ export const storeSignedGames = async (
     }
   }
 
-  try {
-    const response = await saveSignedGames({
-      signedGames: selectedGames,
-      username,
-    });
-    return {
-      message: "Signup success",
-      status: "success",
-      signedGames: response.signedGames,
-    };
-  } catch (error) {
+  const responseResult = await saveSignedGames({
+    signedGames: selectedGames,
+    username,
+  });
+
+  if (isErrorResult(responseResult)) {
     return {
       message: "Signup failure",
       status: "error",
       errorId: "unknown",
     };
   }
+
+  const response = unwrapResult(responseResult);
+
+  return {
+    message: "Signup success",
+    status: "success",
+    signedGames: response.signedGames,
+  };
 };

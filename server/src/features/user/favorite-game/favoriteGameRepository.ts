@@ -1,15 +1,29 @@
 import { findGames } from "server/features/game/gameRepository";
 import { UserModel } from "server/features/user/userSchema";
 import { logger } from "server/utils/logger";
+import { MongoDbError } from "shared/typings/api/errors";
 import { Game } from "shared/typings/models/game";
 import { NewFavorite, User } from "shared/typings/models/user";
+import {
+  Result,
+  isErrorResult,
+  unwrapResult,
+  makeSuccessResult,
+  makeErrorResult,
+} from "shared/utils/result";
 
 export const saveFavorite = async (
   favoriteData: NewFavorite
-): Promise<readonly Game[] | null> => {
+): Promise<Result<readonly Game[] | null, MongoDbError>> => {
   const { username, favoritedGameIds } = favoriteData;
 
-  const games = await findGames();
+  const gamesResult = await findGames();
+
+  if (isErrorResult(gamesResult)) {
+    return gamesResult;
+  }
+
+  const games = unwrapResult(gamesResult);
 
   const favoritedGames = favoritedGameIds.reduce<string[]>(
     (acc, favoritedGameId) => {
@@ -23,9 +37,8 @@ export const saveFavorite = async (
     []
   );
 
-  let response;
   try {
-    response = await UserModel.findOneAndUpdate(
+    const response = await UserModel.findOneAndUpdate(
       { username },
       {
         favoritedGames,
@@ -38,14 +51,14 @@ export const saveFavorite = async (
       `MongoDB: Favorite data stored for user "${favoriteData.username}"`
     );
     if (!response) {
-      throw new Error(`User not found`);
+      logger.error(`MongoDB: User not found`);
+      return makeErrorResult(MongoDbError.USER_NOT_FOUND);
     }
+    return makeSuccessResult(response.favoritedGames);
   } catch (error) {
     logger.error(
       `MongoDB: Error storing favorite data for user "${favoriteData.username}" - ${error}`
     );
-    throw error;
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
-
-  return response.favoritedGames;
 };

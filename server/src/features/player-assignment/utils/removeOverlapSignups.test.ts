@@ -9,6 +9,7 @@ import { testGame, testGame2 } from "shared/tests/testGame";
 import { findUser, saveUser } from "server/features/user/userRepository";
 import { findGames, saveGames } from "server/features/game/gameRepository";
 import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
+import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 
 let mongoServer: MongoMemoryServer;
 
@@ -32,7 +33,8 @@ afterEach(async () => {
 
 test("should remove overlapping signups from user", async () => {
   await saveGames([testGame, testGame2]);
-  const insertedGames = await findGames();
+  const insertedGamesResult = await findGames();
+  const insertedGames = unsafelyUnwrapResult(insertedGamesResult);
   expect(insertedGames.length).toEqual(2);
 
   await saveUser(mockUser);
@@ -40,11 +42,13 @@ test("should remove overlapping signups from user", async () => {
     username: mockUser.username,
     signedGames: mockSignedGames,
   });
-  const insertedUser = await findUser(mockUser.username);
+  const insertedUserResult = await findUser(mockUser.username);
+  const insertedUser = unsafelyUnwrapResult(insertedUserResult);
   expect(insertedUser?.signedGames.length).toEqual(2);
 
   await removeOverlapSignups(mockResults);
-  const updatedUser = await findUser(mockUser.username);
 
+  const updatedUserResult = await findUser(mockUser.username);
+  const updatedUser = unsafelyUnwrapResult(updatedUserResult);
   expect(updatedUser?.signedGames.length).toEqual(1);
 });

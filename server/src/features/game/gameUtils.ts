@@ -18,14 +18,25 @@ import {
   findSignups,
 } from "server/features/signup/signupRepository";
 import { Signup } from "server/features/signup/signup.typings";
+import {
+  Result,
+  isErrorResult,
+  makeSuccessResult,
+  unwrapResult,
+} from "shared/utils/result";
+import { MongoDbError } from "shared/typings/api/errors";
 
 export const removeDeletedGames = async (
   updatedGames: readonly Game[]
-): Promise<number> => {
+): Promise<Result<number, MongoDbError>> => {
   logger.info("Remove deleted games");
 
-  const currentGames = await findGames();
+  const currentGamesResult = await findGames();
+  if (isErrorResult(currentGamesResult)) {
+    return currentGamesResult;
+  }
 
+  const currentGames = unwrapResult(currentGamesResult);
   const deletedGames = _.differenceBy(currentGames, updatedGames, "gameId");
 
   if (deletedGames.length > 0) {
@@ -39,48 +50,57 @@ export const removeDeletedGames = async (
       } deleted games to be removed: ${deletedGameIds.join(", ")}`
     );
 
-    try {
-      await delSignupsByGameIds(deletedGameIds);
-    } catch (error) {
-      logger.error(`Error removing deleted games: ${error}`);
-      throw error;
+    const delSignupsByGameIdsResult = await delSignupsByGameIds(deletedGameIds);
+    if (isErrorResult(delSignupsByGameIdsResult)) {
+      return delSignupsByGameIdsResult;
     }
 
-    try {
-      await removeGames(deletedGameIds);
-    } catch (error) {
-      logger.error(`Error removing deleted games: ${error}`);
-      throw error;
+    const removeGamesResult = await removeGames(deletedGameIds);
+    if (isErrorResult(removeGamesResult)) {
+      return removeGamesResult;
     }
   }
 
-  return deletedGames.length ?? 0;
+  return makeSuccessResult(deletedGames.length ?? 0);
 };
 
 export const enrichGames = async (
   games: readonly GameDoc[]
-): Promise<GameWithUsernames[]> => {
-  try {
-    const signups = await findSignups();
-    const settings = await findSettings();
-    const currentTime = await getTime();
-
-    return games.map((game) => {
-      const signupQuestion = settings.signupQuestions.find(
-        (message) => message.gameId === game.gameId
-      );
-      return {
-        game: {
-          ...game.toJSON<GameDoc>(),
-          signupStrategy: getSignupStrategyForGame(game, settings, currentTime),
-        },
-        users: getSignupsForGame(signups, game.gameId, signupQuestion),
-      };
-    });
-  } catch (error) {
-    logger.error(`getGamesWithPlayers error: ${error}`);
-    return [];
+): Promise<Result<GameWithUsernames[], MongoDbError>> => {
+  const settingsResult = await findSettings();
+  if (isErrorResult(settingsResult)) {
+    return settingsResult;
   }
+
+  const settings = unwrapResult(settingsResult);
+
+  const signupsResult = await findSignups();
+  if (isErrorResult(signupsResult)) {
+    return signupsResult;
+  }
+
+  const signups = unwrapResult(signupsResult);
+
+  const currentTimeResult = await getTime();
+  if (isErrorResult(currentTimeResult)) {
+    return currentTimeResult;
+  }
+
+  const currentTime = unwrapResult(currentTimeResult);
+  const enrichedGames = games.map((game) => {
+    const signupQuestion = settings.signupQuestions.find(
+      (message) => message.gameId === game.gameId
+    );
+    return {
+      game: {
+        ...game.toJSON<GameDoc>(),
+        signupStrategy: getSignupStrategyForGame(game, settings, currentTime),
+      },
+      users: getSignupsForGame(signups, game.gameId, signupQuestion),
+    };
+  });
+
+  return makeSuccessResult(enrichedGames);
 };
 
 const getSignupStrategyForGame = (

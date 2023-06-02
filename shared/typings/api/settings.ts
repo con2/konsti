@@ -6,6 +6,7 @@ import {
   SettingsSchema,
   SignupQuestion,
 } from "shared/typings/models/settings";
+import { ApiResult } from "shared/typings/api/errors";
 
 // POST hidden
 
@@ -13,19 +14,17 @@ export interface PostHiddenRequest {
   hiddenData: readonly Game[];
 }
 
-export interface PostHiddenResponse {
+export interface PostHiddenResponse extends ApiResult {
   hiddenGames: readonly Game[];
   message: string;
-  status: "success";
 }
 
 // GET settings
 
-export interface GetSettingsResponse {
+export interface GetSettingsResponse extends ApiResult {
   appOpen: boolean;
   hiddenGames: readonly Game[];
   message: string;
-  status: "success";
   signupQuestions: readonly SignupQuestion[];
   signupStrategy: SignupStrategy;
 }
@@ -36,10 +35,9 @@ export interface PostSignupQuestionRequest {
   signupQuestion: SignupQuestion;
 }
 
-export interface PostSignupQuestionResponse {
+export interface PostSignupQuestionResponse extends ApiResult {
   signupQuestions: readonly SignupQuestion[];
   message: string;
-  status: "success";
 }
 
 // DELETE signup question
@@ -56,8 +54,7 @@ export const PostSettingsRequestSchema = SettingsSchema.partial();
 
 export type PostSettingsRequest = z.infer<typeof PostSettingsRequestSchema>;
 
-export interface PostSettingsResponse {
+export interface PostSettingsResponse extends ApiResult {
   settings: Settings;
   message: string;
-  status: "success";
 }

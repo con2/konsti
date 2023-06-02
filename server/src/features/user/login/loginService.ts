@@ -4,22 +4,22 @@ import { getJWT } from "server/utils/jwt";
 import { findSettings } from "server/features/settings/settingsRepository";
 import { findUser } from "server/features/user/userRepository";
 import { logger } from "server/utils/logger";
+import { isErrorResult, unwrapResult } from "shared/utils/result";
 
 export const login = async (
   username: string,
   password: string
 ): Promise<PostLoginResponse | PostLoginError> => {
-  let user;
-  try {
-    user = await findUser(username);
-  } catch (error) {
-    logger.error(`Login: ${error}`);
+  const userResult = await findUser(username);
+  if (isErrorResult(userResult)) {
     return {
       message: "User login error",
       status: "error",
       errorId: "unknown",
     };
   }
+
+  const user = unwrapResult(userResult);
 
   if (!user) {
     logger.info(`Login: User "${username}" not found`);
@@ -30,11 +30,8 @@ export const login = async (
     };
   }
 
-  let settingsResponse;
-  try {
-    settingsResponse = await findSettings();
-  } catch (error) {
-    logger.error(`Login: ${error}`);
+  const findSettingsResult = await findSettings();
+  if (isErrorResult(findSettingsResult)) {
     return {
       message: "User login error",
       status: "error",
@@ -42,7 +39,9 @@ export const login = async (
     };
   }
 
-  if (!settingsResponse.appOpen && user.userGroup === "user") {
+  const settings = unwrapResult(findSettingsResult);
+
+  if (!settings.appOpen && user.userGroup === "user") {
     return {
       errorId: "loginDisabled",
       message: "User login disabled",
@@ -51,40 +50,39 @@ export const login = async (
   }
 
   // User exists
-  let validLogin;
-  try {
-    validLogin = await validateLogin(password, user.password);
 
-    logger.info(
-      `Login: User "${user.username}" with "${user.userGroup}" user group`
-    );
-
-    if (validLogin) {
-      logger.info(`Login: Password for user "${username}" matches`);
-      return {
-        message: "User login success",
-        status: "success",
-        username: user.username,
-        userGroup: user.userGroup,
-        serial: user.serial,
-        groupCode: user.groupCode,
-        jwt: getJWT(user.userGroup, user.username),
-      };
-    } else {
-      logger.info(`Login: Password for user "${username}" doesn't match`);
-
-      return {
-        errorId: "loginFailed",
-        message: "User login error",
-        status: "error",
-      };
-    }
-  } catch (error) {
-    logger.error(`Login: ${error}`);
+  const validLoginResult = await validateLogin(password, user.password);
+  if (isErrorResult(validLoginResult)) {
     return {
+      errorId: "loginFailed",
       message: "User login error",
       status: "error",
-      errorId: "unknown",
+    };
+  }
+
+  const validLogin = unwrapResult(validLoginResult);
+
+  logger.info(
+    `Login: User "${user.username}" with "${user.userGroup}" user group`
+  );
+
+  if (validLogin) {
+    logger.info(`Login: Password for user "${username}" matches`);
+    return {
+      message: "User login success",
+      status: "success",
+      username: user.username,
+      userGroup: user.userGroup,
+      serial: user.serial,
+      groupCode: user.groupCode,
+      jwt: getJWT(user.userGroup, user.username),
+    };
+  } else {
+    logger.info(`Login: Password for user "${username}" doesn't match`);
+    return {
+      errorId: "loginFailed",
+      message: "User login error",
+      status: "error",
     };
   }
 };

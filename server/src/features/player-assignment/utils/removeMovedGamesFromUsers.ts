@@ -1,25 +1,32 @@
 import dayjs from "dayjs";
 import { logger } from "server/utils/logger";
-import { GameDoc } from "server/typings/game.typings";
 import { Game } from "shared/typings/models/game";
 import { findGames } from "server/features/game/gameRepository";
 import {
   findUsers,
   updateUserByUsername,
 } from "server/features/user/userRepository";
+import {
+  Result,
+  isErrorResult,
+  makeErrorResult,
+  makeSuccessResult,
+  unwrapResult,
+} from "shared/utils/result";
+import { MongoDbError } from "shared/typings/api/errors";
 
 export const removeMovedGamesFromUsers = async (
   updatedGames: readonly Game[]
-): Promise<void> => {
+): Promise<Result<void, MongoDbError>> => {
   logger.info("Remove moved signed games from users");
 
-  let currentGames: GameDoc[] = [];
-  try {
-    currentGames = await findGames();
-  } catch (error) {
-    logger.error(error);
+  const currentGamesResult = await findGames();
+
+  if (isErrorResult(currentGamesResult)) {
+    return currentGamesResult;
   }
 
+  const currentGames = unwrapResult(currentGamesResult);
   const movedGames = currentGames.filter((currentGame) => {
     return updatedGames.find((updatedGame) => {
       return (
@@ -30,17 +37,18 @@ export const removeMovedGamesFromUsers = async (
     });
   });
 
-  if (!movedGames || movedGames.length === 0) return;
+  if (!movedGames || movedGames.length === 0) {
+    return makeSuccessResult(undefined);
+  }
 
   logger.info(`Found ${movedGames.length} moved games`);
 
-  let users;
-  try {
-    users = await findUsers();
-  } catch (error) {
-    logger.error(`findUsers error: ${error}`);
-    throw error;
+  const usersResult = await findUsers();
+  if (isErrorResult(usersResult)) {
+    return usersResult;
   }
+
+  const users = unwrapResult(usersResult);
 
   const promises = users.map(async (user) => {
     const signedGames = user.signedGames.filter((signedGame) => {
@@ -63,17 +71,23 @@ export const removeMovedGamesFromUsers = async (
     }
 
     if (user.signedGames.length !== signedGames.length) {
-      await updateUserByUsername({
+      const updateUserByUsernameResult = await updateUserByUsername({
         ...user,
         signedGames,
       });
+      if (isErrorResult(updateUserByUsernameResult)) {
+        return updateUserByUsernameResult;
+      }
     }
+
+    return makeSuccessResult(undefined);
   });
 
-  try {
-    await Promise.all(promises);
-  } catch (error) {
-    logger.error(`updateUser error: ${error}`);
-    throw new Error("No assign results");
+  const results = await Promise.all(promises);
+  const someUpdateFailed = results.some((result) => isErrorResult(result));
+  if (someUpdateFailed) {
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
+
+  return makeSuccessResult(undefined);
 };

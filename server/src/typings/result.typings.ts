@@ -1,9 +1,9 @@
 import mongoose from "mongoose";
 import { Game } from "shared/typings/models/game";
 import { SelectedGame, User } from "shared/typings/models/user";
-import { Result } from "shared/typings/models/result";
+import { AssignmentResult } from "shared/typings/models/result";
 
-export interface ResultDoc extends Result, mongoose.Document {
+export interface ResultDoc extends AssignmentResult, mongoose.Document {
   algorithm: string;
   message: string;
 }
@@ -20,7 +20,7 @@ export enum AssignmentResultStatus {
 }
 
 export interface PlayerAssignmentResult {
-  results: readonly Result[];
+  results: readonly AssignmentResult[];
   message: string;
   algorithm: string;
   status: AssignmentResultStatus;
@@ -28,13 +28,13 @@ export interface PlayerAssignmentResult {
 
 export interface ResultsCollectionEntry {
   startTime: string;
-  results: readonly Result[];
+  results: readonly AssignmentResult[];
   message: string;
   algorithm: string;
 }
 
 export interface AssignmentStrategyResult {
-  results: readonly Result[];
+  results: readonly AssignmentResult[];
   message: string;
 }
 

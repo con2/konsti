@@ -23,6 +23,7 @@ export const submitLogin = (
       loginResponse = await postLogin(loginFormFields);
     } catch (error) {
       clearSession();
+      // eslint-disable-next-line no-restricted-syntax -- TODO: Remove throw
       throw error;
     }
 
@@ -71,6 +72,7 @@ export const submitSessionRecovery = (jwt: string): AppThunk => {
       loginResponse = await postSessionRecovery(jwt);
     } catch (error) {
       clearSession();
+      // eslint-disable-next-line no-restricted-syntax -- TODO: Remove throw
       throw error;
     }
 
@@ -79,10 +81,13 @@ export const submitSessionRecovery = (jwt: string): AppThunk => {
 
       switch (loginResponse.errorId) {
         case "loginFailed":
+          // eslint-disable-next-line no-restricted-syntax -- TODO: Remove throw
           throw new Error("error.loginFailed");
         case "loginDisabled":
+          // eslint-disable-next-line no-restricted-syntax -- TODO: Remove throw
           throw new Error("error.loginDisabled");
         case "unknown":
+          // eslint-disable-next-line no-restricted-syntax -- TODO: Remove throw
           throw new Error(`error.unknown`);
         default:
           exhaustiveSwitchGuard(loginResponse.errorId);

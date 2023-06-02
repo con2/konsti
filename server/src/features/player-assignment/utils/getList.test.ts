@@ -88,7 +88,7 @@ test("should return empty array if user has no signed games", () => {
   const playerGroups: readonly User[][] = [userArray, userArray, userArray];
   const list = getList(playerGroups, startingTime, []);
 
-  expect(list).toEqual([]);
+  expect(list).toEqual({ value: [] });
 });
 
 test("should generate assignment list with bonuses for single user when signups is empty", () => {
@@ -96,11 +96,13 @@ test("should generate assignment list with bonuses for single user when signups 
   const playerGroups: readonly User[][] = [userArray, userArray, userArray];
   const list = getList(playerGroups, startingTime, []);
 
-  expect(list).toEqual([
-    { event: "p2106", gain: 21, id: "123", size: 1 },
-    { event: "p2106", gain: 21, id: "123", size: 1 },
-    { event: "p2106", gain: 21, id: "123", size: 1 },
-  ]);
+  expect(list).toEqual({
+    value: [
+      { event: "p2106", gain: 21, id: "123", size: 1 },
+      { event: "p2106", gain: 21, id: "123", size: 1 },
+      { event: "p2106", gain: 21, id: "123", size: 1 },
+    ],
+  });
 });
 
 test("should generate assignment list with bonuses for single user", () => {
@@ -108,11 +110,13 @@ test("should generate assignment list with bonuses for single user", () => {
   const playerGroups: readonly User[][] = [userArray, userArray, userArray];
   const list = getList(playerGroups, startingTime, [previousNotMatchingSignup]);
 
-  expect(list).toEqual([
-    { event: "p2106", gain: 21, id: "123", size: 1 },
-    { event: "p2106", gain: 21, id: "123", size: 1 },
-    { event: "p2106", gain: 21, id: "123", size: 1 },
-  ]);
+  expect(list).toEqual({
+    value: [
+      { event: "p2106", gain: 21, id: "123", size: 1 },
+      { event: "p2106", gain: 21, id: "123", size: 1 },
+      { event: "p2106", gain: 21, id: "123", size: 1 },
+    ],
+  });
 });
 
 test("should generate assignment list with bonuses for group", () => {
@@ -120,11 +124,13 @@ test("should generate assignment list with bonuses for group", () => {
   const playerGroups: readonly User[][] = [userArray, userArray, userArray];
   const list = getList(playerGroups, startingTime, [previousNotMatchingSignup]);
 
-  expect(list).toEqual([
-    { event: "p2106", gain: 21, id: "123", size: 2 },
-    { event: "p2106", gain: 21, id: "123", size: 2 },
-    { event: "p2106", gain: 21, id: "123", size: 2 },
-  ]);
+  expect(list).toEqual({
+    value: [
+      { event: "p2106", gain: 21, id: "123", size: 2 },
+      { event: "p2106", gain: 21, id: "123", size: 2 },
+      { event: "p2106", gain: 21, id: "123", size: 2 },
+    ],
+  });
 });
 
 test("should generate assignment list without bonuses for group", () => {
@@ -132,11 +138,13 @@ test("should generate assignment list without bonuses for group", () => {
   const playerGroups: readonly User[][] = [userArray, userArray, userArray];
   const list = getList(playerGroups, startingTime, [previousMatchingSignup]);
 
-  expect(list).toEqual([
-    { event: "p2106", gain: 1, id: "123", size: 2 },
-    { event: "p2106", gain: 1, id: "123", size: 2 },
-    { event: "p2106", gain: 1, id: "123", size: 2 },
-  ]);
+  expect(list).toEqual({
+    value: [
+      { event: "p2106", gain: 1, id: "123", size: 2 },
+      { event: "p2106", gain: 1, id: "123", size: 2 },
+      { event: "p2106", gain: 1, id: "123", size: 2 },
+    ],
+  });
 });
 
 test("should generate assignment list with bonuses if user has signups for different program type", () => {
@@ -146,9 +154,11 @@ test("should generate assignment list with bonuses if user has signups for diffe
     previousMatchingSignupWithWrongType,
   ]);
 
-  expect(list).toEqual([
-    { event: "p2106", gain: 21, id: "123", size: 1 },
-    { event: "p2106", gain: 21, id: "123", size: 1 },
-    { event: "p2106", gain: 21, id: "123", size: 1 },
-  ]);
+  expect(list).toEqual({
+    value: [
+      { event: "p2106", gain: 21, id: "123", size: 1 },
+      { event: "p2106", gain: 21, id: "123", size: 1 },
+      { event: "p2106", gain: 21, id: "123", size: 1 },
+    ],
+  });
 });

@@ -2,8 +2,7 @@ import { logger } from "server/utils/logger";
 import { runAssignmentStrategy } from "server/features/player-assignment/utils/runAssignmentStrategy";
 import { removeInvalidGamesFromUsers } from "server/features/player-assignment/utils/removeInvalidGamesFromUsers";
 import { PlayerAssignmentResult } from "server/typings/result.typings";
-import { User } from "shared/typings/models/user";
-import { Game, ProgramType } from "shared/typings/models/game";
+import { ProgramType } from "shared/typings/models/game";
 import { findUsers } from "server/features/user/userRepository";
 import { findGames } from "server/features/game/gameRepository";
 import { AssignmentStrategy } from "shared/config/sharedConfig.types";
@@ -12,9 +11,16 @@ import { removeOverlapSignups } from "server/features/player-assignment/utils/re
 import { saveResults } from "server/features/player-assignment/utils/saveResults";
 import { getDynamicStartingTime } from "server/features/player-assignment/utils/getDynamicStartingTime";
 import { sleep } from "server/utils/sleep";
-import { Signup } from "server/features/signup/signup.typings";
 import { findSignups } from "server/features/signup/signupRepository";
 import { sharedConfig } from "shared/config/sharedConfig";
+import {
+  Result,
+  isErrorResult,
+  makeErrorResult,
+  makeSuccessResult,
+  unwrapResult,
+} from "shared/utils/result";
+import { AssignmentError, MongoDbError } from "shared/typings/api/errors";
 
 const { directSignupAlwaysOpenIds } = sharedConfig;
 
@@ -30,13 +36,20 @@ export const runAssignment = async ({
   startingTime,
   useDynamicStartingTime = false,
   assignmentDelay = 0,
-}: RunAssignmentParams): Promise<PlayerAssignmentResult> => {
-  const assignmentTime = useDynamicStartingTime
+}: RunAssignmentParams): Promise<
+  Result<PlayerAssignmentResult, MongoDbError | AssignmentError>
+> => {
+  const assignmentTimeResult = useDynamicStartingTime
     ? await getDynamicStartingTime()
-    : startingTime;
+    : makeSuccessResult(startingTime);
+  if (isErrorResult(assignmentTimeResult)) {
+    return assignmentTimeResult;
+  }
+
+  const assignmentTime = unwrapResult(assignmentTimeResult);
 
   if (!assignmentTime) {
-    throw new Error(`Missing assignment time`);
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 
   if (assignmentDelay) {
@@ -45,18 +58,17 @@ export const runAssignment = async ({
     logger.info("Waiting done, start assignment");
   }
 
-  try {
-    await removeInvalidGamesFromUsers();
-  } catch (error) {
-    throw new Error(`Error removing invalid games: ${error}`);
+  const removeInvalidGamesResult = await removeInvalidGamesFromUsers();
+  if (isErrorResult(removeInvalidGamesResult)) {
+    return removeInvalidGamesResult;
   }
 
-  let users: readonly User[] = [];
-  try {
-    users = await findUsers();
-  } catch (error) {
-    throw new Error(`findUsers error: ${error}`);
+  const usersResult = await findUsers();
+  if (isErrorResult(usersResult)) {
+    return usersResult;
   }
+
+  const users = unwrapResult(usersResult);
 
   // Only include TABLETOP_RPG and don't include "directSignupAlwaysOpen" games
   const filteredUsers = users.map((user) => {
@@ -69,13 +81,13 @@ export const runAssignment = async ({
     return { ...user, signedGames: matchingSignedGames };
   });
 
-  let games: readonly Game[] = [];
-  try {
-    games = await findGames();
-  } catch (error) {
-    logger.error(`findGames error: ${error}`);
-    throw new Error(`findGames error: ${error}`);
+  const gamesResult = await findGames();
+
+  if (isErrorResult(gamesResult)) {
+    return gamesResult;
   }
+
+  const games = unwrapResult(gamesResult);
 
   // Only include TABLETOP_RPG and don't include "directSignupAlwaysOpen" games
   const filteredGames = games.filter(
@@ -84,26 +96,25 @@ export const runAssignment = async ({
       game.programType === ProgramType.TABLETOP_RPG
   );
 
-  let signups: readonly Signup[] = [];
-  try {
-    signups = await findSignups();
-  } catch (error) {
-    logger.error(`findSignups error: ${error}`);
-    throw new Error(`findSignups error: ${error}`);
+  const signupsResult = await findSignups();
+  if (isErrorResult(signupsResult)) {
+    return signupsResult;
   }
 
-  let assignResults;
-  try {
-    assignResults = runAssignmentStrategy(
-      filteredUsers,
-      filteredGames,
-      assignmentTime,
-      assignmentStrategy,
-      signups
-    );
-  } catch (error) {
-    throw new Error(`Player assign error: ${error}`);
+  const signups = unwrapResult(signupsResult);
+
+  const assignResultsResult = runAssignmentStrategy(
+    filteredUsers,
+    filteredGames,
+    assignmentTime,
+    assignmentStrategy,
+    signups
+  );
+  if (isErrorResult(assignResultsResult)) {
+    return assignResultsResult;
   }
+
+  const assignResults = unwrapResult(assignResultsResult);
 
   if (assignResults.results.length === 0) {
     logger.warn(
@@ -111,30 +122,28 @@ export const runAssignment = async ({
         assignResults
       )}`
     );
-    return assignResults;
+    return makeSuccessResult(assignResults);
   }
 
-  try {
-    await saveResults({
-      results: assignResults.results,
-      startingTime: assignmentTime,
-      algorithm: assignResults.algorithm,
-      message: assignResults.message,
-    });
-  } catch (error) {
-    logger.error(`saveResult error: ${error}`);
-    throw new Error(`Saving results failed: ${error}`);
+  const saveResultsResult = await saveResults({
+    results: assignResults.results,
+    startingTime: assignmentTime,
+    algorithm: assignResults.algorithm,
+    message: assignResults.message,
+  });
+  if (isErrorResult(saveResultsResult)) {
+    return saveResultsResult;
   }
 
   if (config.enableRemoveOverlapSignups) {
-    try {
-      logger.info("Remove overlapping signups");
-      await removeOverlapSignups(assignResults.results);
-    } catch (error) {
-      logger.error(`removeOverlapSignups error: ${error}`);
-      throw new Error("Removing overlap signups failed");
+    logger.info("Remove overlapping signups");
+    const removeOverlapSignupsResult = await removeOverlapSignups(
+      assignResults.results
+    );
+    if (isErrorResult(removeOverlapSignupsResult)) {
+      return removeOverlapSignupsResult;
     }
   }
 
-  return assignResults;
+  return makeSuccessResult(assignResults);
 };

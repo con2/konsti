@@ -1,7 +1,7 @@
 import { testGame } from "shared/tests/testGame";
-import { Result } from "shared/typings/models/result";
+import { AssignmentResult } from "shared/typings/models/result";
 
-export const mockResults: Result[] = [
+export const mockResults: AssignmentResult[] = [
   {
     username: "Test User",
     enteredGame: {

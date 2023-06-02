@@ -3,64 +3,77 @@ import {
   updateUserByUsername,
 } from "server/features/user/userRepository";
 import { logger } from "server/utils/logger";
+import { MongoDbError } from "shared/typings/api/errors";
+import {
+  Result,
+  isErrorResult,
+  makeErrorResult,
+  makeSuccessResult,
+  unwrapResult,
+} from "shared/utils/result";
 
-export const removeInvalidGamesFromUsers = async (): Promise<void> => {
+export const removeInvalidGamesFromUsers = async (): Promise<
+  Result<void, MongoDbError>
+> => {
   logger.info("Remove invalid games from users");
 
-  let users;
-  try {
-    users = await findUsers();
-  } catch (error) {
-    logger.error(`findUsers error: ${error}`);
-    throw error;
+  const usersResult = await findUsers();
+  if (isErrorResult(usersResult)) {
+    return usersResult;
   }
 
-  try {
-    await Promise.all(
-      users.map(async (user) => {
-        const validSignedGames = user.signedGames.filter((signedGame) => {
-          if (signedGame.gameDetails !== null) {
-            return signedGame.gameDetails;
-          }
-        });
+  const users = unwrapResult(usersResult);
 
-        const changedSignedGamesCount =
-          user.signedGames.length - validSignedGames.length;
+  const promises = users.map(async (user) => {
+    const validSignedGames = user.signedGames.filter((signedGame) => {
+      if (signedGame.gameDetails !== null) {
+        return signedGame.gameDetails;
+      }
+    });
 
-        if (changedSignedGamesCount > 0) {
-          logger.info(
-            `Remove ${changedSignedGamesCount} invalid signedGames from user ${user.username}`
-          );
-        }
+    const changedSignedGamesCount =
+      user.signedGames.length - validSignedGames.length;
 
-        const validFavoritedGames = user.favoritedGames.filter(
-          (favoritedGame) => {
-            if (favoritedGame !== null) {
-              return favoritedGame;
-            }
-          }
-        );
+    if (changedSignedGamesCount > 0) {
+      logger.info(
+        `Remove ${changedSignedGamesCount} invalid signedGames from user ${user.username}`
+      );
+    }
 
-        const changedFavoritedGamesCount =
-          user.favoritedGames.length - validFavoritedGames.length;
+    const validFavoritedGames = user.favoritedGames.filter((favoritedGame) => {
+      if (favoritedGame !== null) {
+        return favoritedGame;
+      }
+    });
 
-        if (changedFavoritedGamesCount > 0) {
-          logger.info(
-            `Remove ${changedFavoritedGamesCount} invalid favoritedGames from user ${user.username}`
-          );
-        }
+    const changedFavoritedGamesCount =
+      user.favoritedGames.length - validFavoritedGames.length;
 
-        if (changedSignedGamesCount > 0 || changedFavoritedGamesCount > 0) {
-          await updateUserByUsername({
-            ...user,
-            signedGames: validSignedGames,
-            favoritedGames: validFavoritedGames,
-          });
-        }
-      })
-    );
-  } catch (error) {
-    logger.error(`updateUser error: ${error}`);
-    throw error;
+    if (changedFavoritedGamesCount > 0) {
+      logger.info(
+        `Remove ${changedFavoritedGamesCount} invalid favoritedGames from user ${user.username}`
+      );
+    }
+
+    if (changedSignedGamesCount > 0 || changedFavoritedGamesCount > 0) {
+      const updateUserByUsernameResult = await updateUserByUsername({
+        ...user,
+        signedGames: validSignedGames,
+        favoritedGames: validFavoritedGames,
+      });
+      if (isErrorResult(updateUserByUsernameResult)) {
+        return updateUserByUsernameResult;
+      }
+    }
+
+    return makeSuccessResult(undefined);
+  });
+
+  const results = await Promise.all(promises);
+  const someUpdateFailed = results.some((result) => isErrorResult(result));
+  if (someUpdateFailed) {
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
+
+  return makeSuccessResult(undefined);
 };

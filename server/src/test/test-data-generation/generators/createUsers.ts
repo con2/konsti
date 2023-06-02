@@ -4,13 +4,16 @@ import { hashPassword } from "server/utils/bcrypt";
 import { UserGroup } from "shared/typings/models/user";
 import { saveUser } from "server/features/user/userRepository";
 import { NewUser } from "server/typings/user.typings";
+import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
+import { makeSuccessResult } from "shared/utils/result";
 
 const SERIAL_MAX = 10000000;
 
 export const createAdminUser = async (password?: string): Promise<void> => {
   logger.info(`Generate data for admin user "admin:test"`);
 
-  const passwordHash = await hashPassword(password ?? "test");
+  const passwordHashResult = await hashPassword(password ?? "test");
+  const passwordHash = unsafelyUnwrapResult(passwordHashResult);
 
   const registrationData: NewUser = {
     username: "admin",
@@ -25,9 +28,12 @@ export const createAdminUser = async (password?: string): Promise<void> => {
 export const createHelpUser = async (): Promise<void> => {
   logger.info(`Generate data for help user "helper:test"`);
 
+  const passwordHashResult = await hashPassword("test");
+  const passwordHash = unsafelyUnwrapResult(passwordHashResult);
+
   const registrationData: NewUser = {
     username: "helper",
-    passwordHash: await hashPassword("test"),
+    passwordHash,
     userGroup: UserGroup.HELP,
     serial: faker.number.int(10000000).toString(),
   };
@@ -44,9 +50,12 @@ const createTestUser = async ({
 }: CreateTestUserParams): Promise<void> => {
   logger.info(`Generate data for user "test${userNumber}:test"`);
 
+  const passwordHashResult = await hashPassword("test");
+  const passwordHash = unsafelyUnwrapResult(passwordHashResult);
+
   const registrationData: NewUser = {
     username: `test${userNumber}`,
-    passwordHash: await hashPassword("test"),
+    passwordHash,
     userGroup: UserGroup.USER,
     serial: faker.number.int(10000000).toString(),
   };
@@ -80,9 +89,14 @@ const createUser = async ({
   testUsers = false,
   userNumber = 0,
 }: CreateUserParams): Promise<void> => {
+  const passwordHashResult = testUsers
+    ? await hashPassword("test")
+    : makeSuccessResult("testPass"); // Skip hashing to save time
+  const passwordHash = unsafelyUnwrapResult(passwordHashResult);
+
   const registrationData: NewUser = {
     username: testUsers ? `group${userNumber}` : faker.internet.userName(),
-    passwordHash: testUsers ? await hashPassword("test") : "testPass", // Skip hashing to save time
+    passwordHash,
     userGroup: UserGroup.USER,
     serial:
       groupMemberCount === 0

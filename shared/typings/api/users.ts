@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { ApiError } from "shared/typings/api/errors";
+import { ApiError, ApiResult } from "shared/typings/api/errors";
 import { SignupMessage } from "shared/typings/models/signupMessage";
 import { UserGames } from "shared/typings/models/user";
 import {
@@ -12,11 +12,10 @@ import { sharedConfig } from "shared/config/sharedConfig";
 
 // GET user
 
-export interface GetUserResponse {
+export interface GetUserResponse extends ApiResult {
   games: UserGames;
   message: string;
   serial: string;
-  status: "success";
   username: string;
 }
 
@@ -40,10 +39,9 @@ export const PostUserRequestSchema = z.object({
 
 export type PostUserRequest = z.infer<typeof PostUserRequestSchema>;
 
-export interface PostUserResponse {
+export interface PostUserResponse extends ApiResult {
   message: string;
   password: string;
-  status: "success";
   username: string;
 }
 
@@ -74,19 +72,17 @@ export type GetUserBySerialRequest = z.infer<
   typeof GetUserBySerialRequestSchema
 >;
 
-export interface GetUserBySerialResponse {
+export interface GetUserBySerialResponse extends ApiResult {
   message: string;
   serial: string;
-  status: "success";
   username: string;
 }
 
 // GET signup messages
 
-export interface GetSignupMessagesResponse {
+export interface GetSignupMessagesResponse extends ApiResult {
   signupMessages: SignupMessage[];
   message: string;
-  status: "success";
 }
 
 export interface GetSignupMessagesError extends ApiError {

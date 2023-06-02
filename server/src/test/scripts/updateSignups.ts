@@ -2,15 +2,23 @@ import { db } from "server/db/mongodb";
 import { findGames } from "server/features/game/gameRepository";
 import { SignupModel } from "server/features/signup/signupSchema";
 import { logger } from "server/utils/logger";
+import { MongoDbError } from "shared/typings/api/errors";
+import {
+  Result,
+  isErrorResult,
+  makeErrorResult,
+  makeSuccessResult,
+  unwrapResult,
+} from "shared/utils/result";
 
-const createSignups = async (): Promise<void> => {
-  let games;
-  try {
-    games = await findGames();
-  } catch (error) {
-    logger.error(error);
-    throw error;
+const createSignups = async (): Promise<Result<void, MongoDbError>> => {
+  const gamesResult = await findGames();
+
+  if (isErrorResult(gamesResult)) {
+    return gamesResult;
   }
+
+  const games = unwrapResult(gamesResult);
 
   const promises = games.map(async (game) => {
     try {
@@ -30,13 +38,16 @@ const createSignups = async (): Promise<void> => {
           fields: "-userSignups._id -_id -__v -createdAt -updatedAt",
         }
       );
+      makeSuccessResult(undefined);
     } catch (error) {
       logger.error(`MongoDB: ${error}`);
-      throw error;
+      return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
   });
 
   await Promise.all(promises);
+
+  return makeSuccessResult(undefined);
 };
 
 const init = async (): Promise<void> => {

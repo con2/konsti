@@ -1,27 +1,35 @@
 import { findSettings } from "server/features/settings/settingsRepository";
-import { Signup } from "server/features/signup/signup.typings";
 import { findSignups } from "server/features/signup/signupRepository";
 import {
   GetSignupMessagesError,
   GetSignupMessagesResponse,
 } from "shared/typings/api/users";
-import { Settings } from "shared/typings/models/settings";
+import { isErrorResult, unwrapResult } from "shared/utils/result";
 
 export const fetchSignupMessages = async (): Promise<
   GetSignupMessagesResponse | GetSignupMessagesError
 > => {
-  let signups: Signup[];
-  let settings: Settings;
-  try {
-    signups = await findSignups();
-    settings = await findSettings();
-  } catch (error) {
+  const findSettingsResult = await findSettings();
+  if (isErrorResult(findSettingsResult)) {
     return {
       message: "Error loading data from DB",
       status: "error",
       errorId: "unknown",
     };
   }
+
+  const settings = unwrapResult(findSettingsResult);
+
+  const signupsResult = await findSignups();
+  if (isErrorResult(signupsResult)) {
+    return {
+      message: "Error loading data from DB",
+      status: "error",
+      errorId: "unknown",
+    };
+  }
+
+  const signups = unwrapResult(signupsResult);
 
   const signupMessages = signups.flatMap((signup) => {
     return signup.userSignups.flatMap((userSignup) => {

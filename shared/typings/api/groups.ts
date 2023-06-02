@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { ApiError } from "shared/typings/api/errors";
+import { ApiError, ApiResult } from "shared/typings/api/errors";
 import { GroupMember } from "shared/typings/models/groups";
 
 // POST: Create group
@@ -12,10 +12,9 @@ export type PostCreateGroupRequest = z.infer<
   typeof PostCreateGroupRequestSchema
 >;
 
-export interface PostCreateGroupResponse {
+export interface PostCreateGroupResponse extends ApiResult {
   groupCode: string;
   message: string;
-  status: "success";
 }
 
 export interface PostCreateGroupError extends ApiError {
@@ -73,10 +72,9 @@ export const GetGroupRequestSchema = z.object({
 
 export type GetGroupRequest = z.infer<typeof GetGroupRequestSchema>;
 
-export interface GetGroupResponse {
+export interface GetGroupResponse extends ApiResult {
   message: string;
   results: GroupMember[];
-  status: "success";
 }
 
 export interface GetGroupError extends ApiError {

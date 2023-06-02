@@ -1,21 +1,33 @@
 import { logger } from "server/utils/logger";
 import { ResultsModel } from "server/features/results/resultsSchema";
 import { ResultsCollectionEntry } from "server/typings/result.typings";
-import { GameDoc } from "server/typings/game.typings";
 import { findGames } from "server/features/game/gameRepository";
-import { Result } from "shared/typings/models/result";
+import { AssignmentResult } from "shared/typings/models/result";
+import {
+  Result,
+  isErrorResult,
+  makeErrorResult,
+  makeSuccessResult,
+  unwrapResult,
+} from "shared/utils/result";
+import { MongoDbError } from "shared/typings/api/errors";
 
-export const removeResults = async (): Promise<void> => {
+export const removeResults = async (): Promise<Result<void, MongoDbError>> => {
   logger.info("MongoDB: remove ALL results from db");
-  await ResultsModel.deleteMany({});
+  try {
+    await ResultsModel.deleteMany({});
+    return makeSuccessResult(undefined);
+  } catch (error) {
+    logger.error(`MongoDB: Error removing ALL results - ${error}`);
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+  }
 };
 
 export const findResult = async (
   startTime: string
-): Promise<ResultsCollectionEntry | null> => {
-  let response;
+): Promise<Result<ResultsCollectionEntry | null, MongoDbError>> => {
   try {
-    response = await ResultsModel.findOne(
+    const response = await ResultsModel.findOne(
       { startTime },
       "-_id -__v -createdAt -updatedAt -result._id"
     )
@@ -23,29 +35,29 @@ export const findResult = async (
       .sort({ createdAt: -1 })
       .populate("results.enteredGame.gameDetails");
     logger.debug(`MongoDB: Results data found for time ${startTime}`);
+    return makeSuccessResult(response);
   } catch (error) {
-    throw new Error(
+    logger.error(
       `MongoDB: Error finding results data for time ${startTime} - ${error}`
     );
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
-  return response;
 };
 
 export const saveResult = async (
-  signupResultData: readonly Result[],
+  signupResultData: readonly AssignmentResult[],
   startTime: string,
   algorithm: string,
   message: string
-): Promise<void> => {
-  let games: GameDoc[] = [];
-  try {
-    games = await findGames();
-  } catch (error) {
-    logger.error(`MongoDB: Error loading games - ${error}`);
-    throw error;
+): Promise<Result<void, MongoDbError>> => {
+  const gamesResult = await findGames();
+
+  if (isErrorResult(gamesResult)) {
+    return gamesResult;
   }
 
-  const results = signupResultData.reduce<Result[]>((acc, result) => {
+  const games = unwrapResult(gamesResult);
+  const results = signupResultData.reduce<AssignmentResult[]>((acc, result) => {
     const gameDocInDb = games.find(
       (game) => game.gameId === result.enteredGame.gameDetails.gameId
     );
@@ -73,10 +85,11 @@ export const saveResult = async (
     logger.debug(
       `MongoDB: Signup results for starting time ${startTime} stored to separate collection`
     );
+    return makeSuccessResult(undefined);
   } catch (error) {
     logger.error(
       `MongoDB: Error storing signup results for starting time ${startTime} to separate collection - ${error}`
     );
-    throw error;
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };

@@ -7,6 +7,7 @@ const removeInvalidGames = async (): Promise<void> => {
     await db.connectToDb();
   } catch (error) {
     logger.error(error);
+    // eslint-disable-next-line no-restricted-syntax -- Test script
     throw error;
   }
 
@@ -14,6 +15,7 @@ const removeInvalidGames = async (): Promise<void> => {
     await removeInvalidGamesFromUsers();
   } catch (error) {
     logger.error(`Error removing invalid games: ${error}`);
+    // eslint-disable-next-line no-restricted-syntax -- Test script
     throw error;
   }
 
@@ -21,6 +23,7 @@ const removeInvalidGames = async (): Promise<void> => {
     await db.gracefulExit();
   } catch (error) {
     logger.error(error);
+    // eslint-disable-next-line no-restricted-syntax -- Test script
     throw error;
   }
 };

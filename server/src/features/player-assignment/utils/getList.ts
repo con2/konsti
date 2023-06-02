@@ -4,18 +4,30 @@ import { ListItem } from "server/typings/padgRandomAssign.typings";
 import { getAssignmentBonus } from "server/features/player-assignment/utils/getAssignmentBonus";
 import { SelectedGame, User } from "shared/typings/models/user";
 import { Signup } from "server/features/signup/signup.typings";
+import { logger } from "server/utils/logger";
+import {
+  Result,
+  isErrorResult,
+  isSuccessResult,
+  makeErrorResult,
+  makeSuccessResult,
+  unwrapResult,
+} from "shared/utils/result";
+import { AssignmentError } from "shared/typings/api/errors";
 
 export const getList = (
   playerGroups: readonly User[][],
   startingTime: string,
   signups: readonly Signup[]
-): ListItem[] => {
-  return playerGroups.flatMap((playerGroup) => {
+): Result<ListItem[], AssignmentError> => {
+  const results = playerGroups.flatMap((playerGroup) => {
     const firstMember = _.first(playerGroup);
-    if (!firstMember)
-      throw new Error("Padg or Random assign: error getting first member");
+    if (!firstMember) {
+      logger.error("Padg or Random assign: error getting first member");
+      return makeErrorResult(AssignmentError.UNKNOWN_ERROR);
+    }
 
-    return firstMember.signedGames
+    const list = firstMember.signedGames
       .filter(
         (signedGame) =>
           dayjs(signedGame.time).format() === dayjs(startingTime).format()
@@ -31,7 +43,23 @@ export const getList = (
           gain: getGain(signedGame, playerGroup, signups),
         };
       });
+
+    return makeSuccessResult(list);
   });
+
+  const someResultFailed = results.some((result) => isErrorResult(result));
+  if (someResultFailed) {
+    return makeErrorResult(AssignmentError.UNKNOWN_ERROR);
+  }
+
+  const successResults = results.flatMap((result) => {
+    if (isSuccessResult(result)) {
+      return unwrapResult(result);
+    }
+    return [];
+  });
+
+  return makeSuccessResult(successResults);
 };
 
 const getGain = (
@@ -48,7 +76,8 @@ const getGain = (
       return 0.5 + bonus;
     case 3:
       return 0.33 + bonus;
+    default:
+      // Invalid priority
+      return 0;
   }
-
-  throw new Error(`Invalid signup priority: ${signedGame.priority}`);
 };
