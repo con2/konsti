@@ -6,6 +6,7 @@ import { MongoDbError } from "shared/typings/api/errors";
 import {
   AsyncResult,
   isErrorResult,
+  makeErrorResult,
   makeSuccessResult,
   unwrapResult,
 } from "shared/utils/asyncResult";
@@ -39,7 +40,7 @@ const createSignups = async (): Promise<AsyncResult<void, MongoDbError>> => {
       );
     } catch (error) {
       logger.error(`MongoDB: ${error}`);
-      throw error;
+      return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
   });
 

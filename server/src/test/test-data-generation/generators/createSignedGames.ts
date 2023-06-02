@@ -123,7 +123,10 @@ const signupGroup = async (
 ): Promise<void> => {
   // Generate random signup data for the group creator
   const groupCreator = users.find((user) => user.serial === user.groupCode);
-  if (!groupCreator) throw new Error("Error getting group creator");
+  if (!groupCreator) {
+    // eslint-disable-next-line no-restricted-syntax -- Data generation script
+    throw new Error("Error getting group creator");
+  }
 
   const signupData = {
     username: groupCreator.username,

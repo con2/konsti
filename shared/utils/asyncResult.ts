@@ -20,6 +20,7 @@ export const unwrapResult: UnwrapResult = <T, Err>({
   error,
 }: AsyncResult<T, Err>) => {
   if (value !== undefined && error !== undefined) {
+    // eslint-disable-next-line no-restricted-syntax -- This is some kind of runtime error we want to catch
     throw new Error(
       `Received both value and error at runtime when opening an AsyncResult\nValue: ${JSON.stringify(
         value
@@ -32,6 +33,7 @@ export const unwrapResult: UnwrapResult = <T, Err>({
   if (error !== undefined) {
     return error as NonNullable<Err>; // Typescript is getting confused and returning this type as `T | undefined` unless we add the type assertion
   }
+  // eslint-disable-next-line no-restricted-syntax -- This is some kind of runtime error we want to catch
   throw new Error(
     `Received no value or error at runtime when opening AsyncResult`
   );

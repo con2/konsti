@@ -56,6 +56,13 @@ module.exports = {
     "object-shorthand": "error",
     "array-callback-return": "off",
     "no-shadow": "off", // Required by @typescript-eslint/no-shadow
+    "no-restricted-syntax": [
+      "error",
+      {
+        selector: "ThrowStatement", // We don't throw errors
+        message: "Return Result<T,Err> instead of throwing errors",
+      },
+    ],
 
     // eslint-plugin-prettier
     "prettier/prettier": "error",

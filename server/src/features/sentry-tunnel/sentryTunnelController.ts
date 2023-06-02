@@ -30,5 +30,6 @@ export const getSentryTest = (
     return res.sendStatus(401);
   }
 
+  // eslint-disable-next-line no-restricted-syntax -- Test error
   throw new Error("Test Sentry error");
 };

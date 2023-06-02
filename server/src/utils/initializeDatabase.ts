@@ -19,6 +19,7 @@ const CREATE_TEST_USERS = true;
 
 const initializeDatabase = async (): Promise<void> => {
   if (process.env.NODE_ENV === "production") {
+    // eslint-disable-next-line no-restricted-syntax -- Data generation script
     throw new Error(`Data creation not allowed in production`);
   }
 
@@ -45,6 +46,7 @@ const initializeDatabase = async (): Promise<void> => {
   logger.info("Download games from Kompassi");
   const kompassiGamesAsyncResult = await getGamesFromKompassi();
   if (isErrorResult(kompassiGamesAsyncResult)) {
+    // eslint-disable-next-line no-restricted-syntax -- Data generation script
     throw new Error("Unable to load Kompassi games");
   }
   const kompassiGames = unwrapResult(kompassiGamesAsyncResult);
