@@ -115,7 +115,7 @@ export const SearchAndFilterCard = ({
                   checked={selectedStartingTime === val}
                   key={key}
                   id={key}
-                  label={val}
+                  label={t(val)}
                   onChange={() => {
                     setSelectedStartingTime(val);
                     onSelectedStartingTimeChange(val);

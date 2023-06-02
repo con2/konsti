@@ -36,7 +36,7 @@ export const SearchAndFilterResultsCard = ({
         <StyledLabel htmlFor="programTypeSelection">
           {t("selectedProgramType")}
         </StyledLabel>
-        <ProgramTypeSelection id="programTypeSelection" />
+        <ProgramTypeSelection />
       </InputContainer>
 
       <InputContainer>
@@ -44,21 +44,15 @@ export const SearchAndFilterResultsCard = ({
           {t("startingTime")}
         </StyledLabel>
         <RadioButtonGroup id="startingTimeSelection">
-          {Object.keys(ResultsStartingTimeOption).map((option) => (
+          {Object.entries(ResultsStartingTimeOption).map(([key, val]) => (
             <RadioButton
-              id={option}
-              key={option}
-              label={t(ResultsStartingTimeOption[option])}
-              checked={
-                selectedStartingTime === ResultsStartingTimeOption[option]
-              }
+              id={key}
+              key={key}
+              label={t(val)}
+              checked={selectedStartingTime === val}
               onChange={() => {
-                setSelectedStartingTime(
-                  ResultsStartingTimeOption[option] as ResultsStartingTimeOption
-                );
-                onSelectedStartingTimeChange(
-                  ResultsStartingTimeOption[option] as String
-                );
+                setSelectedStartingTime(val);
+                onSelectedStartingTimeChange(val);
               }}
             />
           ))}
@@ -68,7 +62,6 @@ export const SearchAndFilterResultsCard = ({
       <InputContainer>
         <StyledLabel htmlFor="find">{t("find")}</StyledLabel>
         <ControlledInput
-          id="find"
           value={searchTerm}
           onChange={(event) => {
             setSearchTerm(event.target.value);

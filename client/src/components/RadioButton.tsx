@@ -1,5 +1,4 @@
 import React, { ChangeEvent, ReactElement } from "react";
-import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 
 interface Props {
@@ -17,8 +16,6 @@ export const RadioButton = ({
   name,
   onChange,
 }: Props): ReactElement => {
-  const { t } = useTranslation();
-
   return (
     <StyledLabel htmlFor={id}>
       <StyledRadioButton
@@ -28,7 +25,7 @@ export const RadioButton = ({
         id={id}
         name={name}
       />
-      {t(label)}
+      {label}
     </StyledLabel>
   );
 };
