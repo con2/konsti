@@ -32,6 +32,7 @@ import {
   mockUser,
 } from "server/test/mock-data/mockUser";
 import { closeServer, startServer } from "server/utils/server";
+import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 
 let server: Server;
 let mongoServer: MongoMemoryServer;
@@ -154,14 +155,16 @@ describe(`POST ${ApiEndpoint.HIDDEN}`, () => {
 
     expect(response.status).toEqual(200);
 
-    const updatedUser = await findUser(mockUser.username);
+    const updatedUserResult = await findUser(mockUser.username);
+    const updatedUser = unsafelyUnwrapResult(updatedUserResult);
     expect(updatedUser?.signedGames.length).toEqual(1);
     expect(updatedUser?.signedGames[0].gameDetails.title).toEqual(
       testGame2.title
     );
     expect(updatedUser?.favoritedGames.length).toEqual(1);
 
-    const signups = await findUserSignups(mockUser.username);
+    const signupsResult = await findUserSignups(mockUser.username);
+    const signups = unsafelyUnwrapResult(signupsResult);
     expect(signups.length).toEqual(1);
     expect(signups[0].userSignups[0].username).toEqual(mockUser.username);
   });

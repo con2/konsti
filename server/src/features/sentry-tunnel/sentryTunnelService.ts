@@ -16,13 +16,23 @@ export const resendSentryRequest = async (
     const { host, pathname } = new url.URL(header.dsn as string);
 
     if (!host.includes(sentryHost)) {
-      throw new Error(`invalid host: ${host}`);
+      logger.error(`invalid host: ${host}`);
+      return {
+        message: "Sentry tunne: Invalid host",
+        status: "error",
+        errorId: "unknown",
+      };
     }
 
     const projectId = pathname.endsWith("/") ? pathname.slice(0, -1) : pathname;
 
     if (!knownProjectIds.includes(projectId)) {
-      throw new Error(`invalid project id: ${projectId}`);
+      logger.error(`invalid project id: ${projectId}`);
+      return {
+        message: "Sentry tunnel: Invalid project",
+        status: "error",
+        errorId: "unknown",
+      };
     }
 
     const sentryUrl = `https://${sentryHost}/api/${projectId}/envelope/`;

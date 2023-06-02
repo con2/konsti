@@ -33,6 +33,7 @@ import {
 } from "server/test/mock-data/mockUser";
 import { ProgramType } from "shared/typings/models/game";
 import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
+import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 
 let mongoServer: MongoMemoryServer;
 
@@ -82,10 +83,12 @@ describe("Assignment with valid data", () => {
 
     // FIRST RUN
 
-    const assignResults = await runAssignment({
+    const assignResultsResult = await runAssignment({
       assignmentStrategy,
       startingTime,
     });
+    const assignResults = unsafelyUnwrapResult(assignResultsResult);
+
     expect(assignResults.status).toEqual("success");
     expect(assignResults.results.length).toBeGreaterThanOrEqual(
       expectedResultsCount
@@ -107,10 +110,12 @@ describe("Assignment with valid data", () => {
 
     const startingTime2 = dayjs(CONVENTION_START_TIME).add(3, "hours").format();
 
-    const assignResults2 = await runAssignment({
+    const assignResultsEither2 = await runAssignment({
       assignmentStrategy,
       startingTime: startingTime2,
     });
+    const assignResults2 = unsafelyUnwrapResult(assignResultsEither2);
+
     expect(assignResults2.status).toEqual("success");
     // Second assignment has less available players -> less results
     expect(assignResults2.results.length).toBeGreaterThanOrEqual(
@@ -182,17 +187,21 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
       startTime: testGame.startTime,
     });
 
-    const signupsBeforeUpdate = await findUserSignups(mockUser.username);
+    const signupsBeforeUpdateResult = await findUserSignups(mockUser.username);
+    const signupsBeforeUpdate = unsafelyUnwrapResult(signupsBeforeUpdateResult);
     expect(signupsBeforeUpdate.length).toEqual(1);
 
-    const assignResults = await runAssignment({
+    const assignResultsResult = await runAssignment({
       assignmentStrategy,
       startingTime,
     });
+    const assignResults = unsafelyUnwrapResult(assignResultsResult);
+
     expect(assignResults.status).toEqual("success");
     expect(assignResults.results.length).toEqual(2);
 
-    const signupsAfterUpdate = await findUserSignups(mockUser.username);
+    const signupsAfterUpdateResult = await findUserSignups(mockUser.username);
+    const signupsAfterUpdate = unsafelyUnwrapResult(signupsAfterUpdateResult);
 
     const larpSignup = signupsAfterUpdate.find(
       (signup) => signup.game.programType === ProgramType.LARP
@@ -248,21 +257,25 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
       enteredGameId: directSignupAlwaysOpenId,
     });
 
-    const signupsBeforeUpdate = await findSignups();
+    const signupsBeforeUpdateResult = await findSignups();
+    const signupsBeforeUpdate = unsafelyUnwrapResult(signupsBeforeUpdateResult);
 
     expect(signupsBeforeUpdate.length).toEqual(1);
 
-    const assignResults = await runAssignment({
+    const assignResultsResult = await runAssignment({
       assignmentStrategy,
       startingTime,
     });
+    const assignResults = unsafelyUnwrapResult(assignResultsResult);
+
     expect(assignResults.status).toEqual("success");
     expect(assignResults.results.length).toEqual(1);
     assignResults.results.map((result) => {
       expect(result.enteredGame.gameDetails.gameId).toEqual(testGame.gameId);
     });
 
-    const signupsAfterUpdate = await findSignups();
+    const signupsAfterUpdateResult = await findSignups();
+    const signupsAfterUpdate = unsafelyUnwrapResult(signupsAfterUpdateResult);
 
     const assignmentSignup = signupsAfterUpdate.find(
       (signup) => signup.game.gameId === testGame.gameId
@@ -332,20 +345,25 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
       enteredGameId: directSignupAlwaysOpenId,
     });
 
-    const signupsBeforeUpdate = await findSignups();
+    const signupsBeforeUpdateResult = await findSignups();
+    const signupsBeforeUpdate = unsafelyUnwrapResult(signupsBeforeUpdateResult);
+
     expect(signupsBeforeUpdate.length).toEqual(2);
 
-    const assignResults = await runAssignment({
+    const assignResultsResult = await runAssignment({
       assignmentStrategy,
       startingTime,
     });
+    const assignResults = unsafelyUnwrapResult(assignResultsResult);
+
     expect(assignResults.status).toEqual("success");
     expect(assignResults.results.length).toEqual(2);
     assignResults.results.map((result) => {
       expect(result.enteredGame.gameDetails.gameId).toEqual(testGame.gameId);
     });
 
-    const signupsAfterUpdate = await findSignups();
+    const signupsAfterUpdateResult = await findSignups();
+    const signupsAfterUpdate = unsafelyUnwrapResult(signupsAfterUpdateResult);
 
     const assignmentSignup = signupsAfterUpdate.find(
       (signup) => signup.game.gameId === testGame.gameId
@@ -411,18 +429,23 @@ describe("Assignment with first time bonus", () => {
       message: "",
     });
 
-    const signupsBeforeUpdate = await findSignups();
+    const signupsBeforeUpdateResult = await findSignups();
+    const signupsBeforeUpdate = unsafelyUnwrapResult(signupsBeforeUpdateResult);
+
     expect(signupsBeforeUpdate.length).toEqual(3);
 
-    const assignResults = await runAssignment({
+    const assignResultsResult = await runAssignment({
       assignmentStrategy,
       startingTime,
     });
 
+    const assignResults = unsafelyUnwrapResult(assignResultsResult);
+
     expect(assignResults.status).toEqual("success");
     expect(assignResults.results.length).toEqual(1);
 
-    const signupsAfterUpdate = await findSignups();
+    const signupsAfterUpdateResult = await findSignups();
+    const signupsAfterUpdate = unsafelyUnwrapResult(signupsAfterUpdateResult);
 
     const assignmentSignup = signupsAfterUpdate.find(
       (signup) => signup.game.gameId === testGame.gameId

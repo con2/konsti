@@ -13,6 +13,14 @@ import {
   KompassiTag,
   tournamentProgramTypes,
 } from "shared/typings/models/kompassiGame";
+import {
+  Result,
+  isErrorResult,
+  makeErrorResult,
+  makeSuccessResult,
+  unwrapResult,
+} from "shared/utils/result";
+import { KompassiError } from "shared/typings/api/errors";
 
 type EventProgramItem = KompassiGame;
 
@@ -21,24 +29,38 @@ export const TOURNAMENT_EVENT_TYPE = "tmnt";
 const { useLocalProgramFile, localKompassiFile } = config;
 
 export const getGamesFromKompassi = async (): Promise<
-  readonly KompassiGame[]
+  Result<readonly KompassiGame[], KompassiError>
 > => {
-  const eventProgramItems = await testHelperWrapper.getEventProgramItems();
+  const eventProgramItemsResult =
+    await testHelperWrapper.getEventProgramItems();
+  if (isErrorResult(eventProgramItemsResult)) {
+    return eventProgramItemsResult;
+  }
+
+  const eventProgramItems = unwrapResult(eventProgramItemsResult);
 
   if (!Array.isArray(eventProgramItems)) {
-    throw new Error("Invalid response format, should be array");
+    logger.error("Invalid response format, should be array");
+    return makeErrorResult(KompassiError.INVALID_RESPONSE);
   }
 
   if (eventProgramItems.length === 0) {
-    throw new Error("No program items found");
+    logger.error("No program items found");
+    return makeErrorResult(KompassiError.NO_PROGRAM_ITEMS);
   }
 
   logger.info(`Loaded ${eventProgramItems.length} event program items`);
 
-  return getGamesFromFullProgram(eventProgramItems);
+  const games = getGamesFromFullProgram(eventProgramItems);
+
+  return games.length >= 0
+    ? makeSuccessResult(games)
+    : makeErrorResult(KompassiError.NO_PROGRAM_ITEMS);
 };
 
-const getEventProgramItems = async (): Promise<EventProgramItem[]> => {
+const getEventProgramItems = async (): Promise<
+  Result<EventProgramItem[], KompassiError>
+> => {
   return useLocalProgramFile
     ? getProgramFromLocalFile()
     : await getProgramFromServer();
@@ -50,7 +72,10 @@ export const testHelperWrapper = {
   getEventProgramItems,
 };
 
-const getProgramFromLocalFile = (): EventProgramItem[] => {
+const getProgramFromLocalFile = (): Result<
+  EventProgramItem[],
+  KompassiError
+> => {
   logger.info("GET event program from local filesystem");
 
   const rawData = fs.readFileSync(
@@ -61,18 +86,20 @@ const getProgramFromLocalFile = (): EventProgramItem[] => {
     "utf8"
   );
 
-  return JSON.parse(rawData);
+  return makeSuccessResult(JSON.parse(rawData));
 };
 
-const getProgramFromServer = async (): Promise<EventProgramItem[]> => {
+const getProgramFromServer = async (): Promise<
+  Result<EventProgramItem[], KompassiError>
+> => {
   logger.info("GET event program from remote server");
 
   try {
     const response = await axios.get(config.dataUri);
-    return response.data;
+    return makeSuccessResult(response.data);
   } catch (error) {
     logger.error(`Games request error: ${error}`);
-    throw error;
+    return makeErrorResult(KompassiError.UNKNOWN_ERROR);
   }
 };
 
@@ -141,11 +168,12 @@ const getGamesFromFullProgram = (
   );
 
   if (kompassiGames.length === 0) {
-    throw new Error(
+    logger.error(
       `No program items with following categories found: ${Object.values(
         KompassiProgramType
       ).join(", ")}`
     );
+    return [];
   }
 
   logger.info(`Found ${kompassiGames.length} valid games`);

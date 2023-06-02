@@ -1,27 +1,39 @@
-import { Result } from "shared/typings/models/result";
+import { AssignmentResult } from "shared/typings/models/result";
 import {
   delSignup,
   delRpgSignupsByStartTime,
   findRpgSignupsByStartTime,
-  FindRpgSignupsByStartTimeResponse,
   saveSignup,
 } from "server/features/signup/signupRepository";
-import { logger } from "server/utils/logger";
+import {
+  Result,
+  isErrorResult,
+  makeErrorResult,
+  makeSuccessResult,
+  unwrapResult,
+} from "shared/utils/result";
+import { MongoDbError } from "shared/typings/api/errors";
 
 export const saveUserSignupResults = async (
   startingTime: string,
-  results: readonly Result[]
-): Promise<void> => {
-  await delRpgSignupsByStartTime(startingTime);
-
-  let rpgSignupsByStartTime: FindRpgSignupsByStartTimeResponse[];
-  try {
-    // Only directSignupAlwaysOpen signups should be remaining
-    rpgSignupsByStartTime = await findRpgSignupsByStartTime(startingTime);
-  } catch (error) {
-    logger.error(error);
-    throw error;
+  results: readonly AssignmentResult[]
+): Promise<Result<void, MongoDbError>> => {
+  const delRpgSignupsByStartTimeResult = await delRpgSignupsByStartTime(
+    startingTime
+  );
+  if (isErrorResult(delRpgSignupsByStartTimeResult)) {
+    return delRpgSignupsByStartTimeResult;
   }
+
+  // Only directSignupAlwaysOpen signups should be remaining
+  const rpgSignupsByStartTimeResult = await findRpgSignupsByStartTime(
+    startingTime
+  );
+  if (isErrorResult(rpgSignupsByStartTimeResult)) {
+    return rpgSignupsByStartTimeResult;
+  }
+
+  const rpgSignupsByStartTime = unwrapResult(rpgSignupsByStartTimeResult);
 
   // If user has previous directSignupAlwaysOpen signups...
   // ... and no new result -> don't remove
@@ -32,32 +44,47 @@ export const saveUserSignupResults = async (
     );
 
     if (existingSignup) {
-      await delSignup({
+      const delSignupResult = await delSignup({
         username: existingSignup.username,
         enteredGameId: existingSignup.gameId,
         startTime: existingSignup.time,
       });
+      if (isErrorResult(delSignupResult)) {
+        return delSignupResult;
+      }
     }
+    return makeSuccessResult(undefined);
   });
 
-  try {
-    await Promise.all(deletePromises);
-  } catch (error) {
-    throw new Error(`Error removing signup results for users: ${error}`);
+  const deleteResults = await Promise.all(deletePromises);
+  const someDeleteFailed = deleteResults.some((deleteResult) =>
+    isErrorResult(deleteResult)
+  );
+  if (someDeleteFailed) {
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 
   const savePromises = results.map(async (result) => {
-    return await saveSignup({
+    const saveSignupResult = await saveSignup({
       username: result.username,
       enteredGameId: result.enteredGame.gameDetails.gameId,
       startTime: startingTime,
       message: result.enteredGame.message,
     });
+    if (isErrorResult(saveSignupResult)) {
+      return saveSignupResult;
+    }
+    const saveSignupResponse = unwrapResult(saveSignupResult);
+    return makeSuccessResult(saveSignupResponse);
   });
 
-  try {
-    await Promise.all(savePromises);
-  } catch (error) {
-    throw new Error(`Error saving signup results for users: ${error}`);
+  const saveResults = await Promise.all(savePromises);
+  const someSaveFailed = saveResults.some((saveResult) =>
+    isErrorResult(saveResult)
+  );
+  if (someSaveFailed) {
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
+
+  return makeSuccessResult(undefined);
 };

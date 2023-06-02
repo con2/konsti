@@ -4,24 +4,33 @@ import {
   updateUserByUsername,
 } from "server/features/user/userRepository";
 import { logger } from "server/utils/logger";
+import { MongoDbError } from "shared/typings/api/errors";
 import { Game } from "shared/typings/models/game";
+import {
+  Result,
+  isErrorResult,
+  makeErrorResult,
+  makeSuccessResult,
+  unwrapResult,
+} from "shared/utils/result";
 
 export const removeHiddenGamesFromUsers = async (
   hiddenGames: readonly Game[]
-): Promise<void> => {
+): Promise<Result<void, MongoDbError>> => {
   logger.info(`Remove hidden games from users`);
 
-  if (!hiddenGames || hiddenGames.length === 0) return;
+  if (!hiddenGames || hiddenGames.length === 0) {
+    return makeErrorResult(MongoDbError.NO_HIDDEN_GAMES);
+  }
 
   logger.info(`Found ${hiddenGames.length} hidden games`);
 
-  let users;
-  try {
-    users = await findUsers();
-  } catch (error) {
-    logger.error(`findUsers error: ${error}`);
-    throw error;
+  const usersResult = await findUsers();
+  if (isErrorResult(usersResult)) {
+    return usersResult;
   }
+
+  const users = unwrapResult(usersResult);
 
   const userPromises = users.map(async (user) => {
     const signedGames = user.signedGames.filter((signedGame) => {
@@ -46,26 +55,32 @@ export const removeHiddenGamesFromUsers = async (
       user.signedGames.length !== signedGames.length ||
       user.favoritedGames.length !== favoritedGames.length
     ) {
-      await updateUserByUsername({
+      const updateUserByUsernameResult = await updateUserByUsername({
         ...user,
         signedGames,
         favoritedGames,
       });
+      if (isErrorResult(updateUserByUsernameResult)) {
+        return updateUserByUsernameResult;
+      }
     }
+
+    return makeSuccessResult(undefined);
   });
 
-  try {
-    await Promise.all(userPromises);
-  } catch (error) {
-    logger.error(`updateUser error: ${error}`);
+  const results = await Promise.all(userPromises);
+  const someUpdateFailed = results.some((result) => isErrorResult(result));
+  if (someUpdateFailed) {
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 
   const hiddenGameIds = hiddenGames.map((hiddenGame) => hiddenGame.gameId);
-  try {
-    await delSignupsByGameIds(hiddenGameIds);
-  } catch (error) {
-    logger.error(`delSignupsByGameIds error: ${error}`);
+  const delSignupsByGameIdsResult = await delSignupsByGameIds(hiddenGameIds);
+  if (isErrorResult(delSignupsByGameIdsResult)) {
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 
   logger.info(`Hidden games removed from users`);
+
+  return makeSuccessResult(undefined);
 };

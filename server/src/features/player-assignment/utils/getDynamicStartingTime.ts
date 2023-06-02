@@ -1,11 +1,25 @@
 import { sharedConfig } from "shared/config/sharedConfig";
 import { getTime } from "server/features/player-assignment/utils/getTime";
 import { logger } from "server/utils/logger";
+import {
+  Result,
+  isErrorResult,
+  makeSuccessResult,
+  unwrapResult,
+} from "shared/utils/result";
+import { MongoDbError } from "shared/typings/api/errors";
 
 const { DIRECT_SIGNUP_START } = sharedConfig;
 
-export const getDynamicStartingTime = async (): Promise<string> => {
-  const timeNow = await getTime();
+export const getDynamicStartingTime = async (): Promise<
+  Result<string, MongoDbError>
+> => {
+  const timeNowResult = await getTime();
+  if (isErrorResult(timeNowResult)) {
+    return timeNowResult;
+  }
+
+  const timeNow = unwrapResult(timeNowResult);
 
   const dynamicStartingTime = timeNow
     .startOf("minute")
@@ -14,5 +28,5 @@ export const getDynamicStartingTime = async (): Promise<string> => {
 
   logger.info(`Using dynamic starting time: ${dynamicStartingTime}`);
 
-  return dynamicStartingTime;
+  return makeSuccessResult(dynamicStartingTime);
 };

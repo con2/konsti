@@ -74,6 +74,7 @@ export const AdminActionCard = ({ game }: Props): ReactElement => {
     try {
       await dispatch(submitUpdateHidden(allHiddenGames));
     } catch (error) {
+      // eslint-disable-next-line no-restricted-syntax -- TODO: Remove throw
       throw new Error(`submitUpdateHidden error: ${error}`);
     } finally {
       setSubmitting(false);
@@ -88,6 +89,7 @@ export const AdminActionCard = ({ game }: Props): ReactElement => {
     try {
       await dispatch(submitDeleteSignupQuestion(game.gameId));
     } catch (error) {
+      // eslint-disable-next-line no-restricted-syntax -- TODO: Remove throw
       throw new Error(`deleteSignupQuestion error: ${error}`);
     } finally {
       setSubmitting(false);
@@ -107,6 +109,7 @@ export const AdminActionCard = ({ game }: Props): ReactElement => {
         })
       );
     } catch (error) {
+      // eslint-disable-next-line no-restricted-syntax -- TODO: Remove throw
       throw new Error(`addSignupQuestion error: ${error}`);
     } finally {
       setSubmitting(false);

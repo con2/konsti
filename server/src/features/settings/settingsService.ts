@@ -5,7 +5,6 @@ import {
   delSignupQuestion,
   saveSettings,
 } from "server/features/settings/settingsRepository";
-import { logger } from "server/utils/logger";
 import { ApiError } from "shared/typings/api/errors";
 import {
   GetSettingsResponse,
@@ -17,39 +16,37 @@ import {
 import { Game } from "shared/typings/models/game";
 import { removeHiddenGamesFromUsers } from "server/features/settings/utils/removeHiddenGamesFromUsers";
 import { SignupQuestion } from "shared/typings/models/settings";
+import { isErrorResult, unwrapResult } from "shared/utils/result";
 
 export const fetchSettings = async (): Promise<
   GetSettingsResponse | ApiError
 > => {
-  try {
-    const response = await findSettings();
-
-    return {
-      message: "Getting settings success",
-      status: "success",
-      hiddenGames: response.hiddenGames,
-      appOpen: response.appOpen,
-      signupQuestions: response.signupQuestions,
-      signupStrategy: response.signupStrategy,
-    };
-  } catch (error) {
-    logger.error(`Settings: ${error}`);
+  const findSettingsResult = await findSettings();
+  if (isErrorResult(findSettingsResult)) {
     return {
       message: "Getting settings failed",
       status: "error",
       errorId: "unknown",
     };
   }
+
+  const settings = unwrapResult(findSettingsResult);
+
+  return {
+    message: "Getting settings success",
+    status: "success",
+    hiddenGames: settings.hiddenGames,
+    appOpen: settings.appOpen,
+    signupQuestions: settings.signupQuestions,
+    signupStrategy: settings.signupStrategy,
+  };
 };
 
 export const storeHidden = async (
   hiddenData: readonly Game[]
 ): Promise<PostHiddenResponse | ApiError> => {
-  let settings;
-  try {
-    settings = await saveHidden(hiddenData);
-  } catch (error) {
-    logger.error(`saveHidden error: ${error}`);
+  const settingsResult = await saveHidden(hiddenData);
+  if (isErrorResult(settingsResult)) {
     return {
       message: "Update hidden failure",
       status: "error",
@@ -57,10 +54,12 @@ export const storeHidden = async (
     };
   }
 
-  try {
-    await removeHiddenGamesFromUsers(settings.hiddenGames);
-  } catch (error) {
-    logger.error(`removeHiddenGamesFromUsers error: ${error}`);
+  const settings = unwrapResult(settingsResult);
+
+  const removeHiddenGamesFromUsersResult = await removeHiddenGamesFromUsers(
+    settings.hiddenGames
+  );
+  if (isErrorResult(removeHiddenGamesFromUsersResult)) {
     return {
       message: "Update hidden failure",
       status: "error",
@@ -78,17 +77,16 @@ export const storeHidden = async (
 export const storeSignupQuestion = async (
   signupQuestionData: SignupQuestion
 ): Promise<PostSignupQuestionResponse | ApiError> => {
-  let settings;
-  try {
-    settings = await saveSignupQuestion(signupQuestionData);
-  } catch (error) {
-    logger.error(`saveSignupQuestion error: ${error}`);
+  const saveSignupQuestionResult = await saveSignupQuestion(signupQuestionData);
+  if (isErrorResult(saveSignupQuestionResult)) {
     return {
       message: "saveSignupQuestion failure",
       status: "error",
       errorId: "unknown",
     };
   }
+
+  const settings = unwrapResult(saveSignupQuestionResult);
 
   return {
     message: "saveSignupQuestion success",
@@ -100,17 +98,16 @@ export const storeSignupQuestion = async (
 export const removeSignupQuestion = async (
   gameId: string
 ): Promise<PostSignupQuestionResponse | ApiError> => {
-  let settings;
-  try {
-    settings = await delSignupQuestion(gameId);
-  } catch (error) {
-    logger.error(`delSignupQuestion error: ${error}`);
+  const delSignupQuestionResult = await delSignupQuestion(gameId);
+  if (isErrorResult(delSignupQuestionResult)) {
     return {
       message: "delSignupQuestion failure",
       status: "error",
       errorId: "unknown",
     };
   }
+
+  const settings = unwrapResult(delSignupQuestionResult);
 
   return {
     message: "delSignupQuestion success",
@@ -122,18 +119,20 @@ export const removeSignupQuestion = async (
 export const updateSettings = async (
   settings: PostSettingsRequest
 ): Promise<PostSettingsResponse | ApiError> => {
-  try {
-    const response = await saveSettings(settings);
-    return {
-      message: "Update settings success",
-      status: "success",
-      settings: response,
-    };
-  } catch (error) {
+  const saveSettingsResult = await saveSettings(settings);
+  if (isErrorResult(saveSettingsResult)) {
     return {
       message: "Update settings failure",
       status: "error",
       errorId: "unknown",
     };
   }
+
+  const response = unwrapResult(saveSettingsResult);
+
+  return {
+    message: "Update settings success",
+    status: "success",
+    settings: response,
+  };
 };

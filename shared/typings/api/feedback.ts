@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { ApiResult } from "shared/typings/api/errors";
 
 // POST feedback
 
@@ -9,7 +10,6 @@ export const PostFeedbackRequestSchema = z.object({
 
 export type PostFeedbackRequest = z.infer<typeof PostFeedbackRequestSchema>;
 
-export interface PostFeedbackResponse {
+export interface PostFeedbackResponse extends ApiResult {
   message: string;
-  status: "success";
 }

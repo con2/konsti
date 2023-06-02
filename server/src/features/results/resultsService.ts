@@ -1,22 +1,21 @@
-import { logger } from "server/utils/logger";
 import { findResult } from "server/features/results/resultsRepository";
 import { ApiError } from "shared/typings/api/errors";
 import { GetResultsResponse } from "shared/typings/api/results";
+import { isErrorResult, unwrapResult } from "shared/utils/result";
 
 export const fetchResults = async (
   startTime: string
 ): Promise<GetResultsResponse | ApiError> => {
-  let results;
-  try {
-    results = await findResult(startTime);
-  } catch (error) {
-    logger.error(`Results: ${error}`);
+  const resultsResult = await findResult(startTime);
+  if (isErrorResult(resultsResult)) {
     return {
       message: "Getting results failed",
       status: "error",
       errorId: "unknown",
     };
   }
+
+  const results = unwrapResult(resultsResult);
 
   if (!results) {
     return {

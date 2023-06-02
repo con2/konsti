@@ -1,9 +1,7 @@
-import { logger } from "server/utils/logger";
 import { getGamesFromKompassi } from "server/features/game/utils/getGamesFromKompassi";
 import { updateGamePopularity } from "server/features/game-popularity/updateGamePopularity";
 import { config } from "server/config";
 import { kompassiGameMapper } from "server/utils/kompassiGameMapper";
-import { Game } from "shared/typings/models/game";
 import {
   PostUpdateGamesResponse,
   GetGamesResponse,
@@ -12,16 +10,13 @@ import {
 } from "shared/typings/api/games";
 import { findGames, saveGames } from "server/features/game/gameRepository";
 import { enrichGames } from "./gameUtils";
-import { KompassiGame } from "shared/typings/models/kompassiGame";
+import { isErrorResult, unwrapResult } from "shared/utils/result";
 
 export const updateGames = async (): Promise<
   PostUpdateGamesResponse | PostUpdateGamesError
 > => {
-  let kompassiGames = [] as readonly KompassiGame[];
-  try {
-    kompassiGames = await getGamesFromKompassi();
-  } catch (error) {
-    logger.error(`Loading games from Kompassi failed: ${error}`);
+  const kompassiGamesResult = await getGamesFromKompassi();
+  if (isErrorResult(kompassiGamesResult)) {
     return {
       message: "Loading games from Kompassi failed",
       status: "error",
@@ -29,11 +24,10 @@ export const updateGames = async (): Promise<
     };
   }
 
-  let gameSaveResponse: Game[];
-  try {
-    gameSaveResponse = await saveGames(kompassiGameMapper(kompassiGames));
-  } catch (error) {
-    logger.error(`saveGames error: ${error}`);
+  const kompassiGames = unwrapResult(kompassiGamesResult);
+
+  const saveGamesResult = await saveGames(kompassiGameMapper(kompassiGames));
+  if (isErrorResult(saveGamesResult)) {
     return {
       message: "Games db update failed: Saving games failed",
       status: "error",
@@ -41,6 +35,7 @@ export const updateGames = async (): Promise<
     };
   }
 
+  const gameSaveResponse = unwrapResult(saveGamesResult);
   if (!gameSaveResponse) {
     return {
       message: "Games db update failed: No save response",
@@ -50,10 +45,8 @@ export const updateGames = async (): Promise<
   }
 
   if (config.updateGamePopularityEnabled) {
-    try {
-      await updateGamePopularity();
-    } catch (error) {
-      logger.error(`updateGamePopularity: ${error}`);
+    const updateGamePopularityResult = await updateGamePopularity();
+    if (isErrorResult(updateGamePopularityResult)) {
       return {
         message: "Game popularity update failed",
         status: "error",
@@ -72,20 +65,32 @@ export const updateGames = async (): Promise<
 export const fetchGames = async (): Promise<
   GetGamesResponse | GetGamesError
 > => {
-  try {
-    const games = await findGames();
-    const gamesWithPlayers = await enrichGames(games);
+  const gamesResult = await findGames();
 
-    return {
-      message: "Games downloaded",
-      status: "success",
-      games: gamesWithPlayers,
-    };
-  } catch (error) {
+  if (isErrorResult(gamesResult)) {
     return {
       message: `Downloading games failed`,
       status: "error",
       errorId: "unknown",
     };
   }
+
+  const games = unwrapResult(gamesResult);
+
+  const gamesWithPlayersResult = await enrichGames(games);
+  if (isErrorResult(gamesWithPlayersResult)) {
+    return {
+      message: `Downloading games failed`,
+      status: "error",
+      errorId: "unknown",
+    };
+  }
+
+  const gamesWithPlayers = unwrapResult(gamesWithPlayersResult);
+
+  return {
+    message: "Games downloaded",
+    status: "success",
+    games: gamesWithPlayers,
+  };
 };

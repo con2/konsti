@@ -3,28 +3,35 @@ import { logger } from "server/utils/logger";
 import { User } from "shared/typings/models/user";
 import { findUsers } from "server/features/user/userRepository";
 import { findSignups } from "server/features/signup/signupRepository";
-import { Signup } from "server/features/signup/signup.typings";
 import { ProgramType } from "shared/typings/models/game";
 import { sharedConfig } from "shared/config/sharedConfig";
+import {
+  Result,
+  isErrorResult,
+  makeErrorResult,
+  makeSuccessResult,
+  unwrapResult,
+} from "shared/utils/result";
+import { MongoDbError } from "shared/typings/api/errors";
 
-export const verifyUserSignups = async (): Promise<void> => {
+export const verifyUserSignups = async (): Promise<
+  Result<void, MongoDbError>
+> => {
   logger.info("Verify signed games and signups match for users");
 
-  let users: User[];
-  try {
-    users = await findUsers();
-  } catch (error) {
-    logger.error(error);
-    throw error;
+  const usersResult = await findUsers();
+  if (isErrorResult(usersResult)) {
+    return usersResult;
   }
 
-  let signups: Signup[];
-  try {
-    signups = await findSignups();
-  } catch (error) {
-    logger.error(error);
-    throw error;
+  const users = unwrapResult(usersResult);
+
+  const signupsResult = await findSignups();
+  if (isErrorResult(signupsResult)) {
+    return signupsResult;
   }
+
+  const signups = unwrapResult(signupsResult);
 
   signups.map(({ game, userSignups }) => {
     if (
@@ -43,10 +50,16 @@ export const verifyUserSignups = async (): Promise<void> => {
       );
 
       if (!matchingUser) {
-        throw new Error(`No matcing user: "${userSignup.username}"`);
+        logger.error(`No matcing user: "${userSignup.username}"`);
+        return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
       }
 
-      const groupCreator = getGroupCreator(users, matchingUser);
+      const groupCreatorResult = getGroupCreator(users, matchingUser);
+      if (isErrorResult(groupCreatorResult)) {
+        return groupCreatorResult;
+      }
+
+      const groupCreator = unwrapResult(groupCreatorResult);
 
       const matchingCreatorSignedGame = groupCreator.signedGames.find(
         (creatorSignedGame) =>
@@ -55,15 +68,21 @@ export const verifyUserSignups = async (): Promise<void> => {
       );
 
       if (!matchingCreatorSignedGame) {
-        throw new Error(
+        logger.error(
           `No matching signed game found from group creator: "${userSignup.username}" - "${game.title}"`
         );
+        return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
       }
     });
   });
+
+  return makeSuccessResult(undefined);
 };
 
-const getGroupCreator = (users: User[], user: User): User => {
+const getGroupCreator = (
+  users: User[],
+  user: User
+): Result<User, MongoDbError> => {
   // User is group member, not group creators -> find group creator
   if (user.groupCode !== "0" && user.groupCode !== user.serial) {
     const groupCreator = users.find(
@@ -71,12 +90,13 @@ const getGroupCreator = (users: User[], user: User): User => {
     );
 
     if (groupCreator) {
-      return groupCreator;
+      return makeSuccessResult(groupCreator);
     } else {
-      throw new Error(`Group creator not found for user ${user.username}`);
+      logger.error(`Group creator not found for user ${user.username}`);
+      return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
   }
 
   // User is group creator
-  return user;
+  return makeSuccessResult(user);
 };

@@ -13,7 +13,7 @@ export interface User {
 
 export interface SelectedGame {
   gameDetails: Game;
-  priority: number;
+  priority: number; // TODO: Update to 1 | 2 | 3
   time: string;
   message: string;
 }

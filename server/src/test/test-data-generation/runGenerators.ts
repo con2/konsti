@@ -34,6 +34,7 @@ export const runGenerators = async (
   settings: Settings
 ): Promise<void> => {
   if (process.env.NODE_ENV === "production") {
+    // eslint-disable-next-line no-restricted-syntax -- Data generation script
     throw new Error(`Data creation not allowed in production`);
   }
 

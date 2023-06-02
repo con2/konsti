@@ -16,6 +16,8 @@ import {
   workshopProgramTypes,
 } from "shared/typings/models/kompassiGame";
 import { TOURNAMENT_EVENT_TYPE } from "server/features/game/utils/getGamesFromKompassi";
+import { Result } from "shared/utils/result";
+import { MongoDbError } from "shared/typings/api/errors";
 
 const GAME_ID_MAX = 10000000;
 
@@ -51,7 +53,9 @@ const getMaxPlayers = (programType: KompassiProgramType): number => {
   return faker.number.int({ min: 3, max: 4 });
 };
 
-export const createGames = async (gameCount: number): Promise<Game[]> => {
+export const createGames = async (
+  gameCount: number
+): Promise<Result<Game[], MongoDbError>> => {
   const kompassiGames: KompassiGame[] = [];
 
   const programTypes = [

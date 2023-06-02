@@ -10,8 +10,6 @@ import { UserGroup } from "shared/typings/models/user";
 import { getAuthorizedUsername } from "server/utils/authHeader";
 import { logger } from "server/utils/logger";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
-import { sharedConfig } from "shared/config/sharedConfig";
-import { createSerial } from "./userUtils";
 import {
   GetUserBySerialRequest,
   GetUserBySerialRequestSchema,
@@ -37,14 +35,8 @@ export const postUser = async (
     return res.sendStatus(422);
   }
 
-  const { username, password } = body;
-  let serial;
-  if (!sharedConfig.requireRegistrationCode) {
-    const serialDoc = await createSerial();
-    serial = serialDoc[0].serial;
-  } else {
-    serial = body.serial;
-  }
+  const { username, password, serial } = body;
+
   const response = await storeUser(username, password, serial);
   return res.json(response);
 };

@@ -1,13 +1,19 @@
 import _ from "lodash";
-import { logger } from "server/utils/logger";
 import { User } from "shared/typings/models/user";
 import { Game } from "shared/typings/models/game";
 import { saveGamePopularity } from "server/features/game/gameRepository";
+import {
+  Result,
+  isErrorResult,
+  makeErrorResult,
+  makeSuccessResult,
+} from "shared/utils/result";
+import { MongoDbError } from "shared/typings/api/errors";
 
 export const updateWithSignups = async (
   users: User[],
   games: Game[]
-): Promise<void> => {
+): Promise<Result<void, MongoDbError>> => {
   const groupCreators = users.filter(
     (user) => user.groupCode !== "0" && user.groupCode === user.serial
   );
@@ -30,16 +36,25 @@ export const updateWithSignups = async (
 
   const groupedSignups = _.countBy(signedGames, "gameId");
 
-  try {
-    await Promise.all(
-      games.map(async (game) => {
-        if (groupedSignups[game.gameId]) {
-          await saveGamePopularity(game.gameId, groupedSignups[game.gameId]);
-        }
-      })
-    );
-  } catch (error) {
-    logger.error(`saveGamePopularity error: ${error}`);
-    throw new Error("Update game popularity error");
+  const promises = games.map(async (game) => {
+    if (groupedSignups[game.gameId]) {
+      const saveGamePopularityResult = await saveGamePopularity(
+        game.gameId,
+        groupedSignups[game.gameId]
+      );
+      if (isErrorResult(saveGamePopularityResult)) {
+        return saveGamePopularityResult;
+      }
+    }
+    return makeSuccessResult(undefined);
+  });
+
+  const results = await Promise.all(promises);
+  const someUpdateFailed = results.some((result) => isErrorResult(result));
+
+  if (someUpdateFailed) {
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
+
+  return makeSuccessResult(undefined);
 };

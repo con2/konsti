@@ -17,6 +17,7 @@ logger.warn = vi.fn().mockImplementation(() => {});
 // Useful at times, but prevents checking if error is handled correctly
 logger.error = throwOnErrorLog
   ? vi.fn().mockImplementation((message: string) => {
+      // eslint-disable-next-line no-restricted-syntax -- Test utility
       throw new Error(message);
     })
   : vi.fn().mockImplementation(() => {});

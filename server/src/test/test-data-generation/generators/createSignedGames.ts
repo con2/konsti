@@ -8,10 +8,13 @@ import { findUsers } from "server/features/user/userRepository";
 import { findGames } from "server/features/game/gameRepository";
 import { SelectedGame, User } from "shared/typings/models/user";
 import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
+import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 
 export const createSignedGames = async (): Promise<void> => {
-  const games = await findGames();
-  const allUsers = await findUsers();
+  const gamesResult = await findGames();
+  const games = unsafelyUnwrapResult(gamesResult);
+  const allUsersResult = await findUsers();
+  const allUsers = unsafelyUnwrapResult(allUsersResult);
 
   const users = allUsers.filter(
     (user) => user.username !== "admin" && user.username !== "helper"
@@ -92,10 +95,11 @@ const getRandomSignup = (games: readonly Game[]): SelectedGame[] => {
 const signup = async (games: readonly Game[], user: User): Promise<User> => {
   const signedGames = getRandomSignup(games);
 
-  return await saveSignedGames({
+  const userResult = await saveSignedGames({
     username: user.username,
     signedGames,
   });
+  return unsafelyUnwrapResult(userResult);
 };
 
 const signupMultiple = async (
@@ -119,7 +123,10 @@ const signupGroup = async (
 ): Promise<void> => {
   // Generate random signup data for the group creator
   const groupCreator = users.find((user) => user.serial === user.groupCode);
-  if (!groupCreator) throw new Error("Error getting group creator");
+  if (!groupCreator) {
+    // eslint-disable-next-line no-restricted-syntax -- Data generation script
+    throw new Error("Error getting group creator");
+  }
 
   const signupData = {
     username: groupCreator.username,
