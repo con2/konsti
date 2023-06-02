@@ -3,7 +3,7 @@ import { findUser } from "server/features/user/userRepository";
 import { decodeJWT, getJWT, verifyJWT } from "server/utils/jwt";
 import { PostLoginError, PostLoginResponse } from "shared/typings/api/login";
 import { UserGroup } from "shared/typings/models/user";
-import { isErrorResult, unwrapResult } from "shared/utils/asyncResult";
+import { isErrorResult, unwrapResult } from "shared/utils/result";
 
 export const loginWithJwt = async (
   jwt: string
@@ -42,8 +42,8 @@ export const loginWithJwt = async (
   }
 
   if (typeof jwtResponse.username === "string") {
-    const userAsyncResult = await findUser(jwtResponse.username);
-    if (isErrorResult(userAsyncResult)) {
+    const userResult = await findUser(jwtResponse.username);
+    if (isErrorResult(userResult)) {
       return {
         message: "Session restore error",
         status: "error",
@@ -51,7 +51,7 @@ export const loginWithJwt = async (
       };
     }
 
-    const user = unwrapResult(userAsyncResult);
+    const user = unwrapResult(userResult);
 
     if (!user) {
       return {
@@ -61,8 +61,8 @@ export const loginWithJwt = async (
       };
     }
 
-    const findSettingsAsyncResult = await findSettings();
-    if (isErrorResult(findSettingsAsyncResult)) {
+    const findSettingsResult = await findSettings();
+    if (isErrorResult(findSettingsResult)) {
       return {
         message: "User login error",
         status: "error",
@@ -70,7 +70,7 @@ export const loginWithJwt = async (
       };
     }
 
-    const settings = unwrapResult(findSettingsAsyncResult);
+    const settings = unwrapResult(findSettingsResult);
 
     if (!settings.appOpen && user.userGroup === "user") {
       return {

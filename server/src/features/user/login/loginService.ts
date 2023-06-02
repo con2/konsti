@@ -4,14 +4,14 @@ import { getJWT } from "server/utils/jwt";
 import { findSettings } from "server/features/settings/settingsRepository";
 import { findUser } from "server/features/user/userRepository";
 import { logger } from "server/utils/logger";
-import { isErrorResult, unwrapResult } from "shared/utils/asyncResult";
+import { isErrorResult, unwrapResult } from "shared/utils/result";
 
 export const login = async (
   username: string,
   password: string
 ): Promise<PostLoginResponse | PostLoginError> => {
-  const userAsyncResult = await findUser(username);
-  if (isErrorResult(userAsyncResult)) {
+  const userResult = await findUser(username);
+  if (isErrorResult(userResult)) {
     return {
       message: "User login error",
       status: "error",
@@ -19,7 +19,7 @@ export const login = async (
     };
   }
 
-  const user = unwrapResult(userAsyncResult);
+  const user = unwrapResult(userResult);
 
   if (!user) {
     logger.info(`Login: User "${username}" not found`);
@@ -30,8 +30,8 @@ export const login = async (
     };
   }
 
-  const findSettingsAsyncResult = await findSettings();
-  if (isErrorResult(findSettingsAsyncResult)) {
+  const findSettingsResult = await findSettings();
+  if (isErrorResult(findSettingsResult)) {
     return {
       message: "User login error",
       status: "error",
@@ -39,7 +39,7 @@ export const login = async (
     };
   }
 
-  const settings = unwrapResult(findSettingsAsyncResult);
+  const settings = unwrapResult(findSettingsResult);
 
   if (!settings.appOpen && user.userGroup === "user") {
     return {
@@ -51,8 +51,8 @@ export const login = async (
 
   // User exists
 
-  const validLoginAsyncResult = await validateLogin(password, user.password);
-  if (isErrorResult(validLoginAsyncResult)) {
+  const validLoginResult = await validateLogin(password, user.password);
+  if (isErrorResult(validLoginResult)) {
     return {
       errorId: "loginFailed",
       message: "User login error",
@@ -60,7 +60,7 @@ export const login = async (
     };
   }
 
-  const validLogin = unwrapResult(validLoginAsyncResult);
+  const validLogin = unwrapResult(validLoginResult);
 
   logger.info(
     `Login: User "${user.username}" with "${user.userGroup}" user group`

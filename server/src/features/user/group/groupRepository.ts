@@ -3,14 +3,14 @@ import { logger } from "server/utils/logger";
 import { MongoDbError } from "shared/typings/api/errors";
 import { User } from "shared/typings/models/user";
 import {
-  AsyncResult,
+  Result,
   makeErrorResult,
   makeSuccessResult,
-} from "shared/utils/asyncResult";
+} from "shared/utils/result";
 
 export const findGroupMembers = async (
   groupCode: string
-): Promise<AsyncResult<User[], MongoDbError>> => {
+): Promise<Result<User[], MongoDbError>> => {
   try {
     const response = await UserModel.find({ groupCode })
       .lean<User[]>()
@@ -33,7 +33,7 @@ export const findGroupMembers = async (
 export const findGroup = async (
   groupCode: string,
   username: string
-): Promise<AsyncResult<User | null, MongoDbError>> => {
+): Promise<Result<User | null, MongoDbError>> => {
   if (username) {
     try {
       const response = await UserModel.findOne({
@@ -73,7 +73,7 @@ export const findGroup = async (
 export const saveGroupCode = async (
   groupCode: string,
   username: string
-): Promise<AsyncResult<User | null, MongoDbError>> => {
+): Promise<Result<User | null, MongoDbError>> => {
   try {
     const response = await UserModel.findOneAndUpdate(
       { username },

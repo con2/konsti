@@ -6,20 +6,20 @@ import { SelectedGame, User } from "shared/typings/models/user";
 import { Signup } from "server/features/signup/signup.typings";
 import { logger } from "server/utils/logger";
 import {
-  AsyncResult,
+  Result,
   isErrorResult,
   isSuccessResult,
   makeErrorResult,
   makeSuccessResult,
   unwrapResult,
-} from "shared/utils/asyncResult";
+} from "shared/utils/result";
 import { AssignmentError } from "shared/typings/api/errors";
 
 export const getList = (
   playerGroups: readonly User[][],
   startingTime: string,
   signups: readonly Signup[]
-): AsyncResult<ListItem[], AssignmentError> => {
+): Result<ListItem[], AssignmentError> => {
   const results = playerGroups.flatMap((playerGroup) => {
     const firstMember = _.first(playerGroup);
     if (!firstMember) {

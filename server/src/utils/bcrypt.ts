@@ -2,10 +2,10 @@ import bcrypt from "bcryptjs";
 import { logger } from "server/utils/logger";
 import { BcryptError } from "shared/typings/api/errors";
 import {
-  AsyncResult,
+  Result,
   makeErrorResult,
   makeSuccessResult,
-} from "shared/utils/asyncResult";
+} from "shared/utils/result";
 
 const saltLength = 10;
 
@@ -33,7 +33,7 @@ const comparePasswordHash = async (
 const validateLogin = async (
   password: string,
   hash: string
-): Promise<AsyncResult<boolean, BcryptError>> => {
+): Promise<Result<boolean, BcryptError>> => {
   let hashResponse;
   try {
     hashResponse = await comparePasswordHash(password, hash);

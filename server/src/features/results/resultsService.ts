@@ -1,13 +1,13 @@
 import { findResult } from "server/features/results/resultsRepository";
 import { ApiError } from "shared/typings/api/errors";
 import { GetResultsResponse } from "shared/typings/api/results";
-import { isErrorResult, unwrapResult } from "shared/utils/asyncResult";
+import { isErrorResult, unwrapResult } from "shared/utils/result";
 
 export const fetchResults = async (
   startTime: string
 ): Promise<GetResultsResponse | ApiError> => {
-  const resultsAsyncResult = await findResult(startTime);
-  if (isErrorResult(resultsAsyncResult)) {
+  const resultsResult = await findResult(startTime);
+  if (isErrorResult(resultsResult)) {
     return {
       message: "Getting results failed",
       status: "error",
@@ -15,7 +15,7 @@ export const fetchResults = async (
     };
   }
 
-  const results = unwrapResult(resultsAsyncResult);
+  const results = unwrapResult(resultsResult);
 
   if (!results) {
     return {

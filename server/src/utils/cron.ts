@@ -7,7 +7,7 @@ import { runAssignment } from "server/features/player-assignment/runAssignment";
 import { kompassiGameMapper } from "server/utils/kompassiGameMapper";
 import { saveGames } from "server/features/game/gameRepository";
 import { sharedConfig } from "shared/config/sharedConfig";
-import { isErrorResult, unwrapResult } from "shared/utils/asyncResult";
+import { isErrorResult, unwrapResult } from "shared/utils/result";
 
 const {
   autoUpdateGamesEnabled,
@@ -43,18 +43,16 @@ export const stopCronJobs = (): void => {
 const autoUpdateGames = async (): Promise<void> => {
   if (autoUpdateGamesEnabled) {
     logger.info("----> Auto update games");
-    const kompassiGamesAsyncResult = await getGamesFromKompassi();
-    if (isErrorResult(kompassiGamesAsyncResult)) {
+    const kompassiGamesResult = await getGamesFromKompassi();
+    if (isErrorResult(kompassiGamesResult)) {
       logger.error(
         "***** Games auto update failed: error downloading games from Kompassi"
       );
       return;
     }
-    const kompassiGames = unwrapResult(kompassiGamesAsyncResult);
-    const saveGamesAsyncResult = await saveGames(
-      kompassiGameMapper(kompassiGames)
-    );
-    if (isErrorResult(saveGamesAsyncResult)) {
+    const kompassiGames = unwrapResult(kompassiGamesResult);
+    const saveGamesResult = await saveGames(kompassiGameMapper(kompassiGames));
+    if (isErrorResult(saveGamesResult)) {
       logger.error("***** Games auto update failed: Error saving games");
       return;
     }
@@ -63,8 +61,8 @@ const autoUpdateGames = async (): Promise<void> => {
 
   if (autoUpdateGamePopularityEnabled) {
     logger.info("----> Auto update game popularity");
-    const updateGamePopularityAsyncResult = await updateGamePopularity();
-    if (isErrorResult(updateGamePopularityAsyncResult)) {
+    const updateGamePopularityResult = await updateGamePopularity();
+    if (isErrorResult(updateGamePopularityResult)) {
       logger.error("***** Game popularity auto update failed");
       return;
     }
@@ -75,12 +73,12 @@ const autoUpdateGames = async (): Promise<void> => {
 const autoAssignPlayers = async (): Promise<void> => {
   logger.info("----> Auto assign players");
 
-  const runAssignmentAsyncResult = await runAssignment({
+  const runAssignmentResult = await runAssignment({
     assignmentStrategy,
     useDynamicStartingTime: true,
     assignmentDelay: autoAssignDelay,
   });
-  if (isErrorResult(runAssignmentAsyncResult)) {
+  if (isErrorResult(runAssignmentResult)) {
     logger.error("***** Auto assignment failed");
     return;
   }

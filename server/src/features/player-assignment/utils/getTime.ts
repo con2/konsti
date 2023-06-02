@@ -3,19 +3,19 @@ import { config } from "server/config";
 import { findTestSettings } from "server/test/test-settings/testSettingsRepository";
 import { MongoDbError } from "shared/typings/api/errors";
 import {
-  AsyncResult,
+  Result,
   isErrorResult,
   makeSuccessResult,
   unwrapResult,
-} from "shared/utils/asyncResult";
+} from "shared/utils/result";
 
-export const getTime = async (): Promise<AsyncResult<Dayjs, MongoDbError>> => {
+export const getTime = async (): Promise<Result<Dayjs, MongoDbError>> => {
   if (process.env.SETTINGS !== "production" && config.useTestTime) {
-    const findTestSettingsAsyncResult = await findTestSettings();
-    if (isErrorResult(findTestSettingsAsyncResult)) {
-      return findTestSettingsAsyncResult;
+    const findTestSettingsResult = await findTestSettings();
+    if (isErrorResult(findTestSettingsResult)) {
+      return findTestSettingsResult;
     }
-    const testSettings = unwrapResult(findTestSettingsAsyncResult);
+    const testSettings = unwrapResult(findTestSettingsResult);
     return makeSuccessResult(dayjs(testSettings.testTime));
   }
 

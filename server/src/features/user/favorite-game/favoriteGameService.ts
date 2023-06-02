@@ -2,14 +2,14 @@ import { saveFavorite } from "server/features/user/favorite-game/favoriteGameRep
 import { ApiError } from "shared/typings/api/errors";
 import { PostFavoriteResponse } from "shared/typings/api/favorite";
 import { NewFavorite } from "shared/typings/models/user";
-import { isErrorResult, unwrapResult } from "shared/utils/asyncResult";
+import { isErrorResult, unwrapResult } from "shared/utils/result";
 
 export const storeFavorite = async (
   favoriteData: NewFavorite
 ): Promise<PostFavoriteResponse | ApiError> => {
-  const favoritedGamesAsyncResult = await saveFavorite(favoriteData);
+  const favoritedGamesResult = await saveFavorite(favoriteData);
 
-  if (isErrorResult(favoritedGamesAsyncResult)) {
+  if (isErrorResult(favoritedGamesResult)) {
     return {
       message: "Update favorite failure",
       status: "error",
@@ -17,7 +17,7 @@ export const storeFavorite = async (
     };
   }
 
-  const favoritedGames = unwrapResult(favoritedGamesAsyncResult);
+  const favoritedGames = unwrapResult(favoritedGamesResult);
 
   if (favoritedGames) {
     return {

@@ -17,7 +17,7 @@ import {
 import { ApiError } from "shared/typings/api/errors";
 import { findUserSignups } from "server/features/signup/signupRepository";
 import { SelectedGame } from "shared/typings/models/user";
-import { isErrorResult, unwrapResult } from "shared/utils/asyncResult";
+import { isErrorResult, unwrapResult } from "shared/utils/result";
 import { sharedConfig } from "shared/config/sharedConfig";
 import { createSerial } from "server/features/user/userUtils";
 
@@ -28,15 +28,15 @@ export const storeUser = async (
 ): Promise<PostUserResponse | PostUserError> => {
   let serial;
   if (!sharedConfig.requireRegistrationCode) {
-    const serialDocAsyncResult = await createSerial();
-    if (isErrorResult(serialDocAsyncResult)) {
+    const serialDocResult = await createSerial();
+    if (isErrorResult(serialDocResult)) {
       return {
         message: "Error creating serial for new user",
         status: "error",
         errorId: "unknown",
       };
     }
-    const serialDoc = unwrapResult(serialDocAsyncResult);
+    const serialDoc = unwrapResult(serialDocResult);
     serial = serialDoc[0].serial;
   } else {
     serial = maybeSerial;
@@ -50,8 +50,8 @@ export const storeUser = async (
     };
   }
 
-  const serialFoundAsyncResult = await findSerial(serial);
-  if (isErrorResult(serialFoundAsyncResult)) {
+  const serialFoundResult = await findSerial(serial);
+  if (isErrorResult(serialFoundResult)) {
     return {
       errorId: "unknown",
       message: "Finding serial failed",
@@ -59,7 +59,7 @@ export const storeUser = async (
     };
   }
 
-  const serialFound = unwrapResult(serialFoundAsyncResult);
+  const serialFound = unwrapResult(serialFoundResult);
 
   // Check for valid serial
   if (!serialFound) {
@@ -145,12 +145,12 @@ export const storeUser = async (
       }
 
       if (passwordHash) {
-        const saveUserResponseAsyncResult = await saveUser({
+        const saveUserResponseResult = await saveUser({
           username,
           passwordHash,
           serial,
         });
-        if (isErrorResult(saveUserResponseAsyncResult)) {
+        if (isErrorResult(saveUserResponseResult)) {
           return {
             errorId: "unknown",
             message: "User registration failed",
@@ -158,7 +158,7 @@ export const storeUser = async (
           };
         }
 
-        const saveUserResponse = unwrapResult(saveUserResponseAsyncResult);
+        const saveUserResponse = unwrapResult(saveUserResponseResult);
 
         return {
           message: "User registration success",
@@ -207,12 +207,12 @@ export const storeUserPassword = async (
     };
   }
 
-  const updateUserPasswordAsyncResult = await updateUserPassword(
+  const updateUserPasswordResult = await updateUserPassword(
     username,
     passwordHash
   );
 
-  if (isErrorResult(updateUserPasswordAsyncResult)) {
+  if (isErrorResult(updateUserPasswordResult)) {
     return {
       message: "Password change error",
       status: "error",
@@ -231,8 +231,8 @@ export const storeUserPassword = async (
 export const fetchUserByUsername = async (
   username: string
 ): Promise<GetUserResponse | ApiError> => {
-  const userAsyncResult = await findUser(username);
-  if (isErrorResult(userAsyncResult)) {
+  const userResult = await findUser(username);
+  if (isErrorResult(userResult)) {
     return {
       message: "Getting user data failed",
       status: "error",
@@ -240,7 +240,7 @@ export const fetchUserByUsername = async (
     };
   }
 
-  const user = unwrapResult(userAsyncResult);
+  const user = unwrapResult(userResult);
   if (!user) {
     return {
       message: `User ${username} not found`,
@@ -249,8 +249,8 @@ export const fetchUserByUsername = async (
     };
   }
 
-  const signupsAsyncResult = await findUserSignups(username);
-  if (isErrorResult(signupsAsyncResult)) {
+  const signupsResult = await findUserSignups(username);
+  if (isErrorResult(signupsResult)) {
     return {
       message: "Getting user data failed",
       status: "error",
@@ -258,7 +258,7 @@ export const fetchUserByUsername = async (
     };
   }
 
-  const signups = unwrapResult(signupsAsyncResult);
+  const signups = unwrapResult(signupsResult);
 
   const enteredGames: SelectedGame[] = signups
     ? signups.flatMap((signup) => {
@@ -292,8 +292,8 @@ export const fetchUserBySerialOrUsername = async (
   searchTerm: string
 ): Promise<GetUserBySerialResponse | ApiError> => {
   // Try to find user first with serial
-  const userBySerialAsyncResult = await findUserBySerial(searchTerm);
-  if (isErrorResult(userBySerialAsyncResult)) {
+  const userBySerialResult = await findUserBySerial(searchTerm);
+  if (isErrorResult(userBySerialResult)) {
     return {
       message: "Getting user data failed",
       status: "error",
@@ -301,7 +301,7 @@ export const fetchUserBySerialOrUsername = async (
     };
   }
 
-  const userBySerial = unwrapResult(userBySerialAsyncResult);
+  const userBySerial = unwrapResult(userBySerialResult);
 
   if (userBySerial) {
     return {
@@ -313,8 +313,8 @@ export const fetchUserBySerialOrUsername = async (
   }
 
   // If serial find fails, use username
-  const userAsyncResult = await findUser(searchTerm);
-  if (isErrorResult(userAsyncResult)) {
+  const userResult = await findUser(searchTerm);
+  if (isErrorResult(userResult)) {
     return {
       message: "Getting user data failed",
       status: "error",
@@ -322,7 +322,7 @@ export const fetchUserBySerialOrUsername = async (
     };
   }
 
-  const user = unwrapResult(userAsyncResult);
+  const user = unwrapResult(userResult);
 
   if (!user) {
     return {

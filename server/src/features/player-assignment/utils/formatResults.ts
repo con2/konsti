@@ -5,15 +5,15 @@ import { AssignmentError } from "shared/typings/api/errors";
 import { AssignmentResult } from "shared/typings/models/result";
 import { SelectedGame, User } from "shared/typings/models/user";
 import {
-  AsyncResult,
+  Result,
   makeErrorResult,
   makeSuccessResult,
-} from "shared/utils/asyncResult";
+} from "shared/utils/result";
 
 export const formatResults = (
   assignResults: PadgRandomAssignResults,
   playerGroups: readonly User[][]
-): AsyncResult<readonly AssignmentResult[], AssignmentError> => {
+): Result<readonly AssignmentResult[], AssignmentError> => {
   const selectedPlayers = playerGroups
     .filter((playerGroup) => {
       const firstMember = _.first(playerGroup);

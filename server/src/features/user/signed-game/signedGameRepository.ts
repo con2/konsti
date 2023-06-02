@@ -5,25 +5,25 @@ import { logger } from "server/utils/logger";
 import { MongoDbError } from "shared/typings/api/errors";
 import { SelectedGame, User } from "shared/typings/models/user";
 import {
-  AsyncResult,
+  Result,
   isErrorResult,
   makeErrorResult,
   makeSuccessResult,
   unwrapResult,
-} from "shared/utils/asyncResult";
+} from "shared/utils/result";
 
 export const saveSignedGames = async (
   signupData: UserSignedGames
-): Promise<AsyncResult<User, MongoDbError>> => {
+): Promise<Result<User, MongoDbError>> => {
   const { signedGames, username } = signupData;
 
-  const gamesAsyncResult = await findGames();
+  const gamesResult = await findGames();
 
-  if (isErrorResult(gamesAsyncResult)) {
-    return gamesAsyncResult;
+  if (isErrorResult(gamesResult)) {
+    return gamesResult;
   }
 
-  const games = unwrapResult(gamesAsyncResult);
+  const games = unwrapResult(gamesResult);
 
   const formattedData = signedGames.reduce<SelectedGame[]>(
     (acc, signedGame) => {
@@ -67,7 +67,7 @@ export const saveSignedGames = async (
 };
 
 export const removeSignedGames = async (): Promise<
-  AsyncResult<void, MongoDbError>
+  Result<void, MongoDbError>
 > => {
   logger.info("MongoDB: remove ALL signups from db");
   try {

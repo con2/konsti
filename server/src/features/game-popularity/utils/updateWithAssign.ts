@@ -7,19 +7,19 @@ import { AssignmentResult } from "shared/typings/models/result";
 import { saveGamePopularity } from "server/features/game/gameRepository";
 import { Signup } from "server/features/signup/signup.typings";
 import {
-  AsyncResult,
+  Result,
   isErrorResult,
   makeErrorResult,
   makeSuccessResult,
   unwrapResult,
-} from "shared/utils/asyncResult";
+} from "shared/utils/result";
 import { AssignmentError, MongoDbError } from "shared/typings/api/errors";
 
 export const updateWithAssign = async (
   users: readonly User[],
   games: readonly Game[],
   signups: readonly Signup[]
-): Promise<AsyncResult<void, MongoDbError | AssignmentError>> => {
+): Promise<Result<void, MongoDbError | AssignmentError>> => {
   const groupedGames = _.groupBy(games, (game) =>
     dayjs(game.startTime).format()
   );
@@ -27,16 +27,16 @@ export const updateWithAssign = async (
   let results = [] as readonly AssignmentResult[];
 
   _.forEach(groupedGames, (_value, startingTime) => {
-    const assignmentResultAsyncResult = padgAssignPlayers(
+    const assignmentResultResult = padgAssignPlayers(
       users,
       games,
       startingTime,
       signups
     );
-    if (isErrorResult(assignmentResultAsyncResult)) {
-      return assignmentResultAsyncResult;
+    if (isErrorResult(assignmentResultResult)) {
+      return assignmentResultResult;
     }
-    const assignmentResult = unwrapResult(assignmentResultAsyncResult);
+    const assignmentResult = unwrapResult(assignmentResultResult);
     results = results.concat(assignmentResult.results);
   });
 
@@ -48,11 +48,11 @@ export const updateWithAssign = async (
 
   const promises = games.map(async (game) => {
     if (groupedSignups[game.gameId]) {
-      const saveGamePopularityAsyncResult = await saveGamePopularity(
+      const saveGamePopularityResult = await saveGamePopularity(
         game.gameId,
         groupedSignups[game.gameId]
       );
-      if (isErrorResult(saveGamePopularityAsyncResult)) {
+      if (isErrorResult(saveGamePopularityResult)) {
         return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
       }
     }

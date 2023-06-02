@@ -14,12 +14,12 @@ import { sleep } from "server/utils/sleep";
 import { findSignups } from "server/features/signup/signupRepository";
 import { sharedConfig } from "shared/config/sharedConfig";
 import {
-  AsyncResult,
+  Result,
   isErrorResult,
   makeErrorResult,
   makeSuccessResult,
   unwrapResult,
-} from "shared/utils/asyncResult";
+} from "shared/utils/result";
 import { AssignmentError, MongoDbError } from "shared/typings/api/errors";
 
 const { directSignupAlwaysOpenIds } = sharedConfig;
@@ -37,16 +37,16 @@ export const runAssignment = async ({
   useDynamicStartingTime = false,
   assignmentDelay = 0,
 }: RunAssignmentParams): Promise<
-  AsyncResult<PlayerAssignmentResult, MongoDbError | AssignmentError>
+  Result<PlayerAssignmentResult, MongoDbError | AssignmentError>
 > => {
-  const assignmentTimeAsyncResult = useDynamicStartingTime
+  const assignmentTimeResult = useDynamicStartingTime
     ? await getDynamicStartingTime()
     : makeSuccessResult(startingTime);
-  if (isErrorResult(assignmentTimeAsyncResult)) {
-    return assignmentTimeAsyncResult;
+  if (isErrorResult(assignmentTimeResult)) {
+    return assignmentTimeResult;
   }
 
-  const assignmentTime = unwrapResult(assignmentTimeAsyncResult);
+  const assignmentTime = unwrapResult(assignmentTimeResult);
 
   if (!assignmentTime) {
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
@@ -58,17 +58,17 @@ export const runAssignment = async ({
     logger.info("Waiting done, start assignment");
   }
 
-  const removeInvalidGamesAsyncResult = await removeInvalidGamesFromUsers();
-  if (isErrorResult(removeInvalidGamesAsyncResult)) {
-    return removeInvalidGamesAsyncResult;
+  const removeInvalidGamesResult = await removeInvalidGamesFromUsers();
+  if (isErrorResult(removeInvalidGamesResult)) {
+    return removeInvalidGamesResult;
   }
 
-  const usersAsyncResult = await findUsers();
-  if (isErrorResult(usersAsyncResult)) {
-    return usersAsyncResult;
+  const usersResult = await findUsers();
+  if (isErrorResult(usersResult)) {
+    return usersResult;
   }
 
-  const users = unwrapResult(usersAsyncResult);
+  const users = unwrapResult(usersResult);
 
   // Only include TABLETOP_RPG and don't include "directSignupAlwaysOpen" games
   const filteredUsers = users.map((user) => {
@@ -81,13 +81,13 @@ export const runAssignment = async ({
     return { ...user, signedGames: matchingSignedGames };
   });
 
-  const gamesAsyncResult = await findGames();
+  const gamesResult = await findGames();
 
-  if (isErrorResult(gamesAsyncResult)) {
-    return gamesAsyncResult;
+  if (isErrorResult(gamesResult)) {
+    return gamesResult;
   }
 
-  const games = unwrapResult(gamesAsyncResult);
+  const games = unwrapResult(gamesResult);
 
   // Only include TABLETOP_RPG and don't include "directSignupAlwaysOpen" games
   const filteredGames = games.filter(
@@ -96,25 +96,25 @@ export const runAssignment = async ({
       game.programType === ProgramType.TABLETOP_RPG
   );
 
-  const signupsAsyncResult = await findSignups();
-  if (isErrorResult(signupsAsyncResult)) {
-    return signupsAsyncResult;
+  const signupsResult = await findSignups();
+  if (isErrorResult(signupsResult)) {
+    return signupsResult;
   }
 
-  const signups = unwrapResult(signupsAsyncResult);
+  const signups = unwrapResult(signupsResult);
 
-  const assignResultsAsyncResult = runAssignmentStrategy(
+  const assignResultsResult = runAssignmentStrategy(
     filteredUsers,
     filteredGames,
     assignmentTime,
     assignmentStrategy,
     signups
   );
-  if (isErrorResult(assignResultsAsyncResult)) {
-    return assignResultsAsyncResult;
+  if (isErrorResult(assignResultsResult)) {
+    return assignResultsResult;
   }
 
-  const assignResults = unwrapResult(assignResultsAsyncResult);
+  const assignResults = unwrapResult(assignResultsResult);
 
   if (assignResults.results.length === 0) {
     logger.warn(
@@ -125,23 +125,23 @@ export const runAssignment = async ({
     return makeSuccessResult(assignResults);
   }
 
-  const saveResultsAsyncResult = await saveResults({
+  const saveResultsResult = await saveResults({
     results: assignResults.results,
     startingTime: assignmentTime,
     algorithm: assignResults.algorithm,
     message: assignResults.message,
   });
-  if (isErrorResult(saveResultsAsyncResult)) {
-    return saveResultsAsyncResult;
+  if (isErrorResult(saveResultsResult)) {
+    return saveResultsResult;
   }
 
   if (config.enableRemoveOverlapSignups) {
     logger.info("Remove overlapping signups");
-    const removeOverlapSignupsAsyncResult = await removeOverlapSignups(
+    const removeOverlapSignupsResult = await removeOverlapSignups(
       assignResults.results
     );
-    if (isErrorResult(removeOverlapSignupsAsyncResult)) {
-      return removeOverlapSignupsAsyncResult;
+    if (isErrorResult(removeOverlapSignupsResult)) {
+      return removeOverlapSignupsResult;
     }
   }
 

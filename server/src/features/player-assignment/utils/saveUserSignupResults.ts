@@ -6,34 +6,34 @@ import {
   saveSignup,
 } from "server/features/signup/signupRepository";
 import {
-  AsyncResult,
+  Result,
   isErrorResult,
   makeErrorResult,
   makeSuccessResult,
   unwrapResult,
-} from "shared/utils/asyncResult";
+} from "shared/utils/result";
 import { MongoDbError } from "shared/typings/api/errors";
 
 export const saveUserSignupResults = async (
   startingTime: string,
   results: readonly AssignmentResult[]
-): Promise<AsyncResult<void, MongoDbError>> => {
-  const delRpgSignupsByStartTimeAsyncResult = await delRpgSignupsByStartTime(
+): Promise<Result<void, MongoDbError>> => {
+  const delRpgSignupsByStartTimeResult = await delRpgSignupsByStartTime(
     startingTime
   );
-  if (isErrorResult(delRpgSignupsByStartTimeAsyncResult)) {
-    return delRpgSignupsByStartTimeAsyncResult;
+  if (isErrorResult(delRpgSignupsByStartTimeResult)) {
+    return delRpgSignupsByStartTimeResult;
   }
 
   // Only directSignupAlwaysOpen signups should be remaining
-  const rpgSignupsByStartTimeAsyncResult = await findRpgSignupsByStartTime(
+  const rpgSignupsByStartTimeResult = await findRpgSignupsByStartTime(
     startingTime
   );
-  if (isErrorResult(rpgSignupsByStartTimeAsyncResult)) {
-    return rpgSignupsByStartTimeAsyncResult;
+  if (isErrorResult(rpgSignupsByStartTimeResult)) {
+    return rpgSignupsByStartTimeResult;
   }
 
-  const rpgSignupsByStartTime = unwrapResult(rpgSignupsByStartTimeAsyncResult);
+  const rpgSignupsByStartTime = unwrapResult(rpgSignupsByStartTimeResult);
 
   // If user has previous directSignupAlwaysOpen signups...
   // ... and no new result -> don't remove
@@ -44,13 +44,13 @@ export const saveUserSignupResults = async (
     );
 
     if (existingSignup) {
-      const delSignupAsyncResult = await delSignup({
+      const delSignupResult = await delSignup({
         username: existingSignup.username,
         enteredGameId: existingSignup.gameId,
         startTime: existingSignup.time,
       });
-      if (isErrorResult(delSignupAsyncResult)) {
-        return delSignupAsyncResult;
+      if (isErrorResult(delSignupResult)) {
+        return delSignupResult;
       }
     }
     return makeSuccessResult(undefined);
@@ -65,17 +65,17 @@ export const saveUserSignupResults = async (
   }
 
   const savePromises = results.map(async (result) => {
-    const saveSignupAsyncResult = await saveSignup({
+    const saveSignupResult = await saveSignup({
       username: result.username,
       enteredGameId: result.enteredGame.gameDetails.gameId,
       startTime: startingTime,
       message: result.enteredGame.message,
     });
-    if (isErrorResult(saveSignupAsyncResult)) {
-      return saveSignupAsyncResult;
+    if (isErrorResult(saveSignupResult)) {
+      return saveSignupResult;
     }
-    const saveSignupResult = unwrapResult(saveSignupAsyncResult);
-    return makeSuccessResult(saveSignupResult);
+    const saveSignupResponse = unwrapResult(saveSignupResult);
+    return makeSuccessResult(saveSignupResponse);
   });
 
   const saveResults = await Promise.all(savePromises);

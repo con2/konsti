@@ -12,14 +12,14 @@ import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 export const createSignups = async (): Promise<void> => {
   logger.info(`Generate signup data`);
 
-  const gamesAsyncResult = await findGames();
-  const games = unsafelyUnwrapResult(gamesAsyncResult);
+  const gamesResult = await findGames();
+  const games = unsafelyUnwrapResult(gamesResult);
 
-  const allUsersAsyncResult = await findUsers();
-  const allUsers = unsafelyUnwrapResult(allUsersAsyncResult);
+  const allUsersResult = await findUsers();
+  const allUsers = unsafelyUnwrapResult(allUsersResult);
 
-  const findSettingsAsyncResult = await findSettings();
-  const settings = unsafelyUnwrapResult(findSettingsAsyncResult);
+  const findSettingsResult = await findSettings();
+  const settings = unsafelyUnwrapResult(findSettingsResult);
 
   const users = allUsers.filter(
     (user) => user.username !== "admin" && user.username !== "helper"

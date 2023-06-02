@@ -121,8 +121,8 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
     expect(response.status).toEqual(200);
     expect(spy).toHaveBeenCalledTimes(1);
 
-    const gamesAsyncResult = await findGames();
-    const games = unsafelyUnwrapResult(gamesAsyncResult);
+    const gamesResult = await findGames();
+    const games = unsafelyUnwrapResult(gamesResult);
 
     expect(games.length).toEqual(1);
     expect(games[0].title).toEqual(testGame.title);
@@ -151,14 +151,14 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
     expect(response.status).toEqual(200);
 
-    const gamesAsyncResult = await findGames();
-    const games = unsafelyUnwrapResult(gamesAsyncResult);
+    const gamesResult = await findGames();
+    const games = unsafelyUnwrapResult(gamesResult);
 
     expect(games.length).toEqual(1);
     expect(games[0].title).toEqual(testGame.title);
 
-    const updatedUserAsyncResult = await findUser(mockUser.username);
-    const updatedUser = unsafelyUnwrapResult(updatedUserAsyncResult);
+    const updatedUserResult = await findUser(mockUser.username);
+    const updatedUser = unsafelyUnwrapResult(updatedUserResult);
     expect(updatedUser?.signedGames.length).toEqual(1);
     expect(updatedUser?.signedGames[0].gameDetails.title).toEqual(
       testGame.title
@@ -166,8 +166,8 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
     expect(updatedUser?.favoritedGames.length).toEqual(1);
     expect(updatedUser?.favoritedGames[0].gameId).toEqual(testGame.gameId);
 
-    const updatedSignupsAsyncResult = await findUserSignups(mockUser.username);
-    const updatedSignups = unsafelyUnwrapResult(updatedSignupsAsyncResult);
+    const updatedSignupsResult = await findUserSignups(mockUser.username);
+    const updatedSignups = unsafelyUnwrapResult(updatedSignupsResult);
     expect(updatedSignups.length).toEqual(1);
     expect(updatedSignups[0].game.title).toEqual(testGame.title);
   });
@@ -184,8 +184,8 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
     expect(response.status).toEqual(200);
 
-    const gamesAsyncResult = await findGames();
-    const games = unsafelyUnwrapResult(gamesAsyncResult);
+    const gamesResult = await findGames();
+    const games = unsafelyUnwrapResult(gamesResult);
 
     expect(games.length).toEqual(2);
     const sortedGames = _.sortBy(games, "title");
@@ -205,8 +205,8 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
     expect(response.status).toEqual(200);
 
-    const gamesAsyncResult = await findGames();
-    const games = unsafelyUnwrapResult(gamesAsyncResult);
+    const gamesResult = await findGames();
+    const games = unsafelyUnwrapResult(gamesResult);
 
     expect(games.length).toEqual(2);
     const sortedGames = _.sortBy(games, "title");
@@ -239,8 +239,8 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
     expect(response.status).toEqual(200);
 
-    const gamesAsyncResult = await findGames();
-    const games = unsafelyUnwrapResult(gamesAsyncResult);
+    const gamesResult = await findGames();
+    const games = unsafelyUnwrapResult(gamesResult);
 
     expect(games.length).toEqual(1);
     expect(dayjs(games[0].startTime).utc().format()).toEqual(newStartTime);
@@ -282,16 +282,16 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
     expect(response.status).toEqual(200);
 
-    const updatedUserAsyncResult = await findUser(mockUser.username);
-    const updatedUser = unsafelyUnwrapResult(updatedUserAsyncResult);
+    const updatedUserResult = await findUser(mockUser.username);
+    const updatedUser = unsafelyUnwrapResult(updatedUserResult);
     expect(updatedUser?.signedGames.length).toEqual(1);
     expect(updatedUser?.signedGames[0].gameDetails.title).toEqual(
       testGame2.title
     );
     expect(updatedUser?.favoritedGames.length).toEqual(2);
 
-    const signupsAsyncResult = await findUserSignups(mockUser.username);
-    const signups = unsafelyUnwrapResult(signupsAsyncResult);
+    const signupsResult = await findUserSignups(mockUser.username);
+    const signups = unsafelyUnwrapResult(signupsResult);
     expect(signups.length).toEqual(2);
     expect(signups[0].userSignups[0].username).toEqual(mockUser.username);
     expect(signups[1].userSignups[0].username).toEqual(mockUser.username);

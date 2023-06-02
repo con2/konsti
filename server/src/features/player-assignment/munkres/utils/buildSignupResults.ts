@@ -4,16 +4,16 @@ import { Game } from "shared/typings/models/game";
 import { AssignmentResult } from "shared/typings/models/result";
 import { SelectedGame, User } from "shared/typings/models/user";
 import {
-  AsyncResult,
+  Result,
   makeErrorResult,
   makeSuccessResult,
-} from "shared/utils/asyncResult";
+} from "shared/utils/result";
 
 export const buildSignupResults = (
   results: readonly number[][],
   signedGames: readonly Game[],
   players: readonly User[]
-): AsyncResult<readonly AssignmentResult[], AssignmentError> => {
+): Result<readonly AssignmentResult[], AssignmentError> => {
   const signupResults: AssignmentResult[] = [];
 
   // Build signup results

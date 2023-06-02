@@ -7,16 +7,16 @@ import { GroupAssignResult } from "server/typings/groupAssign.typings";
 import { AssignmentResult } from "shared/typings/models/result";
 import { SelectedGame, User } from "shared/typings/models/user";
 import {
-  AsyncResult,
+  Result,
   makeErrorResult,
   makeSuccessResult,
-} from "shared/utils/asyncResult";
+} from "shared/utils/result";
 import { AssignmentError } from "shared/typings/api/errors";
 
 export const runGroupAssignment = (
   playerGroups: readonly User[][],
   signedGames: readonly Game[]
-): AsyncResult<GroupAssignResult, AssignmentError> => {
+): Result<GroupAssignResult, AssignmentError> => {
   const signupResults: AssignmentResult[] = [];
   let matchingGroups: User[][] = [];
   let selectedGroups: User[][] = [];

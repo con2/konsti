@@ -11,10 +11,10 @@ import { saveSignedGames } from "server/features/user/signed-game/signedGameRepo
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 
 export const createSignedGames = async (): Promise<void> => {
-  const gamesAsyncResult = await findGames();
-  const games = unsafelyUnwrapResult(gamesAsyncResult);
-  const allUsersAsyncResult = await findUsers();
-  const allUsers = unsafelyUnwrapResult(allUsersAsyncResult);
+  const gamesResult = await findGames();
+  const games = unsafelyUnwrapResult(gamesResult);
+  const allUsersResult = await findUsers();
+  const allUsers = unsafelyUnwrapResult(allUsersResult);
 
   const users = allUsers.filter(
     (user) => user.username !== "admin" && user.username !== "helper"
@@ -95,11 +95,11 @@ const getRandomSignup = (games: readonly Game[]): SelectedGame[] => {
 const signup = async (games: readonly Game[], user: User): Promise<User> => {
   const signedGames = getRandomSignup(games);
 
-  const userAsyncResult = await saveSignedGames({
+  const userResult = await saveSignedGames({
     username: user.username,
     signedGames,
   });
-  return unsafelyUnwrapResult(userAsyncResult);
+  return unsafelyUnwrapResult(userResult);
 };
 
 const signupMultiple = async (

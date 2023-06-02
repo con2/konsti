@@ -5,18 +5,18 @@ import { logger } from "server/utils/logger";
 import { AssignmentError } from "shared/typings/api/errors";
 import { User } from "shared/typings/models/user";
 import {
-  AsyncResult,
+  Result,
   isErrorResult,
   isSuccessResult,
   makeErrorResult,
   makeSuccessResult,
   unwrapResult,
-} from "shared/utils/asyncResult";
+} from "shared/utils/result";
 
 export const getGroups = (
   playerGroups: readonly User[][],
   startingTime: string
-): AsyncResult<Group[], AssignmentError> => {
+): Result<Group[], AssignmentError> => {
   const results = playerGroups.map((playerGroup) => {
     const firstMember = _.first(playerGroup);
     if (!firstMember) {

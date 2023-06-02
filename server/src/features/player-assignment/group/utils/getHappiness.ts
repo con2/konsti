@@ -5,13 +5,13 @@ import { getGroups } from "server/features/player-assignment/utils/getGroups";
 import { AssignmentResult } from "shared/typings/models/result";
 import { User } from "shared/typings/models/user";
 import {
-  AsyncResult,
+  Result,
   isErrorResult,
   isSuccessResult,
   makeErrorResult,
   makeSuccessResult,
   unwrapResult,
-} from "shared/utils/asyncResult";
+} from "shared/utils/result";
 import { AssignmentError } from "shared/typings/api/errors";
 
 export const getHappiness = (
@@ -19,7 +19,7 @@ export const getHappiness = (
   playerGroups: readonly User[][],
   allPlayers: readonly User[],
   startingTime: string
-): AsyncResult<void, AssignmentError> => {
+): Result<void, AssignmentError> => {
   const padgAssignment = results.map((result) => {
     const foundPlayer = allPlayers.find(
       (player) => player.username === result.username
@@ -53,11 +53,11 @@ export const getHappiness = (
     return [];
   });
 
-  const groupsAsyncResult = getGroups(playerGroups, startingTime);
-  if (isErrorResult(groupsAsyncResult)) {
-    return groupsAsyncResult;
+  const groupsResult = getGroups(playerGroups, startingTime);
+  if (isErrorResult(groupsResult)) {
+    return groupsResult;
   }
-  const groups = unwrapResult(groupsAsyncResult);
+  const groups = unwrapResult(groupsResult);
   const happiness = calculateHappiness(_.uniqBy(successResults, "id"), groups);
   logger.debug(`Group assignment completed with happiness ${happiness}%`);
 

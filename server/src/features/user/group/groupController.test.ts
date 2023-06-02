@@ -114,8 +114,8 @@ describe(`POST ${ApiEndpoint.GROUP}`, () => {
   });
 
   test("should create group", async () => {
-    const userAsyncResult = await saveUser(mockUser);
-    const user = unsafelyUnwrapResult(userAsyncResult);
+    const userResult = await saveUser(mockUser);
+    const user = unsafelyUnwrapResult(userResult);
     expect(user.groupCode).toEqual("0");
 
     const groupRequest: PostCreateGroupRequest = {
@@ -131,8 +131,8 @@ describe(`POST ${ApiEndpoint.GROUP}`, () => {
       );
 
     expect(response.status).toEqual(200);
-    const updatedUserAsyncResult = await findUser(mockUser.username);
-    const updatedUser = unsafelyUnwrapResult(updatedUserAsyncResult);
+    const updatedUserResult = await findUser(mockUser.username);
+    const updatedUser = unsafelyUnwrapResult(updatedUserResult);
     expect(updatedUser?.groupCode).toEqual(user.serial);
   });
 });
@@ -157,11 +157,11 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
     await saveGames([testGame, testGame2]);
     await saveUser({ ...mockUser, groupCode: mockUser.serial });
     await saveUser(mockUser2);
-    const userWithSignupsAsyncResult = await saveSignedGames({
+    const userWithSignupsResult = await saveSignedGames({
       signedGames: mockSignedGames,
       username: mockUser2.username,
     });
-    const userWithSignups = unsafelyUnwrapResult(userWithSignupsAsyncResult);
+    const userWithSignups = unsafelyUnwrapResult(userWithSignupsResult);
     expect(userWithSignups.signedGames.length).toEqual(2);
 
     const groupRequest: PostJoinGroupRequest = {
@@ -178,8 +178,8 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
       );
 
     expect(response.status).toEqual(200);
-    const updatedUserAsyncResult = await findUser(mockUser2.username);
-    const updatedUser = unsafelyUnwrapResult(updatedUserAsyncResult);
+    const updatedUserResult = await findUser(mockUser2.username);
+    const updatedUser = unsafelyUnwrapResult(updatedUserResult);
     expect(updatedUser?.groupCode).toEqual(mockUser.serial);
     expect(updatedUser?.signedGames.length).toEqual(0);
   });
@@ -234,8 +234,8 @@ describe(`POST ${ApiEndpoint.LEAVE_GROUP}`, () => {
       );
 
     expect(response.status).toEqual(200);
-    const updatedUserAsyncResult = await findUser(mockUser2.username);
-    const updatedUser = unsafelyUnwrapResult(updatedUserAsyncResult);
+    const updatedUserResult = await findUser(mockUser2.username);
+    const updatedUser = unsafelyUnwrapResult(updatedUserResult);
     expect(updatedUser?.groupCode).toEqual("0");
   });
 });
@@ -273,11 +273,11 @@ describe(`POST ${ApiEndpoint.CLOSE_GROUP}`, () => {
       );
 
     expect(response.status).toEqual(200);
-    const updatedUserAsyncResult = await findUser(mockUser2.username);
-    const updatedUser = unsafelyUnwrapResult(updatedUserAsyncResult);
+    const updatedUserResult = await findUser(mockUser2.username);
+    const updatedUser = unsafelyUnwrapResult(updatedUserResult);
     expect(updatedUser?.groupCode).toEqual("0");
-    const updatedUserAsyncResult2 = await findUser(mockUser2.username);
-    const updatedUser2 = unsafelyUnwrapResult(updatedUserAsyncResult2);
+    const updatedUserResult2 = await findUser(mockUser2.username);
+    const updatedUser2 = unsafelyUnwrapResult(updatedUserResult2);
     expect(updatedUser2?.groupCode).toEqual("0");
   });
 });

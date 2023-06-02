@@ -33,8 +33,8 @@ afterEach(async () => {
 
 test("should remove overlapping signups from user", async () => {
   await saveGames([testGame, testGame2]);
-  const insertedGamesAsyncResult = await findGames();
-  const insertedGames = unsafelyUnwrapResult(insertedGamesAsyncResult);
+  const insertedGamesResult = await findGames();
+  const insertedGames = unsafelyUnwrapResult(insertedGamesResult);
   expect(insertedGames.length).toEqual(2);
 
   await saveUser(mockUser);
@@ -42,13 +42,13 @@ test("should remove overlapping signups from user", async () => {
     username: mockUser.username,
     signedGames: mockSignedGames,
   });
-  const insertedUserAsyncResult = await findUser(mockUser.username);
-  const insertedUser = unsafelyUnwrapResult(insertedUserAsyncResult);
+  const insertedUserResult = await findUser(mockUser.username);
+  const insertedUser = unsafelyUnwrapResult(insertedUserResult);
   expect(insertedUser?.signedGames.length).toEqual(2);
 
   await removeOverlapSignups(mockResults);
 
-  const updatedUserAsyncResult = await findUser(mockUser.username);
-  const updatedUser = unsafelyUnwrapResult(updatedUserAsyncResult);
+  const updatedUserResult = await findUser(mockUser.username);
+  const updatedUser = unsafelyUnwrapResult(updatedUserResult);
   expect(updatedUser?.signedGames.length).toEqual(1);
 });

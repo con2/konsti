@@ -14,12 +14,12 @@ import {
   tournamentProgramTypes,
 } from "shared/typings/models/kompassiGame";
 import {
-  AsyncResult,
+  Result,
   isErrorResult,
   makeErrorResult,
   makeSuccessResult,
   unwrapResult,
-} from "shared/utils/asyncResult";
+} from "shared/utils/result";
 import { KompassiError } from "shared/typings/api/errors";
 
 type EventProgramItem = KompassiGame;
@@ -29,15 +29,15 @@ export const TOURNAMENT_EVENT_TYPE = "tmnt";
 const { useLocalProgramFile, localKompassiFile } = config;
 
 export const getGamesFromKompassi = async (): Promise<
-  AsyncResult<readonly KompassiGame[], KompassiError>
+  Result<readonly KompassiGame[], KompassiError>
 > => {
-  const eventProgramItemsAsyncResult =
+  const eventProgramItemsResult =
     await testHelperWrapper.getEventProgramItems();
-  if (isErrorResult(eventProgramItemsAsyncResult)) {
-    return eventProgramItemsAsyncResult;
+  if (isErrorResult(eventProgramItemsResult)) {
+    return eventProgramItemsResult;
   }
 
-  const eventProgramItems = unwrapResult(eventProgramItemsAsyncResult);
+  const eventProgramItems = unwrapResult(eventProgramItemsResult);
 
   if (!Array.isArray(eventProgramItems)) {
     logger.error("Invalid response format, should be array");
@@ -59,7 +59,7 @@ export const getGamesFromKompassi = async (): Promise<
 };
 
 const getEventProgramItems = async (): Promise<
-  AsyncResult<EventProgramItem[], KompassiError>
+  Result<EventProgramItem[], KompassiError>
 > => {
   return useLocalProgramFile
     ? getProgramFromLocalFile()
@@ -72,7 +72,7 @@ export const testHelperWrapper = {
   getEventProgramItems,
 };
 
-const getProgramFromLocalFile = (): AsyncResult<
+const getProgramFromLocalFile = (): Result<
   EventProgramItem[],
   KompassiError
 > => {
@@ -90,7 +90,7 @@ const getProgramFromLocalFile = (): AsyncResult<
 };
 
 const getProgramFromServer = async (): Promise<
-  AsyncResult<EventProgramItem[], KompassiError>
+  Result<EventProgramItem[], KompassiError>
 > => {
   logger.info("GET event program from remote server");
 

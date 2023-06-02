@@ -14,14 +14,14 @@ import { getDirectSignupStartTime } from "shared/utils/getDirectSignupStartTime"
 import { logger } from "server/utils/logger";
 import { delSignup, saveSignup } from "server/features/signup/signupRepository";
 import { findUser } from "server/features/user/userRepository";
-import { isErrorResult, unwrapResult } from "shared/utils/asyncResult";
+import { isErrorResult, unwrapResult } from "shared/utils/result";
 
 export const storeSignup = async (
   signupRequest: PostEnteredGameRequest
 ): Promise<PostEnteredGameResponse | PostEnteredGameError> => {
   const { startTime, enteredGameId, username } = signupRequest;
-  const timeNowAsyncResult = await getTime();
-  if (isErrorResult(timeNowAsyncResult)) {
+  const timeNowResult = await getTime();
+  if (isErrorResult(timeNowResult)) {
     return {
       message: `Unable to get current time`,
       status: "error",
@@ -29,10 +29,10 @@ export const storeSignup = async (
     };
   }
 
-  const timeNow = unwrapResult(timeNowAsyncResult);
+  const timeNow = unwrapResult(timeNowResult);
 
-  const gameAsyncResult = await findGameById(enteredGameId);
-  if (isErrorResult(gameAsyncResult)) {
+  const gameResult = await findGameById(enteredGameId);
+  if (isErrorResult(gameResult)) {
     return {
       message: `Signed game not found`,
       status: "error",
@@ -40,7 +40,7 @@ export const storeSignup = async (
     };
   }
 
-  const game = unwrapResult(gameAsyncResult);
+  const game = unwrapResult(gameResult);
   if (!game) {
     return {
       message: `Signed game not found`,
@@ -75,8 +75,8 @@ export const storeSignup = async (
     };
   }
 
-  const userAsyncResult = await findUser(username);
-  if (isErrorResult(userAsyncResult)) {
+  const userResult = await findUser(username);
+  if (isErrorResult(userResult)) {
     return {
       message: `Error finding user`,
       status: "error",
@@ -84,7 +84,7 @@ export const storeSignup = async (
     };
   }
 
-  const user = unwrapResult(userAsyncResult);
+  const user = unwrapResult(userResult);
 
   if (!user) {
     return {
@@ -94,8 +94,8 @@ export const storeSignup = async (
     };
   }
 
-  const signupAsyncResult = await saveSignup(signupRequest);
-  if (isErrorResult(signupAsyncResult)) {
+  const signupResult = await saveSignup(signupRequest);
+  if (isErrorResult(signupResult)) {
     return {
       message: `Store signup failure`,
       status: "error",
@@ -103,7 +103,7 @@ export const storeSignup = async (
     };
   }
 
-  const signup = unwrapResult(signupAsyncResult);
+  const signup = unwrapResult(signupResult);
 
   const newSignup = signup.userSignups.find(
     (userSignup) => userSignup.username === username
@@ -134,8 +134,8 @@ export const removeSignup = async (
 ): Promise<DeleteEnteredGameResponse | DeleteEnteredGameError> => {
   const { startTime } = signupRequest;
 
-  const timeNowAsyncResult = await getTime();
-  if (isErrorResult(timeNowAsyncResult)) {
+  const timeNowResult = await getTime();
+  if (isErrorResult(timeNowResult)) {
     return {
       message: `Unable to get current time`,
       status: "error",
@@ -143,7 +143,7 @@ export const removeSignup = async (
     };
   }
 
-  const timeNow = unwrapResult(timeNowAsyncResult);
+  const timeNow = unwrapResult(timeNowResult);
 
   const validSignupTime = isValidSignupTime({
     startTime: dayjs(startTime),
@@ -158,8 +158,8 @@ export const removeSignup = async (
     };
   }
 
-  const signupAsyncResult = await delSignup(signupRequest);
-  if (isErrorResult(signupAsyncResult)) {
+  const signupResult = await delSignup(signupRequest);
+  if (isErrorResult(signupResult)) {
     return {
       message: "Delete signup failure",
       status: "error",
@@ -167,7 +167,7 @@ export const removeSignup = async (
     };
   }
 
-  const signup = unwrapResult(signupAsyncResult);
+  const signup = unwrapResult(signupResult);
 
   if (signup) {
     return {

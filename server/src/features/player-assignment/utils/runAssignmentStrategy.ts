@@ -10,11 +10,11 @@ import { AssignmentStrategy } from "shared/config/sharedConfig.types";
 import { Signup } from "server/features/signup/signup.typings";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 import {
-  AsyncResult,
+  Result,
   isErrorResult,
   makeSuccessResult,
   unwrapResult,
-} from "shared/utils/asyncResult";
+} from "shared/utils/result";
 import { AssignmentError } from "shared/typings/api/errors";
 
 export const runAssignmentStrategy = (
@@ -23,7 +23,7 @@ export const runAssignmentStrategy = (
   startingTime: string,
   assignmentStrategy: AssignmentStrategy,
   signups: readonly Signup[]
-): AsyncResult<PlayerAssignmentResult, AssignmentError> => {
+): Result<PlayerAssignmentResult, AssignmentError> => {
   logger.info(
     `Received data for ${players.length} players and ${games.length} games`
   );
@@ -35,81 +35,73 @@ export const runAssignmentStrategy = (
   logger.info(`Assign strategy: ${assignmentStrategy}`);
 
   if (assignmentStrategy === AssignmentStrategy.MUNKRES) {
-    const munkresResultAsyncResult = munkresAssignPlayers(
+    const munkresResultResult = munkresAssignPlayers(
       players,
       games,
       startingTime
     );
-    if (isErrorResult(munkresResultAsyncResult)) {
-      return munkresResultAsyncResult;
+    if (isErrorResult(munkresResultResult)) {
+      return munkresResultResult;
     }
-    const munkresResult = unwrapResult(munkresResultAsyncResult);
+    const munkresResult = unwrapResult(munkresResultResult);
     return makeSuccessResult(munkresResult);
   }
 
   if (assignmentStrategy === AssignmentStrategy.GROUP) {
-    const groupResultAsyncResult = groupAssignPlayers(
-      players,
-      games,
-      startingTime
-    );
-    if (isErrorResult(groupResultAsyncResult)) {
-      return groupResultAsyncResult;
+    const groupResultResult = groupAssignPlayers(players, games, startingTime);
+    if (isErrorResult(groupResultResult)) {
+      return groupResultResult;
     }
-    const groupResult = unwrapResult(groupResultAsyncResult);
+    const groupResult = unwrapResult(groupResultResult);
     return makeSuccessResult(groupResult);
   }
 
   if (assignmentStrategy === AssignmentStrategy.PADG) {
-    const padgResultAsyncResult = padgAssignPlayers(
+    const padgResultResult = padgAssignPlayers(
       players,
       games,
       startingTime,
       signups
     );
-    if (isErrorResult(padgResultAsyncResult)) {
-      return padgResultAsyncResult;
+    if (isErrorResult(padgResultResult)) {
+      return padgResultResult;
     }
-    const padgResult = unwrapResult(padgResultAsyncResult);
+    const padgResult = unwrapResult(padgResultResult);
     return makeSuccessResult(padgResult);
   }
 
   if (assignmentStrategy === AssignmentStrategy.RANDOM) {
-    const randomResultAsyncResult = randomAssignPlayers(
+    const randomResultResult = randomAssignPlayers(
       players,
       games,
       startingTime,
       signups
     );
-    if (isErrorResult(randomResultAsyncResult)) {
-      return randomResultAsyncResult;
+    if (isErrorResult(randomResultResult)) {
+      return randomResultResult;
     }
-    const randomResult = unwrapResult(randomResultAsyncResult);
+    const randomResult = unwrapResult(randomResultResult);
     return makeSuccessResult(randomResult);
   }
 
   if (assignmentStrategy === AssignmentStrategy.GROUP_PADG) {
-    const groupResultAsyncResult = groupAssignPlayers(
-      players,
-      games,
-      startingTime
-    );
-    if (isErrorResult(groupResultAsyncResult)) {
-      return groupResultAsyncResult;
+    const groupResultResult = groupAssignPlayers(players, games, startingTime);
+    if (isErrorResult(groupResultResult)) {
+      return groupResultResult;
     }
-    const groupResult = unwrapResult(groupResultAsyncResult);
+    const groupResult = unwrapResult(groupResultResult);
 
-    const padgResultAsyncResult = padgAssignPlayers(
+    const padgResultResult = padgAssignPlayers(
       players,
       games,
       startingTime,
       signups
     );
-    if (isErrorResult(padgResultAsyncResult)) {
-      return padgResultAsyncResult;
+    if (isErrorResult(padgResultResult)) {
+      return padgResultResult;
     }
 
-    const padgResult = unwrapResult(padgResultAsyncResult);
+    const padgResult = unwrapResult(padgResultResult);
 
     logger.info(
       `Group result: ${groupResult.results.length} players, Padg result: ${padgResult.results.length} players`
@@ -125,26 +117,26 @@ export const runAssignmentStrategy = (
   }
 
   if (assignmentStrategy === AssignmentStrategy.RANDOM_PADG) {
-    const randomResultAsyncResult = randomAssignPlayers(
+    const randomResultResult = randomAssignPlayers(
       players,
       games,
       startingTime,
       signups
     );
-    if (isErrorResult(randomResultAsyncResult)) {
-      return randomResultAsyncResult;
+    if (isErrorResult(randomResultResult)) {
+      return randomResultResult;
     }
-    const randomResult = unwrapResult(randomResultAsyncResult);
-    const padgResultAsyncResult = padgAssignPlayers(
+    const randomResult = unwrapResult(randomResultResult);
+    const padgResultResult = padgAssignPlayers(
       players,
       games,
       startingTime,
       signups
     );
-    if (isErrorResult(padgResultAsyncResult)) {
-      return padgResultAsyncResult;
+    if (isErrorResult(padgResultResult)) {
+      return padgResultResult;
     }
-    const padgResult = unwrapResult(padgResultAsyncResult);
+    const padgResult = unwrapResult(padgResultResult);
     logger.info(
       `Random result: ${randomResult.results.length} players, Padg result: ${padgResult.results.length} players`
     );

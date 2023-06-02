@@ -155,16 +155,16 @@ describe(`POST ${ApiEndpoint.HIDDEN}`, () => {
 
     expect(response.status).toEqual(200);
 
-    const updatedUserAsyncResult = await findUser(mockUser.username);
-    const updatedUser = unsafelyUnwrapResult(updatedUserAsyncResult);
+    const updatedUserResult = await findUser(mockUser.username);
+    const updatedUser = unsafelyUnwrapResult(updatedUserResult);
     expect(updatedUser?.signedGames.length).toEqual(1);
     expect(updatedUser?.signedGames[0].gameDetails.title).toEqual(
       testGame2.title
     );
     expect(updatedUser?.favoritedGames.length).toEqual(1);
 
-    const signupsAsyncResult = await findUserSignups(mockUser.username);
-    const signups = unsafelyUnwrapResult(signupsAsyncResult);
+    const signupsResult = await findUserSignups(mockUser.username);
+    const signups = unsafelyUnwrapResult(signupsResult);
     expect(signups.length).toEqual(1);
     expect(signups[0].userSignups[0].username).toEqual(mockUser.username);
   });

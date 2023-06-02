@@ -2,11 +2,7 @@ import { logger } from "server/utils/logger";
 import { saveUserSignupResults } from "server/features/player-assignment/utils/saveUserSignupResults";
 import { AssignmentResult } from "shared/typings/models/result";
 import { saveResult } from "server/features/results/resultsRepository";
-import {
-  AsyncResult,
-  isErrorResult,
-  makeSuccessResult,
-} from "shared/utils/asyncResult";
+import { Result, isErrorResult, makeSuccessResult } from "shared/utils/result";
 import { MongoDbError } from "shared/typings/api/errors";
 
 interface SaveResultsParams {
@@ -21,27 +17,27 @@ export const saveResults = async ({
   startingTime,
   algorithm,
   message,
-}: SaveResultsParams): Promise<AsyncResult<void, MongoDbError>> => {
+}: SaveResultsParams): Promise<Result<void, MongoDbError>> => {
   logger.info(
     `Save all signup results to separate collection for starting time ${startingTime}`
   );
-  const saveResultAsyncResult = await saveResult(
+  const saveResultResult = await saveResult(
     results,
     startingTime,
     algorithm,
     message
   );
-  if (isErrorResult(saveResultAsyncResult)) {
-    return saveResultAsyncResult;
+  if (isErrorResult(saveResultResult)) {
+    return saveResultResult;
   }
 
   logger.info(`Save user signup results for starting time ${startingTime}`);
-  const saveUserSignupResultsAsyncResult = await saveUserSignupResults(
+  const saveUserSignupResultsResult = await saveUserSignupResults(
     startingTime,
     results
   );
-  if (isErrorResult(saveUserSignupResultsAsyncResult)) {
-    return saveUserSignupResultsAsyncResult;
+  if (isErrorResult(saveUserSignupResultsResult)) {
+    return saveUserSignupResultsResult;
   }
 
   return makeSuccessResult(undefined);

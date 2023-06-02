@@ -3,17 +3,17 @@ import { User } from "shared/typings/models/user";
 import { Game } from "shared/typings/models/game";
 import { saveGamePopularity } from "server/features/game/gameRepository";
 import {
-  AsyncResult,
+  Result,
   isErrorResult,
   makeErrorResult,
   makeSuccessResult,
-} from "shared/utils/asyncResult";
+} from "shared/utils/result";
 import { MongoDbError } from "shared/typings/api/errors";
 
 export const updateWithSignups = async (
   users: User[],
   games: Game[]
-): Promise<AsyncResult<void, MongoDbError>> => {
+): Promise<Result<void, MongoDbError>> => {
   const groupCreators = users.filter(
     (user) => user.groupCode !== "0" && user.groupCode === user.serial
   );
@@ -38,12 +38,12 @@ export const updateWithSignups = async (
 
   const promises = games.map(async (game) => {
     if (groupedSignups[game.gameId]) {
-      const saveGamePopularityAsyncResult = await saveGamePopularity(
+      const saveGamePopularityResult = await saveGamePopularity(
         game.gameId,
         groupedSignups[game.gameId]
       );
-      if (isErrorResult(saveGamePopularityAsyncResult)) {
-        return saveGamePopularityAsyncResult;
+      if (isErrorResult(saveGamePopularityResult)) {
+        return saveGamePopularityResult;
       }
     }
     return makeSuccessResult(undefined);

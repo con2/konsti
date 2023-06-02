@@ -19,24 +19,24 @@ import {
 } from "server/features/signup/signupRepository";
 import { Signup } from "server/features/signup/signup.typings";
 import {
-  AsyncResult,
+  Result,
   isErrorResult,
   makeSuccessResult,
   unwrapResult,
-} from "shared/utils/asyncResult";
+} from "shared/utils/result";
 import { MongoDbError } from "shared/typings/api/errors";
 
 export const removeDeletedGames = async (
   updatedGames: readonly Game[]
-): Promise<AsyncResult<number, MongoDbError>> => {
+): Promise<Result<number, MongoDbError>> => {
   logger.info("Remove deleted games");
 
-  const currentGamesAsyncResult = await findGames();
-  if (isErrorResult(currentGamesAsyncResult)) {
-    return currentGamesAsyncResult;
+  const currentGamesResult = await findGames();
+  if (isErrorResult(currentGamesResult)) {
+    return currentGamesResult;
   }
 
-  const currentGames = unwrapResult(currentGamesAsyncResult);
+  const currentGames = unwrapResult(currentGamesResult);
   const deletedGames = _.differenceBy(currentGames, updatedGames, "gameId");
 
   if (deletedGames.length > 0) {
@@ -50,16 +50,14 @@ export const removeDeletedGames = async (
       } deleted games to be removed: ${deletedGameIds.join(", ")}`
     );
 
-    const delSignupsByGameIdsAsyncResult = await delSignupsByGameIds(
-      deletedGameIds
-    );
-    if (isErrorResult(delSignupsByGameIdsAsyncResult)) {
-      return delSignupsByGameIdsAsyncResult;
+    const delSignupsByGameIdsResult = await delSignupsByGameIds(deletedGameIds);
+    if (isErrorResult(delSignupsByGameIdsResult)) {
+      return delSignupsByGameIdsResult;
     }
 
-    const removeGamesAsyncResult = await removeGames(deletedGameIds);
-    if (isErrorResult(removeGamesAsyncResult)) {
-      return removeGamesAsyncResult;
+    const removeGamesResult = await removeGames(deletedGameIds);
+    if (isErrorResult(removeGamesResult)) {
+      return removeGamesResult;
     }
   }
 
@@ -68,27 +66,27 @@ export const removeDeletedGames = async (
 
 export const enrichGames = async (
   games: readonly GameDoc[]
-): Promise<AsyncResult<GameWithUsernames[], MongoDbError>> => {
-  const settingsAsyncResult = await findSettings();
-  if (isErrorResult(settingsAsyncResult)) {
-    return settingsAsyncResult;
+): Promise<Result<GameWithUsernames[], MongoDbError>> => {
+  const settingsResult = await findSettings();
+  if (isErrorResult(settingsResult)) {
+    return settingsResult;
   }
 
-  const settings = unwrapResult(settingsAsyncResult);
+  const settings = unwrapResult(settingsResult);
 
-  const signupsAsyncResult = await findSignups();
-  if (isErrorResult(signupsAsyncResult)) {
-    return signupsAsyncResult;
+  const signupsResult = await findSignups();
+  if (isErrorResult(signupsResult)) {
+    return signupsResult;
   }
 
-  const signups = unwrapResult(signupsAsyncResult);
+  const signups = unwrapResult(signupsResult);
 
-  const currentTimeAsyncResult = await getTime();
-  if (isErrorResult(currentTimeAsyncResult)) {
-    return currentTimeAsyncResult;
+  const currentTimeResult = await getTime();
+  if (isErrorResult(currentTimeResult)) {
+    return currentTimeResult;
   }
 
-  const currentTime = unwrapResult(currentTimeAsyncResult);
+  const currentTime = unwrapResult(currentTimeResult);
   const enrichedGames = games.map((game) => {
     const signupQuestion = settings.signupQuestions.find(
       (message) => message.gameId === game.gameId

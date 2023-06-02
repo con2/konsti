@@ -6,32 +6,32 @@ import { findSignups } from "server/features/signup/signupRepository";
 import { ProgramType } from "shared/typings/models/game";
 import { sharedConfig } from "shared/config/sharedConfig";
 import {
-  AsyncResult,
+  Result,
   isErrorResult,
   makeErrorResult,
   makeSuccessResult,
   unwrapResult,
-} from "shared/utils/asyncResult";
+} from "shared/utils/result";
 import { MongoDbError } from "shared/typings/api/errors";
 
 export const verifyUserSignups = async (): Promise<
-  AsyncResult<void, MongoDbError>
+  Result<void, MongoDbError>
 > => {
   logger.info("Verify signed games and signups match for users");
 
-  const usersAsyncResult = await findUsers();
-  if (isErrorResult(usersAsyncResult)) {
-    return usersAsyncResult;
+  const usersResult = await findUsers();
+  if (isErrorResult(usersResult)) {
+    return usersResult;
   }
 
-  const users = unwrapResult(usersAsyncResult);
+  const users = unwrapResult(usersResult);
 
-  const signupsAsyncResult = await findSignups();
-  if (isErrorResult(signupsAsyncResult)) {
-    return signupsAsyncResult;
+  const signupsResult = await findSignups();
+  if (isErrorResult(signupsResult)) {
+    return signupsResult;
   }
 
-  const signups = unwrapResult(signupsAsyncResult);
+  const signups = unwrapResult(signupsResult);
 
   signups.map(({ game, userSignups }) => {
     if (
@@ -54,12 +54,12 @@ export const verifyUserSignups = async (): Promise<
         return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
       }
 
-      const groupCreatorAsyncResult = getGroupCreator(users, matchingUser);
-      if (isErrorResult(groupCreatorAsyncResult)) {
-        return groupCreatorAsyncResult;
+      const groupCreatorResult = getGroupCreator(users, matchingUser);
+      if (isErrorResult(groupCreatorResult)) {
+        return groupCreatorResult;
       }
 
-      const groupCreator = unwrapResult(groupCreatorAsyncResult);
+      const groupCreator = unwrapResult(groupCreatorResult);
 
       const matchingCreatorSignedGame = groupCreator.signedGames.find(
         (creatorSignedGame) =>
@@ -82,7 +82,7 @@ export const verifyUserSignups = async (): Promise<
 const getGroupCreator = (
   users: User[],
   user: User
-): AsyncResult<User, MongoDbError> => {
+): Result<User, MongoDbError> => {
   // User is group member, not group creators -> find group creator
   if (user.groupCode !== "0" && user.groupCode !== user.serial) {
     const groupCreator = users.find(

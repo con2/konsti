@@ -10,13 +10,13 @@ import {
 } from "shared/typings/api/games";
 import { findGames, saveGames } from "server/features/game/gameRepository";
 import { enrichGames } from "./gameUtils";
-import { isErrorResult, unwrapResult } from "shared/utils/asyncResult";
+import { isErrorResult, unwrapResult } from "shared/utils/result";
 
 export const updateGames = async (): Promise<
   PostUpdateGamesResponse | PostUpdateGamesError
 > => {
-  const kompassiGamesAsyncResult = await getGamesFromKompassi();
-  if (isErrorResult(kompassiGamesAsyncResult)) {
+  const kompassiGamesResult = await getGamesFromKompassi();
+  if (isErrorResult(kompassiGamesResult)) {
     return {
       message: "Loading games from Kompassi failed",
       status: "error",
@@ -24,12 +24,10 @@ export const updateGames = async (): Promise<
     };
   }
 
-  const kompassiGames = unwrapResult(kompassiGamesAsyncResult);
+  const kompassiGames = unwrapResult(kompassiGamesResult);
 
-  const saveGamesAsyncResult = await saveGames(
-    kompassiGameMapper(kompassiGames)
-  );
-  if (isErrorResult(saveGamesAsyncResult)) {
+  const saveGamesResult = await saveGames(kompassiGameMapper(kompassiGames));
+  if (isErrorResult(saveGamesResult)) {
     return {
       message: "Games db update failed: Saving games failed",
       status: "error",
@@ -37,7 +35,7 @@ export const updateGames = async (): Promise<
     };
   }
 
-  const gameSaveResponse = unwrapResult(saveGamesAsyncResult);
+  const gameSaveResponse = unwrapResult(saveGamesResult);
   if (!gameSaveResponse) {
     return {
       message: "Games db update failed: No save response",
@@ -47,8 +45,8 @@ export const updateGames = async (): Promise<
   }
 
   if (config.updateGamePopularityEnabled) {
-    const updateGamePopularityAsyncResult = await updateGamePopularity();
-    if (isErrorResult(updateGamePopularityAsyncResult)) {
+    const updateGamePopularityResult = await updateGamePopularity();
+    if (isErrorResult(updateGamePopularityResult)) {
       return {
         message: "Game popularity update failed",
         status: "error",
@@ -67,9 +65,9 @@ export const updateGames = async (): Promise<
 export const fetchGames = async (): Promise<
   GetGamesResponse | GetGamesError
 > => {
-  const gamesAsyncResult = await findGames();
+  const gamesResult = await findGames();
 
-  if (isErrorResult(gamesAsyncResult)) {
+  if (isErrorResult(gamesResult)) {
     return {
       message: `Downloading games failed`,
       status: "error",
@@ -77,10 +75,10 @@ export const fetchGames = async (): Promise<
     };
   }
 
-  const games = unwrapResult(gamesAsyncResult);
+  const games = unwrapResult(gamesResult);
 
-  const gamesWithPlayersAsyncResult = await enrichGames(games);
-  if (isErrorResult(gamesWithPlayersAsyncResult)) {
+  const gamesWithPlayersResult = await enrichGames(games);
+  if (isErrorResult(gamesWithPlayersResult)) {
     return {
       message: `Downloading games failed`,
       status: "error",
@@ -88,7 +86,7 @@ export const fetchGames = async (): Promise<
     };
   }
 
-  const gamesWithPlayers = unwrapResult(gamesWithPlayersAsyncResult);
+  const gamesWithPlayers = unwrapResult(gamesWithPlayersResult);
 
   return {
     message: "Games downloaded",

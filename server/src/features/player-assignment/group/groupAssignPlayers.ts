@@ -14,18 +14,18 @@ import {
   PlayerAssignmentResult,
 } from "server/typings/result.typings";
 import {
-  AsyncResult,
+  Result,
   isErrorResult,
   makeSuccessResult,
   unwrapResult,
-} from "shared/utils/asyncResult";
+} from "shared/utils/result";
 import { AssignmentError } from "shared/typings/api/errors";
 
 export const groupAssignPlayers = (
   players: readonly User[],
   games: readonly Game[],
   startingTime: string
-): AsyncResult<PlayerAssignmentResult, AssignmentError> => {
+): Result<PlayerAssignmentResult, AssignmentError> => {
   logger.debug(`***** Run Group Assignment for ${startingTime}`);
   const startingGames = getStartingGames(games, startingTime);
 
@@ -75,21 +75,21 @@ export const groupAssignPlayers = (
     `Selected players: ${allPlayers.length} (${numberOfIndividuals} individual, ${numberOfGroups} groups)`
   );
 
-  const resultAsyncResult = assignGroups(allPlayers, signedGames, playerGroups);
-  if (isErrorResult(resultAsyncResult)) {
-    return resultAsyncResult;
+  const resultResult = assignGroups(allPlayers, signedGames, playerGroups);
+  if (isErrorResult(resultResult)) {
+    return resultResult;
   }
 
-  const result = unwrapResult(resultAsyncResult);
+  const result = unwrapResult(resultResult);
 
-  const getHappinessAsyncResult = getHappiness(
+  const getHappinessResult = getHappiness(
     result.results,
     playerGroups,
     allPlayers,
     startingTime
   );
-  if (isErrorResult(getHappinessAsyncResult)) {
-    return getHappinessAsyncResult;
+  if (isErrorResult(getHappinessResult)) {
+    return getHappinessResult;
   }
 
   logger.debug(`${result.message}`);

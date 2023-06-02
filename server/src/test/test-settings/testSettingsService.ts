@@ -8,13 +8,13 @@ import {
   PostTestSettingsRequest,
   PostTestSettingsResponse,
 } from "shared/test-typings/api/testSettings";
-import { isErrorResult, unwrapResult } from "shared/utils/asyncResult";
+import { isErrorResult, unwrapResult } from "shared/utils/result";
 
 export const fetchTestSettings = async (): Promise<
   GetTestSettingsResponse | ApiError
 > => {
-  const responseAsyncResult = await findTestSettings();
-  if (isErrorResult(responseAsyncResult)) {
+  const responseResult = await findTestSettings();
+  if (isErrorResult(responseResult)) {
     return {
       message: "Getting test settings failed",
       status: "error",
@@ -22,7 +22,7 @@ export const fetchTestSettings = async (): Promise<
     };
   }
 
-  const response = unwrapResult(responseAsyncResult);
+  const response = unwrapResult(responseResult);
 
   return {
     message: "Getting test settings success",
@@ -34,8 +34,8 @@ export const fetchTestSettings = async (): Promise<
 export const updateTestSettings = async (
   settings: PostTestSettingsRequest
 ): Promise<PostTestSettingsResponse | ApiError> => {
-  const responseAsyncResult = await saveTestSettings(settings);
-  if (isErrorResult(responseAsyncResult)) {
+  const responseResult = await saveTestSettings(settings);
+  if (isErrorResult(responseResult)) {
     return {
       message: "Update test settings failure",
       status: "error",
@@ -43,7 +43,7 @@ export const updateTestSettings = async (
     };
   }
 
-  const response = unwrapResult(responseAsyncResult);
+  const response = unwrapResult(responseResult);
 
   return {
     message: "Update test settings success",

@@ -11,11 +11,11 @@ import { runPadgAssignment } from "server/features/player-assignment/padg/utils/
 import { logger } from "server/utils/logger";
 import { Signup } from "server/features/signup/signup.typings";
 import {
-  AsyncResult,
+  Result,
   isErrorResult,
   makeSuccessResult,
   unwrapResult,
-} from "shared/utils/asyncResult";
+} from "shared/utils/result";
 import { AssignmentError } from "shared/typings/api/errors";
 
 export const padgAssignPlayers = (
@@ -23,7 +23,7 @@ export const padgAssignPlayers = (
   games: readonly Game[],
   startingTime: string,
   signups: readonly Signup[]
-): AsyncResult<PlayerAssignmentResult, AssignmentError> => {
+): Result<PlayerAssignmentResult, AssignmentError> => {
   logger.debug(`***** Run Padg Assignment for ${startingTime}`);
   const startingGames = getStartingGames(games, startingTime);
 
@@ -59,17 +59,17 @@ export const padgAssignPlayers = (
     `Selected players: ${allPlayers.length} (${numberOfIndividuals} individual, ${numberOfGroups} groups)`
   );
 
-  const assignmentResultAsyncResult = runPadgAssignment(
+  const assignmentResultResult = runPadgAssignment(
     signedGames,
     playerGroups,
     startingTime,
     signups
   );
-  if (isErrorResult(assignmentResultAsyncResult)) {
-    return assignmentResultAsyncResult;
+  if (isErrorResult(assignmentResultResult)) {
+    return assignmentResultResult;
   }
 
-  const assignmentResult = unwrapResult(assignmentResultAsyncResult);
+  const assignmentResult = unwrapResult(assignmentResultResult);
 
   const selectedUniqueGames = _.uniq(
     assignmentResult.results.map(

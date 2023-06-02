@@ -15,12 +15,12 @@ import {
 import { User } from "shared/typings/models/user";
 import { Signup } from "server/features/signup/signup.typings";
 import {
-  AsyncResult,
+  Result,
   isErrorResult,
   makeErrorResult,
   makeSuccessResult,
   unwrapResult,
-} from "shared/utils/asyncResult";
+} from "shared/utils/result";
 import { AssignmentError } from "shared/typings/api/errors";
 import { logger } from "server/utils/logger";
 
@@ -29,18 +29,18 @@ export const runRandomAssignment = (
   playerGroups: readonly User[][],
   startingTime: string,
   signups: readonly Signup[]
-): AsyncResult<AssignmentStrategyResult, AssignmentError> => {
-  const groupsAsyncResult = getGroups(playerGroups, startingTime);
-  if (isErrorResult(groupsAsyncResult)) {
-    return groupsAsyncResult;
+): Result<AssignmentStrategyResult, AssignmentError> => {
+  const groupsResult = getGroups(playerGroups, startingTime);
+  if (isErrorResult(groupsResult)) {
+    return groupsResult;
   }
-  const groups = unwrapResult(groupsAsyncResult);
+  const groups = unwrapResult(groupsResult);
   const events = getRandomAssignEvents(signedGames);
-  const listAsyncResult = getList(playerGroups, startingTime, signups);
-  if (isErrorResult(listAsyncResult)) {
-    return listAsyncResult;
+  const listResult = getList(playerGroups, startingTime, signups);
+  if (isErrorResult(listResult)) {
+    return listResult;
   }
-  const list = unwrapResult(listAsyncResult);
+  const list = unwrapResult(listResult);
   const updateL = (input: RandomAssignUpdateLInput): ListItem[] => input.L;
 
   const { RANDOM_ASSIGNMENT_ROUNDS } = config;
@@ -63,12 +63,12 @@ export const runRandomAssignment = (
     return makeErrorResult(AssignmentError.UNKNOWN_ERROR);
   }
 
-  const resultsAsyncResult = formatResults(assignResults, playerGroups);
-  if (isErrorResult(resultsAsyncResult)) {
-    return resultsAsyncResult;
+  const resultsResult = formatResults(assignResults, playerGroups);
+  if (isErrorResult(resultsResult)) {
+    return resultsResult;
   }
 
-  const results = unwrapResult(resultsAsyncResult);
+  const results = unwrapResult(resultsResult);
   const message = "Random assignment completed";
 
   return makeSuccessResult({ results, message });

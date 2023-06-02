@@ -4,21 +4,21 @@ import { SignupModel } from "server/features/signup/signupSchema";
 import { logger } from "server/utils/logger";
 import { MongoDbError } from "shared/typings/api/errors";
 import {
-  AsyncResult,
+  Result,
   isErrorResult,
   makeErrorResult,
   makeSuccessResult,
   unwrapResult,
-} from "shared/utils/asyncResult";
+} from "shared/utils/result";
 
-const createSignups = async (): Promise<AsyncResult<void, MongoDbError>> => {
-  const gamesAsyncResult = await findGames();
+const createSignups = async (): Promise<Result<void, MongoDbError>> => {
+  const gamesResult = await findGames();
 
-  if (isErrorResult(gamesAsyncResult)) {
-    return gamesAsyncResult;
+  if (isErrorResult(gamesResult)) {
+    return gamesResult;
   }
 
-  const games = unwrapResult(gamesAsyncResult);
+  const games = unwrapResult(gamesResult);
 
   const promises = games.map(async (game) => {
     try {

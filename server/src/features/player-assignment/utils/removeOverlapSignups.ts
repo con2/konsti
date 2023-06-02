@@ -6,28 +6,28 @@ import { findUsers } from "server/features/user/userRepository";
 import { AssignmentResult } from "shared/typings/models/result";
 import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
 import {
-  AsyncResult,
+  Result,
   isErrorResult,
   makeErrorResult,
   makeSuccessResult,
   unwrapResult,
-} from "shared/utils/asyncResult";
+} from "shared/utils/result";
 import { MongoDbError } from "shared/typings/api/errors";
 
 dayjs.extend(isBetween);
 
 export const removeOverlapSignups = async (
   results: readonly AssignmentResult[]
-): Promise<AsyncResult<void, MongoDbError>> => {
+): Promise<Result<void, MongoDbError>> => {
   logger.debug("Find overlapping signups");
   const signupData: UserSignedGames[] = [];
 
-  const usersAsyncResult = await findUsers();
-  if (isErrorResult(usersAsyncResult)) {
-    return usersAsyncResult;
+  const usersResult = await findUsers();
+  if (isErrorResult(usersResult)) {
+    return usersResult;
   }
 
-  const users = unwrapResult(usersAsyncResult);
+  const users = unwrapResult(usersResult);
 
   results.map((result) => {
     const enteredGame = result.enteredGame.gameDetails;
@@ -62,9 +62,9 @@ export const removeOverlapSignups = async (
   });
 
   const promises = signupData.map(async (signup) => {
-    const saveSignedGamesAsyncResult = await saveSignedGames(signup);
-    if (isErrorResult(saveSignedGamesAsyncResult)) {
-      return saveSignedGamesAsyncResult;
+    const saveSignedGamesResult = await saveSignedGames(signup);
+    if (isErrorResult(saveSignedGamesResult)) {
+      return saveSignedGamesResult;
     }
     return makeSuccessResult(undefined);
   });

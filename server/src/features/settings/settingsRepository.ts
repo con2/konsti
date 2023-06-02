@@ -6,17 +6,15 @@ import { findGames } from "server/features/game/gameRepository";
 import { PostSettingsRequest } from "shared/typings/api/settings";
 import { SettingsDoc } from "server/typings/settings.typings";
 import {
-  AsyncResult,
+  Result,
   isErrorResult,
   unwrapResult,
   makeSuccessResult,
   makeErrorResult,
-} from "shared/utils/asyncResult";
+} from "shared/utils/result";
 import { MongoDbError } from "shared/typings/api/errors";
 
-export const removeSettings = async (): Promise<
-  AsyncResult<void, MongoDbError>
-> => {
+export const removeSettings = async (): Promise<Result<void, MongoDbError>> => {
   logger.info("MongoDB: remove ALL settings from db");
   try {
     await SettingsModel.deleteMany({});
@@ -27,9 +25,7 @@ export const removeSettings = async (): Promise<
   }
 };
 
-const createSettings = async (): Promise<
-  AsyncResult<Settings, MongoDbError>
-> => {
+const createSettings = async (): Promise<Result<Settings, MongoDbError>> => {
   logger.info("MongoDB: Create default settings");
   const defaultSettings = new SettingsModel();
   try {
@@ -43,7 +39,7 @@ const createSettings = async (): Promise<
 };
 
 export const findSettings = async (): Promise<
-  AsyncResult<Settings, MongoDbError>
+  Result<Settings, MongoDbError>
 > => {
   try {
     const settings = await SettingsModel.findOne(
@@ -54,11 +50,11 @@ export const findSettings = async (): Promise<
       .populate("hiddenGames");
 
     if (!settings) {
-      const createSettingsAsyncResult = await createSettings();
-      if (isErrorResult(createSettingsAsyncResult)) {
-        return createSettingsAsyncResult;
+      const createSettingsResult = await createSettings();
+      if (isErrorResult(createSettingsResult)) {
+        return createSettingsResult;
       }
-      const defaultSettings = unwrapResult(createSettingsAsyncResult);
+      const defaultSettings = unwrapResult(createSettingsResult);
       return makeSuccessResult(defaultSettings);
     }
 
@@ -72,13 +68,13 @@ export const findSettings = async (): Promise<
 
 export const saveHidden = async (
   hiddenGames: readonly Game[]
-): Promise<AsyncResult<Settings, MongoDbError>> => {
-  const gamesAsyncResult = await findGames();
-  if (isErrorResult(gamesAsyncResult)) {
-    return gamesAsyncResult;
+): Promise<Result<Settings, MongoDbError>> => {
+  const gamesResult = await findGames();
+  if (isErrorResult(gamesResult)) {
+    return gamesResult;
   }
 
-  const games = unwrapResult(gamesAsyncResult);
+  const games = unwrapResult(gamesResult);
   const formattedData = hiddenGames.reduce<Game[]>((acc, hiddenGame) => {
     const gameDocInDb = games.find((game) => game.gameId === hiddenGame.gameId);
     if (gameDocInDb) {
@@ -109,7 +105,7 @@ export const saveHidden = async (
 
 export const saveSignupQuestion = async (
   signupQuestionData: SignupQuestion
-): Promise<AsyncResult<Settings, MongoDbError>> => {
+): Promise<Result<Settings, MongoDbError>> => {
   try {
     const settings = await SettingsModel.findOneAndUpdate(
       {},
@@ -132,7 +128,7 @@ export const saveSignupQuestion = async (
 
 export const delSignupQuestion = async (
   gameId: string
-): Promise<AsyncResult<Settings, MongoDbError>> => {
+): Promise<Result<Settings, MongoDbError>> => {
   try {
     const settings = await SettingsModel.findOneAndUpdate(
       {},
@@ -158,7 +154,7 @@ export const delSignupQuestion = async (
 
 export const saveSettings = async (
   settings: PostSettingsRequest
-): Promise<AsyncResult<Settings, MongoDbError>> => {
+): Promise<Result<Settings, MongoDbError>> => {
   try {
     const updatedSettings = await SettingsModel.findOneAndUpdate<SettingsDoc>(
       {},

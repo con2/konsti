@@ -6,59 +6,59 @@ import { findUsers } from "server/features/user/userRepository";
 import { findGames } from "server/features/game/gameRepository";
 import { findSignups } from "server/features/signup/signupRepository";
 import {
-  AsyncResult,
+  Result,
   isErrorResult,
   makeSuccessResult,
   unwrapResult,
-} from "shared/utils/asyncResult";
+} from "shared/utils/result";
 import { AssignmentError, MongoDbError } from "shared/typings/api/errors";
 
 const { gamePopularityUpdateMethod } = config;
 
 export const updateGamePopularity = async (): Promise<
-  AsyncResult<void, MongoDbError | AssignmentError>
+  Result<void, MongoDbError | AssignmentError>
 > => {
   logger.info(
     `Calculate game popularity using "${gamePopularityUpdateMethod}" method`
   );
 
-  const usersAsyncResult = await findUsers();
-  if (isErrorResult(usersAsyncResult)) {
-    return usersAsyncResult;
+  const usersResult = await findUsers();
+  if (isErrorResult(usersResult)) {
+    return usersResult;
   }
 
-  const users = unwrapResult(usersAsyncResult);
+  const users = unwrapResult(usersResult);
 
-  const gamesAsyncResult = await findGames();
+  const gamesResult = await findGames();
 
-  if (isErrorResult(gamesAsyncResult)) {
-    return gamesAsyncResult;
+  if (isErrorResult(gamesResult)) {
+    return gamesResult;
   }
 
-  const games = unwrapResult(gamesAsyncResult);
+  const games = unwrapResult(gamesResult);
 
-  const signupsAsyncResult = await findSignups();
-  if (isErrorResult(signupsAsyncResult)) {
-    return signupsAsyncResult;
+  const signupsResult = await findSignups();
+  if (isErrorResult(signupsResult)) {
+    return signupsResult;
   }
 
-  const signups = unwrapResult(signupsAsyncResult);
+  const signups = unwrapResult(signupsResult);
 
   if (gamePopularityUpdateMethod === "signups") {
-    const updateWithSignupsAsyncResult = await updateWithSignups(users, games);
-    if (isErrorResult(updateWithSignupsAsyncResult)) {
-      return updateWithSignupsAsyncResult;
+    const updateWithSignupsResult = await updateWithSignups(users, games);
+    if (isErrorResult(updateWithSignupsResult)) {
+      return updateWithSignupsResult;
     }
   }
 
   if (gamePopularityUpdateMethod === "assign") {
-    const updateWithAssignAsyncResult = await updateWithAssign(
+    const updateWithAssignResult = await updateWithAssign(
       users,
       games,
       signups
     );
-    if (isErrorResult(updateWithAssignAsyncResult)) {
-      return updateWithAssignAsyncResult;
+    if (isErrorResult(updateWithAssignResult)) {
+      return updateWithAssignResult;
     }
   }
 

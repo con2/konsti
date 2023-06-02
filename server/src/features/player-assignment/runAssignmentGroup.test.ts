@@ -63,11 +63,11 @@ test("Assignment with valid data should return success with group strategy", asy
 
   // FIRST RUN
 
-  const assignResultsAsyncResult = await runAssignment({
+  const assignResultsResult = await runAssignment({
     assignmentStrategy,
     startingTime,
   });
-  const assignResults = unsafelyUnwrapResult(assignResultsAsyncResult);
+  const assignResults = unsafelyUnwrapResult(assignResultsResult);
 
   expect(assignResults.status).toEqual("success");
   expect(assignResults.results.length).toBeGreaterThanOrEqual(
@@ -131,11 +131,11 @@ test("Assignment with no games should return error with group strategy", async (
   const assignmentStrategy = AssignmentStrategy.GROUP;
   const startingTime = dayjs(CONVENTION_START_TIME).add(2, "hours").format();
 
-  const assignResultsAsyncResult = await runAssignment({
+  const assignResultsResult = await runAssignment({
     assignmentStrategy,
     startingTime,
   });
-  const assignResults = unsafelyUnwrapResult(assignResultsAsyncResult);
+  const assignResults = unsafelyUnwrapResult(assignResultsResult);
 
   expect(assignResults.status).toEqual(
     AssignmentResultStatus.NO_STARTING_GAMES
@@ -161,11 +161,11 @@ test("Assignment with no players should return error with group strategy", async
   const assignmentStrategy = AssignmentStrategy.GROUP;
   const startingTime = dayjs(CONVENTION_START_TIME).add(2, "hours").format();
 
-  const assignResultsAsyncResult = await runAssignment({
+  const assignResultsResult = await runAssignment({
     assignmentStrategy,
     startingTime,
   });
-  const assignResults = unsafelyUnwrapResult(assignResultsAsyncResult);
+  const assignResults = unsafelyUnwrapResult(assignResultsResult);
 
   expect(assignResults.status).toEqual(AssignmentResultStatus.NO_SIGNUP_WISHES);
 });

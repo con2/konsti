@@ -4,16 +4,16 @@ import { TestSettingsModel } from "server/test/test-settings/testSettingsSchema"
 import { PostTestSettingsRequest } from "shared/test-typings/api/testSettings";
 import { TestSettingsDoc } from "server/typings/testSettings.typing";
 import {
-  AsyncResult,
+  Result,
   isErrorResult,
   makeErrorResult,
   makeSuccessResult,
   unwrapResult,
-} from "shared/utils/asyncResult";
+} from "shared/utils/result";
 import { MongoDbError } from "shared/typings/api/errors";
 
 export const removeTestSettings = async (): Promise<
-  AsyncResult<void, MongoDbError>
+  Result<void, MongoDbError>
 > => {
   logger.info("MongoDB: remove ALL test settings from db");
   try {
@@ -26,7 +26,7 @@ export const removeTestSettings = async (): Promise<
 };
 
 const createTestSettings = async (): Promise<
-  AsyncResult<TestSettings, MongoDbError>
+  Result<TestSettings, MongoDbError>
 > => {
   logger.info("MongoDB: Create default test settings");
   const defaultSettings = new TestSettingsModel();
@@ -42,7 +42,7 @@ const createTestSettings = async (): Promise<
 };
 
 export const findTestSettings = async (): Promise<
-  AsyncResult<TestSettings, MongoDbError>
+  Result<TestSettings, MongoDbError>
 > => {
   try {
     const testSettings = await TestSettingsModel.findOne(
@@ -50,11 +50,11 @@ export const findTestSettings = async (): Promise<
       "-_id -__v -createdAt -updatedAt"
     ).lean<TestSettings>();
     if (!testSettings) {
-      const createTestSettingsAsyncResult = await createTestSettings();
-      if (isErrorResult(createTestSettingsAsyncResult)) {
-        return createTestSettingsAsyncResult;
+      const createTestSettingsResult = await createTestSettings();
+      if (isErrorResult(createTestSettingsResult)) {
+        return createTestSettingsResult;
       }
-      const defaultTestSettings = unwrapResult(createTestSettingsAsyncResult);
+      const defaultTestSettings = unwrapResult(createTestSettingsResult);
       return makeSuccessResult(defaultTestSettings);
     }
     logger.debug(`MongoDB: Test settings data found`);
@@ -67,7 +67,7 @@ export const findTestSettings = async (): Promise<
 
 export const saveTestSettings = async (
   settings: PostTestSettingsRequest
-): Promise<AsyncResult<TestSettings, MongoDbError>> => {
+): Promise<Result<TestSettings, MongoDbError>> => {
   try {
     const updatedTestSettings =
       await TestSettingsModel.findOneAndUpdate<TestSettingsDoc>({}, settings, {

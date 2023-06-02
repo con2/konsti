@@ -17,13 +17,13 @@ import {
 import { Game } from "shared/typings/models/game";
 import { removeHiddenGamesFromUsers } from "server/features/settings/utils/removeHiddenGamesFromUsers";
 import { SignupQuestion } from "shared/typings/models/settings";
-import { isErrorResult, unwrapResult } from "shared/utils/asyncResult";
+import { isErrorResult, unwrapResult } from "shared/utils/result";
 
 export const fetchSettings = async (): Promise<
   GetSettingsResponse | ApiError
 > => {
-  const findSettingsAsyncResult = await findSettings();
-  if (isErrorResult(findSettingsAsyncResult)) {
+  const findSettingsResult = await findSettings();
+  if (isErrorResult(findSettingsResult)) {
     return {
       message: "Getting settings failed",
       status: "error",
@@ -31,7 +31,7 @@ export const fetchSettings = async (): Promise<
     };
   }
 
-  const settings = unwrapResult(findSettingsAsyncResult);
+  const settings = unwrapResult(findSettingsResult);
 
   return {
     message: "Getting settings success",
@@ -46,8 +46,8 @@ export const fetchSettings = async (): Promise<
 export const storeHidden = async (
   hiddenData: readonly Game[]
 ): Promise<PostHiddenResponse | ApiError> => {
-  const settingsAsyncResult = await saveHidden(hiddenData);
-  if (isErrorResult(settingsAsyncResult)) {
+  const settingsResult = await saveHidden(hiddenData);
+  if (isErrorResult(settingsResult)) {
     return {
       message: "Update hidden failure",
       status: "error",
@@ -55,7 +55,7 @@ export const storeHidden = async (
     };
   }
 
-  const settings = unwrapResult(settingsAsyncResult);
+  const settings = unwrapResult(settingsResult);
 
   try {
     await removeHiddenGamesFromUsers(settings.hiddenGames);
@@ -78,10 +78,8 @@ export const storeHidden = async (
 export const storeSignupQuestion = async (
   signupQuestionData: SignupQuestion
 ): Promise<PostSignupQuestionResponse | ApiError> => {
-  const saveSignupQuestionAsyncResult = await saveSignupQuestion(
-    signupQuestionData
-  );
-  if (isErrorResult(saveSignupQuestionAsyncResult)) {
+  const saveSignupQuestionResult = await saveSignupQuestion(signupQuestionData);
+  if (isErrorResult(saveSignupQuestionResult)) {
     return {
       message: "saveSignupQuestion failure",
       status: "error",
@@ -89,7 +87,7 @@ export const storeSignupQuestion = async (
     };
   }
 
-  const settings = unwrapResult(saveSignupQuestionAsyncResult);
+  const settings = unwrapResult(saveSignupQuestionResult);
 
   return {
     message: "saveSignupQuestion success",
@@ -101,8 +99,8 @@ export const storeSignupQuestion = async (
 export const removeSignupQuestion = async (
   gameId: string
 ): Promise<PostSignupQuestionResponse | ApiError> => {
-  const delSignupQuestionAsyncResult = await delSignupQuestion(gameId);
-  if (isErrorResult(delSignupQuestionAsyncResult)) {
+  const delSignupQuestionResult = await delSignupQuestion(gameId);
+  if (isErrorResult(delSignupQuestionResult)) {
     return {
       message: "delSignupQuestion failure",
       status: "error",
@@ -110,7 +108,7 @@ export const removeSignupQuestion = async (
     };
   }
 
-  const settings = unwrapResult(delSignupQuestionAsyncResult);
+  const settings = unwrapResult(delSignupQuestionResult);
 
   return {
     message: "delSignupQuestion success",
@@ -122,8 +120,8 @@ export const removeSignupQuestion = async (
 export const updateSettings = async (
   settings: PostSettingsRequest
 ): Promise<PostSettingsResponse | ApiError> => {
-  const saveSettingsAsyncResult = await saveSettings(settings);
-  if (isErrorResult(saveSettingsAsyncResult)) {
+  const saveSettingsResult = await saveSettings(settings);
+  if (isErrorResult(saveSettingsResult)) {
     return {
       message: "Update settings failure",
       status: "error",
@@ -131,7 +129,7 @@ export const updateSettings = async (
     };
   }
 
-  const response = unwrapResult(saveSettingsAsyncResult);
+  const response = unwrapResult(saveSettingsResult);
 
   return {
     message: "Update settings success",

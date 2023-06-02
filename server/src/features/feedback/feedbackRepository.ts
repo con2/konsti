@@ -2,15 +2,15 @@ import { logger } from "server/utils/logger";
 import { FeedbackModel } from "server/features/feedback/feedbackSchema";
 import { Feedback } from "shared/typings/models/feedback";
 import {
-  AsyncResult,
+  Result,
   makeErrorResult,
   makeSuccessResult,
-} from "shared/utils/asyncResult";
+} from "shared/utils/result";
 import { MongoDbError } from "shared/typings/api/errors";
 
 export const saveFeedback = async (
   feedbackData: Feedback
-): Promise<AsyncResult<void, MongoDbError>> => {
+): Promise<Result<void, MongoDbError>> => {
   const feedback = new FeedbackModel({
     gameId: feedbackData.gameId,
     feedback: feedbackData.feedback,

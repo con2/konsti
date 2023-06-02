@@ -11,11 +11,11 @@ import {
 import { getRunRandomAndPadgInput } from "server/features/player-assignment/utils/getRunRandomAndPadgInput";
 import { Signup } from "server/features/signup/signup.typings";
 import {
-  AsyncResult,
+  Result,
   isErrorResult,
   makeSuccessResult,
   unwrapResult,
-} from "shared/utils/asyncResult";
+} from "shared/utils/result";
 import { AssignmentError } from "shared/typings/api/errors";
 
 export const randomAssignPlayers = (
@@ -23,7 +23,7 @@ export const randomAssignPlayers = (
   games: readonly Game[],
   startingTime: string,
   signups: readonly Signup[]
-): AsyncResult<PlayerAssignmentResult, AssignmentError> => {
+): Result<PlayerAssignmentResult, AssignmentError> => {
   logger.debug(`***** Run Random Assignment for ${startingTime}`);
   const startingGames = getStartingGames(games, startingTime);
 
@@ -58,17 +58,17 @@ export const randomAssignPlayers = (
     `Selected players: ${allPlayers.length} (${numberOfIndividuals} individual, ${numberOfGroups} groups)`
   );
 
-  const assignmentResultAsyncResult = runRandomAssignment(
+  const assignmentResultResult = runRandomAssignment(
     signedGames,
     playerGroups,
     startingTime,
     signups
   );
-  if (isErrorResult(assignmentResultAsyncResult)) {
-    return assignmentResultAsyncResult;
+  if (isErrorResult(assignmentResultResult)) {
+    return assignmentResultResult;
   }
 
-  const assignmentResult = unwrapResult(assignmentResultAsyncResult);
+  const assignmentResult = unwrapResult(assignmentResultResult);
 
   const selectedUniqueGames = _.uniq(
     assignmentResult.results.map(

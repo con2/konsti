@@ -7,26 +7,26 @@ import {
   updateUserByUsername,
 } from "server/features/user/userRepository";
 import {
-  AsyncResult,
+  Result,
   isErrorResult,
   makeErrorResult,
   makeSuccessResult,
   unwrapResult,
-} from "shared/utils/asyncResult";
+} from "shared/utils/result";
 import { MongoDbError } from "shared/typings/api/errors";
 
 export const removeMovedGamesFromUsers = async (
   updatedGames: readonly Game[]
-): Promise<AsyncResult<void, MongoDbError>> => {
+): Promise<Result<void, MongoDbError>> => {
   logger.info("Remove moved signed games from users");
 
-  const currentGamesAsyncResult = await findGames();
+  const currentGamesResult = await findGames();
 
-  if (isErrorResult(currentGamesAsyncResult)) {
-    return currentGamesAsyncResult;
+  if (isErrorResult(currentGamesResult)) {
+    return currentGamesResult;
   }
 
-  const currentGames = unwrapResult(currentGamesAsyncResult);
+  const currentGames = unwrapResult(currentGamesResult);
   const movedGames = currentGames.filter((currentGame) => {
     return updatedGames.find((updatedGame) => {
       return (
@@ -43,12 +43,12 @@ export const removeMovedGamesFromUsers = async (
 
   logger.info(`Found ${movedGames.length} moved games`);
 
-  const usersAsyncResult = await findUsers();
-  if (isErrorResult(usersAsyncResult)) {
-    return usersAsyncResult;
+  const usersResult = await findUsers();
+  if (isErrorResult(usersResult)) {
+    return usersResult;
   }
 
-  const users = unwrapResult(usersAsyncResult);
+  const users = unwrapResult(usersResult);
 
   const promises = users.map(async (user) => {
     const signedGames = user.signedGames.filter((signedGame) => {
@@ -71,12 +71,12 @@ export const removeMovedGamesFromUsers = async (
     }
 
     if (user.signedGames.length !== signedGames.length) {
-      const updateUserByUsernameAsyncResult = await updateUserByUsername({
+      const updateUserByUsernameResult = await updateUserByUsername({
         ...user,
         signedGames,
       });
-      if (isErrorResult(updateUserByUsernameAsyncResult)) {
-        return updateUserByUsernameAsyncResult;
+      if (isErrorResult(updateUserByUsernameResult)) {
+        return updateUserByUsernameResult;
       }
     }
 

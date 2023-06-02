@@ -5,24 +5,24 @@ import {
 import { logger } from "server/utils/logger";
 import { MongoDbError } from "shared/typings/api/errors";
 import {
-  AsyncResult,
+  Result,
   isErrorResult,
   makeErrorResult,
   makeSuccessResult,
   unwrapResult,
-} from "shared/utils/asyncResult";
+} from "shared/utils/result";
 
 export const removeInvalidGamesFromUsers = async (): Promise<
-  AsyncResult<void, MongoDbError>
+  Result<void, MongoDbError>
 > => {
   logger.info("Remove invalid games from users");
 
-  const usersAsyncResult = await findUsers();
-  if (isErrorResult(usersAsyncResult)) {
-    return usersAsyncResult;
+  const usersResult = await findUsers();
+  if (isErrorResult(usersResult)) {
+    return usersResult;
   }
 
-  const users = unwrapResult(usersAsyncResult);
+  const users = unwrapResult(usersResult);
 
   const promises = users.map(async (user) => {
     const validSignedGames = user.signedGames.filter((signedGame) => {
@@ -56,13 +56,13 @@ export const removeInvalidGamesFromUsers = async (): Promise<
     }
 
     if (changedSignedGamesCount > 0 || changedFavoritedGamesCount > 0) {
-      const updateUserByUsernameAsyncResult = await updateUserByUsername({
+      const updateUserByUsernameResult = await updateUserByUsername({
         ...user,
         signedGames: validSignedGames,
         favoritedGames: validFavoritedGames,
       });
-      if (isErrorResult(updateUserByUsernameAsyncResult)) {
-        return updateUserByUsernameAsyncResult;
+      if (isErrorResult(updateUserByUsernameResult)) {
+        return updateUserByUsernameResult;
       }
     }
 

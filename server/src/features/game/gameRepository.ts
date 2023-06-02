@@ -5,17 +5,17 @@ import { GameDoc } from "server/typings/game.typings";
 import { Game } from "shared/typings/models/game";
 import {
   makeSuccessResult,
-  AsyncResult,
+  Result,
   makeErrorResult,
   isErrorResult,
-} from "shared/utils/asyncResult";
+} from "shared/utils/result";
 import { removeDeletedGames } from "server/features/game/gameUtils";
 import { removeInvalidGamesFromUsers } from "server/features/player-assignment/utils/removeInvalidGamesFromUsers";
 import { MongoDbError } from "shared/typings/api/errors";
 
 export const removeGames = async (
   gameIds?: string[]
-): Promise<AsyncResult<void, MongoDbError>> => {
+): Promise<Result<void, MongoDbError>> => {
   logger.info(
     `MongoDB: remove games from db: ${gameIds ? gameIds.join(", ") : "ALL"}`
   );
@@ -31,22 +31,22 @@ export const removeGames = async (
 
 export const saveGames = async (
   games: readonly Game[]
-): Promise<AsyncResult<Game[], MongoDbError>> => {
+): Promise<Result<Game[], MongoDbError>> => {
   logger.info("MongoDB: Store games to DB");
 
-  const removeDeletedGamesAsyncResult = await removeDeletedGames(games);
-  if (isErrorResult(removeDeletedGamesAsyncResult)) {
-    return removeDeletedGamesAsyncResult;
+  const removeDeletedGamesResult = await removeDeletedGames(games);
+  if (isErrorResult(removeDeletedGamesResult)) {
+    return removeDeletedGamesResult;
   }
 
-  const removeInvalidGamesAsyncResult = await removeInvalidGamesFromUsers();
-  if (isErrorResult(removeInvalidGamesAsyncResult)) {
-    return removeInvalidGamesAsyncResult;
+  const removeInvalidGamesResult = await removeInvalidGamesFromUsers();
+  if (isErrorResult(removeInvalidGamesResult)) {
+    return removeInvalidGamesResult;
   }
 
-  const removeMovedGamesAsyncResult = await removeMovedGamesFromUsers(games);
-  if (isErrorResult(removeMovedGamesAsyncResult)) {
-    return removeMovedGamesAsyncResult;
+  const removeMovedGamesResult = await removeMovedGamesFromUsers(games);
+  if (isErrorResult(removeMovedGamesResult)) {
+    return removeMovedGamesResult;
   }
 
   try {
@@ -95,9 +95,7 @@ export const saveGames = async (
   return await findGames();
 };
 
-export const findGames = async (): Promise<
-  AsyncResult<GameDoc[], MongoDbError>
-> => {
+export const findGames = async (): Promise<Result<GameDoc[], MongoDbError>> => {
   try {
     const response = await GameModel.find({});
     logger.debug(`MongoDB: Find all games`);
@@ -110,7 +108,7 @@ export const findGames = async (): Promise<
 
 export const findGameById = async (
   gameId: string
-): Promise<AsyncResult<GameDoc, MongoDbError>> => {
+): Promise<Result<GameDoc, MongoDbError>> => {
   logger.debug(`MongoDB: Find game with id ${gameId}`);
 
   try {
@@ -128,7 +126,7 @@ export const findGameById = async (
 export const saveGamePopularity = async (
   gameId: string,
   popularity: number
-): Promise<AsyncResult<void, MongoDbError>> => {
+): Promise<Result<void, MongoDbError>> => {
   logger.debug(`MongoDB: Update game ${gameId} popularity to ${popularity}`);
   try {
     await GameModel.updateOne(

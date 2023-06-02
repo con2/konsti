@@ -18,18 +18,18 @@ import {
   PlayerAssignmentResult,
 } from "server/typings/result.typings";
 import {
-  AsyncResult,
+  Result,
   isErrorResult,
   makeSuccessResult,
   unwrapResult,
-} from "shared/utils/asyncResult";
+} from "shared/utils/result";
 import { AssignmentError } from "shared/typings/api/errors";
 
 export const munkresAssignPlayers = (
   players: readonly User[],
   games: readonly Game[],
   startingTime: string
-): AsyncResult<PlayerAssignmentResult, AssignmentError> => {
+): Result<PlayerAssignmentResult, AssignmentError> => {
   logger.debug(`***** Run Munkres Assignment for ${startingTime}`);
   const startingGames = getStartingGames(games, startingTime);
   const signupWishes = getSignupWishes(players);
@@ -82,16 +82,16 @@ export const munkresAssignPlayers = (
   logger.info(`Removed ${removedGamesCount}/${initialGamesCount} games`);
   logger.info(`Removed ${removedPlayerCount}/${initialPlayerCount} players`);
 
-  const signupResultsAsyncResult = buildSignupResults(
+  const signupResultsResult = buildSignupResults(
     results,
     signedGames,
     selectedPlayers
   );
-  if (isErrorResult(signupResultsAsyncResult)) {
-    return signupResultsAsyncResult;
+  if (isErrorResult(signupResultsResult)) {
+    return signupResultsResult;
   }
 
-  const signupResults = unwrapResult(signupResultsAsyncResult);
+  const signupResults = unwrapResult(signupResultsResult);
   const message = "Munkres assignment completed";
 
   logger.debug(`${message}`);

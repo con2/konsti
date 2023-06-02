@@ -44,8 +44,8 @@ test("should add new signup for user", async () => {
   await saveUser(mockUser);
   await saveGames([testGame]);
 
-  const responseAsyncResult = await saveSignup(mockPostEnteredGameRequest);
-  const response = unsafelyUnwrapResult(responseAsyncResult);
+  const responseResult = await saveSignup(mockPostEnteredGameRequest);
+  const response = unsafelyUnwrapResult(responseResult);
 
   expect(response.game.gameId).toEqual(testGame.gameId);
   expect(response.userSignups[0].username).toEqual(mockUser.username);
@@ -56,8 +56,8 @@ test("should delete signup from user", async () => {
   await saveGames([testGame]);
   await saveSignup(mockPostEnteredGameRequest);
 
-  const responseAsyncResult = await delSignup(mockPostEnteredGameRequest);
-  const response = unsafelyUnwrapResult(responseAsyncResult);
+  const responseResult = await delSignup(mockPostEnteredGameRequest);
+  const response = unsafelyUnwrapResult(responseResult);
 
   expect(response.userSignups.length).toEqual(0);
 });
@@ -67,11 +67,11 @@ test("should delete signup from user even if game start time has changed after s
   await saveGames([testGame]);
   await saveSignup(mockPostEnteredGameRequest);
 
-  const responseAsyncResult = await delSignup({
+  const responseResult = await delSignup({
     ...mockPostEnteredGameRequest,
     startTime: dayjs(testGame.startTime).add(1, "hours").format(),
   });
-  const response = unsafelyUnwrapResult(responseAsyncResult);
+  const response = unsafelyUnwrapResult(responseResult);
 
   expect(response.userSignups.length).toEqual(0);
 });

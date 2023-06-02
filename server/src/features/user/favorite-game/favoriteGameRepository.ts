@@ -5,25 +5,25 @@ import { MongoDbError } from "shared/typings/api/errors";
 import { Game } from "shared/typings/models/game";
 import { NewFavorite, User } from "shared/typings/models/user";
 import {
-  AsyncResult,
+  Result,
   isErrorResult,
   unwrapResult,
   makeSuccessResult,
   makeErrorResult,
-} from "shared/utils/asyncResult";
+} from "shared/utils/result";
 
 export const saveFavorite = async (
   favoriteData: NewFavorite
-): Promise<AsyncResult<readonly Game[] | null, MongoDbError>> => {
+): Promise<Result<readonly Game[] | null, MongoDbError>> => {
   const { username, favoritedGameIds } = favoriteData;
 
-  const gamesAsyncResult = await findGames();
+  const gamesResult = await findGames();
 
-  if (isErrorResult(gamesAsyncResult)) {
-    return gamesAsyncResult;
+  if (isErrorResult(gamesResult)) {
+    return gamesResult;
   }
 
-  const games = unwrapResult(gamesAsyncResult);
+  const games = unwrapResult(gamesResult);
 
   const favoritedGames = favoritedGameIds.reduce<string[]>(
     (acc, favoritedGameId) => {

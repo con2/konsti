@@ -2,14 +2,14 @@ import { Feedback } from "shared/typings/models/feedback";
 import { saveFeedback } from "server/features/feedback/feedbackRepository";
 import { PostFeedbackResponse } from "shared/typings/api/feedback";
 import { ApiError } from "shared/typings/api/errors";
-import { isSuccessResult } from "shared/utils/asyncResult";
+import { isSuccessResult } from "shared/utils/result";
 
 export const storeFeedback = async (
   feedbackData: Feedback
 ): Promise<PostFeedbackResponse | ApiError> => {
-  const feedbackAsyncResult = await saveFeedback(feedbackData);
+  const feedbackResult = await saveFeedback(feedbackData);
 
-  if (isSuccessResult(feedbackAsyncResult)) {
+  if (isSuccessResult(feedbackResult)) {
     return {
       message: "Post feedback success",
       status: "success",

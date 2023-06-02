@@ -4,7 +4,7 @@ import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { PostPlayerAssignmentResponse } from "shared/typings/api/assignment";
 import { ApiError } from "shared/typings/api/errors";
 import { sharedConfig } from "shared/config/sharedConfig";
-import { isSuccessResult, unwrapResult } from "shared/utils/asyncResult";
+import { isSuccessResult, unwrapResult } from "shared/utils/result";
 
 // Assign players to games
 export const storeAssignment = async (
@@ -12,13 +12,13 @@ export const storeAssignment = async (
 ): Promise<PostPlayerAssignmentResponse | ApiError> => {
   logger.info(`API call: POST ${ApiEndpoint.ASSIGNMENT}`);
 
-  const assignResultsAsyncResult = await runAssignment({
+  const assignResultsResult = await runAssignment({
     assignmentStrategy: sharedConfig.assignmentStrategy,
     startingTime,
   });
 
-  if (isSuccessResult(assignResultsAsyncResult)) {
-    const assignResults = unwrapResult(assignResultsAsyncResult);
+  if (isSuccessResult(assignResultsResult)) {
+    const assignResults = unwrapResult(assignResultsResult);
 
     return {
       message: "Players assign success",

@@ -10,17 +10,15 @@ import {
 } from "shared/typings/api/myGames";
 import { ProgramType } from "shared/typings/models/game";
 import {
-  AsyncResult,
+  Result,
   isErrorResult,
   isSuccessResult,
   makeErrorResult,
   makeSuccessResult,
   unwrapResult,
-} from "shared/utils/asyncResult";
+} from "shared/utils/result";
 
-export const removeSignups = async (): Promise<
-  AsyncResult<void, MongoDbError>
-> => {
+export const removeSignups = async (): Promise<Result<void, MongoDbError>> => {
   logger.info("MongoDB: remove ALL signups from db");
   try {
     await SignupModel.deleteMany({});
@@ -32,7 +30,7 @@ export const removeSignups = async (): Promise<
 };
 
 export const findSignups = async (): Promise<
-  AsyncResult<Signup[], MongoDbError>
+  Result<Signup[], MongoDbError>
 > => {
   try {
     const response = await SignupModel.find(
@@ -60,7 +58,7 @@ interface FindRpgSignupsByStartTimeResponse extends UserSignup {
 
 export const findRpgSignupsByStartTime = async (
   startTime: string
-): Promise<AsyncResult<FindRpgSignupsByStartTimeResponse[], MongoDbError>> => {
+): Promise<Result<FindRpgSignupsByStartTimeResponse[], MongoDbError>> => {
   try {
     const response = await SignupModel.find(
       { "userSignups.time": startTime },
@@ -97,7 +95,7 @@ export const findRpgSignupsByStartTime = async (
 
 export const findUserSignups = async (
   username: string
-): Promise<AsyncResult<Signup[], MongoDbError>> => {
+): Promise<Result<Signup[], MongoDbError>> => {
   try {
     const response = await SignupModel.find(
       { "userSignups.username": username },
@@ -122,15 +120,15 @@ export const findUserSignups = async (
 
 export const saveSignup = async (
   signupsRequest: PostEnteredGameRequest
-): Promise<AsyncResult<Signup, MongoDbError>> => {
+): Promise<Result<Signup, MongoDbError>> => {
   const { username, enteredGameId, startTime, message } = signupsRequest;
 
-  const gameAsyncResult = await findGameById(enteredGameId);
-  if (isErrorResult(gameAsyncResult)) {
-    return gameAsyncResult;
+  const gameResult = await findGameById(enteredGameId);
+  if (isErrorResult(gameResult)) {
+    return gameResult;
   }
 
-  const game = unwrapResult(gameAsyncResult);
+  const game = unwrapResult(gameResult);
 
   let signup;
   try {
@@ -178,15 +176,15 @@ export const saveSignup = async (
 
 export const delSignup = async (
   signupRequest: DeleteEnteredGameRequest
-): Promise<AsyncResult<Signup, MongoDbError>> => {
+): Promise<Result<Signup, MongoDbError>> => {
   const { username, enteredGameId } = signupRequest;
 
-  const gameAsyncResult = await findGameById(enteredGameId);
-  if (isErrorResult(gameAsyncResult)) {
-    return gameAsyncResult;
+  const gameResult = await findGameById(enteredGameId);
+  if (isErrorResult(gameResult)) {
+    return gameResult;
   }
 
-  const game = unwrapResult(gameAsyncResult);
+  const game = unwrapResult(gameResult);
 
   let signup;
   try {
@@ -238,14 +236,14 @@ interface DelSignupsByGameIdResponse {
 
 export const delSignupsByGameIds = async (
   gameIds: string[]
-): Promise<AsyncResult<DelSignupsByGameIdResponse[], MongoDbError>> => {
+): Promise<Result<DelSignupsByGameIdResponse[], MongoDbError>> => {
   const promises = gameIds.map(async (gameId) => {
-    const gameAsyncResult = await findGameById(gameId);
-    if (isErrorResult(gameAsyncResult)) {
-      return gameAsyncResult;
+    const gameResult = await findGameById(gameId);
+    if (isErrorResult(gameResult)) {
+      return gameResult;
     }
 
-    const game = unwrapResult(gameAsyncResult);
+    const game = unwrapResult(gameResult);
 
     let response;
     try {
@@ -261,9 +259,9 @@ export const delSignupsByGameIds = async (
     });
   });
 
-  const responseAsyncResults = await Promise.all(promises);
+  const responseResults = await Promise.all(promises);
 
-  const someRequestFailed = responseAsyncResults.some((result) =>
+  const someRequestFailed = responseResults.some((result) =>
     isErrorResult(result)
   );
 
@@ -273,7 +271,7 @@ export const delSignupsByGameIds = async (
 
   logger.info(`MongoDB: Deleted signups for games: ${gameIds.join(", ")}`);
 
-  const results = responseAsyncResults.flatMap((result) => {
+  const results = responseResults.flatMap((result) => {
     if (isSuccessResult(result)) {
       return unwrapResult(result);
     }
@@ -285,14 +283,14 @@ export const delSignupsByGameIds = async (
 
 export const delRpgSignupsByStartTime = async (
   startTime: string
-): Promise<AsyncResult<number, MongoDbError>> => {
-  const gamesAsyncResult = await findGames();
+): Promise<Result<number, MongoDbError>> => {
+  const gamesResult = await findGames();
 
-  if (isErrorResult(gamesAsyncResult)) {
-    return gamesAsyncResult;
+  if (isErrorResult(gamesResult)) {
+    return gamesResult;
   }
 
-  const games = unwrapResult(gamesAsyncResult);
+  const games = unwrapResult(gamesResult);
 
   // Only remove TABLETOP_RPG signups and don't remove directSignupAlwaysOpen signups
   const doNotRemoveGameIds = games

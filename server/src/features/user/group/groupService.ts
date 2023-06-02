@@ -22,7 +22,7 @@ import {
   PostJoinGroupError,
   PostLeaveGroupError,
 } from "shared/typings/api/groups";
-import { isErrorResult, unwrapResult } from "shared/utils/asyncResult";
+import { isErrorResult, unwrapResult } from "shared/utils/result";
 
 const { directSignupAlwaysOpenIds } = sharedConfig;
 
@@ -30,8 +30,8 @@ export const createGroup = async (
   username: string,
   groupCode: string
 ): Promise<PostCreateGroupResponse | PostCreateGroupError> => {
-  const signupsAsyncResult = await findUserSignups(username);
-  if (isErrorResult(signupsAsyncResult)) {
+  const signupsResult = await findUserSignups(username);
+  if (isErrorResult(signupsResult)) {
     return {
       message: "Error finding signups",
       status: "error",
@@ -39,14 +39,14 @@ export const createGroup = async (
     };
   }
 
-  const signups = unwrapResult(signupsAsyncResult);
+  const signups = unwrapResult(signupsResult);
 
   const filteredSignups = signups.filter(
     (signup) => !directSignupAlwaysOpenIds.includes(signup.game.gameId)
   );
 
-  const timeNowAsyncResult = await getTime();
-  if (isErrorResult(timeNowAsyncResult)) {
+  const timeNowResult = await getTime();
+  if (isErrorResult(timeNowResult)) {
     return {
       message: `Unable to get current time`,
       status: "error",
@@ -54,7 +54,7 @@ export const createGroup = async (
     };
   }
 
-  const timeNow = unwrapResult(timeNowAsyncResult);
+  const timeNow = unwrapResult(timeNowResult);
 
   const userSignups = filteredSignups.flatMap((signup) => signup.userSignups);
   const userHasSignups = userSignups.some((userSignup) =>
@@ -71,8 +71,8 @@ export const createGroup = async (
   }
 
   // Check if group exists
-  const findGroupResponseAsyncResult = await findGroup(groupCode, username);
-  if (isErrorResult(findGroupResponseAsyncResult)) {
+  const findGroupResponseResult = await findGroup(groupCode, username);
+  if (isErrorResult(findGroupResponseResult)) {
     return {
       message: "Own group already exists",
       status: "error",
@@ -80,7 +80,7 @@ export const createGroup = async (
     };
   }
 
-  const findGroupResponse = unwrapResult(findGroupResponseAsyncResult);
+  const findGroupResponse = unwrapResult(findGroupResponseResult);
 
   if (findGroupResponse) {
     // Group exists
@@ -92,8 +92,8 @@ export const createGroup = async (
   }
 
   // No existing group, create
-  const saveGroupResponseAsyncResult = await saveGroupCode(groupCode, username);
-  if (isErrorResult(saveGroupResponseAsyncResult)) {
+  const saveGroupResponseResult = await saveGroupCode(groupCode, username);
+  if (isErrorResult(saveGroupResponseResult)) {
     return {
       message: "Save group failure",
       status: "error",
@@ -101,7 +101,7 @@ export const createGroup = async (
     };
   }
 
-  const saveGroupResponse = unwrapResult(saveGroupResponseAsyncResult);
+  const saveGroupResponse = unwrapResult(saveGroupResponseResult);
 
   if (saveGroupResponse) {
     return {
@@ -132,8 +132,8 @@ export const joinGroup = async (
     };
   }
 
-  const signupsAsyncResult = await findUserSignups(username);
-  if (isErrorResult(signupsAsyncResult)) {
+  const signupsResult = await findUserSignups(username);
+  if (isErrorResult(signupsResult)) {
     return {
       message: "Error finding signups",
       status: "error",
@@ -141,14 +141,14 @@ export const joinGroup = async (
     };
   }
 
-  const signups = unwrapResult(signupsAsyncResult);
+  const signups = unwrapResult(signupsResult);
 
   const filteredSignups = signups.filter(
     (signup) => !directSignupAlwaysOpenIds.includes(signup.game.gameId)
   );
 
-  const timeNowAsyncResult = await getTime();
-  if (isErrorResult(timeNowAsyncResult)) {
+  const timeNowResult = await getTime();
+  if (isErrorResult(timeNowResult)) {
     return {
       message: `Unable to get current time`,
       status: "error",
@@ -156,7 +156,7 @@ export const joinGroup = async (
     };
   }
 
-  const timeNow = unwrapResult(timeNowAsyncResult);
+  const timeNow = unwrapResult(timeNowResult);
 
   const userSignups = filteredSignups.flatMap((signup) => signup.userSignups);
   const userHasSignups = userSignups.some((userSignup) =>
@@ -173,10 +173,10 @@ export const joinGroup = async (
   }
 
   // Check if code is valid
-  const findSerialResponseAsyncResult = await findUserSerial({
+  const findSerialResponseResult = await findUserSerial({
     serial: groupCode,
   });
-  if (isErrorResult(findSerialResponseAsyncResult)) {
+  if (isErrorResult(findSerialResponseResult)) {
     return {
       message: "Error finding serial",
       status: "error",
@@ -184,7 +184,7 @@ export const joinGroup = async (
     };
   }
 
-  const findSerialResponse = unwrapResult(findSerialResponseAsyncResult);
+  const findSerialResponse = unwrapResult(findSerialResponseResult);
 
   if (!findSerialResponse?.serial) {
     // Invalid code
@@ -197,11 +197,8 @@ export const joinGroup = async (
 
   // Check if group with code exists
   const creatorUsername = findSerialResponse.username;
-  const findGroupResponseAsyncResult = await findGroup(
-    groupCode,
-    creatorUsername
-  );
-  if (isErrorResult(findGroupResponseAsyncResult)) {
+  const findGroupResponseResult = await findGroup(groupCode, creatorUsername);
+  if (isErrorResult(findGroupResponseResult)) {
     return {
       message: "Error finding group",
       status: "error",
@@ -209,7 +206,7 @@ export const joinGroup = async (
     };
   }
 
-  const findGroupResponse = unwrapResult(findGroupResponseAsyncResult);
+  const findGroupResponse = unwrapResult(findGroupResponseResult);
 
   if (!findGroupResponse) {
     // No existing group, cannot join
@@ -236,8 +233,8 @@ export const joinGroup = async (
   }
 
   // Group exists, join
-  const saveGroupResponseAsyncResult = await saveGroupCode(groupCode, username);
-  if (isErrorResult(saveGroupResponseAsyncResult)) {
+  const saveGroupResponseResult = await saveGroupCode(groupCode, username);
+  if (isErrorResult(saveGroupResponseResult)) {
     return {
       message: "Error saving group",
       status: "error",
@@ -245,7 +242,7 @@ export const joinGroup = async (
     };
   }
 
-  const saveGroupResponse = unwrapResult(saveGroupResponseAsyncResult);
+  const saveGroupResponse = unwrapResult(saveGroupResponseResult);
 
   if (saveGroupResponse) {
     return {
@@ -265,8 +262,8 @@ export const joinGroup = async (
 export const leaveGroup = async (
   username: string
 ): Promise<PostLeaveGroupResponse | PostLeaveGroupError> => {
-  const saveGroupResponseAsyncResult = await saveGroupCode("0", username);
-  if (isErrorResult(saveGroupResponseAsyncResult)) {
+  const saveGroupResponseResult = await saveGroupCode("0", username);
+  if (isErrorResult(saveGroupResponseResult)) {
     return {
       message: "Failed to leave group",
       status: "error",
@@ -274,7 +271,7 @@ export const leaveGroup = async (
     };
   }
 
-  const saveGroupResponse = unwrapResult(saveGroupResponseAsyncResult);
+  const saveGroupResponse = unwrapResult(saveGroupResponseResult);
 
   if (saveGroupResponse) {
     return {
@@ -295,8 +292,8 @@ export const closeGroup = async (
   groupCode: string,
   username: string
 ): Promise<PostCloseGroupResponse | PostCloseGroupError> => {
-  const groupMembersAsyncResult = await findGroupMembers(groupCode);
-  if (isErrorResult(groupMembersAsyncResult)) {
+  const groupMembersResult = await findGroupMembers(groupCode);
+  if (isErrorResult(groupMembersResult)) {
     return {
       message: "Unknown error",
       status: "error",
@@ -304,7 +301,7 @@ export const closeGroup = async (
     };
   }
 
-  const groupMembers = unwrapResult(groupMembersAsyncResult);
+  const groupMembers = unwrapResult(groupMembersResult);
 
   // Check if group creator, only creator can close group
   const groupCreator = groupMembers.find(
@@ -343,8 +340,8 @@ export const closeGroup = async (
 export const fetchGroup = async (
   groupCode: string
 ): Promise<GetGroupResponse | GetGroupError> => {
-  const findGroupResultsAsyncResult = await findGroupMembers(groupCode);
-  if (isErrorResult(findGroupResultsAsyncResult)) {
+  const findGroupResultsResult = await findGroupMembers(groupCode);
+  if (isErrorResult(findGroupResultsResult)) {
     return {
       message: "Getting group members failed",
       status: "error",
@@ -352,7 +349,7 @@ export const fetchGroup = async (
     };
   }
 
-  const findGroupResults = unwrapResult(findGroupResultsAsyncResult);
+  const findGroupResults = unwrapResult(findGroupResultsResult);
 
   const returnData = findGroupResults.map((result) => ({
     groupCode: result.groupCode,

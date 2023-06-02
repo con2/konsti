@@ -55,8 +55,8 @@ describe(`POST ${ApiEndpoint.SESSION_RESTORE}`, () => {
   });
 
   test("should return 200 and success with valid jwt parameter", async () => {
-    const userAsyncResult = await saveUser(mockUser);
-    const user = unsafelyUnwrapResult(userAsyncResult);
+    const userResult = await saveUser(mockUser);
+    const user = unsafelyUnwrapResult(userResult);
     expect(user.password).toEqual(mockUser.passwordHash);
 
     const loginResponse = await request(server)

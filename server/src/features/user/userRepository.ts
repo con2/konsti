@@ -4,15 +4,13 @@ import { NewUser } from "server/typings/user.typings";
 import { Serial } from "server/typings/serial.typings";
 import { User, UserGroup } from "shared/typings/models/user";
 import {
-  AsyncResult,
+  Result,
   makeErrorResult,
   makeSuccessResult,
-} from "shared/utils/asyncResult";
+} from "shared/utils/result";
 import { MongoDbError } from "shared/typings/api/errors";
 
-export const removeUsers = async (): Promise<
-  AsyncResult<void, MongoDbError>
-> => {
+export const removeUsers = async (): Promise<Result<void, MongoDbError>> => {
   logger.info("MongoDB: remove ALL users from db");
   try {
     await UserModel.deleteMany({});
@@ -25,7 +23,7 @@ export const removeUsers = async (): Promise<
 
 export const saveUser = async (
   newUserData: NewUser
-): Promise<AsyncResult<User, MongoDbError>> => {
+): Promise<Result<User, MongoDbError>> => {
   const user = new UserModel({
     username: newUserData.username,
     password: newUserData.passwordHash,
@@ -51,7 +49,7 @@ export const saveUser = async (
 
 export const updateUserByUsername = async (
   user: User
-): Promise<AsyncResult<User, MongoDbError>> => {
+): Promise<Result<User, MongoDbError>> => {
   try {
     const response = await UserModel.findOneAndUpdate(
       { username: user.username },
@@ -86,7 +84,7 @@ export const updateUserByUsername = async (
 export const updateUserPassword = async (
   username: string,
   password: string
-): Promise<AsyncResult<User | null, MongoDbError>> => {
+): Promise<Result<User | null, MongoDbError>> => {
   try {
     const response = await UserModel.findOneAndUpdate(
       { username },
@@ -110,7 +108,7 @@ export const updateUserPassword = async (
 
 export const findUser = async (
   username: string
-): Promise<AsyncResult<User | null, MongoDbError>> => {
+): Promise<Result<User | null, MongoDbError>> => {
   try {
     const response = await UserModel.findOne({ username }, "-signedGames._id")
       .lean<User>()
@@ -130,7 +128,7 @@ export const findUser = async (
 
 export const findUserBySerial = async (
   serial: string
-): Promise<AsyncResult<User | null, MongoDbError>> => {
+): Promise<Result<User | null, MongoDbError>> => {
   try {
     const response = await UserModel.findOne({ serial }, "-signedGames._id")
       .lean<User>()
@@ -153,7 +151,7 @@ export const findUserBySerial = async (
 
 export const findUserSerial = async (
   serialData: Serial
-): Promise<AsyncResult<User | null, MongoDbError>> => {
+): Promise<Result<User | null, MongoDbError>> => {
   const serial = serialData.serial;
 
   try {
@@ -170,9 +168,7 @@ export const findUserSerial = async (
   }
 };
 
-export const findUsers = async (): Promise<
-  AsyncResult<User[], MongoDbError>
-> => {
+export const findUsers = async (): Promise<Result<User[], MongoDbError>> => {
   logger.debug(`MongoDB: Find all users`);
   try {
     const users = await UserModel.find({})

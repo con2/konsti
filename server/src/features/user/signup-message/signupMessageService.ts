@@ -4,13 +4,13 @@ import {
   GetSignupMessagesError,
   GetSignupMessagesResponse,
 } from "shared/typings/api/users";
-import { isErrorResult, unwrapResult } from "shared/utils/asyncResult";
+import { isErrorResult, unwrapResult } from "shared/utils/result";
 
 export const fetchSignupMessages = async (): Promise<
   GetSignupMessagesResponse | GetSignupMessagesError
 > => {
-  const findSettingsAsyncResult = await findSettings();
-  if (isErrorResult(findSettingsAsyncResult)) {
+  const findSettingsResult = await findSettings();
+  if (isErrorResult(findSettingsResult)) {
     return {
       message: "Error loading data from DB",
       status: "error",
@@ -18,10 +18,10 @@ export const fetchSignupMessages = async (): Promise<
     };
   }
 
-  const settings = unwrapResult(findSettingsAsyncResult);
+  const settings = unwrapResult(findSettingsResult);
 
-  const signupsAsyncResult = await findSignups();
-  if (isErrorResult(signupsAsyncResult)) {
+  const signupsResult = await findSignups();
+  if (isErrorResult(signupsResult)) {
     return {
       message: "Error loading data from DB",
       status: "error",
@@ -29,7 +29,7 @@ export const fetchSignupMessages = async (): Promise<
     };
   }
 
-  const signups = unwrapResult(signupsAsyncResult);
+  const signups = unwrapResult(signupsResult);
 
   const signupMessages = signups.flatMap((signup) => {
     return signup.userSignups.flatMap((userSignup) => {

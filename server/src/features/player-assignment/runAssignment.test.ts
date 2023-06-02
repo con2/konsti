@@ -83,11 +83,11 @@ describe("Assignment with valid data", () => {
 
     // FIRST RUN
 
-    const assignResultsAsyncResult = await runAssignment({
+    const assignResultsResult = await runAssignment({
       assignmentStrategy,
       startingTime,
     });
-    const assignResults = unsafelyUnwrapResult(assignResultsAsyncResult);
+    const assignResults = unsafelyUnwrapResult(assignResultsResult);
 
     expect(assignResults.status).toEqual("success");
     expect(assignResults.results.length).toBeGreaterThanOrEqual(
@@ -187,29 +187,21 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
       startTime: testGame.startTime,
     });
 
-    const signupsBeforeUpdateAsyncResult = await findUserSignups(
-      mockUser.username
-    );
-    const signupsBeforeUpdate = unsafelyUnwrapResult(
-      signupsBeforeUpdateAsyncResult
-    );
+    const signupsBeforeUpdateResult = await findUserSignups(mockUser.username);
+    const signupsBeforeUpdate = unsafelyUnwrapResult(signupsBeforeUpdateResult);
     expect(signupsBeforeUpdate.length).toEqual(1);
 
-    const assignResultsAsyncResult = await runAssignment({
+    const assignResultsResult = await runAssignment({
       assignmentStrategy,
       startingTime,
     });
-    const assignResults = unsafelyUnwrapResult(assignResultsAsyncResult);
+    const assignResults = unsafelyUnwrapResult(assignResultsResult);
 
     expect(assignResults.status).toEqual("success");
     expect(assignResults.results.length).toEqual(2);
 
-    const signupsAfterUpdateAsyncResult = await findUserSignups(
-      mockUser.username
-    );
-    const signupsAfterUpdate = unsafelyUnwrapResult(
-      signupsAfterUpdateAsyncResult
-    );
+    const signupsAfterUpdateResult = await findUserSignups(mockUser.username);
+    const signupsAfterUpdate = unsafelyUnwrapResult(signupsAfterUpdateResult);
 
     const larpSignup = signupsAfterUpdate.find(
       (signup) => signup.game.programType === ProgramType.LARP
@@ -265,18 +257,16 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
       enteredGameId: directSignupAlwaysOpenId,
     });
 
-    const signupsBeforeUpdateAsyncResult = await findSignups();
-    const signupsBeforeUpdate = unsafelyUnwrapResult(
-      signupsBeforeUpdateAsyncResult
-    );
+    const signupsBeforeUpdateResult = await findSignups();
+    const signupsBeforeUpdate = unsafelyUnwrapResult(signupsBeforeUpdateResult);
 
     expect(signupsBeforeUpdate.length).toEqual(1);
 
-    const assignResultsAsyncResult = await runAssignment({
+    const assignResultsResult = await runAssignment({
       assignmentStrategy,
       startingTime,
     });
-    const assignResults = unsafelyUnwrapResult(assignResultsAsyncResult);
+    const assignResults = unsafelyUnwrapResult(assignResultsResult);
 
     expect(assignResults.status).toEqual("success");
     expect(assignResults.results.length).toEqual(1);
@@ -284,10 +274,8 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
       expect(result.enteredGame.gameDetails.gameId).toEqual(testGame.gameId);
     });
 
-    const signupsAfterUpdateAsyncResult = await findSignups();
-    const signupsAfterUpdate = unsafelyUnwrapResult(
-      signupsAfterUpdateAsyncResult
-    );
+    const signupsAfterUpdateResult = await findSignups();
+    const signupsAfterUpdate = unsafelyUnwrapResult(signupsAfterUpdateResult);
 
     const assignmentSignup = signupsAfterUpdate.find(
       (signup) => signup.game.gameId === testGame.gameId
@@ -357,18 +345,16 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
       enteredGameId: directSignupAlwaysOpenId,
     });
 
-    const signupsBeforeUpdateAsyncResult = await findSignups();
-    const signupsBeforeUpdate = unsafelyUnwrapResult(
-      signupsBeforeUpdateAsyncResult
-    );
+    const signupsBeforeUpdateResult = await findSignups();
+    const signupsBeforeUpdate = unsafelyUnwrapResult(signupsBeforeUpdateResult);
 
     expect(signupsBeforeUpdate.length).toEqual(2);
 
-    const assignResultsAsyncResult = await runAssignment({
+    const assignResultsResult = await runAssignment({
       assignmentStrategy,
       startingTime,
     });
-    const assignResults = unsafelyUnwrapResult(assignResultsAsyncResult);
+    const assignResults = unsafelyUnwrapResult(assignResultsResult);
 
     expect(assignResults.status).toEqual("success");
     expect(assignResults.results.length).toEqual(2);
@@ -376,10 +362,8 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
       expect(result.enteredGame.gameDetails.gameId).toEqual(testGame.gameId);
     });
 
-    const signupsAfterUpdateAsyncResult = await findSignups();
-    const signupsAfterUpdate = unsafelyUnwrapResult(
-      signupsAfterUpdateAsyncResult
-    );
+    const signupsAfterUpdateResult = await findSignups();
+    const signupsAfterUpdate = unsafelyUnwrapResult(signupsAfterUpdateResult);
 
     const assignmentSignup = signupsAfterUpdate.find(
       (signup) => signup.game.gameId === testGame.gameId
@@ -445,27 +429,23 @@ describe("Assignment with first time bonus", () => {
       message: "",
     });
 
-    const signupsBeforeUpdateAsyncResult = await findSignups();
-    const signupsBeforeUpdate = unsafelyUnwrapResult(
-      signupsBeforeUpdateAsyncResult
-    );
+    const signupsBeforeUpdateResult = await findSignups();
+    const signupsBeforeUpdate = unsafelyUnwrapResult(signupsBeforeUpdateResult);
 
     expect(signupsBeforeUpdate.length).toEqual(3);
 
-    const assignResultsAsyncResult = await runAssignment({
+    const assignResultsResult = await runAssignment({
       assignmentStrategy,
       startingTime,
     });
 
-    const assignResults = unsafelyUnwrapResult(assignResultsAsyncResult);
+    const assignResults = unsafelyUnwrapResult(assignResultsResult);
 
     expect(assignResults.status).toEqual("success");
     expect(assignResults.results.length).toEqual(1);
 
-    const signupsAfterUpdateAsyncResult = await findSignups();
-    const signupsAfterUpdate = unsafelyUnwrapResult(
-      signupsAfterUpdateAsyncResult
-    );
+    const signupsAfterUpdateResult = await findSignups();
+    const signupsAfterUpdate = unsafelyUnwrapResult(signupsAfterUpdateResult);
 
     const assignmentSignup = signupsAfterUpdate.find(
       (signup) => signup.game.gameId === testGame.gameId
