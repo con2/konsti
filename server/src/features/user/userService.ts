@@ -74,18 +74,18 @@ export const storeUser = async (
   logger.info("User: Serial is valid");
 
   // Check that serial is not used
-  let user;
-  try {
-    // Check if user already exists
-    user = await findUser(username);
-  } catch (error) {
-    logger.error(`findUser(): ${error}`);
+
+  // Check if user already exists
+  const userResult = await findUser(username);
+  if (isErrorResult(userResult)) {
     return {
       errorId: "unknown",
       message: "Finding user failed",
       status: "error",
     };
   }
+
+  const user = unwrapResult(userResult);
 
   if (user) {
     logger.info(`User: Username "${username}" is already registered`);
@@ -99,17 +99,16 @@ export const storeUser = async (
   // Username free
   if (!user) {
     // Check if serial is used
-    let serialResponse;
-    try {
-      serialResponse = await findUserSerial({ serial });
-    } catch (error) {
-      logger.error(`findSerial(): ${error}`);
+    const serialResponseResult = await findUserSerial({ serial });
+    if (isErrorResult(serialResponseResult)) {
       return {
         errorId: "unknown",
         message: "Finding serial failed",
         status: "error",
       };
     }
+
+    const serialResponse = unwrapResult(serialResponseResult);
 
     // Serial used
     if (serialResponse) {
@@ -123,17 +122,16 @@ export const storeUser = async (
 
     // Serial not used
     if (!serialResponse) {
-      let passwordHash;
-      try {
-        passwordHash = await hashPassword(password);
-      } catch (error) {
-        logger.error(`hashPassword(): ${error}`);
+      const passwordHashResult = await hashPassword(password);
+      if (isErrorResult(passwordHashResult)) {
         return {
           errorId: "unknown",
           message: "Hashing password failed",
           status: "error",
         };
       }
+
+      const passwordHash = unwrapResult(passwordHashResult);
 
       if (!passwordHash) {
         logger.info("User: Serial used");
@@ -195,17 +193,16 @@ export const storeUserPassword = async (
     };
   }
 
-  let passwordHash;
-  try {
-    passwordHash = await hashPassword(password);
-  } catch (error) {
-    logger.error(`updateUser error: ${error}`);
+  const passwordHashResult = await hashPassword(password);
+  if (isErrorResult(passwordHashResult)) {
     return {
       message: "Password change error",
       status: "error",
       errorId: "unknown",
     };
   }
+
+  const passwordHash = unwrapResult(passwordHashResult);
 
   const updateUserPasswordResult = await updateUserPassword(
     username,

@@ -5,7 +5,6 @@ import {
   delSignupQuestion,
   saveSettings,
 } from "server/features/settings/settingsRepository";
-import { logger } from "server/utils/logger";
 import { ApiError } from "shared/typings/api/errors";
 import {
   GetSettingsResponse,
@@ -57,10 +56,10 @@ export const storeHidden = async (
 
   const settings = unwrapResult(settingsResult);
 
-  try {
-    await removeHiddenGamesFromUsers(settings.hiddenGames);
-  } catch (error) {
-    logger.error(`removeHiddenGamesFromUsers error: ${error}`);
+  const removeHiddenGamesFromUsersResult = await removeHiddenGamesFromUsers(
+    settings.hiddenGames
+  );
+  if (isErrorResult(removeHiddenGamesFromUsersResult)) {
     return {
       message: "Update hidden failure",
       status: "error",

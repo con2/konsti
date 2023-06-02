@@ -85,12 +85,11 @@ export const saveResult = async (
     logger.debug(
       `MongoDB: Signup results for starting time ${startTime} stored to separate collection`
     );
+    return makeSuccessResult(undefined);
   } catch (error) {
     logger.error(
       `MongoDB: Error storing signup results for starting time ${startTime} to separate collection - ${error}`
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
-
-  return makeSuccessResult(undefined);
 };

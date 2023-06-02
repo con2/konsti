@@ -130,9 +130,8 @@ export const saveSignup = async (
 
   const game = unwrapResult(gameResult);
 
-  let signup;
   try {
-    signup = await SignupModel.findOneAndUpdate(
+    const signup = await SignupModel.findOneAndUpdate(
       {
         game: game._id,
         count: { $lt: game.maxAttendance },
@@ -156,22 +155,20 @@ export const saveSignup = async (
     )
       .lean<Signup>()
       .populate("game");
+    if (!signup) {
+      logger.error(
+        `Signup for user ${username} and game ${game.gameId} not found`
+      );
+      return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+    }
+    logger.info(`MongoDB: Signup saved for user "${username}"`);
+    return makeSuccessResult(signup);
   } catch (error) {
     logger.error(
       `MongoDB: Error saving signup for user "${username}" - ${error}`
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
-
-  if (!signup) {
-    logger.error(
-      `Signup for user ${username} and game ${game.gameId} not found`
-    );
-    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
-  }
-
-  logger.info(`MongoDB: Signup saved for user "${username}"`);
-  return makeSuccessResult(signup);
 };
 
 export const delSignup = async (
@@ -186,9 +183,8 @@ export const delSignup = async (
 
   const game = unwrapResult(gameResult);
 
-  let signup;
   try {
-    signup = await SignupModel.findOneAndUpdate(
+    const signup = await SignupModel.findOneAndUpdate(
       { game: game._id },
       {
         $pull: {
@@ -202,31 +198,31 @@ export const delSignup = async (
     )
       .lean<Signup>()
       .populate("game", "-createdAt -updatedAt -_id -__v");
+
+    if (!signup) {
+      logger.error(`Signups for game ${game.gameId} not found`);
+      return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+    }
+
+    const signupStillRemaining = signup.userSignups.some(
+      (userSignup) => userSignup.username === username
+    );
+
+    if (signupStillRemaining) {
+      logger.error(
+        `Error removing signup for game ${game.gameId} from user ${username}`
+      );
+      return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+    }
+
+    logger.info(`MongoDB: Signup removed from user "${username}"`);
+    return makeSuccessResult(signup);
   } catch (error) {
     logger.error(
       `MongoDB: Error deleting signup from user "${username}" - ${error}`
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
-
-  if (!signup) {
-    logger.error(`Signups for game ${game.gameId} not found`);
-    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
-  }
-
-  const signupStillRemaining = signup.userSignups.some(
-    (userSignup) => userSignup.username === username
-  );
-
-  if (signupStillRemaining) {
-    logger.error(
-      `Error removing signup for game ${game.gameId} from user ${username}`
-    );
-    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
-  }
-
-  logger.info(`MongoDB: Signup removed from user "${username}"`);
-  return makeSuccessResult(signup);
 };
 
 interface DelSignupsByGameIdResponse {
@@ -245,18 +241,16 @@ export const delSignupsByGameIds = async (
 
     const game = unwrapResult(gameResult);
 
-    let response;
     try {
-      response = await SignupModel.deleteOne({ game: game._id });
+      const response = await SignupModel.deleteOne({ game: game._id });
+      return makeSuccessResult({
+        gameId: game.gameId,
+        deletedCount: response.deletedCount,
+      });
     } catch (error) {
       logger.error(`MongoDB: Error removing invalid signup - ${error}`);
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
-
-    return makeSuccessResult({
-      gameId: game.gameId,
-      deletedCount: response.deletedCount,
-    });
   });
 
   const responseResults = await Promise.all(promises);

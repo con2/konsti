@@ -38,6 +38,7 @@ const createSignups = async (): Promise<Result<void, MongoDbError>> => {
           fields: "-userSignups._id -_id -__v -createdAt -updatedAt",
         }
       );
+      makeSuccessResult(undefined);
     } catch (error) {
       logger.error(`MongoDB: ${error}`);
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);

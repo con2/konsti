@@ -3,44 +3,49 @@ import { logger } from "server/utils/logger";
 import { BcryptError } from "shared/typings/api/errors";
 import {
   Result,
+  isErrorResult,
   makeErrorResult,
   makeSuccessResult,
+  unwrapResult,
 } from "shared/utils/result";
 
 const saltLength = 10;
 
-const hashPassword = async (password: string): Promise<string> => {
+export const hashPassword = async (
+  password: string
+): Promise<Result<string, BcryptError>> => {
   try {
-    return await bcrypt.hash(password, saltLength);
+    const result = await bcrypt.hash(password, saltLength);
+    return makeSuccessResult(result);
   } catch (error) {
     logger.error(`bcrypt.hash error: ${error}`);
+    return makeErrorResult(BcryptError.UNKNOWN_ERROR);
   }
-  return "hash-error";
 };
 
 const comparePasswordHash = async (
   password: string,
   hash: string
-): Promise<boolean> => {
+): Promise<Result<boolean, BcryptError>> => {
   try {
-    return await bcrypt.compare(password, hash);
+    const result = await bcrypt.compare(password, hash);
+    return makeSuccessResult(result);
   } catch (error) {
     logger.error(`bcrypt.compare error: ${error}`);
+    return makeErrorResult(BcryptError.UNKNOWN_ERROR);
   }
-  return false;
 };
 
-const validateLogin = async (
+export const validateLogin = async (
   password: string,
   hash: string
 ): Promise<Result<boolean, BcryptError>> => {
-  let hashResponse;
-  try {
-    hashResponse = await comparePasswordHash(password, hash);
-  } catch (error) {
-    logger.error(`comparePasswordHash error: ${error}`);
-    return makeErrorResult(BcryptError.UNKNOWN_ERROR);
+  const hashResponseResult = await comparePasswordHash(password, hash);
+  if (isErrorResult(hashResponseResult)) {
+    return hashResponseResult;
   }
+
+  const hashResponse = unwrapResult(hashResponseResult);
 
   if (hashResponse) {
     return makeSuccessResult(true);
@@ -48,5 +53,3 @@ const validateLogin = async (
 
   return makeSuccessResult(false);
 };
-
-export { hashPassword, validateLogin };

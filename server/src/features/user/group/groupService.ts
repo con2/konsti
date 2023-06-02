@@ -8,8 +8,8 @@ import {
 } from "server/features/user/group/groupRepository";
 import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
 import { findUserSerial } from "server/features/user/userRepository";
-import { logger } from "server/utils/logger";
 import { sharedConfig } from "shared/config/sharedConfig";
+import { MongoDbError } from "shared/typings/api/errors";
 import {
   PostCloseGroupResponse,
   PostCreateGroupResponse,
@@ -22,7 +22,12 @@ import {
   PostJoinGroupError,
   PostLeaveGroupError,
 } from "shared/typings/api/groups";
-import { isErrorResult, unwrapResult } from "shared/utils/result";
+import {
+  isErrorResult,
+  makeErrorResult,
+  makeSuccessResult,
+  unwrapResult,
+} from "shared/utils/result";
 
 const { directSignupAlwaysOpenIds } = sharedConfig;
 
@@ -218,13 +223,12 @@ export const joinGroup = async (
   }
 
   // Clean previous signups
-  try {
-    await saveSignedGames({
-      signedGames: [],
-      username,
-    });
-  } catch (error) {
-    logger.error(`saveSignedGames(): ${error}`);
+
+  const saveSignedGamesResult = await saveSignedGames({
+    signedGames: [],
+    username,
+  });
+  if (isErrorResult(saveSignedGamesResult)) {
     return {
       message: "Error removing previous signups",
       status: "error",
@@ -316,13 +320,18 @@ export const closeGroup = async (
     };
   }
 
-  try {
-    const leaveGroupPromises = groupMembers.map(async (groupMember) => {
-      await saveGroupCode("0", groupMember.username);
-    });
-    await Promise.all(leaveGroupPromises);
-  } catch (error) {
-    logger.error(`saveGroupCode error: ${error}`);
+  const leaveGroupPromises = groupMembers.map(async (groupMember) => {
+    const saveGroupCodeResult = await saveGroupCode("0", groupMember.username);
+    if (isErrorResult(saveGroupCodeResult)) {
+      return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+    }
+    return makeSuccessResult(undefined);
+  });
+
+  const results = await Promise.all(leaveGroupPromises);
+
+  const someUpdateFailed = results.some((result) => isErrorResult(result));
+  if (someUpdateFailed) {
     return {
       message: "Unknown error",
       status: "error",
