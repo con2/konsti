@@ -9,6 +9,7 @@ import { SessionStorageValue } from "client/utils/localStorage";
 import { ControlledInput } from "client/components/ControlledInput";
 import { RadioButton } from "client/components/RadioButton";
 import { RevolvingDoorGamesInfo } from "client/views/all-games/components/RevolvingDoorGamesInfo";
+import { config } from "client/config";
 
 export enum StartingTimeOption {
   UPCOMING = "upcoming",
@@ -18,7 +19,9 @@ export enum StartingTimeOption {
 
 interface Props {
   onTagChange: React.Dispatch<React.SetStateAction<string>>;
-  onSelectedStartingTimeChange: React.Dispatch<React.SetStateAction<string>>;
+  onSelectedStartingTimeChange: React.Dispatch<
+    React.SetStateAction<StartingTimeOption>
+  >;
   onSearchTermChange: React.Dispatch<React.SetStateAction<string>>;
 }
 
@@ -77,7 +80,7 @@ export const SearchAndFilterCard = ({
         <StyledLabel htmlFor="programTypeSelection">
           {t("selectedProgramType")}
         </StyledLabel>
-        <ProgramTypeSelection id="programTypeSelection" />
+        <ProgramTypeSelection />
       </InputContainer>
 
       <InputContainer>
@@ -100,33 +103,36 @@ export const SearchAndFilterCard = ({
           {t("startingTime")}
         </StyledLabel>
         <RadioButtonGroup id="startingTimeSelection">
-          {Object.keys(StartingTimeOption).map((option) => (
-            <RadioButton
-              id={option}
-              key={option}
-              label={t(StartingTimeOption[option])}
-              checked={selectedStartingTime === StartingTimeOption[option]}
-              onChange={() => {
-                setSelectedStartingTime(
-                  StartingTimeOption[option] as StartingTimeOption
-                );
-                onSelectedStartingTimeChange(
-                  StartingTimeOption[option] as String
-                );
-                sessionStorage.setItem(
-                  SessionStorageValue.ALL_GAMES_STARTING_TIME,
-                  StartingTimeOption[option] as StartingTimeOption
-                );
-              }}
-            />
-          ))}
+          {Object.entries(StartingTimeOption)
+            .filter(([_, val]) =>
+              config.enableRevolvingDoor
+                ? true
+                : val !== StartingTimeOption.REVOLVING_DOOR
+            )
+            .map(([key, val]) => {
+              return (
+                <RadioButton
+                  checked={selectedStartingTime === val}
+                  key={key}
+                  id={key}
+                  label={val}
+                  onChange={() => {
+                    setSelectedStartingTime(val);
+                    onSelectedStartingTimeChange(val);
+                    sessionStorage.setItem(
+                      SessionStorageValue.ALL_GAMES_STARTING_TIME,
+                      val
+                    );
+                  }}
+                />
+              );
+            })}
         </RadioButtonGroup>
       </InputContainer>
 
       <InputContainer>
         <StyledLabel htmlFor="find">{t("find")}</StyledLabel>
         <ControlledInput
-          id="find"
           value={searchTerm}
           onChange={(event) => {
             setSearchTerm(event.target.value);

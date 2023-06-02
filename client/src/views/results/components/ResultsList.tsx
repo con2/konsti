@@ -19,7 +19,6 @@ import {
   SearchAndFilterResultsCard,
 } from "client/views/results/components/SearchAndFilterResultsCard";
 
-
 export const DirectResults = (): ReactElement => {
   const { t } = useTranslation();
 

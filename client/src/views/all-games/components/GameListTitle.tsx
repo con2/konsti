@@ -1,5 +1,5 @@
 import { ReactElement, useRef } from "react";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import useIntersectionObserver from "@react-hook/intersection-observer";
 import { timeFormatter } from "client/utils/timeFormatter";

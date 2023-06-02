@@ -1,4 +1,4 @@
-import { ReactElement, useState, useEffect, useMemo } from "react";
+import { ReactElement, useEffect, useMemo, useState } from "react";
 import { useStore } from "react-redux";
 import { useDebounce } from "use-debounce";
 import { AllGamesList } from "client/views/all-games/components/AllGamesList";
@@ -25,7 +25,8 @@ export const AllGamesView = (): ReactElement => {
   const [loading, setLoading] = useState<boolean>(false);
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [filteredGames, setFilteredGames] = useState<readonly Game[]>([]);
-  const [selectedStartingTime, setSelectedStartingTime] = useState<string>("");
+  const [selectedStartingTime, setSelectedStartingTime] =
+    useState<StartingTimeOption>(StartingTimeOption.UPCOMING);
 
   const [debouncedSearchTerm] = useDebounce(searchTerm, 300, {
     leading: true,
@@ -50,7 +51,9 @@ export const AllGamesView = (): ReactElement => {
       const savedStartingTime = sessionStorage.getItem(
         SessionStorageValue.ALL_GAMES_STARTING_TIME
       );
-      setSelectedStartingTime(savedStartingTime ?? "");
+      setSelectedStartingTime(
+        (savedStartingTime as StartingTimeOption) ?? StartingTimeOption.UPCOMING
+      );
     };
     loadSessionStorageValues();
 
