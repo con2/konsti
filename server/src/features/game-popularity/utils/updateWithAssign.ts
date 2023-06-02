@@ -3,7 +3,7 @@ import _ from "lodash";
 import { padgAssignPlayers } from "server/features/player-assignment/padg/padgAssignPlayers";
 import { User } from "shared/typings/models/user";
 import { Game } from "shared/typings/models/game";
-import { Result } from "shared/typings/models/result";
+import { AssignmentResult } from "shared/typings/models/result";
 import { saveGamePopularity } from "server/features/game/gameRepository";
 import { Signup } from "server/features/signup/signup.typings";
 import {
@@ -24,7 +24,7 @@ export const updateWithAssign = async (
     dayjs(game.startTime).format()
   );
 
-  let results = [] as readonly Result[];
+  let results = [] as readonly AssignmentResult[];
 
   _.forEach(groupedGames, (_value, startingTime) => {
     const assignmentResultAsyncResult = padgAssignPlayers(

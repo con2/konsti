@@ -4,7 +4,7 @@ import { config } from "server/config";
 import { Game } from "shared/typings/models/game";
 import { AssignmentStrategyResult } from "server/typings/result.typings";
 import { User } from "shared/typings/models/user";
-import { Result } from "shared/typings/models/result";
+import { AssignmentResult } from "shared/typings/models/result";
 import {
   AsyncResult,
   isErrorResult,
@@ -23,7 +23,7 @@ export const assignGroups = (
   let bestScore = 0;
   let players = 0;
   let games = 0;
-  let bestResult = [] as readonly Result[];
+  let bestResult = [] as readonly AssignmentResult[];
 
   for (let i = 0; i < GROUP_ASSIGNMENT_ROUNDS; i++) {
     const resultAsyncResult = runGroupAssignment(playerGroups, signedGames);

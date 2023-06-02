@@ -1,4 +1,4 @@
-import { Result } from "shared/typings/models/result";
+import { AssignmentResult } from "shared/typings/models/result";
 import {
   delSignup,
   delRpgSignupsByStartTime,
@@ -16,7 +16,7 @@ import { MongoDbError } from "shared/typings/api/errors";
 
 export const saveUserSignupResults = async (
   startingTime: string,
-  results: readonly Result[]
+  results: readonly AssignmentResult[]
 ): Promise<AsyncResult<void, MongoDbError>> => {
   const delRpgSignupsByStartTimeAsyncResult = await delRpgSignupsByStartTime(
     startingTime

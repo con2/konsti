@@ -2,7 +2,7 @@ import _ from "lodash";
 import { logger } from "server/utils/logger";
 import { calculateHappiness } from "server/features/player-assignment/padg/utils/calculateHappiness";
 import { getGroups } from "server/features/player-assignment/utils/getGroups";
-import { Result } from "shared/typings/models/result";
+import { AssignmentResult } from "shared/typings/models/result";
 import { User } from "shared/typings/models/user";
 import {
   AsyncResult,
@@ -15,7 +15,7 @@ import {
 import { AssignmentError } from "shared/typings/api/errors";
 
 export const getHappiness = (
-  results: readonly Result[],
+  results: readonly AssignmentResult[],
   playerGroups: readonly User[][],
   allPlayers: readonly User[],
   startingTime: string

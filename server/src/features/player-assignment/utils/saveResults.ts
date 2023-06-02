@@ -1,6 +1,6 @@
 import { logger } from "server/utils/logger";
 import { saveUserSignupResults } from "server/features/player-assignment/utils/saveUserSignupResults";
-import { Result } from "shared/typings/models/result";
+import { AssignmentResult } from "shared/typings/models/result";
 import { saveResult } from "server/features/results/resultsRepository";
 import {
   AsyncResult,
@@ -10,7 +10,7 @@ import {
 import { MongoDbError } from "shared/typings/api/errors";
 
 interface SaveResultsParams {
-  results: readonly Result[];
+  results: readonly AssignmentResult[];
   startingTime: string;
   algorithm: string;
   message: string;

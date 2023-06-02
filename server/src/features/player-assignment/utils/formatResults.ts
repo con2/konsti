@@ -2,7 +2,7 @@ import _ from "lodash";
 import { PadgRandomAssignResults } from "server/typings/padgRandomAssign.typings";
 import { logger } from "server/utils/logger";
 import { AssignmentError } from "shared/typings/api/errors";
-import { Result } from "shared/typings/models/result";
+import { AssignmentResult } from "shared/typings/models/result";
 import { SelectedGame, User } from "shared/typings/models/user";
 import {
   AsyncResult,
@@ -13,7 +13,7 @@ import {
 export const formatResults = (
   assignResults: PadgRandomAssignResults,
   playerGroups: readonly User[][]
-): AsyncResult<readonly Result[], AssignmentError> => {
+): AsyncResult<readonly AssignmentResult[], AssignmentError> => {
   const selectedPlayers = playerGroups
     .filter((playerGroup) => {
       const firstMember = _.first(playerGroup);
@@ -43,7 +43,7 @@ export const formatResults = (
     });
   };
 
-  const results = selectedPlayers.reduce<Result[]>((acc, player) => {
+  const results = selectedPlayers.reduce<AssignmentResult[]>((acc, player) => {
     const enteredGame = getEnteredGame(player);
     if (enteredGame) {
       acc.push({

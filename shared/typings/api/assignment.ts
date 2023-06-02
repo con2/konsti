@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { Result } from "shared/typings/models/result";
+import { AssignmentResult } from "shared/typings/models/result";
 import { ApiResult } from "shared/typings/api/errors";
 
 // POST player assignment
@@ -15,6 +15,6 @@ export type PostPlayerAssignmentRequest = z.infer<
 export interface PostPlayerAssignmentResponse extends ApiResult {
   message: string;
   resultMessage: string;
-  results: readonly Result[];
+  results: readonly AssignmentResult[];
   startTime: string;
 }

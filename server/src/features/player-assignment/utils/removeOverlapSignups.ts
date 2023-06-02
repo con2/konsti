@@ -3,7 +3,7 @@ import isBetween from "dayjs/plugin/isBetween"; // ES 2015
 import { logger } from "server/utils/logger";
 import { UserSignedGames } from "server/typings/result.typings";
 import { findUsers } from "server/features/user/userRepository";
-import { Result } from "shared/typings/models/result";
+import { AssignmentResult } from "shared/typings/models/result";
 import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
 import {
   AsyncResult,
@@ -17,7 +17,7 @@ import { MongoDbError } from "shared/typings/api/errors";
 dayjs.extend(isBetween);
 
 export const removeOverlapSignups = async (
-  results: readonly Result[]
+  results: readonly AssignmentResult[]
 ): Promise<AsyncResult<void, MongoDbError>> => {
   logger.debug("Find overlapping signups");
   const signupData: UserSignedGames[] = [];

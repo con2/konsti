@@ -4,7 +4,7 @@ import { getRandomInt } from "server/features/player-assignment/utils/getRandomI
 import { shuffleArray } from "server/utils/shuffleArray";
 import { Game } from "shared/typings/models/game";
 import { GroupAssignResult } from "server/typings/groupAssign.typings";
-import { Result } from "shared/typings/models/result";
+import { AssignmentResult } from "shared/typings/models/result";
 import { SelectedGame, User } from "shared/typings/models/user";
 import {
   AsyncResult,
@@ -17,7 +17,7 @@ export const runGroupAssignment = (
   playerGroups: readonly User[][],
   signedGames: readonly Game[]
 ): AsyncResult<GroupAssignResult, AssignmentError> => {
-  const signupResults: Result[] = [];
+  const signupResults: AssignmentResult[] = [];
   let matchingGroups: User[][] = [];
   let selectedGroups: User[][] = [];
   let score = 0;

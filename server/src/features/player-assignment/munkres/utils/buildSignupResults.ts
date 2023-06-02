@@ -1,7 +1,7 @@
 import { logger } from "server/utils/logger";
 import { AssignmentError } from "shared/typings/api/errors";
 import { Game } from "shared/typings/models/game";
-import { Result } from "shared/typings/models/result";
+import { AssignmentResult } from "shared/typings/models/result";
 import { SelectedGame, User } from "shared/typings/models/user";
 import {
   AsyncResult,
@@ -13,8 +13,8 @@ export const buildSignupResults = (
   results: readonly number[][],
   signedGames: readonly Game[],
   players: readonly User[]
-): AsyncResult<readonly Result[], AssignmentError> => {
-  const signupResults: Result[] = [];
+): AsyncResult<readonly AssignmentResult[], AssignmentError> => {
+  const signupResults: AssignmentResult[] = [];
 
   // Build signup results
   for (let i = 0; i < results.length; i += 1) {

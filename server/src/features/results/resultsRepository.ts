@@ -2,7 +2,7 @@ import { logger } from "server/utils/logger";
 import { ResultsModel } from "server/features/results/resultsSchema";
 import { ResultsCollectionEntry } from "server/typings/result.typings";
 import { findGames } from "server/features/game/gameRepository";
-import { Result } from "shared/typings/models/result";
+import { AssignmentResult } from "shared/typings/models/result";
 import {
   AsyncResult,
   isErrorResult,
@@ -47,7 +47,7 @@ export const findResult = async (
 };
 
 export const saveResult = async (
-  signupResultData: readonly Result[],
+  signupResultData: readonly AssignmentResult[],
   startTime: string,
   algorithm: string,
   message: string
@@ -59,7 +59,7 @@ export const saveResult = async (
   }
 
   const games = unwrapResult(gamesAsyncResult);
-  const results = signupResultData.reduce<Result[]>((acc, result) => {
+  const results = signupResultData.reduce<AssignmentResult[]>((acc, result) => {
     const gameDocInDb = games.find(
       (game) => game.gameId === result.enteredGame.gameDetails.gameId
     );
