@@ -89,7 +89,7 @@ const Container = styled.div`
   border: 1px solid #ddd;
   border-radius: 4px;
   background: #fafafa;
-  box-shadow: ${(props) => props.theme.shadowLower};
+  box-shadow: ${(props) => props.theme.shadowHigher};
 
   grid-template-columns: 1fr 1fr;
   @media (max-width: ${(props) => props.theme.breakpointPhone}) {

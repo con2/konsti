@@ -276,7 +276,7 @@ const ResultTitle = styled.div`
 const TimeSlot = styled.div`
   border-radius: 4px;
   border: 1px solid #ddd;
-  box-shadow: ${(props) => props.theme.shadowLower};
+  box-shadow: ${(props) => props.theme.shadowHigher};
   margin: 0 0 24px 0;
   padding: 0 10px 20px 10px;
 `;
