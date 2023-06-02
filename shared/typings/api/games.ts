@@ -1,11 +1,10 @@
-import { ApiError } from "shared/typings/api/errors";
+import { ApiError, ApiResult } from "shared/typings/api/errors";
 import { Game, GameWithUsernames } from "shared/typings/models/game";
 
 // POST update games
 
-export interface PostUpdateGamesResponse {
+export interface PostUpdateGamesResponse extends ApiResult {
   message: string;
-  status: "success";
   games: Game[];
 }
 
@@ -15,9 +14,8 @@ export interface PostUpdateGamesError extends ApiError {
 
 // GET games
 
-export interface GetGamesResponse {
+export interface GetGamesResponse extends ApiResult {
   message: string;
-  status: "success";
   games: GameWithUsernames[];
 }
 

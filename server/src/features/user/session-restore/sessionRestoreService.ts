@@ -1,9 +1,9 @@
 import { findSettings } from "server/features/settings/settingsRepository";
 import { findUser } from "server/features/user/userRepository";
 import { decodeJWT, getJWT, verifyJWT } from "server/utils/jwt";
-import { logger } from "server/utils/logger";
 import { PostLoginError, PostLoginResponse } from "shared/typings/api/login";
 import { UserGroup } from "shared/typings/models/user";
+import { isErrorResult, unwrapResult } from "shared/utils/result";
 
 export const loginWithJwt = async (
   jwt: string
@@ -19,12 +19,10 @@ export const loginWithJwt = async (
     };
   }
 
-  const { userGroup, username } = jwtData;
-
   if (
-    userGroup !== UserGroup.USER &&
-    userGroup !== UserGroup.ADMIN &&
-    userGroup !== UserGroup.HELP
+    jwtData.userGroup !== UserGroup.USER &&
+    jwtData.userGroup !== UserGroup.ADMIN &&
+    jwtData.userGroup !== UserGroup.HELP
   ) {
     return {
       message: "Invalid userGroup",
@@ -33,7 +31,7 @@ export const loginWithJwt = async (
     };
   }
 
-  const jwtResponse = verifyJWT(jwt, userGroup);
+  const jwtResponse = verifyJWT(jwt, jwtData.userGroup);
 
   if (jwtResponse.status === "error") {
     return {
@@ -44,11 +42,8 @@ export const loginWithJwt = async (
   }
 
   if (typeof jwtResponse.username === "string") {
-    let user;
-    try {
-      user = await findUser(jwtResponse.username);
-    } catch (error) {
-      logger.error(`Login: ${error}`);
+    const userResult = await findUser(jwtResponse.username);
+    if (isErrorResult(userResult)) {
       return {
         message: "Session restore error",
         status: "error",
@@ -56,8 +51,9 @@ export const loginWithJwt = async (
       };
     }
 
+    const user = unwrapResult(userResult);
+
     if (!user) {
-      logger.info(`Login: User "${username}" not found`);
       return {
         errorId: "loginFailed",
         message: "User login error",
@@ -65,11 +61,8 @@ export const loginWithJwt = async (
       };
     }
 
-    let settingsResponse;
-    try {
-      settingsResponse = await findSettings();
-    } catch (error) {
-      logger.error(`Login: ${error}`);
+    const findSettingsResult = await findSettings();
+    if (isErrorResult(findSettingsResult)) {
       return {
         message: "User login error",
         status: "error",
@@ -77,7 +70,9 @@ export const loginWithJwt = async (
       };
     }
 
-    if (!settingsResponse.appOpen && user.userGroup === "user") {
+    const settings = unwrapResult(findSettingsResult);
+
+    if (!settings.appOpen && user.userGroup === "user") {
       return {
         errorId: "loginDisabled",
         message: "User login disabled",

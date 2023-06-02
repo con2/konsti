@@ -4,22 +4,35 @@ import { config } from "server/config";
 import { Game } from "shared/typings/models/game";
 import { AssignmentStrategyResult } from "server/typings/result.typings";
 import { User } from "shared/typings/models/user";
-import { Result } from "shared/typings/models/result";
+import { AssignmentResult } from "shared/typings/models/result";
+import {
+  Result,
+  isErrorResult,
+  makeSuccessResult,
+  unwrapResult,
+} from "shared/utils/result";
+import { AssignmentError } from "shared/typings/api/errors";
 
 export const assignGroups = (
   selectedPlayers: readonly User[],
   signedGames: readonly Game[],
   playerGroups: readonly User[][]
-): AssignmentStrategyResult => {
+): Result<AssignmentStrategyResult, AssignmentError> => {
   const { GROUP_ASSIGNMENT_ROUNDS } = config;
 
   let bestScore = 0;
   let players = 0;
   let games = 0;
-  let bestResult = [] as readonly Result[];
+  let bestResult = [] as readonly AssignmentResult[];
 
   for (let i = 0; i < GROUP_ASSIGNMENT_ROUNDS; i++) {
-    const result = runGroupAssignment(playerGroups, signedGames);
+    const resultResult = runGroupAssignment(playerGroups, signedGames);
+    if (isErrorResult(resultResult)) {
+      return resultResult;
+    }
+
+    const result = unwrapResult(resultResult);
+
     if (result.score > bestScore) {
       bestScore = result.score;
       bestResult = result.signupResults;
@@ -37,5 +50,5 @@ export const assignGroups = (
     (games / signedGames.length) * 100
   )}%)`;
 
-  return { results: bestResult, message: returnMessage };
+  return makeSuccessResult({ results: bestResult, message: returnMessage });
 };

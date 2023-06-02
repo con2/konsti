@@ -11,6 +11,7 @@ import mongoose from "mongoose";
 import { MongoMemoryServer } from "mongodb-memory-server";
 import { faker } from "@faker-js/faker";
 import { saveSerials } from "server/features/serial/serialRepository";
+import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 
 vi.mock("generate-serial-number", () => {
   const serials: string[] = [
@@ -66,13 +67,15 @@ afterAll(async () => {
 });
 
 test("should insert new serial into collection", async () => {
-  const result = await saveSerials(1);
+  const resultResult = await saveSerials(1);
+  const result = unsafelyUnwrapResult(resultResult);
   expect(result.length).toEqual(1);
   expect(result[0].serial).toEqual("a1234");
 });
 
 test("should not insert same serial into collection when creating", async () => {
-  const savedSerials = await saveSerials(4);
+  const savedSerialsResult = await saveSerials(4);
+  const savedSerials = unsafelyUnwrapResult(savedSerialsResult);
   const results = savedSerials.map((serial) => serial.serial);
   expect(results.length).toEqual(4);
   expect(results).toEqual(["a1234", "b5225", "c2512", "d1232"]);
@@ -81,7 +84,8 @@ test("should not insert same serial into collection when creating", async () => 
 test("should not insert same serial into collection if the serial is in a collection", async () => {
   // save the first serial into the collection
   await saveSerials(1);
-  const savedSerials = await saveSerials(4);
+  const savedSerialsResult = await saveSerials(4);
+  const savedSerials = unsafelyUnwrapResult(savedSerialsResult);
   const results = savedSerials.map((serial) => serial.serial);
   expect(results.length).toEqual(4);
   expect(results).toEqual(["b5225", "c2512", "d1232", "e12039"]);

@@ -8,6 +8,14 @@ import { Game } from "shared/typings/models/game";
 import { PlayerAssignmentResult } from "server/typings/result.typings";
 import { AssignmentStrategy } from "shared/config/sharedConfig.types";
 import { Signup } from "server/features/signup/signup.typings";
+import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
+import {
+  Result,
+  isErrorResult,
+  makeSuccessResult,
+  unwrapResult,
+} from "shared/utils/result";
+import { AssignmentError } from "shared/typings/api/errors";
 
 export const runAssignmentStrategy = (
   players: readonly User[],
@@ -15,7 +23,7 @@ export const runAssignmentStrategy = (
   startingTime: string,
   assignmentStrategy: AssignmentStrategy,
   signups: readonly Signup[]
-): PlayerAssignmentResult => {
+): Result<PlayerAssignmentResult, AssignmentError> => {
   logger.info(
     `Received data for ${players.length} players and ${games.length} games`
   );
@@ -26,17 +34,74 @@ export const runAssignmentStrategy = (
 
   logger.info(`Assign strategy: ${assignmentStrategy}`);
 
-  if (assignmentStrategy === "munkres") {
-    return munkresAssignPlayers(players, games, startingTime);
-  } else if (assignmentStrategy === "group") {
-    return groupAssignPlayers(players, games, startingTime);
-  } else if (assignmentStrategy === "padg") {
-    return padgAssignPlayers(players, games, startingTime, signups);
-  } else if (assignmentStrategy === "random") {
-    return randomAssignPlayers(players, games, startingTime, signups);
-  } else if (assignmentStrategy === "group+padg") {
-    const groupResult = groupAssignPlayers(players, games, startingTime);
-    const padgResult = padgAssignPlayers(players, games, startingTime, signups);
+  if (assignmentStrategy === AssignmentStrategy.MUNKRES) {
+    const munkresResultResult = munkresAssignPlayers(
+      players,
+      games,
+      startingTime
+    );
+    if (isErrorResult(munkresResultResult)) {
+      return munkresResultResult;
+    }
+    const munkresResult = unwrapResult(munkresResultResult);
+    return makeSuccessResult(munkresResult);
+  }
+
+  if (assignmentStrategy === AssignmentStrategy.GROUP) {
+    const groupResultResult = groupAssignPlayers(players, games, startingTime);
+    if (isErrorResult(groupResultResult)) {
+      return groupResultResult;
+    }
+    const groupResult = unwrapResult(groupResultResult);
+    return makeSuccessResult(groupResult);
+  }
+
+  if (assignmentStrategy === AssignmentStrategy.PADG) {
+    const padgResultResult = padgAssignPlayers(
+      players,
+      games,
+      startingTime,
+      signups
+    );
+    if (isErrorResult(padgResultResult)) {
+      return padgResultResult;
+    }
+    const padgResult = unwrapResult(padgResultResult);
+    return makeSuccessResult(padgResult);
+  }
+
+  if (assignmentStrategy === AssignmentStrategy.RANDOM) {
+    const randomResultResult = randomAssignPlayers(
+      players,
+      games,
+      startingTime,
+      signups
+    );
+    if (isErrorResult(randomResultResult)) {
+      return randomResultResult;
+    }
+    const randomResult = unwrapResult(randomResultResult);
+    return makeSuccessResult(randomResult);
+  }
+
+  if (assignmentStrategy === AssignmentStrategy.GROUP_PADG) {
+    const groupResultResult = groupAssignPlayers(players, games, startingTime);
+    if (isErrorResult(groupResultResult)) {
+      return groupResultResult;
+    }
+    const groupResult = unwrapResult(groupResultResult);
+
+    const padgResultResult = padgAssignPlayers(
+      players,
+      games,
+      startingTime,
+      signups
+    );
+    if (isErrorResult(padgResultResult)) {
+      return padgResultResult;
+    }
+
+    const padgResult = unwrapResult(padgResultResult);
 
     logger.info(
       `Group result: ${groupResult.results.length} players, Padg result: ${padgResult.results.length} players`
@@ -44,30 +109,45 @@ export const runAssignmentStrategy = (
 
     if (groupResult.results.length > padgResult.results.length) {
       logger.info("----> Use Group Assign result");
-      return groupResult;
+      return makeSuccessResult(groupResult);
     } else {
       logger.info("----> Use Padg Assign result");
-      return padgResult;
+      return makeSuccessResult(padgResult);
     }
-  } else if (assignmentStrategy === "random+padg") {
-    const randomResult = randomAssignPlayers(
+  }
+
+  if (assignmentStrategy === AssignmentStrategy.RANDOM_PADG) {
+    const randomResultResult = randomAssignPlayers(
       players,
       games,
       startingTime,
       signups
     );
-    const padgResult = padgAssignPlayers(players, games, startingTime, signups);
+    if (isErrorResult(randomResultResult)) {
+      return randomResultResult;
+    }
+    const randomResult = unwrapResult(randomResultResult);
+    const padgResultResult = padgAssignPlayers(
+      players,
+      games,
+      startingTime,
+      signups
+    );
+    if (isErrorResult(padgResultResult)) {
+      return padgResultResult;
+    }
+    const padgResult = unwrapResult(padgResultResult);
     logger.info(
       `Random result: ${randomResult.results.length} players, Padg result: ${padgResult.results.length} players`
     );
     if (randomResult.results.length > padgResult.results.length) {
       logger.info("----> Use Random assign result");
-      return randomResult;
+      return makeSuccessResult(randomResult);
     } else {
       logger.info("----> Use Padg Assign result");
-      return padgResult;
+      return makeSuccessResult(padgResult);
     }
-  } else {
-    throw new Error('Invalid or missing "assignmentStrategy" config');
   }
+
+  return exhaustiveSwitchGuard(assignmentStrategy);
 };

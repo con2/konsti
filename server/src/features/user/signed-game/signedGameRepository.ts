@@ -1,22 +1,29 @@
 import { findGames } from "server/features/game/gameRepository";
 import { UserModel } from "server/features/user/userSchema";
-import { GameDoc } from "server/typings/game.typings";
 import { UserSignedGames } from "server/typings/result.typings";
 import { logger } from "server/utils/logger";
+import { MongoDbError } from "shared/typings/api/errors";
 import { SelectedGame, User } from "shared/typings/models/user";
+import {
+  Result,
+  isErrorResult,
+  makeErrorResult,
+  makeSuccessResult,
+  unwrapResult,
+} from "shared/utils/result";
 
 export const saveSignedGames = async (
   signupData: UserSignedGames
-): Promise<User> => {
+): Promise<Result<User, MongoDbError>> => {
   const { signedGames, username } = signupData;
 
-  let games: GameDoc[];
-  try {
-    games = await findGames();
-  } catch (error) {
-    logger.error(`MongoDB: Error loading games - ${error}`);
-    throw error;
+  const gamesResult = await findGames();
+
+  if (isErrorResult(gamesResult)) {
+    return gamesResult;
   }
+
+  const games = unwrapResult(gamesResult);
 
   const formattedData = signedGames.reduce<SelectedGame[]>(
     (acc, signedGame) => {
@@ -37,9 +44,8 @@ export const saveSignedGames = async (
     []
   );
 
-  let signupResponse;
   try {
-    signupResponse = await UserModel.findOneAndUpdate(
+    const signupResponse = await UserModel.findOneAndUpdate(
       { username },
       {
         signedGames: formattedData,
@@ -47,24 +53,28 @@ export const saveSignedGames = async (
       { new: true, fields: "-signedGames._id" }
     ).populate("signedGames.gameDetails");
     if (!signupResponse) {
-      throw new Error("Error saving signup");
+      logger.error("Error saving signup");
+      return makeErrorResult(MongoDbError.SIGNUP_NOT_FOUND);
     }
+    logger.debug(`MongoDB: Signup data stored for user "${username}"`);
+    return makeSuccessResult(signupResponse);
   } catch (error) {
     logger.error(
       `MongoDB: Error storing signup data for user "${username}" - ${error}`
     );
-    throw error;
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
-
-  logger.debug(`MongoDB: Signup data stored for user "${username}"`);
-  return signupResponse;
 };
 
-export const removeSignedGames = async (): Promise<void> => {
+export const removeSignedGames = async (): Promise<
+  Result<void, MongoDbError>
+> => {
   logger.info("MongoDB: remove ALL signups from db");
   try {
     await UserModel.updateMany({}, { signedGames: [] });
+    return makeSuccessResult(undefined);
   } catch (error) {
-    throw new Error(`MongoDB: Error removing signups: ${error}`);
+    logger.error(`MongoDB: Error removing signups: ${error}`);
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };

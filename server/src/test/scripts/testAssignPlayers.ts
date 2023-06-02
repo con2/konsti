@@ -31,6 +31,7 @@ const getAssignmentStrategy = (userParameter: string): AssignmentStrategy => {
   if (strategies.includes(userParameter as AssignmentStrategy)) {
     return userParameter as AssignmentStrategy;
   } else {
+    // eslint-disable-next-line no-restricted-syntax -- Test script
     throw new Error(`Give valid strategy parameter: ${strategies.join(", ")}`);
   }
 };

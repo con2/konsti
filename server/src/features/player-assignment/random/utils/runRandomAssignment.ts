@@ -14,16 +14,33 @@ import {
 } from "server/typings/padgRandomAssign.typings";
 import { User } from "shared/typings/models/user";
 import { Signup } from "server/features/signup/signup.typings";
+import {
+  Result,
+  isErrorResult,
+  makeErrorResult,
+  makeSuccessResult,
+  unwrapResult,
+} from "shared/utils/result";
+import { AssignmentError } from "shared/typings/api/errors";
+import { logger } from "server/utils/logger";
 
 export const runRandomAssignment = (
   signedGames: readonly Game[],
   playerGroups: readonly User[][],
   startingTime: string,
   signups: readonly Signup[]
-): AssignmentStrategyResult => {
-  const groups = getGroups(playerGroups, startingTime);
+): Result<AssignmentStrategyResult, AssignmentError> => {
+  const groupsResult = getGroups(playerGroups, startingTime);
+  if (isErrorResult(groupsResult)) {
+    return groupsResult;
+  }
+  const groups = unwrapResult(groupsResult);
   const events = getRandomAssignEvents(signedGames);
-  const list = getList(playerGroups, startingTime, signups);
+  const listResult = getList(playerGroups, startingTime, signups);
+  if (isErrorResult(listResult)) {
+    return listResult;
+  }
+  const list = unwrapResult(listResult);
   const updateL = (input: RandomAssignUpdateLInput): ListItem[] => input.L;
 
   const { RANDOM_ASSIGNMENT_ROUNDS } = config;
@@ -38,18 +55,23 @@ export const runRandomAssignment = (
   const assignResults = eventAssignment(input);
 
   if (isCheckResult(assignResults)) {
-    throw new Error(
+    logger.error(
       `Random assignment failed: ${assignResults.msg}. Input: ${JSON.stringify(
         input
       )}`
     );
+    return makeErrorResult(AssignmentError.UNKNOWN_ERROR);
   }
 
-  const results = formatResults(assignResults, playerGroups);
+  const resultsResult = formatResults(assignResults, playerGroups);
+  if (isErrorResult(resultsResult)) {
+    return resultsResult;
+  }
 
+  const results = unwrapResult(resultsResult);
   const message = "Random assignment completed";
 
-  return { results, message };
+  return makeSuccessResult({ results, message });
 };
 
 const isCheckResult = (

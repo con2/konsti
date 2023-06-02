@@ -39,6 +39,7 @@ export const updateFavorite = async (
       })
     );
   } catch (error) {
+    // eslint-disable-next-line no-restricted-syntax -- TODO: Remove throw
     throw new Error(`submitUpdateFavorites error: ${error}`);
   }
 };

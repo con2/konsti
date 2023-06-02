@@ -1,13 +1,20 @@
+import { logger } from "server/utils/logger";
+import { AssignmentError } from "shared/typings/api/errors";
 import { Game } from "shared/typings/models/game";
-import { Result } from "shared/typings/models/result";
+import { AssignmentResult } from "shared/typings/models/result";
 import { SelectedGame, User } from "shared/typings/models/user";
+import {
+  Result,
+  makeErrorResult,
+  makeSuccessResult,
+} from "shared/utils/result";
 
 export const buildSignupResults = (
   results: readonly number[][],
   signedGames: readonly Game[],
   players: readonly User[]
-): readonly Result[] => {
-  const signupResults: Result[] = [];
+): Result<readonly AssignmentResult[], AssignmentError> => {
+  const signupResults: AssignmentResult[] = [];
 
   // Build signup results
   for (let i = 0; i < results.length; i += 1) {
@@ -30,8 +37,10 @@ export const buildSignupResults = (
           players[selectedPlayer].signedGames
         );
 
-        if (!enteredGame)
-          throw new Error("Unable to find entered game from signed games");
+        if (!enteredGame) {
+          logger.error("Unable to find entered game from signed games");
+          return makeErrorResult(AssignmentError.UNKNOWN_ERROR);
+        }
 
         signupResults.push({
           username: players[selectedPlayer].username,
@@ -41,7 +50,7 @@ export const buildSignupResults = (
       }
     }
   }
-  return signupResults;
+  return makeSuccessResult(signupResults);
 };
 
 const findEnteredGame = (

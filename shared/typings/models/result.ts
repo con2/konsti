@@ -1,6 +1,6 @@
 import { SelectedGame } from "shared/typings/models/user";
 
-export interface Result {
+export interface AssignmentResult {
   username: string;
   enteredGame: SelectedGame;
 }

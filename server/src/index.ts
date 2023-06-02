@@ -27,6 +27,7 @@ const init = (): void => {
   if (typeof process.env.NODE_ENV === "string") {
     logger.info(`Node environment: ${process.env.NODE_ENV}`);
   } else {
+    // eslint-disable-next-line no-restricted-syntax -- Server startup
     throw new Error(`Node environment NODE_ENV missing`);
   }
 

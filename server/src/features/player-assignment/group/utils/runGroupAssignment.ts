@@ -4,14 +4,20 @@ import { getRandomInt } from "server/features/player-assignment/utils/getRandomI
 import { shuffleArray } from "server/utils/shuffleArray";
 import { Game } from "shared/typings/models/game";
 import { GroupAssignResult } from "server/typings/groupAssign.typings";
-import { Result } from "shared/typings/models/result";
+import { AssignmentResult } from "shared/typings/models/result";
 import { SelectedGame, User } from "shared/typings/models/user";
+import {
+  Result,
+  makeErrorResult,
+  makeSuccessResult,
+} from "shared/utils/result";
+import { AssignmentError } from "shared/typings/api/errors";
 
 export const runGroupAssignment = (
   playerGroups: readonly User[][],
   signedGames: readonly Game[]
-): GroupAssignResult => {
-  const signupResults: Result[] = [];
+): Result<GroupAssignResult, AssignmentError> => {
+  const signupResults: AssignmentResult[] = [];
   let matchingGroups: User[][] = [];
   let selectedGroups: User[][] = [];
   let score = 0;
@@ -133,9 +139,10 @@ export const runGroupAssignment = (
             groupMember.signedGames
           );
 
-          if (!enteredGame)
-            throw new Error("Unable to find entered game from signed games");
-
+          if (!enteredGame) {
+            logger.error("Unable to find entered game from signed games");
+            return makeErrorResult(AssignmentError.UNKNOWN_ERROR);
+          }
           signupResults.push({
             username: groupMember.username,
             enteredGame,
@@ -168,12 +175,12 @@ export const runGroupAssignment = (
     logger.debug(`**************`);
   }
 
-  return {
+  return makeSuccessResult({
     score,
     signupResults,
     playerCounter,
     gameCounter,
-  };
+  });
 };
 
 const findEnteredGame = (

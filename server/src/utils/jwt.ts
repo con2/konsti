@@ -17,9 +17,16 @@ export const getJWT = (userGroup: UserGroup, username: string): string => {
 };
 
 export const verifyJWT = (jwt: string, userGroup: UserGroup): JWTResult => {
-  let result;
   try {
-    result = jsonwebtoken.verify(jwt, getSecret(userGroup)) as JWTResult;
+    const result = jsonwebtoken.verify(jwt, getSecret(userGroup)) as JWTResult;
+    return {
+      username: result.username,
+      userGroup: result.userGroup,
+      iat: result.iat,
+      exp: result.exp,
+      status: "success",
+      message: "success",
+    };
   } catch (error) {
     if (error instanceof TokenExpiredError) {
       return {
@@ -41,15 +48,6 @@ export const verifyJWT = (jwt: string, userGroup: UserGroup): JWTResult => {
       exp: 0,
     };
   }
-
-  return {
-    username: result.username,
-    userGroup: result.userGroup,
-    iat: result.iat,
-    exp: result.exp,
-    status: "success",
-    message: "success",
-  };
 };
 
 export const decodeJWT = (jwt: string): JWTResult => {

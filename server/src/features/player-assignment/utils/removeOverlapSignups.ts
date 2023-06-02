@@ -2,26 +2,32 @@ import dayjs from "dayjs";
 import isBetween from "dayjs/plugin/isBetween"; // ES 2015
 import { logger } from "server/utils/logger";
 import { UserSignedGames } from "server/typings/result.typings";
-import { User } from "shared/typings/models/user";
 import { findUsers } from "server/features/user/userRepository";
-import { Result } from "shared/typings/models/result";
+import { AssignmentResult } from "shared/typings/models/result";
 import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
+import {
+  Result,
+  isErrorResult,
+  makeErrorResult,
+  makeSuccessResult,
+  unwrapResult,
+} from "shared/utils/result";
+import { MongoDbError } from "shared/typings/api/errors";
 
 dayjs.extend(isBetween);
 
 export const removeOverlapSignups = async (
-  results: readonly Result[]
-): Promise<void> => {
+  results: readonly AssignmentResult[]
+): Promise<Result<void, MongoDbError>> => {
   logger.debug("Find overlapping signups");
   const signupData: UserSignedGames[] = [];
 
-  let users: User[];
-  try {
-    users = await findUsers();
-  } catch (error) {
-    logger.error(error);
-    throw error;
+  const usersResult = await findUsers();
+  if (isErrorResult(usersResult)) {
+    return usersResult;
   }
+
+  const users = unwrapResult(usersResult);
 
   results.map((result) => {
     const enteredGame = result.enteredGame.gameDetails;
@@ -55,13 +61,21 @@ export const removeOverlapSignups = async (
     });
   });
 
-  try {
-    await Promise.all(
-      signupData.map(async (signup) => {
-        await saveSignedGames(signup);
-      })
-    );
-  } catch (error) {
-    throw new Error(`No assign results: saveSignup error: ${error}`);
+  const promises = signupData.map(async (signup) => {
+    const saveSignedGamesResult = await saveSignedGames(signup);
+    if (isErrorResult(saveSignedGamesResult)) {
+      return saveSignedGamesResult;
+    }
+    return makeSuccessResult(undefined);
+  });
+
+  const saveResults = await Promise.all(promises);
+  const someResultFailed = saveResults.some((saveResult) =>
+    isErrorResult(saveResult)
+  );
+  if (someResultFailed) {
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
+
+  return makeSuccessResult(undefined);
 };

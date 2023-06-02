@@ -39,6 +39,7 @@ import {
   findUserSignups,
   saveSignup,
 } from "server/features/signup/signupRepository";
+import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 
 let server: Server;
 let mongoServer: MongoMemoryServer;
@@ -112,7 +113,7 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
   test("should return 200 with valid authorization and add games to DB", async () => {
     const spy = vi
       .spyOn(testHelperWrapper, "getEventProgramItems")
-      .mockResolvedValue([testKompassiGame]);
+      .mockResolvedValue({ value: [testKompassiGame] });
 
     const response = await request(server)
       .post(ApiEndpoint.GAMES)
@@ -120,16 +121,17 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
     expect(response.status).toEqual(200);
     expect(spy).toHaveBeenCalledTimes(1);
 
-    const games = await findGames();
+    const gamesResult = await findGames();
+    const games = unsafelyUnwrapResult(gamesResult);
 
     expect(games.length).toEqual(1);
     expect(games[0].title).toEqual(testGame.title);
   });
 
   test("should remove games, selectedGames, signups, and favoritedGames that are not in the server response", async () => {
-    vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue([
-      testKompassiGame,
-    ]);
+    vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
+      value: [testKompassiGame],
+    });
 
     await saveGames([testGame, testGame2]);
     await saveUser(mockUser);
@@ -149,11 +151,14 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
     expect(response.status).toEqual(200);
 
-    const games = await findGames();
+    const gamesResult = await findGames();
+    const games = unsafelyUnwrapResult(gamesResult);
+
     expect(games.length).toEqual(1);
     expect(games[0].title).toEqual(testGame.title);
 
-    const updatedUser = await findUser(mockUser.username);
+    const updatedUserResult = await findUser(mockUser.username);
+    const updatedUser = unsafelyUnwrapResult(updatedUserResult);
     expect(updatedUser?.signedGames.length).toEqual(1);
     expect(updatedUser?.signedGames[0].gameDetails.title).toEqual(
       testGame.title
@@ -161,7 +166,8 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
     expect(updatedUser?.favoritedGames.length).toEqual(1);
     expect(updatedUser?.favoritedGames[0].gameId).toEqual(testGame.gameId);
 
-    const updatedSignups = await findUserSignups(mockUser.username);
+    const updatedSignupsResult = await findUserSignups(mockUser.username);
+    const updatedSignups = unsafelyUnwrapResult(updatedSignupsResult);
     expect(updatedSignups.length).toEqual(1);
     expect(updatedSignups[0].game.title).toEqual(testGame.title);
   });
@@ -178,7 +184,8 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
     expect(response.status).toEqual(200);
 
-    const games = await findGames();
+    const gamesResult = await findGames();
+    const games = unsafelyUnwrapResult(gamesResult);
 
     expect(games.length).toEqual(2);
     const sortedGames = _.sortBy(games, "title");
@@ -187,7 +194,9 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
   });
 
   test("should not modify anything if server response is empty array", async () => {
-    vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue([]);
+    vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
+      value: [],
+    });
 
     await saveGames([testGame, testGame2]);
 
@@ -196,7 +205,8 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
     expect(response.status).toEqual(200);
 
-    const games = await findGames();
+    const gamesResult = await findGames();
+    const games = unsafelyUnwrapResult(gamesResult);
 
     expect(games.length).toEqual(2);
     const sortedGames = _.sortBy(games, "title");
@@ -212,13 +222,15 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
       .add(1, "hours")
       .format();
 
-    vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue([
-      {
-        ...testKompassiGame,
-        start_time: newStartTime,
-        description: newDescription,
-      },
-    ]);
+    vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
+      value: [
+        {
+          ...testKompassiGame,
+          start_time: newStartTime,
+          description: newDescription,
+        },
+      ],
+    });
 
     await saveGames([testGame, testGame2]);
 
@@ -227,7 +239,8 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
     expect(response.status).toEqual(200);
 
-    const games = await findGames();
+    const gamesResult = await findGames();
+    const games = unsafelyUnwrapResult(gamesResult);
 
     expect(games.length).toEqual(1);
     expect(dayjs(games[0].startTime).utc().format()).toEqual(newStartTime);
@@ -240,13 +253,16 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
       .utc()
       .add(1, "hours")
       .format();
-    vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue([
-      {
-        ...testKompassiGame,
-        start_time: newStartTime,
-      },
-      testKompassiGame2,
-    ]);
+
+    vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
+      value: [
+        {
+          ...testKompassiGame,
+          start_time: newStartTime,
+        },
+        testKompassiGame2,
+      ],
+    });
 
     await saveGames([testGame, testGame2]);
     await saveUser(mockUser);
@@ -266,14 +282,16 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
     expect(response.status).toEqual(200);
 
-    const updatedUser = await findUser(mockUser.username);
+    const updatedUserResult = await findUser(mockUser.username);
+    const updatedUser = unsafelyUnwrapResult(updatedUserResult);
     expect(updatedUser?.signedGames.length).toEqual(1);
     expect(updatedUser?.signedGames[0].gameDetails.title).toEqual(
       testGame2.title
     );
     expect(updatedUser?.favoritedGames.length).toEqual(2);
 
-    const signups = await findUserSignups(mockUser.username);
+    const signupsResult = await findUserSignups(mockUser.username);
+    const signups = unsafelyUnwrapResult(signupsResult);
     expect(signups.length).toEqual(2);
     expect(signups[0].userSignups[0].username).toEqual(mockUser.username);
     expect(signups[1].userSignups[0].username).toEqual(mockUser.username);

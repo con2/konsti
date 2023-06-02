@@ -7,13 +7,19 @@ import { findSettings } from "server/features/settings/settingsRepository";
 import { shuffleArray } from "server/utils/shuffleArray";
 import { getRandomInt } from "server/features/player-assignment/utils/getRandomInt";
 import { saveSignup } from "server/features/signup/signupRepository";
+import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 
 export const createSignups = async (): Promise<void> => {
   logger.info(`Generate signup data`);
 
-  const games = await findGames();
-  const allUsers = await findUsers();
-  const settings = await findSettings();
+  const gamesResult = await findGames();
+  const games = unsafelyUnwrapResult(gamesResult);
+
+  const allUsersResult = await findUsers();
+  const allUsers = unsafelyUnwrapResult(allUsersResult);
+
+  const findSettingsResult = await findSettings();
+  const settings = unsafelyUnwrapResult(findSettingsResult);
 
   const users = allUsers.filter(
     (user) => user.username !== "admin" && user.username !== "helper"
