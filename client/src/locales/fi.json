@@ -196,7 +196,8 @@
   "all": "Kaikki",
   "allProgramItems": "Kaikki {{PROGRAM_TYPE}}",
   "lastStartedAndUpcoming": "Viimeksi alkaneet ja tulevat",
-  "chooseTag": "Valitse tagi",
+  "startingTime": "Aloitusaika",
+  "chooseTag": "Tagi",
   "revolvingDoor": "Pyöröovi",
   "revolvingDoorInstruction": "Pyöröovipeleihin voi liittyä koska tahansa, jos pelipöydässä on tilaa",
   "currentlyRunningRevolvingDoor": "Käynnissä olevat pyöröovipelit",
@@ -372,7 +373,7 @@
     "medium": "Tarpeeksi pelaajia toteutuakseen",
     "high": "Enemmän kiinnostuneita kuin paikkoja"
   },
-  "selectedProgramType": "Valittu ohjelmatyyppi",
+  "selectedProgramType": "Ohjelmatyyppi",
   "yes": "Kyllä",
   "no": "Ei",
   "privateQuestion": "Yksityinen kysymys",

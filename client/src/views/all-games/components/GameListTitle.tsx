@@ -1,5 +1,5 @@
 import { ReactElement, useRef } from "react";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import useIntersectionObserver from "@react-hook/intersection-observer";
 import { timeFormatter } from "client/utils/timeFormatter";
@@ -100,20 +100,17 @@ const GameListTitleContainer = styled.div<{ isVisible: boolean }>`
   margin: 20px 0 20px 0;
   padding: 8px;
   background: #fafafa;
-  border-bottom: 1px solid #d5d5d5;
   color: #3d3d3d;
+  border-radius: 4px;
   position: sticky;
   top: 0;
 
-  ${(titleProps) =>
-    titleProps.isVisible &&
-    css`
-      box-shadow: 4px 4px 45px 4px #d5d5d5;
-    `};
+  box-shadow: ${(props) => props.theme.shadowHigher};
 
   @media (max-width: ${(props) => props.theme.breakpointPhone}) {
     margin-left: -${MOBILE_MARGIN}px;
     margin-right: -${MOBILE_MARGIN}px;
+    border-radius: 0;
   }
 
   @media (max-width: ${(props) => props.theme.breakpointDesktop}) {

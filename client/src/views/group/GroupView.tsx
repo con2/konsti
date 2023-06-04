@@ -12,7 +12,7 @@ import { GroupCreatorActions } from "client/views/group/components/GroupCreatorA
 import { GroupMemberActions } from "client/views/group/components/GroupMemberActions";
 import { ProgramType } from "shared/typings/models/game";
 import { getTime } from "client/utils/getTime";
-import { selectActiveEnteredGames } from "client/views/my-games/myGamesSlice";
+import { selectEnteredGames } from "client/views/my-games/myGamesSlice";
 import { sharedConfig } from "shared/config/sharedConfig";
 
 const { directSignupAlwaysOpenIds } = sharedConfig;
@@ -25,7 +25,7 @@ export const GroupView = (): ReactElement => {
   const activeProgramType = useAppSelector(
     (state) => state.admin.activeProgramType
   );
-  const activeEnteredGames = useAppSelector(selectActiveEnteredGames);
+  const enteredGames = useAppSelector(selectEnteredGames);
   const { t } = useTranslation();
 
   const store = useStore();
@@ -37,7 +37,7 @@ export const GroupView = (): ReactElement => {
     fetchData();
   }, [store]);
 
-  const filteredActiveEnteredGames = activeEnteredGames.filter(
+  const filteredActiveEnteredGames = enteredGames.filter(
     (activeEnteredGame) =>
       !directSignupAlwaysOpenIds.includes(activeEnteredGame.gameDetails.gameId)
   );
