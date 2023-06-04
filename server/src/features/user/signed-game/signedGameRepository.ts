@@ -56,11 +56,12 @@ export const saveSignedGames = async (
       logger.error("Error saving signup");
       return makeErrorResult(MongoDbError.SIGNUP_NOT_FOUND);
     }
-    logger.debug(`MongoDB: Signup data stored for user "${username}"`);
+    logger.debug(`MongoDB: Signup data stored for user ${username}`);
     return makeSuccessResult(signupResponse);
   } catch (error) {
     logger.error(
-      `MongoDB: Error storing signup data for user "${username}" - ${error}`
+      `MongoDB: Error storing signup data for user ${username}: %s`,
+      error
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
@@ -74,7 +75,7 @@ export const removeSignedGames = async (): Promise<
     await UserModel.updateMany({}, { signedGames: [] });
     return makeSuccessResult(undefined);
   } catch (error) {
-    logger.error(`MongoDB: Error removing signups: ${error}`);
+    logger.error("MongoDB: Error removing signups: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };

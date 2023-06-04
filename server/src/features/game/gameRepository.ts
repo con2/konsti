@@ -24,7 +24,7 @@ export const removeGames = async (
     await GameModel.deleteMany(gameIds ? { gameId: { $in: gameIds } } : {});
     return makeSuccessResult(undefined);
   } catch (error) {
-    logger.error(`MongoDB: Error removing games - ${error}`);
+    logger.error("MongoDB: Error removing games: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
@@ -87,7 +87,7 @@ export const saveGames = async (
       })
     );
   } catch (error) {
-    logger.error(`Error saving games to db: ${error}`);
+    logger.error("Error saving games to db: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 
@@ -101,7 +101,7 @@ export const findGames = async (): Promise<Result<GameDoc[], MongoDbError>> => {
     logger.debug(`MongoDB: Find all games`);
     return makeSuccessResult(response);
   } catch (error) {
-    logger.error(`MongoDB: Error fetching games - ${error}`);
+    logger.error("MongoDB: Error fetching games: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
@@ -118,7 +118,7 @@ export const findGameById = async (
     }
     return makeSuccessResult(response);
   } catch (error) {
-    logger.error(`MongoDB: Error fetching gameId ${gameId} - ${error}`);
+    logger.error("MongoDB: Error fetching gameId: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
@@ -139,7 +139,7 @@ export const saveGamePopularity = async (
     );
     return makeSuccessResult(undefined);
   } catch (error) {
-    logger.error(`Error updating game popularity: ${error}`);
+    logger.error("Error updating game popularity: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };

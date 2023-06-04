@@ -88,7 +88,7 @@ export const storeUser = async (
   const user = unwrapResult(userResult);
 
   if (user) {
-    logger.info(`User: Username "${username}" is already registered`);
+    logger.info(`User: Username ${username} is already registered`);
     return {
       errorId: "usernameNotFree",
       message: "Username in already registered",

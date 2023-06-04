@@ -40,7 +40,7 @@ const createSignups = async (): Promise<Result<void, MongoDbError>> => {
       );
       makeSuccessResult(undefined);
     } catch (error) {
-      logger.error(`MongoDB: ${error}`);
+      logger.error("MongoDB: Error creating signups: %s", error);
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
   });

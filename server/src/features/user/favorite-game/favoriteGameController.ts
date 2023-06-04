@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-import { ZodError } from "zod";
 import { logger } from "server/utils/logger";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
@@ -28,9 +27,7 @@ export const postFavorite = async (
   try {
     body = PostFavoriteRequestSchema.parse(req.body);
   } catch (error) {
-    if (error instanceof ZodError) {
-      logger.error(`Error validating postFavorite body: ${error.message}`);
-    }
+    logger.error("Error validating postFavorite body: %s", error);
     return res.sendStatus(422);
   }
 

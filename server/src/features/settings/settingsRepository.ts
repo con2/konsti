@@ -20,7 +20,7 @@ export const removeSettings = async (): Promise<Result<void, MongoDbError>> => {
     await SettingsModel.deleteMany({});
     return makeSuccessResult(undefined);
   } catch (error) {
-    logger.error(`MongoDB: Error removing settings: ${error}`);
+    logger.error("MongoDB: Error removing settings: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
@@ -33,7 +33,7 @@ const createSettings = async (): Promise<Result<Settings, MongoDbError>> => {
     logger.info(`MongoDB: Default settings saved to DB`);
     return makeSuccessResult(settings);
   } catch (error) {
-    logger.error(`MongoDB: Add default settings error: ${error}`);
+    logger.error("MongoDB: Add default settings error: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
@@ -61,7 +61,7 @@ export const findSettings = async (): Promise<
     logger.debug(`MongoDB: Settings data found`);
     return makeSuccessResult(settings);
   } catch (error) {
-    logger.error(`MongoDB: Error finding settings data: ${error}`);
+    logger.error("MongoDB: Error finding settings data: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
@@ -98,7 +98,7 @@ export const saveHidden = async (
     logger.info(`MongoDB: Hidden data updated`);
     return makeSuccessResult(settings);
   } catch (error) {
-    logger.error(`MongoDB: Error updating hidden games: ${error}`);
+    logger.error("MongoDB: Error updating hidden games: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
@@ -121,7 +121,7 @@ export const saveSignupQuestion = async (
     logger.info(`MongoDB: Signup question updated`);
     return makeSuccessResult(settings);
   } catch (error) {
-    logger.error(`MongoDB: Error updating signup info games: ${error}`);
+    logger.error("MongoDB: Error updating signup info games: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
@@ -147,7 +147,7 @@ export const delSignupQuestion = async (
     logger.info(`MongoDB: Signup info deleted`);
     return makeSuccessResult(settings);
   } catch (error) {
-    logger.error(`MongoDB: Error deleting signup info games: ${error}`);
+    logger.error("MongoDB: Error deleting signup info games: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
@@ -168,7 +168,7 @@ export const saveSettings = async (
     logger.info(`MongoDB: App settings updated`);
     return makeSuccessResult(updatedSettings.toJSON<SettingsDoc>());
   } catch (error) {
-    logger.error(`MongoDB: Error updating app settings: ${error}`);
+    logger.error("MongoDB: Error updating app settings: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
