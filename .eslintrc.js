@@ -51,7 +51,6 @@ module.exports = {
   rules: {
     // eslint
     "no-param-reassign": "error",
-    "no-restricted-imports": ["error", { patterns: ["../*"] }],
     "no-console": "error",
     "object-shorthand": "error",
     "array-callback-return": "off",
@@ -101,6 +100,24 @@ module.exports = {
     "@typescript-eslint/no-unused-vars": [
       "error",
       { vars: "all", args: "all", argsIgnorePattern: "^_" },
+    ],
+    "@typescript-eslint/no-restricted-imports": [
+      "error",
+      {
+        paths: [
+          {
+            name: "react",
+            importNames: ["default"],
+            message: "Please use named imports, e.g. { useEffect }",
+          },
+        ],
+        patterns: [
+          {
+            group: ["../*"],
+            message: "Relative import (../) not allowed, use absolute import",
+          },
+        ],
+      },
     ],
     "@typescript-eslint/strict-boolean-expressions": "off", // Forces unwanted code style
     "@typescript-eslint/restrict-template-expressions": "off", // Requires typing catch(e) every time
