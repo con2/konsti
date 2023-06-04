@@ -24,7 +24,7 @@ export const kompassiGameMapper = (
   return games.flatMap((game) => {
     const validEndTime = dayjs(game.end_time).isValid();
     if (!validEndTime) {
-      logger.warn(`Game "${game.title}" has invalid end time, skipping...`);
+      logger.warn(`Game ${game.title} has invalid end time, skipping...`);
       return [];
     }
 

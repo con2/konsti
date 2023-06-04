@@ -37,7 +37,7 @@ export const saveUser = async (
 
   try {
     const response = await user.save();
-    logger.debug(`MongoDB: User "${newUserData.username}" saved to DB`);
+    logger.debug(`MongoDB: User ${newUserData.username} saved to DB`);
     return makeSuccessResult(response);
   } catch (error) {
     logger.error(
@@ -74,7 +74,7 @@ export const updateUserByUsername = async (
       return makeErrorResult(MongoDbError.USER_NOT_FOUND);
     }
 
-    logger.debug(`MongoDB: User "${user.username}" updated`);
+    logger.debug(`MongoDB: User ${user.username} updated`);
     return makeSuccessResult(response);
   } catch (error) {
     logger.error(`MongoDB: Error updating user ${user.username}: %s`, error);
@@ -97,7 +97,7 @@ export const updateUserPassword = async (
       .lean<User>()
       .populate("favoritedGames")
       .populate("signedGames.gameDetails");
-    logger.debug(`MongoDB: Password for user "${username}" updated`);
+    logger.debug(`MongoDB: Password for user ${username} updated`);
     return makeSuccessResult(response);
   } catch (error) {
     logger.error(
@@ -117,9 +117,9 @@ export const findUser = async (
       .populate("favoritedGames")
       .populate("signedGames.gameDetails");
     if (!response) {
-      logger.info(`MongoDB: User "${username}" not found`);
+      logger.info(`MongoDB: User ${username} not found`);
     } else {
-      logger.debug(`MongoDB: Found user "${username}"`);
+      logger.debug(`MongoDB: Found user ${username}`);
     }
     return makeSuccessResult(response);
   } catch (error) {
@@ -138,9 +138,9 @@ export const findUserBySerial = async (
       .populate("signedGames.gameDetails");
 
     if (!response) {
-      logger.info(`MongoDB: User with serial "${serial}" not found`);
+      logger.info(`MongoDB: User with serial ${serial} not found`);
     } else {
-      logger.debug(`MongoDB: Found user with serial "${serial}"`);
+      logger.debug(`MongoDB: Found user with serial ${serial}`);
     }
     return makeSuccessResult(response);
   } catch (error) {
@@ -160,9 +160,9 @@ export const findUserSerial = async (
   try {
     const response = await UserModel.findOne({ serial }).lean<User>();
     if (!response) {
-      logger.info(`MongoDB: Serial "${serial}" not found`);
+      logger.info(`MongoDB: Serial ${serial} not found`);
     } else {
-      logger.debug(`MongoDB: Found Serial "${serial}"`);
+      logger.debug(`MongoDB: Found Serial ${serial}`);
     }
     return makeSuccessResult(response);
   } catch (error) {

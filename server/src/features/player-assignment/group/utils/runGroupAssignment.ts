@@ -47,13 +47,13 @@ export const runGroupAssignment = (
     );
 
     logger.debug(
-      `Found ${matchingGroups.length} groups with ${playersCount} players for game "${selectedGame.title}", ${selectedGame.minAttendance}-${selectedGame.maxAttendance} players required`
+      `Found ${matchingGroups.length} groups with ${playersCount} players for game ${selectedGame.title}, ${selectedGame.minAttendance}-${selectedGame.maxAttendance} players required`
     );
 
     // Not enough interested players, game will not happen
     if (playersCount < selectedGame.minAttendance) {
       logger.debug(
-        `Not enough players for game "${selectedGame.title}" (signed: ${playersCount}, required: ${selectedGame.minAttendance}-${selectedGame.maxAttendance})`
+        `Not enough players for game ${selectedGame.title} (signed: ${playersCount}, required: ${selectedGame.minAttendance}-${selectedGame.maxAttendance})`
       );
       break;
     }
@@ -111,7 +111,7 @@ export const runGroupAssignment = (
     if (numberOfPlayers < selectedGame.minAttendance) {
       // Not enough signups, game will not happen
       logger.debug(
-        `Not enough signups for game "${selectedGame.title}" (signed: ${playersCount}, assigned: ${numberOfPlayers}, required: ${selectedGame.minAttendance}-${selectedGame.maxAttendance})`
+        `Not enough signups for game ${selectedGame.title} (signed: ${playersCount}, assigned: ${numberOfPlayers}, required: ${selectedGame.minAttendance}-${selectedGame.maxAttendance})`
       );
     } else {
       // Enough signups, game will happen

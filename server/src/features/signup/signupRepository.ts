@@ -67,11 +67,11 @@ export const findRpgSignupsByStartTime = async (
       .lean<Signup[]>()
       .populate("game", "-createdAt -updatedAt -_id -__v");
     if (!response) {
-      logger.info(`MongoDB: Signups for time "${startTime}" not found`);
+      logger.info(`MongoDB: Signups for time ${startTime} not found`);
       return makeSuccessResult([]);
     }
 
-    logger.debug(`MongoDB: Found signups for time "${startTime}"`);
+    logger.debug(`MongoDB: Found signups for time ${startTime}`);
 
     const formattedResponse: FindRpgSignupsByStartTimeResponse[] =
       response.flatMap((signup) => {
@@ -105,11 +105,11 @@ export const findUserSignups = async (
       .lean<Signup[]>()
       .populate("game", "-createdAt -updatedAt -_id -__v");
     if (!response) {
-      logger.info(`MongoDB: Signups for user "${username}" not found`);
+      logger.info(`MongoDB: Signups for user ${username} not found`);
       return makeSuccessResult([]);
     }
 
-    logger.debug(`MongoDB: Found signups for user "${username}"`);
+    logger.debug(`MongoDB: Found signups for user ${username}`);
     return makeSuccessResult(response);
   } catch (error) {
     logger.error(
@@ -163,7 +163,7 @@ export const saveSignup = async (
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
-    logger.info(`MongoDB: Signup saved for user "${username}"`);
+    logger.info(`MongoDB: Signup saved for user ${username}`);
     return makeSuccessResult(signup);
   } catch (error) {
     logger.error(
@@ -218,7 +218,7 @@ export const delSignup = async (
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
 
-    logger.info(`MongoDB: Signup removed from user "${username}"`);
+    logger.info(`MongoDB: Signup removed from user ${username}`);
     return makeSuccessResult(signup);
   } catch (error) {
     logger.error(

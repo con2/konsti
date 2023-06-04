@@ -67,7 +67,7 @@ export const createGames = async (
 
   programTypes.map((programType) => {
     logger.info(
-      `Generate data for ${gameCount} programs of type "${programType}" for ${startingTimes.length} starting times`
+      `Generate data for ${gameCount} programs of type ${programType} for ${startingTimes.length} starting times`
     );
 
     startingTimes.forEach((startingTime) => {
@@ -121,7 +121,7 @@ export const createGames = async (
           entry_fee: workshopProgramTypes.includes(programType) ? 5 : 0,
         };
 
-        logger.info(`Stored game "${kompassiGameData.title}"`);
+        logger.info(`Stored game ${kompassiGameData.title}`);
         kompassiGames.push(kompassiGameData);
       }
     });

@@ -63,10 +63,10 @@ export const findSerial = async (
   }
 
   if (!response) {
-    logger.debug(`MongoDB: Serial "${serial}" not found`);
+    logger.debug(`MongoDB: Serial ${serial} not found`);
     return makeSuccessResult(false);
   } else {
-    logger.debug(`MongoDB: Found serial "${serial}"`);
+    logger.debug(`MongoDB: Found serial ${serial}`);
     return makeSuccessResult(true);
   }
 };

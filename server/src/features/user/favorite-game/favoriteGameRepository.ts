@@ -48,7 +48,7 @@ export const saveFavorite = async (
       .lean<User>()
       .populate("favoritedGames", "-_id -__v -updatedAt -createdAt");
     logger.info(
-      `MongoDB: Favorite data stored for user "${favoriteData.username}"`
+      `MongoDB: Favorite data stored for user ${favoriteData.username}`
     );
     if (!response) {
       logger.error(`MongoDB: User not found`);

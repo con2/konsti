@@ -50,7 +50,7 @@ export const verifyUserSignups = async (): Promise<
       );
 
       if (!matchingUser) {
-        logger.error(`No matcing user: "${userSignup.username}"`);
+        logger.error(`No matcing user: ${userSignup.username}`);
         return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
       }
 
@@ -69,7 +69,7 @@ export const verifyUserSignups = async (): Promise<
 
       if (!matchingCreatorSignedGame) {
         logger.error(
-          `No matching signed game found from group creator: "${userSignup.username}" - "${game.title}"`
+          `No matching signed game found from group creator: ${userSignup.username} - ${game.title}`
         );
         return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
       }

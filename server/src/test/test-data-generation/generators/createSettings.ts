@@ -31,7 +31,7 @@ export const createSettings = async (): Promise<void> => {
     const randomGame = shuffledGames[index];
 
     logger.info(
-      `Add test question "${testQuestion}" to game "${randomGame.title}"`
+      `Add test question ${testQuestion} to game ${randomGame.title}`
     );
 
     await saveSignupQuestion({
