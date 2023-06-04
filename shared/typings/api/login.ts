@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { ApiError, ApiResult } from "shared/typings/api/errors";
 import { UserGroup } from "shared/typings/models/user";
+import { ActionLogItem } from "shared/typings/models/actionLog";
 
 // POST login
 
@@ -18,6 +19,7 @@ export interface PostLoginResponse extends ApiResult {
   serial: string;
   userGroup: UserGroup;
   username: string;
+  actionLogItems: ActionLogItem[];
 }
 
 export interface PostLoginError extends ApiError {

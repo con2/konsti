@@ -2,11 +2,16 @@ import { postLogin, postSessionRecovery } from "client/services/loginServices";
 import { saveSession, clearSession } from "client/utils/localStorage";
 import { AppThunk } from "client/typings/redux.typings";
 import { PostLoginError, PostLoginResponse } from "shared/typings/api/login";
-import { submitLoginAsync } from "client/views/login/loginSlice";
+import {
+  submitLoginAsync,
+  submitUpdateActionLogIsSeenAsync,
+} from "client/views/login/loginSlice";
 import { loadGroupMembers, loadUser } from "client/utils/loadData";
 import { submitUpdateGroupCodeAsync } from "client/views/group/groupSlice";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 import { LoginFormFields } from "client/views/login/components/LoginForm";
+import { postActionLogItemIsSeen } from "client/services/userServices";
+import { PostActionLogIsSeenRequest } from "shared/typings/api/actionLog";
 
 export enum LoginErrorMessage {
   LOGIN_FAILED = "error.loginFailed",
@@ -54,6 +59,7 @@ export const submitLogin = (
           jwt: loginResponse.jwt,
           userGroup: loginResponse.userGroup,
           serial: loginResponse.serial,
+          actionLogItems: loginResponse.actionLogItems,
         })
       );
 
@@ -106,10 +112,27 @@ export const submitSessionRecovery = (jwt: string): AppThunk => {
           jwt: loginResponse.jwt,
           userGroup: loginResponse.userGroup,
           serial: loginResponse.serial,
+          actionLogItems: loginResponse.actionLogItems,
         })
       );
 
       dispatch(submitUpdateGroupCodeAsync(loginResponse.groupCode));
+    }
+  };
+};
+
+export const submitUpdateActionLogIsSeen = (
+  request: PostActionLogIsSeenRequest
+): AppThunk => {
+  return async (dispatch): Promise<void> => {
+    const response = await postActionLogItemIsSeen(request);
+
+    if (response?.status === "error") {
+      // TODO
+    }
+
+    if (response?.status === "success") {
+      dispatch(submitUpdateActionLogIsSeenAsync(response.actionLogItems));
     }
   };
 };

@@ -13,11 +13,15 @@ import {
   unwrapResult,
 } from "shared/utils/result";
 import { MongoDbError } from "shared/typings/api/errors";
+import { addToActionLogs } from "server/features/user/action-log/actionLogRepository";
+import { ActionLogAction } from "shared/typings/models/actionLog";
 
 export const saveUserSignupResults = async (
   startingTime: string,
   results: readonly AssignmentResult[]
 ): Promise<Result<void, MongoDbError>> => {
+  // Remove previous assignment result - for now only RPGs use assignment
+  // This does not remove directSignupAlwaysOpen signups as they are not assignment results
   const delRpgSignupsByStartTimeResult = await delRpgSignupsByStartTime(
     startingTime
   );
@@ -35,9 +39,10 @@ export const saveUserSignupResults = async (
 
   const rpgSignupsByStartTime = unwrapResult(rpgSignupsByStartTimeResult);
 
+  // Resolve conflicting directSignupAlwaysOpen signups
   // If user has previous directSignupAlwaysOpen signups...
-  // ... and no new result -> don't remove
-  // ... and new result -> remove
+  // ... and new assignment result -> remove
+  // ... and no new assignment result -> do not remove
   const deletePromises = results.map(async (result) => {
     const existingSignup = rpgSignupsByStartTime.find(
       (signup) => signup.username === result.username
@@ -64,6 +69,7 @@ export const saveUserSignupResults = async (
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 
+  // Save new assignment results
   const savePromises = results.map(async (result) => {
     const saveSignupResult = await saveSignup({
       username: result.username,
@@ -84,6 +90,18 @@ export const saveUserSignupResults = async (
   );
   if (someSaveFailed) {
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+  }
+
+  // Add new signups to users actionLogs
+  const addToActionLogResult = await addToActionLogs({
+    updates: results.map((result) => ({
+      username: result.username,
+      eventItemTitle: result.enteredGame.gameDetails.title,
+    })),
+    action: ActionLogAction.NEW_ASSIGNMENT,
+  });
+  if (isErrorResult(addToActionLogResult)) {
+    return addToActionLogResult;
   }
 
   return makeSuccessResult(undefined);

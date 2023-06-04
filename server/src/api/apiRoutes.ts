@@ -17,6 +17,7 @@ import {
   deleteSignup,
   postSignup,
 } from "server/features/signup/signupController";
+import { postActionLogItem } from "server/features/user/action-log/actionLogController";
 import { postFavorite } from "server/features/user/favorite-game/favoriteGameController";
 import {
   getGroup,
@@ -65,6 +66,7 @@ apiRoutes.post(ApiEndpoint.SESSION_RESTORE, postSessionRestore);
 apiRoutes.post(ApiEndpoint.USERS_PASSWORD, postUserPassword);
 apiRoutes.post(ApiEndpoint.SETTINGS, postSettings);
 apiRoutes.post(ApiEndpoint.SIGNUP, postSignup);
+apiRoutes.post(ApiEndpoint.ACTION_LOG, postActionLogItem);
 
 /* GET routes */
 

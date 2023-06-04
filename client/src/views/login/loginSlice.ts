@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { LoginState } from "client/typings/redux.typings";
 import { UserGroup } from "shared/typings/models/user";
-import { SubmitLoginPayload } from "client/views/login/loginTypes";
 import { loadSession } from "client/utils/localStorage";
+import { ActionLogItem } from "shared/typings/models/actionLog";
 
 const initialState = (): LoginState => {
   const persistedState = loadSession();
@@ -13,6 +13,7 @@ const initialState = (): LoginState => {
     jwt: persistedState?.login?.jwt ?? "",
     userGroup: UserGroup.USER,
     serial: "",
+    actionLogItems: [],
   };
 };
 
@@ -20,7 +21,7 @@ const loginSlice = createSlice({
   name: "login",
   initialState,
   reducers: {
-    submitLoginAsync(state, action: PayloadAction<SubmitLoginPayload>) {
+    submitLoginAsync(state, action: PayloadAction<LoginState>) {
       return {
         ...state,
         username: action.payload.username,
@@ -28,11 +29,23 @@ const loginSlice = createSlice({
         jwt: action.payload.jwt,
         userGroup: action.payload.userGroup,
         serial: action.payload.serial,
+        actionLogItems: action.payload.actionLogItems,
+      };
+    },
+
+    submitUpdateActionLogIsSeenAsync(
+      state,
+      action: PayloadAction<ActionLogItem[]>
+    ) {
+      return {
+        ...state,
+        actionLogItems: action.payload,
       };
     },
   },
 });
 
-export const { submitLoginAsync } = loginSlice.actions;
+export const { submitLoginAsync, submitUpdateActionLogIsSeenAsync } =
+  loginSlice.actions;
 
 export const loginReducer = loginSlice.reducer;

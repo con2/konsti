@@ -254,6 +254,12 @@
     "time": "Testiaika",
     "strategy": "Strategia"
   },
+  "actionLog": {
+    "title": "Tapahtumat"
+  },
+  "actionLogActions": {
+    "newAssignment": "Uusi ilmoittautuminen"
+  },
   "signup": {
     "alreadyLotterySigned": "Peli on arvontavaihtoehdoissa sijalla {{CURRENT_PRIORITY}}",
     "directSignup": "Ilmoittaudu",

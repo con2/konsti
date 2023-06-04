@@ -17,6 +17,13 @@ const UserSchema = new mongoose.Schema(
         message: String,
       },
     ],
+    actionLogItems: [
+      {
+        action: String,
+        eventItemId: String,
+        isSeen: Boolean,
+      },
+    ],
   },
   { timestamps: true }
 );

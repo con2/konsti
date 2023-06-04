@@ -74,6 +74,7 @@ export const login = async (
       serial: user.serial,
       groupCode: user.groupCode,
       jwt: getJWT(user.userGroup, user.username),
+      actionLogItems: user.actionLogItems,
     };
   } else {
     logger.info(`Login: Password for user ${username} doesn't match`);

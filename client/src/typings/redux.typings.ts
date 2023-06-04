@@ -8,6 +8,7 @@ import { SignupQuestion } from "shared/typings/models/settings";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
 import { ErrorMessageType } from "client/components/ErrorBar";
 import { SignupMessage } from "shared/typings/models/signupMessage";
+import { ActionLogItem } from "shared/typings/models/actionLog";
 
 export interface AdminState {
   hiddenGames: readonly Game[];
@@ -37,6 +38,7 @@ export interface LoginState {
   jwt: string;
   userGroup: UserGroup;
   serial: string;
+  actionLogItems: ActionLogItem[];
 }
 
 export interface GroupState {
