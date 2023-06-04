@@ -25,7 +25,7 @@ export const findGroupMembers = async (
     }
     return makeSuccessResult(response);
   } catch (error) {
-    logger.error(`MongoDB: Error finding group ${groupCode} - ${error}`);
+    logger.error(`MongoDB: Error finding group ${groupCode}: %s`, error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
@@ -51,7 +51,7 @@ export const findGroup = async (
       );
       return makeSuccessResult(response);
     } catch (error) {
-      logger.error(`MongoDB: Error finding group ${groupCode} - ${error}`);
+      logger.error(`MongoDB: Error finding group ${groupCode}: %s`, error);
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
   }
@@ -65,7 +65,7 @@ export const findGroup = async (
     logger.info(`MongoDB: Group "${groupCode}" found`);
     return makeSuccessResult(response);
   } catch (error) {
-    logger.error(`MongoDB: Error finding group ${groupCode} - ${error}`);
+    logger.error(`MongoDB: Error finding group ${groupCode}: %s`, error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
@@ -90,7 +90,8 @@ export const saveGroupCode = async (
     return makeSuccessResult(response);
   } catch (error) {
     logger.error(
-      `MongoDB: Error storing group "${groupCode}" stored for user "${username}" - ${error}`
+      `MongoDB: Error storing group ${groupCode} stored for user ${username}: %s`,
+      error
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }

@@ -29,7 +29,7 @@ export const postSignedGames = async (
     body = PostSignedGamesRequestSchema.parse(req.body);
   } catch (error) {
     if (error instanceof ZodError) {
-      logger.error(`Error validating postSignedGames body: ${error.message}`);
+      logger.error("Error validating postSignedGames body: %s", error);
     }
     return res.sendStatus(422);
   }

@@ -57,7 +57,8 @@ export const saveFavorite = async (
     return makeSuccessResult(response.favoritedGames);
   } catch (error) {
     logger.error(
-      `MongoDB: Error storing favorite data for user "${favoriteData.username}" - ${error}`
+      `MongoDB: Error storing favorite data for user ${favoriteData.username}: %s`,
+      error
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }

@@ -26,7 +26,7 @@ export const getResults = async (
     body = GetResultsRequestSchema.parse(req.query);
   } catch (error) {
     if (error instanceof ZodError) {
-      logger.error(`Error validating getResults body: ${error.message}`);
+      logger.error("Error validating getResults body: %s", error);
     }
     return res.sendStatus(422);
   }
@@ -59,7 +59,7 @@ export const postAssignment = async (
   try {
     body = PostPlayerAssignmentRequestSchema.parse(req.body);
   } catch (error) {
-    logger.error(`Parsing postAssignment() request body failed: ${error}`);
+    logger.error("Parsing postAssignment() request body failed: %s", error);
     return res.sendStatus(422);
   }
 

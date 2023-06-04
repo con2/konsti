@@ -4,22 +4,15 @@ import { Integrations } from "@sentry/node";
 import { config } from "server/config";
 import { getDsn } from "server/utils/sentry";
 
-const formatMessage = (message: string | object): string => {
-  if (typeof message === "string") {
-    return message;
-  } else {
-    return JSON.stringify(message, null, 2);
-  }
-};
-
 const consoleOutputFormat = config.consoleLogFormatJson
   ? format.combine(
       format.timestamp(),
+      format.splat(),
       format.printf((info) => {
         return JSON.stringify({
+          timestamp: info.timestamp,
           level: info.level,
           message: info.message,
-          timestamp: info.timestamp,
         });
       })
     )
@@ -28,10 +21,9 @@ const consoleOutputFormat = config.consoleLogFormatJson
       format.timestamp({
         format: "HH:mm:ss",
       }),
+      format.splat(),
       format.printf((info) => {
-        return `${info.timestamp} ${info.level}: ${formatMessage(
-          info.message as string | object
-        )}`;
+        return `${info.timestamp} ${info.level}: ${info.message}`;
       })
     );
 

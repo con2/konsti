@@ -19,7 +19,7 @@ export const postLogin = async (
     body = PostLoginRequestSchema.parse(req.body);
   } catch (error) {
     if (error instanceof ZodError) {
-      logger.error(`Error validating postLogin body: ${error.message}`);
+      logger.error("Error validating postLogin body: %s", error);
     }
     return res.sendStatus(422);
   }

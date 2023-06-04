@@ -41,7 +41,7 @@ export const postCreateGroup = async (
     body = PostCreateGroupRequestSchema.parse(req.body);
   } catch (error) {
     if (error instanceof ZodError) {
-      logger.error(`Error validating postCreateGroup body: ${error.message}`);
+      logger.error("Error validating postCreateGroup body: %s", error);
     }
     return res.sendStatus(422);
   }
@@ -71,7 +71,7 @@ export const postJoinGroup = async (
     body = PostJoinGroupRequestSchema.parse(req.body);
   } catch (error) {
     if (error instanceof ZodError) {
-      logger.error(`Error validating postJoinGroup body: ${error.message}`);
+      logger.error("Error validating postJoinGroup body: %s", error);
     }
     return res.sendStatus(422);
   }
@@ -119,7 +119,7 @@ export const postCloseGroup = async (
     body = PostCloseGroupRequestSchema.parse(req.body);
   } catch (error) {
     if (error instanceof ZodError) {
-      logger.error(`Error validating postCloseGroup body: ${error.message}`);
+      logger.error("Error validating postCloseGroup body: %s", error);
     }
     return res.sendStatus(422);
   }
@@ -149,7 +149,7 @@ export const getGroup = async (
     params = GetGroupRequestSchema.parse(req.query);
   } catch (error) {
     if (error instanceof ZodError) {
-      logger.error(`Error validating getGroup params: ${error.message}`);
+      logger.error("Error validating getGroup params: %s", error);
     }
     return res.sendStatus(422);
   }

@@ -34,7 +34,7 @@ export const postSignup = async (
     body = PostEnteredGameRequestSchema.parse(req.body);
   } catch (error) {
     if (error instanceof ZodError) {
-      logger.info(`Error validating postSignup body: ${error.message}`);
+      logger.info("Error validating postSignup body: %s", error);
     }
     return res.sendStatus(422);
   }
@@ -62,7 +62,7 @@ export const deleteSignup = async (
     body = DeleteEnteredGameRequestSchema.parse(req.body);
   } catch (error) {
     if (error instanceof ZodError) {
-      logger.error(`Error validating deleteSignup body: ${error.message}`);
+      logger.error("Error validating deleteSignup body: %s", error);
     }
     return res.sendStatus(422);
   }

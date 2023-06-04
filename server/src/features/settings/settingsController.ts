@@ -103,7 +103,7 @@ export const postSettings = async (
     body = PostSettingsRequestSchema.parse(req.body);
   } catch (error) {
     if (error instanceof ZodError) {
-      logger.error(`Error validating postSettings body: ${error.message}`);
+      logger.error("Error validating postSettings body: %s", error);
     }
     return res.sendStatus(422);
   }

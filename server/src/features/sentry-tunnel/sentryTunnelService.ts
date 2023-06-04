@@ -42,7 +42,7 @@ export const resendSentryRequest = async (
 
     return null;
   } catch (error) {
-    logger.error(`Sentry tunnel error: ${error}`);
+    logger.error("Sentry tunnel error: %s", error);
     return {
       message: "Sentry tunnel error",
       status: "error",

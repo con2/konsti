@@ -29,7 +29,7 @@ export const postFavorite = async (
     body = PostFavoriteRequestSchema.parse(req.body);
   } catch (error) {
     if (error instanceof ZodError) {
-      logger.error(`Error validating postFavorite body: ${error.message}`);
+      logger.error("Error validating postFavorite body: %s", error);
     }
     return res.sendStatus(422);
   }

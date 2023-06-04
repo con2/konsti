@@ -32,7 +32,7 @@ export const postTestSettings = async (
     body = PostTestSettingsRequestSchema.parse(req.body);
   } catch (error) {
     if (error instanceof ZodError) {
-      logger.error(`Error validating postTestSettings body: ${error.message}`);
+      logger.error("Error validating postTestSettings body: %s", error);
     }
     return res.sendStatus(422);
   }

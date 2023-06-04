@@ -29,7 +29,7 @@ export const postFeedback = async (
     body = PostFeedbackRequestSchema.parse(req.body);
   } catch (error) {
     if (error instanceof ZodError) {
-      logger.error(`Error validating postFeedback body: ${error.message}`);
+      logger.error("Error validating postFeedback body: %s", error);
     }
     return res.sendStatus(422);
   }

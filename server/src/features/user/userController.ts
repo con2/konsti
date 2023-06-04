@@ -30,7 +30,7 @@ export const postUser = async (
     body = PostUserRequestSchema.parse(req.body);
   } catch (error) {
     if (error instanceof ZodError) {
-      logger.error(`Error validating postUser body: ${error.message}`);
+      logger.error("Error validating postUser body: %s", error);
     }
     return res.sendStatus(422);
   }
@@ -61,7 +61,7 @@ export const postUserPassword = async (
     body = PostUpdateUserPasswordRequestSchema.parse(req.body);
   } catch (error) {
     if (error instanceof ZodError) {
-      logger.error(`Error validating postUserPassword body: ${error.message}`);
+      logger.error("Error validating postUserPassword body: %s", error);
     }
     return res.sendStatus(422);
   }
@@ -122,7 +122,8 @@ export const getUserBySerialOrUsername = async (
   } catch (error) {
     if (error instanceof ZodError) {
       logger.error(
-        `Error validating getUserBySerialOrUsername params: ${error.message}`
+        "Error validating getUserBySerialOrUsername params: %s",
+        error
       );
     }
     return res.sendStatus(422);
