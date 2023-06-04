@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-import { ZodError } from "zod";
 import { logger } from "server/utils/logger";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
@@ -28,9 +27,7 @@ export const postSignedGames = async (
   try {
     body = PostSignedGamesRequestSchema.parse(req.body);
   } catch (error) {
-    if (error instanceof ZodError) {
-      logger.error("Error validating postSignedGames body: %s", error);
-    }
+    logger.error("Error validating postSignedGames body: %s", error);
     return res.sendStatus(422);
   }
 

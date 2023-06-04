@@ -158,7 +158,8 @@ const getGamesFromFullProgram = (
           });
         } else {
           logger.error(
-            `Unknown error while parsing game ${programItem.identifier}`
+            `Unknown error while parsing game ${programItem.identifier}: %s`,
+            error
           );
         }
 

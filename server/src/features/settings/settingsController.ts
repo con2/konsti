@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-import { ZodError } from "zod";
 import {
   fetchSettings,
   storeHidden,
@@ -102,9 +101,7 @@ export const postSettings = async (
   try {
     body = PostSettingsRequestSchema.parse(req.body);
   } catch (error) {
-    if (error instanceof ZodError) {
-      logger.error("Error validating postSettings body: %s", error);
-    }
+    logger.error("Error validating postSettings body: %s", error);
     return res.sendStatus(422);
   }
 

@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-import { ZodError } from "zod";
 import { logger } from "server/utils/logger";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
@@ -40,9 +39,7 @@ export const postCreateGroup = async (
   try {
     body = PostCreateGroupRequestSchema.parse(req.body);
   } catch (error) {
-    if (error instanceof ZodError) {
-      logger.error("Error validating postCreateGroup body: %s", error);
-    }
+    logger.error("Error validating postCreateGroup body: %s", error);
     return res.sendStatus(422);
   }
 
@@ -70,9 +67,7 @@ export const postJoinGroup = async (
   try {
     body = PostJoinGroupRequestSchema.parse(req.body);
   } catch (error) {
-    if (error instanceof ZodError) {
-      logger.error("Error validating postJoinGroup body: %s", error);
-    }
+    logger.error("Error validating postJoinGroup body: %s", error);
     return res.sendStatus(422);
   }
 
@@ -118,9 +113,7 @@ export const postCloseGroup = async (
   try {
     body = PostCloseGroupRequestSchema.parse(req.body);
   } catch (error) {
-    if (error instanceof ZodError) {
-      logger.error("Error validating postCloseGroup body: %s", error);
-    }
+    logger.error("Error validating postCloseGroup body: %s", error);
     return res.sendStatus(422);
   }
 
@@ -148,9 +141,7 @@ export const getGroup = async (
   try {
     params = GetGroupRequestSchema.parse(req.query);
   } catch (error) {
-    if (error instanceof ZodError) {
-      logger.error("Error validating getGroup params: %s", error);
-    }
+    logger.error("Error validating getGroup params: %s", error);
     return res.sendStatus(422);
   }
 
