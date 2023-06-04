@@ -1,6 +1,7 @@
 import "core-js/stable";
 import "regenerator-runtime/runtime";
 import { createRoot } from "react-dom/client";
+// eslint-disable-next-line @typescript-eslint/no-restricted-imports
 import React, { Suspense, lazy } from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
