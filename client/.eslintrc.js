@@ -10,10 +10,10 @@ module.exports = {
 
   extends: [
     "plugin:eslint-plugin-react/recommended",
+    "plugin:eslint-plugin-react/jsx-runtime",
     "plugin:eslint-plugin-jsx-a11y/recommended",
     "plugin:testing-library/react",
     "plugin:react-hooks/recommended",
-    "plugin:react/jsx-runtime",
   ],
 
   env: {
