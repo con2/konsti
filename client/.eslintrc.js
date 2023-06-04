@@ -28,7 +28,6 @@ module.exports = {
 
   rules: {
     // eslint-plugin-react
-    "react/jsx-uses-react": "error",
     "react/no-multi-comp": "error",
     "react/jsx-no-useless-fragment": "error",
     "react/forbid-elements": [

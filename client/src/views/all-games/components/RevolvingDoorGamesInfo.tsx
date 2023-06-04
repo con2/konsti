@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import dayjs from "dayjs";
 import { Link } from "react-router-dom";
@@ -34,6 +34,7 @@ export const RevolvingDoorGamesInfo = (): ReactElement => {
         <NoGamesInfoText>{t("noCurrentlyRunningGames")}</NoGamesInfoText>
       ) : (
         <div>
+          <h3>{t("currentlyRunningRevolvingDoor")}</h3>
           {runningRevolvingDoorGames.map((game) => (
             <div key={game.gameId}>
               <Link to={`/games/${game.gameId}`}>{game.title}</Link>{" "}

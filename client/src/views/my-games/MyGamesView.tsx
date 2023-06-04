@@ -24,7 +24,6 @@ import {
   selectSignedGames,
 } from "client/views/my-games/myGamesSlice";
 import { RadioButton } from "client/components/RadioButton";
-import { config } from "client/config";
 
 export const MyGamesView = (): ReactElement => {
   const { t } = useTranslation();
@@ -42,9 +41,7 @@ export const MyGamesView = (): ReactElement => {
     (state) => state.admin.activeProgramType
   );
 
-  const [showAllGames, setShowAllGames] = useState<boolean>(
-    config.alwaysShowAllProgramItems
-  );
+  const [showAllGames, setShowAllGames] = useState<boolean>(false);
   const [showChangePassword, setShowChangePassword] = useState<boolean>(false);
 
   const store = useStore();
@@ -62,28 +59,26 @@ export const MyGamesView = (): ReactElement => {
 
   return (
     <MyGamesViewContainer>
-      {!config.alwaysShowAllProgramItems && (
-        <RadioButtonGroup>
-          <RadioButton
-            checked={!showAllGames}
-            id={"upcoming"}
-            label={t("lastStartedAndUpcoming")}
-            onChange={() => setShowAllGames(false)}
-          />
-          <RadioButton
-            checked={showAllGames}
-            id={"all"}
-            label={t("all")}
-            onChange={() => setShowAllGames(true)}
-          />
-        </RadioButtonGroup>
-      )}
+      <RadioButtonGroup>
+        <RadioButton
+          checked={!showAllGames}
+          id={"upcoming"}
+          label={t("lastStartedAndUpcoming")}
+          onChange={() => setShowAllGames(false)}
+        />
+        <RadioButton
+          checked={showAllGames}
+          id={"all"}
+          label={t("all")}
+          onChange={() => setShowAllGames(true)}
+        />
+      </RadioButtonGroup>
+      )
       <MyFavoritesList
         favoritedGames={
           showAllGames ? favoritedGames : getUpcomingFavorites(favoritedGames)
         }
       />
-
       {signupStrategy !== SignupStrategy.DIRECT &&
         activeProgramType === ProgramType.TABLETOP_RPG && (
           <MySignupsList
@@ -98,7 +93,6 @@ export const MyGamesView = (): ReactElement => {
             isGroupCreator={isGroupCreator}
           />
         )}
-
       <MyEnteredList
         enteredGames={
           showAllGames ? enteredGames : getUpcomingEnteredGames(enteredGames)
@@ -113,7 +107,6 @@ export const MyGamesView = (): ReactElement => {
         })}
         activeProgramType={activeProgramType}
       />
-
       <ChangePasswordButton
         buttonStyle={ButtonStyle.PRIMARY}
         onClick={() => setShowChangePassword(!showChangePassword)}
@@ -131,7 +124,6 @@ export const MyGamesView = (): ReactElement => {
           {t("myProgramView.changePassword")}
         </>
       </ChangePasswordButton>
-
       {showChangePassword && <ChangePasswordForm username={username} />}
     </MyGamesViewContainer>
   );

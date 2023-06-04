@@ -1,4 +1,11 @@
-import React, { ChangeEvent, ReactElement, useEffect, useState } from "react";
+import {
+  ChangeEvent,
+  Dispatch,
+  ReactElement,
+  SetStateAction,
+  useEffect,
+  useState,
+} from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { ProgramTypeSelection } from "client/components/EventTypeSelection";
@@ -18,11 +25,9 @@ export enum StartingTimeOption {
 }
 
 interface Props {
-  onTagChange: React.Dispatch<React.SetStateAction<string>>;
-  onSelectedStartingTimeChange: React.Dispatch<
-    React.SetStateAction<StartingTimeOption>
-  >;
-  onSearchTermChange: React.Dispatch<React.SetStateAction<string>>;
+  onTagChange: Dispatch<SetStateAction<string>>;
+  onSelectedStartingTimeChange: Dispatch<SetStateAction<StartingTimeOption>>;
+  onSearchTermChange: Dispatch<SetStateAction<string>>;
 }
 
 export const SearchAndFilterCard = ({

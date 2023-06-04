@@ -1,4 +1,4 @@
-import React, { ReactElement, useState } from "react";
+import { Dispatch, ReactElement, SetStateAction, useState } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { ProgramTypeSelection } from "client/components/EventTypeSelection";
@@ -12,8 +12,8 @@ export enum ResultsStartingTimeOption {
 }
 
 interface Props {
-  onSelectedStartingTimeChange: React.Dispatch<React.SetStateAction<string>>;
-  onSearchTermChange: React.Dispatch<React.SetStateAction<string>>;
+  onSelectedStartingTimeChange: Dispatch<SetStateAction<string>>;
+  onSearchTermChange: Dispatch<SetStateAction<string>>;
 }
 
 export const SearchAndFilterResultsCard = ({

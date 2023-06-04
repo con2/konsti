@@ -54,7 +54,7 @@ const StyledSelect = styled.select`
   font-size: ${(props) => props.theme.fontSizeNormal};
   padding: 6px;
   border-radius: 6px;
-  background-color: #fff;
+  background-color: ${(props) => props.theme.backgroundMain};
 `;
 
 const StyledOption = styled.option<{ disabled: boolean }>`

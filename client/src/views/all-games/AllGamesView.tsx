@@ -18,6 +18,7 @@ export const MULTIPLE_WHITESPACES_REGEX = /\s\s+/g;
 
 export const AllGamesView = (): ReactElement => {
   const activeGames = useAppSelector(selectActiveGames);
+  const hiddenGames = useAppSelector((state) => state.admin.hiddenGames);
   const testTime = useAppSelector((state) => state.testSettings.testTime);
   const signupStrategy = useAppSelector((state) => state.admin.signupStrategy);
 
@@ -31,6 +32,17 @@ export const AllGamesView = (): ReactElement => {
   const [debouncedSearchTerm] = useDebounce(searchTerm, 300, {
     leading: true,
   });
+
+  const activeVisibleGames = useMemo(
+    () =>
+      activeGames.filter((game) => {
+        const hidden = hiddenGames.find(
+          (hiddenGame) => game.gameId === hiddenGame.gameId
+        );
+        if (!hidden) return game;
+      }),
+    [activeGames, hiddenGames]
+  );
 
   const store = useStore();
 
@@ -71,25 +83,27 @@ export const AllGamesView = (): ReactElement => {
     );
 
     if (debouncedSearchTerm.length === 0) {
-      setFilteredGames(activeGames);
+      setFilteredGames(activeVisibleGames);
       return;
     }
 
-    const gamesFilteredBySearchTerm = activeGames.filter((activeGame) => {
-      return (
-        activeGame.title
-          .replace(MULTIPLE_WHITESPACES_REGEX, " ")
-          .toLocaleLowerCase()
-          .includes(debouncedSearchTerm.toLocaleLowerCase()) ||
-        activeGame.gameSystem
-          .replace(MULTIPLE_WHITESPACES_REGEX, " ")
-          .toLocaleLowerCase()
-          .includes(debouncedSearchTerm.toLocaleLowerCase())
-      );
-    });
+    const gamesFilteredBySearchTerm = activeVisibleGames.filter(
+      (activeGame) => {
+        return (
+          activeGame.title
+            .replace(MULTIPLE_WHITESPACES_REGEX, " ")
+            .toLocaleLowerCase()
+            .includes(debouncedSearchTerm.toLocaleLowerCase()) ||
+          activeGame.gameSystem
+            .replace(MULTIPLE_WHITESPACES_REGEX, " ")
+            .toLocaleLowerCase()
+            .includes(debouncedSearchTerm.toLocaleLowerCase())
+        );
+      }
+    );
 
     setFilteredGames(gamesFilteredBySearchTerm);
-  }, [debouncedSearchTerm, activeGames]);
+  }, [debouncedSearchTerm, activeVisibleGames]);
 
   const memoizedGames = useMemo(() => {
     return (
