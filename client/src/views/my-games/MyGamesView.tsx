@@ -19,12 +19,11 @@ import { SignupStrategy } from "shared/config/sharedConfig.types";
 import { ChangePasswordForm } from "client/views/helper/components/ChangePasswordForm";
 import { ProgramType } from "shared/typings/models/game";
 import {
-  selectActiveEnteredGames,
-  selectActiveFavoritedGames,
-  selectActiveSignedGames,
+  selectEnteredGames,
+  selectFavoritedGames,
+  selectSignedGames,
 } from "client/views/my-games/myGamesSlice";
-import { ButtonGroup } from "client/components/ButtonGroup";
-import { config } from "client/config";
+import { RadioButton } from "client/components/RadioButton";
 
 export const MyGamesView = (): ReactElement => {
   const { t } = useTranslation();
@@ -32,9 +31,9 @@ export const MyGamesView = (): ReactElement => {
   const serial = useAppSelector((state) => state.login.serial);
   const username = useAppSelector((state) => state.login.username);
   const groupCode = useAppSelector((state) => state.group.groupCode);
-  const activeSignedGames = useAppSelector(selectActiveSignedGames);
-  const activeFavoritedGames = useAppSelector(selectActiveFavoritedGames);
-  const activeEnteredGames = useAppSelector(selectActiveEnteredGames);
+  const signedGames = useAppSelector(selectSignedGames);
+  const favoritedGames = useAppSelector(selectFavoritedGames);
+  const enteredGames = useAppSelector(selectEnteredGames);
   const groupMembers = useAppSelector((state) => state.group.groupMembers);
   const testTime = useAppSelector((state) => state.testSettings.testTime);
   const signupStrategy = useAppSelector((state) => state.admin.signupStrategy);
@@ -42,9 +41,7 @@ export const MyGamesView = (): ReactElement => {
     (state) => state.admin.activeProgramType
   );
 
-  const [showAllGames, setShowAllGames] = useState<boolean>(
-    config.alwaysShowAllProgramItems
-  );
+  const [showAllGames, setShowAllGames] = useState<boolean>(false);
   const [showChangePassword, setShowChangePassword] = useState<boolean>(false);
 
   const store = useStore();
@@ -62,38 +59,31 @@ export const MyGamesView = (): ReactElement => {
 
   return (
     <MyGamesViewContainer>
-      {!config.alwaysShowAllProgramItems && (
-        <ButtonGroup>
-          <Button
-            disabled={!showAllGames}
-            onClick={() => setShowAllGames(false)}
-            buttonStyle={ButtonStyle.SECONDARY}
-          >
-            {t("lastStartedAndUpcoming")}
-          </Button>
-          <Button
-            disabled={showAllGames}
-            onClick={() => setShowAllGames(true)}
-            buttonStyle={ButtonStyle.SECONDARY}
-          >
-            {t("all")}
-          </Button>
-        </ButtonGroup>
-      )}
-
+      <RadioButtonGroup>
+        <RadioButton
+          checked={!showAllGames}
+          id={"upcoming"}
+          label={t("lastStartedAndUpcoming")}
+          onChange={() => setShowAllGames(false)}
+        />
+        <RadioButton
+          checked={showAllGames}
+          id={"all"}
+          label={t("all")}
+          onChange={() => setShowAllGames(true)}
+        />
+      </RadioButtonGroup>
+      )
       <MyFavoritesList
         favoritedGames={
-          showAllGames
-            ? activeFavoritedGames
-            : getUpcomingFavorites(activeFavoritedGames)
+          showAllGames ? favoritedGames : getUpcomingFavorites(favoritedGames)
         }
       />
-
       {signupStrategy !== SignupStrategy.DIRECT &&
         activeProgramType === ProgramType.TABLETOP_RPG && (
           <MySignupsList
             signedGames={getSignedGames({
-              signedGames: activeSignedGames,
+              signedGames,
               groupCode,
               serial,
               getAllGames: showAllGames,
@@ -103,15 +93,12 @@ export const MyGamesView = (): ReactElement => {
             isGroupCreator={isGroupCreator}
           />
         )}
-
       <MyEnteredList
         enteredGames={
-          showAllGames
-            ? activeEnteredGames
-            : getUpcomingEnteredGames(activeEnteredGames)
+          showAllGames ? enteredGames : getUpcomingEnteredGames(enteredGames)
         }
         signedGames={getSignedGames({
-          signedGames: activeSignedGames,
+          signedGames,
           groupCode,
           serial,
           getAllGames: showAllGames,
@@ -120,7 +107,6 @@ export const MyGamesView = (): ReactElement => {
         })}
         activeProgramType={activeProgramType}
       />
-
       <ChangePasswordButton
         buttonStyle={ButtonStyle.PRIMARY}
         onClick={() => setShowChangePassword(!showChangePassword)}
@@ -138,7 +124,6 @@ export const MyGamesView = (): ReactElement => {
           {t("myProgramView.changePassword")}
         </>
       </ChangePasswordButton>
-
       {showChangePassword && <ChangePasswordForm username={username} />}
     </MyGamesViewContainer>
   );
@@ -160,4 +145,12 @@ const ChangePasswordButton = styled(Button)`
 const AngleIcon = styled(FontAwesomeIcon)`
   margin: 0 10px 0 0;
   font-size: 18px;
+`;
+
+const RadioButtonGroup = styled.fieldset`
+  border: none;
+  margin-bottom: -8px;
+  padding-left: 0;
+  display: flex;
+  flex-direction: column;
 `;
