@@ -20,7 +20,7 @@ export const removeTestSettings = async (): Promise<
     await TestSettingsModel.deleteMany({});
     return makeSuccessResult(undefined);
   } catch (error) {
-    logger.error(`MongoDB: Error removing test settings: ${error}`);
+    logger.error("MongoDB: Error removing test settings: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
@@ -36,7 +36,7 @@ const createTestSettings = async (): Promise<
     logger.info(`MongoDB: Default test settings saved to DB`);
     return makeSuccessResult(testSettings);
   } catch (error) {
-    logger.error(`MongoDB: Add default test settings error: ${error}`);
+    logger.error("MongoDB: Add default test settings error: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
@@ -60,7 +60,7 @@ export const findTestSettings = async (): Promise<
     logger.debug(`MongoDB: Test settings data found`);
     return makeSuccessResult(testSettings);
   } catch (error) {
-    logger.error(`MongoDB: Error finding test settings data: ${error}`);
+    logger.error("MongoDB: Error finding test settings data: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
@@ -78,7 +78,7 @@ export const saveTestSettings = async (
     logger.info(`MongoDB: Test settings updated`);
     return makeSuccessResult(updatedTestSettings.toJSON<TestSettingsDoc>());
   } catch (error) {
-    logger.error(`MongoDB: Error updating test settings: ${error}`);
+    logger.error("MongoDB: Error updating test settings: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };

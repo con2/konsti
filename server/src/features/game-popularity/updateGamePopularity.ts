@@ -19,7 +19,7 @@ export const updateGamePopularity = async (): Promise<
   Result<void, MongoDbError | AssignmentError>
 > => {
   logger.info(
-    `Calculate game popularity using "${gamePopularityUpdateMethod}" method`
+    `Calculate game popularity using ${gamePopularityUpdateMethod} method`
   );
 
   const usersResult = await findUsers();

@@ -98,7 +98,7 @@ const getProgramFromServer = async (): Promise<
     const response = await axios.get(config.dataUri);
     return makeSuccessResult(response.data);
   } catch (error) {
-    logger.error(`Games request error: ${error}`);
+    logger.error("Games request error: %s", error);
     return makeErrorResult(KompassiError.UNKNOWN_ERROR);
   }
 };
@@ -158,7 +158,8 @@ const getGamesFromFullProgram = (
           });
         } else {
           logger.error(
-            `Unknown error while parsing game ${programItem.identifier}`
+            `Unknown error while parsing game ${programItem.identifier}: %s`,
+            error
           );
         }
 

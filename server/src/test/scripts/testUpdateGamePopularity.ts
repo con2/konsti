@@ -12,7 +12,7 @@ const testUpdateGamePopularity = async (): Promise<void> => {
   try {
     await updateGamePopularity();
   } catch (error) {
-    logger.error(`updateGamePopularity error: ${error}`);
+    logger.error("updateGamePopularity error: %s", error);
   }
 
   try {

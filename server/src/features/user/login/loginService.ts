@@ -22,7 +22,7 @@ export const login = async (
   const user = unwrapResult(userResult);
 
   if (!user) {
-    logger.info(`Login: User "${username}" not found`);
+    logger.info(`Login: User ${username} not found`);
     return {
       errorId: "loginFailed",
       message: "User login error",
@@ -62,12 +62,10 @@ export const login = async (
 
   const validLogin = unwrapResult(validLoginResult);
 
-  logger.info(
-    `Login: User "${user.username}" with "${user.userGroup}" user group`
-  );
+  logger.info(`Login: User ${user.username} with ${user.userGroup} user group`);
 
   if (validLogin) {
-    logger.info(`Login: Password for user "${username}" matches`);
+    logger.info(`Login: Password for user ${username} matches`);
     return {
       message: "User login success",
       status: "success",
@@ -78,7 +76,7 @@ export const login = async (
       jwt: getJWT(user.userGroup, user.username),
     };
   } else {
-    logger.info(`Login: Password for user "${username}" doesn't match`);
+    logger.info(`Login: Password for user ${username} doesn't match`);
     return {
       errorId: "loginFailed",
       message: "User login error",

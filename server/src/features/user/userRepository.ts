@@ -16,7 +16,7 @@ export const removeUsers = async (): Promise<Result<void, MongoDbError>> => {
     await UserModel.deleteMany({});
     return makeSuccessResult(undefined);
   } catch (error) {
-    logger.error(`MongoDB: Error removing users: ${error}`);
+    logger.error("MongoDB: Error removing users: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
@@ -37,11 +37,12 @@ export const saveUser = async (
 
   try {
     const response = await user.save();
-    logger.debug(`MongoDB: User "${newUserData.username}" saved to DB`);
+    logger.debug(`MongoDB: User ${newUserData.username} saved to DB`);
     return makeSuccessResult(response);
   } catch (error) {
     logger.error(
-      `MongoDB: Error creating new user ${newUserData.username} - ${error}`
+      `MongoDB: Error creating new user ${newUserData.username}: %s`,
+      error
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
@@ -73,10 +74,10 @@ export const updateUserByUsername = async (
       return makeErrorResult(MongoDbError.USER_NOT_FOUND);
     }
 
-    logger.debug(`MongoDB: User "${user.username}" updated`);
+    logger.debug(`MongoDB: User ${user.username} updated`);
     return makeSuccessResult(response);
   } catch (error) {
-    logger.error(`MongoDB: Error updating user ${user.username} - ${error}`);
+    logger.error(`MongoDB: Error updating user ${user.username}: %s`, error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
@@ -96,11 +97,12 @@ export const updateUserPassword = async (
       .lean<User>()
       .populate("favoritedGames")
       .populate("signedGames.gameDetails");
-    logger.debug(`MongoDB: Password for user "${username}" updated`);
+    logger.debug(`MongoDB: Password for user ${username} updated`);
     return makeSuccessResult(response);
   } catch (error) {
     logger.error(
-      `MongoDB: Error updating password for user ${username} - ${error}`
+      `MongoDB: Error updating password for user ${username}: %s`,
+      error
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
@@ -115,13 +117,13 @@ export const findUser = async (
       .populate("favoritedGames")
       .populate("signedGames.gameDetails");
     if (!response) {
-      logger.info(`MongoDB: User "${username}" not found`);
+      logger.info(`MongoDB: User ${username} not found`);
     } else {
-      logger.debug(`MongoDB: Found user "${username}"`);
+      logger.debug(`MongoDB: Found user ${username}`);
     }
     return makeSuccessResult(response);
   } catch (error) {
-    logger.error(`MongoDB: Error finding user ${username} - ${error}`);
+    logger.error(`MongoDB: Error finding user ${username}: %s`, error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
@@ -136,14 +138,15 @@ export const findUserBySerial = async (
       .populate("signedGames.gameDetails");
 
     if (!response) {
-      logger.info(`MongoDB: User with serial "${serial}" not found`);
+      logger.info(`MongoDB: User with serial ${serial} not found`);
     } else {
-      logger.debug(`MongoDB: Found user with serial "${serial}"`);
+      logger.debug(`MongoDB: Found user with serial ${serial}`);
     }
     return makeSuccessResult(response);
   } catch (error) {
     logger.error(
-      `MongoDB: Error finding user with serial ${serial} - ${error}`
+      `MongoDB: Error finding user with serial ${serial}: %s`,
+      error
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
@@ -157,13 +160,13 @@ export const findUserSerial = async (
   try {
     const response = await UserModel.findOne({ serial }).lean<User>();
     if (!response) {
-      logger.info(`MongoDB: Serial "${serial}" not found`);
+      logger.info(`MongoDB: Serial ${serial} not found`);
     } else {
-      logger.debug(`MongoDB: Found Serial "${serial}"`);
+      logger.debug(`MongoDB: Found Serial ${serial}`);
     }
     return makeSuccessResult(response);
   } catch (error) {
-    logger.error(`MongoDB: Error finding Serial ${serial} - ${error}`);
+    logger.error(`MongoDB: Error finding Serial ${serial}: %s`, error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
@@ -177,7 +180,7 @@ export const findUsers = async (): Promise<Result<User[], MongoDbError>> => {
       .populate("signedGames.gameDetails");
     return makeSuccessResult(users);
   } catch (error) {
-    logger.error(`MongoDB: Error fetching users - ${error}`);
+    logger.error("MongoDB: Error fetching users: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
