@@ -17,15 +17,15 @@ export const findGroupMembers = async (
       .populate("favoritedGames")
       .populate("signedGames.gameDetails");
     if (!response || response.length === 0) {
-      logger.info(`MongoDB: group "${groupCode}" not found`);
+      logger.info(`MongoDB: group ${groupCode} not found`);
     } else {
       logger.debug(
-        `MongoDB: Found group "${groupCode}" with ${response.length} members`
+        `MongoDB: Found group ${groupCode} with ${response.length} members`
       );
     }
     return makeSuccessResult(response);
   } catch (error) {
-    logger.error(`MongoDB: Error finding group ${groupCode} - ${error}`);
+    logger.error(`MongoDB: Error finding group ${groupCode}: %s`, error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
@@ -42,16 +42,14 @@ export const findGroup = async (
       }).lean<User>();
       if (!response) {
         logger.info(
-          `MongoDB: Group "${groupCode}" with creator "${username}" not found`
+          `MongoDB: Group ${groupCode} with creator ${username} not found`
         );
         return makeSuccessResult(null);
       }
-      logger.info(
-        `MongoDB: Group "${groupCode}" with creator "${username}" found`
-      );
+      logger.info(`MongoDB: Group ${groupCode} with creator ${username} found`);
       return makeSuccessResult(response);
     } catch (error) {
-      logger.error(`MongoDB: Error finding group ${groupCode} - ${error}`);
+      logger.error(`MongoDB: Error finding group ${groupCode}: %s`, error);
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
   }
@@ -59,13 +57,13 @@ export const findGroup = async (
   try {
     const response = await UserModel.findOne({ groupCode }).lean<User>();
     if (!response) {
-      logger.info(`MongoDB: Group "${groupCode}" not found`);
+      logger.info(`MongoDB: Group ${groupCode} not found`);
       return makeSuccessResult(null);
     }
-    logger.info(`MongoDB: Group "${groupCode}" found`);
+    logger.info(`MongoDB: Group ${groupCode} found`);
     return makeSuccessResult(response);
   } catch (error) {
-    logger.error(`MongoDB: Error finding group ${groupCode} - ${error}`);
+    logger.error(`MongoDB: Error finding group ${groupCode}: %s`, error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
@@ -81,16 +79,15 @@ export const saveGroupCode = async (
       { new: true, fields: "groupCode" }
     ).lean<User>();
     if (groupCode === "0") {
-      logger.info(`MongoDB: User "${username}" left group`);
+      logger.info(`MongoDB: User ${username} left group`);
     } else {
-      logger.info(
-        `MongoDB: Group "${groupCode}" stored for user "${username}"`
-      );
+      logger.info(`MongoDB: Group ${groupCode} stored for user ${username}`);
     }
     return makeSuccessResult(response);
   } catch (error) {
     logger.error(
-      `MongoDB: Error storing group "${groupCode}" stored for user "${username}" - ${error}`
+      `MongoDB: Error storing group ${groupCode} stored for user ${username}: %s`,
+      error
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }

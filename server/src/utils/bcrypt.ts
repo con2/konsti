@@ -18,7 +18,7 @@ export const hashPassword = async (
     const result = await bcrypt.hash(password, saltLength);
     return makeSuccessResult(result);
   } catch (error) {
-    logger.error(`bcrypt.hash error: ${error}`);
+    logger.error("bcrypt.hash error: %s", error);
     return makeErrorResult(BcryptError.UNKNOWN_ERROR);
   }
 };
@@ -31,7 +31,7 @@ const comparePasswordHash = async (
     const result = await bcrypt.compare(password, hash);
     return makeSuccessResult(result);
   } catch (error) {
-    logger.error(`bcrypt.compare error: ${error}`);
+    logger.error("bcrypt.compare error: %s", error);
     return makeErrorResult(BcryptError.UNKNOWN_ERROR);
   }
 };

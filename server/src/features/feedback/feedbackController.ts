@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-import { ZodError } from "zod";
 import { getAuthorizedUsername } from "server/utils/authHeader";
 import { UserGroup } from "shared/typings/models/user";
 import { storeFeedback } from "server/features/feedback/feedbackService";
@@ -28,9 +27,7 @@ export const postFeedback = async (
   try {
     body = PostFeedbackRequestSchema.parse(req.body);
   } catch (error) {
-    if (error instanceof ZodError) {
-      logger.error(`Error validating postFeedback body: ${error.message}`);
-    }
+    logger.error("Error validating postFeedback body: %s", error);
     return res.sendStatus(422);
   }
 

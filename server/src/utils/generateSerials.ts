@@ -18,7 +18,7 @@ const generateSerials = async (): Promise<void> => {
     try {
       await saveSerials(parseInt(count, 10));
     } catch (error) {
-      logger.error(`Error saving serials: ${error}`);
+      logger.error("Error saving serials: %s", error);
     }
   }
 

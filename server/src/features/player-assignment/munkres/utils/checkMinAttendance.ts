@@ -40,7 +40,7 @@ export const checkMinAttendance = (
         players: counts[signedGame.gameId],
       });
       logger.info(
-        `Too few people for game "${signedGame.title}" (${
+        `Too few people for game ${signedGame.title} (${
           counts[signedGame.gameId]
         }/${signedGame.minAttendance})`
       );

@@ -46,7 +46,7 @@ export const saveSerials = async (
     );
     return makeSuccessResult(response);
   } catch (error) {
-    logger.error(`MongoDB: Error saving serials data - ${error}`);
+    logger.error("MongoDB: Error saving serials data: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
@@ -58,15 +58,15 @@ export const findSerial = async (
   try {
     response = await SerialModel.findOne({ serial }).lean<Serial>();
   } catch (error) {
-    logger.error(`MongoDB: Error finding serial ${serial} - ${error}`);
+    logger.error(`MongoDB: Error finding serial ${serial}: %s`, error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 
   if (!response) {
-    logger.debug(`MongoDB: Serial "${serial}" not found`);
+    logger.debug(`MongoDB: Serial ${serial} not found`);
     return makeSuccessResult(false);
   } else {
-    logger.debug(`MongoDB: Found serial "${serial}"`);
+    logger.debug(`MongoDB: Found serial ${serial}`);
     return makeSuccessResult(true);
   }
 };

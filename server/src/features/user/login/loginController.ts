@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-import { ZodError } from "zod";
 import { login } from "server/features/user/login/loginService";
 import { logger } from "server/utils/logger";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
@@ -18,9 +17,7 @@ export const postLogin = async (
   try {
     body = PostLoginRequestSchema.parse(req.body);
   } catch (error) {
-    if (error instanceof ZodError) {
-      logger.error(`Error validating postLogin body: ${error.message}`);
-    }
+    logger.error("Error validating postLogin body: %s", error);
     return res.sendStatus(422);
   }
 

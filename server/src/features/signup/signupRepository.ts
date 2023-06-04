@@ -24,7 +24,7 @@ export const removeSignups = async (): Promise<Result<void, MongoDbError>> => {
     await SignupModel.deleteMany({});
     return makeSuccessResult(undefined);
   } catch (error) {
-    logger.error(`MongoDB: Error removing signups: ${error}`);
+    logger.error("MongoDB: Error removing signups: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
@@ -47,7 +47,7 @@ export const findSignups = async (): Promise<
     logger.debug(`MongoDB: Signups found`);
     return makeSuccessResult(response);
   } catch (error) {
-    logger.error(`MongoDB: Error finding signups: ${error}`);
+    logger.error("MongoDB: Error finding signups: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
@@ -67,11 +67,11 @@ export const findRpgSignupsByStartTime = async (
       .lean<Signup[]>()
       .populate("game", "-createdAt -updatedAt -_id -__v");
     if (!response) {
-      logger.info(`MongoDB: Signups for time "${startTime}" not found`);
+      logger.info(`MongoDB: Signups for time ${startTime} not found`);
       return makeSuccessResult([]);
     }
 
-    logger.debug(`MongoDB: Found signups for time "${startTime}"`);
+    logger.debug(`MongoDB: Found signups for time ${startTime}`);
 
     const formattedResponse: FindRpgSignupsByStartTimeResponse[] =
       response.flatMap((signup) => {
@@ -87,7 +87,8 @@ export const findRpgSignupsByStartTime = async (
     return makeSuccessResult(formattedResponse);
   } catch (error) {
     logger.error(
-      `MongoDB: Error finding signups for time ${startTime} - ${error}`
+      `MongoDB: Error finding signups for time ${startTime}: %s`,
+      error
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
@@ -104,15 +105,16 @@ export const findUserSignups = async (
       .lean<Signup[]>()
       .populate("game", "-createdAt -updatedAt -_id -__v");
     if (!response) {
-      logger.info(`MongoDB: Signups for user "${username}" not found`);
+      logger.info(`MongoDB: Signups for user ${username} not found`);
       return makeSuccessResult([]);
     }
 
-    logger.debug(`MongoDB: Found signups for user "${username}"`);
+    logger.debug(`MongoDB: Found signups for user ${username}`);
     return makeSuccessResult(response);
   } catch (error) {
     logger.error(
-      `MongoDB: Error finding signups for user ${username} - ${error}`
+      `MongoDB: Error finding signups for user ${username}: %s`,
+      error
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
@@ -161,11 +163,12 @@ export const saveSignup = async (
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
-    logger.info(`MongoDB: Signup saved for user "${username}"`);
+    logger.info(`MongoDB: Signup saved for user ${username}`);
     return makeSuccessResult(signup);
   } catch (error) {
     logger.error(
-      `MongoDB: Error saving signup for user "${username}" - ${error}`
+      `MongoDB: Error saving signup for user ${username}: %s`,
+      error
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
@@ -215,11 +218,12 @@ export const delSignup = async (
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
 
-    logger.info(`MongoDB: Signup removed from user "${username}"`);
+    logger.info(`MongoDB: Signup removed from user ${username}`);
     return makeSuccessResult(signup);
   } catch (error) {
     logger.error(
-      `MongoDB: Error deleting signup from user "${username}" - ${error}`
+      `MongoDB: Error deleting signup from user ${username}: %s`,
+      error
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
@@ -248,7 +252,7 @@ export const delSignupsByGameIds = async (
         deletedCount: response.deletedCount,
       });
     } catch (error) {
-      logger.error(`MongoDB: Error removing invalid signup - ${error}`);
+      logger.error("MongoDB: Error removing invalid signup: %s", error);
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
   });
@@ -305,7 +309,7 @@ export const delRpgSignupsByStartTime = async (
     );
     return makeSuccessResult(response.deletedCount);
   } catch (error) {
-    logger.error(`MongoDB: Error removing invalid signup - ${error}`);
+    logger.error("MongoDB: Error removing invalid signup: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };

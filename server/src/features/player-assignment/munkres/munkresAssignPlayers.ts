@@ -52,7 +52,7 @@ export const munkresAssignPlayers = (
 
     for (let i = 0; i < signedGames.length; i += 1) {
       if (signedGames[i].gameId === removedGame.gameId) {
-        logger.info(`Removed game "${signedGames[i].title}"`);
+        logger.info(`Removed game ${signedGames[i].title}`);
         signedGames.splice(i, 1);
         removedGamesCount += 1;
         break;
