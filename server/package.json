@@ -30,8 +30,8 @@
     "update-signups": "yarn run -T cross-env NODE_ENV=development ts-node src/test/scripts/updateSignups.ts"
   },
   "dependencies": {
-    "@faker-js/faker": "8.0.1",
-    "@sentry/node": "7.53.1",
+    "@faker-js/faker": "8.0.2",
+    "@sentry/node": "7.54.0",
     "bcryptjs": "2.4.3",
     "commander": "10.0.1",
     "eventassigner-js": "0.1.6",
@@ -41,7 +41,7 @@
     "generate-serial-number": "0.0.3",
     "helmet": "7.0.0",
     "jsonwebtoken": "9.0.0",
-    "mongoose": "7.2.1",
+    "mongoose": "7.2.2",
     "morgan": "1.10.0",
     "munkres-js": "1.2.2",
     "node-schedule": "2.1.1",
