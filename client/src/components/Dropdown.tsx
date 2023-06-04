@@ -52,8 +52,9 @@ export const Dropdown = ({
 const StyledSelect = styled.select`
   border: 1px solid ${(props) => props.theme.borderInactive};
   font-size: ${(props) => props.theme.fontSizeNormal};
-  padding: 4px;
+  padding: 6px;
   border-radius: 6px;
+  background-color: ${(props) => props.theme.backgroundMain};
 `;
 
 const StyledOption = styled.option<{ disabled: boolean }>`

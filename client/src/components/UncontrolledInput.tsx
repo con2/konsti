@@ -6,7 +6,7 @@ export const UncontrolledInput = styled.input`
   border-radius: 6px;
   color: ${(props) => props.theme.textMain};
   height: 34px;
-  padding: 0 0 0 10px;
+  padding: 0 0 0 8px;
   margin-right: 8px;
   width: 100%;
 

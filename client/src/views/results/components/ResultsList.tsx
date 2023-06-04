@@ -7,17 +7,17 @@ import { timeFormatter } from "client/utils/timeFormatter";
 import { useAppSelector } from "client/utils/hooks";
 import { getUsersForGameId } from "client/views/results/resultsUtils";
 import { getUpcomingGames } from "client/utils/getUpcomingGames";
-import { Button, ButtonStyle } from "client/components/Button";
 import { Game } from "shared/typings/models/game";
 import { selectActiveGames } from "client/views/admin/adminSlice";
-import { ControlledInput } from "client/components/ControlledInput";
 import { MULTIPLE_WHITESPACES_REGEX } from "client/views/all-games/AllGamesView";
-import { ButtonGroup } from "client/components/ButtonGroup";
 import { Tags } from "client/components/Tags";
 import { getAttendeeType } from "client/utils/getAttendeeType";
 import { sharedConfig } from "shared/config/sharedConfig";
-import { config } from "client/config";
 import { isAdminOrHelp } from "client/utils/checkUserGroup";
+import {
+  ResultsStartingTimeOption,
+  SearchAndFilterResultsCard,
+} from "client/views/results/components/SearchAndFilterResultsCard";
 
 export const DirectResults = (): ReactElement => {
   const { t } = useTranslation();
@@ -40,8 +40,8 @@ export const DirectResults = (): ReactElement => {
   );
   const hiddenGames = useAppSelector((state) => state.admin.hiddenGames);
 
-  const [showAllGames, setShowAllGames] = useState<boolean>(
-    config.alwaysShowAllProgramItems
+  const [selectedStartingTime, setSelectedStartingTime] = useState<string>(
+    ResultsStartingTimeOption.ALL
   );
   const [showSignupMessages, setShowSignupMessages] = useState<string[]>([]);
   const [showPlayers, setShowPlayers] = useState<string[]>([]);
@@ -54,9 +54,10 @@ export const DirectResults = (): ReactElement => {
     hiddenGames.every((hiddenGame) => activeGame.gameId !== hiddenGame.gameId)
   );
 
-  const filteredGames = showAllGames
-    ? _.sortBy(visibleGames, "startTime")
-    : _.sortBy(getUpcomingGames(visibleGames, 1), "startTime");
+  const filteredGames =
+    selectedStartingTime === ResultsStartingTimeOption.ALL
+      ? _.sortBy(visibleGames, "startTime")
+      : _.sortBy(getUpcomingGames(visibleGames, 1), "startTime");
 
   const [gamesForListing, setGamesForListing] = useState<readonly Game[]>([]);
   const [filteredGamesForListing, setFilteredGamesForListing] = useState<
@@ -106,33 +107,10 @@ export const DirectResults = (): ReactElement => {
     <div>
       <h2>{t("resultsView.allSignupResults")}</h2>
 
-      <ControlledInput
-        value={searchTerm}
-        onChange={(event) => setSearchTerm(event.target.value)}
-        placeholder={t("findTitleOrUsername", {
-          PROGRAM_TYPE: t(`programTypeGenetive.${activeProgramType}`),
-        })}
-        resetValue={() => setSearchTerm("")}
+      <SearchAndFilterResultsCard
+        onSearchTermChange={setSearchTerm}
+        onSelectedStartingTimeChange={setSelectedStartingTime}
       />
-
-      {!config.alwaysShowAllProgramItems && (
-        <ButtonGroup>
-          <Button
-            onClick={() => setShowAllGames(false)}
-            disabled={!showAllGames}
-            buttonStyle={ButtonStyle.SECONDARY}
-          >
-            {t("lastStartedAndUpcoming")}
-          </Button>
-          <Button
-            disabled={showAllGames}
-            onClick={() => setShowAllGames(true)}
-            buttonStyle={ButtonStyle.SECONDARY}
-          >
-            {t("all")}
-          </Button>
-        </ButtonGroup>
-      )}
 
       {filteredGames.length === 0 && <h3>{t("resultsView.noResults")}</h3>}
 
@@ -298,7 +276,7 @@ const ResultTitle = styled.div`
 const TimeSlot = styled.div`
   border-radius: 4px;
   border: 1px solid #ddd;
-  box-shadow: 1px 8px 15px 0 rgba(0, 0, 0, 0.42);
+  box-shadow: ${(props) => props.theme.shadowHigher};
   margin: 0 0 24px 0;
   padding: 0 10px 20px 10px;
 `;
