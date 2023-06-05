@@ -121,7 +121,7 @@ const stagingConfig = {
   // Game update cron
   autoUpdateGamesEnabled: true,
   gameUpdateInterval: `*/4 * * * *`,
-  autoUpdateGamePopularityEnabled: false,
+  autoUpdateGamePopularityEnabled: true,
 
   // Player assign cron
   autoAssignPlayersEnabled: false,
