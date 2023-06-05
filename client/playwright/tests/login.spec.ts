@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 import { logTestStart, populateDb } from "./utils";
 
 test("Login", async ({ page, request }) => {
-  logTestStart("Login");
+  logTestStart("Admin login");
   await populateDb(request);
 
   const username = "admin";
@@ -22,6 +22,6 @@ test("Login", async ({ page, request }) => {
   // Check if login was completed
   await page.click("data-testid=navigation-icon");
 
-  const text = await page.innerText("data-testid=logged-user-username");
-  expect(text).toBe(`User: ${username}`);
+  const text = await page.innerText("data-testid=profile-page-link");
+  expect(text).toBe("Profile");
 });
