@@ -59,6 +59,8 @@ const autoUpdateGames = async (): Promise<void> => {
     logger.info("***** Games auto update completed");
   }
 
+  // TODO: If program auto update fails, popularity update is skipped
+
   if (autoUpdateGamePopularityEnabled) {
     logger.info("----> Auto update game popularity");
     const updateGamePopularityResult = await updateGamePopularity();
