@@ -45,6 +45,17 @@ export const logger = createLogger({
         ],
       },
       level: "error",
+      format: format.combine(
+        format.timestamp(),
+        format.splat(),
+        format.printf((info) => {
+          return JSON.stringify({
+            timestamp: info.timestamp,
+            level: info.level,
+            message: info.message,
+          });
+        })
+      ),
     }),
   ],
   exitOnError: false,
