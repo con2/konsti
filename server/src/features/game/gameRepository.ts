@@ -123,20 +123,32 @@ export const findGameById = async (
   }
 };
 
+interface PopularityUpdate {
+  gameId: string;
+  popularity: number;
+}
+
 export const saveGamePopularity = async (
-  gameId: string,
-  popularity: number
+  popularityUpdates: PopularityUpdate[]
 ): Promise<Result<void, MongoDbError>> => {
-  logger.debug(`MongoDB: Update game ${gameId} popularity to ${popularity}`);
-  try {
-    await GameModel.updateOne(
-      {
-        gameId,
+  logger.debug(
+    `MongoDB: Update popularity for ${popularityUpdates.length} games`
+  );
+
+  const bulkOps = popularityUpdates.map((popularityUpdate) => {
+    return {
+      updateOne: {
+        filter: {
+          gameId: popularityUpdate.gameId,
+        },
+        update: {
+          popularity: popularityUpdate.popularity,
+        },
       },
-      {
-        popularity,
-      }
-    );
+    };
+  });
+  try {
+    await GameModel.bulkWrite(bulkOps);
     return makeSuccessResult(undefined);
   } catch (error) {
     logger.error("Error updating game popularity: %s", error);
