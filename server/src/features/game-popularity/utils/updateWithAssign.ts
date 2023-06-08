@@ -3,12 +3,12 @@ import _ from "lodash";
 import { padgAssignPlayers } from "server/features/player-assignment/padg/padgAssignPlayers";
 import { User } from "shared/typings/models/user";
 import { Game } from "shared/typings/models/game";
-import { AssignmentResult } from "shared/typings/models/result";
 import { saveGamePopularity } from "server/features/game/gameRepository";
 import { Signup } from "server/features/signup/signup.typings";
 import {
   Result,
   isErrorResult,
+  isSuccessResult,
   makeErrorResult,
   makeSuccessResult,
   unwrapResult,
@@ -20,24 +20,27 @@ export const updateWithAssign = async (
   games: readonly Game[],
   signups: readonly Signup[]
 ): Promise<Result<void, MongoDbError | AssignmentError>> => {
-  const groupedGames = _.groupBy(games, (game) =>
+  const gamesForStartTimes = _.groupBy(games, (game) =>
     dayjs(game.startTime).format()
   );
+  const startTimes = Object.keys(gamesForStartTimes);
 
-  let results = [] as readonly AssignmentResult[];
+  const assignmentResultsResult = startTimes.map((startTime) => {
+    return padgAssignPlayers(users, games, startTime, signups);
+  });
 
-  _.forEach(groupedGames, (_value, startingTime) => {
-    const assignmentResultResult = padgAssignPlayers(
-      users,
-      games,
-      startingTime,
-      signups
-    );
-    if (isErrorResult(assignmentResultResult)) {
-      return assignmentResultResult;
+  const someAssignmentFailed = assignmentResultsResult.some(
+    (assignmentResult) => isErrorResult(assignmentResult)
+  );
+  if (someAssignmentFailed) {
+    return makeErrorResult(AssignmentError.UNKNOWN_ERROR);
+  }
+
+  const results = assignmentResultsResult.flatMap((result) => {
+    if (isSuccessResult(result)) {
+      return unwrapResult(result).results;
     }
-    const assignmentResult = unwrapResult(assignmentResultResult);
-    results = results.concat(assignmentResult.results);
+    return [];
   });
 
   const signedGames = results.flatMap(
@@ -46,25 +49,18 @@ export const updateWithAssign = async (
 
   const groupedSignups = _.countBy(signedGames, "gameId");
 
-  const promises = games.map(async (game) => {
-    if (groupedSignups[game.gameId]) {
-      const saveGamePopularityResult = await saveGamePopularity(
-        game.gameId,
-        groupedSignups[game.gameId]
-      );
-      if (isErrorResult(saveGamePopularityResult)) {
-        return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
-      }
-    }
-    return makeSuccessResult(undefined);
-  });
+  const gamePopularityUpdates = games
+    .map((game) => ({
+      gameId: game.gameId,
+      popularity: groupedSignups[game.gameId],
+    }))
+    .filter((popularityUpdate) => popularityUpdate.popularity);
 
-  const updateResults = await Promise.all(promises);
-  const someUpdateFailed = updateResults.some((updateResult) =>
-    isErrorResult(updateResult)
+  const saveGamePopularityResult = await saveGamePopularity(
+    gamePopularityUpdates
   );
 
-  if (someUpdateFailed) {
+  if (isErrorResult(saveGamePopularityResult)) {
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 
