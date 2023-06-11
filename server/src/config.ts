@@ -152,8 +152,8 @@ const devConfig = {
 
   // Game update cron
   autoUpdateGamesEnabled: false,
-  gameUpdateInterval: `*/10 * * * * *`,
-  autoUpdateGamePopularityEnabled: true,
+  gameUpdateInterval: `*/10 * * * *`,
+  autoUpdateGamePopularityEnabled: false,
 
   // Player assign cron
   autoAssignPlayersEnabled: false,
