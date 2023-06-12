@@ -141,7 +141,7 @@ export const delSignupQuestion = async (
       }
     );
     if (!settings) {
-      logger.error("MongoDB: Signup question not found");
+      logger.error("%s", new Error("MongoDB: Signup question not found"));
       return makeErrorResult(MongoDbError.SIGNUP_QUESTION_NOT_FOUND);
     }
     logger.info(`MongoDB: Signup info deleted`);

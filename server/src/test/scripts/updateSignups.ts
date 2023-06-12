@@ -52,7 +52,7 @@ const createSignups = async (): Promise<Result<void, MongoDbError>> => {
 
 const init = async (): Promise<void> => {
   if (process.env.NODE_ENV === "production") {
-    logger.error(`Signup update not allowed in production`);
+    logger.error("%s", new Error("Signup update not allowed in production"));
     return;
   }
 

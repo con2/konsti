@@ -40,11 +40,14 @@ export const runPadgAssignment = (
 
   if (!assignResults) {
     logger.error(
-      `Padg assignment failed with input: groups: ${JSON.stringify(
-        groups
-      )}, events: ${JSON.stringify(events)}, list: ${JSON.stringify(
-        list
-      )}, updateL: ${updateL}`
+      "%s",
+      new Error(
+        `Padg assignment failed with input: groups: ${JSON.stringify(
+          groups
+        )}, events: ${JSON.stringify(events)}, list: ${JSON.stringify(
+          list
+        )}, updateL: ${updateL}`
+      )
     );
     return makeErrorResult(AssignmentError.UNKNOWN_ERROR);
   }

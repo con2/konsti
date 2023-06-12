@@ -42,7 +42,10 @@ const autoUpdateGames = async (): Promise<void> => {
     const updateGamesResult = await updateGames();
     if (updateGamesResult.status === "error") {
       logger.error(
-        `***** Games auto update failed: ${updateGamesResult.message}`
+        "%s",
+        new Error(
+          `***** Games auto update failed: ${updateGamesResult.message}`
+        )
       );
       return;
     }
@@ -59,7 +62,7 @@ const autoAssignPlayers = async (): Promise<void> => {
     assignmentDelay: autoAssignDelay,
   });
   if (isErrorResult(runAssignmentResult)) {
-    logger.error("***** Auto assignment failed");
+    logger.error("%s", new Error("***** Auto assignment failed"));
     return;
   }
 

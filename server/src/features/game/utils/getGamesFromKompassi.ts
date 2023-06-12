@@ -40,12 +40,12 @@ export const getGamesFromKompassi = async (): Promise<
   const eventProgramItems = unwrapResult(eventProgramItemsResult);
 
   if (!Array.isArray(eventProgramItems)) {
-    logger.error("Invalid response format, should be array");
+    logger.error("%s", new Error("Invalid response format, should be array"));
     return makeErrorResult(KompassiError.INVALID_RESPONSE);
   }
 
   if (eventProgramItems.length === 0) {
-    logger.error("No program items found");
+    logger.error("%s", new Error("No program items found"));
     return makeErrorResult(KompassiError.NO_PROGRAM_ITEMS);
   }
 
@@ -148,11 +148,17 @@ const getGamesFromFullProgram = (
               );
 
               logger.error(
-                `Invalid ${key} found for game ${programItem.identifier}: ${invalidValue}`
+                "%s",
+                new Error(
+                  `Invalid ${key} found for game ${programItem.identifier}: ${invalidValue}`
+                )
               );
             } else {
               logger.error(
-                `Error parsing program item ${programItem.identifier}: ${issue.message}`
+                "%s",
+                new Error(
+                  `Error parsing program item ${programItem.identifier}: ${issue.message}`
+                )
               );
             }
           });
@@ -169,7 +175,10 @@ const getGamesFromFullProgram = (
   );
 
   if (kompassiGames.length === 0) {
-    logger.error("No program items with known categories found");
+    logger.error(
+      "%s",
+      new Error("No program items with known categories found")
+    );
     return [];
   }
 

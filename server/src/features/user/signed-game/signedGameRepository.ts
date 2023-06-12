@@ -53,7 +53,7 @@ export const saveSignedGames = async (
       { new: true, fields: "-signedGames._id" }
     ).populate("signedGames.gameDetails");
     if (!signupResponse) {
-      logger.error("Error saving signup");
+      logger.error("%s", new Error("Error saving signup"));
       return makeErrorResult(MongoDbError.SIGNUP_NOT_FOUND);
     }
     logger.debug(`MongoDB: Signup data stored for user ${username}`);
