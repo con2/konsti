@@ -23,7 +23,10 @@ export const getList = (
   const results = playerGroups.flatMap((playerGroup) => {
     const firstMember = _.first(playerGroup);
     if (!firstMember) {
-      logger.error("Padg or Random assign: error getting first member");
+      logger.error(
+        "%s",
+        new Error("Padg or Random assign: error getting first member")
+      );
       return makeErrorResult(AssignmentError.UNKNOWN_ERROR);
     }
 
