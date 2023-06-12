@@ -1,18 +1,14 @@
 import schedule from "node-schedule";
 import { logger } from "server/utils/logger";
-import { getGamesFromKompassi } from "server/features/game/utils/getGamesFromKompassi";
 import { config } from "server/config";
-import { updateGamePopularity } from "server/features/game-popularity/updateGamePopularity";
 import { runAssignment } from "server/features/player-assignment/runAssignment";
-import { kompassiGameMapper } from "server/utils/kompassiGameMapper";
-import { saveGames } from "server/features/game/gameRepository";
 import { sharedConfig } from "shared/config/sharedConfig";
-import { isErrorResult, unwrapResult } from "shared/utils/result";
+import { isErrorResult } from "shared/utils/result";
+import { updateGames } from "server/features/game/gamesService";
 
 const {
   autoUpdateGamesEnabled,
   gameUpdateInterval,
-  autoUpdateGamePopularityEnabled,
   autoAssignPlayersEnabled,
   autoAssignDelay,
   autoAssignInterval,
@@ -21,7 +17,7 @@ const {
 const { assignmentStrategy } = sharedConfig;
 
 export const startCronJobs = (): void => {
-  if (autoUpdateGamesEnabled || autoUpdateGamePopularityEnabled) {
+  if (autoUpdateGamesEnabled) {
     schedule.scheduleJob(gameUpdateInterval, autoUpdateGames);
   }
 
@@ -43,32 +39,14 @@ export const stopCronJobs = (): void => {
 const autoUpdateGames = async (): Promise<void> => {
   if (autoUpdateGamesEnabled) {
     logger.info("----> Auto update games");
-    const kompassiGamesResult = await getGamesFromKompassi();
-    if (isErrorResult(kompassiGamesResult)) {
+    const updateGamesResult = await updateGames();
+    if (updateGamesResult.status === "error") {
       logger.error(
-        "***** Games auto update failed: error downloading games from Kompassi"
+        `***** Games auto update failed: ${updateGamesResult.message}`
       );
       return;
     }
-    const kompassiGames = unwrapResult(kompassiGamesResult);
-    const saveGamesResult = await saveGames(kompassiGameMapper(kompassiGames));
-    if (isErrorResult(saveGamesResult)) {
-      logger.error("***** Games auto update failed: Error saving games");
-      return;
-    }
     logger.info("***** Games auto update completed");
-  }
-
-  // TODO: If program auto update fails, popularity update is skipped
-
-  if (autoUpdateGamePopularityEnabled) {
-    logger.info("----> Auto update game popularity");
-    const updateGamePopularityResult = await updateGamePopularity();
-    if (isErrorResult(updateGamePopularityResult)) {
-      logger.error("***** Game popularity auto update failed");
-      return;
-    }
-    logger.info("***** Game popularity auto update completed");
   }
 };
 

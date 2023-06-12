@@ -4,16 +4,16 @@ import { Game } from "shared/typings/models/game";
 import { findGames } from "server/features/game/gameRepository";
 import {
   findUsers,
-  updateUserByUsername,
+  updateUsersByUsername,
 } from "server/features/user/userRepository";
 import {
   Result,
   isErrorResult,
-  makeErrorResult,
   makeSuccessResult,
   unwrapResult,
 } from "shared/utils/result";
 import { MongoDbError } from "shared/typings/api/errors";
+import { User } from "shared/typings/models/user";
 
 export const removeMovedGamesFromUsers = async (
   updatedGames: readonly Game[]
@@ -21,7 +21,6 @@ export const removeMovedGamesFromUsers = async (
   logger.info("Remove moved signed games from users");
 
   const currentGamesResult = await findGames();
-
   if (isErrorResult(currentGamesResult)) {
     return currentGamesResult;
   }
@@ -50,7 +49,7 @@ export const removeMovedGamesFromUsers = async (
 
   const users = unwrapResult(usersResult);
 
-  const promises = users.map(async (user) => {
+  const usersToUpdate: User[] = users.flatMap((user) => {
     const signedGames = user.signedGames.filter((signedGame) => {
       const movedFound = movedGames.find((movedGame) => {
         return movedGame.gameId === signedGame.gameDetails.gameId;
@@ -71,22 +70,18 @@ export const removeMovedGamesFromUsers = async (
     }
 
     if (user.signedGames.length !== signedGames.length) {
-      const updateUserByUsernameResult = await updateUserByUsername({
+      return {
         ...user,
         signedGames,
-      });
-      if (isErrorResult(updateUserByUsernameResult)) {
-        return updateUserByUsernameResult;
-      }
+      };
     }
 
-    return makeSuccessResult(undefined);
+    return [];
   });
 
-  const results = await Promise.all(promises);
-  const someUpdateFailed = results.some((result) => isErrorResult(result));
-  if (someUpdateFailed) {
-    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+  const updateUsersResult = await updateUsersByUsername(usersToUpdate);
+  if (isErrorResult(updateUsersResult)) {
+    return updateUsersResult;
   }
 
   return makeSuccessResult(undefined);

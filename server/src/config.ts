@@ -22,7 +22,6 @@ interface Config {
   gameUpdateInterval: string;
   enableRemoveOverlapSignups: boolean;
   saveTestAssign: boolean;
-  autoUpdateGamePopularityEnabled: boolean;
   gamePopularityUpdateMethod: GameUpdateMethod;
   updateGamePopularityEnabled: boolean;
   useLocalProgramFile: boolean;
@@ -58,13 +57,11 @@ const commonConfig = {
   // Convention settings
   dataUri: "https://kompassi.eu/api/v1/events/ropecon2022/programme/ropecon",
   firtSignupBonus: 20,
-  useLocalProgramFile: false,
+  useLocalProgramFile: true,
+  localKompassiFile: "program-ropecon-2022-test.json",
 
   // Statistics
   statsDataDir: "src/features/statistics/datafiles",
-
-  // Testing
-  localKompassiFile: "program-ropecon-2022-test.json",
 };
 
 const prodConfig = {
@@ -81,7 +78,6 @@ const prodConfig = {
   GROUP_ASSIGNMENT_ROUNDS: 300,
   PADG_ASSIGNMENT_ROUNDS: 300,
   RANDOM_ASSIGNMENT_ROUNDS: 300,
-  updateGamePopularityEnabled: true,
   consoleLogFormatJson: true,
 
   // Dev
@@ -90,7 +86,7 @@ const prodConfig = {
   // Game update cron
   autoUpdateGamesEnabled: true,
   gameUpdateInterval: `*/4 * * * *`,
-  autoUpdateGamePopularityEnabled: true,
+  updateGamePopularityEnabled: true,
 
   // Player assign cron
   autoAssignPlayersEnabled: true,
@@ -112,7 +108,6 @@ const stagingConfig = {
   GROUP_ASSIGNMENT_ROUNDS: 300,
   PADG_ASSIGNMENT_ROUNDS: 300,
   RANDOM_ASSIGNMENT_ROUNDS: 300,
-  updateGamePopularityEnabled: true,
   consoleLogFormatJson: true,
 
   // Dev
@@ -121,7 +116,7 @@ const stagingConfig = {
   // Game update cron
   autoUpdateGamesEnabled: false,
   gameUpdateInterval: `*/4 * * * *`,
-  autoUpdateGamePopularityEnabled: false,
+  updateGamePopularityEnabled: true,
 
   // Player assign cron
   autoAssignPlayersEnabled: false,
@@ -144,7 +139,6 @@ const devConfig = {
   GROUP_ASSIGNMENT_ROUNDS: 10,
   PADG_ASSIGNMENT_ROUNDS: 300,
   RANDOM_ASSIGNMENT_ROUNDS: 10,
-  updateGamePopularityEnabled: true,
   consoleLogFormatJson: false,
 
   // Dev
@@ -152,8 +146,8 @@ const devConfig = {
 
   // Game update cron
   autoUpdateGamesEnabled: false,
-  gameUpdateInterval: `*/10 * * * *`,
-  autoUpdateGamePopularityEnabled: false,
+  gameUpdateInterval: `*/10 * * * * *`,
+  updateGamePopularityEnabled: false,
 
   // Player assign cron
   autoAssignPlayersEnabled: false,
