@@ -1,13 +1,13 @@
 import {
   findUsers,
-  updateUserByUsername,
+  updateUsersByUsername,
 } from "server/features/user/userRepository";
 import { logger } from "server/utils/logger";
 import { MongoDbError } from "shared/typings/api/errors";
+import { User } from "shared/typings/models/user";
 import {
   Result,
   isErrorResult,
-  makeErrorResult,
   makeSuccessResult,
   unwrapResult,
 } from "shared/utils/result";
@@ -24,7 +24,7 @@ export const removeInvalidGamesFromUsers = async (): Promise<
 
   const users = unwrapResult(usersResult);
 
-  const promises = users.map(async (user) => {
+  const usersToUpdate: User[] = users.flatMap((user) => {
     const validSignedGames = user.signedGames.filter((signedGame) => {
       if (signedGame.gameDetails !== null) {
         return signedGame.gameDetails;
@@ -56,23 +56,19 @@ export const removeInvalidGamesFromUsers = async (): Promise<
     }
 
     if (changedSignedGamesCount > 0 || changedFavoritedGamesCount > 0) {
-      const updateUserByUsernameResult = await updateUserByUsername({
+      return {
         ...user,
         signedGames: validSignedGames,
         favoritedGames: validFavoritedGames,
-      });
-      if (isErrorResult(updateUserByUsernameResult)) {
-        return updateUserByUsernameResult;
-      }
+      };
     }
 
-    return makeSuccessResult(undefined);
+    return [];
   });
 
-  const results = await Promise.all(promises);
-  const someUpdateFailed = results.some((result) => isErrorResult(result));
-  if (someUpdateFailed) {
-    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+  const updateUsersResult = await updateUsersByUsername(usersToUpdate);
+  if (isErrorResult(updateUsersResult)) {
+    return updateUsersResult;
   }
 
   return makeSuccessResult(undefined);

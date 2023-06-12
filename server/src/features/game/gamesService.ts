@@ -25,20 +25,12 @@ export const updateGames = async (): Promise<
   }
 
   const kompassiGames = unwrapResult(kompassiGamesResult);
+  const games = kompassiGameMapper(kompassiGames);
 
-  const saveGamesResult = await saveGames(kompassiGameMapper(kompassiGames));
+  const saveGamesResult = await saveGames(games);
   if (isErrorResult(saveGamesResult)) {
     return {
       message: "Games db update failed: Saving games failed",
-      status: "error",
-      errorId: "unknown",
-    };
-  }
-
-  const gameSaveResponse = unwrapResult(saveGamesResult);
-  if (!gameSaveResponse) {
-    return {
-      message: "Games db update failed: No save response",
       status: "error",
       errorId: "unknown",
     };
@@ -55,10 +47,21 @@ export const updateGames = async (): Promise<
     }
   }
 
+  const updatedGamesResult = await findGames();
+  if (isErrorResult(updatedGamesResult)) {
+    return {
+      message: "Games db update failed: Error loading updated games",
+      status: "error",
+      errorId: "unknown",
+    };
+  }
+
+  const updatedGames = unwrapResult(updatedGamesResult);
+
   return {
     message: "Games db updated",
     status: "success",
-    games: gameSaveResponse,
+    games: updatedGames,
   };
 };
 
@@ -66,7 +69,6 @@ export const fetchGames = async (): Promise<
   GetGamesResponse | GetGamesError
 > => {
   const gamesResult = await findGames();
-
   if (isErrorResult(gamesResult)) {
     return {
       message: `Downloading games failed`,
