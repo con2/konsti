@@ -169,11 +169,7 @@ const getGamesFromFullProgram = (
   );
 
   if (kompassiGames.length === 0) {
-    logger.error(
-      `No program items with following categories found: ${Object.values(
-        KompassiProgramType
-      ).join(", ")}`
-    );
+    logger.error("No program items with known categories found");
     return [];
   }
 
