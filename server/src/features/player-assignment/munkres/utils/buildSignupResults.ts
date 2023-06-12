@@ -38,7 +38,10 @@ export const buildSignupResults = (
         );
 
         if (!enteredGame) {
-          logger.error("Unable to find entered game from signed games");
+          logger.error(
+            "%s",
+            new Error("Unable to find entered game from signed games")
+          );
           return makeErrorResult(AssignmentError.UNKNOWN_ERROR);
         }
 

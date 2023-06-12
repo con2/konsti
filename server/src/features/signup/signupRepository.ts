@@ -158,7 +158,10 @@ export const saveSignup = async (
       .populate("game");
     if (!signup) {
       logger.error(
-        `Signup for user ${username} and game ${game.gameId} not found`
+        "%s",
+        new Error(
+          `Signup for user ${username} and game ${game.gameId} not found`
+        )
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
@@ -202,7 +205,10 @@ export const delSignup = async (
       .populate("game", "-createdAt -updatedAt -_id -__v");
 
     if (!signup) {
-      logger.error(`Signups for game ${game.gameId} not found`);
+      logger.error(
+        "%s",
+        new Error(`Signups for game ${game.gameId} not found`)
+      );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
 
@@ -212,7 +218,10 @@ export const delSignup = async (
 
     if (signupStillRemaining) {
       logger.error(
-        `Error removing signup for game ${game.gameId} from user ${username}`
+        "%s",
+        new Error(
+          `Error removing signup for game ${game.gameId} from user ${username}`
+        )
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }

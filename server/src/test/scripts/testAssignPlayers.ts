@@ -38,7 +38,10 @@ const getAssignmentStrategy = (userParameter: string): AssignmentStrategy => {
 
 const init = async (): Promise<void> => {
   if (process.env.NODE_ENV === "production") {
-    logger.error(`Player allocation not allowed in production`);
+    logger.error(
+      "%s",
+      new Error("Player allocation not allowed in production")
+    );
     return;
   }
 
