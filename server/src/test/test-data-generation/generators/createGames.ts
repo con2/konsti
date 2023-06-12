@@ -3,7 +3,6 @@ import dayjs from "dayjs";
 import { sampleSize } from "lodash";
 import { logger } from "server/utils/logger";
 import { kompassiGameMapper } from "server/utils/kompassiGameMapper";
-import { Game } from "shared/typings/models/game";
 import { saveGames } from "server/features/game/gameRepository";
 import { sharedConfig } from "shared/config/sharedConfig";
 import {
@@ -55,7 +54,7 @@ const getMaxPlayers = (programType: KompassiProgramType): number => {
 
 export const createGames = async (
   gameCount: number
-): Promise<Result<Game[], MongoDbError>> => {
+): Promise<Result<void, MongoDbError>> => {
   const kompassiGames: KompassiGame[] = [];
 
   const programTypes = [
