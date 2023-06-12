@@ -53,9 +53,9 @@ export const getGamesFromKompassi = async (): Promise<
 
   const games = getGamesFromFullProgram(eventProgramItems);
 
-  return games.length >= 0
-    ? makeSuccessResult(games)
-    : makeErrorResult(KompassiError.NO_PROGRAM_ITEMS);
+  return games.length === 0
+    ? makeErrorResult(KompassiError.NO_PROGRAM_ITEMS)
+    : makeSuccessResult(games);
 };
 
 const getEventProgramItems = async (): Promise<
@@ -169,11 +169,7 @@ const getGamesFromFullProgram = (
   );
 
   if (kompassiGames.length === 0) {
-    logger.error(
-      `No program items with following categories found: ${Object.values(
-        KompassiProgramType
-      ).join(", ")}`
-    );
+    logger.error("No program items with known categories found");
     return [];
   }
 
