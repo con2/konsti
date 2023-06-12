@@ -57,7 +57,7 @@ const commonConfig = {
   // Convention settings
   dataUri: "https://kompassi.eu/api/v1/events/ropecon2022/programme/ropecon",
   firtSignupBonus: 20,
-  useLocalProgramFile: true,
+  useLocalProgramFile: false,
   localKompassiFile: "program-ropecon-2022-test.json",
 
   // Statistics
