@@ -26,14 +26,12 @@ export const postTestSettings = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.TEST_SETTINGS}`);
 
-  let body;
-  try {
-    body = PostTestSettingsRequestSchema.parse(req.body);
-  } catch (error) {
-    logger.error("Error validating postTestSettings body: %s", error);
+  const result = PostTestSettingsRequestSchema.safeParse(req.body);
+  if (!result.success) {
+    logger.error("Error validating postTestSettings body: %s", result.error);
     return res.sendStatus(422);
   }
 
-  const response = await updateTestSettings(body);
+  const response = await updateTestSettings(result.data);
   return res.json(response);
 };

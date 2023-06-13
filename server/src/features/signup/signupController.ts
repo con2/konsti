@@ -28,15 +28,13 @@ export const postSignup = async (
     return res.sendStatus(401);
   }
 
-  let body;
-  try {
-    body = PostEnteredGameRequestSchema.parse(req.body);
-  } catch (error) {
-    logger.info("Error validating postSignup body: %s", error);
+  const result = PostEnteredGameRequestSchema.safeParse(req.body);
+  if (!result.success) {
+    logger.info("Error validating postSignup body: %s", result.error);
     return res.sendStatus(422);
   }
 
-  const response = await storeSignup(body);
+  const response = await storeSignup(result.data);
   return res.json(response);
 };
 
@@ -54,14 +52,12 @@ export const deleteSignup = async (
     return res.sendStatus(401);
   }
 
-  let body;
-  try {
-    body = DeleteEnteredGameRequestSchema.parse(req.body);
-  } catch (error) {
-    logger.error("Error validating deleteSignup body: %s", error);
+  const result = DeleteEnteredGameRequestSchema.safeParse(req.body);
+  if (!result.success) {
+    logger.error("Error validating deleteSignup body: %s", result.error);
     return res.sendStatus(422);
   }
 
-  const response = await removeSignup(body);
+  const response = await removeSignup(result.data);
   return res.json(response);
 };
