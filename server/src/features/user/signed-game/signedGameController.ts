@@ -23,15 +23,13 @@ export const postSignedGames = async (
     return res.sendStatus(401);
   }
 
-  let body;
-  try {
-    body = PostSignedGamesRequestSchema.parse(req.body);
-  } catch (error) {
-    logger.error("Error validating postSignedGames body: %s", error);
+  const result = PostSignedGamesRequestSchema.safeParse(req.body);
+  if (!result.success) {
+    logger.error("Error validating postSignedGames body: %s", result.error);
     return res.sendStatus(422);
   }
 
-  const { selectedGames, startTime } = body;
+  const { selectedGames, startTime } = result.data;
 
   const response = await storeSignedGames(selectedGames, username, startTime);
   return res.json(response);

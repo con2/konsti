@@ -20,15 +20,13 @@ export const getResults = async (
 ): Promise<Response> => {
   logger.info(`API call: GET ${ApiEndpoint.RESULTS}`);
 
-  let body;
-  try {
-    body = GetResultsRequestSchema.parse(req.query);
-  } catch (error) {
-    logger.error("Error validating getResults body: %s", error);
+  const result = GetResultsRequestSchema.safeParse(req.query);
+  if (!result.success) {
+    logger.error("Error validating getResults body: %s", result.error);
     return res.sendStatus(422);
   }
 
-  const { startTime } = body;
+  const { startTime } = result.data;
 
   if (!startTime) {
     return res.sendStatus(422);
@@ -52,15 +50,15 @@ export const postAssignment = async (
     return res.sendStatus(401);
   }
 
-  let body;
-  try {
-    body = PostPlayerAssignmentRequestSchema.parse(req.body);
-  } catch (error) {
-    logger.error("Parsing postAssignment() request body failed: %s", error);
+  const result = PostPlayerAssignmentRequestSchema.safeParse(req.body);
+  if (!result.success) {
+    logger.error(
+      "Parsing postAssignment() request body failed: %s",
+      result.error
+    );
     return res.sendStatus(422);
   }
 
-  const startingTime = body.startingTime;
-  const response = await storeAssignment(startingTime);
+  const response = await storeAssignment(result.data.startingTime);
   return res.json(response);
 };
