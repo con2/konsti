@@ -40,6 +40,12 @@ import {
   saveSignup,
 } from "server/features/signup/signupRepository";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
+import {
+  KompassiGameStyle,
+  KompassiGenre,
+  KompassiTag,
+} from "shared/typings/models/kompassiGame";
+import { GameStyle, Genre, Tag } from "shared/typings/models/game";
 
 let server: Server;
 let mongoServer: MongoMemoryServer;
@@ -295,5 +301,64 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
     expect(signups.length).toEqual(2);
     expect(signups[0].userSignups[0].username).toEqual(mockUser.username);
     expect(signups[1].userSignups[0].username).toEqual(mockUser.username);
+  });
+
+  test("should add game even if game contains unknown fields or enum values", async () => {
+    vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
+      value: [
+        {
+          ...testKompassiGame,
+          tags: [
+            KompassiTag.ALOITTELIJAYSTÄVÄLLINEN,
+            // @ts-expect-error: Test
+            "invalid-tag",
+            // @ts-expect-error: Test
+            undefined,
+            // @ts-expect-error: Test
+            [1],
+            // @ts-expect-error: Test
+            {},
+          ],
+          genres: [
+            KompassiGenre.ADVENTURE,
+            // @ts-expect-error: Test
+            "invalid-genre",
+            // @ts-expect-error: Test
+            undefined,
+            // @ts-expect-error: Test
+            [1],
+            // @ts-expect-error: Test
+            {},
+          ],
+          styles: [
+            KompassiGameStyle.CHARACTER_DRIVEN,
+            // @ts-expect-error: Test
+            "invalid-style",
+            // @ts-expect-error: Test
+            undefined,
+            // @ts-expect-error: Test
+            [1],
+            // @ts-expect-error: Test
+            {},
+          ],
+          foobar: "this is unknown field",
+        },
+      ],
+    });
+
+    const response = await request(server)
+      .post(ApiEndpoint.GAMES)
+      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+    expect(response.status).toEqual(200);
+
+    const gamesResult = await findGames();
+    const games = unsafelyUnwrapResult(gamesResult);
+
+    expect(games.length).toEqual(1);
+    expect(games[0].tags).toEqual([Tag.BEGINNER_FRIENDLY]);
+    expect(games[0].genres).toEqual([Genre.ADVENTURE]);
+    expect(games[0].styles).toEqual([GameStyle.CHARACTER_DRIVEN]);
+    // @ts-expect-error: Test
+    expect(games[0].foobar).toEqual(undefined);
   });
 });
