@@ -62,6 +62,7 @@ module.exports = {
         message: "Return Result<T,Err> instead of throwing errors",
       },
     ],
+    "no-else-return": "error",
 
     // eslint-plugin-prettier
     "prettier/prettier": "error",

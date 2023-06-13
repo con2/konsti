@@ -30,8 +30,10 @@ const getWeekdayAndTime = ({
 }: WeekdayAndTime): string => {
   const timeFormat = "dddd HH:mm";
   const formattedTime = dayjs(time).format(timeFormat);
-  if (capitalize) return capitalizeFirstLetter(formattedTime);
-  else return formattedTime;
+  if (capitalize) {
+    return capitalizeFirstLetter(formattedTime);
+  }
+  return formattedTime;
 };
 
 const getDateAndTime = (time: string): string => {

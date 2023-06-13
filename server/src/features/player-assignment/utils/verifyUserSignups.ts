@@ -97,13 +97,14 @@ const getGroupCreator = (
 
     if (groupCreator) {
       return makeSuccessResult(groupCreator);
-    } else {
-      logger.error(
-        "%s",
-        new Error(`Group creator not found for user ${user.username}`)
-      );
-      return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
+
+    logger.error(
+      "%s",
+      new Error(`Group creator not found for user ${user.username}`)
+    );
+
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 
   // User is group creator
