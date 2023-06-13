@@ -27,7 +27,8 @@ export const updateWithSignups = async (
 
     if (foundgroupCreator) {
       return { ...user, signedGames: foundgroupCreator.signedGames };
-    } else return user;
+    }
+    return user;
   });
 
   const signedGames = allUsers.flatMap((user) =>

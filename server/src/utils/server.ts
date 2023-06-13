@@ -57,9 +57,8 @@ export const startServer = async ({
       if (err) {
         logger.warn(`Invalid request: ${JSON.stringify(err)}`);
         return res.sendStatus(400);
-      } else {
-        next();
       }
+      next();
     }
   );
 
@@ -115,9 +114,10 @@ export const startServer = async ({
   const runningServer = server.listen(port ?? process.env.PORT);
 
   const address = runningServer.address();
-  if (!address || typeof address === "string")
+  if (!address || typeof address === "string") {
     // eslint-disable-next-line no-restricted-syntax -- Server startup
     throw new Error("Starting server failed");
+  }
 
   logger.info(`Express: Server started on port ${address.port}`);
 

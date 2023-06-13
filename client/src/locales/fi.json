@@ -362,7 +362,8 @@
     "apiError": "Virhe kutsuessa {{method}} {{url}}: {{errorReason}}",
     "networkError": "Verkkovirhe, yhteys palvelimeen epäonnistui",
     "unauthorized": "Ei käyttöoikeutta",
-    "invalidRequest": "Virheellinen kutsu"
+    "invalidRequest": "Virheellinen kutsu",
+    "unknown": "Tuntematon virhe"
   },
   "aboutView": {
     "general": "Mikä Konsti?",

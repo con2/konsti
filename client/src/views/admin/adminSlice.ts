@@ -1,6 +1,6 @@
 import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import _ from "lodash";
-import { ErrorMessageType } from "client/components/ErrorBar";
+import { BackendErrorType } from "client/components/ErrorBar";
 import { AdminState, RootState } from "client/typings/redux.typings";
 import { SubmitGetSettingsPayload } from "client/views/admin/adminTypes";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
@@ -74,14 +74,14 @@ const adminSlice = createSlice({
       return { ...state, signupQuestions: action.payload };
     },
 
-    addError(state, action: PayloadAction<ErrorMessageType>) {
+    addError(state, action: PayloadAction<BackendErrorType>) {
       return {
         ...state,
         errors: _.uniq([...state.errors, action.payload]),
       };
     },
 
-    removeError(state, action: PayloadAction<ErrorMessageType>) {
+    removeError(state, action: PayloadAction<BackendErrorType>) {
       return {
         ...state,
         errors: state.errors.filter((error) => error !== action.payload),

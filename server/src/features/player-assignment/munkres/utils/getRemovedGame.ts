@@ -16,8 +16,9 @@ export const getRemovedGame = (
     if (
       sortedGamesWithTooFewPlayers[i].players ===
       _.first(sortedGamesWithTooFewPlayers)?.players
-    )
+    ) {
       tiedToLowest.push(sortedGamesWithTooFewPlayers[i]);
+    }
   }
 
   const randomIndex = Math.floor(Math.random() * tiedToLowest.length);
