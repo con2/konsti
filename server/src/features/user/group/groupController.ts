@@ -35,16 +35,13 @@ export const postCreateGroup = async (
     return res.sendStatus(401);
   }
 
-  let body;
-  try {
-    body = PostCreateGroupRequestSchema.parse(req.body);
-  } catch (error) {
-    logger.error("Error validating postCreateGroup body: %s", error);
+  const result = PostCreateGroupRequestSchema.safeParse(req.body);
+  if (!result.success) {
+    logger.error("Error validating postCreateGroup body: %s", result.error);
     return res.sendStatus(422);
   }
 
-  const { groupCode } = body;
-
+  const { groupCode } = result.data;
   const response = await createGroup(username, groupCode);
   return res.json(response);
 };
@@ -63,16 +60,13 @@ export const postJoinGroup = async (
     return res.sendStatus(401);
   }
 
-  let body;
-  try {
-    body = PostJoinGroupRequestSchema.parse(req.body);
-  } catch (error) {
-    logger.error("Error validating postJoinGroup body: %s", error);
+  const result = PostJoinGroupRequestSchema.safeParse(req.body);
+  if (!result.success) {
+    logger.error("Error validating postJoinGroup body: %s", result.error);
     return res.sendStatus(422);
   }
 
-  const { groupCode, ownSerial } = body;
-
+  const { groupCode, ownSerial } = result.data;
   const response = await joinGroup(username, groupCode, ownSerial);
   return res.json(response);
 };
@@ -109,16 +103,13 @@ export const postCloseGroup = async (
     return res.sendStatus(401);
   }
 
-  let body;
-  try {
-    body = PostCloseGroupRequestSchema.parse(req.body);
-  } catch (error) {
-    logger.error("Error validating postCloseGroup body: %s", error);
+  const result = PostCloseGroupRequestSchema.safeParse(req.body);
+  if (!result.success) {
+    logger.error("Error validating postCloseGroup body: %s", result.error);
     return res.sendStatus(422);
   }
 
-  const { groupCode } = body;
-
+  const { groupCode } = result.data;
   const response = await closeGroup(groupCode, username);
   return res.json(response);
 };
@@ -137,16 +128,13 @@ export const getGroup = async (
     return res.sendStatus(401);
   }
 
-  let params;
-  try {
-    params = GetGroupRequestSchema.parse(req.query);
-  } catch (error) {
-    logger.error("Error validating getGroup params: %s", error);
+  const result = GetGroupRequestSchema.safeParse(req.query);
+  if (!result.success) {
+    logger.error("Error validating getGroup params: %s", result.error);
     return res.sendStatus(422);
   }
 
-  const { groupCode } = params;
-
+  const { groupCode } = result.data;
   const response = await fetchGroup(groupCode);
   return res.json(response);
 };
