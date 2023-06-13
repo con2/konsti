@@ -50,7 +50,6 @@ export const toPercent = (num: number): number => {
 const getDataLength = <T>(data: T[] | Object): number => {
   if (Array.isArray(data)) {
     return data.length;
-  } else {
-    return _.size(data);
   }
+  return _.size(data);
 };

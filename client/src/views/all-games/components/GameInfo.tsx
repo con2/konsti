@@ -58,8 +58,10 @@ export const GameInfo = ({ game }: Props): ReactElement => {
     const hours = Math.floor(duration / 60);
     const minutes = Math.round((duration / 60 - hours) * 60);
 
-    if (!minutes) return `${hours} ${t("hours")}`;
-    else return `${hours} ${t("hours")} ${minutes} ${t("minutes")}`;
+    if (!minutes) {
+      return `${hours} ${t("hours")}`;
+    }
+    return `${hours} ${t("hours")} ${minutes} ${t("minutes")}`;
   };
 
   const getFormattedAccessibility = (): ReactElement[] => {
