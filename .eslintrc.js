@@ -53,8 +53,6 @@ module.exports = {
     "no-param-reassign": "error",
     "no-console": "error",
     "object-shorthand": "error",
-    "array-callback-return": "off",
-    "no-shadow": "off", // Required by @typescript-eslint/no-shadow
     "no-restricted-syntax": [
       "error",
       {
@@ -63,6 +61,9 @@ module.exports = {
       },
     ],
     "no-else-return": "error",
+    curly: "error",
+    "array-callback-return": "off",
+    "no-shadow": "off", // Required by @typescript-eslint/no-shadow
 
     // eslint-plugin-prettier
     "prettier/prettier": "error",

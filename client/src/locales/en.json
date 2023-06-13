@@ -362,7 +362,8 @@
     "apiError": "Error while calling {{method}} {{url}}, reason: {{errorReason}}",
     "networkError": "Network error, connection to server failed",
     "unauthorized": "Unauthorized",
-    "invalidRequest": "Invalid request"
+    "invalidRequest": "Invalid request",
+    "unknown": "Unknown error"
   },
   "aboutView": {
     "general": "What is Konsti?",

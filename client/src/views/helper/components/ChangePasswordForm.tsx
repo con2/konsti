@@ -4,8 +4,11 @@ import styled, { css } from "styled-components";
 import { useTranslation } from "react-i18next";
 import { Button, ButtonStyle } from "client/components/Button";
 import { updateUserPassword } from "client/services/userServices";
-import { passwordLength } from "client/utils/validate";
 import { ControlledInput } from "client/components/ControlledInput";
+import {
+  PASSWORD_LENGTH_MAX,
+  PASSWORD_LENGTH_MIN,
+} from "shared/constants/validation";
 
 interface Props {
   username: string;
@@ -22,6 +25,16 @@ export const ChangePasswordForm = ({ username }: Props): ReactElement => {
 
   const handlePasswordChange = (event: ChangeEvent<HTMLInputElement>): void => {
     setChangePasswordInput(event.target.value);
+  };
+
+  const passwordLength = (value: string): string | null => {
+    if (value.length < PASSWORD_LENGTH_MIN) {
+      return t("validation.tooShort", { length: PASSWORD_LENGTH_MIN });
+    }
+    if (value.length > PASSWORD_LENGTH_MAX) {
+      return t("validation.tooLong", { length: PASSWORD_LENGTH_MAX });
+    }
+    return null;
   };
 
   const submitUpdatePassword = async (): Promise<void> => {
