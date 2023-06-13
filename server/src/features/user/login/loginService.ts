@@ -75,12 +75,12 @@ export const login = async (
       groupCode: user.groupCode,
       jwt: getJWT(user.userGroup, user.username),
     };
-  } else {
-    logger.info(`Login: Password for user ${username} doesn't match`);
-    return {
-      errorId: "loginFailed",
-      message: "User login error",
-      status: "error",
-    };
   }
+
+  logger.info(`Login: Password for user ${username} doesn't match`);
+  return {
+    errorId: "loginFailed",
+    message: "User login error",
+    status: "error",
+  };
 };
