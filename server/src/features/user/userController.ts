@@ -24,16 +24,13 @@ export const postUser = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.USERS}`);
 
-  let body;
-  try {
-    body = PostUserRequestSchema.parse(req.body);
-  } catch (error) {
-    logger.error("Error validating postUser body: %s", error);
+  const result = PostUserRequestSchema.safeParse(req.body);
+  if (!result.success) {
+    logger.error("Error validating postUser body: %s", result.error);
     return res.sendStatus(422);
   }
 
-  const { username, password, serial } = body;
-
+  const { username, password, serial } = result.data;
   const response = await storeUser(username, password, serial);
   return res.json(response);
 };
@@ -53,15 +50,13 @@ export const postUserPassword = async (
     return res.sendStatus(401);
   }
 
-  let body;
-  try {
-    body = PostUpdateUserPasswordRequestSchema.parse(req.body);
-  } catch (error) {
-    logger.error("Error validating postUserPassword body: %s", error);
+  const result = PostUpdateUserPasswordRequestSchema.safeParse(req.body);
+  if (!result.success) {
+    logger.error("Error validating postUserPassword body: %s", result.error);
     return res.sendStatus(422);
   }
 
-  const { userToUpdateUsername, password } = body;
+  const { userToUpdateUsername, password } = result.data;
 
   if (
     requesterUsername !== userToUpdateUsername &&
@@ -111,18 +106,16 @@ export const getUserBySerialOrUsername = async (
     return res.sendStatus(401);
   }
 
-  let params;
-  try {
-    params = GetUserBySerialRequestSchema.parse(req.query);
-  } catch (error) {
+  const result = GetUserBySerialRequestSchema.safeParse(req.query);
+  if (!result.success) {
     logger.error(
       "Error validating getUserBySerialOrUsername params: %s",
-      error
+      result.error
     );
     return res.sendStatus(422);
   }
 
-  const { searchTerm } = params;
+  const { searchTerm } = result.data;
 
   if (!searchTerm) {
     return res.sendStatus(422);

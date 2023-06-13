@@ -13,15 +13,13 @@ export const postLogin = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.LOGIN}`);
 
-  let body;
-  try {
-    body = PostLoginRequestSchema.parse(req.body);
-  } catch (error) {
-    logger.error("Error validating postLogin body: %s", error);
+  const result = PostLoginRequestSchema.safeParse(req.body);
+  if (!result.success) {
+    logger.error("Error validating postLogin body: %s", result.error);
     return res.sendStatus(422);
   }
 
-  const { username, password } = body;
+  const { username, password } = result.data;
   const response = await login(username, password);
   return res.json(response);
 };
