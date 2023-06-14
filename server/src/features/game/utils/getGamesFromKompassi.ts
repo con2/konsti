@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import { ZodError } from "zod";
 import axios from "axios";
+import _ from "lodash";
 import { logger } from "server/utils/logger";
 import { config } from "server/config";
 import {
@@ -103,19 +104,19 @@ const getProgramFromServer = async (): Promise<
   }
 };
 
-const checkUnknownKeys = (programItem: EventProgramItem): void => {
-  const unknownKeys = Object.keys(programItem).filter(
-    (key) =>
-      !Object.prototype.hasOwnProperty.call(KompassiGameSchema.shape, key)
-  );
+const checkUnknownKeys = (programItems: EventProgramItem[]): void => {
+  const unknownKeys: string[] = programItems.flatMap((programItem) => {
+    return Object.keys(programItem).filter(
+      (key) =>
+        !Object.prototype.hasOwnProperty.call(KompassiGameSchema.shape, key)
+    );
+  });
 
   if (unknownKeys.length > 0) {
     logger.error(
       "%s",
       new Error(
-        `Unknown keys for event ${programItem.identifier}: ${unknownKeys.join(
-          " "
-        )}`
+        `Found unknown keys for program items: ${_.uniq(unknownKeys).join(" ")}`
       )
     );
   }
@@ -125,8 +126,6 @@ const parseProgramItem = (
   programItem: EventProgramItem
 ): EventProgramItem | undefined => {
   const result = KompassiGameSchema.safeParse(programItem);
-
-  checkUnknownKeys(programItem);
 
   if (result.success) {
     return result.data;
@@ -195,6 +194,8 @@ const getGamesFromFullProgram = (
   );
 
   logger.info(`Found ${matchingProgramItems.length} matching program items`);
+
+  checkUnknownKeys(matchingProgramItems);
 
   const kompassiGames: KompassiGame[] = matchingProgramItems.flatMap(
     (programItem) => {
