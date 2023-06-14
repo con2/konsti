@@ -1,4 +1,5 @@
-import schedule from "node-schedule";
+import { Cron } from "croner";
+import dayjs from "dayjs";
 import { logger } from "server/utils/logger";
 import { config } from "server/config";
 import { runAssignment } from "server/features/player-assignment/runAssignment";
@@ -14,50 +15,64 @@ const {
   autoAssignInterval,
 } = config;
 
-const { assignmentStrategy } = sharedConfig;
+const cronJobs: Cron[] = [];
 
 export const startCronJobs = (): void => {
   if (autoUpdateGamesEnabled) {
-    schedule.scheduleJob(gameUpdateInterval, autoUpdateGames);
+    const autoUpdateGamesJob = Cron(
+      gameUpdateInterval,
+      {
+        name: "autoUpdateGames",
+        protect: protectCallback,
+        catch: errorHandler,
+      },
+      autoUpdateGames
+    );
+    cronJobs.push(autoUpdateGamesJob);
   }
 
   if (autoAssignPlayersEnabled) {
-    schedule.scheduleJob(autoAssignInterval, autoAssignPlayers);
+    const autoAssignPlayersJob = Cron(
+      autoAssignInterval,
+      {
+        name: "autoAssignPlayers",
+        protect: protectCallback,
+        catch: errorHandler,
+      },
+      autoAssignPlayers
+    );
+    cronJobs.push(autoAssignPlayersJob);
   }
 };
 
 export const stopCronJobs = (): void => {
-  const jobList = schedule.scheduledJobs;
-
-  Object.values(jobList).map((job) => {
-    schedule.cancelJob(job.name);
+  cronJobs.map((job) => {
+    job.stop();
   });
 
   logger.info("CronJobs stopped");
 };
 
 const autoUpdateGames = async (): Promise<void> => {
-  if (autoUpdateGamesEnabled) {
-    logger.info("----> Auto update games");
-    const updateGamesResult = await updateGames();
-    if (updateGamesResult.status === "error") {
-      logger.error(
-        "%s",
-        new Error(
-          `***** Games auto update failed: ${updateGamesResult.message}`
-        )
-      );
-      return;
-    }
-    logger.info("***** Games auto update completed");
+  logger.info("----> Auto update games");
+
+  const updateGamesResult = await updateGames();
+  if (updateGamesResult.status === "error") {
+    logger.error(
+      "%s",
+      new Error(`***** Games auto update failed: ${updateGamesResult.message}`)
+    );
+    return;
   }
+
+  logger.info("***** Games auto update completed");
 };
 
 const autoAssignPlayers = async (): Promise<void> => {
   logger.info("----> Auto assign players");
 
   const runAssignmentResult = await runAssignment({
-    assignmentStrategy,
+    assignmentStrategy: sharedConfig.assignmentStrategy,
     useDynamicStartingTime: true,
     assignmentDelay: autoAssignDelay,
   });
@@ -67,4 +82,19 @@ const autoAssignPlayers = async (): Promise<void> => {
   }
 
   logger.info("***** Automatic player assignment completed");
+};
+
+const protectCallback = (job: Cron): void => {
+  const timeNow = dayjs().format();
+  const startTime = dayjs(job.currentRun()).format();
+  logger.error(
+    "%s",
+    new Error(
+      `Cronjob ${job.name} at ${timeNow} was blocked by call started at ${startTime}`
+    )
+  );
+};
+
+const errorHandler = (error: unknown, job: Cron): void => {
+  logger.error(`Error while running cronJob ${job.name}: %s`, error);
 };
