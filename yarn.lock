@@ -3522,15 +3522,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node-schedule@npm:2.1.0":
-  version: 2.1.0
-  resolution: "@types/node-schedule@npm:2.1.0"
-  dependencies:
-    "@types/node": "*"
-  checksum: db782544dbdfaddc78488b463cdc474f76c55ebb1ffcec9fc9d3d67e02e23e0ff1d36e6bdca562097db650e6d8a1fac17c3dd03dc5564e5dbb54e5368019e55b
-  languageName: node
-  linkType: hard
-
 "@types/node@npm:*":
   version: 20.2.5
   resolution: "@types/node@npm:20.2.5"
@@ -5640,12 +5631,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cron-parser@npm:^4.2.0":
-  version: 4.8.1
-  resolution: "cron-parser@npm:4.8.1"
-  dependencies:
-    luxon: ^3.2.1
-  checksum: e3e7b227cb45c8e3e16b5ceab9fd1b4769b878b430f009d5de26c3e20d4e0112fde6f90a663afbcd9cc2be92d73b6eefe2d939d1646f3a96704f73c63dd39b6f
+"croner@npm:6.0.4":
+  version: 6.0.4
+  resolution: "croner@npm:6.0.4"
+  checksum: 316a5221bb0ce1871b0e5e3788f54b0209d49efc353c2996fdb3e4f1efc2545f794e17a4fd185e8b304071159b48ccefebb7ccc64f25352354166feb01988fae
   languageName: node
   linkType: hard
 
@@ -9206,10 +9195,10 @@ __metadata:
     "@types/jsonwebtoken": 9.0.2
     "@types/morgan": 1.9.4
     "@types/node": 18.16.16
-    "@types/node-schedule": 2.1.0
     "@types/supertest": 2.0.12
     bcryptjs: 2.4.3
     commander: 10.0.1
+    croner: 6.0.4
     eventassigner-js: 0.1.6
     eventassigner-random: 0.3.1
     express: 4.18.2
@@ -9221,7 +9210,6 @@ __metadata:
     mongoose: 7.2.2
     morgan: 1.10.0
     munkres-js: 1.2.2
-    node-schedule: 2.1.1
     supertest: 6.3.3
     ts-node: 10.9.1
     ts-node-dev: 2.0.0
@@ -9458,13 +9446,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"long-timeout@npm:0.1.1":
-  version: 0.1.1
-  resolution: "long-timeout@npm:0.1.1"
-  checksum: 48668e5362cb74c4b77a6b833d59f149b9bb9e99c5a5097609807e2597cd0920613b2a42b89bd0870848298be3691064d95599a04ae010023d07dba39932afa7
-  languageName: node
-  linkType: hard
-
 "longest-streak@npm:^3.0.0":
   version: 3.1.0
   resolution: "longest-streak@npm:3.1.0"
@@ -9537,13 +9518,6 @@ __metadata:
   version: 0.3.3
   resolution: "lru_map@npm:0.3.3"
   checksum: ca9dd43c65ed7a4f117c548028101c5b6855e10923ea9d1f635af53ad20c5868ff428c364d454a7b57fe391b89c704982275410c3c5099cca5aeee00d76e169a
-  languageName: node
-  linkType: hard
-
-"luxon@npm:^3.2.1":
-  version: 3.3.0
-  resolution: "luxon@npm:3.3.0"
-  checksum: 50cf17a0dc155c3dcacbeae8c0b7e80db425e0ba97b9cbdf12a7fc142d841ff1ab1560919f033af46240ed44e2f70c49f76e3422524c7fc8bb8d81ca47c66187
   languageName: node
   linkType: hard
 
@@ -10748,17 +10722,6 @@ __metadata:
   version: 2.0.12
   resolution: "node-releases@npm:2.0.12"
   checksum: b8c56db82c4642a0f443332b331a4396dae452a2ac5a65c8dbd93ef89ecb2fbb0da9d42ac5366d4764973febadca816cf7587dad492dce18d2a6b2af59cda260
-  languageName: node
-  linkType: hard
-
-"node-schedule@npm:2.1.1":
-  version: 2.1.1
-  resolution: "node-schedule@npm:2.1.1"
-  dependencies:
-    cron-parser: ^4.2.0
-    long-timeout: 0.1.1
-    sorted-array-functions: ^1.3.0
-  checksum: 6a8822b16fb024277c42efe710bdb35b6f1f6ab3a2f826283640511247d693f34ebd5ddf2863cd91609e7f323574e36c81cd2084dc204fa521f931380f0f963f
   languageName: node
   linkType: hard
 
@@ -12805,13 +12768,6 @@ __metadata:
     ip: ^2.0.0
     smart-buffer: ^4.2.0
   checksum: 259d9e3e8e1c9809a7f5c32238c3d4d2a36b39b83851d0f573bfde5f21c4b1288417ce1af06af1452569cd1eb0841169afd4998f0e04ba04656f6b7f0e46d748
-  languageName: node
-  linkType: hard
-
-"sorted-array-functions@npm:^1.3.0":
-  version: 1.3.0
-  resolution: "sorted-array-functions@npm:1.3.0"
-  checksum: 673fd39ca3b6c92644d4483eac1700bb7d7555713a536822a7522a35af559bef3e72f10d89356b75042dc394cd7c2e2ab6f40024385218ec3c85bb7335032857
   languageName: node
   linkType: hard
 
