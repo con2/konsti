@@ -45,6 +45,7 @@ export const testGame: Game = {
   ],
   otherInaccessibility: "",
   entryFee: 0,
+  signupType: "Konsti",
 };
 
 export const testGame2: Game = {
@@ -85,4 +86,5 @@ export const testGame2: Game = {
   ],
   otherInaccessibility: "",
   entryFee: 0,
+  signupType: "Konsti",
 };
