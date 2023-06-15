@@ -51,6 +51,13 @@ export enum Tag {
   THEME_FRIENDSHIP = "themeFriendship",
   DEMO = "demo",
   TOURNAMENT = "tournament",
+  SUITABLE_FOR_ALL_AGES = "suitableForAllAges",
+  AIMED_AT_CHILDREN_UNDER_13 = "aimedAtChildrenUnder13",
+  AIMED_AT_CHILDREN_BETWEEN_13_17 = "aimedAtChildrenBetween13-17",
+  AIMED_AT_ADULT_ATTENDEES = "aimedAtAdultAttendees",
+  FOR_18_PLUS_ONLY = "for18PlusOnly",
+  ROPECON_THEME = "ropeconTheme",
+  CELEBRATORY_YEAR = "celebratoryYear",
 }
 
 export enum AccessibilityValue {
@@ -66,6 +73,13 @@ export enum AccessibilityValue {
   TEXT = "text",
   COLOURBLIND = "colourblind",
   REMAINING_ONE_PLACE = "remainingOnePlace",
+  CANNOT_USE_MIC = "cannotUseMic",
+  PROGRAMME_DURATION_OVER_2_HOURS = "programmeDurationOver2Hours",
+  LIMITED_OPPORTUNITIES_TO_MOVE_AROUND = "limitedOpportunitiesToMoveAround",
+  LONG_TEXT = "longText",
+  TEXT_NOT_AVAILABLE_AS_RECORDINGS = "textNotAvailableAsRecordings",
+  PARTICIPATION_REQUIRES_DEXTERITY = "participationRequiresDexterity",
+  PARTICIPATION_REQUIRES_REACT_QUICKLY = "participationRequiresReactQuickly",
 }
 
 export const GameSchema = z.object({
@@ -94,6 +108,7 @@ export const GameSchema = z.object({
   signupStrategy: z.optional(z.nativeEnum(SignupStrategy)),
   otherInaccessibility: z.string(),
   entryFee: z.number(),
+  signupType: z.string(),
 });
 
 export type Game = z.infer<typeof GameSchema>;
