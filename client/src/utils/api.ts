@@ -40,9 +40,7 @@ axiosInstance.interceptors.response.use(
       !error.response ||
       error.response.status === 0
     ) {
-      store.dispatch(
-        addError(t(BackendErrorType.NETWORK_ERROR) as BackendErrorType)
-      );
+      store.dispatch(addError(t(BackendErrorType.NETWORK_ERROR)));
       return {
         errorId: "unknown",
         message: "Network error",
@@ -58,7 +56,6 @@ axiosInstance.interceptors.response.use(
 
     store.dispatch(
       addError(
-        // @ts-expect-error: i18next bug
         t(BackendErrorType.API_ERROR, {
           method,
           url,
