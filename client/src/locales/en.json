@@ -142,7 +142,14 @@
     "forAdults": "For adult participants",
     "themeFriendship": "Theme: Friendship",
     "demo": "Demo",
-    "tournament": "Tournament"
+    "tournament": "Tournament",
+    "suitableForAllAges": "For all ages",
+    "aimedAtChildrenUnder13": "Aimed at children under 13",
+    "aimedAtChildrenBetween13-17": "Aimed at children between 13-17",
+    "aimedAtAdultAttendees": "Aimed at adult attendees",
+    "for18PlusOnly": "For 18+ only",
+    "ropeconTheme": "Ropecon theme",
+    "celebratoryYear": "Celebratory year"
   },
   "pageTitle": {
     "login": "Please login",
@@ -351,7 +358,14 @@
     "recording": "Participation requires listening to a recording that does not have a text version for the hearing impaired",
     "text": "Participation involves reading long texts independently, and the texts are not available as recordings for those with visual impairment",
     "colourblind": "Material used in the game can cause problems for the colourblind",
-    "remainingOnePlace": "Requires staying still for a long time without possibility of breaks or movement"
+    "remainingOnePlace": "Requires staying still for a long time without possibility of breaks or movement",
+    "cannotUseMic": "Cannot use mic",
+    "programmeDurationOver2Hours": "Duration over 2h",
+    "limitedOpportunitiesToMoveAround": "Limited opportunities to move around",
+    "longText": "Requires reading long text",
+    "textNotAvailableAsRecordings": "Text not available as recording",
+    "participationRequiresDexterity": "Requires dexterity",
+    "participationRequiresReactQuickly": "Requires quick reactions"
   },
   "strategies": {
     "direct": "Direct",

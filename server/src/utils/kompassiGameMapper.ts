@@ -1,4 +1,4 @@
-import { uniq } from "lodash";
+import _ from "lodash";
 import dayjs from "dayjs";
 import {
   AccessibilityValue,
@@ -40,7 +40,7 @@ export const kompassiGameMapper = (
       tags: mapTags(game),
       genres: mapGenres(game),
       styles: mapGameStyles(game),
-      language: game.language,
+      language: game.ropecon2023_language,
       endTime: dayjs(game.end_time).format(),
       people: game.formatted_hosts,
       minAttendance: game.min_players,
@@ -49,13 +49,13 @@ export const kompassiGameMapper = (
       shortDescription: game.short_blurb,
       revolvingDoor: game.revolving_door,
       programType: mapProgramType(game),
-      contentWarnings:
-        game.content_warnings || game.ropecon2022_content_warnings,
+      contentWarnings: game.ropecon2022_content_warnings,
       otherAuthor: game.other_author,
       accessibilityValues: mapAccessibilityValues(game),
       popularity: 0,
-      otherInaccessibility: game.ropecon2021_accessibility_inaccessibility,
-      entryFee: game.entry_fee,
+      otherInaccessibility: game.ropecon2023_other_accessibility_information,
+      entryFee: game.ropecon2023_workshop_fee,
+      signupType: game.ropecon2023_signuplist,
     };
   });
 };
@@ -160,7 +160,39 @@ const mapTags = (kompassiGame: KompassiGame): Tag[] => {
     }
   });
 
-  return uniq(tags);
+  if (kompassiGame.ropecon2023_suitable_for_all_ages) {
+    tags.push(Tag.SUITABLE_FOR_ALL_AGES);
+  }
+
+  if (kompassiGame.ropecon2023_aimed_at_children_under_13) {
+    tags.push(Tag.AIMED_AT_CHILDREN_UNDER_13);
+  }
+
+  if (kompassiGame.ropecon2023_aimed_at_children_between_13_17) {
+    tags.push(Tag.AIMED_AT_CHILDREN_BETWEEN_13_17);
+  }
+
+  if (kompassiGame.ropecon2023_aimed_at_adult_attendees) {
+    tags.push(Tag.AIMED_AT_ADULT_ATTENDEES);
+  }
+
+  if (kompassiGame.ropecon2023_for_18_plus_only) {
+    tags.push(Tag.FOR_18_PLUS_ONLY);
+  }
+
+  if (kompassiGame.ropecon2023_beginner_friendly) {
+    tags.push(Tag.BEGINNER_FRIENDLY);
+  }
+
+  if (kompassiGame.ropecon_theme) {
+    tags.push(Tag.ROPECON_THEME);
+  }
+
+  if (kompassiGame.ropecon2023_celebratory_year) {
+    tags.push(Tag.CELEBRATORY_YEAR);
+  }
+
+  return _.uniq(tags);
 };
 
 const mapGenres = (kompassiGame: KompassiGame): Genre[] => {
@@ -286,6 +318,50 @@ const mapAccessibilityValues = (
 
   if (kompassiGame.ropecon2022_accessibility_remaining_one_place) {
     accessibilityValues.push(AccessibilityValue.REMAINING_ONE_PLACE);
+  }
+
+  if (kompassiGame.ropecon2023_accessibility_cant_use_mic) {
+    accessibilityValues.push(AccessibilityValue.CANNOT_USE_MIC);
+  }
+
+  if (kompassiGame.ropecon2023_accessibility_programme_duration_over_2_hours) {
+    accessibilityValues.push(
+      AccessibilityValue.PROGRAMME_DURATION_OVER_2_HOURS
+    );
+  }
+
+  if (
+    kompassiGame.ropecon2023_accessibility_limited_opportunities_to_move_around
+  ) {
+    accessibilityValues.push(
+      AccessibilityValue.LIMITED_OPPORTUNITIES_TO_MOVE_AROUND
+    );
+  }
+
+  if (kompassiGame.ropecon2023_accessibility_long_texts) {
+    accessibilityValues.push(AccessibilityValue.LONG_TEXT);
+  }
+
+  if (
+    kompassiGame.ropecon2023_accessibility_texts_not_available_as_recordings
+  ) {
+    accessibilityValues.push(
+      AccessibilityValue.TEXT_NOT_AVAILABLE_AS_RECORDINGS
+    );
+  }
+
+  if (kompassiGame.ropecon2023_accessibility_participation_requires_dexterity) {
+    accessibilityValues.push(
+      AccessibilityValue.PARTICIPATION_REQUIRES_DEXTERITY
+    );
+  }
+
+  if (
+    kompassiGame.ropecon2023_accessibility_participation_requires_react_quickly
+  ) {
+    accessibilityValues.push(
+      AccessibilityValue.PARTICIPATION_REQUIRES_REACT_QUICKLY
+    );
   }
 
   return accessibilityValues;
