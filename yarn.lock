@@ -2355,7 +2355,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.12.1, @babel/runtime@npm:^7.19.4, @babel/runtime@npm:^7.20.6, @babel/runtime@npm:^7.20.7, @babel/runtime@npm:^7.21.0, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.9.2":
+"@babel/runtime@npm:^7.12.1, @babel/runtime@npm:^7.19.4, @babel/runtime@npm:^7.20.7, @babel/runtime@npm:^7.21.0, @babel/runtime@npm:^7.22.5, @babel/runtime@npm:^7.8.4, @babel/runtime@npm:^7.9.2":
   version: 7.22.5
   resolution: "@babel/runtime@npm:7.22.5"
   dependencies:
@@ -8163,12 +8163,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"i18next@npm:22.4.3":
-  version: 22.4.3
-  resolution: "i18next@npm:22.4.3"
+"i18next@npm:23.0.1":
+  version: 23.0.1
+  resolution: "i18next@npm:23.0.1"
   dependencies:
-    "@babel/runtime": ^7.20.6
-  checksum: 600e13b14df293ce31a617f3ee75d8f44f24e206eb2e11d355eb902388807d424e9dd7de15e4453f30bd36c7d33beb1d5d9638642decbd4c2adc386732232bf3
+    "@babel/runtime": ^7.22.5
+  checksum: ee530cb3a4ef6fa907a4a5ac6641d5ab9a91cd79bb0348722d9f58654c24beb686a738c81971021fc2fc87b1a5754a9c6feb0bf001da09108344efd9650bc05a
   languageName: node
   linkType: hard
 
@@ -8993,7 +8993,7 @@ __metadata:
     dotenv-webpack: 8.0.1
     file-loader: 6.2.0
     html-webpack-plugin: 5.5.3
-    i18next: 22.4.3
+    i18next: 23.0.1
     i18next-browser-languagedetector: 7.0.2
     jsdom: 22.1.0
     postcss: 8.4.24
@@ -9003,7 +9003,7 @@ __metadata:
     react: 18.2.0
     react-dom: 18.2.0
     react-hook-form: 7.44.3
-    react-i18next: 12.3.1
+    react-i18next: 13.0.0
     react-is: 18.2.0
     react-markdown: 8.0.7
     react-redux: 8.1.0
@@ -11555,21 +11555,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-i18next@npm:12.3.1":
-  version: 12.3.1
-  resolution: "react-i18next@npm:12.3.1"
+"react-i18next@npm:13.0.0":
+  version: 13.0.0
+  resolution: "react-i18next@npm:13.0.0"
   dependencies:
-    "@babel/runtime": ^7.20.6
+    "@babel/runtime": ^7.22.5
     html-parse-stringify: ^3.0.1
   peerDependencies:
-    i18next: ">= 19.0.0"
+    i18next: ">= 23.0.1"
     react: ">= 16.8.0"
   peerDependenciesMeta:
     react-dom:
       optional: true
     react-native:
       optional: true
-  checksum: fe3f360e5184bc63861734e94bf625a09b9ec0d28fab41779a68758af258fd1737dde25ff7a88ddb66c1571a3e3de5b3403825a91b4949bf9832a00615acb87a
+  checksum: f897ebb2570f79d2aee01d3d5cf65c0622a1ef07e2536c2d9206d9fe999ece9abf4b4795be99db4326f18fa3858c69745e21b150254d3da0d1f08c77586b1cc4
   languageName: node
   linkType: hard
 
