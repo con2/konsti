@@ -28,6 +28,9 @@ export const getAuthorizedUsername = (
 };
 
 export const authorizeUsingApiKey = (apiKey: string | undefined): boolean => {
+  if (!process.env.API_KEY) {
+    return false;
+  }
   if (apiKey === process.env.API_KEY) {
     return true;
   }
