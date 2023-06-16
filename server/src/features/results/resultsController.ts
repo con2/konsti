@@ -2,7 +2,10 @@ import { Request, Response } from "express";
 import { storeAssignment } from "server/features/player-assignment/assignmentController";
 import { fetchResults } from "server/features/results/resultsService";
 import { UserGroup } from "shared/typings/models/user";
-import { getAuthorizedUsername } from "server/utils/authHeader";
+import {
+  authorizeUsingApiKey,
+  getAuthorizedUsername,
+} from "server/utils/authHeader";
 import { logger } from "server/utils/logger";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
@@ -13,6 +16,7 @@ import {
   GetResultsRequest,
   GetResultsRequestSchema,
 } from "shared/typings/api/results";
+import { autoAssignPlayers } from "server/utils/cron";
 
 export const getResults = async (
   req: Request<{}, {}, GetResultsRequest>,
@@ -61,4 +65,23 @@ export const postAssignment = async (
 
   const response = await storeAssignment(result.data.startingTime);
   return res.json(response);
+};
+
+export const postAutoAssignment = async (
+  req: Request<{}, {}, PostPlayerAssignmentRequest>,
+  res: Response
+): Promise<Response> => {
+  logger.info(`API call: POST ${ApiEndpoint.ASSIGNMENT_CRON}`);
+
+  const validAuthorization = authorizeUsingApiKey(req.headers.authorization);
+  if (!validAuthorization) {
+    return res.sendStatus(401);
+  }
+
+  try {
+    await autoAssignPlayers();
+    return res.sendStatus(200);
+  } catch (error) {
+    return res.sendStatus(500);
+  }
 };
