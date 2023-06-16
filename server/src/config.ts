@@ -84,12 +84,12 @@ const prodConfig = {
   useTestTime: false,
 
   // Game update cron
-  autoUpdateGamesEnabled: true,
+  autoUpdateGamesEnabled: false,
   gameUpdateInterval: `*/4 * * * *`,
   updateGamePopularityEnabled: true,
 
   // Player assign cron
-  autoAssignPlayersEnabled: true,
+  autoAssignPlayersEnabled: false,
   autoAssignInterval: `0,15,30,45 * * * *`,
   autoAssignDelay: 1000 * 10,
 };
@@ -114,7 +114,7 @@ const stagingConfig = {
   useTestTime: true,
 
   // Game update cron
-  autoUpdateGamesEnabled: true,
+  autoUpdateGamesEnabled: false,
   gameUpdateInterval: `*/4 * * * *`,
   updateGamePopularityEnabled: true,
 
