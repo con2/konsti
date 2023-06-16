@@ -53,7 +53,7 @@ export const stopCronJobs = (): void => {
   logger.info("CronJobs stopped");
 };
 
-const autoUpdateGames = async (): Promise<void> => {
+export const autoUpdateGames = async (): Promise<void> => {
   logger.info("----> Auto update games");
 
   const updateGamesResult = await updateGames();
@@ -68,7 +68,7 @@ const autoUpdateGames = async (): Promise<void> => {
   logger.info("***** Games auto update completed");
 };
 
-const autoAssignPlayers = async (): Promise<void> => {
+export const autoAssignPlayers = async (): Promise<void> => {
   logger.info("----> Auto assign players");
 
   const runAssignmentResult = await runAssignment({
