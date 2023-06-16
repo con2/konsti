@@ -106,7 +106,7 @@ const stagingConfig = {
       : [],
   debug: process.env.DEBUG === "true" || false,
   GROUP_ASSIGNMENT_ROUNDS: 300,
-  PADG_ASSIGNMENT_ROUNDS: 300,
+  PADG_ASSIGNMENT_ROUNDS: 30,
   RANDOM_ASSIGNMENT_ROUNDS: 300,
   consoleLogFormatJson: true,
 
