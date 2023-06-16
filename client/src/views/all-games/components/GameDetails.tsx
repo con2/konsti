@@ -11,11 +11,11 @@ import {
 } from "client/views/my-games/myGamesSlice";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
 import { getSignedGames } from "client/utils/getUpcomingGames";
+import { BackButton } from "client/components/BackButton";
 
 export const GameDetails = (): ReactElement => {
   const { t } = useTranslation();
 
-  const navigate = useNavigate();
   const { gameId } = useParams();
 
   const games = useAppSelector((state) => state.allGames.games);
@@ -52,15 +52,7 @@ export const GameDetails = (): ReactElement => {
 
   return (
     <div>
-      <Button
-        onClick={() => {
-          // Navigate to front page if no previous page exists
-          window.history.state?.idx > 0 ? navigate(-1) : navigate("/");
-        }}
-        buttonStyle={ButtonStyle.SECONDARY}
-      >
-        {t("button.back")}
-      </Button>
+      <BackButton />
       {loading && <Loading />}
       {foundGame && (
         <GameEntry
