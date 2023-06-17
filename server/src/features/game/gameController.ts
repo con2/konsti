@@ -27,10 +27,10 @@ export const postUpdateGames = async (
   return res.json(response);
 };
 
-export const postAutoUpdateGames = async (
+export const postAutoUpdateGames = (
   req: Request<{}, {}, {}>,
   res: Response
-): Promise<Response> => {
+): Response => {
   logger.info(`API call: POST ${ApiEndpoint.PROGRAM_UPDATE_CRON}`);
 
   const validAuthorization = authorizeUsingApiKey(req.headers.authorization);
@@ -38,12 +38,11 @@ export const postAutoUpdateGames = async (
     return res.sendStatus(401);
   }
 
-  try {
-    await autoUpdateGames();
-    return res.sendStatus(200);
-  } catch (error) {
-    return res.sendStatus(500);
-  }
+  autoUpdateGames().catch((error) => {
+    logger.error("autoUpdateGames failed: %s", error);
+  });
+
+  return res.sendStatus(200);
 };
 
 export const getGames = async (
