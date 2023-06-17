@@ -79,7 +79,7 @@ export const postAutoAssignment = (
   }
 
   autoAssignPlayers().catch((error) => {
-    logger.error("autoUpdateGames failed: %s", error);
+    logger.error("postAutoAssignment failed: %s", error);
   });
 
   return res.sendStatus(200);
