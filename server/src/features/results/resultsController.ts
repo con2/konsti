@@ -67,10 +67,10 @@ export const postAssignment = async (
   return res.json(response);
 };
 
-export const postAutoAssignment = async (
+export const postAutoAssignment = (
   req: Request<{}, {}, PostPlayerAssignmentRequest>,
   res: Response
-): Promise<Response> => {
+): Response => {
   logger.info(`API call: POST ${ApiEndpoint.ASSIGNMENT_CRON}`);
 
   const validAuthorization = authorizeUsingApiKey(req.headers.authorization);
@@ -78,10 +78,9 @@ export const postAutoAssignment = async (
     return res.sendStatus(401);
   }
 
-  try {
-    await autoAssignPlayers();
-    return res.sendStatus(200);
-  } catch (error) {
-    return res.sendStatus(500);
-  }
+  autoAssignPlayers().catch((error) => {
+    logger.error("autoAssignPlayers failed: %s", error);
+  });
+
+  return res.sendStatus(200);
 };
