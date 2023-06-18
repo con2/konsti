@@ -33,7 +33,7 @@
     "@faker-js/faker": "8.0.2",
     "@sentry/node": "7.55.2",
     "bcryptjs": "2.4.3",
-    "commander": "10.0.1",
+    "commander": "11.0.0",
     "croner": "6.0.4",
     "eventassigner-js": "0.1.6",
     "eventassigner-random": "0.3.1",
