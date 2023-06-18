@@ -24,6 +24,7 @@ import {
   selectSignedGames,
 } from "client/views/my-games/myGamesSlice";
 import { RadioButton } from "client/components/RadioButton";
+import { EventLog } from "client/views/all-games/components/EventLog";
 
 export const MyGamesView = (): ReactElement => {
   const { t } = useTranslation();
@@ -73,6 +74,8 @@ export const MyGamesView = (): ReactElement => {
           onChange={() => setShowAllGames(true)}
         />
       </RadioButtonGroup>
+
+      <EventLog />
 
       <MyFavoritesList
         favoritedGames={

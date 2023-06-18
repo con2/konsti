@@ -262,7 +262,7 @@
     "strategy": "Strategia"
   },
   "eventLog": {
-    "title": "Tapahtumat"
+    "title": "Päivitykset"
   },
   "eventLogActions": {
     "newAssignment": "Uusi ilmoittautuminen"

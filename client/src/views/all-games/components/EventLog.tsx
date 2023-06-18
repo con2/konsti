@@ -2,7 +2,6 @@ import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { Accordion } from "client/components/Accordion";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { FavoriteButton } from "client/components/FavoriteButton";
 import { submitUpdateEventLogIsSeen } from "client/views/login/loginThunks";
@@ -17,41 +16,37 @@ export const EventLog = (): ReactElement => {
 
   return (
     <div>
-      <Accordion
-        closeAccordionText={t("eventLog.title")}
-        openAccordionText={t("eventLog.title")}
-      >
-        <EventLogItems>
-          {eventLogItems.map((eventLogItem) => {
-            const foundGame = games.find(
-              (game) => game.gameId === eventLogItem.programItemId
-            );
-            if (!foundGame) return;
-            return (
-              <div key={eventLogItem.action}>
-                <EventTitle isSeen={eventLogItem.isSeen}>
-                  {t(`eventLogActions.${eventLogItem.action}`)}:{" "}
-                  <Link to={`/games/${eventLogItem.programItemId}`}>
-                    {foundGame.title}
-                  </Link>
-                </EventTitle>
-                <FavoriteButton
-                  isFavorite={eventLogItem.isSeen}
-                  onClick={async () => {
-                    await dispatch(
-                      submitUpdateEventLogIsSeen({
-                        username,
-                        eventLogItemId: eventLogItem.eventLogItemId,
-                        isSeen: !eventLogItem.isSeen,
-                      })
-                    );
-                  }}
-                />
-              </div>
-            );
-          })}
-        </EventLogItems>
-      </Accordion>
+      <EventLogItems>
+        <h3>{t("eventLog.title")}</h3>
+        {eventLogItems.map((eventLogItem) => {
+          const foundGame = games.find(
+            (game) => game.gameId === eventLogItem.programItemId
+          );
+          if (!foundGame) return;
+          return (
+            <div key={eventLogItem.action}>
+              <EventTitle isSeen={eventLogItem.isSeen}>
+                {t(`eventLogActions.${eventLogItem.action}`)}:{" "}
+                <Link to={`/games/${eventLogItem.programItemId}`}>
+                  {foundGame.title}
+                </Link>
+              </EventTitle>
+              <FavoriteButton
+                isFavorite={eventLogItem.isSeen}
+                onClick={async () => {
+                  await dispatch(
+                    submitUpdateEventLogIsSeen({
+                      username,
+                      eventLogItemId: eventLogItem.eventLogItemId,
+                      isSeen: !eventLogItem.isSeen,
+                    })
+                  );
+                }}
+              />
+            </div>
+          );
+        })}
+      </EventLogItems>
     </div>
   );
 };
