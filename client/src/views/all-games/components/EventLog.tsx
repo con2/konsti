@@ -2,16 +2,12 @@ import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "client/utils/hooks";
-import { FavoriteButton } from "client/components/FavoriteButton";
-import { submitUpdateEventLogIsSeen } from "client/views/login/loginThunks";
+import { useAppSelector } from "client/utils/hooks";
 
 export const EventLog = (): ReactElement => {
   const { t } = useTranslation();
-  const dispatch = useAppDispatch();
 
   const eventLogItems = useAppSelector((state) => state.login.eventLogItems);
-  const username = useAppSelector((state) => state.login.username);
   const games = useAppSelector((state) => state.allGames.games);
 
   return (
@@ -31,6 +27,7 @@ export const EventLog = (): ReactElement => {
                   {foundGame.title}
                 </Link>
               </EventTitle>
+              {/*
               <FavoriteButton
                 isFavorite={eventLogItem.isSeen}
                 onClick={async () => {
@@ -43,6 +40,7 @@ export const EventLog = (): ReactElement => {
                   );
                 }}
               />
+              */}
             </div>
           );
         })}
