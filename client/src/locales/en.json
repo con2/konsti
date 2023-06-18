@@ -261,10 +261,10 @@
     "time": "Test time",
     "strategy": "Strategy"
   },
-  "actionLog": {
+  "eventLog": {
     "title": "Updates"
   },
-  "actionLogActions": {
+  "eventLogActions": {
     "newAssignment": "New signup"
   },
   "signup": {

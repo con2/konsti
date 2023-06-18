@@ -13,7 +13,7 @@ import {
   SearchAndFilterCard,
   StartingTimeOption,
 } from "client/views/all-games/components/SearchAndFilterCard";
-import { ActionLog } from "client/views/all-games/components/ActionLog";
+import { EventLog } from "client/views/all-games/components/EventLog";
 
 export const MULTIPLE_WHITESPACES_REGEX = /\s\s+/g;
 
@@ -120,7 +120,7 @@ export const AllGamesView = (): ReactElement => {
 
   return (
     <>
-      <ActionLog />
+      <EventLog />
       <SearchAndFilterCard
         onTagChange={setSelectedTag}
         onSelectedStartingTimeChange={setSelectedStartingTime}

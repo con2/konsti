@@ -17,7 +17,7 @@ const UserSchema = new mongoose.Schema(
         message: String,
       },
     ],
-    actionLogItems: [
+    eventLogItems: [
       {
         action: String,
         eventItemId: String,

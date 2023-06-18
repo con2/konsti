@@ -5,17 +5,17 @@ import {
   makeSuccessResult,
 } from "shared/utils/result";
 import {
-  PostActionLogIsSeenRequest,
-  PostActionLogItemRequest,
-} from "shared/typings/api/actionLog";
+  PostEventLogIsSeenRequest,
+  PostEventLogItemRequest,
+} from "shared/typings/api/eventLog";
 import { UserModel } from "server/features/user/userSchema";
 import { logger } from "server/utils/logger";
-import { ActionLogItem } from "shared/typings/models/actionLog";
+import { EventLogItem } from "shared/typings/models/eventLog";
 
-export const addToActionLogs = async (
-  actionLogRequest: PostActionLogItemRequest
+export const addToEventLogs = async (
+  eventLogRequest: PostEventLogItemRequest
 ): Promise<Result<void, MongoDbError>> => {
-  const { updates, action } = actionLogRequest;
+  const { updates, action } = eventLogRequest;
 
   const usernames = updates.map((update) => update.username);
   try {
@@ -25,7 +25,7 @@ export const addToActionLogs = async (
       },
       {
         $addToSet: {
-          actionLogItems: {
+          eventLogItems: {
             action,
             eventItemId: "123",
             isSeen: false,
@@ -44,26 +44,26 @@ export const addToActionLogs = async (
   }
 };
 
-export const updateActionLogItem = async (
-  request: PostActionLogIsSeenRequest
-): Promise<Result<ActionLogItem[] | null, MongoDbError>> => {
-  const { username, actionLogItemId, isSeen } = request;
+export const updateEventLogItem = async (
+  request: PostEventLogIsSeenRequest
+): Promise<Result<EventLogItem[] | null, MongoDbError>> => {
+  const { username, eventLogItemId, isSeen } = request;
   try {
     const response = await UserModel.findOneAndUpdate(
-      { username, "actionLogItems._id": actionLogItemId },
+      { username, "eventLogItems._id": eventLogItemId },
       {
-        $set: { "actionLogItems.$[logItem].isSeen": isSeen },
+        $set: { "eventLogItems.$[logItem].isSeen": isSeen },
       },
       {
-        arrayFilters: [{ "logItem._id": actionLogItemId }],
+        arrayFilters: [{ "logItem._id": eventLogItemId }],
         new: true,
       }
     );
     if (response) {
       return makeSuccessResult(
-        response.actionLogItems.map((item) => ({
+        response.eventLogItems.map((item) => ({
           // @ts-expect-error: Mongoose return value is missing nested _id
-          actionLogItemId: item._id,
+          eventLogItemId: item._id,
           action: item.action,
           isSeen: item.isSeen,
           eventItemId: item.eventItemId,

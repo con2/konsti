@@ -33,7 +33,7 @@ export const saveUser = async (
       typeof newUserData.groupCode === "string" ? newUserData.groupCode : "0",
     favoritedGames: [],
     signedGames: [],
-    actionLog: [],
+    eventLog: [],
   });
 
   try {
@@ -122,9 +122,9 @@ export const findUser = async (
     logger.debug(`MongoDB: Found user ${username}`);
     return makeSuccessResult({
       ...response,
-      actionLogItems: response.actionLogItems.map((item) => ({
+      eventLogItems: response.eventLogItems.map((item) => ({
         // @ts-expect-error: Mongoose return value is missing nested _id
-        actionLogItemId: item._id,
+        eventLogItemId: item._id,
         action: item.action,
         isSeen: item.isSeen,
         eventItemId: item.eventItemId,

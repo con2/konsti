@@ -9,7 +9,7 @@ import {
   USERNAME_LENGTH_MIN,
 } from "shared/constants/validation";
 import { sharedConfig } from "shared/config/sharedConfig";
-import { ActionLogItem } from "shared/typings/models/actionLog";
+import { EventLogItem } from "shared/typings/models/eventLog";
 
 // GET user
 
@@ -18,7 +18,7 @@ export interface GetUserResponse extends ApiResult {
   message: string;
   serial: string;
   username: string;
-  actionLogItems: ActionLogItem[];
+  eventLogItems: EventLogItem[];
 }
 
 // POST user

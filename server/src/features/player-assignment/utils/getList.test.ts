@@ -21,7 +21,7 @@ const user: User = {
     },
   ],
   createdAt: null,
-  actionLogItems: [],
+  eventLogItems: [],
 };
 
 const user2: User = {
@@ -33,7 +33,7 @@ const user2: User = {
   favoritedGames: [],
   signedGames: [],
   createdAt: null,
-  actionLogItems: [],
+  eventLogItems: [],
 };
 
 const user3: User = {
@@ -45,7 +45,7 @@ const user3: User = {
   favoritedGames: [],
   signedGames: [],
   createdAt: null,
-  actionLogItems: [],
+  eventLogItems: [],
 };
 
 const previousMatchingSignup: Signup = {

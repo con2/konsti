@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { LoginState } from "client/typings/redux.typings";
 import { UserGroup } from "shared/typings/models/user";
 import { loadSession } from "client/utils/localStorage";
-import { ActionLogItem } from "shared/typings/models/actionLog";
+import { EventLogItem } from "shared/typings/models/eventLog";
 
 const initialState = (): LoginState => {
   const persistedState = loadSession();
@@ -13,7 +13,7 @@ const initialState = (): LoginState => {
     jwt: persistedState?.login?.jwt ?? "",
     userGroup: UserGroup.USER,
     serial: "",
-    actionLogItems: [],
+    eventLogItems: [],
   };
 };
 
@@ -29,23 +29,23 @@ const loginSlice = createSlice({
         jwt: action.payload.jwt,
         userGroup: action.payload.userGroup,
         serial: action.payload.serial,
-        actionLogItems: action.payload.actionLogItems,
+        eventLogItems: action.payload.eventLogItems,
       };
     },
 
-    submitUpdateActionLogIsSeenAsync(
+    submitUpdateEventLogIsSeenAsync(
       state,
-      action: PayloadAction<ActionLogItem[]>
+      action: PayloadAction<EventLogItem[]>
     ) {
       return {
         ...state,
-        actionLogItems: action.payload,
+        eventLogItems: action.payload,
       };
     },
   },
 });
 
-export const { submitLoginAsync, submitUpdateActionLogIsSeenAsync } =
+export const { submitLoginAsync, submitUpdateEventLogIsSeenAsync } =
   loginSlice.actions;
 
 export const loginReducer = loginSlice.reducer;

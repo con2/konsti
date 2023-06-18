@@ -1,4 +1,4 @@
-import { ActionLogItem } from "shared/typings/models/actionLog";
+import { EventLogItem } from "shared/typings/models/eventLog";
 import { Game } from "shared/typings/models/game";
 
 export interface User {
@@ -10,7 +10,7 @@ export interface User {
   favoritedGames: readonly Game[];
   signedGames: readonly SelectedGame[];
   createdAt: string | null;
-  actionLogItems: ActionLogItem[];
+  eventLogItems: EventLogItem[];
 }
 
 export interface SelectedGame {

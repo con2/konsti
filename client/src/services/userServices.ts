@@ -15,9 +15,9 @@ import {
 } from "shared/typings/api/users";
 import { RegistrationFormFields } from "client/views/registration/components/RegistrationForm";
 import {
-  PostActionLogIsSeenRequest,
-  PostActionLogIsSeenResponse,
-} from "shared/typings/api/actionLog";
+  PostEventLogIsSeenRequest,
+  PostEventLogIsSeenResponse,
+} from "shared/typings/api/eventLog";
 
 export const postRegistration = async (
   registrationFormFields: RegistrationFormFields
@@ -83,12 +83,12 @@ export const getSignupMessages = async (): Promise<
   return response.data;
 };
 
-export const postActionLogItemIsSeen = async (
-  request: PostActionLogIsSeenRequest
-): Promise<PostActionLogIsSeenResponse | ApiError> => {
+export const postEventLogItemIsSeen = async (
+  request: PostEventLogIsSeenRequest
+): Promise<PostEventLogIsSeenResponse | ApiError> => {
   const response = await api.post<
-    PostActionLogIsSeenResponse,
-    PostActionLogIsSeenRequest
+    PostEventLogIsSeenResponse,
+    PostEventLogIsSeenRequest
   >(ApiEndpoint.ACTION_LOG, request);
   return response.data;
 };

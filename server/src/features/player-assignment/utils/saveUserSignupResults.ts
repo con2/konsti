@@ -13,8 +13,8 @@ import {
   unwrapResult,
 } from "shared/utils/result";
 import { MongoDbError } from "shared/typings/api/errors";
-import { addToActionLogs } from "server/features/user/action-log/actionLogRepository";
-import { ActionLogAction } from "shared/typings/models/actionLog";
+import { addToEventLogs } from "server/features/user/event-log/eventLogRepository";
+import { EventLogAction } from "shared/typings/models/eventLog";
 
 export const saveUserSignupResults = async (
   startingTime: string,
@@ -92,16 +92,16 @@ export const saveUserSignupResults = async (
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 
-  // Add new signups to users actionLogs
-  const addToActionLogResult = await addToActionLogs({
+  // Add new signups to users eventLogs
+  const addToEventLogResult = await addToEventLogs({
     updates: results.map((result) => ({
       username: result.username,
       eventItemTitle: result.enteredGame.gameDetails.title,
     })),
-    action: ActionLogAction.NEW_ASSIGNMENT,
+    action: EventLogAction.NEW_ASSIGNMENT,
   });
-  if (isErrorResult(addToActionLogResult)) {
-    return addToActionLogResult;
+  if (isErrorResult(addToEventLogResult)) {
+    return addToEventLogResult;
   }
 
   return makeSuccessResult(undefined);

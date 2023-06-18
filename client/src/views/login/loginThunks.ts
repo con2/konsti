@@ -4,14 +4,14 @@ import { AppThunk } from "client/typings/redux.typings";
 import { PostLoginError, PostLoginResponse } from "shared/typings/api/login";
 import {
   submitLoginAsync,
-  submitUpdateActionLogIsSeenAsync,
+  submitUpdateEventLogIsSeenAsync,
 } from "client/views/login/loginSlice";
 import { loadGroupMembers, loadUser } from "client/utils/loadData";
 import { submitUpdateGroupCodeAsync } from "client/views/group/groupSlice";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 import { LoginFormFields } from "client/views/login/components/LoginForm";
-import { postActionLogItemIsSeen } from "client/services/userServices";
-import { PostActionLogIsSeenRequest } from "shared/typings/api/actionLog";
+import { postEventLogItemIsSeen } from "client/services/userServices";
+import { PostEventLogIsSeenRequest } from "shared/typings/api/eventLog";
 
 export enum LoginErrorMessage {
   LOGIN_FAILED = "error.loginFailed",
@@ -59,7 +59,7 @@ export const submitLogin = (
           jwt: loginResponse.jwt,
           userGroup: loginResponse.userGroup,
           serial: loginResponse.serial,
-          actionLogItems: loginResponse.actionLogItems,
+          eventLogItems: loginResponse.eventLogItems,
         })
       );
 
@@ -112,7 +112,7 @@ export const submitSessionRecovery = (jwt: string): AppThunk => {
           jwt: loginResponse.jwt,
           userGroup: loginResponse.userGroup,
           serial: loginResponse.serial,
-          actionLogItems: loginResponse.actionLogItems,
+          eventLogItems: loginResponse.eventLogItems,
         })
       );
 
@@ -121,18 +121,18 @@ export const submitSessionRecovery = (jwt: string): AppThunk => {
   };
 };
 
-export const submitUpdateActionLogIsSeen = (
-  request: PostActionLogIsSeenRequest
+export const submitUpdateEventLogIsSeen = (
+  request: PostEventLogIsSeenRequest
 ): AppThunk => {
   return async (dispatch): Promise<void> => {
-    const response = await postActionLogItemIsSeen(request);
+    const response = await postEventLogItemIsSeen(request);
 
     if (response?.status === "error") {
       // TODO
     }
 
     if (response?.status === "success") {
-      dispatch(submitUpdateActionLogIsSeenAsync(response.actionLogItems));
+      dispatch(submitUpdateEventLogIsSeenAsync(response.eventLogItems));
     }
   };
 };
