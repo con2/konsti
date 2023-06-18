@@ -1,87 +1,100 @@
-import schedule from "node-schedule";
+import { Cron } from "croner";
+import dayjs from "dayjs";
 import { logger } from "server/utils/logger";
-import { getGamesFromKompassi } from "server/features/game/utils/getGamesFromKompassi";
 import { config } from "server/config";
-import { updateGamePopularity } from "server/features/game-popularity/updateGamePopularity";
 import { runAssignment } from "server/features/player-assignment/runAssignment";
-import { kompassiGameMapper } from "server/utils/kompassiGameMapper";
-import { saveGames } from "server/features/game/gameRepository";
 import { sharedConfig } from "shared/config/sharedConfig";
-import { isErrorResult, unwrapResult } from "shared/utils/result";
+import { isErrorResult } from "shared/utils/result";
+import { updateGames } from "server/features/game/gamesService";
 
 const {
   autoUpdateGamesEnabled,
   gameUpdateInterval,
-  autoUpdateGamePopularityEnabled,
   autoAssignPlayersEnabled,
   autoAssignDelay,
   autoAssignInterval,
 } = config;
 
-const { assignmentStrategy } = sharedConfig;
+const cronJobs: Cron[] = [];
 
 export const startCronJobs = (): void => {
-  if (autoUpdateGamesEnabled || autoUpdateGamePopularityEnabled) {
-    schedule.scheduleJob(gameUpdateInterval, autoUpdateGames);
+  if (autoUpdateGamesEnabled) {
+    const autoUpdateGamesJob = Cron(
+      gameUpdateInterval,
+      {
+        name: "autoUpdateGames",
+        protect: protectCallback,
+        catch: errorHandler,
+      },
+      autoUpdateGames
+    );
+    cronJobs.push(autoUpdateGamesJob);
   }
 
   if (autoAssignPlayersEnabled) {
-    schedule.scheduleJob(autoAssignInterval, autoAssignPlayers);
+    const autoAssignPlayersJob = Cron(
+      autoAssignInterval,
+      {
+        name: "autoAssignPlayers",
+        protect: protectCallback,
+        catch: errorHandler,
+      },
+      autoAssignPlayers
+    );
+    cronJobs.push(autoAssignPlayersJob);
   }
 };
 
 export const stopCronJobs = (): void => {
-  const jobList = schedule.scheduledJobs;
-
-  Object.values(jobList).map((job) => {
-    schedule.cancelJob(job.name);
+  cronJobs.map((job) => {
+    job.stop();
   });
 
   logger.info("CronJobs stopped");
 };
 
-const autoUpdateGames = async (): Promise<void> => {
-  if (autoUpdateGamesEnabled) {
-    logger.info("----> Auto update games");
-    const kompassiGamesResult = await getGamesFromKompassi();
-    if (isErrorResult(kompassiGamesResult)) {
-      logger.error(
-        "***** Games auto update failed: error downloading games from Kompassi"
-      );
-      return;
-    }
-    const kompassiGames = unwrapResult(kompassiGamesResult);
-    const saveGamesResult = await saveGames(kompassiGameMapper(kompassiGames));
-    if (isErrorResult(saveGamesResult)) {
-      logger.error("***** Games auto update failed: Error saving games");
-      return;
-    }
-    logger.info("***** Games auto update completed");
+export const autoUpdateGames = async (): Promise<void> => {
+  logger.info("----> Auto update games");
+
+  const updateGamesResult = await updateGames();
+  if (updateGamesResult.status === "error") {
+    logger.error(
+      "%s",
+      new Error(`***** Games auto update failed: ${updateGamesResult.message}`)
+    );
+    return;
   }
 
-  if (autoUpdateGamePopularityEnabled) {
-    logger.info("----> Auto update game popularity");
-    const updateGamePopularityResult = await updateGamePopularity();
-    if (isErrorResult(updateGamePopularityResult)) {
-      logger.error("***** Game popularity auto update failed");
-      return;
-    }
-    logger.info("***** Game popularity auto update completed");
-  }
+  logger.info("***** Games auto update completed");
 };
 
-const autoAssignPlayers = async (): Promise<void> => {
+export const autoAssignPlayers = async (): Promise<void> => {
   logger.info("----> Auto assign players");
 
   const runAssignmentResult = await runAssignment({
-    assignmentStrategy,
+    assignmentStrategy: sharedConfig.assignmentStrategy,
     useDynamicStartingTime: true,
     assignmentDelay: autoAssignDelay,
   });
   if (isErrorResult(runAssignmentResult)) {
-    logger.error("***** Auto assignment failed");
+    logger.error("%s", new Error("***** Auto assignment failed"));
     return;
   }
 
   logger.info("***** Automatic player assignment completed");
+};
+
+const protectCallback = (job: Cron): void => {
+  const timeNow = dayjs().format();
+  const startTime = dayjs(job.currentRun()).format();
+  logger.error(
+    "%s",
+    new Error(
+      `Cronjob ${job.name} at ${timeNow} was blocked by call started at ${startTime}`
+    )
+  );
+};
+
+const errorHandler = (error: unknown, job: Cron): void => {
+  logger.error(`Error while running cronJob ${job.name}: %s`, error);
 };

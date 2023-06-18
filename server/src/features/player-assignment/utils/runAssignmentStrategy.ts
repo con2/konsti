@@ -110,10 +110,9 @@ export const runAssignmentStrategy = (
     if (groupResult.results.length > padgResult.results.length) {
       logger.info("----> Use Group Assign result");
       return makeSuccessResult(groupResult);
-    } else {
-      logger.info("----> Use Padg Assign result");
-      return makeSuccessResult(padgResult);
     }
+    logger.info("----> Use Padg Assign result");
+    return makeSuccessResult(padgResult);
   }
 
   if (assignmentStrategy === AssignmentStrategy.RANDOM_PADG) {
@@ -143,10 +142,9 @@ export const runAssignmentStrategy = (
     if (randomResult.results.length > padgResult.results.length) {
       logger.info("----> Use Random assign result");
       return makeSuccessResult(randomResult);
-    } else {
-      logger.info("----> Use Padg Assign result");
-      return makeSuccessResult(padgResult);
     }
+    logger.info("----> Use Padg Assign result");
+    return makeSuccessResult(padgResult);
   }
 
   return exhaustiveSwitchGuard(assignmentStrategy);

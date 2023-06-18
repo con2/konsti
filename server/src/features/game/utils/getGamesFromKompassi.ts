@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import { ZodError } from "zod";
 import axios from "axios";
+import _ from "lodash";
 import { logger } from "server/utils/logger";
 import { config } from "server/config";
 import {
@@ -40,12 +41,12 @@ export const getGamesFromKompassi = async (): Promise<
   const eventProgramItems = unwrapResult(eventProgramItemsResult);
 
   if (!Array.isArray(eventProgramItems)) {
-    logger.error("Invalid response format, should be array");
+    logger.error("%s", new Error("Invalid response format, should be array"));
     return makeErrorResult(KompassiError.INVALID_RESPONSE);
   }
 
   if (eventProgramItems.length === 0) {
-    logger.error("No program items found");
+    logger.error("%s", new Error("No program items found"));
     return makeErrorResult(KompassiError.NO_PROGRAM_ITEMS);
   }
 
@@ -53,9 +54,9 @@ export const getGamesFromKompassi = async (): Promise<
 
   const games = getGamesFromFullProgram(eventProgramItems);
 
-  return games.length >= 0
-    ? makeSuccessResult(games)
-    : makeErrorResult(KompassiError.NO_PROGRAM_ITEMS);
+  return games.length === 0
+    ? makeErrorResult(KompassiError.NO_PROGRAM_ITEMS)
+    : makeSuccessResult(games);
 };
 
 const getEventProgramItems = async (): Promise<
@@ -103,6 +104,70 @@ const getProgramFromServer = async (): Promise<
   }
 };
 
+const checkUnknownKeys = (programItems: EventProgramItem[]): void => {
+  const unknownKeys: string[] = programItems.flatMap((programItem) => {
+    return Object.keys(programItem).filter(
+      (key) =>
+        !Object.prototype.hasOwnProperty.call(KompassiGameSchema.shape, key)
+    );
+  });
+
+  if (unknownKeys.length > 0) {
+    logger.error(
+      "%s",
+      new Error(
+        `Found unknown keys for program items: ${_.uniq(unknownKeys).join(" ")}`
+      )
+    );
+  }
+};
+
+const parseProgramItem = (
+  programItem: EventProgramItem
+): EventProgramItem | undefined => {
+  const result = KompassiGameSchema.safeParse(programItem);
+
+  if (result.success) {
+    return result.data;
+  }
+
+  if (result.error instanceof ZodError) {
+    result.error.issues.map((issue) => {
+      if (issue.code === "invalid_enum_value") {
+        const key = issue.path[0] as keyof KompassiGame;
+        const index = issue.path[1] as number;
+
+        const invalidValue = getInvalidValueFromEnumError(
+          programItem,
+          key,
+          index
+        );
+
+        logger.error(
+          "%s",
+          new Error(
+            `Invalid ${key} found for game ${programItem.identifier}: ${invalidValue}`
+          )
+        );
+      } else {
+        logger.error(
+          "%s",
+          new Error(
+            `Error parsing program item ${programItem.identifier}: ${issue.message}`
+          )
+        );
+      }
+    });
+  } else {
+    logger.error(
+      `Unknown error while parsing game ${programItem.identifier}: %s`,
+      result.error
+    );
+  }
+
+  return undefined;
+};
+
 const getGamesFromFullProgram = (
   programItems: EventProgramItem[]
 ): KompassiGame[] => {
@@ -130,49 +195,19 @@ const getGamesFromFullProgram = (
 
   logger.info(`Found ${matchingProgramItems.length} matching program items`);
 
+  checkUnknownKeys(matchingProgramItems);
+
   const kompassiGames: KompassiGame[] = matchingProgramItems.flatMap(
     (programItem) => {
-      try {
-        return KompassiGameSchema.parse(programItem);
-      } catch (error) {
-        if (error instanceof ZodError) {
-          error.issues.map((issue) => {
-            if (issue.code === "invalid_enum_value") {
-              const key = issue.path[0] as keyof KompassiGame;
-              const index = issue.path[1] as number;
-
-              const invalidValue = getInvalidValueFromEnumError(
-                programItem,
-                key,
-                index
-              );
-
-              logger.error(
-                `Invalid ${key} found for game ${programItem.identifier}: ${invalidValue}`
-              );
-            } else {
-              logger.error(
-                `Error parsing program item ${programItem.identifier}: ${issue.message}`
-              );
-            }
-          });
-        } else {
-          logger.error(
-            `Unknown error while parsing game ${programItem.identifier}: %s`,
-            error
-          );
-        }
-
-        return [];
-      }
+      const result = parseProgramItem(programItem);
+      return result ?? [];
     }
   );
 
   if (kompassiGames.length === 0) {
     logger.error(
-      `No program items with following categories found: ${Object.values(
-        KompassiProgramType
-      ).join(", ")}`
+      "%s",
+      new Error("No program items with known categories found")
     );
     return [];
   }

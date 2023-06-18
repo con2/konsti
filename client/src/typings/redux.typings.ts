@@ -6,7 +6,7 @@ import { store, combinedReducer } from "client/utils/store";
 import { UserGames, UserGroup } from "shared/typings/models/user";
 import { SignupQuestion } from "shared/typings/models/settings";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
-import { ErrorMessageType } from "client/components/ErrorBar";
+import { BackendErrorType } from "client/components/ErrorBar";
 import { SignupMessage } from "shared/typings/models/signupMessage";
 import { ActionLogItem } from "shared/typings/models/actionLog";
 
@@ -17,7 +17,7 @@ export interface AdminState {
   assignmentResponseMessage: string;
   signupQuestions: readonly SignupQuestion[];
   signupStrategy: SignupStrategy | undefined;
-  errors: readonly ErrorMessageType[];
+  errors: readonly BackendErrorType[];
   activeProgramType: ProgramType;
   signupMessages: readonly SignupMessage[];
 }

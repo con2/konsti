@@ -31,7 +31,7 @@ export const removeGames = async (
 
 export const saveGames = async (
   games: readonly Game[]
-): Promise<Result<Game[], MongoDbError>> => {
+): Promise<Result<void, MongoDbError>> => {
   logger.info("MongoDB: Store games to DB");
 
   const removeDeletedGamesResult = await removeDeletedGames(games);
@@ -49,50 +49,50 @@ export const saveGames = async (
     return removeMovedGamesResult;
   }
 
+  const bulkOps = games.map((game) => {
+    return {
+      updateOne: {
+        filter: {
+          gameId: game.gameId,
+        },
+        update: {
+          gameId: game.gameId,
+          title: game.title,
+          description: game.description,
+          location: game.location,
+          startTime: game.startTime,
+          mins: game.mins,
+          tags: game.tags,
+          genres: game.genres,
+          styles: game.styles,
+          language: game.language,
+          endTime: game.endTime,
+          people: game.people,
+          minAttendance: game.minAttendance,
+          maxAttendance: game.maxAttendance,
+          gameSystem: game.gameSystem,
+          shortDescription: game.shortDescription,
+          revolvingDoor: game.revolvingDoor,
+          programType: game.programType,
+          contentWarnings: game.contentWarnings,
+          otherAuthor: game.otherAuthor,
+          accessibilityValues: game.accessibilityValues,
+          otherInaccessibility: game.otherInaccessibility,
+          entryFee: game.entryFee,
+        },
+        upsert: true,
+      },
+    };
+  });
+
   try {
-    await Promise.all(
-      games.map(async (game) => {
-        await GameModel.updateOne(
-          { gameId: game.gameId },
-          {
-            gameId: game.gameId,
-            title: game.title,
-            description: game.description,
-            location: game.location,
-            startTime: game.startTime,
-            mins: game.mins,
-            tags: game.tags,
-            genres: game.genres,
-            styles: game.styles,
-            language: game.language,
-            endTime: game.endTime,
-            people: game.people,
-            minAttendance: game.minAttendance,
-            maxAttendance: game.maxAttendance,
-            gameSystem: game.gameSystem,
-            shortDescription: game.shortDescription,
-            revolvingDoor: game.revolvingDoor,
-            programType: game.programType,
-            contentWarnings: game.contentWarnings,
-            otherAuthor: game.otherAuthor,
-            accessibilityValues: game.accessibilityValues,
-            otherInaccessibility: game.otherInaccessibility,
-            entryFee: game.entryFee,
-          },
-          {
-            upsert: true,
-            setDefaultsOnInsert: true,
-          }
-        );
-      })
-    );
+    await GameModel.bulkWrite(bulkOps);
+    logger.debug("MongoDB: Games saved to DB successfully");
+    return makeSuccessResult(undefined);
   } catch (error) {
-    logger.error("Error saving games to db: %s", error);
+    logger.error("Error saving games to DB: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
-
-  logger.debug("MongoDB: Games saved to DB successfully");
-  return await findGames();
 };
 
 export const findGames = async (): Promise<Result<GameDoc[], MongoDbError>> => {
@@ -123,20 +123,33 @@ export const findGameById = async (
   }
 };
 
+interface PopularityUpdate {
+  gameId: string;
+  popularity: number;
+}
+
 export const saveGamePopularity = async (
-  gameId: string,
-  popularity: number
+  popularityUpdates: PopularityUpdate[]
 ): Promise<Result<void, MongoDbError>> => {
-  logger.debug(`MongoDB: Update game ${gameId} popularity to ${popularity}`);
-  try {
-    await GameModel.updateOne(
-      {
-        gameId,
+  logger.debug(
+    `MongoDB: Update popularity for ${popularityUpdates.length} games`
+  );
+
+  const bulkOps = popularityUpdates.map((popularityUpdate) => {
+    return {
+      updateOne: {
+        filter: {
+          gameId: popularityUpdate.gameId,
+        },
+        update: {
+          popularity: popularityUpdate.popularity,
+        },
       },
-      {
-        popularity,
-      }
-    );
+    };
+  });
+
+  try {
+    await GameModel.bulkWrite(bulkOps);
     return makeSuccessResult(undefined);
   } catch (error) {
     logger.error("Error updating game popularity: %s", error);

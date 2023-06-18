@@ -1,4 +1,6 @@
 import { z } from "zod";
+import _ from "lodash";
+import { logger } from "server/utils/logger";
 
 export enum KompassiProgramType {
   TABLETOP_RPG = "Roolipeli / Pen & Paper RPG",
@@ -80,46 +82,100 @@ export enum KompassiGameStyle {
   COMBAT_DRIVEN = "combat_driven",
 }
 
-export const KompassiGameSchema = z
-  .object({
-    identifier: z.string(),
-    title: z.string().catch(""),
-    description: z.string().catch(""),
-    category_title: z.nativeEnum(KompassiProgramType),
-    formatted_hosts: z.string().catch(""),
-    room_name: z.string().catch(""),
-    length: z.number().catch(0),
-    start_time: z.string().datetime().catch(""),
-    end_time: z.string().datetime().catch(""),
-    language: z.string().catch(""),
-    rpg_system: z.string().catch(""),
-    min_players: z.number().catch(0),
-    max_players: z.number().catch(0),
-    tags: z.array(z.nativeEnum(KompassiTag)).catch([]),
-    genres: z.array(z.nativeEnum(KompassiGenre)).catch([]),
-    styles: z.array(z.nativeEnum(KompassiGameStyle)).catch([]),
-    short_blurb: z.string().catch(""),
-    revolving_door: z.boolean().catch(false),
-    content_warnings: z.string().catch(""),
-    other_author: z.string().catch(""),
-    ropecon2018_characters: z.number().catch(0),
-    ropecon2021_accessibility_loud_sounds: z.boolean().catch(false),
-    ropecon2021_accessibility_flashing_lights: z.boolean().catch(false),
-    ropecon2021_accessibility_strong_smells: z.boolean().catch(false),
-    ropecon2021_accessibility_irritate_skin: z.boolean().catch(false),
-    ropecon2021_accessibility_physical_contact: z.boolean().catch(false),
-    ropecon2021_accessibility_low_lightning: z.boolean().catch(false),
-    ropecon2021_accessibility_moving_around: z.boolean().catch(false),
-    ropecon2021_accessibility_video: z.boolean().catch(false),
-    ropecon2021_accessibility_recording: z.boolean().catch(false),
-    ropecon2021_accessibility_text: z.boolean().catch(false),
-    ropecon2021_accessibility_colourblind: z.boolean().catch(false),
-    ropecon2022_accessibility_remaining_one_place: z.boolean().catch(false),
-    ropecon2022_content_warnings: z.string().catch(""),
-    ropecon2021_accessibility_inaccessibility: z.string().catch(""),
-    type_of_game_program: z.string().catch(""),
-    entry_fee: z.number().catch(0),
-  })
-  .strict();
+export const KompassiGameSchema = z.object({
+  identifier: z.string(),
+  title: z.string().catch(""),
+  description: z.string().catch(""),
+  category_title: z.nativeEnum(KompassiProgramType),
+  formatted_hosts: z.string().catch(""),
+  room_name: z.string().catch(""),
+  length: z.number().catch(0),
+  start_time: z.string().datetime().catch(""),
+  end_time: z.string().datetime().catch(""),
+  rpg_system: z.string().catch(""),
+  min_players: z.number().catch(0),
+  max_players: z.number().catch(0),
+
+  tags: z.array(z.nativeEnum(KompassiTag)).catch((ctx) => {
+    if (!ctx.input || !Array.isArray(ctx.input)) {
+      return [];
+    }
+    const [valid, invalid] = _.partition(ctx.input, (tag) =>
+      Object.values(KompassiTag).includes(tag)
+    );
+    logger.error("%s", new Error(`Invalid tags: ${JSON.stringify(invalid)}`));
+    return valid;
+  }),
+
+  genres: z.array(z.nativeEnum(KompassiGenre)).catch((ctx) => {
+    if (!ctx.input || !Array.isArray(ctx.input)) {
+      return [];
+    }
+    const [valid, invalid] = _.partition(ctx.input, (genre) =>
+      Object.values(KompassiGenre).includes(genre)
+    );
+    logger.error("%s", new Error(`Invalid genres: ${JSON.stringify(invalid)}`));
+    return valid;
+  }),
+
+  styles: z.array(z.nativeEnum(KompassiGameStyle)).catch((ctx) => {
+    if (!ctx.input || !Array.isArray(ctx.input)) {
+      return [];
+    }
+    const [valid, invalid] = _.partition(ctx.input, (style) =>
+      Object.values(KompassiGameStyle).includes(style)
+    );
+    logger.error("%s", new Error(`Invalid styles: ${JSON.stringify(invalid)}`));
+    return valid;
+  }),
+
+  short_blurb: z.string().catch(""),
+  revolving_door: z.boolean().catch(false),
+  other_author: z.string().catch(""),
+  ropecon2018_characters: z.number().catch(0),
+  ropecon2021_accessibility_loud_sounds: z.boolean().catch(false),
+  ropecon2021_accessibility_flashing_lights: z.boolean().catch(false),
+  ropecon2021_accessibility_strong_smells: z.boolean().catch(false),
+  ropecon2021_accessibility_irritate_skin: z.boolean().catch(false),
+  ropecon2021_accessibility_physical_contact: z.boolean().catch(false),
+  ropecon2021_accessibility_low_lightning: z.boolean().catch(false),
+  ropecon2021_accessibility_moving_around: z.boolean().catch(false),
+  ropecon2021_accessibility_video: z.boolean().catch(false),
+  ropecon2021_accessibility_recording: z.boolean().catch(false),
+  ropecon2021_accessibility_text: z.boolean().catch(false),
+  ropecon2021_accessibility_colourblind: z.boolean().catch(false),
+  ropecon2022_accessibility_remaining_one_place: z.boolean().catch(false),
+  ropecon2022_content_warnings: z.string().catch(""),
+  type_of_game_program: z.string().catch(""),
+  ropecon2023_accessibility_cant_use_mic: z.boolean().catch(false),
+  ropecon2023_accessibility_programme_duration_over_2_hours: z
+    .boolean()
+    .catch(false),
+  ropecon2023_accessibility_limited_opportunities_to_move_around: z
+    .boolean()
+    .catch(false),
+  ropecon2023_accessibility_long_texts: z.boolean().catch(false),
+  ropecon2023_accessibility_texts_not_available_as_recordings: z
+    .boolean()
+    .catch(false),
+  ropecon2023_accessibility_participation_requires_dexterity: z
+    .boolean()
+    .catch(false),
+  ropecon2023_accessibility_participation_requires_react_quickly: z
+    .boolean()
+    .catch(false),
+  ropecon2023_other_accessibility_information: z.string().catch(""),
+  ropecon2023_signuplist: z.string().catch(""), // Signup type: no signup, Konsti, other
+  ropecon2023_workshop_fee: z.number().catch(0),
+  ropecon2023_language: z.string().catch(""), // finnish, english, language_free, finnish_or_english
+  ropecon2023_suitable_for_all_ages: z.boolean().catch(false), // tag
+  ropecon2023_aimed_at_children_under_13: z.boolean().catch(false), // tag
+  ropecon2023_aimed_at_children_between_13_17: z.boolean().catch(false), // tag
+  ropecon2023_aimed_at_adult_attendees: z.boolean().catch(false), // tag
+  ropecon2023_for_18_plus_only: z.boolean().catch(false), // tag
+  ropecon2023_beginner_friendly: z.boolean().catch(false), // tag
+  ropecon_theme: z.boolean().catch(false), // tag
+  ropecon2023_celebratory_year: z.boolean().catch(false), // tag
+});
 
 export type KompassiGame = z.infer<typeof KompassiGameSchema>;

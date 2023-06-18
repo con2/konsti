@@ -97,14 +97,12 @@ export const postSettings = async (
     return res.sendStatus(401);
   }
 
-  let body;
-  try {
-    body = PostSettingsRequestSchema.parse(req.body);
-  } catch (error) {
-    logger.error("Error validating postSettings body: %s", error);
+  const result = PostSettingsRequestSchema.safeParse(req.body);
+  if (!result.success) {
+    logger.error("Error validating postSettings body: %s", result.error);
     return res.sendStatus(422);
   }
 
-  const response = await updateSettings(body);
+  const response = await updateSettings(result.data);
   return res.json(response);
 };

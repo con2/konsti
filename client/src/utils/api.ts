@@ -6,7 +6,7 @@ import { addError } from "client/views/admin/adminSlice";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { ApiError } from "shared/typings/api/errors";
 import { store } from "client/utils/store";
-import { ErrorMessageType } from "client/components/ErrorBar";
+import { BackendErrorType } from "client/components/ErrorBar";
 
 enum HttpMethod {
   GET = "GET",
@@ -40,9 +40,7 @@ axiosInstance.interceptors.response.use(
       !error.response ||
       error.response.status === 0
     ) {
-      store.dispatch(
-        addError(t(ErrorMessageType.NETWORK_ERROR) as ErrorMessageType)
-      );
+      store.dispatch(addError(t(BackendErrorType.NETWORK_ERROR)));
       return {
         errorId: "unknown",
         message: "Network error",
@@ -58,12 +56,11 @@ axiosInstance.interceptors.response.use(
 
     store.dispatch(
       addError(
-        // @ts-expect-error: i18next bug
-        t(ErrorMessageType.API_ERROR, {
+        t(BackendErrorType.API_ERROR, {
           method,
           url,
-          errorReason,
-        }) as ErrorMessageType
+          errorReason: t(errorReason),
+        })
       )
     );
 
@@ -79,17 +76,14 @@ axiosInstance.interceptors.response.use(
   }
 );
 
-const getErrorReason = (status: number): string => {
+const getErrorReason = (status: number): BackendErrorType => {
   switch (status) {
     case 401:
-      // @ts-expect-error: i18next bug
-      return t("backendError.unauthorized");
+      return BackendErrorType.UNAUTHORIZED;
     case 422:
-      // @ts-expect-error: i18next bug
-      return t("backendError.invalidRequest");
+      return BackendErrorType.INVALID_REQUEST;
     default:
-      // @ts-expect-error: i18next bug
-      return t("error.unknown");
+      return BackendErrorType.UNKNOWN;
   }
 };
 

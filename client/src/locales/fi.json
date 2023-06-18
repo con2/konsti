@@ -142,7 +142,14 @@
     "forAdults": "Suunnattu täysi-ikäisille",
     "themeFriendship": "Teema: Ystävyys",
     "demo": "Demo",
-    "tournament": "Turnaus"
+    "tournament": "Turnaus",
+    "suitableForAllAges": "Kaiken ikäisille",
+    "aimedAtChildrenUnder13": "Suunnattu alle 13-vuotiaille",
+    "aimedAtChildrenBetween13-17": "Suunnattu 13-17-vuotiaille",
+    "aimedAtAdultAttendees": "Suunnattu aikuisille",
+    "for18PlusOnly": "Vain 18+ ikäisille",
+    "ropeconTheme": "Ropeconin teema",
+    "celebratoryYear": "Juhlavuosi"
   },
   "pageTitle": {
     "login": "Kirjaudu sisään",
@@ -357,7 +364,14 @@
     "recording": "Osallistuminen edellyttää sellaisen äänitteen kuuntelemista, josta ei ole tekstiversiota kuulorajoitteisille",
     "text": "Osallistuminen vaatii pitkien tekstien itsenäistä lukemista, eikä tekstejä ole mahdollista saada äänitteinä näkörajoitteisille",
     "colourblind": "Ohjelmanumerossa käytettävät materiaalit voivat tuottaa haasteita värisokeille",
-    "remainingOnePlace": "Vaatii pitkää paikallaan oloa ilman mahdollisuutta taukoihin ja liikkumiseen"
+    "remainingOnePlace": "Vaatii pitkää paikallaan oloa ilman mahdollisuutta taukoihin ja liikkumiseen",
+    "cannotUseMic": "Ei voi käyttää mikkiä",
+    "programmeDurationOver2Hours": "Kesto yli 2h",
+    "limitedOpportunitiesToMoveAround": "Rajoitettu mahdollisuus liikkua",
+    "longText": "Pitkän tekstin lukeminen",
+    "textNotAvailableAsRecordings": "Teksti ei saatavilla äänityksenä",
+    "participationRequiresDexterity": "Vaatii ketteryyttä",
+    "participationRequiresReactQuickly": "Vaatii nopeaa reagointia"
   },
   "strategies": {
     "direct": "Suora",
@@ -368,7 +382,8 @@
     "apiError": "Virhe kutsuessa {{method}} {{url}}: {{errorReason}}",
     "networkError": "Verkkovirhe, yhteys palvelimeen epäonnistui",
     "unauthorized": "Ei käyttöoikeutta",
-    "invalidRequest": "Virheellinen kutsu"
+    "invalidRequest": "Virheellinen kutsu",
+    "unknown": "Tuntematon virhe"
   },
   "aboutView": {
     "general": "Mikä Konsti?",

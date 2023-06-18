@@ -1,9 +1,14 @@
 import express from "express";
 import { postFeedback } from "server/features/feedback/feedbackController";
-import { getGames, postUpdateGames } from "server/features/game/gameController";
+import {
+  getGames,
+  postAutoUpdateGames,
+  postUpdateGames,
+} from "server/features/game/gameController";
 import {
   getResults,
   postAssignment,
+  postAutoAssignment,
 } from "server/features/results/resultsController";
 import { getSentryTest } from "server/features/sentry-tunnel/sentryTunnelController";
 import {
@@ -67,6 +72,8 @@ apiRoutes.post(ApiEndpoint.USERS_PASSWORD, postUserPassword);
 apiRoutes.post(ApiEndpoint.SETTINGS, postSettings);
 apiRoutes.post(ApiEndpoint.SIGNUP, postSignup);
 apiRoutes.post(ApiEndpoint.ACTION_LOG, postActionLogItem);
+apiRoutes.post(ApiEndpoint.PROGRAM_UPDATE_CRON, postAutoUpdateGames);
+apiRoutes.post(ApiEndpoint.ASSIGNMENT_CRON, postAutoAssignment);
 
 /* GET routes */
 

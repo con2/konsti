@@ -32,13 +32,19 @@ export const removeOverlapSignups = async (
   results.map((result) => {
     const enteredGame = result.enteredGame.gameDetails;
     if (!enteredGame) {
-      logger.error("removeOverlapSignups: Error finding entered game");
+      logger.error(
+        "%s",
+        new Error("removeOverlapSignups: Error finding entered game")
+      );
       return;
     }
 
     const signedUser = users.find((user) => user.username === result.username);
     if (!signedUser) {
-      logger.error("removeOverlapSignups: Error finding signed user");
+      logger.error(
+        "%s",
+        new Error("removeOverlapSignups: Error finding signed user")
+      );
       return;
     }
 
@@ -51,7 +57,10 @@ export const removeOverlapSignups = async (
     });
 
     if (!newSignedGames) {
-      logger.error("removeOverlapSignups: Error finding signed games");
+      logger.error(
+        "%s",
+        new Error("removeOverlapSignups: Error finding signed games")
+      );
       return;
     }
 

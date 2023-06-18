@@ -23,17 +23,15 @@ export const postFavorite = async (
     return res.sendStatus(401);
   }
 
-  let body;
-  try {
-    body = PostFavoriteRequestSchema.parse(req.body);
-  } catch (error) {
-    logger.error("Error validating postFavorite body: %s", error);
+  const result = PostFavoriteRequestSchema.safeParse(req.body);
+  if (!result.success) {
+    logger.error("Error validating postFavorite body: %s", result.error);
     return res.sendStatus(422);
   }
 
   const response = await storeFavorite({
     username,
-    favoritedGameIds: body.favoritedGameIds,
+    favoritedGameIds: result.data.favoritedGameIds,
   });
   return res.json(response);
 };

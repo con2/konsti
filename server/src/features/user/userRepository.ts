@@ -49,36 +49,34 @@ export const saveUser = async (
   }
 };
 
-export const updateUserByUsername = async (
-  user: User
-): Promise<Result<User, MongoDbError>> => {
-  try {
-    const response = await UserModel.findOneAndUpdate(
-      { username: user.username },
-      {
-        userGroup: user.userGroup,
-        serial: user.serial,
-        groupCode: user.groupCode,
-        favoritedGames: user.favoritedGames,
-        signedGames: user.signedGames,
+export const updateUsersByUsername = async (
+  users: User[]
+): Promise<Result<void, MongoDbError>> => {
+  const bulkOps = users.map((user) => {
+    return {
+      updateOne: {
+        filter: {
+          username: user.username,
+        },
+        update: {
+          userGroup: user.userGroup,
+          serial: user.serial,
+          groupCode: user.groupCode,
+          favoritedGames: user.favoritedGames,
+          signedGames: user.signedGames,
+        },
       },
-      { new: true, fields: "-_id -__v -createdAt -updatedAt" }
-    )
-      .lean<User>()
-      .populate("favoritedGames")
-      .populate("signedGames.gameDetails");
+    };
+  });
 
-    if (!response) {
-      logger.error(
-        `MongoDB: Error updating user ${user.username}: user not found`
-      );
-      return makeErrorResult(MongoDbError.USER_NOT_FOUND);
-    }
-
-    logger.debug(`MongoDB: User ${user.username} updated`);
-    return makeSuccessResult(response);
+  try {
+    await UserModel.bulkWrite(bulkOps);
+    return makeSuccessResult(undefined);
   } catch (error) {
-    logger.error(`MongoDB: Error updating user ${user.username}: %s`, error);
+    logger.error(
+      `MongoDB: Error updating users ${users.map((user) => user.username)}: %s`,
+      error
+    );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };

@@ -26,7 +26,7 @@ export const getHappiness = (
     );
 
     if (!foundPlayer) {
-      logger.error("Error calculating assignment happiness");
+      logger.error("%s", new Error("Error calculating assignment happiness"));
       return makeErrorResult(AssignmentError.UNKNOWN_ERROR);
     }
 
