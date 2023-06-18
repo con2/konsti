@@ -20,7 +20,7 @@ const UserSchema = new mongoose.Schema(
     eventLogItems: [
       {
         action: String,
-        eventItemId: String,
+        programItemId: String,
         isSeen: Boolean,
       },
     ],

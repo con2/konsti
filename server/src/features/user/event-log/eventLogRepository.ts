@@ -17,22 +17,30 @@ export const addToEventLogs = async (
 ): Promise<Result<void, MongoDbError>> => {
   const { updates, action } = eventLogRequest;
 
-  const usernames = updates.map((update) => update.username);
-  try {
-    await UserModel.updateMany(
-      {
-        username: { $in: usernames },
-      },
-      {
-        $addToSet: {
-          eventLogItems: {
-            action,
-            eventItemId: "123",
-            isSeen: false,
+  const bulkOps = updates.map((update) => {
+    return {
+      updateOne: {
+        filter: {
+          username: update.username,
+        },
+        update: {
+          $addToSet: {
+            eventLogItems: {
+              action,
+              programItemId: update.programItemId,
+              isSeen: false,
+            },
           },
         },
-      }
-    );
+      },
+    };
+  });
+
+  const usernames = updates.map((update) => update.username);
+
+  try {
+    // @ts-expect-error: Types don't work with $addToSet
+    await UserModel.bulkWrite(bulkOps);
     logger.info(`MongoDB: Action log item added for users ${usernames}`);
     return makeSuccessResult(undefined);
   } catch (error) {
@@ -66,7 +74,7 @@ export const updateEventLogItem = async (
           eventLogItemId: item._id,
           action: item.action,
           isSeen: item.isSeen,
-          eventItemId: item.eventItemId,
+          programItemId: item.programItemId,
         }))
       );
     }

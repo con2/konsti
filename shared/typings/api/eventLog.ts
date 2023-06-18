@@ -6,7 +6,7 @@ import { ApiError, ApiResult } from "shared/typings/api/errors";
 
 const PostEventLogItemRequestSchema = z.object({
   updates: z.array(
-    z.object({ username: z.string(), eventItemTitle: z.string() })
+    z.object({ username: z.string(), programItemId: z.string() })
   ),
   action: z.nativeEnum(EventLogAction),
 });

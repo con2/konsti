@@ -127,7 +127,7 @@ export const findUser = async (
         eventLogItemId: item._id,
         action: item.action,
         isSeen: item.isSeen,
-        eventItemId: item.eventItemId,
+        programItemId: item.programItemId,
       })),
     });
   } catch (error) {

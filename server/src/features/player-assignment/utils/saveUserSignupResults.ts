@@ -96,7 +96,7 @@ export const saveUserSignupResults = async (
   const addToEventLogResult = await addToEventLogs({
     updates: results.map((result) => ({
       username: result.username,
-      eventItemTitle: result.enteredGame.gameDetails.title,
+      programItemId: result.enteredGame.gameDetails.gameId,
     })),
     action: EventLogAction.NEW_ASSIGNMENT,
   });

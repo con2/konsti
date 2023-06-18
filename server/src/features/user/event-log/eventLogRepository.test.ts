@@ -42,8 +42,8 @@ test("should insert new action log item to user", async () => {
 
   await addToEventLogs({
     updates: [
-      { username: mockUser.username, eventItemTitle: "foo" },
-      { username: mockUser2.username, eventItemTitle: "foo" },
+      { username: mockUser.username, programItemId: "123" },
+      { username: mockUser2.username, programItemId: "456" },
     ],
     action: EventLogAction.NEW_ASSIGNMENT,
   });
@@ -57,6 +57,7 @@ test("should insert new action log item to user", async () => {
   expect(updatedUser?.eventLogItems[0].action).toEqual(
     EventLogAction.NEW_ASSIGNMENT
   );
+  expect(updatedUser?.eventLogItems[0].programItemId).toEqual("123");
 
   const updatedUser2 = await UserModel.findOne({
     username: mockUser2.username,
@@ -67,6 +68,7 @@ test("should insert new action log item to user", async () => {
   expect(updatedUser2?.eventLogItems[0].action).toEqual(
     EventLogAction.NEW_ASSIGNMENT
   );
+  expect(updatedUser2?.eventLogItems[0].programItemId).toEqual("456");
 
   const updatedUser3 = await UserModel.findOne({
     username: mockUser3.username,

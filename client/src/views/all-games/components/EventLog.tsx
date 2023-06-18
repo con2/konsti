@@ -1,6 +1,7 @@
 import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import { Accordion } from "client/components/Accordion";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { FavoriteButton } from "client/components/FavoriteButton";
@@ -12,6 +13,7 @@ export const EventLog = (): ReactElement => {
 
   const eventLogItems = useAppSelector((state) => state.login.eventLogItems);
   const username = useAppSelector((state) => state.login.username);
+  const games = useAppSelector((state) => state.allGames.games);
 
   return (
     <div>
@@ -21,11 +23,17 @@ export const EventLog = (): ReactElement => {
       >
         <EventLogItems>
           {eventLogItems.map((eventLogItem) => {
+            const foundGame = games.find(
+              (game) => game.gameId === eventLogItem.programItemId
+            );
+            if (!foundGame) return;
             return (
               <div key={eventLogItem.action}>
                 <EventTitle isSeen={eventLogItem.isSeen}>
                   {t(`eventLogActions.${eventLogItem.action}`)}:{" "}
-                  {eventLogItem.eventItemId}
+                  <Link to={`/games/${eventLogItem.programItemId}`}>
+                    {foundGame.title}
+                  </Link>
                 </EventTitle>
                 <FavoriteButton
                   isFavorite={eventLogItem.isSeen}
