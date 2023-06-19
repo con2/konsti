@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import { MongoDbError } from "shared/typings/api/errors";
 import {
   Result,
@@ -76,7 +77,7 @@ export const updateEventLogItem = async (
           action: item.action,
           isSeen: item.isSeen,
           programItemId: item.programItemId,
-          createdAt: item.createdAt,
+          createdAt: dayjs(item.createdAt).utc().format(),
         }))
       );
     }
