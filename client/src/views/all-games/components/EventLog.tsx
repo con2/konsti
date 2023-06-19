@@ -3,9 +3,9 @@ import dayjs from "dayjs";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import _ from "lodash";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { submitUpdateEventLogIsSeen } from "client/views/login/loginThunks";
-import { FavoriteButton } from "client/components/FavoriteButton";
 
 export const EventLog = (): ReactElement => {
   const { t } = useTranslation();
@@ -44,36 +44,26 @@ export const EventLog = (): ReactElement => {
     <div>
       <EventLogItems>
         <h3>{t("eventLog.title")}</h3>
-        {eventLogItems.map((eventLogItem) => {
-          const foundGame = games.find(
-            (game) => game.gameId === eventLogItem.programItemId
-          );
-          if (!foundGame) return;
-          return (
-            <div key={eventLogItem.action}>
-              <EventTitle isSeen={eventLogItem.isSeen}>
-                {t(`eventLogActions.${eventLogItem.action}`)}:{" "}
-                <Link to={`/games/${eventLogItem.programItemId}`}>
-                  {foundGame.title}
-                </Link>{" "}
-                ({t("eventLog.sentTimeAgo")}{" "}
-                {dayjs().to(eventLogItem.createdAt)})
-              </EventTitle>
-              <FavoriteButton
-                isFavorite={eventLogItem.isSeen}
-                onClick={async () => {
-                  await dispatch(
-                    submitUpdateEventLogIsSeen({
-                      username,
-                      eventLogItemId: eventLogItem.eventLogItemId,
-                      isSeen: !eventLogItem.isSeen,
-                    })
-                  );
-                }}
-              />
-            </div>
-          );
-        })}
+        {_.orderBy(eventLogItems, (item) => item.createdAt, "desc").map(
+          (eventLogItem) => {
+            const foundGame = games.find(
+              (game) => game.gameId === eventLogItem.programItemId
+            );
+            if (!foundGame) return;
+            return (
+              <div key={`${eventLogItem.action}-${eventLogItem.createdAt}`}>
+                <EventTitle isSeen={eventLogItem.isSeen}>
+                  {t(`eventLogActions.${eventLogItem.action}`)}:{" "}
+                  <Link to={`/games/${eventLogItem.programItemId}`}>
+                    {foundGame.title}
+                  </Link>{" "}
+                  ({t("eventLog.sentTimeAgo")}{" "}
+                  {dayjs().to(eventLogItem.createdAt)})
+                </EventTitle>
+              </div>
+            );
+          }
+        )}
       </EventLogItems>
     </div>
   );
