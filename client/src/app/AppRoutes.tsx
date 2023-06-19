@@ -18,6 +18,7 @@ import { isAdmin, isAdminOrHelp } from "client/utils/checkUserGroup";
 import { AboutView } from "client/views/about/AboutView";
 import { FaqView } from "client/views/about/FaqView";
 import { Tabs } from "client/components/Tabs";
+import { EventLog } from "client/views/all-games/components/EventLog";
 
 export const AppRoutes = (): ReactElement => {
   const { t } = useTranslation();
@@ -68,6 +69,7 @@ export const AppRoutes = (): ReactElement => {
         <Route path="/games/:gameId" element={<GameDetails />} />
         <Route path="/games" element={<AllGamesView />} />
         <Route path="/mygames" element={<MyGamesView />} />
+        <Route path="/notifications" element={<EventLog />} />
         <Route path="/results" element={<ResultsView />} />
         {sharedConfig.enableGroups && (
           <Route path="/group" element={<GroupView />} />

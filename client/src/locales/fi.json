@@ -63,7 +63,8 @@
     "programList": "Ohjelmalista",
     "admin": "Ylläpito",
     "results": "Ilmoittautumistulokset",
-    "group": "Ryhmä"
+    "group": "Ryhmä",
+    "notifications": "Ilmoitukset"
   },
   "gameInfo": {
     "gameStyle": "Pelityyli",
@@ -266,7 +267,7 @@
     "sentTimeAgo": "Lähetetty"
   },
   "eventLogActions": {
-    "newAssignment": "Uusi ilmoittautuminen"
+    "newAssignment": "Olet päässyt arvonnassa peliin"
   },
   "signup": {
     "alreadyLotterySigned": "Peli on arvontavaihtoehdoissa sijalla {{CURRENT_PRIORITY}}",

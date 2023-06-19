@@ -63,7 +63,8 @@
     "programList": "Program List",
     "admin": "Admin",
     "results": "Signup Results",
-    "group": "Group"
+    "group": "Group",
+    "notifications": "Notifications"
   },
   "gameInfo": {
     "gameStyle": "Game style",
@@ -266,7 +267,7 @@
     "sentTimeAgo": "Sent"
   },
   "eventLogActions": {
-    "newAssignment": "New signup"
+    "newAssignment": "You have entered a game in lottery"
   },
   "signup": {
     "alreadyLotterySigned": "This game is priority {{CURRENT_PRIORITY}} on your lottery signups",
