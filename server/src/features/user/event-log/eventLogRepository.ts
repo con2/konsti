@@ -29,6 +29,7 @@ export const addToEventLogs = async (
               action,
               programItemId: update.programItemId,
               isSeen: false,
+              createdAt: update.createdAt,
             },
           },
         },
@@ -75,6 +76,7 @@ export const updateEventLogItem = async (
           action: item.action,
           isSeen: item.isSeen,
           programItemId: item.programItemId,
+          createdAt: item.createdAt,
         }))
       );
     }

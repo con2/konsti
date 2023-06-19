@@ -1,7 +1,11 @@
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
 import { startServer, closeServer } from "server/utils/server";
 import { logger } from "server/utils/logger";
 import { startCronJobs } from "server/utils/cron";
 import { config } from "server/config";
+
+dayjs.extend(utc);
 
 const startApp = async (): Promise<void> => {
   startCronJobs();

@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import { AssignmentResult } from "shared/typings/models/result";
 import {
   delSignup,
@@ -97,6 +98,7 @@ export const saveUserSignupResults = async (
     updates: results.map((result) => ({
       username: result.username,
       programItemId: result.enteredGame.gameDetails.gameId,
+      createdAt: dayjs().format(),
     })),
     action: EventLogAction.NEW_ASSIGNMENT,
   });

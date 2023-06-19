@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import { logger } from "server/utils/logger";
 import { UserModel } from "server/features/user/userSchema";
 import { NewUser } from "server/typings/user.typings";
@@ -128,6 +129,7 @@ export const findUser = async (
         action: item.action,
         isSeen: item.isSeen,
         programItemId: item.programItemId,
+        createdAt: dayjs(item.createdAt).utc().format(),
       })),
     });
   } catch (error) {

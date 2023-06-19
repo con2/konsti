@@ -3,6 +3,7 @@ export interface EventLogItem {
   action: EventLogAction;
   isSeen: boolean;
   programItemId: string;
+  createdAt: string;
 }
 
 export enum EventLogAction {

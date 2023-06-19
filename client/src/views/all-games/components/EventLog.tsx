@@ -1,4 +1,5 @@
 import { ReactElement } from "react";
+import dayjs from "dayjs";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
@@ -25,7 +26,9 @@ export const EventLog = (): ReactElement => {
                 {t(`eventLogActions.${eventLogItem.action}`)}:{" "}
                 <Link to={`/games/${eventLogItem.programItemId}`}>
                   {foundGame.title}
-                </Link>
+                </Link>{" "}
+                ({t("eventLog.sentTimeAgo")}{" "}
+                {dayjs().to(eventLogItem.createdAt)})
               </EventTitle>
               {/*
               <FavoriteButton

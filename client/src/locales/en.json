@@ -262,7 +262,8 @@
     "strategy": "Strategy"
   },
   "eventLog": {
-    "title": "Updates"
+    "title": "Notifications",
+    "sentTimeAgo": "Sent"
   },
   "eventLogActions": {
     "newAssignment": "New signup"

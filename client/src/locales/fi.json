@@ -262,7 +262,8 @@
     "strategy": "Strategia"
   },
   "eventLog": {
-    "title": "Päivitykset"
+    "title": "Ilmoitukset",
+    "sentTimeAgo": "Lähetetty"
   },
   "eventLogActions": {
     "newAssignment": "Uusi ilmoittautuminen"
