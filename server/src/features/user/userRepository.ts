@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import { logger } from "server/utils/logger";
 import { UserModel } from "server/features/user/userSchema";
 import { NewUser } from "server/typings/user.typings";
@@ -33,6 +34,7 @@ export const saveUser = async (
       typeof newUserData.groupCode === "string" ? newUserData.groupCode : "0",
     favoritedGames: [],
     signedGames: [],
+    eventLog: [],
   });
 
   try {
@@ -116,10 +118,20 @@ export const findUser = async (
       .populate("signedGames.gameDetails");
     if (!response) {
       logger.info(`MongoDB: User ${username} not found`);
-    } else {
-      logger.debug(`MongoDB: Found user ${username}`);
+      return makeSuccessResult(null);
     }
-    return makeSuccessResult(response);
+    logger.debug(`MongoDB: Found user ${username}`);
+    return makeSuccessResult({
+      ...response,
+      eventLogItems: response.eventLogItems.map((item) => ({
+        // @ts-expect-error: Mongoose return value is missing nested _id
+        eventLogItemId: item._id,
+        action: item.action,
+        isSeen: item.isSeen,
+        programItemId: item.programItemId,
+        createdAt: dayjs(item.createdAt).utc().format(),
+      })),
+    });
   } catch (error) {
     logger.error(`MongoDB: Error finding user ${username}: %s`, error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);

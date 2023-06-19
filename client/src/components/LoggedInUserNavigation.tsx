@@ -28,6 +28,12 @@ export const LoggedInUserNavigation = (props: {
         </RouterLink>
       )}
 
+      {isUser(userGroup) && (
+        <RouterLink onClick={props.onSelect} to="/notifications">
+          {t("pages.notifications")}
+        </RouterLink>
+      )}
+
       <RouterLink onClick={props.onSelect} to="/results">
         {t("pages.results")}
       </RouterLink>

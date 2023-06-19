@@ -73,7 +73,7 @@ export const MyGamesView = (): ReactElement => {
           onChange={() => setShowAllGames(true)}
         />
       </RadioButtonGroup>
-      )
+
       <MyFavoritesList
         favoritedGames={
           showAllGames ? favoritedGames : getUpcomingFavorites(favoritedGames)
