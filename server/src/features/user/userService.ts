@@ -282,6 +282,7 @@ export const fetchUserByUsername = async (
     },
     username: user.username,
     serial: user.serial,
+    eventLogItems: user.eventLogItems,
   };
 };
 

@@ -74,6 +74,7 @@ export const login = async (
       serial: user.serial,
       groupCode: user.groupCode,
       jwt: getJWT(user.userGroup, user.username),
+      eventLogItems: user.eventLogItems,
     };
   }
 
