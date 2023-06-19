@@ -13,7 +13,7 @@ export const postEventLogItem = async (
   req: Request<{}, {}, PostEventLogIsSeenRequest>,
   res: Response
 ): Promise<Response> => {
-  logger.info(`API call: POST ${ApiEndpoint.ACTION_LOG}`);
+  logger.info(`API call: POST ${ApiEndpoint.EVENT_LOG}`);
 
   const username = getAuthorizedUsername(
     req.headers.authorization,
