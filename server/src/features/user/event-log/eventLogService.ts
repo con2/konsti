@@ -12,7 +12,7 @@ export const storeEventLogItem = async (
   const updateEventLogItemResult = await updateEventLogItem(request);
   if (isErrorResult(updateEventLogItemResult)) {
     return {
-      message: `Unable to update action log item`,
+      message: `Unable to update event log item`,
       status: "error",
       errorId: "unknown",
     };

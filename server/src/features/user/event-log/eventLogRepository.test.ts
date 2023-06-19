@@ -38,7 +38,7 @@ afterAll(async () => {
   await mongoServer.stop();
 });
 
-test("should insert new action log item to user", async () => {
+test("should insert new event log item to user", async () => {
   await saveGames([testGame]);
   await saveUser(mockUser);
   await saveUser(mockUser2);

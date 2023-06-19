@@ -47,7 +47,7 @@ export const addToEventLogs = async (
     return makeSuccessResult(undefined);
   } catch (error) {
     logger.error(
-      `MongoDB: Error adding action log item for users ${usernames}: %s`,
+      `MongoDB: Error adding event log item for users ${usernames}: %s`,
       error
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
@@ -84,7 +84,7 @@ export const updateEventLogItem = async (
     return makeSuccessResult(null);
   } catch (error) {
     logger.error(
-      `MongoDB: Error updating action log item for user ${username}: %s`,
+      `MongoDB: Error updating event log item for user ${username}: %s`,
       error
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
