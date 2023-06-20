@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import _ from "lodash";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { submitUpdateEventLogIsSeen } from "client/views/login/loginThunks";
+import { timeFormatter } from "client/utils/timeFormatter";
 
 export const EventLog = (): ReactElement => {
   const { t } = useTranslation();
@@ -40,6 +41,15 @@ export const EventLog = (): ReactElement => {
     };
   }, [setEventsSeen]);
 
+  const getTime = (createdAt: string): string => {
+    const timeNow = dayjs();
+    const isSameDay = timeNow.isSame(dayjs(createdAt), "day");
+    if (!isSameDay) {
+      return timeFormatter.getWeekdayAndTime({ time: createdAt });
+    }
+    return dayjs().to(createdAt);
+  };
+
   return (
     <div>
       <EventLogItems>
@@ -57,8 +67,11 @@ export const EventLog = (): ReactElement => {
                   <Link to={`/games/${eventLogItem.programItemId}`}>
                     {foundGame.title}
                   </Link>{" "}
-                  ({t("eventLog.sentTimeAgo")}{" "}
-                  {dayjs().to(eventLogItem.createdAt)})
+                  {timeFormatter.getWeekdayAndTime({
+                    time: foundGame.startTime,
+                  })}{" "}
+                  ({t("eventLog.sentTimeAgo")} {getTime(eventLogItem.createdAt)}
+                  )
                 </EventTitle>
               </div>
             );
