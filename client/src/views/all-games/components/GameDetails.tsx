@@ -1,9 +1,8 @@
 import { ReactElement, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Loading } from "client/components/Loading";
 import { useAppSelector } from "client/utils/hooks";
-import { Button, ButtonStyle } from "client/components/Button";
 import { GameEntry } from "client/views/all-games/components/GameEntry";
 import {
   selectActiveEnteredGames,

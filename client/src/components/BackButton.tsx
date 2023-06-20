@@ -8,7 +8,7 @@ export const BackButton = (): ReactElement => {
   const navigate = useNavigate();
   const { t } = useTranslation();
 
-  const goBack = () => {
+  const goBack = (): void => {
     window.history.state?.idx > 0 ? navigate(-1) : navigate("/");
   };
 
