@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import _ from "lodash";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { submitUpdateEventLogIsSeen } from "client/views/login/loginThunks";
+import { timeFormatter } from "client/utils/timeFormatter";
 
 export const EventLog = (): ReactElement => {
   const { t } = useTranslation();
@@ -40,6 +41,15 @@ export const EventLog = (): ReactElement => {
     };
   }, [setEventsSeen]);
 
+  const getTime = (createdAt: string): string => {
+    const timeNow = dayjs();
+    const isSameDay = timeNow.isSame(dayjs(createdAt), "day");
+    if (!isSameDay) {
+      return timeFormatter.getWeekdayAndTime({ time: createdAt });
+    }
+    return dayjs().to(createdAt);
+  };
+
   return (
     <div>
       <EventLogItems>
@@ -51,16 +61,31 @@ export const EventLog = (): ReactElement => {
             );
             if (!foundGame) return;
             return (
-              <div key={`${eventLogItem.action}-${eventLogItem.createdAt}`}>
-                <EventTitle isSeen={eventLogItem.isSeen}>
-                  {t(`eventLogActions.${eventLogItem.action}`)}:{" "}
+              <EventLogItem
+                key={`${eventLogItem.action}-${eventLogItem.createdAt}`}
+              >
+                <EventMessage isSeen={eventLogItem.isSeen}>
+                  <EventTitle>
+                    {t(`eventLogActions.${eventLogItem.action}`)}:
+                  </EventTitle>
+
                   <Link to={`/games/${eventLogItem.programItemId}`}>
                     {foundGame.title}
-                  </Link>{" "}
-                  ({t("eventLog.sentTimeAgo")}{" "}
-                  {dayjs().to(eventLogItem.createdAt)})
-                </EventTitle>
-              </div>
+                  </Link>
+
+                  <StartTime>
+                    (
+                    {timeFormatter.getWeekdayAndTime({
+                      time: foundGame.startTime,
+                    })}
+                    )
+                  </StartTime>
+                </EventMessage>
+
+                <span>
+                  {t("eventLog.sentTimeAgo")} {getTime(eventLogItem.createdAt)}
+                </span>
+              </EventLogItem>
             );
           }
         )}
@@ -73,6 +98,19 @@ const EventLogItems = styled.div`
   padding: 8px;
 `;
 
-const EventTitle = styled.span<{ isSeen: boolean }>`
+const EventLogItem = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+const EventMessage = styled.span<{ isSeen: boolean }>`
   color: ${(props) => (props.isSeen ? "gray" : "black")};
+`;
+
+const EventTitle = styled.span`
+  margin-right: 6px;
+`;
+
+const StartTime = styled.span`
+  margin-left: 6px;
 `;
