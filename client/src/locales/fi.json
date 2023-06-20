@@ -64,7 +64,9 @@
     "admin": "Ylläpito",
     "results": "Ilmoittautumistulokset",
     "group": "Ryhmä",
-    "notifications": "Ilmoitukset"
+    "notifications": "Ilmoitukset",
+    "profileAndGroup": "Profiili & ryhmä",
+    "profile": "Profiili"
   },
   "gameInfo": {
     "gameStyle": "Pelityyli",
@@ -220,7 +222,7 @@
       "creatorHasSignedGames": "Sinulla on jo ilmoittautumisia peleihin. Poista ilmoittautumiset ennen kuin voit luoda ryhmän."
     },
     "hasEnteredFollowingGames": "Olet jo päässyt seuraaviin peleihin:",
-    "cancelSignupBeforeJoiningOrCreatingGroup": "Peruuta ilmoittaumisesi yllä oleviin peleihin ennen kuin voit luoda ryhmän tai liittyä ryhmään.",
+    "cancelSignupBeforeJoiningOrCreatingGroup": "Sinun täytyy perua ilmoittaumisesi yllä oleviin peleihin ennen kuin voit luoda ryhmän tai liittyä ryhmään.",
     "signupDisabledNotCreator": "Olet ryhmän jäsen. Ryhmän perustaja ilmoittautuu arvontaan ryhmän jäsenten puolesta.",
     "signupForWholeGroup": "Olet ryhmän perustaja. Voit ilmoittautua arvontaan koko ryhmän puolesta.",
     "inGroupSignups": "Olet ryhmän jäsen. Seuraavat arvonta-ilmoittautumiset ovat ryhmän perustajan valitsemia.",
@@ -251,11 +253,12 @@
     "helperPasswordManagement": "Vaihda salasana",
     "userCode": "Käyttäjän koodi",
     "userCodeOrUsername": "Käyttäjän koodi tai käyttäjänimi",
+    "changePassword": "Vaihda salasana",
     "newPassword": "Uusi salasana",
     "userNotFound": "Käyttäjää ei löytynyt",
     "foundUser": "Löytyi käyttäjä",
-    "changingPasswordError": "Virhe salasanaa vaihtaessa",
-    "changingPasswordSuccess": "Salasana vaihdettu onnistuneesti"
+    "changingPasswordError": "Virhe salasanaa vaihtaessa.",
+    "changingPasswordSuccess": "Salasanasi on nyt vaihdettu."
   },
   "testValues": {
     "buttonText": "Testiarvot",
@@ -390,6 +393,10 @@
   "aboutView": {
     "general": "Mikä Konsti?",
     "faq": "FAQ"
+  },
+  "profileView": {
+    "profileTab": "Profiili",
+    "groupTab": "Ryhmä"
   },
   "gamePopularity": {
     "low": "Tarvitaan lisää pelaajia",

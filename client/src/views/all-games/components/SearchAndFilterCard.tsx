@@ -17,6 +17,7 @@ import { ControlledInput } from "client/components/ControlledInput";
 import { RadioButton } from "client/components/RadioButton";
 import { RevolvingDoorGamesInfo } from "client/views/all-games/components/RevolvingDoorGamesInfo";
 import { config } from "client/config";
+import { RaisedCard } from "client/components/RaisedCard";
 
 export enum StartingTimeOption {
   UPCOMING = "upcoming",
@@ -167,16 +168,10 @@ export const SearchAndFilterCard = ({
   );
 };
 
-const Container = styled.div`
+const Container = styled(RaisedCard)`
   display: grid;
   row-gap: 16px;
   column-gap: 24px;
-  margin: 20px 0 20px 0;
-  padding: 16px 8px 16px 8px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  background: #fafafa;
-  box-shadow: ${(props) => props.theme.shadowLower};
 
   grid-template-columns: 1fr 1fr;
 
