@@ -5,6 +5,7 @@ import { ProgramTypeSelection } from "client/components/EventTypeSelection";
 import { RadioButton } from "client/components/RadioButton";
 import { ControlledInput } from "client/components/ControlledInput";
 import { useAppSelector } from "client/utils/hooks";
+import { RaisedCard } from "client/components/RaisedCard";
 
 export enum ResultsStartingTimeOption {
   ALL = "all",
@@ -80,16 +81,10 @@ export const SearchAndFilterResultsCard = ({
   );
 };
 
-const Container = styled.div`
+const Container = styled(RaisedCard)`
   display: grid;
   row-gap: 16px;
   column-gap: 24px;
-  margin: 20px 0 20px 0;
-  padding: 16px 8px 16px 8px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  background: #fafafa;
-  box-shadow: ${(props) => props.theme.shadowHigher};
 
   grid-template-columns: 1fr 1fr;
   @media (max-width: ${(props) => props.theme.breakpointPhone}) {

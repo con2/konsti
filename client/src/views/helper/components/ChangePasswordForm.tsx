@@ -69,14 +69,28 @@ export const ChangePasswordForm = ({ username }: Props): ReactElement => {
 
   return (
     <>
-      <p>{t("passwordManagement.newPassword")}</p>
-      <ControlledInput
-        type={passwordFieldType}
-        key="new-password"
-        placeholder={t("passwordManagement.newPassword")}
-        value={changePasswordInput}
-        onChange={handlePasswordChange}
-      />
+      <StyledLabel>{t("passwordManagement.changePassword")}</StyledLabel>
+      <InputContainer>
+        <ControlledInput
+          type={passwordFieldType}
+          key="new-password"
+          placeholder={t("passwordManagement.newPassword")}
+          value={changePasswordInput}
+          onChange={handlePasswordChange}
+        />
+
+        <FormFieldIcon>
+          <FontAwesomeIcon
+            icon={passwordFieldType === "password" ? "eye" : "eye-slash"}
+            onClick={togglePasswordVisibility}
+            aria-label={
+              passwordFieldType === "password"
+                ? t("iconAltText.showPassword")
+                : t("iconAltText.hidePassword")
+            }
+          />
+        </FormFieldIcon>
+      </InputContainer>
       <ButtonWithMargin
         onClick={submitUpdatePassword}
         buttonStyle={ButtonStyle.PRIMARY}
@@ -84,25 +98,17 @@ export const ChangePasswordForm = ({ username }: Props): ReactElement => {
         {t("button.save")}
       </ButtonWithMargin>
 
-      <FormFieldIcon>
-        <FontAwesomeIcon
-          icon={passwordFieldType === "password" ? "eye" : "eye-slash"}
-          onClick={togglePasswordVisibility}
-          aria-label={
-            passwordFieldType === "password"
-              ? t("iconAltText.showPassword")
-              : t("iconAltText.hidePassword")
-          }
-        />
-      </FormFieldIcon>
-
       {passwordChangeMessage}
     </>
   );
 };
 
+const InputContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
 const FormFieldIcon = styled.span`
-  padding: 0 0 0 8px;
   font-size: ${(props) => props.theme.fontSizeLarge};
 `;
 
@@ -120,4 +126,9 @@ const Message = styled.p<MessageProps>`
 
 const ButtonWithMargin = styled(Button)`
   margin-top: 8px;
+`;
+
+const StyledLabel = styled.label`
+  padding: 0 0 2px 4px;
+  font-size: ${(props) => props.theme.fontSizeSmall};
 `;

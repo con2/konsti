@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useStore } from "react-redux";
 import styled from "styled-components";
 import dayjs from "dayjs";
+import { Link } from "react-router-dom";
 import { GroupMembersList } from "client/views/group/components/GroupMembersList";
 import { loadGroupMembers } from "client/utils/loadData";
 import { useAppSelector } from "client/utils/hooks";
@@ -52,7 +53,6 @@ export const GroupView = (): ReactElement => {
 
   return (
     <div className="group-view">
-      <h2>{t("pages.group")}</h2>
       <p>{t("group.groupLotterySignupGuide")}</p>
 
       {activeProgramType !== ProgramType.TABLETOP_RPG ? (
@@ -71,7 +71,9 @@ export const GroupView = (): ReactElement => {
                   <ul>
                     {filteredActiveEnteredGames.map((game) => (
                       <li key={game.gameDetails.gameId}>
-                        {game.gameDetails.title}
+                        <Link to={`/games/${game.gameDetails.gameId}`}>
+                          {game.gameDetails.title}
+                        </Link>
                       </li>
                     ))}
                   </ul>
