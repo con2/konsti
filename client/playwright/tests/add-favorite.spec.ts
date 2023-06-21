@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 import { logTestStart, populateDb } from "./utils";
 
-test.skip("Add favorite", async ({ page, request }) => {
+test("Add favorite", async ({ page, request }) => {
   logTestStart("Add favorite");
   await populateDb(request);
 
