@@ -4,10 +4,17 @@ import styled from "styled-components";
 interface Props {
   children: ReactNode;
   className?: string;
+  "data-testid"?: string;
 }
 
-export const RaisedCard = ({ children, className }: Props): ReactElement => (
-  <Card className={className}>{children}</Card>
+export const RaisedCard = ({
+  children,
+  className,
+  "data-testid": dataTestId,
+}: Props): ReactElement => (
+  <Card className={className} data-testid={dataTestId}>
+    {children}
+  </Card>
 );
 
 const Card = styled.div`
