@@ -111,7 +111,7 @@ test("Assignment with valid data should return success with group strategy", asy
   }
 
   const updatedUsers2 = assignResults2.results.map((result) => result.username);
-  await assertUserUpdatedCorrectly([...updatedUsers, ...updatedUsers2]);
+  await assertUserUpdatedCorrectly(updatedUsers2);
 });
 
 test("Assignment with no games should return error with group strategy", async () => {

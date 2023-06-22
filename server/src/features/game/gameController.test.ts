@@ -252,11 +252,9 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
   });
 
   test("should remove selectedGames but not signups or favoritedGames if game start time changes", async () => {
-    // Kompassi returns UTC time, by default dayjs returns local time
     const newStartTime = dayjs(testGame.startTime)
-      .utc()
       .add(1, "hours")
-      .format();
+      .toISOString();
 
     vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
       value: [
