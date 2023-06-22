@@ -12,11 +12,14 @@ import { faker } from "@faker-js/faker";
 import { UserModel } from "server/features/user/userSchema";
 import { findUser, saveUser } from "server/features/user/userRepository";
 import { mockUser, mockUser2, mockUser3 } from "server/test/mock-data/mockUser";
-import { addToEventLogs } from "server/features/user/event-log/eventLogRepository";
+import {
+  addEventLogItems,
+  deleteEventLogItemsByStartTime,
+} from "server/features/user/event-log/eventLogRepository";
 import { EventLogAction } from "shared/typings/models/eventLog";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 import { saveGames } from "server/features/game/gameRepository";
-import { testGame } from "shared/tests/testGame";
+import { testGame, testGame2 } from "shared/tests/testGame";
 
 let mongoServer: MongoMemoryServer;
 
@@ -44,17 +47,19 @@ test("should insert new event log item to user", async () => {
   await saveUser(mockUser2);
   await saveUser(mockUser3);
 
-  await addToEventLogs({
+  await addEventLogItems({
     updates: [
       {
         username: mockUser.username,
         programItemId: testGame.gameId,
-        createdAt: "2019-07-26T17:00:00Z",
+        programItemStartTime: testGame.startTime,
+        createdAt: "2019-07-26T17:00:00.000Z",
       },
       {
         username: mockUser2.username,
         programItemId: testGame.gameId,
-        createdAt: "2020-07-26T17:00:00Z",
+        programItemStartTime: testGame.startTime,
+        createdAt: "2020-07-26T17:00:00.000Z",
       },
     ],
     action: EventLogAction.NEW_ASSIGNMENT,
@@ -63,33 +68,79 @@ test("should insert new event log item to user", async () => {
   const updatedUserResult = await findUser(mockUser.username);
   const updatedUser = unsafelyUnwrapResult(updatedUserResult);
 
-  expect(updatedUser?.username).toEqual(mockUser.username);
-  expect(updatedUser?.eventLogItems.length).toEqual(1);
-  expect(updatedUser?.eventLogItems[0].action).toEqual(
-    EventLogAction.NEW_ASSIGNMENT
-  );
-  expect(updatedUser?.eventLogItems[0].programItemId).toEqual(testGame.gameId);
-  expect(updatedUser?.eventLogItems[0].createdAt).toEqual(
-    "2019-07-26T17:00:00Z"
-  );
+  expect(updatedUser).toMatchObject({
+    username: mockUser.username,
+    eventLogItems: [
+      {
+        action: EventLogAction.NEW_ASSIGNMENT,
+        programItemId: testGame.gameId,
+        programItemStartTime: testGame.startTime,
+        createdAt: "2019-07-26T17:00:00.000Z",
+      },
+    ],
+  });
 
   const updatedUserResult2 = await findUser(mockUser2.username);
   const updatedUser2 = unsafelyUnwrapResult(updatedUserResult2);
 
-  expect(updatedUser2?.username).toEqual(mockUser2.username);
-  expect(updatedUser2?.eventLogItems.length).toEqual(1);
-  expect(updatedUser2?.eventLogItems[0].action).toEqual(
-    EventLogAction.NEW_ASSIGNMENT
-  );
-  expect(updatedUser2?.eventLogItems[0].programItemId).toEqual(testGame.gameId);
-  expect(updatedUser2?.eventLogItems[0].createdAt).toEqual(
-    "2020-07-26T17:00:00Z"
-  );
+  expect(updatedUser2).toMatchObject({
+    username: mockUser2.username,
+    eventLogItems: [
+      {
+        action: EventLogAction.NEW_ASSIGNMENT,
+        programItemId: testGame.gameId,
+        programItemStartTime: testGame.startTime,
+        createdAt: "2020-07-26T17:00:00.000Z",
+      },
+    ],
+  });
 
   const updatedUser3 = await UserModel.findOne({
     username: mockUser3.username,
   });
 
-  expect(updatedUser3?.username).toEqual(mockUser3.username);
-  expect(updatedUser3?.eventLogItems.length).toEqual(0);
+  expect(updatedUser3).toMatchObject({
+    username: mockUser3.username,
+    eventLogItems: [],
+  });
+});
+
+test("should delete event log items for start time", async () => {
+  await saveGames([testGame, testGame2]);
+  await saveUser(mockUser);
+
+  await addEventLogItems({
+    updates: [
+      {
+        username: mockUser.username,
+        programItemId: testGame.gameId,
+        programItemStartTime: testGame.startTime,
+        createdAt: "2019-07-26T17:00:00.000Z",
+      },
+      {
+        username: mockUser.username,
+        programItemId: testGame2.gameId,
+        programItemStartTime: testGame2.startTime,
+        createdAt: "2020-07-26T17:00:00.000Z",
+      },
+    ],
+    action: EventLogAction.NEW_ASSIGNMENT,
+  });
+
+  await deleteEventLogItemsByStartTime(testGame.startTime);
+
+  const updatedUserResult = await findUser(mockUser.username);
+  const updatedUser = unsafelyUnwrapResult(updatedUserResult);
+
+  expect(updatedUser).toMatchObject({
+    username: mockUser.username,
+    eventLogItems: [
+      {
+        action: EventLogAction.NEW_ASSIGNMENT,
+        programItemId: testGame2.gameId,
+        programItemStartTime: testGame2.startTime,
+        createdAt: "2020-07-26T17:00:00.000Z",
+      },
+    ],
+  });
 });

@@ -21,6 +21,7 @@ const UserSchema = new mongoose.Schema(
       {
         action: String,
         programItemId: String,
+        programItemStartTime: Date,
         isSeen: Boolean,
         createdAt: Date,
       },

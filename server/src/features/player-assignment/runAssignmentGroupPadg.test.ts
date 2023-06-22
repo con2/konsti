@@ -10,9 +10,9 @@ import mongoose from "mongoose";
 import { MongoMemoryServer } from "mongodb-memory-server";
 import dayjs from "dayjs";
 import { faker } from "@faker-js/faker";
+import { assertUserUpdatedCorrectly } from "server/features/player-assignment/runAssignmentTestUtils";
 import { runAssignment } from "server/features/player-assignment/runAssignment";
 import { generateTestData } from "server/test/test-data-generation/generators/generateTestData";
-import { verifyUserSignups } from "server/features/player-assignment/utils/verifyUserSignups";
 import { AssignmentStrategy } from "shared/config/sharedConfig.types";
 import { sharedConfig } from "shared/config/sharedConfig";
 import { AssignmentResultStatus } from "server/typings/result.typings";
@@ -84,7 +84,8 @@ test("Assignment with valid data should return success with group+padg strategy"
     expect(groupResults.length).toEqual(0);
   }
 
-  await verifyUserSignups();
+  const updatedUsers = assignResults.results.map((result) => result.username);
+  await assertUserUpdatedCorrectly(updatedUsers);
 
   // SECOND RUN
 
@@ -109,7 +110,8 @@ test("Assignment with valid data should return success with group+padg strategy"
     expect(groupResults2.length).toEqual(0);
   }
 
-  await verifyUserSignups();
+  const updatedUsers2 = assignResults2.results.map((result) => result.username);
+  await assertUserUpdatedCorrectly(updatedUsers2);
 });
 
 test("Assignment with no games should return error with group+padg strategy", async () => {
