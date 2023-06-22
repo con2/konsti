@@ -14,7 +14,10 @@ import {
   unwrapResult,
 } from "shared/utils/result";
 import { MongoDbError } from "shared/typings/api/errors";
-import { addToEventLogs } from "server/features/user/event-log/eventLogRepository";
+import {
+  addEventLogItems,
+  deleteEventLogItemsByStartTime,
+} from "server/features/user/event-log/eventLogRepository";
 import { EventLogAction } from "shared/typings/models/eventLog";
 
 export const saveUserSignupResults = async (
@@ -93,17 +96,25 @@ export const saveUserSignupResults = async (
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 
+  // Remove eventLog items from same starting time
+  const deleteEventLogItemsByStartTimeResult =
+    await deleteEventLogItemsByStartTime(startingTime);
+  if (isErrorResult(deleteEventLogItemsByStartTimeResult)) {
+    return deleteEventLogItemsByStartTimeResult;
+  }
+
   // Add new signups to users eventLogs
-  const addToEventLogResult = await addToEventLogs({
+  const addEventLogItemsResult = await addEventLogItems({
     updates: results.map((result) => ({
       username: result.username,
       programItemId: result.enteredGame.gameDetails.gameId,
+      programItemStartTime: startingTime,
       createdAt: dayjs().format(),
     })),
     action: EventLogAction.NEW_ASSIGNMENT,
   });
-  if (isErrorResult(addToEventLogResult)) {
-    return addToEventLogResult;
+  if (isErrorResult(addEventLogItemsResult)) {
+    return addEventLogItemsResult;
   }
 
   return makeSuccessResult(undefined);

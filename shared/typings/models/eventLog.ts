@@ -3,6 +3,7 @@ export interface EventLogItem {
   action: EventLogAction;
   isSeen: boolean;
   programItemId: string;
+  programItemStartTime: string;
   createdAt: string;
 }
 

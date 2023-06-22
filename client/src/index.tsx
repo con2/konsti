@@ -23,7 +23,7 @@ import { store } from "client/utils/store";
 
 // Initialized i18next instance
 import "client/utils/i18n";
-import { initializeDayjs } from "client/utils/time";
+import { initializeDayjs } from "shared/utils/time";
 
 initializeDayjs();
 setLocale(getLocalStorageLanguage());

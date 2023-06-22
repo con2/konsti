@@ -9,6 +9,7 @@ const PostEventLogItemRequestSchema = z.object({
     z.object({
       username: z.string(),
       programItemId: z.string(),
+      programItemStartTime: z.string(),
       createdAt: z.string(), // TODO: Should this be date?
     })
   ),
