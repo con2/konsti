@@ -127,7 +127,10 @@ test("should delete event log items for start time", async () => {
     action: EventLogAction.NEW_ASSIGNMENT,
   });
 
-  await deleteEventLogItemsByStartTime(testGame.startTime);
+  await deleteEventLogItemsByStartTime(
+    testGame.startTime,
+    EventLogAction.NEW_ASSIGNMENT
+  );
 
   const updatedUserResult = await findUser(mockUser.username);
   const updatedUser = unsafelyUnwrapResult(updatedUserResult);

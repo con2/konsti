@@ -98,7 +98,10 @@ export const saveUserSignupResults = async (
 
   // Remove eventLog items from same starting time
   const deleteEventLogItemsByStartTimeResult =
-    await deleteEventLogItemsByStartTime(startingTime);
+    await deleteEventLogItemsByStartTime(
+      startingTime,
+      EventLogAction.NEW_ASSIGNMENT
+    );
   if (isErrorResult(deleteEventLogItemsByStartTimeResult)) {
     return deleteEventLogItemsByStartTimeResult;
   }
