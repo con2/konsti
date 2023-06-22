@@ -11,7 +11,7 @@ import {
 } from "shared/typings/api/eventLog";
 import { UserModel } from "server/features/user/userSchema";
 import { logger } from "server/utils/logger";
-import { EventLogItem } from "shared/typings/models/eventLog";
+import { EventLogAction, EventLogItem } from "shared/typings/models/eventLog";
 
 export const addEventLogItems = async (
   eventLogRequest: PostEventLogItemRequest
@@ -94,13 +94,16 @@ export const updateEventLogItem = async (
 };
 
 export const deleteEventLogItemsByStartTime = async (
-  startTime: string
+  startTime: string,
+  action: EventLogAction
 ): Promise<Result<void, MongoDbError>> => {
   try {
     await UserModel.updateMany(
       {},
       {
-        $pull: { eventLogItems: { programItemStartTime: startTime } },
+        $pull: {
+          eventLogItems: { programItemStartTime: startTime, action },
+        },
       }
     );
     return makeSuccessResult(undefined);
