@@ -25,7 +25,7 @@ export const removeUsers = async (): Promise<Result<void, MongoDbError>> => {
 export const saveUser = async (
   newUserData: NewUser
 ): Promise<Result<User, MongoDbError>> => {
-  const user = new UserModel({
+  const newUser: Omit<User, "createdAt"> = {
     username: newUserData.username,
     password: newUserData.passwordHash,
     userGroup: newUserData.userGroup ? newUserData.userGroup : UserGroup.USER,
@@ -34,8 +34,10 @@ export const saveUser = async (
       typeof newUserData.groupCode === "string" ? newUserData.groupCode : "0",
     favoritedGames: [],
     signedGames: [],
-    eventLog: [],
-  });
+    eventLogItems: [],
+  };
+
+  const user = new UserModel(newUser);
 
   try {
     const response = await user.save();
@@ -129,7 +131,8 @@ export const findUser = async (
         action: item.action,
         isSeen: item.isSeen,
         programItemId: item.programItemId,
-        createdAt: dayjs(item.createdAt).utc().format(),
+        programItemStartTime: dayjs(item.programItemStartTime).toISOString(),
+        createdAt: dayjs(item.createdAt).toISOString(),
       })),
     });
   } catch (error) {
@@ -181,10 +184,14 @@ export const findUserSerial = async (
   }
 };
 
-export const findUsers = async (): Promise<Result<User[], MongoDbError>> => {
+export const findUsers = async (
+  usernames?: string[]
+): Promise<Result<User[], MongoDbError>> => {
   logger.debug(`MongoDB: Find all users`);
+
+  const filter = usernames ? { username: { $in: usernames } } : {};
   try {
-    const users = await UserModel.find({})
+    const users = await UserModel.find(filter)
       .lean<User[]>()
       .populate("favoritedGames")
       .populate("signedGames.gameDetails");

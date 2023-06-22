@@ -6,7 +6,7 @@ export interface UserDoc extends User, mongoose.Document {}
 export interface NewUser {
   username: string;
   serial: string;
-  passwordHash: string | Promise<void>;
+  passwordHash: string;
   userGroup?: UserGroup;
   groupCode?: string;
 }
