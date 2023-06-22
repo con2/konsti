@@ -10,13 +10,13 @@ import mongoose from "mongoose";
 import { MongoMemoryServer } from "mongodb-memory-server";
 import dayjs from "dayjs";
 import { faker } from "@faker-js/faker";
+import { assertUserUpdatedCorrectly } from "server/features/player-assignment/runAssignmentTestUtils";
 import { runAssignment } from "server/features/player-assignment/runAssignment";
 import { generateTestData } from "server/test/test-data-generation/generators/generateTestData";
 import { AssignmentStrategy } from "shared/config/sharedConfig.types";
 import { sharedConfig } from "shared/config/sharedConfig";
 import { AssignmentResultStatus } from "server/typings/result.typings";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
-import { assertUserUpdatedCorrectly } from "server/features/player-assignment/runAssignmentTestUtils";
 
 let mongoServer: MongoMemoryServer;
 
