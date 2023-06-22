@@ -1,6 +1,5 @@
 import { beforeAll, expect, test, vi } from "vitest";
 import dayjs, { ManipulateType } from "dayjs";
-import { initializeDayjs } from "client/utils/time";
 import { setLocale } from "shared/utils/setLocale";
 
 const timeNow = "2019-07-26T17:00:00Z";
@@ -8,7 +7,6 @@ const timeNow = "2019-07-26T17:00:00Z";
 beforeAll(() => {
   vi.useFakeTimers();
   vi.setSystemTime(timeNow);
-  initializeDayjs();
 });
 
 const relativeTimePast = (number: number, key: ManipulateType): string => {

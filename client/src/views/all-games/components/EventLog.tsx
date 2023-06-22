@@ -54,6 +54,11 @@ export const EventLog = (): ReactElement => {
     <div>
       <EventLogItems>
         <h3>{t("eventLog.title")}</h3>
+
+        {eventLogItems.length === 0 && (
+          <div>{t("eventLog.noNotifications")}</div>
+        )}
+
         {_.orderBy(eventLogItems, (item) => item.createdAt, "desc").map(
           (eventLogItem) => {
             const foundGame = games.find(

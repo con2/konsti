@@ -13,7 +13,7 @@ import { UserModel } from "server/features/user/userSchema";
 import { logger } from "server/utils/logger";
 import { EventLogItem } from "shared/typings/models/eventLog";
 
-export const addToEventLogs = async (
+export const addEventLogItems = async (
   eventLogRequest: PostEventLogItemRequest
 ): Promise<Result<void, MongoDbError>> => {
   const { updates, action } = eventLogRequest;
@@ -29,6 +29,7 @@ export const addToEventLogs = async (
             eventLogItems: {
               action,
               programItemId: update.programItemId,
+              programItemStartTime: update.programItemStartTime,
               isSeen: false,
               createdAt: update.createdAt,
             },
@@ -74,10 +75,11 @@ export const updateEventLogItem = async (
         response.eventLogItems.map((item) => ({
           // @ts-expect-error: Mongoose return value is missing nested _id
           eventLogItemId: item._id,
+          programItemStartTime: dayjs(item.programItemStartTime).toISOString(),
           action: item.action,
           isSeen: item.isSeen,
           programItemId: item.programItemId,
-          createdAt: dayjs(item.createdAt).utc().format(),
+          createdAt: dayjs(item.createdAt).toISOString(),
         }))
       );
     }
@@ -85,6 +87,26 @@ export const updateEventLogItem = async (
   } catch (error) {
     logger.error(
       `MongoDB: Error updating event log item for user ${username}: %s`,
+      error
+    );
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+  }
+};
+
+export const deleteEventLogItemsByStartTime = async (
+  startTime: string
+): Promise<Result<void, MongoDbError>> => {
+  try {
+    await UserModel.updateMany(
+      {},
+      {
+        $pull: { eventLogItems: { programItemStartTime: startTime } },
+      }
+    );
+    return makeSuccessResult(undefined);
+  } catch (error) {
+    logger.error(
+      `Deleting event log items for startTime ${startTime} failed: %s`,
       error
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
