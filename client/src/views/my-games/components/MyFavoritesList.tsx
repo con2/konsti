@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import _ from "lodash";
 import styled from "styled-components";
 import { getStartTimes } from "client/utils/getStartTimes";
-import { GamesByStartTimes } from "./GamesByStartTimes";
+import { FavoritesByStartTimes } from "./FavoritesByStartTimes";
 import { Game } from "shared/typings/models/game";
 import { RaisedCard } from "client/components/RaisedCard";
 
@@ -29,7 +29,7 @@ export const MyFavoritesList = ({ favoritedGames }: Props): ReactElement => {
           <span>{t("noFavoritedProgramItems")}</span>
         )}
         {favoritedGames.length !== 0 && (
-          <GamesByStartTimes games={sortedGames} startTimes={startTimes} />
+          <FavoritesByStartTimes games={sortedGames} startTimes={startTimes} />
         )}
       </div>
     </RaisedCard>

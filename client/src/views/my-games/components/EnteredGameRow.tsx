@@ -14,6 +14,7 @@ import { Button, ButtonStyle } from "client/components/Button";
 import { ErrorMessage } from "client/components/ErrorMessage";
 import { loadGames } from "client/utils/loadData";
 import { sharedConfig } from "shared/config/sharedConfig";
+import { IconButton } from "client/components/IconButton";
 
 interface Props {
   signup: SelectedGame;
@@ -64,30 +65,27 @@ export const EnteredGameRow = ({
   return (
     <GameDetailsList key={signup.gameDetails.gameId}>
       <GameTitleAndButtons>
-        <Link to={`/games/${signup.gameDetails.gameId}`}>
-          {signup.gameDetails.title}
-        </Link>
-        {sharedConfig.signupOpen && (
-          <ButtonContainer>
-            {cancelSignupFormOpen ? (
-              <CancelSignupFormContainer>
-                <CancelSignupForm
-                  onCancelForm={() => {
-                    setServerError(null);
-                    setCancelSignupFormOpen(false);
-                  }}
-                  onConfirmForm={async () => await removeSignup()}
-                />
-              </CancelSignupFormContainer>
-            ) : (
-              <Button
-                onClick={() => setCancelSignupFormOpen(true)}
-                buttonStyle={ButtonStyle.PRIMARY}
-              >
-                {t("button.cancelSignup")}
-              </Button>
-            )}
-          </ButtonContainer>
+        <div>
+          <Link to={`/games/${signup.gameDetails.gameId}`}>
+            {signup.gameDetails.title}
+          </Link>
+          {sharedConfig.signupOpen && !cancelSignupFormOpen && (
+            <IconButton
+              onClick={() => setCancelSignupFormOpen(true)}
+              icon="calendar-xmark"
+            />
+          )}
+        </div>
+        {sharedConfig.signupOpen && cancelSignupFormOpen && (
+          <CancelSignupFormContainer>
+            <CancelSignupForm
+              onCancelForm={() => {
+                setServerError(null);
+                setCancelSignupFormOpen(false);
+              }}
+              onConfirmForm={async () => await removeSignup()}
+            />
+          </CancelSignupFormContainer>
         )}
       </GameTitleAndButtons>
 
@@ -116,33 +114,15 @@ export const EnteredGameRow = ({
   );
 };
 
-const GameDetailsList = styled.div`
+const GameDetailsList = styled.li`
   display: flex;
   flex-direction: column;
-  margin-left: 30px;
-
-  @media (max-width: ${(props) => props.theme.breakpointPhone}) {
-    margin-left: 10px;
-  }
 `;
 
 const GameTitleAndButtons = styled.div`
   display: flex;
-  flex-direction: row;
-  align-items: center;
-
-  @media (max-width: ${(props) => props.theme.breakpointPhone}) {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-`;
-
-const ButtonContainer = styled.div`
-  padding-left: 10px;
-
-  @media (max-width: ${(props) => props.theme.breakpointPhone}) {
-    padding-left: 0;
-  }
+  flex-direction: column;
+  align-items: flex-start;
 `;
 
 const SignupQuestionPlacement = styled.div`

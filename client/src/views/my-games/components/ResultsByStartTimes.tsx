@@ -30,25 +30,27 @@ export const ResultsByStartTimes = ({
               })}
             </StyledTime>
 
-            {signups.map((signup) => {
-              return (
-                <EnteredGameRow
-                  key={signup.gameDetails.gameId}
-                  signup={signup}
-                  startTime={startTime}
-                />
-              );
-            })}
-
-            {missedSignups.map((missedSignup) => {
-              if (missedSignup === startTime) {
+            <ul>
+              {signups.map((signup) => {
                 return (
-                  <GameDetailsList key={missedSignup}>
-                    {t("noLotterySignupResult")}
-                  </GameDetailsList>
+                  <EnteredGameRow
+                    key={signup.gameDetails.gameId}
+                    signup={signup}
+                    startTime={startTime}
+                  />
                 );
-              }
-            })}
+              })}
+
+              {missedSignups.map((missedSignup) => {
+                if (missedSignup === startTime) {
+                  return (
+                    <GameDetailsList key={missedSignup}>
+                      {t("noLotterySignupResult")}
+                    </GameDetailsList>
+                  );
+                }
+              })}
+            </ul>
           </div>
         );
       })}

@@ -2,37 +2,32 @@ import { MouseEventHandler, ReactElement } from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useTranslation } from "react-i18next";
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { IconName } from "@fortawesome/free-solid-svg-icons";
 
 interface Props {
-  isFavorite: boolean;
+  icon: IconName;
+  className?: string;
   onClick?: MouseEventHandler;
 }
 
-export const FavoriteButton = ({
-  isFavorite,
+export const IconButton = ({
+  icon,
+  className,
   onClick,
 }: Props): ReactElement => {
   const { t } = useTranslation();
 
-  const dataTestId = isFavorite
-    ? "remove-favorite-button"
-    : "add-favorite-button";
-
-  const ariaLabelKey = isFavorite
-    ? "iconAltText.deleteFavorite"
-    : "iconAltText.addFavorite";
-
-  const icon: IconProp = isFavorite ? "heart" : ["far", "heart"];
+  const dataTestId = "remove-favorite-button";
+  const ariaLabelKey = "iconAltText.deleteFavorite";
 
   return (
     <StyledButton
-      isFavorite={isFavorite}
+      className={className}
       onClick={onClick}
       data-testid={dataTestId}
       aria-label={t(ariaLabelKey)}
     >
-      <FavoriteIcon icon={icon} aria-hidden="true" />
+      <Icon className={className} icon={icon} aria-hidden="true" />
     </StyledButton>
   );
 };
@@ -41,8 +36,8 @@ const StyledButton = styled.button<Props>`
   border-radius: 100px;
   border: none;
   cursor: pointer;
-  width: 44px;
-  height: 44px;
+  width: 32px;
+  height: 32px;
   background-color: inherit;
 
   &:hover,
@@ -56,7 +51,7 @@ const StyledButton = styled.button<Props>`
   }
 `;
 
-const FavoriteIcon = styled(FontAwesomeIcon)`
+const Icon = styled(FontAwesomeIcon)`
   color: ${(props) => props.theme.iconFavorited};
-  font-size: ${(props) => props.theme.iconSizeLarge};
+  font-size: ${(props) => props.theme.iconSizeNormal};
 `;
