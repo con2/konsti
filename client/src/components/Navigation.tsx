@@ -10,9 +10,7 @@ import { config } from "client/config";
 import { TestValuePicker } from "client/components/TestValuePicker";
 
 export const Navigation = (): ReactElement => {
-  const username = useAppSelector((state) => state.login.username);
   const loggedIn = useAppSelector((state) => state.login.loggedIn);
-  const serial = useAppSelector((state) => state.login.serial);
   const { t } = useTranslation();
   const { loadedSettings, showTestValues } = config;
 
@@ -44,17 +42,6 @@ export const Navigation = (): ReactElement => {
 
           {loadedSettings !== "production" && showTestValues && (
             <TestValuePicker />
-          )}
-
-          {loggedIn && (
-            <LoggedUserDetails>
-              <UserInfo data-testid="logged-user-username">
-                {t("user")}: {username}
-              </UserInfo>
-              <UserInfo data-testid="logged-user-serial">
-                {t("code")}: {serial}
-              </UserInfo>
-            </LoggedUserDetails>
           )}
         </Drawer>
       )}
@@ -93,16 +80,4 @@ const Drawer = styled.div`
   border-right: 1px solid black;
   color: black;
   background: ${(props) => props.theme.backgroundHighlight};
-`;
-
-const LoggedUserDetails = styled.div`
-  display: flex;
-  flex: 0 1 auto;
-  flex-direction: column;
-  margin-top: 24px;
-  text-align: center;
-`;
-
-const UserInfo = styled.span`
-  padding: 6px 0 0 0;
 `;

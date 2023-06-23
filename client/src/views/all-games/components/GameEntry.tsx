@@ -17,6 +17,7 @@ import { GameDetailsView } from "client/views/all-games/components/GameDetailsVi
 import { Tags } from "client/components/Tags";
 import { FavoriteButton } from "client/components/FavoriteButton";
 import { getAttendeeType } from "client/utils/getAttendeeType";
+import { RaisedCard } from "client/components/RaisedCard";
 
 interface Props {
   game: Game;
@@ -236,16 +237,10 @@ const HeaderContainer = styled.div`
   }
 `;
 
-const GameContainer = styled.div<{ signed: boolean }>`
+const GameContainer = styled(RaisedCard)<{ signed: boolean }>`
   display: flex;
   flex-direction: column;
-  padding: 8px;
-  margin: 4px 16px 24px 16px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  background: #fafafa;
   min-height: 160px;
-  box-shadow: ${(props) => props.theme.shadowLower};
   color: #3d3d3d;
 
   @media (max-width: ${(props) => props.theme.breakpointPhone}) {

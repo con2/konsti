@@ -6,10 +6,7 @@ import React, { Suspense, lazy } from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { ThemeProvider } from "styled-components";
-import dayjs from "dayjs";
 import { init, BrowserTracing } from "@sentry/react";
-import isBetween from "dayjs/plugin/isBetween";
-import isSameOrAfter from "dayjs/plugin/isSameOrAfter";
 import loaderImage from "assets/loading.gif";
 import { config } from "client/config";
 import {
@@ -26,9 +23,9 @@ import { store } from "client/utils/store";
 
 // Initialized i18next instance
 import "client/utils/i18n";
+import { initializeDayjs } from "shared/utils/time";
 
-dayjs.extend(isBetween);
-dayjs.extend(isSameOrAfter);
+initializeDayjs();
 setLocale(getLocalStorageLanguage());
 
 // Root component

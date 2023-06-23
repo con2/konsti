@@ -27,7 +27,8 @@ export const updateWithSignups = async (
 
     if (foundgroupCreator) {
       return { ...user, signedGames: foundgroupCreator.signedGames };
-    } else return user;
+    }
+    return user;
   });
 
   const signedGames = allUsers.flatMap((user) =>
@@ -36,23 +37,18 @@ export const updateWithSignups = async (
 
   const groupedSignups = _.countBy(signedGames, "gameId");
 
-  const promises = games.map(async (game) => {
-    if (groupedSignups[game.gameId]) {
-      const saveGamePopularityResult = await saveGamePopularity(
-        game.gameId,
-        groupedSignups[game.gameId]
-      );
-      if (isErrorResult(saveGamePopularityResult)) {
-        return saveGamePopularityResult;
-      }
-    }
-    return makeSuccessResult(undefined);
-  });
+  const gamePopularityUpdates = games
+    .map((game) => ({
+      gameId: game.gameId,
+      popularity: groupedSignups[game.gameId],
+    }))
+    .filter((popularityUpdate) => popularityUpdate.popularity);
 
-  const results = await Promise.all(promises);
-  const someUpdateFailed = results.some((result) => isErrorResult(result));
+  const saveGamePopularityResult = await saveGamePopularity(
+    gamePopularityUpdates
+  );
 
-  if (someUpdateFailed) {
+  if (isErrorResult(saveGamePopularityResult)) {
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 

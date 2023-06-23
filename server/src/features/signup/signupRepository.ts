@@ -12,7 +12,6 @@ import { ProgramType } from "shared/typings/models/game";
 import {
   Result,
   isErrorResult,
-  isSuccessResult,
   makeErrorResult,
   makeSuccessResult,
   unwrapResult,
@@ -159,7 +158,10 @@ export const saveSignup = async (
       .populate("game");
     if (!signup) {
       logger.error(
-        `Signup for user ${username} and game ${game.gameId} not found`
+        "%s",
+        new Error(
+          `Signup for user ${username} and game ${game.gameId} not found`
+        )
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
@@ -203,7 +205,10 @@ export const delSignup = async (
       .populate("game", "-createdAt -updatedAt -_id -__v");
 
     if (!signup) {
-      logger.error(`Signups for game ${game.gameId} not found`);
+      logger.error(
+        "%s",
+        new Error(`Signups for game ${game.gameId} not found`)
+      );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
 
@@ -213,7 +218,10 @@ export const delSignup = async (
 
     if (signupStillRemaining) {
       logger.error(
-        `Error removing signup for game ${game.gameId} from user ${username}`
+        "%s",
+        new Error(
+          `Error removing signup for game ${game.gameId} from user ${username}`
+        )
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
@@ -229,54 +237,32 @@ export const delSignup = async (
   }
 };
 
-interface DelSignupsByGameIdResponse {
-  gameId: string;
-  deletedCount: number;
-}
-
 export const delSignupsByGameIds = async (
   gameIds: string[]
-): Promise<Result<DelSignupsByGameIdResponse[], MongoDbError>> => {
-  const promises = gameIds.map(async (gameId) => {
-    const gameResult = await findGameById(gameId);
-    if (isErrorResult(gameResult)) {
-      return gameResult;
-    }
+): Promise<Result<void, MongoDbError>> => {
+  const gamesResult = await findGames();
+  if (isErrorResult(gamesResult)) {
+    return gamesResult;
+  }
+  const games = unwrapResult(gamesResult);
 
-    const game = unwrapResult(gameResult);
-
-    try {
-      const response = await SignupModel.deleteOne({ game: game._id });
-      return makeSuccessResult({
-        gameId: game.gameId,
-        deletedCount: response.deletedCount,
-      });
-    } catch (error) {
-      logger.error("MongoDB: Error removing invalid signup: %s", error);
-      return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
-    }
-  });
-
-  const responseResults = await Promise.all(promises);
-
-  const someRequestFailed = responseResults.some((result) =>
-    isErrorResult(result)
+  const gamesInDb = gameIds.map((gameId) =>
+    games.find((game) => game.gameId === gameId)
   );
 
-  if (someRequestFailed) {
+  const gameObjectIds = gamesInDb.flatMap((gameInDb) =>
+    gameInDb?._id ? gameInDb?._id : []
+  );
+
+  try {
+    await SignupModel.deleteMany({
+      game: { $in: gameObjectIds },
+    });
+    return makeSuccessResult(undefined);
+  } catch (error) {
+    logger.error("MongoDB: Error removing signups by game IDs: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
-
-  logger.info(`MongoDB: Deleted signups for games: ${gameIds.join(", ")}`);
-
-  const results = responseResults.flatMap((result) => {
-    if (isSuccessResult(result)) {
-      return unwrapResult(result);
-    }
-    return [];
-  });
-
-  return makeSuccessResult(results);
 };
 
 export const delRpgSignupsByStartTime = async (

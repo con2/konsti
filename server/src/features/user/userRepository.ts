@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import { logger } from "server/utils/logger";
 import { UserModel } from "server/features/user/userSchema";
 import { NewUser } from "server/typings/user.typings";
@@ -24,7 +25,7 @@ export const removeUsers = async (): Promise<Result<void, MongoDbError>> => {
 export const saveUser = async (
   newUserData: NewUser
 ): Promise<Result<User, MongoDbError>> => {
-  const user = new UserModel({
+  const newUser: Omit<User, "createdAt"> = {
     username: newUserData.username,
     password: newUserData.passwordHash,
     userGroup: newUserData.userGroup ? newUserData.userGroup : UserGroup.USER,
@@ -33,7 +34,10 @@ export const saveUser = async (
       typeof newUserData.groupCode === "string" ? newUserData.groupCode : "0",
     favoritedGames: [],
     signedGames: [],
-  });
+    eventLogItems: [],
+  };
+
+  const user = new UserModel(newUser);
 
   try {
     const response = await user.save();
@@ -48,36 +52,34 @@ export const saveUser = async (
   }
 };
 
-export const updateUserByUsername = async (
-  user: User
-): Promise<Result<User, MongoDbError>> => {
-  try {
-    const response = await UserModel.findOneAndUpdate(
-      { username: user.username },
-      {
-        userGroup: user.userGroup,
-        serial: user.serial,
-        groupCode: user.groupCode,
-        favoritedGames: user.favoritedGames,
-        signedGames: user.signedGames,
+export const updateUsersByUsername = async (
+  users: User[]
+): Promise<Result<void, MongoDbError>> => {
+  const bulkOps = users.map((user) => {
+    return {
+      updateOne: {
+        filter: {
+          username: user.username,
+        },
+        update: {
+          userGroup: user.userGroup,
+          serial: user.serial,
+          groupCode: user.groupCode,
+          favoritedGames: user.favoritedGames,
+          signedGames: user.signedGames,
+        },
       },
-      { new: true, fields: "-_id -__v -createdAt -updatedAt" }
-    )
-      .lean<User>()
-      .populate("favoritedGames")
-      .populate("signedGames.gameDetails");
+    };
+  });
 
-    if (!response) {
-      logger.error(
-        `MongoDB: Error updating user ${user.username}: user not found`
-      );
-      return makeErrorResult(MongoDbError.USER_NOT_FOUND);
-    }
-
-    logger.debug(`MongoDB: User ${user.username} updated`);
-    return makeSuccessResult(response);
+  try {
+    await UserModel.bulkWrite(bulkOps);
+    return makeSuccessResult(undefined);
   } catch (error) {
-    logger.error(`MongoDB: Error updating user ${user.username}: %s`, error);
+    logger.error(
+      `MongoDB: Error updating users ${users.map((user) => user.username)}: %s`,
+      error
+    );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
@@ -118,10 +120,21 @@ export const findUser = async (
       .populate("signedGames.gameDetails");
     if (!response) {
       logger.info(`MongoDB: User ${username} not found`);
-    } else {
-      logger.debug(`MongoDB: Found user ${username}`);
+      return makeSuccessResult(null);
     }
-    return makeSuccessResult(response);
+    logger.debug(`MongoDB: Found user ${username}`);
+    return makeSuccessResult({
+      ...response,
+      eventLogItems: response.eventLogItems.map((item) => ({
+        // @ts-expect-error: Mongoose return value is missing nested _id
+        eventLogItemId: item._id,
+        action: item.action,
+        isSeen: item.isSeen,
+        programItemId: item.programItemId,
+        programItemStartTime: dayjs(item.programItemStartTime).toISOString(),
+        createdAt: dayjs(item.createdAt).toISOString(),
+      })),
+    });
   } catch (error) {
     logger.error(`MongoDB: Error finding user ${username}: %s`, error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
@@ -171,10 +184,14 @@ export const findUserSerial = async (
   }
 };
 
-export const findUsers = async (): Promise<Result<User[], MongoDbError>> => {
+export const findUsers = async (
+  usernames?: string[]
+): Promise<Result<User[], MongoDbError>> => {
   logger.debug(`MongoDB: Find all users`);
+
+  const filter = usernames ? { username: { $in: usernames } } : {};
   try {
-    const users = await UserModel.find({})
+    const users = await UserModel.find(filter)
       .lean<User[]>()
       .populate("favoritedGames")
       .populate("signedGames.gameDetails");

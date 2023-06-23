@@ -8,7 +8,7 @@ import { ProgramType } from "shared/typings/models/game";
 const user: User = {
   username: "username",
   password: "password",
-  userGroup: "user" as UserGroup,
+  userGroup: UserGroup.USER,
   serial: "123",
   groupCode: "123",
   favoritedGames: [],
@@ -21,28 +21,31 @@ const user: User = {
     },
   ],
   createdAt: null,
+  eventLogItems: [],
 };
 
 const user2: User = {
   username: "username 2",
   password: "password",
-  userGroup: "user" as UserGroup,
+  userGroup: UserGroup.USER,
   serial: "456",
   groupCode: "123",
   favoritedGames: [],
   signedGames: [],
   createdAt: null,
+  eventLogItems: [],
 };
 
 const user3: User = {
   username: "username 3",
   password: "password",
-  userGroup: "user" as UserGroup,
+  userGroup: UserGroup.USER,
   serial: "789",
   groupCode: "123",
   favoritedGames: [],
   signedGames: [],
   createdAt: null,
+  eventLogItems: [],
 };
 
 const previousMatchingSignup: Signup = {

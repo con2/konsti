@@ -18,6 +18,8 @@ import { isAdmin, isAdminOrHelp } from "client/utils/checkUserGroup";
 import { AboutView } from "client/views/about/AboutView";
 import { FaqView } from "client/views/about/FaqView";
 import { Tabs } from "client/components/Tabs";
+import { EventLog } from "client/views/all-games/components/EventLog";
+import { ProfileView } from "client/views/profile/ProfileView";
 
 export const AppRoutes = (): ReactElement => {
   const { t } = useTranslation();
@@ -41,6 +43,21 @@ export const AppRoutes = (): ReactElement => {
     },
   ];
 
+  const profileTabs = [
+    {
+      headerText: t("profileView.profileTab"),
+      path: "profile",
+      element: <ProfileView />,
+      icon: "user" as IconName,
+    },
+    {
+      headerText: t("profileView.groupTab"),
+      path: "group",
+      element: <GroupView />,
+      icon: "users" as IconName,
+    },
+  ];
+
   if (!appOpen) {
     return (
       <Routes>
@@ -51,6 +68,7 @@ export const AppRoutes = (): ReactElement => {
             <Route path="/games/:gameId" element={<GameDetails />} />
             <Route path="/games" element={<AllGamesView />} />
             <Route path="/results" element={<ResultsView />} />
+            <Route path="/profile" element={<ProfileView />} />
           </>
         )}
         {!loggedIn && <Route path="/login" element={<LoginView />} />}
@@ -68,9 +86,18 @@ export const AppRoutes = (): ReactElement => {
         <Route path="/games/:gameId" element={<GameDetails />} />
         <Route path="/games" element={<AllGamesView />} />
         <Route path="/mygames" element={<MyGamesView />} />
+        <Route path="/notifications" element={<EventLog />} />
         <Route path="/results" element={<ResultsView />} />
-        {sharedConfig.enableGroups && (
-          <Route path="/group" element={<GroupView />} />
+        {!isAdminOrHelp(userGroup) && sharedConfig.enableGroups ? (
+          <Route
+            path="/profile/*"
+            element={<Tabs tabContents={profileTabs} />}
+          />
+        ) : (
+          <Route path="/profile" element={<ProfileView />} />
+        )}
+        {isAdminOrHelp(userGroup) && (
+          <Route path="/profile" element={<ProfileView />} />
         )}
         {isAdmin(userGroup) && <Route path="/admin" element={<AdminView />} />}
         <Route path="/logout" element={<LogoutView />} />

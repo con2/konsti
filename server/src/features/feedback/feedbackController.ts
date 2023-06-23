@@ -23,18 +23,13 @@ export const postFeedback = async (
     return res.sendStatus(401);
   }
 
-  let body;
-  try {
-    body = PostFeedbackRequestSchema.parse(req.body);
-  } catch (error) {
-    logger.error("Error validating postFeedback body: %s", error);
+  const result = PostFeedbackRequestSchema.safeParse(req.body);
+  if (!result.success) {
+    logger.error("Error validating postFeedback body: %s", result.error);
     return res.sendStatus(422);
   }
 
-  const response = await storeFeedback({
-    gameId: body.gameId,
-    feedback: body.feedback,
-    username,
-  });
+  const { gameId, feedback } = result.data;
+  const response = await storeFeedback({ gameId, feedback, username });
   return res.json(response);
 };

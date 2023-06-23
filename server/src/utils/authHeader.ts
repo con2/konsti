@@ -26,3 +26,13 @@ export const getAuthorizedUsername = (
   logger.debug(`Auth: Valid jwt for user group ${requiredUserGroup}`);
   return jwtResponse.username;
 };
+
+export const authorizeUsingApiKey = (apiKey: string | undefined): boolean => {
+  if (process.env.NODE_ENV === "production" && !process.env.API_KEY) {
+    return false;
+  }
+  if (apiKey === process.env.API_KEY) {
+    return true;
+  }
+  return false;
+};

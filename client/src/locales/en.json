@@ -63,7 +63,10 @@
     "programList": "Program List",
     "admin": "Admin",
     "results": "Signup Results",
-    "group": "Group"
+    "group": "Group",
+    "notifications": "Notifications",
+    "profileAndGroup": "Profile & Group",
+    "profile": "Profile"
   },
   "gameInfo": {
     "gameStyle": "Game style",
@@ -142,7 +145,14 @@
     "forAdults": "For adult participants",
     "themeFriendship": "Theme: Friendship",
     "demo": "Demo",
-    "tournament": "Tournament"
+    "tournament": "Tournament",
+    "suitableForAllAges": "For all ages",
+    "aimedAtChildrenUnder13": "Aimed at children under 13",
+    "aimedAtChildrenBetween13-17": "Aimed at children between 13-17",
+    "aimedAtAdultAttendees": "Aimed at adult attendees",
+    "for18PlusOnly": "For 18+ only",
+    "ropeconTheme": "Ropecon theme",
+    "celebratoryYear": "Celebratory year"
   },
   "pageTitle": {
     "login": "Please login",
@@ -212,7 +222,7 @@
       "creatorHasSignedGames": "You already have signed games. Cancel those signups before creating a group."
     },
     "hasEnteredFollowingGames": "You have already signed to following games:",
-    "cancelSignupBeforeJoiningOrCreatingGroup": "Cancel those signups before you can create or join a group.",
+    "cancelSignupBeforeJoiningOrCreatingGroup": "You'll have to cancel those signups before you can create or join a group.",
     "signupDisabledNotCreator": "You are group member. Group creator will lottery sign-up for the whole group.",
     "signupForWholeGroup": "You are group creator. You can sign up to lottery for the whole group.",
     "inGroupSignups": "You are in a group. Following lottery signups are chosen by the group creator.",
@@ -243,16 +253,25 @@
     "helperPasswordManagement": "Change password",
     "userCode": "User code",
     "userCodeOrUsername": "User code or username",
+    "changePassword": "Change password",
     "newPassword": "New password",
     "userNotFound": "User not found",
     "foundUser": "Found user",
-    "changingPasswordError": "Error changing password",
-    "changingPasswordSuccess": "Password changed succesfully"
+    "changingPasswordError": "Error changing password.",
+    "changingPasswordSuccess": "Password changed succesfully."
   },
   "testValues": {
     "buttonText": "Test values",
     "time": "Test time",
     "strategy": "Strategy"
+  },
+  "eventLog": {
+    "title": "Notifications",
+    "sentTimeAgo": "Sent",
+    "noNotifications": "No notifications"
+  },
+  "eventLogActions": {
+    "newAssignment": "You have entered a game in lottery"
   },
   "signup": {
     "alreadyLotterySigned": "This game is priority {{CURRENT_PRIORITY}} on your lottery signups",
@@ -351,7 +370,14 @@
     "recording": "Participation requires listening to a recording that does not have a text version for the hearing impaired",
     "text": "Participation involves reading long texts independently, and the texts are not available as recordings for those with visual impairment",
     "colourblind": "Material used in the game can cause problems for the colourblind",
-    "remainingOnePlace": "Requires staying still for a long time without possibility of breaks or movement"
+    "remainingOnePlace": "Requires staying still for a long time without possibility of breaks or movement",
+    "cannotUseMic": "Cannot use mic",
+    "programmeDurationOver2Hours": "Duration over 2h",
+    "limitedOpportunitiesToMoveAround": "Limited opportunities to move around",
+    "longText": "Requires reading long text",
+    "textNotAvailableAsRecordings": "Text not available as recording",
+    "participationRequiresDexterity": "Requires dexterity",
+    "participationRequiresReactQuickly": "Requires quick reactions"
   },
   "strategies": {
     "direct": "Direct",
@@ -362,11 +388,16 @@
     "apiError": "Error while calling {{method}} {{url}}, reason: {{errorReason}}",
     "networkError": "Network error, connection to server failed",
     "unauthorized": "Unauthorized",
-    "invalidRequest": "Invalid request"
+    "invalidRequest": "Invalid request",
+    "unknown": "Unknown error"
   },
   "aboutView": {
     "general": "What is Konsti?",
     "faq": "FAQ"
+  },
+  "profileView": {
+    "profileTab": "Profile",
+    "groupTab": "Group"
   },
   "gamePopularity": {
     "low": "Need more players",

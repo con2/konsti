@@ -63,7 +63,10 @@
     "programList": "Ohjelmalista",
     "admin": "Ylläpito",
     "results": "Ilmoittautumistulokset",
-    "group": "Ryhmä"
+    "group": "Ryhmä",
+    "notifications": "Ilmoitukset",
+    "profileAndGroup": "Profiili & ryhmä",
+    "profile": "Profiili"
   },
   "gameInfo": {
     "gameStyle": "Pelityyli",
@@ -142,7 +145,14 @@
     "forAdults": "Suunnattu täysi-ikäisille",
     "themeFriendship": "Teema: Ystävyys",
     "demo": "Demo",
-    "tournament": "Turnaus"
+    "tournament": "Turnaus",
+    "suitableForAllAges": "Kaiken ikäisille",
+    "aimedAtChildrenUnder13": "Suunnattu alle 13-vuotiaille",
+    "aimedAtChildrenBetween13-17": "Suunnattu 13-17-vuotiaille",
+    "aimedAtAdultAttendees": "Suunnattu aikuisille",
+    "for18PlusOnly": "Vain 18+ ikäisille",
+    "ropeconTheme": "Ropeconin teema",
+    "celebratoryYear": "Juhlavuosi"
   },
   "pageTitle": {
     "login": "Kirjaudu sisään",
@@ -212,7 +222,7 @@
       "creatorHasSignedGames": "Sinulla on jo ilmoittautumisia peleihin. Poista ilmoittautumiset ennen kuin voit luoda ryhmän."
     },
     "hasEnteredFollowingGames": "Olet jo päässyt seuraaviin peleihin:",
-    "cancelSignupBeforeJoiningOrCreatingGroup": "Peruuta ilmoittaumisesi yllä oleviin peleihin ennen kuin voit luoda ryhmän tai liittyä ryhmään.",
+    "cancelSignupBeforeJoiningOrCreatingGroup": "Sinun täytyy perua ilmoittaumisesi yllä oleviin peleihin ennen kuin voit luoda ryhmän tai liittyä ryhmään.",
     "signupDisabledNotCreator": "Olet ryhmän jäsen. Ryhmän perustaja ilmoittautuu arvontaan ryhmän jäsenten puolesta.",
     "signupForWholeGroup": "Olet ryhmän perustaja. Voit ilmoittautua arvontaan koko ryhmän puolesta.",
     "inGroupSignups": "Olet ryhmän jäsen. Seuraavat arvonta-ilmoittautumiset ovat ryhmän perustajan valitsemia.",
@@ -243,16 +253,25 @@
     "helperPasswordManagement": "Vaihda salasana",
     "userCode": "Käyttäjän koodi",
     "userCodeOrUsername": "Käyttäjän koodi tai käyttäjänimi",
+    "changePassword": "Vaihda salasana",
     "newPassword": "Uusi salasana",
     "userNotFound": "Käyttäjää ei löytynyt",
     "foundUser": "Löytyi käyttäjä",
-    "changingPasswordError": "Virhe salasanaa vaihtaessa",
-    "changingPasswordSuccess": "Salasana vaihdettu onnistuneesti"
+    "changingPasswordError": "Virhe salasanaa vaihtaessa.",
+    "changingPasswordSuccess": "Salasanasi on nyt vaihdettu."
   },
   "testValues": {
     "buttonText": "Testiarvot",
     "time": "Testiaika",
     "strategy": "Strategia"
+  },
+  "eventLog": {
+    "title": "Ilmoitukset",
+    "sentTimeAgo": "Lähetetty",
+    "noNotifications": "Ei ilmoituksia"
+  },
+  "eventLogActions": {
+    "newAssignment": "Olet päässyt arvonnassa peliin"
   },
   "signup": {
     "alreadyLotterySigned": "Peli on arvontavaihtoehdoissa sijalla {{CURRENT_PRIORITY}}",
@@ -351,7 +370,14 @@
     "recording": "Osallistuminen edellyttää sellaisen äänitteen kuuntelemista, josta ei ole tekstiversiota kuulorajoitteisille",
     "text": "Osallistuminen vaatii pitkien tekstien itsenäistä lukemista, eikä tekstejä ole mahdollista saada äänitteinä näkörajoitteisille",
     "colourblind": "Ohjelmanumerossa käytettävät materiaalit voivat tuottaa haasteita värisokeille",
-    "remainingOnePlace": "Vaatii pitkää paikallaan oloa ilman mahdollisuutta taukoihin ja liikkumiseen"
+    "remainingOnePlace": "Vaatii pitkää paikallaan oloa ilman mahdollisuutta taukoihin ja liikkumiseen",
+    "cannotUseMic": "Ei voi käyttää mikkiä",
+    "programmeDurationOver2Hours": "Kesto yli 2h",
+    "limitedOpportunitiesToMoveAround": "Rajoitettu mahdollisuus liikkua",
+    "longText": "Pitkän tekstin lukeminen",
+    "textNotAvailableAsRecordings": "Teksti ei saatavilla äänityksenä",
+    "participationRequiresDexterity": "Vaatii ketteryyttä",
+    "participationRequiresReactQuickly": "Vaatii nopeaa reagointia"
   },
   "strategies": {
     "direct": "Suora",
@@ -362,11 +388,16 @@
     "apiError": "Virhe kutsuessa {{method}} {{url}}: {{errorReason}}",
     "networkError": "Verkkovirhe, yhteys palvelimeen epäonnistui",
     "unauthorized": "Ei käyttöoikeutta",
-    "invalidRequest": "Virheellinen kutsu"
+    "invalidRequest": "Virheellinen kutsu",
+    "unknown": "Tuntematon virhe"
   },
   "aboutView": {
     "general": "Mikä Konsti?",
     "faq": "FAQ"
+  },
+  "profileView": {
+    "profileTab": "Profiili",
+    "groupTab": "Ryhmä"
   },
   "gamePopularity": {
     "low": "Tarvitaan lisää pelaajia",

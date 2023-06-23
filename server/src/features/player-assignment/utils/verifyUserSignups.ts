@@ -50,7 +50,10 @@ export const verifyUserSignups = async (): Promise<
       );
 
       if (!matchingUser) {
-        logger.error(`No matcing user: ${userSignup.username}`);
+        logger.error(
+          "%s",
+          new Error(`No matcing user: ${userSignup.username}`)
+        );
         return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
       }
 
@@ -69,7 +72,10 @@ export const verifyUserSignups = async (): Promise<
 
       if (!matchingCreatorSignedGame) {
         logger.error(
-          `No matching signed game found from group creator: ${userSignup.username} - ${game.title}`
+          "%s",
+          new Error(
+            `No matching signed game found from group creator: ${userSignup.username} - ${game.title}`
+          )
         );
         return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
       }
@@ -91,10 +97,14 @@ const getGroupCreator = (
 
     if (groupCreator) {
       return makeSuccessResult(groupCreator);
-    } else {
-      logger.error(`Group creator not found for user ${user.username}`);
-      return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
+
+    logger.error(
+      "%s",
+      new Error(`Group creator not found for user ${user.username}`)
+    );
+
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 
   // User is group creator

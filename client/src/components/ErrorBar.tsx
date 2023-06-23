@@ -6,9 +6,12 @@ import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { removeError } from "client/views/admin/adminSlice";
 import { HEADER_HEIGHT } from "client/components/Header";
 
-export enum ErrorMessageType {
+export enum BackendErrorType {
   NETWORK_ERROR = "backendError.networkError",
   API_ERROR = "backendError.apiError",
+  UNAUTHORIZED = "backendError.unauthorized",
+  INVALID_REQUEST = "backendError.invalidRequest",
+  UNKNOWN = "backendError.unknown",
 }
 
 export const ErrorBar = (): ReactElement | null => {

@@ -51,7 +51,7 @@ export const saveFavorite = async (
       `MongoDB: Favorite data stored for user ${favoriteData.username}`
     );
     if (!response) {
-      logger.error(`MongoDB: User not found`);
+      logger.error("%s", new Error(`MongoDB: User ${username} not found`));
       return makeErrorResult(MongoDbError.USER_NOT_FOUND);
     }
     return makeSuccessResult(response.favoritedGames);

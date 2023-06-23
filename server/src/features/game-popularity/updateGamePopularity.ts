@@ -29,6 +29,7 @@ export const updateGamePopularity = async (): Promise<
 
   const users = unwrapResult(usersResult);
 
+  // TODO: Only include games with lottery signup open
   const gamesResult = await findGames();
 
   if (isErrorResult(gamesResult)) {

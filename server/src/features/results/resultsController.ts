@@ -2,7 +2,10 @@ import { Request, Response } from "express";
 import { storeAssignment } from "server/features/player-assignment/assignmentController";
 import { fetchResults } from "server/features/results/resultsService";
 import { UserGroup } from "shared/typings/models/user";
-import { getAuthorizedUsername } from "server/utils/authHeader";
+import {
+  authorizeUsingApiKey,
+  getAuthorizedUsername,
+} from "server/utils/authHeader";
 import { logger } from "server/utils/logger";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
@@ -13,6 +16,7 @@ import {
   GetResultsRequest,
   GetResultsRequestSchema,
 } from "shared/typings/api/results";
+import { autoAssignPlayers } from "server/utils/cron";
 
 export const getResults = async (
   req: Request<{}, {}, GetResultsRequest>,
@@ -20,15 +24,13 @@ export const getResults = async (
 ): Promise<Response> => {
   logger.info(`API call: GET ${ApiEndpoint.RESULTS}`);
 
-  let body;
-  try {
-    body = GetResultsRequestSchema.parse(req.query);
-  } catch (error) {
-    logger.error("Error validating getResults body: %s", error);
+  const result = GetResultsRequestSchema.safeParse(req.query);
+  if (!result.success) {
+    logger.error("Error validating getResults body: %s", result.error);
     return res.sendStatus(422);
   }
 
-  const { startTime } = body;
+  const { startTime } = result.data;
 
   if (!startTime) {
     return res.sendStatus(422);
@@ -52,15 +54,33 @@ export const postAssignment = async (
     return res.sendStatus(401);
   }
 
-  let body;
-  try {
-    body = PostPlayerAssignmentRequestSchema.parse(req.body);
-  } catch (error) {
-    logger.error("Parsing postAssignment() request body failed: %s", error);
+  const result = PostPlayerAssignmentRequestSchema.safeParse(req.body);
+  if (!result.success) {
+    logger.error(
+      "Parsing postAssignment() request body failed: %s",
+      result.error
+    );
     return res.sendStatus(422);
   }
 
-  const startingTime = body.startingTime;
-  const response = await storeAssignment(startingTime);
+  const response = await storeAssignment(result.data.startingTime);
   return res.json(response);
+};
+
+export const postAutoAssignment = (
+  req: Request<{}, {}, PostPlayerAssignmentRequest>,
+  res: Response
+): Response => {
+  logger.info(`API call: POST ${ApiEndpoint.ASSIGNMENT_CRON}`);
+
+  const validAuthorization = authorizeUsingApiKey(req.headers.authorization);
+  if (!validAuthorization) {
+    return res.sendStatus(401);
+  }
+
+  autoAssignPlayers().catch((error) => {
+    logger.error("autoAssignPlayers failed: %s", error);
+  });
+
+  return res.sendStatus(200);
 };

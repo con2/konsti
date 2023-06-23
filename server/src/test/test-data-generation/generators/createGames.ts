@@ -3,7 +3,6 @@ import dayjs from "dayjs";
 import { sampleSize } from "lodash";
 import { logger } from "server/utils/logger";
 import { kompassiGameMapper } from "server/utils/kompassiGameMapper";
-import { Game } from "shared/typings/models/game";
 import { saveGames } from "server/features/game/gameRepository";
 import { sharedConfig } from "shared/config/sharedConfig";
 import {
@@ -55,7 +54,7 @@ const getMaxPlayers = (programType: KompassiProgramType): number => {
 
 export const createGames = async (
   gameCount: number
-): Promise<Result<Game[], MongoDbError>> => {
+): Promise<Result<void, MongoDbError>> => {
   const kompassiGames: KompassiGame[] = [];
 
   const programTypes = [
@@ -84,7 +83,6 @@ export const createGames = async (
           length,
           start_time: dayjs(startTime).format(),
           end_time: dayjs(startTime).add(length, "minutes").format(),
-          language: "fi",
           rpg_system:
             programType === KompassiProgramType.TABLETOP_RPG
               ? "Test gamesystem"
@@ -97,7 +95,6 @@ export const createGames = async (
           styles: sampleSize(Object.values(KompassiGameStyle), 2),
           short_blurb: faker.lorem.sentence(),
           revolving_door: Math.random() < 0.5,
-          content_warnings: "Content warning",
           other_author: "Other author",
           ropecon2018_characters: 6,
           ropecon2021_accessibility_loud_sounds: Math.random() < 0.5,
@@ -113,12 +110,37 @@ export const createGames = async (
           ropecon2021_accessibility_colourblind: Math.random() < 0.5,
           ropecon2022_accessibility_remaining_one_place: Math.random() < 0.5,
           ropecon2022_content_warnings: "Content warning",
-          ropecon2021_accessibility_inaccessibility: "Other inaccessibility",
           type_of_game_program:
             programType === KompassiProgramType.BOARD_GAME
               ? TOURNAMENT_EVENT_TYPE
               : "",
-          entry_fee: workshopProgramTypes.includes(programType) ? 5 : 0,
+          ropecon2023_accessibility_cant_use_mic: Math.random() < 0.5,
+          ropecon2023_accessibility_programme_duration_over_2_hours:
+            Math.random() < 0.5,
+          ropecon2023_accessibility_limited_opportunities_to_move_around:
+            Math.random() < 0.5,
+          ropecon2023_accessibility_long_texts: Math.random() < 0.5,
+          ropecon2023_accessibility_texts_not_available_as_recordings:
+            Math.random() < 0.5,
+          ropecon2023_accessibility_participation_requires_dexterity:
+            Math.random() < 0.5,
+          ropecon2023_accessibility_participation_requires_react_quickly:
+            Math.random() < 0.5,
+          ropecon2023_other_accessibility_information:
+            "Other accessibility information",
+          ropecon2023_signuplist: "konsti",
+          ropecon2023_workshop_fee: workshopProgramTypes.includes(programType)
+            ? 5
+            : 0,
+          ropecon2023_language: "finnish_or_english",
+          ropecon2023_suitable_for_all_ages: Math.random() < 0.5,
+          ropecon2023_aimed_at_children_under_13: Math.random() < 0.5,
+          ropecon2023_aimed_at_children_between_13_17: Math.random() < 0.5,
+          ropecon2023_aimed_at_adult_attendees: Math.random() < 0.5,
+          ropecon2023_for_18_plus_only: Math.random() < 0.5,
+          ropecon2023_beginner_friendly: Math.random() < 0.5,
+          ropecon_theme: Math.random() < 0.5,
+          ropecon2023_celebratory_year: Math.random() < 0.5,
         };
 
         logger.info(`Stored game ${kompassiGameData.title}`);

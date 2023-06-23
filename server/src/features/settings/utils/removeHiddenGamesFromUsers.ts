@@ -1,11 +1,12 @@
 import { delSignupsByGameIds } from "server/features/signup/signupRepository";
 import {
   findUsers,
-  updateUserByUsername,
+  updateUsersByUsername,
 } from "server/features/user/userRepository";
 import { logger } from "server/utils/logger";
 import { MongoDbError } from "shared/typings/api/errors";
 import { Game } from "shared/typings/models/game";
+import { User } from "shared/typings/models/user";
 import {
   Result,
   isErrorResult,
@@ -32,7 +33,7 @@ export const removeHiddenGamesFromUsers = async (
 
   const users = unwrapResult(usersResult);
 
-  const userPromises = users.map(async (user) => {
+  const usersToUpdate: User[] = users.flatMap((user) => {
     const signedGames = user.signedGames.filter((signedGame) => {
       const hiddenFound = hiddenGames.find((hiddenGame) => {
         return hiddenGame.gameId === signedGame.gameDetails.gameId;
@@ -55,23 +56,18 @@ export const removeHiddenGamesFromUsers = async (
       user.signedGames.length !== signedGames.length ||
       user.favoritedGames.length !== favoritedGames.length
     ) {
-      const updateUserByUsernameResult = await updateUserByUsername({
+      return {
         ...user,
         signedGames,
         favoritedGames,
-      });
-      if (isErrorResult(updateUserByUsernameResult)) {
-        return updateUserByUsernameResult;
-      }
+      };
     }
-
-    return makeSuccessResult(undefined);
+    return [];
   });
 
-  const results = await Promise.all(userPromises);
-  const someUpdateFailed = results.some((result) => isErrorResult(result));
-  if (someUpdateFailed) {
-    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+  const updateUsersResult = await updateUsersByUsername(usersToUpdate);
+  if (isErrorResult(updateUsersResult)) {
+    return updateUsersResult;
   }
 
   const hiddenGameIds = hiddenGames.map((hiddenGame) => hiddenGame.gameId);

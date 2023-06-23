@@ -19,7 +19,10 @@ export const formatResults = (
       const firstMember = _.first(playerGroup);
 
       if (!firstMember) {
-        logger.error("Padg assign: error getting first member");
+        logger.error(
+          "%s",
+          new Error("Padg assign: error getting first member")
+        );
         return makeErrorResult(AssignmentError.UNKNOWN_ERROR);
       }
 

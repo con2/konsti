@@ -28,20 +28,41 @@ export const LoggedInUserNavigation = (props: {
         </RouterLink>
       )}
 
+      {isUser(userGroup) && (
+        <RouterLink onClick={props.onSelect} to="/notifications">
+          {t("pages.notifications")}
+        </RouterLink>
+      )}
+
       <RouterLink onClick={props.onSelect} to="/results">
         {t("pages.results")}
       </RouterLink>
 
       {isUser(userGroup) && sharedConfig.enableGroups && (
-        <RouterLink onClick={props.onSelect} to="/group">
-          {t("pages.group")}
+        <RouterLink onClick={props.onSelect} to="/profile">
+          {t("pages.profileAndGroup")}
+        </RouterLink>
+      )}
+
+      {isUser(userGroup) && !sharedConfig.enableGroups && (
+        <RouterLink onClick={props.onSelect} to="/profile">
+          {t("pages.profile")}
         </RouterLink>
       )}
 
       {isAdminOrHelp(userGroup) && (
-        <RouterLink onClick={props.onSelect} to="/help">
-          {t("button.helper")}
-        </RouterLink>
+        <>
+          <RouterLink onClick={props.onSelect} to="/help">
+            {t("button.helper")}
+          </RouterLink>
+          <RouterLink
+            onClick={props.onSelect}
+            to="/profile"
+            data-testid="profile-page-link"
+          >
+            {t("pages.profile")}
+          </RouterLink>
+        </>
       )}
 
       {isAdmin(userGroup) && (
