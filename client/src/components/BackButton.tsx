@@ -9,6 +9,7 @@ export const BackButton = (): ReactElement => {
   const { t } = useTranslation();
 
   const goBack = (): void => {
+    // Navigate to front page if no previous page exists
     window.history.state?.idx > 0 ? navigate(-1) : navigate("/");
   };
 
