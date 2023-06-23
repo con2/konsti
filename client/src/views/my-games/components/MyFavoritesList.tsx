@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { getStartTimes } from "client/utils/getStartTimes";
 import { GamesByStartTimes } from "./GamesByStartTimes";
 import { Game } from "shared/typings/models/game";
+import { RaisedCard } from "client/components/RaisedCard";
 
 interface Props {
   favoritedGames: readonly Game[];
@@ -21,24 +22,20 @@ export const MyFavoritesList = ({ favoritedGames }: Props): ReactElement => {
   const startTimes = getStartTimes(favoritedGames);
 
   return (
-    <div data-testid="favorited-games-list">
-      <h3>{t("favoritedProgramItems")}</h3>
-      <MyFavoritesGames>
+    <RaisedCard data-testid="favorited-games-list">
+      <Header>{t("favoritedProgramItems")}</Header>
+      <div>
         {favoritedGames.length === 0 && (
           <span>{t("noFavoritedProgramItems")}</span>
         )}
         {favoritedGames.length !== 0 && (
           <GamesByStartTimes games={sortedGames} startTimes={startTimes} />
         )}
-      </MyFavoritesGames>
-    </div>
+      </div>
+    </RaisedCard>
   );
 };
 
-const MyFavoritesGames = styled.div`
-  margin-left: 30px;
-
-  @media (max-width: ${(props) => props.theme.breakpointPhone}) {
-    margin-left: 10px;
-  }
+const Header = styled.h3`
+  margin: 0 0 12px 0;
 `;

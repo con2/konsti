@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { getStartTimes } from "client/utils/getStartTimes";
 import { SignupsByStartTimes } from "./SignupsByStartTimes";
 import { SelectedGame } from "shared/typings/models/user";
+import { RaisedCard } from "client/components/RaisedCard";
 
 interface Props {
   signedGames: readonly SelectedGame[];
@@ -27,32 +28,23 @@ export const MySignupsList = ({
   );
 
   return (
-    <div>
-      <h3>{t("lotterySignedGames")}</h3>
+    <RaisedCard>
+      <Header>{t("lotterySignedGames")}</Header>
 
       {!isGroupCreator && <InfoText>{t("group.inGroupSignups")}</InfoText>}
 
-      <MySignupsGames>
-        {signedGames.length === 0 && <span>{t("noSignedGames")}</span>}
-        {signedGames.length !== 0 && (
-          <SignupsByStartTimes
-            signups={sortedSignups}
-            startTimes={startTimes}
-          />
-        )}
-      </MySignupsGames>
-    </div>
+      {signedGames.length === 0 && <span>{t("noSignedGames")}</span>}
+      {signedGames.length !== 0 && (
+        <SignupsByStartTimes signups={sortedSignups} startTimes={startTimes} />
+      )}
+    </RaisedCard>
   );
 };
 
-const MySignupsGames = styled.div`
-  margin-left: 30px;
-
-  @media (max-width: ${(props) => props.theme.breakpointPhone}) {
-    margin-left: 10px;
-  }
-`;
-
 const InfoText = styled.p`
   font-weight: 600;
+`;
+
+const Header = styled.h3`
+  margin: 0 0 12px 0;
 `;

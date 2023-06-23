@@ -21,6 +21,7 @@ import {
   selectSignedGames,
 } from "client/views/my-games/myGamesSlice";
 import { RadioButton } from "client/components/RadioButton";
+import { RaisedCard } from "client/components/RaisedCard";
 
 export const MyGamesView = (): ReactElement => {
   const { t } = useTranslation();
@@ -54,20 +55,25 @@ export const MyGamesView = (): ReactElement => {
 
   return (
     <MyGamesViewContainer>
-      <RadioButtonGroup>
-        <RadioButton
-          checked={!showAllGames}
-          id={"upcoming"}
-          label={t("lastStartedAndUpcoming")}
-          onChange={() => setShowAllGames(false)}
-        />
-        <RadioButton
-          checked={showAllGames}
-          id={"all"}
-          label={t("all")}
-          onChange={() => setShowAllGames(true)}
-        />
-      </RadioButtonGroup>
+      <RaisedCard>
+        <StyledLabel htmlFor="startingTimeSelection">
+          {t("startingTime")}
+        </StyledLabel>
+        <RadioButtonGroup>
+          <RadioButton
+            checked={!showAllGames}
+            id={"upcoming"}
+            label={t("lastStartedAndUpcoming")}
+            onChange={() => setShowAllGames(false)}
+          />
+          <RadioButton
+            checked={showAllGames}
+            id={"all"}
+            label={t("all")}
+            onChange={() => setShowAllGames(true)}
+          />
+        </RadioButtonGroup>
+      </RaisedCard>
 
       <MyFavoritesList
         favoritedGames={
@@ -121,4 +127,9 @@ const RadioButtonGroup = styled.fieldset`
   padding-left: 0;
   display: flex;
   flex-direction: column;
+`;
+
+const StyledLabel = styled.label`
+  padding: 0 0 2px 4px;
+  font-size: ${(props) => props.theme.fontSizeSmall};
 `;
