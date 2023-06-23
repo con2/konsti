@@ -10,7 +10,6 @@ import {
   submitDeleteEnteredGame,
 } from "client/views/my-games/myGamesThunks";
 import { CancelSignupForm } from "client/views/all-games/components/CancelSignupForm";
-import { Button, ButtonStyle } from "client/components/Button";
 import { ErrorMessage } from "client/components/ErrorMessage";
 import { loadGames } from "client/utils/loadData";
 import { sharedConfig } from "shared/config/sharedConfig";
@@ -70,7 +69,7 @@ export const EnteredGameRow = ({
             {signup.gameDetails.title}
           </Link>
           {sharedConfig.signupOpen && !cancelSignupFormOpen && (
-            <IconButton
+            <StyledIconButton
               onClick={() => setCancelSignupFormOpen(true)}
               icon="calendar-xmark"
             />
@@ -131,4 +130,8 @@ const SignupQuestionPlacement = styled.div`
 
 const CancelSignupFormContainer = styled.div`
   max-width: 240px;
+`;
+
+const StyledIconButton = styled(IconButton)`
+  margin-left: 4px;
 `;

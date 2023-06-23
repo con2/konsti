@@ -201,7 +201,7 @@
   "closingMessage": "Konsti is closed and will open closer to the next event",
   "details": "details",
   "gameLimitWarning": "Only three selected games allowed",
-  "noLotterySignupResult": "You didn't get into a game during lottery",
+  "noLotterySignupResult": "Unfortunately, you didn't get a spot in a game in the lottery.",
   "invalidProgramItemId": "Program item not found, invalid ID",
   "feedbackTitle": "Feedback",
   "feedbackInstruction": "Did you enjoy the {{PROGRAM_TYPE}}? Send feedback to the organizer! They will receive it after the event.",

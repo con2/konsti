@@ -14,7 +14,6 @@ import { loadUser, loadGames, loadGroupMembers } from "client/utils/loadData";
 import { getIsGroupCreator } from "client/views/group/groupUtils";
 import { useAppSelector } from "client/utils/hooks";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
-import { ProgramType } from "shared/typings/models/game";
 import {
   selectEnteredGames,
   selectFavoritedGames,
@@ -22,6 +21,7 @@ import {
 } from "client/views/my-games/myGamesSlice";
 import { RadioButton } from "client/components/RadioButton";
 import { RaisedCard } from "client/components/RaisedCard";
+import { SessionStorageValue } from "client/utils/localStorage";
 
 export const MyGamesView = (): ReactElement => {
   const { t } = useTranslation();
@@ -45,6 +45,13 @@ export const MyGamesView = (): ReactElement => {
   const isGroupCreator = getIsGroupCreator(groupCode, serial);
 
   useEffect(() => {
+    setShowAllGames(
+      sessionStorage.getItem(SessionStorageValue.MY_GAMES_SHOW_ALL_GAMES) ===
+        "true" || false
+    );
+  }, []);
+
+  useEffect(() => {
     const fetchData = async (): Promise<void> => {
       await loadGames();
       await loadUser();
@@ -64,13 +71,25 @@ export const MyGamesView = (): ReactElement => {
             checked={!showAllGames}
             id={"upcoming"}
             label={t("lastStartedAndUpcoming")}
-            onChange={() => setShowAllGames(false)}
+            onChange={() => {
+              setShowAllGames(false);
+              sessionStorage.setItem(
+                SessionStorageValue.MY_GAMES_SHOW_ALL_GAMES,
+                "false"
+              );
+            }}
           />
           <RadioButton
             checked={showAllGames}
             id={"all"}
             label={t("all")}
-            onChange={() => setShowAllGames(true)}
+            onChange={() => {
+              setShowAllGames(true);
+              sessionStorage.setItem(
+                SessionStorageValue.MY_GAMES_SHOW_ALL_GAMES,
+                "true"
+              );
+            }}
           />
         </RadioButtonGroup>
       </RaisedCard>
@@ -80,20 +99,19 @@ export const MyGamesView = (): ReactElement => {
           showAllGames ? favoritedGames : getUpcomingFavorites(favoritedGames)
         }
       />
-      {signupStrategy !== SignupStrategy.DIRECT &&
-        activeProgramType === ProgramType.TABLETOP_RPG && (
-          <MySignupsList
-            signedGames={getSignedGames({
-              signedGames,
-              groupCode,
-              serial,
-              getAllGames: showAllGames,
-              groupMembers,
-              activeProgramType,
-            })}
-            isGroupCreator={isGroupCreator}
-          />
-        )}
+      {signupStrategy !== SignupStrategy.DIRECT && (
+        <MySignupsList
+          signedGames={getSignedGames({
+            signedGames,
+            groupCode,
+            serial,
+            getAllGames: showAllGames,
+            groupMembers,
+            activeProgramType,
+          })}
+          isGroupCreator={isGroupCreator}
+        />
+      )}
       <MyEnteredList
         enteredGames={
           showAllGames ? enteredGames : getUpcomingEnteredGames(enteredGames)

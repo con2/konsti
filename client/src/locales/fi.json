@@ -201,7 +201,7 @@
   "closingMessage": "Konsti on suljettu ja avautuu lähempänä seuraavaa tapahtumaa",
   "details": "lisätietoja",
   "gameLimitWarning": "Voit valita enintään kolme peliä",
-  "noLotterySignupResult": "Et mahtunut peliin arvonnassa",
+  "noLotterySignupResult": "Valitettavasti et mahtunut peliin arvonnassa.",
   "invalidProgramItemId": "Ohjelmanumeroa ei löydy, viallinen tunniste",
   "feedbackTitle": "Palaute",
   "feedbackInstruction": "Piditkö {{PROGRAM_TYPE}}? Lähetä palautetta järjestäjälle! Palautteet toimitetaan tapahtuman jälkeen.",
