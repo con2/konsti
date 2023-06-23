@@ -60,7 +60,8 @@
   },
   "pages": {
     "myProgram": "My Program",
-    "programList": "Program List",
+    "programList": "All Program",
+    "program": "Ohjelma",
     "admin": "Admin",
     "results": "Signup Results",
     "group": "Group",

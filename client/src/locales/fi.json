@@ -60,7 +60,8 @@
   },
   "pages": {
     "myProgram": "Oma ohjelmani",
-    "programList": "Ohjelmalista",
+    "programList": "Kaikki ohjelma",
+    "program": "Ohjelma",
     "admin": "Ylläpito",
     "results": "Ilmoittautumistulokset",
     "group": "Ryhmä",

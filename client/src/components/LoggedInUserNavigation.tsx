@@ -17,19 +17,9 @@ export const LoggedInUserNavigation = (props: {
 
   return (
     <StyledRoutes>
-      <RouterLink onClick={props.onSelect} to="/games">
-        {t("pages.programList")}
+      <RouterLink onClick={props.onSelect} to="/program">
+        {t("pages.program")}
       </RouterLink>
-
-      {isUser(userGroup) && (
-        <RouterLink
-          onClick={props.onSelect}
-          to="/mygames"
-          data-testid="my-games-page-link"
-        >
-          {t("pages.myProgram")}
-        </RouterLink>
-      )}
 
       {isUser(userGroup) && (
         <RouterLink onClick={props.onSelect} to="/notifications">
