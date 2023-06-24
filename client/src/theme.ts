@@ -97,6 +97,7 @@ export const theme = {
   textTag: black,
 
   iconFavorited: mainColor.primary,
+  iconDefault: mainColor.primary,
 
   inputBorderFocus: mainColor.primary,
   inputTextPlaceholder: gray.light,
