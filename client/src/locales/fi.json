@@ -1,6 +1,6 @@
 {
   "appTitle": "Konsti",
-  "appDescription": "{{CONVENTION_NAME}} {{CONVENTION_YEAR}} ilmoittautuminen",
+  "appDescription": "Konsti – {{CONVENTION_NAME}} {{CONVENTION_YEAR}}",
   "announcement": "Ilmoittautuminen on päättynyt. Tulokset julkaistaan piakkoin.",
   "button": {
     "logout": "Kirjaudu ulos",
