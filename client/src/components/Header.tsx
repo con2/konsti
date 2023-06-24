@@ -79,7 +79,7 @@ const StyledIcon = styled(FontAwesomeIcon)`
   font-size: ${(props) => props.theme.fontSizeLarge};
   vertical-align: middle;
   margin-bottom: 1px;
-  color: ${(props) => props.theme.textMain};
+  color: ${(props) => props.theme.iconDefault};
 `;
 
 const HeaderRightSideContainer = styled.div`
