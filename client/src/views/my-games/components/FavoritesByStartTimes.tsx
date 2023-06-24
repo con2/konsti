@@ -56,7 +56,7 @@ export const FavoritesByStartTimes = ({
                         {game.title}
                       </Link>
                       <StyledFavoriteButton
-                        icon="heart-circle-minus"
+                        icon="heart-circle-xmark"
                         onClick={async () => {
                           await removeFavorite(game);
                         }}

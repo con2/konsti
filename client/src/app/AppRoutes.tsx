@@ -80,10 +80,7 @@ export const AppRoutes = (): ReactElement => {
         {isAdminOrHelp(userGroup) && (
           <>
             <Route path="/help" element={<HelperView />} />
-            <Route
-              path="/programitems/:programItemId"
-              element={<GameDetails />}
-            />
+            <Route path="/games/:gameId" element={<GameDetails />} />
             <Route
               path="/program"
               element={<Navigate replace to="/program/list" />}
@@ -105,7 +102,7 @@ export const AppRoutes = (): ReactElement => {
   if (loggedIn) {
     return (
       <Routes>
-        <Route path="/programitems/:programItemId" element={<GameDetails />} />
+        <Route path="/games/:gameId" element={<GameDetails />} />
         {isAdminOrHelp(userGroup) ? (
           <Route path="/program/list" element={<AllGamesView />} />
         ) : (
@@ -149,7 +146,7 @@ export const AppRoutes = (): ReactElement => {
     <Routes>
       <Route path="/login" element={<LoginView />} />
       <Route path="/registration" element={<RegistrationView />} />
-      <Route path="/programitems/:programItemId" element={<GameDetails />} />
+      <Route path="/games/:gameId" element={<GameDetails />} />
       <Route
         path="/program"
         element={<Navigate replace to="/program/list" />}
