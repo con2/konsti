@@ -34,12 +34,14 @@ export const AppRoutes = (): ReactElement => {
       path: "myprogram",
       element: <MyGamesView />,
       icon: "dice" as IconName,
+      "data-testid": "my-program-list",
     },
     {
       headerText: t("pages.programList"),
       path: "list",
       element: <AllGamesView />,
       icon: "calendar-days" as IconName,
+      "data-testid": "program-list",
     },
   ];
 

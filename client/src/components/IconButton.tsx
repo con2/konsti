@@ -32,7 +32,7 @@ export const IconButton = ({
   );
 };
 
-const StyledButton = styled.button<Props>`
+const StyledButton = styled.button`
   border-radius: 100px;
   border: none;
   cursor: pointer;

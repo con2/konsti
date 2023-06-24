@@ -293,7 +293,7 @@
     "signupCount": "{{PLAYERS}} / {{MAX_ATTENDANCE}} ilmoittautunutta",
     "attendeesNeeded": "Tarvitaan vielä {{COUNT}} {{ATTENDEE_TYPE}}!",
     "programItemFull": "{{PROGRAM_TYPE}} on täynnä",
-    "confirmCancellation": "Vahvista peruutus",
+    "confirmCancellation": "Peruuta ilmoittautuminen",
     "staySignedUp": "Pysy ilmoittautuneena",
     "expectedDuration": "Kesto {{EXPECTED_DURATION}}",
     "signupOpens": "Ilmoittautuminen alkaa",
