@@ -50,7 +50,7 @@ export const saveGames = async (
   }
 
   const bulkOps = games.map((game) => {
-    const newGame: Game = {
+    const newGame: Omit<Game, "popularity"> = {
       gameId: game.gameId,
       title: game.title,
       description: game.description,
@@ -75,7 +75,6 @@ export const saveGames = async (
       otherInaccessibility: game.otherInaccessibility,
       entryFee: game.entryFee,
       signupType: game.signupType,
-      popularity: 0,
     };
 
     return {
