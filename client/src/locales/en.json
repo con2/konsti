@@ -435,7 +435,8 @@
     "openAttendeeList": "Open {{ATTENDEE_TYPE}} list",
     "closeAttendeeList": "Close {{ATTENDEE_TYPE}} list",
     "showPassword": "Show password",
-    "hidePassword": "Hide password"
+    "hidePassword": "Hide password",
+    "newNotifications": "New notifications"
   },
   "admin": {
     "sentryTesting": "Sentry testing",

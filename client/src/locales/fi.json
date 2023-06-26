@@ -435,7 +435,8 @@
     "openAttendeeList": "Avaa {{ATTENDEE_TYPE}}lista",
     "closeAttendeeList": "Sulje {{ATTENDEE_TYPE}}lista",
     "showPassword": "Näytä salasana",
-    "hidePassword": "Piilota salasana"
+    "hidePassword": "Piilota salasana",
+    "newNotifications": "Uusia ilmoituksia"
   },
   "admin": {
     "sentryTesting": "Sentryn testaus",
