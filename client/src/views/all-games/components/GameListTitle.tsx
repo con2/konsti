@@ -100,7 +100,7 @@ const GameListTitleContainer = styled.div<{ isVisible: boolean }>`
   margin: 20px 0 20px 0;
   padding: 8px;
   background: #fafafa;
-  color: #3d3d3d;
+  color: rgb(61, 61, 61);
   border-radius: 4px;
   position: sticky;
   top: 0;
