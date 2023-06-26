@@ -29,9 +29,9 @@ interface SharedConfig {
 }
 
 // Convention days
-const friday = "2022-07-29";
-const saturday = "2022-07-30";
-const sunday = "2022-07-31";
+const friday = "2023-07-28";
+const saturday = "2023-07-29";
+const sunday = "2023-07-30";
 
 export const sharedConfig: SharedConfig = {
   // Convention settings
