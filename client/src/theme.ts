@@ -63,6 +63,7 @@ export const theme = {
   backgroundTag: addOpacity(mainColor.primary, "0.3"),
   backgroundWarning: red.lighter,
   backgroundDisabled: gray.light,
+  backgroundNotificationBanner: mainColor.lighter,
 
   borderActive: mainColor.primary,
   borderDisabled: mainColor.lighter,
@@ -93,6 +94,7 @@ export const theme = {
   textInactiveTab: gray.darker,
   tabBorder: gray.light,
   textMain: black,
+  textMainLink: black,
   textSuccess: mainColor.dark,
   textTag: black,
 
