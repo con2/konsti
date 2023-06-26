@@ -46,6 +46,7 @@ import {
   KompassiTag,
 } from "shared/typings/models/kompassiGame";
 import { GameStyle, Genre, Tag } from "shared/typings/models/game";
+import { logger } from "server/utils/logger";
 
 let server: Server;
 let mongoServer: MongoMemoryServer;
@@ -356,5 +357,45 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
     expect(games[0].styles).toEqual([GameStyle.CHARACTER_DRIVEN]);
     // @ts-expect-error: Test
     expect(games[0].foobar).toEqual(undefined);
+  });
+
+  test("should log invalid fields and not add program item", async () => {
+    vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
+      value: [
+        {
+          ...testKompassiGame,
+          // @ts-expect-error: Test value
+          start_time: null,
+          // @ts-expect-error: Test value
+          end_time: null,
+        },
+      ],
+    });
+
+    const errorLoggerSpy = vi.spyOn(logger, "error");
+
+    const response = await request(server)
+      .post(ApiEndpoint.GAMES)
+      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+
+    expect(response.status).toEqual(200);
+
+    expect(errorLoggerSpy).toHaveBeenCalledWith(
+      "%s",
+      new Error(
+        "Invalid program item p2106 at path end_time: Expected string, received null"
+      )
+    );
+    expect(errorLoggerSpy).toHaveBeenCalledWith(
+      "%s",
+      new Error(
+        "Invalid program item p2106 at path start_time: Expected string, received null"
+      )
+    );
+
+    const gamesResult = await findGames();
+    const games = unsafelyUnwrapResult(gamesResult);
+
+    expect(games.length).toEqual(0);
   });
 });
