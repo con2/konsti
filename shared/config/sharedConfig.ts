@@ -49,8 +49,6 @@ export const sharedConfig: SharedConfig = {
     ProgramType.WORKSHOP,
   ],
 
-  CONVENTION_START_TIME: "2023-07-28T12:00:00Z", // UTC date
-
   directSignupWindows: {
     tabletopRPG: [],
 
@@ -131,4 +129,7 @@ export const sharedConfig: SharedConfig = {
   // Sentry
   tracesSampleRate: 0.0,
   enableSentryInDev: false,
+
+  // Test values
+  CONVENTION_START_TIME: "2023-07-28T12:00:00Z", // UTC date
 };
