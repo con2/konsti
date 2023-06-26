@@ -10,16 +10,19 @@ import { config } from "client/config";
 import { TestValuePicker } from "client/components/TestValuePicker";
 
 export const Navigation = (): ReactElement => {
-  const loggedIn = useAppSelector((state) => state.login.loggedIn);
   const { t } = useTranslation();
   const { loadedSettings, showTestValues } = config;
+
+  const loggedIn = useAppSelector((state) => state.login.loggedIn);
+  const eventLogItems = useAppSelector((state) => state.login.eventLogItems);
+  const unseenEvents = eventLogItems.filter((item) => !item.isSeen);
 
   const [isOpen, setIsOpen] = useState(false);
 
   const icon = isOpen ? "times" : "bars";
   return (
     <>
-      <NavigationIconContainer>
+      <NavigationIconContainer className="fa-layers fa-fw">
         <NavigationIcon
           icon={icon}
           onClick={() => setIsOpen(!isOpen)}
@@ -30,6 +33,14 @@ export const Navigation = (): ReactElement => {
           }
           data-testid="navigation-icon"
         />
+        {!isOpen && unseenEvents.length > 0 && (
+          <UnseenEventsBadge
+            className="fa-layers-counter fa-layers-top-right"
+            aria-label={t("iconAltText.newNotifications")}
+          >
+            {unseenEvents.length}
+          </UnseenEventsBadge>
+        )}
       </NavigationIconContainer>
       {isOpen && <Dimmer onClick={() => setIsOpen(false)} />}
       {isOpen && (
@@ -58,6 +69,11 @@ const NavigationIconContainer = styled.span`
   font-size: 30px;
   width: 32px;
   height: 32px;
+`;
+
+const UnseenEventsBadge = styled.span`
+  background-color: ${(props) => props.theme.iconDefault};
+  font-size: 36px;
 `;
 
 const Dimmer = styled.div`
