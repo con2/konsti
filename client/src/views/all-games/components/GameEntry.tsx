@@ -241,7 +241,7 @@ const GameContainer = styled(RaisedCard)<{ signed: boolean }>`
   display: flex;
   flex-direction: column;
   min-height: 160px;
-  color: #3d3d3d;
+  color: rgb(61, 61, 61);
 
   @media (max-width: ${(props) => props.theme.breakpointPhone}) {
     margin-left: 0;

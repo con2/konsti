@@ -13,6 +13,7 @@ import { MOBILE_MARGIN } from "client/globalStyle";
 import { newUpdatePageReloadKey } from "client/utils/localStorage";
 import { TestTime } from "client/components/TestTime";
 import { Announcement } from "client/components/Announcement";
+import { NotificationBar } from "client/components/NotificationBar";
 
 const { loadedSettings, showTestValues, showAnnouncement } = config;
 
@@ -51,6 +52,7 @@ export const App = (): ReactElement => {
           {loadedSettings !== "production" && showTestValues && <TestTime />}
           <Header />
           <ErrorBar />
+          <NotificationBar />
           {showAnnouncement && <Announcement />}
           <AppContainer>
             <AppRoutes />
