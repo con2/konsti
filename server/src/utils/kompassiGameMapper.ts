@@ -16,18 +16,11 @@ import {
   KompassiTag,
 } from "shared/typings/models/kompassiGame";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
-import { logger } from "server/utils/logger";
 
 export const kompassiGameMapper = (
   games: readonly KompassiGame[]
 ): readonly Game[] => {
-  return games.flatMap((game) => {
-    const validEndTime = dayjs(game.end_time).isValid();
-    if (!validEndTime) {
-      logger.warn(`Game ${game.title} has invalid end time, skipping...`);
-      return [];
-    }
-
+  return games.map((game) => {
     return {
       gameId: game.identifier,
       title: game.title,
