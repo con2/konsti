@@ -39,11 +39,13 @@ export const EventLog = (): ReactElement => {
 
   const getTime = (createdAt: string): string => {
     const timeNow = dayjs();
-    const isSameDay = timeNow.isSame(dayjs(createdAt), "day");
-    if (!isSameDay) {
-      return timeFormatter.getWeekdayAndTime({ time: createdAt });
+    const relativeTimePeriod = dayjs(createdAt).add(4, "hours");
+
+    const useRelativeTime = timeNow.isBefore(relativeTimePeriod);
+    if (useRelativeTime) {
+      return dayjs().to(createdAt);
     }
-    return dayjs().to(createdAt);
+    return timeFormatter.getWeekdayAndTime({ time: createdAt });
   };
 
   return (
