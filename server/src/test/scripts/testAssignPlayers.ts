@@ -10,16 +10,15 @@ import { sharedConfig } from "shared/config/sharedConfig";
 const testAssignPlayers = async (
   assignmentStrategy: AssignmentStrategy
 ): Promise<void> => {
-  const { saveTestAssign } = config;
-  const { CONVENTION_START_TIME } = sharedConfig;
-
-  const startingTime = dayjs(CONVENTION_START_TIME).add(2, "hours").format();
+  const startingTime = dayjs(sharedConfig.CONVENTION_START_TIME)
+    .add(2, "hours")
+    .format();
   await runAssignment({
     assignmentStrategy,
     startingTime,
   });
 
-  if (!saveTestAssign) {
+  if (!config.saveTestAssign) {
     return;
   }
 
