@@ -131,5 +131,5 @@ export const sharedConfig: SharedConfig = {
   enableSentryInDev: false,
 
   // Test values
-  CONVENTION_START_TIME: "2023-07-28T12:00:00Z", // UTC date
+  CONVENTION_START_TIME: `${friday}T12:00:00Z`, // UTC date
 };
