@@ -34,7 +34,10 @@ export const Navigation = (): ReactElement => {
           data-testid="navigation-icon"
         />
         {!isOpen && unseenEvents.length > 0 && (
-          <UnseenEventsBadge className="fa-layers-counter fa-layers-top-right">
+          <UnseenEventsBadge
+            className="fa-layers-counter fa-layers-top-right"
+            aria-label={t("iconAltText.newNotifications")}
+          >
             {unseenEvents.length}
           </UnseenEventsBadge>
         )}

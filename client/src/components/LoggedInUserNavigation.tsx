@@ -35,7 +35,10 @@ export const LoggedInUserNavigation = (props: {
         <RouterLink onClick={props.onSelect} to="/notifications">
           {t("pages.notifications")}
           {unseenEvents.length > 0 && (
-            <EventNumberContainer className="fa-layers fa-fw">
+            <EventNumberContainer
+              className="fa-layers fa-fw"
+              aria-label={t("iconAltText.newNotifications")}
+            >
               <EventNumberIcon icon="circle" className="fa-stack-1x" />
               <EventNumber className="fa-stack-1x">
                 {unseenEvents.length}
