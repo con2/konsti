@@ -18,6 +18,7 @@ import {
   faCircleChevronLeft as fasCircleChevronLeft,
   faUser as fasUser,
   faUsers as fasUsers,
+  faCircle as fasCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faHeart as farHeart,
@@ -45,6 +46,7 @@ export const getIconLibrary = (): void => {
     fasInfo,
     fasCircleChevronLeft,
     fasUser,
-    fasUsers
+    fasUsers,
+    fasCircle
   );
 };

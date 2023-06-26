@@ -2,6 +2,7 @@ import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useAppSelector } from "client/utils/hooks";
 import { sharedConfig } from "shared/config/sharedConfig";
 import { isAdmin, isAdminOrHelp, isUser } from "client/utils/checkUserGroup";
@@ -11,6 +12,8 @@ export const LoggedInUserNavigation = (props: {
 }): ReactElement => {
   const { t } = useTranslation();
   const userGroup = useAppSelector((state) => state.login.userGroup);
+  const eventLogItems = useAppSelector((state) => state.login.eventLogItems);
+  const unseenEvents = eventLogItems.filter((item) => !item.isSeen);
 
   return (
     <StyledRoutes>
@@ -31,6 +34,14 @@ export const LoggedInUserNavigation = (props: {
       {isUser(userGroup) && (
         <RouterLink onClick={props.onSelect} to="/notifications">
           {t("pages.notifications")}
+          {unseenEvents.length > 0 && (
+            <EventNumberContainer className="fa-layers fa-fw">
+              <EventNumberIcon icon="circle" className="fa-stack-1x" />
+              <EventNumber className="fa-stack-1x">
+                {unseenEvents.length}
+              </EventNumber>
+            </EventNumberContainer>
+          )}
         </RouterLink>
       )}
 
@@ -100,4 +111,21 @@ const RouterLink = styled(NavLink)`
 const StyledRoutes = styled.div`
   display: flex;
   flex-direction: column;
+`;
+
+const EventNumberContainer = styled.span`
+  margin: 0 0 0 6px;
+  vertical-align: text-bottom;
+`;
+
+const EventNumberIcon = styled(FontAwesomeIcon)`
+  color: ${(props) => props.theme.iconDefault};
+  font-size: ${(props) => props.theme.iconSizeLarge};
+`;
+
+const EventNumber = styled.span`
+  color: ${(props) => props.theme.buttonPrimaryText};
+  font-size: ${(props) => props.theme.iconSizeSmall};
+  left: 7px;
+  top: 1px;
 `;

@@ -1,4 +1,4 @@
-import { ReactElement, useCallback, useEffect } from "react";
+import { ReactElement, useCallback, useEffect, useRef } from "react";
 import dayjs from "dayjs";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
@@ -16,9 +16,7 @@ export const EventLog = (): ReactElement => {
   const games = useAppSelector((state) => state.allGames.games);
   const username = useAppSelector((state) => state.login.username);
 
-  window.onbeforeunload = () => {
-    setEventsSeen();
-  };
+  const localEventLogItems = useRef(eventLogItems);
 
   const setEventsSeen = useCallback((): void => {
     eventLogItems.map(({ eventLogItemId, isSeen }) => {
@@ -36,9 +34,7 @@ export const EventLog = (): ReactElement => {
   }, [dispatch, eventLogItems, username]);
 
   useEffect(() => {
-    return () => {
-      setEventsSeen();
-    };
+    setEventsSeen();
   }, [setEventsSeen]);
 
   const getTime = (createdAt: string): string => {
@@ -55,45 +51,48 @@ export const EventLog = (): ReactElement => {
       <EventLogItems>
         <h3>{t("eventLog.title")}</h3>
 
-        {eventLogItems.length === 0 && (
+        {localEventLogItems.current.length === 0 && (
           <div>{t("eventLog.noNotifications")}</div>
         )}
 
-        {_.orderBy(eventLogItems, (item) => item.createdAt, "desc").map(
-          (eventLogItem) => {
-            const foundGame = games.find(
-              (game) => game.gameId === eventLogItem.programItemId
-            );
-            if (!foundGame) return;
-            return (
-              <EventLogItem
-                key={`${eventLogItem.action}-${eventLogItem.createdAt}`}
-              >
-                <EventMessage isSeen={eventLogItem.isSeen}>
-                  <EventTitle>
-                    {t(`eventLogActions.${eventLogItem.action}`)}:
-                  </EventTitle>
+        {_.orderBy(
+          localEventLogItems.current,
+          (item) => item.createdAt,
+          "desc"
+        ).map((eventLogItem) => {
+          const foundGame = games.find(
+            (game) => game.gameId === eventLogItem.programItemId
+          );
+          if (!foundGame) return;
+          return (
+            <EventLogItem
+              isSeen={eventLogItem.isSeen}
+              key={`${eventLogItem.action}-${eventLogItem.createdAt}`}
+            >
+              <div>
+                <EventTitle>
+                  {t(`eventLogActions.${eventLogItem.action}`)}:
+                </EventTitle>
 
-                  <Link to={`/games/${eventLogItem.programItemId}`}>
-                    {foundGame.title}
-                  </Link>
+                <Link to={`/games/${eventLogItem.programItemId}`}>
+                  {foundGame.title}
+                </Link>
 
-                  <StartTime>
-                    (
-                    {timeFormatter.getWeekdayAndTime({
-                      time: foundGame.startTime,
-                    })}
-                    )
-                  </StartTime>
-                </EventMessage>
+                <StartTime>
+                  (
+                  {timeFormatter.getWeekdayAndTime({
+                    time: foundGame.startTime,
+                  })}
+                  )
+                </StartTime>
+              </div>
 
-                <span>
-                  {t("eventLog.sentTimeAgo")} {getTime(eventLogItem.createdAt)}
-                </span>
-              </EventLogItem>
-            );
-          }
-        )}
+              <span>
+                {t("eventLog.sentTimeAgo")} {getTime(eventLogItem.createdAt)}
+              </span>
+            </EventLogItem>
+          );
+        })}
       </EventLogItems>
     </div>
   );
@@ -103,12 +102,9 @@ const EventLogItems = styled.div`
   padding: 8px;
 `;
 
-const EventLogItem = styled.div`
+const EventLogItem = styled.div<{ isSeen: boolean }>`
   display: flex;
   justify-content: space-between;
-`;
-
-const EventMessage = styled.span<{ isSeen: boolean }>`
   color: ${(props) => (props.isSeen ? "gray" : "black")};
 `;
 
