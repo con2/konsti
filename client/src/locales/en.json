@@ -267,8 +267,9 @@
   },
   "eventLog": {
     "title": "Notifications",
-    "sentTimeAgo": "Sent",
-    "noNotifications": "No notifications"
+    "sentTimeAgo": "sent",
+    "noNotifications": "No notifications",
+    "gameDetails": "Starting time {{START_TIME}} at {{LOCATION}}"
   },
   "eventLogActions": {
     "newAssignment": "You have entered a game in lottery"

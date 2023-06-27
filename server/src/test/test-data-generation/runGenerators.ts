@@ -16,6 +16,7 @@ import {
   createAdminUser,
   createHelpUser,
 } from "server/test/test-data-generation/generators/createUsers";
+import { createEventLogItems } from "server/test/test-data-generation/generators/createEventLogItems";
 
 interface Options {
   clean?: boolean;
@@ -23,6 +24,7 @@ interface Options {
   games?: boolean;
   signups?: boolean;
   entered?: boolean;
+  log?: boolean;
 }
 
 interface Settings {
@@ -106,6 +108,12 @@ export const runGenerators = async (
     !options.clean && (await removeResults());
 
     await createSignups();
+  }
+
+  if (options.log) {
+    logger.info("Generate event log items");
+
+    await createEventLogItems();
   }
 
   settings.closeDb && (await db.gracefulExit());
