@@ -9,7 +9,6 @@ import {
   KompassiGame,
   KompassiGameSchema,
   KompassiProgramType,
-  tournamentProgramTypes,
 } from "shared/typings/models/kompassiGame";
 import {
   Result,
@@ -21,8 +20,6 @@ import {
 import { KompassiError } from "shared/typings/api/errors";
 
 type EventProgramItem = KompassiGame;
-
-export const TOURNAMENT_EVENT_TYPE = "tmnt";
 
 const { useLocalProgramFile, localKompassiFile } = config;
 
@@ -154,15 +151,6 @@ const getGamesFromFullProgram = (
       // Take program items with valid program type
       if (
         !Object.values(KompassiProgramType).includes(programItem.category_title)
-      ) {
-        return [];
-      }
-
-      // Tournaments have multple different program types
-      // Take events with type_of_game_program: TOURNAMENT_EVENT_TYPE
-      if (
-        tournamentProgramTypes.includes(programItem.category_title) &&
-        programItem.type_of_game_program !== TOURNAMENT_EVENT_TYPE
       ) {
         return [];
       }
