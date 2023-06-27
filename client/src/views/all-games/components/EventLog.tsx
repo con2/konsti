@@ -54,7 +54,7 @@ export const EventLog = (): ReactElement => {
       <h2>{t("eventLog.title")}</h2>
 
       {localEventLogItems.current.length === 0 && (
-        <div>{t("eventLog.noNotifications")}</div>
+        <RaisedCard>{t("eventLog.noNotifications")}</RaisedCard>
       )}
 
       {_.orderBy(
