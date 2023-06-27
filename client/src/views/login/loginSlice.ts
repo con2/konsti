@@ -33,7 +33,7 @@ const loginSlice = createSlice({
       };
     },
 
-    submitUpdateEventLogIsSeenAsync(
+    submitUpdateEventLogItemsAsync(
       state,
       action: PayloadAction<EventLogItem[]>
     ) {
@@ -45,7 +45,7 @@ const loginSlice = createSlice({
   },
 });
 
-export const { submitLoginAsync, submitUpdateEventLogIsSeenAsync } =
+export const { submitLoginAsync, submitUpdateEventLogItemsAsync } =
   loginSlice.actions;
 
 export const loginReducer = loginSlice.reducer;

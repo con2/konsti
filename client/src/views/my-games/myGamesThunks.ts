@@ -20,6 +20,7 @@ import {
 } from "client/services/myGamesServices";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 import { NewFavorite } from "shared/typings/models/user";
+import { submitUpdateEventLogItemsAsync } from "client/views/login/loginSlice";
 
 export const submitGetUser = (username: string): AppThunk => {
   return async (dispatch): Promise<void> => {
@@ -33,6 +34,7 @@ export const submitGetUser = (username: string): AppThunk => {
       const enteredGames = getUserResponse.games.enteredGames;
       const favoritedGames = getUserResponse.games.favoritedGames;
       const signedGames = getUserResponse.games.signedGames;
+      const eventLogItems = getUserResponse.eventLogItems;
 
       dispatch(
         submitGetUserAsync({
@@ -41,6 +43,8 @@ export const submitGetUser = (username: string): AppThunk => {
           signedGames,
         })
       );
+
+      dispatch(submitUpdateEventLogItemsAsync(eventLogItems));
     }
   };
 };
