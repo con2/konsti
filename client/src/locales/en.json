@@ -258,7 +258,8 @@
     "userNotFound": "User not found",
     "foundUser": "Found user",
     "changingPasswordError": "Error changing password.",
-    "changingPasswordSuccess": "Password changed succesfully."
+    "changingPasswordSuccess": "Password changed succesfully.",
+    "userCreatedAt": "User registered"
   },
   "testValues": {
     "buttonText": "Test values",

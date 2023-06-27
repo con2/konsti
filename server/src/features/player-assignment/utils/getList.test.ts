@@ -20,7 +20,7 @@ const user: User = {
       message: "",
     },
   ],
-  createdAt: null,
+  createdAt: "2019-11-23T12:00:00+02:00",
   eventLogItems: [],
 };
 
@@ -32,7 +32,7 @@ const user2: User = {
   groupCode: "123",
   favoritedGames: [],
   signedGames: [],
-  createdAt: null,
+  createdAt: "2019-11-23T12:00:00+02:00",
   eventLogItems: [],
 };
 
@@ -44,7 +44,7 @@ const user3: User = {
   groupCode: "123",
   favoritedGames: [],
   signedGames: [],
-  createdAt: null,
+  createdAt: "2019-11-23T12:00:00+02:00",
   eventLogItems: [],
 };
 
