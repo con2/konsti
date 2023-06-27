@@ -34,16 +34,19 @@ export const saveGames = async (
 ): Promise<Result<void, MongoDbError>> => {
   logger.info("MongoDB: Store games to DB");
 
+  // This will remove direct signups and games
   const removeDeletedGamesResult = await removeDeletedGames(games);
   if (isErrorResult(removeDeletedGamesResult)) {
     return removeDeletedGamesResult;
   }
 
+  // If games were deleted, this will remove lottery signups and favorited games
   const removeInvalidGamesResult = await removeInvalidGamesFromUsers();
   if (isErrorResult(removeInvalidGamesResult)) {
     return removeInvalidGamesResult;
   }
 
+  // This will remove lottery signups
   const removeMovedGamesResult = await removeMovedGamesFromUsers(games);
   if (isErrorResult(removeMovedGamesResult)) {
     return removeMovedGamesResult;
