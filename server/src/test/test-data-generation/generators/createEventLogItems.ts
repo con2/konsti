@@ -17,7 +17,11 @@ export const createEventLogItems = async (): Promise<void> => {
   const allUsersResult = await findUsers();
   const allUsers = unsafelyUnwrapResult(allUsersResult);
 
-  const eventLogUpdates = allUsers.flatMap((user) => {
+  const users = allUsers.filter(
+    (user) => user.username !== "admin" && user.username !== "helper"
+  );
+
+  const eventLogUpdates = users.flatMap((user) => {
     const randomGames = _.sampleSize(rpgs, 5)!; // eslint-disable-line @typescript-eslint/no-non-null-assertion
 
     return randomGames.map((randomGame, index) => ({
