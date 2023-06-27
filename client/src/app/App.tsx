@@ -15,10 +15,10 @@ import { TestTime } from "client/components/TestTime";
 import { Announcement } from "client/components/Announcement";
 import { NotificationBar } from "client/components/NotificationBar";
 
-const { loadedSettings, showTestValues, showAnnouncement } = config;
+const { loadedSettings, showTestValues, showAnnouncement, dataUpdateInterval } =
+  config;
 
 export const App = (): ReactElement => {
-  const { dataUpdateInterval } = config;
   const store = useStore();
 
   const [loading, setLoading] = useState<boolean>(true);
@@ -39,7 +39,7 @@ export const App = (): ReactElement => {
       setInterval(async () => await fetchData(), dataUpdateInterval * 1000);
     };
     startUpdateTimer();
-  }, [store, dataUpdateInterval]);
+  }, [store]);
 
   getIconLibrary();
 
