@@ -7,6 +7,7 @@ import _ from "lodash";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { submitUpdateEventLogIsSeen } from "client/views/login/loginThunks";
 import { timeFormatter } from "client/utils/timeFormatter";
+import { RaisedCard } from "client/components/RaisedCard";
 
 export const EventLog = (): ReactElement => {
   const { t } = useTranslation();
@@ -50,63 +51,56 @@ export const EventLog = (): ReactElement => {
 
   return (
     <div>
-      <EventLogItems>
-        <h3>{t("eventLog.title")}</h3>
+      <h2>{t("eventLog.title")}</h2>
 
-        {localEventLogItems.current.length === 0 && (
-          <div>{t("eventLog.noNotifications")}</div>
-        )}
+      {localEventLogItems.current.length === 0 && (
+        <div>{t("eventLog.noNotifications")}</div>
+      )}
 
-        {_.orderBy(
-          localEventLogItems.current,
-          (item) => item.createdAt,
-          "desc"
-        ).map((eventLogItem) => {
-          const foundGame = games.find(
-            (game) => game.gameId === eventLogItem.programItemId
-          );
-          if (!foundGame) return;
-          return (
-            <EventLogItem
-              isSeen={eventLogItem.isSeen}
-              key={`${eventLogItem.action}-${eventLogItem.createdAt}`}
-            >
-              <div>
-                <EventTitle>
-                  {t(`eventLogActions.${eventLogItem.action}`)}:
-                </EventTitle>
+      {_.orderBy(
+        localEventLogItems.current,
+        (item) => item.createdAt,
+        "desc"
+      ).map((eventLogItem) => {
+        const foundGame = games.find(
+          (game) => game.gameId === eventLogItem.programItemId
+        );
+        if (!foundGame) return;
+        return (
+          <EventLogItem
+            isSeen={eventLogItem.isSeen}
+            key={eventLogItem.eventLogItemId}
+          >
+            <EventTitle>
+              {t(`eventLogActions.${eventLogItem.action}`)}
+            </EventTitle>
 
-                <Link to={`/games/${eventLogItem.programItemId}`}>
-                  {foundGame.title}
-                </Link>
+            <MessageCreatedAt>
+              ({t("eventLog.sentTimeAgo")} {getTime(eventLogItem.createdAt)})
+            </MessageCreatedAt>
 
-                <StartTime>
-                  (
-                  {timeFormatter.getWeekdayAndTime({
+            <EventDetails>
+              <StyledLink to={`/games/${eventLogItem.programItemId}`}>
+                {foundGame.title}
+              </StyledLink>
+
+              <StartTime>
+                {t("eventLog.gameDetails", {
+                  START_TIME: timeFormatter.getWeekdayAndTime({
                     time: foundGame.startTime,
-                  })}
-                  )
-                </StartTime>
-              </div>
-
-              <span>
-                {t("eventLog.sentTimeAgo")} {getTime(eventLogItem.createdAt)}
-              </span>
-            </EventLogItem>
-          );
-        })}
-      </EventLogItems>
+                  }),
+                  LOCATION: foundGame.location,
+                })}
+              </StartTime>
+            </EventDetails>
+          </EventLogItem>
+        );
+      })}
     </div>
   );
 };
 
-const EventLogItems = styled.div`
-  padding: 8px;
-`;
-
-const EventLogItem = styled.div<{ isSeen: boolean }>`
-  display: flex;
-  justify-content: space-between;
+const EventLogItem = styled(RaisedCard)<{ isSeen: boolean }>`
   color: ${(props) => (props.isSeen ? "gray" : "black")};
 `;
 
@@ -114,6 +108,18 @@ const EventTitle = styled.span`
   margin-right: 6px;
 `;
 
-const StartTime = styled.span`
-  margin-left: 6px;
+const StartTime = styled.div`
+  margin: 8px 0 0 0;
+`;
+
+const MessageCreatedAt = styled.span`
+  white-space: nowrap;
+`;
+
+const StyledLink = styled(Link)`
+  margin: 8px 0 0 0;
+`;
+
+const EventDetails = styled.div`
+  margin: 8px 0 0 0;
 `;

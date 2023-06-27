@@ -11,6 +11,7 @@ const parseCliOptions = async (): Promise<void> => {
     .option("-s, --signups", "Generate signups")
     .option("-e, --entered", "Generate entered games")
     .option("-g, --games", "Generate games")
+    .option("-l, --log", "Generate event log items")
     .option("-c, --clean", "Clean all data");
 
   const options = commander.opts();
