@@ -1,6 +1,6 @@
 import { faker } from "@faker-js/faker";
 import dayjs from "dayjs";
-import { sampleSize } from "lodash";
+import _ from "lodash";
 import { logger } from "server/utils/logger";
 import { kompassiGameMapper } from "server/utils/kompassiGameMapper";
 import { saveGames } from "server/features/game/gameRepository";
@@ -14,7 +14,6 @@ import {
   tournamentProgramTypes,
   workshopProgramTypes,
 } from "shared/typings/models/kompassiGame";
-import { TOURNAMENT_EVENT_TYPE } from "server/features/game/utils/getGamesFromKompassi";
 import { Result } from "shared/utils/result";
 import { MongoDbError } from "shared/typings/api/errors";
 
@@ -52,6 +51,20 @@ const getMaxPlayers = (programType: KompassiProgramType): number => {
   return faker.number.int({ min: 3, max: 4 });
 };
 
+const getProgramType = (
+  programType: KompassiProgramType
+): KompassiProgramType => {
+  if (programType === KompassiProgramType.TOURNAMENT_BOARD_GAME) {
+    return _.sample(tournamentProgramTypes)!; // eslint-disable-line @typescript-eslint/no-non-null-assertion
+  }
+
+  if (programType === KompassiProgramType.WORKSHOP_MINIATURE) {
+    return _.sample(workshopProgramTypes)!; // eslint-disable-line @typescript-eslint/no-non-null-assertion
+  }
+
+  return programType;
+};
+
 export const createGames = async (
   gameCount: number
 ): Promise<Result<void, MongoDbError>> => {
@@ -60,7 +73,7 @@ export const createGames = async (
   const programTypes = [
     KompassiProgramType.TABLETOP_RPG,
     KompassiProgramType.LARP,
-    KompassiProgramType.BOARD_GAME,
+    KompassiProgramType.TOURNAMENT_BOARD_GAME,
     KompassiProgramType.WORKSHOP_MINIATURE,
   ];
 
@@ -77,7 +90,7 @@ export const createGames = async (
         const kompassiGameData: KompassiGame = {
           title: faker.word.words(3),
           description: faker.lorem.sentences(5),
-          category_title: programType,
+          category_title: getProgramType(programType),
           formatted_hosts: faker.internet.userName(),
           room_name: "Ropetaverna",
           length,
@@ -90,9 +103,9 @@ export const createGames = async (
           min_players: getMinPlayers(programType),
           max_players: getMaxPlayers(programType),
           identifier: faker.number.int(GAME_ID_MAX).toString(),
-          tags: sampleSize(Object.values(KompassiTag), 3),
-          genres: sampleSize(Object.values(KompassiGenre), 2),
-          styles: sampleSize(Object.values(KompassiGameStyle), 2),
+          tags: _.sampleSize(Object.values(KompassiTag), 3),
+          genres: _.sampleSize(Object.values(KompassiGenre), 2),
+          styles: _.sampleSize(Object.values(KompassiGameStyle), 2),
           short_blurb: faker.lorem.sentence(),
           revolving_door: Math.random() < 0.5,
           other_author: "Other author",
@@ -110,10 +123,6 @@ export const createGames = async (
           ropecon2021_accessibility_colourblind: Math.random() < 0.5,
           ropecon2022_accessibility_remaining_one_place: Math.random() < 0.5,
           ropecon2022_content_warnings: "Content warning",
-          type_of_game_program:
-            programType === KompassiProgramType.BOARD_GAME
-              ? TOURNAMENT_EVENT_TYPE
-              : "",
           ropecon2023_accessibility_cant_use_mic: Math.random() < 0.5,
           ropecon2023_accessibility_programme_duration_over_2_hours:
             Math.random() < 0.5,
