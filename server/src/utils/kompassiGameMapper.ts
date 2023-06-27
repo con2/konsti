@@ -63,10 +63,10 @@ const mapProgramType = (kompassiGame: KompassiGame): ProgramType => {
     case KompassiProgramType.LARP:
       return ProgramType.LARP;
 
-    case KompassiProgramType.BOARD_GAME:
-    case KompassiProgramType.CARD_GAME:
-    case KompassiProgramType.MINIATURE_WARGAME:
-    case KompassiProgramType.OTHER:
+    case KompassiProgramType.TOURNAMENT_BOARD_GAME:
+    case KompassiProgramType.TOURNAMENT_CARD_GAME:
+    case KompassiProgramType.TOURNAMENT_MINIATURE_WARGAME:
+    case KompassiProgramType.TOURNAMENT_OTHER:
       return ProgramType.TOURNAMENT;
 
     case KompassiProgramType.WORKSHOP_MINIATURE:
