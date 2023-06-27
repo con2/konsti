@@ -267,8 +267,9 @@
   },
   "eventLog": {
     "title": "Ilmoitukset",
-    "sentTimeAgo": "Lähetetty",
-    "noNotifications": "Ei ilmoituksia"
+    "sentTimeAgo": "lähetetty",
+    "noNotifications": "Ei ilmoituksia",
+    "gameDetails": "Aloitusaika {{START_TIME}} huoneessa {{LOCATION}}"
   },
   "eventLogActions": {
     "newAssignment": "Olet päässyt arvonnassa peliin"
