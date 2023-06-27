@@ -5,21 +5,21 @@ import { logger } from "server/utils/logger";
 export enum KompassiProgramType {
   TABLETOP_RPG = "Roolipeli / Pen & Paper RPG",
   LARP = "LARP",
-  BOARD_GAME = "Pelitiski: Lautapeli / Board game",
-  CARD_GAME = "Pelitiski: Korttipeli / Card game",
-  MINIATURE_WARGAME = "Pelitiski: Figupeli / Miniature wargame",
-  OTHER = "Pelitiski: Muu / Other",
+  TOURNAMENT_BOARD_GAME = "Turnaukset: lautapelit / Tournament: Board games",
+  TOURNAMENT_CARD_GAME = "Turnaukset: korttipelit / Tournament: Card games",
+  TOURNAMENT_MINIATURE_WARGAME = "Turnaukset: figupelit / Tournament: Miniature wargames",
+  TOURNAMENT_OTHER = "Turnaukset: muu / Tournament: Other",
   WORKSHOP_MINIATURE = "Työpaja: figut / Workshop: miniature figurines",
   WORKSHOP_CRAFTS = "Työpaja: käsityö / Workshop: crafts",
   WORKSHOP_MUSIC = "Työpaja: musiikki / Workshop: music",
-  WORKSHOP_OTHER = "Työpaja: muu / Other workshop",
+  WORKSHOP_OTHER = "Työpaja: muu / Workshop: other",
 }
 
 export const tournamentProgramTypes = [
-  KompassiProgramType.BOARD_GAME,
-  KompassiProgramType.CARD_GAME,
-  KompassiProgramType.MINIATURE_WARGAME,
-  KompassiProgramType.OTHER,
+  KompassiProgramType.TOURNAMENT_BOARD_GAME,
+  KompassiProgramType.TOURNAMENT_CARD_GAME,
+  KompassiProgramType.TOURNAMENT_MINIATURE_WARGAME,
+  KompassiProgramType.TOURNAMENT_OTHER,
 ];
 
 export const workshopProgramTypes = [
@@ -146,7 +146,6 @@ export const KompassiGameSchema = z.object({
   ropecon2021_accessibility_colourblind: z.boolean().catch(false),
   ropecon2022_accessibility_remaining_one_place: z.boolean().catch(false),
   ropecon2022_content_warnings: z.string().catch(""),
-  type_of_game_program: z.string().catch(""),
   ropecon2023_accessibility_cant_use_mic: z.boolean().catch(false),
   ropecon2023_accessibility_programme_duration_over_2_hours: z
     .boolean()
