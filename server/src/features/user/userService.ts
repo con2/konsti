@@ -307,6 +307,7 @@ export const fetchUserBySerialOrUsername = async (
       status: "success",
       serial: userBySerial.serial,
       username: userBySerial.username,
+      createdAt: userBySerial.createdAt,
     };
   }
 
@@ -335,5 +336,6 @@ export const fetchUserBySerialOrUsername = async (
     status: "success",
     serial: user.serial,
     username: user.username,
+    createdAt: user.createdAt,
   };
 };
