@@ -4,7 +4,7 @@ import { AppThunk } from "client/typings/redux.typings";
 import { PostLoginError, PostLoginResponse } from "shared/typings/api/login";
 import {
   submitLoginAsync,
-  submitUpdateEventLogIsSeenAsync,
+  submitUpdateEventLogItemsAsync,
 } from "client/views/login/loginSlice";
 import { loadGroupMembers, loadUser } from "client/utils/loadData";
 import { submitUpdateGroupCodeAsync } from "client/views/group/groupSlice";
@@ -132,7 +132,7 @@ export const submitUpdateEventLogIsSeen = (
     }
 
     if (response?.status === "success") {
-      dispatch(submitUpdateEventLogIsSeenAsync(response.eventLogItems));
+      dispatch(submitUpdateEventLogItemsAsync(response.eventLogItems));
     }
   };
 };
