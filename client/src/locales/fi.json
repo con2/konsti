@@ -258,7 +258,8 @@
     "userNotFound": "Käyttäjää ei löytynyt",
     "foundUser": "Löytyi käyttäjä",
     "changingPasswordError": "Virhe salasanaa vaihtaessa.",
-    "changingPasswordSuccess": "Salasanasi on nyt vaihdettu."
+    "changingPasswordSuccess": "Salasanasi on nyt vaihdettu.",
+    "userCreatedAt": "Käyttäjä rekisteröity"
   },
   "testValues": {
     "buttonText": "Testiarvot",

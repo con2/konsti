@@ -9,7 +9,7 @@ export interface User {
   groupCode: string;
   favoritedGames: readonly Game[];
   signedGames: readonly SelectedGame[];
-  createdAt: string | null;
+  createdAt: string;
   eventLogItems: EventLogItem[];
 }
 

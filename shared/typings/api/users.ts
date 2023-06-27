@@ -78,6 +78,7 @@ export interface GetUserBySerialResponse extends ApiResult {
   message: string;
   serial: string;
   username: string;
+  createdAt: string;
 }
 
 // GET signup messages
