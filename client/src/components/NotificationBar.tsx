@@ -59,7 +59,7 @@ export const NotificationBar = (): ReactElement | null => {
   return <NotificationContainer>{errorList}</NotificationContainer>;
 };
 
-const StyledNotification = styled.p`
+const StyledNotification = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 10px;
