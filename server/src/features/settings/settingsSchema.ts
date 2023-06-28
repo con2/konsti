@@ -11,8 +11,10 @@ const SettingsSchema = new mongoose.Schema(
     signupQuestions: [
       {
         gameId: { type: String },
-        message: { type: String },
+        question: { type: String },
         private: { type: Boolean },
+        type: { type: String },
+        selectOptions: { type: [String] },
       },
     ],
     signupStrategy: {
