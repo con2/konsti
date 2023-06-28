@@ -81,7 +81,7 @@ export const DirectSignupForm = ({
       {signupOpen && gameIsFull && (
         <GameIsFull>
           {t("signup.programItemFull", {
-            PROGRAM_TYPE: t(`programType.${game.programType}`),
+            PROGRAM_TYPE: t(`programTypeSingular.${game.programType}`),
           })}
         </GameIsFull>
       )}

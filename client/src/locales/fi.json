@@ -97,13 +97,17 @@
     "tabletopRPG": "Pöytäroolipeli",
     "larp": "LARP",
     "tournament": "Turnaus",
-    "workshop": "Työpaja"
+    "workshop": "Työpaja",
+    "experiencePoint": "Kokemuspiste",
+    "other": "Muu ohjelma"
   },
   "programTypeSelection": {
     "tabletopRPG": "Pöytäroolipelit",
     "larp": "LARP",
     "tournament": "Turnaukset",
-    "workshop": "Työpajat"
+    "workshop": "Työpajat",
+    "experiencePoint": "Kokemuspiste",
+    "other": "Muu ohjelma"
   },
   "gameStyle": {
     "serious": "Vakava pelityyli",
@@ -312,35 +316,53 @@
     "player": "pelaajaa",
     "participant": "osallistujaa"
   },
+  "programTypeSingular": {
+    "tabletopRPG": "Pöytäroolipeli",
+    "larp": "LARP",
+    "tournament": "Turnaus",
+    "workshop": "Työpaja",
+    "experiencePoint": "Peli",
+    "other": "Ohjelmanumero"
+  },
   "programTypePlural": {
     "tabletopRPG": "pelit",
     "larp": "larpit",
     "tournament": "turnaukset",
-    "workshop": "työpajat"
+    "workshop": "työpajat",
+    "experiencePoint": "pelit",
+    "other": "ohjelmanumerot"
   },
   "programTypeGenetive": {
     "tabletopRPG": "Pelin",
     "larp": "Larpin",
     "tournament": "Turnauksen",
-    "workshop": "Työpajan"
+    "workshop": "Työpajan",
+    "experiencePoint": "Pelin",
+    "other": "Ohjelman"
   },
   "programTypeElative": {
     "tabletopRPG": "pelistä",
     "larp": "larpista",
     "tournament": "turnauksesta",
-    "workshop": "työpajasta"
+    "workshop": "työpajasta",
+    "experiencePoint": "pelistä",
+    "other": "ohjelmasta"
   },
   "programTypeIllative": {
     "tabletopRPG": "peliin",
     "larp": "larppiin",
     "tournament": "turnaukseen",
-    "workshop": "työpajaan"
+    "workshop": "työpajaan",
+    "experiencePoint": "pelistä",
+    "other": "ohjelmaan"
   },
   "programTypeIllativePlural": {
     "tabletopRPG": "peleihin",
     "larp": "larppeihin",
     "tournament": "turnauksiin",
-    "workshop": "työpajoihin"
+    "workshop": "työpajoihin",
+    "experiencePoint": "peleihin",
+    "other": "ohjelmiin"
   },
   "resultsView": {
     "allSignupResults": "Ilmoittautumistulokset",
