@@ -6,6 +6,8 @@ export enum ProgramType {
   LARP = "larp",
   TOURNAMENT = "tournament",
   WORKSHOP = "workshop",
+  EXPERIENCE_POINT = "experiencePoint",
+  OTHER = "other",
 }
 
 export enum Genre {

@@ -5,7 +5,11 @@ enum AttendeeType {
   Participant = "participant",
 }
 
-const attendeeTypeParticipant = [ProgramType.TOURNAMENT, ProgramType.WORKSHOP];
+const attendeeTypeParticipant = [
+  ProgramType.TOURNAMENT,
+  ProgramType.WORKSHOP,
+  ProgramType.OTHER,
+];
 
 export const getAttendeeType = (programType: ProgramType): AttendeeType => {
   if (attendeeTypeParticipant.includes(programType)) {

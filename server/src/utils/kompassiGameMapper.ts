@@ -75,6 +75,15 @@ const mapProgramType = (kompassiGame: KompassiGame): ProgramType => {
     case KompassiProgramType.WORKSHOP_OTHER:
       return ProgramType.WORKSHOP;
 
+    case KompassiProgramType.EXPERIENCE_POINT_DEMO:
+    case KompassiProgramType.EXPERIENCE_POINT_OTHER:
+    case KompassiProgramType.EXPERIENCE_POINT_OPEN:
+      return ProgramType.EXPERIENCE_POINT;
+
+    case KompassiProgramType.OTHER_GAME_PROGRAM:
+    case KompassiProgramType.OTHER_PROGRAM:
+      return ProgramType.OTHER;
+
     default:
       return exhaustiveSwitchGuard(programType);
   }

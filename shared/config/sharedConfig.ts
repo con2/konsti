@@ -26,6 +26,7 @@ interface SharedConfig {
   manualSignupMode: SignupStrategy.ALGORITHM | SignupStrategy.DIRECT | "none";
   signupOpen: boolean;
   resultsVisible: boolean;
+  addToKonsti: string[];
 }
 
 // Convention days
@@ -47,6 +48,8 @@ export const sharedConfig: SharedConfig = {
     ProgramType.LARP,
     ProgramType.TOURNAMENT,
     ProgramType.WORKSHOP,
+    ProgramType.EXPERIENCE_POINT,
+    ProgramType.OTHER,
   ],
 
   directSignupWindows: {
@@ -110,11 +113,19 @@ export const sharedConfig: SharedConfig = {
         signupWindowClose: dayjs(`${sunday}T21:00:00Z`), // Sun 24:00
       },
     ],
+
+    experiencePoint: [],
+
+    other: [],
   },
 
   directSignupAlwaysOpenIds: [
-    "p5344", // PFS multi-table special: Pathfinder Society #3-99 Fate in the Future
-    "p5825", // Corporations 2.0
+    "p6673", // PFS multi-table special: Pathfinder Society #3-98: Expedition into Pallid Peril
+  ],
+
+  // These program items are hand picked to be exported from Kompassi
+  addToKonsti: [
+    "p6787", // KPS-turnaus
   ],
 
   // Two phase signup settings

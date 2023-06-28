@@ -13,7 +13,20 @@ export enum KompassiProgramType {
   WORKSHOP_CRAFTS = "Työpaja: käsityö / Workshop: crafts",
   WORKSHOP_MUSIC = "Työpaja: musiikki / Workshop: music",
   WORKSHOP_OTHER = "Työpaja: muu / Workshop: other",
+  EXPERIENCE_POINT_DEMO = "Kokemuspiste: demotus / Experience Point: Demo game",
+  EXPERIENCE_POINT_OTHER = "Kokemuspiste: muu / Experience Point: Other",
+  EXPERIENCE_POINT_OPEN = "Kokemuspiste: avoin pelautus / Experience Point: Open game",
+  OTHER_GAME_PROGRAM = "Muu peliohjelma / Other game programme",
+  OTHER_PROGRAM = "Muu ohjelma / None of the above",
 }
+
+export const experiencePointAndOtherProgramTypes = [
+  KompassiProgramType.EXPERIENCE_POINT_DEMO,
+  KompassiProgramType.EXPERIENCE_POINT_OTHER,
+  KompassiProgramType.EXPERIENCE_POINT_OPEN,
+  KompassiProgramType.OTHER_GAME_PROGRAM,
+  KompassiProgramType.OTHER_PROGRAM,
+];
 
 export const tournamentProgramTypes = [
   KompassiProgramType.TOURNAMENT_BOARD_GAME,
