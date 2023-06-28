@@ -25,7 +25,7 @@ export const EnteredGameRow = ({
   startTime,
 }: Props): ReactElement | null => {
   const dispatch = useAppDispatch();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const username = useAppSelector((state) => state.login.username);
   const signupQuestions = useAppSelector(
@@ -94,7 +94,11 @@ export const EnteredGameRow = ({
       {!!signupQuestion && (
         <SignupQuestionPlacement>
           <FontAwesomeIcon icon={["far", "comment"]} aria-hidden="true" />
-          {` ${t("myProgramView.yourAnswer")} "${signupQuestion.question}"${
+          {` ${t("myProgramView.yourAnswer")} "${
+            i18n.language === "fi"
+              ? signupQuestion.questionFi
+              : signupQuestion.questionEn
+          }"${
             signupQuestion.private
               ? ` (${t("privateOnlyVisibleToOrganizers")})`
               : ""
