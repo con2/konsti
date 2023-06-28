@@ -106,7 +106,7 @@ export const AlgorithmSignupForm = ({
           {lotterySignupOpen && <span>{t("signup.lotterySignupOpenNow")}</span>}
         </div>
         <CreateAccountLink>
-          <Link to={`/registration`}>{t("signup.registerToSignup")}</Link>
+          <Link to={`/login`}>{t("signup.loginToSignup")}</Link>
         </CreateAccountLink>
       </NotLoggedSignupInfo>
     );
