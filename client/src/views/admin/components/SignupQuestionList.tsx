@@ -47,13 +47,21 @@ export const SignupQuestionList = ({
           if (!foundGame) return [];
 
           return (
-            <li key={`${signupQuestion.gameId}-${signupQuestion.question}`}>
+            <li key={`${signupQuestion.gameId}-${signupQuestion.questionFi}`}>
               <Link to={`/games/${signupQuestion.gameId}`}>
                 {foundGame.title}
               </Link>
-              <span>: {signupQuestion.question}</span>{" "}
+              <span>
+                : {signupQuestion.questionFi} / {signupQuestion.questionEn}
+              </span>{" "}
               {signupQuestion.selectOptions.length > 0 && (
-                <span>({signupQuestion.selectOptions.join(", ")})</span>
+                <span>
+                  (
+                  {signupQuestion.selectOptions
+                    .map((option) => `${option.optionFi} / ${option.optionEn}`)
+                    .join(", ")}
+                  )
+                </span>
               )}{" "}
               {signupQuestion.private && <BoldText>({t("private")})</BoldText>}{" "}
               - {t(`programType.${foundGame.programType}`)} -{" "}

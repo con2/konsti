@@ -55,7 +55,9 @@ export const createSignups = async (): Promise<void> => {
             username: user.username,
             enteredGameId: randomGame.gameId,
             startTime: randomGame.startTime,
-            message: foundSignupQuestion?.question ? faker.lorem.words(4) : "",
+            message: foundSignupQuestion?.questionFi
+              ? faker.lorem.words(4)
+              : "",
           });
         });
       });

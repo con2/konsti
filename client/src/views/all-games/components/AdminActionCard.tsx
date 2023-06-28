@@ -13,7 +13,10 @@ import {
 import { ButtonGroup } from "client/components/ButtonGroup";
 import { ControlledInput } from "client/components/ControlledInput";
 import { Dropdown } from "client/components/Dropdown";
-import { SignupQuestionType } from "shared/typings/models/settings";
+import {
+  SignupQuestionSelectOption,
+  SignupQuestionType,
+} from "shared/typings/models/settings";
 
 interface Props {
   game: Game;
@@ -33,17 +36,16 @@ export const AdminActionCard = ({ game }: Props): ReactElement => {
   const [hasSignupQuestion, setHasSignupQuestion] = useState<boolean>(false);
   const [isPrivateSignupQuestion, setIsPrivateSignupQuestion] =
     useState<boolean>(false);
-  const [signupQuestionInput, setSignupQuestionInput] = useState<string>("");
+  const [signupQuestionInputFi, setSignupQuestionInputFi] =
+    useState<string>("");
+  const [signupQuestionInputEn, setSignupQuestionInputEn] =
+    useState<string>("");
   const [signupQuestionInputVisible, setSignupQuestionInputVisible] =
     useState<boolean>(false);
   const [questionType, setQuestionType] = useState(SignupQuestionType.TEXT);
-  const [selectOptions, setSelectOptions] = useState<string[]>([]);
-
-  const handleSignupQuestionChange = (
-    event: ChangeEvent<HTMLInputElement>
-  ): void => {
-    setSignupQuestionInput(event.target.value);
-  };
+  const [selectOptions, setSelectOptions] = useState<
+    SignupQuestionSelectOption[]
+  >([]);
 
   useEffect(() => {
     // Check if hidden
@@ -108,7 +110,8 @@ export const AdminActionCard = ({ game }: Props): ReactElement => {
       await dispatch(
         submitAddSignupQuestion({
           gameId: game.gameId,
-          question: signupQuestionInput,
+          questionFi: signupQuestionInputFi,
+          questionEn: signupQuestionInputEn,
           private: isPrivateSignupQuestion,
           type: questionType,
           selectOptions,
@@ -124,7 +127,8 @@ export const AdminActionCard = ({ game }: Props): ReactElement => {
 
     // Clear inputs
     setSignupQuestionInputVisible(false);
-    setSignupQuestionInput("");
+    setSignupQuestionInputFi("");
+    setSignupQuestionInputEn("");
     setIsPrivateSignupQuestion(false);
   };
 
@@ -170,12 +174,16 @@ export const AdminActionCard = ({ game }: Props): ReactElement => {
       </ButtonGroup>
       {signupQuestionInputVisible && (
         <>
-          <p>{t("gameDetails.addSignupTextField")}</p>
+          <p>{t("signupQuestion.addSignupTextField")}</p>
           <ControlledInput
-            key="new-password"
-            placeholder={t("gameDetails.addSignupTextField")}
-            value={signupQuestionInput}
-            onChange={handleSignupQuestionChange}
+            placeholder={t("signupQuestion.inFinnish")}
+            value={signupQuestionInputFi}
+            onChange={(event) => setSignupQuestionInputFi(event.target.value)}
+          />
+          <ControlledInput
+            placeholder={t("signupQuestion.inEnglish")}
+            value={signupQuestionInputEn}
+            onChange={(event) => setSignupQuestionInputEn(event.target.value)}
           />
           <input
             type="checkbox"
@@ -205,34 +213,92 @@ export const AdminActionCard = ({ game }: Props): ReactElement => {
 
           {questionType === SignupQuestionType.SELECT && (
             <>
-              <input
-                onChange={(event) => {
-                  const newState = selectOptions;
-                  newState[0] = event.target.value;
-                  setSelectOptions(newState);
-                }}
-              />
-              <input
-                onChange={(event) => {
-                  const newState = selectOptions;
-                  newState[1] = event.target.value;
-                  setSelectOptions(newState);
-                }}
-              />{" "}
-              <input
-                onChange={(event) => {
-                  const newState = selectOptions;
-                  newState[2] = event.target.value;
-                  setSelectOptions(newState);
-                }}
-              />
-              <input
-                onChange={(event) => {
-                  const newState = selectOptions;
-                  newState[3] = event.target.value;
-                  setSelectOptions(newState);
-                }}
-              />
+              <div>
+                <span>{t("signupQuestion.inFinnish")}</span>
+                <input
+                  onChange={(event) => {
+                    const newState = selectOptions;
+                    newState[0] = {
+                      ...newState[0],
+                      optionFi: event.target.value,
+                    };
+                    setSelectOptions(newState);
+                  }}
+                />
+                <input
+                  onChange={(event) => {
+                    const newState = selectOptions;
+                    newState[1] = {
+                      ...newState[1],
+                      optionFi: event.target.value,
+                    };
+                    setSelectOptions(newState);
+                  }}
+                />{" "}
+                <input
+                  onChange={(event) => {
+                    const newState = selectOptions;
+                    newState[2] = {
+                      ...newState[2],
+                      optionFi: event.target.value,
+                    };
+                    setSelectOptions(newState);
+                  }}
+                />
+                <input
+                  onChange={(event) => {
+                    const newState = selectOptions;
+                    newState[3] = {
+                      ...newState[3],
+                      optionFi: event.target.value,
+                    };
+                    setSelectOptions(newState);
+                  }}
+                />
+              </div>
+              <div>
+                <span>{t("signupQuestion.inEnglish")}</span>
+                <input
+                  onChange={(event) => {
+                    const newState = selectOptions;
+                    newState[0] = {
+                      ...newState[0],
+                      optionEn: event.target.value,
+                    };
+                    setSelectOptions(newState);
+                  }}
+                />
+                <input
+                  onChange={(event) => {
+                    const newState = selectOptions;
+                    newState[1] = {
+                      ...newState[1],
+                      optionEn: event.target.value,
+                    };
+                    setSelectOptions(newState);
+                  }}
+                />{" "}
+                <input
+                  onChange={(event) => {
+                    const newState = selectOptions;
+                    newState[2] = {
+                      ...newState[2],
+                      optionEn: event.target.value,
+                    };
+                    setSelectOptions(newState);
+                  }}
+                />
+                <input
+                  onChange={(event) => {
+                    const newState = selectOptions;
+                    newState[3] = {
+                      ...newState[3],
+                      optionEn: event.target.value,
+                    };
+                    setSelectOptions(newState);
+                  }}
+                />
+              </div>
             </>
           )}
 
