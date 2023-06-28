@@ -10,7 +10,7 @@ const getStartTime = (startTime: string): Dayjs => {
     "minutes"
   );
 
-  const startTimeIsTooEarly = unmodifiedStartTime.hour() < 7;
+  const startTimeIsTooEarly = unmodifiedStartTime.hour() <= 6;
 
   if (startTimeIsTooEarly) {
     return unmodifiedStartTime.subtract(1, "day").hour(22);
