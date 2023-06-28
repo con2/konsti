@@ -447,6 +447,9 @@
     "oldAccountsNotWorking": "Aikaisempien tapahtumien käyttäjätilit eivät ole käytössä",
     "noAccountRegister": "Ei käyttäjätiliä? Luo käyttäjätili"
   },
+  "registrationView": {
+    "alreadyHaveAccountLogin": "Sinulla on jo tili? Kirjaudu"
+  },
   "iconAltText": {
     "resetInput": "Tyhjennä syöte",
     "openAccordion": "Avaa haitarivalikko",

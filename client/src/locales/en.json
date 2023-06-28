@@ -447,6 +447,9 @@
     "oldAccountsNotWorking": "Accounts from old events don't work anymore",
     "noAccountRegister": "No account? Create one"
   },
+  "registrationView": {
+    "alreadyHaveAccountLogin": "Already have an account? Login"
+  },
   "iconAltText": {
     "resetInput": "Reset input",
     "openAccordion": "Open accordion menu",
