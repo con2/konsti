@@ -1,6 +1,5 @@
 import { ReactElement, useState } from "react";
 import { useTranslation } from "react-i18next";
-import dayjs from "dayjs";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { Game } from "shared/typings/models/game";
@@ -81,12 +80,11 @@ export const AlgorithmSignupForm = ({
 
   const alreadySignedToGame = isAlreadySigned(game, signedGames);
 
-  const signupStartTime = dayjs(startTime)
-    .subtract(sharedConfig.PRE_SIGNUP_START, "minutes")
-    .format();
+  const signupStartTime = timeFormatter.getStartTime(startTime);
+
   const timeNow = getTime();
   const lotterySignupOpen =
-    dayjs(signupStartTime).isBefore(timeNow) ||
+    signupStartTime.isBefore(timeNow) ||
     sharedConfig.manualSignupMode === SignupStrategy.ALGORITHM;
 
   if (!loggedIn) {
@@ -98,7 +96,7 @@ export const AlgorithmSignupForm = ({
               <span>{t("signup.lotterySignupOpens")}</span>{" "}
               <BoldText>
                 {timeFormatter.getWeekdayAndTime({
-                  time: signupStartTime,
+                  time: signupStartTime.format(),
                 })}
               </BoldText>
             </>
@@ -125,7 +123,7 @@ export const AlgorithmSignupForm = ({
               {t("signup.lotterySignupOpens")}{" "}
               <BoldText>
                 {timeFormatter.getWeekdayAndTime({
-                  time: signupStartTime,
+                  time: signupStartTime.format(),
                 })}
               </BoldText>
             </p>
