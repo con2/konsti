@@ -5,7 +5,7 @@
   "button": {
     "logout": "Logout",
     "login": "Login",
-    "register": "Register",
+    "register": "Create account",
     "updateDb": "Update program database",
     "assignAttendees": "Assign players",
     "signup": "Save",
@@ -160,7 +160,7 @@
   },
   "pageTitle": {
     "login": "Please login",
-    "registration": "Please register user account"
+    "registration": "Create user account"
   },
   "user": "User",
   "favoritedProgramItems": "Favorites",
@@ -263,7 +263,7 @@
     "foundUser": "Found user",
     "changingPasswordError": "Error changing password.",
     "changingPasswordSuccess": "Password changed succesfully.",
-    "userCreatedAt": "User registered"
+    "userCreatedAt": "User account created"
   },
   "testValues": {
     "buttonText": "Test values",
@@ -296,6 +296,9 @@
     "staySignedUp": "Stay signed up",
     "expectedDuration": "Duration {{EXPECTED_DURATION}}",
     "signupOpens": "Signup opens",
+    "directSignupOpenNow": "Signup open",
+    "lotterySignupOpenNow": "Lottery signup open",
+    "registerToSignup": "Create account to sign up",
     "lotterySignupOpens": "Lottery signup opens",
     "signupAlwaysOpen": "Signup always open",
     "inGroupWarning": "If you signup to game you will be removed from group you are in",
@@ -442,7 +445,7 @@
   },
   "loginView": {
     "oldAccountsNotWorking": "Accounts from old events don't work anymore",
-    "noAccountRegister": "No account? Register"
+    "noAccountRegister": "No account? Create one"
   },
   "iconAltText": {
     "resetInput": "Reset input",
