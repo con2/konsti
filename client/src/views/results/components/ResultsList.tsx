@@ -224,7 +224,7 @@ export const DirectResults = (): ReactElement => {
                           <PlayerList>
                             {signupMessagesVisible && (
                               <SignupQuestion>
-                                {signupQuestion?.message}
+                                {signupQuestion?.question}
                               </SignupQuestion>
                             )}
                             {users.length === 0 ? (

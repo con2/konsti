@@ -8,7 +8,10 @@ import {
 } from "client/views/my-games/myGamesThunks";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { Button, ButtonStyle } from "client/components/Button";
-import { SignupQuestion } from "shared/typings/models/settings";
+import {
+  SignupQuestion,
+  SignupQuestionType,
+} from "shared/typings/models/settings";
 import { loadGames } from "client/utils/loadData";
 import { ErrorMessage } from "client/components/ErrorMessage";
 import { getIsGroupCreator, getIsInGroup } from "client/views/group/groupUtils";
@@ -21,6 +24,7 @@ import {
 import { sharedConfig } from "shared/config/sharedConfig";
 import { TextArea } from "client/components/TextArea";
 import { ButtonGroup } from "client/components/ButtonGroup";
+import { Dropdown } from "client/components/Dropdown";
 
 const { directSignupAlwaysOpenIds } = sharedConfig;
 
@@ -31,13 +35,23 @@ interface Props {
   onCancelSignup: () => void;
 }
 
-export const EnterGameForm = (props: Props): ReactElement => {
-  const { game, onEnterGame, onCancelSignup, signupQuestion } = props;
+export const EnterGameForm = ({
+  game,
+  onEnterGame,
+  onCancelSignup,
+  signupQuestion,
+}: Props): ReactElement => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
+
   const username = useAppSelector((state) => state.login.username);
   const serial = useAppSelector((state) => state.login.serial);
+  const groupCode = useAppSelector((state) => state.group.groupCode);
+
   const [userSignupMessage, setUserSignupMessage] = useState<string>("");
+  const [selectedValue, setSelectedValue] = useState<string>(
+    signupQuestion?.selectOptions[0] ?? ""
+  );
   const [agreeEntryFee, setAgreeEntryFee] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<
     | PostEnteredGameErrorMessage
@@ -45,7 +59,7 @@ export const EnterGameForm = (props: Props): ReactElement => {
     | PostCloseGroupErrorMessage
     | null
   >(null);
-  const groupCode = useAppSelector((state) => state.group.groupCode);
+
   const isInGroup = getIsInGroup(groupCode);
   const isGroupCreator = getIsGroupCreator(groupCode, serial);
 
@@ -60,7 +74,7 @@ export const EnterGameForm = (props: Props): ReactElement => {
       username,
       enteredGameId: game.gameId,
       startTime: game.startTime,
-      message: userSignupMessage,
+      message: userSignupMessage || selectedValue,
     };
 
     // TODO: This logic should be on backend
@@ -118,22 +132,43 @@ export const EnterGameForm = (props: Props): ReactElement => {
 
       {signupQuestion && (
         <SignupQuestionContainer>
-          <span>
-            {signupQuestion.message}{" "}
-            {signupQuestion.private &&
-              `(${t("privateOnlyVisibleToOrganizers")})`}
-          </span>
-          <TextArea
-            onChange={(evt) => {
-              if (evt.target.value.length > 140) {
-                return;
-              }
+          {signupQuestion.type === SignupQuestionType.TEXT && (
+            <>
+              <span>
+                {signupQuestion.question}{" "}
+                {signupQuestion.private &&
+                  `(${t("privateOnlyVisibleToOrganizers")})`}
+              </span>
+              <TextArea
+                onChange={(event) => {
+                  if (event.target.value.length > 140) {
+                    return;
+                  }
+                  setUserSignupMessage(event.target.value);
+                }}
+                value={userSignupMessage}
+              />
+              <span>{userSignupMessage.length} / 140</span>
+            </>
+          )}
 
-              setUserSignupMessage(evt.target.value);
-            }}
-            value={userSignupMessage}
-          />
-          <span>{userSignupMessage.length} / 140</span>
+          {signupQuestion.type === SignupQuestionType.SELECT && (
+            <>
+              <span>
+                {signupQuestion.question}{" "}
+                {signupQuestion.private &&
+                  `(${t("privateOnlyVisibleToOrganizers")})`}
+              </span>
+              <Dropdown
+                onChange={(event) => setSelectedValue(event.target.value)}
+                options={signupQuestion.selectOptions.map((option) => ({
+                  value: option,
+                  title: option,
+                }))}
+                selectedValue={selectedValue}
+              />
+            </>
+          )}
         </SignupQuestionContainer>
       )}
 

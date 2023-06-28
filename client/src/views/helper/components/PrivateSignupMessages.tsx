@@ -118,7 +118,7 @@ export const PrivateSignupMessages = (): ReactElement => {
                     )
                     <Answers>
                       <BoldText>{t("helperView.question")}: </BoldText>{" "}
-                      {signupQuestionWithGame.message}
+                      {signupQuestionWithGame.question}
                       {matchingSignupMessages ? (
                         <SignupAnswersContainer>
                           {matchingSignupMessages.map((answer) => (

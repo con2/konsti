@@ -434,7 +434,14 @@
   "selectedProgramType": "Ohjelmatyyppi",
   "yes": "Kyllä",
   "no": "Ei",
-  "privateQuestion": "Yksityinen kysymys",
+  "signupQuestion": {
+    "privateQuestion": "Yksityinen kysymys",
+    "questionType": "Tyyppi"
+  },
+  "signupQuestionType": {
+    "text": "Teksti",
+    "select": "Monivalinta"
+  },
   "private": "Yksityinen",
   "privateOnlyVisibleToOrganizers": "Näkyy ainoastaan järjestäjille",
   "helperView": {
