@@ -2,6 +2,7 @@ import { ReactElement, useState } from "react";
 import { useTranslation } from "react-i18next";
 import dayjs from "dayjs";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import { Game } from "shared/typings/models/game";
 import { SignupForm } from "./SignupForm";
 import {
@@ -20,8 +21,6 @@ import { getTime } from "client/utils/getTime";
 import { sharedConfig } from "shared/config/sharedConfig";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
 
-const { PRE_SIGNUP_START } = sharedConfig;
-
 interface Props {
   game: Game;
   startTime: string;
@@ -39,7 +38,6 @@ export const AlgorithmSignupForm = ({
 }: Props): ReactElement | null => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
-  const { signupOpen, manualSignupMode } = sharedConfig;
 
   const loggedIn = useAppSelector((state) => state.login.loggedIn);
   const serial = useAppSelector((state) => state.login.serial);
@@ -84,20 +82,39 @@ export const AlgorithmSignupForm = ({
   const alreadySignedToGame = isAlreadySigned(game, signedGames);
 
   const signupStartTime = dayjs(startTime)
-    .subtract(PRE_SIGNUP_START, "minutes")
+    .subtract(sharedConfig.PRE_SIGNUP_START, "minutes")
     .format();
   const timeNow = getTime();
   const lotterySignupOpen =
     dayjs(signupStartTime).isBefore(timeNow) ||
-    manualSignupMode === SignupStrategy.ALGORITHM;
+    sharedConfig.manualSignupMode === SignupStrategy.ALGORITHM;
 
   if (!loggedIn) {
-    return null;
+    return (
+      <NotLoggedSignupInfo>
+        <div>
+          {!lotterySignupOpen && (
+            <>
+              <span>{t("signup.lotterySignupOpens")}</span>{" "}
+              <BoldText>
+                {timeFormatter.getWeekdayAndTime({
+                  time: signupStartTime,
+                })}
+              </BoldText>
+            </>
+          )}
+          {lotterySignupOpen && <span>{t("signup.lotterySignupOpenNow")}</span>}
+        </div>
+        <CreateAccountLink>
+          <Link to={`/registration`}>{t("signup.registerToSignup")}</Link>
+        </CreateAccountLink>
+      </NotLoggedSignupInfo>
+    );
   }
 
   return (
     <>
-      {signupOpen && !alreadySignedToGame && isGroupCreator && (
+      {sharedConfig.signupOpen && !alreadySignedToGame && isGroupCreator && (
         <>
           {signedGamesForTimeslot.length >= 3 && (
             <p>{t("signup.cannotSignupMoreGames")}</p>
@@ -141,7 +158,7 @@ export const AlgorithmSignupForm = ({
             })}
           </SignedGameContainer>
 
-          {signupOpen && (
+          {sharedConfig.signupOpen && (
             <>
               {isGroupCreator && !cancelSignupFormOpen && (
                 <ButtonWithMargin
@@ -198,4 +215,12 @@ const BoldText = styled.span`
 
 const ButtonWithMargin = styled(Button)`
   margin-bottom: 8px;
+`;
+
+const NotLoggedSignupInfo = styled.div`
+  margin: 16px 0;
+`;
+
+const CreateAccountLink = styled.div`
+  margin: 8px 0 0 0;
 `;

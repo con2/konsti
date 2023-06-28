@@ -1,6 +1,7 @@
 import { ReactElement, useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 import { Game } from "shared/typings/models/game";
 import { EnterGameForm } from "./EnterGameForm";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
@@ -73,7 +74,28 @@ export const DirectSignupForm = ({
   const directSignupStartTime = getDirectSignupStartTime(game, timeNow);
 
   if (!loggedIn) {
-    return null;
+    return (
+      <NotLoggedSignupInfo>
+        <div>
+          {directSignupStartTime && (
+            <>
+              <span>{t("signup.signupOpens")}</span>{" "}
+              <BoldText>
+                {timeFormatter.getWeekdayAndTime({
+                  time: directSignupStartTime,
+                })}
+              </BoldText>
+            </>
+          )}
+          {!directSignupStartTime && (
+            <span>{t("signup.directSignupOpenNow")}</span>
+          )}
+        </div>
+        <CreateAccountLink>
+          <Link to={`/registration`}>{t("signup.registerToSignup")}</Link>
+        </CreateAccountLink>
+      </NotLoggedSignupInfo>
+    );
   }
 
   return (
@@ -206,4 +228,12 @@ const BoldText = styled.span`
 
 const ButtonWithMargin = styled(Button)`
   margin: 8px 0;
+`;
+
+const NotLoggedSignupInfo = styled.div`
+  margin: 16px 0;
+`;
+
+const CreateAccountLink = styled.div`
+  margin: 8px 0 0 0;
 `;
