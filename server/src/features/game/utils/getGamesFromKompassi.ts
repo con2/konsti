@@ -9,6 +9,9 @@ import {
   KompassiGame,
   KompassiGameSchema,
   KompassiProgramType,
+  KompassiSignupType,
+  experiencePointAndOtherProgramTypes,
+  tournamentProgramTypes,
 } from "shared/typings/models/kompassiGame";
 import {
   Result,
@@ -18,6 +21,7 @@ import {
   unwrapResult,
 } from "shared/utils/result";
 import { KompassiError } from "shared/typings/api/errors";
+import { sharedConfig } from "shared/config/sharedConfig";
 
 type EventProgramItem = KompassiGame;
 
@@ -148,9 +152,32 @@ const getGamesFromFullProgram = (
 ): KompassiGame[] => {
   const matchingProgramItems: EventProgramItem[] = programItems.flatMap(
     (programItem) => {
+      // These program items are hand picked to be exported from Kompassi
+      if (sharedConfig.addToKonsti.includes(programItem.identifier)) {
+        return programItem;
+      }
+
       // Take program items with valid program type
       if (
         !Object.values(KompassiProgramType).includes(programItem.category_title)
+      ) {
+        return [];
+      }
+
+      // Take 'Experience Point' and 'Other' program items where "ropecon2023_signuplist": "konsti"
+      if (
+        experiencePointAndOtherProgramTypes.includes(
+          programItem.category_title
+        ) &&
+        programItem.ropecon2023_signuplist !== KompassiSignupType.KONSTI
+      ) {
+        return [];
+      }
+
+      // Take 'Tournament' program items where "ropecon2023_signuplist": "konsti"
+      if (
+        tournamentProgramTypes.includes(programItem.category_title) &&
+        programItem.ropecon2023_signuplist !== KompassiSignupType.KONSTI
       ) {
         return [];
       }
