@@ -160,7 +160,7 @@
   },
   "pageTitle": {
     "login": "Kirjaudu sisään",
-    "registration": "Rekisteröi käyttäjätunnus"
+    "registration": "Luo käyttäjätili"
   },
   "user": "Käyttäjä",
   "favoritedProgramItems": "Suosikit",
@@ -263,7 +263,7 @@
     "foundUser": "Löytyi käyttäjä",
     "changingPasswordError": "Virhe salasanaa vaihtaessa.",
     "changingPasswordSuccess": "Salasanasi on nyt vaihdettu.",
-    "userCreatedAt": "Käyttäjä rekisteröity"
+    "userCreatedAt": "Käyttäjätili rekisteröity"
   },
   "testValues": {
     "buttonText": "Testiarvot",
@@ -295,8 +295,11 @@
     "confirmCancellation": "Vahvista peruutus",
     "staySignedUp": "Pysy ilmoittautuneena",
     "expectedDuration": "Kesto {{EXPECTED_DURATION}}",
-    "signupOpens": "Ilmoittautuminen aukeaa",
-    "lotterySignupOpens": "Arvontaan ilmoittautuminen aukeaa",
+    "signupOpens": "Ilmoittautuminen alkaa",
+    "directSignupOpenNow": "Ilmoittautuminen avoinna",
+    "lotterySignupOpenNow": "Arvontaan ilmoittautuminen avoinna",
+    "registerToSignup": "Luo käyttäjätili ilmoittautumista varten",
+    "lotterySignupOpens": "Arvontaan ilmoittautuminen alkaa",
     "signupAlwaysOpen": "Ilmoittautuminen aina auki",
     "inGroupWarning": "Jos ilmoittaudut peliin sinut poistetaan ryhmästäsi",
     "groupCreatorWarning": "Jos ilmoittaudut peliin perustamasi ryhmä hajoitetaan",
@@ -442,7 +445,7 @@
   },
   "loginView": {
     "oldAccountsNotWorking": "Aikaisempien tapahtumien käyttäjätilit eivät ole käytössä",
-    "noAccountRegister": "Ei käyttäjätiliä? Rekisteröidy"
+    "noAccountRegister": "Ei käyttäjätiliä? Luo käyttäjätili"
   },
   "iconAltText": {
     "resetInput": "Tyhjennä syöte",
