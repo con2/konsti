@@ -297,8 +297,8 @@
     "inGroupWarning": "If you signup to game you will be removed from group you are in",
     "groupCreatorWarning": "If you signup to game the group you created will be destroyed",
     "currentSignup": "You have signed up to this {{PROGRAM_TYPE}}.",
-    "entryFee": "Entry fee €{{ENTRY_FEE}}",
-    "entryFeeInfo": "I understand that participation in the workshop costs €{{ENTRY_FEE}}."
+    "entryFee": "Entry fee {{ENTRY_FEE}}",
+    "entryFeeInfo": "I understand that participation in the workshop costs {{ENTRY_FEE}}."
   },
   "attendeeType": {
     "player": "player",

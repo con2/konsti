@@ -10,6 +10,7 @@ import {
   KompassiGameStyle,
   KompassiGenre,
   KompassiProgramType,
+  KompassiSignupType,
   KompassiTag,
   tournamentProgramTypes,
   workshopProgramTypes,
@@ -137,10 +138,10 @@ export const createGames = async (
             Math.random() < 0.5,
           ropecon2023_other_accessibility_information:
             "Other accessibility information",
-          ropecon2023_signuplist: "konsti",
+          ropecon2023_signuplist: KompassiSignupType.KONSTI,
           ropecon2023_workshop_fee: workshopProgramTypes.includes(programType)
-            ? 5
-            : 0,
+            ? "5€"
+            : "",
           ropecon2023_language: "finnish_or_english",
           ropecon2023_suitable_for_all_ages: Math.random() < 0.5,
           ropecon2023_aimed_at_children_under_13: Math.random() < 0.5,

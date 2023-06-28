@@ -82,6 +82,12 @@ export enum KompassiGameStyle {
   COMBAT_DRIVEN = "combat_driven",
 }
 
+export enum KompassiSignupType {
+  NONE = "none",
+  KONSTI = "konsti",
+  OTHER = "othersign",
+}
+
 export const KompassiGameSchema = z.object({
   identifier: z.string(),
   title: z.string().catch(""),
@@ -164,8 +170,18 @@ export const KompassiGameSchema = z.object({
     .boolean()
     .catch(false),
   ropecon2023_other_accessibility_information: z.string().catch(""),
-  ropecon2023_signuplist: z.string().catch(""), // Signup type: no signup, Konsti, other
-  ropecon2023_workshop_fee: z.number().catch(0),
+  ropecon2023_signuplist: z
+    .nativeEnum(KompassiSignupType)
+    .catch(KompassiSignupType.NONE), // Signup type: no signup, Konsti, other
+  ropecon2023_workshop_fee: z
+    .string()
+    .transform((val) => {
+      if (val === "0€") {
+        return "";
+      }
+      return val;
+    })
+    .catch(""),
   ropecon2023_language: z.string().catch(""), // finnish, english, language_free, finnish_or_english
   ropecon2023_suitable_for_all_ages: z.boolean().catch(false), // tag
   ropecon2023_aimed_at_children_under_13: z.boolean().catch(false), // tag

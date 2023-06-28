@@ -111,6 +111,6 @@ export const api = {
     url: string,
     axiosRequestConfig?: AxiosRequestConfig<REQ>
   ): Promise<R> => {
-    return await axiosInstance.get(url, axiosRequestConfig);
+    return await axiosInstance.delete(url, axiosRequestConfig);
   },
 };

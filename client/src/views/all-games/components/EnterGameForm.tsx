@@ -137,7 +137,7 @@ export const EnterGameForm = (props: Props): ReactElement => {
         </SignupQuestionContainer>
       )}
 
-      {game.entryFee > 0 && (
+      {!!game.entryFee && (
         <div>
           <input
             type="checkbox"
@@ -159,7 +159,7 @@ export const EnterGameForm = (props: Props): ReactElement => {
         <Button
           onClick={handleSignup}
           buttonStyle={ButtonStyle.PRIMARY}
-          disabled={game.entryFee > 0 && !agreeEntryFee}
+          disabled={!!game.entryFee && !agreeEntryFee}
         >
           {t("signup.confirm")}
         </Button>
