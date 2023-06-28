@@ -190,7 +190,7 @@ export const GameEntry = ({
 
       <GameDetailsView game={game} isAlwaysExpanded={isAlwaysExpanded} />
 
-      {loggedIn && !isEnterGameMode && (
+      {!isEnterGameMode && (
         <AlgorithmSignupForm
           game={game}
           startTime={startTime}
@@ -198,7 +198,7 @@ export const GameEntry = ({
         />
       )}
 
-      {loggedIn && isEnterGameMode && (
+      {isEnterGameMode && (
         <DirectSignupForm
           game={game}
           gameIsFull={gameIsFull}
