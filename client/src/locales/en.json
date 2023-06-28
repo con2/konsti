@@ -97,13 +97,17 @@
     "tabletopRPG": "Tabletop RPG",
     "larp": "LARP",
     "tournament": "Tournament",
-    "workshop": "Workshop"
+    "workshop": "Workshop",
+    "experiencePoint": "Experience Point",
+    "other": "Other program"
   },
   "programTypeSelection": {
     "tabletopRPG": "Tabletop RPG",
     "larp": "LARP",
     "tournament": "Tournaments",
-    "workshop": "Workshops"
+    "workshop": "Workshops",
+    "experiencePoint": "Experience Point",
+    "other": "Other program"
   },
   "gameStyle": {
     "serious": "Serious game style",
@@ -312,35 +316,53 @@
     "player": "players",
     "participant": "participants"
   },
+  "programTypeSingular": {
+    "tabletopRPG": "Tabletop RPG",
+    "larp": "LARP",
+    "tournament": "Tournament",
+    "workshop": "Workshop",
+    "experiencePoint": "Game",
+    "other": "Program"
+  },
   "programTypePlural": {
     "tabletopRPG": "games",
     "larp": "larps",
     "tournament": "tournaments",
-    "workshop": "workshops"
+    "workshop": "workshops",
+    "experiencePoint": "programs",
+    "other": "programs"
   },
   "programTypeGenetive": {
     "tabletopRPG": "Game",
     "larp": "Larp",
     "tournament": "Tournament",
-    "workshop": "Workshop"
+    "workshop": "Workshop",
+    "experiencePoint": "Program",
+    "other": "Program"
   },
   "programTypeElative": {
     "tabletopRPG": "game",
     "larp": "larp",
     "tournament": "tournament",
-    "workshop": "workshops"
+    "workshop": "workshops",
+    "experiencePoint": "program",
+    "other": "program"
   },
   "programTypeIllative": {
     "tabletopRPG": "game",
     "larp": "larp",
     "tournament": "tournament",
-    "workshop": "workshop"
+    "workshop": "workshop",
+    "experiencePoint": "program",
+    "other": "program"
   },
   "programTypeIllativePlural": {
     "tabletopRPG": "games",
     "larp": "larps",
     "tournament": "tournaments",
-    "workshop": "workshops"
+    "workshop": "workshops",
+    "experiencePoint": "programs",
+    "other": "programs"
   },
   "resultsView": {
     "allSignupResults": "Signup Results",
