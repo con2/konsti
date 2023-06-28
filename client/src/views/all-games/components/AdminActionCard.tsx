@@ -12,6 +12,8 @@ import {
 } from "client/views/admin/adminThunks";
 import { ButtonGroup } from "client/components/ButtonGroup";
 import { ControlledInput } from "client/components/ControlledInput";
+import { Dropdown } from "client/components/Dropdown";
+import { SignupQuestionType } from "shared/typings/models/settings";
 
 interface Props {
   game: Game;
@@ -34,6 +36,8 @@ export const AdminActionCard = ({ game }: Props): ReactElement => {
   const [signupQuestionInput, setSignupQuestionInput] = useState<string>("");
   const [signupQuestionInputVisible, setSignupQuestionInputVisible] =
     useState<boolean>(false);
+  const [questionType, setQuestionType] = useState(SignupQuestionType.TEXT);
+  const [selectOptions, setSelectOptions] = useState<string[]>([]);
 
   const handleSignupQuestionChange = (
     event: ChangeEvent<HTMLInputElement>
@@ -104,8 +108,10 @@ export const AdminActionCard = ({ game }: Props): ReactElement => {
       await dispatch(
         submitAddSignupQuestion({
           gameId: game.gameId,
-          message: signupQuestionInput,
+          question: signupQuestionInput,
           private: isPrivateSignupQuestion,
+          type: questionType,
+          selectOptions,
         })
       );
     } catch (error) {
@@ -180,8 +186,56 @@ export const AdminActionCard = ({ game }: Props): ReactElement => {
             aria-labelledby={"private-question-checkbox-label"}
           />
           <label id="private-question-checkbox-label">
-            {t("privateQuestion")}
+            {t("signupQuestion.privateQuestion")}
           </label>
+
+          <div>
+            <span>{t("signupQuestion.questionType")}</span>{" "}
+            <Dropdown
+              options={Object.values(SignupQuestionType).map((type) => ({
+                value: type,
+                title: t(`signupQuestionType.${type}`),
+              }))}
+              selectedValue={questionType}
+              onChange={(event: ChangeEvent<HTMLSelectElement>) =>
+                setQuestionType(event.target.value as SignupQuestionType)
+              }
+            />
+          </div>
+
+          {questionType === SignupQuestionType.SELECT && (
+            <>
+              <input
+                onChange={(event) => {
+                  const newState = selectOptions;
+                  newState[0] = event.target.value;
+                  setSelectOptions(newState);
+                }}
+              />
+              <input
+                onChange={(event) => {
+                  const newState = selectOptions;
+                  newState[1] = event.target.value;
+                  setSelectOptions(newState);
+                }}
+              />{" "}
+              <input
+                onChange={(event) => {
+                  const newState = selectOptions;
+                  newState[2] = event.target.value;
+                  setSelectOptions(newState);
+                }}
+              />
+              <input
+                onChange={(event) => {
+                  const newState = selectOptions;
+                  newState[3] = event.target.value;
+                  setSelectOptions(newState);
+                }}
+              />
+            </>
+          )}
+
           <ButtonGroup>
             <Button
               onClick={addSignupQuestion}

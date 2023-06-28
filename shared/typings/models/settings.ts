@@ -2,10 +2,17 @@ import { z } from "zod";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
 import { GameSchema } from "shared/typings/models/game";
 
+export enum SignupQuestionType {
+  TEXT = "text",
+  SELECT = "select",
+}
+
 const SignupQuestionSchema = z.object({
   gameId: z.string(),
-  message: z.string(),
+  question: z.string(),
   private: z.boolean(),
+  type: z.nativeEnum(SignupQuestionType),
+  selectOptions: z.array(z.string()),
 });
 
 export type SignupQuestion = z.infer<typeof SignupQuestionSchema>;

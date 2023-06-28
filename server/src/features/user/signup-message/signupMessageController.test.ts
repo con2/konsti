@@ -23,7 +23,10 @@ import {
   mockUser,
 } from "server/test/mock-data/mockUser";
 import { testGame, testGame2 } from "shared/tests/testGame";
-import { SignupQuestion } from "shared/typings/models/settings";
+import {
+  SignupQuestion,
+  SignupQuestionType,
+} from "shared/typings/models/settings";
 import { saveSignupQuestion } from "server/features/settings/settingsRepository";
 import { saveSignup } from "server/features/signup/signupRepository";
 
@@ -66,14 +69,18 @@ describe(`GET ${ApiEndpoint.SIGNUP_MESSAGE}`, () => {
   test("should return 200 with helper authorization", async () => {
     const testSignupQuestion: SignupQuestion = {
       gameId: testGame.gameId,
-      message: "Public signup question",
+      question: "Public signup question",
       private: false,
+      type: SignupQuestionType.TEXT,
+      selectOptions: [],
     };
 
     const testSignupQuestion2: SignupQuestion = {
       gameId: testGame2.gameId,
-      message: "Private signup question",
+      question: "Private signup question",
       private: true,
+      type: SignupQuestionType.SELECT,
+      selectOptions: ["Select Option 1", "Select Option 2", "Select Option 3"],
     };
 
     await saveSignupQuestion(testSignupQuestion);
@@ -88,7 +95,7 @@ describe(`GET ${ApiEndpoint.SIGNUP_MESSAGE}`, () => {
     });
     await saveSignup({
       ...mockPostEnteredGameRequest2,
-      message: "Answer to private message",
+      message: "Select Option 1",
     });
 
     const response = await request(server)

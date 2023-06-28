@@ -434,7 +434,14 @@
   "selectedProgramType": "Program type",
   "yes": "Yes",
   "no": "No",
-  "privateQuestion": "Private question",
+  "signupQuestion": {
+    "privateQuestion": "Private question",
+    "questionType": "Type"
+  },
+  "signupQuestionType": {
+    "text": "Text",
+    "select": "Select"
+  },
   "private": "Private",
   "privateOnlyVisibleToOrganizers": "Only visible to organizers",
   "helperView": {
