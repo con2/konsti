@@ -1,22 +1,25 @@
-import dayjs from "dayjs";
+import dayjs, { Dayjs } from "dayjs";
 import { capitalizeFirstLetter } from "client/utils/capitalizeFirstLetter";
 import { sharedConfig } from "shared/config/sharedConfig";
 
 const { PRE_SIGNUP_START, DIRECT_SIGNUP_START } = sharedConfig;
 
-const getStartTime = (startTime: string): string => {
-  const timeFormat = "HH:mm";
+const getStartTime = (startTime: string): Dayjs => {
+  const unmodifiedStartTime = dayjs(startTime).subtract(
+    PRE_SIGNUP_START,
+    "minutes"
+  );
 
-  return dayjs(startTime)
-    .subtract(PRE_SIGNUP_START, "minutes")
-    .format(timeFormat);
+  const startTimeIsTooEarly = unmodifiedStartTime.hour() <= 6;
+
+  if (startTimeIsTooEarly) {
+    return unmodifiedStartTime.subtract(1, "day").hour(22);
+  }
+  return unmodifiedStartTime;
 };
 
-const getEndTime = (startTime: string): string => {
-  const timeFormat = "HH:mm";
-  return dayjs(startTime)
-    .subtract(DIRECT_SIGNUP_START, "minutes")
-    .format(timeFormat);
+const getEndTime = (startTime: string): Dayjs => {
+  return dayjs(startTime).subtract(DIRECT_SIGNUP_START, "minutes");
 };
 
 interface WeekdayAndTime {

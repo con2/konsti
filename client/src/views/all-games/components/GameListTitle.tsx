@@ -33,8 +33,8 @@ export const GameListTitle = ({
     time: startTime,
     capitalize: true,
   });
-  const signupStartTime = timeFormatter.getStartTime(startTime);
-  const signupEndTime = timeFormatter.getEndTime(startTime);
+  const signupStartTime = timeFormatter.getStartTime(startTime).format("HH:mm");
+  const signupEndTime = timeFormatter.getEndTime(startTime).format("HH:mm");
 
   const signedGamesCount = signedGames.filter(
     (game) => game.gameDetails.startTime === startTime
