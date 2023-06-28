@@ -41,7 +41,7 @@ export const EnterGameForm = ({
   onCancelSignup,
   signupQuestion,
 }: Props): ReactElement => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const dispatch = useAppDispatch();
 
   const username = useAppSelector((state) => state.login.username);
@@ -50,7 +50,9 @@ export const EnterGameForm = ({
 
   const [userSignupMessage, setUserSignupMessage] = useState<string>("");
   const [selectedValue, setSelectedValue] = useState<string>(
-    signupQuestion?.selectOptions[0] ?? ""
+    (i18n.language === "fi"
+      ? signupQuestion?.selectOptions[0].optionFi
+      : signupQuestion?.selectOptions[0].optionEn) ?? ""
   );
   const [agreeEntryFee, setAgreeEntryFee] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<
@@ -135,7 +137,9 @@ export const EnterGameForm = ({
           {signupQuestion.type === SignupQuestionType.TEXT && (
             <>
               <span>
-                {signupQuestion.question}{" "}
+                {i18n.language === "fi"
+                  ? signupQuestion.questionFi
+                  : signupQuestion.questionEn}{" "}
                 {signupQuestion.private &&
                   `(${t("privateOnlyVisibleToOrganizers")})`}
               </span>
@@ -155,16 +159,25 @@ export const EnterGameForm = ({
           {signupQuestion.type === SignupQuestionType.SELECT && (
             <>
               <span>
-                {signupQuestion.question}{" "}
+                {i18n.language === "fi"
+                  ? signupQuestion.questionFi
+                  : signupQuestion.questionEn}{" "}
                 {signupQuestion.private &&
                   `(${t("privateOnlyVisibleToOrganizers")})`}
               </span>
               <Dropdown
                 onChange={(event) => setSelectedValue(event.target.value)}
-                options={signupQuestion.selectOptions.map((option) => ({
-                  value: option,
-                  title: option,
-                }))}
+                options={signupQuestion.selectOptions.map((option) =>
+                  i18n.language === "fi"
+                    ? {
+                        value: option.optionFi,
+                        title: option.optionFi,
+                      }
+                    : {
+                        value: option.optionEn,
+                        title: option.optionEn,
+                      }
+                )}
                 selectedValue={selectedValue}
               />
             </>

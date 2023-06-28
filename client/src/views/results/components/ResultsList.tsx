@@ -20,7 +20,7 @@ import {
 } from "client/views/results/components/SearchAndFilterResultsCard";
 
 export const DirectResults = (): ReactElement => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const activeGames = useAppSelector(selectActiveGames);
   const activeProgramType = useAppSelector(
@@ -224,7 +224,9 @@ export const DirectResults = (): ReactElement => {
                           <PlayerList>
                             {signupMessagesVisible && (
                               <SignupQuestion>
-                                {signupQuestion?.question}
+                                {i18n.language === "fi"
+                                  ? signupQuestion?.questionFi
+                                  : signupQuestion?.questionEn}
                               </SignupQuestion>
                             )}
                             {users.length === 0 ? (

@@ -11,10 +11,16 @@ const SettingsSchema = new mongoose.Schema(
     signupQuestions: [
       {
         gameId: { type: String },
-        question: { type: String },
+        questionFi: { type: String },
+        questionEn: { type: String },
         private: { type: Boolean },
         type: { type: String },
-        selectOptions: { type: [String] },
+        selectOptions: [
+          {
+            optionFi: { type: String },
+            optionEn: { type: String },
+          },
+        ],
       },
     ],
     signupStrategy: {

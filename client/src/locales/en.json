@@ -374,9 +374,6 @@
     "noResults": "No signup results available yet",
     "signupResultsFor": "Signup results for games starting at"
   },
-  "gameDetails": {
-    "addSignupTextField": "Add signup additional info field"
-  },
   "firstLogin": {
     "serial": "Save this code for recovering your password:",
     "info": "This message is shown to you only when you first login. You can also find code from the navigation."
@@ -436,7 +433,10 @@
   "no": "No",
   "signupQuestion": {
     "privateQuestion": "Private question",
-    "questionType": "Type"
+    "questionType": "Type",
+    "addSignupTextField": "Add signup additional info field",
+    "inFinnish": "In Finnish",
+    "inEnglish": "In English"
   },
   "signupQuestionType": {
     "text": "Text",
