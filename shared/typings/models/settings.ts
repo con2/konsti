@@ -7,12 +7,22 @@ export enum SignupQuestionType {
   SELECT = "select",
 }
 
+const SignupQuestionSelectOptionSchema = z.object({
+  optionFi: z.string(),
+  optionEn: z.string(),
+});
+
+export type SignupQuestionSelectOption = z.infer<
+  typeof SignupQuestionSelectOptionSchema
+>;
+
 const SignupQuestionSchema = z.object({
   gameId: z.string(),
-  question: z.string(),
+  questionFi: z.string(),
+  questionEn: z.string(),
   private: z.boolean(),
   type: z.nativeEnum(SignupQuestionType),
-  selectOptions: z.array(z.string()),
+  selectOptions: z.array(SignupQuestionSelectOptionSchema),
 });
 
 export type SignupQuestion = z.infer<typeof SignupQuestionSchema>;

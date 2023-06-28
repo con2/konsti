@@ -98,7 +98,8 @@ describe(`POST ${ApiEndpoint.SETTINGS}`, () => {
   test("should return updated settings with full or partial update", async () => {
     const testSignupQuestion: SignupQuestion = {
       gameId: "123456",
-      question: "Test message",
+      questionFi: "Test message",
+      questionEn: "public message",
       private: false,
       type: SignupQuestionType.TEXT,
       selectOptions: [],
@@ -212,7 +213,8 @@ describe(`POST ${ApiEndpoint.SIGNUP_QUESTION}`, () => {
     const requestData: PostSignupQuestionRequest = {
       signupQuestion: {
         gameId: "123",
-        question: "Character level",
+        questionFi: "Character level",
+        questionEn: "public message",
         private: false,
         type: SignupQuestionType.TEXT,
         selectOptions: [],
@@ -237,10 +239,15 @@ describe(`POST ${ApiEndpoint.SIGNUP_QUESTION}`, () => {
     const requestData: PostSignupQuestionRequest = {
       signupQuestion: {
         gameId: "123",
-        question: "Character level",
+        questionFi: "Character level",
+        questionEn: "public message",
         private: false,
         type: SignupQuestionType.SELECT,
-        selectOptions: ["Option 1", "Option 2", "Option 3"],
+        selectOptions: [
+          { optionFi: "Option 1", optionEn: "Option 1" },
+          { optionFi: "Option 2", optionEn: "Option 2" },
+          { optionFi: "Option 3", optionEn: "Option 3" },
+        ],
       },
     };
 
@@ -288,10 +295,15 @@ describe(`POST ${ApiEndpoint.SIGNUP_QUESTION}`, () => {
     test("should delete signup question", async () => {
       const signupQuestion: SignupQuestion = {
         gameId: "123",
-        question: "Character level",
+        questionFi: "Character level",
+        questionEn: "public message",
         private: false,
         type: SignupQuestionType.SELECT,
-        selectOptions: ["Option 1", "Option 2", "Option 3"],
+        selectOptions: [
+          { optionFi: "Option 1", optionEn: "Option 1" },
+          { optionFi: "Option 2", optionEn: "Option 2" },
+          { optionFi: "Option 3", optionEn: "Option 3" },
+        ],
       };
 
       await saveSignupQuestion(signupQuestion);

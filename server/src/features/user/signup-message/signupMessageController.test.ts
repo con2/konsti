@@ -69,7 +69,8 @@ describe(`GET ${ApiEndpoint.SIGNUP_MESSAGE}`, () => {
   test("should return 200 with helper authorization", async () => {
     const testSignupQuestion: SignupQuestion = {
       gameId: testGame.gameId,
-      question: "Public signup question",
+      questionFi: "Public signup question",
+      questionEn: "public message",
       private: false,
       type: SignupQuestionType.TEXT,
       selectOptions: [],
@@ -77,10 +78,15 @@ describe(`GET ${ApiEndpoint.SIGNUP_MESSAGE}`, () => {
 
     const testSignupQuestion2: SignupQuestion = {
       gameId: testGame2.gameId,
-      question: "Private signup question",
+      questionFi: "Private signup question",
+      questionEn: "public message",
       private: true,
       type: SignupQuestionType.SELECT,
-      selectOptions: ["Select Option 1", "Select Option 2", "Select Option 3"],
+      selectOptions: [
+        { optionFi: "Option 1", optionEn: "Option 1" },
+        { optionFi: "Option 2", optionEn: "Option 2" },
+        { optionFi: "Option 3", optionEn: "Option 3" },
+      ],
     };
 
     await saveSignupQuestion(testSignupQuestion);
