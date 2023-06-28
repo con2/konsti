@@ -139,7 +139,7 @@ export const GameEntry = ({
             </RowItem>
 
             <RowItem>
-              {game.entryFee > 0 &&
+              {!!game.entryFee &&
                 t(`signup.entryFee`, {
                   ENTRY_FEE: game.entryFee,
                 })}

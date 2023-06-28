@@ -4,6 +4,7 @@ import {
   KompassiGameStyle,
   KompassiGenre,
   KompassiProgramType,
+  KompassiSignupType,
   KompassiTag,
 } from "shared/typings/models/kompassiGame";
 
@@ -49,8 +50,8 @@ export const testKompassiGame: KompassiGame = {
   ropecon2023_accessibility_participation_requires_react_quickly: false,
   ropecon2023_other_accessibility_information:
     "Other accessibility information",
-  ropecon2023_signuplist: "",
-  ropecon2023_workshop_fee: 0,
+  ropecon2023_signuplist: KompassiSignupType.KONSTI,
+  ropecon2023_workshop_fee: "",
   ropecon2023_language: testGame.language,
   ropecon2023_suitable_for_all_ages: false,
   ropecon2023_aimed_at_children_under_13: false,
@@ -104,8 +105,8 @@ export const testKompassiGame2: KompassiGame = {
   ropecon2023_accessibility_participation_requires_react_quickly: false,
   ropecon2023_other_accessibility_information:
     "Other accessibility information",
-  ropecon2023_signuplist: "",
-  ropecon2023_workshop_fee: 0,
+  ropecon2023_signuplist: KompassiSignupType.KONSTI,
+  ropecon2023_workshop_fee: "",
   ropecon2023_language: testGame2.language,
   ropecon2023_suitable_for_all_ages: false,
   ropecon2023_aimed_at_children_under_13: false,
