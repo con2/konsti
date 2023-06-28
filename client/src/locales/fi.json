@@ -298,7 +298,7 @@
     "signupOpens": "Ilmoittautuminen alkaa",
     "directSignupOpenNow": "Ilmoittautuminen avoinna",
     "lotterySignupOpenNow": "Arvontaan ilmoittautuminen avoinna",
-    "registerToSignup": "Luo käyttäjätili ilmoittautumista varten",
+    "loginToSignup": "Kirjaudu sisään ilmoittautumista varten",
     "lotterySignupOpens": "Arvontaan ilmoittautuminen alkaa",
     "signupAlwaysOpen": "Ilmoittautuminen aina auki",
     "inGroupWarning": "Jos ilmoittaudut peliin sinut poistetaan ryhmästäsi",
@@ -446,6 +446,9 @@
   "loginView": {
     "oldAccountsNotWorking": "Aikaisempien tapahtumien käyttäjätilit eivät ole käytössä",
     "noAccountRegister": "Ei käyttäjätiliä? Luo käyttäjätili"
+  },
+  "registrationView": {
+    "alreadyHaveAccountLogin": "Sinulla on jo tili? Kirjaudu"
   },
   "iconAltText": {
     "resetInput": "Tyhjennä syöte",

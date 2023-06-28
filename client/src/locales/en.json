@@ -298,7 +298,7 @@
     "signupOpens": "Signup opens",
     "directSignupOpenNow": "Signup open",
     "lotterySignupOpenNow": "Lottery signup open",
-    "registerToSignup": "Create account to sign up",
+    "loginToSignup": "Log in to sign up",
     "lotterySignupOpens": "Lottery signup opens",
     "signupAlwaysOpen": "Signup always open",
     "inGroupWarning": "If you signup to game you will be removed from group you are in",
@@ -446,6 +446,9 @@
   "loginView": {
     "oldAccountsNotWorking": "Accounts from old events don't work anymore",
     "noAccountRegister": "No account? Create one"
+  },
+  "registrationView": {
+    "alreadyHaveAccountLogin": "Already have an account? Login"
   },
   "iconAltText": {
     "resetInput": "Reset input",
