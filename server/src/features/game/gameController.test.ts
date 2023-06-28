@@ -94,14 +94,14 @@ describe(`GET ${ApiEndpoint.GAMES}`, () => {
 
     await saveSignupQuestion({
       gameId: testGame.gameId,
-      message: "public message",
+      question: "public message",
       private: false,
       type: SignupQuestionType.TEXT,
       selectOptions: [],
     });
     await saveSignupQuestion({
       gameId: testGame2.gameId,
-      message: "private message",
+      question: "private message",
       private: true,
       type: SignupQuestionType.TEXT,
       selectOptions: [],

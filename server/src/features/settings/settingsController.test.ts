@@ -98,7 +98,7 @@ describe(`POST ${ApiEndpoint.SETTINGS}`, () => {
   test("should return updated settings with full or partial update", async () => {
     const testSignupQuestion: SignupQuestion = {
       gameId: "123456",
-      message: "Test message",
+      question: "Test message",
       private: false,
       type: SignupQuestionType.TEXT,
       selectOptions: [],
@@ -212,7 +212,7 @@ describe(`POST ${ApiEndpoint.SIGNUP_QUESTION}`, () => {
     const requestData: PostSignupQuestionRequest = {
       signupQuestion: {
         gameId: "123",
-        message: "Character level",
+        question: "Character level",
         private: false,
         type: SignupQuestionType.TEXT,
         selectOptions: [],
@@ -237,7 +237,7 @@ describe(`POST ${ApiEndpoint.SIGNUP_QUESTION}`, () => {
     const requestData: PostSignupQuestionRequest = {
       signupQuestion: {
         gameId: "123",
-        message: "Character level",
+        question: "Character level",
         private: false,
         type: SignupQuestionType.SELECT,
         selectOptions: ["Option 1", "Option 2", "Option 3"],
@@ -288,7 +288,7 @@ describe(`POST ${ApiEndpoint.SIGNUP_QUESTION}`, () => {
     test("should delete signup question", async () => {
       const signupQuestion: SignupQuestion = {
         gameId: "123",
-        message: "Character level",
+        question: "Character level",
         private: false,
         type: SignupQuestionType.SELECT,
         selectOptions: ["Option 1", "Option 2", "Option 3"],

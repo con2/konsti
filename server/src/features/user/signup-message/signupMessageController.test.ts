@@ -69,7 +69,7 @@ describe(`GET ${ApiEndpoint.SIGNUP_MESSAGE}`, () => {
   test("should return 200 with helper authorization", async () => {
     const testSignupQuestion: SignupQuestion = {
       gameId: testGame.gameId,
-      message: "Public signup question",
+      question: "Public signup question",
       private: false,
       type: SignupQuestionType.TEXT,
       selectOptions: [],
@@ -77,7 +77,7 @@ describe(`GET ${ApiEndpoint.SIGNUP_MESSAGE}`, () => {
 
     const testSignupQuestion2: SignupQuestion = {
       gameId: testGame2.gameId,
-      message: "Private signup question",
+      question: "Private signup question",
       private: true,
       type: SignupQuestionType.SELECT,
       selectOptions: ["Select Option 1", "Select Option 2", "Select Option 3"],
