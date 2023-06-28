@@ -7,6 +7,7 @@ import {
 } from "server/features/settings/settingsRepository";
 import { shuffleArray } from "server/utils/shuffleArray";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
+import { SignupQuestionType } from "shared/typings/models/settings";
 
 const NUMBER_OF_TEST_QUESTIONS = 20;
 
@@ -38,6 +39,8 @@ export const createSettings = async (): Promise<void> => {
       gameId: randomGame.gameId,
       message: testQuestion,
       private: Math.random() < 0.5,
+      type: SignupQuestionType.TEXT,
+      selectOptions: [],
     });
   });
 

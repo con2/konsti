@@ -15,7 +15,11 @@ import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { UserGroup } from "shared/typings/models/user";
 import { getJWT } from "server/utils/jwt";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
-import { Settings, SignupQuestion } from "shared/typings/models/settings";
+import {
+  Settings,
+  SignupQuestion,
+  SignupQuestionType,
+} from "shared/typings/models/settings";
 import { testGame, testGame2 } from "shared/tests/testGame";
 import { saveGames } from "server/features/game/gameRepository";
 import { findUser, saveUser } from "server/features/user/userRepository";
@@ -33,6 +37,11 @@ import {
 } from "server/test/mock-data/mockUser";
 import { closeServer, startServer } from "server/utils/server";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
+import { PostSignupQuestionRequest } from "shared/typings/api/settings";
+import {
+  findSettings,
+  saveSignupQuestion,
+} from "server/features/settings/settingsRepository";
 
 let server: Server;
 let mongoServer: MongoMemoryServer;
@@ -91,6 +100,8 @@ describe(`POST ${ApiEndpoint.SETTINGS}`, () => {
       gameId: "123456",
       message: "Test message",
       private: false,
+      type: SignupQuestionType.TEXT,
+      selectOptions: [],
     };
 
     const testSettings: Settings = {
@@ -167,5 +178,136 @@ describe(`POST ${ApiEndpoint.HIDDEN}`, () => {
     const signups = unsafelyUnwrapResult(signupsResult);
     expect(signups.length).toEqual(1);
     expect(signups[0].userSignups[0].username).toEqual(mockUser.username);
+  });
+});
+
+describe(`POST ${ApiEndpoint.SIGNUP_QUESTION}`, () => {
+  test("should return 401 without valid authorization", async () => {
+    const response = await request(server).post(ApiEndpoint.SIGNUP_QUESTION);
+    expect(response.status).toEqual(401);
+  });
+
+  test("should return 401 with user authorization", async () => {
+    const response = await request(server)
+      .post(ApiEndpoint.SIGNUP_QUESTION)
+      .set("Authorization", `Bearer ${getJWT(UserGroup.USER, "testuser")}`);
+    expect(response.status).toEqual(401);
+  });
+
+  test("should return 401 with helper authorization", async () => {
+    const response = await request(server)
+      .post(ApiEndpoint.SIGNUP_QUESTION)
+      .set("Authorization", `Bearer ${getJWT(UserGroup.HELP, "helper")}`);
+    expect(response.status).toEqual(401);
+  });
+
+  test("should return 200 with admin authorization", async () => {
+    const response = await request(server)
+      .post(ApiEndpoint.SIGNUP_QUESTION)
+      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+    expect(response.status).toEqual(200);
+  });
+
+  test("should add new text signup question", async () => {
+    const requestData: PostSignupQuestionRequest = {
+      signupQuestion: {
+        gameId: "123",
+        message: "Character level",
+        private: false,
+        type: SignupQuestionType.TEXT,
+        selectOptions: [],
+      },
+    };
+
+    await request(server)
+      .post(ApiEndpoint.SIGNUP_QUESTION)
+      .send(requestData)
+      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+
+    const settingsResult = await findSettings();
+    const settings = unsafelyUnwrapResult(settingsResult);
+
+    expect(settings.signupQuestions).toHaveLength(1);
+    expect(settings.signupQuestions[0]).toMatchObject(
+      requestData.signupQuestion
+    );
+  });
+
+  test("should add new select signup question", async () => {
+    const requestData: PostSignupQuestionRequest = {
+      signupQuestion: {
+        gameId: "123",
+        message: "Character level",
+        private: false,
+        type: SignupQuestionType.SELECT,
+        selectOptions: ["Option 1", "Option 2", "Option 3"],
+      },
+    };
+
+    await request(server)
+      .post(ApiEndpoint.SIGNUP_QUESTION)
+      .send(requestData)
+      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+
+    const settingsResult = await findSettings();
+    const settings = unsafelyUnwrapResult(settingsResult);
+
+    expect(settings.signupQuestions).toHaveLength(1);
+    expect(settings.signupQuestions[0]).toMatchObject(
+      requestData.signupQuestion
+    );
+  });
+
+  describe(`DELETE ${ApiEndpoint.SIGNUP_QUESTION}`, () => {
+    test("should return 401 without valid authorization", async () => {
+      const response = await request(server).post(ApiEndpoint.SIGNUP_QUESTION);
+      expect(response.status).toEqual(401);
+    });
+
+    test("should return 401 with user authorization", async () => {
+      const response = await request(server)
+        .post(ApiEndpoint.SIGNUP_QUESTION)
+        .set("Authorization", `Bearer ${getJWT(UserGroup.USER, "testuser")}`);
+      expect(response.status).toEqual(401);
+    });
+
+    test("should return 401 with helper authorization", async () => {
+      const response = await request(server)
+        .post(ApiEndpoint.SIGNUP_QUESTION)
+        .set("Authorization", `Bearer ${getJWT(UserGroup.HELP, "helper")}`);
+      expect(response.status).toEqual(401);
+    });
+
+    test("should return 200 with admin authorization", async () => {
+      const response = await request(server)
+        .post(ApiEndpoint.SIGNUP_QUESTION)
+        .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+      expect(response.status).toEqual(200);
+    });
+
+    test("should delete signup question", async () => {
+      const signupQuestion: SignupQuestion = {
+        gameId: "123",
+        message: "Character level",
+        private: false,
+        type: SignupQuestionType.SELECT,
+        selectOptions: ["Option 1", "Option 2", "Option 3"],
+      };
+
+      await saveSignupQuestion(signupQuestion);
+
+      const settingsResult = await findSettings();
+      const settings = unsafelyUnwrapResult(settingsResult);
+      expect(settings.signupQuestions).toHaveLength(1);
+
+      await request(server)
+        .delete(ApiEndpoint.SIGNUP_QUESTION)
+        .send({ gameId: "123" })
+        .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+
+      const updatedSettingsResult = await findSettings();
+      const updatedSettings = unsafelyUnwrapResult(updatedSettingsResult);
+      expect(updatedSettings.signupQuestions).toHaveLength(0);
+    });
   });
 });

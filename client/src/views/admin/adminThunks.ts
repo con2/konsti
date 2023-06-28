@@ -77,8 +77,10 @@ export const submitAddSignupQuestion = (
   return async (dispatch): Promise<void> => {
     const response = await postSignupQuestion({
       gameId: signupQuestion.gameId,
-      message: signupQuestion.message,
+      question: signupQuestion.question,
       private: signupQuestion.private,
+      type: signupQuestion.type,
+      selectOptions: signupQuestion.selectOptions,
     });
 
     if (response?.status === "error") {

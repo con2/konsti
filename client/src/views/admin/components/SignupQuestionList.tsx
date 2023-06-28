@@ -47,17 +47,22 @@ export const SignupQuestionList = ({
           if (!foundGame) return [];
 
           return (
-            <li key={`${signupQuestion.gameId}-${signupQuestion.message}`}>
+            <li key={`${signupQuestion.gameId}-${signupQuestion.question}`}>
               <Link to={`/games/${signupQuestion.gameId}`}>
                 {foundGame.title}
               </Link>
-              : {signupQuestion.message}{" "}
+              <span>: {signupQuestion.question}</span>{" "}
+              {signupQuestion.selectOptions.length > 0 && (
+                <span>({signupQuestion.selectOptions.join(", ")})</span>
+              )}{" "}
               {signupQuestion.private && <BoldText>({t("private")})</BoldText>}{" "}
               - {t(`programType.${foundGame.programType}`)} -{" "}
-              {timeFormatter.getWeekdayAndTime({
-                time: foundGame.startTime,
-                capitalize: false,
-              })}
+              <span>
+                {timeFormatter.getWeekdayAndTime({
+                  time: foundGame.startTime,
+                  capitalize: false,
+                })}
+              </span>
             </li>
           );
         })}

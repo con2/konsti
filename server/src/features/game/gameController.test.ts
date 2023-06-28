@@ -47,6 +47,7 @@ import {
 } from "shared/typings/models/kompassiGame";
 import { GameStyle, Genre, Tag } from "shared/typings/models/game";
 import { logger } from "server/utils/logger";
+import { SignupQuestionType } from "shared/typings/models/settings";
 
 let server: Server;
 let mongoServer: MongoMemoryServer;
@@ -95,11 +96,15 @@ describe(`GET ${ApiEndpoint.GAMES}`, () => {
       gameId: testGame.gameId,
       message: "public message",
       private: false,
+      type: SignupQuestionType.TEXT,
+      selectOptions: [],
     });
     await saveSignupQuestion({
       gameId: testGame2.gameId,
       message: "private message",
       private: true,
+      type: SignupQuestionType.TEXT,
+      selectOptions: [],
     });
 
     const response = await request(server).get(ApiEndpoint.GAMES);

@@ -94,7 +94,7 @@ export const EnteredGameRow = ({
       {!!signupQuestion && (
         <SignupQuestionPlacement>
           <FontAwesomeIcon icon={["far", "comment"]} aria-hidden="true" />
-          {` ${t("myProgramView.yourAnswer")} "${signupQuestion.message}"${
+          {` ${t("myProgramView.yourAnswer")} "${signupQuestion.question}"${
             signupQuestion.private
               ? ` (${t("privateOnlyVisibleToOrganizers")})`
               : ""
