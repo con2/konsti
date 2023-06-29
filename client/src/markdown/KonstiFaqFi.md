@@ -1,5 +1,3 @@
-# Konsti FAQ
-
 ## Mistä saan apua Konstin käyttöön?
 
 Vapaaehtoisemme Pelitiskillä ja Larp/Rope-tiskillä auttavat mielellään Konstin käytössä ja peleihin ilmoittautumisessa. Jos sinulla on siis kysyttävää Konstin käytöstä, älä epäröi nykäistä heitä hihasta tapahtuman aikana!

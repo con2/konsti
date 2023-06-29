@@ -1,5 +1,3 @@
-# Konsti FAQ
-
 ## I need help with the Konsti app, who can I ask?
 
 Our volunteers at both the Gaming Desk as well as the Larp/RPG Desk will gladly assist you and help you sign up for games using the Konsti app. If you have any questions about the Konsti app or how to use it, do not hesitate to ask them for help during the convention!
