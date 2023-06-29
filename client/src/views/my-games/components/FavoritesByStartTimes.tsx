@@ -1,6 +1,7 @@
 import { Fragment, ReactElement } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
 import { timeFormatter } from "client/utils/timeFormatter";
 import { Game } from "shared/typings/models/game";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
@@ -16,6 +17,7 @@ export const FavoritesByStartTimes = ({
   games,
   startTimes,
 }: Props): ReactElement => {
+  const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const username = useAppSelector((state) => state.login.username);
   const favoritedGames = useAppSelector(
@@ -60,6 +62,7 @@ export const FavoritesByStartTimes = ({
                         onClick={async () => {
                           await removeFavorite(game);
                         }}
+                        ariaLabel={t("iconAltText.deleteFavorite")}
                       />
                     </GameDetailsRow>
                   );

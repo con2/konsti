@@ -72,6 +72,7 @@ export const EnteredGameRow = ({
             <StyledIconButton
               onClick={() => setCancelSignupFormOpen(true)}
               icon="calendar-xmark"
+              ariaLabel={t("button.cancelSignup")}
             />
           )}
         </div>

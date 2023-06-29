@@ -8,24 +8,25 @@ interface Props {
   icon: IconName;
   className?: string;
   onClick?: MouseEventHandler;
+  ariaLabel: string;
 }
 
 export const IconButton = ({
   icon,
   className,
   onClick,
+  ariaLabel,
 }: Props): ReactElement => {
   const { t } = useTranslation();
 
   const dataTestId = "remove-favorite-button";
-  const ariaLabelKey = "iconAltText.deleteFavorite";
 
   return (
     <StyledButton
       className={className}
       onClick={onClick}
       data-testid={dataTestId}
-      aria-label={t(ariaLabelKey)}
+      aria-label={ariaLabel}
     >
       <Icon className={className} icon={icon} aria-hidden="true" />
     </StyledButton>

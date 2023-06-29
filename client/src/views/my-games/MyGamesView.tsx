@@ -99,19 +99,6 @@ export const MyGamesView = (): ReactElement => {
           showAllGames ? favoritedGames : getUpcomingFavorites(favoritedGames)
         }
       />
-      {signupStrategy !== SignupStrategy.DIRECT && (
-        <MySignupsList
-          signedGames={getSignedGames({
-            signedGames,
-            groupCode,
-            serial,
-            getAllGames: showAllGames,
-            groupMembers,
-            activeProgramType,
-          })}
-          isGroupCreator={isGroupCreator}
-        />
-      )}
       <MyEnteredList
         enteredGames={
           showAllGames ? enteredGames : getUpcomingEnteredGames(enteredGames)
@@ -126,6 +113,19 @@ export const MyGamesView = (): ReactElement => {
         })}
         activeProgramType={activeProgramType}
       />
+      {signupStrategy !== SignupStrategy.DIRECT && (
+        <MySignupsList
+          signedGames={getSignedGames({
+            signedGames,
+            groupCode,
+            serial,
+            getAllGames: showAllGames,
+            groupMembers,
+            activeProgramType,
+          })}
+          isGroupCreator={isGroupCreator}
+        />
+      )}
     </MyGamesViewContainer>
   );
 };

@@ -61,7 +61,7 @@
   "pages": {
     "myProgram": "My Program",
     "programList": "All Program",
-    "program": "Ohjelma",
+    "program": "Program",
     "admin": "Admin",
     "results": "Signup Results",
     "group": "Group",
@@ -302,8 +302,8 @@
     "loginToSignup": "Log in to sign up",
     "lotterySignupOpens": "Lottery signup opens",
     "signupAlwaysOpen": "Signup always open",
-    "inGroupWarning": "If you sign up to a game you will be removed from group you are in",
-    "groupCreatorWarning": "If you sign up to a game the group you created will be destroyed",
+    "inGroupWarning": "If you sign up to a game you will be removed from group you are in.",
+    "groupCreatorWarning": "If you sign up to a game, the group you created will be deleted.",
     "currentSignup": "You have signed up to this {{PROGRAM_TYPE}}.",
     "entryFee": "Entry fee {{ENTRY_FEE}}",
     "entryFeeInfo": "I understand that participation in the workshop costs {{ENTRY_FEE}}."
