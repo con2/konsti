@@ -34,7 +34,6 @@ export const GameDetails = (): ReactElement => {
     groupCode,
     serial,
     groupMembers,
-    activeProgramType,
     getAllGames: true,
   });
 

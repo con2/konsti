@@ -47,7 +47,6 @@ interface GetSignedGamesParams {
   groupCode: string;
   serial: string;
   groupMembers: readonly GroupMember[];
-  activeProgramType: ProgramType;
   getAllGames: boolean;
 }
 
@@ -56,7 +55,6 @@ export const getSignedGames = ({
   groupCode,
   serial,
   groupMembers,
-  activeProgramType,
   getAllGames,
 }: GetSignedGamesParams): readonly SelectedGame[] => {
   const isGroupCreator = getIsGroupCreator(groupCode, serial);
@@ -69,13 +67,9 @@ export const getSignedGames = ({
     const groupCreator = getGroupCreator(groupMembers);
     if (!groupCreator) return [];
 
-    const groupCreatorActiveSignedGames = groupCreator.signedGames.filter(
-      (signedGame) => signedGame.gameDetails.programType === activeProgramType
-    );
-
     return getAllGames
-      ? groupCreatorActiveSignedGames
-      : getUpcomingSignedGames(groupCreatorActiveSignedGames);
+      ? groupCreator.signedGames
+      : getUpcomingSignedGames(groupCreator.signedGames);
   }
 
   return signedGames;

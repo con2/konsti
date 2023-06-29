@@ -34,9 +34,6 @@ export const MyGamesView = (): ReactElement => {
   const groupMembers = useAppSelector((state) => state.group.groupMembers);
   const testTime = useAppSelector((state) => state.testSettings.testTime);
   const signupStrategy = useAppSelector((state) => state.admin.signupStrategy);
-  const activeProgramType = useAppSelector(
-    (state) => state.admin.activeProgramType
-  );
 
   const [showAllGames, setShowAllGames] = useState<boolean>(false);
 
@@ -109,9 +106,7 @@ export const MyGamesView = (): ReactElement => {
           serial,
           getAllGames: showAllGames,
           groupMembers,
-          activeProgramType,
         })}
-        activeProgramType={activeProgramType}
       />
       {signupStrategy !== SignupStrategy.DIRECT && (
         <MySignupsList
@@ -121,7 +116,6 @@ export const MyGamesView = (): ReactElement => {
             serial,
             getAllGames: showAllGames,
             groupMembers,
-            activeProgramType,
           })}
           isGroupCreator={isGroupCreator}
         />

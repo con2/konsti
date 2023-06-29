@@ -12,13 +12,11 @@ import { RaisedCard } from "client/components/RaisedCard";
 interface Props {
   enteredGames: readonly SelectedGame[];
   signedGames: readonly SelectedGame[];
-  activeProgramType: ProgramType;
 }
 
 export const MyEnteredList = ({
   enteredGames,
   signedGames,
-  activeProgramType,
 }: Props): ReactElement => {
   const { t } = useTranslation();
 
@@ -26,10 +24,8 @@ export const MyEnteredList = ({
   const [startTimes, setStartTimes] = useState<string[]>([]);
 
   useEffect(() => {
-    setMissedSignups(
-      getMissedSignups(signedGames, enteredGames, activeProgramType)
-    );
-  }, [signedGames, enteredGames, activeProgramType]);
+    setMissedSignups(getMissedSignups(signedGames, enteredGames));
+  }, [signedGames, enteredGames]);
 
   useEffect(() => {
     setStartTimes(
