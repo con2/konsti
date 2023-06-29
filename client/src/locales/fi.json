@@ -417,8 +417,9 @@
     "unknown": "Tuntematon virhe"
   },
   "aboutView": {
-    "general": "Mikä Konsti?",
-    "faq": "FAQ"
+    "instructions": "Ohjeet",
+    "about": "Tietoja",
+    "faq": "UKK"
   },
   "profileView": {
     "profileTab": "Profiili",
