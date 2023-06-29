@@ -3,17 +3,11 @@ import { getStartTimes } from "client/utils/getStartTimes";
 import { sharedConfig } from "shared/config/sharedConfig";
 import { getTime } from "client/utils/getTime";
 import { SelectedGame } from "shared/typings/models/user";
-import { ProgramType } from "shared/typings/models/game";
 
 export const getMissedSignups = (
   signedGames: readonly SelectedGame[],
-  enteredGames: readonly SelectedGame[],
-  activeProgramType: ProgramType
+  enteredGames: readonly SelectedGame[]
 ): string[] => {
-  if (activeProgramType !== ProgramType.TABLETOP_RPG) {
-    return [];
-  }
-
   const timeNow = getTime();
 
   const signedGamesStartTimes = getStartTimes(

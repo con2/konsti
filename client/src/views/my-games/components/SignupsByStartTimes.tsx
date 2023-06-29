@@ -26,41 +26,44 @@ export const SignupsByStartTimes = ({
               })}
             </StyledTime>
 
-            {signups.map((signup) => {
-              if (signup.time === startTime) {
-                return (
-                  <GameDetailsContainer key={signup.gameDetails.gameId}>
-                    <RowLeftSide>
-                      <SignupPriority>{`${signup.priority})`}</SignupPriority>
-                      <StyledLink to={`/games/${signup.gameDetails.gameId}`}>
-                        {signup.gameDetails.title}
-                      </StyledLink>
-                    </RowLeftSide>
-                    <PopularityContainer>
-                      <PopularityInfo
-                        minAttendance={signup.gameDetails.minAttendance}
-                        maxAttendance={signup.gameDetails.maxAttendance}
-                        popularity={signup.gameDetails.popularity}
-                        includeMsg={false}
-                      />
-                    </PopularityContainer>
-                  </GameDetailsContainer>
-                );
-              }
-            })}
+            <ul>
+              {signups.map((signup) => {
+                if (signup.time === startTime) {
+                  return (
+                    <GameDetailsContainer key={signup.gameDetails.gameId}>
+                      <RowLeftSide>
+                        <SignupPriority>{`${signup.priority})`}</SignupPriority>
+                        <StyledLink to={`/games/${signup.gameDetails.gameId}`}>
+                          {signup.gameDetails.title}
+                        </StyledLink>
+                      </RowLeftSide>
+                      <PopularityContainer>
+                        <PopularityInfo
+                          minAttendance={signup.gameDetails.minAttendance}
+                          maxAttendance={signup.gameDetails.maxAttendance}
+                          popularity={signup.gameDetails.popularity}
+                          includeMsg={false}
+                        />
+                      </PopularityContainer>
+                    </GameDetailsContainer>
+                  );
+                }
+              })}
+            </ul>
           </div>
         );
       })}
     </div>
   );
 };
-const GameDetailsContainer = styled.div`
+
+const GameDetailsContainer = styled.li`
   display: flex;
   flex-direction: row;
-  margin: 0 0 6px 30px;
+  margin-bottom: 8px;
+  list-style: none;
 
   @media (max-width: ${(props) => props.theme.breakpointPhone}) {
-    margin-left: 10px;
     justify-content: space-between;
   }
 `;

@@ -14,13 +14,14 @@ import { loadUser, loadGames, loadGroupMembers } from "client/utils/loadData";
 import { getIsGroupCreator } from "client/views/group/groupUtils";
 import { useAppSelector } from "client/utils/hooks";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
-import { ProgramType } from "shared/typings/models/game";
 import {
   selectEnteredGames,
   selectFavoritedGames,
   selectSignedGames,
 } from "client/views/my-games/myGamesSlice";
 import { RadioButton } from "client/components/RadioButton";
+import { RaisedCard } from "client/components/RaisedCard";
+import { SessionStorageValue } from "client/utils/localStorage";
 
 export const MyGamesView = (): ReactElement => {
   const { t } = useTranslation();
@@ -33,15 +34,21 @@ export const MyGamesView = (): ReactElement => {
   const groupMembers = useAppSelector((state) => state.group.groupMembers);
   const testTime = useAppSelector((state) => state.testSettings.testTime);
   const signupStrategy = useAppSelector((state) => state.admin.signupStrategy);
-  const activeProgramType = useAppSelector(
-    (state) => state.admin.activeProgramType
+
+  const [showAllGames, setShowAllGames] = useState<boolean>(
+    sessionStorage.getItem(SessionStorageValue.MY_GAMES_SHOW_ALL_GAMES) ===
+      "true" || false
   );
-
-  const [showAllGames, setShowAllGames] = useState<boolean>(false);
-
   const store = useStore();
 
   const isGroupCreator = getIsGroupCreator(groupCode, serial);
+
+  useEffect(() => {
+    setShowAllGames(
+      sessionStorage.getItem(SessionStorageValue.MY_GAMES_SHOW_ALL_GAMES) ===
+        "true" || false
+    );
+  }, []);
 
   useEffect(() => {
     const fetchData = async (): Promise<void> => {
@@ -54,40 +61,43 @@ export const MyGamesView = (): ReactElement => {
 
   return (
     <MyGamesViewContainer>
-      <RadioButtonGroup>
-        <RadioButton
-          checked={!showAllGames}
-          id={"upcoming"}
-          label={t("lastStartedAndUpcoming")}
-          onChange={() => setShowAllGames(false)}
-        />
-        <RadioButton
-          checked={showAllGames}
-          id={"all"}
-          label={t("all")}
-          onChange={() => setShowAllGames(true)}
-        />
-      </RadioButtonGroup>
+      <RaisedCard>
+        <StyledLabel htmlFor="startingTimeSelection">
+          {t("startingTime")}
+        </StyledLabel>
+        <RadioButtonGroup>
+          <RadioButton
+            checked={!showAllGames}
+            id={"upcoming"}
+            label={t("lastStartedAndUpcoming")}
+            onChange={() => {
+              setShowAllGames(false);
+              sessionStorage.setItem(
+                SessionStorageValue.MY_GAMES_SHOW_ALL_GAMES,
+                "false"
+              );
+            }}
+          />
+          <RadioButton
+            checked={showAllGames}
+            id={"all"}
+            label={t("all")}
+            onChange={() => {
+              setShowAllGames(true);
+              sessionStorage.setItem(
+                SessionStorageValue.MY_GAMES_SHOW_ALL_GAMES,
+                "true"
+              );
+            }}
+          />
+        </RadioButtonGroup>
+      </RaisedCard>
 
       <MyFavoritesList
         favoritedGames={
           showAllGames ? favoritedGames : getUpcomingFavorites(favoritedGames)
         }
       />
-      {signupStrategy !== SignupStrategy.DIRECT &&
-        activeProgramType === ProgramType.TABLETOP_RPG && (
-          <MySignupsList
-            signedGames={getSignedGames({
-              signedGames,
-              groupCode,
-              serial,
-              getAllGames: showAllGames,
-              groupMembers,
-              activeProgramType,
-            })}
-            isGroupCreator={isGroupCreator}
-          />
-        )}
       <MyEnteredList
         enteredGames={
           showAllGames ? enteredGames : getUpcomingEnteredGames(enteredGames)
@@ -98,10 +108,20 @@ export const MyGamesView = (): ReactElement => {
           serial,
           getAllGames: showAllGames,
           groupMembers,
-          activeProgramType,
         })}
-        activeProgramType={activeProgramType}
       />
+      {signupStrategy !== SignupStrategy.DIRECT && (
+        <MySignupsList
+          signedGames={getSignedGames({
+            signedGames,
+            groupCode,
+            serial,
+            getAllGames: showAllGames,
+            groupMembers,
+          })}
+          isGroupCreator={isGroupCreator}
+        />
+      )}
     </MyGamesViewContainer>
   );
 };
@@ -121,4 +141,9 @@ const RadioButtonGroup = styled.fieldset`
   padding-left: 0;
   display: flex;
   flex-direction: column;
+`;
+
+const StyledLabel = styled.label`
+  padding: 0 0 2px 4px;
+  font-size: ${(props) => props.theme.fontSizeSmall};
 `;
