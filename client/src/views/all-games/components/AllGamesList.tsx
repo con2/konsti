@@ -36,7 +36,6 @@ export const AllGamesList = ({ games }: Props): ReactElement => {
     groupCode,
     serial,
     groupMembers,
-    activeProgramType,
     getAllGames: true,
   });
 

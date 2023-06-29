@@ -9,6 +9,7 @@ interface TabContent {
   path: string;
   element: React.ReactNode;
   icon?: IconName;
+  "data-testid"?: string;
 }
 
 interface Props {
@@ -22,7 +23,7 @@ export const Tabs = ({ tabContents }: Props): ReactElement => {
         <TabsList>
           {tabContents.map((t) => (
             <ListItem key={t.headerText}>
-              <StyledLink to={t.path}>
+              <StyledLink to={t.path} data-testid={t["data-testid"]}>
                 {t.icon && <StyledIcon icon={t.icon} aria-hidden={true} />}
                 {t.headerText}
               </StyledLink>

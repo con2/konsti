@@ -30,25 +30,27 @@ export const ResultsByStartTimes = ({
               })}
             </StyledTime>
 
-            {signups.map((signup) => {
-              return (
-                <EnteredGameRow
-                  key={signup.gameDetails.gameId}
-                  signup={signup}
-                  startTime={startTime}
-                />
-              );
-            })}
-
-            {missedSignups.map((missedSignup) => {
-              if (missedSignup === startTime) {
+            <ul>
+              {signups.map((signup) => {
                 return (
-                  <GameDetailsList key={missedSignup}>
-                    {t("noLotterySignupResult")}
-                  </GameDetailsList>
+                  <EnteredGameRow
+                    key={signup.gameDetails.gameId}
+                    signup={signup}
+                    startTime={startTime}
+                  />
                 );
-              }
-            })}
+              })}
+
+              {missedSignups.map((missedSignup) => {
+                if (missedSignup === startTime) {
+                  return (
+                    <GameDetailsList key={missedSignup}>
+                      {t("noLotterySignupResult")}
+                    </GameDetailsList>
+                  );
+                }
+              })}
+            </ul>
           </div>
         );
       })}
@@ -59,11 +61,6 @@ export const ResultsByStartTimes = ({
 const GameDetailsList = styled.div`
   display: flex;
   align-items: center;
-  margin-left: 30px;
-
-  @media (max-width: ${(props) => props.theme.breakpointPhone}) {
-    margin-left: 10px;
-  }
 `;
 
 const StyledTime = styled.p`

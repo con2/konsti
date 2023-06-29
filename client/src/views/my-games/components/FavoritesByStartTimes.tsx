@@ -1,24 +1,23 @@
 import { Fragment, ReactElement } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
 import { timeFormatter } from "client/utils/timeFormatter";
 import { Game } from "shared/typings/models/game";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { updateFavorite } from "client/utils/favorite";
-import {
-  FavoriteButton,
-  FavoriteButtonSize,
-} from "client/components/FavoriteButton";
+import { IconButton } from "client/components/IconButton";
 
 interface Props {
   games: readonly Game[];
   startTimes: readonly string[];
 }
 
-export const GamesByStartTimes = ({
+export const FavoritesByStartTimes = ({
   games,
   startTimes,
 }: Props): ReactElement => {
+  const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const username = useAppSelector((state) => state.login.username);
   const favoritedGames = useAppSelector(
@@ -47,27 +46,29 @@ export const GamesByStartTimes = ({
               })}
             </StyledTime>
 
-            {games.map((game) => {
-              if (game.startTime === startTime) {
-                return (
-                  <GameDetailsRow key={game.gameId}>
-                    <FavoriteButton
-                      buttonSize={FavoriteButtonSize.SMALL}
-                      isFavorite={true}
-                      onClick={async () => {
-                        await removeFavorite(game);
-                      }}
-                    />
-                    <Link
-                      to={`/games/${game.gameId}`}
-                      data-testid={"game-title"}
-                    >
-                      {game.title}
-                    </Link>
-                  </GameDetailsRow>
-                );
-              }
-            })}
+            <ul>
+              {games.map((game) => {
+                if (game.startTime === startTime) {
+                  return (
+                    <GameDetailsRow key={game.gameId}>
+                      <StyledLink
+                        to={`/games/${game.gameId}`}
+                        data-testid={"game-title"}
+                      >
+                        {game.title}
+                      </StyledLink>
+                      <IconButton
+                        icon="heart-circle-xmark"
+                        onClick={async () => {
+                          await removeFavorite(game);
+                        }}
+                        ariaLabel={t("iconAltText.deleteFavorite")}
+                      />
+                    </GameDetailsRow>
+                  );
+                }
+              })}
+            </ul>
           </Fragment>
         );
       })}
@@ -75,17 +76,22 @@ export const GamesByStartTimes = ({
   );
 };
 
-const GameDetailsRow = styled.p`
+const GameDetailsRow = styled.li`
   align-items: center;
   justify-content: left;
-  margin: 0 0 8px 0;
+  margin-bottom: 8px;
+  list-style: none;
 
   @media (max-width: ${(props) => props.theme.breakpointPhone}) {
-    margin: 0 0 8px 0;
+    justify-content: space-between;
   }
 `;
 
 const StyledTime = styled.p`
   font-weight: 600;
   margin: 10px 0;
+`;
+
+const StyledLink = styled(Link)`
+  margin-right: 8px;
 `;

@@ -20,9 +20,6 @@ export const GameDetails = (): ReactElement => {
   const games = useAppSelector((state) => state.allGames.games);
   const signups = useAppSelector((state) => state.allGames.signups);
   const activeEnteredGames = useAppSelector(selectActiveEnteredGames);
-  const activeProgramType = useAppSelector(
-    (state) => state.admin.activeProgramType
-  );
 
   // Figure out if user has signed up to this game
   const activeSignedGames = useAppSelector(selectActiveSignedGames);
@@ -34,7 +31,6 @@ export const GameDetails = (): ReactElement => {
     groupCode,
     serial,
     groupMembers,
-    activeProgramType,
     getAllGames: true,
   });
 
