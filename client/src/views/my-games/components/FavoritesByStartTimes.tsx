@@ -51,13 +51,13 @@ export const FavoritesByStartTimes = ({
                 if (game.startTime === startTime) {
                   return (
                     <GameDetailsRow key={game.gameId}>
-                      <Link
+                      <StyledLink
                         to={`/games/${game.gameId}`}
                         data-testid={"game-title"}
                       >
                         {game.title}
-                      </Link>
-                      <StyledFavoriteButton
+                      </StyledLink>
+                      <IconButton
                         icon="heart-circle-xmark"
                         onClick={async () => {
                           await removeFavorite(game);
@@ -92,6 +92,6 @@ const StyledTime = styled.p`
   margin: 10px 0;
 `;
 
-const StyledFavoriteButton = styled(IconButton)`
-  margin-left: 4px;
+const StyledLink = styled(Link)`
+  margin-right: 8px;
 `;

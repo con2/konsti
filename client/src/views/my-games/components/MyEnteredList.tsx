@@ -5,7 +5,6 @@ import styled from "styled-components";
 import { ResultsByStartTimes } from "./ResultsByStartTimes";
 import { getMissedSignups } from "client/views/my-games/utils/getMissedSignups";
 import { SelectedGame } from "shared/typings/models/user";
-import { ProgramType } from "shared/typings/models/game";
 import { sharedConfig } from "shared/config/sharedConfig";
 import { RaisedCard } from "client/components/RaisedCard";
 

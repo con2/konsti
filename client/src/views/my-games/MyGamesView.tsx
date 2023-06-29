@@ -35,8 +35,10 @@ export const MyGamesView = (): ReactElement => {
   const testTime = useAppSelector((state) => state.testSettings.testTime);
   const signupStrategy = useAppSelector((state) => state.admin.signupStrategy);
 
-  const [showAllGames, setShowAllGames] = useState<boolean>(false);
-
+  const [showAllGames, setShowAllGames] = useState<boolean>(
+    sessionStorage.getItem(SessionStorageValue.MY_GAMES_SHOW_ALL_GAMES) ===
+      "true" || false
+  );
   const store = useStore();
 
   const isGroupCreator = getIsGroupCreator(groupCode, serial);

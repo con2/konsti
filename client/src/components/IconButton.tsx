@@ -1,7 +1,6 @@
 import { MouseEventHandler, ReactElement } from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useTranslation } from "react-i18next";
 import { IconName } from "@fortawesome/free-solid-svg-icons";
 
 interface Props {
@@ -17,8 +16,6 @@ export const IconButton = ({
   onClick,
   ariaLabel,
 }: Props): ReactElement => {
-  const { t } = useTranslation();
-
   const dataTestId = "remove-favorite-button";
 
   return (

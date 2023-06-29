@@ -65,11 +65,11 @@ export const EnteredGameRow = ({
     <GameDetailsList key={signup.gameDetails.gameId}>
       <GameTitleAndButtons>
         <div>
-          <Link to={`/games/${signup.gameDetails.gameId}`}>
+          <StyledLink to={`/games/${signup.gameDetails.gameId}`}>
             {signup.gameDetails.title}
-          </Link>
+          </StyledLink>
           {sharedConfig.signupOpen && !cancelSignupFormOpen && (
-            <StyledIconButton
+            <IconButton
               onClick={() => setCancelSignupFormOpen(true)}
               icon="calendar-xmark"
               ariaLabel={t("button.cancelSignup")}
@@ -133,6 +133,6 @@ const CancelSignupFormContainer = styled.div`
   max-width: 240px;
 `;
 
-const StyledIconButton = styled(IconButton)`
-  margin-left: 4px;
+const StyledLink = styled(Link)`
+  margin-right: 8px;
 `;
