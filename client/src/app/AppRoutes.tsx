@@ -20,6 +20,7 @@ import { FaqView } from "client/views/about/FaqView";
 import { Tabs } from "client/components/Tabs";
 import { EventLog } from "client/views/all-games/components/EventLog";
 import { ProfileView } from "client/views/profile/ProfileView";
+import { InstructionsView } from "client/views/about/InstructionsView";
 
 export const AppRoutes = (): ReactElement => {
   const { t } = useTranslation();
@@ -47,16 +48,22 @@ export const AppRoutes = (): ReactElement => {
 
   const aboutTabs = [
     {
-      headerText: t("aboutView.general"),
-      path: "about",
-      element: <AboutView />,
-      icon: "info" as IconName,
+      headerText: t("aboutView.instructions"),
+      path: "help",
+      element: <InstructionsView />,
+      icon: "person-chalkboard" as IconName,
     },
     {
       headerText: t("aboutView.faq"),
       path: "faq",
       element: <FaqView />,
       icon: "question" as IconName,
+    },
+    {
+      headerText: t("aboutView.about"),
+      path: "about",
+      element: <AboutView />,
+      icon: "info" as IconName,
     },
   ];
 
