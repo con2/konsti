@@ -5,19 +5,17 @@ import styled from "styled-components";
 import { ResultsByStartTimes } from "./ResultsByStartTimes";
 import { getMissedSignups } from "client/views/my-games/utils/getMissedSignups";
 import { SelectedGame } from "shared/typings/models/user";
-import { ProgramType } from "shared/typings/models/game";
 import { sharedConfig } from "shared/config/sharedConfig";
+import { RaisedCard } from "client/components/RaisedCard";
 
 interface Props {
   enteredGames: readonly SelectedGame[];
   signedGames: readonly SelectedGame[];
-  activeProgramType: ProgramType;
 }
 
 export const MyEnteredList = ({
   enteredGames,
   signedGames,
-  activeProgramType,
 }: Props): ReactElement => {
   const { t } = useTranslation();
 
@@ -25,10 +23,8 @@ export const MyEnteredList = ({
   const [startTimes, setStartTimes] = useState<string[]>([]);
 
   useEffect(() => {
-    setMissedSignups(
-      getMissedSignups(signedGames, enteredGames, activeProgramType)
-    );
-  }, [signedGames, enteredGames, activeProgramType]);
+    setMissedSignups(getMissedSignups(signedGames, enteredGames));
+  }, [signedGames, enteredGames]);
 
   useEffect(() => {
     setStartTimes(
@@ -37,31 +33,23 @@ export const MyEnteredList = ({
   }, [missedSignups, enteredGames]);
 
   return (
-    <div>
-      <h3>{t("enteredGames")}</h3>
-      <MyEnteredGames>
-        {(!sharedConfig.resultsVisible || startTimes.length === 0) && (
-          <span>{t("noEnteredGames")}</span>
-        )}
+    <RaisedCard>
+      <Header>{t("enteredGames")}</Header>
+      {(!sharedConfig.resultsVisible || startTimes.length === 0) && (
+        <span>{t("noEnteredGames")}</span>
+      )}
 
-        {sharedConfig.resultsVisible && startTimes.length !== 0 && (
-          <ResultsByStartTimes
-            signups={_.sortBy(enteredGames, [
-              (enteredGame) => enteredGame.time,
-            ])}
-            startTimes={[...Array.from(new Set(startTimes))].sort()}
-            missedSignups={missedSignups}
-          />
-        )}
-      </MyEnteredGames>
-    </div>
+      {sharedConfig.resultsVisible && startTimes.length !== 0 && (
+        <ResultsByStartTimes
+          signups={_.sortBy(enteredGames, [(enteredGame) => enteredGame.time])}
+          startTimes={[...Array.from(new Set(startTimes))].sort()}
+          missedSignups={missedSignups}
+        />
+      )}
+    </RaisedCard>
   );
 };
 
-const MyEnteredGames = styled.div`
-  margin-left: 30px;
-
-  @media (max-width: ${(props) => props.theme.breakpointPhone}) {
-    margin-left: 10px;
-  }
+const Header = styled.h3`
+  margin: 0 0 12px 0;
 `;

@@ -15,10 +15,10 @@ export const UserNavigation = (props: {
       {appOpen && (
         <RouterLink
           onClick={props.onSelect}
-          to="/games"
+          to="/program/list"
           data-testid="program-list-page-link"
         >
-          {t("pages.programList")}
+          {t("pages.program")}
         </RouterLink>
       )}
 

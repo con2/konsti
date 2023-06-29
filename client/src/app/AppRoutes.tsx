@@ -28,6 +28,23 @@ export const AppRoutes = (): ReactElement => {
   const loggedIn = useAppSelector((state) => state.login.loggedIn);
   const userGroup = useAppSelector((state) => state.login.userGroup);
 
+  const programTabs = [
+    {
+      headerText: t("pages.myProgram"),
+      path: "myprogram",
+      element: <MyGamesView />,
+      icon: "dice" as IconName,
+      "data-testid": "my-program-list",
+    },
+    {
+      headerText: t("pages.programList"),
+      path: "list",
+      element: <AllGamesView />,
+      icon: "calendar-days" as IconName,
+      "data-testid": "program-list",
+    },
+  ];
+
   const aboutTabs = [
     {
       headerText: t("aboutView.general"),
@@ -66,7 +83,11 @@ export const AppRoutes = (): ReactElement => {
           <>
             <Route path="/help" element={<HelperView />} />
             <Route path="/games/:gameId" element={<GameDetails />} />
-            <Route path="/games" element={<AllGamesView />} />
+            <Route
+              path="/program"
+              element={<Navigate replace to="/program/list" />}
+            />
+            <Route path="/program/list" element={<AllGamesView />} />
             <Route path="/results" element={<ResultsView />} />
             <Route path="/profile" element={<ProfileView />} />
           </>
@@ -84,8 +105,14 @@ export const AppRoutes = (): ReactElement => {
     return (
       <Routes>
         <Route path="/games/:gameId" element={<GameDetails />} />
-        <Route path="/games" element={<AllGamesView />} />
-        <Route path="/mygames" element={<MyGamesView />} />
+        {isAdminOrHelp(userGroup) ? (
+          <Route path="/program/list" element={<AllGamesView />} />
+        ) : (
+          <Route
+            path="/program/*"
+            element={<Tabs tabContents={programTabs} />}
+          />
+        )}
         <Route path="/notifications" element={<EventLog />} />
         <Route path="/results" element={<ResultsView />} />
         {!isAdminOrHelp(userGroup) && sharedConfig.enableGroups ? (
@@ -107,7 +134,11 @@ export const AppRoutes = (): ReactElement => {
           <Route path="/help" element={<HelperView />} />
         )}
         <Route path="/about/*" element={<Tabs tabContents={aboutTabs} />} />
-        <Route path="/" element={<Navigate to="/games" />} />
+        {isAdminOrHelp(userGroup) ? (
+          <Route path="/" element={<Navigate to="/program/list" />} />
+        ) : (
+          <Route path="/" element={<Navigate to="/program/myprogram" />} />
+        )}
         <Route path="/*" element={<Navigate to="/" />} />
       </Routes>
     );
@@ -118,9 +149,13 @@ export const AppRoutes = (): ReactElement => {
       <Route path="/login" element={<LoginView />} />
       <Route path="/registration" element={<RegistrationView />} />
       <Route path="/games/:gameId" element={<GameDetails />} />
-      <Route path="/games" element={<AllGamesView />} />
+      <Route
+        path="/program"
+        element={<Navigate replace to="/program/list" />}
+      />
+      <Route path="/program/list" element={<AllGamesView />} />
       <Route path="/about/*" element={<Tabs tabContents={aboutTabs} />} />
-      <Route path="/" element={<Navigate to="/games" />} />
+      <Route path="/" element={<Navigate to="/program" />} />
       <Route path="/*" element={<Navigate to="/login" />} />
     </Routes>
   );
