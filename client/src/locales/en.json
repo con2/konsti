@@ -417,7 +417,8 @@
     "unknown": "Unknown error"
   },
   "aboutView": {
-    "general": "What is Konsti?",
+    "instructions": "Help",
+    "about": "About",
     "faq": "FAQ"
   },
   "profileView": {

@@ -23,6 +23,7 @@ import {
   faCalendarDays as fasCalendarDays,
   faHeartCircleXmark as fasHeartCircleXmark,
   faCalendarXmark as fasCalendarXmark,
+  faPersonChalkboard as fasPersonChalboard,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faHeart as farHeart,
@@ -55,6 +56,7 @@ export const getIconLibrary = (): void => {
     fasCalendarDays,
     fasDice,
     fasHeartCircleXmark,
-    fasCalendarXmark
+    fasCalendarXmark,
+    fasPersonChalboard
   );
 };
