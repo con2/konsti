@@ -98,6 +98,8 @@ export const GameEntry = ({
     tags.push(t("gameTags.inEnglish"));
   }
 
+  const requiresSignup = game.maxAttendance > 0;
+
   return (
     <GameContainer
       key={game.gameId}
@@ -123,14 +125,16 @@ export const GameEntry = ({
             </RowItem>
 
             <RowItem>
-              {game.minAttendance === game.maxAttendance &&
+              {requiresSignup &&
+                game.minAttendance === game.maxAttendance &&
                 _.capitalize(
                   `${t(
                     `attendeeTypePlural.${getAttendeeType(game.programType)}`
                   )} ${game.maxAttendance}`
                 )}
 
-              {game.minAttendance !== game.maxAttendance &&
+              {requiresSignup &&
+                game.minAttendance !== game.maxAttendance &&
                 _.capitalize(
                   `${t(
                     `attendeeTypePlural.${getAttendeeType(game.programType)}`
@@ -145,7 +149,8 @@ export const GameEntry = ({
                 })}
             </RowItem>
           </p>
-          {isEnterGameMode && (
+
+          {isEnterGameMode && requiresSignup && (
             <>
               <PlayerCount>
                 {t("signup.signupCount", {
@@ -156,14 +161,20 @@ export const GameEntry = ({
               <PlayersNeeded visible={players < game.minAttendance}>
                 {t("signup.attendeesNeeded", {
                   COUNT: game.minAttendance - players,
-                  ATTENDEE_TYPE: t(
-                    `attendeeTypePartitive.${getAttendeeType(game.programType)}`
-                  ),
+                  ATTENDEE_TYPE:
+                    game.minAttendance - players === 1
+                      ? t(`attendeeType.${getAttendeeType(game.programType)}`)
+                      : t(
+                          `attendeeTypePartitive.${getAttendeeType(
+                            game.programType
+                          )}`
+                        ),
                 })}
               </PlayersNeeded>
             </>
           )}
-          {!isEnterGameMode && (
+
+          {!isEnterGameMode && requiresSignup && (
             <PopularityInfo
               minAttendance={game.minAttendance}
               maxAttendance={game.maxAttendance}
@@ -172,6 +183,7 @@ export const GameEntry = ({
             />
           )}
         </HeaderContainer>
+
         {loggedIn && userGroup === "user" && game && (
           <FavoriteButton
             isFavorite={favorited}
@@ -190,7 +202,7 @@ export const GameEntry = ({
 
       <GameDetailsView game={game} isAlwaysExpanded={isAlwaysExpanded} />
 
-      {!isEnterGameMode && (
+      {!isEnterGameMode && requiresSignup && (
         <AlgorithmSignupForm
           game={game}
           startTime={startTime}
@@ -198,12 +210,20 @@ export const GameEntry = ({
         />
       )}
 
-      {isEnterGameMode && (
+      {isEnterGameMode && requiresSignup && (
         <DirectSignupForm
           game={game}
           gameIsFull={gameIsFull}
           startTime={startTime}
         />
+      )}
+
+      {!requiresSignup && (
+        <p>
+          {t("signup.doesNotRequireSignup", {
+            PROGRAM_TYPE: t(`programTypeIllative.${game.programType}`),
+          })}
+        </p>
       )}
     </GameContainer>
   );
