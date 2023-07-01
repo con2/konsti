@@ -23,7 +23,7 @@
     "docker:db": "yarn docker:db-run 2>/dev/null || yarn docker:db-start",
     "docker:db-run": "docker run -p 27017:27017 -d --name konsti-mongodb mongo:6.0.6-jammy",
     "docker:db-start": "docker start konsti-mongodb",
-    "eslint-rules": "eslint --print-config .eslintrc.js",
+    "eslint-print-config": "eslint --print-config .eslintrc.js > eslint-config.json && prettier --write eslint-config.json",
     "eslint-timings": "cross-env TIMING=1 yarn eslint",
     "eslint:client": "yarn workspace konsti-client eslint",
     "eslint:server": "yarn workspace konsti-server eslint",
@@ -55,7 +55,7 @@
     "babel-plugin-lodash": "3.3.4",
     "babel-plugin-module-resolver": "5.0.0",
     "concurrently": "8.2.0",
-    "dayjs": "1.11.8",
+    "dayjs": "1.11.9",
     "lodash": "4.17.21",
     "ncp": "2.0.0",
     "rimraf": "5.0.1",
@@ -66,12 +66,12 @@
   "devDependencies": {
     "@types/lodash": "4.14.195",
     "@types/prettier": "2.7.3",
-    "@typescript-eslint/eslint-plugin": "5.60.0",
-    "@typescript-eslint/parser": "5.60.0",
+    "@typescript-eslint/eslint-plugin": "5.60.1",
+    "@typescript-eslint/parser": "5.60.1",
     "cross-env": "7.0.3",
-    "eslint": "8.43.0",
+    "eslint": "8.44.0",
     "eslint-config-prettier": "8.8.0",
-    "eslint-config-standard-with-typescript": "35.0.0",
+    "eslint-config-standard-with-typescript": "36.0.0",
     "eslint-import-resolver-typescript": "3.5.5",
     "eslint-plugin-ban": "1.6.0",
     "eslint-plugin-compat": "4.1.4",
@@ -89,14 +89,14 @@
     "eslint-plugin-vitest": "0.2.6",
     "husky": "8.0.3",
     "is-ci": "3.0.1",
-    "lint-staged": "13.2.2",
+    "lint-staged": "13.2.3",
     "prettier": "2.8.8",
     "vitest": "0.32.2"
   },
   "engines": {
     "node": ">=18.13.0"
   },
-  "packageManager": "yarn@3.6.0",
+  "packageManager": "yarn@3.6.1",
   "resolutions": {
     "babel-plugin-lodash/@babel/types": "7.20.7",
     "babel-plugin-styled-components": "2.1.3"
