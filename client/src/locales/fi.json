@@ -306,7 +306,8 @@
     "groupCreatorWarning": "Jos ilmoittaudut peliin, perustamasi ryhmä poistetaan.",
     "currentSignup": "Olet ilmoittautunut tähän {{PROGRAM_TYPE}}.",
     "entryFee": "Osallistumismaksu {{ENTRY_FEE}}",
-    "entryFeeInfo": "Ymmärrän, että työpajaan osallistuminen maksaa {{ENTRY_FEE}}."
+    "entryFeeInfo": "Ymmärrän, että työpajaan osallistuminen maksaa {{ENTRY_FEE}}.",
+    "doesNotRequireSignup": "Tähän {{PROGRAM_TYPE}} ei tarvitse ilmoittautua"
   },
   "attendeeType": {
     "player": "pelaaja",
