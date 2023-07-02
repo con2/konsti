@@ -70,6 +70,7 @@ export const theme = {
   borderInactive: gray.primary,
   borderWarning: red.primary,
   borderCardHighlight: mainColor.light,
+  tabBorder: gray.light,
 
   buttonPrimaryBackground: mainColor.primary,
   buttonPrimaryHover: addOpacity(mainColor.dark, "0.85"),
@@ -88,15 +89,16 @@ export const theme = {
 
   formAccent: mainColor.primary,
 
+  // Text colors
   textError: red.primary,
   textLink: mainColor.dark,
   textActiveTab: mainColor.dark,
   textInactiveTab: gray.darker,
-  tabBorder: gray.light,
   textMain: black,
   textMainLink: black,
   textSuccess: mainColor.dark,
   textTag: black,
+  textSecondary: gray.primary,
 
   iconFavorited: mainColor.primary,
   iconDefault: mainColor.primary,
@@ -122,6 +124,7 @@ export const theme = {
   fontSizeNormal: "16px",
   fontSizeLarge: "20px",
   linkFontSize: "18px",
+  mainHeaderFontSize: "24px",
 
   // Icon sizes
   iconSizeSmall: "16px",

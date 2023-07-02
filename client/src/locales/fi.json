@@ -273,12 +273,11 @@
   },
   "eventLog": {
     "title": "Ilmoitukset",
-    "sentTimeAgo": "lähetetty",
     "noNotifications": "Ei ilmoituksia",
     "gameDetails": "Aloitusaika {{START_TIME}} huoneessa {{LOCATION}}"
   },
   "eventLogActions": {
-    "newAssignment": "Olet päässyt arvonnassa peliin"
+    "newAssignment": "Olet päässyt arvonnassa peliin "
   },
   "signup": {
     "alreadyLotterySigned": "Peli on arvontavaihtoehdoissa sijalla {{CURRENT_PRIORITY}}",
