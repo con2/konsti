@@ -103,7 +103,7 @@ export const GameEntry = ({
   return (
     <GameContainer
       key={game.gameId}
-      signed={isGameSigned}
+      isHighlighted={isGameSigned}
       data-testid="game-container"
     >
       <GameHeader>
@@ -257,7 +257,7 @@ const HeaderContainer = styled.div`
   }
 `;
 
-const GameContainer = styled(RaisedCard)<{ signed: boolean }>`
+const GameContainer = styled(RaisedCard)`
   display: flex;
   flex-direction: column;
   min-height: 160px;
@@ -267,12 +267,6 @@ const GameContainer = styled(RaisedCard)<{ signed: boolean }>`
     margin-left: 0;
     margin-right: 0;
   }
-
-  ${(props) =>
-    props.signed && `border: 1px solid ${props.theme.borderCardHighlight};`}
-  ${(props) =>
-    props.signed &&
-    `border-left: 5px solid ${props.theme.borderCardHighlight};`}
 `;
 
 const RowItem = styled.span`
