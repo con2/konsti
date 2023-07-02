@@ -15,7 +15,8 @@ import { removeTestSettings } from "server/test/test-settings/testSettingsReposi
 import { isErrorResult, unwrapResult } from "shared/utils/result";
 
 const ADMIN_PASSWORD = "";
-const CREATE_TEST_USERS = true;
+const HELP_PASSWORD = "";
+const CREATE_TEST_USERS = false;
 
 const initializeDatabase = async (): Promise<void> => {
   if (process.env.NODE_ENV === "production") {
@@ -36,7 +37,7 @@ const initializeDatabase = async (): Promise<void> => {
   await createAdminUser(ADMIN_PASSWORD);
 
   logger.info("Create helper user");
-  await createHelpUser();
+  await createHelpUser(HELP_PASSWORD);
 
   if (CREATE_TEST_USERS) {
     logger.info("Create test users");
