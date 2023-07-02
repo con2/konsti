@@ -201,7 +201,7 @@
   "closingMessage": "Konsti is closed and will open closer to the next event",
   "details": "details",
   "gameLimitWarning": "Only three selected games allowed",
-  "noLotterySignupResult": "Unfortunately, you didn't get a spot in a game in the lottery.",
+  "noLotterySignupResult": "Unfortunately, you didn't get a spot in any game in the lottery.",
   "invalidProgramItemId": "Program item not found, invalid ID",
   "feedbackTitle": "Feedback",
   "feedbackInstruction": "Did you enjoy the {{PROGRAM_TYPE}}? Send feedback to the organizer! They will receive it after the event.",
@@ -280,6 +280,9 @@
   "eventLogActions": {
     "newAssignment": "You have entered a game in lottery"
   },
+  "notificationBar": {
+    "showAll": "Show all notifications"
+  },
   "signup": {
     "alreadyLotterySigned": "This game is priority {{CURRENT_PRIORITY}} on your lottery signups",
     "directSignup": "Sign up",
@@ -297,7 +300,7 @@
     "staySignedUp": "Stay signed up",
     "expectedDuration": "Duration {{EXPECTED_DURATION}}",
     "signupOpens": "Signup opens",
-    "directSignupOpenNow": "Signup open",
+    "directSignupOpenNow": "Signup is open",
     "lotterySignupOpenNow": "Lottery signup open",
     "loginToSignup": "Log in to sign up",
     "lotterySignupOpens": "Lottery signup opens",
