@@ -25,9 +25,9 @@ export const NotificationBar = (): ReactElement | null => {
         <StyledNotification key={`${action}-${createdAt}`}>
           <div>
             <span>{t(`eventLogActions.${action}`)}</span>
-            <StyledLink to={`/games/${programItemId}`}>
+            <StyledProgramLink to={`/games/${programItemId}`}>
               {foundGame.title}
-            </StyledLink>
+            </StyledProgramLink>
             <StartTime>
               (
               {timeFormatter.getWeekdayAndTime({
@@ -35,7 +35,14 @@ export const NotificationBar = (): ReactElement | null => {
               })}
               )
             </StartTime>
+
+            <ShowAllLinkContainer>
+              <StyledLink to={`/notifications`}>
+                {t("notificationBar.showAll")}
+              </StyledLink>
+            </ShowAllLinkContainer>
           </div>
+
           <span>
             <StyledFontAwesomeIcon
               icon="xmark"
@@ -78,11 +85,18 @@ const NotificationContainer = styled.div`
 
 const StyledLink = styled(Link)`
   color: ${(props) => props.theme.textMainLink};
+`;
+
+const StyledProgramLink = styled(StyledLink)`
   margin-left: 6px;
 `;
 
 const StartTime = styled.span`
   margin-left: 6px;
+`;
+
+const ShowAllLinkContainer = styled.div`
+  margin: 20px 0 0 0;
 `;
 
 const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
