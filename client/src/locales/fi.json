@@ -201,7 +201,7 @@
   "closingMessage": "Konsti on suljettu ja avautuu lähempänä seuraavaa tapahtumaa",
   "details": "lisätietoja",
   "gameLimitWarning": "Voit valita enintään kolme peliä",
-  "noLotterySignupResult": "Valitettavasti et mahtunut peliin arvonnassa.",
+  "noLotterySignupResult": "Valitettavasti et mahtunut mihinkään peliin arvonnassa.",
   "invalidProgramItemId": "Ohjelmanumeroa ei löydy, viallinen tunniste",
   "feedbackTitle": "Palaute",
   "feedbackInstruction": "Piditkö {{PROGRAM_TYPE}}? Lähetä palautetta järjestäjälle! Palautteet toimitetaan tapahtuman jälkeen.",
@@ -280,6 +280,9 @@
   "eventLogActions": {
     "newAssignment": "Olet päässyt arvonnassa peliin"
   },
+  "notificationBar": {
+    "showAll": "Näytä kaikki ilmoitukset"
+  },
   "signup": {
     "alreadyLotterySigned": "Peli on arvontavaihtoehdoissa sijalla {{CURRENT_PRIORITY}}",
     "directSignup": "Ilmoittaudu",
@@ -297,7 +300,7 @@
     "staySignedUp": "Pysy ilmoittautuneena",
     "expectedDuration": "Kesto {{EXPECTED_DURATION}}",
     "signupOpens": "Ilmoittautuminen alkaa",
-    "directSignupOpenNow": "Ilmoittautuminen avoinna",
+    "directSignupOpenNow": "Ilmoittautuminen on avoinna",
     "lotterySignupOpenNow": "Arvontaan ilmoittautuminen avoinna",
     "loginToSignup": "Kirjaudu sisään ilmoittautumista varten",
     "lotterySignupOpens": "Arvontaan ilmoittautuminen alkaa",
