@@ -165,7 +165,7 @@ export const EnterGameForm = ({
                 {signupQuestion.private &&
                   `(${t("privateOnlyVisibleToOrganizers")})`}
               </span>
-              <Dropdown
+              <StyledDropdown
                 onChange={(event) => setSelectedValue(event.target.value)}
                 options={signupQuestion.selectOptions.map((option) =>
                   i18n.language === "fi"
@@ -241,4 +241,8 @@ const SignupForm = styled.form`
 const SignupQuestionContainer = styled.div`
   display: flex;
   flex-direction: column;
+`;
+
+const StyledDropdown = styled(Dropdown)`
+  max-width: 300px;
 `;
