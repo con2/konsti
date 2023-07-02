@@ -306,7 +306,7 @@
     "groupCreatorWarning": "If you sign up to a game, the group you created will be deleted.",
     "currentSignup": "You have signed up to this {{PROGRAM_TYPE}}.",
     "entryFee": "Material fee {{ENTRY_FEE}}",
-    "entryFeeInfo": "I understand that participation in the workshop costs {{ENTRY_FEE}}.",
+    "entryFeeInfo": "I understand that the workshop requires a material fee of {{ENTRY_FEE}}.",
     "doesNotRequireSignup": "This {{PROGRAM_TYPE}} does not require signing up"
   },
   "attendeeType": {
