@@ -33,7 +33,14 @@ export const NotificationBar = (): ReactElement | null => {
               })}
               )
             </StartTime>
+
+            <ShowAllLinkContainer>
+              <StyledLink to={`/notifications`}>
+                {t("notificationBar.showAll")}
+              </StyledLink>
+            </ShowAllLinkContainer>
           </div>
+
           <span>
             <StyledFontAwesomeIcon
               icon="xmark"
@@ -78,6 +85,10 @@ const NotificationContainer = styled.div`
 
 const StartTime = styled.span`
   margin-left: 6px;
+`;
+
+const ShowAllLinkContainer = styled.div`
+  margin: 20px 0 0 0;
 `;
 
 const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
