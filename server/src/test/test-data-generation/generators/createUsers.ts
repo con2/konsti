@@ -25,10 +25,10 @@ export const createAdminUser = async (password?: string): Promise<void> => {
   await saveUser(registrationData);
 };
 
-export const createHelpUser = async (): Promise<void> => {
+export const createHelpUser = async (password?: string): Promise<void> => {
   logger.info(`Generate data for help user "helper:test"`);
 
-  const passwordHashResult = await hashPassword("test");
+  const passwordHashResult = await hashPassword(password ?? "test");
   const passwordHash = unsafelyUnwrapResult(passwordHashResult);
 
   const registrationData: NewUser = {
