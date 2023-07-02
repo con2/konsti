@@ -33,11 +33,9 @@ export const NotificationBar = (): ReactElement | null => {
               })}
               )
             </StartTime>
-
+            .
             <ShowAllLinkContainer>
-              <StyledLink to={`/notifications`}>
-                {t("notificationBar.showAll")}
-              </StyledLink>
+              <Link to={`/notifications`}>{t("notificationBar.showAll")}</Link>
             </ShowAllLinkContainer>
           </div>
 
