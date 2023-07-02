@@ -25,9 +25,7 @@ export const NotificationBar = (): ReactElement | null => {
         <StyledNotification key={`${action}-${createdAt}`}>
           <div>
             <span>{t(`eventLogActions.${action}`)}</span>
-            <StyledLink to={`/games/${programItemId}`}>
-              {foundGame.title}
-            </StyledLink>
+            <Link to={`/games/${programItemId}`}>{foundGame.title}</Link>
             <StartTime>
               (
               {timeFormatter.getWeekdayAndTime({
@@ -63,22 +61,19 @@ const StyledNotification = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 10px;
-  background-color: ${(props) => props.theme.backgroundNotificationBanner};
+  background-color: ${(props) => props.theme.backgroundBody};
   color: ${(props) => props.theme.textMain};
-  border: 1px solid ${(props) => props.theme.borderActive};
   border-radius: 4px;
   margin: 4px 2px;
+  border: 1px solid ${(props) => props.theme.borderCardHighlight};
+  border-left: 5px solid ${(props) => props.theme.borderCardHighlight};
+  box-shadow: ${(props) => props.theme.shadowHigher};
 `;
 
 const NotificationContainer = styled.div`
   position: sticky;
   top: ${HEADER_HEIGHT}px;
   z-index: 10;
-`;
-
-const StyledLink = styled(Link)`
-  color: ${(props) => props.theme.textMainLink};
-  margin-left: 6px;
 `;
 
 const StartTime = styled.span`
