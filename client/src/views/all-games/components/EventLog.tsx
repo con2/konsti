@@ -51,7 +51,7 @@ export const EventLog = (): ReactElement => {
 
   return (
     <div>
-      <h2>{t("eventLog.title")}</h2>
+      <Title>{t("eventLog.title")}</Title>
 
       {localEventLogItems.current.length === 0 && (
         <RaisedCard>{t("eventLog.noNotifications")}</RaisedCard>
@@ -67,59 +67,52 @@ export const EventLog = (): ReactElement => {
         );
         if (!foundGame) return;
         return (
-          <EventLogItem
-            isSeen={eventLogItem.isSeen}
+          <RaisedCard
+            isHighlighted={!eventLogItem.isSeen}
             key={eventLogItem.eventLogItemId}
           >
-            <EventTitle>
+            <span>
               {t(`eventLogActions.${eventLogItem.action}`)}
-            </EventTitle>
-
-            <MessageCreatedAt>
-              ({t("eventLog.sentTimeAgo")} {getTime(eventLogItem.createdAt)})
-            </MessageCreatedAt>
-
-            <EventDetails>
               <StyledLink to={`/games/${eventLogItem.programItemId}`}>
                 {foundGame.title}
               </StyledLink>
+              .
+            </span>
 
-              <StartTime>
-                {t("eventLog.gameDetails", {
-                  START_TIME: timeFormatter.getWeekdayAndTime({
-                    time: foundGame.startTime,
-                  }),
-                  LOCATION: foundGame.location,
-                })}
-              </StartTime>
-            </EventDetails>
-          </EventLogItem>
+            <StartTime>
+              {t("eventLog.gameDetails", {
+                START_TIME: timeFormatter.getWeekdayAndTime({
+                  time: foundGame.startTime,
+                }),
+                LOCATION: foundGame.location,
+              })}
+            </StartTime>
+
+            <MessageCreatedAt>
+              <span>{getTime(eventLogItem.createdAt)}</span>
+            </MessageCreatedAt>
+          </RaisedCard>
         );
       })}
     </div>
   );
 };
 
-const EventLogItem = styled(RaisedCard)<{ isSeen: boolean }>`
-  color: ${(props) => (props.isSeen ? "gray" : "black")};
-`;
-
-const EventTitle = styled.span`
-  margin-right: 6px;
-`;
-
 const StartTime = styled.div`
   margin: 8px 0 0 0;
 `;
 
-const MessageCreatedAt = styled.span`
-  white-space: nowrap;
+const MessageCreatedAt = styled.div`
+  display: flex;
+  justify-content: right;
+  margin: 8px 4px -4px 0;
+  color: ${(props) => props.theme.textSecondary};
 `;
 
 const StyledLink = styled(Link)`
   margin: 8px 0 0 0;
 `;
 
-const EventDetails = styled.div`
-  margin: 8px 0 0 0;
+const Title = styled.h1`
+  font-size: ${(props) => props.theme.mainHeaderFontSize};
 `;

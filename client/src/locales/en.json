@@ -273,12 +273,11 @@
   },
   "eventLog": {
     "title": "Notifications",
-    "sentTimeAgo": "sent",
     "noNotifications": "No notifications",
     "gameDetails": "Starting time {{START_TIME}} at {{LOCATION}}"
   },
   "eventLogActions": {
-    "newAssignment": "You have entered a game in lottery"
+    "newAssignment": "You were assigned to the game "
   },
   "notificationBar": {
     "showAll": "Show all notifications"
