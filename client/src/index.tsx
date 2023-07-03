@@ -2,18 +2,14 @@ import "core-js/stable";
 import "regenerator-runtime/runtime";
 import { createRoot } from "react-dom/client";
 // eslint-disable-next-line @typescript-eslint/no-restricted-imports
-import React, { Suspense, lazy } from "react";
+import React, { Suspense } from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { ThemeProvider } from "styled-components";
 import { init, BrowserTracing } from "@sentry/react";
 import loaderImage from "assets/loading.gif";
 import { config } from "client/config";
-import {
-  getLocalStorageLanguage,
-  newUpdatePageReloadKey,
-  newUpdatePageReloadValue,
-} from "client/utils/localStorage";
+import { getLocalStorageLanguage } from "client/utils/localStorage";
 import { theme } from "client/theme";
 import { GlobalStyle } from "client/globalStyle";
 import { setLocale } from "shared/utils/setLocale";
@@ -24,12 +20,15 @@ import { store } from "client/utils/store";
 // Initialized i18next instance
 import "client/utils/i18n";
 import { initializeDayjs } from "shared/utils/time";
+import { lazyWithRetry } from "client/utils/lazyWithRetry";
 
 initializeDayjs();
 setLocale(getLocalStorageLanguage());
 
 // Root component
-const App = lazy(async () => await import("client/app/App"));
+const App = lazyWithRetry(
+  async () => await import(/* webpackChunkName: "app" */ "client/app/App")
+);
 
 const { enableAxe, enableWhyDidYouRender } = config;
 
@@ -71,22 +70,10 @@ init({
   tunnel: ApiEndpoint.SENTRY_TUNNEL,
 });
 
-// Add event listener to reload page if trying to load old bundle version
-window.addEventListener("error", (error) => {
-  if (/Loading chunk [\d]+ failed/.test(error.message)) {
-    const oldValue = localStorage.getItem(newUpdatePageReloadKey);
-
-    if (oldValue !== newUpdatePageReloadValue) {
-      localStorage.setItem(newUpdatePageReloadKey, newUpdatePageReloadValue);
-      window.location.reload();
-    }
-  }
-});
-
 // Suspend fallback element
 const loader = (
-  <div>
-    <img alt="Loading..." src={loaderImage} />
+  <div style={{ textAlign: "center" }}>
+    <img alt="Loading..." src={loaderImage} width="40" />
   </div>
 );
 
