@@ -35,6 +35,7 @@ const commonConfig: Configuration = {
     path: path.join(__dirname, "build"),
     publicPath: "/",
     filename: "[name].[contenthash].bundle.js",
+    chunkFilename: "[name].[contenthash].chunk.bundle.js",
   },
 
   resolve: {
@@ -145,6 +146,7 @@ const prodConfig: Configuration = {
     splitChunks: {
       cacheGroups: {
         defaultVendors: {
+          test: /[\\/]node_modules[\\/]/,
           name: "vendors",
         },
       },
