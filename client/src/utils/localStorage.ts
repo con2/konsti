@@ -81,6 +81,3 @@ export const getLocalStorageLanguage = (): string => {
 
   return "eng";
 };
-
-export const newUpdatePageReloadKey = "newUpdatePageReload";
-export const newUpdatePageReloadValue = "pageReloaded";
