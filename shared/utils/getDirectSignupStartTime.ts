@@ -7,15 +7,16 @@ export const getDirectSignupStartTime = (
   game: Game,
   timeNow: Dayjs
 ): string | null => {
-  const { directSignupWindows, directSignupAlwaysOpenIds } = sharedConfig;
-
-  const signupAlwaysOpen = directSignupAlwaysOpenIds.includes(game.gameId);
+  const signupAlwaysOpen = sharedConfig.directSignupAlwaysOpenIds.includes(
+    game.gameId
+  );
 
   if (signupAlwaysOpen) {
     return null;
   }
 
-  const signupWindowsForProgramType = directSignupWindows[game.programType];
+  const signupWindowsForProgramType =
+    sharedConfig.directSignupWindows[game.programType];
 
   const matchingSignupWindow = signupWindowsForProgramType.find(
     (signupWindow) =>
