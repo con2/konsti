@@ -10,7 +10,6 @@ import { getIconLibrary } from "client/utils/icons";
 import { config } from "client/config";
 import { ErrorBar } from "client/components/ErrorBar";
 import { MOBILE_MARGIN } from "client/globalStyle";
-import { newUpdatePageReloadKey } from "client/utils/localStorage";
 import { TestTime } from "client/components/TestTime";
 import { Announcement } from "client/components/Announcement";
 import { NotificationBar } from "client/components/NotificationBar";
@@ -24,9 +23,6 @@ export const App = (): ReactElement => {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    // Successful app load -> reset update reload state
-    localStorage.removeItem(newUpdatePageReloadKey);
-
     setLoading(true);
     const fetchData = async (): Promise<void> => {
       await loadData();
