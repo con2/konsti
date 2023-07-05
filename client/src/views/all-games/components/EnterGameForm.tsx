@@ -25,6 +25,7 @@ import { sharedConfig } from "shared/config/sharedConfig";
 import { TextArea } from "client/components/TextArea";
 import { ButtonGroup } from "client/components/ButtonGroup";
 import { Dropdown } from "client/components/Dropdown";
+import { Checkbox } from "client/components/Checkbox";
 
 const { directSignupAlwaysOpenIds } = sharedConfig;
 
@@ -186,21 +187,16 @@ export const EnterGameForm = ({
       )}
 
       {!!game.entryFee && (
-        <div>
-          <input
-            type="checkbox"
-            checked={agreeEntryFee}
-            onChange={() => {
-              setAgreeEntryFee(!agreeEntryFee);
-            }}
-            aria-labelledby={"entry-fee-agree-checkbox-label"}
-          />
-          <label id="entry-fee-agree-checkbox-label">
-            {t("signup.entryFeeInfo", {
-              ENTRY_FEE: game.entryFee,
-            })}{" "}
-          </label>
-        </div>
+        <Checkbox
+          checked={agreeEntryFee}
+          onChange={() => {
+            setAgreeEntryFee(!agreeEntryFee);
+          }}
+          label={t("signup.entryFeeInfo", {
+            ENTRY_FEE: game.entryFee,
+          })}
+          id={"entry-fee-agree-checkbox"}
+        />
       )}
 
       <ButtonGroup>

@@ -17,6 +17,7 @@ import {
   SignupQuestionSelectOption,
   SignupQuestionType,
 } from "shared/typings/models/settings";
+import { Checkbox } from "client/components/Checkbox";
 
 interface Props {
   game: Game;
@@ -185,17 +186,14 @@ export const AdminActionCard = ({ game }: Props): ReactElement => {
             value={signupQuestionInputEn}
             onChange={(event) => setSignupQuestionInputEn(event.target.value)}
           />
-          <input
-            type="checkbox"
+          <Checkbox
             checked={isPrivateSignupQuestion}
             onChange={() => {
               setIsPrivateSignupQuestion(!isPrivateSignupQuestion);
             }}
-            aria-labelledby={"private-question-checkbox-label"}
+            label={t("signupQuestion.privateQuestion")}
+            id={"privateQuestionCheckbox"}
           />
-          <label id="private-question-checkbox-label">
-            {t("signupQuestion.privateQuestion")}
-          </label>
 
           <div>
             <span>{t("signupQuestion.questionType")}</span>{" "}
