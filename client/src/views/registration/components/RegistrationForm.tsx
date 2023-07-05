@@ -168,8 +168,11 @@ export const RegistrationForm = (): ReactElement => {
               },
             })}
             type={"checkbox"}
+            id={"registerDescriptionCheckbox"}
           />
-          <label htmlFor="registerDescription">{t("agreePrivacyPolicy")}</label>
+          <label htmlFor="registerDescriptionCheckbox">
+            {t("agreePrivacyPolicy")}
+          </label>
         </FormRow>
 
         {errors.registerDescription && (
