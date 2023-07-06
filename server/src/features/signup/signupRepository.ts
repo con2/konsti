@@ -1,3 +1,4 @@
+import { ObjectId } from "mongoose";
 import { findGameById, findGames } from "server/features/game/gameRepository";
 import { Signup, UserSignup } from "server/features/signup/signup.typings";
 import { SignupModel } from "server/features/signup/signupSchema";
@@ -128,7 +129,6 @@ export const saveSignup = async (
   if (isErrorResult(gameResult)) {
     return gameResult;
   }
-
   const game = unwrapResult(gameResult);
 
   try {
@@ -141,7 +141,7 @@ export const saveSignup = async (
         $addToSet: {
           userSignups: {
             username,
-            priority: 1,
+            priority: 1, // TODO: Use assignment priority or 0 for direct signup
             time: startTime,
             message,
           },
@@ -150,7 +150,6 @@ export const saveSignup = async (
       },
       {
         new: true,
-        upsert: true,
         fields: "-userSignups._id -_id -__v -createdAt -updatedAt",
       }
     )
@@ -296,6 +295,31 @@ export const delRpgSignupsByStartTime = async (
     return makeSuccessResult(response.deletedCount);
   } catch (error) {
     logger.error("MongoDB: Error removing invalid signup: %s", error);
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+  }
+};
+
+export const createEmptySignupDocumentForProgramItems = async (
+  programItemObjectIds: ObjectId[]
+): Promise<Result<void, MongoDbError>> => {
+  const signupDocs = programItemObjectIds.flatMap((programItemObjectId) => {
+    return new SignupModel({
+      game: programItemObjectId,
+      userSignups: [],
+    });
+  });
+
+  try {
+    await SignupModel.create(signupDocs);
+    logger.info(
+      `MongoDB: Signup collection created for ${programItemObjectIds.length} program items `
+    );
+    return makeSuccessResult(undefined);
+  } catch (error) {
+    logger.error(
+      `MongoDB: Creating signup collection for ${programItemObjectIds.length} program items failed: %s`,
+      error
+    );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };

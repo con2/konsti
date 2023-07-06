@@ -243,6 +243,48 @@ describe(`POST ${ApiEndpoint.SIGNUP}`, () => {
     expect(matchingSignup?.userSignups.length).toEqual(maxAttendance);
     expect(matchingSignup?.count).toEqual(maxAttendance);
   });
+
+  test("should not create new signup collection when program item is full", async () => {
+    const maxAttendance = 2;
+
+    // Populate database
+    await saveGames([{ ...testGame, maxAttendance }]);
+    await saveUser(mockUser);
+    await saveUser(mockUser2);
+    await saveUser(mockUser3);
+
+    // Save on signup -> one seat left
+    await saveSignup(mockPostEnteredGameRequest);
+
+    const makeRequest = async (user: NewUser): Promise<Test> => {
+      return await request(server)
+        .post(ApiEndpoint.SIGNUP)
+        .send({
+          username: user.username,
+          enteredGameId: testGame.gameId,
+          startTime: testGame.startTime,
+          message: "Test message",
+        })
+        .set(
+          "Authorization",
+          `Bearer ${getJWT(UserGroup.USER, user.username)}`
+        );
+    };
+
+    // Save two more signups at the same time -> one should fail and only one signup collection should exist
+    await Promise.all([makeRequest(mockUser2), makeRequest(mockUser3)]);
+
+    // Check results
+    const signupsResult = await findSignups();
+    const signups = unsafelyUnwrapResult(signupsResult);
+    expect(signups).toHaveLength(1);
+
+    const matchingSignup = signups.find(
+      (signup) => signup.game.gameId === testGame.gameId
+    );
+    expect(matchingSignup?.userSignups.length).toEqual(maxAttendance);
+    expect(matchingSignup?.count).toEqual(maxAttendance);
+  });
 });
 
 describe(`DELETE ${ApiEndpoint.SIGNUP}`, () => {
