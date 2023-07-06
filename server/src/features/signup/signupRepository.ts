@@ -302,7 +302,7 @@ export const delRpgSignupsByStartTime = async (
 export const createEmptySignupDocumentForProgramItems = async (
   programItemObjectIds: ObjectId[]
 ): Promise<Result<void, MongoDbError>> => {
-  const signupDocs = programItemObjectIds.flatMap((programItemObjectId) => {
+  const signupDocs = programItemObjectIds.map((programItemObjectId) => {
     return new SignupModel({
       game: programItemObjectId,
       userSignups: [],
