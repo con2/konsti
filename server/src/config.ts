@@ -133,6 +133,8 @@ const devConfig = {
   allowedCorsOrigins: [
     "http://localhost:8000",
     "http://localhost:5000",
+    "http://0.0.0.0:8000",
+    "http://0.0.0.0:5000",
     "https://server:5000",
   ],
   debug: false,
