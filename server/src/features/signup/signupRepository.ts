@@ -156,11 +156,8 @@ export const saveSignup = async (
       .lean<Signup>()
       .populate("game");
     if (!signup) {
-      logger.error(
-        "%s",
-        new Error(
-          `Signup for user ${username} and game ${game.gameId} not found`
-        )
+      logger.warn(
+        `Saving signup for user ${username} failed: game ${game.gameId} not found or game full`
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
@@ -184,12 +181,11 @@ export const delSignup = async (
   if (isErrorResult(gameResult)) {
     return gameResult;
   }
-
   const game = unwrapResult(gameResult);
 
   try {
     const signup = await SignupModel.findOneAndUpdate(
-      { game: game._id },
+      { game: game._id, "userSignups.username": username },
       {
         $pull: {
           userSignups: {
@@ -206,7 +202,9 @@ export const delSignup = async (
     if (!signup) {
       logger.error(
         "%s",
-        new Error(`Signups for game ${game.gameId} not found`)
+        new Error(
+          `Signups for game ${game.gameId} for user ${username} not found`
+        )
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
@@ -254,9 +252,12 @@ export const delSignupsByGameIds = async (
   );
 
   try {
-    await SignupModel.deleteMany({
-      game: { $in: gameObjectIds },
-    });
+    await SignupModel.updateMany(
+      {
+        game: { $in: gameObjectIds },
+      },
+      { userSignups: [], count: 0 }
+    );
     return makeSuccessResult(undefined);
   } catch (error) {
     logger.error("MongoDB: Error removing signups by game IDs: %s", error);
@@ -268,11 +269,9 @@ export const delRpgSignupsByStartTime = async (
   startTime: string
 ): Promise<Result<number, MongoDbError>> => {
   const gamesResult = await findGames();
-
   if (isErrorResult(gamesResult)) {
     return gamesResult;
   }
-
   const games = unwrapResult(gamesResult);
 
   // Only remove TABLETOP_RPG signups and don't remove directSignupAlwaysOpen signups
@@ -285,14 +284,14 @@ export const delRpgSignupsByStartTime = async (
     .map((game) => game._id);
 
   try {
-    const response = await SignupModel.deleteMany({
-      "userSignups.time": startTime,
-      game: { $nin: doNotRemoveGameIds },
-    });
-    logger.info(
-      `MongoDB: Deleted ${response.deletedCount} signups for startTime: ${startTime}`
+    const response = await SignupModel.updateMany(
+      { "userSignups.time": startTime, game: { $nin: doNotRemoveGameIds } },
+      { userSignups: [], count: 0 }
     );
-    return makeSuccessResult(response.deletedCount);
+    logger.info(
+      `MongoDB: Deleted ${response.modifiedCount} signups for startTime: ${startTime}`
+    );
+    return makeSuccessResult(response.modifiedCount);
   } catch (error) {
     logger.error("MongoDB: Error removing invalid signup: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
