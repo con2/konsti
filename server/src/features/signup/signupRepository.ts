@@ -289,7 +289,7 @@ export const delRpgSignupsByStartTime = async (
       { userSignups: [], count: 0 }
     );
     logger.info(
-      `MongoDB: Deleted ${response.modifiedCount} signups for startTime: ${startTime}`
+      `MongoDB: Deleted signups for ${response.modifiedCount} games for startTime: ${startTime}`
     );
     return makeSuccessResult(response.modifiedCount);
   } catch (error) {
@@ -305,6 +305,7 @@ export const createEmptySignupDocumentForProgramItems = async (
     return new SignupModel({
       game: programItemObjectId,
       userSignups: [],
+      count: 0,
     });
   });
 
