@@ -1,3 +1,4 @@
+import { ObjectId } from "mongoose";
 import { logger } from "server/utils/logger";
 import { GameModel } from "server/features/game/gameSchema";
 import { removeMovedGamesFromUsers } from "server/features/player-assignment/utils/removeMovedGamesFromUsers";
@@ -12,6 +13,7 @@ import {
 import { removeDeletedGames } from "server/features/game/gameUtils";
 import { removeInvalidGamesFromUsers } from "server/features/player-assignment/utils/removeInvalidGamesFromUsers";
 import { MongoDbError } from "shared/typings/api/errors";
+import { createEmptySignupDocumentForProgramItems } from "server/features/signup/signupRepository";
 
 export const removeGames = async (
   gameIds?: string[]
@@ -93,14 +95,28 @@ export const saveGames = async (
     };
   });
 
+  let response;
   try {
-    await GameModel.bulkWrite(bulkOps);
+    response = await GameModel.bulkWrite(bulkOps);
     logger.debug("MongoDB: Games saved to DB successfully");
-    return makeSuccessResult(undefined);
   } catch (error) {
     logger.error("Error saving games to DB: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
+
+  const newGameObjectIds: ObjectId[] = Object.values(response.upsertedIds);
+  logger.info(`MongoDB: Found ${newGameObjectIds.length} new program items`);
+
+  // Create signup document for new program items
+  if (newGameObjectIds.length > 0) {
+    const createEmptySignupResult =
+      await createEmptySignupDocumentForProgramItems(newGameObjectIds);
+    if (isErrorResult(createEmptySignupResult)) {
+      return createEmptySignupResult;
+    }
+  }
+
+  return makeSuccessResult(undefined);
 };
 
 export const findGames = async (): Promise<Result<GameDoc[], MongoDbError>> => {
