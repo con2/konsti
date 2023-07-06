@@ -1,3 +1,4 @@
+import { ObjectId } from "mongoose";
 import { findGameById, findGames } from "server/features/game/gameRepository";
 import { Signup, UserSignup } from "server/features/signup/signup.typings";
 import { SignupModel } from "server/features/signup/signupSchema";
@@ -128,7 +129,6 @@ export const saveSignup = async (
   if (isErrorResult(gameResult)) {
     return gameResult;
   }
-
   const game = unwrapResult(gameResult);
 
   try {
@@ -141,7 +141,7 @@ export const saveSignup = async (
         $addToSet: {
           userSignups: {
             username,
-            priority: 1,
+            priority: 1, // TODO: Use assignment priority or 0 for direct signup
             time: startTime,
             message,
           },
@@ -150,18 +150,14 @@ export const saveSignup = async (
       },
       {
         new: true,
-        upsert: true,
         fields: "-userSignups._id -_id -__v -createdAt -updatedAt",
       }
     )
       .lean<Signup>()
       .populate("game");
     if (!signup) {
-      logger.error(
-        "%s",
-        new Error(
-          `Signup for user ${username} and game ${game.gameId} not found`
-        )
+      logger.warn(
+        `Saving signup for user ${username} failed: game ${game.gameId} not found or game full`
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
@@ -185,12 +181,11 @@ export const delSignup = async (
   if (isErrorResult(gameResult)) {
     return gameResult;
   }
-
   const game = unwrapResult(gameResult);
 
   try {
     const signup = await SignupModel.findOneAndUpdate(
-      { game: game._id },
+      { game: game._id, "userSignups.username": username },
       {
         $pull: {
           userSignups: {
@@ -207,7 +202,9 @@ export const delSignup = async (
     if (!signup) {
       logger.error(
         "%s",
-        new Error(`Signups for game ${game.gameId} not found`)
+        new Error(
+          `Signups for game ${game.gameId} for user ${username} not found`
+        )
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
@@ -255,9 +252,12 @@ export const delSignupsByGameIds = async (
   );
 
   try {
-    await SignupModel.deleteMany({
-      game: { $in: gameObjectIds },
-    });
+    await SignupModel.updateMany(
+      {
+        game: { $in: gameObjectIds },
+      },
+      { userSignups: [], count: 0 }
+    );
     return makeSuccessResult(undefined);
   } catch (error) {
     logger.error("MongoDB: Error removing signups by game IDs: %s", error);
@@ -269,11 +269,9 @@ export const delRpgSignupsByStartTime = async (
   startTime: string
 ): Promise<Result<number, MongoDbError>> => {
   const gamesResult = await findGames();
-
   if (isErrorResult(gamesResult)) {
     return gamesResult;
   }
-
   const games = unwrapResult(gamesResult);
 
   // Only remove TABLETOP_RPG signups and don't remove directSignupAlwaysOpen signups
@@ -286,16 +284,42 @@ export const delRpgSignupsByStartTime = async (
     .map((game) => game._id);
 
   try {
-    const response = await SignupModel.deleteMany({
-      "userSignups.time": startTime,
-      game: { $nin: doNotRemoveGameIds },
-    });
-    logger.info(
-      `MongoDB: Deleted ${response.deletedCount} signups for startTime: ${startTime}`
+    const response = await SignupModel.updateMany(
+      { "userSignups.time": startTime, game: { $nin: doNotRemoveGameIds } },
+      { userSignups: [], count: 0 }
     );
-    return makeSuccessResult(response.deletedCount);
+    logger.info(
+      `MongoDB: Deleted signups for ${response.modifiedCount} games for startTime: ${startTime}`
+    );
+    return makeSuccessResult(response.modifiedCount);
   } catch (error) {
     logger.error("MongoDB: Error removing invalid signup: %s", error);
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+  }
+};
+
+export const createEmptySignupDocumentForProgramItems = async (
+  programItemObjectIds: ObjectId[]
+): Promise<Result<void, MongoDbError>> => {
+  const signupDocs = programItemObjectIds.map((programItemObjectId) => {
+    return new SignupModel({
+      game: programItemObjectId,
+      userSignups: [],
+      count: 0,
+    });
+  });
+
+  try {
+    await SignupModel.create(signupDocs);
+    logger.info(
+      `MongoDB: Signup collection created for ${programItemObjectIds.length} program items `
+    );
+    return makeSuccessResult(undefined);
+  } catch (error) {
+    logger.error(
+      `MongoDB: Creating signup collection for ${programItemObjectIds.length} program items failed: %s`,
+      error
+    );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };

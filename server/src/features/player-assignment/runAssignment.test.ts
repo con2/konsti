@@ -260,7 +260,10 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     const signupsBeforeUpdateResult = await findSignups();
     const signupsBeforeUpdate = unsafelyUnwrapResult(signupsBeforeUpdateResult);
 
-    expect(signupsBeforeUpdate.length).toEqual(1);
+    const gamesWithSignups = signupsBeforeUpdate.filter(
+      (signup) => signup.userSignups.length > 0
+    );
+    expect(gamesWithSignups.length).toEqual(1);
 
     const assignResultsResult = await runAssignment({
       assignmentStrategy,
@@ -432,7 +435,10 @@ describe("Assignment with first time bonus", () => {
     const signupsBeforeUpdateResult = await findSignups();
     const signupsBeforeUpdate = unsafelyUnwrapResult(signupsBeforeUpdateResult);
 
-    expect(signupsBeforeUpdate.length).toEqual(3);
+    const gamesWithSignups = signupsBeforeUpdate.filter(
+      (signup) => signup.userSignups.length > 0
+    );
+    expect(gamesWithSignups.length).toEqual(3);
 
     const assignResultsResult = await runAssignment({
       assignmentStrategy,
