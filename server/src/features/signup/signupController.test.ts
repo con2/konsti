@@ -35,6 +35,11 @@ import {
 } from "server/features/signup/signupRepository";
 import { NewUser } from "server/typings/user.typings";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
+import {
+  DeleteEnteredGameRequest,
+  PostEnteredGameRequest,
+} from "shared/typings/api/myGames";
+import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 
 let server: Server;
 let mongoServer: MongoMemoryServer;
@@ -66,12 +71,13 @@ describe(`POST ${ApiEndpoint.SIGNUP}`, () => {
   });
 
   test("should return 422 with invalid parameters", async () => {
+    const signup: Partial<PostEnteredGameRequest> = {
+      username: mockUser.username,
+      enteredGameId: "ABCD1234",
+    };
     const response = await request(server)
       .post(ApiEndpoint.SIGNUP)
-      .send({
-        username: mockUser.username,
-        enteredGameId: "ABCD1234",
-      })
+      .send(signup)
       .set(
         "Authorization",
         `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`
@@ -80,15 +86,17 @@ describe(`POST ${ApiEndpoint.SIGNUP}`, () => {
   });
 
   test("should return 422 if signup message is too long", async () => {
+    const signup: PostEnteredGameRequest = {
+      username: mockUser.username,
+      enteredGameId: testGame.gameId,
+      startTime: testGame.startTime,
+      message:
+        "Test message Test message Test message Test message Test message Test message Test message Test message Test message Test message Test message Test message Test message",
+      priority: DIRECT_SIGNUP_PRIORITY,
+    };
     const response = await request(server)
       .post(ApiEndpoint.SIGNUP)
-      .send({
-        username: mockUser.username,
-        enteredGameId: testGame.gameId,
-        startTime: testGame.startTime,
-        message:
-          "Test message Test message Test message Test message Test message Test message Test message Test message Test message Test message Test message Test message Test message",
-      })
+      .send(signup)
       .set(
         "Authorization",
         `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`
@@ -99,14 +107,16 @@ describe(`POST ${ApiEndpoint.SIGNUP}`, () => {
   test("should return error when game is not found", async () => {
     await saveUser(mockUser);
 
+    const signup: PostEnteredGameRequest = {
+      username: mockUser.username,
+      enteredGameId: "invalid_game_id",
+      startTime: "2019-07-26T13:00:00Z",
+      message: "",
+      priority: DIRECT_SIGNUP_PRIORITY,
+    };
     const response = await request(server)
       .post(ApiEndpoint.SIGNUP)
-      .send({
-        username: mockUser.username,
-        enteredGameId: "invalid_game_id",
-        startTime: "2019-07-26T13:00:00Z",
-        message: "",
-      })
+      .send(signup)
       .set(
         "Authorization",
         `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`
@@ -119,14 +129,16 @@ describe(`POST ${ApiEndpoint.SIGNUP}`, () => {
   test("should return error when user is not found", async () => {
     await saveGames([testGame]);
 
+    const signup: PostEnteredGameRequest = {
+      username: "user_not_found",
+      enteredGameId: testGame.gameId,
+      startTime: testGame.startTime,
+      message: "",
+      priority: DIRECT_SIGNUP_PRIORITY,
+    };
     const response = await request(server)
       .post(ApiEndpoint.SIGNUP)
-      .send({
-        username: "user_not_found",
-        enteredGameId: testGame.gameId,
-        startTime: testGame.startTime,
-        message: "",
-      })
+      .send(signup)
       .set(
         "Authorization",
         `Bearer ${getJWT(UserGroup.USER, "user_not_found")}`
@@ -144,14 +156,16 @@ describe(`POST ${ApiEndpoint.SIGNUP}`, () => {
       testTime: dayjs(testGame.startTime).subtract(2, "hours").format(),
     });
 
+    const signup: PostEnteredGameRequest = {
+      username: mockUser.username,
+      enteredGameId: testGame.gameId,
+      startTime: testGame.startTime,
+      message: "",
+      priority: DIRECT_SIGNUP_PRIORITY,
+    };
     const response = await request(server)
       .post(ApiEndpoint.SIGNUP)
-      .send({
-        username: mockUser.username,
-        enteredGameId: testGame.gameId,
-        startTime: testGame.startTime,
-        message: "",
-      })
+      .send(signup)
       .set(
         "Authorization",
         `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`
@@ -173,14 +187,16 @@ describe(`POST ${ApiEndpoint.SIGNUP}`, () => {
     expect(nonModifiedSignups?.length).toEqual(0);
 
     // Update entered games
+    const signup: PostEnteredGameRequest = {
+      username: mockUser.username,
+      enteredGameId: testGame.gameId,
+      startTime: testGame.startTime,
+      message: "Test message",
+      priority: DIRECT_SIGNUP_PRIORITY,
+    };
     const response = await request(server)
       .post(ApiEndpoint.SIGNUP)
-      .send({
-        username: mockUser.username,
-        enteredGameId: testGame.gameId,
-        startTime: testGame.startTime,
-        message: "Test message",
-      })
+      .send(signup)
       .set(
         "Authorization",
         `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`
@@ -211,14 +227,16 @@ describe(`POST ${ApiEndpoint.SIGNUP}`, () => {
     await saveUser(mockUser5);
 
     const makeRequest = async (user: NewUser): Promise<Test> => {
+      const signup: PostEnteredGameRequest = {
+        username: user.username,
+        enteredGameId: testGame.gameId,
+        startTime: testGame.startTime,
+        message: "Test message",
+        priority: DIRECT_SIGNUP_PRIORITY,
+      };
       return await request(server)
         .post(ApiEndpoint.SIGNUP)
-        .send({
-          username: user.username,
-          enteredGameId: testGame.gameId,
-          startTime: testGame.startTime,
-          message: "Test message",
-        })
+        .send(signup)
         .set(
           "Authorization",
           `Bearer ${getJWT(UserGroup.USER, user.username)}`
@@ -257,14 +275,16 @@ describe(`POST ${ApiEndpoint.SIGNUP}`, () => {
     await saveSignup(mockPostEnteredGameRequest);
 
     const makeRequest = async (user: NewUser): Promise<Test> => {
+      const signup: PostEnteredGameRequest = {
+        username: user.username,
+        enteredGameId: testGame.gameId,
+        startTime: testGame.startTime,
+        message: "Test message",
+        priority: DIRECT_SIGNUP_PRIORITY,
+      };
       return await request(server)
         .post(ApiEndpoint.SIGNUP)
-        .send({
-          username: user.username,
-          enteredGameId: testGame.gameId,
-          startTime: testGame.startTime,
-          message: "Test message",
-        })
+        .send(signup)
         .set(
           "Authorization",
           `Bearer ${getJWT(UserGroup.USER, user.username)}`
@@ -294,12 +314,13 @@ describe(`DELETE ${ApiEndpoint.SIGNUP}`, () => {
   });
 
   test("should return 422 with invalid parameters", async () => {
+    const deleteRequest: Partial<DeleteEnteredGameRequest> = {
+      username: "testuser",
+      enteredGameId: "ABCD1234",
+    };
     const response = await request(server)
       .delete(ApiEndpoint.SIGNUP)
-      .send({
-        username: "testuser",
-        enteredGameId: "ABCD1234",
-      })
+      .send(deleteRequest)
       .set("Authorization", `Bearer ${getJWT(UserGroup.USER, "testuser")}`);
     expect(response.status).toEqual(422);
   });
@@ -307,13 +328,14 @@ describe(`DELETE ${ApiEndpoint.SIGNUP}`, () => {
   test("should return error when game is not found", async () => {
     await saveUser(mockUser);
 
+    const deleteRequest: DeleteEnteredGameRequest = {
+      username: mockUser.username,
+      enteredGameId: "invalid_game_id",
+      startTime: "2019-07-26T13:00:00Z",
+    };
     const response = await request(server)
       .delete(ApiEndpoint.SIGNUP)
-      .send({
-        username: mockUser.username,
-        enteredGameId: "invalid_game_id",
-        startTime: "2019-07-26T13:00:00Z",
-      })
+      .send(deleteRequest)
       .set(
         "Authorization",
         `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`
@@ -326,13 +348,14 @@ describe(`DELETE ${ApiEndpoint.SIGNUP}`, () => {
   test("should return error when signup is not found", async () => {
     await saveGames([testGame]);
 
+    const deleteRequest: DeleteEnteredGameRequest = {
+      username: "user_not_found",
+      enteredGameId: testGame.gameId,
+      startTime: testGame.startTime,
+    };
     const response = await request(server)
       .delete(ApiEndpoint.SIGNUP)
-      .send({
-        username: "user_not_found",
-        enteredGameId: testGame.gameId,
-        startTime: testGame.startTime,
-      })
+      .send(deleteRequest)
       .set(
         "Authorization",
         `Bearer ${getJWT(UserGroup.USER, "user_not_found")}`
@@ -356,13 +379,14 @@ describe(`DELETE ${ApiEndpoint.SIGNUP}`, () => {
     expect(nonModifiedSignup?.[0].userSignups.length).toEqual(1);
 
     // Update entered games
+    const deleteRequest: DeleteEnteredGameRequest = {
+      username: mockUser.username,
+      enteredGameId: testGame.gameId,
+      startTime: testGame.startTime,
+    };
     const response = await request(server)
       .delete(ApiEndpoint.SIGNUP)
-      .send({
-        username: mockUser.username,
-        enteredGameId: testGame.gameId,
-        startTime: testGame.startTime,
-      })
+      .send(deleteRequest)
       .set(
         "Authorization",
         `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`

@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import { ObjectId } from "mongoose";
 import { findGameById, findGames } from "server/features/game/gameRepository";
 import { Signup, UserSignup } from "server/features/signup/signup.typings";
@@ -33,19 +34,30 @@ export const findSignups = async (): Promise<
   Result<Signup[], MongoDbError>
 > => {
   try {
-    const response = await SignupModel.find(
+    const results = await SignupModel.find(
       {},
-      "-createdAt -updatedAt -_id -__v"
+      "-createdAt -updatedAt -_id -__v -userSignups._id"
     )
       .lean<Signup[]>()
       .populate("game", "-createdAt -updatedAt -_id -__v");
 
-    if (!response) {
+    if (!results) {
       logger.info(`MongoDB: Signups not found`);
       return makeSuccessResult([]);
     }
     logger.debug(`MongoDB: Signups found`);
-    return makeSuccessResult(response);
+    const resultsWithFormattedTime = results.map((result) => {
+      return {
+        ...result,
+        userSignups: result.userSignups.map((userSignup) => {
+          return {
+            ...userSignup,
+            time: dayjs(userSignup.time).toISOString(),
+          };
+        }),
+      };
+    });
+    return makeSuccessResult(resultsWithFormattedTime);
   } catch (error) {
     logger.error("MongoDB: Error finding signups: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
@@ -123,7 +135,8 @@ export const findUserSignups = async (
 export const saveSignup = async (
   signupsRequest: PostEnteredGameRequest
 ): Promise<Result<Signup, MongoDbError>> => {
-  const { username, enteredGameId, startTime, message } = signupsRequest;
+  const { username, enteredGameId, startTime, message, priority } =
+    signupsRequest;
 
   const gameResult = await findGameById(enteredGameId);
   if (isErrorResult(gameResult)) {
@@ -141,7 +154,7 @@ export const saveSignup = async (
         $addToSet: {
           userSignups: {
             username,
-            priority: 1, // TODO: Use assignment priority or 0 for direct signup
+            priority,
             time: startTime,
             message,
           },

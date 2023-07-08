@@ -2,6 +2,7 @@ import { testGame, testGame2 } from "shared/tests/testGame";
 import { NewUser } from "server/typings/user.typings";
 import { SelectedGame, UserGroup } from "shared/typings/models/user";
 import { PostEnteredGameRequest } from "shared/typings/api/myGames";
+import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 
 export const mockUser: NewUser = {
   username: "Test User",
@@ -63,6 +64,7 @@ export const mockPostEnteredGameRequest: PostEnteredGameRequest = {
   enteredGameId: testGame.gameId,
   startTime: testGame.startTime,
   message: "",
+  priority: DIRECT_SIGNUP_PRIORITY,
 };
 
 export const mockPostEnteredGameRequest2: PostEnteredGameRequest = {
@@ -70,4 +72,5 @@ export const mockPostEnteredGameRequest2: PostEnteredGameRequest = {
   enteredGameId: testGame2.gameId,
   startTime: testGame2.startTime,
   message: "",
+  priority: DIRECT_SIGNUP_PRIORITY,
 };
