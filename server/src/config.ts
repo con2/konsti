@@ -33,6 +33,7 @@ interface Config {
   useTestTime: boolean;
   localKompassiFile: string;
   consoleLogFormatJson: boolean;
+  enableLoggingInTests: boolean;
 }
 
 const commonConfig = {
@@ -62,6 +63,9 @@ const commonConfig = {
 
   // Statistics
   statsDataDir: "src/features/statistics/datafiles",
+
+  // Tests
+  enableLoggingInTests: true,
 };
 
 const prodConfig = {
