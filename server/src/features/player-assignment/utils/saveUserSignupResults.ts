@@ -80,6 +80,7 @@ export const saveUserSignupResults = async (
       enteredGameId: result.enteredGame.gameDetails.gameId,
       startTime: startingTime,
       message: result.enteredGame.message,
+      priority: result.enteredGame.priority,
     });
     if (isErrorResult(saveSignupResult)) {
       return saveSignupResult;

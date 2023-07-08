@@ -38,6 +38,7 @@ export const PostEnteredGameRequestSchema = z.object({
   enteredGameId: z.string(),
   startTime: z.string(),
   message: z.string().max(SIGNUP_MESSAGE_LENGTH, "Message too long"),
+  priority: z.number(),
 });
 
 export type PostEnteredGameRequest = z.infer<

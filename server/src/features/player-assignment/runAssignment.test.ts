@@ -13,7 +13,6 @@ import dayjs from "dayjs";
 import { faker } from "@faker-js/faker";
 import { runAssignment } from "server/features/player-assignment/runAssignment";
 import { generateTestData } from "server/test/test-data-generation/generators/generateTestData";
-import { verifyUserSignups } from "server/features/player-assignment/utils/verifyUserSignups";
 import { AssignmentStrategy } from "shared/config/sharedConfig.types";
 import { sharedConfig } from "shared/config/sharedConfig";
 import { saveUser } from "server/features/user/userRepository";
@@ -34,6 +33,8 @@ import {
 import { ProgramType } from "shared/typings/models/game";
 import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
+import { assertUserUpdatedCorrectly } from "server/features/player-assignment/runAssignmentTestUtils";
+import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 
 let mongoServer: MongoMemoryServer;
 
@@ -104,7 +105,8 @@ describe("Assignment with valid data", () => {
       expect(groupResults.length).toEqual(0);
     }
 
-    await verifyUserSignups();
+    const updatedUsers = assignResults.results.map((result) => result.username);
+    await assertUserUpdatedCorrectly(updatedUsers);
 
     // SECOND RUN
 
@@ -132,7 +134,10 @@ describe("Assignment with valid data", () => {
       expect(groupResults2.length).toEqual(0);
     }
 
-    await verifyUserSignups();
+    const updatedUsers2 = assignResults2.results.map(
+      (result) => result.username
+    );
+    await assertUserUpdatedCorrectly(updatedUsers2);
   });
 });
 
@@ -422,6 +427,7 @@ describe("Assignment with first time bonus", () => {
       enteredGameId: larpGameId,
       startTime: dayjs(testGame.startTime).subtract(1, "hours").format(),
       message: "",
+      priority: DIRECT_SIGNUP_PRIORITY,
     });
 
     // directSignupAlwaysOpen signup should not affect the bonus
@@ -430,11 +436,11 @@ describe("Assignment with first time bonus", () => {
       enteredGameId: directSignupAlwaysOpenId,
       startTime: dayjs(testGame.startTime).subtract(2, "hours").format(),
       message: "",
+      priority: DIRECT_SIGNUP_PRIORITY,
     });
 
     const signupsBeforeUpdateResult = await findSignups();
     const signupsBeforeUpdate = unsafelyUnwrapResult(signupsBeforeUpdateResult);
-
     const gamesWithSignups = signupsBeforeUpdate.filter(
       (signup) => signup.userSignups.length > 0
     );
@@ -444,9 +450,7 @@ describe("Assignment with first time bonus", () => {
       assignmentStrategy,
       startingTime,
     });
-
     const assignResults = unsafelyUnwrapResult(assignResultsResult);
-
     expect(assignResults.status).toEqual("success");
     expect(assignResults.results.length).toEqual(1);
 
@@ -469,17 +473,29 @@ describe("Assignment with first time bonus", () => {
       (signup) => signup.game.gameId === directSignupAlwaysOpenId
     );
 
-    expect(assignmentSignup?.userSignups[0].username).toEqual(
-      mockUser2.username
-    );
-    expect(previousRpgSignup?.userSignups[0].username).toEqual(
-      mockUser.username
-    );
-    expect(previousLarpSignup?.userSignups[0].username).toEqual(
-      mockUser2.username
-    );
-    expect(
-      previousDirectSignupAlwaysOpenSignup?.userSignups[0].username
-    ).toEqual(mockUser2.username);
+    expect(assignmentSignup?.userSignups[0]).toMatchObject({
+      username: mockUser2.username,
+      time: mockSignedGames[0].gameDetails.startTime,
+      message: "",
+      priority: 3,
+    });
+    expect(previousRpgSignup?.userSignups[0]).toMatchObject({
+      username: mockUser.username,
+      time: dayjs(testGame.startTime).subtract(1, "hours").toISOString(),
+      message: "",
+      priority: DIRECT_SIGNUP_PRIORITY,
+    });
+    expect(previousLarpSignup?.userSignups[0]).toMatchObject({
+      username: mockUser2.username,
+      time: dayjs(testGame.startTime).subtract(1, "hours").toISOString(),
+      message: "",
+      priority: DIRECT_SIGNUP_PRIORITY,
+    });
+    expect(previousDirectSignupAlwaysOpenSignup?.userSignups[0]).toMatchObject({
+      username: mockUser2.username,
+      time: dayjs(testGame.startTime).subtract(2, "hours").toISOString(),
+      message: "",
+      priority: DIRECT_SIGNUP_PRIORITY,
+    });
   });
 });
