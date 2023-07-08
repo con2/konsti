@@ -27,7 +27,11 @@ setLocale(getLocalStorageLanguage());
 
 // Root component
 const App = lazyWithRetry(
-  async () => await import(/* webpackChunkName: "app" */ "client/app/App")
+  async () => await import(/* webpackChunkName: "app" */ "client/app/App"),
+  async () =>
+    await import(
+      /* webpackChunkName: "lazy-loading-fallback" */ "client/components/LazyLoadingFallback"
+    )
 );
 
 const { enableAxe, enableWhyDidYouRender } = config;

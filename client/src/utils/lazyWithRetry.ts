@@ -2,7 +2,8 @@ import { ComponentType, LazyExoticComponent, lazy } from "react";
 
 // https://raphael-leger.medium.com/react-webpack-chunkloaderror-loading-chunk-x-failed-ac385bd110e0
 export const lazyWithRetry = (
-  importComponent: () => Promise<{ default: ComponentType }>
+  importComponent: () => Promise<{ default: ComponentType }>,
+  fallbackComponent: () => Promise<{ default: ComponentType }>
 ): LazyExoticComponent<ComponentType> =>
   lazy(async () => {
     const isPageHasBeenForceRefreshed = JSON.parse(
@@ -17,6 +18,8 @@ export const lazyWithRetry = (
       if (!isPageHasBeenForceRefreshed) {
         localStorage.setItem("page-has-been-force-refreshed", "true");
         location.reload();
+        const fallback = await fallbackComponent();
+        return fallback;
       }
 
       // eslint-disable-next-line no-restricted-syntax -- Okay to throw if module loading fails after page reload
