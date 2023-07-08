@@ -14,7 +14,7 @@ import { findSettings } from "server/features/settings/settingsRepository";
 import { Settings, SignupQuestion } from "shared/typings/models/settings";
 import { getTime } from "server/features/player-assignment/utils/getTime";
 import {
-  delSignupsByGameIds,
+  delSignupDocumentsByGameIds,
   findSignups,
 } from "server/features/signup/signupRepository";
 import { Signup } from "server/features/signup/signup.typings";
@@ -50,9 +50,11 @@ export const removeDeletedGames = async (
       } deleted games to be removed: ${deletedGameIds.join(", ")}`
     );
 
-    const delSignupsByGameIdsResult = await delSignupsByGameIds(deletedGameIds);
-    if (isErrorResult(delSignupsByGameIdsResult)) {
-      return delSignupsByGameIdsResult;
+    const delSignupDocumentsResult = await delSignupDocumentsByGameIds(
+      deletedGameIds
+    );
+    if (isErrorResult(delSignupDocumentsResult)) {
+      return delSignupDocumentsResult;
     }
 
     const removeGamesResult = await removeGames(deletedGameIds);

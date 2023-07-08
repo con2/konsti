@@ -25,6 +25,7 @@ import { saveGames } from "server/features/game/gameRepository";
 import { findUser, saveUser } from "server/features/user/userRepository";
 import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
 import {
+  findSignups,
   findUserSignups,
   saveSignup,
 } from "server/features/signup/signupRepository";
@@ -179,6 +180,29 @@ describe(`POST ${ApiEndpoint.HIDDEN}`, () => {
     const signups = unsafelyUnwrapResult(signupsResult);
     expect(signups.length).toEqual(1);
     expect(signups[0].userSignups[0].username).toEqual(mockUser.username);
+  });
+
+  test("should clean but not remove signup document when program item is hidden", async () => {
+    await saveGames([testGame]);
+    await saveUser(mockUser);
+    await saveSignup(mockPostEnteredGameRequest);
+
+    const findSignupsResult = await findSignups();
+    const signups = unsafelyUnwrapResult(findSignupsResult);
+    expect(signups).toHaveLength(1);
+    expect(signups[0].userSignups).toHaveLength(1);
+    expect(signups[0].count).toEqual(1);
+
+    await request(server)
+      .post(ApiEndpoint.HIDDEN)
+      .send({ hiddenData: [testGame] })
+      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
+
+    const findSignupsResult2 = await findSignups();
+    const signups2 = unsafelyUnwrapResult(findSignupsResult2);
+    expect(signups2).toHaveLength(1);
+    expect(signups2[0].userSignups).toEqual([]);
+    expect(signups2[0].count).toEqual(0);
   });
 });
 
