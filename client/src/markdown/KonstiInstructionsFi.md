@@ -3,7 +3,7 @@
 Konstin kautta voi ilmoittautua pöytäroolipeleihin, larppeihin, turnauksiin, työpajoihin ja joihinkin muihin ohjelmanumeroihin.
 
 Konstin käytössä auttavat pelitiski (Halli 3) ja larp/rope-tiski (eteläisen sisäänkäynnin aula).
-Tiskeillä on myös tietokoneita, joita voi lainata Konstin käyttämiseen.
+Tiskeillä on myös tietokoneita, joilla Konstia voi käyttää.
 
 ## Miten Konstia käytetään?
 
@@ -11,19 +11,19 @@ Konsti on verkkosovellus, jota voi käyttää internet-selaimen avulla omalla ä
 
 ### Tilin luominen ja sisäänkirjautuminen
 
-Konstia voi selata myös kirjautumatta sisään, mutta peleihin ilmoittautumiseen vaaditaan käyttäjätili.
+[Ohjelmalistaa](/program/list) voi selata kirjautumatta sisään, mutta peleihin ilmoittautumiseen vaaditaan käyttäjätili.
 Aikaisempien vuosien käyttäjätilit eivät ole enää käytössä, vaan sinun on luotava uusi tili tämän vuoden tapahtumaa varten.
 
 Uuden käyttäjätilin luomiseen tarvitset rekisteröintikoodin, joita on saatavilla pelitiskiltä (Halli 3), rope/larp-tiskiltä tai infosta (pääaula, eteläinen sisäänkäynti).
 
-Vasemmassa ylänurkassa olevan valikon kautta pääset luomaan itsellesi käyttäjätilin, kirjautumaan sisään tai palaamaan takaisin tarkastelemaan ohjelmaa.
+Tilin pääset luomaan [Kirjaudu-näkymästä](/login).
 
 Rekisteröintikoodi kannattaa pitää tallessa siltä varalta, että et pääsekään enää kirjautumaan sisään tunnuksellasi: sitä tarvitaan salasanan vaihtamiseen.
-Rekisteröintikoodi näkyy ensimmäisen sisäänkirjautumisen yhteydessä sivuston ylälaidassa, ja sen löytää myöhemmin myös profiilisivulta.
+Rekisteröintikoodi näkyy ensimmäisen sisäänkirjautumisen yhteydessä sivuston ylälaidassa, ja sen löytää myöhemmin myös [profiilisivulta](/profile/profile).
 
 ### Ohjelman selaaminen
 
-Ohjelma-sivulla on listattu ohjelma, johon Konstissa voi ilmoittautua. Jos jonkin ohjelmanumeron ilmoittautuminen ei ole alkanut, ohjelman
+[Ohjelma-sivulla](/program/list) on listattu ohjelma, johon Konstissa voi ilmoittautua. Jos jonkin ohjelmanumeron ilmoittautuminen ei ole alkanut, ohjelman
 esittelyteksissä näkyy, milloin ilmoittautuminen on avoinna ja onko kyseessä arvonta vai suorailmoittautuminen.
 
 Ohjelmalistauksesta näet myös muita tietoja, kuten esimerkiksi ohjelman keston, sijainnin ja esteettömyystiedot. Lisäksi
@@ -35,13 +35,13 @@ ja ilmoittautumisaika on vielä käynnissä, ilmoittautuneiden pelaajien lukumä
 
 Ohjelmanumeron tallentaminen suosikkeihin on kätevä tapa merkitä muistiin kiinnostavaa ohjelmaa. Voit lisätä ohjelmanumeron
 suosiksi ohjelmalistasta painamalla ohjelman tietolaatikon yläkulmassa olevaa sydänikonia. Suosikkilistaan tallennetut
-ohjelmanumerot löydät Oma ohjelmani -näkymästä (missä voit myös poistaa suosikkeja listalta).
+ohjelmanumerot löydät [Oma ohjelmani](/program/myprogram) -näkymästä.
 
 ### Ryhmät
 
 Voit ilmoittautua pöytäroolipeleihin myös ryhmänä. Silloin arvonta-algoritmi sijoittaa kaikki ryhmän jäsenet samaan peliin
-(sikäli kun arpaonni suosii silloin kun ilmoittautuneita on enemmän kuin paikkoja). Voit luoda ryhmän Profiili & Ryhmä -näkymässä.
-Samassa näkymässä voit myös liittyä olemassa olevaan ryhmään. Tätä varten tarvitset ryhmän perustajalta ryhmäkoodin.
+(sikäli kun arpaonni suosii silloin kun ilmoittautuneita on enemmän kuin paikkoja). Voit luoda ryhmän [Profiili & Ryhmä -näkymässä](/profile/group).
+Samassa näkymässä voit myös liittyä olemassa olevaan ryhmään. Tätä varten tarvitset ryhmän perustajalta rekisteröitymiskoodin.
 
 Vain ryhmän perustaja voi ilmoittaa ryhmän peleihin, eivät sen muut jäsenet.
 
@@ -54,11 +54,17 @@ Jos ohjelmanumeron ilmoittautumisaika on käynnissä, näkyy sen tietojen alla I
 Jo tehdyn ilmoittautumisen voi perua joko Kaikki ohjelma -näkymässä tai Oma ohjelmani -näkymässä
 painamalla Peru ilmoittautuminen -painiketta.
 
+Ilmoittautuminen on porrastettu ja ilmoittautumisten alkamisajat näet Konstista.
+
+Pöytäroolipeleihin ilmoittaudutaan arvonnan kautta ja jäljelle jääneet paikat täytetään ilmoittautumisjärjestyksessä.
+Muun ohjelman paikat täytetään ilmoittautumisjärjestyksessä.
+
 ## Roolipeleihin ilmoittautuminen
 
 Konstin roolipeli-ilmoittautuminen tapahtuu kahdessa vaiheessa: arvonnassa ja suorailmoittautumisessa. Arvonnassa Konstin
 algoritmi jakaa pelipaikkoja käyttäjien asettamien toiveiden mukaan. Arvontaan voi ilmoittautua neljä tuntia ennen kunkin
-pelin alkua. Tässä ensimmäisessä vaiheessa kävijä pystyy ilmoittautumaan yhteensä kolmeen eri peliin.
+pelin alkua, paitsi lauantai- ja sunnuntaiaamujen peleihin jo edellisenä iltana.
+Tässä ensimmäisessä vaiheessa kävijä pystyy ilmoittautumaan yhteensä kolmeen eri peliin.
 
 Arvontaan ilmoittautuminen kestää kaksi tuntia, minkä jälkeen Konsti sijoittaa ilmoittautuneet peleihin arpoen tarvittaessa
 suosituimpiin peleihin pääsijät. Ilmoittautuminen sulkeutuu arvonnan jälkeen  15 minuutiksi: tämän vartin aikana käyttäjä voi tarkistaa,
@@ -66,6 +72,8 @@ mihin peliin on päässyt mukaan ja halutessaan osallistua sen jälkeen suoraan 
 
 Suorailmoittautuminen alkaa 1 h 45 min ennen pelin alkua. Tässä vaiheessa on vielä mahdollista napata paikka
 itseään kiinnostavasta pelistä niin kauan, kun siinä on vielä tilaa. Suorailmoittautumiseen voi osallistua, vaikka ei olisi osallistunut arvontaan.
+
+Perjantain klo 16 ja klo 17 peleihin eli kahteen ensimmäiseen alkamisajankohtaan on ainoastaan suora ilmoittautuminen.
 
 ### Pyöröovipelit
 
@@ -77,8 +85,8 @@ ilmoittautua normaalisti, mutta kun peli alkaa, se näkyy koko kestoaikansa Kons
 Roolipeleistä poiketen larppien ilmoittautuminen on yksivaiheinen eikä sisällä arvontaa,
 vaan larpit täytetään ilmoittautumisjärjestyksessä (suorailmoittautuminen).
 
-Kaikkiin tänä vuonna Ropeconin ohjelmassa oleviin larppeihin ei ilmoittauduta Konstin kautta. J
-oihinkin larppeihin ilmoittaudutaan Larp/Rope-tiskin kautta, sillä ilmoittautumisen yhteydessä pelaajat valitsevat oman hahmonsa ja heille jaetaan lisämateriaalia.
+Kaikkiin tänä vuonna Ropeconin ohjelmassa oleviin larppeihin ei ilmoittauduta Konstin kautta. Joihinkin larppeihin
+ilmoittaudutaan larp/eope-tiskin kautta, sillä ilmoittautumisen yhteydessä pelaajat valitsevat oman hahmonsa ja heille jaetaan lisämateriaalia.
 
 ### Larppien ilmoittautumisten avautuminen
 
@@ -102,8 +110,9 @@ tiedä, miten ilmoittautua siihen, voit kysyä neuvoa pelitiskiltä.
 ### Yhteystietojen kysyminen
 
 Turnausten ilmoittautumisen yhteydessä Konstissa saatetaan kysyä käyttäjältä myös nimeä ja yhteystietoja (sähköpostia ja puhelinnumeroa),
-jotta turnausten voittajiin ja muihin mahdollisiin palkintojen saajiin saadaan myöhemmin yhteys ja esimerkiksi palkinnot löytävät perille oikeille omistajilleen.
-Nämä tiedot eivät näy Konstissa muille käyttäjille, vaan ovat vain kyseisen turnauksen järjestäjien nähtävissä.
+jotta turnausten voittajiin ja muihin mahdollisiin palkintojen saajiin saadaan myöhemmin yhteys.
+Nämä tiedot eivät näy Konstissa muille käyttäjille, vaan ovat vain tiskeillä työskentelevien nähtävissä.
+Tiskiläiset luovuttavat tarpeelliset yhteystiedot turnausten järjestäjille.
 
 ## Työpajoihin ja muuhun ohjelmaan ilmoittautuminen
 
