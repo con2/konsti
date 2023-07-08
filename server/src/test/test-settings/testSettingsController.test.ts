@@ -20,6 +20,7 @@ beforeAll(async () => {
 });
 
 afterEach(() => {
+  // Start server with different process.env.SETTINGS
   vi.resetModules();
 });
 
@@ -29,7 +30,7 @@ afterAll(async () => {
 
 describe(`GET ${ApiEndpoint.TEST_SETTINGS}`, () => {
   test("should return 404 on production", async () => {
-    process.env.SETTINGS = "production";
+    vi.stubEnv("SETTINGS", "production");
     const { server } = await startTestServer(mongoServer.getUri());
 
     try {
@@ -41,7 +42,7 @@ describe(`GET ${ApiEndpoint.TEST_SETTINGS}`, () => {
   });
 
   test("should return default settings", async () => {
-    process.env.SETTINGS = "development";
+    vi.stubEnv("SETTINGS", "development");
     const { server } = await startTestServer(mongoServer.getUri());
 
     try {
@@ -60,7 +61,7 @@ describe(`GET ${ApiEndpoint.TEST_SETTINGS}`, () => {
 
 describe(`POST ${ApiEndpoint.TEST_SETTINGS}`, () => {
   test("should return 404 on production", async () => {
-    process.env.SETTINGS = "production";
+    vi.stubEnv("SETTINGS", "production");
     const { server } = await startTestServer(mongoServer.getUri());
 
     try {
@@ -72,7 +73,7 @@ describe(`POST ${ApiEndpoint.TEST_SETTINGS}`, () => {
   });
 
   test("should return 422 with invalid body", async () => {
-    process.env.SETTINGS = "development";
+    vi.stubEnv("SETTINGS", "development");
     const { server } = await startTestServer(mongoServer.getUri());
 
     try {
@@ -86,7 +87,7 @@ describe(`POST ${ApiEndpoint.TEST_SETTINGS}`, () => {
   });
 
   test("should return updated test settings after update", async () => {
-    process.env.SETTINGS = "development";
+    vi.stubEnv("SETTINGS", "development");
     const { server } = await startTestServer(mongoServer.getUri());
 
     try {

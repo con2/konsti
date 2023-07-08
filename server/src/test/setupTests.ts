@@ -1,14 +1,21 @@
 import { vi } from "vitest";
-import { logger } from "server/utils/logger";
 import { initializeDayjs } from "shared/utils/time";
+import { config } from "server/config";
 
 initializeDayjs();
 
-// Don't show info, debug or warn logging in tests
-
-logger.info = vi.fn().mockImplementation(() => {});
-logger.debug = vi.fn().mockImplementation(() => {});
-logger.warn = vi.fn().mockImplementation(() => {});
-logger.error = vi.fn().mockImplementation(() => {});
+if (!config.enableLoggingInTests) {
+  // Don't show logging in tests
+  vi.doMock("server/utils/logger", () => {
+    return {
+      logger: {
+        info: vi.fn().mockImplementation(() => {}),
+        debug: vi.fn().mockImplementation(() => {}),
+        warn: vi.fn().mockImplementation(() => {}),
+        error: vi.fn().mockImplementation(() => {}),
+      },
+    };
+  });
+}
 
 process.env.MONGOMS_VERSION = "6.0.6";
