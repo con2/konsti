@@ -1,4 +1,4 @@
-import { delSignupsByGameIds } from "server/features/signup/signupRepository";
+import { delSignupDocumentsByGameIds } from "server/features/signup/signupRepository";
 import {
   findUsers,
   updateUsersByUsername,
@@ -71,8 +71,10 @@ export const removeHiddenGamesFromUsers = async (
   }
 
   const hiddenGameIds = hiddenGames.map((hiddenGame) => hiddenGame.gameId);
-  const delSignupsByGameIdsResult = await delSignupsByGameIds(hiddenGameIds);
-  if (isErrorResult(delSignupsByGameIdsResult)) {
+  const delSignupDocumentsResult = await delSignupDocumentsByGameIds(
+    hiddenGameIds
+  );
+  if (isErrorResult(delSignupDocumentsResult)) {
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 

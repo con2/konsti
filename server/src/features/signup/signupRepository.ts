@@ -234,7 +234,7 @@ export const delSignup = async (
   }
 };
 
-export const delSignupsByGameIds = async (
+export const delSignupDocumentsByGameIds = async (
   gameIds: string[]
 ): Promise<Result<void, MongoDbError>> => {
   const gamesResult = await findGames();
@@ -252,12 +252,9 @@ export const delSignupsByGameIds = async (
   );
 
   try {
-    await SignupModel.updateMany(
-      {
-        game: { $in: gameObjectIds },
-      },
-      { userSignups: [], count: 0 }
-    );
+    await SignupModel.deleteMany({
+      game: { $in: gameObjectIds },
+    });
     return makeSuccessResult(undefined);
   } catch (error) {
     logger.error("MongoDB: Error removing signups by game IDs: %s", error);

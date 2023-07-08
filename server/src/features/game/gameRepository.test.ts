@@ -12,6 +12,9 @@ import { faker } from "@faker-js/faker";
 import { GameModel } from "server/features/game/gameSchema";
 import { saveGames } from "server/features/game/gameRepository";
 import { testGame } from "shared/tests/testGame";
+import { removeDeletedGames } from "server/features/game/gameUtils";
+import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
+import { findSignups } from "server/features/signup/signupRepository";
 
 let mongoServer: MongoMemoryServer;
 
@@ -40,4 +43,20 @@ test("should insert new game into collection", async () => {
     gameId: testGame.gameId,
   });
   expect(insertedGame?.gameId).toEqual(testGame.gameId);
+});
+
+test("should remove signup document when program item is removed", async () => {
+  await saveGames([testGame]);
+
+  const findSignupsResult = await findSignups();
+  const signups = unsafelyUnwrapResult(findSignupsResult);
+  expect(signups).toHaveLength(1);
+
+  const removeDeletedGamesResult = await removeDeletedGames([]);
+  const deletedGamesCount = unsafelyUnwrapResult(removeDeletedGamesResult);
+  expect(deletedGamesCount).toEqual(1);
+
+  const findSignupsResult2 = await findSignups();
+  const signups2 = unsafelyUnwrapResult(findSignupsResult2);
+  expect(signups2).toHaveLength(0);
 });
