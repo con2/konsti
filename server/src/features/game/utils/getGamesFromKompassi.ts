@@ -39,7 +39,10 @@ export const getGamesFromKompassi = async (): Promise<
   const eventProgramItems = unwrapResult(eventProgramItemsResult);
 
   if (!Array.isArray(eventProgramItems)) {
-    logger.error("%s", new Error("Invalid response format, should be array"));
+    logger.error(
+      "%s",
+      new Error("Invalid Kompassi response format, should be array")
+    );
     return makeErrorResult(KompassiError.INVALID_RESPONSE);
   }
 
