@@ -234,7 +234,38 @@ export const delSignup = async (
   }
 };
 
-export const delSignupsByGameIds = async (
+export const delSignupDocumentsByGameIds = async (
+  gameIds: string[]
+): Promise<Result<void, MongoDbError>> => {
+  const gamesResult = await findGames();
+  if (isErrorResult(gamesResult)) {
+    return gamesResult;
+  }
+  const games = unwrapResult(gamesResult);
+
+  const gamesInDb = gameIds.map((gameId) =>
+    games.find((game) => game.gameId === gameId)
+  );
+
+  const gameObjectIds = gamesInDb.flatMap((gameInDb) =>
+    gameInDb?._id ? gameInDb?._id : []
+  );
+
+  try {
+    await SignupModel.deleteMany({
+      game: { $in: gameObjectIds },
+    });
+    return makeSuccessResult(undefined);
+  } catch (error) {
+    logger.error(
+      "MongoDB: Error removing signup documents for game IDs: %s",
+      error
+    );
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+  }
+};
+
+export const resetSignupsByGameIds = async (
   gameIds: string[]
 ): Promise<Result<void, MongoDbError>> => {
   const gamesResult = await findGames();
@@ -260,7 +291,7 @@ export const delSignupsByGameIds = async (
     );
     return makeSuccessResult(undefined);
   } catch (error) {
-    logger.error("MongoDB: Error removing signups by game IDs: %s", error);
+    logger.error("MongoDB: Error removing signups for game IDs: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
