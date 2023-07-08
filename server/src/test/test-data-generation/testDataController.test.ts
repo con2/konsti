@@ -19,6 +19,7 @@ beforeAll(async () => {
 });
 
 afterEach(() => {
+  // Start server with different process.env.SETTINGS
   vi.resetModules();
 });
 
@@ -28,7 +29,7 @@ afterAll(async () => {
 
 describe(`POST ${ApiEndpoint.POPULATE_DB}`, () => {
   test("should return 404 on production", async () => {
-    process.env.SETTINGS = "production";
+    vi.stubEnv("SETTINGS", "production");
     const { server } = await startTestServer(mongoServer.getUri());
 
     try {

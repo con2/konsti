@@ -27,7 +27,7 @@ export const postEventLogItem = async (
   try {
     body = PostEventLogIsSeenRequestSchema.parse(req.body);
   } catch (error) {
-    logger.info("Error validating postEventLogItem body: %s", error);
+    logger.error("Error validating postEventLogItem body: %s", error);
     return res.sendStatus(422);
   }
 

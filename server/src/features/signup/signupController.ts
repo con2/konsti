@@ -30,7 +30,7 @@ export const postSignup = async (
 
   const result = PostEnteredGameRequestSchema.safeParse(req.body);
   if (!result.success) {
-    logger.info("Error validating postSignup body: %s", result.error);
+    logger.error("Error validating postSignup body: %s", result.error);
     return res.sendStatus(422);
   }
 
