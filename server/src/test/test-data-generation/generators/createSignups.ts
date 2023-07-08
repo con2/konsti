@@ -8,6 +8,7 @@ import { shuffleArray } from "server/utils/shuffleArray";
 import { getRandomInt } from "server/features/player-assignment/utils/getRandomInt";
 import { saveSignup } from "server/features/signup/signupRepository";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
+import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 
 export const createSignups = async (): Promise<void> => {
   logger.info(`Generate signup data`);
@@ -58,6 +59,7 @@ export const createSignups = async (): Promise<void> => {
             message: foundSignupQuestion?.questionFi
               ? faker.lorem.words(4)
               : "",
+            priority: DIRECT_SIGNUP_PRIORITY,
           });
         });
       });
