@@ -1,8 +1,8 @@
-## Ropecon 2022
+## Ropecon 2023
 
-In Ropecon 2022, you can sign up to tabletop role-playing games, larps, and game tournaments in Konsti.
+In Ropecon 2023, Konsti is used to sign up to role-playing games, larps, tournaments, workshops and some other program.
 
-Gaming Desk (Hall 3) and Larp/RPG Desk (Southern Entrance lobby) will help you with using Konsti. You can also get registration code or borrow tablets to use Konsti from the desks.
+The gaming desk (Hall 3) and the larp/RPG Desk (southern entrance lobby) will help you with using Konsti. The desks also have shared computers for using Konsti.
 
 ## How do you use Konsti?
 
@@ -10,80 +10,117 @@ Konsti is a web application that can be used on any web browser on your own devi
 
 ### Registering and logging in
 
-You can register a new account, log in and return back to the list of games through the hamburger menu on the upper left corner of Konsti. You can browse Konsti and all the games without logging in, but you will need to register an account and log in to be able to sign up for any games.
+You can browse the [prgoram list](/program/list) without loggin in, but for registering to
+program a user account is needed. Accounts from previous years have been removed, so you
+will have to create a new one for this year's Ropecon.
 
-To register a new account, you will need a registration code. Registration codes are available at the venue during Ropecon: you can get your code either at the Gaming Desk (Hall 3) or at the Larp/RPG Desk (Southern Entrance lobby).
+For creating an account, you will need a registration code, which you can get from the
+The gaming desk (Hall 3), the larp/RPG Desk or the info desk (both in the outhern entrance lobby).
 
-Please note, that any accounts that may have been registered in previous years are no longer in use: you will have to create a new account to use Konsti in Ropecon 2022.
+You can create your account on the [registaration page](/registration).
 
-In addition to the registration code, you need to register a new account is an username and a password. It is recommended to hold on to the registration code in case you won't be able to log back in to your account for some reason: you will need the registration code to be able to change the password at one of the desks. When you are first logged in to Konsti, you can see your registration code at the top of the page. It can later be found in the side navigation menu as well.
+Please save your registration code: you will need it if you log out of Konsti and the need
+to change your password. The code is visible in Konsti after you first log in. Later, you
+can see it on the [profile page](/profile/profile).
 
-### Programme type selector
+### Browsing program
 
-At the top of the page on the left is a new selector that lets you choose which types of games you want to browse: tabletop role-playing games, larps or game tournaments.
+The [program list page](/program/list) displays the program that uses Konsti for sign-ups.
+If the sign-up period is not open yet for a given program item, the info text for it will
+show when the sign-up starts and whether it will be a lottery sign-up or a direct sign-up.
 
-Please note that selecting a programme type affects not only the list of games to browse on the main view of the app, but also what games are visible when browsing the games you have signed up for or favorited in the My Program section: only games from one programme type are visible at once.
+On the page, you can also see other information, such as the duration of the program item,
+its location and accessibility information. You can also see, how many people have signed
+up and how many spots there are still open.
 
-### Browsing games in the Konsti app
-
-Program List -page shows the list of games the user can sign up for via the Konsti app. Games are sorted by their starting time and listed underneath headers displaying the date, the starting time of the game, and the number of games you have signed up for within that time slot. If the sign-up has not yet started, the header will also display when the sign-up period takes place and whether it will be a lottery sign-up or a direct sign-up.
-
-Next is perhaps the most important information for the users of Konsti: how many people have already signed up for the game and how many can still sign up. In the case of direct sign-ups, the number of people signed up for each game is updated and visible in real-time. However, when signing up for role-playing games using the lottery sign-up, if the lottery sign-up period is still ongoing, this number will not change until the lottery sign-up period is over and the algorithm has allocated users in games.
-
-At the bottom of the info card of each game there is a Read more link. Clicking the link will display more detailed information about the selected game, such as the duration and location of the game, accessibility information and the description of the game.
-
-### Signing up for games
-
-If the sign-up period for a game is ongoing, a Sign-up or Lottery sign-up button can be seen at the bottom of the game's info card. As long as the game has not yet started, you can cancel your sign-up for a game either from the game list or from the My Program section in the side navigation bar by pressing the Cancel sign-up button.
-
-Different types of game programme have slightly different sign-up processes due to the nature of their games.
+When a program item uses direct sign up, the number of participants is updated in real time.
+For games that use lottery sign up, the number will not change until the lottery sign-up
+period is over and the algorithm has allocated users to games.
 
 ### Favorited games
 
-Adding games and tournaments to your favorites in Konsti is a great way to keep track of games that you find interesting: you can browse the games you have favorited later through the My Program section in the navigation sidebar. You can add games to favorites from the game list by clicking the heart icon located in the upper right corner of the game's info card.
+Favoriting program items is a good way to keep track of program you find interesting. You can add a program item to your favorites by clicking on the heart icon in the upper right corner of a program item's info card. You can find your favorites in the [My Program view](/program/myprogram).
 
-## How to sign up for role-playing games?
+### Groups
 
-Signing up for role-playing games using the Konsti app contains two phases: the first one is called "lottery", and the second one "direct sign-up". Similar to previous years, the lottery phase uses an algorithm to assign users to games while taking into account the preferences they have chosen for the games they have signed up for. However, this year there is a new addition to the sign-up process, the direct sign-up phase.
+You can sign up to role-playing games also as a member of a group. Then, the lottery algorithm will assign all members of the group to the same game. (For games with more
+sign-ups than places, it is of course possible that the group will not get a spot in the
+game at all.)
 
-The sign-up period for role-playing games begins 4 hours before each game is set to begin with the lottery sign-up phase: during the first 2 hours the user can sign up to a maximum of three games per starting time slot and place them in order of preference. After the 2 hour lottery sign-up period is over, the algorithm places the users into games based on their chosen preferences and the capacity of the games. After this initial placement, signing up for games is closed for 15 minutes: during this "intermission period" the user can check the results of the lottery sign-up and decide whether they want to participate in the 2nd phase of the sign-up process or not.
+You can create a group on the [group page](/profile/group). There, you can also join an
+existing group, for which you will need a registration code from the person who created
+the group. Only the group creator can sign the group up to games.
 
-After the initial placements and the 15 minute intermission period, the second phase or the direct sign-up phase begins. Within the last 1h 45 min before the game is set to begin users have a chance to sign up to a game as long as there is still room for new players. Please note that you do not need to participate in the lottery sign-up phase to be able to sign up during the direct sign-up period!
+If you already have direct sign-ups to games, you can't create a new group or join an
+existing one. These signups will be shown on the group page.
+
+## Signing up to program
+
+If the sign-up period for a program item is ongoing, a sign-up button will be shown on the item's info card. You can cancel your sign-up on either the [My Program page](/program/myprogram) or the [program list](/program/list).
+
+The sign-up happens at different times for different program items. You can see when a sign-up starts on the program list or on this info page.
+
+Tabletop rpgs use a lottery sign-up where, after the lottery, remaining slots will be filled in the order of sign-ups. All other program uses direct sign-up without a lottery phase.
+
+## Tabletop role-playing game sign-ups
+
+Tabletop RPG sign-up in Konsti happens in two phases: lottery and direct sign-up. The lottery phase uses an algorithm to assign users to games while taking into account the preferences they have chosen for the games they have signed up for. The phase starts four
+hours before a game begins, except for the first games on Saturday and Sunday mornings,
+for which the sign-up starts already on the night before. In this first phase, you can choose up to three games for each time slot.
+
+The lottery sign-up phase lasts for 2 hours, after which the Konsti algorithm places users into games based on their chosen preferences. After this initial placement, signing up for games is closed for 15 minutes. During this "intermission period", you can take a look at the results of the lottery sign-up and decide whether you want to participate in the second phase of the sign-up process or not.
+
+After the initial placements and the 15-minute intermission period, the direct sign-up phase begins. During the last 1h 45 min before the game is set to begin, you can sign up to a game as long as there is still room for new players. You do not need to participate in the lottery sign-up phase to be able to sign up during the direct sign-up period.
+
+The first games of the convention that start on Friday at 4PM and 5PM, only have the direct sign-up phase.
 
 ### Revolving door games
 
-Revolving door games are games, where players can freely join and leave the role-playing game session at any time during its runtime. In the Konsti app, the first players can sign up for these games as usual, but after the revolving door games begin, they are displayed in their own section at the top of the page when clicking the "Revolving door" button.
+Revolving door games are games, where players can freely join and leave the game session at any time while it's going on. The first players can sign up for these games as usual, but after the revolving door games begin, they are displayed in the program list for all of their duration.
 
-## How to sign up for larps?
+## Larp sign-ups
 
-This year, sign-up for the majority of larps is done via the Konsti app. Unlike the sign-up process for table-top role-playing games, larp sign-ups do not use the lottery sign-up system: instead, players are signed up for games directly in the order of enrollment.
+Unlike tabletop rgps, larp sign-ups do not use a lottery and only contain one phase.
+
+There are some larps where sign-up does not happen in Konsti. You can sign up to these
+games at the larp/rpg desk, due to, for example, the players having to have to select
+a character during sign-up.
 
 ### Sign-up periods for larps
 
-There are set sign-up periods for larps. When using the Konsti app, the sign-up period for Friday night's larps begins at 3pm as soon as Ropecon opens its doors. Similarly, the sign-up period for larps held from Saturday morning to afternoon will begin on Friday at 6pm, and the sign-up period for larps held on Saturday evening will begin at 11am on Saturday. Finally, for larps held on Sunday, the sign-up period will begin on Saturday at 3pm.
+* Larps on Friday: Friday 3PM
+* Larps starting early on Saturday: Friday 6PM
+* Larps starting later on Saturday: Saturday 11AM
+* Larps on Sunday: Saturday 3PM
 
-### Why is larp X not in the Konsti app?
+## Tournament sign-ups
 
-Please note that there are some larps in the Ropecon 2022 programme that you cannot sign up for via the Konsti app. For example, some games may need to have their sign-ups at the Larp/RPG Desk due to having to distribute additional materials to the players or have them select their character at the time of sign-up.
+Tournament sign-ups also do not use a lottery and only contain one phase. Some tournaments
+may not use Konsti for signing up. If you can't find a tournament in Konsti and don't know
+how to sign up, you can ask for help at the game desk.
 
-## How to sign up for game tournaments?
+### Sign-up periods for tournaments
 
-You can browse and sign up for game tournaments within the Konsti app by selecting Game tournaments from the programme type selector at the top of the page. The sign-up process is fairly similar to those of larps and role-playing games, with some notable exceptions:
+* Friday's tournaments: Friday 3PM
+* Saturday's tournaments: Friday 6PM
+* Sunday's tournaments: Saturday 6PM
 
-### Game tournaments only use direct sign-ups
+### Contact information
 
-Unlike when signing up for role-playing games using the Konsti app, there is no lottery-signup or algorithm at play. Just like larps, game tournaments also use direct sign-ups, which means that users are signed up for tournaments in the order of enrollment. This is why, especially in the case of smaller or more popular tournaments, we recommend signing up for tournaments well in advance to be able to secure a spot.
+When signing up for a  tournament via the Konsti app, the user is prompted to fill in their name and contact information (email and phone number) before confirming their signup. This is done to make sure that tournament organizers can get a hold of the winners and other possible prize recipients after the tournament. This information is
+not shown to other Konsti users, only to Ropecon desk staff, who will pass on necessary
+contact information to tournament organisers.
 
-### Sign-up period for game tournaments
+## Workshops and other program
 
-The sign-up period within the Konsti app is also a little bit different for game tournaments. Unlike with larps or role-playing games, the sign-up process for all game tournaments begins as soon as Ropecon opens its doors at 3pm on Friday and remains open until the game tournament in question begins.
+In 2023, many workshops and some other program items are signed up to in Konsti. These
+also use direct sign-up, which means that places are filled in the order of sign-ups.
 
-### Remember to fill in your contact information to receive prizes
+### Sign-up periods for workshops
 
-When signing up for a game tournament via the Konsti app, the user is prompted to fill in their name and contact information (email and phone number) before confirming their signup. This is done to make sure that tournament organizers can get a hold of the winners and other possible prize recipients after the tournament - you would be surprised by how difficult this has sometimes been! This information is not shown publicly to other users of the Konsti app and is only visible for the organizers of the game tournament. Please make sure to fill in this information carefully so the prizes will find their way to their proper recipients!
+* Workshops starting on Friday: Friday 3PM
+* Workshops starting on Saturday on or before 2PM: Friday 6PM
+* Workshops starting on Saturday after 2PM: Saturday 9AM
+* Workshops starting on Sunday on or before 2PM: Saturday: 6PM
+* Workshops starting on Sunday after 2PM: Sunday 9AM
 
-### Why is tournament X not in the Konsti app?
-
-Although a variety of different game tournaments are held at Ropecon 2022, not all of them use the Konsti app for their sign-up process. For example, some tournaments like most of the miniature figure tournaments have already had a sign-up process well in advance via their own forums, and many of the MTG tournaments held at Ropecon use their own companion app for their sign-ups. Additionally, the Vampire: the Eternal Struggle European Championships held at Ropecon 2022 require their own in-person sign-up process at the VTES tournament area in Room 208 of Siipi.
-
-If you have any questions about which game tournaments use the Konsti app for their sign-up, or how to sign up via the Konsti app, please do not hesitate to ask for help at the Gaming Desk - our volunteers will gladly help you out!

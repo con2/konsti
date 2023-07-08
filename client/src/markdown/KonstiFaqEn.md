@@ -1,34 +1,40 @@
 ## I need help with the Konsti app, who can I ask?
 
-Our volunteers at both the Gaming Desk as well as the Larp/RPG Desk will gladly assist you and help you sign up for games using the Konsti app. If you have any questions about the Konsti app or how to use it, do not hesitate to ask them for help during the convention!
+Our volunteers at both the gaming desk as well as the larp/RPG Desk will gladly assist you and help you sign up for games using the Konsti app. If you have any questions about the Konsti app or how to use it, do not hesitate to ask them for help!
 
 ## I want to start using Konsti - where do I begin?
 
-To begin using the Konsti app, you need to first register an account. To register an account, you need a username, a password and a registration code. After registering an account and logging in you can sign up for games and tournaments. You can use your Konsti account on any device by logging in.
+To begin using the Konsti app, you need to first register an account, which you can do on the [registration page](/registration).
+
+To register an account a registration code and you will also have come up with a username
+and password. After registering an account and logging in you can sign up to program. You can use your Konsti account on any device by logging in.
 
 Please note that accounts from previous years are no longer in use.
 
 ## Where can I get a registration code?
 
-Registration codes can be picked up at either the Gaming Desk (Hall 3) or at the Larp/RPG Desk (Souther Entrance lobby) during Ropecon. This means that you cannot create a new account before Ropecon begins on Friday.
+Registration codes can be picked up at either the gaming desk (Hall 3), at the larp/RPG desk or at the info desk (both in the Southern Entrance lobby) This means that you cannot create a new account before Ropecon begins on Friday.
 
 ## How do I change my password?
 
-If you have lost your password, you can request it to be changed either at the Gaming Desk or at the Larp/RPG Desk using the registration code you used to create your account.
+If you are logged in to Konsti, you can change your password in the [Profile view](/profile/profile).
 
-If you lost your password before signing up for any games, you can just pick up another registration code and create a new account.
+If you have lost your password, you can request it to be changed either at the Gaming Desk or at the Larp/RPG Desk, if you still have both the your registration code and your password.
+
+If you lost your password before signing up for any program, you can just pick up another registration code and create a new account.
 
 ## I do not have a mobile device, how do I sign up?
 
-It is possible to borrow a tablet at the Gaming Desk or at the Larp/RPG Desk to register and sign up for games via the Konsti app. You can use your own account to log in to the Konsti app - just remember to also log out before returning the tablet to the Desk!
+There are shared computers on both the gaming desk and the larp/RPG desk that you can use
+Konsti with. Just remember to also log out when you are done!
 
-## Why can't I find game / tournament X in the Konsti app?
+## Why can't I find a certain program item in Konsti?
 
-Have you checked that you have selected the correct programme type in the selector? The selected programme type affects not only the list of games to be browsed, but the list of games you have signed up for in the My Program section. It can also be useful to check which tag is selected, as they can also filter the list of games that are visible.
+Have you checked that you have selected the correct programme type in the selector? It can also be useful to check which tag is selected, as they can also filter the list of games that are visible.
 
-If you still cannot find the game or tournament you are looking for in the Konsti app, it is possible that the sign-up process for that particular game or tournament is not done via the Konsti app but in some other way. If you are unsure, you can always confirm the sign-up method for a certain game or tournament from the Gaming Desk or the Larp/RPG Desk.
+If you still cannot find the game or tournament you are looking for, it is possible that the sign-up process for that particular game or tournament is not done via the Konsti app but in some other way. If you are unsure, you can always confirm the sign-up method for a certain game or tournament from the gaming Desk, the larp/RPG desk or Ropecon info.
 
-## Why can I not sign up for a game?
+## Why can I not sign up for a program item even though it's visible in Konsti?
 
 Option A: You have already signed up for three role-playing games in the same starting time slot during the lottery sign-up phase. When signing up for role-playing games using the Konsti app, it is possible to sign up for up to three games during the lottery sign-up phase, which begins 4 hours before the starting time of the game in question, or during the following direct sign-up phase 2 hours before the game is set to start. In the lottery sign-up phase, the user can choose up to three games and assign them in the order of preference from 1 to 3. You can only choose three, so there might be some tough choices ahead!
 
@@ -42,7 +48,7 @@ Option C: The leader of your group has signed you up for a role-playing game as 
 
 You cannot create a new group or join a group, if you have already signed up for games. You can check which games are preventing you from creating or joining a group from the Group section of the navigation sidebar.
 
-## Can I sign up for multiple tournaments or games at the same time?
+## Can I sign up for multiple simultaneous program item?
 
 It is technically possible to sign up for multiple games, e.g. two slightly overlapping game tournaments using the Konsti app. Sometimes this can be useful, for example when another tournament would be starting a little bit before another one ends and the user would like to participate in both knowing that the first tournament will probably end early, or if they do not make it to the final round. Technically allowing for multiple sign-ups at the same time also makes it possible for users to sign up for a different game if the game or tournament is canceled entirely. However, this is a power that should be used wisely and with care: please make sure to check that you are not signing up for multiple games or tournaments held at the same time and that you can actually attend all the games and tournaments that you sign up for!
 

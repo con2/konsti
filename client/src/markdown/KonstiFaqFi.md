@@ -1,11 +1,11 @@
 ## Mistä saan apua Konstin käyttöön?
 
 Vapaaehtoisemme pelitiskillä ja larp/rope-tiskillä auttavat mielellään Konstin käytössä ja peleihin ilmoittautumisessa.
-Jos sinulla on siis kysyttävää Konstin käytöstä, älä epäröi nykäistä heitä hihasta tapahtuman aikana!
+Jos sinulla on siis kysyttävää Konstin käytöstä, älä epäröi nykäistä heitä hihasta!
 
 ## Kuinka aloitan Konstin käytön?
 
-Konstin käyttö kannattaa aloittaa rekisteröimällä itsellesi käyttäjätunnus: voit tehdä tämän vasemman yläreunan hampurilaisvalikon kautta löytyvällä Luo tili -sivulla.
+Konstin käyttö kannattaa aloittaa rekisteröimällä itsellesi käyttäjätunnus: voit tehdä tämän [Luo käyttäjätili -näkymässä](/registration).
 Rekisteröitymiseen tarvitset rekisteröintikoodin sekä joudut keksimään itsellsei käyttäjätunnuksen ja salasanan.
 Tunnuksen luomisen jälkeen voit kirjautua sisään ja ilmoittautua ohjelmanumeroihin. Voit käyttää Konstia millä vain haluamallasi laitteella kirjautumalla sisään.
 
@@ -18,7 +18,7 @@ Käyttäjätilin voi siis käytännössä luoda vasta Ropeconissa.
 
 ## Kuinka vaihdan salasanani?
 
-Jos olet kirjautunut Konstiin, voit vaihtaa salasanan Konstin Käyttäjä ja Ryhmä -näkymässä.
+Jos olet kirjautunut Konstiin, voit vaihtaa salasanan [Profiili-näkymässä](/profile/profile).
 
 Jos salasanasi on hukkunut etkä pääse kirjautumaan Konstiin, voit vaihtaa sen rekisteröintikoodisi ja käyttäjätunnuksesi avulla pelitiskillä tai larp/rope-tiskillä.
 
@@ -37,7 +37,7 @@ Olethan tarkistanut, että valittuna on etsimääsi peliä vastaava ohjelmatyypp
 Voi myös olla, ettei kyseiseen ohjelmaan ilmoittauduta Konstin kautta, vaan jotain muuta kautta. Voit tarvittaessa kysyä apua pelitiskiltä,
 larp/rope-tiskiltä tai infosta.
 
-## Miksi en voi ilmoittautua peliin?
+## Miksi en voi ilmoittautua haluamaani ohjelmanumeroon, vaikka se on Konstissa?
 
 Vaihtoehto 1: Olet jo ilmoittautunut kolmeen saman tunnin aikana alkavan roolipelin arvontaan. Konstissa on mahdollista ilmoittautua aina joko seuraavan neljän tunnin aikana alkaviin roolipeleihin arvontavaiheessa, tai seuraavan kahden tunnin aikana alkaviin roolipeleihin suorailmoittautumisvaiheessa. Arvontavaiheessa jokaiselle tunnille voi valita enintään kolme suosikkipeliään preferenssijärjestyksessä 1-3.
 
@@ -51,7 +51,7 @@ Vaihtoehto 3: Ryhmän perustaja on ilmoittanut sinut mukaan pelipaikan arvontaan
 
 Jos sinulla on jo suoria ilmoittautumisia peleihin, et voi luoda uutta ryhmää tai liittyä ryhmään. Profiili & ryhmä -näkymässä listataan ne pelit, jotka estävät ryhmän perustamisen tai ryhmään liittymisen.
 
-## Voinko ilmoittautua useampaan peliin/turnaukseen yhtä aikaa?
+## Voinko ilmoittautua useampaan yhtäaikaiseen ohjelmanumeroon?
 
 Teknisesti Konstissa on mahdollista ilmoittautua esimerkiksi kahteen osittain samaan aikaan pelattavaan turnaukseen yhtä aikaa. Joskus tämä voi olla tarpeen, jos esimerkiksi toinen turnaus olisi alkamassa hieman ennen ensimmäisen virallista loppumisajankohtaa. Näin käyttäjän on mahdollista ilmoittautua mukaan myös toiseen turnaukseen jos ensimmäinen turnaus loppuukin esimerkiksi hieman etuajassa, tai jos tämä ei pääsekään mukaan turnauksen finaaliin. Tämä mahdollistaa uuden ilmoittautumisen tekemisen myös siinä tapauksessa, että peli tai turnaus perutaan kokonaan. Kannattaa kuitenkin olla varovainen useisiin yhtä aikaa järjestettäviin peleihin ilmoittautuessa ja tarkistaa, että varmasti pääset osallistumaan kaikkiin niihin peleihin/turnauksiin, joihin olet ilmoittautunut!
 

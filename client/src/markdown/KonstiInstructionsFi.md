@@ -11,12 +11,12 @@ Konsti on verkkosovellus, jota voi käyttää internet-selaimen avulla omalla ä
 
 ### Tilin luominen ja sisäänkirjautuminen
 
-[Ohjelmalistaa](/program/list) voi selata kirjautumatta sisään, mutta peleihin ilmoittautumiseen vaaditaan käyttäjätili.
+[Ohjelmalistaa](/program/list) voi selata kirjautumatta sisään, mutta ohjelmaan ilmoittautumiseen vaaditaan käyttäjätili.
 Aikaisempien vuosien käyttäjätilit eivät ole enää käytössä, vaan sinun on luotava uusi tili tämän vuoden tapahtumaa varten.
 
 Uuden käyttäjätilin luomiseen tarvitset rekisteröintikoodin, joita on saatavilla pelitiskiltä (Halli 3), rope/larp-tiskiltä tai infosta (pääaula, eteläinen sisäänkäynti).
 
-Tilin pääset luomaan [Kirjaudu-näkymästä](/login).
+Tilin pääset luomaan [Luo käyttäjätili -näkymästä](/registration).
 
 Rekisteröintikoodi kannattaa pitää tallessa siltä varalta, että et pääsekään enää kirjautumaan sisään tunnuksellasi: sitä tarvitaan salasanan vaihtamiseen.
 Rekisteröintikoodi näkyy ensimmäisen sisäänkirjautumisen yhteydessä sivuston ylälaidassa, ja sen löytää myöhemmin myös [profiilisivulta](/profile/profile).
@@ -39,7 +39,7 @@ ohjelmanumerot löydät [Oma ohjelmani](/program/myprogram) -näkymästä.
 
 ### Ryhmät
 
-Voit ilmoittautua pöytäroolipeleihin myös ryhmänä. Silloin arvonta-algoritmi sijoittaa kaikki ryhmän jäsenet samaan peliin
+Pöytäroolipeleihin voi ilmoittautua myös ryhmänä. Silloin arvonta-algoritmi sijoittaa kaikki ryhmän jäsenet samaan peliin
 (sikäli kun arpaonni suosii silloin kun ilmoittautuneita on enemmän kuin paikkoja). Voit luoda ryhmän [Profiili & Ryhmä -näkymässä](/profile/group).
 Samassa näkymässä voit myös liittyä olemassa olevaan ryhmään. Tätä varten tarvitset ryhmän perustajalta rekisteröitymiskoodin.
 
@@ -50,21 +50,20 @@ Profiili & ryhmä -näkymässä listataan ne pelit, jotka estävät ryhmän peru
 
 ## Ilmoittautuminen
 
-Jos ohjelmanumeron ilmoittautumisaika on käynnissä, näkyy sen tietojen alla Ilmoittaudu-painike.
-Jo tehdyn ilmoittautumisen voi perua joko Kaikki ohjelma -näkymässä tai Oma ohjelmani -näkymässä
-painamalla Peru ilmoittautuminen -painiketta.
+Jos ohjelmanumeron ilmoittautumisaika on käynnissä, näkyy sen tietojen alla Ilmoittaudu-painike. Jo tehdyn ilmoittautumisen voi perua joko [Oma ohjelmani](/program/myprogram) -näkymässä tai [Kaikki ohjelma](/program/list) -näkymässä.
 
-Ilmoittautuminen on porrastettu ja ilmoittautumisten alkamisajat näet Konstista.
+Ilmoittautuminen on porrastettu ja ilmoittautumisten alkamisajat näet ohjelmalistasta
+tai tästä ohjeesta.
 
-Pöytäroolipeleihin ilmoittaudutaan arvonnan kautta ja jäljelle jääneet paikat täytetään ilmoittautumisjärjestyksessä.
-Muun ohjelman paikat täytetään ilmoittautumisjärjestyksessä.
+Pöytäroolipeleihin ilmoittaudutaan arvonnan kautta ja jäljelle jääneet paikat täytetään ilmoittautumisjärjestyksessä. Muun ohjelman paikat täytetään ilmoittautumisjärjestyksessä.
 
 ## Roolipeleihin ilmoittautuminen
 
 Konstin roolipeli-ilmoittautuminen tapahtuu kahdessa vaiheessa: arvonnassa ja suorailmoittautumisessa. Arvonnassa Konstin
 algoritmi jakaa pelipaikkoja käyttäjien asettamien toiveiden mukaan. Arvontaan voi ilmoittautua neljä tuntia ennen kunkin
 pelin alkua, paitsi lauantai- ja sunnuntaiaamujen peleihin jo edellisenä iltana.
-Tässä ensimmäisessä vaiheessa kävijä pystyy ilmoittautumaan yhteensä kolmeen eri peliin.
+Tässä ensimmäisessä vaiheessa kävijä pystyy ilmoittautumaan yhteensä kolmeen eri peliin
+kutakin pelien alkamisajankohtaa kohti.
 
 Arvontaan ilmoittautuminen kestää kaksi tuntia, minkä jälkeen Konsti sijoittaa ilmoittautuneet peleihin arpoen tarvittaessa
 suosituimpiin peleihin pääsijät. Ilmoittautuminen sulkeutuu arvonnan jälkeen  15 minuutiksi: tämän vartin aikana käyttäjä voi tarkistaa,
