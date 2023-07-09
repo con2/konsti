@@ -6,7 +6,7 @@ Jos sinulla on siis kysyttävää Konstin käytöstä, älä epäröi nykäistä
 ## Kuinka aloitan Konstin käytön?
 
 Konstin käyttö kannattaa aloittaa rekisteröimällä itsellesi käyttäjätunnus: voit tehdä tämän [Luo käyttäjätili -näkymässä](/registration).
-Rekisteröitymiseen tarvitset rekisteröintikoodin sekä joudut keksimään itsellsei käyttäjätunnuksen ja salasanan.
+Rekisteröitymiseen tarvitset rekisteröintikoodin sekä joudut keksimään itsellesi käyttäjätunnuksen ja salasanan.
 Tunnuksen luomisen jälkeen voit kirjautua sisään ja ilmoittautua ohjelmanumeroihin. Voit käyttää Konstia millä vain haluamallasi laitteella kirjautumalla sisään.
 
 Huomaathan, että aikaisempina vuosina käytössä olleet käyttäjätilit on poistettu käytöstä.
@@ -22,11 +22,11 @@ Jos olet kirjautunut Konstiin, voit vaihtaa salasanan [Profiili-näkymässä](/p
 
 Jos salasanasi on hukkunut etkä pääse kirjautumaan Konstiin, voit vaihtaa sen rekisteröintikoodisi ja käyttäjätunnuksesi avulla pelitiskillä tai larp/rope-tiskillä.
 
-Jos et ollut ehtinyt vielä ilmoittautunut yhteenkään peliin, voit huoletta hakea itsellesi tiskiltä myös toisen rekisteröintikoodin ja luoda uuden käyttäjätilin.
+Jos et ollut ehtinyt vielä ilmoittautua yhteenkään peliin, voit huoletta hakea itsellesi tiskiltä myös toisen rekisteröintikoodin ja luoda uuden käyttäjätilin.
 
 ## Minulla ei ole mobiililaitetta, kuinka ilmoittaudun?
 
-Pelitiskillä ja larp/rope-tiskillä on tietokoneita, joilla Konsti voi käyttää.
+Pelitiskillä ja larp/rope-tiskillä on tietokoneita, joilla Konstia voi käyttää.
 
 Voit kirjautua sisään Konstiin näillä laitteilla käyttäen omaa käyttäjätunnustasi ja salasanaasi – muistathan kirjautua ulos Konstista kun lopetat käytön!
 
@@ -49,7 +49,7 @@ Vaihtoehto 3: Ryhmän perustaja on ilmoittanut sinut mukaan pelipaikan arvontaan
 
 ## Miksi en pysty liittymään ryhmään/luomaan ryhmää?
 
-Jos sinulla on jo suoria ilmoittautumisia peleihin, et voi luoda uutta ryhmää tai liittyä ryhmään. Profiili & ryhmä -näkymässä listataan ne pelit, jotka estävät ryhmän perustamisen tai ryhmään liittymisen.
+Jos sinulla on jo suoria ilmoittautumisia peleihin, et voi luoda uutta ryhmää tai liittyä ryhmään. [Ryhmä -näkymässä](/profile/group) listataan ne pelit, jotka estävät ryhmän perustamisen tai ryhmään liittymisen.
 
 ## Voinko ilmoittautua useampaan yhtäaikaiseen ohjelmanumeroon?
 

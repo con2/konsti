@@ -5,4 +5,4 @@ by a lottery, or directly in the order of enrollment.
 The team has continued to work on and improve the Konsti app and
 its lottery algorithm throughout the years.
 
-You can see more on the [Konsti GitHub page](https://github.com/ropekonsti/konsti).
+You can find more info on the [Konsti GitHub page](https://github.com/ropekonsti/konsti).
