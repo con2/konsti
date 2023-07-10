@@ -1,5 +1,5 @@
 import { vi } from "vitest";
-import { initializeDayjs } from "shared/utils/time";
+import { initializeDayjs } from "shared/utils/initializeDayjs";
 import { config } from "server/config";
 
 initializeDayjs();

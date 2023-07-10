@@ -1,14 +1,14 @@
 import dayjs from "dayjs";
 import { getStartTimes } from "client/utils/getStartTimes";
 import { sharedConfig } from "shared/config/sharedConfig";
-import { getTime } from "client/utils/getTime";
+import { getTimeNow } from "client/utils/getTimeNow";
 import { SelectedGame } from "shared/typings/models/user";
 
 export const getMissedSignups = (
   signedGames: readonly SelectedGame[],
   enteredGames: readonly SelectedGame[]
 ): string[] => {
-  const timeNow = getTime();
+  const timeNow = getTimeNow();
 
   const signedGamesStartTimes = getStartTimes(
     signedGames.map((signedGame) => signedGame.gameDetails)

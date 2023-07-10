@@ -2,7 +2,7 @@ import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import _ from "lodash";
-import { timeFormatter } from "client/utils/timeFormatter";
+import { getWeekdayAndTime } from "client/utils/timeFormatter";
 import { Game } from "shared/typings/models/game";
 
 interface Props {
@@ -31,7 +31,7 @@ export const HiddenGamesList = ({ hiddenGames }: Props): ReactElement => {
             {t(`programType.${game.programType}`)}
             {" - "}
 
-            {timeFormatter.getWeekdayAndTime({
+            {getWeekdayAndTime({
               time: game.startTime,
               capitalize: false,
             })}

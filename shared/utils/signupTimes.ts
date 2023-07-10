@@ -3,6 +3,26 @@ import { sharedConfig } from "shared/config/sharedConfig";
 import { Game, ProgramType } from "shared/typings/models/game";
 import { getPhaseGap } from "shared/utils/getPhaseGap";
 
+const { PRE_SIGNUP_START, DIRECT_SIGNUP_START } = sharedConfig;
+
+export const getAlgorithmSignupStartTime = (startTime: string): Dayjs => {
+  const unmodifiedStartTime = dayjs(startTime).subtract(
+    PRE_SIGNUP_START,
+    "minutes"
+  );
+
+  const startTimeIsTooEarly = unmodifiedStartTime.hour() <= 6;
+
+  if (startTimeIsTooEarly) {
+    return unmodifiedStartTime.subtract(1, "day").hour(22);
+  }
+  return unmodifiedStartTime;
+};
+
+export const getAlgorithmSignupEndTime = (startTime: string): Dayjs => {
+  return dayjs(startTime).subtract(DIRECT_SIGNUP_START, "minutes");
+};
+
 export const getDirectSignupStartTime = (
   game: Game,
   timeNow: Dayjs
