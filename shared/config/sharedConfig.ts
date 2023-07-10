@@ -52,8 +52,10 @@ export const sharedConfig: SharedConfig = {
     ProgramType.OTHER,
   ],
 
+  CONVENTION_START_TIME: `${friday}T12:00:00Z`, // UTC date
+
   directSignupWindows: {
-    tabletopRPG: [],
+    tabletopRPG: [], // RPGs use DIRECT_SIGNUP_START
 
     larp: [
       // Friday
@@ -150,7 +152,4 @@ export const sharedConfig: SharedConfig = {
   // Sentry
   tracesSampleRate: 0.0,
   enableSentryInDev: false,
-
-  // Test values
-  CONVENTION_START_TIME: `${friday}T12:00:00Z`, // UTC date
 };

@@ -5,7 +5,7 @@ import _ from "lodash";
 import styled from "styled-components";
 import { useAppSelector } from "client/utils/hooks";
 import { Game } from "shared/typings/models/game";
-import { timeFormatter } from "client/utils/timeFormatter";
+import { getWeekdayAndTime } from "client/utils/timeFormatter";
 import { ControlledInput } from "client/components/ControlledInput";
 import { MULTIPLE_WHITESPACES_REGEX } from "client/views/all-games/AllGamesView";
 
@@ -97,7 +97,7 @@ export const PrivateSignupMessages = (): ReactElement => {
           return (
             <div key={startTime}>
               <h3>
-                {timeFormatter.getWeekdayAndTime({
+                {getWeekdayAndTime({
                   time: startTime,
                   capitalize: true,
                 })}

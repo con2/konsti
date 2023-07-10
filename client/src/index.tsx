@@ -19,7 +19,7 @@ import { store } from "client/utils/store";
 
 // Initialized i18next instance
 import "client/utils/i18n";
-import { initializeDayjs } from "shared/utils/time";
+import { initializeDayjs } from "shared/utils/initializeDayjs";
 import { lazyWithRetry } from "client/utils/lazyWithRetry";
 
 initializeDayjs();

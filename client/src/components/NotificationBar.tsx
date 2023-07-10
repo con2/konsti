@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { HEADER_HEIGHT } from "client/components/Header";
-import { timeFormatter } from "client/utils/timeFormatter";
+import { getWeekdayAndTime } from "client/utils/timeFormatter";
 import { submitUpdateEventLogIsSeen } from "client/views/login/loginThunks";
 
 export const NotificationBar = (): ReactElement | null => {
@@ -28,7 +28,7 @@ export const NotificationBar = (): ReactElement | null => {
             <Link to={`/games/${programItemId}`}>{foundGame.title}</Link>
             <StartTime>
               (
-              {timeFormatter.getWeekdayAndTime({
+              {getWeekdayAndTime({
                 time: foundGame.startTime,
               })}
               )
