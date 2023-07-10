@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import dayjs from "dayjs";
 import { useAppDispatch } from "client/utils/hooks";
 import { Dropdown } from "client/components/Dropdown";
-import { timeFormatter } from "client/utils/timeFormatter";
+import { getWeekdayAndTime, getDate } from "client/utils/timeFormatter";
 import { submitSetTestSettings } from "client/test/test-settings/testSettingsThunks";
 import { testTimes } from "client/test/test-components/testComponentUtils";
 
@@ -18,9 +18,9 @@ export const TestTimeSelector = ({ testTime }: Props): ReactElement => {
   const [loading, setLoading] = useState<boolean>(false);
 
   const dropdownItems = testTimes.map((time) => {
-    const formattedDate = `${timeFormatter.getWeekdayAndTime({
+    const formattedDate = `${getWeekdayAndTime({
       time,
-    })} (${timeFormatter.getDate(time)})`;
+    })} (${getDate(time)})`;
     return { value: time, title: formattedDate };
   });
 

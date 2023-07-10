@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import _ from "lodash";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { submitUpdateEventLogIsSeen } from "client/views/login/loginThunks";
-import { timeFormatter } from "client/utils/timeFormatter";
+import { getWeekdayAndTime } from "client/utils/timeFormatter";
 import { RaisedCard } from "client/components/RaisedCard";
 
 export const EventLog = (): ReactElement => {
@@ -46,7 +46,7 @@ export const EventLog = (): ReactElement => {
     if (useRelativeTime) {
       return dayjs().to(createdAt);
     }
-    return timeFormatter.getWeekdayAndTime({ time: createdAt });
+    return getWeekdayAndTime({ time: createdAt });
   };
 
   return (
@@ -81,7 +81,7 @@ export const EventLog = (): ReactElement => {
 
             <StartTime>
               {t("eventLog.gameDetails", {
-                START_TIME: timeFormatter.getWeekdayAndTime({
+                START_TIME: getWeekdayAndTime({
                   time: foundGame.startTime,
                 }),
                 LOCATION: foundGame.location,

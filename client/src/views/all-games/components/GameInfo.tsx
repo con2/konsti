@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import styled, { css } from "styled-components";
-import { timeFormatter } from "client/utils/timeFormatter";
+import { getWeekdayAndTime, getTime } from "client/utils/timeFormatter";
 import { Game, GameStyle, Genre } from "shared/typings/models/game";
 import { sharedConfig } from "shared/config/sharedConfig";
 
@@ -46,13 +46,12 @@ export const GameInfo = ({ game }: Props): ReactElement => {
   });
 
   const getFormattedStartTime = (startTime: string): string =>
-    timeFormatter.getWeekdayAndTime({
+    getWeekdayAndTime({
       time: startTime,
       capitalize: true,
     });
 
-  const getFormattedEndTime = (endTime: string): string =>
-    timeFormatter.getTime(endTime);
+  const getFormattedEndTime = (endTime: string): string => getTime(endTime);
 
   const getFormattedDuration = (duration: number): string => {
     const hours = Math.floor(duration / 60);

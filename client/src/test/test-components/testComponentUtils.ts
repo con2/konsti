@@ -5,6 +5,7 @@ const { CONVENTION_START_TIME, PHASE_GAP } = sharedConfig;
 
 export const testTimes = [
   // Friday
+  dayjs(CONVENTION_START_TIME).subtract(5, "hours").format(),
   dayjs(CONVENTION_START_TIME).subtract(1, "hours").format(),
   dayjs(CONVENTION_START_TIME)
     .subtract(1, "hours")

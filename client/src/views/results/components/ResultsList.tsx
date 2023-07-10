@@ -3,7 +3,7 @@ import { ReactElement, useEffect, useMemo, useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { timeFormatter } from "client/utils/timeFormatter";
+import { getWeekdayAndTime } from "client/utils/timeFormatter";
 import { useAppSelector } from "client/utils/hooks";
 import { getUsersForGameId } from "client/views/results/resultsUtils";
 import { getUpcomingGames } from "client/utils/getUpcomingGames";
@@ -123,7 +123,7 @@ export const DirectResults = (): ReactElement => {
           return (
             <TimeSlot key={startTime}>
               <h3>
-                {timeFormatter.getWeekdayAndTime({
+                {getWeekdayAndTime({
                   time: startTime,
                   capitalize: true,
                 })}

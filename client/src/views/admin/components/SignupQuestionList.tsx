@@ -5,7 +5,7 @@ import styled from "styled-components";
 import _ from "lodash";
 import { Game } from "shared/typings/models/game";
 import { SignupQuestion } from "shared/typings/models/settings";
-import { timeFormatter } from "client/utils/timeFormatter";
+import { getWeekdayAndTime } from "client/utils/timeFormatter";
 
 interface Props {
   signupQuestions: readonly SignupQuestion[];
@@ -66,7 +66,7 @@ export const SignupQuestionList = ({
               {signupQuestion.private && <BoldText>({t("private")})</BoldText>}{" "}
               - {t(`programType.${foundGame.programType}`)} -{" "}
               <span>
-                {timeFormatter.getWeekdayAndTime({
+                {getWeekdayAndTime({
                   time: foundGame.startTime,
                   capitalize: false,
                 })}
