@@ -87,7 +87,7 @@ export const DirectSignupForm = ({
               </BoldText>
             </>
           )}
-          {timeNow.isAfter(directSignupStartTime) && (
+          {timeNow.isSameOrAfter(directSignupStartTime) && (
             <span>{t("signup.directSignupOpenNow")}</span>
           )}
         </div>
@@ -140,14 +140,15 @@ export const DirectSignupForm = ({
                 </p>
               )}
 
-              {!signupFormOpen && timeNow.isAfter(directSignupStartTime) && (
-                <ButtonWithMargin
-                  onClick={() => setSignupFormOpen(!signupFormOpen)}
-                  buttonStyle={ButtonStyle.PRIMARY}
-                >
-                  {t("signup.directSignup")}
-                </ButtonWithMargin>
-              )}
+              {!signupFormOpen &&
+                timeNow.isSameOrAfter(directSignupStartTime) && (
+                  <ButtonWithMargin
+                    onClick={() => setSignupFormOpen(!signupFormOpen)}
+                    buttonStyle={ButtonStyle.PRIMARY}
+                  >
+                    {t("signup.directSignup")}
+                  </ButtonWithMargin>
+                )}
 
               {signupFormOpen && (
                 <EnterGameForm
