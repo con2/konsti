@@ -70,24 +70,24 @@ export const DirectSignupForm = ({
     }
   };
 
+  const directSignupStartTime = getDirectSignupStartTime(game);
   const timeNow = getTimeNow();
-  const directSignupStartTime = getDirectSignupStartTime(game, timeNow);
 
   if (!loggedIn) {
     return (
       <NotLoggedSignupInfo>
         <div>
-          {directSignupStartTime && (
+          {timeNow.isBefore(directSignupStartTime) && (
             <>
               <span>{t("signup.signupOpens")}</span>{" "}
               <BoldText>
                 {getWeekdayAndTime({
-                  time: directSignupStartTime,
+                  time: directSignupStartTime.format(),
                 })}
               </BoldText>
             </>
           )}
-          {!directSignupStartTime && (
+          {timeNow.isAfter(directSignupStartTime) && (
             <span>{t("signup.directSignupOpenNow")}</span>
           )}
         </div>
@@ -129,18 +129,18 @@ export const DirectSignupForm = ({
 
           {enteredGamesForTimeslot.length === 0 && (
             <>
-              {directSignupStartTime && (
+              {timeNow.isBefore(directSignupStartTime) && (
                 <p>
                   {t("signup.signupOpens")}{" "}
                   <BoldText>
                     {getWeekdayAndTime({
-                      time: directSignupStartTime,
+                      time: directSignupStartTime.format(),
                     })}
                   </BoldText>
                 </p>
               )}
 
-              {!signupFormOpen && !directSignupStartTime && (
+              {!signupFormOpen && timeNow.isAfter(directSignupStartTime) && (
                 <ButtonWithMargin
                   onClick={() => setSignupFormOpen(!signupFormOpen)}
                   buttonStyle={ButtonStyle.PRIMARY}

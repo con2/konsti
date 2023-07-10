@@ -49,9 +49,9 @@ export const storeSignup = async (
     };
   }
 
-  const directSignupStartTime = getDirectSignupStartTime(game, timeNow);
+  const directSignupStartTime = getDirectSignupStartTime(game);
 
-  if (directSignupStartTime) {
+  if (timeNow.isBefore(directSignupStartTime)) {
     logger.error(
       "%s",
       new Error(
