@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import dayjs from "dayjs";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { getTime } from "client/utils/getTime";
+import { getTimeNow } from "client/utils/getTimeNow";
 import { useAppSelector } from "client/utils/hooks";
 import { selectActiveGames } from "client/views/admin/adminSlice";
 
@@ -15,7 +15,7 @@ export const RevolvingDoorGamesInfo = (): ReactElement => {
 
   const hiddenGamesIds = hiddenGames.map((g) => g.gameId);
 
-  const timeNow = getTime();
+  const timeNow = getTimeNow();
   const runningRevolvingDoorGames = activeGames.filter((game) => {
     return (
       game.revolvingDoor &&

@@ -8,7 +8,7 @@ import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { isAlreadyEntered } from "./allGamesUtils";
 import { Button, ButtonStyle } from "client/components/Button";
 import { CancelSignupForm } from "./CancelSignupForm";
-import { timeFormatter } from "client/utils/timeFormatter";
+import { getWeekdayAndTime } from "client/utils/timeFormatter";
 import {
   DeleteEnteredGameErrorMessage,
   submitDeleteEnteredGame,
@@ -16,8 +16,8 @@ import {
 import { loadGames } from "client/utils/loadData";
 import { ErrorMessage } from "client/components/ErrorMessage";
 import { selectActiveEnteredGames } from "client/views/my-games/myGamesSlice";
-import { getTime } from "client/utils/getTime";
-import { getDirectSignupStartTime } from "shared/utils/getDirectSignupStartTime";
+import { getTimeNow } from "client/utils/getTimeNow";
+import { getDirectSignupStartTime } from "shared/utils/signupTimes";
 import { sharedConfig } from "shared/config/sharedConfig";
 
 interface Props {
@@ -70,24 +70,24 @@ export const DirectSignupForm = ({
     }
   };
 
-  const timeNow = getTime();
-  const directSignupStartTime = getDirectSignupStartTime(game, timeNow);
+  const directSignupStartTime = getDirectSignupStartTime(game);
+  const timeNow = getTimeNow();
 
   if (!loggedIn) {
     return (
       <NotLoggedSignupInfo>
         <div>
-          {directSignupStartTime && (
+          {timeNow.isBefore(directSignupStartTime) && (
             <>
               <span>{t("signup.signupOpens")}</span>{" "}
               <BoldText>
-                {timeFormatter.getWeekdayAndTime({
-                  time: directSignupStartTime,
+                {getWeekdayAndTime({
+                  time: directSignupStartTime.format(),
                 })}
               </BoldText>
             </>
           )}
-          {!directSignupStartTime && (
+          {timeNow.isSameOrAfter(directSignupStartTime) && (
             <span>{t("signup.directSignupOpenNow")}</span>
           )}
         </div>
@@ -129,25 +129,26 @@ export const DirectSignupForm = ({
 
           {enteredGamesForTimeslot.length === 0 && (
             <>
-              {directSignupStartTime && (
+              {timeNow.isBefore(directSignupStartTime) && (
                 <p>
                   {t("signup.signupOpens")}{" "}
                   <BoldText>
-                    {timeFormatter.getWeekdayAndTime({
-                      time: directSignupStartTime,
+                    {getWeekdayAndTime({
+                      time: directSignupStartTime.format(),
                     })}
                   </BoldText>
                 </p>
               )}
 
-              {!signupFormOpen && !directSignupStartTime && (
-                <ButtonWithMargin
-                  onClick={() => setSignupFormOpen(!signupFormOpen)}
-                  buttonStyle={ButtonStyle.PRIMARY}
-                >
-                  {t("signup.directSignup")}
-                </ButtonWithMargin>
-              )}
+              {!signupFormOpen &&
+                timeNow.isSameOrAfter(directSignupStartTime) && (
+                  <ButtonWithMargin
+                    onClick={() => setSignupFormOpen(!signupFormOpen)}
+                    buttonStyle={ButtonStyle.PRIMARY}
+                  >
+                    {t("signup.directSignup")}
+                  </ButtonWithMargin>
+                )}
 
               {signupFormOpen && (
                 <EnterGameForm

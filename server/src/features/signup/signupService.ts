@@ -10,7 +10,7 @@ import {
   PostEnteredGameRequest,
   PostEnteredGameResponse,
 } from "shared/typings/api/myGames";
-import { getDirectSignupStartTime } from "shared/utils/getDirectSignupStartTime";
+import { getDirectSignupStartTime } from "shared/utils/signupTimes";
 import { logger } from "server/utils/logger";
 import { delSignup, saveSignup } from "server/features/signup/signupRepository";
 import { findUser } from "server/features/user/userRepository";
@@ -49,9 +49,9 @@ export const storeSignup = async (
     };
   }
 
-  const directSignupStartTime = getDirectSignupStartTime(game, timeNow);
+  const directSignupStartTime = getDirectSignupStartTime(game);
 
-  if (directSignupStartTime) {
+  if (timeNow.isBefore(directSignupStartTime)) {
     logger.error(
       "%s",
       new Error(

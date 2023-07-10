@@ -2,7 +2,7 @@ import { Fragment, ReactElement } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
-import { timeFormatter } from "client/utils/timeFormatter";
+import { getWeekdayAndTime } from "client/utils/timeFormatter";
 import { Game } from "shared/typings/models/game";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { updateFavorite } from "client/utils/favorite";
@@ -40,7 +40,7 @@ export const FavoritesByStartTimes = ({
         return (
           <Fragment key={startTime}>
             <StyledTime>
-              {timeFormatter.getWeekdayAndTime({
+              {getWeekdayAndTime({
                 time: startTime,
                 capitalize: true,
               })}

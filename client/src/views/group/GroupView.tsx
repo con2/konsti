@@ -12,7 +12,7 @@ import { NotInGroupActions } from "client/views/group/components/NotInGroupActio
 import { GroupCreatorActions } from "client/views/group/components/GroupCreatorActions";
 import { GroupMemberActions } from "client/views/group/components/GroupMemberActions";
 import { ProgramType } from "shared/typings/models/game";
-import { getTime } from "client/utils/getTime";
+import { getTimeNow } from "client/utils/getTimeNow";
 import { selectEnteredGames } from "client/views/my-games/myGamesSlice";
 import { sharedConfig } from "shared/config/sharedConfig";
 
@@ -45,7 +45,7 @@ export const GroupView = (): ReactElement => {
 
   const isGroupCreator = getIsGroupCreator(groupCode, serial);
   const isInGroup = getIsInGroup(groupCode);
-  const timeNow = getTime();
+  const timeNow = getTimeNow();
   const enteredGamesAfterNow = filteredActiveEnteredGames.filter((game) =>
     timeNow.isBefore(dayjs(game.time))
   );

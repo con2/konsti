@@ -8,7 +8,7 @@ import {
   submitToggleAppOpen,
 } from "client/views/admin/adminThunks";
 import { submitUpdateGames } from "client/views/all-games/allGamesThunks";
-import { timeFormatter } from "client/utils/timeFormatter";
+import { getWeekdayAndTime } from "client/utils/timeFormatter";
 import { Game } from "shared/typings/models/game";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { Button, ButtonStyle } from "client/components/Button";
@@ -56,7 +56,7 @@ export const AdminView = (): ReactElement => {
     const times = [...Array.from(new Set(startTimes))].sort();
 
     return times.map((time) => {
-      const formattedDate = timeFormatter.getWeekdayAndTime({
+      const formattedDate = getWeekdayAndTime({
         time,
         capitalize: true,
       });

@@ -15,10 +15,11 @@ import { Button, ButtonStyle } from "client/components/Button";
 import { getIsGroupCreator } from "client/views/group/groupUtils";
 import { ErrorMessage } from "client/components/ErrorMessage";
 import { CancelSignupForm } from "client/views/all-games/components/CancelSignupForm";
-import { timeFormatter } from "client/utils/timeFormatter";
-import { getTime } from "client/utils/getTime";
+import { getWeekdayAndTime } from "client/utils/timeFormatter";
+import { getTimeNow } from "client/utils/getTimeNow";
 import { sharedConfig } from "shared/config/sharedConfig";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
+import { getAlgorithmSignupStartTime } from "shared/utils/signupTimes";
 
 interface Props {
   game: Game;
@@ -80,11 +81,11 @@ export const AlgorithmSignupForm = ({
 
   const alreadySignedToGame = isAlreadySigned(game, signedGames);
 
-  const signupStartTime = timeFormatter.getStartTime(startTime);
+  const algorithmSignupStartTime = getAlgorithmSignupStartTime(startTime);
 
-  const timeNow = getTime();
+  const timeNow = getTimeNow();
   const lotterySignupOpen =
-    signupStartTime.isBefore(timeNow) ||
+    algorithmSignupStartTime.isBefore(timeNow) ||
     sharedConfig.manualSignupMode === SignupStrategy.ALGORITHM;
 
   if (!loggedIn) {
@@ -95,8 +96,8 @@ export const AlgorithmSignupForm = ({
             <>
               <span>{t("signup.lotterySignupOpens")}</span>{" "}
               <BoldText>
-                {timeFormatter.getWeekdayAndTime({
-                  time: signupStartTime.format(),
+                {getWeekdayAndTime({
+                  time: algorithmSignupStartTime.format(),
                 })}
               </BoldText>
             </>
@@ -122,8 +123,8 @@ export const AlgorithmSignupForm = ({
             <p>
               {t("signup.lotterySignupOpens")}{" "}
               <BoldText>
-                {timeFormatter.getWeekdayAndTime({
-                  time: signupStartTime.format(),
+                {getWeekdayAndTime({
+                  time: algorithmSignupStartTime.format(),
                 })}
               </BoldText>
             </p>

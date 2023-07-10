@@ -65,7 +65,7 @@ const commonConfig = {
   statsDataDir: "src/features/statistics/datafiles",
 
   // Tests
-  enableLoggingInTests: true,
+  enableLoggingInTests: false,
 };
 
 const prodConfig = {

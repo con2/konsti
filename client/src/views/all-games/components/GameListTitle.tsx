@@ -2,11 +2,15 @@ import { ReactElement, useRef } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import useIntersectionObserver from "@react-hook/intersection-observer";
-import { timeFormatter } from "client/utils/timeFormatter";
+import { getWeekdayAndTime } from "client/utils/timeFormatter";
 import { SelectedGame } from "shared/typings/models/user";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
 import { MOBILE_MARGIN } from "client/globalStyle";
 import { sharedConfig } from "shared/config/sharedConfig";
+import {
+  getAlgorithmSignupEndTime,
+  getAlgorithmSignupStartTime,
+} from "shared/utils/signupTimes";
 
 interface Props {
   startTime: string;
@@ -29,12 +33,14 @@ export const GameListTitle = ({
   const intersectionRef = useRef<HTMLDivElement | null>(null);
   const { isIntersecting } = useIntersectionObserver(intersectionRef);
 
-  const formattedStartTime = timeFormatter.getWeekdayAndTime({
+  const formattedStartTime = getWeekdayAndTime({
     time: startTime,
     capitalize: true,
   });
-  const signupStartTime = timeFormatter.getStartTime(startTime).format("HH:mm");
-  const signupEndTime = timeFormatter.getEndTime(startTime).format("HH:mm");
+  const algorithmSignupStartTime =
+    getAlgorithmSignupStartTime(startTime).format("HH:mm");
+  const algorithmSignupEndTime =
+    getAlgorithmSignupEndTime(startTime).format("HH:mm");
 
   const signedGamesCount = signedGames.filter(
     (game) => game.gameDetails.startTime === startTime
@@ -60,8 +66,8 @@ export const GameListTitle = ({
         {sharedConfig.manualSignupMode === "none" &&
           timeslotSignupStrategy === SignupStrategy.ALGORITHM && (
             <span>
-              ({t("lotterySignupOpenBetween")} {signupStartTime}-{signupEndTime}
-              )
+              ({t("lotterySignupOpenBetween")} {algorithmSignupStartTime}-
+              {algorithmSignupEndTime})
             </span>
           )}
 

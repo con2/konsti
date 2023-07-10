@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
-import { timeFormatter } from "client/utils/timeFormatter";
+import { getWeekdayAndTime } from "client/utils/timeFormatter";
 import { SelectedGame } from "shared/typings/models/user";
 import { EnteredGameRow } from "client/views/my-games/components/EnteredGameRow";
 
@@ -24,7 +24,7 @@ export const ResultsByStartTimes = ({
         return (
           <div key={startTime}>
             <StyledTime>
-              {timeFormatter.getWeekdayAndTime({
+              {getWeekdayAndTime({
                 time: startTime,
                 capitalize: true,
               })}
