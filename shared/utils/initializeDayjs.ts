@@ -3,16 +3,12 @@ import isBetween from "dayjs/plugin/isBetween";
 import isSameOrAfter from "dayjs/plugin/isSameOrAfter";
 import relativeTime from "dayjs/plugin/relativeTime";
 import updateLocale from "dayjs/plugin/updateLocale";
-import timezone from "dayjs/plugin/timezone";
 
 export const initializeDayjs = (): void => {
   dayjs.extend(isBetween);
   dayjs.extend(isSameOrAfter);
   dayjs.extend(relativeTime);
   dayjs.extend(updateLocale);
-  dayjs.extend(timezone);
-
-  dayjs.tz.setDefault("Europe/Helsinki");
 
   dayjs.updateLocale("en", {
     relativeTime: {
