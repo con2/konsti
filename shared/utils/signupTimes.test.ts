@@ -48,29 +48,31 @@ describe(`Algorithm signup`, () => {
     const signupStartTime = getAlgorithmSignupStartTime(startTime);
     expect(signupStartTime.toISOString()).toEqual("2023-07-28T14:00:00.000Z");
   });
+});
 
+describe(`Early algorithm signup`, () => {
   test("RPG starting at 09:00 should have signup starting at 22:00", () => {
-    const startTime = "2023-07-29T06:00:00.000Z";
+    const startTime = "2023-07-29T09:00:00+03:00";
     const signupStartTime = getAlgorithmSignupStartTime(startTime);
-    expect(signupStartTime.toISOString()).toEqual("2023-07-28T19:00:00.000Z");
+    expect(signupStartTime.format()).toEqual("2023-07-28T22:00:00+03:00");
   });
 
   test("RPG starting at 10:00 should have signup starting at 22:00", () => {
-    const startTime = "2023-07-29T07:00:00.000Z";
+    const startTime = "2023-07-29T10:00:00+03:00";
     const signupStartTime = getAlgorithmSignupStartTime(startTime);
-    expect(signupStartTime.toISOString()).toEqual("2023-07-28T19:00:00.000Z");
+    expect(signupStartTime.format()).toEqual("2023-07-28T22:00:00+03:00");
   });
 
   test("RPG starting at 11:00 should have signup starting at 07:00", () => {
-    const startTime = "2023-07-29T08:00:00.000Z";
+    const startTime = "2023-07-29T11:00:00+03:00";
     const signupStartTime = getAlgorithmSignupStartTime(startTime);
-    expect(signupStartTime.toISOString()).toEqual("2023-07-29T04:00:00.000Z");
+    expect(signupStartTime.format()).toEqual("2023-07-29T07:00:00+03:00");
   });
 
   test("RPG starting at 12:00 should have signup starting at 08:00", () => {
-    const startTime = "2023-07-29T09:00:00.000Z";
+    const startTime = "2023-07-29T12:00:00+03:00";
     const signupStartTime = getAlgorithmSignupStartTime(startTime);
-    expect(signupStartTime.toISOString()).toEqual("2023-07-29T05:00:00.000Z");
+    expect(signupStartTime.format()).toEqual("2023-07-29T08:00:00+03:00");
   });
 });
 
