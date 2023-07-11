@@ -52,7 +52,7 @@ test("should remove signups for moved games from users", async () => {
   await GameModel.updateOne(
     { gameId: game.gameId },
     {
-      startTime: dayjs(game.startTime).add(1, "hours").format(),
+      startTime: dayjs(game.startTime).add(1, "hours").toISOString(),
     }
   );
 

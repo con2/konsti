@@ -96,12 +96,7 @@ export const PrivateSignupMessages = (): ReactElement => {
 
           return (
             <div key={startTime}>
-              <h3>
-                {getWeekdayAndTime({
-                  time: startTime,
-                  capitalize: true,
-                })}
-              </h3>
+              <h3>{_.capitalize(getWeekdayAndTime(startTime))}</h3>
               {sortedSignupQuestions.map((signupQuestionWithGame) => {
                 const matchingSignupMessages =
                   groupedSignupMessages[signupQuestionWithGame.gameId];

@@ -30,8 +30,8 @@ export const removeMovedGamesFromUsers = async (
     return updatedGames.find((updatedGame) => {
       return (
         currentGame.gameId === updatedGame.gameId &&
-        dayjs(currentGame.startTime).format() !==
-          dayjs(updatedGame.startTime).format()
+        dayjs(currentGame.startTime).toISOString() !==
+          dayjs(updatedGame.startTime).toISOString()
       );
     });
   });

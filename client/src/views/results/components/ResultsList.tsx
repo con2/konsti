@@ -122,12 +122,7 @@ export const DirectResults = (): ReactElement => {
 
           return (
             <TimeSlot key={startTime}>
-              <h3>
-                {getWeekdayAndTime({
-                  time: startTime,
-                  capitalize: true,
-                })}
-              </h3>
+              <h3>{_.capitalize(getWeekdayAndTime(startTime))}</h3>
 
               <Games>
                 {sortedGamesForTime.map((game) => {

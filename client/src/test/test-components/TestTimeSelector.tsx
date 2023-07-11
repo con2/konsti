@@ -18,9 +18,7 @@ export const TestTimeSelector = ({ testTime }: Props): ReactElement => {
   const [loading, setLoading] = useState<boolean>(false);
 
   const dropdownItems = testTimes.map((time) => {
-    const formattedDate = `${getWeekdayAndTime({
-      time,
-    })} (${getDate(time)})`;
+    const formattedDate = `${getWeekdayAndTime(time)} (${getDate(time)})`;
     return { value: time, title: formattedDate };
   });
 
@@ -35,7 +33,7 @@ export const TestTimeSelector = ({ testTime }: Props): ReactElement => {
       <span>{t("testValues.time")}</span>{" "}
       <Dropdown
         options={dropdownItems}
-        selectedValue={dayjs(testTime).format()}
+        selectedValue={dayjs(testTime).toISOString()}
         onChange={async (event: ChangeEvent<HTMLSelectElement>) =>
           await setTestTime(event.target.value)
         }

@@ -186,7 +186,7 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
 
   test("should return error if existing upcoming signups", async () => {
     await saveTestSettings({
-      testTime: dayjs(testGame.startTime).subtract(2, "hours").format(),
+      testTime: dayjs(testGame.startTime).subtract(2, "hours").toISOString(),
     });
 
     await saveGames([testGame]);

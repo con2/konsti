@@ -85,8 +85,8 @@ export const autoAssignPlayers = async (): Promise<void> => {
 };
 
 const protectCallback = (job: Cron): void => {
-  const timeNow = dayjs().format();
-  const startTime = dayjs(job.currentRun()).format();
+  const timeNow = dayjs().toISOString();
+  const startTime = dayjs(job.currentRun()).toISOString();
   logger.error(
     "%s",
     new Error(

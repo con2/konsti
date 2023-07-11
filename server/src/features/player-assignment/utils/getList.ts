@@ -33,7 +33,8 @@ export const getList = (
     const list = firstMember.signedGames
       .filter(
         (signedGame) =>
-          dayjs(signedGame.time).format() === dayjs(startingTime).format()
+          dayjs(signedGame.time).toISOString() ===
+          dayjs(startingTime).toISOString()
       )
       .map((signedGame) => {
         return {

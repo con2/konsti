@@ -28,7 +28,7 @@ export const createEventLogItems = async (): Promise<void> => {
       username: user.username,
       programItemId: randomGame.gameId,
       programItemStartTime: randomGame.startTime,
-      createdAt: createdAtTimes[index].format(),
+      createdAt: createdAtTimes[index].toISOString(),
     }));
   });
 

@@ -65,12 +65,7 @@ export const SignupQuestionList = ({
               )}{" "}
               {signupQuestion.private && <BoldText>({t("private")})</BoldText>}{" "}
               - {t(`programType.${foundGame.programType}`)} -{" "}
-              <span>
-                {getWeekdayAndTime({
-                  time: foundGame.startTime,
-                  capitalize: false,
-                })}
-              </span>
+              <span>{getWeekdayAndTime(foundGame.startTime)}</span>
             </li>
           );
         })}
