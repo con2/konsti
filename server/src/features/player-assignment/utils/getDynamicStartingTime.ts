@@ -24,7 +24,7 @@ export const getDynamicStartingTime = async (): Promise<
   const dynamicStartingTime = timeNow
     .startOf("minute")
     .add(DIRECT_SIGNUP_START, "minutes")
-    .format();
+    .toISOString();
 
   logger.info(`Using dynamic starting time: ${dynamicStartingTime}`);
 

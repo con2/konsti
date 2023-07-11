@@ -59,7 +59,9 @@ test("Assignment with valid data should return success with group+padg strategy"
 
   const { CONVENTION_START_TIME } = sharedConfig;
   const assignmentStrategy = AssignmentStrategy.GROUP_PADG;
-  const startingTime = dayjs(CONVENTION_START_TIME).add(2, "hours").format();
+  const startingTime = dayjs(CONVENTION_START_TIME)
+    .add(2, "hours")
+    .toISOString();
 
   // FIRST RUN
 
@@ -131,7 +133,9 @@ test("Assignment with no games should return error with group+padg strategy", as
 
   const { CONVENTION_START_TIME } = sharedConfig;
   const assignmentStrategy = AssignmentStrategy.GROUP_PADG;
-  const startingTime = dayjs(CONVENTION_START_TIME).add(2, "hours").format();
+  const startingTime = dayjs(CONVENTION_START_TIME)
+    .add(2, "hours")
+    .toISOString();
 
   const assignResultsResult = await runAssignment({
     assignmentStrategy,
@@ -161,7 +165,9 @@ test("Assignment with no players should return error with group+padg strategy", 
 
   const { CONVENTION_START_TIME } = sharedConfig;
   const assignmentStrategy = AssignmentStrategy.GROUP_PADG;
-  const startingTime = dayjs(CONVENTION_START_TIME).add(2, "hours").format();
+  const startingTime = dayjs(CONVENTION_START_TIME)
+    .add(2, "hours")
+    .toISOString();
 
   const assignResultsResult = await runAssignment({
     assignmentStrategy,

@@ -85,7 +85,7 @@ export const AlgorithmSignupForm = ({
 
   const timeNow = getTimeNow();
   const lotterySignupOpen =
-    algorithmSignupStartTime.isBefore(timeNow) ||
+    timeNow.isSameOrAfter(algorithmSignupStartTime) ||
     sharedConfig.manualSignupMode === SignupStrategy.ALGORITHM;
 
   if (!loggedIn) {
@@ -96,9 +96,7 @@ export const AlgorithmSignupForm = ({
             <>
               <span>{t("signup.lotterySignupOpens")}</span>{" "}
               <BoldText>
-                {getWeekdayAndTime({
-                  time: algorithmSignupStartTime.format(),
-                })}
+                {getWeekdayAndTime(algorithmSignupStartTime.toISOString())}
               </BoldText>
             </>
           )}
@@ -123,9 +121,7 @@ export const AlgorithmSignupForm = ({
             <p>
               {t("signup.lotterySignupOpens")}{" "}
               <BoldText>
-                {getWeekdayAndTime({
-                  time: algorithmSignupStartTime.format(),
-                })}
+                {getWeekdayAndTime(algorithmSignupStartTime.toISOString())}
               </BoldText>
             </p>
           )}

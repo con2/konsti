@@ -26,14 +26,7 @@ export const NotificationBar = (): ReactElement | null => {
           <div>
             <span>{t(`eventLogActions.${action}`)}</span>
             <Link to={`/games/${programItemId}`}>{foundGame.title}</Link>
-            <StartTime>
-              (
-              {getWeekdayAndTime({
-                time: foundGame.startTime,
-              })}
-              )
-            </StartTime>
-            .
+            <StartTime>({getWeekdayAndTime(foundGame.startTime)})</StartTime>.
             <ShowAllLinkContainer>
               <Link to={`/notifications`}>{t("notificationBar.showAll")}</Link>
             </ShowAllLinkContainer>

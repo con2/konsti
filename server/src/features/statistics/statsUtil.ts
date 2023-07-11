@@ -32,6 +32,7 @@ export const writeJson = <T>(
 
   fs.writeFileSync(
     `${config.statsDataDir}/${event}/${year}/temp/${datatype}-fixed.json`,
+    // eslint-disable-next-line no-restricted-syntax -- TODO: Fix, format() ban should only apply to dayjs().format()
     prettier.format(JSON.stringify(data), { parser: "json" }),
     "utf8"
   );
