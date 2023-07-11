@@ -69,7 +69,7 @@ test("should delete signup from user even if game start time has changed after s
 
   const responseResult = await delSignup({
     ...mockPostEnteredGameRequest,
-    startTime: dayjs(testGame.startTime).add(1, "hours").format(),
+    startTime: dayjs(testGame.startTime).add(1, "hours").toISOString(),
   });
   const response = unsafelyUnwrapResult(responseResult);
 

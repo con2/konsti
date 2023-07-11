@@ -59,6 +59,10 @@ module.exports = {
         selector: "ThrowStatement", // We don't throw errors
         message: "Return Result<T,Err> instead of throwing errors",
       },
+      {
+        selector: "MemberExpression[property.name='format']",
+        message: "Import from timeFormatter.ts or use dayjs().toISOString",
+      },
     ],
     "no-else-return": "error",
     curly: "error",

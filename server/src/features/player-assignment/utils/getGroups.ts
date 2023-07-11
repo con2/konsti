@@ -26,7 +26,8 @@ export const getGroups = (
 
     const signedGamesForStartTime = firstMember.signedGames.filter(
       (signedGame) =>
-        dayjs(signedGame.time).format() === dayjs(startingTime).format()
+        dayjs(signedGame.time).toISOString() ===
+        dayjs(startingTime).toISOString()
     );
 
     const sortedSignedGames = _.sortBy(

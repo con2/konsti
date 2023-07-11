@@ -9,6 +9,7 @@ import {
   PriorityObject,
 } from "server/typings/common.typings";
 import { toPercent } from "server/features/statistics/statsUtil";
+import { TIMEZONE } from "shared/utils/initializeDayjs";
 
 export const getGamesByStartingTime = (
   games: readonly Game[]
@@ -89,7 +90,8 @@ export const getDemandByTime = (
 
   for (const startTime in maximumNumberOfPlayersByTime) {
     logger.info(
-      `Demand for ${dayjs(startTime).format("DD.M.YYYY HH:mm")}: ${
+      // eslint-disable-next-line no-restricted-syntax -- We want to call format here
+      `Demand for ${dayjs(startTime).tz(TIMEZONE).format("DD.M.YYYY HH:mm")}: ${
         signupsByTime[startTime]
       }/${maximumNumberOfPlayersByTime[startTime]} (${toPercent(
         signupsByTime[startTime] / maximumNumberOfPlayersByTime[startTime]

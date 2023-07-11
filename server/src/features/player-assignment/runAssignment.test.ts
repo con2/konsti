@@ -80,7 +80,9 @@ describe("Assignment with valid data", () => {
   test("should return valid results after multiple executions on different times", async () => {
     const { CONVENTION_START_TIME } = sharedConfig;
     const assignmentStrategy = AssignmentStrategy.PADG;
-    const startingTime = dayjs(CONVENTION_START_TIME).add(2, "hours").format();
+    const startingTime = dayjs(CONVENTION_START_TIME)
+      .add(2, "hours")
+      .toISOString();
 
     // FIRST RUN
 
@@ -110,7 +112,9 @@ describe("Assignment with valid data", () => {
 
     // SECOND RUN
 
-    const startingTime2 = dayjs(CONVENTION_START_TIME).add(3, "hours").format();
+    const startingTime2 = dayjs(CONVENTION_START_TIME)
+      .add(3, "hours")
+      .toISOString();
 
     const assignResultsEither2 = await runAssignment({
       assignmentStrategy,
@@ -418,14 +422,14 @@ describe("Assignment with first time bonus", () => {
     await saveSignup({
       ...mockPostEnteredGameRequest2,
       username: mockUser.username,
-      startTime: dayjs(testGame.startTime).subtract(1, "hours").format(),
+      startTime: dayjs(testGame.startTime).subtract(1, "hours").toISOString(),
     });
 
     // Larp signup should not affect the bonus
     await saveSignup({
       username: mockUser2.username,
       enteredGameId: larpGameId,
-      startTime: dayjs(testGame.startTime).subtract(1, "hours").format(),
+      startTime: dayjs(testGame.startTime).subtract(1, "hours").toISOString(),
       message: "",
       priority: DIRECT_SIGNUP_PRIORITY,
     });
@@ -434,7 +438,7 @@ describe("Assignment with first time bonus", () => {
     await saveSignup({
       username: mockUser2.username,
       enteredGameId: directSignupAlwaysOpenId,
-      startTime: dayjs(testGame.startTime).subtract(2, "hours").format(),
+      startTime: dayjs(testGame.startTime).subtract(2, "hours").toISOString(),
       message: "",
       priority: DIRECT_SIGNUP_PRIORITY,
     });

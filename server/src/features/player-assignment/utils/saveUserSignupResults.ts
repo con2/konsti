@@ -113,7 +113,7 @@ export const saveUserSignupResults = async (
       username: result.username,
       programItemId: result.enteredGame.gameDetails.gameId,
       programItemStartTime: startingTime,
-      createdAt: dayjs().format(),
+      createdAt: dayjs().toISOString(),
     })),
     action: EventLogAction.NEW_ASSIGNMENT,
   });

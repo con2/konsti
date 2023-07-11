@@ -1,29 +1,22 @@
 import dayjs from "dayjs";
-import { capitalizeFirstLetter } from "client/utils/capitalizeFirstLetter";
+import { TIMEZONE } from "shared/utils/initializeDayjs";
 
-interface WeekdayAndTime {
-  time: string;
-  capitalize?: boolean;
-}
+// dayjs.format() is only called here to make sure all client times use correct timezone
 
-export const getWeekdayAndTime = ({
-  time,
-  capitalize = false,
-}: WeekdayAndTime): string => {
+export const getWeekdayAndTime = (time: string): string => {
   const timeFormat = "dddd HH:mm";
-  const formattedTime = dayjs(time).format(timeFormat);
-  if (capitalize) {
-    return capitalizeFirstLetter(formattedTime);
-  }
-  return formattedTime;
+  // eslint-disable-next-line no-restricted-syntax -- We want to call format here
+  return dayjs(time).tz(TIMEZONE).format(timeFormat);
 };
 
 export const getDate = (time: string): string => {
   const timeFormat = "DD.M.YYYY";
-  return dayjs(time).format(timeFormat);
+  // eslint-disable-next-line no-restricted-syntax -- We want to call format here
+  return dayjs(time).tz(TIMEZONE).format(timeFormat);
 };
 
 export const getTime = (time: string): string => {
   const timeFormat = "HH:mm";
-  return dayjs(time).format(timeFormat);
+  // eslint-disable-next-line no-restricted-syntax -- We want to call format here
+  return dayjs(time).tz(TIMEZONE).format(timeFormat);
 };

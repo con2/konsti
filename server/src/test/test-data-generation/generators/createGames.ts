@@ -21,11 +21,11 @@ import { MongoDbError } from "shared/typings/api/errors";
 const GAME_ID_MAX = 10000000;
 
 const startingTimes = [
-  dayjs(sharedConfig.CONVENTION_START_TIME).format(),
-  dayjs(sharedConfig.CONVENTION_START_TIME).add(2, "hours").format(),
-  dayjs(sharedConfig.CONVENTION_START_TIME).add(3, "hours").format(),
-  dayjs(sharedConfig.CONVENTION_START_TIME).add(1, "days").format(),
-  dayjs(sharedConfig.CONVENTION_START_TIME).add(2, "days").format(),
+  dayjs(sharedConfig.CONVENTION_START_TIME).toISOString(),
+  dayjs(sharedConfig.CONVENTION_START_TIME).add(2, "hours").toISOString(),
+  dayjs(sharedConfig.CONVENTION_START_TIME).add(3, "hours").toISOString(),
+  dayjs(sharedConfig.CONVENTION_START_TIME).add(1, "days").toISOString(),
+  dayjs(sharedConfig.CONVENTION_START_TIME).add(2, "days").toISOString(),
 ];
 
 const getMinPlayers = (programType: KompassiProgramType): number => {
@@ -95,8 +95,8 @@ export const createGames = async (
           formatted_hosts: faker.internet.userName(),
           room_name: "Ropetaverna",
           length,
-          start_time: dayjs(startTime).format(),
-          end_time: dayjs(startTime).add(length, "minutes").format(),
+          start_time: dayjs(startTime).toISOString(),
+          end_time: dayjs(startTime).add(length, "minutes").toISOString(),
           rpg_system:
             programType === KompassiProgramType.TABLETOP_RPG
               ? "Test gamesystem"

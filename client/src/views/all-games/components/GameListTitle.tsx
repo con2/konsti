@@ -2,7 +2,8 @@ import { ReactElement, useRef } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import useIntersectionObserver from "@react-hook/intersection-observer";
-import { getWeekdayAndTime } from "client/utils/timeFormatter";
+import _ from "lodash";
+import { getTime, getWeekdayAndTime } from "client/utils/timeFormatter";
 import { SelectedGame } from "shared/typings/models/user";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
 import { MOBILE_MARGIN } from "client/globalStyle";
@@ -33,14 +34,14 @@ export const GameListTitle = ({
   const intersectionRef = useRef<HTMLDivElement | null>(null);
   const { isIntersecting } = useIntersectionObserver(intersectionRef);
 
-  const formattedStartTime = getWeekdayAndTime({
-    time: startTime,
-    capitalize: true,
-  });
-  const algorithmSignupStartTime =
-    getAlgorithmSignupStartTime(startTime).format("HH:mm");
-  const algorithmSignupEndTime =
-    getAlgorithmSignupEndTime(startTime).format("HH:mm");
+  const formattedStartTime = _.capitalize(getWeekdayAndTime(startTime));
+
+  const algorithmSignupStartTime = getTime(
+    getAlgorithmSignupStartTime(startTime).toISOString()
+  );
+  const algorithmSignupEndTime = getTime(
+    getAlgorithmSignupEndTime(startTime).toISOString()
+  );
 
   const signedGamesCount = signedGames.filter(
     (game) => game.gameDetails.startTime === startTime

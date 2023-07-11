@@ -46,7 +46,7 @@ export const EventLog = (): ReactElement => {
     if (useRelativeTime) {
       return dayjs().to(createdAt);
     }
-    return getWeekdayAndTime({ time: createdAt });
+    return getWeekdayAndTime(createdAt);
   };
 
   return (
@@ -81,9 +81,7 @@ export const EventLog = (): ReactElement => {
 
             <StartTime>
               {t("eventLog.gameDetails", {
-                START_TIME: getWeekdayAndTime({
-                  time: foundGame.startTime,
-                }),
+                START_TIME: getWeekdayAndTime(foundGame.startTime),
                 LOCATION: foundGame.location,
               })}
             </StartTime>

@@ -3,12 +3,20 @@ import isBetween from "dayjs/plugin/isBetween";
 import isSameOrAfter from "dayjs/plugin/isSameOrAfter";
 import relativeTime from "dayjs/plugin/relativeTime";
 import updateLocale from "dayjs/plugin/updateLocale";
+import utc from "dayjs/plugin/utc";
+import timezone from "dayjs/plugin/timezone";
+
+export const TIMEZONE = "Europe/Helsinki";
 
 export const initializeDayjs = (): void => {
   dayjs.extend(isBetween);
   dayjs.extend(isSameOrAfter);
   dayjs.extend(relativeTime);
   dayjs.extend(updateLocale);
+  dayjs.extend(utc); // Required by timezone
+  dayjs.extend(timezone);
+
+  dayjs.tz.setDefault(TIMEZONE);
 
   dayjs.updateLocale("en", {
     relativeTime: {
