@@ -1,6 +1,7 @@
 import dayjs, { Dayjs } from "dayjs";
 import { sharedConfig } from "shared/config/sharedConfig";
 import { Game, ProgramType } from "shared/typings/models/game";
+import { TIMEZONE } from "shared/utils/initializeDayjs";
 
 const {
   PRE_SIGNUP_START,
@@ -10,22 +11,22 @@ const {
 } = sharedConfig;
 
 export const getAlgorithmSignupStartTime = (startTime: string): Dayjs => {
-  const unmodifiedStartTime = dayjs(startTime).subtract(
-    PRE_SIGNUP_START,
-    "minutes"
-  );
+  // Set timezone here because hour comparison and setting hour value
+  const timezoneStartTime = dayjs(startTime)
+    .tz(TIMEZONE)
+    .subtract(PRE_SIGNUP_START, "minutes");
 
   // If algorithm signup starts before convention start time, use convention start time
-  if (unmodifiedStartTime.isBefore(dayjs(CONVENTION_START_TIME))) {
+  if (timezoneStartTime.isBefore(dayjs(CONVENTION_START_TIME))) {
     return dayjs(CONVENTION_START_TIME);
   }
 
-  const startTimeIsTooEarly = unmodifiedStartTime.hour() <= 6;
+  const startTimeIsTooEarly = timezoneStartTime.hour() <= 6;
 
   if (startTimeIsTooEarly) {
-    return unmodifiedStartTime.subtract(1, "day").hour(22);
+    return timezoneStartTime.subtract(1, "day").hour(22);
   }
-  return unmodifiedStartTime;
+  return timezoneStartTime;
 };
 
 export const getAlgorithmSignupEndTime = (startTime: string): Dayjs => {

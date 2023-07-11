@@ -33,7 +33,7 @@ export const PasswordManagement = (): ReactElement => {
         <Message>
           {t("passwordManagement.foundUser")}: {response.username} (
           {response.serial}) - {t("passwordManagement.userCreatedAt")}{" "}
-          {getWeekdayAndTime({ time: response.createdAt })}
+          {getWeekdayAndTime(response.createdAt)}
         </Message>
       );
       setUsername(response.username);

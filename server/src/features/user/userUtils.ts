@@ -16,7 +16,7 @@ export const isValidSignupTime = ({
 }: IsValidSignupTimeParams): boolean => {
   if (timeNow.isAfter(startTime)) {
     logger.warn(
-      `Invalid signup time: timeNow: ${timeNow.format()}, startTime: ${startTime.format()}`
+      `Invalid signup time: timeNow: ${timeNow.toISOString()}, startTime: ${startTime.toISOString()}`
     );
     return false;
   }

@@ -50,7 +50,7 @@ const getRandomSignup = (games: readonly Game[]): SelectedGame[] => {
   );
 
   const startTimes = activeGames.map((activeGame) =>
-    dayjs(activeGame.startTime).format()
+    dayjs(activeGame.startTime).toISOString()
   );
   const uniqueTimes = Array.from(new Set(startTimes));
 
@@ -59,7 +59,8 @@ const getRandomSignup = (games: readonly Game[]): SelectedGame[] => {
     logger.debug(`Generate signups for time ${startingTime}`);
     const gamesForTime = activeGames.filter(
       (activeGame) =>
-        dayjs(activeGame.startTime).format() === dayjs(startingTime).format()
+        dayjs(activeGame.startTime).toISOString() ===
+        dayjs(startingTime).toISOString()
     );
 
     const numberOfSignups = Math.min(gamesForTime.length, 3);

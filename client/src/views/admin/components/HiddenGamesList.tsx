@@ -31,10 +31,7 @@ export const HiddenGamesList = ({ hiddenGames }: Props): ReactElement => {
             {t(`programType.${game.programType}`)}
             {" - "}
 
-            {getWeekdayAndTime({
-              time: game.startTime,
-              capitalize: false,
-            })}
+            {getWeekdayAndTime(game.startTime)}
           </li>
         ))}
       </ul>

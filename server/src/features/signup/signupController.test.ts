@@ -153,7 +153,7 @@ describe(`POST ${ApiEndpoint.SIGNUP}`, () => {
     await saveUser(mockUser);
     await saveTestSettings({
       // This test time should land to phaseGap
-      testTime: dayjs(testGame.startTime).subtract(2, "hours").format(),
+      testTime: dayjs(testGame.startTime).subtract(2, "hours").toISOString(),
     });
 
     const signup: PostEnteredGameRequest = {

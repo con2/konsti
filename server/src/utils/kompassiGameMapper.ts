@@ -26,7 +26,7 @@ export const kompassiGameMapper = (
       title: game.title,
       description: game.description,
       location: game.room_name,
-      startTime: dayjs(game.start_time).format(),
+      startTime: dayjs(game.start_time).toISOString(),
       mins:
         game.length ||
         dayjs(game.end_time).diff(dayjs(game.start_time), "minute"),
@@ -34,7 +34,7 @@ export const kompassiGameMapper = (
       genres: mapGenres(game),
       styles: mapGameStyles(game),
       language: game.ropecon2023_language,
-      endTime: dayjs(game.end_time).format(),
+      endTime: dayjs(game.end_time).toISOString(),
       people: game.formatted_hosts,
       minAttendance: game.min_players,
       maxAttendance: game.max_players || game.ropecon2018_characters,

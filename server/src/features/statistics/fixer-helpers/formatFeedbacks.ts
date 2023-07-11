@@ -8,6 +8,7 @@ import { writeJson } from "server/features/statistics/statsUtil";
 import { PostFeedbackRequestSchema } from "shared/typings/api/feedback";
 import { config } from "server/config";
 import { setLocale } from "shared/utils/setLocale";
+import { TIMEZONE } from "shared/utils/initializeDayjs";
 
 export const formatFeedbacks = (year: number, event: string): void => {
   setLocale("fi");
@@ -41,7 +42,8 @@ export const formatFeedbacks = (year: number, event: string): void => {
       feedback: feedback.feedback,
       game: foundGame?.title,
       organizer: foundGame?.people,
-      startTime: dayjs(foundGame?.startTime).format("dddd HH:mm"),
+      // eslint-disable-next-line no-restricted-syntax -- We want to call format here
+      startTime: dayjs(foundGame?.startTime).tz(TIMEZONE).format("dddd HH:mm"),
       programType: foundGame?.programType,
     };
   });

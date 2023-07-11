@@ -21,7 +21,7 @@ export const updateWithAssign = async (
   signups: readonly Signup[]
 ): Promise<Result<void, MongoDbError | AssignmentError>> => {
   const gamesForStartTimes = _.groupBy(games, (game) =>
-    dayjs(game.startTime).format()
+    dayjs(game.startTime).toISOString()
   );
   const startTimes = Object.keys(gamesForStartTimes);
 

@@ -81,9 +81,7 @@ export const DirectSignupForm = ({
             <>
               <span>{t("signup.signupOpens")}</span>{" "}
               <BoldText>
-                {getWeekdayAndTime({
-                  time: directSignupStartTime.format(),
-                })}
+                {getWeekdayAndTime(directSignupStartTime.toISOString())}
               </BoldText>
             </>
           )}
@@ -133,9 +131,7 @@ export const DirectSignupForm = ({
                 <p>
                   {t("signup.signupOpens")}{" "}
                   <BoldText>
-                    {getWeekdayAndTime({
-                      time: directSignupStartTime.format(),
-                    })}
+                    {getWeekdayAndTime(directSignupStartTime.toISOString())}
                   </BoldText>
                 </p>
               )}
