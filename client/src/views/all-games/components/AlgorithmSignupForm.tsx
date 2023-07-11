@@ -85,7 +85,7 @@ export const AlgorithmSignupForm = ({
 
   const timeNow = getTimeNow();
   const lotterySignupOpen =
-    algorithmSignupStartTime.isBefore(timeNow) ||
+    timeNow.isSameOrAfter(algorithmSignupStartTime) ||
     sharedConfig.manualSignupMode === SignupStrategy.ALGORITHM;
 
   if (!loggedIn) {
