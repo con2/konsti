@@ -309,7 +309,8 @@
     "currentSignup": "You have signed up to this {{PROGRAM_TYPE}}.",
     "entryFee": "Material fee {{ENTRY_FEE}}",
     "entryFeeInfo": "I understand that the workshop requires a material fee of {{ENTRY_FEE}}.",
-    "doesNotRequireSignup": "This {{PROGRAM_TYPE}} does not require signing up"
+    "doesNotRequireSignup": "This {{PROGRAM_TYPE}} does not require signing up",
+    "noKonstiSignup": "This {{PROGRAM_TYPE}} does not have Konsti signup. See signup instructions from program details."
   },
   "attendeeType": {
     "player": "player",
