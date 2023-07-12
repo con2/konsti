@@ -2,7 +2,7 @@
 
 Konstin kautta voi ilmoittautua pöytäroolipeleihin, larppeihin, turnauksiin, työpajoihin ja joihinkin muihin ohjelmanumeroihin.
 
-Konstin käytössä auttavat pelitiski (Halli 3) ja rope/larp-tiski (eteläisen sisäänkäynnin aula).
+Konstin käytössä auttavat Pelitiski (Halli 3) ja Larp- ja Roolipelitiski (eteläisen sisäänkäynnin aula).
 Tiskeillä on myös tietokoneita, joilla Konstia voi käyttää.
 
 ## Miten Konstia käytetään?
@@ -14,7 +14,7 @@ Konsti on verkkosovellus, jota voi käyttää internet-selaimen avulla omalla ä
 [Ohjelmalistaa](/program/list) voi selata kirjautumatta sisään, mutta ohjelmaan ilmoittautumiseen vaaditaan käyttäjätili.
 Aikaisempien vuosien käyttäjätilit eivät ole enää käytössä, vaan sinun on luotava uusi tili tämän vuoden tapahtumaa varten.
 
-Uuden käyttäjätilin luomiseen tarvitset rekisteröintikoodin, joita on saatavilla pelitiskiltä (Halli 3), rope/larp-tiskiltä tai infosta (molemmat pääaulassa, eteläisen sisäänkäynnin luona).
+Uuden käyttäjätilin luomiseen tarvitset rekisteröintikoodin, joita on saatavilla Pelitiskiltä (Halli 3), Larp- ja Roolipelitiskiltä tai Infosta (molemmat pääaulassa, eteläisen sisäänkäynnin luona).
 
 Tilin pääset luomaan [Luo käyttäjätili -näkymästä](/registration).
 
@@ -85,7 +85,7 @@ Roolipeleistä poiketen larppien ilmoittautuminen on yksivaiheinen eikä sisäll
 vaan larpit täytetään ilmoittautumisjärjestyksessä (suorailmoittautuminen).
 
 Kaikkiin tänä vuonna Ropeconin ohjelmassa oleviin larppeihin ei ilmoittauduta Konstin kautta. Joihinkin larppeihin
-ilmoittaudutaan rope/larp-tiskin kautta, sillä ilmoittautumisen yhteydessä pelaajat valitsevat oman hahmonsa ja heille jaetaan lisämateriaalia.
+ilmoittaudutaan Larp- ja Roolipelitiskin kautta, sillä ilmoittautumisen yhteydessä pelaajat valitsevat oman hahmonsa ja heille jaetaan lisämateriaalia.
 
 ### Larppien ilmoittautumisten avautuminen
 
@@ -98,7 +98,7 @@ ilmoittaudutaan rope/larp-tiskin kautta, sillä ilmoittautumisen yhteydessä pel
 
 Konstissa turnausilmoittautuminen on myös yksivaiheinen eli paikat täytetään ilmoittautumisjärjestyksessä. Kaikkien
 turnausten ilmoittautuminen ei välttämättä tapahdu Konstin kautta. Jos etsimääsi turnausta ei löydy Konstista etkä
-tiedä, miten ilmoittautua siihen, voit kysyä neuvoa pelitiskiltä.
+tiedä, miten ilmoittautua siihen, voit kysyä neuvoa Pelitiskiltä.
 
 ### Turnausilmoittautumisten avautuminen
 

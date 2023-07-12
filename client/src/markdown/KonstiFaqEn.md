@@ -1,6 +1,6 @@
 ## I need help with the Konsti app, who can I ask?
 
-Our volunteers at both the gaming desk as well as the larp/RPG Desk will gladly assist you and help you sign up for games using the Konsti app. If you have any questions about the Konsti app or how to use it, do not hesitate to ask them for help!
+Our volunteers at both the Gaming Desk as well as the Larp & RPG Desk will gladly assist you and help you sign up for games using the Konsti app. If you have any questions about the Konsti app or how to use it, do not hesitate to ask them for help!
 
 ## I want to start using Konsti - where do I begin?
 
@@ -13,26 +13,26 @@ Please note that accounts from previous years are no longer in use.
 
 ## Where can I get a registration code?
 
-Registration codes can be picked up at either the gaming desk (Hall 3), at the larp/RPG desk or at the info desk (both in the Southern Entrance lobby). This means that you cannot create a new account before Ropecon begins on Friday.
+Registration codes can be picked up at either the Gaming Desk (Hall 3), at the Larp & RPG Desk or at the Info desk (both in the Southern Entrance lobby). This means that you cannot create a new account before Ropecon begins on Friday.
 
 ## How do I change my password?
 
 If you are logged in to Konsti, you can change your password in the [Profile view](/profile/profile).
 
-If you have lost your password, you can request it to be changed either at the Gaming Desk or at the Larp/RPG Desk, if you still have both your registration code and your username.
+If you have lost your password, you can request it to be changed either at the Gaming Desk or at the Larp & RPG Desk, if you still have both your registration code and your username.
 
 If you lost your password before signing up for any program, you can just pick up another registration code and create a new account.
 
 ## I do not have a mobile device, how do I sign up?
 
-There are shared computers on both the gaming desk and the larp/RPG desk that you can use
+There are shared computers on both the Gaming Desk and the Larp & RPG Desk that you can use
 Konsti with. Just remember to log out when you are done!
 
 ## Why can't I find a certain program item in Konsti?
 
 Have you checked that you have selected the correct programme type in the selector? It can also be useful to check which tag is selected, as they can also filter the list of games that are visible.
 
-If you still cannot find the game or tournament you are looking for, it is possible that the sign-up process for that particular game or tournament is not done via the Konsti app but in some other way. If you are unsure, you can always confirm the sign-up method for a certain game or tournament from the gaming Desk, the larp/RPG desk or Ropecon info.
+If you still cannot find the game or tournament you are looking for, it is possible that the sign-up process for that particular game or tournament is not done via the Konsti app but in some other way. If you are unsure, you can always confirm the sign-up method for a certain game or tournament from the Gaming Desk, the Larp & RPG Desk or the Info desk.
 
 ## Why can I not sign up for a program item even though it's visible in Konsti?
 

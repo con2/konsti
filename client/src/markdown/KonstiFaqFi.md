@@ -1,6 +1,6 @@
 ## Mistä saan apua Konstin käyttöön?
 
-Vapaaehtoisemme pelitiskillä ja larp/rope-tiskillä auttavat mielellään Konstin käytössä ja peleihin ilmoittautumisessa.
+Vapaaehtoisemme Pelitiskillä ja Larp- ja Roolipelitiskillä auttavat mielellään Konstin käytössä ja peleihin ilmoittautumisessa.
 Jos sinulla on siis kysyttävää Konstin käytöstä, älä epäröi nykäistä heitä hihasta!
 
 ## Kuinka aloitan Konstin käytön?
@@ -13,20 +13,20 @@ Huomaathan, että aikaisempina vuosina käytössä olleet käyttäjätilit on po
 
 ## Mistä saan rekisteröintikoodin?
 
-Rekisteröintikoodeja saa Ropeconissa pelitiskiltä (Halli 3) sekä rope/larp-tiskiltä ja infosta (Pääaula, Eteläinen sisäänkäynti).
+Rekisteröintikoodeja saa Ropeconissa Pelitiskiltä (Halli 3) sekä rope/larp-tiskiltä ja Infosta (Pääaula, Eteläinen sisäänkäynti).
 Käyttäjätilin voi siis käytännössä luoda vasta Ropeconissa.
 
 ## Kuinka vaihdan salasanani?
 
 Jos olet kirjautunut Konstiin, voit vaihtaa salasanan [Profiili-näkymässä](/profile/profile).
 
-Jos salasanasi on hukkunut etkä pääse kirjautumaan Konstiin, voit vaihtaa sen rekisteröintikoodisi ja käyttäjätunnuksesi avulla pelitiskillä tai larp/rope-tiskillä.
+Jos salasanasi on hukkunut etkä pääse kirjautumaan Konstiin, voit vaihtaa sen rekisteröintikoodisi ja käyttäjätunnuksesi avulla Pelitiskillä tai Larp- ja Roolipelitiskillä.
 
 Jos et ollut ehtinyt vielä ilmoittautua yhteenkään peliin, voit huoletta hakea itsellesi tiskiltä myös toisen rekisteröintikoodin ja luoda uuden käyttäjätilin.
 
 ## Minulla ei ole mobiililaitetta, kuinka ilmoittaudun?
 
-Pelitiskillä ja larp/rope-tiskillä on tietokoneita, joilla Konstia voi käyttää.
+Pelitiskillä ja Larp- ja Roolipelitiskillä on tietokoneita, joilla Konstia voi käyttää.
 
 Voit kirjautua sisään Konstiin näillä laitteilla käyttäen omaa käyttäjätunnustasi ja salasanaasi – muistathan kirjautua ulos Konstista kun lopetat käytön!
 
@@ -34,8 +34,8 @@ Voit kirjautua sisään Konstiin näillä laitteilla käyttäen omaa käyttäjä
 
 Olethan tarkistanut, että valittuna on etsimääsi peliä vastaava ohjelmatyyppi? Niin ikään kannattaa tarkistaa myös, mikä tägi on valittuna.
 
-Voi myös olla, ettei kyseiseen ohjelmaan ilmoittauduta Konstin kautta, vaan jotain muuta kautta. Voit tarvittaessa kysyä apua pelitiskiltä,
-larp/rope-tiskiltä tai infosta.
+Voi myös olla, ettei kyseiseen ohjelmaan ilmoittauduta Konstin kautta, vaan jotain muuta kautta. Voit tarvittaessa kysyä apua Pelitiskiltä,
+Larp- ja Roolipelitiskiltä tai Infosta.
 
 ## Miksi en voi ilmoittautua haluamaani ohjelmanumeroon, vaikka se on Konstissa?
 
