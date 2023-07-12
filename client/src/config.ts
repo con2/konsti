@@ -7,7 +7,6 @@ interface Config {
   enableAxe: boolean;
   enableWhyDidYouRender: boolean;
   dataUpdateInterval: number;
-  noSignupGames: string[];
   enableStrategyTestValue: boolean;
   enableRevolvingDoor: boolean;
   enableOrganizerFeedback: boolean;
@@ -20,7 +19,6 @@ export const config: Config = {
   MESSAGE_DELAY: 3000, // ms
 
   // Convention settings
-  noSignupGames: [],
   enableRevolvingDoor: true,
   enableOrganizerFeedback: true,
   enableTagDropdown: true,

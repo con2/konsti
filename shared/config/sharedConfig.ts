@@ -27,6 +27,7 @@ interface SharedConfig {
   signupOpen: boolean;
   resultsVisible: boolean;
   addToKonsti: string[];
+  noKonstiSignupIds: string[];
 }
 
 // Convention days
@@ -131,6 +132,7 @@ export const sharedConfig: SharedConfig = {
     other: [],
   },
 
+  // These program items have their signup always open even if signup mode is set to algorithm
   directSignupAlwaysOpenIds: [
     "p6673", // PFS multi-table special: Pathfinder Society #3-98: Expedition into Pallid Peril
   ],
@@ -138,6 +140,18 @@ export const sharedConfig: SharedConfig = {
   // These program items are hand picked to be exported from Kompassi
   addToKonsti: [
     "p6787", // KPS-turnaus
+  ],
+
+  // These program items are imported to Konsti but don't have Konsti signup
+  noKonstiSignupIds: [
+    "p6512", // RPG: Charlie ei surffaa - Fri
+    "p7023", // RPG: Charlie ei surffaa - Sat
+    "p7024", // RPG: Charlie ei surffaa - Sun
+    "p6848", // Larp: Johtajakoulutus
+    "p6638", // Larp: Kielokoti 1. Pelautus
+    "p6999", // Larp: Kielokoti 2. Pelautus
+    "p6299", // Larp: Vaeltajalegendat: Sinustako seikkailija!? 1. Pelautus
+    "p7006", // Larp: Vaeltajalegendat: Sinustako seikkailija!? 2. Pelautus
   ],
 
   // Two phase signup settings
