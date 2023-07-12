@@ -99,6 +99,8 @@ export const GameEntry = ({
   }
 
   const requiresSignup = game.maxAttendance > 0;
+  const konstiSignup = !sharedConfig.noKonstiSignupIds.includes(game.gameId);
+  const normalSignup = requiresSignup && konstiSignup;
 
   return (
     <GameContainer
@@ -150,7 +152,7 @@ export const GameEntry = ({
             </RowItem>
           </p>
 
-          {isEnterGameMode && requiresSignup && (
+          {isEnterGameMode && normalSignup && (
             <>
               <PlayerCount>
                 {t("signup.signupCount", {
@@ -174,7 +176,7 @@ export const GameEntry = ({
             </>
           )}
 
-          {!isEnterGameMode && requiresSignup && (
+          {!isEnterGameMode && normalSignup && (
             <PopularityInfo
               minAttendance={game.minAttendance}
               maxAttendance={game.maxAttendance}
@@ -202,7 +204,7 @@ export const GameEntry = ({
 
       <GameDetailsView game={game} isAlwaysExpanded={isAlwaysExpanded} />
 
-      {!isEnterGameMode && requiresSignup && (
+      {!isEnterGameMode && normalSignup && (
         <AlgorithmSignupForm
           game={game}
           startTime={startTime}
@@ -210,7 +212,7 @@ export const GameEntry = ({
         />
       )}
 
-      {isEnterGameMode && requiresSignup && (
+      {isEnterGameMode && normalSignup && (
         <DirectSignupForm
           game={game}
           gameIsFull={gameIsFull}
@@ -221,6 +223,14 @@ export const GameEntry = ({
       {!requiresSignup && (
         <p>
           {t("signup.doesNotRequireSignup", {
+            PROGRAM_TYPE: t(`programTypeIllative.${game.programType}`),
+          })}
+        </p>
+      )}
+
+      {!konstiSignup && (
+        <p>
+          {t("signup.noKonstiSignup", {
             PROGRAM_TYPE: t(`programTypeIllative.${game.programType}`),
           })}
         </p>
