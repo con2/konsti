@@ -106,14 +106,16 @@ describe(`POST ${ApiEndpoint.SETTINGS}`, () => {
       selectOptions: [],
     };
 
+    // Full update
     const testSettings: Settings = {
       hiddenGames: [],
       appOpen: true,
       signupQuestions: [testSignupQuestion],
       signupStrategy: SignupStrategy.ALGORITHM,
+      programUpdateLastRun: "2023-05-07T07:00:00.000Z",
+      assignmentLastRun: "2023-05-07T07:00:00.000Z",
     };
 
-    // Full update
     const fullUpdateResponse = await request(server)
       .post(ApiEndpoint.SETTINGS)
       .send(testSettings)
@@ -127,9 +129,13 @@ describe(`POST ${ApiEndpoint.SETTINGS}`, () => {
     });
 
     // Partial update
+    const partialSettings: Partial<Settings> = {
+      signupStrategy: SignupStrategy.DIRECT,
+    };
+
     const partialUpdateResponse = await request(server)
       .post(ApiEndpoint.SETTINGS)
-      .send({ signupStrategy: SignupStrategy.DIRECT })
+      .send(partialSettings)
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
 
     expect(partialUpdateResponse.status).toEqual(200);
