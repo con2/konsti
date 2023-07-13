@@ -6,7 +6,6 @@ import { initializeDayjs } from "shared/utils/initializeDayjs";
 const timeNow = "2019-07-26T17:00:00Z";
 
 beforeAll(() => {
-  vi.useFakeTimers();
   vi.setSystemTime(timeNow);
   initializeDayjs();
 });
