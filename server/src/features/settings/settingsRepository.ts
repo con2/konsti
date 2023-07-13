@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import { logger } from "server/utils/logger";
 import { SettingsModel } from "server/features/settings/settingsSchema";
 import { Settings, SignupQuestion } from "shared/typings/models/settings";
@@ -25,7 +26,9 @@ export const removeSettings = async (): Promise<Result<void, MongoDbError>> => {
   }
 };
 
-const createSettings = async (): Promise<Result<Settings, MongoDbError>> => {
+export const createSettings = async (): Promise<
+  Result<Settings, MongoDbError>
+> => {
   logger.info("MongoDB: Create default settings");
   const defaultSettings = new SettingsModel();
   try {
@@ -59,7 +62,14 @@ export const findSettings = async (): Promise<
     }
 
     logger.debug(`MongoDB: Settings data found`);
-    return makeSuccessResult(settings);
+
+    const settingsWithFormattedDates = {
+      ...settings,
+      programUpdateLastRun: dayjs(settings.programUpdateLastRun).toISOString(),
+      assignmentLastRun: dayjs(settings.assignmentLastRun).toISOString(),
+    };
+
+    return makeSuccessResult(settingsWithFormattedDates);
   } catch (error) {
     logger.error("MongoDB: Error finding settings data: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
@@ -169,6 +179,58 @@ export const saveSettings = async (
     return makeSuccessResult(updatedSettings.toJSON<SettingsDoc>());
   } catch (error) {
     logger.error("MongoDB: Error updating app settings: %s", error);
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+  }
+};
+
+export const setProgramUpdateLastRun = async (
+  programUpdateLastRun: string
+): Promise<Result<void, MongoDbError>> => {
+  try {
+    const response = await SettingsModel.findOneAndUpdate(
+      {
+        programUpdateLastRun: {
+          $lte: dayjs(programUpdateLastRun).subtract(30, "seconds"),
+        },
+      },
+      {
+        programUpdateLastRun,
+      }
+    );
+    if (!response) {
+      return makeErrorResult(MongoDbError.SETTINGS_NOT_FOUND);
+    }
+    logger.info(
+      `MongoDB: Program update last run set: ${programUpdateLastRun}`
+    );
+    return makeSuccessResult(undefined);
+  } catch (error) {
+    logger.error("MongoDB: Error updating program update last run: %s", error);
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+  }
+};
+
+export const setAssignmentLastRun = async (
+  assignmentLastRun: string
+): Promise<Result<void, MongoDbError>> => {
+  try {
+    const response = await SettingsModel.findOneAndUpdate(
+      {
+        assignmentLastRun: {
+          $lte: dayjs(assignmentLastRun).subtract(30, "seconds"),
+        },
+      },
+      {
+        assignmentLastRun,
+      }
+    );
+    if (!response) {
+      return makeErrorResult(MongoDbError.SETTINGS_NOT_FOUND);
+    }
+    logger.info(`MongoDB: Assignment last run set: ${assignmentLastRun}`);
+    return makeSuccessResult(undefined);
+  } catch (error) {
+    logger.error("MongoDB: Error updating assignment last run: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };

@@ -6,6 +6,11 @@ import { runAssignment } from "server/features/player-assignment/runAssignment";
 import { sharedConfig } from "shared/config/sharedConfig";
 import { isErrorResult } from "shared/utils/result";
 import { updateGames } from "server/features/game/gamesService";
+import {
+  setAssignmentLastRun,
+  setProgramUpdateLastRun,
+} from "server/features/settings/settingsRepository";
+import { MongoDbError } from "shared/typings/api/errors";
 
 const {
   autoUpdateGamesEnabled,
@@ -56,6 +61,25 @@ export const stopCronJobs = (): void => {
 export const autoUpdateGames = async (): Promise<void> => {
   logger.info("----> Auto update games");
 
+  logger.info("Check if auto update already running...");
+  const programUpdateLastRunResult = await setProgramUpdateLastRun(
+    dayjs().toISOString()
+  );
+  if (isErrorResult(programUpdateLastRunResult)) {
+    if (programUpdateLastRunResult.error === MongoDbError.SETTINGS_NOT_FOUND) {
+      logger.info("Auto update already running, stop");
+      return;
+    }
+    logger.error(
+      "%s",
+      new Error(
+        `***** Games auto update failed trying to set last run time: ${programUpdateLastRunResult.error}`
+      )
+    );
+  }
+
+  logger.info("Auto update not running, continue");
+
   const updateGamesResult = await updateGames();
   if (updateGamesResult.status === "error") {
     logger.error(
@@ -70,6 +94,25 @@ export const autoUpdateGames = async (): Promise<void> => {
 
 export const autoAssignPlayers = async (): Promise<void> => {
   logger.info("----> Auto assign players");
+
+  logger.info("Check if assignment already running...");
+  const assignmentLastRunResult = await setAssignmentLastRun(
+    dayjs().toISOString()
+  );
+  if (isErrorResult(assignmentLastRunResult)) {
+    if (assignmentLastRunResult.error === MongoDbError.SETTINGS_NOT_FOUND) {
+      logger.info("Assignment already running, stop");
+      return;
+    }
+    logger.error(
+      "%s",
+      new Error(
+        `***** Auto assignment failed trying to set last run time: ${assignmentLastRunResult.error}`
+      )
+    );
+  }
+
+  logger.info("Assignment not running, continue");
 
   const runAssignmentResult = await runAssignment({
     assignmentStrategy: sharedConfig.assignmentStrategy,

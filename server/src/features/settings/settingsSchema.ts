@@ -27,6 +27,8 @@ const SettingsSchema = new mongoose.Schema(
       type: String,
       default: sharedConfig.defaultSignupStrategy,
     },
+    programUpdateLastRun: { type: Date, default: Date.now },
+    assignmentLastRun: { type: Date, default: Date.now },
   },
   { timestamps: true }
 );
