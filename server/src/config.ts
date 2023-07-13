@@ -93,7 +93,7 @@ const prodConfig = {
   updateGamePopularityEnabled: false,
 
   // Player assign cron
-  autoAssignPlayersEnabled: true,
+  autoAssignPlayersEnabled: false,
   autoAssignInterval: `0,15,30,45 * * * *`,
   autoAssignDelay: 1000 * 10,
 };
