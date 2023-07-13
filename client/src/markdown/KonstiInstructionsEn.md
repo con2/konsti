@@ -2,7 +2,7 @@
 
 In Ropecon 2023, Konsti is used to sign up for role-playing games, larps, tournaments, workshops and some other program items.
 
-The Gaming Desk (Hall 3) and the Larp & RPG Desk (southern entrance lobby) will help you with using Konsti. The desks also have shared computers for using Konsti.
+The Gaming Desk (Hall 5) and the Larp & RPG Desk (southern entrance lobby) will help you with using Konsti. The desks also have shared computers for using Konsti.
 
 ## How do you use Konsti?
 
@@ -15,7 +15,7 @@ program a user account is needed. Accounts from previous years have been removed
 will have to create a new one for this year's Ropecon.
 
 For creating an account, you will need a registration code, which you can get from the
-Gaming Desk (Hall 3), the Larp & RPG Desk or the Info Desk (both in the southern entrance lobby).
+Gaming Desk (Hall 5), the Larp & RPG Desk or the Info Desk (both in the southern entrance lobby).
 
 You can create your account on the [registration page](/registration).
 
