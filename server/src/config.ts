@@ -88,9 +88,9 @@ const prodConfig = {
   useTestTime: false,
 
   // Game update cron
-  autoUpdateGamesEnabled: true,
+  autoUpdateGamesEnabled: false,
   gameUpdateInterval: `*/4 * * * *`,
-  updateGamePopularityEnabled: true,
+  updateGamePopularityEnabled: false,
 
   // Player assign cron
   autoAssignPlayersEnabled: true,
