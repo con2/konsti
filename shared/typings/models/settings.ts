@@ -32,6 +32,8 @@ export const SettingsSchema = z.object({
   appOpen: z.boolean(),
   signupQuestions: z.array(SignupQuestionSchema),
   signupStrategy: z.nativeEnum(SignupStrategy),
+  programUpdateLastRun: z.string(),
+  assignmentLastRun: z.string(),
 });
 
 export type Settings = z.infer<typeof SettingsSchema>;
