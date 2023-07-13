@@ -8,7 +8,7 @@ import { removeSettings } from "server/features/settings/settingsRepository";
 import { db } from "server/db/mongodb";
 import { generateTestUsers } from "server/test/test-data-generation/generators/generateTestData";
 import { createSignups } from "server/test/test-data-generation/generators/createSignups";
-import { createTestSettings } from "server/test/test-data-generation/generators/createSettings";
+import { createSettings } from "server/test/test-data-generation/generators/createSettings";
 import { sharedConfig } from "shared/config/sharedConfig";
 import { removeSignedGames } from "server/features/user/signed-game/signedGameRepository";
 import { removeSignups } from "server/features/signup/signupRepository";
@@ -89,7 +89,7 @@ export const runGenerators = async (
     !options.clean && (await removeResults());
 
     await createGames(newGamesCount);
-    await createTestSettings();
+    await createSettings();
   }
 
   if (options.signups) {
