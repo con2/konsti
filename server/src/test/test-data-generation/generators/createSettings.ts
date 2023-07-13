@@ -19,7 +19,7 @@ const testQuestions = (): string[] => {
   return questions;
 };
 
-export const createSettings = async (): Promise<void> => {
+export const createTestSettings = async (): Promise<void> => {
   logger.info(`Generate settings data`);
 
   await findSettings();
