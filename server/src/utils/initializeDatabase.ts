@@ -1,8 +1,5 @@
 import { logger } from "server/utils/logger";
-import { removeUsers } from "server/features/user/userRepository";
-import { removeResults } from "server/features/results/resultsRepository";
-import { removeGames, saveGames } from "server/features/game/gameRepository";
-import { removeSettings } from "server/features/settings/settingsRepository";
+import { saveGames } from "server/features/game/gameRepository";
 import { db } from "server/db/mongodb";
 import {
   createAdminUser,
@@ -11,8 +8,8 @@ import {
 } from "server/test/test-data-generation/generators/createUsers";
 import { getGamesFromKompassi } from "server/features/game/utils/getGamesFromKompassi";
 import { kompassiGameMapper } from "server/utils/kompassiGameMapper";
-import { removeTestSettings } from "server/test/test-settings/testSettingsRepository";
 import { isErrorResult, unwrapResult } from "shared/utils/result";
+import { cleanupDatabase } from "server/utils/cleanupDatabse";
 
 const ADMIN_PASSWORD = "";
 const HELP_PASSWORD = "";
@@ -27,11 +24,7 @@ const initializeDatabase = async (): Promise<void> => {
   await db.connectToDb();
 
   logger.info("Clean all data");
-  await removeUsers();
-  await removeGames();
-  await removeResults();
-  await removeSettings();
-  await removeTestSettings();
+  await cleanupDatabase();
 
   logger.info("Create admin user");
   await createAdminUser(ADMIN_PASSWORD);

@@ -4,7 +4,6 @@ import { createSignedGames } from "server/test/test-data-generation/generators/c
 import { removeUsers } from "server/features/user/userRepository";
 import { removeResults } from "server/features/results/resultsRepository";
 import { removeGames } from "server/features/game/gameRepository";
-import { removeSettings } from "server/features/settings/settingsRepository";
 import { db } from "server/db/mongodb";
 import { generateTestUsers } from "server/test/test-data-generation/generators/generateTestData";
 import { createSignups } from "server/test/test-data-generation/generators/createSignups";
@@ -17,6 +16,7 @@ import {
   createHelpUser,
 } from "server/test/test-data-generation/generators/createUsers";
 import { createEventLogItems } from "server/test/test-data-generation/generators/createEventLogItems";
+import { cleanupDatabase } from "server/utils/cleanupDatabse";
 
 interface Options {
   clean?: boolean;
@@ -56,12 +56,7 @@ export const runGenerators = async (
 
   if (options.clean) {
     logger.info("Clean all data");
-
-    await removeUsers();
-    await removeGames();
-    await removeSignups();
-    await removeResults();
-    await removeSettings();
+    await cleanupDatabase();
   }
 
   if (options.users) {
