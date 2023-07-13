@@ -2,7 +2,7 @@
 
 Konstin kautta voi ilmoittautua pöytäroolipeleihin, larppeihin, turnauksiin, työpajoihin ja joihinkin muihin ohjelmanumeroihin.
 
-Konstin käytössä auttavat Pelitiski (Halli 3) ja Larp- ja Roolipelitiski (eteläisen sisäänkäynnin aula).
+Konstin käytössä auttavat Pelitiski (Halli 5) ja Larp- ja Roolipelitiski (eteläisen sisäänkäynnin aula).
 Tiskeillä on myös tietokoneita, joilla Konstia voi käyttää.
 
 ## Miten Konstia käytetään?
@@ -14,7 +14,7 @@ Konsti on verkkosovellus, jota voi käyttää internet-selaimen avulla omalla ä
 [Ohjelmalistaa](/program/list) voi selata kirjautumatta sisään, mutta ohjelmaan ilmoittautumiseen vaaditaan käyttäjätili.
 Aikaisempien vuosien käyttäjätilit eivät ole enää käytössä, vaan sinun on luotava uusi tili tämän vuoden tapahtumaa varten.
 
-Uuden käyttäjätilin luomiseen tarvitset rekisteröintikoodin, joita on saatavilla Pelitiskiltä (Halli 3), Larp- ja Roolipelitiskiltä tai Infosta (molemmat pääaulassa, eteläisen sisäänkäynnin luona).
+Uuden käyttäjätilin luomiseen tarvitset rekisteröintikoodin, joita on saatavilla Pelitiskiltä (Halli 5), Larp- ja Roolipelitiskiltä tai Infosta (molemmat pääaulassa, eteläisen sisäänkäynnin luona).
 
 Tilin pääset luomaan [Luo käyttäjätili -näkymästä](/registration).
 

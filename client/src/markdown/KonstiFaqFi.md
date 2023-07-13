@@ -13,7 +13,7 @@ Huomaathan, että aikaisempina vuosina käytössä olleet käyttäjätilit on po
 
 ## Mistä saan rekisteröintikoodin?
 
-Rekisteröintikoodeja saa Ropeconissa Pelitiskiltä (Halli 3) sekä rope/larp-tiskiltä ja Infosta (Pääaula, Eteläinen sisäänkäynti).
+Rekisteröintikoodeja saa Ropeconissa Pelitiskiltä (Halli 5) sekä rope/larp-tiskiltä ja Infosta (Pääaula, Eteläinen sisäänkäynti).
 Käyttäjätilin voi siis käytännössä luoda vasta Ropeconissa.
 
 ## Kuinka vaihdan salasanani?

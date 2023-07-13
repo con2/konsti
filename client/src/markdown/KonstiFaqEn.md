@@ -13,7 +13,7 @@ Please note that accounts from previous years are no longer in use.
 
 ## Where can I get a registration code?
 
-Registration codes can be picked up at either the Gaming Desk (Hall 3), at the Larp & RPG Desk or at the Info desk (both in the Southern Entrance lobby). This means that you cannot create a new account before Ropecon begins on Friday.
+Registration codes can be picked up at either the Gaming Desk (Hall 5), at the Larp & RPG Desk or at the Info desk (both in the Southern Entrance lobby). This means that you cannot create a new account before Ropecon begins on Friday.
 
 ## How do I change my password?
 
