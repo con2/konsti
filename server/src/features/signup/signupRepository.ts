@@ -45,18 +45,22 @@ export const findSignups = async (): Promise<
       logger.info(`MongoDB: Signups not found`);
       return makeSuccessResult([]);
     }
+
     logger.debug(`MongoDB: Signups found`);
-    const resultsWithFormattedTime = results.map((result) => {
-      return {
-        ...result,
-        userSignups: result.userSignups.map((userSignup) => {
-          return {
-            ...userSignup,
-            time: dayjs(userSignup.time).toISOString(),
-          };
-        }),
-      };
-    });
+
+    const resultsWithFormattedTime = results
+      .filter((result) => result.game) // Filter results with failed populate
+      .map((result) => {
+        return {
+          ...result,
+          userSignups: result.userSignups.map((userSignup) => {
+            return {
+              ...userSignup,
+              time: dayjs(userSignup.time).toISOString(),
+            };
+          }),
+        };
+      });
     return makeSuccessResult(resultsWithFormattedTime);
   } catch (error) {
     logger.error("MongoDB: Error finding signups: %s", error);
