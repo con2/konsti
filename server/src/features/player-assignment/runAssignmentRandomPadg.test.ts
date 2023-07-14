@@ -5,6 +5,7 @@ import {
   afterEach,
   beforeAll,
   beforeEach,
+  vi,
 } from "vitest";
 import mongoose from "mongoose";
 import { MongoMemoryServer } from "mongodb-memory-server";
@@ -17,12 +18,18 @@ import { AssignmentStrategy } from "shared/config/sharedConfig.types";
 import { sharedConfig } from "shared/config/sharedConfig";
 import { AssignmentResultStatus } from "server/typings/result.typings";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
+import * as randomAssign from "server/features/player-assignment/random/randomAssignPlayers";
+import * as padgAssign from "server/features/player-assignment/padg/padgAssignPlayers";
+import { AssignmentError } from "shared/typings/api/errors";
+import { makeErrorResult } from "shared/utils/result";
 
 let mongoServer: MongoMemoryServer;
 
 // This needs to be adjusted if test data is changed
 const expectedResultsCount = 20;
 const groupTestUsers = ["group1", "group2", "group3"];
+
+const { CONVENTION_START_TIME } = sharedConfig;
 
 beforeAll(async () => {
   mongoServer = await MongoMemoryServer.create();
@@ -57,7 +64,6 @@ test("Assignment with valid data should return success with random+padg strategy
     testUsersCount
   );
 
-  const { CONVENTION_START_TIME } = sharedConfig;
   const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
   const startingTime = dayjs(CONVENTION_START_TIME)
     .add(2, "hours")
@@ -131,7 +137,6 @@ test("Assignment with no games should return error with random+padg strategy", a
     testUsersCount
   );
 
-  const { CONVENTION_START_TIME } = sharedConfig;
   const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
   const startingTime = dayjs(CONVENTION_START_TIME)
     .add(2, "hours")
@@ -163,7 +168,6 @@ test("Assignment with no players should return error with random+padg strategy",
     testUsersCount
   );
 
-  const { CONVENTION_START_TIME } = sharedConfig;
   const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
   const startingTime = dayjs(CONVENTION_START_TIME)
     .add(2, "hours")
@@ -176,4 +180,63 @@ test("Assignment with no players should return error with random+padg strategy",
   const assignResults = unsafelyUnwrapResult(assignResultsResult);
 
   expect(assignResults.status).toEqual(AssignmentResultStatus.NO_SIGNUP_WISHES);
+});
+
+test("If random assignment fails, should return PADG result", async () => {
+  vi.spyOn(randomAssign, "randomAssignPlayers").mockReturnValueOnce(
+    makeErrorResult(AssignmentError.UNKNOWN_ERROR)
+  );
+
+  const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
+  const startingTime = dayjs(CONVENTION_START_TIME).toISOString();
+
+  const assignResultsResult = await runAssignment({
+    assignmentStrategy,
+    startingTime,
+  });
+
+  const assignResults = unsafelyUnwrapResult(assignResultsResult);
+  expect(assignResults.algorithm).toEqual(AssignmentStrategy.PADG);
+  expect(assignResults.status).toEqual(
+    AssignmentResultStatus.NO_STARTING_GAMES
+  );
+});
+
+test("If PADG assignment fails, should return random result", async () => {
+  vi.spyOn(padgAssign, "padgAssignPlayers").mockReturnValueOnce(
+    makeErrorResult(AssignmentError.UNKNOWN_ERROR)
+  );
+
+  const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
+  const startingTime = dayjs(CONVENTION_START_TIME).toISOString();
+
+  const assignResultsResult = await runAssignment({
+    assignmentStrategy,
+    startingTime,
+  });
+
+  const assignResults = unsafelyUnwrapResult(assignResultsResult);
+  expect(assignResults.algorithm).toEqual(AssignmentStrategy.RANDOM);
+  expect(assignResults.status).toEqual(
+    AssignmentResultStatus.NO_STARTING_GAMES
+  );
+});
+
+test("If both assignments fail, should return error result", async () => {
+  vi.spyOn(randomAssign, "randomAssignPlayers").mockReturnValueOnce(
+    makeErrorResult(AssignmentError.UNKNOWN_ERROR)
+  );
+  vi.spyOn(padgAssign, "padgAssignPlayers").mockReturnValueOnce(
+    makeErrorResult(AssignmentError.UNKNOWN_ERROR)
+  );
+
+  const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
+  const startingTime = dayjs(CONVENTION_START_TIME).toISOString();
+
+  const assignResultsResult = await runAssignment({
+    assignmentStrategy,
+    startingTime,
+  });
+
+  expect(assignResultsResult.error).toEqual(AssignmentError.UNKNOWN_ERROR);
 });
