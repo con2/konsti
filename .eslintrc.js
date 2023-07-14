@@ -76,7 +76,16 @@ module.exports = {
     "import/no-unused-modules": ["error", { unusedExports: true }],
     "import/no-unresolved": "off",
     "import/order": ["error", { groups: ["builtin", "external"] }],
-    "import/no-namespace": "error", // Don't want to use namespace imports
+    "import/no-namespace": [
+      "error",
+      {
+        ignore: [
+          "groupAssignPlayers",
+          "padgAssignPlayers",
+          "randomAssignPlayers",
+        ],
+      },
+    ], // Don't want to use namespace imports, ignore files that need vi.spyon
     "import/namespace": "off", // Don't want to use namespace imports
 
     // eslint-plugin-vitest

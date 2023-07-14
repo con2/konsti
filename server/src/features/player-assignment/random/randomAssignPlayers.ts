@@ -17,6 +17,7 @@ import {
   unwrapResult,
 } from "shared/utils/result";
 import { AssignmentError } from "shared/typings/api/errors";
+import { AssignmentStrategy } from "shared/config/sharedConfig.types";
 
 export const randomAssignPlayers = (
   players: readonly User[],
@@ -32,7 +33,7 @@ export const randomAssignPlayers = (
     return makeSuccessResult({
       results: [],
       message: "Random Assign Result - No starting games",
-      algorithm: "Random",
+      algorithm: AssignmentStrategy.RANDOM,
       status: AssignmentResultStatus.NO_STARTING_GAMES,
     });
   }
@@ -49,7 +50,7 @@ export const randomAssignPlayers = (
     return makeSuccessResult({
       results: [],
       message: "Random Assign Result - No signup wishes",
-      algorithm: "Random",
+      algorithm: AssignmentStrategy.RANDOM,
       status: AssignmentResultStatus.NO_SIGNUP_WISHES,
     });
   }
@@ -90,8 +91,8 @@ export const randomAssignPlayers = (
     Object.assign({
       ...assignmentResult,
       message,
-      algorithm: "Random",
-      status: "success",
+      algorithm: AssignmentStrategy.RANDOM,
+      status: AssignmentResultStatus.SUCCESS,
     })
   );
 };

@@ -17,6 +17,7 @@ import {
   unwrapResult,
 } from "shared/utils/result";
 import { AssignmentError } from "shared/typings/api/errors";
+import { AssignmentStrategy } from "shared/config/sharedConfig.types";
 
 export const padgAssignPlayers = (
   players: readonly User[],
@@ -32,7 +33,7 @@ export const padgAssignPlayers = (
     return makeSuccessResult({
       results: [],
       message: "Padg Assign Result - No starting games",
-      algorithm: "padg",
+      algorithm: AssignmentStrategy.PADG,
       status: AssignmentResultStatus.NO_STARTING_GAMES,
     });
   }
@@ -49,7 +50,7 @@ export const padgAssignPlayers = (
     return makeSuccessResult({
       results: [],
       message: "Padg Assign Result - No signup wishes",
-      algorithm: "padg",
+      algorithm: AssignmentStrategy.PADG,
       status: AssignmentResultStatus.NO_SIGNUP_WISHES,
     });
   }
@@ -91,8 +92,8 @@ export const padgAssignPlayers = (
     Object.assign({
       ...assignmentResult,
       message,
-      algorithm: "padg",
-      status: "success",
+      algorithm: AssignmentStrategy.PADG,
+      status: AssignmentResultStatus.SUCCESS,
     })
   );
 };

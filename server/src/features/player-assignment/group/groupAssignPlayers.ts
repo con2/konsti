@@ -20,6 +20,7 @@ import {
   unwrapResult,
 } from "shared/utils/result";
 import { AssignmentError } from "shared/typings/api/errors";
+import { AssignmentStrategy } from "shared/config/sharedConfig.types";
 
 export const groupAssignPlayers = (
   players: readonly User[],
@@ -34,7 +35,7 @@ export const groupAssignPlayers = (
     return makeSuccessResult({
       results: [],
       message: "Group Assign Result - No starting games",
-      algorithm: "group",
+      algorithm: AssignmentStrategy.GROUP,
       status: AssignmentResultStatus.NO_STARTING_GAMES,
     });
   }
@@ -46,7 +47,7 @@ export const groupAssignPlayers = (
     return makeSuccessResult({
       results: [],
       message: "Group Assign Result - No signup wishes",
-      algorithm: "group",
+      algorithm: AssignmentStrategy.GROUP,
       status: AssignmentResultStatus.NO_SIGNUP_WISHES,
     });
   }
@@ -97,8 +98,8 @@ export const groupAssignPlayers = (
   return makeSuccessResult(
     Object.assign({
       ...result,
-      algorithm: "group",
-      status: "success",
+      algorithm: AssignmentStrategy.GROUP,
+      status: AssignmentResultStatus.SUCCESS,
     })
   );
 };

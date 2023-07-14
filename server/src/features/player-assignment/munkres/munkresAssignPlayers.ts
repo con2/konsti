@@ -24,6 +24,7 @@ import {
   unwrapResult,
 } from "shared/utils/result";
 import { AssignmentError } from "shared/typings/api/errors";
+import { AssignmentStrategy } from "shared/config/sharedConfig.types";
 
 export const munkresAssignPlayers = (
   players: readonly User[],
@@ -99,7 +100,7 @@ export const munkresAssignPlayers = (
   return makeSuccessResult({
     results: signupResults,
     message,
-    algorithm: "munkres",
+    algorithm: AssignmentStrategy.MUNKRES,
     status: AssignmentResultStatus.SUCCESS,
   });
 };
