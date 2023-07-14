@@ -87,10 +87,12 @@ const prodConfig = {
   // Dev
   useTestTime: false,
 
-  // Game update cron
+  // Program update cron
   autoUpdateGamesEnabled: false,
   gameUpdateInterval: `*/4 * * * *`,
-  updateGamePopularityEnabled: false,
+
+  // Program update
+  updateGamePopularityEnabled: true,
 
   // Player assign cron
   autoAssignPlayersEnabled: false,
@@ -117,10 +119,12 @@ const stagingConfig = {
   // Dev
   useTestTime: true,
 
-  // Game update cron
+  // Program update cron
   autoUpdateGamesEnabled: false,
   gameUpdateInterval: `*/4 * * * *`,
-  updateGamePopularityEnabled: false,
+
+  // Program update
+  updateGamePopularityEnabled: true,
 
   // Player assign cron
   autoAssignPlayersEnabled: false,
@@ -148,10 +152,12 @@ const devConfig = {
   // Dev
   useTestTime: true,
 
-  // Game update cron
+  // Program update cron
   autoUpdateGamesEnabled: false,
   gameUpdateInterval: `*/10 * * * * *`,
-  updateGamePopularityEnabled: false,
+
+  // Program update
+  updateGamePopularityEnabled: true,
 
   // Player assign cron
   autoAssignPlayersEnabled: false,
