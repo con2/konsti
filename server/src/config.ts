@@ -118,7 +118,7 @@ const stagingConfig = {
   useTestTime: true,
 
   // Game update cron
-  autoUpdateGamesEnabled: true,
+  autoUpdateGamesEnabled: false,
   gameUpdateInterval: `*/4 * * * *`,
   updateGamePopularityEnabled: false,
 
