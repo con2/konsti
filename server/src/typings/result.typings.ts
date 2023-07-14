@@ -17,6 +17,7 @@ export enum AssignmentResultStatus {
   SUCCESS = "success",
   NO_STARTING_GAMES = "noStartingGames",
   NO_SIGNUP_WISHES = "noSignupWishes",
+  ERROR = "error",
 }
 
 export interface PlayerAssignmentResult {
