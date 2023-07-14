@@ -16,7 +16,8 @@
     "generate-serials": "ts-node src/utils/generateSerials.ts",
     "lint": "yarn eslint && yarn prettier:check",
     "remove-invalid-games": "yarn run -T cross-env NODE_ENV=development ts-node src/test/scripts/removeInvalidGames.ts",
-    "start": "ts-node --transpile-only src/index.ts",
+    "build": "yarn run -T rimraf dist/server && ncc build src/index.ts -o dist/server",
+    "start": "node dist/server/index.js",
     "start:dev": "yarn run -T cross-env NODE_ENV=development SETTINGS=development ts-node-dev -r tsconfig-paths/register --respawn --transpile-only src/index.ts",
     "stats": "ts-node src/features/statistics/statGenerator.ts --",
     "test": "yarn run -T vitest run",
@@ -32,6 +33,7 @@
   "dependencies": {
     "@faker-js/faker": "8.0.2",
     "@sentry/node": "7.57.0",
+    "@vercel/ncc": "0.36.1",
     "bcryptjs": "2.4.3",
     "commander": "11.0.0",
     "croner": "6.0.5",
