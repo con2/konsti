@@ -3875,6 +3875,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@vercel/ncc@npm:0.36.1":
+  version: 0.36.1
+  resolution: "@vercel/ncc@npm:0.36.1"
+  dependencies:
+    node-gyp: latest
+  bin:
+    ncc: dist/ncc/cli.js
+  checksum: dcb8db089b07a8fad64c24eef25be6bc2db7ba30582a03236e3a6d332c8653d93a45aba7fe0e01b6d64f3c5b54d23467539ac3664c113f54a9e59341ded79bf9
+  languageName: node
+  linkType: hard
+
 "@vitest/expect@npm:0.32.2":
   version: 0.32.2
   resolution: "@vitest/expect@npm:0.32.2"
@@ -9144,6 +9155,7 @@ __metadata:
     "@types/morgan": 1.9.4
     "@types/node": 18.16.19
     "@types/supertest": 2.0.12
+    "@vercel/ncc": 0.36.1
     bcryptjs: 2.4.3
     commander: 11.0.0
     croner: 6.0.5
