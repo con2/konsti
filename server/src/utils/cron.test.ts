@@ -27,6 +27,8 @@ let server: Server;
 let mongoServer: MongoMemoryServer;
 
 const timeNow = "2019-07-26T17:00:00.000Z";
+const previousJobRunning = 30; // Seconds since last run
+const previousJobFinished = 31; // Seconds since last run
 
 beforeAll(async () => {
   mongoServer = await MongoMemoryServer.create();
@@ -55,7 +57,9 @@ describe("Progam update cronjob", () => {
   test("should run program update and set programUpdateLastRun time", async () => {
     const infoLoggerSpy = vi.spyOn(logger, "info");
 
-    const oldTime = dayjs(timeNow).subtract(31, "second").toISOString();
+    const oldTime = dayjs(timeNow)
+      .subtract(previousJobFinished, "seconds")
+      .toISOString();
     await saveSettings({ programUpdateLastRun: oldTime });
 
     await autoUpdateGames();
@@ -76,7 +80,9 @@ describe("Progam update cronjob", () => {
   test("should not start update if program update is already running", async () => {
     const infoLoggerSpy = vi.spyOn(logger, "info");
 
-    const oldTime = dayjs(timeNow).subtract(30, "second").toISOString();
+    const oldTime = dayjs(timeNow)
+      .subtract(previousJobRunning, "seconds")
+      .toISOString();
     await saveSettings({ programUpdateLastRun: oldTime });
 
     await autoUpdateGames();
@@ -97,7 +103,9 @@ describe("Progam update cronjob", () => {
   test("if cronjob is run twice, should run program update only once", async () => {
     const infoLoggerSpy = vi.spyOn(logger, "info");
 
-    const oldTime = dayjs(timeNow).subtract(31, "second").toISOString();
+    const oldTime = dayjs(timeNow)
+      .subtract(previousJobFinished, "seconds")
+      .toISOString();
     await saveSettings({ programUpdateLastRun: oldTime });
 
     await Promise.all([autoUpdateGames(), autoUpdateGames()]);
@@ -127,7 +135,9 @@ describe("Assignment cronjob", () => {
   test("should run assignment and set assignmentLastRun time", async () => {
     const infoLoggerSpy = vi.spyOn(logger, "info");
 
-    const oldTime = dayjs(timeNow).subtract(31, "second").toISOString();
+    const oldTime = dayjs(timeNow)
+      .subtract(previousJobFinished, "seconds")
+      .toISOString();
     await saveSettings({ assignmentLastRun: oldTime });
 
     await autoAssignPlayers();
@@ -148,7 +158,9 @@ describe("Assignment cronjob", () => {
   test("should not run assignment if assignment is already running", async () => {
     const infoLoggerSpy = vi.spyOn(logger, "info");
 
-    const oldTime = dayjs(timeNow).subtract(30, "second").toISOString();
+    const oldTime = dayjs(timeNow)
+      .subtract(previousJobRunning, "seconds")
+      .toISOString();
     await saveSettings({ assignmentLastRun: oldTime });
 
     await autoAssignPlayers();
@@ -169,7 +181,9 @@ describe("Assignment cronjob", () => {
   test("if cronjob is run twice, should run assignment only once", async () => {
     const infoLoggerSpy = vi.spyOn(logger, "info");
 
-    const oldTime = dayjs(timeNow).subtract(31, "second").toISOString();
+    const oldTime = dayjs(timeNow)
+      .subtract(previousJobFinished, "seconds")
+      .toISOString();
     await saveSettings({ assignmentLastRun: oldTime });
 
     await Promise.all([autoAssignPlayers(), autoAssignPlayers()]);
