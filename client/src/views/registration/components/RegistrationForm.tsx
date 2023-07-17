@@ -254,6 +254,7 @@ const FormFieldIcon = styled.span`
 const StyledCheckbox = styled.input`
   margin-right: 10px;
   width: 16px;
+  accent-color: ${(props) => props.theme.formAccent};
 `;
 
 const SmallLabel = styled.label`
