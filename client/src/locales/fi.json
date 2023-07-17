@@ -55,8 +55,8 @@
   },
   "validation": {
     "required": "Vaadittu kenttä",
-    "tooLong": "Syöte on liian pitkä, enintään {{length}} merkkiä",
-    "tooShort": "Syöte on liian lyhyt, vähintään {{length}} merkkiä"
+    "tooLong": "Liian pitkä, käytä enintään {{length}} merkkiä",
+    "tooShort": "Liian lyhyt, käytä vähintään {{length}} merkkiä"
   },
   "pages": {
     "myProgram": "Oma ohjelmani",
@@ -178,7 +178,7 @@
   "agreePrivacyPolicy": "Hyväksyn rekisteriselosteen",
   "showPrivacyPolicy": "Näytä rekisteriseloste",
   "hidePrivacyPolicy": "Piilota rekisteriseloste",
-  "registrationSerialHelp": "Nouda rekisteröintikoodi Larp- ja Roolipelitiskiltä, Pelitiskiltä tai Infosta",
+  "registrationSerialHelp": "Nouda rekisteröintikoodi Larp- ja Roolipelitiskiltä, Pelitiskiltä tai Infosta.",
   "noSignedGames": "Ei valittuja pelejä",
   "noFavoritedProgramItems": "Ei suosikkeja",
   "noEnteredGames": "Ei ilmoittautumisia",
@@ -457,11 +457,11 @@
     "question": "Kysymys"
   },
   "loginView": {
-    "oldAccountsNotWorking": "Aikaisempien tapahtumien käyttäjätilit eivät ole käytössä",
-    "noAccountRegister": "Ei käyttäjätiliä? Luo käyttäjätili"
+    "oldAccountsNotWorking": "Aikaisempien tapahtumien käyttäjätilit eivät ole käytössä.",
+    "noAccountRegister": "Ei käyttäjätiliä? Luo käyttäjätili täällä."
   },
   "registrationView": {
-    "alreadyHaveAccountLogin": "Sinulla on jo tili? Kirjaudu"
+    "alreadyHaveAccountLogin": "Onko sinulla jo tili? Kirjaudu sisään tästä."
   },
   "iconAltText": {
     "resetInput": "Tyhjennä syöte",

@@ -64,8 +64,10 @@ export const RegistrationForm = (): ReactElement => {
       <h2>{t("pageTitle.registration")}</h2>
 
       <StyledForm onSubmit={handleSubmit(onSubmit)}>
-        <FormRow>
+        <InputContainer>
+          <StyledLabel htmlFor="username">{t("username")}</StyledLabel>
           <StyledInput
+            id="username"
             {...register("username", {
               required: `${t(`validation.required`)}`,
               minLength: {
@@ -84,51 +86,52 @@ export const RegistrationForm = (): ReactElement => {
                 setServerError(null);
               },
             })}
-            placeholder={t("username")}
             type={"text"}
           />
-        </FormRow>
+        </InputContainer>
 
         {errors.username && (
           <FormFieldError>{errors.username.message}</FormFieldError>
         )}
 
-        <FormRow>
-          <StyledInput
-            {...register("password", {
-              required: `${t(`validation.required`)}`,
-              minLength: {
-                value: PASSWORD_LENGTH_MIN,
-                message: t(`validation.tooShort`, {
-                  length: PASSWORD_LENGTH_MIN,
-                }),
-              },
-              maxLength: {
-                value: PASSWORD_LENGTH_MAX,
-                message: t(`validation.tooLong`, {
-                  length: PASSWORD_LENGTH_MAX,
-                }),
-              },
-              onChange: () => {
-                setServerError(null);
-              },
-            })}
-            placeholder={t("password")}
-            type={passwordVisible ? "text" : "password"}
-          />
-
-          <FormFieldIcon>
-            <FontAwesomeIcon
-              icon={passwordVisible ? "eye-slash" : "eye"}
-              onClick={() => setPasswordVisible(!passwordVisible)}
-              aria-label={
-                passwordVisible
-                  ? t("iconAltText.hidePassword")
-                  : t("iconAltText.showPassword")
-              }
+        <InputContainer>
+          <StyledLabel htmlFor="password">{t("password")}</StyledLabel>
+          <FormRow>
+            <StyledInput
+              {...register("password", {
+                required: `${t(`validation.required`)}`,
+                minLength: {
+                  value: PASSWORD_LENGTH_MIN,
+                  message: t(`validation.tooShort`, {
+                    length: PASSWORD_LENGTH_MIN,
+                  }),
+                },
+                maxLength: {
+                  value: PASSWORD_LENGTH_MAX,
+                  message: t(`validation.tooLong`, {
+                    length: PASSWORD_LENGTH_MAX,
+                  }),
+                },
+                onChange: () => {
+                  setServerError(null);
+                },
+              })}
+              type={passwordVisible ? "text" : "password"}
             />
-          </FormFieldIcon>
-        </FormRow>
+
+            <FormFieldIcon>
+              <FontAwesomeIcon
+                icon={passwordVisible ? "eye-slash" : "eye"}
+                onClick={() => setPasswordVisible(!passwordVisible)}
+                aria-label={
+                  passwordVisible
+                    ? t("iconAltText.hidePassword")
+                    : t("iconAltText.showPassword")
+                }
+              />
+            </FormFieldIcon>
+          </FormRow>
+        </InputContainer>
 
         {errors.password && (
           <FormFieldError>{errors.password.message}</FormFieldError>
@@ -136,18 +139,19 @@ export const RegistrationForm = (): ReactElement => {
 
         {sharedConfig.requireRegistrationCode && (
           <>
-            <FormRow>
+            <InputContainer>
+              <StyledLabel htmlFor="serial">{t("serial")}</StyledLabel>
               <StyledInput
+                id="serial"
                 {...register("serial", {
                   required: `${t(`validation.required`)}`,
                   onChange: () => {
                     setServerError(null);
                   },
                 })}
-                placeholder={t("serial")}
                 type={"text"}
               />
-            </FormRow>
+            </InputContainer>
 
             {errors.serial && (
               <FormFieldError>{errors.serial.message}</FormFieldError>
@@ -236,8 +240,9 @@ const FormFieldError = styled.div`
   display: flex;
   background: ${(props) => props.theme.backgroundHighlight};
   color: ${(props) => props.theme.textError};
-  padding: 4px 0 4px 10px;
-
+  padding: 0 0 4px 10px;
+  font-size: ${(props) => props.theme.fontSizeSmaller};
+  margin-top: -8px;
   ${widthDefinition}
 `;
 
@@ -262,5 +267,15 @@ const PrivacyPolicyContent = styled.div`
 const StyledForm = styled.form`
   display: flex;
   gap: 16px;
+  flex-direction: column;
+`;
+
+const StyledLabel = styled.label`
+  padding: 0 0 2px 4px;
+  font-size: ${(props) => props.theme.fontSizeSmall};
+`;
+
+const InputContainer = styled.div`
+  display: flex;
   flex-direction: column;
 `;

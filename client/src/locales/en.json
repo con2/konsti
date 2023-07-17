@@ -55,8 +55,8 @@
   },
   "validation": {
     "required": "Required",
-    "tooLong": "Value is too long, max {{length}} characters",
-    "tooShort": "Value is too short, {{length}} characters required"
+    "tooLong": "Too long, max {{length}} characters",
+    "tooShort": "Too short, at least {{length}} characters required"
   },
   "pages": {
     "myProgram": "My Program",
@@ -178,7 +178,7 @@
   "agreePrivacyPolicy": "I agree to the privacy policy",
   "showPrivacyPolicy": "Show privacy policy",
   "hidePrivacyPolicy": "Hide privacy policy",
-  "registrationSerialHelp": "You can get a registration code from the Larp & RPG Desk, the Gaming Desk or the Info",
+  "registrationSerialHelp": "You can get a registration code from the Larp & RPG Desk, the Gaming Desk or the Info.",
   "noSignedGames": "No selected games",
   "noFavoritedProgramItems": "No favorites",
   "noEnteredGames": "No signups",
@@ -457,11 +457,11 @@
     "question": "Question"
   },
   "loginView": {
-    "oldAccountsNotWorking": "Accounts from old events don't work anymore",
-    "noAccountRegister": "No account? Create one"
+    "oldAccountsNotWorking": "Accounts from old events are not in use anymore.",
+    "noAccountRegister": "No account? Create one here."
   },
   "registrationView": {
-    "alreadyHaveAccountLogin": "Already have an account? Login"
+    "alreadyHaveAccountLogin": "Do you already have an account? Log in here."
   },
   "iconAltText": {
     "resetInput": "Reset input",
