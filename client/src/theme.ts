@@ -69,6 +69,7 @@ export const theme = {
   borderInactive: gray.primary,
   borderWarning: red.primary,
   borderCardHighlight: mainColor.light,
+  borderCardWarnHighlight: red.light,
   tabBorder: gray.light,
 
   buttonPrimaryBackground: mainColor.primary,
