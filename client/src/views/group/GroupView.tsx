@@ -11,7 +11,6 @@ import { getIsGroupCreator, getIsInGroup } from "client/views/group/groupUtils";
 import { NotInGroupActions } from "client/views/group/components/NotInGroupActions";
 import { GroupCreatorActions } from "client/views/group/components/GroupCreatorActions";
 import { GroupMemberActions } from "client/views/group/components/GroupMemberActions";
-import { ProgramType } from "shared/typings/models/game";
 import { getTimeNow } from "client/utils/getTimeNow";
 import { selectEnteredGames } from "client/views/my-games/myGamesSlice";
 import { sharedConfig } from "shared/config/sharedConfig";
@@ -23,9 +22,7 @@ export const GroupView = (): ReactElement => {
   const serial = useAppSelector((state) => state.login.serial);
   const groupCode = useAppSelector((state) => state.group.groupCode);
   const groupMembers = useAppSelector((state) => state.group.groupMembers);
-  const activeProgramType = useAppSelector(
-    (state) => state.admin.activeProgramType
-  );
+
   const enteredGames = useAppSelector(selectEnteredGames);
   const { t } = useTranslation();
 
@@ -54,72 +51,63 @@ export const GroupView = (): ReactElement => {
   return (
     <div className="group-view">
       <p>{t("group.groupLotterySignupGuide")}</p>
+      <p>{t("group.groupLotterySignupTabletopOnly")}</p>
+      <p>
+        {t("group.groupSignupGuide")} <BoldText>{serial}</BoldText>.
+      </p>
 
-      {activeProgramType !== ProgramType.TABLETOP_RPG ? (
-        <p>{t("group.groupLotterySignupTabletopOnly")}</p>
-      ) : (
+      {!isInGroup && (
         <>
-          <p>
-            {t("group.groupSignupGuide")} <BoldText>{serial}</BoldText>.
-          </p>
+          {hasEnteredGames && (
+            <EnteredGamesContainer>
+              <BoldText>{t("group.hasEnteredFollowingGames")}</BoldText>
+              <ul>
+                {filteredActiveEnteredGames.map((game) => (
+                  <li key={game.gameDetails.gameId}>
+                    <Link to={`/games/${game.gameDetails.gameId}`}>
+                      {game.gameDetails.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+              <BoldText>
+                {t("group.cancelSignupBeforeJoiningOrCreatingGroup")}
+              </BoldText>
+            </EnteredGamesContainer>
+          )}
 
-          {!isInGroup && (
+          <NotInGroupActions
+            disabled={hasEnteredGames}
+            username={username}
+            serial={serial}
+          />
+        </>
+      )}
+
+      {isInGroup && (
+        <>
+          {isGroupCreator && (
             <>
-              {hasEnteredGames && (
-                <EnteredGamesContainer>
-                  <BoldText>{t("group.hasEnteredFollowingGames")}</BoldText>
-                  <ul>
-                    {filteredActiveEnteredGames.map((game) => (
-                      <li key={game.gameDetails.gameId}>
-                        <Link to={`/games/${game.gameDetails.gameId}`}>
-                          {game.gameDetails.title}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                  <BoldText>
-                    {t("group.cancelSignupBeforeJoiningOrCreatingGroup")}
-                  </BoldText>
-                </EnteredGamesContainer>
-              )}
-
-              <NotInGroupActions
-                disabled={hasEnteredGames}
-                username={username}
-                serial={serial}
-              />
+              <p>
+                <BoldText>{t("group.youAreGroupCreator")}</BoldText>.{" "}
+                {t("group.groupCreatorInfo")}
+              </p>
+              <GroupCreatorActions username={username} groupCode={groupCode} />
             </>
           )}
 
-          {isInGroup && (
+          {!isGroupCreator && (
             <>
-              {isGroupCreator && (
-                <>
-                  <p>
-                    <BoldText>{t("group.youAreGroupCreator")}</BoldText>.{" "}
-                    {t("group.groupCreatorInfo")}
-                  </p>
-                  <GroupCreatorActions
-                    username={username}
-                    groupCode={groupCode}
-                  />
-                </>
-              )}
-
-              {!isGroupCreator && (
-                <>
-                  <p>
-                    <BoldText>{t("group.youAreInGroup")}</BoldText>.{" "}
-                    {t("group.groupMemberInfo")}
-                  </p>
-                  <GroupMemberActions />
-                </>
-              )}
-
-              <h3>{t("group.groupMembers")}</h3>
-              <GroupMembersList groupMembers={groupMembers} />
+              <p>
+                <BoldText>{t("group.youAreInGroup")}</BoldText>.{" "}
+                {t("group.groupMemberInfo")}
+              </p>
+              <GroupMemberActions />
             </>
           )}
+
+          <h3>{t("group.groupMembers")}</h3>
+          <GroupMembersList groupMembers={groupMembers} />
         </>
       )}
     </div>
