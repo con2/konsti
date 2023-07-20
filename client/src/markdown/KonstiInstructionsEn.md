@@ -123,3 +123,7 @@ also use direct sign-up, which means that places are filled in the order of sign
 - Workshops starting on Saturday after 2PM: Saturday 9AM
 - Workshops starting on Sunday on or before 2PM: Saturday: 6PM
 - Workshops starting on Sunday after 2PM: Sunday 9AM
+
+### Sign-up period start time for other program
+
+Sign-up for all other program items that use Konsti starts on Friday at 3PM.
