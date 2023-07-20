@@ -77,15 +77,22 @@ export const getDirectSignupStartTime = (game: Game): Dayjs => {
   const signupWindowsForProgramType =
     sharedConfig.directSignupWindows[game.programType];
 
-  const matchingSignupWindow =
-    signupWindowsForProgramType.find((signupWindow) =>
+  const matchingSignupWindow = signupWindowsForProgramType.find(
+    (signupWindow) =>
       dayjs(game.startTime).isBetween(
         signupWindow.signupWindowStart,
         signupWindow.signupWindowClose,
         "minutes",
         "[]"
       )
-    ) ?? signupWindowsForProgramType[0];
+  );
+
+  if (!matchingSignupWindow) {
+    // eslint-disable-next-line no-restricted-syntax -- Config error
+    throw new Error(
+      `Invalid signup window for program type: ${game.programType}`
+    );
+  }
 
   return dayjs(matchingSignupWindow.signupWindowStart);
 };
