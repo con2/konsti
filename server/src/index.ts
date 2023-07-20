@@ -1,3 +1,4 @@
+import { Server } from "http";
 import { startServer, closeServer } from "server/utils/server";
 import { logger } from "server/utils/logger";
 import { startCronJobs } from "server/utils/cron";
@@ -6,10 +7,16 @@ import { config } from "server/config";
 const startApp = async (): Promise<void> => {
   startCronJobs();
 
-  const server = await startServer({
-    dbConnString: config.dbConnString,
-    port: config.port,
-  });
+  let server: Server;
+  try {
+    server = await startServer({
+      dbConnString: config.dbConnString,
+      port: config.port,
+    });
+  } catch (error) {
+    logger.error("%s", new Error(`Starting server failed: ${error}`));
+    return;
+  }
 
   process.once("SIGINT", (signal: string) => {
     closeServer(server, signal).catch((error) => {
