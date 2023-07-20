@@ -2,6 +2,8 @@ import dayjs, { Dayjs } from "dayjs";
 import { ProgramType } from "shared/typings/models/game";
 import { AssignmentStrategy, SignupStrategy } from "./sharedConfig.types";
 
+type ArrMin1<T> = [T, ...T[]];
+
 interface SignupWindow {
   signupWindowStart: Dayjs;
   signupWindowClose: Dayjs;
@@ -17,7 +19,7 @@ interface SharedConfig {
   DIRECT_SIGNUP_START: number;
   PRE_SIGNUP_START: number;
   PHASE_GAP: number;
-  directSignupWindows: Record<ProgramType, SignupWindow[]>;
+  directSignupWindows: Record<ProgramType, ArrMin1<SignupWindow>>;
   directSignupAlwaysOpenIds: string[];
   tracesSampleRate: number;
   enableSentryInDev: boolean;
@@ -56,7 +58,8 @@ export const sharedConfig: SharedConfig = {
   CONVENTION_START_TIME: `${friday}T12:00:00Z`, // UTC date
 
   directSignupWindows: {
-    tabletopRPG: [], // RPGs use DIRECT_SIGNUP_START
+    // @ts-expect-error: RPGs use DIRECT_SIGNUP_START
+    tabletopRPG: [],
 
     larp: [
       // Friday
