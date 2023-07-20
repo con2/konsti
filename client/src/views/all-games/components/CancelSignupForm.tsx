@@ -16,7 +16,7 @@ export const CancelSignupForm = ({
   const { t } = useTranslation();
 
   return (
-    <ButtonGroup>
+    <StyledButtonGroup>
       <StyledButton onClick={onConfirmForm} buttonStyle={ButtonStyle.PRIMARY}>
         {t("signup.confirmCancellation")}
       </StyledButton>
@@ -27,10 +27,14 @@ export const CancelSignupForm = ({
       >
         {t("signup.staySignedUp")}
       </StyledButton>
-    </ButtonGroup>
+    </StyledButtonGroup>
   );
 };
 
 const StyledButton = styled(Button)`
   min-width: 200px;
+`;
+
+const StyledButtonGroup = styled(ButtonGroup)`
+  justify-content: center;
 `;
