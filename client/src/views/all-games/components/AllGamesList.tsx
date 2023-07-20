@@ -1,6 +1,7 @@
 import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import _ from "lodash";
+import styled from "styled-components";
 import { GameEntry } from "./GameEntry";
 import { useAppSelector } from "client/utils/hooks";
 import { Game } from "shared/typings/models/game";
@@ -12,6 +13,7 @@ import {
   selectActiveEnteredGames,
   selectActiveSignedGames,
 } from "client/views/my-games/myGamesSlice";
+import { RaisedCard } from "client/components/RaisedCard";
 
 interface Props {
   games: readonly Game[];
@@ -90,8 +92,17 @@ export const AllGamesList = ({ games }: Props): ReactElement => {
 
   return (
     <div>
-      {games.length === 0 && <h3>{t("noProgramItemsAvailable")}</h3>}
+      {games.length === 0 && (
+        <RaisedCard>
+          <NoGamesText>{t("noProgramItemsAvailable")}</NoGamesText>
+        </RaisedCard>
+      )}
       {games.length !== 0 && gamesList}
     </div>
   );
 };
+
+const NoGamesText = styled.span`
+  color: ${(props) => props.theme.textSecondary};
+  font-size: ${(props) => props.theme.fontSizeLarge};
+`;

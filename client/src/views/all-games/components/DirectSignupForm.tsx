@@ -138,12 +138,14 @@ export const DirectSignupForm = ({
 
               {!signupFormOpen &&
                 timeNow.isSameOrAfter(directSignupStartTime) && (
-                  <ButtonWithMargin
-                    onClick={() => setSignupFormOpen(!signupFormOpen)}
-                    buttonStyle={ButtonStyle.PRIMARY}
-                  >
-                    {t("signup.directSignup")}
-                  </ButtonWithMargin>
+                  <ButtonContainer>
+                    <StyledButton
+                      onClick={() => setSignupFormOpen(!signupFormOpen)}
+                      buttonStyle={ButtonStyle.PRIMARY}
+                    >
+                      {t("signup.directSignup")}
+                    </StyledButton>
+                  </ButtonContainer>
                 )}
 
               {signupFormOpen && (
@@ -172,12 +174,14 @@ export const DirectSignupForm = ({
           {signupOpen && (
             <>
               {!cancelSignupFormOpen && (
-                <ButtonWithMargin
-                  onClick={() => setCancelSignupFormOpen(true)}
-                  buttonStyle={ButtonStyle.SECONDARY}
-                >
-                  {t("button.cancelSignup")}
-                </ButtonWithMargin>
+                <ButtonContainer>
+                  <StyledButton
+                    onClick={() => setCancelSignupFormOpen(true)}
+                    buttonStyle={ButtonStyle.SECONDARY}
+                  >
+                    {t("button.cancelSignup")}
+                  </StyledButton>
+                </ButtonContainer>
               )}
 
               {cancelSignupFormOpen && (
@@ -223,8 +227,18 @@ const BoldText = styled.span`
   font-weight: 600;
 `;
 
-const ButtonWithMargin = styled(Button)`
+const ButtonContainer = styled.div`
   margin: 8px 0;
+  display: flex;
+  justify-content: center;
+`;
+
+const StyledButton = styled(Button)`
+  min-width: 400px;
+  @media (max-width: ${(props) => props.theme.breakpointDesktop}) {
+    width: 100%;
+    min-width: 0;
+  }
 `;
 
 const NotLoggedSignupInfo = styled.div`

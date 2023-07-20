@@ -100,12 +100,15 @@ export const SignupForm = ({
         selectedValue={firstOption.toString()}
       />
       <ButtonGroup>
-        <Button onClick={handleSignup} buttonStyle={ButtonStyle.PRIMARY}>
+        <StyledButton onClick={handleSignup} buttonStyle={ButtonStyle.PRIMARY}>
           {t("signup.confirm")}
-        </Button>
-        <Button onClick={handleCancel} buttonStyle={ButtonStyle.SECONDARY}>
+        </StyledButton>
+        <StyledButton
+          onClick={handleCancel}
+          buttonStyle={ButtonStyle.SECONDARY}
+        >
           {t("signup.cancel")}
-        </Button>
+        </StyledButton>
       </ButtonGroup>
       {errorMessage && (
         <ErrorMessage
@@ -119,4 +122,8 @@ export const SignupForm = ({
 
 const StyledDropdown = styled(Dropdown)`
   margin-right: 8px;
+`;
+
+const StyledButton = styled(Button)`
+  min-width: 200px;
 `;

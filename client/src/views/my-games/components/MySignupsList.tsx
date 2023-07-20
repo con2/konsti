@@ -33,7 +33,9 @@ export const MySignupsList = ({
 
       {!isGroupCreator && <InfoText>{t("group.inGroupSignups")}</InfoText>}
 
-      {signedGames.length === 0 && <span>{t("noSignedGames")}</span>}
+      {signedGames.length === 0 && (
+        <SecondaryText>{t("noSignedGames")}</SecondaryText>
+      )}
       {signedGames.length !== 0 && (
         <SignupsByStartTimes signups={sortedSignups} startTimes={startTimes} />
       )}
@@ -47,4 +49,8 @@ const InfoText = styled.p`
 
 const Header = styled.h3`
   margin: 0 0 12px 0;
+`;
+
+const SecondaryText = styled.span`
+  color: ${(props) => props.theme.textSecondary};
 `;

@@ -10,6 +10,7 @@ interface Props {
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
   placeholder: string;
   resetValue?: () => void;
+  id?: string;
 }
 
 export const ControlledInput = ({
@@ -18,6 +19,7 @@ export const ControlledInput = ({
   onChange,
   placeholder,
   resetValue,
+  id,
 }: Props): ReactElement => {
   const { t } = useTranslation();
 
@@ -28,6 +30,7 @@ export const ControlledInput = ({
         value={value}
         onChange={onChange}
         placeholder={placeholder}
+        id={id}
       />
 
       {resetValue && (
