@@ -2,6 +2,7 @@ import http, { Server } from "http";
 import https from "https";
 import path from "path";
 import fs from "fs";
+import { once } from "events";
 import express, { Request, Response, NextFunction } from "express";
 import { Handlers } from "@sentry/node";
 import helmet from "helmet";
@@ -113,10 +114,19 @@ export const startServer = async ({
 
   const runningServer = server.listen(port ?? process.env.PORT);
 
+  try {
+    await once(runningServer, "listening");
+  } catch (error) {
+    logger.warn("Starting server failed, shutting down...");
+    await closeServer(server);
+    // eslint-disable-next-line no-restricted-syntax -- Server startup
+    throw error;
+  }
+
   const address = runningServer.address();
   if (!address || typeof address === "string") {
     // eslint-disable-next-line no-restricted-syntax -- Server startup
-    throw new Error("Starting server failed");
+    throw new Error("Unable to get address");
   }
 
   logger.info(`Express: Server started on port ${address.port}`);
