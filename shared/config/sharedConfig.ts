@@ -127,9 +127,21 @@ export const sharedConfig: SharedConfig = {
       },
     ],
 
-    experiencePoint: [],
+    experiencePoint: [
+      // Whole convention Fri - Sun
+      {
+        signupWindowStart: dayjs(`${friday}T12:00:00Z`), // Fri 15:00
+        signupWindowClose: dayjs(`${sunday}T21:00:00Z`), // Sun 24:00
+      },
+    ],
 
-    other: [],
+    other: [
+      // Whole convention Fri - Sun
+      {
+        signupWindowStart: dayjs(`${friday}T12:00:00Z`), // Fri 15:00
+        signupWindowClose: dayjs(`${sunday}T21:00:00Z`), // Sun 24:00
+      },
+    ],
   },
 
   // These program items have their signup always open even if signup mode is set to algorithm
