@@ -18,4 +18,4 @@ if (!config.enableLoggingInTests) {
   });
 }
 
-process.env.MONGOMS_VERSION = "6.0.6";
+process.env.MONGOMS_VERSION = "6.0.8";
