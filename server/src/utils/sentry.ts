@@ -47,9 +47,8 @@ export const initSentry = (app: Express, enableSentry: boolean): void => {
       limit: "5000kb", // limit: 5MB
       type: "text/plain",
     }),
-    /* eslint-disable-next-line @typescript-eslint/no-misused-promises */
-    async (req, res) => {
-      await postSentryTunnel(req, res);
+    (req, res) => {
+      postSentryTunnel(req, res);
     }
   );
 };
