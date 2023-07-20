@@ -8,6 +8,9 @@ const startApp = async (): Promise<void> => {
   if (config.onlyCronjobs) {
     startCronJobs();
   }
+  if (!config.onlyCronjobs) {
+    logger.info("Cronjobs not started, set ONLY_CRONJOBS to enable cronjobs");
+  }
 
   let server: Server;
   try {
