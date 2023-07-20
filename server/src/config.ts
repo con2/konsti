@@ -34,6 +34,7 @@ interface Config {
   localKompassiFile: string;
   consoleLogFormatJson: boolean;
   enableLoggingInTests: boolean;
+  onlyCronjobs: boolean;
 }
 
 const commonConfig = {
@@ -43,6 +44,7 @@ const commonConfig = {
       ? parseInt(process.env.PORT, 10)
       : 5000,
   debug: false,
+  onlyCronjobs: process.env.ONLY_CRONJOBS === "true" ?? false,
 
   // Logging
   enableAccessLog: false,
