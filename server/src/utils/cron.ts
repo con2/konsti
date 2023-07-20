@@ -24,6 +24,8 @@ const cronJobs: Cron[] = [];
 
 export const startCronJobs = (): void => {
   if (autoUpdateGamesEnabled) {
+    logger.info("Start cronjob: program auto update");
+
     const autoUpdateGamesJob = Cron(
       gameUpdateInterval,
       {
@@ -37,6 +39,8 @@ export const startCronJobs = (): void => {
   }
 
   if (autoAssignPlayersEnabled) {
+    logger.info("Start cronjob: automatic player assignment");
+
     const autoAssignPlayersJob = Cron(
       autoAssignInterval,
       {
