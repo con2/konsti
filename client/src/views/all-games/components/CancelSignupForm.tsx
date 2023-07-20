@@ -1,5 +1,6 @@
 import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
+import styled from "styled-components";
 import { Button, ButtonStyle } from "client/components/Button";
 import { ButtonGroup } from "client/components/ButtonGroup";
 
@@ -16,16 +17,20 @@ export const CancelSignupForm = ({
 
   return (
     <ButtonGroup>
-      <Button onClick={onConfirmForm} buttonStyle={ButtonStyle.PRIMARY}>
+      <StyledButton onClick={onConfirmForm} buttonStyle={ButtonStyle.PRIMARY}>
         {t("signup.confirmCancellation")}
-      </Button>
+      </StyledButton>
 
-      <Button
+      <StyledButton
         onClick={() => onCancelForm()}
         buttonStyle={ButtonStyle.SECONDARY}
       >
         {t("signup.staySignedUp")}
-      </Button>
+      </StyledButton>
     </ButtonGroup>
   );
 };
+
+const StyledButton = styled(Button)`
+  min-width: 200px;
+`;

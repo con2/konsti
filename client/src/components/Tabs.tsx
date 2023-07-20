@@ -66,7 +66,7 @@ const ListItem = styled.li`
 
 const StyledLink = styled(NavLink)`
   text-decoration: none;
-  font-size: ${(props) => props.theme.fontSizeLarge};
+  font-size: ${(props) => props.theme.fontSizeNormal};
   color: ${(props) => props.theme.textInactiveTab};
   padding-bottom: 4px;
 

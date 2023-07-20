@@ -83,5 +83,5 @@ const Title = styled.p`
 `;
 
 const ButtonWithMargin = styled(Button)`
-  margin: 8px 0;
+  margin: 8px 0 16px 0;
 `;

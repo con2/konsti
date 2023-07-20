@@ -202,16 +202,19 @@ export const EnterGameForm = ({
       )}
 
       <ButtonGroup>
-        <Button
+        <StyledButton
           onClick={handleSignup}
           buttonStyle={ButtonStyle.PRIMARY}
           disabled={!!game.entryFee && !agreeEntryFee}
         >
           {t("signup.confirm")}
-        </Button>
-        <Button onClick={handleCancel} buttonStyle={ButtonStyle.SECONDARY}>
+        </StyledButton>
+        <StyledButton
+          onClick={handleCancel}
+          buttonStyle={ButtonStyle.SECONDARY}
+        >
           {t("signup.cancel")}
-        </Button>
+        </StyledButton>
       </ButtonGroup>
 
       {errorMessage && (
@@ -243,4 +246,8 @@ const SignupQuestionContainer = styled.div`
 
 const StyledDropdown = styled(Dropdown)`
   max-width: 300px;
+`;
+
+const StyledButton = styled(Button)`
+  min-width: 200px;
 `;
