@@ -5,7 +5,9 @@ import { startCronJobs } from "server/utils/cron";
 import { config } from "server/config";
 
 const startApp = async (): Promise<void> => {
-  startCronJobs();
+  if (config.onlyCronjobs) {
+    startCronJobs();
+  }
 
   let server: Server;
   try {
