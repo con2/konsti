@@ -90,14 +90,14 @@ const prodConfig = {
   useTestTime: false,
 
   // Program update cron
-  autoUpdateGamesEnabled: false,
+  autoUpdateGamesEnabled: true,
   gameUpdateInterval: `*/4 * * * *`,
 
   // Program update
   updateGamePopularityEnabled: true,
 
   // Player assign cron
-  autoAssignPlayersEnabled: false,
+  autoAssignPlayersEnabled: true,
   autoAssignInterval: `0,15,30,45 * * * *`,
   autoAssignDelay: 1000 * 10,
 };
@@ -122,14 +122,14 @@ const stagingConfig = {
   useTestTime: true,
 
   // Program update cron
-  autoUpdateGamesEnabled: false,
+  autoUpdateGamesEnabled: true,
   gameUpdateInterval: `*/4 * * * *`,
 
   // Program update
   updateGamePopularityEnabled: true,
 
   // Player assign cron
-  autoAssignPlayersEnabled: false,
+  autoAssignPlayersEnabled: true,
   autoAssignInterval: `0,15,30,45 * * * *`,
   autoAssignDelay: 1000 * 10,
 };
@@ -155,14 +155,14 @@ const devConfig = {
   useTestTime: true,
 
   // Program update cron
-  autoUpdateGamesEnabled: false,
+  autoUpdateGamesEnabled: true,
   gameUpdateInterval: `*/10 * * * * *`,
 
   // Program update
   updateGamePopularityEnabled: true,
 
   // Player assign cron
-  autoAssignPlayersEnabled: false,
+  autoAssignPlayersEnabled: true,
   autoAssignInterval: `0,15,30,45 * * * * *`,
   autoAssignDelay: 1000 * 1,
 };
