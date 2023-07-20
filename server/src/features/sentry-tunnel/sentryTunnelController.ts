@@ -5,15 +5,19 @@ import { resendSentryRequest } from "server/features/sentry-tunnel/sentryTunnelS
 import { UserGroup } from "shared/typings/models/user";
 import { getAuthorizedUsername } from "server/utils/authHeader";
 
-export const postSentryTunnel = async (
+export const postSentryTunnel = (
   req: Request<{}, {}, null>,
   res: Response
-): Promise<Response> => {
+): Response => {
   logger.info(`API call: POST ${ApiEndpoint.SENTRY_TUNNEL}`);
 
-  if (!req.body) return res.sendStatus(422);
-  const response = await resendSentryRequest(req.body);
-  return res.json(response);
+  if (req.body) {
+    resendSentryRequest(req.body).catch((error) => {
+      logger.error("resendSentryRequest failed: %s", error);
+    });
+  }
+
+  return res.sendStatus(200);
 };
 
 export const getSentryTest = (
