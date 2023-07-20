@@ -36,7 +36,7 @@ export const MyEnteredList = ({
     <RaisedCard>
       <Header>{t("enteredGames")}</Header>
       {(!sharedConfig.resultsVisible || startTimes.length === 0) && (
-        <span>{t("noEnteredGames")}</span>
+        <SecondaryText>{t("noEnteredGames")}</SecondaryText>
       )}
 
       {sharedConfig.resultsVisible && startTimes.length !== 0 && (
@@ -52,4 +52,8 @@ export const MyEnteredList = ({
 
 const Header = styled.h3`
   margin: 0 0 12px 0;
+`;
+
+const SecondaryText = styled.span`
+  color: ${(props) => props.theme.textSecondary};
 `;

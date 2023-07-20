@@ -26,7 +26,7 @@ export const MyFavoritesList = ({ favoritedGames }: Props): ReactElement => {
       <Header>{t("favoritedProgramItems")}</Header>
       <div>
         {favoritedGames.length === 0 && (
-          <span>{t("noFavoritedProgramItems")}</span>
+          <SecondaryText>{t("noFavoritedProgramItems")}</SecondaryText>
         )}
         {favoritedGames.length !== 0 && (
           <FavoritesByStartTimes games={sortedGames} startTimes={startTimes} />
@@ -38,4 +38,8 @@ export const MyFavoritesList = ({ favoritedGames }: Props): ReactElement => {
 
 const Header = styled.h3`
   margin: 0 0 12px 0;
+`;
+
+const SecondaryText = styled.span`
+  color: ${(props) => props.theme.textSecondary};
 `;

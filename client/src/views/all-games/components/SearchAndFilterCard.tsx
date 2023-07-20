@@ -140,6 +140,7 @@ export const SearchAndFilterCard = ({
       <InputContainer>
         <StyledLabel htmlFor="find">{t("find")}</StyledLabel>
         <ControlledInput
+          id="find"
           value={searchTerm}
           onChange={(event) => {
             setSearchTerm(event.target.value);

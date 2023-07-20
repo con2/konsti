@@ -55,8 +55,8 @@
   },
   "validation": {
     "required": "Vaadittu kenttä",
-    "tooLong": "Syöte on liian pitkä, enintään {{length}} merkkiä",
-    "tooShort": "Syöte on liian lyhyt, vähintään {{length}} merkkiä"
+    "tooLong": "Liian pitkä, käytä enintään {{length}} merkkiä",
+    "tooShort": "Liian lyhyt, käytä vähintään {{length}} merkkiä"
   },
   "pages": {
     "myProgram": "Oma ohjelmani",
@@ -82,7 +82,7 @@
     "organiser": "Järjestäjä",
     "shortDescription": "Lyhyt kuvaus",
     "revolvingDoor": "Tämä on pyöröovipeli",
-    "revolvingDoorDescription": "Voit liittyä peliin koska tahansa, jos pelipöydässä on tilaa",
+    "revolvingDoorDescription": "Voit liittyä peliin koska tahansa, jos pelipöydässä on tilaa.",
     "programType": "Ohjelmatyyppi",
     "showMore": "Näytä lisää",
     "showMoreAriaLabel": "Näytä lisää ohjelmanumerosta",
@@ -178,10 +178,10 @@
   "agreePrivacyPolicy": "Hyväksyn rekisteriselosteen",
   "showPrivacyPolicy": "Näytä rekisteriseloste",
   "hidePrivacyPolicy": "Piilota rekisteriseloste",
-  "registrationSerialHelp": "Nouda rekisteröintikoodi Larp- ja Roolipelitiskiltä, Pelitiskiltä tai Infosta",
-  "noSignedGames": "Ei valittuja pelejä",
-  "noFavoritedProgramItems": "Ei suosikkeja",
-  "noEnteredGames": "Ei ilmoittautumisia",
+  "registrationSerialHelp": "Nouda rekisteröintikoodi Larp- ja Roolipelitiskiltä, Pelitiskiltä tai Infosta.",
+  "noSignedGames": "Ei valittuja pelejä. Voit ilmoittautua peleihin Kaikki ohjelma -näkymässä.",
+  "noFavoritedProgramItems": "Ei suosikkeja. Voit lisätä pelejä suosikiksi Kaikki ohjelma -näkymässä.",
+  "noEnteredGames": "Ei ilmoittautumisia. Voit ilmoittautua ohjelmaan Kaikki ohjelma -näkymässä.",
   "noHiddenProgramItems": "Ei piilotettuja ohjelmanumeroita",
   "noSignupQuestions": "Ei ilmoittautumisten lisätietokysymystä",
   "signupQuestions": "Ilmoittautumisen lisätietokysymykset",
@@ -200,7 +200,7 @@
   "signupUnsavedChanges": "Tallentamattomia muutoksia",
   "closingMessage": "Konsti on suljettu ja avautuu lähempänä seuraavaa tapahtumaa",
   "details": "lisätietoja",
-  "gameLimitWarning": "Voit valita enintään kolme peliä",
+  "gameLimitWarning": "Voit valita enintään kolme peliä.",
   "noLotterySignupResult": "Valitettavasti et mahtunut mihinkään peliin arvonnassa.",
   "invalidProgramItemId": "Ohjelmanumeroa ei löydy, viallinen tunniste",
   "feedbackTitle": "Palaute",
@@ -221,8 +221,8 @@
     "error": {
       "cannotUseOwnSerial": "Et voi käyttää omaa koodia ryhmään liittymisessä",
       "groupExists": "Ryhmä on jo olemassa",
-      "removePreviousSignupsFailed": "Virhe aikaisempia ilmoittautumisia poistaessa, yritä uudelleen",
-      "onlyCreatorCanCloseGroup": "Vain ryhmän perustaja voi sulkea ryhmän",
+      "removePreviousSignupsFailed": "Virhe aikaisempia ilmoittautumisia poistaessa, yritä uudelleen.",
+      "onlyCreatorCanCloseGroup": "Vain ryhmän perustaja voi sulkea ryhmän.",
       "userHasSignedGames": "Sinulla on jo ilmoittautumisia peleihin. Poista ilmoittautumiset ennen kuin liityt ryhmään.",
       "creatorHasSignedGames": "Sinulla on jo ilmoittautumisia peleihin. Poista ilmoittautumiset ennen kuin voit luoda ryhmän."
     },
@@ -293,7 +293,7 @@
     "alreadySignedToGame": "Olet ilmoittautunut {{PROGRAM_TYPE}}",
     "cannotSignupMoreThanOneGame": "Et voi ilmoittautua muihin samaan aikaan alkaviin {{PROGRAM_TYPE}}.",
     "signupCount": "{{PLAYERS}} / {{MAX_ATTENDANCE}} ilmoittautunutta",
-    "attendeesNeeded": "Tarvitaan vielä {{COUNT}} {{ATTENDEE_TYPE}}!",
+    "attendeesNeeded": "Tarvitaan vielä {{COUNT}} {{ATTENDEE_TYPE}}.",
     "programItemFull": "{{PROGRAM_TYPE}} on täynnä",
     "confirmCancellation": "Peruuta ilmoittautuminen",
     "staySignedUp": "Pysy ilmoittautuneena",
@@ -381,7 +381,7 @@
   },
   "firstLogin": {
     "serial": "Ota koodi talteen salasanan palauttamista varten:",
-    "info": "Tämä viesti näytetään vain ensimmäisen kirjautumisesi yhteydessä. Löydät koodin myös navigaation takaa."
+    "info": "Tämä viesti näytetään vain ensimmäisen kirjautumisesi yhteydessä. Löydät koodin myös Profiili & ryhmä -sivulta."
   },
   "myProgramView": {
     "yourAnswer": "Vastauksesi kysymykseen",
@@ -457,11 +457,11 @@
     "question": "Kysymys"
   },
   "loginView": {
-    "oldAccountsNotWorking": "Aikaisempien tapahtumien käyttäjätilit eivät ole käytössä",
-    "noAccountRegister": "Ei käyttäjätiliä? Luo käyttäjätili"
+    "oldAccountsNotWorking": "Aikaisempien tapahtumien käyttäjätilit eivät ole käytössä.",
+    "noAccountRegister": "Ei käyttäjätiliä? Luo käyttäjätili täällä."
   },
   "registrationView": {
-    "alreadyHaveAccountLogin": "Sinulla on jo tili? Kirjaudu"
+    "alreadyHaveAccountLogin": "Onko sinulla jo tili? Kirjaudu sisään tästä."
   },
   "iconAltText": {
     "resetInput": "Tyhjennä syöte",
