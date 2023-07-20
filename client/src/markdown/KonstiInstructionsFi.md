@@ -125,3 +125,7 @@ käytössä suorailmoittautuminen eli paikat täytetään ilmoittautumisjärjest
 - Lauantaina klo 9, jos työpaja on lauantaina alkaen klo 14 jälkeen
 - Lauantaina klo 18, jos työpaja on sunnuntaina alkaen viimeistään klo 14
 - Sunnuntaina klo 9, jos työpaja on sunnuntaina alkaen klo 14 jälkeen
+
+### Muun ohjelman ilmoittautumisten avautuminen
+
+Kaikkien muiden Konstia käyttävien ohjelmanumeroiden ilmoittautuminen alkaa perjantaina klo 15.
