@@ -2,6 +2,8 @@ import dayjs, { Dayjs } from "dayjs";
 import { ProgramType } from "shared/typings/models/game";
 import { AssignmentStrategy, SignupStrategy } from "./sharedConfig.types";
 
+type ArrMin1<T> = [T, ...T[]];
+
 interface SignupWindow {
   signupWindowStart: Dayjs;
   signupWindowClose: Dayjs;
@@ -17,7 +19,7 @@ interface SharedConfig {
   DIRECT_SIGNUP_START: number;
   PRE_SIGNUP_START: number;
   PHASE_GAP: number;
-  directSignupWindows: Record<ProgramType, SignupWindow[]>;
+  directSignupWindows: Record<ProgramType, ArrMin1<SignupWindow>>;
   directSignupAlwaysOpenIds: string[];
   tracesSampleRate: number;
   enableSentryInDev: boolean;
@@ -56,7 +58,8 @@ export const sharedConfig: SharedConfig = {
   CONVENTION_START_TIME: `${friday}T12:00:00Z`, // UTC date
 
   directSignupWindows: {
-    tabletopRPG: [], // RPGs use DIRECT_SIGNUP_START
+    // @ts-expect-error: RPGs use DIRECT_SIGNUP_START
+    tabletopRPG: [],
 
     larp: [
       // Friday
@@ -127,9 +130,21 @@ export const sharedConfig: SharedConfig = {
       },
     ],
 
-    experiencePoint: [],
+    experiencePoint: [
+      // Whole convention Fri - Sun
+      {
+        signupWindowStart: dayjs(`${friday}T12:00:00Z`), // Fri 15:00
+        signupWindowClose: dayjs(`${sunday}T21:00:00Z`), // Sun 24:00
+      },
+    ],
 
-    other: [],
+    other: [
+      // Whole convention Fri - Sun
+      {
+        signupWindowStart: dayjs(`${friday}T12:00:00Z`), // Fri 15:00
+        signupWindowClose: dayjs(`${sunday}T21:00:00Z`), // Sun 24:00
+      },
+    ],
   },
 
   // These program items have their signup always open even if signup mode is set to algorithm
