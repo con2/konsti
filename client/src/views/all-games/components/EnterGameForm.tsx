@@ -201,7 +201,7 @@ export const EnterGameForm = ({
         />
       )}
 
-      <ButtonGroup>
+      <StyledButtonGroup>
         <StyledButton
           onClick={handleSignup}
           buttonStyle={ButtonStyle.PRIMARY}
@@ -215,7 +215,7 @@ export const EnterGameForm = ({
         >
           {t("signup.cancel")}
         </StyledButton>
-      </ButtonGroup>
+      </StyledButtonGroup>
 
       {errorMessage && (
         <ErrorMessage
@@ -250,4 +250,8 @@ const StyledDropdown = styled(Dropdown)`
 
 const StyledButton = styled(Button)`
   min-width: 200px;
+`;
+
+const StyledButtonGroup = styled(ButtonGroup)`
+  justify-content: center;
 `;

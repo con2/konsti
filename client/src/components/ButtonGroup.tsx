@@ -3,10 +3,11 @@ import styled from "styled-components";
 
 interface Props {
   children?: ReactNode;
+  className?: string;
 }
 
-export const ButtonGroup = ({ children }: Props): ReactElement => {
-  return <Container>{children}</Container>;
+export const ButtonGroup = ({ children, className }: Props): ReactElement => {
+  return <Container className={className}>{children}</Container>;
 };
 
 const Container = styled.div`
