@@ -10,7 +10,7 @@ import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { ProgramTypeSelection } from "client/components/EventTypeSelection";
 import { useAppSelector } from "client/utils/hooks";
-import { ProgramType, Tag } from "shared/typings/models/game";
+import { ProgramType, Tag, Language } from "shared/typings/models/game";
 import { Dropdown } from "client/components/Dropdown";
 import { SessionStorageValue } from "client/utils/localStorage";
 import { ControlledInput } from "client/components/ControlledInput";
@@ -36,12 +36,12 @@ export const SearchAndFilterCard = ({
   onSelectedStartingTimeChange,
   onSearchTermChange,
 }: Props): ReactElement => {
-  const filters = [
-    Tag.IN_ENGLISH,
+  const tagFilters = [
     Tag.BEGINNER_FRIENDLY,
     Tag.SUITABLE_UNDER_10,
     Tag.AGE_RESTRICTED,
   ];
+  const languageFilters = [Language.FINNISH, Language.ENGLISH];
 
   const { t } = useTranslation();
   const activeProgramType = useAppSelector(
@@ -60,9 +60,13 @@ export const SearchAndFilterCard = ({
         PROGRAM_TYPE: t(`programTypePlural.${activeProgramType}`),
       }),
     },
-    filters.map((filter) => ({
+    tagFilters.map((filter) => ({
       value: filter,
       title: t(`gameTags.${filter}`),
+    })),
+    languageFilters.map((filter) => ({
+      value: filter,
+      title: t(`programItemLanguage.${filter}`),
     })),
   ].flat();
 

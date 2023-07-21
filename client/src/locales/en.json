@@ -132,6 +132,12 @@
     "humor": "Humor",
     "adventure": "Adventure"
   },
+  "programItemLanguage": {
+    "english": "In English",
+    "finnish": "In Finnish",
+    "finnishOrEnglish": "In Finnish or in English",
+    "languageFree": "Language free"
+  },
   "gameTags": {
     "inEnglish": "In English",
     "childrenFriendly": "Children friendly",

@@ -5,6 +5,7 @@ import {
   Game,
   GameStyle,
   Genre,
+  Language,
   ProgramType,
   Tag,
 } from "shared/typings/models/game";
@@ -12,6 +13,7 @@ import {
   KompassiGame,
   KompassiGameStyle,
   KompassiGenre,
+  KompassiLanguage,
   KompassiProgramType,
   KompassiTag,
 } from "shared/typings/models/kompassiGame";
@@ -33,7 +35,7 @@ export const kompassiGameMapper = (
       tags: mapTags(game),
       genres: mapGenres(game),
       styles: mapGameStyles(game),
-      language: game.ropecon2023_language,
+      language: mapLanguage(game.ropecon2023_language),
       endTime: dayjs(game.end_time).toISOString(),
       people: game.formatted_hosts,
       minAttendance: game.min_players,
@@ -267,6 +269,25 @@ const mapGameStyles = (kompassiGame: KompassiGame): GameStyle[] => {
         return exhaustiveSwitchGuard(gameStyle);
     }
   });
+};
+
+const mapLanguage = (kompassiLanguage: KompassiLanguage): Language => {
+  switch (kompassiLanguage) {
+    case KompassiLanguage.FINNISH:
+      return Language.FINNISH;
+
+    case KompassiLanguage.ENGLISH:
+      return Language.ENGLISH;
+
+    case KompassiLanguage.FINNISH_OR_ENGLISH:
+      return Language.FINNISH_OR_ENGLISH;
+
+    case KompassiLanguage.LANGUAGE_FREE:
+      return Language.LANGUAGE_FREE;
+
+    default:
+      return exhaustiveSwitchGuard(kompassiLanguage);
+  }
 };
 
 const mapAccessibilityValues = (
