@@ -6,7 +6,7 @@ import _ from "lodash";
 import { updateFavorite, UpdateFavoriteOpts } from "client/utils/favorite";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
-import { Game, Tag } from "shared/typings/models/game";
+import { Game } from "shared/typings/models/game";
 import { AlgorithmSignupForm } from "./AlgorithmSignupForm";
 import { DirectSignupForm } from "./DirectSignupForm";
 import { SelectedGame } from "shared/typings/models/user";
@@ -94,9 +94,7 @@ export const GameEntry = ({
   if (game.gameSystem) {
     tags.push(game.gameSystem);
   }
-  if (game.tags.includes(Tag.IN_ENGLISH)) {
-    tags.push(t("gameTags.inEnglish"));
-  }
+  tags.push(t(`programItemLanguage.${game.language}`));
 
   const requiresSignup = game.maxAttendance > 0;
   const konstiSignup = !sharedConfig.noKonstiSignupIds.includes(game.gameId);

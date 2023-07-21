@@ -101,6 +101,13 @@ export enum KompassiSignupType {
   OTHER = "othersign",
 }
 
+export enum KompassiLanguage {
+  FINNISH = "finnish",
+  ENGLISH = "english",
+  FINNISH_OR_ENGLISH = "finnish_or_english",
+  LANGUAGE_FREE = "language_free",
+}
+
 export const KompassiGameSchema = z.object({
   identifier: z.string(),
   title: z.string().catch(""),
@@ -195,7 +202,7 @@ export const KompassiGameSchema = z.object({
       return val;
     })
     .catch(""),
-  ropecon2023_language: z.string().catch(""), // finnish, english, language_free, finnish_or_english
+  ropecon2023_language: z.nativeEnum(KompassiLanguage),
   ropecon2023_suitable_for_all_ages: z.boolean().catch(false), // tag
   ropecon2023_aimed_at_children_under_13: z.boolean().catch(false), // tag
   ropecon2023_aimed_at_children_between_13_17: z.boolean().catch(false), // tag
