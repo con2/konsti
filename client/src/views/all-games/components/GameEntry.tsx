@@ -6,7 +6,7 @@ import _ from "lodash";
 import { updateFavorite, UpdateFavoriteOpts } from "client/utils/favorite";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
-import { Game } from "shared/typings/models/game";
+import { Game, ProgramType } from "shared/typings/models/game";
 import { AlgorithmSignupForm } from "./AlgorithmSignupForm";
 import { DirectSignupForm } from "./DirectSignupForm";
 import { SelectedGame } from "shared/typings/models/user";
@@ -96,7 +96,10 @@ export const GameEntry = ({
   }
   tags.push(t(`programItemLanguage.${game.language}`));
 
-  const requiresSignup = game.maxAttendance > 0;
+  const workshopDoesNotRequireSignup =
+    game.programType === ProgramType.WORKSHOP && game.revolvingDoor;
+
+  const requiresSignup = !workshopDoesNotRequireSignup;
   const konstiSignup = !sharedConfig.noKonstiSignupIds.includes(game.gameId);
   const normalSignup = requiresSignup && konstiSignup;
 

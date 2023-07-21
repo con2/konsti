@@ -12,6 +12,9 @@ export const RevolvingDoorGamesInfo = (): ReactElement => {
 
   const activeGames = useAppSelector(selectActiveGames);
   const hiddenGames = useAppSelector((state) => state.admin.hiddenGames);
+  const activeProgramType = useAppSelector(
+    (state) => state.admin.activeProgramType
+  );
 
   const hiddenGamesIds = hiddenGames.map((g) => g.gameId);
 
@@ -28,13 +31,24 @@ export const RevolvingDoorGamesInfo = (): ReactElement => {
   return (
     <Container>
       <RevolvingDoorInstruction>
-        {t("revolvingDoorInstruction")}
+        {t("revolvingDoorInstruction", {
+          PROGRAM_TYPE: t(`programTypeIllative.${activeProgramType}`),
+          PROGRAM_TYPE2: t(`programTypeInessive.${activeProgramType}`),
+        })}
       </RevolvingDoorInstruction>
       {!runningRevolvingDoorGames || runningRevolvingDoorGames.length === 0 ? (
-        <NoGamesInfoText>{t("noCurrentlyRunningGames")}</NoGamesInfoText>
+        <NoGamesInfoText>
+          {t("noCurrentlyRunningGames", {
+            PROGRAM_TYPE: t(`programTypePartitivePlural.${activeProgramType}`),
+          })}
+        </NoGamesInfoText>
       ) : (
         <div>
-          <h3>{t("currentlyRunningRevolvingDoor")}</h3>
+          <h3>
+            {t("currentlyRunningRevolvingDoor", {
+              PROGRAM_TYPE: t(`programTypePlural.${activeProgramType}`),
+            })}
+          </h3>
           {runningRevolvingDoorGames.map((game) => (
             <div key={game.gameId}>
               <Link to={`/games/${game.gameId}`}>{game.title}</Link>{" "}

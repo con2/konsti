@@ -115,8 +115,7 @@ export const SearchAndFilterCard = ({
         <RadioButtonGroup id="startingTimeSelection">
           {Object.entries(StartingTimeOption)
             .filter(([_, val]) =>
-              config.enableRevolvingDoor &&
-              activeProgramType === ProgramType.TABLETOP_RPG
+              config.enableRevolvingDoor
                 ? true
                 : val !== StartingTimeOption.REVOLVING_DOOR
             )
