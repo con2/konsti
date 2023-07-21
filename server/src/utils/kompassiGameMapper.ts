@@ -43,7 +43,7 @@ export const kompassiGameMapper = (
       maxAttendance: game.max_players || game.ropecon2018_characters,
       gameSystem: game.rpg_system,
       shortDescription: game.short_blurb,
-      revolvingDoor: revolvingDoorMapper(game),
+      revolvingDoor: mapRevolvingDoor(game),
       programType: mapProgramType(game),
       contentWarnings: game.ropecon2022_content_warnings,
       otherAuthor: game.other_author,
@@ -388,7 +388,7 @@ const mapAccessibilityValues = (
   return accessibilityValues;
 };
 
-const revolvingDoorMapper = (kompassiGame: KompassiGame): boolean => {
+const mapRevolvingDoor = (kompassiGame: KompassiGame): boolean => {
   if (kompassiGame.revolving_door) {
     return true;
   }
