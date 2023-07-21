@@ -34,6 +34,13 @@ export enum GameStyle {
   COMBAT_DRIVEN = "combatDriven",
 }
 
+export enum Language {
+  FINNISH = "finnish",
+  ENGLISH = "english",
+  FINNISH_OR_ENGLISH = "finnishOrEnglish",
+  LANGUAGE_FREE = "languageFree",
+}
+
 export enum Tag {
   IN_ENGLISH = "inEnglish",
   CHILDREN_FRIENDLY = "childrenFriendly",
@@ -94,7 +101,7 @@ export const GameSchema = z.object({
   tags: z.array(z.nativeEnum(Tag)),
   genres: z.array(z.nativeEnum(Genre)),
   styles: z.array(z.nativeEnum(GameStyle)),
-  language: z.string(),
+  language: z.nativeEnum(Language),
   endTime: z.string(),
   people: z.string(),
   minAttendance: z.number(),
