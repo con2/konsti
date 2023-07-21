@@ -161,7 +161,8 @@ const getTagFilteredGames = (
       return game;
     }
     if (
-      game.language === Language.FINNISH_OR_ENGLISH &&
+      (game.language === Language.FINNISH_OR_ENGLISH ||
+        game.language === Language.LANGUAGE_FREE) &&
       (selectedTag === Language.FINNISH || selectedTag === Language.ENGLISH)
     ) {
       return game;
