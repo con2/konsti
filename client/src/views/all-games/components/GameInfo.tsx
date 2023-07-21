@@ -78,12 +78,19 @@ export const GameInfo = ({ game }: Props): ReactElement => {
       {game.revolvingDoor && (
         <>
           <GameDetailsRow rowWithSubtext={true}>
-            <GameDetailsTitle>{t("gameInfo.revolvingDoor")}</GameDetailsTitle>
+            <GameDetailsTitle>
+              {t("gameInfo.revolvingDoor", {
+                PROGRAM_TYPE: t(`programTypeSingular.${game.programType}`),
+              })}
+            </GameDetailsTitle>
           </GameDetailsRow>
 
           <GameDetailsRow subtext={true} gap={true}>
             <GameDetailsTextIndent>
-              {t("gameInfo.revolvingDoorDescription")}
+              {t("revolvingDoorInstruction", {
+                PROGRAM_TYPE: t(`programTypeIllative.${game.programType}`),
+                PROGRAM_TYPE2: t(`programTypeInessive.${game.programType}`),
+              })}
             </GameDetailsTextIndent>
           </GameDetailsRow>
         </>

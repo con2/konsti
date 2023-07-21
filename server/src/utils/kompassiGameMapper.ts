@@ -16,6 +16,7 @@ import {
   KompassiLanguage,
   KompassiProgramType,
   KompassiTag,
+  workshopProgramTypes,
 } from "shared/typings/models/kompassiGame";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 
@@ -42,7 +43,7 @@ export const kompassiGameMapper = (
       maxAttendance: game.max_players || game.ropecon2018_characters,
       gameSystem: game.rpg_system,
       shortDescription: game.short_blurb,
-      revolvingDoor: game.revolving_door,
+      revolvingDoor: revolvingDoorMapper(game),
       programType: mapProgramType(game),
       contentWarnings: game.ropecon2022_content_warnings,
       otherAuthor: game.other_author,
@@ -385,4 +386,19 @@ const mapAccessibilityValues = (
   }
 
   return accessibilityValues;
+};
+
+const revolvingDoorMapper = (kompassiGame: KompassiGame): boolean => {
+  if (kompassiGame.revolving_door) {
+    return true;
+  }
+
+  if (
+    workshopProgramTypes.includes(kompassiGame.category_title) &&
+    kompassiGame.max_players === 0
+  ) {
+    return true;
+  }
+
+  return false;
 };
