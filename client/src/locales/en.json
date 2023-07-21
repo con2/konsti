@@ -91,7 +91,7 @@
     "contentWarnings": "Content warnings",
     "otherAuthor": "Designer",
     "accessibility": "Accessibility",
-    "otherInaccessibility": "Other inaccessibility",
+    "otherAccessibilityInformation": "Other accessibility information",
     "adminActions": "Admin actions"
   },
   "programType": {
@@ -157,12 +157,12 @@
     "themeFriendship": "Theme: Friendship",
     "demo": "Demo",
     "tournament": "Tournament",
-    "suitableForAllAges": "For all ages",
+    "suitableForAllAges": "Suitable for all ages",
     "aimedAtChildrenUnder13": "Aimed at children under 13",
     "aimedAtChildrenBetween13-17": "Aimed at children between 13-17",
     "aimedAtAdultAttendees": "Aimed at adult attendees",
     "for18PlusOnly": "For 18+ only",
-    "ropeconTheme": "Ropecon theme",
+    "ropeconTheme": "Theme: Past and Future",
     "celebratoryYear": "Celebratory year"
   },
   "pageTitle": {
@@ -401,18 +401,17 @@
     "physicalContact": "Physical contact and/or low chances of personal space",
     "lowLighting": "Darkness/low lighting",
     "movingAround": "Participation involves a lot of moving around without a chance for sitting down",
-    "video": "The game involves watching a video without subtitles for the hearing impaired",
+    "video": "The programme involves watching a video without subtitles for the hearing impaired",
     "recording": "Participation requires listening to a recording that does not have a text version for the hearing impaired",
-    "text": "Participation involves reading long texts independently, and the texts are not available as recordings for those with visual impairment",
-    "colourblind": "Material used in the game can cause problems for the colourblind",
+    "colourblind": "Material used in the programme can cause problems for the colourblind",
     "remainingOnePlace": "Requires staying still for a long time without possibility of breaks or movement",
-    "cannotUseMic": "Cannot use mic",
-    "programmeDurationOver2Hours": "Duration over 2h",
-    "limitedOpportunitiesToMoveAround": "Limited opportunities to move around",
-    "longText": "Requires reading long text",
-    "textNotAvailableAsRecordings": "Text not available as recording",
-    "participationRequiresDexterity": "Requires dexterity",
-    "participationRequiresReactQuickly": "Requires quick reactions"
+    "cannotUseMic": "I can't use a microphone",
+    "programmeDurationOver2Hours": "The duration of the programme is over two hours without breaks",
+    "limitedOpportunitiesToMoveAround": "There are limited opportunities to move around during the programme",
+    "longText": "Participation involves reading long texts independently",
+    "textNotAvailableAsRecordings": "The programme includes texts that are essential to participation, and the texts are not available as recordings or read out loud",
+    "participationRequiresDexterity": "Participation requires some dexterity, e.g. that of hands and fingers",
+    "participationRequiresReactQuickly": "Participation requires the ability to react quickly"
   },
   "strategies": {
     "direct": "Direct",
