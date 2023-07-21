@@ -220,7 +220,7 @@ export const delSignup = async (
       logger.error(
         "%s",
         new Error(
-          `Signups for game ${game.gameId} for user ${username} not found`
+          `Signups to program item ${game.gameId} for user ${username} not found`
         )
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
@@ -234,17 +234,19 @@ export const delSignup = async (
       logger.error(
         "%s",
         new Error(
-          `Error removing signup for game ${game.gameId} from user ${username}`
+          `Error removing signup to program item ${game.gameId} from user ${username}`
         )
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
 
-    logger.info(`MongoDB: Signup removed from user ${username}`);
+    logger.info(
+      `MongoDB: Signup removed - program item: ${game.gameId}, user: ${username}, starting: ${game.startTime}`
+    );
     return makeSuccessResult(signup);
   } catch (error) {
     logger.error(
-      `MongoDB: Error deleting signup from user ${username}: %s`,
+      `MongoDB: Error deleting signup to program item ${game.gameId} from user ${username}: %s`,
       error
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
