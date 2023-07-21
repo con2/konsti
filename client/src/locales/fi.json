@@ -91,7 +91,7 @@
     "contentWarnings": "Sisältövaroitukset",
     "otherAuthor": "Suunnittelija",
     "accessibility": "Esteettömyys",
-    "otherInaccessibility": "Muu esteellisyys",
+    "otherAccessibilityInformation": "Muu saavutettavuus",
     "adminActions": "Ylläpito"
   },
   "programType": {
@@ -157,12 +157,12 @@
     "themeFriendship": "Teema: Ystävyys",
     "demo": "Demo",
     "tournament": "Turnaus",
-    "suitableForAllAges": "Kaiken ikäisille",
+    "suitableForAllAges": "Sopii kaiken ikäisille",
     "aimedAtChildrenUnder13": "Suunnattu alle 13-vuotiaille",
     "aimedAtChildrenBetween13-17": "Suunnattu 13-17-vuotiaille",
-    "aimedAtAdultAttendees": "Suunnattu aikuisille",
-    "for18PlusOnly": "Vain 18+ ikäisille",
-    "ropeconTheme": "Ropeconin teema",
+    "aimedAtAdultAttendees": "Suunnattu täysi-ikäisille",
+    "for18PlusOnly": "Vain täysi-ikäisille",
+    "ropeconTheme": "Teema: Menneisyys ja tulevaisuus",
     "celebratoryYear": "Juhlavuosi"
   },
   "pageTitle": {
@@ -403,16 +403,15 @@
     "movingAround": "Osallistuminen vaatii paljon liikkumista ilman mahdollisuutta istumiseen",
     "video": "Ohjelmanumerossa katsotaan video, jossa ei ole tekstitystä kuulorajoitteisille",
     "recording": "Osallistuminen edellyttää sellaisen äänitteen kuuntelemista, josta ei ole tekstiversiota kuulorajoitteisille",
-    "text": "Osallistuminen vaatii pitkien tekstien itsenäistä lukemista, eikä tekstejä ole mahdollista saada äänitteinä näkörajoitteisille",
     "colourblind": "Ohjelmanumerossa käytettävät materiaalit voivat tuottaa haasteita värisokeille",
     "remainingOnePlace": "Vaatii pitkää paikallaan oloa ilman mahdollisuutta taukoihin ja liikkumiseen",
-    "cannotUseMic": "Ei voi käyttää mikkiä",
-    "programmeDurationOver2Hours": "Kesto yli 2h",
-    "limitedOpportunitiesToMoveAround": "Rajoitettu mahdollisuus liikkua",
-    "longText": "Pitkän tekstin lukeminen",
-    "textNotAvailableAsRecordings": "Teksti ei saatavilla äänityksenä",
-    "participationRequiresDexterity": "Vaatii ketteryyttä",
-    "participationRequiresReactQuickly": "Vaatii nopeaa reagointia"
+    "cannotUseMic": "En voi käyttää mikrofonia",
+    "programmeDurationOver2Hours": "Ohjelma kestää yli kaksi tuntia ilman taukoa",
+    "limitedOpportunitiesToMoveAround": "Ohjelman aikana on rajatut mahdollisuudet liikkumiseen",
+    "longText": "Osallistuminen vaatii pitkien tekstien itsenäistä lukemista",
+    "textNotAvailableAsRecordings": "Ohjelma sisältää osallistumisen kannalta olennaista tekstiä, josta ei ole saatavilla nauhoitetta tai jota ei lueta ääneen",
+    "participationRequiresDexterity": "Ohjelmaan osallistuminen vaatii sorminäppäryyttä",
+    "participationRequiresReactQuickly": "Ohjelmaan osallistuminen vaatii nopeaa reaktiokykyä"
   },
   "strategies": {
     "direct": "Suora",

@@ -77,7 +77,7 @@ export const saveGames = async (
       contentWarnings: game.contentWarnings,
       otherAuthor: game.otherAuthor,
       accessibilityValues: game.accessibilityValues,
-      otherInaccessibility: game.otherInaccessibility,
+      otherAccessibilityInformation: game.otherAccessibilityInformation,
       entryFee: game.entryFee,
       signupType: game.signupType,
     };

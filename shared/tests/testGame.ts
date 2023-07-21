@@ -44,7 +44,7 @@ export const testGame: Game = {
     AccessibilityValue.MOVING_AROUND,
     AccessibilityValue.FLASHING_LIGHTS,
   ],
-  otherInaccessibility: "",
+  otherAccessibilityInformation: "",
   entryFee: "",
   signupType: "Konsti",
 };
@@ -85,7 +85,7 @@ export const testGame2: Game = {
     AccessibilityValue.MOVING_AROUND,
     AccessibilityValue.FLASHING_LIGHTS,
   ],
-  otherInaccessibility: "",
+  otherAccessibilityInformation: "",
   entryFee: "",
   signupType: "Konsti",
 };

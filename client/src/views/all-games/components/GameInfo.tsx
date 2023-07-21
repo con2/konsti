@@ -180,12 +180,14 @@ export const GameInfo = ({ game }: Props): ReactElement => {
         </GameDetailsRow>
       )}
 
-      {game.otherInaccessibility && (
+      {game.otherAccessibilityInformation && (
         <GameDetailsRow>
           <GameDetailsTitle twoColumns={true}>
-            {t("gameInfo.otherInaccessibility")}
+            {t("gameInfo.otherAccessibilityInformation")}
           </GameDetailsTitle>
-          <GameDetailsValue>{game.otherInaccessibility}</GameDetailsValue>
+          <GameDetailsValue>
+            {game.otherAccessibilityInformation}
+          </GameDetailsValue>
         </GameDetailsRow>
       )}
 
