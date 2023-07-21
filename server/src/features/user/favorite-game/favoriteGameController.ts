@@ -25,7 +25,10 @@ export const postFavorite = async (
 
   const result = PostFavoriteRequestSchema.safeParse(req.body);
   if (!result.success) {
-    logger.error("Error validating postFavorite body: %s", result.error);
+    logger.error(
+      "%s",
+      new Error(`Error validating postFavorite body: ${result.error}`)
+    );
     return res.sendStatus(422);
   }
 

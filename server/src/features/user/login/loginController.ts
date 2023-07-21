@@ -15,7 +15,10 @@ export const postLogin = async (
 
   const result = PostLoginRequestSchema.safeParse(req.body);
   if (!result.success) {
-    logger.error("Error validating postLogin body: %s", result.error);
+    logger.error(
+      "%s",
+      new Error(`Error validating postLogin body: ${result.error}`)
+    );
     return res.sendStatus(422);
   }
 
