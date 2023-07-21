@@ -81,8 +81,7 @@
     "genres": "Genret",
     "organiser": "Järjestäjä",
     "shortDescription": "Lyhyt kuvaus",
-    "revolvingDoor": "Tämä on pyöröovipeli",
-    "revolvingDoorDescription": "Voit liittyä peliin koska tahansa, jos pelipöydässä on tilaa.",
+    "revolvingDoor": "Tämä on pyöröovi{{PROGRAM_TYPE}}",
     "programType": "Ohjelmatyyppi",
     "showMore": "Näytä lisää",
     "showMoreAriaLabel": "Näytä lisää ohjelmanumerosta",
@@ -220,9 +219,9 @@
   "startingTime": "Aloitusaika",
   "chooseTag": "Tagi",
   "revolvingDoor": "Pyöröovi",
-  "revolvingDoorInstruction": "Pyöröovipeleihin voi liittyä koska tahansa, jos pelipöydässä on tilaa",
-  "currentlyRunningRevolvingDoor": "Käynnissä olevat pyöröovipelit",
-  "noCurrentlyRunningGames": "Ei käynnissä olevia pyöröovipelejä",
+  "revolvingDoorInstruction": "Pyöröovi{{PROGRAM_TYPE}} voi liittyä koska tahansa, jos {{PROGRAM_TYPE2}} on tilaa",
+  "currentlyRunningRevolvingDoor": "Käynnissä olevat pyöröovi{{PROGRAM_TYPE}}",
+  "noCurrentlyRunningGames": "Ei käynnissä olevia pyöröovi{{PROGRAM_TYPE}}",
   "group": {
     "error": {
       "cannotUseOwnSerial": "Et voi käyttää omaa koodia ryhmään liittymisessä",
@@ -331,12 +330,12 @@
     "participant": "osallistujaa"
   },
   "programTypeSingular": {
-    "tabletopRPG": "Pöytäroolipeli",
+    "tabletopRPG": "peli",
     "larp": "LARP",
-    "tournament": "Turnaus",
-    "workshop": "Työpaja",
-    "experiencePoint": "Peli",
-    "other": "Ohjelmanumero"
+    "tournament": "turnaus",
+    "workshop": "työpaja",
+    "experiencePoint": "peli",
+    "other": "ohjelmanumero"
   },
   "programTypePlural": {
     "tabletopRPG": "pelit",
@@ -362,12 +361,28 @@
     "experiencePoint": "pelistä",
     "other": "ohjelmasta"
   },
+  "programTypePartitivePlural": {
+    "tabletopRPG": "pelejä",
+    "larp": "larppeja",
+    "tournament": "turnauksia",
+    "workshop": "työpajoja",
+    "experiencePoint": "pelejä",
+    "other": "ohjelmia"
+  },
+  "programTypeInessive": {
+    "tabletopRPG": "pelissä",
+    "larp": "larpissa",
+    "tournament": "turnauksessa",
+    "workshop": "työpajassa",
+    "experiencePoint": "pelissä",
+    "other": "ohjelmassa"
+  },
   "programTypeIllative": {
     "tabletopRPG": "peliin",
     "larp": "larppiin",
     "tournament": "turnaukseen",
     "workshop": "työpajaan",
-    "experiencePoint": "pelistä",
+    "experiencePoint": "peliin",
     "other": "ohjelmaan"
   },
   "programTypeIllativePlural": {
