@@ -25,7 +25,10 @@ export const postSignedGames = async (
 
   const result = PostSignedGamesRequestSchema.safeParse(req.body);
   if (!result.success) {
-    logger.error("Error validating postSignedGames body: %s", result.error);
+    logger.error(
+      "%s",
+      new Error(`Error validating postSignedGames body: ${result.error}`)
+    );
     return res.sendStatus(422);
   }
 

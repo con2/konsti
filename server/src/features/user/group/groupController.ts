@@ -37,7 +37,10 @@ export const postCreateGroup = async (
 
   const result = PostCreateGroupRequestSchema.safeParse(req.body);
   if (!result.success) {
-    logger.error("Error validating postCreateGroup body: %s", result.error);
+    logger.error(
+      "%s",
+      new Error(`Error validating postCreateGroup body: ${result.error}`)
+    );
     return res.sendStatus(422);
   }
 
@@ -62,7 +65,10 @@ export const postJoinGroup = async (
 
   const result = PostJoinGroupRequestSchema.safeParse(req.body);
   if (!result.success) {
-    logger.error("Error validating postJoinGroup body: %s", result.error);
+    logger.error(
+      "%s",
+      new Error(`Error validating postJoinGroup body: ${result.error}`)
+    );
     return res.sendStatus(422);
   }
 
@@ -105,7 +111,10 @@ export const postCloseGroup = async (
 
   const result = PostCloseGroupRequestSchema.safeParse(req.body);
   if (!result.success) {
-    logger.error("Error validating postCloseGroup body: %s", result.error);
+    logger.error(
+      "%s",
+      new Error(`Error validating postCloseGroup body: ${result.error}`)
+    );
     return res.sendStatus(422);
   }
 
@@ -130,7 +139,10 @@ export const getGroup = async (
 
   const result = GetGroupRequestSchema.safeParse(req.query);
   if (!result.success) {
-    logger.error("Error validating getGroup params: %s", result.error);
+    logger.error(
+      "%s",
+      new Error(`Error validating getGroup params: ${result.error}`)
+    );
     return res.sendStatus(422);
   }
 
