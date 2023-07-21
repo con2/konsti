@@ -81,8 +81,7 @@
     "genres": "Genres",
     "organiser": "Organiser",
     "shortDescription": "Short description",
-    "revolvingDoor": "This is a revolving door game",
-    "revolvingDoorDescription": "You can join this game at any time if there are free seats",
+    "revolvingDoor": "This is a revolving door {{PROGRAM_TYPE}}",
     "programType": "Program type",
     "showMore": "Show more",
     "showMoreAriaLabel": "Show more of the program item",
@@ -220,9 +219,9 @@
   "chooseTag": "Tag",
   "startingTime": "Starting time",
   "revolvingDoor": "Revolving door",
-  "revolvingDoorInstruction": "You can join a revolving door game at any time if there are free seats at the table",
-  "currentlyRunningRevolvingDoor": "Currently running revolving door games",
-  "noCurrentlyRunningGames": "No running revolving door games",
+  "revolvingDoorInstruction": "You can join a revolving door {{PROGRAM_TYPE}} at any time if there is free space",
+  "currentlyRunningRevolvingDoor": "Currently running revolving door {{PROGRAM_TYPE}}",
+  "noCurrentlyRunningGames": "No running revolving door {{PROGRAM_TYPE}}",
   "group": {
     "error": {
       "cannotUseOwnSerial": "You cannot use your own serial to join a group.",
@@ -331,12 +330,12 @@
     "participant": "participants"
   },
   "programTypeSingular": {
-    "tabletopRPG": "Tabletop RPG",
+    "tabletopRPG": "game",
     "larp": "LARP",
-    "tournament": "Tournament",
-    "workshop": "Workshop",
-    "experiencePoint": "Game",
-    "other": "Program"
+    "tournament": "tournament",
+    "workshop": "workshop",
+    "experiencePoint": "game",
+    "other": "program"
   },
   "programTypePlural": {
     "tabletopRPG": "games",
@@ -360,6 +359,22 @@
     "tournament": "tournament",
     "workshop": "workshops",
     "experiencePoint": "program",
+    "other": "program"
+  },
+  "programTypePartitivePlural": {
+    "tabletopRPG": "games",
+    "larp": "larps",
+    "tournament": "tournaments",
+    "workshop": "workshops",
+    "experiencePoint": "games",
+    "other": "programs"
+  },
+  "programTypeInessive": {
+    "tabletopRPG": "game",
+    "larp": "larp",
+    "tournament": "tournament",
+    "workshop": "workshop",
+    "experiencePoint": "game",
     "other": "program"
   },
   "programTypeIllative": {
