@@ -8,8 +8,10 @@ import { GameModel } from "server/features/game/gameSchema";
 import { mockUser, mockSignedGames } from "server/test/mock-data/mockUser";
 import { testGame, testGame2 } from "shared/tests/testGame";
 import { removeMovedGamesFromUsers } from "server/features/player-assignment/utils/removeMovedGamesFromUsers";
-import { saveUser } from "server/features/user/userRepository";
+import { findUser, saveUser } from "server/features/user/userRepository";
 import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
+import { findGames, saveGames } from "server/features/game/gameRepository";
+import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 
 let mongoServer: MongoMemoryServer;
 
@@ -32,11 +34,9 @@ afterEach(async () => {
 });
 
 test("should remove signups for moved games from users", async () => {
-  const game = new GameModel(testGame);
-  await game.save();
-  const game2 = new GameModel(testGame2);
-  await game2.save();
-  const insertedGames = await GameModel.find({});
+  await saveGames([testGame, testGame2]);
+  const findGamesResult = await findGames();
+  const insertedGames = unsafelyUnwrapResult(findGamesResult);
   expect(insertedGames.length).toEqual(2);
 
   await saveUser(mockUser);
@@ -50,16 +50,19 @@ test("should remove signups for moved games from users", async () => {
   expect(insertedUser?.signedGames.length).toEqual(2);
 
   await GameModel.updateOne(
-    { gameId: game.gameId },
+    { gameId: testGame.gameId },
     {
-      startTime: dayjs(game.startTime).add(1, "hours").toISOString(),
+      startTime: dayjs(testGame.startTime).add(1, "hours").toISOString(),
     }
   );
 
   await removeMovedGamesFromUsers(insertedGames);
 
-  const updatedUser = await UserModel.findOne({
-    username: mockUser.username,
-  });
+  const findUserResult = await findUser(mockUser.username);
+  const updatedUser = unsafelyUnwrapResult(findUserResult);
+
   expect(updatedUser?.signedGames.length).toEqual(1);
+  expect(updatedUser?.signedGames[0].gameDetails.gameId).toEqual(
+    testGame2.gameId
+  );
 });

@@ -50,6 +50,8 @@ export const removeMovedGamesFromUsers = async (
   const users = unwrapResult(usersResult);
 
   const usersToUpdate: User[] = users.flatMap((user) => {
+    const programItemsToBeRemoved: Game[] = [];
+
     const signedGames = user.signedGames.filter((signedGame) => {
       const movedFound = movedGames.find((movedGame) => {
         return movedGame.gameId === signedGame.gameDetails.gameId;
@@ -57,14 +59,15 @@ export const removeMovedGamesFromUsers = async (
       if (!movedFound) {
         return signedGame;
       }
+      programItemsToBeRemoved.push(movedFound);
     });
 
-    if (signedGames.length > 0) {
+    if (programItemsToBeRemoved.length > 0) {
       logger.info(
         `Remove following moved signedGames from user ${
           user.username
-        }: ${signedGames
-          .map((signedGame) => signedGame.gameDetails.gameId)
+        }: ${programItemsToBeRemoved
+          .map((deletedGame) => deletedGame.gameId)
           .join(", ")}`
       );
     }
@@ -79,6 +82,7 @@ export const removeMovedGamesFromUsers = async (
     return [];
   });
 
+  // TODO: Remove moved program items instead of updating all
   const updateUsersResult = await updateUsersByUsername(usersToUpdate);
   if (isErrorResult(updateUsersResult)) {
     return updateUsersResult;
