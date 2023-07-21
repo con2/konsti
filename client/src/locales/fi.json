@@ -132,6 +132,12 @@
     "humor": "Huumori",
     "adventure": "Seikkailu"
   },
+  "programItemLanguage": {
+    "english": "Englanniksi",
+    "finnish": "Suomeksi",
+    "finnishOrEnglish": "Suomeksi tai englanniksi",
+    "languageFree": "Kielivapaa"
+  },
   "gameTags": {
     "inEnglish": "Englanniksi",
     "childrenFriendly": "Lapsiystävällinen",
