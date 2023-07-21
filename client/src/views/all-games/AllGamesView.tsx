@@ -5,7 +5,7 @@ import { AllGamesList } from "client/views/all-games/components/AllGamesList";
 import { getUpcomingGames } from "client/utils/getUpcomingGames";
 import { loadGames } from "client/utils/loadData";
 import { Loading } from "client/components/Loading";
-import { Game, ProgramType, Tag } from "shared/typings/models/game";
+import { Game, Language, ProgramType, Tag } from "shared/typings/models/game";
 import { useAppSelector } from "client/utils/hooks";
 import { selectActiveGames } from "client/views/admin/adminSlice";
 import { SessionStorageValue } from "client/utils/localStorage";
@@ -150,9 +150,21 @@ const getTagFilteredGames = (
   selectedTag: string
 ): readonly Game[] => {
   if (!selectedTag) return games;
-  return games.filter(
-    (game) =>
-      game.programType.includes(selectedTag as ProgramType) ||
-      game.tags.includes(selectedTag as Tag)
-  );
+  return games.filter((game) => {
+    if (game.programType.includes(selectedTag as ProgramType)) {
+      return game;
+    }
+    if (game.tags.includes(selectedTag as Tag)) {
+      return game;
+    }
+    if (game.language.includes(selectedTag as Language)) {
+      return game;
+    }
+    if (
+      game.language === Language.FINNISH_OR_ENGLISH &&
+      (selectedTag === Language.FINNISH || selectedTag === Language.ENGLISH)
+    ) {
+      return game;
+    }
+  });
 };
