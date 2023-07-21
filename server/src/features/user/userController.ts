@@ -26,7 +26,10 @@ export const postUser = async (
 
   const result = PostUserRequestSchema.safeParse(req.body);
   if (!result.success) {
-    logger.error("Error validating postUser body: %s", result.error);
+    logger.error(
+      "%s",
+      new Error(`Error validating postUser body: ${result.error}`)
+    );
     return res.sendStatus(422);
   }
 
@@ -52,7 +55,10 @@ export const postUserPassword = async (
 
   const result = PostUpdateUserPasswordRequestSchema.safeParse(req.body);
   if (!result.success) {
-    logger.error("Error validating postUserPassword body: %s", result.error);
+    logger.error(
+      "%s",
+      new Error(`Error validating postUserPassword body: ${result.error}`)
+    );
     return res.sendStatus(422);
   }
 

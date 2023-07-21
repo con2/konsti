@@ -26,7 +26,10 @@ export const getResults = async (
 
   const result = GetResultsRequestSchema.safeParse(req.query);
   if (!result.success) {
-    logger.error("Error validating getResults body: %s", result.error);
+    logger.error(
+      "%s",
+      new Error(`Error validating getResults body: ${result.error}`)
+    );
     return res.sendStatus(422);
   }
 

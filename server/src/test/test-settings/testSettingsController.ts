@@ -28,7 +28,10 @@ export const postTestSettings = async (
 
   const result = PostTestSettingsRequestSchema.safeParse(req.body);
   if (!result.success) {
-    logger.error("Error validating postTestSettings body: %s", result.error);
+    logger.error(
+      "%s",
+      new Error(`Error validating postTestSettings body: ${result.error}`)
+    );
     return res.sendStatus(422);
   }
 

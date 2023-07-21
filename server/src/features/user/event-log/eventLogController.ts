@@ -23,14 +23,15 @@ export const postEventLogItem = async (
     return res.sendStatus(401);
   }
 
-  let body;
-  try {
-    body = PostEventLogIsSeenRequestSchema.parse(req.body);
-  } catch (error) {
-    logger.error("Error validating postEventLogItem body: %s", error);
+  const result = PostEventLogIsSeenRequestSchema.safeParse(req.body);
+  if (!result.success) {
+    logger.error(
+      "%s",
+      new Error(`Error validating postEventLogItem body: ${result.error}`)
+    );
     return res.sendStatus(422);
   }
 
-  const response = await storeEventLogItem(body);
+  const response = await storeEventLogItem(result.data);
   return res.json(response);
 };

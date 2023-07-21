@@ -30,7 +30,10 @@ export const postSignup = async (
 
   const result = PostEnteredGameRequestSchema.safeParse(req.body);
   if (!result.success) {
-    logger.error("Error validating postSignup body: %s", result.error);
+    logger.error(
+      "%s",
+      new Error(`Error validating postSignup body: ${result.error}`)
+    );
     return res.sendStatus(422);
   }
 
@@ -54,7 +57,10 @@ export const deleteSignup = async (
 
   const result = DeleteEnteredGameRequestSchema.safeParse(req.body);
   if (!result.success) {
-    logger.error("Error validating deleteSignup body: %s", result.error);
+    logger.error(
+      "%s",
+      new Error(`Error validating deleteSignup body: ${result.error}`)
+    );
     return res.sendStatus(422);
   }
 
