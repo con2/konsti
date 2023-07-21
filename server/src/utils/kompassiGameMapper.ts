@@ -48,7 +48,8 @@ export const kompassiGameMapper = (
       otherAuthor: game.other_author,
       accessibilityValues: mapAccessibilityValues(game),
       popularity: 0,
-      otherInaccessibility: game.ropecon2023_other_accessibility_information,
+      otherAccessibilityInformation:
+        game.ropecon2023_other_accessibility_information,
       entryFee: game.ropecon2023_workshop_fee,
       signupType: game.ropecon2023_signuplist,
     };
@@ -329,10 +330,6 @@ const mapAccessibilityValues = (
 
   if (kompassiGame.ropecon2021_accessibility_recording) {
     accessibilityValues.push(AccessibilityValue.RECORDING);
-  }
-
-  if (kompassiGame.ropecon2021_accessibility_text) {
-    accessibilityValues.push(AccessibilityValue.TEXT);
   }
 
   if (kompassiGame.ropecon2021_accessibility_colourblind) {

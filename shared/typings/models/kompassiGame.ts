@@ -168,7 +168,6 @@ export const KompassiGameSchema = z.object({
   ropecon2021_accessibility_moving_around: z.boolean().catch(false),
   ropecon2021_accessibility_video: z.boolean().catch(false),
   ropecon2021_accessibility_recording: z.boolean().catch(false),
-  ropecon2021_accessibility_text: z.boolean().catch(false),
   ropecon2021_accessibility_colourblind: z.boolean().catch(false),
   ropecon2022_accessibility_remaining_one_place: z.boolean().catch(false),
   ropecon2022_content_warnings: z.string().catch(""),

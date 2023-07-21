@@ -121,7 +121,6 @@ export const createGames = async (
           ropecon2021_accessibility_moving_around: Math.random() < 0.5,
           ropecon2021_accessibility_video: Math.random() < 0.5,
           ropecon2021_accessibility_recording: Math.random() < 0.5,
-          ropecon2021_accessibility_text: Math.random() < 0.5,
           ropecon2021_accessibility_colourblind: Math.random() < 0.5,
           ropecon2022_accessibility_remaining_one_place: Math.random() < 0.5,
           ropecon2022_content_warnings: "Content warning",

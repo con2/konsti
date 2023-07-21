@@ -79,7 +79,6 @@ export enum AccessibilityValue {
   MOVING_AROUND = "movingAround",
   VIDEO = "video",
   RECORDING = "recording",
-  TEXT = "text",
   COLOURBLIND = "colourblind",
   REMAINING_ONE_PLACE = "remainingOnePlace",
   CANNOT_USE_MIC = "cannotUseMic",
@@ -115,7 +114,7 @@ export const GameSchema = z.object({
   otherAuthor: z.string(),
   accessibilityValues: z.array(z.nativeEnum(AccessibilityValue)),
   signupStrategy: z.optional(z.nativeEnum(SignupStrategy)),
-  otherInaccessibility: z.string(),
+  otherAccessibilityInformation: z.string(),
   entryFee: z.string(),
   signupType: z.string(),
 });
