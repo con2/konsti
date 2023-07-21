@@ -99,7 +99,10 @@ export const postSettings = async (
 
   const result = PostSettingsRequestSchema.safeParse(req.body);
   if (!result.success) {
-    logger.error("Error validating postSettings body: %s", result.error);
+    logger.error(
+      "%s",
+      new Error(`Error validating postSettings body: ${result.error}`)
+    );
     return res.sendStatus(422);
   }
 

@@ -25,7 +25,10 @@ export const postFeedback = async (
 
   const result = PostFeedbackRequestSchema.safeParse(req.body);
   if (!result.success) {
-    logger.error("Error validating postFeedback body: %s", result.error);
+    logger.error(
+      "%s",
+      new Error(`Error validating postFeedback body: ${result.error}`)
+    );
     return res.sendStatus(422);
   }
 
