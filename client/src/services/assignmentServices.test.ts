@@ -7,13 +7,13 @@ test("POST player assignment to server", async () => {
   const spy = vi
     .spyOn(api, "post")
     .mockResolvedValue({ data: "test response" });
-  const signupTime = "2019-07-26T13:00:00Z";
+  const startTime = "2019-07-26T13:00:00Z";
 
-  const response = await postPlayerAssignment(signupTime);
+  const response = await postPlayerAssignment(startTime);
 
   expect(response).toEqual("test response");
   expect(spy).toHaveBeenCalledTimes(1);
   expect(spy).toHaveBeenCalledWith(ApiEndpoint.ASSIGNMENT, {
-    startingTime: signupTime,
+    startTime,
   });
 });

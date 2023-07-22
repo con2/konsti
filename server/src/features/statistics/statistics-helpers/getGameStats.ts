@@ -1,6 +1,6 @@
 import fs from "fs";
 import {
-  getGamesByStartingTime,
+  getGamesByStartTime,
   getNumberOfFullGames,
   getDemandByTime,
   getDemandByGame,
@@ -29,7 +29,7 @@ export const getGameStats = (year: number, event: string): void => {
 
   logger.info(`Loaded ${games.length} users`);
 
-  getGamesByStartingTime(games);
+  getGamesByStartTime(games);
   getNumberOfFullGames(games, users);
   getDemandByTime(games, users);
   getDemandByGame(games, users);

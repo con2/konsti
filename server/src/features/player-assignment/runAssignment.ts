@@ -9,7 +9,7 @@ import { AssignmentStrategy } from "shared/config/sharedConfig.types";
 import { config } from "server/config";
 import { removeOverlapSignups } from "server/features/player-assignment/utils/removeOverlapSignups";
 import { saveResults } from "server/features/player-assignment/utils/saveResults";
-import { getDynamicStartingTime } from "server/features/player-assignment/utils/getDynamicStartingTime";
+import { getDynamicStartTime } from "server/features/player-assignment/utils/getDynamicStartTime";
 import { sleep } from "server/utils/sleep";
 import { findSignups } from "server/features/signup/signupRepository";
 import { sharedConfig } from "shared/config/sharedConfig";
@@ -26,26 +26,25 @@ const { directSignupAlwaysOpenIds } = sharedConfig;
 
 interface RunAssignmentParams {
   assignmentStrategy: AssignmentStrategy;
-  startingTime?: string;
-  useDynamicStartingTime?: boolean;
+  startTime?: string;
+  useDynamicStartTime?: boolean;
   assignmentDelay?: number;
 }
 
 export const runAssignment = async ({
   assignmentStrategy,
-  startingTime,
-  useDynamicStartingTime = false,
+  startTime,
+  useDynamicStartTime = false,
   assignmentDelay = 0,
 }: RunAssignmentParams): Promise<
   Result<PlayerAssignmentResult, MongoDbError | AssignmentError>
 > => {
-  const assignmentTimeResult = useDynamicStartingTime
-    ? await getDynamicStartingTime()
-    : makeSuccessResult(startingTime);
+  const assignmentTimeResult = useDynamicStartTime
+    ? await getDynamicStartTime()
+    : makeSuccessResult(startTime);
   if (isErrorResult(assignmentTimeResult)) {
     return assignmentTimeResult;
   }
-
   const assignmentTime = unwrapResult(assignmentTimeResult);
 
   if (!assignmentTime) {
@@ -67,7 +66,6 @@ export const runAssignment = async ({
   if (isErrorResult(usersResult)) {
     return usersResult;
   }
-
   const users = unwrapResult(usersResult);
 
   // Only include TABLETOP_RPG and don't include "directSignupAlwaysOpen" games
@@ -82,11 +80,9 @@ export const runAssignment = async ({
   });
 
   const gamesResult = await findGames();
-
   if (isErrorResult(gamesResult)) {
     return gamesResult;
   }
-
   const games = unwrapResult(gamesResult);
 
   // Only include TABLETOP_RPG and don't include "directSignupAlwaysOpen" games
@@ -100,25 +96,23 @@ export const runAssignment = async ({
   if (isErrorResult(signupsResult)) {
     return signupsResult;
   }
-
   const signups = unwrapResult(signupsResult);
 
   const assignResultsResult = runAssignmentStrategy(
+    assignmentStrategy,
     filteredUsers,
     filteredGames,
     assignmentTime,
-    assignmentStrategy,
     signups
   );
   if (isErrorResult(assignResultsResult)) {
     return assignResultsResult;
   }
-
   const assignResults = unwrapResult(assignResultsResult);
 
   if (assignResults.results.length === 0) {
     logger.warn(
-      `No assign results for starting time ${assignmentTime}: ${JSON.stringify(
+      `No assign results for start time ${assignmentTime}: ${JSON.stringify(
         assignResults
       )}`
     );
@@ -127,7 +121,7 @@ export const runAssignment = async ({
 
   const saveResultsResult = await saveResults({
     results: assignResults.results,
-    startingTime: assignmentTime,
+    startTime: assignmentTime,
     algorithm: assignResults.algorithm,
     message: assignResults.message,
   });

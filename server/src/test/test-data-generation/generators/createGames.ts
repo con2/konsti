@@ -21,7 +21,7 @@ import { MongoDbError } from "shared/typings/api/errors";
 
 const GAME_ID_MAX = 10000000;
 
-const startingTimes = [
+const startTimes = [
   dayjs(sharedConfig.CONVENTION_START_TIME).toISOString(),
   dayjs(sharedConfig.CONVENTION_START_TIME).add(2, "hours").toISOString(),
   dayjs(sharedConfig.CONVENTION_START_TIME).add(3, "hours").toISOString(),
@@ -81,12 +81,11 @@ export const createGames = async (
 
   programTypes.map((programType) => {
     logger.info(
-      `Generate data for ${gameCount} programs of type ${programType} for ${startingTimes.length} starting times`
+      `Generate data for ${gameCount} programs of type ${programType} for ${startTimes.length} start times`
     );
 
-    startingTimes.forEach((startingTime) => {
+    startTimes.forEach((startTime) => {
       for (let i = 0; i < gameCount; i += 1) {
-        const startTime = startingTime;
         const length = 180;
 
         const kompassiGameData: KompassiGame = {

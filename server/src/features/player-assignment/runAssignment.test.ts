@@ -80,7 +80,7 @@ describe("Assignment with valid data", () => {
   test("should return valid results after multiple executions on different times", async () => {
     const { CONVENTION_START_TIME } = sharedConfig;
     const assignmentStrategy = AssignmentStrategy.PADG;
-    const startingTime = dayjs(CONVENTION_START_TIME)
+    const startTime = dayjs(CONVENTION_START_TIME)
       .add(2, "hours")
       .toISOString();
 
@@ -88,7 +88,7 @@ describe("Assignment with valid data", () => {
 
     const assignResultsResult = await runAssignment({
       assignmentStrategy,
-      startingTime,
+      startTime,
     });
     const assignResults = unsafelyUnwrapResult(assignResultsResult);
 
@@ -112,13 +112,13 @@ describe("Assignment with valid data", () => {
 
     // SECOND RUN
 
-    const startingTime2 = dayjs(CONVENTION_START_TIME)
+    const startTime2 = dayjs(CONVENTION_START_TIME)
       .add(3, "hours")
       .toISOString();
 
     const assignResultsEither2 = await runAssignment({
       assignmentStrategy,
-      startingTime: startingTime2,
+      startTime: startTime2,
     });
     const assignResults2 = unsafelyUnwrapResult(assignResultsEither2);
 
@@ -149,7 +149,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
   // TODO: Use dynamic sharedConfig.activeProgramTypes
   test("should not remove signups of non-RPG program types", async () => {
     const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
-    const startingTime = testGame.startTime;
+    const startTime = testGame.startTime;
 
     // Populate database
     await saveGames([
@@ -202,7 +202,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
 
     const assignResultsResult = await runAssignment({
       assignmentStrategy,
-      startingTime,
+      startTime,
     });
     const assignResults = unsafelyUnwrapResult(assignResultsResult);
 
@@ -226,7 +226,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
   test("should not remove directSignupAlwaysOpen signups if user doesn't have updated result", async () => {
     const directSignupAlwaysOpenId = sharedConfig.directSignupAlwaysOpenIds[0];
     const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
-    const startingTime = testGame.startTime;
+    const startTime = testGame.startTime;
 
     // Populate database
     await saveGames([
@@ -276,7 +276,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
 
     const assignResultsResult = await runAssignment({
       assignmentStrategy,
-      startingTime,
+      startTime,
     });
     const assignResults = unsafelyUnwrapResult(assignResultsResult);
 
@@ -307,7 +307,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
   test("should update directSignupAlwaysOpen signup with assignment signup if user has updated result", async () => {
     const directSignupAlwaysOpenId = sharedConfig.directSignupAlwaysOpenIds[0];
     const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
-    const startingTime = testGame.startTime;
+    const startTime = testGame.startTime;
 
     // Populate database
     await saveGames([
@@ -364,7 +364,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
 
     const assignResultsResult = await runAssignment({
       assignmentStrategy,
-      startingTime,
+      startTime,
     });
     const assignResults = unsafelyUnwrapResult(assignResultsResult);
 
@@ -393,7 +393,7 @@ describe("Assignment with first time bonus", () => {
   test("should assign user without previous RPG signup", async () => {
     const directSignupAlwaysOpenId = sharedConfig.directSignupAlwaysOpenIds[0];
     const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
-    const startingTime = testGame.startTime;
+    const startTime = testGame.startTime;
     const larpGameId = "AIAHHUA";
 
     // Populate database
@@ -452,7 +452,7 @@ describe("Assignment with first time bonus", () => {
 
     const assignResultsResult = await runAssignment({
       assignmentStrategy,
-      startingTime,
+      startTime,
     });
     const assignResults = unsafelyUnwrapResult(assignResultsResult);
     expect(assignResults.status).toEqual("success");

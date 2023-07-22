@@ -99,7 +99,7 @@ const prodConfig = {
   // Player assign cron
   autoAssignPlayersEnabled: true,
   autoAssignInterval: `0,15,30,45 * * * *`,
-  autoAssignDelay: 1000 * 10,
+  autoAssignDelay: 1000 * 5,
 };
 
 const stagingConfig = {
@@ -131,7 +131,7 @@ const stagingConfig = {
   // Player assign cron
   autoAssignPlayersEnabled: true,
   autoAssignInterval: `0,15,30,45 * * * *`,
-  autoAssignDelay: 1000 * 10,
+  autoAssignDelay: 1000 * 5,
 };
 
 const devConfig = {

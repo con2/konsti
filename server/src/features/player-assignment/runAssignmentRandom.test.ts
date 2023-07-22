@@ -59,15 +59,13 @@ test("Assignment with valid data should return success with random strategy", as
 
   const { CONVENTION_START_TIME } = sharedConfig;
   const assignmentStrategy = AssignmentStrategy.RANDOM;
-  const startingTime = dayjs(CONVENTION_START_TIME)
-    .add(2, "hours")
-    .toISOString();
+  const startTime = dayjs(CONVENTION_START_TIME).add(2, "hours").toISOString();
 
   // FIRST RUN
 
   const assignResultsResult = await runAssignment({
     assignmentStrategy,
-    startingTime,
+    startTime,
   });
   const assignResults = unsafelyUnwrapResult(assignResultsResult);
 
@@ -93,7 +91,7 @@ test("Assignment with valid data should return success with random strategy", as
 
   const assignResultsEither2 = await runAssignment({
     assignmentStrategy,
-    startingTime,
+    startTime,
   });
   const assignResults2 = unsafelyUnwrapResult(assignResultsEither2);
 
@@ -133,13 +131,11 @@ test("Assignment with no games should return error with random strategy", async 
 
   const { CONVENTION_START_TIME } = sharedConfig;
   const assignmentStrategy = AssignmentStrategy.RANDOM;
-  const startingTime = dayjs(CONVENTION_START_TIME)
-    .add(2, "hours")
-    .toISOString();
+  const startTime = dayjs(CONVENTION_START_TIME).add(2, "hours").toISOString();
 
   const assignResultsResult = await runAssignment({
     assignmentStrategy,
-    startingTime,
+    startTime,
   });
   const assignResults = unsafelyUnwrapResult(assignResultsResult);
 
@@ -165,13 +161,11 @@ test("Assignment with no players should return error with random strategy", asyn
 
   const { CONVENTION_START_TIME } = sharedConfig;
   const assignmentStrategy = AssignmentStrategy.RANDOM;
-  const startingTime = dayjs(CONVENTION_START_TIME)
-    .add(2, "hours")
-    .toISOString();
+  const startTime = dayjs(CONVENTION_START_TIME).add(2, "hours").toISOString();
 
   const assignResultsResult = await runAssignment({
     assignmentStrategy,
-    startingTime,
+    startTime,
   });
   const assignResults = unsafelyUnwrapResult(assignResultsResult);
 

@@ -12,12 +12,10 @@ export const getSignupsByTime = (
     return acc;
   }, {});
 
-  /*
-  logger.info(
-    `Number of people entering to games by starting times: \n`,
+  logger.debug(
+    `Number of people entering to games by start times: \n`,
     signupsByTime
-  )
-  */
+  );
 
   return signupsByTime;
 };
@@ -36,12 +34,11 @@ export const getMaximumNumberOfPlayersByTime = (
       maxNumberOfPlayersByTime[game.startTime] + game.maxAttendance;
   });
 
-  /*
-  logger.info(
-    `Maximum number of seats by starting times: \n`,
+  logger.debug(
+    `Maximum number of seats by start times: \n`,
     maxNumberOfPlayersByTime
-  )
-  */
+  );
+
   return maxNumberOfPlayersByTime;
 };
 

@@ -15,7 +15,7 @@ import {
 
 export const getGroups = (
   playerGroups: readonly User[][],
-  startingTime: string
+  startTime: string
 ): Result<Group[], AssignmentError> => {
   const results = playerGroups.map((playerGroup) => {
     const firstMember = _.first(playerGroup);
@@ -26,8 +26,7 @@ export const getGroups = (
 
     const signedGamesForStartTime = firstMember.signedGames.filter(
       (signedGame) =>
-        dayjs(signedGame.time).toISOString() ===
-        dayjs(startingTime).toISOString()
+        dayjs(signedGame.time).toISOString() === dayjs(startTime).toISOString()
     );
 
     const sortedSignedGames = _.sortBy(
