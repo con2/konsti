@@ -22,7 +22,6 @@ const TagsContainer = styled.div`
 `;
 
 const TagElement = styled.span`
-  display: flex;
   background-color: ${(props) => props.theme.backgroundTag};
   border-radius: 100px;
   align-items: center;
@@ -33,4 +32,6 @@ const TagElement = styled.span`
   color: ${(props) => props.theme.textTag};
   white-space: nowrap;
   text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 320px;
 `;
