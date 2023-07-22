@@ -30,9 +30,7 @@ export const getSelectedPlayers = (
     }
   });
 
-  logger.debug(
-    `Found ${selectedPlayers.length} players for this starting time`
-  );
+  logger.debug(`Found ${selectedPlayers.length} players for this start time`);
 
   return selectedPlayers;
 };

@@ -11,7 +11,7 @@ import {
 import { toPercent } from "server/features/statistics/statsUtil";
 import { TIMEZONE } from "shared/utils/initializeDayjs";
 
-export const getGamesByStartingTime = (
+export const getGamesByStartTime = (
   games: readonly Game[]
 ): StringNumberObject => {
   const gamesByTime = _.countBy(games, "startTime");

@@ -22,11 +22,11 @@ import { AssignmentStrategy } from "shared/config/sharedConfig.types";
 export const randomAssignPlayers = (
   players: readonly User[],
   games: readonly Game[],
-  startingTime: string,
+  startTime: string,
   signups: readonly Signup[]
 ): Result<PlayerAssignmentResult, AssignmentError> => {
-  logger.debug(`***** Run Random Assignment for ${startingTime}`);
-  const startingGames = getStartingGames(games, startingTime);
+  logger.debug(`***** Run Random Assignment for ${startTime}`);
+  const startingGames = getStartingGames(games, startTime);
 
   if (startingGames.length === 0) {
     logger.debug("No starting games, stop!");
@@ -43,7 +43,7 @@ export const randomAssignPlayers = (
     allPlayers,
     numberOfIndividuals,
     numberOfGroups,
-  } = getRunRandomAndPadgInput(players, games, startingTime);
+  } = getRunRandomAndPadgInput(players, games, startTime);
 
   if (signedGames.length === 0) {
     logger.debug("No signup wishes, stop!");
@@ -62,7 +62,7 @@ export const randomAssignPlayers = (
   const assignmentResultResult = runRandomAssignment(
     signedGames,
     playerGroups,
-    startingTime,
+    startTime,
     signups
   );
   if (isErrorResult(assignmentResultResult)) {

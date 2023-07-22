@@ -10,12 +10,12 @@ import { sharedConfig } from "shared/config/sharedConfig";
 const testAssignPlayers = async (
   assignmentStrategy: AssignmentStrategy
 ): Promise<void> => {
-  const startingTime = dayjs(sharedConfig.CONVENTION_START_TIME)
+  const startTime = dayjs(sharedConfig.CONVENTION_START_TIME)
     .add(2, "hours")
     .toISOString();
   await runAssignment({
     assignmentStrategy,
-    startingTime,
+    startTime,
   });
 
   if (!config.saveTestAssign) {

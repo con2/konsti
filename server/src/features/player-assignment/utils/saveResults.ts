@@ -7,23 +7,23 @@ import { MongoDbError } from "shared/typings/api/errors";
 
 interface SaveResultsParams {
   results: readonly AssignmentResult[];
-  startingTime: string;
+  startTime: string;
   algorithm: string;
   message: string;
 }
 
 export const saveResults = async ({
   results,
-  startingTime,
+  startTime,
   algorithm,
   message,
 }: SaveResultsParams): Promise<Result<void, MongoDbError>> => {
   logger.info(
-    `Save all signup results to separate collection for starting time ${startingTime}`
+    `Save all signup results to separate collection for start time ${startTime}`
   );
   const saveResultResult = await saveResult(
     results,
-    startingTime,
+    startTime,
     algorithm,
     message
   );
@@ -31,9 +31,9 @@ export const saveResults = async ({
     return saveResultResult;
   }
 
-  logger.info(`Save user signup results for starting time ${startingTime}`);
+  logger.info(`Save user signup results for start time ${startTime}`);
   const saveUserSignupResultsResult = await saveUserSignupResults(
-    startingTime,
+    startTime,
     results
   );
   if (isErrorResult(saveUserSignupResultsResult)) {
