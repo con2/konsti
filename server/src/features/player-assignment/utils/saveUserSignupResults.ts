@@ -21,13 +21,13 @@ import {
 import { EventLogAction } from "shared/typings/models/eventLog";
 
 export const saveUserSignupResults = async (
-  startingTime: string,
+  startTime: string,
   results: readonly AssignmentResult[]
 ): Promise<Result<void, MongoDbError>> => {
   // Remove previous assignment result - for now only RPGs use assignment
   // This does not remove directSignupAlwaysOpen signups as they are not assignment results
   const delRpgSignupsByStartTimeResult = await delRpgSignupsByStartTime(
-    startingTime
+    startTime
   );
   if (isErrorResult(delRpgSignupsByStartTimeResult)) {
     return delRpgSignupsByStartTimeResult;
@@ -35,7 +35,7 @@ export const saveUserSignupResults = async (
 
   // Only directSignupAlwaysOpen signups should be remaining
   const rpgSignupsByStartTimeResult = await findRpgSignupsByStartTime(
-    startingTime
+    startTime
   );
   if (isErrorResult(rpgSignupsByStartTimeResult)) {
     return rpgSignupsByStartTimeResult;
@@ -78,7 +78,7 @@ export const saveUserSignupResults = async (
     const saveSignupResult = await saveSignup({
       username: result.username,
       enteredGameId: result.enteredGame.gameDetails.gameId,
-      startTime: startingTime,
+      startTime,
       message: result.enteredGame.message,
       priority: result.enteredGame.priority,
     });
@@ -97,10 +97,10 @@ export const saveUserSignupResults = async (
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 
-  // Remove eventLog items from same starting time
+  // Remove eventLog items from same start time
   const deleteEventLogItemsByStartTimeResult =
     await deleteEventLogItemsByStartTime(
-      startingTime,
+      startTime,
       EventLogAction.NEW_ASSIGNMENT
     );
   if (isErrorResult(deleteEventLogItemsByStartTimeResult)) {
@@ -112,7 +112,7 @@ export const saveUserSignupResults = async (
     updates: results.map((result) => ({
       username: result.username,
       programItemId: result.enteredGame.gameDetails.gameId,
-      programItemStartTime: startingTime,
+      programItemStartTime: startTime,
       createdAt: dayjs().toISOString(),
     })),
     action: EventLogAction.NEW_ASSIGNMENT,

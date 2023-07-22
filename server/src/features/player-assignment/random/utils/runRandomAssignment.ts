@@ -27,16 +27,16 @@ import { logger } from "server/utils/logger";
 export const runRandomAssignment = (
   signedGames: readonly Game[],
   playerGroups: readonly User[][],
-  startingTime: string,
+  startTime: string,
   signups: readonly Signup[]
 ): Result<AssignmentStrategyResult, AssignmentError> => {
-  const groupsResult = getGroups(playerGroups, startingTime);
+  const groupsResult = getGroups(playerGroups, startTime);
   if (isErrorResult(groupsResult)) {
     return groupsResult;
   }
   const groups = unwrapResult(groupsResult);
   const events = getRandomAssignEvents(signedGames);
-  const listResult = getList(playerGroups, startingTime, signups);
+  const listResult = getList(playerGroups, startTime, signups);
   if (isErrorResult(listResult)) {
     return listResult;
   }

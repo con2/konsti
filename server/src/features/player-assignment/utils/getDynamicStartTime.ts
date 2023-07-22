@@ -11,7 +11,7 @@ import { MongoDbError } from "shared/typings/api/errors";
 
 const { DIRECT_SIGNUP_START } = sharedConfig;
 
-export const getDynamicStartingTime = async (): Promise<
+export const getDynamicStartTime = async (): Promise<
   Result<string, MongoDbError>
 > => {
   const timeNowResult = await getTime();
@@ -21,12 +21,12 @@ export const getDynamicStartingTime = async (): Promise<
 
   const timeNow = unwrapResult(timeNowResult);
 
-  const dynamicStartingTime = timeNow
+  const dynamicStartTime = timeNow
     .startOf("minute")
     .add(DIRECT_SIGNUP_START, "minutes")
     .toISOString();
 
-  logger.info(`Using dynamic starting time: ${dynamicStartingTime}`);
+  logger.info(`Using dynamic start time: ${dynamicStartTime}`);
 
-  return makeSuccessResult(dynamicStartingTime);
+  return makeSuccessResult(dynamicStartTime);
 };

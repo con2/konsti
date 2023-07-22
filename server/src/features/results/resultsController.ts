@@ -66,7 +66,7 @@ export const postAssignment = async (
     return res.sendStatus(422);
   }
 
-  const response = await storeAssignment(result.data.startingTime);
+  const response = await storeAssignment(result.data.startTime);
   return res.json(response);
 };
 

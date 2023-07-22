@@ -5,7 +5,7 @@ import { ApiResult } from "shared/typings/api/errors";
 // POST player assignment
 
 export const PostPlayerAssignmentRequestSchema = z.object({
-  startingTime: z.string().min(1),
+  startTime: z.string().min(1),
 });
 
 export type PostPlayerAssignmentRequest = z.infer<

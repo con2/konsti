@@ -120,7 +120,7 @@ export const autoAssignPlayers = async (): Promise<void> => {
 
   const runAssignmentResult = await runAssignment({
     assignmentStrategy: sharedConfig.assignmentStrategy,
-    useDynamicStartingTime: true,
+    useDynamicStartTime: true,
     assignmentDelay: autoAssignDelay,
   });
   if (isErrorResult(runAssignmentResult)) {

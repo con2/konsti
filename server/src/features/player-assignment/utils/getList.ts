@@ -17,7 +17,7 @@ import { AssignmentError } from "shared/typings/api/errors";
 
 export const getList = (
   playerGroups: readonly User[][],
-  startingTime: string,
+  startTime: string,
   signups: readonly Signup[]
 ): Result<ListItem[], AssignmentError> => {
   const results = playerGroups.flatMap((playerGroup) => {
@@ -34,7 +34,7 @@ export const getList = (
       .filter(
         (signedGame) =>
           dayjs(signedGame.time).toISOString() ===
-          dayjs(startingTime).toISOString()
+          dayjs(startTime).toISOString()
       )
       .map((signedGame) => {
         return {
