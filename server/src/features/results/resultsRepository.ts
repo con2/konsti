@@ -84,12 +84,12 @@ export const saveResult = async (
       { upsert: true }
     );
     logger.debug(
-      `MongoDB: Signup results for starting time ${startTime} stored to separate collection`
+      `MongoDB: Signup results for start time ${startTime} stored to separate collection`
     );
     return makeSuccessResult(undefined);
   } catch (error) {
     logger.error(
-      `MongoDB: Error storing signup results for starting time ${startTime} to separate collection: %s`,
+      `MongoDB: Error storing signup results for start time ${startTime} to separate collection: %s`,
       error
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);

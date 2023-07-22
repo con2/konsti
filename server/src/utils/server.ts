@@ -139,7 +139,9 @@ export const closeServer = async (
   signal?: string
 ): Promise<void> => {
   logger.info(`Received signal to terminate: ${signal}`);
-  stopCronJobs();
+  if (config.onlyCronjobs) {
+    stopCronJobs();
+  }
   server.close();
   logger.info("Server closed");
 

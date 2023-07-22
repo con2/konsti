@@ -25,10 +25,10 @@ import { AssignmentStrategy } from "shared/config/sharedConfig.types";
 export const groupAssignPlayers = (
   players: readonly User[],
   games: readonly Game[],
-  startingTime: string
+  startTime: string
 ): Result<PlayerAssignmentResult, AssignmentError> => {
-  logger.debug(`***** Run Group Assignment for ${startingTime}`);
-  const startingGames = getStartingGames(games, startingTime);
+  logger.debug(`***** Run Group Assignment for ${startTime}`);
+  const startingGames = getStartingGames(games, startTime);
 
   if (startingGames.length === 0) {
     logger.debug("No starting games, stop!");
@@ -87,7 +87,7 @@ export const groupAssignPlayers = (
     result.results,
     playerGroups,
     allPlayers,
-    startingTime
+    startTime
   );
   if (isErrorResult(getHappinessResult)) {
     return getHappinessResult;

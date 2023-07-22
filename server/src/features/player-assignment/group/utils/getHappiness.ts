@@ -18,7 +18,7 @@ export const getHappiness = (
   results: readonly AssignmentResult[],
   playerGroups: readonly User[][],
   allPlayers: readonly User[],
-  startingTime: string
+  startTime: string
 ): Result<void, AssignmentError> => {
   const padgAssignment = results.map((result) => {
     const foundPlayer = allPlayers.find(
@@ -53,7 +53,7 @@ export const getHappiness = (
     return [];
   });
 
-  const groupsResult = getGroups(playerGroups, startingTime);
+  const groupsResult = getGroups(playerGroups, startTime);
   if (isErrorResult(groupsResult)) {
     return groupsResult;
   }

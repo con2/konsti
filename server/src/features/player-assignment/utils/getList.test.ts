@@ -84,12 +84,12 @@ const previousMatchingSignupWithWrongType: Signup = {
   ],
 };
 
-const startingTime = "2019-11-23T12:00:00+02:00";
+const startTime = "2019-11-23T12:00:00+02:00";
 
 test("should return empty array if user has no signed games", () => {
   const userArray: User[] = [user3];
   const playerGroups: readonly User[][] = [userArray, userArray, userArray];
-  const list = getList(playerGroups, startingTime, []);
+  const list = getList(playerGroups, startTime, []);
 
   expect(list).toEqual({ value: [] });
 });
@@ -97,7 +97,7 @@ test("should return empty array if user has no signed games", () => {
 test("should generate assignment list with bonuses for single user when signups is empty", () => {
   const userArray: User[] = [user];
   const playerGroups: readonly User[][] = [userArray, userArray, userArray];
-  const list = getList(playerGroups, startingTime, []);
+  const list = getList(playerGroups, startTime, []);
 
   expect(list).toEqual({
     value: [
@@ -111,7 +111,7 @@ test("should generate assignment list with bonuses for single user when signups 
 test("should generate assignment list with bonuses for single user", () => {
   const userArray: User[] = [user];
   const playerGroups: readonly User[][] = [userArray, userArray, userArray];
-  const list = getList(playerGroups, startingTime, [previousNotMatchingSignup]);
+  const list = getList(playerGroups, startTime, [previousNotMatchingSignup]);
 
   expect(list).toEqual({
     value: [
@@ -125,7 +125,7 @@ test("should generate assignment list with bonuses for single user", () => {
 test("should generate assignment list with bonuses for group", () => {
   const userArray: User[] = [user, user2];
   const playerGroups: readonly User[][] = [userArray, userArray, userArray];
-  const list = getList(playerGroups, startingTime, [previousNotMatchingSignup]);
+  const list = getList(playerGroups, startTime, [previousNotMatchingSignup]);
 
   expect(list).toEqual({
     value: [
@@ -139,7 +139,7 @@ test("should generate assignment list with bonuses for group", () => {
 test("should generate assignment list without bonuses for group", () => {
   const userArray: User[] = [user, user3];
   const playerGroups: readonly User[][] = [userArray, userArray, userArray];
-  const list = getList(playerGroups, startingTime, [previousMatchingSignup]);
+  const list = getList(playerGroups, startTime, [previousMatchingSignup]);
 
   expect(list).toEqual({
     value: [
@@ -153,7 +153,7 @@ test("should generate assignment list without bonuses for group", () => {
 test("should generate assignment list with bonuses if user has signups for different program type", () => {
   const userArray: User[] = [user];
   const playerGroups: readonly User[][] = [userArray, userArray, userArray];
-  const list = getList(playerGroups, startingTime, [
+  const list = getList(playerGroups, startTime, [
     previousMatchingSignupWithWrongType,
   ]);
 

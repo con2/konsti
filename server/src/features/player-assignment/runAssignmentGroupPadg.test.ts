@@ -65,15 +65,13 @@ test("Assignment with valid data should return success with group+padg strategy"
   );
 
   const assignmentStrategy = AssignmentStrategy.GROUP_PADG;
-  const startingTime = dayjs(CONVENTION_START_TIME)
-    .add(2, "hours")
-    .toISOString();
+  const startTime = dayjs(CONVENTION_START_TIME).add(2, "hours").toISOString();
 
   // FIRST RUN
 
   const assignResultsResult = await runAssignment({
     assignmentStrategy,
-    startingTime,
+    startTime,
   });
   const assignResults = unsafelyUnwrapResult(assignResultsResult);
 
@@ -99,7 +97,7 @@ test("Assignment with valid data should return success with group+padg strategy"
 
   const assignResultsEither2 = await runAssignment({
     assignmentStrategy,
-    startingTime,
+    startTime,
   });
   const assignResults2 = unsafelyUnwrapResult(assignResultsEither2);
 
@@ -138,13 +136,11 @@ test("Assignment with no games should return error with group+padg strategy", as
   );
 
   const assignmentStrategy = AssignmentStrategy.GROUP_PADG;
-  const startingTime = dayjs(CONVENTION_START_TIME)
-    .add(2, "hours")
-    .toISOString();
+  const startTime = dayjs(CONVENTION_START_TIME).add(2, "hours").toISOString();
 
   const assignResultsResult = await runAssignment({
     assignmentStrategy,
-    startingTime,
+    startTime,
   });
   const assignResults = unsafelyUnwrapResult(assignResultsResult);
 
@@ -169,13 +165,11 @@ test("Assignment with no players should return error with group+padg strategy", 
   );
 
   const assignmentStrategy = AssignmentStrategy.GROUP_PADG;
-  const startingTime = dayjs(CONVENTION_START_TIME)
-    .add(2, "hours")
-    .toISOString();
+  const startTime = dayjs(CONVENTION_START_TIME).add(2, "hours").toISOString();
 
   const assignResultsResult = await runAssignment({
     assignmentStrategy,
-    startingTime,
+    startTime,
   });
   const assignResults = unsafelyUnwrapResult(assignResultsResult);
 
@@ -188,11 +182,11 @@ test("If group assignment fails, should return PADG result", async () => {
   );
 
   const assignmentStrategy = AssignmentStrategy.GROUP_PADG;
-  const startingTime = dayjs(CONVENTION_START_TIME).toISOString();
+  const startTime = dayjs(CONVENTION_START_TIME).toISOString();
 
   const assignResultsResult = await runAssignment({
     assignmentStrategy,
-    startingTime,
+    startTime,
   });
 
   const assignResults = unsafelyUnwrapResult(assignResultsResult);
@@ -208,11 +202,11 @@ test("If PADG assignment fails, should return group result", async () => {
   );
 
   const assignmentStrategy = AssignmentStrategy.GROUP_PADG;
-  const startingTime = dayjs(CONVENTION_START_TIME).toISOString();
+  const startTime = dayjs(CONVENTION_START_TIME).toISOString();
 
   const assignResultsResult = await runAssignment({
     assignmentStrategy,
-    startingTime,
+    startTime,
   });
 
   const assignResults = unsafelyUnwrapResult(assignResultsResult);
@@ -231,11 +225,11 @@ test("If both assignments fail, should return error result", async () => {
   );
 
   const assignmentStrategy = AssignmentStrategy.GROUP_PADG;
-  const startingTime = dayjs(CONVENTION_START_TIME).toISOString();
+  const startTime = dayjs(CONVENTION_START_TIME).toISOString();
 
   const assignResultsResult = await runAssignment({
     assignmentStrategy,
-    startingTime,
+    startTime,
   });
 
   expect(assignResultsResult.error).toEqual(AssignmentError.UNKNOWN_ERROR);
