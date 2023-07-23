@@ -2,9 +2,9 @@ import dayjs from "dayjs";
 import { AssignmentResult } from "shared/typings/models/result";
 import {
   delSignup,
-  delRpgSignupsByStartTime,
-  findRpgSignupsByStartTime,
-  saveSignup,
+  delAssignmentSignupsByStartTime,
+  findSignupsByProgramType,
+  saveSignups,
 } from "server/features/signup/signupRepository";
 import {
   Result,
@@ -19,34 +19,34 @@ import {
   deleteEventLogItemsByStartTime,
 } from "server/features/user/event-log/eventLogRepository";
 import { EventLogAction } from "shared/typings/models/eventLog";
+import { ProgramType } from "shared/typings/models/game";
 
 export const saveUserSignupResults = async (
   startTime: string,
   results: readonly AssignmentResult[]
 ): Promise<Result<void, MongoDbError>> => {
-  // Remove previous assignment result - for now only RPGs use assignment
-  // This does not remove directSignupAlwaysOpen signups as they are not assignment results
-  const delRpgSignupsByStartTimeResult = await delRpgSignupsByStartTime(
-    startTime
-  );
-  if (isErrorResult(delRpgSignupsByStartTimeResult)) {
-    return delRpgSignupsByStartTimeResult;
+  // Remove previous assignment result for the same start time
+  // This does not remove directSignupAlwaysOpen signups or previous signups from moved program items
+  const delAssignmentSignupsByStartTimeResult =
+    await delAssignmentSignupsByStartTime(startTime);
+  if (isErrorResult(delAssignmentSignupsByStartTimeResult)) {
+    return delAssignmentSignupsByStartTimeResult;
   }
 
-  // Only directSignupAlwaysOpen signups should be remaining
-  const rpgSignupsByStartTimeResult = await findRpgSignupsByStartTime(
+  // Only directSignupAlwaysOpen signups and previous signups from moved program items should be remaining
+  const rpgSignupsByStartTimeResult = await findSignupsByProgramType(
+    ProgramType.TABLETOP_RPG,
     startTime
   );
   if (isErrorResult(rpgSignupsByStartTimeResult)) {
     return rpgSignupsByStartTimeResult;
   }
-
   const rpgSignupsByStartTime = unwrapResult(rpgSignupsByStartTimeResult);
 
-  // Resolve conflicting directSignupAlwaysOpen signups
-  // If user has previous directSignupAlwaysOpen signups...
-  // ... and new assignment result -> remove
-  // ... and no new assignment result -> do not remove
+  // Resolve conflicting existing signups
+  // If user has existing signups...
+  // ... and new assignment result -> remove existing
+  // ... and no new assignment result -> keep existing
   const deletePromises = results.map(async (result) => {
     const existingSignup = rpgSignupsByStartTime.find(
       (signup) => signup.username === result.username
@@ -74,27 +74,19 @@ export const saveUserSignupResults = async (
   }
 
   // Save new assignment results
-  const savePromises = results.map(async (result) => {
-    const saveSignupResult = await saveSignup({
+  const newSignups = results.map((result) => {
+    return {
       username: result.username,
       enteredGameId: result.enteredGame.gameDetails.gameId,
       startTime,
       message: result.enteredGame.message,
       priority: result.enteredGame.priority,
-    });
-    if (isErrorResult(saveSignupResult)) {
-      return saveSignupResult;
-    }
-    const saveSignupResponse = unwrapResult(saveSignupResult);
-    return makeSuccessResult(saveSignupResponse);
+    };
   });
 
-  const saveResults = await Promise.all(savePromises);
-  const someSaveFailed = saveResults.some((saveResult) =>
-    isErrorResult(saveResult)
-  );
-  if (someSaveFailed) {
-    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+  const saveSignupsResult = await saveSignups(newSignups);
+  if (isErrorResult(saveSignupsResult)) {
+    return saveSignupsResult;
   }
 
   // Remove eventLog items from same start time
