@@ -466,7 +466,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
       signedGames: [{ ...mockSignedGames[0] }],
     });
 
-    // User has previous signup from moved program item - this should be removed by assignment result
+    // User has previous signup from moved program item - this should be replaced by assignment result
     await saveSignup({
       ...mockPostEnteredGameRequest,
       enteredGameId: testGame2.gameId,
