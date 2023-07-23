@@ -210,7 +210,7 @@
   "invalidProgramItemId": "Ohjelmanumeroa ei löydy, viallinen tunniste",
   "feedbackTitle": "Palaute",
   "feedbackInstruction": "Piditkö {{PROGRAM_TYPE}}? Lähetä palautetta järjestäjälle! Palautteet toimitetaan tapahtuman jälkeen.",
-  "noProgramItemsAvailable": "Ei näytettäviä pelejä",
+  "noProgramItemsAvailable": "Ei näytettäviä {{PROGRAM_TYPE}}",
   "noGamesInDatabase": "Ei pelejä tietokannassa",
   "upcoming": "Tulevat",
   "all": "Kaikki",
