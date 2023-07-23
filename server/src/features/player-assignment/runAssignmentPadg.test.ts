@@ -130,7 +130,7 @@ test("Assignment with valid data should return success with padg strategy", asyn
   await assertUserUpdatedCorrectly(updatedUsers2);
 });
 
-test("Should adjust maximum attendee count if there are previous signups from moved program items", async () => {
+test("Should adjust attendee limits if there are previous signups from moved program items", async () => {
   const assignmentStrategy = AssignmentStrategy.PADG;
 
   await saveGames([{ ...testGame, minAttendance: 2, maxAttendance: 2 }]);
