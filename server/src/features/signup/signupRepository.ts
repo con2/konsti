@@ -68,30 +68,31 @@ export const findSignups = async (): Promise<
   }
 };
 
-interface FindRpgSignupsByStartTimeResponse extends UserSignup {
+interface FindSignupsByProgramTypeResponse extends UserSignup {
   gameId: string;
 }
 
-export const findRpgSignupsByStartTime = async (
+export const findSignupsByProgramType = async (
+  programType: ProgramType,
   startTime: string
-): Promise<Result<FindRpgSignupsByStartTimeResponse[], MongoDbError>> => {
+): Promise<Result<FindSignupsByProgramTypeResponse[], MongoDbError>> => {
   try {
-    const response = await SignupModel.find(
+    const signups = await SignupModel.find(
       { "userSignups.time": startTime },
       "-createdAt -updatedAt -_id -__v"
     )
       .lean<Signup[]>()
       .populate("game", "-createdAt -updatedAt -_id -__v");
-    if (!response) {
+    if (!signups) {
       logger.info(`MongoDB: Signups for time ${startTime} not found`);
       return makeSuccessResult([]);
     }
 
     logger.debug(`MongoDB: Found signups for time ${startTime}`);
 
-    const formattedResponse: FindRpgSignupsByStartTimeResponse[] =
-      response.flatMap((signup) => {
-        if (signup.game.programType !== ProgramType.TABLETOP_RPG) {
+    const formattedResponse: FindSignupsByProgramTypeResponse[] =
+      signups.flatMap((signup) => {
+        if (signup.game.programType !== programType) {
           return [];
         }
         return signup.userSignups.map((userSignup) => ({
@@ -241,7 +242,9 @@ export const delSignup = async (
     }
 
     logger.info(
-      `MongoDB: Signup removed - program item: ${game.gameId}, user: ${username}, starting: ${game.startTime}`
+      `MongoDB: Signup removed - program item: ${
+        game.gameId
+      }, user: ${username}, starting: ${dayjs(game.startTime).toISOString()}`
     );
     return makeSuccessResult(signup);
   } catch (error) {
@@ -315,7 +318,7 @@ export const resetSignupsByGameIds = async (
   }
 };
 
-export const delRpgSignupsByStartTime = async (
+export const delAssignmentSignupsByStartTime = async (
   startTime: string
 ): Promise<Result<number, MongoDbError>> => {
   const gamesResult = await findGames();
@@ -325,7 +328,7 @@ export const delRpgSignupsByStartTime = async (
   const games = unwrapResult(gamesResult);
 
   // Only remove TABLETOP_RPG signups and don't remove directSignupAlwaysOpen signups
-  const doNotRemoveGameIds = games
+  const doNotRemoveGameObjectIds = games
     .filter(
       (game) =>
         sharedConfig.directSignupAlwaysOpenIds.includes(game.gameId) ||
@@ -335,8 +338,27 @@ export const delRpgSignupsByStartTime = async (
 
   try {
     const response = await SignupModel.updateMany(
-      { "userSignups.time": startTime, game: { $nin: doNotRemoveGameIds } },
-      { userSignups: [], count: 0 }
+      {
+        game: { $nin: doNotRemoveGameObjectIds },
+      },
+      [
+        {
+          $set: {
+            userSignups: {
+              $filter: {
+                input: "$userSignups",
+                as: "userSignup",
+                cond: {
+                  $ne: ["$$userSignup.time", new Date(startTime)],
+                },
+              },
+            },
+          },
+        },
+        {
+          $set: { count: { $size: "$userSignups" } },
+        },
+      ]
     );
     logger.info(
       `MongoDB: Deleted signups for ${response.modifiedCount} games for startTime: ${startTime}`

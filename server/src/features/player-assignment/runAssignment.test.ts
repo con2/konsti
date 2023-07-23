@@ -149,7 +149,6 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
   // TODO: Use dynamic sharedConfig.activeProgramTypes
   test("should not remove signups of non-RPG program types", async () => {
     const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
-    const startTime = testGame.startTime;
 
     // Populate database
     await saveGames([
@@ -202,7 +201,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
 
     const assignResultsResult = await runAssignment({
       assignmentStrategy,
-      startTime,
+      startTime: testGame.startTime,
     });
     const assignResults = unsafelyUnwrapResult(assignResultsResult);
 
@@ -223,10 +222,10 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     expect(rpgSignup?.userSignups.length).toEqual(2);
   });
 
+  // TODO: Use dynamic sharedConfig.directSignupAlwaysOpenIds
   test("should not remove directSignupAlwaysOpen signups if user doesn't have updated result", async () => {
     const directSignupAlwaysOpenId = sharedConfig.directSignupAlwaysOpenIds[0];
     const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
-    const startTime = testGame.startTime;
 
     // Populate database
     await saveGames([
@@ -258,7 +257,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
       ],
     });
 
-    // This should not be removed
+    // This should not be removed even if start time is same as assignment time
     await saveSignup({
       ...mockPostEnteredGameRequest2,
       username: mockUser2.username,
@@ -276,7 +275,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
 
     const assignResultsResult = await runAssignment({
       assignmentStrategy,
-      startTime,
+      startTime: testGame.startTime,
     });
     const assignResults = unsafelyUnwrapResult(assignResultsResult);
 
@@ -307,7 +306,6 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
   test("should update directSignupAlwaysOpen signup with assignment signup if user has updated result", async () => {
     const directSignupAlwaysOpenId = sharedConfig.directSignupAlwaysOpenIds[0];
     const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
-    const startTime = testGame.startTime;
 
     // Populate database
     await saveGames([
@@ -364,7 +362,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
 
     const assignResultsResult = await runAssignment({
       assignmentStrategy,
-      startTime,
+      startTime: testGame.startTime,
     });
     const assignResults = unsafelyUnwrapResult(assignResultsResult);
 
@@ -387,13 +385,132 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     expect(assignmentSignup?.userSignups.length).toEqual(2);
     expect(directSignupAlwaysOpenSignup?.userSignups.length).toEqual(0);
   });
+
+  test("should not remove previous signup from moved program item if user doesn't have updated result", async () => {
+    const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
+
+    await saveGames([
+      { ...testGame, minAttendance: 1 },
+      {
+        ...testGame2,
+        startTime: testGame.startTime,
+      },
+    ]);
+    await saveUser(mockUser);
+    await saveUser(mockUser2);
+
+    // User 1 has selected program item for assignment
+    await saveSignedGames({
+      username: mockUser.username,
+      signedGames: [{ ...mockSignedGames[0] }],
+    });
+
+    // User 2 has previous signup from moved program item - this should not be removed
+    await saveSignup({
+      ...mockPostEnteredGameRequest2,
+      username: mockUser2.username,
+      startTime: dayjs(testGame.startTime).subtract(1, "hours").toISOString(),
+    });
+
+    const signupsBeforeUpdate = unsafelyUnwrapResult(await findSignups());
+    const gamesWithSignups = signupsBeforeUpdate.filter(
+      (signup) => signup.userSignups.length > 0
+    );
+    expect(gamesWithSignups).toHaveLength(1);
+
+    const assignResults = unsafelyUnwrapResult(
+      await runAssignment({
+        assignmentStrategy,
+        startTime: testGame.startTime,
+      })
+    );
+    expect(assignResults.status).toEqual("success");
+    expect(assignResults.results).toHaveLength(1);
+    assignResults.results.map((result) => {
+      expect(result.enteredGame.gameDetails.gameId).toEqual(testGame.gameId);
+    });
+
+    const signupsAfterUpdate = unsafelyUnwrapResult(await findSignups());
+
+    const assignmentSignup = signupsAfterUpdate.find(
+      (signup) => signup.game.gameId === testGame.gameId
+    );
+    expect(assignmentSignup?.userSignups).toHaveLength(1);
+    expect(assignmentSignup?.userSignups[0].username).toEqual(
+      mockUser.username
+    );
+
+    const previousSignupFromMovedProgramItem = signupsAfterUpdate.find(
+      (signup) => signup.game.gameId === testGame2.gameId
+    );
+    expect(previousSignupFromMovedProgramItem?.userSignups).toHaveLength(1);
+    expect(previousSignupFromMovedProgramItem?.userSignups[0].username).toEqual(
+      mockUser2.username
+    );
+  });
+
+  test("should update previous signup from moved program item with assignment signup if user has updated result", async () => {
+    const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
+
+    await saveGames([
+      { ...testGame, minAttendance: 1 },
+      {
+        ...testGame2,
+        startTime: testGame.startTime,
+      },
+    ]);
+    await saveUser(mockUser);
+
+    await saveSignedGames({
+      username: mockUser.username,
+      signedGames: [{ ...mockSignedGames[0] }],
+    });
+
+    // User has previous signup from moved program item - this should be removed by assignment result
+    await saveSignup({
+      ...mockPostEnteredGameRequest,
+      enteredGameId: testGame2.gameId,
+    });
+
+    const signupsBeforeUpdate = unsafelyUnwrapResult(await findSignups());
+    const gamesWithSignups = signupsBeforeUpdate.filter(
+      (signup) => signup.userSignups.length > 0
+    );
+    expect(gamesWithSignups).toHaveLength(1);
+
+    const assignResults = unsafelyUnwrapResult(
+      await runAssignment({
+        assignmentStrategy,
+        startTime: testGame.startTime,
+      })
+    );
+    expect(assignResults.status).toEqual("success");
+    expect(assignResults.results).toHaveLength(1);
+    assignResults.results.map((result) => {
+      expect(result.enteredGame.gameDetails.gameId).toEqual(testGame.gameId);
+    });
+
+    const signupsAfterUpdate = unsafelyUnwrapResult(await findSignups());
+
+    const assignmentSignup = signupsAfterUpdate.find(
+      (signup) => signup.game.gameId === testGame.gameId
+    );
+    expect(assignmentSignup?.userSignups).toHaveLength(1);
+    expect(assignmentSignup?.userSignups[0].username).toEqual(
+      mockUser.username
+    );
+
+    const previousSignupFromMovedProgramItem = signupsAfterUpdate.find(
+      (signup) => signup.game.gameId === testGame2.gameId
+    );
+    expect(previousSignupFromMovedProgramItem?.userSignups).toHaveLength(0);
+  });
 });
 
 describe("Assignment with first time bonus", () => {
   test("should assign user without previous RPG signup", async () => {
     const directSignupAlwaysOpenId = sharedConfig.directSignupAlwaysOpenIds[0];
     const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
-    const startTime = testGame.startTime;
     const larpGameId = "AIAHHUA";
 
     // Populate database
@@ -452,7 +569,7 @@ describe("Assignment with first time bonus", () => {
 
     const assignResultsResult = await runAssignment({
       assignmentStrategy,
-      startTime,
+      startTime: testGame.startTime,
     });
     const assignResults = unsafelyUnwrapResult(assignResultsResult);
     expect(assignResults.status).toEqual("success");
