@@ -94,7 +94,13 @@ export const AllGamesList = ({ games }: Props): ReactElement => {
     <div>
       {games.length === 0 && (
         <RaisedCard>
-          <NoGamesText>{t("noProgramItemsAvailable")}</NoGamesText>
+          <NoGamesText>
+            {t("noProgramItemsAvailable", {
+              PROGRAM_TYPE: t(
+                `programTypePartitivePlural.${activeProgramType}`
+              ),
+            })}
+          </NoGamesText>
         </RaisedCard>
       )}
       {games.length !== 0 && gamesList}
