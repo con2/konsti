@@ -3,6 +3,7 @@ import { Game } from "shared/typings/models/game";
 import { Event } from "server/typings/padgRandomAssign.typings";
 import { Signup } from "server/features/signup/signup.typings";
 
+// TODO: Merge this with getRandomAssignEvents
 export const getEvents = (
   signedGames: readonly Game[],
   signups: readonly Signup[]
