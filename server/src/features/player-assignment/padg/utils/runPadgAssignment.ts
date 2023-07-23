@@ -28,7 +28,7 @@ export const runPadgAssignment = (
     return groupsResult;
   }
   const groups = unwrapResult(groupsResult);
-  const events = getEvents(signedGames);
+  const events = getEvents(signedGames, signups);
   const listResult = getList(playerGroups, startTime, signups);
   if (isErrorResult(listResult)) {
     return listResult;

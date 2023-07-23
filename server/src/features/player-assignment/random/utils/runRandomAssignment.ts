@@ -35,7 +35,7 @@ export const runRandomAssignment = (
     return groupsResult;
   }
   const groups = unwrapResult(groupsResult);
-  const events = getRandomAssignEvents(signedGames);
+  const events = getRandomAssignEvents(signedGames, signups);
   const listResult = getList(playerGroups, startTime, signups);
   if (isErrorResult(listResult)) {
     return listResult;
