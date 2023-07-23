@@ -101,7 +101,7 @@ const devConfig: Configuration = {
 
   // webpack-dev-server config
   devServer: {
-    host: "0.0.0.0",
+    host: "127.0.0.1",
     port: 8000,
     hot: true,
     historyApiFallback: true, // respond to 404s with index.html
