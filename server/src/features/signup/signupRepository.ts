@@ -1,4 +1,5 @@
 import dayjs from "dayjs";
+import _ from "lodash";
 import { ObjectId } from "mongoose";
 import { findGameById, findGames } from "server/features/game/gameRepository";
 import { Signup, UserSignup } from "server/features/signup/signup.typings";
@@ -186,6 +187,70 @@ export const saveSignup = async (
       `MongoDB: Error saving signup for user ${username}: %s`,
       error
     );
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+  }
+};
+
+export const saveSignups = async (
+  signupsRequests: PostEnteredGameRequest[]
+): Promise<Result<number, MongoDbError>> => {
+  const gamesResult = await findGames();
+  if (isErrorResult(gamesResult)) {
+    return gamesResult;
+  }
+  const games = unwrapResult(gamesResult);
+
+  const signupsByProgramItems = _.groupBy(
+    signupsRequests,
+    (signup) => signup.enteredGameId
+  );
+
+  const bulkOps = Object.entries(signupsByProgramItems).flatMap(
+    ([gameId, signups]) => {
+      const game = games.find((g) => g.gameId === gameId);
+      if (!game) {
+        return [];
+      }
+
+      let finalSignups: PostEnteredGameRequest[] = signups;
+      if (signups.length > game.maxAttendance) {
+        logger.error(
+          "%s",
+          new Error(
+            `Too many signups passed to saveSignups for program item ${game.gameId} - maxAttendance: ${game.maxAttendance}, signups: ${signups.length}`
+          )
+        );
+        finalSignups = _.sampleSize(signups, game.maxAttendance);
+      }
+
+      return {
+        updateOne: {
+          filter: {
+            game: game._id,
+          },
+          update: {
+            $addToSet: {
+              userSignups: finalSignups.map((signup) => ({
+                username: signup.username,
+                priority: signup.priority,
+                time: signup.startTime,
+                message: signup.message,
+              })),
+            },
+            count: finalSignups.length,
+          },
+        },
+      };
+    }
+  );
+
+  try {
+    // @ts-expect-error: Types don't work with $addToSet
+    const response = await SignupModel.bulkWrite(bulkOps);
+    logger.info(`Updated signups for ${response.modifiedCount} program items`);
+    return makeSuccessResult(response.modifiedCount);
+  } catch (error) {
+    logger.error(`MongoDB: Error saving signups: %s`, error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };

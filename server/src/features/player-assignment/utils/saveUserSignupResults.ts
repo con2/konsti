@@ -4,7 +4,7 @@ import {
   delSignup,
   delAssignmentSignupsByStartTime,
   findSignupsByProgramType,
-  saveSignup,
+  saveSignups,
 } from "server/features/signup/signupRepository";
 import {
   Result,
@@ -73,29 +73,20 @@ export const saveUserSignupResults = async (
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 
-  // TODO: Save all signups at once
   // Save new assignment results
-  const savePromises = results.map(async (result) => {
-    const saveSignupResult = await saveSignup({
+  const newSignups = results.map((result) => {
+    return {
       username: result.username,
       enteredGameId: result.enteredGame.gameDetails.gameId,
       startTime,
       message: result.enteredGame.message,
       priority: result.enteredGame.priority,
-    });
-    if (isErrorResult(saveSignupResult)) {
-      return saveSignupResult;
-    }
-    const saveSignupResponse = unwrapResult(saveSignupResult);
-    return makeSuccessResult(saveSignupResponse);
+    };
   });
 
-  const saveResults = await Promise.all(savePromises);
-  const someSaveFailed = saveResults.some((saveResult) =>
-    isErrorResult(saveResult)
-  );
-  if (someSaveFailed) {
-    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+  const saveSignupsResult = await saveSignups(newSignups);
+  if (isErrorResult(saveSignupsResult)) {
+    return saveSignupsResult;
   }
 
   // Remove eventLog items from same start time
