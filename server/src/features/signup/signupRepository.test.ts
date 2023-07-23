@@ -16,8 +16,16 @@ import { saveGames } from "server/features/game/gameRepository";
 import {
   mockPostEnteredGameRequest,
   mockUser,
+  mockUser2,
+  mockUser3,
+  mockUser4,
 } from "server/test/mock-data/mockUser";
-import { delSignup, saveSignup } from "server/features/signup/signupRepository";
+import {
+  delSignup,
+  findSignups,
+  saveSignup,
+  saveSignups,
+} from "server/features/signup/signupRepository";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 
 let mongoServer: MongoMemoryServer;
@@ -74,4 +82,27 @@ test("should delete signup from user even if game start time has changed after s
   const response = unsafelyUnwrapResult(responseResult);
 
   expect(response.userSignups.length).toEqual(0);
+});
+
+test("should limit max attendees if too many passed to saveSignups", async () => {
+  await saveUser(mockUser);
+  await saveUser(mockUser2);
+  await saveUser(mockUser3);
+  await saveUser(mockUser4);
+  await saveGames([{ ...testGame, maxAttendance: 2 }]);
+
+  const signups = [
+    mockPostEnteredGameRequest,
+    { ...mockPostEnteredGameRequest, username: mockUser2.username },
+    { ...mockPostEnteredGameRequest, username: mockUser3.username },
+    { ...mockPostEnteredGameRequest, username: mockUser4.username },
+  ];
+
+  const response = unsafelyUnwrapResult(await saveSignups(signups));
+  expect(response).toEqual(1);
+
+  const signupsAfterSave = unsafelyUnwrapResult(await findSignups());
+  expect(signupsAfterSave).toHaveLength(1);
+  expect(signupsAfterSave[0].count).toEqual(2);
+  expect(signupsAfterSave[0].userSignups).toHaveLength(2);
 });

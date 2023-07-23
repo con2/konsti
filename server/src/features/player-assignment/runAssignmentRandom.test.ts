@@ -17,6 +17,22 @@ import { AssignmentStrategy } from "shared/config/sharedConfig.types";
 import { sharedConfig } from "shared/config/sharedConfig";
 import { AssignmentResultStatus } from "server/typings/result.typings";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
+import { saveGames } from "server/features/game/gameRepository";
+import { testGame } from "shared/tests/testGame";
+import { saveUser } from "server/features/user/userRepository";
+import {
+  mockPostEnteredGameRequest,
+  mockSignedGames,
+  mockUser,
+  mockUser2,
+  mockUser3,
+  mockUser4,
+} from "server/test/mock-data/mockUser";
+import {
+  findSignups,
+  saveSignup,
+} from "server/features/signup/signupRepository";
+import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
 
 let mongoServer: MongoMemoryServer;
 
@@ -112,6 +128,74 @@ test("Assignment with valid data should return success with random strategy", as
 
   const updatedUsers2 = assignResults2.results.map((result) => result.username);
   await assertUserUpdatedCorrectly(updatedUsers2);
+});
+
+test("Should adjust attendee limits if there are previous signups from moved program items", async () => {
+  const assignmentStrategy = AssignmentStrategy.RANDOM;
+
+  await saveGames([{ ...testGame, minAttendance: 2, maxAttendance: 2 }]);
+  await saveUser(mockUser);
+  await saveUser(mockUser2);
+  await saveUser(mockUser3);
+  await saveUser(mockUser4);
+
+  // ** Save previous signups
+
+  // This should remain because of different startTime
+  await saveSignup({
+    ...mockPostEnteredGameRequest,
+    startTime: dayjs(testGame.startTime).subtract(1, "hours").toISOString(),
+  });
+
+  // This should be removed becase of same startTime
+  await saveSignup({
+    ...mockPostEnteredGameRequest,
+    username: mockUser2.username,
+  });
+
+  // ** Save selected games
+
+  // This will get assigned
+  await saveSignedGames({
+    username: mockUser3.username,
+    signedGames: [{ ...mockSignedGames[0], priority: 1 }],
+  });
+
+  // This will not get assigned because program item full
+  await saveSignedGames({
+    username: mockUser4.username,
+    signedGames: [{ ...mockSignedGames[0], priority: 3 }],
+  });
+
+  const assignResults = unsafelyUnwrapResult(
+    await runAssignment({
+      assignmentStrategy,
+      startTime: testGame.startTime,
+    })
+  );
+  expect(assignResults.status).toEqual("success");
+  expect(assignResults.results.length).toEqual(1);
+
+  const signupsAfterUpdate = unsafelyUnwrapResult(await findSignups());
+
+  const assignmentSignup = signupsAfterUpdate.find(
+    (signup) => signup.game.gameId === testGame.gameId
+  );
+
+  expect(assignmentSignup?.userSignups).toMatchObject([
+    {
+      username: mockUser.username,
+      time: dayjs(testGame.startTime).subtract(1, "hours").toISOString(),
+      message: "",
+      priority: 0,
+    },
+    {
+      username: mockUser3.username,
+      time: mockSignedGames[0].gameDetails.startTime,
+      message: "",
+      priority: 1,
+    },
+  ]);
 });
 
 test("Assignment with no games should return error with random strategy", async () => {
