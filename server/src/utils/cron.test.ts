@@ -79,6 +79,7 @@ describe("Progam update cronjob", () => {
 
   test("should not start update if program update is already running", async () => {
     const infoLoggerSpy = vi.spyOn(logger, "info");
+    const errorLoggerSpy = vi.spyOn(logger, "error");
 
     const oldTime = dayjs(timeNow)
       .subtract(previousJobRunning, "seconds")
@@ -87,8 +88,9 @@ describe("Progam update cronjob", () => {
 
     await autoUpdateGames();
 
-    expect(infoLoggerSpy).toHaveBeenCalledWith(
-      "Auto update already running, stop"
+    expect(errorLoggerSpy).toHaveBeenCalledWith(
+      "%s",
+      new Error("Program auto update already running, stop")
     );
     expect(infoLoggerSpy).not.toHaveBeenCalledWith(
       "***** Games auto update completed"
@@ -102,6 +104,7 @@ describe("Progam update cronjob", () => {
 
   test("if cronjob is run twice, should run program update only once", async () => {
     const infoLoggerSpy = vi.spyOn(logger, "info");
+    const errorLoggerSpy = vi.spyOn(logger, "error");
 
     const oldTime = dayjs(timeNow)
       .subtract(previousJobFinished, "seconds")
@@ -113,8 +116,9 @@ describe("Progam update cronjob", () => {
     expect(infoLoggerSpy).toHaveBeenCalledWith(
       "Auto update not running, continue"
     );
-    expect(infoLoggerSpy).toHaveBeenCalledWith(
-      "Auto update already running, stop"
+    expect(errorLoggerSpy).toHaveBeenCalledWith(
+      "%s",
+      new Error("Program auto update already running, stop")
     );
     expect(infoLoggerSpy).toHaveBeenCalledWith(
       "***** Games auto update completed"
@@ -143,7 +147,7 @@ describe("Assignment cronjob", () => {
     await autoAssignPlayers();
 
     expect(infoLoggerSpy).toHaveBeenCalledWith(
-      "Assignment not running, continue"
+      "Auto assignment not running, continue"
     );
     expect(infoLoggerSpy).toHaveBeenCalledWith(
       "***** Automatic player assignment completed"
@@ -157,6 +161,7 @@ describe("Assignment cronjob", () => {
 
   test("should not run assignment if assignment is already running", async () => {
     const infoLoggerSpy = vi.spyOn(logger, "info");
+    const errorLoggerSpy = vi.spyOn(logger, "error");
 
     const oldTime = dayjs(timeNow)
       .subtract(previousJobRunning, "seconds")
@@ -165,8 +170,9 @@ describe("Assignment cronjob", () => {
 
     await autoAssignPlayers();
 
-    expect(infoLoggerSpy).toHaveBeenCalledWith(
-      "Assignment already running, stop"
+    expect(errorLoggerSpy).toHaveBeenCalledWith(
+      "%s",
+      new Error("Auto assignment already running, stop")
     );
     expect(infoLoggerSpy).not.toHaveBeenCalledWith(
       "***** Automatic player assignment completed"
@@ -180,6 +186,7 @@ describe("Assignment cronjob", () => {
 
   test("if cronjob is run twice, should run assignment only once", async () => {
     const infoLoggerSpy = vi.spyOn(logger, "info");
+    const errorLoggerSpy = vi.spyOn(logger, "error");
 
     const oldTime = dayjs(timeNow)
       .subtract(previousJobFinished, "seconds")
@@ -189,10 +196,11 @@ describe("Assignment cronjob", () => {
     await Promise.all([autoAssignPlayers(), autoAssignPlayers()]);
 
     expect(infoLoggerSpy).toHaveBeenCalledWith(
-      "Assignment not running, continue"
+      "Auto assignment not running, continue"
     );
-    expect(infoLoggerSpy).toHaveBeenCalledWith(
-      "Assignment already running, stop"
+    expect(errorLoggerSpy).toHaveBeenCalledWith(
+      "%s",
+      new Error("Auto assignment already running, stop")
     );
     expect(infoLoggerSpy).toHaveBeenCalledWith(
       "***** Automatic player assignment completed"
