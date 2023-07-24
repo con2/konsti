@@ -71,16 +71,18 @@ export const startServer = async ({
   // Set static path
   const staticPath = path.join(__dirname, "../../", "front");
 
-  // Set compression
-  if (config.bundleCompression) {
-    app.use(
-      expressStaticGzip(staticPath, {
-        enableBrotli: true,
-        orderPreference: ["br", "gz"],
-      })
-    );
-  } else {
-    app.use(express.static(staticPath));
+  if (!config.onlyCronjobs) {
+    // Set compression
+    if (config.bundleCompression) {
+      app.use(
+        expressStaticGzip(staticPath, {
+          enableBrotli: true,
+          orderPreference: ["br", "gz"],
+        })
+      );
+    } else {
+      app.use(express.static(staticPath));
+    }
   }
 
   app.get("/*", (req: Request, res: Response) => {
