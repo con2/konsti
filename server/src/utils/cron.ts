@@ -83,6 +83,7 @@ export const autoUpdateGames = async (): Promise<void> => {
         `***** Games auto update failed trying to set last run time: ${programUpdateLastRunResult.error}`
       )
     );
+    return;
   }
 
   logger.info("Auto update not running, continue");
@@ -117,6 +118,7 @@ export const autoAssignPlayers = async (): Promise<void> => {
         `***** Auto assignment failed trying to set last run time: ${assignmentLastRunResult.error}`
       )
     );
+    return;
   }
 
   logger.info("Auto assignment not running, continue");
