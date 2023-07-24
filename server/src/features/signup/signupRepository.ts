@@ -191,9 +191,14 @@ export const saveSignup = async (
   }
 };
 
+interface SaveSignupsResponse {
+  modifiedCount: number;
+  droppedSignups: PostEnteredGameRequest[];
+}
+
 export const saveSignups = async (
   signupsRequests: PostEnteredGameRequest[]
-): Promise<Result<number, MongoDbError>> => {
+): Promise<Result<SaveSignupsResponse, MongoDbError>> => {
   const gamesResult = await findGames();
   if (isErrorResult(gamesResult)) {
     return gamesResult;
@@ -204,6 +209,8 @@ export const saveSignups = async (
     signupsRequests,
     (signup) => signup.enteredGameId
   );
+
+  const droppedSignups: PostEnteredGameRequest[] = [];
 
   const bulkOps = Object.entries(signupsByProgramItems).flatMap(
     ([gameId, signups]) => {
@@ -220,7 +227,11 @@ export const saveSignups = async (
             `Too many signups passed to saveSignups for program item ${game.gameId} - maxAttendance: ${game.maxAttendance}, signups: ${signups.length}`
           )
         );
-        finalSignups = _.sampleSize(signups, game.maxAttendance);
+        const shuffledSignups = _.shuffle(signups);
+        finalSignups = shuffledSignups.slice(0, game.maxAttendance);
+        droppedSignups.push(
+          ...shuffledSignups.slice(game.maxAttendance, shuffledSignups.length)
+        );
       }
 
       return {
@@ -248,7 +259,10 @@ export const saveSignups = async (
     // @ts-expect-error: Types don't work with $addToSet
     const response = await SignupModel.bulkWrite(bulkOps);
     logger.info(`Updated signups for ${response.modifiedCount} program items`);
-    return makeSuccessResult(response.modifiedCount);
+    return makeSuccessResult({
+      modifiedCount: response.modifiedCount,
+      droppedSignups,
+    });
   } catch (error) {
     logger.error(`MongoDB: Error saving signups: %s`, error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
