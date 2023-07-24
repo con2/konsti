@@ -99,7 +99,8 @@ test("should limit max attendees if too many passed to saveSignups", async () =>
   ];
 
   const response = unsafelyUnwrapResult(await saveSignups(signups));
-  expect(response).toEqual(1);
+  expect(response.modifiedCount).toEqual(1);
+  expect(response.droppedSignups).toHaveLength(2);
 
   const signupsAfterSave = unsafelyUnwrapResult(await findSignups());
   expect(signupsAfterSave).toHaveLength(1);
