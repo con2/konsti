@@ -198,6 +198,14 @@ export const setProgramUpdateLastRun = async (
       }
     );
     if (!response) {
+      const settingsResult = await findSettings();
+      if (isErrorResult(settingsResult)) {
+        return settingsResult;
+      }
+      const settings = unwrapResult(settingsResult);
+      logger.info(
+        `Program update already running, last started: ${settings.programUpdateLastRun}`
+      );
       return makeErrorResult(MongoDbError.SETTINGS_NOT_FOUND);
     }
     logger.info(
@@ -225,6 +233,14 @@ export const setAssignmentLastRun = async (
       }
     );
     if (!response) {
+      const settingsResult = await findSettings();
+      if (isErrorResult(settingsResult)) {
+        return settingsResult;
+      }
+      const settings = unwrapResult(settingsResult);
+      logger.info(
+        `Auto assignment already running, last started: ${settings.assignmentLastRun}`
+      );
       return makeErrorResult(MongoDbError.SETTINGS_NOT_FOUND);
     }
     logger.info(`MongoDB: Assignment last run set: ${assignmentNextRun}`);
