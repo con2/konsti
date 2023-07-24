@@ -175,7 +175,7 @@
   "hiddenProgramItems": "Piilotetut ohjelmanumerot",
   "error": {
     "usernameTaken": "Käyttäjänimi on jo olemassa",
-    "invalidSerial": "Epäkelpo rekisteröintikoodi",
+    "invalidSerial": "Virheellinen rekisteröintikoodi",
     "loginFailed": "Käyttäjänimi ja salasana eivät täsmää",
     "loginDisabled": "Kirjautuminen on suljettu",
     "unknown": "Tuntematon virhe"
@@ -298,7 +298,7 @@
     "alreadySignedToGame": "Olet ilmoittautunut {{PROGRAM_TYPE}}",
     "cannotSignupMoreThanOneGame": "Et voi ilmoittautua muihin samaan aikaan alkaviin {{PROGRAM_TYPE}}.",
     "signupCount": "{{PLAYERS}} / {{MAX_ATTENDANCE}} ilmoittautunutta",
-    "attendeesNeeded": "Tarvitaan vielä {{COUNT}} {{ATTENDEE_TYPE}}.",
+    "attendeesNeeded": "Tarvitaan vielä {{COUNT}} {{ATTENDEE_TYPE}}",
     "programItemFull": "{{PROGRAM_TYPE}} on täynnä",
     "confirmCancellation": "Peruuta ilmoittautuminen",
     "staySignedUp": "Pysy ilmoittautuneena",

@@ -175,7 +175,7 @@
   "hiddenProgramItems": "Hidden program items",
   "error": {
     "usernameTaken": "Username already taken",
-    "invalidSerial": "Invalid code",
+    "invalidSerial": "Invalid registration code",
     "loginFailed": "Username and password don't match",
     "loginDisabled": "Login is disabled",
     "unknown": "Unknown error"
@@ -297,8 +297,8 @@
     "cancel": "Cancel",
     "alreadySignedToGame": "You already signed to {{PROGRAM_TYPE}}",
     "cannotSignupMoreThanOneGame": "You cannot sign up to another {{PROGRAM_TYPE}} starting at the same time.",
-    "signupCount": "{{PLAYERS}} / {{MAX_ATTENDANCE}} signed up.",
-    "attendeesNeeded": "{{COUNT}} more {{ATTENDEE_TYPE}} needed.",
+    "signupCount": "{{PLAYERS}} / {{MAX_ATTENDANCE}} signed up",
+    "attendeesNeeded": "{{COUNT}} more {{ATTENDEE_TYPE}} needed",
     "programItemFull": "{{PROGRAM_TYPE}} is full.",
     "confirmCancellation": "Cancel your sign-up",
     "staySignedUp": "Stay signed up",

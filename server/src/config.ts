@@ -158,14 +158,14 @@ const devConfig = {
 
   // Program update cron
   autoUpdateGamesEnabled: true,
-  gameUpdateInterval: `*/10 * * * * *`,
+  gameUpdateInterval: `*/1 * * * *`,
 
   // Program update
   updateGamePopularityEnabled: true,
 
   // Player assign cron
   autoAssignPlayersEnabled: true,
-  autoAssignInterval: `0,15,30,45 * * * * *`,
+  autoAssignInterval: `0,15,30,45 * * * *`,
   autoAssignDelay: 1000 * 1,
 };
 
