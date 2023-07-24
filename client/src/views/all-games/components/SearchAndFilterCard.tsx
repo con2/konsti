@@ -38,8 +38,10 @@ export const SearchAndFilterCard = ({
 }: Props): ReactElement => {
   const tagFilters = [
     Tag.BEGINNER_FRIENDLY,
-    Tag.SUITABLE_UNDER_10,
-    Tag.AGE_RESTRICTED,
+    Tag.AIMED_AT_CHILDREN_UNDER_13,
+    Tag.AIMED_AT_CHILDREN_BETWEEN_13_17,
+    Tag.AIMED_AT_ADULT_ATTENDEES,
+    Tag.FOR_18_PLUS_ONLY,
   ];
   const languageFilters = [Language.FINNISH, Language.ENGLISH];
 
@@ -60,13 +62,13 @@ export const SearchAndFilterCard = ({
         PROGRAM_TYPE: t(`programTypePlural.${activeProgramType}`),
       }),
     },
-    tagFilters.map((filter) => ({
-      value: filter,
-      title: t(`gameTags.${filter}`),
-    })),
     languageFilters.map((filter) => ({
       value: filter,
       title: t(`programItemLanguage.${filter}`),
+    })),
+    tagFilters.map((filter) => ({
+      value: filter,
+      title: t(`gameTags.${filter}`),
     })),
   ].flat();
 
