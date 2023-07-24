@@ -30,6 +30,7 @@ export const CancelSignupForm = ({
       <StyledButton
         onClick={() => onCancelForm()}
         buttonStyle={ButtonStyle.SECONDARY}
+        disabled={loading}
       >
         {t("signup.staySignedUp")}
       </StyledButton>
