@@ -32,6 +32,7 @@ export const EnteredGameRow = ({
     (state) => state.admin.signupQuestions
   );
 
+  const [loading, setLoading] = useState(false);
   const [cancelSignupFormOpen, setCancelSignupFormOpen] = useState(false);
   const [serverError, setServerError] =
     useState<DeleteEnteredGameErrorMessage | null>(null);
@@ -41,6 +42,7 @@ export const EnteredGameRow = ({
   );
 
   const removeSignup = async (): Promise<void> => {
+    setLoading(true);
     const errorMessage = await dispatch(
       submitDeleteEnteredGame({
         username,
@@ -55,6 +57,7 @@ export const EnteredGameRow = ({
       await loadGames();
       setCancelSignupFormOpen(false);
     }
+    setLoading(false);
   };
 
   if (signup.time !== startTime) {
@@ -84,6 +87,7 @@ export const EnteredGameRow = ({
                 setCancelSignupFormOpen(false);
               }}
               onConfirmForm={async () => await removeSignup()}
+              loading={loading}
             />
           </CancelSignupFormContainer>
         )}
