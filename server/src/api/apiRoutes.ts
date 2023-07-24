@@ -5,6 +5,7 @@ import {
   postAutoUpdateGames,
   postUpdateGames,
 } from "server/features/game/gameController";
+import { getHealthStatus } from "server/features/health/healthController";
 import {
   getResults,
   postAssignment,
@@ -88,6 +89,7 @@ apiRoutes.get(ApiEndpoint.RESULTS, getResults);
 apiRoutes.get(ApiEndpoint.GROUP, getGroup);
 apiRoutes.get(ApiEndpoint.SIGNUP_MESSAGE, getSignupMessages);
 apiRoutes.get(ApiEndpoint.SENTRY_TEST, getSentryTest);
+apiRoutes.get(ApiEndpoint.HEALTH, getHealthStatus);
 
 /* DELETE routes */
 
