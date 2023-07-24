@@ -7,7 +7,11 @@ import { config } from "server/config";
 const startApp = async (): Promise<void> => {
   if (config.onlyCronjobs) {
     logger.info("Start enabled cronjobs");
-    startCronJobs();
+    try {
+      startCronJobs();
+    } catch (error) {
+      logger.error("Error starting cronjobs: %s", error);
+    }
   }
   if (!config.onlyCronjobs) {
     logger.info("Cronjobs not started, set ONLY_CRONJOBS to enable cronjobs");
