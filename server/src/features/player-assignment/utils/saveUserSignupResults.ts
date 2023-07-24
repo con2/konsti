@@ -84,10 +84,12 @@ export const saveUserSignupResults = async (
     };
   });
 
+  // This might drop some signups if by some error too many signups are passed for a program item
   const saveSignupsResult = await saveSignups(newSignups);
   if (isErrorResult(saveSignupsResult)) {
     return saveSignupsResult;
   }
+  const { droppedSignups } = unwrapResult(saveSignupsResult);
 
   // Remove eventLog items from same start time
   const deleteEventLogItemsByStartTimeResult =
@@ -99,9 +101,24 @@ export const saveUserSignupResults = async (
     return deleteEventLogItemsByStartTimeResult;
   }
 
+  // Filter out possible dropped results
+  const finalResults =
+    droppedSignups.length > 0
+      ? results.filter((result) => {
+          return droppedSignups.find(
+            (signup) =>
+              !(
+                signup.enteredGameId ===
+                  result.enteredGame.gameDetails.gameId &&
+                signup.username === result.username
+              )
+          );
+        })
+      : results;
+
   // Add new signups to users eventLogs
   const addEventLogItemsResult = await addEventLogItems({
-    updates: results.map((result) => ({
+    updates: finalResults.map((result) => ({
       username: result.username,
       programItemId: result.enteredGame.gameDetails.gameId,
       programItemStartTime: startTime,
