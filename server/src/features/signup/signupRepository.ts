@@ -155,6 +155,7 @@ export const saveSignup = async (
       {
         game: game._id,
         count: { $lt: game.maxAttendance },
+        "userSignups.username": { $ne: username },
       },
       {
         $addToSet: {

@@ -43,6 +43,7 @@ export const DirectSignupForm = ({
     (state) => state.admin.signupQuestions
   );
 
+  const [loading, setLoading] = useState(false);
   const [signupFormOpen, setSignupFormOpen] = useState(false);
   const [cancelSignupFormOpen, setCancelSignupFormOpen] = useState(false);
   const [serverError, setServerError] =
@@ -55,6 +56,7 @@ export const DirectSignupForm = ({
   const alreadyEnteredToGame = isAlreadyEntered(game, activeEnteredGames);
 
   const removeSignup = async (): Promise<void> => {
+    setLoading(true);
     const errorMessage = await dispatch(
       submitDeleteEnteredGame({
         username,
@@ -69,6 +71,7 @@ export const DirectSignupForm = ({
       await loadGames();
       setCancelSignupFormOpen(false);
     }
+    setLoading(false);
   };
 
   const directSignupStartTime = getDirectSignupStartTime(game);
@@ -193,6 +196,7 @@ export const DirectSignupForm = ({
                     setCancelSignupFormOpen(false);
                   }}
                   onConfirmForm={async () => await removeSignup()}
+                  loading={loading}
                 />
               )}
             </>

@@ -107,3 +107,38 @@ test("should limit max attendees if too many passed to saveSignups", async () =>
   expect(signupsAfterSave[0].count).toEqual(2);
   expect(signupsAfterSave[0].userSignups).toHaveLength(2);
 });
+
+test("should not add multiple duplicate signups for same user", async () => {
+  await saveUser(mockUser);
+  await saveGames([testGame]);
+
+  await Promise.all([
+    saveSignup(mockPostEnteredGameRequest),
+    saveSignup(mockPostEnteredGameRequest),
+    saveSignup(mockPostEnteredGameRequest),
+    saveSignup(mockPostEnteredGameRequest),
+  ]);
+
+  const signupsAfterSave = unsafelyUnwrapResult(await findSignups());
+  expect(signupsAfterSave).toHaveLength(1);
+  expect(signupsAfterSave[0].count).toEqual(1);
+  expect(signupsAfterSave[0].userSignups).toHaveLength(1);
+});
+
+test("should not delete multiple times if delete called multiple times", async () => {
+  await saveUser(mockUser);
+  await saveGames([testGame]);
+  await saveSignup(mockPostEnteredGameRequest);
+
+  await Promise.all([
+    delSignup(mockPostEnteredGameRequest),
+    delSignup(mockPostEnteredGameRequest),
+    delSignup(mockPostEnteredGameRequest),
+    delSignup(mockPostEnteredGameRequest),
+  ]);
+
+  const signupsAfterSave = unsafelyUnwrapResult(await findSignups());
+  expect(signupsAfterSave).toHaveLength(1);
+  expect(signupsAfterSave[0].count).toEqual(0);
+  expect(signupsAfterSave[0].userSignups).toHaveLength(0);
+});
