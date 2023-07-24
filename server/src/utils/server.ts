@@ -87,7 +87,9 @@ export const startServer = async ({
     if (req.originalUrl.includes("/api/")) {
       res.sendStatus(404);
     } else {
-      res.sendFile(path.join(staticPath, "index.html"));
+      if (!config.onlyCronjobs) {
+        res.sendFile(path.join(staticPath, "index.html"));
+      }
     }
   });
 
