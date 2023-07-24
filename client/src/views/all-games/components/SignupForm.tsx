@@ -40,6 +40,7 @@ export const SignupForm = ({
 
   const firstOption = firstUnselected.length > 0 ? firstUnselected[0] : 1;
 
+  const [loading, setLoading] = useState(false);
   const [priority, setPriority] = useState<number | null>(firstOption);
 
   const [errorMessage, setErrorMessage] =
@@ -55,6 +56,7 @@ export const SignupForm = ({
 
   const handleSignup = async (event: FormEvent): Promise<void> => {
     event.preventDefault();
+    setLoading(true);
     if (!priority) {
       return;
     }
@@ -80,6 +82,7 @@ export const SignupForm = ({
     } else {
       setErrorMessage(null);
     }
+    setLoading(false);
   };
 
   const options = OPTIONS.map((n) => {
@@ -100,7 +103,11 @@ export const SignupForm = ({
         selectedValue={firstOption.toString()}
       />
       <StyledButtonGroup>
-        <StyledButton onClick={handleSignup} buttonStyle={ButtonStyle.PRIMARY}>
+        <StyledButton
+          onClick={handleSignup}
+          buttonStyle={ButtonStyle.PRIMARY}
+          disabled={loading}
+        >
           {t("signup.confirm")}
         </StyledButton>
         <StyledButton

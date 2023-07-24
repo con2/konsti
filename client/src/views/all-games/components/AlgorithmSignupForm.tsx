@@ -45,6 +45,7 @@ export const AlgorithmSignupForm = ({
   const groupMembers = useAppSelector((state) => state.group.groupMembers);
   const isGroupCreator = getIsGroupCreator(groupCode, serial);
 
+  const [loading, setLoading] = useState(false);
   const [signupFormOpen, setSignupFormOpen] = useState(false);
   const [cancelSignupFormOpen, setCancelSignupFormOpen] = useState(false);
   const [errorMessage, setErrorMessage] = useState<
@@ -52,6 +53,7 @@ export const AlgorithmSignupForm = ({
   >(null);
 
   const removeSignedGame = async (gameToRemove: Game): Promise<void> => {
+    setLoading(true);
     const newSignupData = signedGames.filter(
       (g: SelectedGame) => g.gameDetails.gameId !== gameToRemove.gameId
     );
@@ -69,6 +71,7 @@ export const AlgorithmSignupForm = ({
       setCancelSignupFormOpen(false);
       setSignupFormOpen(false);
     }
+    setLoading(false);
   };
 
   const currentPriority = signedGames.find(
@@ -174,6 +177,7 @@ export const AlgorithmSignupForm = ({
                     setCancelSignupFormOpen(false);
                   }}
                   onConfirmForm={async () => await removeSignedGame(game)}
+                  loading={loading}
                 />
               )}
             </>
