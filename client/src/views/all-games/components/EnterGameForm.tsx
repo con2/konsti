@@ -215,6 +215,7 @@ export const EnterGameForm = ({
         <StyledButton
           onClick={handleCancel}
           buttonStyle={ButtonStyle.SECONDARY}
+          disabled={loading}
         >
           {t("signup.cancel")}
         </StyledButton>
