@@ -71,7 +71,10 @@ export const autoUpdateGames = async (): Promise<void> => {
   );
   if (isErrorResult(programUpdateLastRunResult)) {
     if (programUpdateLastRunResult.error === MongoDbError.SETTINGS_NOT_FOUND) {
-      logger.info("Auto update already running, stop");
+      logger.error(
+        "%s",
+        new Error("Program auto update already running, stop")
+      );
       return;
     }
     logger.error(
@@ -105,7 +108,7 @@ export const autoAssignPlayers = async (): Promise<void> => {
   );
   if (isErrorResult(assignmentLastRunResult)) {
     if (assignmentLastRunResult.error === MongoDbError.SETTINGS_NOT_FOUND) {
-      logger.info("Assignment already running, stop");
+      logger.error("%s", new Error("Auto assignment already running, stop"));
       return;
     }
     logger.error(
@@ -116,7 +119,7 @@ export const autoAssignPlayers = async (): Promise<void> => {
     );
   }
 
-  logger.info("Assignment not running, continue");
+  logger.info("Auto assignment not running, continue");
 
   const runAssignmentResult = await runAssignment({
     assignmentStrategy: sharedConfig.assignmentStrategy,

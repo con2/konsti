@@ -26,4 +26,5 @@ export enum ApiEndpoint {
   EVENT_LOG = "/api/event-log",
   PROGRAM_UPDATE_CRON = "/api/program-update-cron",
   ASSIGNMENT_CRON = "/api/assignment-cron",
+  HEALTH = "/api/health",
 }
