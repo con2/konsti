@@ -7,17 +7,23 @@ import { ButtonGroup } from "client/components/ButtonGroup";
 interface Props {
   onCancelForm: () => void;
   onConfirmForm: () => Promise<void>;
+  loading: boolean;
 }
 
 export const CancelSignupForm = ({
   onCancelForm,
   onConfirmForm,
+  loading,
 }: Props): ReactElement => {
   const { t } = useTranslation();
 
   return (
     <StyledButtonGroup>
-      <StyledButton onClick={onConfirmForm} buttonStyle={ButtonStyle.PRIMARY}>
+      <StyledButton
+        onClick={onConfirmForm}
+        buttonStyle={ButtonStyle.PRIMARY}
+        disabled={loading}
+      >
         {t("signup.confirmCancellation")}
       </StyledButton>
 

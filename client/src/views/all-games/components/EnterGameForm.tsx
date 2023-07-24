@@ -50,6 +50,7 @@ export const EnterGameForm = ({
   const serial = useAppSelector((state) => state.login.serial);
   const groupCode = useAppSelector((state) => state.group.groupCode);
 
+  const [loading, setLoading] = useState(false);
   const [userSignupMessage, setUserSignupMessage] = useState<string>("");
   const [selectedValue, setSelectedValue] = useState<string>(
     (i18n.language === "fi"
@@ -73,6 +74,7 @@ export const EnterGameForm = ({
 
   const handleSignup = async (event: FormEvent): Promise<void> => {
     event.preventDefault();
+    setLoading(true);
 
     const enterData = {
       username,
@@ -119,6 +121,7 @@ export const EnterGameForm = ({
 
     await loadGames();
     onEnterGame();
+    setLoading(false);
   };
 
   return (
@@ -205,7 +208,7 @@ export const EnterGameForm = ({
         <StyledButton
           onClick={handleSignup}
           buttonStyle={ButtonStyle.PRIMARY}
-          disabled={!!game.entryFee && !agreeEntryFee}
+          disabled={(!!game.entryFee && !agreeEntryFee) || loading}
         >
           {t("signup.confirm")}
         </StyledButton>
