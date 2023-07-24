@@ -186,15 +186,6 @@ export const saveSettings = async (
 export const setProgramUpdateLastRun = async (
   programUpdateNextRun: string
 ): Promise<Result<void, MongoDbError>> => {
-  const settingsResult = await findSettings();
-  if (isErrorResult(settingsResult)) {
-    return settingsResult;
-  }
-  const settings = unwrapResult(settingsResult);
-  logger.info(
-    `Program update starting, last started: ${settings.programUpdateLastRun}`
-  );
-
   try {
     const response = await SettingsModel.findOneAndUpdate(
       {
@@ -207,14 +198,6 @@ export const setProgramUpdateLastRun = async (
       }
     );
     if (!response) {
-      const settingsResult2 = await findSettings();
-      if (isErrorResult(settingsResult2)) {
-        return settingsResult2;
-      }
-      const settings2 = unwrapResult(settingsResult2);
-      logger.info(
-        `Program update already running, last started: ${settings2.programUpdateLastRun}`
-      );
       return makeErrorResult(MongoDbError.SETTINGS_NOT_FOUND);
     }
     logger.info(
@@ -230,15 +213,6 @@ export const setProgramUpdateLastRun = async (
 export const setAssignmentLastRun = async (
   assignmentNextRun: string
 ): Promise<Result<void, MongoDbError>> => {
-  const settingsResult = await findSettings();
-  if (isErrorResult(settingsResult)) {
-    return settingsResult;
-  }
-  const settings = unwrapResult(settingsResult);
-  logger.info(
-    `Auto assignment starting, last started: ${settings.assignmentLastRun}`
-  );
-
   try {
     const response = await SettingsModel.findOneAndUpdate(
       {
@@ -251,14 +225,6 @@ export const setAssignmentLastRun = async (
       }
     );
     if (!response) {
-      const settingsResult2 = await findSettings();
-      if (isErrorResult(settingsResult2)) {
-        return settingsResult2;
-      }
-      const settings2 = unwrapResult(settingsResult2);
-      logger.info(
-        `Auto assignment already running, last started: ${settings2.assignmentLastRun}`
-      );
       return makeErrorResult(MongoDbError.SETTINGS_NOT_FOUND);
     }
     logger.info(`MongoDB: Assignment last run set: ${assignmentNextRun}`);
