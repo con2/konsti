@@ -65,6 +65,7 @@ export const GameEntry = ({
     sharedConfig.manualSignupMode === SignupStrategy.DIRECT ||
     signupStrategy === SignupStrategy.DIRECT ||
     signupAlwaysOpen;
+
   const gameIsFull = players >= game.maxAttendance;
 
   const formatDuration = (mins: number): string => {

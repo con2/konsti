@@ -52,8 +52,7 @@ export const AllGamesList = ({ games }: Props): ReactElement => {
     ([startTime, gamesForStartTime]) => {
       const timeslotSignupStrategy = getTimeslotSignupStrategy(
         gamesForStartTime,
-        activeProgramType,
-        startTime
+        activeProgramType
       );
 
       return (
