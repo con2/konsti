@@ -11,10 +11,6 @@ export const testTimes = [
     .subtract(1, "hours")
     .add(PHASE_GAP - 2, "minutes")
     .toISOString(),
-  dayjs(CONVENTION_START_TIME)
-    .subtract(1, "hours")
-    .add(PHASE_GAP + 2, "minutes")
-    .toISOString(),
   dayjs(CONVENTION_START_TIME).toISOString(),
   dayjs(CONVENTION_START_TIME).add(45, "minutes").toISOString(),
   dayjs(CONVENTION_START_TIME).add(1, "hours").toISOString(),
@@ -22,6 +18,10 @@ export const testTimes = [
   dayjs(CONVENTION_START_TIME)
     .add(2, "hours")
     .add(PHASE_GAP - 2, "minutes")
+    .toISOString(),
+  dayjs(CONVENTION_START_TIME)
+    .add(2, "hours")
+    .add(PHASE_GAP + 2, "minutes")
     .toISOString(),
   dayjs(CONVENTION_START_TIME).add(3, "hours").toISOString(),
   dayjs(CONVENTION_START_TIME).add(5, "hours").toISOString(),
