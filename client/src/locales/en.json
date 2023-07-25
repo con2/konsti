@@ -271,11 +271,6 @@
     "changingPasswordSuccess": "Password changed succesfully.",
     "userCreatedAt": "User account created"
   },
-  "testValues": {
-    "buttonText": "Test values",
-    "time": "Test time",
-    "strategy": "Strategy"
-  },
   "eventLog": {
     "title": "Notifications",
     "noNotifications": "No notifications",
@@ -505,6 +500,7 @@
   "admin": {
     "sentryTesting": "Sentry testing",
     "sentryClientTest": "Client test",
-    "sentryBackendTest": "Backend test"
+    "sentryBackendTest": "Backend test",
+    "strategy": "Strategy"
   }
 }

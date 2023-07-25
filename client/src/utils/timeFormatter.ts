@@ -20,3 +20,9 @@ export const getTime = (time: string): string => {
   // eslint-disable-next-line no-restricted-syntax -- We want to call format here
   return dayjs(time).tz(TIMEZONE).format(timeFormat);
 };
+
+export const getShortWeekdayAndTime = (time: string): string => {
+  const timeFormat = "dd HH:mm";
+  // eslint-disable-next-line no-restricted-syntax -- We want to call format here
+  return dayjs(time).tz(TIMEZONE).format(timeFormat);
+};
