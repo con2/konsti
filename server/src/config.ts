@@ -21,7 +21,6 @@ interface Config {
   autoUpdateGamesEnabled: boolean;
   gameUpdateInterval: string;
   enableRemoveOverlapSignups: boolean;
-  saveTestAssign: boolean;
   gamePopularityUpdateMethod: GameUpdateMethod;
   updateGamePopularityEnabled: boolean;
   useLocalProgramFile: boolean;
@@ -53,9 +52,6 @@ const commonConfig = {
   bundleCompression: true,
   enableRemoveOverlapSignups: true,
   gamePopularityUpdateMethod: GameUpdateMethod.assign, // 'signups', 'assign'
-
-  // Development and testing
-  saveTestAssign: true,
 
   // Convention settings
   dataUri: "https://kompassi.eu/api/v1/events/ropecon2023/programme/ropecon",
