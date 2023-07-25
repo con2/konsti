@@ -271,11 +271,6 @@
     "changingPasswordSuccess": "Salasanasi on nyt vaihdettu.",
     "userCreatedAt": "Käyttäjätili rekisteröity"
   },
-  "testValues": {
-    "buttonText": "Testiarvot",
-    "time": "Testiaika",
-    "strategy": "Strategia"
-  },
   "eventLog": {
     "title": "Ilmoitukset",
     "noNotifications": "Ei ilmoituksia",
@@ -505,6 +500,7 @@
   "admin": {
     "sentryTesting": "Sentryn testaus",
     "sentryClientTest": "Client-testi",
-    "sentryBackendTest": "Backend-testi"
+    "sentryBackendTest": "Backend-testi",
+    "strategy": "Strategia"
   }
 }

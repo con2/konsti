@@ -7,7 +7,6 @@ interface Config {
   enableAxe: boolean;
   enableWhyDidYouRender: boolean;
   dataUpdateInterval: number;
-  enableStrategyTestValue: boolean;
   enableRevolvingDoor: boolean;
   enableOrganizerFeedback: boolean;
   enableTagDropdown: boolean;
@@ -28,7 +27,6 @@ export const config: Config = {
   enableReduxTrace: false,
   enableAxe: false,
   enableWhyDidYouRender: false,
-  enableStrategyTestValue: false,
 
   // Environment dependent
   loadedSettings: process.env.SETTINGS ?? "development",
