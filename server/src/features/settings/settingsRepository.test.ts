@@ -15,8 +15,14 @@ import {
   findSettings,
   saveHidden,
   saveSettings,
+  saveSignupQuestion,
 } from "server/features/settings/settingsRepository";
 import { saveGames } from "server/features/game/gameRepository";
+import {
+  SignupQuestion,
+  SignupQuestionType,
+} from "shared/typings/models/settings";
+import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 
 let mongoServer: MongoMemoryServer;
 
@@ -72,4 +78,24 @@ test("should update appOpen status", async () => {
   await saveSettings({ appOpen });
   const insertedSettings = await SettingsModel.findOne({});
   expect(insertedSettings?.appOpen).toEqual(appOpen);
+});
+
+test("should not save multiple signup questions for same gameId", async () => {
+  // This will create default settings
+  await findSettings();
+
+  const signupQuestion: SignupQuestion = {
+    gameId: "p6673",
+    questionFi: "Hahmoluokka",
+    questionEn: "Character class",
+    private: false,
+    type: SignupQuestionType.TEXT,
+    selectOptions: [],
+  };
+
+  await saveSignupQuestion(signupQuestion);
+  await saveSignupQuestion(signupQuestion);
+
+  const settings = unsafelyUnwrapResult(await findSettings());
+  expect(settings.signupQuestions).toHaveLength(1);
 });

@@ -1,6 +1,10 @@
 import dayjs, { Dayjs } from "dayjs";
 import { ProgramType } from "shared/typings/models/game";
 import { AssignmentStrategy, SignupStrategy } from "./sharedConfig.types";
+import {
+  SignupQuestion,
+  SignupQuestionType,
+} from "shared/typings/models/settings";
 
 type ArrMin1<T> = [T, ...T[]];
 
@@ -30,6 +34,9 @@ interface SharedConfig {
   resultsVisible: boolean;
   addToKonsti: string[];
   noKonstiSignupIds: string[];
+  signupQuestions: SignupQuestion[];
+  tournamentSignupQuestion: SignupQuestion;
+  tournamentSignupQuestionExcludeIds: string[];
 }
 
 // Convention days
@@ -168,6 +175,96 @@ export const sharedConfig: SharedConfig = {
     "p6999", // Larp: Kielokoti 2. Pelautus
     "p6299", // Larp: Vaeltajalegendat: Sinustako seikkailija!? 1. Pelautus
     "p7006", // Larp: Vaeltajalegendat: Sinustako seikkailija!? 2. Pelautus
+  ],
+
+  signupQuestions: [
+    {
+      gameId: "p6673", // PFS multi-table special: Pathfinder Society #3-98: Expedition into Pallid Peril
+      questionFi:
+        "Hahmoluokka ja taso. Jos sinulla on useampi hahmo, merkitse ensisijainen hahmo sulkeilla.",
+      questionEn:
+        "Character class and level. If you have multiple characters, mark primary character with brackets.",
+      private: false,
+      type: SignupQuestionType.TEXT,
+      selectOptions: [],
+    },
+    {
+      gameId: "p6852", // Palapeliturnaus (Joukkue) | Jigsaw Puzzle Tournament (Teams)
+      questionFi:
+        "Syötä joukkueen nimi, kaikkien joukkueesi jäsenten (2-4 kpl) nimet, sekä ainakin yhden jäsenen sähköpostiosoite ja puhelinnumero mahdollista palkintoyhteydenottoa varten.",
+      questionEn:
+        "Please write the name of your team, the names of all team members (2-4 people) and an email address and phone number of at least one team member in case we need to contact you about a possible award.",
+      private: true,
+      type: SignupQuestionType.TEXT,
+      selectOptions: [],
+    },
+    {
+      gameId: "p6639", // Pikamaalauskilpailu / Speed Painting Contest 1 (Pe/Fri)
+      questionFi: "Haluan, että maalattavan figuni pohjaväri on",
+      questionEn: "I want my miniature to be primed",
+      private: false,
+      type: SignupQuestionType.SELECT,
+      selectOptions: [
+        { optionFi: "Musta", optionEn: "Black" },
+        { optionFi: "Valkoinen", optionEn: "White" },
+        { optionFi: "Zenitaali", optionEn: "Zenithal" },
+      ],
+    },
+    {
+      gameId: "p6978", // Pikamaalauskilpailu / Speed Painting Contest 2 (Pe/Fri)
+      questionFi: "Haluan, että maalattavan figuni pohjaväri on",
+      questionEn: "I want my miniature to be primed",
+      private: false,
+      type: SignupQuestionType.SELECT,
+      selectOptions: [
+        { optionFi: "Musta", optionEn: "Black" },
+        { optionFi: "Valkoinen", optionEn: "White" },
+        { optionFi: "Zenitaali", optionEn: "Zenithal" },
+      ],
+    },
+    {
+      gameId: "p6989", // Pikamaalauskilpailu / Speed Painting Contest 3 (La/Sat)
+      questionFi: "Haluan, että maalattavan figuni pohjaväri on",
+      questionEn: "I want my miniature to be primed",
+      private: false,
+      type: SignupQuestionType.SELECT,
+      selectOptions: [
+        { optionFi: "Musta", optionEn: "Black" },
+        { optionFi: "Valkoinen", optionEn: "White" },
+        { optionFi: "Zenitaali", optionEn: "Zenithal" },
+      ],
+    },
+    {
+      gameId: "p6990", // Pikamaalauskilpailu / Speed Painting Contest 4 (La/Sat)
+      questionFi: "Haluan, että maalattavan figuni pohjaväri on",
+      questionEn: "I want my miniature to be primed",
+      private: false,
+      type: SignupQuestionType.SELECT,
+      selectOptions: [
+        { optionFi: "Musta", optionEn: "Black" },
+        { optionFi: "Valkoinen", optionEn: "White" },
+        { optionFi: "Zenitaali", optionEn: "Zenithal" },
+      ],
+    },
+  ],
+
+  tournamentSignupQuestion: {
+    gameId: "", // Filled later
+    questionFi:
+      "Syötä nimesi, sähköpostiosoitteesi ja puhelinnumerosi mahdollista palkintoyhteydenottoa varten.",
+    questionEn:
+      "Please write your name, email address and phone number in case we need to contact you about a possible award.",
+    private: true,
+    type: SignupQuestionType.TEXT,
+    selectOptions: [],
+  },
+
+  tournamentSignupQuestionExcludeIds: [
+    "p6852", // Palapeliturnaus (Joukkue) | Jigsaw Puzzle Tournament (Teams)
+    "p6639", // Pikamaalauskilpailu / Speed Painting Contest 1 (Pe/Fri)
+    "p6978", // Pikamaalauskilpailu / Speed Painting Contest 2 (Pe/Fri)
+    "p6989", // Pikamaalauskilpailu / Speed Painting Contest 3 (La/Sat)
+    "p6990", // Pikamaalauskilpailu / Speed Painting Contest 4 (La/Sat)
   ],
 
   // Two phase signup settings

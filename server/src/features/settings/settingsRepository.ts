@@ -118,16 +118,18 @@ export const saveSignupQuestion = async (
 ): Promise<Result<Settings, MongoDbError>> => {
   try {
     const settings = await SettingsModel.findOneAndUpdate(
-      {},
+      { "signupQuestions.gameId": { $ne: signupQuestionData.gameId } },
       {
-        $push: { signupQuestions: signupQuestionData },
+        $addToSet: { signupQuestions: signupQuestionData },
       },
       {
         new: true,
-        upsert: true,
         fields: "-signupQuestions._id -_id -__v -createdAt -updatedAt",
       }
     );
+    if (!settings) {
+      return makeErrorResult(MongoDbError.SETTINGS_NOT_FOUND);
+    }
     logger.info(`MongoDB: Signup question updated`);
     return makeSuccessResult(settings);
   } catch (error) {
