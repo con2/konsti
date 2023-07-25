@@ -40,6 +40,7 @@ import { closeServer, startServer } from "server/utils/server";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 import { PostSignupQuestionRequest } from "shared/typings/api/settings";
 import {
+  createSettings,
   findSettings,
   saveSignupQuestion,
 } from "server/features/settings/settingsRepository";
@@ -240,6 +241,8 @@ describe(`POST ${ApiEndpoint.SIGNUP_QUESTION}`, () => {
   });
 
   test("should add new text signup question", async () => {
+    await createSettings();
+
     const requestData: PostSignupQuestionRequest = {
       signupQuestion: {
         gameId: "123",
@@ -266,6 +269,8 @@ describe(`POST ${ApiEndpoint.SIGNUP_QUESTION}`, () => {
   });
 
   test("should add new select signup question", async () => {
+    await createSettings();
+
     const requestData: PostSignupQuestionRequest = {
       signupQuestion: {
         gameId: "123",
@@ -323,6 +328,8 @@ describe(`POST ${ApiEndpoint.SIGNUP_QUESTION}`, () => {
     });
 
     test("should delete signup question", async () => {
+      await createSettings();
+
       const signupQuestion: SignupQuestion = {
         gameId: "123",
         questionFi: "Character level",
