@@ -6,7 +6,7 @@ import _ from "lodash";
 import { updateFavorite, UpdateFavoriteOpts } from "client/utils/favorite";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
-import { Game, ProgramType } from "shared/typings/models/game";
+import { Game } from "shared/typings/models/game";
 import { AlgorithmSignupForm } from "./AlgorithmSignupForm";
 import { DirectSignupForm } from "./DirectSignupForm";
 import { SelectedGame } from "shared/typings/models/user";
@@ -18,6 +18,7 @@ import { Tags } from "client/components/Tags";
 import { FavoriteButton } from "client/components/FavoriteButton";
 import { getAttendeeType } from "client/utils/getAttendeeType";
 import { RaisedCard } from "client/components/RaisedCard";
+import { isRevolvingDoorWorkshop } from "client/utils/isRevolvingDoorWorkshop";
 
 interface Props {
   game: Game;
@@ -96,10 +97,7 @@ export const GameEntry = ({
   }
   tags.push(t(`programItemLanguage.${game.language}`));
 
-  const workshopDoesNotRequireSignup =
-    game.programType === ProgramType.WORKSHOP && game.revolvingDoor;
-
-  const requiresSignup = !workshopDoesNotRequireSignup;
+  const requiresSignup = !isRevolvingDoorWorkshop(game);
   const konstiSignup = !sharedConfig.noKonstiSignupIds.includes(game.gameId);
   const normalSignup = requiresSignup && konstiSignup;
 
