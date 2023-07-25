@@ -54,8 +54,8 @@ export const EnterGameForm = ({
   const [userSignupMessage, setUserSignupMessage] = useState<string>("");
   const [selectedValue, setSelectedValue] = useState<string>(
     (i18n.language === "fi"
-      ? signupQuestion?.selectOptions[0].optionFi
-      : signupQuestion?.selectOptions[0].optionEn) ?? ""
+      ? signupQuestion?.selectOptions[0]?.optionFi ?? ""
+      : signupQuestion?.selectOptions[0]?.optionEn ?? "") ?? ""
   );
   const [agreeEntryFee, setAgreeEntryFee] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<

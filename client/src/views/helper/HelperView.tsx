@@ -16,7 +16,7 @@ export const HelperView = (): ReactElement => {
   const { t } = useTranslation();
 
   const [selectedTool, setSelectedTool] = useState<HelperTool>(
-    HelperTool.PRIVATE_SIGNUP_MESSAGES
+    HelperTool.PASSWORD_MANAGEMENT
   );
 
   const store = useStore();
@@ -33,19 +33,19 @@ export const HelperView = (): ReactElement => {
     <div>
       <ButtonGroup>
         <Button
-          disabled={selectedTool === HelperTool.PRIVATE_SIGNUP_MESSAGES}
-          buttonStyle={ButtonStyle.SECONDARY}
-          onClick={() => setSelectedTool(HelperTool.PRIVATE_SIGNUP_MESSAGES)}
-        >
-          {t("helperView.signupQuestionAnswers")}
-        </Button>
-
-        <Button
           disabled={selectedTool === HelperTool.PASSWORD_MANAGEMENT}
           buttonStyle={ButtonStyle.SECONDARY}
           onClick={() => setSelectedTool(HelperTool.PASSWORD_MANAGEMENT)}
         >
           {t("passwordManagement.helperPasswordManagement")}
+        </Button>
+
+        <Button
+          disabled={selectedTool === HelperTool.PRIVATE_SIGNUP_MESSAGES}
+          buttonStyle={ButtonStyle.SECONDARY}
+          onClick={() => setSelectedTool(HelperTool.PRIVATE_SIGNUP_MESSAGES)}
+        >
+          {t("helperView.signupQuestionAnswers")}
         </Button>
       </ButtonGroup>
       {selectedTool === HelperTool.PASSWORD_MANAGEMENT && (

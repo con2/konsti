@@ -11,7 +11,7 @@ const testAssignPlayers = async (
   assignmentStrategy: AssignmentStrategy
 ): Promise<void> => {
   const startTime = dayjs(sharedConfig.CONVENTION_START_TIME)
-    .add(2, "hours")
+    .add(3, "hours")
     .toISOString();
   await runAssignment({
     assignmentStrategy,
