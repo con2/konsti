@@ -28,8 +28,7 @@
     "type-check": "yarn run -T tsc --noEmit",
     "update-game-popularity": "yarn run -T cross-env NODE_ENV=development ts-node src/test/scripts/testUpdateGamePopularity.ts",
     "verify-results": "yarn run -T cross-env NODE_ENV=development ts-node src/test/scripts/testVerifyResults.ts",
-    "load-kompassi-data": "yarn run -T cross-env NODE_ENV=development ts-node src/test/scripts/loadKompassiDataToDb.ts",
-    "update-signups": "yarn run -T cross-env NODE_ENV=development ts-node src/test/scripts/updateSignups.ts"
+    "load-kompassi-data": "yarn run -T cross-env NODE_ENV=development ts-node src/test/scripts/loadKompassiDataToDb.ts"
   },
   "dependencies": {
     "@faker-js/faker": "8.0.2",
