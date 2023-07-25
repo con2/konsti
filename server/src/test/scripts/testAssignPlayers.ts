@@ -1,8 +1,6 @@
 import dayjs from "dayjs";
 import { logger } from "server/utils/logger";
 import { runAssignment } from "server/features/player-assignment/runAssignment";
-import { config } from "server/config";
-import { verifyUserSignups } from "server/features/player-assignment/utils/verifyUserSignups";
 import { db } from "server/db/mongodb";
 import { AssignmentStrategy } from "shared/config/sharedConfig.types";
 import { sharedConfig } from "shared/config/sharedConfig";
@@ -17,12 +15,6 @@ const testAssignPlayers = async (
     assignmentStrategy,
     startTime,
   });
-
-  if (!config.saveTestAssign) {
-    return;
-  }
-
-  await verifyUserSignups();
 };
 
 const getAssignmentStrategy = (userParameter: string): AssignmentStrategy => {
