@@ -4,9 +4,7 @@ import { useTranslation } from "react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Game } from "shared/typings/models/game";
 import { ExpandedGameDescription } from "client/views/all-games/components/ExpandedGameDescription";
-
-const DESCRIPTION_SENTENCES_LENGTH = 3;
-const matchNextSentence = /([.?!])\s*(?=[A-Z])/g;
+import { getShortDescriptionFromDesctiption } from "client/utils/getShortDescriptionFromDescription";
 
 interface Props {
   game: Game;
@@ -21,12 +19,9 @@ export const GameDetailsView = ({
 
   const shortDescription = useMemo(
     () =>
-      game.shortDescription ??
-      game.description
-        .replace(matchNextSentence, "$1|")
-        .split("|")
-        .slice(0, DESCRIPTION_SENTENCES_LENGTH)
-        .join(" "),
+      game.shortDescription.length > 0
+        ? game.shortDescription
+        : getShortDescriptionFromDesctiption(game.description),
     [game]
   );
 
