@@ -2,17 +2,15 @@ import { ChangeEvent, ReactElement, useEffect, useState } from "react";
 import styled from "styled-components";
 import _ from "lodash";
 import dayjs from "dayjs";
+import { useTranslation } from "react-i18next";
 import { testTimes } from "client/test/test-components/testComponentUtils";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { submitSetTestSettings } from "client/test/test-settings/testSettingsThunks";
-import {
-  getDate,
-  getTime,
-  getWeekdayAndTime,
-} from "client/utils/timeFormatter";
+import { getDate, getShortWeekdayAndTime } from "client/utils/timeFormatter";
 import { Dropdown } from "client/components/Dropdown";
 
 export const TestTime = (): ReactElement => {
+  const { i18n } = useTranslation();
   const dispatch = useAppDispatch();
 
   const testTime: string = useAppSelector(
@@ -39,7 +37,12 @@ export const TestTime = (): ReactElement => {
   };
 
   const dropdownItems = testTimes.map((time) => {
-    const formattedDate = `${getWeekdayAndTime(time)} (${getDate(time)})`;
+    const formattedDate =
+      i18n.language === "fi"
+        ? `${_.capitalize(getShortWeekdayAndTime(testTime))} (${getDate(time)})`
+        : `${_.capitalize(getShortWeekdayAndTime(testTime))} (${getDate(
+            time
+          )})`;
     return { value: time, title: formattedDate };
   });
 
@@ -59,7 +62,9 @@ export const TestTime = (): ReactElement => {
         ) : (
           // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions -- Test value
           <div onClick={() => setDropdownVisible(true)}>
-            {getTime(testTime)}
+            {i18n.language === "fi"
+              ? _.capitalize(getShortWeekdayAndTime(testTime))
+              : _.capitalize(getShortWeekdayAndTime(testTime))}
           </div>
         )}
       </StyledTestTime>
