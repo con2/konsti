@@ -18,6 +18,7 @@ import {
   ResultsStartingTimeOption,
   SearchAndFilterResultsCard,
 } from "client/views/results/components/SearchAndFilterResultsCard";
+import { isRevolvingDoorWorkshop } from "client/utils/isRevolvingDoorWorkshop";
 
 export const DirectResults = (): ReactElement => {
   const { t, i18n } = useTranslation();
@@ -50,9 +51,16 @@ export const DirectResults = (): ReactElement => {
     (signupQuestion) => !signupQuestion.private
   );
 
-  const visibleGames = activeGames.filter((activeGame) =>
-    hiddenGames.every((hiddenGame) => activeGame.gameId !== hiddenGame.gameId)
-  );
+  // Filter out hidden program items, revolving door workshops and program items without Konsti signup
+  const visibleGames = activeGames
+    .filter((activeGame) =>
+      hiddenGames.every((hiddenGame) => activeGame.gameId !== hiddenGame.gameId)
+    )
+    .filter((activeGame) => !isRevolvingDoorWorkshop(activeGame))
+    .filter(
+      (activeGame) =>
+        !sharedConfig.noKonstiSignupIds.includes(activeGame.gameId)
+    );
 
   const filteredGames =
     selectedStartingTime === ResultsStartingTimeOption.ALL
