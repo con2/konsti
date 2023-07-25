@@ -39,10 +39,8 @@ export const TestTime = (): ReactElement => {
   const dropdownItems = testTimes.map((time) => {
     const formattedDate =
       i18n.language === "fi"
-        ? `${_.capitalize(getShortWeekdayAndTime(testTime))} (${getDate(time)})`
-        : `${_.capitalize(getShortWeekdayAndTime(testTime))} (${getDate(
-            time
-          )})`;
+        ? `${_.capitalize(getShortWeekdayAndTime(time))} (${getDate(time)})`
+        : `${_.capitalize(getShortWeekdayAndTime(time))} (${getDate(time)})`;
     return { value: time, title: formattedDate };
   });
 
