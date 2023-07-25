@@ -27,7 +27,10 @@ import {
   SignupQuestion,
   SignupQuestionType,
 } from "shared/typings/models/settings";
-import { saveSignupQuestion } from "server/features/settings/settingsRepository";
+import {
+  createSettings,
+  saveSignupQuestion,
+} from "server/features/settings/settingsRepository";
 import { saveSignup } from "server/features/signup/signupRepository";
 
 let server: Server;
@@ -67,6 +70,8 @@ describe(`GET ${ApiEndpoint.SIGNUP_MESSAGE}`, () => {
   });
 
   test("should return 200 with helper authorization", async () => {
+    await createSettings();
+
     const testSignupQuestion: SignupQuestion = {
       gameId: testGame.gameId,
       questionFi: "Public signup question",
