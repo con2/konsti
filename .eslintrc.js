@@ -56,7 +56,7 @@ module.exports = {
     "no-restricted-syntax": [
       "error",
       {
-        selector: "ThrowStatement", // We don't throw errors
+        selector: "ThrowStatement", // We don't throw errors!
         message: "Return Result<T,Err> instead of throwing errors",
       },
       {
