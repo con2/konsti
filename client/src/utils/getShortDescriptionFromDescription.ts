@@ -5,12 +5,13 @@ export const getShortDescriptionFromDesctiption = (
   description: string
 ): string => {
   let shortDescription = "";
+
   const descriptionArray = description
     .replace(matchNextSentence, "$1|")
     .split("|");
 
   for (const value of descriptionArray) {
-    shortDescription = shortDescription.concat(value);
+    shortDescription = shortDescription.concat(`${value} `);
     if (shortDescription.length >= SHORT_DESCRIPTION_MAX_LENGTH) {
       break;
     }
