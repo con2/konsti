@@ -34,7 +34,10 @@ import {
 } from "server/test/mock-data/mockUser";
 import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
 import { saveFavorite } from "server/features/user/favorite-game/favoriteGameRepository";
-import { saveSignupQuestion } from "server/features/settings/settingsRepository";
+import {
+  createSettings,
+  saveSignupQuestion,
+} from "server/features/settings/settingsRepository";
 import {
   findUserSignups,
   saveSignup,
@@ -79,6 +82,7 @@ describe(`GET ${ApiEndpoint.GAMES}`, () => {
   });
 
   test(`should not return private signup messages`, async () => {
+    await createSettings();
     await saveGames([testGame, testGame2]);
     await saveUser(mockUser);
 

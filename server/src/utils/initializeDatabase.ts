@@ -10,6 +10,8 @@ import { getGamesFromKompassi } from "server/features/game/utils/getGamesFromKom
 import { kompassiGameMapper } from "server/utils/kompassiGameMapper";
 import { isErrorResult, unwrapResult } from "shared/utils/result";
 import { cleanupDatabase } from "server/utils/cleanupDatabse";
+import { addSignupQuestions } from "server/features/game/utils/addSignupQuestions";
+import { findSettings } from "server/features/settings/settingsRepository";
 
 const ADMIN_PASSWORD = "";
 const HELP_PASSWORD = "";
@@ -45,6 +47,10 @@ const initializeDatabase = async (): Promise<void> => {
   }
   const kompassiGames = unwrapResult(kompassiGamesResult);
   await saveGames(kompassiGameMapper(kompassiGames));
+
+  // This will create default settings
+  await findSettings();
+  await addSignupQuestions();
 
   await db.gracefulExit();
 };
