@@ -111,9 +111,9 @@ export const GameEntry = ({
     >
       <GameHeader>
         <HeaderContainer>
-          <StyledLink to={`/games/${game.gameId}`}>
-            <h3 data-testid="game-title">{game.title}</h3>
-          </StyledLink>
+          <h3 data-testid="game-title">
+            <StyledLink to={`/games/${game.gameId}`}>{game.title} </StyledLink>
+          </h3>
           {signupAlwaysOpen && (
             <SignupAlwaysOpenHelp>
               {t("signup.signupAlwaysOpen")}
