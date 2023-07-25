@@ -18,6 +18,7 @@ export enum KompassiProgramType {
   EXPERIENCE_POINT_OPEN = "Kokemuspiste: avoin pelautus / Experience Point: Open game",
   OTHER_GAME_PROGRAM = "Muu peliohjelma / Other game programme",
   OTHER_PROGRAM = "Muu ohjelma / None of the above",
+  MINIATURE_DEMO = "Figupelit: demotus / Miniature wargames: Demo game",
 }
 
 export const experiencePointAndOtherProgramTypes = [
@@ -26,6 +27,7 @@ export const experiencePointAndOtherProgramTypes = [
   KompassiProgramType.EXPERIENCE_POINT_OPEN,
   KompassiProgramType.OTHER_GAME_PROGRAM,
   KompassiProgramType.OTHER_PROGRAM,
+  KompassiProgramType.MINIATURE_DEMO,
 ];
 
 export const tournamentProgramTypes = [
