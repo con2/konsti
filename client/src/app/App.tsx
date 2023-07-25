@@ -10,7 +10,7 @@ import { getIconLibrary } from "client/utils/icons";
 import { config } from "client/config";
 import { ErrorBar } from "client/components/ErrorBar";
 import { MOBILE_MARGIN } from "client/globalStyle";
-import { TestTime } from "client/components/TestTime";
+import { TestTime } from "client/test/test-components/TestTime";
 import { Announcement } from "client/components/Announcement";
 import { NotificationBar } from "client/components/NotificationBar";
 
