@@ -25,6 +25,7 @@ import {
   unwrapResult,
 } from "shared/utils/result";
 import { MongoDbError } from "shared/typings/api/errors";
+import { tooEearlyForAlgorithmSignup } from "shared/utils/tooEearlyForAlgorithmSignup";
 
 export const removeDeletedGames = async (
   updatedGames: readonly Game[]
@@ -115,6 +116,10 @@ const getSignupStrategyForGame = (
 
   if (settings.signupStrategy !== SignupStrategy.ALGORITHM_AND_DIRECT) {
     return settings.signupStrategy;
+  }
+
+  if (tooEearlyForAlgorithmSignup(game.startTime)) {
+    return SignupStrategy.DIRECT;
   }
 
   const isAfterDirectSignupStarted = currentTime.isAfter(
