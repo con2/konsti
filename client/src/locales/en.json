@@ -210,7 +210,7 @@
   "invalidProgramItemId": "Program item not found, invalid ID",
   "feedbackTitle": "Feedback",
   "feedbackInstruction": "Did you enjoy the {{PROGRAM_TYPE}}? Send feedback to the organizer! They will receive it after the event.",
-  "noProgramItemsAvailable": "No {{PROGRAM_TYPE}} found",
+  "noProgramItemsAvailable": "No {{PROGRAM_TYPE}} found, check search conditions",
   "noGamesInDatabase": "No games in database",
   "upcoming": "Upcoming",
   "all": "All",
