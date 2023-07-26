@@ -13,7 +13,11 @@ import { MongoMemoryServer } from "mongodb-memory-server";
 import { faker } from "@faker-js/faker";
 import dayjs from "dayjs";
 import { startServer, closeServer } from "server/utils/server";
-import { autoAssignPlayers, autoUpdateGames } from "server/utils/cron";
+import {
+  autoAssignPlayers,
+  autoUpdateGames,
+  setLatestServerStartTime,
+} from "server/utils/cron";
 import {
   createSettings,
   findSettings,
@@ -43,6 +47,8 @@ beforeEach(async () => {
     enableSentry: false,
   });
   await createSettings();
+  await saveTestSettings({ testTime: timeNow });
+  await setLatestServerStartTime();
 });
 
 afterEach(async () => {
@@ -129,13 +135,25 @@ describe("Progam update cronjob", () => {
 
     expect(settings.programUpdateLastRun).toEqual(timeNow);
   });
+
+  test("should not run program update if newer server instance is started", async () => {
+    const infoLoggerSpy = vi.spyOn(logger, "info");
+
+    const oldTime = dayjs(timeNow).subtract(1, "seconds").toISOString();
+    await saveSettings({ latestServerStartTime: oldTime });
+
+    await autoUpdateGames();
+
+    expect(infoLoggerSpy).toHaveBeenCalledWith(
+      "Cronjobs: Newer server instance running, stop"
+    );
+
+    const settings = unsafelyUnwrapResult(await findSettings());
+    expect(settings.latestServerStartTime).toEqual(oldTime);
+  });
 });
 
 describe("Assignment cronjob", () => {
-  beforeEach(async () => {
-    await saveTestSettings({ testTime: timeNow });
-  });
-
   test("should run assignment and set assignmentLastRun time", async () => {
     const infoLoggerSpy = vi.spyOn(logger, "info");
 
@@ -210,5 +228,21 @@ describe("Assignment cronjob", () => {
     const settings = unsafelyUnwrapResult(settingsResult);
 
     expect(settings.assignmentLastRun).toEqual(timeNow);
+  });
+
+  test("should not run assignment if newer server instance is started", async () => {
+    const infoLoggerSpy = vi.spyOn(logger, "info");
+
+    const oldTime = dayjs(timeNow).subtract(1, "seconds").toISOString();
+    await saveSettings({ latestServerStartTime: oldTime });
+
+    await autoAssignPlayers();
+
+    expect(infoLoggerSpy).toHaveBeenCalledWith(
+      "Cronjobs: Newer server instance running, stop"
+    );
+
+    const settings = unsafelyUnwrapResult(await findSettings());
+    expect(settings.latestServerStartTime).toEqual(oldTime);
   });
 });

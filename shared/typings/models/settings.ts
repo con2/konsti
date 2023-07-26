@@ -34,6 +34,7 @@ export const SettingsSchema = z.object({
   signupStrategy: z.nativeEnum(SignupStrategy),
   programUpdateLastRun: z.string(),
   assignmentLastRun: z.string(),
+  latestServerStartTime: z.string(),
 });
 
 export type Settings = z.infer<typeof SettingsSchema>;

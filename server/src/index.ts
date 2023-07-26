@@ -19,7 +19,7 @@ const startApp = async (): Promise<void> => {
   if (config.onlyCronjobs) {
     logger.info("Start enabled cronjobs");
     try {
-      startCronJobs();
+      await startCronJobs();
     } catch (error) {
       logger.error("Error starting cronjobs: %s", error);
     }
