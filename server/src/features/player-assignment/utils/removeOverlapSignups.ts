@@ -14,6 +14,7 @@ import {
 } from "shared/utils/result";
 import { MongoDbError } from "shared/typings/api/errors";
 
+// TODO: Can this be deleted?
 dayjs.extend(isBetween);
 
 export const removeOverlapSignups = async (
