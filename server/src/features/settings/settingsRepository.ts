@@ -67,6 +67,9 @@ export const findSettings = async (): Promise<
       ...settings,
       programUpdateLastRun: dayjs(settings.programUpdateLastRun).toISOString(),
       assignmentLastRun: dayjs(settings.assignmentLastRun).toISOString(),
+      latestServerStartTime: dayjs(
+        settings.latestServerStartTime
+      ).toISOString(),
     };
 
     return makeSuccessResult(settingsWithFormattedDates);
@@ -233,6 +236,26 @@ export const setAssignmentLastRun = async (
     return makeSuccessResult(undefined);
   } catch (error) {
     logger.error("MongoDB: Error updating assignment last run: %s", error);
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+  }
+};
+
+export const isLatestStartedServerInstance = async (
+  latestServerStartTime: string
+): Promise<Result<void, MongoDbError>> => {
+  try {
+    const response = await SettingsModel.findOne({
+      latestServerStartTime: {
+        $eq: dayjs(latestServerStartTime).toISOString(),
+      },
+    });
+    if (!response) {
+      return makeErrorResult(MongoDbError.SETTINGS_NOT_FOUND);
+    }
+    logger.info(`MongoDB: Latest server start time found, is latest`);
+    return makeSuccessResult(undefined);
+  } catch (error) {
+    logger.error("MongoDB: Error getting latest server start time: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };

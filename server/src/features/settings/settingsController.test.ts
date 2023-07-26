@@ -115,6 +115,7 @@ describe(`POST ${ApiEndpoint.SETTINGS}`, () => {
       signupStrategy: SignupStrategy.ALGORITHM,
       programUpdateLastRun: "2023-05-07T07:00:00.000Z",
       assignmentLastRun: "2023-05-07T07:00:00.000Z",
+      latestServerStartTime: "2023-05-07T07:00:00.000Z",
     };
 
     const fullUpdateResponse = await request(server)
