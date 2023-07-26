@@ -44,6 +44,8 @@ afterAll(async () => {
 });
 
 test(`Should update game popularity`, async () => {
+  vi.setSystemTime(testGame.startTime);
+
   await saveGames([testGame, testGame2]);
   await saveUser(mockUser);
   await saveUser(mockUser2);

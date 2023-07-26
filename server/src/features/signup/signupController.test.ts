@@ -7,6 +7,7 @@ import {
   beforeAll,
   beforeEach,
   describe,
+  vi,
 } from "vitest";
 import request, { Test } from "supertest";
 import { MongoMemoryServer } from "mongodb-memory-server";
@@ -40,6 +41,7 @@ import {
   PostEnteredGameRequest,
 } from "shared/typings/api/myGames";
 import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
+import * as signupTimes from "shared/utils/signupTimes";
 
 let server: Server;
 let mongoServer: MongoMemoryServer;
@@ -105,12 +107,15 @@ describe(`POST ${ApiEndpoint.SIGNUP}`, () => {
   });
 
   test("should return error when game is not found", async () => {
+    vi.setSystemTime(
+      dayjs(testGame.startTime).subtract(1, "hour").toISOString()
+    );
     await saveUser(mockUser);
 
     const signup: PostEnteredGameRequest = {
       username: mockUser.username,
       enteredGameId: "invalid_game_id",
-      startTime: "2019-07-26T13:00:00Z",
+      startTime: dayjs(testGame.startTime).subtract(1, "hour").toISOString(),
       message: "",
       priority: DIRECT_SIGNUP_PRIORITY,
     };
@@ -127,6 +132,11 @@ describe(`POST ${ApiEndpoint.SIGNUP}`, () => {
   });
 
   test("should return error when user is not found", async () => {
+    vi.setSystemTime(testGame.startTime);
+    vi.spyOn(signupTimes, "getDirectSignupStartTime").mockReturnValue(
+      dayjs(testGame.startTime)
+    );
+
     await saveGames([testGame]);
 
     const signup: PostEnteredGameRequest = {
@@ -177,6 +187,11 @@ describe(`POST ${ApiEndpoint.SIGNUP}`, () => {
   });
 
   test("should return success when user and game are found", async () => {
+    vi.setSystemTime(testGame.startTime);
+    vi.spyOn(signupTimes, "getDirectSignupStartTime").mockReturnValue(
+      dayjs(testGame.startTime)
+    );
+
     // Populate database
     await saveGames([testGame]);
     await saveUser(mockUser);
@@ -216,6 +231,10 @@ describe(`POST ${ApiEndpoint.SIGNUP}`, () => {
   });
 
   test("should not sign too many players to game", async () => {
+    vi.setSystemTime(testGame.startTime);
+    vi.spyOn(signupTimes, "getDirectSignupStartTime").mockReturnValue(
+      dayjs(testGame.startTime)
+    );
     const maxAttendance = 2;
 
     // Populate database
@@ -263,6 +282,10 @@ describe(`POST ${ApiEndpoint.SIGNUP}`, () => {
   });
 
   test("should not create new signup collection when program item is full", async () => {
+    vi.setSystemTime(testGame.startTime);
+    vi.spyOn(signupTimes, "getDirectSignupStartTime").mockReturnValue(
+      dayjs(testGame.startTime)
+    );
     const maxAttendance = 2;
 
     // Populate database
@@ -326,12 +349,15 @@ describe(`DELETE ${ApiEndpoint.SIGNUP}`, () => {
   });
 
   test("should return error when game is not found", async () => {
+    vi.setSystemTime(
+      dayjs(testGame.startTime).subtract(1, "hour").toISOString()
+    );
     await saveUser(mockUser);
 
     const deleteRequest: DeleteEnteredGameRequest = {
       username: mockUser.username,
       enteredGameId: "invalid_game_id",
-      startTime: "2019-07-26T13:00:00Z",
+      startTime: dayjs(testGame.startTime).subtract(1, "hour").toISOString(),
     };
     const response = await request(server)
       .delete(ApiEndpoint.SIGNUP)
@@ -346,6 +372,7 @@ describe(`DELETE ${ApiEndpoint.SIGNUP}`, () => {
   });
 
   test("should return error when signup is not found", async () => {
+    vi.setSystemTime(testGame.startTime);
     await saveGames([testGame]);
 
     const deleteRequest: DeleteEnteredGameRequest = {
@@ -366,6 +393,11 @@ describe(`DELETE ${ApiEndpoint.SIGNUP}`, () => {
   });
 
   test("should return success when user and game are found", async () => {
+    vi.setSystemTime(testGame.startTime);
+    vi.spyOn(signupTimes, "getDirectSignupStartTime").mockReturnValue(
+      dayjs(testGame.startTime)
+    );
+
     // Populate database
     await saveGames([testGame]);
     await saveUser(mockUser);
