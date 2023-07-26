@@ -14,6 +14,7 @@ import {
   unwrapResult,
 } from "shared/utils/result";
 import { AssignmentError, MongoDbError } from "shared/typings/api/errors";
+import { getTimeNow } from "server/features/player-assignment/utils/getTimeNow";
 
 export const updateWithAssign = async (
   users: readonly User[],
@@ -23,7 +24,16 @@ export const updateWithAssign = async (
   const gamesForStartTimes = _.groupBy(games, (game) =>
     dayjs(game.startTime).toISOString()
   );
-  const startTimes = Object.keys(gamesForStartTimes);
+
+  const timeNowResult = await getTimeNow();
+  if (isErrorResult(timeNowResult)) {
+    return timeNowResult;
+  }
+  const timeNow = unwrapResult(timeNowResult);
+
+  const startTimes = Object.keys(gamesForStartTimes).filter((startTime) =>
+    dayjs(startTime).isSameOrAfter(timeNow)
+  );
 
   const assignmentResultsResult = startTimes.map((startTime) => {
     return padgAssignPlayers(users, games, startTime, signups);
