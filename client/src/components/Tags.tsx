@@ -33,5 +33,5 @@ const TagElement = styled.span`
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
-  max-width: 320px;
+  max-width: 256px;
 `;
