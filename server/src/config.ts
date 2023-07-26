@@ -87,7 +87,7 @@ const prodConfig = {
 
   // Program update cron
   autoUpdateGamesEnabled: true,
-  gameUpdateInterval: `*/4 * * * *`,
+  gameUpdateInterval: `*/7 * * * *`,
 
   // Program update
   updateGamePopularityEnabled: true,
@@ -119,7 +119,7 @@ const stagingConfig = {
 
   // Program update cron
   autoUpdateGamesEnabled: true,
-  gameUpdateInterval: `*/4 * * * *`,
+  gameUpdateInterval: `*/7 * * * *`,
 
   // Program update
   updateGamePopularityEnabled: true,
