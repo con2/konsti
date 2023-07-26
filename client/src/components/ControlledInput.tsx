@@ -11,6 +11,7 @@ interface Props {
   placeholder: string;
   resetValue?: () => void;
   id?: string;
+  className?: string;
 }
 
 export const ControlledInput = ({
@@ -20,6 +21,7 @@ export const ControlledInput = ({
   placeholder,
   resetValue,
   id,
+  className,
 }: Props): ReactElement => {
   const { t } = useTranslation();
 
@@ -31,6 +33,7 @@ export const ControlledInput = ({
         onChange={onChange}
         placeholder={placeholder}
         id={id}
+        className={className}
       />
 
       {resetValue && (

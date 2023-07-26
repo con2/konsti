@@ -1,5 +1,6 @@
 import { ReactElement, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import styled from "styled-components";
 import { useAppSelector } from "client/utils/hooks";
 import { Button, ButtonStyle } from "./Button";
 import { sharedConfig } from "shared/config/sharedConfig";
@@ -32,7 +33,7 @@ export const FirstLogin = (): ReactElement | null => {
   }
 
   return (
-    <RaisedCard isHighlighted={true} highlightStyle={HighlightStyle.WARN}>
+    <StyledCard isHighlighted={true} highlightStyle={HighlightStyle.WARN}>
       <p>
         {t("firstLogin.serial")} <b>{serial}</b>
       </p>
@@ -43,6 +44,10 @@ export const FirstLogin = (): ReactElement | null => {
       >
         {t("button.close")}
       </Button>
-    </RaisedCard>
+    </StyledCard>
   );
 };
+
+const StyledCard = styled(RaisedCard)`
+  margin: 0 8px 0 8px;
+`;

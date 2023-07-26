@@ -95,7 +95,6 @@ export const theme = {
   textActiveTab: mainColor.dark,
   textInactiveTab: gray.darker,
   textMain: black,
-  textSuccess: mainColor.dark,
   textTag: black,
   textSecondary: gray.primary,
 

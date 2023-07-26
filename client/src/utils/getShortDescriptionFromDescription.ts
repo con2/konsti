@@ -1,7 +1,7 @@
 const SHORT_DESCRIPTION_MAX_LENGTH = 200;
 const matchNextSentence = /([.?!])\s*(?=[A-Z])/g;
 
-export const getShortDescriptionFromDesctiption = (
+export const getShortDescriptionFromDescription = (
   description: string
 ): string => {
   let shortDescription = "";

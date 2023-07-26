@@ -129,7 +129,7 @@ export const NotInGroupActions = ({
             {t("group.joiningGroupWillCancelLotterySignups")}
           </InfoTextParagraph>
 
-          <ControlledInput
+          <StyledInput
             key="joinGroup"
             placeholder={t("group.enterGroupCreatorCode")}
             value={joinGroupValue}
@@ -162,4 +162,10 @@ const ButtonWithMargin = styled(Button)`
 
 const InfoTextParagraph = styled.p`
   font-weight: 600;
+`;
+
+const StyledInput = styled(ControlledInput)`
+  @media (min-width: ${(props) => props.theme.breakpointPhone}) {
+    max-width: 500px;
+  }
 `;
