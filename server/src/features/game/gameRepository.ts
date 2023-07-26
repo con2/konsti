@@ -155,10 +155,6 @@ interface PopularityUpdate {
 export const saveGamePopularity = async (
   popularityUpdates: PopularityUpdate[]
 ): Promise<Result<void, MongoDbError>> => {
-  logger.debug(
-    `MongoDB: Update popularity for ${popularityUpdates.length} games`
-  );
-
   const bulkOps = popularityUpdates.map((popularityUpdate) => {
     return {
       updateOne: {
@@ -174,6 +170,9 @@ export const saveGamePopularity = async (
 
   try {
     await GameModel.bulkWrite(bulkOps);
+    logger.info(
+      `MongoDB: Updated popularity for ${popularityUpdates.length} games`
+    );
     return makeSuccessResult(undefined);
   } catch (error) {
     logger.error("Error updating game popularity: %s", error);

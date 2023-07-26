@@ -1,6 +1,6 @@
-enum GameUpdateMethod {
-  signups = "signups",
-  assign = "assign",
+export enum GameUpdateMethod {
+  SIGNUPS = "signups",
+  ASSIGN = "assign",
 }
 
 interface Config {
@@ -42,7 +42,6 @@ const commonConfig = {
     typeof process.env.PORT === "string"
       ? parseInt(process.env.PORT, 10)
       : 5000,
-  debug: false,
   onlyCronjobs: process.env.ONLY_CRONJOBS === "true" ?? false,
 
   // Logging
@@ -51,7 +50,7 @@ const commonConfig = {
   // App settings
   bundleCompression: true,
   enableRemoveOverlapSignups: true,
-  gamePopularityUpdateMethod: GameUpdateMethod.assign, // 'signups', 'assign'
+  gamePopularityUpdateMethod: GameUpdateMethod.ASSIGN,
 
   // Convention settings
   dataUri: "https://kompassi.eu/api/v1/events/ropecon2023/programme/ropecon",
