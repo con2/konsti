@@ -17,6 +17,7 @@ import {
 } from "server/test/test-data-generation/generators/createUsers";
 import { createEventLogItems } from "server/test/test-data-generation/generators/createEventLogItems";
 import { cleanupDatabase } from "server/utils/cleanupDatabse";
+import { initializeDayjs } from "shared/utils/initializeDayjs";
 
 interface Options {
   clean?: boolean;
@@ -39,6 +40,8 @@ export const runGenerators = async (
     // eslint-disable-next-line no-restricted-syntax -- Data generation script
     throw new Error(`Data creation not allowed in production`);
   }
+
+  initializeDayjs();
 
   // Generator settings
   const enableGroups = sharedConfig.enableGroups;

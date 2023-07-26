@@ -2,10 +2,8 @@ import { Command } from "commander";
 import { logger } from "server/utils/logger";
 import { db } from "server/db/mongodb";
 import { runGenerators } from "server/test/test-data-generation/runGenerators";
-import { initializeDayjs } from "shared/utils/initializeDayjs";
 
 const parseCliOptions = async (): Promise<void> => {
-  initializeDayjs();
   const commander = new Command();
 
   commander
