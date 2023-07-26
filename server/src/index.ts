@@ -3,8 +3,11 @@ import { startServer, closeServer } from "server/utils/server";
 import { logger } from "server/utils/logger";
 import { startCronJobs } from "server/utils/cron";
 import { config } from "server/config";
+import { initializeDayjs } from "shared/utils/initializeDayjs";
 
 const startApp = async (): Promise<void> => {
+  initializeDayjs();
+
   let server: Server;
   try {
     server = await startServer({
