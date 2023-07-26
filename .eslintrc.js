@@ -83,6 +83,7 @@ module.exports = {
           "groupAssignPlayers",
           "padgAssignPlayers",
           "randomAssignPlayers",
+          "signupTimes",
         ],
       },
     ], // Don't want to use namespace imports, ignore files that need vi.spyon

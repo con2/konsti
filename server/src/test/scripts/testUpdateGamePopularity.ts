@@ -1,8 +1,11 @@
 import { logger } from "server/utils/logger";
 import { updateGamePopularity } from "server/features/game-popularity/updateGamePopularity";
 import { db } from "server/db/mongodb";
+import { initializeDayjs } from "shared/utils/initializeDayjs";
 
 const testUpdateGamePopularity = async (): Promise<void> => {
+  initializeDayjs();
+
   try {
     await db.connectToDb();
   } catch (error) {

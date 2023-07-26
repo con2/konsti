@@ -55,7 +55,7 @@ export const storeSignup = async (
     logger.error(
       "%s",
       new Error(
-        `Signup for game ${enteredGameId} not open yet, opens ${directSignupStartTime}`
+        `Signup for game ${enteredGameId} not open yet, opens ${directSignupStartTime.toISOString()}`
       )
     );
     return {
