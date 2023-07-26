@@ -6,7 +6,7 @@ import {
 } from "shared/typings/api/myGames";
 import { SelectedGame } from "shared/typings/models/user";
 import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
-import { getTime } from "server/features/player-assignment/utils/getTime";
+import { getTimeNow } from "server/features/player-assignment/utils/getTimeNow";
 import { isValidSignupTime } from "server/features/user/userUtils";
 import { isErrorResult, unwrapResult } from "shared/utils/result";
 
@@ -15,7 +15,7 @@ export const storeSignedGames = async (
   username: string,
   startTime: string
 ): Promise<PostSignedGamesResponse | PostSignedGamesError> => {
-  const timeNowResult = await getTime();
+  const timeNowResult = await getTimeNow();
   if (isErrorResult(timeNowResult)) {
     return {
       message: `Unable to get current time`,
