@@ -62,6 +62,9 @@ The sign-up occurs at different times for different program items. You can see w
 
 Tabletop role-playing games use a lottery sign-up where, after the lottery, remaining slots will be filled in the order of sign-ups. All other program uses direct sign-up without a lottery phase.
 
+Konsti will show you a notification if you get a spot in a game in the lottery. You can also view these notifications on the [Notifications](/notifications) page.
+You can see all your sign-up results on the [My Program page](/program/myprogram) and all sign-ups to all program items on the [Sign-up Results](/results) page.
+
 ## Tabletop role-playing game sign-ups
 
 Tabletop RPG sign-up in Konsti happens in two phases: lottery and direct sign-up. The lottery phase uses an algorithm to assign users to games while taking into account the preferences they have chosen for the games they have signed up for. The phase starts four

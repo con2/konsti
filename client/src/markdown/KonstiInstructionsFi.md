@@ -57,6 +57,9 @@ tai tästä ohjeesta.
 
 Pöytäroolipeleihin ilmoittaudutaan arvonnan kautta ja jäljelle jääneet paikat täytetään ilmoittautumisjärjestyksessä. Muun ohjelman paikat täytetään ilmoittautumisjärjestyksessä.
 
+Jos pääset arvonnassa peliin, Konsti näyttää sinulle tästä ilmoituksen. Nämä ilmoitukset näet myös [Ilmoitukset](/notifications)-sivulta. Kaikki omat ilmoittautumistuloksesi näet
+[Oma ohjelmani](/program/myprogram) -näkymässä ja kaiken ohjelman kaikki ilmoittautumistiedot näet puolestaan [Ilmoittautumistulokset](/results)-sivulta.
+
 ## Roolipeleihin ilmoittautuminen
 
 Konstin roolipeli-ilmoittautuminen tapahtuu kahdessa vaiheessa: arvonnassa ja suorailmoittautumisessa. Arvonnassa Konstin
