@@ -16,7 +16,7 @@ export const getTimeNow = async (): Promise<Result<Dayjs, MongoDbError>> => {
       return findTestSettingsResult;
     }
     const testSettings = unwrapResult(findTestSettingsResult);
-    return makeSuccessResult(dayjs(testSettings.testTime));
+    return makeSuccessResult(dayjs(testSettings.testTime ?? dayjs()));
   }
 
   return makeSuccessResult(dayjs());
