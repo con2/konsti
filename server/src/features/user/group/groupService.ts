@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import { getTime } from "server/features/player-assignment/utils/getTime";
+import { getTimeNow } from "server/features/player-assignment/utils/getTimeNow";
 import { findUserSignups } from "server/features/signup/signupRepository";
 import {
   findGroup,
@@ -50,7 +50,7 @@ export const createGroup = async (
     (signup) => !directSignupAlwaysOpenIds.includes(signup.game.gameId)
   );
 
-  const timeNowResult = await getTime();
+  const timeNowResult = await getTimeNow();
   if (isErrorResult(timeNowResult)) {
     return {
       message: `Unable to get current time`,
@@ -152,7 +152,7 @@ export const joinGroup = async (
     (signup) => !directSignupAlwaysOpenIds.includes(signup.game.gameId)
   );
 
-  const timeNowResult = await getTime();
+  const timeNowResult = await getTimeNow();
   if (isErrorResult(timeNowResult)) {
     return {
       message: `Unable to get current time`,
