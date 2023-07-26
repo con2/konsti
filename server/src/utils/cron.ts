@@ -92,7 +92,9 @@ export const stopCronJobs = (): void => {
 export const autoUpdateGames = async (): Promise<void> => {
   logger.info("----> Auto update games");
 
-  logger.info("Check if latest running server instance...");
+  logger.info(
+    `Check if latest running server instance with start time ${latestServerStartTime}...`
+  );
   const latestServerResult = await isLatestStartedServerInstance(
     latestServerStartTime
   );
@@ -148,7 +150,9 @@ export const autoUpdateGames = async (): Promise<void> => {
 export const autoAssignPlayers = async (): Promise<void> => {
   logger.info("----> Auto assign players");
 
-  logger.info("Check if latest running server instance...");
+  logger.info(
+    `Check if latest running server instance with start time ${latestServerStartTime}...`
+  );
   const latestServerResult = await isLatestStartedServerInstance(
     latestServerStartTime
   );
