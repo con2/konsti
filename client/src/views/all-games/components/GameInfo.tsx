@@ -40,7 +40,7 @@ export const GameInfo = ({ game }: Props): ReactElement => {
   const tagsList = game.tags.map((tag, i) => {
     return (
       <span key={tag}>
-        <NoWrapText>{t(`gameTags.${tag}`)}</NoWrapText>
+        {t(`gameTags.${tag}`)}
         <span>{i !== game.tags.length - 1 ? ", " : ""}</span>
       </span>
     );
@@ -74,7 +74,7 @@ export const GameInfo = ({ game }: Props): ReactElement => {
   const formattedAccessibilityValues = getFormattedAccessibility();
 
   return (
-    <div>
+    <DetailsContainer>
       {game.revolvingDoor && (
         <>
           <GameDetailsRow rowWithSubtext={true}>
@@ -224,9 +224,14 @@ export const GameInfo = ({ game }: Props): ReactElement => {
           <GameDetailsValue>{getStyles(game.styles)}</GameDetailsValue>
         </GameDetailsRow>
       )}
-    </div>
+    </DetailsContainer>
   );
 };
+
+const DetailsContainer = styled.div`
+  overflow-wrap: break-word;
+  word-break: break-word;
+`;
 
 interface GameDetailsRowProps {
   rowWithSubtext?: boolean;

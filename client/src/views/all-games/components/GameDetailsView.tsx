@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Game } from "shared/typings/models/game";
 import { ExpandedGameDescription } from "client/views/all-games/components/ExpandedGameDescription";
-import { getShortDescriptionFromDesctiption } from "client/utils/getShortDescriptionFromDescription";
+import { getShortDescriptionFromDescription } from "client/utils/getShortDescriptionFromDescription";
 
 interface Props {
   game: Game;
@@ -21,7 +21,7 @@ export const GameDetailsView = ({
     () =>
       game.shortDescription.length > 0
         ? game.shortDescription
-        : getShortDescriptionFromDesctiption(game.description),
+        : getShortDescriptionFromDescription(game.description),
     [game]
   );
 
@@ -38,7 +38,7 @@ export const GameDetailsView = ({
 
   return (
     <>
-      <span>{`${shortDescription} `}</span>
+      <ShortDescription>{`${shortDescription} `}</ShortDescription>
       {!isAlwaysExpanded && (
         <ButtonContainer>
           <ArrowIcon
@@ -82,4 +82,9 @@ const ExpandButton = styled.p`
 
 const ExpandedDescriptionContainer = styled.div`
   padding-top: 16px;
+`;
+
+const ShortDescription = styled.span`
+  overflow-wrap: break-word;
+  word-break: break-word;
 `;
