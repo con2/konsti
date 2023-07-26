@@ -9,7 +9,7 @@ import {
   unwrapResult,
 } from "shared/utils/result";
 
-export const getTime = async (): Promise<Result<Dayjs, MongoDbError>> => {
+export const getTimeNow = async (): Promise<Result<Dayjs, MongoDbError>> => {
   if (process.env.SETTINGS !== "production" && config.useTestTime) {
     const findTestSettingsResult = await findTestSettings();
     if (isErrorResult(findTestSettingsResult)) {

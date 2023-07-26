@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 import { findGameById } from "server/features/game/gameRepository";
-import { getTime } from "server/features/player-assignment/utils/getTime";
+import { getTimeNow } from "server/features/player-assignment/utils/getTimeNow";
 import { isValidSignupTime } from "server/features/user/userUtils";
 import {
   DeleteEnteredGameError,
@@ -20,7 +20,7 @@ export const storeSignup = async (
   signupRequest: PostEnteredGameRequest
 ): Promise<PostEnteredGameResponse | PostEnteredGameError> => {
   const { startTime, enteredGameId, username } = signupRequest;
-  const timeNowResult = await getTime();
+  const timeNowResult = await getTimeNow();
   if (isErrorResult(timeNowResult)) {
     return {
       message: `Unable to get current time`,
@@ -137,7 +137,7 @@ export const removeSignup = async (
 ): Promise<DeleteEnteredGameResponse | DeleteEnteredGameError> => {
   const { startTime } = signupRequest;
 
-  const timeNowResult = await getTime();
+  const timeNowResult = await getTimeNow();
   if (isErrorResult(timeNowResult)) {
     return {
       message: `Unable to get current time`,

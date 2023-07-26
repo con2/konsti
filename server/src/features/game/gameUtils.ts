@@ -12,7 +12,7 @@ import { SignupStrategy } from "shared/config/sharedConfig.types";
 import { sharedConfig } from "shared/config/sharedConfig";
 import { findSettings } from "server/features/settings/settingsRepository";
 import { Settings, SignupQuestion } from "shared/typings/models/settings";
-import { getTime } from "server/features/player-assignment/utils/getTime";
+import { getTimeNow } from "server/features/player-assignment/utils/getTimeNow";
 import {
   delSignupDocumentsByGameIds,
   findSignups,
@@ -84,7 +84,7 @@ export const enrichGames = async (
 
   const signups = unwrapResult(signupsResult);
 
-  const currentTimeResult = await getTime();
+  const currentTimeResult = await getTimeNow();
   if (isErrorResult(currentTimeResult)) {
     return currentTimeResult;
   }
