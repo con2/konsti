@@ -4,13 +4,21 @@ import { logger } from "server/utils/logger";
 import { config } from "server/config";
 import { runAssignment } from "server/features/player-assignment/runAssignment";
 import { sharedConfig } from "shared/config/sharedConfig";
-import { isErrorResult } from "shared/utils/result";
+import {
+  Result,
+  isErrorResult,
+  makeSuccessResult,
+  unwrapResult,
+} from "shared/utils/result";
 import { updateGames } from "server/features/game/gamesService";
 import {
+  isLatestStartedServerInstance,
+  saveSettings,
   setAssignmentLastRun,
   setProgramUpdateLastRun,
 } from "server/features/settings/settingsRepository";
 import { MongoDbError } from "shared/typings/api/errors";
+import { getTime } from "server/features/player-assignment/utils/getTime";
 
 const {
   autoUpdateGamesEnabled,
@@ -22,7 +30,37 @@ const {
 
 const cronJobs: Cron[] = [];
 
-export const startCronJobs = (): void => {
+let latestServerStartTime = "";
+
+export const setLatestServerStartTime = async (): Promise<
+  Result<void, MongoDbError>
+> => {
+  const timeNowResult = await getTime();
+  if (isErrorResult(timeNowResult)) {
+    return timeNowResult;
+  }
+
+  latestServerStartTime = unwrapResult(timeNowResult).toISOString();
+
+  logger.info(`Set latestServerStartTime ${latestServerStartTime}`);
+  const settingsResult = await saveSettings({ latestServerStartTime });
+  if (isErrorResult(settingsResult)) {
+    return settingsResult;
+  }
+
+  return makeSuccessResult(undefined);
+};
+
+export const startCronJobs = async (): Promise<void> => {
+  // Save latest server instance start time to limit running cronjobs to latest started instance
+  const latestServerStartResult = await setLatestServerStartTime();
+  if (isErrorResult(latestServerStartResult)) {
+    // eslint-disable-next-line no-restricted-syntax -- Server startup
+    throw new Error(
+      `Error setting latestServerStartTime at server start: ${latestServerStartResult.error}`
+    );
+  }
+
   if (autoUpdateGamesEnabled) {
     logger.info("Start cronjob: program auto update");
 
@@ -65,6 +103,24 @@ export const stopCronJobs = (): void => {
 export const autoUpdateGames = async (): Promise<void> => {
   logger.info("----> Auto update games");
 
+  logger.info("Check if latest running server instance...");
+  const latestServerResult = await isLatestStartedServerInstance(
+    latestServerStartTime
+  );
+  if (isErrorResult(latestServerResult)) {
+    if (latestServerResult.error === MongoDbError.SETTINGS_NOT_FOUND) {
+      logger.info("Cronjobs: Newer server instance running, stop");
+      return;
+    }
+    logger.error(
+      "%s",
+      new Error(
+        `***** Games auto update failed trying to check latest server start time: ${latestServerResult.error}`
+      )
+    );
+    return;
+  }
+
   logger.info("Check if auto update already running...");
   const programUpdateLastRunResult = await setProgramUpdateLastRun(
     dayjs().toISOString()
@@ -102,6 +158,24 @@ export const autoUpdateGames = async (): Promise<void> => {
 
 export const autoAssignPlayers = async (): Promise<void> => {
   logger.info("----> Auto assign players");
+
+  logger.info("Check if latest running server instance...");
+  const latestServerResult = await isLatestStartedServerInstance(
+    latestServerStartTime
+  );
+  if (isErrorResult(latestServerResult)) {
+    if (latestServerResult.error === MongoDbError.SETTINGS_NOT_FOUND) {
+      logger.info("Cronjobs: Newer server instance running, stop");
+      return;
+    }
+    logger.error(
+      "%s",
+      new Error(
+        `***** Auto assignment failed trying to check latest server start time: ${latestServerResult.error}`
+      )
+    );
+    return;
+  }
 
   logger.info("Check if assignment already running...");
   const assignmentLastRunResult = await setAssignmentLastRun(
