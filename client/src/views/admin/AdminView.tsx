@@ -214,7 +214,7 @@ const StatusMessage = styled.p<StatusMessageProps>`
   ${(statusMessageProps) =>
     statusMessageProps.messageStyle === "success" &&
     css`
-      color: ${(props) => props.theme.textSuccess};
+      color: ${(props) => props.theme.textSecondary};
     `};
 
   ${(statusMessageProps) =>
@@ -225,5 +225,5 @@ const StatusMessage = styled.p<StatusMessageProps>`
 `;
 
 const AssignmentResponseMessage = styled.p`
-  color: ${(props) => props.theme.textSuccess};
+  color: ${(props) => props.theme.textSecondary};
 `;

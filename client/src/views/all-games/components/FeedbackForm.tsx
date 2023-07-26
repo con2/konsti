@@ -75,7 +75,7 @@ const FeedbackTextArea = styled(TextArea)`
 `;
 
 const SuccessMessage = styled.p`
-  color: ${(props) => props.theme.textSuccess};
+  color: ${(props) => props.theme.textSecondary};
 `;
 
 const Title = styled.p`
