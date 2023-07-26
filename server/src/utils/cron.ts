@@ -4,12 +4,7 @@ import { logger } from "server/utils/logger";
 import { config } from "server/config";
 import { runAssignment } from "server/features/player-assignment/runAssignment";
 import { sharedConfig } from "shared/config/sharedConfig";
-import {
-  Result,
-  isErrorResult,
-  makeSuccessResult,
-  unwrapResult,
-} from "shared/utils/result";
+import { Result, isErrorResult, makeSuccessResult } from "shared/utils/result";
 import { updateGames } from "server/features/game/gamesService";
 import {
   isLatestStartedServerInstance,
@@ -18,7 +13,6 @@ import {
   setProgramUpdateLastRun,
 } from "server/features/settings/settingsRepository";
 import { MongoDbError } from "shared/typings/api/errors";
-import { getTime } from "server/features/player-assignment/utils/getTime";
 
 const {
   autoUpdateGamesEnabled,
@@ -35,12 +29,7 @@ let latestServerStartTime = "";
 export const setLatestServerStartTime = async (): Promise<
   Result<void, MongoDbError>
 > => {
-  const timeNowResult = await getTime();
-  if (isErrorResult(timeNowResult)) {
-    return timeNowResult;
-  }
-
-  latestServerStartTime = unwrapResult(timeNowResult).toISOString();
+  latestServerStartTime = dayjs().toISOString();
 
   logger.info(`Set latestServerStartTime ${latestServerStartTime}`);
   const settingsResult = await saveSettings({ latestServerStartTime });
