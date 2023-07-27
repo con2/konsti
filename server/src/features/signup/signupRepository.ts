@@ -400,7 +400,7 @@ export const resetSignupsByGameIds = async (
 
 export const delAssignmentSignupsByStartTime = async (
   startTime: string
-): Promise<Result<number, MongoDbError>> => {
+): Promise<Result<void, MongoDbError>> => {
   const gamesResult = await findGames();
   if (isErrorResult(gamesResult)) {
     return gamesResult;
@@ -417,7 +417,7 @@ export const delAssignmentSignupsByStartTime = async (
     .map((game) => game._id);
 
   try {
-    const response = await SignupModel.updateMany(
+    await SignupModel.updateMany(
       {
         game: { $nin: doNotRemoveGameObjectIds },
       },
@@ -440,10 +440,8 @@ export const delAssignmentSignupsByStartTime = async (
         },
       ]
     );
-    logger.info(
-      `MongoDB: Deleted signups for ${response.modifiedCount} games for startTime: ${startTime}`
-    );
-    return makeSuccessResult(response.modifiedCount);
+    logger.info(`MongoDB: Deleted old signups for startTime: ${startTime}`);
+    return makeSuccessResult(undefined);
   } catch (error) {
     logger.error("MongoDB: Error removing invalid signup: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
