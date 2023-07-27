@@ -39,6 +39,7 @@ interface SharedConfig {
   signupQuestions: SignupQuestion[];
   tournamentSignupQuestion: SignupQuestion;
   tournamentSignupQuestionExcludeIds: string[];
+  addRevolvingDoorIds: string[];
 }
 
 // Convention days
@@ -176,6 +177,13 @@ export const sharedConfig: SharedConfig = {
   // These program items are hand picked to be exported from Kompassi
   addToKonsti: [
     "p6787", // KPS-turnaus
+  ],
+
+  // These program items have hand picked revolving door status
+  addRevolvingDoorIds: [
+    "p6645", // Ihmissusipeli (Werewolfes of Millers Hollow)
+    "p7042", // Ihmissusipeli (Werewolfes of Millers Hollow)
+    "p7043", // Ihmissusipeli (Werewolfes of Millers Hollow)
   ],
 
   // These program items are imported to Konsti but don't have Konsti signup
