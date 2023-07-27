@@ -6,6 +6,7 @@ import { getStartTimes } from "client/utils/getStartTimes";
 import { SignupsByStartTimes } from "./SignupsByStartTimes";
 import { SelectedGame } from "shared/typings/models/user";
 import { RaisedCard } from "client/components/RaisedCard";
+import { useAppSelector } from "client/utils/hooks";
 
 interface Props {
   signedGames: readonly SelectedGame[];
@@ -17,6 +18,8 @@ export const MySignupsList = ({
   isGroupCreator,
 }: Props): ReactElement => {
   const { t } = useTranslation();
+
+  const groupMembers = useAppSelector((state) => state.group.groupMembers);
 
   const sortedSignups = _.sortBy(signedGames, [
     (signedGame) => signedGame.gameDetails.startTime,
@@ -32,7 +35,9 @@ export const MySignupsList = ({
       <Header>{t("lotterySignedGames")}</Header>
 
       {!isGroupCreator && <InfoText>{t("group.inGroupSignups")}</InfoText>}
-      {isGroupCreator && <InfoText>{t("group.groupCreatorSignups")}</InfoText>}
+      {isGroupCreator && groupMembers.length > 0 && (
+        <InfoText>{t("group.groupCreatorSignups")}</InfoText>
+      )}
 
       {signedGames.length === 0 && (
         <SecondaryText>{t("noSignedGames")}</SecondaryText>
