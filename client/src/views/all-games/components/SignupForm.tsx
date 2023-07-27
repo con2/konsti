@@ -41,7 +41,7 @@ export const SignupForm = ({
   const firstOption = firstUnselected.length > 0 ? firstUnselected[0] : 1;
 
   const [loading, setLoading] = useState(false);
-  const [priority, setPriority] = useState<number | null>(firstOption);
+  const [priority, setPriority] = useState<number>(firstOption);
 
   const [errorMessage, setErrorMessage] =
     useState<PostSignedGamesErrorMessage | null>(null);
@@ -100,7 +100,7 @@ export const SignupForm = ({
       <StyledDropdown
         onChange={onChange}
         options={options}
-        selectedValue={firstOption.toString()}
+        selectedValue={priority.toString()}
       />
       <StyledButtonGroup>
         <StyledButton
