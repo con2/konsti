@@ -183,6 +183,8 @@ export const sharedConfig: SharedConfig = {
     "p6512", // RPG: Charlie ei surffaa - Fri
     "p7023", // RPG: Charlie ei surffaa - Sat
     "p7024", // RPG: Charlie ei surffaa - Sun
+    "p7030", // RPG: Indiehuone / Indie Room / Indierummet (Pe/Fr/Fri)
+    "p7029", // RPG: Indiehuone / Indie Room / Indierummet (La/Lö/Sat)
     "p6848", // Larp: Johtajakoulutus
     "p6638", // Larp: Kielokoti 1. Pelautus
     "p6999", // Larp: Kielokoti 2. Pelautus
