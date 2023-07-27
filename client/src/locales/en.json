@@ -235,6 +235,7 @@
     "cancelSignupBeforeJoiningOrCreatingGroup": "You'll have to cancel those sign-ups before you can create or join a group.",
     "signupDisabledNotCreator": "You are a group member. Your group's creator will sign up the whole group to the lottery.",
     "signupForWholeGroup": "You are the group creator. You can sign up the group to a lottery.",
+    "groupCreatorSignups": "You are the group creator. Your lottery sign-ups are the same for all group members.",
     "inGroupSignups": "You are in a group. Sign-ups in this list have been made by your group creator.",
     "closeGroupConfirmation": "Are you sure you want to close the group and remove all its members?",
     "generalLeaveGroupError": "Error leaving group",
