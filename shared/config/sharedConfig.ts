@@ -29,6 +29,8 @@ interface SharedConfig {
   enableSentryInDev: boolean;
   requireRegistrationCode: boolean;
   activeProgramTypes: ProgramType[];
+  twoPhaseSignupProgramTypes: ProgramType[];
+  directSignupProgramTypes: ProgramType[];
   manualSignupMode: SignupStrategy.ALGORITHM | SignupStrategy.DIRECT | "none";
   signupOpen: boolean;
   resultsVisible: boolean;
@@ -53,8 +55,19 @@ export const sharedConfig: SharedConfig = {
   manualSignupMode: "none",
   signupOpen: true,
   resultsVisible: true,
+
   activeProgramTypes: [
     ProgramType.TABLETOP_RPG,
+    ProgramType.LARP,
+    ProgramType.TOURNAMENT,
+    ProgramType.WORKSHOP,
+    ProgramType.EXPERIENCE_POINT,
+    ProgramType.OTHER,
+  ],
+
+  twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG],
+
+  directSignupProgramTypes: [
     ProgramType.LARP,
     ProgramType.TOURNAMENT,
     ProgramType.WORKSHOP,

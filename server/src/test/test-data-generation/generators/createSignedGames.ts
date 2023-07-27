@@ -54,7 +54,7 @@ const getRandomSignup = (games: readonly Game[]): SelectedGame[] => {
     dayjs(activeGame.startTime).toISOString()
   );
   const uniqueTimes = Array.from(new Set(startTimes));
-  const firstFourTimes = uniqueTimes.splice(0, 4);
+  const firstFourTimes = uniqueTimes.slice(0, 4);
 
   // Select random games for each start time
   firstFourTimes.forEach((startTime) => {

@@ -118,6 +118,10 @@ const getSignupStrategyForGame = (
     return settings.signupStrategy;
   }
 
+  if (sharedConfig.directSignupProgramTypes.includes(game.programType)) {
+    return SignupStrategy.DIRECT;
+  }
+
   if (tooEearlyForAlgorithmSignup(game.startTime)) {
     return SignupStrategy.DIRECT;
   }
