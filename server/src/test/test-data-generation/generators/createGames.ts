@@ -23,8 +23,10 @@ const GAME_ID_MAX = 10000000;
 
 const startTimes = [
   dayjs(sharedConfig.CONVENTION_START_TIME).toISOString(),
+  dayjs(sharedConfig.CONVENTION_START_TIME).add(1, "hours").toISOString(),
   dayjs(sharedConfig.CONVENTION_START_TIME).add(2, "hours").toISOString(),
   dayjs(sharedConfig.CONVENTION_START_TIME).add(3, "hours").toISOString(),
+  dayjs(sharedConfig.CONVENTION_START_TIME).add(4, "hours").toISOString(),
   dayjs(sharedConfig.CONVENTION_START_TIME).add(1, "days").toISOString(),
   dayjs(sharedConfig.CONVENTION_START_TIME).add(2, "days").toISOString(),
 ];
