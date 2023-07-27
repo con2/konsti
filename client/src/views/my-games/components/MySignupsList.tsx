@@ -32,6 +32,7 @@ export const MySignupsList = ({
       <Header>{t("lotterySignedGames")}</Header>
 
       {!isGroupCreator && <InfoText>{t("group.inGroupSignups")}</InfoText>}
+      {isGroupCreator && <InfoText>{t("group.groupCreatorSignups")}</InfoText>}
 
       {signedGames.length === 0 && (
         <SecondaryText>{t("noSignedGames")}</SecondaryText>
