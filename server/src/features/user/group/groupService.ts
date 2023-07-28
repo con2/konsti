@@ -22,6 +22,7 @@ import {
   PostJoinGroupError,
   PostLeaveGroupError,
 } from "shared/typings/api/groups";
+import { ProgramType } from "shared/typings/models/game";
 import {
   isErrorResult,
   makeErrorResult,
@@ -46,9 +47,9 @@ export const createGroup = async (
 
   const signups = unwrapResult(signupsResult);
 
-  const filteredSignups = signups.filter(
-    (signup) => !directSignupAlwaysOpenIds.includes(signup.game.gameId)
-  );
+  const filteredSignups = signups
+    .filter((signup) => !directSignupAlwaysOpenIds.includes(signup.game.gameId))
+    .filter((signup) => signup.game.programType === ProgramType.TABLETOP_RPG);
 
   const timeNowResult = await getTimeNow();
   if (isErrorResult(timeNowResult)) {
@@ -148,9 +149,9 @@ export const joinGroup = async (
 
   const signups = unwrapResult(signupsResult);
 
-  const filteredSignups = signups.filter(
-    (signup) => !directSignupAlwaysOpenIds.includes(signup.game.gameId)
-  );
+  const filteredSignups = signups
+    .filter((signup) => !directSignupAlwaysOpenIds.includes(signup.game.gameId))
+    .filter((signup) => signup.game.programType === ProgramType.TABLETOP_RPG);
 
   const timeNowResult = await getTimeNow();
   if (isErrorResult(timeNowResult)) {
