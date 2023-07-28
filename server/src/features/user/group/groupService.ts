@@ -67,7 +67,7 @@ export const createGroup = async (
     timeNow.isBefore(dayjs(userSignup.time))
   );
 
-  // User cannot have signups in future when creating a group
+  // User cannot have RPG signups in future when creating a group
   if (userHasSignups) {
     return {
       message: "Signup in future",
@@ -169,7 +169,7 @@ export const joinGroup = async (
     timeNow.isBefore(dayjs(userSignup.time))
   );
 
-  // User cannot have signups in future when joining in group
+  // User cannot have RPG signups in future when joining in group
   if (userHasSignups) {
     return {
       message: "Signup in future",
