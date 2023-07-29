@@ -177,6 +177,7 @@ export const sharedConfig: SharedConfig = {
   // These program items are hand picked to be exported from Kompassi
   addToKonsti: [
     "p6787", // KPS-turnaus
+    "p6500", // "\"Joo ja...\" -improtunti",
   ],
 
   // These program items have hand picked revolving door status
@@ -199,7 +200,8 @@ export const sharedConfig: SharedConfig = {
     "p6638", // Larp: Kielokoti 1. Pelautus
     "p6999", // Larp: Kielokoti 2. Pelautus
     "p6299", // Larp: Vaeltajalegendat: Sinustako seikkailija!? 1. Pelautus
-    "p7006", // Larp: Vaeltajalegendat: Sinustako seikkailija!? 2. Pelautus
+    "p7006", // Larp: Vaeltajalegendat: Sinustako seikkailija!? 2. Pelautus,
+    "p6500", // Other: "\"Joo ja...\" -improtunti",
   ],
 
   signupQuestions: [
