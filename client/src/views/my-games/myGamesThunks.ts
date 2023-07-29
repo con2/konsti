@@ -70,6 +70,7 @@ export enum PostEnteredGameErrorMessage {
   UNKNOWN = "signupError.generic",
   SIGNUP_ENDED = "signupError.signupEnded",
   SIGNUP_NOT_OPEN_YET = "signupError.signupNotOpenYet",
+  NO_KONSTI_SIGNUP = "signupError.noKonstiSignup",
 }
 
 export const submitPostEnteredGame = (
@@ -86,6 +87,8 @@ export const submitPostEnteredGame = (
           return PostEnteredGameErrorMessage.GAME_FULL;
         case "signupNotOpenYet":
           return PostEnteredGameErrorMessage.SIGNUP_NOT_OPEN_YET;
+        case "noKonstiSignup":
+          return PostEnteredGameErrorMessage.NO_KONSTI_SIGNUP;
         case "unknown":
           return PostEnteredGameErrorMessage.UNKNOWN;
         default:
