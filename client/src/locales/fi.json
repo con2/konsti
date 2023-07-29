@@ -200,7 +200,8 @@
     "signupEnded": "Ilmoittautuminen päättynyt",
     "samePriority": "Prioriteetti on jo valittu",
     "signupNotOpenYet": "Ilmoittautuminen ei ole vielä auki",
-    "programFull": "Ohjelma on täynnä"
+    "programFull": "Ohjelma on täynnä",
+    "noKonstiSignup": "Tähän ohjelmaan ei ilmoittauduta Konstissa. Katso ilmoittautumisohjeet ohjelman lisätiedoista."
   },
   "signupUnsavedChanges": "Tallentamattomia muutoksia",
   "closingMessage": "Konsti on suljettu ja avautuu lähempänä seuraavaa tapahtumaa",
