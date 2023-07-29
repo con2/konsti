@@ -51,7 +51,12 @@ export interface PostEnteredGameResponse extends ApiResult {
 }
 
 export interface PostEnteredGameError extends ApiError {
-  errorId: "unknown" | "gameFull" | "signupEnded" | "signupNotOpenYet";
+  errorId:
+    | "unknown"
+    | "gameFull"
+    | "signupEnded"
+    | "signupNotOpenYet"
+    | "noKonstiSignup";
 }
 
 // DELETE entered game

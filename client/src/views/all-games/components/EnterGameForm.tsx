@@ -116,6 +116,7 @@ export const EnterGameForm = ({
     const error = await dispatch(submitPostEnteredGame(enterData));
     if (error) {
       setErrorMessage(error);
+      setLoading(false);
       return;
     }
 

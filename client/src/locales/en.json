@@ -200,7 +200,8 @@
     "signupEnded": "Sign-up ended",
     "samePriority": "Priority already selected",
     "signupNotOpenYet": "Sign-up not open yet",
-    "programFull": "Program is full"
+    "programFull": "Program is full",
+    "noKonstiSignup": "This program does not use Konsti for signing up. See the program details for instructions."
   },
   "signupUnsavedChanges": "Unsaved changes",
   "closingMessage": "Konsti is closed and will open closer to the next event",
