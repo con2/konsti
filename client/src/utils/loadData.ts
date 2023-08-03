@@ -44,8 +44,13 @@ const loadTestSettings = async (): Promise<void> => {
 };
 
 export const loadGames = async (): Promise<void> => {
+  const state = store.getState();
   const dispatch: AppDispatch = store.dispatch;
-  await dispatch(submitGetGames());
+  const { appOpen } = state.admin;
+
+  if (appOpen) {
+    await dispatch(submitGetGames());
+  }
 };
 
 const recoverSession = async (): Promise<void> => {
