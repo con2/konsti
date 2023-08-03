@@ -44,7 +44,15 @@ const loadTestSettings = async (): Promise<void> => {
 };
 
 export const loadGames = async (): Promise<void> => {
+  const state = store.getState();
   const dispatch: AppDispatch = store.dispatch;
+  const { appOpen } = state.admin;
+  const { loggedIn } = state.login;
+
+  if (!appOpen && !loggedIn) {
+    return;
+  }
+
   await dispatch(submitGetGames());
 };
 
