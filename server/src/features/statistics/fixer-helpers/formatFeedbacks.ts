@@ -36,6 +36,12 @@ export const formatFeedbacks = (year: number, event: string): void => {
     (feedback) => feedback.feedback !== ""
   );
 
+  logger.info(
+    `Removed ${feedbacks.length - filteredFeedbacks.length} empty feedbacks, ${
+      filteredFeedbacks.length
+    } remaining`
+  );
+
   const formattedFeedbacks = filteredFeedbacks.map((feedback) => {
     const foundGame = games.find((game) => game.gameId === feedback.gameId);
     return {
@@ -48,10 +54,36 @@ export const formatFeedbacks = (year: number, event: string): void => {
     };
   });
 
-  const groupedFeedbacks = _.groupBy(
+  logger.info(`Formatted ${formattedFeedbacks.length} feedbacks`);
+
+  const groupedByProgramTypeFeedbacks = _.groupBy(
     formattedFeedbacks,
-    (feedback) => feedback.organizer
+    (feedback) => feedback.programType
   );
 
-  writeJson(year, event, "feedback", groupedFeedbacks);
+  Object.entries(groupedByProgramTypeFeedbacks).map(
+    ([programType, programTypeFeedbacks]) => {
+      logger.info(
+        `${programType}: found ${programTypeFeedbacks.length} feedbacks`
+      );
+
+      const groupedByOrganizerFeedbacks = _.groupBy(
+        programTypeFeedbacks,
+        (feedback) => feedback.organizer
+      );
+
+      logger.info(
+        `${programType}: grouped to ${
+          Object.entries(groupedByOrganizerFeedbacks).length
+        } organizers`
+      );
+
+      writeJson(
+        year,
+        event,
+        `feedback-${programType}`,
+        groupedByOrganizerFeedbacks
+      );
+    }
+  );
 };

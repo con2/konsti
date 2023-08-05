@@ -1,7 +1,7 @@
 import fs from "fs";
 import _ from "lodash";
 import { logger } from "server/utils/logger";
-import { SelectedGame, User } from "shared/typings/models/user";
+import { User } from "shared/typings/models/user";
 import { GameDoc } from "server/typings/game.typings";
 import { ResultsCollectionEntry } from "server/typings/result.typings";
 import { writeJson } from "server/features/statistics/statsUtil";
@@ -57,29 +57,36 @@ export const gameIdFix = (year: number, event: string): void => {
   logger.info(`Loaded ${settings.length} games`);
 
   users.forEach((user) => {
-    const tempFavoritedGames: Game[] = [];
-    const tempSignedGames: SelectedGame[] = [];
-
-    games.forEach((game) => {
-      user.favoritedGames.forEach((favoritedGame) => {
-        if (_.isEqual(game._id, favoritedGame)) {
-          // @ts-expect-error: We don't want whole game details
-          tempFavoritedGames.push({ gameId: game.gameId });
-        }
-      });
-
-      user.signedGames.forEach((signedGame) => {
-        if (_.isEqual(game._id, signedGame.gameDetails)) {
-          tempSignedGames.push({
-            ...signedGame,
-            // @ts-expect-error: We don't want whole game details
-            gameDetails: { gameId: game.gameId },
-          });
-        }
-      });
+    const tempFavoritedGames = user.favoritedGames.flatMap((favoritedGame) => {
+      const matchingGame = games.find((game) => game._id === favoritedGame);
+      if (!matchingGame) {
+        logger.error(
+          `Program item for id ${JSON.stringify(favoritedGame)} not found`
+        );
+        return [];
+      }
+      return { gameId: matchingGame.gameId };
     });
 
+    const tempSignedGames = user.signedGames.flatMap((signedGame) => {
+      const matchingGame = games.find(
+        (game) => game._id === signedGame.gameDetails
+      );
+      if (!matchingGame) {
+        logger.error(
+          `Program item for id ${JSON.stringify(signedGame)} not found`
+        );
+        return [];
+      }
+      return {
+        ...signedGame,
+        gameDetails: { gameId: matchingGame.gameId },
+      };
+    });
+
+    // @ts-expect-error: We don't want whole game details
     user.favoritedGames = tempFavoritedGames;
+    // @ts-expect-error: We don't want whole game details
     user.signedGames = tempSignedGames;
   });
 

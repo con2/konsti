@@ -1,0 +1,6788 @@
+[
+  {
+    "results": [
+      {
+        "username": "570145",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6301" },
+          "priority": 2,
+          "time": "2023-07-28T15:00:00Z"
+        }
+      },
+      {
+        "username": "4344",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6301" },
+          "priority": 1,
+          "time": "2023-07-28T15:00:00Z"
+        }
+      },
+      {
+        "username": "405213",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6727" },
+          "priority": 1,
+          "time": "2023-07-28T15:00:00Z"
+        }
+      },
+      {
+        "username": "675486",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6456" },
+          "priority": 1,
+          "time": "2023-07-28T15:00:00Z"
+        }
+      },
+      {
+        "username": "974994",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6793" },
+          "priority": 1,
+          "time": "2023-07-28T15:00:00Z"
+        }
+      },
+      {
+        "username": "262431",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6320" },
+          "priority": 1,
+          "time": "2023-07-28T15:00:00Z"
+        }
+      },
+      {
+        "username": "317923",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6793" },
+          "priority": 1,
+          "time": "2023-07-28T15:00:00Z"
+        }
+      },
+      {
+        "username": "871097",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6793" },
+          "priority": 1,
+          "time": "2023-07-28T15:00:00Z"
+        }
+      },
+      {
+        "username": "22715",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6320" },
+          "priority": 3,
+          "time": "2023-07-28T15:00:00Z"
+        }
+      },
+      {
+        "username": "440571",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6793" },
+          "priority": 1,
+          "time": "2023-07-28T15:00:00Z"
+        }
+      },
+      {
+        "username": "860352",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6320" },
+          "priority": 2,
+          "time": "2023-07-28T15:00:00Z"
+        }
+      },
+      {
+        "username": "665334",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6301" },
+          "priority": 3,
+          "time": "2023-07-28T15:00:00Z"
+        }
+      },
+      {
+        "username": "924080",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6456" },
+          "priority": 3,
+          "time": "2023-07-28T15:00:00Z"
+        }
+      },
+      {
+        "username": "528149",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6456" },
+          "priority": 3,
+          "time": "2023-07-28T15:00:00Z"
+        }
+      },
+      {
+        "username": "220504",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6456" },
+          "priority": 1,
+          "time": "2023-07-28T15:00:00Z"
+        }
+      },
+      {
+        "username": "105079",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6301" },
+          "priority": 1,
+          "time": "2023-07-28T15:00:00Z"
+        }
+      },
+      {
+        "username": "130823",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6523" },
+          "priority": 1,
+          "time": "2023-07-28T15:00:00Z"
+        }
+      },
+      {
+        "username": "687024",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6727" },
+          "priority": 1,
+          "time": "2023-07-28T15:00:00Z"
+        }
+      },
+      {
+        "username": "774514",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6793" },
+          "priority": 1,
+          "time": "2023-07-28T15:00:00Z"
+        }
+      },
+      {
+        "username": "506465",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6456" },
+          "priority": 2,
+          "time": "2023-07-28T15:00:00Z"
+        }
+      },
+      {
+        "username": "531103",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6607" },
+          "priority": 1,
+          "time": "2023-07-28T15:00:00Z"
+        }
+      },
+      {
+        "username": "900964",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6727" },
+          "priority": 1,
+          "time": "2023-07-28T15:00:00Z"
+        }
+      },
+      {
+        "username": "27900",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6607" },
+          "priority": 1,
+          "time": "2023-07-28T15:00:00Z"
+        }
+      },
+      {
+        "username": "308672",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6793" },
+          "priority": 1,
+          "time": "2023-07-28T15:00:00Z"
+        }
+      },
+      {
+        "username": "963659",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6301" },
+          "priority": 3,
+          "time": "2023-07-28T15:00:00Z"
+        }
+      },
+      {
+        "username": "607937",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6431" },
+          "priority": 2,
+          "time": "2023-07-28T15:00:00Z"
+        }
+      },
+      {
+        "username": "656822",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6431" },
+          "priority": 2,
+          "time": "2023-07-28T15:00:00Z"
+        }
+      },
+      {
+        "username": "775710",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6431" },
+          "priority": 1,
+          "time": "2023-07-28T15:00:00Z"
+        }
+      },
+      {
+        "username": "981960",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6431" },
+          "priority": 1,
+          "time": "2023-07-28T15:00:00Z"
+        }
+      },
+      {
+        "username": "925788",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6431" },
+          "priority": 1,
+          "time": "2023-07-28T15:00:00Z"
+        }
+      },
+      {
+        "username": "679608",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6523" },
+          "priority": 3,
+          "time": "2023-07-28T15:00:00Z"
+        }
+      },
+      {
+        "username": "155435",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6523" },
+          "priority": 3,
+          "time": "2023-07-28T15:00:00Z"
+        }
+      },
+      {
+        "username": "24371",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6523" },
+          "priority": 3,
+          "time": "2023-07-28T15:00:00Z"
+        }
+      },
+      {
+        "username": "632882",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6523" },
+          "priority": 3,
+          "time": "2023-07-28T15:00:00Z"
+        }
+      },
+      {
+        "username": "84881",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6607" },
+          "priority": 2,
+          "time": "2023-07-28T15:00:00Z"
+        }
+      },
+      {
+        "username": "441127",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6607" },
+          "priority": 2,
+          "time": "2023-07-28T15:00:00Z"
+        }
+      },
+      {
+        "username": "630366",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6607" },
+          "priority": 1,
+          "time": "2023-07-28T15:00:00Z"
+        }
+      },
+      {
+        "username": "803572",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6607" },
+          "priority": 1,
+          "time": "2023-07-28T15:00:00Z"
+        }
+      }
+    ],
+    "startTime": "2023-07-28T15:00:00Z",
+    "algorithm": "random",
+    "message": "Random Assign Result - Players: 38/44 (86%), Games: 8/9 (89%)",
+    "createdAt": "2023-07-28T13:00:43.903Z",
+    "updatedAt": "2023-07-28T13:00:43.903Z"
+  },
+  {
+    "results": [
+      {
+        "username": "314256",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6469" },
+          "priority": 1,
+          "time": "2023-07-28T16:00:00Z"
+        }
+      },
+      {
+        "username": "612141",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6657" },
+          "priority": 1,
+          "time": "2023-07-28T16:00:00Z"
+        }
+      },
+      {
+        "username": "845051",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6715" },
+          "priority": 1,
+          "time": "2023-07-28T16:00:00Z"
+        }
+      },
+      {
+        "username": "116663",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6753" },
+          "priority": 1,
+          "time": "2023-07-28T16:00:00Z"
+        }
+      },
+      {
+        "username": "844750",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6753" },
+          "priority": 2,
+          "time": "2023-07-28T16:00:00Z"
+        }
+      },
+      {
+        "username": "306898",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6715" },
+          "priority": 1,
+          "time": "2023-07-28T16:00:00Z"
+        }
+      },
+      {
+        "username": "345725",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6753" },
+          "priority": 1,
+          "time": "2023-07-28T16:00:00Z"
+        }
+      },
+      {
+        "username": "222530",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6469" },
+          "priority": 1,
+          "time": "2023-07-28T16:00:00Z"
+        }
+      },
+      {
+        "username": "121683",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6657" },
+          "priority": 1,
+          "time": "2023-07-28T16:00:00Z"
+        }
+      },
+      {
+        "username": "64847",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6469" },
+          "priority": 1,
+          "time": "2023-07-28T16:00:00Z"
+        }
+      },
+      {
+        "username": "664929",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6657" },
+          "priority": 1,
+          "time": "2023-07-28T16:00:00Z"
+        }
+      },
+      {
+        "username": "426866",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6715" },
+          "priority": 1,
+          "time": "2023-07-28T16:00:00Z"
+        }
+      },
+      {
+        "username": "98383",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6657" },
+          "priority": 2,
+          "time": "2023-07-28T16:00:00Z"
+        }
+      },
+      {
+        "username": "31260",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6657" },
+          "priority": 1,
+          "time": "2023-07-28T16:00:00Z"
+        }
+      },
+      {
+        "username": "278510",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6715" },
+          "priority": 1,
+          "time": "2023-07-28T16:00:00Z"
+        }
+      },
+      {
+        "username": "480527",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6657" },
+          "priority": 1,
+          "time": "2023-07-28T16:00:00Z"
+        }
+      },
+      {
+        "username": "423916",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6753" },
+          "priority": 1,
+          "time": "2023-07-28T16:00:00Z"
+        }
+      },
+      {
+        "username": "783007",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6469" },
+          "priority": 1,
+          "time": "2023-07-28T16:00:00Z"
+        }
+      }
+    ],
+    "startTime": "2023-07-28T16:00:00Z",
+    "algorithm": "padg",
+    "message": "Padg Assign Result - Players: 18/43 (42%), Games: 4/4 (100%)",
+    "createdAt": "2023-07-28T14:00:45.803Z",
+    "updatedAt": "2023-07-28T14:00:45.803Z"
+  },
+  {
+    "results": [
+      {
+        "username": "833915",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6742" },
+          "priority": 1,
+          "time": "2023-07-28T17:00:00Z"
+        }
+      },
+      {
+        "username": "400720",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6847" },
+          "priority": 1,
+          "time": "2023-07-28T17:00:00Z"
+        }
+      },
+      {
+        "username": "405213",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6563" },
+          "priority": 2,
+          "time": "2023-07-28T17:00:00Z"
+        }
+      },
+      {
+        "username": "790196",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6847" },
+          "priority": 1,
+          "time": "2023-07-28T17:00:00Z"
+        }
+      },
+      {
+        "username": "781777",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6623" },
+          "priority": 1,
+          "time": "2023-07-28T17:00:00Z"
+        }
+      },
+      {
+        "username": "50124",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6742" },
+          "priority": 1,
+          "time": "2023-07-28T17:00:00Z"
+        }
+      },
+      {
+        "username": "512269",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6632" },
+          "priority": 1,
+          "time": "2023-07-28T17:00:00Z"
+        }
+      },
+      {
+        "username": "561575",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6632" },
+          "priority": 1,
+          "time": "2023-07-28T17:00:00Z"
+        }
+      },
+      {
+        "username": "525159",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6563" },
+          "priority": 1,
+          "time": "2023-07-28T17:00:00Z"
+        }
+      },
+      {
+        "username": "918531",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6632" },
+          "priority": 2,
+          "time": "2023-07-28T17:00:00Z"
+        }
+      },
+      {
+        "username": "502991",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6847" },
+          "priority": 1,
+          "time": "2023-07-28T17:00:00Z"
+        }
+      },
+      {
+        "username": "8139",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6847" },
+          "priority": 1,
+          "time": "2023-07-28T17:00:00Z"
+        }
+      },
+      {
+        "username": "973578",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6742" },
+          "priority": 2,
+          "time": "2023-07-28T17:00:00Z"
+        }
+      },
+      {
+        "username": "735475",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6623" },
+          "priority": 1,
+          "time": "2023-07-28T17:00:00Z"
+        }
+      },
+      {
+        "username": "845051",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6623" },
+          "priority": 1,
+          "time": "2023-07-28T17:00:00Z"
+        }
+      },
+      {
+        "username": "826939",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6632" },
+          "priority": 1,
+          "time": "2023-07-28T17:00:00Z"
+        }
+      },
+      {
+        "username": "772031",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6563" },
+          "priority": 1,
+          "time": "2023-07-28T17:00:00Z"
+        }
+      },
+      {
+        "username": "534086",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6623" },
+          "priority": 2,
+          "time": "2023-07-28T17:00:00Z"
+        }
+      },
+      {
+        "username": "900964",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6115" },
+          "priority": 1,
+          "time": "2023-07-28T17:00:00Z"
+        }
+      },
+      {
+        "username": "403685",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6115" },
+          "priority": 2,
+          "time": "2023-07-28T17:00:00Z"
+        }
+      },
+      {
+        "username": "747582",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6115" },
+          "priority": 1,
+          "time": "2023-07-28T17:00:00Z"
+        }
+      },
+      {
+        "username": "98383",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6623" },
+          "priority": 3,
+          "time": "2023-07-28T17:00:00Z"
+        }
+      },
+      {
+        "username": "867221",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6115" },
+          "priority": 1,
+          "time": "2023-07-28T17:00:00Z"
+        }
+      },
+      {
+        "username": "531504",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6115" },
+          "priority": 2,
+          "time": "2023-07-28T17:00:00Z"
+        }
+      },
+      {
+        "username": "587248",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6563" },
+          "priority": 1,
+          "time": "2023-07-28T17:00:00Z"
+        }
+      },
+      {
+        "username": "364475",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6847" },
+          "priority": 1,
+          "time": "2023-07-28T17:00:00Z"
+        }
+      },
+      {
+        "username": "334712",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6742" },
+          "priority": 1,
+          "time": "2023-07-28T17:00:00Z"
+        }
+      },
+      {
+        "username": "118592",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6742" },
+          "priority": 1,
+          "time": "2023-07-28T17:00:00Z"
+        }
+      },
+      {
+        "username": "718518",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6115" },
+          "priority": 1,
+          "time": "2023-07-28T17:00:00Z"
+        }
+      },
+      {
+        "username": "449862",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6563" },
+          "priority": 2,
+          "time": "2023-07-28T17:00:00Z"
+        }
+      }
+    ],
+    "startTime": "2023-07-28T17:00:00Z",
+    "algorithm": "padg",
+    "message": "Padg Assign Result - Players: 30/81 (37%), Games: 6/6 (100%)",
+    "createdAt": "2023-07-28T15:00:43.904Z",
+    "updatedAt": "2023-07-28T15:00:43.904Z"
+  },
+  {
+    "results": [
+      {
+        "username": "833915",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6809" },
+          "priority": 1,
+          "time": "2023-07-28T18:00:00Z"
+        }
+      },
+      {
+        "username": "11796",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6772" },
+          "priority": 1,
+          "time": "2023-07-28T18:00:00Z"
+        }
+      },
+      {
+        "username": "926529",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6695" },
+          "priority": 2,
+          "time": "2023-07-28T18:00:00Z"
+        }
+      },
+      {
+        "username": "336961",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6772" },
+          "priority": 1,
+          "time": "2023-07-28T18:00:00Z"
+        }
+      },
+      {
+        "username": "978640",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6772" },
+          "priority": 1,
+          "time": "2023-07-28T18:00:00Z"
+        }
+      },
+      {
+        "username": "826939",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6598" },
+          "priority": 1,
+          "time": "2023-07-28T18:00:00Z"
+        }
+      },
+      {
+        "username": "142974",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6772" },
+          "priority": 2,
+          "time": "2023-07-28T18:00:00Z"
+        }
+      },
+      {
+        "username": "201111",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6695" },
+          "priority": 1,
+          "time": "2023-07-28T18:00:00Z"
+        }
+      },
+      {
+        "username": "972931",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6700" },
+          "priority": 1,
+          "time": "2023-07-28T18:00:00Z"
+        }
+      },
+      {
+        "username": "974511",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6695" },
+          "priority": 3,
+          "time": "2023-07-28T18:00:00Z"
+        }
+      },
+      {
+        "username": "587579",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6700" },
+          "priority": 1,
+          "time": "2023-07-28T18:00:00Z"
+        }
+      },
+      {
+        "username": "366965",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6695" },
+          "priority": 2,
+          "time": "2023-07-28T18:00:00Z"
+        }
+      },
+      {
+        "username": "430291",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6809" },
+          "priority": 1,
+          "time": "2023-07-28T18:00:00Z"
+        }
+      },
+      {
+        "username": "405664",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6598" },
+          "priority": 1,
+          "time": "2023-07-28T18:00:00Z"
+        }
+      },
+      {
+        "username": "317895",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6598" },
+          "priority": 1,
+          "time": "2023-07-28T18:00:00Z"
+        }
+      },
+      {
+        "username": "746445",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6700" },
+          "priority": 2,
+          "time": "2023-07-28T18:00:00Z"
+        }
+      },
+      {
+        "username": "510078",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6700" },
+          "priority": 3,
+          "time": "2023-07-28T18:00:00Z"
+        }
+      },
+      {
+        "username": "321410",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6772" },
+          "priority": 1,
+          "time": "2023-07-28T18:00:00Z"
+        }
+      },
+      {
+        "username": "441909",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6809" },
+          "priority": 1,
+          "time": "2023-07-28T18:00:00Z"
+        }
+      },
+      {
+        "username": "95086",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6700" },
+          "priority": 1,
+          "time": "2023-07-28T18:00:00Z"
+        }
+      },
+      {
+        "username": "850169",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6598" },
+          "priority": 1,
+          "time": "2023-07-28T18:00:00Z"
+        }
+      },
+      {
+        "username": "415179",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6598" },
+          "priority": 1,
+          "time": "2023-07-28T18:00:00Z"
+        }
+      },
+      {
+        "username": "778670",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6809" },
+          "priority": 2,
+          "time": "2023-07-28T18:00:00Z"
+        }
+      }
+    ],
+    "startTime": "2023-07-28T18:00:00Z",
+    "algorithm": "padg",
+    "message": "Padg Assign Result - Players: 23/66 (35%), Games: 5/5 (100%)",
+    "createdAt": "2023-07-28T16:00:54.705Z",
+    "updatedAt": "2023-07-28T16:00:54.705Z"
+  },
+  {
+    "results": [
+      {
+        "username": "165389",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6713" },
+          "priority": 1,
+          "time": "2023-07-28T19:00:00Z"
+        }
+      },
+      {
+        "username": "230311",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6713" },
+          "priority": 1,
+          "time": "2023-07-28T19:00:00Z"
+        }
+      },
+      {
+        "username": "717955",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6713" },
+          "priority": 1,
+          "time": "2023-07-28T19:00:00Z"
+        }
+      },
+      {
+        "username": "155349",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6306" },
+          "priority": 2,
+          "time": "2023-07-28T19:00:00Z"
+        }
+      },
+      {
+        "username": "927336",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6167" },
+          "priority": 1,
+          "time": "2023-07-28T19:00:00Z"
+        }
+      },
+      {
+        "username": "516003",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6167" },
+          "priority": 1,
+          "time": "2023-07-28T19:00:00Z"
+        }
+      },
+      {
+        "username": "826939",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6167" },
+          "priority": 1,
+          "time": "2023-07-28T19:00:00Z"
+        }
+      },
+      {
+        "username": "506465",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6334" },
+          "priority": 2,
+          "time": "2023-07-28T19:00:00Z"
+        }
+      },
+      {
+        "username": "557814",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6713" },
+          "priority": 1,
+          "time": "2023-07-28T19:00:00Z"
+        }
+      },
+      {
+        "username": "403685",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6167" },
+          "priority": 1,
+          "time": "2023-07-28T19:00:00Z"
+        }
+      },
+      {
+        "username": "876200",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6334" },
+          "priority": 1,
+          "time": "2023-07-28T19:00:00Z"
+        }
+      },
+      {
+        "username": "662853",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6476" },
+          "priority": 1,
+          "time": "2023-07-28T19:00:00Z"
+        }
+      },
+      {
+        "username": "557816",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6306" },
+          "priority": 2,
+          "time": "2023-07-28T19:00:00Z"
+        }
+      },
+      {
+        "username": "396568",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6476" },
+          "priority": 1,
+          "time": "2023-07-28T19:00:00Z"
+        }
+      },
+      {
+        "username": "617192",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6167" },
+          "priority": 1,
+          "time": "2023-07-28T19:00:00Z"
+        }
+      },
+      {
+        "username": "441909",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6476" },
+          "priority": 2,
+          "time": "2023-07-28T19:00:00Z"
+        }
+      },
+      {
+        "username": "162111",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6713" },
+          "priority": 1,
+          "time": "2023-07-28T19:00:00Z"
+        }
+      },
+      {
+        "username": "383781",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6476" },
+          "priority": 2,
+          "time": "2023-07-28T19:00:00Z"
+        }
+      },
+      {
+        "username": "673213",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6334" },
+          "priority": 1,
+          "time": "2023-07-28T19:00:00Z"
+        }
+      },
+      {
+        "username": "400854",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6476" },
+          "priority": 1,
+          "time": "2023-07-28T19:00:00Z"
+        }
+      },
+      {
+        "username": "682118",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6334" },
+          "priority": 3,
+          "time": "2023-07-28T19:00:00Z"
+        }
+      },
+      {
+        "username": "134498",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6476" },
+          "priority": 1,
+          "time": "2023-07-28T19:00:00Z"
+        }
+      },
+      {
+        "username": "479454",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6334" },
+          "priority": 1,
+          "time": "2023-07-28T19:00:00Z"
+        }
+      },
+      {
+        "username": "429183",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6306" },
+          "priority": 2,
+          "time": "2023-07-28T19:00:00Z"
+        }
+      },
+      {
+        "username": "803130",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6306" },
+          "priority": 3,
+          "time": "2023-07-28T19:00:00Z"
+        }
+      }
+    ],
+    "startTime": "2023-07-28T19:00:00Z",
+    "algorithm": "padg",
+    "message": "Padg Assign Result - Players: 25/107 (23%), Games: 5/5 (100%)",
+    "createdAt": "2023-07-28T17:01:00.874Z",
+    "updatedAt": "2023-07-28T17:01:00.874Z"
+  },
+  {
+    "results": [
+      {
+        "username": "717955",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6760" },
+          "priority": 1,
+          "time": "2023-07-28T20:00:00Z"
+        }
+      },
+      {
+        "username": "836134",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6166" },
+          "priority": 1,
+          "time": "2023-07-28T20:00:00Z"
+        }
+      },
+      {
+        "username": "633872",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6166" },
+          "priority": 1,
+          "time": "2023-07-28T20:00:00Z"
+        }
+      },
+      {
+        "username": "368085",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6166" },
+          "priority": 2,
+          "time": "2023-07-28T20:00:00Z"
+        }
+      },
+      {
+        "username": "943390",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6166" },
+          "priority": 1,
+          "time": "2023-07-28T20:00:00Z"
+        }
+      },
+      {
+        "username": "116663",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6166" },
+          "priority": 1,
+          "time": "2023-07-28T20:00:00Z"
+        }
+      },
+      {
+        "username": "250156",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6760" },
+          "priority": 1,
+          "time": "2023-07-28T20:00:00Z"
+        }
+      },
+      {
+        "username": "5642",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6760" },
+          "priority": 2,
+          "time": "2023-07-28T20:00:00Z"
+        }
+      },
+      {
+        "username": "755739",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6166" },
+          "priority": 1,
+          "time": "2023-07-28T20:00:00Z"
+        }
+      },
+      {
+        "username": "258617",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6760" },
+          "priority": 1,
+          "time": "2023-07-28T20:00:00Z"
+        }
+      },
+      {
+        "username": "993221",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6760" },
+          "priority": 1,
+          "time": "2023-07-28T20:00:00Z"
+        }
+      }
+    ],
+    "startTime": "2023-07-28T20:00:00Z",
+    "algorithm": "padg",
+    "message": "Padg Assign Result - Players: 11/52 (21%), Games: 2/2 (100%)",
+    "createdAt": "2023-07-28T18:00:50.204Z",
+    "updatedAt": "2023-07-28T18:00:50.204Z"
+  },
+  {
+    "results": [
+      {
+        "username": "877337",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p7253" },
+          "priority": 1,
+          "time": "2023-07-28T22:00:00Z"
+        }
+      },
+      {
+        "username": "819913",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p7253" },
+          "priority": 1,
+          "time": "2023-07-28T22:00:00Z"
+        }
+      },
+      {
+        "username": "682118",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p7253" },
+          "priority": 1,
+          "time": "2023-07-28T22:00:00Z"
+        }
+      },
+      {
+        "username": "754919",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p7253" },
+          "priority": 1,
+          "time": "2023-07-28T22:00:00Z"
+        }
+      },
+      {
+        "username": "797027",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p7253" },
+          "priority": 1,
+          "time": "2023-07-28T22:00:00Z"
+        }
+      },
+      {
+        "username": "421493",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p7253" },
+          "priority": 1,
+          "time": "2023-07-28T22:00:00Z"
+        }
+      }
+    ],
+    "startTime": "2023-07-28T22:00:00Z",
+    "algorithm": "padg",
+    "message": "Padg Assign Result - Players: 6/8 (75%), Games: 1/1 (100%)",
+    "createdAt": "2023-07-28T20:00:42.394Z",
+    "updatedAt": "2023-07-28T20:00:42.394Z"
+  },
+  {
+    "results": [
+      {
+        "username": "924080",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6736" },
+          "priority": 1,
+          "time": "2023-07-29T06:00:00Z"
+        }
+      },
+      {
+        "username": "430291",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6736" },
+          "priority": 1,
+          "time": "2023-07-29T06:00:00Z"
+        }
+      },
+      {
+        "username": "471395",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6736" },
+          "priority": 1,
+          "time": "2023-07-29T06:00:00Z"
+        }
+      },
+      {
+        "username": "870730",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6736" },
+          "priority": 2,
+          "time": "2023-07-29T06:00:00Z"
+        }
+      },
+      {
+        "username": "819913",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6736" },
+          "priority": 1,
+          "time": "2023-07-29T06:00:00Z"
+        }
+      }
+    ],
+    "startTime": "2023-07-29T06:00:00Z",
+    "algorithm": "padg",
+    "message": "Padg Assign Result - Players: 5/18 (28%), Games: 1/1 (100%)",
+    "createdAt": "2023-07-29T04:00:58.566Z",
+    "updatedAt": "2023-07-29T04:00:58.566Z"
+  },
+  {
+    "results": [
+      {
+        "username": "230311",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6653" },
+          "priority": 1,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "479217",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6633" },
+          "priority": 1,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "718620",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6688" },
+          "priority": 3,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "676927",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6749" },
+          "priority": 2,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "620867",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6782" },
+          "priority": 2,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "729457",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6391" },
+          "priority": 3,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "117199",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6391" },
+          "priority": 3,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "567802",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6391" },
+          "priority": 1,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "60552",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6653" },
+          "priority": 1,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "927926",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6616" },
+          "priority": 3,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "145760",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6756" },
+          "priority": 3,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "781822",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6750" },
+          "priority": 1,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "760770",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6616" },
+          "priority": 2,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "183929",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p7235" },
+          "priority": 2,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "917905",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6750" },
+          "priority": 3,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "899411",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6794" },
+          "priority": 1,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "373271",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6756" },
+          "priority": 2,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "602892",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6508" },
+          "priority": 1,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "646554",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6633" },
+          "priority": 2,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "825915",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6508" },
+          "priority": 2,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "142974",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6749" },
+          "priority": 3,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "859305",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6391" },
+          "priority": 3,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "559198",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6653" },
+          "priority": 2,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "673198",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6734" },
+          "priority": 2,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "599820",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p7235" },
+          "priority": 2,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "240256",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6782" },
+          "priority": 1,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "755164",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6756" },
+          "priority": 2,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "98419",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6851" },
+          "priority": 2,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "816930",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6508" },
+          "priority": 1,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "680702",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6634" },
+          "priority": 1,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "929374",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6653" },
+          "priority": 1,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "867284",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6391" },
+          "priority": 1,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "136429",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6508" },
+          "priority": 1,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "633136",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6734" },
+          "priority": 2,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "587248",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6851" },
+          "priority": 3,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "351137",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6851" },
+          "priority": 1,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "451838",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6633" },
+          "priority": 2,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "818999",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6750" },
+          "priority": 1,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "954787",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6653" },
+          "priority": 1,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "321410",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6750" },
+          "priority": 1,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "449172",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6749" },
+          "priority": 1,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "406997",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6851" },
+          "priority": 3,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "64464",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6749" },
+          "priority": 1,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "819590",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6794" },
+          "priority": 1,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "735177",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6634" },
+          "priority": 1,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "859196",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6688" },
+          "priority": 3,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "111409",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p7235" },
+          "priority": 1,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "442098",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6734" },
+          "priority": 2,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "620656",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p7235" },
+          "priority": 1,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "551556",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6794" },
+          "priority": 1,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "320674",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6616" },
+          "priority": 1,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "896078",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6616" },
+          "priority": 2,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "950875",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6508" },
+          "priority": 3,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "673213",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6688" },
+          "priority": 2,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "396149",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6616" },
+          "priority": 1,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "491231",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6794" },
+          "priority": 3,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "360859",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6750" },
+          "priority": 1,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "955184",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6634" },
+          "priority": 2,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "874881",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p7235" },
+          "priority": 1,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "803130",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6756" },
+          "priority": 2,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "811702",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6756" },
+          "priority": 2,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "171885",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6794" },
+          "priority": 1,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "107326",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6734" },
+          "priority": 1,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "886387",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6391" },
+          "priority": 1,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "516189",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6634" },
+          "priority": 1,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "42558",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6633" },
+          "priority": 3,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "286943",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6749" },
+          "priority": 2,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "789628",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6782" },
+          "priority": 1,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      },
+      {
+        "username": "858851",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6782" },
+          "priority": 1,
+          "time": "2023-07-29T07:00:00Z"
+        }
+      }
+    ],
+    "startTime": "2023-07-29T07:00:00Z",
+    "algorithm": "random",
+    "message": "Random Assign Result - Players: 69/162 (43%), Games: 15/15 (100%)",
+    "createdAt": "2023-07-29T05:01:09.56Z",
+    "updatedAt": "2023-07-29T05:01:09.56Z"
+  },
+  {
+    "results": [
+      {
+        "username": "952846",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6766" },
+          "priority": 1,
+          "time": "2023-07-29T08:00:00Z"
+        }
+      },
+      {
+        "username": "675486",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6800" },
+          "priority": 1,
+          "time": "2023-07-29T08:00:00Z"
+        }
+      },
+      {
+        "username": "882394",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6302" },
+          "priority": 1,
+          "time": "2023-07-29T08:00:00Z"
+        }
+      },
+      {
+        "username": "926529",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6592" },
+          "priority": 3,
+          "time": "2023-07-29T08:00:00Z"
+        }
+      },
+      {
+        "username": "155349",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6592" },
+          "priority": 1,
+          "time": "2023-07-29T08:00:00Z"
+        }
+      },
+      {
+        "username": "620867",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6800" },
+          "priority": 1,
+          "time": "2023-07-29T08:00:00Z"
+        }
+      },
+      {
+        "username": "103784",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6165" },
+          "priority": 2,
+          "time": "2023-07-29T08:00:00Z"
+        }
+      },
+      {
+        "username": "836134",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6665" },
+          "priority": 1,
+          "time": "2023-07-29T08:00:00Z"
+        }
+      },
+      {
+        "username": "615771",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6665" },
+          "priority": 3,
+          "time": "2023-07-29T08:00:00Z"
+        }
+      },
+      {
+        "username": "262918",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6302" },
+          "priority": 2,
+          "time": "2023-07-29T08:00:00Z"
+        }
+      },
+      {
+        "username": "502677",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6814" },
+          "priority": 1,
+          "time": "2023-07-29T08:00:00Z"
+        }
+      },
+      {
+        "username": "973578",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6665" },
+          "priority": 2,
+          "time": "2023-07-29T08:00:00Z"
+        }
+      },
+      {
+        "username": "184913",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6665" },
+          "priority": 2,
+          "time": "2023-07-29T08:00:00Z"
+        }
+      },
+      {
+        "username": "993510",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6766" },
+          "priority": 2,
+          "time": "2023-07-29T08:00:00Z"
+        }
+      },
+      {
+        "username": "735475",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6776" },
+          "priority": 2,
+          "time": "2023-07-29T08:00:00Z"
+        }
+      },
+      {
+        "username": "394094",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6592" },
+          "priority": 1,
+          "time": "2023-07-29T08:00:00Z"
+        }
+      },
+      {
+        "username": "105079",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6766" },
+          "priority": 1,
+          "time": "2023-07-29T08:00:00Z"
+        }
+      },
+      {
+        "username": "813598",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6776" },
+          "priority": 3,
+          "time": "2023-07-29T08:00:00Z"
+        }
+      },
+      {
+        "username": "561376",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6814" },
+          "priority": 2,
+          "time": "2023-07-29T08:00:00Z"
+        }
+      },
+      {
+        "username": "859305",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6592" },
+          "priority": 1,
+          "time": "2023-07-29T08:00:00Z"
+        }
+      },
+      {
+        "username": "901464",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p7064" },
+          "priority": 1,
+          "time": "2023-07-29T08:00:00Z"
+        }
+      },
+      {
+        "username": "829331",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6766" },
+          "priority": 2,
+          "time": "2023-07-29T08:00:00Z"
+        }
+      },
+      {
+        "username": "662853",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6665" },
+          "priority": 1,
+          "time": "2023-07-29T08:00:00Z"
+        }
+      },
+      {
+        "username": "745615",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6165" },
+          "priority": 1,
+          "time": "2023-07-29T08:00:00Z"
+        }
+      },
+      {
+        "username": "824302",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6592" },
+          "priority": 2,
+          "time": "2023-07-29T08:00:00Z"
+        }
+      },
+      {
+        "username": "278510",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6165" },
+          "priority": 1,
+          "time": "2023-07-29T08:00:00Z"
+        }
+      },
+      {
+        "username": "175282",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6302" },
+          "priority": 1,
+          "time": "2023-07-29T08:00:00Z"
+        }
+      },
+      {
+        "username": "510867",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6302" },
+          "priority": 1,
+          "time": "2023-07-29T08:00:00Z"
+        }
+      },
+      {
+        "username": "354427",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6165" },
+          "priority": 2,
+          "time": "2023-07-29T08:00:00Z"
+        }
+      },
+      {
+        "username": "551556",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6814" },
+          "priority": 1,
+          "time": "2023-07-29T08:00:00Z"
+        }
+      },
+      {
+        "username": "654856",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6814" },
+          "priority": 1,
+          "time": "2023-07-29T08:00:00Z"
+        }
+      },
+      {
+        "username": "301964",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6766" },
+          "priority": 1,
+          "time": "2023-07-29T08:00:00Z"
+        }
+      },
+      {
+        "username": "519194",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6800" },
+          "priority": 1,
+          "time": "2023-07-29T08:00:00Z"
+        }
+      },
+      {
+        "username": "814654",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6165" },
+          "priority": 1,
+          "time": "2023-07-29T08:00:00Z"
+        }
+      },
+      {
+        "username": "778670",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6800" },
+          "priority": 2,
+          "time": "2023-07-29T08:00:00Z"
+        }
+      },
+      {
+        "username": "8644",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p7064" },
+          "priority": 2,
+          "time": "2023-07-29T08:00:00Z"
+        }
+      },
+      {
+        "username": "645183",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6592" },
+          "priority": 3,
+          "time": "2023-07-29T08:00:00Z"
+        }
+      },
+      {
+        "username": "525177",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6302" },
+          "priority": 1,
+          "time": "2023-07-29T08:00:00Z"
+        }
+      },
+      {
+        "username": "255971",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6814" },
+          "priority": 2,
+          "time": "2023-07-29T08:00:00Z"
+        }
+      },
+      {
+        "username": "353685",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6665" },
+          "priority": 1,
+          "time": "2023-07-29T08:00:00Z"
+        }
+      },
+      {
+        "username": "483753",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6800" },
+          "priority": 1,
+          "time": "2023-07-29T08:00:00Z"
+        }
+      }
+    ],
+    "startTime": "2023-07-29T08:00:00Z",
+    "algorithm": "padg",
+    "message": "Padg Assign Result - Players: 41/120 (34%), Games: 9/9 (100%)",
+    "createdAt": "2023-07-29T06:01:03.419Z",
+    "updatedAt": "2023-07-29T06:01:03.419Z"
+  },
+  {
+    "results": [
+      {
+        "username": "29012",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6473" },
+          "priority": 2,
+          "time": "2023-07-29T09:00:00Z"
+        }
+      },
+      {
+        "username": "337124",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6669" },
+          "priority": 1,
+          "time": "2023-07-29T09:00:00Z"
+        }
+      },
+      {
+        "username": "855213",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6473" },
+          "priority": 1,
+          "time": "2023-07-29T09:00:00Z"
+        }
+      },
+      {
+        "username": "863303",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6669" },
+          "priority": 2,
+          "time": "2023-07-29T09:00:00Z"
+        }
+      },
+      {
+        "username": "268360",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6473" },
+          "priority": 3,
+          "time": "2023-07-29T09:00:00Z"
+        }
+      },
+      {
+        "username": "891323",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6863" },
+          "priority": 1,
+          "time": "2023-07-29T09:00:00Z"
+        }
+      },
+      {
+        "username": "744675",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6759" },
+          "priority": 1,
+          "time": "2023-07-29T09:00:00Z"
+        }
+      },
+      {
+        "username": "515335",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6473" },
+          "priority": 1,
+          "time": "2023-07-29T09:00:00Z"
+        }
+      },
+      {
+        "username": "139855",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6759" },
+          "priority": 1,
+          "time": "2023-07-29T09:00:00Z"
+        }
+      },
+      {
+        "username": "994070",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6728" },
+          "priority": 1,
+          "time": "2023-07-29T09:00:00Z"
+        }
+      },
+      {
+        "username": "511691",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6863" },
+          "priority": 1,
+          "time": "2023-07-29T09:00:00Z"
+        }
+      },
+      {
+        "username": "961808",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6428" },
+          "priority": 1,
+          "time": "2023-07-29T09:00:00Z"
+        }
+      },
+      {
+        "username": "464676",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6759" },
+          "priority": 1,
+          "time": "2023-07-29T09:00:00Z"
+        }
+      },
+      {
+        "username": "814010",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6669" },
+          "priority": 1,
+          "time": "2023-07-29T09:00:00Z"
+        }
+      },
+      {
+        "username": "837151",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6728" },
+          "priority": 1,
+          "time": "2023-07-29T09:00:00Z"
+        }
+      },
+      {
+        "username": "415179",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6473" },
+          "priority": 2,
+          "time": "2023-07-29T09:00:00Z"
+        }
+      },
+      {
+        "username": "922454",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6759" },
+          "priority": 1,
+          "time": "2023-07-29T09:00:00Z"
+        }
+      },
+      {
+        "username": "930198",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6759" },
+          "priority": 1,
+          "time": "2023-07-29T09:00:00Z"
+        }
+      },
+      {
+        "username": "903249",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6464" },
+          "priority": 1,
+          "time": "2023-07-29T09:00:00Z"
+        }
+      },
+      {
+        "username": "357064",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6428" },
+          "priority": 1,
+          "time": "2023-07-29T09:00:00Z"
+        }
+      },
+      {
+        "username": "699723",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6464" },
+          "priority": 1,
+          "time": "2023-07-29T09:00:00Z"
+        }
+      },
+      {
+        "username": "942888",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6464" },
+          "priority": 1,
+          "time": "2023-07-29T09:00:00Z"
+        }
+      },
+      {
+        "username": "285454",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6464" },
+          "priority": 1,
+          "time": "2023-07-29T09:00:00Z"
+        }
+      },
+      {
+        "username": "144941",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6863" },
+          "priority": 1,
+          "time": "2023-07-29T09:00:00Z"
+        }
+      },
+      {
+        "username": "407169",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6428" },
+          "priority": 2,
+          "time": "2023-07-29T09:00:00Z"
+        }
+      },
+      {
+        "username": "809921",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6746" },
+          "priority": 1,
+          "time": "2023-07-29T09:00:00Z"
+        }
+      },
+      {
+        "username": "266474",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6464" },
+          "priority": 1,
+          "time": "2023-07-29T09:00:00Z"
+        }
+      },
+      {
+        "username": "877338",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6728" },
+          "priority": 1,
+          "time": "2023-07-29T09:00:00Z"
+        }
+      },
+      {
+        "username": "421743",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6640" },
+          "priority": 1,
+          "time": "2023-07-29T09:00:00Z"
+        }
+      },
+      {
+        "username": "563994",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6863" },
+          "priority": 1,
+          "time": "2023-07-29T09:00:00Z"
+        }
+      },
+      {
+        "username": "374485",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6640" },
+          "priority": 1,
+          "time": "2023-07-29T09:00:00Z"
+        }
+      },
+      {
+        "username": "265269",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6640" },
+          "priority": 1,
+          "time": "2023-07-29T09:00:00Z"
+        }
+      },
+      {
+        "username": "631566",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6428" },
+          "priority": 1,
+          "time": "2023-07-29T09:00:00Z"
+        }
+      },
+      {
+        "username": "71088",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6728" },
+          "priority": 1,
+          "time": "2023-07-29T09:00:00Z"
+        }
+      },
+      {
+        "username": "880537",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6746" },
+          "priority": 1,
+          "time": "2023-07-29T09:00:00Z"
+        }
+      },
+      {
+        "username": "670376",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6746" },
+          "priority": 1,
+          "time": "2023-07-29T09:00:00Z"
+        }
+      },
+      {
+        "username": "845051",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6428" },
+          "priority": 1,
+          "time": "2023-07-29T09:00:00Z"
+        }
+      },
+      {
+        "username": "258201",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6428" },
+          "priority": 1,
+          "time": "2023-07-29T09:00:00Z"
+        }
+      },
+      {
+        "username": "534715",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6119" },
+          "priority": 1,
+          "time": "2023-07-29T09:00:00Z"
+        }
+      },
+      {
+        "username": "392584",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6119" },
+          "priority": 1,
+          "time": "2023-07-29T09:00:00Z"
+        }
+      },
+      {
+        "username": "756645",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6640" },
+          "priority": 1,
+          "time": "2023-07-29T09:00:00Z"
+        }
+      },
+      {
+        "username": "985011",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6640" },
+          "priority": 1,
+          "time": "2023-07-29T09:00:00Z"
+        }
+      },
+      {
+        "username": "373256",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6473" },
+          "priority": 1,
+          "time": "2023-07-29T09:00:00Z"
+        }
+      },
+      {
+        "username": "478836",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6473" },
+          "priority": 1,
+          "time": "2023-07-29T09:00:00Z"
+        }
+      },
+      {
+        "username": "680030",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6473" },
+          "priority": 1,
+          "time": "2023-07-29T09:00:00Z"
+        }
+      },
+      {
+        "username": "119451",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6119" },
+          "priority": 1,
+          "time": "2023-07-29T09:00:00Z"
+        }
+      },
+      {
+        "username": "995828",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6119" },
+          "priority": 1,
+          "time": "2023-07-29T09:00:00Z"
+        }
+      },
+      {
+        "username": "789628",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6119" },
+          "priority": 1,
+          "time": "2023-07-29T09:00:00Z"
+        }
+      },
+      {
+        "username": "858851",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6119" },
+          "priority": 1,
+          "time": "2023-07-29T09:00:00Z"
+        }
+      },
+      {
+        "username": "94014",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6746" },
+          "priority": 1,
+          "time": "2023-07-29T09:00:00Z"
+        }
+      },
+      {
+        "username": "42645",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6746" },
+          "priority": 1,
+          "time": "2023-07-29T09:00:00Z"
+        }
+      }
+    ],
+    "startTime": "2023-07-29T09:00:00Z",
+    "algorithm": "padg",
+    "message": "Padg Assign Result - Players: 51/135 (38%), Games: 10/10 (100%)",
+    "createdAt": "2023-07-29T07:01:04.765Z",
+    "updatedAt": "2023-07-29T07:01:04.765Z"
+  },
+  {
+    "results": [
+      {
+        "username": "587215",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p7034" },
+          "priority": 1,
+          "time": "2023-07-29T10:00:00Z"
+        }
+      },
+      {
+        "username": "539699",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p7034" },
+          "priority": 1,
+          "time": "2023-07-29T10:00:00Z"
+        }
+      },
+      {
+        "username": "943097",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p7034" },
+          "priority": 1,
+          "time": "2023-07-29T10:00:00Z"
+        }
+      },
+      {
+        "username": "390355",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p7033" },
+          "priority": 1,
+          "time": "2023-07-29T10:00:00Z"
+        }
+      },
+      {
+        "username": "337853",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p7034" },
+          "priority": 1,
+          "time": "2023-07-29T10:00:00Z"
+        }
+      },
+      {
+        "username": "609244",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p7033" },
+          "priority": 1,
+          "time": "2023-07-29T10:00:00Z"
+        }
+      },
+      {
+        "username": "597145",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p7033" },
+          "priority": 1,
+          "time": "2023-07-29T10:00:00Z"
+        }
+      },
+      {
+        "username": "194574",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p7033" },
+          "priority": 1,
+          "time": "2023-07-29T10:00:00Z"
+        }
+      },
+      {
+        "username": "226139",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p7033" },
+          "priority": 1,
+          "time": "2023-07-29T10:00:00Z"
+        }
+      },
+      {
+        "username": "331715",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p7034" },
+          "priority": 1,
+          "time": "2023-07-29T10:00:00Z"
+        }
+      },
+      {
+        "username": "308110",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p7034" },
+          "priority": 1,
+          "time": "2023-07-29T10:00:00Z"
+        }
+      }
+    ],
+    "startTime": "2023-07-29T10:00:00Z",
+    "algorithm": "padg",
+    "message": "Padg Assign Result - Players: 11/50 (22%), Games: 2/2 (100%)",
+    "createdAt": "2023-07-29T08:01:01.081Z",
+    "updatedAt": "2023-07-29T08:01:01.081Z"
+  },
+  {
+    "results": [
+      {
+        "username": "969845",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p7236" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "504905",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6524" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "525159",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6524" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "615771",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6326" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "847556",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6524" },
+          "priority": 3,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "673437",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6710" },
+          "priority": 2,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "926473",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6524" },
+          "priority": 3,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "371803",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6097" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "664401",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6858" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "586543",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6762" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "860775",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6831" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "401110",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6762" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "369625",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6497" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "488245",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6097" },
+          "priority": 2,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "313588",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6762" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "711614",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6710" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "3766",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6097" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "771768",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6524" },
+          "priority": 3,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "122909",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6540" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "735177",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6858" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "640751",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6097" },
+          "priority": 3,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "449862",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6097" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "850169",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6097" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "134498",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6602" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "687401",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6762" },
+          "priority": 2,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "123648",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6614" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "587428",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6497" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "339123",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6602" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "757361",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6528" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "533481",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6528" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "617048",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6497" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "105871",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6326" },
+          "priority": 3,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "866176",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6614" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "154014",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6602" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "354438",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6710" },
+          "priority": 2,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "955119",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6831" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "582862",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6602" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "960046",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p7236" },
+          "priority": 2,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "134267",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6831" },
+          "priority": 2,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "268230",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6528" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "886474",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6631" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "116083",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p7236" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "26057",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6858" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "528875",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6631" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "23897",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6631" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "282978",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6540" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "743623",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6667" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "949989",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6858" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "159591",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6528" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "226543",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6739" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "804543",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6667" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "374599",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6762" },
+          "priority": 2,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "209906",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6602" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "423316",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6540" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "680014",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6528" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "919352",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6831" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "294926",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6540" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "989525",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6823" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "566328",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6614" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "18202",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6614" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "398998",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p7247" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "689775",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p7247" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "43069",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p7247" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "582480",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p7247" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "449827",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p7247" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "537512",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6780" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "566967",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6780" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "91121",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6326" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "116554",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6326" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "755929",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6326" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "777492",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6739" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "86713",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6739" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "807338",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6780" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "89566",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6780" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "613142",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6780" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "354132",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6823" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "296763",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6823" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "602361",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6823" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "905102",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6739" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "769451",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6739" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "365373",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6667" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "341547",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6667" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "276081",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6710" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "437635",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6710" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "793199",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6631" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      },
+      {
+        "username": "5590",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6631" },
+          "priority": 1,
+          "time": "2023-07-29T11:00:00Z"
+        }
+      }
+    ],
+    "startTime": "2023-07-29T11:00:00Z",
+    "algorithm": "padg",
+    "message": "Padg Assign Result - Players: 86/218 (39%), Games: 19/19 (100%)",
+    "createdAt": "2023-07-29T09:01:18.84Z",
+    "updatedAt": "2023-07-29T09:01:18.84Z"
+  },
+  {
+    "results": [
+      {
+        "username": "155349",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6842" },
+          "priority": 1,
+          "time": "2023-07-29T12:00:00Z"
+        }
+      },
+      {
+        "username": "336961",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6844" },
+          "priority": 1,
+          "time": "2023-07-29T12:00:00Z"
+        }
+      },
+      {
+        "username": "490970",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6838" },
+          "priority": 1,
+          "time": "2023-07-29T12:00:00Z"
+        }
+      },
+      {
+        "username": "735475",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6838" },
+          "priority": 1,
+          "time": "2023-07-29T12:00:00Z"
+        }
+      },
+      {
+        "username": "571441",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6842" },
+          "priority": 1,
+          "time": "2023-07-29T12:00:00Z"
+        }
+      },
+      {
+        "username": "478964",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6842" },
+          "priority": 2,
+          "time": "2023-07-29T12:00:00Z"
+        }
+      },
+      {
+        "username": "449172",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6838" },
+          "priority": 1,
+          "time": "2023-07-29T12:00:00Z"
+        }
+      },
+      {
+        "username": "406997",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6844" },
+          "priority": 1,
+          "time": "2023-07-29T12:00:00Z"
+        }
+      },
+      {
+        "username": "441909",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6838" },
+          "priority": 1,
+          "time": "2023-07-29T12:00:00Z"
+        }
+      },
+      {
+        "username": "562758",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6844" },
+          "priority": 1,
+          "time": "2023-07-29T12:00:00Z"
+        }
+      },
+      {
+        "username": "896078",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6844" },
+          "priority": 1,
+          "time": "2023-07-29T12:00:00Z"
+        }
+      },
+      {
+        "username": "479454",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6842" },
+          "priority": 2,
+          "time": "2023-07-29T12:00:00Z"
+        }
+      },
+      {
+        "username": "803130",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6838" },
+          "priority": 1,
+          "time": "2023-07-29T12:00:00Z"
+        }
+      },
+      {
+        "username": "83833",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6844" },
+          "priority": 1,
+          "time": "2023-07-29T12:00:00Z"
+        }
+      },
+      {
+        "username": "381920",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6842" },
+          "priority": 1,
+          "time": "2023-07-29T12:00:00Z"
+        }
+      }
+    ],
+    "startTime": "2023-07-29T12:00:00Z",
+    "algorithm": "padg",
+    "message": "Padg Assign Result - Players: 15/56 (27%), Games: 3/3 (100%)",
+    "createdAt": "2023-07-29T10:01:01.932Z",
+    "updatedAt": "2023-07-29T10:01:01.932Z"
+  },
+  {
+    "results": [
+      {
+        "username": "230311",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6824" },
+          "priority": 1,
+          "time": "2023-07-29T13:00:00Z"
+        }
+      },
+      {
+        "username": "479217",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6544" },
+          "priority": 1,
+          "time": "2023-07-29T13:00:00Z"
+        }
+      },
+      {
+        "username": "404887",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6748" },
+          "priority": 1,
+          "time": "2023-07-29T13:00:00Z"
+        }
+      },
+      {
+        "username": "705787",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6755" },
+          "priority": 3,
+          "time": "2023-07-29T13:00:00Z"
+        }
+      },
+      {
+        "username": "183929",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6824" },
+          "priority": 2,
+          "time": "2023-07-29T13:00:00Z"
+        }
+      },
+      {
+        "username": "283350",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6748" },
+          "priority": 1,
+          "time": "2023-07-29T13:00:00Z"
+        }
+      },
+      {
+        "username": "665334",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6755" },
+          "priority": 1,
+          "time": "2023-07-29T13:00:00Z"
+        }
+      },
+      {
+        "username": "615698",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6840" },
+          "priority": 1,
+          "time": "2023-07-29T13:00:00Z"
+        }
+      },
+      {
+        "username": "403685",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6755" },
+          "priority": 1,
+          "time": "2023-07-29T13:00:00Z"
+        }
+      },
+      {
+        "username": "770046",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6696" },
+          "priority": 1,
+          "time": "2023-07-29T13:00:00Z"
+        }
+      },
+      {
+        "username": "559198",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6544" },
+          "priority": 1,
+          "time": "2023-07-29T13:00:00Z"
+        }
+      },
+      {
+        "username": "479063",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6840" },
+          "priority": 2,
+          "time": "2023-07-29T13:00:00Z"
+        }
+      },
+      {
+        "username": "609130",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6824" },
+          "priority": 1,
+          "time": "2023-07-29T13:00:00Z"
+        }
+      },
+      {
+        "username": "175282",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6824" },
+          "priority": 3,
+          "time": "2023-07-29T13:00:00Z"
+        }
+      },
+      {
+        "username": "326596",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6696" },
+          "priority": 2,
+          "time": "2023-07-29T13:00:00Z"
+        }
+      },
+      {
+        "username": "819913",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6840" },
+          "priority": 1,
+          "time": "2023-07-29T13:00:00Z"
+        }
+      },
+      {
+        "username": "491231",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6748" },
+          "priority": 1,
+          "time": "2023-07-29T13:00:00Z"
+        }
+      },
+      {
+        "username": "8644",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6840" },
+          "priority": 1,
+          "time": "2023-07-29T13:00:00Z"
+        }
+      },
+      {
+        "username": "989303",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6696" },
+          "priority": 3,
+          "time": "2023-07-29T13:00:00Z"
+        }
+      },
+      {
+        "username": "645183",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6696" },
+          "priority": 1,
+          "time": "2023-07-29T13:00:00Z"
+        }
+      },
+      {
+        "username": "532966",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6748" },
+          "priority": 1,
+          "time": "2023-07-29T13:00:00Z"
+        }
+      },
+      {
+        "username": "791802",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6755" },
+          "priority": 3,
+          "time": "2023-07-29T13:00:00Z"
+        }
+      },
+      {
+        "username": "440069",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6840" },
+          "priority": 1,
+          "time": "2023-07-29T13:00:00Z"
+        }
+      },
+      {
+        "username": "778188",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6544" },
+          "priority": 1,
+          "time": "2023-07-29T13:00:00Z"
+        }
+      },
+      {
+        "username": "842942",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6544" },
+          "priority": 1,
+          "time": "2023-07-29T13:00:00Z"
+        }
+      },
+      {
+        "username": "918280",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6824" },
+          "priority": 1,
+          "time": "2023-07-29T13:00:00Z"
+        }
+      },
+      {
+        "username": "500431",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6748" },
+          "priority": 3,
+          "time": "2023-07-29T13:00:00Z"
+        }
+      }
+    ],
+    "startTime": "2023-07-29T13:00:00Z",
+    "algorithm": "padg",
+    "message": "Padg Assign Result - Players: 27/147 (18%), Games: 6/6 (100%)",
+    "createdAt": "2023-07-29T11:01:03.612Z",
+    "updatedAt": "2023-07-29T11:01:03.612Z"
+  },
+  {
+    "results": [
+      {
+        "username": "974994",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6674" },
+          "priority": 1,
+          "time": "2023-07-29T14:00:00Z"
+        }
+      },
+      {
+        "username": "619154",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6674" },
+          "priority": 2,
+          "time": "2023-07-29T14:00:00Z"
+        }
+      },
+      {
+        "username": "19745",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6674" },
+          "priority": 1,
+          "time": "2023-07-29T14:00:00Z"
+        }
+      },
+      {
+        "username": "134733",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6725" },
+          "priority": 3,
+          "time": "2023-07-29T14:00:00Z"
+        }
+      },
+      {
+        "username": "927926",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6674" },
+          "priority": 1,
+          "time": "2023-07-29T14:00:00Z"
+        }
+      },
+      {
+        "username": "145760",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6501" },
+          "priority": 1,
+          "time": "2023-07-29T14:00:00Z"
+        }
+      },
+      {
+        "username": "931030",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6612" },
+          "priority": 1,
+          "time": "2023-07-29T14:00:00Z"
+        }
+      },
+      {
+        "username": "860352",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6501" },
+          "priority": 1,
+          "time": "2023-07-29T14:00:00Z"
+        }
+      },
+      {
+        "username": "644055",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6670" },
+          "priority": 1,
+          "time": "2023-07-29T14:00:00Z"
+        }
+      },
+      {
+        "username": "609156",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6612" },
+          "priority": 1,
+          "time": "2023-07-29T14:00:00Z"
+        }
+      },
+      {
+        "username": "74415",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6501" },
+          "priority": 1,
+          "time": "2023-07-29T14:00:00Z"
+        }
+      },
+      {
+        "username": "829331",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6725" },
+          "priority": 1,
+          "time": "2023-07-29T14:00:00Z"
+        }
+      },
+      {
+        "username": "974511",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6612" },
+          "priority": 1,
+          "time": "2023-07-29T14:00:00Z"
+        }
+      },
+      {
+        "username": "879004",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6670" },
+          "priority": 1,
+          "time": "2023-07-29T14:00:00Z"
+        }
+      },
+      {
+        "username": "480527",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6725" },
+          "priority": 2,
+          "time": "2023-07-29T14:00:00Z"
+        }
+      },
+      {
+        "username": "954787",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6612" },
+          "priority": 1,
+          "time": "2023-07-29T14:00:00Z"
+        }
+      },
+      {
+        "username": "320674",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6501" },
+          "priority": 1,
+          "time": "2023-07-29T14:00:00Z"
+        }
+      },
+      {
+        "username": "950875",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6670" },
+          "priority": 1,
+          "time": "2023-07-29T14:00:00Z"
+        }
+      },
+      {
+        "username": "819081",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6501" },
+          "priority": 1,
+          "time": "2023-07-29T14:00:00Z"
+        }
+      },
+      {
+        "username": "912927",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6612" },
+          "priority": 1,
+          "time": "2023-07-29T14:00:00Z"
+        }
+      },
+      {
+        "username": "993221",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6674" },
+          "priority": 1,
+          "time": "2023-07-29T14:00:00Z"
+        }
+      },
+      {
+        "username": "874881",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6670" },
+          "priority": 2,
+          "time": "2023-07-29T14:00:00Z"
+        }
+      },
+      {
+        "username": "144941",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6725" },
+          "priority": 2,
+          "time": "2023-07-29T14:00:00Z"
+        }
+      },
+      {
+        "username": "901843",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6725" },
+          "priority": 1,
+          "time": "2023-07-29T14:00:00Z"
+        }
+      },
+      {
+        "username": "965463",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6670" },
+          "priority": 1,
+          "time": "2023-07-29T14:00:00Z"
+        }
+      }
+    ],
+    "startTime": "2023-07-29T14:00:00Z",
+    "algorithm": "padg",
+    "message": "Padg Assign Result - Players: 25/158 (16%), Games: 5/5 (100%)",
+    "createdAt": "2023-07-29T12:01:03.92Z",
+    "updatedAt": "2023-07-29T12:01:03.92Z"
+  },
+  {
+    "results": [
+      {
+        "username": "422298",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6792" },
+          "priority": 1,
+          "time": "2023-07-29T15:00:00Z"
+        }
+      },
+      {
+        "username": "977549",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6474" },
+          "priority": 1,
+          "time": "2023-07-29T15:00:00Z"
+        }
+      },
+      {
+        "username": "405213",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p7062" },
+          "priority": 1,
+          "time": "2023-07-29T15:00:00Z"
+        }
+      },
+      {
+        "username": "882394",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6792" },
+          "priority": 1,
+          "time": "2023-07-29T15:00:00Z"
+        }
+      },
+      {
+        "username": "450122",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6691" },
+          "priority": 1,
+          "time": "2023-07-29T15:00:00Z"
+        }
+      },
+      {
+        "username": "794697",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6474" },
+          "priority": 2,
+          "time": "2023-07-29T15:00:00Z"
+        }
+      },
+      {
+        "username": "394094",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6708" },
+          "priority": 1,
+          "time": "2023-07-29T15:00:00Z"
+        }
+      },
+      {
+        "username": "437913",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6758" },
+          "priority": 1,
+          "time": "2023-07-29T15:00:00Z"
+        }
+      },
+      {
+        "username": "859305",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6474" },
+          "priority": 1,
+          "time": "2023-07-29T15:00:00Z"
+        }
+      },
+      {
+        "username": "5642",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6691" },
+          "priority": 2,
+          "time": "2023-07-29T15:00:00Z"
+        }
+      },
+      {
+        "username": "49023",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p7062" },
+          "priority": 2,
+          "time": "2023-07-29T15:00:00Z"
+        }
+      },
+      {
+        "username": "479063",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6691" },
+          "priority": 1,
+          "time": "2023-07-29T15:00:00Z"
+        }
+      },
+      {
+        "username": "673198",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p7062" },
+          "priority": 1,
+          "time": "2023-07-29T15:00:00Z"
+        }
+      },
+      {
+        "username": "860775",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6708" },
+          "priority": 2,
+          "time": "2023-07-29T15:00:00Z"
+        }
+      },
+      {
+        "username": "121683",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p7062" },
+          "priority": 1,
+          "time": "2023-07-29T15:00:00Z"
+        }
+      },
+      {
+        "username": "469360",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p7062" },
+          "priority": 1,
+          "time": "2023-07-29T15:00:00Z"
+        }
+      },
+      {
+        "username": "136429",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6792" },
+          "priority": 1,
+          "time": "2023-07-29T15:00:00Z"
+        }
+      },
+      {
+        "username": "269765",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6474" },
+          "priority": 2,
+          "time": "2023-07-29T15:00:00Z"
+        }
+      },
+      {
+        "username": "31444",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6758" },
+          "priority": 1,
+          "time": "2023-07-29T15:00:00Z"
+        }
+      },
+      {
+        "username": "117502",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6708" },
+          "priority": 1,
+          "time": "2023-07-29T15:00:00Z"
+        }
+      },
+      {
+        "username": "593337",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6758" },
+          "priority": 2,
+          "time": "2023-07-29T15:00:00Z"
+        }
+      },
+      {
+        "username": "311492",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6758" },
+          "priority": 2,
+          "time": "2023-07-29T15:00:00Z"
+        }
+      },
+      {
+        "username": "620326",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6708" },
+          "priority": 1,
+          "time": "2023-07-29T15:00:00Z"
+        }
+      },
+      {
+        "username": "885135",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6474" },
+          "priority": 1,
+          "time": "2023-07-29T15:00:00Z"
+        }
+      },
+      {
+        "username": "362756",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6474" },
+          "priority": 1,
+          "time": "2023-07-29T15:00:00Z"
+        }
+      },
+      {
+        "username": "584725",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6758" },
+          "priority": 2,
+          "time": "2023-07-29T15:00:00Z"
+        }
+      },
+      {
+        "username": "628064",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6792" },
+          "priority": 1,
+          "time": "2023-07-29T15:00:00Z"
+        }
+      },
+      {
+        "username": "844368",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6474" },
+          "priority": 2,
+          "time": "2023-07-29T15:00:00Z"
+        }
+      },
+      {
+        "username": "988800",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6474" },
+          "priority": 1,
+          "time": "2023-07-29T15:00:00Z"
+        }
+      },
+      {
+        "username": "913936",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6792" },
+          "priority": 1,
+          "time": "2023-07-29T15:00:00Z"
+        }
+      },
+      {
+        "username": "972396",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6792" },
+          "priority": 1,
+          "time": "2023-07-29T15:00:00Z"
+        }
+      }
+    ],
+    "startTime": "2023-07-29T15:00:00Z",
+    "algorithm": "padg",
+    "message": "Padg Assign Result - Players: 31/154 (20%), Games: 6/6 (100%)",
+    "createdAt": "2023-07-29T13:01:03.394Z",
+    "updatedAt": "2023-07-29T13:01:03.394Z"
+  },
+  {
+    "results": [
+      {
+        "username": "155349",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6854" },
+          "priority": 2,
+          "time": "2023-07-29T16:00:00Z"
+        }
+      },
+      {
+        "username": "618019",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6679" },
+          "priority": 1,
+          "time": "2023-07-29T16:00:00Z"
+        }
+      },
+      {
+        "username": "587215",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6676" },
+          "priority": 1,
+          "time": "2023-07-29T16:00:00Z"
+        }
+      },
+      {
+        "username": "978640",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6775" },
+          "priority": 1,
+          "time": "2023-07-29T16:00:00Z"
+        }
+      },
+      {
+        "username": "368085",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6679" },
+          "priority": 3,
+          "time": "2023-07-29T16:00:00Z"
+        }
+      },
+      {
+        "username": "901464",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6679" },
+          "priority": 1,
+          "time": "2023-07-29T16:00:00Z"
+        }
+      },
+      {
+        "username": "511691",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6854" },
+          "priority": 1,
+          "time": "2023-07-29T16:00:00Z"
+        }
+      },
+      {
+        "username": "664929",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6854" },
+          "priority": 1,
+          "time": "2023-07-29T16:00:00Z"
+        }
+      },
+      {
+        "username": "946219",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6676" },
+          "priority": 1,
+          "time": "2023-07-29T16:00:00Z"
+        }
+      },
+      {
+        "username": "932744",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6775" },
+          "priority": 1,
+          "time": "2023-07-29T16:00:00Z"
+        }
+      },
+      {
+        "username": "366965",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6716" },
+          "priority": 1,
+          "time": "2023-07-29T16:00:00Z"
+        }
+      },
+      {
+        "username": "321410",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6775" },
+          "priority": 1,
+          "time": "2023-07-29T16:00:00Z"
+        }
+      },
+      {
+        "username": "406997",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6854" },
+          "priority": 2,
+          "time": "2023-07-29T16:00:00Z"
+        }
+      },
+      {
+        "username": "301964",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6679" },
+          "priority": 1,
+          "time": "2023-07-29T16:00:00Z"
+        }
+      },
+      {
+        "username": "345331",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6676" },
+          "priority": 1,
+          "time": "2023-07-29T16:00:00Z"
+        }
+      },
+      {
+        "username": "912927",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6716" },
+          "priority": 1,
+          "time": "2023-07-29T16:00:00Z"
+        }
+      },
+      {
+        "username": "479454",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6676" },
+          "priority": 3,
+          "time": "2023-07-29T16:00:00Z"
+        }
+      },
+      {
+        "username": "128489",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6676" },
+          "priority": 1,
+          "time": "2023-07-29T16:00:00Z"
+        }
+      },
+      {
+        "username": "525177",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6716" },
+          "priority": 2,
+          "time": "2023-07-29T16:00:00Z"
+        }
+      },
+      {
+        "username": "935049",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6679" },
+          "priority": 1,
+          "time": "2023-07-29T16:00:00Z"
+        }
+      },
+      {
+        "username": "144941",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6716" },
+          "priority": 2,
+          "time": "2023-07-29T16:00:00Z"
+        }
+      },
+      {
+        "username": "308110",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6775" },
+          "priority": 1,
+          "time": "2023-07-29T16:00:00Z"
+        }
+      },
+      {
+        "username": "930577",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6854" },
+          "priority": 1,
+          "time": "2023-07-29T16:00:00Z"
+        }
+      },
+      {
+        "username": "690940",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6679" },
+          "priority": 1,
+          "time": "2023-07-29T16:00:00Z"
+        }
+      }
+    ],
+    "startTime": "2023-07-29T16:00:00Z",
+    "algorithm": "padg",
+    "message": "Padg Assign Result - Players: 24/102 (24%), Games: 5/5 (100%)",
+    "createdAt": "2023-07-29T14:01:01.87Z",
+    "updatedAt": "2023-07-29T14:01:01.87Z"
+  },
+  {
+    "results": [
+      {
+        "username": "202598",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6671" },
+          "priority": 1,
+          "time": "2023-07-29T17:00:00Z"
+        }
+      },
+      {
+        "username": "675486",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6596" },
+          "priority": 1,
+          "time": "2023-07-29T17:00:00Z"
+        }
+      },
+      {
+        "username": "836134",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6671" },
+          "priority": 1,
+          "time": "2023-07-29T17:00:00Z"
+        }
+      },
+      {
+        "username": "633872",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6773" },
+          "priority": 1,
+          "time": "2023-07-29T17:00:00Z"
+        }
+      },
+      {
+        "username": "353221",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6637" },
+          "priority": 1,
+          "time": "2023-07-29T17:00:00Z"
+        }
+      },
+      {
+        "username": "502991",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6730" },
+          "priority": 1,
+          "time": "2023-07-29T17:00:00Z"
+        }
+      },
+      {
+        "username": "183929",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6773" },
+          "priority": 1,
+          "time": "2023-07-29T17:00:00Z"
+        }
+      },
+      {
+        "username": "651673",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6773" },
+          "priority": 3,
+          "time": "2023-07-29T17:00:00Z"
+        }
+      },
+      {
+        "username": "735475",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6671" },
+          "priority": 1,
+          "time": "2023-07-29T17:00:00Z"
+        }
+      },
+      {
+        "username": "814937",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6773" },
+          "priority": 1,
+          "time": "2023-07-29T17:00:00Z"
+        }
+      },
+      {
+        "username": "568038",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6596" },
+          "priority": 1,
+          "time": "2023-07-29T17:00:00Z"
+        }
+      },
+      {
+        "username": "884272",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6596" },
+          "priority": 1,
+          "time": "2023-07-29T17:00:00Z"
+        }
+      },
+      {
+        "username": "479063",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6730" },
+          "priority": 1,
+          "time": "2023-07-29T17:00:00Z"
+        }
+      },
+      {
+        "username": "350015",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6671" },
+          "priority": 1,
+          "time": "2023-07-29T17:00:00Z"
+        }
+      },
+      {
+        "username": "300208",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6596" },
+          "priority": 1,
+          "time": "2023-07-29T17:00:00Z"
+        }
+      },
+      {
+        "username": "665096",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6671" },
+          "priority": 1,
+          "time": "2023-07-29T17:00:00Z"
+        }
+      },
+      {
+        "username": "415179",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6730" },
+          "priority": 2,
+          "time": "2023-07-29T17:00:00Z"
+        }
+      },
+      {
+        "username": "868734",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6637" },
+          "priority": 1,
+          "time": "2023-07-29T17:00:00Z"
+        }
+      },
+      {
+        "username": "929387",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6773" },
+          "priority": 1,
+          "time": "2023-07-29T17:00:00Z"
+        }
+      },
+      {
+        "username": "374599",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6730" },
+          "priority": 2,
+          "time": "2023-07-29T17:00:00Z"
+        }
+      },
+      {
+        "username": "802059",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6671" },
+          "priority": 1,
+          "time": "2023-07-29T17:00:00Z"
+        }
+      },
+      {
+        "username": "757046",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6637" },
+          "priority": 1,
+          "time": "2023-07-29T17:00:00Z"
+        }
+      },
+      {
+        "username": "166295",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6637" },
+          "priority": 2,
+          "time": "2023-07-29T17:00:00Z"
+        }
+      },
+      {
+        "username": "413590",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6596" },
+          "priority": 1,
+          "time": "2023-07-29T17:00:00Z"
+        }
+      }
+    ],
+    "startTime": "2023-07-29T17:00:00Z",
+    "algorithm": "padg",
+    "message": "Padg Assign Result - Players: 24/110 (22%), Games: 5/5 (100%)",
+    "createdAt": "2023-07-29T15:01:01.041Z",
+    "updatedAt": "2023-07-29T15:01:01.041Z"
+  },
+  {
+    "results": [
+      {
+        "username": "989347",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6714" },
+          "priority": 1,
+          "time": "2023-07-29T18:00:00Z"
+        }
+      },
+      {
+        "username": "537464",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6714" },
+          "priority": 1,
+          "time": "2023-07-29T18:00:00Z"
+        }
+      },
+      {
+        "username": "481004",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p7254" },
+          "priority": 3,
+          "time": "2023-07-29T18:00:00Z"
+        }
+      },
+      {
+        "username": "814937",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p7254" },
+          "priority": 1,
+          "time": "2023-07-29T18:00:00Z"
+        }
+      },
+      {
+        "username": "314461",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p7254" },
+          "priority": 1,
+          "time": "2023-07-29T18:00:00Z"
+        }
+      },
+      {
+        "username": "755739",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p7254" },
+          "priority": 2,
+          "time": "2023-07-29T18:00:00Z"
+        }
+      },
+      {
+        "username": "850246",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6594" },
+          "priority": 1,
+          "time": "2023-07-29T18:00:00Z"
+        }
+      },
+      {
+        "username": "283120",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6714" },
+          "priority": 1,
+          "time": "2023-07-29T18:00:00Z"
+        }
+      },
+      {
+        "username": "186198",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6594" },
+          "priority": 1,
+          "time": "2023-07-29T18:00:00Z"
+        }
+      },
+      {
+        "username": "137430",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6594" },
+          "priority": 1,
+          "time": "2023-07-29T18:00:00Z"
+        }
+      },
+      {
+        "username": "429183",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p7254" },
+          "priority": 1,
+          "time": "2023-07-29T18:00:00Z"
+        }
+      },
+      {
+        "username": "666197",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6690" },
+          "priority": 1,
+          "time": "2023-07-29T18:00:00Z"
+        }
+      },
+      {
+        "username": "740070",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6714" },
+          "priority": 1,
+          "time": "2023-07-29T18:00:00Z"
+        }
+      },
+      {
+        "username": "743084",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6712" },
+          "priority": 1,
+          "time": "2023-07-29T18:00:00Z"
+        }
+      },
+      {
+        "username": "105582",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6709" },
+          "priority": 1,
+          "time": "2023-07-29T18:00:00Z"
+        }
+      },
+      {
+        "username": "931698",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6709" },
+          "priority": 1,
+          "time": "2023-07-29T18:00:00Z"
+        }
+      },
+      {
+        "username": "832364",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6594" },
+          "priority": 1,
+          "time": "2023-07-29T18:00:00Z"
+        }
+      },
+      {
+        "username": "148559",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6594" },
+          "priority": 1,
+          "time": "2023-07-29T18:00:00Z"
+        }
+      },
+      {
+        "username": "731618",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6714" },
+          "priority": 1,
+          "time": "2023-07-29T18:00:00Z"
+        }
+      },
+      {
+        "username": "429505",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6709" },
+          "priority": 1,
+          "time": "2023-07-29T18:00:00Z"
+        }
+      },
+      {
+        "username": "35646",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6709" },
+          "priority": 1,
+          "time": "2023-07-29T18:00:00Z"
+        }
+      },
+      {
+        "username": "207755",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6709" },
+          "priority": 1,
+          "time": "2023-07-29T18:00:00Z"
+        }
+      },
+      {
+        "username": "604252",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6690" },
+          "priority": 1,
+          "time": "2023-07-29T18:00:00Z"
+        }
+      },
+      {
+        "username": "604824",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6690" },
+          "priority": 1,
+          "time": "2023-07-29T18:00:00Z"
+        }
+      },
+      {
+        "username": "131896",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6712" },
+          "priority": 1,
+          "time": "2023-07-29T18:00:00Z"
+        }
+      },
+      {
+        "username": "464636",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6712" },
+          "priority": 1,
+          "time": "2023-07-29T18:00:00Z"
+        }
+      },
+      {
+        "username": "651968",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6712" },
+          "priority": 1,
+          "time": "2023-07-29T18:00:00Z"
+        }
+      },
+      {
+        "username": "166788",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6712" },
+          "priority": 1,
+          "time": "2023-07-29T18:00:00Z"
+        }
+      }
+    ],
+    "startTime": "2023-07-29T18:00:00Z",
+    "algorithm": "padg",
+    "message": "Padg Assign Result - Players: 28/122 (23%), Games: 6/6 (100%)",
+    "createdAt": "2023-07-29T16:01:02.524Z",
+    "updatedAt": "2023-07-29T16:01:02.524Z"
+  },
+  {
+    "results": [
+      {
+        "username": "718620",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6477" },
+          "priority": 1,
+          "time": "2023-07-29T19:00:00Z"
+        }
+      },
+      {
+        "username": "880899",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6662" },
+          "priority": 1,
+          "time": "2023-07-29T19:00:00Z"
+        }
+      },
+      {
+        "username": "620867",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6662" },
+          "priority": 1,
+          "time": "2023-07-29T19:00:00Z"
+        }
+      },
+      {
+        "username": "847556",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6662" },
+          "priority": 1,
+          "time": "2023-07-29T19:00:00Z"
+        }
+      },
+      {
+        "username": "339254",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6662" },
+          "priority": 1,
+          "time": "2023-07-29T19:00:00Z"
+        }
+      },
+      {
+        "username": "738909",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6477" },
+          "priority": 1,
+          "time": "2023-07-29T19:00:00Z"
+        }
+      },
+      {
+        "username": "665334",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6477" },
+          "priority": 1,
+          "time": "2023-07-29T19:00:00Z"
+        }
+      },
+      {
+        "username": "534086",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p7039" },
+          "priority": 2,
+          "time": "2023-07-29T19:00:00Z"
+        }
+      },
+      {
+        "username": "198039",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p7039" },
+          "priority": 1,
+          "time": "2023-07-29T19:00:00Z"
+        }
+      },
+      {
+        "username": "609130",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6477" },
+          "priority": 2,
+          "time": "2023-07-29T19:00:00Z"
+        }
+      },
+      {
+        "username": "462644",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p7039" },
+          "priority": 1,
+          "time": "2023-07-29T19:00:00Z"
+        }
+      },
+      {
+        "username": "396568",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p7039" },
+          "priority": 1,
+          "time": "2023-07-29T19:00:00Z"
+        }
+      },
+      {
+        "username": "718518",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6662" },
+          "priority": 3,
+          "time": "2023-07-29T19:00:00Z"
+        }
+      },
+      {
+        "username": "819913",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6477" },
+          "priority": 1,
+          "time": "2023-07-29T19:00:00Z"
+        }
+      },
+      {
+        "username": "683451",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p7039" },
+          "priority": 1,
+          "time": "2023-07-29T19:00:00Z"
+        }
+      },
+      {
+        "username": "514857",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6477" },
+          "priority": 1,
+          "time": "2023-07-29T19:00:00Z"
+        }
+      }
+    ],
+    "startTime": "2023-07-29T19:00:00Z",
+    "algorithm": "padg",
+    "message": "Padg Assign Result - Players: 16/82 (20%), Games: 3/3 (100%)",
+    "createdAt": "2023-07-29T17:01:01.254Z",
+    "updatedAt": "2023-07-29T17:01:01.254Z"
+  },
+  {
+    "results": [
+      {
+        "username": "722531",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6764" },
+          "priority": 1,
+          "time": "2023-07-29T20:00:00Z"
+        }
+      },
+      {
+        "username": "336961",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6774" },
+          "priority": 1,
+          "time": "2023-07-29T20:00:00Z"
+        }
+      },
+      {
+        "username": "587215",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6764" },
+          "priority": 1,
+          "time": "2023-07-29T20:00:00Z"
+        }
+      },
+      {
+        "username": "734759",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6774" },
+          "priority": 1,
+          "time": "2023-07-29T20:00:00Z"
+        }
+      },
+      {
+        "username": "240256",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6774" },
+          "priority": 1,
+          "time": "2023-07-29T20:00:00Z"
+        }
+      },
+      {
+        "username": "993221",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6774" },
+          "priority": 1,
+          "time": "2023-07-29T20:00:00Z"
+        }
+      },
+      {
+        "username": "645183",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6764" },
+          "priority": 1,
+          "time": "2023-07-29T20:00:00Z"
+        }
+      },
+      {
+        "username": "496631",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6764" },
+          "priority": 1,
+          "time": "2023-07-29T20:00:00Z"
+        }
+      },
+      {
+        "username": "47333",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6764" },
+          "priority": 1,
+          "time": "2023-07-29T20:00:00Z"
+        }
+      },
+      {
+        "username": "909004",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6774" },
+          "priority": 1,
+          "time": "2023-07-29T20:00:00Z"
+        }
+      }
+    ],
+    "startTime": "2023-07-29T20:00:00Z",
+    "algorithm": "padg",
+    "message": "Padg Assign Result - Players: 10/45 (22%), Games: 2/2 (100%)",
+    "createdAt": "2023-07-29T18:01:01Z",
+    "updatedAt": "2023-07-29T18:01:01Z"
+  },
+  {
+    "results": [
+      {
+        "username": "405213",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6475" },
+          "priority": 3,
+          "time": "2023-07-30T07:00:00Z"
+        }
+      },
+      {
+        "username": "675486",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6475" },
+          "priority": 1,
+          "time": "2023-07-30T07:00:00Z"
+        }
+      },
+      {
+        "username": "226258",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6105" },
+          "priority": 3,
+          "time": "2023-07-30T07:00:00Z"
+        }
+      },
+      {
+        "username": "620867",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6475" },
+          "priority": 2,
+          "time": "2023-07-30T07:00:00Z"
+        }
+      },
+      {
+        "username": "196898",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6656" },
+          "priority": 1,
+          "time": "2023-07-30T07:00:00Z"
+        }
+      },
+      {
+        "username": "633872",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6698" },
+          "priority": 2,
+          "time": "2023-07-30T07:00:00Z"
+        }
+      },
+      {
+        "username": "612141",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6785" },
+          "priority": 1,
+          "time": "2023-07-30T07:00:00Z"
+        }
+      },
+      {
+        "username": "760770",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6635" },
+          "priority": 1,
+          "time": "2023-07-30T07:00:00Z"
+        }
+      },
+      {
+        "username": "426359",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6105" },
+          "priority": 2,
+          "time": "2023-07-30T07:00:00Z"
+        }
+      },
+      {
+        "username": "119451",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6656" },
+          "priority": 1,
+          "time": "2023-07-30T07:00:00Z"
+        }
+      },
+      {
+        "username": "795390",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6457" },
+          "priority": 1,
+          "time": "2023-07-30T07:00:00Z"
+        }
+      },
+      {
+        "username": "785729",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6751" },
+          "priority": 2,
+          "time": "2023-07-30T07:00:00Z"
+        }
+      },
+      {
+        "username": "242919",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6689" },
+          "priority": 1,
+          "time": "2023-07-30T07:00:00Z"
+        }
+      },
+      {
+        "username": "405664",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6656" },
+          "priority": 1,
+          "time": "2023-07-30T07:00:00Z"
+        }
+      },
+      {
+        "username": "480527",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6475" },
+          "priority": 3,
+          "time": "2023-07-30T07:00:00Z"
+        }
+      },
+      {
+        "username": "982425",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6785" },
+          "priority": 1,
+          "time": "2023-07-30T07:00:00Z"
+        }
+      },
+      {
+        "username": "406997",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6751" },
+          "priority": 2,
+          "time": "2023-07-30T07:00:00Z"
+        }
+      },
+      {
+        "username": "220124",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6689" },
+          "priority": 1,
+          "time": "2023-07-30T07:00:00Z"
+        }
+      },
+      {
+        "username": "996990",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6105" },
+          "priority": 1,
+          "time": "2023-07-30T07:00:00Z"
+        }
+      },
+      {
+        "username": "299033",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6537" },
+          "priority": 1,
+          "time": "2023-07-30T07:00:00Z"
+        }
+      },
+      {
+        "username": "799755",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6457" },
+          "priority": 1,
+          "time": "2023-07-30T07:00:00Z"
+        }
+      },
+      {
+        "username": "176751",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6785" },
+          "priority": 2,
+          "time": "2023-07-30T07:00:00Z"
+        }
+      },
+      {
+        "username": "417752",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6761" },
+          "priority": 1,
+          "time": "2023-07-30T07:00:00Z"
+        }
+      },
+      {
+        "username": "258186",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6537" },
+          "priority": 1,
+          "time": "2023-07-30T07:00:00Z"
+        }
+      },
+      {
+        "username": "699035",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6635" },
+          "priority": 1,
+          "time": "2023-07-30T07:00:00Z"
+        }
+      },
+      {
+        "username": "874881",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6785" },
+          "priority": 1,
+          "time": "2023-07-30T07:00:00Z"
+        }
+      },
+      {
+        "username": "645183",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6475" },
+          "priority": 3,
+          "time": "2023-07-30T07:00:00Z"
+        }
+      },
+      {
+        "username": "525177",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6698" },
+          "priority": 3,
+          "time": "2023-07-30T07:00:00Z"
+        }
+      },
+      {
+        "username": "29168",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6781" },
+          "priority": 1,
+          "time": "2023-07-30T07:00:00Z"
+        }
+      },
+      {
+        "username": "381920",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6656" },
+          "priority": 1,
+          "time": "2023-07-30T07:00:00Z"
+        }
+      },
+      {
+        "username": "144941",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6785" },
+          "priority": 1,
+          "time": "2023-07-30T07:00:00Z"
+        }
+      },
+      {
+        "username": "17674",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6822" },
+          "priority": 1,
+          "time": "2023-07-30T07:00:00Z"
+        }
+      },
+      {
+        "username": "989525",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6457" },
+          "priority": 1,
+          "time": "2023-07-30T07:00:00Z"
+        }
+      },
+      {
+        "username": "694480",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6635" },
+          "priority": 2,
+          "time": "2023-07-30T07:00:00Z"
+        }
+      },
+      {
+        "username": "620326",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6761" },
+          "priority": 1,
+          "time": "2023-07-30T07:00:00Z"
+        }
+      },
+      {
+        "username": "778188",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6751" },
+          "priority": 1,
+          "time": "2023-07-30T07:00:00Z"
+        }
+      },
+      {
+        "username": "878120",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6656" },
+          "priority": 1,
+          "time": "2023-07-30T07:00:00Z"
+        }
+      },
+      {
+        "username": "507654",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6689" },
+          "priority": 1,
+          "time": "2023-07-30T07:00:00Z"
+        }
+      },
+      {
+        "username": "323914",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6105" },
+          "priority": 1,
+          "time": "2023-07-30T07:00:00Z"
+        }
+      },
+      {
+        "username": "512523",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6457" },
+          "priority": 1,
+          "time": "2023-07-30T07:00:00Z"
+        }
+      },
+      {
+        "username": "266642",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6350" },
+          "priority": 1,
+          "time": "2023-07-30T07:00:00Z"
+        }
+      },
+      {
+        "username": "20218",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6350" },
+          "priority": 1,
+          "time": "2023-07-30T07:00:00Z"
+        }
+      },
+      {
+        "username": "27572",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6822" },
+          "priority": 1,
+          "time": "2023-07-30T07:00:00Z"
+        }
+      },
+      {
+        "username": "301888",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6350" },
+          "priority": 1,
+          "time": "2023-07-30T07:00:00Z"
+        }
+      },
+      {
+        "username": "989491",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6350" },
+          "priority": 1,
+          "time": "2023-07-30T07:00:00Z"
+        }
+      },
+      {
+        "username": "85224",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6761" },
+          "priority": 1,
+          "time": "2023-07-30T07:00:00Z"
+        }
+      },
+      {
+        "username": "192817",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6105" },
+          "priority": 2,
+          "time": "2023-07-30T07:00:00Z"
+        }
+      },
+      {
+        "username": "838264",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6350" },
+          "priority": 1,
+          "time": "2023-07-30T07:00:00Z"
+        }
+      },
+      {
+        "username": "313564",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6457" },
+          "priority": 1,
+          "time": "2023-07-30T07:00:00Z"
+        }
+      },
+      {
+        "username": "139990",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6781" },
+          "priority": 1,
+          "time": "2023-07-30T07:00:00Z"
+        }
+      },
+      {
+        "username": "124556",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6635" },
+          "priority": 1,
+          "time": "2023-07-30T07:00:00Z"
+        }
+      },
+      {
+        "username": "969746",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6761" },
+          "priority": 1,
+          "time": "2023-07-30T07:00:00Z"
+        }
+      },
+      {
+        "username": "877191",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6761" },
+          "priority": 1,
+          "time": "2023-07-30T07:00:00Z"
+        }
+      },
+      {
+        "username": "415805",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6761" },
+          "priority": 1,
+          "time": "2023-07-30T07:00:00Z"
+        }
+      },
+      {
+        "username": "537512",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6822" },
+          "priority": 1,
+          "time": "2023-07-30T07:00:00Z"
+        }
+      },
+      {
+        "username": "566967",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6822" },
+          "priority": 1,
+          "time": "2023-07-30T07:00:00Z"
+        }
+      },
+      {
+        "username": "84881",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6475" },
+          "priority": 1,
+          "time": "2023-07-30T07:00:00Z"
+        }
+      },
+      {
+        "username": "441127",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6475" },
+          "priority": 1,
+          "time": "2023-07-30T07:00:00Z"
+        }
+      },
+      {
+        "username": "789628",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6751" },
+          "priority": 1,
+          "time": "2023-07-30T07:00:00Z"
+        }
+      },
+      {
+        "username": "858851",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6751" },
+          "priority": 1,
+          "time": "2023-07-30T07:00:00Z"
+        }
+      },
+      {
+        "username": "13344",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6537" },
+          "priority": 1,
+          "time": "2023-07-30T07:00:00Z"
+        }
+      },
+      {
+        "username": "246551",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6537" },
+          "priority": 1,
+          "time": "2023-07-30T07:00:00Z"
+        }
+      },
+      {
+        "username": "464432",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6781" },
+          "priority": 1,
+          "time": "2023-07-30T07:00:00Z"
+        }
+      },
+      {
+        "username": "357053",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6781" },
+          "priority": 1,
+          "time": "2023-07-30T07:00:00Z"
+        }
+      },
+      {
+        "username": "984672",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6537" },
+          "priority": 1,
+          "time": "2023-07-30T07:00:00Z"
+        }
+      },
+      {
+        "username": "580943",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6537" },
+          "priority": 1,
+          "time": "2023-07-30T07:00:00Z"
+        }
+      }
+    ],
+    "startTime": "2023-07-30T07:00:00Z",
+    "algorithm": "padg",
+    "message": "Padg Assign Result - Players: 66/231 (29%), Games: 14/14 (100%)",
+    "createdAt": "2023-07-30T05:01:10.743Z",
+    "updatedAt": "2023-07-30T05:01:10.743Z"
+  },
+  {
+    "results": [
+      {
+        "username": "714301",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6805" },
+          "priority": 1,
+          "time": "2023-07-30T08:00:00Z"
+        }
+      },
+      {
+        "username": "718620",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6613" },
+          "priority": 2,
+          "time": "2023-07-30T08:00:00Z"
+        }
+      },
+      {
+        "username": "262431",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6747" },
+          "priority": 1,
+          "time": "2023-07-30T08:00:00Z"
+        }
+      },
+      {
+        "username": "235417",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6754" },
+          "priority": 1,
+          "time": "2023-07-30T08:00:00Z"
+        }
+      },
+      {
+        "username": "131662",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6390" },
+          "priority": 2,
+          "time": "2023-07-30T08:00:00Z"
+        }
+      },
+      {
+        "username": "134733",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p7237" },
+          "priority": 3,
+          "time": "2023-07-30T08:00:00Z"
+        }
+      },
+      {
+        "username": "927926",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6390" },
+          "priority": 1,
+          "time": "2023-07-30T08:00:00Z"
+        }
+      },
+      {
+        "username": "855213",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6747" },
+          "priority": 1,
+          "time": "2023-07-30T08:00:00Z"
+        }
+      },
+      {
+        "username": "705787",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6845" },
+          "priority": 2,
+          "time": "2023-07-30T08:00:00Z"
+        }
+      },
+      {
+        "username": "351981",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6390" },
+          "priority": 3,
+          "time": "2023-07-30T08:00:00Z"
+        }
+      },
+      {
+        "username": "144275",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6526" },
+          "priority": 1,
+          "time": "2023-07-30T08:00:00Z"
+        }
+      },
+      {
+        "username": "528511",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6427" },
+          "priority": 1,
+          "time": "2023-07-30T08:00:00Z"
+        }
+      },
+      {
+        "username": "973578",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p7237" },
+          "priority": 1,
+          "time": "2023-07-30T08:00:00Z"
+        }
+      },
+      {
+        "username": "184913",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6805" },
+          "priority": 2,
+          "time": "2023-07-30T08:00:00Z"
+        }
+      },
+      {
+        "username": "178778",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6754" },
+          "priority": 1,
+          "time": "2023-07-30T08:00:00Z"
+        }
+      },
+      {
+        "username": "735475",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6747" },
+          "priority": 3,
+          "time": "2023-07-30T08:00:00Z"
+        }
+      },
+      {
+        "username": "220504",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6747" },
+          "priority": 1,
+          "time": "2023-07-30T08:00:00Z"
+        }
+      },
+      {
+        "username": "534086",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6613" },
+          "priority": 1,
+          "time": "2023-07-30T08:00:00Z"
+        }
+      },
+      {
+        "username": "800740",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6754" },
+          "priority": 2,
+          "time": "2023-07-30T08:00:00Z"
+        }
+      },
+      {
+        "username": "901464",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6432" },
+          "priority": 1,
+          "time": "2023-07-30T08:00:00Z"
+        }
+      },
+      {
+        "username": "591471",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6805" },
+          "priority": 1,
+          "time": "2023-07-30T08:00:00Z"
+        }
+      },
+      {
+        "username": "5642",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6845" },
+          "priority": 2,
+          "time": "2023-07-30T08:00:00Z"
+        }
+      },
+      {
+        "username": "586512",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6390" },
+          "priority": 2,
+          "time": "2023-07-30T08:00:00Z"
+        }
+      },
+      {
+        "username": "662853",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6613" },
+          "priority": 1,
+          "time": "2023-07-30T08:00:00Z"
+        }
+      },
+      {
+        "username": "98419",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6390" },
+          "priority": 1,
+          "time": "2023-07-30T08:00:00Z"
+        }
+      },
+      {
+        "username": "745615",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6526" },
+          "priority": 2,
+          "time": "2023-07-30T08:00:00Z"
+        }
+      },
+      {
+        "username": "557816",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6526" },
+          "priority": 2,
+          "time": "2023-07-30T08:00:00Z"
+        }
+      },
+      {
+        "username": "469360",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p7237" },
+          "priority": 2,
+          "time": "2023-07-30T08:00:00Z"
+        }
+      },
+      {
+        "username": "355266",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6845" },
+          "priority": 1,
+          "time": "2023-07-30T08:00:00Z"
+        }
+      },
+      {
+        "username": "851752",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6432" },
+          "priority": 1,
+          "time": "2023-07-30T08:00:00Z"
+        }
+      },
+      {
+        "username": "867284",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6845" },
+          "priority": 2,
+          "time": "2023-07-30T08:00:00Z"
+        }
+      },
+      {
+        "username": "681082",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6526" },
+          "priority": 3,
+          "time": "2023-07-30T08:00:00Z"
+        }
+      },
+      {
+        "username": "141904",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6805" },
+          "priority": 1,
+          "time": "2023-07-30T08:00:00Z"
+        }
+      },
+      {
+        "username": "952663",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6754" },
+          "priority": 2,
+          "time": "2023-07-30T08:00:00Z"
+        }
+      },
+      {
+        "username": "31444",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6427" },
+          "priority": 1,
+          "time": "2023-07-30T08:00:00Z"
+        }
+      },
+      {
+        "username": "789275",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6253" },
+          "priority": 2,
+          "time": "2023-07-30T08:00:00Z"
+        }
+      },
+      {
+        "username": "89815",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6613" },
+          "priority": 1,
+          "time": "2023-07-30T08:00:00Z"
+        }
+      },
+      {
+        "username": "860144",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6526" },
+          "priority": 2,
+          "time": "2023-07-30T08:00:00Z"
+        }
+      },
+      {
+        "username": "819590",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6613" },
+          "priority": 2,
+          "time": "2023-07-30T08:00:00Z"
+        }
+      },
+      {
+        "username": "122909",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6390" },
+          "priority": 2,
+          "time": "2023-07-30T08:00:00Z"
+        }
+      },
+      {
+        "username": "718518",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6845" },
+          "priority": 2,
+          "time": "2023-07-30T08:00:00Z"
+        }
+      },
+      {
+        "username": "449862",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p7065" },
+          "priority": 1,
+          "time": "2023-07-30T08:00:00Z"
+        }
+      },
+      {
+        "username": "301964",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6432" },
+          "priority": 3,
+          "time": "2023-07-30T08:00:00Z"
+        }
+      },
+      {
+        "username": "516865",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6795" },
+          "priority": 1,
+          "time": "2023-07-30T08:00:00Z"
+        }
+      },
+      {
+        "username": "123957",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6253" },
+          "priority": 1,
+          "time": "2023-07-30T08:00:00Z"
+        }
+      },
+      {
+        "username": "975308",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6432" },
+          "priority": 1,
+          "time": "2023-07-30T08:00:00Z"
+        }
+      },
+      {
+        "username": "645183",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6805" },
+          "priority": 2,
+          "time": "2023-07-30T08:00:00Z"
+        }
+      },
+      {
+        "username": "496631",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6432" },
+          "priority": 3,
+          "time": "2023-07-30T08:00:00Z"
+        }
+      },
+      {
+        "username": "849921",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6253" },
+          "priority": 1,
+          "time": "2023-07-30T08:00:00Z"
+        }
+      },
+      {
+        "username": "209906",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6805" },
+          "priority": 2,
+          "time": "2023-07-30T08:00:00Z"
+        }
+      },
+      {
+        "username": "817581",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6427" },
+          "priority": 1,
+          "time": "2023-07-30T08:00:00Z"
+        }
+      },
+      {
+        "username": "148559",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6747" },
+          "priority": 1,
+          "time": "2023-07-30T08:00:00Z"
+        }
+      },
+      {
+        "username": "207755",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6253" },
+          "priority": 1,
+          "time": "2023-07-30T08:00:00Z"
+        }
+      },
+      {
+        "username": "846486",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6795" },
+          "priority": 1,
+          "time": "2023-07-30T08:00:00Z"
+        }
+      },
+      {
+        "username": "833829",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p7065" },
+          "priority": 1,
+          "time": "2023-07-30T08:00:00Z"
+        }
+      },
+      {
+        "username": "242183",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6795" },
+          "priority": 1,
+          "time": "2023-07-30T08:00:00Z"
+        }
+      },
+      {
+        "username": "510078",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6795" },
+          "priority": 1,
+          "time": "2023-07-30T08:00:00Z"
+        }
+      },
+      {
+        "username": "580331",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6795" },
+          "priority": 1,
+          "time": "2023-07-30T08:00:00Z"
+        }
+      },
+      {
+        "username": "789628",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p7237" },
+          "priority": 1,
+          "time": "2023-07-30T08:00:00Z"
+        }
+      },
+      {
+        "username": "858851",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p7237" },
+          "priority": 1,
+          "time": "2023-07-30T08:00:00Z"
+        }
+      },
+      {
+        "username": "693024",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6427" },
+          "priority": 2,
+          "time": "2023-07-30T08:00:00Z"
+        }
+      },
+      {
+        "username": "471579",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6427" },
+          "priority": 2,
+          "time": "2023-07-30T08:00:00Z"
+        }
+      }
+    ],
+    "startTime": "2023-07-30T08:00:00Z",
+    "algorithm": "random",
+    "message": "Random Assign Result - Players: 62/134 (46%), Games: 13/13 (100%)",
+    "createdAt": "2023-07-30T06:01:04.762Z",
+    "updatedAt": "2023-07-30T06:01:04.762Z"
+  },
+  {
+    "results": [
+      {
+        "username": "479217",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6564" },
+          "priority": 1,
+          "time": "2023-07-30T09:00:00Z"
+        }
+      },
+      {
+        "username": "82615",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6564" },
+          "priority": 1,
+          "time": "2023-07-30T09:00:00Z"
+        }
+      },
+      {
+        "username": "8139",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6564" },
+          "priority": 3,
+          "time": "2023-07-30T09:00:00Z"
+        }
+      },
+      {
+        "username": "902178",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6819" },
+          "priority": 1,
+          "time": "2023-07-30T09:00:00Z"
+        }
+      },
+      {
+        "username": "336548",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6819" },
+          "priority": 1,
+          "time": "2023-07-30T09:00:00Z"
+        }
+      },
+      {
+        "username": "281705",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6575" },
+          "priority": 1,
+          "time": "2023-07-30T09:00:00Z"
+        }
+      },
+      {
+        "username": "733211",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6575" },
+          "priority": 1,
+          "time": "2023-07-30T09:00:00Z"
+        }
+      },
+      {
+        "username": "952409",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6843" },
+          "priority": 1,
+          "time": "2023-07-30T09:00:00Z"
+        }
+      },
+      {
+        "username": "557816",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6564" },
+          "priority": 2,
+          "time": "2023-07-30T09:00:00Z"
+        }
+      },
+      {
+        "username": "488245",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6843" },
+          "priority": 1,
+          "time": "2023-07-30T09:00:00Z"
+        }
+      },
+      {
+        "username": "430291",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6157" },
+          "priority": 1,
+          "time": "2023-07-30T09:00:00Z"
+        }
+      },
+      {
+        "username": "168181",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6796" },
+          "priority": 1,
+          "time": "2023-07-30T09:00:00Z"
+        }
+      },
+      {
+        "username": "882890",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6819" },
+          "priority": 1,
+          "time": "2023-07-30T09:00:00Z"
+        }
+      },
+      {
+        "username": "360660",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6796" },
+          "priority": 1,
+          "time": "2023-07-30T09:00:00Z"
+        }
+      },
+      {
+        "username": "510508",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6819" },
+          "priority": 1,
+          "time": "2023-07-30T09:00:00Z"
+        }
+      },
+      {
+        "username": "449172",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6157" },
+          "priority": 1,
+          "time": "2023-07-30T09:00:00Z"
+        }
+      },
+      {
+        "username": "157634",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6157" },
+          "priority": 1,
+          "time": "2023-07-30T09:00:00Z"
+        }
+      },
+      {
+        "username": "727851",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6796" },
+          "priority": 1,
+          "time": "2023-07-30T09:00:00Z"
+        }
+      },
+      {
+        "username": "258186",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6575" },
+          "priority": 1,
+          "time": "2023-07-30T09:00:00Z"
+        }
+      },
+      {
+        "username": "360859",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6843" },
+          "priority": 1,
+          "time": "2023-07-30T09:00:00Z"
+        }
+      },
+      {
+        "username": "316539",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p7238" },
+          "priority": 1,
+          "time": "2023-07-30T09:00:00Z"
+        }
+      },
+      {
+        "username": "687305",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6796" },
+          "priority": 1,
+          "time": "2023-07-30T09:00:00Z"
+        }
+      },
+      {
+        "username": "989303",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p7238" },
+          "priority": 1,
+          "time": "2023-07-30T09:00:00Z"
+        }
+      },
+      {
+        "username": "468844",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6668" },
+          "priority": 1,
+          "time": "2023-07-30T09:00:00Z"
+        }
+      },
+      {
+        "username": "496631",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6564" },
+          "priority": 1,
+          "time": "2023-07-30T09:00:00Z"
+        }
+      },
+      {
+        "username": "62507",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6654" },
+          "priority": 1,
+          "time": "2023-07-30T09:00:00Z"
+        }
+      },
+      {
+        "username": "744731",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6668" },
+          "priority": 1,
+          "time": "2023-07-30T09:00:00Z"
+        }
+      },
+      {
+        "username": "743623",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6668" },
+          "priority": 1,
+          "time": "2023-07-30T09:00:00Z"
+        }
+      },
+      {
+        "username": "374599",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6157" },
+          "priority": 1,
+          "time": "2023-07-30T09:00:00Z"
+        }
+      },
+      {
+        "username": "349535",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6843" },
+          "priority": 1,
+          "time": "2023-07-30T09:00:00Z"
+        }
+      },
+      {
+        "username": "227829",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6668" },
+          "priority": 1,
+          "time": "2023-07-30T09:00:00Z"
+        }
+      },
+      {
+        "username": "931698",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6575" },
+          "priority": 1,
+          "time": "2023-07-30T09:00:00Z"
+        }
+      },
+      {
+        "username": "425635",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6796" },
+          "priority": 1,
+          "time": "2023-07-30T09:00:00Z"
+        }
+      },
+      {
+        "username": "645110",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6843" },
+          "priority": 1,
+          "time": "2023-07-30T09:00:00Z"
+        }
+      },
+      {
+        "username": "20218",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p7238" },
+          "priority": 1,
+          "time": "2023-07-30T09:00:00Z"
+        }
+      },
+      {
+        "username": "564168",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6654" },
+          "priority": 1,
+          "time": "2023-07-30T09:00:00Z"
+        }
+      },
+      {
+        "username": "617533",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6796" },
+          "priority": 2,
+          "time": "2023-07-30T09:00:00Z"
+        }
+      },
+      {
+        "username": "11796",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6575" },
+          "priority": 1,
+          "time": "2023-07-30T09:00:00Z"
+        }
+      },
+      {
+        "username": "700933",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6575" },
+          "priority": 1,
+          "time": "2023-07-30T09:00:00Z"
+        }
+      },
+      {
+        "username": "808297",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6654" },
+          "priority": 1,
+          "time": "2023-07-30T09:00:00Z"
+        }
+      },
+      {
+        "username": "672326",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6654" },
+          "priority": 1,
+          "time": "2023-07-30T09:00:00Z"
+        }
+      },
+      {
+        "username": "777492",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6819" },
+          "priority": 1,
+          "time": "2023-07-30T09:00:00Z"
+        }
+      },
+      {
+        "username": "86713",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6819" },
+          "priority": 1,
+          "time": "2023-07-30T09:00:00Z"
+        }
+      },
+      {
+        "username": "84881",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6157" },
+          "priority": 1,
+          "time": "2023-07-30T09:00:00Z"
+        }
+      },
+      {
+        "username": "441127",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6157" },
+          "priority": 1,
+          "time": "2023-07-30T09:00:00Z"
+        }
+      },
+      {
+        "username": "984672",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p7238" },
+          "priority": 1,
+          "time": "2023-07-30T09:00:00Z"
+        }
+      },
+      {
+        "username": "580943",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p7238" },
+          "priority": 1,
+          "time": "2023-07-30T09:00:00Z"
+        }
+      }
+    ],
+    "startTime": "2023-07-30T09:00:00Z",
+    "algorithm": "padg",
+    "message": "Padg Assign Result - Players: 47/116 (41%), Games: 9/9 (100%)",
+    "createdAt": "2023-07-30T07:01:02.712Z",
+    "updatedAt": "2023-07-30T07:01:02.712Z"
+  },
+  {
+    "results": [
+      {
+        "username": "833915",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6308" },
+          "priority": 1,
+          "time": "2023-07-30T10:00:00Z"
+        }
+      },
+      {
+        "username": "165389",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6839" },
+          "priority": 1,
+          "time": "2023-07-30T10:00:00Z"
+        }
+      },
+      {
+        "username": "336961",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6729" },
+          "priority": 1,
+          "time": "2023-07-30T10:00:00Z"
+        }
+      },
+      {
+        "username": "676927",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6169" },
+          "priority": 1,
+          "time": "2023-07-30T10:00:00Z"
+        }
+      },
+      {
+        "username": "843509",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6729" },
+          "priority": 1,
+          "time": "2023-07-30T10:00:00Z"
+        }
+      },
+      {
+        "username": "866473",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6839" },
+          "priority": 1,
+          "time": "2023-07-30T10:00:00Z"
+        }
+      },
+      {
+        "username": "615771",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6839" },
+          "priority": 2,
+          "time": "2023-07-30T10:00:00Z"
+        }
+      },
+      {
+        "username": "290993",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6729" },
+          "priority": 1,
+          "time": "2023-07-30T10:00:00Z"
+        }
+      },
+      {
+        "username": "57785",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6429" },
+          "priority": 1,
+          "time": "2023-07-30T10:00:00Z"
+        }
+      },
+      {
+        "username": "183948",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6429" },
+          "priority": 1,
+          "time": "2023-07-30T10:00:00Z"
+        }
+      },
+      {
+        "username": "54358",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6839" },
+          "priority": 1,
+          "time": "2023-07-30T10:00:00Z"
+        }
+      },
+      {
+        "username": "954806",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6672" },
+          "priority": 1,
+          "time": "2023-07-30T10:00:00Z"
+        }
+      },
+      {
+        "username": "975934",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6308" },
+          "priority": 1,
+          "time": "2023-07-30T10:00:00Z"
+        }
+      },
+      {
+        "username": "49023",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6839" },
+          "priority": 3,
+          "time": "2023-07-30T10:00:00Z"
+        }
+      },
+      {
+        "username": "879004",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6672" },
+          "priority": 1,
+          "time": "2023-07-30T10:00:00Z"
+        }
+      },
+      {
+        "username": "240256",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6169" },
+          "priority": 1,
+          "time": "2023-07-30T10:00:00Z"
+        }
+      },
+      {
+        "username": "557816",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6308" },
+          "priority": 1,
+          "time": "2023-07-30T10:00:00Z"
+        }
+      },
+      {
+        "username": "844725",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6672" },
+          "priority": 1,
+          "time": "2023-07-30T10:00:00Z"
+        }
+      },
+      {
+        "username": "346226",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6672" },
+          "priority": 1,
+          "time": "2023-07-30T10:00:00Z"
+        }
+      },
+      {
+        "username": "426866",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6169" },
+          "priority": 2,
+          "time": "2023-07-30T10:00:00Z"
+        }
+      },
+      {
+        "username": "516070",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6429" },
+          "priority": 1,
+          "time": "2023-07-30T10:00:00Z"
+        }
+      },
+      {
+        "username": "890559",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6429" },
+          "priority": 2,
+          "time": "2023-07-30T10:00:00Z"
+        }
+      },
+      {
+        "username": "756959",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6429" },
+          "priority": 2,
+          "time": "2023-07-30T10:00:00Z"
+        }
+      },
+      {
+        "username": "123648",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6169" },
+          "priority": 1,
+          "time": "2023-07-30T10:00:00Z"
+        }
+      },
+      {
+        "username": "617048",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6169" },
+          "priority": 2,
+          "time": "2023-07-30T10:00:00Z"
+        }
+      },
+      {
+        "username": "353685",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6672" },
+          "priority": 1,
+          "time": "2023-07-30T10:00:00Z"
+        }
+      },
+      {
+        "username": "531236",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6729" },
+          "priority": 3,
+          "time": "2023-07-30T10:00:00Z"
+        }
+      },
+      {
+        "username": "883787",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6308" },
+          "priority": 3,
+          "time": "2023-07-30T10:00:00Z"
+        }
+      },
+      {
+        "username": "829667",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6672" },
+          "priority": 1,
+          "time": "2023-07-30T10:00:00Z"
+        }
+      },
+      {
+        "username": "336725",
+        "enteredGame": {
+          "gameDetails": { "gameId": "p6429" },
+          "priority": 1,
+          "time": "2023-07-30T10:00:00Z"
+        }
+      }
+    ],
+    "startTime": "2023-07-30T10:00:00Z",
+    "algorithm": "padg",
+    "message": "Padg Assign Result - Players: 30/73 (41%), Games: 6/6 (100%)",
+    "createdAt": "2023-07-30T08:00:51.684Z",
+    "updatedAt": "2023-07-30T08:00:51.684Z"
+  }
+]
