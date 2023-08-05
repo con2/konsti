@@ -3,8 +3,11 @@ import { anonymizeData } from "./fixer-helpers/dataAnonymizer";
 import { wildFix } from "./fixer-helpers/wildFix";
 import { gameIdFix } from "./fixer-helpers/gameIdFix";
 import { formatFeedbacks } from "./fixer-helpers/formatFeedbacks";
+import { initializeDayjs } from "shared/utils/initializeDayjs";
 
 const fixData = (): void => {
+  initializeDayjs();
+
   const commander = new Command();
 
   commander
