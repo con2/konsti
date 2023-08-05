@@ -1,0 +1,118 @@
+[
+  {
+    "hiddenGames": [],
+    "appOpen": false,
+    "signupStrategy": "algorithm+direct",
+    "signupQuestions": [
+      {
+        "gameId": "p6639",
+        "questionFi": "Haluan, että maalattavan figuni pohjaväri on",
+        "questionEn": "I want my miniature to be primed",
+        "private": false,
+        "type": "select",
+        "selectOptions": [
+          { "optionFi": "Musta", "optionEn": "Black" },
+          { "optionFi": "Valkoinen", "optionEn": "White" },
+          { "optionFi": "Zenitaali", "optionEn": "Zenithal" }
+        ]
+      },
+      {
+        "gameId": "p6990",
+        "questionFi": "Haluan, että maalattavan figuni pohjaväri on",
+        "questionEn": "I want my miniature to be primed",
+        "private": false,
+        "type": "select",
+        "selectOptions": [
+          { "optionFi": "Musta", "optionEn": "Black" },
+          { "optionFi": "Valkoinen", "optionEn": "White" },
+          { "optionFi": "Zenitaali", "optionEn": "Zenithal" }
+        ]
+      },
+      {
+        "gameId": "p6852",
+        "questionFi": "Syötä joukkueen nimi, kaikkien joukkueesi jäsenten (2-4 kpl) nimet, sekä ainakin yhden jäsenen sähköpostiosoite ja puhelinnumero mahdollista palkintoyhteydenottoa varten.",
+        "questionEn": "Please write the name of your team, the names of all team members (2-4 people) and an email address and phone number of at least one team member in case we need to contact you about a possible award.",
+        "private": true,
+        "type": "text",
+        "selectOptions": []
+      },
+      {
+        "gameId": "p6989",
+        "questionFi": "Haluan, että maalattavan figuni pohjaväri on",
+        "questionEn": "I want my miniature to be primed",
+        "private": false,
+        "type": "select",
+        "selectOptions": [
+          { "optionFi": "Musta", "optionEn": "Black" },
+          { "optionFi": "Valkoinen", "optionEn": "White" },
+          { "optionFi": "Zenitaali", "optionEn": "Zenithal" }
+        ]
+      },
+      {
+        "gameId": "p6978",
+        "questionFi": "Haluan, että maalattavan figuni pohjaväri on",
+        "questionEn": "I want my miniature to be primed",
+        "private": false,
+        "type": "select",
+        "selectOptions": [
+          { "optionFi": "Musta", "optionEn": "Black" },
+          { "optionFi": "Valkoinen", "optionEn": "White" },
+          { "optionFi": "Zenitaali", "optionEn": "Zenithal" }
+        ]
+      },
+      {
+        "gameId": "p6673",
+        "questionFi": "Hahmoluokka ja taso. Jos sinulla on useampi hahmo, merkitse ensisijainen hahmo sulkeilla.",
+        "questionEn": "Character class and level. If you have multiple characters, mark primary character with brackets.",
+        "private": false,
+        "type": "text",
+        "selectOptions": []
+      },
+      {
+        "gameId": "p6973",
+        "questionFi": "Syötä nimesi, sähköpostiosoitteesi ja puhelinnumerosi mahdollista palkintoyhteydenottoa varten.",
+        "questionEn": "Please write your name, email address and phone number in case we need to contact you about a possible award.",
+        "private": true,
+        "type": "text",
+        "selectOptions": []
+      },
+      {
+        "gameId": "p7212",
+        "questionFi": "Syötä nimesi, sähköpostiosoitteesi ja puhelinnumerosi mahdollista palkintoyhteydenottoa varten.",
+        "questionEn": "Please write your name, email address and phone number in case we need to contact you about a possible award.",
+        "private": true,
+        "type": "text",
+        "selectOptions": []
+      },
+      {
+        "gameId": "p6895",
+        "questionFi": "Syötä nimesi, sähköpostiosoitteesi ja puhelinnumerosi mahdollista palkintoyhteydenottoa varten.",
+        "questionEn": "Please write your name, email address and phone number in case we need to contact you about a possible award.",
+        "private": true,
+        "type": "text",
+        "selectOptions": []
+      },
+      {
+        "gameId": "p6636",
+        "questionFi": "Syötä nimesi, sähköpostiosoitteesi ja puhelinnumerosi mahdollista palkintoyhteydenottoa varten.",
+        "questionEn": "Please write your name, email address and phone number in case we need to contact you about a possible award.",
+        "private": true,
+        "type": "text",
+        "selectOptions": []
+      },
+      {
+        "gameId": "p6133",
+        "questionFi": "Syötä nimesi, sähköpostiosoitteesi ja puhelinnumerosi mahdollista palkintoyhteydenottoa varten.",
+        "questionEn": "Please write your name, email address and phone number in case we need to contact you about a possible award.",
+        "private": true,
+        "type": "text",
+        "selectOptions": []
+      }
+    ],
+    "programUpdateLastRun": "2023-07-30T16:25:00.052Z",
+    "assignmentLastRun": "2023-07-30T16:30:00.049Z",
+    "latestServerStartTime": "2023-07-29T19:10:44.937Z",
+    "createdAt": "2023-07-27T17:45:59.023Z",
+    "updatedAt": "2023-08-01T16:00:21.426Z"
+  }
+]
