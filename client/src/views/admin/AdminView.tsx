@@ -69,7 +69,7 @@ export const AdminView = (): ReactElement => {
   const [message, setMessage] = useState<string>("");
   const [messageStyle, setMessageStyle] = useState<string>("");
   const [selectedAssignmentTime, setSelectedAssignmentTime] = useState<string>(
-    assignmentTimeDropdownValues[0].value,
+    assignmentTimeDropdownValues[0]?.value ?? "",
   );
 
   const showMessage = ({
