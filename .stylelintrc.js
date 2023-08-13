@@ -30,6 +30,7 @@ module.exports = {
           "css3-cursors",
           "css-math-functions",
           "css-focus-visible",
+          "css-nesting",
         ],
       },
     ],

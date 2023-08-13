@@ -17,7 +17,7 @@
     "eslint": "yarn run -T eslint . --ext .js,.ts,.tsx",
     "eslint-save-config": "eslint --print-config .eslintrc.js > eslint-config-client.json && prettier --write eslint-config-client.json",
     "start": "webpack serve",
-    "stylelint": "stylelint \"./**/*.tsx\"",
+    "stylelint": "stylelint \"./**/*.{tsx,ts}\"",
     "stylelint-lint-staged": "stylelint",
     "test": "yarn run -T vitest run",
     "test:coverage": "yarn run -T vitest run --coverage --colors",
