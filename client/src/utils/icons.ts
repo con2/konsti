@@ -57,6 +57,6 @@ export const getIconLibrary = (): void => {
     fasDice,
     fasHeartCircleXmark,
     fasCalendarXmark,
-    fasPersonChalboard
+    fasPersonChalboard,
   );
 };

@@ -15,7 +15,7 @@ export const formatFeedbacks = (year: number, event: string): void => {
 
   const feedbacksJson = fs.readFileSync(
     `${config.statsDataDir}/${event}/${year}/secret/feedbacks.json`,
-    "utf8"
+    "utf8",
   );
 
   const feedbacks = z
@@ -26,20 +26,20 @@ export const formatFeedbacks = (year: number, event: string): void => {
 
   const gamesJson = fs.readFileSync(
     `${config.statsDataDir}/${event}/${year}/games.json`,
-    "utf8"
+    "utf8",
   );
   const games = z.array(GameSchema).parse(JSON.parse(gamesJson));
 
   logger.info(`Loaded ${games.length} games`);
 
   const filteredFeedbacks = feedbacks.filter(
-    (feedback) => feedback.feedback !== ""
+    (feedback) => feedback.feedback !== "",
   );
 
   logger.info(
     `Removed ${feedbacks.length - filteredFeedbacks.length} empty feedbacks, ${
       filteredFeedbacks.length
-    } remaining`
+    } remaining`,
   );
 
   const formattedFeedbacks = filteredFeedbacks.map((feedback) => {
@@ -49,7 +49,9 @@ export const formatFeedbacks = (year: number, event: string): void => {
       game: foundGame?.title,
       organizer: foundGame?.people,
       // eslint-disable-next-line no-restricted-syntax -- We want to call format here
-      startTime: dayjs(foundGame?.startTime).tz(TIMEZONE).format("dddd HH:mm"),
+      startTime: dayjs(foundGame?.startTime)
+        .tz(TIMEZONE)
+        .format("dddd HH:mm"),
       programType: foundGame?.programType,
     };
   });
@@ -58,32 +60,32 @@ export const formatFeedbacks = (year: number, event: string): void => {
 
   const groupedByProgramTypeFeedbacks = _.groupBy(
     formattedFeedbacks,
-    (feedback) => feedback.programType
+    (feedback) => feedback.programType,
   );
 
   Object.entries(groupedByProgramTypeFeedbacks).map(
-    ([programType, programTypeFeedbacks]) => {
+    async ([programType, programTypeFeedbacks]) => {
       logger.info(
-        `${programType}: found ${programTypeFeedbacks.length} feedbacks`
+        `${programType}: found ${programTypeFeedbacks.length} feedbacks`,
       );
 
       const groupedByOrganizerFeedbacks = _.groupBy(
         programTypeFeedbacks,
-        (feedback) => feedback.organizer
+        (feedback) => feedback.organizer,
       );
 
       logger.info(
         `${programType}: grouped to ${
           Object.entries(groupedByOrganizerFeedbacks).length
-        } organizers`
+        } organizers`,
       );
 
-      writeJson(
+      await writeJson(
         year,
         event,
         `feedback-${programType}`,
-        groupedByOrganizerFeedbacks
+        groupedByOrganizerFeedbacks,
       );
-    }
+    },
   );
 };

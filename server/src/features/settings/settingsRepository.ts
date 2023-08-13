@@ -47,7 +47,7 @@ export const findSettings = async (): Promise<
   try {
     const settings = await SettingsModel.findOne(
       {},
-      "-signupQuestions._id -_id -__v -createdAt -updatedAt"
+      "-signupQuestions._id -_id -__v -createdAt -updatedAt",
     )
       .lean<Settings>()
       .populate("hiddenGames");
@@ -68,7 +68,7 @@ export const findSettings = async (): Promise<
       programUpdateLastRun: dayjs(settings.programUpdateLastRun).toISOString(),
       assignmentLastRun: dayjs(settings.assignmentLastRun).toISOString(),
       latestServerStartTime: dayjs(
-        settings.latestServerStartTime
+        settings.latestServerStartTime,
       ).toISOString(),
     };
 
@@ -80,7 +80,7 @@ export const findSettings = async (): Promise<
 };
 
 export const saveHidden = async (
-  hiddenGames: readonly Game[]
+  hiddenGames: readonly Game[],
 ): Promise<Result<Settings, MongoDbError>> => {
   const gamesResult = await findGames();
   if (isErrorResult(gamesResult)) {
@@ -106,7 +106,7 @@ export const saveHidden = async (
         new: true,
         upsert: true,
         fields: "-_id -__v -createdAt -updatedAt",
-      }
+      },
     ).populate("hiddenGames");
     logger.info(`MongoDB: Hidden data updated`);
     return makeSuccessResult(settings);
@@ -117,7 +117,7 @@ export const saveHidden = async (
 };
 
 export const saveSignupQuestion = async (
-  signupQuestionData: SignupQuestion
+  signupQuestionData: SignupQuestion,
 ): Promise<Result<Settings, MongoDbError>> => {
   try {
     const settings = await SettingsModel.findOneAndUpdate(
@@ -128,7 +128,7 @@ export const saveSignupQuestion = async (
       {
         new: true,
         fields: "-signupQuestions._id -_id -__v -createdAt -updatedAt",
-      }
+      },
     );
     if (!settings) {
       return makeErrorResult(MongoDbError.SETTINGS_NOT_FOUND);
@@ -142,7 +142,7 @@ export const saveSignupQuestion = async (
 };
 
 export const delSignupQuestion = async (
-  gameId: string
+  gameId: string,
 ): Promise<Result<Settings, MongoDbError>> => {
   try {
     const settings = await SettingsModel.findOneAndUpdate(
@@ -153,7 +153,7 @@ export const delSignupQuestion = async (
       {
         new: true,
         fields: "-signupQuestions._id -_id -__v -createdAt -updatedAt",
-      }
+      },
     );
     if (!settings) {
       logger.error("%s", new Error("MongoDB: Signup question not found"));
@@ -168,7 +168,7 @@ export const delSignupQuestion = async (
 };
 
 export const saveSettings = async (
-  settings: PostSettingsRequest
+  settings: PostSettingsRequest,
 ): Promise<Result<Settings, MongoDbError>> => {
   try {
     const updatedSettings = await SettingsModel.findOneAndUpdate<SettingsDoc>(
@@ -178,7 +178,7 @@ export const saveSettings = async (
         new: true,
         upsert: true,
         fields: "-createdAt -updatedAt -_id -__v -signupQuestions._id",
-      }
+      },
     );
     logger.info(`MongoDB: App settings updated`);
     return makeSuccessResult(updatedSettings.toJSON<SettingsDoc>());
@@ -189,7 +189,7 @@ export const saveSettings = async (
 };
 
 export const setProgramUpdateLastRun = async (
-  programUpdateNextRun: string
+  programUpdateNextRun: string,
 ): Promise<Result<void, MongoDbError>> => {
   try {
     const response = await SettingsModel.findOneAndUpdate(
@@ -200,13 +200,13 @@ export const setProgramUpdateLastRun = async (
       },
       {
         programUpdateLastRun: programUpdateNextRun,
-      }
+      },
     );
     if (!response) {
       return makeErrorResult(MongoDbError.SETTINGS_NOT_FOUND);
     }
     logger.info(
-      `MongoDB: Program update last run set: ${programUpdateNextRun}`
+      `MongoDB: Program update last run set: ${programUpdateNextRun}`,
     );
     return makeSuccessResult(undefined);
   } catch (error) {
@@ -216,7 +216,7 @@ export const setProgramUpdateLastRun = async (
 };
 
 export const setAssignmentLastRun = async (
-  assignmentNextRun: string
+  assignmentNextRun: string,
 ): Promise<Result<void, MongoDbError>> => {
   try {
     const response = await SettingsModel.findOneAndUpdate(
@@ -227,7 +227,7 @@ export const setAssignmentLastRun = async (
       },
       {
         assignmentLastRun: assignmentNextRun,
-      }
+      },
     );
     if (!response) {
       return makeErrorResult(MongoDbError.SETTINGS_NOT_FOUND);
@@ -241,7 +241,7 @@ export const setAssignmentLastRun = async (
 };
 
 export const isLatestStartedServerInstance = async (
-  latestServerStartTime: string
+  latestServerStartTime: string,
 ): Promise<Result<void, MongoDbError>> => {
   try {
     const response = await SettingsModel.findOne({

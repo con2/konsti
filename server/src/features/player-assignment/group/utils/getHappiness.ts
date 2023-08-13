@@ -18,11 +18,11 @@ export const getHappiness = (
   results: readonly AssignmentResult[],
   playerGroups: readonly User[][],
   allPlayers: readonly User[],
-  startTime: string
+  startTime: string,
 ): Result<void, AssignmentError> => {
   const padgAssignment = results.map((result) => {
     const foundPlayer = allPlayers.find(
-      (player) => player.username === result.username
+      (player) => player.username === result.username,
     );
 
     if (!foundPlayer) {
@@ -40,7 +40,7 @@ export const getHappiness = (
   });
 
   const someAssignmentFailed = padgAssignment.some((assignment) =>
-    isErrorResult(assignment)
+    isErrorResult(assignment),
   );
   if (someAssignmentFailed) {
     return makeErrorResult(AssignmentError.UNKNOWN_ERROR);

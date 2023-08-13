@@ -6,18 +6,18 @@ import { Signup } from "server/features/signup/signup.typings";
 // TODO: Merge this with getRandomAssignEvents
 export const getEvents = (
   signedGames: readonly Game[],
-  signups: readonly Signup[]
+  signups: readonly Signup[],
 ): Event[] => {
   return signedGames.map((signedGame) => {
     // Program item can have existing signups if program item's start time has changed
     // Consider existing signups when determining program item attendee limits
     const gameSignup = signups.find(
-      (signup) => signup.game.gameId === signedGame.gameId
+      (signup) => signup.game.gameId === signedGame.gameId,
     );
 
     const changedSignups = gameSignup?.userSignups.filter((userSignup) => {
       const startTimeChanged = !dayjs(userSignup.time).isSame(
-        dayjs(signedGame.startTime)
+        dayjs(signedGame.startTime),
       );
       if (startTimeChanged) {
         return true;

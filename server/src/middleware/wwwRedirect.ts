@@ -4,7 +4,7 @@ import { logger } from "server/utils/logger";
 export const wwwRedirect = (
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ): void => {
   const host = req.get("host");
 

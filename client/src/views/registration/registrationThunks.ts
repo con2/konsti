@@ -11,7 +11,7 @@ export enum RegistrationErrorMessage {
 }
 
 export const submitRegistration = (
-  registrationFormFields: RegistrationFormFields
+  registrationFormFields: RegistrationFormFields,
 ): AppThunk<Promise<RegistrationErrorMessage | undefined>> => {
   return async (dispatch): Promise<RegistrationErrorMessage | undefined> => {
     let registrationResponse;
@@ -39,7 +39,7 @@ export const submitRegistration = (
         submitLogin({
           username: registrationFormFields.username,
           password: registrationFormFields.password,
-        })
+        }),
       );
     }
   };

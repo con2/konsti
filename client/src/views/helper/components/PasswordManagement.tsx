@@ -15,7 +15,7 @@ export const PasswordManagement = (): ReactElement => {
   const [changePasswordInputVisible, setChangePasswordInputVisible] =
     useState<boolean>(false);
   const [userFoundMessage, setUserFoundMessage] = useState<ReactElement>(
-    <Message />
+    <Message />,
   );
 
   const submitGetUser = async (): Promise<void> => {
@@ -25,7 +25,7 @@ export const PasswordManagement = (): ReactElement => {
 
     if (!response || response.status === "error") {
       setUserFoundMessage(
-        <Message error={true}>{t("passwordManagement.userNotFound")}</Message>
+        <Message error={true}>{t("passwordManagement.userNotFound")}</Message>,
       );
       setChangePasswordInputVisible(false);
     } else if (response.status === "success") {
@@ -34,7 +34,7 @@ export const PasswordManagement = (): ReactElement => {
           {t("passwordManagement.foundUser")}: {response.username} (
           {response.serial}) - {t("passwordManagement.userCreatedAt")}{" "}
           {getWeekdayAndTime(response.createdAt)}
-        </Message>
+        </Message>,
       );
       setUsername(response.username);
       setChangePasswordInputVisible(true);

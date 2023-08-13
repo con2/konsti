@@ -3,7 +3,7 @@ import { User } from "shared/typings/models/user";
 
 export const getGroupMembers = (
   groupCreators: readonly User[],
-  players: readonly User[]
+  players: readonly User[],
 ): readonly User[] => {
   logger.debug("Add group members to groups");
 
@@ -23,7 +23,7 @@ export const getGroupMembers = (
             Object.assign({
               ...player,
               signedGames: groupCreator.signedGames,
-            }) as User
+            }) as User,
           );
         }
       }

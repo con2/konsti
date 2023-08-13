@@ -5,7 +5,7 @@ import { StringNumberObject } from "server/typings/common.typings";
 import { toPercent } from "server/features/statistics/statsUtil";
 
 export const getUsersWithoutGames = (
-  users: readonly User[]
+  users: readonly User[],
 ): readonly User[] => {
   const counter = 0;
   const usersWithoutGames = [] as User[];
@@ -21,15 +21,15 @@ export const getUsersWithoutGames = (
 
   logger.info(
     `Players without any entered games: ${counter}/${users.length} (${toPercent(
-      counter / users.length
-    )}%)`
+      counter / users.length,
+    )}%)`,
   );
 
   return usersWithoutGames;
 };
 
 export const getUsersWithoutSignups = (
-  users: readonly User[]
+  users: readonly User[],
 ): readonly User[] => {
   let counter = 0;
   const usersWithoutSignups = [] as User[];
@@ -42,8 +42,8 @@ export const getUsersWithoutSignups = (
 
   logger.info(
     `Players without any signed games: ${counter}/${users.length} (${toPercent(
-      counter / users.length
-    )}%)`
+      counter / users.length,
+    )}%)`,
   );
 
   return usersWithoutSignups;
@@ -66,7 +66,7 @@ export const getUsersSignupCount = (users: readonly User[]): void => {
 
   logger.info(
     `Users signed for this many games when they didn't get signed:`,
-    gameWishes
+    gameWishes,
   );
 
   const signupCount: StringNumberObject = {};
@@ -77,7 +77,7 @@ export const getUsersSignupCount = (users: readonly User[]): void => {
 
   logger.info(
     `Users didn't get into any games after this many signup attempts:`,
-    signupCount
+    signupCount,
   );
 };
 

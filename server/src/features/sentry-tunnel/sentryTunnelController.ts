@@ -7,7 +7,7 @@ import { getAuthorizedUsername } from "server/utils/authHeader";
 
 export const postSentryTunnel = (
   req: Request<{}, {}, null>,
-  res: Response
+  res: Response,
 ): Response => {
   logger.info(`API call: POST ${ApiEndpoint.SENTRY_TUNNEL}`);
 
@@ -22,13 +22,13 @@ export const postSentryTunnel = (
 
 export const getSentryTest = (
   req: Request<{}, {}, null>,
-  res: Response
+  res: Response,
 ): Response => {
   logger.info(`API call: POST ${ApiEndpoint.SENTRY_TEST}`);
 
   const username = getAuthorizedUsername(
     req.headers.authorization,
-    UserGroup.ADMIN
+    UserGroup.ADMIN,
   );
   if (!username) {
     return res.sendStatus(401);

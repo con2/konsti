@@ -70,7 +70,7 @@ test("Assignment with valid data should return success with random strategy", as
     newGamesCount,
     groupSize,
     numberOfGroups,
-    testUsersCount
+    testUsersCount,
   );
 
   const { CONVENTION_START_TIME } = sharedConfig;
@@ -87,11 +87,11 @@ test("Assignment with valid data should return success with random strategy", as
 
   expect(assignResults.status).toEqual("success");
   expect(assignResults.results.length).toBeGreaterThanOrEqual(
-    expectedResultsCount
+    expectedResultsCount,
   );
 
   const groupResults = assignResults.results.filter((result) =>
-    groupTestUsers.includes(result.username)
+    groupTestUsers.includes(result.username),
   );
 
   if (groupResults.length) {
@@ -113,11 +113,11 @@ test("Assignment with valid data should return success with random strategy", as
 
   expect(assignResults2.status).toEqual("success");
   expect(assignResults2.results.length).toBeGreaterThanOrEqual(
-    expectedResultsCount
+    expectedResultsCount,
   );
 
   const groupResults2 = assignResults2.results.filter((result) =>
-    groupTestUsers.includes(result.username)
+    groupTestUsers.includes(result.username),
   );
 
   if (groupResults2.length) {
@@ -171,7 +171,7 @@ test("Should adjust attendee limits if there are previous signups from moved pro
     await runAssignment({
       assignmentStrategy,
       startTime: testGame.startTime,
-    })
+    }),
   );
   expect(assignResults.status).toEqual("success");
   expect(assignResults.results.length).toEqual(1);
@@ -179,7 +179,7 @@ test("Should adjust attendee limits if there are previous signups from moved pro
   const signupsAfterUpdate = unsafelyUnwrapResult(await findSignups());
 
   const assignmentSignup = signupsAfterUpdate.find(
-    (signup) => signup.game.gameId === testGame.gameId
+    (signup) => signup.game.gameId === testGame.gameId,
   );
 
   expect(assignmentSignup?.userSignups).toMatchObject([
@@ -210,7 +210,7 @@ test("Assignment with no games should return error with random strategy", async 
     newGamesCount,
     groupSize,
     numberOfGroups,
-    testUsersCount
+    testUsersCount,
   );
 
   const { CONVENTION_START_TIME } = sharedConfig;
@@ -224,7 +224,7 @@ test("Assignment with no games should return error with random strategy", async 
   const assignResults = unsafelyUnwrapResult(assignResultsResult);
 
   expect(assignResults.status).toEqual(
-    AssignmentResultStatus.NO_STARTING_GAMES
+    AssignmentResultStatus.NO_STARTING_GAMES,
   );
 });
 
@@ -240,7 +240,7 @@ test("Assignment with no players should return error with random strategy", asyn
     newGamesCount,
     groupSize,
     numberOfGroups,
-    testUsersCount
+    testUsersCount,
   );
 
   const { CONVENTION_START_TIME } = sharedConfig;

@@ -5,7 +5,7 @@ import { StringNumberObject } from "server/typings/common.typings";
 import { toPercent } from "server/features/statistics/statsUtil";
 
 export const getSignupsByTime = (
-  results: readonly ResultsCollectionEntry[]
+  results: readonly ResultsCollectionEntry[],
 ): StringNumberObject => {
   const signupsByTime = results.reduce<StringNumberObject>((acc, result) => {
     acc[result.startTime] = result.results.length;
@@ -14,14 +14,14 @@ export const getSignupsByTime = (
 
   logger.debug(
     `Number of people entering to games by start times: \n`,
-    signupsByTime
+    signupsByTime,
   );
 
   return signupsByTime;
 };
 
 export const getMaximumNumberOfPlayersByTime = (
-  games: readonly Game[]
+  games: readonly Game[],
 ): StringNumberObject => {
   const maxNumberOfPlayersByTime: StringNumberObject = {};
 
@@ -36,7 +36,7 @@ export const getMaximumNumberOfPlayersByTime = (
 
   logger.debug(
     `Maximum number of seats by start times: \n`,
-    maxNumberOfPlayersByTime
+    maxNumberOfPlayersByTime,
   );
 
   return maxNumberOfPlayersByTime;
@@ -44,7 +44,7 @@ export const getMaximumNumberOfPlayersByTime = (
 
 export const getDemandByTime = (
   signupsByTime: StringNumberObject,
-  maximumNumberOfPlayersByTime: StringNumberObject
+  maximumNumberOfPlayersByTime: StringNumberObject,
 ): void => {
   logger.info("Sanity check: values over 100% are anomalies");
   for (const startTime in maximumNumberOfPlayersByTime) {
@@ -52,8 +52,8 @@ export const getDemandByTime = (
       `Signed people for ${startTime}: ${signupsByTime[startTime]}/${
         maximumNumberOfPlayersByTime[startTime]
       } (${toPercent(
-        signupsByTime[startTime] / maximumNumberOfPlayersByTime[startTime]
-      )}%)`
+        signupsByTime[startTime] / maximumNumberOfPlayersByTime[startTime],
+      )}%)`,
     );
   }
 };

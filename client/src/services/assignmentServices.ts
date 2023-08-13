@@ -7,7 +7,7 @@ import {
 } from "shared/typings/api/assignment";
 
 export const postPlayerAssignment = async (
-  startTime: string
+  startTime: string,
 ): Promise<PostPlayerAssignmentResponse | ApiError> => {
   const response = await api.post<
     PostPlayerAssignmentResponse,

@@ -37,17 +37,17 @@ export const GameListTitle = ({
   const formattedStartTime = _.capitalize(getWeekdayAndTime(startTime));
 
   const algorithmSignupStartTime = getTime(
-    getAlgorithmSignupStartTime(startTime).toISOString()
+    getAlgorithmSignupStartTime(startTime).toISOString(),
   );
   const algorithmSignupEndTime = getTime(
-    getAlgorithmSignupEndTime(startTime).toISOString()
+    getAlgorithmSignupEndTime(startTime).toISOString(),
   );
 
   const signedGamesCount = signedGames.filter(
-    (game) => game.gameDetails.startTime === startTime
+    (game) => game.gameDetails.startTime === startTime,
   ).length;
   const signedGame = enteredGames.find(
-    (game) => game.gameDetails.startTime === startTime
+    (game) => game.gameDetails.startTime === startTime,
   );
 
   return (

@@ -20,7 +20,7 @@ export enum LoginErrorMessage {
 }
 
 export const submitLogin = (
-  loginFormFields: LoginFormFields
+  loginFormFields: LoginFormFields,
 ): AppThunk<Promise<LoginErrorMessage | undefined>> => {
   return async (dispatch): Promise<LoginErrorMessage | undefined> => {
     let loginResponse: PostLoginResponse | PostLoginError;
@@ -60,7 +60,7 @@ export const submitLogin = (
           userGroup: loginResponse.userGroup,
           serial: loginResponse.serial,
           eventLogItems: loginResponse.eventLogItems,
-        })
+        }),
       );
 
       dispatch(submitUpdateGroupCodeAsync(loginResponse.groupCode));
@@ -113,7 +113,7 @@ export const submitSessionRecovery = (jwt: string): AppThunk => {
           userGroup: loginResponse.userGroup,
           serial: loginResponse.serial,
           eventLogItems: loginResponse.eventLogItems,
-        })
+        }),
       );
 
       dispatch(submitUpdateGroupCodeAsync(loginResponse.groupCode));
@@ -122,7 +122,7 @@ export const submitSessionRecovery = (jwt: string): AppThunk => {
 };
 
 export const submitUpdateEventLogIsSeen = (
-  request: PostEventLogIsSeenRequest
+  request: PostEventLogIsSeenRequest,
 ): AppThunk => {
   return async (dispatch): Promise<void> => {
     const response = await postEventLogItemIsSeen(request);

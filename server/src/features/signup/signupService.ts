@@ -18,7 +18,7 @@ import { isErrorResult, unwrapResult } from "shared/utils/result";
 import { sharedConfig } from "shared/config/sharedConfig";
 
 export const storeSignup = async (
-  signupRequest: PostEnteredGameRequest
+  signupRequest: PostEnteredGameRequest,
 ): Promise<PostEnteredGameResponse | PostEnteredGameError> => {
   const { startTime, enteredGameId, username } = signupRequest;
   if (sharedConfig.noKonstiSignupIds.includes(enteredGameId)) {
@@ -64,8 +64,8 @@ export const storeSignup = async (
     logger.error(
       "%s",
       new Error(
-        `Signup for game ${enteredGameId} not open yet, opens ${directSignupStartTime.toISOString()}`
-      )
+        `Signup for game ${enteredGameId} not open yet, opens ${directSignupStartTime.toISOString()}`,
+      ),
     );
     return {
       errorId: "signupNotOpenYet",
@@ -118,7 +118,7 @@ export const storeSignup = async (
   const signup = unwrapResult(signupResult);
 
   const newSignup = signup.userSignups.find(
-    (userSignup) => userSignup.username === username
+    (userSignup) => userSignup.username === username,
   );
 
   if (signup && newSignup) {
@@ -142,7 +142,7 @@ export const storeSignup = async (
 };
 
 export const removeSignup = async (
-  signupRequest: DeleteEnteredGameRequest
+  signupRequest: DeleteEnteredGameRequest,
 ): Promise<DeleteEnteredGameResponse | DeleteEnteredGameError> => {
   const { startTime } = signupRequest;
 

@@ -9,7 +9,7 @@ const generateSerials = async (): Promise<void> => {
   if (!count || !isInt(count)) {
     logger.error(
       "%s",
-      new Error('Give number parameter: "npm run generate-serials 10"')
+      new Error('Give number parameter: "npm run generate-serials 10"'),
     );
   } else {
     try {

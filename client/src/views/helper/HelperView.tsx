@@ -16,7 +16,7 @@ export const HelperView = (): ReactElement => {
   const { t } = useTranslation();
 
   const [selectedTool, setSelectedTool] = useState<HelperTool>(
-    HelperTool.PASSWORD_MANAGEMENT
+    HelperTool.PASSWORD_MANAGEMENT,
   );
 
   const store = useStore();

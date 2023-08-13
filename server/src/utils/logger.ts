@@ -14,7 +14,7 @@ const consoleOutputFormat = config.consoleLogFormatJson
           level: info.level,
           message: info.message,
         });
-      })
+      }),
     )
   : format.combine(
       format.colorize(),
@@ -24,7 +24,7 @@ const consoleOutputFormat = config.consoleLogFormatJson
       format.splat(),
       format.printf((info) => {
         return `${info.timestamp} ${info.level}: ${info.message}`;
-      })
+      }),
     );
 
 export const logger = createLogger({
@@ -54,7 +54,7 @@ export const logger = createLogger({
             level: info.level,
             message: info.message,
           });
-        })
+        }),
       ),
     }),
   ],

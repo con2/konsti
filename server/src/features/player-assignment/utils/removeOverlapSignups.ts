@@ -18,7 +18,7 @@ import { MongoDbError } from "shared/typings/api/errors";
 dayjs.extend(isBetween);
 
 export const removeOverlapSignups = async (
-  results: readonly AssignmentResult[]
+  results: readonly AssignmentResult[],
 ): Promise<Result<void, MongoDbError>> => {
   logger.debug("Find overlapping signups");
   const signupData: UserSignedGames[] = [];
@@ -35,7 +35,7 @@ export const removeOverlapSignups = async (
     if (!enteredGame) {
       logger.error(
         "%s",
-        new Error("removeOverlapSignups: Error finding entered game")
+        new Error("removeOverlapSignups: Error finding entered game"),
       );
       return;
     }
@@ -44,7 +44,7 @@ export const removeOverlapSignups = async (
     if (!signedUser) {
       logger.error(
         "%s",
-        new Error("removeOverlapSignups: Error finding signed user")
+        new Error("removeOverlapSignups: Error finding signed user"),
       );
       return;
     }
@@ -53,14 +53,14 @@ export const removeOverlapSignups = async (
       // If signed game takes place during the length of entered game, cancel it
       return !dayjs(signedGame.gameDetails.startTime).isBetween(
         dayjs(enteredGame.startTime).add(1, "minutes"),
-        dayjs(enteredGame.endTime)
+        dayjs(enteredGame.endTime),
       );
     });
 
     if (!newSignedGames) {
       logger.error(
         "%s",
-        new Error("removeOverlapSignups: Error finding signed games")
+        new Error("removeOverlapSignups: Error finding signed games"),
       );
       return;
     }
@@ -81,7 +81,7 @@ export const removeOverlapSignups = async (
 
   const saveResults = await Promise.all(promises);
   const someResultFailed = saveResults.some((saveResult) =>
-    isErrorResult(saveResult)
+    isErrorResult(saveResult),
   );
   if (someResultFailed) {
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);

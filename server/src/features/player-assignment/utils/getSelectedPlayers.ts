@@ -4,7 +4,7 @@ import { Game } from "shared/typings/models/game";
 
 export const getSelectedPlayers = (
   players: readonly User[],
-  startingGames: readonly Game[]
+  startingGames: readonly Game[],
 ): User[] => {
   logger.debug("Get selected players");
 

@@ -13,7 +13,7 @@ import {
 } from "shared/typings/api/myGames";
 
 export const postSignedGames = async (
-  signupData: PostSignedGamesRequest
+  signupData: PostSignedGamesRequest,
 ): Promise<PostSignedGamesResponse | PostSignedGamesError> => {
   const response = await api.post<
     PostSignedGamesResponse,
@@ -23,7 +23,7 @@ export const postSignedGames = async (
 };
 
 export const postEnteredGame = async (
-  requestData: PostEnteredGameRequest
+  requestData: PostEnteredGameRequest,
 ): Promise<PostEnteredGameResponse | PostEnteredGameError> => {
   const response = await api.post<
     PostEnteredGameResponse,
@@ -33,7 +33,7 @@ export const postEnteredGame = async (
 };
 
 export const deleteEnteredGame = async (
-  requestData: DeleteEnteredGameRequest
+  requestData: DeleteEnteredGameRequest,
 ): Promise<DeleteEnteredGameResponse | DeleteEnteredGameError> => {
   const response = await api.delete<
     DeleteEnteredGameResponse,

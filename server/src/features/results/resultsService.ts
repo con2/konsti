@@ -4,7 +4,7 @@ import { GetResultsResponse } from "shared/typings/api/results";
 import { isErrorResult, unwrapResult } from "shared/utils/result";
 
 export const fetchResults = async (
-  startTime: string
+  startTime: string,
 ): Promise<GetResultsResponse | ApiError> => {
   const resultsResult = await findResult(startTime);
   if (isErrorResult(resultsResult)) {

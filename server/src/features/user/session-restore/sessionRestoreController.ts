@@ -6,7 +6,7 @@ import { PostSessionRecoveryRequest } from "shared/typings/api/login";
 
 export const postSessionRestore = async (
   req: Request<{}, {}, PostSessionRecoveryRequest>,
-  res: Response
+  res: Response,
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.SESSION_RESTORE}`);
 

@@ -52,7 +52,7 @@ export const NotInGroupActions = ({
     const errorMessage = await dispatch(
       submitCreateGroup({
         groupCode: serial,
-      })
+      }),
     );
 
     if (errorMessage) {
@@ -72,7 +72,7 @@ export const NotInGroupActions = ({
       submitJoinGroup({
         groupCode: joinGroupValue,
         ownSerial: serial,
-      })
+      }),
     );
 
     if (errorMessage) {
@@ -86,7 +86,7 @@ export const NotInGroupActions = ({
   };
 
   const handleJoinGroupChange = (
-    event: ChangeEvent<HTMLInputElement>
+    event: ChangeEvent<HTMLInputElement>,
   ): void => {
     setJoinGroupValue(event.target.value);
   };

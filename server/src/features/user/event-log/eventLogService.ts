@@ -7,7 +7,7 @@ import {
 import { isErrorResult, unwrapResult } from "shared/utils/result";
 
 export const storeEventLogItem = async (
-  request: PostEventLogIsSeenRequest
+  request: PostEventLogIsSeenRequest,
 ): Promise<PostEventLogIsSeenResponse | PostEventLogIsSeenError> => {
   const updateEventLogItemResult = await updateEventLogItem(request);
   if (isErrorResult(updateEventLogItemResult)) {

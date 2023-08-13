@@ -98,10 +98,10 @@ test("should not add event log items after assigment if signup is dropped due to
 
   const usersAfterSave = unsafelyUnwrapResult(await findUsers());
   const usersWithoutEventLogItem = usersAfterSave.filter(
-    (user) => user.eventLogItems.length === 0
+    (user) => user.eventLogItems.length === 0,
   );
   const usersWithEventLogItem = usersAfterSave.filter(
-    (user) => user.eventLogItems.length === 1
+    (user) => user.eventLogItems.length === 1,
   );
   expect(usersWithoutEventLogItem).toHaveLength(1);
   expect(usersWithEventLogItem).toHaveLength(3);

@@ -30,7 +30,7 @@ export const GroupCreatorActions = ({ groupCode }: Props): ReactElement => {
     const errorMessage = await dispatch(
       submitCloseGroup({
         groupCode,
-      })
+      }),
     );
 
     if (errorMessage) {

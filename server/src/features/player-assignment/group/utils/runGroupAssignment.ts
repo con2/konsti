@@ -15,7 +15,7 @@ import { AssignmentError } from "shared/typings/api/errors";
 
 export const runGroupAssignment = (
   playerGroups: readonly User[][],
-  signedGames: readonly Game[]
+  signedGames: readonly Game[],
 ): Result<GroupAssignResult, AssignmentError> => {
   const signupResults: AssignmentResult[] = [];
   let matchingGroups: User[][] = [];
@@ -43,17 +43,17 @@ export const runGroupAssignment = (
     // Number of matching players
     const playersCount = matchingGroups.reduce(
       (acc, matchingGroup) => acc + matchingGroup.length,
-      0
+      0,
     );
 
     logger.debug(
-      `Found ${matchingGroups.length} groups with ${playersCount} players for game ${selectedGame.title}, ${selectedGame.minAttendance}-${selectedGame.maxAttendance} players required`
+      `Found ${matchingGroups.length} groups with ${playersCount} players for game ${selectedGame.title}, ${selectedGame.minAttendance}-${selectedGame.maxAttendance} players required`,
     );
 
     // Not enough interested players, game will not happen
     if (playersCount < selectedGame.minAttendance) {
       logger.debug(
-        `Not enough players for game ${selectedGame.title} (signed: ${playersCount}, required: ${selectedGame.minAttendance}-${selectedGame.maxAttendance})`
+        `Not enough players for game ${selectedGame.title} (signed: ${playersCount}, required: ${selectedGame.minAttendance}-${selectedGame.maxAttendance})`,
       );
       break;
     }
@@ -76,7 +76,7 @@ export const runGroupAssignment = (
         logger.debug(
           `Selected group ${_.first(selectedGroup)?.groupCode} with ${
             selectedGroup.length
-          } players`
+          } players`,
         );
       }
 
@@ -90,7 +90,7 @@ export const runGroupAssignment = (
         matchingGroups = matchingGroups.filter(
           (remainingGroup) =>
             _.first(remainingGroup)?.username !==
-            _.first(selectedGroup)?.username
+            _.first(selectedGroup)?.username,
         );
 
         const seatsRemaining = maximumPlayers - numberOfPlayers;
@@ -111,7 +111,7 @@ export const runGroupAssignment = (
     if (numberOfPlayers < selectedGame.minAttendance) {
       // Not enough signups, game will not happen
       logger.debug(
-        `Not enough signups for game ${selectedGame.title} (signed: ${playersCount}, assigned: ${numberOfPlayers}, required: ${selectedGame.minAttendance}-${selectedGame.maxAttendance})`
+        `Not enough signups for game ${selectedGame.title} (signed: ${playersCount}, assigned: ${numberOfPlayers}, required: ${selectedGame.minAttendance}-${selectedGame.maxAttendance})`,
       );
     } else {
       // Enough signups, game will happen
@@ -120,7 +120,7 @@ export const runGroupAssignment = (
         for (const groupMember of selectedGroup) {
           const foundSignedGame = groupMember.signedGames.find(
             (signedGame) =>
-              signedGame.gameDetails.gameId === selectedGame.gameId
+              signedGame.gameDetails.gameId === selectedGame.gameId,
           );
 
           // Increase score based on priority of the entered game
@@ -136,13 +136,13 @@ export const runGroupAssignment = (
 
           const enteredGame = findEnteredGame(
             selectedGame,
-            groupMember.signedGames
+            groupMember.signedGames,
           );
 
           if (!enteredGame) {
             logger.error(
               "%s",
-              new Error("Unable to find entered game from signed games")
+              new Error("Unable to find entered game from signed games"),
             );
             return makeErrorResult(AssignmentError.UNKNOWN_ERROR);
           }
@@ -188,9 +188,9 @@ export const runGroupAssignment = (
 
 const findEnteredGame = (
   enteredGame: Game,
-  signedGames: readonly SelectedGame[]
+  signedGames: readonly SelectedGame[],
 ): SelectedGame | undefined => {
   return signedGames.find(
-    (signedGame) => signedGame.gameDetails.gameId === enteredGame.gameId
+    (signedGame) => signedGame.gameDetails.gameId === enteredGame.gameId,
   );
 };

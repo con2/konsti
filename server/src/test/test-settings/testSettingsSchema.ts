@@ -7,10 +7,10 @@ const TestSettingsSchema = new mongoose.Schema(
   {
     testTime: { type: Date, default: null },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 export const TestSettingsModel = mongoose.model<TestSettingsDoc>(
   "test-settings",
-  TestSettingsSchema
+  TestSettingsSchema,
 );

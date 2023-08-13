@@ -12,7 +12,7 @@ export const ProgramTypeSelection = (): ReactElement => {
   const dispatch = useAppDispatch();
 
   const activeProgramType = useAppSelector(
-    (state) => state.admin.activeProgramType
+    (state) => state.admin.activeProgramType,
   );
 
   const programTypes = sharedConfig.activeProgramTypes;

@@ -6,7 +6,7 @@ import { UserGroup } from "shared/typings/models/user";
 import { isErrorResult, unwrapResult } from "shared/utils/result";
 
 export const loginWithJwt = async (
-  jwt: string
+  jwt: string,
 ): Promise<PostLoginResponse | PostLoginError> => {
   // Restore session
   const jwtData = decodeJWT(jwt);

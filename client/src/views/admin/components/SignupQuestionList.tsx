@@ -21,11 +21,11 @@ export const SignupQuestionList = ({
   const signupQuestionsWithGames = signupQuestions.flatMap(
     (privateSignupQuestion) => {
       const matchingGame = games.find(
-        (game) => game.gameId === privateSignupQuestion.gameId
+        (game) => game.gameId === privateSignupQuestion.gameId,
       );
       if (!matchingGame) return [];
       return { ...privateSignupQuestion, game: matchingGame };
-    }
+    },
   );
 
   const sortedSignupQuestions = _.sortBy(signupQuestionsWithGames, [
@@ -42,7 +42,7 @@ export const SignupQuestionList = ({
 
         {sortedSignupQuestions.flatMap((signupQuestion) => {
           const foundGame = games.find(
-            (game) => game.gameId === signupQuestion.gameId
+            (game) => game.gameId === signupQuestion.gameId,
           );
           if (!foundGame) return [];
 

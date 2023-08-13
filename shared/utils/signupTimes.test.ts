@@ -84,7 +84,7 @@ describe(`Direct signup`, () => {
       startTime,
     });
     expect(dayjs(signupStartTime).toISOString()).toEqual(
-      "2023-07-28T12:00:00.000Z"
+      "2023-07-28T12:00:00.000Z",
     );
   });
 
@@ -95,7 +95,7 @@ describe(`Direct signup`, () => {
       startTime,
     });
     expect(dayjs(signupStartTime).toISOString()).toEqual(
-      "2023-07-28T12:00:00.000Z"
+      "2023-07-28T12:00:00.000Z",
     );
   });
 
@@ -106,7 +106,7 @@ describe(`Direct signup`, () => {
       startTime,
     });
     expect(dayjs(signupStartTime).toISOString()).toEqual(
-      "2023-07-28T12:00:00.000Z"
+      "2023-07-28T12:00:00.000Z",
     );
   });
 
@@ -117,7 +117,7 @@ describe(`Direct signup`, () => {
       startTime,
     });
     expect(dayjs(signupStartTime).toISOString()).toEqual(
-      "2023-07-28T13:15:00.000Z"
+      "2023-07-28T13:15:00.000Z",
     );
   });
 
@@ -128,7 +128,7 @@ describe(`Direct signup`, () => {
       startTime,
     });
     expect(dayjs(signupStartTime).toISOString()).toEqual(
-      "2023-07-28T14:15:00.000Z"
+      "2023-07-28T14:15:00.000Z",
     );
   });
 
@@ -139,7 +139,7 @@ describe(`Direct signup`, () => {
       startTime,
     });
     expect(dayjs(signupStartTime).toISOString()).toEqual(
-      "2023-07-28T15:15:00.000Z"
+      "2023-07-28T15:15:00.000Z",
     );
   });
 });

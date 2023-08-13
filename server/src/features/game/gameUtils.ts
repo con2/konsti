@@ -28,7 +28,7 @@ import { MongoDbError } from "shared/typings/api/errors";
 import { tooEearlyForAlgorithmSignup } from "shared/utils/tooEearlyForAlgorithmSignup";
 
 export const removeDeletedGames = async (
-  updatedGames: readonly Game[]
+  updatedGames: readonly Game[],
 ): Promise<Result<number, MongoDbError>> => {
   logger.info("Remove deleted games");
 
@@ -42,17 +42,17 @@ export const removeDeletedGames = async (
 
   if (deletedGames.length > 0) {
     const deletedGameIds = deletedGames.map(
-      (deletedGame) => deletedGame.gameId
+      (deletedGame) => deletedGame.gameId,
     );
 
     logger.info(
       `Found ${
         deletedGames.length
-      } deleted games to be removed: ${deletedGameIds.join(", ")}`
+      } deleted games to be removed: ${deletedGameIds.join(", ")}`,
     );
 
     const delSignupDocumentsResult = await delSignupDocumentsByGameIds(
-      deletedGameIds
+      deletedGameIds,
     );
     if (isErrorResult(delSignupDocumentsResult)) {
       return delSignupDocumentsResult;
@@ -68,7 +68,7 @@ export const removeDeletedGames = async (
 };
 
 export const enrichGames = async (
-  games: readonly GameDoc[]
+  games: readonly GameDoc[],
 ): Promise<Result<GameWithUsernames[], MongoDbError>> => {
   const settingsResult = await findSettings();
   if (isErrorResult(settingsResult)) {
@@ -92,7 +92,7 @@ export const enrichGames = async (
   const currentTime = unwrapResult(currentTimeResult);
   const enrichedGames = games.map((game) => {
     const signupQuestion = settings.signupQuestions.find(
-      (message) => message.gameId === game.gameId
+      (message) => message.gameId === game.gameId,
     );
     return {
       game: {
@@ -109,7 +109,7 @@ export const enrichGames = async (
 const getSignupStrategyForGame = (
   game: GameDoc,
   settings: Settings,
-  currentTime: Dayjs
+  currentTime: Dayjs,
 ): SignupStrategy => {
   const start = dayjs(game.startTime);
   const { DIRECT_SIGNUP_START } = sharedConfig;
@@ -127,7 +127,7 @@ const getSignupStrategyForGame = (
   }
 
   const isAfterDirectSignupStarted = currentTime.isAfter(
-    start.subtract(DIRECT_SIGNUP_START, "minutes")
+    start.subtract(DIRECT_SIGNUP_START, "minutes"),
   );
   if (isAfterDirectSignupStarted) {
     return SignupStrategy.DIRECT;
@@ -139,10 +139,10 @@ const getSignupStrategyForGame = (
 const getSignupsForGame = (
   signups: Signup[],
   gameId: string,
-  signupQuestion?: SignupQuestion | undefined
+  signupQuestion?: SignupQuestion | undefined,
 ): UserSignup[] => {
   const signupsForGame = signups.filter(
-    (signup) => signup.game.gameId === gameId
+    (signup) => signup.game.gameId === gameId,
   );
 
   const formattedSignupsForGame = signupsForGame.flatMap((signupForGame) => {
@@ -159,7 +159,7 @@ const getSignupsForGame = (
 
 const getSignupMessage = (
   signupQuestion: SignupQuestion | undefined,
-  signupMessage: string
+  signupMessage: string,
 ): string => {
   if (!signupQuestion || signupQuestion.private) {
     return "";

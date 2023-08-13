@@ -9,7 +9,7 @@ import {
 
 export const postLogin = async (
   req: Request<{}, {}, PostLoginRequest>,
-  res: Response
+  res: Response,
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.LOGIN}`);
 
@@ -17,7 +17,7 @@ export const postLogin = async (
   if (!result.success) {
     logger.error(
       "%s",
-      new Error(`Error validating postLogin body: ${result.error}`)
+      new Error(`Error validating postLogin body: ${result.error}`),
     );
     return res.sendStatus(422);
   }

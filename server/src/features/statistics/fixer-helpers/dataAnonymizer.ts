@@ -7,26 +7,29 @@ import { writeJson } from "server/features/statistics/statsUtil";
 import { config } from "server/config";
 import { Signup } from "server/features/signup/signup.typings";
 
-export const anonymizeData = (year: number, event: string): void => {
+export const anonymizeData = async (
+  year: number,
+  event: string,
+): Promise<void> => {
   const users: User[] = JSON.parse(
     fs.readFileSync(
       `${config.statsDataDir}/${event}/${year}/users.json`,
-      "utf8"
-    )
+      "utf8",
+    ),
   );
 
   const results: ResultsCollectionEntry[] = JSON.parse(
     fs.readFileSync(
       `${config.statsDataDir}/${event}/${year}/results.json`,
-      "utf8"
-    )
+      "utf8",
+    ),
   );
 
   const signups: Signup[] = JSON.parse(
     fs.readFileSync(
       `${config.statsDataDir}/${event}/${year}/signups.json`,
-      "utf8"
-    )
+      "utf8",
+    ),
   );
 
   users.forEach((user) => {
@@ -63,7 +66,7 @@ export const anonymizeData = (year: number, event: string): void => {
     });
   });
 
-  writeJson(year, event, "users", users);
-  writeJson(year, event, "results", results);
-  writeJson(year, event, "signups", signups);
+  await writeJson(year, event, "users", users);
+  await writeJson(year, event, "results", results);
+  await writeJson(year, event, "signups", signups);
 };

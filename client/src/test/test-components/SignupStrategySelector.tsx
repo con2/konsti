@@ -29,7 +29,7 @@ export const SignupStrategySelector = (): ReactElement => {
         onChange={async (event: ChangeEvent<HTMLSelectElement>) => {
           setLoading(true);
           await dispatch(
-            submitSetSignupStrategy(event.target.value as SignupStrategy)
+            submitSetSignupStrategy(event.target.value as SignupStrategy),
           );
           setLoading(false);
         }}

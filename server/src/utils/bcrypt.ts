@@ -12,7 +12,7 @@ import {
 const saltLength = 10;
 
 export const hashPassword = async (
-  password: string
+  password: string,
 ): Promise<Result<string, BcryptError>> => {
   try {
     const result = await bcrypt.hash(password, saltLength);
@@ -25,7 +25,7 @@ export const hashPassword = async (
 
 const comparePasswordHash = async (
   password: string,
-  hash: string
+  hash: string,
 ): Promise<Result<boolean, BcryptError>> => {
   try {
     const result = await bcrypt.compare(password, hash);
@@ -38,7 +38,7 @@ const comparePasswordHash = async (
 
 export const validateLogin = async (
   password: string,
-  hash: string
+  hash: string,
 ): Promise<Result<boolean, BcryptError>> => {
   const hashResponseResult = await comparePasswordHash(password, hash);
   if (isErrorResult(hashResponseResult)) {

@@ -5,7 +5,7 @@ import {
 
 export const calculateHappiness = (
   assignment: PadgRandomAssignResults,
-  groups: Group[]
+  groups: Group[],
 ): number => {
   let happiness = 0;
 

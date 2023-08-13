@@ -25,7 +25,7 @@ export enum PostCreateGroupErrorMessage {
 }
 
 export const submitCreateGroup = (
-  group: PostCreateGroupRequest
+  group: PostCreateGroupRequest,
 ): AppThunk<Promise<PostCreateGroupErrorMessage | undefined>> => {
   return async (dispatch): Promise<PostCreateGroupErrorMessage | undefined> => {
     const createGroupResponse = await postCreateGroup(group);
@@ -60,7 +60,7 @@ export enum PostJoinGroupErrorMessage {
 }
 
 export const submitJoinGroup = (
-  groupRequest: PostJoinGroupRequest
+  groupRequest: PostJoinGroupRequest,
 ): AppThunk<Promise<PostJoinGroupErrorMessage | undefined>> => {
   return async (dispatch): Promise<PostJoinGroupErrorMessage | undefined> => {
     const joinGroupResponse = await postJoinGroup(groupRequest);
@@ -125,7 +125,7 @@ export enum PostCloseGroupErrorMessage {
 }
 
 export const submitCloseGroup = (
-  groupRequest: PostCloseGroupRequest
+  groupRequest: PostCloseGroupRequest,
 ): AppThunk<Promise<PostCloseGroupErrorMessage | undefined>> => {
   return async (dispatch): Promise<PostCloseGroupErrorMessage | undefined> => {
     const leaveGroupResponse = await postCloseGroup(groupRequest);
@@ -152,7 +152,7 @@ enum GetGroupErrorMessage {
 }
 
 export const submitGetGroup = (
-  groupCode: string
+  groupCode: string,
 ): AppThunk<Promise<GetGroupErrorMessage | undefined>> => {
   return async (dispatch): Promise<GetGroupErrorMessage | undefined> => {
     const getGroupResponse = await getGroup(groupCode);

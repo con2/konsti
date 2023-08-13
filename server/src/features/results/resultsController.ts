@@ -20,7 +20,7 @@ import { autoAssignPlayers } from "server/utils/cron";
 
 export const getResults = async (
   req: Request<{}, {}, GetResultsRequest>,
-  res: Response
+  res: Response,
 ): Promise<Response> => {
   logger.info(`API call: GET ${ApiEndpoint.RESULTS}`);
 
@@ -28,7 +28,7 @@ export const getResults = async (
   if (!result.success) {
     logger.error(
       "%s",
-      new Error(`Error validating getResults body: ${result.error}`)
+      new Error(`Error validating getResults body: ${result.error}`),
     );
     return res.sendStatus(422);
   }
@@ -45,13 +45,13 @@ export const getResults = async (
 
 export const postAssignment = async (
   req: Request<{}, {}, PostPlayerAssignmentRequest>,
-  res: Response
+  res: Response,
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.ASSIGNMENT}`);
 
   const username = getAuthorizedUsername(
     req.headers.authorization,
-    UserGroup.ADMIN
+    UserGroup.ADMIN,
   );
   if (!username) {
     return res.sendStatus(401);
@@ -61,7 +61,7 @@ export const postAssignment = async (
   if (!result.success) {
     logger.error(
       "Parsing postAssignment() request body failed: %s",
-      result.error
+      result.error,
     );
     return res.sendStatus(422);
   }
@@ -72,7 +72,7 @@ export const postAssignment = async (
 
 export const postAutoAssignment = (
   req: Request<{}, {}, PostPlayerAssignmentRequest>,
-  res: Response
+  res: Response,
 ): Response => {
   logger.info(`API call: POST ${ApiEndpoint.ASSIGNMENT_CRON}`);
 

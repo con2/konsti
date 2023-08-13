@@ -13,22 +13,22 @@ const fixData = (): void => {
   commander
     .command("anonymize <year> <event>")
     .description("Anonymize users and results")
-    .action((year: number, event: string) => {
-      anonymizeData(year, event);
+    .action(async (year: number, event: string) => {
+      await anonymizeData(year, event);
     });
 
   commander
     .command("gameid <year> <event>")
     .description("Fix game ids for users and results")
-    .action((year: number, event: string) => {
-      gameIdFix(year, event);
+    .action(async (year: number, event: string) => {
+      await gameIdFix(year, event);
     });
 
   commander
     .command("wild <year> <event> <datatype>")
     .description("Implement new fix logic")
-    .action((year: number, event: string, datatype: string) => {
-      wildFix(year, event, datatype);
+    .action(async (year: number, event: string, datatype: string) => {
+      await wildFix(year, event, datatype);
     });
 
   commander

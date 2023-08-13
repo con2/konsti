@@ -23,7 +23,7 @@ import { ProgramType } from "shared/typings/models/game";
 
 export const saveUserSignupResults = async (
   startTime: string,
-  results: readonly AssignmentResult[]
+  results: readonly AssignmentResult[],
 ): Promise<Result<void, MongoDbError>> => {
   // Remove previous assignment result for the same start time
   // This does not remove directSignupAlwaysOpen signups or previous signups from moved program items
@@ -36,7 +36,7 @@ export const saveUserSignupResults = async (
   // Only directSignupAlwaysOpen signups and previous signups from moved program items should be remaining
   const rpgSignupsByStartTimeResult = await findSignupsByProgramType(
     ProgramType.TABLETOP_RPG,
-    startTime
+    startTime,
   );
   if (isErrorResult(rpgSignupsByStartTimeResult)) {
     return rpgSignupsByStartTimeResult;
@@ -49,7 +49,7 @@ export const saveUserSignupResults = async (
   // ... and no new assignment result -> keep existing
   const deletePromises = results.map(async (result) => {
     const existingSignup = rpgSignupsByStartTime.find(
-      (signup) => signup.username === result.username
+      (signup) => signup.username === result.username,
     );
 
     if (existingSignup) {
@@ -67,7 +67,7 @@ export const saveUserSignupResults = async (
 
   const deleteResults = await Promise.all(deletePromises);
   const someDeleteFailed = deleteResults.some((deleteResult) =>
-    isErrorResult(deleteResult)
+    isErrorResult(deleteResult),
   );
   if (someDeleteFailed) {
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
@@ -95,7 +95,7 @@ export const saveUserSignupResults = async (
   const deleteEventLogItemsByStartTimeResult =
     await deleteEventLogItemsByStartTime(
       startTime,
-      EventLogAction.NEW_ASSIGNMENT
+      EventLogAction.NEW_ASSIGNMENT,
     );
   if (isErrorResult(deleteEventLogItemsByStartTimeResult)) {
     return deleteEventLogItemsByStartTimeResult;
@@ -111,7 +111,7 @@ export const saveUserSignupResults = async (
                 signup.enteredGameId ===
                   result.enteredGame.gameDetails.gameId &&
                 signup.username === result.username
-              )
+              ),
           );
         })
       : results;

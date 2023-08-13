@@ -13,7 +13,7 @@ export const PostSignedGamesRequestSchema = z.object({
       priority: z.number(),
       time: z.string(),
       message: z.string(),
-    })
+    }),
   ),
   startTime: z.string(),
 });

@@ -18,14 +18,14 @@ import { AssignmentError } from "shared/typings/api/errors";
 export const getList = (
   playerGroups: readonly User[][],
   startTime: string,
-  signups: readonly Signup[]
+  signups: readonly Signup[],
 ): Result<ListItem[], AssignmentError> => {
   const results = playerGroups.flatMap((playerGroup) => {
     const firstMember = _.first(playerGroup);
     if (!firstMember) {
       logger.error(
         "%s",
-        new Error("Padg or Random assign: error getting first member")
+        new Error("Padg or Random assign: error getting first member"),
       );
       return makeErrorResult(AssignmentError.UNKNOWN_ERROR);
     }
@@ -34,7 +34,7 @@ export const getList = (
       .filter(
         (signedGame) =>
           dayjs(signedGame.time).toISOString() ===
-          dayjs(startTime).toISOString()
+          dayjs(startTime).toISOString(),
       )
       .map((signedGame) => {
         return {
@@ -69,7 +69,7 @@ export const getList = (
 const getGain = (
   signedGame: SelectedGame,
   playerGroup: User[],
-  signups: readonly Signup[]
+  signups: readonly Signup[],
 ): number => {
   const bonus = getAssignmentBonus(playerGroup, signups);
 

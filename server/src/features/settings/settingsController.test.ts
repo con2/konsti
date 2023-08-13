@@ -180,7 +180,7 @@ describe(`POST ${ApiEndpoint.HIDDEN}`, () => {
     const updatedUser = unsafelyUnwrapResult(updatedUserResult);
     expect(updatedUser?.signedGames.length).toEqual(1);
     expect(updatedUser?.signedGames[0].gameDetails.title).toEqual(
-      testGame2.title
+      testGame2.title,
     );
     expect(updatedUser?.favoritedGames.length).toEqual(1);
 
@@ -265,7 +265,7 @@ describe(`POST ${ApiEndpoint.SIGNUP_QUESTION}`, () => {
 
     expect(settings.signupQuestions).toHaveLength(1);
     expect(settings.signupQuestions[0]).toMatchObject(
-      requestData.signupQuestion
+      requestData.signupQuestion,
     );
   });
 
@@ -297,7 +297,7 @@ describe(`POST ${ApiEndpoint.SIGNUP_QUESTION}`, () => {
 
     expect(settings.signupQuestions).toHaveLength(1);
     expect(settings.signupQuestions[0]).toMatchObject(
-      requestData.signupQuestion
+      requestData.signupQuestion,
     );
   });
 

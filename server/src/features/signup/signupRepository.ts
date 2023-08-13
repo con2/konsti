@@ -37,7 +37,7 @@ export const findSignups = async (): Promise<
   try {
     const results = await SignupModel.find(
       {},
-      "-createdAt -updatedAt -_id -__v -userSignups._id"
+      "-createdAt -updatedAt -_id -__v -userSignups._id",
     )
       .lean<Signup[]>()
       .populate("game", "-createdAt -updatedAt -_id -__v");
@@ -75,12 +75,12 @@ interface FindSignupsByProgramTypeResponse extends UserSignup {
 
 export const findSignupsByProgramType = async (
   programType: ProgramType,
-  startTime: string
+  startTime: string,
 ): Promise<Result<FindSignupsByProgramTypeResponse[], MongoDbError>> => {
   try {
     const signups = await SignupModel.find(
       { "userSignups.time": startTime },
-      "-createdAt -updatedAt -_id -__v"
+      "-createdAt -updatedAt -_id -__v",
     )
       .lean<Signup[]>()
       .populate("game", "-createdAt -updatedAt -_id -__v");
@@ -106,19 +106,19 @@ export const findSignupsByProgramType = async (
   } catch (error) {
     logger.error(
       `MongoDB: Error finding signups for time ${startTime}: %s`,
-      error
+      error,
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
 
 export const findUserSignups = async (
-  username: string
+  username: string,
 ): Promise<Result<Signup[], MongoDbError>> => {
   try {
     const response = await SignupModel.find(
       { "userSignups.username": username },
-      "-createdAt -updatedAt -_id -__v"
+      "-createdAt -updatedAt -_id -__v",
     )
       .lean<Signup[]>()
       .populate("game", "-createdAt -updatedAt -_id -__v");
@@ -132,14 +132,14 @@ export const findUserSignups = async (
   } catch (error) {
     logger.error(
       `MongoDB: Error finding signups for user ${username}: %s`,
-      error
+      error,
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
 
 export const saveSignup = async (
-  signupsRequest: PostEnteredGameRequest
+  signupsRequest: PostEnteredGameRequest,
 ): Promise<Result<Signup, MongoDbError>> => {
   const { username, enteredGameId, startTime, message, priority } =
     signupsRequest;
@@ -171,13 +171,13 @@ export const saveSignup = async (
       {
         new: true,
         fields: "-userSignups._id -_id -__v -createdAt -updatedAt",
-      }
+      },
     )
       .lean<Signup>()
       .populate("game");
     if (!signup) {
       logger.warn(
-        `Saving signup for user ${username} failed: game ${game.gameId} not found or game full`
+        `Saving signup for user ${username} failed: game ${game.gameId} not found or game full`,
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
@@ -186,7 +186,7 @@ export const saveSignup = async (
   } catch (error) {
     logger.error(
       `MongoDB: Error saving signup for user ${username}: %s`,
-      error
+      error,
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
@@ -198,7 +198,7 @@ interface SaveSignupsResponse {
 }
 
 export const saveSignups = async (
-  signupsRequests: PostEnteredGameRequest[]
+  signupsRequests: PostEnteredGameRequest[],
 ): Promise<Result<SaveSignupsResponse, MongoDbError>> => {
   const gamesResult = await findGames();
   if (isErrorResult(gamesResult)) {
@@ -208,7 +208,7 @@ export const saveSignups = async (
 
   const signupsByProgramItems = _.groupBy(
     signupsRequests,
-    (signup) => signup.enteredGameId
+    (signup) => signup.enteredGameId,
   );
 
   const droppedSignups: PostEnteredGameRequest[] = [];
@@ -225,13 +225,13 @@ export const saveSignups = async (
         logger.error(
           "%s",
           new Error(
-            `Too many signups passed to saveSignups for program item ${game.gameId} - maxAttendance: ${game.maxAttendance}, signups: ${signups.length}`
-          )
+            `Too many signups passed to saveSignups for program item ${game.gameId} - maxAttendance: ${game.maxAttendance}, signups: ${signups.length}`,
+          ),
         );
         const shuffledSignups = _.shuffle(signups);
         finalSignups = shuffledSignups.slice(0, game.maxAttendance);
         droppedSignups.push(
-          ...shuffledSignups.slice(game.maxAttendance, shuffledSignups.length)
+          ...shuffledSignups.slice(game.maxAttendance, shuffledSignups.length),
         );
       }
 
@@ -253,7 +253,7 @@ export const saveSignups = async (
           },
         },
       };
-    }
+    },
   );
 
   try {
@@ -271,7 +271,7 @@ export const saveSignups = async (
 };
 
 export const delSignup = async (
-  signupRequest: DeleteEnteredGameRequest
+  signupRequest: DeleteEnteredGameRequest,
 ): Promise<Result<Signup, MongoDbError>> => {
   const { username, enteredGameId } = signupRequest;
 
@@ -292,7 +292,7 @@ export const delSignup = async (
         },
         $inc: { count: -1 },
       },
-      { new: true, fields: "-userSignups._id -_id -__v -createdAt -updatedAt" }
+      { new: true, fields: "-userSignups._id -_id -__v -createdAt -updatedAt" },
     )
       .lean<Signup>()
       .populate("game", "-createdAt -updatedAt -_id -__v");
@@ -301,22 +301,22 @@ export const delSignup = async (
       logger.error(
         "%s",
         new Error(
-          `Signups to program item ${game.gameId} for user ${username} not found`
-        )
+          `Signups to program item ${game.gameId} for user ${username} not found`,
+        ),
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
 
     const signupStillRemaining = signup.userSignups.some(
-      (userSignup) => userSignup.username === username
+      (userSignup) => userSignup.username === username,
     );
 
     if (signupStillRemaining) {
       logger.error(
         "%s",
         new Error(
-          `Error removing signup to program item ${game.gameId} from user ${username}`
-        )
+          `Error removing signup to program item ${game.gameId} from user ${username}`,
+        ),
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
@@ -324,20 +324,20 @@ export const delSignup = async (
     logger.info(
       `MongoDB: Signup removed - program item: ${
         game.gameId
-      }, user: ${username}, starting: ${dayjs(game.startTime).toISOString()}`
+      }, user: ${username}, starting: ${dayjs(game.startTime).toISOString()}`,
     );
     return makeSuccessResult(signup);
   } catch (error) {
     logger.error(
       `MongoDB: Error deleting signup to program item ${game.gameId} from user ${username}: %s`,
-      error
+      error,
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
 
 export const delSignupDocumentsByGameIds = async (
-  gameIds: string[]
+  gameIds: string[],
 ): Promise<Result<void, MongoDbError>> => {
   const gamesResult = await findGames();
   if (isErrorResult(gamesResult)) {
@@ -346,11 +346,11 @@ export const delSignupDocumentsByGameIds = async (
   const games = unwrapResult(gamesResult);
 
   const gamesInDb = gameIds.map((gameId) =>
-    games.find((game) => game.gameId === gameId)
+    games.find((game) => game.gameId === gameId),
   );
 
   const gameObjectIds = gamesInDb.flatMap((gameInDb) =>
-    gameInDb?._id ? gameInDb?._id : []
+    gameInDb?._id ? gameInDb?._id : [],
   );
 
   try {
@@ -361,14 +361,14 @@ export const delSignupDocumentsByGameIds = async (
   } catch (error) {
     logger.error(
       "MongoDB: Error removing signup documents for game IDs: %s",
-      error
+      error,
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
 
 export const resetSignupsByGameIds = async (
-  gameIds: string[]
+  gameIds: string[],
 ): Promise<Result<void, MongoDbError>> => {
   const gamesResult = await findGames();
   if (isErrorResult(gamesResult)) {
@@ -377,11 +377,11 @@ export const resetSignupsByGameIds = async (
   const games = unwrapResult(gamesResult);
 
   const gamesInDb = gameIds.map((gameId) =>
-    games.find((game) => game.gameId === gameId)
+    games.find((game) => game.gameId === gameId),
   );
 
   const gameObjectIds = gamesInDb.flatMap((gameInDb) =>
-    gameInDb?._id ? gameInDb?._id : []
+    gameInDb?._id ? gameInDb?._id : [],
   );
 
   try {
@@ -389,7 +389,7 @@ export const resetSignupsByGameIds = async (
       {
         game: { $in: gameObjectIds },
       },
-      { userSignups: [], count: 0 }
+      { userSignups: [], count: 0 },
     );
     return makeSuccessResult(undefined);
   } catch (error) {
@@ -399,7 +399,7 @@ export const resetSignupsByGameIds = async (
 };
 
 export const delAssignmentSignupsByStartTime = async (
-  startTime: string
+  startTime: string,
 ): Promise<Result<void, MongoDbError>> => {
   const gamesResult = await findGames();
   if (isErrorResult(gamesResult)) {
@@ -412,7 +412,7 @@ export const delAssignmentSignupsByStartTime = async (
     .filter(
       (game) =>
         sharedConfig.directSignupAlwaysOpenIds.includes(game.gameId) ||
-        game.programType !== ProgramType.TABLETOP_RPG
+        game.programType !== ProgramType.TABLETOP_RPG,
     )
     .map((game) => game._id);
 
@@ -438,7 +438,7 @@ export const delAssignmentSignupsByStartTime = async (
         {
           $set: { count: { $size: "$userSignups" } },
         },
-      ]
+      ],
     );
     logger.info(`MongoDB: Deleted old signups for startTime: ${startTime}`);
     return makeSuccessResult(undefined);
@@ -449,7 +449,7 @@ export const delAssignmentSignupsByStartTime = async (
 };
 
 export const createEmptySignupDocumentForProgramItems = async (
-  programItemObjectIds: ObjectId[]
+  programItemObjectIds: ObjectId[],
 ): Promise<Result<void, MongoDbError>> => {
   const signupDocs = programItemObjectIds.map((programItemObjectId) => {
     return new SignupModel({
@@ -462,13 +462,13 @@ export const createEmptySignupDocumentForProgramItems = async (
   try {
     await SignupModel.create(signupDocs);
     logger.info(
-      `MongoDB: Signup collection created for ${programItemObjectIds.length} program items `
+      `MongoDB: Signup collection created for ${programItemObjectIds.length} program items `,
     );
     return makeSuccessResult(undefined);
   } catch (error) {
     logger.error(
       `MongoDB: Creating signup collection for ${programItemObjectIds.length} program items failed: %s`,
-      error
+      error,
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }

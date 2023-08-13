@@ -13,7 +13,7 @@ import {
 } from "shared/utils/result";
 
 export const saveFavorite = async (
-  favoriteData: NewFavorite
+  favoriteData: NewFavorite,
 ): Promise<Result<readonly Game[] | null, MongoDbError>> => {
   const { username, favoritedGameIds } = favoriteData;
 
@@ -34,7 +34,7 @@ export const saveFavorite = async (
       }
       return acc;
     },
-    []
+    [],
   );
 
   try {
@@ -43,12 +43,12 @@ export const saveFavorite = async (
       {
         favoritedGames,
       },
-      { new: true, fields: "favoritedGames" }
+      { new: true, fields: "favoritedGames" },
     )
       .lean<User>()
       .populate("favoritedGames", "-_id -__v -updatedAt -createdAt");
     logger.info(
-      `MongoDB: Favorite data stored for user ${favoriteData.username}`
+      `MongoDB: Favorite data stored for user ${favoriteData.username}`,
     );
     if (!response) {
       logger.error("%s", new Error(`MongoDB: User ${username} not found`));
@@ -58,7 +58,7 @@ export const saveFavorite = async (
   } catch (error) {
     logger.error(
       `MongoDB: Error storing favorite data for user ${favoriteData.username}: %s`,
-      error
+      error,
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
