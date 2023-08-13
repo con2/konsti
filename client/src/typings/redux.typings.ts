@@ -46,7 +46,7 @@ export interface GroupState {
   groupMembers: readonly GroupMember[];
 }
 
-export interface MyGamesState extends UserGames {}
+export type MyGamesState = UserGames;
 
 export interface TestSettingsState {
   testTime: string;

@@ -1,9 +1,8 @@
 import { createGlobalStyle } from "styled-components";
-import { Theme } from "client/theme";
 
 export const MOBILE_MARGIN = 10;
 
-export const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
+export const GlobalStyle = createGlobalStyle`
   html {
     color: ${(props) => props.theme.textMain};
     display: flex;

@@ -65,7 +65,9 @@ export const EventLog = (): ReactElement => {
         const foundGame = games.find(
           (game) => game.gameId === eventLogItem.programItemId,
         );
-        if (!foundGame) return;
+        if (!foundGame) {
+          return;
+        }
         return (
           <RaisedCard
             isHighlighted={!eventLogItem.isSeen}

@@ -82,7 +82,7 @@ const loader = (
 );
 
 const render = (): void => {
-  const container = document.getElementById("main") as HTMLElement;
+  const container = document.getElementById("main")!;
   const root = createRoot(container);
 
   root.render(

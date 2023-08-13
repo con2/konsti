@@ -37,7 +37,9 @@ export const fetchSignupMessages = async (): Promise<
         const signupQuestion = settings.signupQuestions.find(
           (question) => question.gameId === signup.game.gameId,
         );
-        if (!signupQuestion) return [];
+        if (!signupQuestion) {
+          return [];
+        }
 
         return {
           gameId: signup.game.gameId,

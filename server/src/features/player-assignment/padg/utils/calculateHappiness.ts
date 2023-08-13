@@ -9,7 +9,9 @@ export const calculateHappiness = (
 ): number => {
   let happiness = 0;
 
-  if (!assignment) return 0;
+  if (!assignment) {
+    return 0;
+  }
 
   assignment.forEach((m) => {
     const grpInd = groups.findIndex((g) => g.id === m.id);

@@ -33,7 +33,9 @@ export const PrivateSignupMessages = (): ReactElement => {
       const matchingGame = filteredGames.find(
         (game) => game.gameId === privateSignupQuestion.gameId,
       );
-      if (!matchingGame) return [];
+      if (!matchingGame) {
+        return [];
+      }
       return { ...privateSignupQuestion, game: matchingGame };
     },
   );
