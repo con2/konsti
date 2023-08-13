@@ -7,25 +7,25 @@ import { logger } from "server/utils/logger";
 export const readJson = <T>(
   year: number,
   event: string,
-  datatype: string
+  datatype: string,
 ): T[] => {
   const data = JSON.parse(
     fs.readFileSync(
       `${config.statsDataDir}/${event}/${year}/${datatype}.json`,
-      "utf8"
-    )
+      "utf8",
+    ),
   );
 
   logger.info(`Loaded ${data.length} ${datatype}`);
   return data;
 };
 
-export const writeJson = <T>(
+export const writeJson = async <T>(
   year: number,
   event: string,
   datatype: string,
-  data: T[] | Object
-): void => {
+  data: T[] | Object,
+): Promise<void> => {
   if (!fs.existsSync(`${config.statsDataDir}/${event}/${year}/temp/`)) {
     fs.mkdirSync(`${config.statsDataDir}/${event}/${year}/temp/`);
   }
@@ -33,14 +33,14 @@ export const writeJson = <T>(
   fs.writeFileSync(
     `${config.statsDataDir}/${event}/${year}/temp/${datatype}-fixed.json`,
     // eslint-disable-next-line no-restricted-syntax -- TODO: Fix, format() ban should only apply to dayjs().format()
-    prettier.format(JSON.stringify(data), { parser: "json" }),
-    "utf8"
+    await prettier.format(JSON.stringify(data), { parser: "json" }),
+    "utf8",
   );
 
   logger.info(
     `Saved ${getDataLength(data)} ${datatype} to file ${
       config.statsDataDir
-    }/${event}/${year}/temp/${datatype}-fixed.json`
+    }/${event}/${year}/temp/${datatype}-fixed.json`,
   );
 };
 

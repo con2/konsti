@@ -20,7 +20,7 @@ import {
 } from "shared/typings/api/eventLog";
 
 export const postRegistration = async (
-  registrationFormFields: RegistrationFormFields
+  registrationFormFields: RegistrationFormFields,
 ): Promise<PostUserResponse | PostUserError> => {
   const { username, password, serial } = registrationFormFields;
 
@@ -30,13 +30,13 @@ export const postRegistration = async (
       username,
       password,
       serial,
-    }
+    },
   );
   return response.data;
 };
 
 export const getUser = async (
-  username: string
+  username: string,
 ): Promise<GetUserResponse | ApiError> => {
   const response = await api.get<GetUserResponse, {}>(ApiEndpoint.USERS, {
     params: {
@@ -47,7 +47,7 @@ export const getUser = async (
 };
 
 export const getUserBySerialOrUsername = async (
-  searchTerm: string
+  searchTerm: string,
 ): Promise<GetUserBySerialResponse | ApiError> => {
   const response = await api.get<
     GetUserBySerialResponse,
@@ -62,7 +62,7 @@ export const getUserBySerialOrUsername = async (
 
 export const updateUserPassword = async (
   userToUpdateUsername: string,
-  password: string
+  password: string,
 ): Promise<PostUpdateUserPasswordResponse | ApiError> => {
   const response = await api.post<
     PostUpdateUserPasswordResponse,
@@ -78,13 +78,13 @@ export const getSignupMessages = async (): Promise<
   GetSignupMessagesResponse | GetSignupMessagesError
 > => {
   const response = await api.get<GetSignupMessagesResponse, {}>(
-    ApiEndpoint.SIGNUP_MESSAGE
+    ApiEndpoint.SIGNUP_MESSAGE,
   );
   return response.data;
 };
 
 export const postEventLogItemIsSeen = async (
-  request: PostEventLogIsSeenRequest
+  request: PostEventLogIsSeenRequest,
 ): Promise<PostEventLogIsSeenResponse | ApiError> => {
   const response = await api.post<
     PostEventLogIsSeenResponse,

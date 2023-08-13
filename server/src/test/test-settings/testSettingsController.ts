@@ -12,7 +12,7 @@ import {
 
 export const getTestSettings = async (
   _req: Request,
-  res: Response
+  res: Response,
 ): Promise<Response> => {
   logger.info(`API call: GET ${ApiEndpoint.TEST_SETTINGS}`);
 
@@ -22,7 +22,7 @@ export const getTestSettings = async (
 
 export const postTestSettings = async (
   req: Request<{}, {}, PostTestSettingsRequest>,
-  res: Response
+  res: Response,
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.TEST_SETTINGS}`);
 
@@ -30,7 +30,7 @@ export const postTestSettings = async (
   if (!result.success) {
     logger.error(
       "%s",
-      new Error(`Error validating postTestSettings body: ${result.error}`)
+      new Error(`Error validating postTestSettings body: ${result.error}`),
     );
     return res.sendStatus(422);
   }

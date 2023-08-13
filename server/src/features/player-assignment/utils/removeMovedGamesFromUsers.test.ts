@@ -53,7 +53,7 @@ test("should remove signups for moved games from users", async () => {
     { gameId: testGame.gameId },
     {
       startTime: dayjs(testGame.startTime).add(1, "hours").toISOString(),
-    }
+    },
   );
 
   await removeMovedGamesFromUsers(insertedGames);
@@ -63,6 +63,6 @@ test("should remove signups for moved games from users", async () => {
 
   expect(updatedUser?.signedGames.length).toEqual(1);
   expect(updatedUser?.signedGames[0].gameDetails.gameId).toEqual(
-    testGame2.gameId
+    testGame2.gameId,
   );
 });

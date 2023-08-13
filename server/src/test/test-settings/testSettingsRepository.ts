@@ -47,7 +47,7 @@ export const findTestSettings = async (): Promise<
   try {
     const testSettings = await TestSettingsModel.findOne(
       {},
-      "-_id -__v -createdAt -updatedAt"
+      "-_id -__v -createdAt -updatedAt",
     ).lean<TestSettings>();
     if (!testSettings) {
       const createTestSettingsResult = await createTestSettings();
@@ -66,7 +66,7 @@ export const findTestSettings = async (): Promise<
 };
 
 export const saveTestSettings = async (
-  settings: PostTestSettingsRequest
+  settings: PostTestSettingsRequest,
 ): Promise<Result<TestSettings, MongoDbError>> => {
   try {
     const updatedTestSettings =

@@ -25,7 +25,7 @@ import { AssignmentStrategy } from "shared/config/sharedConfig.types";
 export const groupAssignPlayers = (
   players: readonly User[],
   games: readonly Game[],
-  startTime: string
+  startTime: string,
 ): Result<PlayerAssignmentResult, AssignmentError> => {
   logger.debug(`***** Run Group Assignment for ${startTime}`);
   const startingGames = getStartingGames(games, startTime);
@@ -73,7 +73,7 @@ export const groupAssignPlayers = (
 
   logger.debug(`Games with signups: ${signedGames.length}`);
   logger.debug(
-    `Selected players: ${allPlayers.length} (${numberOfIndividuals} individual, ${numberOfGroups} groups)`
+    `Selected players: ${allPlayers.length} (${numberOfIndividuals} individual, ${numberOfGroups} groups)`,
   );
 
   const resultResult = assignGroups(allPlayers, signedGames, playerGroups);
@@ -87,7 +87,7 @@ export const groupAssignPlayers = (
     result.results,
     playerGroups,
     allPlayers,
-    startTime
+    startTime,
   );
   if (isErrorResult(getHappinessResult)) {
     return getHappinessResult;
@@ -100,6 +100,6 @@ export const groupAssignPlayers = (
       ...result,
       algorithm: AssignmentStrategy.GROUP,
       status: AssignmentResultStatus.SUCCESS,
-    })
+    }),
   );
 };

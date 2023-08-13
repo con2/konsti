@@ -27,7 +27,7 @@ export const MySignupsList = ({
   ]);
 
   const startTimes = getStartTimes(
-    signedGames.map((signedGame) => signedGame.gameDetails)
+    signedGames.map((signedGame) => signedGame.gameDetails),
   );
 
   return (

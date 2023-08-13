@@ -13,8 +13,8 @@ export const getResultsStats = (year: number, event: string): void => {
   const results: ResultsCollectionEntry[] = JSON.parse(
     fs.readFileSync(
       `${config.statsDataDir}/${event}/${year}/results.json`,
-      "utf8"
-    )
+      "utf8",
+    ),
   );
 
   logger.info(`Loaded ${results.length} results`);
@@ -22,8 +22,8 @@ export const getResultsStats = (year: number, event: string): void => {
   const games: Game[] = JSON.parse(
     fs.readFileSync(
       `${config.statsDataDir}/${event}/${year}/games.json`,
-      "utf8"
-    )
+      "utf8",
+    ),
   );
 
   logger.info(`Loaded ${games.length} games`);

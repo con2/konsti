@@ -46,7 +46,7 @@ export const startCronJobs = async (): Promise<void> => {
   if (isErrorResult(latestServerStartResult)) {
     // eslint-disable-next-line no-restricted-syntax -- Server startup
     throw new Error(
-      `Error setting latestServerStartTime at server start: ${latestServerStartResult.error}`
+      `Error setting latestServerStartTime at server start: ${latestServerStartResult.error}`,
     );
   }
 
@@ -60,7 +60,7 @@ export const startCronJobs = async (): Promise<void> => {
         protect: protectCallback,
         catch: errorHandler,
       },
-      autoUpdateGames
+      autoUpdateGames,
     );
     cronJobs.push(autoUpdateGamesJob);
   }
@@ -75,7 +75,7 @@ export const startCronJobs = async (): Promise<void> => {
         protect: protectCallback,
         catch: errorHandler,
       },
-      autoAssignPlayers
+      autoAssignPlayers,
     );
     cronJobs.push(autoAssignPlayersJob);
   }
@@ -93,10 +93,10 @@ export const autoUpdateGames = async (): Promise<void> => {
   logger.info("----> Auto update games");
 
   logger.info(
-    `Check if latest running server instance with start time ${latestServerStartTime}`
+    `Check if latest running server instance with start time ${latestServerStartTime}`,
   );
   const latestServerResult = await isLatestStartedServerInstance(
-    latestServerStartTime
+    latestServerStartTime,
   );
   if (isErrorResult(latestServerResult)) {
     if (latestServerResult.error === MongoDbError.SETTINGS_NOT_FOUND) {
@@ -106,29 +106,29 @@ export const autoUpdateGames = async (): Promise<void> => {
     logger.error(
       "%s",
       new Error(
-        `***** Games auto update failed trying to check latest server start time: ${latestServerResult.error}`
-      )
+        `***** Games auto update failed trying to check latest server start time: ${latestServerResult.error}`,
+      ),
     );
     return;
   }
 
   logger.info("Check if auto update already running...");
   const programUpdateLastRunResult = await setProgramUpdateLastRun(
-    dayjs().toISOString()
+    dayjs().toISOString(),
   );
   if (isErrorResult(programUpdateLastRunResult)) {
     if (programUpdateLastRunResult.error === MongoDbError.SETTINGS_NOT_FOUND) {
       logger.error(
         "%s",
-        new Error("Program auto update already running, stop")
+        new Error("Program auto update already running, stop"),
       );
       return;
     }
     logger.error(
       "%s",
       new Error(
-        `***** Games auto update failed trying to set last run time: ${programUpdateLastRunResult.error}`
-      )
+        `***** Games auto update failed trying to set last run time: ${programUpdateLastRunResult.error}`,
+      ),
     );
     return;
   }
@@ -139,7 +139,7 @@ export const autoUpdateGames = async (): Promise<void> => {
   if (updateGamesResult.status === "error") {
     logger.error(
       "%s",
-      new Error(`***** Games auto update failed: ${updateGamesResult.message}`)
+      new Error(`***** Games auto update failed: ${updateGamesResult.message}`),
     );
     return;
   }
@@ -151,10 +151,10 @@ export const autoAssignPlayers = async (): Promise<void> => {
   logger.info("----> Auto assign players");
 
   logger.info(
-    `Check if latest running server instance with start time ${latestServerStartTime}`
+    `Check if latest running server instance with start time ${latestServerStartTime}`,
   );
   const latestServerResult = await isLatestStartedServerInstance(
-    latestServerStartTime
+    latestServerStartTime,
   );
   if (isErrorResult(latestServerResult)) {
     if (latestServerResult.error === MongoDbError.SETTINGS_NOT_FOUND) {
@@ -164,15 +164,15 @@ export const autoAssignPlayers = async (): Promise<void> => {
     logger.error(
       "%s",
       new Error(
-        `***** Auto assignment failed trying to check latest server start time: ${latestServerResult.error}`
-      )
+        `***** Auto assignment failed trying to check latest server start time: ${latestServerResult.error}`,
+      ),
     );
     return;
   }
 
   logger.info("Check if assignment already running...");
   const assignmentLastRunResult = await setAssignmentLastRun(
-    dayjs().toISOString()
+    dayjs().toISOString(),
   );
   if (isErrorResult(assignmentLastRunResult)) {
     if (assignmentLastRunResult.error === MongoDbError.SETTINGS_NOT_FOUND) {
@@ -182,8 +182,8 @@ export const autoAssignPlayers = async (): Promise<void> => {
     logger.error(
       "%s",
       new Error(
-        `***** Auto assignment failed trying to set last run time: ${assignmentLastRunResult.error}`
-      )
+        `***** Auto assignment failed trying to set last run time: ${assignmentLastRunResult.error}`,
+      ),
     );
     return;
   }
@@ -209,8 +209,8 @@ const protectCallback = (job: Cron): void => {
   logger.error(
     "%s",
     new Error(
-      `Cronjob ${job.name} at ${timeNow} was blocked by call started at ${startTime}`
-    )
+      `Cronjob ${job.name} at ${timeNow} was blocked by call started at ${startTime}`,
+    ),
   );
 };
 

@@ -7,13 +7,13 @@ import { fetchSignupMessages } from "server/features/user/signup-message/signupM
 
 export const getSignupMessages = async (
   req: Request<{}, {}, {}>,
-  res: Response
+  res: Response,
 ): Promise<Response> => {
   logger.info(`API call: GET ${ApiEndpoint.SIGNUP_MESSAGE}`);
 
   const username = getAuthorizedUsername(
     req.headers.authorization,
-    UserGroup.HELP
+    UserGroup.HELP,
   );
   if (!username) {
     return res.sendStatus(401);

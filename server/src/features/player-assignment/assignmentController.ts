@@ -8,7 +8,7 @@ import { isSuccessResult, unwrapResult } from "shared/utils/result";
 
 // Assign players to games
 export const storeAssignment = async (
-  startTime: string
+  startTime: string,
 ): Promise<PostPlayerAssignmentResponse | ApiError> => {
   logger.info(`API call: POST ${ApiEndpoint.ASSIGNMENT}`);
 

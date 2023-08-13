@@ -6,7 +6,7 @@ import { AssignmentStrategy } from "shared/config/sharedConfig.types";
 import { sharedConfig } from "shared/config/sharedConfig";
 
 const testAssignPlayers = async (
-  assignmentStrategy: AssignmentStrategy
+  assignmentStrategy: AssignmentStrategy,
 ): Promise<void> => {
   const startTime = dayjs(sharedConfig.CONVENTION_START_TIME)
     .add(3, "hours")
@@ -30,7 +30,7 @@ const init = async (): Promise<void> => {
   if (process.env.NODE_ENV === "production") {
     logger.error(
       "%s",
-      new Error("Player allocation not allowed in production")
+      new Error("Player allocation not allowed in production"),
     );
     return;
   }

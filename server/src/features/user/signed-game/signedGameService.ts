@@ -13,7 +13,7 @@ import { isErrorResult, unwrapResult } from "shared/utils/result";
 export const storeSignedGames = async (
   selectedGames: readonly SelectedGame[],
   username: string,
-  startTime: string
+  startTime: string,
 ): Promise<PostSignedGamesResponse | PostSignedGamesError> => {
   const timeNowResult = await getTimeNow();
   if (isErrorResult(timeNowResult)) {

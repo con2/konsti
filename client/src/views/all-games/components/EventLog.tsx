@@ -29,7 +29,7 @@ export const EventLog = (): ReactElement => {
           username,
           eventLogItemId,
           isSeen: true,
-        })
+        }),
       );
     });
   }, [dispatch, eventLogItems, username]);
@@ -60,10 +60,10 @@ export const EventLog = (): ReactElement => {
       {_.orderBy(
         localEventLogItems.current,
         (item) => item.createdAt,
-        "desc"
+        "desc",
       ).map((eventLogItem) => {
         const foundGame = games.find(
-          (game) => game.gameId === eventLogItem.programItemId
+          (game) => game.gameId === eventLogItem.programItemId,
         );
         if (!foundGame) return;
         return (

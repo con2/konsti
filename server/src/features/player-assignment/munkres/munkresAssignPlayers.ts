@@ -29,7 +29,7 @@ import { AssignmentStrategy } from "shared/config/sharedConfig.types";
 export const munkresAssignPlayers = (
   players: readonly User[],
   games: readonly Game[],
-  startTime: string
+  startTime: string,
 ): Result<PlayerAssignmentResult, AssignmentError> => {
   logger.debug(`***** Run Munkres Assignment for ${startTime}`);
   const startingGames = getStartingGames(games, startTime);
@@ -86,7 +86,7 @@ export const munkresAssignPlayers = (
   const signupResultsResult = buildSignupResults(
     results,
     signedGames,
-    selectedPlayers
+    selectedPlayers,
   );
   if (isErrorResult(signupResultsResult)) {
     return signupResultsResult;

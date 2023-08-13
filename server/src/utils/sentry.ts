@@ -37,7 +37,7 @@ export const initSentry = (app: Express, enableSentry: boolean): void => {
       directives: {
         "connect-src": ["'self'", "*.sentry.io"],
       },
-    })
+    }),
   );
 
   // Sentry tunnel endpoint which accepts text/plain payload
@@ -49,7 +49,7 @@ export const initSentry = (app: Express, enableSentry: boolean): void => {
     }),
     (req, res) => {
       postSentryTunnel(req, res);
-    }
+    },
   );
 };
 

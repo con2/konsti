@@ -34,7 +34,7 @@ interface Settings {
 
 export const runGenerators = async (
   options: Options,
-  settings: Settings
+  settings: Settings,
 ): Promise<void> => {
   if (process.env.NODE_ENV === "production") {
     // eslint-disable-next-line no-restricted-syntax -- Data generation script
@@ -72,7 +72,7 @@ export const runGenerators = async (
       newUsersCount,
       groupSize,
       numberOfGroups,
-      testUsersCount
+      testUsersCount,
     );
   }
 

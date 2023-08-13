@@ -23,13 +23,13 @@ import {
 
 export const postCreateGroup = async (
   req: Request<{}, {}, PostCreateGroupRequest>,
-  res: Response
+  res: Response,
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.GROUP}`);
 
   const username = getAuthorizedUsername(
     req.headers.authorization,
-    UserGroup.USER
+    UserGroup.USER,
   );
   if (!username) {
     return res.sendStatus(401);
@@ -39,7 +39,7 @@ export const postCreateGroup = async (
   if (!result.success) {
     logger.error(
       "%s",
-      new Error(`Error validating postCreateGroup body: ${result.error}`)
+      new Error(`Error validating postCreateGroup body: ${result.error}`),
     );
     return res.sendStatus(422);
   }
@@ -51,13 +51,13 @@ export const postCreateGroup = async (
 
 export const postJoinGroup = async (
   req: Request<{}, {}, PostJoinGroupRequest>,
-  res: Response
+  res: Response,
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.JOIN_GROUP}`);
 
   const username = getAuthorizedUsername(
     req.headers.authorization,
-    UserGroup.USER
+    UserGroup.USER,
   );
   if (!username) {
     return res.sendStatus(401);
@@ -67,7 +67,7 @@ export const postJoinGroup = async (
   if (!result.success) {
     logger.error(
       "%s",
-      new Error(`Error validating postJoinGroup body: ${result.error}`)
+      new Error(`Error validating postJoinGroup body: ${result.error}`),
     );
     return res.sendStatus(422);
   }
@@ -79,13 +79,13 @@ export const postJoinGroup = async (
 
 export const postLeaveGroup = async (
   req: Request<{}, {}, {}>,
-  res: Response
+  res: Response,
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.LEAVE_GROUP}`);
 
   const username = getAuthorizedUsername(
     req.headers.authorization,
-    UserGroup.USER
+    UserGroup.USER,
   );
   if (!username) {
     return res.sendStatus(401);
@@ -97,13 +97,13 @@ export const postLeaveGroup = async (
 
 export const postCloseGroup = async (
   req: Request<{}, {}, PostCloseGroupRequest>,
-  res: Response
+  res: Response,
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.CLOSE_GROUP}`);
 
   const username = getAuthorizedUsername(
     req.headers.authorization,
-    UserGroup.USER
+    UserGroup.USER,
   );
   if (!username) {
     return res.sendStatus(401);
@@ -113,7 +113,7 @@ export const postCloseGroup = async (
   if (!result.success) {
     logger.error(
       "%s",
-      new Error(`Error validating postCloseGroup body: ${result.error}`)
+      new Error(`Error validating postCloseGroup body: ${result.error}`),
     );
     return res.sendStatus(422);
   }
@@ -125,13 +125,13 @@ export const postCloseGroup = async (
 
 export const getGroup = async (
   req: Request<{}, {}, GetGroupRequest>,
-  res: Response
+  res: Response,
 ): Promise<Response> => {
   logger.info(`API call: GET ${ApiEndpoint.GROUP}`);
 
   const username = getAuthorizedUsername(
     req.headers.authorization,
-    UserGroup.USER
+    UserGroup.USER,
   );
   if (!username) {
     return res.sendStatus(401);
@@ -141,7 +141,7 @@ export const getGroup = async (
   if (!result.success) {
     logger.error(
       "%s",
-      new Error(`Error validating getGroup params: ${result.error}`)
+      new Error(`Error validating getGroup params: ${result.error}`),
     );
     return res.sendStatus(422);
   }

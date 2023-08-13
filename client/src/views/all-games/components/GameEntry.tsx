@@ -45,7 +45,7 @@ export const GameEntry = ({
   const loggedIn = useAppSelector((state) => state.login.loggedIn);
   const userGroup = useAppSelector((state) => state.login.userGroup);
   const favoritedGames = useAppSelector(
-    (state) => state.myGames.favoritedGames
+    (state) => state.myGames.favoritedGames,
   );
   const isEnteredCurrentGame = isAlreadyEntered(game, enteredGames);
   const isSignedForCurrentGame = isAlreadySigned(game, signedGames);
@@ -53,12 +53,12 @@ export const GameEntry = ({
   const dispatch = useAppDispatch();
 
   const signupAlwaysOpen = sharedConfig.directSignupAlwaysOpenIds.includes(
-    game.gameId
+    game.gameId,
   );
 
   const favorited =
     favoritedGames.find(
-      (favoritedGame) => favoritedGame.gameId === game.gameId
+      (favoritedGame) => favoritedGame.gameId === game.gameId,
     ) !== undefined;
 
   const isEnterGameMode =
@@ -79,7 +79,7 @@ export const GameEntry = ({
   };
 
   const updateFavoriteHandler = async (
-    updateOpts: UpdateFavoriteOpts
+    updateOpts: UpdateFavoriteOpts,
   ): Promise<void> => {
     if (!updateOpts?.game || !updateOpts?.game?.gameId) return;
     await updateFavorite(updateOpts);
@@ -131,16 +131,16 @@ export const GameEntry = ({
                 game.minAttendance === game.maxAttendance &&
                 _.capitalize(
                   `${t(
-                    `attendeeTypePlural.${getAttendeeType(game.programType)}`
-                  )} ${game.maxAttendance}`
+                    `attendeeTypePlural.${getAttendeeType(game.programType)}`,
+                  )} ${game.maxAttendance}`,
                 )}
 
               {requiresSignup &&
                 game.minAttendance !== game.maxAttendance &&
                 _.capitalize(
                   `${t(
-                    `attendeeTypePlural.${getAttendeeType(game.programType)}`
-                  )} ${game.minAttendance} - ${game.maxAttendance}`
+                    `attendeeTypePlural.${getAttendeeType(game.programType)}`,
+                  )} ${game.minAttendance} - ${game.maxAttendance}`,
                 )}
             </RowItem>
 
@@ -168,8 +168,8 @@ export const GameEntry = ({
                       ? t(`attendeeType.${getAttendeeType(game.programType)}`)
                       : t(
                           `attendeeTypePartitive.${getAttendeeType(
-                            game.programType
-                          )}`
+                            game.programType,
+                          )}`,
                         ),
                 })}
               </PlayersNeeded>

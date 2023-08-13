@@ -48,7 +48,7 @@ describe(`GET ${ApiEndpoint.USERS_BY_SERIAL_OR_USERNAME}`, () => {
 
     try {
       const response = await request(server).get(
-        ApiEndpoint.USERS_BY_SERIAL_OR_USERNAME
+        ApiEndpoint.USERS_BY_SERIAL_OR_USERNAME,
       );
       expect(response.status).toEqual(401);
     } finally {

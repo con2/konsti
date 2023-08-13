@@ -133,7 +133,7 @@ export const createUsersInGroup = async ({
         groupMemberCount,
         testUsers,
         userNumber: groupMemberCount + 1,
-      })
+      }),
     );
   }
 
@@ -149,7 +149,7 @@ export const createIndividualUsers = async (count: number): Promise<void> => {
       createUser({
         groupCode: "0",
         groupMemberCount: -1,
-      })
+      }),
     );
   }
 

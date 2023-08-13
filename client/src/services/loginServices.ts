@@ -10,7 +10,7 @@ import {
 } from "shared/typings/api/login";
 
 export const postLogin = async (
-  loginFormFields: LoginFormFields
+  loginFormFields: LoginFormFields,
 ): Promise<PostLoginResponse | PostLoginError> => {
   const { username, password } = loginFormFields;
 
@@ -19,13 +19,13 @@ export const postLogin = async (
     {
       username,
       password,
-    }
+    },
   );
   return response.data;
 };
 
 export const postSessionRecovery = async (
-  jwt: string
+  jwt: string,
 ): Promise<PostLoginResponse | PostLoginError> => {
   const response = await api.post<
     PostSessionRecoveryResponse,

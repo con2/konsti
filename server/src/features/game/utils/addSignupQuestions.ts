@@ -21,7 +21,7 @@ export const addSignupQuestions = async (): Promise<void> => {
   if (isErrorResult(gamesResult)) {
     logger.error(
       "%s",
-      new Error(`Error finding games: ${unwrapResult(gamesResult)}`)
+      new Error(`Error finding games: ${unwrapResult(gamesResult)}`),
     );
     return;
   }
@@ -30,7 +30,7 @@ export const addSignupQuestions = async (): Promise<void> => {
   const tournaments = games
     .filter((game) => game.programType === ProgramType.TOURNAMENT)
     .filter(
-      (game) => !tournamentSignupQuestionExcludeIds.includes(game.gameId)
+      (game) => !tournamentSignupQuestionExcludeIds.includes(game.gameId),
     );
 
   const tournamentPromises = tournaments.map(async (tournament) => {

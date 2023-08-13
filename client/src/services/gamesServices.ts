@@ -11,7 +11,7 @@ export const postUpdateGames = async (): Promise<
   PostUpdateGamesResponse | PostUpdateGamesError
 > => {
   const response = await api.post<PostUpdateGamesResponse, {}>(
-    ApiEndpoint.GAMES
+    ApiEndpoint.GAMES,
   );
   return response.data;
 };

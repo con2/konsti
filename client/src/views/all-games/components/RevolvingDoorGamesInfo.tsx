@@ -13,7 +13,7 @@ export const RevolvingDoorGamesInfo = (): ReactElement => {
   const activeGames = useAppSelector(selectActiveGames);
   const hiddenGames = useAppSelector((state) => state.admin.hiddenGames);
   const activeProgramType = useAppSelector(
-    (state) => state.admin.activeProgramType
+    (state) => state.admin.activeProgramType,
   );
 
   const hiddenGamesIds = hiddenGames.map((g) => g.gameId);

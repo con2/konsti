@@ -29,7 +29,7 @@ const gameSchema = new mongoose.Schema(
     entryFee: String,
     signupType: String,
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 export const GameModel = mongoose.model<GameDoc>("Game", gameSchema);

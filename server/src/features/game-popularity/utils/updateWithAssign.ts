@@ -19,10 +19,10 @@ import { getTimeNow } from "server/features/player-assignment/utils/getTimeNow";
 export const updateWithAssign = async (
   users: readonly User[],
   games: readonly Game[],
-  signups: readonly Signup[]
+  signups: readonly Signup[],
 ): Promise<Result<void, MongoDbError | AssignmentError>> => {
   const gamesForStartTimes = _.groupBy(games, (game) =>
-    dayjs(game.startTime).toISOString()
+    dayjs(game.startTime).toISOString(),
   );
 
   const timeNowResult = await getTimeNow();
@@ -32,7 +32,7 @@ export const updateWithAssign = async (
   const timeNow = unwrapResult(timeNowResult);
 
   const startTimes = Object.keys(gamesForStartTimes).filter((startTime) =>
-    dayjs(startTime).isSameOrAfter(timeNow)
+    dayjs(startTime).isSameOrAfter(timeNow),
   );
 
   const assignmentResultsResult = startTimes.map((startTime) => {
@@ -40,7 +40,7 @@ export const updateWithAssign = async (
   });
 
   const someAssignmentFailed = assignmentResultsResult.some(
-    (assignmentResult) => isErrorResult(assignmentResult)
+    (assignmentResult) => isErrorResult(assignmentResult),
   );
   if (someAssignmentFailed) {
     return makeErrorResult(AssignmentError.UNKNOWN_ERROR);
@@ -54,7 +54,7 @@ export const updateWithAssign = async (
   });
 
   const signedGames = results.flatMap(
-    (result) => result.enteredGame.gameDetails
+    (result) => result.enteredGame.gameDetails,
   );
 
   const groupedSignups = _.countBy(signedGames, "gameId");
@@ -67,7 +67,7 @@ export const updateWithAssign = async (
     .filter((popularityUpdate) => popularityUpdate.popularity);
 
   const saveGamePopularityResult = await saveGamePopularity(
-    gamePopularityUpdates
+    gamePopularityUpdates,
   );
 
   if (isErrorResult(saveGamePopularityResult)) {

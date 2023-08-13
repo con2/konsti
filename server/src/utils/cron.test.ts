@@ -71,10 +71,10 @@ describe("Progam update cronjob", () => {
     await autoUpdateGames();
 
     expect(infoLoggerSpy).toHaveBeenCalledWith(
-      "Auto update not running, continue"
+      "Auto update not running, continue",
     );
     expect(infoLoggerSpy).toHaveBeenCalledWith(
-      "***** Games auto update completed"
+      "***** Games auto update completed",
     );
 
     const settingsResult = await findSettings();
@@ -96,10 +96,10 @@ describe("Progam update cronjob", () => {
 
     expect(errorLoggerSpy).toHaveBeenCalledWith(
       "%s",
-      new Error("Program auto update already running, stop")
+      new Error("Program auto update already running, stop"),
     );
     expect(infoLoggerSpy).not.toHaveBeenCalledWith(
-      "***** Games auto update completed"
+      "***** Games auto update completed",
     );
 
     const settingsResult = await findSettings();
@@ -120,14 +120,14 @@ describe("Progam update cronjob", () => {
     await Promise.all([autoUpdateGames(), autoUpdateGames()]);
 
     expect(infoLoggerSpy).toHaveBeenCalledWith(
-      "Auto update not running, continue"
+      "Auto update not running, continue",
     );
     expect(errorLoggerSpy).toHaveBeenCalledWith(
       "%s",
-      new Error("Program auto update already running, stop")
+      new Error("Program auto update already running, stop"),
     );
     expect(infoLoggerSpy).toHaveBeenCalledWith(
-      "***** Games auto update completed"
+      "***** Games auto update completed",
     );
 
     const settingsResult = await findSettings();
@@ -145,7 +145,7 @@ describe("Progam update cronjob", () => {
     await autoUpdateGames();
 
     expect(infoLoggerSpy).toHaveBeenCalledWith(
-      "Cronjobs: Newer server instance running, stop"
+      "Cronjobs: Newer server instance running, stop",
     );
 
     const settings = unsafelyUnwrapResult(await findSettings());
@@ -165,10 +165,10 @@ describe("Assignment cronjob", () => {
     await autoAssignPlayers();
 
     expect(infoLoggerSpy).toHaveBeenCalledWith(
-      "Auto assignment not running, continue"
+      "Auto assignment not running, continue",
     );
     expect(infoLoggerSpy).toHaveBeenCalledWith(
-      "***** Automatic player assignment completed"
+      "***** Automatic player assignment completed",
     );
 
     const settingsResult = await findSettings();
@@ -190,10 +190,10 @@ describe("Assignment cronjob", () => {
 
     expect(errorLoggerSpy).toHaveBeenCalledWith(
       "%s",
-      new Error("Auto assignment already running, stop")
+      new Error("Auto assignment already running, stop"),
     );
     expect(infoLoggerSpy).not.toHaveBeenCalledWith(
-      "***** Automatic player assignment completed"
+      "***** Automatic player assignment completed",
     );
 
     const settingsResult = await findSettings();
@@ -214,14 +214,14 @@ describe("Assignment cronjob", () => {
     await Promise.all([autoAssignPlayers(), autoAssignPlayers()]);
 
     expect(infoLoggerSpy).toHaveBeenCalledWith(
-      "Auto assignment not running, continue"
+      "Auto assignment not running, continue",
     );
     expect(errorLoggerSpy).toHaveBeenCalledWith(
       "%s",
-      new Error("Auto assignment already running, stop")
+      new Error("Auto assignment already running, stop"),
     );
     expect(infoLoggerSpy).toHaveBeenCalledWith(
-      "***** Automatic player assignment completed"
+      "***** Automatic player assignment completed",
     );
 
     const settingsResult = await findSettings();
@@ -239,7 +239,7 @@ describe("Assignment cronjob", () => {
     await autoAssignPlayers();
 
     expect(infoLoggerSpy).toHaveBeenCalledWith(
-      "Cronjobs: Newer server instance running, stop"
+      "Cronjobs: Newer server instance running, stop",
     );
 
     const settings = unsafelyUnwrapResult(await findSettings());

@@ -82,7 +82,7 @@ describe(`POST ${ApiEndpoint.SIGNUP}`, () => {
       .send(signup)
       .set(
         "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`
+        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
       );
     expect(response.status).toEqual(422);
   });
@@ -101,14 +101,14 @@ describe(`POST ${ApiEndpoint.SIGNUP}`, () => {
       .send(signup)
       .set(
         "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`
+        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
       );
     expect(response.status).toEqual(422);
   });
 
   test("should return error when game is not found", async () => {
     vi.setSystemTime(
-      dayjs(testGame.startTime).subtract(1, "hour").toISOString()
+      dayjs(testGame.startTime).subtract(1, "hour").toISOString(),
     );
     await saveUser(mockUser);
 
@@ -124,7 +124,7 @@ describe(`POST ${ApiEndpoint.SIGNUP}`, () => {
       .send(signup)
       .set(
         "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`
+        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
       );
     expect(response.status).toEqual(200);
     expect(response.body.status).toEqual("error");
@@ -134,7 +134,7 @@ describe(`POST ${ApiEndpoint.SIGNUP}`, () => {
   test("should return error when user is not found", async () => {
     vi.setSystemTime(testGame.startTime);
     vi.spyOn(signupTimes, "getDirectSignupStartTime").mockReturnValue(
-      dayjs(testGame.startTime)
+      dayjs(testGame.startTime),
     );
 
     await saveGames([testGame]);
@@ -151,7 +151,7 @@ describe(`POST ${ApiEndpoint.SIGNUP}`, () => {
       .send(signup)
       .set(
         "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, "user_not_found")}`
+        `Bearer ${getJWT(UserGroup.USER, "user_not_found")}`,
       );
     expect(response.status).toEqual(200);
     expect(response.body.status).toEqual("error");
@@ -178,7 +178,7 @@ describe(`POST ${ApiEndpoint.SIGNUP}`, () => {
       .send(signup)
       .set(
         "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`
+        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
       );
 
     expect(response.status).toEqual(200);
@@ -189,7 +189,7 @@ describe(`POST ${ApiEndpoint.SIGNUP}`, () => {
   test("should return success when user and game are found", async () => {
     vi.setSystemTime(testGame.startTime);
     vi.spyOn(signupTimes, "getDirectSignupStartTime").mockReturnValue(
-      dayjs(testGame.startTime)
+      dayjs(testGame.startTime),
     );
 
     // Populate database
@@ -214,7 +214,7 @@ describe(`POST ${ApiEndpoint.SIGNUP}`, () => {
       .send(signup)
       .set(
         "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`
+        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
       );
 
     // Check API response
@@ -233,7 +233,7 @@ describe(`POST ${ApiEndpoint.SIGNUP}`, () => {
   test("should not sign too many players to game", async () => {
     vi.setSystemTime(testGame.startTime);
     vi.spyOn(signupTimes, "getDirectSignupStartTime").mockReturnValue(
-      dayjs(testGame.startTime)
+      dayjs(testGame.startTime),
     );
     const maxAttendance = 2;
 
@@ -258,7 +258,7 @@ describe(`POST ${ApiEndpoint.SIGNUP}`, () => {
         .send(signup)
         .set(
           "Authorization",
-          `Bearer ${getJWT(UserGroup.USER, user.username)}`
+          `Bearer ${getJWT(UserGroup.USER, user.username)}`,
         );
     };
 
@@ -275,7 +275,7 @@ describe(`POST ${ApiEndpoint.SIGNUP}`, () => {
     const signupsResult = await findSignups();
     const signups = unsafelyUnwrapResult(signupsResult);
     const matchingSignup = signups.find(
-      (signup) => signup.game.gameId === testGame.gameId
+      (signup) => signup.game.gameId === testGame.gameId,
     );
     expect(matchingSignup?.userSignups.length).toEqual(maxAttendance);
     expect(matchingSignup?.count).toEqual(maxAttendance);
@@ -284,7 +284,7 @@ describe(`POST ${ApiEndpoint.SIGNUP}`, () => {
   test("should not create new signup collection when program item is full", async () => {
     vi.setSystemTime(testGame.startTime);
     vi.spyOn(signupTimes, "getDirectSignupStartTime").mockReturnValue(
-      dayjs(testGame.startTime)
+      dayjs(testGame.startTime),
     );
     const maxAttendance = 2;
 
@@ -310,7 +310,7 @@ describe(`POST ${ApiEndpoint.SIGNUP}`, () => {
         .send(signup)
         .set(
           "Authorization",
-          `Bearer ${getJWT(UserGroup.USER, user.username)}`
+          `Bearer ${getJWT(UserGroup.USER, user.username)}`,
         );
     };
 
@@ -323,7 +323,7 @@ describe(`POST ${ApiEndpoint.SIGNUP}`, () => {
     expect(signups).toHaveLength(1);
 
     const matchingSignup = signups.find(
-      (signup) => signup.game.gameId === testGame.gameId
+      (signup) => signup.game.gameId === testGame.gameId,
     );
     expect(matchingSignup?.userSignups.length).toEqual(maxAttendance);
     expect(matchingSignup?.count).toEqual(maxAttendance);
@@ -350,7 +350,7 @@ describe(`DELETE ${ApiEndpoint.SIGNUP}`, () => {
 
   test("should return error when game is not found", async () => {
     vi.setSystemTime(
-      dayjs(testGame.startTime).subtract(1, "hour").toISOString()
+      dayjs(testGame.startTime).subtract(1, "hour").toISOString(),
     );
     await saveUser(mockUser);
 
@@ -364,7 +364,7 @@ describe(`DELETE ${ApiEndpoint.SIGNUP}`, () => {
       .send(deleteRequest)
       .set(
         "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`
+        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
       );
     expect(response.status).toEqual(200);
     expect(response.body.status).toEqual("error");
@@ -385,7 +385,7 @@ describe(`DELETE ${ApiEndpoint.SIGNUP}`, () => {
       .send(deleteRequest)
       .set(
         "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, "user_not_found")}`
+        `Bearer ${getJWT(UserGroup.USER, "user_not_found")}`,
       );
     expect(response.status).toEqual(200);
     expect(response.body.status).toEqual("error");
@@ -395,7 +395,7 @@ describe(`DELETE ${ApiEndpoint.SIGNUP}`, () => {
   test("should return success when user and game are found", async () => {
     vi.setSystemTime(testGame.startTime);
     vi.spyOn(signupTimes, "getDirectSignupStartTime").mockReturnValue(
-      dayjs(testGame.startTime)
+      dayjs(testGame.startTime),
     );
 
     // Populate database
@@ -421,7 +421,7 @@ describe(`DELETE ${ApiEndpoint.SIGNUP}`, () => {
       .send(deleteRequest)
       .set(
         "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`
+        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
       );
 
     // Check API response

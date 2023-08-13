@@ -37,7 +37,7 @@ export const MyGamesView = (): ReactElement => {
 
   const [showAllGames, setShowAllGames] = useState<boolean>(
     sessionStorage.getItem(SessionStorageValue.MY_GAMES_SHOW_ALL_GAMES) ===
-      "true" || false
+      "true" || false,
   );
   const store = useStore();
 
@@ -46,7 +46,7 @@ export const MyGamesView = (): ReactElement => {
   useEffect(() => {
     setShowAllGames(
       sessionStorage.getItem(SessionStorageValue.MY_GAMES_SHOW_ALL_GAMES) ===
-        "true" || false
+        "true" || false,
     );
   }, []);
 
@@ -74,7 +74,7 @@ export const MyGamesView = (): ReactElement => {
               setShowAllGames(false);
               sessionStorage.setItem(
                 SessionStorageValue.MY_GAMES_SHOW_ALL_GAMES,
-                "false"
+                "false",
               );
             }}
           />
@@ -86,7 +86,7 @@ export const MyGamesView = (): ReactElement => {
               setShowAllGames(true);
               sessionStorage.setItem(
                 SessionStorageValue.MY_GAMES_SHOW_ALL_GAMES,
-                "true"
+                "true",
               );
             }}
           />

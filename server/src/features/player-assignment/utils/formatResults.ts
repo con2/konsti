@@ -12,7 +12,7 @@ import {
 
 export const formatResults = (
   assignResults: PadgRandomAssignResults,
-  playerGroups: readonly User[][]
+  playerGroups: readonly User[][],
 ): Result<readonly AssignmentResult[], AssignmentError> => {
   const selectedPlayers = playerGroups
     .filter((playerGroup) => {
@@ -21,7 +21,7 @@ export const formatResults = (
       if (!firstMember) {
         logger.error(
           "%s",
-          new Error("Padg assign: error getting first member")
+          new Error("Padg assign: error getting first member"),
         );
         return makeErrorResult(AssignmentError.UNKNOWN_ERROR);
       }
@@ -30,7 +30,7 @@ export const formatResults = (
         (assignResult) =>
           (assignResult.id === firstMember.groupCode ||
             assignResult.id === firstMember.serial) &&
-          assignResult.assignment !== -1
+          assignResult.assignment !== -1,
       );
     })
     .flat();
@@ -41,7 +41,7 @@ export const formatResults = (
         (assignResult) =>
           (assignResult.id === player.groupCode ||
             assignResult.id === player.serial) &&
-          assignResult.assignment === signedGame.gameDetails.gameId
+          assignResult.assignment === signedGame.gameDetails.gameId,
       );
     });
   };

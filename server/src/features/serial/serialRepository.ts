@@ -12,7 +12,7 @@ import {
 import { MongoDbError } from "shared/typings/api/errors";
 
 export const saveSerials = async (
-  count: number
+  count: number,
 ): Promise<Result<SerialDoc[], MongoDbError>> => {
   const serialDocs = [] as SerialDoc[];
   // create serials
@@ -34,7 +34,7 @@ export const saveSerials = async (
     serialDocs.push(
       new SerialModel({
         serial,
-      })
+      }),
     );
     logger.info(`${serial}`);
   }
@@ -42,7 +42,7 @@ export const saveSerials = async (
   try {
     const response = await SerialModel.create(serialDocs);
     logger.info(
-      `MongoDB: Serials data saved. (${serialDocs.length} serials saved)`
+      `MongoDB: Serials data saved. (${serialDocs.length} serials saved)`,
     );
     return makeSuccessResult(response);
   } catch (error) {
@@ -52,7 +52,7 @@ export const saveSerials = async (
 };
 
 export const findSerial = async (
-  serial: string
+  serial: string,
 ): Promise<Result<boolean, MongoDbError>> => {
   let response;
   try {

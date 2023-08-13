@@ -35,7 +35,7 @@ const loginSlice = createSlice({
 
     submitUpdateEventLogItemsAsync(
       state,
-      action: PayloadAction<EventLogItem[]>
+      action: PayloadAction<EventLogItem[]>,
     ) {
       return {
         ...state,

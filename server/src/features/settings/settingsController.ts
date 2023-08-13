@@ -20,13 +20,13 @@ import {
 
 export const postHidden = async (
   req: Request<{}, {}, PostHiddenRequest>,
-  res: Response
+  res: Response,
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.HIDDEN}`);
 
   const username = getAuthorizedUsername(
     req.headers.authorization,
-    UserGroup.ADMIN
+    UserGroup.ADMIN,
   );
   if (!username) {
     return res.sendStatus(401);
@@ -39,7 +39,7 @@ export const postHidden = async (
 
 export const getSettings = async (
   _req: Request<{}, {}, {}>,
-  res: Response
+  res: Response,
 ): Promise<Response> => {
   logger.info(`API call: GET ${ApiEndpoint.SETTINGS}`);
 
@@ -49,13 +49,13 @@ export const getSettings = async (
 
 export const postSignupQuestion = async (
   req: Request<{}, {}, PostSignupQuestionRequest>,
-  res: Response
+  res: Response,
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.SIGNUP_QUESTION}`);
 
   const username = getAuthorizedUsername(
     req.headers.authorization,
-    UserGroup.ADMIN
+    UserGroup.ADMIN,
   );
   if (!username) {
     return res.sendStatus(401);
@@ -67,13 +67,13 @@ export const postSignupQuestion = async (
 
 export const deleteSignupQuestion = async (
   req: Request<{}, {}, DeleteSignupQuestionRequest>,
-  res: Response
+  res: Response,
 ): Promise<Response> => {
   logger.info(`API call: DELETE ${ApiEndpoint.SIGNUP_QUESTION}`);
 
   const username = getAuthorizedUsername(
     req.headers.authorization,
-    UserGroup.ADMIN
+    UserGroup.ADMIN,
   );
   if (!username) {
     return res.sendStatus(401);
@@ -85,13 +85,13 @@ export const deleteSignupQuestion = async (
 
 export const postSettings = async (
   req: Request<{}, {}, PostSettingsRequest>,
-  res: Response
+  res: Response,
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.SETTINGS}`);
 
   const username = getAuthorizedUsername(
     req.headers.authorization,
-    UserGroup.ADMIN
+    UserGroup.ADMIN,
   );
   if (!username) {
     return res.sendStatus(401);
@@ -101,7 +101,7 @@ export const postSettings = async (
   if (!result.success) {
     logger.error(
       "%s",
-      new Error(`Error validating postSettings body: ${result.error}`)
+      new Error(`Error validating postSettings body: ${result.error}`),
     );
     return res.sendStatus(422);
   }

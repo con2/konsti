@@ -129,7 +129,7 @@ export const KompassiGameSchema = z.object({
       return [];
     }
     const [valid, invalid] = _.partition(ctx.input, (tag) =>
-      Object.values(KompassiTag).includes(tag)
+      Object.values(KompassiTag).includes(tag),
     );
     logger.error("%s", new Error(`Invalid tags: ${JSON.stringify(invalid)}`));
     return valid;
@@ -140,7 +140,7 @@ export const KompassiGameSchema = z.object({
       return [];
     }
     const [valid, invalid] = _.partition(ctx.input, (genre) =>
-      Object.values(KompassiGenre).includes(genre)
+      Object.values(KompassiGenre).includes(genre),
     );
     logger.error("%s", new Error(`Invalid genres: ${JSON.stringify(invalid)}`));
     return valid;
@@ -151,7 +151,7 @@ export const KompassiGameSchema = z.object({
       return [];
     }
     const [valid, invalid] = _.partition(ctx.input, (style) =>
-      Object.values(KompassiGameStyle).includes(style)
+      Object.values(KompassiGameStyle).includes(style),
     );
     logger.error("%s", new Error(`Invalid styles: ${JSON.stringify(invalid)}`));
     return valid;

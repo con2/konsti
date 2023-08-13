@@ -4,7 +4,7 @@ import { config } from "server/config";
 
 const connectToDb = async (
   dbConnString: string = config.dbConnString,
-  dbName: string = config.dbName
+  dbName: string = config.dbName,
 ): Promise<void> => {
   logger.info(`MongoDB: Connecting`);
 

@@ -10,12 +10,12 @@ import { Game } from "shared/typings/models/game";
 import { SignupDoc } from "server/features/signup/signup.typings";
 import { SettingsDoc } from "server/typings/settings.typings";
 
-export const gameIdFix = (year: number, event: string): void => {
+export const gameIdFix = async (year: number, event: string): Promise<void> => {
   const users: User[] = JSON.parse(
     fs.readFileSync(
       `${config.statsDataDir}/${event}/${year}/users.json`,
-      "utf8"
-    )
+      "utf8",
+    ),
   );
 
   logger.info(`Loaded ${users.length} users`);
@@ -23,8 +23,8 @@ export const gameIdFix = (year: number, event: string): void => {
   const results: ResultsCollectionEntry[] = JSON.parse(
     fs.readFileSync(
       `${config.statsDataDir}/${event}/${year}/results.json`,
-      "utf8"
-    )
+      "utf8",
+    ),
   );
 
   logger.info(`Loaded ${results.length} results`);
@@ -32,8 +32,8 @@ export const gameIdFix = (year: number, event: string): void => {
   const games: GameDoc[] = JSON.parse(
     fs.readFileSync(
       `${config.statsDataDir}/${event}/${year}/games.json`,
-      "utf8"
-    )
+      "utf8",
+    ),
   );
 
   logger.info(`Loaded ${games.length} games`);
@@ -41,8 +41,8 @@ export const gameIdFix = (year: number, event: string): void => {
   const signups: SignupDoc[] = JSON.parse(
     fs.readFileSync(
       `${config.statsDataDir}/${event}/${year}/signups.json`,
-      "utf8"
-    )
+      "utf8",
+    ),
   );
 
   logger.info(`Loaded ${games.length} games`);
@@ -50,8 +50,8 @@ export const gameIdFix = (year: number, event: string): void => {
   const settings: SettingsDoc[] = JSON.parse(
     fs.readFileSync(
       `${config.statsDataDir}/${event}/${year}/settings.json`,
-      "utf8"
-    )
+      "utf8",
+    ),
   );
 
   logger.info(`Loaded ${settings.length} games`);
@@ -61,7 +61,7 @@ export const gameIdFix = (year: number, event: string): void => {
       const matchingGame = games.find((game) => game._id === favoritedGame);
       if (!matchingGame) {
         logger.error(
-          `Program item for id ${JSON.stringify(favoritedGame)} not found`
+          `Program item for id ${JSON.stringify(favoritedGame)} not found`,
         );
         return [];
       }
@@ -70,11 +70,11 @@ export const gameIdFix = (year: number, event: string): void => {
 
     const tempSignedGames = user.signedGames.flatMap((signedGame) => {
       const matchingGame = games.find(
-        (game) => game._id === signedGame.gameDetails
+        (game) => game._id === signedGame.gameDetails,
       );
       if (!matchingGame) {
         logger.error(
-          `Program item for id ${JSON.stringify(signedGame)} not found`
+          `Program item for id ${JSON.stringify(signedGame)} not found`,
         );
         return [];
       }
@@ -128,8 +128,8 @@ export const gameIdFix = (year: number, event: string): void => {
 
   settings[0].hiddenGames = tempHiddenGames;
 
-  writeJson(year, event, "users", users);
-  writeJson(year, event, "results", results);
-  writeJson(year, event, "signups", signups);
-  writeJson(year, event, "settings", settings);
+  await writeJson(year, event, "users", users);
+  await writeJson(year, event, "results", results);
+  await writeJson(year, event, "signups", signups);
+  await writeJson(year, event, "settings", settings);
 };

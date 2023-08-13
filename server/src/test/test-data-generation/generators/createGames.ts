@@ -56,7 +56,7 @@ const getMaxPlayers = (programType: KompassiProgramType): number => {
 };
 
 const getProgramType = (
-  programType: KompassiProgramType
+  programType: KompassiProgramType,
 ): KompassiProgramType => {
   if (programType === KompassiProgramType.TOURNAMENT_BOARD_GAME) {
     return _.sample(tournamentProgramTypes)!; // eslint-disable-line @typescript-eslint/no-non-null-assertion
@@ -70,7 +70,7 @@ const getProgramType = (
 };
 
 export const createGames = async (
-  gameCount: number
+  gameCount: number,
 ): Promise<Result<void, MongoDbError>> => {
   const kompassiGames: KompassiGame[] = [];
 
@@ -83,7 +83,7 @@ export const createGames = async (
 
   programTypes.map((programType) => {
     logger.info(
-      `Generate data for ${gameCount} programs of type ${programType} for ${startTimes.length} start times`
+      `Generate data for ${gameCount} programs of type ${programType} for ${startTimes.length} start times`,
     );
 
     startTimes.forEach((startTime) => {

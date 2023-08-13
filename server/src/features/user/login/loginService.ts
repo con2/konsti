@@ -8,7 +8,7 @@ import { isErrorResult, unwrapResult } from "shared/utils/result";
 
 export const login = async (
   username: string,
-  password: string
+  password: string,
 ): Promise<PostLoginResponse | PostLoginError> => {
   const userResult = await findUser(username);
   if (isErrorResult(userResult)) {

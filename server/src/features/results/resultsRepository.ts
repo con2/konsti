@@ -24,12 +24,12 @@ export const removeResults = async (): Promise<Result<void, MongoDbError>> => {
 };
 
 export const findResult = async (
-  startTime: string
+  startTime: string,
 ): Promise<Result<ResultsCollectionEntry | null, MongoDbError>> => {
   try {
     const response = await ResultsModel.findOne(
       { startTime },
-      "-_id -__v -createdAt -updatedAt -result._id"
+      "-_id -__v -createdAt -updatedAt -result._id",
     )
       .lean<ResultsCollectionEntry>()
       .sort({ createdAt: -1 })
@@ -39,7 +39,7 @@ export const findResult = async (
   } catch (error) {
     logger.error(
       `MongoDB: Error finding results data for time ${startTime}: %s`,
-      error
+      error,
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
@@ -49,7 +49,7 @@ export const saveResult = async (
   signupResultData: readonly AssignmentResult[],
   startTime: string,
   algorithm: string,
-  message: string
+  message: string,
 ): Promise<Result<void, MongoDbError>> => {
   const gamesResult = await findGames();
 
@@ -60,7 +60,7 @@ export const saveResult = async (
   const games = unwrapResult(gamesResult);
   const results = signupResultData.reduce<AssignmentResult[]>((acc, result) => {
     const gameDocInDb = games.find(
-      (game) => game.gameId === result.enteredGame.gameDetails.gameId
+      (game) => game.gameId === result.enteredGame.gameDetails.gameId,
     );
 
     if (gameDocInDb) {
@@ -81,16 +81,16 @@ export const saveResult = async (
     await ResultsModel.replaceOne(
       { startTime },
       { startTime, results, algorithm, message },
-      { upsert: true }
+      { upsert: true },
     );
     logger.debug(
-      `MongoDB: Signup results for start time ${startTime} stored to separate collection`
+      `MongoDB: Signup results for start time ${startTime} stored to separate collection`,
     );
     return makeSuccessResult(undefined);
   } catch (error) {
     logger.error(
       `MongoDB: Error storing signup results for start time ${startTime} to separate collection: %s`,
-      error
+      error,
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }

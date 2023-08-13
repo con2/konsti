@@ -12,17 +12,17 @@ import { MongoDbError } from "shared/typings/api/errors";
 
 export const updateWithSignups = async (
   users: User[],
-  games: Game[]
+  games: Game[],
 ): Promise<Result<void, MongoDbError>> => {
   const groupCreators = users.filter(
-    (user) => user.groupCode !== "0" && user.groupCode === user.serial
+    (user) => user.groupCode !== "0" && user.groupCode === user.serial,
   );
 
   const allUsers = users.map((user) => {
     const foundgroupCreator = groupCreators.find(
       (groupCreator) =>
         user.groupCode === groupCreator.groupCode &&
-        user.serial !== groupCreator.serial
+        user.serial !== groupCreator.serial,
     );
 
     if (foundgroupCreator) {
@@ -32,7 +32,7 @@ export const updateWithSignups = async (
   });
 
   const signedGames = allUsers.flatMap((user) =>
-    user.signedGames.map((signedGame) => signedGame.gameDetails)
+    user.signedGames.map((signedGame) => signedGame.gameDetails),
   );
 
   const groupedSignups = _.countBy(signedGames, "gameId");
@@ -45,7 +45,7 @@ export const updateWithSignups = async (
     .filter((popularityUpdate) => popularityUpdate.popularity);
 
   const saveGamePopularityResult = await saveGamePopularity(
-    gamePopularityUpdates
+    gamePopularityUpdates,
   );
 
   if (isErrorResult(saveGamePopularityResult)) {

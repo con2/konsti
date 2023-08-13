@@ -21,8 +21,8 @@ export const unwrapResult: UnwrapResult = <T, Err>({
     // eslint-disable-next-line no-restricted-syntax -- This is some kind of runtime error we want to catch
     throw new Error(
       `Received both value and error at runtime when opening an Result\nValue: ${JSON.stringify(
-        value
-      )}\nError: ${JSON.stringify(error)}`
+        value,
+      )}\nError: ${JSON.stringify(error)}`,
     );
   }
   if (value !== undefined) {
@@ -36,13 +36,13 @@ export const unwrapResult: UnwrapResult = <T, Err>({
 };
 
 export const isSuccessResult = <T, Err>(
-  result: Result<T, Err>
+  result: Result<T, Err>,
 ): result is SuccessResult<T> => {
   return result.value !== undefined;
 };
 
 export const isErrorResult = <T, Err>(
-  result: Result<T, Err>
+  result: Result<T, Err>,
 ): result is ErrorResult<Err> => {
   return result.error !== undefined;
 };

@@ -34,7 +34,7 @@ const { directSignupAlwaysOpenIds } = sharedConfig;
 
 export const createGroup = async (
   username: string,
-  groupCode: string
+  groupCode: string,
 ): Promise<PostCreateGroupResponse | PostCreateGroupError> => {
   const signupsResult = await findUserSignups(username);
   if (isErrorResult(signupsResult)) {
@@ -64,7 +64,7 @@ export const createGroup = async (
 
   const userSignups = filteredSignups.flatMap((signup) => signup.userSignups);
   const userHasSignups = userSignups.some((userSignup) =>
-    timeNow.isBefore(dayjs(userSignup.time))
+    timeNow.isBefore(dayjs(userSignup.time)),
   );
 
   // User cannot have RPG signups in future when creating a group
@@ -127,7 +127,7 @@ export const createGroup = async (
 export const joinGroup = async (
   username: string,
   groupCode: string,
-  ownSerial: string
+  ownSerial: string,
 ): Promise<PostJoinGroupResponse | PostJoinGroupError> => {
   // Cannot join own group
   if (ownSerial === groupCode) {
@@ -166,7 +166,7 @@ export const joinGroup = async (
 
   const userSignups = filteredSignups.flatMap((signup) => signup.userSignups);
   const userHasSignups = userSignups.some((userSignup) =>
-    timeNow.isBefore(dayjs(userSignup.time))
+    timeNow.isBefore(dayjs(userSignup.time)),
   );
 
   // User cannot have RPG signups in future when joining in group
@@ -265,7 +265,7 @@ export const joinGroup = async (
 };
 
 export const leaveGroup = async (
-  username: string
+  username: string,
 ): Promise<PostLeaveGroupResponse | PostLeaveGroupError> => {
   const saveGroupResponseResult = await saveGroupCode("0", username);
   if (isErrorResult(saveGroupResponseResult)) {
@@ -295,7 +295,7 @@ export const leaveGroup = async (
 
 export const closeGroup = async (
   groupCode: string,
-  username: string
+  username: string,
 ): Promise<PostCloseGroupResponse | PostCloseGroupError> => {
   const groupMembersResult = await findGroupMembers(groupCode);
   if (isErrorResult(groupMembersResult)) {
@@ -310,7 +310,7 @@ export const closeGroup = async (
 
   // Check if group creator, only creator can close group
   const groupCreator = groupMembers.find(
-    (groupMember) => groupMember.username === username
+    (groupMember) => groupMember.username === username,
   );
 
   if (groupCreator?.serial !== groupCode) {
@@ -348,7 +348,7 @@ export const closeGroup = async (
 };
 
 export const fetchGroup = async (
-  groupCode: string
+  groupCode: string,
 ): Promise<GetGroupResponse | GetGroupError> => {
   const findGroupResultsResult = await findGroupMembers(groupCode);
   if (isErrorResult(findGroupResultsResult)) {

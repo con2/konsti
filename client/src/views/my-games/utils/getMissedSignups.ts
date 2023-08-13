@@ -6,12 +6,12 @@ import { SelectedGame } from "shared/typings/models/user";
 
 export const getMissedSignups = (
   signedGames: readonly SelectedGame[],
-  enteredGames: readonly SelectedGame[]
+  enteredGames: readonly SelectedGame[],
 ): string[] => {
   const timeNow = getTimeNow();
 
   const signedGamesStartTimes = getStartTimes(
-    signedGames.map((signedGame) => signedGame.gameDetails)
+    signedGames.map((signedGame) => signedGame.gameDetails),
   );
 
   // Get signup times for past signed games
@@ -19,13 +19,13 @@ export const getMissedSignups = (
     (signedGamesStartTime) => {
       const signupEndTime = dayjs(signedGamesStartTime).subtract(
         sharedConfig.DIRECT_SIGNUP_START,
-        "minutes"
+        "minutes",
       );
 
       if (signupEndTime.isBefore(dayjs(timeNow))) {
         return signedGamesStartTime;
       }
-    }
+    },
   );
 
   // Check if there are past signed games without entered game => missed signup

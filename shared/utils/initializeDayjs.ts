@@ -59,7 +59,7 @@ const processRelativeTime = (
   number: number,
   _withoutSuffix: boolean,
   key: string,
-  isFuture: boolean
+  isFuture: boolean,
 ): string => {
   const format: Record<string, [string, string]> = {
     s: ["muutama sekunti", "muutaman sekunnin"],

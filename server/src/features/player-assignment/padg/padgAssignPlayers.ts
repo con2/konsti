@@ -23,7 +23,7 @@ export const padgAssignPlayers = (
   players: readonly User[],
   games: readonly Game[],
   startTime: string,
-  signups: readonly Signup[]
+  signups: readonly Signup[],
 ): Result<PlayerAssignmentResult, AssignmentError> => {
   logger.debug(`***** Run Padg Assignment for ${startTime}`);
   const startingGames = getStartingGames(games, startTime);
@@ -57,14 +57,14 @@ export const padgAssignPlayers = (
 
   logger.debug(`Games with signups: ${signedGames.length}`);
   logger.debug(
-    `Selected players: ${allPlayers.length} (${numberOfIndividuals} individual, ${numberOfGroups} groups)`
+    `Selected players: ${allPlayers.length} (${numberOfIndividuals} individual, ${numberOfGroups} groups)`,
   );
 
   const assignmentResultResult = runPadgAssignment(
     signedGames,
     playerGroups,
     startTime,
-    signups
+    signups,
   );
   if (isErrorResult(assignmentResultResult)) {
     return assignmentResultResult;
@@ -74,14 +74,14 @@ export const padgAssignPlayers = (
 
   const selectedUniqueGames = _.uniq(
     assignmentResult.results.map(
-      (result) => result.enteredGame.gameDetails.gameId
-    )
+      (result) => result.enteredGame.gameDetails.gameId,
+    ),
   );
 
   const message = `Padg Assign Result - Players: ${
     assignmentResult.results.length
   }/${allPlayers.length} (${Math.round(
-    (assignmentResult.results.length / allPlayers.length) * 100
+    (assignmentResult.results.length / allPlayers.length) * 100,
   )}%), Games: ${selectedUniqueGames.length}/${
     signedGames.length
   } (${Math.round((selectedUniqueGames.length / signedGames.length) * 100)}%)`;
@@ -94,6 +94,6 @@ export const padgAssignPlayers = (
       message,
       algorithm: AssignmentStrategy.PADG,
       status: AssignmentResultStatus.SUCCESS,
-    })
+    }),
   );
 };

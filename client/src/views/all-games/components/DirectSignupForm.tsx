@@ -40,7 +40,7 @@ export const DirectSignupForm = ({
   const username = useAppSelector((state) => state.login.username);
   const activeEnteredGames = useAppSelector(selectActiveEnteredGames);
   const signupQuestions = useAppSelector(
-    (state) => state.admin.signupQuestions
+    (state) => state.admin.signupQuestions,
   );
 
   const [loading, setLoading] = useState(false);
@@ -50,7 +50,7 @@ export const DirectSignupForm = ({
     useState<DeleteEnteredGameErrorMessage | null>(null);
 
   const enteredGamesForTimeslot = activeEnteredGames.filter(
-    (g) => g.gameDetails.startTime === startTime
+    (g) => g.gameDetails.startTime === startTime,
   );
 
   const alreadyEnteredToGame = isAlreadyEntered(game, activeEnteredGames);
@@ -62,7 +62,7 @@ export const DirectSignupForm = ({
         username,
         startTime: game.startTime,
         enteredGameId: game.gameId,
-      })
+      }),
     );
 
     if (errorMessage) {
@@ -107,7 +107,7 @@ export const DirectSignupForm = ({
           {_.capitalize(
             t("signup.programItemFull", {
               PROGRAM_TYPE: t(`programTypeSingular.${game.programType}`),
-            })
+            }),
           )}
         </GameIsFull>
       )}
@@ -125,7 +125,7 @@ export const DirectSignupForm = ({
               .{" "}
               {t("signup.cannotSignupMoreThanOneGame", {
                 PROGRAM_TYPE: t(
-                  `programTypeIllativePlural.${game.programType}`
+                  `programTypeIllativePlural.${game.programType}`,
                 ),
               })}
             </SignedGameContainer>
@@ -158,7 +158,7 @@ export const DirectSignupForm = ({
                 <EnterGameForm
                   game={game}
                   signupQuestion={signupQuestions.find(
-                    ({ gameId }) => gameId === game.gameId
+                    ({ gameId }) => gameId === game.gameId,
                   )}
                   onEnterGame={() => setSignupFormOpen(false)}
                   onCancelSignup={() => setSignupFormOpen(false)}

@@ -17,34 +17,34 @@ export const PrivateSignupMessages = (): ReactElement => {
 
   const games = useAppSelector((state) => state.allGames.games);
   const signupQuestions = useAppSelector(
-    (state) => state.admin.signupQuestions
+    (state) => state.admin.signupQuestions,
   );
   const signupMessages = useAppSelector((state) => state.admin.signupMessages);
   const activeProgramType = useAppSelector(
-    (state) => state.admin.activeProgramType
+    (state) => state.admin.activeProgramType,
   );
 
   const privateSignupQuestions = signupQuestions.filter(
-    (signupQuestion) => signupQuestion.private
+    (signupQuestion) => signupQuestion.private,
   );
 
   const signupQuestionsWithGames = privateSignupQuestions.flatMap(
     (privateSignupQuestion) => {
       const matchingGame = filteredGames.find(
-        (game) => game.gameId === privateSignupQuestion.gameId
+        (game) => game.gameId === privateSignupQuestion.gameId,
       );
       if (!matchingGame) return [];
       return { ...privateSignupQuestion, game: matchingGame };
-    }
+    },
   );
 
   const groupedSignupQuestions = _.groupBy(
     _.sortBy(signupQuestionsWithGames, "game.startTime"),
-    "game.startTime"
+    "game.startTime",
   );
 
   const privateSignupMessages = signupMessages.filter(
-    (signupMessage) => signupMessage.private
+    (signupMessage) => signupMessage.private,
   );
 
   const groupedSignupMessages = _.groupBy(privateSignupMessages, "gameId");
@@ -66,7 +66,7 @@ export const PrivateSignupMessages = (): ReactElement => {
             signupMessage.username
               .toLocaleLowerCase()
               .includes(searchTerm.toLocaleLowerCase()) &&
-            signupMessage.gameId === game.gameId
+            signupMessage.gameId === game.gameId,
         )
       );
     });
@@ -108,7 +108,7 @@ export const PrivateSignupMessages = (): ReactElement => {
                     </Link>{" "}
                     (
                     {t(
-                      `programType.${signupQuestionWithGame.game.programType}`
+                      `programType.${signupQuestionWithGame.game.programType}`,
                     )}
                     )
                     <Answers>
@@ -135,7 +135,7 @@ export const PrivateSignupMessages = (): ReactElement => {
               })}
             </div>
           );
-        }
+        },
       )}
     </div>
   );

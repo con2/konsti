@@ -11,13 +11,13 @@ import { storeFavorite } from "server/features/user/favorite-game/favoriteGameSe
 
 export const postFavorite = async (
   req: Request<{}, {}, PostFavoriteRequest>,
-  res: Response
+  res: Response,
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.FAVORITE}`);
 
   const username = getAuthorizedUsername(
     req.headers.authorization,
-    UserGroup.USER
+    UserGroup.USER,
   );
   if (!username) {
     return res.sendStatus(401);
@@ -27,7 +27,7 @@ export const postFavorite = async (
   if (!result.success) {
     logger.error(
       "%s",
-      new Error(`Error validating postFavorite body: ${result.error}`)
+      new Error(`Error validating postFavorite body: ${result.error}`),
     );
     return res.sendStatus(422);
   }

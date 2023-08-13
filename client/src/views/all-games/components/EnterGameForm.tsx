@@ -55,7 +55,7 @@ export const EnterGameForm = ({
   const [selectedValue, setSelectedValue] = useState<string>(
     (i18n.language === "fi"
       ? signupQuestion?.selectOptions[0]?.optionFi ?? ""
-      : signupQuestion?.selectOptions[0]?.optionEn ?? "") ?? ""
+      : signupQuestion?.selectOptions[0]?.optionEn ?? "") ?? "",
   );
   const [agreeEntryFee, setAgreeEntryFee] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<
@@ -103,7 +103,7 @@ export const EnterGameForm = ({
         };
 
         const closeGroupError = await dispatch(
-          submitCloseGroup(closeGroupRequest)
+          submitCloseGroup(closeGroupRequest),
         );
 
         if (closeGroupError) {
@@ -183,7 +183,7 @@ export const EnterGameForm = ({
                     : {
                         value: option.optionEn,
                         title: option.optionEn,
-                      }
+                      },
                 )}
                 selectedValue={selectedValue}
               />

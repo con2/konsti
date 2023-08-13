@@ -31,7 +31,7 @@ export const FeedbackForm = ({ game }: Props): ReactElement => {
   };
 
   const handleFeedbackChange = (
-    event: ChangeEvent<HTMLTextAreaElement>
+    event: ChangeEvent<HTMLTextAreaElement>,
   ): void => {
     setFeedbackValue(event.target.value);
   };

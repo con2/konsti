@@ -3,7 +3,7 @@ import { Game } from "shared/typings/models/game";
 import { GameWithPlayerCount } from "server/typings/game.typings";
 
 export const getRemovedGame = (
-  gamesWithTooFewPlayers: readonly GameWithPlayerCount[]
+  gamesWithTooFewPlayers: readonly GameWithPlayerCount[],
 ): Game => {
   // Get games with least players
   const sortedGamesWithTooFewPlayers = _.sortBy(gamesWithTooFewPlayers, [

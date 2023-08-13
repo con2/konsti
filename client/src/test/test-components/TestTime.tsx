@@ -15,7 +15,7 @@ export const TestTime = (): ReactElement => {
   const dispatch = useAppDispatch();
 
   const testTime: string = useAppSelector(
-    (state) => state.testSettings.testTime
+    (state) => state.testSettings.testTime,
   );
 
   const [dropdownVisible, setDropdownVisible] = useState(false);

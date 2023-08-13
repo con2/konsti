@@ -41,7 +41,7 @@ export const submitGetUser = (username: string): AppThunk => {
           enteredGames,
           favoritedGames,
           signedGames,
-        })
+        }),
       );
 
       dispatch(submitUpdateEventLogItemsAsync(eventLogItems));
@@ -59,7 +59,7 @@ export const submitUpdateFavorites = (favoriteData: NewFavorite): AppThunk => {
 
     if (updateFavoriteResponse?.status === "success") {
       dispatch(
-        submitUpdateFavoritesAsync(updateFavoriteResponse.favoritedGames)
+        submitUpdateFavoritesAsync(updateFavoriteResponse.favoritedGames),
       );
     }
   };
@@ -74,7 +74,7 @@ export enum PostEnteredGameErrorMessage {
 }
 
 export const submitPostEnteredGame = (
-  data: PostEnteredGameRequest
+  data: PostEnteredGameRequest,
 ): AppThunk<Promise<PostEnteredGameErrorMessage | undefined>> => {
   return async (dispatch): Promise<PostEnteredGameErrorMessage | undefined> => {
     const signupResponse = await postEnteredGame(data);
@@ -108,10 +108,10 @@ export enum DeleteEnteredGameErrorMessage {
 }
 
 export const submitDeleteEnteredGame = (
-  data: DeleteEnteredGameRequest
+  data: DeleteEnteredGameRequest,
 ): AppThunk<Promise<DeleteEnteredGameErrorMessage | undefined>> => {
   return async (
-    dispatch
+    dispatch,
   ): Promise<DeleteEnteredGameErrorMessage | undefined> => {
     const signupResponse = await deleteEnteredGame(data);
 
@@ -138,7 +138,7 @@ export enum PostSignedGamesErrorMessage {
 }
 
 export const submitPostSignedGames = (
-  signupData: PostSignedGamesRequest
+  signupData: PostSignedGamesRequest,
 ): AppThunk<Promise<PostSignedGamesErrorMessage | undefined>> => {
   return async (dispatch): Promise<PostSignedGamesErrorMessage | undefined> => {
     const signupResponse = await postSignedGames(signupData);

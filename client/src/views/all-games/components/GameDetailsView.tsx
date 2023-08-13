@@ -22,7 +22,7 @@ export const GameDetailsView = ({
       game.shortDescription.length > 0
         ? game.shortDescription
         : getShortDescriptionFromDescription(game.description),
-    [game]
+    [game],
   );
 
   const [isExpanded, setIsExpanded] = useState<boolean>(isAlwaysExpanded);
@@ -33,7 +33,7 @@ export const GameDetailsView = ({
 
   const id = `more-info-${game.gameId}`;
   const buttonAriaLabel = `${t(
-    isExpanded ? "gameInfo.showLessAriaLabel" : "gameInfo.showMoreAriaLabel"
+    isExpanded ? "gameInfo.showLessAriaLabel" : "gameInfo.showMoreAriaLabel",
   )} ${game.title}`;
 
   return (

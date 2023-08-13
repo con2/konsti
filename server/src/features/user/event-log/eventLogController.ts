@@ -11,13 +11,13 @@ import { UserGroup } from "shared/typings/models/user";
 
 export const postEventLogItem = async (
   req: Request<{}, {}, PostEventLogIsSeenRequest>,
-  res: Response
+  res: Response,
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.EVENT_LOG}`);
 
   const username = getAuthorizedUsername(
     req.headers.authorization,
-    UserGroup.USER
+    UserGroup.USER,
   );
   if (!username) {
     return res.sendStatus(401);
@@ -27,7 +27,7 @@ export const postEventLogItem = async (
   if (!result.success) {
     logger.error(
       "%s",
-      new Error(`Error validating postEventLogItem body: ${result.error}`)
+      new Error(`Error validating postEventLogItem body: ${result.error}`),
     );
     return res.sendStatus(422);
   }

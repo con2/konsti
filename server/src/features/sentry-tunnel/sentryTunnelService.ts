@@ -7,7 +7,7 @@ const sentryHost = "sentry.io";
 const knownProjectIds = ["/6579203", "/6578391", "/6579491"];
 
 export const resendSentryRequest = async (
-  envelope: string
+  envelope: string,
 ): Promise<null | ApiError> => {
   try {
     const pieces = envelope.split("\n");

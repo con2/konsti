@@ -17,7 +17,7 @@ const ResultsSchema = new mongoose.Schema(
     algorithm: String,
     message: String,
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 export const ResultsModel = mongoose.model<ResultDoc>("Results", ResultsSchema);

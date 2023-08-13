@@ -55,14 +55,14 @@ export const AlgorithmSignupForm = ({
   const removeSignedGame = async (gameToRemove: Game): Promise<void> => {
     setLoading(true);
     const newSignupData = signedGames.filter(
-      (g: SelectedGame) => g.gameDetails.gameId !== gameToRemove.gameId
+      (g: SelectedGame) => g.gameDetails.gameId !== gameToRemove.gameId,
     );
 
     const error = await dispatch(
       submitPostSignedGames({
         selectedGames: newSignupData,
         startTime: gameToRemove.startTime,
-      })
+      }),
     );
 
     if (error) {
@@ -75,11 +75,11 @@ export const AlgorithmSignupForm = ({
   };
 
   const currentPriority = signedGames.find(
-    (g) => g.gameDetails.gameId === game.gameId
+    (g) => g.gameDetails.gameId === game.gameId,
   )?.priority;
 
   const signedGamesForTimeslot = signedGames.filter(
-    (g) => g.gameDetails.startTime === startTime
+    (g) => g.gameDetails.startTime === startTime,
   );
 
   const alreadySignedToGame = isAlreadySigned(game, signedGames);

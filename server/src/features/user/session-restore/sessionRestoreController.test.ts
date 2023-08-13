@@ -72,7 +72,7 @@ describe(`POST ${ApiEndpoint.SESSION_RESTORE}`, () => {
 
     expect(sessionRestoreResponse.status).toEqual(200);
     expect(sessionRestoreResponse.body.message).toEqual(
-      "Session restore success"
+      "Session restore success",
     );
   });
 });

@@ -5,7 +5,7 @@ import { Game } from "shared/typings/models/game";
 
 export const checkMinAttendance = (
   results: readonly number[][],
-  signedGames: readonly Game[]
+  signedGames: readonly Game[],
 ): readonly GameWithPlayerCount[] => {
   // Check that game minAttendance is fullfilled
   const gameIds = [] as string[];
@@ -42,7 +42,7 @@ export const checkMinAttendance = (
       logger.info(
         `Too few people for game ${signedGame.title} (${
           counts[signedGame.gameId]
-        }/${signedGame.minAttendance})`
+        }/${signedGame.minAttendance})`,
       );
     }
   });

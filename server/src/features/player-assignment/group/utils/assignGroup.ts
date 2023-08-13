@@ -16,7 +16,7 @@ import { AssignmentError } from "shared/typings/api/errors";
 export const assignGroups = (
   selectedPlayers: readonly User[],
   signedGames: readonly Game[],
-  playerGroups: readonly User[][]
+  playerGroups: readonly User[][],
 ): Result<AssignmentStrategyResult, AssignmentError> => {
   const { GROUP_ASSIGNMENT_ROUNDS } = config;
 
@@ -45,9 +45,9 @@ export const assignGroups = (
   const returnMessage = `Group Assign Result - Players: ${players}/${
     selectedPlayers.length
   } (${Math.round(
-    (players / selectedPlayers.length) * 100
+    (players / selectedPlayers.length) * 100,
   )}%), Games: ${games}/${signedGames.length} (${Math.round(
-    (games / signedGames.length) * 100
+    (games / signedGames.length) * 100,
   )}%)`;
 
   return makeSuccessResult({ results: bestResult, message: returnMessage });

@@ -5,7 +5,7 @@ import { config } from "server/config";
 export const allowCORS = (
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ): void => {
   const allowedOrigins = config.allowedCorsOrigins;
   const origin = req.headers.origin;
@@ -15,7 +15,7 @@ export const allowCORS = (
     res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS");
     res.setHeader(
       "Access-Control-Allow-Headers",
-      "Content-Type, Authorization, Baggage, Sentry-Trace"
+      "Content-Type, Authorization, Baggage, Sentry-Trace",
     );
   } else if (!origin) {
     // logger.info(`CORS: Same origin`)

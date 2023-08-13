@@ -44,7 +44,7 @@ const adminSlice = createSlice({
 
     submitGetSettingsAsync(
       state,
-      action: PayloadAction<SubmitGetSettingsPayload>
+      action: PayloadAction<SubmitGetSettingsPayload>,
     ) {
       return {
         ...state,
@@ -69,7 +69,7 @@ const adminSlice = createSlice({
 
     updateSignupQuestions(
       state,
-      action: PayloadAction<readonly SignupQuestion[]>
+      action: PayloadAction<readonly SignupQuestion[]>,
     ) {
       return { ...state, signupQuestions: action.payload };
     },
@@ -94,7 +94,7 @@ const adminSlice = createSlice({
 
     submitGetSignupMessagesAsync(
       state,
-      action: PayloadAction<SignupMessage[]>
+      action: PayloadAction<SignupMessage[]>,
     ) {
       return { ...state, signupMessages: action.payload };
     },
@@ -126,5 +126,5 @@ export const selectActiveGames = createSelector(
   [selectGames, selectActiveProgramType],
   (games, activeProgramType) => {
     return games.filter((game) => game.programType === activeProgramType);
-  }
+  },
 );

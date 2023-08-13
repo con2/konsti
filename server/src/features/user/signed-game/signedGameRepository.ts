@@ -13,7 +13,7 @@ import {
 } from "shared/utils/result";
 
 export const saveSignedGames = async (
-  signupData: UserSignedGames
+  signupData: UserSignedGames,
 ): Promise<Result<User, MongoDbError>> => {
   const { signedGames, username } = signupData;
 
@@ -28,7 +28,7 @@ export const saveSignedGames = async (
   const formattedData = signedGames.reduce<SelectedGame[]>(
     (acc, signedGame) => {
       const gameDocInDb = games.find(
-        (game) => game.gameId === signedGame.gameDetails.gameId
+        (game) => game.gameId === signedGame.gameDetails.gameId,
       );
 
       if (gameDocInDb) {
@@ -41,7 +41,7 @@ export const saveSignedGames = async (
       }
       return acc;
     },
-    []
+    [],
   );
 
   try {
@@ -50,7 +50,7 @@ export const saveSignedGames = async (
       {
         signedGames: formattedData,
       },
-      { new: true, fields: "-signedGames._id" }
+      { new: true, fields: "-signedGames._id" },
     ).populate("signedGames.gameDetails");
     if (!signupResponse) {
       logger.error("%s", new Error("Error saving signup"));
@@ -61,7 +61,7 @@ export const saveSignedGames = async (
   } catch (error) {
     logger.error(
       `MongoDB: Error storing signup data for user ${username}: %s`,
-      error
+      error,
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }

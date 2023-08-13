@@ -31,10 +31,10 @@ const SettingsSchema = new mongoose.Schema(
     assignmentLastRun: { type: Date, default: Date.now },
     latestServerStartTime: { type: Date, default: Date.now },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 export const SettingsModel = mongoose.model<SettingsDoc>(
   "Settings",
-  SettingsSchema
+  SettingsSchema,
 );

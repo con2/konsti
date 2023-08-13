@@ -35,7 +35,7 @@ export const SignupForm = ({
     .map((signedGame) => signedGame.priority);
 
   const firstUnselected = OPTIONS.filter(
-    (option) => !selectedPriorities.includes(option)
+    (option) => !selectedPriorities.includes(option),
   );
 
   const firstOption = firstUnselected.length > 0 ? firstUnselected[0] : 1;
@@ -74,7 +74,7 @@ export const SignupForm = ({
       submitPostSignedGames({
         selectedGames: signedGames.concat(newGame),
         startTime: game.startTime,
-      })
+      }),
     );
 
     if (error) {

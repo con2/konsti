@@ -15,7 +15,7 @@ import { logger } from "server/utils/logger";
 import { EventLogAction, EventLogItem } from "shared/typings/models/eventLog";
 
 export const addEventLogItems = async (
-  eventLogRequest: PostEventLogItemRequest
+  eventLogRequest: PostEventLogItemRequest,
 ): Promise<Result<void, MongoDbError>> => {
   const { updates, action } = eventLogRequest;
 
@@ -46,20 +46,20 @@ export const addEventLogItems = async (
     // @ts-expect-error: Types don't work with $addToSet
     await UserModel.bulkWrite(bulkOps);
     logger.info(
-      `MongoDB: Action log item added for users ${_.uniq(usernames)}`
+      `MongoDB: Action log item added for users ${_.uniq(usernames)}`,
     );
     return makeSuccessResult(undefined);
   } catch (error) {
     logger.error(
       `MongoDB: Error adding event log item for users ${_.uniq(usernames)}: %s`,
-      error
+      error,
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
 
 export const updateEventLogItem = async (
-  request: PostEventLogIsSeenRequest
+  request: PostEventLogIsSeenRequest,
 ): Promise<Result<EventLogItem[] | null, MongoDbError>> => {
   const { username, eventLogItemId, isSeen } = request;
   try {
@@ -71,7 +71,7 @@ export const updateEventLogItem = async (
       {
         arrayFilters: [{ "logItem._id": eventLogItemId }],
         new: true,
-      }
+      },
     );
     if (response) {
       return makeSuccessResult(
@@ -83,14 +83,14 @@ export const updateEventLogItem = async (
           isSeen: item.isSeen,
           programItemId: item.programItemId,
           createdAt: dayjs(item.createdAt).toISOString(),
-        }))
+        })),
       );
     }
     return makeSuccessResult(null);
   } catch (error) {
     logger.error(
       `MongoDB: Error updating event log item for user ${username}: %s`,
-      error
+      error,
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
@@ -98,7 +98,7 @@ export const updateEventLogItem = async (
 
 export const deleteEventLogItemsByStartTime = async (
   startTime: string,
-  action: EventLogAction
+  action: EventLogAction,
 ): Promise<Result<void, MongoDbError>> => {
   try {
     await UserModel.updateMany(
@@ -107,13 +107,13 @@ export const deleteEventLogItemsByStartTime = async (
         $pull: {
           eventLogItems: { programItemStartTime: startTime, action },
         },
-      }
+      },
     );
     return makeSuccessResult(undefined);
   } catch (error) {
     logger.error(
       `Deleting event log items for startTime ${startTime} failed: %s`,
-      error
+      error,
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }

@@ -42,7 +42,7 @@ export const ChangePasswordForm = ({ username }: Props): ReactElement => {
 
     if (validationError) {
       setPasswordChangeMessage(
-        <Message error={true}>{validationError}</Message>
+        <Message error={true}>{validationError}</Message>,
       );
       return;
     }
@@ -53,11 +53,11 @@ export const ChangePasswordForm = ({ username }: Props): ReactElement => {
       setPasswordChangeMessage(
         <Message error={true}>
           {t("passwordManagement.changingPasswordError")}
-        </Message>
+        </Message>,
       );
     } else if (response.status === "success") {
       setPasswordChangeMessage(
-        <Message>{t("passwordManagement.changingPasswordSuccess")}</Message>
+        <Message>{t("passwordManagement.changingPasswordSuccess")}</Message>,
       );
     }
   };

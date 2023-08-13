@@ -11,13 +11,13 @@ import { autoUpdateGames } from "server/utils/cron";
 
 export const postUpdateGames = async (
   req: Request<{}, {}, {}>,
-  res: Response
+  res: Response,
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.GAMES}`);
 
   const username = getAuthorizedUsername(
     req.headers.authorization,
-    UserGroup.ADMIN
+    UserGroup.ADMIN,
   );
   if (!username) {
     return res.sendStatus(401);
@@ -29,7 +29,7 @@ export const postUpdateGames = async (
 
 export const postAutoUpdateGames = (
   req: Request<{}, {}, {}>,
-  res: Response
+  res: Response,
 ): Response => {
   logger.info(`API call: POST ${ApiEndpoint.PROGRAM_UPDATE_CRON}`);
 
@@ -47,7 +47,7 @@ export const postAutoUpdateGames = (
 
 export const getGames = async (
   _req: Request<{}, {}, {}>,
-  res: Response
+  res: Response,
 ): Promise<Response> => {
   logger.info(`API call: GET ${ApiEndpoint.GAMES}`);
 

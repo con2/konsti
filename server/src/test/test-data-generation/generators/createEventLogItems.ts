@@ -11,14 +11,14 @@ export const createEventLogItems = async (): Promise<void> => {
   const gamesResult = await findGames();
   const games = unsafelyUnwrapResult(gamesResult);
   const rpgs = games.filter(
-    (game) => game.programType === ProgramType.TABLETOP_RPG
+    (game) => game.programType === ProgramType.TABLETOP_RPG,
   );
 
   const allUsersResult = await findUsers();
   const allUsers = unsafelyUnwrapResult(allUsersResult);
 
   const users = allUsers.filter(
-    (user) => user.username !== "admin" && user.username !== "helper"
+    (user) => user.username !== "admin" && user.username !== "helper",
   );
 
   const eventLogUpdates = users.flatMap((user) => {
