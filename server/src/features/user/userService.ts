@@ -262,7 +262,9 @@ export const fetchUserByUsername = async (
         const signupForUser = signup.userSignups.find(
           (userSignup) => userSignup.username === username,
         );
-        if (!signupForUser) return [];
+        if (!signupForUser) {
+          return [];
+        }
         return {
           gameDetails: signup.game,
           priority: signupForUser.priority,

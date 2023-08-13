@@ -39,7 +39,9 @@ export const AllGamesView = (): ReactElement => {
         const hidden = hiddenGames.find(
           (hiddenGame) => game.gameId === hiddenGame.gameId,
         );
-        if (!hidden) return game;
+        if (!hidden) {
+          return game;
+        }
       }),
     [activeGames, hiddenGames],
   );
@@ -150,7 +152,9 @@ const getTagFilteredGames = (
   games: readonly Game[],
   selectedTag: string,
 ): readonly Game[] => {
-  if (!selectedTag) return games;
+  if (!selectedTag) {
+    return games;
+  }
   return games.filter((game) => {
     if (game.programType.includes(selectedTag as ProgramType)) {
       return game;

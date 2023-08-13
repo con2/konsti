@@ -12,7 +12,9 @@ type LocalStorage = z.infer<typeof LocalStorageSchema>;
 
 export const loadSession = (): LocalStorage | undefined => {
   const serializedState = localStorage.getItem("state");
-  if (!serializedState) return undefined;
+  if (!serializedState) {
+    return undefined;
+  }
 
   let parsedSession: LocalStorage;
   try {

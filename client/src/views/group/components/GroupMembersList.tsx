@@ -10,7 +10,9 @@ interface Props {
 export const GroupMembersList = ({ groupMembers }: Props): ReactElement => {
   const { t } = useTranslation();
 
-  if (!groupMembers) return <GroupMembersListContainer />;
+  if (!groupMembers) {
+    return <GroupMembersListContainer />;
+  }
 
   const membersList = groupMembers.map((member, index) => {
     const isGroupCreator = member.serial === member.groupCode;

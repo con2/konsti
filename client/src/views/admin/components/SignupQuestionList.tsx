@@ -23,7 +23,9 @@ export const SignupQuestionList = ({
       const matchingGame = games.find(
         (game) => game.gameId === privateSignupQuestion.gameId,
       );
-      if (!matchingGame) return [];
+      if (!matchingGame) {
+        return [];
+      }
       return { ...privateSignupQuestion, game: matchingGame };
     },
   );
@@ -44,7 +46,9 @@ export const SignupQuestionList = ({
           const foundGame = games.find(
             (game) => game.gameId === signupQuestion.gameId,
           );
-          if (!foundGame) return [];
+          if (!foundGame) {
+            return [];
+          }
 
           return (
             <li key={`${signupQuestion.gameId}-${signupQuestion.questionFi}`}>

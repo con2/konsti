@@ -31,8 +31,12 @@ export const generateTestUsers = async (
   numberOfGroups: number,
   testUsersCount: number,
 ): Promise<void> => {
-  if (testUsersCount) await createTestUsers({ userCount: testUsersCount });
-  if (newUsersCount) await createIndividualUsers(newUsersCount);
+  if (testUsersCount) {
+    await createTestUsers({ userCount: testUsersCount });
+  }
+  if (newUsersCount) {
+    await createIndividualUsers(newUsersCount);
+  }
 
   for (let i = 0; i < numberOfGroups; i++) {
     if (i === 0) {

@@ -16,7 +16,6 @@ module.exports = {
   ],
 
   extends: [
-    "eslint-config-standard-with-typescript",
     "eslint-config-prettier",
     "plugin:eslint-plugin-eslint-comments/recommended",
     "plugin:eslint-plugin-vitest/recommended",
@@ -135,6 +134,56 @@ module.exports = {
         ],
       },
     ],
+    "@typescript-eslint/ban-types": [
+      "off",
+      {
+        extendDefaults: false,
+        types: {
+          String: {
+            message: "Use string instead",
+            fixWith: "string",
+          },
+          Boolean: {
+            message: "Use boolean instead",
+            fixWith: "boolean",
+          },
+          Number: {
+            message: "Use number instead",
+            fixWith: "number",
+          },
+          Symbol: {
+            message: "Use symbol instead",
+            fixWith: "symbol",
+          },
+          BigInt: {
+            message: "Use bigint instead",
+            fixWith: "bigint",
+          },
+          Function: {
+            message:
+              "The `Function` type accepts any function-like value.\nIt provides no type safety when calling the function, which can be a common source of bugs.\nIt also accepts things like class declarations, which will throw at runtime as they will not be called with `new`.\nIf you are expecting the function to accept certain arguments, you should explicitly define the function shape.",
+          },
+          Object: {
+            message:
+              'The `Object` type actually means "any non-nullish value", so it is marginally better than `unknown`.\n- If you want a type meaning "any object", you probably want `Record<string, unknown>` instead.\n- If you want a type meaning "any value", you probably want `unknown` instead.',
+          },
+          "{}": {
+            message:
+              '`{}` actually means "any non-nullish value".\n- If you want a type meaning "any object", you probably want `Record<string, unknown>` instead.\n- If you want a type meaning "any value", you probably want `unknown` instead.',
+          },
+        },
+      },
+    ],
+    "@typescript-eslint/ban-ts-comment": [
+      "error",
+      {
+        "ts-expect-error": "allow-with-description",
+        "ts-ignore": true,
+        "ts-nocheck": true,
+        "ts-check": false,
+        minimumDescriptionLength: 3,
+      },
+    ],
     "@typescript-eslint/strict-boolean-expressions": "off", // Forces unwanted code style
     "@typescript-eslint/restrict-template-expressions": "off", // Requires typing catch(e) every time
     "@typescript-eslint/restrict-plus-operands": "off", // Doesn't support dynamic object occurance counting
@@ -151,7 +200,6 @@ module.exports = {
     "deprecation/deprecation": "error",
 
     // TODO: Enable these rules
-    "@typescript-eslint/ban-types": "off",
     "@typescript-eslint/no-empty-function": "off",
     "@typescript-eslint/no-unsafe-member-access": "off",
     "@typescript-eslint/no-unsafe-return": "off",

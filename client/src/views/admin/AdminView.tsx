@@ -33,7 +33,9 @@ export const AdminView = (): ReactElement => {
   const { t } = useTranslation();
 
   const getVisibleGames = (): readonly Game[] => {
-    if (!hiddenGames) return games;
+    if (!hiddenGames) {
+      return games;
+    }
     const visibleGames: Game[] = [];
     for (let i = 0; i < games.length; i += 1) {
       let match = false;

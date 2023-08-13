@@ -15,7 +15,7 @@
     "bundle-analyzer": "webpack-cli --profile --json > stats.json && webpack-bundle-analyzer stats.json build -m server",
     "clean": "yarn run -T rimraf build",
     "eslint": "yarn run -T eslint . --ext .js,.ts,.tsx",
-    "eslint-rules": "yarn run -T eslint --print-config .eslintrc.js",
+    "eslint-save-config": "eslint --print-config .eslintrc.js > eslint-config-client.json && prettier --write eslint-config-client.json",
     "start": "webpack serve",
     "stylelint": "stylelint \"./**/*.tsx\"",
     "stylelint-lint-staged": "stylelint",

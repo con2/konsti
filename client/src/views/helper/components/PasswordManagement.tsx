@@ -19,7 +19,9 @@ export const PasswordManagement = (): ReactElement => {
   );
 
   const submitGetUser = async (): Promise<void> => {
-    if (userSerialInput.length === 0) return;
+    if (userSerialInput.length === 0) {
+      return;
+    }
 
     const response = await getUserBySerialOrUsername(userSerialInput);
 

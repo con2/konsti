@@ -119,7 +119,9 @@ export const getDemandByGame = (
         (game) => game.gameId === signedGame.gameDetails.gameId,
       );
 
-      if (!foundGame) return;
+      if (!foundGame) {
+        return;
+      }
 
       acc[foundGame.title] = {
         first: acc[foundGame.title]?.first ? acc[foundGame.title].first : 0,
