@@ -17,6 +17,7 @@ module.exports = {
   rules: {
     // stylelint
     "length-zero-no-unit": true,
+    "media-query-no-invalid": null, // Doesn't work with styled-components
 
     // no-unsupported-browser-features
     "plugin/no-unsupported-browser-features": [
@@ -24,7 +25,12 @@ module.exports = {
       {
         severity: "error",
         ignorePartialSupport: true,
-        ignore: ["css-resize", "css3-cursors"],
+        ignore: [
+          "css-resize",
+          "css3-cursors",
+          "css-math-functions",
+          "css-focus-visible",
+        ],
       },
     ],
   },
