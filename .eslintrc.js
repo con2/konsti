@@ -22,8 +22,8 @@ module.exports = {
     "plugin:eslint-plugin-promise/recommended",
     "plugin:eslint-plugin-import/errors",
     "plugin:eslint-plugin-import/typescript",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "plugin:@typescript-eslint/recommended-type-checked",
+    "plugin:@typescript-eslint/stylistic-type-checked",
   ],
 
   env: {
@@ -34,7 +34,7 @@ module.exports = {
     sourceType: "module",
     impliedStrict: true,
     tsconfigRootDir: __dirname,
-    project: ["tsconfig.json", "client/tsconfig.json", "server/tsconfig.json"],
+    project: true,
   },
 
   settings: {
