@@ -184,6 +184,12 @@ module.exports = {
         minimumDescriptionLength: 3,
       },
     ],
+    "@typescript-eslint/array-type": [
+      "error",
+      {
+        default: "array-simple",
+      },
+    ],
     "@typescript-eslint/strict-boolean-expressions": "off", // Forces unwanted code style
     "@typescript-eslint/restrict-template-expressions": "off", // Requires typing catch(e) every time
     "@typescript-eslint/restrict-plus-operands": "off", // Doesn't support dynamic object occurance counting
@@ -200,6 +206,8 @@ module.exports = {
     "deprecation/deprecation": "error",
 
     // TODO: Enable these rules
+    "@typescript-eslint/no-unsafe-enum-comparison": "off",
+    "@typescript-eslint/prefer-for-of": "off",
     "@typescript-eslint/no-empty-function": "off",
     "@typescript-eslint/no-unsafe-member-access": "off",
     "@typescript-eslint/no-unsafe-return": "off",

@@ -9,7 +9,9 @@
     "./src/**/*.tsx",
     "./.eslintrc.js",
     "./webpack.config.ts",
-    "./babel.config.js"
+    "./babel.config.js",
+    "./vitest.config.ts",
+    "./playwright/**/*.ts"
   ],
   "exclude": ["./node_modules", "./build", "./coverage"]
 }

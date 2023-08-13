@@ -81,7 +81,7 @@ export const GameEntry = ({
   const updateFavoriteHandler = async (
     updateOpts: UpdateFavoriteOpts,
   ): Promise<void> => {
-    if (!updateOpts?.game || !updateOpts?.game?.gameId) {
+    if (!updateOpts?.game?.gameId) {
       return;
     }
     await updateFavorite(updateOpts);
