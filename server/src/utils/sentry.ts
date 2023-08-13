@@ -54,7 +54,9 @@ export const initSentry = (app: Express, enableSentry: boolean): void => {
 };
 
 export const getDsn = (enableSentry: boolean): string | undefined => {
-  if (!enableSentry) return undefined;
+  if (!enableSentry) {
+    return undefined;
+  }
   switch (process.env.SETTINGS) {
     case "production":
       return "https://0278d6bfb3f04c70acf826ecbd86ae58@o1321706.ingest.sentry.io/6579204";

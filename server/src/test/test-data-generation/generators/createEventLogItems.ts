@@ -22,7 +22,7 @@ export const createEventLogItems = async (): Promise<void> => {
   );
 
   const eventLogUpdates = users.flatMap((user) => {
-    const randomGames = _.sampleSize(rpgs, 5)!; // eslint-disable-line @typescript-eslint/no-non-null-assertion
+    const randomGames = _.sampleSize(rpgs, 5)!;
 
     return randomGames.map((randomGame, index) => ({
       username: user.username,

@@ -38,7 +38,9 @@ const getGroupCreator = (
   const groupCreator = groupMembers.find(
     (member) => member.serial === member.groupCode,
   );
-  if (!groupCreator) return null;
+  if (!groupCreator) {
+    return null;
+  }
   return groupCreator;
 };
 
@@ -65,7 +67,9 @@ export const getSignedGames = ({
 
   if (!isGroupCreator) {
     const groupCreator = getGroupCreator(groupMembers);
-    if (!groupCreator) return [];
+    if (!groupCreator) {
+      return [];
+    }
 
     return getAllGames
       ? groupCreator.signedGames

@@ -59,11 +59,11 @@ const getProgramType = (
   programType: KompassiProgramType,
 ): KompassiProgramType => {
   if (programType === KompassiProgramType.TOURNAMENT_BOARD_GAME) {
-    return _.sample(tournamentProgramTypes)!; // eslint-disable-line @typescript-eslint/no-non-null-assertion
+    return _.sample(tournamentProgramTypes)!;
   }
 
   if (programType === KompassiProgramType.WORKSHOP_MINIATURE) {
-    return _.sample(workshopProgramTypes)!; // eslint-disable-line @typescript-eslint/no-non-null-assertion
+    return _.sample(workshopProgramTypes)!;
   }
 
   return programType;

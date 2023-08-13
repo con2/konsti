@@ -13,6 +13,7 @@ export const wwwRedirect = (
     return; // Not actually reached but required by TS
   }
 
+  // eslint-disable-next-line @typescript-eslint/prefer-string-starts-ends-with
   const hostHasWww = /^www\./.test(host);
 
   if (hostHasWww) {

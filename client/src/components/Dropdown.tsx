@@ -27,7 +27,9 @@ export const Dropdown = ({
 }: Props): ReactElement => {
   const { t } = useTranslation();
 
-  if (!options) return <div />;
+  if (!options) {
+    return <div />;
+  }
 
   return (
     <StyledSelect

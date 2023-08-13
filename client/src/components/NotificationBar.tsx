@@ -20,7 +20,9 @@ export const NotificationBar = (): ReactElement | null => {
   const errorList = unseenEvents.map(
     ({ eventLogItemId, programItemId, action, createdAt }) => {
       const foundGame = games.find((game) => game.gameId === programItemId);
-      if (!foundGame) return;
+      if (!foundGame) {
+        return;
+      }
       return (
         <StyledNotification key={`${action}-${createdAt}`}>
           <div>

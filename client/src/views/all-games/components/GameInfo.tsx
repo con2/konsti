@@ -13,7 +13,9 @@ interface Props {
 export const GameInfo = ({ game }: Props): ReactElement => {
   const { t } = useTranslation();
 
-  if (!game) return <div />;
+  if (!game) {
+    return <div />;
+  }
 
   const getGenres = (genresList: readonly Genre[]): ReactElement[] => {
     return genresList.map((genre, i) => {

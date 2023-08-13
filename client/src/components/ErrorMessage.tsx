@@ -14,7 +14,9 @@ export const ErrorMessage = ({
 }: Props): ReactElement | null => {
   const { t } = useTranslation();
 
-  if (!message) return null;
+  if (!message) {
+    return null;
+  }
   return (
     <ErrorContainer>
       <StyledErrorMessage>{message}</StyledErrorMessage>

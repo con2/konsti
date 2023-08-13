@@ -63,8 +63,11 @@ export const ChangePasswordForm = ({ username }: Props): ReactElement => {
   };
 
   const togglePasswordVisibility = (): void => {
-    if (passwordFieldType === "password") setPasswordFieldType("text");
-    else if (passwordFieldType === "text") setPasswordFieldType("password");
+    if (passwordFieldType === "password") {
+      setPasswordFieldType("text");
+    } else if (passwordFieldType === "text") {
+      setPasswordFieldType("password");
+    }
   };
 
   return (
