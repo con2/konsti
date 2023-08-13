@@ -45,6 +45,10 @@
       {
         "selector": "ThrowStatement",
         "message": "Return Result<T,Err> instead of throwing errors"
+      },
+      {
+        "selector": "MemberExpression[property.name='format']",
+        "message": "Import from timeFormatter.ts or use dayjs().toISOString"
       }
     ],
     "no-else-return": ["error"],
@@ -73,7 +77,17 @@
         "warnOnUnassignedImports": false
       }
     ],
-    "import/no-namespace": ["error"],
+    "import/no-namespace": [
+      "error",
+      {
+        "ignore": [
+          "groupAssignPlayers",
+          "padgAssignPlayers",
+          "randomAssignPlayers",
+          "signupTimes"
+        ]
+      }
+    ],
     "import/namespace": ["off"],
     "vitest/no-disabled-tests": ["error"],
     "vitest/no-focused-tests": ["error"],
@@ -463,6 +477,7 @@
       }
     ],
     "linebreak-style": ["off"],
+    "max-statements-per-line": ["off"],
     "multiline-ternary": ["off", "always-multiline"],
     "newline-per-chained-call": ["off"],
     "new-parens": ["off"],
@@ -474,6 +489,7 @@
       "off",
       {
         "max": 1,
+        "maxBOF": 0,
         "maxEOF": 0
       }
     ],
@@ -540,7 +556,6 @@
     "switch-colon-spacing": ["off"],
     "template-curly-spacing": ["off", "never"],
     "template-tag-spacing": ["off", "never"],
-    "unicode-bom": ["off", "never"],
     "wrap-iife": [
       "off",
       "any",
@@ -552,7 +567,7 @@
     "yield-star-spacing": ["off", "both"],
     "@babel/object-curly-spacing": ["off"],
     "@babel/semi": ["off"],
-    "@typescript-eslint/block-spacing": ["off"],
+    "@typescript-eslint/block-spacing": ["off", "always"],
     "@typescript-eslint/brace-style": [
       "off",
       "1tbs",
@@ -689,6 +704,7 @@
     "unicorn/number-literal-case": ["off"],
     "vue/array-bracket-newline": ["off"],
     "vue/array-bracket-spacing": ["off"],
+    "vue/array-element-newline": ["off"],
     "vue/arrow-spacing": ["off"],
     "vue/block-spacing": ["off"],
     "vue/block-tag-newline": ["off"],
@@ -1064,6 +1080,7 @@
       }
     ],
     "symbol-description": ["error"],
+    "unicode-bom": ["error", "never"],
     "use-isnan": [
       "error",
       {
