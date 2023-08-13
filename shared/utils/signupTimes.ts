@@ -35,7 +35,7 @@ export const getAlgorithmSignupEndTime = (startTime: string): Dayjs => {
 
 export const getDirectSignupStartTime = (game: Game): Dayjs => {
   const signupAlwaysOpen = sharedConfig.directSignupAlwaysOpenIds.includes(
-    game.gameId
+    game.gameId,
   );
 
   if (signupAlwaysOpen) {
@@ -47,7 +47,7 @@ export const getDirectSignupStartTime = (game: Game): Dayjs => {
   if (game.programType === ProgramType.TABLETOP_RPG) {
     const directSignupStart = dayjs(game.startTime).subtract(
       DIRECT_SIGNUP_START,
-      "minutes"
+      "minutes",
     );
 
     // If convention starts at 15:00, DIRECT_SIGNUP_START is 2h and PHASE_GAP is 15min
@@ -56,7 +56,7 @@ export const getDirectSignupStartTime = (game: Game): Dayjs => {
     //   Start time 17:00 -> signup start 15:15 -> fix to 15:00
     //   Start time 18:00 -> signup start 16:15 -> this is fine
     const signupsBeforeThisStartAtConventionStart = dayjs(
-      CONVENTION_START_TIME
+      CONVENTION_START_TIME,
     ).add(1, "hour");
 
     if (
@@ -67,7 +67,7 @@ export const getDirectSignupStartTime = (game: Game): Dayjs => {
 
     const directSignupStartWithPhaseGap = directSignupStart.add(
       PHASE_GAP,
-      "minutes"
+      "minutes",
     );
 
     return directSignupStartWithPhaseGap;
@@ -83,14 +83,14 @@ export const getDirectSignupStartTime = (game: Game): Dayjs => {
         signupWindow.signupWindowStart,
         signupWindow.signupWindowClose,
         "minutes",
-        "[]"
-      )
+        "[]",
+      ),
   );
 
   if (!matchingSignupWindow) {
     // eslint-disable-next-line no-restricted-syntax -- Config error
     throw new Error(
-      `Invalid signup window for program type: ${game.programType}`
+      `Invalid signup window for program type: ${game.programType}`,
     );
   }
 

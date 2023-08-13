@@ -8,14 +8,14 @@ import {
 
 export const postFeedback = async (
   gameId: string,
-  feedback: string
+  feedback: string,
 ): Promise<PostFeedbackResponse | ApiError> => {
   const response = await api.post<PostFeedbackResponse, PostFeedbackRequest>(
     ApiEndpoint.FEEDBACK,
     {
       gameId,
       feedback,
-    }
+    },
   );
 
   return response.data;

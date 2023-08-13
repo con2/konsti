@@ -29,7 +29,7 @@ export const AdminActionCard = ({ game }: Props): ReactElement => {
 
   const hiddenGames = useAppSelector((state) => state.admin.hiddenGames);
   const signupQuestions = useAppSelector(
-    (state) => state.admin.signupQuestions
+    (state) => state.admin.signupQuestions,
   );
 
   const [submitting, setSubmitting] = useState<boolean>(false);
@@ -116,7 +116,7 @@ export const AdminActionCard = ({ game }: Props): ReactElement => {
           private: isPrivateSignupQuestion,
           type: questionType,
           selectOptions,
-        })
+        }),
       );
     } catch (error) {
       // eslint-disable-next-line no-restricted-syntax -- TODO: Remove throw

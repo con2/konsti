@@ -2,7 +2,7 @@ import { PlayerIdWithPriority } from "server/typings/user.typings";
 
 export const getPriorities = (
   results: readonly number[][],
-  signupMatrix: readonly number[][]
+  signupMatrix: readonly number[][],
 ): PlayerIdWithPriority[] => {
   // Show the priorities players were assigned to
   const priorities: PlayerIdWithPriority[] = [];

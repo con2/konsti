@@ -32,7 +32,7 @@ export const fetchTestSettings = async (): Promise<
 };
 
 export const updateTestSettings = async (
-  settings: PostTestSettingsRequest
+  settings: PostTestSettingsRequest,
 ): Promise<PostTestSettingsResponse | ApiError> => {
   const responseResult = await saveTestSettings(settings);
   if (isErrorResult(responseResult)) {

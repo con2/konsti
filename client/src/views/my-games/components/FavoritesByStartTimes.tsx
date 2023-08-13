@@ -22,7 +22,7 @@ export const FavoritesByStartTimes = ({
   const dispatch = useAppDispatch();
   const username = useAppSelector((state) => state.login.username);
   const favoritedGames = useAppSelector(
-    (state) => state.myGames.favoritedGames
+    (state) => state.myGames.favoritedGames,
   );
 
   const removeFavorite = async (game: Game): Promise<void> => {

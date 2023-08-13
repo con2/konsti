@@ -20,7 +20,7 @@ export const updateGamePopularity = async (): Promise<
   Result<void, MongoDbError | AssignmentError>
 > => {
   logger.info(
-    `Calculate game popularity using ${gamePopularityUpdateMethod} method`
+    `Calculate game popularity using ${gamePopularityUpdateMethod} method`,
   );
 
   const usersResult = await findUsers();
@@ -34,7 +34,7 @@ export const updateGamePopularity = async (): Promise<
     return gamesResult;
   }
   const games = unwrapResult(gamesResult).filter(
-    (game) => game.programType === ProgramType.TABLETOP_RPG
+    (game) => game.programType === ProgramType.TABLETOP_RPG,
   );
 
   const signupsResult = await findSignups();
@@ -54,7 +54,7 @@ export const updateGamePopularity = async (): Promise<
     const updateWithAssignResult = await updateWithAssign(
       users,
       games,
-      signups
+      signups,
     );
     if (isErrorResult(updateWithAssignResult)) {
       return updateWithAssignResult;

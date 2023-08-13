@@ -20,7 +20,7 @@ import {
 
 export const postUser = async (
   req: Request<{}, {}, PostUserRequest>,
-  res: Response
+  res: Response,
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.USERS}`);
 
@@ -28,7 +28,7 @@ export const postUser = async (
   if (!result.success) {
     logger.error(
       "%s",
-      new Error(`Error validating postUser body: ${result.error}`)
+      new Error(`Error validating postUser body: ${result.error}`),
     );
     return res.sendStatus(422);
   }
@@ -40,7 +40,7 @@ export const postUser = async (
 
 export const postUserPassword = async (
   req: Request<{}, {}, PostUpdateUserPasswordRequest>,
-  res: Response
+  res: Response,
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.USERS_PASSWORD}`);
 
@@ -57,7 +57,7 @@ export const postUserPassword = async (
   if (!result.success) {
     logger.error(
       "%s",
-      new Error(`Error validating postUserPassword body: ${result.error}`)
+      new Error(`Error validating postUserPassword body: ${result.error}`),
     );
     return res.sendStatus(422);
   }
@@ -75,20 +75,20 @@ export const postUserPassword = async (
   const response = await storeUserPassword(
     userToUpdateUsername,
     password,
-    requesterUsername
+    requesterUsername,
   );
   return res.json(response);
 };
 
 export const getUser = async (
   req: Request<{}, {}, {}>,
-  res: Response
+  res: Response,
 ): Promise<Response> => {
   logger.info(`API call: GET ${ApiEndpoint.USERS}`);
 
   const username = getAuthorizedUsername(
     req.headers.authorization,
-    UserGroup.USER
+    UserGroup.USER,
   );
   if (!username) {
     return res.sendStatus(401);
@@ -100,7 +100,7 @@ export const getUser = async (
 
 export const getUserBySerialOrUsername = async (
   req: Request<{}, {}, GetUserBySerialRequest>,
-  res: Response
+  res: Response,
 ): Promise<Response> => {
   logger.info(`API call: GET ${ApiEndpoint.USERS_BY_SERIAL_OR_USERNAME}`);
 
@@ -116,7 +116,7 @@ export const getUserBySerialOrUsername = async (
   if (!result.success) {
     logger.error(
       "Error validating getUserBySerialOrUsername params: %s",
-      result.error
+      result.error,
     );
     return res.sendStatus(422);
   }

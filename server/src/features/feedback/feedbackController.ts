@@ -11,13 +11,13 @@ import {
 
 export const postFeedback = async (
   req: Request<{}, {}, PostFeedbackRequest>,
-  res: Response
+  res: Response,
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.FEEDBACK}`);
 
   const username = getAuthorizedUsername(
     req.headers.authorization,
-    UserGroup.USER
+    UserGroup.USER,
   );
   if (!username) {
     return res.sendStatus(401);
@@ -27,7 +27,7 @@ export const postFeedback = async (
   if (!result.success) {
     logger.error(
       "%s",
-      new Error(`Error validating postFeedback body: ${result.error}`)
+      new Error(`Error validating postFeedback body: ${result.error}`),
     );
     return res.sendStatus(422);
   }

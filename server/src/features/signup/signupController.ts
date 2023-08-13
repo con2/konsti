@@ -16,13 +16,13 @@ import {
 
 export const postSignup = async (
   req: Request<{}, {}, PostEnteredGameRequest>,
-  res: Response
+  res: Response,
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.SIGNUP}`);
 
   const username = getAuthorizedUsername(
     req.headers.authorization,
-    UserGroup.USER
+    UserGroup.USER,
   );
   if (!username) {
     return res.sendStatus(401);
@@ -32,7 +32,7 @@ export const postSignup = async (
   if (!result.success) {
     logger.error(
       "%s",
-      new Error(`Error validating postSignup body: ${result.error}`)
+      new Error(`Error validating postSignup body: ${result.error}`),
     );
     return res.sendStatus(422);
   }
@@ -43,13 +43,13 @@ export const postSignup = async (
 
 export const deleteSignup = async (
   req: Request<{}, {}, DeleteEnteredGameRequest>,
-  res: Response
+  res: Response,
 ): Promise<Response> => {
   logger.info(`API call: DELETE ${ApiEndpoint.SIGNUP}`);
 
   const username = getAuthorizedUsername(
     req.headers.authorization,
-    UserGroup.USER
+    UserGroup.USER,
   );
   if (!username) {
     return res.sendStatus(401);
@@ -59,7 +59,7 @@ export const deleteSignup = async (
   if (!result.success) {
     logger.error(
       "%s",
-      new Error(`Error validating deleteSignup body: ${result.error}`)
+      new Error(`Error validating deleteSignup body: ${result.error}`),
     );
     return res.sendStatus(422);
   }

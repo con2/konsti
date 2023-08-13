@@ -4,7 +4,7 @@ import { SignupWish } from "server/typings/user.typings";
 
 export const getSignedGames = (
   startingGames: readonly Game[],
-  signupWishes: readonly SignupWish[]
+  signupWishes: readonly SignupWish[],
 ): Game[] => {
   logger.debug("Get selected games");
   const signedGames = [] as Game[];
@@ -24,7 +24,7 @@ export const getSignedGames = (
   });
 
   logger.debug(
-    `Found ${signedGames.length} games that have signup wishes and ${minAttendance}-${maxAttendance} available seats`
+    `Found ${signedGames.length} games that have signup wishes and ${minAttendance}-${maxAttendance} available seats`,
   );
 
   return signedGames;

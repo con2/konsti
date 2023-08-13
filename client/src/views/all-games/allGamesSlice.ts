@@ -10,7 +10,7 @@ const allGamesSlice = createSlice({
   reducers: {
     submitGetGamesAsync(
       state,
-      action: PayloadAction<readonly GameWithUsernames[]>
+      action: PayloadAction<readonly GameWithUsernames[]>,
     ) {
       return {
         ...state,

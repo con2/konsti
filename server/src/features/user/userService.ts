@@ -24,7 +24,7 @@ import { createSerial } from "server/features/user/userUtils";
 export const storeUser = async (
   username: string,
   password: string,
-  maybeSerial: string | undefined
+  maybeSerial: string | undefined,
 ): Promise<PostUserResponse | PostUserError> => {
   let serial;
   if (!sharedConfig.requireRegistrationCode) {
@@ -180,7 +180,7 @@ const PASSWORD_CHANGE_NOT_ALLOWED = ["admin", "helper"];
 export const storeUserPassword = async (
   username: string,
   password: string,
-  requester: string
+  requester: string,
 ): Promise<PostUserResponse | ApiError> => {
   if (
     requester === "helper" &&
@@ -206,7 +206,7 @@ export const storeUserPassword = async (
 
   const updateUserPasswordResult = await updateUserPassword(
     username,
-    passwordHash
+    passwordHash,
   );
 
   if (isErrorResult(updateUserPasswordResult)) {
@@ -226,7 +226,7 @@ export const storeUserPassword = async (
 };
 
 export const fetchUserByUsername = async (
-  username: string
+  username: string,
 ): Promise<GetUserResponse | ApiError> => {
   const userResult = await findUser(username);
   if (isErrorResult(userResult)) {
@@ -260,7 +260,7 @@ export const fetchUserByUsername = async (
   const enteredGames: SelectedGame[] = signups
     ? signups.flatMap((signup) => {
         const signupForUser = signup.userSignups.find(
-          (userSignup) => userSignup.username === username
+          (userSignup) => userSignup.username === username,
         );
         if (!signupForUser) return [];
         return {
@@ -287,7 +287,7 @@ export const fetchUserByUsername = async (
 };
 
 export const fetchUserBySerialOrUsername = async (
-  searchTerm: string
+  searchTerm: string,
 ): Promise<GetUserBySerialResponse | ApiError> => {
   // Try to find user first with serial
   const userBySerialResult = await findUserBySerial(searchTerm);

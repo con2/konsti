@@ -60,8 +60,8 @@ axiosInstance.interceptors.response.use(
           method,
           url,
           errorReason: t(errorReason),
-        })
-      )
+        }),
+      ),
     );
 
     const data: ApiError = {
@@ -73,7 +73,7 @@ axiosInstance.interceptors.response.use(
     return {
       data,
     };
-  }
+  },
 );
 
 const getErrorReason = (status: number): BackendErrorType => {
@@ -95,21 +95,21 @@ export const api = {
   post: async <RES = never, REQ = never, R = AxiosResponse<RES>>(
     url: string,
     data?: REQ,
-    axiosRequestConfig?: AxiosRequestConfig<REQ>
+    axiosRequestConfig?: AxiosRequestConfig<REQ>,
   ): Promise<R> => {
     return await axiosInstance.post(url, data, axiosRequestConfig);
   },
 
   get: async <RES = never, REQ = never, R = AxiosResponse<RES>>(
     url: string,
-    axiosRequestConfig?: AxiosRequestConfigGet<REQ>
+    axiosRequestConfig?: AxiosRequestConfigGet<REQ>,
   ): Promise<R> => {
     return await axiosInstance.get(url, axiosRequestConfig);
   },
 
   delete: async <RES = never, REQ = never, R = AxiosResponse<RES>>(
     url: string,
-    axiosRequestConfig?: AxiosRequestConfig<REQ>
+    axiosRequestConfig?: AxiosRequestConfig<REQ>,
   ): Promise<R> => {
     return await axiosInstance.delete(url, axiosRequestConfig);
   },

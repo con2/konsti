@@ -53,7 +53,7 @@ test("should set defaults if settings not found", async () => {
   };
   const insertedSettings = await SettingsModel.findOne({});
   expect(insertedSettings?.hiddenGames.length).toEqual(
-    defaultSettings.hiddenGames.length
+    defaultSettings.hiddenGames.length,
   );
   expect(insertedSettings?.appOpen).toEqual(defaultSettings.appOpen);
 });

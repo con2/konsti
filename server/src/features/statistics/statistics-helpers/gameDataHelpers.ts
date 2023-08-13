@@ -12,7 +12,7 @@ import { toPercent } from "server/features/statistics/statsUtil";
 import { TIMEZONE } from "shared/utils/initializeDayjs";
 
 export const getGamesByStartTime = (
-  games: readonly Game[]
+  games: readonly Game[],
 ): StringNumberObject => {
   const gamesByTime = _.countBy(games, "startTime");
 
@@ -30,7 +30,7 @@ const getUsersByGames = (_users: readonly User[]): StringNumberObject => {
 
 export const getNumberOfFullGames = (
   games: readonly Game[],
-  users: readonly User[]
+  users: readonly User[],
 ): void => {
   const usersByGames = getUsersByGames(users);
 
@@ -44,7 +44,7 @@ export const getNumberOfFullGames = (
   logger.info(
     `Games with maximum number of players: ${counter}/${
       games.length
-    } (${toPercent(counter / games.length)}%)`
+    } (${toPercent(counter / games.length)}%)`,
   );
 };
 
@@ -58,7 +58,7 @@ const getSignupsByStartTime = (users: readonly User[]): StringNumberObject => {
 
     if (user.groupCode !== "0" && user.groupCode === user.serial) {
       groupSize = users.filter(
-        (groupUser) => groupUser.groupCode === user.serial
+        (groupUser) => groupUser.groupCode === user.serial,
       ).length;
     }
 
@@ -67,7 +67,7 @@ const getSignupsByStartTime = (users: readonly User[]): StringNumberObject => {
         acc[signedGame.time] = acc[signedGame.time] + 1 || 1;
         return acc;
       },
-      {}
+      {},
     );
 
     for (const signupTime in signedGames) {
@@ -82,7 +82,7 @@ const getSignupsByStartTime = (users: readonly User[]): StringNumberObject => {
 
 export const getDemandByTime = (
   games: readonly Game[],
-  users: readonly User[]
+  users: readonly User[],
 ): void => {
   logger.info(">>> Demand by time");
   const signupsByTime = getSignupsByStartTime(users);
@@ -94,15 +94,15 @@ export const getDemandByTime = (
       `Demand for ${dayjs(startTime).tz(TIMEZONE).format("DD.M.YYYY HH:mm")}: ${
         signupsByTime[startTime]
       }/${maximumNumberOfPlayersByTime[startTime]} (${toPercent(
-        signupsByTime[startTime] / maximumNumberOfPlayersByTime[startTime]
-      )}%)`
+        signupsByTime[startTime] / maximumNumberOfPlayersByTime[startTime],
+      )}%)`,
     );
   }
 };
 
 export const getDemandByGame = (
   games: readonly Game[],
-  users: readonly User[]
+  users: readonly User[],
 ): void => {
   logger.info(">>> Demand by games");
 
@@ -110,13 +110,13 @@ export const getDemandByGame = (
     let groupSize = 1;
     if (user.groupCode !== "0" && user.groupCode === user.serial) {
       groupSize = users.filter(
-        (groupUser) => groupUser.groupCode === user.serial
+        (groupUser) => groupUser.groupCode === user.serial,
       ).length;
     }
 
     user.signedGames.forEach((signedGame) => {
       const foundGame = games.find(
-        (game) => game.gameId === signedGame.gameDetails.gameId
+        (game) => game.gameId === signedGame.gameDetails.gameId,
       );
 
       if (!foundGame) return;

@@ -1,6 +1,6 @@
 export const getIsGroupCreator = (
   groupCode: string,
-  serial: string
+  serial: string,
 ): boolean => {
   if (groupCode === serial) {
     return true;

@@ -3,11 +3,11 @@ import { ComponentType, LazyExoticComponent, lazy } from "react";
 // https://raphael-leger.medium.com/react-webpack-chunkloaderror-loading-chunk-x-failed-ac385bd110e0
 export const lazyWithRetry = (
   importComponent: () => Promise<{ default: ComponentType }>,
-  fallbackComponent: () => Promise<{ default: ComponentType }>
+  fallbackComponent: () => Promise<{ default: ComponentType }>,
 ): LazyExoticComponent<ComponentType> =>
   lazy(async () => {
     const isPageHasBeenForceRefreshed = JSON.parse(
-      localStorage.getItem("page-has-been-force-refreshed") ?? "false"
+      localStorage.getItem("page-has-been-force-refreshed") ?? "false",
     );
 
     try {

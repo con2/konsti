@@ -6,7 +6,7 @@ interface StartTestServerReturn {
 }
 
 export const startTestServer = async (
-  dbConnString: string
+  dbConnString: string,
 ): Promise<StartTestServerReturn> => {
   const module = await import("server/utils/server");
   const server = await module.startServer({

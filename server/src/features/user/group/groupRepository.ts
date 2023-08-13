@@ -9,7 +9,7 @@ import {
 } from "shared/utils/result";
 
 export const findGroupMembers = async (
-  groupCode: string
+  groupCode: string,
 ): Promise<Result<User[], MongoDbError>> => {
   try {
     const response = await UserModel.find({ groupCode })
@@ -20,7 +20,7 @@ export const findGroupMembers = async (
       logger.info(`MongoDB: group ${groupCode} not found`);
     } else {
       logger.debug(
-        `MongoDB: Found group ${groupCode} with ${response.length} members`
+        `MongoDB: Found group ${groupCode} with ${response.length} members`,
       );
     }
     return makeSuccessResult(response);
@@ -32,7 +32,7 @@ export const findGroupMembers = async (
 
 export const findGroup = async (
   groupCode: string,
-  username: string
+  username: string,
 ): Promise<Result<User | null, MongoDbError>> => {
   if (username) {
     try {
@@ -42,7 +42,7 @@ export const findGroup = async (
       }).lean<User>();
       if (!response) {
         logger.info(
-          `MongoDB: Group ${groupCode} with creator ${username} not found`
+          `MongoDB: Group ${groupCode} with creator ${username} not found`,
         );
         return makeSuccessResult(null);
       }
@@ -70,13 +70,13 @@ export const findGroup = async (
 
 export const saveGroupCode = async (
   groupCode: string,
-  username: string
+  username: string,
 ): Promise<Result<User | null, MongoDbError>> => {
   try {
     const response = await UserModel.findOneAndUpdate(
       { username },
       { groupCode },
-      { new: true, fields: "groupCode" }
+      { new: true, fields: "groupCode" },
     ).lean<User>();
     if (groupCode === "0") {
       logger.info(`MongoDB: User ${username} left group`);
@@ -87,7 +87,7 @@ export const saveGroupCode = async (
   } catch (error) {
     logger.error(
       `MongoDB: Error storing group ${groupCode} stored for user ${username}: %s`,
-      error
+      error,
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }

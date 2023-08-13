@@ -11,7 +11,7 @@ import { RunRandomAndPadgInput } from "server/typings/result.typings";
 export const getRunRandomAndPadgInput = (
   players: readonly User[],
   games: readonly Game[],
-  startTime: string
+  startTime: string,
 ): RunRandomAndPadgInput => {
   const startingGames = getStartingGames(games, startTime);
 

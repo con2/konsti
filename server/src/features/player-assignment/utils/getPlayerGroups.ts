@@ -2,7 +2,7 @@ import _ from "lodash";
 import { User } from "shared/typings/models/user";
 
 export const getPlayerGroups = (
-  players: readonly User[]
+  players: readonly User[],
 ): readonly User[][] => {
   const groupedUsers = _.groupBy(players, "groupCode");
 

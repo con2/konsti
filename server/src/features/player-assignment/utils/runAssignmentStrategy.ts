@@ -26,14 +26,14 @@ export const runAssignmentStrategy = (
   players: readonly User[],
   games: readonly Game[],
   startTime: string,
-  signups: readonly Signup[]
+  signups: readonly Signup[],
 ): Result<PlayerAssignmentResult, AssignmentError> => {
   logger.info(
-    `Received data for ${players.length} players and ${games.length} games`
+    `Received data for ${players.length} players and ${games.length} games`,
   );
 
   logger.info(
-    `Assigning players for games starting at ${startTime.toString()}`
+    `Assigning players for games starting at ${startTime.toString()}`,
   );
 
   logger.info(`Assign strategy: ${assignmentStrategy}`);
@@ -68,7 +68,7 @@ export const runAssignmentStrategy = (
 const runMunkresStrategy = (
   players: readonly User[],
   games: readonly Game[],
-  startTime: string
+  startTime: string,
 ): Result<PlayerAssignmentResult, AssignmentError> => {
   const munkresResultResult = munkresAssignPlayers(players, games, startTime);
   if (isErrorResult(munkresResultResult)) {
@@ -81,7 +81,7 @@ const runMunkresStrategy = (
 const runGroupStrategy = (
   players: readonly User[],
   games: readonly Game[],
-  startTime: string
+  startTime: string,
 ): Result<PlayerAssignmentResult, AssignmentError> => {
   const groupResultResult = groupAssignPlayers(players, games, startTime);
   if (isErrorResult(groupResultResult)) {
@@ -95,13 +95,13 @@ const runPadgStrategy = (
   players: readonly User[],
   games: readonly Game[],
   startTime: string,
-  signups: readonly Signup[]
+  signups: readonly Signup[],
 ): Result<PlayerAssignmentResult, AssignmentError> => {
   const padgResultResult = padgAssignPlayers(
     players,
     games,
     startTime,
-    signups
+    signups,
   );
   if (isErrorResult(padgResultResult)) {
     return padgResultResult;
@@ -114,13 +114,13 @@ const runRandomStrategy = (
   players: readonly User[],
   games: readonly Game[],
   startTime: string,
-  signups: readonly Signup[]
+  signups: readonly Signup[],
 ): Result<PlayerAssignmentResult, AssignmentError> => {
   const randomResultResult = randomAssignPlayers(
     players,
     games,
     startTime,
-    signups
+    signups,
   );
   if (isErrorResult(randomResultResult)) {
     return randomResultResult;
@@ -133,13 +133,13 @@ const runGroupPadgStrategy = (
   players: readonly User[],
   games: readonly Game[],
   startTime: string,
-  signups: readonly Signup[]
+  signups: readonly Signup[],
 ): Result<PlayerAssignmentResult, AssignmentError> => {
   const groupResultResult = groupAssignPlayers(players, games, startTime);
   if (isErrorResult(groupResultResult)) {
     logger.error(
       "%s",
-      new Error(`Group assignment failed: ${groupResultResult.error}`)
+      new Error(`Group assignment failed: ${groupResultResult.error}`),
     );
   }
   const groupResult = isErrorResult(groupResultResult)
@@ -155,12 +155,12 @@ const runGroupPadgStrategy = (
     players,
     games,
     startTime,
-    signups
+    signups,
   );
   if (isErrorResult(padgResultResult)) {
     logger.error(
       "%s",
-      new Error(`PADG assignment failed: ${padgResultResult.error}`)
+      new Error(`PADG assignment failed: ${padgResultResult.error}`),
     );
   }
   const padgResult = isErrorResult(padgResultResult)
@@ -175,13 +175,13 @@ const runGroupPadgStrategy = (
   if (isErrorResult(groupResultResult) && isErrorResult(padgResultResult)) {
     logger.error(
       "%s",
-      new Error(`Both group and PADG assignments failed, stop assignment`)
+      new Error(`Both group and PADG assignments failed, stop assignment`),
     );
     return makeErrorResult(AssignmentError.UNKNOWN_ERROR);
   }
 
   logger.info(
-    `Group result: ${groupResult.results.length} players, Padg result: ${padgResult.results.length} players`
+    `Group result: ${groupResult.results.length} players, Padg result: ${padgResult.results.length} players`,
   );
 
   if (
@@ -200,18 +200,18 @@ const runRandomPadgStrategy = (
   players: readonly User[],
   games: readonly Game[],
   startTime: string,
-  signups: readonly Signup[]
+  signups: readonly Signup[],
 ): Result<PlayerAssignmentResult, AssignmentError> => {
   const randomResultResult = randomAssignPlayers(
     players,
     games,
     startTime,
-    signups
+    signups,
   );
   if (isErrorResult(randomResultResult)) {
     logger.error(
       "%s",
-      new Error(`Random assignment failed: ${randomResultResult.error}`)
+      new Error(`Random assignment failed: ${randomResultResult.error}`),
     );
   }
   const randomResult = isErrorResult(randomResultResult)
@@ -227,12 +227,12 @@ const runRandomPadgStrategy = (
     players,
     games,
     startTime,
-    signups
+    signups,
   );
   if (isErrorResult(padgResultResult)) {
     logger.error(
       "%s",
-      new Error(`PADG assignment failed: ${padgResultResult.error}`)
+      new Error(`PADG assignment failed: ${padgResultResult.error}`),
     );
   }
   const padgResult = isErrorResult(padgResultResult)
@@ -247,13 +247,13 @@ const runRandomPadgStrategy = (
   if (isErrorResult(randomResultResult) && isErrorResult(padgResultResult)) {
     logger.error(
       "%s",
-      new Error(`Both random and PADG assignments failed, stop assignment`)
+      new Error(`Both random and PADG assignments failed, stop assignment`),
     );
     return makeErrorResult(AssignmentError.UNKNOWN_ERROR);
   }
 
   logger.info(
-    `Random result: ${randomResult.results.length} players, Padg result: ${padgResult.results.length} players`
+    `Random result: ${randomResult.results.length} players, Padg result: ${padgResult.results.length} players`,
   );
 
   if (

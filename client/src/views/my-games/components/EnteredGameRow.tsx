@@ -29,7 +29,7 @@ export const EnteredGameRow = ({
 
   const username = useAppSelector((state) => state.login.username);
   const signupQuestions = useAppSelector(
-    (state) => state.admin.signupQuestions
+    (state) => state.admin.signupQuestions,
   );
 
   const [loading, setLoading] = useState(false);
@@ -38,7 +38,7 @@ export const EnteredGameRow = ({
     useState<DeleteEnteredGameErrorMessage | null>(null);
 
   const signupQuestion = signupQuestions.find(
-    (question) => question.gameId === signup.gameDetails.gameId
+    (question) => question.gameId === signup.gameDetails.gameId,
   );
 
   const removeSignup = async (): Promise<void> => {
@@ -48,7 +48,7 @@ export const EnteredGameRow = ({
         username,
         startTime: signup.gameDetails.startTime,
         enteredGameId: signup.gameDetails.gameId,
-      })
+      }),
     );
 
     if (errorMessage) {

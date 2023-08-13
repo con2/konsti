@@ -41,7 +41,7 @@ export const getGamesFromKompassi = async (): Promise<
   if (!Array.isArray(eventProgramItems)) {
     logger.error(
       "%s",
-      new Error("Invalid Kompassi response format, should be array")
+      new Error("Invalid Kompassi response format, should be array"),
     );
     return makeErrorResult(KompassiError.INVALID_RESPONSE);
   }
@@ -83,9 +83,9 @@ const getProgramFromLocalFile = (): Result<
   const rawData = fs.readFileSync(
     path.join(
       __dirname,
-      `../../../test/kompassi-data-dumps/${localKompassiFile}`
+      `../../../test/kompassi-data-dumps/${localKompassiFile}`,
     ),
-    "utf8"
+    "utf8",
   );
 
   return makeSuccessResult(JSON.parse(rawData));
@@ -109,7 +109,7 @@ const checkUnknownKeys = (programItems: EventProgramItem[]): void => {
   const unknownKeys: string[] = programItems.flatMap((programItem) => {
     return Object.keys(programItem).filter(
       (key) =>
-        !Object.prototype.hasOwnProperty.call(KompassiGameSchema.shape, key)
+        !Object.prototype.hasOwnProperty.call(KompassiGameSchema.shape, key),
     );
   });
 
@@ -117,14 +117,16 @@ const checkUnknownKeys = (programItems: EventProgramItem[]): void => {
     logger.error(
       "%s",
       new Error(
-        `Found unknown keys for program items: ${_.uniq(unknownKeys).join(" ")}`
-      )
+        `Found unknown keys for program items: ${_.uniq(unknownKeys).join(
+          " ",
+        )}`,
+      ),
     );
   }
 };
 
 const parseProgramItem = (
-  programItem: EventProgramItem
+  programItem: EventProgramItem,
 ): EventProgramItem | undefined => {
   const result = KompassiGameSchema.safeParse(programItem);
 
@@ -137,8 +139,8 @@ const parseProgramItem = (
       logger.error(
         "%s",
         new Error(
-          `Invalid program item ${programItem.identifier} at path ${issue.path}: ${issue.message}`
-        )
+          `Invalid program item ${programItem.identifier} at path ${issue.path}: ${issue.message}`,
+        ),
       );
     });
     return;
@@ -146,12 +148,12 @@ const parseProgramItem = (
 
   logger.error(
     `Unknown error while parsing game ${programItem.identifier}: %s`,
-    result.error
+    result.error,
   );
 };
 
 const getGamesFromFullProgram = (
-  programItems: EventProgramItem[]
+  programItems: EventProgramItem[],
 ): KompassiGame[] => {
   const matchingProgramItems: EventProgramItem[] = programItems.flatMap(
     (programItem) => {
@@ -170,7 +172,7 @@ const getGamesFromFullProgram = (
       // Take 'Experience Point' and 'Other' program items where "ropecon2023_signuplist": "konsti"
       if (
         experiencePointAndOtherProgramTypes.includes(
-          programItem.category_title
+          programItem.category_title,
         ) &&
         programItem.ropecon2023_signuplist !== KompassiSignupType.KONSTI
       ) {
@@ -186,7 +188,7 @@ const getGamesFromFullProgram = (
       }
 
       return programItem;
-    }
+    },
   );
 
   logger.info(`Found ${matchingProgramItems.length} matching program items`);
@@ -197,13 +199,13 @@ const getGamesFromFullProgram = (
     (programItem) => {
       const result = parseProgramItem(programItem);
       return result ?? [];
-    }
+    },
   );
 
   if (kompassiGames.length === 0) {
     logger.error(
       "%s",
-      new Error("No program items with known categories found")
+      new Error("No program items with known categories found"),
     );
     return [];
   }

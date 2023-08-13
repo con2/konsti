@@ -31,7 +31,7 @@ const myGamesSlice = createSlice({
 
     submitPostSignedGamesAsync(
       state,
-      action: PayloadAction<readonly SelectedGame[]>
+      action: PayloadAction<readonly SelectedGame[]>,
     ) {
       return { ...state, signedGames: action.payload };
     },
@@ -43,7 +43,7 @@ const myGamesSlice = createSlice({
 
     submitDeleteEnteredAsync(state, action: PayloadAction<string>) {
       const games = state.enteredGames.filter(
-        (game) => game.gameDetails.gameId !== action.payload
+        (game) => game.gameDetails.gameId !== action.payload,
       );
       return { ...state, enteredGames: games };
     },
@@ -76,16 +76,17 @@ export const selectActiveEnteredGames = createSelector(
   [selectEnteredGames, selectActiveProgramType],
   (enteredGames, activeProgramType) => {
     return enteredGames.filter(
-      (enteredGame) => enteredGame.gameDetails.programType === activeProgramType
+      (enteredGame) =>
+        enteredGame.gameDetails.programType === activeProgramType,
     );
-  }
+  },
 );
 
 export const selectActiveSignedGames = createSelector(
   [selectSignedGames, selectActiveProgramType],
   (signedGames, activeProgramType) => {
     return signedGames.filter(
-      (signedGame) => signedGame.gameDetails.programType === activeProgramType
+      (signedGame) => signedGame.gameDetails.programType === activeProgramType,
     );
-  }
+  },
 );

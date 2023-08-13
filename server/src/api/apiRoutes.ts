@@ -82,7 +82,7 @@ apiRoutes.get(ApiEndpoint.GAMES, getGames);
 apiRoutes.get(ApiEndpoint.USERS, getUser);
 apiRoutes.get(
   ApiEndpoint.USERS_BY_SERIAL_OR_USERNAME,
-  getUserBySerialOrUsername
+  getUserBySerialOrUsername,
 );
 apiRoutes.get(ApiEndpoint.SETTINGS, getSettings);
 apiRoutes.get(ApiEndpoint.RESULTS, getResults);

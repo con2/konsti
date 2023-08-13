@@ -43,7 +43,7 @@ export const fetchSettings = async (): Promise<
 };
 
 export const storeHidden = async (
-  hiddenData: readonly Game[]
+  hiddenData: readonly Game[],
 ): Promise<PostHiddenResponse | ApiError> => {
   const settingsResult = await saveHidden(hiddenData);
   if (isErrorResult(settingsResult)) {
@@ -57,7 +57,7 @@ export const storeHidden = async (
   const settings = unwrapResult(settingsResult);
 
   const removeHiddenGamesFromUsersResult = await removeHiddenGamesFromUsers(
-    settings.hiddenGames
+    settings.hiddenGames,
   );
   if (isErrorResult(removeHiddenGamesFromUsersResult)) {
     return {
@@ -75,7 +75,7 @@ export const storeHidden = async (
 };
 
 export const storeSignupQuestion = async (
-  signupQuestionData: SignupQuestion
+  signupQuestionData: SignupQuestion,
 ): Promise<PostSignupQuestionResponse | ApiError> => {
   const saveSignupQuestionResult = await saveSignupQuestion(signupQuestionData);
   if (isErrorResult(saveSignupQuestionResult)) {
@@ -96,7 +96,7 @@ export const storeSignupQuestion = async (
 };
 
 export const removeSignupQuestion = async (
-  gameId: string
+  gameId: string,
 ): Promise<PostSignupQuestionResponse | ApiError> => {
   const delSignupQuestionResult = await delSignupQuestion(gameId);
   if (isErrorResult(delSignupQuestionResult)) {
@@ -117,7 +117,7 @@ export const removeSignupQuestion = async (
 };
 
 export const updateSettings = async (
-  settings: PostSettingsRequest
+  settings: PostSettingsRequest,
 ): Promise<PostSettingsResponse | ApiError> => {
   const saveSettingsResult = await saveSettings(settings);
   if (isErrorResult(saveSettingsResult)) {

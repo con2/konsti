@@ -36,7 +36,7 @@ export const removeInvalidGamesFromUsers = async (): Promise<
 
     if (changedSignedGamesCount > 0) {
       logger.info(
-        `Remove ${changedSignedGamesCount} invalid signedGames from user ${user.username}`
+        `Remove ${changedSignedGamesCount} invalid signedGames from user ${user.username}`,
       );
     }
 
@@ -51,7 +51,7 @@ export const removeInvalidGamesFromUsers = async (): Promise<
 
     if (changedFavoritedGamesCount > 0) {
       logger.info(
-        `Remove ${changedFavoritedGamesCount} invalid favoritedGames from user ${user.username}`
+        `Remove ${changedFavoritedGamesCount} invalid favoritedGames from user ${user.username}`,
       );
     }
 

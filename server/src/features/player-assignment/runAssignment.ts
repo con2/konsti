@@ -73,7 +73,7 @@ export const runAssignment = async ({
     const matchingSignedGames = user.signedGames.filter(
       (signedGame) =>
         !directSignupAlwaysOpenIds.includes(signedGame.gameDetails.gameId) &&
-        signedGame.gameDetails.programType === ProgramType.TABLETOP_RPG
+        signedGame.gameDetails.programType === ProgramType.TABLETOP_RPG,
     );
 
     return { ...user, signedGames: matchingSignedGames };
@@ -89,7 +89,7 @@ export const runAssignment = async ({
   const filteredGames = games.filter(
     (game) =>
       !directSignupAlwaysOpenIds.includes(game.gameId) &&
-      game.programType === ProgramType.TABLETOP_RPG
+      game.programType === ProgramType.TABLETOP_RPG,
   );
 
   const signupsResult = await findSignups();
@@ -103,7 +103,7 @@ export const runAssignment = async ({
     filteredUsers,
     filteredGames,
     assignmentTime,
-    signups
+    signups,
   );
   if (isErrorResult(assignResultsResult)) {
     return assignResultsResult;
@@ -113,8 +113,8 @@ export const runAssignment = async ({
   if (assignResults.results.length === 0) {
     logger.warn(
       `No assign results for start time ${assignmentTime}: ${JSON.stringify(
-        assignResults
-      )}`
+        assignResults,
+      )}`,
     );
     return makeSuccessResult(assignResults);
   }
@@ -132,7 +132,7 @@ export const runAssignment = async ({
   if (config.enableRemoveOverlapSignups) {
     logger.info("Remove overlapping signups");
     const removeOverlapSignupsResult = await removeOverlapSignups(
-      assignResults.results
+      assignResults.results,
     );
     if (isErrorResult(removeOverlapSignupsResult)) {
       return removeOverlapSignupsResult;

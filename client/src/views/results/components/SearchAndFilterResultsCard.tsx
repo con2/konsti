@@ -24,7 +24,7 @@ export const SearchAndFilterResultsCard = ({
   const { t } = useTranslation();
 
   const activeProgramType = useAppSelector(
-    (state) => state.admin.activeProgramType
+    (state) => state.admin.activeProgramType,
   );
 
   const [selectedStartingTime, setSelectedStartingTime] =

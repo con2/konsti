@@ -42,14 +42,14 @@ export const NotificationBar = (): ReactElement | null => {
                     username,
                     eventLogItemId,
                     isSeen: true,
-                  })
+                  }),
                 );
               }}
             />
           </span>
         </StyledNotification>
       );
-    }
+    },
   );
 
   return <NotificationContainer>{errorList}</NotificationContainer>;

@@ -46,13 +46,13 @@ export const verifyUserSignups = async (): Promise<
 
     userSignups.map((userSignup) => {
       const matchingUser = users.find(
-        (user) => user.username === userSignup.username
+        (user) => user.username === userSignup.username,
       );
 
       if (!matchingUser) {
         logger.error(
           "%s",
-          new Error(`No matcing user: ${userSignup.username}`)
+          new Error(`No matcing user: ${userSignup.username}`),
         );
         return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
       }
@@ -67,15 +67,15 @@ export const verifyUserSignups = async (): Promise<
       const matchingCreatorSignedGame = groupCreator.signedGames.find(
         (creatorSignedGame) =>
           creatorSignedGame.gameDetails.gameId === game.gameId &&
-          dayjs(creatorSignedGame.time).isSame(userSignup.time)
+          dayjs(creatorSignedGame.time).isSame(userSignup.time),
       );
 
       if (!matchingCreatorSignedGame) {
         logger.error(
           "%s",
           new Error(
-            `No matching signed game found from group creator: ${userSignup.username} - ${game.title}`
-          )
+            `No matching signed game found from group creator: ${userSignup.username} - ${game.title}`,
+          ),
         );
         return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
       }
@@ -87,12 +87,12 @@ export const verifyUserSignups = async (): Promise<
 
 const getGroupCreator = (
   users: User[],
-  user: User
+  user: User,
 ): Result<User, MongoDbError> => {
   // User is group member, not group creators -> find group creator
   if (user.groupCode !== "0" && user.groupCode !== user.serial) {
     const groupCreator = users.find(
-      (creator) => creator.serial === user.groupCode
+      (creator) => creator.serial === user.groupCode,
     );
 
     if (groupCreator) {
@@ -101,7 +101,7 @@ const getGroupCreator = (
 
     logger.error(
       "%s",
-      new Error(`Group creator not found for user ${user.username}`)
+      new Error(`Group creator not found for user ${user.username}`),
     );
 
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);

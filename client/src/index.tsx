@@ -31,7 +31,7 @@ const App = lazyWithRetry(
   async () =>
     await import(
       /* webpackChunkName: "lazy-loading-fallback" */ "client/components/LazyLoadingFallback"
-    )
+    ),
 );
 
 const { enableAxe, enableWhyDidYouRender } = config;
@@ -94,7 +94,7 @@ const render = (): void => {
           <App />
         </Suspense>
       </ThemeProvider>
-    </Provider>
+    </Provider>,
     // </React.StrictMode>
   );
 };

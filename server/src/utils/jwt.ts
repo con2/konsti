@@ -67,7 +67,7 @@ const getSecret = (userGroup: UserGroup): string => {
 
 export const getJwtResponse = (
   jwt: string,
-  requiredUserGroup: UserGroup | UserGroup[]
+  requiredUserGroup: UserGroup | UserGroup[],
 ): JWTResult => {
   if (Array.isArray(requiredUserGroup)) {
     const responses = requiredUserGroup.map((userGroup) => {

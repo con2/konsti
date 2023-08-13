@@ -7,19 +7,19 @@ import { SelectedGame } from "shared/typings/models/user";
 
 export const getUpcomingGames = (
   games: readonly Game[],
-  offsetByHours = 0
+  offsetByHours = 0,
 ): readonly Game[] => {
   const timeNow = getTimeNow();
 
   const upcomingGames = games.filter((game) =>
-    dayjs(game.startTime).add(offsetByHours, "hours").isSameOrAfter(timeNow)
+    dayjs(game.startTime).add(offsetByHours, "hours").isSameOrAfter(timeNow),
   );
 
   return upcomingGames;
 };
 
 const getUpcomingSignedGames = (
-  signedGames: readonly SelectedGame[]
+  signedGames: readonly SelectedGame[],
 ): readonly SelectedGame[] => {
   const timeNow = getTimeNow();
 
@@ -33,10 +33,10 @@ const getUpcomingSignedGames = (
 };
 
 const getGroupCreator = (
-  groupMembers: readonly GroupMember[]
+  groupMembers: readonly GroupMember[],
 ): GroupMember | null => {
   const groupCreator = groupMembers.find(
-    (member) => member.serial === member.groupCode
+    (member) => member.serial === member.groupCode,
   );
   if (!groupCreator) return null;
   return groupCreator;
@@ -76,24 +76,24 @@ export const getSignedGames = ({
 };
 
 export const getUpcomingEnteredGames = (
-  enteredGames: readonly SelectedGame[]
+  enteredGames: readonly SelectedGame[],
 ): readonly SelectedGame[] => {
   const timeNow = getTimeNow();
 
   const upcomingGames = enteredGames.filter((enteredGame) =>
-    dayjs(enteredGame.gameDetails.startTime).add(1, "hours").isAfter(timeNow)
+    dayjs(enteredGame.gameDetails.startTime).add(1, "hours").isAfter(timeNow),
   );
 
   return upcomingGames;
 };
 
 export const getUpcomingFavorites = (
-  favoritedGames: readonly Game[]
+  favoritedGames: readonly Game[],
 ): readonly Game[] => {
   const timeNow = getTimeNow();
 
   const upcomingGames = favoritedGames.filter((favoritedGame) =>
-    dayjs(favoritedGame.startTime).add(1, "hours").isAfter(timeNow)
+    dayjs(favoritedGame.startTime).add(1, "hours").isAfter(timeNow),
   );
 
   return upcomingGames;

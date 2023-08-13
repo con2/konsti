@@ -15,7 +15,7 @@ import {
 
 export const getGroups = (
   playerGroups: readonly User[][],
-  startTime: string
+  startTime: string,
 ): Result<Group[], AssignmentError> => {
   const results = playerGroups.map((playerGroup) => {
     const firstMember = _.first(playerGroup);
@@ -26,12 +26,12 @@ export const getGroups = (
 
     const signedGamesForStartTime = firstMember.signedGames.filter(
       (signedGame) =>
-        dayjs(signedGame.time).toISOString() === dayjs(startTime).toISOString()
+        dayjs(signedGame.time).toISOString() === dayjs(startTime).toISOString(),
     );
 
     const sortedSignedGames = _.sortBy(
       signedGamesForStartTime,
-      (signedGame) => signedGame.priority
+      (signedGame) => signedGame.priority,
     );
 
     return makeSuccessResult({
@@ -41,7 +41,7 @@ export const getGroups = (
           : firstMember.serial,
       size: playerGroup.length,
       pref: sortedSignedGames.map(
-        (signedGame) => signedGame.gameDetails.gameId
+        (signedGame) => signedGame.gameDetails.gameId,
       ),
     });
   });

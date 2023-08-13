@@ -27,7 +27,7 @@ export const AllGamesList = ({ games }: Props): ReactElement => {
   const activeEnteredGames = useAppSelector(selectActiveEnteredGames);
   const serial = useAppSelector((state) => state.login.serial);
   const activeProgramType = useAppSelector(
-    (state) => state.admin.activeProgramType
+    (state) => state.admin.activeProgramType,
   );
   const groupCode = useAppSelector((state) => state.group.groupCode);
   const groupMembers = useAppSelector((state) => state.group.groupMembers);
@@ -52,7 +52,7 @@ export const AllGamesList = ({ games }: Props): ReactElement => {
     ([startTime, gamesForStartTime]) => {
       const timeslotSignupStrategy = getTimeslotSignupStrategy(
         gamesForStartTime,
-        activeProgramType
+        activeProgramType,
       );
 
       return (
@@ -68,7 +68,7 @@ export const AllGamesList = ({ games }: Props): ReactElement => {
 
           {gamesForStartTime.map((game) => {
             const gameSignups = signups.find(
-              (gameSignup) => gameSignup.gameId === game.gameId
+              (gameSignup) => gameSignup.gameId === game.gameId,
             );
 
             return (
@@ -86,7 +86,7 @@ export const AllGamesList = ({ games }: Props): ReactElement => {
           })}
         </div>
       );
-    }
+    },
   );
 
   return (
@@ -96,7 +96,7 @@ export const AllGamesList = ({ games }: Props): ReactElement => {
           <NoGamesText>
             {t("noProgramItemsAvailable", {
               PROGRAM_TYPE: t(
-                `programTypePartitivePlural.${activeProgramType}`
+                `programTypePartitivePlural.${activeProgramType}`,
               ),
             })}
           </NoGamesText>

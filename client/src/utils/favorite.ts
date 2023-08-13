@@ -11,7 +11,7 @@ export interface UpdateFavoriteOpts {
 }
 
 export const updateFavorite = async (
-  updateFavoriteOpts: UpdateFavoriteOpts
+  updateFavoriteOpts: UpdateFavoriteOpts,
 ): Promise<void> => {
   const { game, action, favoritedGames, username, dispatch } =
     updateFavoriteOpts;
@@ -19,10 +19,10 @@ export const updateFavorite = async (
   if (!game?.gameId) return;
 
   const gameIndex = favoritedGames.findIndex(
-    (favoritedGame) => favoritedGame.gameId === game.gameId
+    (favoritedGame) => favoritedGame.gameId === game.gameId,
   );
   const favoritedGameIds = favoritedGames.map(
-    (favoritedGame) => favoritedGame.gameId
+    (favoritedGame) => favoritedGame.gameId,
   );
 
   if (action === "add" && gameIndex === -1) {
@@ -36,7 +36,7 @@ export const updateFavorite = async (
       submitUpdateFavorites({
         username,
         favoritedGameIds,
-      })
+      }),
     );
   } catch (error) {
     // eslint-disable-next-line no-restricted-syntax -- TODO: Remove throw

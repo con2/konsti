@@ -4,7 +4,7 @@ import { Game } from "shared/typings/models/game";
 
 export const getStartingGames = (
   games: readonly Game[],
-  startTime: string
+  startTime: string,
 ): readonly Game[] => {
   logger.debug("Get starting games");
   const startingGames = [] as Game[];

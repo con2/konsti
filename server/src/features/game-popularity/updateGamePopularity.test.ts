@@ -86,11 +86,11 @@ test(`Should update game popularity`, async () => {
   const updatedGames = unsafelyUnwrapResult(updatedGamesResult);
   expect(updatedGames.length).toEqual(2);
   const updatedFirstGame = updatedGames.find(
-    (game) => game.gameId === testGame.gameId
+    (game) => game.gameId === testGame.gameId,
   );
   expect(updatedFirstGame?.popularity).toEqual(2);
   const updatedSecondGame = updatedGames.find(
-    (game) => game.gameId === testGame2.gameId
+    (game) => game.gameId === testGame2.gameId,
   );
   expect(updatedSecondGame?.popularity).toEqual(0);
 });
@@ -150,12 +150,12 @@ test(`Should only update game popularity of upcoming program items`, async () =>
   expect(updatedGames.length).toEqual(2);
 
   const updatedFirstGame = updatedGames.find(
-    (game) => game.gameId === testGame.gameId
+    (game) => game.gameId === testGame.gameId,
   );
   expect(updatedFirstGame?.popularity).toEqual(0);
 
   const updatedSecondGame = updatedGames.find(
-    (game) => game.gameId === testGame2.gameId
+    (game) => game.gameId === testGame2.gameId,
   );
   expect(updatedSecondGame?.popularity).toEqual(1);
 });

@@ -9,7 +9,7 @@ import {
 import { MongoDbError } from "shared/typings/api/errors";
 
 export const saveFeedback = async (
-  feedbackData: Feedback
+  feedbackData: Feedback,
 ): Promise<Result<void, MongoDbError>> => {
   const feedback = new FeedbackModel({
     gameId: feedbackData.gameId,

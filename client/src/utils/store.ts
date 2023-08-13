@@ -25,7 +25,7 @@ export const combinedReducer = combineReducers({
 // Reducer to reset state
 const rootReducer = (
   state: RootState | undefined,
-  action: AnyAction
+  action: AnyAction,
 ): CombinedState<RootState> => {
   if (action.type === SUBMIT_LOGOUT) {
     const newState = combinedReducer(undefined, action);
@@ -91,7 +91,7 @@ const sentryReduxEnhancer = createReduxEnhancer({
           gameDetails: signedGame?.gameDetails?.gameId,
         })),
         favoritedGames: state?.myGames?.favoritedGames?.map(
-          (favoritedGame) => favoritedGame?.gameId
+          (favoritedGame) => favoritedGame?.gameId,
         ),
       },
     };

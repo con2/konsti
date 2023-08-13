@@ -61,7 +61,7 @@ test("Assignment with valid data should return success with group+padg strategy"
     newGamesCount,
     groupSize,
     numberOfGroups,
-    testUsersCount
+    testUsersCount,
   );
 
   const assignmentStrategy = AssignmentStrategy.GROUP_PADG;
@@ -77,11 +77,11 @@ test("Assignment with valid data should return success with group+padg strategy"
 
   expect(assignResults.status).toEqual("success");
   expect(assignResults.results.length).toBeGreaterThanOrEqual(
-    expectedResultsCount
+    expectedResultsCount,
   );
 
   const groupResults = assignResults.results.filter((result) =>
-    groupTestUsers.includes(result.username)
+    groupTestUsers.includes(result.username),
   );
 
   if (groupResults.length) {
@@ -103,11 +103,11 @@ test("Assignment with valid data should return success with group+padg strategy"
 
   expect(assignResults2.status).toEqual("success");
   expect(assignResults2.results.length).toBeGreaterThanOrEqual(
-    expectedResultsCount
+    expectedResultsCount,
   );
 
   const groupResults2 = assignResults2.results.filter((result) =>
-    groupTestUsers.includes(result.username)
+    groupTestUsers.includes(result.username),
   );
 
   if (groupResults2.length) {
@@ -132,7 +132,7 @@ test("Assignment with no games should return error with group+padg strategy", as
     newGamesCount,
     groupSize,
     numberOfGroups,
-    testUsersCount
+    testUsersCount,
   );
 
   const assignmentStrategy = AssignmentStrategy.GROUP_PADG;
@@ -145,7 +145,7 @@ test("Assignment with no games should return error with group+padg strategy", as
   const assignResults = unsafelyUnwrapResult(assignResultsResult);
 
   expect(assignResults.status).toEqual(
-    AssignmentResultStatus.NO_STARTING_GAMES
+    AssignmentResultStatus.NO_STARTING_GAMES,
   );
 });
 
@@ -161,7 +161,7 @@ test("Assignment with no players should return error with group+padg strategy", 
     newGamesCount,
     groupSize,
     numberOfGroups,
-    testUsersCount
+    testUsersCount,
   );
 
   const assignmentStrategy = AssignmentStrategy.GROUP_PADG;
@@ -178,7 +178,7 @@ test("Assignment with no players should return error with group+padg strategy", 
 
 test("If group assignment fails, should return PADG result", async () => {
   vi.spyOn(groupAssign, "groupAssignPlayers").mockReturnValueOnce(
-    makeErrorResult(AssignmentError.UNKNOWN_ERROR)
+    makeErrorResult(AssignmentError.UNKNOWN_ERROR),
   );
 
   const assignmentStrategy = AssignmentStrategy.GROUP_PADG;
@@ -192,13 +192,13 @@ test("If group assignment fails, should return PADG result", async () => {
   const assignResults = unsafelyUnwrapResult(assignResultsResult);
   expect(assignResults.algorithm).toEqual(AssignmentStrategy.PADG);
   expect(assignResults.status).toEqual(
-    AssignmentResultStatus.NO_STARTING_GAMES
+    AssignmentResultStatus.NO_STARTING_GAMES,
   );
 });
 
 test("If PADG assignment fails, should return group result", async () => {
   vi.spyOn(padgAssign, "padgAssignPlayers").mockReturnValueOnce(
-    makeErrorResult(AssignmentError.UNKNOWN_ERROR)
+    makeErrorResult(AssignmentError.UNKNOWN_ERROR),
   );
 
   const assignmentStrategy = AssignmentStrategy.GROUP_PADG;
@@ -212,16 +212,16 @@ test("If PADG assignment fails, should return group result", async () => {
   const assignResults = unsafelyUnwrapResult(assignResultsResult);
   expect(assignResults.algorithm).toEqual(AssignmentStrategy.GROUP);
   expect(assignResults.status).toEqual(
-    AssignmentResultStatus.NO_STARTING_GAMES
+    AssignmentResultStatus.NO_STARTING_GAMES,
   );
 });
 
 test("If both assignments fail, should return error result", async () => {
   vi.spyOn(groupAssign, "groupAssignPlayers").mockReturnValueOnce(
-    makeErrorResult(AssignmentError.UNKNOWN_ERROR)
+    makeErrorResult(AssignmentError.UNKNOWN_ERROR),
   );
   vi.spyOn(padgAssign, "padgAssignPlayers").mockReturnValueOnce(
-    makeErrorResult(AssignmentError.UNKNOWN_ERROR)
+    makeErrorResult(AssignmentError.UNKNOWN_ERROR),
   );
 
   const assignmentStrategy = AssignmentStrategy.GROUP_PADG;

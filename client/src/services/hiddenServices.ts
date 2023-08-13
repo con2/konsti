@@ -8,13 +8,13 @@ import {
 } from "shared/typings/api/settings";
 
 export const postHidden = async (
-  hiddenData: readonly Game[]
+  hiddenData: readonly Game[],
 ): Promise<PostHiddenResponse | ApiError> => {
   const response = await api.post<PostHiddenResponse, PostHiddenRequest>(
     ApiEndpoint.HIDDEN,
     {
       hiddenData,
-    }
+    },
   );
   return response.data;
 };

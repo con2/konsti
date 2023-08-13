@@ -11,13 +11,13 @@ import { storeSignedGames } from "server/features/user/signed-game/signedGameSer
 
 export const postSignedGames = async (
   req: Request<{}, {}, PostSignedGamesRequest>,
-  res: Response
+  res: Response,
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.SIGNED_GAME}`);
 
   const username = getAuthorizedUsername(
     req.headers.authorization,
-    UserGroup.USER
+    UserGroup.USER,
   );
   if (!username) {
     return res.sendStatus(401);
@@ -27,7 +27,7 @@ export const postSignedGames = async (
   if (!result.success) {
     logger.error(
       "%s",
-      new Error(`Error validating postSignedGames body: ${result.error}`)
+      new Error(`Error validating postSignedGames body: ${result.error}`),
     );
     return res.sendStatus(422);
   }

@@ -24,7 +24,7 @@ const groupSlice = createSlice({
 
     submitUpdateGroupAsync(
       state,
-      action: PayloadAction<readonly GroupMember[]>
+      action: PayloadAction<readonly GroupMember[]>,
     ) {
       return {
         ...state,

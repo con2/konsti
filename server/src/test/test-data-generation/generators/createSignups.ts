@@ -23,7 +23,7 @@ export const createSignups = async (): Promise<void> => {
   const settings = unsafelyUnwrapResult(findSettingsResult);
 
   const users = allUsers.filter(
-    (user) => user.username !== "admin" && user.username !== "helper"
+    (user) => user.username !== "admin" && user.username !== "helper",
   );
 
   logger.info(`Signups: ${games.length} games`);
@@ -43,7 +43,7 @@ export const createSignups = async (): Promise<void> => {
         }
 
         const foundSignupQuestion = settings.signupQuestions.find(
-          (signupQuestion) => signupQuestion.gameId === randomGame.gameId
+          (signupQuestion) => signupQuestion.gameId === randomGame.gameId,
         );
 
         const usersCount = getRandomInt(1, randomGame.maxAttendance);
@@ -63,7 +63,7 @@ export const createSignups = async (): Promise<void> => {
           });
         });
       });
-    }
+    },
   );
 
   await Promise.all(promises);

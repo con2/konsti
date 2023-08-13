@@ -12,7 +12,7 @@ import {
 export const buildSignupResults = (
   results: readonly number[][],
   signedGames: readonly Game[],
-  players: readonly User[]
+  players: readonly User[],
 ): Result<readonly AssignmentResult[], AssignmentError> => {
   const signupResults: AssignmentResult[] = [];
 
@@ -34,13 +34,13 @@ export const buildSignupResults = (
       if (selectedRow < attendanceRange) {
         const enteredGame = findEnteredGame(
           signedGames[j],
-          players[selectedPlayer].signedGames
+          players[selectedPlayer].signedGames,
         );
 
         if (!enteredGame) {
           logger.error(
             "%s",
-            new Error("Unable to find entered game from signed games")
+            new Error("Unable to find entered game from signed games"),
           );
           return makeErrorResult(AssignmentError.UNKNOWN_ERROR);
         }
@@ -58,9 +58,9 @@ export const buildSignupResults = (
 
 const findEnteredGame = (
   enteredGame: Game,
-  signedGames: readonly SelectedGame[]
+  signedGames: readonly SelectedGame[],
 ): SelectedGame | undefined => {
   return signedGames.find(
-    (signedGame) => signedGame.gameDetails.gameId === enteredGame.gameId
+    (signedGame) => signedGame.gameDetails.gameId === enteredGame.gameId,
   );
 };

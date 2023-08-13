@@ -11,7 +11,7 @@ const PostEventLogItemRequestSchema = z.object({
       programItemId: z.string(),
       programItemStartTime: z.string(),
       createdAt: z.string(), // TODO: Should this be date?
-    })
+    }),
   ),
   action: z.nativeEnum(EventLogAction),
 });

@@ -22,7 +22,7 @@ export const LoginForm = (): ReactElement => {
 
   const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
   const [serverError, setServerError] = useState<LoginErrorMessage | null>(
-    null
+    null,
   );
 
   const {
@@ -37,7 +37,7 @@ export const LoginForm = (): ReactElement => {
   });
 
   const onSubmit: SubmitHandler<LoginFormFields> = async (
-    loginFormFields
+    loginFormFields,
   ): Promise<void> => {
     const errorMessage = await dispatch(submitLogin(loginFormFields));
     if (errorMessage) {

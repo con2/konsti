@@ -60,7 +60,7 @@ export const startServer = async ({
         return res.sendStatus(400);
       }
       next();
-    }
+    },
   );
 
   app.use(allowCORS);
@@ -78,7 +78,7 @@ export const startServer = async ({
         expressStaticGzip(staticPath, {
           enableBrotli: true,
           orderPreference: ["br", "gz"],
-        })
+        }),
       );
     } else {
       app.use(express.static(staticPath));
@@ -104,11 +104,11 @@ export const startServer = async ({
   if (process.env.SETTINGS === "CI") {
     const privateKey = fs.readFileSync(
       path.join(__dirname, "../../dev-cert", "server.key"),
-      "utf8"
+      "utf8",
     );
     const certificate = fs.readFileSync(
       path.join(__dirname, "../../dev-cert", "server.cert"),
-      "utf8"
+      "utf8",
     );
 
     server = https.createServer({ key: privateKey, cert: certificate }, app);
@@ -140,7 +140,7 @@ export const startServer = async ({
 
 export const closeServer = async (
   server: Server,
-  signal?: string
+  signal?: string,
 ): Promise<void> => {
   logger.info(`Received signal to terminate: ${signal}`);
   if (config.onlyCronjobs) {

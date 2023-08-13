@@ -51,7 +51,7 @@ export const submitGetSettings = (): AppThunk => {
           appOpen: settingsResponse.appOpen,
           signupQuestions: settingsResponse.signupQuestions,
           signupStrategy: settingsResponse.signupStrategy,
-        })
+        }),
       );
     }
   };
@@ -72,7 +72,7 @@ export const submitToggleAppOpen = (appOpen: boolean): AppThunk => {
 };
 
 export const submitAddSignupQuestion = (
-  signupQuestion: SignupQuestion
+  signupQuestion: SignupQuestion,
 ): AppThunk => {
   return async (dispatch): Promise<void> => {
     const response = await postSignupQuestion({
@@ -109,7 +109,7 @@ export const submitDeleteSignupQuestion = (gameId: string): AppThunk => {
 };
 
 export const submitSetSignupStrategy = (
-  signupStrategy: SignupStrategy
+  signupStrategy: SignupStrategy,
 ): AppThunk => {
   return async (dispatch): Promise<void> => {
     const response = await postSettings({ signupStrategy });
@@ -145,7 +145,7 @@ export const submitGetSentryTest = (): AppThunk => {
 };
 
 export const submitPlayersAssign = (
-  signupTime: string
+  signupTime: string,
 ): AppThunk<Promise<string | undefined>> => {
   return async (dispatch): Promise<string | undefined> => {
     const assignResponse = await postPlayerAssignment(signupTime);
@@ -155,7 +155,7 @@ export const submitPlayersAssign = (
     }
 
     dispatch(
-      submitAssignmentResponseMessageAsync(assignResponse.resultMessage)
+      submitAssignmentResponseMessageAsync(assignResponse.resultMessage),
     );
   };
 };

@@ -16,7 +16,7 @@ import {
 } from "shared/utils/result";
 
 export const removeHiddenGamesFromUsers = async (
-  hiddenGames: readonly Game[]
+  hiddenGames: readonly Game[],
 ): Promise<Result<void, MongoDbError>> => {
   logger.info(`Remove hidden games from users`);
 
@@ -72,7 +72,7 @@ export const removeHiddenGamesFromUsers = async (
 
   const hiddenGameIds = hiddenGames.map((hiddenGame) => hiddenGame.gameId);
   const resetSignupsByGameIdsResult = await resetSignupsByGameIds(
-    hiddenGameIds
+    hiddenGameIds,
   );
   if (isErrorResult(resetSignupsByGameIdsResult)) {
     return resetSignupsByGameIdsResult;

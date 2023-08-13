@@ -28,7 +28,7 @@ export const runRandomAssignment = (
   signedGames: readonly Game[],
   playerGroups: readonly User[][],
   startTime: string,
-  signups: readonly Signup[]
+  signups: readonly Signup[],
 ): Result<AssignmentStrategyResult, AssignmentError> => {
   const groupsResult = getGroups(playerGroups, startTime);
   if (isErrorResult(groupsResult)) {
@@ -60,8 +60,8 @@ export const runRandomAssignment = (
       new Error(
         `Random assignment failed: ${
           assignResults.msg
-        }. Input: ${JSON.stringify(input)}`
-      )
+        }. Input: ${JSON.stringify(input)}`,
+      ),
     );
     return makeErrorResult(AssignmentError.UNKNOWN_ERROR);
   }
@@ -78,7 +78,7 @@ export const runRandomAssignment = (
 };
 
 const isCheckResult = (
-  assignResults: PadgRandomAssignResults | CheckResult
+  assignResults: PadgRandomAssignResults | CheckResult,
 ): assignResults is CheckResult => {
   return (assignResults as CheckResult).value !== undefined;
 };

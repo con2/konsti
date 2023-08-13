@@ -16,10 +16,10 @@ import { MongoDbError } from "shared/typings/api/errors";
 import { createEmptySignupDocumentForProgramItems } from "server/features/signup/signupRepository";
 
 export const removeGames = async (
-  gameIds?: string[]
+  gameIds?: string[],
 ): Promise<Result<void, MongoDbError>> => {
   logger.info(
-    `MongoDB: remove games from db: ${gameIds ? gameIds.join(", ") : "ALL"}`
+    `MongoDB: remove games from db: ${gameIds ? gameIds.join(", ") : "ALL"}`,
   );
 
   try {
@@ -32,7 +32,7 @@ export const removeGames = async (
 };
 
 export const saveGames = async (
-  games: readonly Game[]
+  games: readonly Game[],
 ): Promise<Result<void, MongoDbError>> => {
   logger.info("MongoDB: Store games to DB");
 
@@ -131,7 +131,7 @@ export const findGames = async (): Promise<Result<GameDoc[], MongoDbError>> => {
 };
 
 export const findGameById = async (
-  gameId: string
+  gameId: string,
 ): Promise<Result<GameDoc, MongoDbError>> => {
   logger.debug(`MongoDB: Find game with id ${gameId}`);
 
@@ -153,7 +153,7 @@ interface PopularityUpdate {
 }
 
 export const saveGamePopularity = async (
-  popularityUpdates: PopularityUpdate[]
+  popularityUpdates: PopularityUpdate[],
 ): Promise<Result<void, MongoDbError>> => {
   const bulkOps = popularityUpdates.map((popularityUpdate) => {
     return {
@@ -171,7 +171,7 @@ export const saveGamePopularity = async (
   try {
     await GameModel.bulkWrite(bulkOps);
     logger.info(
-      `MongoDB: Updated popularity for ${popularityUpdates.length} games`
+      `MongoDB: Updated popularity for ${popularityUpdates.length} games`,
     );
     return makeSuccessResult(undefined);
   } catch (error) {

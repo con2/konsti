@@ -22,7 +22,7 @@ import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 import { sharedConfig } from "shared/config/sharedConfig";
 
 export const kompassiGameMapper = (
-  games: readonly KompassiGame[]
+  games: readonly KompassiGame[],
 ): readonly Game[] => {
   return games.map((game) => {
     return {
@@ -295,7 +295,7 @@ const mapLanguage = (kompassiLanguage: KompassiLanguage): Language => {
 };
 
 const mapAccessibilityValues = (
-  kompassiGame: KompassiGame
+  kompassiGame: KompassiGame,
 ): AccessibilityValue[] => {
   const accessibilityValues = [];
 
@@ -349,7 +349,7 @@ const mapAccessibilityValues = (
 
   if (kompassiGame.ropecon2023_accessibility_programme_duration_over_2_hours) {
     accessibilityValues.push(
-      AccessibilityValue.PROGRAMME_DURATION_OVER_2_HOURS
+      AccessibilityValue.PROGRAMME_DURATION_OVER_2_HOURS,
     );
   }
 
@@ -357,7 +357,7 @@ const mapAccessibilityValues = (
     kompassiGame.ropecon2023_accessibility_limited_opportunities_to_move_around
   ) {
     accessibilityValues.push(
-      AccessibilityValue.LIMITED_OPPORTUNITIES_TO_MOVE_AROUND
+      AccessibilityValue.LIMITED_OPPORTUNITIES_TO_MOVE_AROUND,
     );
   }
 
@@ -369,13 +369,13 @@ const mapAccessibilityValues = (
     kompassiGame.ropecon2023_accessibility_texts_not_available_as_recordings
   ) {
     accessibilityValues.push(
-      AccessibilityValue.TEXT_NOT_AVAILABLE_AS_RECORDINGS
+      AccessibilityValue.TEXT_NOT_AVAILABLE_AS_RECORDINGS,
     );
   }
 
   if (kompassiGame.ropecon2023_accessibility_participation_requires_dexterity) {
     accessibilityValues.push(
-      AccessibilityValue.PARTICIPATION_REQUIRES_DEXTERITY
+      AccessibilityValue.PARTICIPATION_REQUIRES_DEXTERITY,
     );
   }
 
@@ -383,7 +383,7 @@ const mapAccessibilityValues = (
     kompassiGame.ropecon2023_accessibility_participation_requires_react_quickly
   ) {
     accessibilityValues.push(
-      AccessibilityValue.PARTICIPATION_REQUIRES_REACT_QUICKLY
+      AccessibilityValue.PARTICIPATION_REQUIRES_REACT_QUICKLY,
     );
   }
 

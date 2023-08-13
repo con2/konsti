@@ -4,7 +4,7 @@ import { UserGroup } from "shared/typings/models/user";
 
 export const getAuthorizedUsername = (
   authHeader: string | undefined,
-  requiredUserGroup: UserGroup | UserGroup[]
+  requiredUserGroup: UserGroup | UserGroup[],
 ): string | null => {
   logger.debug(`Auth: Require jwt for user group ${requiredUserGroup}`);
 

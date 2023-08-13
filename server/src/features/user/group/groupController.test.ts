@@ -69,7 +69,7 @@ describe(`GET ${ApiEndpoint.GROUP}`, () => {
       .get(ApiEndpoint.GROUP)
       .set(
         "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser2.username)}`
+        `Bearer ${getJWT(UserGroup.USER, mockUser2.username)}`,
       );
     expect(response.status).toEqual(422);
   });
@@ -91,7 +91,7 @@ describe(`GET ${ApiEndpoint.GROUP}`, () => {
       })
       .set(
         "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser2.username)}`
+        `Bearer ${getJWT(UserGroup.USER, mockUser2.username)}`,
       );
 
     expect(response.status).toEqual(200);
@@ -127,7 +127,7 @@ describe(`POST ${ApiEndpoint.GROUP}`, () => {
       .send(groupRequest)
       .set(
         "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`
+        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
       );
 
     expect(response.status).toEqual(200);
@@ -148,7 +148,7 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
       .post(ApiEndpoint.JOIN_GROUP)
       .set(
         "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser2.username)}`
+        `Bearer ${getJWT(UserGroup.USER, mockUser2.username)}`,
       );
     expect(response.status).toEqual(422);
   });
@@ -174,7 +174,7 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
       .send(groupRequest)
       .set(
         "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser2.username)}`
+        `Bearer ${getJWT(UserGroup.USER, mockUser2.username)}`,
       );
 
     expect(response.status).toEqual(200);
@@ -207,7 +207,7 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
       .send(groupRequest)
       .set(
         "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser2.username)}`
+        `Bearer ${getJWT(UserGroup.USER, mockUser2.username)}`,
       );
 
     expect(response.status).toEqual(200);
@@ -230,7 +230,7 @@ describe(`POST ${ApiEndpoint.LEAVE_GROUP}`, () => {
       .post(ApiEndpoint.LEAVE_GROUP)
       .set(
         "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser2.username)}`
+        `Bearer ${getJWT(UserGroup.USER, mockUser2.username)}`,
       );
 
     expect(response.status).toEqual(200);
@@ -251,7 +251,7 @@ describe(`POST ${ApiEndpoint.CLOSE_GROUP}`, () => {
       .post(ApiEndpoint.CLOSE_GROUP)
       .set(
         "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`
+        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
       );
     expect(response.status).toEqual(422);
   });
@@ -269,7 +269,7 @@ describe(`POST ${ApiEndpoint.CLOSE_GROUP}`, () => {
       .send(groupRequest)
       .set(
         "Authorization",
-        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`
+        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
       );
 
     expect(response.status).toEqual(200);

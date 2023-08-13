@@ -23,10 +23,10 @@ export const AdminView = (): ReactElement => {
   const appOpen = useAppSelector((state) => state.admin.appOpen);
   const hiddenGames = useAppSelector((state) => state.admin.hiddenGames);
   const signupQuestions = useAppSelector(
-    (state) => state.admin.signupQuestions
+    (state) => state.admin.signupQuestions,
   );
   const assignmentResponseMessage = useAppSelector(
-    (state) => state.admin.assignmentResponseMessage
+    (state) => state.admin.assignmentResponseMessage,
   );
 
   const dispatch = useAppDispatch();
@@ -67,7 +67,7 @@ export const AdminView = (): ReactElement => {
   const [message, setMessage] = useState<string>("");
   const [messageStyle, setMessageStyle] = useState<string>("");
   const [selectedAssignmentTime, setSelectedAssignmentTime] = useState<string>(
-    assignmentTimeDropdownValues[0].value
+    assignmentTimeDropdownValues[0].value,
   );
 
   const showMessage = ({
@@ -95,7 +95,7 @@ export const AdminView = (): ReactElement => {
     setSubmitting(true);
 
     const errorMessage = await dispatch(
-      submitPlayersAssign(selectedAssignmentTime)
+      submitPlayersAssign(selectedAssignmentTime),
     );
 
     if (errorMessage) {

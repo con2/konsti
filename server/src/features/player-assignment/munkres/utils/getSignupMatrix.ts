@@ -4,7 +4,7 @@ import { User } from "shared/typings/models/user";
 
 export const getSignupMatrix = (
   signedGames: readonly Game[],
-  selectedPlayers: readonly User[]
+  selectedPlayers: readonly User[],
 ): number[][] => {
   logger.info("Generate signup matrix");
   // Create matrix for the sorting algorithm

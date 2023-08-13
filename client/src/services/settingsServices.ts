@@ -20,17 +20,17 @@ export const getSettings = async (): Promise<
 };
 
 export const postSettings = async (
-  settings: PostSettingsRequest
+  settings: PostSettingsRequest,
 ): Promise<PostSettingsResponse | ApiError> => {
   const response = await api.post<PostSettingsResponse, PostSettingsRequest>(
     ApiEndpoint.SETTINGS,
-    settings
+    settings,
   );
   return response.data;
 };
 
 export const postSignupQuestion = async (
-  signupQuestion: SignupQuestion
+  signupQuestion: SignupQuestion,
 ): Promise<PostSignupQuestionResponse | ApiError> => {
   const response = await api.post<
     PostSignupQuestionResponse,
@@ -42,7 +42,7 @@ export const postSignupQuestion = async (
 };
 
 export const deleteSignupQuestion = async (
-  gameId: string
+  gameId: string,
 ): Promise<DeleteSignupQuestionResponse | ApiError> => {
   const response = await api.delete<
     DeleteSignupQuestionResponse,

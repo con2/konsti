@@ -40,18 +40,18 @@ export const GroupView = (): ReactElement => {
     .filter(
       (activeEnteredGame) =>
         !directSignupAlwaysOpenIds.includes(
-          activeEnteredGame.gameDetails.gameId
-        )
+          activeEnteredGame.gameDetails.gameId,
+        ),
     )
     .filter(
-      (game) => game.gameDetails.programType === ProgramType.TABLETOP_RPG
+      (game) => game.gameDetails.programType === ProgramType.TABLETOP_RPG,
     );
 
   const isGroupCreator = getIsGroupCreator(groupCode, serial);
   const isInGroup = getIsInGroup(groupCode);
   const timeNow = getTimeNow();
   const enteredGamesAfterNow = filteredActiveEnteredGames.filter((game) =>
-    timeNow.isBefore(dayjs(game.time))
+    timeNow.isBefore(dayjs(game.time)),
   );
   const hasEnteredGames = enteredGamesAfterNow.length > 0;
 

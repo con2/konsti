@@ -25,7 +25,7 @@ export const DirectResults = (): ReactElement => {
 
   const activeGames = useAppSelector(selectActiveGames);
   const activeProgramType = useAppSelector(
-    (state) => state.admin.activeProgramType
+    (state) => state.admin.activeProgramType,
   );
   const signups = useAppSelector((state) => state.allGames.signups);
   const userGroup = useAppSelector((state) => state.login.userGroup);
@@ -37,29 +37,31 @@ export const DirectResults = (): ReactElement => {
   }, [signups, showResults]);
 
   const signupQuestions = useAppSelector(
-    (state) => state.admin.signupQuestions
+    (state) => state.admin.signupQuestions,
   );
   const hiddenGames = useAppSelector((state) => state.admin.hiddenGames);
 
   const [selectedStartingTime, setSelectedStartingTime] = useState<string>(
-    ResultsStartingTimeOption.ALL
+    ResultsStartingTimeOption.ALL,
   );
   const [showSignupMessages, setShowSignupMessages] = useState<string[]>([]);
   const [showPlayers, setShowPlayers] = useState<string[]>([]);
 
   const publicSignupQuestions = signupQuestions.filter(
-    (signupQuestion) => !signupQuestion.private
+    (signupQuestion) => !signupQuestion.private,
   );
 
   // Filter out hidden program items, revolving door workshops and program items without Konsti signup
   const visibleGames = activeGames
     .filter((activeGame) =>
-      hiddenGames.every((hiddenGame) => activeGame.gameId !== hiddenGame.gameId)
+      hiddenGames.every(
+        (hiddenGame) => activeGame.gameId !== hiddenGame.gameId,
+      ),
     )
     .filter((activeGame) => !isRevolvingDoorWorkshop(activeGame))
     .filter(
       (activeGame) =>
-        !sharedConfig.noKonstiSignupIds.includes(activeGame.gameId)
+        !sharedConfig.noKonstiSignupIds.includes(activeGame.gameId),
     );
 
   const filteredGames =
@@ -98,14 +100,14 @@ export const DirectResults = (): ReactElement => {
         users.some((user) =>
           user.username
             .toLocaleLowerCase()
-            .includes(searchTerm.toLocaleLowerCase())
+            .includes(searchTerm.toLocaleLowerCase()),
         )
       );
     });
 
     const gamesByStartTime = _.groupBy<Game>(
       gamesFilteredBySearchTerm,
-      "startTime"
+      "startTime",
     );
 
     setFilteredGamesForListing(gamesByStartTime);
@@ -135,13 +137,13 @@ export const DirectResults = (): ReactElement => {
               <Games>
                 {sortedGamesForTime.map((game) => {
                   const signupQuestion = publicSignupQuestions.find(
-                    (question) => question.gameId === game.gameId
+                    (question) => question.gameId === game.gameId,
                   );
                   const signupMessagesVisible = showSignupMessages.find(
-                    (message) => message === game.gameId
+                    (message) => message === game.gameId,
                   );
                   const playerListVisible = showPlayers.find(
-                    (players) => players === game.gameId
+                    (players) => players === game.gameId,
                   );
                   const users = getUsersForGameId(game.gameId, visibleSignups);
 
@@ -157,8 +159,8 @@ export const DirectResults = (): ReactElement => {
                             if (playerListVisible) {
                               setShowPlayers(
                                 showPlayers.filter(
-                                  (gameId) => gameId !== game.gameId
-                                )
+                                  (gameId) => gameId !== game.gameId,
+                                ),
                               );
                             } else {
                               setShowPlayers([...showPlayers, game.gameId]);
@@ -169,9 +171,9 @@ export const DirectResults = (): ReactElement => {
                             {_.capitalize(
                               t(
                                 `attendeeTypePlural.${getAttendeeType(
-                                  game.programType
-                                )}`
-                              )
+                                  game.programType,
+                                )}`,
+                              ),
                             )}
                             : {users.length}/{game.maxAttendance}
                             {!!signupQuestion &&
@@ -183,8 +185,8 @@ export const DirectResults = (): ReactElement => {
                                     event.stopPropagation();
                                     setShowSignupMessages(
                                       showSignupMessages.filter(
-                                        (message) => message !== game.gameId
-                                      )
+                                        (message) => message !== game.gameId,
+                                      ),
                                     );
                                   }}
                                 />
@@ -209,15 +211,15 @@ export const DirectResults = (): ReactElement => {
                                 ? t("iconAltText.closeAttendeeList", {
                                     ATTENDEE_TYPE: t(
                                       `attendeeType.${getAttendeeType(
-                                        activeProgramType
-                                      )}`
+                                        activeProgramType,
+                                      )}`,
                                     ),
                                   })
                                 : t("iconAltText.openAttendeeList", {
                                     ATTENDEE_TYPE: t(
                                       `attendeeType.${getAttendeeType(
-                                        activeProgramType
-                                      )}`
+                                        activeProgramType,
+                                      )}`,
                                     ),
                                   })
                             }
@@ -237,8 +239,8 @@ export const DirectResults = (): ReactElement => {
                                 {t("resultsView.noSignups", {
                                   ATTENDEE_TYPE: t(
                                     `attendeeTypePlural.${getAttendeeType(
-                                      activeProgramType
-                                    )}`
+                                      activeProgramType,
+                                    )}`,
                                   ),
                                 })}
                               </p>
@@ -261,7 +263,7 @@ export const DirectResults = (): ReactElement => {
               </Games>
             </TimeSlot>
           );
-        }
+        },
       )}
     </div>
   );

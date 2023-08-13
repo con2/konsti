@@ -7,7 +7,7 @@ import {
 } from "shared/typings/api/results";
 
 export const getResults = async (
-  startTime: string
+  startTime: string,
 ): Promise<GetResultsResponse | ApiError> => {
   const response = await api.get<GetResultsResponse, GetResultsRequest>(
     ApiEndpoint.RESULTS,
@@ -15,7 +15,7 @@ export const getResults = async (
       params: {
         startTime,
       },
-    }
+    },
   );
 
   return response.data;

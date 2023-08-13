@@ -51,10 +51,10 @@ export const RegistrationForm = (): ReactElement => {
   });
 
   const onSubmit: SubmitHandler<RegistrationFormFields> = async (
-    registrationFormFields
+    registrationFormFields,
   ): Promise<void> => {
     const errorMessage = await dispatch(
-      submitRegistration(registrationFormFields)
+      submitRegistration(registrationFormFields),
     );
     errorMessage && setServerError(errorMessage);
   };

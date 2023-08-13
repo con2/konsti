@@ -5,7 +5,7 @@ import { ApiError } from "shared/typings/api/errors";
 import { isSuccessResult } from "shared/utils/result";
 
 export const storeFeedback = async (
-  feedbackData: Feedback
+  feedbackData: Feedback,
 ): Promise<PostFeedbackResponse | ApiError> => {
   const feedbackResult = await saveFeedback(feedbackData);
 

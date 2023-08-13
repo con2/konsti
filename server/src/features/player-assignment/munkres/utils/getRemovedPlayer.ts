@@ -1,10 +1,10 @@
 import { PlayerIdWithPriority } from "server/typings/user.typings";
 
 export const getRemovedPlayer = (
-  playersWithTooHighPriority: readonly PlayerIdWithPriority[]
+  playersWithTooHighPriority: readonly PlayerIdWithPriority[],
 ): PlayerIdWithPriority => {
   const randomIndex = Math.floor(
-    Math.random() * playersWithTooHighPriority.length
+    Math.random() * playersWithTooHighPriority.length,
   );
   const removedPlayer = playersWithTooHighPriority[randomIndex];
 

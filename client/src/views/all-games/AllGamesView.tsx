@@ -37,11 +37,11 @@ export const AllGamesView = (): ReactElement => {
     () =>
       activeGames.filter((game) => {
         const hidden = hiddenGames.find(
-          (hiddenGame) => game.gameId === hiddenGame.gameId
+          (hiddenGame) => game.gameId === hiddenGame.gameId,
         );
         if (!hidden) return game;
       }),
-    [activeGames, hiddenGames]
+    [activeGames, hiddenGames],
   );
 
   const store = useStore();
@@ -51,20 +51,21 @@ export const AllGamesView = (): ReactElement => {
 
     const loadSessionStorageValues = (): void => {
       const savedSearchTerm = sessionStorage.getItem(
-        SessionStorageValue.ALL_GAMES_SEARCH_TERM
+        SessionStorageValue.ALL_GAMES_SEARCH_TERM,
       );
       setSearchTerm(savedSearchTerm ?? "");
 
       const savedTag = sessionStorage.getItem(
-        SessionStorageValue.ALL_GAMES_TAG
+        SessionStorageValue.ALL_GAMES_TAG,
       );
       setSelectedTag(savedTag ?? "");
 
       const savedStartingTime = sessionStorage.getItem(
-        SessionStorageValue.ALL_GAMES_STARTING_TIME
+        SessionStorageValue.ALL_GAMES_STARTING_TIME,
       );
       setSelectedStartingTime(
-        (savedStartingTime as StartingTimeOption) ?? StartingTimeOption.UPCOMING
+        (savedStartingTime as StartingTimeOption) ??
+          StartingTimeOption.UPCOMING,
       );
     };
     loadSessionStorageValues();
@@ -79,7 +80,7 @@ export const AllGamesView = (): ReactElement => {
   useEffect(() => {
     sessionStorage.setItem(
       SessionStorageValue.ALL_GAMES_SEARCH_TERM,
-      debouncedSearchTerm
+      debouncedSearchTerm,
     );
 
     if (debouncedSearchTerm.length === 0) {
@@ -99,7 +100,7 @@ export const AllGamesView = (): ReactElement => {
             .toLocaleLowerCase()
             .includes(debouncedSearchTerm.toLocaleLowerCase())
         );
-      }
+      },
     );
 
     setFilteredGames(gamesFilteredBySearchTerm);
@@ -111,7 +112,7 @@ export const AllGamesView = (): ReactElement => {
         games={getVisibleGames(
           filteredGames,
           selectedStartingTime,
-          selectedTag
+          selectedTag,
         )}
       />
     );
@@ -132,7 +133,7 @@ export const AllGamesView = (): ReactElement => {
 const getVisibleGames = (
   games: readonly Game[],
   selectedView: string,
-  selectedTag: string
+  selectedTag: string,
 ): readonly Game[] => {
   const filteredGames = getTagFilteredGames(games, selectedTag);
 
@@ -147,7 +148,7 @@ const getVisibleGames = (
 
 const getTagFilteredGames = (
   games: readonly Game[],
-  selectedTag: string
+  selectedTag: string,
 ): readonly Game[] => {
   if (!selectedTag) return games;
   return games.filter((game) => {

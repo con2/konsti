@@ -18,7 +18,7 @@ export const createSignedGames = async (): Promise<void> => {
   const allUsers = unsafelyUnwrapResult(allUsersResult);
 
   const users = allUsers.filter(
-    (user) => user.username !== "admin" && user.username !== "helper"
+    (user) => user.username !== "admin" && user.username !== "helper",
   );
 
   logger.info(`Signup: ${games.length} games`);
@@ -51,7 +51,7 @@ const getRandomSignup = (games: readonly Game[]): SelectedGame[] => {
     .filter((game) => !sharedConfig.noKonstiSignupIds.includes(game.gameId));
 
   const startTimes = activeGames.map((activeGame) =>
-    dayjs(activeGame.startTime).toISOString()
+    dayjs(activeGame.startTime).toISOString(),
   );
   const uniqueTimes = Array.from(new Set(startTimes));
   const firstFourTimes = uniqueTimes.slice(0, 4);
@@ -62,7 +62,7 @@ const getRandomSignup = (games: readonly Game[]): SelectedGame[] => {
     const gamesForTime = activeGames.filter(
       (activeGame) =>
         dayjs(activeGame.startTime).toISOString() ===
-        dayjs(startTime).toISOString()
+        dayjs(startTime).toISOString(),
     );
 
     const numberOfSignups = Math.min(gamesForTime.length, 3);
@@ -76,7 +76,7 @@ const getRandomSignup = (games: readonly Game[]): SelectedGame[] => {
       const randomGame = gamesForTime[randomIndex];
 
       const duplicate = !!signedGames.find(
-        (signedGame) => signedGame.gameDetails.gameId === randomGame.gameId
+        (signedGame) => signedGame.gameDetails.gameId === randomGame.gameId,
       );
 
       if (duplicate) {
@@ -107,7 +107,7 @@ const signup = async (games: readonly Game[], user: User): Promise<User> => {
 
 const signupMultiple = async (
   games: readonly Game[],
-  users: readonly User[]
+  users: readonly User[],
 ): Promise<void> => {
   const promises: Array<Promise<User>> = [];
 
@@ -122,7 +122,7 @@ const signupMultiple = async (
 
 const signupGroup = async (
   games: readonly Game[],
-  users: readonly User[]
+  users: readonly User[],
 ): Promise<void> => {
   // Generate random signup data for the group creator
   const groupCreator = users.find((user) => user.serial === user.groupCode);

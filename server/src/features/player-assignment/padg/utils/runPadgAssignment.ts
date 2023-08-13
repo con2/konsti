@@ -21,7 +21,7 @@ export const runPadgAssignment = (
   signedGames: readonly Game[],
   playerGroups: readonly User[][],
   startTime: string,
-  signups: readonly Signup[]
+  signups: readonly Signup[],
 ): Result<AssignmentStrategyResult, AssignmentError> => {
   const groupsResult = getGroups(playerGroups, startTime);
   if (isErrorResult(groupsResult)) {
@@ -43,11 +43,11 @@ export const runPadgAssignment = (
       "%s",
       new Error(
         `Padg assignment failed with input: groups: ${JSON.stringify(
-          groups
+          groups,
         )}, events: ${JSON.stringify(events)}, list: ${JSON.stringify(
-          list
-        )}, updateL: ${updateL}`
-      )
+          list,
+        )}, updateL: ${updateL}`,
+      ),
     );
     return makeErrorResult(AssignmentError.UNKNOWN_ERROR);
   }

@@ -47,7 +47,7 @@ export const SearchAndFilterCard = ({
 
   const { t } = useTranslation();
   const activeProgramType = useAppSelector(
-    (state) => state.admin.activeProgramType
+    (state) => state.admin.activeProgramType,
   );
 
   const [selectedTag, setSelectedTag] = useState<string>("");
@@ -74,15 +74,15 @@ export const SearchAndFilterCard = ({
 
   useEffect(() => {
     setSelectedTag(
-      sessionStorage.getItem(SessionStorageValue.ALL_GAMES_TAG) ?? ""
+      sessionStorage.getItem(SessionStorageValue.ALL_GAMES_TAG) ?? "",
     );
     setSelectedStartingTime(
       (sessionStorage.getItem(
-        SessionStorageValue.ALL_GAMES_STARTING_TIME
-      ) as StartingTimeOption) ?? StartingTimeOption.UPCOMING
+        SessionStorageValue.ALL_GAMES_STARTING_TIME,
+      ) as StartingTimeOption) ?? StartingTimeOption.UPCOMING,
     );
     setSearchTerm(
-      sessionStorage.getItem(SessionStorageValue.ALL_GAMES_SEARCH_TERM) ?? ""
+      sessionStorage.getItem(SessionStorageValue.ALL_GAMES_SEARCH_TERM) ?? "",
     );
   }, []);
 
@@ -119,7 +119,7 @@ export const SearchAndFilterCard = ({
             .filter(([_, val]) =>
               config.enableRevolvingDoor
                 ? true
-                : val !== StartingTimeOption.REVOLVING_DOOR
+                : val !== StartingTimeOption.REVOLVING_DOOR,
             )
             .map(([key, val]) => {
               return (
@@ -133,7 +133,7 @@ export const SearchAndFilterCard = ({
                     onSelectedStartingTimeChange(val);
                     sessionStorage.setItem(
                       SessionStorageValue.ALL_GAMES_STARTING_TIME,
-                      val
+                      val,
                     );
                   }}
                 />

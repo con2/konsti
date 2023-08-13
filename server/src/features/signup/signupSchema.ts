@@ -14,7 +14,7 @@ const SignupSchema = new mongoose.Schema(
     ],
     count: { type: Number, default: 0 },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 export const SignupModel = mongoose.model<SignupDoc>("Signup", SignupSchema);

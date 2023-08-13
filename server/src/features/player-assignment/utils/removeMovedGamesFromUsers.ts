@@ -16,7 +16,7 @@ import { MongoDbError } from "shared/typings/api/errors";
 import { User } from "shared/typings/models/user";
 
 export const removeMovedGamesFromUsers = async (
-  updatedGames: readonly Game[]
+  updatedGames: readonly Game[],
 ): Promise<Result<void, MongoDbError>> => {
   logger.info("Remove moved signed games from users");
 
@@ -68,7 +68,7 @@ export const removeMovedGamesFromUsers = async (
           user.username
         }: ${programItemsToBeRemoved
           .map((deletedGame) => deletedGame.gameId)
-          .join(", ")}`
+          .join(", ")}`,
       );
     }
 

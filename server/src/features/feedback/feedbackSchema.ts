@@ -7,10 +7,10 @@ const feedbackSchema = new mongoose.Schema(
     feedback: String,
     username: String,
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 export const FeedbackModel = mongoose.model<FeedbackDoc>(
   "Feedback",
-  feedbackSchema
+  feedbackSchema,
 );

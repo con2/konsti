@@ -4,7 +4,7 @@ import { ApiEndpoint } from "shared/constants/apiEndpoints";
 
 export const getHealthStatus = (
   _req: Request<{}, {}, {}>,
-  res: Response
+  res: Response,
 ): Response => {
   logger.info(`API call: GET ${ApiEndpoint.HEALTH}`);
   return res.sendStatus(200);

@@ -179,7 +179,7 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
     const updatedUser = unsafelyUnwrapResult(updatedUserResult);
     expect(updatedUser?.signedGames.length).toEqual(1);
     expect(updatedUser?.signedGames[0].gameDetails.title).toEqual(
-      testGame.title
+      testGame.title,
     );
     expect(updatedUser?.favoritedGames.length).toEqual(1);
     expect(updatedUser?.favoritedGames[0].gameId).toEqual(testGame.gameId);
@@ -300,7 +300,7 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
     const updatedUser = unsafelyUnwrapResult(updatedUserResult);
     expect(updatedUser?.signedGames.length).toEqual(1);
     expect(updatedUser?.signedGames[0].gameDetails.title).toEqual(
-      testGame2.title
+      testGame2.title,
     );
     expect(updatedUser?.favoritedGames.length).toEqual(2);
 
@@ -394,14 +394,14 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
     expect(errorLoggerSpy).toHaveBeenCalledWith(
       "%s",
       new Error(
-        "Invalid program item p2106 at path end_time: Expected string, received null"
-      )
+        "Invalid program item p2106 at path end_time: Expected string, received null",
+      ),
     );
     expect(errorLoggerSpy).toHaveBeenCalledWith(
       "%s",
       new Error(
-        "Invalid program item p2106 at path start_time: Expected string, received null"
-      )
+        "Invalid program item p2106 at path start_time: Expected string, received null",
+      ),
     );
 
     const gamesResult = await findGames();

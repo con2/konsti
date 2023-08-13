@@ -18,7 +18,7 @@ import {
 } from "shared/typings/api/groups";
 
 export const postCreateGroup = async (
-  groupRequest: PostCreateGroupRequest
+  groupRequest: PostCreateGroupRequest,
 ): Promise<PostCreateGroupResponse | PostCreateGroupError> => {
   const response = await api.post<
     PostCreateGroupResponse,
@@ -28,11 +28,11 @@ export const postCreateGroup = async (
 };
 
 export const postJoinGroup = async (
-  groupRequest: PostJoinGroupRequest
+  groupRequest: PostJoinGroupRequest,
 ): Promise<PostJoinGroupResponse | PostJoinGroupError> => {
   const response = await api.post<PostJoinGroupResponse, PostJoinGroupRequest>(
     ApiEndpoint.JOIN_GROUP,
-    groupRequest
+    groupRequest,
   );
   return response.data;
 };
@@ -41,13 +41,13 @@ export const postLeaveGroup = async (): Promise<
   PostLeaveGroupResponse | PostLeaveGroupError
 > => {
   const response = await api.post<PostLeaveGroupResponse, {}>(
-    ApiEndpoint.LEAVE_GROUP
+    ApiEndpoint.LEAVE_GROUP,
   );
   return response.data;
 };
 
 export const postCloseGroup = async (
-  groupRequest: PostCloseGroupRequest
+  groupRequest: PostCloseGroupRequest,
 ): Promise<PostCloseGroupResponse | PostCloseGroupError> => {
   const response = await api.post<
     PostCloseGroupResponse,
@@ -57,7 +57,7 @@ export const postCloseGroup = async (
 };
 
 export const getGroup = async (
-  groupCode: string
+  groupCode: string,
 ): Promise<GetGroupResponse | GetGroupError> => {
   const response = await api.get<GetGroupResponse, GetGroupRequest>(
     ApiEndpoint.GROUP,
@@ -65,7 +65,7 @@ export const getGroup = async (
       params: {
         groupCode,
       },
-    }
+    },
   );
   return response.data;
 };

@@ -6,18 +6,18 @@ import { User } from "shared/typings/models/user";
 
 export const getAssignmentBonus = (
   playerGroup: User[],
-  signups: readonly Signup[]
+  signups: readonly Signup[],
 ): number => {
   const signupsAffectingBonus = signups.filter(
     (signup) =>
       signup.game.programType === ProgramType.TABLETOP_RPG &&
-      !sharedConfig.directSignupAlwaysOpenIds.includes(signup.game.gameId)
+      !sharedConfig.directSignupAlwaysOpenIds.includes(signup.game.gameId),
   );
 
   const groupMembersWithSignups = playerGroup.flatMap((groupMember) => {
     return signupsAffectingBonus.flatMap((signup) => {
       return signup.userSignups.filter(
-        (userSignup) => userSignup.username === groupMember.username
+        (userSignup) => userSignup.username === groupMember.username,
       );
     });
   });
