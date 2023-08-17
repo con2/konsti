@@ -44,6 +44,58 @@ export const writeJson = async <T>(
   );
 };
 
+export interface Message {
+  feedback: string;
+  game: string;
+  organizer: string;
+  startTime: string;
+  programType: string;
+}
+
+export const writeFeedback = (
+  year: number,
+  event: string,
+  datatype: string,
+  data: Record<string, Message[]>,
+): void => {
+  if (!fs.existsSync(`${config.statsDataDir}/${event}/${year}/temp/`)) {
+    fs.mkdirSync(`${config.statsDataDir}/${event}/${year}/temp/`);
+  }
+
+  Object.entries(data).map(([host, messages], index) => {
+    const descriptions = messages.map((message, i) => {
+      return `${i + 1}) ${message.game} (${message.startTime})\n\n${
+        message.feedback
+      }\n\n`;
+    });
+
+    const formattedFeedback = `${host}\n\n${descriptions.join(
+      "",
+    )}**********\n\n`;
+
+    if (index === 0) {
+      fs.writeFileSync(
+        `${config.statsDataDir}/${event}/${year}/temp/${datatype}-fixed.json`,
+        `**********\n\n${formattedFeedback}`,
+        "utf8",
+      );
+      return;
+    }
+
+    fs.appendFileSync(
+      `${config.statsDataDir}/${event}/${year}/temp/${datatype}-fixed.json`,
+      formattedFeedback,
+      "utf8",
+    );
+  });
+
+  logger.info(
+    `Saved ${getDataLength(data)} ${datatype} to file ${
+      config.statsDataDir
+    }/${event}/${year}/temp/${datatype}-fixed.json`,
+  );
+};
+
 export const toPercent = (num: number): number => {
   return Math.round(num * 100);
 };
