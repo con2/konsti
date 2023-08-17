@@ -4,7 +4,7 @@ import dayjs from "dayjs";
 import { z } from "zod";
 import { logger } from "server/utils/logger";
 import { GameSchema } from "shared/typings/models/game";
-import { writeJson } from "server/features/statistics/statsUtil";
+import { Message, writeFeedback } from "server/features/statistics/statsUtil";
 import { PostFeedbackRequestSchema } from "shared/typings/api/feedback";
 import { config } from "server/config";
 import { setLocale } from "shared/utils/setLocale";
@@ -64,12 +64,13 @@ export const formatFeedbacks = (year: number, event: string): void => {
   );
 
   Object.entries(groupedByProgramTypeFeedbacks).map(
-    async ([programType, programTypeFeedbacks]) => {
+    ([programType, programTypeFeedbacks]) => {
       logger.info(
         `${programType}: found ${programTypeFeedbacks.length} feedbacks`,
       );
 
-      const groupedByOrganizerFeedbacks = _.groupBy(
+      // @ts-expect-error: FIXME
+      const groupedByOrganizerFeedbacks: Record<string, Message[]> = _.groupBy(
         programTypeFeedbacks,
         (feedback) => feedback.organizer,
       );
@@ -80,7 +81,7 @@ export const formatFeedbacks = (year: number, event: string): void => {
         } organizers`,
       );
 
-      await writeJson(
+      writeFeedback(
         year,
         event,
         `feedback-${programType}`,
