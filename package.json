@@ -95,7 +95,7 @@
   "engines": {
     "node": ">=18.13.0"
   },
-  "packageManager": "yarn@3.6.1",
+  "packageManager": "yarn@3.6.2",
   "resolutions": {
     "babel-plugin-lodash/@babel/types": "7.20.7",
     "babel-plugin-styled-components": "2.1.3"
