@@ -51,9 +51,8 @@ export const removeDeletedGames = async (
       } deleted games to be removed: ${deletedGameIds.join(", ")}`,
     );
 
-    const delSignupDocumentsResult = await delSignupDocumentsByGameIds(
-      deletedGameIds,
-    );
+    const delSignupDocumentsResult =
+      await delSignupDocumentsByGameIds(deletedGameIds);
     if (isErrorResult(delSignupDocumentsResult)) {
       return delSignupDocumentsResult;
     }
