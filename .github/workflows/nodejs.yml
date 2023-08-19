@@ -8,7 +8,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18.13.0]
+        node-version: [18.17.1]
 
     env:
       CI: true

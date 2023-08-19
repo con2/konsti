@@ -1,4 +1,4 @@
-FROM node:18.13.0-alpine3.17
+FROM node:18.17.1-alpine3.17
 
 # Install init process tool to avoid Node running PID 1
 RUN apk --no-cache add dumb-init=1.2.5-r2
