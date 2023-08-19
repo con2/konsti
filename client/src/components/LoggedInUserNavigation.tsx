@@ -91,11 +91,11 @@ const RouterLink = styled(NavLink)`
   color: ${(props) => props.theme.textMain};
   border-bottom: 1px solid black;
 
-  :hover {
+  &:hover {
     background: ${(props) => props.theme.backgroundHover};
   }
 
-  :focus,
+  &:focus,
   &.active {
     background: ${(props) => props.theme.backgroundSelected};
   }
