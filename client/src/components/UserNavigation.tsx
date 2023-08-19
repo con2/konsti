@@ -52,8 +52,8 @@ const RouterLink = styled(NavLink)`
   color: ${(props) => props.theme.textMain};
   border-bottom: 1px solid black;
 
-  :hover,
-  :focus,
+  &:hover,
+  &:focus,
   &.active {
     background: ${(props) => props.theme.backgroundHover};
   }

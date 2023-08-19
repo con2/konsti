@@ -24,7 +24,7 @@ export const RaisedCard = ({
   <Card
     className={className}
     data-testid={dataTestId}
-    isHighlighted={isHighlighted}
+    $isHighlighted={isHighlighted}
     highlightStyle={highlightStyle}
   >
     {children}
@@ -32,7 +32,7 @@ export const RaisedCard = ({
 );
 
 const Card = styled.div<{
-  isHighlighted: boolean;
+  $isHighlighted: boolean;
   highlightStyle?: HighlightStyle;
 }>`
   margin: 20px 0 20px 0;
@@ -43,14 +43,14 @@ const Card = styled.div<{
   box-shadow: ${(props) => props.theme.shadowLower};
 
   ${(props) =>
-    props.isHighlighted &&
+    props.$isHighlighted &&
     `border: 1px solid ${
       props.highlightStyle === HighlightStyle.WARN
         ? props.theme.borderCardWarnHighlight
         : props.theme.borderCardHighlight
     };`}
   ${(props) =>
-    props.isHighlighted &&
+    props.$isHighlighted &&
     `border-left: 5px solid ${
       props.highlightStyle === HighlightStyle.WARN
         ? props.theme.borderCardWarnHighlight

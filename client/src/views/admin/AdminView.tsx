@@ -167,7 +167,7 @@ export const AdminView = (): ReactElement => {
 
       {!submitting && (
         <>
-          <StatusMessage messageStyle={messageStyle}>{message}</StatusMessage>
+          <StatusMessage $messageStyle={messageStyle}>{message}</StatusMessage>
 
           <AssignmentResponseMessage>
             {assignmentResponseMessage}
@@ -208,19 +208,15 @@ export const AdminView = (): ReactElement => {
   );
 };
 
-interface StatusMessageProps {
-  messageStyle: string;
-}
-
-const StatusMessage = styled.p<StatusMessageProps>`
+const StatusMessage = styled.p<{ $messageStyle: string }>`
   ${(statusMessageProps) =>
-    statusMessageProps.messageStyle === "success" &&
+    statusMessageProps.$messageStyle === "success" &&
     css`
       color: ${(props) => props.theme.textSecondary};
     `};
 
   ${(statusMessageProps) =>
-    statusMessageProps.messageStyle === "error" &&
+    statusMessageProps.$messageStyle === "error" &&
     css`
       color: ${(props) => props.theme.textError};
     `};

@@ -1,7 +1,6 @@
 import { ReactElement, useRef } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
-import useIntersectionObserver from "@react-hook/intersection-observer";
 import _ from "lodash";
 import { getTime, getWeekdayAndTime } from "client/utils/timeFormatter";
 import { SelectedGame } from "shared/typings/models/user";
@@ -32,7 +31,6 @@ export const GameListTitle = ({
 }: Props): ReactElement => {
   const { t } = useTranslation();
   const intersectionRef = useRef<HTMLDivElement | null>(null);
-  const { isIntersecting } = useIntersectionObserver(intersectionRef);
 
   const formattedStartTime = _.capitalize(getWeekdayAndTime(startTime));
 
@@ -51,11 +49,7 @@ export const GameListTitle = ({
   );
 
   return (
-    <GameListTitleContainer
-      key={startTime}
-      ref={intersectionRef}
-      isVisible={!!isIntersecting}
-    >
+    <GameListTitleContainer key={startTime} ref={intersectionRef}>
       <StyledGameListTitle>
         <StartTimeContainer>
           <StartTime>{formattedStartTime}</StartTime>
@@ -102,7 +96,7 @@ const SignupCount = styled.span`
   float: right;
 `;
 
-const GameListTitleContainer = styled.div<{ isVisible: boolean }>`
+const GameListTitleContainer = styled.div`
   z-index: 2;
   margin: 20px 0 20px 0;
   padding: 8px;

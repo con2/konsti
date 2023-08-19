@@ -5,7 +5,7 @@ import { createRoot } from "react-dom/client";
 import React, { Suspense } from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import { ThemeProvider } from "styled-components";
+import { ThemeProvider, StyleSheetManager } from "styled-components";
 import { init, BrowserTracing } from "@sentry/react";
 import loaderImage from "assets/loading.gif";
 import { config } from "client/config";
@@ -88,12 +88,14 @@ const render = (): void => {
   root.render(
     // <React.StrictMode>
     <Provider store={store}>
-      <ThemeProvider theme={theme}>
-        <Suspense fallback={loader}>
-          <GlobalStyle />
-          <App />
-        </Suspense>
-      </ThemeProvider>
+      <StyleSheetManager enableVendorPrefixes={true}>
+        <ThemeProvider theme={theme}>
+          <Suspense fallback={loader}>
+            <GlobalStyle />
+            <App />
+          </Suspense>
+        </ThemeProvider>
+      </StyleSheetManager>
     </Provider>,
     // </React.StrictMode>
   );

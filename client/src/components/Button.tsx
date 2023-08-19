@@ -33,7 +33,7 @@ export const Button = ({
       onClick={onClick}
       type={type}
       data-testid={dataTestId}
-      buttonStyle={buttonStyle}
+      $buttonStyle={buttonStyle}
       disabled={disabled}
       aria-label={ariaLabel}
     >
@@ -42,16 +42,12 @@ export const Button = ({
   );
 };
 
-interface StyledButtonProps {
-  buttonStyle: ButtonStyle;
-}
-
 const disabledButton = css`
   opacity: 0.4;
   cursor: not-allowed;
 `;
 
-const StyledButton = styled.button<StyledButtonProps>`
+const StyledButton = styled.button<{ $buttonStyle: ButtonStyle }>`
   border-radius: 6px;
   cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0.18) 0 3px 5px;
@@ -59,7 +55,7 @@ const StyledButton = styled.button<StyledButtonProps>`
   white-space: nowrap;
 
   ${(props) => {
-    if (props.disabled && props.buttonStyle === ButtonStyle.SECONDARY) {
+    if (props.disabled && props.$buttonStyle === ButtonStyle.SECONDARY) {
       return `
           background: ${props.theme.buttonSecondaryBackground};
           border: 2px solid ${props.theme.buttonSecondaryBorder};
@@ -68,7 +64,7 @@ const StyledButton = styled.button<StyledButtonProps>`
 
           ${disabledButton}`;
     }
-    if (!props.disabled && props.buttonStyle === ButtonStyle.SECONDARY) {
+    if (!props.disabled && props.$buttonStyle === ButtonStyle.SECONDARY) {
       return `
           background: ${props.theme.buttonSecondaryBackground};
           border: 2px solid ${props.theme.buttonSecondaryBorder};
@@ -86,7 +82,7 @@ const StyledButton = styled.button<StyledButtonProps>`
           }
       `;
     }
-    if (props.disabled && props.buttonStyle === ButtonStyle.PRIMARY) {
+    if (props.disabled && props.$buttonStyle === ButtonStyle.PRIMARY) {
       return `
           background: ${props.theme.buttonPrimaryBackground};
           border: none;

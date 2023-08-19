@@ -27,7 +27,6 @@ export const FavoriteButton = ({
 
   return (
     <StyledButton
-      isFavorite={isFavorite}
       onClick={onClick}
       data-testid={dataTestId}
       aria-label={t(ariaLabelKey)}
@@ -37,7 +36,7 @@ export const FavoriteButton = ({
   );
 };
 
-const StyledButton = styled.button<Props>`
+const StyledButton = styled.button`
   border-radius: 100px;
   border: none;
   cursor: pointer;
