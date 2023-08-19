@@ -162,7 +162,7 @@ export const GameEntry = ({
                   MAX_ATTENDANCE: game.maxAttendance,
                 })}
               </PlayerCount>
-              <PlayersNeeded visible={players < game.minAttendance}>
+              <PlayersNeeded $visible={players < game.minAttendance}>
                 {t("signup.attendeesNeeded", {
                   COUNT: game.minAttendance - players,
                   ATTENDEE_TYPE:
@@ -241,9 +241,9 @@ export const GameEntry = ({
   );
 };
 
-const PlayersNeeded = styled("span")<{ visible: boolean }>`
+const PlayersNeeded = styled("span")<{ $visible: boolean }>`
   margin-top: 8px;
-  display: ${(props) => (props.visible ? "block" : "none")};
+  display: ${(props) => (props.$visible ? "block" : "none")};
 `;
 
 const PlayerCount = styled("span")`
