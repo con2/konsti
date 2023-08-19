@@ -71,9 +71,8 @@ export const removeHiddenGamesFromUsers = async (
   }
 
   const hiddenGameIds = hiddenGames.map((hiddenGame) => hiddenGame.gameId);
-  const resetSignupsByGameIdsResult = await resetSignupsByGameIds(
-    hiddenGameIds,
-  );
+  const resetSignupsByGameIdsResult =
+    await resetSignupsByGameIds(hiddenGameIds);
   if (isErrorResult(resetSignupsByGameIdsResult)) {
     return resetSignupsByGameIdsResult;
   }
