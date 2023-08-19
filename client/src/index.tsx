@@ -96,7 +96,6 @@ const render = (): void => {
           </Suspense>
         </ThemeProvider>
       </StyleSheetManager>
-      ,
     </Provider>,
     // </React.StrictMode>
   );
