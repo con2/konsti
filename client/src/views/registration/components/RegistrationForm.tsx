@@ -3,8 +3,6 @@ import { SubmitHandler, useForm, useFormState } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import styled, { css } from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
 import { Accordion } from "client/components/Accordion";
 import { sharedConfig } from "shared/config/sharedConfig";
 import { Button, ButtonStyle } from "client/components/Button";
@@ -20,8 +18,8 @@ import {
   USERNAME_LENGTH_MIN,
 } from "shared/constants/validation";
 import { ErrorMessage } from "client/components/ErrorMessage";
-import privacyPolicyFi from "client/markdown/PrivacyPolicyFi.md";
-import privacyPolicyEn from "client/markdown/PrivacyPolicyEn.md";
+import PrivacyPolicyFi from "client/markdown/PrivacyPolicyFi.mdx";
+import PrivacyPolicyEn from "client/markdown/PrivacyPolicyEn.mdx";
 import { UncontrolledInput } from "client/components/UncontrolledInput";
 
 export interface RegistrationFormFields {
@@ -188,9 +186,7 @@ export const RegistrationForm = (): ReactElement => {
           openAccordionText={t("showPrivacyPolicy")}
         >
           <PrivacyPolicyContent>
-            <ReactMarkdown remarkPlugins={[remarkGfm]}>
-              {i18n.language === "fi" ? privacyPolicyFi : privacyPolicyEn}
-            </ReactMarkdown>
+            {i18n.language === "fi" ? <PrivacyPolicyFi /> : <PrivacyPolicyEn />}
           </PrivacyPolicyContent>
         </Accordion>
 
