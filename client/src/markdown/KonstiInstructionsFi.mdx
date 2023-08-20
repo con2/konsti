@@ -1,4 +1,6 @@
-## Ropecon 2023
+import { Link } from "react-router-dom";
+
+## {props.conventionName} {props.conventionYear}
 
 Konstin kautta voi ilmoittautua pöytäroolipeleihin, larppeihin, turnauksiin, työpajoihin ja joihinkin muihin ohjelmanumeroihin.
 
@@ -11,20 +13,24 @@ Konsti on verkkosovellus, jota voi käyttää internet-selaimen avulla omalla ä
 
 ### Tilin luominen ja sisäänkirjautuminen
 
-[Ohjelmalistaa](/program/list) voi selata kirjautumatta sisään, mutta ohjelmaan ilmoittautumiseen vaaditaan käyttäjätili.
-Aikaisempien vuosien käyttäjätilit eivät ole enää käytössä, vaan sinun on luotava uusi tili tämän vuoden tapahtumaa varten.
+<Link to={"/program/list"}>Ohjelmalistaa</Link> voi selata kirjautumatta sisään,
+mutta ohjelmaan ilmoittautumiseen vaaditaan käyttäjätili. Aikaisempien vuosien käyttäjätilit
+eivät ole enää käytössä, vaan sinun on luotava uusi tili tämän vuoden tapahtumaa
+varten.
 
 Uuden käyttäjätilin luomiseen tarvitset rekisteröintikoodin, joita on saatavilla Pelitiskiltä (Halli 5), Larp- ja Roolipelitiskiltä tai Infosta (molemmat pääaulassa, eteläisen sisäänkäynnin luona).
 
-Tilin pääset luomaan [Luo käyttäjätili -näkymästä](/registration).
+Tilin pääset luomaan <Link to={'/registration'}>Luo käyttäjätili -näkymästä</Link>.
 
 Rekisteröintikoodi kannattaa pitää tallessa siltä varalta, että et pääsekään enää kirjautumaan sisään tunnuksellasi: sitä tarvitaan salasanan vaihtamiseen.
-Rekisteröintikoodi näkyy ensimmäisen sisäänkirjautumisen yhteydessä sivuston ylälaidassa, ja sen löytää myöhemmin myös [profiilisivulta](/profile/profile).
+Rekisteröintikoodi näkyy ensimmäisen sisäänkirjautumisen yhteydessä sivuston ylälaidassa, ja sen löytää myöhemmin myös <Link to={'/profile/profile'}>profiilisivulta</Link>.
 
 ### Ohjelman selaaminen
 
-[Ohjelma-sivulla](/program/list) on listattu ohjelma, johon Konstissa voi ilmoittautua. Jos jonkin ohjelmanumeron ilmoittautuminen ei ole alkanut, ohjelman
-esittelyteksissä näkyy, milloin ilmoittautuminen on avoinna ja onko kyseessä arvonta vai suorailmoittautuminen.
+<Link to={"/program/list"}>Ohjelma-sivulla</Link> on listattu ohjelma, johon Konstissa
+voi ilmoittautua. Jos jonkin ohjelmanumeron ilmoittautuminen ei ole alkanut, ohjelman
+esittelyteksissä näkyy, milloin ilmoittautuminen on avoinna ja onko kyseessä arvonta
+vai suorailmoittautuminen.
 
 Ohjelmalistauksesta näet myös muita tietoja, esimerkiksi ohjelman keston, sijainnin ja esteettömyystiedot. Lisäksi
 Konsti näyttää, kuinka monta osallistujaa on ilmoittautunut ja kuinka monta vielä mahtuu mukaan.
@@ -35,12 +41,12 @@ ja ilmoittautumisaika on vielä käynnissä, ilmoittautuneiden pelaajien lukumä
 
 Ohjelmanumeron tallentaminen suosikkeihin on kätevä tapa merkitä muistiin kiinnostavaa ohjelmaa. Voit lisätä ohjelmanumeron
 suosiksi ohjelmalistasta painamalla ohjelman tietolaatikon oikeassa yläkulmassa olevaa sydänikonia. Suosikkilistaan tallennetut
-ohjelmanumerot löydät [Oma ohjelmani](/program/myprogram) -näkymästä.
+ohjelmanumerot löydät <Link to={'/program/myprogram'}>Oma ohjelmani</Link> -näkymästä.
 
 ### Ryhmät
 
 Pöytäroolipeleihin voi ilmoittautua myös ryhmänä. Silloin arvonta-algoritmi sijoittaa kaikki ryhmän jäsenet samaan peliin
-(sikäli kun arpaonni suosii silloin kun ilmoittautuneita on enemmän kuin paikkoja). Voit luoda ryhmän [Ryhmä-näkymässä](/profile/group).
+(sikäli kun arpaonni suosii silloin kun ilmoittautuneita on enemmän kuin paikkoja). Voit luoda ryhmän <Link to={'/profile/group'}>Ryhmä-näkymässä</Link>.
 Samassa näkymässä voit myös liittyä olemassa olevaan ryhmään. Tätä varten tarvitset ryhmän perustajalta rekisteröitymiskoodin.
 
 Vain ryhmän perustaja voi ilmoittaa ryhmän peleihin, eivät sen muut jäsenet.
@@ -50,15 +56,19 @@ Ryhmä-näkymässä listataan ne pelit, jotka estävät ryhmän perustamisen tai
 
 ## Ilmoittautuminen
 
-Jos ohjelmanumeron ilmoittautumisaika on käynnissä, näkyy sen tietojen alla Ilmoittaudu-painike. Jo tehdyn ilmoittautumisen voi perua joko [Oma ohjelmani](/program/myprogram) -näkymässä tai [Kaikki ohjelma](/program/list) -näkymässä.
+Jos ohjelmanumeron ilmoittautumisaika on käynnissä, näkyy sen tietojen alla Ilmoittaudu-painike. Jo tehdyn ilmoittautumisen voi perua joko <Link to={'/program/myprogram'}>Oma ohjelmani</Link> -näkymässä tai <Link to={'/program/list'}>Kaikki ohjelma</Link> -näkymässä.
 
 Ilmoittautuminen on porrastettu ja ilmoittautumisten alkamisajat näet ohjelmalistasta
 tai tästä ohjeesta.
 
 Pöytäroolipeleihin ilmoittaudutaan arvonnan kautta ja jäljelle jääneet paikat täytetään ilmoittautumisjärjestyksessä. Muun ohjelman paikat täytetään ilmoittautumisjärjestyksessä.
 
-Jos pääset arvonnassa peliin, Konsti näyttää sinulle tästä ilmoituksen. Nämä ilmoitukset näet myös [Ilmoitukset](/notifications)-sivulta. Kaikki omat ilmoittautumistuloksesi näet
-[Oma ohjelmani](/program/myprogram) -näkymässä ja kaiken ohjelman kaikki ilmoittautumistiedot näet puolestaan [Ilmoittautumistulokset](/results)-sivulta.
+Jos pääset arvonnassa peliin, Konsti näyttää sinulle tästä ilmoituksen. Nämä ilmoitukset näet myös <Link to={'/notifications'}>Ilmoitukset</Link>-sivulta. Kaikki omat ilmoittautumistuloksesi näet
+
+<Link to={"/program/myprogram"}>Oma ohjelmani</Link> -näkymässä ja kaiken ohjelman
+kaikki ilmoittautumistiedot näet puolestaan <Link to={"/results"}>
+  Ilmoittautumistulokset
+</Link> -sivulta.
 
 ## Roolipeleihin ilmoittautuminen
 

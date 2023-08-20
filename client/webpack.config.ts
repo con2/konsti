@@ -88,6 +88,16 @@ const commonConfig: Configuration = {
         // TODO: Replace with Asset Module: https://webpack.js.org/guides/asset-modules/
         use: "raw-loader",
       },
+      {
+        test: /\.mdx?$/,
+        use: [
+          {
+            loader: "@mdx-js/loader",
+            /** @type {import('@mdx-js/loader').Options} */
+            options: {},
+          },
+        ],
+      },
     ],
   },
 };

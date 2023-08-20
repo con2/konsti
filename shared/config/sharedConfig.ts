@@ -300,7 +300,7 @@ export const sharedConfig: SharedConfig = {
   PHASE_GAP: 15, // minutes
 
   // Convention info
-  CONVENTION_NAME: "Ropecon",
+  CONVENTION_NAME: "Tracon Hitpoint",
   CONVENTION_YEAR: "2023",
 
   // Sentry

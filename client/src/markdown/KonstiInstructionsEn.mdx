@@ -1,4 +1,6 @@
-## Ropecon 2023
+import { Link } from "react-router-dom";
+
+## {props.conventionName} {props.conventionYear}
 
 In Ropecon 2023, Konsti is used to sign up for role-playing games, larps, tournaments, workshops and some other program items.
 
@@ -10,22 +12,22 @@ Konsti is a web application that can be used on any web browser on your own devi
 
 ### Registering and logging in
 
-You can browse the [program list](/program/list) without logging in, but for registering to
+You can browse the <Link to={'/program/list'}>program list</Link> without logging in, but for registering to
 program a user account is needed. Accounts from previous years have been removed, so you
 will have to create a new one for this year's Ropecon.
 
 For creating an account, you will need a registration code, which you can get from the
 Gaming Desk (Hall 5), the Larp & RPG Desk or the Info Desk (both in the southern entrance lobby).
 
-You can create your account on the [registration page](/registration).
+You can create your account on the <Link to={'/registration'}>registration page</Link>.
 
 Please save your registration code: you will need it if you log out of Konsti and then need
 to change your password. The code is visible in Konsti after you first log in. Later, you
-can see it on the [profile page](/profile/profile).
+can see it on the <Link to={'/profile/profile'}>profile page</Link>.
 
 ### Browsing program
 
-The [program list page](/program/list) displays all program that uses Konsti for sign-ups.
+The <Link to={'/program/list'}>program list page</Link> displays all program that uses Konsti for sign-ups.
 If the sign-up period for a given program item is not open yet, the info text for it will
 show when the sign-up starts and whether it will be a lottery sign-up or a direct sign-up.
 
@@ -39,7 +41,7 @@ period is over and the algorithm has allocated users to games.
 
 ### Favorited program
 
-Favoriting program items is a good way to keep track of program you find interesting. You can add a program item to your favorites by clicking on the heart icon in the upper right corner of a program item's info card. You can find your favorites in the [My Program view](/program/myprogram).
+Favoriting program items is a good way to keep track of program you find interesting. You can add a program item to your favorites by clicking on the heart icon in the upper right corner of a program item's info card. You can find your favorites in the <Link to={'/program/myprogram'}>My Program view</Link>.
 
 ### Groups
 
@@ -47,7 +49,7 @@ You can sign up to role-playing games also as a member of a group. Then, the lot
 sign-ups than places, it is of course possible that the group will not get a spot in the
 game at all.
 
-You can create a group on the [group page](/profile/group). There, you can also join an
+You can create a group on the <Link to={'/profile/group'}>group page</Link>. There, you can also join an
 existing group, for which you will need a registration code from the person who created
 the group. Only the group creator can sign up the group to games.
 
@@ -56,14 +58,14 @@ existing one. These sign-ups will be shown on the group page.
 
 ## Signing up to program
 
-If the sign-up period for a program item is ongoing, a sign-up button will be shown on the item's info card. You can cancel your sign-up on either the [My Program page](/program/myprogram) or the [program list](/program/list).
+If the sign-up period for a program item is ongoing, a sign-up button will be shown on the item's info card. You can cancel your sign-up on either the <Link to={'/program/myprogram'}>My Program page</Link> or the <Link to={'/program/list'}>program list</Link>.
 
 The sign-up occurs at different times for different program items. You can see when a sign-up starts on the program list or on this info page.
 
 Tabletop role-playing games use a lottery sign-up where, after the lottery, remaining slots will be filled in the order of sign-ups. All other program uses direct sign-up without a lottery phase.
 
-Konsti will show you a notification if you get a spot in a game in the lottery. You can also view these notifications on the [Notifications](/notifications) page.
-You can see all your sign-up results on the [My Program page](/program/myprogram) and all sign-ups to all program items on the [Sign-up Results](/results) page.
+Konsti will show you a notification if you get a spot in a game in the lottery. You can also view these notifications on the <Link to={'/notifications'}>Notifications</Link> page.
+You can see all your sign-up results on the <Link to={'/program/myprogram'}>My Program page</Link> and all sign-ups to all program items on the <Link to={'/results'}>Sign-up Results</Link> page.
 
 ## Tabletop role-playing game sign-ups
 
