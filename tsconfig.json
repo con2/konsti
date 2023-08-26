@@ -13,6 +13,7 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "allowUnreachableCode": false,
+    "noErrorTruncation": true,
     "paths": {
       "client/*": ["client/src/*"],
       "server/*": ["server/src/*"],

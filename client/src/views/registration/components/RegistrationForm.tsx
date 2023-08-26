@@ -18,8 +18,7 @@ import {
   USERNAME_LENGTH_MIN,
 } from "shared/constants/validation";
 import { ErrorMessage } from "client/components/ErrorMessage";
-import PrivacyPolicyFi from "client/markdown/PrivacyPolicyFi.mdx";
-import PrivacyPolicyEn from "client/markdown/PrivacyPolicyEn.mdx";
+import PrivacyPolicy from "client/markdown/PrivacyPolicy.mdx";
 import { UncontrolledInput } from "client/components/UncontrolledInput";
 
 export interface RegistrationFormFields {
@@ -31,7 +30,7 @@ export interface RegistrationFormFields {
 
 export const RegistrationForm = (): ReactElement => {
   const dispatch = useAppDispatch();
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
   const [serverError, setServerError] =
@@ -186,7 +185,7 @@ export const RegistrationForm = (): ReactElement => {
           openAccordionText={t("showPrivacyPolicy")}
         >
           <PrivacyPolicyContent>
-            {i18n.language === "fi" ? <PrivacyPolicyFi /> : <PrivacyPolicyEn />}
+            <PrivacyPolicy />
           </PrivacyPolicyContent>
         </Accordion>
 
