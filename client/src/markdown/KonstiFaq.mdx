@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { Fi } from "./components/Fi";
 import { En } from "./components/En";
+import { Ropecon } from "./components/Ropecon";
+import { Hitpoint } from "./components/Hitpoint";
 
 <Fi>
 ## Mistä saan apua Konstin käyttöön?
@@ -11,12 +13,25 @@ import { En } from "./components/En";
 </En>
 
 <Fi>
+<Ropecon>
 Vapaaehtoisemme Pelitiskillä ja Larp- ja Roolipelitiskillä auttavat mielellään Konstin käytössä ja peleihin ilmoittautumisessa.
 Jos sinulla on siis kysyttävää Konstin käytöstä, älä epäröi nykäistä heitä hihasta!
+</Ropecon>
+
+<Hitpoint>
+Vapaaehtoisemme roolipelitiskillä auttavat mielellään Konstin käytössä ja peleihin ilmoittautumisessa.
+Jos sinulla on siis kysyttävää Konstin käytöstä, älä epäröi nykäistä heitä hihasta!
+</Hitpoint>
 </Fi>
 
 <En>
+<Ropecon>
 Our volunteers at both the Gaming Desk as well as the Larp & RPG Desk will gladly assist you and help you sign up for games using the Konsti app. If you have any questions about the Konsti app or how to use it, do not hesitate to ask them for help!
+</Ropecon>
+
+<Hitpoint>
+Our volunteers at the RPG Desk will gladly assist you and help you sign up for games using the Konsti app. If you have any questions about the Konsti app or how to use it, do not hesitate to ask them for help!
+</Hitpoint>
 </En>
 
 <Fi>
@@ -57,12 +72,26 @@ Please note that accounts from previous years are no longer in use.
 </En>
 
 <Fi>
+<Ropecon>
 Rekisteröintikoodeja saa Ropeconissa Pelitiskiltä (Halli 5) sekä rope/larp-tiskiltä ja Infosta (Pääaula, Eteläinen sisäänkäynti).
-Käyttäjätilin voi siis käytännössä luoda vasta Ropeconissa.
+Käyttäjätilin voi siis käytännössä luoda vasta tapahtumassa paikan päällä.
+</Ropecon>
+
+<Hitpoint>
+Rekisteröintikoodeja saa roolipelitiskiltä.
+Käyttäjätilin voi siis käytännössä luoda vasta tapahtumassa paikan päällä.
+</Hitpoint>
 </Fi>
 
 <En>
-Registration codes can be picked up at either the Gaming Desk (Hall 5), at the Larp & RPG Desk or at the Info desk (both in the Southern Entrance lobby). This means that you cannot create a new account before Ropecon begins on Friday.
+<Ropecon>
+Registration codes can be picked up at either the Gaming Desk (Hall 5), at the Larp & RPG Desk or at the Info desk (both in the Southern Entrance lobby). This means that you cannot create a new account before arriving to the event.
+</Ropecon>
+
+<Hitpoint>
+Registration codes can be picked up at the RPG Desk. This means that you cannot create a new account before before arriving to the event.
+</Hitpoint>
+
 </En>
 
 <Fi>
@@ -82,11 +111,23 @@ If you are logged in to Konsti, you can change your password in the <Link to={'/
 </En>
 
 <Fi>
-Jos salasanasi on hukkunut etkä pääse kirjautumaan Konstiin, voit vaihtaa sen rekisteröintikoodisi ja käyttäjätunnuksesi avulla Pelitiskillä tai Larp- ja Roolipelitiskillä.
+<Ropecon>
+Jos salasanasi on hukkunut etkä pääse kirjautumaan Konstiin, voit vaihtaa sen rekisteröintikoodisi avulla Pelitiskillä tai Larp- ja Roolipelitiskillä. Jos olet hukannut rekisteröintikoodisi, kannattaa silti kysyä apua tiskiltä.
+</Ropecon>
+
+<Hitpoint>
+Jos salasanasi on hukkunut etkä pääse kirjautumaan Konstiin, voit vaihtaa sen rekisteröintikoodisi avulla roolipelitiskillä. Jos olet hukannut rekisteröintikoodisi, kannattaa silti kysyä apua tiskiltä.
+</Hitpoint>
 </Fi>
 
 <En>
-If you have lost your password, you can request it to be changed either at the Gaming Desk or at the Larp & RPG Desk, if you still have both your registration code and your username.
+<Ropecon>
+If you have lost your password, you can request it to be changed either at the Gaming Desk or at the Larp & RPG Desk, if you still have your registration code. If you don't have your registration code, ask help from the desks.
+</Ropecon>
+
+<Hitpoint>
+If you have lost your password, you can request it to be changed either at the RPG Desk, if you still have your registration code. If you don't have your registration code, ask help from the RPG Desk.
+</Hitpoint>
 </En>
 
 <Fi>
@@ -106,11 +147,21 @@ If you lost your password before signing up for any program, you can just pick u
 </En>
 
 <Fi>
+<Ropecon>
 Pelitiskillä ja Larp- ja Roolipelitiskillä on tietokoneita, joilla Konstia voi käyttää.
+</Ropecon>
+<Hitpoint>
+Roolipelitiskillä on tietokoneita, joilla Konstia voi käyttää.
+</Hitpoint>
 </Fi>
 
 <En>
+<Ropecon>
 There are shared computers on both the Gaming Desk and the Larp & RPG Desk that you can use Konsti with.
+</Ropecon>
+<Hitpoint>
+There are shared computers on the RPG Desk that you can use Konsti with.
+</Hitpoint>
 </En>
 
 <Fi>
@@ -130,20 +181,41 @@ Just remember to log out when you are done!
 </En>
 
 <Fi>
-Olethan tarkistanut, että valittuna on etsimääsi peliä vastaava ohjelmatyyppi? Niin ikään kannattaa tarkistaa myös, mikä tägi on valittuna.
+<Ropecon>
+Olethan tarkistanut, että valittuna on etsimääsi peliä vastaava ohjelmatyyppi? Niin ikään kannattaa tarkistaa myös, mikä tägi on valittuna, koska valinta voi rajoittaa näkyvillä olevia ohjelmanumeroita.
+</Ropecon>
+<Hitpoint>
+Olethan tarkistanut, mikä tägi on valittuna, koska valinta voi rajoittaa näkyvillä olevia ohjelmanumeroita.
+</Hitpoint>
 </Fi>
 
 <En>
+<Ropecon>
 Have you checked that you have selected the correct programme type in the selector? It can also be useful to check which tag is selected, as they can also filter the list of games that are visible.
+</Ropecon>
+<Hitpoint>
+Have you checked which tag is selected, as they can filter the list of program items that are visible.
+</Hitpoint>
 </En>
 
 <Fi>
+<Ropecon>
 Voi myös olla, ettei kyseiseen ohjelmaan ilmoittauduta Konstin kautta, vaan jotain muuta kautta. Voit tarvittaessa kysyä apua Pelitiskiltä,
 Larp- ja Roolipelitiskiltä tai Infosta.
+</Ropecon>
+
+<Hitpoint>
+Voi myös olla, ettei kyseiseen ohjelmaan ilmoittauduta Konstin kautta, vaan jotain muuta kautta. Voit tarvittaessa kysyä apua roolipelitiskiltä.
+</Hitpoint>
 </Fi>
 
 <En>
-If you still cannot find the game or tournament you are looking for, it is possible that the sign-up process for that particular game or tournament is not done via the Konsti app but in some other way. If you are unsure, you can always confirm the sign-up method for a certain game or tournament from the Gaming Desk, the Larp & RPG Desk or the Info desk.
+<Ropecon>
+If you still cannot find the program item you are looking for, it is possible that the sign-up process for that particular program is not done via the Konsti app but in some other way. If you are unsure, you can always confirm the sign-up method for a certain program item from the Gaming Desk, the Larp & RPG Desk or the Info desk.
+</Ropecon>
+<Hitpoint>
+If you still cannot find the program item you are looking for, it is possible that the sign-up process for that particular program item is not done via the Konsti app but in some other way. If you are unsure, you can always confirm the sign-up method for a certain program item from the RPG Desk.
+</Hitpoint>
 </En>
 
 <Fi>
@@ -155,35 +227,39 @@ If you still cannot find the game or tournament you are looking for, it is possi
 </En>
 
 <Fi>
-Vaihtoehto 1: Olet jo ilmoittautunut kolmeen saman tunnin aikana alkavan roolipelin arvontaan. Konstissa on mahdollista ilmoittautua aina joko seuraavan neljän tunnin aikana alkaviin roolipeleihin arvontavaiheessa, tai seuraavan kahden tunnin aikana alkaviin roolipeleihin suorailmoittautumisvaiheessa. Arvontavaiheessa jokaiselle tunnille voi valita enintään kolme suosikkipeliään preferenssijärjestyksessä 1-3.
+**Vaihtoehto 1:** Olet jo ilmoittautunut kolmeen saman tunnin aikana alkavan roolipelin arvontaan. Konstissa on mahdollista ilmoittautua aina joko seuraavan neljän tunnin aikana alkaviin roolipeleihin arvontavaiheessa, tai seuraavan kahden tunnin aikana alkaviin roolipeleihin suorailmoittautumisvaiheessa. Arvontavaiheessa jokaiselle tunnille voi valita enintään kolme suosikkipeliään preferenssijärjestyksessä 1-3.
 </Fi>
 
 <En>
-Option A: You have already signed up for three role-playing games in the same starting time slot during the lottery sign-up phase. When signing up for role-playing games using the Konsti app, it is possible to sign up for up to three games during the lottery sign-up phase, which begins 4 hours before the starting time of the game in question, or during the following direct sign-up phase 2 hours before the game is set to start. In the lottery sign-up phase, the user can choose up to three games and assign them in the order of preference from 1 to 3. You can only choose three, so there might be some tough choices ahead!
+**Option 1:** You have already signed up for three role-playing games in the same starting time slot during the lottery sign-up phase. When signing up for role-playing games using the Konsti app, it is possible to sign up for up to three games during the lottery sign-up phase, which begins 4 hours before the starting time of the game in question, or during the following direct sign-up phase 2 hours before the game is set to start. In the lottery sign-up phase, the user can choose up to three games and assign them in the order of preference from 1 to 3. You can only choose three, so there might be some tough choices ahead!
 </En>
 
 <Fi>
+<Ropecon>
 Huomaa, että yhden ohjelmatyypin peliin ilmoittautuminen ei estä toisen ohjelmatyypin peliin ilmoittautumista. Voit edelleen ilmoittautua esimerkiksi turnaukseen tai larppiin, vaikka olisit jo ilmoittautunut mukaan kolmeen roolipeliin. Tarkistathan, ettet ilmoittaudu päällekkäisiin peleihin ja turnauksiin!
+</Ropecon>
 </Fi>
 
 <En>
+<Ropecon>
 Please note that signing up for a game in one program type does not prevent you from signing up for a game in another program type: you can still sign up for a larp or a tournament even if you have already signed up for a role-playing game. Please make sure that you do not sign up for games or tournaments that are held at the same time and can actually attend the ones you sign up for!
+</Ropecon>
 </En>
 
 <Fi>
-Vaihtoehto 2: On menossa roolipelien ilmoittautumisvaiheiden välinen 15 min "katveaika". 2 tuntia ennen pelin alkua algoritmi sijoittaa pelaajat peleihin preferenssijärjestyksen mukaisesti. Tämän ensimmäisen vaiheen sijoitusten jälkeen on 15 minuutin katveaika, jonka aikana peleihin ei voi liittyä. Tässä tapauksessa kannattaa odottaa hetki, jotta pääsee ilmoittautumaan suorailmoittautumisella jäljellä oleviin tyhjiin paikkoihin
+**Vaihtoehto 2:** On menossa roolipelien ilmoittautumisvaiheiden välinen 15 min "katveaika". 2 tuntia ennen pelin alkua algoritmi sijoittaa pelaajat peleihin preferenssijärjestyksen mukaisesti. Tämän ensimmäisen vaiheen sijoitusten jälkeen on 15 minuutin katveaika, jonka aikana peleihin ei voi liittyä. Tässä tapauksessa kannattaa odottaa hetki, jotta pääsee ilmoittautumaan suorailmoittautumisella jäljellä oleviin tyhjiin paikkoihin
 </Fi>
 
 <En>
-Option B: It happens to be the "intermission period": when signing up for role-playing games, there is a 15 min "intermission period" between the first lottery sign-up phase and the second direct sign-up phase when signing up for games is not possible at all. If it is 2 hours before the role-playing game is set to start and the lottery sign-up phase has just concluded, it is possible that the intermission period is currently active. If this is the case, the issue will soon resolve itself as the sign-up process will resume after 15 minutes.
+**Option 2:** It happens to be the "intermission period": when signing up for role-playing games, there is a 15 min "intermission period" between the first lottery sign-up phase and the second direct sign-up phase when signing up for games is not possible at all. If it is 2 hours before the role-playing game is set to start and the lottery sign-up phase has just concluded, it is possible that the intermission period is currently active. If this is the case, the issue will soon resolve itself as the sign-up process will resume after 15 minutes.
 </En>
 
 <Fi>
-Vaihtoehto 3: Ryhmän perustaja on ilmoittanut sinut mukaan pelipaikan arvontaan osana ryhmää, joten et voi enää ilmoittautua yksin muiden pelien arvontaan. Jos puolestaan olet ryhmän jäsen ja yrität ilmoittautua mukaan peliin suoralla ilmoittautumisella, ilmoittautumisen vahvistaminen Konstin antamasta varoituksesta huolimatta poistaa sinut ryhmästä. Jos olet ryhmän perustaja ja yrität ilmoittautua peliin suoralla ilmoittautumisella, ryhmä suljetaan. Tästä näytetään varoitus.
+**Vaihtoehto 3:** Ryhmän perustaja on ilmoittanut sinut mukaan pelipaikan arvontaan osana ryhmää, joten et voi enää ilmoittautua yksin muiden pelien arvontaan. Jos puolestaan olet ryhmän jäsen ja yrität ilmoittautua mukaan peliin suoralla ilmoittautumisella, ilmoittautumisen vahvistaminen Konstin antamasta varoituksesta huolimatta poistaa sinut ryhmästä. Jos olet ryhmän perustaja ja yrität ilmoittautua peliin suoralla ilmoittautumisella, ryhmä suljetaan. Tästä näytetään varoitus.
 </Fi>
 
 <En>
-Option C: The leader of your group has signed you up for a role-playing game as a part of a group in the lottery sign-up, which prevents you from signing up for any other games as long as you are a member of the group. If you try to sign up for a game while being a member of a group, Konsti will display a warning: confirming the choice despite the warning will remove you from the group. If you are the group leader and you try to sign up for a game using direct sign-up, the group will be disbanded (a warning will be displayed for this one beforehand, as well).
+**Option 3:** The leader of your group has signed you up for a role-playing game as a part of a group in the lottery sign-up, which prevents you from signing up for any other games as long as you are a member of the group. If you try to sign up for a game while being a member of a group, Konsti will display a warning: confirming the choice despite the warning will remove you from the group. If you are the group leader and you try to sign up for a game using direct sign-up, the group will be disbanded (a warning will be displayed for this one beforehand, as well).
 </En>
 
 <Fi>
@@ -211,19 +287,23 @@ You cannot create a new group or join a group if you have already signed up for 
 </En>
 
 <Fi>
-Teknisesti Konstissa on mahdollista ilmoittautua esimerkiksi kahteen osittain samaan aikaan pelattavaan turnaukseen yhtä aikaa. Joskus tämä voi olla tarpeen, jos esimerkiksi toinen turnaus olisi alkamassa hieman ennen ensimmäisen virallista loppumisajankohtaa. Näin käyttäjän on mahdollista ilmoittautua mukaan myös toiseen turnaukseen jos ensimmäinen turnaus loppuukin esimerkiksi hieman etuajassa, tai jos tämä ei pääsekään mukaan turnauksen finaaliin. Tämä mahdollistaa uuden ilmoittautumisen tekemisen myös siinä tapauksessa, että peli tai turnaus perutaan kokonaan. Kannattaa kuitenkin olla varovainen useisiin yhtä aikaa järjestettäviin peleihin ilmoittautuessa ja tarkistaa, että varmasti pääset osallistumaan kaikkiin niihin peleihin/turnauksiin, joihin olet ilmoittautunut!
+Teknisesti Konstissa on mahdollista ilmoittautua esimerkiksi kahteen osittain samaan aikaan päällekkäin olevaan ohjelmanumeroon. Joskus tämä voi olla tarpeen, jos esimerkiksi toinen ohjelmanumero olisi alkamassa hieman ennen ensimmäisen virallista loppumisajankohtaa. Näin käyttäjän on mahdollista ilmoittautua mukaan myös toiseen ohjelmanumeroon, jos ensimmäinen ohjelmanumero loppuukin esimerkiksi hieman etuajassa. Tämä mahdollistaa uuden ilmoittautumisen tekemisen myös siinä tapauksessa, että ohjelmanumero perutaan kokonaan. Kannattaa kuitenkin olla varovainen useisiin yhtä aikaa järjestettäviin ohjelmanumeroihin ilmoittautuessa ja tarkistaa, että varmasti pääset osallistumaan kaikkiin niihin ohjelmanumeroihin, joihin olet ilmoittautunut!
 </Fi>
 
 <En>
-It is technically possible to sign up for multiple games, e.g. two slightly overlapping game tournaments using the Konsti app. Sometimes this can be useful, for example when another tournament would be starting a little bit before another one ends and the user would like to participate in both knowing that the first tournament will probably end early, or if they do not make it to the final round. Technically, allowing for multiple sign-ups at the same time also makes it possible for users to sign up for a different game if the game or tournament is canceled entirely. However, this is a power that should be used wisely and with care: please make sure to check that you are not signing up for multiple games or tournaments held at the same time, and that you can actually attend all the games and tournaments that you sign up for!
+It is technically possible to sign up for multiple program items, e.g. two slightly overlapping program items using the Konsti app. Sometimes this can be useful, for example when another program item would be starting a little bit before another one ends and the user would like to participate in both knowing that the first program item will probably end early. Technically, allowing for multiple sign-ups at the same time also makes it possible for users to sign up for a different program item if the program item is canceled entirely. However, this is a power that should be used wisely and with care: please make sure to check that you are not signing up for multiple program items held at the same time, and that you can actually attend all the program items that you sign up for!
 </En>
 
 <Fi>
-Koska yhden ohjelmatyypin peliin ilmoittautuminen ei estä toisen ohjelmatyypin peliin ilmoittautumista, on Konstissa myös teknisesti mahdollista ilmoittautua vahingossa esimerkiksi samaan aikaan järjestettävään roolipeliin sekä larppiin. Pidäthän siis huolen, että ilmoittaudut vain yhteen peliin tai turnaukseen kerrallaan ja että olet pääsemässä varmasti paikalle!
+<Ropecon>
+Koska yhden ohjelmatyypin peliin ilmoittautuminen ei estä toisen ohjelmatyypin peliin ilmoittautumista, on Konstissa myös teknisesti mahdollista ilmoittautua vahingossa esimerkiksi samaan aikaan järjestettävään roolipeliin sekä larppiin. Pidäthän siis huolen, että ilmoittaudut vain yhteen ohjelmanumeroon kerrallaan ja että olet pääsemässä varmasti paikalle!
+</Ropecon>
 </Fi>
 
 <En>
-Additionally, since signing up for a game in one programme type does not prevent the user from signing up for a game in another programme type in the same time slot, it is technically possible to accidentally sign up for e.g. both a tabletop role-playing game and a larp held at the same time. Please make sure that you only sign up for one game or tournament per slot and that you can actually attend the games and tournaments you sign up for!
+<Ropecon>
+Additionally, since signing up for a game in one programme type does not prevent the user from signing up for a game in another programme type in the same time slot, it is technically possible to accidentally sign up for e.g. both a tabletop role-playing game and a larp held at the same time. Please make sure that you only sign up for one program item per slot and that you can actually attend the program items you sign up for!
+</Ropecon>
 </En>
 
 <Fi>
@@ -251,9 +331,9 @@ When signing up for role-playing games using the Konsti app, there is first a lo
 </En>
 
 <Fi>
-Jos et jostain syystä pääsekään peliin tai turnaukseen, johon olet jo ilmoittautunut Konstin kautta, kannattaa ilmoittautuminen perua mahdollisimman pian. Näin joku toinen peliin haluava saattaa vielä ehtiä nappaamaan itselleen perumasi paikan!
+Jos et jostain syystä pääsekään ohjelmanumeroon, johon olet jo ilmoittautunut Konstin kautta, kannattaa ilmoittautuminen perua mahdollisimman pian. Näin joku toinen peliin haluava saattaa vielä ehtiä nappaamaan itselleen perumasi paikan!
 </Fi>
 
 <En>
-If you cannot make it to the game or tournament you have signed up for via the Konsti app and the sign-up period is still ongoing, please make sure to cancel your sign-up as soon as possible: this way someone else will have a chance to sign up for the game and fill your seat!
+If you cannot make it to the program item you have signed up for via the Konsti app and the sign-up period is still ongoing, please make sure to cancel your sign-up as soon as possible: this way someone else will have a chance to sign up for the game and fill your seat!
 </En>
