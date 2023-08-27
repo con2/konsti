@@ -1,24 +1,42 @@
 import { Link } from "react-router-dom";
 import { Fi } from "./components/Fi";
 import { En } from "./components/En";
+import { Ropecon } from "./components/Ropecon";
+import { Hitpoint } from "./components/Hitpoint";
 
 ## {props.conventionName} {props.conventionYear}
 
 <Fi>
+<Ropecon>
 Konstin kautta voi ilmoittautua pöytäroolipeleihin, larppeihin, turnauksiin, työpajoihin ja joihinkin muihin ohjelmanumeroihin.
-</Fi>
 
-<En>
-In Ropecon 2023, Konsti is used to sign up for role-playing games, larps, tournaments, workshops and some other program items.
-</En>
-
-<Fi>
 Konstin käytössä auttavat Pelitiski (Halli 5) ja Larp- ja Roolipelitiski (eteläisen sisäänkäynnin aula).
 Tiskeillä on myös tietokoneita, joilla Konstia voi käyttää.
+
+</Ropecon>
+
+<Hitpoint>
+Konstin kautta voi ilmoittautua pöytäroolipeleihin.
+
+Konstin käytössä auttaa roolipelitiski. Tiskillä on myös tietokoneita, joilla Konstia voi käyttää.
+
+</Hitpoint>
 </Fi>
 
 <En>
+<Ropecon>
+Konsti is used to sign up for role-playing games, larps, tournaments, workshops and some other program items.
+
 The Gaming Desk (Hall 5) and the Larp & RPG Desk (southern entrance lobby) will help you with using Konsti. The desks also have shared computers for using Konsti.
+
+</Ropecon>
+
+<Hitpoint>
+Konsti is used to sign up for role-playing games.
+
+The RPG Desk will help you with using Konsti. The desks also have shared computers for using Konsti.
+
+</Hitpoint>
 </En>
 
 <Fi>
@@ -59,12 +77,25 @@ will have to create a new one for this year's Ropecon.
 </En>
 
 <Fi>
+<Ropecon>
 Uuden käyttäjätilin luomiseen tarvitset rekisteröintikoodin, joita on saatavilla Pelitiskiltä (Halli 5), Larp- ja Roolipelitiskiltä tai Infosta (molemmat pääaulassa, eteläisen sisäänkäynnin luona).
+</Ropecon>
+
+<Hitpoint>
+Uuden käyttäjätilin luomiseen tarvitset rekisteröintikoodin, joita on saatavilla roolipelitiskiltä.
+</Hitpoint>
 </Fi>
 
 <En>
+<Ropecon>
 For creating an account, you will need a registration code, which you can get from the
 Gaming Desk (Hall 5), the Larp & RPG Desk or the Info Desk (both in the southern entrance lobby).
+</Ropecon>
+
+<Hitpoint>
+For creating an account, you will need a registration code, which you can get from the RPG Desk.
+</Hitpoint>
+
 </En>
 
 <Fi>
@@ -110,7 +141,7 @@ show when the sign-up starts and whether it will be a lottery sign-up or a direc
 <Fi>
 Ohjelmalistauksesta näet myös muita tietoja, esimerkiksi ohjelman keston, sijainnin ja esteettömyystiedot. Lisäksi
 Konsti näyttää, kuinka monta osallistujaa on ilmoittautunut ja kuinka monta vielä mahtuu mukaan.
-Kun käytössä on suorailmoittautuminen, päivittyy ilmoittautuneiden lukumäärä reaaliaikaisesti. Mikäli käytössä on arvontailmoittautuminen (käytössä pöytäroolipeleissä)
+Kun käytössä on suorailmoittautuminen, päivittyy ilmoittautuneiden lukumäärä reaaliaikaisesti. Mikäli käytössä on arvontailmoittautuminen <Ropecon>(käytössä pöytäroolipeleissä)</Ropecon>
 ja ilmoittautumisaika on vielä käynnissä, ilmoittautuneiden pelaajien lukumäärä ei muutu vielä arvontaan ilmoittautumisen yhteydessä, vaan päivittyy vasta, kun paikat on arvottu.
 </Fi>
 
@@ -141,6 +172,122 @@ ohjelmanumerot löydät <Link to={'/program/myprogram'}>Oma ohjelmani</Link> -n�
 
 <En>
 Favoriting program items is a good way to keep track of program you find interesting. You can add a program item to your favorites by clicking on the heart icon in the upper right corner of a program item's info card. You can find your favorites in the <Link to={'/program/myprogram'}>My Program view</Link>.
+</En>
+
+<Fi>
+## Ilmoittautuminen
+</Fi>
+
+<En>
+## Signing up to program
+</En>
+
+<Fi>
+Jos ohjelmanumeron ilmoittautumisaika on käynnissä, näkyy sen tietojen alla Ilmoittaudu-painike. Jo tehdyn ilmoittautumisen voi perua joko <Link to={'/program/myprogram'}>Oma ohjelmani</Link> -näkymässä tai <Link to={'/program/list'}>Kaikki ohjelma</Link> -näkymässä.
+</Fi>
+
+<En>
+If the sign-up period for a program item is ongoing, a sign-up button will be shown on the item's info card. You can cancel your sign-up on either the <Link to={'/program/myprogram'}>My Program page</Link> or the <Link to={'/program/list'}>program list</Link>.
+</En>
+
+<Fi>
+Ilmoittautuminen on porrastettu ja ilmoittautumisten alkamisajat näet ohjelmalistasta tai tästä ohjeesta.
+</Fi>
+
+<En>
+The sign-up start periodically. You can see when a sign-up starts on the program list or on this info page.
+</En>
+
+<Fi>
+Pöytäroolipeleihin ilmoittaudutaan arvonnan kautta ja jäljelle jääneet paikat täytetään ilmoittautumisjärjestyksessä. <Ropecon>Muun ohjelman paikat täytetään ilmoittautumisjärjestyksessä.</Ropecon>
+</Fi>
+
+<En>
+Tabletop role-playing games use a lottery sign-up where, after the lottery, remaining slots will be filled in the order of sign-ups. All other program uses direct sign-up without a lottery phase.
+</En>
+
+<Fi>
+Jos pääset arvonnassa peliin, Konsti näyttää sinulle tästä ilmoituksen. Nämä ilmoitukset näet myös <Link to={'/notifications'}>Ilmoitukset</Link>-sivulta. Kaikki omat ilmoittautumistuloksesi näet <Link to={"/program/myprogram"}>Oma ohjelmani</Link> -näkymässä ja kaiken ohjelman kaikki ilmoittautumistiedot näet puolestaan <Link to={"/results"}>Ilmoittautumistulokset</Link>-sivulta.
+</Fi>
+
+<En>
+Konsti will show you a notification if you get a spot in a game in the lottery. You can also view these notifications on the <Link to={'/notifications'}>Notifications</Link> page. You can see all your sign-up results on the <Link to={'/program/myprogram'}>My Program page</Link> and all sign-ups to all program items on the <Link to={'/results'}>Sign-up Results</Link> page.
+</En>
+
+<Fi>
+## Roolipeleihin ilmoittautuminen
+</Fi>
+
+<En>
+## Tabletop role-playing game sign-ups
+</En>
+
+<Fi>
+Konstin roolipeli-ilmoittautuminen tapahtuu kahdessa vaiheessa: arvonnassa ja suorailmoittautumisessa. Arvonnassa Konstin
+algoritmi jakaa pelipaikkoja käyttäjien asettamien toiveiden mukaan. Arvontaan voi ilmoittautua neljä tuntia ennen kunkin
+pelin alkua, paitsi seuraavan aamun peleihin jo edellisenä iltana.
+Tässä ensimmäisessä vaiheessa kävijä pystyy ilmoittautumaan yhteensä kolmeen eri peliin
+kutakin pelien alkamisajankohtaa kohti.
+</Fi>
+
+<En>
+Tabletop RPG sign-up in Konsti happens in two phases: lottery and direct sign-up. The lottery phase uses an algorithm to assign users to games while taking into account the preferences they have chosen for the games they have signed up for. The phase starts four
+hours before a game begins, except for the first games on mornings,
+for which the sign-up starts the night before. In lottery phase, you can choose up to three games for each time slot.
+</En>
+
+<Fi>
+Arvontaan ilmoittautuminen kestää kaksi tuntia, minkä jälkeen Konsti sijoittaa ilmoittautuneet peleihin arpoen tarvittaessa
+suosituimpiin peleihin pääsijät. Ilmoittautuminen sulkeutuu arvonnan jälkeen 15 minuutiksi: tämän vartin aikana käyttäjä voi tarkistaa,
+mihin peliin on päässyt mukaan ja halutessaan osallistua sen jälkeen suoraan ilmoittautumiseen.
+</Fi>
+
+<En>
+The lottery sign-up phase lasts for 2 hours, after which the Konsti algorithm places users into games based on their chosen preferences. After this initial placement, signing up for games is closed for 15 minutes. During this "intermission period" you can take a look at the results of the lottery sign-up, and decide whether you want to participate in the second phase of the sign-up process or not.
+</En>
+
+<Fi>
+Suorailmoittautuminen alkaa 1 h 45 min ennen pelin alkua. Tässä vaiheessa on vielä mahdollista napata paikka
+itseään kiinnostavasta pelistä niin kauan, kun siinä on vielä tilaa. Suorailmoittautumiseen voi osallistua, vaikka ei olisi osallistunut arvontaan.
+</Fi>
+
+<En>
+After the initial placements and the 15-minute intermission period, the direct sign-up phase begins. During the last 1h 45 min before the game is set to begin, you can sign up for a game as long as there is still room for new players. You do not need to participate in the lottery sign-up phase to be able to sign up during the direct sign-up period.
+</En>
+
+<Fi>
+<Ropecon>
+Perjantain klo 16 ja klo 17 peleihin eli kahteen ensimmäiseen alkamisajankohtaan on ainoastaan suora ilmoittautuminen, koska arvonnalle ei ole aikaa.
+</Ropecon>
+<Hitpoint>
+Kahteen ensimmäiseen alkamisajankohtaan on ainoastaan suora ilmoittautuminen, koska arvonnalle ei ole aikaa.
+</Hitpoint>
+</Fi>
+
+<En>
+<Ropecon>
+The first games of the convention, which start on Friday at 4PM and 5PM, only have the direct sign-up phase since there is no time for lottery.
+</Ropecon>
+<Hitpoint>
+The first games of the convention only have the direct sign-up phase since there is no time for lottery.
+</Hitpoint>
+</En>
+
+<Fi>
+### Pyöröovipelit
+</Fi>
+
+<En>
+### Revolving door games
+</En>
+
+<Fi>
+Pyöröovipeleissä pelaajat voivat lähteä pelistä ja tulla siihen mukaan kesken pelin. Pyöröovipelin alkuun voi
+ilmoittautua normaalisti, mutta kun peli alkaa, se näkyy koko kestoaikansa Konstin ilmottautumissivulla.
+</Fi>
+
+<En>
+Revolving door games are games where players can freely join and leave the game session at any time while it's going on. The first players can sign up for these games as usual, but after the revolving door games begin, they are displayed in the program list for their whole duration.
 </En>
 
 <Fi>
@@ -186,122 +333,7 @@ If you already have direct sign-ups to games, you can't create a new group or jo
 existing one. These sign-ups will be shown on the group page.
 </En>
 
-<Fi>
-## Ilmoittautuminen
-</Fi>
-
-<En>
-## Signing up to program
-</En>
-
-<Fi>
-Jos ohjelmanumeron ilmoittautumisaika on käynnissä, näkyy sen tietojen alla Ilmoittaudu-painike. Jo tehdyn ilmoittautumisen voi perua joko <Link to={'/program/myprogram'}>Oma ohjelmani</Link> -näkymässä tai <Link to={'/program/list'}>Kaikki ohjelma</Link> -näkymässä.
-</Fi>
-
-<En>
-If the sign-up period for a program item is ongoing, a sign-up button will be shown on the item's info card. You can cancel your sign-up on either the <Link to={'/program/myprogram'}>My Program page</Link> or the <Link to={'/program/list'}>program list</Link>.
-</En>
-
-<Fi>
-Ilmoittautuminen on porrastettu ja ilmoittautumisten alkamisajat näet ohjelmalistasta
-tai tästä ohjeesta.
-</Fi>
-
-<En>
-The sign-up occurs at different times for different program items. You can see when a sign-up starts on the program list or on this info page.
-</En>
-
-<Fi>
-Pöytäroolipeleihin ilmoittaudutaan arvonnan kautta ja jäljelle jääneet paikat täytetään ilmoittautumisjärjestyksessä. Muun ohjelman paikat täytetään ilmoittautumisjärjestyksessä.
-</Fi>
-
-<En>
-Tabletop role-playing games use a lottery sign-up where, after the lottery, remaining slots will be filled in the order of sign-ups. All other program uses direct sign-up without a lottery phase.
-</En>
-
-<Fi>
-Jos pääset arvonnassa peliin, Konsti näyttää sinulle tästä ilmoituksen. Nämä ilmoitukset näet myös <Link to={'/notifications'}>Ilmoitukset</Link>-sivulta. Kaikki omat ilmoittautumistuloksesi näet
-</Fi>
-
-<En>
-Konsti will show you a notification if you get a spot in a game in the lottery. You can also view these notifications on the <Link to={'/notifications'}>Notifications</Link> page.
-</En>
-
-<Fi>
-<Link to={"/program/myprogram"}>Oma ohjelmani</Link> -näkymässä ja kaiken ohjelman
-kaikki ilmoittautumistiedot näet puolestaan <Link to={"/results"}>Ilmoittautumistulokset</Link>-sivulta.
-</Fi>
-
-<En>
-You can see all your sign-up results on the <Link to={'/program/myprogram'}>My Program page</Link> and all sign-ups to all program items on the <Link to={'/results'}>Sign-up Results</Link> page.
-</En>
-
-<Fi>
-## Roolipeleihin ilmoittautuminen
-</Fi>
-
-<En>
-## Tabletop role-playing game sign-ups
-</En>
-
-<Fi>
-Konstin roolipeli-ilmoittautuminen tapahtuu kahdessa vaiheessa: arvonnassa ja suorailmoittautumisessa. Arvonnassa Konstin
-algoritmi jakaa pelipaikkoja käyttäjien asettamien toiveiden mukaan. Arvontaan voi ilmoittautua neljä tuntia ennen kunkin
-pelin alkua, paitsi lauantai- ja sunnuntaiaamujen peleihin jo edellisenä iltana.
-Tässä ensimmäisessä vaiheessa kävijä pystyy ilmoittautumaan yhteensä kolmeen eri peliin
-kutakin pelien alkamisajankohtaa kohti.
-</Fi>
-
-<En>
-Tabletop RPG sign-up in Konsti happens in two phases: lottery and direct sign-up. The lottery phase uses an algorithm to assign users to games while taking into account the preferences they have chosen for the games they have signed up for. The phase starts four
-hours before a game begins, except for the first games on Saturday and Sunday mornings,
-for which the sign-up starts the night before. In this first phase, you can choose up to three games for each time slot.
-</En>
-
-<Fi>
-Arvontaan ilmoittautuminen kestää kaksi tuntia, minkä jälkeen Konsti sijoittaa ilmoittautuneet peleihin arpoen tarvittaessa
-suosituimpiin peleihin pääsijät. Ilmoittautuminen sulkeutuu arvonnan jälkeen 15 minuutiksi: tämän vartin aikana käyttäjä voi tarkistaa,
-mihin peliin on päässyt mukaan ja halutessaan osallistua sen jälkeen suoraan ilmoittautumiseen.
-</Fi>
-
-<En>
-The lottery sign-up phase lasts for 2 hours, after which the Konsti algorithm places users into games based on their chosen preferences. After this initial placement, signing up for games is closed for 15 minutes. During this "intermission period" you can take a look at the results of the lottery sign-up, and decide whether you want to participate in the second phase of the sign-up process or not.
-</En>
-
-<Fi>
-Suorailmoittautuminen alkaa 1 h 45 min ennen pelin alkua. Tässä vaiheessa on vielä mahdollista napata paikka
-itseään kiinnostavasta pelistä niin kauan, kun siinä on vielä tilaa. Suorailmoittautumiseen voi osallistua, vaikka ei olisi osallistunut arvontaan.
-</Fi>
-
-<En>
-After the initial placements and the 15-minute intermission period, the direct sign-up phase begins. During the last 1h 45 min before the game is set to begin, you can sign up for a game as long as there is still room for new players. You do not need to participate in the lottery sign-up phase to be able to sign up during the direct sign-up period.
-</En>
-
-<Fi>
-Perjantain klo 16 ja klo 17 peleihin eli kahteen ensimmäiseen alkamisajankohtaan on ainoastaan suora ilmoittautuminen.
-</Fi>
-
-<En>
-The first games of the convention, which start on Friday at 4PM and 5PM, only have the direct sign-up phase.
-</En>
-
-<Fi>
-### Pyöröovipelit
-</Fi>
-
-<En>
-### Revolving door games
-</En>
-
-<Fi>
-Pyöröovipeleissä pelaajat voivat lähteä pelistä ja tulla siihen mukaan kesken pelin. Pyöröovipelin alkuun voi
-ilmoittautua normaalisti, mutta kun peli alkaa, se näkyy koko kestoaikansa Konstin ilmottautumissivulla.
-</Fi>
-
-<En>
-Revolving door games are games where players can freely join and leave the game session at any time while it's going on. The first players can sign up for these games as usual, but after the revolving door games begin, they are displayed in the program list for their whole duration.
-</En>
-
+<Ropecon>
 <Fi>
 ## Larppeihin ilmoittautuminen
 </Fi>
@@ -470,3 +502,5 @@ Kaikkien muiden Konstia käyttävien ohjelmanumeroiden ilmoittautuminen alkaa pe
 <En>
 Sign-up for all other program items that use Konsti starts on Friday at 3PM.
 </En>
+
+</Ropecon>

@@ -9,5 +9,5 @@ interface Props {
 export const En = ({ children }: Props): ReactElement => {
   const { i18n } = useTranslation();
 
-  return <div>{i18n.language === "en" ? children : null}</div>;
+  return <span>{i18n.language === "en" ? children : null}</span>;
 };

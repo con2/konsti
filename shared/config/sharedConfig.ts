@@ -8,6 +8,11 @@ import {
 
 type ArrMin1<T> = [T, ...T[]];
 
+export enum CONVENTION_NAME {
+  ROPECON = "Ropecon",
+  TRACON_HITPOINT = "Tracon Hitpoint",
+}
+
 interface SignupWindow {
   signupWindowStart: Dayjs;
   signupWindowClose: Dayjs;
@@ -300,7 +305,7 @@ export const sharedConfig: SharedConfig = {
   PHASE_GAP: 15, // minutes
 
   // Convention info
-  CONVENTION_NAME: "Tracon Hitpoint",
+  CONVENTION_NAME: CONVENTION_NAME.TRACON_HITPOINT,
   CONVENTION_YEAR: "2023",
 
   // Sentry
