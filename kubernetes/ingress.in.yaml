@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: konsti
+  annotations: !Var ingress_annotations
+spec:
+  tls: !Var ingress_tls
+  rules:
+    - host: !Var ingress_public_hostname
+      http:
+        paths:
+          - pathType: Prefix
+            path: /
+            backend:
+              service:
+                name: konsti
+                port:
+                  number: 5000

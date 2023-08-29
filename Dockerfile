@@ -1,4 +1,5 @@
 FROM node:18.17.1-alpine3.17
+ARG FRONTEND_ENV=dev
 
 # Install init process tool to avoid Node running PID 1
 RUN apk --no-cache add dumb-init=1.2.5-r2
@@ -10,7 +11,10 @@ WORKDIR /usr/src/app
 COPY --chown=node:node . .
 
 # Install dependencies
-RUN yarn workspaces focus --all --production
+RUN yarn workspaces focus --all
+
+# Build frontend
+RUN yarn build-front:${FRONTEND_ENV}
 
 # App binds to port 5000
 EXPOSE 5000

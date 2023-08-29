@@ -19,6 +19,8 @@ const getEnvVariableFile = (): string | undefined => {
       return "./config/staging.env";
     case "build:ci":
       return "./config/ci.env";
+    case "build:kube-dev":
+      return "./config/kube-dev.env";
     default:
       return "./config/dev.env";
   }
@@ -171,6 +173,8 @@ const getWebpackConfig = (): Configuration | undefined => {
     case "build:staging":
       return merge(commonConfig, prodConfig);
     case "build:dev":
+      return merge(commonConfig, prodConfig);
+    case "build:kube-dev":
       return merge(commonConfig, prodConfig);
     case "build:ci":
       return merge(commonConfig, prodConfig);

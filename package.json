@@ -8,6 +8,7 @@
   "scripts": {
     "build-front:ci": "yarn workspace konsti-client build:ci && yarn copy-front",
     "build-front:dev": "yarn workspace konsti-client build:dev && yarn copy-front",
+    "build-front:kube-dev": "yarn workspace konsti-client build:kube-dev && yarn copy-front",
     "build-front:prod": "yarn workspace konsti-client build:prod && yarn copy-front",
     "build-front:staging": "yarn workspace konsti-client build:staging && yarn copy-front",
     "build-server": "yarn workspace konsti-server build",

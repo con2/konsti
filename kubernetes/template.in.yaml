@@ -1,0 +1,38 @@
+# konsti deployment using Kubernetes
+# usage: emrichen -f default.vars.yaml kubernetes.in.yaml | kubectl apply -n konsti -f -
+
+
+###########
+# MONGODB #
+###########
+---
+!If
+  test: !Var mongodb_managed
+  then: !Include mongodb/service.in.yaml
+
+---
+!If
+  test: !Var mongodb_managed
+  then: !Include mongodb/statefulset.in.yaml
+
+
+###############
+# APPLICATION #
+###############
+---
+!Include konsti/service.in.yaml
+---
+!Include konsti/cron-deployment.in.yaml
+---
+!Include konsti/konsti-deployment.in.yaml
+---
+!If
+  test: !Var konsti_secret_managed
+  then: !Include konsti/secret.in.yaml
+
+
+###########
+# INGRESS #
+###########
+---
+!Include ingress.in.yaml
