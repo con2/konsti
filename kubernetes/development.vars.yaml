@@ -1,0 +1,7 @@
+postgres_password: konsti
+konsti_secret_key: eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+konsti_utils_secret_key: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+smtp_password: secret
+ingress_letsencrypt_enabled: false
+konsti_insecure_local_auth_enabled: true
+konsti_frontend_env: kube-dev
