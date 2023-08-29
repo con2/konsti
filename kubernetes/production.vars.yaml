@@ -1,0 +1,14 @@
+ingress_public_hostname: konsti.con2.fi
+
+konsti_secret_managed: false
+konsti_frontend_env: prod
+
+ingress_letsencrypt_enabled: true
+ingress_letsencrypt_cluster_issuer: letsencrypt-prod
+
+smtp_hostname: sr1.pahaip.fi
+smtp_from_email: root@tracon.fi
+
+kompassi_admin_groups:
+  - konsti-staff
+  - admins
