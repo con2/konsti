@@ -9,7 +9,7 @@ module.exports = {
     return [`yarn workspace konsti-client stylelint-lint-staged ${filenames}`];
   },
 
-  "*.{json,md,yml}": (files) => {
+  "*.{json,mdx,yml}": (files) => {
     const filenames = files.join(" ");
     return [`prettier --check ${filenames}`];
   },
