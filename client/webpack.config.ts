@@ -84,11 +84,6 @@ const commonConfig: Configuration = {
         use: ["@svgr/webpack"],
       },
       {
-        test: /\.md$/,
-        // TODO: Replace with Asset Module: https://webpack.js.org/guides/asset-modules/
-        use: "raw-loader",
-      },
-      {
         test: /\.mdx?$/,
         use: [
           {
