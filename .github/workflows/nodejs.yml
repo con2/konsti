@@ -29,10 +29,6 @@ jobs:
         run: |
           yarn --immutable
 
-      - name: Build front-end
-        run: |
-          yarn build-front:prod
-
       - name: Run Prettier
         run: |
           yarn prettier:check
