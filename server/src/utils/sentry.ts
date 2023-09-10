@@ -1,6 +1,5 @@
 import { init, Integrations, Handlers } from "@sentry/node";
 import express, { Express } from "express";
-import helmet from "helmet";
 import { postSentryTunnel } from "server/features/sentry-tunnel/sentryTunnelController";
 import { sharedConfig } from "shared/config/sharedConfig";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
@@ -31,14 +30,6 @@ export const initSentry = (app: Express, enableSentry: boolean): void => {
 
   // TracingHandler creates a trace for every incoming request
   app.use(Handlers.tracingHandler());
-
-  app.use(
-    helmet.contentSecurityPolicy({
-      directives: {
-        "connect-src": ["'self'", "*.sentry.io"],
-      },
-    }),
-  );
 
   // Sentry tunnel endpoint which accepts text/plain payload
   app.post(
