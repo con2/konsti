@@ -41,7 +41,21 @@ export const startServer = async ({
   // Must be the first middleware on the app
   initSentry(app, enableSentry);
 
-  app.use(helmet());
+  const cspConnectSrc = ["'self'", "http://127.0.0.1:5000"];
+
+  if (enableSentry) {
+    cspConnectSrc.push("*.sentry.io");
+  }
+
+  app.use(
+    helmet({
+      contentSecurityPolicy: {
+        directives: {
+          "connect-src": cspConnectSrc,
+        },
+      },
+    }),
+  );
 
   if (config.enableAccessLog) {
     // Set logger
