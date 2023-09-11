@@ -115,7 +115,7 @@ export const startServer = async ({
   let server: Server;
 
   // Use https for running Playwright tests in CI
-  if (process.env.SETTINGS === "CI") {
+  if (process.env.SETTINGS === "ci") {
     const privateKey = fs.readFileSync(
       path.join(__dirname, "../../dev-cert", "server.key"),
       "utf8",
