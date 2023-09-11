@@ -67,7 +67,8 @@
     "group": "Group",
     "notifications": "Notifications",
     "profileAndGroup": "Profile & Group",
-    "profile": "Profile"
+    "profile": "Profile",
+    "help": "Help"
   },
   "gameInfo": {
     "gameStyle": "Game style",
