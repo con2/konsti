@@ -176,9 +176,9 @@
   "hiddenProgramItems": "Hidden program items",
   "error": {
     "usernameTaken": "Username already taken",
-    "invalidSerial": "Invalid registration code",
-    "loginFailed": "Username and password don't match",
-    "loginDisabled": "Login is disabled",
+    "invalidSerial": "Invalid registration code.",
+    "loginFailed": "Username and password don't match.",
+    "loginDisabled": "Login is disabled.",
     "unknown": "Unknown error"
   },
   "agreePrivacyPolicy": "I agree to the privacy policy",

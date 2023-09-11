@@ -176,9 +176,9 @@
   "hiddenProgramItems": "Piilotetut ohjelmanumerot",
   "error": {
     "usernameTaken": "Käyttäjänimi on jo olemassa",
-    "invalidSerial": "Virheellinen rekisteröintikoodi",
-    "loginFailed": "Käyttäjänimi ja salasana eivät täsmää",
-    "loginDisabled": "Kirjautuminen on suljettu",
+    "invalidSerial": "Virheellinen rekisteröintikoodi.",
+    "loginFailed": "Käyttäjänimi ja salasana eivät täsmää.",
+    "loginDisabled": "Kirjautuminen on suljettu.",
     "unknown": "Tuntematon virhe"
   },
   "agreePrivacyPolicy": "Hyväksyn rekisteriselosteen",
