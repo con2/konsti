@@ -201,7 +201,7 @@
     "signupEnded": "Sign-up ended",
     "samePriority": "Priority already selected",
     "signupNotOpenYet": "Sign-up not open yet",
-    "programFull": "Program is full",
+    "programFull": "This program item is full.",
     "noKonstiSignup": "This program does not use Konsti for signing up. See the program details for instructions."
   },
   "signupUnsavedChanges": "Unsaved changes",
@@ -297,7 +297,7 @@
     "cannotSignupMoreThanOneGame": "You cannot sign up to another {{PROGRAM_TYPE}} starting at the same time.",
     "signupCount": "{{PLAYERS}} / {{MAX_ATTENDANCE}} signed up",
     "attendeesNeeded": "{{COUNT}} more {{ATTENDEE_TYPE}} needed",
-    "programItemFull": "{{PROGRAM_TYPE}} is full.",
+    "programItemFull": "This {{PROGRAM_TYPE}} is full.",
     "confirmCancellation": "Cancel your sign-up",
     "staySignedUp": "Stay signed up",
     "expectedDuration": "Duration {{EXPECTED_DURATION}}",

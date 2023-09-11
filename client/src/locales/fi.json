@@ -201,7 +201,7 @@
     "signupEnded": "Ilmoittautuminen päättynyt",
     "samePriority": "Prioriteetti on jo valittu",
     "signupNotOpenYet": "Ilmoittautuminen ei ole vielä auki",
-    "programFull": "Ohjelma on täynnä",
+    "programFull": "Ohjelma on täynnä.",
     "noKonstiSignup": "Tähän ohjelmaan ei ilmoittauduta Konstissa. Katso ilmoittautumisohjeet ohjelman lisätiedoista."
   },
   "signupUnsavedChanges": "Tallentamattomia muutoksia",
@@ -297,7 +297,7 @@
     "cannotSignupMoreThanOneGame": "Et voi ilmoittautua muihin samaan aikaan alkaviin {{PROGRAM_TYPE}}.",
     "signupCount": "{{PLAYERS}} / {{MAX_ATTENDANCE}} ilmoittautunutta",
     "attendeesNeeded": "Tarvitaan vielä {{COUNT}} {{ATTENDEE_TYPE}}",
-    "programItemFull": "{{PROGRAM_TYPE}} on täynnä",
+    "programItemFull": "Tämä {{PROGRAM_TYPE}} on täynnä",
     "confirmCancellation": "Peruuta ilmoittautuminen",
     "staySignedUp": "Pysy ilmoittautuneena",
     "expectedDuration": "Kesto {{EXPECTED_DURATION}}",
