@@ -479,6 +479,7 @@
     "noAccountRegister": "No account? Create one here."
   },
   "registrationView": {
+    "nickVisibleHintText": "Your usename will be visible to all other users.",
     "alreadyHaveAccountLogin": "Do you already have an account? Log in here."
   },
   "iconAltText": {

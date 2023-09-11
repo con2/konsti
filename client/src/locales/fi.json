@@ -479,6 +479,7 @@
     "noAccountRegister": "Ei käyttäjätiliä? Luo käyttäjätili täällä."
   },
   "registrationView": {
+    "nickVisibleHintText": "Valitsemasi käyttäjänimi näkyy kaikille käyttäjille.",
     "alreadyHaveAccountLogin": "Onko sinulla jo tili? Kirjaudu sisään tästä."
   },
   "iconAltText": {

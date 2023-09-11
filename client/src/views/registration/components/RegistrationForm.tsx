@@ -59,31 +59,36 @@ export const RegistrationForm = (): ReactElement => {
   return (
     <div>
       <StyledForm onSubmit={handleSubmit(onSubmit)}>
-        <InputContainer>
-          <StyledLabel htmlFor="username">{t("username")}</StyledLabel>
-          <StyledInput
-            id="username"
-            {...register("username", {
-              required: `${t(`validation.required`)}`,
-              minLength: {
-                value: USERNAME_LENGTH_MIN,
-                message: t(`validation.tooShort`, {
-                  length: USERNAME_LENGTH_MIN,
-                }),
-              },
-              maxLength: {
-                value: USERNAME_LENGTH_MAX,
-                message: t(`validation.tooLong`, {
-                  length: USERNAME_LENGTH_MAX,
-                }),
-              },
-              onChange: () => {
-                setServerError(null);
-              },
-            })}
-            type={"text"}
-          />
-        </InputContainer>
+        <>
+          <InputContainer>
+            <StyledLabel htmlFor="username">{t("username")}</StyledLabel>
+            <StyledInput
+              id="username"
+              {...register("username", {
+                required: `${t(`validation.required`)}`,
+                minLength: {
+                  value: USERNAME_LENGTH_MIN,
+                  message: t(`validation.tooShort`, {
+                    length: USERNAME_LENGTH_MIN,
+                  }),
+                },
+                maxLength: {
+                  value: USERNAME_LENGTH_MAX,
+                  message: t(`validation.tooLong`, {
+                    length: USERNAME_LENGTH_MAX,
+                  }),
+                },
+                onChange: () => {
+                  setServerError(null);
+                },
+              })}
+              type={"text"}
+            />
+          </InputContainer>
+          <SmallLabel htmlFor="username">
+            {t("registrationView.nickVisibleHintText")}
+          </SmallLabel>
+        </>
 
         {errors.username && (
           <FormFieldError>{errors.username.message}</FormFieldError>
