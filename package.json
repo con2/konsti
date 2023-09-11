@@ -16,7 +16,7 @@
     "playwright": "yarn workspace konsti-client playwright",
     "docker-compose:start": "APP_SETTINGS=development docker compose -f ./docker/docker-compose.yml up --detach --build --remove-orphans",
     "docker-compose:stop": "APP_SETTINGS=development docker compose -f ./docker/docker-compose.yml down --remove-orphans",
-    "docker-compose:test": "APP_SETTINGS=CI docker compose -f ./docker/docker-compose.yml -f ./client/playwright/docker-compose.yml up --attach playwright --attach server --build --remove-orphans --exit-code-from playwright --abort-on-container-exit",
+    "docker-compose:test": "APP_SETTINGS=ci docker compose -f ./docker/docker-compose.yml -f ./client/playwright/docker-compose.yml up --attach playwright --attach server --build --remove-orphans --exit-code-from playwright --abort-on-container-exit",
     "docker:build-prod": "docker build --build-arg env=prod . -t konsti-prod",
     "docker:build-staging": "docker build --build-arg env=staging . -t konsti-staging",
     "docker:build-dev": "docker build --build-arg env=dev . -t konsti-dev",
