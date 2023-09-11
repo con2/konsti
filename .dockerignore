@@ -4,5 +4,4 @@ Dockerfile
 .gitignore
 .github
 .husky
-client
 docker
