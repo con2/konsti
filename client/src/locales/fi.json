@@ -475,7 +475,7 @@
     "question": "Kysymys"
   },
   "loginView": {
-    "oldAccountsNotWorking": "Aikaisempien tapahtumien käyttäjätilit eivät ole käytössä.",
+    "oldAccountsNotWorking": "Huomaathan, että aikaisempien tapahtumien käyttäjätilit eivät ole käytössä.",
     "noAccountRegister": "Ei käyttäjätiliä? Luo käyttäjätili täällä."
   },
   "registrationView": {

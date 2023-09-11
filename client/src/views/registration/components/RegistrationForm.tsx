@@ -58,8 +58,6 @@ export const RegistrationForm = (): ReactElement => {
 
   return (
     <div>
-      <h2>{t("pageTitle.registration")}</h2>
-
       <StyledForm onSubmit={handleSubmit(onSubmit)}>
         <InputContainer>
           <StyledLabel htmlFor="username">{t("username")}</StyledLabel>

@@ -475,7 +475,7 @@
     "question": "Question"
   },
   "loginView": {
-    "oldAccountsNotWorking": "Accounts from old events are not in use anymore.",
+    "oldAccountsNotWorking": "Please note that accounts from older events are not in use anymore.",
     "noAccountRegister": "No account? Create one here."
   },
   "registrationView": {

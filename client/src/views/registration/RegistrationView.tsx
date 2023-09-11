@@ -8,6 +8,8 @@ export const RegistrationView = (): ReactElement => {
 
   return (
     <>
+      <h2>{t("pageTitle.registration")}</h2>
+      <p>{t("loginView.oldAccountsNotWorking")}</p>
       <RegistrationForm />{" "}
       <Link to={`/login`}>
         <p>{t("registrationView.alreadyHaveAccountLogin")}</p>
