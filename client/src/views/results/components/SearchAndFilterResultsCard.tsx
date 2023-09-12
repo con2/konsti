@@ -6,6 +6,7 @@ import { RadioButton } from "client/components/RadioButton";
 import { ControlledInput } from "client/components/ControlledInput";
 import { useAppSelector } from "client/utils/hooks";
 import { RaisedCard } from "client/components/RaisedCard";
+import { RadioButtonGroup } from "client/components/RadioButtonGroup";
 
 export enum ResultsStartingTimeOption {
   ALL = "all",
@@ -100,12 +101,4 @@ const InputContainer = styled.div`
 const StyledLabel = styled.label`
   padding: 0 0 2px 4px;
   font-size: ${(props) => props.theme.fontSizeSmall};
-`;
-
-const RadioButtonGroup = styled.fieldset`
-  border: none;
-  margin: -6px 0 -8px 0;
-  padding-left: 0;
-  display: flex;
-  flex-direction: column;
 `;
