@@ -106,7 +106,8 @@ export const GameInfo = ({ game }: Props): ReactElement => {
           </GameDetailsTitle>
           <GameDetailsValue>
             <span>
-              {getFormattedStartTime(game.startTime)} -{" "}
+              {getFormattedStartTime(game.startTime)}
+              {"–"}
               {getFormattedEndTime(game.endTime)}{" "}
             </span>
             <NoWrapText>({getFormattedDuration(game.mins)})</NoWrapText>

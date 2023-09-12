@@ -295,7 +295,7 @@
     "cancel": "Cancel",
     "alreadySignedToGame": "You already signed up to the {{PROGRAM_TYPE}}",
     "cannotSignupMoreThanOneGame": "You cannot sign up to another {{PROGRAM_TYPE}} starting at the same time.",
-    "signupCount": "{{PLAYERS}} / {{MAX_ATTENDANCE}} signed up",
+    "signupCount": "{{PLAYERS}}/{{MAX_ATTENDANCE}} sign-ups",
     "attendeesNeeded": "{{COUNT}} more {{ATTENDEE_TYPE}} needed",
     "programItemFull": "This {{PROGRAM_TYPE}} is full.",
     "confirmCancellation": "Cancel your sign-up",
