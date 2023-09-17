@@ -13,6 +13,7 @@ interface Props {
 export const GameInfo = ({ game }: Props): ReactElement => {
   const { t } = useTranslation();
 
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (!game) {
     return <div />;
   }
@@ -122,6 +123,7 @@ export const GameInfo = ({ game }: Props): ReactElement => {
         </GameDetailsRow>
       )}
 
+      {/* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition */}
       {sharedConfig.activeProgramTypes.length > 1 && game.programType && (
         <GameDetailsRow>
           <GameDetailsTitle twoColumns={true}>
@@ -133,6 +135,7 @@ export const GameInfo = ({ game }: Props): ReactElement => {
         </GameDetailsRow>
       )}
 
+      {/* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition */}
       {game.genres && game.genres.length > 0 && (
         <GameDetailsRow>
           <GameDetailsTitle twoColumns={true}>
@@ -218,6 +221,7 @@ export const GameInfo = ({ game }: Props): ReactElement => {
         </GameDetailsRow>
       )}
 
+      {/* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition */}
       {game.styles && game.styles.length > 0 && (
         <GameDetailsRow>
           <GameDetailsTitle twoColumns={true}>

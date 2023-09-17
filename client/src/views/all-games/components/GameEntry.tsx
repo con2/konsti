@@ -81,7 +81,7 @@ export const GameEntry = ({
   const updateFavoriteHandler = async (
     updateOpts: UpdateFavoriteOpts,
   ): Promise<void> => {
-    if (!updateOpts?.game?.gameId) {
+    if (!updateOpts.game.gameId) {
       return;
     }
     await updateFavorite(updateOpts);
@@ -188,6 +188,7 @@ export const GameEntry = ({
           )}
         </HeaderContainer>
 
+        {/* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition */}
         {loggedIn && userGroup === "user" && game && (
           <FavoriteButton
             isFavorite={favorited}

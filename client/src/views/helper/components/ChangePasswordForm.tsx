@@ -49,12 +49,14 @@ export const ChangePasswordForm = ({ username }: Props): ReactElement => {
 
     const response = await updateUserPassword(username, changePasswordInput);
 
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (!response || response.status === "error") {
       setPasswordChangeMessage(
         <Message error={true}>
           {t("passwordManagement.changingPasswordError")}
         </Message>,
       );
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     } else if (response.status === "success") {
       setPasswordChangeMessage(
         <Message>{t("passwordManagement.changingPasswordSuccess")}</Message>,

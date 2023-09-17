@@ -63,6 +63,7 @@ export const removeDeletedGames = async (
     }
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   return makeSuccessResult(deletedGames.length ?? 0);
 };
 
@@ -164,5 +165,6 @@ const getSignupMessage = (
     return "";
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   return signupMessage ?? "";
 };

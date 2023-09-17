@@ -27,6 +27,7 @@ export const Dropdown = ({
 }: Props): ReactElement => {
   const { t } = useTranslation();
 
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (!options) {
     return <div />;
   }

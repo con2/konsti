@@ -50,6 +50,7 @@ export const AdminActionCard = ({ game }: Props): ReactElement => {
 
   useEffect(() => {
     // Check if hidden
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     hiddenGames.find((hiddenGame) => {
       if (hiddenGame.gameId === game.gameId) {
         setHidden(true);
@@ -57,6 +58,7 @@ export const AdminActionCard = ({ game }: Props): ReactElement => {
     });
 
     // Check if signup question exists
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     signupQuestions.find((signupQuestion) => {
       if (signupQuestion.gameId === game.gameId) {
         setHasSignupQuestion(true);

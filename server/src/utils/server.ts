@@ -69,6 +69,7 @@ export const startServer = async ({
   app.use(
     "/",
     (err: Error, _req: Request, res: Response, next: NextFunction) => {
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
       if (err) {
         logger.warn(`Invalid request: ${JSON.stringify(err)}`);
         return res.sendStatus(400);

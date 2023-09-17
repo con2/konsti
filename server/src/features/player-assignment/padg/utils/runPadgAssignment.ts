@@ -38,6 +38,7 @@ export const runPadgAssignment = (
 
   const assignResults = assignPadg(groups, events, list, updateL);
 
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (!assignResults) {
     logger.error(
       "%s",

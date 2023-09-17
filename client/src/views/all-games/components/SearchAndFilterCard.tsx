@@ -77,6 +77,7 @@ export const SearchAndFilterCard = ({
       sessionStorage.getItem(SessionStorageValue.ALL_GAMES_TAG) ?? "",
     );
     setSelectedStartingTime(
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
       (sessionStorage.getItem(
         SessionStorageValue.ALL_GAMES_STARTING_TIME,
       ) as StartingTimeOption) ?? StartingTimeOption.UPCOMING,

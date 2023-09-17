@@ -16,6 +16,7 @@ export const findGroupMembers = async (
       .lean<User[]>()
       .populate("favoritedGames")
       .populate("signedGames.gameDetails");
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (!response || response.length === 0) {
       logger.info(`MongoDB: group ${groupCode} not found`);
     } else {

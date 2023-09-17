@@ -32,6 +32,7 @@ export const removeOverlapSignups = async (
 
   results.map((result) => {
     const enteredGame = result.enteredGame.gameDetails;
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (!enteredGame) {
       logger.error(
         "%s",
@@ -49,7 +50,7 @@ export const removeOverlapSignups = async (
       return;
     }
 
-    const newSignedGames = signedUser?.signedGames.filter((signedGame) => {
+    const newSignedGames = signedUser.signedGames.filter((signedGame) => {
       // If signed game takes place during the length of entered game, cancel it
       return !dayjs(signedGame.gameDetails.startTime).isBetween(
         dayjs(enteredGame.startTime).add(1, "minutes"),
@@ -57,6 +58,7 @@ export const removeOverlapSignups = async (
       );
     });
 
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (!newSignedGames) {
       logger.error(
         "%s",

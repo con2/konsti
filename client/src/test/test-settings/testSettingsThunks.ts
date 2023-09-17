@@ -10,11 +10,11 @@ export const submitGetTestSettings = (): AppThunk => {
   return async (dispatch): Promise<void> => {
     const response = await getTestSettings();
 
-    if (response?.status === "error") {
+    if (response.status === "error") {
       // TODO
     }
 
-    if (response?.status === "success") {
+    if (response.status === "success") {
       dispatch(submitSetTestTime(response.testSettings.testTime));
     }
   };
@@ -30,11 +30,11 @@ export const submitSetTestSettings = ({
       testTime,
     });
 
-    if (response?.status === "error") {
+    if (response.status === "error") {
       // TODO
     }
 
-    if (response?.status === "success") {
+    if (response.status === "success") {
       dispatch(submitSetTestTime(response.testSettings.testTime));
       await loadGames();
     }

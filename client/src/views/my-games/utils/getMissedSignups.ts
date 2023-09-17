@@ -35,12 +35,14 @@ export const getMissedSignups = (
       return pastSignupTime;
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     enteredGames.find((enteredGame) => {
       if (enteredGame.time === pastSignupTime) {
         found = true;
       }
     });
 
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (!found) {
       return pastSignupTime;
     }
