@@ -86,7 +86,7 @@ const render = (): void => {
 
   if (!container) {
     // eslint-disable-next-line no-restricted-syntax -- We want to throw here
-    throw new Error("Unable to find React root element 'main");
+    throw new Error("Unable to find React root element 'main'");
   }
 
   const root = createRoot(container);
