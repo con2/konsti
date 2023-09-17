@@ -10,6 +10,7 @@ interface Props {
 export const GroupMembersList = ({ groupMembers }: Props): ReactElement => {
   const { t } = useTranslation();
 
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (!groupMembers) {
     return <GroupMembersListContainer />;
   }

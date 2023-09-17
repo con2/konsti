@@ -26,6 +26,7 @@ export const removeInvalidGamesFromUsers = async (): Promise<
 
   const usersToUpdate: User[] = users.flatMap((user) => {
     const validSignedGames = user.signedGames.filter((signedGame) => {
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
       if (signedGame.gameDetails !== null) {
         return signedGame.gameDetails;
       }
@@ -41,6 +42,7 @@ export const removeInvalidGamesFromUsers = async (): Promise<
     }
 
     const validFavoritedGames = user.favoritedGames.filter((favoritedGame) => {
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
       if (favoritedGame !== null) {
         return favoritedGame;
       }

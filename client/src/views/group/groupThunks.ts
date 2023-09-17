@@ -30,7 +30,7 @@ export const submitCreateGroup = (
   return async (dispatch): Promise<PostCreateGroupErrorMessage | undefined> => {
     const createGroupResponse = await postCreateGroup(group);
 
-    if (createGroupResponse?.status === "error") {
+    if (createGroupResponse.status === "error") {
       switch (createGroupResponse.errorId) {
         case "groupExists":
           return PostCreateGroupErrorMessage.GROUP_EXISTS;
@@ -43,7 +43,7 @@ export const submitCreateGroup = (
       }
     }
 
-    if (createGroupResponse?.status === "success") {
+    if (createGroupResponse.status === "success") {
       dispatch(submitGetGroup(createGroupResponse.groupCode));
       dispatch(submitUpdateGroupCodeAsync(createGroupResponse.groupCode));
     }
@@ -65,7 +65,7 @@ export const submitJoinGroup = (
   return async (dispatch): Promise<PostJoinGroupErrorMessage | undefined> => {
     const joinGroupResponse = await postJoinGroup(groupRequest);
 
-    if (joinGroupResponse?.status === "error") {
+    if (joinGroupResponse.status === "error") {
       switch (joinGroupResponse.errorId) {
         case "invalidGroupCode":
           return PostJoinGroupErrorMessage.INVALID_GROUP_CODE;
@@ -84,7 +84,7 @@ export const submitJoinGroup = (
       }
     }
 
-    if (joinGroupResponse?.status === "success") {
+    if (joinGroupResponse.status === "success") {
       dispatch(submitGetGroup(joinGroupResponse.groupCode));
       dispatch(submitUpdateGroupCodeAsync(joinGroupResponse.groupCode));
     }
@@ -102,7 +102,7 @@ export const submitLeaveGroup = (): AppThunk<
   return async (dispatch): Promise<PostLeaveGroupErrorMessage | undefined> => {
     const leaveGroupResponse = await postLeaveGroup();
 
-    if (leaveGroupResponse?.status === "error") {
+    if (leaveGroupResponse.status === "error") {
       switch (leaveGroupResponse.errorId) {
         case "failedToLeave":
           return PostLeaveGroupErrorMessage.FAILED_TO_LEAVE;
@@ -113,7 +113,7 @@ export const submitLeaveGroup = (): AppThunk<
       }
     }
 
-    if (leaveGroupResponse?.status === "success") {
+    if (leaveGroupResponse.status === "success") {
       dispatch(submitLeaveGroupAsync(leaveGroupResponse.groupCode));
     }
   };
@@ -130,7 +130,7 @@ export const submitCloseGroup = (
   return async (dispatch): Promise<PostCloseGroupErrorMessage | undefined> => {
     const leaveGroupResponse = await postCloseGroup(groupRequest);
 
-    if (leaveGroupResponse?.status === "error") {
+    if (leaveGroupResponse.status === "error") {
       switch (leaveGroupResponse.errorId) {
         case "onlyCreatorCanCloseGroup":
           return PostCloseGroupErrorMessage.ONLY_CREATOR_CAN_CLOSE;
@@ -141,7 +141,7 @@ export const submitCloseGroup = (
       }
     }
 
-    if (leaveGroupResponse?.status === "success") {
+    if (leaveGroupResponse.status === "success") {
       dispatch(submitLeaveGroupAsync(leaveGroupResponse.groupCode));
     }
   };
@@ -157,7 +157,7 @@ export const submitGetGroup = (
   return async (dispatch): Promise<GetGroupErrorMessage | undefined> => {
     const getGroupResponse = await getGroup(groupCode);
 
-    if (getGroupResponse?.status === "error") {
+    if (getGroupResponse.status === "error") {
       switch (getGroupResponse.errorId) {
         case "unknown":
           return GetGroupErrorMessage.UNKNOWN;
@@ -166,7 +166,7 @@ export const submitGetGroup = (
       }
     }
 
-    if (getGroupResponse?.status === "success") {
+    if (getGroupResponse.status === "success") {
       dispatch(submitUpdateGroupAsync(getGroupResponse.results));
     }
   };

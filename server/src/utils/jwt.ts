@@ -59,6 +59,7 @@ const getSecret = (userGroup: UserGroup): string => {
     return config.jwtSecretKeyAdmin;
   } else if (userGroup === UserGroup.USER) {
     return config.jwtSecretKey;
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   } else if (userGroup === UserGroup.HELP) {
     return config.jwtSecretKeyHelp;
   }

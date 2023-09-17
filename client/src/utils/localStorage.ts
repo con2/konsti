@@ -24,6 +24,7 @@ export const loadSession = (): LocalStorage | undefined => {
     return undefined;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (parsedSession) {
     return parsedSession;
   }

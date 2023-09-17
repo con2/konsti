@@ -36,6 +36,7 @@ export const removeMovedGamesFromUsers = async (
     });
   });
 
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (!movedGames || movedGames.length === 0) {
     return makeSuccessResult(undefined);
   }

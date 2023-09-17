@@ -80,5 +80,6 @@ export const runRandomAssignment = (
 const isCheckResult = (
   assignResults: PadgRandomAssignResults | CheckResult,
 ): assignResults is CheckResult => {
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   return (assignResults as CheckResult).value !== undefined;
 };

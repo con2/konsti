@@ -20,6 +20,14 @@ export const storeEventLogItem = async (
 
   const eventLogItems = unwrapResult(updateEventLogItemResult);
 
+  if (!eventLogItems) {
+    return {
+      message: `Unable to update event log item`,
+      status: "error",
+      errorId: "unknown",
+    };
+  }
+
   return {
     status: "success",
     eventLogItems,

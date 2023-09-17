@@ -25,6 +25,7 @@ const axiosInstance: AxiosInstance = axios.create({
 // Auth interceptor
 axiosInstance.interceptors.request.use((requestConfig) => {
   const authToken = getJWT();
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (authToken && requestConfig.headers) {
     requestConfig.headers.Authorization = `Bearer ${authToken}`;
   }

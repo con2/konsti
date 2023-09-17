@@ -42,6 +42,7 @@ const commonConfig = {
     typeof process.env.PORT === "string"
       ? parseInt(process.env.PORT, 10)
       : 5000,
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   onlyCronjobs: process.env.ONLY_CRONJOBS === "true" ?? false,
 
   // Logging

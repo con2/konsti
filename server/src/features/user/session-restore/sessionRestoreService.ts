@@ -11,6 +11,7 @@ export const loginWithJwt = async (
   // Restore session
   const jwtData = decodeJWT(jwt);
 
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (!jwtData) {
     return {
       message: "Invalid jwt",

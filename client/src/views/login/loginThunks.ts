@@ -32,7 +32,7 @@ export const submitLogin = (
       throw error;
     }
 
-    if (loginResponse?.status === "error") {
+    if (loginResponse.status === "error") {
       clearSession();
 
       switch (loginResponse.errorId) {
@@ -47,7 +47,7 @@ export const submitLogin = (
       }
     }
 
-    if (loginResponse?.status === "success") {
+    if (loginResponse.status === "success") {
       saveSession({
         login: { jwt: loginResponse.jwt },
       });
@@ -82,7 +82,7 @@ export const submitSessionRecovery = (jwt: string): AppThunk => {
       throw error;
     }
 
-    if (loginResponse?.status === "error") {
+    if (loginResponse.status === "error") {
       clearSession();
 
       switch (loginResponse.errorId) {
@@ -100,7 +100,7 @@ export const submitSessionRecovery = (jwt: string): AppThunk => {
       }
     }
 
-    if (loginResponse?.status === "success") {
+    if (loginResponse.status === "success") {
       saveSession({
         login: { jwt: loginResponse.jwt },
       });
@@ -127,11 +127,11 @@ export const submitUpdateEventLogIsSeen = (
   return async (dispatch): Promise<void> => {
     const response = await postEventLogItemIsSeen(request);
 
-    if (response?.status === "error") {
+    if (response.status === "error") {
       // TODO
     }
 
-    if (response?.status === "success") {
+    if (response.status === "success") {
       dispatch(submitUpdateEventLogItemsAsync(response.eventLogItems));
     }
   };

@@ -26,11 +26,11 @@ export const submitUpdateHidden = (hiddenGames: readonly Game[]): AppThunk => {
   return async (dispatch): Promise<void> => {
     const updateHiddenResponse = await postHidden(hiddenGames);
 
-    if (updateHiddenResponse?.status === "error") {
+    if (updateHiddenResponse.status === "error") {
       // TODO
     }
 
-    if (updateHiddenResponse?.status === "success") {
+    if (updateHiddenResponse.status === "success") {
       dispatch(submitUpdateHiddenAsync(updateHiddenResponse.hiddenGames));
     }
   };
@@ -40,11 +40,11 @@ export const submitGetSettings = (): AppThunk => {
   return async (dispatch): Promise<void> => {
     const settingsResponse = await getSettings();
 
-    if (settingsResponse?.status === "error") {
+    if (settingsResponse.status === "error") {
       // TODO
     }
 
-    if (settingsResponse?.status === "success") {
+    if (settingsResponse.status === "success") {
       dispatch(
         submitGetSettingsAsync({
           hiddenGames: settingsResponse.hiddenGames,
@@ -61,11 +61,11 @@ export const submitToggleAppOpen = (appOpen: boolean): AppThunk => {
   return async (dispatch): Promise<void> => {
     const postSettingsResponse = await postSettings({ appOpen });
 
-    if (postSettingsResponse?.status === "error") {
+    if (postSettingsResponse.status === "error") {
       // TODO
     }
 
-    if (postSettingsResponse?.status === "success") {
+    if (postSettingsResponse.status === "success") {
       dispatch(submitToggleAppOpenAsync(postSettingsResponse.settings.appOpen));
     }
   };
@@ -84,11 +84,11 @@ export const submitAddSignupQuestion = (
       selectOptions: signupQuestion.selectOptions,
     });
 
-    if (response?.status === "error") {
+    if (response.status === "error") {
       // TODO
     }
 
-    if (response?.status === "success") {
+    if (response.status === "success") {
       dispatch(updateSignupQuestions(response.signupQuestions));
     }
   };
@@ -98,11 +98,11 @@ export const submitDeleteSignupQuestion = (gameId: string): AppThunk => {
   return async (dispatch): Promise<void> => {
     const response = await deleteSignupQuestion(gameId);
 
-    if (response?.status === "error") {
+    if (response.status === "error") {
       // TODO
     }
 
-    if (response?.status === "success") {
+    if (response.status === "success") {
       dispatch(updateSignupQuestions(response.signupQuestions));
     }
   };
@@ -114,11 +114,11 @@ export const submitSetSignupStrategy = (
   return async (dispatch): Promise<void> => {
     const response = await postSettings({ signupStrategy });
 
-    if (response?.status === "error") {
+    if (response.status === "error") {
       // TODO
     }
 
-    if (response?.status === "success") {
+    if (response.status === "success") {
       dispatch(submitSetSignupStrategyAsync(response.settings.signupStrategy));
     }
   };
@@ -128,11 +128,11 @@ export const submitGetSignupMessages = (): AppThunk => {
   return async (dispatch): Promise<void> => {
     const response = await getSignupMessages();
 
-    if (response?.status === "error") {
+    if (response.status === "error") {
       // TODO
     }
 
-    if (response?.status === "success") {
+    if (response.status === "success") {
       dispatch(submitGetSignupMessagesAsync(response.signupMessages));
     }
   };
@@ -150,7 +150,7 @@ export const submitPlayersAssign = (
   return async (dispatch): Promise<string | undefined> => {
     const assignResponse = await postPlayerAssignment(signupTime);
 
-    if (assignResponse?.status === "error") {
+    if (assignResponse.status === "error") {
       return assignResponse.message;
     }
 
