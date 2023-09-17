@@ -58,6 +58,7 @@ export const runAssignmentStrategy = (
     return runGroupPadgStrategy(players, games, startTime, signups);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (assignmentStrategy === AssignmentStrategy.RANDOM_PADG) {
     return runRandomPadgStrategy(players, games, startTime, signups);
   }

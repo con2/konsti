@@ -97,6 +97,7 @@ export const storeUser = async (
   }
 
   // Username free
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (!user) {
     // Check if serial is used
     const serialResponseResult = await findUserSerial({ serial });
@@ -121,6 +122,7 @@ export const storeUser = async (
     }
 
     // Serial not used
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (!serialResponse) {
       const passwordHashResult = await hashPassword(password);
       if (isErrorResult(passwordHashResult)) {
@@ -257,6 +259,7 @@ export const fetchUserByUsername = async (
 
   const signups = unwrapResult(signupsResult);
 
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   const enteredGames: SelectedGame[] = signups
     ? signups.flatMap((signup) => {
         const signupForUser = signup.userSignups.find(

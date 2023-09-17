@@ -66,6 +66,8 @@ const sentryReduxEnhancer = createReduxEnhancer({
 
   stateTransformer: (state: RootState) => {
     // Transform the state to remove unnecessary data
+
+    /* eslint-disable @typescript-eslint/no-unnecessary-condition -- No idea what state the app state is in */
     const transformedState = {
       ...state,
       allGames: {
@@ -95,6 +97,7 @@ const sentryReduxEnhancer = createReduxEnhancer({
         ),
       },
     };
+    /* eslint-enable @typescript-eslint/no-unnecessary-condition */
 
     return transformedState;
   },

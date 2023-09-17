@@ -117,6 +117,7 @@ export const PrivateSignupMessages = (): ReactElement => {
                       <BoldText>{t("helperView.question")}: </BoldText>{" "}
                       {signupQuestionWithGame.questionFi} /{" "}
                       {signupQuestionWithGame.questionEn}
+                      {/* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition */}
                       {matchingSignupMessages ? (
                         <SignupAnswersContainer>
                           {matchingSignupMessages.map((answer) => (

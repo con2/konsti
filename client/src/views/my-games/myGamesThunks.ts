@@ -26,11 +26,11 @@ export const submitGetUser = (username: string): AppThunk => {
   return async (dispatch): Promise<void> => {
     const getUserResponse = await getUser(username);
 
-    if (getUserResponse?.status === "error") {
+    if (getUserResponse.status === "error") {
       // TODO
     }
 
-    if (getUserResponse?.status === "success") {
+    if (getUserResponse.status === "success") {
       const enteredGames = getUserResponse.games.enteredGames;
       const favoritedGames = getUserResponse.games.favoritedGames;
       const signedGames = getUserResponse.games.signedGames;
@@ -53,11 +53,11 @@ export const submitUpdateFavorites = (favoriteData: NewFavorite): AppThunk => {
   return async (dispatch): Promise<void> => {
     const updateFavoriteResponse = await postFavorite(favoriteData);
 
-    if (updateFavoriteResponse?.status === "error") {
+    if (updateFavoriteResponse.status === "error") {
       // TODO
     }
 
-    if (updateFavoriteResponse?.status === "success") {
+    if (updateFavoriteResponse.status === "success") {
       dispatch(
         submitUpdateFavoritesAsync(updateFavoriteResponse.favoritedGames),
       );
@@ -79,7 +79,7 @@ export const submitPostEnteredGame = (
   return async (dispatch): Promise<PostEnteredGameErrorMessage | undefined> => {
     const signupResponse = await postEnteredGame(data);
 
-    if (signupResponse?.status === "error") {
+    if (signupResponse.status === "error") {
       switch (signupResponse.errorId) {
         case "signupEnded":
           return PostEnteredGameErrorMessage.SIGNUP_ENDED;
@@ -96,7 +96,7 @@ export const submitPostEnteredGame = (
       }
     }
 
-    if (signupResponse?.status === "success") {
+    if (signupResponse.status === "success") {
       dispatch(submitPostEnteredGameAsync(signupResponse.enteredGame));
     }
   };
@@ -115,7 +115,7 @@ export const submitDeleteEnteredGame = (
   ): Promise<DeleteEnteredGameErrorMessage | undefined> => {
     const signupResponse = await deleteEnteredGame(data);
 
-    if (signupResponse?.status === "error") {
+    if (signupResponse.status === "error") {
       switch (signupResponse.errorId) {
         case "signupEnded":
           return DeleteEnteredGameErrorMessage.SIGNUP_ENDED;
@@ -125,7 +125,7 @@ export const submitDeleteEnteredGame = (
           exhaustiveSwitchGuard(signupResponse.errorId);
       }
     }
-    if (signupResponse?.status === "success") {
+    if (signupResponse.status === "success") {
       dispatch(submitDeleteEnteredAsync(data.enteredGameId));
     }
   };
@@ -143,7 +143,7 @@ export const submitPostSignedGames = (
   return async (dispatch): Promise<PostSignedGamesErrorMessage | undefined> => {
     const signupResponse = await postSignedGames(signupData);
 
-    if (signupResponse?.status === "error") {
+    if (signupResponse.status === "error") {
       switch (signupResponse.errorId) {
         case "signupEnded":
           return PostSignedGamesErrorMessage.SIGNUP_ENDED;
@@ -156,7 +156,7 @@ export const submitPostSignedGames = (
       }
     }
 
-    if (signupResponse?.status === "success") {
+    if (signupResponse.status === "success") {
       dispatch(submitPostSignedGamesAsync(signupResponse.signedGames));
     }
   };

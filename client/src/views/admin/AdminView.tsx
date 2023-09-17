@@ -33,6 +33,7 @@ export const AdminView = (): ReactElement => {
   const { t } = useTranslation();
 
   const getVisibleGames = (): readonly Game[] => {
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (!hiddenGames) {
       return games;
     }
@@ -144,6 +145,7 @@ export const AdminView = (): ReactElement => {
         </Button>
       </ButtonGroup>
 
+      {/* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition */}
       {(!games || games.length === 0) && <p>{t("noGamesInDatabase")}</p>}
 
       <ButtonGroup>

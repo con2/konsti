@@ -50,6 +50,7 @@ export const storeSignup = async (
   }
 
   const game = unwrapResult(gameResult);
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (!game) {
     return {
       message: `Signed game not found`,
@@ -121,6 +122,7 @@ export const storeSignup = async (
     (userSignup) => userSignup.username === username,
   );
 
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (signup && newSignup) {
     return {
       message: "Store signup success",
@@ -181,6 +183,7 @@ export const removeSignup = async (
 
   const signup = unwrapResult(signupResult);
 
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (signup) {
     return {
       message: "Delete signup success",

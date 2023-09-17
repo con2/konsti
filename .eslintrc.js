@@ -22,7 +22,7 @@ module.exports = {
     "plugin:eslint-plugin-promise/recommended",
     "plugin:eslint-plugin-import/errors",
     "plugin:eslint-plugin-import/typescript",
-    "plugin:@typescript-eslint/recommended-type-checked",
+    "plugin:@typescript-eslint/strict-type-checked",
     "plugin:@typescript-eslint/stylistic-type-checked",
   ],
 

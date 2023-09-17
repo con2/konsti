@@ -8,6 +8,7 @@ const ENABLE_MOBILE_SAFARI = false;
 
 const projects: Project[] = [];
 
+// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
 ENABLE_CHROME &&
   projects.push({
     name: "Chrome Stable",
@@ -17,6 +18,7 @@ ENABLE_CHROME &&
     },
   });
 
+// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
 ENABLE_FIREFOX &&
   projects.push({
     name: "Desktop Firefox",
@@ -26,6 +28,7 @@ ENABLE_FIREFOX &&
     },
   });
 
+// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
 ENABLE_SAFARI &&
   projects.push({
     name: "Desktop Safari",
@@ -35,12 +38,14 @@ ENABLE_SAFARI &&
     },
   });
 
+// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
 ENABLE_MOBILE_CHROME &&
   projects.push({
     name: "Mobile Safari",
     use: devices["iPhone 12"],
   });
 
+// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
 ENABLE_MOBILE_SAFARI &&
   projects.push({
     name: "Mobile Chrome",

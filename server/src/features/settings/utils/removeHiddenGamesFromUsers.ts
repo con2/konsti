@@ -20,6 +20,7 @@ export const removeHiddenGamesFromUsers = async (
 ): Promise<Result<void, MongoDbError>> => {
   logger.info(`Remove hidden games from users`);
 
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (!hiddenGames || hiddenGames.length === 0) {
     return makeErrorResult(MongoDbError.NO_HIDDEN_GAMES);
   }

@@ -45,7 +45,7 @@ export const fetchSignupMessages = async (): Promise<
           gameId: signup.game.gameId,
           username: userSignup.username,
           message: userSignup.message,
-          private: signupQuestion?.private,
+          private: signupQuestion.private,
         };
       }
       return [];

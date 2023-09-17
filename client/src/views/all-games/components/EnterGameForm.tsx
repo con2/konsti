@@ -53,6 +53,7 @@ export const EnterGameForm = ({
   const [loading, setLoading] = useState(false);
   const [userSignupMessage, setUserSignupMessage] = useState<string>("");
   const [selectedValue, setSelectedValue] = useState<string>(
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     (i18n.language === "fi"
       ? signupQuestion?.selectOptions[0]?.optionFi ?? ""
       : signupQuestion?.selectOptions[0]?.optionEn ?? "") ?? "",

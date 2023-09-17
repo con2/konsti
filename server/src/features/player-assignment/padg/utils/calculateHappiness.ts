@@ -9,6 +9,7 @@ export const calculateHappiness = (
 ): number => {
   let happiness = 0;
 
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (!assignment) {
     return 0;
   }

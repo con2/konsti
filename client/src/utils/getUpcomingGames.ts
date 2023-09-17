@@ -65,6 +65,7 @@ export const getSignedGames = ({
     return getAllGames ? signedGames : getUpcomingSignedGames(signedGames);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (!isGroupCreator) {
     const groupCreator = getGroupCreator(groupMembers);
     if (!groupCreator) {

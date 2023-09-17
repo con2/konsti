@@ -42,6 +42,7 @@ export const findSignups = async (): Promise<
       .lean<Signup[]>()
       .populate("game", "-createdAt -updatedAt -_id -__v");
 
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (!results) {
       logger.info(`MongoDB: Signups not found`);
       return makeSuccessResult([]);
@@ -50,6 +51,7 @@ export const findSignups = async (): Promise<
     logger.debug(`MongoDB: Signups found`);
 
     const resultsWithFormattedTime = results
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
       .filter((result) => result.game) // Filter results with failed populate
       .map((result) => {
         return {
@@ -84,6 +86,7 @@ export const findSignupsByProgramType = async (
     )
       .lean<Signup[]>()
       .populate("game", "-createdAt -updatedAt -_id -__v");
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (!signups) {
       logger.info(`MongoDB: Signups for time ${startTime} not found`);
       return makeSuccessResult([]);
@@ -122,6 +125,7 @@ export const findUserSignups = async (
     )
       .lean<Signup[]>()
       .populate("game", "-createdAt -updatedAt -_id -__v");
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (!response) {
       logger.info(`MongoDB: Signups for user ${username} not found`);
       return makeSuccessResult([]);
@@ -350,7 +354,7 @@ export const delSignupDocumentsByGameIds = async (
   );
 
   const gameObjectIds = gamesInDb.flatMap((gameInDb) =>
-    gameInDb?._id ? gameInDb?._id : [],
+    gameInDb?._id ? gameInDb._id : [],
   );
 
   try {
@@ -381,7 +385,7 @@ export const resetSignupsByGameIds = async (
   );
 
   const gameObjectIds = gamesInDb.flatMap((gameInDb) =>
-    gameInDb?._id ? gameInDb?._id : [],
+    gameInDb?._id ? gameInDb._id : [],
   );
 
   try {

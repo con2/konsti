@@ -125,6 +125,7 @@ export const KompassiGameSchema = z.object({
   max_players: z.number().catch(0),
 
   tags: z.array(z.nativeEnum(KompassiTag)).catch((ctx) => {
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (!ctx.input || !Array.isArray(ctx.input)) {
       return [];
     }
@@ -136,6 +137,7 @@ export const KompassiGameSchema = z.object({
   }),
 
   genres: z.array(z.nativeEnum(KompassiGenre)).catch((ctx) => {
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (!ctx.input || !Array.isArray(ctx.input)) {
       return [];
     }
@@ -147,6 +149,7 @@ export const KompassiGameSchema = z.object({
   }),
 
   styles: z.array(z.nativeEnum(KompassiGameStyle)).catch((ctx) => {
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (!ctx.input || !Array.isArray(ctx.input)) {
       return [];
     }

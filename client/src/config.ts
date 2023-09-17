@@ -32,5 +32,6 @@ export const config: Config = {
   loadedSettings: process.env.SETTINGS ?? "development",
   apiServerUrl: process.env.API_SERVER_URL ?? "http://localhost:5000",
   showTestValues: process.env.SHOW_TEST_VALUES === "true" || false,
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   dataUpdateInterval: Number(process.env.DATA_UPDATE_INTERVAL) ?? 60, // seconds
 };

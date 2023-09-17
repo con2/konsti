@@ -34,6 +34,7 @@ const initializeDatabase = async (): Promise<void> => {
   logger.info("Create helper user");
   await createHelpUser(HELP_PASSWORD);
 
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (CREATE_TEST_USERS) {
     logger.info("Create test users");
     await createTestUsers({ userCount: 5 });

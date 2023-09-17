@@ -66,6 +66,7 @@ export const AllGamesView = (): ReactElement => {
         SessionStorageValue.ALL_GAMES_STARTING_TIME,
       );
       setSelectedStartingTime(
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         (savedStartingTime as StartingTimeOption) ??
           StartingTimeOption.UPCOMING,
       );

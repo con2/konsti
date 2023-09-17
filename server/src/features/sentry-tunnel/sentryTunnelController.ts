@@ -11,6 +11,7 @@ export const postSentryTunnel = (
 ): Response => {
   logger.info(`API call: POST ${ApiEndpoint.SENTRY_TUNNEL}`);
 
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (req.body) {
     resendSentryRequest(req.body).catch((error) => {
       logger.error("resendSentryRequest failed: %s", error);
