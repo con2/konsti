@@ -59,10 +59,12 @@ const getProgramType = (
   programType: KompassiProgramType,
 ): KompassiProgramType => {
   if (programType === KompassiProgramType.TOURNAMENT_BOARD_GAME) {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- We know tournamentProgramTypes is valid array
     return _.sample(tournamentProgramTypes)!;
   }
 
   if (programType === KompassiProgramType.WORKSHOP_MINIATURE) {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- We know tournamentProgramTypes is valid array
     return _.sample(workshopProgramTypes)!;
   }
 

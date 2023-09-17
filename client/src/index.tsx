@@ -82,7 +82,13 @@ const loader = (
 );
 
 const render = (): void => {
-  const container = document.getElementById("main")!;
+  const container = document.getElementById("main");
+
+  if (!container) {
+    // eslint-disable-next-line no-restricted-syntax -- We want to throw here
+    throw new Error("Unable to find React root element 'main");
+  }
+
   const root = createRoot(container);
 
   root.render(
