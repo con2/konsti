@@ -28,7 +28,8 @@ export const Checkbox = ({
 };
 
 const StyledCheckbox = styled.input`
-  margin-right: 10px;
+  margin-right: 8px;
   width: 16px;
   accent-color: ${(props) => props.theme.formAccent};
+  transform: scale(1.4);
 `;

@@ -164,17 +164,17 @@ export const RegistrationForm = (): ReactElement => {
         )}
 
         <FormRow>
-          <StyledCheckbox
-            {...register("registerDescription", {
-              required: `${t(`validation.required`)}`,
-              onChange: () => {
-                setServerError(null);
-              },
-            })}
-            type={"checkbox"}
-            id={"registerDescriptionCheckbox"}
-          />
           <label htmlFor="registerDescriptionCheckbox">
+            <StyledCheckbox
+              {...register("registerDescription", {
+                required: `${t(`validation.required`)}`,
+                onChange: () => {
+                  setServerError(null);
+                },
+              })}
+              type={"checkbox"}
+              id={"registerDescriptionCheckbox"}
+            />
             {t("agreePrivacyPolicy")}
           </label>
         </FormRow>
@@ -250,7 +250,8 @@ const FormFieldIcon = styled.span`
 `;
 
 const StyledCheckbox = styled.input`
-  margin-right: 10px;
+  margin-right: 8px;
+  transform: scale(1.4);
   width: 16px;
   accent-color: ${(props) => props.theme.formAccent};
 `;
