@@ -65,7 +65,7 @@ init({
   dsn: getDsn(),
   integrations: [
     new BrowserTracing({
-      tracingOrigins: ["localhost", "test.ropekonsti.fi", "ropekonsti.fi"],
+      tracingOrigins: ["localhost", "dev.ropekonsti.fi", "ropekonsti.fi"],
     }),
   ],
   tracesSampleRate: sharedConfig.tracesSampleRate,
