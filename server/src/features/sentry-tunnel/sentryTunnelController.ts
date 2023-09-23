@@ -1,22 +1,31 @@
 import { Request, Response } from "express";
+import { z } from "zod";
 import { logger } from "server/utils/logger";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { resendSentryRequest } from "server/features/sentry-tunnel/sentryTunnelService";
 import { UserGroup } from "shared/typings/models/user";
 import { getAuthorizedUsername } from "server/utils/authHeader";
 
+const PostSentryTunnelRequestSchema = z.string();
+
 export const postSentryTunnel = (
-  req: Request<{}, {}, null>,
+  req: Request<{}, {}, string>,
   res: Response,
 ): Response => {
   logger.info(`API call: POST ${ApiEndpoint.SENTRY_TUNNEL}`);
 
-  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-  if (req.body) {
-    resendSentryRequest(req.body).catch((error) => {
-      logger.error("resendSentryRequest failed: %s", error);
-    });
+  const result = PostSentryTunnelRequestSchema.safeParse(req.body);
+  if (!result.success) {
+    logger.error(
+      "%s",
+      new Error(`Error validating postSentryTunnel body: ${result.error}`),
+    );
+    return res.sendStatus(422);
   }
+
+  resendSentryRequest(result.data).catch((error) => {
+    logger.error("resendSentryRequest failed: %s", error);
+  });
 
   return res.sendStatus(200);
 };
