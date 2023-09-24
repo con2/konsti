@@ -75,6 +75,10 @@ export const LoggedInUserNavigation = (props: {
         </RouterLink>
       )}
 
+      <RouterLink onClick={props.onSelect} to="/about/help">
+        {t("pages.help")}
+      </RouterLink>
+
       <RouterLink onClick={props.onSelect} to="/logout">
         {t("button.logout")}
       </RouterLink>

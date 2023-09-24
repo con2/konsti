@@ -50,6 +50,6 @@ const StyledButton = styled.button`
 `;
 
 const Icon = styled(FontAwesomeIcon)`
-  color: ${(props) => props.theme.iconFavorited};
+  color: ${(props) => props.theme.iconDefault};
   font-size: ${(props) => props.theme.iconSizeNormal};
 `;

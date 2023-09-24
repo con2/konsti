@@ -142,7 +142,7 @@ export const GameEntry = ({
                 _.capitalize(
                   `${t(
                     `attendeeTypePlural.${getAttendeeType(game.programType)}`,
-                  )} ${game.minAttendance} - ${game.maxAttendance}`,
+                  )} ${game.minAttendance}–${game.maxAttendance}`,
                 )}
             </RowItem>
 

@@ -80,12 +80,8 @@ export const theme = {
   buttonSecondaryBorder: mainColor.primary,
   buttonSecondaryHover: addOpacity(mainColor.primary, "0.25"),
   buttonSecondaryClicked: addOpacity(mainColor.primary, "0.5"),
-
   buttonBackgroundDisabled: gray.light,
   buttonText: black,
-
-  errorCloseButtonBackground: red.light,
-  errorCloseButtonBorder: red.primary,
 
   formAccent: mainColor.primary,
 
