@@ -18,6 +18,7 @@ import { RadioButton } from "client/components/RadioButton";
 import { RevolvingDoorGamesInfo } from "client/views/all-games/components/RevolvingDoorGamesInfo";
 import { config } from "client/config";
 import { RaisedCard } from "client/components/RaisedCard";
+import { RadioButtonGroup } from "client/components/RadioButtonGroup";
 
 export enum StartingTimeOption {
   UPCOMING = "upcoming",
@@ -186,14 +187,6 @@ const Container = styled(RaisedCard)`
   @media (max-width: ${(props) => props.theme.breakpointPhone}) {
     grid-template-columns: 1fr;
   }
-`;
-
-const RadioButtonGroup = styled.fieldset`
-  border: none;
-  margin: -6px 0 -8px 0;
-  padding-left: 0;
-  display: flex;
-  flex-direction: column;
 `;
 
 const StyledLabel = styled.label`

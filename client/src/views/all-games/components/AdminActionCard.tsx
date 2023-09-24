@@ -176,8 +176,8 @@ export const AdminActionCard = ({ game }: Props): ReactElement => {
         )}
       </ButtonGroup>
       {signupQuestionInputVisible && (
-        <>
-          <p>{t("signupQuestion.addSignupTextField")}</p>
+        <WithRowGap>
+          <span>{t("signupQuestion.addSignupTextField")}</span>
           <ControlledInput
             placeholder={t("signupQuestion.inFinnish")}
             value={signupQuestionInputFi}
@@ -317,7 +317,7 @@ export const AdminActionCard = ({ game }: Props): ReactElement => {
               {t("button.cancel")}
             </Button>
           </ButtonGroup>
-        </>
+        </WithRowGap>
       )}
     </Container>
   );
@@ -338,4 +338,10 @@ const HeaderContainer = styled.div`
   align-items: center;
   display: flex;
   gap: 8px;
+`;
+
+const WithRowGap = styled.div`
+  row-gap: 8px;
+  display: grid;
+  padding-top: 8px;
 `;

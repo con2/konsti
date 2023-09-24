@@ -2,7 +2,6 @@ import { ReactElement, useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
-import _ from "lodash";
 import { Game } from "shared/typings/models/game";
 import { EnterGameForm } from "./EnterGameForm";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
@@ -103,13 +102,11 @@ export const DirectSignupForm = ({
   return (
     <>
       {signupOpen && gameIsFull && (
-        <GameIsFull>
-          {_.capitalize(
-            t("signup.programItemFull", {
-              PROGRAM_TYPE: t(`programTypeSingular.${game.programType}`),
-            }),
-          )}
-        </GameIsFull>
+        <BoldText>
+          {t("signup.programItemFull", {
+            PROGRAM_TYPE: t(`programTypeSingular.${game.programType}`),
+          })}
+        </BoldText>
       )}
 
       {signupOpen && !alreadyEnteredToGame && !gameIsFull && (
@@ -220,10 +217,6 @@ const SignedGameContainer = styled.div`
   border-radius: 5px;
   border-left: 5px solid ${(props) => props.theme.infoBorder};
   background-color: ${(props) => props.theme.infoBackground};
-`;
-
-const GameIsFull = styled.h4`
-  color: ${(props) => props.theme.textError};
 `;
 
 const SignedGameName = styled.span`

@@ -22,6 +22,7 @@ import {
 import { RadioButton } from "client/components/RadioButton";
 import { RaisedCard } from "client/components/RaisedCard";
 import { SessionStorageValue } from "client/utils/localStorage";
+import { RadioButtonGroup } from "client/components/RadioButtonGroup";
 
 export const MyGamesView = (): ReactElement => {
   const { t } = useTranslation();
@@ -133,14 +134,6 @@ const MyGamesViewContainer = styled.div`
     margin-left: 0;
     margin-right: 0;
   }
-`;
-
-const RadioButtonGroup = styled.fieldset`
-  border: none;
-  margin-bottom: -8px;
-  padding-left: 0;
-  display: flex;
-  flex-direction: column;
 `;
 
 const StyledLabel = styled.label`

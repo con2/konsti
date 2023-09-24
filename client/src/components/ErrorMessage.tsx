@@ -36,18 +36,11 @@ const ErrorContainer = styled.div`
 const StyledErrorMessage = styled.span`
   line-height: 24px;
   margin-right: 8px;
-  font-weight: 600;
   color: ${(props) => props.theme.textError};
 `;
 
 const StyledIcon = styled(FontAwesomeIcon)`
-  border: 1px solid ${(props) => props.theme.errorCloseButtonBorder};
-  border-radius: 12px;
-  width: 18px;
-  height: 18px;
   cursor: pointer;
   font-size: ${(props) => props.theme.fontSizeLarge};
-  vertical-align: middle;
-  margin-bottom: 2px;
-  background-color: ${(props) => props.theme.errorCloseButtonBackground};
+  vertical-align: text-bottom;
 `;

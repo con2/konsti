@@ -67,7 +67,8 @@
     "group": "Group",
     "notifications": "Notifications",
     "profileAndGroup": "Profile & Group",
-    "profile": "Profile"
+    "profile": "Profile",
+    "help": "Help"
   },
   "gameInfo": {
     "gameStyle": "Game style",
@@ -175,9 +176,9 @@
   "hiddenProgramItems": "Hidden program items",
   "error": {
     "usernameTaken": "Username already taken",
-    "invalidSerial": "Invalid registration code",
-    "loginFailed": "Username and password don't match",
-    "loginDisabled": "Login is disabled",
+    "invalidSerial": "Invalid registration code.",
+    "loginFailed": "Username and password don't match.",
+    "loginDisabled": "Login is disabled.",
     "unknown": "Unknown error"
   },
   "agreePrivacyPolicy": "I agree to the privacy policy",
@@ -200,7 +201,7 @@
     "signupEnded": "Sign-up ended",
     "samePriority": "Priority already selected",
     "signupNotOpenYet": "Sign-up not open yet",
-    "programFull": "Program is full",
+    "programFull": "This program item is full.",
     "noKonstiSignup": "This program does not use Konsti for signing up. See the program details for instructions."
   },
   "signupUnsavedChanges": "Unsaved changes",
@@ -294,9 +295,9 @@
     "cancel": "Cancel",
     "alreadySignedToGame": "You already signed up to the {{PROGRAM_TYPE}}",
     "cannotSignupMoreThanOneGame": "You cannot sign up to another {{PROGRAM_TYPE}} starting at the same time.",
-    "signupCount": "{{PLAYERS}} / {{MAX_ATTENDANCE}} signed up",
+    "signupCount": "{{PLAYERS}}/{{MAX_ATTENDANCE}} sign-ups",
     "attendeesNeeded": "{{COUNT}} more {{ATTENDEE_TYPE}} needed",
-    "programItemFull": "{{PROGRAM_TYPE}} is full.",
+    "programItemFull": "This {{PROGRAM_TYPE}} is full.",
     "confirmCancellation": "Cancel your sign-up",
     "staySignedUp": "Stay signed up",
     "expectedDuration": "Duration {{EXPECTED_DURATION}}",
@@ -474,10 +475,11 @@
     "question": "Question"
   },
   "loginView": {
-    "oldAccountsNotWorking": "Accounts from old events are not in use anymore.",
+    "oldAccountsNotWorking": "Please note that accounts from older events are not in use anymore.",
     "noAccountRegister": "No account? Create one here."
   },
   "registrationView": {
+    "nickVisibleHintText": "Your usename will be visible to all other users.",
     "alreadyHaveAccountLogin": "Do you already have an account? Log in here."
   },
   "iconAltText": {
