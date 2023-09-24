@@ -222,7 +222,7 @@
   "revolvingDoor": "Revolving door",
   "revolvingDoorInstruction": "You can join a revolving door {{PROGRAM_TYPE}} at any time if there is free space",
   "currentlyRunningRevolvingDoor": "All currently running revolving door {{PROGRAM_TYPE}}",
-  "noCurrentlyRunningGames": "No running revolving door {{PROGRAM_TYPE}}",
+  "noRunningRevolvingDoorProgramItems": "No running revolving door {{PROGRAM_TYPE}}",
   "group": {
     "error": {
       "cannotUseOwnSerial": "You cannot use your own serial to join a group.",
