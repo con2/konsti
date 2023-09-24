@@ -211,7 +211,7 @@
   "invalidProgramItemId": "Program item not found, invalid ID",
   "feedbackTitle": "Feedback",
   "feedbackInstruction": "Did you enjoy the {{PROGRAM_TYPE}}? Send feedback to the organizer! They will receive it after the event.",
-  "noProgramItemsAvailable": "No {{PROGRAM_TYPE}} found, please check your search conditions",
+  "noProgramItemsAvailable": "No {{PROGRAM_TYPE}} found, please check your search conditions.",
   "noGamesInDatabase": "No games in database",
   "upcoming": "Upcoming",
   "all": "All",
@@ -222,7 +222,7 @@
   "revolvingDoor": "Revolving door",
   "revolvingDoorInstruction": "You can join a revolving door {{PROGRAM_TYPE}} at any time if there is free space",
   "currentlyRunningRevolvingDoor": "All currently running revolving door {{PROGRAM_TYPE}}",
-  "noCurrentlyRunningGames": "No running revolving door {{PROGRAM_TYPE}}",
+  "noRunningRevolvingDoorProgramItems": "No running revolving door {{PROGRAM_TYPE}}",
   "group": {
     "error": {
       "cannotUseOwnSerial": "You cannot use your own serial to join a group.",
@@ -364,7 +364,7 @@
     "tournament": "tournaments",
     "workshop": "workshops",
     "experiencePoint": "games",
-    "other": "programs"
+    "other": "program items"
   },
   "programTypeInessive": {
     "tabletopRPG": "game",

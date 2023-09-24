@@ -39,7 +39,7 @@ export const RevolvingDoorGamesInfo = (): ReactElement => {
       {/* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition */}
       {!runningRevolvingDoorGames || runningRevolvingDoorGames.length === 0 ? (
         <NoGamesInfoText>
-          {t("noCurrentlyRunningGames", {
+          {t("noRunningRevolvingDoorProgramItems", {
             PROGRAM_TYPE: t(`programTypePartitivePlural.${activeProgramType}`),
           })}
         </NoGamesInfoText>
