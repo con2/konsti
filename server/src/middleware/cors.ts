@@ -10,18 +10,26 @@ export const allowCORS = (
   const allowedOrigins = config.allowedCorsOrigins;
   const origin = req.headers.origin;
 
-  if (origin && !Array.isArray(origin) && allowedOrigins.includes(origin)) {
-    res.setHeader("Access-Control-Allow-Origin", origin);
-    res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS");
-    res.setHeader(
-      "Access-Control-Allow-Headers",
-      "Content-Type, Authorization, Baggage, Sentry-Trace",
-    );
-  } else if (!origin) {
-    // logger.info(`CORS: Same origin`)
-  } else {
-    logger.info(`CORS: Block from ${origin}`);
+  // Same origin, no preflight CORS request
+  if (!origin) {
+    next();
+    return;
   }
+
+  // Origin not allowed
+  if (!allowedOrigins.includes(origin)) {
+    logger.error("%s", new Error(`CORS: Request blocked from ${origin}`));
+    next();
+    return;
+  }
+
+  // Allowed origin
+  res.setHeader("Access-Control-Allow-Origin", origin);
+  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS");
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Content-Type, Authorization, Baggage, Sentry-Trace",
+  );
 
   next();
 };
