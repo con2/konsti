@@ -27,6 +27,6 @@ export const allowCORS = (
     return;
   }
 
-  logger.warn(`CORS: Request blocked from ${origin}`);
+  logger.error("%s", new Error(`CORS: Request blocked from ${origin}`));
   next();
 };
