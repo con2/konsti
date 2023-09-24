@@ -16,17 +16,20 @@ export const allowCORS = (
     return;
   }
 
-  if (allowedOrigins.includes(origin)) {
-    res.setHeader("Access-Control-Allow-Origin", origin);
-    res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS");
-    res.setHeader(
-      "Access-Control-Allow-Headers",
-      "Content-Type, Authorization, Baggage, Sentry-Trace",
-    );
+  // Origin not allowed
+  if (!allowedOrigins.includes(origin)) {
+    logger.error("%s", new Error(`CORS: Request blocked from ${origin}`));
     next();
     return;
   }
 
-  logger.error("%s", new Error(`CORS: Request blocked from ${origin}`));
+  // Allowed origin
+  res.setHeader("Access-Control-Allow-Origin", origin);
+  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS");
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Content-Type, Authorization, Baggage, Sentry-Trace",
+  );
+
   next();
 };
