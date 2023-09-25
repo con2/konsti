@@ -35,17 +35,20 @@ axiosInstance.interceptors.request.use((requestConfig) => {
 // Error interceptor
 axiosInstance.interceptors.response.use(
   (response) => response,
-  (error) => {
+  (error): { data: ApiError } => {
     if (
       error.code === "ERR_NETWORK" ||
       !error.response ||
       error.response.status === 0
     ) {
       store.dispatch(addError(t(BackendErrorType.NETWORK_ERROR)));
+
       return {
-        errorId: "unknown",
-        message: "Network error",
-        status: "error",
+        data: {
+          errorId: "unknown",
+          message: "Network error",
+          status: "error",
+        },
       };
     }
 
@@ -65,14 +68,12 @@ axiosInstance.interceptors.response.use(
       ),
     );
 
-    const data: ApiError = {
-      errorId: "unknown",
-      message: "Invalid API response",
-      status: "error",
-    };
-
     return {
-      data,
+      data: {
+        errorId: "unknown",
+        message: "Invalid API response",
+        status: "error",
+      },
     };
   },
 );
