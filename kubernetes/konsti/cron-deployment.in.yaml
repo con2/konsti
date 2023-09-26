@@ -22,7 +22,7 @@ spec:
       enableServiceLinks: false
       securityContext: !Var konsti_pod_security_context
       containers:
-        - name: konsti
+        - name: cron
           image: !Var konsti_image
           env: !Concat
             - !Var konsti_environment

@@ -2,6 +2,9 @@ ingress_public_hostname: konsti.con2.fi
 
 konsti_secret_managed: false
 konsti_frontend_env: prod
+konsti_settings: production
+
+mongodb_managed: false
 
 ingress_letsencrypt_enabled: true
 ingress_letsencrypt_cluster_issuer: letsencrypt-prod

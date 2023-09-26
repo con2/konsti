@@ -66,3 +66,5 @@ test-results
 
 # Emskaffolden
 *.compiled.yaml
+*.local.yaml
+*.local.in.yaml

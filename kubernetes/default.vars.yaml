@@ -3,9 +3,15 @@ konsti_image: konsti
 
 # Set to false to manage a secret called "konsti" yourself
 konsti_secret_managed: true
+konsti_api_key: not so secret key
+konsti_jwt_secret_key: also not very secret
+konsti_jwt_secret_key_admin: please change me
+konsti_jwt_secret_key_help: also this should be changed
 
 # Which ENV of yarn build-front:ENV to use
 konsti_frontend_env: kube-dev
+konsti_debug: "false"
+konsti_settings: development
 
 # Set this to the public hostname of your service.
 ingress_public_hostname: konsti.localhost
@@ -41,38 +47,49 @@ konsti_container_security_context:
 konsti_environment:
   - name: NODE_ENV
     value: production
-  - name: CONN_STRING
-    value: !Var mongodb_connection_string
   - name: CORS_WHITELIST
     value: !Var ingress_url
+  - name: DEBUG
+    value: !Var konsti_debug
+  - name: SETTINGS
+    value: !Var konsti_settings
   - name: SMTP_HOST
     value: !Var smtp_hostname
   - name: SMTP_PORT
     value: !Format "{smtp_port}"
   - name: SMTP_FROM_EMAIL
     value: !Var smtp_from_email
-  - !If
-      test: !Var smtp_username
-      then:
-        name: SMTP_USERNAME
-        valueFrom:
-          secretKeyRef:
-            name: konsti
-            key: smtpUsername
-  - !If
-      test: !Var smtp_username
-      then:
-        name: SMTP_PASSWORD
-        valueFrom:
-          secretKeyRef:
-            name: konsti
-            key: smtpPassword
+  - name: API_KEY
+    valueFrom:
+      secretKeyRef:
+        name: konsti
+        key: apiKey
+  - name: CONN_STRING
+    valueFrom:
+      secretKeyRef:
+        name: konsti
+        key: connString
+  - name: JWT_SECRET_KEY
+    valueFrom:
+      secretKeyRef:
+        name: konsti
+        key: jwtSecretKey
+  - name: JWT_SECRET_KEY_ADMIN
+    valueFrom:
+      secretKeyRef:
+        name: konsti
+        key: jwtSecretKeyAdmin
+  - name: JWT_SECRET_KEY_HELP
+    valueFrom:
+      secretKeyRef:
+        name: konsti
+        key: jwtSecretKeyHelp
 
 # Default annotations work for nginx ingress with or without LetsEncrypt TLS. Override if you need something else.
 ingress_annotations: !If
   test: !Var ingress_letsencrypt_enabled
   then:
-    cert-manager.io/cluster-issuer: letsencrypt-prod
+    cert-manager.io/cluster-issuer: !Var ingress_letsencrypt_cluster_issuer
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
     kubernetes.io/ingress.class: "nginx"
   else:
