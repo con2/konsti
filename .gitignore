@@ -63,3 +63,8 @@ test-results
 
 # ESlint
 .eslintcache
+
+# Emskaffolden
+*.compiled.yaml
+*.local.yaml
+*.local.in.yaml

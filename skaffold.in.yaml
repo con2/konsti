@@ -1,0 +1,21 @@
+apiVersion: skaffold/v2beta9
+kind: Config
+metadata:
+  name: outline
+
+build:
+  local:
+    useBuildkit: true
+  artifacts:
+    - image: konsti
+      context: .
+      docker:
+        dockerfile: Dockerfile
+        buildArgs:
+          env: !Var konsti_frontend_env
+
+deploy:
+  statusCheckDeadlineSeconds: 300
+  kubectl:
+    manifests:
+      - kubernetes/template.compiled.yaml
