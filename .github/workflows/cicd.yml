@@ -17,7 +17,6 @@ jobs:
   # TODO DRY
   deploy_staging:
     runs-on: self-hosted
-    needs: build
     if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/development' }}
     steps:
       - uses: actions/checkout@v1
@@ -35,7 +34,6 @@ jobs:
 
   deploy_production:
     runs-on: self-hosted
-    needs: build
     if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
     steps:
       - uses: actions/checkout@v1
