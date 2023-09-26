@@ -1,0 +1,116 @@
+# Note: If you use Skaffold/Emskaffolden, leave these at defaults and let Skaffold manage the images
+konsti_image: konsti
+
+# Set to false to manage a secret called "konsti" yourself
+konsti_secret_managed: true
+konsti_api_key: not so secret key
+konsti_jwt_secret_key: also not very secret
+konsti_jwt_secret_key_admin: please change me
+konsti_jwt_secret_key_help: also this should be changed
+
+# Which ENV of yarn build-front:ENV to use
+konsti_frontend_env: kube-dev
+konsti_debug: "false"
+konsti_settings: development
+
+# Set this to the public hostname of your service.
+ingress_public_hostname: konsti.localhost
+
+# If you use ingress-nginx and cert-manager, TLS can be automatically configured by setting this to true.
+ingress_letsencrypt_enabled: false
+ingress_letsencrypt_cluster_issuer: letsencrypt-prod
+
+mongodb_managed: true
+mongodb_image: mongo:6.0.8-jammy
+mongodb_connection_string: mongodb://mongodb:27017/konsti
+
+smtp_hostname: ""
+smtp_port: 25
+smtp_from_email: nonexistent@example.com
+smtp_username: ""
+
+# konsti_secret_managed: false - ignored
+# konsti_secret_managed: true - set to this value in secret, or leave empty to have auto-generated via kubernetes-secret-generator
+smtp_password: ""
+
+# Configuration vars end here. Configuration snippets follow. May be overridden for advanced configuration.
+
+# Security context for konsti and Celery pods
+konsti_pod_security_context:
+  runAsUser: 1000
+  runAsGroup: 1000
+konsti_container_security_context:
+  readOnlyRootFilesystem: true
+  allowPrivilegeEscalation: false
+
+# Common environment vars for both konsti and celery pods.
+konsti_environment:
+  - name: NODE_ENV
+    value: production
+  - name: CORS_WHITELIST
+    value: !Var ingress_url
+  - name: DEBUG
+    value: !Var konsti_debug
+  - name: SETTINGS
+    value: !Var konsti_settings
+  - name: SMTP_HOST
+    value: !Var smtp_hostname
+  - name: SMTP_PORT
+    value: !Format "{smtp_port}"
+  - name: SMTP_FROM_EMAIL
+    value: !Var smtp_from_email
+  - name: API_KEY
+    valueFrom:
+      secretKeyRef:
+        name: konsti
+        key: apiKey
+  - name: CONN_STRING
+    valueFrom:
+      secretKeyRef:
+        name: konsti
+        key: connString
+  - name: JWT_SECRET_KEY
+    valueFrom:
+      secretKeyRef:
+        name: konsti
+        key: jwtSecretKey
+  - name: JWT_SECRET_KEY_ADMIN
+    valueFrom:
+      secretKeyRef:
+        name: konsti
+        key: jwtSecretKeyAdmin
+  - name: JWT_SECRET_KEY_HELP
+    valueFrom:
+      secretKeyRef:
+        name: konsti
+        key: jwtSecretKeyHelp
+
+# Default annotations work for nginx ingress with or without LetsEncrypt TLS. Override if you need something else.
+ingress_annotations: !If
+  test: !Var ingress_letsencrypt_enabled
+  then:
+    cert-manager.io/cluster-issuer: !Var ingress_letsencrypt_cluster_issuer
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    kubernetes.io/ingress.class: "nginx"
+  else:
+    kubernetes.io/ingress.class: "nginx"
+
+ingress_tls: !If
+  test: !Var ingress_letsencrypt_enabled
+  then:
+    - secretName: ingress-letsencrypt
+      hosts:
+        - !Var ingress_public_hostname
+
+ingress_url: !If
+  test: !Var ingress_letsencrypt_enabled
+  then: !Format "https://{ingress_public_hostname}"
+  else: !Format "http://{ingress_public_hostname}"
+
+konsti_volume_mounts:
+  - mountPath: /tmp
+    name: konsti-temp
+
+konsti_volumes:
+  - name: konsti-temp
+    emptyDir: {}
