@@ -20,10 +20,10 @@ jobs:
       - uses: actions/checkout@v1
       - uses: actions/setup-python@v2
         with:
-          python-version: '3.x'
+          python-version: "3.x"
       - uses: pairity/setup-cd-tools@30acb848f9ff747aff4810dac40c5cc0971f485d
         with:
-          skaffold: '1.20.0'
+          skaffold: "1.20.0"
       - uses: docker/login-action@v1
         with:
           registry: ghcr.io
@@ -51,11 +51,11 @@ jobs:
           name: build-json
       - uses: actions/setup-python@v2
         with:
-          python-version: '3.x'
+          python-version: "3.x"
       - uses: pairity/setup-cd-tools@30acb848f9ff747aff4810dac40c5cc0971f485d
         with:
-          kubectl: '1.20.4'
-          skaffold: '1.20.0'
+          kubectl: "1.20.4"
+          skaffold: "1.20.0"
       - uses: docker/setup-buildx-action@v1
       - run: |
           python3 -m pip install emskaffolden
@@ -72,11 +72,11 @@ jobs:
           name: build-json
       - uses: actions/setup-python@v2
         with:
-          python-version: '3.x'
+          python-version: "3.x"
       - uses: pairity/setup-cd-tools@30acb848f9ff747aff4810dac40c5cc0971f485d
         with:
-          kubectl: '1.20.4'
-          skaffold: '1.20.0'
+          kubectl: "1.20.4"
+          skaffold: "1.20.0"
       - uses: docker/setup-buildx-action@v1
       - run: |
           python3 -m pip install emskaffolden
