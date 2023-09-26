@@ -12,7 +12,7 @@ build:
       docker:
         dockerfile: Dockerfile
         buildArgs:
-          FRONTEND_ENV: !Var konsti_frontend_env
+          env: !Var konsti_frontend_env
 
 deploy:
   statusCheckDeadlineSeconds: 300
