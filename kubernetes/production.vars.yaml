@@ -1,4 +1,4 @@
-ingress_public_hostname: konsti.con2.fi
+ingress_public_hostname: ropekonsti.fi
 
 konsti_secret_managed: false
 konsti_frontend_env: prod
