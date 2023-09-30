@@ -8,7 +8,7 @@ on:
 
 jobs:
   sentry-release:
-    runs-on: macos-12
+    runs-on: ubuntu-22.04
 
     strategy:
       matrix:
