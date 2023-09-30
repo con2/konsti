@@ -1,0 +1,80 @@
+name: sentry-release
+
+on:
+  push:
+    branches:
+      - development
+      - main
+
+jobs:
+  sentry-release:
+    runs-on: ubuntu-22.04
+
+    strategy:
+      matrix:
+        node-version: [18.17.1]
+
+    env:
+      CI: true
+
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "yarn"
+
+      - name: Yarn install
+        run: |
+          yarn --immutable
+
+      - name: Build staging frontend
+        if: github.ref == 'refs/heads/development'
+        run: |
+          yarn build-front:staging
+
+      - name: Create staging frontend Sentry release
+        if: github.ref == 'refs/heads/development'
+        uses: getsentry/action-release@v1
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          SENTRY_ORG: konsti
+          SENTRY_PROJECT: konsti-frontend-staging
+        with:
+          sourcemaps: "./client/build"
+
+      - name: Create staging backend Sentry release
+        if: github.ref == 'refs/heads/development'
+        uses: getsentry/action-release@v1
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          SENTRY_ORG: konsti
+          SENTRY_PROJECT: konsti-backend-staging
+
+      - name: Build prod frontend
+        if: github.ref == 'refs/heads/main'
+        run: |
+          yarn build-front:prod
+
+      - name: Create prod frontend Sentry release
+        if: github.ref == 'refs/heads/main'
+        uses: getsentry/action-release@v1
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          SENTRY_ORG: konsti
+          SENTRY_PROJECT: konsti-frontend-prod
+        with:
+          sourcemaps: "./client/build"
+
+      - name: Create prod backend Sentry release
+        if: github.ref == 'refs/heads/main'
+        uses: getsentry/action-release@v1
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          SENTRY_ORG: konsti
+          SENTRY_PROJECT: konsti-backend-prod
