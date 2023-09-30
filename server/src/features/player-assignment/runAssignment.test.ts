@@ -39,7 +39,7 @@ import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 let mongoServer: MongoMemoryServer;
 
 // This needs to be adjusted if test data is changed
-const expectedResultsCount = 20;
+const expectedResultsCount = 18;
 const groupTestUsers = ["group1", "group2", "group3"];
 
 beforeAll(async () => {
