@@ -1,0 +1,77 @@
+name: build
+
+on:
+  push:
+    branches:
+      - development
+  pull_request:
+    branches:
+      - development
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+
+    strategy:
+      matrix:
+        node-version: [18.17.1]
+
+    env:
+      CI: true
+
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "yarn"
+
+      - name: Yarn install
+        run: |
+          yarn --immutable
+
+      - name: Build front-end
+        run: |
+          yarn build-front:prod
+
+      - name: Run Prettier
+        run: |
+          yarn prettier:check
+
+      - name: Run ESLint
+        run: |
+          yarn eslint
+
+      - name: Run stylelint
+        run: |
+          yarn stylelint
+
+      - name: TS type check
+        run: |
+          yarn type-check
+
+      - name: Cache MongoDB binary
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/mongodb-binaries
+          key: ${{ runner.os }}-mongodb
+
+      - name: Run Vitest tests
+        run: |
+          yarn test
+
+      - name: Run Playwright tests
+        run: |
+          yarn docker-compose:test
+
+      - name: Upload test results if Playwright tests failed
+        uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: playwright-videos
+          path: client/playwright/test-results/
