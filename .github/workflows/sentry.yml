@@ -1,9 +1,13 @@
-name: sentry-release
+name: sentry
 
-on: [push]
+on:
+  push:
+    branches:
+      - development
+      - main
 
 jobs:
-  sentry-release:
+  release:
     runs-on: ubuntu-22.04
 
     strategy:
