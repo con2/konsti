@@ -1,4 +1,4 @@
-name: build
+name: test
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
       - development
 
 jobs:
-  build:
+  test-and-lint:
     runs-on: ubuntu-22.04
 
     strategy:
