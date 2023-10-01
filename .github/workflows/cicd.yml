@@ -5,10 +5,6 @@ on:
     branches:
       - development
       - main
-  pull_request:
-    branches:
-      - development
-      - main
 
 env:
   SKAFFOLD_DEFAULT_REPO: ghcr.io/con2
@@ -16,7 +12,7 @@ env:
 jobs:
   deploy_staging:
     runs-on: self-hosted
-    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/development' }}
+    if: github.ref == 'refs/heads/development'
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
@@ -38,7 +34,7 @@ jobs:
 
   deploy_production:
     runs-on: self-hosted
-    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+    if: github.ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
