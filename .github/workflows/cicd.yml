@@ -1,7 +1,11 @@
-name: deploy
+name: cicd
 
 on:
   push:
+    branches:
+      - development
+      - main
+  pull_request:
     branches:
       - development
       - main
@@ -12,7 +16,7 @@ env:
 jobs:
   deploy-staging:
     runs-on: self-hosted
-    if: github.ref == 'refs/heads/development'
+    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/development' }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
@@ -34,7 +38,7 @@ jobs:
 
   deploy-production:
     runs-on: self-hosted
-    if: github.ref == 'refs/heads/main'
+    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
