@@ -5,29 +5,24 @@ on:
     branches:
       - development
       - main
-  pull_request:
-    branches:
-      - development
-      - main
 
 env:
   SKAFFOLD_DEFAULT_REPO: ghcr.io/con2
 
 jobs:
-  # TODO DRY
   deploy_staging:
     runs-on: self-hosted
-    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/development' }}
+    if: github.ref == 'refs/heads/development'
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-python@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
         with:
           python-version: "3.x"
       - uses: pairity/setup-cd-tools@30acb848f9ff747aff4810dac40c5cc0971f485d
         with:
           kubectl: "1.20.4"
           skaffold: "1.20.0"
-      - uses: docker/login-action@v1
+      - uses: docker/login-action@v3
         with:
           registry: ghcr.io
           username: ${{ secrets.GHCR_USERNAME }}
@@ -39,17 +34,17 @@ jobs:
 
   deploy_production:
     runs-on: self-hosted
-    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+    if: github.ref == 'refs/heads/main'
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-python@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
         with:
           python-version: "3.x"
       - uses: pairity/setup-cd-tools@30acb848f9ff747aff4810dac40c5cc0971f485d
         with:
           kubectl: "1.20.4"
           skaffold: "1.20.0"
-      - uses: docker/login-action@v1
+      - uses: docker/login-action@v3
         with:
           registry: ghcr.io
           username: ${{ secrets.GHCR_USERNAME }}
