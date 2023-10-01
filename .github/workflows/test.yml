@@ -12,10 +12,6 @@ jobs:
   test-and-lint:
     runs-on: ubuntu-22.04
 
-    strategy:
-      matrix:
-        node-version: [18.17.1]
-
     env:
       CI: true
 
@@ -25,10 +21,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Use Node.js 18.17.1
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 18.17.1
           cache: "yarn"
 
       - name: Yarn install
