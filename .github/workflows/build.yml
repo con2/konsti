@@ -35,6 +35,36 @@ jobs:
         run: |
           yarn --immutable
 
+      - name: Build front-end
+        run: |
+          yarn build-front:prod
+
+      - name: Run Prettier
+        run: |
+          yarn prettier:check
+
+      - name: Run ESLint
+        run: |
+          yarn eslint
+
+      - name: Run stylelint
+        run: |
+          yarn stylelint
+
+      - name: TS type check
+        run: |
+          yarn type-check
+
+      - name: Cache MongoDB binary
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/mongodb-binaries
+          key: ${{ runner.os }}-mongodb
+
+      - name: Run Vitest tests
+        run: |
+          yarn test
+
       - name: Run Playwright tests
         run: |
           yarn docker-compose:test
