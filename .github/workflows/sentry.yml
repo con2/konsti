@@ -1,6 +1,10 @@
 name: sentry
 
-on: [push]
+on:
+  push:
+    branches:
+      - development
+      - main
 
 jobs:
   release:
@@ -30,10 +34,12 @@ jobs:
           yarn --immutable
 
       - name: Build staging frontend
+        if: github.ref == 'refs/heads/development'
         run: |
           yarn build-front:staging
 
       - name: Create staging frontend Sentry release
+        if: github.ref == 'refs/heads/development'
         uses: getsentry/action-release@v1
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
@@ -45,6 +51,7 @@ jobs:
           ignore_empty: true
 
       - name: Create staging backend Sentry release
+        if: github.ref == 'refs/heads/development'
         uses: getsentry/action-release@v1
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
