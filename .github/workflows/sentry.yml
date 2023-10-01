@@ -41,7 +41,7 @@ jobs:
           SENTRY_PROJECT: konsti-frontend-staging
         with:
           sourcemaps: "./client/build"
-          ignore_missing: true
+          ignore_empty: true
 
       - name: Create staging backend Sentry release
         uses: getsentry/action-release@v1
@@ -50,7 +50,7 @@ jobs:
           SENTRY_ORG: konsti
           SENTRY_PROJECT: konsti-backend-staging
         with:
-          ignore_missing: true
+          ignore_empty: true
 
       - name: Build prod frontend
         if: github.ref == 'refs/heads/main'
@@ -66,7 +66,7 @@ jobs:
           SENTRY_PROJECT: konsti-frontend-prod
         with:
           sourcemaps: "./client/build"
-          ignore_missing: true
+          ignore_empty: true
 
       - name: Create prod backend Sentry release
         if: github.ref == 'refs/heads/main'
@@ -76,4 +76,4 @@ jobs:
           SENTRY_ORG: konsti
           SENTRY_PROJECT: konsti-backend-prod
         with:
-          ignore_missing: true
+          ignore_empty: true
