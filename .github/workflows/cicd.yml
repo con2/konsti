@@ -14,7 +14,7 @@ env:
   SKAFFOLD_DEFAULT_REPO: ghcr.io/con2
 
 jobs:
-  deploy-staging:
+  deploy_staging:
     runs-on: self-hosted
     if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/development' }}
     steps:
@@ -36,7 +36,7 @@ jobs:
           python3 -m pip install emskaffolden
           emskaffolden -E staging -- run -n konsti-staging
 
-  deploy-production:
+  deploy_production:
     runs-on: self-hosted
     if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
     steps:
