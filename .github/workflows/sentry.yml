@@ -1,4 +1,4 @@
-name: sentry
+name: sentry-release
 
 on:
   push:
@@ -7,12 +7,10 @@ on:
       - main
 
 jobs:
-  release:
-    runs-on: ubuntu-22.04
+  staging:
+    if: github.ref == 'refs/heads/development'
 
-    strategy:
-      matrix:
-        node-version: [18.17.1]
+    runs-on: ubuntu-22.04
 
     env:
       CI: true
@@ -23,10 +21,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Use Node.js 18.17.1
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 18.17.1
           cache: "yarn"
 
       - name: Yarn install
@@ -34,12 +32,10 @@ jobs:
           yarn --immutable
 
       - name: Build staging frontend
-        if: github.ref == 'refs/heads/development'
         run: |
           yarn build-front:staging
 
       - name: Create staging frontend Sentry release
-        if: github.ref == 'refs/heads/development'
         uses: getsentry/action-release@v1
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
@@ -51,7 +47,6 @@ jobs:
           ignore_empty: true
 
       - name: Create staging backend Sentry release
-        if: github.ref == 'refs/heads/development'
         uses: getsentry/action-release@v1
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
@@ -61,13 +56,35 @@ jobs:
           ignore_missing: true
           ignore_empty: true
 
+  production:
+    if: github.ref == 'refs/heads/main'
+
+    runs-on: ubuntu-22.04
+
+    env:
+      CI: true
+
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Use Node.js 18.17.1
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.17.1
+          cache: "yarn"
+
+      - name: Yarn install
+        run: |
+          yarn --immutable
+
       - name: Build prod frontend
-        if: github.ref == 'refs/heads/main'
         run: |
           yarn build-front:prod
 
       - name: Create prod frontend Sentry release
-        if: github.ref == 'refs/heads/main'
         uses: getsentry/action-release@v1
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
@@ -79,7 +96,6 @@ jobs:
           ignore_empty: true
 
       - name: Create prod backend Sentry release
-        if: github.ref == 'refs/heads/main'
         uses: getsentry/action-release@v1
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
