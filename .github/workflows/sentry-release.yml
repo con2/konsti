@@ -1,10 +1,6 @@
 name: sentry-release
 
-on:
-  push:
-    branches:
-      - development
-      - main
+on: [push]
 
 jobs:
   sentry-release:
