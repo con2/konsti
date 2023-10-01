@@ -16,7 +16,7 @@ env:
 jobs:
   deploy_staging:
     runs-on: self-hosted
-    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/development' }}
+    # if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/development' }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
