@@ -1,4 +1,4 @@
-name: sentry-release
+name: sentry
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
       - main
 
 jobs:
-  sentry-release:
+  release:
     runs-on: ubuntu-22.04
 
     strategy:
@@ -47,6 +47,7 @@ jobs:
           SENTRY_PROJECT: konsti-frontend-staging
         with:
           sourcemaps: "./client/build"
+          ignore_missing: true
 
       - name: Create staging backend Sentry release
         if: github.ref == 'refs/heads/development'
@@ -55,6 +56,8 @@ jobs:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
           SENTRY_ORG: konsti
           SENTRY_PROJECT: konsti-backend-staging
+        with:
+          ignore_missing: true
 
       - name: Build prod frontend
         if: github.ref == 'refs/heads/main'
@@ -70,6 +73,7 @@ jobs:
           SENTRY_PROJECT: konsti-frontend-prod
         with:
           sourcemaps: "./client/build"
+          ignore_missing: true
 
       - name: Create prod backend Sentry release
         if: github.ref == 'refs/heads/main'
@@ -78,3 +82,5 @@ jobs:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
           SENTRY_ORG: konsti
           SENTRY_PROJECT: konsti-backend-prod
+        with:
+          ignore_missing: true
