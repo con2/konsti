@@ -7,9 +7,9 @@ env:
   SKAFFOLD_DEFAULT_REPO: ghcr.io/con2
 
 jobs:
-  deploy_production:
-    runs-on: self-hosted
+  deploy:
     if: github.ref == 'refs/heads/main'
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
@@ -28,3 +28,52 @@ jobs:
       - run: |
           python3 -m pip install emskaffolden
           emskaffolden -E production -- run -n konsti-production
+
+  sentry-release:
+    if: github.ref == 'refs/heads/main'
+
+    runs-on: ubuntu-22.04
+
+    env:
+      CI: true
+
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Use Node.js 18.17.1
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.17.1
+          cache: "yarn"
+
+      - name: Yarn install
+        run: |
+          yarn --immutable
+
+      - name: Build prod frontend
+        run: |
+          yarn build-front:prod
+
+      - name: Create prod frontend Sentry release
+        uses: getsentry/action-release@v1
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          SENTRY_ORG: konsti
+          SENTRY_PROJECT: konsti-frontend-prod
+        with:
+          sourcemaps: "./client/build"
+          ignore_missing: true
+          ignore_empty: true
+
+      - name: Create prod backend Sentry release
+        uses: getsentry/action-release@v1
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          SENTRY_ORG: konsti
+          SENTRY_PROJECT: konsti-backend-prod
+        with:
+          ignore_missing: true
+          ignore_empty: true
