@@ -476,7 +476,8 @@
   },
   "loginView": {
     "oldAccountsNotWorking": "Please note that accounts from older events are not in use anymore.",
-    "noAccountRegister": "No account? Create one here."
+    "noAccountRegister": "No account? Create one here.",
+    "kompassiLogin": "Login with Kompassi"
   },
   "registrationView": {
     "nickVisibleHintText": "Your usename will be visible to all other users.",

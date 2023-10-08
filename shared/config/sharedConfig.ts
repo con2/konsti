@@ -1,6 +1,10 @@
 import dayjs, { Dayjs } from "dayjs";
 import { ProgramType } from "shared/typings/models/game";
-import { AssignmentStrategy, SignupStrategy } from "./sharedConfig.types";
+import {
+  AssignmentStrategy,
+  LoginProvider,
+  SignupStrategy,
+} from "./sharedConfig.types";
 import {
   SignupQuestion,
   SignupQuestionType,
@@ -45,6 +49,7 @@ interface SharedConfig {
   tournamentSignupQuestion: SignupQuestion;
   tournamentSignupQuestionExcludeIds: string[];
   addRevolvingDoorIds: string[];
+  loginProvider: LoginProvider;
 }
 
 // Convention days
@@ -61,6 +66,7 @@ export const sharedConfig: SharedConfig = {
   manualSignupMode: "none",
   signupOpen: true,
   resultsVisible: true,
+  loginProvider: LoginProvider.KOMPASSI,
 
   activeProgramTypes: [
     ProgramType.TABLETOP_RPG,
