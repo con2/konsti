@@ -23,7 +23,7 @@ export interface PostLoginResponse extends ApiResult {
 }
 
 export interface PostLoginError extends ApiError {
-  errorId: "unknown" | "loginFailed" | "loginDisabled";
+  errorId: "unknown" | "loginFailed" | "loginDisabled" | "invalidUserGroup";
 }
 
 // POST session recovery
@@ -41,3 +41,7 @@ export interface PostKompassiLoginRequest {
 }
 
 export type PostKompassiLoginResponse = PostLoginResponse;
+
+export interface PostKompassiLoginError extends ApiError {
+  errorId: "unknown";
+}

@@ -2,6 +2,7 @@ import { api } from "client/utils/api";
 import { LoginFormFields } from "client/views/login/components/LoginForm";
 import { ApiEndpoint, AuthEndpoint } from "shared/constants/apiEndpoints";
 import {
+  PostKompassiLoginError,
   PostKompassiLoginRequest,
   PostKompassiLoginResponse,
   PostLoginError,
@@ -42,11 +43,14 @@ export const getKompassiLoginRedirectUrl = async (): Promise<void> => {
   await api.get(AuthEndpoint.KOMPASSI_LOGIN);
 };
 
-export const getKompassiLoginCallback = async (code: string): Promise<void> => {
-  await api.post<PostKompassiLoginResponse, PostKompassiLoginRequest>(
-    AuthEndpoint.KOMPASSI_CALLBACK,
-    {
-      code,
-    },
-  );
+export const postKompassiLoginCallback = async (
+  code: string,
+): Promise<PostKompassiLoginResponse | PostKompassiLoginError> => {
+  const response = await api.post<
+    PostKompassiLoginResponse,
+    PostKompassiLoginRequest
+  >(AuthEndpoint.KOMPASSI_CALLBACK, {
+    code,
+  });
+  return response.data;
 };

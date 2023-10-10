@@ -1,4 +1,8 @@
 import express from "express";
+import {
+  doLogin,
+  sendKompassiLoginRedirect,
+} from "server/features/auth/kompassiLogin";
 import { postFeedback } from "server/features/feedback/feedbackController";
 import {
   getGames,
@@ -47,7 +51,9 @@ import {
   getTestSettings,
   postTestSettings,
 } from "server/test/test-settings/testSettingsController";
-import { ApiEndpoint } from "shared/constants/apiEndpoints";
+import { sharedConfig } from "shared/config/sharedConfig";
+import { LoginProvider } from "shared/config/sharedConfig.types";
+import { ApiEndpoint, AuthEndpoint } from "shared/constants/apiEndpoints";
 
 export const apiRoutes = express.Router();
 
@@ -102,6 +108,11 @@ if (process.env.SETTINGS !== "production") {
   apiRoutes.post(ApiEndpoint.TEST_SETTINGS, postTestSettings);
   apiRoutes.get(ApiEndpoint.TEST_SETTINGS, getTestSettings);
   apiRoutes.post(ApiEndpoint.POPULATE_DB, postPopulateDb);
+}
+
+if (sharedConfig.loginProvider === LoginProvider.KOMPASSI) {
+  apiRoutes.get(AuthEndpoint.KOMPASSI_LOGIN, sendKompassiLoginRedirect);
+  apiRoutes.post(AuthEndpoint.KOMPASSI_CALLBACK, doLogin);
 }
 
 /* eslint-enable @typescript-eslint/no-misused-promises */

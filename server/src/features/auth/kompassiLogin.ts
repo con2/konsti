@@ -1,14 +1,17 @@
-import { Express, Request, Response } from "express";
+import { Request, Response } from "express";
 import { z } from "zod";
+import axios from "axios";
 import { AuthEndpoint } from "shared/constants/apiEndpoints";
 import { logger } from "server/utils/logger";
+import { PostLoginError, PostLoginResponse } from "shared/typings/api/login";
+import { UserGroup } from "shared/typings/models/user";
 
 const baseUrl = process.env.KOMPASSI_BASE_URL ?? "https://kompassi.eu";
 const clientId = process.env.KOMPASSI_CLIENT_ID ?? "";
 const clientSecret = process.env.KOMPASSI_CLIENT_SECRET ?? "";
-// const accessGroups = (process.env.KOMPASSI_ACCESS_GROUPS ?? "").split(/\s+/);
-// const adminGroups = (process.env.KOMPASSI_ADMIN_GROUPS ?? "").split(/\s+/);
-// const redirectUri = `${process.env.URL}/auth/kompassi.callback`;
+
+const accessGroups = ["users"];
+const adminGroups = ["admin"];
 
 interface Profile {
   id: number;
@@ -25,8 +28,8 @@ const getProfile = async (accessToken: string): Promise<Profile> => {
 
   const headers = { authorization: `Bearer ${accessToken}` };
 
-  const response = await fetch(url, { headers });
-  return response.json();
+  const response = await axios.get(url, { headers });
+  return response.data;
 };
 
 const scope = "read";
@@ -44,19 +47,16 @@ const getAuthUrl = (origin: string): string => {
   return `${baseUrl}/oauth2/authorize?${params.toString()}`;
 };
 
-export const enableKompassiLogin = (app: Express): void => {
-  app.get(AuthEndpoint.KOMPASSI_LOGIN, (req, res) => {
-    if (!req.headers.origin) {
-      return res.sendStatus(422);
-    }
+export const sendKompassiLoginRedirect = (
+  req: Request<{}, {}, {}>,
+  res: Response,
+): Response => {
+  if (!req.headers.origin) {
+    return res.sendStatus(422);
+  }
 
-    res.status(302).json({
-      location: getAuthUrl(req.headers.origin),
-    });
-  });
-
-  app.post(AuthEndpoint.KOMPASSI_CALLBACK, (req, res) => {
-    doLogin(req, res).catch(() => {});
+  return res.status(302).json({
+    location: getAuthUrl(req.headers.origin),
   });
 };
 
@@ -80,13 +80,16 @@ const getToken = async (code: string, origin: string): Promise<Token> => {
     "content-type": "application/x-www-form-urlencoded",
   };
 
-  const response = await fetch(url, { method: "POST", body, headers });
-  return response.json();
+  const response = await axios.post(url, body, { headers });
+  return response.data;
 };
 
 const PostSentryTunnelRequestSchema = z.object({ code: z.string() });
 
-const doLogin = async (req: Request<{}, {}, string>, res: Response) => {
+export const doLogin = async (
+  req: Request<{}, {}, string>,
+  res: Response,
+): Promise<Response> => {
   if (!req.headers.origin) {
     return res.sendStatus(422);
   }
@@ -101,32 +104,43 @@ const doLogin = async (req: Request<{}, {}, string>, res: Response) => {
   }
   const { code } = result.data;
 
-  const tokens = await getToken("" + code, req.headers.origin);
+  const tokens = await getToken(code, req.headers.origin);
   const profile = await getProfile(tokens.access_token);
 
-  // eslint-disable-next-line no-console
-  console.log("profile", profile);
+  const response = parseProfile(profile);
+  return res.json(response);
+};
 
-  /*
-
-  const initials = `${profile.first_name[0]}${profile.surname[0]}`;
-  const userHash = getHash(profile.full_name);
-  */
-
-  /*
-  const groupNames: string[] = profile.groups.filter(
+const parseProfile = (profile: Profile): PostLoginResponse | PostLoginError => {
+  const groupNames = profile.groups.filter(
     (groupName) =>
       accessGroups.includes(groupName) || adminGroups.includes(groupName),
   );
-  if (!groupNames.length) {
-    // User not member of any group that would grant access
-    res.redirect(`${process.env.URL}?notice=auth-error`);
-    return;
+
+  if (groupNames.length === 0) {
+    return {
+      message: "User not member of any group that would grant access",
+      status: "error",
+      errorId: "invalidUserGroup",
+    };
   }
+
   const isAdmin = groupNames.some((groupName) =>
     adminGroups.includes(groupName),
   );
 
+  return {
+    status: "success",
+    groupCode: "string",
+    jwt: "string",
+    message: "string",
+    serial: "string",
+    userGroup: isAdmin ? UserGroup.ADMIN : UserGroup.USER,
+    username: "string",
+    eventLogItems: [],
+  };
+
+  /*
   const { user, team, isNewUser, isNewTeam } = await accountProvisioner({
     ip: req.ip,
     team: {

@@ -17,9 +17,6 @@ import { db } from "server/db/mongodb";
 import { stopCronJobs } from "server/utils/cron";
 import { wwwRedirect } from "server/middleware/wwwRedirect";
 import { initSentry } from "server/utils/sentry";
-import { enableKompassiLogin } from "server/features/auth/kompassiLogin";
-import { sharedConfig } from "shared/config/sharedConfig";
-import { LoginProvider } from "shared/config/sharedConfig.types";
 
 interface StartServerParams {
   dbConnString: string;
@@ -85,10 +82,6 @@ export const startServer = async ({
   app.use(wwwRedirect);
 
   app.use(apiRoutes);
-
-  if (sharedConfig.loginProvider === LoginProvider.KOMPASSI) {
-    enableKompassiLogin(app);
-  }
 
   // Set static path
   const staticPath = path.join(__dirname, "../../", "front");
