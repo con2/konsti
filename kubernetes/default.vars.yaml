@@ -53,6 +53,8 @@ konsti_environment:
     value: !Var konsti_debug
   - name: SETTINGS
     value: !Var konsti_settings
+  - name: KOMPASSI_BASE_URL
+    value: !Var kompassi_base_url
   - name: SMTP_HOST
     value: !Var smtp_hostname
   - name: SMTP_PORT
@@ -84,6 +86,16 @@ konsti_environment:
       secretKeyRef:
         name: konsti
         key: jwtSecretKeyHelp
+  - name: KOMPASSI_CLIENT_ID
+    valueFrom:
+      secretKeyRef:
+        name: konsti
+        key: kompassiClientId
+  - name: KOMPASSI_CLIENT_SECRET
+    valueFrom:
+      secretKeyRef:
+        name: konsti
+        key: kompassiClientSecret
 
 # Default annotations work for nginx ingress with or without LetsEncrypt TLS. Override if you need something else.
 ingress_annotations: !If
