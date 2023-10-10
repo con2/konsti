@@ -108,10 +108,7 @@ export const startServer = async ({
   }
 
   app.get("/*", (req: Request, res: Response) => {
-    if (
-      req.originalUrl.includes("/api/") ||
-      req.originalUrl.includes("/auth/")
-    ) {
+    if (req.originalUrl.includes("/api/")) {
       res.sendStatus(404);
     } else {
       if (!config.onlyCronjobs) {

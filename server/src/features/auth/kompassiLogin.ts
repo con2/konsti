@@ -9,31 +9,6 @@ const clientSecret = process.env.KOMPASSI_CLIENT_SECRET ?? "";
 // const accessGroups = (process.env.KOMPASSI_ACCESS_GROUPS ?? "").split(/\s+/);
 // const adminGroups = (process.env.KOMPASSI_ADMIN_GROUPS ?? "").split(/\s+/);
 // const redirectUri = `${process.env.URL}/auth/kompassi.callback`;
-const redirectUri = `${process.env.URL}${AuthEndpoint.KOMPASSI_CALLBACK}`;
-
-interface Token {
-  access_token: string;
-  refresh_token: string;
-}
-
-const getToken = async (code: string): Promise<Token> => {
-  const params = new URLSearchParams({
-    code,
-    grant_type: "authorization_code",
-    client_id: clientId,
-    client_secret: clientSecret,
-    redirect_uri: redirectUri,
-  });
-  const body = params.toString();
-  const url = `${baseUrl}/oauth2/token`;
-  const headers = {
-    accept: "application/json",
-    "content-type": "application/x-www-form-urlencoded",
-  };
-
-  const response = await fetch(url, { method: "POST", body, headers });
-  return response.json();
-};
 
 interface Profile {
   id: number;
@@ -58,11 +33,11 @@ const scope = "read";
 // const providerName = "kompassi";
 // const enabled = !!clientId;
 
-const getAuthUrl = (): string => {
+const getAuthUrl = (origin: string): string => {
   const params = new URLSearchParams({
     response_type: "code",
     client_id: clientId,
-    redirect_uri: redirectUri,
+    redirect_uri: `${origin}${AuthEndpoint.KOMPASSI_CALLBACK}`,
     scope,
   });
 
@@ -70,21 +45,53 @@ const getAuthUrl = (): string => {
 };
 
 export const enableKompassiLogin = (app: Express): void => {
-  app.get(AuthEndpoint.KOMPASSI_LOGIN, (_req, res) => {
+  app.get(AuthEndpoint.KOMPASSI_LOGIN, (req, res) => {
+    if (!req.headers.origin) {
+      return res.sendStatus(422);
+    }
+
     res.status(302).json({
-      location: getAuthUrl(),
+      location: getAuthUrl(req.headers.origin),
     });
   });
 
-  app.get(AuthEndpoint.KOMPASSI_CALLBACK, (req, res) => {
+  app.post(AuthEndpoint.KOMPASSI_CALLBACK, (req, res) => {
     doLogin(req, res).catch(() => {});
   });
+};
+
+interface Token {
+  access_token: string;
+  refresh_token: string;
+}
+
+const getToken = async (code: string, origin: string): Promise<Token> => {
+  const params = new URLSearchParams({
+    code,
+    grant_type: "authorization_code",
+    client_id: clientId,
+    client_secret: clientSecret,
+    redirect_uri: `${origin}${AuthEndpoint.KOMPASSI_CALLBACK}`,
+  });
+  const body = params.toString();
+  const url = `${baseUrl}/oauth2/token`;
+  const headers = {
+    accept: "application/json",
+    "content-type": "application/x-www-form-urlencoded",
+  };
+
+  const response = await fetch(url, { method: "POST", body, headers });
+  return response.json();
 };
 
 const PostSentryTunnelRequestSchema = z.object({ code: z.string() });
 
 const doLogin = async (req: Request<{}, {}, string>, res: Response) => {
-  const result = PostSentryTunnelRequestSchema.safeParse(req.query);
+  if (!req.headers.origin) {
+    return res.sendStatus(422);
+  }
+
+  const result = PostSentryTunnelRequestSchema.safeParse(req.body);
   if (!result.success) {
     logger.error(
       "%s",
@@ -94,7 +101,7 @@ const doLogin = async (req: Request<{}, {}, string>, res: Response) => {
   }
   const { code } = result.data;
 
-  const tokens = await getToken("" + code);
+  const tokens = await getToken("" + code, req.headers.origin);
   const profile = await getProfile(tokens.access_token);
 
   // eslint-disable-next-line no-console

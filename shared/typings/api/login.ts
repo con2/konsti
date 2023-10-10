@@ -33,3 +33,11 @@ export interface PostSessionRecoveryRequest {
 }
 
 export type PostSessionRecoveryResponse = PostLoginResponse;
+
+// POST Kompassi login
+
+export interface PostKompassiLoginRequest {
+  code: string;
+}
+
+export type PostKompassiLoginResponse = PostLoginResponse;
