@@ -18,6 +18,8 @@ import { stopCronJobs } from "server/utils/cron";
 import { wwwRedirect } from "server/middleware/wwwRedirect";
 import { initSentry } from "server/utils/sentry";
 import { enableKompassiLogin } from "server/features/auth/kompassiLogin";
+import { sharedConfig } from "shared/config/sharedConfig";
+import { LoginProvider } from "shared/config/sharedConfig.types";
 
 interface StartServerParams {
   dbConnString: string;
@@ -84,7 +86,9 @@ export const startServer = async ({
 
   app.use(apiRoutes);
 
-  enableKompassiLogin(app);
+  if (sharedConfig.loginProvider === LoginProvider.KOMPASSI) {
+    enableKompassiLogin(app);
+  }
 
   // Set static path
   const staticPath = path.join(__dirname, "../../", "front");
@@ -104,7 +108,10 @@ export const startServer = async ({
   }
 
   app.get("/*", (req: Request, res: Response) => {
-    if (["/api/", "/auth/"].includes(req.originalUrl)) {
+    if (
+      req.originalUrl.includes("/api/") ||
+      req.originalUrl.includes("/auth/")
+    ) {
       res.sendStatus(404);
     } else {
       if (!config.onlyCronjobs) {
