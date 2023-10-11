@@ -26,6 +26,7 @@ export const saveUser = async (
   newUserData: NewUser,
 ): Promise<Result<User, MongoDbError>> => {
   const newUser: Omit<User, "createdAt"> = {
+    userId: newUserData.userId,
     username: newUserData.username,
     password: newUserData.passwordHash,
     userGroup: newUserData.userGroup ? newUserData.userGroup : UserGroup.USER,
@@ -161,6 +162,27 @@ export const findUserBySerial = async (
       `MongoDB: Error finding user with serial ${serial}: %s`,
       error,
     );
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+  }
+};
+
+export const findUserById = async (
+  userId: number,
+): Promise<Result<User | null, MongoDbError>> => {
+  try {
+    const response = await UserModel.findOne({ userId }, "-signedGames._id")
+      .lean<User>()
+      .populate("favoritedGames")
+      .populate("signedGames.gameDetails");
+
+    if (!response) {
+      logger.info(`MongoDB: User with id ${userId} not found`);
+    } else {
+      logger.debug(`MongoDB: Found user with id ${userId}`);
+    }
+    return makeSuccessResult(response);
+  } catch (error) {
+    logger.error(`MongoDB: Error finding user with id ${userId}: %s`, error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };

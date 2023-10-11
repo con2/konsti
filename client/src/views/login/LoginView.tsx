@@ -3,6 +3,9 @@ import { useTranslation } from "react-i18next";
 import { Link, useNavigate } from "react-router-dom";
 import { LoginForm } from "client/views/login/components/LoginForm";
 import { useAppSelector } from "client/utils/hooks";
+import { LoginProvider } from "shared/config/sharedConfig.types";
+import { sharedConfig } from "shared/config/sharedConfig";
+import { KompassiLogin } from "client/views/login/components/KompassiLogin";
 
 export const LoginView = (): ReactElement => {
   const { t } = useTranslation();
@@ -19,7 +22,12 @@ export const LoginView = (): ReactElement => {
     <div>
       <h2>{t("pageTitle.login")}</h2>
       <p>{t("loginView.oldAccountsNotWorking")}</p>
-      <LoginForm />
+
+      {sharedConfig.loginProvider === LoginProvider.LOCAL && <LoginForm />}
+
+      {sharedConfig.loginProvider === LoginProvider.KOMPASSI && (
+        <KompassiLogin />
+      )}
 
       <Link to={`/registration`}>
         <p>{t("loginView.noAccountRegister")}</p>

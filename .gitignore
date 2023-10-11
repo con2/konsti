@@ -68,3 +68,6 @@ test-results
 *.compiled.yaml
 *.local.yaml
 *.local.in.yaml
+
+#dotenv
+.env.development
