@@ -66,7 +66,7 @@ export const sharedConfig: SharedConfig = {
   manualSignupMode: "none",
   signupOpen: true,
   resultsVisible: true,
-  loginProvider: LoginProvider.KOMPASSI,
+  loginProvider: LoginProvider.LOCAL,
 
   activeProgramTypes: [
     ProgramType.TABLETOP_RPG,
