@@ -4,6 +4,7 @@ import { User, UserGroup } from "shared/typings/models/user";
 export interface UserDoc extends User, mongoose.Document {}
 
 export interface NewUser {
+  userId: number;
   username: string;
   serial: string;
   passwordHash: string;

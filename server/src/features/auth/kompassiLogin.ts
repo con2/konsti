@@ -5,6 +5,10 @@ import { AuthEndpoint } from "shared/constants/apiEndpoints";
 import { logger } from "server/utils/logger";
 import { PostLoginError, PostLoginResponse } from "shared/typings/api/login";
 import { UserGroup } from "shared/typings/models/user";
+import { findUserById, saveUser } from "server/features/user/userRepository";
+import { isErrorResult, unwrapResult } from "shared/utils/result";
+import { getJWT } from "server/utils/jwt";
+import { createSerial } from "server/features/user/userUtils";
 
 const baseUrl = process.env.KOMPASSI_BASE_URL ?? "https://kompassi.eu";
 const clientId = process.env.KOMPASSI_CLIENT_ID ?? "";
@@ -32,16 +36,12 @@ const getProfile = async (accessToken: string): Promise<Profile> => {
   return response.data;
 };
 
-const scope = "read";
-// const providerName = "kompassi";
-// const enabled = !!clientId;
-
 const getAuthUrl = (origin: string): string => {
   const params = new URLSearchParams({
     response_type: "code",
     client_id: clientId,
     redirect_uri: `${origin}${AuthEndpoint.KOMPASSI_CALLBACK}`,
-    scope,
+    scope: "read",
   });
 
   return `${baseUrl}/oauth2/authorize?${params.toString()}`;
@@ -107,11 +107,13 @@ export const doLogin = async (
   const tokens = await getToken(code, req.headers.origin);
   const profile = await getProfile(tokens.access_token);
 
-  const response = parseProfile(profile);
+  const response = await parseProfile(profile);
   return res.json(response);
 };
 
-const parseProfile = (profile: Profile): PostLoginResponse | PostLoginError => {
+const parseProfile = async (
+  profile: Profile,
+): Promise<PostLoginResponse | PostLoginError> => {
   const groupNames = profile.groups.filter(
     (groupName) =>
       accessGroups.includes(groupName) || adminGroups.includes(groupName),
@@ -129,88 +131,68 @@ const parseProfile = (profile: Profile): PostLoginResponse | PostLoginError => {
     adminGroups.includes(groupName),
   );
 
-  return {
-    status: "success",
-    groupCode: "string",
-    jwt: "string",
-    message: "string",
-    serial: "string",
+  const existingUserResult = await findUserById(profile.id);
+  if (isErrorResult(existingUserResult)) {
+    return {
+      message: "Error finding existing user",
+      status: "error",
+      errorId: "unknown",
+    };
+  }
+
+  const existingUser = unwrapResult(existingUserResult);
+
+  if (existingUser) {
+    return {
+      message: "User login success",
+      status: "success",
+      username: existingUser.username,
+      userGroup: existingUser.userGroup,
+      serial: existingUser.serial,
+      groupCode: existingUser.groupCode,
+      jwt: getJWT(existingUser.userGroup, existingUser.username),
+      eventLogItems: existingUser.eventLogItems,
+    };
+  }
+
+  const serialDocResult = await createSerial();
+  if (isErrorResult(serialDocResult)) {
+    return {
+      message: "Error creating serial for new user",
+      status: "error",
+      errorId: "unknown",
+    };
+  }
+  const serialDoc = unwrapResult(serialDocResult);
+  const serial = serialDoc[0].serial;
+
+  const saveUserResult = await saveUser({
+    userId: profile.id,
+    username: profile.username,
+    serial,
+    passwordHash: "",
     userGroup: isAdmin ? UserGroup.ADMIN : UserGroup.USER,
-    username: "string",
-    eventLogItems: [],
+    groupCode: "0",
+  });
+
+  if (isErrorResult(saveUserResult)) {
+    return {
+      errorId: "unknown",
+      message: "Saving user failed",
+      status: "error",
+    };
+  }
+
+  const saveUserResponse = unwrapResult(saveUserResult);
+
+  return {
+    message: "User login success",
+    status: "success",
+    username: saveUserResponse.username,
+    userGroup: saveUserResponse.userGroup,
+    serial: saveUserResponse.serial,
+    groupCode: saveUserResponse.groupCode,
+    jwt: getJWT(saveUserResponse.userGroup, saveUserResponse.username),
+    eventLogItems: saveUserResponse.eventLogItems,
   };
-
-  /*
-  const { user, team, isNewUser, isNewTeam } = await accountProvisioner({
-    ip: req.ip,
-    team: {
-      name: teamName,
-      domain: "",
-      subdomain: "",
-    },
-    user: {
-      name: profile.full_name,
-      email: profile.email,
-    },
-    authenticationProvider: {
-      name: providerName,
-      providerId: teamName,
-    },
-    authentication: {
-      providerId: "" + profile.id,
-      accessToken: tokens.access_token,
-      refreshToken: tokens.refresh_token,
-      scopes: scope.split(/\s+/),
-    },
-  });
-
-  // update adminship
-  if (user.isAdmin !== isAdmin) {
-    user.isAdmin = isAdmin;
-    await user.save();
-  }
-
-  // update group membership
-  const groupIds: string[] = [];
-  for (const groupName of groupNames) {
-    // Ensure the groups exist that the user should be member of per Kompassi
-    const [group] = await Group.findOrCreate({
-      where: {
-        teamId: team.id,
-        name: groupName,
-      },
-      defaults: {
-        createdById: user.id,
-      },
-    });
-
-    groupIds.push(group.id);
-
-    // Ensure membership
-    await GroupUser.findOrCreate({
-      where: {
-        userId: user.id,
-        groupId: group.id,
-      },
-      defaults: {
-        createdById: user.id,
-      },
-    });
-  }
-
-  // Delete group memberships that are no longer valid per Kompassi
-  // NOTE: Not scoped to team, would also delete memberships of other teams
-  // But self hosted Outline is single team only so this is fine.
-  await GroupUser.destroy({
-    where: {
-      userId: user.id,
-      groupId: {
-        [Op.notIn]: groupIds,
-      },
-    },
-  });
-
-  // set cookies on response and redirect to team subdomain
-  await signIn(ctx, user, team, "local", isNewUser, isNewTeam);
-  */
 };
