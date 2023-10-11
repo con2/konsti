@@ -3,7 +3,10 @@ import { z } from "zod";
 import axios from "axios";
 import { AuthEndpoint } from "shared/constants/apiEndpoints";
 import { logger } from "server/utils/logger";
-import { PostLoginError, PostLoginResponse } from "shared/typings/api/login";
+import {
+  PostKompassiLoginError,
+  PostKompassiLoginResponse,
+} from "shared/typings/api/login";
 import { UserGroup } from "shared/typings/models/user";
 import { findUserById, saveUser } from "server/features/user/userRepository";
 import { isErrorResult, unwrapResult } from "shared/utils/result";
@@ -113,7 +116,7 @@ export const doLogin = async (
 
 const parseProfile = async (
   profile: Profile,
-): Promise<PostLoginResponse | PostLoginError> => {
+): Promise<PostKompassiLoginResponse | PostKompassiLoginError> => {
   const groupNames = profile.groups.filter(
     (groupName) =>
       accessGroups.includes(groupName) || adminGroups.includes(groupName),
@@ -136,7 +139,7 @@ const parseProfile = async (
     return {
       message: "Error finding existing user",
       status: "error",
-      errorId: "unknown",
+      errorId: "loginFailed",
     };
   }
 
@@ -160,7 +163,7 @@ const parseProfile = async (
     return {
       message: "Error creating serial for new user",
       status: "error",
-      errorId: "unknown",
+      errorId: "loginFailed",
     };
   }
   const serialDoc = unwrapResult(serialDocResult);
@@ -177,9 +180,9 @@ const parseProfile = async (
 
   if (isErrorResult(saveUserResult)) {
     return {
-      errorId: "unknown",
       message: "Saving user failed",
       status: "error",
+      errorId: "loginFailed",
     };
   }
 

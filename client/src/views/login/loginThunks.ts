@@ -5,7 +5,12 @@ import {
 } from "client/services/loginServices";
 import { saveSession, clearSession } from "client/utils/localStorage";
 import { AppThunk } from "client/typings/redux.typings";
-import { PostLoginError, PostLoginResponse } from "shared/typings/api/login";
+import {
+  PostKompassiLoginError,
+  PostKompassiLoginResponse,
+  PostLoginError,
+  PostLoginResponse,
+} from "shared/typings/api/login";
 import {
   submitLoginAsync,
   submitUpdateEventLogItemsAsync,
@@ -45,8 +50,6 @@ export const submitLogin = (
           return LoginErrorMessage.LOGIN_FAILED;
         case "loginDisabled":
           return LoginErrorMessage.LOGIN_DISABLED;
-        case "invalidUserGroup":
-          return LoginErrorMessage.INVALID_USER_GROUP;
         case "unknown":
           return LoginErrorMessage.UNKNOWN;
         default:
@@ -99,9 +102,6 @@ export const submitSessionRecovery = (jwt: string): AppThunk => {
         case "loginDisabled":
           // eslint-disable-next-line no-restricted-syntax -- TODO: Remove throw
           throw new Error("error.loginDisabled");
-        case "invalidUserGroup":
-          // eslint-disable-next-line no-restricted-syntax -- TODO: Remove throw
-          throw new Error("error.invalidUserGroup");
         case "unknown":
           // eslint-disable-next-line no-restricted-syntax -- TODO: Remove throw
           throw new Error(`error.unknown`);
@@ -151,7 +151,7 @@ export const submitKompassiLogin = (
   code: string,
 ): AppThunk<Promise<LoginErrorMessage | undefined>> => {
   return async (dispatch): Promise<LoginErrorMessage | undefined> => {
-    let loginResponse: PostLoginResponse | PostLoginError;
+    let loginResponse: PostKompassiLoginResponse | PostKompassiLoginError;
     try {
       loginResponse = await postKompassiLoginCallback(code);
     } catch (error) {
