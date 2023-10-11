@@ -33,3 +33,15 @@ export interface PostSessionRecoveryRequest {
 }
 
 export type PostSessionRecoveryResponse = PostLoginResponse;
+
+// POST Kompassi login
+
+export interface PostKompassiLoginRequest {
+  code: string;
+}
+
+export type PostKompassiLoginResponse = PostLoginResponse;
+
+export interface PostKompassiLoginError extends ApiError {
+  errorId: "unknown" | "loginFailed" | "loginDisabled" | "invalidUserGroup";
+}

@@ -6,6 +6,7 @@ import { Signup } from "server/features/signup/signup.typings";
 import { ProgramType } from "shared/typings/models/game";
 
 const user: User = {
+  userId: 0,
   username: "username",
   password: "password",
   userGroup: UserGroup.USER,
@@ -25,6 +26,7 @@ const user: User = {
 };
 
 const user2: User = {
+  userId: 0,
   username: "username 2",
   password: "password",
   userGroup: UserGroup.USER,
@@ -37,6 +39,7 @@ const user2: User = {
 };
 
 const user3: User = {
+  userId: 0,
   username: "username 3",
   password: "password",
   userGroup: UserGroup.USER,

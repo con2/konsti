@@ -21,6 +21,7 @@ import { Tabs } from "client/components/Tabs";
 import { EventLog } from "client/views/all-games/components/EventLog";
 import { ProfileView } from "client/views/profile/ProfileView";
 import { InstructionsView } from "client/views/about/InstructionsView";
+import { KompassiLoginCallback } from "client/components/KompassiLoginCallback";
 
 export const AppRoutes = (): ReactElement => {
   const { t } = useTranslation();
@@ -163,6 +164,10 @@ export const AppRoutes = (): ReactElement => {
       <Route path="/program/list" element={<AllGamesView />} />
       <Route path="/about/*" element={<Tabs tabContents={aboutTabs} />} />
       <Route path="/" element={<Navigate to="/program" />} />
+      <Route
+        path="/auth/kompassi/callback"
+        element={<KompassiLoginCallback />}
+      />
       <Route path="/*" element={<Navigate to="/login" />} />
     </Routes>
   );

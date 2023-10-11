@@ -12,3 +12,8 @@ export enum AssignmentStrategy {
   GROUP_PADG = "group+padg",
   RANDOM_PADG = "random+padg",
 }
+
+export enum LoginProvider {
+  LOCAL = "local",
+  KOMPASSI = "kompassi",
+}

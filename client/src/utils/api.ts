@@ -1,4 +1,9 @@
-import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import axios, {
+  AxiosError,
+  AxiosInstance,
+  AxiosRequestConfig,
+  AxiosResponse,
+} from "axios";
 import { t } from "i18next";
 import { config } from "client/config";
 import { getJWT } from "client/utils/getJWT";
@@ -31,6 +36,22 @@ axiosInstance.interceptors.request.use((requestConfig) => {
   }
   return requestConfig;
 });
+
+// Redirect interceptor
+axiosInstance.interceptors.response.use(
+  (response) => response,
+  (error: AxiosError) => {
+    if (error.response && [301, 302].includes(error.response.status)) {
+      // @ts-expect-error: TODO: Type this
+      const redirectUrl = error.response.data.location;
+      window.location.href = redirectUrl;
+      return;
+    }
+
+    // Continue to error interceptor
+    return Promise.reject(error);
+  },
+);
 
 // Error interceptor
 axiosInstance.interceptors.response.use(

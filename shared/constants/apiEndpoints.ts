@@ -28,3 +28,8 @@ export enum ApiEndpoint {
   ASSIGNMENT_CRON = "/api/assignment-cron",
   HEALTH = "/api/health",
 }
+
+export enum AuthEndpoint {
+  KOMPASSI_LOGIN = "/auth/kompassi",
+  KOMPASSI_CALLBACK = "/auth/kompassi/callback",
+}

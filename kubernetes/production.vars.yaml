@@ -15,3 +15,5 @@ smtp_from_email: root@tracon.fi
 kompassi_admin_groups:
   - konsti-staff
   - admins
+
+kompassi_base_url: https://kompassi.eu
