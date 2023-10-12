@@ -5,7 +5,7 @@ import { PostEnteredGameRequest } from "shared/typings/api/myGames";
 import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 
 export const mockUser: NewUser = {
-  userId: 1,
+  kompassiId: 1,
   username: "Test User",
   passwordHash: "$2a$10$RfH4QV71FPDta0wWfCwFreyAWJIZSTB7Rzmn8atwRldJWANuDDIpe", // Hash for password 'password'
   userGroup: UserGroup.USER,
@@ -14,7 +14,7 @@ export const mockUser: NewUser = {
 };
 
 export const mockUser2: NewUser = {
-  userId: 2,
+  kompassiId: 2,
   username: "Test User 2",
   passwordHash: "testpass",
   userGroup: UserGroup.USER,
@@ -23,7 +23,7 @@ export const mockUser2: NewUser = {
 };
 
 export const mockUser3: NewUser = {
-  userId: 3,
+  kompassiId: 3,
   username: "Test User 3",
   passwordHash: "testpass",
   userGroup: UserGroup.USER,
@@ -32,7 +32,7 @@ export const mockUser3: NewUser = {
 };
 
 export const mockUser4: NewUser = {
-  userId: 4,
+  kompassiId: 4,
   username: "Test User 4",
   passwordHash: "testpass",
   userGroup: UserGroup.USER,
@@ -41,7 +41,7 @@ export const mockUser4: NewUser = {
 };
 
 export const mockUser5: NewUser = {
-  userId: 5,
+  kompassiId: 5,
   username: "Test User 5",
   passwordHash: "testpass",
   userGroup: UserGroup.USER,

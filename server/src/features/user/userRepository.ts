@@ -26,7 +26,7 @@ export const saveUser = async (
   newUserData: NewUser,
 ): Promise<Result<User, MongoDbError>> => {
   const newUser: Omit<User, "createdAt"> = {
-    userId: newUserData.userId,
+    kompassiId: newUserData.kompassiId,
     username: newUserData.username,
     password: newUserData.passwordHash,
     userGroup: newUserData.userGroup ? newUserData.userGroup : UserGroup.USER,
@@ -166,23 +166,26 @@ export const findUserBySerial = async (
   }
 };
 
-export const findUserById = async (
-  userId: number,
+export const findUserByKompassiId = async (
+  kompassiId: number,
 ): Promise<Result<User | null, MongoDbError>> => {
   try {
-    const response = await UserModel.findOne({ userId }, "-signedGames._id")
+    const response = await UserModel.findOne({ kompassiId }, "-signedGames._id")
       .lean<User>()
       .populate("favoritedGames")
       .populate("signedGames.gameDetails");
 
     if (!response) {
-      logger.info(`MongoDB: User with id ${userId} not found`);
+      logger.info(`MongoDB: User with Kompassi id ${kompassiId} not found`);
     } else {
-      logger.debug(`MongoDB: Found user with id ${userId}`);
+      logger.debug(`MongoDB: Found user with Kompassi id ${kompassiId}`);
     }
     return makeSuccessResult(response);
   } catch (error) {
-    logger.error(`MongoDB: Error finding user with id ${userId}: %s`, error);
+    logger.error(
+      `MongoDB: Error finding user with Kompassi id ${kompassiId}: %s`,
+      error,
+    );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };

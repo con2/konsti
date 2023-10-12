@@ -8,7 +8,10 @@ import {
   PostKompassiLoginResponse,
 } from "shared/typings/api/login";
 import { UserGroup } from "shared/typings/models/user";
-import { findUserById, saveUser } from "server/features/user/userRepository";
+import {
+  findUserByKompassiId,
+  saveUser,
+} from "server/features/user/userRepository";
 import { isErrorResult, unwrapResult } from "shared/utils/result";
 import { getJWT } from "server/utils/jwt";
 import { createSerial } from "server/features/user/userUtils";
@@ -134,7 +137,7 @@ const parseProfile = async (
     adminGroups.includes(groupName),
   );
 
-  const existingUserResult = await findUserById(profile.id);
+  const existingUserResult = await findUserByKompassiId(profile.id);
   if (isErrorResult(existingUserResult)) {
     return {
       message: "Error finding existing user",
@@ -170,7 +173,7 @@ const parseProfile = async (
   const serial = serialDoc[0].serial;
 
   const saveUserResult = await saveUser({
-    userId: profile.id,
+    kompassiId: profile.id,
     username: profile.username,
     serial,
     passwordHash: "",

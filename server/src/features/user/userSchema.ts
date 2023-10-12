@@ -3,7 +3,7 @@ import { UserDoc } from "server/typings/user.typings";
 
 const UserSchema = new mongoose.Schema(
   {
-    userId: Number,
+    kompassiId: Number,
     username: String,
     password: String,
     userGroup: String,
