@@ -170,7 +170,7 @@ const parseProfile = async (
   const serial = serialDoc[0].serial;
 
   const saveUserResult = await saveUser({
-    userId: profile.id,
+    kompassiId: profile.id,
     username: profile.username,
     serial,
     passwordHash: "",
