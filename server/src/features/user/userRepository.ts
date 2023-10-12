@@ -166,7 +166,7 @@ export const findUserBySerial = async (
   }
 };
 
-export const findUserById = async (
+export const findUserByKompassiId = async (
   kompassiId: number,
 ): Promise<Result<User | null, MongoDbError>> => {
   try {
