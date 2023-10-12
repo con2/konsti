@@ -2,7 +2,7 @@ import { EventLogItem } from "shared/typings/models/eventLog";
 import { Game } from "shared/typings/models/game";
 
 export interface User {
-  userId: number;
+  kompassiId: number;
   username: string;
   password: string;
   userGroup: UserGroup;

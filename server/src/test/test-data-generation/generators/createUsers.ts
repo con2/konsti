@@ -16,7 +16,7 @@ export const createAdminUser = async (password?: string): Promise<void> => {
   const passwordHash = unsafelyUnwrapResult(passwordHashResult);
 
   const registrationData: NewUser = {
-    userId: 0,
+    kompassiId: 0,
     username: "admin",
     passwordHash,
     userGroup: UserGroup.ADMIN,
@@ -33,7 +33,7 @@ export const createHelpUser = async (password?: string): Promise<void> => {
   const passwordHash = unsafelyUnwrapResult(passwordHashResult);
 
   const registrationData: NewUser = {
-    userId: 0,
+    kompassiId: 0,
     username: "helper",
     passwordHash,
     userGroup: UserGroup.HELP,
@@ -56,7 +56,7 @@ const createTestUser = async ({
   const passwordHash = unsafelyUnwrapResult(passwordHashResult);
 
   const registrationData: NewUser = {
-    userId: 0,
+    kompassiId: 0,
     username: `test${userNumber}`,
     passwordHash,
     userGroup: UserGroup.USER,
@@ -98,7 +98,7 @@ const createUser = async ({
   const passwordHash = unsafelyUnwrapResult(passwordHashResult);
 
   const registrationData: NewUser = {
-    userId: 0,
+    kompassiId: 0,
     username: testUsers ? `group${userNumber}` : faker.internet.userName(),
     passwordHash,
     userGroup: UserGroup.USER,
