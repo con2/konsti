@@ -30,6 +30,7 @@ const SettingsSchema = new mongoose.Schema(
     programUpdateLastRun: { type: Date, default: Date.now },
     assignmentLastRun: { type: Date, default: Date.now },
     latestServerStartTime: { type: Date, default: Date.now },
+    loginProvider: { type: String, default: sharedConfig.defaultLoginProvider },
   },
   { timestamps: true },
 );

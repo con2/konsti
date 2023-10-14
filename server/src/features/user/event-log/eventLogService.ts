@@ -30,6 +30,7 @@ export const storeEventLogItem = async (
 
   return {
     status: "success",
+    message: "Event saved",
     eventLogItems,
   };
 };

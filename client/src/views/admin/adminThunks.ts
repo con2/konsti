@@ -15,9 +15,13 @@ import {
   submitSetSignupStrategyAsync,
   submitGetSignupMessagesAsync,
   submitAssignmentResponseMessageAsync,
+  submitSetLoginProviderAsync,
 } from "client/views/admin/adminSlice";
 import { SignupQuestion } from "shared/typings/models/settings";
-import { SignupStrategy } from "shared/config/sharedConfig.types";
+import {
+  LoginProvider,
+  SignupStrategy,
+} from "shared/config/sharedConfig.types";
 import { getSignupMessages } from "client/services/userServices";
 import { getSentryTest } from "client/views/admin/adminService";
 import { postPlayerAssignment } from "client/services/assignmentServices";
@@ -51,6 +55,7 @@ export const submitGetSettings = (): AppThunk => {
           appOpen: settingsResponse.appOpen,
           signupQuestions: settingsResponse.signupQuestions,
           signupStrategy: settingsResponse.signupStrategy,
+          loginProvider: settingsResponse.loginProvider,
         }),
       );
     }
@@ -157,5 +162,21 @@ export const submitPlayersAssign = (
     dispatch(
       submitAssignmentResponseMessageAsync(assignResponse.resultMessage),
     );
+  };
+};
+
+export const submitSetLoginProvider = (
+  loginProvider: LoginProvider,
+): AppThunk => {
+  return async (dispatch): Promise<void> => {
+    const response = await postSettings({ loginProvider });
+
+    if (response.status === "error") {
+      // TODO
+    }
+
+    if (response.status === "success") {
+      dispatch(submitSetLoginProviderAsync(response.settings.loginProvider));
+    }
   };
 };

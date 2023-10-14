@@ -1,7 +1,11 @@
 import dayjs from "dayjs";
 import { logger } from "server/utils/logger";
 import { SettingsModel } from "server/features/settings/settingsSchema";
-import { Settings, SignupQuestion } from "shared/typings/models/settings";
+import {
+  Settings,
+  SettingsSchema,
+  SignupQuestion,
+} from "shared/typings/models/settings";
 import { Game } from "shared/typings/models/game";
 import { findGames } from "server/features/game/gameRepository";
 import { PostSettingsRequest } from "shared/typings/api/settings";
@@ -72,7 +76,16 @@ export const findSettings = async (): Promise<
       ).toISOString(),
     };
 
-    return makeSuccessResult(settingsWithFormattedDates);
+    const result = SettingsSchema.safeParse(settingsWithFormattedDates);
+    if (!result.success) {
+      logger.error(
+        "%s",
+        new Error(`Error validating findSettings response: ${result.error}`),
+      );
+      return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+    }
+
+    return makeSuccessResult(result.data);
   } catch (error) {
     logger.error("MongoDB: Error finding settings data: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
