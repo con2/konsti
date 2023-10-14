@@ -14,7 +14,6 @@ export type PostCreateGroupRequest = z.infer<
 
 export interface PostCreateGroupResponse extends ApiResult {
   groupCode: string;
-  message: string;
 }
 
 export interface PostCreateGroupError extends ApiError {
@@ -73,7 +72,6 @@ export const GetGroupRequestSchema = z.object({
 export type GetGroupRequest = z.infer<typeof GetGroupRequestSchema>;
 
 export interface GetGroupResponse extends ApiResult {
-  message: string;
   results: GroupMember[];
 }
 

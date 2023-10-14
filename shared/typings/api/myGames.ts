@@ -23,7 +23,6 @@ export type PostSignedGamesRequest = z.infer<
 >;
 
 export interface PostSignedGamesResponse extends ApiResult {
-  message: string;
   signedGames: readonly SelectedGame[];
 }
 
@@ -46,7 +45,6 @@ export type PostEnteredGameRequest = z.infer<
 >;
 
 export interface PostEnteredGameResponse extends ApiResult {
-  message: string;
   enteredGame: SelectedGame;
 }
 
@@ -71,9 +69,7 @@ export type DeleteEnteredGameRequest = z.infer<
   typeof DeleteEnteredGameRequestSchema
 >;
 
-export interface DeleteEnteredGameResponse extends ApiResult {
-  message: string;
-}
+export type DeleteEnteredGameResponse = ApiResult;
 
 export interface DeleteEnteredGameError extends ApiError {
   errorId: "unknown" | "signupEnded";

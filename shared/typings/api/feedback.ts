@@ -10,6 +10,4 @@ export const PostFeedbackRequestSchema = z.object({
 
 export type PostFeedbackRequest = z.infer<typeof PostFeedbackRequestSchema>;
 
-export interface PostFeedbackResponse extends ApiResult {
-  message: string;
-}
+export type PostFeedbackResponse = ApiResult;
