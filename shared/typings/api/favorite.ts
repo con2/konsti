@@ -12,5 +12,4 @@ export type PostFavoriteRequest = z.infer<typeof PostFavoriteRequestSchema>;
 
 export interface PostFavoriteResponse extends ApiResult {
   favoritedGames: readonly Game[];
-  message: string;
 }

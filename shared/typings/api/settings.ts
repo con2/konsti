@@ -19,7 +19,6 @@ export interface PostHiddenRequest {
 
 export interface PostHiddenResponse extends ApiResult {
   hiddenGames: readonly Game[];
-  message: string;
 }
 
 // GET settings
@@ -42,7 +41,6 @@ export interface PostSignupQuestionRequest {
 
 export interface PostSignupQuestionResponse extends ApiResult {
   signupQuestions: readonly SignupQuestion[];
-  message: string;
 }
 
 // DELETE signup question
@@ -61,5 +59,4 @@ export type PostSettingsRequest = z.infer<typeof PostSettingsRequestSchema>;
 
 export interface PostSettingsResponse extends ApiResult {
   settings: Settings;
-  message: string;
 }
