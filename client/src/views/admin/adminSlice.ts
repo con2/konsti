@@ -2,8 +2,11 @@ import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import _ from "lodash";
 import { BackendErrorType } from "client/components/ErrorBar";
 import { AdminState, RootState } from "client/typings/redux.typings";
-import { SubmitGetSettingsPayload } from "client/views/admin/adminTypes";
-import { SignupStrategy } from "shared/config/sharedConfig.types";
+import { SettingsPayload } from "shared/typings/api/settings";
+import {
+  LoginProvider,
+  SignupStrategy,
+} from "shared/config/sharedConfig.types";
 import { Game, ProgramType } from "shared/typings/models/game";
 import { SignupQuestion } from "shared/typings/models/settings";
 import { SignupMessage } from "shared/typings/models/signupMessage";
@@ -31,6 +34,7 @@ const initialState = (): AdminState => {
     errors: [],
     activeProgramType: getInitialActiveProgramType(),
     signupMessages: [],
+    loginProvider: undefined,
   };
 };
 
@@ -42,21 +46,23 @@ const adminSlice = createSlice({
       return { ...state, hiddenGames: action.payload };
     },
 
-    submitGetSettingsAsync(
-      state,
-      action: PayloadAction<SubmitGetSettingsPayload>,
-    ) {
+    submitGetSettingsAsync(state, action: PayloadAction<SettingsPayload>) {
       return {
         ...state,
         hiddenGames: action.payload.hiddenGames,
         appOpen: action.payload.appOpen,
         signupQuestions: action.payload.signupQuestions,
         signupStrategy: action.payload.signupStrategy,
+        loginProvider: action.payload.loginProvider,
       };
     },
 
     submitSetSignupStrategyAsync(state, action: PayloadAction<SignupStrategy>) {
       return { ...state, signupStrategy: action.payload };
+    },
+
+    submitSetLoginProviderAsync(state, action: PayloadAction<LoginProvider>) {
+      return { ...state, loginProvider: action.payload };
     },
 
     submitToggleAppOpenAsync(state, action: PayloadAction<boolean>) {
@@ -105,6 +111,7 @@ export const {
   submitUpdateHiddenAsync,
   submitGetSettingsAsync,
   submitSetSignupStrategyAsync,
+  submitSetLoginProviderAsync,
   submitToggleAppOpenAsync,
   submitAssignmentResponseMessageAsync,
   updateSignupQuestions,

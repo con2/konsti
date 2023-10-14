@@ -15,8 +15,9 @@ import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { Button, ButtonStyle } from "client/components/Button";
 import { SignupQuestionList } from "client/views/admin/components/SignupQuestionList";
 import { Dropdown, Option } from "client/components/Dropdown";
-import { SignupStrategySelector } from "client/test/test-components/SignupStrategySelector";
+import { SignupStrategySelector } from "client/views/admin/components/SignupStrategySelector";
 import { ButtonGroup } from "client/components/ButtonGroup";
+import { LoginProviderSelector } from "client/views/admin/components/LoginProviderSelector";
 
 export const AdminView = (): ReactElement => {
   const games = useAppSelector((state) => state.allGames.games);
@@ -180,6 +181,8 @@ export const AdminView = (): ReactElement => {
       {submitting && <p>{t("loading")}</p>}
 
       <SignupStrategySelector />
+
+      <LoginProviderSelector />
 
       <HiddenGamesList hiddenGames={hiddenGames} />
 

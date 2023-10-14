@@ -432,6 +432,10 @@
     "algorithm": "Algorithm",
     "algorithm+direct": "Algorithm + Direct"
   },
+  "loginProvider": {
+    "local": "Local",
+    "kompassi": "Kompassi"
+  },
   "backendError": {
     "apiError": "Error while calling {{method}} {{url}}, reason: {{errorReason}}",
     "networkError": "Network error, connection to server failed",
@@ -507,6 +511,7 @@
     "sentryTesting": "Sentry testing",
     "sentryClientTest": "Client test",
     "sentryBackendTest": "Backend test",
-    "strategy": "Strategy"
+    "strategy": "Strategy",
+    "loginProvider": "Login provider"
   }
 }

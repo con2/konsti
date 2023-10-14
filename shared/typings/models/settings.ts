@@ -1,5 +1,8 @@
 import { z } from "zod";
-import { SignupStrategy } from "shared/config/sharedConfig.types";
+import {
+  LoginProvider,
+  SignupStrategy,
+} from "shared/config/sharedConfig.types";
 import { GameSchema } from "shared/typings/models/game";
 
 export enum SignupQuestionType {
@@ -35,6 +38,7 @@ export const SettingsSchema = z.object({
   programUpdateLastRun: z.string(),
   assignmentLastRun: z.string(),
   latestServerStartTime: z.string(),
+  loginProvider: z.nativeEnum(LoginProvider),
 });
 
 export type Settings = z.infer<typeof SettingsSchema>;

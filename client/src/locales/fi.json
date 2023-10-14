@@ -432,6 +432,10 @@
     "algorithm": "Algoritmi",
     "algorithm+direct": "Algoritmi + Suora"
   },
+  "loginProvider": {
+    "local": "Lokaali",
+    "kompassi": "Kompassi"
+  },
   "backendError": {
     "apiError": "Virhe kutsuessa {{method}} {{url}}: {{errorReason}}",
     "networkError": "Verkkovirhe, yhteys palvelimeen epäonnistui",
@@ -507,6 +511,7 @@
     "sentryTesting": "Sentryn testaus",
     "sentryClientTest": "Client-testi",
     "sentryBackendTest": "Backend-testi",
-    "strategy": "Strategia"
+    "strategy": "Strategia",
+    "loginProvider": "Kirjautumistapa"
   }
 }
