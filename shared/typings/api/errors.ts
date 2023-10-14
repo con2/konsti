@@ -1,5 +1,6 @@
 export interface ApiResult {
   status: "success";
+  message: string;
 }
 
 export interface ApiError {

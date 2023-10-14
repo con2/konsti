@@ -26,6 +26,7 @@ interface SharedConfig {
   assignmentStrategy: AssignmentStrategy;
   enableGroups: boolean;
   defaultSignupStrategy: SignupStrategy;
+  defaultLoginProvider: LoginProvider;
   CONVENTION_NAME: string;
   CONVENTION_YEAR: string;
   CONVENTION_START_TIME: string;
@@ -49,7 +50,6 @@ interface SharedConfig {
   tournamentSignupQuestion: SignupQuestion;
   tournamentSignupQuestionExcludeIds: string[];
   addRevolvingDoorIds: string[];
-  loginProvider: LoginProvider;
 }
 
 // Convention days
@@ -63,10 +63,10 @@ export const sharedConfig: SharedConfig = {
   assignmentStrategy: AssignmentStrategy.RANDOM_PADG,
   enableGroups: true,
   defaultSignupStrategy: SignupStrategy.ALGORITHM_AND_DIRECT,
+  defaultLoginProvider: LoginProvider.LOCAL,
   manualSignupMode: "none",
   signupOpen: true,
   resultsVisible: true,
-  loginProvider: LoginProvider.LOCAL,
 
   activeProgramTypes: [
     ProgramType.TABLETOP_RPG,

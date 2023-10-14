@@ -5,7 +5,10 @@ import { GroupMember } from "shared/typings/models/groups";
 import { store, combinedReducer } from "client/utils/store";
 import { UserGames, UserGroup } from "shared/typings/models/user";
 import { SignupQuestion } from "shared/typings/models/settings";
-import { SignupStrategy } from "shared/config/sharedConfig.types";
+import {
+  LoginProvider,
+  SignupStrategy,
+} from "shared/config/sharedConfig.types";
 import { BackendErrorType } from "client/components/ErrorBar";
 import { SignupMessage } from "shared/typings/models/signupMessage";
 import { EventLogItem } from "shared/typings/models/eventLog";
@@ -20,6 +23,7 @@ export interface AdminState {
   errors: readonly BackendErrorType[];
   activeProgramType: ProgramType;
   signupMessages: readonly SignupMessage[];
+  loginProvider: LoginProvider | undefined;
 }
 
 export interface UsersForGame {

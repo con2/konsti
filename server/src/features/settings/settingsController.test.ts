@@ -14,7 +14,10 @@ import { faker } from "@faker-js/faker";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { UserGroup } from "shared/typings/models/user";
 import { getJWT } from "server/utils/jwt";
-import { SignupStrategy } from "shared/config/sharedConfig.types";
+import {
+  LoginProvider,
+  SignupStrategy,
+} from "shared/config/sharedConfig.types";
 import {
   Settings,
   SignupQuestion,
@@ -116,6 +119,7 @@ describe(`POST ${ApiEndpoint.SETTINGS}`, () => {
       programUpdateLastRun: "2023-05-07T07:00:00.000Z",
       assignmentLastRun: "2023-05-07T07:00:00.000Z",
       latestServerStartTime: "2023-05-07T07:00:00.000Z",
+      loginProvider: LoginProvider.LOCAL,
     };
 
     const fullUpdateResponse = await request(server)

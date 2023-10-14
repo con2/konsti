@@ -1,5 +1,8 @@
 import { z } from "zod";
-import { SignupStrategy } from "shared/config/sharedConfig.types";
+import {
+  LoginProvider,
+  SignupStrategy,
+} from "shared/config/sharedConfig.types";
 import { Game } from "shared/typings/models/game";
 import {
   Settings,
@@ -21,13 +24,15 @@ export interface PostHiddenResponse extends ApiResult {
 
 // GET settings
 
-export interface GetSettingsResponse extends ApiResult {
-  appOpen: boolean;
+export interface SettingsPayload {
   hiddenGames: readonly Game[];
-  message: string;
+  appOpen: boolean;
   signupQuestions: readonly SignupQuestion[];
   signupStrategy: SignupStrategy;
+  loginProvider: LoginProvider;
 }
+
+export type GetSettingsResponse = SettingsPayload & ApiResult;
 
 // POST signup question
 

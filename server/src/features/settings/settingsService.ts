@@ -39,6 +39,7 @@ export const fetchSettings = async (): Promise<
     appOpen: settings.appOpen,
     signupQuestions: settings.signupQuestions,
     signupStrategy: settings.signupStrategy,
+    loginProvider: settings.loginProvider,
   };
 };
 
