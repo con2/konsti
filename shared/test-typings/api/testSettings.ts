@@ -13,10 +13,8 @@ export type PostTestSettingsRequest = z.infer<
 
 export interface PostTestSettingsResponse extends ApiResult {
   testSettings: TestSettings;
-  message: string;
 }
 
 export interface GetTestSettingsResponse extends ApiResult {
   testSettings: TestSettings;
-  message: string;
 }

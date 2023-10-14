@@ -11,7 +11,6 @@ export const GetResultsRequestSchema = z.object({
 export type GetResultsRequest = z.infer<typeof GetResultsRequestSchema>;
 
 export interface GetResultsResponse extends ApiResult {
-  message: string;
   results: readonly AssignmentResult[];
   startTime: string;
 }

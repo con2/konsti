@@ -4,7 +4,6 @@ import { Game, GameWithUsernames } from "shared/typings/models/game";
 // POST update games
 
 export interface PostUpdateGamesResponse extends ApiResult {
-  message: string;
   games: Game[];
 }
 
@@ -15,7 +14,6 @@ export interface PostUpdateGamesError extends ApiError {
 // GET games
 
 export interface GetGamesResponse extends ApiResult {
-  message: string;
   games: GameWithUsernames[];
 }
 

@@ -13,7 +13,6 @@ export type PostPlayerAssignmentRequest = z.infer<
 >;
 
 export interface PostPlayerAssignmentResponse extends ApiResult {
-  message: string;
   resultMessage: string;
   results: readonly AssignmentResult[];
   startTime: string;

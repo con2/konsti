@@ -15,7 +15,6 @@ import { EventLogItem } from "shared/typings/models/eventLog";
 
 export interface GetUserResponse extends ApiResult {
   games: UserGames;
-  message: string;
   serial: string;
   username: string;
   eventLogItems: EventLogItem[];
@@ -42,7 +41,6 @@ export const PostUserRequestSchema = z.object({
 export type PostUserRequest = z.infer<typeof PostUserRequestSchema>;
 
 export interface PostUserResponse extends ApiResult {
-  message: string;
   password: string;
   username: string;
 }
@@ -75,7 +73,6 @@ export type GetUserBySerialRequest = z.infer<
 >;
 
 export interface GetUserBySerialResponse extends ApiResult {
-  message: string;
   serial: string;
   username: string;
   createdAt: string;
@@ -85,7 +82,6 @@ export interface GetUserBySerialResponse extends ApiResult {
 
 export interface GetSignupMessagesResponse extends ApiResult {
   signupMessages: SignupMessage[];
-  message: string;
 }
 
 export interface GetSignupMessagesError extends ApiError {
