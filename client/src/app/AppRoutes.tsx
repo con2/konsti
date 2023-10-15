@@ -22,11 +22,13 @@ import { EventLog } from "client/views/all-games/components/EventLog";
 import { ProfileView } from "client/views/profile/ProfileView";
 import { InstructionsView } from "client/views/about/InstructionsView";
 import { KompassiLoginCallback } from "client/components/KompassiLoginCallback";
+import { LoginProvider } from "shared/config/sharedConfig.types";
 
 export const AppRoutes = (): ReactElement => {
   const { t } = useTranslation();
 
   const appOpen = useAppSelector((state) => state.admin.appOpen);
+  const loginProvider = useAppSelector((state) => state.admin.loginProvider);
   const loggedIn = useAppSelector((state) => state.login.loggedIn);
   const userGroup = useAppSelector((state) => state.login.userGroup);
 
@@ -100,6 +102,7 @@ export const AppRoutes = (): ReactElement => {
             <Route path="/profile" element={<ProfileView />} />
           </>
         )}
+        {!loggedIn && <Route path="/login" element={<LoginView />} />}
         {!loggedIn && <Route path="/admin/login" element={<LoginView />} />}
         <Route path="/logout" element={<LogoutView />} />
         <Route path="/about/*" element={<Tabs tabContents={aboutTabs} />} />
@@ -157,7 +160,9 @@ export const AppRoutes = (): ReactElement => {
     <Routes>
       <Route path="/login" element={<LoginView />} />
       <Route path="/admin/login" element={<LoginView />} />
-      <Route path="/registration" element={<RegistrationView />} />
+      {loginProvider === LoginProvider.LOCAL && (
+        <Route path="/registration" element={<RegistrationView />} />
+      )}
       <Route path="/games/:gameId" element={<GameDetails />} />
       <Route
         path="/program"

@@ -3,12 +3,14 @@ import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 import { useAppSelector } from "client/utils/hooks";
+import { LoginProvider } from "shared/config/sharedConfig.types";
 
 export const UserNavigation = (props: {
   onSelect: () => void;
 }): ReactElement => {
   const { t } = useTranslation();
   const appOpen = useAppSelector((state) => state.admin.appOpen);
+  const loginProvider = useAppSelector((state) => state.admin.loginProvider);
 
   return (
     <StyledRoutes>
@@ -20,17 +22,15 @@ export const UserNavigation = (props: {
         {t("pages.program")}
       </RouterLink>
 
-      {appOpen && (
-        <RouterLink
-          onClick={props.onSelect}
-          to="/login"
-          data-testid="login-page-link"
-        >
-          {t("button.login")}
-        </RouterLink>
-      )}
+      <RouterLink
+        onClick={props.onSelect}
+        to="/login"
+        data-testid="login-page-link"
+      >
+        {t("button.login")}
+      </RouterLink>
 
-      {appOpen && (
+      {appOpen && loginProvider === LoginProvider.LOCAL && (
         <RouterLink
           onClick={props.onSelect}
           to="/registration"
