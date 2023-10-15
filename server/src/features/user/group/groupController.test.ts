@@ -15,7 +15,6 @@ import dayjs from "dayjs";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
   PostCloseGroupRequest,
-  PostCreateGroupRequest,
   PostJoinGroupRequest,
 } from "shared/typings/api/groups";
 import { UserGroup } from "shared/typings/models/user";
@@ -118,13 +117,9 @@ describe(`POST ${ApiEndpoint.GROUP}`, () => {
     const user = unsafelyUnwrapResult(userResult);
     expect(user.groupCode).toEqual("0");
 
-    const groupRequest: PostCreateGroupRequest = {
-      groupCode: mockUser.serial,
-    };
-
     const response = await request(server)
       .post(ApiEndpoint.GROUP)
-      .send(groupRequest)
+      .send({})
       .set(
         "Authorization",
         `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
@@ -166,7 +161,6 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
 
     const groupRequest: PostJoinGroupRequest = {
       groupCode: mockUser.serial,
-      ownSerial: mockUser2.serial,
     };
 
     const response = await request(server)
@@ -199,7 +193,6 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
 
     const groupRequest: PostJoinGroupRequest = {
       groupCode: mockUser.serial,
-      ownSerial: mockUser2.serial,
     };
 
     const response = await request(server)

@@ -31,40 +31,39 @@ export const findGroupMembers = async (
   }
 };
 
-export const findGroup = async (
+export const checkGroupExists = async (
   groupCode: string,
+): Promise<Result<boolean, MongoDbError>> => {
+  try {
+    const response = await UserModel.exists({ groupCreatorCode: groupCode });
+    return makeSuccessResult(!!response);
+  } catch (error) {
+    logger.error(
+      `MongoDB: Error checking if group ${groupCode} exists: %s`,
+      error,
+    );
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+  }
+};
+
+export const saveGroupCreatorCode = async (
+  groupCreatorCode: string,
   username: string,
 ): Promise<Result<User | null, MongoDbError>> => {
-  if (username) {
-    try {
-      const response = await UserModel.findOne({
-        groupCode,
-        username,
-      }).lean<User>();
-      if (!response) {
-        logger.info(
-          `MongoDB: Group ${groupCode} with creator ${username} not found`,
-        );
-        return makeSuccessResult(null);
-      }
-      logger.info(`MongoDB: Group ${groupCode} with creator ${username} found`);
-      return makeSuccessResult(response);
-    } catch (error) {
-      logger.error(`MongoDB: Error finding group ${groupCode}: %s`, error);
-      return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
-    }
-  }
-
   try {
-    const response = await UserModel.findOne({ groupCode }).lean<User>();
-    if (!response) {
-      logger.info(`MongoDB: Group ${groupCode} not found`);
-      return makeSuccessResult(null);
-    }
-    logger.info(`MongoDB: Group ${groupCode} found`);
+    const response = await UserModel.findOneAndUpdate(
+      { username },
+      { groupCode: groupCreatorCode, groupCreatorCode },
+      { new: true, fields: "-groupCode -groupCreatorCode" },
+    ).lean<User>();
+    logger.info(
+      `MongoDB: Saved group creator code ${groupCreatorCode} for user ${username}`,
+    );
     return makeSuccessResult(response);
   } catch (error) {
-    logger.error(`MongoDB: Error finding group ${groupCode}: %s`, error);
+    logger.error(
+      `MongoDB: Error saving group creator code ${groupCreatorCode} for user ${username}`,
+    );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };

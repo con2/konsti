@@ -13,6 +13,7 @@ const user: User = {
   userGroup: UserGroup.USER,
   serial: "123",
   groupCode: "123",
+  groupCreatorCode: "0",
   favoritedGames: [],
   signedGames: [
     {
@@ -34,6 +35,7 @@ const user2: User = {
   userGroup: UserGroup.USER,
   serial: "456",
   groupCode: "123",
+  groupCreatorCode: "0",
   favoritedGames: [],
   signedGames: [],
   createdAt: "2019-11-23T12:00:00+02:00",
@@ -48,6 +50,7 @@ const user3: User = {
   userGroup: UserGroup.USER,
   serial: "789",
   groupCode: "123",
+  groupCreatorCode: "0",
   favoritedGames: [],
   signedGames: [],
   createdAt: "2019-11-23T12:00:00+02:00",
