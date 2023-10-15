@@ -25,6 +25,10 @@ export enum KompassiError {
   INVALID_RESPONSE = "invalidResponse",
 }
 
+export enum KompassiLoginError {
+  UNKNOWN_ERROR = "unknownError",
+}
+
 export enum AssignmentError {
   UNKNOWN_ERROR = "unknownError",
 }
