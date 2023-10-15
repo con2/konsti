@@ -14,7 +14,7 @@ export const LoginView = (): ReactElement => {
   const loggedIn = useAppSelector((state) => state.login.loggedIn);
   const loginProvider = useAppSelector((state) => state.admin.loginProvider);
 
-  const adminLogin = location.pathname === "/admin-login";
+  const adminLogin = location.pathname === "/admin/login";
 
   useEffect(() => {
     if (loggedIn) {

@@ -12,23 +12,23 @@ export const UserNavigation = (props: {
 
   return (
     <StyledRoutes>
+      <RouterLink
+        onClick={props.onSelect}
+        to="/program/list"
+        data-testid="program-list-page-link"
+      >
+        {t("pages.program")}
+      </RouterLink>
+
       {appOpen && (
         <RouterLink
           onClick={props.onSelect}
-          to="/program/list"
-          data-testid="program-list-page-link"
+          to="/login"
+          data-testid="login-page-link"
         >
-          {t("pages.program")}
+          {t("button.login")}
         </RouterLink>
       )}
-
-      <RouterLink
-        onClick={props.onSelect}
-        to="/login"
-        data-testid="login-page-link"
-      >
-        {t("button.login")}
-      </RouterLink>
 
       {appOpen && (
         <RouterLink

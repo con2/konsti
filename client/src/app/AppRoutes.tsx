@@ -100,8 +100,7 @@ export const AppRoutes = (): ReactElement => {
             <Route path="/profile" element={<ProfileView />} />
           </>
         )}
-        {!loggedIn && <Route path="/login" element={<LoginView />} />}
-        {!loggedIn && <Route path="/admin-login" element={<LoginView />} />}
+        {!loggedIn && <Route path="/admin/login" element={<LoginView />} />}
         <Route path="/logout" element={<LogoutView />} />
         <Route path="/about/*" element={<Tabs tabContents={aboutTabs} />} />
         <Route path="/" element={<div />} />
@@ -139,7 +138,7 @@ export const AppRoutes = (): ReactElement => {
         <Route path="/logout" element={<LogoutView />} />
         {/* Login path is required for after login redirect to work */}
         <Route path="/login" element={<LoginView />} />
-        <Route path="/admin-login" element={<LoginView />} />
+        <Route path="/admin/login" element={<LoginView />} />
         {isAdminOrHelp(userGroup) && (
           <Route path="/help" element={<HelperView />} />
         )}
@@ -157,7 +156,7 @@ export const AppRoutes = (): ReactElement => {
   return (
     <Routes>
       <Route path="/login" element={<LoginView />} />
-      <Route path="/admin-login" element={<LoginView />} />
+      <Route path="/admin/login" element={<LoginView />} />
       <Route path="/registration" element={<RegistrationView />} />
       <Route path="/games/:gameId" element={<GameDetails />} />
       <Route
