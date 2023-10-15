@@ -22,11 +22,13 @@ import { EventLog } from "client/views/all-games/components/EventLog";
 import { ProfileView } from "client/views/profile/ProfileView";
 import { InstructionsView } from "client/views/about/InstructionsView";
 import { KompassiLoginCallback } from "client/components/KompassiLoginCallback";
+import { LoginProvider } from "shared/config/sharedConfig.types";
 
 export const AppRoutes = (): ReactElement => {
   const { t } = useTranslation();
 
   const appOpen = useAppSelector((state) => state.admin.appOpen);
+  const loginProvider = useAppSelector((state) => state.admin.loginProvider);
   const loggedIn = useAppSelector((state) => state.login.loggedIn);
   const userGroup = useAppSelector((state) => state.login.userGroup);
 
@@ -101,6 +103,7 @@ export const AppRoutes = (): ReactElement => {
           </>
         )}
         {!loggedIn && <Route path="/login" element={<LoginView />} />}
+        {!loggedIn && <Route path="/admin/login" element={<LoginView />} />}
         <Route path="/logout" element={<LogoutView />} />
         <Route path="/about/*" element={<Tabs tabContents={aboutTabs} />} />
         <Route path="/" element={<div />} />
@@ -138,6 +141,7 @@ export const AppRoutes = (): ReactElement => {
         <Route path="/logout" element={<LogoutView />} />
         {/* Login path is required for after login redirect to work */}
         <Route path="/login" element={<LoginView />} />
+        <Route path="/admin/login" element={<LoginView />} />
         {isAdminOrHelp(userGroup) && (
           <Route path="/help" element={<HelperView />} />
         )}
@@ -155,7 +159,10 @@ export const AppRoutes = (): ReactElement => {
   return (
     <Routes>
       <Route path="/login" element={<LoginView />} />
-      <Route path="/registration" element={<RegistrationView />} />
+      <Route path="/admin/login" element={<LoginView />} />
+      {loginProvider === LoginProvider.LOCAL && (
+        <Route path="/registration" element={<RegistrationView />} />
+      )}
       <Route path="/games/:gameId" element={<GameDetails />} />
       <Route
         path="/program"

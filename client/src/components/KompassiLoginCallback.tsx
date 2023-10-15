@@ -10,6 +10,7 @@ export const KompassiLoginCallback = (): ReactElement => {
   const [searchParams] = useSearchParams();
 
   const code = searchParams.get("code");
+  const error = searchParams.get("error");
 
   useEffect(() => {
     const fetchData = async (): Promise<void> => {
@@ -19,11 +20,15 @@ export const KompassiLoginCallback = (): ReactElement => {
           navigate(`/login?error=${errorMessage}`);
           return;
         }
-        navigate(`/`);
       }
+      if (error) {
+        navigate(`/login`);
+        return;
+      }
+      navigate(`/`);
     };
     fetchData();
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [code, error, dispatch, navigate]);
 
   return <div />;
 };

@@ -482,7 +482,9 @@
   "loginView": {
     "oldAccountsNotWorking": "Huomaathan, että aikaisempien tapahtumien käyttäjätilit eivät ole käytössä.",
     "noAccountRegister": "Ei käyttäjätiliä? Luo käyttäjätili täällä.",
-    "kompassiLogin": "Kirjaudu Kompassi-tunnuksella"
+    "kompassiLogin": "Kirjaudu Kompassi-tunnuksella",
+    "createKompassiAccountHint": "Konstiin kirjautuminen ei ole vielä avoinna, mutta voit jo luoda Kompassi-tunnuksen, jonka avulla Konstiin kirjaudutaan.",
+    "createKompassiAccount": "Luo Kompassi-tunnus"
   },
   "registrationView": {
     "nickVisibleHintText": "Valitsemasi käyttäjänimi näkyy kaikille käyttäjille.",
