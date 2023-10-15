@@ -1,8 +1,8 @@
 import express from "express";
 import {
-  doLogin,
-  sendKompassiLoginRedirect,
-} from "server/features/auth/kompassiLogin";
+  postKompassiLoginCallback,
+  getKompassiLoginRedirect,
+} from "server/features/kompassiLogin/kompassiLoginController";
 import { postFeedback } from "server/features/feedback/feedbackController";
 import {
   getGames,
@@ -109,7 +109,7 @@ if (process.env.SETTINGS !== "production") {
 }
 
 // TODO: Disable login endpoints if provider not set
-apiRoutes.get(AuthEndpoint.KOMPASSI_LOGIN, sendKompassiLoginRedirect);
-apiRoutes.post(AuthEndpoint.KOMPASSI_CALLBACK, doLogin);
+apiRoutes.get(AuthEndpoint.KOMPASSI_LOGIN, getKompassiLoginRedirect);
+apiRoutes.post(AuthEndpoint.KOMPASSI_CALLBACK, postKompassiLoginCallback);
 
 /* eslint-enable @typescript-eslint/no-misused-promises */

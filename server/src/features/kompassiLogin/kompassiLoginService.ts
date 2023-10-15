@@ -1,27 +1,22 @@
-import { Request, Response } from "express";
-import { z } from "zod";
 import axios from "axios";
-import { AuthEndpoint } from "shared/constants/apiEndpoints";
-import { logger } from "server/utils/logger";
-import {
-  PostKompassiLoginError,
-  PostKompassiLoginResponse,
-} from "shared/typings/api/login";
-import { UserGroup } from "shared/typings/models/user";
 import {
   findUserByKompassiId,
   saveUser,
 } from "server/features/user/userRepository";
-import { isErrorResult, unwrapResult } from "shared/utils/result";
-import { getJWT } from "server/utils/jwt";
 import { createSerial } from "server/features/user/userUtils";
+import { getJWT } from "server/utils/jwt";
+import { AuthEndpoint } from "shared/constants/apiEndpoints";
+import {
+  PostKompassiLoginResponse,
+  PostKompassiLoginError,
+} from "shared/typings/api/login";
+import { UserGroup } from "shared/typings/models/user";
+import { isErrorResult, unwrapResult } from "shared/utils/result";
 
 const baseUrl = process.env.KOMPASSI_BASE_URL ?? "https://kompassi.eu";
 const clientId = process.env.KOMPASSI_CLIENT_ID ?? "";
 const clientSecret = process.env.KOMPASSI_CLIENT_SECRET ?? "";
-
 const accessGroups = ["users"];
-const adminGroups = ["admin"];
 
 interface Profile {
   id: number;
@@ -33,16 +28,15 @@ interface Profile {
   username: string;
 }
 
-const getProfile = async (accessToken: string): Promise<Profile> => {
+export const getProfile = async (accessToken: string): Promise<Profile> => {
   const url = `${baseUrl}/api/v2/people/me`;
-
   const headers = { authorization: `Bearer ${accessToken}` };
 
   const response = await axios.get(url, { headers });
   return response.data;
 };
 
-const getAuthUrl = (origin: string): string => {
+export const getAuthUrl = (origin: string): string => {
   const params = new URLSearchParams({
     response_type: "code",
     client_id: clientId,
@@ -53,25 +47,15 @@ const getAuthUrl = (origin: string): string => {
   return `${baseUrl}/oauth2/authorize?${params.toString()}`;
 };
 
-export const sendKompassiLoginRedirect = (
-  req: Request<{}, {}, {}>,
-  res: Response,
-): Response => {
-  if (!req.headers.origin) {
-    return res.sendStatus(422);
-  }
-
-  return res.status(302).json({
-    location: getAuthUrl(req.headers.origin),
-  });
-};
-
 interface Token {
   access_token: string;
   refresh_token: string;
 }
 
-const getToken = async (code: string, origin: string): Promise<Token> => {
+export const getToken = async (
+  code: string,
+  origin: string,
+): Promise<Token> => {
   const params = new URLSearchParams({
     code,
     grant_type: "authorization_code",
@@ -90,39 +74,11 @@ const getToken = async (code: string, origin: string): Promise<Token> => {
   return response.data;
 };
 
-const PostSentryTunnelRequestSchema = z.object({ code: z.string() });
-
-export const doLogin = async (
-  req: Request<{}, {}, string>,
-  res: Response,
-): Promise<Response> => {
-  if (!req.headers.origin) {
-    return res.sendStatus(422);
-  }
-
-  const result = PostSentryTunnelRequestSchema.safeParse(req.body);
-  if (!result.success) {
-    logger.error(
-      "%s",
-      new Error(`Error validating doLogin query: ${result.error}`),
-    );
-    return res.sendStatus(422);
-  }
-  const { code } = result.data;
-
-  const tokens = await getToken(code, req.headers.origin);
-  const profile = await getProfile(tokens.access_token);
-
-  const response = await parseProfile(profile);
-  return res.json(response);
-};
-
-const parseProfile = async (
+export const parseProfile = async (
   profile: Profile,
 ): Promise<PostKompassiLoginResponse | PostKompassiLoginError> => {
-  const groupNames = profile.groups.filter(
-    (groupName) =>
-      accessGroups.includes(groupName) || adminGroups.includes(groupName),
+  const groupNames = profile.groups.filter((groupName) =>
+    accessGroups.includes(groupName),
   );
 
   if (groupNames.length === 0) {
@@ -132,10 +88,6 @@ const parseProfile = async (
       errorId: "invalidUserGroup",
     };
   }
-
-  const isAdmin = groupNames.some((groupName) =>
-    adminGroups.includes(groupName),
-  );
 
   const existingUserResult = await findUserByKompassiId(profile.id);
   if (isErrorResult(existingUserResult)) {
@@ -177,7 +129,7 @@ const parseProfile = async (
     username: profile.username,
     serial,
     passwordHash: "",
-    userGroup: isAdmin ? UserGroup.ADMIN : UserGroup.USER,
+    userGroup: UserGroup.USER,
     groupCode: "0",
   });
 
