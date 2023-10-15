@@ -5,16 +5,24 @@ import {
 } from "server/features/user/userRepository";
 import { createSerial } from "server/features/user/userUtils";
 import { getJWT } from "server/utils/jwt";
+import { logger } from "server/utils/logger";
 import { AuthEndpoint } from "shared/constants/apiEndpoints";
+import { KompassiLoginError } from "shared/typings/api/errors";
 import {
   PostKompassiLoginResponse,
   PostKompassiLoginError,
 } from "shared/typings/api/login";
 import { UserGroup } from "shared/typings/models/user";
-import { isErrorResult, unwrapResult } from "shared/utils/result";
+import {
+  Result,
+  isErrorResult,
+  makeErrorResult,
+  makeSuccessResult,
+  unwrapResult,
+} from "shared/utils/result";
 
-const baseUrl = process.env.KOMPASSI_BASE_URL ?? "https://kompassi.eu";
-const clientId = process.env.KOMPASSI_CLIENT_ID ?? "";
+export const baseUrl = process.env.KOMPASSI_BASE_URL ?? "https://kompassi.eu";
+export const clientId = process.env.KOMPASSI_CLIENT_ID ?? "";
 const clientSecret = process.env.KOMPASSI_CLIENT_SECRET ?? "";
 const accessGroups = ["users"];
 
@@ -28,34 +36,33 @@ interface Profile {
   username: string;
 }
 
-export const getProfile = async (accessToken: string): Promise<Profile> => {
+const getProfile = async (
+  accessToken: string,
+): Promise<Result<Profile, KompassiLoginError>> => {
   const url = `${baseUrl}/api/v2/people/me`;
   const headers = { authorization: `Bearer ${accessToken}` };
 
-  const response = await axios.get(url, { headers });
-  return response.data;
+  try {
+    const response = await axios.get(url, { headers });
+    return makeSuccessResult(response.data);
+  } catch (error) {
+    logger.error(
+      "Kompassi login: Error fetching profile from Kompassi: %s",
+      error,
+    );
+    return makeErrorResult(KompassiLoginError.UNKNOWN_ERROR);
+  }
 };
 
-export const getAuthUrl = (origin: string): string => {
-  const params = new URLSearchParams({
-    response_type: "code",
-    client_id: clientId,
-    redirect_uri: `${origin}${AuthEndpoint.KOMPASSI_CALLBACK}`,
-    scope: "read",
-  });
-
-  return `${baseUrl}/oauth2/authorize?${params.toString()}`;
-};
-
-interface Token {
+interface Tokens {
   access_token: string;
   refresh_token: string;
 }
 
-export const getToken = async (
+const getTokens = async (
   code: string,
   origin: string,
-): Promise<Token> => {
+): Promise<Result<Tokens, KompassiLoginError>> => {
   const params = new URLSearchParams({
     code,
     grant_type: "authorization_code",
@@ -70,13 +77,42 @@ export const getToken = async (
     "content-type": "application/x-www-form-urlencoded",
   };
 
-  const response = await axios.post(url, body, { headers });
-  return response.data;
+  try {
+    const response = await axios.post(url, body, { headers });
+    return makeSuccessResult(response.data);
+  } catch (error) {
+    logger.error(
+      "Kompassi login: Error fetching token from Kompassi: %s",
+      error,
+    );
+    return makeErrorResult(KompassiLoginError.UNKNOWN_ERROR);
+  }
 };
 
-export const parseProfile = async (
-  profile: Profile,
+export const doKompassiLogin = async (
+  code: string,
+  origin: string,
 ): Promise<PostKompassiLoginResponse | PostKompassiLoginError> => {
+  const tokensResult = await getTokens(code, origin);
+  if (isErrorResult(tokensResult)) {
+    return {
+      message: "Error getting tokens from Komapssi",
+      status: "error",
+      errorId: "unknown",
+    };
+  }
+  const tokens = unwrapResult(tokensResult);
+
+  const profileResult = await getProfile(tokens.access_token);
+  if (isErrorResult(profileResult)) {
+    return {
+      message: "Error getting user profile from Komapssi",
+      status: "error",
+      errorId: "unknown",
+    };
+  }
+  const profile = unwrapResult(profileResult);
+
   const groupNames = profile.groups.filter((groupName) =>
     accessGroups.includes(groupName),
   );
@@ -97,7 +133,6 @@ export const parseProfile = async (
       errorId: "loginFailed",
     };
   }
-
   const existingUser = unwrapResult(existingUserResult);
 
   if (existingUser) {
@@ -132,7 +167,6 @@ export const parseProfile = async (
     userGroup: UserGroup.USER,
     groupCode: "0",
   });
-
   if (isErrorResult(saveUserResult)) {
     return {
       message: "Saving user failed",
@@ -140,7 +174,6 @@ export const parseProfile = async (
       errorId: "loginFailed",
     };
   }
-
   const saveUserResponse = unwrapResult(saveUserResult);
 
   return {

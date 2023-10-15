@@ -1,13 +1,9 @@
 import { Request, Response } from "express";
 import { logger } from "server/utils/logger";
-import {
-  getAuthUrl,
-  getProfile,
-  getToken,
-  parseProfile,
-} from "server/features/kompassiLogin/kompassiLoginService";
+import { doKompassiLogin } from "server/features/kompassiLogin/kompassiLoginService";
 import { AuthEndpoint } from "shared/constants/apiEndpoints";
 import { PostKompassiLoginRequestSchema } from "shared/typings/api/login";
+import { getAuthUrl } from "server/features/kompassiLogin/kompassiLoginUtils";
 
 export const getKompassiLoginRedirect = (
   req: Request<{}, {}, {}>,
@@ -44,9 +40,6 @@ export const postKompassiLoginCallback = async (
   }
   const { code } = result.data;
 
-  const tokens = await getToken(code, req.headers.origin);
-  const profile = await getProfile(tokens.access_token);
-
-  const response = await parseProfile(profile);
+  const response = await doKompassiLogin(code, req.headers.origin);
   return res.json(response);
 };
