@@ -35,9 +35,11 @@ export type PostSessionRecoveryResponse = PostLoginResponse;
 
 // POST Kompassi login
 
-export interface PostKompassiLoginRequest {
-  code: string;
-}
+export const PostKompassiLoginRequestSchema = z.object({ code: z.string() });
+
+export type PostKompassiLoginRequest = z.infer<
+  typeof PostKompassiLoginRequestSchema
+>;
 
 export type PostKompassiLoginResponse = PostLoginResponse;
 
