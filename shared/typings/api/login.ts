@@ -7,7 +7,7 @@ import { EventLogItem } from "shared/typings/models/eventLog";
 
 export const PostLoginRequestSchema = z.object({
   username: z.string(),
-  password: z.string(),
+  password: z.string().min(1),
 });
 
 export type PostLoginRequest = z.infer<typeof PostLoginRequestSchema>;
