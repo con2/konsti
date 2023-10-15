@@ -482,7 +482,9 @@
   "loginView": {
     "oldAccountsNotWorking": "Please note that accounts from older events are not in use anymore.",
     "noAccountRegister": "No account? Create one here.",
-    "kompassiLogin": "Login with Kompassi"
+    "kompassiLogin": "Login with Kompassi",
+    "createKompassiAccountHint": "Konsti login is not open yet but you can already create Kompassi account which is required for Konsti login.",
+    "createKompassiAccount": "Create Kompassi account"
   },
   "registrationView": {
     "nickVisibleHintText": "Your usename will be visible to all other users.",
