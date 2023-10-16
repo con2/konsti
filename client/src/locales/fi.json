@@ -30,7 +30,8 @@
     "save": "Tallenna",
     "addSignupQuestion": "Lisää ilmoittautumiskysymys",
     "removeSignupQuestion": "Poista ilmoittautumiskysymys",
-    "close": "Sulje"
+    "close": "Sulje",
+    "saveInformation": "Tallenna tiedot"
   },
   "username": "Käyttäjänimi",
   "password": "Salasana",
@@ -484,10 +485,11 @@
     "noAccountRegister": "Ei käyttäjätiliä? Luo käyttäjätili täällä.",
     "kompassiLogin": "Kirjaudu Kompassi-tunnuksella",
     "createKompassiAccountHint": "Konstiin kirjautuminen ei ole vielä avoinna, mutta voit jo luoda Kompassi-tunnuksen, jonka avulla Konstiin kirjaudutaan.",
-    "createKompassiAccount": "Luo Kompassi-tunnus"
+    "createKompassiAccount": "Luo Kompassi-tunnus",
+    "chooseKonstiUsername": "Valitse Konsti-käyttäjänimi"
   },
   "registrationView": {
-    "nickVisibleHintText": "Valitsemasi käyttäjänimi näkyy kaikille käyttäjille.",
+    "nickVisibleHintText": "Valitsemasi käyttäjänimi näkyy muille Konstin käyttäjille.",
     "alreadyHaveAccountLogin": "Onko sinulla jo tili? Kirjaudu sisään tästä."
   },
   "iconAltText": {

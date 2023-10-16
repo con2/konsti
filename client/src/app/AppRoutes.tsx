@@ -23,6 +23,7 @@ import { ProfileView } from "client/views/profile/ProfileView";
 import { InstructionsView } from "client/views/about/InstructionsView";
 import { KompassiLoginCallback } from "client/components/KompassiLoginCallback";
 import { LoginProvider } from "shared/config/sharedConfig.types";
+import { KompassiLoginUsernameForm } from "client/views/login/components/KompassiLoginUsernameForm";
 
 export const AppRoutes = (): ReactElement => {
   const { t } = useTranslation();
@@ -31,6 +32,10 @@ export const AppRoutes = (): ReactElement => {
   const loginProvider = useAppSelector((state) => state.admin.loginProvider);
   const loggedIn = useAppSelector((state) => state.login.loggedIn);
   const userGroup = useAppSelector((state) => state.login.userGroup);
+  const kompassiId = useAppSelector((state) => state.login.kompassiId);
+  const kompassiUsernameAccepted = useAppSelector(
+    (state) => state.login.kompassiUsernameAccepted,
+  );
 
   const programTabs = [
     {
@@ -113,6 +118,15 @@ export const AppRoutes = (): ReactElement => {
   }
 
   if (loggedIn) {
+    if (kompassiId !== 0 && !kompassiUsernameAccepted) {
+      return (
+        <Routes>
+          <Route path="/logout" element={<LogoutView />} />
+          <Route path="/*" element={<KompassiLoginUsernameForm />} />
+        </Routes>
+      );
+    }
+
     return (
       <Routes>
         <Route path="/games/:gameId" element={<GameDetails />} />

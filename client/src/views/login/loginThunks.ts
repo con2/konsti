@@ -1,5 +1,6 @@
 import {
   postKompassiLoginCallback,
+  postVerifyKompassiLogin,
   postLogin,
   postSessionRecovery,
 } from "client/services/loginServices";
@@ -14,6 +15,7 @@ import {
 import {
   submitLoginAsync,
   submitUpdateEventLogItemsAsync,
+  submitVerifyKompassiLoginAsync,
 } from "client/views/login/loginSlice";
 import { loadGroupMembers, loadUser } from "client/utils/loadData";
 import { submitUpdateGroupCodeAsync } from "client/views/group/groupSlice";
@@ -70,6 +72,8 @@ export const submitLogin = (
           userGroup: loginResponse.userGroup,
           serial: loginResponse.serial,
           eventLogItems: loginResponse.eventLogItems,
+          kompassiUsernameAccepted: loginResponse.kompassiUsernameAccepted,
+          kompassiId: loginResponse.kompassiId,
         }),
       );
 
@@ -123,6 +127,8 @@ export const submitSessionRecovery = (jwt: string): AppThunk => {
           userGroup: loginResponse.userGroup,
           serial: loginResponse.serial,
           eventLogItems: loginResponse.eventLogItems,
+          kompassiUsernameAccepted: loginResponse.kompassiUsernameAccepted,
+          kompassiId: loginResponse.kompassiId,
         }),
       );
 
@@ -190,6 +196,8 @@ export const submitKompassiLogin = (
           userGroup: loginResponse.userGroup,
           serial: loginResponse.serial,
           eventLogItems: loginResponse.eventLogItems,
+          kompassiUsernameAccepted: loginResponse.kompassiUsernameAccepted,
+          kompassiId: loginResponse.kompassiId,
         }),
       );
 
@@ -197,6 +205,33 @@ export const submitKompassiLogin = (
 
       await loadUser();
       await loadGroupMembers();
+    }
+  };
+};
+
+export const submitVerifyKompassiLogin = (
+  username: string,
+  kompassiId: number,
+): AppThunk<Promise<LoginErrorMessage | undefined>> => {
+  return async (dispatch): Promise<LoginErrorMessage | undefined> => {
+    const response = await postVerifyKompassiLogin(username, kompassiId);
+
+    if (response.status === "error") {
+      switch (response.errorId) {
+        case "unknown":
+          return LoginErrorMessage.UNKNOWN;
+        default:
+          exhaustiveSwitchGuard(response.errorId);
+      }
+    }
+
+    if (response.status === "success") {
+      dispatch(
+        submitVerifyKompassiLoginAsync({
+          username: response.username,
+          kompassiUsernameAccepted: response.kompassiUsernameAccepted,
+        }),
+      );
     }
   };
 };

@@ -27,6 +27,7 @@ export const saveUser = async (
 ): Promise<Result<User, MongoDbError>> => {
   const newUser: Omit<User, "createdAt"> = {
     kompassiId: newUserData.kompassiId,
+    kompassiUsernameAccepted: false,
     username: newUserData.username,
     password: newUserData.passwordHash,
     userGroup: newUserData.userGroup ? newUserData.userGroup : UserGroup.USER,
@@ -223,6 +224,43 @@ export const findUsers = async (
     return makeSuccessResult(users);
   } catch (error) {
     logger.error("MongoDB: Error fetching users: %s", error);
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+  }
+};
+
+export const updateUserKompassiLoginStatus = async (
+  username: string,
+  kompassiId: number,
+): Promise<Result<User, MongoDbError>> => {
+  try {
+    const response = await UserModel.findOneAndUpdate(
+      { kompassiId },
+      {
+        username,
+        kompassiUsernameAccepted: true,
+      },
+      { new: true, fields: "-_id -__v -createdAt -updatedAt" },
+    )
+      .lean<User>()
+      .populate("favoritedGames")
+      .populate("signedGames.gameDetails");
+    logger.debug(`MongoDB: Password for user ${username} updated`);
+
+    if (!response) {
+      logger.error(
+        "%s",
+        new Error(
+          `MongoDB: Error updating Kompassi login status for user ${username}, user not found`,
+        ),
+      );
+      return makeErrorResult(MongoDbError.USER_NOT_FOUND);
+    }
+    return makeSuccessResult(response);
+  } catch (error) {
+    logger.error(
+      `MongoDB: Error updating Kompassi login status for user ${username}: %s`,
+      error,
+    );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };

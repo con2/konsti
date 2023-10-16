@@ -30,7 +30,8 @@
     "save": "Save",
     "addSignupQuestion": "Add sign-up question",
     "removeSignupQuestion": "Delete sign-up question",
-    "close": "Close"
+    "close": "Close",
+    "saveInformation": "Save information"
   },
   "username": "Username",
   "password": "Password",
@@ -484,10 +485,11 @@
     "noAccountRegister": "No account? Create one here.",
     "kompassiLogin": "Login with Kompassi",
     "createKompassiAccountHint": "Konsti login is not open yet but you can already create Kompassi account which is required for Konsti login.",
-    "createKompassiAccount": "Create Kompassi account"
+    "createKompassiAccount": "Create Kompassi account",
+    "chooseKonstiUsername": "Choose Konsti username"
   },
   "registrationView": {
-    "nickVisibleHintText": "Your usename will be visible to all other users.",
+    "nickVisibleHintText": "Your usename will be visible to other Konsti users.",
     "alreadyHaveAccountLogin": "Do you already have an account? Log in here."
   },
   "iconAltText": {

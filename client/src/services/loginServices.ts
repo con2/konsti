@@ -10,6 +10,9 @@ import {
   PostLoginResponse,
   PostSessionRecoveryRequest,
   PostSessionRecoveryResponse,
+  PostVerifyKompassiLoginError,
+  PostVerifyKompassiLoginRequest,
+  PostVerifyKompassiLoginResponse,
 } from "shared/typings/api/login";
 
 export const postLogin = async (
@@ -51,6 +54,20 @@ export const postKompassiLoginCallback = async (
     PostKompassiLoginRequest
   >(AuthEndpoint.KOMPASSI_CALLBACK, {
     code,
+  });
+  return response.data;
+};
+
+export const postVerifyKompassiLogin = async (
+  username: string,
+  kompassiId: number,
+): Promise<PostVerifyKompassiLoginResponse | PostVerifyKompassiLoginError> => {
+  const response = await api.post<
+    PostVerifyKompassiLoginResponse,
+    PostVerifyKompassiLoginRequest
+  >(ApiEndpoint.VERIFY_KOMPASSI_LOGIN, {
+    username,
+    kompassiId,
   });
   return response.data;
 };

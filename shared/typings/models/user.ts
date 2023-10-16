@@ -3,6 +3,7 @@ import { Game } from "shared/typings/models/game";
 
 export interface User {
   kompassiId: number;
+  kompassiUsernameAccepted: boolean;
   username: string;
   password: string;
   userGroup: UserGroup;
