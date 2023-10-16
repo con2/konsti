@@ -97,7 +97,7 @@ export const KompassiLoginUsernameForm = (): ReactElement => {
           disabled={isSubmitting}
           buttonStyle={ButtonStyle.PRIMARY}
         >
-          {t("button.saveInformation")}
+          {t("button.save")}
         </Button>
       </FormRow>
       {serverError && (

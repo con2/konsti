@@ -30,8 +30,7 @@
     "save": "Tallenna",
     "addSignupQuestion": "Lisää ilmoittautumiskysymys",
     "removeSignupQuestion": "Poista ilmoittautumiskysymys",
-    "close": "Sulje",
-    "saveInformation": "Tallenna tiedot"
+    "close": "Sulje"
   },
   "username": "Käyttäjänimi",
   "password": "Salasana",
