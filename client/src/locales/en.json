@@ -486,7 +486,7 @@
     "kompassiLogin": "Login with Kompassi",
     "createKompassiAccountHint": "Konsti login is not open yet but you can already create Kompassi account which is required for Konsti login.",
     "createKompassiAccount": "Create a Kompassi account",
-    "chooseKonstiUsername": "Choose Konsti username"
+    "chooseKonstiUsername": "Choose a Konsti username"
   },
   "registrationView": {
     "nickVisibleHintText": "Your username  will be visible to other Konsti users.",
