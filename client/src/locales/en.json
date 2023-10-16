@@ -488,7 +488,7 @@
     "chooseKonstiUsername": "Choose a Konsti username"
   },
   "registrationView": {
-    "nickVisibleHintText": "Your username  will be visible to other Konsti users.",
+    "nickVisibleHintText": "Your username will be visible to other Konsti users.",
     "alreadyHaveAccountLogin": "Do you already have an account? Log in here."
   },
   "iconAltText": {
