@@ -79,7 +79,7 @@ export const postVerifyKompassiLogin = async (
     return res.sendStatus(422);
   }
 
-  const { username, kompassiId } = result.data;
-  const response = await verifyKompassiLogin(username, kompassiId);
+  const { username } = result.data;
+  const response = await verifyKompassiLogin(jwtUsername, username);
   return res.json(response);
 };

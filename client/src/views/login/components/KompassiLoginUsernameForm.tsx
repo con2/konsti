@@ -26,7 +26,6 @@ export const KompassiLoginUsernameForm = (): ReactElement => {
   const navigate = useNavigate();
 
   const username = useAppSelector((state) => state.login.username);
-  const kompassiId = useAppSelector((state) => state.login.kompassiId);
 
   const [serverError, setServerError] = useState<LoginErrorMessage | null>(
     null,
@@ -47,7 +46,7 @@ export const KompassiLoginUsernameForm = (): ReactElement => {
     loginFormFields,
   ): Promise<void> => {
     const errorMessage = await dispatch(
-      submitVerifyKompassiLogin(loginFormFields.username, kompassiId),
+      submitVerifyKompassiLogin(loginFormFields.username),
     );
     if (errorMessage) {
       setServerError(errorMessage);

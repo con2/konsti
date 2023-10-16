@@ -211,10 +211,9 @@ export const submitKompassiLogin = (
 
 export const submitVerifyKompassiLogin = (
   username: string,
-  kompassiId: number,
 ): AppThunk<Promise<LoginErrorMessage | undefined>> => {
   return async (dispatch): Promise<LoginErrorMessage | undefined> => {
-    const response = await postVerifyKompassiLogin(username, kompassiId);
+    const response = await postVerifyKompassiLogin(username);
 
     if (response.status === "error") {
       switch (response.errorId) {
@@ -230,8 +229,11 @@ export const submitVerifyKompassiLogin = (
         submitVerifyKompassiLoginAsync({
           username: response.username,
           kompassiUsernameAccepted: response.kompassiUsernameAccepted,
+          jwt: response.jwt,
         }),
       );
+
+      await dispatch(submitSessionRecovery(response.jwt));
     }
   };
 };

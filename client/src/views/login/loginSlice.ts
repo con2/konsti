@@ -56,6 +56,7 @@ const loginSlice = createSlice({
         ...state,
         username: action.payload.username,
         kompassiUsernameAccepted: action.payload.kompassiUsernameAccepted,
+        jwt: action.payload.jwt,
       };
     },
   },

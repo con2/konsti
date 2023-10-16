@@ -60,14 +60,12 @@ export const postKompassiLoginCallback = async (
 
 export const postVerifyKompassiLogin = async (
   username: string,
-  kompassiId: number,
 ): Promise<PostVerifyKompassiLoginResponse | PostVerifyKompassiLoginError> => {
   const response = await api.post<
     PostVerifyKompassiLoginResponse,
     PostVerifyKompassiLoginRequest
   >(ApiEndpoint.VERIFY_KOMPASSI_LOGIN, {
     username,
-    kompassiId,
   });
   return response.data;
 };

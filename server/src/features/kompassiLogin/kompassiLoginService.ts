@@ -196,10 +196,13 @@ export const doKompassiLogin = async (
 };
 
 export const verifyKompassiLogin = async (
-  username: string,
-  kompassiId: number,
+  oldUsername: string,
+  newUsername: string,
 ): Promise<PostVerifyKompassiLoginResponse | PostVerifyKompassiLoginError> => {
-  const userResult = await updateUserKompassiLoginStatus(username, kompassiId);
+  const userResult = await updateUserKompassiLoginStatus(
+    oldUsername,
+    newUsername,
+  );
   if (isErrorResult(userResult)) {
     return {
       message: "Updating Kompassi login status failed",
@@ -215,5 +218,6 @@ export const verifyKompassiLogin = async (
     status: "success",
     username: user.username,
     kompassiUsernameAccepted: user.kompassiUsernameAccepted,
+    jwt: getJWT(user.userGroup, user.username),
   };
 };

@@ -229,14 +229,14 @@ export const findUsers = async (
 };
 
 export const updateUserKompassiLoginStatus = async (
-  username: string,
-  kompassiId: number,
+  oldUsername: string,
+  newUsername: string,
 ): Promise<Result<User, MongoDbError>> => {
   try {
     const response = await UserModel.findOneAndUpdate(
-      { kompassiId },
+      { username: oldUsername },
       {
-        username,
+        username: newUsername,
         kompassiUsernameAccepted: true,
       },
       { new: true, fields: "-_id -__v -createdAt -updatedAt" },
@@ -244,13 +244,12 @@ export const updateUserKompassiLoginStatus = async (
       .lean<User>()
       .populate("favoritedGames")
       .populate("signedGames.gameDetails");
-    logger.debug(`MongoDB: Password for user ${username} updated`);
 
     if (!response) {
       logger.error(
         "%s",
         new Error(
-          `MongoDB: Error updating Kompassi login status for user ${username}, user not found`,
+          `MongoDB: Error updating Kompassi login status for user ${oldUsername}, user not found`,
         ),
       );
       return makeErrorResult(MongoDbError.USER_NOT_FOUND);
@@ -258,7 +257,7 @@ export const updateUserKompassiLoginStatus = async (
     return makeSuccessResult(response);
   } catch (error) {
     logger.error(
-      `MongoDB: Error updating Kompassi login status for user ${username}: %s`,
+      `MongoDB: Error updating Kompassi login status for user ${oldUsername}: %s`,
       error,
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
