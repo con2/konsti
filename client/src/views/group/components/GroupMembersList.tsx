@@ -16,6 +16,7 @@ export const GroupMembersList = ({ groupMembers }: Props): ReactElement => {
   }
 
   const membersList = groupMembers.map((member, index) => {
+    // FIXME below
     const isGroupCreator = member.serial === member.groupCode;
     return (
       <p key={member.username}>

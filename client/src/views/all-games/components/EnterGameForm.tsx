@@ -14,7 +14,7 @@ import {
 } from "shared/typings/models/settings";
 import { loadGames } from "client/utils/loadData";
 import { ErrorMessage } from "client/components/ErrorMessage";
-import { getIsGroupCreator, getIsInGroup } from "client/views/group/groupUtils";
+import { getIsInGroup } from "client/views/group/groupUtils";
 import {
   PostCloseGroupErrorMessage,
   PostLeaveGroupErrorMessage,
@@ -47,8 +47,8 @@ export const EnterGameForm = ({
   const dispatch = useAppDispatch();
 
   const username = useAppSelector((state) => state.login.username);
-  const serial = useAppSelector((state) => state.login.serial);
   const groupCode = useAppSelector((state) => state.group.groupCode);
+  const isGroupCreator = useAppSelector((state) => state.group.isGroupCreator);
 
   const [loading, setLoading] = useState(false);
   const [userSignupMessage, setUserSignupMessage] = useState<string>("");
@@ -67,7 +67,6 @@ export const EnterGameForm = ({
   >(null);
 
   const isInGroup = getIsInGroup(groupCode);
-  const isGroupCreator = getIsGroupCreator(groupCode, serial);
 
   const handleCancel = (): void => {
     onCancelSignup();

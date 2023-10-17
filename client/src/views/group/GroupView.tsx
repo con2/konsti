@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { GroupMembersList } from "client/views/group/components/GroupMembersList";
 import { loadGroupMembers } from "client/utils/loadData";
 import { useAppSelector } from "client/utils/hooks";
-import { getIsGroupCreator, getIsInGroup } from "client/views/group/groupUtils";
+import { getIsInGroup } from "client/views/group/groupUtils";
 import { NotInGroupActions } from "client/views/group/components/NotInGroupActions";
 import { GroupCreatorActions } from "client/views/group/components/GroupCreatorActions";
 import { GroupMemberActions } from "client/views/group/components/GroupMemberActions";
@@ -20,8 +20,8 @@ const { directSignupAlwaysOpenIds } = sharedConfig;
 
 export const GroupView = (): ReactElement => {
   const username = useAppSelector((state) => state.login.username);
-  const serial = useAppSelector((state) => state.login.serial);
   const groupCode = useAppSelector((state) => state.group.groupCode);
+  const isGroupCreator = useAppSelector((state) => state.group.isGroupCreator);
   const groupMembers = useAppSelector((state) => state.group.groupMembers);
 
   const enteredGames = useAppSelector(selectEnteredGames);
@@ -47,7 +47,6 @@ export const GroupView = (): ReactElement => {
       (game) => game.gameDetails.programType === ProgramType.TABLETOP_RPG,
     );
 
-  const isGroupCreator = getIsGroupCreator(groupCode, serial);
   const isInGroup = getIsInGroup(groupCode);
   const timeNow = getTimeNow();
   const enteredGamesAfterNow = filteredActiveEnteredGames.filter((game) =>
@@ -59,9 +58,6 @@ export const GroupView = (): ReactElement => {
     <div className="group-view">
       <p>{t("group.groupLotterySignupGuide")}</p>
       <p>{t("group.groupLotterySignupTabletopOnly")}</p>
-      <p>
-        {t("group.groupSignupGuide")} <BoldText>{serial}</BoldText>.
-      </p>
 
       {!isInGroup && (
         <>
@@ -83,11 +79,7 @@ export const GroupView = (): ReactElement => {
             </EnteredGamesContainer>
           )}
 
-          <NotInGroupActions
-            disabled={hasEnteredGames}
-            username={username}
-            serial={serial}
-          />
+          <NotInGroupActions disabled={hasEnteredGames} />
         </>
       )}
 

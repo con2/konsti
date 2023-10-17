@@ -14,6 +14,7 @@ export type PostLoginRequest = z.infer<typeof PostLoginRequestSchema>;
 
 export interface PostLoginResponse extends ApiResult {
   groupCode: string;
+  groupCreatorCode: string;
   jwt: string;
   serial: string;
   userGroup: UserGroup;

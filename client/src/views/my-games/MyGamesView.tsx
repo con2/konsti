@@ -11,7 +11,6 @@ import {
   getUpcomingFavorites,
 } from "client/utils/getUpcomingGames";
 import { loadUser, loadGames, loadGroupMembers } from "client/utils/loadData";
-import { getIsGroupCreator } from "client/views/group/groupUtils";
 import { useAppSelector } from "client/utils/hooks";
 import { SignupStrategy } from "shared/config/sharedConfig.types";
 import {
@@ -27,11 +26,10 @@ import { RadioButtonGroup } from "client/components/RadioButtonGroup";
 export const MyGamesView = (): ReactElement => {
   const { t } = useTranslation();
 
-  const serial = useAppSelector((state) => state.login.serial);
-  const groupCode = useAppSelector((state) => state.group.groupCode);
   const signedGames = useAppSelector(selectSignedGames);
   const favoritedGames = useAppSelector(selectFavoritedGames);
   const enteredGames = useAppSelector(selectEnteredGames);
+  const isGroupCreator = useAppSelector((state) => state.group.isGroupCreator);
   const groupMembers = useAppSelector((state) => state.group.groupMembers);
   const testTime = useAppSelector((state) => state.testSettings.testTime);
   const signupStrategy = useAppSelector((state) => state.admin.signupStrategy);
@@ -41,8 +39,6 @@ export const MyGamesView = (): ReactElement => {
       "true" || false,
   );
   const store = useStore();
-
-  const isGroupCreator = getIsGroupCreator(groupCode, serial);
 
   useEffect(() => {
     setShowAllGames(
@@ -105,8 +101,7 @@ export const MyGamesView = (): ReactElement => {
         }
         signedGames={getSignedGames({
           signedGames,
-          groupCode,
-          serial,
+          isGroupCreator,
           getAllGames: showAllGames,
           groupMembers,
         })}
@@ -115,8 +110,7 @@ export const MyGamesView = (): ReactElement => {
         <MySignupsList
           signedGames={getSignedGames({
             signedGames,
-            groupCode,
-            serial,
+            isGroupCreator,
             getAllGames: showAllGames,
             groupMembers,
           })}

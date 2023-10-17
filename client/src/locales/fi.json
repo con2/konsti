@@ -232,7 +232,8 @@
       "removePreviousSignupsFailed": "Virhe aikaisempia ilmoittautumisia poistaessa, yritä uudelleen.",
       "onlyCreatorCanCloseGroup": "Vain ryhmän perustaja voi sulkea ryhmän.",
       "userHasSignedGames": "Sinulla on jo ilmoittautumisia peleihin. Poista ilmoittautumiset ennen kuin liityt ryhmään.",
-      "creatorHasSignedGames": "Sinulla on jo ilmoittautumisia peleihin. Poista ilmoittautumiset ennen kuin voit luoda ryhmän."
+      "creatorHasSignedGames": "Sinulla on jo ilmoittautumisia peleihin. Poista ilmoittautumiset ennen kuin voit luoda ryhmän.",
+      "alreadyInGroup": "Kuulut jo toiseen ryhmään."
     },
     "hasEnteredFollowingGames": "Olet jo päässyt seuraaviin peleihin:",
     "cancelSignupBeforeJoiningOrCreatingGroup": "Sinun täytyy perua ilmoittaumisesi yllä oleviin peleihin ennen kuin voit luoda ryhmän tai liittyä ryhmään.",
@@ -254,7 +255,6 @@
     "groupCreatorInfo": "Voit ilmoittautua arvontaan koko ryhmän puolesta. Varmistathan, että ryhmä ei ole liian iso valitsemiisi peleihin liittymistä varten. Ryhmän perustaja ei voi poistua ryhmästä, mutta voi sulkea ryhmän. Tällöin kaikki ryhmän jäsenet poistetaan ryhmästä.",
     "joiningGroupWillCancelLotterySignups": "Ryhmään liittyminen peruu kaikki aikaisemmat arvonta-ilmoittautumisesi",
     "groupLotterySignupGuide": "Ryhmä voi ilmoittautua samoihin peleihin arvontaa varten.",
-    "groupSignupGuide": "Ryhmään liitytään ryhmän perustajan rekisteröintikoodilla. Oma koodisi on:",
     "groupLotterySignupTabletopOnly": "Arvonta on käytössä ainoastaan pöytäroolipeleissä.",
     "invalidGroupCode": "Virheellinen koodi",
     "groupNotExist": "Ryhmää ei ole olemassa",

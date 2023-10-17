@@ -49,6 +49,7 @@ export interface LoginState {
 
 export interface GroupState {
   groupCode: string;
+  isGroupCreator: boolean;
   groupMembers: readonly GroupMember[];
 }
 
