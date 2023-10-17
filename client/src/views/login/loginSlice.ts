@@ -3,6 +3,7 @@ import { LoginState } from "client/typings/redux.typings";
 import { UserGroup } from "shared/typings/models/user";
 import { loadSession } from "client/utils/localStorage";
 import { EventLogItem } from "shared/typings/models/eventLog";
+import { PostVerifyKompassiLoginPayload } from "shared/typings/api/login";
 
 const initialState = (): LoginState => {
   const persistedState = loadSession();
@@ -14,6 +15,8 @@ const initialState = (): LoginState => {
     userGroup: UserGroup.USER,
     serial: "",
     eventLogItems: [],
+    kompassiUsernameAccepted: false,
+    kompassiId: 0,
   };
 };
 
@@ -30,6 +33,8 @@ const loginSlice = createSlice({
         userGroup: action.payload.userGroup,
         serial: action.payload.serial,
         eventLogItems: action.payload.eventLogItems,
+        kompassiUsernameAccepted: action.payload.kompassiUsernameAccepted,
+        kompassiId: action.payload.kompassiId,
       };
     },
 
@@ -42,10 +47,25 @@ const loginSlice = createSlice({
         eventLogItems: action.payload,
       };
     },
+
+    submitVerifyKompassiLoginAsync(
+      state,
+      action: PayloadAction<PostVerifyKompassiLoginPayload>,
+    ) {
+      return {
+        ...state,
+        username: action.payload.username,
+        kompassiUsernameAccepted: action.payload.kompassiUsernameAccepted,
+        jwt: action.payload.jwt,
+      };
+    },
   },
 });
 
-export const { submitLoginAsync, submitUpdateEventLogItemsAsync } =
-  loginSlice.actions;
+export const {
+  submitLoginAsync,
+  submitUpdateEventLogItemsAsync,
+  submitVerifyKompassiLoginAsync,
+} = loginSlice.actions;
 
 export const loginReducer = loginSlice.reducer;

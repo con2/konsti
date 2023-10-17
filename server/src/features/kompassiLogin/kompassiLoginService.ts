@@ -2,6 +2,7 @@ import axios from "axios";
 import {
   findUserByKompassiId,
   saveUser,
+  updateUserKompassiLoginStatus,
 } from "server/features/user/userRepository";
 import { createSerial } from "server/features/user/userUtils";
 import { getJWT } from "server/utils/jwt";
@@ -11,6 +12,8 @@ import { KompassiLoginError } from "shared/typings/api/errors";
 import {
   PostKompassiLoginResponse,
   PostKompassiLoginError,
+  PostVerifyKompassiLoginError,
+  PostVerifyKompassiLoginResponse,
 } from "shared/typings/api/login";
 import { UserGroup } from "shared/typings/models/user";
 import {
@@ -145,6 +148,8 @@ export const doKompassiLogin = async (
       groupCode: existingUser.groupCode,
       jwt: getJWT(existingUser.userGroup, existingUser.username),
       eventLogItems: existingUser.eventLogItems,
+      kompassiUsernameAccepted: existingUser.kompassiUsernameAccepted,
+      kompassiId: existingUser.kompassiId,
     };
   }
 
@@ -185,5 +190,34 @@ export const doKompassiLogin = async (
     groupCode: saveUserResponse.groupCode,
     jwt: getJWT(saveUserResponse.userGroup, saveUserResponse.username),
     eventLogItems: saveUserResponse.eventLogItems,
+    kompassiUsernameAccepted: saveUserResponse.kompassiUsernameAccepted,
+    kompassiId: saveUserResponse.kompassiId,
+  };
+};
+
+export const verifyKompassiLogin = async (
+  oldUsername: string,
+  newUsername: string,
+): Promise<PostVerifyKompassiLoginResponse | PostVerifyKompassiLoginError> => {
+  const userResult = await updateUserKompassiLoginStatus(
+    oldUsername,
+    newUsername,
+  );
+  if (isErrorResult(userResult)) {
+    return {
+      message: "Updating Kompassi login status failed",
+      status: "error",
+      errorId: "unknown",
+    };
+  }
+
+  const user = unwrapResult(userResult);
+
+  return {
+    message: "Kompassi login status updated",
+    status: "success",
+    username: user.username,
+    kompassiUsernameAccepted: user.kompassiUsernameAccepted,
+    jwt: getJWT(user.userGroup, user.username),
   };
 };

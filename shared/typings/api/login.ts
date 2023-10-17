@@ -19,6 +19,8 @@ export interface PostLoginResponse extends ApiResult {
   userGroup: UserGroup;
   username: string;
   eventLogItems: EventLogItem[];
+  kompassiUsernameAccepted: boolean;
+  kompassiId: number;
 }
 
 export interface PostLoginError extends ApiError {
@@ -45,4 +47,27 @@ export type PostKompassiLoginResponse = PostLoginResponse;
 
 export interface PostKompassiLoginError extends ApiError {
   errorId: "unknown" | "loginFailed" | "loginDisabled" | "invalidUserGroup";
+}
+
+// POST Verify Kompassi login
+
+export const PostVerifyKompassiLoginRequestSchema = z.object({
+  username: z.string(),
+});
+
+export type PostVerifyKompassiLoginRequest = z.infer<
+  typeof PostVerifyKompassiLoginRequestSchema
+>;
+
+export interface PostVerifyKompassiLoginPayload {
+  username: string;
+  kompassiUsernameAccepted: boolean;
+  jwt: string;
+}
+
+export type PostVerifyKompassiLoginResponse = PostVerifyKompassiLoginPayload &
+  ApiResult;
+
+export interface PostVerifyKompassiLoginError extends ApiError {
+  errorId: "unknown";
 }

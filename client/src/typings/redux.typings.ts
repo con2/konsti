@@ -43,6 +43,8 @@ export interface LoginState {
   userGroup: UserGroup;
   serial: string;
   eventLogItems: EventLogItem[];
+  kompassiUsernameAccepted: boolean;
+  kompassiId: number;
 }
 
 export interface GroupState {
