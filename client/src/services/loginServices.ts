@@ -43,7 +43,7 @@ export const postSessionRecovery = async (
 };
 
 export const getKompassiLoginRedirectUrl = async (): Promise<void> => {
-  await api.get(AuthEndpoint.KOMPASSI_LOGIN);
+  await api.post(AuthEndpoint.KOMPASSI_LOGIN);
 };
 
 export const postKompassiLoginCallback = async (

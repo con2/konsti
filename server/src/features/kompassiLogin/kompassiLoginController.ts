@@ -13,11 +13,11 @@ import { getAuthUrl } from "server/features/kompassiLogin/kompassiLoginUtils";
 import { getAuthorizedUsername } from "server/utils/authHeader";
 import { UserGroup } from "shared/typings/models/user";
 
-export const getKompassiLoginRedirect = (
+export const postKompassiLoginRedirect = (
   req: Request<{}, {}, {}>,
   res: Response,
 ): Response => {
-  logger.info(`API call: GET ${AuthEndpoint.KOMPASSI_LOGIN}`);
+  logger.info(`API call: POST ${AuthEndpoint.KOMPASSI_LOGIN}`);
 
   if (!req.headers.origin) {
     return res.sendStatus(422);
