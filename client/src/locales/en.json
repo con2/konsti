@@ -484,10 +484,11 @@
     "noAccountRegister": "No account? Create one here.",
     "kompassiLogin": "Login with Kompassi",
     "createKompassiAccountHint": "Konsti login is not open yet but you can already create Kompassi account which is required for Konsti login.",
-    "createKompassiAccount": "Create Kompassi account"
+    "createKompassiAccount": "Create a Kompassi account",
+    "chooseKonstiUsername": "Choose a Konsti username"
   },
   "registrationView": {
-    "nickVisibleHintText": "Your usename will be visible to all other users.",
+    "nickVisibleHintText": "Your username will be visible to other Konsti users.",
     "alreadyHaveAccountLogin": "Do you already have an account? Log in here."
   },
   "iconAltText": {

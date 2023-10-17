@@ -27,6 +27,7 @@ export enum ApiEndpoint {
   PROGRAM_UPDATE_CRON = "/api/program-update-cron",
   ASSIGNMENT_CRON = "/api/assignment-cron",
   HEALTH = "/api/health",
+  VERIFY_KOMPASSI_LOGIN = "/api/verify-kompassi-login",
 }
 
 export enum AuthEndpoint {

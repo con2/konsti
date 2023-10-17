@@ -2,6 +2,7 @@ import express from "express";
 import {
   postKompassiLoginCallback,
   getKompassiLoginRedirect,
+  postVerifyKompassiLogin,
 } from "server/features/kompassiLogin/kompassiLoginController";
 import { postFeedback } from "server/features/feedback/feedbackController";
 import {
@@ -79,6 +80,7 @@ apiRoutes.post(ApiEndpoint.SIGNUP, postSignup);
 apiRoutes.post(ApiEndpoint.EVENT_LOG, postEventLogItem);
 apiRoutes.post(ApiEndpoint.PROGRAM_UPDATE_CRON, postAutoUpdateGames);
 apiRoutes.post(ApiEndpoint.ASSIGNMENT_CRON, postAutoAssignment);
+apiRoutes.post(ApiEndpoint.VERIFY_KOMPASSI_LOGIN, postVerifyKompassiLogin);
 
 /* GET routes */
 

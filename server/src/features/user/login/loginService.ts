@@ -75,6 +75,8 @@ export const login = async (
       groupCode: user.groupCode,
       jwt: getJWT(user.userGroup, user.username),
       eventLogItems: user.eventLogItems,
+      kompassiUsernameAccepted: user.kompassiUsernameAccepted,
+      kompassiId: user.kompassiId,
     };
   }
 
