@@ -253,6 +253,7 @@
     "groupCreator": "group creator",
     "groupMemberInfo": "The group creator will sign the group up to the lottery. You can see the selected games on the \"My Program\" page.",
     "groupCreatorInfo": "You can sign up your group to the lottery. Please make sure that the group is not too big for the selected games. The group creator cannot leave the group, but can close it. This will remove all members from the group.",
+    "groupCodeInfo": "Others can join this group with the code ",
     "joiningGroupWillCancelLotterySignups": "Joining a group will cancel all your previous lottery signups.",
     "groupLotterySignupGuide": "You can enter a lottery sign-up as a group.",
     "groupLotterySignupTabletopOnly": "Only tabletop RPGs support lottery sign-up.",

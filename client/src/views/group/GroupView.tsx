@@ -91,6 +91,10 @@ export const GroupView = (): ReactElement => {
                 <BoldText>{t("group.youAreGroupCreator")}</BoldText>.{" "}
                 {t("group.groupCreatorInfo")}
               </p>
+              <p>
+                {t("group.groupCodeInfo")}
+                <BoldText>{groupCode}</BoldText>.
+              </p>
               <GroupCreatorActions username={username} groupCode={groupCode} />
             </>
           )}
