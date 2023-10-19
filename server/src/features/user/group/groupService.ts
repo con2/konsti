@@ -9,7 +9,7 @@ import {
   saveGroupCreatorCode,
 } from "server/features/user/group/groupRepository";
 import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
-import { findUser, findUserSerial } from "server/features/user/userRepository";
+import { findUser } from "server/features/user/userRepository";
 import { sharedConfig } from "shared/config/sharedConfig";
 import { MongoDbError } from "shared/typings/api/errors";
 import {
@@ -96,7 +96,7 @@ export const createGroup = async (
     };
   }
 
-  if (userResponse.groupCode || userResponse.groupCreatorCode) {
+  if (userResponse.groupCode !== "0" || userResponse.groupCreatorCode !== "0") {
     return {
       message: "User has a group or is a member of a group",
       status: "error",
@@ -191,7 +191,7 @@ export const joinGroup = async (
   }
 
   const userResponse = unwrapResult(userResult);
-  if (userResponse?.groupCode || userResponse?.groupCreatorCode) {
+  if (userResponse?.groupCode == "0" || userResponse?.groupCreatorCode == "0") {
     return {
       message: "User has a group or is a member of a group",
       status: "error",
