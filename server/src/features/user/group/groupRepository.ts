@@ -54,7 +54,7 @@ export const saveGroupCreatorCode = async (
     const response = await UserModel.findOneAndUpdate(
       { username },
       { groupCode: groupCreatorCode, groupCreatorCode },
-      { new: true, fields: "-groupCode -groupCreatorCode" },
+      { new: true },
     ).lean<User>();
     logger.info(
       `MongoDB: Saved group creator code ${groupCreatorCode} for user ${username}`,
