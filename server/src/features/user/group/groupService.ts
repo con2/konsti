@@ -1,4 +1,4 @@
-import generator from "generate-serial-number";
+import { randomBytes } from "crypto";
 import dayjs from "dayjs";
 import { getTimeNow } from "server/features/player-assignment/utils/getTimeNow";
 import { findUserSignups } from "server/features/signup/signupRepository";
@@ -33,6 +33,15 @@ import {
 } from "shared/utils/result";
 
 const { directSignupAlwaysOpenIds } = sharedConfig;
+
+const generateGroupCode = () => {
+  const baseCode = randomBytes(5).toString("hex").substring(0, 9);
+  return [
+    baseCode.slice(0, 3),
+    baseCode.slice(3, 6),
+    baseCode.slice(6, 9),
+  ].join("-");
+};
 
 export const createGroup = async (
   username: string,
@@ -105,7 +114,7 @@ export const createGroup = async (
   }
 
   // No existing group, create
-  const newGroupCreatorCode = generator.generate(10);
+  const newGroupCreatorCode = generateGroupCode();
 
   const saveGroupResponseResult = await saveGroupCreatorCode(
     newGroupCreatorCode,
@@ -191,7 +200,10 @@ export const joinGroup = async (
   }
 
   const userResponse = unwrapResult(userResult);
-  if (userResponse?.groupCode == "0" || userResponse?.groupCreatorCode == "0") {
+  if (
+    userResponse?.groupCode !== "0" ||
+    userResponse.groupCreatorCode !== "0"
+  ) {
     return {
       message: "User has a group or is a member of a group",
       status: "error",

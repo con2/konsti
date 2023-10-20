@@ -60,7 +60,7 @@ export const NotInGroupActions = ({ disabled }: Props): ReactElement => {
     setLoading(true);
 
     const errorMessage = await dispatch(
-      submitJoinGroup({ groupCode: joinGroupValue }),
+      submitJoinGroup({ groupCode: joinGroupValue.trim() }),
     );
 
     if (errorMessage) {
