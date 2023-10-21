@@ -105,13 +105,6 @@ describe(`POST ${ApiEndpoint.GROUP}`, () => {
     expect(response.status).toEqual(401);
   });
 
-  test("should return 422 without valid body", async () => {
-    const response = await request(server)
-      .post(ApiEndpoint.GROUP)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.USER, "testuser")}`);
-    expect(response.status).toEqual(422);
-  });
-
   test("should create group", async () => {
     const userResult = await saveUser(mockUser);
     const user = unsafelyUnwrapResult(userResult);
@@ -128,7 +121,12 @@ describe(`POST ${ApiEndpoint.GROUP}`, () => {
     expect(response.status).toEqual(200);
     const updatedUserResult = await findUser(mockUser.username);
     const updatedUser = unsafelyUnwrapResult(updatedUserResult);
-    expect(updatedUser?.groupCode).toEqual(user.serial);
+    expect(updatedUser?.groupCode).toEqual(updatedUser?.groupCreatorCode);
+
+    const groupCodeMatcher = RegExp(
+      "^[a-zA-Z0-9]{3}-[a-zA-Z0-9]{3}-[a-zA-Z0-9]{3}$",
+    );
+    expect(groupCodeMatcher.test(updatedUser?.groupCode ?? "")).toBeTruthy();
   });
 });
 
@@ -149,8 +147,10 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
   });
 
   test("should join group", async () => {
+    const groupCode = "123-234-345";
+
     await saveGames([testGame, testGame2]);
-    await saveUser({ ...mockUser, groupCode: mockUser.serial });
+    await saveUser({ ...mockUser, groupCode, groupCreatorCode: groupCode });
     await saveUser(mockUser2);
     const userWithSignupsResult = await saveSignedGames({
       signedGames: mockSignedGames,
@@ -160,7 +160,7 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
     expect(userWithSignups.signedGames.length).toEqual(2);
 
     const groupRequest: PostJoinGroupRequest = {
-      groupCode: mockUser.serial,
+      groupCode,
     };
 
     const response = await request(server)
@@ -174,7 +174,7 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
     expect(response.status).toEqual(200);
     const updatedUserResult = await findUser(mockUser2.username);
     const updatedUser = unsafelyUnwrapResult(updatedUserResult);
-    expect(updatedUser?.groupCode).toEqual(mockUser.serial);
+    expect(updatedUser?.groupCode).toEqual(groupCode);
     expect(updatedUser?.signedGames.length).toEqual(0);
   });
 
@@ -250,11 +250,13 @@ describe(`POST ${ApiEndpoint.CLOSE_GROUP}`, () => {
   });
 
   test("should close group and remove all group members", async () => {
-    await saveUser({ ...mockUser, groupCode: mockUser.serial });
-    await saveUser({ ...mockUser2, groupCode: mockUser.serial });
+    const groupCode = "abc-dfg-hij";
+
+    await saveUser({ ...mockUser, groupCode, groupCreatorCode: groupCode });
+    await saveUser({ ...mockUser2, groupCode });
 
     const groupRequest: PostCloseGroupRequest = {
-      groupCode: mockUser.serial,
+      groupCode,
     };
 
     const response = await request(server)
