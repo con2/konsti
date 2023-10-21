@@ -5,11 +5,15 @@ import { useAppSelector } from "client/utils/hooks";
 import { Button, ButtonStyle } from "./Button";
 import { sharedConfig } from "shared/config/sharedConfig";
 import { HighlightStyle, RaisedCard } from "client/components/RaisedCard";
+import { LoginProvider } from "shared/config/sharedConfig.types";
 
 export const FirstLogin = (): ReactElement | null => {
   const { t } = useTranslation();
   const serial = useAppSelector((state) => state.login.serial);
   const username = useAppSelector((state) => state.login.username);
+  const loginProvider = useAppSelector((state) => state.admin.loginProvider);
+  const isLocalLogin = loginProvider === LoginProvider.LOCAL;
+
   const [isFirstLogin, setIsFirstLogin] = useState<boolean>(false);
 
   useEffect(() => {
@@ -28,7 +32,7 @@ export const FirstLogin = (): ReactElement | null => {
     }
   }, [username]);
 
-  if (!isFirstLogin || !serial) {
+  if (!isFirstLogin || !serial || !isLocalLogin) {
     return null;
   }
 
