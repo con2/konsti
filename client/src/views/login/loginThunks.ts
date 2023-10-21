@@ -211,7 +211,12 @@ export const submitKompassiLogin = (
         }),
       );
 
-      dispatch(submitUpdateGroupCodeAsync(loginResponse.groupCode));
+      dispatch(
+        submitUpdateGroupCodeAsync({
+          groupCode: loginResponse.groupCode,
+          isGroupCreator: loginResponse.groupCreatorCode !== "0",
+        }),
+      );
 
       await loadUser();
       await loadGroupMembers();
