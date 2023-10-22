@@ -92,6 +92,7 @@ export const updateUserPassword = async (
 ): Promise<Result<User, MongoDbError>> => {
   try {
     const response = await UserModel.findOneAndUpdate(
+      // Don't update Kompassi login users
       { username, kompassiId: 0 },
       {
         password,
