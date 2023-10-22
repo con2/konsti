@@ -60,7 +60,9 @@ export type PostUpdateUserPasswordRequest = z.infer<
   typeof PostUpdateUserPasswordRequestSchema
 >;
 
-export type PostUpdateUserPasswordResponse = PostUserResponse;
+export interface PostUpdateUserPasswordResponse extends ApiResult {
+  username: string;
+}
 
 // GET user by serial
 

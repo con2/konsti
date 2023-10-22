@@ -60,7 +60,7 @@ export const KompassiLoginUsernameForm = (): ReactElement => {
   return (
     <StyledForm onSubmit={handleSubmit(onSubmit)}>
       <InputContainer>
-        <p>{t("loginView.chooseKonstiUsername")}</p>
+        <h2>{t("loginView.chooseKonstiUsername")}</h2>
         <StyledLabel htmlFor="username">{t("username")}</StyledLabel>
         <StyledInput
           id="username"

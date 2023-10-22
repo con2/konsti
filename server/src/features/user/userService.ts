@@ -11,6 +11,7 @@ import {
 import {
   GetUserBySerialResponse,
   GetUserResponse,
+  PostUpdateUserPasswordResponse,
   PostUserError,
   PostUserResponse,
 } from "shared/typings/api/users";
@@ -184,7 +185,7 @@ export const storeUserPassword = async (
   username: string,
   password: string,
   requester: string,
-): Promise<PostUserResponse | ApiError> => {
+): Promise<PostUpdateUserPasswordResponse | ApiError> => {
   if (
     requester === "helper" &&
     PASSWORD_CHANGE_NOT_ALLOWED.includes(username)
@@ -219,12 +220,12 @@ export const storeUserPassword = async (
       errorId: "unknown",
     };
   }
+  const user = unwrapResult(updateUserPasswordResult);
 
   return {
     message: "Password changed",
     status: "success",
-    username: "notAvailable",
-    password: "notAvailable",
+    username: user.username,
   };
 };
 

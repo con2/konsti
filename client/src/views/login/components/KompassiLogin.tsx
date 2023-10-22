@@ -6,7 +6,6 @@ import { Button, ButtonStyle } from "client/components/Button";
 import { getKompassiLoginRedirectUrl } from "client/services/loginServices";
 import { LoginErrorMessage } from "client/views/login/loginThunks";
 import { ErrorMessage } from "client/components/ErrorMessage";
-import { ButtonGroup } from "client/components/ButtonGroup";
 
 export const KompassiLogin = (): ReactElement => {
   const { t } = useTranslation();
@@ -29,25 +28,16 @@ export const KompassiLogin = (): ReactElement => {
 
   return (
     <div>
-      <ButtonGroup>
-        <Button
-          buttonStyle={ButtonStyle.PRIMARY}
-          onClick={async () => {
-            await getKompassiLoginRedirectUrl();
-          }}
-        >
-          {t("loginView.kompassiLogin")}
-        </Button>
+      <p>{t("loginView.kompassiLoginHint")}</p>
 
-        <Button
-          buttonStyle={ButtonStyle.PRIMARY}
-          onClick={() => {
-            window.open("https://kompassi.eu/register", "_blank");
-          }}
-        >
-          {t("loginView.createKompassiAccount")}
-        </Button>
-      </ButtonGroup>
+      <Button
+        buttonStyle={ButtonStyle.PRIMARY}
+        onClick={async () => {
+          await getKompassiLoginRedirectUrl();
+        }}
+      >
+        {t("loginView.kompassiLogin")}
+      </Button>
 
       {serverError && (
         <ErrorMessage

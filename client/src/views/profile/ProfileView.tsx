@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { ChangePasswordForm } from "client/views/helper/components/ChangePasswordForm";
 import { useAppSelector } from "client/utils/hooks";
 import { Button, ButtonStyle } from "client/components/Button";
+import { LoginProvider } from "shared/config/sharedConfig.types";
 
 export const ProfileView = (): ReactElement => {
   const { t } = useTranslation();
@@ -12,6 +13,7 @@ export const ProfileView = (): ReactElement => {
 
   const username = useAppSelector((state) => state.login.username);
   const serial = useAppSelector((state) => state.login.serial);
+  const loginProvider = useAppSelector((state) => state.admin.loginProvider);
 
   return (
     <Container>
@@ -29,7 +31,9 @@ export const ProfileView = (): ReactElement => {
           {t("button.logout")}
         </StyledButton>
       </UserInfoContainer>
-      <ChangePasswordForm username={username} />
+      {loginProvider === LoginProvider.LOCAL && (
+        <ChangePasswordForm username={username} />
+      )}
     </Container>
   );
 };
