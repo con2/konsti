@@ -6,6 +6,8 @@ import { loadSettings, loadSignupMessages } from "client/utils/loadData";
 import { Button, ButtonStyle } from "client/components/Button";
 import { PrivateSignupMessages } from "client/views/helper/components/PrivateSignupMessages";
 import { ButtonGroup } from "client/components/ButtonGroup";
+import { useAppSelector } from "client/utils/hooks";
+import { LoginProvider } from "shared/config/sharedConfig.types";
 
 enum HelperTool {
   PASSWORD_MANAGEMENT = "passwordManagement",
@@ -15,8 +17,10 @@ enum HelperTool {
 export const HelperView = (): ReactElement => {
   const { t } = useTranslation();
 
+  const loginProvider = useAppSelector((state) => state.admin.loginProvider);
+
   const [selectedTool, setSelectedTool] = useState<HelperTool>(
-    HelperTool.PASSWORD_MANAGEMENT,
+    HelperTool.PRIVATE_SIGNUP_MESSAGES,
   );
 
   const store = useStore();
@@ -32,13 +36,15 @@ export const HelperView = (): ReactElement => {
   return (
     <div>
       <ButtonGroup>
-        <Button
-          disabled={selectedTool === HelperTool.PASSWORD_MANAGEMENT}
-          buttonStyle={ButtonStyle.SECONDARY}
-          onClick={() => setSelectedTool(HelperTool.PASSWORD_MANAGEMENT)}
-        >
-          {t("passwordManagement.helperPasswordManagement")}
-        </Button>
+        {loginProvider === LoginProvider.LOCAL && (
+          <Button
+            disabled={selectedTool === HelperTool.PASSWORD_MANAGEMENT}
+            buttonStyle={ButtonStyle.SECONDARY}
+            onClick={() => setSelectedTool(HelperTool.PASSWORD_MANAGEMENT)}
+          >
+            {t("passwordManagement.helperPasswordManagement")}
+          </Button>
+        )}
 
         <Button
           disabled={selectedTool === HelperTool.PRIVATE_SIGNUP_MESSAGES}
