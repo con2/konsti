@@ -89,10 +89,10 @@ export const updateUsersByUsername = async (
 export const updateUserPassword = async (
   username: string,
   password: string,
-): Promise<Result<User | null, MongoDbError>> => {
+): Promise<Result<User, MongoDbError>> => {
   try {
     const response = await UserModel.findOneAndUpdate(
-      { username },
+      { username, kompassiId: 0 },
       {
         password,
       },
@@ -102,6 +102,9 @@ export const updateUserPassword = async (
       .populate("favoritedGames")
       .populate("signedGames.gameDetails");
     logger.debug(`MongoDB: Password for user ${username} updated`);
+    if (!response) {
+      return makeErrorResult(MongoDbError.USER_NOT_FOUND);
+    }
     return makeSuccessResult(response);
   } catch (error) {
     logger.error(
