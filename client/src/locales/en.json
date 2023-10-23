@@ -232,8 +232,8 @@
       "removePreviousSignupsFailed": "Error deleting previous sign-ups, try again.",
       "onlyCreatorCanCloseGroup": "Only the group creator can close a group.",
       "userHasSignedGames": "You already have sign-ups. You will have to cancel those before joining a group.",
-      "alreadyInGroup": "You are already a member of a group.",
-      "creatorHasSignedGames": "You already have sign-ups. You will have to cancel those before creating a group."
+      "creatorHasSignedGames": "You already have sign-ups. You will have to cancel those before creating a group.",
+      "alreadyInGroup": "You are already a member of a group."
     },
     "hasEnteredFollowingGames": "You have already signed up to these games:",
     "cancelSignupBeforeJoiningOrCreatingGroup": "You'll have to cancel those sign-ups before you can create or join a group.",

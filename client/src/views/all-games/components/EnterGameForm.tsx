@@ -129,14 +129,14 @@ export const EnterGameForm = ({
     <SignupForm>
       {game.programType === ProgramType.TABLETOP_RPG &&
         !directSignupAlwaysOpenIds.includes(game.gameId) && (
-          <>
+          <p>
             {isInGroup && !isGroupCreator && (
               <Warning>{t("signup.inGroupWarning")}</Warning>
             )}
             {isInGroup && isGroupCreator && (
               <Warning>{t("signup.groupCreatorWarning")}</Warning>
             )}
-          </>
+          </p>
         )}
 
       {signupQuestion && (

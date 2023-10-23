@@ -34,6 +34,8 @@ export const MyGamesView = (): ReactElement => {
   const testTime = useAppSelector((state) => state.testSettings.testTime);
   const signupStrategy = useAppSelector((state) => state.admin.signupStrategy);
 
+  const isGroupMember = groupMembers.length > 0;
+
   const [showAllGames, setShowAllGames] = useState<boolean>(
     sessionStorage.getItem(SessionStorageValue.MY_GAMES_SHOW_ALL_GAMES) ===
       "true" || false,
@@ -115,6 +117,7 @@ export const MyGamesView = (): ReactElement => {
             groupMembers,
           })}
           isGroupCreator={isGroupCreator}
+          isGroupMember={isGroupMember}
         />
       )}
     </MyGamesViewContainer>

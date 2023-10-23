@@ -346,12 +346,12 @@ export const closeGroup = async (
     };
   }
 
-  const removeGroupCreationCodePromise = await saveGroupCreatorCode(
+  const removeGroupCreationCodeResult = await saveGroupCreatorCode(
     "0",
     groupCreator.username,
   );
 
-  if (isErrorResult(removeGroupCreationCodePromise)) {
+  if (isErrorResult(removeGroupCreationCodeResult)) {
     return {
       message: "Error deleting group creation code",
       status: "error",
@@ -382,6 +382,7 @@ export const fetchGroup = async (
 
   const returnData = findGroupResults.map((result) => ({
     groupCode: result.groupCode,
+    groupCreatorCode: result.groupCreatorCode,
     signedGames: result.signedGames,
     serial: result.serial,
     username: result.username,

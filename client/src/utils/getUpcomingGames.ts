@@ -35,7 +35,7 @@ const getGroupCreator = (
   groupMembers: readonly GroupMember[],
 ): GroupMember | null => {
   const groupCreator = groupMembers.find(
-    (member) => member.serial === member.groupCode,
+    (member) => member.groupCreatorCode === member.groupCode,
   );
   if (!groupCreator) {
     return null;
