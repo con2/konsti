@@ -11,11 +11,13 @@ import { useAppSelector } from "client/utils/hooks";
 interface Props {
   signedGames: readonly SelectedGame[];
   isGroupCreator: boolean;
+  isGroupMember: boolean;
 }
 
 export const MySignupsList = ({
   signedGames,
   isGroupCreator,
+  isGroupMember,
 }: Props): ReactElement => {
   const { t } = useTranslation();
 
@@ -34,7 +36,9 @@ export const MySignupsList = ({
     <RaisedCard>
       <Header>{t("lotterySignedGames")}</Header>
 
-      {!isGroupCreator && <InfoText>{t("group.inGroupSignups")}</InfoText>}
+      {!isGroupCreator && isGroupMember && (
+        <InfoText>{t("group.inGroupSignups")}</InfoText>
+      )}
       {isGroupCreator && groupMembers.length > 0 && (
         <InfoText>{t("group.groupCreatorSignups")}</InfoText>
       )}

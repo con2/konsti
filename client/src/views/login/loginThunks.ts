@@ -77,7 +77,12 @@ export const submitLogin = (
         }),
       );
 
-      dispatch(submitUpdateGroupCodeAsync(loginResponse.groupCode));
+      dispatch(
+        submitUpdateGroupCodeAsync({
+          groupCode: loginResponse.groupCode,
+          isGroupCreator: loginResponse.groupCreatorCode !== "0",
+        }),
+      );
 
       await loadUser();
       await loadGroupMembers();
@@ -132,7 +137,12 @@ export const submitSessionRecovery = (jwt: string): AppThunk => {
         }),
       );
 
-      dispatch(submitUpdateGroupCodeAsync(loginResponse.groupCode));
+      dispatch(
+        submitUpdateGroupCodeAsync({
+          groupCode: loginResponse.groupCode,
+          isGroupCreator: loginResponse.groupCreatorCode !== "0",
+        }),
+      );
     }
   };
 };
@@ -201,7 +211,12 @@ export const submitKompassiLogin = (
         }),
       );
 
-      dispatch(submitUpdateGroupCodeAsync(loginResponse.groupCode));
+      dispatch(
+        submitUpdateGroupCodeAsync({
+          groupCode: loginResponse.groupCode,
+          isGroupCreator: loginResponse.groupCreatorCode !== "0",
+        }),
+      );
 
       await loadUser();
       await loadGroupMembers();

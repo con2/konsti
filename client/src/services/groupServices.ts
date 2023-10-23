@@ -3,7 +3,6 @@ import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
   GetGroupError,
   GetGroupResponse,
-  PostCreateGroupRequest,
   PostCreateGroupError,
   PostJoinGroupRequest,
   PostCloseGroupRequest,
@@ -17,13 +16,10 @@ import {
   GetGroupRequest,
 } from "shared/typings/api/groups";
 
-export const postCreateGroup = async (
-  groupRequest: PostCreateGroupRequest,
-): Promise<PostCreateGroupResponse | PostCreateGroupError> => {
-  const response = await api.post<
-    PostCreateGroupResponse,
-    PostCreateGroupRequest
-  >(ApiEndpoint.GROUP, groupRequest);
+export const postCreateGroup = async (): Promise<
+  PostCreateGroupResponse | PostCreateGroupError
+> => {
+  const response = await api.post<PostCreateGroupResponse>(ApiEndpoint.GROUP);
   return response.data;
 };
 

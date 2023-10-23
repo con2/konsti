@@ -9,6 +9,7 @@ export interface User {
   userGroup: UserGroup;
   serial: string;
   groupCode: string;
+  groupCreatorCode: string;
   favoritedGames: readonly Game[];
   signedGames: readonly SelectedGame[];
   createdAt: string;

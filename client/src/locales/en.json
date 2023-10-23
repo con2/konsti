@@ -232,7 +232,8 @@
       "removePreviousSignupsFailed": "Error deleting previous sign-ups, try again.",
       "onlyCreatorCanCloseGroup": "Only the group creator can close a group.",
       "userHasSignedGames": "You already have sign-ups. You will have to cancel those before joining a group.",
-      "creatorHasSignedGames": "You already have sign-ups. You will have to cancel those before creating a group."
+      "creatorHasSignedGames": "You already have sign-ups. You will have to cancel those before creating a group.",
+      "alreadyInGroup": "You are already a member of a group."
     },
     "hasEnteredFollowingGames": "You have already signed up to these games:",
     "cancelSignupBeforeJoiningOrCreatingGroup": "You'll have to cancel those sign-ups before you can create or join a group.",
@@ -252,9 +253,9 @@
     "groupCreator": "group creator",
     "groupMemberInfo": "The group creator will sign the group up to the lottery. You can see the selected games on the \"My Program\" page.",
     "groupCreatorInfo": "You can sign up your group to the lottery. Please make sure that the group is not too big for the selected games. The group creator cannot leave the group, but can close it. This will remove all members from the group.",
+    "groupCodeInfo": "Others can join this group with the code ",
     "joiningGroupWillCancelLotterySignups": "Joining a group will cancel all your previous lottery signups.",
     "groupLotterySignupGuide": "You can enter a lottery sign-up as a group.",
-    "groupSignupGuide": "You will need your group creator's registration code to join a group. Your own code is:",
     "groupLotterySignupTabletopOnly": "Only tabletop RPGs support lottery sign-up.",
     "invalidGroupCode": "Invalid code",
     "groupNotExist": "Group does not exist",

@@ -4,17 +4,24 @@ import { GroupMember } from "shared/typings/models/groups";
 
 const initialState: GroupState = {
   groupCode: "0",
+  isGroupCreator: false,
   groupMembers: [],
 };
+
+interface GroupCodeUpdate {
+  groupCode: string;
+  isGroupCreator: boolean;
+}
 
 const groupSlice = createSlice({
   name: "group",
   initialState,
   reducers: {
-    submitUpdateGroupCodeAsync(state, action: PayloadAction<string>) {
+    submitUpdateGroupCodeAsync(state, action: PayloadAction<GroupCodeUpdate>) {
       return {
         ...state,
-        groupCode: action.payload,
+        groupCode: action.payload.groupCode,
+        isGroupCreator: action.payload.isGroupCreator,
       };
     },
 

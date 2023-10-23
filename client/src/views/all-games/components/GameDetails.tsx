@@ -23,13 +23,11 @@ export const GameDetails = (): ReactElement => {
 
   // Figure out if user has signed up to this game
   const activeSignedGames = useAppSelector(selectActiveSignedGames);
-  const groupCode = useAppSelector((state) => state.group.groupCode);
+  const isGroupCreator = useAppSelector((state) => state.group.isGroupCreator);
   const groupMembers = useAppSelector((state) => state.group.groupMembers);
-  const serial = useAppSelector((state) => state.login.serial);
   const ownOrGroupCreatorSignedGames = getSignedGames({
     signedGames: activeSignedGames,
-    groupCode,
-    serial,
+    isGroupCreator,
     groupMembers,
     getAllGames: true,
   });

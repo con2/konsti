@@ -81,14 +81,14 @@ export const createTestUsers = async ({
 
 interface CreateUserParams {
   groupCode: string;
-  groupMemberCount: number;
+  groupCreatorCode: string;
   testUsers?: boolean;
   userNumber?: number;
 }
 
 const createUser = async ({
   groupCode,
-  groupMemberCount,
+  groupCreatorCode,
   testUsers = false,
   userNumber = 0,
 }: CreateUserParams): Promise<void> => {
@@ -102,11 +102,9 @@ const createUser = async ({
     username: testUsers ? `group${userNumber}` : faker.internet.userName(),
     passwordHash,
     userGroup: UserGroup.USER,
-    serial:
-      groupMemberCount === 0
-        ? groupCode
-        : faker.number.int(SERIAL_MAX).toString(),
+    serial: faker.number.int(SERIAL_MAX).toString(),
     groupCode,
+    groupCreatorCode,
   };
 
   await saveUser(registrationData);
@@ -134,7 +132,7 @@ export const createUsersInGroup = async ({
     promises.push(
       createUser({
         groupCode,
-        groupMemberCount,
+        groupCreatorCode: groupMemberCount === 0 ? groupCode : "0",
         testUsers,
         userNumber: groupMemberCount + 1,
       }),
@@ -152,7 +150,7 @@ export const createIndividualUsers = async (count: number): Promise<void> => {
     promises.push(
       createUser({
         groupCode: "0",
-        groupMemberCount: -1,
+        groupCreatorCode: "0",
       }),
     );
   }

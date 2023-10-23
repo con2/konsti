@@ -6,7 +6,6 @@ import { GameEntry } from "./GameEntry";
 import { useAppSelector } from "client/utils/hooks";
 import { Game } from "shared/typings/models/game";
 import { GameListTitle } from "client/views/all-games/components/GameListTitle";
-import { getIsGroupCreator } from "client/views/group/groupUtils";
 import { getSignedGames } from "client/utils/getUpcomingGames";
 import { getTimeslotSignupStrategy } from "client/views/all-games/allGamesUtils";
 import {
@@ -25,18 +24,16 @@ export const AllGamesList = ({ games }: Props): ReactElement => {
   const signups = useAppSelector((state) => state.allGames.signups);
   const activeSignedGames = useAppSelector(selectActiveSignedGames);
   const activeEnteredGames = useAppSelector(selectActiveEnteredGames);
-  const serial = useAppSelector((state) => state.login.serial);
   const activeProgramType = useAppSelector(
     (state) => state.admin.activeProgramType,
   );
   const groupCode = useAppSelector((state) => state.group.groupCode);
   const groupMembers = useAppSelector((state) => state.group.groupMembers);
-  const isGroupCreator = getIsGroupCreator(groupCode, serial);
+  const isGroupCreator = useAppSelector((state) => state.group.isGroupCreator);
 
   const ownOrGroupCreatorSignedGames = getSignedGames({
     signedGames: activeSignedGames,
-    groupCode,
-    serial,
+    isGroupCreator,
     groupMembers,
     getAllGames: true,
   });

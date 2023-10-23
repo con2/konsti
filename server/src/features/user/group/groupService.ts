@@ -1,13 +1,15 @@
+import { randomBytes } from "crypto";
 import dayjs from "dayjs";
 import { getTimeNow } from "server/features/player-assignment/utils/getTimeNow";
 import { findUserSignups } from "server/features/signup/signupRepository";
 import {
-  findGroup,
+  checkGroupExists,
   findGroupMembers,
   saveGroupCode,
+  saveGroupCreatorCode,
 } from "server/features/user/group/groupRepository";
 import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
-import { findUserSerial } from "server/features/user/userRepository";
+import { findUser } from "server/features/user/userRepository";
 import { sharedConfig } from "shared/config/sharedConfig";
 import { MongoDbError } from "shared/typings/api/errors";
 import {
@@ -32,9 +34,17 @@ import {
 
 const { directSignupAlwaysOpenIds } = sharedConfig;
 
+const generateGroupCode = () => {
+  const baseCode = randomBytes(5).toString("hex").substring(0, 9);
+  return [
+    baseCode.slice(0, 3),
+    baseCode.slice(3, 6),
+    baseCode.slice(6, 9),
+  ].join("-");
+};
+
 export const createGroup = async (
   username: string,
-  groupCode: string,
 ): Promise<PostCreateGroupResponse | PostCreateGroupError> => {
   const signupsResult = await findUserSignups(username);
   if (isErrorResult(signupsResult)) {
@@ -76,29 +86,40 @@ export const createGroup = async (
     };
   }
 
-  // Check if group exists
-  const findGroupResponseResult = await findGroup(groupCode, username);
-  if (isErrorResult(findGroupResponseResult)) {
+  // Check if group exists or user is already in a group
+  const userResult = await findUser(username);
+  if (isErrorResult(userResult)) {
     return {
-      message: "Own group already exists",
+      message: "Error finding user when checking if a group exists",
       status: "error",
-      errorId: "groupExists",
+      errorId: "errorFindingUser",
     };
   }
 
-  const findGroupResponse = unwrapResult(findGroupResponseResult);
-
-  if (findGroupResponse) {
-    // Group exists
+  const userResponse = unwrapResult(userResult);
+  if (!userResponse) {
     return {
-      message: "Own group already exists",
+      message: "No matching user found",
+      status: "error",
+      errorId: "errorFindingUser",
+    };
+  }
+
+  if (userResponse.groupCode !== "0" || userResponse.groupCreatorCode !== "0") {
+    return {
+      message: "User has a group or is a member of a group",
       status: "error",
       errorId: "groupExists",
     };
   }
 
   // No existing group, create
-  const saveGroupResponseResult = await saveGroupCode(groupCode, username);
+  const newGroupCreatorCode = generateGroupCode();
+
+  const saveGroupResponseResult = await saveGroupCreatorCode(
+    newGroupCreatorCode,
+    username,
+  );
   if (isErrorResult(saveGroupResponseResult)) {
     return {
       message: "Save group failure",
@@ -127,17 +148,7 @@ export const createGroup = async (
 export const joinGroup = async (
   username: string,
   groupCode: string,
-  ownSerial: string,
 ): Promise<PostJoinGroupResponse | PostJoinGroupError> => {
-  // Cannot join own group
-  if (ownSerial === groupCode) {
-    return {
-      message: "Cannot join own group",
-      status: "error",
-      errorId: "cannotJoinOwnGroup",
-    };
-  }
-
   const signupsResult = await findUserSignups(username);
   if (isErrorResult(signupsResult)) {
     return {
@@ -178,44 +189,40 @@ export const joinGroup = async (
     };
   }
 
-  // Check if code is valid
-  const findSerialResponseResult = await findUserSerial({
-    serial: groupCode,
-  });
-  if (isErrorResult(findSerialResponseResult)) {
+  // Check if user is already in a group (or has created a group)
+  const userResult = await findUser(username);
+  if (isErrorResult(userResult)) {
     return {
-      message: "Error finding serial",
+      message: "Error finding user",
       status: "error",
-      errorId: "invalidGroupCode",
+      errorId: "errorFindingUser",
     };
   }
 
-  const findSerialResponse = unwrapResult(findSerialResponseResult);
-
-  if (!findSerialResponse?.serial) {
-    // Invalid code
+  const userResponse = unwrapResult(userResult);
+  if (
+    userResponse?.groupCode !== "0" ||
+    userResponse.groupCreatorCode !== "0"
+  ) {
     return {
-      message: "Invalid group code",
+      message: "User has a group or is a member of a group",
       status: "error",
-      errorId: "invalidGroupCode",
+      errorId: "alreadyInGroup",
     };
   }
 
-  // Check if group with code exists
-  const creatorUsername = findSerialResponse.username;
-  const findGroupResponseResult = await findGroup(groupCode, creatorUsername);
-  if (isErrorResult(findGroupResponseResult)) {
+  // Check if given group exists
+  const groupExistsResult = await checkGroupExists(groupCode);
+  if (isErrorResult(groupExistsResult)) {
     return {
-      message: "Error finding group",
+      message: "Error in finding group",
       status: "error",
-      errorId: "groupDoesNotExist",
+      errorId: "unknown",
     };
   }
 
-  const findGroupResponse = unwrapResult(findGroupResponseResult);
-
-  if (!findGroupResponse) {
-    // No existing group, cannot join
+  const groupExistsResponse = unwrapResult(groupExistsResult);
+  if (!groupExistsResponse) {
     return {
       message: "Group does not exist",
       status: "error",
@@ -224,7 +231,6 @@ export const joinGroup = async (
   }
 
   // Clean previous signups
-
   const saveSignedGamesResult = await saveSignedGames({
     signedGames: [],
     username,
@@ -313,7 +319,7 @@ export const closeGroup = async (
     (groupMember) => groupMember.username === username,
   );
 
-  if (groupCreator?.serial !== groupCode) {
+  if (groupCreator?.groupCreatorCode !== groupCode) {
     return {
       message: "Only group creator can close group",
       status: "error",
@@ -335,6 +341,19 @@ export const closeGroup = async (
   if (someUpdateFailed) {
     return {
       message: "Unknown error",
+      status: "error",
+      errorId: "unknown",
+    };
+  }
+
+  const removeGroupCreationCodeResult = await saveGroupCreatorCode(
+    "0",
+    groupCreator.username,
+  );
+
+  if (isErrorResult(removeGroupCreationCodeResult)) {
+    return {
+      message: "Error deleting group creation code",
       status: "error",
       errorId: "unknown",
     };
@@ -363,6 +382,7 @@ export const fetchGroup = async (
 
   const returnData = findGroupResults.map((result) => ({
     groupCode: result.groupCode,
+    groupCreatorCode: result.groupCreatorCode,
     signedGames: result.signedGames,
     serial: result.serial,
     username: result.username,

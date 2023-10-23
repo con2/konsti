@@ -2,7 +2,6 @@ import dayjs from "dayjs";
 import { GroupMember } from "shared/typings/models/groups";
 import { Game } from "shared/typings/models/game";
 import { getTimeNow } from "client/utils/getTimeNow";
-import { getIsGroupCreator } from "client/views/group/groupUtils";
 import { SelectedGame } from "shared/typings/models/user";
 
 export const getUpcomingGames = (
@@ -36,7 +35,7 @@ const getGroupCreator = (
   groupMembers: readonly GroupMember[],
 ): GroupMember | null => {
   const groupCreator = groupMembers.find(
-    (member) => member.serial === member.groupCode,
+    (member) => member.groupCreatorCode === member.groupCode,
   );
   if (!groupCreator) {
     return null;
@@ -46,21 +45,17 @@ const getGroupCreator = (
 
 interface GetSignedGamesParams {
   signedGames: readonly SelectedGame[];
-  groupCode: string;
-  serial: string;
+  isGroupCreator: boolean;
   groupMembers: readonly GroupMember[];
   getAllGames: boolean;
 }
 
 export const getSignedGames = ({
   signedGames,
-  groupCode,
-  serial,
+  isGroupCreator,
   groupMembers,
   getAllGames,
 }: GetSignedGamesParams): readonly SelectedGame[] => {
-  const isGroupCreator = getIsGroupCreator(groupCode, serial);
-
   if (isGroupCreator) {
     return getAllGames ? signedGames : getUpcomingSignedGames(signedGames);
   }
