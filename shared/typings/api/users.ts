@@ -16,6 +16,8 @@ import { EventLogItem } from "shared/typings/models/eventLog";
 export interface GetUserResponse extends ApiResult {
   games: UserGames;
   serial: string;
+  groupCode: string;
+  groupCreatorCode: string;
   username: string;
   eventLogItems: EventLogItem[];
 }

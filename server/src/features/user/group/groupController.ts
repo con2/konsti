@@ -6,8 +6,6 @@ import {
   GetGroupRequestSchema,
   PostCloseGroupRequest,
   PostCloseGroupRequestSchema,
-  PostCreateGroupRequest,
-  PostCreateGroupRequestSchema,
   PostJoinGroupRequest,
   PostJoinGroupRequestSchema,
 } from "shared/typings/api/groups";
@@ -22,7 +20,7 @@ import {
 } from "server/features/user/group/groupService";
 
 export const postCreateGroup = async (
-  req: Request<{}, {}, PostCreateGroupRequest>,
+  req: Request<{}, {}, {}>,
   res: Response,
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.GROUP}`);
@@ -35,17 +33,7 @@ export const postCreateGroup = async (
     return res.sendStatus(401);
   }
 
-  const result = PostCreateGroupRequestSchema.safeParse(req.body);
-  if (!result.success) {
-    logger.error(
-      "%s",
-      new Error(`Error validating postCreateGroup body: ${result.error}`),
-    );
-    return res.sendStatus(422);
-  }
-
-  const { groupCode } = result.data;
-  const response = await createGroup(username, groupCode);
+  const response = await createGroup(username);
   return res.json(response);
 };
 
@@ -72,8 +60,8 @@ export const postJoinGroup = async (
     return res.sendStatus(422);
   }
 
-  const { groupCode, ownSerial } = result.data;
-  const response = await joinGroup(username, groupCode, ownSerial);
+  const { groupCode } = result.data;
+  const response = await joinGroup(username, groupCode);
   return res.json(response);
 };
 

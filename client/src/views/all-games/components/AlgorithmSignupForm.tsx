@@ -12,7 +12,6 @@ import { SelectedGame } from "shared/typings/models/user";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { isAlreadySigned } from "./allGamesUtils";
 import { Button, ButtonStyle } from "client/components/Button";
-import { getIsGroupCreator } from "client/views/group/groupUtils";
 import { ErrorMessage } from "client/components/ErrorMessage";
 import { CancelSignupForm } from "client/views/all-games/components/CancelSignupForm";
 import { getWeekdayAndTime } from "client/utils/timeFormatter";
@@ -40,10 +39,8 @@ export const AlgorithmSignupForm = ({
   const dispatch = useAppDispatch();
 
   const loggedIn = useAppSelector((state) => state.login.loggedIn);
-  const serial = useAppSelector((state) => state.login.serial);
-  const groupCode = useAppSelector((state) => state.group.groupCode);
   const groupMembers = useAppSelector((state) => state.group.groupMembers);
-  const isGroupCreator = getIsGroupCreator(groupCode, serial);
+  const isGroupCreator = useAppSelector((state) => state.group.isGroupCreator);
 
   const [loading, setLoading] = useState(false);
   const [signupFormOpen, setSignupFormOpen] = useState(false);

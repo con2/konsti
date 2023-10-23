@@ -10,6 +10,7 @@ export interface NewUser {
   passwordHash: string;
   userGroup?: UserGroup;
   groupCode?: string;
+  groupCreatorCode?: string;
 }
 
 export interface SignupWish {

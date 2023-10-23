@@ -125,7 +125,9 @@ const signupGroup = async (
   users: readonly User[],
 ): Promise<void> => {
   // Generate random signup data for the group creator
-  const groupCreator = users.find((user) => user.serial === user.groupCode);
+  const groupCreator = users.find(
+    (user) => user.groupCreatorCode === user.groupCode,
+  );
   if (!groupCreator) {
     // eslint-disable-next-line no-restricted-syntax -- Data generation script
     throw new Error("Error getting group creator");

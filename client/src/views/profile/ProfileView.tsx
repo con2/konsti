@@ -15,15 +15,19 @@ export const ProfileView = (): ReactElement => {
   const serial = useAppSelector((state) => state.login.serial);
   const loginProvider = useAppSelector((state) => state.admin.loginProvider);
 
+  const isLocalLogin = loginProvider === LoginProvider.LOCAL;
+
   return (
     <Container>
       <UserInfoContainer>
         <span>
           <b>{t("user")}:</b> {username}
         </span>
-        <span>
-          <b>{t("code")}:</b> {serial}
-        </span>
+        {isLocalLogin && (
+          <span>
+            <b>{t("code")}:</b> {serial}
+          </span>
+        )}
         <StyledButton
           buttonStyle={ButtonStyle.SECONDARY}
           onClick={() => navigate("/logout")}

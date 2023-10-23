@@ -14,15 +14,10 @@ import { ButtonGroup } from "client/components/ButtonGroup";
 import { ControlledInput } from "client/components/ControlledInput";
 
 interface Props {
-  username: string;
-  serial: string;
   disabled: boolean;
 }
 
-export const NotInGroupActions = ({
-  serial,
-  disabled,
-}: Props): ReactElement => {
+export const NotInGroupActions = ({ disabled }: Props): ReactElement => {
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
 
@@ -49,11 +44,7 @@ export const NotInGroupActions = ({
   const createGroup = async (): Promise<void> => {
     setLoading(true);
 
-    const errorMessage = await dispatch(
-      submitCreateGroup({
-        groupCode: serial,
-      }),
-    );
+    const errorMessage = await dispatch(submitCreateGroup());
 
     if (errorMessage) {
       setServerError(errorMessage);
@@ -69,10 +60,7 @@ export const NotInGroupActions = ({
     setLoading(true);
 
     const errorMessage = await dispatch(
-      submitJoinGroup({
-        groupCode: joinGroupValue,
-        ownSerial: serial,
-      }),
+      submitJoinGroup({ groupCode: joinGroupValue.trim() }),
     );
 
     if (errorMessage) {

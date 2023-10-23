@@ -4,27 +4,22 @@ import { GroupMember } from "shared/typings/models/groups";
 
 // POST: Create group
 
-export const PostCreateGroupRequestSchema = z.object({
-  groupCode: z.string(),
-});
-
-export type PostCreateGroupRequest = z.infer<
-  typeof PostCreateGroupRequestSchema
->;
-
 export interface PostCreateGroupResponse extends ApiResult {
   groupCode: string;
 }
 
 export interface PostCreateGroupError extends ApiError {
-  errorId: "unknown" | "groupExists" | "userHasSignedGames";
+  errorId:
+    | "unknown"
+    | "groupExists"
+    | "userHasSignedGames"
+    | "errorFindingUser";
 }
 
 // POST: Join group
 
 export const PostJoinGroupRequestSchema = z.object({
   groupCode: z.string(),
-  ownSerial: z.string(),
 });
 
 export type PostJoinGroupRequest = z.infer<typeof PostJoinGroupRequestSchema>;
@@ -34,11 +29,12 @@ export type PostJoinGroupResponse = PostCreateGroupResponse;
 export interface PostJoinGroupError extends ApiError {
   errorId:
     | "unknown"
-    | "cannotJoinOwnGroup"
+    | "alreadyInGroup"
     | "invalidGroupCode"
     | "groupDoesNotExist"
     | "removePreviousSignupsFailed"
-    | "userHasSignedGames";
+    | "userHasSignedGames"
+    | "errorFindingUser";
 }
 
 // POST: Leave group

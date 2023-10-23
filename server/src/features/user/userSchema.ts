@@ -9,6 +9,7 @@ const UserSchema = new mongoose.Schema(
     password: String,
     userGroup: String,
     serial: String,
+    groupCreatorCode: String,
     groupCode: String,
     favoritedGames: [{ type: mongoose.Schema.Types.ObjectId, ref: "Game" }],
     signedGames: [

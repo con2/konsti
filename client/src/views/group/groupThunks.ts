@@ -13,7 +13,6 @@ import {
 } from "client/views/group/groupSlice";
 import {
   PostCloseGroupRequest,
-  PostCreateGroupRequest,
   PostJoinGroupRequest,
 } from "shared/typings/api/groups";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
@@ -24,11 +23,11 @@ export enum PostCreateGroupErrorMessage {
   CREATOR_HAS_SIGNED_GAMES = "group.error.creatorHasSignedGames",
 }
 
-export const submitCreateGroup = (
-  group: PostCreateGroupRequest,
-): AppThunk<Promise<PostCreateGroupErrorMessage | undefined>> => {
+export const submitCreateGroup = (): AppThunk<
+  Promise<PostCreateGroupErrorMessage | undefined>
+> => {
   return async (dispatch): Promise<PostCreateGroupErrorMessage | undefined> => {
-    const createGroupResponse = await postCreateGroup(group);
+    const createGroupResponse = await postCreateGroup();
 
     if (createGroupResponse.status === "error") {
       switch (createGroupResponse.errorId) {
@@ -36,6 +35,8 @@ export const submitCreateGroup = (
           return PostCreateGroupErrorMessage.GROUP_EXISTS;
         case "userHasSignedGames":
           return PostCreateGroupErrorMessage.CREATOR_HAS_SIGNED_GAMES;
+        case "errorFindingUser":
+          return PostCreateGroupErrorMessage.UNKNOWN;
         case "unknown":
           return PostCreateGroupErrorMessage.UNKNOWN;
         default:
@@ -45,7 +46,12 @@ export const submitCreateGroup = (
 
     if (createGroupResponse.status === "success") {
       dispatch(submitGetGroup(createGroupResponse.groupCode));
-      dispatch(submitUpdateGroupCodeAsync(createGroupResponse.groupCode));
+      dispatch(
+        submitUpdateGroupCodeAsync({
+          groupCode: createGroupResponse.groupCode,
+          isGroupCreator: true,
+        }),
+      );
     }
   };
 };
@@ -57,6 +63,7 @@ export enum PostJoinGroupErrorMessage {
   CANNOT_JOIN_OWN_GROUP = "group.error.cannotUseOwnSerial",
   REMOVE_PREVIOUS_SIGNUPS_FAILED = "group.error.removePreviousSignupsFailed",
   USER_HAS_SIGNED_GAMES = "group.error.userHasSignedGames",
+  ALREADY_IN_GROUP = "group.error.alreadyInGroup",
 }
 
 export const submitJoinGroup = (
@@ -71,12 +78,14 @@ export const submitJoinGroup = (
           return PostJoinGroupErrorMessage.INVALID_GROUP_CODE;
         case "groupDoesNotExist":
           return PostJoinGroupErrorMessage.GROUP_NOT_EXIST;
-        case "cannotJoinOwnGroup":
-          return PostJoinGroupErrorMessage.CANNOT_JOIN_OWN_GROUP;
         case "removePreviousSignupsFailed":
           return PostJoinGroupErrorMessage.REMOVE_PREVIOUS_SIGNUPS_FAILED;
         case "userHasSignedGames":
           return PostJoinGroupErrorMessage.USER_HAS_SIGNED_GAMES;
+        case "errorFindingUser":
+          return PostJoinGroupErrorMessage.UNKNOWN;
+        case "alreadyInGroup":
+          return PostJoinGroupErrorMessage.ALREADY_IN_GROUP;
         case "unknown":
           return PostJoinGroupErrorMessage.UNKNOWN;
         default:
@@ -86,7 +95,12 @@ export const submitJoinGroup = (
 
     if (joinGroupResponse.status === "success") {
       dispatch(submitGetGroup(joinGroupResponse.groupCode));
-      dispatch(submitUpdateGroupCodeAsync(joinGroupResponse.groupCode));
+      dispatch(
+        submitUpdateGroupCodeAsync({
+          groupCode: joinGroupResponse.groupCode,
+          isGroupCreator: false,
+        }),
+      );
     }
   };
 };

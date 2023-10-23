@@ -21,6 +21,7 @@ import {
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 import { NewFavorite } from "shared/typings/models/user";
 import { submitUpdateEventLogItemsAsync } from "client/views/login/loginSlice";
+import { submitUpdateGroupCodeAsync } from "client/views/group/groupSlice";
 
 export const submitGetUser = (username: string): AppThunk => {
   return async (dispatch): Promise<void> => {
@@ -45,6 +46,13 @@ export const submitGetUser = (username: string): AppThunk => {
       );
 
       dispatch(submitUpdateEventLogItemsAsync(eventLogItems));
+
+      dispatch(
+        submitUpdateGroupCodeAsync({
+          groupCode: getUserResponse.groupCode,
+          isGroupCreator: getUserResponse.groupCreatorCode !== "0",
+        }),
+      );
     }
   };
 };

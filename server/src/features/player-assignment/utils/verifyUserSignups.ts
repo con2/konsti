@@ -92,7 +92,7 @@ const getGroupCreator = (
   // User is group member, not group creators -> find group creator
   if (user.groupCode !== "0" && user.groupCode !== user.serial) {
     const groupCreator = users.find(
-      (creator) => creator.serial === user.groupCode,
+      (creator) => creator.groupCreatorCode === user.groupCode,
     );
 
     if (groupCreator) {
