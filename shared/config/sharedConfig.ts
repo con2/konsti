@@ -20,8 +20,8 @@ export interface SharedConfig {
   enableGroups: boolean;
   defaultSignupStrategy: SignupStrategy;
   defaultLoginProvider: LoginProvider;
-  CONVENTION_NAME: string;
-  CONVENTION_YEAR: string;
+  conventionName: string;
+  conventionYear: string;
   CONVENTION_START_TIME: string;
   DIRECT_SIGNUP_START: number;
   PRE_SIGNUP_START: number;
@@ -321,8 +321,8 @@ export const sharedConfig: SharedConfig = {
   PHASE_GAP: 15, // minutes
 
   // Convention info
-  CONVENTION_NAME: ConventionName.TRACON_HITPOINT,
-  CONVENTION_YEAR: "2023",
+  conventionName: ConventionName.HITPOINT,
+  conventionYear: "2023",
 
   // Sentry
   tracesSampleRate: 0.0,
