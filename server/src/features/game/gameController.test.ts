@@ -47,7 +47,7 @@ import {
   KompassiGameStyle,
   KompassiGenre,
   KompassiTag,
-} from "shared/typings/models/kompassiGame/kompassiGame";
+} from "shared/typings/models/kompassiGame/kompassiGameRopecon";
 import { GameStyle, Genre, Tag } from "shared/typings/models/game";
 import { logger } from "server/utils/logger";
 import { SignupQuestionType } from "shared/typings/models/settings";

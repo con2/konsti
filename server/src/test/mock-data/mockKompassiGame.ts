@@ -7,7 +7,7 @@ import {
   KompassiProgramType,
   KompassiSignupType,
   KompassiTag,
-} from "shared/typings/models/kompassiGame/kompassiGame";
+} from "shared/typings/models/kompassiGame/kompassiGameRopecon";
 
 export const testKompassiGame: KompassiGame = {
   title: testGame.title,
