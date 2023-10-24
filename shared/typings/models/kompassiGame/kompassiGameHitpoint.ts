@@ -10,7 +10,7 @@ enum KompassiPhysicalPlayHitpoint {
   LOTS = "lots",
 }
 
-const KompassiGameSchemaHitpoint = z.object({
+export const KompassiGameSchemaHitpoint = z.object({
   identifier: z.string(),
   title: z.string().catch(""),
   description: z.string().catch(""),
