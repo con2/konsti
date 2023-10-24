@@ -18,7 +18,7 @@ export interface ServerConfig {
   jwtSecretKeyAdmin: string;
   jwtSecretKeyHelp: string;
   allowedCorsOrigins: readonly string[];
-  dataUri: string;
+  dataUri: DataUri;
   GROUP_ASSIGNMENT_ROUNDS: number;
   PADG_ASSIGNMENT_ROUNDS: number;
   RANDOM_ASSIGNMENT_ROUNDS: number;
