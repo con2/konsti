@@ -44,9 +44,9 @@ import {
 } from "server/features/signup/signupRepository";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 import {
-  KompassiGameStyle,
-  KompassiGenre,
-  KompassiTag,
+  KompassiGameStyleRopecon,
+  KompassiGenreRopecon,
+  KompassiTagRopecon,
 } from "shared/typings/models/kompassiGame/kompassiGameRopecon";
 import { GameStyle, Genre, Tag } from "shared/typings/models/game";
 import { logger } from "server/utils/logger";
@@ -317,7 +317,7 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
         {
           ...testKompassiGame,
           tags: [
-            KompassiTag.ALOITTELIJAYSTÄVÄLLINEN,
+            KompassiTagRopecon.ALOITTELIJAYSTÄVÄLLINEN,
             // @ts-expect-error: Test
             "invalid-tag",
             // @ts-expect-error: Test
@@ -328,7 +328,7 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
             {},
           ],
           genres: [
-            KompassiGenre.ADVENTURE,
+            KompassiGenreRopecon.ADVENTURE,
             // @ts-expect-error: Test
             "invalid-genre",
             // @ts-expect-error: Test
@@ -339,7 +339,7 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
             {},
           ],
           styles: [
-            KompassiGameStyle.CHARACTER_DRIVEN,
+            KompassiGameStyleRopecon.CHARACTER_DRIVEN,
             // @ts-expect-error: Test
             "invalid-style",
             // @ts-expect-error: Test

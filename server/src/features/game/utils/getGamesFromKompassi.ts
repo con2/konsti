@@ -6,12 +6,12 @@ import _ from "lodash";
 import { logger } from "server/utils/logger";
 import { config } from "shared/config";
 import {
-  KompassiGame,
-  KompassiGameSchema,
-  KompassiProgramType,
-  KompassiSignupType,
-  experiencePointAndOtherProgramTypes,
-  tournamentProgramTypes,
+  KompassiGameRopecon,
+  KompassiGameSchemaRopecon,
+  KompassiProgramTypeRopecon,
+  KompassiSignupTypeRopecon,
+  experiencePointAndOtherProgramTypesRopecon,
+  tournamentProgramTypesRopecon,
 } from "shared/typings/models/kompassiGame/kompassiGameRopecon";
 import {
   Result,
@@ -22,12 +22,12 @@ import {
 } from "shared/utils/result";
 import { KompassiError } from "shared/typings/api/errors";
 
-type EventProgramItem = KompassiGame;
+type EventProgramItem = KompassiGameRopecon;
 
 const { useLocalProgramFile, localKompassiFile } = config.server();
 
 export const getGamesFromKompassi = async (): Promise<
-  Result<readonly KompassiGame[], KompassiError>
+  Result<readonly KompassiGameRopecon[], KompassiError>
 > => {
   const eventProgramItemsResult =
     await testHelperWrapper.getEventProgramItems();
@@ -108,7 +108,10 @@ const checkUnknownKeys = (programItems: EventProgramItem[]): void => {
   const unknownKeys: string[] = programItems.flatMap((programItem) => {
     return Object.keys(programItem).filter(
       (key) =>
-        !Object.prototype.hasOwnProperty.call(KompassiGameSchema.shape, key),
+        !Object.prototype.hasOwnProperty.call(
+          KompassiGameSchemaRopecon.shape,
+          key,
+        ),
     );
   });
 
@@ -127,7 +130,7 @@ const checkUnknownKeys = (programItems: EventProgramItem[]): void => {
 const parseProgramItem = (
   programItem: EventProgramItem,
 ): EventProgramItem | undefined => {
-  const result = KompassiGameSchema.safeParse(programItem);
+  const result = KompassiGameSchemaRopecon.safeParse(programItem);
 
   if (result.success) {
     return result.data;
@@ -153,7 +156,7 @@ const parseProgramItem = (
 
 const getGamesFromFullProgram = (
   programItems: EventProgramItem[],
-): KompassiGame[] => {
+): KompassiGameRopecon[] => {
   const matchingProgramItems: EventProgramItem[] = programItems.flatMap(
     (programItem) => {
       // These program items are hand picked to be exported from Kompassi
@@ -163,25 +166,27 @@ const getGamesFromFullProgram = (
 
       // Take program items with valid program type
       if (
-        !Object.values(KompassiProgramType).includes(programItem.category_title)
+        !Object.values(KompassiProgramTypeRopecon).includes(
+          programItem.category_title,
+        )
       ) {
         return [];
       }
 
       // Take 'Experience Point' and 'Other' program items where "ropecon2023_signuplist": "konsti"
       if (
-        experiencePointAndOtherProgramTypes.includes(
+        experiencePointAndOtherProgramTypesRopecon.includes(
           programItem.category_title,
         ) &&
-        programItem.ropecon2023_signuplist !== KompassiSignupType.KONSTI
+        programItem.ropecon2023_signuplist !== KompassiSignupTypeRopecon.KONSTI
       ) {
         return [];
       }
 
       // Take 'Tournament' program items where "ropecon2023_signuplist": "konsti"
       if (
-        tournamentProgramTypes.includes(programItem.category_title) &&
-        programItem.ropecon2023_signuplist !== KompassiSignupType.KONSTI
+        tournamentProgramTypesRopecon.includes(programItem.category_title) &&
+        programItem.ropecon2023_signuplist !== KompassiSignupTypeRopecon.KONSTI
       ) {
         return [];
       }
@@ -194,7 +199,7 @@ const getGamesFromFullProgram = (
 
   checkUnknownKeys(matchingProgramItems);
 
-  const kompassiGames: KompassiGame[] = matchingProgramItems.flatMap(
+  const kompassiGames: KompassiGameRopecon[] = matchingProgramItems.flatMap(
     (programItem) => {
       const result = parseProgramItem(programItem);
       return result ?? [];

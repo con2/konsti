@@ -2,7 +2,7 @@ import { z } from "zod";
 import _ from "lodash";
 import { logger } from "server/utils/logger";
 
-export enum KompassiProgramType {
+export enum KompassiProgramTypeRopecon {
   TABLETOP_RPG = "Roolipeli / Pen & Paper RPG",
   LARP = "LARP",
   TOURNAMENT_BOARD_GAME = "Turnaukset: lautapelit / Tournament: Board games",
@@ -21,30 +21,30 @@ export enum KompassiProgramType {
   MINIATURE_DEMO = "Figupelit: demotus / Miniature wargames: Demo game",
 }
 
-export const experiencePointAndOtherProgramTypes = [
-  KompassiProgramType.EXPERIENCE_POINT_DEMO,
-  KompassiProgramType.EXPERIENCE_POINT_OTHER,
-  KompassiProgramType.EXPERIENCE_POINT_OPEN,
-  KompassiProgramType.OTHER_GAME_PROGRAM,
-  KompassiProgramType.OTHER_PROGRAM,
-  KompassiProgramType.MINIATURE_DEMO,
+export const experiencePointAndOtherProgramTypesRopecon = [
+  KompassiProgramTypeRopecon.EXPERIENCE_POINT_DEMO,
+  KompassiProgramTypeRopecon.EXPERIENCE_POINT_OTHER,
+  KompassiProgramTypeRopecon.EXPERIENCE_POINT_OPEN,
+  KompassiProgramTypeRopecon.OTHER_GAME_PROGRAM,
+  KompassiProgramTypeRopecon.OTHER_PROGRAM,
+  KompassiProgramTypeRopecon.MINIATURE_DEMO,
 ];
 
-export const tournamentProgramTypes = [
-  KompassiProgramType.TOURNAMENT_BOARD_GAME,
-  KompassiProgramType.TOURNAMENT_CARD_GAME,
-  KompassiProgramType.TOURNAMENT_MINIATURE_WARGAME,
-  KompassiProgramType.TOURNAMENT_OTHER,
+export const tournamentProgramTypesRopecon = [
+  KompassiProgramTypeRopecon.TOURNAMENT_BOARD_GAME,
+  KompassiProgramTypeRopecon.TOURNAMENT_CARD_GAME,
+  KompassiProgramTypeRopecon.TOURNAMENT_MINIATURE_WARGAME,
+  KompassiProgramTypeRopecon.TOURNAMENT_OTHER,
 ];
 
-export const workshopProgramTypes = [
-  KompassiProgramType.WORKSHOP_CRAFTS,
-  KompassiProgramType.WORKSHOP_MINIATURE,
-  KompassiProgramType.WORKSHOP_MUSIC,
-  KompassiProgramType.WORKSHOP_OTHER,
+export const workshopProgramTypesRopecon = [
+  KompassiProgramTypeRopecon.WORKSHOP_CRAFTS,
+  KompassiProgramTypeRopecon.WORKSHOP_MINIATURE,
+  KompassiProgramTypeRopecon.WORKSHOP_MUSIC,
+  KompassiProgramTypeRopecon.WORKSHOP_OTHER,
 ];
 
-export enum KompassiTag {
+export enum KompassiTagRopecon {
   IN_ENGLISH = "in-english",
   SOPII_LAPSILLE = "sopii-lapsille",
   VAIN_TAYSI_IKAISILLE = "vain-taysi-ikaisille",
@@ -73,7 +73,7 @@ export enum KompassiTag {
   YOUTUBE = "youtube",
 }
 
-export enum KompassiGenre {
+export enum KompassiGenreRopecon {
   FANTASY = "fantasy",
   SCIFI = "scifi",
   HISTORICAL = "historical",
@@ -87,7 +87,7 @@ export enum KompassiGenre {
   ADVENTURE = "adventure",
 }
 
-export enum KompassiGameStyle {
+export enum KompassiGameStyleRopecon {
   SERIOUS = "serious",
   LIGHT = "light",
   RULES_HEAVY = "rules_heavy",
@@ -97,24 +97,24 @@ export enum KompassiGameStyle {
   COMBAT_DRIVEN = "combat_driven",
 }
 
-export enum KompassiSignupType {
+export enum KompassiSignupTypeRopecon {
   NONE = "none",
   KONSTI = "konsti",
   OTHER = "othersign",
 }
 
-export enum KompassiLanguage {
+export enum KompassiLanguageRopecon {
   FINNISH = "finnish",
   ENGLISH = "english",
   FINNISH_OR_ENGLISH = "finnish_or_english",
   LANGUAGE_FREE = "language_free",
 }
 
-export const KompassiGameSchema = z.object({
+export const KompassiGameSchemaRopecon = z.object({
   identifier: z.string(),
   title: z.string().catch(""),
   description: z.string().catch(""),
-  category_title: z.nativeEnum(KompassiProgramType),
+  category_title: z.nativeEnum(KompassiProgramTypeRopecon),
   formatted_hosts: z.string().catch(""),
   room_name: z.string().catch(""),
   length: z.number().catch(0),
@@ -124,37 +124,37 @@ export const KompassiGameSchema = z.object({
   min_players: z.number().catch(0),
   max_players: z.number().catch(0),
 
-  tags: z.array(z.nativeEnum(KompassiTag)).catch((ctx) => {
+  tags: z.array(z.nativeEnum(KompassiTagRopecon)).catch((ctx) => {
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (!ctx.input || !Array.isArray(ctx.input)) {
       return [];
     }
     const [valid, invalid] = _.partition(ctx.input, (tag) =>
-      Object.values(KompassiTag).includes(tag),
+      Object.values(KompassiTagRopecon).includes(tag),
     );
     logger.error("%s", new Error(`Invalid tags: ${JSON.stringify(invalid)}`));
     return valid;
   }),
 
-  genres: z.array(z.nativeEnum(KompassiGenre)).catch((ctx) => {
+  genres: z.array(z.nativeEnum(KompassiGenreRopecon)).catch((ctx) => {
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (!ctx.input || !Array.isArray(ctx.input)) {
       return [];
     }
     const [valid, invalid] = _.partition(ctx.input, (genre) =>
-      Object.values(KompassiGenre).includes(genre),
+      Object.values(KompassiGenreRopecon).includes(genre),
     );
     logger.error("%s", new Error(`Invalid genres: ${JSON.stringify(invalid)}`));
     return valid;
   }),
 
-  styles: z.array(z.nativeEnum(KompassiGameStyle)).catch((ctx) => {
+  styles: z.array(z.nativeEnum(KompassiGameStyleRopecon)).catch((ctx) => {
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (!ctx.input || !Array.isArray(ctx.input)) {
       return [];
     }
     const [valid, invalid] = _.partition(ctx.input, (style) =>
-      Object.values(KompassiGameStyle).includes(style),
+      Object.values(KompassiGameStyleRopecon).includes(style),
     );
     logger.error("%s", new Error(`Invalid styles: ${JSON.stringify(invalid)}`));
     return valid;
@@ -195,8 +195,8 @@ export const KompassiGameSchema = z.object({
     .catch(false),
   ropecon2023_other_accessibility_information: z.string().catch(""),
   ropecon2023_signuplist: z
-    .nativeEnum(KompassiSignupType)
-    .catch(KompassiSignupType.NONE), // Signup type: no signup, Konsti, other
+    .nativeEnum(KompassiSignupTypeRopecon)
+    .catch(KompassiSignupTypeRopecon.NONE), // Signup type: no signup, Konsti, other
   ropecon2023_workshop_fee: z
     .string()
     .transform((val) => {
@@ -206,7 +206,7 @@ export const KompassiGameSchema = z.object({
       return val;
     })
     .catch(""),
-  ropecon2023_language: z.nativeEnum(KompassiLanguage),
+  ropecon2023_language: z.nativeEnum(KompassiLanguageRopecon),
   ropecon2023_suitable_for_all_ages: z.boolean().catch(false), // tag
   ropecon2023_aimed_at_children_under_13: z.boolean().catch(false), // tag
   ropecon2023_aimed_at_children_between_13_17: z.boolean().catch(false), // tag
@@ -217,4 +217,4 @@ export const KompassiGameSchema = z.object({
   ropecon2023_celebratory_year: z.boolean().catch(false), // tag
 });
 
-export type KompassiGame = z.infer<typeof KompassiGameSchema>;
+export type KompassiGameRopecon = z.infer<typeof KompassiGameSchemaRopecon>;
