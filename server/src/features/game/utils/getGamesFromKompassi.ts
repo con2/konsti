@@ -12,7 +12,7 @@ import {
   KompassiSignupType,
   experiencePointAndOtherProgramTypes,
   tournamentProgramTypes,
-} from "shared/typings/models/kompassiGame";
+} from "shared/typings/models/kompassiGame/kompassiGame";
 import {
   Result,
   isErrorResult,

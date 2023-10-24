@@ -17,7 +17,7 @@ import {
   KompassiProgramType,
   KompassiTag,
   workshopProgramTypes,
-} from "shared/typings/models/kompassiGame";
+} from "shared/typings/models/kompassiGame/kompassiGame";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 import { config } from "shared/config";
 

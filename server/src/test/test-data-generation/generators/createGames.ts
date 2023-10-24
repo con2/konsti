@@ -15,7 +15,7 @@ import {
   KompassiTag,
   tournamentProgramTypes,
   workshopProgramTypes,
-} from "shared/typings/models/kompassiGame";
+} from "shared/typings/models/kompassiGame/kompassiGame";
 import { Result } from "shared/utils/result";
 import { MongoDbError } from "shared/typings/api/errors";
 
