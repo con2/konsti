@@ -1,4 +1,4 @@
-import { getGamesFromKompassi } from "server/features/game/utils/getGamesFromKompassi";
+import { getGamesFromKompassiRopecon } from "server/features/game/utils/getGamesFromKompassiRopecon";
 import { updateGamePopularity } from "server/features/game-popularity/updateGamePopularity";
 import { config } from "shared/config";
 import { kompassiGameMapper } from "server/utils/kompassiGameMapper";
@@ -15,7 +15,7 @@ import { isErrorResult, unwrapResult } from "shared/utils/result";
 export const updateGames = async (): Promise<
   PostUpdateGamesResponse | PostUpdateGamesError
 > => {
-  const kompassiGamesResult = await getGamesFromKompassi();
+  const kompassiGamesResult = await getGamesFromKompassiRopecon();
   if (isErrorResult(kompassiGamesResult)) {
     return {
       message: "Loading games from Kompassi failed",

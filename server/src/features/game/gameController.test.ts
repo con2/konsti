@@ -18,7 +18,7 @@ import { startServer, closeServer } from "server/utils/server";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { getJWT } from "server/utils/jwt";
 import { UserGroup } from "shared/typings/models/user";
-import { testHelperWrapper } from "server/features/game/utils/getGamesFromKompassi";
+import { testHelperWrapper } from "server/features/game/utils/getGamesFromKompassiRopecon";
 import {
   testKompassiGame,
   testKompassiGame2,

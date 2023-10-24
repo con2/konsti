@@ -6,7 +6,7 @@ import {
   createHelpUser,
   createTestUsers,
 } from "server/test/test-data-generation/generators/createUsers";
-import { getGamesFromKompassi } from "server/features/game/utils/getGamesFromKompassi";
+import { getGamesFromKompassiRopecon } from "server/features/game/utils/getGamesFromKompassiRopecon";
 import { kompassiGameMapper } from "server/utils/kompassiGameMapper";
 import { isErrorResult, unwrapResult } from "shared/utils/result";
 import { cleanupDatabase } from "server/utils/cleanupDatabse";
@@ -41,7 +41,7 @@ const initializeDatabase = async (): Promise<void> => {
   }
 
   logger.info("Download games from Kompassi");
-  const kompassiGamesResult = await getGamesFromKompassi();
+  const kompassiGamesResult = await getGamesFromKompassiRopecon();
   if (isErrorResult(kompassiGamesResult)) {
     // eslint-disable-next-line no-restricted-syntax -- Data generation script
     throw new Error("Unable to load Kompassi games");

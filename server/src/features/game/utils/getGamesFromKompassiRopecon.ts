@@ -22,11 +22,9 @@ import {
 } from "shared/utils/result";
 import { KompassiError } from "shared/typings/api/errors";
 
-type EventProgramItem = KompassiGameRopecon;
-
 const { useLocalProgramFile, localKompassiFile } = config.server();
 
-export const getGamesFromKompassi = async (): Promise<
+export const getGamesFromKompassiRopecon = async (): Promise<
   Result<readonly KompassiGameRopecon[], KompassiError>
 > => {
   const eventProgramItemsResult =
@@ -60,7 +58,7 @@ export const getGamesFromKompassi = async (): Promise<
 };
 
 const getEventProgramItems = async (): Promise<
-  Result<EventProgramItem[], KompassiError>
+  Result<KompassiGameRopecon[], KompassiError>
 > => {
   return useLocalProgramFile
     ? getProgramFromLocalFile()
@@ -74,7 +72,7 @@ export const testHelperWrapper = {
 };
 
 const getProgramFromLocalFile = (): Result<
-  EventProgramItem[],
+  KompassiGameRopecon[],
   KompassiError
 > => {
   logger.info("GET event program from local filesystem");
@@ -91,7 +89,7 @@ const getProgramFromLocalFile = (): Result<
 };
 
 const getProgramFromServer = async (): Promise<
-  Result<EventProgramItem[], KompassiError>
+  Result<KompassiGameRopecon[], KompassiError>
 > => {
   logger.info("GET event program from remote server");
 
@@ -104,7 +102,7 @@ const getProgramFromServer = async (): Promise<
   }
 };
 
-const checkUnknownKeys = (programItems: EventProgramItem[]): void => {
+const checkUnknownKeys = (programItems: KompassiGameRopecon[]): void => {
   const unknownKeys: string[] = programItems.flatMap((programItem) => {
     return Object.keys(programItem).filter(
       (key) =>
@@ -128,8 +126,8 @@ const checkUnknownKeys = (programItems: EventProgramItem[]): void => {
 };
 
 const parseProgramItem = (
-  programItem: EventProgramItem,
-): EventProgramItem | undefined => {
+  programItem: KompassiGameRopecon,
+): KompassiGameRopecon | undefined => {
   const result = KompassiGameSchemaRopecon.safeParse(programItem);
 
   if (result.success) {
@@ -155,9 +153,9 @@ const parseProgramItem = (
 };
 
 const getGamesFromFullProgram = (
-  programItems: EventProgramItem[],
+  programItems: KompassiGameRopecon[],
 ): KompassiGameRopecon[] => {
-  const matchingProgramItems: EventProgramItem[] = programItems.flatMap(
+  const matchingProgramItems: KompassiGameRopecon[] = programItems.flatMap(
     (programItem) => {
       // These program items are hand picked to be exported from Kompassi
       if (config.shared().addToKonsti.includes(programItem.identifier)) {
