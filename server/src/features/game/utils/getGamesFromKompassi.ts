@@ -21,9 +21,6 @@ import {
   unwrapResult,
 } from "shared/utils/result";
 import { KompassiError } from "shared/typings/api/errors";
-import { sharedConfig } from "shared/config/sharedConfig";
-import { KompassiGameSchemaHitpoint } from "shared/typings/models/kompassiGame/kompassiGameHitpoint";
-import { ConventionName } from "shared/config/sharedConfigTypes";
 
 type EventProgramItem = KompassiGameRopecon;
 
@@ -107,35 +104,12 @@ const getProgramFromServer = async (): Promise<
   }
 };
 
-const checkUnknownKeysRopecon = (programItems: EventProgramItem[]): void => {
+const checkUnknownKeys = (programItems: EventProgramItem[]): void => {
   const unknownKeys: string[] = programItems.flatMap((programItem) => {
     return Object.keys(programItem).filter(
       (key) =>
         !Object.prototype.hasOwnProperty.call(
           KompassiGameSchemaRopecon.shape,
-          key,
-        ),
-    );
-  });
-
-  if (unknownKeys.length > 0) {
-    logger.error(
-      "%s",
-      new Error(
-        `Found unknown keys for program items: ${_.uniq(unknownKeys).join(
-          " ",
-        )}`,
-      ),
-    );
-  }
-};
-
-const checkUnknownKeysHitpoint = (programItems: EventProgramItem[]): void => {
-  const unknownKeys: string[] = programItems.flatMap((programItem) => {
-    return Object.keys(programItem).filter(
-      (key) =>
-        !Object.prototype.hasOwnProperty.call(
-          KompassiGameSchemaHitpoint.shape,
           key,
         ),
     );
@@ -223,13 +197,7 @@ const getGamesFromFullProgram = (
 
   logger.info(`Found ${matchingProgramItems.length} matching program items`);
 
-  if (sharedConfig.conventionName === ConventionName.ROPECON) {
-    checkUnknownKeysRopecon(matchingProgramItems);
-  }
-
-  if (sharedConfig.conventionName === ConventionName.HITPOINT) {
-    checkUnknownKeysHitpoint(matchingProgramItems);
-  }
+  checkUnknownKeys(matchingProgramItems);
 
   const kompassiGames: KompassiGameRopecon[] = matchingProgramItems.flatMap(
     (programItem) => {
