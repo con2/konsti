@@ -23,7 +23,10 @@ export const Header = (): ReactElement => {
         <Navigation />
 
         <HeaderTitle>
-          {t("appDescription", { conventionName, conventionYear })}
+          {t("appDescription", {
+            CONVENTION_NAME: conventionName,
+            CONVENTION_YEAR: conventionYear,
+          })}
         </HeaderTitle>
 
         <HeaderRightSideContainer>

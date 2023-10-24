@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-enum KompassiProgramTypeHitpoint {
+export enum KompassiProgramTypeHitpoint {
   TABLETOP_RPG = "Roolipeli",
   LARP = "Larp",
 }
@@ -30,7 +30,8 @@ export const KompassiGameSchemaHitpoint = z.object({
   is_beginner_friendly: z.boolean().catch(false),
   is_children_friendly: z.boolean().catch(false),
   is_intended_for_experienced_participants: z.boolean().catch(false),
+  is_public: z.boolean().catch(false),
+  video_link: z.string().catch(""),
 });
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-type KompassiGameHitpoint = z.infer<typeof KompassiGameSchemaHitpoint>;
+export type KompassiGameHitpoint = z.infer<typeof KompassiGameSchemaHitpoint>;

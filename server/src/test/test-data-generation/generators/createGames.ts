@@ -2,7 +2,7 @@ import { faker } from "@faker-js/faker";
 import dayjs from "dayjs";
 import _ from "lodash";
 import { logger } from "server/utils/logger";
-import { kompassiGameMapper } from "server/utils/kompassiGameMapper";
+import { kompassiGameMapperRopecon } from "server/utils/kompassiGameMapperRopecon";
 import { saveGames } from "server/features/game/gameRepository";
 import { config } from "shared/config";
 import {
@@ -164,5 +164,5 @@ export const createGames = async (
     });
   });
 
-  return await saveGames(kompassiGameMapper(kompassiGames));
+  return await saveGames(kompassiGameMapperRopecon(kompassiGames));
 };

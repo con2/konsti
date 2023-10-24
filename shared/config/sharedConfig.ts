@@ -20,7 +20,7 @@ export interface SharedConfig {
   enableGroups: boolean;
   defaultSignupStrategy: SignupStrategy;
   defaultLoginProvider: LoginProvider;
-  conventionName: string;
+  conventionName: ConventionName;
   conventionYear: string;
   CONVENTION_START_TIME: string;
   DIRECT_SIGNUP_START: number;

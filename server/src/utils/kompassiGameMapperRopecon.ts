@@ -21,7 +21,7 @@ import {
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 import { config } from "shared/config";
 
-export const kompassiGameMapper = (
+export const kompassiGameMapperRopecon = (
   games: readonly KompassiGameRopecon[],
 ): readonly Game[] => {
   return games.map((game) => {

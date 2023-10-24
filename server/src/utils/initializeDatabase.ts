@@ -7,11 +7,15 @@ import {
   createTestUsers,
 } from "server/test/test-data-generation/generators/createUsers";
 import { getGamesFromKompassiRopecon } from "server/features/game/utils/getGamesFromKompassiRopecon";
-import { kompassiGameMapper } from "server/utils/kompassiGameMapper";
+import { kompassiGameMapperRopecon } from "server/utils/kompassiGameMapperRopecon";
 import { isErrorResult, unwrapResult } from "shared/utils/result";
 import { cleanupDatabase } from "server/utils/cleanupDatabse";
 import { addSignupQuestions } from "server/features/game/utils/addSignupQuestions";
 import { findSettings } from "server/features/settings/settingsRepository";
+import { sharedConfig } from "shared/config/sharedConfig";
+import { getGamesFromKompassiHitpoint } from "server/features/game/utils/getGamesFromKompassiHitpoint";
+import { kompassiGameMapperHitpoint } from "server/utils/kompassiGameMapperHitpoint";
+import { ConventionName } from "shared/config/sharedConfigTypes";
 
 const ADMIN_PASSWORD = "";
 const HELP_PASSWORD = "";
@@ -41,13 +45,26 @@ const initializeDatabase = async (): Promise<void> => {
   }
 
   logger.info("Download games from Kompassi");
-  const kompassiGamesResult = await getGamesFromKompassiRopecon();
-  if (isErrorResult(kompassiGamesResult)) {
-    // eslint-disable-next-line no-restricted-syntax -- Data generation script
-    throw new Error("Unable to load Kompassi games");
+
+  if (sharedConfig.conventionName === ConventionName.ROPECON) {
+    const kompassiGamesResult = await getGamesFromKompassiRopecon();
+    if (isErrorResult(kompassiGamesResult)) {
+      // eslint-disable-next-line no-restricted-syntax -- Data generation script
+      throw new Error("Unable to load Kompassi games");
+    }
+    const kompassiGames = unwrapResult(kompassiGamesResult);
+    await saveGames(kompassiGameMapperRopecon(kompassiGames));
   }
-  const kompassiGames = unwrapResult(kompassiGamesResult);
-  await saveGames(kompassiGameMapper(kompassiGames));
+
+  if (sharedConfig.conventionName === ConventionName.HITPOINT) {
+    const kompassiGamesResult = await getGamesFromKompassiHitpoint();
+    if (isErrorResult(kompassiGamesResult)) {
+      // eslint-disable-next-line no-restricted-syntax -- Data generation script
+      throw new Error("Unable to load Kompassi games");
+    }
+    const kompassiGames = unwrapResult(kompassiGamesResult);
+    await saveGames(kompassiGameMapperHitpoint(kompassiGames));
+  }
 
   // This will create default settings
   await findSettings();
