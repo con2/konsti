@@ -4,7 +4,7 @@ import { logger } from "server/utils/logger";
 import { User } from "shared/typings/models/user";
 import { ResultsCollectionEntry } from "server/typings/result.typings";
 import { writeJson } from "server/features/statistics/statsUtil";
-import { config } from "server/config";
+import { config } from "server/serverConfig";
 import { Signup } from "server/features/signup/signup.typings";
 
 export const anonymizeData = async (

@@ -1,5 +1,5 @@
 import jsonwebtoken, { TokenExpiredError } from "jsonwebtoken";
-import { config } from "server/config";
+import { config } from "server/serverConfig";
 import { JWTResult } from "server/typings/jwt.typings";
 import { UserGroup } from "shared/typings/models/user";
 

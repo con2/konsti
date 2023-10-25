@@ -5,7 +5,7 @@ import {
   getDemandByTime,
 } from "./resultDataHelpers";
 import { logger } from "server/utils/logger";
-import { config } from "server/config";
+import { config } from "server/serverConfig";
 import { ResultsCollectionEntry } from "server/typings/result.typings";
 import { Game } from "shared/typings/models/game";
 

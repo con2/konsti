@@ -1,7 +1,7 @@
 import { combineReducers, CombinedState, AnyAction } from "redux";
 import { configureStore } from "@reduxjs/toolkit";
 import { createReduxEnhancer } from "@sentry/react";
-import { config } from "client/config";
+import { config } from "client/clientConfig";
 import { RootState } from "client/typings/redux.typings";
 import { SUBMIT_LOGOUT } from "client/typings/logoutActions.typings";
 

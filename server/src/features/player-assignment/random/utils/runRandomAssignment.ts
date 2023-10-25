@@ -1,6 +1,6 @@
 import { eventAssignment } from "eventassigner-random";
 import { CheckResult } from "eventassigner-random/lib/typings/checkResult";
-import { config } from "server/config";
+import { config } from "server/serverConfig";
 import { getGroups } from "server/features/player-assignment/utils/getGroups";
 import { getList } from "server/features/player-assignment/utils/getList";
 import { getRandomAssignEvents } from "server/features/player-assignment/random/utils/getRandomAssignEvents";

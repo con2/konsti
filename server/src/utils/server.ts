@@ -8,7 +8,7 @@ import { Handlers } from "@sentry/node";
 import helmet from "helmet";
 import morgan from "morgan";
 import expressStaticGzip from "express-static-gzip";
-import { config } from "server/config";
+import { config } from "server/serverConfig";
 import { logger, stream } from "server/utils/logger";
 import { allowCORS } from "server/middleware/cors";
 import "server/db/mongoosePlugins"; // Must be imported before apiRoutes which loads models

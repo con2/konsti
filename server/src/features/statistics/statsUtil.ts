@@ -1,7 +1,7 @@
 import fs from "fs";
 import _ from "lodash";
 import prettier from "prettier";
-import { config } from "server/config";
+import { config } from "server/serverConfig";
 import { logger } from "server/utils/logger";
 
 export const readJson = <T>(
