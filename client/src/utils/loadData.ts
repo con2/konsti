@@ -9,14 +9,14 @@ import { submitSessionRecovery } from "client/views/login/loginThunks";
 import { store } from "client/utils/store";
 import { AppDispatch } from "client/typings/redux.typings";
 import { submitGetTestSettings } from "client/test/test-settings/testSettingsThunks";
-import { config } from "client/config";
+import { config } from "shared/config";
 
 export const loadData = async (): Promise<void> => {
   // Get app settings
   await loadSettings();
 
   // Get test settings
-  if (process.env.SETTINGS !== "production" && config.showTestValues) {
+  if (process.env.SETTINGS !== "production" && config.client().showTestValues) {
     await loadTestSettings();
   }
 

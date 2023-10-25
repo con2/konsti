@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
-import { sharedConfig } from "shared/config/sharedConfig";
+import { config } from "shared/config";
 
-const { CONVENTION_START_TIME, PHASE_GAP } = sharedConfig;
+const { CONVENTION_START_TIME, PHASE_GAP } = config.shared();
 
 export const testTimes = [
   // Friday

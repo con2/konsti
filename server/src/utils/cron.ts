@@ -1,9 +1,8 @@
 import { Cron } from "croner";
 import dayjs from "dayjs";
 import { logger } from "server/utils/logger";
-import { config } from "server/config";
+import { config } from "shared/config";
 import { runAssignment } from "server/features/player-assignment/runAssignment";
-import { sharedConfig } from "shared/config/sharedConfig";
 import { Result, isErrorResult, makeSuccessResult } from "shared/utils/result";
 import { updateGames } from "server/features/game/gamesService";
 import {
@@ -20,7 +19,7 @@ const {
   autoAssignPlayersEnabled,
   autoAssignDelay,
   autoAssignInterval,
-} = config;
+} = config.server();
 
 const cronJobs: Cron[] = [];
 
@@ -191,7 +190,7 @@ export const autoAssignPlayers = async (): Promise<void> => {
   logger.info("Auto assignment not running, continue");
 
   const runAssignmentResult = await runAssignment({
-    assignmentStrategy: sharedConfig.assignmentStrategy,
+    assignmentStrategy: config.shared().assignmentStrategy,
     useDynamicStartTime: true,
     assignmentDelay: autoAssignDelay,
   });

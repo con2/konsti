@@ -12,7 +12,7 @@ import { selectActiveGames } from "client/views/admin/adminSlice";
 import { MULTIPLE_WHITESPACES_REGEX } from "client/views/all-games/AllGamesView";
 import { Tags } from "client/components/Tags";
 import { getAttendeeType } from "client/utils/getAttendeeType";
-import { sharedConfig } from "shared/config/sharedConfig";
+import { config } from "shared/config";
 import { isAdminOrHelp } from "client/utils/checkUserGroup";
 import {
   ResultsStartingTimeOption,
@@ -30,7 +30,8 @@ export const DirectResults = (): ReactElement => {
   const signups = useAppSelector((state) => state.allGames.signups);
   const userGroup = useAppSelector((state) => state.login.userGroup);
   isAdminOrHelp(userGroup);
-  const showResults = sharedConfig.resultsVisible || isAdminOrHelp(userGroup);
+  const showResults =
+    config.shared().resultsVisible || isAdminOrHelp(userGroup);
 
   const visibleSignups = useMemo(() => {
     return showResults ? signups : [];
@@ -61,7 +62,7 @@ export const DirectResults = (): ReactElement => {
     .filter((activeGame) => !isRevolvingDoorWorkshop(activeGame))
     .filter(
       (activeGame) =>
-        !sharedConfig.noKonstiSignupIds.includes(activeGame.gameId),
+        !config.shared().noKonstiSignupIds.includes(activeGame.gameId),
     );
 
   const filteredGames =
@@ -150,7 +151,7 @@ export const DirectResults = (): ReactElement => {
                   return (
                     <div key={game.gameId}>
                       <ResultTitle key={game.gameId}>{game.title} </ResultTitle>
-                      {sharedConfig.activeProgramTypes.length > 1 && (
+                      {config.shared().activeProgramTypes.length > 1 && (
                         <Tags tags={[t(`programType.${activeProgramType}`)]} />
                       )}
                       <PlayerContainer>

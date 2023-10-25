@@ -1,6 +1,6 @@
 import { eventAssignment } from "eventassigner-random";
 import { CheckResult } from "eventassigner-random/lib/typings/checkResult";
-import { config } from "server/config";
+import { config } from "shared/config";
 import { getGroups } from "server/features/player-assignment/utils/getGroups";
 import { getList } from "server/features/player-assignment/utils/getList";
 import { getRandomAssignEvents } from "server/features/player-assignment/random/utils/getRandomAssignEvents";
@@ -43,7 +43,7 @@ export const runRandomAssignment = (
   const list = unwrapResult(listResult);
   const updateL = (input: RandomAssignUpdateLInput): ListItem[] => input.L;
 
-  const { RANDOM_ASSIGNMENT_ROUNDS } = config;
+  const { RANDOM_ASSIGNMENT_ROUNDS } = config.server();
   const input = {
     groups,
     events,

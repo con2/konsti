@@ -1,7 +1,7 @@
 import { logger } from "server/utils/logger";
 import { updateWithSignups } from "server/features/game-popularity/utils/updateWithSignups";
 import { updateWithAssign } from "server/features/game-popularity/utils/updateWithAssign";
-import { GameUpdateMethod, config } from "server/config";
+import { GameUpdateMethod } from "shared/config/serverConfig";
 import { findUsers } from "server/features/user/userRepository";
 import { findGames } from "server/features/game/gameRepository";
 import { findSignups } from "server/features/signup/signupRepository";
@@ -13,8 +13,9 @@ import {
 } from "shared/utils/result";
 import { AssignmentError, MongoDbError } from "shared/typings/api/errors";
 import { ProgramType } from "shared/typings/models/game";
+import { config } from "shared/config";
 
-const { gamePopularityUpdateMethod } = config;
+const { gamePopularityUpdateMethod } = config.server();
 
 export const updateGamePopularity = async (): Promise<
   Result<void, MongoDbError | AssignmentError>

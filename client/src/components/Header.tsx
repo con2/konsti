@@ -7,13 +7,13 @@ import { LanguageSelector } from "client/components/LanguageSelector";
 import { Navigation } from "./Navigation";
 import { FirstLogin } from "./FirstLogin";
 import { useAppSelector } from "client/utils/hooks";
-import { sharedConfig } from "shared/config/sharedConfig";
+import { config } from "shared/config";
 
 export const HEADER_HEIGHT = 40;
 
 export const Header = (): ReactElement => {
   const { t } = useTranslation();
-  const { CONVENTION_NAME, CONVENTION_YEAR } = sharedConfig;
+  const { CONVENTION_NAME, CONVENTION_YEAR } = config.shared();
 
   const appOpen = useAppSelector((state) => state.admin.appOpen);
 

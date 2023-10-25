@@ -4,7 +4,7 @@ import { ZodError } from "zod";
 import axios from "axios";
 import _ from "lodash";
 import { logger } from "server/utils/logger";
-import { config } from "server/config";
+import { config } from "shared/config";
 import {
   KompassiGame,
   KompassiGameSchema,
@@ -21,11 +21,10 @@ import {
   unwrapResult,
 } from "shared/utils/result";
 import { KompassiError } from "shared/typings/api/errors";
-import { sharedConfig } from "shared/config/sharedConfig";
 
 type EventProgramItem = KompassiGame;
 
-const { useLocalProgramFile, localKompassiFile } = config;
+const { useLocalProgramFile, localKompassiFile } = config.server();
 
 export const getGamesFromKompassi = async (): Promise<
   Result<readonly KompassiGame[], KompassiError>
@@ -97,7 +96,7 @@ const getProgramFromServer = async (): Promise<
   logger.info("GET event program from remote server");
 
   try {
-    const response = await axios.get(config.dataUri);
+    const response = await axios.get(config.server().dataUri);
     return makeSuccessResult(response.data);
   } catch (error) {
     logger.error("Games request error: %s", error);
@@ -158,7 +157,7 @@ const getGamesFromFullProgram = (
   const matchingProgramItems: EventProgramItem[] = programItems.flatMap(
     (programItem) => {
       // These program items are hand picked to be exported from Kompassi
-      if (sharedConfig.addToKonsti.includes(programItem.identifier)) {
+      if (config.shared().addToKonsti.includes(programItem.identifier)) {
         return programItem;
       }
 

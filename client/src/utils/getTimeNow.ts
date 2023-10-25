@@ -1,9 +1,12 @@
 import dayjs, { Dayjs } from "dayjs";
-import { config } from "client/config";
+import { config } from "shared/config";
 import { store } from "client/utils/store";
 
 export const getTimeNow = (): Dayjs => {
-  if (config.loadedSettings !== "production" && config.showTestValues) {
+  if (
+    config.client().loadedSettings !== "production" &&
+    config.client().showTestValues
+  ) {
     const testTime = store.getState().testSettings.testTime;
     return dayjs(testTime);
   }

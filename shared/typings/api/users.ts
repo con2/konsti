@@ -8,7 +8,7 @@ import {
   USERNAME_LENGTH_MAX,
   USERNAME_LENGTH_MIN,
 } from "shared/constants/validation";
-import { sharedConfig } from "shared/config/sharedConfig";
+import { config } from "shared/config";
 import { EventLogItem } from "shared/typings/models/eventLog";
 
 // GET user
@@ -31,7 +31,7 @@ export const PostUserRequestSchema = z.object({
     .string()
     .optional()
     .refine((input) => {
-      if (sharedConfig.requireRegistrationCode) {
+      if (config.shared().requireRegistrationCode) {
         if (!input || input.trim().length === 0) {
           return false;
         }

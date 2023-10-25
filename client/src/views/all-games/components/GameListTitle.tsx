@@ -4,9 +4,9 @@ import { useTranslation } from "react-i18next";
 import _ from "lodash";
 import { getTime, getWeekdayAndTime } from "client/utils/timeFormatter";
 import { SelectedGame } from "shared/typings/models/user";
-import { SignupStrategy } from "shared/config/sharedConfig.types";
+import { SignupStrategy } from "shared/config/sharedConfigTypes";
 import { MOBILE_MARGIN } from "client/globalStyle";
-import { sharedConfig } from "shared/config/sharedConfig";
+import { config } from "shared/config";
 import {
   getAlgorithmSignupEndTime,
   getAlgorithmSignupStartTime,
@@ -58,7 +58,7 @@ export const GameListTitle = ({
           )}
         </StartTimeContainer>
 
-        {sharedConfig.manualSignupMode === "none" &&
+        {config.shared().manualSignupMode === "none" &&
           timeslotSignupStrategy === SignupStrategy.ALGORITHM && (
             <span>
               ({t("lotterySignupOpenBetween")} {algorithmSignupStartTime}-

@@ -6,7 +6,7 @@ import { logger } from "server/utils/logger";
 import { GameSchema } from "shared/typings/models/game";
 import { Message, writeFeedback } from "server/features/statistics/statsUtil";
 import { PostFeedbackRequestSchema } from "shared/typings/api/feedback";
-import { config } from "server/config";
+import { config } from "shared/config";
 import { setLocale } from "shared/utils/setLocale";
 import { TIMEZONE } from "shared/utils/initializeDayjs";
 
@@ -14,7 +14,7 @@ export const formatFeedbacks = (year: number, event: string): void => {
   setLocale("fi");
 
   const feedbacksJson = fs.readFileSync(
-    `${config.statsDataDir}/${event}/${year}/secret/feedbacks.json`,
+    `${config.server().statsDataDir}/${event}/${year}/secret/feedbacks.json`,
     "utf8",
   );
 
@@ -25,7 +25,7 @@ export const formatFeedbacks = (year: number, event: string): void => {
   logger.info(`Loaded ${feedbacks.length} feedbacks`);
 
   const gamesJson = fs.readFileSync(
-    `${config.statsDataDir}/${event}/${year}/games.json`,
+    `${config.server().statsDataDir}/${event}/${year}/games.json`,
     "utf8",
   );
   const games = z.array(GameSchema).parse(JSON.parse(gamesJson));

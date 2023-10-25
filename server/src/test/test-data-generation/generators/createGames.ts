@@ -4,7 +4,7 @@ import _ from "lodash";
 import { logger } from "server/utils/logger";
 import { kompassiGameMapper } from "server/utils/kompassiGameMapper";
 import { saveGames } from "server/features/game/gameRepository";
-import { sharedConfig } from "shared/config/sharedConfig";
+import { config } from "shared/config";
 import {
   KompassiGame,
   KompassiGameStyle,
@@ -22,13 +22,13 @@ import { MongoDbError } from "shared/typings/api/errors";
 const GAME_ID_MAX = 10000000;
 
 const startTimes = [
-  dayjs(sharedConfig.CONVENTION_START_TIME).toISOString(),
-  dayjs(sharedConfig.CONVENTION_START_TIME).add(1, "hours").toISOString(),
-  dayjs(sharedConfig.CONVENTION_START_TIME).add(2, "hours").toISOString(),
-  dayjs(sharedConfig.CONVENTION_START_TIME).add(3, "hours").toISOString(),
-  dayjs(sharedConfig.CONVENTION_START_TIME).add(4, "hours").toISOString(),
-  dayjs(sharedConfig.CONVENTION_START_TIME).add(1, "days").toISOString(),
-  dayjs(sharedConfig.CONVENTION_START_TIME).add(2, "days").toISOString(),
+  dayjs(config.shared().CONVENTION_START_TIME).toISOString(),
+  dayjs(config.shared().CONVENTION_START_TIME).add(1, "hours").toISOString(),
+  dayjs(config.shared().CONVENTION_START_TIME).add(2, "hours").toISOString(),
+  dayjs(config.shared().CONVENTION_START_TIME).add(3, "hours").toISOString(),
+  dayjs(config.shared().CONVENTION_START_TIME).add(4, "hours").toISOString(),
+  dayjs(config.shared().CONVENTION_START_TIME).add(1, "days").toISOString(),
+  dayjs(config.shared().CONVENTION_START_TIME).add(2, "days").toISOString(),
 ];
 
 const getMinPlayers = (programType: KompassiProgramType): number => {

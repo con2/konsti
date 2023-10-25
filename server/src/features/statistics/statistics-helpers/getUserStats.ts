@@ -6,13 +6,13 @@ import {
   getUsersWithAllGames,
 } from "./userDataHelpers";
 import { logger } from "server/utils/logger";
-import { config } from "server/config";
+import { config } from "shared/config";
 import { User } from "shared/typings/models/user";
 
 export const getUserStats = (year: number, event: string): void => {
   const users: User[] = JSON.parse(
     fs.readFileSync(
-      `${config.statsDataDir}/${event}/${year}/users.json`,
+      `${config.server().statsDataDir}/${event}/${year}/users.json`,
       "utf8",
     ),
   );

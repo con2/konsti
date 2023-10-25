@@ -15,13 +15,13 @@ import { logger } from "server/utils/logger";
 import { delSignup, saveSignup } from "server/features/signup/signupRepository";
 import { findUser } from "server/features/user/userRepository";
 import { isErrorResult, unwrapResult } from "shared/utils/result";
-import { sharedConfig } from "shared/config/sharedConfig";
+import { config } from "shared/config";
 
 export const storeSignup = async (
   signupRequest: PostEnteredGameRequest,
 ): Promise<PostEnteredGameResponse | PostEnteredGameError> => {
   const { startTime, enteredGameId, username } = signupRequest;
-  if (sharedConfig.noKonstiSignupIds.includes(enteredGameId)) {
+  if (config.shared().noKonstiSignupIds.includes(enteredGameId)) {
     return {
       message: `No Konsti signup for this program item`,
       status: "error",

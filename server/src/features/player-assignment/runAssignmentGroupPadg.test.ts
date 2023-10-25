@@ -14,8 +14,8 @@ import { faker } from "@faker-js/faker";
 import { assertUserUpdatedCorrectly } from "server/features/player-assignment/runAssignmentTestUtils";
 import { runAssignment } from "server/features/player-assignment/runAssignment";
 import { generateTestData } from "server/test/test-data-generation/generators/generateTestData";
-import { AssignmentStrategy } from "shared/config/sharedConfig.types";
-import { sharedConfig } from "shared/config/sharedConfig";
+import { AssignmentStrategy } from "shared/config/sharedConfigTypes";
+import { config } from "shared/config";
 import { AssignmentResultStatus } from "server/typings/result.typings";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 import * as groupAssign from "server/features/player-assignment/group/groupAssignPlayers";
@@ -29,7 +29,7 @@ let mongoServer: MongoMemoryServer;
 const expectedResultsCount = 20;
 const groupTestUsers = ["group1", "group2", "group3"];
 
-const { CONVENTION_START_TIME } = sharedConfig;
+const { CONVENTION_START_TIME } = config.shared();
 
 beforeAll(async () => {
   mongoServer = await MongoMemoryServer.create();
