@@ -8,7 +8,7 @@ import {
   PadgRandomAssignResults,
 } from "server/typings/padgRandomAssign.typings";
 import { logger } from "server/utils/logger";
-import { config } from "shared/config/config";
+import { config } from "shared/config";
 import { calculateHappiness } from "server/features/player-assignment/padg/utils/calculateHappiness";
 import { Input } from "server/typings/result.typings";
 

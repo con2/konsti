@@ -4,7 +4,7 @@ import { ZodError } from "zod";
 import axios from "axios";
 import _ from "lodash";
 import { logger } from "server/utils/logger";
-import { config } from "shared/config/config";
+import { config } from "shared/config";
 import {
   KompassiGame,
   KompassiGameSchema,

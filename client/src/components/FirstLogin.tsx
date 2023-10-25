@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { useAppSelector } from "client/utils/hooks";
 import { Button, ButtonStyle } from "./Button";
-import { config } from "shared/config/config";
+import { config } from "shared/config";
 import { HighlightStyle, RaisedCard } from "client/components/RaisedCard";
 import { LoginProvider } from "shared/config/sharedConfigTypes";
 

@@ -12,7 +12,7 @@ import { selectActiveGames } from "client/views/admin/adminSlice";
 import { MULTIPLE_WHITESPACES_REGEX } from "client/views/all-games/AllGamesView";
 import { Tags } from "client/components/Tags";
 import { getAttendeeType } from "client/utils/getAttendeeType";
-import { config } from "shared/config/config";
+import { config } from "shared/config";
 import { isAdminOrHelp } from "client/utils/checkUserGroup";
 import {
   ResultsStartingTimeOption,

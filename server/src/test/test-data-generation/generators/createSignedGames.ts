@@ -9,7 +9,7 @@ import { findGames } from "server/features/game/gameRepository";
 import { SelectedGame, User } from "shared/typings/models/user";
 import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
-import { config } from "shared/config/config";
+import { config } from "shared/config";
 
 export const createSignedGames = async (): Promise<void> => {
   const gamesResult = await findGames();

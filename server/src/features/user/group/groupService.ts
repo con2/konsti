@@ -10,7 +10,7 @@ import {
 } from "server/features/user/group/groupRepository";
 import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
 import { findUser } from "server/features/user/userRepository";
-import { config } from "shared/config/config";
+import { config } from "shared/config";
 import { MongoDbError } from "shared/typings/api/errors";
 import {
   PostCloseGroupResponse,

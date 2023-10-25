@@ -13,7 +13,7 @@ import { LogoutView } from "client/views/logout/LogoutView";
 import { GroupView } from "client/views/group/GroupView";
 import { HelperView } from "client/views/helper/HelperView";
 import { useAppSelector } from "client/utils/hooks";
-import { config } from "shared/config/config";
+import { config } from "shared/config";
 import { isAdmin, isAdminOrHelp } from "client/utils/checkUserGroup";
 import { AboutView } from "client/views/about/AboutView";
 import { FaqView } from "client/views/about/FaqView";

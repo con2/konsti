@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import { config } from "shared/config/config";
+import { config } from "shared/config";
 
 const { CONVENTION_START_TIME, PHASE_GAP } = config.shared();
 

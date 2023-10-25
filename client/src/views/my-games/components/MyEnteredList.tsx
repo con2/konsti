@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { ResultsByStartTimes } from "./ResultsByStartTimes";
 import { getMissedSignups } from "client/views/my-games/utils/getMissedSignups";
 import { SelectedGame } from "shared/typings/models/user";
-import { config } from "shared/config/config";
+import { config } from "shared/config";
 import { RaisedCard } from "client/components/RaisedCard";
 
 interface Props {

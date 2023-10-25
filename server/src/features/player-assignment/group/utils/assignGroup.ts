@@ -1,6 +1,6 @@
 import { logger } from "server/utils/logger";
 import { runGroupAssignment } from "server/features/player-assignment/group/utils/runGroupAssignment";
-import { config } from "shared/config/config";
+import { config } from "shared/config";
 import { Game } from "shared/typings/models/game";
 import { AssignmentStrategyResult } from "server/typings/result.typings";
 import { User } from "shared/typings/models/user";

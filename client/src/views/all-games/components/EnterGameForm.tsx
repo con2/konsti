@@ -21,7 +21,7 @@ import {
   submitCloseGroup,
   submitLeaveGroup,
 } from "client/views/group/groupThunks";
-import { config } from "shared/config/config";
+import { config } from "shared/config";
 import { TextArea } from "client/components/TextArea";
 import { ButtonGroup } from "client/components/ButtonGroup";
 import { Dropdown } from "client/components/Dropdown";

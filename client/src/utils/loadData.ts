@@ -9,7 +9,7 @@ import { submitSessionRecovery } from "client/views/login/loginThunks";
 import { store } from "client/utils/store";
 import { AppDispatch } from "client/typings/redux.typings";
 import { submitGetTestSettings } from "client/test/test-settings/testSettingsThunks";
-import { config } from "shared/config/config";
+import { config } from "shared/config";
 
 export const loadData = async (): Promise<void> => {
   // Get app settings

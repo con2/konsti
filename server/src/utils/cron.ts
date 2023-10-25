@@ -1,7 +1,7 @@
 import { Cron } from "croner";
 import dayjs from "dayjs";
 import { logger } from "server/utils/logger";
-import { config } from "shared/config/config";
+import { config } from "shared/config";
 import { runAssignment } from "server/features/player-assignment/runAssignment";
 import { Result, isErrorResult, makeSuccessResult } from "shared/utils/result";
 import { updateGames } from "server/features/game/gamesService";

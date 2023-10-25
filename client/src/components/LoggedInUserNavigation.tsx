@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useAppSelector } from "client/utils/hooks";
-import { config } from "shared/config/config";
+import { config } from "shared/config";
 import { isAdmin, isAdminOrHelp, isUser } from "client/utils/checkUserGroup";
 
 export const LoggedInUserNavigation = (props: {

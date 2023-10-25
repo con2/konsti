@@ -9,7 +9,7 @@ import {
   UserSignup,
 } from "shared/typings/models/game";
 import { SignupStrategy } from "shared/config/sharedConfigTypes";
-import { config } from "shared/config/config";
+import { config } from "shared/config";
 import { findSettings } from "server/features/settings/settingsRepository";
 import { Settings, SignupQuestion } from "shared/typings/models/settings";
 import { getTimeNow } from "server/features/player-assignment/utils/getTimeNow";

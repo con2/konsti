@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import styled, { css } from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Accordion } from "client/components/Accordion";
-import { config } from "shared/config/config";
+import { config } from "shared/config";
 import { Button, ButtonStyle } from "client/components/Button";
 import { useAppDispatch } from "client/utils/hooks";
 import {

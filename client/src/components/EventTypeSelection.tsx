@@ -5,7 +5,7 @@ import { ProgramType } from "shared/typings/models/game";
 import { setActiveProgramType } from "client/views/admin/adminSlice";
 import { Dropdown } from "client/components/Dropdown";
 import { saveSession } from "client/utils/localStorage";
-import { config } from "shared/config/config";
+import { config } from "shared/config";
 
 export const ProgramTypeSelection = (): ReactElement => {
   const { t } = useTranslation();

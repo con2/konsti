@@ -8,7 +8,7 @@ import { Provider } from "react-redux";
 import { ThemeProvider, StyleSheetManager } from "styled-components";
 import { init, BrowserTracing } from "@sentry/react";
 import loaderImage from "assets/loading.gif";
-import { config } from "shared/config/config";
+import { config } from "shared/config";
 import { getLocalStorageLanguage } from "client/utils/localStorage";
 import { theme } from "client/theme";
 import { GlobalStyle } from "client/globalStyle";

@@ -3,7 +3,7 @@ import { runAssignment } from "server/features/player-assignment/runAssignment";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { PostPlayerAssignmentResponse } from "shared/typings/api/assignment";
 import { ApiError } from "shared/typings/api/errors";
-import { config } from "shared/config/config";
+import { config } from "shared/config";
 import { isSuccessResult, unwrapResult } from "shared/utils/result";
 
 // Assign players to games

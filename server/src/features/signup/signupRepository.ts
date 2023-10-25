@@ -5,7 +5,7 @@ import { findGameById, findGames } from "server/features/game/gameRepository";
 import { Signup, UserSignup } from "server/features/signup/signup.typings";
 import { SignupModel } from "server/features/signup/signupSchema";
 import { logger } from "server/utils/logger";
-import { config } from "shared/config/config";
+import { config } from "shared/config";
 import { MongoDbError } from "shared/typings/api/errors";
 import {
   DeleteEnteredGameRequest,

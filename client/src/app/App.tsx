@@ -7,7 +7,7 @@ import { Header } from "client/components/Header";
 import { loadData } from "client/utils/loadData";
 import { Loading } from "client/components/Loading";
 import { getIconLibrary } from "client/utils/icons";
-import { config } from "shared/config/config";
+import { config } from "shared/config";
 import { ErrorBar } from "client/components/ErrorBar";
 import { MOBILE_MARGIN } from "client/globalStyle";
 import { TestTime } from "client/test/test-components/TestTime";

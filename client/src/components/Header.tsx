@@ -7,7 +7,7 @@ import { LanguageSelector } from "client/components/LanguageSelector";
 import { Navigation } from "./Navigation";
 import { FirstLogin } from "./FirstLogin";
 import { useAppSelector } from "client/utils/hooks";
-import { config } from "shared/config/config";
+import { config } from "shared/config";
 
 export const HEADER_HEIGHT = 40;
 

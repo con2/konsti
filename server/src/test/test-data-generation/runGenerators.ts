@@ -8,7 +8,7 @@ import { db } from "server/db/mongodb";
 import { generateTestUsers } from "server/test/test-data-generation/generators/generateTestData";
 import { createSignups } from "server/test/test-data-generation/generators/createSignups";
 import { createSettings } from "server/test/test-data-generation/generators/createSettings";
-import { config } from "shared/config/config";
+import { config } from "shared/config";
 import { removeSignedGames } from "server/features/user/signed-game/signedGameRepository";
 import { removeSignups } from "server/features/signup/signupRepository";
 import {

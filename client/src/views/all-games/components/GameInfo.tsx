@@ -4,7 +4,7 @@ import styled, { css } from "styled-components";
 import _ from "lodash";
 import { getWeekdayAndTime, getTime } from "client/utils/timeFormatter";
 import { Game, GameStyle, Genre } from "shared/typings/models/game";
-import { config } from "shared/config/config";
+import { config } from "shared/config";
 
 interface Props {
   game: Game;

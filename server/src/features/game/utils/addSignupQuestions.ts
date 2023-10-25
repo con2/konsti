@@ -1,7 +1,7 @@
 import { findGames } from "server/features/game/gameRepository";
 import { saveSignupQuestion } from "server/features/settings/settingsRepository";
 import { logger } from "server/utils/logger";
-import { config } from "shared/config/config";
+import { config } from "shared/config";
 import { ProgramType } from "shared/typings/models/game";
 import { isErrorResult, unwrapResult } from "shared/utils/result";
 

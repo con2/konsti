@@ -19,7 +19,7 @@ import { ApiError } from "shared/typings/api/errors";
 import { findUserSignups } from "server/features/signup/signupRepository";
 import { SelectedGame } from "shared/typings/models/user";
 import { isErrorResult, unwrapResult } from "shared/utils/result";
-import { config } from "shared/config/config";
+import { config } from "shared/config";
 import { createSerial } from "server/features/user/userUtils";
 
 export const storeUser = async (

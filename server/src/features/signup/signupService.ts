@@ -15,7 +15,7 @@ import { logger } from "server/utils/logger";
 import { delSignup, saveSignup } from "server/features/signup/signupRepository";
 import { findUser } from "server/features/user/userRepository";
 import { isErrorResult, unwrapResult } from "shared/utils/result";
-import { config } from "shared/config/config";
+import { config } from "shared/config";
 
 export const storeSignup = async (
   signupRequest: PostEnteredGameRequest,

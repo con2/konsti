@@ -1,5 +1,5 @@
 import { ReactElement, ReactNode } from "react";
-import { config } from "shared/config/config";
+import { config } from "shared/config";
 import { ConventionName } from "shared/config/sharedConfigTypes";
 
 interface Props {

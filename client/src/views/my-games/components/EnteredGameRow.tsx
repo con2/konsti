@@ -12,7 +12,7 @@ import {
 import { CancelSignupForm } from "client/views/all-games/components/CancelSignupForm";
 import { ErrorMessage } from "client/components/ErrorMessage";
 import { loadGames } from "client/utils/loadData";
-import { config } from "shared/config/config";
+import { config } from "shared/config";
 import { IconButton } from "client/components/IconButton";
 
 interface Props {

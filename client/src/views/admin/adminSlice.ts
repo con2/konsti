@@ -8,7 +8,7 @@ import { Game, ProgramType } from "shared/typings/models/game";
 import { SignupQuestion } from "shared/typings/models/settings";
 import { SignupMessage } from "shared/typings/models/signupMessage";
 import { loadSession } from "client/utils/localStorage";
-import { config } from "shared/config/config";
+import { config } from "shared/config";
 
 const getInitialActiveProgramType = (): ProgramType => {
   const persistedState = loadSession();

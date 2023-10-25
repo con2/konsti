@@ -5,7 +5,7 @@ import { useAppSelector } from "client/utils/hooks";
 import { FeedbackForm } from "client/views/all-games/components/FeedbackForm";
 import { Game } from "shared/typings/models/game";
 import { UserGroup } from "shared/typings/models/user";
-import { config } from "shared/config/config";
+import { config } from "shared/config";
 
 interface Props {
   game: Game;

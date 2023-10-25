@@ -1,4 +1,4 @@
-import { config } from "shared/config/config";
+import { config } from "shared/config";
 import { getTimeNow } from "server/features/player-assignment/utils/getTimeNow";
 import { logger } from "server/utils/logger";
 import {

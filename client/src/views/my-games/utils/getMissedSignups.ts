@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 import { getStartTimes } from "client/utils/getStartTimes";
-import { config } from "shared/config/config";
+import { config } from "shared/config";
 import { getTimeNow } from "client/utils/getTimeNow";
 import { SelectedGame } from "shared/typings/models/user";
 

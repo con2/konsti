@@ -4,7 +4,7 @@ import _ from "lodash";
 import { logger } from "server/utils/logger";
 import { kompassiGameMapper } from "server/utils/kompassiGameMapper";
 import { saveGames } from "server/features/game/gameRepository";
-import { config } from "shared/config/config";
+import { config } from "shared/config";
 import {
   KompassiGame,
   KompassiGameStyle,

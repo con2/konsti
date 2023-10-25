@@ -12,7 +12,7 @@ import { DirectSignupForm } from "./DirectSignupForm";
 import { SelectedGame } from "shared/typings/models/user";
 import { isAlreadyEntered, isAlreadySigned } from "./allGamesUtils";
 import { PopularityInfo } from "client/components/PopularityInfo";
-import { config } from "shared/config/config";
+import { config } from "shared/config";
 import { GameDetailsView } from "client/views/all-games/components/GameDetailsView";
 import { Tags } from "client/components/Tags";
 import { FavoriteButton } from "client/components/FavoriteButton";

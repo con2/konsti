@@ -13,7 +13,7 @@ import {
 } from "shared/utils/result";
 import { AssignmentError, MongoDbError } from "shared/typings/api/errors";
 import { ProgramType } from "shared/typings/models/game";
-import { config } from "shared/config/config";
+import { config } from "shared/config";
 
 const { gamePopularityUpdateMethod } = config.server();
 

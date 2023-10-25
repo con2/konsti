@@ -4,7 +4,7 @@ import { User } from "shared/typings/models/user";
 import { findUsers } from "server/features/user/userRepository";
 import { findSignups } from "server/features/signup/signupRepository";
 import { ProgramType } from "shared/typings/models/game";
-import { config } from "shared/config/config";
+import { config } from "shared/config";
 import {
   Result,
   isErrorResult,

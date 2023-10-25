@@ -1,7 +1,7 @@
 import { init, Integrations, Handlers } from "@sentry/node";
 import express, { Express } from "express";
 import { postSentryTunnel } from "server/features/sentry-tunnel/sentryTunnelController";
-import { config } from "shared/config/config";
+import { config } from "shared/config";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 
 export const initSentry = (app: Express, enableSentry: boolean): void => {

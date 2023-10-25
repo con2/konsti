@@ -8,7 +8,7 @@ import {
   USERNAME_LENGTH_MAX,
   USERNAME_LENGTH_MIN,
 } from "shared/constants/validation";
-import { config } from "shared/config/config";
+import { config } from "shared/config";
 import { EventLogItem } from "shared/typings/models/eventLog";
 
 // GET user

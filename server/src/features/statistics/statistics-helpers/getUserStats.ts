@@ -6,7 +6,7 @@ import {
   getUsersWithAllGames,
 } from "./userDataHelpers";
 import { logger } from "server/utils/logger";
-import { config } from "shared/config/config";
+import { config } from "shared/config";
 import { User } from "shared/typings/models/user";
 
 export const getUserStats = (year: number, event: string): void => {

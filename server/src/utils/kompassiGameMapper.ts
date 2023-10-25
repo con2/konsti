@@ -19,7 +19,7 @@ import {
   workshopProgramTypes,
 } from "shared/typings/models/kompassiGame";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
-import { config } from "shared/config/config";
+import { config } from "shared/config";
 
 export const kompassiGameMapper = (
   games: readonly KompassiGame[],

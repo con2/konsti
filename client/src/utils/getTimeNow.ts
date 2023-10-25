@@ -1,5 +1,5 @@
 import dayjs, { Dayjs } from "dayjs";
-import { config } from "shared/config/config";
+import { config } from "shared/config";
 import { store } from "client/utils/store";
 
 export const getTimeNow = (): Dayjs => {

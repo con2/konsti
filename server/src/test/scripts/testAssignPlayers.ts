@@ -3,7 +3,7 @@ import { logger } from "server/utils/logger";
 import { runAssignment } from "server/features/player-assignment/runAssignment";
 import { db } from "server/db/mongodb";
 import { AssignmentStrategy } from "shared/config/sharedConfigTypes";
-import { config } from "shared/config/config";
+import { config } from "shared/config";
 
 const testAssignPlayers = async (
   assignmentStrategy: AssignmentStrategy,

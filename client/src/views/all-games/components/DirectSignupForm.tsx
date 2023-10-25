@@ -18,7 +18,7 @@ import { ErrorMessage } from "client/components/ErrorMessage";
 import { selectActiveEnteredGames } from "client/views/my-games/myGamesSlice";
 import { getTimeNow } from "client/utils/getTimeNow";
 import { getDirectSignupStartTime } from "shared/utils/signupTimes";
-import { config } from "shared/config/config";
+import { config } from "shared/config";
 
 interface Props {
   game: Game;

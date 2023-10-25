@@ -5,7 +5,7 @@ import axios, {
   AxiosResponse,
 } from "axios";
 import { t } from "i18next";
-import { config } from "shared/config/config";
+import { config } from "shared/config";
 import { getJWT } from "client/utils/getJWT";
 import { addError } from "client/views/admin/adminSlice";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";

@@ -1,5 +1,5 @@
 import dayjs, { Dayjs } from "dayjs";
-import { config } from "shared/config/config";
+import { config } from "shared/config";
 import { Game, ProgramType } from "shared/typings/models/game";
 import { TIMEZONE } from "shared/utils/initializeDayjs";
 
