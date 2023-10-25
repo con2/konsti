@@ -1,10 +1,10 @@
 import { vi } from "vitest";
 import { initializeDayjs } from "shared/utils/initializeDayjs";
-import { serverConfig } from "server/serverConfig";
+import { getServerConfig } from "server/serverConfig";
 
 initializeDayjs();
 
-if (!serverConfig.enableLoggingInTests) {
+if (!getServerConfig().enableLoggingInTests) {
   // Don't show logging in tests
   vi.doMock("server/utils/logger", () => {
     return {

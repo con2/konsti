@@ -5,7 +5,7 @@ import { User } from "shared/typings/models/user";
 import { GameDoc } from "server/typings/game.typings";
 import { ResultsCollectionEntry } from "server/typings/result.typings";
 import { writeJson } from "server/features/statistics/statsUtil";
-import { serverConfig } from "server/serverConfig";
+import { getServerConfig } from "server/serverConfig";
 import { Game } from "shared/typings/models/game";
 import { SignupDoc } from "server/features/signup/signup.typings";
 import { SettingsDoc } from "server/typings/settings.typings";
@@ -13,7 +13,7 @@ import { SettingsDoc } from "server/typings/settings.typings";
 export const gameIdFix = async (year: number, event: string): Promise<void> => {
   const users: User[] = JSON.parse(
     fs.readFileSync(
-      `${serverConfig.statsDataDir}/${event}/${year}/users.json`,
+      `${getServerConfig().statsDataDir}/${event}/${year}/users.json`,
       "utf8",
     ),
   );
@@ -22,7 +22,7 @@ export const gameIdFix = async (year: number, event: string): Promise<void> => {
 
   const results: ResultsCollectionEntry[] = JSON.parse(
     fs.readFileSync(
-      `${serverConfig.statsDataDir}/${event}/${year}/results.json`,
+      `${getServerConfig().statsDataDir}/${event}/${year}/results.json`,
       "utf8",
     ),
   );
@@ -31,7 +31,7 @@ export const gameIdFix = async (year: number, event: string): Promise<void> => {
 
   const games: GameDoc[] = JSON.parse(
     fs.readFileSync(
-      `${serverConfig.statsDataDir}/${event}/${year}/games.json`,
+      `${getServerConfig().statsDataDir}/${event}/${year}/games.json`,
       "utf8",
     ),
   );
@@ -40,7 +40,7 @@ export const gameIdFix = async (year: number, event: string): Promise<void> => {
 
   const signups: SignupDoc[] = JSON.parse(
     fs.readFileSync(
-      `${serverConfig.statsDataDir}/${event}/${year}/signups.json`,
+      `${getServerConfig().statsDataDir}/${event}/${year}/signups.json`,
       "utf8",
     ),
   );
@@ -49,7 +49,7 @@ export const gameIdFix = async (year: number, event: string): Promise<void> => {
 
   const settings: SettingsDoc[] = JSON.parse(
     fs.readFileSync(
-      `${serverConfig.statsDataDir}/${event}/${year}/settings.json`,
+      `${getServerConfig().statsDataDir}/${event}/${year}/settings.json`,
       "utf8",
     ),
   );

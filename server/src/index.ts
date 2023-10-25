@@ -2,7 +2,7 @@ import { Server } from "http";
 import { startServer, closeServer } from "server/utils/server";
 import { logger } from "server/utils/logger";
 import { startCronJobs } from "server/utils/cron";
-import { serverConfig } from "server/serverConfig";
+import { getServerConfig } from "server/serverConfig";
 import { initializeDayjs } from "shared/utils/initializeDayjs";
 
 const startApp = async (): Promise<void> => {
@@ -11,15 +11,15 @@ const startApp = async (): Promise<void> => {
   let server: Server;
   try {
     server = await startServer({
-      dbConnString: serverConfig.dbConnString,
-      port: serverConfig.port,
+      dbConnString: getServerConfig().dbConnString,
+      port: getServerConfig().port,
     });
   } catch (error) {
     logger.error("%s", new Error(`Starting server failed: ${error}`));
     return;
   }
 
-  if (serverConfig.onlyCronjobs) {
+  if (getServerConfig().onlyCronjobs) {
     logger.info("Start enabled cronjobs");
     try {
       await startCronJobs();
@@ -27,7 +27,7 @@ const startApp = async (): Promise<void> => {
       logger.error("Error starting cronjobs: %s", error);
     }
   }
-  if (!serverConfig.onlyCronjobs) {
+  if (!getServerConfig().onlyCronjobs) {
     logger.info("Cronjobs not started, set ONLY_CRONJOBS to enable cronjobs");
   }
 

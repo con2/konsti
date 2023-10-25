@@ -1,10 +1,10 @@
 import { createLogger, format, Logger, transports } from "winston";
 import Sentry from "winston-transport-sentry-node";
 import { Integrations } from "@sentry/node";
-import { serverConfig } from "server/serverConfig";
+import { getServerConfig } from "server/serverConfig";
 import { getDsn } from "server/utils/sentry";
 
-const consoleOutputFormat = serverConfig.consoleLogFormatJson
+const consoleOutputFormat = getServerConfig().consoleLogFormatJson
   ? format.combine(
       format.timestamp(),
       format.splat(),
@@ -30,7 +30,7 @@ const consoleOutputFormat = serverConfig.consoleLogFormatJson
 export const logger = createLogger({
   transports: [
     new transports.Console({
-      level: serverConfig.debug ? "debug" : "info",
+      level: getServerConfig().debug ? "debug" : "info",
       handleExceptions: true,
       handleRejections: true,
       format: consoleOutputFormat,

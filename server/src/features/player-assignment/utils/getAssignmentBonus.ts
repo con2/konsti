@@ -1,4 +1,4 @@
-import { serverConfig } from "server/serverConfig";
+import { getServerConfig } from "server/serverConfig";
 import { Signup } from "server/features/signup/signup.typings";
 import { sharedConfig } from "shared/config/sharedConfig";
 import { ProgramType } from "shared/typings/models/game";
@@ -24,6 +24,6 @@ export const getAssignmentBonus = (
 
   const averageSignups = groupMembersWithSignups.length / playerGroup.length;
 
-  const bonus = averageSignups < 0.5 ? serverConfig.firtSignupBonus : 0;
+  const bonus = averageSignups < 0.5 ? getServerConfig().firtSignupBonus : 0;
   return bonus;
 };

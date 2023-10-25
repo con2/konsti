@@ -4,7 +4,7 @@ import { ZodError } from "zod";
 import axios from "axios";
 import _ from "lodash";
 import { logger } from "server/utils/logger";
-import { serverConfig } from "server/serverConfig";
+import { getServerConfig } from "server/serverConfig";
 import {
   KompassiGame,
   KompassiGameSchema,
@@ -25,7 +25,7 @@ import { sharedConfig } from "shared/config/sharedConfig";
 
 type EventProgramItem = KompassiGame;
 
-const { useLocalProgramFile, localKompassiFile } = serverConfig;
+const { useLocalProgramFile, localKompassiFile } = getServerConfig();
 
 export const getGamesFromKompassi = async (): Promise<
   Result<readonly KompassiGame[], KompassiError>
@@ -97,7 +97,7 @@ const getProgramFromServer = async (): Promise<
   logger.info("GET event program from remote server");
 
   try {
-    const response = await axios.get(serverConfig.dataUri);
+    const response = await axios.get(getServerConfig().dataUri);
     return makeSuccessResult(response.data);
   } catch (error) {
     logger.error("Games request error: %s", error);

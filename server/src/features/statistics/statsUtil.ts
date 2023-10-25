@@ -1,7 +1,7 @@
 import fs from "fs";
 import _ from "lodash";
 import prettier from "prettier";
-import { serverConfig } from "server/serverConfig";
+import { getServerConfig } from "server/serverConfig";
 import { logger } from "server/utils/logger";
 
 export const readJson = <T>(
@@ -11,7 +11,7 @@ export const readJson = <T>(
 ): T[] => {
   const data = JSON.parse(
     fs.readFileSync(
-      `${serverConfig.statsDataDir}/${event}/${year}/${datatype}.json`,
+      `${getServerConfig().statsDataDir}/${event}/${year}/${datatype}.json`,
       "utf8",
     ),
   );
@@ -26,12 +26,16 @@ export const writeJson = async <T>(
   datatype: string,
   data: T[] | Object,
 ): Promise<void> => {
-  if (!fs.existsSync(`${serverConfig.statsDataDir}/${event}/${year}/temp/`)) {
-    fs.mkdirSync(`${serverConfig.statsDataDir}/${event}/${year}/temp/`);
+  if (
+    !fs.existsSync(`${getServerConfig().statsDataDir}/${event}/${year}/temp/`)
+  ) {
+    fs.mkdirSync(`${getServerConfig().statsDataDir}/${event}/${year}/temp/`);
   }
 
   fs.writeFileSync(
-    `${serverConfig.statsDataDir}/${event}/${year}/temp/${datatype}-fixed.json`,
+    `${
+      getServerConfig().statsDataDir
+    }/${event}/${year}/temp/${datatype}-fixed.json`,
     // eslint-disable-next-line no-restricted-syntax -- TODO: Fix, format() ban should only apply to dayjs().format()
     await prettier.format(JSON.stringify(data), { parser: "json" }),
     "utf8",
@@ -39,7 +43,7 @@ export const writeJson = async <T>(
 
   logger.info(
     `Saved ${getDataLength(data)} ${datatype} to file ${
-      serverConfig.statsDataDir
+      getServerConfig().statsDataDir
     }/${event}/${year}/temp/${datatype}-fixed.json`,
   );
 };
@@ -58,8 +62,10 @@ export const writeFeedback = (
   datatype: string,
   data: Record<string, Message[]>,
 ): void => {
-  if (!fs.existsSync(`${serverConfig.statsDataDir}/${event}/${year}/temp/`)) {
-    fs.mkdirSync(`${serverConfig.statsDataDir}/${event}/${year}/temp/`);
+  if (
+    !fs.existsSync(`${getServerConfig().statsDataDir}/${event}/${year}/temp/`)
+  ) {
+    fs.mkdirSync(`${getServerConfig().statsDataDir}/${event}/${year}/temp/`);
   }
 
   Object.entries(data).map(([host, messages], index) => {
@@ -75,7 +81,9 @@ export const writeFeedback = (
 
     if (index === 0) {
       fs.writeFileSync(
-        `${serverConfig.statsDataDir}/${event}/${year}/temp/${datatype}-fixed.json`,
+        `${
+          getServerConfig().statsDataDir
+        }/${event}/${year}/temp/${datatype}-fixed.json`,
         `**********\n\n${formattedFeedback}`,
         "utf8",
       );
@@ -83,7 +91,9 @@ export const writeFeedback = (
     }
 
     fs.appendFileSync(
-      `${serverConfig.statsDataDir}/${event}/${year}/temp/${datatype}-fixed.json`,
+      `${
+        getServerConfig().statsDataDir
+      }/${event}/${year}/temp/${datatype}-fixed.json`,
       formattedFeedback,
       "utf8",
     );
@@ -91,7 +101,7 @@ export const writeFeedback = (
 
   logger.info(
     `Saved ${getDataLength(data)} ${datatype} to file ${
-      serverConfig.statsDataDir
+      getServerConfig().statsDataDir
     }/${event}/${year}/temp/${datatype}-fixed.json`,
   );
 };

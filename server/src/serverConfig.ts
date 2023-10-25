@@ -165,7 +165,7 @@ const devConfig = {
   autoAssignDelay: 1000 * 1,
 };
 
-const combineConfig = (): ServerConfig => {
+export const getServerConfig = (): ServerConfig => {
   switch (process.env.SETTINGS) {
     case "production":
       return { ...commonConfig, ...prodConfig };
@@ -175,5 +175,3 @@ const combineConfig = (): ServerConfig => {
       return { ...commonConfig, ...devConfig };
   }
 };
-
-export const serverConfig: ServerConfig = combineConfig();
