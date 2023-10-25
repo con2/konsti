@@ -1,7 +1,7 @@
 import { combineReducers, CombinedState, AnyAction } from "redux";
 import { configureStore } from "@reduxjs/toolkit";
 import { createReduxEnhancer } from "@sentry/react";
-import { config } from "client/config";
+import { config } from "shared/config";
 import { RootState } from "client/typings/redux.typings";
 import { SUBMIT_LOGOUT } from "client/typings/logoutActions.typings";
 
@@ -38,7 +38,10 @@ const rootReducer = (
       newState.allGames = state.allGames;
     }
 
-    if (config.loadedSettings !== "production" && state?.testSettings) {
+    if (
+      config.client().loadedSettings !== "production" &&
+      state?.testSettings
+    ) {
       newState.testSettings = state.testSettings;
     }
 
@@ -108,7 +111,7 @@ export const store = configureStore({
   devTools:
     process.env.SETTINGS !== "production"
       ? {
-          trace: config.enableReduxTrace,
+          trace: config.client().enableReduxTrace,
           traceLimit: 25,
         }
       : false,

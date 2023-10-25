@@ -3,21 +3,18 @@ import _ from "lodash";
 import { BackendErrorType } from "client/components/ErrorBar";
 import { AdminState, RootState } from "client/typings/redux.typings";
 import { SettingsPayload } from "shared/typings/api/settings";
-import {
-  LoginProvider,
-  SignupStrategy,
-} from "shared/config/sharedConfig.types";
+import { LoginProvider, SignupStrategy } from "shared/config/sharedConfigTypes";
 import { Game, ProgramType } from "shared/typings/models/game";
 import { SignupQuestion } from "shared/typings/models/settings";
 import { SignupMessage } from "shared/typings/models/signupMessage";
 import { loadSession } from "client/utils/localStorage";
-import { sharedConfig } from "shared/config/sharedConfig";
+import { config } from "shared/config";
 
 const getInitialActiveProgramType = (): ProgramType => {
   const persistedState = loadSession();
 
-  if (sharedConfig.activeProgramTypes.length === 1) {
-    return sharedConfig.activeProgramTypes[0];
+  if (config.shared().activeProgramTypes.length === 1) {
+    return config.shared().activeProgramTypes[0];
   }
 
   return persistedState?.admin?.activeProgramType ?? ProgramType.TABLETOP_RPG;

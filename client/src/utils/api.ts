@@ -5,7 +5,7 @@ import axios, {
   AxiosResponse,
 } from "axios";
 import { t } from "i18next";
-import { config } from "client/config";
+import { config } from "shared/config";
 import { getJWT } from "client/utils/getJWT";
 import { addError } from "client/views/admin/adminSlice";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
@@ -20,7 +20,7 @@ enum HttpMethod {
 }
 
 const axiosInstance: AxiosInstance = axios.create({
-  baseURL: config.apiServerUrl,
+  baseURL: config.client().apiServerUrl,
   timeout: 60000, // 60s
   headers: {
     "Content-Type": "application/json",

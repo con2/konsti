@@ -4,7 +4,7 @@ import { User } from "shared/typings/models/user";
 import { findUsers } from "server/features/user/userRepository";
 import { findSignups } from "server/features/signup/signupRepository";
 import { ProgramType } from "shared/typings/models/game";
-import { sharedConfig } from "shared/config/sharedConfig";
+import { config } from "shared/config";
 import {
   Result,
   isErrorResult,
@@ -36,7 +36,7 @@ export const verifyUserSignups = async (): Promise<
   signups.map(({ game, userSignups }) => {
     if (
       game.programType !== ProgramType.TABLETOP_RPG ||
-      sharedConfig.directSignupAlwaysOpenIds.includes(game.gameId)
+      config.shared().directSignupAlwaysOpenIds.includes(game.gameId)
     ) {
       return;
     }

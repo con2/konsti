@@ -13,7 +13,7 @@ import { LogoutView } from "client/views/logout/LogoutView";
 import { GroupView } from "client/views/group/GroupView";
 import { HelperView } from "client/views/helper/HelperView";
 import { useAppSelector } from "client/utils/hooks";
-import { sharedConfig } from "shared/config/sharedConfig";
+import { config } from "shared/config";
 import { isAdmin, isAdminOrHelp } from "client/utils/checkUserGroup";
 import { AboutView } from "client/views/about/AboutView";
 import { FaqView } from "client/views/about/FaqView";
@@ -22,7 +22,7 @@ import { EventLog } from "client/views/all-games/components/EventLog";
 import { ProfileView } from "client/views/profile/ProfileView";
 import { InstructionsView } from "client/views/about/InstructionsView";
 import { KompassiLoginCallback } from "client/components/KompassiLoginCallback";
-import { LoginProvider } from "shared/config/sharedConfig.types";
+import { LoginProvider } from "shared/config/sharedConfigTypes";
 import { KompassiLoginUsernameForm } from "client/views/login/components/KompassiLoginUsernameForm";
 
 export const AppRoutes = (): ReactElement => {
@@ -140,7 +140,7 @@ export const AppRoutes = (): ReactElement => {
         )}
         <Route path="/notifications" element={<EventLog />} />
         <Route path="/results" element={<ResultsView />} />
-        {!isAdminOrHelp(userGroup) && sharedConfig.enableGroups ? (
+        {!isAdminOrHelp(userGroup) && config.shared().enableGroups ? (
           <Route
             path="/profile/*"
             element={<Tabs tabContents={profileTabs} />}

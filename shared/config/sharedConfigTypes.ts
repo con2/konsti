@@ -17,3 +17,8 @@ export enum LoginProvider {
   LOCAL = "local",
   KOMPASSI = "kompassi",
 }
+
+export enum ConventionName {
+  ROPECON = "Ropecon",
+  TRACON_HITPOINT = "Tracon Hitpoint",
+}

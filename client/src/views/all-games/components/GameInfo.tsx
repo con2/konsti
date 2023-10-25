@@ -4,7 +4,7 @@ import styled, { css } from "styled-components";
 import _ from "lodash";
 import { getWeekdayAndTime, getTime } from "client/utils/timeFormatter";
 import { Game, GameStyle, Genre } from "shared/typings/models/game";
-import { sharedConfig } from "shared/config/sharedConfig";
+import { config } from "shared/config";
 
 interface Props {
   game: Game;
@@ -125,7 +125,7 @@ export const GameInfo = ({ game }: Props): ReactElement => {
       )}
 
       {/* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition */}
-      {sharedConfig.activeProgramTypes.length > 1 && game.programType && (
+      {config.shared().activeProgramTypes.length > 1 && game.programType && (
         <GameDetailsRow>
           <GameDetailsTitle twoColumns={true}>
             {t("gameInfo.programType")}

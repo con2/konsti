@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { SignupStrategy } from "shared/config/sharedConfig.types";
+import { SignupStrategy } from "shared/config/sharedConfigTypes";
 
 export enum ProgramType {
   TABLETOP_RPG = "tabletopRPG",

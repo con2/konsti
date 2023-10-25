@@ -16,7 +16,7 @@ import { SessionStorageValue } from "client/utils/localStorage";
 import { ControlledInput } from "client/components/ControlledInput";
 import { RadioButton } from "client/components/RadioButton";
 import { RevolvingDoorGamesInfo } from "client/views/all-games/components/RevolvingDoorGamesInfo";
-import { config } from "client/config";
+import { config } from "shared/config";
 import { RaisedCard } from "client/components/RaisedCard";
 import { RadioButtonGroup } from "client/components/RadioButtonGroup";
 
@@ -119,7 +119,7 @@ export const SearchAndFilterCard = ({
         <RadioButtonGroup id="startingTimeSelection">
           {Object.entries(StartingTimeOption)
             .filter(([_, val]) =>
-              config.enableRevolvingDoor
+              config.client().enableRevolvingDoor
                 ? true
                 : val !== StartingTimeOption.REVOLVING_DOOR,
             )

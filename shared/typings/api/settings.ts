@@ -1,8 +1,5 @@
 import { z } from "zod";
-import {
-  LoginProvider,
-  SignupStrategy,
-} from "shared/config/sharedConfig.types";
+import { LoginProvider, SignupStrategy } from "shared/config/sharedConfigTypes";
 import { Game } from "shared/typings/models/game";
 import {
   Settings,

@@ -13,8 +13,8 @@ import { faker } from "@faker-js/faker";
 import { assertUserUpdatedCorrectly } from "server/features/player-assignment/runAssignmentTestUtils";
 import { runAssignment } from "server/features/player-assignment/runAssignment";
 import { generateTestData } from "server/test/test-data-generation/generators/generateTestData";
-import { AssignmentStrategy } from "shared/config/sharedConfig.types";
-import { sharedConfig } from "shared/config/sharedConfig";
+import { AssignmentStrategy } from "shared/config/sharedConfigTypes";
+import { config } from "shared/config";
 import { AssignmentResultStatus } from "server/typings/result.typings";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 
@@ -57,7 +57,7 @@ test("Assignment with valid data should return success with group strategy", asy
     testUsersCount,
   );
 
-  const { CONVENTION_START_TIME } = sharedConfig;
+  const { CONVENTION_START_TIME } = config.shared();
   const assignmentStrategy = AssignmentStrategy.GROUP;
   const startTime = dayjs(CONVENTION_START_TIME).add(2, "hours").toISOString();
 
@@ -129,7 +129,7 @@ test("Assignment with no games should return error with group strategy", async (
     testUsersCount,
   );
 
-  const { CONVENTION_START_TIME } = sharedConfig;
+  const { CONVENTION_START_TIME } = config.shared();
   const assignmentStrategy = AssignmentStrategy.GROUP;
   const startTime = dayjs(CONVENTION_START_TIME).add(2, "hours").toISOString();
 
@@ -159,7 +159,7 @@ test("Assignment with no players should return error with group strategy", async
     testUsersCount,
   );
 
-  const { CONVENTION_START_TIME } = sharedConfig;
+  const { CONVENTION_START_TIME } = config.shared();
   const assignmentStrategy = AssignmentStrategy.GROUP;
   const startTime = dayjs(CONVENTION_START_TIME).add(2, "hours").toISOString();
 

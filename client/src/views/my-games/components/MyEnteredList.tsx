@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { ResultsByStartTimes } from "./ResultsByStartTimes";
 import { getMissedSignups } from "client/views/my-games/utils/getMissedSignups";
 import { SelectedGame } from "shared/typings/models/user";
-import { sharedConfig } from "shared/config/sharedConfig";
+import { config } from "shared/config";
 import { RaisedCard } from "client/components/RaisedCard";
 
 interface Props {
@@ -35,11 +35,11 @@ export const MyEnteredList = ({
   return (
     <RaisedCard>
       <Header>{t("enteredGames")}</Header>
-      {(!sharedConfig.resultsVisible || startTimes.length === 0) && (
+      {(!config.shared().resultsVisible || startTimes.length === 0) && (
         <SecondaryText>{t("noEnteredGames")}</SecondaryText>
       )}
 
-      {sharedConfig.resultsVisible && startTimes.length !== 0 && (
+      {config.shared().resultsVisible && startTimes.length !== 0 && (
         <ResultsByStartTimes
           signups={_.sortBy(enteredGames, [(enteredGame) => enteredGame.time])}
           startTimes={[...Array.from(new Set(startTimes))].sort()}

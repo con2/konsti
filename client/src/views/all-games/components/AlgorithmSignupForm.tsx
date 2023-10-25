@@ -16,8 +16,8 @@ import { ErrorMessage } from "client/components/ErrorMessage";
 import { CancelSignupForm } from "client/views/all-games/components/CancelSignupForm";
 import { getWeekdayAndTime } from "client/utils/timeFormatter";
 import { getTimeNow } from "client/utils/getTimeNow";
-import { sharedConfig } from "shared/config/sharedConfig";
-import { SignupStrategy } from "shared/config/sharedConfig.types";
+import { config } from "shared/config";
+import { SignupStrategy } from "shared/config/sharedConfigTypes";
 import { getAlgorithmSignupStartTime } from "shared/utils/signupTimes";
 
 interface Props {
@@ -86,7 +86,7 @@ export const AlgorithmSignupForm = ({
   const timeNow = getTimeNow();
   const lotterySignupOpen =
     timeNow.isSameOrAfter(algorithmSignupStartTime) ||
-    sharedConfig.manualSignupMode === SignupStrategy.ALGORITHM;
+    config.shared().manualSignupMode === SignupStrategy.ALGORITHM;
 
   if (!loggedIn) {
     return (
@@ -111,7 +111,7 @@ export const AlgorithmSignupForm = ({
 
   return (
     <>
-      {sharedConfig.signupOpen && !alreadySignedToGame && isGroupCreator && (
+      {config.shared().signupOpen && !alreadySignedToGame && isGroupCreator && (
         <>
           {signedGamesForTimeslot.length >= 3 && (
             <p>{t("signup.cannotSignupMoreGames")}</p>
@@ -155,7 +155,7 @@ export const AlgorithmSignupForm = ({
             })}
           </SignedGameContainer>
 
-          {sharedConfig.signupOpen && (
+          {config.shared().signupOpen && (
             <>
               {isGroupCreator && !cancelSignupFormOpen && (
                 <ButtonContainer>

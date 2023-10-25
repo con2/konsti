@@ -7,7 +7,6 @@ import { Configuration } from "webpack";
 import "webpack-dev-server";
 import { merge } from "webpack-merge";
 import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
-import { config } from "./src/config";
 
 const TARGET = process.env.npm_lifecycle_event;
 
@@ -104,7 +103,8 @@ const devConfig: Configuration = {
 
   mode: "development",
 
-  devtool: config.enableReduxTrace ? "source-map" : "eval-source-map",
+  // Set to "source-map" with enableReduxTrace
+  devtool: "eval-source-map",
 
   // webpack-dev-server config
   devServer: {

@@ -13,10 +13,10 @@ import { GroupCreatorActions } from "client/views/group/components/GroupCreatorA
 import { GroupMemberActions } from "client/views/group/components/GroupMemberActions";
 import { getTimeNow } from "client/utils/getTimeNow";
 import { selectEnteredGames } from "client/views/my-games/myGamesSlice";
-import { sharedConfig } from "shared/config/sharedConfig";
+import { config } from "shared/config";
 import { ProgramType } from "shared/typings/models/game";
 
-const { directSignupAlwaysOpenIds } = sharedConfig;
+const { directSignupAlwaysOpenIds } = config.shared();
 
 export const GroupView = (): ReactElement => {
   const username = useAppSelector((state) => state.login.username);

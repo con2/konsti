@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
-import { sharedConfig } from "shared/config/sharedConfig";
+import { config } from "shared/config";
 
-const { CONVENTION_START_TIME } = sharedConfig;
+const { CONVENTION_START_TIME } = config.shared();
 
 export const tooEearlyForAlgorithmSignup = (startTime: string): boolean => {
   // Return DIRECT for three first hours of convention because there is no time for algorithm signup
