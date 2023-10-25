@@ -5,7 +5,7 @@ import { User } from "shared/typings/models/user";
 import { GameDoc } from "server/typings/game.typings";
 import { ResultsCollectionEntry } from "server/typings/result.typings";
 import { writeJson } from "server/features/statistics/statsUtil";
-import { getServerConfig } from "server/serverConfig";
+import { getServerConfig } from "shared/config/serverConfig";
 import { Game } from "shared/typings/models/game";
 import { SignupDoc } from "server/features/signup/signup.typings";
 import { SettingsDoc } from "server/typings/settings.typings";

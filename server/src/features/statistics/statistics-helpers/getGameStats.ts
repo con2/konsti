@@ -6,7 +6,7 @@ import {
   getDemandByGame,
 } from "./gameDataHelpers";
 import { logger } from "server/utils/logger";
-import { getServerConfig } from "server/serverConfig";
+import { getServerConfig } from "shared/config/serverConfig";
 import { Game } from "shared/typings/models/game";
 import { User } from "shared/typings/models/user";
 

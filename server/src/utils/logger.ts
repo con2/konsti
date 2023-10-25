@@ -1,7 +1,7 @@
 import { createLogger, format, Logger, transports } from "winston";
 import Sentry from "winston-transport-sentry-node";
 import { Integrations } from "@sentry/node";
-import { getServerConfig } from "server/serverConfig";
+import { getServerConfig } from "shared/config/serverConfig";
 import { getDsn } from "server/utils/sentry";
 
 const consoleOutputFormat = getServerConfig().consoleLogFormatJson

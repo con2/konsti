@@ -6,7 +6,7 @@ import { logger } from "server/utils/logger";
 import { GameSchema } from "shared/typings/models/game";
 import { Message, writeFeedback } from "server/features/statistics/statsUtil";
 import { PostFeedbackRequestSchema } from "shared/typings/api/feedback";
-import { getServerConfig } from "server/serverConfig";
+import { getServerConfig } from "shared/config/serverConfig";
 import { setLocale } from "shared/utils/setLocale";
 import { TIMEZONE } from "shared/utils/initializeDayjs";
 

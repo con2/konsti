@@ -1,5 +1,5 @@
 import dayjs, { Dayjs } from "dayjs";
-import { getServerConfig } from "server/serverConfig";
+import { getServerConfig } from "shared/config/serverConfig";
 import { findTestSettings } from "server/test/test-settings/testSettingsRepository";
 import { MongoDbError } from "shared/typings/api/errors";
 import {

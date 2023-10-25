@@ -2,7 +2,7 @@ import { Server } from "http";
 import { startServer, closeServer } from "server/utils/server";
 import { logger } from "server/utils/logger";
 import { startCronJobs } from "server/utils/cron";
-import { getServerConfig } from "server/serverConfig";
+import { getServerConfig } from "shared/config/serverConfig";
 import { initializeDayjs } from "shared/utils/initializeDayjs";
 
 const startApp = async (): Promise<void> => {

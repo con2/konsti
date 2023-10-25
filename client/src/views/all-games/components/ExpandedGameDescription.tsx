@@ -5,7 +5,7 @@ import { useAppSelector } from "client/utils/hooks";
 import { FeedbackForm } from "client/views/all-games/components/FeedbackForm";
 import { Game } from "shared/typings/models/game";
 import { UserGroup } from "shared/typings/models/user";
-import { getClientConfig } from "client/clientConfig";
+import { getClientConfig } from "shared/config/clientConfig";
 
 interface Props {
   game: Game;

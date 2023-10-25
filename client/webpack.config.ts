@@ -7,7 +7,8 @@ import { Configuration } from "webpack";
 import "webpack-dev-server";
 import { merge } from "webpack-merge";
 import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
-import { getClientConfig } from "./src/clientConfig";
+// eslint-disable-next-line @typescript-eslint/no-restricted-imports
+import { getClientConfig } from "../shared/config/clientConfig";
 
 const TARGET = process.env.npm_lifecycle_event;
 

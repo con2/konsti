@@ -1,6 +1,6 @@
 import { vi } from "vitest";
 import { initializeDayjs } from "shared/utils/initializeDayjs";
-import { getServerConfig } from "server/serverConfig";
+import { getServerConfig } from "shared/config/serverConfig";
 
 initializeDayjs();
 

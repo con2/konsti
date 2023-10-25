@@ -16,7 +16,7 @@ import { SessionStorageValue } from "client/utils/localStorage";
 import { ControlledInput } from "client/components/ControlledInput";
 import { RadioButton } from "client/components/RadioButton";
 import { RevolvingDoorGamesInfo } from "client/views/all-games/components/RevolvingDoorGamesInfo";
-import { getClientConfig } from "client/clientConfig";
+import { getClientConfig } from "shared/config/clientConfig";
 import { RaisedCard } from "client/components/RaisedCard";
 import { RadioButtonGroup } from "client/components/RadioButtonGroup";
 

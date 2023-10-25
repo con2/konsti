@@ -1,4 +1,4 @@
-import { getServerConfig } from "server/serverConfig";
+import { getServerConfig } from "shared/config/serverConfig";
 import { Signup } from "server/features/signup/signup.typings";
 import { getSharedConfig } from "shared/config/sharedConfig";
 import { ProgramType } from "shared/typings/models/game";

@@ -1,6 +1,6 @@
 import { getGamesFromKompassi } from "server/features/game/utils/getGamesFromKompassi";
 import { updateGamePopularity } from "server/features/game-popularity/updateGamePopularity";
-import { getServerConfig } from "server/serverConfig";
+import { getServerConfig } from "shared/config/serverConfig";
 import { kompassiGameMapper } from "server/utils/kompassiGameMapper";
 import {
   PostUpdateGamesResponse,

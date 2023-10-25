@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import { logger } from "server/utils/logger";
-import { getServerConfig } from "server/serverConfig";
+import { getServerConfig } from "shared/config/serverConfig";
 
 const connectToDb = async (
   dbConnString: string = getServerConfig().dbConnString,
