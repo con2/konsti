@@ -18,10 +18,7 @@ import {
   submitSetLoginProviderAsync,
 } from "client/views/admin/adminSlice";
 import { SignupQuestion } from "shared/typings/models/settings";
-import {
-  LoginProvider,
-  SignupStrategy,
-} from "shared/config/sharedConfig.types";
+import { LoginProvider, SignupStrategy } from "shared/config/sharedConfig";
 import { getSignupMessages } from "client/services/userServices";
 import { getSentryTest } from "client/views/admin/adminService";
 import { postPlayerAssignment } from "client/services/assignmentServices";

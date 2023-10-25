@@ -5,7 +5,7 @@ import { useAppSelector } from "client/utils/hooks";
 import { Button, ButtonStyle } from "./Button";
 import { sharedConfig } from "shared/config/sharedConfig";
 import { HighlightStyle, RaisedCard } from "client/components/RaisedCard";
-import { LoginProvider } from "shared/config/sharedConfig.types";
+import { LoginProvider } from "shared/config/sharedConfig";
 
 export const FirstLogin = (): ReactElement | null => {
   const { t } = useTranslation();

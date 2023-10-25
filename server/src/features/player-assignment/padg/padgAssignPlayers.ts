@@ -17,7 +17,7 @@ import {
   unwrapResult,
 } from "shared/utils/result";
 import { AssignmentError } from "shared/typings/api/errors";
-import { AssignmentStrategy } from "shared/config/sharedConfig.types";
+import { AssignmentStrategy } from "shared/config/sharedConfig";
 
 export const padgAssignPlayers = (
   players: readonly User[],

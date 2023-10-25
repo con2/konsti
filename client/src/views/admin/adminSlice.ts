@@ -3,10 +3,7 @@ import _ from "lodash";
 import { BackendErrorType } from "client/components/ErrorBar";
 import { AdminState, RootState } from "client/typings/redux.typings";
 import { SettingsPayload } from "shared/typings/api/settings";
-import {
-  LoginProvider,
-  SignupStrategy,
-} from "shared/config/sharedConfig.types";
+import { LoginProvider, SignupStrategy } from "shared/config/sharedConfig";
 import { Game, ProgramType } from "shared/typings/models/game";
 import { SignupQuestion } from "shared/typings/models/settings";
 import { SignupMessage } from "shared/typings/models/signupMessage";

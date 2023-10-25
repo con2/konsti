@@ -1,4 +1,4 @@
-import { SignupStrategy } from "shared/config/sharedConfig.types";
+import { SignupStrategy } from "shared/config/sharedConfig";
 import { Game, ProgramType } from "shared/typings/models/game";
 
 export const getTimeslotSignupStrategy = (

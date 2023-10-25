@@ -8,7 +8,7 @@ import {
   GameWithUsernames,
   UserSignup,
 } from "shared/typings/models/game";
-import { SignupStrategy } from "shared/config/sharedConfig.types";
+import { SignupStrategy } from "shared/config/sharedConfig";
 import { sharedConfig } from "shared/config/sharedConfig";
 import { findSettings } from "server/features/settings/settingsRepository";
 import { Settings, SignupQuestion } from "shared/typings/models/settings";

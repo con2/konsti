@@ -8,7 +8,7 @@ import {
   selectActiveEnteredGames,
   selectActiveSignedGames,
 } from "client/views/my-games/myGamesSlice";
-import { SignupStrategy } from "shared/config/sharedConfig.types";
+import { SignupStrategy } from "shared/config/sharedConfig";
 import { getSignedGames } from "client/utils/getUpcomingGames";
 import { BackButton } from "client/components/BackButton";
 

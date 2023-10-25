@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import _ from "lodash";
 import { getTime, getWeekdayAndTime } from "client/utils/timeFormatter";
 import { SelectedGame } from "shared/typings/models/user";
-import { SignupStrategy } from "shared/config/sharedConfig.types";
+import { SignupStrategy } from "shared/config/sharedConfig";
 import { MOBILE_MARGIN } from "client/globalStyle";
 import { sharedConfig } from "shared/config/sharedConfig";
 import {

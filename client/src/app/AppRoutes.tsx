@@ -22,7 +22,7 @@ import { EventLog } from "client/views/all-games/components/EventLog";
 import { ProfileView } from "client/views/profile/ProfileView";
 import { InstructionsView } from "client/views/about/InstructionsView";
 import { KompassiLoginCallback } from "client/components/KompassiLoginCallback";
-import { LoginProvider } from "shared/config/sharedConfig.types";
+import { LoginProvider } from "shared/config/sharedConfig";
 import { KompassiLoginUsernameForm } from "client/views/login/components/KompassiLoginUsernameForm";
 
 export const AppRoutes = (): ReactElement => {
