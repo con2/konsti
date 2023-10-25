@@ -20,7 +20,7 @@ import {
   unwrapResult,
 } from "shared/utils/result";
 import { AssignmentError } from "shared/typings/api/errors";
-import { AssignmentStrategy } from "shared/config/sharedConfig";
+import { AssignmentStrategy } from "shared/config/sharedConfigTypes";
 
 export const groupAssignPlayers = (
   players: readonly User[],

@@ -12,7 +12,7 @@ import {
 } from "client/utils/getUpcomingGames";
 import { loadUser, loadGames, loadGroupMembers } from "client/utils/loadData";
 import { useAppSelector } from "client/utils/hooks";
-import { SignupStrategy } from "shared/config/sharedConfig";
+import { SignupStrategy } from "shared/config/sharedConfigTypes";
 import {
   selectEnteredGames,
   selectFavoritedGames,

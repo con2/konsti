@@ -1,5 +1,6 @@
 import { ReactElement, ReactNode } from "react";
-import { ConventionName, getSharedConfig } from "shared/config/sharedConfig";
+import { getSharedConfig } from "shared/config/sharedConfig";
+import { ConventionName } from "shared/config/sharedConfigTypes";
 
 interface Props {
   children: ReactNode;

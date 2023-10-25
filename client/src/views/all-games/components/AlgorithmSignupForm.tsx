@@ -17,7 +17,7 @@ import { CancelSignupForm } from "client/views/all-games/components/CancelSignup
 import { getWeekdayAndTime } from "client/utils/timeFormatter";
 import { getTimeNow } from "client/utils/getTimeNow";
 import { getSharedConfig } from "shared/config/sharedConfig";
-import { SignupStrategy } from "shared/config/sharedConfig";
+import { SignupStrategy } from "shared/config/sharedConfigTypes";
 import { getAlgorithmSignupStartTime } from "shared/utils/signupTimes";
 
 interface Props {

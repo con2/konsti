@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import _ from "lodash";
 import { updateFavorite, UpdateFavoriteOpts } from "client/utils/favorite";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
-import { SignupStrategy } from "shared/config/sharedConfig";
+import { SignupStrategy } from "shared/config/sharedConfigTypes";
 import { Game } from "shared/typings/models/game";
 import { AlgorithmSignupForm } from "./AlgorithmSignupForm";
 import { DirectSignupForm } from "./DirectSignupForm";

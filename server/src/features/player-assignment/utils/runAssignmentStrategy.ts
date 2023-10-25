@@ -9,7 +9,7 @@ import {
   AssignmentResultStatus,
   PlayerAssignmentResult,
 } from "server/typings/result.typings";
-import { AssignmentStrategy } from "shared/config/sharedConfig";
+import { AssignmentStrategy } from "shared/config/sharedConfigTypes";
 import { Signup } from "server/features/signup/signup.typings";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 import {

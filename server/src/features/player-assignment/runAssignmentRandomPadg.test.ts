@@ -14,7 +14,7 @@ import { faker } from "@faker-js/faker";
 import { assertUserUpdatedCorrectly } from "server/features/player-assignment/runAssignmentTestUtils";
 import { runAssignment } from "server/features/player-assignment/runAssignment";
 import { generateTestData } from "server/test/test-data-generation/generators/generateTestData";
-import { AssignmentStrategy } from "shared/config/sharedConfig";
+import { AssignmentStrategy } from "shared/config/sharedConfigTypes";
 import { getSharedConfig } from "shared/config/sharedConfig";
 import { AssignmentResultStatus } from "server/typings/result.typings";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";

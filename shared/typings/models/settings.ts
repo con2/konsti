@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { LoginProvider, SignupStrategy } from "shared/config/sharedConfig";
+import { LoginProvider, SignupStrategy } from "shared/config/sharedConfigTypes";
 import { GameSchema } from "shared/typings/models/game";
 
 export enum SignupQuestionType {

@@ -13,7 +13,7 @@ import dayjs from "dayjs";
 import { faker } from "@faker-js/faker";
 import { runAssignment } from "server/features/player-assignment/runAssignment";
 import { generateTestData } from "server/test/test-data-generation/generators/generateTestData";
-import { AssignmentStrategy } from "shared/config/sharedConfig";
+import { AssignmentStrategy } from "shared/config/sharedConfigTypes";
 import { getSharedConfig } from "shared/config/sharedConfig";
 import { saveUser } from "server/features/user/userRepository";
 import { saveGames } from "server/features/game/gameRepository";

@@ -2,7 +2,7 @@ import dayjs from "dayjs";
 import { logger } from "server/utils/logger";
 import { runAssignment } from "server/features/player-assignment/runAssignment";
 import { db } from "server/db/mongodb";
-import { AssignmentStrategy } from "shared/config/sharedConfig";
+import { AssignmentStrategy } from "shared/config/sharedConfigTypes";
 import { getSharedConfig } from "shared/config/sharedConfig";
 
 const testAssignPlayers = async (

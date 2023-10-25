@@ -1,4 +1,10 @@
 import dayjs, { Dayjs } from "dayjs";
+import {
+  AssignmentStrategy,
+  ConventionName,
+  LoginProvider,
+  SignupStrategy,
+} from "shared/config/sharedConfigTypes";
 import { ProgramType } from "shared/typings/models/game";
 import {
   SignupQuestion,
@@ -6,31 +12,6 @@ import {
 } from "shared/typings/models/settings";
 
 type ArrMin1<T> = [T, ...T[]];
-
-export enum SignupStrategy {
-  DIRECT = "direct",
-  ALGORITHM = "algorithm",
-  ALGORITHM_AND_DIRECT = "algorithm+direct",
-}
-
-export enum AssignmentStrategy {
-  MUNKRES = "munkres",
-  GROUP = "group",
-  PADG = "padg",
-  RANDOM = "random",
-  GROUP_PADG = "group+padg",
-  RANDOM_PADG = "random+padg",
-}
-
-export enum LoginProvider {
-  LOCAL = "local",
-  KOMPASSI = "kompassi",
-}
-
-export enum ConventionName {
-  ROPECON = "Ropecon",
-  TRACON_HITPOINT = "Tracon Hitpoint",
-}
 
 interface SignupWindow {
   signupWindowStart: Dayjs;
