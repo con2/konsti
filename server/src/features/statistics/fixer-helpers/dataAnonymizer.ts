@@ -4,7 +4,7 @@ import { logger } from "server/utils/logger";
 import { User } from "shared/typings/models/user";
 import { ResultsCollectionEntry } from "server/typings/result.typings";
 import { writeJson } from "server/features/statistics/statsUtil";
-import { config } from "server/serverConfig";
+import { serverConfig } from "server/serverConfig";
 import { Signup } from "server/features/signup/signup.typings";
 
 export const anonymizeData = async (
@@ -13,21 +13,21 @@ export const anonymizeData = async (
 ): Promise<void> => {
   const users: User[] = JSON.parse(
     fs.readFileSync(
-      `${config.statsDataDir}/${event}/${year}/users.json`,
+      `${serverConfig.statsDataDir}/${event}/${year}/users.json`,
       "utf8",
     ),
   );
 
   const results: ResultsCollectionEntry[] = JSON.parse(
     fs.readFileSync(
-      `${config.statsDataDir}/${event}/${year}/results.json`,
+      `${serverConfig.statsDataDir}/${event}/${year}/results.json`,
       "utf8",
     ),
   );
 
   const signups: Signup[] = JSON.parse(
     fs.readFileSync(
-      `${config.statsDataDir}/${event}/${year}/signups.json`,
+      `${serverConfig.statsDataDir}/${event}/${year}/signups.json`,
       "utf8",
     ),
   );

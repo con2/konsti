@@ -5,14 +5,14 @@ import {
   getDemandByTime,
 } from "./resultDataHelpers";
 import { logger } from "server/utils/logger";
-import { config } from "server/serverConfig";
+import { serverConfig } from "server/serverConfig";
 import { ResultsCollectionEntry } from "server/typings/result.typings";
 import { Game } from "shared/typings/models/game";
 
 export const getResultsStats = (year: number, event: string): void => {
   const results: ResultsCollectionEntry[] = JSON.parse(
     fs.readFileSync(
-      `${config.statsDataDir}/${event}/${year}/results.json`,
+      `${serverConfig.statsDataDir}/${event}/${year}/results.json`,
       "utf8",
     ),
   );
@@ -21,7 +21,7 @@ export const getResultsStats = (year: number, event: string): void => {
 
   const games: Game[] = JSON.parse(
     fs.readFileSync(
-      `${config.statsDataDir}/${event}/${year}/games.json`,
+      `${serverConfig.statsDataDir}/${event}/${year}/games.json`,
       "utf8",
     ),
   );

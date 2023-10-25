@@ -5,7 +5,7 @@ import { useAppSelector } from "client/utils/hooks";
 import { FeedbackForm } from "client/views/all-games/components/FeedbackForm";
 import { Game } from "shared/typings/models/game";
 import { UserGroup } from "shared/typings/models/user";
-import { config } from "client/clientConfig";
+import { clientConfig } from "client/clientConfig";
 
 interface Props {
   game: Game;
@@ -18,7 +18,7 @@ export const ExpandedGameDescription = ({ game }: Props): ReactElement => {
   return (
     <>
       <GameInfo game={game} />
-      {loggedIn && config.enableOrganizerFeedback && (
+      {loggedIn && clientConfig.enableOrganizerFeedback && (
         <FeedbackForm game={game} />
       )}
       {loggedIn && userGroup === UserGroup.ADMIN && (

@@ -1,13 +1,13 @@
 import { Request, Response, NextFunction } from "express";
 import { logger } from "server/utils/logger";
-import { config } from "server/serverConfig";
+import { serverConfig } from "server/serverConfig";
 
 export const allowCORS = (
   req: Request,
   res: Response,
   next: NextFunction,
 ): void => {
-  const allowedOrigins = config.allowedCorsOrigins;
+  const allowedOrigins = serverConfig.allowedCorsOrigins;
   const origin = req.headers.origin;
 
   // Same origin, no preflight CORS request

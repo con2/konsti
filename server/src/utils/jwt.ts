@@ -1,5 +1,5 @@
 import jsonwebtoken, { TokenExpiredError } from "jsonwebtoken";
-import { config } from "server/serverConfig";
+import { serverConfig } from "server/serverConfig";
 import { JWTResult } from "server/typings/jwt.typings";
 import { UserGroup } from "shared/typings/models/user";
 
@@ -56,12 +56,12 @@ export const decodeJWT = (jwt: string): JWTResult => {
 
 const getSecret = (userGroup: UserGroup): string => {
   if (userGroup === UserGroup.ADMIN) {
-    return config.jwtSecretKeyAdmin;
+    return serverConfig.jwtSecretKeyAdmin;
   } else if (userGroup === UserGroup.USER) {
-    return config.jwtSecretKey;
+    return serverConfig.jwtSecretKey;
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   } else if (userGroup === UserGroup.HELP) {
-    return config.jwtSecretKeyHelp;
+    return serverConfig.jwtSecretKeyHelp;
   }
   return "";
 };

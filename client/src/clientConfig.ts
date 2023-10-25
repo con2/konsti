@@ -1,4 +1,4 @@
-interface Config {
+interface ClientConfig {
   MESSAGE_DELAY: number;
   apiServerUrl: string;
   showTestValues: boolean;
@@ -13,7 +13,7 @@ interface Config {
   showAnnouncement: boolean;
 }
 
-export const config: Config = {
+export const clientConfig: ClientConfig = {
   // App settings
   MESSAGE_DELAY: 3000, // ms
 

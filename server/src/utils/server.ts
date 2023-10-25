@@ -8,7 +8,7 @@ import { Handlers } from "@sentry/node";
 import helmet from "helmet";
 import morgan from "morgan";
 import expressStaticGzip from "express-static-gzip";
-import { config } from "server/serverConfig";
+import { serverConfig } from "server/serverConfig";
 import { logger, stream } from "server/utils/logger";
 import { allowCORS } from "server/middleware/cors";
 import "server/db/mongoosePlugins"; // Must be imported before apiRoutes which loads models
@@ -57,7 +57,7 @@ export const startServer = async ({
     }),
   );
 
-  if (config.enableAccessLog) {
+  if (serverConfig.enableAccessLog) {
     // Set logger
     logger.info("Express: Overriding 'Express' logger");
     app.use(morgan("dev", { stream }));
@@ -86,9 +86,9 @@ export const startServer = async ({
   // Set static path
   const staticPath = path.join(__dirname, "../../", "front");
 
-  if (!config.onlyCronjobs) {
+  if (!serverConfig.onlyCronjobs) {
     // Set compression
-    if (config.bundleCompression) {
+    if (serverConfig.bundleCompression) {
       app.use(
         expressStaticGzip(staticPath, {
           enableBrotli: true,
@@ -104,7 +104,7 @@ export const startServer = async ({
     if (req.originalUrl.includes("/api/")) {
       res.sendStatus(404);
     } else {
-      if (!config.onlyCronjobs) {
+      if (!serverConfig.onlyCronjobs) {
         res.sendFile(path.join(staticPath, "index.html"));
       }
     }
@@ -158,7 +158,7 @@ export const closeServer = async (
   signal?: string,
 ): Promise<void> => {
   logger.info(`Received signal to terminate: ${signal}`);
-  if (config.onlyCronjobs) {
+  if (serverConfig.onlyCronjobs) {
     stopCronJobs();
   }
   server.close();

@@ -1,6 +1,6 @@
 import { logger } from "server/utils/logger";
 import { runGroupAssignment } from "server/features/player-assignment/group/utils/runGroupAssignment";
-import { config } from "server/serverConfig";
+import { serverConfig } from "server/serverConfig";
 import { Game } from "shared/typings/models/game";
 import { AssignmentStrategyResult } from "server/typings/result.typings";
 import { User } from "shared/typings/models/user";
@@ -18,7 +18,7 @@ export const assignGroups = (
   signedGames: readonly Game[],
   playerGroups: readonly User[][],
 ): Result<AssignmentStrategyResult, AssignmentError> => {
-  const { GROUP_ASSIGNMENT_ROUNDS } = config;
+  const { GROUP_ASSIGNMENT_ROUNDS } = serverConfig;
 
   let bestScore = 0;
   let players = 0;

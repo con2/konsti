@@ -1,7 +1,7 @@
 import { Cron } from "croner";
 import dayjs from "dayjs";
 import { logger } from "server/utils/logger";
-import { config } from "server/serverConfig";
+import { serverConfig } from "server/serverConfig";
 import { runAssignment } from "server/features/player-assignment/runAssignment";
 import { sharedConfig } from "shared/config/sharedConfig";
 import { Result, isErrorResult, makeSuccessResult } from "shared/utils/result";
@@ -20,7 +20,7 @@ const {
   autoAssignPlayersEnabled,
   autoAssignDelay,
   autoAssignInterval,
-} = config;
+} = serverConfig;
 
 const cronJobs: Cron[] = [];
 

@@ -6,7 +6,7 @@ import { ProgramType } from "shared/typings/models/game";
 import { findUsers } from "server/features/user/userRepository";
 import { findGames } from "server/features/game/gameRepository";
 import { AssignmentStrategy } from "shared/config/sharedConfig.types";
-import { config } from "server/serverConfig";
+import { serverConfig } from "server/serverConfig";
 import { removeOverlapSignups } from "server/features/player-assignment/utils/removeOverlapSignups";
 import { saveResults } from "server/features/player-assignment/utils/saveResults";
 import { getDynamicStartTime } from "server/features/player-assignment/utils/getDynamicStartTime";
@@ -129,7 +129,7 @@ export const runAssignment = async ({
     return saveResultsResult;
   }
 
-  if (config.enableRemoveOverlapSignups) {
+  if (serverConfig.enableRemoveOverlapSignups) {
     logger.info("Remove overlapping signups");
     const removeOverlapSignupsResult = await removeOverlapSignups(
       assignResults.results,

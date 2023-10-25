@@ -7,7 +7,7 @@ import { Header } from "client/components/Header";
 import { loadData } from "client/utils/loadData";
 import { Loading } from "client/components/Loading";
 import { getIconLibrary } from "client/utils/icons";
-import { config } from "client/clientConfig";
+import { clientConfig } from "client/clientConfig";
 import { ErrorBar } from "client/components/ErrorBar";
 import { MOBILE_MARGIN } from "client/globalStyle";
 import { TestTime } from "client/test/test-components/TestTime";
@@ -15,7 +15,7 @@ import { Announcement } from "client/components/Announcement";
 import { NotificationBar } from "client/components/NotificationBar";
 
 const { loadedSettings, showTestValues, showAnnouncement, dataUpdateInterval } =
-  config;
+  clientConfig;
 
 export const App = (): ReactElement => {
   const store = useStore();

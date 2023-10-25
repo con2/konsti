@@ -1,5 +1,5 @@
 import dayjs, { Dayjs } from "dayjs";
-import { config } from "server/serverConfig";
+import { serverConfig } from "server/serverConfig";
 import { findTestSettings } from "server/test/test-settings/testSettingsRepository";
 import { MongoDbError } from "shared/typings/api/errors";
 import {
@@ -10,7 +10,7 @@ import {
 } from "shared/utils/result";
 
 export const getTimeNow = async (): Promise<Result<Dayjs, MongoDbError>> => {
-  if (process.env.SETTINGS !== "production" && config.useTestTime) {
+  if (process.env.SETTINGS !== "production" && serverConfig.useTestTime) {
     const findTestSettingsResult = await findTestSettings();
     if (isErrorResult(findTestSettingsResult)) {
       return findTestSettingsResult;
