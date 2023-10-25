@@ -19,7 +19,7 @@ import { ApiError } from "shared/typings/api/errors";
 import { findUserSignups } from "server/features/signup/signupRepository";
 import { SelectedGame } from "shared/typings/models/user";
 import { isErrorResult, unwrapResult } from "shared/utils/result";
-import { sharedConfig } from "shared/config/sharedConfig";
+import { getSharedConfig } from "shared/config/sharedConfig";
 import { createSerial } from "server/features/user/userUtils";
 
 export const storeUser = async (
@@ -28,7 +28,7 @@ export const storeUser = async (
   maybeSerial: string | undefined,
 ): Promise<PostUserResponse | PostUserError> => {
   let serial;
-  if (!sharedConfig.requireRegistrationCode) {
+  if (!getSharedConfig().requireRegistrationCode) {
     const serialDocResult = await createSerial();
     if (isErrorResult(serialDocResult)) {
       return {

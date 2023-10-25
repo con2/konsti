@@ -1,4 +1,4 @@
-import { sharedConfig } from "shared/config/sharedConfig";
+import { getSharedConfig } from "shared/config/sharedConfig";
 import { getTimeNow } from "server/features/player-assignment/utils/getTimeNow";
 import { logger } from "server/utils/logger";
 import {
@@ -9,7 +9,7 @@ import {
 } from "shared/utils/result";
 import { MongoDbError } from "shared/typings/api/errors";
 
-const { DIRECT_SIGNUP_START } = sharedConfig;
+const { DIRECT_SIGNUP_START } = getSharedConfig();
 
 export const getDynamicStartTime = async (): Promise<
   Result<string, MongoDbError>

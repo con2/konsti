@@ -1,5 +1,5 @@
 import { ReactElement, ReactNode } from "react";
-import { CONVENTION_NAME, sharedConfig } from "shared/config/sharedConfig";
+import { CONVENTION_NAME, getSharedConfig } from "shared/config/sharedConfig";
 
 interface Props {
   children: ReactNode;
@@ -9,7 +9,7 @@ interface Props {
 export const Hitpoint = ({ children }: Props): ReactElement => {
   return (
     <span>
-      {sharedConfig.CONVENTION_NAME === CONVENTION_NAME.TRACON_HITPOINT
+      {getSharedConfig().CONVENTION_NAME === CONVENTION_NAME.TRACON_HITPOINT
         ? children
         : null}
     </span>

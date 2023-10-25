@@ -9,7 +9,7 @@ import {
   UserSignup,
 } from "shared/typings/models/game";
 import { SignupStrategy } from "shared/config/sharedConfig";
-import { sharedConfig } from "shared/config/sharedConfig";
+import { getSharedConfig } from "shared/config/sharedConfig";
 import { findSettings } from "server/features/settings/settingsRepository";
 import { Settings, SignupQuestion } from "shared/typings/models/settings";
 import { getTimeNow } from "server/features/player-assignment/utils/getTimeNow";
@@ -112,13 +112,13 @@ const getSignupStrategyForGame = (
   currentTime: Dayjs,
 ): SignupStrategy => {
   const start = dayjs(game.startTime);
-  const { DIRECT_SIGNUP_START } = sharedConfig;
+  const { DIRECT_SIGNUP_START } = getSharedConfig();
 
   if (settings.signupStrategy !== SignupStrategy.ALGORITHM_AND_DIRECT) {
     return settings.signupStrategy;
   }
 
-  if (sharedConfig.directSignupProgramTypes.includes(game.programType)) {
+  if (getSharedConfig().directSignupProgramTypes.includes(game.programType)) {
     return SignupStrategy.DIRECT;
   }
 

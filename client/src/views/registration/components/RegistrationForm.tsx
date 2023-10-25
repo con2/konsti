@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import styled, { css } from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Accordion } from "client/components/Accordion";
-import { sharedConfig } from "shared/config/sharedConfig";
+import { getSharedConfig } from "shared/config/sharedConfig";
 import { Button, ButtonStyle } from "client/components/Button";
 import { useAppDispatch } from "client/utils/hooks";
 import {
@@ -137,7 +137,7 @@ export const RegistrationForm = (): ReactElement => {
           <FormFieldError>{errors.password.message}</FormFieldError>
         )}
 
-        {sharedConfig.requireRegistrationCode && (
+        {getSharedConfig().requireRegistrationCode && (
           <>
             <InputContainer>
               <StyledLabel htmlFor="serial">{t("serial")}</StyledLabel>

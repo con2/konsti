@@ -3,12 +3,12 @@ import { logger } from "server/utils/logger";
 import { runAssignment } from "server/features/player-assignment/runAssignment";
 import { db } from "server/db/mongodb";
 import { AssignmentStrategy } from "shared/config/sharedConfig";
-import { sharedConfig } from "shared/config/sharedConfig";
+import { getSharedConfig } from "shared/config/sharedConfig";
 
 const testAssignPlayers = async (
   assignmentStrategy: AssignmentStrategy,
 ): Promise<void> => {
-  const startTime = dayjs(sharedConfig.CONVENTION_START_TIME)
+  const startTime = dayjs(getSharedConfig().CONVENTION_START_TIME)
     .add(3, "hours")
     .toISOString();
   await runAssignment({

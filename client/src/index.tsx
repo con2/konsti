@@ -13,7 +13,7 @@ import { getLocalStorageLanguage } from "client/utils/localStorage";
 import { theme } from "client/theme";
 import { GlobalStyle } from "client/globalStyle";
 import { setLocale } from "shared/utils/setLocale";
-import { sharedConfig } from "shared/config/sharedConfig";
+import { getSharedConfig } from "shared/config/sharedConfig";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { store } from "client/utils/store";
 
@@ -53,7 +53,7 @@ const getDsn = (): string | undefined => {
     case "staging":
       return "https://446b1c1e5b3048c4bb00b19b74aa55e6@o1321706.ingest.sentry.io/6578391";
     case "development":
-      return sharedConfig.enableSentryInDev
+      return getSharedConfig().enableSentryInDev
         ? "https://1fb97a74de6a44e3b16e8d29aeec3363@o1321706.ingest.sentry.io/6579491"
         : undefined;
     default:
@@ -68,7 +68,7 @@ init({
       tracingOrigins: ["localhost", "dev.ropekonsti.fi", "ropekonsti.fi"],
     }),
   ],
-  tracesSampleRate: sharedConfig.tracesSampleRate,
+  tracesSampleRate: getSharedConfig().tracesSampleRate,
   normalizeDepth: 10,
   environment: process.env.SETTINGS,
   tunnel: ApiEndpoint.SENTRY_TUNNEL,

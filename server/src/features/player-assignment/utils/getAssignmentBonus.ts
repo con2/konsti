@@ -1,6 +1,6 @@
 import { getServerConfig } from "server/serverConfig";
 import { Signup } from "server/features/signup/signup.typings";
-import { sharedConfig } from "shared/config/sharedConfig";
+import { getSharedConfig } from "shared/config/sharedConfig";
 import { ProgramType } from "shared/typings/models/game";
 import { User } from "shared/typings/models/user";
 
@@ -11,7 +11,7 @@ export const getAssignmentBonus = (
   const signupsAffectingBonus = signups.filter(
     (signup) =>
       signup.game.programType === ProgramType.TABLETOP_RPG &&
-      !sharedConfig.directSignupAlwaysOpenIds.includes(signup.game.gameId),
+      !getSharedConfig().directSignupAlwaysOpenIds.includes(signup.game.gameId),
   );
 
   const groupMembersWithSignups = playerGroup.flatMap((groupMember) => {

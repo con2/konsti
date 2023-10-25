@@ -5,7 +5,7 @@ import { ProgramType } from "shared/typings/models/game";
 import { setActiveProgramType } from "client/views/admin/adminSlice";
 import { Dropdown } from "client/components/Dropdown";
 import { saveSession } from "client/utils/localStorage";
-import { sharedConfig } from "shared/config/sharedConfig";
+import { getSharedConfig } from "shared/config/sharedConfig";
 
 export const ProgramTypeSelection = (): ReactElement => {
   const { t } = useTranslation();
@@ -15,7 +15,7 @@ export const ProgramTypeSelection = (): ReactElement => {
     (state) => state.admin.activeProgramType,
   );
 
-  const programTypes = sharedConfig.activeProgramTypes;
+  const programTypes = getSharedConfig().activeProgramTypes;
 
   const dropdownItems = programTypes.map((programType) => ({
     value: programType,

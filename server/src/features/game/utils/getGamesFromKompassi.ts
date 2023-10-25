@@ -21,7 +21,7 @@ import {
   unwrapResult,
 } from "shared/utils/result";
 import { KompassiError } from "shared/typings/api/errors";
-import { sharedConfig } from "shared/config/sharedConfig";
+import { getSharedConfig } from "shared/config/sharedConfig";
 
 type EventProgramItem = KompassiGame;
 
@@ -158,7 +158,7 @@ const getGamesFromFullProgram = (
   const matchingProgramItems: EventProgramItem[] = programItems.flatMap(
     (programItem) => {
       // These program items are hand picked to be exported from Kompassi
-      if (sharedConfig.addToKonsti.includes(programItem.identifier)) {
+      if (getSharedConfig().addToKonsti.includes(programItem.identifier)) {
         return programItem;
       }
 

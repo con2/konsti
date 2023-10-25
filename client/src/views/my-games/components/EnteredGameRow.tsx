@@ -12,7 +12,7 @@ import {
 import { CancelSignupForm } from "client/views/all-games/components/CancelSignupForm";
 import { ErrorMessage } from "client/components/ErrorMessage";
 import { loadGames } from "client/utils/loadData";
-import { sharedConfig } from "shared/config/sharedConfig";
+import { getSharedConfig } from "shared/config/sharedConfig";
 import { IconButton } from "client/components/IconButton";
 
 interface Props {
@@ -71,7 +71,7 @@ export const EnteredGameRow = ({
           <StyledLink to={`/games/${signup.gameDetails.gameId}`}>
             {signup.gameDetails.title}
           </StyledLink>
-          {sharedConfig.signupOpen && !cancelSignupFormOpen && (
+          {getSharedConfig().signupOpen && !cancelSignupFormOpen && (
             <IconButton
               onClick={() => setCancelSignupFormOpen(true)}
               icon="calendar-xmark"
@@ -79,7 +79,7 @@ export const EnteredGameRow = ({
             />
           )}
         </div>
-        {sharedConfig.signupOpen && cancelSignupFormOpen && (
+        {getSharedConfig().signupOpen && cancelSignupFormOpen && (
           <CancelSignupFormContainer>
             <CancelSignupForm
               onCancelForm={() => {

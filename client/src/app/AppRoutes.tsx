@@ -13,7 +13,7 @@ import { LogoutView } from "client/views/logout/LogoutView";
 import { GroupView } from "client/views/group/GroupView";
 import { HelperView } from "client/views/helper/HelperView";
 import { useAppSelector } from "client/utils/hooks";
-import { sharedConfig } from "shared/config/sharedConfig";
+import { getSharedConfig } from "shared/config/sharedConfig";
 import { isAdmin, isAdminOrHelp } from "client/utils/checkUserGroup";
 import { AboutView } from "client/views/about/AboutView";
 import { FaqView } from "client/views/about/FaqView";
@@ -140,7 +140,7 @@ export const AppRoutes = (): ReactElement => {
         )}
         <Route path="/notifications" element={<EventLog />} />
         <Route path="/results" element={<ResultsView />} />
-        {!isAdminOrHelp(userGroup) && sharedConfig.enableGroups ? (
+        {!isAdminOrHelp(userGroup) && getSharedConfig().enableGroups ? (
           <Route
             path="/profile/*"
             element={<Tabs tabContents={profileTabs} />}

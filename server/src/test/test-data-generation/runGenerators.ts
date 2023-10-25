@@ -8,7 +8,7 @@ import { db } from "server/db/mongodb";
 import { generateTestUsers } from "server/test/test-data-generation/generators/generateTestData";
 import { createSignups } from "server/test/test-data-generation/generators/createSignups";
 import { createSettings } from "server/test/test-data-generation/generators/createSettings";
-import { sharedConfig } from "shared/config/sharedConfig";
+import { getSharedConfig } from "shared/config/sharedConfig";
 import { removeSignedGames } from "server/features/user/signed-game/signedGameRepository";
 import { removeSignups } from "server/features/signup/signupRepository";
 import {
@@ -44,7 +44,7 @@ export const runGenerators = async (
   initializeDayjs();
 
   // Generator settings
-  const enableGroups = sharedConfig.enableGroups;
+  const enableGroups = getSharedConfig().enableGroups;
 
   // Total users: newUsersCount + groupSize * numberOfGroups + testUsersCount
   const newUsersCount = 40; // Number of individual users

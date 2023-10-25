@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 import { getStartTimes } from "client/utils/getStartTimes";
-import { sharedConfig } from "shared/config/sharedConfig";
+import { getSharedConfig } from "shared/config/sharedConfig";
 import { getTimeNow } from "client/utils/getTimeNow";
 import { SelectedGame } from "shared/typings/models/user";
 
@@ -18,7 +18,7 @@ export const getMissedSignups = (
   const pastSignupTimes = signedGamesStartTimes.filter(
     (signedGamesStartTime) => {
       const signupEndTime = dayjs(signedGamesStartTime).subtract(
-        sharedConfig.DIRECT_SIGNUP_START,
+        getSharedConfig().DIRECT_SIGNUP_START,
         "minutes",
       );
 

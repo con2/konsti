@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import { SettingsDoc } from "server/typings/settings.typings";
-import { sharedConfig } from "shared/config/sharedConfig";
+import { getSharedConfig } from "shared/config/sharedConfig";
 
 const SettingsSchema = new mongoose.Schema(
   {
@@ -25,12 +25,15 @@ const SettingsSchema = new mongoose.Schema(
     ],
     signupStrategy: {
       type: String,
-      default: sharedConfig.defaultSignupStrategy,
+      default: getSharedConfig().defaultSignupStrategy,
     },
     programUpdateLastRun: { type: Date, default: Date.now },
     assignmentLastRun: { type: Date, default: Date.now },
     latestServerStartTime: { type: Date, default: Date.now },
-    loginProvider: { type: String, default: sharedConfig.defaultLoginProvider },
+    loginProvider: {
+      type: String,
+      default: getSharedConfig().defaultLoginProvider,
+    },
   },
   { timestamps: true },
 );

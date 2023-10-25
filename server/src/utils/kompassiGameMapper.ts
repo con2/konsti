@@ -19,7 +19,7 @@ import {
   workshopProgramTypes,
 } from "shared/typings/models/kompassiGame";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
-import { sharedConfig } from "shared/config/sharedConfig";
+import { getSharedConfig } from "shared/config/sharedConfig";
 
 export const kompassiGameMapper = (
   games: readonly KompassiGame[],
@@ -402,7 +402,7 @@ const mapRevolvingDoor = (kompassiGame: KompassiGame): boolean => {
     return true;
   }
 
-  if (sharedConfig.addRevolvingDoorIds.includes(kompassiGame.identifier)) {
+  if (getSharedConfig().addRevolvingDoorIds.includes(kompassiGame.identifier)) {
     return true;
   }
 

@@ -12,7 +12,7 @@ import { saveResults } from "server/features/player-assignment/utils/saveResults
 import { getDynamicStartTime } from "server/features/player-assignment/utils/getDynamicStartTime";
 import { sleep } from "server/utils/sleep";
 import { findSignups } from "server/features/signup/signupRepository";
-import { sharedConfig } from "shared/config/sharedConfig";
+import { getSharedConfig } from "shared/config/sharedConfig";
 import {
   Result,
   isErrorResult,
@@ -22,7 +22,7 @@ import {
 } from "shared/utils/result";
 import { AssignmentError, MongoDbError } from "shared/typings/api/errors";
 
-const { directSignupAlwaysOpenIds } = sharedConfig;
+const { directSignupAlwaysOpenIds } = getSharedConfig();
 
 interface RunAssignmentParams {
   assignmentStrategy: AssignmentStrategy;

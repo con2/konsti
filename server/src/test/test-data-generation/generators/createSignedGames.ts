@@ -9,7 +9,7 @@ import { findGames } from "server/features/game/gameRepository";
 import { SelectedGame, User } from "shared/typings/models/user";
 import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
-import { sharedConfig } from "shared/config/sharedConfig";
+import { getSharedConfig } from "shared/config/sharedConfig";
 
 export const createSignedGames = async (): Promise<void> => {
   const gamesResult = await findGames();
@@ -48,7 +48,9 @@ const getRandomSignup = (games: readonly Game[]): SelectedGame[] => {
 
   const activeGames = games
     .filter((game) => game.programType === ProgramType.TABLETOP_RPG)
-    .filter((game) => !sharedConfig.noKonstiSignupIds.includes(game.gameId));
+    .filter(
+      (game) => !getSharedConfig().noKonstiSignupIds.includes(game.gameId),
+    );
 
   const startTimes = activeGames.map((activeGame) =>
     dayjs(activeGame.startTime).toISOString(),

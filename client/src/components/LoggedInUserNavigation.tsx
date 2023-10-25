@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useAppSelector } from "client/utils/hooks";
-import { sharedConfig } from "shared/config/sharedConfig";
+import { getSharedConfig } from "shared/config/sharedConfig";
 import { isAdmin, isAdminOrHelp, isUser } from "client/utils/checkUserGroup";
 
 export const LoggedInUserNavigation = (props: {
@@ -42,13 +42,13 @@ export const LoggedInUserNavigation = (props: {
         {t("pages.results")}
       </RouterLink>
 
-      {isUser(userGroup) && sharedConfig.enableGroups && (
+      {isUser(userGroup) && getSharedConfig().enableGroups && (
         <RouterLink onClick={props.onSelect} to="/profile">
           {t("pages.profileAndGroup")}
         </RouterLink>
       )}
 
-      {isUser(userGroup) && !sharedConfig.enableGroups && (
+      {isUser(userGroup) && !getSharedConfig().enableGroups && (
         <RouterLink onClick={props.onSelect} to="/profile">
           {t("pages.profile")}
         </RouterLink>

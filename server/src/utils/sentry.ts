@@ -1,7 +1,7 @@
 import { init, Integrations, Handlers } from "@sentry/node";
 import express, { Express } from "express";
 import { postSentryTunnel } from "server/features/sentry-tunnel/sentryTunnelController";
-import { sharedConfig } from "shared/config/sharedConfig";
+import { getSharedConfig } from "shared/config/sharedConfig";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 
 export const initSentry = (app: Express, enableSentry: boolean): void => {
@@ -19,7 +19,7 @@ export const initSentry = (app: Express, enableSentry: boolean): void => {
         mode: "none",
       }),
     ],
-    tracesSampleRate: sharedConfig.tracesSampleRate,
+    tracesSampleRate: getSharedConfig().tracesSampleRate,
     environment: process.env.SETTINGS,
   });
 
@@ -54,7 +54,7 @@ export const getDsn = (enableSentry: boolean): string | undefined => {
     case "staging":
       return "https://ab176c60aac24be8af2f6c790f1437ac@o1321706.ingest.sentry.io/6578390";
     case "development":
-      return sharedConfig.enableSentryInDev
+      return getSharedConfig().enableSentryInDev
         ? "https://6f41ef28d9664c1a8c3e25f58cecacf7@o1321706.ingest.sentry.io/6579493"
         : undefined;
     default:

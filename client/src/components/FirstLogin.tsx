@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { useAppSelector } from "client/utils/hooks";
 import { Button, ButtonStyle } from "./Button";
-import { sharedConfig } from "shared/config/sharedConfig";
+import { getSharedConfig } from "shared/config/sharedConfig";
 import { HighlightStyle, RaisedCard } from "client/components/RaisedCard";
 import { LoginProvider } from "shared/config/sharedConfig";
 
@@ -21,7 +21,9 @@ export const FirstLogin = (): ReactElement | null => {
       return;
     }
 
-    const firstLoginKey = `${sharedConfig.CONVENTION_NAME}-${sharedConfig.CONVENTION_YEAR}-${username}`;
+    const firstLoginKey = `${getSharedConfig().CONVENTION_NAME}-${
+      getSharedConfig().CONVENTION_YEAR
+    }-${username}`;
     const firstLogin = localStorage.getItem(firstLoginKey);
 
     if (firstLogin === null) {

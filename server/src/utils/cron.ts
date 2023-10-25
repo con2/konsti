@@ -3,7 +3,7 @@ import dayjs from "dayjs";
 import { logger } from "server/utils/logger";
 import { getServerConfig } from "server/serverConfig";
 import { runAssignment } from "server/features/player-assignment/runAssignment";
-import { sharedConfig } from "shared/config/sharedConfig";
+import { getSharedConfig } from "shared/config/sharedConfig";
 import { Result, isErrorResult, makeSuccessResult } from "shared/utils/result";
 import { updateGames } from "server/features/game/gamesService";
 import {
@@ -191,7 +191,7 @@ export const autoAssignPlayers = async (): Promise<void> => {
   logger.info("Auto assignment not running, continue");
 
   const runAssignmentResult = await runAssignment({
-    assignmentStrategy: sharedConfig.assignmentStrategy,
+    assignmentStrategy: getSharedConfig().assignmentStrategy,
     useDynamicStartTime: true,
     assignmentDelay: autoAssignDelay,
   });

@@ -3,7 +3,7 @@ import { runAssignment } from "server/features/player-assignment/runAssignment";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { PostPlayerAssignmentResponse } from "shared/typings/api/assignment";
 import { ApiError } from "shared/typings/api/errors";
-import { sharedConfig } from "shared/config/sharedConfig";
+import { getSharedConfig } from "shared/config/sharedConfig";
 import { isSuccessResult, unwrapResult } from "shared/utils/result";
 
 // Assign players to games
@@ -13,7 +13,7 @@ export const storeAssignment = async (
   logger.info(`API call: POST ${ApiEndpoint.ASSIGNMENT}`);
 
   const assignResultsResult = await runAssignment({
-    assignmentStrategy: sharedConfig.assignmentStrategy,
+    assignmentStrategy: getSharedConfig().assignmentStrategy,
     startTime,
   });
 
