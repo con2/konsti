@@ -27,7 +27,7 @@ export enum LoginProvider {
   KOMPASSI = "kompassi",
 }
 
-export enum CONVENTION_NAME {
+export enum ConventionName {
   ROPECON = "Ropecon",
   TRACON_HITPOINT = "Tracon Hitpoint",
 }
@@ -327,7 +327,7 @@ export const getSharedConfig = (): SharedConfig => {
     PHASE_GAP: 15, // minutes
 
     // Convention info
-    CONVENTION_NAME: CONVENTION_NAME.TRACON_HITPOINT,
+    CONVENTION_NAME: ConventionName.TRACON_HITPOINT,
     CONVENTION_YEAR: "2023",
 
     // Sentry
