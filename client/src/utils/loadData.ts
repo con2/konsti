@@ -9,14 +9,17 @@ import { submitSessionRecovery } from "client/views/login/loginThunks";
 import { store } from "client/utils/store";
 import { AppDispatch } from "client/typings/redux.typings";
 import { submitGetTestSettings } from "client/test/test-settings/testSettingsThunks";
-import { clientConfig } from "client/clientConfig";
+import { getClientConfig } from "client/clientConfig";
 
 export const loadData = async (): Promise<void> => {
   // Get app settings
   await loadSettings();
 
   // Get test settings
-  if (process.env.SETTINGS !== "production" && clientConfig.showTestValues) {
+  if (
+    process.env.SETTINGS !== "production" &&
+    getClientConfig().showTestValues
+  ) {
     await loadTestSettings();
   }
 

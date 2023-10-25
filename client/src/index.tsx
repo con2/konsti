@@ -8,7 +8,7 @@ import { Provider } from "react-redux";
 import { ThemeProvider, StyleSheetManager } from "styled-components";
 import { init, BrowserTracing } from "@sentry/react";
 import loaderImage from "assets/loading.gif";
-import { clientConfig } from "client/clientConfig";
+import { getClientConfig } from "client/clientConfig";
 import { getLocalStorageLanguage } from "client/utils/localStorage";
 import { theme } from "client/theme";
 import { GlobalStyle } from "client/globalStyle";
@@ -34,7 +34,7 @@ const App = lazyWithRetry(
     ),
 );
 
-const { enableAxe, enableWhyDidYouRender } = clientConfig;
+const { enableAxe, enableWhyDidYouRender } = getClientConfig();
 
 if (enableWhyDidYouRender && process.env.NODE_ENV === "development") {
   const whyDidYouRender = require("@welldone-software/why-did-you-render");
