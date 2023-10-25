@@ -1,12 +1,12 @@
 import { ReactElement } from "react";
 import Instructions from "client/markdown/KonstiInstructions.mdx";
-import { getSharedConfig } from "shared/config/sharedConfig";
+import { config } from "shared/config/config";
 
 export const InstructionsView = (): ReactElement => {
   return (
     <Instructions
-      conventionName={getSharedConfig().CONVENTION_NAME}
-      conventionYear={getSharedConfig().CONVENTION_YEAR}
+      conventionName={config.shared().CONVENTION_NAME}
+      conventionYear={config.shared().CONVENTION_YEAR}
     />
   );
 };

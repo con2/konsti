@@ -6,13 +6,12 @@ import { ProgramType } from "shared/typings/models/game";
 import { findUsers } from "server/features/user/userRepository";
 import { findGames } from "server/features/game/gameRepository";
 import { AssignmentStrategy } from "shared/config/sharedConfigTypes";
-import { getServerConfig } from "shared/config/serverConfig";
+import { config } from "shared/config/config";
 import { removeOverlapSignups } from "server/features/player-assignment/utils/removeOverlapSignups";
 import { saveResults } from "server/features/player-assignment/utils/saveResults";
 import { getDynamicStartTime } from "server/features/player-assignment/utils/getDynamicStartTime";
 import { sleep } from "server/utils/sleep";
 import { findSignups } from "server/features/signup/signupRepository";
-import { getSharedConfig } from "shared/config/sharedConfig";
 import {
   Result,
   isErrorResult,
@@ -22,7 +21,7 @@ import {
 } from "shared/utils/result";
 import { AssignmentError, MongoDbError } from "shared/typings/api/errors";
 
-const { directSignupAlwaysOpenIds } = getSharedConfig();
+const { directSignupAlwaysOpenIds } = config.shared();
 
 interface RunAssignmentParams {
   assignmentStrategy: AssignmentStrategy;
@@ -129,7 +128,7 @@ export const runAssignment = async ({
     return saveResultsResult;
   }
 
-  if (getServerConfig().enableRemoveOverlapSignups) {
+  if (config.server().enableRemoveOverlapSignups) {
     logger.info("Remove overlapping signups");
     const removeOverlapSignupsResult = await removeOverlapSignups(
       assignResults.results,

@@ -14,7 +14,7 @@ import { assertUserUpdatedCorrectly } from "server/features/player-assignment/ru
 import { runAssignment } from "server/features/player-assignment/runAssignment";
 import { generateTestData } from "server/test/test-data-generation/generators/generateTestData";
 import { AssignmentStrategy } from "shared/config/sharedConfigTypes";
-import { getSharedConfig } from "shared/config/sharedConfig";
+import { config } from "shared/config/config";
 import { AssignmentResultStatus } from "server/typings/result.typings";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 import { testGame } from "shared/tests/testGame";
@@ -73,7 +73,7 @@ test("Assignment with valid data should return success with padg strategy", asyn
     testUsersCount,
   );
 
-  const { CONVENTION_START_TIME } = getSharedConfig();
+  const { CONVENTION_START_TIME } = config.shared();
   const assignmentStrategy = AssignmentStrategy.PADG;
   const startTime = dayjs(CONVENTION_START_TIME).add(2, "hours").toISOString();
 
@@ -213,7 +213,7 @@ test("Assignment with no games should return error with padg strategy", async ()
     testUsersCount,
   );
 
-  const { CONVENTION_START_TIME } = getSharedConfig();
+  const { CONVENTION_START_TIME } = config.shared();
   const assignmentStrategy = AssignmentStrategy.PADG;
   const startTime = dayjs(CONVENTION_START_TIME).add(2, "hours").toISOString();
 
@@ -243,7 +243,7 @@ test("Assignment with no players should return error with padg strategy", async 
     testUsersCount,
   );
 
-  const { CONVENTION_START_TIME } = getSharedConfig();
+  const { CONVENTION_START_TIME } = config.shared();
   const assignmentStrategy = AssignmentStrategy.PADG;
   const startTime = dayjs(CONVENTION_START_TIME).add(2, "hours").toISOString();
 

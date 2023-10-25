@@ -1,10 +1,10 @@
 import mongoose from "mongoose";
 import { logger } from "server/utils/logger";
-import { getServerConfig } from "shared/config/serverConfig";
+import { config } from "shared/config/config";
 
 const connectToDb = async (
-  dbConnString: string = getServerConfig().dbConnString,
-  dbName: string = getServerConfig().dbName,
+  dbConnString: string = config.server().dbConnString,
+  dbName: string = config.server().dbName,
 ): Promise<void> => {
   logger.info(`MongoDB: Connecting`);
 

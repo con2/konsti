@@ -8,7 +8,7 @@ import {
   PadgRandomAssignResults,
 } from "server/typings/padgRandomAssign.typings";
 import { logger } from "server/utils/logger";
-import { getServerConfig } from "shared/config/serverConfig";
+import { config } from "shared/config/config";
 import { calculateHappiness } from "server/features/player-assignment/padg/utils/calculateHappiness";
 import { Input } from "server/typings/result.typings";
 
@@ -18,7 +18,7 @@ export const assignPadg = (
   list: ListItem[],
   updateL: (input: Input) => string,
 ): PadgRandomAssignResults => {
-  const { PADG_ASSIGNMENT_ROUNDS } = getServerConfig();
+  const { PADG_ASSIGNMENT_ROUNDS } = config.server();
 
   let finalHappiness = 0;
   let finalAssignResults: PadgRandomAssignResults = [];

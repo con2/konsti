@@ -1,5 +1,5 @@
 import { ReactElement, ReactNode } from "react";
-import { getSharedConfig } from "shared/config/sharedConfig";
+import { config } from "shared/config/config";
 import { ConventionName } from "shared/config/sharedConfigTypes";
 
 interface Props {
@@ -10,7 +10,7 @@ interface Props {
 export const Ropecon = ({ children }: Props): ReactElement => {
   return (
     <span>
-      {getSharedConfig().CONVENTION_NAME === ConventionName.ROPECON
+      {config.shared().CONVENTION_NAME === ConventionName.ROPECON
         ? children
         : null}
     </span>

@@ -21,14 +21,14 @@ import {
   submitCloseGroup,
   submitLeaveGroup,
 } from "client/views/group/groupThunks";
-import { getSharedConfig } from "shared/config/sharedConfig";
+import { config } from "shared/config/config";
 import { TextArea } from "client/components/TextArea";
 import { ButtonGroup } from "client/components/ButtonGroup";
 import { Dropdown } from "client/components/Dropdown";
 import { Checkbox } from "client/components/Checkbox";
 import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 
-const { directSignupAlwaysOpenIds } = getSharedConfig();
+const { directSignupAlwaysOpenIds } = config.shared();
 
 interface Props {
   game: Game;

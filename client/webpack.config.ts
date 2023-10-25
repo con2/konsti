@@ -8,7 +8,7 @@ import "webpack-dev-server";
 import { merge } from "webpack-merge";
 import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
 // eslint-disable-next-line @typescript-eslint/no-restricted-imports
-import { getClientConfig } from "../shared/config/clientConfig";
+import { config } from "../shared/config/config";
 
 const TARGET = process.env.npm_lifecycle_event;
 
@@ -105,9 +105,7 @@ const devConfig: Configuration = {
 
   mode: "development",
 
-  devtool: getClientConfig().enableReduxTrace
-    ? "source-map"
-    : "eval-source-map",
+  devtool: config.client().enableReduxTrace ? "source-map" : "eval-source-map",
 
   // webpack-dev-server config
   devServer: {

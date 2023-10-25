@@ -3,7 +3,7 @@ export enum GameUpdateMethod {
   ASSIGN = "assign",
 }
 
-interface ServerConfig {
+export interface ServerConfig {
   port: number;
   debug: boolean;
   enableAccessLog: boolean;
@@ -165,7 +165,7 @@ const devConfig = {
   autoAssignDelay: 1000 * 1,
 };
 
-export const getServerConfig = (): ServerConfig => {
+const combineConfig = (): ServerConfig => {
   switch (process.env.SETTINGS) {
     case "production":
       return { ...commonConfig, ...prodConfig };
@@ -175,3 +175,5 @@ export const getServerConfig = (): ServerConfig => {
       return { ...commonConfig, ...devConfig };
   }
 };
+
+export const serverConfig: ServerConfig = combineConfig();

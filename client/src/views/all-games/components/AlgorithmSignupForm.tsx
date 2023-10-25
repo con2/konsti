@@ -16,7 +16,7 @@ import { ErrorMessage } from "client/components/ErrorMessage";
 import { CancelSignupForm } from "client/views/all-games/components/CancelSignupForm";
 import { getWeekdayAndTime } from "client/utils/timeFormatter";
 import { getTimeNow } from "client/utils/getTimeNow";
-import { getSharedConfig } from "shared/config/sharedConfig";
+import { config } from "shared/config/config";
 import { SignupStrategy } from "shared/config/sharedConfigTypes";
 import { getAlgorithmSignupStartTime } from "shared/utils/signupTimes";
 
@@ -86,7 +86,7 @@ export const AlgorithmSignupForm = ({
   const timeNow = getTimeNow();
   const lotterySignupOpen =
     timeNow.isSameOrAfter(algorithmSignupStartTime) ||
-    getSharedConfig().manualSignupMode === SignupStrategy.ALGORITHM;
+    config.shared().manualSignupMode === SignupStrategy.ALGORITHM;
 
   if (!loggedIn) {
     return (
@@ -111,43 +111,41 @@ export const AlgorithmSignupForm = ({
 
   return (
     <>
-      {getSharedConfig().signupOpen &&
-        !alreadySignedToGame &&
-        isGroupCreator && (
-          <>
-            {signedGamesForTimeslot.length >= 3 && (
-              <p>{t("signup.cannotSignupMoreGames")}</p>
-            )}
+      {config.shared().signupOpen && !alreadySignedToGame && isGroupCreator && (
+        <>
+          {signedGamesForTimeslot.length >= 3 && (
+            <p>{t("signup.cannotSignupMoreGames")}</p>
+          )}
 
-            {!lotterySignupOpen && (
-              <p>
-                {t("signup.lotterySignupOpens")}{" "}
-                <BoldText>
-                  {getWeekdayAndTime(algorithmSignupStartTime.toISOString())}
-                </BoldText>
-              </p>
-            )}
+          {!lotterySignupOpen && (
+            <p>
+              {t("signup.lotterySignupOpens")}{" "}
+              <BoldText>
+                {getWeekdayAndTime(algorithmSignupStartTime.toISOString())}
+              </BoldText>
+            </p>
+          )}
 
-            {lotterySignupOpen &&
-              signedGamesForTimeslot.length < 3 &&
-              !signupFormOpen && (
-                <ButtonContainer>
-                  <StyledButton
-                    onClick={() => {
-                      if (groupMembers.length > game.maxAttendance) {
-                        setErrorMessage(ClientError.GROUP_TOO_BIG);
-                      } else {
-                        setSignupFormOpen(true);
-                      }
-                    }}
-                    buttonStyle={ButtonStyle.PRIMARY}
-                  >
-                    {t("signup.lotterySignup")}
-                  </StyledButton>
-                </ButtonContainer>
-              )}
-          </>
-        )}
+          {lotterySignupOpen &&
+            signedGamesForTimeslot.length < 3 &&
+            !signupFormOpen && (
+              <ButtonContainer>
+                <StyledButton
+                  onClick={() => {
+                    if (groupMembers.length > game.maxAttendance) {
+                      setErrorMessage(ClientError.GROUP_TOO_BIG);
+                    } else {
+                      setSignupFormOpen(true);
+                    }
+                  }}
+                  buttonStyle={ButtonStyle.PRIMARY}
+                >
+                  {t("signup.lotterySignup")}
+                </StyledButton>
+              </ButtonContainer>
+            )}
+        </>
+      )}
 
       {alreadySignedToGame && (
         <>
@@ -157,7 +155,7 @@ export const AlgorithmSignupForm = ({
             })}
           </SignedGameContainer>
 
-          {getSharedConfig().signupOpen && (
+          {config.shared().signupOpen && (
             <>
               {isGroupCreator && !cancelSignupFormOpen && (
                 <ButtonContainer>

@@ -5,7 +5,7 @@ import { findGameById, findGames } from "server/features/game/gameRepository";
 import { Signup, UserSignup } from "server/features/signup/signup.typings";
 import { SignupModel } from "server/features/signup/signupSchema";
 import { logger } from "server/utils/logger";
-import { getSharedConfig } from "shared/config/sharedConfig";
+import { config } from "shared/config/config";
 import { MongoDbError } from "shared/typings/api/errors";
 import {
   DeleteEnteredGameRequest,
@@ -415,7 +415,7 @@ export const delAssignmentSignupsByStartTime = async (
   const doNotRemoveGameObjectIds = games
     .filter(
       (game) =>
-        getSharedConfig().directSignupAlwaysOpenIds.includes(game.gameId) ||
+        config.shared().directSignupAlwaysOpenIds.includes(game.gameId) ||
         game.programType !== ProgramType.TABLETOP_RPG,
     )
     .map((game) => game._id);

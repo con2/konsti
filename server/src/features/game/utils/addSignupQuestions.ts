@@ -1,7 +1,7 @@
 import { findGames } from "server/features/game/gameRepository";
 import { saveSignupQuestion } from "server/features/settings/settingsRepository";
 import { logger } from "server/utils/logger";
-import { getSharedConfig } from "shared/config/sharedConfig";
+import { config } from "shared/config/config";
 import { ProgramType } from "shared/typings/models/game";
 import { isErrorResult, unwrapResult } from "shared/utils/result";
 
@@ -10,7 +10,7 @@ export const addSignupQuestions = async (): Promise<void> => {
     signupQuestions,
     tournamentSignupQuestion,
     tournamentSignupQuestionExcludeIds,
-  } = getSharedConfig();
+  } = config.shared();
 
   const questionPromises = signupQuestions.map(async (signupQuestion) => {
     await saveSignupQuestion(signupQuestion);

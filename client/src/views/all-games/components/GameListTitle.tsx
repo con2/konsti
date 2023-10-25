@@ -6,7 +6,7 @@ import { getTime, getWeekdayAndTime } from "client/utils/timeFormatter";
 import { SelectedGame } from "shared/typings/models/user";
 import { SignupStrategy } from "shared/config/sharedConfigTypes";
 import { MOBILE_MARGIN } from "client/globalStyle";
-import { getSharedConfig } from "shared/config/sharedConfig";
+import { config } from "shared/config/config";
 import {
   getAlgorithmSignupEndTime,
   getAlgorithmSignupStartTime,
@@ -58,7 +58,7 @@ export const GameListTitle = ({
           )}
         </StartTimeContainer>
 
-        {getSharedConfig().manualSignupMode === "none" &&
+        {config.shared().manualSignupMode === "none" &&
           timeslotSignupStrategy === SignupStrategy.ALGORITHM && (
             <span>
               ({t("lotterySignupOpenBetween")} {algorithmSignupStartTime}-

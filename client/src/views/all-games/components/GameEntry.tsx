@@ -12,7 +12,7 @@ import { DirectSignupForm } from "./DirectSignupForm";
 import { SelectedGame } from "shared/typings/models/user";
 import { isAlreadyEntered, isAlreadySigned } from "./allGamesUtils";
 import { PopularityInfo } from "client/components/PopularityInfo";
-import { getSharedConfig } from "shared/config/sharedConfig";
+import { config } from "shared/config/config";
 import { GameDetailsView } from "client/views/all-games/components/GameDetailsView";
 import { Tags } from "client/components/Tags";
 import { FavoriteButton } from "client/components/FavoriteButton";
@@ -52,9 +52,9 @@ export const GameEntry = ({
 
   const dispatch = useAppDispatch();
 
-  const signupAlwaysOpen = getSharedConfig().directSignupAlwaysOpenIds.includes(
-    game.gameId,
-  );
+  const signupAlwaysOpen = config
+    .shared()
+    .directSignupAlwaysOpenIds.includes(game.gameId);
 
   const favorited =
     favoritedGames.find(
@@ -62,7 +62,7 @@ export const GameEntry = ({
     ) !== undefined;
 
   const isEnterGameMode =
-    getSharedConfig().manualSignupMode === SignupStrategy.DIRECT ||
+    config.shared().manualSignupMode === SignupStrategy.DIRECT ||
     signupStrategy === SignupStrategy.DIRECT ||
     signupAlwaysOpen;
 
@@ -92,7 +92,7 @@ export const GameEntry = ({
     : isSignedForCurrentGame;
 
   const tags = [];
-  if (getSharedConfig().activeProgramTypes.length > 1) {
+  if (config.shared().activeProgramTypes.length > 1) {
     tags.push(t(`programType.${game.programType}`));
   }
   if (game.gameSystem) {
@@ -101,9 +101,7 @@ export const GameEntry = ({
   tags.push(t(`programItemLanguage.${game.language}`));
 
   const requiresSignup = !isRevolvingDoorWorkshop(game);
-  const konstiSignup = !getSharedConfig().noKonstiSignupIds.includes(
-    game.gameId,
-  );
+  const konstiSignup = !config.shared().noKonstiSignupIds.includes(game.gameId);
   const normalSignup = requiresSignup && konstiSignup;
 
   return (

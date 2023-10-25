@@ -18,7 +18,7 @@ import { ErrorMessage } from "client/components/ErrorMessage";
 import { selectActiveEnteredGames } from "client/views/my-games/myGamesSlice";
 import { getTimeNow } from "client/utils/getTimeNow";
 import { getDirectSignupStartTime } from "shared/utils/signupTimes";
-import { getSharedConfig } from "shared/config/sharedConfig";
+import { config } from "shared/config/config";
 
 interface Props {
   game: Game;
@@ -33,7 +33,7 @@ export const DirectSignupForm = ({
 }: Props): ReactElement | null => {
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
-  const { signupOpen } = getSharedConfig();
+  const { signupOpen } = config.shared();
 
   const loggedIn = useAppSelector((state) => state.login.loggedIn);
   const username = useAppSelector((state) => state.login.username);

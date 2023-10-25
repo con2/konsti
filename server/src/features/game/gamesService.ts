@@ -1,6 +1,6 @@
 import { getGamesFromKompassi } from "server/features/game/utils/getGamesFromKompassi";
 import { updateGamePopularity } from "server/features/game-popularity/updateGamePopularity";
-import { getServerConfig } from "shared/config/serverConfig";
+import { config } from "shared/config/config";
 import { kompassiGameMapper } from "server/utils/kompassiGameMapper";
 import {
   PostUpdateGamesResponse,
@@ -36,7 +36,7 @@ export const updateGames = async (): Promise<
     };
   }
 
-  if (getServerConfig().updateGamePopularityEnabled) {
+  if (config.server().updateGamePopularityEnabled) {
     const updateGamePopularityResult = await updateGamePopularity();
     if (isErrorResult(updateGamePopularityResult)) {
       return {

@@ -8,12 +8,11 @@ import { Provider } from "react-redux";
 import { ThemeProvider, StyleSheetManager } from "styled-components";
 import { init, BrowserTracing } from "@sentry/react";
 import loaderImage from "assets/loading.gif";
-import { getClientConfig } from "shared/config/clientConfig";
+import { config } from "shared/config/config";
 import { getLocalStorageLanguage } from "client/utils/localStorage";
 import { theme } from "client/theme";
 import { GlobalStyle } from "client/globalStyle";
 import { setLocale } from "shared/utils/setLocale";
-import { getSharedConfig } from "shared/config/sharedConfig";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { store } from "client/utils/store";
 
@@ -34,7 +33,7 @@ const App = lazyWithRetry(
     ),
 );
 
-const { enableAxe, enableWhyDidYouRender } = getClientConfig();
+const { enableAxe, enableWhyDidYouRender } = config.client();
 
 if (enableWhyDidYouRender && process.env.NODE_ENV === "development") {
   const whyDidYouRender = require("@welldone-software/why-did-you-render");
@@ -53,7 +52,7 @@ const getDsn = (): string | undefined => {
     case "staging":
       return "https://446b1c1e5b3048c4bb00b19b74aa55e6@o1321706.ingest.sentry.io/6578391";
     case "development":
-      return getSharedConfig().enableSentryInDev
+      return config.shared().enableSentryInDev
         ? "https://1fb97a74de6a44e3b16e8d29aeec3363@o1321706.ingest.sentry.io/6579491"
         : undefined;
     default:
@@ -68,7 +67,7 @@ init({
       tracingOrigins: ["localhost", "dev.ropekonsti.fi", "ropekonsti.fi"],
     }),
   ],
-  tracesSampleRate: getSharedConfig().tracesSampleRate,
+  tracesSampleRate: config.shared().tracesSampleRate,
   normalizeDepth: 10,
   environment: process.env.SETTINGS,
   tunnel: ApiEndpoint.SENTRY_TUNNEL,

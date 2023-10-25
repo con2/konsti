@@ -10,7 +10,7 @@ import {
 } from "server/features/user/group/groupRepository";
 import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
 import { findUser } from "server/features/user/userRepository";
-import { getSharedConfig } from "shared/config/sharedConfig";
+import { config } from "shared/config/config";
 import { MongoDbError } from "shared/typings/api/errors";
 import {
   PostCloseGroupResponse,
@@ -32,7 +32,7 @@ import {
   unwrapResult,
 } from "shared/utils/result";
 
-const { directSignupAlwaysOpenIds } = getSharedConfig();
+const { directSignupAlwaysOpenIds } = config.shared();
 
 const generateGroupCode = () => {
   const baseCode = randomBytes(5).toString("hex").substring(0, 9);
