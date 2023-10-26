@@ -6,6 +6,7 @@ import {
   beforeAll,
   beforeEach,
   describe,
+  vi,
 } from "vitest";
 import mongoose from "mongoose";
 import { MongoMemoryServer } from "mongodb-memory-server";
@@ -218,8 +219,12 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     expect(rpgSignup?.userSignups.length).toEqual(2);
   });
 
-  // TODO: Use dynamic config.shared().directSignupAlwaysOpenIds
   test("should not remove directSignupAlwaysOpen signups if user doesn't have updated result", async () => {
+    vi.spyOn(config, "shared").mockReturnValue({
+      ...config.shared(),
+      directSignupAlwaysOpenIds: ["1234"],
+    });
+
     const directSignupAlwaysOpenId =
       config.shared().directSignupAlwaysOpenIds[0];
     const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
@@ -301,6 +306,11 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
   });
 
   test("should update directSignupAlwaysOpen signup with assignment signup if user has updated result", async () => {
+    vi.spyOn(config, "shared").mockReturnValue({
+      ...config.shared(),
+      directSignupAlwaysOpenIds: ["1234"],
+    });
+
     const directSignupAlwaysOpenId =
       config.shared().directSignupAlwaysOpenIds[0];
     const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
@@ -507,6 +517,11 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
 
 describe("Assignment with first time bonus", () => {
   test("should assign user without previous RPG signup", async () => {
+    vi.spyOn(config, "shared").mockReturnValue({
+      ...config.shared(),
+      directSignupAlwaysOpenIds: ["1234"],
+    });
+
     const directSignupAlwaysOpenId =
       config.shared().directSignupAlwaysOpenIds[0];
     const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
