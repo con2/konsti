@@ -51,6 +51,8 @@ import {
 import { GameStyle, Genre, Tag } from "shared/typings/models/game";
 import { logger } from "server/utils/logger";
 import { SignupQuestionType } from "shared/typings/models/settings";
+import { config } from "shared/config";
+import { ConventionName } from "shared/config/sharedConfigTypes";
 
 let server: Server;
 let mongoServer: MongoMemoryServer;
@@ -123,6 +125,13 @@ describe(`GET ${ApiEndpoint.GAMES}`, () => {
 });
 
 describe(`POST ${ApiEndpoint.GAMES}`, () => {
+  beforeEach(() => {
+    vi.spyOn(config, "shared").mockReturnValue({
+      ...config.shared(),
+      conventionName: ConventionName.ROPECON,
+    });
+  });
+
   test(`should return 401 without valid authorization`, async () => {
     const response = await request(server).post(ApiEndpoint.GAMES);
     expect(response.status).toEqual(401);
