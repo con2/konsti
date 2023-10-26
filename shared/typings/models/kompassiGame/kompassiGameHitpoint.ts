@@ -5,7 +5,7 @@ export enum KompassiProgramTypeHitpoint {
   LARP = "Larp",
 }
 
-enum KompassiPhysicalPlayHitpoint {
+export enum KompassiPhysicalPlayHitpoint {
   SOME = "some",
   LOTS = "lots",
 }

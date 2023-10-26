@@ -28,7 +28,7 @@ export const getGamesFromKompassiRopecon = async (): Promise<
   Result<readonly KompassiGameRopecon[], KompassiError>
 > => {
   const eventProgramItemsResult =
-    await testHelperWrapper.getEventProgramItems();
+    await testHelperWrapperRopecon.getEventProgramItems();
   if (isErrorResult(eventProgramItemsResult)) {
     return eventProgramItemsResult;
   }
@@ -67,7 +67,7 @@ const getEventProgramItems = async (): Promise<
 
 // This helper wrapper is needed to make Vitest spyOn() work
 //  https://github.com/vitest-dev/vitest/issues/1329
-export const testHelperWrapper = {
+export const testHelperWrapperRopecon = {
   getEventProgramItems,
 };
 

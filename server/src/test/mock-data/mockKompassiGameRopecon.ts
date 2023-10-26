@@ -9,7 +9,7 @@ import {
   KompassiTagRopecon,
 } from "shared/typings/models/kompassiGame/kompassiGameRopecon";
 
-export const testKompassiGame: KompassiGameRopecon = {
+export const testKompassiGameRopecon: KompassiGameRopecon = {
   title: testGame.title,
   description: testGame.description,
   category_title: KompassiProgramTypeRopecon.TABLETOP_RPG,
@@ -69,7 +69,7 @@ export const testKompassiGame: KompassiGameRopecon = {
   ropecon2023_celebratory_year: false,
 };
 
-export const testKompassiGame2: KompassiGameRopecon = {
+export const testKompassiGameRopecon2: KompassiGameRopecon = {
   title: testGame2.title,
   description: testGame2.description,
   category_title: KompassiProgramTypeRopecon.TABLETOP_RPG,
