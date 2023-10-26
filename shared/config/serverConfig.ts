@@ -5,7 +5,7 @@ export enum GameUpdateMethod {
 
 enum DataUri {
   ROPECON = "https://kompassi.eu/api/v1/events/ropecon2023/programme/ropecon",
-  TRACON_HITPOINT = "https://kompassi.eu/api/v1/events/hitpoint2023/programme/hitpoint",
+  HITPOINT = "https://kompassi.eu/api/v1/events/hitpoint2023/programme/hitpoint",
 }
 
 export interface ServerConfig {
@@ -59,7 +59,7 @@ const commonConfig = {
   gamePopularityUpdateMethod: GameUpdateMethod.ASSIGN,
 
   // Convention settings
-  dataUri: DataUri.TRACON_HITPOINT,
+  dataUri: DataUri.HITPOINT,
   firtSignupBonus: 20,
   useLocalProgramFile: false,
   localKompassiFile: "program-ropecon-2023.json",
