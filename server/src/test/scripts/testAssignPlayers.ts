@@ -8,7 +8,7 @@ import { config } from "shared/config";
 const testAssignPlayers = async (
   assignmentStrategy: AssignmentStrategy,
 ): Promise<void> => {
-  const startTime = dayjs(config.shared().CONVENTION_START_TIME)
+  const startTime = dayjs(config.shared().conventionStartTime)
     .add(3, "hours")
     .toISOString();
   await runAssignment({

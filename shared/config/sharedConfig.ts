@@ -22,7 +22,7 @@ export interface SharedConfig {
   defaultLoginProvider: LoginProvider;
   conventionName: ConventionName;
   conventionYear: string;
-  CONVENTION_START_TIME: string;
+  conventionStartTime: string;
   DIRECT_SIGNUP_START: number;
   PRE_SIGNUP_START: number;
   PHASE_GAP: number;
@@ -80,7 +80,7 @@ export const sharedConfig: SharedConfig = {
     ProgramType.OTHER,
   ],
 
-  CONVENTION_START_TIME: `${saturday}T07:00:00Z`, // Sat 10:00
+  conventionStartTime: `${saturday}T07:00:00Z`, // Sat 10:00
 
   directSignupWindows: {
     // @ts-expect-error: RPGs use DIRECT_SIGNUP_START

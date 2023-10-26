@@ -78,11 +78,9 @@ describe("Assignment with valid data", () => {
   });
 
   test("should return valid results after multiple executions on different times", async () => {
-    const { CONVENTION_START_TIME } = config.shared();
+    const { conventionStartTime } = config.shared();
     const assignmentStrategy = AssignmentStrategy.PADG;
-    const startTime = dayjs(CONVENTION_START_TIME)
-      .add(2, "hours")
-      .toISOString();
+    const startTime = dayjs(conventionStartTime).add(2, "hours").toISOString();
 
     // FIRST RUN
 
@@ -112,9 +110,7 @@ describe("Assignment with valid data", () => {
 
     // SECOND RUN
 
-    const startTime2 = dayjs(CONVENTION_START_TIME)
-      .add(3, "hours")
-      .toISOString();
+    const startTime2 = dayjs(conventionStartTime).add(3, "hours").toISOString();
 
     const assignResultsEither2 = await runAssignment({
       assignmentStrategy,

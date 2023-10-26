@@ -6,7 +6,7 @@ import { TIMEZONE } from "shared/utils/initializeDayjs";
 const {
   PRE_SIGNUP_START,
   DIRECT_SIGNUP_START,
-  CONVENTION_START_TIME,
+  conventionStartTime,
   PHASE_GAP,
 } = config.shared();
 
@@ -17,8 +17,8 @@ export const getAlgorithmSignupStartTime = (startTime: string): Dayjs => {
     .subtract(PRE_SIGNUP_START, "minutes");
 
   // If algorithm signup starts before convention start time, use convention start time
-  if (timezoneStartTime.isBefore(dayjs(CONVENTION_START_TIME))) {
-    return dayjs(CONVENTION_START_TIME);
+  if (timezoneStartTime.isBefore(dayjs(conventionStartTime))) {
+    return dayjs(conventionStartTime);
   }
 
   const startTimeIsTooEarly = timezoneStartTime.hour() <= 6;
@@ -56,13 +56,13 @@ export const getDirectSignupStartTime = (game: Game): Dayjs => {
     //   Start time 17:00 -> signup start 15:15 -> fix to 15:00
     //   Start time 18:00 -> signup start 16:15 -> this is fine
     const signupsBeforeThisStartAtConventionStart = dayjs(
-      CONVENTION_START_TIME,
+      conventionStartTime,
     ).add(1, "hour");
 
     if (
       dayjs(directSignupStart).isBefore(signupsBeforeThisStartAtConventionStart)
     ) {
-      return dayjs(CONVENTION_START_TIME);
+      return dayjs(conventionStartTime);
     }
 
     const directSignupStartWithPhaseGap = directSignupStart.add(
