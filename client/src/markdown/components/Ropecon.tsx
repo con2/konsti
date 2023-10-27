@@ -10,7 +10,7 @@ interface Props {
 export const Ropecon = ({ children }: Props): ReactElement => {
   return (
     <span>
-      {config.shared().CONVENTION_NAME === ConventionName.ROPECON
+      {config.shared().conventionName === ConventionName.ROPECON
         ? children
         : null}
     </span>

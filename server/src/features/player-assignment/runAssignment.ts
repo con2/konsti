@@ -21,8 +21,6 @@ import {
 } from "shared/utils/result";
 import { AssignmentError, MongoDbError } from "shared/typings/api/errors";
 
-const { directSignupAlwaysOpenIds } = config.shared();
-
 interface RunAssignmentParams {
   assignmentStrategy: AssignmentStrategy;
   startTime?: string;
@@ -71,7 +69,9 @@ export const runAssignment = async ({
   const filteredUsers = users.map((user) => {
     const matchingSignedGames = user.signedGames.filter(
       (signedGame) =>
-        !directSignupAlwaysOpenIds.includes(signedGame.gameDetails.gameId) &&
+        !config
+          .shared()
+          .directSignupAlwaysOpenIds.includes(signedGame.gameDetails.gameId) &&
         signedGame.gameDetails.programType === ProgramType.TABLETOP_RPG,
     );
 
@@ -87,7 +87,7 @@ export const runAssignment = async ({
   // Only include TABLETOP_RPG and don't include "directSignupAlwaysOpen" games
   const filteredGames = games.filter(
     (game) =>
-      !directSignupAlwaysOpenIds.includes(game.gameId) &&
+      !config.shared().directSignupAlwaysOpenIds.includes(game.gameId) &&
       game.programType === ProgramType.TABLETOP_RPG,
   );
 
