@@ -57,9 +57,9 @@ test("Assignment with valid data should return success with group strategy", asy
     testUsersCount,
   );
 
-  const { CONVENTION_START_TIME } = config.shared();
+  const { conventionStartTime } = config.shared();
   const assignmentStrategy = AssignmentStrategy.GROUP;
-  const startTime = dayjs(CONVENTION_START_TIME).add(2, "hours").toISOString();
+  const startTime = dayjs(conventionStartTime).add(2, "hours").toISOString();
 
   // FIRST RUN
 
@@ -129,9 +129,9 @@ test("Assignment with no games should return error with group strategy", async (
     testUsersCount,
   );
 
-  const { CONVENTION_START_TIME } = config.shared();
+  const { conventionStartTime } = config.shared();
   const assignmentStrategy = AssignmentStrategy.GROUP;
-  const startTime = dayjs(CONVENTION_START_TIME).add(2, "hours").toISOString();
+  const startTime = dayjs(conventionStartTime).add(2, "hours").toISOString();
 
   const assignResultsResult = await runAssignment({
     assignmentStrategy,
@@ -159,9 +159,9 @@ test("Assignment with no players should return error with group strategy", async
     testUsersCount,
   );
 
-  const { CONVENTION_START_TIME } = config.shared();
+  const { conventionStartTime } = config.shared();
   const assignmentStrategy = AssignmentStrategy.GROUP;
-  const startTime = dayjs(CONVENTION_START_TIME).add(2, "hours").toISOString();
+  const startTime = dayjs(conventionStartTime).add(2, "hours").toISOString();
 
   const assignResultsResult = await runAssignment({
     assignmentStrategy,

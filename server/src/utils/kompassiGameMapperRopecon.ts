@@ -10,19 +10,19 @@ import {
   Tag,
 } from "shared/typings/models/game";
 import {
-  KompassiGame,
-  KompassiGameStyle,
-  KompassiGenre,
-  KompassiLanguage,
-  KompassiProgramType,
-  KompassiTag,
-  workshopProgramTypes,
-} from "shared/typings/models/kompassiGame";
+  KompassiGameRopecon,
+  KompassiGameStyleRopecon,
+  KompassiGenreRopecon,
+  KompassiLanguageRopecon,
+  KompassiProgramTypeRopecon,
+  KompassiTagRopecon,
+  workshopProgramTypesRopecon,
+} from "shared/typings/models/kompassiGame/kompassiGameRopecon";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 import { config } from "shared/config";
 
-export const kompassiGameMapper = (
-  games: readonly KompassiGame[],
+export const kompassiGameMapperRopecon = (
+  games: readonly KompassiGameRopecon[],
 ): readonly Game[] => {
   return games.map((game) => {
     return {
@@ -58,36 +58,36 @@ export const kompassiGameMapper = (
   });
 };
 
-const mapProgramType = (kompassiGame: KompassiGame): ProgramType => {
+const mapProgramType = (kompassiGame: KompassiGameRopecon): ProgramType => {
   const programType = kompassiGame.category_title;
 
   switch (programType) {
-    case KompassiProgramType.TABLETOP_RPG:
+    case KompassiProgramTypeRopecon.TABLETOP_RPG:
       return ProgramType.TABLETOP_RPG;
 
-    case KompassiProgramType.LARP:
+    case KompassiProgramTypeRopecon.LARP:
       return ProgramType.LARP;
 
-    case KompassiProgramType.TOURNAMENT_BOARD_GAME:
-    case KompassiProgramType.TOURNAMENT_CARD_GAME:
-    case KompassiProgramType.TOURNAMENT_MINIATURE_WARGAME:
-    case KompassiProgramType.TOURNAMENT_OTHER:
+    case KompassiProgramTypeRopecon.TOURNAMENT_BOARD_GAME:
+    case KompassiProgramTypeRopecon.TOURNAMENT_CARD_GAME:
+    case KompassiProgramTypeRopecon.TOURNAMENT_MINIATURE_WARGAME:
+    case KompassiProgramTypeRopecon.TOURNAMENT_OTHER:
       return ProgramType.TOURNAMENT;
 
-    case KompassiProgramType.WORKSHOP_MINIATURE:
-    case KompassiProgramType.WORKSHOP_CRAFTS:
-    case KompassiProgramType.WORKSHOP_MUSIC:
-    case KompassiProgramType.WORKSHOP_OTHER:
+    case KompassiProgramTypeRopecon.WORKSHOP_MINIATURE:
+    case KompassiProgramTypeRopecon.WORKSHOP_CRAFTS:
+    case KompassiProgramTypeRopecon.WORKSHOP_MUSIC:
+    case KompassiProgramTypeRopecon.WORKSHOP_OTHER:
       return ProgramType.WORKSHOP;
 
-    case KompassiProgramType.EXPERIENCE_POINT_DEMO:
-    case KompassiProgramType.EXPERIENCE_POINT_OTHER:
-    case KompassiProgramType.EXPERIENCE_POINT_OPEN:
+    case KompassiProgramTypeRopecon.EXPERIENCE_POINT_DEMO:
+    case KompassiProgramTypeRopecon.EXPERIENCE_POINT_OTHER:
+    case KompassiProgramTypeRopecon.EXPERIENCE_POINT_OPEN:
       return ProgramType.EXPERIENCE_POINT;
 
-    case KompassiProgramType.OTHER_GAME_PROGRAM:
-    case KompassiProgramType.OTHER_PROGRAM:
-    case KompassiProgramType.MINIATURE_DEMO:
+    case KompassiProgramTypeRopecon.OTHER_GAME_PROGRAM:
+    case KompassiProgramTypeRopecon.OTHER_PROGRAM:
+    case KompassiProgramTypeRopecon.MINIATURE_DEMO:
       return ProgramType.OTHER;
 
     default:
@@ -95,72 +95,72 @@ const mapProgramType = (kompassiGame: KompassiGame): ProgramType => {
   }
 };
 
-const mapTags = (kompassiGame: KompassiGame): Tag[] => {
+const mapTags = (kompassiGame: KompassiGameRopecon): Tag[] => {
   const tags: Tag[] = kompassiGame.tags.flatMap((tag) => {
     switch (tag) {
-      case KompassiTag.IN_ENGLISH:
+      case KompassiTagRopecon.IN_ENGLISH:
         return Tag.IN_ENGLISH;
 
-      case KompassiTag.SOPII_LAPSILLE:
+      case KompassiTagRopecon.SOPII_LAPSILLE:
         return Tag.CHILDREN_FRIENDLY;
 
-      case KompassiTag.VAIN_TAYSI_IKAISILLE:
+      case KompassiTagRopecon.VAIN_TAYSI_IKAISILLE:
         return Tag.AGE_RESTRICTED;
 
-      case KompassiTag.ALOITTELIJAYSTÄVÄLLINEN:
+      case KompassiTagRopecon.ALOITTELIJAYSTÄVÄLLINEN:
         return Tag.BEGINNER_FRIENDLY;
 
-      case KompassiTag.KUNNIAVIERAS:
+      case KompassiTagRopecon.KUNNIAVIERAS:
         return Tag.GUEST_OF_HONOR;
 
-      case KompassiTag.PERHEOHJELMA:
+      case KompassiTagRopecon.PERHEOHJELMA:
         return Tag.FAMILY;
 
-      case KompassiTag.TEEMA_ELEMENTIT:
+      case KompassiTagRopecon.TEEMA_ELEMENTIT:
         return Tag.THEME_ELEMENTS;
 
-      case KompassiTag.SOPII_ALLE_7V:
+      case KompassiTagRopecon.SOPII_ALLE_7V:
         return Tag.SUITABLE_UNDER_7;
 
-      case KompassiTag.SOPII_7_12V:
+      case KompassiTagRopecon.SOPII_7_12V:
         return Tag.SUITABLE_7_TO_12;
 
-      case KompassiTag.SOPII_YLI_12V:
+      case KompassiTagRopecon.SOPII_YLI_12V:
         return Tag.SUITABLE_OVER_12;
 
-      case KompassiTag.EI_SOVELLU_ALLE_15V:
+      case KompassiTagRopecon.EI_SOVELLU_ALLE_15V:
         return Tag.NOT_SUITABLE_UNDER_15;
 
-      case KompassiTag.LASTENOHJELMA:
+      case KompassiTagRopecon.LASTENOHJELMA:
         return Tag.CHILDRENS_PROGRAM;
 
-      case KompassiTag.SUUNNATTU_ALLE_10V:
+      case KompassiTagRopecon.SUUNNATTU_ALLE_10V:
         return Tag.SUITABLE_UNDER_10;
 
-      case KompassiTag.SUUNNATTU_ALAIKAISILLE:
+      case KompassiTagRopecon.SUUNNATTU_ALAIKAISILLE:
         return Tag.FOR_MINORS;
 
-      case KompassiTag.SUUNNATTU_TAYSIIKAISILLE:
+      case KompassiTagRopecon.SUUNNATTU_TAYSIIKAISILLE:
         return Tag.FOR_ADULTS;
 
-      case KompassiTag.TEEMA_YSTAVYYS:
+      case KompassiTagRopecon.TEEMA_YSTAVYYS:
         return Tag.THEME_FRIENDSHIP;
 
-      case KompassiTag.DEMO:
+      case KompassiTagRopecon.DEMO:
         return Tag.DEMO;
 
-      case KompassiTag.KILPAILUTURNAUS:
+      case KompassiTagRopecon.KILPAILUTURNAUS:
         return Tag.TOURNAMENT;
 
       // We don't want to show these in UI
-      case KompassiTag.AIHE_FIGUPELIT:
-      case KompassiTag.AIHE_KORTTIPELIT:
-      case KompassiTag.AIHE_LARPIT:
-      case KompassiTag.AIHE_LAUTAPELIT:
-      case KompassiTag.AIHE_POYTAROOLIPELIT:
-      case KompassiTag.HISTORIA:
-      case KompassiTag.PELI:
-      case KompassiTag.YOUTUBE:
+      case KompassiTagRopecon.AIHE_FIGUPELIT:
+      case KompassiTagRopecon.AIHE_KORTTIPELIT:
+      case KompassiTagRopecon.AIHE_LARPIT:
+      case KompassiTagRopecon.AIHE_LAUTAPELIT:
+      case KompassiTagRopecon.AIHE_POYTAROOLIPELIT:
+      case KompassiTagRopecon.HISTORIA:
+      case KompassiTagRopecon.PELI:
+      case KompassiTagRopecon.YOUTUBE:
         return [];
 
       default:
@@ -203,40 +203,40 @@ const mapTags = (kompassiGame: KompassiGame): Tag[] => {
   return _.uniq(tags);
 };
 
-const mapGenres = (kompassiGame: KompassiGame): Genre[] => {
+const mapGenres = (kompassiGame: KompassiGameRopecon): Genre[] => {
   return kompassiGame.genres.map((genre) => {
     switch (genre) {
-      case KompassiGenre.FANTASY:
+      case KompassiGenreRopecon.FANTASY:
         return Genre.FANTASY;
 
-      case KompassiGenre.SCIFI:
+      case KompassiGenreRopecon.SCIFI:
         return Genre.SCIFI;
 
-      case KompassiGenre.HISTORICAL:
+      case KompassiGenreRopecon.HISTORICAL:
         return Genre.HISTORICAL;
 
-      case KompassiGenre.MODERN:
+      case KompassiGenreRopecon.MODERN:
         return Genre.MODERN;
 
-      case KompassiGenre.WAR:
+      case KompassiGenreRopecon.WAR:
         return Genre.WAR;
 
-      case KompassiGenre.HORROR:
+      case KompassiGenreRopecon.HORROR:
         return Genre.HORROR;
 
-      case KompassiGenre.EXPLORATION:
+      case KompassiGenreRopecon.EXPLORATION:
         return Genre.EXPLORATION;
 
-      case KompassiGenre.MYSTERY:
+      case KompassiGenreRopecon.MYSTERY:
         return Genre.MYSTERY;
 
-      case KompassiGenre.DRAMA:
+      case KompassiGenreRopecon.DRAMA:
         return Genre.DRAMA;
 
-      case KompassiGenre.HUMOR:
+      case KompassiGenreRopecon.HUMOR:
         return Genre.HUMOR;
 
-      case KompassiGenre.ADVENTURE:
+      case KompassiGenreRopecon.ADVENTURE:
         return Genre.ADVENTURE;
 
       default:
@@ -245,28 +245,28 @@ const mapGenres = (kompassiGame: KompassiGame): Genre[] => {
   });
 };
 
-const mapGameStyles = (kompassiGame: KompassiGame): GameStyle[] => {
+const mapGameStyles = (kompassiGame: KompassiGameRopecon): GameStyle[] => {
   return kompassiGame.styles.map((gameStyle) => {
     switch (gameStyle) {
-      case KompassiGameStyle.SERIOUS:
+      case KompassiGameStyleRopecon.SERIOUS:
         return GameStyle.SERIOUS;
 
-      case KompassiGameStyle.LIGHT:
+      case KompassiGameStyleRopecon.LIGHT:
         return GameStyle.LIGHT;
 
-      case KompassiGameStyle.RULES_HEAVY:
+      case KompassiGameStyleRopecon.RULES_HEAVY:
         return GameStyle.RULES_HEAVY;
 
-      case KompassiGameStyle.RULES_LIGHT:
+      case KompassiGameStyleRopecon.RULES_LIGHT:
         return GameStyle.RULES_LIGHT;
 
-      case KompassiGameStyle.STORY_DRIVEN:
+      case KompassiGameStyleRopecon.STORY_DRIVEN:
         return GameStyle.STORY_DRIVEN;
 
-      case KompassiGameStyle.CHARACTER_DRIVEN:
+      case KompassiGameStyleRopecon.CHARACTER_DRIVEN:
         return GameStyle.CHARACTER_DRIVEN;
 
-      case KompassiGameStyle.COMBAT_DRIVEN:
+      case KompassiGameStyleRopecon.COMBAT_DRIVEN:
         return GameStyle.COMBAT_DRIVEN;
 
       default:
@@ -275,18 +275,18 @@ const mapGameStyles = (kompassiGame: KompassiGame): GameStyle[] => {
   });
 };
 
-const mapLanguage = (kompassiLanguage: KompassiLanguage): Language => {
+const mapLanguage = (kompassiLanguage: KompassiLanguageRopecon): Language => {
   switch (kompassiLanguage) {
-    case KompassiLanguage.FINNISH:
+    case KompassiLanguageRopecon.FINNISH:
       return Language.FINNISH;
 
-    case KompassiLanguage.ENGLISH:
+    case KompassiLanguageRopecon.ENGLISH:
       return Language.ENGLISH;
 
-    case KompassiLanguage.FINNISH_OR_ENGLISH:
+    case KompassiLanguageRopecon.FINNISH_OR_ENGLISH:
       return Language.FINNISH_OR_ENGLISH;
 
-    case KompassiLanguage.LANGUAGE_FREE:
+    case KompassiLanguageRopecon.LANGUAGE_FREE:
       return Language.LANGUAGE_FREE;
 
     default:
@@ -295,7 +295,7 @@ const mapLanguage = (kompassiLanguage: KompassiLanguage): Language => {
 };
 
 const mapAccessibilityValues = (
-  kompassiGame: KompassiGame,
+  kompassiGame: KompassiGameRopecon,
 ): AccessibilityValue[] => {
   const accessibilityValues = [];
 
@@ -390,13 +390,13 @@ const mapAccessibilityValues = (
   return accessibilityValues;
 };
 
-const mapRevolvingDoor = (kompassiGame: KompassiGame): boolean => {
+const mapRevolvingDoor = (kompassiGame: KompassiGameRopecon): boolean => {
   if (kompassiGame.revolving_door) {
     return true;
   }
 
   if (
-    workshopProgramTypes.includes(kompassiGame.category_title) &&
+    workshopProgramTypesRopecon.includes(kompassiGame.category_title) &&
     kompassiGame.max_players === 0
   ) {
     return true;

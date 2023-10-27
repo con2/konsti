@@ -6,13 +6,13 @@ import _ from "lodash";
 import { logger } from "server/utils/logger";
 import { config } from "shared/config";
 import {
-  KompassiGame,
-  KompassiGameSchema,
-  KompassiProgramType,
-  KompassiSignupType,
-  experiencePointAndOtherProgramTypes,
-  tournamentProgramTypes,
-} from "shared/typings/models/kompassiGame";
+  KompassiGameRopecon,
+  KompassiGameSchemaRopecon,
+  KompassiProgramTypeRopecon,
+  KompassiSignupTypeRopecon,
+  experiencePointAndOtherProgramTypesRopecon,
+  tournamentProgramTypesRopecon,
+} from "shared/typings/models/kompassiGame/kompassiGameRopecon";
 import {
   Result,
   isErrorResult,
@@ -22,15 +22,13 @@ import {
 } from "shared/utils/result";
 import { KompassiError } from "shared/typings/api/errors";
 
-type EventProgramItem = KompassiGame;
-
 const { useLocalProgramFile, localKompassiFile } = config.server();
 
-export const getGamesFromKompassi = async (): Promise<
-  Result<readonly KompassiGame[], KompassiError>
+export const getGamesFromKompassiRopecon = async (): Promise<
+  Result<readonly KompassiGameRopecon[], KompassiError>
 > => {
   const eventProgramItemsResult =
-    await testHelperWrapper.getEventProgramItems();
+    await testHelperWrapperRopecon.getEventProgramItems();
   if (isErrorResult(eventProgramItemsResult)) {
     return eventProgramItemsResult;
   }
@@ -60,7 +58,7 @@ export const getGamesFromKompassi = async (): Promise<
 };
 
 const getEventProgramItems = async (): Promise<
-  Result<EventProgramItem[], KompassiError>
+  Result<KompassiGameRopecon[], KompassiError>
 > => {
   return useLocalProgramFile
     ? getProgramFromLocalFile()
@@ -69,12 +67,12 @@ const getEventProgramItems = async (): Promise<
 
 // This helper wrapper is needed to make Vitest spyOn() work
 //  https://github.com/vitest-dev/vitest/issues/1329
-export const testHelperWrapper = {
+export const testHelperWrapperRopecon = {
   getEventProgramItems,
 };
 
 const getProgramFromLocalFile = (): Result<
-  EventProgramItem[],
+  KompassiGameRopecon[],
   KompassiError
 > => {
   logger.info("GET event program from local filesystem");
@@ -91,7 +89,7 @@ const getProgramFromLocalFile = (): Result<
 };
 
 const getProgramFromServer = async (): Promise<
-  Result<EventProgramItem[], KompassiError>
+  Result<KompassiGameRopecon[], KompassiError>
 > => {
   logger.info("GET event program from remote server");
 
@@ -104,11 +102,14 @@ const getProgramFromServer = async (): Promise<
   }
 };
 
-const checkUnknownKeys = (programItems: EventProgramItem[]): void => {
+const checkUnknownKeys = (programItems: KompassiGameRopecon[]): void => {
   const unknownKeys: string[] = programItems.flatMap((programItem) => {
     return Object.keys(programItem).filter(
       (key) =>
-        !Object.prototype.hasOwnProperty.call(KompassiGameSchema.shape, key),
+        !Object.prototype.hasOwnProperty.call(
+          KompassiGameSchemaRopecon.shape,
+          key,
+        ),
     );
   });
 
@@ -125,9 +126,9 @@ const checkUnknownKeys = (programItems: EventProgramItem[]): void => {
 };
 
 const parseProgramItem = (
-  programItem: EventProgramItem,
-): EventProgramItem | undefined => {
-  const result = KompassiGameSchema.safeParse(programItem);
+  programItem: KompassiGameRopecon,
+): KompassiGameRopecon | undefined => {
+  const result = KompassiGameSchemaRopecon.safeParse(programItem);
 
   if (result.success) {
     return result.data;
@@ -152,9 +153,9 @@ const parseProgramItem = (
 };
 
 const getGamesFromFullProgram = (
-  programItems: EventProgramItem[],
-): KompassiGame[] => {
-  const matchingProgramItems: EventProgramItem[] = programItems.flatMap(
+  programItems: KompassiGameRopecon[],
+): KompassiGameRopecon[] => {
+  const matchingProgramItems: KompassiGameRopecon[] = programItems.flatMap(
     (programItem) => {
       // These program items are hand picked to be exported from Kompassi
       if (config.shared().addToKonsti.includes(programItem.identifier)) {
@@ -163,25 +164,27 @@ const getGamesFromFullProgram = (
 
       // Take program items with valid program type
       if (
-        !Object.values(KompassiProgramType).includes(programItem.category_title)
+        !Object.values(KompassiProgramTypeRopecon).includes(
+          programItem.category_title,
+        )
       ) {
         return [];
       }
 
       // Take 'Experience Point' and 'Other' program items where "ropecon2023_signuplist": "konsti"
       if (
-        experiencePointAndOtherProgramTypes.includes(
+        experiencePointAndOtherProgramTypesRopecon.includes(
           programItem.category_title,
         ) &&
-        programItem.ropecon2023_signuplist !== KompassiSignupType.KONSTI
+        programItem.ropecon2023_signuplist !== KompassiSignupTypeRopecon.KONSTI
       ) {
         return [];
       }
 
       // Take 'Tournament' program items where "ropecon2023_signuplist": "konsti"
       if (
-        tournamentProgramTypes.includes(programItem.category_title) &&
-        programItem.ropecon2023_signuplist !== KompassiSignupType.KONSTI
+        tournamentProgramTypesRopecon.includes(programItem.category_title) &&
+        programItem.ropecon2023_signuplist !== KompassiSignupTypeRopecon.KONSTI
       ) {
         return [];
       }
@@ -194,7 +197,7 @@ const getGamesFromFullProgram = (
 
   checkUnknownKeys(matchingProgramItems);
 
-  const kompassiGames: KompassiGame[] = matchingProgramItems.flatMap(
+  const kompassiGames: KompassiGameRopecon[] = matchingProgramItems.flatMap(
     (programItem) => {
       const result = parseProgramItem(programItem);
       return result ?? [];

@@ -3,6 +3,11 @@ export enum GameUpdateMethod {
   ASSIGN = "assign",
 }
 
+enum DataUri {
+  ROPECON = "https://kompassi.eu/api/v1/events/ropecon2023/programme/ropecon",
+  HITPOINT = "https://kompassi.eu/api/v1/events/hitpoint2023/programme/hitpoint",
+}
+
 export interface ServerConfig {
   port: number;
   debug: boolean;
@@ -13,7 +18,7 @@ export interface ServerConfig {
   jwtSecretKeyAdmin: string;
   jwtSecretKeyHelp: string;
   allowedCorsOrigins: readonly string[];
-  dataUri: string;
+  dataUri: DataUri;
   GROUP_ASSIGNMENT_ROUNDS: number;
   PADG_ASSIGNMENT_ROUNDS: number;
   RANDOM_ASSIGNMENT_ROUNDS: number;
@@ -54,7 +59,7 @@ const commonConfig = {
   gamePopularityUpdateMethod: GameUpdateMethod.ASSIGN,
 
   // Convention settings
-  dataUri: "https://kompassi.eu/api/v1/events/ropecon2023/programme/ropecon",
+  dataUri: DataUri.HITPOINT,
   firtSignupBonus: 20,
   useLocalProgramFile: false,
   localKompassiFile: "program-ropecon-2023.json",

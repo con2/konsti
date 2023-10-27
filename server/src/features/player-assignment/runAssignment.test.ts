@@ -6,6 +6,7 @@ import {
   beforeAll,
   beforeEach,
   describe,
+  vi,
 } from "vitest";
 import mongoose from "mongoose";
 import { MongoMemoryServer } from "mongodb-memory-server";
@@ -78,11 +79,9 @@ describe("Assignment with valid data", () => {
   });
 
   test("should return valid results after multiple executions on different times", async () => {
-    const { CONVENTION_START_TIME } = config.shared();
+    const { conventionStartTime } = config.shared();
     const assignmentStrategy = AssignmentStrategy.PADG;
-    const startTime = dayjs(CONVENTION_START_TIME)
-      .add(2, "hours")
-      .toISOString();
+    const startTime = dayjs(conventionStartTime).add(2, "hours").toISOString();
 
     // FIRST RUN
 
@@ -112,9 +111,7 @@ describe("Assignment with valid data", () => {
 
     // SECOND RUN
 
-    const startTime2 = dayjs(CONVENTION_START_TIME)
-      .add(3, "hours")
-      .toISOString();
+    const startTime2 = dayjs(conventionStartTime).add(3, "hours").toISOString();
 
     const assignResultsEither2 = await runAssignment({
       assignmentStrategy,
@@ -222,8 +219,12 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     expect(rpgSignup?.userSignups.length).toEqual(2);
   });
 
-  // TODO: Use dynamic config.shared().directSignupAlwaysOpenIds
   test("should not remove directSignupAlwaysOpen signups if user doesn't have updated result", async () => {
+    vi.spyOn(config, "shared").mockReturnValue({
+      ...config.shared(),
+      directSignupAlwaysOpenIds: ["1234"],
+    });
+
     const directSignupAlwaysOpenId =
       config.shared().directSignupAlwaysOpenIds[0];
     const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
@@ -305,6 +306,11 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
   });
 
   test("should update directSignupAlwaysOpen signup with assignment signup if user has updated result", async () => {
+    vi.spyOn(config, "shared").mockReturnValue({
+      ...config.shared(),
+      directSignupAlwaysOpenIds: ["1234"],
+    });
+
     const directSignupAlwaysOpenId =
       config.shared().directSignupAlwaysOpenIds[0];
     const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
@@ -511,6 +517,11 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
 
 describe("Assignment with first time bonus", () => {
   test("should assign user without previous RPG signup", async () => {
+    vi.spyOn(config, "shared").mockReturnValue({
+      ...config.shared(),
+      directSignupAlwaysOpenIds: ["1234"],
+    });
+
     const directSignupAlwaysOpenId =
       config.shared().directSignupAlwaysOpenIds[0];
     const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;

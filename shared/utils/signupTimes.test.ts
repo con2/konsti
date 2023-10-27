@@ -1,10 +1,18 @@
-import { describe, expect, test } from "vitest";
+import { beforeEach, describe, expect, test, vi } from "vitest";
 import dayjs from "dayjs";
 import {
   getAlgorithmSignupStartTime,
   getDirectSignupStartTime,
 } from "shared/utils/signupTimes";
 import { testGame } from "shared/tests/testGame";
+import { config } from "shared/config";
+
+beforeEach(() => {
+  vi.spyOn(config, "shared").mockReturnValue({
+    ...config.shared(),
+    conventionStartTime: "2023-07-28T12:00:00Z",
+  });
+});
 
 describe(`Algorithm signup`, () => {
   test("RPG starting at 15:00 should have signup starting at 15:00", () => {

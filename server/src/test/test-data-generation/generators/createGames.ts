@@ -2,53 +2,53 @@ import { faker } from "@faker-js/faker";
 import dayjs from "dayjs";
 import _ from "lodash";
 import { logger } from "server/utils/logger";
-import { kompassiGameMapper } from "server/utils/kompassiGameMapper";
+import { kompassiGameMapperRopecon } from "server/utils/kompassiGameMapperRopecon";
 import { saveGames } from "server/features/game/gameRepository";
 import { config } from "shared/config";
 import {
-  KompassiGame,
-  KompassiGameStyle,
-  KompassiGenre,
-  KompassiLanguage,
-  KompassiProgramType,
-  KompassiSignupType,
-  KompassiTag,
-  tournamentProgramTypes,
-  workshopProgramTypes,
-} from "shared/typings/models/kompassiGame";
+  KompassiGameRopecon,
+  KompassiGameStyleRopecon,
+  KompassiGenreRopecon,
+  KompassiLanguageRopecon,
+  KompassiProgramTypeRopecon,
+  KompassiSignupTypeRopecon,
+  KompassiTagRopecon,
+  tournamentProgramTypesRopecon,
+  workshopProgramTypesRopecon,
+} from "shared/typings/models/kompassiGame/kompassiGameRopecon";
 import { Result } from "shared/utils/result";
 import { MongoDbError } from "shared/typings/api/errors";
 
 const GAME_ID_MAX = 10000000;
 
 const startTimes = [
-  dayjs(config.shared().CONVENTION_START_TIME).toISOString(),
-  dayjs(config.shared().CONVENTION_START_TIME).add(1, "hours").toISOString(),
-  dayjs(config.shared().CONVENTION_START_TIME).add(2, "hours").toISOString(),
-  dayjs(config.shared().CONVENTION_START_TIME).add(3, "hours").toISOString(),
-  dayjs(config.shared().CONVENTION_START_TIME).add(4, "hours").toISOString(),
-  dayjs(config.shared().CONVENTION_START_TIME).add(1, "days").toISOString(),
-  dayjs(config.shared().CONVENTION_START_TIME).add(2, "days").toISOString(),
+  dayjs(config.shared().conventionStartTime).toISOString(),
+  dayjs(config.shared().conventionStartTime).add(1, "hours").toISOString(),
+  dayjs(config.shared().conventionStartTime).add(2, "hours").toISOString(),
+  dayjs(config.shared().conventionStartTime).add(3, "hours").toISOString(),
+  dayjs(config.shared().conventionStartTime).add(4, "hours").toISOString(),
+  dayjs(config.shared().conventionStartTime).add(1, "days").toISOString(),
+  dayjs(config.shared().conventionStartTime).add(2, "days").toISOString(),
 ];
 
-const getMinPlayers = (programType: KompassiProgramType): number => {
-  if (tournamentProgramTypes.includes(programType)) {
+const getMinPlayers = (programType: KompassiProgramTypeRopecon): number => {
+  if (tournamentProgramTypesRopecon.includes(programType)) {
     return faker.number.int({ min: 6, max: 10 });
   }
 
-  if (workshopProgramTypes.includes(programType)) {
+  if (workshopProgramTypesRopecon.includes(programType)) {
     return 0;
   }
 
   return faker.number.int({ min: 2, max: 3 });
 };
 
-const getMaxPlayers = (programType: KompassiProgramType): number => {
-  if (tournamentProgramTypes.includes(programType)) {
+const getMaxPlayers = (programType: KompassiProgramTypeRopecon): number => {
+  if (tournamentProgramTypesRopecon.includes(programType)) {
     return faker.number.int({ min: 12, max: 20 });
   }
 
-  if (workshopProgramTypes.includes(programType)) {
+  if (workshopProgramTypesRopecon.includes(programType)) {
     return faker.number.int({ min: 12, max: 20 });
   }
 
@@ -56,16 +56,16 @@ const getMaxPlayers = (programType: KompassiProgramType): number => {
 };
 
 const getProgramType = (
-  programType: KompassiProgramType,
-): KompassiProgramType => {
-  if (programType === KompassiProgramType.TOURNAMENT_BOARD_GAME) {
+  programType: KompassiProgramTypeRopecon,
+): KompassiProgramTypeRopecon => {
+  if (programType === KompassiProgramTypeRopecon.TOURNAMENT_BOARD_GAME) {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- We know tournamentProgramTypes is valid array
-    return _.sample(tournamentProgramTypes)!;
+    return _.sample(tournamentProgramTypesRopecon)!;
   }
 
-  if (programType === KompassiProgramType.WORKSHOP_MINIATURE) {
+  if (programType === KompassiProgramTypeRopecon.WORKSHOP_MINIATURE) {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- We know tournamentProgramTypes is valid array
-    return _.sample(workshopProgramTypes)!;
+    return _.sample(workshopProgramTypesRopecon)!;
   }
 
   return programType;
@@ -74,13 +74,13 @@ const getProgramType = (
 export const createGames = async (
   gameCount: number,
 ): Promise<Result<void, MongoDbError>> => {
-  const kompassiGames: KompassiGame[] = [];
+  const kompassiGames: KompassiGameRopecon[] = [];
 
   const programTypes = [
-    KompassiProgramType.TABLETOP_RPG,
-    KompassiProgramType.LARP,
-    KompassiProgramType.TOURNAMENT_BOARD_GAME,
-    KompassiProgramType.WORKSHOP_MINIATURE,
+    KompassiProgramTypeRopecon.TABLETOP_RPG,
+    KompassiProgramTypeRopecon.LARP,
+    KompassiProgramTypeRopecon.TOURNAMENT_BOARD_GAME,
+    KompassiProgramTypeRopecon.WORKSHOP_MINIATURE,
   ];
 
   programTypes.map((programType) => {
@@ -92,7 +92,7 @@ export const createGames = async (
       for (let i = 0; i < gameCount; i += 1) {
         const length = 180;
 
-        const kompassiGameData: KompassiGame = {
+        const kompassiGameData: KompassiGameRopecon = {
           title: faker.word.words(3),
           description: faker.lorem.sentences(5),
           category_title: getProgramType(programType),
@@ -102,15 +102,15 @@ export const createGames = async (
           start_time: dayjs(startTime).toISOString(),
           end_time: dayjs(startTime).add(length, "minutes").toISOString(),
           rpg_system:
-            programType === KompassiProgramType.TABLETOP_RPG
+            programType === KompassiProgramTypeRopecon.TABLETOP_RPG
               ? "Test gamesystem"
               : "",
           min_players: getMinPlayers(programType),
           max_players: getMaxPlayers(programType),
           identifier: faker.number.int(GAME_ID_MAX).toString(),
-          tags: _.sampleSize(Object.values(KompassiTag), 3),
-          genres: _.sampleSize(Object.values(KompassiGenre), 2),
-          styles: _.sampleSize(Object.values(KompassiGameStyle), 2),
+          tags: _.sampleSize(Object.values(KompassiTagRopecon), 3),
+          genres: _.sampleSize(Object.values(KompassiGenreRopecon), 2),
+          styles: _.sampleSize(Object.values(KompassiGameStyleRopecon), 2),
           short_blurb: faker.lorem.sentence(),
           revolving_door: Math.random() < 0.5,
           other_author: "Other author",
@@ -141,11 +141,13 @@ export const createGames = async (
             Math.random() < 0.5,
           ropecon2023_other_accessibility_information:
             "Other accessibility information",
-          ropecon2023_signuplist: KompassiSignupType.KONSTI,
-          ropecon2023_workshop_fee: workshopProgramTypes.includes(programType)
+          ropecon2023_signuplist: KompassiSignupTypeRopecon.KONSTI,
+          ropecon2023_workshop_fee: workshopProgramTypesRopecon.includes(
+            programType,
+          )
             ? "5€"
             : "",
-          ropecon2023_language: KompassiLanguage.FINNISH,
+          ropecon2023_language: KompassiLanguageRopecon.FINNISH,
           ropecon2023_suitable_for_all_ages: Math.random() < 0.5,
           ropecon2023_aimed_at_children_under_13: Math.random() < 0.5,
           ropecon2023_aimed_at_children_between_13_17: Math.random() < 0.5,
@@ -162,5 +164,5 @@ export const createGames = async (
     });
   });
 
-  return await saveGames(kompassiGameMapper(kompassiGames));
+  return await saveGames(kompassiGameMapperRopecon(kompassiGames));
 };

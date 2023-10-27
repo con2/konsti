@@ -6,10 +6,7 @@ import {
   SignupStrategy,
 } from "shared/config/sharedConfigTypes";
 import { ProgramType } from "shared/typings/models/game";
-import {
-  SignupQuestion,
-  SignupQuestionType,
-} from "shared/typings/models/settings";
+import { SignupQuestion } from "shared/typings/models/settings";
 
 type ArrMin1<T> = [T, ...T[]];
 
@@ -23,9 +20,9 @@ export interface SharedConfig {
   enableGroups: boolean;
   defaultSignupStrategy: SignupStrategy;
   defaultLoginProvider: LoginProvider;
-  CONVENTION_NAME: string;
-  CONVENTION_YEAR: string;
-  CONVENTION_START_TIME: string;
+  conventionName: ConventionName;
+  conventionYear: string;
+  conventionStartTime: string;
   DIRECT_SIGNUP_START: number;
   PRE_SIGNUP_START: number;
   PHASE_GAP: number;
@@ -43,15 +40,15 @@ export interface SharedConfig {
   addToKonsti: string[];
   noKonstiSignupIds: string[];
   signupQuestions: SignupQuestion[];
-  tournamentSignupQuestion: SignupQuestion;
+  tournamentSignupQuestion: SignupQuestion | null;
   tournamentSignupQuestionExcludeIds: string[];
   addRevolvingDoorIds: string[];
 }
 
 // Convention days
-const friday = "2023-07-28";
-const saturday = "2023-07-29";
-const sunday = "2023-07-30";
+const friday = "2023-11-03";
+const saturday = "2023-11-04";
+const sunday = "2023-11-05";
 
 export const sharedConfig: SharedConfig = {
   // Convention settings
@@ -67,10 +64,10 @@ export const sharedConfig: SharedConfig = {
   activeProgramTypes: [
     ProgramType.TABLETOP_RPG,
     ProgramType.LARP,
-    ProgramType.TOURNAMENT,
-    ProgramType.WORKSHOP,
-    ProgramType.EXPERIENCE_POINT,
-    ProgramType.OTHER,
+    // ProgramType.TOURNAMENT,
+    // ProgramType.WORKSHOP,
+    // ProgramType.EXPERIENCE_POINT,
+    // ProgramType.OTHER,
   ],
 
   twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG],
@@ -83,13 +80,18 @@ export const sharedConfig: SharedConfig = {
     ProgramType.OTHER,
   ],
 
-  CONVENTION_START_TIME: `${friday}T12:00:00Z`, // UTC date
+  conventionStartTime: `${saturday}T07:00:00Z`, // Sat 10:00
 
   directSignupWindows: {
     // @ts-expect-error: RPGs use DIRECT_SIGNUP_START
     tabletopRPG: [],
 
     larp: [
+      {
+        signupWindowStart: dayjs(`${saturday}T07:00:00Z`), // Sat 10:00
+        signupWindowClose: dayjs(`${sunday}T21:00:00Z`), // Sun 24:00
+      },
+      /*
       // Friday
       {
         signupWindowStart: dayjs(`${friday}T12:00:00Z`), // Fri 15:00
@@ -110,6 +112,7 @@ export const sharedConfig: SharedConfig = {
         signupWindowStart: dayjs(`${saturday}T12:00:00Z`), // Sat 15:00
         signupWindowClose: dayjs(`${sunday}T21:00:00Z`), // Sun 24:00
       },
+      */
     ],
 
     tournament: [
@@ -177,25 +180,29 @@ export const sharedConfig: SharedConfig = {
 
   // These program items have their signup always open even if signup mode is set to algorithm
   directSignupAlwaysOpenIds: [
-    "dummy_id", // Because tests require this, should be fixed
     // "p6673", // PFS multi-table special: Pathfinder Society #3-98: Expedition into Pallid Peril
   ],
 
   // These program items are hand picked to be exported from Kompassi
   addToKonsti: [
+    /*
     "p6787", // KPS-turnaus
     "p6500", // "\"Joo ja...\" -improtunti",
+    */
   ],
 
   // These program items have hand picked revolving door status
   addRevolvingDoorIds: [
+    /*
     "p6645", // Ihmissusipeli (Werewolfes of Millers Hollow)
     "p7042", // Ihmissusipeli (Werewolfes of Millers Hollow)
     "p7043", // Ihmissusipeli (Werewolfes of Millers Hollow)
+    */
   ],
 
   // These program items are imported to Konsti but don't have Konsti signup
   noKonstiSignupIds: [
+    /*
     "p6512", // RPG: Charlie ei surffaa - Fri
     "p7023", // RPG: Charlie ei surffaa - Sat
     "p7024", // RPG: Charlie ei surffaa - Sun
@@ -209,9 +216,11 @@ export const sharedConfig: SharedConfig = {
     "p6299", // Larp: Vaeltajalegendat: Sinustako seikkailija!? 1. Pelautus
     "p7006", // Larp: Vaeltajalegendat: Sinustako seikkailija!? 2. Pelautus,
     "p6500", // Other: "\"Joo ja...\" -improtunti",
+    */
   ],
 
   signupQuestions: [
+    /*
     {
       gameId: "p6673", // PFS multi-table special: Pathfinder Society #3-98: Expedition into Pallid Peril
       questionFi:
@@ -280,8 +289,11 @@ export const sharedConfig: SharedConfig = {
         { optionFi: "Zenitaali", optionEn: "Zenithal" },
       ],
     },
+    */
   ],
 
+  tournamentSignupQuestion: null,
+  /*
   tournamentSignupQuestion: {
     gameId: "", // Filled later
     questionFi:
@@ -292,13 +304,14 @@ export const sharedConfig: SharedConfig = {
     type: SignupQuestionType.TEXT,
     selectOptions: [],
   },
+  */
 
   tournamentSignupQuestionExcludeIds: [
-    "p6852", // Palapeliturnaus (Joukkue) | Jigsaw Puzzle Tournament (Teams)
-    "p6639", // Pikamaalauskilpailu / Speed Painting Contest 1 (Pe/Fri)
-    "p6978", // Pikamaalauskilpailu / Speed Painting Contest 2 (Pe/Fri)
-    "p6989", // Pikamaalauskilpailu / Speed Painting Contest 3 (La/Sat)
-    "p6990", // Pikamaalauskilpailu / Speed Painting Contest 4 (La/Sat)
+    // "p6852", // Palapeliturnaus (Joukkue) | Jigsaw Puzzle Tournament (Teams)
+    // "p6639", // Pikamaalauskilpailu / Speed Painting Contest 1 (Pe/Fri)
+    // "p6978", // Pikamaalauskilpailu / Speed Painting Contest 2 (Pe/Fri)
+    // "p6989", // Pikamaalauskilpailu / Speed Painting Contest 3 (La/Sat)
+    // "p6990", // Pikamaalauskilpailu / Speed Painting Contest 4 (La/Sat)
   ],
 
   // Two phase signup settings
@@ -307,8 +320,8 @@ export const sharedConfig: SharedConfig = {
   PHASE_GAP: 15, // minutes
 
   // Convention info
-  CONVENTION_NAME: ConventionName.TRACON_HITPOINT,
-  CONVENTION_YEAR: "2023",
+  conventionName: ConventionName.HITPOINT,
+  conventionYear: "2023",
 
   // Sentry
   tracesSampleRate: 0.0,

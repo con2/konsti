@@ -17,6 +17,10 @@ export const addSignupQuestions = async (): Promise<void> => {
   });
   await Promise.all(questionPromises);
 
+  if (!tournamentSignupQuestion) {
+    return;
+  }
+
   const gamesResult = await findGames();
   if (isErrorResult(gamesResult)) {
     logger.error(

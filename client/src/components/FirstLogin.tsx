@@ -21,8 +21,8 @@ export const FirstLogin = (): ReactElement | null => {
       return;
     }
 
-    const firstLoginKey = `${config.shared().CONVENTION_NAME}-${
-      config.shared().CONVENTION_YEAR
+    const firstLoginKey = `${config.shared().conventionName}-${
+      config.shared().conventionYear
     }-${username}`;
     const firstLogin = localStorage.getItem(firstLoginKey);
 

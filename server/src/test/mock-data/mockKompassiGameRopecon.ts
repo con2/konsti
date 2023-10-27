@@ -1,18 +1,18 @@
 import { testGame, testGame2 } from "shared/tests/testGame";
 import {
-  KompassiGame,
-  KompassiGameStyle,
-  KompassiGenre,
-  KompassiLanguage,
-  KompassiProgramType,
-  KompassiSignupType,
-  KompassiTag,
-} from "shared/typings/models/kompassiGame";
+  KompassiGameRopecon,
+  KompassiGameStyleRopecon,
+  KompassiGenreRopecon,
+  KompassiLanguageRopecon,
+  KompassiProgramTypeRopecon,
+  KompassiSignupTypeRopecon,
+  KompassiTagRopecon,
+} from "shared/typings/models/kompassiGame/kompassiGameRopecon";
 
-export const testKompassiGame: KompassiGame = {
+export const testKompassiGameRopecon: KompassiGameRopecon = {
   title: testGame.title,
   description: testGame.description,
-  category_title: KompassiProgramType.TABLETOP_RPG,
+  category_title: KompassiProgramTypeRopecon.TABLETOP_RPG,
   formatted_hosts: testGame.people,
   room_name: testGame.location,
   length: testGame.mins,
@@ -22,9 +22,15 @@ export const testKompassiGame: KompassiGame = {
   min_players: testGame.minAttendance,
   max_players: testGame.maxAttendance,
   identifier: testGame.gameId,
-  tags: [KompassiTag.ALOITTELIJAYSTÄVÄLLINEN, KompassiTag.SOPII_ALLE_7V],
-  genres: [KompassiGenre.ADVENTURE, KompassiGenre.HUMOR],
-  styles: [KompassiGameStyle.CHARACTER_DRIVEN, KompassiGameStyle.RULES_LIGHT],
+  tags: [
+    KompassiTagRopecon.ALOITTELIJAYSTÄVÄLLINEN,
+    KompassiTagRopecon.SOPII_ALLE_7V,
+  ],
+  genres: [KompassiGenreRopecon.ADVENTURE, KompassiGenreRopecon.HUMOR],
+  styles: [
+    KompassiGameStyleRopecon.CHARACTER_DRIVEN,
+    KompassiGameStyleRopecon.RULES_LIGHT,
+  ],
   short_blurb: testGame.shortDescription,
   revolving_door: false,
   other_author: testGame.otherAuthor,
@@ -50,9 +56,9 @@ export const testKompassiGame: KompassiGame = {
   ropecon2023_accessibility_participation_requires_react_quickly: false,
   ropecon2023_other_accessibility_information:
     "Other accessibility information",
-  ropecon2023_signuplist: KompassiSignupType.KONSTI,
+  ropecon2023_signuplist: KompassiSignupTypeRopecon.KONSTI,
   ropecon2023_workshop_fee: "",
-  ropecon2023_language: KompassiLanguage.FINNISH,
+  ropecon2023_language: KompassiLanguageRopecon.FINNISH,
   ropecon2023_suitable_for_all_ages: false,
   ropecon2023_aimed_at_children_under_13: false,
   ropecon2023_aimed_at_children_between_13_17: false,
@@ -63,10 +69,10 @@ export const testKompassiGame: KompassiGame = {
   ropecon2023_celebratory_year: false,
 };
 
-export const testKompassiGame2: KompassiGame = {
+export const testKompassiGameRopecon2: KompassiGameRopecon = {
   title: testGame2.title,
   description: testGame2.description,
-  category_title: KompassiProgramType.TABLETOP_RPG,
+  category_title: KompassiProgramTypeRopecon.TABLETOP_RPG,
   formatted_hosts: testGame2.people,
   room_name: testGame2.location,
   length: testGame2.mins,
@@ -76,9 +82,15 @@ export const testKompassiGame2: KompassiGame = {
   min_players: testGame2.minAttendance,
   max_players: testGame2.maxAttendance,
   identifier: testGame2.gameId,
-  tags: [KompassiTag.ALOITTELIJAYSTÄVÄLLINEN, KompassiTag.SOPII_ALLE_7V],
-  genres: [KompassiGenre.ADVENTURE, KompassiGenre.HUMOR],
-  styles: [KompassiGameStyle.CHARACTER_DRIVEN, KompassiGameStyle.RULES_LIGHT],
+  tags: [
+    KompassiTagRopecon.ALOITTELIJAYSTÄVÄLLINEN,
+    KompassiTagRopecon.SOPII_ALLE_7V,
+  ],
+  genres: [KompassiGenreRopecon.ADVENTURE, KompassiGenreRopecon.HUMOR],
+  styles: [
+    KompassiGameStyleRopecon.CHARACTER_DRIVEN,
+    KompassiGameStyleRopecon.RULES_LIGHT,
+  ],
   short_blurb: testGame2.shortDescription,
   revolving_door: false,
   other_author: testGame2.otherAuthor,
@@ -104,9 +116,9 @@ export const testKompassiGame2: KompassiGame = {
   ropecon2023_accessibility_participation_requires_react_quickly: false,
   ropecon2023_other_accessibility_information:
     "Other accessibility information",
-  ropecon2023_signuplist: KompassiSignupType.KONSTI,
+  ropecon2023_signuplist: KompassiSignupTypeRopecon.KONSTI,
   ropecon2023_workshop_fee: "",
-  ropecon2023_language: KompassiLanguage.FINNISH,
+  ropecon2023_language: KompassiLanguageRopecon.FINNISH,
   ropecon2023_suitable_for_all_ages: false,
   ropecon2023_aimed_at_children_under_13: false,
   ropecon2023_aimed_at_children_between_13_17: false,

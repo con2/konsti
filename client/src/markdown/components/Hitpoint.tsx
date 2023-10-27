@@ -10,7 +10,7 @@ interface Props {
 export const Hitpoint = ({ children }: Props): ReactElement => {
   return (
     <span>
-      {config.shared().CONVENTION_NAME === ConventionName.TRACON_HITPOINT
+      {config.shared().conventionName === ConventionName.HITPOINT
         ? children
         : null}
     </span>

@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
 import { config } from "shared/config";
 
-const { CONVENTION_START_TIME } = config.shared();
+const { conventionStartTime } = config.shared();
 
 export const tooEearlyForAlgorithmSignup = (startTime: string): boolean => {
   // Return DIRECT for three first hours of convention because there is no time for algorithm signup
@@ -12,7 +12,7 @@ export const tooEearlyForAlgorithmSignup = (startTime: string): boolean => {
   //   Start time 18:00 -> algorithm 14:00-16:00 -> algorithm with shorter duration 15:00-16:00 (see signupTimes.ts)
   //   Start time 19:00 -> algorithm 15:00-17:00 -> show normally
 
-  const noAlgorithmSignupBefore = dayjs(CONVENTION_START_TIME).add(3, "hours");
+  const noAlgorithmSignupBefore = dayjs(conventionStartTime).add(3, "hours");
 
   if (dayjs(startTime).isBefore(noAlgorithmSignupBefore)) {
     return true;

@@ -20,5 +20,5 @@ export enum LoginProvider {
 
 export enum ConventionName {
   ROPECON = "Ropecon",
-  TRACON_HITPOINT = "Tracon Hitpoint",
+  HITPOINT = "Tracon Hitpoint",
 }
