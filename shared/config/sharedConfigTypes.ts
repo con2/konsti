@@ -1,3 +1,5 @@
+import { Dayjs } from "dayjs";
+
 export enum SignupStrategy {
   DIRECT = "direct",
   ALGORITHM = "algorithm",
@@ -21,4 +23,11 @@ export enum LoginProvider {
 export enum ConventionName {
   ROPECON = "Ropecon",
   HITPOINT = "Tracon Hitpoint",
+}
+
+export type ArrMin1<T> = [T, ...T[]];
+
+export interface SignupWindow {
+  signupWindowStart: Dayjs;
+  signupWindowClose: Dayjs;
 }
