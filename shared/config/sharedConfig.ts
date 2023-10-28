@@ -91,7 +91,12 @@ export const sharedConfig: SharedConfig = {
   addRevolvingDoorIds: [],
 
   // These program items are imported to Konsti but don't have Konsti signup
-  noKonstiSignupIds: [],
+  noKonstiSignupIds: [
+    "p7429", // Peliä Pyynnöstä
+    "p7428", // Peliä Pyynnöstä
+    "p7272", // Indiepelipiste / Indie Game Point
+    "p7431", // Indiepelipiste / Indie Game Point
+  ],
 
   signupQuestions: [],
 

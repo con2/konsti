@@ -4,7 +4,6 @@ import styled, { css } from "styled-components";
 import _ from "lodash";
 import { getWeekdayAndTime, getTime } from "client/utils/timeFormatter";
 import { Game, GameStyle, Genre } from "shared/typings/models/game";
-import { config } from "shared/config";
 
 interface Props {
   game: Game;
@@ -80,7 +79,7 @@ export const GameInfo = ({ game }: Props): ReactElement => {
     <DetailsContainer>
       {game.revolvingDoor && (
         <>
-          <GameDetailsRow rowWithSubtext={true}>
+          <GameDetailsRow $rowWithSubtext={true}>
             <GameDetailsTitle>
               {t("gameInfo.revolvingDoor", {
                 PROGRAM_TYPE: t(`programTypeSingular.${game.programType}`),
@@ -88,7 +87,7 @@ export const GameInfo = ({ game }: Props): ReactElement => {
             </GameDetailsTitle>
           </GameDetailsRow>
 
-          <GameDetailsRow subtext={true} gap={true}>
+          <GameDetailsRow $subtext={true} $gap={true}>
             <GameDetailsTextIndent>
               {t("revolvingDoorInstruction", {
                 PROGRAM_TYPE: t(`programTypeIllative.${game.programType}`),
@@ -101,7 +100,7 @@ export const GameInfo = ({ game }: Props): ReactElement => {
 
       {!!game.mins && (
         <GameDetailsRow>
-          <GameDetailsTitle twoColumns={true}>
+          <GameDetailsTitle $twoColumns={true}>
             {t("gameInfo.runTime")}
           </GameDetailsTitle>
           <GameDetailsValue>
@@ -117,17 +116,17 @@ export const GameInfo = ({ game }: Props): ReactElement => {
 
       {game.location && (
         <GameDetailsRow>
-          <GameDetailsTitle twoColumns={true}>
+          <GameDetailsTitle $twoColumns={true}>
             {t("gameInfo.location")}
           </GameDetailsTitle>
           <GameDetailsValue>{game.location}</GameDetailsValue>
         </GameDetailsRow>
       )}
 
-      {/* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition */}
+      {/*
       {config.shared().activeProgramTypes.length > 1 && game.programType && (
         <GameDetailsRow>
-          <GameDetailsTitle twoColumns={true}>
+          <GameDetailsTitle $twoColumns={true}>
             {t("gameInfo.programType")}
           </GameDetailsTitle>
           <GameDetailsValue>
@@ -135,11 +134,12 @@ export const GameInfo = ({ game }: Props): ReactElement => {
           </GameDetailsValue>
         </GameDetailsRow>
       )}
+      */}
 
       {/* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition */}
       {game.genres && game.genres.length > 0 && (
         <GameDetailsRow>
-          <GameDetailsTitle twoColumns={true}>
+          <GameDetailsTitle $twoColumns={true}>
             {t("gameInfo.genres")}
           </GameDetailsTitle>
           <GameDetailsValue>{getGenres(game.genres)}</GameDetailsValue>
@@ -148,7 +148,7 @@ export const GameInfo = ({ game }: Props): ReactElement => {
 
       {tagsList.length > 0 && (
         <GameDetailsRow>
-          <GameDetailsTitle twoColumns={true}>
+          <GameDetailsTitle $twoColumns={true}>
             {t("gameInfo.tags")}
           </GameDetailsTitle>
           <GameDetailsValue>{tagsList}</GameDetailsValue>
@@ -157,7 +157,7 @@ export const GameInfo = ({ game }: Props): ReactElement => {
 
       {game.people && (
         <GameDetailsRow>
-          <GameDetailsTitle twoColumns={true}>
+          <GameDetailsTitle $twoColumns={true}>
             {t("gameInfo.organiser")}
           </GameDetailsTitle>
           <GameDetailsValue>{game.people}</GameDetailsValue>
@@ -169,7 +169,7 @@ export const GameInfo = ({ game }: Props): ReactElement => {
           <GameDetailsRow>
             <GameDetailsTitle>{t("gameInfo.description")}</GameDetailsTitle>
           </GameDetailsRow>
-          <GameDetailsRow gap={true}>
+          <GameDetailsRow $gap={true}>
             <Description>{game.description}</Description>
           </GameDetailsRow>
         </>
@@ -177,7 +177,7 @@ export const GameInfo = ({ game }: Props): ReactElement => {
 
       {game.contentWarnings && game.contentWarnings !== "-" && (
         <GameDetailsRow>
-          <GameDetailsTitle twoColumns={true}>
+          <GameDetailsTitle $twoColumns={true}>
             {t("gameInfo.contentWarnings")}
           </GameDetailsTitle>
           <GameDetailsValue>{game.contentWarnings}</GameDetailsValue>
@@ -186,7 +186,7 @@ export const GameInfo = ({ game }: Props): ReactElement => {
 
       {formattedAccessibilityValues.length > 0 && (
         <GameDetailsRow>
-          <GameDetailsTitle twoColumns={true}>
+          <GameDetailsTitle $twoColumns={true}>
             {t("gameInfo.accessibility")}
           </GameDetailsTitle>
           <GameDetailsValue>{formattedAccessibilityValues}</GameDetailsValue>
@@ -195,7 +195,7 @@ export const GameInfo = ({ game }: Props): ReactElement => {
 
       {game.otherAccessibilityInformation && (
         <GameDetailsRow>
-          <GameDetailsTitle twoColumns={true}>
+          <GameDetailsTitle $twoColumns={true}>
             {t("gameInfo.otherAccessibilityInformation")}
           </GameDetailsTitle>
           <GameDetailsValue>
@@ -206,7 +206,7 @@ export const GameInfo = ({ game }: Props): ReactElement => {
 
       {game.gameSystem && (
         <GameDetailsRow>
-          <GameDetailsTitle twoColumns={true}>
+          <GameDetailsTitle $twoColumns={true}>
             {t("gameInfo.gameSystem")}
           </GameDetailsTitle>
           <GameDetailsValue>{game.gameSystem}</GameDetailsValue>
@@ -215,7 +215,7 @@ export const GameInfo = ({ game }: Props): ReactElement => {
 
       {game.otherAuthor && (
         <GameDetailsRow>
-          <GameDetailsTitle twoColumns={true}>
+          <GameDetailsTitle $twoColumns={true}>
             {t("gameInfo.otherAuthor")}
           </GameDetailsTitle>
           <GameDetailsValue>{game.otherAuthor}</GameDetailsValue>
@@ -225,7 +225,7 @@ export const GameInfo = ({ game }: Props): ReactElement => {
       {/* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition */}
       {game.styles && game.styles.length > 0 && (
         <GameDetailsRow>
-          <GameDetailsTitle twoColumns={true}>
+          <GameDetailsTitle $twoColumns={true}>
             {t("gameInfo.gameStyle")}
           </GameDetailsTitle>
           <GameDetailsValue>{getStyles(game.styles)}</GameDetailsValue>
@@ -241,9 +241,9 @@ const DetailsContainer = styled.div`
 `;
 
 interface GameDetailsRowProps {
-  rowWithSubtext?: boolean;
-  subtext?: boolean;
-  gap?: boolean;
+  $rowWithSubtext?: boolean;
+  $subtext?: boolean;
+  $gap?: boolean;
 }
 
 const GameDetailsRow = styled.div<GameDetailsRowProps>`
@@ -255,26 +255,26 @@ const GameDetailsRow = styled.div<GameDetailsRowProps>`
   word-wrap: break-word;
 
   ${(gameDetailsRowProps) =>
-    gameDetailsRowProps.rowWithSubtext &&
+    gameDetailsRowProps.$rowWithSubtext &&
     css`
       padding: 0 0 4px;
     `};
 
   ${(gameDetailsRowProps) =>
-    gameDetailsRowProps.subtext &&
+    gameDetailsRowProps.$subtext &&
     css`
       font-size: ${(props) => props.theme.fontSizeSmall};
     `};
 
   ${(gameDetailsRowProps) =>
-    gameDetailsRowProps.gap &&
+    gameDetailsRowProps.$gap &&
     css`
       padding: 0 0 20px;
     `};
 `;
 
 interface GameDetailsTitleProps {
-  twoColumns?: boolean;
+  $twoColumns?: boolean;
 }
 
 const GameDetailsTitle = styled.span<GameDetailsTitleProps>`
@@ -283,7 +283,7 @@ const GameDetailsTitle = styled.span<GameDetailsTitleProps>`
   margin: 0;
 
   ${(gameDetailsTitleProps) =>
-    gameDetailsTitleProps.twoColumns &&
+    gameDetailsTitleProps.$twoColumns &&
     css`
       width: 25%;
 
