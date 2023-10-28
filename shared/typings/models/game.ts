@@ -67,6 +67,7 @@ export enum Tag {
   FOR_18_PLUS_ONLY = "for18PlusOnly",
   ROPECON_THEME = "ropeconTheme",
   CELEBRATORY_YEAR = "celebratoryYear",
+  INTENDED_FOR_EXPERIENCED_PARTICIPANTS = "intendedForExperiencedParticipants",
 }
 
 export enum AccessibilityValue {
