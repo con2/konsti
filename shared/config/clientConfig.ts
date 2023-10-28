@@ -18,7 +18,7 @@ export const clientConfig: ClientConfig = {
   MESSAGE_DELAY: 3000, // ms
 
   // Convention settings
-  enableRevolvingDoor: true,
+  enableRevolvingDoor: false,
   enableOrganizerFeedback: true,
   enableTagDropdown: true,
   showAnnouncement: false,

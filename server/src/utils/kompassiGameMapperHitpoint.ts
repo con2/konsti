@@ -1,5 +1,6 @@
 import dayjs from "dayjs";
-import { Game, Language, ProgramType } from "shared/typings/models/game";
+import _ from "lodash";
+import { Game, Language, ProgramType, Tag } from "shared/typings/models/game";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 import {
   KompassiGameHitpoint,
@@ -17,7 +18,7 @@ export const kompassiGameMapperHitpoint = (
       location: game.room_name,
       startTime: dayjs(game.start_time).toISOString(),
       mins: game.length,
-      tags: [],
+      tags: mapTags(game),
       genres: [],
       styles: [],
       language: game.is_english_ok
@@ -55,4 +56,26 @@ const mapProgramType = (kompassiGame: KompassiGameHitpoint): ProgramType => {
     default:
       return exhaustiveSwitchGuard(programType);
   }
+};
+
+const mapTags = (kompassiGame: KompassiGameHitpoint): Tag[] => {
+  const tags = [];
+
+  if (kompassiGame.is_age_restricted) {
+    tags.push(Tag.FOR_18_PLUS_ONLY);
+  }
+
+  if (kompassiGame.is_beginner_friendly) {
+    tags.push(Tag.BEGINNER_FRIENDLY);
+  }
+
+  if (kompassiGame.is_children_friendly) {
+    tags.push(Tag.CHILDREN_FRIENDLY);
+  }
+
+  if (kompassiGame.is_intended_for_experienced_participants) {
+    tags.push(Tag.INTENDED_FOR_EXPERIENCED_PARTICIPANTS);
+  }
+
+  return _.uniq(tags);
 };

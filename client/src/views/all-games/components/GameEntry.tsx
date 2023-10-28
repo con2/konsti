@@ -128,23 +128,23 @@ export const GameEntry = ({
               })}
             </RowItem>
 
-            <RowItem>
-              {requiresSignup &&
-                game.minAttendance === game.maxAttendance &&
-                _.capitalize(
-                  `${t(
-                    `attendeeTypePlural.${getAttendeeType(game.programType)}`,
-                  )} ${game.maxAttendance}`,
-                )}
+            {normalSignup && (
+              <RowItem>
+                {game.minAttendance === game.maxAttendance &&
+                  _.capitalize(
+                    `${t(
+                      `attendeeTypePlural.${getAttendeeType(game.programType)}`,
+                    )} ${game.maxAttendance}`,
+                  )}
 
-              {requiresSignup &&
-                game.minAttendance !== game.maxAttendance &&
-                _.capitalize(
-                  `${t(
-                    `attendeeTypePlural.${getAttendeeType(game.programType)}`,
-                  )} ${game.minAttendance}–${game.maxAttendance}`,
-                )}
-            </RowItem>
+                {game.minAttendance !== game.maxAttendance &&
+                  _.capitalize(
+                    `${t(
+                      `attendeeTypePlural.${getAttendeeType(game.programType)}`,
+                    )} ${game.minAttendance}–${game.maxAttendance}`,
+                  )}
+              </RowItem>
+            )}
 
             <RowItem>
               {!!game.entryFee &&

@@ -39,12 +39,15 @@ export const SearchAndFilterCard = ({
 }: Props): ReactElement => {
   const tagFilters = [
     Tag.BEGINNER_FRIENDLY,
-    Tag.AIMED_AT_CHILDREN_UNDER_13,
-    Tag.AIMED_AT_CHILDREN_BETWEEN_13_17,
-    Tag.AIMED_AT_ADULT_ATTENDEES,
+    Tag.CHILDREN_FRIENDLY,
+    // Tag.AIMED_AT_CHILDREN_UNDER_13,
+    // Tag.AIMED_AT_CHILDREN_BETWEEN_13_17,
+    // Tag.AIMED_AT_ADULT_ATTENDEES,
     Tag.FOR_18_PLUS_ONLY,
   ];
-  const languageFilters = [Language.FINNISH, Language.ENGLISH];
+  const languageFilters: Language[] = [
+    /* Language.FINNISH, Language.ENGLISH */
+  ];
 
   const { t } = useTranslation();
   const activeProgramType = useAppSelector(
