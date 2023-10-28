@@ -67,7 +67,7 @@ export const sharedConfig: SharedConfig = {
     ProgramType.OTHER,
   ],
 
-  conventionStartTime: `${saturday}T07:00:00Z`, // Sat 10:00
+  conventionStartTime: `${saturday}T08:00:00Z`, // Sat 10:00 GMT+2
 
   directSignupWindows: {
     // @ts-expect-error: RPGs use DIRECT_SIGNUP_START
@@ -75,8 +75,8 @@ export const sharedConfig: SharedConfig = {
 
     larp: [
       {
-        signupWindowStart: dayjs(`${saturday}T07:00:00Z`), // Sat 10:00
-        signupWindowClose: dayjs(`${sunday}T21:00:00Z`), // Sun 24:00
+        signupWindowStart: dayjs(`${saturday}T08:00:00Z`), // Sat 10:00 GMT+2
+        signupWindowClose: dayjs(`${sunday}T22:00:00Z`), // Sun 24:00 GMT+2
       },
     ],
   },
