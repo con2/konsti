@@ -47,6 +47,7 @@ interface GetSignedGamesParams {
   signedGames: readonly SelectedGame[];
   isGroupCreator: boolean;
   groupMembers: readonly GroupMember[];
+  isInGroup: boolean;
   getAllGames: boolean;
 }
 
@@ -54,9 +55,10 @@ export const getSignedGames = ({
   signedGames,
   isGroupCreator,
   groupMembers,
+  isInGroup,
   getAllGames,
 }: GetSignedGamesParams): readonly SelectedGame[] => {
-  if (isGroupCreator) {
+  if (isGroupCreator || !isInGroup) {
     return getAllGames ? signedGames : getUpcomingSignedGames(signedGames);
   }
 
