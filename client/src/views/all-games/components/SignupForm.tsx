@@ -11,6 +11,7 @@ import { Button, ButtonStyle } from "client/components/Button";
 import { ErrorMessage } from "client/components/ErrorMessage";
 import { Dropdown } from "client/components/Dropdown";
 import { ButtonGroup } from "client/components/ButtonGroup";
+import { selectSignedGames } from "client/views/my-games/myGamesSlice";
 
 interface Props {
   game: Game;
@@ -28,7 +29,7 @@ export const SignupForm = ({
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   // We need all signed games here
-  const signedGames = useAppSelector((state) => state.myGames.signedGames);
+  const signedGames = useAppSelector(selectSignedGames);
 
   const selectedPriorities = signedGames
     .filter((signedGame) => signedGame.gameDetails.startTime === startTime)

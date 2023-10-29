@@ -128,12 +128,11 @@ export const EnterGameForm = ({
   return (
     <SignupForm>
       {game.programType === ProgramType.TABLETOP_RPG &&
-        !directSignupAlwaysOpenIds.includes(game.gameId) && (
+        !directSignupAlwaysOpenIds.includes(game.gameId) &&
+        isInGroup && (
           <p>
-            {isInGroup && !isGroupCreator && (
-              <Warning>{t("signup.inGroupWarning")}</Warning>
-            )}
-            {isInGroup && isGroupCreator && (
+            {!isGroupCreator && <Warning>{t("signup.inGroupWarning")}</Warning>}
+            {isGroupCreator && (
               <Warning>{t("signup.groupCreatorWarning")}</Warning>
             )}
           </p>
@@ -232,7 +231,7 @@ export const EnterGameForm = ({
   );
 };
 
-const Warning = styled.span`
+const Warning = styled.div`
   background-color: ${(props) => props.theme.warningBackground};
   border: 1px solid ${(props) => props.theme.warningBorder};
   border-radius: 4px;
