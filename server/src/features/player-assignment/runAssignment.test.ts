@@ -143,8 +143,12 @@ describe("Assignment with valid data", () => {
 });
 
 describe("Assignment with multiple program types and directSignupAlwaysOpen", () => {
-  // TODO: Use dynamic config.shared().activeProgramTypes
   test("should not remove signups of non-RPG program types", async () => {
+    vi.spyOn(config, "shared").mockReturnValue({
+      ...config.shared(),
+      activeProgramTypes: [ProgramType.TABLETOP_RPG, ProgramType.LARP],
+    });
+
     const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
 
     // Populate database
