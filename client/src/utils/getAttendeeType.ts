@@ -1,3 +1,4 @@
+import { ActiveProgramType } from "shared/config/clientConfigTypes";
 import { ProgramType } from "shared/typings/models/game";
 
 enum AttendeeType {
@@ -11,8 +12,13 @@ const attendeeTypeParticipant = [
   ProgramType.OTHER,
 ];
 
-export const getAttendeeType = (programType: ProgramType): AttendeeType => {
-  if (attendeeTypeParticipant.includes(programType)) {
+export const getAttendeeType = (
+  activeProgramType: ActiveProgramType,
+): AttendeeType => {
+  if (activeProgramType === "all") {
+    return AttendeeType.Player;
+  }
+  if (attendeeTypeParticipant.includes(activeProgramType)) {
     return AttendeeType.Participant;
   }
   return AttendeeType.Player;

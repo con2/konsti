@@ -26,7 +26,6 @@ export interface SharedConfig {
   tracesSampleRate: number;
   enableSentryInDev: boolean;
   requireRegistrationCode: boolean;
-  activeProgramTypes: ProgramType[];
   twoPhaseSignupProgramTypes: ProgramType[];
   directSignupProgramTypes: ProgramType[];
   manualSignupMode: SignupStrategy.ALGORITHM | SignupStrategy.DIRECT | "none";
@@ -55,17 +54,9 @@ export const sharedConfig: SharedConfig = {
   signupOpen: true,
   resultsVisible: true,
 
-  activeProgramTypes: [ProgramType.TABLETOP_RPG, ProgramType.LARP],
+  twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG, ProgramType.LARP],
 
-  twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG],
-
-  directSignupProgramTypes: [
-    ProgramType.LARP,
-    ProgramType.TOURNAMENT,
-    ProgramType.WORKSHOP,
-    ProgramType.EXPERIENCE_POINT,
-    ProgramType.OTHER,
-  ],
+  directSignupProgramTypes: [],
 
   conventionStartTime: `${saturday}T08:00:00Z`, // Sat 10:00 GMT+2
 

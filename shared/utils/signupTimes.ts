@@ -1,6 +1,6 @@
 import dayjs, { Dayjs } from "dayjs";
 import { config } from "shared/config";
-import { Game, ProgramType } from "shared/typings/models/game";
+import { Game } from "shared/typings/models/game";
 import { TIMEZONE } from "shared/utils/initializeDayjs";
 
 const { PRE_SIGNUP_START, DIRECT_SIGNUP_START, PHASE_GAP } = config.shared();
@@ -42,8 +42,8 @@ export const getDirectSignupStartTime = (game: Game): Dayjs => {
     return dayjs(someOldTime);
   }
 
-  // RPG signup times are configured with DIRECT_SIGNUP_START
-  if (game.programType === ProgramType.TABLETOP_RPG) {
+  // "twoPhaseSignupProgramTypes" signup times are configured with DIRECT_SIGNUP_START
+  if (config.shared().twoPhaseSignupProgramTypes.includes(game.programType)) {
     const directSignupStart = dayjs(game.startTime).subtract(
       DIRECT_SIGNUP_START,
       "minutes",

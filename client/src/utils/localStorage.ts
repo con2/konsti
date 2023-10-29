@@ -5,7 +5,11 @@ import { ProgramType } from "shared/typings/models/game";
 
 const LocalStorageSchema = z.object({
   login: z.object({ jwt: z.string() }).optional(),
-  admin: z.object({ activeProgramType: z.nativeEnum(ProgramType) }).optional(),
+  admin: z
+    .object({
+      activeProgramType: z.nativeEnum(ProgramType).or(z.literal("all")),
+    })
+    .optional(),
 });
 
 type LocalStorage = z.infer<typeof LocalStorageSchema>;
@@ -18,6 +22,7 @@ export const loadSession = (): LocalStorage | undefined => {
 
   let parsedSession: LocalStorage;
   try {
+    // TODO: Use safeParse()
     parsedSession = LocalStorageSchema.parse(JSON.parse(serializedState));
   } catch (error) {
     clearSession();

@@ -12,7 +12,6 @@ import {
   unwrapResult,
 } from "shared/utils/result";
 import { AssignmentError, MongoDbError } from "shared/typings/api/errors";
-import { ProgramType } from "shared/typings/models/game";
 import { config } from "shared/config";
 
 const { gamePopularityUpdateMethod } = config.server();
@@ -34,8 +33,8 @@ export const updateGamePopularity = async (): Promise<
   if (isErrorResult(gamesResult)) {
     return gamesResult;
   }
-  const games = unwrapResult(gamesResult).filter(
-    (game) => game.programType === ProgramType.TABLETOP_RPG,
+  const games = unwrapResult(gamesResult).filter((game) =>
+    config.shared().twoPhaseSignupProgramTypes.includes(game.programType),
   );
 
   const signupsResult = await findSignups();

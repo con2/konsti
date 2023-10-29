@@ -94,22 +94,6 @@
     "otherAccessibilityInformation": "Muu saavutettavuus",
     "adminActions": "Ylläpito"
   },
-  "programType": {
-    "tabletopRPG": "Pöytäroolipeli",
-    "larp": "LARP",
-    "tournament": "Turnaus",
-    "workshop": "Työpaja",
-    "experiencePoint": "Kokemuspiste",
-    "other": "Muu ohjelma"
-  },
-  "programTypeSelection": {
-    "tabletopRPG": "Pöytäroolipelit",
-    "larp": "LARP",
-    "tournament": "Turnaukset",
-    "workshop": "Työpajat",
-    "experiencePoint": "Kokemuspiste",
-    "other": "Muu ohjelma"
-  },
   "gameStyle": {
     "serious": "Vakava pelityyli",
     "light": "Kevyt pelityyli",
@@ -330,7 +314,26 @@
     "player": "pelaajaa",
     "participant": "osallistujaa"
   },
+  "programType": {
+    "all": "Kaikki",
+    "tabletopRPG": "Pöytäroolipeli",
+    "larp": "LARP",
+    "tournament": "Turnaus",
+    "workshop": "Työpaja",
+    "experiencePoint": "Kokemuspiste",
+    "other": "Muu ohjelma"
+  },
+  "programTypeSelection": {
+    "all": "Kaikki",
+    "tabletopRPG": "Pöytäroolipelit",
+    "larp": "LARP",
+    "tournament": "Turnaukset",
+    "workshop": "Työpajat",
+    "experiencePoint": "Kokemuspiste",
+    "other": "Muu ohjelma"
+  },
   "programTypeSingular": {
+    "all": "ohjelmanumero",
     "tabletopRPG": "peli",
     "larp": "LARP",
     "tournament": "turnaus",
@@ -339,6 +342,7 @@
     "other": "ohjelmanumero"
   },
   "programTypePlural": {
+    "all": "ohjelmanumerot",
     "tabletopRPG": "pelit",
     "larp": "larpit",
     "tournament": "turnaukset",
@@ -347,22 +351,25 @@
     "other": "ohjelmanumerot"
   },
   "programTypeGenetive": {
+    "all": "Ohjelmanumeron",
     "tabletopRPG": "Pelin",
     "larp": "Larpin",
     "tournament": "Turnauksen",
     "workshop": "Työpajan",
     "experiencePoint": "Pelin",
-    "other": "Ohjelman"
+    "other": "Ohjelmanumeron"
   },
   "programTypeElative": {
+    "all": "ohjelmanumerosta",
     "tabletopRPG": "pelistä",
     "larp": "larpista",
     "tournament": "turnauksesta",
     "workshop": "työpajasta",
     "experiencePoint": "pelistä",
-    "other": "ohjelmasta"
+    "other": "ohjelmanumerosta"
   },
   "programTypePartitivePlural": {
+    "all": "ohjelmanumeroita",
     "tabletopRPG": "pelejä",
     "larp": "larppeja",
     "tournament": "turnauksia",
@@ -371,28 +378,31 @@
     "other": "ohjelmanumeroita"
   },
   "programTypeInessive": {
+    "all": "ohjelmanumerossa",
     "tabletopRPG": "pelissä",
     "larp": "larpissa",
     "tournament": "turnauksessa",
     "workshop": "työpajassa",
     "experiencePoint": "pelissä",
-    "other": "ohjelmassa"
+    "other": "ohjelmanumerossa"
   },
   "programTypeIllative": {
+    "all": "ohjelmanumeroon",
     "tabletopRPG": "peliin",
     "larp": "larppiin",
     "tournament": "turnaukseen",
     "workshop": "työpajaan",
     "experiencePoint": "peliin",
-    "other": "ohjelmaan"
+    "other": "ohjelmanumeroon"
   },
   "programTypeIllativePlural": {
+    "all": "ohjelmanumeroihin",
     "tabletopRPG": "peleihin",
     "larp": "larppeihin",
     "tournament": "turnauksiin",
     "workshop": "työpajoihin",
     "experiencePoint": "peleihin",
-    "other": "ohjelmiin"
+    "other": "ohjelmanumeroihin"
   },
   "resultsView": {
     "allSignupResults": "Ilmoittautumistulokset",

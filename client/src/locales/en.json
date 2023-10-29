@@ -94,22 +94,6 @@
     "otherAccessibilityInformation": "Other accessibility information",
     "adminActions": "Admin actions"
   },
-  "programType": {
-    "tabletopRPG": "Tabletop RPG",
-    "larp": "LARP",
-    "tournament": "Tournament",
-    "workshop": "Workshop",
-    "experiencePoint": "Experience Point",
-    "other": "Other program"
-  },
-  "programTypeSelection": {
-    "tabletopRPG": "Tabletop RPG",
-    "larp": "LARP",
-    "tournament": "Tournaments",
-    "workshop": "Workshops",
-    "experiencePoint": "Experience Point",
-    "other": "Other program"
-  },
   "gameStyle": {
     "serious": "Serious game style",
     "light": "Light game style",
@@ -330,39 +314,62 @@
     "player": "players",
     "participant": "participants"
   },
+  "programType": {
+    "all": "All",
+    "tabletopRPG": "Tabletop RPG",
+    "larp": "LARP",
+    "tournament": "Tournament",
+    "workshop": "Workshop",
+    "experiencePoint": "Experience Point",
+    "other": "Other program"
+  },
+  "programTypeSelection": {
+    "all": "All",
+    "tabletopRPG": "Tabletop RPG",
+    "larp": "LARP",
+    "tournament": "Tournaments",
+    "workshop": "Workshops",
+    "experiencePoint": "Experience Point",
+    "other": "Other program"
+  },
   "programTypeSingular": {
+    "all": "program item",
     "tabletopRPG": "game",
     "larp": "LARP",
     "tournament": "tournament",
     "workshop": "workshop",
     "experiencePoint": "game",
-    "other": "program"
+    "other": "program item"
   },
   "programTypePlural": {
+    "all": "program items",
     "tabletopRPG": "games",
     "larp": "larps",
     "tournament": "tournaments",
     "workshop": "workshops",
     "experiencePoint": "programs",
-    "other": "programs"
+    "other": "program items"
   },
   "programTypeGenetive": {
+    "all": "Program item",
     "tabletopRPG": "Game",
     "larp": "Larp",
     "tournament": "Tournament",
     "workshop": "Workshop",
     "experiencePoint": "Program",
-    "other": "Program"
+    "other": "Program item"
   },
   "programTypeElative": {
+    "all": "program item",
     "tabletopRPG": "game",
     "larp": "larp",
     "tournament": "tournament",
     "workshop": "workshops",
     "experiencePoint": "program",
-    "other": "program"
+    "other": "program item"
   },
   "programTypePartitivePlural": {
+    "all": "program items",
     "tabletopRPG": "games",
     "larp": "larps",
     "tournament": "tournaments",
@@ -371,28 +378,31 @@
     "other": "program items"
   },
   "programTypeInessive": {
+    "all": "program item",
     "tabletopRPG": "game",
     "larp": "larp",
     "tournament": "tournament",
     "workshop": "workshop",
     "experiencePoint": "game",
-    "other": "program"
+    "other": "program item"
   },
   "programTypeIllative": {
+    "all": "program item",
     "tabletopRPG": "game",
     "larp": "larp",
     "tournament": "tournament",
     "workshop": "workshop",
     "experiencePoint": "program",
-    "other": "program"
+    "other": "program item"
   },
   "programTypeIllativePlural": {
+    "all": "program items",
     "tabletopRPG": "games",
     "larp": "larps",
     "tournament": "tournaments",
     "workshop": "workshops",
     "experiencePoint": "programs",
-    "other": "programs"
+    "other": "program items"
   },
   "resultsView": {
     "allSignupResults": "Sign-up Results",

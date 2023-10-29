@@ -9,15 +9,17 @@ import { SignupQuestion } from "shared/typings/models/settings";
 import { SignupMessage } from "shared/typings/models/signupMessage";
 import { loadSession } from "client/utils/localStorage";
 import { config } from "shared/config";
+import { ActiveProgramType } from "shared/config/clientConfigTypes";
 
-const getInitialActiveProgramType = (): ProgramType => {
+const getInitialActiveProgramType = (): ActiveProgramType => {
   const persistedState = loadSession();
+  const { activeProgramTypes } = config.client();
 
-  if (config.shared().activeProgramTypes.length === 1) {
-    return config.shared().activeProgramTypes[0];
+  if (activeProgramTypes.length === 1) {
+    return activeProgramTypes[0];
   }
 
-  return persistedState?.admin?.activeProgramType ?? ProgramType.TABLETOP_RPG;
+  return persistedState?.admin?.activeProgramType ?? "all";
 };
 
 const initialState = (): AdminState => {
@@ -123,12 +125,15 @@ export const adminReducer = adminSlice.reducer;
 // SELECTORS
 
 const selectGames = (state: RootState): readonly Game[] => state.allGames.games;
-const selectActiveProgramType = (state: RootState): ProgramType =>
+const selectActiveProgramType = (state: RootState): ActiveProgramType =>
   state.admin.activeProgramType;
 
 export const selectActiveGames = createSelector(
   [selectGames, selectActiveProgramType],
   (games, activeProgramType) => {
+    if (activeProgramType === "all") {
+      return games;
+    }
     return games.filter((game) => game.programType === activeProgramType);
   },
 );

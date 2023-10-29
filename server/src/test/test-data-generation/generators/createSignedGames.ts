@@ -3,7 +3,7 @@ import dayjs from "dayjs";
 import _ from "lodash";
 import { logger } from "server/utils/logger";
 import { updateGamePopularity } from "server/features/game-popularity/updateGamePopularity";
-import { Game, ProgramType } from "shared/typings/models/game";
+import { Game } from "shared/typings/models/game";
 import { findUsers } from "server/features/user/userRepository";
 import { findGames } from "server/features/game/gameRepository";
 import { SelectedGame, User } from "shared/typings/models/user";
@@ -46,9 +46,11 @@ const getRandomSignup = (games: readonly Game[]): SelectedGame[] => {
   const signedGames = [] as SelectedGame[];
   let randomIndex;
 
+  const { twoPhaseSignupProgramTypes, noKonstiSignupIds } = config.shared();
+
   const activeGames = games
-    .filter((game) => game.programType === ProgramType.TABLETOP_RPG)
-    .filter((game) => !config.shared().noKonstiSignupIds.includes(game.gameId));
+    .filter((game) => twoPhaseSignupProgramTypes.includes(game.programType))
+    .filter((game) => !noKonstiSignupIds.includes(game.gameId));
 
   const startTimes = activeGames.map((activeGame) =>
     dayjs(activeGame.startTime).toISOString(),

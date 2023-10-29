@@ -151,7 +151,7 @@ export const DirectResults = (): ReactElement => {
                   return (
                     <div key={game.gameId}>
                       <ResultTitle key={game.gameId}>{game.title} </ResultTitle>
-                      {config.shared().activeProgramTypes.length > 1 && (
+                      {config.client().activeProgramTypes.length > 1 && (
                         <Tags tags={[t(`programType.${activeProgramType}`)]} />
                       )}
                       <PlayerContainer>

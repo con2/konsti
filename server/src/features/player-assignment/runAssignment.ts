@@ -2,7 +2,6 @@ import { logger } from "server/utils/logger";
 import { runAssignmentStrategy } from "server/features/player-assignment/utils/runAssignmentStrategy";
 import { removeInvalidGamesFromUsers } from "server/features/player-assignment/utils/removeInvalidGamesFromUsers";
 import { PlayerAssignmentResult } from "server/typings/result.typings";
-import { ProgramType } from "shared/typings/models/game";
 import { findUsers } from "server/features/user/userRepository";
 import { findGames } from "server/features/game/gameRepository";
 import { AssignmentStrategy } from "shared/config/sharedConfigTypes";
@@ -65,14 +64,16 @@ export const runAssignment = async ({
   }
   const users = unwrapResult(usersResult);
 
-  // Only include TABLETOP_RPG and don't include "directSignupAlwaysOpen" games
+  const { directSignupAlwaysOpenIds, twoPhaseSignupProgramTypes } =
+    config.shared();
+
+  // Only include "twoPhaseSignupProgramTypes" and don't include "directSignupAlwaysOpen" games
   const filteredUsers = users.map((user) => {
     const matchingSignedGames = user.signedGames.filter(
       (signedGame) =>
-        !config
-          .shared()
-          .directSignupAlwaysOpenIds.includes(signedGame.gameDetails.gameId) &&
-        signedGame.gameDetails.programType === ProgramType.TABLETOP_RPG,
+        twoPhaseSignupProgramTypes.includes(
+          signedGame.gameDetails.programType,
+        ) && !directSignupAlwaysOpenIds.includes(signedGame.gameDetails.gameId),
     );
 
     return { ...user, signedGames: matchingSignedGames };
@@ -84,11 +85,11 @@ export const runAssignment = async ({
   }
   const games = unwrapResult(gamesResult);
 
-  // Only include TABLETOP_RPG and don't include "directSignupAlwaysOpen" games
+  // Only include "twoPhaseSignupProgramTypes" and don't include "directSignupAlwaysOpen" games
   const filteredGames = games.filter(
     (game) =>
-      !config.shared().directSignupAlwaysOpenIds.includes(game.gameId) &&
-      game.programType === ProgramType.TABLETOP_RPG,
+      twoPhaseSignupProgramTypes.includes(game.programType) &&
+      !directSignupAlwaysOpenIds.includes(game.gameId),
   );
 
   const signupsResult = await findSignups();
