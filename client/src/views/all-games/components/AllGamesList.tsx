@@ -13,6 +13,7 @@ import {
   selectActiveSignedGames,
 } from "client/views/my-games/myGamesSlice";
 import { RaisedCard } from "client/components/RaisedCard";
+import { getIsInGroup } from "client/views/group/groupUtils";
 
 interface Props {
   games: readonly Game[];
@@ -27,14 +28,16 @@ export const AllGamesList = ({ games }: Props): ReactElement => {
   const activeProgramType = useAppSelector(
     (state) => state.admin.activeProgramType,
   );
-  const groupCode = useAppSelector((state) => state.group.groupCode);
   const groupMembers = useAppSelector((state) => state.group.groupMembers);
   const isGroupCreator = useAppSelector((state) => state.group.isGroupCreator);
+  const groupCode = useAppSelector((state) => state.group.groupCode);
+  const isInGroup = getIsInGroup(groupCode);
 
   const ownOrGroupCreatorSignedGames = getSignedGames({
     signedGames: activeSignedGames,
     isGroupCreator,
     groupMembers,
+    isInGroup,
     getAllGames: true,
   });
 
