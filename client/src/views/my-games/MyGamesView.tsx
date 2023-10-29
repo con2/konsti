@@ -22,6 +22,7 @@ import { RadioButton } from "client/components/RadioButton";
 import { RaisedCard } from "client/components/RaisedCard";
 import { SessionStorageValue } from "client/utils/localStorage";
 import { RadioButtonGroup } from "client/components/RadioButtonGroup";
+import { getIsInGroup } from "client/views/group/groupUtils";
 
 export const MyGamesView = (): ReactElement => {
   const { t } = useTranslation();
@@ -33,6 +34,8 @@ export const MyGamesView = (): ReactElement => {
   const groupMembers = useAppSelector((state) => state.group.groupMembers);
   const testTime = useAppSelector((state) => state.testSettings.testTime);
   const signupStrategy = useAppSelector((state) => state.admin.signupStrategy);
+  const groupCode = useAppSelector((state) => state.group.groupCode);
+  const isInGroup = getIsInGroup(groupCode);
 
   const isGroupMember = groupMembers.length > 0;
 
@@ -105,6 +108,7 @@ export const MyGamesView = (): ReactElement => {
           signedGames,
           isGroupCreator,
           getAllGames: showAllGames,
+          isInGroup,
           groupMembers,
         })}
       />
@@ -114,6 +118,7 @@ export const MyGamesView = (): ReactElement => {
             signedGames,
             isGroupCreator,
             getAllGames: showAllGames,
+            isInGroup,
             groupMembers,
           })}
           isGroupCreator={isGroupCreator}

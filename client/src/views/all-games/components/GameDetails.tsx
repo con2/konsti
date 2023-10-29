@@ -11,6 +11,7 @@ import {
 import { SignupStrategy } from "shared/config/sharedConfigTypes";
 import { getSignedGames } from "client/utils/getUpcomingGames";
 import { BackButton } from "client/components/BackButton";
+import { getIsInGroup } from "client/views/group/groupUtils";
 
 export const GameDetails = (): ReactElement => {
   const { t } = useTranslation();
@@ -25,10 +26,14 @@ export const GameDetails = (): ReactElement => {
   const activeSignedGames = useAppSelector(selectActiveSignedGames);
   const isGroupCreator = useAppSelector((state) => state.group.isGroupCreator);
   const groupMembers = useAppSelector((state) => state.group.groupMembers);
+  const groupCode = useAppSelector((state) => state.group.groupCode);
+  const isInGroup = getIsInGroup(groupCode);
+
   const ownOrGroupCreatorSignedGames = getSignedGames({
     signedGames: activeSignedGames,
     isGroupCreator,
     groupMembers,
+    isInGroup,
     getAllGames: true,
   });
 
