@@ -19,6 +19,7 @@ import { FavoriteButton } from "client/components/FavoriteButton";
 import { getAttendeeType } from "client/utils/getAttendeeType";
 import { RaisedCard } from "client/components/RaisedCard";
 import { isRevolvingDoorWorkshop } from "client/utils/isRevolvingDoorWorkshop";
+import { selectFavoritedGames } from "client/views/my-games/myGamesSlice";
 
 interface Props {
   game: Game;
@@ -44,9 +45,7 @@ export const GameEntry = ({
   const username = useAppSelector((state) => state.login.username);
   const loggedIn = useAppSelector((state) => state.login.loggedIn);
   const userGroup = useAppSelector((state) => state.login.userGroup);
-  const favoritedGames = useAppSelector(
-    (state) => state.myGames.favoritedGames,
-  );
+  const favoritedGames = useAppSelector(selectFavoritedGames);
   const isEnteredCurrentGame = isAlreadyEntered(game, enteredGames);
   const isSignedForCurrentGame = isAlreadySigned(game, signedGames);
 

@@ -8,6 +8,7 @@ import { Game } from "shared/typings/models/game";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { updateFavorite } from "client/utils/favorite";
 import { IconButton } from "client/components/IconButton";
+import { selectFavoritedGames } from "client/views/my-games/myGamesSlice";
 
 interface Props {
   games: readonly Game[];
@@ -21,9 +22,7 @@ export const FavoritesByStartTimes = ({
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const username = useAppSelector((state) => state.login.username);
-  const favoritedGames = useAppSelector(
-    (state) => state.myGames.favoritedGames,
-  );
+  const favoritedGames = useAppSelector(selectFavoritedGames);
 
   const removeFavorite = async (game: Game): Promise<void> => {
     await updateFavorite({
