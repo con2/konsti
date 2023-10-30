@@ -71,14 +71,14 @@ export const findSignups = async (): Promise<
   }
 };
 
-interface FindSignupsByProgramTypeResponse extends UserSignup {
+interface FindSignupsByProgramTypesResponse extends UserSignup {
   gameId: string;
 }
 
-export const findSignupsByProgramType = async (
-  programType: ProgramType,
+export const findSignupsByProgramTypes = async (
+  programTypes: ProgramType[],
   startTime: string,
-): Promise<Result<FindSignupsByProgramTypeResponse[], MongoDbError>> => {
+): Promise<Result<FindSignupsByProgramTypesResponse[], MongoDbError>> => {
   try {
     const signups = await SignupModel.find(
       { "userSignups.time": startTime },
@@ -94,9 +94,9 @@ export const findSignupsByProgramType = async (
 
     logger.debug(`MongoDB: Found signups for time ${startTime}`);
 
-    const formattedResponse: FindSignupsByProgramTypeResponse[] =
+    const formattedResponse: FindSignupsByProgramTypesResponse[] =
       signups.flatMap((signup) => {
-        if (signup.game.programType !== programType) {
+        if (!programTypes.includes(signup.game.programType)) {
           return [];
         }
         return signup.userSignups.map((userSignup) => ({
@@ -411,12 +411,12 @@ export const delAssignmentSignupsByStartTime = async (
   }
   const games = unwrapResult(gamesResult);
 
-  // Only remove TABLETOP_RPG signups and don't remove directSignupAlwaysOpen signups
+  // Only remove "twoPhaseSignupProgramTypes" signups and don't remove "directSignupAlwaysOpen" signups
   const doNotRemoveGameObjectIds = games
     .filter(
       (game) =>
         config.shared().directSignupAlwaysOpenIds.includes(game.gameId) ||
-        game.programType !== ProgramType.TABLETOP_RPG,
+        !config.shared().twoPhaseSignupProgramTypes.includes(game.programType),
     )
     .map((game) => game._id);
 

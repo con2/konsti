@@ -9,11 +9,11 @@ import {
 } from "shared/utils/result";
 import { MongoDbError } from "shared/typings/api/errors";
 
-const { DIRECT_SIGNUP_START } = config.shared();
-
 export const getDynamicStartTime = async (): Promise<
   Result<string, MongoDbError>
 > => {
+  const { DIRECT_SIGNUP_START } = config.shared();
+
   const timeNowResult = await getTimeNow();
   if (isErrorResult(timeNowResult)) {
     return timeNowResult;

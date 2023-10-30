@@ -21,7 +21,7 @@ import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 let mongoServer: MongoMemoryServer;
 
 // This needs to be adjusted if test data is changed
-const expectedResultsCount = 18;
+const expectedResultsCount = 12;
 const groupTestUsers = ["group1", "group2", "group3"];
 
 beforeAll(async () => {

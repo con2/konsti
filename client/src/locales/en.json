@@ -94,22 +94,6 @@
     "otherAccessibilityInformation": "Other accessibility information",
     "adminActions": "Admin actions"
   },
-  "programType": {
-    "tabletopRPG": "Tabletop RPG",
-    "larp": "LARP",
-    "tournament": "Tournament",
-    "workshop": "Workshop",
-    "experiencePoint": "Experience Point",
-    "other": "Other program"
-  },
-  "programTypeSelection": {
-    "tabletopRPG": "Tabletop RPG",
-    "larp": "LARP",
-    "tournament": "Tournaments",
-    "workshop": "Workshops",
-    "experiencePoint": "Experience Point",
-    "other": "Other program"
-  },
   "gameStyle": {
     "serious": "Serious game style",
     "light": "Light game style",
@@ -237,7 +221,7 @@
       "alreadyInGroup": "You are already a member of a group."
     },
     "hasEnteredFollowingGames": "You have already signed up to these games:",
-    "cancelSignupBeforeJoiningOrCreatingGroup": "You'll have to cancel those sign-ups before you can create or join a group.",
+    "cancelSignupBeforeJoiningOrCreatingGroup": "You'll have to cancel these sign-ups before you can create or join a group.",
     "signupDisabledNotCreator": "You are a group member. Your group's creator will sign up the whole group to the lottery.",
     "signupForWholeGroup": "You are the group creator. You can sign up the group to a lottery.",
     "groupCreatorSignups": "You are the group creator. Your lottery sign-ups are the same for all group members.",
@@ -297,7 +281,7 @@
     "confirm": "Confirm",
     "cancel": "Cancel",
     "alreadySignedToGame": "You already signed up to the {{PROGRAM_TYPE}}",
-    "cannotSignupMoreThanOneGame": "You cannot sign up to another {{PROGRAM_TYPE}} starting at the same time.",
+    "cannotSignupMoreThanOneGame": "You cannot sign up to another program item starting at the same time.",
     "signupCount": "{{PLAYERS}}/{{MAX_ATTENDANCE}} sign-ups",
     "attendeesNeeded": "{{COUNT}} more {{ATTENDEE_TYPE}} needed",
     "programItemFull": "This {{PROGRAM_TYPE}} is full.",
@@ -330,39 +314,62 @@
     "player": "players",
     "participant": "participants"
   },
+  "programType": {
+    "all": "All program ",
+    "tabletopRPG": "Tabletop RPG",
+    "larp": "LARP",
+    "tournament": "Tournament",
+    "workshop": "Workshop",
+    "experiencePoint": "Experience Point",
+    "other": "Other program"
+  },
+  "programTypeSelection": {
+    "all": "All program types",
+    "tabletopRPG": "Tabletop RPG",
+    "larp": "LARP",
+    "tournament": "Tournaments",
+    "workshop": "Workshops",
+    "experiencePoint": "Experience Point",
+    "other": "Other program"
+  },
   "programTypeSingular": {
+    "all": "program item",
     "tabletopRPG": "game",
     "larp": "LARP",
     "tournament": "tournament",
     "workshop": "workshop",
     "experiencePoint": "game",
-    "other": "program"
+    "other": "program item"
   },
   "programTypePlural": {
+    "all": "program items",
     "tabletopRPG": "games",
     "larp": "larps",
     "tournament": "tournaments",
     "workshop": "workshops",
     "experiencePoint": "programs",
-    "other": "programs"
+    "other": "program items"
   },
   "programTypeGenetive": {
+    "all": "Program item",
     "tabletopRPG": "Game",
     "larp": "Larp",
     "tournament": "Tournament",
     "workshop": "Workshop",
     "experiencePoint": "Program",
-    "other": "Program"
+    "other": "Program item"
   },
   "programTypeElative": {
+    "all": "program item",
     "tabletopRPG": "game",
     "larp": "larp",
     "tournament": "tournament",
     "workshop": "workshops",
     "experiencePoint": "program",
-    "other": "program"
+    "other": "program item"
   },
   "programTypePartitivePlural": {
+    "all": "program items",
     "tabletopRPG": "games",
     "larp": "larps",
     "tournament": "tournaments",
@@ -371,28 +378,22 @@
     "other": "program items"
   },
   "programTypeInessive": {
+    "all": "program item",
     "tabletopRPG": "game",
     "larp": "larp",
     "tournament": "tournament",
     "workshop": "workshop",
     "experiencePoint": "game",
-    "other": "program"
+    "other": "program item"
   },
   "programTypeIllative": {
+    "all": "program item",
     "tabletopRPG": "game",
     "larp": "larp",
     "tournament": "tournament",
     "workshop": "workshop",
     "experiencePoint": "program",
-    "other": "program"
-  },
-  "programTypeIllativePlural": {
-    "tabletopRPG": "games",
-    "larp": "larps",
-    "tournament": "tournaments",
-    "workshop": "workshops",
-    "experiencePoint": "programs",
-    "other": "programs"
+    "other": "program item"
   },
   "resultsView": {
     "allSignupResults": "Sign-up Results",

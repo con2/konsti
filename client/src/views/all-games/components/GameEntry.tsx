@@ -91,7 +91,7 @@ export const GameEntry = ({
     : isSignedForCurrentGame;
 
   const tags = [];
-  if (config.shared().activeProgramTypes.length > 1) {
+  if (config.client().activeProgramTypes.length > 1) {
     tags.push(t(`programType.${game.programType}`));
   }
   if (game.gameSystem) {

@@ -6,7 +6,6 @@ import {
   beforeAll,
   beforeEach,
   describe,
-  vi,
 } from "vitest";
 import mongoose from "mongoose";
 import { MongoMemoryServer } from "mongodb-memory-server";
@@ -63,9 +62,9 @@ afterAll(async () => {
 
 describe("Assignment with valid data", () => {
   beforeEach(async () => {
-    const newUsersCount = 20;
+    const newUsersCount = 30;
     const groupSize = 3;
-    const numberOfGroups = 5;
+    const numberOfGroups = 10;
     const newGamesCount = 10;
     const testUsersCount = 0;
 
@@ -143,12 +142,7 @@ describe("Assignment with valid data", () => {
 });
 
 describe("Assignment with multiple program types and directSignupAlwaysOpen", () => {
-  test("should not remove signups of non-RPG program types", async () => {
-    vi.spyOn(config, "shared").mockReturnValue({
-      ...config.shared(),
-      activeProgramTypes: [ProgramType.TABLETOP_RPG, ProgramType.LARP],
-    });
-
+  test("should not remove signups of non-'twoPhaseSignupProgramTypes' program types", async () => {
     const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
 
     // Populate database
@@ -157,7 +151,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
       {
         ...testGame2,
         startTime: testGame.startTime,
-        programType: ProgramType.LARP,
+        programType: ProgramType.TOURNAMENT,
       },
     ]);
     await saveUser(mockUser);
@@ -168,8 +162,8 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
       signedGames: [
         { ...mockSignedGames[0], priority: 2 },
         {
-          // non-RPG signed game should be ignored
-          gameDetails: { ...testGame2, programType: ProgramType.LARP },
+          // non-"twoPhaseSignupProgramTypes" signed game should be ignored
+          gameDetails: { ...testGame2, programType: ProgramType.TOURNAMENT },
           priority: 1,
           time: testGame.startTime,
           message: "",
@@ -181,8 +175,8 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
       signedGames: [
         { ...mockSignedGames[0], priority: 2 },
         {
-          // non-RPG signed game should be ignored
-          gameDetails: { ...testGame2, programType: ProgramType.LARP },
+          // non-"twoPhaseSignupProgramTypes" signed game should be ignored
+          gameDetails: { ...testGame2, programType: ProgramType.TOURNAMENT },
           priority: 1,
           time: testGame.startTime,
           message: "",
@@ -212,23 +206,18 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     const signupsAfterUpdateResult = await findUserSignups(mockUser.username);
     const signupsAfterUpdate = unsafelyUnwrapResult(signupsAfterUpdateResult);
 
-    const larpSignup = signupsAfterUpdate.find(
-      (signup) => signup.game.programType === ProgramType.LARP,
+    const tournamentSignup = signupsAfterUpdate.find(
+      (signup) => signup.game.programType === ProgramType.TOURNAMENT,
     );
     const rpgSignup = signupsAfterUpdate.find(
       (signup) => signup.game.programType === ProgramType.TABLETOP_RPG,
     );
 
-    expect(larpSignup?.userSignups.length).toEqual(1);
+    expect(tournamentSignup?.userSignups.length).toEqual(1);
     expect(rpgSignup?.userSignups.length).toEqual(2);
   });
 
   test("should not remove directSignupAlwaysOpen signups if user doesn't have updated result", async () => {
-    vi.spyOn(config, "shared").mockReturnValue({
-      ...config.shared(),
-      directSignupAlwaysOpenIds: ["1234"],
-    });
-
     const directSignupAlwaysOpenId =
       config.shared().directSignupAlwaysOpenIds[0];
     const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
@@ -310,11 +299,6 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
   });
 
   test("should update directSignupAlwaysOpen signup with assignment signup if user has updated result", async () => {
-    vi.spyOn(config, "shared").mockReturnValue({
-      ...config.shared(),
-      directSignupAlwaysOpenIds: ["1234"],
-    });
-
     const directSignupAlwaysOpenId =
       config.shared().directSignupAlwaysOpenIds[0];
     const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
@@ -520,22 +504,21 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
 });
 
 describe("Assignment with first time bonus", () => {
-  test("should assign user without previous RPG signup", async () => {
-    vi.spyOn(config, "shared").mockReturnValue({
-      ...config.shared(),
-      directSignupAlwaysOpenIds: ["1234"],
-    });
-
+  test("should assign user without previous 'twoPhaseSignupProgramTypes' signup", async () => {
     const directSignupAlwaysOpenId =
       config.shared().directSignupAlwaysOpenIds[0];
     const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
-    const larpGameId = "AIAHHUA";
+    const tournamentGameId = "AIAHHUA";
 
     // Populate database
     await saveGames([
       { ...testGame, minAttendance: 1, maxAttendance: 1 },
       testGame2,
-      { ...testGame2, programType: ProgramType.LARP, gameId: larpGameId },
+      {
+        ...testGame2,
+        programType: ProgramType.TOURNAMENT,
+        gameId: tournamentGameId,
+      },
       {
         ...testGame2,
         gameId: directSignupAlwaysOpenId,
@@ -560,10 +543,10 @@ describe("Assignment with first time bonus", () => {
       startTime: dayjs(testGame.startTime).subtract(1, "hours").toISOString(),
     });
 
-    // Larp signup should not affect the bonus
+    // Tournament signup should not affect the bonus
     await saveSignup({
       username: mockUser2.username,
-      enteredGameId: larpGameId,
+      enteredGameId: tournamentGameId,
       startTime: dayjs(testGame.startTime).subtract(1, "hours").toISOString(),
       message: "",
       priority: DIRECT_SIGNUP_PRIORITY,
@@ -604,8 +587,8 @@ describe("Assignment with first time bonus", () => {
       (signup) => signup.game.gameId === testGame2.gameId,
     );
 
-    const previousLarpSignup = signupsAfterUpdate.find(
-      (signup) => signup.game.gameId === larpGameId,
+    const previousTournamentSignup = signupsAfterUpdate.find(
+      (signup) => signup.game.gameId === tournamentGameId,
     );
 
     const previousDirectSignupAlwaysOpenSignup = signupsAfterUpdate.find(
@@ -624,7 +607,7 @@ describe("Assignment with first time bonus", () => {
       message: "",
       priority: DIRECT_SIGNUP_PRIORITY,
     });
-    expect(previousLarpSignup?.userSignups[0]).toMatchObject({
+    expect(previousTournamentSignup?.userSignups[0]).toMatchObject({
       username: mockUser2.username,
       time: dayjs(testGame.startTime).subtract(1, "hours").toISOString(),
       message: "",

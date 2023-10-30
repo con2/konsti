@@ -15,7 +15,7 @@ import {
 } from "client/views/my-games/myGamesThunks";
 import { loadGames } from "client/utils/loadData";
 import { ErrorMessage } from "client/components/ErrorMessage";
-import { selectActiveEnteredGames } from "client/views/my-games/myGamesSlice";
+import { selectEnteredGames } from "client/views/my-games/myGamesSlice";
 import { getTimeNow } from "client/utils/getTimeNow";
 import { getDirectSignupStartTime } from "shared/utils/signupTimes";
 import { config } from "shared/config";
@@ -37,7 +37,7 @@ export const DirectSignupForm = ({
 
   const loggedIn = useAppSelector((state) => state.login.loggedIn);
   const username = useAppSelector((state) => state.login.username);
-  const activeEnteredGames = useAppSelector(selectActiveEnteredGames);
+  const enteredGames = useAppSelector(selectEnteredGames);
   const signupQuestions = useAppSelector(
     (state) => state.admin.signupQuestions,
   );
@@ -48,11 +48,11 @@ export const DirectSignupForm = ({
   const [serverError, setServerError] =
     useState<DeleteEnteredGameErrorMessage | null>(null);
 
-  const enteredGamesForTimeslot = activeEnteredGames.filter(
+  const enteredGameForTimeslot = enteredGames.find(
     (g) => g.gameDetails.startTime === startTime,
   );
 
-  const alreadyEnteredToGame = isAlreadyEntered(game, activeEnteredGames);
+  const alreadyEnteredToGame = isAlreadyEntered(game, enteredGames);
 
   const removeSignup = async (): Promise<void> => {
     setLoading(true);
@@ -111,24 +111,21 @@ export const DirectSignupForm = ({
 
       {signupOpen && !alreadyEnteredToGame && !gameIsFull && (
         <>
-          {enteredGamesForTimeslot.length === 1 && (
+          {enteredGameForTimeslot && (
             <SignedGameContainer>
               {t("signup.alreadySignedToGame", {
-                PROGRAM_TYPE: t(`programTypeIllative.${game.programType}`),
+                PROGRAM_TYPE: t(
+                  `programTypeIllative.${enteredGameForTimeslot.gameDetails.programType}`,
+                ),
               })}{" "}
               <SignedGameName>
-                {enteredGamesForTimeslot[0].gameDetails.title}
+                {enteredGameForTimeslot.gameDetails.title}
               </SignedGameName>
-              .{" "}
-              {t("signup.cannotSignupMoreThanOneGame", {
-                PROGRAM_TYPE: t(
-                  `programTypeIllativePlural.${game.programType}`,
-                ),
-              })}
+              . {t("signup.cannotSignupMoreThanOneGame")}
             </SignedGameContainer>
           )}
 
-          {enteredGamesForTimeslot.length === 0 && (
+          {!enteredGameForTimeslot && (
             <>
               {timeNow.isBefore(directSignupStartTime) && (
                 <p>

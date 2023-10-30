@@ -9,8 +9,8 @@ import { GameListTitle } from "client/views/all-games/components/GameListTitle";
 import { getSignedGames } from "client/utils/getUpcomingGames";
 import { getTimeslotSignupStrategy } from "client/views/all-games/allGamesUtils";
 import {
-  selectActiveEnteredGames,
-  selectActiveSignedGames,
+  selectEnteredGames,
+  selectSignedGames,
 } from "client/views/my-games/myGamesSlice";
 import { RaisedCard } from "client/components/RaisedCard";
 import { getIsInGroup } from "client/views/group/groupUtils";
@@ -23,8 +23,8 @@ export const AllGamesList = ({ games }: Props): ReactElement => {
   const { t } = useTranslation();
 
   const signups = useAppSelector((state) => state.allGames.signups);
-  const activeSignedGames = useAppSelector(selectActiveSignedGames);
-  const activeEnteredGames = useAppSelector(selectActiveEnteredGames);
+  const signedGames = useAppSelector(selectSignedGames);
+  const enteredGames = useAppSelector(selectEnteredGames);
   const activeProgramType = useAppSelector(
     (state) => state.admin.activeProgramType,
   );
@@ -34,7 +34,7 @@ export const AllGamesList = ({ games }: Props): ReactElement => {
   const isInGroup = getIsInGroup(groupCode);
 
   const ownOrGroupCreatorSignedGames = getSignedGames({
-    signedGames: activeSignedGames,
+    signedGames,
     isGroupCreator,
     groupMembers,
     isInGroup,
@@ -50,17 +50,15 @@ export const AllGamesList = ({ games }: Props): ReactElement => {
 
   const gamesList = Object.entries(gamesByStartTime).map(
     ([startTime, gamesForStartTime]) => {
-      const timeslotSignupStrategy = getTimeslotSignupStrategy(
-        gamesForStartTime,
-        activeProgramType,
-      );
+      const timeslotSignupStrategy =
+        getTimeslotSignupStrategy(gamesForStartTime);
 
       return (
         <div key={startTime}>
           <GameListTitle
             startTime={startTime}
             signedGames={ownOrGroupCreatorSignedGames}
-            enteredGames={activeEnteredGames}
+            enteredGames={enteredGames}
             timeslotSignupStrategy={timeslotSignupStrategy}
             isGroupCreator={isGroupCreator}
             groupCode={groupCode}
@@ -80,7 +78,7 @@ export const AllGamesList = ({ games }: Props): ReactElement => {
                 startTime={startTime}
                 signupStrategy={timeslotSignupStrategy}
                 signedGames={ownOrGroupCreatorSignedGames}
-                enteredGames={activeEnteredGames}
+                enteredGames={enteredGames}
               />
             );
           })}

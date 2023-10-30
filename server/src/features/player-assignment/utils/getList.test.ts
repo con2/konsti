@@ -82,7 +82,7 @@ const previousNotMatchingSignup: Signup = {
 };
 
 const previousMatchingSignupWithWrongType: Signup = {
-  game: { ...testGame, programType: ProgramType.LARP },
+  game: { ...testGame, programType: ProgramType.TOURNAMENT },
   userSignups: [
     {
       username: groupCreatorUser.username,

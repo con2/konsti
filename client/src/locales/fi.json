@@ -94,22 +94,6 @@
     "otherAccessibilityInformation": "Muu saavutettavuus",
     "adminActions": "Ylläpito"
   },
-  "programType": {
-    "tabletopRPG": "Pöytäroolipeli",
-    "larp": "LARP",
-    "tournament": "Turnaus",
-    "workshop": "Työpaja",
-    "experiencePoint": "Kokemuspiste",
-    "other": "Muu ohjelma"
-  },
-  "programTypeSelection": {
-    "tabletopRPG": "Pöytäroolipelit",
-    "larp": "LARP",
-    "tournament": "Turnaukset",
-    "workshop": "Työpajat",
-    "experiencePoint": "Kokemuspiste",
-    "other": "Muu ohjelma"
-  },
   "gameStyle": {
     "serious": "Vakava pelityyli",
     "light": "Kevyt pelityyli",
@@ -236,8 +220,8 @@
       "creatorHasSignedGames": "Sinulla on jo ilmoittautumisia peleihin. Poista ilmoittautumiset ennen kuin voit luoda ryhmän.",
       "alreadyInGroup": "Kuulut jo toiseen ryhmään."
     },
-    "hasEnteredFollowingGames": "Olet jo päässyt seuraaviin peleihin:",
-    "cancelSignupBeforeJoiningOrCreatingGroup": "Sinun täytyy perua ilmoittaumisesi yllä oleviin peleihin ennen kuin voit luoda ryhmän tai liittyä ryhmään.",
+    "hasEnteredFollowingGames": "Olet jo ilmoittautunut seuraaviin peleihin:",
+    "cancelSignupBeforeJoiningOrCreatingGroup": "Sinun täytyy perua nämä ilmoittautumiset ennen kuin voit luoda ryhmän tai liittyä ryhmään.",
     "signupDisabledNotCreator": "Olet ryhmän jäsen. Ryhmän perustaja ilmoittautuu arvontaan ryhmän jäsenten puolesta.",
     "signupForWholeGroup": "Olet ryhmän perustaja. Voit ilmoittautua arvontaan koko ryhmän puolesta.",
     "groupCreatorSignups": "Olet ryhmän perustaja. Valitsemasi arvonta-ilmoittautumiset ovat samat kaikille ryhmän jäsenille.",
@@ -297,7 +281,7 @@
     "confirm": "Vahvista",
     "cancel": "Peruuta",
     "alreadySignedToGame": "Olet ilmoittautunut {{PROGRAM_TYPE}}",
-    "cannotSignupMoreThanOneGame": "Et voi ilmoittautua muihin samaan aikaan alkaviin {{PROGRAM_TYPE}}.",
+    "cannotSignupMoreThanOneGame": "Et voi ilmoittautua toiseen samaan aikaan alkavaan ohjelmanumeroon.",
     "signupCount": "{{PLAYERS}}/{{MAX_ATTENDANCE}} ilmoittautunutta",
     "attendeesNeeded": "Tarvitaan vielä {{COUNT}} {{ATTENDEE_TYPE}}.",
     "programItemFull": "Tämä {{PROGRAM_TYPE}} on täynnä.",
@@ -330,7 +314,26 @@
     "player": "pelaajaa",
     "participant": "osallistujaa"
   },
+  "programType": {
+    "all": "Kaikki",
+    "tabletopRPG": "Pöytäroolipeli",
+    "larp": "LARP",
+    "tournament": "Turnaus",
+    "workshop": "Työpaja",
+    "experiencePoint": "Kokemuspiste",
+    "other": "Muu ohjelma"
+  },
+  "programTypeSelection": {
+    "all": "Kaikki ohjelmatyypit",
+    "tabletopRPG": "Pöytäroolipelit",
+    "larp": "LARP",
+    "tournament": "Turnaukset",
+    "workshop": "Työpajat",
+    "experiencePoint": "Kokemuspiste",
+    "other": "Muu ohjelma"
+  },
   "programTypeSingular": {
+    "all": "ohjelmanumero",
     "tabletopRPG": "peli",
     "larp": "LARP",
     "tournament": "turnaus",
@@ -339,6 +342,7 @@
     "other": "ohjelmanumero"
   },
   "programTypePlural": {
+    "all": "ohjelmanumerot",
     "tabletopRPG": "pelit",
     "larp": "larpit",
     "tournament": "turnaukset",
@@ -347,22 +351,25 @@
     "other": "ohjelmanumerot"
   },
   "programTypeGenetive": {
+    "all": "Ohjelmanumeron",
     "tabletopRPG": "Pelin",
     "larp": "Larpin",
     "tournament": "Turnauksen",
     "workshop": "Työpajan",
     "experiencePoint": "Pelin",
-    "other": "Ohjelman"
+    "other": "Ohjelmanumeron"
   },
   "programTypeElative": {
+    "all": "ohjelmanumerosta",
     "tabletopRPG": "pelistä",
     "larp": "larpista",
     "tournament": "turnauksesta",
     "workshop": "työpajasta",
     "experiencePoint": "pelistä",
-    "other": "ohjelmasta"
+    "other": "ohjelmanumerosta"
   },
   "programTypePartitivePlural": {
+    "all": "ohjelmanumeroita",
     "tabletopRPG": "pelejä",
     "larp": "larppeja",
     "tournament": "turnauksia",
@@ -371,28 +378,22 @@
     "other": "ohjelmanumeroita"
   },
   "programTypeInessive": {
+    "all": "ohjelmanumerossa",
     "tabletopRPG": "pelissä",
     "larp": "larpissa",
     "tournament": "turnauksessa",
     "workshop": "työpajassa",
     "experiencePoint": "pelissä",
-    "other": "ohjelmassa"
+    "other": "ohjelmanumerossa"
   },
   "programTypeIllative": {
+    "all": "ohjelmanumeroon",
     "tabletopRPG": "peliin",
     "larp": "larppiin",
     "tournament": "turnaukseen",
     "workshop": "työpajaan",
     "experiencePoint": "peliin",
-    "other": "ohjelmaan"
-  },
-  "programTypeIllativePlural": {
-    "tabletopRPG": "peleihin",
-    "larp": "larppeihin",
-    "tournament": "turnauksiin",
-    "workshop": "työpajoihin",
-    "experiencePoint": "peleihin",
-    "other": "ohjelmiin"
+    "other": "ohjelmanumeroon"
   },
   "resultsView": {
     "allSignupResults": "Ilmoittautumistulokset",

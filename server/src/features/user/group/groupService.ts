@@ -24,15 +24,12 @@ import {
   PostJoinGroupError,
   PostLeaveGroupError,
 } from "shared/typings/api/groups";
-import { ProgramType } from "shared/typings/models/game";
 import {
   isErrorResult,
   makeErrorResult,
   makeSuccessResult,
   unwrapResult,
 } from "shared/utils/result";
-
-const { directSignupAlwaysOpenIds } = config.shared();
 
 const generateGroupCode = () => {
   const baseCode = randomBytes(5).toString("hex").substring(0, 9);
@@ -57,9 +54,16 @@ export const createGroup = async (
 
   const signups = unwrapResult(signupsResult);
 
+  const { directSignupAlwaysOpenIds, twoPhaseSignupProgramTypes } =
+    config.shared();
+
   const filteredSignups = signups
-    .filter((signup) => !directSignupAlwaysOpenIds.includes(signup.game.gameId))
-    .filter((signup) => signup.game.programType === ProgramType.TABLETOP_RPG);
+    .filter((signup) =>
+      twoPhaseSignupProgramTypes.includes(signup.game.programType),
+    )
+    .filter(
+      (signup) => !directSignupAlwaysOpenIds.includes(signup.game.gameId),
+    );
 
   const timeNowResult = await getTimeNow();
   if (isErrorResult(timeNowResult)) {
@@ -160,9 +164,16 @@ export const joinGroup = async (
 
   const signups = unwrapResult(signupsResult);
 
+  const { directSignupAlwaysOpenIds, twoPhaseSignupProgramTypes } =
+    config.shared();
+
   const filteredSignups = signups
-    .filter((signup) => !directSignupAlwaysOpenIds.includes(signup.game.gameId))
-    .filter((signup) => signup.game.programType === ProgramType.TABLETOP_RPG);
+    .filter((signup) =>
+      twoPhaseSignupProgramTypes.includes(signup.game.programType),
+    )
+    .filter(
+      (signup) => !directSignupAlwaysOpenIds.includes(signup.game.gameId),
+    );
 
   const timeNowResult = await getTimeNow();
   if (isErrorResult(timeNowResult)) {

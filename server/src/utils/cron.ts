@@ -13,14 +13,6 @@ import {
 } from "server/features/settings/settingsRepository";
 import { MongoDbError } from "shared/typings/api/errors";
 
-const {
-  autoUpdateGamesEnabled,
-  gameUpdateInterval,
-  autoAssignPlayersEnabled,
-  autoAssignDelay,
-  autoAssignInterval,
-} = config.server();
-
 const cronJobs: Cron[] = [];
 
 let latestServerStartTime = "";
@@ -40,6 +32,13 @@ export const setLatestServerStartTime = async (): Promise<
 };
 
 export const startCronJobs = async (): Promise<void> => {
+  const {
+    autoUpdateGamesEnabled,
+    gameUpdateInterval,
+    autoAssignPlayersEnabled,
+    autoAssignInterval,
+  } = config.server();
+
   // Save latest server instance start time to limit running cronjobs to latest started instance
   const latestServerStartResult = await setLatestServerStartTime();
   if (isErrorResult(latestServerStartResult)) {
@@ -147,6 +146,8 @@ export const autoUpdateGames = async (): Promise<void> => {
 };
 
 export const autoAssignPlayers = async (): Promise<void> => {
+  const { autoAssignDelay } = config.server();
+
   logger.info("----> Auto assign players");
 
   logger.info(
