@@ -45,9 +45,7 @@ export const SearchAndFilterCard = ({
     // Tag.AIMED_AT_ADULT_ATTENDEES,
     Tag.FOR_18_PLUS_ONLY,
   ];
-  const languageFilters: Language[] = [
-    /* Language.FINNISH, Language.ENGLISH */
-  ];
+  const languageFilters: Language[] = [Language.FINNISH, Language.ENGLISH];
 
   const { t } = useTranslation();
   const activeProgramType = useAppSelector(
