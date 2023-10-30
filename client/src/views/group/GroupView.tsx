@@ -14,11 +14,11 @@ import { GroupMemberActions } from "client/views/group/components/GroupMemberAct
 import { getTimeNow } from "client/utils/getTimeNow";
 import { selectEnteredGames } from "client/views/my-games/myGamesSlice";
 import { config } from "shared/config";
-import { ProgramType } from "shared/typings/models/game";
-
-const { directSignupAlwaysOpenIds } = config.shared();
 
 export const GroupView = (): ReactElement => {
+  const { directSignupAlwaysOpenIds, twoPhaseSignupProgramTypes } =
+    config.shared();
+
   const username = useAppSelector((state) => state.login.username);
   const groupCode = useAppSelector((state) => state.group.groupCode);
   const isGroupCreator = useAppSelector((state) => state.group.isGroupCreator);
@@ -38,13 +38,11 @@ export const GroupView = (): ReactElement => {
 
   const filteredActiveEnteredGames = enteredGames
     .filter(
-      (activeEnteredGame) =>
-        !directSignupAlwaysOpenIds.includes(
-          activeEnteredGame.gameDetails.gameId,
-        ),
+      (enteredGame) =>
+        !directSignupAlwaysOpenIds.includes(enteredGame.gameDetails.gameId),
     )
-    .filter(
-      (game) => game.gameDetails.programType === ProgramType.TABLETOP_RPG,
+    .filter((enteredGame) =>
+      twoPhaseSignupProgramTypes.includes(enteredGame.gameDetails.programType),
     );
 
   const isInGroup = getIsInGroup(groupCode);
@@ -57,14 +55,16 @@ export const GroupView = (): ReactElement => {
   return (
     <div className="group-view">
       <p>{t("group.groupLotterySignupGuide")}</p>
-      <p>{t("group.groupLotterySignupTabletopOnly")}</p>
+      {/* <p>{t("group.groupLotterySignupTabletopOnly")}</p*/}
 
       {!isInGroup && (
         <>
           {hasEnteredGames && (
             <EnteredGamesContainer>
-              <BoldText>{t("group.hasEnteredFollowingGames")}</BoldText>
-              <ul>
+              <p>
+                <BoldText>{t("group.hasEnteredFollowingGames")}</BoldText>
+              </p>
+              <ListItem>
                 {filteredActiveEnteredGames.map((game) => (
                   <li key={game.gameDetails.gameId}>
                     <Link to={`/games/${game.gameDetails.gameId}`}>
@@ -72,10 +72,12 @@ export const GroupView = (): ReactElement => {
                     </Link>
                   </li>
                 ))}
-              </ul>
-              <BoldText>
-                {t("group.cancelSignupBeforeJoiningOrCreatingGroup")}
-              </BoldText>
+              </ListItem>
+              <p>
+                <BoldText>
+                  {t("group.cancelSignupBeforeJoiningOrCreatingGroup")}
+                </BoldText>
+              </p>
             </EnteredGamesContainer>
           )}
 
@@ -127,4 +129,8 @@ const EnteredGamesContainer = styled.div`
 
 const BoldText = styled.span`
   font-weight: 600;
+`;
+
+const ListItem = styled.ul`
+  padding: 0 0 0 20px;
 `;

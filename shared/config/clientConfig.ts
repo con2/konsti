@@ -1,3 +1,6 @@
+import { ActiveProgramType } from "shared/config/clientConfigTypes";
+import { ProgramType } from "shared/typings/models/game";
+
 export interface ClientConfig {
   MESSAGE_DELAY: number;
   apiServerUrl: string;
@@ -11,6 +14,7 @@ export interface ClientConfig {
   enableOrganizerFeedback: boolean;
   enableTagDropdown: boolean;
   showAnnouncement: boolean;
+  activeProgramTypes: ActiveProgramType[];
 }
 
 export const clientConfig: ClientConfig = {
@@ -22,6 +26,7 @@ export const clientConfig: ClientConfig = {
   enableOrganizerFeedback: true,
   enableTagDropdown: true,
   showAnnouncement: false,
+  activeProgramTypes: ["all", ProgramType.TABLETOP_RPG, ProgramType.LARP],
 
   // Dev
   enableReduxTrace: false,

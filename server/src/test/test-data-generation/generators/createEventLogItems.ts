@@ -5,13 +5,13 @@ import { addEventLogItems } from "server/features/user/event-log/eventLogReposit
 import { findUsers } from "server/features/user/userRepository";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 import { EventLogAction } from "shared/typings/models/eventLog";
-import { ProgramType } from "shared/typings/models/game";
+import { config } from "shared/config";
 
 export const createEventLogItems = async (): Promise<void> => {
   const gamesResult = await findGames();
   const games = unsafelyUnwrapResult(gamesResult);
-  const rpgs = games.filter(
-    (game) => game.programType === ProgramType.TABLETOP_RPG,
+  const twoPhaseSignups = games.filter((game) =>
+    config.shared().twoPhaseSignupProgramTypes.includes(game.programType),
   );
 
   const allUsersResult = await findUsers();
@@ -22,7 +22,7 @@ export const createEventLogItems = async (): Promise<void> => {
   );
 
   const eventLogUpdates = users.flatMap((user) => {
-    const randomGames = _.sampleSize(rpgs, 5);
+    const randomGames = _.sampleSize(twoPhaseSignups, 5);
 
     return randomGames.map((randomGame, index) => ({
       username: user.username,

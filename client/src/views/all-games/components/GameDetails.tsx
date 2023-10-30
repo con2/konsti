@@ -5,8 +5,8 @@ import { Loading } from "client/components/Loading";
 import { useAppSelector } from "client/utils/hooks";
 import { GameEntry } from "client/views/all-games/components/GameEntry";
 import {
-  selectActiveEnteredGames,
-  selectActiveSignedGames,
+  selectEnteredGames,
+  selectSignedGames,
 } from "client/views/my-games/myGamesSlice";
 import { SignupStrategy } from "shared/config/sharedConfigTypes";
 import { getSignedGames } from "client/utils/getUpcomingGames";
@@ -20,17 +20,17 @@ export const GameDetails = (): ReactElement => {
 
   const games = useAppSelector((state) => state.allGames.games);
   const signups = useAppSelector((state) => state.allGames.signups);
-  const activeEnteredGames = useAppSelector(selectActiveEnteredGames);
+  const enteredGames = useAppSelector(selectEnteredGames);
 
   // Figure out if user has signed up to this game
-  const activeSignedGames = useAppSelector(selectActiveSignedGames);
+  const signedGames = useAppSelector(selectSignedGames);
   const isGroupCreator = useAppSelector((state) => state.group.isGroupCreator);
   const groupMembers = useAppSelector((state) => state.group.groupMembers);
   const groupCode = useAppSelector((state) => state.group.groupCode);
   const isInGroup = getIsInGroup(groupCode);
 
   const ownOrGroupCreatorSignedGames = getSignedGames({
-    signedGames: activeSignedGames,
+    signedGames,
     isGroupCreator,
     groupMembers,
     isInGroup,
@@ -60,7 +60,7 @@ export const GameDetails = (): ReactElement => {
           players={playerCount}
           signupStrategy={foundGame.signupStrategy ?? SignupStrategy.DIRECT}
           signedGames={ownOrGroupCreatorSignedGames}
-          enteredGames={activeEnteredGames}
+          enteredGames={enteredGames}
         />
       )}
       {!loading && !foundGame && (

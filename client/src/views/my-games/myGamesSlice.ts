@@ -1,6 +1,6 @@
-import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { MyGamesState, RootState } from "client/typings/redux.typings";
-import { Game, ProgramType } from "shared/typings/models/game";
+import { Game } from "shared/typings/models/game";
 import { SelectedGame, UserGames } from "shared/typings/models/user";
 
 const initialState: MyGamesState = {
@@ -68,25 +68,3 @@ export const selectSignedGames = (state: RootState): readonly SelectedGame[] =>
   state.myGames.signedGames;
 export const selectFavoritedGames = (state: RootState): readonly Game[] =>
   state.myGames.favoritedGames;
-
-const selectActiveProgramType = (state: RootState): ProgramType =>
-  state.admin.activeProgramType;
-
-export const selectActiveEnteredGames = createSelector(
-  [selectEnteredGames, selectActiveProgramType],
-  (enteredGames, activeProgramType) => {
-    return enteredGames.filter(
-      (enteredGame) =>
-        enteredGame.gameDetails.programType === activeProgramType,
-    );
-  },
-);
-
-export const selectActiveSignedGames = createSelector(
-  [selectSignedGames, selectActiveProgramType],
-  (signedGames, activeProgramType) => {
-    return signedGames.filter(
-      (signedGame) => signedGame.gameDetails.programType === activeProgramType,
-    );
-  },
-);

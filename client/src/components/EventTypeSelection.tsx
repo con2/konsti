@@ -15,7 +15,7 @@ export const ProgramTypeSelection = (): ReactElement => {
     (state) => state.admin.activeProgramType,
   );
 
-  const programTypes = config.shared().activeProgramTypes;
+  const programTypes = config.client().activeProgramTypes;
 
   const dropdownItems = programTypes.map((programType) => ({
     value: programType,

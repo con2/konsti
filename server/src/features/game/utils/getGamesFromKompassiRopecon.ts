@@ -22,8 +22,6 @@ import {
 } from "shared/utils/result";
 import { KompassiError } from "shared/typings/api/errors";
 
-const { useLocalProgramFile, localKompassiFile } = config.server();
-
 export const getGamesFromKompassiRopecon = async (): Promise<
   Result<readonly KompassiGameRopecon[], KompassiError>
 > => {
@@ -60,6 +58,8 @@ export const getGamesFromKompassiRopecon = async (): Promise<
 const getEventProgramItems = async (): Promise<
   Result<KompassiGameRopecon[], KompassiError>
 > => {
+  const { useLocalProgramFile } = config.server();
+
   return useLocalProgramFile
     ? getProgramFromLocalFile()
     : await getProgramFromServer();
@@ -76,6 +76,8 @@ const getProgramFromLocalFile = (): Result<
   KompassiError
 > => {
   logger.info("GET event program from local filesystem");
+
+  const { localKompassiFile } = config.server();
 
   const rawData = fs.readFileSync(
     path.join(

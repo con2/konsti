@@ -1,7 +1,7 @@
 import { ReactElement, FormEvent, useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
-import { Game, ProgramType } from "shared/typings/models/game";
+import { Game } from "shared/typings/models/game";
 import {
   PostEnteredGameErrorMessage,
   submitPostEnteredGame,
@@ -28,8 +28,6 @@ import { Dropdown } from "client/components/Dropdown";
 import { Checkbox } from "client/components/Checkbox";
 import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 
-const { directSignupAlwaysOpenIds } = config.shared();
-
 interface Props {
   game: Game;
   signupQuestion: SignupQuestion | undefined;
@@ -43,6 +41,8 @@ export const EnterGameForm = ({
   onCancelSignup,
   signupQuestion,
 }: Props): ReactElement => {
+  const { directSignupAlwaysOpenIds } = config.shared();
+
   const { t, i18n } = useTranslation();
   const dispatch = useAppDispatch();
 
@@ -86,7 +86,7 @@ export const EnterGameForm = ({
 
     // TODO: This logic should be on backend
     if (
-      game.programType === ProgramType.TABLETOP_RPG &&
+      config.shared().twoPhaseSignupProgramTypes.includes(game.programType) &&
       !directSignupAlwaysOpenIds.includes(game.gameId)
     ) {
       if (isInGroup && !isGroupCreator) {
@@ -127,7 +127,7 @@ export const EnterGameForm = ({
 
   return (
     <SignupForm>
-      {game.programType === ProgramType.TABLETOP_RPG &&
+      {config.shared().twoPhaseSignupProgramTypes.includes(game.programType) &&
         !directSignupAlwaysOpenIds.includes(game.gameId) &&
         isInGroup && (
           <p>

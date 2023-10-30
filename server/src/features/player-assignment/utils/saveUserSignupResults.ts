@@ -3,7 +3,7 @@ import { AssignmentResult } from "shared/typings/models/result";
 import {
   delSignup,
   delAssignmentSignupsByStartTime,
-  findSignupsByProgramType,
+  findSignupsByProgramTypes,
   saveSignups,
 } from "server/features/signup/signupRepository";
 import {
@@ -19,36 +19,38 @@ import {
   deleteEventLogItemsByStartTime,
 } from "server/features/user/event-log/eventLogRepository";
 import { EventLogAction } from "shared/typings/models/eventLog";
-import { ProgramType } from "shared/typings/models/game";
+import { config } from "shared/config";
 
 export const saveUserSignupResults = async (
   startTime: string,
   results: readonly AssignmentResult[],
 ): Promise<Result<void, MongoDbError>> => {
   // Remove previous assignment result for the same start time
-  // This does not remove directSignupAlwaysOpen signups or previous signups from moved program items
+  // This does not remove "directSignupAlwaysOpen" signups or previous signups from moved program items
   const delAssignmentSignupsByStartTimeResult =
     await delAssignmentSignupsByStartTime(startTime);
   if (isErrorResult(delAssignmentSignupsByStartTimeResult)) {
     return delAssignmentSignupsByStartTimeResult;
   }
 
-  // Only directSignupAlwaysOpen signups and previous signups from moved program items should be remaining
-  const rpgSignupsByStartTimeResult = await findSignupsByProgramType(
-    ProgramType.TABLETOP_RPG,
+  // Only "directSignupAlwaysOpen" signups and previous signups from moved program items should be remaining
+  const twoPhaseSignupsByStartTimeResult = await findSignupsByProgramTypes(
+    config.shared().twoPhaseSignupProgramTypes,
     startTime,
   );
-  if (isErrorResult(rpgSignupsByStartTimeResult)) {
-    return rpgSignupsByStartTimeResult;
+  if (isErrorResult(twoPhaseSignupsByStartTimeResult)) {
+    return twoPhaseSignupsByStartTimeResult;
   }
-  const rpgSignupsByStartTime = unwrapResult(rpgSignupsByStartTimeResult);
+  const twoPhaseSignupsByStartTime = unwrapResult(
+    twoPhaseSignupsByStartTimeResult,
+  );
 
   // Resolve conflicting existing signups
   // If user has existing signups...
   // ... and new assignment result -> remove existing
   // ... and no new assignment result -> keep existing
   const deletePromises = results.map(async (result) => {
-    const existingSignup = rpgSignupsByStartTime.find(
+    const existingSignup = twoPhaseSignupsByStartTime.find(
       (signup) => signup.username === result.username,
     );
 

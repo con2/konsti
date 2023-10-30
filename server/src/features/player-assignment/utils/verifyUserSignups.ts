@@ -3,7 +3,6 @@ import { logger } from "server/utils/logger";
 import { User } from "shared/typings/models/user";
 import { findUsers } from "server/features/user/userRepository";
 import { findSignups } from "server/features/signup/signupRepository";
-import { ProgramType } from "shared/typings/models/game";
 import { config } from "shared/config";
 import {
   Result,
@@ -35,7 +34,7 @@ export const verifyUserSignups = async (): Promise<
 
   signups.map(({ game, userSignups }) => {
     if (
-      game.programType !== ProgramType.TABLETOP_RPG ||
+      !config.shared().twoPhaseSignupProgramTypes.includes(game.programType) ||
       config.shared().directSignupAlwaysOpenIds.includes(game.gameId)
     ) {
       return;

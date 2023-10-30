@@ -20,13 +20,10 @@ import {
 } from "client/views/results/components/SearchAndFilterResultsCard";
 import { isRevolvingDoorWorkshop } from "client/utils/isRevolvingDoorWorkshop";
 
-export const DirectResults = (): ReactElement => {
+export const ResultsList = (): ReactElement => {
   const { t, i18n } = useTranslation();
 
   const activeGames = useAppSelector(selectActiveGames);
-  const activeProgramType = useAppSelector(
-    (state) => state.admin.activeProgramType,
-  );
   const signups = useAppSelector((state) => state.allGames.signups);
   const userGroup = useAppSelector((state) => state.login.userGroup);
   isAdminOrHelp(userGroup);
@@ -151,8 +148,8 @@ export const DirectResults = (): ReactElement => {
                   return (
                     <div key={game.gameId}>
                       <ResultTitle key={game.gameId}>{game.title} </ResultTitle>
-                      {config.shared().activeProgramTypes.length > 1 && (
-                        <Tags tags={[t(`programType.${activeProgramType}`)]} />
+                      {config.client().activeProgramTypes.length > 1 && (
+                        <Tags tags={[t(`programType.${game.programType}`)]} />
                       )}
                       <PlayerContainer>
                         <PlayerCount
@@ -212,14 +209,14 @@ export const DirectResults = (): ReactElement => {
                                 ? t("iconAltText.closeAttendeeList", {
                                     ATTENDEE_TYPE: t(
                                       `attendeeType.${getAttendeeType(
-                                        activeProgramType,
+                                        game.programType,
                                       )}`,
                                     ),
                                   })
                                 : t("iconAltText.openAttendeeList", {
                                     ATTENDEE_TYPE: t(
                                       `attendeeType.${getAttendeeType(
-                                        activeProgramType,
+                                        game.programType,
                                       )}`,
                                     ),
                                   })
@@ -240,7 +237,7 @@ export const DirectResults = (): ReactElement => {
                                 {t("resultsView.noSignups", {
                                   ATTENDEE_TYPE: t(
                                     `attendeeTypePlural.${getAttendeeType(
-                                      activeProgramType,
+                                      game.programType,
                                     )}`,
                                   ),
                                 })}

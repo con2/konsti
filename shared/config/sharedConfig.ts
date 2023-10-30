@@ -1,4 +1,3 @@
-import dayjs from "dayjs";
 import {
   ArrMin1,
   AssignmentStrategy,
@@ -18,17 +17,16 @@ export interface SharedConfig {
   conventionName: ConventionName;
   conventionYear: string;
   conventionStartTime: string;
+  conventionEndTime: string;
   DIRECT_SIGNUP_START: number;
   PRE_SIGNUP_START: number;
   PHASE_GAP: number;
-  directSignupWindows: Record<ProgramType, ArrMin1<SignupWindow>>;
+  directSignupWindows: Record<ProgramType, ArrMin1<SignupWindow>> | null;
   directSignupAlwaysOpenIds: string[];
   tracesSampleRate: number;
   enableSentryInDev: boolean;
   requireRegistrationCode: boolean;
-  activeProgramTypes: ProgramType[];
   twoPhaseSignupProgramTypes: ProgramType[];
-  directSignupProgramTypes: ProgramType[];
   manualSignupMode: SignupStrategy.ALGORITHM | SignupStrategy.DIRECT | "none";
   signupOpen: boolean;
   resultsVisible: boolean;
@@ -39,10 +37,6 @@ export interface SharedConfig {
   tournamentSignupQuestionExcludeIds: string[];
   addRevolvingDoorIds: string[];
 }
-
-// Convention days
-const saturday = "2023-11-04";
-const sunday = "2023-11-05";
 
 export const sharedConfig: SharedConfig = {
   // Convention settings
@@ -55,31 +49,12 @@ export const sharedConfig: SharedConfig = {
   signupOpen: true,
   resultsVisible: true,
 
-  activeProgramTypes: [ProgramType.TABLETOP_RPG, ProgramType.LARP],
+  twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG, ProgramType.LARP],
 
-  twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG],
+  conventionStartTime: `2023-11-04T08:00:00Z`, // Sat 10:00 GMT+2
+  conventionEndTime: `2023-11-05T22:00:00Z`, // Sun 24:00 GMT+2
 
-  directSignupProgramTypes: [
-    ProgramType.LARP,
-    ProgramType.TOURNAMENT,
-    ProgramType.WORKSHOP,
-    ProgramType.EXPERIENCE_POINT,
-    ProgramType.OTHER,
-  ],
-
-  conventionStartTime: `${saturday}T08:00:00Z`, // Sat 10:00 GMT+2
-
-  directSignupWindows: {
-    // @ts-expect-error: RPGs use DIRECT_SIGNUP_START
-    tabletopRPG: [],
-
-    larp: [
-      {
-        signupWindowStart: dayjs(`${saturday}T08:00:00Z`), // Sat 10:00 GMT+2
-        signupWindowClose: dayjs(`${sunday}T22:00:00Z`), // Sun 24:00 GMT+2
-      },
-    ],
-  },
+  directSignupWindows: null,
 
   // These program items have their signup always open even if signup mode is set to algorithm
   directSignupAlwaysOpenIds: [],
