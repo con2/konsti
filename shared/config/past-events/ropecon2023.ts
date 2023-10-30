@@ -157,16 +157,16 @@ const sharedConfig: SharedConfig = {
     experiencePoint: [
       // Whole convention Fri - Sun
       {
-        signupWindowStart: dayjs(`${friday}T12:00:00Z`), // Fri 15:00
-        signupWindowClose: dayjs(`${sunday}T21:00:00Z`), // Sun 24:00
+        signupWindowStart: dayjs(`${friday}T12:00:00Z`), // Fri 15:00 GMT+3
+        signupWindowClose: dayjs(`${sunday}T21:00:00Z`), // Sun 24:00 GMT+3
       },
     ],
 
     other: [
       // Whole convention Fri - Sun
       {
-        signupWindowStart: dayjs(`${friday}T12:00:00Z`), // Fri 15:00
-        signupWindowClose: dayjs(`${sunday}T21:00:00Z`), // Sun 24:00
+        signupWindowStart: dayjs(`${friday}T12:00:00Z`), // Fri 15:00 GMT+3
+        signupWindowClose: dayjs(`${sunday}T21:00:00Z`), // Sun 24:00 GMT+3
       },
     ],
   },

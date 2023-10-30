@@ -55,7 +55,6 @@ ENABLE_MOBILE_SAFARI &&
 const config: PlaywrightTestConfig = {
   projects,
   retries: process.env.CI ? 1 : 0,
-  timeout: 1 * 60 * 1000, // 1 min
   outputDir: "./test-results",
   workers: 1,
   use: {

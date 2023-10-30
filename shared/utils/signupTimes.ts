@@ -1,5 +1,6 @@
 import dayjs, { Dayjs } from "dayjs";
 import { config } from "shared/config";
+import { ArrMin1, SignupWindow } from "shared/config/sharedConfigTypes";
 import { Game } from "shared/typings/models/game";
 import { TIMEZONE } from "shared/utils/initializeDayjs";
 
@@ -30,8 +31,12 @@ export const getAlgorithmSignupEndTime = (startTime: string): Dayjs => {
 };
 
 export const getDirectSignupStartTime = (game: Game): Dayjs => {
-  const { conventionStartTime, DIRECT_SIGNUP_START, PHASE_GAP } =
-    config.shared();
+  const {
+    conventionStartTime,
+    conventionEndTime,
+    DIRECT_SIGNUP_START,
+    PHASE_GAP,
+  } = config.shared();
 
   const signupAlwaysOpen = config
     .shared()
@@ -73,18 +78,23 @@ export const getDirectSignupStartTime = (game: Game): Dayjs => {
   }
 
   // Other program types use signup windows for signup times
-  const signupWindowsForProgramType =
-    config.shared().directSignupWindows[game.programType];
+  const signupWindowsForProgramType = config.shared().directSignupWindows[
+    game.programType
+  ] as ArrMin1<SignupWindow> | undefined;
 
-  const matchingSignupWindow = signupWindowsForProgramType.find(
-    (signupWindow) =>
-      dayjs(game.startTime).isBetween(
-        signupWindow.signupWindowStart,
-        signupWindow.signupWindowClose,
-        "minutes",
-        "[]",
-      ),
-  );
+  const matchingSignupWindow = signupWindowsForProgramType
+    ? signupWindowsForProgramType.find((signupWindow) =>
+        dayjs(game.startTime).isBetween(
+          signupWindow.signupWindowStart,
+          signupWindow.signupWindowClose,
+          "minutes",
+          "[]",
+        ),
+      )
+    : {
+        signupWindowStart: dayjs(conventionStartTime),
+        signupWindowClose: dayjs(conventionEndTime),
+      };
 
   if (!matchingSignupWindow) {
     // eslint-disable-next-line no-restricted-syntax -- Config error

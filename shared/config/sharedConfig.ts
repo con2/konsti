@@ -1,4 +1,3 @@
-import dayjs from "dayjs";
 import {
   ArrMin1,
   AssignmentStrategy,
@@ -18,6 +17,7 @@ export interface SharedConfig {
   conventionName: ConventionName;
   conventionYear: string;
   conventionStartTime: string;
+  conventionEndTime: string;
   DIRECT_SIGNUP_START: number;
   PRE_SIGNUP_START: number;
   PHASE_GAP: number;
@@ -39,10 +39,6 @@ export interface SharedConfig {
   addRevolvingDoorIds: string[];
 }
 
-// Convention days
-const saturday = "2023-11-04";
-const sunday = "2023-11-05";
-
 export const sharedConfig: SharedConfig = {
   // Convention settings
   requireRegistrationCode: true,
@@ -58,18 +54,15 @@ export const sharedConfig: SharedConfig = {
 
   directSignupProgramTypes: [],
 
-  conventionStartTime: `${saturday}T08:00:00Z`, // Sat 10:00 GMT+2
+  conventionStartTime: `2023-11-04T08:00:00Z`, // Sat 10:00 GMT+2
+  conventionEndTime: `2023-11-05T22:00:00Z`, // Sun 24:00 GMT+2
 
   directSignupWindows: {
     // @ts-expect-error: RPGs use DIRECT_SIGNUP_START
     tabletopRPG: [],
 
-    larp: [
-      {
-        signupWindowStart: dayjs(`${saturday}T08:00:00Z`), // Sat 10:00 GMT+2
-        signupWindowClose: dayjs(`${sunday}T22:00:00Z`), // Sun 24:00 GMT+2
-      },
-    ],
+    // @ts-expect-error: RPGs use DIRECT_SIGNUP_START
+    larp: [],
   },
 
   // These program items have their signup always open even if signup mode is set to algorithm

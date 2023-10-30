@@ -23,6 +23,8 @@ process.env.MONGOMS_VERSION = "6.0.10";
 
 vi.spyOn(config, "shared").mockReturnValue({
   ...config.shared(),
+  conventionStartTime: "2023-07-28T12:00:00Z", // Fri 15:00 GMT+3
+  conventionEndTime: "2023-07-30T21:00:00Z", // Sun 24:00 GMT+3
   directSignupAlwaysOpenIds: ["1234"],
   directSignupProgramTypes: [ProgramType.TOURNAMENT, ProgramType.WORKSHOP],
   twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG, ProgramType.LARP],
