@@ -49,10 +49,7 @@ export const sharedConfig: SharedConfig = {
   signupOpen: true,
   resultsVisible: true,
 
-  twoPhaseSignupProgramTypes: [
-    ProgramType.TABLETOP_RPG,
-    ProgramType.TOURNAMENT,
-  ],
+  twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG, ProgramType.LARP],
 
   conventionStartTime: `2023-11-04T08:00:00Z`, // Sat 10:00 GMT+2
   conventionEndTime: `2023-11-05T22:00:00Z`, // Sun 24:00 GMT+2

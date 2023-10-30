@@ -220,8 +220,8 @@
       "creatorHasSignedGames": "Sinulla on jo ilmoittautumisia peleihin. Poista ilmoittautumiset ennen kuin voit luoda ryhmän.",
       "alreadyInGroup": "Kuulut jo toiseen ryhmään."
     },
-    "hasEnteredFollowingGames": "Olet jo päässyt seuraaviin peleihin:",
-    "cancelSignupBeforeJoiningOrCreatingGroup": "Sinun täytyy perua ilmoittaumisesi yllä oleviin peleihin ennen kuin voit luoda ryhmän tai liittyä ryhmään.",
+    "hasEnteredFollowingGames": "Olet jo ilmoittautunut seuraaviin peleihin:",
+    "cancelSignupBeforeJoiningOrCreatingGroup": "Sinun täytyy perua nämä ilmoittautumiset ennen kuin voit luoda ryhmän tai liittyä ryhmään.",
     "signupDisabledNotCreator": "Olet ryhmän jäsen. Ryhmän perustaja ilmoittautuu arvontaan ryhmän jäsenten puolesta.",
     "signupForWholeGroup": "Olet ryhmän perustaja. Voit ilmoittautua arvontaan koko ryhmän puolesta.",
     "groupCreatorSignups": "Olet ryhmän perustaja. Valitsemasi arvonta-ilmoittautumiset ovat samat kaikille ryhmän jäsenille.",
