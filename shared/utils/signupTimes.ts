@@ -1,6 +1,5 @@
 import dayjs, { Dayjs } from "dayjs";
 import { config } from "shared/config";
-import { ArrMin1, SignupWindow } from "shared/config/sharedConfigTypes";
 import { Game } from "shared/typings/models/game";
 import { TIMEZONE } from "shared/utils/initializeDayjs";
 
@@ -36,11 +35,12 @@ export const getDirectSignupStartTime = (game: Game): Dayjs => {
     conventionEndTime,
     DIRECT_SIGNUP_START,
     PHASE_GAP,
+    directSignupWindows,
+    directSignupAlwaysOpenIds,
+    twoPhaseSignupProgramTypes,
   } = config.shared();
 
-  const signupAlwaysOpen = config
-    .shared()
-    .directSignupAlwaysOpenIds.includes(game.gameId);
+  const signupAlwaysOpen = directSignupAlwaysOpenIds.includes(game.gameId);
 
   if (signupAlwaysOpen) {
     const someOldTime = "2000-01-01T00:00:00.000Z";
@@ -48,7 +48,7 @@ export const getDirectSignupStartTime = (game: Game): Dayjs => {
   }
 
   // "twoPhaseSignupProgramTypes" signup times are configured with DIRECT_SIGNUP_START
-  if (config.shared().twoPhaseSignupProgramTypes.includes(game.programType)) {
+  if (twoPhaseSignupProgramTypes.includes(game.programType)) {
     const directSignupStart = dayjs(game.startTime).subtract(
       DIRECT_SIGNUP_START,
       "minutes",
@@ -78,9 +78,9 @@ export const getDirectSignupStartTime = (game: Game): Dayjs => {
   }
 
   // Other program types use signup windows for signup times
-  const signupWindowsForProgramType = config.shared().directSignupWindows[
-    game.programType
-  ] as ArrMin1<SignupWindow> | undefined;
+  const signupWindowsForProgramType = directSignupWindows
+    ? directSignupWindows[game.programType]
+    : undefined;
 
   const matchingSignupWindow = signupWindowsForProgramType
     ? signupWindowsForProgramType.find((signupWindow) =>

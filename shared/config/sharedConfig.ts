@@ -21,13 +21,12 @@ export interface SharedConfig {
   DIRECT_SIGNUP_START: number;
   PRE_SIGNUP_START: number;
   PHASE_GAP: number;
-  directSignupWindows: Record<ProgramType, ArrMin1<SignupWindow>>;
+  directSignupWindows: Record<ProgramType, ArrMin1<SignupWindow>> | null;
   directSignupAlwaysOpenIds: string[];
   tracesSampleRate: number;
   enableSentryInDev: boolean;
   requireRegistrationCode: boolean;
   twoPhaseSignupProgramTypes: ProgramType[];
-  directSignupProgramTypes: ProgramType[];
   manualSignupMode: SignupStrategy.ALGORITHM | SignupStrategy.DIRECT | "none";
   signupOpen: boolean;
   resultsVisible: boolean;
@@ -50,20 +49,15 @@ export const sharedConfig: SharedConfig = {
   signupOpen: true,
   resultsVisible: true,
 
-  twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG, ProgramType.LARP],
-
-  directSignupProgramTypes: [],
+  twoPhaseSignupProgramTypes: [
+    ProgramType.TABLETOP_RPG,
+    ProgramType.TOURNAMENT,
+  ],
 
   conventionStartTime: `2023-11-04T08:00:00Z`, // Sat 10:00 GMT+2
   conventionEndTime: `2023-11-05T22:00:00Z`, // Sun 24:00 GMT+2
 
-  directSignupWindows: {
-    // @ts-expect-error: RPGs use DIRECT_SIGNUP_START
-    tabletopRPG: [],
-
-    // @ts-expect-error: RPGs use DIRECT_SIGNUP_START
-    larp: [],
-  },
+  directSignupWindows: null,
 
   // These program items have their signup always open even if signup mode is set to algorithm
   directSignupAlwaysOpenIds: [],

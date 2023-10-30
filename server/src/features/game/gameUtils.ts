@@ -112,13 +112,13 @@ const getSignupStrategyForGame = (
   currentTime: Dayjs,
 ): SignupStrategy => {
   const start = dayjs(game.startTime);
-  const { DIRECT_SIGNUP_START } = config.shared();
+  const { DIRECT_SIGNUP_START, twoPhaseSignupProgramTypes } = config.shared();
 
   if (settings.signupStrategy !== SignupStrategy.ALGORITHM_AND_DIRECT) {
     return settings.signupStrategy;
   }
 
-  if (config.shared().directSignupProgramTypes.includes(game.programType)) {
+  if (!twoPhaseSignupProgramTypes.includes(game.programType)) {
     return SignupStrategy.DIRECT;
   }
 
