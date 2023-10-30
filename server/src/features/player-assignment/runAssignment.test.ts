@@ -62,9 +62,9 @@ afterAll(async () => {
 
 describe("Assignment with valid data", () => {
   beforeEach(async () => {
-    const newUsersCount = 20;
+    const newUsersCount = 30;
     const groupSize = 3;
-    const numberOfGroups = 5;
+    const numberOfGroups = 10;
     const newGamesCount = 10;
     const testUsersCount = 0;
 
