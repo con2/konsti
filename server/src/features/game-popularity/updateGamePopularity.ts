@@ -18,6 +18,7 @@ export const updateGamePopularity = async (): Promise<
   Result<void, MongoDbError | AssignmentError>
 > => {
   const { gamePopularityUpdateMethod } = config.server();
+  const { twoPhaseSignupProgramTypes } = config.shared();
 
   logger.info(
     `Calculate game popularity using ${gamePopularityUpdateMethod} method`,
@@ -34,7 +35,7 @@ export const updateGamePopularity = async (): Promise<
     return gamesResult;
   }
   const games = unwrapResult(gamesResult).filter((game) =>
-    config.shared().twoPhaseSignupProgramTypes.includes(game.programType),
+    twoPhaseSignupProgramTypes.includes(game.programType),
   );
 
   const signupsResult = await findSignups();

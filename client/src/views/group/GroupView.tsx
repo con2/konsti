@@ -16,7 +16,8 @@ import { selectEnteredGames } from "client/views/my-games/myGamesSlice";
 import { config } from "shared/config";
 
 export const GroupView = (): ReactElement => {
-  const { directSignupAlwaysOpenIds } = config.shared();
+  const { directSignupAlwaysOpenIds, twoPhaseSignupProgramTypes } =
+    config.shared();
 
   const username = useAppSelector((state) => state.login.username);
   const groupCode = useAppSelector((state) => state.group.groupCode);
@@ -41,11 +42,7 @@ export const GroupView = (): ReactElement => {
         !directSignupAlwaysOpenIds.includes(enteredGame.gameDetails.gameId),
     )
     .filter((enteredGame) =>
-      config
-        .shared()
-        .twoPhaseSignupProgramTypes.includes(
-          enteredGame.gameDetails.programType,
-        ),
+      twoPhaseSignupProgramTypes.includes(enteredGame.gameDetails.programType),
     );
 
   const isInGroup = getIsInGroup(groupCode);

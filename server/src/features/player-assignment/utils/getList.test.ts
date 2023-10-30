@@ -1,10 +1,9 @@
-import { expect, test, vi } from "vitest";
+import { expect, test } from "vitest";
 import { testGame } from "shared/tests/testGame";
 import { getList } from "server/features/player-assignment/utils/getList";
 import { User, UserGroup } from "shared/typings/models/user";
 import { Signup } from "server/features/signup/signup.typings";
 import { ProgramType } from "shared/typings/models/game";
-import { config } from "shared/config";
 
 const groupCreatorUser: User = {
   kompassiId: 0,
@@ -161,11 +160,6 @@ test("should generate assignment list without bonuses for group", () => {
 });
 
 test("should generate assignment list with bonuses if user has signups for different program type", () => {
-  vi.spyOn(config, "shared").mockReturnValue({
-    ...config.shared(),
-    twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG, ProgramType.LARP],
-  });
-
   const userArray: User[] = [groupCreatorUser];
   const playerGroups: readonly User[][] = [userArray, userArray, userArray];
   const list = getList(playerGroups, startTime, [
