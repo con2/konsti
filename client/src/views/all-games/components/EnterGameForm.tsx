@@ -28,8 +28,6 @@ import { Dropdown } from "client/components/Dropdown";
 import { Checkbox } from "client/components/Checkbox";
 import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 
-const { directSignupAlwaysOpenIds } = config.shared();
-
 interface Props {
   game: Game;
   signupQuestion: SignupQuestion | undefined;
@@ -43,6 +41,8 @@ export const EnterGameForm = ({
   onCancelSignup,
   signupQuestion,
 }: Props): ReactElement => {
+  const { directSignupAlwaysOpenIds } = config.shared();
+
   const { t, i18n } = useTranslation();
   const dispatch = useAppDispatch();
 

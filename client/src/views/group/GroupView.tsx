@@ -15,9 +15,9 @@ import { getTimeNow } from "client/utils/getTimeNow";
 import { selectEnteredGames } from "client/views/my-games/myGamesSlice";
 import { config } from "shared/config";
 
-const { directSignupAlwaysOpenIds } = config.shared();
-
 export const GroupView = (): ReactElement => {
+  const { directSignupAlwaysOpenIds } = config.shared();
+
   const username = useAppSelector((state) => state.login.username);
   const groupCode = useAppSelector((state) => state.group.groupCode);
   const isGroupCreator = useAppSelector((state) => state.group.isGroupCreator);

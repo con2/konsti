@@ -14,11 +14,11 @@ import {
 import { AssignmentError, MongoDbError } from "shared/typings/api/errors";
 import { config } from "shared/config";
 
-const { gamePopularityUpdateMethod } = config.server();
-
 export const updateGamePopularity = async (): Promise<
   Result<void, MongoDbError | AssignmentError>
 > => {
+  const { gamePopularityUpdateMethod } = config.server();
+
   logger.info(
     `Calculate game popularity using ${gamePopularityUpdateMethod} method`,
   );

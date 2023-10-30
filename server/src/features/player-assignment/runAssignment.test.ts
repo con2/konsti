@@ -6,7 +6,6 @@ import {
   beforeAll,
   beforeEach,
   describe,
-  vi,
 } from "vitest";
 import mongoose from "mongoose";
 import { MongoMemoryServer } from "mongodb-memory-server";
@@ -144,11 +143,6 @@ describe("Assignment with valid data", () => {
 
 describe("Assignment with multiple program types and directSignupAlwaysOpen", () => {
   test("should not remove signups of non-'twoPhaseSignupProgramTypes' program types", async () => {
-    vi.spyOn(config, "shared").mockReturnValue({
-      ...config.shared(),
-      twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG, ProgramType.LARP],
-    });
-
     const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
 
     // Populate database
@@ -224,11 +218,6 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
   });
 
   test("should not remove directSignupAlwaysOpen signups if user doesn't have updated result", async () => {
-    vi.spyOn(config, "shared").mockReturnValue({
-      ...config.shared(),
-      directSignupAlwaysOpenIds: ["1234"],
-    });
-
     const directSignupAlwaysOpenId =
       config.shared().directSignupAlwaysOpenIds[0];
     const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
@@ -310,11 +299,6 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
   });
 
   test("should update directSignupAlwaysOpen signup with assignment signup if user has updated result", async () => {
-    vi.spyOn(config, "shared").mockReturnValue({
-      ...config.shared(),
-      directSignupAlwaysOpenIds: ["1234"],
-    });
-
     const directSignupAlwaysOpenId =
       config.shared().directSignupAlwaysOpenIds[0];
     const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
@@ -521,12 +505,6 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
 
 describe("Assignment with first time bonus", () => {
   test("should assign user without previous 'twoPhaseSignupProgramTypes' signup", async () => {
-    vi.spyOn(config, "shared").mockReturnValue({
-      ...config.shared(),
-      directSignupAlwaysOpenIds: ["1234"],
-      twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG, ProgramType.LARP],
-    });
-
     const directSignupAlwaysOpenId =
       config.shared().directSignupAlwaysOpenIds[0];
     const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;

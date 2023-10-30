@@ -3,10 +3,8 @@ import { config } from "shared/config";
 import { Game } from "shared/typings/models/game";
 import { TIMEZONE } from "shared/utils/initializeDayjs";
 
-const { PRE_SIGNUP_START, DIRECT_SIGNUP_START, PHASE_GAP } = config.shared();
-
 export const getAlgorithmSignupStartTime = (startTime: string): Dayjs => {
-  const { conventionStartTime } = config.shared();
+  const { conventionStartTime, PRE_SIGNUP_START } = config.shared();
 
   // Set timezone here because hour comparison and setting hour value
   const timezoneStartTime = dayjs(startTime)
@@ -27,11 +25,13 @@ export const getAlgorithmSignupStartTime = (startTime: string): Dayjs => {
 };
 
 export const getAlgorithmSignupEndTime = (startTime: string): Dayjs => {
+  const { DIRECT_SIGNUP_START } = config.shared();
   return dayjs(startTime).subtract(DIRECT_SIGNUP_START, "minutes");
 };
 
 export const getDirectSignupStartTime = (game: Game): Dayjs => {
-  const { conventionStartTime } = config.shared();
+  const { conventionStartTime, DIRECT_SIGNUP_START, PHASE_GAP } =
+    config.shared();
 
   const signupAlwaysOpen = config
     .shared()
