@@ -281,7 +281,7 @@
     "confirm": "Vahvista",
     "cancel": "Peruuta",
     "alreadySignedToGame": "Olet ilmoittautunut {{PROGRAM_TYPE}}",
-    "cannotSignupMoreThanOneGame": "Et voi ilmoittautua muihin samaan aikaan alkaviin {{PROGRAM_TYPE}}.",
+    "cannotSignupMoreThanOneGame": "Et voi ilmoittautua tposeen samaan aikaan alkavaan ohjelmanumeroon.",
     "signupCount": "{{PLAYERS}}/{{MAX_ATTENDANCE}} ilmoittautunutta",
     "attendeesNeeded": "Tarvitaan vielä {{COUNT}} {{ATTENDEE_TYPE}}.",
     "programItemFull": "Tämä {{PROGRAM_TYPE}} on täynnä.",
@@ -324,7 +324,7 @@
     "other": "Muu ohjelma"
   },
   "programTypeSelection": {
-    "all": "Kaikki",
+    "all": "Kaikki ohjelmatyypit",
     "tabletopRPG": "Pöytäroolipelit",
     "larp": "LARP",
     "tournament": "Turnaukset",
@@ -394,15 +394,6 @@
     "workshop": "työpajaan",
     "experiencePoint": "peliin",
     "other": "ohjelmanumeroon"
-  },
-  "programTypeIllativePlural": {
-    "all": "ohjelmanumeroihin",
-    "tabletopRPG": "peleihin",
-    "larp": "larppeihin",
-    "tournament": "turnauksiin",
-    "workshop": "työpajoihin",
-    "experiencePoint": "peleihin",
-    "other": "ohjelmanumeroihin"
   },
   "resultsView": {
     "allSignupResults": "Ilmoittautumistulokset",

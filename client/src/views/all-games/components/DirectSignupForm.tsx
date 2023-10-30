@@ -48,7 +48,7 @@ export const DirectSignupForm = ({
   const [serverError, setServerError] =
     useState<DeleteEnteredGameErrorMessage | null>(null);
 
-  const enteredGamesForTimeslot = enteredGames.filter(
+  const enteredGameForTimeslot = enteredGames.find(
     (g) => g.gameDetails.startTime === startTime,
   );
 
@@ -111,24 +111,21 @@ export const DirectSignupForm = ({
 
       {signupOpen && !alreadyEnteredToGame && !gameIsFull && (
         <>
-          {enteredGamesForTimeslot.length === 1 && (
+          {enteredGameForTimeslot && (
             <SignedGameContainer>
               {t("signup.alreadySignedToGame", {
-                PROGRAM_TYPE: t(`programTypeIllative.${game.programType}`),
+                PROGRAM_TYPE: t(
+                  `programTypeIllative.${enteredGameForTimeslot.gameDetails.programType}`,
+                ),
               })}{" "}
               <SignedGameName>
-                {enteredGamesForTimeslot[0].gameDetails.title}
+                {enteredGameForTimeslot.gameDetails.title}
               </SignedGameName>
-              .{" "}
-              {t("signup.cannotSignupMoreThanOneGame", {
-                PROGRAM_TYPE: t(
-                  `programTypeIllativePlural.${game.programType}`,
-                ),
-              })}
+              . {t("signup.cannotSignupMoreThanOneGame")}
             </SignedGameContainer>
           )}
 
-          {enteredGamesForTimeslot.length === 0 && (
+          {!enteredGameForTimeslot && (
             <>
               {timeNow.isBefore(directSignupStartTime) && (
                 <p>

@@ -281,7 +281,7 @@
     "confirm": "Confirm",
     "cancel": "Cancel",
     "alreadySignedToGame": "You already signed up to the {{PROGRAM_TYPE}}",
-    "cannotSignupMoreThanOneGame": "You cannot sign up to another {{PROGRAM_TYPE}} starting at the same time.",
+    "cannotSignupMoreThanOneGame": "You cannot sign up to another program item starting at the same time.",
     "signupCount": "{{PLAYERS}}/{{MAX_ATTENDANCE}} sign-ups",
     "attendeesNeeded": "{{COUNT}} more {{ATTENDEE_TYPE}} needed",
     "programItemFull": "This {{PROGRAM_TYPE}} is full.",
@@ -315,7 +315,7 @@
     "participant": "participants"
   },
   "programType": {
-    "all": "All",
+    "all": "All program ",
     "tabletopRPG": "Tabletop RPG",
     "larp": "LARP",
     "tournament": "Tournament",
@@ -324,7 +324,7 @@
     "other": "Other program"
   },
   "programTypeSelection": {
-    "all": "All",
+    "all": "All program types",
     "tabletopRPG": "Tabletop RPG",
     "larp": "LARP",
     "tournament": "Tournaments",
@@ -394,15 +394,6 @@
     "workshop": "workshop",
     "experiencePoint": "program",
     "other": "program item"
-  },
-  "programTypeIllativePlural": {
-    "all": "program items",
-    "tabletopRPG": "games",
-    "larp": "larps",
-    "tournament": "tournaments",
-    "workshop": "workshops",
-    "experiencePoint": "programs",
-    "other": "program items"
   },
   "resultsView": {
     "allSignupResults": "Sign-up Results",

@@ -1,7 +1,7 @@
 import { ReactElement, useEffect } from "react";
 import { useStore } from "react-redux";
 import { loadSettings } from "client/utils/loadData";
-import { DirectResults } from "client/views/results/components/ResultsList";
+import { ResultsList } from "client/views/results/components/ResultsList";
 import { useAppSelector } from "client/utils/hooks";
 
 export const ResultsView = (): ReactElement => {
@@ -16,5 +16,5 @@ export const ResultsView = (): ReactElement => {
     fetchData();
   }, [store, testTime]);
 
-  return <DirectResults />;
+  return <ResultsList />;
 };
