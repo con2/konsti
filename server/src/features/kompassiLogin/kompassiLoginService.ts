@@ -71,7 +71,7 @@ const getTokens = async (
     grant_type: "authorization_code",
     client_id: clientId,
     client_secret: clientSecret,
-    redirect_uri: `${origin}${AuthEndpoint.KOMPASSI_CALLBACK}`,
+    redirect_uri: `${origin}${AuthEndpoint.KOMPASSI_LOGIN_CALLBACK}`,
   });
   const body = params.toString();
   const url = `${baseUrl}/oauth2/token`;
