@@ -486,7 +486,7 @@
     "oldAccountsNotWorking": "Please note that accounts from older events are not in use anymore.",
     "noAccountRegister": "No account? Create one here.",
     "kompassiLoginHint": "Konsti login is done with Kompassi account",
-    "kompassiLogin": "Login with Kompassi",
+    "kompassiLogin": "Login or create account",
     "createKompassiAccountHint": "Konsti login is not open yet but you can already create Kompassi account which is required for Konsti login.",
     "createKompassiAccount": "Create a Kompassi account",
     "chooseKonstiUsername": "Choose a Konsti username"

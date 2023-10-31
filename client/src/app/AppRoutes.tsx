@@ -24,6 +24,8 @@ import { InstructionsView } from "client/views/about/InstructionsView";
 import { KompassiLoginCallback } from "client/components/KompassiLoginCallback";
 import { LoginProvider } from "shared/config/sharedConfigTypes";
 import { KompassiLoginUsernameForm } from "client/views/login/components/KompassiLoginUsernameForm";
+import { KompassiLogoutCallback } from "client/components/KompassiLogoutCallback";
+import { AuthEndpoint } from "shared/constants/apiEndpoints";
 
 export const AppRoutes = (): ReactElement => {
   const { t } = useTranslation();
@@ -153,6 +155,10 @@ export const AppRoutes = (): ReactElement => {
         )}
         {isAdmin(userGroup) && <Route path="/admin" element={<AdminView />} />}
         <Route path="/logout" element={<LogoutView />} />
+        <Route
+          path={"/kompassi-logout-callback"}
+          element={<KompassiLogoutCallback />}
+        />
         {/* Login path is required for after login redirect to work */}
         <Route path="/login" element={<LoginView />} />
         <Route path="/admin/login" element={<LoginView />} />
@@ -186,7 +192,7 @@ export const AppRoutes = (): ReactElement => {
       <Route path="/about/*" element={<Tabs tabContents={aboutTabs} />} />
       <Route path="/" element={<Navigate to="/program" />} />
       <Route
-        path="/auth/kompassi/callback"
+        path={AuthEndpoint.KOMPASSI_LOGIN_CALLBACK}
         element={<KompassiLoginCallback />}
       />
       <Route path="/*" element={<Navigate to="/login" />} />

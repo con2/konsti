@@ -2,6 +2,7 @@ import { ReactElement, useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { submitKompassiLogin } from "client/views/login/loginThunks";
 import { useAppDispatch } from "client/utils/hooks";
+import { Loading } from "client/components/Loading";
 
 export const KompassiLoginCallback = (): ReactElement => {
   const dispatch = useAppDispatch();
@@ -30,5 +31,5 @@ export const KompassiLoginCallback = (): ReactElement => {
     fetchData();
   }, [code, error, dispatch, navigate]);
 
-  return <div />;
+  return <Loading />;
 };

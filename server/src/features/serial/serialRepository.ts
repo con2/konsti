@@ -36,7 +36,7 @@ export const saveSerials = async (
         serial,
       }),
     );
-    logger.info(`${serial}`);
+    logger.info(`MongoDB: Created new serial: ${serial}`);
   }
 
   try {

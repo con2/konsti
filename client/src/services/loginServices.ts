@@ -42,8 +42,12 @@ export const postSessionRecovery = async (
   return response.data;
 };
 
-export const getKompassiLoginRedirectUrl = async (): Promise<void> => {
+export const postKompassiLoginRedirect = async (): Promise<void> => {
   await api.post(AuthEndpoint.KOMPASSI_LOGIN);
+};
+
+export const postKompassiLogoutRedirect = async (): Promise<void> => {
+  await api.post(AuthEndpoint.KOMPASSI_LOGOUT);
 };
 
 export const postKompassiLoginCallback = async (
@@ -52,7 +56,7 @@ export const postKompassiLoginCallback = async (
   const response = await api.post<
     PostKompassiLoginResponse,
     PostKompassiLoginRequest
-  >(AuthEndpoint.KOMPASSI_CALLBACK, {
+  >(AuthEndpoint.KOMPASSI_LOGIN_CALLBACK, {
     code,
   });
   return response.data;

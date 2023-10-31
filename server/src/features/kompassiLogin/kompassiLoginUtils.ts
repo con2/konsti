@@ -8,7 +8,7 @@ export const getAuthUrl = (origin: string): string => {
   const params = new URLSearchParams({
     response_type: "code",
     client_id: clientId,
-    redirect_uri: `${origin}${AuthEndpoint.KOMPASSI_CALLBACK}`,
+    redirect_uri: `${origin}${AuthEndpoint.KOMPASSI_LOGIN_CALLBACK}`,
     scope: "read",
   });
 
