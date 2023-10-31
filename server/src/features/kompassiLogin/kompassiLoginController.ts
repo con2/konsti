@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { logger } from "server/utils/logger";
 import {
+  baseUrl,
   doKompassiLogin,
   verifyKompassiLogin,
 } from "server/features/kompassiLogin/kompassiLoginService";
@@ -32,7 +33,7 @@ export const postKompassiLoginCallback = async (
   req: Request<{}, {}, string>,
   res: Response,
 ): Promise<Response> => {
-  logger.info(`API call: POST ${AuthEndpoint.KOMPASSI_CALLBACK}`);
+  logger.info(`API call: POST ${AuthEndpoint.KOMPASSI_LOGIN_CALLBACK}`);
 
   if (!req.headers.origin) {
     return res.sendStatus(422);
@@ -82,4 +83,19 @@ export const postVerifyKompassiLogin = async (
   const { username } = result.data;
   const response = await verifyKompassiLogin(jwtUsername, username);
   return res.json(response);
+};
+
+export const postKompassiLogoutRedirect = (
+  req: Request<{}, {}, string>,
+  res: Response,
+): Response => {
+  logger.info(`API call: POST ${AuthEndpoint.KOMPASSI_LOGOUT}`);
+
+  if (!req.headers.origin) {
+    return res.sendStatus(422);
+  }
+
+  return res.status(302).json({
+    location: `${baseUrl}/logout?next=${req.headers.origin}/kompassi-logout-callback`,
+  });
 };

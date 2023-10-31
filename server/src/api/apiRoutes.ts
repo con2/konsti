@@ -2,6 +2,7 @@ import express from "express";
 import {
   postKompassiLoginCallback,
   postKompassiLoginRedirect,
+  postKompassiLogoutRedirect,
   postVerifyKompassiLogin,
 } from "server/features/kompassiLogin/kompassiLoginController";
 import { postFeedback } from "server/features/feedback/feedbackController";
@@ -112,6 +113,7 @@ if (process.env.SETTINGS !== "production") {
 
 // TODO: Disable login endpoints if provider not set
 apiRoutes.post(AuthEndpoint.KOMPASSI_LOGIN, postKompassiLoginRedirect);
-apiRoutes.post(AuthEndpoint.KOMPASSI_CALLBACK, postKompassiLoginCallback);
+apiRoutes.post(AuthEndpoint.KOMPASSI_LOGIN_CALLBACK, postKompassiLoginCallback);
+apiRoutes.post(AuthEndpoint.KOMPASSI_LOGOUT, postKompassiLogoutRedirect);
 
 /* eslint-enable @typescript-eslint/no-misused-promises */

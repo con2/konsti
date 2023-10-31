@@ -32,5 +32,6 @@ export enum ApiEndpoint {
 
 export enum AuthEndpoint {
   KOMPASSI_LOGIN = "/auth/kompassi",
-  KOMPASSI_CALLBACK = "/auth/kompassi/callback",
+  KOMPASSI_LOGIN_CALLBACK = "/auth/kompassi/callback",
+  KOMPASSI_LOGOUT = "/auth/kompassi/logout",
 }
