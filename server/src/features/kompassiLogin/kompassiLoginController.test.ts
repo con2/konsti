@@ -113,4 +113,28 @@ describe(`POST ${ApiEndpoint.VERIFY_KOMPASSI_LOGIN}`, () => {
     expect(response.body.status).toEqual("error");
     expect(response.body.errorId).toEqual("usernameNotFree");
   });
+
+  test("should not check for existing username if username not changed", async () => {
+    await saveUser({ ...mockUser, kompassiId: 10 });
+
+    const requestBody: PostVerifyKompassiLoginRequest = {
+      username: mockUser.username,
+    };
+
+    const response = await request(server)
+      .post(ApiEndpoint.VERIFY_KOMPASSI_LOGIN)
+      .send(requestBody)
+      .set(
+        "Authorization",
+        `Bearer ${getJWT(UserGroup.USER, mockUser.username)}`,
+      );
+
+    expect(response.status).toEqual(200);
+    expect(response.body.status).toEqual("success");
+
+    const userResult = await findUser(mockUser.username);
+    const user = unsafelyUnwrapResult(userResult);
+    expect(user?.kompassiId).toEqual(10);
+    expect(user?.kompassiUsernameAccepted).toEqual(true);
+  });
 });

@@ -53,7 +53,7 @@ export interface PostKompassiLoginError extends ApiError {
 // POST Verify Kompassi login
 
 export const PostVerifyKompassiLoginRequestSchema = z.object({
-  username: z.string(),
+  username: z.string().trim(),
 });
 
 export type PostVerifyKompassiLoginRequest = z.infer<
