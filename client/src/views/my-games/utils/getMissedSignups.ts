@@ -8,6 +8,10 @@ export const getMissedSignups = (
   signedGames: readonly SelectedGame[],
   enteredGames: readonly SelectedGame[],
 ): string[] => {
+  // Wait this long before showing "you didn't get into game"
+  // TODO: Instead of hard-coding, figure dynamically if assignment is still running
+  const safePeriod = 3; // minutes
+
   const timeNow = getTimeNow();
 
   const signedGamesStartTimes = getStartTimes(
@@ -18,7 +22,7 @@ export const getMissedSignups = (
   const pastSignupTimes = signedGamesStartTimes.filter(
     (signedGamesStartTime) => {
       const signupEndTime = dayjs(signedGamesStartTime).subtract(
-        config.shared().DIRECT_SIGNUP_START,
+        config.shared().DIRECT_SIGNUP_START - safePeriod,
         "minutes",
       );
 

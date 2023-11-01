@@ -14,6 +14,8 @@ export const testTimes = [
   dayjs(conventionStartTime).toISOString(),
   dayjs(conventionStartTime).add(45, "minutes").toISOString(),
   dayjs(conventionStartTime).add(1, "hours").toISOString(),
+  dayjs(conventionStartTime).add(1, "hours").add(1, "minute").toISOString(),
+  dayjs(conventionStartTime).add(1, "hours").add(5, "minute").toISOString(),
   dayjs(conventionStartTime).add(2, "hours").toISOString(),
   dayjs(conventionStartTime)
     .add(2, "hours")
