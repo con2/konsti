@@ -33,6 +33,8 @@ interface Props {
   signupQuestion: SignupQuestion | undefined;
   onEnterGame: () => void;
   onCancelSignup: () => void;
+  loading: boolean;
+  setLoading: (loading: boolean) => void;
 }
 
 export const EnterGameForm = ({
@@ -40,6 +42,8 @@ export const EnterGameForm = ({
   onEnterGame,
   onCancelSignup,
   signupQuestion,
+  loading,
+  setLoading,
 }: Props): ReactElement => {
   const { directSignupAlwaysOpenIds } = config.shared();
 
@@ -50,7 +54,6 @@ export const EnterGameForm = ({
   const groupCode = useAppSelector((state) => state.group.groupCode);
   const isGroupCreator = useAppSelector((state) => state.group.isGroupCreator);
 
-  const [loading, setLoading] = useState(false);
   const [userSignupMessage, setUserSignupMessage] = useState<string>("");
   const [selectedValue, setSelectedValue] = useState<string>(
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition

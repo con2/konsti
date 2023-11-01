@@ -61,6 +61,8 @@ export const GameDetails = (): ReactElement => {
           signupStrategy={foundGame.signupStrategy ?? SignupStrategy.DIRECT}
           signedGames={ownOrGroupCreatorSignedGames}
           enteredGames={enteredGames}
+          loading={loading}
+          setLoading={setLoading}
         />
       )}
       {!loading && !foundGame && (
