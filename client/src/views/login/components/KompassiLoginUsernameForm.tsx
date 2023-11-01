@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { Button, ButtonStyle } from "client/components/Button";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import {
-  LoginErrorMessage,
+  KompassiVerifyErrorMessage,
   submitVerifyKompassiLogin,
 } from "client/views/login/loginThunks";
 import { ErrorMessage } from "client/components/ErrorMessage";
@@ -27,9 +27,8 @@ export const KompassiLoginUsernameForm = (): ReactElement => {
 
   const username = useAppSelector((state) => state.login.username);
 
-  const [serverError, setServerError] = useState<LoginErrorMessage | null>(
-    null,
-  );
+  const [serverError, setServerError] =
+    useState<KompassiVerifyErrorMessage | null>(null);
 
   const {
     register,

@@ -1,5 +1,6 @@
 import axios from "axios";
 import {
+  findUser,
   findUserByKompassiId,
   saveUser,
   updateUserKompassiLoginStatus,
@@ -201,6 +202,29 @@ export const verifyKompassiLogin = async (
   oldUsername: string,
   newUsername: string,
 ): Promise<PostVerifyKompassiLoginResponse | PostVerifyKompassiLoginError> => {
+  // Check if user already exists
+  const findUserResult = await findUser(newUsername);
+  if (isErrorResult(findUserResult)) {
+    return {
+      errorId: "unknown",
+      message: "Finding user failed",
+      status: "error",
+    };
+  }
+
+  const existingUser = unwrapResult(findUserResult);
+
+  if (existingUser) {
+    logger.info(
+      `Kompassi verify: Username ${existingUser.userGroup} is already registered`,
+    );
+    return {
+      errorId: "usernameNotFree",
+      message: "Username in already registered",
+      status: "error",
+    };
+  }
+
   const userResult = await updateUserKompassiLoginStatus(
     oldUsername,
     newUsername,
