@@ -36,6 +36,7 @@ export interface SharedConfig {
   tournamentSignupQuestion: SignupQuestion | null;
   tournamentSignupQuestionExcludeIds: string[];
   addRevolvingDoorIds: string[];
+  isEnglishProgramItems: string[];
 }
 
 export const sharedConfig: SharedConfig = {
@@ -78,6 +79,11 @@ export const sharedConfig: SharedConfig = {
   tournamentSignupQuestion: null,
 
   tournamentSignupQuestionExcludeIds: [],
+
+  isEnglishProgramItems: [
+    "p7300", // In the Crowd
+    "p7340", // Introduction to PBTA: Dungeon World
+  ],
 
   // Two phase signup settings
   PRE_SIGNUP_START: 60 * 4, // minutes

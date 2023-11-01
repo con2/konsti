@@ -6,6 +6,7 @@ import {
   KompassiGameHitpoint,
   KompassiProgramTypeHitpoint,
 } from "shared/typings/models/kompassiGame/kompassiGameHitpoint";
+import { config } from "shared/config";
 
 export const kompassiGameMapperHitpoint = (
   games: readonly KompassiGameHitpoint[],
@@ -21,9 +22,7 @@ export const kompassiGameMapperHitpoint = (
       tags: mapTags(game),
       genres: [],
       styles: [],
-      language: game.is_english_ok
-        ? Language.FINNISH_OR_ENGLISH
-        : Language.FINNISH,
+      language: mapLanguage(game),
       endTime: dayjs(game.start_time).add(game.length, "minutes").toISOString(),
       people: game.formatted_hosts,
       minAttendance: game.min_players,
@@ -78,4 +77,18 @@ const mapTags = (kompassiGame: KompassiGameHitpoint): Tag[] => {
   }
 
   return _.uniq(tags);
+};
+
+const mapLanguage = (kompassiGame: KompassiGameHitpoint) => {
+  const { isEnglishProgramItems } = config.shared();
+
+  if (isEnglishProgramItems.includes(kompassiGame.identifier)) {
+    return Language.ENGLISH;
+  }
+
+  if (kompassiGame.is_english_ok) {
+    return Language.FINNISH_OR_ENGLISH;
+  }
+
+  return Language.FINNISH;
 };
