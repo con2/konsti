@@ -8,6 +8,7 @@ import {
 import { ApiEndpoint, AuthEndpoint } from "shared/constants/apiEndpoints";
 import {
   PostKompassiLoginRequestSchema,
+  PostVerifyKompassiLoginRequest,
   PostVerifyKompassiLoginRequestSchema,
 } from "shared/typings/api/login";
 import { getAuthUrl } from "server/features/kompassiLogin/kompassiLoginUtils";
@@ -56,7 +57,7 @@ export const postKompassiLoginCallback = async (
 };
 
 export const postVerifyKompassiLogin = async (
-  req: Request<{}, {}, string>,
+  req: Request<{}, {}, PostVerifyKompassiLoginRequest>,
   res: Response,
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.VERIFY_KOMPASSI_LOGIN}`);

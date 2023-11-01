@@ -224,16 +224,23 @@ export const submitKompassiLogin = (
   };
 };
 
+export enum KompassiVerifyErrorMessage {
+  USERNAME_TAKEN = "error.usernameTaken",
+  UNKNOWN = "error.unknown",
+}
+
 export const submitVerifyKompassiLogin = (
   username: string,
-): AppThunk<Promise<LoginErrorMessage | undefined>> => {
-  return async (dispatch): Promise<LoginErrorMessage | undefined> => {
+): AppThunk<Promise<KompassiVerifyErrorMessage | undefined>> => {
+  return async (dispatch): Promise<KompassiVerifyErrorMessage | undefined> => {
     const response = await postVerifyKompassiLogin(username);
 
     if (response.status === "error") {
       switch (response.errorId) {
+        case "usernameNotFree":
+          return KompassiVerifyErrorMessage.USERNAME_TAKEN;
         case "unknown":
-          return LoginErrorMessage.UNKNOWN;
+          return KompassiVerifyErrorMessage.UNKNOWN;
         default:
           exhaustiveSwitchGuard(response.errorId);
       }
