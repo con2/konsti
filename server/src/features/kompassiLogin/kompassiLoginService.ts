@@ -1,5 +1,6 @@
 import axios from "axios";
 import {
+  findUser,
   findUserByKompassiId,
   saveUser,
   updateUserKompassiLoginStatus,
@@ -165,9 +166,23 @@ export const doKompassiLogin = async (
   const serialDoc = unwrapResult(serialDocResult);
   const serial = serialDoc[0].serial;
 
+  // Check if username already taken
+  const findUserResult = await findUser(profile.username);
+  if (isErrorResult(findUserResult)) {
+    return {
+      errorId: "unknown",
+      message: "Finding user failed",
+      status: "error",
+    };
+  }
+  const userWithSameUsername = unwrapResult(findUserResult);
+
   const saveUserResult = await saveUser({
     kompassiId: profile.id,
-    username: profile.username,
+    // TODO: Handle properly instead of appending profile.id to username
+    username: userWithSameUsername
+      ? `${profile.username}-${profile.id}`
+      : profile.username,
     serial,
     passwordHash: "",
     userGroup: UserGroup.USER,
@@ -201,6 +216,31 @@ export const verifyKompassiLogin = async (
   oldUsername: string,
   newUsername: string,
 ): Promise<PostVerifyKompassiLoginResponse | PostVerifyKompassiLoginError> => {
+  if (oldUsername !== newUsername) {
+    // Check if username already taken
+    const findUserResult = await findUser(newUsername);
+    if (isErrorResult(findUserResult)) {
+      return {
+        errorId: "unknown",
+        message: "Finding user failed",
+        status: "error",
+      };
+    }
+
+    const existingUser = unwrapResult(findUserResult);
+
+    if (existingUser) {
+      logger.info(
+        `Kompassi verify: Username ${existingUser.username} is already registered`,
+      );
+      return {
+        errorId: "usernameNotFree",
+        message: "Username in already registered",
+        status: "error",
+      };
+    }
+  }
+
   const userResult = await updateUserKompassiLoginStatus(
     oldUsername,
     newUsername,
@@ -214,6 +254,10 @@ export const verifyKompassiLogin = async (
   }
 
   const user = unwrapResult(userResult);
+
+  logger.info(
+    `Kompassi login: username ${oldUsername} changed to ${newUsername}`,
+  );
 
   return {
     message: "Kompassi login status updated",
