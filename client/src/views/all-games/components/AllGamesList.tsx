@@ -1,4 +1,4 @@
-import { ReactElement } from "react";
+import { ReactElement, useState } from "react";
 import { useTranslation } from "react-i18next";
 import _ from "lodash";
 import styled from "styled-components";
@@ -32,6 +32,8 @@ export const AllGamesList = ({ games }: Props): ReactElement => {
   const isGroupCreator = useAppSelector((state) => state.group.isGroupCreator);
   const groupCode = useAppSelector((state) => state.group.groupCode);
   const isInGroup = getIsInGroup(groupCode);
+
+  const [loading, setLoading] = useState(false);
 
   const ownOrGroupCreatorSignedGames = getSignedGames({
     signedGames,
@@ -79,6 +81,8 @@ export const AllGamesList = ({ games }: Props): ReactElement => {
                 signupStrategy={timeslotSignupStrategy}
                 signedGames={ownOrGroupCreatorSignedGames}
                 enteredGames={enteredGames}
+                loading={loading}
+                setLoading={setLoading}
               />
             );
           })}
