@@ -29,6 +29,8 @@ interface Props {
   signedGames: readonly SelectedGame[];
   enteredGames: readonly SelectedGame[];
   isAlwaysExpanded: boolean;
+  loading: boolean;
+  setLoading: (loading: boolean) => void;
 }
 
 export const GameEntry = ({
@@ -39,6 +41,8 @@ export const GameEntry = ({
   signedGames,
   enteredGames,
   isAlwaysExpanded,
+  loading,
+  setLoading,
 }: Props): ReactElement => {
   const { t } = useTranslation();
 
@@ -219,6 +223,8 @@ export const GameEntry = ({
           game={game}
           gameIsFull={gameIsFull}
           startTime={startTime}
+          loading={loading}
+          setLoading={setLoading}
         />
       )}
 

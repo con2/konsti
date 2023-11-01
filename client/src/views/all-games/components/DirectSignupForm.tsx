@@ -24,12 +24,16 @@ interface Props {
   game: Game;
   startTime: string;
   gameIsFull: boolean;
+  loading: boolean;
+  setLoading: (loading: boolean) => void;
 }
 
 export const DirectSignupForm = ({
   game,
   startTime,
   gameIsFull,
+  loading,
+  setLoading,
 }: Props): ReactElement | null => {
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
@@ -42,7 +46,6 @@ export const DirectSignupForm = ({
     (state) => state.admin.signupQuestions,
   );
 
-  const [loading, setLoading] = useState(false);
   const [signupFormOpen, setSignupFormOpen] = useState(false);
   const [cancelSignupFormOpen, setCancelSignupFormOpen] = useState(false);
   const [serverError, setServerError] =
@@ -142,6 +145,7 @@ export const DirectSignupForm = ({
                     <StyledButton
                       onClick={() => setSignupFormOpen(!signupFormOpen)}
                       buttonStyle={ButtonStyle.PRIMARY}
+                      disabled={loading}
                     >
                       {t("signup.directSignup")}
                     </StyledButton>
@@ -156,6 +160,8 @@ export const DirectSignupForm = ({
                   )}
                   onEnterGame={() => setSignupFormOpen(false)}
                   onCancelSignup={() => setSignupFormOpen(false)}
+                  loading={loading}
+                  setLoading={setLoading}
                 />
               )}
             </>
