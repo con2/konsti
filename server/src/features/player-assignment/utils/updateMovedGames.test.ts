@@ -7,7 +7,7 @@ import { UserModel } from "server/features/user/userSchema";
 import { GameModel } from "server/features/game/gameSchema";
 import { mockUser, mockSignedGames } from "server/test/mock-data/mockUser";
 import { testGame, testGame2 } from "shared/tests/testGame";
-import { removeMovedGamesFromUsers } from "server/features/player-assignment/utils/removeMovedGamesFromUsers";
+import { updateMovedGames } from "server/features/player-assignment/utils/updateMovedGames";
 import { findUser, saveUser } from "server/features/user/userRepository";
 import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
 import { findGames, saveGames } from "server/features/game/gameRepository";
@@ -33,7 +33,7 @@ afterEach(async () => {
   await mongoServer.stop();
 });
 
-test("should remove signups for moved games from users", async () => {
+test("should remove lottery signups for moved games from users", async () => {
   await saveGames([testGame, testGame2]);
   const findGamesResult = await findGames();
   const insertedGames = unsafelyUnwrapResult(findGamesResult);
@@ -56,7 +56,7 @@ test("should remove signups for moved games from users", async () => {
     },
   );
 
-  await removeMovedGamesFromUsers(insertedGames);
+  await updateMovedGames(insertedGames);
 
   const findUserResult = await findUser(mockUser.username);
   const updatedUser = unsafelyUnwrapResult(findUserResult);

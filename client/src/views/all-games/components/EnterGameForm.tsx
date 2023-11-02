@@ -234,7 +234,8 @@ export const EnterGameForm = ({
   );
 };
 
-const Warning = styled.div`
+const Warning = styled.span`
+  display: inline-block;
   background-color: ${(props) => props.theme.warningBackground};
   border: 1px solid ${(props) => props.theme.warningBorder};
   border-radius: 4px;

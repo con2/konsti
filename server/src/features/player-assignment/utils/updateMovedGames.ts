@@ -15,11 +15,9 @@ import {
 import { MongoDbError } from "shared/typings/api/errors";
 import { User } from "shared/typings/models/user";
 
-export const removeMovedGamesFromUsers = async (
+export const updateMovedGames = async (
   updatedGames: readonly Game[],
 ): Promise<Result<void, MongoDbError>> => {
-  logger.info("Remove moved signed games from users");
-
   const currentGamesResult = await findGames();
   if (isErrorResult(currentGamesResult)) {
     return currentGamesResult;
@@ -36,12 +34,26 @@ export const removeMovedGamesFromUsers = async (
     });
   });
 
-  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-  if (!movedGames || movedGames.length === 0) {
+  if (movedGames.length === 0) {
     return makeSuccessResult(undefined);
   }
 
   logger.info(`Found ${movedGames.length} moved games`);
+
+  // This will remove lottery signups
+  const removeMovedLotterySignupsResult =
+    await removeMovedLotterySignups(movedGames);
+  if (isErrorResult(removeMovedLotterySignupsResult)) {
+    return removeMovedLotterySignupsResult;
+  }
+
+  return makeSuccessResult(undefined);
+};
+
+const removeMovedLotterySignups = async (
+  movedGames: readonly Game[],
+): Promise<Result<void, MongoDbError>> => {
+  logger.info("Remove moved signed games from users");
 
   const usersResult = await findUsers();
   if (isErrorResult(usersResult)) {
