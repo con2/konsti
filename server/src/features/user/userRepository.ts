@@ -47,7 +47,7 @@ export const saveUser = async (
 
   try {
     const response = await user.save();
-    logger.debug(`MongoDB: User ${newUserData.username} saved to DB`);
+    logger.info(`MongoDB: User ${newUserData.username} saved to DB`);
     return makeSuccessResult(response);
   } catch (error) {
     logger.error(
