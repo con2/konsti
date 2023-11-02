@@ -31,7 +31,7 @@ import {
   unwrapResult,
 } from "shared/utils/result";
 
-const generateGroupCode = () => {
+export const generateGroupCode = (): string => {
   const baseCode = randomBytes(5).toString("hex").substring(0, 9);
   return [
     baseCode.slice(0, 3),

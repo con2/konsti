@@ -28,7 +28,9 @@ export const MyEnteredList = ({
 
   useEffect(() => {
     setStartTimes(
-      enteredGames.map((enteredGame) => enteredGame.time).concat(missedSignups),
+      enteredGames
+        .map((enteredGame) => enteredGame.gameDetails.startTime)
+        .concat(missedSignups),
     );
   }, [missedSignups, enteredGames]);
 
@@ -42,7 +44,7 @@ export const MyEnteredList = ({
       {config.shared().resultsVisible && startTimes.length !== 0 && (
         <ResultsByStartTimes
           signups={_.sortBy(enteredGames, [(enteredGame) => enteredGame.time])}
-          startTimes={[...Array.from(new Set(startTimes))].sort()}
+          startTimes={_.uniq(startTimes).sort()}
           missedSignups={missedSignups}
         />
       )}

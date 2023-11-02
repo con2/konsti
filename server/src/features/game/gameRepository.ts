@@ -1,7 +1,7 @@
 import { ObjectId } from "mongoose";
 import { logger } from "server/utils/logger";
 import { GameModel } from "server/features/game/gameSchema";
-import { removeMovedGamesFromUsers } from "server/features/player-assignment/utils/removeMovedGamesFromUsers";
+import { updateMovedGames } from "server/features/player-assignment/utils/updateMovedGames";
 import { GameDoc } from "server/typings/game.typings";
 import { Game } from "shared/typings/models/game";
 import {
@@ -48,10 +48,9 @@ export const saveGames = async (
     return removeInvalidGamesResult;
   }
 
-  // This will remove lottery signups
-  const removeMovedGamesResult = await removeMovedGamesFromUsers(games);
-  if (isErrorResult(removeMovedGamesResult)) {
-    return removeMovedGamesResult;
+  const updateMovedGamesResult = await updateMovedGames(games);
+  if (isErrorResult(updateMovedGamesResult)) {
+    return updateMovedGamesResult;
   }
 
   const bulkOps = games.map((game) => {

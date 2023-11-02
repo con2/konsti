@@ -408,7 +408,8 @@
   },
   "myProgramView": {
     "yourAnswer": "Vastauksesi kysymykseen",
-    "changePassword": "Vaihda salasana"
+    "changePassword": "Vaihda salasana",
+    "startingTimeChanged": "Aloitusaika muuttunut"
   },
   "accessibility": {
     "loudSounds": "Kovat äänet",

@@ -6,6 +6,7 @@ import { saveUser } from "server/features/user/userRepository";
 import { NewUser } from "server/typings/user.typings";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 import { makeSuccessResult } from "shared/utils/result";
+import { generateGroupCode } from "server/features/user/group/groupService";
 
 const SERIAL_MAX = 10000000;
 
@@ -119,7 +120,7 @@ export const createUsersInGroup = async ({
   groupSize,
   testUsers,
 }: CreateUsersInGroupParams): Promise<void> => {
-  const groupCode = faker.number.int(SERIAL_MAX).toString();
+  const groupCode = generateGroupCode();
 
   logger.info(`Generate data for ${groupSize} users in group ${groupCode}`);
 

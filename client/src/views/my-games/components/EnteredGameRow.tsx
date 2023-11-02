@@ -14,6 +14,7 @@ import { ErrorMessage } from "client/components/ErrorMessage";
 import { loadGames } from "client/utils/loadData";
 import { config } from "shared/config";
 import { IconButton } from "client/components/IconButton";
+import { getShortWeekdayAndTime } from "client/utils/timeFormatter";
 
 interface Props {
   signup: SelectedGame;
@@ -60,7 +61,7 @@ export const EnteredGameRow = ({
     setLoading(false);
   };
 
-  if (signup.time !== startTime) {
+  if (signup.gameDetails.startTime !== startTime) {
     return null;
   }
 
@@ -92,6 +93,15 @@ export const EnteredGameRow = ({
           </CancelSignupFormContainer>
         )}
       </GameTitleAndButtons>
+
+      {signup.time !== signup.gameDetails.startTime && (
+        <div>
+          {t("myProgramView.startingTimeChanged")}{" "}
+          {getShortWeekdayAndTime(signup.time)}{" "}
+          <FontAwesomeIcon icon="arrow-right" />{" "}
+          {getShortWeekdayAndTime(signup.gameDetails.startTime)}
+        </div>
+      )}
 
       {!!signupQuestion && (
         <SignupQuestionPlacement>
