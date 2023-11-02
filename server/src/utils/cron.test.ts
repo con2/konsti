@@ -137,15 +137,16 @@ describe("Progam update cronjob", () => {
   });
 
   test("should not run program update if newer server instance is started", async () => {
-    const infoLoggerSpy = vi.spyOn(logger, "info");
+    const errorLoggerSpy = vi.spyOn(logger, "error");
 
     const oldTime = dayjs(timeNow).subtract(1, "seconds").toISOString();
     await saveSettings({ latestServerStartTime: oldTime });
 
     await autoUpdateGames();
 
-    expect(infoLoggerSpy).toHaveBeenCalledWith(
-      "Cronjobs: Newer server instance running, stop",
+    expect(errorLoggerSpy).toHaveBeenCalledWith(
+      "%s",
+      new Error("Cronjobs: Newer server instance running, stop"),
     );
 
     const settings = unsafelyUnwrapResult(await findSettings());
@@ -231,15 +232,16 @@ describe("Assignment cronjob", () => {
   });
 
   test("should not run assignment if newer server instance is started", async () => {
-    const infoLoggerSpy = vi.spyOn(logger, "info");
+    const errorLoggerSpy = vi.spyOn(logger, "error");
 
     const oldTime = dayjs(timeNow).subtract(1, "seconds").toISOString();
     await saveSettings({ latestServerStartTime: oldTime });
 
     await autoAssignPlayers();
 
-    expect(infoLoggerSpy).toHaveBeenCalledWith(
-      "Cronjobs: Newer server instance running, stop",
+    expect(errorLoggerSpy).toHaveBeenCalledWith(
+      "%s",
+      new Error("Cronjobs: Newer server instance running, stop"),
     );
 
     const settings = unsafelyUnwrapResult(await findSettings());

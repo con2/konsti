@@ -98,7 +98,10 @@ export const autoUpdateGames = async (): Promise<void> => {
   );
   if (isErrorResult(latestServerResult)) {
     if (latestServerResult.error === MongoDbError.SETTINGS_NOT_FOUND) {
-      logger.info("Cronjobs: Newer server instance running, stop");
+      logger.error(
+        "%s",
+        new Error(`Cronjobs: Newer server instance running, stop`),
+      );
       return;
     }
     logger.error(
@@ -158,7 +161,10 @@ export const autoAssignPlayers = async (): Promise<void> => {
   );
   if (isErrorResult(latestServerResult)) {
     if (latestServerResult.error === MongoDbError.SETTINGS_NOT_FOUND) {
-      logger.info("Cronjobs: Newer server instance running, stop");
+      logger.error(
+        "%s",
+        new Error(`Cronjobs: Newer server instance running, stop`),
+      );
       return;
     }
     logger.error(
