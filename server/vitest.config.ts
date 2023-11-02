@@ -6,8 +6,8 @@ export default defineConfig({
   test: {
     environment: "node",
     setupFiles: ["./src/test/setupTests.ts"],
-    testTimeout: 30000,
-    hookTimeout: 60000,
+    testTimeout: 30 * 1000,
+    hookTimeout: 90 * 1000,
   },
   resolve: {
     alias: {

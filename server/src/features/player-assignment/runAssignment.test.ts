@@ -62,6 +62,7 @@ afterAll(async () => {
 
 describe("Assignment with valid data", () => {
   beforeEach(async () => {
+    // TODO: Reduce data
     const newUsersCount = 30;
     const groupSize = 3;
     const numberOfGroups = 10;
