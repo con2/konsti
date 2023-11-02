@@ -197,6 +197,8 @@ export const doKompassiLogin = async (
   }
   const saveUserResponse = unwrapResult(saveUserResult);
 
+  logger.info(`Kompassi login: Saved new user ${saveUserResponse.username}`);
+
   return {
     message: "User login success",
     status: "success",
