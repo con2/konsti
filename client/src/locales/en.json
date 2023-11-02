@@ -408,7 +408,8 @@
   },
   "myProgramView": {
     "yourAnswer": "Your answer to the question",
-    "changePassword": "Change password"
+    "changePassword": "Change password",
+    "startingTimeChanged": "Starting time changed"
   },
   "accessibility": {
     "loudSounds": "Loud sounds",
