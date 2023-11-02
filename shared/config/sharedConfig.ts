@@ -72,6 +72,8 @@ export const sharedConfig: SharedConfig = {
     "p7428", // Peliä Pyynnöstä
     "p7272", // Indiepelipiste / Indie Game Point
     "p7431", // Indiepelipiste / Indie Game Point
+    "p7381", // LARP-Telenovela: Häät
+    "p7426", // LARP-Telenovela: Häät
   ],
 
   signupQuestions: [],
