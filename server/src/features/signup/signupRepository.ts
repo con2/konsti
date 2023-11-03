@@ -86,7 +86,7 @@ export const findSignupsByProgramTypes = async (
   const games = unwrapResult(gamesResult);
 
   const twoPhaseGamesForStartTimeObjectIds = games
-    .filter((game) => dayjs(game.startTime).isSame(startTime))
+    .filter((game) => dayjs(game.startTime).isSame(dayjs(startTime)))
     .filter((game) => programTypes.includes(game.programType))
     .map((game) => game._id);
 
