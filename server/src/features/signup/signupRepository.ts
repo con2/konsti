@@ -85,14 +85,14 @@ export const findSignupsByProgramTypes = async (
   }
   const games = unwrapResult(gamesResult);
 
-  const twoPhaseGamesForStartTimeObjectIds = games
+  const gamesByProgramTypesForStartTimeObjectIds = games
     .filter((game) => dayjs(game.startTime).isSame(dayjs(startTime)))
     .filter((game) => programTypes.includes(game.programType))
     .map((game) => game._id);
 
   try {
     const signups = await SignupModel.find(
-      { game: { $in: twoPhaseGamesForStartTimeObjectIds } },
+      { game: { $in: gamesByProgramTypesForStartTimeObjectIds } },
       "-createdAt -updatedAt -_id -__v",
     )
       .lean<Signup[]>()
