@@ -35,6 +35,7 @@ import { saveSignedGames } from "server/features/user/signed-game/signedGameRepo
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 import { assertUserUpdatedCorrectly } from "server/features/player-assignment/runAssignmentTestUtils";
 import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
+import { GameModel } from "server/features/game/gameSchema";
 
 let mongoServer: MongoMemoryServer;
 
@@ -448,25 +449,38 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
   test("should update previous signup from moved program item with assignment signup if user has updated result", async () => {
     const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
 
+    const assignmentTime = dayjs(testGame.startTime)
+      .add(1, "hours")
+      .toISOString();
+
     await saveGames([
-      { ...testGame, minAttendance: 1 },
+      { ...testGame },
       {
         ...testGame2,
-        startTime: testGame.startTime,
+        minAttendance: 1,
+        startTime: assignmentTime,
       },
     ]);
     await saveUser(mockUser);
 
     await saveSignedGames({
       username: mockUser.username,
-      signedGames: [{ ...mockSignedGames[0] }],
+      signedGames: [
+        {
+          ...mockSignedGames[1],
+        },
+      ],
     });
 
     // User has previous signup from moved program item - this should be replaced by assignment result
-    await saveSignup({
-      ...mockPostEnteredGameRequest,
-      enteredGameId: testGame2.gameId,
-    });
+    await saveSignup(mockPostEnteredGameRequest);
+
+    await GameModel.updateOne(
+      { gameId: testGame.gameId },
+      {
+        startTime: assignmentTime,
+      },
+    );
 
     const signupsBeforeUpdate = unsafelyUnwrapResult(await findSignups());
     const gamesWithSignups = signupsBeforeUpdate.filter(
@@ -477,29 +491,30 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     const assignResults = unsafelyUnwrapResult(
       await runAssignment({
         assignmentStrategy,
-        startTime: testGame.startTime,
+        startTime: assignmentTime,
       }),
     );
     expect(assignResults.status).toEqual("success");
     expect(assignResults.results).toHaveLength(1);
     assignResults.results.map((result) => {
-      expect(result.enteredGame.gameDetails.gameId).toEqual(testGame.gameId);
+      expect(result.enteredGame.gameDetails.gameId).toEqual(testGame2.gameId);
     });
 
     const signupsAfterUpdate = unsafelyUnwrapResult(await findSignups());
 
-    const assignmentSignup = signupsAfterUpdate.find(
+    const previousSignupFromMovedProgramItem = signupsAfterUpdate.find(
       (signup) => signup.game.gameId === testGame.gameId,
     );
+    expect(previousSignupFromMovedProgramItem?.userSignups).toHaveLength(0);
+
+    const assignmentSignup = signupsAfterUpdate.find(
+      (signup) => signup.game.gameId === testGame2.gameId,
+    );
+
     expect(assignmentSignup?.userSignups).toHaveLength(1);
     expect(assignmentSignup?.userSignups[0].username).toEqual(
       mockUser.username,
     );
-
-    const previousSignupFromMovedProgramItem = signupsAfterUpdate.find(
-      (signup) => signup.game.gameId === testGame2.gameId,
-    );
-    expect(previousSignupFromMovedProgramItem?.userSignups).toHaveLength(0);
   });
 });
 

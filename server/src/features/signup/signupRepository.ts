@@ -79,9 +79,20 @@ export const findSignupsByProgramTypes = async (
   programTypes: ProgramType[],
   startTime: string,
 ): Promise<Result<FindSignupsByProgramTypesResponse[], MongoDbError>> => {
+  const gamesResult = await findGames();
+  if (isErrorResult(gamesResult)) {
+    return gamesResult;
+  }
+  const games = unwrapResult(gamesResult);
+
+  const twoPhaseGamesForStartTimeObjectIds = games
+    .filter((game) => dayjs(game.startTime).isSame(startTime))
+    .filter((game) => programTypes.includes(game.programType))
+    .map((game) => game._id);
+
   try {
     const signups = await SignupModel.find(
-      { "userSignups.time": startTime },
+      { game: { $in: twoPhaseGamesForStartTimeObjectIds } },
       "-createdAt -updatedAt -_id -__v",
     )
       .lean<Signup[]>()
@@ -96,9 +107,6 @@ export const findSignupsByProgramTypes = async (
 
     const formattedResponse: FindSignupsByProgramTypesResponse[] =
       signups.flatMap((signup) => {
-        if (!programTypes.includes(signup.game.programType)) {
-          return [];
-        }
         return signup.userSignups.map((userSignup) => ({
           ...userSignup,
           gameId: signup.game.gameId,
