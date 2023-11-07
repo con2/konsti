@@ -83,7 +83,7 @@ export const writeFeedback = (
       fs.writeFileSync(
         `${
           config.server().statsDataDir
-        }/${event}/${year}/temp/${datatype}-fixed.json`,
+        }/${event}/${year}/temp/${datatype}-fixed.txt`,
         `**********\n\n${formattedFeedback}`,
         "utf8",
       );
@@ -93,7 +93,7 @@ export const writeFeedback = (
     fs.appendFileSync(
       `${
         config.server().statsDataDir
-      }/${event}/${year}/temp/${datatype}-fixed.json`,
+      }/${event}/${year}/temp/${datatype}-fixed.txt`,
       formattedFeedback,
       "utf8",
     );
@@ -102,7 +102,7 @@ export const writeFeedback = (
   logger.info(
     `Saved ${getDataLength(data)} ${datatype} to file ${
       config.server().statsDataDir
-    }/${event}/${year}/temp/${datatype}-fixed.json`,
+    }/${event}/${year}/temp/${datatype}-fixed.txt`,
   );
 };
 
