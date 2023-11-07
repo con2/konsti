@@ -1,0 +1,4574 @@
+[
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "915124",
+    "password": "",
+    "userGroup": "user",
+    "serial": "4799148418",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [],
+    "eventLogItems": [],
+    "createdAt": "2023-11-02T17:47:24.185Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "96808",
+    "password": "",
+    "userGroup": "user",
+    "serial": "5044981701",
+    "groupCreatorCode": "0",
+    "groupCode": "871-7c7-463",
+    "favoritedGames": [{ "gameId": "p7334" }],
+    "signedGames": [],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7335",
+        "programItemStartTime": "2023-11-04T16:00:00Z",
+        "isSeen": false,
+        "createdAt": "2023-11-04T14:00:11.832Z"
+      }
+    ],
+    "createdAt": "2023-11-02T17:56:54.166Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "508675",
+    "password": "",
+    "userGroup": "user",
+    "serial": "7712495964",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [
+      { "gameId": "p7359" },
+      { "gameId": "p7381" },
+      { "gameId": "p7353" },
+      { "gameId": "p7358" },
+      { "gameId": "p7344" }
+    ],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7358" },
+        "priority": 1,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7358",
+        "programItemStartTime": "2023-11-05T10:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-05T08:00:15.673Z"
+      }
+    ],
+    "createdAt": "2023-11-02T18:05:30.147Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "714941",
+    "password": "",
+    "userGroup": "user",
+    "serial": "3254661048",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [],
+    "eventLogItems": [],
+    "createdAt": "2023-11-02T18:05:53.612Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "293448",
+    "password": "",
+    "userGroup": "user",
+    "serial": "9824251137",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [],
+    "eventLogItems": [],
+    "createdAt": "2023-11-02T18:12:01.796Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "639753",
+    "password": "",
+    "userGroup": "user",
+    "serial": "0819094657",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [
+      { "gameId": "p7300" },
+      { "gameId": "p7353" },
+      { "gameId": "p7345" },
+      { "gameId": "<canceled>" },
+      { "gameId": "p7339" },
+      { "gameId": "<canceled>" }
+    ],
+    "signedGames": [],
+    "eventLogItems": [],
+    "createdAt": "2023-11-02T18:17:45.007Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "667873",
+    "password": "",
+    "userGroup": "user",
+    "serial": "8267183526",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [],
+    "eventLogItems": [],
+    "createdAt": "2023-11-02T18:59:09.964Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "6168",
+    "password": "",
+    "userGroup": "user",
+    "serial": "0178856969",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [
+      { "gameId": "p7310" },
+      { "gameId": "p7359" },
+      { "gameId": "p7334" },
+      { "gameId": "p7284" },
+      { "gameId": "p7347" },
+      { "gameId": "p7343" }
+    ],
+    "signedGames": [],
+    "eventLogItems": [],
+    "createdAt": "2023-11-02T19:04:45.884Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "720914",
+    "password": "",
+    "userGroup": "user",
+    "serial": "4030986550",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [
+      { "gameId": "p7340" },
+      { "gameId": "p7359" },
+      { "gameId": "p7310" },
+      { "gameId": "p7300" },
+      { "gameId": "p7284" },
+      { "gameId": "p7280" },
+      { "gameId": "<canceled>" },
+      { "gameId": "p7367" },
+      { "gameId": "p7285" },
+      { "gameId": "p7365" },
+      { "gameId": "p7358" },
+      { "gameId": "<canceled>" },
+      { "gameId": "<canceled>" }
+    ],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7367" },
+        "priority": 1,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7367",
+        "programItemStartTime": "2023-11-05T10:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-05T08:00:15.673Z"
+      }
+    ],
+    "createdAt": "2023-11-02T19:55:20.218Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "238669",
+    "password": "",
+    "userGroup": "user",
+    "serial": "6205278879",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7368" },
+        "priority": 2,
+        "time": "2023-11-04T15:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7298" },
+        "priority": 1,
+        "time": "2023-11-04T16:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7341" },
+        "priority": 2,
+        "time": "2023-11-04T16:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7341",
+        "programItemStartTime": "2023-11-04T16:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T14:00:11.832Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "p7349",
+        "programItemStartTime": "2023-11-05T09:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-05T07:00:15.268Z"
+      }
+    ],
+    "createdAt": "2023-11-03T05:07:52.047Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "265543",
+    "password": "",
+    "userGroup": "user",
+    "serial": "3615407115",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [
+      { "gameId": "p7347" },
+      { "gameId": "p7310" },
+      { "gameId": "p7334" },
+      { "gameId": "p7365" },
+      { "gameId": "p7362" },
+      { "gameId": "p7367" }
+    ],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7373" },
+        "priority": 1,
+        "time": "2023-11-04T18:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7346" },
+        "priority": 2,
+        "time": "2023-11-04T18:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7365" },
+        "priority": 1,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7362" },
+        "priority": 2,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7367" },
+        "priority": 3,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7369" },
+        "priority": 1,
+        "time": "2023-11-05T11:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [],
+    "createdAt": "2023-11-03T05:57:11.269Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "673806",
+    "password": "",
+    "userGroup": "user",
+    "serial": "6297044353",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [],
+    "eventLogItems": [],
+    "createdAt": "2023-11-03T07:46:17.222Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "228264",
+    "password": "",
+    "userGroup": "user",
+    "serial": "4695924573",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [{ "gameId": "p7298" }, { "gameId": "p7299" }],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7298" },
+        "priority": 1,
+        "time": "2023-11-04T16:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7299" },
+        "priority": 1,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7299",
+        "programItemStartTime": "2023-11-05T10:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-05T08:00:15.673Z"
+      }
+    ],
+    "createdAt": "2023-11-03T08:17:00.1Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "535516",
+    "password": "",
+    "userGroup": "user",
+    "serial": "6750363753",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [
+      { "gameId": "p7361" },
+      { "gameId": "p7274" },
+      { "gameId": "p7346" },
+      { "gameId": "p7344" },
+      { "gameId": "p7269" },
+      { "gameId": "p7373" },
+      { "gameId": "p7365" },
+      { "gameId": "p7424" }
+    ],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7274" },
+        "priority": 1,
+        "time": "2023-11-04T14:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7341" },
+        "priority": 1,
+        "time": "2023-11-04T16:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7298" },
+        "priority": 2,
+        "time": "2023-11-04T16:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7335" },
+        "priority": 3,
+        "time": "2023-11-04T16:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7365" },
+        "priority": 1,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7367" },
+        "priority": 2,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7358" },
+        "priority": 3,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7274",
+        "programItemStartTime": "2023-11-04T14:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T12:00:11.266Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "p7341",
+        "programItemStartTime": "2023-11-04T16:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T14:00:11.832Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "p7365",
+        "programItemStartTime": "2023-11-05T10:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-05T08:00:15.673Z"
+      }
+    ],
+    "createdAt": "2023-11-03T08:55:38.27Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "325398",
+    "password": "",
+    "userGroup": "user",
+    "serial": "9629719288",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [{ "gameId": "p7300" }],
+    "signedGames": [],
+    "eventLogItems": [],
+    "createdAt": "2023-11-03T09:32:46.284Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "223931",
+    "password": "",
+    "userGroup": "user",
+    "serial": "2951426689",
+    "groupCreatorCode": "0",
+    "groupCode": "871-7c7-463",
+    "favoritedGames": [],
+    "signedGames": [],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7335",
+        "programItemStartTime": "2023-11-04T16:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T14:00:11.832Z"
+      }
+    ],
+    "createdAt": "2023-11-03T10:12:25.482Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "343757",
+    "password": "",
+    "userGroup": "user",
+    "serial": "7813926719",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7368" },
+        "priority": 1,
+        "time": "2023-11-04T15:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7369" },
+        "priority": 1,
+        "time": "2023-11-05T11:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [],
+    "createdAt": "2023-11-03T11:02:00.003Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "641422",
+    "password": "",
+    "userGroup": "user",
+    "serial": "5358003662",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [{ "gameId": "p7365" }, { "gameId": "p7347" }],
+    "signedGames": [],
+    "eventLogItems": [],
+    "createdAt": "2023-11-03T12:58:51.695Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "983766",
+    "password": "",
+    "userGroup": "user",
+    "serial": "9327503489",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7345" },
+        "priority": 1,
+        "time": "2023-11-04T13:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7368" },
+        "priority": 2,
+        "time": "2023-11-04T15:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7298" },
+        "priority": 1,
+        "time": "2023-11-04T16:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7341" },
+        "priority": 2,
+        "time": "2023-11-04T16:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7285" },
+        "priority": 1,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7362" },
+        "priority": 2,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7295",
+        "programItemStartTime": "2023-11-04T15:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T13:00:11.758Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "p7298",
+        "programItemStartTime": "2023-11-04T16:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T14:00:11.832Z"
+      }
+    ],
+    "createdAt": "2023-11-03T13:13:17.896Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "932611",
+    "password": "",
+    "userGroup": "user",
+    "serial": "2882663574",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [
+      { "gameId": "p7340" },
+      { "gameId": "p7429" },
+      { "gameId": "p7272" },
+      { "gameId": "p7373" },
+      { "gameId": "p7367" },
+      { "gameId": "p7369" },
+      { "gameId": "p7365" }
+    ],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7369" },
+        "priority": 1,
+        "time": "2023-11-05T11:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [],
+    "createdAt": "2023-11-03T14:54:53.048Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "65784",
+    "password": "",
+    "userGroup": "user",
+    "serial": "6610901735",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [
+      { "gameId": "p7310" },
+      { "gameId": "p7340" },
+      { "gameId": "p7359" },
+      { "gameId": "p7429" },
+      { "gameId": "p7284" },
+      { "gameId": "p7272" },
+      { "gameId": "p7345" },
+      { "gameId": "p7280" },
+      { "gameId": "p7360" }
+    ],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7360" },
+        "priority": 1,
+        "time": "2023-11-04T15:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7360",
+        "programItemStartTime": "2023-11-04T15:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T13:00:11.758Z"
+      }
+    ],
+    "createdAt": "2023-11-03T15:03:00.602Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "475135",
+    "password": "",
+    "userGroup": "user",
+    "serial": "8448781594",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [],
+    "eventLogItems": [],
+    "createdAt": "2023-11-03T15:48:24.24Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "259097",
+    "password": "",
+    "userGroup": "user",
+    "serial": "4017947286",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [],
+    "eventLogItems": [],
+    "createdAt": "2023-11-03T16:13:20.485Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "946238",
+    "password": "",
+    "userGroup": "user",
+    "serial": "9698242907",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [
+      { "gameId": "p7298" },
+      { "gameId": "p7368" },
+      { "gameId": "<canceled>" },
+      { "gameId": "p7341" }
+    ],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7368" },
+        "priority": 1,
+        "time": "2023-11-04T15:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7368",
+        "programItemStartTime": "2023-11-04T15:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T13:00:11.758Z"
+      }
+    ],
+    "createdAt": "2023-11-03T17:25:19.739Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "493473",
+    "password": "",
+    "userGroup": "user",
+    "serial": "4996010270",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [],
+    "eventLogItems": [],
+    "createdAt": "2023-11-03T18:07:02.002Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "826277",
+    "password": "",
+    "userGroup": "user",
+    "serial": "9419434957",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [],
+    "eventLogItems": [],
+    "createdAt": "2023-11-03T18:10:51.429Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "577037",
+    "password": "",
+    "userGroup": "user",
+    "serial": "1719944405",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7373" },
+        "priority": 1,
+        "time": "2023-11-04T18:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7373",
+        "programItemStartTime": "2023-11-04T18:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T16:00:12.401Z"
+      }
+    ],
+    "createdAt": "2023-11-03T18:20:38.975Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "657141",
+    "password": "",
+    "userGroup": "user",
+    "serial": "8633539229",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [{ "gameId": "p7361" }, { "gameId": "p7353" }],
+    "signedGames": [],
+    "eventLogItems": [],
+    "createdAt": "2023-11-03T18:30:17.305Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "253287",
+    "password": "",
+    "userGroup": "user",
+    "serial": "5151814885",
+    "groupCreatorCode": "871-7c7-463",
+    "groupCode": "871-7c7-463",
+    "favoritedGames": [],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7274" },
+        "priority": 1,
+        "time": "2023-11-04T14:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7360" },
+        "priority": 1,
+        "time": "2023-11-04T15:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7341" },
+        "priority": 1,
+        "time": "2023-11-04T16:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7335" },
+        "priority": 2,
+        "time": "2023-11-04T16:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7335",
+        "programItemStartTime": "2023-11-04T16:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T14:00:11.832Z"
+      }
+    ],
+    "createdAt": "2023-11-03T19:20:48.902Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "686327",
+    "password": "",
+    "userGroup": "user",
+    "serial": "0991463522",
+    "groupCreatorCode": "0",
+    "groupCode": "871-7c7-463",
+    "favoritedGames": [],
+    "signedGames": [],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7335",
+        "programItemStartTime": "2023-11-04T16:00:00Z",
+        "isSeen": false,
+        "createdAt": "2023-11-04T14:00:11.832Z"
+      }
+    ],
+    "createdAt": "2023-11-03T19:22:41.875Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "134423",
+    "password": "",
+    "userGroup": "user",
+    "serial": "6539352747",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [],
+    "eventLogItems": [],
+    "createdAt": "2023-11-03T19:28:20.473Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "952181",
+    "password": "",
+    "userGroup": "user",
+    "serial": "9051836980",
+    "groupCreatorCode": "0",
+    "groupCode": "673-35d-13d",
+    "favoritedGames": [],
+    "signedGames": [],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7299",
+        "programItemStartTime": "2023-11-05T10:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-05T08:00:15.673Z"
+      }
+    ],
+    "createdAt": "2023-11-03T19:39:53.528Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "786772",
+    "password": "",
+    "userGroup": "user",
+    "serial": "5744865600",
+    "groupCreatorCode": "673-35d-13d",
+    "groupCode": "673-35d-13d",
+    "favoritedGames": [],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7298" },
+        "priority": 1,
+        "time": "2023-11-04T16:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7358" },
+        "priority": 1,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7299" },
+        "priority": 2,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7299",
+        "programItemStartTime": "2023-11-05T10:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-05T08:00:15.673Z"
+      }
+    ],
+    "createdAt": "2023-11-03T19:40:07.662Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "711325",
+    "password": "",
+    "userGroup": "user",
+    "serial": "9685718356",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [
+      { "gameId": "p7300" },
+      { "gameId": "p7334" },
+      { "gameId": "p7284" },
+      { "gameId": "p7360" },
+      { "gameId": "p7298" },
+      { "gameId": "p7269" },
+      { "gameId": "p7365" }
+    ],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7298" },
+        "priority": 2,
+        "time": "2023-11-04T16:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7279" },
+        "priority": 1,
+        "time": "2023-11-04T17:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7269" },
+        "priority": 2,
+        "time": "2023-11-04T17:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7298",
+        "programItemStartTime": "2023-11-04T16:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T14:00:11.832Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "p7279",
+        "programItemStartTime": "2023-11-04T17:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T15:00:12.095Z"
+      }
+    ],
+    "createdAt": "2023-11-03T20:14:17.762Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "253868",
+    "password": "",
+    "userGroup": "user",
+    "serial": "4539748519",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [
+      { "gameId": "p7364" },
+      { "gameId": "p7360" },
+      { "gameId": "p7279" },
+      { "gameId": "p7346" },
+      { "gameId": "p7365" },
+      { "gameId": "p7369" }
+    ],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7279" },
+        "priority": 1,
+        "time": "2023-11-04T17:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7369" },
+        "priority": 1,
+        "time": "2023-11-05T11:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7279",
+        "programItemStartTime": "2023-11-04T17:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T15:00:12.095Z"
+      }
+    ],
+    "createdAt": "2023-11-03T20:25:59.114Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "273506",
+    "password": "",
+    "userGroup": "user",
+    "serial": "7785888210",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [
+      { "gameId": "p7280" },
+      { "gameId": "p7367" },
+      { "gameId": "p7285" },
+      { "gameId": "p7284" },
+      { "gameId": "p7334" },
+      { "gameId": "p7369" },
+      { "gameId": "p7424" },
+      { "gameId": "p7365" }
+    ],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7367" },
+        "priority": 1,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7285" },
+        "priority": 2,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7367",
+        "programItemStartTime": "2023-11-05T10:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-05T08:00:15.673Z"
+      }
+    ],
+    "createdAt": "2023-11-03T20:49:23.123Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "997499",
+    "password": "",
+    "userGroup": "user",
+    "serial": "6916582031",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7368" },
+        "priority": 1,
+        "time": "2023-11-04T15:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7368",
+        "programItemStartTime": "2023-11-04T15:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T13:00:11.758Z"
+      }
+    ],
+    "createdAt": "2023-11-03T21:17:23.45Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "611296",
+    "password": "",
+    "userGroup": "user",
+    "serial": "9048183439",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [
+      { "gameId": "p7359" },
+      { "gameId": "p7363" },
+      { "gameId": "p7343" },
+      { "gameId": "p7368" },
+      { "gameId": "p7298" },
+      { "gameId": "p7284" }
+    ],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7298" },
+        "priority": 1,
+        "time": "2023-11-04T16:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7298",
+        "programItemStartTime": "2023-11-04T16:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T14:00:11.832Z"
+      }
+    ],
+    "createdAt": "2023-11-03T21:33:03.928Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "725712",
+    "password": "",
+    "userGroup": "user",
+    "serial": "2407300090",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [{ "gameId": "p7347" }, { "gameId": "p7346" }],
+    "signedGames": [],
+    "eventLogItems": [],
+    "createdAt": "2023-11-03T22:27:15.948Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "612919",
+    "password": "",
+    "userGroup": "user",
+    "serial": "7873546522",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [
+      { "gameId": "p7345" },
+      { "gameId": "p7280" },
+      { "gameId": "p7364" },
+      { "gameId": "p7431" },
+      { "gameId": "p7428" },
+      { "gameId": "p7358" },
+      { "gameId": "p7285" },
+      { "gameId": "p7367" },
+      { "gameId": "p7369" },
+      { "gameId": "p7272" },
+      { "gameId": "p7284" },
+      { "gameId": "p7429" },
+      { "gameId": "p7300" },
+      { "gameId": "p7269" }
+    ],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7269" },
+        "priority": 1,
+        "time": "2023-11-04T17:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7269",
+        "programItemStartTime": "2023-11-04T17:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T15:00:12.095Z"
+      }
+    ],
+    "createdAt": "2023-11-04T02:43:14.468Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "976069",
+    "password": "",
+    "userGroup": "user",
+    "serial": "4645249568",
+    "groupCreatorCode": "809-cd5-b1a",
+    "groupCode": "809-cd5-b1a",
+    "favoritedGames": [{ "gameId": "p7358" }, { "gameId": "p7367" }],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7358" },
+        "priority": 1,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7367" },
+        "priority": 2,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7360",
+        "programItemStartTime": "2023-11-04T15:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T13:00:11.758Z"
+      }
+    ],
+    "createdAt": "2023-11-04T02:47:53.755Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "787207",
+    "password": "",
+    "userGroup": "user",
+    "serial": "1481865747",
+    "groupCreatorCode": "0",
+    "groupCode": "809-cd5-b1a",
+    "favoritedGames": [
+      { "gameId": "p7361" },
+      { "gameId": "p7359" },
+      { "gameId": "p7274" },
+      { "gameId": "p7360" },
+      { "gameId": "p7358" },
+      { "gameId": "p7367" }
+    ],
+    "signedGames": [],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7360",
+        "programItemStartTime": "2023-11-04T15:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T13:00:11.758Z"
+      }
+    ],
+    "createdAt": "2023-11-04T03:39:45.814Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "446644",
+    "password": "",
+    "userGroup": "user",
+    "serial": "2383311178",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [
+      { "gameId": "p7361" },
+      { "gameId": "p7381" },
+      { "gameId": "p7284" },
+      { "gameId": "p7338" },
+      { "gameId": "p7274" },
+      { "gameId": "<canceled>" },
+      { "gameId": "p7364" }
+    ],
+    "signedGames": [],
+    "eventLogItems": [],
+    "createdAt": "2023-11-04T05:03:11.837Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "788510",
+    "password": "",
+    "userGroup": "user",
+    "serial": "4782104055",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [
+      { "gameId": "p7310" },
+      { "gameId": "p7300" },
+      { "gameId": "p7284" },
+      { "gameId": "p7361" },
+      { "gameId": "p7360" },
+      { "gameId": "p7273" },
+      { "gameId": "<canceled>" }
+    ],
+    "signedGames": [],
+    "eventLogItems": [],
+    "createdAt": "2023-11-04T05:12:07.633Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "198170",
+    "password": "",
+    "userGroup": "user",
+    "serial": "6461009810",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [
+      { "gameId": "p7363" },
+      { "gameId": "p7368" },
+      { "gameId": "p7360" },
+      { "gameId": "p7270" },
+      { "gameId": "p7358" },
+      { "gameId": "p7424" }
+    ],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7368" },
+        "priority": 1,
+        "time": "2023-11-04T15:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7270" },
+        "priority": 1,
+        "time": "2023-11-05T09:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7368",
+        "programItemStartTime": "2023-11-04T15:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T13:00:11.758Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "p7270",
+        "programItemStartTime": "2023-11-05T09:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-05T07:00:15.268Z"
+      }
+    ],
+    "createdAt": "2023-11-04T05:25:47.281Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "79888",
+    "password": "",
+    "userGroup": "user",
+    "serial": "1263529313",
+    "groupCreatorCode": "0",
+    "groupCode": "54e-32f-c47",
+    "favoritedGames": [
+      { "gameId": "p7273" },
+      { "gameId": "p7373" },
+      { "gameId": "p7270" },
+      { "gameId": "p7358" },
+      { "gameId": "p7367" }
+    ],
+    "signedGames": [],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7280",
+        "programItemStartTime": "2023-11-04T13:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T11:00:11.001Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "p7273",
+        "programItemStartTime": "2023-11-04T17:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T15:00:12.095Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "p7358",
+        "programItemStartTime": "2023-11-05T10:00:00Z",
+        "isSeen": false,
+        "createdAt": "2023-11-05T08:00:15.673Z"
+      }
+    ],
+    "createdAt": "2023-11-04T05:38:56.928Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "715884",
+    "password": "",
+    "userGroup": "user",
+    "serial": "1220500522",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [
+      { "gameId": "p7284" },
+      { "gameId": "p7335" },
+      { "gameId": "p7358" },
+      { "gameId": "p7362" },
+      { "gameId": "p7285" },
+      { "gameId": "p7367" },
+      { "gameId": "p7369" }
+    ],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7269" },
+        "priority": 1,
+        "time": "2023-11-04T17:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7373" },
+        "priority": 1,
+        "time": "2023-11-04T18:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7339" },
+        "priority": 1,
+        "time": "2023-11-05T09:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7362" },
+        "priority": 1,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7367" },
+        "priority": 2,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7358" },
+        "priority": 3,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7295",
+        "programItemStartTime": "2023-11-04T15:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T13:00:11.758Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "p7269",
+        "programItemStartTime": "2023-11-04T17:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T15:00:12.095Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "p7373",
+        "programItemStartTime": "2023-11-04T18:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T16:00:12.401Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "p7367",
+        "programItemStartTime": "2023-11-05T10:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-05T08:00:15.673Z"
+      }
+    ],
+    "createdAt": "2023-11-04T06:00:35.454Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "575241",
+    "password": "",
+    "userGroup": "user",
+    "serial": "9839723088",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [{ "gameId": "p7284" }],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7345" },
+        "priority": 1,
+        "time": "2023-11-04T13:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7280" },
+        "priority": 2,
+        "time": "2023-11-04T13:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7358" },
+        "priority": 1,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7365" },
+        "priority": 3,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7362" },
+        "priority": 2,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7424" },
+        "priority": 1,
+        "time": "2023-11-05T12:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7344" },
+        "priority": 2,
+        "time": "2023-11-05T12:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7280",
+        "programItemStartTime": "2023-11-04T13:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T11:00:11.001Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "p7424",
+        "programItemStartTime": "2023-11-05T12:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-05T10:00:15.775Z"
+      }
+    ],
+    "createdAt": "2023-11-04T06:18:22.654Z",
+    "updatedAt": "2023-11-05T10:30:53.164Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "260741",
+    "password": "",
+    "userGroup": "user",
+    "serial": "2184484240",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [
+      { "gameId": "p7284" },
+      { "gameId": "p7361" },
+      { "gameId": "p7359" }
+    ],
+    "signedGames": [],
+    "eventLogItems": [],
+    "createdAt": "2023-11-04T06:22:16.12Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "859875",
+    "password": "",
+    "userGroup": "user",
+    "serial": "4100474321",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [
+      { "gameId": "p7359" },
+      { "gameId": "p7361" },
+      { "gameId": "p7353" },
+      { "gameId": "p7272" },
+      { "gameId": "p7338" },
+      { "gameId": "p7280" },
+      { "gameId": "p7274" },
+      { "gameId": "p7360" },
+      { "gameId": "p7335" },
+      { "gameId": "p7341" },
+      { "gameId": "p7269" },
+      { "gameId": "p7273" },
+      { "gameId": "p7346" },
+      { "gameId": "p7365" }
+    ],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7346" },
+        "priority": 1,
+        "time": "2023-11-04T18:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7373" },
+        "priority": 2,
+        "time": "2023-11-04T18:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7346",
+        "programItemStartTime": "2023-11-04T18:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T16:00:12.401Z"
+      }
+    ],
+    "createdAt": "2023-11-04T06:36:26.854Z",
+    "updatedAt": "2023-11-05T19:00:13.551Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "911685",
+    "password": "",
+    "userGroup": "user",
+    "serial": "8487188685",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [],
+    "eventLogItems": [],
+    "createdAt": "2023-11-04T06:39:28.618Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "210186",
+    "password": "",
+    "userGroup": "user",
+    "serial": "1574995351",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [
+      { "gameId": "p7359" },
+      { "gameId": "p7361" },
+      { "gameId": "p7353" }
+    ],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7365" },
+        "priority": 1,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7362" },
+        "priority": 2,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7365",
+        "programItemStartTime": "2023-11-05T10:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-05T08:00:15.673Z"
+      }
+    ],
+    "createdAt": "2023-11-04T06:45:00.859Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "574120",
+    "password": "",
+    "userGroup": "user",
+    "serial": "8019663999",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [
+      { "gameId": "p7353" },
+      { "gameId": "p7284" },
+      { "gameId": "p7361" }
+    ],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7269" },
+        "priority": 1,
+        "time": "2023-11-04T17:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7285" },
+        "priority": 1,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7358" },
+        "priority": 3,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7362" },
+        "priority": 2,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7295",
+        "programItemStartTime": "2023-11-04T15:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T13:00:11.758Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "p7269",
+        "programItemStartTime": "2023-11-04T17:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T15:00:12.095Z"
+      }
+    ],
+    "createdAt": "2023-11-04T06:51:48.945Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "593894",
+    "password": "",
+    "userGroup": "user",
+    "serial": "1744158468",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [],
+    "eventLogItems": [],
+    "createdAt": "2023-11-04T07:02:13.728Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "155888",
+    "password": "",
+    "userGroup": "user",
+    "serial": "8124510168",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [
+      { "gameId": "p7359" },
+      { "gameId": "p7347" },
+      { "gameId": "<canceled>" },
+      { "gameId": "p7346" },
+      { "gameId": "<canceled>" }
+    ],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7346" },
+        "priority": 1,
+        "time": "2023-11-04T18:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7346",
+        "programItemStartTime": "2023-11-04T18:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T16:00:12.401Z"
+      }
+    ],
+    "createdAt": "2023-11-04T07:08:33.941Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "956919",
+    "password": "",
+    "userGroup": "user",
+    "serial": "8025551147",
+    "groupCreatorCode": "84d-95c-a2f",
+    "groupCode": "84d-95c-a2f",
+    "favoritedGames": [],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7338" },
+        "priority": 1,
+        "time": "2023-11-04T11:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7338",
+        "programItemStartTime": "2023-11-04T11:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T09:00:10.621Z"
+      }
+    ],
+    "createdAt": "2023-11-04T07:11:42.495Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "268201",
+    "password": "",
+    "userGroup": "user",
+    "serial": "9630171610",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [{ "gameId": "p7346" }],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7360" },
+        "priority": 1,
+        "time": "2023-11-04T15:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7285" },
+        "priority": 1,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7360",
+        "programItemStartTime": "2023-11-04T15:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T13:00:11.758Z"
+      }
+    ],
+    "createdAt": "2023-11-04T07:18:49.36Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "799122",
+    "password": "",
+    "userGroup": "user",
+    "serial": "2248487635",
+    "groupCreatorCode": "0",
+    "groupCode": "84d-95c-a2f",
+    "favoritedGames": [],
+    "signedGames": [],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7338",
+        "programItemStartTime": "2023-11-04T11:00:00Z",
+        "isSeen": false,
+        "createdAt": "2023-11-04T09:00:10.621Z"
+      }
+    ],
+    "createdAt": "2023-11-04T07:20:03.805Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "557144",
+    "password": "",
+    "userGroup": "user",
+    "serial": "4176715409",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [{ "gameId": "p7359" }, { "gameId": "p7361" }],
+    "signedGames": [],
+    "eventLogItems": [],
+    "createdAt": "2023-11-04T07:21:14.706Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "614924",
+    "password": "",
+    "userGroup": "user",
+    "serial": "8319339332",
+    "groupCreatorCode": "54e-32f-c47",
+    "groupCode": "54e-32f-c47",
+    "favoritedGames": [
+      { "gameId": "p7373" },
+      { "gameId": "p7270" },
+      { "gameId": "p7367" },
+      { "gameId": "p7424" },
+      { "gameId": "p7280" },
+      { "gameId": "p7273" },
+      { "gameId": "p7358" }
+    ],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7280" },
+        "priority": 1,
+        "time": "2023-11-04T13:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7273" },
+        "priority": 2,
+        "time": "2023-11-04T17:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7358" },
+        "priority": 1,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7367" },
+        "priority": 2,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7362" },
+        "priority": 3,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7280",
+        "programItemStartTime": "2023-11-04T13:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T11:00:11.001Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "p7273",
+        "programItemStartTime": "2023-11-04T17:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T15:00:12.095Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "p7358",
+        "programItemStartTime": "2023-11-05T10:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-05T08:00:15.673Z"
+      }
+    ],
+    "createdAt": "2023-11-04T07:28:48.973Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "324210",
+    "password": "",
+    "userGroup": "user",
+    "serial": "4906903838",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7346",
+        "programItemStartTime": "2023-11-04T18:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T16:00:12.401Z"
+      }
+    ],
+    "createdAt": "2023-11-04T07:31:48.439Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "583106",
+    "password": "",
+    "userGroup": "user",
+    "serial": "7441007080",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [],
+    "eventLogItems": [],
+    "createdAt": "2023-11-04T07:38:28.925Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "90752",
+    "password": "",
+    "userGroup": "user",
+    "serial": "5018008945",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [
+      { "gameId": "p7272" },
+      { "gameId": "p7345" },
+      { "gameId": "p7343" },
+      { "gameId": "p7299" },
+      { "gameId": "p7369" }
+    ],
+    "signedGames": [],
+    "eventLogItems": [],
+    "createdAt": "2023-11-04T07:45:16.362Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "759022",
+    "password": "",
+    "userGroup": "user",
+    "serial": "5449812121",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [
+      { "gameId": "p7359" },
+      { "gameId": "p7361" },
+      { "gameId": "p7284" }
+    ],
+    "signedGames": [],
+    "eventLogItems": [],
+    "createdAt": "2023-11-04T07:49:14.165Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "86289",
+    "password": "",
+    "userGroup": "user",
+    "serial": "0724064365",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [],
+    "eventLogItems": [],
+    "createdAt": "2023-11-04T07:52:20.466Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "77079",
+    "password": "",
+    "userGroup": "user",
+    "serial": "6550637414",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [
+      { "gameId": "p7284" },
+      { "gameId": "p7353" },
+      { "gameId": "p7347" },
+      { "gameId": "p7274" },
+      { "gameId": "p7361" },
+      { "gameId": "p7280" },
+      { "gameId": "p7365" },
+      { "gameId": "p7344" },
+      { "gameId": "p7362" }
+    ],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7274" },
+        "priority": 1,
+        "time": "2023-11-04T14:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7274",
+        "programItemStartTime": "2023-11-04T14:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T12:00:11.266Z"
+      }
+    ],
+    "createdAt": "2023-11-04T07:52:34.27Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "679690",
+    "password": "",
+    "userGroup": "user",
+    "serial": "3280362017",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [],
+    "eventLogItems": [],
+    "createdAt": "2023-11-04T07:54:42.663Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "363586",
+    "password": "",
+    "userGroup": "user",
+    "serial": "0915252902",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7362" },
+        "priority": 1,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7358" },
+        "priority": 2,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7367" },
+        "priority": 3,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [],
+    "createdAt": "2023-11-04T08:02:15.734Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "898935",
+    "password": "",
+    "userGroup": "user",
+    "serial": "5314635540",
+    "groupCreatorCode": "a55-454-c6c",
+    "groupCode": "a55-454-c6c",
+    "favoritedGames": [],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7364" },
+        "priority": 1,
+        "time": "2023-11-04T15:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7360" },
+        "priority": 3,
+        "time": "2023-11-04T15:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7367" },
+        "priority": 1,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7362" },
+        "priority": 2,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7365" },
+        "priority": 3,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7362",
+        "programItemStartTime": "2023-11-05T10:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-05T08:00:15.673Z"
+      }
+    ],
+    "createdAt": "2023-11-04T08:05:06.706Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "69267",
+    "password": "",
+    "userGroup": "user",
+    "serial": "6734416560",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [],
+    "eventLogItems": [],
+    "createdAt": "2023-11-04T08:06:23.32Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "550858",
+    "password": "",
+    "userGroup": "user",
+    "serial": "3979037128",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7274" },
+        "priority": 1,
+        "time": "2023-11-04T14:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7285" },
+        "priority": 1,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7362" },
+        "priority": 2,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7424" },
+        "priority": 1,
+        "time": "2023-11-05T12:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7344" },
+        "priority": 2,
+        "time": "2023-11-05T12:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7274",
+        "programItemStartTime": "2023-11-04T14:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T12:00:11.266Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "p7424",
+        "programItemStartTime": "2023-11-05T12:00:00Z",
+        "isSeen": false,
+        "createdAt": "2023-11-05T10:00:15.775Z"
+      }
+    ],
+    "createdAt": "2023-11-04T08:06:45.237Z",
+    "updatedAt": "2023-11-05T10:00:15.895Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "746678",
+    "password": "",
+    "userGroup": "user",
+    "serial": "4494151626",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [{ "gameId": "p7274" }, { "gameId": "p7280" }],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7274" },
+        "priority": 1,
+        "time": "2023-11-04T14:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7274",
+        "programItemStartTime": "2023-11-04T14:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T12:00:11.266Z"
+      }
+    ],
+    "createdAt": "2023-11-04T08:08:05.746Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "510442",
+    "password": "",
+    "userGroup": "user",
+    "serial": "2239651363",
+    "groupCreatorCode": "0",
+    "groupCode": "a55-454-c6c",
+    "favoritedGames": [],
+    "signedGames": [],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7362",
+        "programItemStartTime": "2023-11-05T10:00:00Z",
+        "isSeen": false,
+        "createdAt": "2023-11-05T08:00:15.673Z"
+      }
+    ],
+    "createdAt": "2023-11-04T08:08:24.256Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "588901",
+    "password": "",
+    "userGroup": "user",
+    "serial": "0348221896",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7345" },
+        "priority": 1,
+        "time": "2023-11-04T13:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7341" },
+        "priority": 1,
+        "time": "2023-11-04T16:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7335" },
+        "priority": 2,
+        "time": "2023-11-04T16:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7341",
+        "programItemStartTime": "2023-11-04T16:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T14:00:11.832Z"
+      }
+    ],
+    "createdAt": "2023-11-04T08:08:57.195Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "173900",
+    "password": "",
+    "userGroup": "user",
+    "serial": "8910575706",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [],
+    "eventLogItems": [],
+    "createdAt": "2023-11-04T08:10:39.683Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "503509",
+    "password": "",
+    "userGroup": "user",
+    "serial": "7158097464",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [
+      { "gameId": "p7369" },
+      { "gameId": "p7367" },
+      { "gameId": "p7362" },
+      { "gameId": "p7365" },
+      { "gameId": "p7344" }
+    ],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7335" },
+        "priority": 1,
+        "time": "2023-11-04T16:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7341" },
+        "priority": 2,
+        "time": "2023-11-04T16:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7369" },
+        "priority": 1,
+        "time": "2023-11-05T11:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7335",
+        "programItemStartTime": "2023-11-04T16:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T14:00:11.832Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "p7349",
+        "programItemStartTime": "2023-11-05T09:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-05T07:00:15.268Z"
+      }
+    ],
+    "createdAt": "2023-11-04T08:18:24.375Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "20285",
+    "password": "",
+    "userGroup": "user",
+    "serial": "7322315453",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7349",
+        "programItemStartTime": "2023-11-05T09:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-05T07:00:15.268Z"
+      }
+    ],
+    "createdAt": "2023-11-04T08:21:32.335Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "324064",
+    "password": "",
+    "userGroup": "user",
+    "serial": "9677505902",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7360" },
+        "priority": 1,
+        "time": "2023-11-04T15:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7298" },
+        "priority": 1,
+        "time": "2023-11-04T16:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7298",
+        "programItemStartTime": "2023-11-04T16:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T14:00:11.832Z"
+      }
+    ],
+    "createdAt": "2023-11-04T08:21:34.494Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "103566",
+    "password": "",
+    "userGroup": "user",
+    "serial": "3712857428",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [],
+    "eventLogItems": [],
+    "createdAt": "2023-11-04T08:23:06.533Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "217886",
+    "password": "",
+    "userGroup": "user",
+    "serial": "3824207231",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [],
+    "eventLogItems": [],
+    "createdAt": "2023-11-04T08:28:18.094Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "162093",
+    "password": "",
+    "userGroup": "user",
+    "serial": "4398669103",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7364" },
+        "priority": 1,
+        "time": "2023-11-04T15:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7360" },
+        "priority": 2,
+        "time": "2023-11-04T15:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7364",
+        "programItemStartTime": "2023-11-04T15:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T13:00:11.758Z"
+      }
+    ],
+    "createdAt": "2023-11-04T08:29:28.686Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "450792",
+    "password": "",
+    "userGroup": "user",
+    "serial": "9203325031",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [
+      { "gameId": "p7373" },
+      { "gameId": "p7279" },
+      { "gameId": "p7346" },
+      { "gameId": "p7345" }
+    ],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7346" },
+        "priority": 1,
+        "time": "2023-11-04T18:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7373" },
+        "priority": 2,
+        "time": "2023-11-04T18:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7346",
+        "programItemStartTime": "2023-11-04T18:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T16:00:12.401Z"
+      }
+    ],
+    "createdAt": "2023-11-04T08:32:49.03Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "383797",
+    "password": "",
+    "userGroup": "user",
+    "serial": "8337528312",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [],
+    "eventLogItems": [],
+    "createdAt": "2023-11-04T08:32:49.283Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "234442",
+    "password": "",
+    "userGroup": "user",
+    "serial": "8279869047",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [
+      { "gameId": "p7367" },
+      { "gameId": "p7362" },
+      { "gameId": "p7358" }
+    ],
+    "signedGames": [],
+    "eventLogItems": [],
+    "createdAt": "2023-11-04T08:34:05.592Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "944396",
+    "password": "",
+    "userGroup": "user",
+    "serial": "8343180546",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [],
+    "eventLogItems": [],
+    "createdAt": "2023-11-04T08:37:08.253Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "732448",
+    "password": "",
+    "userGroup": "user",
+    "serial": "4153258456",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [],
+    "eventLogItems": [],
+    "createdAt": "2023-11-04T08:37:35.563Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "192858",
+    "password": "",
+    "userGroup": "user",
+    "serial": "0014576573",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7338" },
+        "priority": 1,
+        "time": "2023-11-04T11:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7369" },
+        "priority": 1,
+        "time": "2023-11-05T11:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7338",
+        "programItemStartTime": "2023-11-04T11:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T09:00:10.621Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "p7369",
+        "programItemStartTime": "2023-11-05T11:00:00Z",
+        "isSeen": false,
+        "createdAt": "2023-11-05T09:00:15.526Z"
+      }
+    ],
+    "createdAt": "2023-11-04T08:39:22.285Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "574662",
+    "password": "",
+    "userGroup": "user",
+    "serial": "8324806945",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7369" },
+        "priority": 1,
+        "time": "2023-11-05T11:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7369",
+        "programItemStartTime": "2023-11-05T11:00:00Z",
+        "isSeen": false,
+        "createdAt": "2023-11-05T09:00:15.526Z"
+      }
+    ],
+    "createdAt": "2023-11-04T08:41:44.491Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "732614",
+    "password": "",
+    "userGroup": "user",
+    "serial": "6907130139",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7345" },
+        "priority": 1,
+        "time": "2023-11-04T13:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7341" },
+        "priority": 1,
+        "time": "2023-11-04T16:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7335" },
+        "priority": 2,
+        "time": "2023-11-04T16:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7345",
+        "programItemStartTime": "2023-11-04T13:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T11:00:11.001Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "p7341",
+        "programItemStartTime": "2023-11-04T16:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T14:00:11.832Z"
+      }
+    ],
+    "createdAt": "2023-11-04T09:02:59.56Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "486628",
+    "password": "",
+    "userGroup": "user",
+    "serial": "9942078032",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7345" },
+        "priority": 1,
+        "time": "2023-11-04T13:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7341" },
+        "priority": 1,
+        "time": "2023-11-04T16:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7335" },
+        "priority": 2,
+        "time": "2023-11-04T16:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7345",
+        "programItemStartTime": "2023-11-04T13:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T11:00:11.001Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "p7341",
+        "programItemStartTime": "2023-11-04T16:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T14:00:11.832Z"
+      }
+    ],
+    "createdAt": "2023-11-04T09:03:44.962Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "875354",
+    "password": "",
+    "userGroup": "user",
+    "serial": "4058100373",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [{ "gameId": "p7341" }, { "gameId": "p7345" }],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7345" },
+        "priority": 1,
+        "time": "2023-11-04T13:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7341" },
+        "priority": 1,
+        "time": "2023-11-04T16:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7335" },
+        "priority": 2,
+        "time": "2023-11-04T16:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7345",
+        "programItemStartTime": "2023-11-04T13:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T11:00:11.001Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "p7335",
+        "programItemStartTime": "2023-11-04T16:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T14:00:11.832Z"
+      }
+    ],
+    "createdAt": "2023-11-04T09:03:45.788Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "689497",
+    "password": "",
+    "userGroup": "user",
+    "serial": "8631119750",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7345" },
+        "priority": 1,
+        "time": "2023-11-04T13:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7341" },
+        "priority": 1,
+        "time": "2023-11-04T16:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7335" },
+        "priority": 2,
+        "time": "2023-11-04T16:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7345",
+        "programItemStartTime": "2023-11-04T13:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T11:00:11.001Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "p7341",
+        "programItemStartTime": "2023-11-04T16:00:00Z",
+        "isSeen": false,
+        "createdAt": "2023-11-04T14:00:11.832Z"
+      }
+    ],
+    "createdAt": "2023-11-04T09:03:59.439Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "862271",
+    "password": "",
+    "userGroup": "user",
+    "serial": "0720247287",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7364" },
+        "priority": 2,
+        "time": "2023-11-04T15:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7360" },
+        "priority": 1,
+        "time": "2023-11-04T15:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7285" },
+        "priority": 1,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7365" },
+        "priority": 2,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7364",
+        "programItemStartTime": "2023-11-04T15:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T13:00:11.758Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "p7285",
+        "programItemStartTime": "2023-11-05T10:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-05T08:00:15.673Z"
+      }
+    ],
+    "createdAt": "2023-11-04T09:15:47.488Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "938497",
+    "password": "",
+    "userGroup": "user",
+    "serial": "1195914252",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7362" },
+        "priority": 2,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7285" },
+        "priority": 1,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7358" },
+        "priority": 3,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7285",
+        "programItemStartTime": "2023-11-05T10:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-05T08:00:15.673Z"
+      }
+    ],
+    "createdAt": "2023-11-04T09:32:31.057Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "59450",
+    "password": "",
+    "userGroup": "user",
+    "serial": "4968526808",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [],
+    "eventLogItems": [],
+    "createdAt": "2023-11-04T09:33:55.705Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "133879",
+    "password": "",
+    "userGroup": "user",
+    "serial": "5752298926",
+    "groupCreatorCode": "737-a8e-019",
+    "groupCode": "737-a8e-019",
+    "favoritedGames": [],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7274" },
+        "priority": 1,
+        "time": "2023-11-04T14:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7368" },
+        "priority": 1,
+        "time": "2023-11-04T15:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7360" },
+        "priority": 3,
+        "time": "2023-11-04T15:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7270" },
+        "priority": 1,
+        "time": "2023-11-05T09:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7369" },
+        "priority": 1,
+        "time": "2023-11-05T11:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7368",
+        "programItemStartTime": "2023-11-04T15:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T13:00:11.758Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "p7270",
+        "programItemStartTime": "2023-11-05T09:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-05T07:00:15.268Z"
+      }
+    ],
+    "createdAt": "2023-11-04T09:35:13.513Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "263055",
+    "password": "",
+    "userGroup": "user",
+    "serial": "3085762957",
+    "groupCreatorCode": "0",
+    "groupCode": "737-a8e-019",
+    "favoritedGames": [],
+    "signedGames": [],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7368",
+        "programItemStartTime": "2023-11-04T15:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T13:00:11.758Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "p7270",
+        "programItemStartTime": "2023-11-05T09:00:00Z",
+        "isSeen": false,
+        "createdAt": "2023-11-05T07:00:15.268Z"
+      }
+    ],
+    "createdAt": "2023-11-04T09:36:35.755Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "956097",
+    "password": "",
+    "userGroup": "user",
+    "serial": "9173959546",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [],
+    "eventLogItems": [],
+    "createdAt": "2023-11-04T09:37:42.119Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "269163",
+    "password": "",
+    "userGroup": "user",
+    "serial": "1998742249",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7280" },
+        "priority": 1,
+        "time": "2023-11-04T13:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7346" },
+        "priority": 1,
+        "time": "2023-11-04T18:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7280",
+        "programItemStartTime": "2023-11-04T13:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T11:00:11.001Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "p7346",
+        "programItemStartTime": "2023-11-04T18:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T16:00:12.401Z"
+      }
+    ],
+    "createdAt": "2023-11-04T09:51:48.472Z",
+    "updatedAt": "2023-11-05T12:41:06.908Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "471057",
+    "password": "",
+    "userGroup": "user",
+    "serial": "0752067934",
+    "groupCreatorCode": "0",
+    "groupCode": "737-a8e-019",
+    "favoritedGames": [],
+    "signedGames": [],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7368",
+        "programItemStartTime": "2023-11-04T15:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T13:00:11.758Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "p7270",
+        "programItemStartTime": "2023-11-05T09:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-05T07:00:15.268Z"
+      }
+    ],
+    "createdAt": "2023-11-04T10:00:47.664Z",
+    "updatedAt": "2023-11-05T10:55:20.223Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "921291",
+    "password": "",
+    "userGroup": "user",
+    "serial": "5343255294",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [],
+    "eventLogItems": [],
+    "createdAt": "2023-11-04T10:02:02.62Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "384992",
+    "password": "",
+    "userGroup": "user",
+    "serial": "4413257801",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7364" },
+        "priority": 2,
+        "time": "2023-11-04T15:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7367" },
+        "priority": 1,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7285" },
+        "priority": 2,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7364",
+        "programItemStartTime": "2023-11-04T15:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T13:00:11.758Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "p7367",
+        "programItemStartTime": "2023-11-05T10:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-05T08:00:15.673Z"
+      }
+    ],
+    "createdAt": "2023-11-04T10:11:49.872Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "298569",
+    "password": "",
+    "userGroup": "user",
+    "serial": "9941530173",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7274" },
+        "priority": 1,
+        "time": "2023-11-04T14:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7358" },
+        "priority": 1,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7274",
+        "programItemStartTime": "2023-11-04T14:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T12:00:11.266Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "p7358",
+        "programItemStartTime": "2023-11-05T10:00:00Z",
+        "isSeen": false,
+        "createdAt": "2023-11-05T08:00:15.673Z"
+      }
+    ],
+    "createdAt": "2023-11-04T10:16:23.493Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "760768",
+    "password": "",
+    "userGroup": "user",
+    "serial": "2670685433",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7360" },
+        "priority": 1,
+        "time": "2023-11-04T15:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7285" },
+        "priority": 1,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7367" },
+        "priority": 2,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7285",
+        "programItemStartTime": "2023-11-05T10:00:00Z",
+        "isSeen": false,
+        "createdAt": "2023-11-05T08:00:15.673Z"
+      }
+    ],
+    "createdAt": "2023-11-04T10:17:39.131Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "802116",
+    "password": "",
+    "userGroup": "user",
+    "serial": "9656600062",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7345" },
+        "priority": 1,
+        "time": "2023-11-04T13:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7345",
+        "programItemStartTime": "2023-11-04T13:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T11:00:11.001Z"
+      }
+    ],
+    "createdAt": "2023-11-04T10:32:44.037Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "155200",
+    "password": "",
+    "userGroup": "user",
+    "serial": "8847947648",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [
+      { "gameId": "p7367" },
+      { "gameId": "p7285" },
+      { "gameId": "p7362" }
+    ],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7345" },
+        "priority": 1,
+        "time": "2023-11-04T13:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7280" },
+        "priority": 2,
+        "time": "2023-11-04T13:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7362" },
+        "priority": 3,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7285" },
+        "priority": 1,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7367" },
+        "priority": 2,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7280",
+        "programItemStartTime": "2023-11-04T13:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T11:00:11.001Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "p7285",
+        "programItemStartTime": "2023-11-05T10:00:00Z",
+        "isSeen": false,
+        "createdAt": "2023-11-05T08:00:15.673Z"
+      }
+    ],
+    "createdAt": "2023-11-04T10:35:35.962Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "287707",
+    "password": "",
+    "userGroup": "user",
+    "serial": "5574036702",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7360" },
+        "priority": 1,
+        "time": "2023-11-04T15:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7285" },
+        "priority": 1,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7367" },
+        "priority": 2,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7299" },
+        "priority": 3,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7360",
+        "programItemStartTime": "2023-11-04T15:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T13:00:11.758Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "p7285",
+        "programItemStartTime": "2023-11-05T10:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-05T08:00:15.673Z"
+      }
+    ],
+    "createdAt": "2023-11-04T10:55:20.297Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "38533",
+    "password": "",
+    "userGroup": "user",
+    "serial": "0411552128",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7373" },
+        "priority": 1,
+        "time": "2023-11-04T18:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7373",
+        "programItemStartTime": "2023-11-04T18:00:00Z",
+        "isSeen": false,
+        "createdAt": "2023-11-04T16:00:12.401Z"
+      }
+    ],
+    "createdAt": "2023-11-04T11:02:38.317Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "238674",
+    "password": "",
+    "userGroup": "user",
+    "serial": "3683628865",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [],
+    "eventLogItems": [],
+    "createdAt": "2023-11-04T11:35:05.6Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "681786",
+    "password": "",
+    "userGroup": "user",
+    "serial": "5215313155",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7369" },
+        "priority": 2,
+        "time": "2023-11-05T11:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7424" },
+        "priority": 1,
+        "time": "2023-11-05T12:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7295",
+        "programItemStartTime": "2023-11-04T15:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T13:00:11.758Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "p7369",
+        "programItemStartTime": "2023-11-05T11:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-05T09:00:15.526Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "p7424",
+        "programItemStartTime": "2023-11-05T12:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-05T10:00:15.775Z"
+      }
+    ],
+    "createdAt": "2023-11-04T11:55:17.979Z",
+    "updatedAt": "2023-11-05T10:12:06.043Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "311413",
+    "password": "",
+    "userGroup": "user",
+    "serial": "9827253585",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [{ "gameId": "p7360" }],
+    "signedGames": [],
+    "eventLogItems": [],
+    "createdAt": "2023-11-04T12:01:13.017Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "422934",
+    "password": "",
+    "userGroup": "user",
+    "serial": "9269034014",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [
+      { "gameId": "p7279" },
+      { "gameId": "p7373" },
+      { "gameId": "p7270" },
+      { "gameId": "<canceled>" },
+      { "gameId": "p7362" },
+      { "gameId": "p7367" }
+    ],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7373" },
+        "priority": 1,
+        "time": "2023-11-04T18:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7295",
+        "programItemStartTime": "2023-11-04T15:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T13:00:11.758Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "p7373",
+        "programItemStartTime": "2023-11-04T18:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T16:00:12.401Z"
+      }
+    ],
+    "createdAt": "2023-11-04T12:01:20.274Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "805342",
+    "password": "",
+    "userGroup": "user",
+    "serial": "3087758011",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7344" },
+        "priority": 1,
+        "time": "2023-11-05T12:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7344",
+        "programItemStartTime": "2023-11-05T12:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-05T10:00:15.775Z"
+      }
+    ],
+    "createdAt": "2023-11-04T12:16:04.954Z",
+    "updatedAt": "2023-11-05T10:10:15.141Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "693991",
+    "password": "",
+    "userGroup": "user",
+    "serial": "5978729977",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7360" },
+        "priority": 1,
+        "time": "2023-11-04T15:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [],
+    "createdAt": "2023-11-04T12:28:32.647Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "606398",
+    "password": "",
+    "userGroup": "user",
+    "serial": "5758038318",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7364" },
+        "priority": 1,
+        "time": "2023-11-04T15:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7364",
+        "programItemStartTime": "2023-11-04T15:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T13:00:11.758Z"
+      }
+    ],
+    "createdAt": "2023-11-04T12:43:44.058Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "821561",
+    "password": "",
+    "userGroup": "user",
+    "serial": "2846745749",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7358" },
+        "priority": 1,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7367" },
+        "priority": 2,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7358",
+        "programItemStartTime": "2023-11-05T10:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-05T08:00:15.673Z"
+      }
+    ],
+    "createdAt": "2023-11-04T12:56:53.706Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "315055",
+    "password": "",
+    "userGroup": "user",
+    "serial": "0369588504",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7279" },
+        "priority": 1,
+        "time": "2023-11-04T17:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7365" },
+        "priority": 1,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7367" },
+        "priority": 2,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7279",
+        "programItemStartTime": "2023-11-04T17:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T15:00:12.095Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "p7365",
+        "programItemStartTime": "2023-11-05T10:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-05T08:00:15.673Z"
+      }
+    ],
+    "createdAt": "2023-11-04T13:30:06.133Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "204351",
+    "password": "",
+    "userGroup": "user",
+    "serial": "2125163929",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [
+      { "gameId": "p7344" },
+      { "gameId": "p7299" },
+      { "gameId": "p7365" }
+    ],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7365" },
+        "priority": 1,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7285" },
+        "priority": 3,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7299" },
+        "priority": 2,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7365",
+        "programItemStartTime": "2023-11-05T10:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-05T08:00:15.673Z"
+      }
+    ],
+    "createdAt": "2023-11-04T13:32:53.838Z",
+    "updatedAt": "2023-11-05T14:41:21.24Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "124406",
+    "password": "",
+    "userGroup": "user",
+    "serial": "3668949948",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7269" },
+        "priority": 2,
+        "time": "2023-11-04T17:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7279" },
+        "priority": 1,
+        "time": "2023-11-04T17:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7279",
+        "programItemStartTime": "2023-11-04T17:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T15:00:12.095Z"
+      }
+    ],
+    "createdAt": "2023-11-04T13:34:34.085Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "267331",
+    "password": "",
+    "userGroup": "user",
+    "serial": "2916832260",
+    "groupCreatorCode": "03a-74c-a5a",
+    "groupCode": "03a-74c-a5a",
+    "favoritedGames": [],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7279" },
+        "priority": 1,
+        "time": "2023-11-04T17:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7273" },
+        "priority": 2,
+        "time": "2023-11-04T17:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7424" },
+        "priority": 1,
+        "time": "2023-11-05T12:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7273",
+        "programItemStartTime": "2023-11-04T17:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T15:00:12.095Z"
+      }
+    ],
+    "createdAt": "2023-11-04T14:14:01.618Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "847579",
+    "password": "",
+    "userGroup": "user",
+    "serial": "0758737639",
+    "groupCreatorCode": "0",
+    "groupCode": "03a-74c-a5a",
+    "favoritedGames": [],
+    "signedGames": [],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7273",
+        "programItemStartTime": "2023-11-04T17:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T15:00:12.095Z"
+      }
+    ],
+    "createdAt": "2023-11-04T14:15:32.271Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "754356",
+    "password": "",
+    "userGroup": "user",
+    "serial": "6148805473",
+    "groupCreatorCode": "0",
+    "groupCode": "03a-74c-a5a",
+    "favoritedGames": [],
+    "signedGames": [],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7273",
+        "programItemStartTime": "2023-11-04T17:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-04T15:00:12.095Z"
+      }
+    ],
+    "createdAt": "2023-11-04T14:16:42.451Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "294621",
+    "password": "",
+    "userGroup": "user",
+    "serial": "5311971369",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7362" },
+        "priority": 1,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7285" },
+        "priority": 2,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7336" },
+        "priority": 3,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7362",
+        "programItemStartTime": "2023-11-05T10:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-05T08:00:15.673Z"
+      }
+    ],
+    "createdAt": "2023-11-04T14:29:19.164Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "976735",
+    "password": "",
+    "userGroup": "user",
+    "serial": "6945153937",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7346" },
+        "priority": 1,
+        "time": "2023-11-04T18:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7346",
+        "programItemStartTime": "2023-11-04T18:00:00Z",
+        "isSeen": false,
+        "createdAt": "2023-11-04T16:00:12.401Z"
+      }
+    ],
+    "createdAt": "2023-11-04T14:29:20.666Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "999140",
+    "password": "",
+    "userGroup": "user",
+    "serial": "0205137912",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7362" },
+        "priority": 1,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7285" },
+        "priority": 2,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7336" },
+        "priority": 3,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7362",
+        "programItemStartTime": "2023-11-05T10:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-05T08:00:15.673Z"
+      }
+    ],
+    "createdAt": "2023-11-04T14:34:40.072Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "454671",
+    "password": "",
+    "userGroup": "user",
+    "serial": "3944368889",
+    "groupCreatorCode": "0",
+    "groupCode": "737-a8e-019",
+    "favoritedGames": [],
+    "signedGames": [],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7270",
+        "programItemStartTime": "2023-11-05T09:00:00Z",
+        "isSeen": false,
+        "createdAt": "2023-11-05T07:00:15.268Z"
+      }
+    ],
+    "createdAt": "2023-11-04T14:38:00.871Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "696471",
+    "password": "",
+    "userGroup": "user",
+    "serial": "1998511305",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [],
+    "eventLogItems": [],
+    "createdAt": "2023-11-04T14:40:50.837Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "904758",
+    "password": "",
+    "userGroup": "user",
+    "serial": "9374846732",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [],
+    "eventLogItems": [],
+    "createdAt": "2023-11-04T14:49:13.34Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "894037",
+    "password": "",
+    "userGroup": "user",
+    "serial": "4011285493",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [
+      { "gameId": "p7270" },
+      { "gameId": "p7365" },
+      { "gameId": "p7285" },
+      { "gameId": "p7367" },
+      { "gameId": "p7369" },
+      { "gameId": "p7424" },
+      { "gameId": "p7344" }
+    ],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7270" },
+        "priority": 2,
+        "time": "2023-11-05T09:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7344" },
+        "priority": 1,
+        "time": "2023-11-05T12:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7424" },
+        "priority": 2,
+        "time": "2023-11-05T12:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7349",
+        "programItemStartTime": "2023-11-05T09:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-05T07:00:15.268Z"
+      },
+      {
+        "action": "newAssignment",
+        "programItemId": "p7344",
+        "programItemStartTime": "2023-11-05T12:00:00Z",
+        "isSeen": false,
+        "createdAt": "2023-11-05T10:00:15.775Z"
+      }
+    ],
+    "createdAt": "2023-11-04T18:02:24.377Z",
+    "updatedAt": "2023-11-05T10:00:15.961Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "970309",
+    "password": "",
+    "userGroup": "user",
+    "serial": "7309518624",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [],
+    "eventLogItems": [],
+    "createdAt": "2023-11-04T19:29:23.78Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "268101",
+    "password": "",
+    "userGroup": "user",
+    "serial": "7199868824",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7285" },
+        "priority": 1,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7285",
+        "programItemStartTime": "2023-11-05T10:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-05T08:00:15.673Z"
+      }
+    ],
+    "createdAt": "2023-11-04T23:01:37.33Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "38604",
+    "password": "",
+    "userGroup": "user",
+    "serial": "6511874551",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7299" },
+        "priority": 2,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7365" },
+        "priority": 1,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7365",
+        "programItemStartTime": "2023-11-05T10:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-05T08:00:15.673Z"
+      }
+    ],
+    "createdAt": "2023-11-05T06:47:01.871Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "370318",
+    "password": "",
+    "userGroup": "user",
+    "serial": "8080310645",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7369" },
+        "priority": 1,
+        "time": "2023-11-05T11:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7369",
+        "programItemStartTime": "2023-11-05T11:00:00Z",
+        "isSeen": false,
+        "createdAt": "2023-11-05T09:00:15.526Z"
+      }
+    ],
+    "createdAt": "2023-11-05T07:05:40.292Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "348259",
+    "password": "",
+    "userGroup": "user",
+    "serial": "5237270177",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7362" },
+        "priority": 1,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7299" },
+        "priority": 2,
+        "time": "2023-11-05T10:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7362",
+        "programItemStartTime": "2023-11-05T10:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-05T08:00:15.673Z"
+      }
+    ],
+    "createdAt": "2023-11-05T07:38:59.969Z",
+    "updatedAt": "2023-11-05T10:00:15.747Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "743940",
+    "password": "",
+    "userGroup": "user",
+    "serial": "6388022599",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7424" },
+        "priority": 1,
+        "time": "2023-11-05T12:00:00Z",
+        "message": ""
+      },
+      {
+        "gameDetails": { "gameId": "p7344" },
+        "priority": 2,
+        "time": "2023-11-05T12:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7424",
+        "programItemStartTime": "2023-11-05T12:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-05T10:00:15.775Z"
+      }
+    ],
+    "createdAt": "2023-11-05T07:57:33.059Z",
+    "updatedAt": "2023-11-05T10:59:24.134Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "714772",
+    "password": "",
+    "userGroup": "user",
+    "serial": "9788707926",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7344" },
+        "priority": 1,
+        "time": "2023-11-05T12:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7344",
+        "programItemStartTime": "2023-11-05T12:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-05T10:00:15.775Z"
+      }
+    ],
+    "createdAt": "2023-11-05T08:40:53.734Z",
+    "updatedAt": "2023-11-05T11:32:54.937Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "613493",
+    "password": "",
+    "userGroup": "user",
+    "serial": "3214294310",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7424" },
+        "priority": 1,
+        "time": "2023-11-05T12:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7424",
+        "programItemStartTime": "2023-11-05T12:00:00Z",
+        "isSeen": false,
+        "createdAt": "2023-11-05T10:00:15.775Z"
+      }
+    ],
+    "createdAt": "2023-11-05T08:51:34.755Z",
+    "updatedAt": "2023-11-05T10:00:15.983Z"
+  },
+  {
+    "kompassiId": "<redacted>",
+    "kompassiUsernameAccepted": true,
+    "username": "967328",
+    "password": "",
+    "userGroup": "user",
+    "serial": "2834485308",
+    "groupCreatorCode": "0",
+    "groupCode": "0",
+    "favoritedGames": [],
+    "signedGames": [
+      {
+        "gameDetails": { "gameId": "p7424" },
+        "priority": 1,
+        "time": "2023-11-05T12:00:00Z",
+        "message": ""
+      }
+    ],
+    "eventLogItems": [
+      {
+        "action": "newAssignment",
+        "programItemId": "p7424",
+        "programItemStartTime": "2023-11-05T12:00:00Z",
+        "isSeen": true,
+        "createdAt": "2023-11-05T10:00:15.775Z"
+      }
+    ],
+    "createdAt": "2023-11-05T09:07:01.133Z",
+    "updatedAt": "2023-11-05T10:24:17.143Z"
+  }
+]

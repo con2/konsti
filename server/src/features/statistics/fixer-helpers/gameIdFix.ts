@@ -56,27 +56,36 @@ export const gameIdFix = async (year: number, event: string): Promise<void> => {
 
   logger.info(`Loaded ${settings.length} games`);
 
-  users.forEach((user) => {
-    const tempFavoritedGames = user.favoritedGames.flatMap((favoritedGame) => {
-      const matchingGame = games.find((game) => game._id === favoritedGame);
+  users.map((user) => {
+    const tempFavoritedGames = user.favoritedGames.map((favoritedGame) => {
+      const matchingGame = games.find(
+        // @ts-expect-error: $oid not in interface
+        (game) => game._id.$oid === favoritedGame.$oid,
+      );
       if (!matchingGame) {
         logger.error(
-          `Program item for id ${JSON.stringify(favoritedGame)} not found`,
+          `Favorited: program item for id ${JSON.stringify(
+            favoritedGame,
+          )} not found`,
         );
-        return [];
+        return { gameId: "<canceled>" };
       }
       return { gameId: matchingGame.gameId };
     });
 
-    const tempSignedGames = user.signedGames.flatMap((signedGame) => {
+    const tempSignedGames = user.signedGames.map((signedGame) => {
       const matchingGame = games.find(
-        (game) => game._id === signedGame.gameDetails,
+        // @ts-expect-error: $oid not in interface
+        (game) => game._id.$oid === signedGame.gameDetails.$oid,
       );
       if (!matchingGame) {
         logger.error(
-          `Program item for id ${JSON.stringify(signedGame)} not found`,
+          `Signed: program item for id ${JSON.stringify(signedGame)} not found`,
         );
-        return [];
+        return {
+          ...signedGame,
+          gameDetails: { gameId: "<canceled>" },
+        };
       }
       return {
         ...signedGame,
@@ -90,22 +99,36 @@ export const gameIdFix = async (year: number, event: string): Promise<void> => {
     user.signedGames = tempSignedGames;
   });
 
-  results.forEach((result) => {
-    games.forEach((game) => {
-      result.results.forEach((userResult) => {
-        if (_.isEqual(game._id, userResult.enteredGame.gameDetails)) {
-          userResult.enteredGame = {
-            ...userResult.enteredGame,
-            // @ts-expect-error: We don't want whole game details
-            gameDetails: { gameId: game.gameId },
-          };
-        }
+  results.map((result) => {
+    result.results.map((userResult) => {
+      const matchingGame = games.find((game) => {
+        return _.isEqual(game._id, userResult.enteredGame.gameDetails);
       });
+
+      if (!matchingGame) {
+        logger.error(
+          `Results: program item for id ${JSON.stringify(
+            userResult.enteredGame.gameDetails,
+          )} not found`,
+        );
+        userResult.enteredGame = {
+          ...userResult.enteredGame,
+          // @ts-expect-error: We don't want whole game details
+          gameDetails: { gameId: "<canceled>" },
+        };
+        return;
+      }
+
+      userResult.enteredGame = {
+        ...userResult.enteredGame,
+        // @ts-expect-error: We don't want whole game details
+        gameDetails: { gameId: matchingGame.gameId },
+      };
     });
   });
 
-  signups.forEach((signup) => {
-    games.forEach((game) => {
+  signups.map((signup) => {
+    games.map((game) => {
       if (_.isEqual(game._id, signup.game)) {
         // @ts-expect-error: We don't want whole game details
         signup.game = { gameId: game.gameId };
@@ -115,9 +138,9 @@ export const gameIdFix = async (year: number, event: string): Promise<void> => {
 
   const tempHiddenGames: Game[] = [];
 
-  settings.forEach((setting) => {
-    games.forEach((game) => {
-      setting.hiddenGames.forEach((hiddenGame) => {
+  settings.map((setting) => {
+    games.map((game) => {
+      setting.hiddenGames.map((hiddenGame) => {
         if (_.isEqual(game._id, hiddenGame)) {
           // @ts-expect-error: We don't want whole game details
           tempHiddenGames.push({ gameId: game.gameId });

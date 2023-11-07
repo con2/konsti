@@ -1,0 +1,14 @@
+[
+  {
+    "hiddenGames": [],
+    "appOpen": false,
+    "signupStrategy": "algorithm+direct",
+    "loginProvider": "kompassi",
+    "signupQuestions": [],
+    "programUpdateLastRun": "2023-11-07T17:20:22.736Z",
+    "assignmentLastRun": "2023-11-07T17:15:22.729Z",
+    "latestServerStartTime": "2023-11-03T12:30:12.954Z",
+    "createdAt": "2023-11-02T16:35:06.379Z",
+    "updatedAt": "2023-11-07T17:20:22.736Z"
+  }
+]
