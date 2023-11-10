@@ -1,7 +1,11 @@
-import { vi } from "vitest";
+import { afterAll, beforeAll, vi } from "vitest";
 import { initializeDayjs } from "shared/utils/initializeDayjs";
 import { config } from "shared/config";
 import { ProgramType } from "shared/typings/models/game";
+import {
+  setupMongoDbMemoryServer,
+  teardownMongoDbMemoryServer,
+} from "server/test/mongoDdMemoryServerSetup";
 
 initializeDayjs();
 
@@ -27,4 +31,12 @@ vi.spyOn(config, "shared").mockReturnValue({
   conventionEndTime: "2023-07-30T21:00:00Z", // Sun 24:00 GMT+3
   directSignupAlwaysOpenIds: ["1234"],
   twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG, ProgramType.LARP],
+});
+
+beforeAll(async () => {
+  await setupMongoDbMemoryServer();
+});
+
+afterAll(async () => {
+  await teardownMongoDbMemoryServer();
 });

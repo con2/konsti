@@ -1,13 +1,5 @@
-import {
-  expect,
-  test,
-  afterAll,
-  afterEach,
-  beforeAll,
-  beforeEach,
-} from "vitest";
+import { expect, test, afterEach, beforeEach } from "vitest";
 import mongoose from "mongoose";
-import { MongoMemoryServer } from "mongodb-memory-server";
 import dayjs from "dayjs";
 import { faker } from "@faker-js/faker";
 import { assertUserUpdatedCorrectly } from "server/features/player-assignment/runAssignmentTestUtils";
@@ -34,28 +26,18 @@ import {
 } from "server/features/signup/signupRepository";
 import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
 
-let mongoServer: MongoMemoryServer;
-
 // This needs to be adjusted if test data is changed
 const expectedResultsCount = 20;
 const groupTestUsers = ["group1", "group2", "group3"];
 
-beforeAll(async () => {
-  mongoServer = await MongoMemoryServer.create();
-});
-
 beforeEach(async () => {
-  await mongoose.connect(mongoServer.getUri(), {
+  await mongoose.connect(globalThis.__MONGO_URI__, {
     dbName: faker.string.alphanumeric(10),
   });
 });
 
 afterEach(async () => {
   await mongoose.disconnect();
-});
-
-afterAll(async () => {
-  await mongoServer.stop();
 });
 
 test("Assignment with valid data should return success with random strategy", async () => {

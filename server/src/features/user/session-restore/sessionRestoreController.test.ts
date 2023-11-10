@@ -1,15 +1,6 @@
 import { Server } from "http";
-import {
-  expect,
-  test,
-  afterAll,
-  beforeAll,
-  describe,
-  beforeEach,
-  afterEach,
-} from "vitest";
+import { expect, test, describe, beforeEach, afterEach } from "vitest";
 import request from "supertest";
-import { MongoMemoryServer } from "mongodb-memory-server";
 import { faker } from "@faker-js/faker";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { mockUser } from "server/test/mock-data/mockUser";
@@ -18,15 +9,10 @@ import { closeServer, startServer } from "server/utils/server";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 
 let server: Server;
-let mongoServer: MongoMemoryServer;
-
-beforeAll(async () => {
-  mongoServer = await MongoMemoryServer.create();
-});
 
 beforeEach(async () => {
   server = await startServer({
-    dbConnString: mongoServer.getUri(),
+    dbConnString: globalThis.__MONGO_URI__,
     dbName: faker.string.alphanumeric(10),
     enableSentry: false,
   });
@@ -34,10 +20,6 @@ beforeEach(async () => {
 
 afterEach(async () => {
   await closeServer(server);
-});
-
-afterAll(async () => {
-  await mongoServer.stop();
 });
 
 describe(`POST ${ApiEndpoint.SESSION_RESTORE}`, () => {

@@ -1,14 +1,5 @@
-import {
-  expect,
-  test,
-  afterAll,
-  afterEach,
-  beforeAll,
-  beforeEach,
-  vi,
-} from "vitest";
+import { expect, test, afterEach, beforeEach, vi } from "vitest";
 import mongoose from "mongoose";
-import { MongoMemoryServer } from "mongodb-memory-server";
 import dayjs from "dayjs";
 import { faker } from "@faker-js/faker";
 import { assertUserUpdatedCorrectly } from "server/features/player-assignment/runAssignmentTestUtils";
@@ -23,30 +14,20 @@ import * as padgAssign from "server/features/player-assignment/padg/padgAssignPl
 import { AssignmentError } from "shared/typings/api/errors";
 import { makeErrorResult } from "shared/utils/result";
 
-let mongoServer: MongoMemoryServer;
-
 // This needs to be adjusted if test data is changed
 const expectedResultsCount = 20;
 const groupTestUsers = ["group1", "group2", "group3"];
 
 const { conventionStartTime } = config.shared();
 
-beforeAll(async () => {
-  mongoServer = await MongoMemoryServer.create();
-});
-
 beforeEach(async () => {
-  await mongoose.connect(mongoServer.getUri(), {
+  await mongoose.connect(globalThis.__MONGO_URI__, {
     dbName: faker.string.alphanumeric(10),
   });
 });
 
 afterEach(async () => {
   await mongoose.disconnect();
-});
-
-afterAll(async () => {
-  await mongoServer.stop();
 });
 
 test("Assignment with valid data should return success with random+padg strategy", async () => {

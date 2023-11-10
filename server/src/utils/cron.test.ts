@@ -2,14 +2,12 @@ import { Server } from "http";
 import {
   expect,
   test,
-  afterAll,
   afterEach,
   beforeAll,
   beforeEach,
   vi,
   describe,
 } from "vitest";
-import { MongoMemoryServer } from "mongodb-memory-server";
 import { faker } from "@faker-js/faker";
 import dayjs from "dayjs";
 import { startServer, closeServer } from "server/utils/server";
@@ -28,21 +26,19 @@ import { logger } from "server/utils/logger";
 import { saveTestSettings } from "server/test/test-settings/testSettingsRepository";
 
 let server: Server;
-let mongoServer: MongoMemoryServer;
 
 const timeNow = "2019-07-26T17:00:00.000Z";
 const previousJobRunning = 30; // Seconds since last run
 const previousJobFinished = 31; // Seconds since last run
 
-beforeAll(async () => {
-  mongoServer = await MongoMemoryServer.create();
+beforeAll(() => {
   // vi.useFakeTimers();
   vi.setSystemTime(timeNow);
 });
 
 beforeEach(async () => {
   server = await startServer({
-    dbConnString: mongoServer.getUri(),
+    dbConnString: globalThis.__MONGO_URI__,
     dbName: faker.string.alphanumeric(10),
     enableSentry: false,
   });
@@ -53,10 +49,6 @@ beforeEach(async () => {
 
 afterEach(async () => {
   await closeServer(server);
-});
-
-afterAll(async () => {
-  await mongoServer.stop();
 });
 
 describe("Progam update cronjob", () => {
