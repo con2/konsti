@@ -8620,7 +8620,7 @@ __metadata:
     stylelint-config-recommended: "npm:13.0.0"
     stylelint-no-unsupported-browser-features: "npm:7.0.0"
     stylis: "npm:4.3.0"
-    use-debounce: "npm:9.0.4"
+    use-debounce: "npm:10.0.0"
     webpack: "npm:5.89.0"
     webpack-bundle-analyzer: "npm:4.9.1"
     webpack-cli: "npm:5.1.4"
@@ -13682,12 +13682,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"use-debounce@npm:9.0.4":
-  version: 9.0.4
-  resolution: "use-debounce@npm:9.0.4"
+"use-debounce@npm:10.0.0":
+  version: 10.0.0
+  resolution: "use-debounce@npm:10.0.0"
   peerDependencies:
     react: ">=16.8.0"
-  checksum: 97096fd3a0987beef190978c05affacb63c04ffd2d2132340bd2d161edf4f1695d9077c71ad5845b0e86b6cfec994ba141af0b62985a4e793166cac5a5c7d116
+  checksum: c1166cba52dedeab17e3e29275af89c57a3e8981b75f6e38ae2896ac36ecd4ed7d8fff5f882ba4b2f91eac7510d5ae0dd89fa4f7d081622ed436c3c89eda5cd1
   languageName: node
   linkType: hard
 

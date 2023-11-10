@@ -52,7 +52,7 @@
     "regenerator-runtime": "0.14.0",
     "styled-components": "6.1.1",
     "stylis": "4.3.0",
-    "use-debounce": "9.0.4"
+    "use-debounce": "10.0.0"
   },
   "devDependencies": {
     "@axe-core/react": "4.8.1",
