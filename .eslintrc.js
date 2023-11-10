@@ -65,6 +65,7 @@ module.exports = {
     ],
     "no-else-return": "error",
     curly: "error",
+    "no-constant-binary-expression": "error",
     "array-callback-return": "off",
     "no-shadow": "off", // Required by @typescript-eslint/no-shadow
 
