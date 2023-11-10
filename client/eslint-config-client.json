@@ -710,14 +710,14 @@
         "alwaysTryTypes": true
       },
       "node": {
-        "extensions": [".ts", ".tsx", ".js", ".jsx"]
+        "extensions": [".ts", ".cts", ".mts", ".tsx", ".js", ".jsx"]
       }
     },
     "import/parsers": {
-      "@typescript-eslint/parser": [".ts", ".tsx"]
+      "@typescript-eslint/parser": [".ts", ".tsx", ".mts", ".tsx"]
     },
     "import/internal-regex": "shared",
-    "import/extensions": [".ts", ".tsx", ".js", ".jsx"],
+    "import/extensions": [".ts", ".cts", ".mts", ".tsx", ".js", ".jsx"],
     "import/external-module-folders": ["node_modules", "node_modules/@types"]
   },
   "ignorePatterns": ["node_modules", "build", "coverage"]
