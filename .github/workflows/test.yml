@@ -29,7 +29,7 @@ jobs:
 
       - name: Yarn install
         run: |
-          yarn --immutable
+          YARN_ENABLE_HARDENED_MODE=1 yarn --immutable
 
       - name: Build front-end
         run: |
