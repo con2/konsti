@@ -1,35 +1,17 @@
-import {
-  expect,
-  test,
-  afterAll,
-  afterEach,
-  beforeAll,
-  beforeEach,
-} from "vitest";
+import { expect, test, afterEach, beforeEach } from "vitest";
 import mongoose from "mongoose";
-import { MongoMemoryServer } from "mongodb-memory-server";
 import { faker } from "@faker-js/faker";
 import { FeedbackModel } from "server/features/feedback/feedbackSchema";
 import { saveFeedback } from "server/features/feedback/feedbackRepository";
 
-let mongoServer: MongoMemoryServer;
-
-beforeAll(async () => {
-  mongoServer = await MongoMemoryServer.create();
-});
-
 beforeEach(async () => {
-  await mongoose.connect(mongoServer.getUri(), {
+  await mongoose.connect(globalThis.__MONGO_URI__, {
     dbName: faker.string.alphanumeric(10),
   });
 });
 
 afterEach(async () => {
   await mongoose.disconnect();
-});
-
-afterAll(async () => {
-  await mongoServer.stop();
 });
 
 test("should insert new feedback into collection", async () => {

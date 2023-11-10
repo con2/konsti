@@ -1,7 +1,6 @@
-import { expect, test, afterEach, beforeAll, beforeEach } from "vitest";
+import { expect, test, afterEach, beforeEach } from "vitest";
 import dayjs from "dayjs";
 import mongoose from "mongoose";
-import { MongoMemoryServer } from "mongodb-memory-server";
 import { faker } from "@faker-js/faker";
 import { UserModel } from "server/features/user/userSchema";
 import { GameModel } from "server/features/game/gameSchema";
@@ -13,24 +12,14 @@ import { saveSignedGames } from "server/features/user/signed-game/signedGameRepo
 import { findGames, saveGames } from "server/features/game/gameRepository";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 
-let mongoServer: MongoMemoryServer;
-
-beforeAll(async () => {
-  mongoServer = await MongoMemoryServer.create();
-});
-
 beforeEach(async () => {
-  await mongoose.connect(mongoServer.getUri(), {
+  await mongoose.connect(globalThis.__MONGO_URI__, {
     dbName: faker.string.alphanumeric(10),
   });
 });
 
 afterEach(async () => {
   await mongoose.disconnect();
-});
-
-afterEach(async () => {
-  await mongoServer.stop();
 });
 
 test("should remove lottery signups for moved games from users", async () => {

@@ -1,37 +1,18 @@
-import {
-  expect,
-  test,
-  vi,
-  afterAll,
-  afterEach,
-  beforeAll,
-  describe,
-} from "vitest";
+import { expect, test, vi, afterEach, describe } from "vitest";
 import request from "supertest";
-import { MongoMemoryServer } from "mongodb-memory-server";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { startTestServer, stopTestServer } from "server/test/utils/testServer";
 import { TestSettings } from "shared/test-typings/models/testSettings";
-
-let mongoServer: MongoMemoryServer;
-
-beforeAll(async () => {
-  mongoServer = await MongoMemoryServer.create();
-});
 
 afterEach(() => {
   // Start server with different process.env.SETTINGS
   vi.resetModules();
 });
 
-afterAll(async () => {
-  await mongoServer.stop();
-});
-
 describe(`GET ${ApiEndpoint.TEST_SETTINGS}`, () => {
   test("should return 404 on production", async () => {
     vi.stubEnv("SETTINGS", "production");
-    const { server } = await startTestServer(mongoServer.getUri());
+    const { server } = await startTestServer(globalThis.__MONGO_URI__);
 
     try {
       const response = await request(server).get(ApiEndpoint.TEST_SETTINGS);
@@ -43,7 +24,7 @@ describe(`GET ${ApiEndpoint.TEST_SETTINGS}`, () => {
 
   test("should return default settings", async () => {
     vi.stubEnv("SETTINGS", "development");
-    const { server } = await startTestServer(mongoServer.getUri());
+    const { server } = await startTestServer(globalThis.__MONGO_URI__);
 
     try {
       const response = await request(server).get(ApiEndpoint.TEST_SETTINGS);
@@ -62,7 +43,7 @@ describe(`GET ${ApiEndpoint.TEST_SETTINGS}`, () => {
 describe(`POST ${ApiEndpoint.TEST_SETTINGS}`, () => {
   test("should return 404 on production", async () => {
     vi.stubEnv("SETTINGS", "production");
-    const { server } = await startTestServer(mongoServer.getUri());
+    const { server } = await startTestServer(globalThis.__MONGO_URI__);
 
     try {
       const response = await request(server).post(ApiEndpoint.TEST_SETTINGS);
@@ -74,7 +55,7 @@ describe(`POST ${ApiEndpoint.TEST_SETTINGS}`, () => {
 
   test("should return 422 with invalid body", async () => {
     vi.stubEnv("SETTINGS", "development");
-    const { server } = await startTestServer(mongoServer.getUri());
+    const { server } = await startTestServer(globalThis.__MONGO_URI__);
 
     try {
       const response = await request(server)
@@ -88,7 +69,7 @@ describe(`POST ${ApiEndpoint.TEST_SETTINGS}`, () => {
 
   test("should return updated test settings after update", async () => {
     vi.stubEnv("SETTINGS", "development");
-    const { server } = await startTestServer(mongoServer.getUri());
+    const { server } = await startTestServer(globalThis.__MONGO_URI__);
 
     try {
       const testSettings: TestSettings = {

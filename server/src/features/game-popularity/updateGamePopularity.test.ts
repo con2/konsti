@@ -1,14 +1,5 @@
 import { Server } from "http";
-import {
-  expect,
-  test,
-  afterAll,
-  afterEach,
-  beforeAll,
-  beforeEach,
-  vi,
-} from "vitest";
-import { MongoMemoryServer } from "mongodb-memory-server";
+import { expect, test, afterEach, beforeEach, vi } from "vitest";
 import { faker } from "@faker-js/faker";
 import dayjs from "dayjs";
 import { startServer, closeServer } from "server/utils/server";
@@ -21,15 +12,10 @@ import { updateGamePopularity } from "server/features/game-popularity/updateGame
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 
 let server: Server;
-let mongoServer: MongoMemoryServer;
-
-beforeAll(async () => {
-  mongoServer = await MongoMemoryServer.create();
-});
 
 beforeEach(async () => {
   server = await startServer({
-    dbConnString: mongoServer.getUri(),
+    dbConnString: globalThis.__MONGO_URI__,
     dbName: faker.string.alphanumeric(10),
     enableSentry: false,
   });
@@ -37,10 +23,6 @@ beforeEach(async () => {
 
 afterEach(async () => {
   await closeServer(server);
-});
-
-afterAll(async () => {
-  await mongoServer.stop();
 });
 
 test(`Should update game popularity`, async () => {

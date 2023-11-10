@@ -1,13 +1,5 @@
-import {
-  expect,
-  test,
-  afterAll,
-  afterEach,
-  beforeAll,
-  beforeEach,
-} from "vitest";
+import { expect, test, afterEach, beforeEach } from "vitest";
 import mongoose from "mongoose";
-import { MongoMemoryServer } from "mongodb-memory-server";
 import { faker } from "@faker-js/faker";
 import { UserModel } from "server/features/user/userSchema";
 import { findUser, saveUser } from "server/features/user/userRepository";
@@ -21,24 +13,14 @@ import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 import { saveGames } from "server/features/game/gameRepository";
 import { testGame, testGame2 } from "shared/tests/testGame";
 
-let mongoServer: MongoMemoryServer;
-
-beforeAll(async () => {
-  mongoServer = await MongoMemoryServer.create();
-});
-
 beforeEach(async () => {
-  await mongoose.connect(mongoServer.getUri(), {
+  await mongoose.connect(globalThis.__MONGO_URI__, {
     dbName: faker.string.alphanumeric(10),
   });
 });
 
 afterEach(async () => {
   await mongoose.disconnect();
-});
-
-afterAll(async () => {
-  await mongoServer.stop();
 });
 
 test("should insert new event log item to user", async () => {

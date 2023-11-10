@@ -1,15 +1,6 @@
 import { Server } from "http";
-import {
-  expect,
-  test,
-  afterAll,
-  afterEach,
-  beforeAll,
-  beforeEach,
-  describe,
-} from "vitest";
+import { expect, test, afterEach, beforeEach, describe } from "vitest";
 import request from "supertest";
-import { MongoMemoryServer } from "mongodb-memory-server";
 import { faker } from "@faker-js/faker";
 import dayjs from "dayjs";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
@@ -35,15 +26,10 @@ import { saveTestSettings } from "server/test/test-settings/testSettingsReposito
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 
 let server: Server;
-let mongoServer: MongoMemoryServer;
-
-beforeAll(async () => {
-  mongoServer = await MongoMemoryServer.create();
-});
 
 beforeEach(async () => {
   server = await startServer({
-    dbConnString: mongoServer.getUri(),
+    dbConnString: globalThis.__MONGO_URI__,
     dbName: faker.string.alphanumeric(10),
     enableSentry: false,
   });
@@ -51,10 +37,6 @@ beforeEach(async () => {
 
 afterEach(async () => {
   await closeServer(server);
-});
-
-afterAll(async () => {
-  await mongoServer.stop();
 });
 
 describe(`GET ${ApiEndpoint.GROUP}`, () => {

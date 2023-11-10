@@ -1,13 +1,5 @@
-import {
-  expect,
-  test,
-  afterAll,
-  afterEach,
-  beforeAll,
-  beforeEach,
-} from "vitest";
+import { expect, test, afterEach, beforeEach } from "vitest";
 import mongoose from "mongoose";
-import { MongoMemoryServer } from "mongodb-memory-server";
 import { faker } from "@faker-js/faker";
 import { UserModel } from "server/features/user/userSchema";
 import { GameModel } from "server/features/game/gameSchema";
@@ -17,24 +9,14 @@ import { removeInvalidGamesFromUsers } from "server/features/player-assignment/u
 import { saveUser } from "server/features/user/userRepository";
 import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
 
-let mongoServer: MongoMemoryServer;
-
-beforeAll(async () => {
-  mongoServer = await MongoMemoryServer.create();
-});
-
 beforeEach(async () => {
-  await mongoose.connect(mongoServer.getUri(), {
+  await mongoose.connect(globalThis.__MONGO_URI__, {
     dbName: faker.string.alphanumeric(10),
   });
 });
 
 afterEach(async () => {
   await mongoose.disconnect();
-});
-
-afterAll(async () => {
-  await mongoServer.stop();
 });
 
 test("should remove signups for invalid games from users", async () => {
