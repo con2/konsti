@@ -49,7 +49,7 @@ module.exports = (api) => {
         {
           root: ["."],
           alias: { server: "./src", shared: "../shared" },
-          extensions: [".js", ".ts"],
+          extensions: [".js", ".cjs", ".ts"],
         },
       ],
     ],
@@ -74,7 +74,7 @@ module.exports = (api) => {
         {
           root: ["."],
           alias: { shared: "./shared" },
-          extensions: [".js", ".ts"],
+          extensions: [".js", ".cjs", ".ts"],
         },
       ],
     ],
