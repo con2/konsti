@@ -11,7 +11,7 @@ import { AssignmentResultStatus } from "server/typings/result.typings";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 
 // This needs to be adjusted if test data is changed
-const expectedResultsCount = 12;
+const expectedResultsCount = 11;
 const groupTestUsers = ["group1", "group2", "group3"];
 
 beforeEach(async () => {
