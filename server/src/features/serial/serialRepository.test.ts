@@ -1,14 +1,5 @@
-import {
-  expect,
-  test,
-  vi,
-  afterAll,
-  afterEach,
-  beforeAll,
-  beforeEach,
-} from "vitest";
+import { expect, test, vi, afterEach, beforeEach } from "vitest";
 import mongoose from "mongoose";
-import { MongoMemoryServer } from "mongodb-memory-server";
 import { faker } from "@faker-js/faker";
 import { saveSerials } from "server/features/serial/serialRepository";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
@@ -46,24 +37,14 @@ vi.mock("generate-serial-number", () => {
   };
 });
 
-let mongoServer: MongoMemoryServer;
-
-beforeAll(async () => {
-  mongoServer = await MongoMemoryServer.create();
-});
-
 beforeEach(async () => {
-  await mongoose.connect(mongoServer.getUri(), {
+  await mongoose.connect(globalThis.__MONGO_URI__, {
     dbName: faker.string.alphanumeric(10),
   });
 });
 
 afterEach(async () => {
   await mongoose.disconnect();
-});
-
-afterAll(async () => {
-  await mongoServer.stop();
 });
 
 test("should insert new serial into collection", async () => {

@@ -1,16 +1,6 @@
 import { Server } from "http";
-import {
-  expect,
-  test,
-  vi,
-  afterAll,
-  afterEach,
-  beforeAll,
-  describe,
-  beforeEach,
-} from "vitest";
+import { expect, test, vi, afterEach, describe, beforeEach } from "vitest";
 import request from "supertest";
-import { MongoMemoryServer } from "mongodb-memory-server";
 import { faker } from "@faker-js/faker";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { UserGroup } from "shared/typings/models/user";
@@ -19,15 +9,10 @@ import { closeServer, startServer } from "server/utils/server";
 import { config } from "shared/config";
 
 let server: Server;
-let mongoServer: MongoMemoryServer;
-
-beforeAll(async () => {
-  mongoServer = await MongoMemoryServer.create();
-});
 
 beforeEach(async () => {
   server = await startServer({
-    dbConnString: mongoServer.getUri(),
+    dbConnString: globalThis.__MONGO_URI__,
     dbName: faker.string.alphanumeric(10),
     enableSentry: false,
   });
@@ -35,10 +20,6 @@ beforeEach(async () => {
 
 afterEach(async () => {
   await closeServer(server);
-});
-
-afterAll(async () => {
-  await mongoServer.stop();
 });
 
 describe(`GET ${ApiEndpoint.USERS}`, () => {

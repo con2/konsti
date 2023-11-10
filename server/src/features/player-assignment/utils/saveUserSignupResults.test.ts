@@ -1,13 +1,5 @@
-import {
-  expect,
-  test,
-  afterAll,
-  afterEach,
-  beforeAll,
-  beforeEach,
-} from "vitest";
+import { expect, test, afterEach, beforeEach } from "vitest";
 import mongoose from "mongoose";
-import { MongoMemoryServer } from "mongodb-memory-server";
 import { faker } from "@faker-js/faker";
 import { findUsers, saveUser } from "server/features/user/userRepository";
 import { testGame } from "shared/tests/testGame";
@@ -23,24 +15,14 @@ import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 import { saveUserSignupResults } from "server/features/player-assignment/utils/saveUserSignupResults";
 import { AssignmentResult } from "shared/typings/models/result";
 
-let mongoServer: MongoMemoryServer;
-
-beforeAll(async () => {
-  mongoServer = await MongoMemoryServer.create();
-});
-
 beforeEach(async () => {
-  await mongoose.connect(mongoServer.getUri(), {
+  await mongoose.connect(globalThis.__MONGO_URI__, {
     dbName: faker.string.alphanumeric(10),
   });
 });
 
 afterEach(async () => {
   await mongoose.disconnect();
-});
-
-afterAll(async () => {
-  await mongoServer.stop();
 });
 
 test("should not add event log items after assigment if signup is dropped due to error", async () => {

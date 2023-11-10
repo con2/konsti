@@ -1,16 +1,6 @@
 import { Server } from "http";
-import {
-  expect,
-  test,
-  afterAll,
-  afterEach,
-  beforeAll,
-  beforeEach,
-  describe,
-  vi,
-} from "vitest";
+import { expect, test, afterEach, beforeEach, describe, vi } from "vitest";
 import request, { Test } from "supertest";
-import { MongoMemoryServer } from "mongodb-memory-server";
 import { faker } from "@faker-js/faker";
 import dayjs from "dayjs";
 import { startServer, closeServer } from "server/utils/server";
@@ -44,15 +34,10 @@ import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 import * as signupTimes from "shared/utils/signupTimes";
 
 let server: Server;
-let mongoServer: MongoMemoryServer;
-
-beforeAll(async () => {
-  mongoServer = await MongoMemoryServer.create();
-});
 
 beforeEach(async () => {
   server = await startServer({
-    dbConnString: mongoServer.getUri(),
+    dbConnString: globalThis.__MONGO_URI__,
     dbName: faker.string.alphanumeric(10),
     enableSentry: false,
   });
@@ -60,10 +45,6 @@ beforeEach(async () => {
 
 afterEach(async () => {
   await closeServer(server);
-});
-
-afterAll(async () => {
-  await mongoServer.stop();
 });
 
 describe(`POST ${ApiEndpoint.SIGNUP}`, () => {
