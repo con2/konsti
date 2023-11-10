@@ -118,6 +118,7 @@
     ],
     "no-else-return": ["error"],
     "curly": ["error"],
+    "no-constant-binary-expression": ["error"],
     "array-callback-return": ["off"],
     "no-shadow": ["off"],
     "prettier/prettier": ["error"],
