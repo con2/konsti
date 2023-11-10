@@ -90,5 +90,8 @@
     "@babel/core": {
       "optional": true
     }
+  },
+  "engines": {
+    "node": ">=18.17.1"
   }
 }

@@ -28,7 +28,8 @@
     ".eslintrc.js",
     "babel.config.js",
     "lint-staged.config.js",
-    "vitest.workspace.ts"
+    "vitest.workspace.ts",
+    "yarn.config.cjs"
   ],
   "exclude": ["node_modules", "server/lib", "server/coverage"]
 }
