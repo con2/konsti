@@ -12,7 +12,7 @@ module.exports = {
           shared: "../shared/",
           playwright: "./playwright",
         },
-        extensions: [".js", ".ts", ".tsx"],
+        extensions: [".js", ".cjs,", ".ts", ".tsx"],
       },
     ],
   ],

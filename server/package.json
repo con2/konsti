@@ -8,7 +8,7 @@
   },
   "main": "index.ts",
   "scripts": {
-    "eslint": "yarn run -T eslint . --ext .js,.ts",
+    "eslint": "yarn run -T eslint . --ext .js,.cjs,.ts",
     "eslint-save-config": "eslint --print-config .eslintrc.js > eslint-config-server.json && prettier --write eslint-config-server.json",
     "fixer": "ts-node src/features/statistics/dataFixer.ts --",
     "generate-data": "ts-node src/test/test-data-generation/parseCliOptions.ts",
