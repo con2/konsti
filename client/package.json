@@ -57,7 +57,7 @@
   "devDependencies": {
     "@axe-core/react": "4.8.1",
     "@mdx-js/loader": "3.0.0",
-    "@playwright/test": "1.40.0",
+    "@playwright/test": "1.39.0",
     "@pmmmwh/react-refresh-webpack-plugin": "0.5.11",
     "@ronilaukkarinen/stylelint-a11y": "1.2.7",
     "@types/dotenv-webpack": "7.0.7",
