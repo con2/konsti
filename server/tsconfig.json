@@ -13,6 +13,6 @@
     "src/typings/declarations/munkres-js.d.ts",
     "src/typings/declarations/generate-serial-number.d.ts"
   ],
-  "include": ["**/*.js", "**/*.ts", "./.eslintrc.js"],
+  "include": ["**/*.js", "**/*.ts", "./.eslintrc.js", "vitest.config.mts"],
   "exclude": ["./node_modules", "./lib", "./coverage", "./front"]
 }

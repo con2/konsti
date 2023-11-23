@@ -1,5 +1,5 @@
 module.exports = {
-  "*.{js,cjs,ts,tsx}": (files) => {
+  "*.{js,cjs,ts,mts,tsx}": (files) => {
     const filenames = files.join(" ");
     return [`prettier --check ${filenames}`, `eslint ${filenames}`];
   },

@@ -40,7 +40,7 @@ const commonConfig: Configuration = {
   },
 
   resolve: {
-    extensions: [".js", ".cjs", ".ts", ".tsx"],
+    extensions: [".js", ".cjs", ".ts", ".mts", ".tsx"],
     fallback: { crypto: false },
   },
 
@@ -57,7 +57,7 @@ const commonConfig: Configuration = {
     // Loaders to transform sources
     rules: [
       {
-        test: /\.(ts|tsx|js|cjs)$/,
+        test: /\.(ts|tsx|js|cjs|mts)$/,
         include: [
           path.resolve(__dirname, "src"),
           path.resolve(__dirname, "../shared"),
