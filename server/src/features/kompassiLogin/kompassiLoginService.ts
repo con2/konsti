@@ -24,49 +24,22 @@ import {
   makeSuccessResult,
   unwrapResult,
 } from "shared/utils/result";
+import {
+  KompassiProfile,
+  KompassiProfileSchema,
+  KompassiTokens,
+  KompassiTokensSchema,
+} from "server/features/kompassiLogin/KompassiLoginTypes";
 
 export const baseUrl = process.env.KOMPASSI_BASE_URL ?? "https://kompassi.eu";
 export const clientId = process.env.KOMPASSI_CLIENT_ID ?? "";
 const clientSecret = process.env.KOMPASSI_CLIENT_SECRET ?? "";
 const accessGroups = ["users"];
 
-interface Profile {
-  id: number;
-  first_name: string;
-  surname: string;
-  full_name: string;
-  groups: string[];
-  email: string;
-  username: string;
-}
-
-const getProfile = async (
-  accessToken: string,
-): Promise<Result<Profile, KompassiLoginError>> => {
-  const url = `${baseUrl}/api/v2/people/me`;
-  const headers = { authorization: `Bearer ${accessToken}` };
-
-  try {
-    const response = await axios.get(url, { headers });
-    return makeSuccessResult(response.data);
-  } catch (error) {
-    logger.error(
-      "Kompassi login: Error fetching profile from Kompassi: %s",
-      error,
-    );
-    return makeErrorResult(KompassiLoginError.UNKNOWN_ERROR);
-  }
-};
-
-interface Tokens {
-  access_token: string;
-  refresh_token: string;
-}
-
-const getTokens = async (
+const getKompassiTokens = async (
   code: string,
   origin: string,
-): Promise<Result<Tokens, KompassiLoginError>> => {
+): Promise<Result<KompassiTokens, KompassiLoginError>> => {
   const params = new URLSearchParams({
     code,
     grant_type: "authorization_code",
@@ -83,6 +56,16 @@ const getTokens = async (
 
   try {
     const response = await axios.post(url, body, { headers });
+    const result = KompassiTokensSchema.safeParse(response.data);
+    if (!result.success) {
+      logger.error(
+        "%s",
+        new Error(
+          `Error validating getKompassiTokens response: ${result.error}`,
+        ),
+      );
+      return makeErrorResult(KompassiLoginError.UNKNOWN_ERROR);
+    }
     return makeSuccessResult(response.data);
   } catch (error) {
     logger.error(
@@ -93,11 +76,39 @@ const getTokens = async (
   }
 };
 
+const getKompassiProfile = async (
+  accessToken: string,
+): Promise<Result<KompassiProfile, KompassiLoginError>> => {
+  const url = `${baseUrl}/api/v2/people/me`;
+  const headers = { authorization: `Bearer ${accessToken}` };
+
+  try {
+    const response = await axios.get(url, { headers });
+    const result = KompassiProfileSchema.safeParse(response.data);
+    if (!result.success) {
+      logger.error(
+        "%s",
+        new Error(
+          `Error validating getKompassiProfile response: ${result.error}`,
+        ),
+      );
+      return makeErrorResult(KompassiLoginError.UNKNOWN_ERROR);
+    }
+    return makeSuccessResult(response.data);
+  } catch (error) {
+    logger.error(
+      "Kompassi login: Error fetching profile from Kompassi: %s",
+      error,
+    );
+    return makeErrorResult(KompassiLoginError.UNKNOWN_ERROR);
+  }
+};
+
 export const doKompassiLogin = async (
   code: string,
   origin: string,
 ): Promise<PostKompassiLoginResponse | PostKompassiLoginError> => {
-  const tokensResult = await getTokens(code, origin);
+  const tokensResult = await getKompassiTokens(code, origin);
   if (isErrorResult(tokensResult)) {
     return {
       message: "Error getting tokens from Komapssi",
@@ -107,7 +118,7 @@ export const doKompassiLogin = async (
   }
   const tokens = unwrapResult(tokensResult);
 
-  const profileResult = await getProfile(tokens.access_token);
+  const profileResult = await getKompassiProfile(tokens.access_token);
   if (isErrorResult(profileResult)) {
     return {
       message: "Error getting user profile from Komapssi",
