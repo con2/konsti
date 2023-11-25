@@ -6,7 +6,7 @@ import { resendSentryRequest } from "server/features/sentry-tunnel/sentryTunnelS
 import { UserGroup } from "shared/typings/models/user";
 import { getAuthorizedUsername } from "server/utils/authHeader";
 
-const PostSentryTunnelRequestSchema = z.string();
+const PostSentryTunnelRequestSchema = z.instanceof(Buffer);
 
 export const postSentryTunnel = (
   req: Request<{}, {}, string>,

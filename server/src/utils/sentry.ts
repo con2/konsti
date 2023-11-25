@@ -31,13 +31,10 @@ export const initSentry = (app: Express, enableSentry: boolean): void => {
   // TracingHandler creates a trace for every incoming request
   app.use(Handlers.tracingHandler());
 
-  // Sentry tunnel endpoint which accepts text/plain payload
+  // Sentry tunnel endpoint which accepts buffer payload
   app.post(
     ApiEndpoint.SENTRY_TUNNEL,
-    express.text({
-      limit: "5000kb", // limit: 5MB
-      type: "text/plain",
-    }),
+    express.raw({ limit: "100mb", type: () => true }),
     (req, res) => {
       postSentryTunnel(req, res);
     },
