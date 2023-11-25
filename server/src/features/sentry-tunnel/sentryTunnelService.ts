@@ -7,18 +7,18 @@ const sentryHost = "sentry.io";
 const knownProjectIds = ["/6579203", "/6578391", "/6579491"];
 
 export const resendSentryRequest = async (
-  envelope: string,
+  envelope: Buffer,
 ): Promise<null | ApiError> => {
   try {
-    const pieces = envelope.split("\n");
-    const header = JSON.parse(pieces[0]);
+    const piece = envelope.subarray(0, envelope.indexOf("\n"));
+    const header = JSON.parse(piece.toString());
 
     const { host, pathname } = new url.URL(header.dsn as string);
 
     if (!host.includes(sentryHost)) {
       logger.error("%s", new Error(`invalid host: ${host}`));
       return {
-        message: "Sentry tunne: Invalid host",
+        message: "Sentry tunnel: Invalid host",
         status: "error",
         errorId: "unknown",
       };
@@ -37,14 +37,14 @@ export const resendSentryRequest = async (
 
     const sentryUrl = `https://${sentryHost}/api/${projectId}/envelope/`;
     await axios.post(sentryUrl, envelope, {
-      headers: { "Content-Type": "text/plain" },
+      headers: { "Content-Type": "application/x-sentry-envelope" },
     });
 
     return null;
   } catch (error) {
     logger.error("Sentry tunnel error: %s", error);
     return {
-      message: "Sentry tunnel error",
+      message: "Sentry tunnel: Unknown error",
       status: "error",
       errorId: "unknown",
     };
