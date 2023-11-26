@@ -67,14 +67,6 @@ export const clearSession = (): void => {
   }
 };
 
-export enum SessionStorageValue {
-  ALL_GAMES_SEARCH_TERM = "allGamesSearchTerm",
-  ALL_GAMES_TAG = "allGamesTag",
-  ALL_GAMES_SELECTED_VIEW = "allGamesSelectedView",
-  ALL_GAMES_STARTING_TIME = "allGamesStartingTime",
-  MY_GAMES_SHOW_ALL_GAMES = "myGamesShowAllGames",
-}
-
 const languageKey = "i18nextLng";
 const LanguageValueSchema = z.string();
 
