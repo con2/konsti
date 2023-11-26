@@ -11,6 +11,17 @@ import {
 } from "shared/utils/result";
 import { MongoDbError } from "shared/typings/api/errors";
 
+export const removeSerials = async (): Promise<Result<void, MongoDbError>> => {
+  logger.info("MongoDB: remove ALL serials from db");
+  try {
+    await SerialModel.deleteMany({});
+    return makeSuccessResult(undefined);
+  } catch (error) {
+    logger.error("MongoDB: Error removing serials: %s", error);
+    return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
+  }
+};
+
 export const saveSerials = async (
   count: number,
 ): Promise<Result<SerialDoc[], MongoDbError>> => {
