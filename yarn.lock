@@ -8699,7 +8699,6 @@ __metadata:
     mongodb-memory-server: "npm:9.1.1"
     mongoose: "npm:8.0.1"
     morgan: "npm:1.10.0"
-    munkres-js: "npm:1.2.2"
     supertest: "npm:6.3.3"
     ts-node: "npm:10.9.1"
     ts-node-dev: "npm:2.0.0"
@@ -10105,13 +10104,6 @@ __metadata:
     arrify: "npm:^2.0.1"
     minimatch: "npm:^3.0.4"
   checksum: 252ffae6d19491c169c22fc30cf8a99f6031f94a3495f187d3430b06200e9f05a7efae90ab9d834f090834e0d9c979ab55e7ad21f61a37995d807b4b0ccdcbd1
-  languageName: node
-  linkType: hard
-
-"munkres-js@npm:1.2.2":
-  version: 1.2.2
-  resolution: "munkres-js@npm:1.2.2"
-  checksum: db1235e2e821c911ee10d99cfa524d076c9260aedfd1fc034d00225e90cb08581fad7577ea51d5200df073c519e2da792589481479d7b6169fb258d2277158b7
   languageName: node
   linkType: hard
 

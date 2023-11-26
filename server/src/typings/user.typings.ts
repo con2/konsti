@@ -18,8 +18,3 @@ export interface SignupWish {
   gameId: string;
   priority: number;
 }
-
-export interface PlayerIdWithPriority {
-  playerId: number;
-  priorityValue: number;
-}

@@ -7,11 +7,8 @@ export enum SignupStrategy {
 }
 
 export enum AssignmentStrategy {
-  MUNKRES = "munkres",
-  GROUP = "group",
   PADG = "padg",
   RANDOM = "random",
-  GROUP_PADG = "group+padg",
   RANDOM_PADG = "random+padg",
 }
 
