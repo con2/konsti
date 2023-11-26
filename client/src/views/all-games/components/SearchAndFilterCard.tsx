@@ -1,18 +1,11 @@
-import {
-  ChangeEvent,
-  Dispatch,
-  ReactElement,
-  SetStateAction,
-  useEffect,
-  useState,
-} from "react";
+import { ChangeEvent, Dispatch, ReactElement, SetStateAction } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { ProgramTypeSelection } from "client/components/ProgramTypeSelection";
 import { useAppSelector } from "client/utils/hooks";
 import { ProgramType, Tag, Language } from "shared/typings/models/game";
 import { Dropdown } from "client/components/Dropdown";
-import { SessionStorageValue } from "client/utils/localStorage";
+import { SessionStorageValue } from "client/utils/sessionStorage";
 import { ControlledInput } from "client/components/ControlledInput";
 import { RadioButton } from "client/components/RadioButton";
 import { RevolvingDoorGamesInfo } from "client/views/all-games/components/RevolvingDoorGamesInfo";
@@ -27,15 +20,21 @@ export enum StartingTimeOption {
 }
 
 interface Props {
-  onTagChange: Dispatch<SetStateAction<string>>;
-  onSelectedStartingTimeChange: Dispatch<SetStateAction<StartingTimeOption>>;
-  onSearchTermChange: Dispatch<SetStateAction<string>>;
+  selectedTag: Tag | Language | "";
+  setSelectedTag: Dispatch<SetStateAction<Tag | Language | "">>;
+  selectedStartingTime: StartingTimeOption;
+  setSelectedStartingTime: Dispatch<SetStateAction<StartingTimeOption>>;
+  searchTerm: string;
+  setSearchTerm: Dispatch<SetStateAction<string>>;
 }
 
 export const SearchAndFilterCard = ({
-  onTagChange,
-  onSelectedStartingTimeChange,
-  onSearchTermChange,
+  selectedTag,
+  setSelectedTag,
+  selectedStartingTime,
+  setSelectedStartingTime,
+  searchTerm,
+  setSearchTerm,
 }: Props): ReactElement => {
   const tagFilters = [
     Tag.BEGINNER_FRIENDLY,
@@ -51,11 +50,6 @@ export const SearchAndFilterCard = ({
   const activeProgramType = useAppSelector(
     (state) => state.admin.activeProgramType,
   );
-
-  const [selectedTag, setSelectedTag] = useState<string>("");
-  const [selectedStartingTime, setSelectedStartingTime] =
-    useState<StartingTimeOption>(StartingTimeOption.UPCOMING);
-  const [searchTerm, setSearchTerm] = useState<string>("");
 
   const tagOptions = [
     {
@@ -74,21 +68,6 @@ export const SearchAndFilterCard = ({
     })),
   ].flat();
 
-  useEffect(() => {
-    setSelectedTag(
-      sessionStorage.getItem(SessionStorageValue.ALL_GAMES_TAG) ?? "",
-    );
-    setSelectedStartingTime(
-      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-      (sessionStorage.getItem(
-        SessionStorageValue.ALL_GAMES_STARTING_TIME,
-      ) as StartingTimeOption) ?? StartingTimeOption.UPCOMING,
-    );
-    setSearchTerm(
-      sessionStorage.getItem(SessionStorageValue.ALL_GAMES_SEARCH_TERM) ?? "",
-    );
-  }, []);
-
   return (
     <Container>
       <InputContainer>
@@ -103,8 +82,7 @@ export const SearchAndFilterCard = ({
         <Dropdown
           id="tagSelection"
           onChange={(event: ChangeEvent<HTMLSelectElement>) => {
-            const tag = event.target.value;
-            onTagChange(tag);
+            const tag = event.target.value as Tag | Language;
             setSelectedTag(tag);
             sessionStorage.setItem(SessionStorageValue.ALL_GAMES_TAG, tag);
           }}
@@ -133,7 +111,6 @@ export const SearchAndFilterCard = ({
                   label={t(val)}
                   onChange={() => {
                     setSelectedStartingTime(val);
-                    onSelectedStartingTimeChange(val);
                     sessionStorage.setItem(
                       SessionStorageValue.ALL_GAMES_STARTING_TIME,
                       val,
@@ -152,7 +129,6 @@ export const SearchAndFilterCard = ({
           value={searchTerm}
           onChange={(event) => {
             setSearchTerm(event.target.value);
-            onSearchTermChange(event.target.value);
           }}
           placeholder={
             activeProgramType === ProgramType.TABLETOP_RPG
@@ -165,7 +141,6 @@ export const SearchAndFilterCard = ({
           }
           resetValue={() => {
             setSearchTerm("");
-            onSearchTermChange("");
           }}
         />
       </InputContainer>

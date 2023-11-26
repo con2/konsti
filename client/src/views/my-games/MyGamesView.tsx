@@ -20,7 +20,10 @@ import {
 } from "client/views/my-games/myGamesSlice";
 import { RadioButton } from "client/components/RadioButton";
 import { RaisedCard } from "client/components/RaisedCard";
-import { SessionStorageValue } from "client/utils/localStorage";
+import {
+  SessionStorageValue,
+  getSavedShowAllGames,
+} from "client/utils/sessionStorage";
 import { RadioButtonGroup } from "client/components/RadioButtonGroup";
 import { getIsInGroup } from "client/views/group/groupUtils";
 
@@ -40,17 +43,9 @@ export const MyGamesView = (): ReactElement => {
   const isGroupMember = groupMembers.length > 0;
 
   const [showAllGames, setShowAllGames] = useState<boolean>(
-    sessionStorage.getItem(SessionStorageValue.MY_GAMES_SHOW_ALL_GAMES) ===
-      "true" || false,
+    getSavedShowAllGames(),
   );
   const store = useStore();
-
-  useEffect(() => {
-    setShowAllGames(
-      sessionStorage.getItem(SessionStorageValue.MY_GAMES_SHOW_ALL_GAMES) ===
-        "true" || false,
-    );
-  }, []);
 
   useEffect(() => {
     const fetchData = async (): Promise<void> => {

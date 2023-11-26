@@ -8,7 +8,12 @@ import { Loading } from "client/components/Loading";
 import { Game, Language, ProgramType, Tag } from "shared/typings/models/game";
 import { useAppSelector } from "client/utils/hooks";
 import { selectActiveGames } from "client/views/admin/adminSlice";
-import { SessionStorageValue } from "client/utils/localStorage";
+import {
+  SessionStorageValue,
+  getSavedSearchTerm,
+  getSavedStartingTime,
+  getSavedTag,
+} from "client/utils/sessionStorage";
 import {
   SearchAndFilterCard,
   StartingTimeOption,
@@ -22,12 +27,14 @@ export const AllGamesView = (): ReactElement => {
   const testTime = useAppSelector((state) => state.testSettings.testTime);
   const signupStrategy = useAppSelector((state) => state.admin.signupStrategy);
 
-  const [selectedTag, setSelectedTag] = useState<string>("");
+  const [selectedTag, setSelectedTag] = useState<Tag | Language | "">(
+    getSavedTag(),
+  );
   const [loading, setLoading] = useState<boolean>(false);
-  const [searchTerm, setSearchTerm] = useState<string>("");
+  const [searchTerm, setSearchTerm] = useState<string>(getSavedSearchTerm());
   const [filteredGames, setFilteredGames] = useState<readonly Game[]>([]);
   const [selectedStartingTime, setSelectedStartingTime] =
-    useState<StartingTimeOption>(StartingTimeOption.UPCOMING);
+    useState<StartingTimeOption>(getSavedStartingTime());
 
   const [debouncedSearchTerm] = useDebounce(searchTerm, 300, {
     leading: true,
@@ -50,29 +57,6 @@ export const AllGamesView = (): ReactElement => {
 
   useEffect(() => {
     setLoading(true);
-
-    const loadSessionStorageValues = (): void => {
-      const savedSearchTerm = sessionStorage.getItem(
-        SessionStorageValue.ALL_GAMES_SEARCH_TERM,
-      );
-      setSearchTerm(savedSearchTerm ?? "");
-
-      const savedTag = sessionStorage.getItem(
-        SessionStorageValue.ALL_GAMES_TAG,
-      );
-      setSelectedTag(savedTag ?? "");
-
-      const savedStartingTime = sessionStorage.getItem(
-        SessionStorageValue.ALL_GAMES_STARTING_TIME,
-      );
-      setSelectedStartingTime(
-        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-        (savedStartingTime as StartingTimeOption) ??
-          StartingTimeOption.UPCOMING,
-      );
-    };
-    loadSessionStorageValues();
-
     const fetchData = async (): Promise<void> => {
       await loadGames();
       setLoading(false);
@@ -124,9 +108,12 @@ export const AllGamesView = (): ReactElement => {
   return (
     <>
       <SearchAndFilterCard
-        onTagChange={setSelectedTag}
-        onSelectedStartingTimeChange={setSelectedStartingTime}
-        onSearchTermChange={setSearchTerm}
+        selectedTag={selectedTag}
+        setSelectedTag={setSelectedTag}
+        selectedStartingTime={selectedStartingTime}
+        setSelectedStartingTime={setSelectedStartingTime}
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
       />
       {loading ? <Loading /> : memoizedGames}
     </>
