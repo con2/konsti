@@ -3,13 +3,21 @@ import { z } from "zod";
 import { LocalStorageState } from "client/typings/redux.typings";
 import { ProgramType } from "shared/typings/models/game";
 import { StringToJsonSchema } from "client/utils/zodUtils";
+import { config } from "shared/config";
+import { ActiveProgramType } from "shared/config/clientConfigTypes";
+
+const isActive = (programType: ActiveProgramType): boolean =>
+  config.client().activeProgramTypes.includes(programType);
 
 const LocalStorageSchema = z
   .object({
     login: z.object({ jwt: z.string() }).optional(),
     admin: z
       .object({
-        activeProgramType: z.nativeEnum(ProgramType).or(z.literal("all")),
+        activeProgramType: z
+          .nativeEnum(ProgramType)
+          .or(z.literal("all"))
+          .refine(isActive),
       })
       .optional(),
   })
