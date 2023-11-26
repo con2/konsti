@@ -3,17 +3,17 @@ import { z } from "zod";
 import { StringToJsonSchema } from "client/utils/zodUtils";
 
 const pageForceRefreshedKey = "page-has-been-force-refreshed";
-const PageForceRefreshedKeySchema = z.boolean();
+const PageForceRefreshedValueSchema = z.boolean();
 
 const getPageForceRefreshedState = (): boolean => {
-  const serializedState = localStorage.getItem(pageForceRefreshedKey);
+  const serializedValue = localStorage.getItem(pageForceRefreshedKey);
 
-  const parseJsonResult = StringToJsonSchema.safeParse(serializedState);
+  const parseJsonResult = StringToJsonSchema.safeParse(serializedValue);
   if (!parseJsonResult.success) {
     return false;
   }
 
-  const result = PageForceRefreshedKeySchema.safeParse(parseJsonResult.data);
+  const result = PageForceRefreshedValueSchema.safeParse(parseJsonResult.data);
   if (!result.success) {
     return false;
   }

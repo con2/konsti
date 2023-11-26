@@ -9,7 +9,7 @@ import { ActiveProgramType } from "shared/config/clientConfigTypes";
 const isActive = (programType: ActiveProgramType): boolean =>
   config.client().activeProgramTypes.includes(programType);
 
-const LocalStorageSchema = z
+const SessionSchema = z
   .object({
     login: z.object({ jwt: z.string() }).optional(),
     admin: z
@@ -23,21 +23,21 @@ const LocalStorageSchema = z
   })
   .strict();
 
-type LocalStorage = z.infer<typeof LocalStorageSchema>;
+type LocalStorage = z.infer<typeof SessionSchema>;
 
 export const loadSession = (): LocalStorage | undefined => {
-  const serializedState = localStorage.getItem("state");
-  if (!serializedState) {
+  const serializedValue = localStorage.getItem("state");
+  if (!serializedValue) {
     return undefined;
   }
 
-  const parseJsonResult = StringToJsonSchema.safeParse(serializedState);
+  const parseJsonResult = StringToJsonSchema.safeParse(serializedValue);
   if (!parseJsonResult.success) {
     clearSession();
     return undefined;
   }
 
-  const result = LocalStorageSchema.safeParse(parseJsonResult.data);
+  const result = SessionSchema.safeParse(parseJsonResult.data);
   if (!result.success) {
     clearSession();
     return undefined;
@@ -75,17 +75,16 @@ export enum SessionStorageValue {
   MY_GAMES_SHOW_ALL_GAMES = "myGamesShowAllGames",
 }
 
+const languageKey = "i18nextLng";
+const LanguageValueSchema = z.string();
+
 export const getLocalStorageLanguage = (): string => {
-  let language;
-  try {
-    language = localStorage.getItem("i18nextLng");
-  } catch (error) {
-    console.error(error); // eslint-disable-line no-console
+  const serializedValue = localStorage.getItem(languageKey);
+
+  const result = LanguageValueSchema.safeParse(serializedValue);
+  if (!result.success) {
+    return "eng";
   }
 
-  if (typeof language !== "undefined" && typeof language === "string") {
-    return language;
-  }
-
-  return "eng";
+  return result.data;
 };
