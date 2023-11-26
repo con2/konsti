@@ -1,7 +1,7 @@
 import { Dispatch, ReactElement, SetStateAction, useState } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-import { ProgramTypeSelection } from "client/components/EventTypeSelection";
+import { ProgramTypeSelection } from "client/components/ProgramTypeSelection";
 import { RadioButton } from "client/components/RadioButton";
 import { ControlledInput } from "client/components/ControlledInput";
 import { useAppSelector } from "client/utils/hooks";
