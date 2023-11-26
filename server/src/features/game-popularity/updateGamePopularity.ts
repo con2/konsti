@@ -1,7 +1,5 @@
 import { logger } from "server/utils/logger";
-import { updateWithSignups } from "server/features/game-popularity/utils/updateWithSignups";
 import { updateWithAssign } from "server/features/game-popularity/utils/updateWithAssign";
-import { GameUpdateMethod } from "shared/config/serverConfig";
 import { findUsers } from "server/features/user/userRepository";
 import { findGames } from "server/features/game/gameRepository";
 import { findSignups } from "server/features/signup/signupRepository";
@@ -17,12 +15,9 @@ import { config } from "shared/config";
 export const updateGamePopularity = async (): Promise<
   Result<void, MongoDbError | AssignmentError>
 > => {
-  const { gamePopularityUpdateMethod } = config.server();
   const { twoPhaseSignupProgramTypes } = config.shared();
 
-  logger.info(
-    `Calculate game popularity using ${gamePopularityUpdateMethod} method`,
-  );
+  logger.info(`Calculate game popularity`);
 
   const usersResult = await findUsers();
   if (isErrorResult(usersResult)) {
@@ -44,22 +39,9 @@ export const updateGamePopularity = async (): Promise<
   }
   const signups = unwrapResult(signupsResult);
 
-  if (gamePopularityUpdateMethod === GameUpdateMethod.SIGNUPS) {
-    const updateWithSignupsResult = await updateWithSignups(users, games);
-    if (isErrorResult(updateWithSignupsResult)) {
-      return updateWithSignupsResult;
-    }
-  }
-
-  if (gamePopularityUpdateMethod === GameUpdateMethod.ASSIGN) {
-    const updateWithAssignResult = await updateWithAssign(
-      users,
-      games,
-      signups,
-    );
-    if (isErrorResult(updateWithAssignResult)) {
-      return updateWithAssignResult;
-    }
+  const updateWithAssignResult = await updateWithAssign(users, games, signups);
+  if (isErrorResult(updateWithAssignResult)) {
+    return updateWithAssignResult;
   }
 
   logger.info("Game popularity updated");
