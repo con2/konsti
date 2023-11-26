@@ -1,8 +1,3 @@
-export enum GameUpdateMethod {
-  SIGNUPS = "signups",
-  ASSIGN = "assign",
-}
-
 enum DataUri {
   ROPECON = "https://kompassi.eu/api/v1/events/ropecon2023/programme/ropecon",
   HITPOINT = "https://kompassi.eu/api/v1/events/hitpoint2023/programme/hitpoint",
@@ -26,7 +21,6 @@ export interface ServerConfig {
   autoUpdateGamesEnabled: boolean;
   gameUpdateInterval: string;
   enableRemoveOverlapSignups: boolean;
-  gamePopularityUpdateMethod: GameUpdateMethod;
   updateGamePopularityEnabled: boolean;
   useLocalProgramFile: boolean;
   autoAssignPlayersEnabled: boolean;
@@ -55,7 +49,6 @@ const commonConfig = {
   // App settings
   bundleCompression: true,
   enableRemoveOverlapSignups: true,
-  gamePopularityUpdateMethod: GameUpdateMethod.ASSIGN,
 
   // Convention settings
   dataUri: DataUri.HITPOINT,
