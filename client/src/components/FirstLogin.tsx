@@ -1,11 +1,26 @@
 import { ReactElement, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
+import { z } from "zod";
 import { useAppSelector } from "client/utils/hooks";
 import { Button, ButtonStyle } from "./Button";
 import { config } from "shared/config";
 import { HighlightStyle, RaisedCard } from "client/components/RaisedCard";
 import { LoginProvider } from "shared/config/sharedConfigTypes";
+
+const firstLoginValue = "firstLogin";
+const FirstLoginValueSchema = z.literal(firstLoginValue);
+
+const getFirstLoginState = (key: string): typeof firstLoginValue | null => {
+  const serializedValue = localStorage.getItem(key);
+
+  const result = FirstLoginValueSchema.safeParse(serializedValue);
+  if (!result.success) {
+    return null;
+  }
+
+  return result.data;
+};
 
 export const FirstLogin = (): ReactElement | null => {
   const { t } = useTranslation();
@@ -24,11 +39,11 @@ export const FirstLogin = (): ReactElement | null => {
     const firstLoginKey = `${config.shared().conventionName}-${
       config.shared().conventionYear
     }-${username}`;
-    const firstLogin = localStorage.getItem(firstLoginKey);
+    const firstLogin = getFirstLoginState(firstLoginKey);
 
     if (firstLogin === null) {
       setIsFirstLogin(true);
-      localStorage.setItem(firstLoginKey, "firstLogin");
+      localStorage.setItem(firstLoginKey, firstLoginValue);
     } else {
       setIsFirstLogin(false);
     }
