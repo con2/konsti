@@ -1,25 +1,41 @@
 import { ComponentType, LazyExoticComponent, lazy } from "react";
+import { z } from "zod";
+import { StringToJsonSchema } from "client/utils/zodUtils";
+
+const pageForceRefreshedKey = "page-has-been-force-refreshed";
+const PageForceRefreshedKeySchema = z.boolean();
+
+const getPageForceRefreshedState = (): boolean => {
+  const serializedState = localStorage.getItem(pageForceRefreshedKey);
+
+  const parseJsonResult = StringToJsonSchema.safeParse(serializedState);
+  if (!parseJsonResult.success) {
+    return false;
+  }
+
+  const result = PageForceRefreshedKeySchema.safeParse(parseJsonResult.data);
+  if (!result.success) {
+    return false;
+  }
+
+  return result.data;
+};
 
 // https://raphael-leger.medium.com/react-webpack-chunkloaderror-loading-chunk-x-failed-ac385bd110e0
 export const lazyWithRetry = (
   importComponent: () => Promise<{ default: ComponentType }>,
-  fallbackComponent: () => Promise<{ default: ComponentType }>,
 ): LazyExoticComponent<ComponentType> =>
   lazy(async () => {
-    const isPageHasBeenForceRefreshed = JSON.parse(
-      localStorage.getItem("page-has-been-force-refreshed") ?? "false",
-    );
+    const pageForceRefreshed = getPageForceRefreshedState();
 
     try {
       const component = await importComponent();
-      localStorage.setItem("page-has-been-force-refreshed", "false");
+      localStorage.setItem(pageForceRefreshedKey, "false");
       return component;
     } catch (error) {
-      if (!isPageHasBeenForceRefreshed) {
-        localStorage.setItem("page-has-been-force-refreshed", "true");
+      if (!pageForceRefreshed) {
+        localStorage.setItem(pageForceRefreshedKey, "true");
         location.reload();
-        const fallback = await fallbackComponent();
-        return fallback;
       }
 
       // eslint-disable-next-line no-restricted-syntax -- Okay to throw if module loading fails after page reload
