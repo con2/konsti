@@ -2,15 +2,18 @@ import _ from "lodash";
 import { z } from "zod";
 import { LocalStorageState } from "client/typings/redux.typings";
 import { ProgramType } from "shared/typings/models/game";
+import { StringToJsonSchema } from "client/utils/zodUtils";
 
-const LocalStorageSchema = z.object({
-  login: z.object({ jwt: z.string() }).optional(),
-  admin: z
-    .object({
-      activeProgramType: z.nativeEnum(ProgramType).or(z.literal("all")),
-    })
-    .optional(),
-});
+const LocalStorageSchema = z
+  .object({
+    login: z.object({ jwt: z.string() }).optional(),
+    admin: z
+      .object({
+        activeProgramType: z.nativeEnum(ProgramType).or(z.literal("all")),
+      })
+      .optional(),
+  })
+  .strict();
 
 type LocalStorage = z.infer<typeof LocalStorageSchema>;
 
@@ -20,21 +23,19 @@ export const loadSession = (): LocalStorage | undefined => {
     return undefined;
   }
 
-  let parsedSession: LocalStorage;
-  try {
-    // TODO: Use safeParse()
-    parsedSession = LocalStorageSchema.parse(JSON.parse(serializedState));
-  } catch (error) {
+  const parseJsonResult = StringToJsonSchema.safeParse(serializedState);
+  if (!parseJsonResult.success) {
     clearSession();
     return undefined;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-  if (parsedSession) {
-    return parsedSession;
+  const result = LocalStorageSchema.safeParse(parseJsonResult.data);
+  if (!result.success) {
+    clearSession();
+    return undefined;
   }
 
-  return undefined;
+  return result.data;
 };
 
 export const saveSession = (state: Partial<LocalStorageState>): void => {
@@ -51,11 +52,8 @@ export const saveSession = (state: Partial<LocalStorageState>): void => {
 
 export const clearSession = (): void => {
   try {
-    const oldSession = loadSession();
     localStorage.removeItem("state");
-    const newSession = _.omit(oldSession, "login");
-    saveSession(newSession);
-    clearSessionStorage();
+    sessionStorage.clear();
   } catch (error) {
     console.error(error); // eslint-disable-line no-console
   }
@@ -68,12 +66,6 @@ export enum SessionStorageValue {
   ALL_GAMES_STARTING_TIME = "allGamesStartingTime",
   MY_GAMES_SHOW_ALL_GAMES = "myGamesShowAllGames",
 }
-
-const clearSessionStorage = (): void => {
-  Object.values(SessionStorageValue).map((value) => {
-    sessionStorage.removeItem(value);
-  });
-};
 
 export const getLocalStorageLanguage = (): string => {
   let language;

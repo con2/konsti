@@ -8,7 +8,7 @@ import {
 } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-import { ProgramTypeSelection } from "client/components/EventTypeSelection";
+import { ProgramTypeSelection } from "client/components/ProgramTypeSelection";
 import { useAppSelector } from "client/utils/hooks";
 import { ProgramType, Tag, Language } from "shared/typings/models/game";
 import { Dropdown } from "client/components/Dropdown";
