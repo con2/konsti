@@ -52,3 +52,9 @@ interface PadgRandomAssignResult {
 type id = string | number;
 
 export type PadgRandomAssignResults = readonly PadgRandomAssignResult[];
+
+export interface PadgError {
+  result: 0;
+  events: number[];
+  flag: string;
+}
