@@ -7,7 +7,7 @@ import {
   GetTestSettingsResponse,
   PostTestSettingsRequest,
   PostTestSettingsResponse,
-} from "shared/test-typings/api/testSettings";
+} from "shared/test-types/api/testSettings";
 import { isErrorResult, unwrapResult } from "shared/utils/result";
 
 export const fetchTestSettings = async (): Promise<

@@ -8,7 +8,7 @@ import {
 import {
   PostTestSettingsRequest,
   PostTestSettingsRequestSchema,
-} from "shared/test-typings/api/testSettings";
+} from "shared/test-types/api/testSettings";
 
 export const getTestSettings = async (
   _req: Request,

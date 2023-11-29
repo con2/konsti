@@ -5,7 +5,7 @@ import {
   GetTestSettingsResponse,
   PostTestSettingsRequest,
   PostTestSettingsResponse,
-} from "shared/test-typings/api/testSettings";
+} from "shared/test-types/api/testSettings";
 
 export const getTestSettings = async (): Promise<
   GetTestSettingsResponse | ApiError

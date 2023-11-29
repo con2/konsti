@@ -2,7 +2,7 @@ import { z } from "zod";
 import {
   TestSettings,
   TestSettingsSchema,
-} from "shared/test-typings/models/testSettings";
+} from "shared/test-types/models/testSettings";
 import { ApiResult } from "shared/typings/api/errors";
 
 export const PostTestSettingsRequestSchema = TestSettingsSchema.partial();
