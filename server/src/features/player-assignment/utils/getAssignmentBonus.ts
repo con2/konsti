@@ -1,5 +1,5 @@
 import { config } from "shared/config";
-import { Signup } from "server/features/signup/signup.typings";
+import { Signup } from "server/features/signup/signupTypes";
 import { User } from "shared/typings/models/user";
 
 export const getAssignmentBonus = (

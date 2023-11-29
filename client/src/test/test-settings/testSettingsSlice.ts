@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { TestSettingsState } from "client/typings/redux.typings";
+import { TestSettingsState } from "client/typings/reduxTypes";
 
 const initialState: TestSettingsState = {
   testTime: "",

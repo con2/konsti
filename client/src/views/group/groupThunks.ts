@@ -5,7 +5,7 @@ import {
   postLeaveGroup,
   postCloseGroup,
 } from "client/services/groupServices";
-import { AppThunk } from "client/typings/redux.typings";
+import { AppThunk } from "client/typings/reduxTypes";
 import {
   submitLeaveGroupAsync,
   submitUpdateGroupAsync,

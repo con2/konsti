@@ -7,7 +7,7 @@ import { runAssignment } from "server/features/player-assignment/runAssignment";
 import { generateTestData } from "server/test/test-data-generation/generators/generateTestData";
 import { AssignmentStrategy } from "shared/config/sharedConfigTypes";
 import { config } from "shared/config";
-import { AssignmentResultStatus } from "server/typings/result.typings";
+import { AssignmentResultStatus } from "server/typings/resultTypes";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 import * as randomAssign from "server/features/player-assignment/random/randomAssignPlayers";
 import * as padgAssign from "server/features/player-assignment/padg/padgAssignPlayers";

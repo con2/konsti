@@ -1,7 +1,7 @@
 import generator from "generate-serial-number";
 import { logger } from "server/utils/logger";
 import { SerialModel } from "server/features/serial/serialSchema";
-import { SerialDoc, Serial } from "server/typings/serial.typings";
+import { SerialDoc, Serial } from "server/typings/serialTypes";
 import {
   Result,
   isErrorResult,

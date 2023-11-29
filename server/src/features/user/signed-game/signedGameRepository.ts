@@ -1,6 +1,6 @@
 import { findGames } from "server/features/game/gameRepository";
 import { UserModel } from "server/features/user/userSchema";
-import { UserSignedGames } from "server/typings/result.typings";
+import { UserSignedGames } from "server/typings/resultTypes";
 import { logger } from "server/utils/logger";
 import { MongoDbError } from "shared/typings/api/errors";
 import { SelectedGame, User } from "shared/typings/models/user";

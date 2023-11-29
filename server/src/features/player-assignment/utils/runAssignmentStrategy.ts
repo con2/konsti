@@ -6,9 +6,9 @@ import { Game } from "shared/typings/models/game";
 import {
   AssignmentResultStatus,
   PlayerAssignmentResult,
-} from "server/typings/result.typings";
+} from "server/typings/resultTypes";
 import { AssignmentStrategy } from "shared/config/sharedConfigTypes";
-import { Signup } from "server/features/signup/signup.typings";
+import { Signup } from "server/features/signup/signupTypes";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 import {
   Result,

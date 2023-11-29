@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { UserDoc } from "server/typings/user.typings";
+import { UserDoc } from "server/typings/userTypes";
 
 const UserSchema = new mongoose.Schema(
   {

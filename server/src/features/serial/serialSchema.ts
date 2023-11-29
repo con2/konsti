@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { SerialDoc } from "server/typings/serial.typings";
+import { SerialDoc } from "server/typings/serialTypes";
 
 const SerialSchema = new mongoose.Schema({
   serial: String,

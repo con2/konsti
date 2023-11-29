@@ -7,7 +7,7 @@ import { getMaximumNumberOfPlayersByTime } from "./resultDataHelpers";
 import {
   StringNumberObject,
   PriorityObject,
-} from "server/typings/common.typings";
+} from "server/typings/commonTypes";
 import { toPercent } from "server/features/statistics/statsUtil";
 import { TIMEZONE } from "shared/utils/initializeDayjs";
 

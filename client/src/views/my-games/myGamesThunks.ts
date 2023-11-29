@@ -1,6 +1,6 @@
 import { getUser } from "client/services/userServices";
 import { postFavorite } from "client/services/favoriteServices";
-import { AppThunk } from "client/typings/redux.typings";
+import { AppThunk } from "client/typings/reduxTypes";
 import {
   submitDeleteEnteredAsync,
   submitPostEnteredGameAsync,

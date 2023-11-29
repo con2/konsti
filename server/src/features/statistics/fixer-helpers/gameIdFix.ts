@@ -2,13 +2,13 @@ import fs from "fs";
 import _ from "lodash";
 import { logger } from "server/utils/logger";
 import { User } from "shared/typings/models/user";
-import { GameDoc } from "server/typings/game.typings";
-import { ResultsCollectionEntry } from "server/typings/result.typings";
+import { GameDoc } from "server/typings/gameTypes";
+import { ResultsCollectionEntry } from "server/typings/resultTypes";
 import { writeJson } from "server/features/statistics/statsUtil";
 import { config } from "shared/config";
 import { Game } from "shared/typings/models/game";
-import { SignupDoc } from "server/features/signup/signup.typings";
-import { SettingsDoc } from "server/typings/settings.typings";
+import { SignupDoc } from "server/features/signup/signupTypes";
+import { SettingsDoc } from "server/typings/settingsTypes";
 
 export const gameIdFix = async (year: number, event: string): Promise<void> => {
   const users: User[] = JSON.parse(

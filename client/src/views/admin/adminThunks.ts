@@ -6,7 +6,7 @@ import {
   postSettings,
 } from "client/services/settingsServices";
 import { Game } from "shared/typings/models/game";
-import { AppThunk } from "client/typings/redux.typings";
+import { AppThunk } from "client/typings/reduxTypes";
 import {
   submitUpdateHiddenAsync,
   submitGetSettingsAsync,

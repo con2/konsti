@@ -3,7 +3,7 @@ import {
   postTestSettings,
 } from "client/test/test-settings/testSettingsServices";
 import { submitSetTestTime } from "client/test/test-settings/testSettingsSlice";
-import { AppThunk } from "client/typings/redux.typings";
+import { AppThunk } from "client/typings/reduxTypes";
 import { loadGames } from "client/utils/loadData";
 
 export const submitGetTestSettings = (): AppThunk => {

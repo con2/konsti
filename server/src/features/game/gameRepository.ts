@@ -2,7 +2,7 @@ import { ObjectId } from "mongoose";
 import { logger } from "server/utils/logger";
 import { GameModel } from "server/features/game/gameSchema";
 import { updateMovedGames } from "server/features/player-assignment/utils/updateMovedGames";
-import { GameDoc } from "server/typings/game.typings";
+import { GameDoc } from "server/typings/gameTypes";
 import { Game } from "shared/typings/models/game";
 import {
   makeSuccessResult,

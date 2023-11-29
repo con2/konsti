@@ -5,7 +5,7 @@ import {
   postSessionRecovery,
 } from "client/services/loginServices";
 import { saveSession, clearSession } from "client/utils/localStorage";
-import { AppThunk } from "client/typings/redux.typings";
+import { AppThunk } from "client/typings/reduxTypes";
 import {
   PostKompassiLoginError,
   PostKompassiLoginResponse,

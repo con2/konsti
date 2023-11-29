@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { LoginState } from "client/typings/redux.typings";
+import { LoginState } from "client/typings/reduxTypes";
 import { UserGroup } from "shared/typings/models/user";
 import { loadSession } from "client/utils/localStorage";
 import { EventLogItem } from "shared/typings/models/eventLog";

@@ -7,9 +7,9 @@ import { Game } from "shared/typings/models/game";
 import {
   AssignmentResultStatus,
   PlayerAssignmentResult,
-} from "server/typings/result.typings";
+} from "server/typings/resultTypes";
 import { getRunRandomAndPadgInput } from "server/features/player-assignment/utils/getRunRandomAndPadgInput";
-import { Signup } from "server/features/signup/signup.typings";
+import { Signup } from "server/features/signup/signupTypes";
 import {
   Result,
   isErrorResult,

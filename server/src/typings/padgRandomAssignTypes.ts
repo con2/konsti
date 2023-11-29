@@ -1,5 +1,5 @@
 import { ListElement } from "eventassigner-random/lib/typings/list";
-import { Input } from "server/typings/result.typings";
+import { Input } from "server/typings/resultTypes";
 
 export interface Group {
   id: id; // Group id

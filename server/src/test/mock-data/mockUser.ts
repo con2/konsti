@@ -1,5 +1,5 @@
 import { testGame, testGame2 } from "shared/tests/testGame";
-import { NewUser } from "server/typings/user.typings";
+import { NewUser } from "server/typings/userTypes";
 import { SelectedGame, UserGroup } from "shared/typings/models/user";
 import { PostEnteredGameRequest } from "shared/typings/api/myGames";
 import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";

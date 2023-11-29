@@ -1,7 +1,7 @@
 import _ from "lodash";
 import dayjs, { Dayjs } from "dayjs";
 import { findGames, removeGames } from "server/features/game/gameRepository";
-import { GameDoc } from "server/typings/game.typings";
+import { GameDoc } from "server/typings/gameTypes";
 import { logger } from "server/utils/logger";
 import {
   Game,
@@ -17,7 +17,7 @@ import {
   delSignupDocumentsByGameIds,
   findSignups,
 } from "server/features/signup/signupRepository";
-import { Signup } from "server/features/signup/signup.typings";
+import { Signup } from "server/features/signup/signupTypes";
 import {
   Result,
   isErrorResult,

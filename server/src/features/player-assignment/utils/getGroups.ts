@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 import _ from "lodash";
-import { Group } from "server/typings/padgRandomAssign.typings";
+import { Group } from "server/typings/padgRandomAssignTypes";
 import { logger } from "server/utils/logger";
 import { AssignmentError } from "shared/typings/api/errors";
 import { User } from "shared/typings/models/user";

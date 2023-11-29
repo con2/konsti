@@ -4,7 +4,7 @@ import { padgAssignPlayers } from "server/features/player-assignment/padg/padgAs
 import { User } from "shared/typings/models/user";
 import { Game } from "shared/typings/models/game";
 import { saveGamePopularity } from "server/features/game/gameRepository";
-import { Signup } from "server/features/signup/signup.typings";
+import { Signup } from "server/features/signup/signupTypes";
 import {
   Result,
   isErrorResult,

@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { MyGamesState, RootState } from "client/typings/redux.typings";
+import { MyGamesState, RootState } from "client/typings/reduxTypes";
 import { Game } from "shared/typings/models/game";
 import { SelectedGame, UserGames } from "shared/typings/models/user";
 

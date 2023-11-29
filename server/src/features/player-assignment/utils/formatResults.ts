@@ -1,5 +1,5 @@
 import _ from "lodash";
-import { PadgRandomAssignResults } from "server/typings/padgRandomAssign.typings";
+import { PadgRandomAssignResults } from "server/typings/padgRandomAssignTypes";
 import { logger } from "server/utils/logger";
 import { AssignmentError } from "shared/typings/api/errors";
 import { AssignmentResult } from "shared/typings/models/result";

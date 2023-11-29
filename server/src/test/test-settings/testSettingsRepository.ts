@@ -2,7 +2,7 @@ import { logger } from "server/utils/logger";
 import { TestSettings } from "shared/test-typings/models/testSettings";
 import { TestSettingsModel } from "server/test/test-settings/testSettingsSchema";
 import { PostTestSettingsRequest } from "shared/test-typings/api/testSettings";
-import { TestSettingsDoc } from "server/typings/testSettings.typing";
+import { TestSettingsDoc } from "server/typings/testSettingsTypes";
 import {
   Result,
   isErrorResult,

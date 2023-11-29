@@ -9,7 +9,7 @@ import {
 import { Game } from "shared/typings/models/game";
 import { findGames } from "server/features/game/gameRepository";
 import { PostSettingsRequest } from "shared/typings/api/settings";
-import { SettingsDoc } from "server/typings/settings.typings";
+import { SettingsDoc } from "server/typings/settingsTypes";
 import {
   Result,
   isErrorResult,
