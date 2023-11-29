@@ -6,6 +6,7 @@ import {
   Group,
   Event,
   PadgRandomAssignResults,
+  PadgError,
 } from "server/types/padgRandomAssignTypes";
 import { logger } from "server/utils/logger";
 import { config } from "shared/config";
@@ -33,7 +34,7 @@ export const assignPadg = (
       updateL,
     };
 
-    const assignResults: PadgRandomAssignResults =
+    const assignResults: PadgRandomAssignResults | PadgError =
       eventassigner.eventAssignment(input);
 
     if (Array.isArray(assignResults)) {
