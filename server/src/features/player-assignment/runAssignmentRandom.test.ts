@@ -7,7 +7,7 @@ import { runAssignment } from "server/features/player-assignment/runAssignment";
 import { generateTestData } from "server/test/test-data-generation/generators/generateTestData";
 import { AssignmentStrategy } from "shared/config/sharedConfigTypes";
 import { config } from "shared/config";
-import { AssignmentResultStatus } from "server/typings/resultTypes";
+import { AssignmentResultStatus } from "server/types/resultTypes";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 import { saveGames } from "server/features/game/gameRepository";
 import { testGame } from "shared/tests/testGame";

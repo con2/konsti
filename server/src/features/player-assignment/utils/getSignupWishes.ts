@@ -1,5 +1,5 @@
 import { logger } from "server/utils/logger";
-import { SignupWish } from "server/typings/userTypes";
+import { SignupWish } from "server/types/userTypes";
 import { User } from "shared/typings/models/user";
 
 export const getSignupWishes = (players: readonly User[]): SignupWish[] => {

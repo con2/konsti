@@ -1,7 +1,7 @@
 import {
   PadgRandomAssignResults,
   Group,
-} from "server/typings/padgRandomAssignTypes";
+} from "server/types/padgRandomAssignTypes";
 
 export const calculateHappiness = (
   assignment: PadgRandomAssignResults,

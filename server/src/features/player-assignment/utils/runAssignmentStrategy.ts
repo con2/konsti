@@ -6,7 +6,7 @@ import { Game } from "shared/typings/models/game";
 import {
   AssignmentResultStatus,
   PlayerAssignmentResult,
-} from "server/typings/resultTypes";
+} from "server/types/resultTypes";
 import { AssignmentStrategy } from "shared/config/sharedConfigTypes";
 import { Signup } from "server/features/signup/signupTypes";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";

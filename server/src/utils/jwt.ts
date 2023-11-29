@@ -1,6 +1,6 @@
 import jsonwebtoken, { TokenExpiredError } from "jsonwebtoken";
 import { config } from "shared/config";
-import { JWTResult } from "server/typings/jwtTypes";
+import { JWTResult } from "server/types/jwtTypes";
 import { UserGroup } from "shared/typings/models/user";
 
 export const getJWT = (userGroup: UserGroup, username: string): string => {

@@ -24,7 +24,7 @@ import {
   findUserSignups,
   saveSignup,
 } from "server/features/signup/signupRepository";
-import { NewUser } from "server/typings/userTypes";
+import { NewUser } from "server/types/userTypes";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 import {
   DeleteEnteredGameRequest,

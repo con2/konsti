@@ -3,7 +3,7 @@ import { getGroups } from "server/features/player-assignment/utils/getGroups";
 import { getList } from "server/features/player-assignment/utils/getList";
 import { getEvents } from "server/features/player-assignment/utils/getEvents";
 import { formatResults } from "server/features/player-assignment/utils/formatResults";
-import { AssignmentStrategyResult, Input } from "server/typings/resultTypes";
+import { AssignmentStrategyResult, Input } from "server/types/resultTypes";
 import { Game } from "shared/typings/models/game";
 import { User } from "shared/typings/models/user";
 import { Signup } from "server/features/signup/signupTypes";

@@ -6,7 +6,7 @@ import {
 } from "./resultDataHelpers";
 import { logger } from "server/utils/logger";
 import { config } from "shared/config";
-import { ResultsCollectionEntry } from "server/typings/resultTypes";
+import { ResultsCollectionEntry } from "server/types/resultTypes";
 import { Game } from "shared/typings/models/game";
 
 export const getResultsStats = (year: number, event: string): void => {

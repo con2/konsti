@@ -1,6 +1,6 @@
 import { logger } from "server/utils/logger";
 import { ResultsModel } from "server/features/results/resultsSchema";
-import { ResultsCollectionEntry } from "server/typings/resultTypes";
+import { ResultsCollectionEntry } from "server/types/resultTypes";
 import { findGames } from "server/features/game/gameRepository";
 import { AssignmentResult } from "shared/typings/models/result";
 import {

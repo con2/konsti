@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { GameDoc } from "server/typings/gameTypes";
+import { GameDoc } from "server/types/gameTypes";
 
 const gameSchema = new mongoose.Schema(
   {

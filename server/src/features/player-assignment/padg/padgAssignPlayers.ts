@@ -4,7 +4,7 @@ import { Game } from "shared/typings/models/game";
 import {
   AssignmentResultStatus,
   PlayerAssignmentResult,
-} from "server/typings/resultTypes";
+} from "server/types/resultTypes";
 import { getStartingGames } from "server/features/player-assignment/utils/getStartingGames";
 import { getRunRandomAndPadgInput } from "server/features/player-assignment/utils/getRunRandomAndPadgInput";
 import { runPadgAssignment } from "server/features/player-assignment/padg/utils/runPadgAssignment";

@@ -6,12 +6,12 @@ import { getList } from "server/features/player-assignment/utils/getList";
 import { getRandomAssignEvents } from "server/features/player-assignment/random/utils/getRandomAssignEvents";
 import { formatResults } from "server/features/player-assignment/utils/formatResults";
 import { Game } from "shared/typings/models/game";
-import { AssignmentStrategyResult } from "server/typings/resultTypes";
+import { AssignmentStrategyResult } from "server/types/resultTypes";
 import {
   ListItem,
   RandomAssignUpdateLInput,
   PadgRandomAssignResults,
-} from "server/typings/padgRandomAssignTypes";
+} from "server/types/padgRandomAssignTypes";
 import { User } from "shared/typings/models/user";
 import { Signup } from "server/features/signup/signupTypes";
 import {

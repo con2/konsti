@@ -6,7 +6,7 @@ import { getPlayerGroups } from "server/features/player-assignment/utils/getPlay
 import { getGroupMembers } from "server/features/player-assignment/utils/getGroupMembers";
 import { User } from "shared/typings/models/user";
 import { Game } from "shared/typings/models/game";
-import { RunRandomAndPadgInput } from "server/typings/resultTypes";
+import { RunRandomAndPadgInput } from "server/types/resultTypes";
 
 export const getRunRandomAndPadgInput = (
   players: readonly User[],

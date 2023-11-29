@@ -1,6 +1,6 @@
 import _ from "lodash";
 import dayjs from "dayjs";
-import { ListItem } from "server/typings/padgRandomAssignTypes";
+import { ListItem } from "server/types/padgRandomAssignTypes";
 import { getAssignmentBonus } from "server/features/player-assignment/utils/getAssignmentBonus";
 import { SelectedGame, User } from "shared/typings/models/user";
 import { Signup } from "server/features/signup/signupTypes";

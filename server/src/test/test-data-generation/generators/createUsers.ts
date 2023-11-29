@@ -3,7 +3,7 @@ import { logger } from "server/utils/logger";
 import { hashPassword } from "server/utils/bcrypt";
 import { UserGroup } from "shared/typings/models/user";
 import { saveUser } from "server/features/user/userRepository";
-import { NewUser } from "server/typings/userTypes";
+import { NewUser } from "server/types/userTypes";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 import { makeSuccessResult } from "shared/utils/result";
 import { generateGroupCode } from "server/features/user/group/groupService";

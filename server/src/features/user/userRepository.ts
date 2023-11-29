@@ -1,8 +1,8 @@
 import dayjs from "dayjs";
 import { logger } from "server/utils/logger";
 import { UserModel } from "server/features/user/userSchema";
-import { NewUser } from "server/typings/userTypes";
-import { Serial } from "server/typings/serialTypes";
+import { NewUser } from "server/types/userTypes";
+import { Serial } from "server/types/serialTypes";
 import { User, UserGroup } from "shared/typings/models/user";
 import {
   Result,

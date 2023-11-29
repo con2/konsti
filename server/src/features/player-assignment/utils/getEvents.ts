@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 import { Game } from "shared/typings/models/game";
-import { Event } from "server/typings/padgRandomAssignTypes";
+import { Event } from "server/types/padgRandomAssignTypes";
 import { Signup } from "server/features/signup/signupTypes";
 
 // TODO: Merge this with getRandomAssignEvents

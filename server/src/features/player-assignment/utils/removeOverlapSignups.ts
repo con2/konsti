@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
 import isBetween from "dayjs/plugin/isBetween"; // ES 2015
 import { logger } from "server/utils/logger";
-import { UserSignedGames } from "server/typings/resultTypes";
+import { UserSignedGames } from "server/types/resultTypes";
 import { findUsers } from "server/features/user/userRepository";
 import { AssignmentResult } from "shared/typings/models/result";
 import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
