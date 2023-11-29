@@ -37,13 +37,16 @@ export const assignPadg = (
     const assignResults: PadgRandomAssignResults | PadgError =
       eventassigner.eventAssignment(input);
 
-    if (Array.isArray(assignResults)) {
-      const happiness = calculateHappiness(assignResults, groups);
+    // Skip error results
+    if (!Array.isArray(assignResults)) {
+      break;
+    }
 
-      if (happiness > finalHappiness) {
-        finalHappiness = happiness;
-        finalAssignResults = assignResults;
-      }
+    const happiness = calculateHappiness(assignResults, groups);
+
+    if (happiness > finalHappiness) {
+      finalHappiness = happiness;
+      finalAssignResults = assignResults;
     }
   }
 
