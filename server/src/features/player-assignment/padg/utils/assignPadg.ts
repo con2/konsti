@@ -39,7 +39,7 @@ export const assignPadg = (
 
     // Skip error results
     if (!Array.isArray(assignResults)) {
-      break;
+      continue;
     }
 
     const happiness = calculateHappiness(assignResults, groups);
