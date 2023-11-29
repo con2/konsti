@@ -2,7 +2,7 @@ import { clearSession } from "client/utils/localStorage";
 import {
   SubmitLogout,
   SUBMIT_LOGOUT,
-} from "client/typings/logoutActionsTypes";
+} from "client/types/logoutActionsTypes";
 
 export const submitLogout = (): SubmitLogout => {
   clearSession();

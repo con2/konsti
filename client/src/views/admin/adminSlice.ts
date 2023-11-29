@@ -1,7 +1,7 @@
 import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import _ from "lodash";
 import { BackendErrorType } from "client/components/ErrorBar";
-import { AdminState, RootState } from "client/typings/reduxTypes";
+import { AdminState, RootState } from "client/types/reduxTypes";
 import { SettingsPayload } from "shared/typings/api/settings";
 import { LoginProvider, SignupStrategy } from "shared/config/sharedConfigTypes";
 import { Game, ProgramType } from "shared/typings/models/game";

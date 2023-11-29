@@ -2,8 +2,8 @@ import { combineReducers, CombinedState, AnyAction } from "redux";
 import { configureStore } from "@reduxjs/toolkit";
 import { createReduxEnhancer } from "@sentry/react";
 import { config } from "shared/config";
-import { RootState } from "client/typings/reduxTypes";
-import { SUBMIT_LOGOUT } from "client/typings/logoutActionsTypes";
+import { RootState } from "client/types/reduxTypes";
+import { SUBMIT_LOGOUT } from "client/types/logoutActionsTypes";
 
 // Reducers
 import { allGamesReducer } from "client/views/all-games/allGamesSlice";

@@ -1,6 +1,6 @@
 import { Game } from "shared/typings/models/game";
 import { submitUpdateFavorites } from "client/views/my-games/myGamesThunks";
-import { AppDispatch } from "client/typings/reduxTypes";
+import { AppDispatch } from "client/types/reduxTypes";
 
 export interface UpdateFavoriteOpts {
   game: Game;

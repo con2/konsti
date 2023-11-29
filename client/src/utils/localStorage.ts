@@ -1,6 +1,6 @@
 import _ from "lodash";
 import { z } from "zod";
-import { LocalStorageState } from "client/typings/reduxTypes";
+import { LocalStorageState } from "client/types/reduxTypes";
 import { ProgramType } from "shared/typings/models/game";
 import { StringToJsonSchema } from "client/utils/zodUtils";
 import { config } from "shared/config";

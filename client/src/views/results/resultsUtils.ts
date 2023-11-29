@@ -1,4 +1,4 @@
-import { UsersForGame } from "client/typings/reduxTypes";
+import { UsersForGame } from "client/types/reduxTypes";
 import { UserSignup } from "shared/typings/models/game";
 
 export const getUsersForGameId = (
