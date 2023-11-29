@@ -10,7 +10,7 @@ import {
   PostSignedGamesError,
   PostSignedGamesRequest,
   PostSignedGamesResponse,
-} from "shared/typings/api/myGames";
+} from "shared/types/api/myGames";
 
 export const postSignedGames = async (
   signupData: PostSignedGamesRequest,

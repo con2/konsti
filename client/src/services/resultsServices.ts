@@ -1,10 +1,10 @@
 import { api } from "client/utils/api";
-import { ApiError } from "shared/typings/api/errors";
+import { ApiError } from "shared/types/api/errors";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
   GetResultsRequest,
   GetResultsResponse,
-} from "shared/typings/api/results";
+} from "shared/types/api/results";
 
 export const getResults = async (
   startTime: string,

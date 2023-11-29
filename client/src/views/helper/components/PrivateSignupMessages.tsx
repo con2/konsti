@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import _ from "lodash";
 import styled from "styled-components";
 import { useAppSelector } from "client/utils/hooks";
-import { Game } from "shared/typings/models/game";
+import { Game } from "shared/types/models/game";
 import { getWeekdayAndTime } from "client/utils/timeFormatter";
 import { ControlledInput } from "client/components/ControlledInput";
 import { MULTIPLE_WHITESPACES_REGEX } from "client/views/all-games/AllGamesView";

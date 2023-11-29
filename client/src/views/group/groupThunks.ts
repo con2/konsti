@@ -5,7 +5,7 @@ import {
   postLeaveGroup,
   postCloseGroup,
 } from "client/services/groupServices";
-import { AppThunk } from "client/typings/redux.typings";
+import { AppThunk } from "client/types/reduxTypes";
 import {
   submitLeaveGroupAsync,
   submitUpdateGroupAsync,
@@ -14,7 +14,7 @@ import {
 import {
   PostCloseGroupRequest,
   PostJoinGroupRequest,
-} from "shared/typings/api/groups";
+} from "shared/types/api/groups";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 
 export enum PostCreateGroupErrorMessage {

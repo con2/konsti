@@ -5,7 +5,7 @@ import { AllGamesList } from "client/views/all-games/components/AllGamesList";
 import { getUpcomingGames } from "client/utils/getUpcomingGames";
 import { loadGames } from "client/utils/loadData";
 import { Loading } from "client/components/Loading";
-import { Game, Language, ProgramType, Tag } from "shared/typings/models/game";
+import { Game, Language, ProgramType, Tag } from "shared/types/models/game";
 import { useAppSelector } from "client/utils/hooks";
 import { selectActiveGames } from "client/views/admin/adminSlice";
 import {

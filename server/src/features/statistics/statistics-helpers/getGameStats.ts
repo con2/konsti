@@ -7,8 +7,8 @@ import {
 } from "./gameDataHelpers";
 import { logger } from "server/utils/logger";
 import { config } from "shared/config";
-import { Game } from "shared/typings/models/game";
-import { User } from "shared/typings/models/user";
+import { Game } from "shared/types/models/game";
+import { User } from "shared/types/models/user";
 
 export const getGameStats = (year: number, event: string): void => {
   const games: Game[] = JSON.parse(

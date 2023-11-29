@@ -1,30 +1,26 @@
 import _ from "lodash";
 import dayjs, { Dayjs } from "dayjs";
 import { findGames, removeGames } from "server/features/game/gameRepository";
-import { GameDoc } from "server/typings/game.typings";
+import { GameDoc } from "server/types/gameTypes";
 import { logger } from "server/utils/logger";
-import {
-  Game,
-  GameWithUsernames,
-  UserSignup,
-} from "shared/typings/models/game";
+import { Game, GameWithUsernames, UserSignup } from "shared/types/models/game";
 import { SignupStrategy } from "shared/config/sharedConfigTypes";
 import { config } from "shared/config";
 import { findSettings } from "server/features/settings/settingsRepository";
-import { Settings, SignupQuestion } from "shared/typings/models/settings";
+import { Settings, SignupQuestion } from "shared/types/models/settings";
 import { getTimeNow } from "server/features/player-assignment/utils/getTimeNow";
 import {
   delSignupDocumentsByGameIds,
   findSignups,
 } from "server/features/signup/signupRepository";
-import { Signup } from "server/features/signup/signup.typings";
+import { Signup } from "server/features/signup/signupTypes";
 import {
   Result,
   isErrorResult,
   makeSuccessResult,
   unwrapResult,
 } from "shared/utils/result";
-import { MongoDbError } from "shared/typings/api/errors";
+import { MongoDbError } from "shared/types/api/errors";
 import { tooEearlyForAlgorithmSignup } from "shared/utils/tooEearlyForAlgorithmSignup";
 
 export const removeDeletedGames = async (

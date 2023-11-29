@@ -1,9 +1,9 @@
 import { Dayjs } from "dayjs";
 import { logger } from "server/utils/logger";
 import { saveSerials } from "server/features/serial/serialRepository";
-import { SerialDoc } from "server/typings/serial.typings";
+import { SerialDoc } from "server/types/serialTypes";
 import { Result } from "shared/utils/result";
-import { MongoDbError } from "shared/typings/api/errors";
+import { MongoDbError } from "shared/types/api/errors";
 
 interface IsValidSignupTimeParams {
   startTime: Dayjs;

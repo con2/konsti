@@ -3,7 +3,7 @@ import {
   PostEventLogIsSeenError,
   PostEventLogIsSeenRequest,
   PostEventLogIsSeenResponse,
-} from "shared/typings/api/eventLog";
+} from "shared/types/api/eventLog";
 import { isErrorResult, unwrapResult } from "shared/utils/result";
 
 export const storeEventLogItem = async (

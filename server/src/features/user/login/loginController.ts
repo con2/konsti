@@ -5,7 +5,7 @@ import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
   PostLoginRequest,
   PostLoginRequestSchema,
-} from "shared/typings/api/login";
+} from "shared/types/api/login";
 
 export const postLogin = async (
   req: Request<{}, {}, PostLoginRequest>,

@@ -2,13 +2,13 @@ import { ReactElement, useState } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { Game } from "shared/typings/models/game";
+import { Game } from "shared/types/models/game";
 import { SignupForm } from "./SignupForm";
 import {
   PostSignedGamesErrorMessage,
   submitPostSignedGames,
 } from "client/views/my-games/myGamesThunks";
-import { SelectedGame } from "shared/typings/models/user";
+import { SelectedGame } from "shared/types/models/user";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { isAlreadySigned } from "./allGamesUtils";
 import { Button, ButtonStyle } from "client/components/Button";

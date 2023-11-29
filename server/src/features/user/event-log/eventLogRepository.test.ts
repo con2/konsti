@@ -8,7 +8,7 @@ import {
   addEventLogItems,
   deleteEventLogItemsByStartTime,
 } from "server/features/user/event-log/eventLogRepository";
-import { EventLogAction } from "shared/typings/models/eventLog";
+import { EventLogAction } from "shared/types/models/eventLog";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 import { saveGames } from "server/features/game/gameRepository";
 import { testGame, testGame2 } from "shared/tests/testGame";

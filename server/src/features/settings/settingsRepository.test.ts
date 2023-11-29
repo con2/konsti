@@ -13,7 +13,7 @@ import { saveGames } from "server/features/game/gameRepository";
 import {
   SignupQuestion,
   SignupQuestionType,
-} from "shared/typings/models/settings";
+} from "shared/types/models/settings";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 
 beforeEach(async () => {

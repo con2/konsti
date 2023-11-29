@@ -3,14 +3,14 @@ import { expect, test, describe, afterEach, beforeEach } from "vitest";
 import request from "supertest";
 import { faker } from "@faker-js/faker";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
-import { UserGroup } from "shared/typings/models/user";
+import { UserGroup } from "shared/types/models/user";
 import { getJWT } from "server/utils/jwt";
 import { LoginProvider, SignupStrategy } from "shared/config/sharedConfigTypes";
 import {
   Settings,
   SignupQuestion,
   SignupQuestionType,
-} from "shared/typings/models/settings";
+} from "shared/types/models/settings";
 import { testGame, testGame2 } from "shared/tests/testGame";
 import { saveGames } from "server/features/game/gameRepository";
 import { findUser, saveUser } from "server/features/user/userRepository";
@@ -29,7 +29,7 @@ import {
 } from "server/test/mock-data/mockUser";
 import { closeServer, startServer } from "server/utils/server";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
-import { PostSignupQuestionRequest } from "shared/typings/api/settings";
+import { PostSignupQuestionRequest } from "shared/types/api/settings";
 import {
   createSettings,
   findSettings,

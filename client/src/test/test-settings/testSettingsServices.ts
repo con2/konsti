@@ -1,11 +1,11 @@
 import { api } from "client/utils/api";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
-import { ApiError } from "shared/typings/api/errors";
+import { ApiError } from "shared/types/api/errors";
 import {
   GetTestSettingsResponse,
   PostTestSettingsRequest,
   PostTestSettingsResponse,
-} from "shared/test-typings/api/testSettings";
+} from "shared/test-types/api/testSettings";
 
 export const getTestSettings = async (): Promise<
   GetTestSettingsResponse | ApiError

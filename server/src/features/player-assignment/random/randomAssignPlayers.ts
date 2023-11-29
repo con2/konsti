@@ -2,21 +2,21 @@ import _ from "lodash";
 import { logger } from "server/utils/logger";
 import { getStartingGames } from "server/features/player-assignment/utils/getStartingGames";
 import { runRandomAssignment } from "server/features/player-assignment/random/utils/runRandomAssignment";
-import { User } from "shared/typings/models/user";
-import { Game } from "shared/typings/models/game";
+import { User } from "shared/types/models/user";
+import { Game } from "shared/types/models/game";
 import {
   AssignmentResultStatus,
   PlayerAssignmentResult,
-} from "server/typings/result.typings";
+} from "server/types/resultTypes";
 import { getRunRandomAndPadgInput } from "server/features/player-assignment/utils/getRunRandomAndPadgInput";
-import { Signup } from "server/features/signup/signup.typings";
+import { Signup } from "server/features/signup/signupTypes";
 import {
   Result,
   isErrorResult,
   makeSuccessResult,
   unwrapResult,
 } from "shared/utils/result";
-import { AssignmentError } from "shared/typings/api/errors";
+import { AssignmentError } from "shared/types/api/errors";
 import { AssignmentStrategy } from "shared/config/sharedConfigTypes";
 
 export const randomAssignPlayers = (

@@ -1,8 +1,8 @@
 import { logger } from "server/utils/logger";
-import { TestSettings } from "shared/test-typings/models/testSettings";
+import { TestSettings } from "shared/test-types/models/testSettings";
 import { TestSettingsModel } from "server/test/test-settings/testSettingsSchema";
-import { PostTestSettingsRequest } from "shared/test-typings/api/testSettings";
-import { TestSettingsDoc } from "server/typings/testSettings.typing";
+import { PostTestSettingsRequest } from "shared/test-types/api/testSettings";
+import { TestSettingsDoc } from "server/types/testSettingsTypes";
 import {
   Result,
   isErrorResult,
@@ -10,7 +10,7 @@ import {
   makeSuccessResult,
   unwrapResult,
 } from "shared/utils/result";
-import { MongoDbError } from "shared/typings/api/errors";
+import { MongoDbError } from "shared/types/api/errors";
 
 export const removeTestSettings = async (): Promise<
   Result<void, MongoDbError>

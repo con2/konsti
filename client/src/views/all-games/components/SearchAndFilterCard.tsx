@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { ProgramTypeSelection } from "client/components/ProgramTypeSelection";
 import { useAppSelector } from "client/utils/hooks";
-import { ProgramType, Tag, Language } from "shared/typings/models/game";
+import { ProgramType, Tag, Language } from "shared/types/models/game";
 import { Dropdown } from "client/components/Dropdown";
 import { SessionStorageValue } from "client/utils/sessionStorage";
 import { ControlledInput } from "client/components/ControlledInput";

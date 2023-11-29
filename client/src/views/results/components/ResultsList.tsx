@@ -7,7 +7,7 @@ import { getWeekdayAndTime } from "client/utils/timeFormatter";
 import { useAppSelector } from "client/utils/hooks";
 import { getUsersForGameId } from "client/views/results/resultsUtils";
 import { getUpcomingGames } from "client/utils/getUpcomingGames";
-import { Game } from "shared/typings/models/game";
+import { Game } from "shared/types/models/game";
 import { selectActiveGames } from "client/views/admin/adminSlice";
 import { MULTIPLE_WHITESPACES_REGEX } from "client/views/all-games/AllGamesView";
 import { Tags } from "client/components/Tags";

@@ -6,11 +6,11 @@ import {
   Group,
   Event,
   PadgRandomAssignResults,
-} from "server/typings/padgRandomAssign.typings";
+} from "server/types/padgRandomAssignTypes";
 import { logger } from "server/utils/logger";
 import { config } from "shared/config";
 import { calculateHappiness } from "server/features/player-assignment/padg/utils/calculateHappiness";
-import { Input } from "server/typings/result.typings";
+import { Input } from "server/types/resultTypes";
 
 export const assignPadg = (
   groups: Group[],

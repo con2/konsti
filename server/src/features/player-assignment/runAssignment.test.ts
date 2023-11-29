@@ -21,7 +21,7 @@ import {
   mockUser,
   mockUser2,
 } from "server/test/mock-data/mockUser";
-import { ProgramType } from "shared/typings/models/game";
+import { ProgramType } from "shared/types/models/game";
 import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 import { assertUserUpdatedCorrectly } from "server/features/player-assignment/runAssignmentTestUtils";

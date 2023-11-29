@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import _ from "lodash";
 import { getWeekdayAndTime } from "client/utils/timeFormatter";
-import { SelectedGame } from "shared/typings/models/user";
+import { SelectedGame } from "shared/types/models/user";
 import { EnteredGameRow } from "client/views/my-games/components/EnteredGameRow";
 
 interface Props {

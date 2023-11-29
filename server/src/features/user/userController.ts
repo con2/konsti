@@ -5,7 +5,7 @@ import {
   fetchUserBySerialOrUsername,
   storeUserPassword,
 } from "server/features/user/userService";
-import { UserGroup } from "shared/typings/models/user";
+import { UserGroup } from "shared/types/models/user";
 import { getAuthorizedUsername } from "server/utils/authHeader";
 import { logger } from "server/utils/logger";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
@@ -16,7 +16,7 @@ import {
   PostUpdateUserPasswordRequest,
   PostUpdateUserPasswordRequestSchema,
   PostUserRequestSchema,
-} from "shared/typings/api/users";
+} from "shared/types/api/users";
 
 export const postUser = async (
   req: Request<{}, {}, PostUserRequest>,

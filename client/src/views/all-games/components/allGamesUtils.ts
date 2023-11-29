@@ -1,5 +1,5 @@
-import { Game } from "shared/typings/models/game";
-import { SelectedGame } from "shared/typings/models/user";
+import { Game } from "shared/types/models/game";
+import { SelectedGame } from "shared/types/models/user";
 
 export const isAlreadySigned = (
   gameToCheck: Game,

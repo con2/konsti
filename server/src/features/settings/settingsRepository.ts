@@ -5,11 +5,11 @@ import {
   Settings,
   SettingsSchema,
   SignupQuestion,
-} from "shared/typings/models/settings";
-import { Game } from "shared/typings/models/game";
+} from "shared/types/models/settings";
+import { Game } from "shared/types/models/game";
 import { findGames } from "server/features/game/gameRepository";
-import { PostSettingsRequest } from "shared/typings/api/settings";
-import { SettingsDoc } from "server/typings/settings.typings";
+import { PostSettingsRequest } from "shared/types/api/settings";
+import { SettingsDoc } from "server/types/settingsTypes";
 import {
   Result,
   isErrorResult,
@@ -17,7 +17,7 @@ import {
   makeSuccessResult,
   makeErrorResult,
 } from "shared/utils/result";
-import { MongoDbError } from "shared/typings/api/errors";
+import { MongoDbError } from "shared/types/api/errors";
 
 export const removeSettings = async (): Promise<Result<void, MongoDbError>> => {
   logger.info("MongoDB: remove ALL settings from db");

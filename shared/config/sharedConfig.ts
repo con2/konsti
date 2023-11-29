@@ -6,8 +6,8 @@ import {
   SignupStrategy,
   SignupWindow,
 } from "shared/config/sharedConfigTypes";
-import { ProgramType } from "shared/typings/models/game";
-import { SignupQuestion } from "shared/typings/models/settings";
+import { ProgramType } from "shared/types/models/game";
+import { SignupQuestion } from "shared/types/models/settings";
 
 export interface SharedConfig {
   assignmentStrategy: AssignmentStrategy;

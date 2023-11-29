@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { SignupDoc } from "server/features/signup/signup.typings";
+import { SignupDoc } from "server/features/signup/signupTypes";
 
 const SignupSchema = new mongoose.Schema(
   {

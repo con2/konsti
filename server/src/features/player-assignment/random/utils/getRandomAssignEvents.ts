@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
-import { Game } from "shared/typings/models/game";
-import { RandomAssignEvent } from "server/typings/padgRandomAssign.typings";
-import { Signup } from "server/features/signup/signup.typings";
+import { Game } from "shared/types/models/game";
+import { RandomAssignEvent } from "server/types/padgRandomAssignTypes";
+import { Signup } from "server/features/signup/signupTypes";
 
 export const getRandomAssignEvents = (
   signedGames: readonly Game[],

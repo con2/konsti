@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import { AssignmentResult } from "shared/typings/models/result";
+import { AssignmentResult } from "shared/types/models/result";
 import {
   delSignup,
   delAssignmentSignupsByStartTime,
@@ -13,12 +13,12 @@ import {
   makeSuccessResult,
   unwrapResult,
 } from "shared/utils/result";
-import { MongoDbError } from "shared/typings/api/errors";
+import { MongoDbError } from "shared/types/api/errors";
 import {
   addEventLogItems,
   deleteEventLogItemsByStartTime,
 } from "server/features/user/event-log/eventLogRepository";
-import { EventLogAction } from "shared/typings/models/eventLog";
+import { EventLogAction } from "shared/types/models/eventLog";
 import { config } from "shared/config";
 
 export const saveUserSignupResults = async (

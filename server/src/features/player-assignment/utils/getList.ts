@@ -1,9 +1,9 @@
 import _ from "lodash";
 import dayjs from "dayjs";
-import { ListItem } from "server/typings/padgRandomAssign.typings";
+import { ListItem } from "server/types/padgRandomAssignTypes";
 import { getAssignmentBonus } from "server/features/player-assignment/utils/getAssignmentBonus";
-import { SelectedGame, User } from "shared/typings/models/user";
-import { Signup } from "server/features/signup/signup.typings";
+import { SelectedGame, User } from "shared/types/models/user";
+import { Signup } from "server/features/signup/signupTypes";
 import { logger } from "server/utils/logger";
 import {
   Result,
@@ -13,7 +13,7 @@ import {
   makeSuccessResult,
   unwrapResult,
 } from "shared/utils/result";
-import { AssignmentError } from "shared/typings/api/errors";
+import { AssignmentError } from "shared/types/api/errors";
 
 export const getList = (
   playerGroups: readonly User[][],

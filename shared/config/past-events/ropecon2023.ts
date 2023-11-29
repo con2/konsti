@@ -7,11 +7,11 @@ import {
   SignupStrategy,
   SignupWindow,
 } from "shared/config/sharedConfigTypes";
-import { ProgramType } from "shared/typings/models/game";
+import { ProgramType } from "shared/types/models/game";
 import {
   SignupQuestion,
   SignupQuestionType,
-} from "shared/typings/models/settings";
+} from "shared/types/models/settings";
 
 interface SharedConfig {
   assignmentStrategy: AssignmentStrategy;

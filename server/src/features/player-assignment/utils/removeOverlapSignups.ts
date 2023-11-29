@@ -1,9 +1,9 @@
 import dayjs from "dayjs";
 import isBetween from "dayjs/plugin/isBetween"; // ES 2015
 import { logger } from "server/utils/logger";
-import { UserSignedGames } from "server/typings/result.typings";
+import { UserSignedGames } from "server/types/resultTypes";
 import { findUsers } from "server/features/user/userRepository";
-import { AssignmentResult } from "shared/typings/models/result";
+import { AssignmentResult } from "shared/types/models/result";
 import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
 import {
   Result,
@@ -12,7 +12,7 @@ import {
   makeSuccessResult,
   unwrapResult,
 } from "shared/utils/result";
-import { MongoDbError } from "shared/typings/api/errors";
+import { MongoDbError } from "shared/types/api/errors";
 
 // TODO: Can this be deleted?
 dayjs.extend(isBetween);

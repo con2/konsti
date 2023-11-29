@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 import { logger } from "server/utils/logger";
-import { Game } from "shared/typings/models/game";
+import { Game } from "shared/types/models/game";
 
 export const getStartingGames = (
   games: readonly Game[],

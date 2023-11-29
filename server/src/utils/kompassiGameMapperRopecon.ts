@@ -8,7 +8,7 @@ import {
   Language,
   ProgramType,
   Tag,
-} from "shared/typings/models/game";
+} from "shared/types/models/game";
 import {
   KompassiGameRopecon,
   KompassiGameStyleRopecon,
@@ -17,7 +17,7 @@ import {
   KompassiProgramTypeRopecon,
   KompassiTagRopecon,
   workshopProgramTypesRopecon,
-} from "shared/typings/models/kompassiGame/kompassiGameRopecon";
+} from "shared/types/models/kompassiGame/kompassiGameRopecon";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 import { config } from "shared/config";
 

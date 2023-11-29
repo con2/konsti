@@ -3,7 +3,7 @@ import { findSignups } from "server/features/signup/signupRepository";
 import {
   GetSignupMessagesError,
   GetSignupMessagesResponse,
-} from "shared/typings/api/users";
+} from "shared/types/api/users";
 import { isErrorResult, unwrapResult } from "shared/utils/result";
 
 export const fetchSignupMessages = async (): Promise<

@@ -1,5 +1,5 @@
 import { api } from "client/utils/api";
-import { ApiError } from "shared/typings/api/errors";
+import { ApiError } from "shared/types/api/errors";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
   GetSignupMessagesError,
@@ -12,12 +12,12 @@ import {
   PostUserError,
   PostUserRequest,
   PostUserResponse,
-} from "shared/typings/api/users";
+} from "shared/types/api/users";
 import { RegistrationFormFields } from "client/views/registration/components/RegistrationForm";
 import {
   PostEventLogIsSeenRequest,
   PostEventLogIsSeenResponse,
-} from "shared/typings/api/eventLog";
+} from "shared/types/api/eventLog";
 
 export const postRegistration = async (
   registrationFormFields: RegistrationFormFields,

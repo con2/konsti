@@ -1,5 +1,5 @@
 import { logger } from "server/utils/logger";
-import { User } from "shared/typings/models/user";
+import { User } from "shared/types/models/user";
 
 export const getGroupMembers = (
   groupCreators: readonly User[],

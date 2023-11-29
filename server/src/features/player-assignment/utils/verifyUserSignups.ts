@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 import { logger } from "server/utils/logger";
-import { User } from "shared/typings/models/user";
+import { User } from "shared/types/models/user";
 import { findUsers } from "server/features/user/userRepository";
 import { findSignups } from "server/features/signup/signupRepository";
 import { config } from "shared/config";
@@ -11,7 +11,7 @@ import {
   makeSuccessResult,
   unwrapResult,
 } from "shared/utils/result";
-import { MongoDbError } from "shared/typings/api/errors";
+import { MongoDbError } from "shared/types/api/errors";
 
 export const verifyUserSignups = async (): Promise<
   Result<void, MongoDbError>

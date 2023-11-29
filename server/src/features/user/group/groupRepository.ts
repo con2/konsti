@@ -1,7 +1,7 @@
 import { UserModel } from "server/features/user/userSchema";
 import { logger } from "server/utils/logger";
-import { MongoDbError } from "shared/typings/api/errors";
-import { User } from "shared/typings/models/user";
+import { MongoDbError } from "shared/types/api/errors";
+import { User } from "shared/types/models/user";
 import {
   Result,
   makeErrorResult,

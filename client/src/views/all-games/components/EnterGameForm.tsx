@@ -1,7 +1,7 @@
 import { ReactElement, FormEvent, useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
-import { Game } from "shared/typings/models/game";
+import { Game } from "shared/types/models/game";
 import {
   PostEnteredGameErrorMessage,
   submitPostEnteredGame,
@@ -11,7 +11,7 @@ import { Button, ButtonStyle } from "client/components/Button";
 import {
   SignupQuestion,
   SignupQuestionType,
-} from "shared/typings/models/settings";
+} from "shared/types/models/settings";
 import { loadGames } from "client/utils/loadData";
 import { ErrorMessage } from "client/components/ErrorMessage";
 import { getIsInGroup } from "client/views/group/groupUtils";

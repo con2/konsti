@@ -1,5 +1,5 @@
 import { ActiveProgramType } from "shared/config/clientConfigTypes";
-import { ProgramType } from "shared/typings/models/game";
+import { ProgramType } from "shared/types/models/game";
 
 export interface ClientConfig {
   MESSAGE_DELAY: number;

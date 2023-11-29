@@ -11,7 +11,7 @@ import {
 import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
 import { findUser } from "server/features/user/userRepository";
 import { config } from "shared/config";
-import { MongoDbError } from "shared/typings/api/errors";
+import { MongoDbError } from "shared/types/api/errors";
 import {
   PostCloseGroupResponse,
   PostCreateGroupResponse,
@@ -23,7 +23,7 @@ import {
   PostCreateGroupError,
   PostJoinGroupError,
   PostLeaveGroupError,
-} from "shared/typings/api/groups";
+} from "shared/types/api/groups";
 import {
   isErrorResult,
   makeErrorResult,

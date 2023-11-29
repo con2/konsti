@@ -7,7 +7,7 @@ import {
 } from "./userDataHelpers";
 import { logger } from "server/utils/logger";
 import { config } from "shared/config";
-import { User } from "shared/typings/models/user";
+import { User } from "shared/types/models/user";
 
 export const getUserStats = (year: number, event: string): void => {
   const users: User[] = JSON.parse(

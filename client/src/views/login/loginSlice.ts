@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { LoginState } from "client/typings/redux.typings";
-import { UserGroup } from "shared/typings/models/user";
+import { LoginState } from "client/types/reduxTypes";
+import { UserGroup } from "shared/types/models/user";
 import { loadSession } from "client/utils/localStorage";
-import { EventLogItem } from "shared/typings/models/eventLog";
-import { PostVerifyKompassiLoginPayload } from "shared/typings/api/login";
+import { EventLogItem } from "shared/types/models/eventLog";
+import { PostVerifyKompassiLoginPayload } from "shared/types/api/login";
 
 const initialState = (): LoginState => {
   const persistedState = loadSession();

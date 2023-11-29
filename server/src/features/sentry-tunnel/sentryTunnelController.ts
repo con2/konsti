@@ -3,7 +3,7 @@ import { z } from "zod";
 import { logger } from "server/utils/logger";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { resendSentryRequest } from "server/features/sentry-tunnel/sentryTunnelService";
-import { UserGroup } from "shared/typings/models/user";
+import { UserGroup } from "shared/types/models/user";
 import { getAuthorizedUsername } from "server/utils/authHeader";
 
 const PostSentryTunnelRequestSchema = z.instanceof(Buffer);

@@ -7,7 +7,7 @@ import { expect, test, vi, afterEach, beforeEach, describe } from "vitest";
 import { startServer, closeServer } from "server/utils/server";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { getJWT } from "server/utils/jwt";
-import { UserGroup } from "shared/typings/models/user";
+import { UserGroup } from "shared/types/models/user";
 import { testHelperWrapperRopecon } from "server/features/game/utils/getGamesFromKompassiRopecon";
 import {
   testKompassiGameRopecon,
@@ -37,10 +37,10 @@ import {
   KompassiGameStyleRopecon,
   KompassiGenreRopecon,
   KompassiTagRopecon,
-} from "shared/typings/models/kompassiGame/kompassiGameRopecon";
-import { GameStyle, Genre, Tag } from "shared/typings/models/game";
+} from "shared/types/models/kompassiGame/kompassiGameRopecon";
+import { GameStyle, Genre, Tag } from "shared/types/models/game";
 import { logger } from "server/utils/logger";
-import { SignupQuestionType } from "shared/typings/models/settings";
+import { SignupQuestionType } from "shared/types/models/settings";
 import { config } from "shared/config";
 import { ConventionName } from "shared/config/sharedConfigTypes";
 import { testHelperWrapperHitpoint } from "server/features/game/utils/getGamesFromKompassiHitpoint";

@@ -4,9 +4,9 @@ import {
   updateUsersByUsername,
 } from "server/features/user/userRepository";
 import { logger } from "server/utils/logger";
-import { MongoDbError } from "shared/typings/api/errors";
-import { Game } from "shared/typings/models/game";
-import { User } from "shared/typings/models/user";
+import { MongoDbError } from "shared/types/api/errors";
+import { Game } from "shared/types/models/game";
+import { User } from "shared/types/models/user";
 import {
   Result,
   isErrorResult,

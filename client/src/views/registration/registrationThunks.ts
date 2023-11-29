@@ -1,7 +1,7 @@
 import { postRegistration } from "client/services/userServices";
 import { submitLogin } from "client/views/login/loginThunks";
 import { RegistrationFormFields } from "client/views/registration/components/RegistrationForm";
-import { AppThunk } from "client/typings/redux.typings";
+import { AppThunk } from "client/types/reduxTypes";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 
 export enum RegistrationErrorMessage {

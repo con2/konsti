@@ -13,7 +13,7 @@ import {
   PostVerifyKompassiLoginError,
   PostVerifyKompassiLoginRequest,
   PostVerifyKompassiLoginResponse,
-} from "shared/typings/api/login";
+} from "shared/types/api/login";
 
 export const postLogin = async (
   loginFormFields: LoginFormFields,

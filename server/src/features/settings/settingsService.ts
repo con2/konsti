@@ -5,17 +5,17 @@ import {
   delSignupQuestion,
   saveSettings,
 } from "server/features/settings/settingsRepository";
-import { ApiError } from "shared/typings/api/errors";
+import { ApiError } from "shared/types/api/errors";
 import {
   GetSettingsResponse,
   PostHiddenResponse,
   PostSettingsRequest,
   PostSettingsResponse,
   PostSignupQuestionResponse,
-} from "shared/typings/api/settings";
-import { Game } from "shared/typings/models/game";
+} from "shared/types/api/settings";
+import { Game } from "shared/types/models/game";
 import { removeHiddenGamesFromUsers } from "server/features/settings/utils/removeHiddenGamesFromUsers";
-import { SignupQuestion } from "shared/typings/models/settings";
+import { SignupQuestion } from "shared/types/models/settings";
 import { isErrorResult, unwrapResult } from "shared/utils/result";
 
 export const fetchSettings = async (): Promise<

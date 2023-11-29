@@ -1,14 +1,14 @@
 import { logger } from "server/utils/logger";
 import { padgAssignPlayers } from "server/features/player-assignment/padg/padgAssignPlayers";
 import { randomAssignPlayers } from "server/features/player-assignment/random/randomAssignPlayers";
-import { User } from "shared/typings/models/user";
-import { Game } from "shared/typings/models/game";
+import { User } from "shared/types/models/user";
+import { Game } from "shared/types/models/game";
 import {
   AssignmentResultStatus,
   PlayerAssignmentResult,
-} from "server/typings/result.typings";
+} from "server/types/resultTypes";
 import { AssignmentStrategy } from "shared/config/sharedConfigTypes";
-import { Signup } from "server/features/signup/signup.typings";
+import { Signup } from "server/features/signup/signupTypes";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 import {
   Result,
@@ -17,7 +17,7 @@ import {
   makeSuccessResult,
   unwrapResult,
 } from "shared/utils/result";
-import { AssignmentError } from "shared/typings/api/errors";
+import { AssignmentError } from "shared/types/api/errors";
 
 export const runAssignmentStrategy = (
   assignmentStrategy: AssignmentStrategy,

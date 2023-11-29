@@ -2,8 +2,8 @@ import { ObjectId } from "mongoose";
 import { logger } from "server/utils/logger";
 import { GameModel } from "server/features/game/gameSchema";
 import { updateMovedGames } from "server/features/player-assignment/utils/updateMovedGames";
-import { GameDoc } from "server/typings/game.typings";
-import { Game } from "shared/typings/models/game";
+import { GameDoc } from "server/types/gameTypes";
+import { Game } from "shared/types/models/game";
 import {
   makeSuccessResult,
   Result,
@@ -12,7 +12,7 @@ import {
 } from "shared/utils/result";
 import { removeDeletedGames } from "server/features/game/gameUtils";
 import { removeInvalidGamesFromUsers } from "server/features/player-assignment/utils/removeInvalidGamesFromUsers";
-import { MongoDbError } from "shared/typings/api/errors";
+import { MongoDbError } from "shared/types/api/errors";
 import { createEmptySignupDocumentForProgramItems } from "server/features/signup/signupRepository";
 
 export const removeGames = async (

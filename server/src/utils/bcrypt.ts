@@ -1,6 +1,6 @@
 import bcrypt from "bcryptjs";
 import { logger } from "server/utils/logger";
-import { BcryptError } from "shared/typings/api/errors";
+import { BcryptError } from "shared/types/api/errors";
 import {
   Result,
   isErrorResult,

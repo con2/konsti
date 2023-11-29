@@ -1,6 +1,6 @@
 import { findResult } from "server/features/results/resultsRepository";
-import { ApiError } from "shared/typings/api/errors";
-import { GetResultsResponse } from "shared/typings/api/results";
+import { ApiError } from "shared/types/api/errors";
+import { GetResultsResponse } from "shared/types/api/results";
 import { isErrorResult, unwrapResult } from "shared/utils/result";
 
 export const fetchResults = async (

@@ -1,6 +1,6 @@
 import { getUser } from "client/services/userServices";
 import { postFavorite } from "client/services/favoriteServices";
-import { AppThunk } from "client/typings/redux.typings";
+import { AppThunk } from "client/types/reduxTypes";
 import {
   submitDeleteEnteredAsync,
   submitPostEnteredGameAsync,
@@ -12,14 +12,14 @@ import {
   DeleteEnteredGameRequest,
   PostEnteredGameRequest,
   PostSignedGamesRequest,
-} from "shared/typings/api/myGames";
+} from "shared/types/api/myGames";
 import {
   deleteEnteredGame,
   postEnteredGame,
   postSignedGames,
 } from "client/services/myGamesServices";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
-import { NewFavorite } from "shared/typings/models/user";
+import { NewFavorite } from "shared/types/models/user";
 import { submitUpdateEventLogItemsAsync } from "client/views/login/loginSlice";
 import { submitUpdateGroupCodeAsync } from "client/views/group/groupSlice";
 

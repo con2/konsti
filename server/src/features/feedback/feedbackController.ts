@@ -1,13 +1,13 @@
 import { Request, Response } from "express";
 import { getAuthorizedUsername } from "server/utils/authHeader";
-import { UserGroup } from "shared/typings/models/user";
+import { UserGroup } from "shared/types/models/user";
 import { storeFeedback } from "server/features/feedback/feedbackService";
 import { logger } from "server/utils/logger";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
   PostFeedbackRequest,
   PostFeedbackRequestSchema,
-} from "shared/typings/api/feedback";
+} from "shared/types/api/feedback";
 
 export const postFeedback = async (
   req: Request<{}, {}, PostFeedbackRequest>,

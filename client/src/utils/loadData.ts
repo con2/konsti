@@ -7,7 +7,7 @@ import { submitGetUser } from "client/views/my-games/myGamesThunks";
 import { submitGetGroup } from "client/views/group/groupThunks";
 import { submitSessionRecovery } from "client/views/login/loginThunks";
 import { store } from "client/utils/store";
-import { AppDispatch } from "client/typings/redux.typings";
+import { AppDispatch } from "client/types/reduxTypes";
 import { submitGetTestSettings } from "client/test/test-settings/testSettingsThunks";
 import { config } from "shared/config";
 

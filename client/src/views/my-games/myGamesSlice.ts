@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { MyGamesState, RootState } from "client/typings/redux.typings";
-import { Game } from "shared/typings/models/game";
-import { SelectedGame, UserGames } from "shared/typings/models/user";
+import { MyGamesState, RootState } from "client/types/reduxTypes";
+import { Game } from "shared/types/models/game";
+import { SelectedGame, UserGames } from "shared/types/models/user";
 
 const initialState: MyGamesState = {
   enteredGames: [],

@@ -3,8 +3,8 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import _ from "lodash";
-import { Game } from "shared/typings/models/game";
-import { SignupQuestion } from "shared/typings/models/settings";
+import { Game } from "shared/types/models/game";
+import { SignupQuestion } from "shared/types/models/settings";
 import { getWeekdayAndTime } from "client/utils/timeFormatter";
 
 interface Props {

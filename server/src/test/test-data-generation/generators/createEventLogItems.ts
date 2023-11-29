@@ -4,7 +4,7 @@ import { findGames } from "server/features/game/gameRepository";
 import { addEventLogItems } from "server/features/user/event-log/eventLogRepository";
 import { findUsers } from "server/features/user/userRepository";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
-import { EventLogAction } from "shared/typings/models/eventLog";
+import { EventLogAction } from "shared/types/models/eventLog";
 import { config } from "shared/config";
 
 export const createEventLogItems = async (): Promise<void> => {

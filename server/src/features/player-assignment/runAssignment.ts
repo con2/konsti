@@ -1,7 +1,7 @@
 import { logger } from "server/utils/logger";
 import { runAssignmentStrategy } from "server/features/player-assignment/utils/runAssignmentStrategy";
 import { removeInvalidGamesFromUsers } from "server/features/player-assignment/utils/removeInvalidGamesFromUsers";
-import { PlayerAssignmentResult } from "server/typings/result.typings";
+import { PlayerAssignmentResult } from "server/types/resultTypes";
 import { findUsers } from "server/features/user/userRepository";
 import { findGames } from "server/features/game/gameRepository";
 import { AssignmentStrategy } from "shared/config/sharedConfigTypes";
@@ -18,7 +18,7 @@ import {
   makeSuccessResult,
   unwrapResult,
 } from "shared/utils/result";
-import { AssignmentError, MongoDbError } from "shared/typings/api/errors";
+import { AssignmentError, MongoDbError } from "shared/types/api/errors";
 
 interface RunAssignmentParams {
   assignmentStrategy: AssignmentStrategy;

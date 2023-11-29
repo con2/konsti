@@ -1,5 +1,5 @@
 import _ from "lodash";
-import { User } from "shared/typings/models/user";
+import { User } from "shared/types/models/user";
 
 export const getPlayerGroups = (
   players: readonly User[],

@@ -1,12 +1,12 @@
 import { logger } from "server/utils/logger";
 import { FeedbackModel } from "server/features/feedback/feedbackSchema";
-import { Feedback } from "shared/typings/models/feedback";
+import { Feedback } from "shared/types/models/feedback";
 import {
   Result,
   makeErrorResult,
   makeSuccessResult,
 } from "shared/utils/result";
-import { MongoDbError } from "shared/typings/api/errors";
+import { MongoDbError } from "shared/types/api/errors";
 
 export const saveFeedback = async (
   feedbackData: Feedback,

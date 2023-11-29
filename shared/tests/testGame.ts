@@ -6,7 +6,7 @@ import {
   Language,
   ProgramType,
   Tag,
-} from "shared/typings/models/game";
+} from "shared/types/models/game";
 
 export const testGame: Game = {
   gameId: "p2106",

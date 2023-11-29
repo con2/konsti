@@ -1,7 +1,7 @@
 import dayjs, { Dayjs } from "dayjs";
 import { config } from "shared/config";
 import { findTestSettings } from "server/test/test-settings/testSettingsRepository";
-import { MongoDbError } from "shared/typings/api/errors";
+import { MongoDbError } from "shared/types/api/errors";
 import {
   Result,
   isErrorResult,

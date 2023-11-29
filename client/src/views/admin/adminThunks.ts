@@ -5,8 +5,8 @@ import {
   postSignupQuestion,
   postSettings,
 } from "client/services/settingsServices";
-import { Game } from "shared/typings/models/game";
-import { AppThunk } from "client/typings/redux.typings";
+import { Game } from "shared/types/models/game";
+import { AppThunk } from "client/types/reduxTypes";
 import {
   submitUpdateHiddenAsync,
   submitGetSettingsAsync,
@@ -17,7 +17,7 @@ import {
   submitAssignmentResponseMessageAsync,
   submitSetLoginProviderAsync,
 } from "client/views/admin/adminSlice";
-import { SignupQuestion } from "shared/typings/models/settings";
+import { SignupQuestion } from "shared/types/models/settings";
 import { LoginProvider, SignupStrategy } from "shared/config/sharedConfigTypes";
 import { getSignupMessages } from "client/services/userServices";
 import { getSentryTest } from "client/views/admin/adminService";

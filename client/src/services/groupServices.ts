@@ -14,7 +14,7 @@ import {
   PostLeaveGroupResponse,
   PostCloseGroupResponse,
   GetGroupRequest,
-} from "shared/typings/api/groups";
+} from "shared/types/api/groups";
 
 export const postCreateGroup = async (): Promise<
   PostCreateGroupResponse | PostCreateGroupError

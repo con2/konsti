@@ -4,9 +4,9 @@ import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
   PostFavoriteRequest,
   PostFavoriteRequestSchema,
-} from "shared/typings/api/favorite";
+} from "shared/types/api/favorite";
 import { getAuthorizedUsername } from "server/utils/authHeader";
-import { UserGroup } from "shared/typings/models/user";
+import { UserGroup } from "shared/types/models/user";
 import { storeFavorite } from "server/features/user/favorite-game/favoriteGameService";
 
 export const postFavorite = async (

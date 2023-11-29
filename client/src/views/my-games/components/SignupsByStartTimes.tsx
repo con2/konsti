@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import _ from "lodash";
 import { getWeekdayAndTime } from "client/utils/timeFormatter";
-import { SelectedGame } from "shared/typings/models/user";
+import { SelectedGame } from "shared/types/models/user";
 import { PopularityInfo } from "client/components/PopularityInfo";
 
 interface Props {

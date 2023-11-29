@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-import { GroupMember } from "shared/typings/models/groups";
+import { GroupMember } from "shared/types/models/groups";
 
 interface Props {
   groupMembers: readonly GroupMember[];

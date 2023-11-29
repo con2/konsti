@@ -9,7 +9,7 @@ import {
   makeSuccessResult,
   unwrapResult,
 } from "shared/utils/result";
-import { AssignmentError, MongoDbError } from "shared/typings/api/errors";
+import { AssignmentError, MongoDbError } from "shared/types/api/errors";
 import { config } from "shared/config";
 
 export const updateGamePopularity = async (): Promise<

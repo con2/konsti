@@ -4,7 +4,7 @@ import _ from "lodash";
 import styled from "styled-components";
 import { GameEntry } from "./GameEntry";
 import { useAppSelector } from "client/utils/hooks";
-import { Game } from "shared/typings/models/game";
+import { Game } from "shared/types/models/game";
 import { GameListTitle } from "client/views/all-games/components/GameListTitle";
 import { getSignedGames } from "client/utils/getUpcomingGames";
 import { getTimeslotSignupStrategy } from "client/views/all-games/allGamesUtils";

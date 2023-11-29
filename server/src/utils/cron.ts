@@ -11,7 +11,7 @@ import {
   setAssignmentLastRun,
   setProgramUpdateLastRun,
 } from "server/features/settings/settingsRepository";
-import { MongoDbError } from "shared/typings/api/errors";
+import { MongoDbError } from "shared/types/api/errors";
 
 const cronJobs: Cron[] = [];
 

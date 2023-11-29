@@ -7,7 +7,7 @@ import {
   makeSuccessResult,
   unwrapResult,
 } from "shared/utils/result";
-import { MongoDbError } from "shared/typings/api/errors";
+import { MongoDbError } from "shared/types/api/errors";
 
 export const getDynamicStartTime = async (): Promise<
   Result<string, MongoDbError>
