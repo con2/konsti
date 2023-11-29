@@ -1,11 +1,11 @@
 import { api } from "client/utils/api";
-import { ApiError } from "shared/typings/api/errors";
-import { Game } from "shared/typings/models/game";
+import { ApiError } from "shared/types/api/errors";
+import { Game } from "shared/types/models/game";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
   PostHiddenRequest,
   PostHiddenResponse,
-} from "shared/typings/api/settings";
+} from "shared/types/api/settings";
 
 export const postHidden = async (
   hiddenData: readonly Game[],

@@ -11,7 +11,7 @@ import {
   PostKompassiLoginResponse,
   PostLoginError,
   PostLoginResponse,
-} from "shared/typings/api/login";
+} from "shared/types/api/login";
 import {
   submitLoginAsync,
   submitUpdateEventLogItemsAsync,
@@ -22,7 +22,7 @@ import { submitUpdateGroupCodeAsync } from "client/views/group/groupSlice";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 import { LoginFormFields } from "client/views/login/components/LoginForm";
 import { postEventLogItemIsSeen } from "client/services/userServices";
-import { PostEventLogIsSeenRequest } from "shared/typings/api/eventLog";
+import { PostEventLogIsSeenRequest } from "shared/types/api/eventLog";
 
 export enum LoginErrorMessage {
   LOGIN_FAILED = "error.loginFailed",

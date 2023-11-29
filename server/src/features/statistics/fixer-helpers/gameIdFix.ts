@@ -1,12 +1,12 @@
 import fs from "fs";
 import _ from "lodash";
 import { logger } from "server/utils/logger";
-import { User } from "shared/typings/models/user";
+import { User } from "shared/types/models/user";
 import { GameDoc } from "server/types/gameTypes";
 import { ResultsCollectionEntry } from "server/types/resultTypes";
 import { writeJson } from "server/features/statistics/statsUtil";
 import { config } from "shared/config";
-import { Game } from "shared/typings/models/game";
+import { Game } from "shared/types/models/game";
 import { SignupDoc } from "server/features/signup/signupTypes";
 import { SettingsDoc } from "server/types/settingsTypes";
 

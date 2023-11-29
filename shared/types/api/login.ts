@@ -1,7 +1,7 @@
 import { z } from "zod";
-import { ApiError, ApiResult } from "shared/typings/api/errors";
-import { UserGroup } from "shared/typings/models/user";
-import { EventLogItem } from "shared/typings/models/eventLog";
+import { ApiError, ApiResult } from "shared/types/api/errors";
+import { UserGroup } from "shared/types/models/user";
+import { EventLogItem } from "shared/types/models/eventLog";
 
 // POST login
 

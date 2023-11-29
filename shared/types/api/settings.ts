@@ -1,12 +1,12 @@
 import { z } from "zod";
 import { LoginProvider, SignupStrategy } from "shared/config/sharedConfigTypes";
-import { Game } from "shared/typings/models/game";
+import { Game } from "shared/types/models/game";
 import {
   Settings,
   SettingsSchema,
   SignupQuestion,
-} from "shared/typings/models/settings";
-import { ApiResult } from "shared/typings/api/errors";
+} from "shared/types/models/settings";
+import { ApiResult } from "shared/types/api/errors";
 
 // POST hidden
 

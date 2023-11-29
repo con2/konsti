@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { SelectedGame } from "shared/typings/models/user";
+import { SelectedGame } from "shared/types/models/user";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import {
   DeleteEnteredGameErrorMessage,

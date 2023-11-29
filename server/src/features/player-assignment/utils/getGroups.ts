@@ -2,8 +2,8 @@ import dayjs from "dayjs";
 import _ from "lodash";
 import { Group } from "server/types/padgRandomAssignTypes";
 import { logger } from "server/utils/logger";
-import { AssignmentError } from "shared/typings/api/errors";
-import { User } from "shared/typings/models/user";
+import { AssignmentError } from "shared/types/api/errors";
+import { User } from "shared/types/models/user";
 import {
   Result,
   isErrorResult,

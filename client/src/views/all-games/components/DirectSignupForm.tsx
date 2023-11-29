@@ -2,7 +2,7 @@ import { ReactElement, useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
-import { Game } from "shared/typings/models/game";
+import { Game } from "shared/types/models/game";
 import { EnterGameForm } from "./EnterGameForm";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { isAlreadyEntered } from "./allGamesUtils";

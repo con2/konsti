@@ -1,8 +1,8 @@
 import { z } from "zod";
 import { SIGNUP_MESSAGE_LENGTH } from "shared/constants/validation";
-import { ApiError, ApiResult } from "shared/typings/api/errors";
-import { SelectedGame } from "shared/typings/models/user";
-import { GameSchema } from "shared/typings/models/game";
+import { ApiError, ApiResult } from "shared/types/api/errors";
+import { SelectedGame } from "shared/types/models/user";
+import { GameSchema } from "shared/types/models/game";
 
 // POST signed games
 

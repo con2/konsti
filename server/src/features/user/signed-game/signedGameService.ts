@@ -3,8 +3,8 @@ import dayjs from "dayjs";
 import {
   PostSignedGamesError,
   PostSignedGamesResponse,
-} from "shared/typings/api/myGames";
-import { SelectedGame } from "shared/typings/models/user";
+} from "shared/types/api/myGames";
+import { SelectedGame } from "shared/types/models/user";
 import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
 import { getTimeNow } from "server/features/player-assignment/utils/getTimeNow";
 import { isValidSignupTime } from "server/features/user/userUtils";

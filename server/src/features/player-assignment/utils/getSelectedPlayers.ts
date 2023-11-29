@@ -1,6 +1,6 @@
 import { logger } from "server/utils/logger";
-import { User } from "shared/typings/models/user";
-import { Game } from "shared/typings/models/game";
+import { User } from "shared/types/models/user";
+import { Game } from "shared/types/models/game";
 
 export const getSelectedPlayers = (
   players: readonly User[],

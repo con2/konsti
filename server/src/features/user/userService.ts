@@ -14,10 +14,10 @@ import {
   PostUpdateUserPasswordResponse,
   PostUserError,
   PostUserResponse,
-} from "shared/typings/api/users";
-import { ApiError } from "shared/typings/api/errors";
+} from "shared/types/api/users";
+import { ApiError } from "shared/types/api/errors";
 import { findUserSignups } from "server/features/signup/signupRepository";
-import { SelectedGame } from "shared/typings/models/user";
+import { SelectedGame } from "shared/types/models/user";
 import { isErrorResult, unwrapResult } from "shared/utils/result";
 import { config } from "shared/config";
 import { createSerial } from "server/features/user/userUtils";

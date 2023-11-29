@@ -1,9 +1,9 @@
 import { logger } from "server/utils/logger";
 import { saveUserSignupResults } from "server/features/player-assignment/utils/saveUserSignupResults";
-import { AssignmentResult } from "shared/typings/models/result";
+import { AssignmentResult } from "shared/types/models/result";
 import { saveResult } from "server/features/results/resultsRepository";
 import { Result, isErrorResult, makeSuccessResult } from "shared/utils/result";
-import { MongoDbError } from "shared/typings/api/errors";
+import { MongoDbError } from "shared/types/api/errors";
 
 interface SaveResultsParams {
   results: readonly AssignmentResult[];

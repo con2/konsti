@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import _ from "lodash";
 import { getWeekdayAndTime } from "client/utils/timeFormatter";
-import { Game } from "shared/typings/models/game";
+import { Game } from "shared/types/models/game";
 
 interface Props {
   hiddenGames: readonly Game[];

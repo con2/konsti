@@ -9,14 +9,14 @@ import { createSerial } from "server/features/user/userUtils";
 import { getJWT } from "server/utils/jwt";
 import { logger } from "server/utils/logger";
 import { AuthEndpoint } from "shared/constants/apiEndpoints";
-import { KompassiLoginError } from "shared/typings/api/errors";
+import { KompassiLoginError } from "shared/types/api/errors";
 import {
   PostKompassiLoginResponse,
   PostKompassiLoginError,
   PostVerifyKompassiLoginError,
   PostVerifyKompassiLoginResponse,
-} from "shared/typings/api/login";
-import { UserGroup } from "shared/typings/models/user";
+} from "shared/types/api/login";
+import { UserGroup } from "shared/types/models/user";
 import {
   Result,
   isErrorResult,

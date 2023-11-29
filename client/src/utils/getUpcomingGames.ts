@@ -1,8 +1,8 @@
 import dayjs from "dayjs";
-import { GroupMember } from "shared/typings/models/groups";
-import { Game } from "shared/typings/models/game";
+import { GroupMember } from "shared/types/models/groups";
+import { Game } from "shared/types/models/game";
 import { getTimeNow } from "client/utils/getTimeNow";
-import { SelectedGame } from "shared/typings/models/user";
+import { SelectedGame } from "shared/types/models/user";
 
 export const getUpcomingGames = (
   games: readonly Game[],

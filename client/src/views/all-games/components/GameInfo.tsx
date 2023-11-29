@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import styled, { css } from "styled-components";
 import _ from "lodash";
 import { getWeekdayAndTime, getTime } from "client/utils/timeFormatter";
-import { Game, GameStyle, Genre } from "shared/typings/models/game";
+import { Game, GameStyle, Genre } from "shared/types/models/game";
 
 interface Props {
   game: Game;

@@ -15,9 +15,9 @@ import {
   KompassiTagRopecon,
   tournamentProgramTypesRopecon,
   workshopProgramTypesRopecon,
-} from "shared/typings/models/kompassiGame/kompassiGameRopecon";
+} from "shared/types/models/kompassiGame/kompassiGameRopecon";
 import { Result } from "shared/utils/result";
-import { MongoDbError } from "shared/typings/api/errors";
+import { MongoDbError } from "shared/types/api/errors";
 
 const GAME_ID_MAX = 10000000;
 

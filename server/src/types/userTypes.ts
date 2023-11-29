@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { User, UserGroup } from "shared/typings/models/user";
+import { User, UserGroup } from "shared/types/models/user";
 
 export interface UserDoc extends User, mongoose.Document {}
 

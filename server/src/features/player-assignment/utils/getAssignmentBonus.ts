@@ -1,6 +1,6 @@
 import { config } from "shared/config";
 import { Signup } from "server/features/signup/signupTypes";
-import { User } from "shared/typings/models/user";
+import { User } from "shared/types/models/user";
 
 export const getAssignmentBonus = (
   playerGroup: User[],

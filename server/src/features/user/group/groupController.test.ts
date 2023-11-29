@@ -7,8 +7,8 @@ import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
   PostCloseGroupRequest,
   PostJoinGroupRequest,
-} from "shared/typings/api/groups";
-import { UserGroup } from "shared/typings/models/user";
+} from "shared/types/api/groups";
+import { UserGroup } from "shared/types/models/user";
 import { getJWT } from "server/utils/jwt";
 import { findUser, saveUser } from "server/features/user/userRepository";
 import {

@@ -2,7 +2,7 @@ import { expect, test, afterEach, beforeEach } from "vitest";
 import mongoose from "mongoose";
 import { faker } from "@faker-js/faker";
 import { ResultsModel } from "server/features/results/resultsSchema";
-import { AssignmentResult } from "shared/typings/models/result";
+import { AssignmentResult } from "shared/types/models/result";
 import { saveResult } from "server/features/results/resultsRepository";
 
 beforeEach(async () => {

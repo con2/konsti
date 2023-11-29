@@ -1,3 +1,3 @@
-import { ProgramType } from "shared/typings/models/game";
+import { ProgramType } from "shared/types/models/game";
 
 export type ActiveProgramType = ProgramType | "all";

@@ -1,8 +1,8 @@
 import dayjs from "dayjs";
 import _ from "lodash";
 import { padgAssignPlayers } from "server/features/player-assignment/padg/padgAssignPlayers";
-import { User } from "shared/typings/models/user";
-import { Game } from "shared/typings/models/game";
+import { User } from "shared/types/models/user";
+import { Game } from "shared/types/models/game";
 import { saveGamePopularity } from "server/features/game/gameRepository";
 import { Signup } from "server/features/signup/signupTypes";
 import {
@@ -13,7 +13,7 @@ import {
   makeSuccessResult,
   unwrapResult,
 } from "shared/utils/result";
-import { AssignmentError, MongoDbError } from "shared/typings/api/errors";
+import { AssignmentError, MongoDbError } from "shared/types/api/errors";
 import { getTimeNow } from "server/features/player-assignment/utils/getTimeNow";
 
 export const updateWithAssign = async (

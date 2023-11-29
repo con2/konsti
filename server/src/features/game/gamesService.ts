@@ -7,7 +7,7 @@ import {
   GetGamesResponse,
   PostUpdateGamesError,
   GetGamesError,
-} from "shared/typings/api/games";
+} from "shared/types/api/games";
 import { findGames, saveGames } from "server/features/game/gameRepository";
 import { enrichGames } from "./gameUtils";
 import {
@@ -18,9 +18,9 @@ import {
 } from "shared/utils/result";
 import { getGamesFromKompassiHitpoint } from "server/features/game/utils/getGamesFromKompassiHitpoint";
 import { kompassiGameMapperHitpoint } from "server/utils/kompassiGameMapperHitpoint";
-import { KompassiError } from "shared/typings/api/errors";
+import { KompassiError } from "shared/types/api/errors";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
-import { Game } from "shared/typings/models/game";
+import { Game } from "shared/types/models/game";
 import { ConventionName } from "shared/config/sharedConfigTypes";
 
 const getGamesForConvention = async (

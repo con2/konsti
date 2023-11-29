@@ -2,7 +2,7 @@ import { logger } from "server/utils/logger";
 import { ResultsModel } from "server/features/results/resultsSchema";
 import { ResultsCollectionEntry } from "server/types/resultTypes";
 import { findGames } from "server/features/game/gameRepository";
-import { AssignmentResult } from "shared/typings/models/result";
+import { AssignmentResult } from "shared/types/models/result";
 import {
   Result,
   isErrorResult,
@@ -10,7 +10,7 @@ import {
   makeSuccessResult,
   unwrapResult,
 } from "shared/utils/result";
-import { MongoDbError } from "shared/typings/api/errors";
+import { MongoDbError } from "shared/types/api/errors";
 
 export const removeResults = async (): Promise<Result<void, MongoDbError>> => {
   logger.info("MongoDB: remove ALL results from db");

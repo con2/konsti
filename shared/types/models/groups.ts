@@ -1,4 +1,4 @@
-import { SelectedGame } from "shared/typings/models/user";
+import { SelectedGame } from "shared/types/models/user";
 
 export interface GroupMember {
   groupCode: string;

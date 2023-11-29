@@ -4,7 +4,7 @@ import _ from "lodash";
 import styled from "styled-components";
 import { getStartTimes } from "client/utils/getStartTimes";
 import { FavoritesByStartTimes } from "./FavoritesByStartTimes";
-import { Game } from "shared/typings/models/game";
+import { Game } from "shared/types/models/game";
 import { RaisedCard } from "client/components/RaisedCard";
 
 interface Props {

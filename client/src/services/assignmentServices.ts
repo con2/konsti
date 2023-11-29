@@ -1,10 +1,10 @@
 import { api } from "client/utils/api";
-import { ApiError } from "shared/typings/api/errors";
+import { ApiError } from "shared/types/api/errors";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
   PostPlayerAssignmentRequest,
   PostPlayerAssignmentResponse,
-} from "shared/typings/api/assignment";
+} from "shared/types/api/assignment";
 
 export const postPlayerAssignment = async (
   startTime: string,

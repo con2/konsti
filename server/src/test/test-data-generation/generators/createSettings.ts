@@ -7,7 +7,7 @@ import {
 } from "server/features/settings/settingsRepository";
 import { shuffleArray } from "server/utils/shuffleArray";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
-import { SignupQuestionType } from "shared/typings/models/settings";
+import { SignupQuestionType } from "shared/types/models/settings";
 
 const NUMBER_OF_TEST_QUESTIONS = 20;
 

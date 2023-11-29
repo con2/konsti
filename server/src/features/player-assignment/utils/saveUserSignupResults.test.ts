@@ -13,7 +13,7 @@ import {
 import { findSignups } from "server/features/signup/signupRepository";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 import { saveUserSignupResults } from "server/features/player-assignment/utils/saveUserSignupResults";
-import { AssignmentResult } from "shared/typings/models/result";
+import { AssignmentResult } from "shared/types/models/result";
 
 beforeEach(async () => {
   await mongoose.connect(globalThis.__MONGO_URI__, {

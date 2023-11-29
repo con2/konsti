@@ -4,8 +4,8 @@ import { getList } from "server/features/player-assignment/utils/getList";
 import { getEvents } from "server/features/player-assignment/utils/getEvents";
 import { formatResults } from "server/features/player-assignment/utils/formatResults";
 import { AssignmentStrategyResult, Input } from "server/types/resultTypes";
-import { Game } from "shared/typings/models/game";
-import { User } from "shared/typings/models/user";
+import { Game } from "shared/types/models/game";
+import { User } from "shared/types/models/user";
 import { Signup } from "server/features/signup/signupTypes";
 import {
   Result,
@@ -14,7 +14,7 @@ import {
   makeSuccessResult,
   unwrapResult,
 } from "shared/utils/result";
-import { AssignmentError } from "shared/typings/api/errors";
+import { AssignmentError } from "shared/types/api/errors";
 import { logger } from "server/utils/logger";
 
 export const runPadgAssignment = (

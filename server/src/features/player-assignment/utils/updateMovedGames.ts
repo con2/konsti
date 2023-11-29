@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 import { logger } from "server/utils/logger";
-import { Game } from "shared/typings/models/game";
+import { Game } from "shared/types/models/game";
 import { findGames } from "server/features/game/gameRepository";
 import {
   findUsers,
@@ -12,8 +12,8 @@ import {
   makeSuccessResult,
   unwrapResult,
 } from "shared/utils/result";
-import { MongoDbError } from "shared/typings/api/errors";
-import { User } from "shared/typings/models/user";
+import { MongoDbError } from "shared/types/api/errors";
+import { User } from "shared/types/models/user";
 
 export const updateMovedGames = async (
   updatedGames: readonly Game[],

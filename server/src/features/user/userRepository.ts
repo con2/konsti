@@ -3,13 +3,13 @@ import { logger } from "server/utils/logger";
 import { UserModel } from "server/features/user/userSchema";
 import { NewUser } from "server/types/userTypes";
 import { Serial } from "server/types/serialTypes";
-import { User, UserGroup } from "shared/typings/models/user";
+import { User, UserGroup } from "shared/types/models/user";
 import {
   Result,
   makeErrorResult,
   makeSuccessResult,
 } from "shared/utils/result";
-import { MongoDbError } from "shared/typings/api/errors";
+import { MongoDbError } from "shared/types/api/errors";
 
 export const removeUsers = async (): Promise<Result<void, MongoDbError>> => {
   logger.info("MongoDB: remove ALL users from db");

@@ -11,7 +11,7 @@ import { AssignmentResultStatus } from "server/types/resultTypes";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 import * as randomAssign from "server/features/player-assignment/random/randomAssignPlayers";
 import * as padgAssign from "server/features/player-assignment/padg/padgAssignPlayers";
-import { AssignmentError } from "shared/typings/api/errors";
+import { AssignmentError } from "shared/types/api/errors";
 import { makeErrorResult } from "shared/utils/result";
 
 // This needs to be adjusted if test data is changed

@@ -1,7 +1,7 @@
 import fs from "fs";
 import { faker } from "@faker-js/faker";
 import { logger } from "server/utils/logger";
-import { User } from "shared/typings/models/user";
+import { User } from "shared/types/models/user";
 import { ResultsCollectionEntry } from "server/types/resultTypes";
 import { writeJson } from "server/features/statistics/statsUtil";
 import { config } from "shared/config";

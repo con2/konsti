@@ -1,8 +1,8 @@
 import { logger } from "server/utils/logger";
 import { runAssignment } from "server/features/player-assignment/runAssignment";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
-import { PostPlayerAssignmentResponse } from "shared/typings/api/assignment";
-import { ApiError } from "shared/typings/api/errors";
+import { PostPlayerAssignmentResponse } from "shared/types/api/assignment";
+import { ApiError } from "shared/types/api/errors";
 import { config } from "shared/config";
 import { isSuccessResult, unwrapResult } from "shared/utils/result";
 

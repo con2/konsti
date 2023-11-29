@@ -1,5 +1,5 @@
-import { ApiError, ApiResult } from "shared/typings/api/errors";
-import { Game, GameWithUsernames } from "shared/typings/models/game";
+import { ApiError, ApiResult } from "shared/types/api/errors";
+import { Game, GameWithUsernames } from "shared/types/models/game";
 
 // POST update games
 

@@ -1,4 +1,4 @@
-import { Game } from "shared/typings/models/game";
+import { Game } from "shared/types/models/game";
 import { submitUpdateFavorites } from "client/views/my-games/myGamesThunks";
 import { AppDispatch } from "client/types/reduxTypes";
 

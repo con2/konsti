@@ -12,7 +12,7 @@ import {
   KompassiSignupTypeRopecon,
   experiencePointAndOtherProgramTypesRopecon,
   tournamentProgramTypesRopecon,
-} from "shared/typings/models/kompassiGame/kompassiGameRopecon";
+} from "shared/types/models/kompassiGame/kompassiGameRopecon";
 import {
   Result,
   isErrorResult,
@@ -20,7 +20,7 @@ import {
   makeSuccessResult,
   unwrapResult,
 } from "shared/utils/result";
-import { KompassiError } from "shared/typings/api/errors";
+import { KompassiError } from "shared/types/api/errors";
 
 export const getGamesFromKompassiRopecon = async (): Promise<
   Result<readonly KompassiGameRopecon[], KompassiError>

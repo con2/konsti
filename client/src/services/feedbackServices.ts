@@ -1,10 +1,10 @@
 import { api } from "client/utils/api";
-import { ApiError } from "shared/typings/api/errors";
+import { ApiError } from "shared/types/api/errors";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
   PostFeedbackRequest,
   PostFeedbackResponse,
-} from "shared/typings/api/feedback";
+} from "shared/types/api/feedback";
 
 export const postFeedback = async (
   gameId: string,

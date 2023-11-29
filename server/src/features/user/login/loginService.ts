@@ -1,5 +1,5 @@
 import { validateLogin } from "server/utils/bcrypt";
-import { PostLoginError, PostLoginResponse } from "shared/typings/api/login";
+import { PostLoginError, PostLoginResponse } from "shared/types/api/login";
 import { getJWT } from "server/utils/jwt";
 import { findSettings } from "server/features/settings/settingsRepository";
 import { findUser } from "server/features/user/userRepository";

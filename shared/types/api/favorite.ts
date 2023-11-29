@@ -1,6 +1,6 @@
 import { z } from "zod";
-import { Game } from "shared/typings/models/game";
-import { ApiResult } from "shared/typings/api/errors";
+import { Game } from "shared/types/models/game";
+import { ApiResult } from "shared/types/api/errors";
 
 // POST favorite
 

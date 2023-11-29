@@ -1,6 +1,6 @@
 import { z } from "zod";
-import { AssignmentResult } from "shared/typings/models/result";
-import { ApiResult } from "shared/typings/api/errors";
+import { AssignmentResult } from "shared/types/models/result";
+import { ApiResult } from "shared/types/api/errors";
 
 // POST player assignment
 

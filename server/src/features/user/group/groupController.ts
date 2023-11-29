@@ -8,9 +8,9 @@ import {
   PostCloseGroupRequestSchema,
   PostJoinGroupRequest,
   PostJoinGroupRequestSchema,
-} from "shared/typings/api/groups";
+} from "shared/types/api/groups";
 import { getAuthorizedUsername } from "server/utils/authHeader";
-import { UserGroup } from "shared/typings/models/user";
+import { UserGroup } from "shared/types/models/user";
 import {
   closeGroup,
   createGroup,

@@ -1,6 +1,6 @@
 import { api } from "client/utils/api";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
-import { ApiError } from "shared/typings/api/errors";
+import { ApiError } from "shared/types/api/errors";
 import {
   DeleteSignupQuestionRequest,
   DeleteSignupQuestionResponse,
@@ -9,8 +9,8 @@ import {
   PostSettingsResponse,
   PostSignupQuestionRequest,
   PostSignupQuestionResponse,
-} from "shared/typings/api/settings";
-import { SignupQuestion } from "shared/typings/models/settings";
+} from "shared/types/api/settings";
+import { SignupQuestion } from "shared/types/models/settings";
 
 export const getSettings = async (): Promise<
   GetSettingsResponse | ApiError

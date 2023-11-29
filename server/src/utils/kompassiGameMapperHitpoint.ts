@@ -1,11 +1,11 @@
 import dayjs from "dayjs";
 import _ from "lodash";
-import { Game, Language, ProgramType, Tag } from "shared/typings/models/game";
+import { Game, Language, ProgramType, Tag } from "shared/types/models/game";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 import {
   KompassiGameHitpoint,
   KompassiProgramTypeHitpoint,
-} from "shared/typings/models/kompassiGame/kompassiGameHitpoint";
+} from "shared/types/models/kompassiGame/kompassiGameHitpoint";
 import { config } from "shared/config";
 
 export const kompassiGameMapperHitpoint = (

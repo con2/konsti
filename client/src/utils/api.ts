@@ -9,7 +9,7 @@ import { config } from "shared/config";
 import { getJWT } from "client/utils/getJWT";
 import { addError } from "client/views/admin/adminSlice";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
-import { ApiError } from "shared/typings/api/errors";
+import { ApiError } from "shared/types/api/errors";
 import { store } from "client/utils/store";
 import { BackendErrorType } from "client/components/ErrorBar";
 

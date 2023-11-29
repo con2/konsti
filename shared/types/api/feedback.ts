@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { ApiResult } from "shared/typings/api/errors";
+import { ApiResult } from "shared/types/api/errors";
 
 // POST feedback
 

@@ -3,7 +3,7 @@ import {
   authorizeUsingApiKey,
   getAuthorizedUsername,
 } from "server/utils/authHeader";
-import { UserGroup } from "shared/typings/models/user";
+import { UserGroup } from "shared/types/models/user";
 import { fetchGames, updateGames } from "server/features/game/gamesService";
 import { logger } from "server/utils/logger";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";

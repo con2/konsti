@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
-import { Game } from "shared/typings/models/game";
-import { SelectedGame, User } from "shared/typings/models/user";
-import { AssignmentResult } from "shared/typings/models/result";
+import { Game } from "shared/types/models/game";
+import { SelectedGame, User } from "shared/types/models/user";
+import { AssignmentResult } from "shared/types/models/result";
 
 export interface ResultDoc extends AssignmentResult, mongoose.Document {
   algorithm: string;

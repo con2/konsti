@@ -9,7 +9,7 @@ import {
   PostEnteredGameError,
   PostEnteredGameRequest,
   PostEnteredGameResponse,
-} from "shared/typings/api/myGames";
+} from "shared/types/api/myGames";
 import { getDirectSignupStartTime } from "shared/utils/signupTimes";
 import { logger } from "server/utils/logger";
 import { delSignup, saveSignup } from "server/features/signup/signupRepository";

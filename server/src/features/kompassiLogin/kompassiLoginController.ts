@@ -10,10 +10,10 @@ import {
   PostKompassiLoginRequestSchema,
   PostVerifyKompassiLoginRequest,
   PostVerifyKompassiLoginRequestSchema,
-} from "shared/typings/api/login";
+} from "shared/types/api/login";
 import { getAuthUrl } from "server/features/kompassiLogin/kompassiLoginUtils";
 import { getAuthorizedUsername } from "server/utils/authHeader";
-import { UserGroup } from "shared/typings/models/user";
+import { UserGroup } from "shared/types/models/user";
 
 export const postKompassiLoginRedirect = (
   req: Request<{}, {}, {}>,

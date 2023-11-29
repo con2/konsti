@@ -10,7 +10,7 @@ import {
 } from "client/views/admin/adminThunks";
 import { submitUpdateGames } from "client/views/all-games/allGamesThunks";
 import { getWeekdayAndTime } from "client/utils/timeFormatter";
-import { Game } from "shared/typings/models/game";
+import { Game } from "shared/types/models/game";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { Button, ButtonStyle } from "client/components/Button";
 import { SignupQuestionList } from "client/views/admin/components/SignupQuestionList";

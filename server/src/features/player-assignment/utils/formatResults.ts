@@ -1,9 +1,9 @@
 import _ from "lodash";
 import { PadgRandomAssignResults } from "server/types/padgRandomAssignTypes";
 import { logger } from "server/utils/logger";
-import { AssignmentError } from "shared/typings/api/errors";
-import { AssignmentResult } from "shared/typings/models/result";
-import { SelectedGame, User } from "shared/typings/models/user";
+import { AssignmentError } from "shared/types/api/errors";
+import { AssignmentResult } from "shared/types/models/result";
+import { SelectedGame, User } from "shared/types/models/user";
 import {
   Result,
   makeErrorResult,

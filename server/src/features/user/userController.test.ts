@@ -3,7 +3,7 @@ import { expect, test, vi, afterEach, describe, beforeEach } from "vitest";
 import request from "supertest";
 import { faker } from "@faker-js/faker";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
-import { UserGroup } from "shared/typings/models/user";
+import { UserGroup } from "shared/types/models/user";
 import { getJWT } from "server/utils/jwt";
 import { closeServer, startServer } from "server/utils/server";
 import { config } from "shared/config";

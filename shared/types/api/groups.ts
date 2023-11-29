@@ -1,6 +1,6 @@
 import { z } from "zod";
-import { ApiError, ApiResult } from "shared/typings/api/errors";
-import { GroupMember } from "shared/typings/models/groups";
+import { ApiError, ApiResult } from "shared/types/api/errors";
+import { GroupMember } from "shared/types/models/groups";
 
 // POST: Create group
 

@@ -4,7 +4,7 @@ import request from "supertest";
 import { faker } from "@faker-js/faker";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { getJWT } from "server/utils/jwt";
-import { UserGroup } from "shared/typings/models/user";
+import { UserGroup } from "shared/types/models/user";
 import { closeServer, startServer } from "server/utils/server";
 
 let server: Server;

@@ -1,10 +1,10 @@
 import { api } from "client/utils/api";
-import { ApiError } from "shared/typings/api/errors";
+import { ApiError } from "shared/types/api/errors";
 import {
   PostUpdateGamesResponse,
   GetGamesResponse,
   PostUpdateGamesError,
-} from "shared/typings/api/games";
+} from "shared/types/api/games";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 
 export const postUpdateGames = async (): Promise<

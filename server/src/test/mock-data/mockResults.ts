@@ -1,5 +1,5 @@
 import { testGame } from "shared/tests/testGame";
-import { AssignmentResult } from "shared/typings/models/result";
+import { AssignmentResult } from "shared/types/models/result";
 
 export const mockResults: AssignmentResult[] = [
   {

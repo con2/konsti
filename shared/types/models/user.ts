@@ -1,5 +1,5 @@
-import { EventLogItem } from "shared/typings/models/eventLog";
-import { Game } from "shared/typings/models/game";
+import { EventLogItem } from "shared/types/models/eventLog";
+import { Game } from "shared/types/models/game";
 
 export interface User {
   kompassiId: number;

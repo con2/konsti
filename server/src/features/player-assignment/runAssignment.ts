@@ -18,7 +18,7 @@ import {
   makeSuccessResult,
   unwrapResult,
 } from "shared/utils/result";
-import { AssignmentError, MongoDbError } from "shared/typings/api/errors";
+import { AssignmentError, MongoDbError } from "shared/types/api/errors";
 
 interface RunAssignmentParams {
   assignmentStrategy: AssignmentStrategy;

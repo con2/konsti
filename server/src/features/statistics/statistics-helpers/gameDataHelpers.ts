@@ -1,8 +1,8 @@
 import dayjs from "dayjs";
 import _ from "lodash";
 import { logger } from "server/utils/logger";
-import { Game } from "shared/typings/models/game";
-import { SelectedGame, User } from "shared/typings/models/user";
+import { Game } from "shared/types/models/game";
+import { SelectedGame, User } from "shared/types/models/user";
 import { getMaximumNumberOfPlayersByTime } from "./resultDataHelpers";
 import {
   StringNumberObject,

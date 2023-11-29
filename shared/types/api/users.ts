@@ -1,7 +1,7 @@
 import { z } from "zod";
-import { ApiError, ApiResult } from "shared/typings/api/errors";
-import { SignupMessage } from "shared/typings/models/signupMessage";
-import { UserGames } from "shared/typings/models/user";
+import { ApiError, ApiResult } from "shared/types/api/errors";
+import { SignupMessage } from "shared/types/models/signupMessage";
+import { UserGames } from "shared/types/models/user";
 import {
   PASSWORD_LENGTH_MAX,
   PASSWORD_LENGTH_MIN,
@@ -9,7 +9,7 @@ import {
   USERNAME_LENGTH_MIN,
 } from "shared/constants/validation";
 import { config } from "shared/config";
-import { EventLogItem } from "shared/typings/models/eventLog";
+import { EventLogItem } from "shared/types/models/eventLog";
 
 // GET user
 

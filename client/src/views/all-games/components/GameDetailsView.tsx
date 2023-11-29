@@ -2,7 +2,7 @@ import { ReactElement, useMemo, useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Game } from "shared/typings/models/game";
+import { Game } from "shared/types/models/game";
 import { ExpandedGameDescription } from "client/views/all-games/components/ExpandedGameDescription";
 import { getShortDescriptionFromDescription } from "client/utils/getShortDescriptionFromDescription";
 

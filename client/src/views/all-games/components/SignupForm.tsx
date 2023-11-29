@@ -1,7 +1,7 @@
 import { ReactElement, FormEvent, useState, ChangeEvent } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-import { Game } from "shared/typings/models/game";
+import { Game } from "shared/types/models/game";
 import {
   PostSignedGamesErrorMessage,
   submitPostSignedGames,

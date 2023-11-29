@@ -1,6 +1,6 @@
 import _ from "lodash";
 import { logger } from "server/utils/logger";
-import { User } from "shared/typings/models/user";
+import { User } from "shared/types/models/user";
 import { StringNumberObject } from "server/types/commonTypes";
 import { toPercent } from "server/features/statistics/statsUtil";
 

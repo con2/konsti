@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 import _ from "lodash";
-import { MongoDbError } from "shared/typings/api/errors";
+import { MongoDbError } from "shared/types/api/errors";
 import {
   Result,
   makeErrorResult,
@@ -9,10 +9,10 @@ import {
 import {
   PostEventLogIsSeenRequest,
   PostEventLogItemRequest,
-} from "shared/typings/api/eventLog";
+} from "shared/types/api/eventLog";
 import { UserModel } from "server/features/user/userSchema";
 import { logger } from "server/utils/logger";
-import { EventLogAction, EventLogItem } from "shared/typings/models/eventLog";
+import { EventLogAction, EventLogItem } from "shared/types/models/eventLog";
 
 export const addEventLogItems = async (
   eventLogRequest: PostEventLogItemRequest,

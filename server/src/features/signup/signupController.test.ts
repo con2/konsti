@@ -6,7 +6,7 @@ import dayjs from "dayjs";
 import { startServer, closeServer } from "server/utils/server";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { getJWT } from "server/utils/jwt";
-import { UserGroup } from "shared/typings/models/user";
+import { UserGroup } from "shared/types/models/user";
 import {
   mockPostEnteredGameRequest,
   mockUser,
@@ -29,7 +29,7 @@ import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 import {
   DeleteEnteredGameRequest,
   PostEnteredGameRequest,
-} from "shared/typings/api/myGames";
+} from "shared/types/api/myGames";
 import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 import * as signupTimes from "shared/utils/signupTimes";
 

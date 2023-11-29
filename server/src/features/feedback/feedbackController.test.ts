@@ -5,7 +5,7 @@ import { faker } from "@faker-js/faker";
 import { startServer, closeServer } from "server/utils/server";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { getJWT } from "server/utils/jwt";
-import { UserGroup } from "shared/typings/models/user";
+import { UserGroup } from "shared/types/models/user";
 
 let server: Server;
 

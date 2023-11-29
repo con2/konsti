@@ -6,7 +6,7 @@ import {
   removeSignupQuestion,
   updateSettings,
 } from "server/features/settings/settingsService";
-import { UserGroup } from "shared/typings/models/user";
+import { UserGroup } from "shared/types/models/user";
 import { getAuthorizedUsername } from "server/utils/authHeader";
 import { logger } from "server/utils/logger";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
@@ -16,7 +16,7 @@ import {
   PostSettingsRequest,
   PostSettingsRequestSchema,
   PostSignupQuestionRequest,
-} from "shared/typings/api/settings";
+} from "shared/types/api/settings";
 
 export const postHidden = async (
   req: Request<{}, {}, PostHiddenRequest>,

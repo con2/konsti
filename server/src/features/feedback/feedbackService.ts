@@ -1,7 +1,7 @@
-import { Feedback } from "shared/typings/models/feedback";
+import { Feedback } from "shared/types/models/feedback";
 import { saveFeedback } from "server/features/feedback/feedbackRepository";
-import { PostFeedbackResponse } from "shared/typings/api/feedback";
-import { ApiError } from "shared/typings/api/errors";
+import { PostFeedbackResponse } from "shared/types/api/feedback";
+import { ApiError } from "shared/types/api/errors";
 import { isSuccessResult } from "shared/utils/result";
 
 export const storeFeedback = async (

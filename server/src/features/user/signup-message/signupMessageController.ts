@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { logger } from "server/utils/logger";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { getAuthorizedUsername } from "server/utils/authHeader";
-import { UserGroup } from "shared/typings/models/user";
+import { UserGroup } from "shared/types/models/user";
 import { fetchSignupMessages } from "server/features/user/signup-message/signupMessageService";
 
 export const getSignupMessages = async (

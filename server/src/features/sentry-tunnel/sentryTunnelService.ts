@@ -1,7 +1,7 @@
 import url from "url";
 import axios from "axios";
 import { logger } from "server/utils/logger";
-import { ApiError } from "shared/typings/api/errors";
+import { ApiError } from "shared/types/api/errors";
 
 const sentryHost = "sentry.io";
 const knownProjectIds = ["/6579203", "/6578391", "/6579491"];

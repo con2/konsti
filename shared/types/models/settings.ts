@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { LoginProvider, SignupStrategy } from "shared/config/sharedConfigTypes";
-import { GameSchema } from "shared/typings/models/game";
+import { GameSchema } from "shared/types/models/game";
 
 export enum SignupQuestionType {
   TEXT = "text",

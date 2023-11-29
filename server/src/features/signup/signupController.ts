@@ -7,8 +7,8 @@ import {
   DeleteEnteredGameRequestSchema,
   PostEnteredGameRequest,
   PostEnteredGameRequestSchema,
-} from "shared/typings/api/myGames";
-import { UserGroup } from "shared/typings/models/user";
+} from "shared/types/api/myGames";
+import { UserGroup } from "shared/types/models/user";
 import {
   removeSignup,
   storeSignup,

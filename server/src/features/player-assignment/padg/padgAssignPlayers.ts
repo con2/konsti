@@ -1,6 +1,6 @@
 import _ from "lodash";
-import { User } from "shared/typings/models/user";
-import { Game } from "shared/typings/models/game";
+import { User } from "shared/types/models/user";
+import { Game } from "shared/types/models/game";
 import {
   AssignmentResultStatus,
   PlayerAssignmentResult,
@@ -16,7 +16,7 @@ import {
   makeSuccessResult,
   unwrapResult,
 } from "shared/utils/result";
-import { AssignmentError } from "shared/typings/api/errors";
+import { AssignmentError } from "shared/types/api/errors";
 import { AssignmentStrategy } from "shared/config/sharedConfigTypes";
 
 export const padgAssignPlayers = (

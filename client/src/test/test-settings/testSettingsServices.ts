@@ -1,6 +1,6 @@
 import { api } from "client/utils/api";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
-import { ApiError } from "shared/typings/api/errors";
+import { ApiError } from "shared/types/api/errors";
 import {
   GetTestSettingsResponse,
   PostTestSettingsRequest,

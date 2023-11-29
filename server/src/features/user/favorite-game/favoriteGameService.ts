@@ -1,7 +1,7 @@
 import { saveFavorite } from "server/features/user/favorite-game/favoriteGameRepository";
-import { ApiError } from "shared/typings/api/errors";
-import { PostFavoriteResponse } from "shared/typings/api/favorite";
-import { NewFavorite } from "shared/typings/models/user";
+import { ApiError } from "shared/types/api/errors";
+import { PostFavoriteResponse } from "shared/types/api/favorite";
+import { NewFavorite } from "shared/types/models/user";
 import { isErrorResult, unwrapResult } from "shared/utils/result";
 
 export const storeFavorite = async (

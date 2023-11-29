@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import _ from "lodash";
 import { getTime, getWeekdayAndTime } from "client/utils/timeFormatter";
-import { SelectedGame } from "shared/typings/models/user";
+import { SelectedGame } from "shared/types/models/user";
 import { SignupStrategy } from "shared/config/sharedConfigTypes";
 import { MOBILE_MARGIN } from "client/globalStyle";
 import { config } from "shared/config";

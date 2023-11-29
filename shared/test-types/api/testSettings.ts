@@ -3,7 +3,7 @@ import {
   TestSettings,
   TestSettingsSchema,
 } from "shared/test-types/models/testSettings";
-import { ApiResult } from "shared/typings/api/errors";
+import { ApiResult } from "shared/types/api/errors";
 
 export const PostTestSettingsRequestSchema = TestSettingsSchema.partial();
 

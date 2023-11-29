@@ -9,7 +9,7 @@ import {
   KompassiGameHitpoint,
   KompassiGameSchemaHitpoint,
   KompassiProgramTypeHitpoint,
-} from "shared/typings/models/kompassiGame/kompassiGameHitpoint";
+} from "shared/types/models/kompassiGame/kompassiGameHitpoint";
 import {
   Result,
   isErrorResult,
@@ -17,7 +17,7 @@ import {
   makeSuccessResult,
   unwrapResult,
 } from "shared/utils/result";
-import { KompassiError } from "shared/typings/api/errors";
+import { KompassiError } from "shared/types/api/errors";
 import { sharedConfig } from "shared/config/sharedConfig";
 
 export const getGamesFromKompassiHitpoint = async (): Promise<

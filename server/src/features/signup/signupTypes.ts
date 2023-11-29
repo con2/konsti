@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { Game } from "shared/typings/models/game";
+import { Game } from "shared/types/models/game";
 
 export interface UserSignup {
   username: string;

@@ -2,7 +2,7 @@ import {
   findTestSettings,
   saveTestSettings,
 } from "server/test/test-settings/testSettingsRepository";
-import { ApiError } from "shared/typings/api/errors";
+import { ApiError } from "shared/types/api/errors";
 import {
   GetTestSettingsResponse,
   PostTestSettingsRequest,

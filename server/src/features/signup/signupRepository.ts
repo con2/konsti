@@ -6,12 +6,12 @@ import { Signup, UserSignup } from "server/features/signup/signupTypes";
 import { SignupModel } from "server/features/signup/signupSchema";
 import { logger } from "server/utils/logger";
 import { config } from "shared/config";
-import { MongoDbError } from "shared/typings/api/errors";
+import { MongoDbError } from "shared/types/api/errors";
 import {
   DeleteEnteredGameRequest,
   PostEnteredGameRequest,
-} from "shared/typings/api/myGames";
-import { ProgramType } from "shared/typings/models/game";
+} from "shared/types/api/myGames";
+import { ProgramType } from "shared/types/models/game";
 import {
   Result,
   isErrorResult,

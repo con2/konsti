@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { storeAssignment } from "server/features/player-assignment/assignmentController";
 import { fetchResults } from "server/features/results/resultsService";
-import { UserGroup } from "shared/typings/models/user";
+import { UserGroup } from "shared/types/models/user";
 import {
   authorizeUsingApiKey,
   getAuthorizedUsername,
@@ -11,11 +11,11 @@ import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
   PostPlayerAssignmentRequest,
   PostPlayerAssignmentRequestSchema,
-} from "shared/typings/api/assignment";
+} from "shared/types/api/assignment";
 import {
   GetResultsRequest,
   GetResultsRequestSchema,
-} from "shared/typings/api/results";
+} from "shared/types/api/results";
 import { autoAssignPlayers } from "server/utils/cron";
 
 export const getResults = async (

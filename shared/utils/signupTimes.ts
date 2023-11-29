@@ -1,6 +1,6 @@
 import dayjs, { Dayjs } from "dayjs";
 import { config } from "shared/config";
-import { Game } from "shared/typings/models/game";
+import { Game } from "shared/types/models/game";
 import { TIMEZONE } from "shared/utils/initializeDayjs";
 
 export const getAlgorithmSignupStartTime = (startTime: string): Dayjs => {

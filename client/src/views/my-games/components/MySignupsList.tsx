@@ -4,7 +4,7 @@ import _ from "lodash";
 import styled from "styled-components";
 import { getStartTimes } from "client/utils/getStartTimes";
 import { SignupsByStartTimes } from "./SignupsByStartTimes";
-import { SelectedGame } from "shared/typings/models/user";
+import { SelectedGame } from "shared/types/models/user";
 import { RaisedCard } from "client/components/RaisedCard";
 import { useAppSelector } from "client/utils/hooks";
 

@@ -2,7 +2,7 @@ import { ChangeEvent, ReactElement, useEffect, useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import loaderImage from "assets/loading.gif";
-import { Game } from "shared/typings/models/game";
+import { Game } from "shared/types/models/game";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { Button, ButtonStyle } from "client/components/Button";
 import {
@@ -16,7 +16,7 @@ import { Dropdown } from "client/components/Dropdown";
 import {
   SignupQuestionSelectOption,
   SignupQuestionType,
-} from "shared/typings/models/settings";
+} from "shared/types/models/settings";
 import { Checkbox } from "client/components/Checkbox";
 
 interface Props {

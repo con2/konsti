@@ -3,7 +3,7 @@ import {
   KompassiGameHitpoint,
   KompassiPhysicalPlayHitpoint,
   KompassiProgramTypeHitpoint,
-} from "shared/typings/models/kompassiGame/kompassiGameHitpoint";
+} from "shared/types/models/kompassiGame/kompassiGameHitpoint";
 
 export const testKompassiGameHitpoint: KompassiGameHitpoint = {
   title: testGame.title,

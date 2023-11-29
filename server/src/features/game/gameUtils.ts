@@ -7,11 +7,11 @@ import {
   Game,
   GameWithUsernames,
   UserSignup,
-} from "shared/typings/models/game";
+} from "shared/types/models/game";
 import { SignupStrategy } from "shared/config/sharedConfigTypes";
 import { config } from "shared/config";
 import { findSettings } from "server/features/settings/settingsRepository";
-import { Settings, SignupQuestion } from "shared/typings/models/settings";
+import { Settings, SignupQuestion } from "shared/types/models/settings";
 import { getTimeNow } from "server/features/player-assignment/utils/getTimeNow";
 import {
   delSignupDocumentsByGameIds,
@@ -24,7 +24,7 @@ import {
   makeSuccessResult,
   unwrapResult,
 } from "shared/utils/result";
-import { MongoDbError } from "shared/typings/api/errors";
+import { MongoDbError } from "shared/types/api/errors";
 import { tooEearlyForAlgorithmSignup } from "shared/utils/tooEearlyForAlgorithmSignup";
 
 export const removeDeletedGames = async (

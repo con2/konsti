@@ -4,9 +4,9 @@ import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
   PostSignedGamesRequest,
   PostSignedGamesRequestSchema,
-} from "shared/typings/api/myGames";
+} from "shared/types/api/myGames";
 import { getAuthorizedUsername } from "server/utils/authHeader";
-import { UserGroup } from "shared/typings/models/user";
+import { UserGroup } from "shared/types/models/user";
 import { storeSignedGames } from "server/features/user/signed-game/signedGameService";
 
 export const postSignedGames = async (

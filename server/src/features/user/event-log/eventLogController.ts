@@ -6,8 +6,8 @@ import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
   PostEventLogIsSeenRequest,
   PostEventLogIsSeenRequestSchema,
-} from "shared/typings/api/eventLog";
-import { UserGroup } from "shared/typings/models/user";
+} from "shared/types/api/eventLog";
+import { UserGroup } from "shared/types/models/user";
 
 export const postEventLogItem = async (
   req: Request<{}, {}, PostEventLogIsSeenRequest>,
