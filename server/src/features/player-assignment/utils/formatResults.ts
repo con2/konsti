@@ -1,4 +1,4 @@
-import _ from "lodash";
+import { first } from "lodash-es";
 import { PadgRandomAssignResults } from "server/types/padgRandomAssignTypes";
 import { logger } from "server/utils/logger";
 import { AssignmentError } from "shared/types/api/errors";
@@ -16,7 +16,7 @@ export const formatResults = (
 ): Result<readonly AssignmentResult[], AssignmentError> => {
   const selectedPlayers = playerGroups
     .filter((playerGroup) => {
-      const firstMember = _.first(playerGroup);
+      const firstMember = first(playerGroup);
 
       if (!firstMember) {
         logger.error(

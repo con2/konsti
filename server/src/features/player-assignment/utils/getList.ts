@@ -1,4 +1,4 @@
-import _ from "lodash";
+import { first } from "lodash-es";
 import dayjs from "dayjs";
 import { ListItem } from "server/types/padgRandomAssignTypes";
 import { getAssignmentBonus } from "server/features/player-assignment/utils/getAssignmentBonus";
@@ -21,7 +21,7 @@ export const getList = (
   signups: readonly Signup[],
 ): Result<ListItem[], AssignmentError> => {
   const results = playerGroups.flatMap((playerGroup) => {
-    const firstMember = _.first(playerGroup);
+    const firstMember = first(playerGroup);
     if (!firstMember) {
       logger.error(
         "%s",

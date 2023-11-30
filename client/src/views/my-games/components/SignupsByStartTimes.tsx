@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import _ from "lodash";
+import { capitalize } from "lodash-es";
 import { getWeekdayAndTime } from "client/utils/timeFormatter";
 import { SelectedGame } from "shared/types/models/user";
 import { PopularityInfo } from "client/components/PopularityInfo";
@@ -20,9 +20,7 @@ export const SignupsByStartTimes = ({
       {startTimes.map((startTime) => {
         return (
           <div key={startTime}>
-            <StyledTime>
-              {_.capitalize(getWeekdayAndTime(startTime))}
-            </StyledTime>
+            <StyledTime>{capitalize(getWeekdayAndTime(startTime))}</StyledTime>
 
             <ul>
               {signups.map((signup) => {

@@ -3,7 +3,7 @@ import dayjs from "dayjs";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import _ from "lodash";
+import { orderBy } from "lodash-es";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { submitUpdateEventLogIsSeen } from "client/views/login/loginThunks";
 import { getWeekdayAndTime } from "client/utils/timeFormatter";
@@ -57,7 +57,7 @@ export const EventLog = (): ReactElement => {
         <RaisedCard>{t("eventLog.noNotifications")}</RaisedCard>
       )}
 
-      {_.orderBy(
+      {orderBy(
         localEventLogItems.current,
         (item) => item.createdAt,
         "desc",

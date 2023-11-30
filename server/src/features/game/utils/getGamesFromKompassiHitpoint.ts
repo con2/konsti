@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 import { ZodError } from "zod";
 import axios from "axios";
-import _ from "lodash";
+import { uniq } from "lodash-es";
 import { logger } from "server/utils/logger";
 import { config } from "shared/config";
 import {
@@ -117,9 +117,7 @@ const checkUnknownKeys = (programItems: KompassiGameHitpoint[]): void => {
     logger.error(
       "%s",
       new Error(
-        `Found unknown keys for program items: ${_.uniq(unknownKeys).join(
-          " ",
-        )}`,
+        `Found unknown keys for program items: ${uniq(unknownKeys).join(" ")}`,
       ),
     );
   }

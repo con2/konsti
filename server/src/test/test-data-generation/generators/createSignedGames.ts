@@ -1,6 +1,6 @@
 import { faker } from "@faker-js/faker";
 import dayjs from "dayjs";
-import _ from "lodash";
+import { groupBy } from "lodash-es";
 import { logger } from "server/utils/logger";
 import { updateGamePopularity } from "server/features/game-popularity/updateGamePopularity";
 import { Game } from "shared/types/models/game";
@@ -24,7 +24,7 @@ export const createSignedGames = async (): Promise<void> => {
   logger.info(`Signup: ${games.length} games`);
   logger.info(`Signup: ${users.length} users`);
 
-  const groupedUsers = _.groupBy(users, "groupCode");
+  const groupedUsers = groupBy(users, "groupCode");
 
   for (const [groupCode, groupMembers] of Object.entries(groupedUsers)) {
     // Individual users

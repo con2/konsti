@@ -1,5 +1,5 @@
 import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import _ from "lodash";
+import { uniq } from "lodash-es";
 import { BackendErrorType } from "client/components/ErrorBar";
 import { AdminState, RootState } from "client/types/reduxTypes";
 import { SettingsPayload } from "shared/types/api/settings";
@@ -82,7 +82,7 @@ const adminSlice = createSlice({
     addError(state, action: PayloadAction<BackendErrorType>) {
       return {
         ...state,
-        errors: _.uniq([...state.errors, action.payload]),
+        errors: uniq([...state.errors, action.payload]),
       };
     },
 

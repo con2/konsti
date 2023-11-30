@@ -1,7 +1,7 @@
 import { ReactElement, ChangeEvent, useState } from "react";
 import { useTranslation } from "react-i18next";
 import styled, { css } from "styled-components";
-import _ from "lodash";
+import { capitalize } from "lodash-es";
 import { HiddenGamesList } from "client/views/admin/components/HiddenGamesList";
 import {
   submitGetSentryTest,
@@ -61,7 +61,7 @@ export const AdminView = (): ReactElement => {
     const times = [...Array.from(new Set(startTimes))].sort();
 
     return times.map((time) => {
-      const formattedDate = _.capitalize(getWeekdayAndTime(time));
+      const formattedDate = capitalize(getWeekdayAndTime(time));
       return { value: time, title: formattedDate };
     });
   };

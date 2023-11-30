@@ -1,4 +1,4 @@
-import _ from "lodash";
+import { uniq } from "lodash-es";
 import { logger } from "server/utils/logger";
 import { getStartingGames } from "server/features/player-assignment/utils/getStartingGames";
 import { runRandomAssignment } from "server/features/player-assignment/random/utils/runRandomAssignment";
@@ -71,7 +71,7 @@ export const randomAssignPlayers = (
 
   const assignmentResult = unwrapResult(assignmentResultResult);
 
-  const selectedUniqueGames = _.uniq(
+  const selectedUniqueGames = uniq(
     assignmentResult.results.map(
       (result) => result.enteredGame.gameDetails.gameId,
     ),

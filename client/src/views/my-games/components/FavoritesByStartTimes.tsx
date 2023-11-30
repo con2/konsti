@@ -2,7 +2,7 @@ import { Fragment, ReactElement } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
-import _ from "lodash";
+import { capitalize } from "lodash-es";
 import { getWeekdayAndTime } from "client/utils/timeFormatter";
 import { Game } from "shared/types/models/game";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
@@ -39,9 +39,7 @@ export const FavoritesByStartTimes = ({
       {startTimes.map((startTime) => {
         return (
           <Fragment key={startTime}>
-            <StyledTime>
-              {_.capitalize(getWeekdayAndTime(startTime))}
-            </StyledTime>
+            <StyledTime>{capitalize(getWeekdayAndTime(startTime))}</StyledTime>
 
             <ul>
               {games.map((game) => {

@@ -1,5 +1,5 @@
 import eventassigner from "eventassigner-js";
-import _ from "lodash";
+import { cloneDeep, sortBy } from "lodash-es";
 import {
   PadgInput,
   ListItem,
@@ -25,7 +25,7 @@ export const assignPadg = (
   let finalAssignResults: PadgRandomAssignResults = [];
 
   for (let i = 0; i < PADG_ASSIGNMENT_ROUNDS; i++) {
-    const eventsCopy = _.cloneDeep(events);
+    const eventsCopy = cloneDeep(events);
 
     const input: PadgInput = {
       groups,
@@ -58,9 +58,9 @@ export const assignPadg = (
 const sortList = (list: ListItem[], i: number): ListItem[] => {
   switch (i) {
     case 0:
-      return _.sortBy(list, "gain");
+      return sortBy(list, "gain");
     case 1:
-      return _.sortBy(list, "size");
+      return sortBy(list, "size");
     default:
       return list.sort((_a, _b) => 0.5 - Math.random());
   }

@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
-import _ from "lodash";
+import { sortBy } from "lodash-es";
 import { getWeekdayAndTime } from "client/utils/timeFormatter";
 import { Game } from "shared/types/models/game";
 
@@ -12,7 +12,7 @@ interface Props {
 export const HiddenGamesList = ({ hiddenGames }: Props): ReactElement => {
   const { t } = useTranslation();
 
-  const sortedGames = _.sortBy(hiddenGames, [
+  const sortedGames = sortBy(hiddenGames, [
     (hiddenGame) => hiddenGame.title.toLowerCase(),
   ]);
 

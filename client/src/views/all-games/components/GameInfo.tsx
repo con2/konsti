@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import styled, { css } from "styled-components";
-import _ from "lodash";
+import { capitalize } from "lodash-es";
 import { getWeekdayAndTime, getTime } from "client/utils/timeFormatter";
 import { Game, GameStyle, Genre } from "shared/types/models/game";
 
@@ -49,7 +49,7 @@ export const GameInfo = ({ game }: Props): ReactElement => {
   });
 
   const getFormattedStartTime = (startTime: string): string =>
-    _.capitalize(getWeekdayAndTime(startTime));
+    capitalize(getWeekdayAndTime(startTime));
 
   const getFormattedEndTime = (endTime: string): string => getTime(endTime);
 

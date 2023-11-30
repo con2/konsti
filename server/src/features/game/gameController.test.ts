@@ -2,7 +2,7 @@ import { Server } from "http";
 import request from "supertest";
 import { faker } from "@faker-js/faker";
 import dayjs from "dayjs";
-import _ from "lodash";
+import { sortBy } from "lodash-es";
 import { expect, test, vi, afterEach, beforeEach, describe } from "vitest";
 import { startServer, closeServer } from "server/utils/server";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
@@ -104,7 +104,7 @@ describe(`GET ${ApiEndpoint.GAMES}`, () => {
     const response = await request(server).get(ApiEndpoint.GAMES);
     expect(response.status).toEqual(200);
 
-    const sortedGames = _.sortBy(response.body.games, "title");
+    const sortedGames = sortBy(response.body.games, "title");
     expect(sortedGames[0].users[0].signupMessage).toEqual(publicMessage);
     expect(sortedGames[1].users[0].signupMessage).toEqual("");
   });
@@ -204,7 +204,7 @@ describe(`POST ${ApiEndpoint.GAMES} Ropecon`, () => {
     const games = unsafelyUnwrapResult(gamesResult);
 
     expect(games.length).toEqual(2);
-    const sortedGames = _.sortBy(games, "title");
+    const sortedGames = sortBy(games, "title");
     expect(sortedGames[0].title).toEqual(testGame.title);
     expect(sortedGames[1].title).toEqual(testGame2.title);
   });
@@ -228,7 +228,7 @@ describe(`POST ${ApiEndpoint.GAMES} Ropecon`, () => {
     const games = unsafelyUnwrapResult(gamesResult);
 
     expect(games.length).toEqual(2);
-    const sortedGames = _.sortBy(games, "title");
+    const sortedGames = sortBy(games, "title");
     expect(sortedGames[0].title).toEqual(testGame.title);
     expect(sortedGames[1].title).toEqual(testGame2.title);
   });
@@ -518,7 +518,7 @@ describe(`POST ${ApiEndpoint.GAMES} Tracon Hitpoint`, () => {
     const games = unsafelyUnwrapResult(gamesResult);
 
     expect(games.length).toEqual(2);
-    const sortedGames = _.sortBy(games, "title");
+    const sortedGames = sortBy(games, "title");
     expect(sortedGames[0].title).toEqual(testGame.title);
     expect(sortedGames[1].title).toEqual(testGame2.title);
   });
@@ -542,7 +542,7 @@ describe(`POST ${ApiEndpoint.GAMES} Tracon Hitpoint`, () => {
     const games = unsafelyUnwrapResult(gamesResult);
 
     expect(games.length).toEqual(2);
-    const sortedGames = _.sortBy(games, "title");
+    const sortedGames = sortBy(games, "title");
     expect(sortedGames[0].title).toEqual(testGame.title);
     expect(sortedGames[1].title).toEqual(testGame2.title);
   });

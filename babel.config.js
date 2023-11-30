@@ -4,7 +4,7 @@ module.exports = (api) => {
 
   const presets = ["@babel/typescript"];
 
-  const plugins = ["babel-plugin-lodash"];
+  const plugins = [];
 
   if (target === "start") {
     plugins.push(["react-refresh/babel"]);

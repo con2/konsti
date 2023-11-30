@@ -1,4 +1,4 @@
-import _ from "lodash";
+import { uniq } from "lodash-es";
 import { User } from "shared/types/models/user";
 import { Game } from "shared/types/models/game";
 import {
@@ -72,7 +72,7 @@ export const padgAssignPlayers = (
 
   const assignmentResult = unwrapResult(assignmentResultResult);
 
-  const selectedUniqueGames = _.uniq(
+  const selectedUniqueGames = uniq(
     assignmentResult.results.map(
       (result) => result.enteredGame.gameDetails.gameId,
     ),

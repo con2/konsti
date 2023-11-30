@@ -1,5 +1,5 @@
 import fs from "fs";
-import _ from "lodash";
+import { size } from "lodash-es";
 import prettier from "prettier";
 import { config } from "shared/config";
 import { logger } from "server/utils/logger";
@@ -114,5 +114,5 @@ const getDataLength = <T>(data: T[] | Object): number => {
   if (Array.isArray(data)) {
     return data.length;
   }
-  return _.size(data);
+  return size(data);
 };

@@ -1,4 +1,4 @@
-import _ from "lodash";
+import { uniq } from "lodash-es";
 import dayjs from "dayjs";
 import {
   AccessibilityValue,
@@ -200,7 +200,7 @@ const mapTags = (kompassiGame: KompassiGameRopecon): Tag[] => {
     tags.push(Tag.CELEBRATORY_YEAR);
   }
 
-  return _.uniq(tags);
+  return uniq(tags);
 };
 
 const mapGenres = (kompassiGame: KompassiGameRopecon): Genre[] => {

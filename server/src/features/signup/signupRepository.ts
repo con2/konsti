@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import _ from "lodash";
+import { groupBy, shuffle } from "lodash-es";
 import { ObjectId } from "mongoose";
 import { findGameById, findGames } from "server/features/game/gameRepository";
 import { Signup, UserSignup } from "server/features/signup/signupTypes";
@@ -218,7 +218,7 @@ export const saveSignups = async (
   }
   const games = unwrapResult(gamesResult);
 
-  const signupsByProgramItems = _.groupBy(
+  const signupsByProgramItems = groupBy(
     signupsRequests,
     (signup) => signup.enteredGameId,
   );
@@ -240,7 +240,7 @@ export const saveSignups = async (
             `Too many signups passed to saveSignups for program item ${game.gameId} - maxAttendance: ${game.maxAttendance}, signups: ${signups.length}`,
           ),
         );
-        const shuffledSignups = _.shuffle(signups);
+        const shuffledSignups = shuffle(signups);
         finalSignups = shuffledSignups.slice(0, game.maxAttendance);
         droppedSignups.push(
           ...shuffledSignups.slice(game.maxAttendance, shuffledSignups.length),

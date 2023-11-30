@@ -1,6 +1,6 @@
 import { ChangeEvent, ReactElement, useEffect, useState } from "react";
 import styled from "styled-components";
-import _ from "lodash";
+import { first, capitalize } from "lodash-es";
 import dayjs from "dayjs";
 import { useTranslation } from "react-i18next";
 import { testTimes } from "client/test/test-components/testComponentUtils";
@@ -23,7 +23,7 @@ export const TestTime = (): ReactElement => {
 
   useEffect(() => {
     const setInitialTestTime = async (): Promise<void> => {
-      const defaultTestTime = _.first(testTimes);
+      const defaultTestTime = first(testTimes);
       if (!testTime && defaultTestTime) {
         await dispatch(submitSetTestSettings({ testTime: defaultTestTime }));
       }
@@ -49,8 +49,8 @@ export const TestTime = (): ReactElement => {
   const dropdownItems = testTimes.map((time) => {
     const formattedDate =
       i18n.language === "fi"
-        ? `${_.capitalize(getShortWeekdayAndTime(time))} (${getDate(time)})`
-        : `${_.capitalize(getShortWeekdayAndTime(time))} (${getDate(time)})`;
+        ? `${capitalize(getShortWeekdayAndTime(time))} (${getDate(time)})`
+        : `${capitalize(getShortWeekdayAndTime(time))} (${getDate(time)})`;
     return { value: time, title: formattedDate };
   });
 
@@ -71,8 +71,8 @@ export const TestTime = (): ReactElement => {
           // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions -- Test value
           <div onClick={() => setDropdownVisible(true)}>
             {i18n.language === "fi"
-              ? _.capitalize(getShortWeekdayAndTime(testTime))
-              : _.capitalize(getShortWeekdayAndTime(testTime))}
+              ? capitalize(getShortWeekdayAndTime(testTime))
+              : capitalize(getShortWeekdayAndTime(testTime))}
           </div>
         )}
       </StyledTestTime>

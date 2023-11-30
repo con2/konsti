@@ -2,7 +2,7 @@ import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import _ from "lodash";
+import { capitalize } from "lodash-es";
 import { updateFavorite, UpdateFavoriteOpts } from "client/utils/favorite";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { SignupStrategy } from "shared/config/sharedConfigTypes";
@@ -136,7 +136,7 @@ export const GameEntry = ({
               game.maxAttendance > 0 && (
                 <RowItem>
                   {game.minAttendance === game.maxAttendance &&
-                    _.capitalize(
+                    capitalize(
                       `${t(
                         `attendeeTypePlural.${getAttendeeType(
                           game.programType,
@@ -145,7 +145,7 @@ export const GameEntry = ({
                     )}
 
                   {game.minAttendance !== game.maxAttendance &&
-                    _.capitalize(
+                    capitalize(
                       `${t(
                         `attendeeTypePlural.${getAttendeeType(
                           game.programType,

@@ -1,7 +1,7 @@
 import { ReactElement, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import _ from "lodash";
+import { groupBy, sortBy, capitalize } from "lodash-es";
 import styled from "styled-components";
 import { useAppSelector } from "client/utils/hooks";
 import { Game } from "shared/types/models/game";
@@ -40,8 +40,8 @@ export const PrivateSignupMessages = (): ReactElement => {
     },
   );
 
-  const groupedSignupQuestions = _.groupBy(
-    _.sortBy(signupQuestionsWithGames, "game.startTime"),
+  const groupedSignupQuestions = groupBy(
+    sortBy(signupQuestionsWithGames, "game.startTime"),
     "game.startTime",
   );
 
@@ -49,7 +49,7 @@ export const PrivateSignupMessages = (): ReactElement => {
     (signupMessage) => signupMessage.private,
   );
 
-  const groupedSignupMessages = _.groupBy(privateSignupMessages, "gameId");
+  const groupedSignupMessages = groupBy(privateSignupMessages, "gameId");
 
   useEffect(() => {
     if (searchTerm.length === 0) {
@@ -92,13 +92,13 @@ export const PrivateSignupMessages = (): ReactElement => {
 
       {Object.entries(groupedSignupQuestions).map(
         ([startTime, signupQuestionsWithGame]) => {
-          const sortedSignupQuestions = _.sortBy(signupQuestionsWithGame, [
+          const sortedSignupQuestions = sortBy(signupQuestionsWithGame, [
             (signupQuestion) => signupQuestion.game.title.toLocaleLowerCase(),
           ]);
 
           return (
             <div key={startTime}>
-              <h3>{_.capitalize(getWeekdayAndTime(startTime))}</h3>
+              <h3>{capitalize(getWeekdayAndTime(startTime))}</h3>
               {sortedSignupQuestions.map((signupQuestionWithGame) => {
                 const matchingSignupMessages =
                   groupedSignupMessages[signupQuestionWithGame.gameId];

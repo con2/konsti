@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import _ from "lodash";
+import { uniq } from "lodash-es";
 import { Game, Language, ProgramType, Tag } from "shared/types/models/game";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 import {
@@ -76,7 +76,7 @@ const mapTags = (kompassiGame: KompassiGameHitpoint): Tag[] => {
     tags.push(Tag.INTENDED_FOR_EXPERIENCED_PARTICIPANTS);
   }
 
-  return _.uniq(tags);
+  return uniq(tags);
 };
 
 const mapLanguage = (kompassiGame: KompassiGameHitpoint) => {

@@ -1,4 +1,4 @@
-import _ from "lodash";
+import { sortBy, isEqual, groupBy, capitalize } from "lodash-es";
 import { ReactElement, useEffect, useMemo, useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
@@ -64,8 +64,8 @@ export const ResultsList = (): ReactElement => {
 
   const filteredGames =
     selectedStartingTime === ResultsStartingTimeOption.ALL
-      ? _.sortBy(visibleGames, "startTime")
-      : _.sortBy(getUpcomingGames(visibleGames, 1), "startTime");
+      ? sortBy(visibleGames, "startTime")
+      : sortBy(getUpcomingGames(visibleGames, 1), "startTime");
 
   const [gamesForListing, setGamesForListing] = useState<readonly Game[]>([]);
   const [filteredGamesForListing, setFilteredGamesForListing] = useState<
@@ -74,7 +74,7 @@ export const ResultsList = (): ReactElement => {
   const [searchTerm, setSearchTerm] = useState<string>("");
 
   useEffect(() => {
-    if (_.isEqual(filteredGames, gamesForListing)) {
+    if (isEqual(filteredGames, gamesForListing)) {
       return;
     }
 
@@ -83,7 +83,7 @@ export const ResultsList = (): ReactElement => {
 
   useEffect(() => {
     if (searchTerm.length === 0) {
-      const gamesByStartTime = _.groupBy<Game>(gamesForListing, "startTime");
+      const gamesByStartTime = groupBy<Game>(gamesForListing, "startTime");
       setFilteredGamesForListing(gamesByStartTime);
       return;
     }
@@ -103,7 +103,7 @@ export const ResultsList = (): ReactElement => {
       );
     });
 
-    const gamesByStartTime = _.groupBy<Game>(
+    const gamesByStartTime = groupBy<Game>(
       gamesFilteredBySearchTerm,
       "startTime",
     );
@@ -124,13 +124,13 @@ export const ResultsList = (): ReactElement => {
 
       {Object.entries(filteredGamesForListing).map(
         ([startTime, gamesForTime]) => {
-          const sortedGamesForTime = _.sortBy(gamesForTime, [
+          const sortedGamesForTime = sortBy(gamesForTime, [
             (game) => game.title.toLocaleLowerCase(),
           ]);
 
           return (
             <TimeSlot key={startTime}>
-              <h3>{_.capitalize(getWeekdayAndTime(startTime))}</h3>
+              <h3>{capitalize(getWeekdayAndTime(startTime))}</h3>
 
               <Games>
                 {sortedGamesForTime.map((game) => {
@@ -166,7 +166,7 @@ export const ResultsList = (): ReactElement => {
                           }}
                         >
                           <span>
-                            {_.capitalize(
+                            {capitalize(
                               t(
                                 `attendeeTypePlural.${getAttendeeType(
                                   game.programType,

@@ -2,7 +2,7 @@ import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import _ from "lodash";
+import { sortBy } from "lodash-es";
 import { Game } from "shared/types/models/game";
 import { SignupQuestion } from "shared/types/models/settings";
 import { getWeekdayAndTime } from "client/utils/timeFormatter";
@@ -30,7 +30,7 @@ export const SignupQuestionList = ({
     },
   );
 
-  const sortedSignupQuestions = _.sortBy(signupQuestionsWithGames, [
+  const sortedSignupQuestions = sortBy(signupQuestionsWithGames, [
     "game.startTime",
     (signupQuestion) => signupQuestion.game.title.toLocaleLowerCase(),
   ]);
