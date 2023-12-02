@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import _ from "lodash";
+import { countBy } from "lodash-es";
 import { logger } from "server/utils/logger";
 import { Game } from "shared/types/models/game";
 import { SelectedGame, User } from "shared/types/models/user";
@@ -11,7 +11,7 @@ import { TIMEZONE } from "shared/utils/initializeDayjs";
 export const getGamesByStartTime = (
   games: readonly Game[],
 ): StringNumberObject => {
-  const gamesByTime = _.countBy(games, "startTime");
+  const gamesByTime = countBy(games, "startTime");
 
   logger.info(`Number of games for each start time: \n`, gamesByTime);
   return gamesByTime;
@@ -21,7 +21,7 @@ const getUsersByGames = (_users: readonly User[]): StringNumberObject => {
   // TODO: Update to use signup collection
   // const enteredGames = users.flatMap((user) => user.enteredGames);
   const enteredGames: SelectedGame[] = [];
-  const usersByGames = _.countBy(enteredGames, "gameDetails.gameId");
+  const usersByGames = countBy(enteredGames, "gameDetails.gameId");
   return usersByGames;
 };
 

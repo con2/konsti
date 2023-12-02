@@ -1,5 +1,5 @@
 import { z } from "zod";
-import _ from "lodash";
+import { partition } from "lodash-es";
 import { logger } from "server/utils/logger";
 
 export enum KompassiProgramTypeRopecon {
@@ -129,7 +129,7 @@ export const KompassiGameSchemaRopecon = z.object({
     if (!ctx.input || !Array.isArray(ctx.input)) {
       return [];
     }
-    const [valid, invalid] = _.partition(ctx.input, (tag) =>
+    const [valid, invalid] = partition(ctx.input, (tag) =>
       Object.values(KompassiTagRopecon).includes(tag),
     );
     logger.error("%s", new Error(`Invalid tags: ${JSON.stringify(invalid)}`));
@@ -141,7 +141,7 @@ export const KompassiGameSchemaRopecon = z.object({
     if (!ctx.input || !Array.isArray(ctx.input)) {
       return [];
     }
-    const [valid, invalid] = _.partition(ctx.input, (genre) =>
+    const [valid, invalid] = partition(ctx.input, (genre) =>
       Object.values(KompassiGenreRopecon).includes(genre),
     );
     logger.error("%s", new Error(`Invalid genres: ${JSON.stringify(invalid)}`));
@@ -153,7 +153,7 @@ export const KompassiGameSchemaRopecon = z.object({
     if (!ctx.input || !Array.isArray(ctx.input)) {
       return [];
     }
-    const [valid, invalid] = _.partition(ctx.input, (style) =>
+    const [valid, invalid] = partition(ctx.input, (style) =>
       Object.values(KompassiGameStyleRopecon).includes(style),
     );
     logger.error("%s", new Error(`Invalid styles: ${JSON.stringify(invalid)}`));

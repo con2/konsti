@@ -1,5 +1,5 @@
 import { faker } from "@faker-js/faker";
-import _ from "lodash";
+import { groupBy } from "lodash-es";
 import { logger } from "server/utils/logger";
 import { findUsers } from "server/features/user/userRepository";
 import { findGames } from "server/features/game/gameRepository";
@@ -31,7 +31,7 @@ export const createSignups = async (): Promise<void> => {
 
   const shuffledGames = shuffleArray(games);
 
-  const gamesByProgramType = _.groupBy(shuffledGames, "programType");
+  const gamesByProgramType = groupBy(shuffledGames, "programType");
 
   const promises = Object.entries(gamesByProgramType).flatMap(
     ([_programType, gamesForProgamType]) => {

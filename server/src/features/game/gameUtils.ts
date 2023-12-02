@@ -1,4 +1,4 @@
-import _ from "lodash";
+import { differenceBy } from "lodash-es";
 import dayjs, { Dayjs } from "dayjs";
 import { findGames, removeGames } from "server/features/game/gameRepository";
 import { GameDoc } from "server/types/gameTypes";
@@ -34,7 +34,7 @@ export const removeDeletedGames = async (
   }
 
   const currentGames = unwrapResult(currentGamesResult);
-  const deletedGames = _.differenceBy(currentGames, updatedGames, "gameId");
+  const deletedGames = differenceBy(currentGames, updatedGames, "gameId");
 
   if (deletedGames.length > 0) {
     const deletedGameIds = deletedGames.map(

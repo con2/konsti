@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
-import _ from "lodash";
+import { capitalize } from "lodash-es";
 import { getWeekdayAndTime } from "client/utils/timeFormatter";
 import { SelectedGame } from "shared/types/models/user";
 import { EnteredGameRow } from "client/views/my-games/components/EnteredGameRow";
@@ -24,9 +24,7 @@ export const ResultsByStartTimes = ({
       {startTimes.map((startTime) => {
         return (
           <div key={startTime}>
-            <StyledTime>
-              {_.capitalize(getWeekdayAndTime(startTime))}
-            </StyledTime>
+            <StyledTime>{capitalize(getWeekdayAndTime(startTime))}</StyledTime>
 
             <ul>
               {signups.map((signup) => {

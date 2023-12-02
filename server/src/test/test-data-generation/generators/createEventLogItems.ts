@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import _ from "lodash";
+import { sampleSize } from "lodash-es";
 import { findGames } from "server/features/game/gameRepository";
 import { addEventLogItems } from "server/features/user/event-log/eventLogRepository";
 import { findUsers } from "server/features/user/userRepository";
@@ -22,7 +22,7 @@ export const createEventLogItems = async (): Promise<void> => {
   );
 
   const eventLogUpdates = users.flatMap((user) => {
-    const randomGames = _.sampleSize(twoPhaseSignups, 5);
+    const randomGames = sampleSize(twoPhaseSignups, 5);
 
     return randomGames.map((randomGame, index) => ({
       username: user.username,

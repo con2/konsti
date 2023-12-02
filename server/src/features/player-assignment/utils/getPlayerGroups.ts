@@ -1,10 +1,10 @@
-import _ from "lodash";
+import { groupBy } from "lodash-es";
 import { User } from "shared/types/models/user";
 
 export const getPlayerGroups = (
   players: readonly User[],
 ): readonly User[][] => {
-  const groupedUsers = _.groupBy(players, "groupCode");
+  const groupedUsers = groupBy(players, "groupCode");
 
   const playersArray = [] as User[][];
   for (const [key, value] of Object.entries(groupedUsers)) {

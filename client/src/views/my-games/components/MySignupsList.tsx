@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
-import _ from "lodash";
+import { sortBy } from "lodash-es";
 import styled from "styled-components";
 import { getStartTimes } from "client/utils/getStartTimes";
 import { SignupsByStartTimes } from "./SignupsByStartTimes";
@@ -23,7 +23,7 @@ export const MySignupsList = ({
 
   const groupMembers = useAppSelector((state) => state.group.groupMembers);
 
-  const sortedSignups = _.sortBy(signedGames, [
+  const sortedSignups = sortBy(signedGames, [
     (signedGame) => signedGame.gameDetails.startTime,
     (signedGame) => signedGame.priority,
   ]);

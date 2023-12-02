@@ -1,4 +1,4 @@
-import _ from "lodash";
+import { countBy } from "lodash-es";
 import { logger } from "server/utils/logger";
 import { User } from "shared/types/models/user";
 import { StringNumberObject } from "server/types/commonTypes";
@@ -52,7 +52,7 @@ export const getUsersWithoutSignups = (
 export const getUsersSignupCount = (users: readonly User[]): void => {
   const userSignupCounts: StringNumberObject[] = [];
   users.forEach((user) => {
-    const signedGames = _.countBy(user.signedGames, "time");
+    const signedGames = countBy(user.signedGames, "time");
     userSignupCounts.push(signedGames);
   });
 
@@ -87,7 +87,7 @@ export const getUsersWithAllGames = (_users: readonly User[]): void => {
   let counter = 0;
 
   users.forEach((user) => {
-    const signedGamesByTime = _.countBy(user.signedGames, "time");
+    const signedGamesByTime = countBy(user.signedGames, "time");
 
     if (Object.keys(signedGamesByTime).length === user.enteredGames.length) {
       counter++;

@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
-import _ from "lodash";
+import { sortBy } from "lodash-es";
 import styled from "styled-components";
 import { getStartTimes } from "client/utils/getStartTimes";
 import { FavoritesByStartTimes } from "./FavoritesByStartTimes";
@@ -14,7 +14,7 @@ interface Props {
 export const MyFavoritesList = ({ favoritedGames }: Props): ReactElement => {
   const { t } = useTranslation();
 
-  const sortedGames: readonly Game[] = _.sortBy(favoritedGames, [
+  const sortedGames: readonly Game[] = sortBy(favoritedGames, [
     (favoritedGame) => favoritedGame.startTime,
     (favoritedGame) => favoritedGame.title.toLowerCase(),
   ]);

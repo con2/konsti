@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import _ from "lodash";
+import { countBy, groupBy } from "lodash-es";
 import { padgAssignPlayers } from "server/features/player-assignment/padg/padgAssignPlayers";
 import { User } from "shared/types/models/user";
 import { Game } from "shared/types/models/game";
@@ -21,7 +21,7 @@ export const updateWithAssign = async (
   games: readonly Game[],
   signups: readonly Signup[],
 ): Promise<Result<void, MongoDbError | AssignmentError>> => {
-  const gamesForStartTimes = _.groupBy(games, (game) =>
+  const gamesForStartTimes = groupBy(games, (game) =>
     dayjs(game.startTime).toISOString(),
   );
 
@@ -57,7 +57,7 @@ export const updateWithAssign = async (
     (result) => result.enteredGame.gameDetails,
   );
 
-  const groupedSignups = _.countBy(signedGames, "gameId");
+  const groupedSignups = countBy(signedGames, "gameId");
 
   const gamePopularityUpdates = games
     .map((game) => ({

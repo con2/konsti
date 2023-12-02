@@ -7,28 +7,29 @@
     "name": "Arttu Hanska"
   },
   "main": "index.ts",
+  "type:": "module",
   "scripts": {
     "eslint": "yarn run -T eslint . --ext .js,.cjs,.ts,.mts",
     "eslint-save-config": "eslint --print-config .eslintrc.js > eslint-config-server.json && prettier --write eslint-config-server.json",
-    "fixer": "ts-node src/features/statistics/dataFixer.ts --",
-    "generate-data": "ts-node src/test/test-data-generation/parseCliOptions.ts",
-    "initialize-db": "ts-node src/utils/initializeDatabase.ts",
-    "generate-serials": "ts-node src/utils/generateSerials.ts",
+    "fixer": "tsx src/features/statistics/dataFixer.ts --",
+    "generate-data": "tsx src/test/test-data-generation/parseCliOptions.ts",
+    "initialize-db": "tsx src/utils/initializeDatabase.ts",
+    "generate-serials": "tsx src/utils/generateSerials.ts",
     "lint": "yarn eslint && yarn prettier:check",
-    "remove-invalid-games": "yarn run -T cross-env NODE_ENV=development ts-node src/test/scripts/removeInvalidGames.ts",
+    "remove-invalid-games": "yarn run -T cross-env NODE_ENV=development tsx src/test/scripts/removeInvalidGames.ts",
     "build": "yarn run -T rimraf dist/server && ncc build src/index.ts -o dist/server",
     "start-ncc": "node dist/server/index.js",
-    "start": "ts-node --transpile-only src/index.ts",
-    "start:dev": "yarn run -T cross-env NODE_ENV=development SETTINGS=development ts-node-dev -r tsconfig-paths/register -r dotenv/config --respawn --transpile-only src/index.ts dotenv_config_path=.env.development",
-    "stats": "ts-node src/features/statistics/statGenerator.ts --",
+    "start": "tsx src/index.ts",
+    "start:dev": "yarn run -T cross-env NODE_ENV=development SETTINGS=development tsx watch --clear-screen=false -r dotenv/config src/index.ts dotenv_config_path=.env.development",
+    "stats": "tsx src/features/statistics/statGenerator.ts --",
     "test": "yarn run -T vitest run",
-    "test-assign": "yarn run -T cross-env NODE_ENV=development ts-node src/test/scripts/testAssignPlayers.ts",
+    "test-assign": "yarn run -T cross-env NODE_ENV=development tsx src/test/scripts/testAssignPlayers.ts",
     "test:coverage": "yarn run -T vitest run --coverage --colors",
     "test:watch": "yarn run -T vitest watch",
     "type-check": "yarn run -T tsc --noEmit",
-    "update-game-popularity": "yarn run -T cross-env NODE_ENV=development ts-node src/test/scripts/testUpdateGamePopularity.ts",
-    "verify-results": "yarn run -T cross-env NODE_ENV=development ts-node src/test/scripts/testVerifyResults.ts",
-    "load-kompassi-data": "yarn run -T cross-env NODE_ENV=development ts-node src/test/scripts/loadKompassiDataToDb.ts"
+    "update-game-popularity": "yarn run -T cross-env NODE_ENV=development tsx src/test/scripts/testUpdateGamePopularity.ts",
+    "verify-results": "yarn run -T cross-env NODE_ENV=development tsx src/test/scripts/testVerifyResults.ts",
+    "load-kompassi-data": "yarn run -T cross-env NODE_ENV=development tsx src/test/scripts/loadKompassiDataToDb.ts"
   },
   "dependencies": {
     "@faker-js/faker": "8.3.1",
@@ -47,7 +48,7 @@
     "jsonwebtoken": "9.0.2",
     "mongoose": "8.0.1",
     "morgan": "1.10.0",
-    "ts-node": "10.9.1",
+    "tsx": "4.6.1",
     "winston": "3.11.0",
     "winston-transport-sentry-node": "2.7.0"
   },
@@ -58,8 +59,7 @@
     "@types/node": "18.18.12",
     "@types/supertest": "2.0.16",
     "mongodb-memory-server": "9.1.1",
-    "supertest": "6.3.3",
-    "ts-node-dev": "2.0.0"
+    "supertest": "6.3.3"
   },
   "peerDependenciesMeta": {
     "typescript": {

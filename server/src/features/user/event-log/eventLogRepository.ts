@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import _ from "lodash";
+import { uniq } from "lodash-es";
 import { MongoDbError } from "shared/types/api/errors";
 import {
   Result,
@@ -45,13 +45,11 @@ export const addEventLogItems = async (
   try {
     // @ts-expect-error: Types don't work with $addToSet
     await UserModel.bulkWrite(bulkOps);
-    logger.info(
-      `MongoDB: Action log item added for users ${_.uniq(usernames)}`,
-    );
+    logger.info(`MongoDB: Action log item added for users ${uniq(usernames)}`);
     return makeSuccessResult(undefined);
   } catch (error) {
     logger.error(
-      `MongoDB: Error adding event log item for users ${_.uniq(usernames)}: %s`,
+      `MongoDB: Error adding event log item for users ${uniq(usernames)}: %s`,
       error,
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);

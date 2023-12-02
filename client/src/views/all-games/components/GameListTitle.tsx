@@ -1,7 +1,7 @@
 import { ReactElement, useRef } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
-import _ from "lodash";
+import { capitalize } from "lodash-es";
 import { getTime, getWeekdayAndTime } from "client/utils/timeFormatter";
 import { SelectedGame } from "shared/types/models/user";
 import { SignupStrategy } from "shared/config/sharedConfigTypes";
@@ -32,7 +32,7 @@ export const GameListTitle = ({
   const { t } = useTranslation();
   const intersectionRef = useRef<HTMLDivElement | null>(null);
 
-  const formattedStartTime = _.capitalize(getWeekdayAndTime(startTime));
+  const formattedStartTime = capitalize(getWeekdayAndTime(startTime));
 
   const algorithmSignupStartTime = getTime(
     getAlgorithmSignupStartTime(startTime).toISOString(),

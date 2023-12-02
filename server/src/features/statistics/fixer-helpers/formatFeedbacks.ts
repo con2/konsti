@@ -1,5 +1,5 @@
 import fs from "fs";
-import _ from "lodash";
+import { groupBy } from "lodash-es";
 import dayjs from "dayjs";
 import { z } from "zod";
 import { logger } from "server/utils/logger";
@@ -58,7 +58,7 @@ export const formatFeedbacks = (year: number, event: string): void => {
 
   logger.info(`Formatted ${formattedFeedbacks.length} feedbacks`);
 
-  const groupedByProgramTypeFeedbacks = _.groupBy(
+  const groupedByProgramTypeFeedbacks = groupBy(
     formattedFeedbacks,
     (feedback) => feedback.programType,
   );
@@ -70,7 +70,7 @@ export const formatFeedbacks = (year: number, event: string): void => {
       );
 
       // @ts-expect-error: FIXME
-      const groupedByOrganizerFeedbacks: Record<string, Message[]> = _.groupBy(
+      const groupedByOrganizerFeedbacks: Record<string, Message[]> = groupBy(
         programTypeFeedbacks,
         (feedback) => feedback.organizer,
       );

@@ -1,5 +1,5 @@
 import fs from "fs";
-import _ from "lodash";
+import { isEqual } from "lodash-es";
 import { logger } from "server/utils/logger";
 import { User } from "shared/types/models/user";
 import { GameDoc } from "server/types/gameTypes";
@@ -102,7 +102,7 @@ export const gameIdFix = async (year: number, event: string): Promise<void> => {
   results.map((result) => {
     result.results.map((userResult) => {
       const matchingGame = games.find((game) => {
-        return _.isEqual(game._id, userResult.enteredGame.gameDetails);
+        return isEqual(game._id, userResult.enteredGame.gameDetails);
       });
 
       if (!matchingGame) {
@@ -129,7 +129,7 @@ export const gameIdFix = async (year: number, event: string): Promise<void> => {
 
   signups.map((signup) => {
     games.map((game) => {
-      if (_.isEqual(game._id, signup.game)) {
+      if (isEqual(game._id, signup.game)) {
         // @ts-expect-error: We don't want whole game details
         signup.game = { gameId: game.gameId };
       }
@@ -141,7 +141,7 @@ export const gameIdFix = async (year: number, event: string): Promise<void> => {
   settings.map((setting) => {
     games.map((game) => {
       setting.hiddenGames.map((hiddenGame) => {
-        if (_.isEqual(game._id, hiddenGame)) {
+        if (isEqual(game._id, hiddenGame)) {
           // @ts-expect-error: We don't want whole game details
           tempHiddenGames.push({ gameId: game.gameId });
         }

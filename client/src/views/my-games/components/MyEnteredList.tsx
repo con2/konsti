@@ -1,6 +1,6 @@
 import { ReactElement, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import _ from "lodash";
+import { sortBy, uniq } from "lodash-es";
 import styled from "styled-components";
 import { ResultsByStartTimes } from "./ResultsByStartTimes";
 import { getMissedSignups } from "client/views/my-games/utils/getMissedSignups";
@@ -43,8 +43,8 @@ export const MyEnteredList = ({
 
       {config.shared().resultsVisible && startTimes.length !== 0 && (
         <ResultsByStartTimes
-          signups={_.sortBy(enteredGames, [(enteredGame) => enteredGame.time])}
-          startTimes={_.uniq(startTimes).sort()}
+          signups={sortBy(enteredGames, [(enteredGame) => enteredGame.time])}
+          startTimes={uniq(startTimes).sort()}
           missedSignups={missedSignups}
         />
       )}

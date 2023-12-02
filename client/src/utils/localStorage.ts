@@ -1,4 +1,4 @@
-import _ from "lodash";
+import { merge } from "lodash-es";
 import { z } from "zod";
 import { LocalStorageState } from "client/types/reduxTypes";
 import { ProgramType } from "shared/types/models/game";
@@ -48,7 +48,7 @@ export const loadSession = (): LocalStorage | undefined => {
 
 export const saveSession = (state: Partial<LocalStorageState>): void => {
   const previousSession = loadSession();
-  const newSession = previousSession ? _.merge(previousSession, state) : state;
+  const newSession = previousSession ? merge(previousSession, state) : state;
 
   try {
     const serializedState = JSON.stringify(newSession);

@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import _ from "lodash";
+import { first, sortBy } from "lodash-es";
 import { Group } from "server/types/padgRandomAssignTypes";
 import { logger } from "server/utils/logger";
 import { AssignmentError } from "shared/types/api/errors";
@@ -18,7 +18,7 @@ export const getGroups = (
   startTime: string,
 ): Result<Group[], AssignmentError> => {
   const results = playerGroups.map((playerGroup) => {
-    const firstMember = _.first(playerGroup);
+    const firstMember = first(playerGroup);
     if (!firstMember) {
       logger.error("%s", new Error("Padg assign: error getting first member"));
       return makeErrorResult(AssignmentError.UNKNOWN_ERROR);
@@ -29,7 +29,7 @@ export const getGroups = (
         dayjs(signedGame.time).toISOString() === dayjs(startTime).toISOString(),
     );
 
-    const sortedSignedGames = _.sortBy(
+    const sortedSignedGames = sortBy(
       signedGamesForStartTime,
       (signedGame) => signedGame.priority,
     );

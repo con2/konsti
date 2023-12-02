@@ -1,6 +1,6 @@
 import { faker } from "@faker-js/faker";
 import dayjs from "dayjs";
-import _ from "lodash";
+import { sample, sampleSize } from "lodash-es";
 import { logger } from "server/utils/logger";
 import { kompassiGameMapperRopecon } from "server/utils/kompassiGameMapperRopecon";
 import { saveGames } from "server/features/game/gameRepository";
@@ -60,12 +60,12 @@ const getProgramType = (
 ): KompassiProgramTypeRopecon => {
   if (programType === KompassiProgramTypeRopecon.TOURNAMENT_BOARD_GAME) {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- We know tournamentProgramTypes is valid array
-    return _.sample(tournamentProgramTypesRopecon)!;
+    return sample(tournamentProgramTypesRopecon)!;
   }
 
   if (programType === KompassiProgramTypeRopecon.WORKSHOP_MINIATURE) {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- We know tournamentProgramTypes is valid array
-    return _.sample(workshopProgramTypesRopecon)!;
+    return sample(workshopProgramTypesRopecon)!;
   }
 
   return programType;
@@ -108,9 +108,9 @@ export const createGames = async (
           min_players: getMinPlayers(programType),
           max_players: getMaxPlayers(programType),
           identifier: faker.number.int(GAME_ID_MAX).toString(),
-          tags: _.sampleSize(Object.values(KompassiTagRopecon), 3),
-          genres: _.sampleSize(Object.values(KompassiGenreRopecon), 2),
-          styles: _.sampleSize(Object.values(KompassiGameStyleRopecon), 2),
+          tags: sampleSize(Object.values(KompassiTagRopecon), 3),
+          genres: sampleSize(Object.values(KompassiGenreRopecon), 2),
+          styles: sampleSize(Object.values(KompassiGameStyleRopecon), 2),
           short_blurb: faker.lorem.sentence(),
           revolving_door: Math.random() < 0.5,
           other_author: "Other author",

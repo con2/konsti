@@ -1,6 +1,6 @@
 import { ReactElement, useState } from "react";
 import { useTranslation } from "react-i18next";
-import _ from "lodash";
+import { sortBy, groupBy } from "lodash-es";
 import styled from "styled-components";
 import { GameEntry } from "./GameEntry";
 import { useAppSelector } from "client/utils/hooks";
@@ -43,12 +43,12 @@ export const AllGamesList = ({ games }: Props): ReactElement => {
     getAllGames: true,
   });
 
-  const sortedGames = _.sortBy(games, [
+  const sortedGames = sortBy(games, [
     (game) => game.startTime,
     (game) => game.title.toLowerCase(),
   ]);
 
-  const gamesByStartTime = _.groupBy(sortedGames, "startTime");
+  const gamesByStartTime = groupBy(sortedGames, "startTime");
 
   const gamesList = Object.entries(gamesByStartTime).map(
     ([startTime, gamesForStartTime]) => {

@@ -5,6 +5,7 @@
     "client",
     "server"
   ],
+  "type:": "module",
   "scripts": {
     "build-front:ci": "yarn workspace konsti-client build:ci && yarn copy-front",
     "build-front:dev": "yarn workspace konsti-client build:dev && yarn copy-front",
@@ -37,7 +38,7 @@
     "prettier:check": "prettier --check \"./**/*.{js,cjs,json,mdx,ts,mts,tsx,yml}\"",
     "prettier:write": "prettier --write \"./**/*.{js,cjs,json,mdx,ts,mts,tsx,yml}\"",
     "server": "yarn workspace konsti-server start:dev",
-    "start:dev": "yarn docker:db && concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
+    "start:dev": "yarn docker:db && npm-run-all --parallel server client",
     "start": "yarn workspace konsti-server start",
     "stylelint": "yarn workspace konsti-client stylelint",
     "test-assign": "yarn workspace konsti-server test-assign",
@@ -55,19 +56,17 @@
     "@babel/preset-typescript": "7.23.3",
     "@yarnpkg/types": "4.0.0",
     "axios": "1.6.2",
-    "babel-plugin-lodash": "3.3.4",
     "babel-plugin-module-resolver": "5.0.0",
-    "concurrently": "8.2.2",
     "dayjs": "1.11.10",
-    "lodash": "4.17.21",
+    "lodash-es": "4.17.21",
     "ncp": "2.0.0",
+    "npm-run-all": "4.1.5",
     "rimraf": "5.0.5",
-    "tsconfig-paths": "4.2.0",
     "typescript": "5.2.2",
     "zod": "3.22.4"
   },
   "devDependencies": {
-    "@types/lodash": "4.14.202",
+    "@types/lodash-es": "4.17.12",
     "@typescript-eslint/eslint-plugin": "6.12.0",
     "@typescript-eslint/parser": "6.12.0",
     "cross-env": "7.0.3",
@@ -99,7 +98,6 @@
   },
   "packageManager": "yarn@4.0.2",
   "resolutions": {
-    "babel-plugin-lodash/@babel/types": "7.20.7",
     "babel-plugin-styled-components": "2.1.3"
   }
 }

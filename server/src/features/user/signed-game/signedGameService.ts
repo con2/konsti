@@ -1,4 +1,4 @@
-import _ from "lodash";
+import { groupBy, uniq } from "lodash-es";
 import dayjs from "dayjs";
 import {
   PostSignedGamesError,
@@ -39,11 +39,11 @@ export const storeSignedGames = async (
   }
 
   // Check for duplicate priorities, ie. some kind of error
-  const gamesByTimeslot = _.groupBy(selectedGames, (game) => game.time);
+  const gamesByTimeslot = groupBy(selectedGames, (game) => game.time);
 
   for (const [, games] of Object.entries(gamesByTimeslot)) {
     const priorities = games.map((selectedGame) => selectedGame.priority);
-    const uniqPriorities = _.uniq(priorities);
+    const uniqPriorities = uniq(priorities);
 
     if (priorities.length !== uniqPriorities.length) {
       return {
