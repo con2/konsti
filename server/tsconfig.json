@@ -3,11 +3,6 @@
   "compilerOptions": {
     "outDir": "lib"
   },
-  "ts-node": {
-    "transpileOnly": true,
-    "require": ["tsconfig-paths/register"],
-    "files": true
-  },
   "include": ["**/*.js", "**/*.ts", "./.eslintrc.js", "vitest.config.mts"],
   "exclude": ["./node_modules", "./lib", "./coverage", "./front"]
 }
