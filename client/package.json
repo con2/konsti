@@ -27,7 +27,7 @@
     "type-check": "yarn run -T tsc --noEmit",
     "playwright": "npx playwright install && npx playwright test --ui --config ./playwright/",
     "playwright:trace": "npx playwright show-trace trace.zip",
-    "playwright:debug": "yarn run -T cross-env PWDEBUG=1 npx playwright test --config ./playwright/"
+    "playwright:debug": "PWDEBUG=1 npx playwright test --config ./playwright/"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "6.4.2",
