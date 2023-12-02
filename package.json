@@ -5,7 +5,7 @@
     "client",
     "server"
   ],
-  "type:": "module",
+  "type": "commonjs",
   "scripts": {
     "build-front:ci": "yarn workspace konsti-client build:ci && yarn copy-front",
     "build-front:dev": "yarn workspace konsti-client build:dev && yarn copy-front",
