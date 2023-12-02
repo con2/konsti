@@ -7,7 +7,7 @@
     "name": "Arttu Hanska"
   },
   "main": "index.tsx",
-  "type:": "module",
+  "type": "commonjs",
   "scripts": {
     "build:ci": "yarn clean && webpack-cli",
     "build:dev": "yarn clean && webpack-cli",
