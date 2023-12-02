@@ -56,7 +56,7 @@
     "@types/bcryptjs": "2.4.6",
     "@types/jsonwebtoken": "9.0.5",
     "@types/morgan": "1.9.9",
-    "@types/node": "18.18.12",
+    "@types/node": "20.10.2",
     "@types/supertest": "2.0.16",
     "mongodb-memory-server": "9.1.1",
     "supertest": "6.3.3"
@@ -67,6 +67,6 @@
     }
   },
   "engines": {
-    "node": ">=18.17.1"
+    "node": ">=20.10.0"
   }
 }
