@@ -93,7 +93,7 @@
     "vitest": "0.34.6"
   },
   "engines": {
-    "node": ">=18.17.1"
+    "node": ">=20.10.0"
   },
   "packageManager": "yarn@4.0.2"
 }
