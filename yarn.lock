@@ -6675,7 +6675,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fastest-levenshtein@npm:^1.0.12, fastest-levenshtein@npm:^1.0.16":
+"fastest-levenshtein@npm:1.0.16, fastest-levenshtein@npm:^1.0.12, fastest-levenshtein@npm:^1.0.16":
   version: 1.0.16
   resolution: "fastest-levenshtein@npm:1.0.16"
   checksum: 7e3d8ae812a7f4fdf8cad18e9cde436a39addf266a5986f653ea0d81e0de0900f50c0f27c6d5aff3f686bcb48acbd45be115ae2216f36a6a13a7dbbf5cad878b
@@ -8787,6 +8787,7 @@ __metadata:
     eventassigner-random: "npm:0.3.1"
     express: "npm:4.18.2"
     express-static-gzip: "npm:2.1.7"
+    fastest-levenshtein: "npm:1.0.16"
     generate-serial-number: "npm:0.0.3"
     helmet: "npm:7.1.0"
     jsonwebtoken: "npm:9.0.2"
