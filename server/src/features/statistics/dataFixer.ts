@@ -4,6 +4,7 @@ import { wildFix } from "./fixer-helpers/wildFix";
 import { gameIdFix } from "./fixer-helpers/gameIdFix";
 import { formatFeedbacks } from "./fixer-helpers/formatFeedbacks";
 import { initializeDayjs } from "shared/utils/initializeDayjs";
+import { getSimilarUsernames } from "server/features/statistics/similarUsernames";
 
 const fixData = (): void => {
   initializeDayjs();
@@ -36,6 +37,13 @@ const fixData = (): void => {
     .description("Format feedbacks")
     .action((year: number, event: string) => {
       formatFeedbacks(year, event);
+    });
+
+  commander
+    .command("similar-usernames <year> <event>")
+    .description("Find similar usernames")
+    .action((year: number, event: string) => {
+      getSimilarUsernames(year, event);
     });
 
   if (process.argv.length < 4) {
