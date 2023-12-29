@@ -6,7 +6,7 @@ services:
       context: ../ # In relation to root level docker-compose.yml file
       dockerfile: ./playwright/Dockerfile
     environment:
-      - PLAYWRIGHT_BASEURL=https://server:5000
+      - PLAYWRIGHT_BASEURL=http://server:5000
       - CI=true
     depends_on:
       - server

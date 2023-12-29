@@ -33,7 +33,7 @@ import {
 
 export const getBaseUrl = (): string => {
   if (process.env.SETTINGS === "ci") {
-    return "http://localhost:5000";
+    return "http://server:5000";
   }
   return process.env.KOMPASSI_BASE_URL ?? "https://kompassi.eu";
 };

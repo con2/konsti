@@ -1,7 +1,5 @@
 import http, { Server } from "http";
-import https from "https";
 import path from "path";
-import fs from "fs";
 import { once } from "events";
 import express, { Request, Response, NextFunction } from "express";
 import { Handlers } from "@sentry/node";
@@ -52,6 +50,10 @@ export const startServer = async ({
       contentSecurityPolicy: {
         directives: {
           "connect-src": cspConnectSrc,
+          // Don't upgrade http to https when running CI playwright tests
+          ...(process.env.SETTINGS === "ci" && {
+            upgradeInsecureRequests: null,
+          }),
         },
       },
     }),
@@ -118,23 +120,7 @@ export const startServer = async ({
   // The error handler must be before any other error middleware and after all controllers
   app.use(Handlers.errorHandler());
 
-  let server: Server;
-
-  // Use https for running Playwright tests in CI
-  if (process.env.SETTINGS === "ci") {
-    const privateKey = fs.readFileSync(
-      path.join(__dirname, "../../dev-cert", "server.key"),
-      "utf8",
-    );
-    const certificate = fs.readFileSync(
-      path.join(__dirname, "../../dev-cert", "server.cert"),
-      "utf8",
-    );
-
-    server = https.createServer({ key: privateKey, cert: certificate }, app);
-  } else {
-    server = http.createServer(app);
-  }
+  const server = http.createServer(app);
 
   const runningServer = server.listen(port ?? process.env.PORT);
 
