@@ -59,11 +59,7 @@ export const LoggedInUserNavigation = (props: {
           <RouterLink onClick={props.onSelect} to="/help">
             {t("button.helper")}
           </RouterLink>
-          <RouterLink
-            onClick={props.onSelect}
-            to="/profile"
-            data-testid="profile-page-link"
-          >
+          <RouterLink onClick={props.onSelect} to="/profile">
             {t("pages.profile")}
           </RouterLink>
         </>
