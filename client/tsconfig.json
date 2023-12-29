@@ -10,8 +10,7 @@
     "./.eslintrc.js",
     "./webpack.config.ts",
     "./babel.config.js",
-    "vitest.config.mts",
-    "./playwright/**/*.ts"
+    "vitest.config.mts"
   ],
   "exclude": ["./node_modules", "./build", "./coverage"]
 }
