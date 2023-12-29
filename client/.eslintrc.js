@@ -5,14 +5,12 @@ module.exports = {
     "eslint-plugin-compat",
     "eslint-plugin-react-hooks",
     "eslint-plugin-jsx-a11y",
-    "eslint-plugin-testing-library",
   ],
 
   extends: [
     "plugin:eslint-plugin-react/recommended",
     "plugin:eslint-plugin-react/jsx-runtime",
     "plugin:eslint-plugin-jsx-a11y/recommended",
-    "plugin:testing-library/react",
     "plugin:react-hooks/recommended",
   ],
 
@@ -42,9 +40,6 @@ module.exports = {
 
     // eslint-plugin-compat
     "compat/compat": "error",
-
-    // eslint-plugin-testing-library
-    "testing-library/no-unnecessary-act": "off", // Gives false positives
 
     // "eslint-plugin-jsx-a11y",
     "jsx-a11y/no-onchange": "off", // TODO: Enable
