@@ -54,6 +54,12 @@ import {
   postTestSettings,
 } from "server/test/test-settings/testSettingsController";
 import { ApiEndpoint, AuthEndpoint } from "shared/constants/apiEndpoints";
+import {
+  getKompassiLoginMockLogout,
+  getKompassiLoginMockProfile,
+  getKompassiLoginMockRedirect,
+  getKompassiLoginMockToken,
+} from "server/test/kompassi-mock-service/kompassiMockService";
 
 export const apiRoutes = express.Router();
 
@@ -111,9 +117,18 @@ if (process.env.SETTINGS !== "production") {
   apiRoutes.post(ApiEndpoint.POPULATE_DB, postPopulateDb);
 }
 
+/* Kompassi login routes */
 // TODO: Disable login endpoints if provider not set
 apiRoutes.post(AuthEndpoint.KOMPASSI_LOGIN, postKompassiLoginRedirect);
 apiRoutes.post(AuthEndpoint.KOMPASSI_LOGIN_CALLBACK, postKompassiLoginCallback);
 apiRoutes.post(AuthEndpoint.KOMPASSI_LOGOUT, postKompassiLogoutRedirect);
+
+if (process.env.NODE_ENV === "development") {
+  /* Kompassi login test routes */
+  apiRoutes.get("/oauth2/authorize", getKompassiLoginMockRedirect);
+  apiRoutes.post("/oauth2/token", getKompassiLoginMockToken);
+  apiRoutes.get("/api/v2/people/me", getKompassiLoginMockProfile);
+  apiRoutes.get("/logout", getKompassiLoginMockLogout);
+}
 
 /* eslint-enable @typescript-eslint/no-misused-promises */

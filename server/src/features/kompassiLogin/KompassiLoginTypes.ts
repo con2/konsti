@@ -14,10 +14,15 @@ export const KompassiProfileSchema = z.object({
   id: z.number(),
   first_name: z.string(),
   surname: z.string(),
+  nick: z.string(),
   full_name: z.string(),
-  groups: z.array(z.string()),
+  display_name: z.string(),
+  preferred_name_display_style: z.string(),
   email: z.string(),
+  birth_date: z.string(),
+  phone: z.string(),
   username: z.string(),
+  groups: z.array(z.string()),
 });
 
 export type KompassiProfile = z.infer<typeof KompassiProfileSchema>;

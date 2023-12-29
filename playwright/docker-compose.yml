@@ -6,10 +6,10 @@ services:
       context: ../ # In relation to root level docker-compose.yml file
       dockerfile: ./playwright/Dockerfile
     environment:
-      - PLAYWRIGHT_BASEURL=https://server:5000
+      - PLAYWRIGHT_BASEURL=http://server:5000
       - CI=true
     depends_on:
       - server
     volumes:
-      - ../playwright/test-results:/playwright/test-results # In relation to root level docker-compose.yml file
+      - ../playwright/test-results:/usr/src/app/playwright/test-results # In relation to root level docker-compose.yml file
     entrypoint: /bin/sh -c "/usr/local/bin/waitforit -address=server:5000 -timeout=60 && npx playwright test --config ./playwright/playwright.config.ts"

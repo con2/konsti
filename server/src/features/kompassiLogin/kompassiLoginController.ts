@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { logger } from "server/utils/logger";
 import {
-  baseUrl,
+  getBaseUrl,
   doKompassiLogin,
   verifyKompassiLogin,
 } from "server/features/kompassiLogin/kompassiLoginService";
@@ -97,6 +97,8 @@ export const postKompassiLogoutRedirect = (
   }
 
   return res.status(302).json({
-    location: `${baseUrl}/logout?next=${req.headers.origin}/kompassi-logout-callback`,
+    location: `${getBaseUrl()}/logout?next=${
+      req.headers.origin
+    }/kompassi-logout-callback`,
   });
 };
