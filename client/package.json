@@ -24,10 +24,7 @@
     "test": "yarn run -T vitest run",
     "test:coverage": "yarn run -T vitest run --coverage --colors",
     "test:watch": "yarn run -T vitest watch",
-    "type-check": "yarn run -T tsc --noEmit",
-    "playwright": "npx playwright install && npx playwright test --ui --config ./playwright/",
-    "playwright:trace": "npx playwright show-trace trace.zip",
-    "playwright:debug": "PWDEBUG=1 npx playwright test --config ./playwright/"
+    "type-check": "yarn run -T tsc --noEmit"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "6.4.2",
@@ -58,7 +55,6 @@
   "devDependencies": {
     "@axe-core/react": "4.8.1",
     "@mdx-js/loader": "3.0.0",
-    "@playwright/test": "1.39.0",
     "@pmmmwh/react-refresh-webpack-plugin": "0.5.11",
     "@ronilaukkarinen/stylelint-a11y": "1.2.7",
     "@types/dotenv-webpack": "7.0.7",

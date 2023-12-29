@@ -10,7 +10,6 @@ module.exports = {
           client: "./src",
           assets: "./assets",
           shared: "../shared/",
-          playwright: "./playwright",
         },
         extensions: [".js", ".cjs,", ".ts", ".mts", ".tsx"],
       },

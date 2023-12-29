@@ -15,10 +15,12 @@
     "build-server": "yarn workspace konsti-server build",
     "client": "yarn workspace konsti-client start",
     "copy-front": "rimraf server/front && ncp client/build server/front",
-    "playwright": "yarn workspace konsti-client playwright",
+    "playwright": "npx playwright install && npx playwright test --ui --config ./playwright/",
+    "playwright:trace": "npx playwright show-trace trace.zip",
+    "playwright:debug": "PWDEBUG=1 npx playwright test --config ./playwright/",
     "docker-compose:start": "APP_SETTINGS=development docker compose -f ./docker/docker-compose.yml up --detach --build --remove-orphans",
     "docker-compose:stop": "APP_SETTINGS=development docker compose -f ./docker/docker-compose.yml down --remove-orphans",
-    "docker-compose:test": "APP_SETTINGS=ci docker compose -f ./docker/docker-compose.yml -f ./client/playwright/docker-compose.yml up --attach playwright --build --remove-orphans --exit-code-from playwright --abort-on-container-exit",
+    "docker-compose:test": "APP_SETTINGS=ci docker compose -f ./docker/docker-compose.yml -f ./playwright/docker-compose.yml up --attach playwright --build --remove-orphans --exit-code-from playwright --abort-on-container-exit",
     "docker:build-prod": "docker build --build-arg env=prod . -t konsti-prod",
     "docker:build-staging": "docker build --build-arg env=staging . -t konsti-staging",
     "docker:build-dev": "docker build --build-arg env=dev . -t konsti-dev",
@@ -66,6 +68,7 @@
     "zod": "3.22.4"
   },
   "devDependencies": {
+    "@playwright/test": "1.39.0",
     "@types/lodash-es": "4.17.12",
     "@typescript-eslint/eslint-plugin": "6.12.0",
     "@typescript-eslint/parser": "6.12.0",
