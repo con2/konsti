@@ -31,7 +31,13 @@ import {
   KompassiTokensSchema,
 } from "server/features/kompassiLogin/KompassiLoginTypes";
 
-export const baseUrl = process.env.KOMPASSI_BASE_URL ?? "https://kompassi.eu";
+export const getBaseUrl = (): string => {
+  if (process.env.SETTINGS === "ci") {
+    return "http://localhost:5000";
+  }
+  return process.env.KOMPASSI_BASE_URL ?? "https://kompassi.eu";
+};
+
 export const clientId = process.env.KOMPASSI_CLIENT_ID ?? "";
 const clientSecret = process.env.KOMPASSI_CLIENT_SECRET ?? "";
 const accessGroups = ["users"];
@@ -48,7 +54,7 @@ const getKompassiTokens = async (
     redirect_uri: `${origin}${AuthEndpoint.KOMPASSI_LOGIN_CALLBACK}`,
   });
   const body = params.toString();
-  const url = `${baseUrl}/oauth2/token`;
+  const url = `${getBaseUrl()}/oauth2/token`;
   const headers = {
     accept: "application/json",
     "content-type": "application/x-www-form-urlencoded",
@@ -79,7 +85,7 @@ const getKompassiTokens = async (
 const getKompassiProfile = async (
   accessToken: string,
 ): Promise<Result<KompassiProfile, KompassiLoginError>> => {
-  const url = `${baseUrl}/api/v2/people/me`;
+  const url = `${getBaseUrl()}/api/v2/people/me`;
   const headers = { authorization: `Bearer ${accessToken}` };
 
   try {

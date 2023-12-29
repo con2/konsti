@@ -1,5 +1,5 @@
 import {
-  baseUrl,
+  getBaseUrl,
   clientId,
 } from "server/features/kompassiLogin/kompassiLoginService";
 import { AuthEndpoint } from "shared/constants/apiEndpoints";
@@ -12,5 +12,5 @@ export const getAuthUrl = (origin: string): string => {
     scope: "read",
   });
 
-  return `${baseUrl}/oauth2/authorize?${params.toString()}`;
+  return `${getBaseUrl()}/oauth2/authorize?${params.toString()}`;
 };

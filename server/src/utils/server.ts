@@ -64,7 +64,12 @@ export const startServer = async ({
   }
 
   // Parse body and populate req.body - only accepts JSON
-  app.use(express.json({ limit: "1000kb", type: "*/*" })); // limit: 1MB
+  app.use(express.json({ limit: "1000kb" })); // limit: 1MB
+
+  if (process.env.NODE_ENV === "development") {
+    // Kompassi mock service requires content type application/x-www-form-urlencoded
+    app.use(express.urlencoded({ extended: true }));
+  }
 
   app.use(
     "/",
