@@ -4,8 +4,10 @@ RUN apt-get install --no-install-recommends -y wget=1.21.2-2ubuntu1 \
   && wget -q -O /usr/local/bin/waitforit https://github.com/maxcnunes/waitforit/releases/download/v2.4.1/waitforit-linux_amd64 \
   && chmod +x /usr/local/bin/waitforit
 
-WORKDIR /playwright
+WORKDIR /usr/src/app
 
 RUN npm install @playwright/test@1.39.0
 
-COPY . .
+COPY tsconfig.json ./
+COPY playwright ./playwright/
+COPY shared ./shared/

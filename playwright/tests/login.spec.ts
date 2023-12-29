@@ -22,6 +22,6 @@ test("Login", async ({ page, request }) => {
   // Check if login was completed
   await page.click("data-testid=navigation-icon");
 
-  const text = await page.innerText("data-testid=profile-page-link");
-  expect(text).toBe("Profile");
+  const link = page.getByRole("link", { name: /profile/i });
+  await expect(link).toBeVisible();
 });
