@@ -52,7 +52,7 @@
     "use-debounce": "10.0.0"
   },
   "devDependencies": {
-    "@axe-core/react": "4.8.1",
+    "@axe-core/react": "4.8.5",
     "@mdx-js/loader": "3.0.1",
     "@pmmmwh/react-refresh-webpack-plugin": "0.5.11",
     "@ronilaukkarinen/stylelint-a11y": "1.2.7",

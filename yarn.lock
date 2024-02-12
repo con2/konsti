@@ -22,13 +22,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@axe-core/react@npm:4.8.1":
-  version: 4.8.1
-  resolution: "@axe-core/react@npm:4.8.1"
+"@axe-core/react@npm:4.8.5":
+  version: 4.8.5
+  resolution: "@axe-core/react@npm:4.8.5"
   dependencies:
-    axe-core: "npm:~4.8.2"
+    axe-core: "npm:~4.8.4"
     requestidlecallback: "npm:^0.3.0"
-  checksum: 10c0/4936020023b7d283704549ad947406fee0aa0fb0e5d96aa7038f98706281634d94f699ed56ca3ff8ad3c631ac8ce8f3ac844c7df20b9cd4d6551bf6e670872c0
+  checksum: 10c0/9e731780c9e9c71bda1d921b5be9e9e704488b59158566b8797847e3da31180a2fb25c3e12459a30ee05194d6464a887e3746a4d0d9abc27936e30d105847318
   languageName: node
   linkType: hard
 
@@ -4113,10 +4113,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axe-core@npm:~4.8.2":
-  version: 4.8.2
-  resolution: "axe-core@npm:4.8.2"
-  checksum: 10c0/ad9e1125ba226bbc73d442996d8b9b35fed9af8bcfa995831e29c3d6b8ddb0d16bc7d18c66c5a685211296ee99fe966ae4d59051ca6fbef2a7ee7408322b9dbe
+"axe-core@npm:~4.8.4":
+  version: 4.8.4
+  resolution: "axe-core@npm:4.8.4"
+  checksum: 10c0/1100ac42c4b8cde1fb7c428d2b76e5a14e20d9d41fe635c55048e4ba27f1eded729b838379a036b5ef9cf25ba7f7bedeef01ebd3b4accd2afee397b10b0265c4
   languageName: node
   linkType: hard
 
@@ -8717,7 +8717,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "konsti-client@workspace:client"
   dependencies:
-    "@axe-core/react": "npm:4.8.1"
+    "@axe-core/react": "npm:4.8.5"
     "@fortawesome/fontawesome-svg-core": "npm:6.4.2"
     "@fortawesome/free-regular-svg-icons": "npm:6.4.2"
     "@fortawesome/free-solid-svg-icons": "npm:6.4.2"
