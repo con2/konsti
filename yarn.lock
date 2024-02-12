@@ -8756,7 +8756,6 @@ __metadata:
     stylelint: "npm:15.11.0"
     stylelint-config-recommended: "npm:13.0.0"
     stylelint-no-unsupported-browser-features: "npm:7.0.0"
-    stylis: "npm:4.3.1"
     use-debounce: "npm:10.0.0"
     webpack: "npm:5.89.0"
     webpack-bundle-analyzer: "npm:4.10.1"
