@@ -33,7 +33,7 @@
     "load-kompassi-data": "NODE_ENV=development tsx src/test/scripts/loadKompassiDataToDb.ts"
   },
   "dependencies": {
-    "@faker-js/faker": "8.3.1",
+    "@faker-js/faker": "8.4.1",
     "@sentry/node": "7.81.1",
     "@vercel/ncc": "0.38.1",
     "bcryptjs": "2.4.3",
