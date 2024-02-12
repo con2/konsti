@@ -3,7 +3,7 @@ module.exports = {
 
   extends: [
     "stylelint-config-recommended",
-    "@ronilaukkarinen/stylelint-a11y/recommended",
+    // "@double-great/stylelint-a11y/recommended",
   ],
 
   customSyntax: "postcss-styled-syntax",
