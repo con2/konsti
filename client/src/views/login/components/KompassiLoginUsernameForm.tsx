@@ -64,7 +64,7 @@ export const KompassiLoginUsernameForm = (): ReactElement => {
         <StyledInput
           id="username"
           {...register("username", {
-            required: `${t(`validation.required`)}`,
+            required: t(`validation.required`),
             minLength: {
               value: USERNAME_LENGTH_MIN,
               message: t(`validation.tooShort`, {
