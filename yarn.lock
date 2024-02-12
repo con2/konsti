@@ -2180,15 +2180,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mdx-js/loader@npm:3.0.0":
-  version: 3.0.0
-  resolution: "@mdx-js/loader@npm:3.0.0"
+"@mdx-js/loader@npm:3.0.1":
+  version: 3.0.1
+  resolution: "@mdx-js/loader@npm:3.0.1"
   dependencies:
     "@mdx-js/mdx": "npm:^3.0.0"
     source-map: "npm:^0.7.0"
   peerDependencies:
     webpack: ">=5"
-  checksum: 10c0/47b36f76741953878b122a7902b56c8a2ed0d5b8f678aad59e633ee97dd9a0a1ff8fd93785d10e3c8d9dbc2540e6b784d1003895eb81c6b767bd38c580a36edf
+  checksum: 10c0/d60df6465872de4271617ffa53012ac5518094ed468fb13d7e9dc8c68efd983280611f50b519d752be4db8e9168a13dcb8a75c6ca883e052b3b3e1d42d6e7b45
   languageName: node
   linkType: hard
 
@@ -2839,7 +2839,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/mdx@npm:2.0.10, @types/mdx@npm:^2.0.0":
+"@types/mdx@npm:2.0.11":
+  version: 2.0.11
+  resolution: "@types/mdx@npm:2.0.11"
+  checksum: 10c0/8e60d9e1adb06854f25ac327ec340763b5867ce65ba5635ae6b24db6bda36d64655c5ee8a2f06bbc246199bcfd41cc3c8a4a95786c97a7befb3c28c7f134ffe1
+  languageName: node
+  linkType: hard
+
+"@types/mdx@npm:^2.0.0":
   version: 2.0.10
   resolution: "@types/mdx@npm:2.0.10"
   checksum: 10c0/a2a5d71967c44c650e883eaaeb61db9c0758b9c1d675e04b7a3cfeeaee6efd5044dc9c78d780aa3fe408a2f85680bf3b723c92a1772bb6c2da35ef346d766de2
@@ -8715,13 +8722,13 @@ __metadata:
     "@fortawesome/free-regular-svg-icons": "npm:6.4.2"
     "@fortawesome/free-solid-svg-icons": "npm:6.4.2"
     "@fortawesome/react-fontawesome": "npm:0.2.0"
-    "@mdx-js/loader": "npm:3.0.0"
+    "@mdx-js/loader": "npm:3.0.1"
     "@pmmmwh/react-refresh-webpack-plugin": "npm:0.5.11"
     "@reduxjs/toolkit": "npm:1.9.7"
     "@ronilaukkarinen/stylelint-a11y": "npm:1.2.7"
     "@sentry/react": "npm:7.81.1"
     "@types/dotenv-webpack": "npm:7.0.7"
-    "@types/mdx": "npm:2.0.10"
+    "@types/mdx": "npm:2.0.11"
     "@types/react": "npm:18.2.38"
     "@types/react-dom": "npm:18.2.17"
     "@welldone-software/why-did-you-render": "npm:7.0.1"
