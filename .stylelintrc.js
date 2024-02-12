@@ -3,6 +3,7 @@ module.exports = {
 
   extends: [
     "stylelint-config-recommended",
+    // TODO: Figure out why this doesn't work
     // "@double-great/stylelint-a11y/recommended",
   ],
 
