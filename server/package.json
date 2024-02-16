@@ -59,9 +59,9 @@
     "@types/jsonwebtoken": "9.0.5",
     "@types/morgan": "1.9.9",
     "@types/node": "20.10.2",
-    "@types/supertest": "2.0.16",
+    "@types/supertest": "6.0.2",
     "mongodb-memory-server": "9.1.1",
-    "supertest": "6.3.3"
+    "supertest": "6.3.4"
   },
   "peerDependenciesMeta": {
     "typescript": {

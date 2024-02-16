@@ -2907,7 +2907,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/superagent@npm:*":
+"@types/superagent@npm:^8.1.0":
   version: 8.1.3
   resolution: "@types/superagent@npm:8.1.3"
   dependencies:
@@ -2918,12 +2918,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/supertest@npm:2.0.16":
-  version: 2.0.16
-  resolution: "@types/supertest@npm:2.0.16"
+"@types/supertest@npm:6.0.2":
+  version: 6.0.2
+  resolution: "@types/supertest@npm:6.0.2"
   dependencies:
-    "@types/superagent": "npm:*"
-  checksum: 10c0/e1b4a4d788c19cd92a3f2e6d0979fb0f679c49aefae2011895a4d9c35aa960d43463aca8783a0b3382bbf0b4eb7ceaf8752d7dc80b8f5a9644fa14e1b1bdbc90
+    "@types/methods": "npm:^1.1.4"
+    "@types/superagent": "npm:^8.1.0"
+  checksum: 10c0/44a28f9b35b65800f4c7bcc23748e71c925098aa74ea504d14c98385c36d00de2a4f5aca15d7dc4514bc80533e0af21f985a4ab9f5f317c7266e9e75836aef39
   languageName: node
   linkType: hard
 
@@ -8552,7 +8553,7 @@ __metadata:
     "@types/jsonwebtoken": "npm:9.0.5"
     "@types/morgan": "npm:1.9.9"
     "@types/node": "npm:20.10.2"
-    "@types/supertest": "npm:2.0.16"
+    "@types/supertest": "npm:6.0.2"
     "@vercel/ncc": "npm:0.38.1"
     bcryptjs: "npm:2.4.3"
     commander: "npm:11.1.0"
@@ -8569,7 +8570,7 @@ __metadata:
     mongodb-memory-server: "npm:9.1.1"
     mongoose: "npm:8.0.1"
     morgan: "npm:1.10.0"
-    supertest: "npm:6.3.3"
+    supertest: "npm:6.3.4"
     tsx: "npm:4.7.1"
     winston: "npm:3.11.0"
     winston-transport-sentry-node: "npm:2.7.0"
@@ -12688,7 +12689,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"superagent@npm:^8.0.5":
+"superagent@npm:^8.1.2":
   version: 8.1.2
   resolution: "superagent@npm:8.1.2"
   dependencies:
@@ -12706,13 +12707,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"supertest@npm:6.3.3":
-  version: 6.3.3
-  resolution: "supertest@npm:6.3.3"
+"supertest@npm:6.3.4":
+  version: 6.3.4
+  resolution: "supertest@npm:6.3.4"
   dependencies:
     methods: "npm:^1.1.2"
-    superagent: "npm:^8.0.5"
-  checksum: 10c0/178ca0d2f3919ec01e1e22240df237793d80eb36f249f57c9bba34ce6ad002b4918db6a4fdf31ba8d15746451c9164305c60a490f4fcb43b5761a8f582def183
+    superagent: "npm:^8.1.2"
+  checksum: 10c0/f8c0b6c73b5e87da31feee6ccb36e7af766a438513cad89d6907f22c97edd83b1e765b4c8de955d5f7af4bca5fd0aaf9149ff48e21567dd290b326a8633af2a7
   languageName: node
   linkType: hard
 
