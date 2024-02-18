@@ -70,5 +70,5 @@ export type AppThunk<ReturnType = Promise<void>> = ThunkAction<
   ReturnType,
   RootState,
   unknown,
-  Action<string>
+  Action
 >;
