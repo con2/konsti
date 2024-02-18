@@ -37,7 +37,7 @@
     "lint": "yarn eslint && yarn stylelint && yarn prettier:check",
     "populate-db:dummy": "yarn workspace konsti-server generate-data -ugcsl",
     "populate-db:kompassi": "yarn workspace konsti-server generate-data -c && yarn workspace konsti-server load-kompassi-data && yarn workspace konsti-server generate-data -usl",
-    "postinstall": "is-ci || husky",
+    "postinstall": "husky|| true",
     "prettier:check": "prettier --check \"./**/*.{js,cjs,json,mdx,ts,mts,tsx,yml}\"",
     "prettier:write": "prettier --write \"./**/*.{js,cjs,json,mdx,ts,mts,tsx,yml}\"",
     "server": "yarn workspace konsti-server start:dev",
@@ -91,7 +91,6 @@
     "eslint-plugin-unicorn": "51.0.1",
     "eslint-plugin-vitest": "0.3.22",
     "husky": "9.0.11",
-    "is-ci": "3.0.1",
     "lint-staged": "15.2.2",
     "prettier": "3.2.5",
     "vitest": "0.34.6"
