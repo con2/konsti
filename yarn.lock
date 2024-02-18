@@ -4793,10 +4793,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"croner@npm:7.0.5":
-  version: 7.0.5
-  resolution: "croner@npm:7.0.5"
-  checksum: 10c0/8b23e80c375da9bc06bfc0fb481b67a281bffd7623d0bb380a9c9d1a42ebc9a7cc460b45bb6b3c8ab588294d3abddc769815460017f545a5e60a56f4976c505d
+"croner@npm:8.0.1":
+  version: 8.0.1
+  resolution: "croner@npm:8.0.1"
+  checksum: 10c0/23aadd43e48bffae8d17a59779c310c6f15d9063ffcae9c13848999cc333ab18e8b95d7b1e04b8e55dc60739852ef24b0a6481a2941365ac9ecc97cfabaf3763
   languageName: node
   linkType: hard
 
@@ -8443,7 +8443,7 @@ __metadata:
     "@vercel/ncc": "npm:0.38.1"
     bcryptjs: "npm:2.4.3"
     commander: "npm:12.0.0"
-    croner: "npm:7.0.5"
+    croner: "npm:8.0.1"
     dotenv: "npm:16.4.4"
     eventassigner-js: "npm:0.1.6"
     eventassigner-random: "npm:0.3.1"

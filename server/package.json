@@ -38,7 +38,7 @@
     "@vercel/ncc": "0.38.1",
     "bcryptjs": "2.4.3",
     "commander": "12.0.0",
-    "croner": "7.0.5",
+    "croner": "8.0.1",
     "dotenv": "16.4.4",
     "eventassigner-js": "0.1.6",
     "eventassigner-random": "0.3.1",
