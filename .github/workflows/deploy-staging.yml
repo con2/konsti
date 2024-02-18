@@ -35,6 +35,7 @@ jobs:
 
     env:
       CI: true
+      HUSKY: 0
 
     timeout-minutes: 30
 

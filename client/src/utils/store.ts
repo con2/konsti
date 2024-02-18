@@ -1,5 +1,5 @@
-import { combineReducers, CombinedState, AnyAction } from "redux";
-import { configureStore } from "@reduxjs/toolkit";
+import { combineReducers } from "redux";
+import { Action, configureStore } from "@reduxjs/toolkit";
 import { createReduxEnhancer } from "@sentry/react";
 import { config } from "shared/config";
 import { RootState } from "client/types/reduxTypes";
@@ -25,8 +25,8 @@ export const combinedReducer = combineReducers({
 // Reducer to reset state
 const rootReducer = (
   state: RootState | undefined,
-  action: AnyAction,
-): CombinedState<RootState> => {
+  action: Action,
+): RootState => {
   if (action.type === SUBMIT_LOGOUT) {
     const newState = combinedReducer(undefined, action);
 
@@ -115,5 +115,6 @@ export const store = configureStore({
           traceLimit: 25,
         }
       : false,
-  enhancers: [sentryReduxEnhancer],
+  enhancers: (getDefaultEnhancers) =>
+    getDefaultEnhancers().concat(sentryReduxEnhancer),
 });

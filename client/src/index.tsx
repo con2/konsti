@@ -6,7 +6,7 @@ import React, { Suspense } from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { ThemeProvider, StyleSheetManager } from "styled-components";
-import { init, BrowserTracing } from "@sentry/react";
+import { init, browserTracingIntegration } from "@sentry/react";
 import loaderImage from "assets/loading.gif";
 import { config } from "shared/config";
 import { getLocalStorageLanguage } from "client/utils/localStorage";
@@ -59,7 +59,8 @@ const getDsn = (): string | undefined => {
 init({
   dsn: getDsn(),
   integrations: [
-    new BrowserTracing({
+    // TODO: Should we use reactRouterV6BrowserTracingIntegration: https://github.com/getsentry/sentry-javascript/blob/develop/MIGRATION.md#depreacted-browsertracing-integration
+    browserTracingIntegration({
       tracingOrigins: ["localhost", "dev.ropekonsti.fi", "ropekonsti.fi"],
     }),
   ],

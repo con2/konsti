@@ -49,9 +49,7 @@ export const formatFeedbacks = (year: number, event: string): void => {
       game: foundGame?.title,
       organizer: foundGame?.people,
       // eslint-disable-next-line no-restricted-syntax -- We want to call format here
-      startTime: dayjs(foundGame?.startTime)
-        .tz(TIMEZONE)
-        .format("dddd HH:mm"),
+      startTime: dayjs(foundGame?.startTime).tz(TIMEZONE).format("dddd HH:mm"),
       programType: foundGame?.programType,
     };
   });

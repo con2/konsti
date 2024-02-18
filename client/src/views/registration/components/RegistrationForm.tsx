@@ -65,7 +65,7 @@ export const RegistrationForm = (): ReactElement => {
             <StyledInput
               id="username"
               {...register("username", {
-                required: `${t(`validation.required`)}`,
+                required: t(`validation.required`),
                 minLength: {
                   value: USERNAME_LENGTH_MIN,
                   message: t(`validation.tooShort`, {
@@ -99,7 +99,7 @@ export const RegistrationForm = (): ReactElement => {
           <FormRow>
             <StyledInput
               {...register("password", {
-                required: `${t(`validation.required`)}`,
+                required: t(`validation.required`),
                 minLength: {
                   value: PASSWORD_LENGTH_MIN,
                   message: t(`validation.tooShort`, {
@@ -144,7 +144,7 @@ export const RegistrationForm = (): ReactElement => {
               <StyledInput
                 id="serial"
                 {...register("serial", {
-                  required: `${t(`validation.required`)}`,
+                  required: t(`validation.required`),
                   onChange: () => {
                     setServerError(null);
                   },
@@ -167,7 +167,7 @@ export const RegistrationForm = (): ReactElement => {
           <label htmlFor="registerDescriptionCheckbox">
             <StyledCheckbox
               {...register("registerDescription", {
-                required: `${t(`validation.required`)}`,
+                required: t(`validation.required`),
                 onChange: () => {
                   setServerError(null);
                 },
