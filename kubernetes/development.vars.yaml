@@ -5,3 +5,4 @@ smtp_password: secret
 ingress_letsencrypt_enabled: false
 konsti_insecure_local_auth_enabled: true
 konsti_frontend_env: kube-dev
+kompassi_base_url: https://dev.kompassi.eu
