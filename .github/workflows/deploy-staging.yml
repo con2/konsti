@@ -27,7 +27,7 @@ jobs:
           password: ${{ secrets.GHCR_PASSWORD }}
       - uses: docker/setup-buildx-action@v1
       - run: |
-          python3 -m pip install emskaffolden
+          python3 -m pip install setuptools emskaffolden
           emskaffolden -E staging -- run -n konsti-staging
 
   sentry-release:
