@@ -7,6 +7,8 @@ konsti_api_key: not so secret key
 konsti_jwt_secret_key: also not very secret
 konsti_jwt_secret_key_admin: please change me
 konsti_jwt_secret_key_help: also this should be changed
+konsti_kompassi_client_id: also this should be changed
+konsti_kompassi_client_secret: also this should be changed
 
 # Which ENV of yarn build-front:ENV to use
 konsti_frontend_env: kube-dev
