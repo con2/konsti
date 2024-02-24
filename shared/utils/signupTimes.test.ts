@@ -6,11 +6,13 @@ import {
 } from "shared/utils/signupTimes";
 import { testGame } from "shared/tests/testGame";
 import { config } from "shared/config";
+import { ProgramType } from "shared/types/models/game";
 
 beforeEach(() => {
   vi.spyOn(config, "shared").mockReturnValue({
     ...config.shared(),
     conventionStartTime: "2023-07-28T12:00:00Z",
+    twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG],
   });
 });
 
