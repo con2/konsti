@@ -1,8 +1,8 @@
 # Konsti
 
-![Build](https://github.com/ropekonsti/konsti/workflows/Node%20CI/badge.svg)
+[![Build](https://github.com/con2/konsti/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/con2/konsti/actions/workflows/test.yml)
 
-[![Known Vulnerabilities](https://snyk.io/test/github/ropekonsti/konsti/badge.svg)](https://snyk.io/test/github/ropekonsti/konsti)
+[![Known Vulnerabilities](https://snyk.io/test/github/con2/konsti/badge.svg)](https://snyk.io/test/github/con2/konsti)
 
 Event signup application Konsti. The application is used to sign up and assign users to events. Registered users can choose weighted preferences for different time slots and event seats are quickly allocated using [Hungarian algorithm](https://en.wikipedia.org/wiki/Hungarian_algorithm), [eventassigner-js](https://github.com/Altesmi/eventassigner-js), or [brute force approximation](https://github.com/Altesmi/eventassigner-random). Users can form groups to be assigned into the same event.
 
