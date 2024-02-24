@@ -9,7 +9,7 @@ import {
 import { ProgramType } from "shared/types/models/game";
 import { SignupQuestion } from "shared/types/models/settings";
 
-export interface SharedConfig {
+interface SharedConfig {
   assignmentStrategy: AssignmentStrategy;
   enableGroups: boolean;
   defaultSignupStrategy: SignupStrategy;
@@ -39,21 +39,22 @@ export interface SharedConfig {
   isEnglishProgramItems: string[];
 }
 
-export const sharedConfig: SharedConfig = {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const sharedConfig: SharedConfig = {
   // Convention settings
   requireRegistrationCode: true,
   assignmentStrategy: AssignmentStrategy.RANDOM_PADG,
   enableGroups: true,
-  defaultSignupStrategy: SignupStrategy.DIRECT,
+  defaultSignupStrategy: SignupStrategy.ALGORITHM_AND_DIRECT,
   defaultLoginProvider: LoginProvider.KOMPASSI,
   manualSignupMode: "none",
   signupOpen: true,
   resultsVisible: true,
 
-  twoPhaseSignupProgramTypes: [],
+  twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG, ProgramType.LARP],
 
-  conventionStartTime: `2024-08-04T08:00:00Z`, // Mon 10:00 GMT+2
-  conventionEndTime: `2023-14-04T22:00:00Z`, // Sun 24:00 GMT+2
+  conventionStartTime: `2023-11-04T08:00:00Z`, // Sat 10:00 GMT+2
+  conventionEndTime: `2023-11-05T22:00:00Z`, // Sun 24:00 GMT+2
 
   directSignupWindows: null,
 
@@ -67,7 +68,14 @@ export const sharedConfig: SharedConfig = {
   addRevolvingDoorIds: [],
 
   // These program items are imported to Konsti but don't have Konsti signup
-  noKonstiSignupIds: [],
+  noKonstiSignupIds: [
+    "p7429", // Peliä Pyynnöstä
+    "p7428", // Peliä Pyynnöstä
+    "p7272", // Indiepelipiste / Indie Game Point
+    "p7431", // Indiepelipiste / Indie Game Point
+    "p7381", // LARP-Telenovela: Häät
+    "p7426", // LARP-Telenovela: Häät
+  ],
 
   signupQuestions: [],
 
@@ -75,7 +83,10 @@ export const sharedConfig: SharedConfig = {
 
   tournamentSignupQuestionExcludeIds: [],
 
-  isEnglishProgramItems: [],
+  isEnglishProgramItems: [
+    "p7300", // In the Crowd
+    "p7340", // Introduction to PBTA: Dungeon World
+  ],
 
   // Two phase signup settings
   PRE_SIGNUP_START: 60 * 4, // minutes
@@ -83,8 +94,8 @@ export const sharedConfig: SharedConfig = {
   PHASE_GAP: 15, // minutes
 
   // Convention info
-  conventionName: ConventionName.SOLMUKOHTA,
-  conventionYear: "2024",
+  conventionName: ConventionName.HITPOINT,
+  conventionYear: "2023",
 
   // Sentry
   tracesSampleRate: 0.0,

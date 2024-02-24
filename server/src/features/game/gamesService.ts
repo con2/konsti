@@ -36,8 +36,19 @@ const getGamesForConvention = async (
     return makeSuccessResult(kompassiGameMapperRopecon(kompassiGames));
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (conventionName === ConventionName.HITPOINT) {
+    const kompassiGamesResult = await getGamesFromKompassiHitpoint();
+    if (isErrorResult(kompassiGamesResult)) {
+      return kompassiGamesResult;
+    }
+
+    const kompassiGames = unwrapResult(kompassiGamesResult);
+    return makeSuccessResult(kompassiGameMapperHitpoint(kompassiGames));
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+  if (conventionName === ConventionName.SOLMUKOHTA) {
+    // TODO: Read in Solmukohta spesific data format
     const kompassiGamesResult = await getGamesFromKompassiHitpoint();
     if (isErrorResult(kompassiGamesResult)) {
       return kompassiGamesResult;
