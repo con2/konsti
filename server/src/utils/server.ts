@@ -39,7 +39,7 @@ export const startServer = async ({
   // Must be the first middleware on the app
   initSentry(app, enableSentry);
 
-  const cspConnectSrc = ["'self'", "http://127.0.0.1:5000"];
+  const cspConnectSrc = ["'self'", ...config.server().allowedCorsOrigins];
 
   if (enableSentry) {
     cspConnectSrc.push("*.sentry.io");

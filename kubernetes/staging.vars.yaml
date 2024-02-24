@@ -1,4 +1,11 @@
-ingress_public_hostname: dev.ropekonsti.fi
+ingress_public_hostnames:
+  - dev.ropekonsti.fi
+
+ingress_public_hostnames_http:
+  - http://dev.ropekonsti.fi
+
+ingress_public_hostnames_https:
+  - https://dev.ropekonsti.fi
 
 konsti_secret_managed: false
 konsti_frontend_env: staging
