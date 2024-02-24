@@ -5,6 +5,7 @@ import { ProgramType } from "shared/types/models/game";
 import { StringToJsonSchema } from "client/utils/zodUtils";
 import { config } from "shared/config";
 import { ActiveProgramType } from "shared/config/clientConfigTypes";
+import { Locale } from "shared/types/locale";
 
 const isActive = (programType: ActiveProgramType): boolean =>
   config.client().activeProgramTypes.includes(programType);
@@ -67,15 +68,18 @@ export const clearSession = (): void => {
   }
 };
 
+// Locale uses same 'languageKey' as i18next but i18next has separate logic for handling localStorage
 const languageKey = "i18nextLng";
-const LanguageValueSchema = z.string();
+const LanguageValueSchema = z.nativeEnum(Locale);
 
-export const getLocalStorageLanguage = (): string => {
+export const getLocalStorageLocale = (): string => {
   const serializedValue = localStorage.getItem(languageKey);
 
   const result = LanguageValueSchema.safeParse(serializedValue);
   if (!result.success) {
-    return "eng";
+    localStorage.removeItem(languageKey);
+    location.reload();
+    return Locale.EN;
   }
 
   return result.data;
