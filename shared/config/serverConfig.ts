@@ -35,6 +35,15 @@ export interface ServerConfig {
   onlyCronjobs: boolean;
 }
 
+const getAllowedCorsOrigins = (localOrigins: string[] = []): string[] => {
+  const envVariableOrigins =
+    typeof process.env.CORS_WHITELIST === "string"
+      ? process.env.CORS_WHITELIST.split(";")
+      : [];
+
+  return [...envVariableOrigins, ...localOrigins];
+};
+
 const commonConfig = {
   // Server settings
   port:
@@ -69,10 +78,7 @@ const prodConfig = {
   jwtSecretKey: process.env.JWT_SECRET_KEY ?? "",
   jwtSecretKeyAdmin: process.env.JWT_SECRET_KEY_ADMIN ?? "",
   jwtSecretKeyHelp: process.env.JWT_SECRET_KEY_HELP ?? "",
-  allowedCorsOrigins:
-    typeof process.env.CORS_WHITELIST === "string"
-      ? process.env.CORS_WHITELIST.split(";")
-      : [],
+  allowedCorsOrigins: getAllowedCorsOrigins(),
   debug: process.env.DEBUG === "true" || false,
   GROUP_ASSIGNMENT_ROUNDS: 300,
   PADG_ASSIGNMENT_ROUNDS: 300,
@@ -101,10 +107,7 @@ const stagingConfig = {
   jwtSecretKey: process.env.JWT_SECRET_KEY ?? "",
   jwtSecretKeyAdmin: process.env.JWT_SECRET_KEY_ADMIN ?? "",
   jwtSecretKeyHelp: process.env.JWT_SECRET_KEY_HELP ?? "",
-  allowedCorsOrigins:
-    typeof process.env.CORS_WHITELIST === "string"
-      ? process.env.CORS_WHITELIST.split(";")
-      : [],
+  allowedCorsOrigins: getAllowedCorsOrigins(),
   debug: process.env.DEBUG === "true" || false,
   GROUP_ASSIGNMENT_ROUNDS: 300,
   PADG_ASSIGNMENT_ROUNDS: 300,
@@ -133,13 +136,13 @@ const devConfig = {
   jwtSecretKey: "secret",
   jwtSecretKeyAdmin: "admin secret",
   jwtSecretKeyHelp: "help secret",
-  allowedCorsOrigins: [
+  allowedCorsOrigins: getAllowedCorsOrigins([
     "http://localhost:8000",
     "http://localhost:5000",
     "http://127.0.0.1:8000",
     "http://127.0.0.1:5000",
     "http://server:5000",
-  ],
+  ]),
   debug: false,
   GROUP_ASSIGNMENT_ROUNDS: 10,
   PADG_ASSIGNMENT_ROUNDS: 300,

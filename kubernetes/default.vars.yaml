@@ -125,8 +125,8 @@ ingress_tls: !If
 
 ingress_url: !If
   test: !Var ingress_letsencrypt_enabled
-  then: !Join {items: !Var ingress_public_hostnames_https, separator: ';'}
-  else: !Join {items: !Var ingress_public_hostnames_http, separator: ';'}
+  then: !Join { items: !Var ingress_public_hostnames_https, separator: ";" }
+  else: !Join { items: !Var ingress_public_hostnames_http, separator: ";" }
 
 konsti_volume_mounts:
   - mountPath: /tmp
