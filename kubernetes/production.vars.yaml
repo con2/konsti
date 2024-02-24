@@ -1,11 +1,14 @@
 ingress_public_hostnames:
   - ropekonsti.fi
+  - konsti.solmukohta.eu
 
 ingress_public_hostnames_http:
   - http://ropekonsti.fi
+  - http://konsti.solmukohta.eu
 
 ingress_public_hostnames_https:
   - https://ropekonsti.fi
+  - https://konsti.solmukohta.eu
 
 konsti_secret_managed: false
 konsti_frontend_env: prod
