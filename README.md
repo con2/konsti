@@ -1,6 +1,6 @@
 # Konsti
 
-![Build](https://github.com/con2/konsti/workflows/Node%20CI/badge.svg)
+[![Build](https://github.com/con2/konsti/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/con2/konsti/actions/workflows/test.yml)
 
 [![Known Vulnerabilities](https://snyk.io/test/github/con2/konsti/badge.svg)](https://snyk.io/test/github/con2/konsti)
 
