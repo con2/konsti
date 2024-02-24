@@ -9,7 +9,7 @@ import { ThemeProvider, StyleSheetManager } from "styled-components";
 import { init, browserTracingIntegration } from "@sentry/react";
 import loaderImage from "assets/loading.gif";
 import { config } from "shared/config";
-import { getLocalStorageLanguage } from "client/utils/localStorage";
+import { getLocalStorageLocale } from "client/utils/localStorage";
 import { theme } from "client/theme";
 import { GlobalStyle } from "client/globalStyle";
 import { setLocale } from "shared/utils/setLocale";
@@ -22,7 +22,7 @@ import { initializeDayjs } from "shared/utils/initializeDayjs";
 import { lazyWithRetry } from "client/utils/lazyWithRetry";
 
 initializeDayjs();
-setLocale(getLocalStorageLanguage());
+setLocale(getLocalStorageLocale());
 
 // Root component
 const App = lazyWithRetry(
