@@ -8,7 +8,6 @@ import { startServer, closeServer } from "server/utils/server";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { getJWT } from "server/utils/jwt";
 import { UserGroup } from "shared/types/models/user";
-import { testHelperWrapperRopecon } from "server/features/game/utils/getGamesFromKompassiRopecon";
 import {
   testKompassiGameRopecon,
   testKompassiGameRopecon2,
@@ -43,11 +42,11 @@ import { logger } from "server/utils/logger";
 import { SignupQuestionType } from "shared/types/models/settings";
 import { config } from "shared/config";
 import { ConventionName } from "shared/config/sharedConfigTypes";
-import { testHelperWrapperHitpoint } from "server/features/game/utils/getGamesFromKompassiHitpoint";
 import {
   testKompassiGameHitpoint,
   testKompassiGameHitpoint2,
 } from "server/test/mock-data/mockKompassiGameHitpoint";
+import { testHelperWrapper } from "server/features/game/utils/getGamesFromKompassi";
 
 let server: Server;
 
@@ -125,7 +124,7 @@ describe(`POST ${ApiEndpoint.GAMES} Ropecon`, () => {
 
   test("should return 200 with valid authorization and add games to DB", async () => {
     const spy = vi
-      .spyOn(testHelperWrapperRopecon, "getEventProgramItems")
+      .spyOn(testHelperWrapper, "getEventProgramItems")
       .mockResolvedValue({ value: [testKompassiGameRopecon] });
 
     const response = await request(server)
@@ -142,10 +141,7 @@ describe(`POST ${ApiEndpoint.GAMES} Ropecon`, () => {
   });
 
   test("should remove games, selectedGames, signups, and favoritedGames that are not in the server response", async () => {
-    vi.spyOn(
-      testHelperWrapperRopecon,
-      "getEventProgramItems",
-    ).mockResolvedValue({
+    vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
       value: [testKompassiGameRopecon],
     });
 
@@ -189,7 +185,7 @@ describe(`POST ${ApiEndpoint.GAMES} Ropecon`, () => {
   });
 
   test("should not modify anything if server response is invalid", async () => {
-    vi.spyOn(testHelperWrapperRopecon, "getEventProgramItems")
+    vi.spyOn(testHelperWrapper, "getEventProgramItems")
       // @ts-expect-error: Invalid value for testing
       .mockResolvedValue({ value: "broken response" });
 
@@ -210,10 +206,7 @@ describe(`POST ${ApiEndpoint.GAMES} Ropecon`, () => {
   });
 
   test("should not modify anything if server response is empty array", async () => {
-    vi.spyOn(
-      testHelperWrapperRopecon,
-      "getEventProgramItems",
-    ).mockResolvedValue({
+    vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
       value: [],
     });
 
@@ -239,10 +232,7 @@ describe(`POST ${ApiEndpoint.GAMES} Ropecon`, () => {
       .add(1, "hours")
       .toISOString();
 
-    vi.spyOn(
-      testHelperWrapperRopecon,
-      "getEventProgramItems",
-    ).mockResolvedValue({
+    vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
       value: [
         {
           ...testKompassiGameRopecon,
@@ -272,10 +262,7 @@ describe(`POST ${ApiEndpoint.GAMES} Ropecon`, () => {
       .add(1, "hours")
       .toISOString();
 
-    vi.spyOn(
-      testHelperWrapperRopecon,
-      "getEventProgramItems",
-    ).mockResolvedValue({
+    vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
       value: [
         {
           ...testKompassiGameRopecon,
@@ -319,10 +306,7 @@ describe(`POST ${ApiEndpoint.GAMES} Ropecon`, () => {
   });
 
   test("should add game even if game contains unknown fields or enum values", async () => {
-    vi.spyOn(
-      testHelperWrapperRopecon,
-      "getEventProgramItems",
-    ).mockResolvedValue({
+    vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
       value: [
         {
           ...testKompassiGameRopecon,
@@ -381,10 +365,7 @@ describe(`POST ${ApiEndpoint.GAMES} Ropecon`, () => {
   });
 
   test("should log invalid fields and not add program item", async () => {
-    vi.spyOn(
-      testHelperWrapperRopecon,
-      "getEventProgramItems",
-    ).mockResolvedValue({
+    vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
       value: [
         {
           ...testKompassiGameRopecon,
@@ -439,7 +420,7 @@ describe(`POST ${ApiEndpoint.GAMES} Tracon Hitpoint`, () => {
 
   test("should return 200 with valid authorization and add games to DB", async () => {
     const spy = vi
-      .spyOn(testHelperWrapperHitpoint, "getEventProgramItems")
+      .spyOn(testHelperWrapper, "getEventProgramItems")
       .mockResolvedValue({ value: [testKompassiGameHitpoint] });
 
     const response = await request(server)
@@ -456,10 +437,7 @@ describe(`POST ${ApiEndpoint.GAMES} Tracon Hitpoint`, () => {
   });
 
   test("should remove games, selectedGames, signups, and favoritedGames that are not in the server response", async () => {
-    vi.spyOn(
-      testHelperWrapperHitpoint,
-      "getEventProgramItems",
-    ).mockResolvedValue({
+    vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
       value: [testKompassiGameHitpoint],
     });
 
@@ -503,7 +481,7 @@ describe(`POST ${ApiEndpoint.GAMES} Tracon Hitpoint`, () => {
   });
 
   test("should not modify anything if server response is invalid", async () => {
-    vi.spyOn(testHelperWrapperHitpoint, "getEventProgramItems")
+    vi.spyOn(testHelperWrapper, "getEventProgramItems")
       // @ts-expect-error: Invalid value for testing
       .mockResolvedValue({ value: "broken response" });
 
@@ -524,10 +502,7 @@ describe(`POST ${ApiEndpoint.GAMES} Tracon Hitpoint`, () => {
   });
 
   test("should not modify anything if server response is empty array", async () => {
-    vi.spyOn(
-      testHelperWrapperHitpoint,
-      "getEventProgramItems",
-    ).mockResolvedValue({
+    vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
       value: [],
     });
 
@@ -553,10 +528,7 @@ describe(`POST ${ApiEndpoint.GAMES} Tracon Hitpoint`, () => {
       .add(1, "hours")
       .toISOString();
 
-    vi.spyOn(
-      testHelperWrapperHitpoint,
-      "getEventProgramItems",
-    ).mockResolvedValue({
+    vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
       value: [
         {
           ...testKompassiGameHitpoint,
@@ -586,10 +558,7 @@ describe(`POST ${ApiEndpoint.GAMES} Tracon Hitpoint`, () => {
       .add(1, "hours")
       .toISOString();
 
-    vi.spyOn(
-      testHelperWrapperHitpoint,
-      "getEventProgramItems",
-    ).mockResolvedValue({
+    vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
       value: [
         {
           ...testKompassiGameHitpoint,
@@ -633,10 +602,7 @@ describe(`POST ${ApiEndpoint.GAMES} Tracon Hitpoint`, () => {
   });
 
   test("should add game even if game contains unknown fields", async () => {
-    vi.spyOn(
-      testHelperWrapperHitpoint,
-      "getEventProgramItems",
-    ).mockResolvedValue({
+    vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
       value: [
         {
           ...testKompassiGameHitpoint,
@@ -660,10 +626,7 @@ describe(`POST ${ApiEndpoint.GAMES} Tracon Hitpoint`, () => {
   });
 
   test("should log invalid fields and not add program item", async () => {
-    vi.spyOn(
-      testHelperWrapperHitpoint,
-      "getEventProgramItems",
-    ).mockResolvedValue({
+    vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
       value: [
         {
           ...testKompassiGameHitpoint,
