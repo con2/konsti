@@ -13,6 +13,7 @@ import { MOBILE_MARGIN } from "client/globalStyle";
 import { TestTime } from "client/test/test-components/TestTime";
 import { Announcement } from "client/components/Announcement";
 import { NotificationBar } from "client/components/NotificationBar";
+import { resetNetworkError } from "client/views/admin/adminUtils";
 
 const { loadedSettings, showTestValues, showAnnouncement, dataUpdateInterval } =
   config.client();
@@ -31,8 +32,10 @@ export const App = (): ReactElement => {
     fetchData();
 
     const startUpdateTimer = (): void => {
-      /* eslint-disable-next-line @typescript-eslint/no-misused-promises */
-      setInterval(async () => await fetchData(), dataUpdateInterval * 1000);
+      setInterval(async () => {
+        resetNetworkError();
+        await fetchData();
+      }, dataUpdateInterval * 1000);
     };
     startUpdateTimer();
   }, [store]);

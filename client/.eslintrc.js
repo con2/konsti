@@ -50,6 +50,7 @@ module.exports = {
       {
         checksVoidReturn: {
           attributes: false, // https://github.com/typescript-eslint/typescript-eslint/pull/4623
+          arguments: false, // Some functions like setInterval expect a callback function parameter with void return
         },
       },
     ],
