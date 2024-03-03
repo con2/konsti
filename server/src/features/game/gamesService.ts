@@ -1,7 +1,5 @@
-import { getGamesFromKompassiRopecon } from "server/features/game/utils/getGamesFromKompassiRopecon";
 import { updateGamePopularity } from "server/features/game-popularity/updateGamePopularity";
 import { config } from "shared/config";
-import { kompassiGameMapperRopecon } from "server/utils/kompassiGameMapperRopecon";
 import {
   PostUpdateGamesResponse,
   GetGamesResponse,
@@ -16,57 +14,28 @@ import {
   makeSuccessResult,
   unwrapResult,
 } from "shared/utils/result";
-import { getGamesFromKompassiHitpoint } from "server/features/game/utils/getGamesFromKompassiHitpoint";
-import { kompassiGameMapperHitpoint } from "server/utils/kompassiGameMapperHitpoint";
 import { KompassiError } from "shared/types/api/errors";
-import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 import { Game } from "shared/types/models/game";
-import { ConventionName } from "shared/config/sharedConfigTypes";
+import { getGamesFromKompassi } from "server/kompassi/getGamesFromKompassi";
+import { kompassiGameMapper } from "server/kompassi/kompassiGameMapper";
 
-const getGamesForConvention = async (
-  conventionName: ConventionName,
-): Promise<Result<readonly Game[], KompassiError>> => {
-  if (conventionName === ConventionName.ROPECON) {
-    const kompassiGamesResult = await getGamesFromKompassiRopecon();
-    if (isErrorResult(kompassiGamesResult)) {
-      return kompassiGamesResult;
-    }
-
-    const kompassiGames = unwrapResult(kompassiGamesResult);
-    return makeSuccessResult(kompassiGameMapperRopecon(kompassiGames));
+export const getGamesForConvention = async (): Promise<
+  Result<readonly Game[], KompassiError>
+> => {
+  const conventionName = config.shared().conventionName;
+  const kompassiGamesResult = await getGamesFromKompassi(conventionName);
+  if (isErrorResult(kompassiGamesResult)) {
+    return kompassiGamesResult;
   }
 
-  if (conventionName === ConventionName.HITPOINT) {
-    const kompassiGamesResult = await getGamesFromKompassiHitpoint();
-    if (isErrorResult(kompassiGamesResult)) {
-      return kompassiGamesResult;
-    }
-
-    const kompassiGames = unwrapResult(kompassiGamesResult);
-    return makeSuccessResult(kompassiGameMapperHitpoint(kompassiGames));
-  }
-
-  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-  if (conventionName === ConventionName.SOLMUKOHTA) {
-    // TODO: Read in Solmukohta spesific data format
-    const kompassiGamesResult = await getGamesFromKompassiHitpoint();
-    if (isErrorResult(kompassiGamesResult)) {
-      return kompassiGamesResult;
-    }
-
-    const kompassiGames = unwrapResult(kompassiGamesResult);
-    return makeSuccessResult(kompassiGameMapperHitpoint(kompassiGames));
-  }
-
-  return exhaustiveSwitchGuard(conventionName);
+  const kompassiGames = unwrapResult(kompassiGamesResult);
+  return makeSuccessResult(kompassiGameMapper(conventionName, kompassiGames));
 };
 
 export const updateGames = async (): Promise<
   PostUpdateGamesResponse | PostUpdateGamesError
 > => {
-  const gamesResult = await getGamesForConvention(
-    config.shared().conventionName,
-  );
+  const gamesResult = await getGamesForConvention();
   if (isErrorResult(gamesResult)) {
     return {
       message: "Loading games from Kompassi failed",

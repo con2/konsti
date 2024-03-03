@@ -17,7 +17,7 @@ import {
   KompassiProgramTypeRopecon,
   KompassiTagRopecon,
   workshopProgramTypesRopecon,
-} from "shared/types/models/kompassiGame/kompassiGameRopecon";
+} from "server/kompassi/ropecon/kompassiGameRopecon";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 import { config } from "shared/config";
 

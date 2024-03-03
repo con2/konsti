@@ -5,7 +5,7 @@ import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 import {
   KompassiGameHitpoint,
   KompassiProgramTypeHitpoint,
-} from "shared/types/models/kompassiGame/kompassiGameHitpoint";
+} from "server/kompassi/hitpoint/kompassiGameHitpoint";
 import { config } from "shared/config";
 
 export const kompassiGameMapperHitpoint = (

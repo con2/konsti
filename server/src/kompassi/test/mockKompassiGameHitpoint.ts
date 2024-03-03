@@ -3,9 +3,9 @@ import {
   KompassiGameHitpoint,
   KompassiPhysicalPlayHitpoint,
   KompassiProgramTypeHitpoint,
-} from "shared/types/models/kompassiGame/kompassiGameHitpoint";
+} from "server/kompassi/hitpoint/kompassiGameHitpoint";
 
-export const testKompassiGameHitpoint: KompassiGameHitpoint = {
+export const mockKompassiGameHitpoint: KompassiGameHitpoint = {
   title: testGame.title,
   description: testGame.description,
   category_title: KompassiProgramTypeHitpoint.TABLETOP_RPG,
@@ -29,7 +29,7 @@ export const testKompassiGameHitpoint: KompassiGameHitpoint = {
   video_link: "",
 };
 
-export const testKompassiGameHitpoint2: KompassiGameHitpoint = {
+export const mockKompassiGameHitpoint2: KompassiGameHitpoint = {
   title: testGame2.title,
   description: testGame2.description,
   category_title: KompassiProgramTypeHitpoint.TABLETOP_RPG,

@@ -8,11 +8,6 @@ import { startServer, closeServer } from "server/utils/server";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { getJWT } from "server/utils/jwt";
 import { UserGroup } from "shared/types/models/user";
-import { testHelperWrapperRopecon } from "server/features/game/utils/getGamesFromKompassiRopecon";
-import {
-  testKompassiGameRopecon,
-  testKompassiGameRopecon2,
-} from "server/test/mock-data/mockKompassiGameRopecon";
 import { findGames, saveGames } from "server/features/game/gameRepository";
 import { testGame, testGame2 } from "shared/tests/testGame";
 import { findUser, saveUser } from "server/features/user/userRepository";
@@ -37,17 +32,17 @@ import {
   KompassiGameStyleRopecon,
   KompassiGenreRopecon,
   KompassiTagRopecon,
-} from "shared/types/models/kompassiGame/kompassiGameRopecon";
+} from "server/kompassi/ropecon/kompassiGameRopecon";
 import { GameStyle, Genre, Tag } from "shared/types/models/game";
 import { logger } from "server/utils/logger";
 import { SignupQuestionType } from "shared/types/models/settings";
 import { config } from "shared/config";
 import { ConventionName } from "shared/config/sharedConfigTypes";
-import { testHelperWrapperHitpoint } from "server/features/game/utils/getGamesFromKompassiHitpoint";
+import { testHelperWrapper } from "server/kompassi/getGamesFromKompassi";
 import {
-  testKompassiGameHitpoint,
-  testKompassiGameHitpoint2,
-} from "server/test/mock-data/mockKompassiGameHitpoint";
+  mockKompassiGameRopecon,
+  mockKompassiGameRopecon2,
+} from "server/kompassi/test/mockKompassiGameRopecon";
 
 let server: Server;
 
@@ -110,7 +105,7 @@ describe(`GET ${ApiEndpoint.GAMES}`, () => {
   });
 });
 
-describe(`POST ${ApiEndpoint.GAMES} Ropecon`, () => {
+describe(`POST ${ApiEndpoint.GAMES}`, () => {
   beforeEach(() => {
     vi.spyOn(config, "shared").mockReturnValue({
       ...config.shared(),
@@ -125,8 +120,8 @@ describe(`POST ${ApiEndpoint.GAMES} Ropecon`, () => {
 
   test("should return 200 with valid authorization and add games to DB", async () => {
     const spy = vi
-      .spyOn(testHelperWrapperRopecon, "getEventProgramItems")
-      .mockResolvedValue({ value: [testKompassiGameRopecon] });
+      .spyOn(testHelperWrapper, "getEventProgramItems")
+      .mockResolvedValue({ value: [mockKompassiGameRopecon] });
 
     const response = await request(server)
       .post(ApiEndpoint.GAMES)
@@ -142,11 +137,8 @@ describe(`POST ${ApiEndpoint.GAMES} Ropecon`, () => {
   });
 
   test("should remove games, selectedGames, signups, and favoritedGames that are not in the server response", async () => {
-    vi.spyOn(
-      testHelperWrapperRopecon,
-      "getEventProgramItems",
-    ).mockResolvedValue({
-      value: [testKompassiGameRopecon],
+    vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
+      value: [mockKompassiGameRopecon],
     });
 
     await saveGames([testGame, testGame2]);
@@ -189,7 +181,7 @@ describe(`POST ${ApiEndpoint.GAMES} Ropecon`, () => {
   });
 
   test("should not modify anything if server response is invalid", async () => {
-    vi.spyOn(testHelperWrapperRopecon, "getEventProgramItems")
+    vi.spyOn(testHelperWrapper, "getEventProgramItems")
       // @ts-expect-error: Invalid value for testing
       .mockResolvedValue({ value: "broken response" });
 
@@ -210,10 +202,7 @@ describe(`POST ${ApiEndpoint.GAMES} Ropecon`, () => {
   });
 
   test("should not modify anything if server response is empty array", async () => {
-    vi.spyOn(
-      testHelperWrapperRopecon,
-      "getEventProgramItems",
-    ).mockResolvedValue({
+    vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
       value: [],
     });
 
@@ -239,13 +228,10 @@ describe(`POST ${ApiEndpoint.GAMES} Ropecon`, () => {
       .add(1, "hours")
       .toISOString();
 
-    vi.spyOn(
-      testHelperWrapperRopecon,
-      "getEventProgramItems",
-    ).mockResolvedValue({
+    vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
       value: [
         {
-          ...testKompassiGameRopecon,
+          ...mockKompassiGameRopecon,
           start_time: newStartTime,
           description: newDescription,
         },
@@ -272,16 +258,13 @@ describe(`POST ${ApiEndpoint.GAMES} Ropecon`, () => {
       .add(1, "hours")
       .toISOString();
 
-    vi.spyOn(
-      testHelperWrapperRopecon,
-      "getEventProgramItems",
-    ).mockResolvedValue({
+    vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
       value: [
         {
-          ...testKompassiGameRopecon,
+          ...mockKompassiGameRopecon,
           start_time: newStartTime,
         },
-        testKompassiGameRopecon2,
+        mockKompassiGameRopecon2,
       ],
     });
 
@@ -319,13 +302,10 @@ describe(`POST ${ApiEndpoint.GAMES} Ropecon`, () => {
   });
 
   test("should add game even if game contains unknown fields or enum values", async () => {
-    vi.spyOn(
-      testHelperWrapperRopecon,
-      "getEventProgramItems",
-    ).mockResolvedValue({
+    vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
       value: [
         {
-          ...testKompassiGameRopecon,
+          ...mockKompassiGameRopecon,
           tags: [
             KompassiTagRopecon.ALOITTELIJAYSTÄVÄLLINEN,
             // @ts-expect-error: Test
@@ -381,13 +361,10 @@ describe(`POST ${ApiEndpoint.GAMES} Ropecon`, () => {
   });
 
   test("should log invalid fields and not add program item", async () => {
-    vi.spyOn(
-      testHelperWrapperRopecon,
-      "getEventProgramItems",
-    ).mockResolvedValue({
+    vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
       value: [
         {
-          ...testKompassiGameRopecon,
+          ...mockKompassiGameRopecon,
           // @ts-expect-error: Test value
           start_time: null,
           // @ts-expect-error: Test value
@@ -410,277 +387,6 @@ describe(`POST ${ApiEndpoint.GAMES} Ropecon`, () => {
         "Invalid program item p2106 at path end_time: Expected string, received null",
       ),
     );
-    expect(errorLoggerSpy).toHaveBeenCalledWith(
-      "%s",
-      new Error(
-        "Invalid program item p2106 at path start_time: Expected string, received null",
-      ),
-    );
-
-    const gamesResult = await findGames();
-    const games = unsafelyUnwrapResult(gamesResult);
-
-    expect(games.length).toEqual(0);
-  });
-});
-
-describe(`POST ${ApiEndpoint.GAMES} Tracon Hitpoint`, () => {
-  beforeEach(() => {
-    vi.spyOn(config, "shared").mockReturnValue({
-      ...config.shared(),
-      conventionName: ConventionName.HITPOINT,
-    });
-  });
-
-  test(`should return 401 without valid authorization`, async () => {
-    const response = await request(server).post(ApiEndpoint.GAMES);
-    expect(response.status).toEqual(401);
-  });
-
-  test("should return 200 with valid authorization and add games to DB", async () => {
-    const spy = vi
-      .spyOn(testHelperWrapperHitpoint, "getEventProgramItems")
-      .mockResolvedValue({ value: [testKompassiGameHitpoint] });
-
-    const response = await request(server)
-      .post(ApiEndpoint.GAMES)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
-    expect(response.status).toEqual(200);
-    expect(spy).toHaveBeenCalledTimes(1);
-
-    const gamesResult = await findGames();
-    const games = unsafelyUnwrapResult(gamesResult);
-
-    expect(games.length).toEqual(1);
-    expect(games[0].title).toEqual(testGame.title);
-  });
-
-  test("should remove games, selectedGames, signups, and favoritedGames that are not in the server response", async () => {
-    vi.spyOn(
-      testHelperWrapperHitpoint,
-      "getEventProgramItems",
-    ).mockResolvedValue({
-      value: [testKompassiGameHitpoint],
-    });
-
-    await saveGames([testGame, testGame2]);
-    await saveUser(mockUser);
-    await saveSignedGames({
-      username: mockUser.username,
-      signedGames: mockSignedGames,
-    });
-    await saveSignup(mockPostEnteredGameRequest);
-    await saveSignup(mockPostEnteredGameRequest2);
-    await saveFavorite({
-      username: mockUser.username,
-      favoritedGameIds: [testGame.gameId, testGame2.gameId],
-    });
-
-    const response = await request(server)
-      .post(ApiEndpoint.GAMES)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
-    expect(response.status).toEqual(200);
-
-    const gamesResult = await findGames();
-    const games = unsafelyUnwrapResult(gamesResult);
-
-    expect(games.length).toEqual(1);
-    expect(games[0].title).toEqual(testGame.title);
-
-    const updatedUserResult = await findUser(mockUser.username);
-    const updatedUser = unsafelyUnwrapResult(updatedUserResult);
-    expect(updatedUser?.signedGames.length).toEqual(1);
-    expect(updatedUser?.signedGames[0].gameDetails.title).toEqual(
-      testGame.title,
-    );
-    expect(updatedUser?.favoritedGames.length).toEqual(1);
-    expect(updatedUser?.favoritedGames[0].gameId).toEqual(testGame.gameId);
-
-    const updatedSignupsResult = await findUserSignups(mockUser.username);
-    const updatedSignups = unsafelyUnwrapResult(updatedSignupsResult);
-    expect(updatedSignups.length).toEqual(1);
-    expect(updatedSignups[0].game.title).toEqual(testGame.title);
-  });
-
-  test("should not modify anything if server response is invalid", async () => {
-    vi.spyOn(testHelperWrapperHitpoint, "getEventProgramItems")
-      // @ts-expect-error: Invalid value for testing
-      .mockResolvedValue({ value: "broken response" });
-
-    await saveGames([testGame, testGame2]);
-
-    const response = await request(server)
-      .post(ApiEndpoint.GAMES)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
-    expect(response.status).toEqual(200);
-
-    const gamesResult = await findGames();
-    const games = unsafelyUnwrapResult(gamesResult);
-
-    expect(games.length).toEqual(2);
-    const sortedGames = sortBy(games, "title");
-    expect(sortedGames[0].title).toEqual(testGame.title);
-    expect(sortedGames[1].title).toEqual(testGame2.title);
-  });
-
-  test("should not modify anything if server response is empty array", async () => {
-    vi.spyOn(
-      testHelperWrapperHitpoint,
-      "getEventProgramItems",
-    ).mockResolvedValue({
-      value: [],
-    });
-
-    await saveGames([testGame, testGame2]);
-
-    const response = await request(server)
-      .post(ApiEndpoint.GAMES)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
-    expect(response.status).toEqual(200);
-
-    const gamesResult = await findGames();
-    const games = unsafelyUnwrapResult(gamesResult);
-
-    expect(games.length).toEqual(2);
-    const sortedGames = sortBy(games, "title");
-    expect(sortedGames[0].title).toEqual(testGame.title);
-    expect(sortedGames[1].title).toEqual(testGame2.title);
-  });
-
-  test("should update changed game details", async () => {
-    const newDescription = "new description";
-    const newStartTime = dayjs(testGame.startTime)
-      .add(1, "hours")
-      .toISOString();
-
-    vi.spyOn(
-      testHelperWrapperHitpoint,
-      "getEventProgramItems",
-    ).mockResolvedValue({
-      value: [
-        {
-          ...testKompassiGameHitpoint,
-          start_time: newStartTime,
-          description: newDescription,
-        },
-      ],
-    });
-
-    await saveGames([testGame, testGame2]);
-
-    const response = await request(server)
-      .post(ApiEndpoint.GAMES)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
-    expect(response.status).toEqual(200);
-
-    const gamesResult = await findGames();
-    const games = unsafelyUnwrapResult(gamesResult);
-
-    expect(games.length).toEqual(1);
-    expect(dayjs(games[0].startTime).toISOString()).toEqual(newStartTime);
-    expect(games[0].description).toEqual(newDescription);
-  });
-
-  test("should remove selectedGames but not signups or favoritedGames if game start time changes", async () => {
-    const newStartTime = dayjs(testGame.startTime)
-      .add(1, "hours")
-      .toISOString();
-
-    vi.spyOn(
-      testHelperWrapperHitpoint,
-      "getEventProgramItems",
-    ).mockResolvedValue({
-      value: [
-        {
-          ...testKompassiGameHitpoint,
-          start_time: newStartTime,
-        },
-        testKompassiGameHitpoint2,
-      ],
-    });
-
-    await saveGames([testGame, testGame2]);
-    await saveUser(mockUser);
-    await saveSignedGames({
-      username: mockUser.username,
-      signedGames: mockSignedGames,
-    });
-    await saveSignup(mockPostEnteredGameRequest);
-    await saveSignup(mockPostEnteredGameRequest2);
-    await saveFavorite({
-      username: mockUser.username,
-      favoritedGameIds: [testGame.gameId, testGame2.gameId],
-    });
-
-    const response = await request(server)
-      .post(ApiEndpoint.GAMES)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
-    expect(response.status).toEqual(200);
-
-    const updatedUserResult = await findUser(mockUser.username);
-    const updatedUser = unsafelyUnwrapResult(updatedUserResult);
-    expect(updatedUser?.signedGames.length).toEqual(1);
-    expect(updatedUser?.signedGames[0].gameDetails.title).toEqual(
-      testGame2.title,
-    );
-    expect(updatedUser?.favoritedGames.length).toEqual(2);
-
-    const signupsResult = await findUserSignups(mockUser.username);
-    const signups = unsafelyUnwrapResult(signupsResult);
-    expect(signups.length).toEqual(2);
-    expect(signups[0].userSignups[0].username).toEqual(mockUser.username);
-    expect(signups[1].userSignups[0].username).toEqual(mockUser.username);
-  });
-
-  test("should add game even if game contains unknown fields", async () => {
-    vi.spyOn(
-      testHelperWrapperHitpoint,
-      "getEventProgramItems",
-    ).mockResolvedValue({
-      value: [
-        {
-          ...testKompassiGameHitpoint,
-          // @ts-expect-error: Test
-          foobar: "this is unknown field",
-        },
-      ],
-    });
-
-    const response = await request(server)
-      .post(ApiEndpoint.GAMES)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
-    expect(response.status).toEqual(200);
-
-    const gamesResult = await findGames();
-    const games = unsafelyUnwrapResult(gamesResult);
-
-    expect(games.length).toEqual(1);
-    // @ts-expect-error: Test
-    expect(games[0].foobar).toEqual(undefined);
-  });
-
-  test("should log invalid fields and not add program item", async () => {
-    vi.spyOn(
-      testHelperWrapperHitpoint,
-      "getEventProgramItems",
-    ).mockResolvedValue({
-      value: [
-        {
-          ...testKompassiGameHitpoint,
-          // @ts-expect-error: Test value
-          start_time: null,
-        },
-      ],
-    });
-
-    const errorLoggerSpy = vi.spyOn(logger, "error");
-
-    const response = await request(server)
-      .post(ApiEndpoint.GAMES)
-      .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
-
-    expect(response.status).toEqual(200);
-
     expect(errorLoggerSpy).toHaveBeenCalledWith(
       "%s",
       new Error(
