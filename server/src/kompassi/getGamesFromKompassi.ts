@@ -4,11 +4,7 @@ import axios from "axios";
 import { ZodError } from "zod";
 import { uniq } from "lodash-es";
 import { KompassiError } from "shared/types/api/errors";
-import {
-  KompassiGame,
-  KompassiGameSchema,
-  getGamesFromFullProgram,
-} from "shared/types/models/kompassiGame/kompassiGame";
+import { KompassiGame, KompassiGameSchema } from "server/kompassi/kompassiGame";
 import {
   Result,
   isErrorResult,
@@ -19,6 +15,7 @@ import {
 import { logger } from "server/utils/logger";
 import { config } from "shared/config";
 import { ConventionName } from "shared/config/sharedConfigTypes";
+import { getGamesFromFullProgram } from "server/kompassi/getGamesFromFullProgram";
 
 export const getGamesFromKompassi = async (
   conventionName: ConventionName,

@@ -2,7 +2,7 @@ import { faker } from "@faker-js/faker";
 import dayjs from "dayjs";
 import { sample, sampleSize } from "lodash-es";
 import { logger } from "server/utils/logger";
-import { kompassiGameMapperRopecon } from "server/utils/kompassiGameMapperRopecon";
+import { kompassiGameMapperRopecon } from "server/kompassi/ropecon/kompassiGameMapperRopecon";
 import { saveGames } from "server/features/game/gameRepository";
 import { config } from "shared/config";
 import {
@@ -15,7 +15,7 @@ import {
   KompassiTagRopecon,
   tournamentProgramTypesRopecon,
   workshopProgramTypesRopecon,
-} from "shared/types/models/kompassiGame/kompassiGameRopecon";
+} from "server/kompassi/ropecon/kompassiGameRopecon";
 import { Result } from "shared/utils/result";
 import { MongoDbError } from "shared/types/api/errors";
 

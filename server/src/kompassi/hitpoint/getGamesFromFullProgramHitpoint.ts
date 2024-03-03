@@ -3,13 +3,13 @@ import {
   KompassiGameHitpoint,
   KompassiGameSchemaHitpoint,
   KompassiProgramTypeHitpoint,
-} from "shared/types/models/kompassiGame/kompassiGameHitpoint";
+} from "server/kompassi/hitpoint/kompassiGameHitpoint";
 import { sharedConfig } from "shared/config/sharedConfig";
-import { KompassiGame } from "shared/types/models/kompassiGame/kompassiGame";
+import { KompassiGame } from "server/kompassi/kompassiGame";
 import {
   checkUnknownKeys,
   parseProgramItem,
-} from "server/features/game/utils/getGamesFromKompassi";
+} from "server/kompassi/getGamesFromKompassi";
 
 export const getGamesFromFullProgramHitpoint = (
   programItems: KompassiGameHitpoint[],

@@ -7,9 +7,9 @@ import {
   KompassiProgramTypeRopecon,
   KompassiSignupTypeRopecon,
   KompassiTagRopecon,
-} from "shared/types/models/kompassiGame/kompassiGameRopecon";
+} from "server/kompassi/ropecon/kompassiGameRopecon";
 
-export const testKompassiGameRopecon: KompassiGameRopecon = {
+export const mockKompassiGameRopecon: KompassiGameRopecon = {
   title: testGame.title,
   description: testGame.description,
   category_title: KompassiProgramTypeRopecon.TABLETOP_RPG,
@@ -69,7 +69,7 @@ export const testKompassiGameRopecon: KompassiGameRopecon = {
   ropecon2023_celebratory_year: false,
 };
 
-export const testKompassiGameRopecon2: KompassiGameRopecon = {
+export const mockKompassiGameRopecon2: KompassiGameRopecon = {
   title: testGame2.title,
   description: testGame2.description,
   category_title: KompassiProgramTypeRopecon.TABLETOP_RPG,

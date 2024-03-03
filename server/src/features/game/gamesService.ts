@@ -16,8 +16,8 @@ import {
 } from "shared/utils/result";
 import { KompassiError } from "shared/types/api/errors";
 import { Game } from "shared/types/models/game";
-import { getGamesFromKompassi } from "server/features/game/utils/getGamesFromKompassi";
-import { kompassiGameMapper } from "server/utils/kompassiGameMapper";
+import { getGamesFromKompassi } from "server/kompassi/getGamesFromKompassi";
+import { kompassiGameMapper } from "server/kompassi/kompassiGameMapper";
 
 export const getGamesForConvention = async (): Promise<
   Result<readonly Game[], KompassiError>

@@ -1,10 +1,10 @@
 import {
   checkUnknownKeys,
   parseProgramItem,
-} from "server/features/game/utils/getGamesFromKompassi";
+} from "server/kompassi/getGamesFromKompassi";
 import { logger } from "server/utils/logger";
 import { config } from "shared/config";
-import { KompassiGame } from "shared/types/models/kompassiGame/kompassiGame";
+import { KompassiGame } from "server/kompassi/kompassiGame";
 import {
   KompassiGameRopecon,
   KompassiGameSchemaRopecon,
@@ -12,7 +12,7 @@ import {
   KompassiSignupTypeRopecon,
   experiencePointAndOtherProgramTypesRopecon,
   tournamentProgramTypesRopecon,
-} from "shared/types/models/kompassiGame/kompassiGameRopecon";
+} from "server/kompassi/ropecon/kompassiGameRopecon";
 
 export const getGamesFromFullProgramRopecon = (
   programItems: KompassiGameRopecon[],

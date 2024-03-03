@@ -1,10 +1,10 @@
-import { kompassiGameMapperHitpoint } from "server/utils/kompassiGameMapperHitpoint";
-import { kompassiGameMapperRopecon } from "server/utils/kompassiGameMapperRopecon";
+import { kompassiGameMapperHitpoint } from "server/kompassi/hitpoint/kompassiGameMapperHitpoint";
+import { kompassiGameMapperRopecon } from "server/kompassi/ropecon/kompassiGameMapperRopecon";
 import { ConventionName } from "shared/config/sharedConfigTypes";
 import { Game } from "shared/types/models/game";
-import { KompassiGame } from "shared/types/models/kompassiGame/kompassiGame";
-import { KompassiGameHitpoint } from "shared/types/models/kompassiGame/kompassiGameHitpoint";
-import { KompassiGameRopecon } from "shared/types/models/kompassiGame/kompassiGameRopecon";
+import { KompassiGame } from "server/kompassi/kompassiGame";
+import { KompassiGameHitpoint } from "server/kompassi/hitpoint/kompassiGameHitpoint";
+import { KompassiGameRopecon } from "server/kompassi/ropecon/kompassiGameRopecon";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 
 export const kompassiGameMapper = (
@@ -25,8 +25,6 @@ export const kompassiGameMapper = (
         eventProgramItems as KompassiGameHitpoint[],
       );
     default:
-      exhaustiveSwitchGuard(conventionName);
+      return exhaustiveSwitchGuard(conventionName);
   }
-
-  return [];
 };

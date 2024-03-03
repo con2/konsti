@@ -1,21 +1,10 @@
-import { getGamesFromFullProgramHitpoint } from "server/features/game/utils/getGamesFromKompassiHitpoint";
-import { getGamesFromFullProgramRopecon } from "server/features/game/utils/getGamesFromKompassiRopecon";
+import { getGamesFromFullProgramHitpoint } from "server/kompassi/hitpoint/getGamesFromFullProgramHitpoint";
+import { getGamesFromFullProgramRopecon } from "server/kompassi/ropecon/getGamesFromFullProgramRopecon";
 import { ConventionName } from "shared/config/sharedConfigTypes";
-import {
-  KompassiGameHitpoint,
-  KompassiGameSchemaHitpoint,
-} from "shared/types/models/kompassiGame/kompassiGameHitpoint";
-import {
-  KompassiGameRopecon,
-  KompassiGameSchemaRopecon,
-} from "shared/types/models/kompassiGame/kompassiGameRopecon";
+import { KompassiGameHitpoint } from "server/kompassi/hitpoint/kompassiGameHitpoint";
+import { KompassiGameRopecon } from "server/kompassi/ropecon/kompassiGameRopecon";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
-
-export type KompassiGame = KompassiGameRopecon | KompassiGameHitpoint;
-
-export type KompassiGameSchema =
-  | typeof KompassiGameSchemaRopecon
-  | typeof KompassiGameSchemaHitpoint;
+import { KompassiGame } from "server/kompassi/kompassiGame";
 
 export const getGamesFromFullProgram = (
   conventionName: ConventionName,
@@ -35,8 +24,6 @@ export const getGamesFromFullProgram = (
         eventProgramItems as KompassiGameHitpoint[],
       );
     default:
-      exhaustiveSwitchGuard(conventionName);
+      return exhaustiveSwitchGuard(conventionName);
   }
-
-  return [];
 };
