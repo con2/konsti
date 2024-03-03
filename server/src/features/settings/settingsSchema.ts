@@ -25,14 +25,14 @@ const SettingsSchema = new mongoose.Schema(
     ],
     signupStrategy: {
       type: String,
-      default: config.shared().defaultSignupStrategy,
+      default: config.server().defaultSignupStrategy,
     },
     programUpdateLastRun: { type: Date, default: Date.now },
     assignmentLastRun: { type: Date, default: Date.now },
     latestServerStartTime: { type: Date, default: Date.now },
     loginProvider: {
       type: String,
-      default: config.shared().defaultLoginProvider,
+      default: config.server().defaultLoginProvider,
     },
   },
   { timestamps: true },
