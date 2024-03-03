@@ -34,7 +34,6 @@ export const App = (): ReactElement => {
     const startUpdateTimer = (): void => {
       const intervalInMs = dataUpdateInterval * 1000;
       setInterval(() => resetNetworkError(), intervalInMs);
-      /* eslint-disable-next-line @typescript-eslint/no-misused-promises */
       setInterval(async () => await fetchData(), intervalInMs);
     };
     startUpdateTimer();
