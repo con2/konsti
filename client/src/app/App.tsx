@@ -32,9 +32,10 @@ export const App = (): ReactElement => {
     fetchData();
 
     const startUpdateTimer = (): void => {
-      setInterval(() => resetNetworkError(), dataUpdateInterval);
+      const intervalInMs = dataUpdateInterval * 1000;
+      setInterval(() => resetNetworkError(), intervalInMs);
       /* eslint-disable-next-line @typescript-eslint/no-misused-promises */
-      setInterval(async () => await fetchData(), dataUpdateInterval * 1000);
+      setInterval(async () => await fetchData(), intervalInMs);
     };
     startUpdateTimer();
   }, [store]);
