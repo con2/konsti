@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useAppSelector } from "client/utils/hooks";
 import { config } from "shared/config";
 import { isAdmin, isAdminOrHelp, isUser } from "client/utils/checkUserGroup";
+import { SignupStrategy } from "shared/config/sharedConfigTypes";
 
 export const LoggedInUserNavigation = (props: {
   onSelect: () => void;
@@ -14,6 +15,8 @@ export const LoggedInUserNavigation = (props: {
   const userGroup = useAppSelector((state) => state.login.userGroup);
   const eventLogItems = useAppSelector((state) => state.login.eventLogItems);
   const unseenEvents = eventLogItems.filter((item) => !item.isSeen);
+  const signupStrategy = useAppSelector((state) => state.admin.signupStrategy);
+  const directSignup = signupStrategy === SignupStrategy.DIRECT;
 
   return (
     <StyledRoutes>
@@ -21,7 +24,7 @@ export const LoggedInUserNavigation = (props: {
         {t("pages.program")}
       </RouterLink>
 
-      {isUser(userGroup) && (
+      {!directSignup && isUser(userGroup) && (
         <RouterLink onClick={props.onSelect} to="/notifications">
           {t("pages.notifications")}
           {unseenEvents.length > 0 && (
