@@ -2,7 +2,6 @@ import { ActiveProgramType } from "shared/config/clientConfigTypes";
 import { ProgramType } from "shared/types/models/game";
 
 export interface ClientConfig {
-  clearNetworErrorInterval: number;
   apiServerUrl: string;
   showTestValues: boolean;
   enableReduxTrace: boolean;
@@ -18,9 +17,6 @@ export interface ClientConfig {
 }
 
 export const clientConfig: ClientConfig = {
-  // App settings
-  clearNetworErrorInterval: 1000 * 30, // ms
-
   // Convention settings
   enableRevolvingDoor: false,
   enableOrganizerFeedback: true,

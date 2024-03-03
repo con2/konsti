@@ -15,13 +15,8 @@ import { Announcement } from "client/components/Announcement";
 import { NotificationBar } from "client/components/NotificationBar";
 import { resetNetworkError } from "client/views/admin/adminUtils";
 
-const {
-  loadedSettings,
-  showTestValues,
-  showAnnouncement,
-  dataUpdateInterval,
-  clearNetworErrorInterval,
-} = config.client();
+const { loadedSettings, showTestValues, showAnnouncement, dataUpdateInterval } =
+  config.client();
 
 export const App = (): ReactElement => {
   const store = useStore();
@@ -37,7 +32,7 @@ export const App = (): ReactElement => {
     fetchData();
 
     const startUpdateTimer = (): void => {
-      setInterval(() => resetNetworkError(), clearNetworErrorInterval);
+      setInterval(() => resetNetworkError(), dataUpdateInterval);
       /* eslint-disable-next-line @typescript-eslint/no-misused-promises */
       setInterval(async () => await fetchData(), dataUpdateInterval * 1000);
     };
