@@ -1,3 +1,5 @@
+import { LoginProvider, SignupStrategy } from "shared/config/sharedConfigTypes";
+
 enum DataUri {
   ROPECON = "https://kompassi.eu/api/v1/events/ropecon2023/programme/ropecon",
   HITPOINT = "https://kompassi.eu/api/v1/events/hitpoint2023/programme/hitpoint",
@@ -33,6 +35,8 @@ export interface ServerConfig {
   consoleLogFormatJson: boolean;
   enableLoggingInTests: boolean;
   onlyCronjobs: boolean;
+  defaultSignupStrategy: SignupStrategy;
+  defaultLoginProvider: LoginProvider;
 }
 
 const getAllowedCorsOrigins = (localOrigins: string[] = []): string[] => {
@@ -58,6 +62,10 @@ const commonConfig = {
   // App settings
   bundleCompression: true,
   enableRemoveOverlapSignups: true,
+
+  // Default DB values
+  defaultSignupStrategy: SignupStrategy.ALGORITHM_AND_DIRECT,
+  defaultLoginProvider: LoginProvider.LOCAL,
 
   // Convention settings
   dataUri: DataUri.HITPOINT,

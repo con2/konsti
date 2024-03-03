@@ -2,7 +2,6 @@ import {
   ArrMin1,
   AssignmentStrategy,
   ConventionName,
-  LoginProvider,
   SignupStrategy,
   SignupWindow,
 } from "shared/config/sharedConfigTypes";
@@ -12,8 +11,6 @@ import { SignupQuestion } from "shared/types/models/settings";
 export interface SharedConfig {
   assignmentStrategy: AssignmentStrategy;
   enableGroups: boolean;
-  defaultSignupStrategy: SignupStrategy;
-  defaultLoginProvider: LoginProvider;
   conventionName: ConventionName;
   conventionYear: string;
   conventionStartTime: string;
@@ -44,8 +41,6 @@ export const sharedConfig: SharedConfig = {
   requireRegistrationCode: true,
   assignmentStrategy: AssignmentStrategy.RANDOM_PADG,
   enableGroups: true,
-  defaultSignupStrategy: SignupStrategy.ALGORITHM_AND_DIRECT,
-  defaultLoginProvider: LoginProvider.LOCAL,
   manualSignupMode: "none",
   signupOpen: true,
   resultsVisible: true,
