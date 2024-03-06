@@ -8,7 +8,6 @@ import { LoginKompassi } from "./components/LoginKompassi";
 import { LoginLocal } from "./components/LoginLocal";
 import { SignupLottery } from "./components/SignupLottery";
 
-<Solmukohta not>
 <Fi>
 ## Mistä saan apua Konstin käyttöön?
 </Fi>
@@ -16,7 +15,6 @@ import { SignupLottery } from "./components/SignupLottery";
 <En>
 ## I need help with the Konsti app, who can I ask?
 </En>
-</Solmukohta>
 
 <Fi>
 <Ropecon>
@@ -28,19 +26,27 @@ Jos sinulla on siis kysyttävää Konstin käytöstä, älä epäröi nykäistä
 Vapaaehtoisemme roolipelitiskillä auttavat mielellään Konstin käytössä ja peleihin ilmoittautumisessa.
 Jos sinulla on siis kysyttävää Konstin käytöstä, älä epäröi nykäistä heitä hihasta!
 </Hitpoint>
+
+<Solmukohta>
+Vapaaehtoisemme ohjelmatiskillä auttavat mielellään Konstin käytössä ja peleihin ilmoittautumisessa.
+Jos sinulla on siis kysyttävää Konstin käytöstä, älä epäröi nykäistä heitä hihasta!
+</Solmukohta>
 </Fi>
 
 <En>
 <Ropecon>
-Our volunteers at both the Gaming Desk as well as the Larp & RPG Desk will gladly assist you and help you sign up for games using the Konsti app. If you have any questions about the Konsti app or how to use it, do not hesitate to ask them for help!
+Our volunteers at both the Gaming Desk as well as the Larp & RPG Desk will gladly assist you and help you sign up for program items using the Konsti app.
+If you have any questions about the Konsti app or how to use it, do not hesitate to ask them for help!
 </Ropecon>
 
 <Hitpoint>
-Our volunteers at the RPG Desk will gladly assist you and help you sign up for games using the Konsti app. If you have any questions about the Konsti app or how to use it, do not hesitate to ask them for help!
+Our volunteers at the RPG Desk will gladly assist you and help you sign up for program items using the Konsti app.
+If you have any questions about the Konsti app or how to use it, do not hesitate to ask them for help!
 </Hitpoint>
 
 <Solmukohta>
-TODO
+Our volunteers at the programme desk will gladly assist you and help you sign up for program items using the Konsti app.
+If you have any questions about the Konsti app or how to use it, do not hesitate to ask them for help!
 </Solmukohta>
 </En>
 
@@ -55,8 +61,10 @@ TODO
 <Fi>
 <LoginLocal>
 Konstin käyttö kannattaa aloittaa rekisteröimällä itsellesi käyttäjätunnus. Voit tehdä tämän <Link to={'/registration'}>Luo käyttäjätili -näkymässä</Link>.
+
 Rekisteröitymiseen tarvitset rekisteröintikoodin sekä joudut keksimään itsellesi käyttäjätunnuksen ja salasanan.
 Tunnuksen luomisen jälkeen voit kirjautua sisään ja ilmoittautua ohjelmanumeroihin. Voit käyttää Konstia millä vain haluamallasi laitteella kirjautumalla sisään.
+
 </LoginLocal>
 
 <LoginKompassi>
@@ -68,19 +76,19 @@ Kompassi-kirjautumisen jälkeen voit valita itsellesi Konsti-käyttäjätunnukse
 </Fi>
 
 <En>
-<Ropecon>
+<LoginLocal>
 To begin using the Konsti app, you need to first register an account, which you can do on the <Link to={'/registration'}>registration page</Link>.
 
 To register an account you need a registration code and you will also have come up with a username and password. After registering an account and logging in you can sign up to program. You can use your Konsti account on any device by logging in.
 
-</Ropecon>
+</LoginLocal>
 
-<Hitpoint>
+<LoginKompassi>
 You can log in to Konsti using Kompassi account. You can register Kompassi account while logging in to Konsti via <Link to={'/registration'}>registration page</Link> or before the convention from <Link to={'https://kompassi.eu/register'}>Kompassi registration page</Link>.
 
 After Kompassi login, you can choose a Konsti username. After this, you can log in and sign up to program items. You can use your Konsti account on any device by logging in.
 
-</Hitpoint>
+</LoginKompassi>
 </En>
 
 <Fi>
@@ -129,13 +137,13 @@ Konstiin kirjaudutaan Kompassi-tunnuksella eli salasana vaihdetaan Kompassin <Li
 </Fi>
 
 <En>
-<Ropecon>
+<LoginLocal>
 If you are logged in to Konsti, you can change your password in the <Link to={'/profile/profile'}>Profile view</Link>.
-</Ropecon>
+</LoginLocal>
 
-<Hitpoint>
+<LoginKompassi>
 You log into Konsti with Kompassi account so password is changed from Kompassi <Link to={'https://kompassi.eu/profile/password/reset'}>Password reset page</Link>.
-</Hitpoint>
+</LoginKompassi>
 </En>
 
 <Ropecon>
@@ -156,7 +164,6 @@ If you lost your password before signing up for any program, you can just pick u
 </En>
 </Ropecon>
 
-<Solmukohta not>
 <Fi>
 ## Minulla ei ole mobiililaitetta, kuinka ilmoittaudun?
 </Fi>
@@ -164,35 +171,34 @@ If you lost your password before signing up for any program, you can just pick u
 <En>
 ## I do not have a mobile device, how do I sign up?
 </En>
-</Solmukohta>
 
 <Fi>
 <Ropecon>
-Pelitiskillä ja Larp- ja Roolipelitiskillä on tietokoneita, joilla Konstia voi käyttää.
+Pelitiskillä ja Larp- ja Roolipelitiskillä on tietokoneita, joilla Konstia voi käyttää. Muistathan kirjautua ulos Konstista kun lopetat käytön!
 </Ropecon>
+
 <Hitpoint>
-Roolipelitiskillä on tietokoneita, joilla Konstia voi käyttää.
+Roolipelitiskillä on tietokoneita, joilla Konstia voi käyttää. Muistathan kirjautua ulos Konstista kun lopetat käytön!
 </Hitpoint>
+
+<Solmukohta>
+Ohjelmatiskillä on tietokoneita, joilla Konstia voi käyttää. Muistathan kirjautua ulos Konstista kun lopetat käytön!
+</Solmukohta>
 </Fi>
 
 <En>
 <Ropecon>
-There are shared computers on both the Gaming Desk and the Larp & RPG Desk that you can use Konsti with.
+There are shared computers on both the Gaming Desk and the Larp & RPG Desk that you can use Konsti with. Just remember to log out when you are done!
 </Ropecon>
+
 <Hitpoint>
-There are shared computers on the RPG Desk that you can use Konsti with.
+There are shared computers on the RPG Desk that you can use Konsti with. Just remember to log out when you are done!
 </Hitpoint>
-</En>
 
-<Solmukohta not>
-<Fi>
-Voit kirjautua sisään Konstiin näillä laitteilla käyttäen omaa käyttäjätunnustasi ja salasanaasi – muistathan kirjautua ulos Konstista kun lopetat käytön!
-</Fi>
-
-<En>
-Just remember to log out when you are done!
-</En>
+<Solmukohta>
+There are shared computers on the Programme Desk that you can use Konsti with. Just remember to log out when you are done!
 </Solmukohta>
+</En>
 
 <Fi>
 ## En löydä etsimääni ohjelmanumeroa Konstista?
@@ -221,6 +227,9 @@ Have you checked that you have selected the correct programme type in the select
 <Hitpoint>
 Have you checked which tag is selected, as they can filter the list of program items that are visible.
 </Hitpoint>
+<Solmukohta>
+Have you checked which tag is selected, as they can filter the list of program items that are visible.
+</Solmukohta>
 </En>
 
 <Fi>
