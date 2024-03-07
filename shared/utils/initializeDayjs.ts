@@ -17,7 +17,7 @@ export const initializeDayjs = (): void => {
   dayjs.extend(timezone);
 
   dayjs.tz.setDefault(TIMEZONE);
-
+  // dayjs.offsetName("short");
   dayjs.updateLocale("en", {
     relativeTime: {
       future: "in %s",
