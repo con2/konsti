@@ -4,5 +4,5 @@ import { getTimezone } from "client/utils/timeFormatter";
 
 // eslint-disable-next-line import/no-unused-modules
 export const FinnishTimezone = (): ReactElement => {
-  return <span>GMT {getTimezone(getTimeNow().toISOString())}</span>;
+  return <span>{getTimezone(getTimeNow().toISOString())}</span>;
 };

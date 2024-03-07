@@ -27,7 +27,7 @@ export const getShortWeekdayAndTime = (time: string): string => {
   return dayjs(time).tz(TIMEZONE).format(timeFormat);
 };
 
-export const timezoneFormat = "Z";
+export const timezoneFormat = "z";
 
 export const getTimezone = (time: string): string => {
   const timeFormat = timezoneFormat;

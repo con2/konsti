@@ -5,6 +5,7 @@ import relativeTime from "dayjs/plugin/relativeTime";
 import updateLocale from "dayjs/plugin/updateLocale";
 import utc from "dayjs/plugin/utc";
 import timezone from "dayjs/plugin/timezone";
+import advancedFormat from "dayjs/plugin/advancedFormat";
 
 export const TIMEZONE = "Europe/Helsinki";
 
@@ -15,6 +16,7 @@ export const initializeDayjs = (): void => {
   dayjs.extend(updateLocale);
   dayjs.extend(utc); // Required by timezone
   dayjs.extend(timezone);
+  dayjs.extend(advancedFormat);
 
   dayjs.tz.setDefault(TIMEZONE);
 
