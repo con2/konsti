@@ -1,5 +1,5 @@
 import { ActiveProgramType } from "shared/config/clientConfigTypes";
-import { ProgramType } from "shared/types/models/game";
+import { Language, ProgramType } from "shared/types/models/game";
 
 export interface ClientConfig {
   apiServerUrl: string;
@@ -14,15 +14,22 @@ export interface ClientConfig {
   enableTagDropdown: boolean;
   showAnnouncement: boolean;
   activeProgramTypes: ActiveProgramType[];
+  activeLanguages: Language[];
 }
 
 export const clientConfig: ClientConfig = {
   // Convention settings
   enableRevolvingDoor: false,
   enableOrganizerFeedback: true,
-  enableTagDropdown: true,
+  enableTagDropdown: false,
   showAnnouncement: false,
-  activeProgramTypes: ["all", ProgramType.TABLETOP_RPG, ProgramType.LARP],
+  activeProgramTypes: [
+    "all",
+    ProgramType.LARP,
+    ProgramType.WORKSHOP,
+    ProgramType.ROUNDTABLE_DISCUSSION,
+  ],
+  activeLanguages: [Language.ENGLISH],
 
   // Dev
   enableReduxTrace: false,

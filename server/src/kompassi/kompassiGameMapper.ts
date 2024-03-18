@@ -1,10 +1,12 @@
 import { kompassiGameMapperHitpoint } from "server/kompassi/hitpoint/kompassiGameMapperHitpoint";
 import { kompassiGameMapperRopecon } from "server/kompassi/ropecon/kompassiGameMapperRopecon";
+import { kompassiGameMapperSolmukohta } from "server/kompassi/solmukohta/kompassiGameMapperSolmukohta";
 import { ConventionName } from "shared/config/sharedConfigTypes";
 import { Game } from "shared/types/models/game";
 import { KompassiGame } from "server/kompassi/kompassiGame";
 import { KompassiGameHitpoint } from "server/kompassi/hitpoint/kompassiGameHitpoint";
 import { KompassiGameRopecon } from "server/kompassi/ropecon/kompassiGameRopecon";
+import { KompassiGameSolmukohta } from "server/kompassi/solmukohta/kompassiGameSolmukohta";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 
 export const kompassiGameMapper = (
@@ -21,8 +23,8 @@ export const kompassiGameMapper = (
         eventProgramItems as KompassiGameHitpoint[],
       );
     case ConventionName.SOLMUKOHTA:
-      return kompassiGameMapperHitpoint(
-        eventProgramItems as KompassiGameHitpoint[],
+      return kompassiGameMapperSolmukohta(
+        eventProgramItems as KompassiGameSolmukohta[],
       );
     default:
       return exhaustiveSwitchGuard(conventionName);

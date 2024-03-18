@@ -6,9 +6,17 @@ import {
   KompassiGameRopecon,
   KompassiGameSchemaRopecon,
 } from "server/kompassi/ropecon/kompassiGameRopecon";
+import {
+  KompassiGameSchemaSolmukohta,
+  KompassiGameSolmukohta,
+} from "server/kompassi/solmukohta/kompassiGameSolmukohta";
 
-export type KompassiGame = KompassiGameRopecon | KompassiGameHitpoint;
+export type KompassiGame =
+  | KompassiGameRopecon
+  | KompassiGameHitpoint
+  | KompassiGameSolmukohta;
 
 export type KompassiGameSchema =
   | typeof KompassiGameSchemaRopecon
-  | typeof KompassiGameSchemaHitpoint;
+  | typeof KompassiGameSchemaHitpoint
+  | typeof KompassiGameSchemaSolmukohta;

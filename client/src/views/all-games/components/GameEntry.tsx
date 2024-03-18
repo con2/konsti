@@ -101,8 +101,9 @@ export const GameEntry = ({
   if (game.gameSystem) {
     tags.push(game.gameSystem);
   }
-  tags.push(t(`programItemLanguage.${game.language}`));
-
+  if (config.client().activeLanguages.length > 1) {
+    tags.push(t(`programItemLanguage.${game.language}`));
+  }
   const requiresSignup = !isRevolvingDoorWorkshop(game);
   const konstiSignup = !config.shared().noKonstiSignupIds.includes(game.gameId);
   const normalSignup = requiresSignup && konstiSignup;

@@ -46,13 +46,21 @@ export const LoggedInUserNavigation = (props: {
       </RouterLink>
 
       {isUser(userGroup) && config.shared().enableGroups && (
-        <RouterLink onClick={props.onSelect} to="/profile">
+        <RouterLink
+          onClick={props.onSelect}
+          to="/profile"
+          data-testid={"link-profile"}
+        >
           {t("pages.profileAndGroup")}
         </RouterLink>
       )}
 
       {isUser(userGroup) && !config.shared().enableGroups && (
-        <RouterLink onClick={props.onSelect} to="/profile">
+        <RouterLink
+          onClick={props.onSelect}
+          to="/profile"
+          data-testid={"link-profile"}
+        >
           {t("pages.profile")}
         </RouterLink>
       )}

@@ -40,15 +40,15 @@ export const sharedConfig: SharedConfig = {
   // Convention settings
   requireRegistrationCode: true,
   assignmentStrategy: AssignmentStrategy.RANDOM_PADG,
-  enableGroups: true,
+  enableGroups: false,
   manualSignupMode: "none",
   signupOpen: true,
   resultsVisible: true,
 
   twoPhaseSignupProgramTypes: [],
 
-  conventionStartTime: `2024-08-04T08:00:00Z`, // Mon 10:00 GMT+2
-  conventionEndTime: `2023-14-04T22:00:00Z`, // Sun 24:00 GMT+2
+  conventionStartTime: `2024-04-08T08:00:00Z`, // Mon 10:00 GMT+2
+  conventionEndTime: `2023-04-14T22:00:00Z`, // Sun 24:00 GMT+2
 
   directSignupWindows: null,
 

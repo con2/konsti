@@ -25,7 +25,7 @@ test("Kompassi login", async ({ page, request }) => {
   // Check if login was completed
   await page.click("data-testid=navigation-icon");
 
-  const profileLink = page.getByRole("link", { name: /profile & group/i });
+  const profileLink = page.locator("data-testid=link-profile");
   await expect(profileLink).toBeVisible();
 
   // Logout

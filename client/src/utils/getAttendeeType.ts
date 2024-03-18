@@ -10,6 +10,7 @@ const attendeeTypeParticipant = [
   ProgramType.TOURNAMENT,
   ProgramType.WORKSHOP,
   ProgramType.OTHER,
+  ProgramType.ROUNDTABLE_DISCUSSION,
 ];
 
 export const getAttendeeType = (

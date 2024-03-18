@@ -8,6 +8,7 @@ export enum ProgramType {
   WORKSHOP = "workshop",
   EXPERIENCE_POINT = "experiencePoint",
   OTHER = "other",
+  ROUNDTABLE_DISCUSSION = "roundtableDiscussion",
 }
 
 export enum Genre {
