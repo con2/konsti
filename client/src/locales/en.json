@@ -315,13 +315,14 @@
     "participant": "participants"
   },
   "programType": {
-    "all": "All program ",
+    "all": "All program",
     "tabletopRPG": "Tabletop RPG",
     "larp": "LARP",
     "tournament": "Tournament",
     "workshop": "Workshop",
     "experiencePoint": "Experience Point",
-    "other": "Other program"
+    "other": "Other program",
+    "roundtableDiscussion": "Roundtable discussion"
   },
   "programTypeSelection": {
     "all": "All program types",
@@ -330,7 +331,8 @@
     "tournament": "Tournaments",
     "workshop": "Workshops",
     "experiencePoint": "Experience Point",
-    "other": "Other program"
+    "other": "Other program",
+    "roundtableDiscussion": "Roundtable discussion"
   },
   "programTypeSingular": {
     "all": "program item",
@@ -339,7 +341,8 @@
     "tournament": "tournament",
     "workshop": "workshop",
     "experiencePoint": "game",
-    "other": "program item"
+    "other": "program item",
+    "roundtableDiscussion": "roundtable discussion"
   },
   "programTypePlural": {
     "all": "program items",
@@ -348,7 +351,8 @@
     "tournament": "tournaments",
     "workshop": "workshops",
     "experiencePoint": "programs",
-    "other": "program items"
+    "other": "program items",
+    "roundtableDiscussion": "roundtable discussions"
   },
   "programTypeGenetive": {
     "all": "Program item",
@@ -357,7 +361,8 @@
     "tournament": "Tournament",
     "workshop": "Workshop",
     "experiencePoint": "Program",
-    "other": "Program item"
+    "other": "Program item",
+    "roundtableDiscussion": "Roundtable discussion"
   },
   "programTypeElative": {
     "all": "program item",
@@ -366,7 +371,8 @@
     "tournament": "tournament",
     "workshop": "workshops",
     "experiencePoint": "program",
-    "other": "program item"
+    "other": "program item",
+    "roundtableDiscussion": "roundtable discussion"
   },
   "programTypePartitivePlural": {
     "all": "program items",
@@ -375,7 +381,8 @@
     "tournament": "tournaments",
     "workshop": "workshops",
     "experiencePoint": "games",
-    "other": "program items"
+    "other": "program items",
+    "roundtableDiscussion": "roundtable discussions"
   },
   "programTypeInessive": {
     "all": "program item",
@@ -384,7 +391,8 @@
     "tournament": "tournament",
     "workshop": "workshop",
     "experiencePoint": "game",
-    "other": "program item"
+    "other": "program item",
+    "roundtableDiscussion": "roundtable discussion"
   },
   "programTypeIllative": {
     "all": "program item",
@@ -393,7 +401,8 @@
     "tournament": "tournament",
     "workshop": "workshop",
     "experiencePoint": "program",
-    "other": "program item"
+    "other": "program item",
+    "roundtableDiscussion": "roundtable discussion"
   },
   "resultsView": {
     "allSignupResults": "Sign-up Results",

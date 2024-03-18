@@ -13,6 +13,10 @@ import {
   mockKompassiGameHitpoint,
   mockKompassiGameHitpoint2,
 } from "server/kompassi/test/mockKompassiGameHitpoint";
+import {
+  mockKompassiGameSolmukohta,
+  mockKompassiGameSolmukohta2,
+} from "server/kompassi/test/mockKompassiGameSolmukohta";
 import { KompassiGame } from "server/kompassi/kompassiGame";
 
 const getMockKompassiGames = (
@@ -24,7 +28,7 @@ const getMockKompassiGames = (
     case ConventionName.HITPOINT:
       return [mockKompassiGameHitpoint, mockKompassiGameHitpoint2];
     case ConventionName.SOLMUKOHTA:
-      return [mockKompassiGameHitpoint, mockKompassiGameHitpoint2];
+      return [mockKompassiGameSolmukohta, mockKompassiGameSolmukohta2];
     default:
       return exhaustiveSwitchGuard(conventionName);
   }

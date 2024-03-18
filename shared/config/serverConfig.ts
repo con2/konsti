@@ -3,6 +3,7 @@ import { LoginProvider, SignupStrategy } from "shared/config/sharedConfigTypes";
 enum DataUri {
   ROPECON = "https://kompassi.eu/api/v1/events/ropecon2023/programme/ropecon",
   HITPOINT = "https://kompassi.eu/api/v1/events/hitpoint2023/programme/hitpoint",
+  SOLMUKOHTA = "https://kompassi.eu/api/v1/events/solmukohta2024/programme/ropecon",
 }
 
 export interface ServerConfig {
@@ -68,7 +69,7 @@ const commonConfig = {
   defaultLoginProvider: LoginProvider.LOCAL,
 
   // Convention settings
-  dataUri: DataUri.HITPOINT,
+  dataUri: DataUri.SOLMUKOHTA,
   firtSignupBonus: 20,
   useLocalProgramFile: false,
   localKompassiFile: "program-hitpoint-2023.json",
@@ -101,10 +102,10 @@ const prodConfig = {
   gameUpdateInterval: `5,10,20,25,35,40,50,55 * * * *`,
 
   // Program update
-  updateGamePopularityEnabled: true,
+  updateGamePopularityEnabled: false,
 
   // Player assign cron
-  autoAssignPlayersEnabled: true,
+  autoAssignPlayersEnabled: false,
   autoAssignInterval: `0,15,30,45 * * * *`,
   autoAssignDelay: 1000 * 5,
 };

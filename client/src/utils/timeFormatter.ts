@@ -10,7 +10,7 @@ export const getWeekdayAndTime = (time: string): string => {
 };
 
 export const getDate = (time: string): string => {
-  const timeFormat = "DD.M.YYYY";
+  const timeFormat = "D.M.YYYY";
   // eslint-disable-next-line no-restricted-syntax -- We want to call format here
   return dayjs(time).tz(TIMEZONE).format(timeFormat);
 };

@@ -77,19 +77,21 @@ export const SearchAndFilterCard = ({
         <ProgramTypeSelection />
       </InputContainer>
 
-      <InputContainer>
-        <StyledLabel htmlFor="tagSelection">{t("chooseTag")}</StyledLabel>
-        <Dropdown
-          id="tagSelection"
-          onChange={(event: ChangeEvent<HTMLSelectElement>) => {
-            const tag = event.target.value as Tag | Language;
-            setSelectedTag(tag);
-            sessionStorage.setItem(SessionStorageValue.ALL_GAMES_TAG, tag);
-          }}
-          options={tagOptions}
-          selectedValue={selectedTag}
-        />
-      </InputContainer>
+      {config.client().enableTagDropdown && (
+        <InputContainer>
+          <StyledLabel htmlFor="tagSelection">{t("chooseTag")}</StyledLabel>
+          <Dropdown
+            id="tagSelection"
+            onChange={(event: ChangeEvent<HTMLSelectElement>) => {
+              const tag = event.target.value as Tag | Language;
+              setSelectedTag(tag);
+              sessionStorage.setItem(SessionStorageValue.ALL_GAMES_TAG, tag);
+            }}
+            options={tagOptions}
+            selectedValue={selectedTag}
+          />
+        </InputContainer>
+      )}
 
       <InputContainer>
         <StyledLabel htmlFor="startingTimeSelection">
