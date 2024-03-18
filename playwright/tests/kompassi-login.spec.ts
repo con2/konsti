@@ -1,7 +1,6 @@
 import { test, expect } from "@playwright/test";
 import { logTestStart, populateDb, postSettings } from "./utils";
 import { LoginProvider } from "shared/config/sharedConfigTypes";
-import { config } from "shared/config";
 
 test("Kompassi login", async ({ page, request }) => {
   logTestStart("Kompassi login");
@@ -26,10 +25,7 @@ test("Kompassi login", async ({ page, request }) => {
   // Check if login was completed
   await page.click("data-testid=navigation-icon");
 
-  const linkName = config.shared().enableGroups
-    ? /profile & group/i
-    : /profile/i;
-  const profileLink = page.getByRole("link", { name: linkName });
+  const profileLink = page.locator("data-testid=link-profile");
   await expect(profileLink).toBeVisible();
 
   // Logout
