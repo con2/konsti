@@ -92,7 +92,7 @@ export const getDirectSignupStartTime = (game: Game): Dayjs => {
   if (!directSignupStartTime) {
     // eslint-disable-next-line no-restricted-syntax -- Config error
     throw new Error(
-      `Invalid signup window for program type: ${game.programType}`,
+      `Invalid direct signup start time for program item ${game.gameId} (type: ${game.programType})`,
     );
   }
 
