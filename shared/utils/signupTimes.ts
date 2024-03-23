@@ -76,7 +76,7 @@ export const getDirectSignupStartTime = (game: Game): Dayjs => {
     return directSignupStartWithPhaseGap;
   }
 
-  // Other program types use signup windows for signup times
+  // Other program types use "directSignupStartTimes" config
   const programTypeDirectSignupStartTimes = directSignupStartTimes
     ? directSignupStartTimes[game.programType]
     : undefined;
