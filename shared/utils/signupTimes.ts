@@ -32,10 +32,9 @@ export const getAlgorithmSignupEndTime = (startTime: string): Dayjs => {
 export const getDirectSignupStartTime = (game: Game): Dayjs => {
   const {
     conventionStartTime,
-    conventionEndTime,
     DIRECT_SIGNUP_START,
     PHASE_GAP,
-    directSignupWindows,
+    directSignupStartTimes,
     directSignupAlwaysOpenIds,
     twoPhaseSignupProgramTypes,
   } = config.shared();
@@ -78,30 +77,24 @@ export const getDirectSignupStartTime = (game: Game): Dayjs => {
   }
 
   // Other program types use signup windows for signup times
-  const signupWindowsForProgramType = directSignupWindows
-    ? directSignupWindows[game.programType]
+  const programTypeDirectSignupStartTimes = directSignupStartTimes
+    ? directSignupStartTimes[game.programType]
     : undefined;
 
-  const matchingSignupWindow = signupWindowsForProgramType
-    ? signupWindowsForProgramType.find((signupWindow) =>
-        dayjs(game.startTime).isBetween(
-          signupWindow.signupWindowStart,
-          signupWindow.signupWindowClose,
-          "minutes",
-          "[]",
-        ),
-      )
-    : {
-        signupWindowStart: dayjs(conventionStartTime),
-        signupWindowClose: dayjs(conventionEndTime),
-      };
+  const directSignupStartTime = programTypeDirectSignupStartTimes
+    ? programTypeDirectSignupStartTimes
+        .toReversed()
+        .find((programTypeDirectSignupStartTime) =>
+          dayjs(game.startTime).isSameOrAfter(programTypeDirectSignupStartTime),
+        )
+    : dayjs(conventionStartTime);
 
-  if (!matchingSignupWindow) {
+  if (!directSignupStartTime) {
     // eslint-disable-next-line no-restricted-syntax -- Config error
     throw new Error(
       `Invalid signup window for program type: ${game.programType}`,
     );
   }
 
-  return dayjs(matchingSignupWindow.signupWindowStart);
+  return directSignupStartTime;
 };
