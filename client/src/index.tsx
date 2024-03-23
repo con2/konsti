@@ -59,7 +59,8 @@ const getDsn = (): string | undefined => {
 init({
   dsn: getDsn(),
   integrations: [
-    // TODO: Should we use reactRouterV6BrowserTracingIntegration: https://github.com/getsentry/sentry-javascript/blob/develop/MIGRATION.md#depreacted-browsertracing-integration
+    // Use reactRouterV6BrowserTracingIntegration to enable performance monitoring
+    // https://docs.sentry.io/platforms/javascript/guides/react/features/react-router/
     browserTracingIntegration({
       tracingOrigins: ["localhost", "dev.ropekonsti.fi", "ropekonsti.fi"],
     }),

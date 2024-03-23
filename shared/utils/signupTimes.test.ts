@@ -13,6 +13,13 @@ beforeEach(() => {
     ...config.shared(),
     conventionStartTime: "2023-07-28T12:00:00Z",
     twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG],
+    directSignupStartTimes: {
+      larp: [
+        dayjs(`2023-07-28T12:00:00Z`), // Fri 15:00 GMT+3
+        dayjs(`2023-07-28T15:00:00Z`), // Fri 18:00 GMT+3
+        dayjs(`2023-07-29T08:00:00Z`), // Sat 11:00 GMT+3
+      ],
+    },
   });
 });
 
@@ -86,7 +93,7 @@ describe(`Early algorithm signup`, () => {
   });
 });
 
-describe(`Direct signup`, () => {
+describe(`Two phase direct signup`, () => {
   test("RPG starting at 15:00 should have signup starting at 15:00", () => {
     const startTime = "2023-07-28T12:00:00.000Z";
     const signupStartTime = getDirectSignupStartTime({
@@ -150,6 +157,87 @@ describe(`Direct signup`, () => {
     });
     expect(dayjs(signupStartTime).toISOString()).toEqual(
       "2023-07-28T15:15:00.000Z",
+    );
+  });
+});
+
+describe(`Direct signup`, () => {
+  const testLarp = { ...testGame, programType: ProgramType.LARP };
+
+  test("Larp starting at Fri 15:00 should have signup starting at Fri 15:00", () => {
+    const startTime = "2023-07-28T12:00:00.000Z";
+    const signupStartTime = getDirectSignupStartTime({
+      ...testLarp,
+      startTime,
+    });
+    expect(dayjs(signupStartTime).toISOString()).toEqual(
+      "2023-07-28T12:00:00.000Z",
+    );
+  });
+
+  test("Larp starting at Fri 16:00 should have signup starting at Fri 15:00", () => {
+    const startTime = "2023-07-28T13:00:00.000Z";
+    const signupStartTime = getDirectSignupStartTime({
+      ...testLarp,
+      startTime,
+    });
+    expect(dayjs(signupStartTime).toISOString()).toEqual(
+      "2023-07-28T12:00:00.000Z",
+    );
+  });
+
+  test("Larp starting at Fri 17:00 should have signup starting at Fri 15:00", () => {
+    const startTime = "2023-07-28T14:00:00.000Z";
+    const signupStartTime = getDirectSignupStartTime({
+      ...testLarp,
+      startTime,
+    });
+    expect(dayjs(signupStartTime).toISOString()).toEqual(
+      "2023-07-28T12:00:00.000Z",
+    );
+  });
+
+  test("Larp starting at Fri 18:00 should have signup starting at Fri 18:00", () => {
+    const startTime = "2023-07-28T15:00:00.000Z";
+    const signupStartTime = getDirectSignupStartTime({
+      ...testLarp,
+      startTime,
+    });
+    expect(dayjs(signupStartTime).toISOString()).toEqual(
+      "2023-07-28T15:00:00.000Z",
+    );
+  });
+
+  test("Larp starting at Fri 19:00 should have signup starting at Fri 18:00", () => {
+    const startTime = "2023-07-28T16:00:00.000Z";
+    const signupStartTime = getDirectSignupStartTime({
+      ...testLarp,
+      startTime,
+    });
+    expect(dayjs(signupStartTime).toISOString()).toEqual(
+      "2023-07-28T15:00:00.000Z",
+    );
+  });
+
+  test("Larp starting at Fri 20:00 should have signup starting at Fri 18:00", () => {
+    const startTime = "2023-07-28T17:00:00.000Z";
+    const signupStartTime = getDirectSignupStartTime({
+      ...testLarp,
+      startTime,
+    });
+    expect(dayjs(signupStartTime).toISOString()).toEqual(
+      "2023-07-28T15:00:00.000Z",
+    );
+  });
+
+  test("Larp starting at Sat 20:00 should have signup starting at Sat 11:00", () => {
+    const startTime = "2023-07-29T17:00:00.000Z";
+    const signupStartTime = getDirectSignupStartTime({
+      ...testLarp,
+      startTime,
+    });
+    expect(dayjs(signupStartTime).toISOString()).toEqual(
+      "2023-07-29T08:00:00.000Z",
     );
   });
 });

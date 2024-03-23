@@ -57,5 +57,5 @@ const initializeDatabase = async (): Promise<void> => {
 };
 
 initializeDatabase().catch((error) => {
-  logger.error(error);
+  logger.error("Script initializeDatabase failed: %s", error);
 });

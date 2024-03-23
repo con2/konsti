@@ -1,10 +1,10 @@
+import { Dayjs } from "dayjs";
 import {
   ArrMin1,
   AssignmentStrategy,
   ConventionName,
   LoginProvider,
   SignupStrategy,
-  SignupWindow,
 } from "shared/config/sharedConfigTypes";
 import { ProgramType } from "shared/types/models/game";
 import { SignupQuestion } from "shared/types/models/settings";
@@ -21,7 +21,7 @@ interface SharedConfig {
   DIRECT_SIGNUP_START: number;
   PRE_SIGNUP_START: number;
   PHASE_GAP: number;
-  directSignupWindows: Record<ProgramType, ArrMin1<SignupWindow>> | null;
+  directSignupStartTimes: Partial<Record<ProgramType, ArrMin1<Dayjs>>> | null;
   directSignupAlwaysOpenIds: string[];
   tracesSampleRate: number;
   enableSentryInDev: boolean;
@@ -56,7 +56,7 @@ const sharedConfig: SharedConfig = {
   conventionStartTime: `2023-11-04T08:00:00Z`, // Sat 10:00 GMT+2
   conventionEndTime: `2023-11-05T22:00:00Z`, // Sun 24:00 GMT+2
 
-  directSignupWindows: null,
+  directSignupStartTimes: null,
 
   // These program items have their signup always open even if signup mode is set to algorithm
   directSignupAlwaysOpenIds: [],

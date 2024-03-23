@@ -1,5 +1,3 @@
-import { Dayjs } from "dayjs";
-
 export enum SignupStrategy {
   DIRECT = "direct",
   ALGORITHM = "algorithm",
@@ -24,8 +22,3 @@ export enum ConventionName {
 }
 
 export type ArrMin1<T> = [T, ...T[]];
-
-export interface SignupWindow {
-  signupWindowStart: Dayjs;
-  signupWindowClose: Dayjs;
-}
