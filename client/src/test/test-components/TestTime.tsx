@@ -8,7 +8,6 @@ import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { submitSetTestSettings } from "client/test/test-settings/testSettingsThunks";
 import { getDate, getShortWeekdayAndTime } from "client/utils/timeFormatter";
 import { Dropdown } from "client/components/Dropdown";
-import { loadData } from "client/utils/loadData";
 
 export const TestTime = (): ReactElement => {
   const { i18n } = useTranslation();
@@ -36,15 +35,6 @@ export const TestTime = (): ReactElement => {
     await dispatch(submitSetTestSettings({ testTime: time }));
     setLoading(false);
   };
-
-  useEffect(() => {
-    setLoading(true);
-    const fetchData = async (): Promise<void> => {
-      await loadData();
-      setLoading(false);
-    };
-    fetchData();
-  }, [testTime]);
 
   const dropdownItems = testTimes.map((time) => {
     const formattedDate =
