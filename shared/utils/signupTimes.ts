@@ -1,4 +1,5 @@
 import dayjs, { Dayjs } from "dayjs";
+import { reverse } from "lodash-es";
 import { config } from "shared/config";
 import { Game } from "shared/types/models/game";
 import { TIMEZONE } from "shared/utils/initializeDayjs";
@@ -82,11 +83,10 @@ export const getDirectSignupStartTime = (game: Game): Dayjs => {
     : undefined;
 
   const directSignupStartTime = programTypeDirectSignupStartTimes
-    ? programTypeDirectSignupStartTimes
-        .toReversed()
-        .find((programTypeDirectSignupStartTime) =>
+    ? reverse(programTypeDirectSignupStartTimes).find(
+        (programTypeDirectSignupStartTime) =>
           dayjs(game.startTime).isSameOrAfter(programTypeDirectSignupStartTime),
-        )
+      )
     : dayjs(conventionStartTime);
 
   if (!directSignupStartTime) {
