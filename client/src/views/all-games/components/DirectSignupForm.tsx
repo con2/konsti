@@ -5,10 +5,9 @@ import { Link } from "react-router-dom";
 import { Game } from "shared/types/models/game";
 import { EnterGameForm } from "./EnterGameForm";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
-import { isAlreadyEntered } from "./allGamesUtils";
+import { getSignupOpensDate, isAlreadyEntered } from "./allGamesUtils";
 import { Button, ButtonStyle } from "client/components/Button";
 import { CancelSignupForm } from "./CancelSignupForm";
-import { getWeekdayAndTime } from "client/utils/timeFormatter";
 import {
   DeleteEnteredGameErrorMessage,
   submitDeleteEnteredGame,
@@ -87,7 +86,7 @@ export const DirectSignupForm = ({
             <>
               <span>{t("signup.signupOpens")}</span>{" "}
               <BoldText>
-                {getWeekdayAndTime(directSignupStartTime.toISOString())}
+                {getSignupOpensDate(directSignupStartTime, timeNow)}
               </BoldText>
             </>
           )}
@@ -134,7 +133,7 @@ export const DirectSignupForm = ({
                 <p>
                   {t("signup.signupOpens")}{" "}
                   <BoldText>
-                    {getWeekdayAndTime(directSignupStartTime.toISOString())}
+                    {getSignupOpensDate(directSignupStartTime, timeNow)}
                   </BoldText>
                 </p>
               )}
