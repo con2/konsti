@@ -50,13 +50,13 @@ export const sharedConfig: SharedConfig = {
 
   directSignupStartTimes: {
     larp: [
-      dayjs(`2024-04-04T10:00:00Z`), // One week before, Thu 13:00 GMT+3
+      dayjs(`2024-04-04T17:00:00Z`), // One week before, Thu 20:00 GMT+3
     ],
-    tournament: [
-      dayjs(`2024-04-04T10:00:00Z`), // One week before, Thu 13:00 GMT+3
+    workshop: [
+      dayjs(`2024-04-04T17:00:00Z`), // One week before, Thu 20:00 GMT+3
     ],
     roundtableDiscussion: [
-      dayjs(`2024-04-04T10:00:00Z`), // One week before, Thu 13:00 GMT+3
+      dayjs(`2024-04-04T17:00:00Z`), // One week before, Thu 20:00 GMT+3
     ],
   },
 

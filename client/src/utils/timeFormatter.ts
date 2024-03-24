@@ -22,7 +22,7 @@ export const getTime = (time: string): string => {
 };
 
 export const getShortWeekdayAndTime = (time: string): string => {
-  const timeFormat = "dd HH:mm";
+  const timeFormat = "ddd HH:mm";
   // eslint-disable-next-line no-restricted-syntax -- We want to call format here
   return dayjs(time).tz(TIMEZONE).format(timeFormat);
 };
@@ -35,7 +35,7 @@ export const getTimezone = (time: string): string => {
   return dayjs(time).tz(TIMEZONE).format(timeFormat);
 };
 
-export const dateAndTimeFormat = "dd D.M.YYYY HH:mm";
+export const dateAndTimeFormat = "ddd D.M.YYYY HH:mm";
 
 export const getDateAndTime = (time: string): string => {
   const timeFormat = dateAndTimeFormat;
