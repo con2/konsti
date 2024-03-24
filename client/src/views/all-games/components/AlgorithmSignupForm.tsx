@@ -10,11 +10,10 @@ import {
 } from "client/views/my-games/myGamesThunks";
 import { SelectedGame } from "shared/types/models/user";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
-import { isAlreadySigned } from "./allGamesUtils";
+import { getSignupOpensDate, isAlreadySigned } from "./allGamesUtils";
 import { Button, ButtonStyle } from "client/components/Button";
 import { ErrorMessage } from "client/components/ErrorMessage";
 import { CancelSignupForm } from "client/views/all-games/components/CancelSignupForm";
-import { getWeekdayAndTime } from "client/utils/timeFormatter";
 import { getTimeNow } from "client/utils/getTimeNow";
 import { config } from "shared/config";
 import { SignupStrategy } from "shared/config/sharedConfigTypes";
@@ -100,7 +99,7 @@ export const AlgorithmSignupForm = ({
             <>
               <span>{t("signup.lotterySignupOpens")}</span>{" "}
               <BoldText>
-                {getWeekdayAndTime(algorithmSignupStartTime.toISOString())}
+                {getSignupOpensDate(algorithmSignupStartTime, timeNow)}
               </BoldText>
             </>
           )}
@@ -127,7 +126,7 @@ export const AlgorithmSignupForm = ({
               <p>
                 {t("signup.lotterySignupOpens")}{" "}
                 <BoldText>
-                  {getWeekdayAndTime(algorithmSignupStartTime.toISOString())}
+                  {getSignupOpensDate(algorithmSignupStartTime, timeNow)}
                 </BoldText>
               </p>
             )}
