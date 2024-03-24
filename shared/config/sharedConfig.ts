@@ -1,4 +1,4 @@
-import { Dayjs } from "dayjs";
+import dayjs, { Dayjs } from "dayjs";
 import {
   ArrMin1,
   AssignmentStrategy,
@@ -46,9 +46,19 @@ export const sharedConfig: SharedConfig = {
 
   twoPhaseSignupProgramTypes: [],
 
-  conventionStartTime: `2024-04-04T10:00:00Z`, // Thu 13:00 GMT+3
+  conventionStartTime: `2024-04-11T07:00:00Z`, // Thu 10:00 GMT+3
 
-  directSignupStartTimes: null,
+  directSignupStartTimes: {
+    larp: [
+      dayjs(`2024-04-04T10:00:00Z`), // One week before, Thu 13:00 GMT+3
+    ],
+    tournament: [
+      dayjs(`2024-04-04T10:00:00Z`), // One week before, Thu 13:00 GMT+3
+    ],
+    roundtableDiscussion: [
+      dayjs(`2024-04-04T10:00:00Z`), // One week before, Thu 13:00 GMT+3
+    ],
+  },
 
   // These program items have their signup always open even if signup mode is set to algorithm
   directSignupAlwaysOpenIds: [],
