@@ -20,14 +20,15 @@ export const loadData = async (): Promise<void> => {
     await loadTestSettings();
   }
 
-  // Get games data
-  await loadGames();
-
   // Check if existing user session
   await recoverSession();
 
   // Get user data
   await loadUser();
+
+  // Get games data
+  // Must be loaded after user to be able to access state.login
+  await loadGames();
 
   // Get group members
   await loadGroupMembers();
