@@ -21,6 +21,10 @@ import { RaisedCard } from "client/components/RaisedCard";
 import { isRevolvingDoorWorkshop } from "client/utils/isRevolvingDoorWorkshop";
 import { selectFavoritedGames } from "client/views/my-games/myGamesSlice";
 
+const ErrorText = styled.span`
+  color: ${(props) => props.theme.textError};
+`;
+
 interface Props {
   game: Game;
   startTime: string;
@@ -105,6 +109,8 @@ export const GameEntry = ({
     tags.push(t(`programItemLanguage.${game.language}`));
   }
   const requiresSignup = !isRevolvingDoorWorkshop(game);
+  const validMaxAttendanceValue = requiresSignup && game.maxAttendance > 0;
+
   const konstiSignup = !config.shared().noKonstiSignupIds.includes(game.gameId);
   const normalSignup = requiresSignup && konstiSignup;
 
@@ -164,7 +170,7 @@ export const GameEntry = ({
             </RowItem>
           </p>
 
-          {isEnterGameMode && normalSignup && (
+          {isEnterGameMode && normalSignup && validMaxAttendanceValue && (
             <>
               <PlayerCount>
                 {t("signup.signupCount", {
@@ -186,6 +192,16 @@ export const GameEntry = ({
                 })}
               </PlayersNeeded>
             </>
+          )}
+
+          {!validMaxAttendanceValue && (
+            <ErrorText>
+              {t("signup.maxAttendanceMissing", {
+                ATTENDEE_TYPE: t(
+                  `attendeeTypePlural.${getAttendeeType(game.programType)}`,
+                ),
+              })}
+            </ErrorText>
           )}
 
           {!isEnterGameMode && normalSignup && (
@@ -217,22 +233,26 @@ export const GameEntry = ({
 
       <GameDetailsView game={game} isAlwaysExpanded={isAlwaysExpanded} />
 
-      {!isEnterGameMode && normalSignup && (
-        <AlgorithmSignupForm
-          game={game}
-          startTime={startTime}
-          signedGames={signedGames}
-        />
-      )}
+      {validMaxAttendanceValue && (
+        <>
+          {!isEnterGameMode && normalSignup && (
+            <AlgorithmSignupForm
+              game={game}
+              startTime={startTime}
+              signedGames={signedGames}
+            />
+          )}
 
-      {isEnterGameMode && normalSignup && (
-        <DirectSignupForm
-          game={game}
-          gameIsFull={gameIsFull}
-          startTime={startTime}
-          loading={loading}
-          setLoading={setLoading}
-        />
+          {isEnterGameMode && normalSignup && (
+            <DirectSignupForm
+              game={game}
+              gameIsFull={gameIsFull}
+              startTime={startTime}
+              loading={loading}
+              setLoading={setLoading}
+            />
+          )}
+        </>
       )}
 
       {!requiresSignup && (

@@ -300,7 +300,8 @@
     "entryFee": "Materiaalimaksu {{ENTRY_FEE}}",
     "entryFeeInfo": "Ymmärrän, että työpajaan kuuluu materiaalimaksu {{ENTRY_FEE}}.",
     "doesNotRequireSignup": "Tähän {{PROGRAM_TYPE}} ei tarvitse ilmoittautua",
-    "noKonstiSignup": "Tähän {{PROGRAM_TYPE}} ei ilmoittauduta Konstissa. Katso ilmoittautumisohjeet ohjelman lisätiedoista."
+    "noKonstiSignup": "Tähän {{PROGRAM_TYPE}} ei ilmoittauduta Konstissa. Katso ilmoittautumisohjeet ohjelman lisätiedoista.",
+    "maxAttendanceMissing": "Maksimimäärä {{ATTENDEE_TYPE}} puuttuu"
   },
   "attendeeType": {
     "player": "pelaaja",
