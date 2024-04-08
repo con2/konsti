@@ -69,6 +69,11 @@ init({
   normalizeDepth: 10,
   environment: process.env.SETTINGS,
   tunnel: ApiEndpoint.SENTRY_TUNNEL,
+  ignoreErrors: [
+    // Error when Outlook scans a link
+    // https://github.com/getsentry/sentry-javascript/issues/3440
+    "Non-Error promise rejection captured with value: Object Not Found Matching Id:",
+  ],
 });
 
 // Suspend fallback element
