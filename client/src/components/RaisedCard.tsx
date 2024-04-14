@@ -36,7 +36,7 @@ const Card = styled.div<{
   $highlightStyle?: HighlightStyle;
 }>`
   margin: 20px 0 20px 0;
-  padding: 16px 8px 16px 8px;
+  padding: 12px 8px 12px 8px;
   border: 1px solid #ddd;
   border-radius: 4px;
   background: #fafafa;

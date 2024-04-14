@@ -82,7 +82,7 @@
     "genres": "Genres",
     "organiser": "Organiser",
     "shortDescription": "Short description",
-    "revolvingDoor": "This is a revolving door {{PROGRAM_TYPE}}",
+    "revolvingDoor": "This is a revolving door {{PROGRAM_TYPE}}. You can join it at any time if there is free space.",
     "programType": "Program type",
     "showMore": "Show more",
     "showMoreAriaLabel": "Show more of the program item",

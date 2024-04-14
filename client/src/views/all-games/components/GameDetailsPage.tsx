@@ -13,7 +13,7 @@ import { getSignedGames } from "client/utils/getUpcomingGames";
 import { BackButton } from "client/components/BackButton";
 import { getIsInGroup } from "client/views/group/groupUtils";
 
-export const GameDetails = (): ReactElement => {
+export const GameDetailsPage = (): ReactElement => {
   const { t } = useTranslation();
 
   const { gameId } = useParams();

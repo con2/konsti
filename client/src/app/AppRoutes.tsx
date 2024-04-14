@@ -3,7 +3,7 @@ import { Route, Routes, Navigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { IconName } from "@fortawesome/free-solid-svg-icons";
 import { AllGamesView } from "client/views/all-games/AllGamesView";
-import { GameDetails } from "client/views/all-games/components/GameDetails";
+import { GameDetailsPage } from "client/views/all-games/components/GameDetailsPage";
 import { LoginView } from "client/views/login/LoginView";
 import { MyGamesView } from "client/views/my-games/MyGamesView";
 import { RegistrationView } from "client/views/registration/RegistrationView";
@@ -99,7 +99,7 @@ export const AppRoutes = (): ReactElement => {
         {isAdminOrHelp(userGroup) && (
           <>
             <Route path="/help" element={<HelperView />} />
-            <Route path="/games/:gameId" element={<GameDetails />} />
+            <Route path="/games/:gameId" element={<GameDetailsPage />} />
             <Route
               path="/program"
               element={<Navigate replace to="/program/list" />}
@@ -131,7 +131,7 @@ export const AppRoutes = (): ReactElement => {
 
     return (
       <Routes>
-        <Route path="/games/:gameId" element={<GameDetails />} />
+        <Route path="/games/:gameId" element={<GameDetailsPage />} />
         {isAdminOrHelp(userGroup) ? (
           <Route path="/program/list" element={<AllGamesView />} />
         ) : (
@@ -183,7 +183,7 @@ export const AppRoutes = (): ReactElement => {
       {loginProvider === LoginProvider.LOCAL && (
         <Route path="/registration" element={<RegistrationView />} />
       )}
-      <Route path="/games/:gameId" element={<GameDetails />} />
+      <Route path="/games/:gameId" element={<GameDetailsPage />} />
       <Route
         path="/program"
         element={<Navigate replace to="/program/list" />}

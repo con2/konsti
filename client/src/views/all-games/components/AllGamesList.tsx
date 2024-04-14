@@ -15,7 +15,6 @@ import {
 } from "client/views/my-games/myGamesSlice";
 import { RaisedCard } from "client/components/RaisedCard";
 import { getIsInGroup } from "client/views/group/groupUtils";
-import { GameCard } from "client/views/all-games/components/GameCard";
 
 interface Props {
   games: readonly Game[];
@@ -78,34 +77,22 @@ export const AllGamesList = ({ games }: Props): ReactElement => {
             );
 
             return (
-              <div key={game.gameId}>
-                <GameEntry
-                  isAlwaysExpanded={false}
-                  game={game}
-                  players={gameSignups?.users.length ?? 0}
-                  startTime={startTime}
-                  signupStrategy={timeslotSignupStrategy}
-                  signedGames={ownOrGroupCreatorSignedGames}
-                  enteredGames={enteredGames}
-                  loading={loading}
-                  setLoading={setLoading}
-                />
-                <GameCard
-                  isAlwaysExpanded={false}
-                  game={game}
-                  startTime={startTime}
-                  players={gameSignups?.users.length ?? 0}
-                  signupStrategy={timeslotSignupStrategy}
-                  signedGames={ownOrGroupCreatorSignedGames}
-                  enteredGames={enteredGames}
-                  loading={loading}
-                  setLoading={setLoading}
-                  username={username}
-                  loggedIn={loggedIn}
-                  userGroup={userGroup}
-                  favoritedGames={favoritedGames}
-                />
-              </div>
+              <GameEntry
+                key={game.gameId}
+                isAlwaysExpanded={false}
+                game={game}
+                startTime={startTime}
+                players={gameSignups?.users.length ?? 0}
+                signupStrategy={timeslotSignupStrategy}
+                signedGames={ownOrGroupCreatorSignedGames}
+                enteredGames={enteredGames}
+                loading={loading}
+                setLoading={setLoading}
+                username={username}
+                loggedIn={loggedIn}
+                userGroup={userGroup}
+                favoritedGames={favoritedGames}
+              />
             );
           })}
         </div>
