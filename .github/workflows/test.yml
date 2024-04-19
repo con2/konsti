@@ -20,10 +20,10 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Use Node.js 20.10.0
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 20.10.0
           cache: "yarn"
@@ -53,7 +53,7 @@ jobs:
           yarn type-check
 
       - name: Cache MongoDB binary
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.cache/mongodb-binaries
           key: ${{ runner.os }}-mongodb
@@ -67,7 +67,7 @@ jobs:
           yarn docker-compose:test
 
       - name: Upload test results if Playwright tests failed
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: playwright-videos
