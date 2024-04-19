@@ -6,7 +6,7 @@ const { defineConfig } = require("@yarnpkg/types"); // eslint-disable-line @type
 // Enforce that the engines.node field is properly set in all workspaces
 const enforceConsistentEnginesNodeValue = ({ Yarn }) => {
   for (const workspace of Yarn.workspaces()) {
-    workspace.set("engines.node", ">=20.10.0");
+    workspace.set("engines.node", ">=20.12.2");
   }
 };
 
