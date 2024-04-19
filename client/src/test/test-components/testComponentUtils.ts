@@ -4,8 +4,6 @@ import { config } from "shared/config";
 const { conventionStartTime, PHASE_GAP } = config.shared();
 
 export const testTimes = [
-  // Time now
-  dayjs().toISOString(),
   // Before convention
   dayjs(conventionStartTime).subtract(3, "weeks").toISOString(),
   dayjs(conventionStartTime).subtract(2, "weeks").toISOString(),
@@ -50,4 +48,7 @@ export const testTimes = [
   dayjs(conventionStartTime).add(42, "hours").toISOString(),
   dayjs(conventionStartTime).add(46, "hours").toISOString(),
   dayjs(conventionStartTime).add(52, "hours").toISOString(),
+
+  // Time now
+  dayjs().toISOString(),
 ];
