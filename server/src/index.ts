@@ -32,12 +32,12 @@ const startApp = async (): Promise<void> => {
   }
 
   process.once("SIGINT", (signal: string) => {
-    closeServer(server, signal).catch((error) => {
+    closeServer(server, signal).catch((error: unknown) => {
       logger.error(error);
     });
   });
   process.once("SIGTERM", (signal: string) => {
-    closeServer(server, signal).catch((error) => {
+    closeServer(server, signal).catch((error: unknown) => {
       logger.error(error);
     });
   });
@@ -51,7 +51,7 @@ const init = (): void => {
     throw new Error(`Node environment NODE_ENV missing`);
   }
 
-  startApp().catch((error) => {
+  startApp().catch((error: unknown) => {
     logger.error(error);
   });
 };

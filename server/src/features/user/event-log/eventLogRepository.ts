@@ -43,7 +43,6 @@ export const addEventLogItems = async (
   const usernames = updates.map((update) => update.username);
 
   try {
-    // @ts-expect-error: Types don't work with $addToSet
     await UserModel.bulkWrite(bulkOps);
     logger.info(`MongoDB: Action log item added for users ${uniq(usernames)}`);
     return makeSuccessResult(undefined);

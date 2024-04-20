@@ -38,7 +38,7 @@ export const postAutoUpdateGames = (
     return res.sendStatus(401);
   }
 
-  autoUpdateGames().catch((error) => {
+  autoUpdateGames().catch((error: unknown) => {
     logger.error("autoUpdateGames failed: %s", error);
   });
 

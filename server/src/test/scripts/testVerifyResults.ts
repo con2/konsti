@@ -22,6 +22,6 @@ const testVerifyResults = async (): Promise<void> => {
   }
 };
 
-testVerifyResults().catch((error) => {
+testVerifyResults().catch((error: unknown) => {
   logger.error(error);
 });

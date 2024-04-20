@@ -27,6 +27,6 @@ const parseCliOptions = async (): Promise<void> => {
   await runGenerators(options, { closeDb: true });
 };
 
-parseCliOptions().catch((error) => {
+parseCliOptions().catch((error: unknown) => {
   logger.error(error);
 });
