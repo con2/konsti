@@ -269,7 +269,6 @@ export const saveSignups = async (
   );
 
   try {
-    // @ts-expect-error: Types don't work with $addToSet
     const response = await SignupModel.bulkWrite(bulkOps);
     logger.info(`Updated signups for ${response.modifiedCount} program items`);
     return makeSuccessResult({

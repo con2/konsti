@@ -104,8 +104,27 @@
     "n/no-missing-import": ["off"],
     "n/no-extraneous-import": ["off"],
     "@typescript-eslint/strict-boolean-expressions": ["off"],
-    "@typescript-eslint/restrict-template-expressions": ["off"],
-    "@typescript-eslint/restrict-plus-operands": ["off"],
+    "@typescript-eslint/restrict-template-expressions": [
+      "off",
+      {
+        "allowAny": false,
+        "allowBoolean": false,
+        "allowNullish": false,
+        "allowNumber": false,
+        "allowRegExp": false,
+        "allowNever": false
+      }
+    ],
+    "@typescript-eslint/restrict-plus-operands": [
+      "off",
+      {
+        "allowAny": false,
+        "allowBoolean": false,
+        "allowNullish": false,
+        "allowNumberAndString": false,
+        "allowRegExp": false
+      }
+    ],
     "n/no-deprecated-api": ["error"],
     "n/no-extraneous-require": ["error"],
     "n/no-exports-assign": ["error"],
@@ -116,7 +135,7 @@
     "n/no-unsupported-features/es-builtins": ["error"],
     "n/no-unsupported-features/node-builtins": ["error"],
     "n/process-exit-as-throw": ["error"],
-    "n/shebang": ["error"],
+    "n/hashbang": ["error"],
     "no-param-reassign": ["error"],
     "no-console": ["error"],
     "object-shorthand": ["error"],
@@ -332,8 +351,6 @@
     "@typescript-eslint/no-non-null-assertion": ["error"],
     "@typescript-eslint/no-redundant-type-constituents": ["error"],
     "@typescript-eslint/no-this-alias": ["error"],
-    "no-throw-literal": ["off"],
-    "@typescript-eslint/no-throw-literal": ["error"],
     "@typescript-eslint/no-unnecessary-boolean-literal-compare": ["error"],
     "@typescript-eslint/no-unnecessary-condition": ["error"],
     "@typescript-eslint/no-unnecessary-type-arguments": ["error"],
@@ -346,6 +363,8 @@
     "@typescript-eslint/no-useless-constructor": ["error"],
     "@typescript-eslint/no-useless-template-literals": ["error"],
     "@typescript-eslint/no-var-requires": ["error"],
+    "no-throw-literal": ["off"],
+    "@typescript-eslint/only-throw-error": ["error"],
     "@typescript-eslint/prefer-as-const": ["error"],
     "@typescript-eslint/prefer-includes": ["error"],
     "@typescript-eslint/prefer-literal-enum-member": ["error"],
@@ -358,6 +377,7 @@
     "@typescript-eslint/require-await": ["error"],
     "@typescript-eslint/triple-slash-reference": ["error"],
     "@typescript-eslint/unified-signatures": ["error"],
+    "@typescript-eslint/use-unknown-in-catch-callback-variable": ["error"],
     "import/named": ["off"],
     "import/default": [2],
     "import/export": [2],

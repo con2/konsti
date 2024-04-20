@@ -25,6 +25,6 @@ const testUpdateGamePopularity = async (): Promise<void> => {
   }
 };
 
-testUpdateGamePopularity().catch((error) => {
+testUpdateGamePopularity().catch((error: unknown) => {
   logger.error(error);
 });

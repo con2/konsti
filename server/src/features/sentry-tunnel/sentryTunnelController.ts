@@ -23,7 +23,7 @@ export const postSentryTunnel = (
     return res.sendStatus(422);
   }
 
-  resendSentryRequest(result.data).catch((error) => {
+  resendSentryRequest(result.data).catch((error: unknown) => {
     logger.error("resendSentryRequest failed: %s", error);
   });
 

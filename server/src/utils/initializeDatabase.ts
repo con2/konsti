@@ -56,6 +56,6 @@ const initializeDatabase = async (): Promise<void> => {
   await db.gracefulExit();
 };
 
-initializeDatabase().catch((error) => {
+initializeDatabase().catch((error: unknown) => {
   logger.error("Script initializeDatabase failed: %s", error);
 });

@@ -81,7 +81,7 @@ export const postAutoAssignment = (
     return res.sendStatus(401);
   }
 
-  autoAssignPlayers().catch((error) => {
+  autoAssignPlayers().catch((error: unknown) => {
     logger.error("autoAssignPlayers failed: %s", error);
   });
 
