@@ -31,6 +31,7 @@
     "Int16Array": false,
     "Int32Array": false,
     "Int8Array": false,
+    "Intl": false,
     "isFinite": false,
     "isNaN": false,
     "JSON": false,
