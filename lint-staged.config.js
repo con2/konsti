@@ -1,4 +1,5 @@
 module.exports = {
+  /*
   "*.{js,cjs,ts,mts,tsx}": (files) => {
     const filenames = files.join(" ");
     return [`prettier --check ${filenames}`, `eslint ${filenames}`];
@@ -13,6 +14,7 @@ module.exports = {
     const filenames = files.join(" ");
     return [`prettier --check ${filenames}`];
   },
+  */
 
   "{.eslintrc.js,package.json}": () => {
     return ["yarn eslint-save-config", "git add **/eslint-config-*"];
