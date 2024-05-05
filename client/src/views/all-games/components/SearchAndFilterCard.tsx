@@ -74,7 +74,7 @@ export const SearchAndFilterCard = ({
         <StyledLabel htmlFor="programTypeSelection">
           {t("selectedProgramType")}
         </StyledLabel>
-        <ProgramTypeSelection />
+        <ProgramTypeSelection id="programTypeSelection" />
       </InputContainer>
 
       {config.client().enableTagDropdown && (
@@ -94,10 +94,8 @@ export const SearchAndFilterCard = ({
       )}
 
       <InputContainer>
-        <StyledLabel htmlFor="startingTimeSelection">
-          {t("startingTime")}
-        </StyledLabel>
-        <RadioButtonGroup id="startingTimeSelection">
+        <StyledLegend>{t("startingTime")}</StyledLegend>
+        <RadioButtonGroup>
           {Object.entries(StartingTimeOption)
             .filter(([_, val]) =>
               config.client().enableRevolvingDoor
@@ -168,6 +166,11 @@ const Container = styled(RaisedCard)`
 `;
 
 const StyledLabel = styled.label`
+  padding: 0 0 2px 4px;
+  font-size: ${(props) => props.theme.fontSizeSmall};
+`;
+
+const StyledLegend = styled.legend`
   padding: 0 0 2px 4px;
   font-size: ${(props) => props.theme.fontSizeSmall};
 `;

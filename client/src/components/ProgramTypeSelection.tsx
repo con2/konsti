@@ -7,7 +7,11 @@ import { Dropdown } from "client/components/Dropdown";
 import { saveSession } from "client/utils/localStorage";
 import { config } from "shared/config";
 
-export const ProgramTypeSelection = (): ReactElement => {
+interface Props {
+  id: string;
+}
+
+export const ProgramTypeSelection = ({ id }: Props): ReactElement => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
 
@@ -34,6 +38,7 @@ export const ProgramTypeSelection = (): ReactElement => {
         });
       }}
       loading={false}
+      id={id}
     />
   );
 };
