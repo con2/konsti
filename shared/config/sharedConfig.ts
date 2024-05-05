@@ -6,7 +6,10 @@ import {
   SignupStrategy,
 } from "shared/config/sharedConfigTypes";
 import { ProgramType } from "shared/types/models/game";
-import { SignupQuestion } from "shared/types/models/settings";
+import {
+  SignupQuestion,
+  SignupQuestionType,
+} from "shared/types/models/settings";
 
 export interface SharedConfig {
   assignmentStrategy: AssignmentStrategy;
@@ -29,34 +32,72 @@ export interface SharedConfig {
   addToKonsti: string[];
   noKonstiSignupIds: string[];
   signupQuestions: SignupQuestion[];
-  tournamentSignupQuestion: SignupQuestion | null;
+  tournamentSignupQuestion: Omit<SignupQuestion, "gameId"> | null;
   tournamentSignupQuestionExcludeIds: string[];
   addRevolvingDoorIds: string[];
   isEnglishProgramItems: string[];
 }
 
+// Convention days
+const friday = "2024-07-19";
+const saturday = "2024-07-20";
+const sunday = "2024-07-21";
+
 export const sharedConfig: SharedConfig = {
   // Convention settings
   requireRegistrationCode: true,
   assignmentStrategy: AssignmentStrategy.RANDOM_PADG,
-  enableGroups: false,
+  enableGroups: true,
   manualSignupMode: "none",
   signupOpen: true,
   resultsVisible: true,
 
-  twoPhaseSignupProgramTypes: [],
+  twoPhaseSignupProgramTypes: [ProgramType.TABLETOP_RPG],
 
-  conventionStartTime: `2024-04-11T07:00:00Z`, // Thu 10:00 GMT+3
+  conventionStartTime: `${friday}T12:00:00Z`, // Fri 15:00 GMT+3
 
   directSignupStartTimes: {
     larp: [
-      dayjs(`2024-04-04T17:00:00Z`), // One week before, Thu 20:00 GMT+3
+      // Friday
+      dayjs(`${friday}T12:00:00Z`), // Fri 15:00 GMT+3
+      // Saturday morning / day
+      dayjs(`${friday}T15:00:00Z`), // Fri 18:00 GMT+3
+      // Saturday evening
+      dayjs(`${saturday}T08:00:00Z`), // Sat 11:00 GMT+3
+      // Sunday
+      dayjs(`${saturday}T12:00:00Z`), // Sat 15:00 GMT+3
     ],
+
+    tournament: [
+      // Friday
+      dayjs(`${friday}T12:00:00Z`), // Fri 15:00 GMT+3
+      // Saturday
+      dayjs(`${friday}T15:00:00Z`), // Fri 18:00 GMT+3
+      // Sunday
+      dayjs(`${saturday}T15:00:00Z`), // Sat 18:00 GMT+3
+    ],
+
     workshop: [
-      dayjs(`2024-04-04T17:00:00Z`), // One week before, Thu 20:00 GMT+3
+      // Friday
+      dayjs(`${friday}T12:00:00Z`), // Fri 15:00 GMT+3
+      // Saturday morning / day
+      dayjs(`${friday}T15:00:00Z`), // Fri 18:00 GMT+3
+      // Saturday day / evening
+      dayjs(`${saturday}T06:00:00Z`), // Sat 09:00 GMT+3
+      // Saturday evening / sunday morning
+      dayjs(`${saturday}T15:00:00Z`), // Sat 18:00 GMT+3
+      // Sunday
+      dayjs(`${sunday}T06:00:00Z`), // Sun 09:00 GMT+3
     ],
-    roundtableDiscussion: [
-      dayjs(`2024-04-04T17:00:00Z`), // One week before, Thu 20:00 GMT+3
+
+    experiencePoint: [
+      // Whole convention Fri - Sun
+      dayjs(`${friday}T12:00:00Z`), // Fri 15:00 GMT+3
+    ],
+
+    other: [
+      // Whole convention Fri - Sun
+      dayjs(`${friday}T12:00:00Z`), // Fri 15:00 GMT+3
     ],
   },
 
@@ -74,7 +115,15 @@ export const sharedConfig: SharedConfig = {
 
   signupQuestions: [],
 
-  tournamentSignupQuestion: null,
+  tournamentSignupQuestion: {
+    questionFi:
+      "Syötä nimesi, sähköpostiosoitteesi ja puhelinnumerosi mahdollista palkintoyhteydenottoa varten.",
+    questionEn:
+      "Please write your name, email address and phone number in case we need to contact you about a possible award.",
+    private: true,
+    type: SignupQuestionType.TEXT,
+    selectOptions: [],
+  },
 
   tournamentSignupQuestionExcludeIds: [],
 
@@ -86,7 +135,7 @@ export const sharedConfig: SharedConfig = {
   PHASE_GAP: 15, // minutes
 
   // Convention info
-  conventionName: ConventionName.SOLMUKOHTA,
+  conventionName: ConventionName.ROPECON,
   conventionYear: "2024",
 
   // Sentry
