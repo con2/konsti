@@ -100,10 +100,7 @@ const getProgramFromLocalFile = (): Result<KompassiGame[], KompassiError> => {
   const { localKompassiFile } = config.server();
 
   const rawData = fs.readFileSync(
-    path.join(
-      __dirname,
-      `../../../test/kompassi-data-dumps/${localKompassiFile}`,
-    ),
+    path.join(__dirname, `../test/kompassi-data-dumps/${localKompassiFile}`),
     "utf8",
   );
 

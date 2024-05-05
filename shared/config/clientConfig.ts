@@ -19,17 +19,20 @@ export interface ClientConfig {
 
 export const clientConfig: ClientConfig = {
   // Convention settings
-  enableRevolvingDoor: false,
+  enableRevolvingDoor: true,
   enableOrganizerFeedback: true,
-  enableTagDropdown: false,
+  enableTagDropdown: true,
   showAnnouncement: false,
   activeProgramTypes: [
     "all",
+    ProgramType.TABLETOP_RPG,
     ProgramType.LARP,
+    ProgramType.TOURNAMENT,
     ProgramType.WORKSHOP,
-    ProgramType.ROUNDTABLE_DISCUSSION,
+    ProgramType.EXPERIENCE_POINT,
+    ProgramType.OTHER,
   ],
-  activeLanguages: [Language.ENGLISH],
+  activeLanguages: [Language.FINNISH, Language.ENGLISH],
 
   // Dev
   enableReduxTrace: false,

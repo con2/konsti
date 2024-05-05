@@ -82,19 +82,12 @@ export const getDirectSignupStartTime = (game: Game): Dayjs => {
     ? directSignupStartTimes[game.programType]
     : undefined;
 
-  const directSignupStartTime = programTypeDirectSignupStartTimes
-    ? reverse(programTypeDirectSignupStartTimes).find(
-        (programTypeDirectSignupStartTime) =>
-          dayjs(game.startTime).isSameOrAfter(programTypeDirectSignupStartTime),
-      )
-    : dayjs(conventionStartTime);
-
-  if (!directSignupStartTime) {
-    // eslint-disable-next-line no-restricted-syntax -- Config error
-    throw new Error(
-      `Invalid direct signup start time for program item ${game.gameId} (type: ${game.programType})`,
+  const directSignupStartTime =
+    programTypeDirectSignupStartTimes &&
+    reverse(programTypeDirectSignupStartTimes).find(
+      (programTypeDirectSignupStartTime) =>
+        dayjs(game.startTime).isSameOrAfter(programTypeDirectSignupStartTime),
     );
-  }
 
-  return directSignupStartTime;
+  return directSignupStartTime ?? dayjs(conventionStartTime);
 };
