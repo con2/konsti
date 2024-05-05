@@ -3,10 +3,9 @@ import styled from "styled-components";
 
 interface Props {
   children?: ReactNode;
-  id?: string;
 }
-export const RadioButtonGroup = ({ children, id }: Props): ReactElement => (
-  <StyledFieldSet id={id}>{children}</StyledFieldSet>
+export const RadioButtonGroup = ({ children }: Props): ReactElement => (
+  <StyledFieldSet>{children}</StyledFieldSet>
 );
 
 const StyledFieldSet = styled.fieldset`

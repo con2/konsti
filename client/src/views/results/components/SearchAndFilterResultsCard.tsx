@@ -38,14 +38,12 @@ export const SearchAndFilterResultsCard = ({
         <StyledLabel htmlFor="programTypeSelection">
           {t("selectedProgramType")}
         </StyledLabel>
-        <ProgramTypeSelection />
+        <ProgramTypeSelection id="programTypeSelection" />
       </InputContainer>
 
       <InputContainer>
-        <StyledLabel htmlFor="startingTimeSelection">
-          {t("startingTime")}
-        </StyledLabel>
-        <RadioButtonGroup id="startingTimeSelection">
+        <StyledLegend>{t("startingTime")}</StyledLegend>
+        <RadioButtonGroup>
           {Object.entries(ResultsStartingTimeOption).map(([key, val]) => (
             <RadioButton
               id={key}
@@ -99,6 +97,11 @@ const InputContainer = styled.div`
 `;
 
 const StyledLabel = styled.label`
+  padding: 0 0 2px 4px;
+  font-size: ${(props) => props.theme.fontSizeSmall};
+`;
+
+const StyledLegend = styled.legend`
   padding: 0 0 2px 4px;
   font-size: ${(props) => props.theme.fontSizeSmall};
 `;
