@@ -24,6 +24,8 @@ import {
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 import { logger } from "server/utils/logger";
 import { saveTestSettings } from "server/test/test-settings/testSettingsRepository";
+import { config } from "shared/config";
+import { ConventionName } from "shared/config/sharedConfigTypes";
 
 let server: Server;
 
@@ -32,11 +34,18 @@ const previousJobRunning = 30; // Seconds since last run
 const previousJobFinished = 31; // Seconds since last run
 
 beforeAll(() => {
-  // vi.useFakeTimers();
   vi.setSystemTime(timeNow);
 });
 
 beforeEach(async () => {
+  vi.spyOn(config, "shared").mockReturnValue({
+    ...config.shared(),
+    conventionName: ConventionName.ROPECON,
+  });
+  vi.spyOn(config, "server").mockReturnValue({
+    ...config.server(),
+    useLocalProgramFile: true,
+  });
   server = await startServer({
     dbConnString: globalThis.__MONGO_URI__,
     dbName: faker.string.alphanumeric(10),
