@@ -12,7 +12,7 @@ const UserSchema = new mongoose.Schema(
     groupCreatorCode: String,
     groupCode: String,
     favoritedGames: [{ type: mongoose.Schema.Types.ObjectId, ref: "Game" }],
-    signedGames: [
+    lotterySignups: [
       {
         gameDetails: { type: mongoose.Schema.Types.ObjectId, ref: "Game" },
         priority: Number,

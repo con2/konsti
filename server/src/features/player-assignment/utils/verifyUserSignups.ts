@@ -16,7 +16,7 @@ import { MongoDbError } from "shared/types/api/errors";
 export const verifyUserSignups = async (): Promise<
   Result<void, MongoDbError>
 > => {
-  logger.info("Verify signed games and signups match for users");
+  logger.info("Verify lottery signups and signups match for users");
 
   const usersResult = await findUsers();
   if (isErrorResult(usersResult)) {
@@ -40,7 +40,7 @@ export const verifyUserSignups = async (): Promise<
       return;
     }
 
-    // Verify group member signups match with group creators signedGames
+    // Verify group member signups match with group creators lotterySignups
     // If not in group -> user is group creator
 
     userSignups.map((userSignup) => {
@@ -63,13 +63,13 @@ export const verifyUserSignups = async (): Promise<
 
       const groupCreator = unwrapResult(groupCreatorResult);
 
-      const matchingCreatorSignedGame = groupCreator.signedGames.find(
-        (creatorSignedGame) =>
-          creatorSignedGame.gameDetails.gameId === game.gameId &&
-          dayjs(creatorSignedGame.time).isSame(userSignup.time),
+      const matchingCreatorLotterySignup = groupCreator.lotterySignups.find(
+        (creatorLotterySignup) =>
+          creatorLotterySignup.gameDetails.gameId === game.gameId &&
+          dayjs(creatorLotterySignup.time).isSame(userSignup.time),
       );
 
-      if (!matchingCreatorSignedGame) {
+      if (!matchingCreatorLotterySignup) {
         logger.error(
           "%s",
           new Error(

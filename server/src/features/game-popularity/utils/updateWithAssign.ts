@@ -4,7 +4,7 @@ import { padgAssignPlayers } from "server/features/player-assignment/padg/padgAs
 import { User } from "shared/types/models/user";
 import { Game } from "shared/types/models/game";
 import { saveGamePopularity } from "server/features/game/gameRepository";
-import { Signup } from "server/features/signup/signupTypes";
+import { SignupsForProgramItem } from "server/features/signup/signupTypes";
 import {
   Result,
   isErrorResult,
@@ -19,7 +19,7 @@ import { getTimeNow } from "server/features/player-assignment/utils/getTimeNow";
 export const updateWithAssign = async (
   users: readonly User[],
   games: readonly Game[],
-  signups: readonly Signup[],
+  signups: readonly SignupsForProgramItem[],
 ): Promise<Result<void, MongoDbError | AssignmentError>> => {
   const gamesForStartTimes = groupBy(games, (game) =>
     dayjs(game.startTime).toISOString(),
@@ -53,11 +53,11 @@ export const updateWithAssign = async (
     return [];
   });
 
-  const signedGames = results.flatMap(
+  const directSignupsResult = results.flatMap(
     (result) => result.enteredGame.gameDetails,
   );
 
-  const groupedSignups = countBy(signedGames, "gameId");
+  const groupedSignups = countBy(directSignupsResult, "gameId");
 
   const gamePopularityUpdates = games
     .map((game) => ({

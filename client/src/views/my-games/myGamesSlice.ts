@@ -1,12 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { MyGamesState, RootState } from "client/types/reduxTypes";
 import { Game } from "shared/types/models/game";
-import { SelectedGame, UserGames } from "shared/types/models/user";
+import { Signup, UserGames } from "shared/types/models/user";
 
 const initialState: MyGamesState = {
   enteredGames: [],
   favoritedGames: [],
-  signedGames: [],
+  lotterySignups: [],
 };
 
 const myGamesSlice = createSlice({
@@ -18,7 +18,7 @@ const myGamesSlice = createSlice({
         ...state,
         enteredGames: action.payload.enteredGames,
         favoritedGames: action.payload.favoritedGames,
-        signedGames: action.payload.signedGames,
+        lotterySignups: action.payload.lotterySignups,
       };
     },
 
@@ -29,14 +29,14 @@ const myGamesSlice = createSlice({
       };
     },
 
-    submitPostSignedGamesAsync(
+    submitPostLotterySignupsAsync(
       state,
-      action: PayloadAction<readonly SelectedGame[]>,
+      action: PayloadAction<readonly Signup[]>,
     ) {
-      return { ...state, signedGames: action.payload };
+      return { ...state, lotterySignups: action.payload };
     },
 
-    submitPostEnteredGameAsync(state, action: PayloadAction<SelectedGame>) {
+    submitPostEnteredGameAsync(state, action: PayloadAction<Signup>) {
       const games = [...state.enteredGames, action.payload];
       return { ...state, enteredGames: games };
     },
@@ -53,7 +53,7 @@ const myGamesSlice = createSlice({
 export const {
   submitGetUserAsync,
   submitUpdateFavoritesAsync,
-  submitPostSignedGamesAsync,
+  submitPostLotterySignupsAsync,
   submitPostEnteredGameAsync,
   submitDeleteEnteredAsync,
 } = myGamesSlice.actions;
@@ -62,9 +62,9 @@ export const myGamesReducer = myGamesSlice.reducer;
 
 // SELECTORS
 
-export const selectEnteredGames = (state: RootState): readonly SelectedGame[] =>
+export const selectEnteredGames = (state: RootState): readonly Signup[] =>
   state.myGames.enteredGames;
-export const selectSignedGames = (state: RootState): readonly SelectedGame[] =>
-  state.myGames.signedGames;
+export const selectLotterySignups = (state: RootState): readonly Signup[] =>
+  state.myGames.lotterySignups;
 export const selectFavoritedGames = (state: RootState): readonly Game[] =>
   state.myGames.favoritedGames;

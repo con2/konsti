@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import { Game } from "shared/types/models/game";
-import { SelectedGame, User } from "shared/types/models/user";
+import { Signup, User } from "shared/types/models/user";
 import { AssignmentResult } from "shared/types/models/result";
 
 export interface ResultDoc extends AssignmentResult, mongoose.Document {
@@ -8,9 +8,9 @@ export interface ResultDoc extends AssignmentResult, mongoose.Document {
   message: string;
 }
 
-export interface UserSignedGames {
+export interface UserLotterySignups {
   username: string;
-  signedGames: readonly SelectedGame[];
+  lotterySignups: readonly Signup[];
 }
 
 export enum AssignmentResultStatus {
@@ -40,7 +40,7 @@ export interface AssignmentStrategyResult {
 }
 
 export interface RunRandomAndPadgInput {
-  signedGames: readonly Game[];
+  selectedGames: readonly Game[];
   playerGroups: readonly User[][];
   allPlayers: readonly User[];
   numberOfIndividuals: Number;

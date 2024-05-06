@@ -14,10 +14,10 @@ import { findUser, saveUser } from "server/features/user/userRepository";
 import {
   mockPostEnteredGameRequest,
   mockPostEnteredGameRequest2,
-  mockSignedGames,
+  mockLotterySignups,
   mockUser,
 } from "server/test/mock-data/mockUser";
-import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
+import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import { saveFavorite } from "server/features/user/favorite-game/favoriteGameRepository";
 import {
   createSettings,
@@ -143,9 +143,9 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
 
     await saveGames([testGame, testGame2]);
     await saveUser(mockUser);
-    await saveSignedGames({
+    await saveLotterySignups({
       username: mockUser.username,
-      signedGames: mockSignedGames,
+      lotterySignups: mockLotterySignups,
     });
     await saveSignup(mockPostEnteredGameRequest);
     await saveSignup(mockPostEnteredGameRequest2);
@@ -167,8 +167,8 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
 
     const updatedUserResult = await findUser(mockUser.username);
     const updatedUser = unsafelyUnwrapResult(updatedUserResult);
-    expect(updatedUser?.signedGames.length).toEqual(1);
-    expect(updatedUser?.signedGames[0].gameDetails.title).toEqual(
+    expect(updatedUser?.lotterySignups.length).toEqual(1);
+    expect(updatedUser?.lotterySignups[0].gameDetails.title).toEqual(
       testGame.title,
     );
     expect(updatedUser?.favoritedGames.length).toEqual(1);
@@ -270,9 +270,9 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
 
     await saveGames([testGame, testGame2]);
     await saveUser(mockUser);
-    await saveSignedGames({
+    await saveLotterySignups({
       username: mockUser.username,
-      signedGames: mockSignedGames,
+      lotterySignups: mockLotterySignups,
     });
     await saveSignup(mockPostEnteredGameRequest);
     await saveSignup(mockPostEnteredGameRequest2);
@@ -288,8 +288,8 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
 
     const updatedUserResult = await findUser(mockUser.username);
     const updatedUser = unsafelyUnwrapResult(updatedUserResult);
-    expect(updatedUser?.signedGames.length).toEqual(1);
-    expect(updatedUser?.signedGames[0].gameDetails.title).toEqual(
+    expect(updatedUser?.lotterySignups.length).toEqual(1);
+    expect(updatedUser?.lotterySignups[0].gameDetails.title).toEqual(
       testGame2.title,
     );
     expect(updatedUser?.favoritedGames.length).toEqual(2);

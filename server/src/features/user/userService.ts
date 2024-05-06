@@ -17,7 +17,7 @@ import {
 } from "shared/types/api/users";
 import { ApiError } from "shared/types/api/errors";
 import { findUserSignups } from "server/features/signup/signupRepository";
-import { SelectedGame } from "shared/types/models/user";
+import { Signup } from "shared/types/models/user";
 import { isErrorResult, unwrapResult } from "shared/utils/result";
 import { config } from "shared/config";
 import { createSerial } from "server/features/user/userUtils";
@@ -262,7 +262,7 @@ export const fetchUserByUsername = async (
   const signups = unwrapResult(signupsResult);
 
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-  const enteredGames: SelectedGame[] = signups
+  const enteredGames: Signup[] = signups
     ? signups.flatMap((signup) => {
         const signupForUser = signup.userSignups.find(
           (userSignup) => userSignup.username === username,
@@ -285,7 +285,7 @@ export const fetchUserByUsername = async (
     games: {
       enteredGames,
       favoritedGames: user.favoritedGames,
-      signedGames: user.signedGames,
+      lotterySignups: user.lotterySignups,
     },
     username: user.username,
     serial: user.serial,

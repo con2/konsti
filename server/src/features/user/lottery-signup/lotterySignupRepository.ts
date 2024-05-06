@@ -1,9 +1,9 @@
 import { findGames } from "server/features/game/gameRepository";
 import { UserModel } from "server/features/user/userSchema";
-import { UserSignedGames } from "server/types/resultTypes";
+import { UserLotterySignups } from "server/types/resultTypes";
 import { logger } from "server/utils/logger";
 import { MongoDbError } from "shared/types/api/errors";
-import { SelectedGame, User } from "shared/types/models/user";
+import { Signup, User } from "shared/types/models/user";
 import {
   Result,
   isErrorResult,
@@ -12,10 +12,10 @@ import {
   unwrapResult,
 } from "shared/utils/result";
 
-export const saveSignedGames = async (
-  signupData: UserSignedGames,
+export const saveLotterySignups = async (
+  signupData: UserLotterySignups,
 ): Promise<Result<User, MongoDbError>> => {
-  const { signedGames, username } = signupData;
+  const { lotterySignups, username } = signupData;
 
   const gamesResult = await findGames();
 
@@ -25,18 +25,18 @@ export const saveSignedGames = async (
 
   const games = unwrapResult(gamesResult);
 
-  const formattedData = signedGames.reduce<SelectedGame[]>(
-    (acc, signedGame) => {
+  const formattedData = lotterySignups.reduce<Signup[]>(
+    (acc, lotterySignup) => {
       const gameDocInDb = games.find(
-        (game) => game.gameId === signedGame.gameDetails.gameId,
+        (game) => game.gameId === lotterySignup.gameDetails.gameId,
       );
 
       if (gameDocInDb) {
         acc.push({
           gameDetails: gameDocInDb._id,
-          priority: signedGame.priority,
-          time: signedGame.time,
-          message: signedGame.message,
+          priority: lotterySignup.priority,
+          time: lotterySignup.time,
+          message: lotterySignup.message,
         });
       }
       return acc;
@@ -48,12 +48,12 @@ export const saveSignedGames = async (
     const signupResponse = await UserModel.findOneAndUpdate(
       { username },
       {
-        signedGames: formattedData,
+        lotterySignups: formattedData,
       },
-      { new: true, fields: "-signedGames._id" },
-    ).populate("signedGames.gameDetails");
+      { new: true, fields: "-lotterySignups._id" },
+    ).populate("lotterySignups.gameDetails");
     if (!signupResponse) {
-      logger.error("%s", new Error("Error saving signup"));
+      logger.error("%s", new Error("Error saving lottery signups"));
       return makeErrorResult(MongoDbError.SIGNUP_NOT_FOUND);
     }
     logger.debug(`MongoDB: Signup data stored for user ${username}`);
@@ -67,12 +67,12 @@ export const saveSignedGames = async (
   }
 };
 
-export const removeSignedGames = async (): Promise<
+export const removeLotterySignups = async (): Promise<
   Result<void, MongoDbError>
 > => {
   logger.info("MongoDB: remove ALL signups from db");
   try {
-    await UserModel.updateMany({}, { signedGames: [] });
+    await UserModel.updateMany({}, { lotterySignups: [] });
     return makeSuccessResult(undefined);
   } catch (error) {
     logger.error("MongoDB: Error removing signups: %s", error);

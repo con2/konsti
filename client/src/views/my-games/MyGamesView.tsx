@@ -2,11 +2,11 @@ import { ReactElement, useEffect, useState } from "react";
 import { useStore } from "react-redux";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-import { MySignupsList } from "client/views/my-games/components/MySignupsList";
+import { MyLotterySignupsList } from "client/views/my-games/components/MyLotterySignupsList";
 import { MyFavoritesList } from "client/views/my-games/components/MyFavoritesList";
 import { MyEnteredList } from "client/views/my-games/components/MyEnteredList";
 import {
-  getSignedGames,
+  getLotterySignups,
   getUpcomingEnteredGames,
   getUpcomingFavorites,
 } from "client/utils/getUpcomingGames";
@@ -16,7 +16,7 @@ import { SignupStrategy } from "shared/config/sharedConfigTypes";
 import {
   selectEnteredGames,
   selectFavoritedGames,
-  selectSignedGames,
+  selectLotterySignups,
 } from "client/views/my-games/myGamesSlice";
 import { RadioButton } from "client/components/RadioButton";
 import { RaisedCard } from "client/components/RaisedCard";
@@ -30,7 +30,7 @@ import { getIsInGroup } from "client/views/group/groupUtils";
 export const MyGamesView = (): ReactElement => {
   const { t } = useTranslation();
 
-  const signedGames = useAppSelector(selectSignedGames);
+  const lotterySignups = useAppSelector(selectLotterySignups);
   const favoritedGames = useAppSelector(selectFavoritedGames);
   const enteredGames = useAppSelector(selectEnteredGames);
   const isGroupCreator = useAppSelector((state) => state.group.isGroupCreator);
@@ -99,8 +99,8 @@ export const MyGamesView = (): ReactElement => {
         enteredGames={
           showAllGames ? enteredGames : getUpcomingEnteredGames(enteredGames)
         }
-        signedGames={getSignedGames({
-          signedGames,
+        lotterySignups={getLotterySignups({
+          lotterySignups,
           isGroupCreator,
           getAllGames: showAllGames,
           isInGroup,
@@ -108,9 +108,9 @@ export const MyGamesView = (): ReactElement => {
         })}
       />
       {signupStrategy !== SignupStrategy.DIRECT && (
-        <MySignupsList
-          signedGames={getSignedGames({
-            signedGames,
+        <MyLotterySignupsList
+          lotterySignups={getLotterySignups({
+            lotterySignups,
             isGroupCreator,
             getAllGames: showAllGames,
             isInGroup,

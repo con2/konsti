@@ -7,10 +7,10 @@ import { GameEntry } from "client/views/all-games/components/GameEntry";
 import {
   selectEnteredGames,
   selectFavoritedGames,
-  selectSignedGames,
+  selectLotterySignups,
 } from "client/views/my-games/myGamesSlice";
 import { SignupStrategy } from "shared/config/sharedConfigTypes";
-import { getSignedGames } from "client/utils/getUpcomingGames";
+import { getLotterySignups } from "client/utils/getUpcomingGames";
 import { BackButton } from "client/components/BackButton";
 import { getIsInGroup } from "client/views/group/groupUtils";
 
@@ -28,14 +28,14 @@ export const GameDetailsPage = (): ReactElement => {
   const favoritedGames = useAppSelector(selectFavoritedGames);
 
   // Figure out if user has signed up to this game
-  const signedGames = useAppSelector(selectSignedGames);
+  const lotterySignups = useAppSelector(selectLotterySignups);
   const isGroupCreator = useAppSelector((state) => state.group.isGroupCreator);
   const groupMembers = useAppSelector((state) => state.group.groupMembers);
   const groupCode = useAppSelector((state) => state.group.groupCode);
   const isInGroup = getIsInGroup(groupCode);
 
-  const ownOrGroupCreatorSignedGames = getSignedGames({
-    signedGames,
+  const ownOrGroupCreatorLotterySignups = getLotterySignups({
+    lotterySignups,
     isGroupCreator,
     groupMembers,
     isInGroup,
@@ -64,7 +64,7 @@ export const GameDetailsPage = (): ReactElement => {
           startTime={foundGame.startTime}
           players={playerCount}
           signupStrategy={foundGame.signupStrategy ?? SignupStrategy.DIRECT}
-          signedGames={ownOrGroupCreatorSignedGames}
+          lotterySignups={ownOrGroupCreatorLotterySignups}
           enteredGames={enteredGames}
           loading={loading}
           setLoading={setLoading}

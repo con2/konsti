@@ -2,7 +2,10 @@ import dayjs from "dayjs";
 import { groupBy, shuffle } from "lodash-es";
 import { ObjectId } from "mongoose";
 import { findGameById, findGames } from "server/features/game/gameRepository";
-import { Signup, UserSignup } from "server/features/signup/signupTypes";
+import {
+  SignupsForProgramItem,
+  UserSignup,
+} from "server/features/signup/signupTypes";
 import { SignupModel } from "server/features/signup/signupSchema";
 import { logger } from "server/utils/logger";
 import { config } from "shared/config";
@@ -32,14 +35,14 @@ export const removeSignups = async (): Promise<Result<void, MongoDbError>> => {
 };
 
 export const findSignups = async (): Promise<
-  Result<Signup[], MongoDbError>
+  Result<SignupsForProgramItem[], MongoDbError>
 > => {
   try {
     const results = await SignupModel.find(
       {},
       "-createdAt -updatedAt -_id -__v -userSignups._id",
     )
-      .lean<Signup[]>()
+      .lean<SignupsForProgramItem[]>()
       .populate("game", "-createdAt -updatedAt -_id -__v");
 
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
@@ -95,7 +98,7 @@ export const findSignupsByProgramTypes = async (
       { game: { $in: gamesByProgramTypesForStartTimeObjectIds } },
       "-createdAt -updatedAt -_id -__v",
     )
-      .lean<Signup[]>()
+      .lean<SignupsForProgramItem[]>()
       .populate("game", "-createdAt -updatedAt -_id -__v");
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (!signups) {
@@ -125,13 +128,13 @@ export const findSignupsByProgramTypes = async (
 
 export const findUserSignups = async (
   username: string,
-): Promise<Result<Signup[], MongoDbError>> => {
+): Promise<Result<SignupsForProgramItem[], MongoDbError>> => {
   try {
     const response = await SignupModel.find(
       { "userSignups.username": username },
       "-createdAt -updatedAt -_id -__v",
     )
-      .lean<Signup[]>()
+      .lean<SignupsForProgramItem[]>()
       .populate("game", "-createdAt -updatedAt -_id -__v");
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (!response) {
@@ -152,7 +155,7 @@ export const findUserSignups = async (
 
 export const saveSignup = async (
   signupsRequest: PostEnteredGameRequest,
-): Promise<Result<Signup, MongoDbError>> => {
+): Promise<Result<SignupsForProgramItem, MongoDbError>> => {
   const { username, enteredGameId, startTime, message, priority } =
     signupsRequest;
 
@@ -185,7 +188,7 @@ export const saveSignup = async (
         fields: "-userSignups._id -_id -__v -createdAt -updatedAt",
       },
     )
-      .lean<Signup>()
+      .lean<SignupsForProgramItem>()
       .populate("game");
     if (!signup) {
       logger.warn(
@@ -283,7 +286,7 @@ export const saveSignups = async (
 
 export const delSignup = async (
   signupRequest: DeleteEnteredGameRequest,
-): Promise<Result<Signup, MongoDbError>> => {
+): Promise<Result<SignupsForProgramItem, MongoDbError>> => {
   const { username, enteredGameId } = signupRequest;
 
   const gameResult = await findGameById(enteredGameId);
@@ -305,7 +308,7 @@ export const delSignup = async (
       },
       { new: true, fields: "-userSignups._id -_id -__v -createdAt -updatedAt" },
     )
-      .lean<Signup>()
+      .lean<SignupsForProgramItem>()
       .populate("game", "-createdAt -updatedAt -_id -__v");
 
     if (!signup) {

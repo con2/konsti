@@ -12,7 +12,7 @@ export interface PostCreateGroupError extends ApiError {
   errorId:
     | "unknown"
     | "groupExists"
-    | "userHasSignedGames"
+    | "userHasDirectSignups"
     | "errorFindingUser";
 }
 
@@ -32,8 +32,8 @@ export interface PostJoinGroupError extends ApiError {
     | "alreadyInGroup"
     | "invalidGroupCode"
     | "groupDoesNotExist"
-    | "removePreviousSignupsFailed"
-    | "userHasSignedGames"
+    | "removePreviousLotterySignupsFailed"
+    | "userHasDirectSignups"
     | "errorFindingUser";
 }
 

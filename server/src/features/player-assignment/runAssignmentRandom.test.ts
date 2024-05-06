@@ -14,7 +14,7 @@ import { testGame } from "shared/tests/testGame";
 import { saveUser } from "server/features/user/userRepository";
 import {
   mockPostEnteredGameRequest,
-  mockSignedGames,
+  mockLotterySignups,
   mockUser,
   mockUser2,
   mockUser3,
@@ -24,7 +24,7 @@ import {
   findSignups,
   saveSignup,
 } from "server/features/signup/signupRepository";
-import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
+import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 
 // This needs to be adjusted if test data is changed
 const expectedResultsCount = 20;
@@ -138,15 +138,15 @@ test("Should adjust attendee limits if there are previous signups from moved pro
   // ** Save selected games
 
   // This will get assigned
-  await saveSignedGames({
+  await saveLotterySignups({
     username: mockUser3.username,
-    signedGames: [{ ...mockSignedGames[0], priority: 1 }],
+    lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
   });
 
   // This will not get assigned because program item full
-  await saveSignedGames({
+  await saveLotterySignups({
     username: mockUser4.username,
-    signedGames: [{ ...mockSignedGames[0], priority: 3 }],
+    lotterySignups: [{ ...mockLotterySignups[0], priority: 3 }],
   });
 
   const assignResults = unsafelyUnwrapResult(
@@ -173,7 +173,7 @@ test("Should adjust attendee limits if there are previous signups from moved pro
     },
     {
       username: mockUser3.username,
-      time: mockSignedGames[0].gameDetails.startTime,
+      time: mockLotterySignups[0].gameDetails.startTime,
       message: "",
       priority: 1,
     },

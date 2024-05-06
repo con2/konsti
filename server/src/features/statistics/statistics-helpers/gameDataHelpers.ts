@@ -2,7 +2,7 @@ import dayjs from "dayjs";
 import { countBy } from "lodash-es";
 import { logger } from "server/utils/logger";
 import { Game } from "shared/types/models/game";
-import { SelectedGame, User } from "shared/types/models/user";
+import { Signup, User } from "shared/types/models/user";
 import { getMaximumNumberOfPlayersByTime } from "./resultDataHelpers";
 import { StringNumberObject, PriorityObject } from "server/types/commonTypes";
 import { toPercent } from "server/features/statistics/statsUtil";
@@ -20,7 +20,7 @@ export const getGamesByStartTime = (
 const getUsersByGames = (_users: readonly User[]): StringNumberObject => {
   // TODO: Update to use signup collection
   // const enteredGames = users.flatMap((user) => user.enteredGames);
-  const enteredGames: SelectedGame[] = [];
+  const enteredGames: Signup[] = [];
   const usersByGames = countBy(enteredGames, "gameDetails.gameId");
   return usersByGames;
 };
@@ -48,7 +48,9 @@ export const getNumberOfFullGames = (
 const getSignupsByStartTime = (users: readonly User[]): StringNumberObject => {
   const userSignupCountsByTime: StringNumberObject = {};
 
-  logger.warn("Warning: Inaccurate because forming groups deletes signedGames");
+  logger.warn(
+    "Warning: Inaccurate because forming groups deletes lotterySignups",
+  );
 
   users.forEach((user) => {
     let groupSize = 1;
@@ -59,17 +61,17 @@ const getSignupsByStartTime = (users: readonly User[]): StringNumberObject => {
       ).length;
     }
 
-    const signedGames = user.signedGames.reduce<StringNumberObject>(
-      (acc, signedGame) => {
-        acc[signedGame.time] = acc[signedGame.time] + 1 || 1;
+    const lotterySignups = user.lotterySignups.reduce<StringNumberObject>(
+      (acc, lotterySignup) => {
+        acc[lotterySignup.time] = acc[lotterySignup.time] + 1 || 1;
         return acc;
       },
       {},
     );
 
-    for (const signupTime in signedGames) {
-      userSignupCountsByTime[signupTime] =
-        userSignupCountsByTime[signupTime] + groupSize || groupSize;
+    for (const lotterySignup in lotterySignups) {
+      userSignupCountsByTime[lotterySignup] =
+        userSignupCountsByTime[lotterySignup] + groupSize || groupSize;
     }
   });
 
@@ -103,7 +105,7 @@ export const getDemandByGame = (
 ): void => {
   logger.info(">>> Demand by games");
 
-  const signedGames = users.reduce<PriorityObject>((acc, user) => {
+  const lotterySignups = users.reduce<PriorityObject>((acc, user) => {
     let groupSize = 1;
     if (user.groupCode !== "0" && user.groupCode === user.serial) {
       groupSize = users.filter(
@@ -111,9 +113,9 @@ export const getDemandByGame = (
       ).length;
     }
 
-    user.signedGames.forEach((signedGame) => {
+    user.lotterySignups.forEach((lotterySignup) => {
       const foundGame = games.find(
-        (game) => game.gameId === signedGame.gameDetails.gameId,
+        (game) => game.gameId === lotterySignup.gameDetails.gameId,
       );
 
       if (!foundGame) {
@@ -126,16 +128,16 @@ export const getDemandByGame = (
         third: acc[foundGame.title].third ? acc[foundGame.title].third : 0,
       };
 
-      if (signedGame.priority === 1) {
+      if (lotterySignup.priority === 1) {
         acc[foundGame.title].first = acc[foundGame.title].first + groupSize;
-      } else if (signedGame.priority === 2) {
+      } else if (lotterySignup.priority === 2) {
         acc[foundGame.title].second = ++acc[foundGame.title].second + groupSize;
-      } else if (signedGame.priority === 3) {
+      } else if (lotterySignup.priority === 3) {
         acc[foundGame.title].third = ++acc[foundGame.title].third + groupSize;
       }
     });
     return acc;
   }, {});
 
-  logger.info(JSON.stringify(signedGames, null, 2));
+  logger.info(JSON.stringify(lotterySignups, null, 2));
 };

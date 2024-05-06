@@ -3,7 +3,7 @@ import { PadgRandomAssignResults } from "server/types/padgRandomAssignTypes";
 import { logger } from "server/utils/logger";
 import { AssignmentError } from "shared/types/api/errors";
 import { AssignmentResult } from "shared/types/models/result";
-import { SelectedGame, User } from "shared/types/models/user";
+import { Signup, User } from "shared/types/models/user";
 import {
   Result,
   makeErrorResult,
@@ -35,13 +35,13 @@ export const formatResults = (
     })
     .flat();
 
-  const getEnteredGame = (player: User): SelectedGame | undefined => {
-    return player.signedGames.find((signedGame) => {
+  const getEnteredGame = (player: User): Signup | undefined => {
+    return player.lotterySignups.find((lotterySignup) => {
       return assignResults.find(
         (assignResult) =>
           (assignResult.id === player.groupCode ||
             assignResult.id === player.serial) &&
-          assignResult.assignment === signedGame.gameDetails.gameId,
+          assignResult.assignment === lotterySignup.gameDetails.gameId,
       );
     });
   };

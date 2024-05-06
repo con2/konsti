@@ -6,12 +6,12 @@ import { GameEntry } from "./GameEntry";
 import { useAppSelector } from "client/utils/hooks";
 import { Game } from "shared/types/models/game";
 import { GameListTitle } from "client/views/all-games/components/GameListTitle";
-import { getSignedGames } from "client/utils/getUpcomingGames";
+import { getLotterySignups } from "client/utils/getUpcomingGames";
 import { getTimeslotSignupStrategy } from "client/views/all-games/allGamesUtils";
 import {
   selectEnteredGames,
   selectFavoritedGames,
-  selectSignedGames,
+  selectLotterySignups,
 } from "client/views/my-games/myGamesSlice";
 import { RaisedCard } from "client/components/RaisedCard";
 import { getIsInGroup } from "client/views/group/groupUtils";
@@ -24,7 +24,7 @@ export const AllGamesList = ({ games }: Props): ReactElement => {
   const { t } = useTranslation();
 
   const signups = useAppSelector((state) => state.allGames.signups);
-  const signedGames = useAppSelector(selectSignedGames);
+  const lotterySignups = useAppSelector(selectLotterySignups);
   const enteredGames = useAppSelector(selectEnteredGames);
   const activeProgramType = useAppSelector(
     (state) => state.admin.activeProgramType,
@@ -40,8 +40,8 @@ export const AllGamesList = ({ games }: Props): ReactElement => {
 
   const [loading, setLoading] = useState(false);
 
-  const ownOrGroupCreatorSignedGames = getSignedGames({
-    signedGames,
+  const ownOrGroupCreatorLotterySignups = getLotterySignups({
+    lotterySignups,
     isGroupCreator,
     groupMembers,
     isInGroup,
@@ -64,7 +64,7 @@ export const AllGamesList = ({ games }: Props): ReactElement => {
         <div key={startTime}>
           <GameListTitle
             startTime={startTime}
-            signedGames={ownOrGroupCreatorSignedGames}
+            lotterySignups={ownOrGroupCreatorLotterySignups}
             enteredGames={enteredGames}
             timeslotSignupStrategy={timeslotSignupStrategy}
             isGroupCreator={isGroupCreator}
@@ -84,7 +84,7 @@ export const AllGamesList = ({ games }: Props): ReactElement => {
                 startTime={startTime}
                 players={gameSignups?.users.length ?? 0}
                 signupStrategy={timeslotSignupStrategy}
-                signedGames={ownOrGroupCreatorSignedGames}
+                lotterySignups={ownOrGroupCreatorLotterySignups}
                 enteredGames={enteredGames}
                 loading={loading}
                 setLoading={setLoading}

@@ -1,6 +1,6 @@
 import { logger } from "server/utils/logger";
 import { createGames } from "server/test/test-data-generation/generators/createGames";
-import { createSignedGames } from "server/test/test-data-generation/generators/createSignedGames";
+import { createLotterySignups } from "server/test/test-data-generation/generators/createLotterySignups";
 import { removeUsers } from "server/features/user/userRepository";
 import { removeResults } from "server/features/results/resultsRepository";
 import { removeGames } from "server/features/game/gameRepository";
@@ -9,7 +9,7 @@ import { generateTestUsers } from "server/test/test-data-generation/generators/g
 import { createSignups } from "server/test/test-data-generation/generators/createSignups";
 import { createSettings } from "server/test/test-data-generation/generators/createSettings";
 import { config } from "shared/config";
-import { removeSignedGames } from "server/features/user/signed-game/signedGameRepository";
+import { removeLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import { removeSignups } from "server/features/signup/signupRepository";
 import {
   createAdminUser,
@@ -93,10 +93,10 @@ export const runGenerators = async (
   if (options.signups) {
     logger.info("Generate signed games");
 
-    !options.clean && (await removeSignedGames());
+    !options.clean && (await removeLotterySignups());
     !options.clean && (await removeResults());
 
-    await createSignedGames();
+    await createLotterySignups();
   }
 
   if (options.entered) {

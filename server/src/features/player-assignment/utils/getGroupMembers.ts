@@ -18,11 +18,11 @@ export const getGroupMembers = (
           player.groupCode === groupCreator.groupCode &&
           player.username !== groupCreator.username
         ) {
-          // player.signedGames = groupCreator.signedGames
+          // player.lotterySignups = groupCreator.lotterySignups
           selectedPlayersWithSignups.push(
             Object.assign({
               ...player,
-              signedGames: groupCreator.signedGames,
+              lotterySignups: groupCreator.lotterySignups,
             }) as User,
           );
         }

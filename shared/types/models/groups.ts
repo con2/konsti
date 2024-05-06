@@ -1,9 +1,9 @@
-import { SelectedGame } from "shared/types/models/user";
+import { Signup } from "shared/types/models/user";
 
 export interface GroupMember {
   groupCode: string;
   groupCreatorCode: string;
   serial: string;
-  signedGames: readonly SelectedGame[];
+  lotterySignups: readonly Signup[];
   username: string;
 }

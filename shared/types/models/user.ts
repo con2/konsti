@@ -11,14 +11,14 @@ export interface User {
   groupCode: string;
   groupCreatorCode: string;
   favoritedGames: readonly Game[];
-  signedGames: readonly SelectedGame[];
+  lotterySignups: readonly Signup[];
   createdAt: string;
   eventLogItems: EventLogItem[];
 }
 
-export interface SelectedGame {
+export interface Signup {
   gameDetails: Game;
-  priority: number; // TODO: Update to 1 | 2 | 3
+  priority: number;
   time: string;
   message: string;
 }
@@ -30,9 +30,9 @@ export enum UserGroup {
 }
 
 export interface UserGames {
-  enteredGames: readonly SelectedGame[];
+  enteredGames: readonly Signup[];
   favoritedGames: readonly Game[];
-  signedGames: readonly SelectedGame[];
+  lotterySignups: readonly Signup[];
 }
 
 export interface NewFavorite {

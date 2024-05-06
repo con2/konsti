@@ -1,10 +1,10 @@
 import { config } from "shared/config";
-import { Signup } from "server/features/signup/signupTypes";
+import { SignupsForProgramItem } from "server/features/signup/signupTypes";
 import { User } from "shared/types/models/user";
 
 export const getAssignmentBonus = (
   playerGroup: User[],
-  signups: readonly Signup[],
+  signups: readonly SignupsForProgramItem[],
 ): number => {
   const { twoPhaseSignupProgramTypes, directSignupAlwaysOpenIds } =
     config.shared();

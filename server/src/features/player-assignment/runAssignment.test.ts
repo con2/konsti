@@ -17,12 +17,12 @@ import { testGame, testGame2 } from "shared/tests/testGame";
 import {
   mockPostEnteredGameRequest,
   mockPostEnteredGameRequest2,
-  mockSignedGames,
+  mockLotterySignups,
   mockUser,
   mockUser2,
 } from "server/test/mock-data/mockUser";
 import { ProgramType } from "shared/types/models/game";
-import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
+import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 import { assertUserUpdatedCorrectly } from "server/features/player-assignment/runAssignmentTestUtils";
 import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
@@ -139,10 +139,10 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     await saveUser(mockUser);
     await saveUser(mockUser2);
 
-    await saveSignedGames({
+    await saveLotterySignups({
       username: mockUser.username,
-      signedGames: [
-        { ...mockSignedGames[0], priority: 2 },
+      lotterySignups: [
+        { ...mockLotterySignups[0], priority: 2 },
         {
           // non-"twoPhaseSignupProgramTypes" signed game should be ignored
           gameDetails: { ...testGame2, programType: ProgramType.TOURNAMENT },
@@ -152,10 +152,10 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
         },
       ],
     });
-    await saveSignedGames({
+    await saveLotterySignups({
       username: mockUser2.username,
-      signedGames: [
-        { ...mockSignedGames[0], priority: 2 },
+      lotterySignups: [
+        { ...mockLotterySignups[0], priority: 2 },
         {
           // non-"twoPhaseSignupProgramTypes" signed game should be ignored
           gameDetails: { ...testGame2, programType: ProgramType.TOURNAMENT },
@@ -217,10 +217,10 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     await saveUser(mockUser);
     await saveUser(mockUser2);
 
-    await saveSignedGames({
+    await saveLotterySignups({
       username: mockUser.username,
-      signedGames: [
-        { ...mockSignedGames[0], priority: 2 },
+      lotterySignups: [
+        { ...mockLotterySignups[0], priority: 2 },
         {
           // directSignupAlwaysOpen signed game should be ignored
           gameDetails: {
@@ -297,10 +297,10 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     await saveUser(mockUser);
     await saveUser(mockUser2);
 
-    await saveSignedGames({
+    await saveLotterySignups({
       username: mockUser.username,
-      signedGames: [
-        { ...mockSignedGames[0], priority: 2 },
+      lotterySignups: [
+        { ...mockLotterySignups[0], priority: 2 },
         {
           // directSignupAlwaysOpen signed game should be ignored
           gameDetails: { ...testGame2, gameId: directSignupAlwaysOpenId },
@@ -310,10 +310,10 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
         },
       ],
     });
-    await saveSignedGames({
+    await saveLotterySignups({
       username: mockUser2.username,
-      signedGames: [
-        { ...mockSignedGames[0], priority: 2 },
+      lotterySignups: [
+        { ...mockLotterySignups[0], priority: 2 },
         {
           // directSignupAlwaysOpen signed game should be ignored
           gameDetails: { ...testGame2, gameId: directSignupAlwaysOpenId },
@@ -395,9 +395,9 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     );
 
     // User 2 has selected program item for assignment
-    await saveSignedGames({
+    await saveLotterySignups({
       username: mockUser2.username,
-      signedGames: [{ ...mockSignedGames[1] }],
+      lotterySignups: [{ ...mockLotterySignups[1] }],
     });
 
     const signupsBeforeUpdate = unsafelyUnwrapResult(await findSignups());
@@ -456,11 +456,11 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     ]);
     await saveUser(mockUser);
 
-    await saveSignedGames({
+    await saveLotterySignups({
       username: mockUser.username,
-      signedGames: [
+      lotterySignups: [
         {
-          ...mockSignedGames[1],
+          ...mockLotterySignups[1],
         },
       ],
     });
@@ -534,14 +534,14 @@ describe("Assignment with first time bonus", () => {
     await saveUser(mockUser);
     await saveUser(mockUser2);
 
-    await saveSignedGames({
+    await saveLotterySignups({
       username: mockUser.username,
-      signedGames: [{ ...mockSignedGames[0], priority: 1 }],
+      lotterySignups: [{ ...mockLotterySignups[0], priority: 1 }],
     });
 
-    await saveSignedGames({
+    await saveLotterySignups({
       username: mockUser2.username,
-      signedGames: [{ ...mockSignedGames[0], priority: 3 }],
+      lotterySignups: [{ ...mockLotterySignups[0], priority: 3 }],
     });
 
     await saveSignup({
@@ -604,7 +604,7 @@ describe("Assignment with first time bonus", () => {
 
     expect(assignmentSignup?.userSignups[0]).toMatchObject({
       username: mockUser2.username,
-      time: mockSignedGames[0].gameDetails.startTime,
+      time: mockLotterySignups[0].gameDetails.startTime,
       message: "",
       priority: 3,
     });

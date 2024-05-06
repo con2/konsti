@@ -1,20 +1,20 @@
 import { groupBy, uniq } from "lodash-es";
 import dayjs from "dayjs";
 import {
-  PostSignedGamesError,
-  PostSignedGamesResponse,
+  PostLotterySignupsError,
+  PostLotterSignupsResponse,
 } from "shared/types/api/myGames";
-import { SelectedGame } from "shared/types/models/user";
-import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
+import { Signup } from "shared/types/models/user";
+import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import { getTimeNow } from "server/features/player-assignment/utils/getTimeNow";
 import { isValidSignupTime } from "server/features/user/userUtils";
 import { isErrorResult, unwrapResult } from "shared/utils/result";
 
-export const storeSignedGames = async (
-  selectedGames: readonly SelectedGame[],
+export const storeLotterySignups = async (
+  lotterySignups: readonly Signup[],
   username: string,
   startTime: string,
-): Promise<PostSignedGamesResponse | PostSignedGamesError> => {
+): Promise<PostLotterSignupsResponse | PostLotterySignupsError> => {
   const timeNowResult = await getTimeNow();
   if (isErrorResult(timeNowResult)) {
     return {
@@ -39,7 +39,7 @@ export const storeSignedGames = async (
   }
 
   // Check for duplicate priorities, ie. some kind of error
-  const gamesByTimeslot = groupBy(selectedGames, (game) => game.time);
+  const gamesByTimeslot = groupBy(lotterySignups, (game) => game.time);
 
   for (const [, games] of Object.entries(gamesByTimeslot)) {
     const priorities = games.map((selectedGame) => selectedGame.priority);
@@ -54,8 +54,8 @@ export const storeSignedGames = async (
     }
   }
 
-  const responseResult = await saveSignedGames({
-    signedGames: selectedGames,
+  const responseResult = await saveLotterySignups({
+    lotterySignups,
     username,
   });
 
@@ -72,6 +72,6 @@ export const storeSignedGames = async (
   return {
     message: "Signup success",
     status: "success",
-    signedGames: response.signedGames,
+    lotterySignups: response.lotterySignups,
   };
 };

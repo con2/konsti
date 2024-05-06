@@ -9,7 +9,7 @@ import { getStartingGames } from "server/features/player-assignment/utils/getSta
 import { getRunRandomAndPadgInput } from "server/features/player-assignment/utils/getRunRandomAndPadgInput";
 import { runPadgAssignment } from "server/features/player-assignment/padg/utils/runPadgAssignment";
 import { logger } from "server/utils/logger";
-import { Signup } from "server/features/signup/signupTypes";
+import { SignupsForProgramItem } from "server/features/signup/signupTypes";
 import {
   Result,
   isErrorResult,
@@ -23,7 +23,7 @@ export const padgAssignPlayers = (
   players: readonly User[],
   games: readonly Game[],
   startTime: string,
-  signups: readonly Signup[],
+  signups: readonly SignupsForProgramItem[],
 ): Result<PlayerAssignmentResult, AssignmentError> => {
   logger.debug(`***** Run Padg Assignment for ${startTime}`);
   const startingGames = getStartingGames(games, startTime);
@@ -39,13 +39,13 @@ export const padgAssignPlayers = (
   }
 
   const {
-    signedGames,
+    selectedGames,
     playerGroups,
     allPlayers,
     numberOfIndividuals,
     numberOfGroups,
   } = getRunRandomAndPadgInput(players, games, startTime);
-  if (signedGames.length === 0) {
+  if (selectedGames.length === 0) {
     logger.debug("No signup wishes, stop!");
     return makeSuccessResult({
       results: [],
@@ -55,13 +55,13 @@ export const padgAssignPlayers = (
     });
   }
 
-  logger.debug(`Games with signups: ${signedGames.length}`);
+  logger.debug(`Games with signups: ${selectedGames.length}`);
   logger.debug(
     `Selected players: ${allPlayers.length} (${numberOfIndividuals} individual, ${numberOfGroups} groups)`,
   );
 
   const assignmentResultResult = runPadgAssignment(
-    signedGames,
+    selectedGames,
     playerGroups,
     startTime,
     signups,
@@ -83,8 +83,8 @@ export const padgAssignPlayers = (
   }/${allPlayers.length} (${Math.round(
     (assignmentResult.results.length / allPlayers.length) * 100,
   )}%), Games: ${selectedUniqueGames.length}/${
-    signedGames.length
-  } (${Math.round((selectedUniqueGames.length / signedGames.length) * 100)}%)`;
+    selectedGames.length
+  } (${Math.round((selectedUniqueGames.length / selectedGames.length) * 100)}%)`;
 
   logger.debug(message);
 

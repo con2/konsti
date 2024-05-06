@@ -7,18 +7,18 @@ import {
   PostEnteredGameError,
   PostEnteredGameRequest,
   PostEnteredGameResponse,
-  PostSignedGamesError,
-  PostSignedGamesRequest,
-  PostSignedGamesResponse,
+  PostLotterySignupsError,
+  PostLotterySignupsRequest,
+  PostLotterSignupsResponse,
 } from "shared/types/api/myGames";
 
-export const postSignedGames = async (
-  signupData: PostSignedGamesRequest,
-): Promise<PostSignedGamesResponse | PostSignedGamesError> => {
+export const postLotterySignups = async (
+  signupData: PostLotterySignupsRequest,
+): Promise<PostLotterSignupsResponse | PostLotterySignupsError> => {
   const response = await api.post<
-    PostSignedGamesResponse,
-    PostSignedGamesRequest
-  >(ApiEndpoint.SIGNED_GAME, signupData);
+    PostLotterSignupsResponse,
+    PostLotterySignupsRequest
+  >(ApiEndpoint.LOTTERY_SIGNUP, signupData);
   return response.data;
 };
 

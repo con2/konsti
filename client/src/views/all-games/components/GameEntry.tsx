@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { Game } from "shared/types/models/game";
 import { SignupStrategy } from "shared/config/sharedConfigTypes";
-import { SelectedGame, UserGroup } from "shared/types/models/user";
+import { Signup, UserGroup } from "shared/types/models/user";
 import { RaisedCard } from "client/components/RaisedCard";
 import {
   isAlreadyEntered,
@@ -19,8 +19,8 @@ interface Props {
   startTime: string;
   players: number;
   signupStrategy: SignupStrategy;
-  signedGames: readonly SelectedGame[];
-  enteredGames: readonly SelectedGame[];
+  lotterySignups: readonly Signup[];
+  enteredGames: readonly Signup[];
   isAlwaysExpanded: boolean;
   loading: boolean;
   setLoading: (loading: boolean) => void;
@@ -35,7 +35,7 @@ export const GameEntry = ({
   startTime,
   players,
   signupStrategy,
-  signedGames,
+  lotterySignups,
   enteredGames,
   isAlwaysExpanded,
   loading,
@@ -57,7 +57,7 @@ export const GameEntry = ({
     signupAlwaysOpen;
 
   const isEnteredCurrentGame = isAlreadyEntered(game, enteredGames);
-  const isSignedForCurrentGame = isAlreadySigned(game, signedGames);
+  const isSignedForCurrentGame = isAlreadySigned(game, lotterySignups);
 
   const isGameSigned = isEnterGameMode
     ? isEnteredCurrentGame
@@ -87,7 +87,7 @@ export const GameEntry = ({
       <SignupInfo
         signupStrategy={signupStrategy}
         startTime={startTime}
-        signedGames={signedGames}
+        lotterySignups={lotterySignups}
         game={game}
         players={players}
         loading={loading}

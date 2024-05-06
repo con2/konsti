@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { capitalize } from "lodash-es";
 import { getTime, getWeekdayAndTime } from "client/utils/timeFormatter";
-import { SelectedGame } from "shared/types/models/user";
+import { Signup } from "shared/types/models/user";
 import { SignupStrategy } from "shared/config/sharedConfigTypes";
 import { MOBILE_MARGIN } from "client/globalStyle";
 import { config } from "shared/config";
@@ -14,8 +14,8 @@ import {
 
 interface Props {
   startTime: string;
-  signedGames: readonly SelectedGame[];
-  enteredGames: readonly SelectedGame[];
+  lotterySignups: readonly Signup[];
+  enteredGames: readonly Signup[];
   timeslotSignupStrategy: SignupStrategy;
   isGroupCreator: boolean;
   groupCode: string;
@@ -23,7 +23,7 @@ interface Props {
 
 export const GameListTitle = ({
   startTime,
-  signedGames,
+  lotterySignups,
   enteredGames,
   timeslotSignupStrategy,
   isGroupCreator,
@@ -41,10 +41,10 @@ export const GameListTitle = ({
     getAlgorithmSignupEndTime(startTime).toISOString(),
   );
 
-  const signedGamesCount = signedGames.filter(
+  const lotterySignupsCount = lotterySignups.filter(
     (game) => game.gameDetails.startTime === startTime,
   ).length;
-  const signedGame = enteredGames.find(
+  const directSignup = enteredGames.find(
     (game) => game.gameDetails.startTime === startTime,
   );
 
@@ -54,7 +54,7 @@ export const GameListTitle = ({
         <StartTimeContainer>
           <StartTime>{formattedStartTime}</StartTime>
           {timeslotSignupStrategy === SignupStrategy.ALGORITHM && (
-            <SignupCount>{signedGamesCount} / 3</SignupCount>
+            <DirectSignupCount>{lotterySignupsCount} / 3</DirectSignupCount>
           )}
         </StartTimeContainer>
 
@@ -67,9 +67,9 @@ export const GameListTitle = ({
           )}
 
         {timeslotSignupStrategy === SignupStrategy.DIRECT && (
-          <SignupCount>
-            {signedGame ? signedGame.gameDetails.title : ""}
-          </SignupCount>
+          <DirectSignupCount>
+            {directSignup ? directSignup.gameDetails.title : ""}
+          </DirectSignupCount>
         )}
       </StyledGameListTitle>
 
@@ -92,7 +92,7 @@ const StartTimeContainer = styled.span`
   justify-content: space-between;
 `;
 
-const SignupCount = styled.span`
+const DirectSignupCount = styled.span`
   float: right;
 `;
 

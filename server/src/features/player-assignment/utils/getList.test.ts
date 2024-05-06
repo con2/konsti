@@ -2,7 +2,7 @@ import { expect, test } from "vitest";
 import { testGame } from "shared/tests/testGame";
 import { getList } from "server/features/player-assignment/utils/getList";
 import { User, UserGroup } from "shared/types/models/user";
-import { Signup } from "server/features/signup/signupTypes";
+import { SignupsForProgramItem } from "server/features/signup/signupTypes";
 import { ProgramType } from "shared/types/models/game";
 
 const groupCreatorUser: User = {
@@ -15,7 +15,7 @@ const groupCreatorUser: User = {
   groupCode: "123-234-345",
   groupCreatorCode: "123-234-345",
   favoritedGames: [],
-  signedGames: [
+  lotterySignups: [
     {
       gameDetails: testGame,
       priority: 1,
@@ -37,7 +37,7 @@ const groupMember1: User = {
   groupCode: "123-234-345",
   groupCreatorCode: "0",
   favoritedGames: [],
-  signedGames: [],
+  lotterySignups: [],
   createdAt: "2019-11-23T12:00:00+02:00",
   eventLogItems: [],
 };
@@ -52,12 +52,12 @@ const groupMember2: User = {
   groupCode: "123-234-345",
   groupCreatorCode: "0",
   favoritedGames: [],
-  signedGames: [],
+  lotterySignups: [],
   createdAt: "2019-11-23T12:00:00+02:00",
   eventLogItems: [],
 };
 
-const previousMatchingSignup: Signup = {
+const previousMatchingSignup: SignupsForProgramItem = {
   game: testGame,
   userSignups: [
     {
@@ -69,7 +69,7 @@ const previousMatchingSignup: Signup = {
   ],
 };
 
-const previousNotMatchingSignup: Signup = {
+const previousNotMatchingSignup: SignupsForProgramItem = {
   game: testGame,
   userSignups: [
     {
@@ -81,7 +81,7 @@ const previousNotMatchingSignup: Signup = {
   ],
 };
 
-const previousMatchingSignupWithWrongType: Signup = {
+const previousMatchingSignupWithWrongType: SignupsForProgramItem = {
   game: { ...testGame, programType: ProgramType.TOURNAMENT },
   userSignups: [
     {

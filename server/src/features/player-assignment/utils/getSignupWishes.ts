@@ -8,12 +8,12 @@ export const getSignupWishes = (players: readonly User[]): SignupWish[] => {
 
   // Get signup wishes for all players
   players.forEach((player) => {
-    if (player.signedGames.length !== 0) {
-      player.signedGames.forEach((signedGame) => {
+    if (player.lotterySignups.length !== 0) {
+      player.lotterySignups.forEach((lotterySignup) => {
         signupWishes.push({
           username: player.username,
-          gameId: signedGame.gameDetails.gameId,
-          priority: signedGame.priority,
+          gameId: lotterySignup.gameDetails.gameId,
+          priority: lotterySignup.priority,
         });
       });
     }

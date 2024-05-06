@@ -6,12 +6,12 @@ import { AlgorithmSignupForm } from "client/views/all-games/components/Algorithm
 import { config } from "shared/config";
 import { SignupStrategy } from "shared/config/sharedConfigTypes";
 import { isRevolvingDoorWorkshop } from "client/utils/isRevolvingDoorWorkshop";
-import { SelectedGame } from "shared/types/models/user";
+import { Signup } from "shared/types/models/user";
 
 interface Props {
   signupStrategy: SignupStrategy;
   startTime: string;
-  signedGames: readonly SelectedGame[];
+  lotterySignups: readonly Signup[];
   game: Game;
   players: number;
   loading: boolean;
@@ -21,7 +21,7 @@ interface Props {
 export const SignupInfo = ({
   signupStrategy,
   startTime,
-  signedGames,
+  lotterySignups,
   game,
   players,
   loading,
@@ -48,7 +48,7 @@ export const SignupInfo = ({
         <AlgorithmSignupForm
           game={game}
           startTime={startTime}
-          signedGames={signedGames}
+          lotterySignups={lotterySignups}
         />
       )}
 

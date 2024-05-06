@@ -13,11 +13,11 @@ import { getJWT } from "server/utils/jwt";
 import { findUser, saveUser } from "server/features/user/userRepository";
 import {
   mockPostEnteredGameRequest,
-  mockSignedGames,
+  mockLotterySignups,
   mockUser,
   mockUser2,
 } from "server/test/mock-data/mockUser";
-import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
+import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import { saveGames } from "server/features/game/gameRepository";
 import { testGame, testGame2 } from "shared/tests/testGame";
 import { closeServer, startServer } from "server/utils/server";
@@ -134,12 +134,12 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
     await saveGames([testGame, testGame2]);
     await saveUser({ ...mockUser, groupCode, groupCreatorCode: groupCode });
     await saveUser(mockUser2);
-    const userWithSignupsResult = await saveSignedGames({
-      signedGames: mockSignedGames,
+    const userWithSignupsResult = await saveLotterySignups({
+      lotterySignups: mockLotterySignups,
       username: mockUser2.username,
     });
     const userWithSignups = unsafelyUnwrapResult(userWithSignupsResult);
-    expect(userWithSignups.signedGames.length).toEqual(2);
+    expect(userWithSignups.lotterySignups.length).toEqual(2);
 
     const groupRequest: PostJoinGroupRequest = {
       groupCode,
@@ -157,7 +157,7 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
     const updatedUserResult = await findUser(mockUser2.username);
     const updatedUser = unsafelyUnwrapResult(updatedUserResult);
     expect(updatedUser?.groupCode).toEqual(groupCode);
-    expect(updatedUser?.signedGames.length).toEqual(0);
+    expect(updatedUser?.lotterySignups.length).toEqual(0);
   });
 
   test("should return error if existing upcoming signups", async () => {

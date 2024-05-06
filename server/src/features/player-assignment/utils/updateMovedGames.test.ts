@@ -4,11 +4,11 @@ import mongoose from "mongoose";
 import { faker } from "@faker-js/faker";
 import { UserModel } from "server/features/user/userSchema";
 import { GameModel } from "server/features/game/gameSchema";
-import { mockUser, mockSignedGames } from "server/test/mock-data/mockUser";
+import { mockUser, mockLotterySignups } from "server/test/mock-data/mockUser";
 import { testGame, testGame2 } from "shared/tests/testGame";
 import { updateMovedGames } from "server/features/player-assignment/utils/updateMovedGames";
 import { findUser, saveUser } from "server/features/user/userRepository";
-import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
+import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import { findGames, saveGames } from "server/features/game/gameRepository";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 
@@ -29,14 +29,14 @@ test("should remove lottery signups for moved games from users", async () => {
   expect(insertedGames.length).toEqual(2);
 
   await saveUser(mockUser);
-  await saveSignedGames({
+  await saveLotterySignups({
     username: mockUser.username,
-    signedGames: mockSignedGames,
+    lotterySignups: mockLotterySignups,
   });
   const insertedUser = await UserModel.findOne({
     username: mockUser.username,
   });
-  expect(insertedUser?.signedGames.length).toEqual(2);
+  expect(insertedUser?.lotterySignups.length).toEqual(2);
 
   await GameModel.updateOne(
     { gameId: testGame.gameId },
@@ -50,8 +50,8 @@ test("should remove lottery signups for moved games from users", async () => {
   const findUserResult = await findUser(mockUser.username);
   const updatedUser = unsafelyUnwrapResult(findUserResult);
 
-  expect(updatedUser?.signedGames.length).toEqual(1);
-  expect(updatedUser?.signedGames[0].gameDetails.gameId).toEqual(
+  expect(updatedUser?.lotterySignups.length).toEqual(1);
+  expect(updatedUser?.lotterySignups[0].gameDetails.gameId).toEqual(
     testGame2.gameId,
   );
 });

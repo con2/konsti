@@ -12,7 +12,7 @@ export const getUsersWithoutGames = (
   // TODO: Update to use signup collection
   /*
   users.forEach((user) => {
-    if (user.enteredGames.length === 0 && user.signedGames.length !== 0) {
+    if (user.enteredGames.length === 0 && user.lotterySignups.length !== 0) {
       usersWithoutGames.push(user);
       counter += 1;
     }
@@ -34,7 +34,7 @@ export const getUsersWithoutSignups = (
   let counter = 0;
   const usersWithoutSignups = [] as User[];
   users.forEach((user) => {
-    if (user.signedGames.length === 0) {
+    if (user.lotterySignups.length === 0) {
       usersWithoutSignups.push(user);
       counter += 1;
     }
@@ -52,8 +52,8 @@ export const getUsersWithoutSignups = (
 export const getUsersSignupCount = (users: readonly User[]): void => {
   const userSignupCounts: StringNumberObject[] = [];
   users.forEach((user) => {
-    const signedGames = countBy(user.signedGames, "time");
-    userSignupCounts.push(signedGames);
+    const lotterySignups = countBy(user.lotterySignups, "time");
+    userSignupCounts.push(lotterySignups);
   });
 
   const gameWishes: StringNumberObject = {};
@@ -87,9 +87,9 @@ export const getUsersWithAllGames = (_users: readonly User[]): void => {
   let counter = 0;
 
   users.forEach((user) => {
-    const signedGamesByTime = countBy(user.signedGames, "time");
+    const lotterySignupsByTime = countBy(user.lotterySignups, "time");
 
-    if (Object.keys(signedGamesByTime).length === user.enteredGames.length) {
+    if (Object.keys(lotterySignupsByTime).length === user.enteredGames.length) {
       counter++;
     }
   });

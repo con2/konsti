@@ -1,13 +1,13 @@
 import { z } from "zod";
 import { SIGNUP_MESSAGE_LENGTH } from "shared/constants/validation";
 import { ApiError, ApiResult } from "shared/types/api/errors";
-import { SelectedGame } from "shared/types/models/user";
+import { Signup } from "shared/types/models/user";
 import { GameSchema } from "shared/types/models/game";
 
-// POST signed games
+// POST lottery signup
 
-export const PostSignedGamesRequestSchema = z.object({
-  selectedGames: z.array(
+export const PostLotterySignupsRequestSchema = z.object({
+  lotterySignups: z.array(
     z.object({
       gameDetails: GameSchema,
       priority: z.number(),
@@ -18,19 +18,19 @@ export const PostSignedGamesRequestSchema = z.object({
   startTime: z.string(),
 });
 
-export type PostSignedGamesRequest = z.infer<
-  typeof PostSignedGamesRequestSchema
+export type PostLotterySignupsRequest = z.infer<
+  typeof PostLotterySignupsRequestSchema
 >;
 
-export interface PostSignedGamesResponse extends ApiResult {
-  signedGames: readonly SelectedGame[];
+export interface PostLotterSignupsResponse extends ApiResult {
+  lotterySignups: readonly Signup[];
 }
 
-export interface PostSignedGamesError extends ApiError {
+export interface PostLotterySignupsError extends ApiError {
   errorId: "unknown" | "signupEnded" | "samePriority";
 }
 
-// POST entered game
+// POST direct signup
 
 export const PostEnteredGameRequestSchema = z.object({
   username: z.string(),
@@ -45,7 +45,7 @@ export type PostEnteredGameRequest = z.infer<
 >;
 
 export interface PostEnteredGameResponse extends ApiResult {
-  enteredGame: SelectedGame;
+  enteredGame: Signup;
 }
 
 export interface PostEnteredGameError extends ApiError {

@@ -9,7 +9,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [],
+    "lotterySignups": [],
     "eventLogItems": [],
     "createdAt": "2023-11-02T17:47:24.185Z",
     "updatedAt": "2023-11-05T10:00:15.747Z"
@@ -24,7 +24,7 @@
     "groupCreatorCode": "0",
     "groupCode": "871-7c7-463",
     "favoritedGames": [{ "gameId": "p7334" }],
-    "signedGames": [],
+    "lotterySignups": [],
     "eventLogItems": [
       {
         "action": "newAssignment",
@@ -53,7 +53,7 @@
       { "gameId": "p7358" },
       { "gameId": "p7344" }
     ],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7358" },
         "priority": 1,
@@ -83,7 +83,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [],
+    "lotterySignups": [],
     "eventLogItems": [],
     "createdAt": "2023-11-02T18:05:53.612Z",
     "updatedAt": "2023-11-05T10:00:15.747Z"
@@ -98,7 +98,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [],
+    "lotterySignups": [],
     "eventLogItems": [],
     "createdAt": "2023-11-02T18:12:01.796Z",
     "updatedAt": "2023-11-05T10:00:15.747Z"
@@ -120,7 +120,7 @@
       { "gameId": "p7339" },
       { "gameId": "<canceled>" }
     ],
-    "signedGames": [],
+    "lotterySignups": [],
     "eventLogItems": [],
     "createdAt": "2023-11-02T18:17:45.007Z",
     "updatedAt": "2023-11-05T10:00:15.747Z"
@@ -135,7 +135,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [],
+    "lotterySignups": [],
     "eventLogItems": [],
     "createdAt": "2023-11-02T18:59:09.964Z",
     "updatedAt": "2023-11-05T10:00:15.747Z"
@@ -157,7 +157,7 @@
       { "gameId": "p7347" },
       { "gameId": "p7343" }
     ],
-    "signedGames": [],
+    "lotterySignups": [],
     "eventLogItems": [],
     "createdAt": "2023-11-02T19:04:45.884Z",
     "updatedAt": "2023-11-05T10:00:15.747Z"
@@ -186,7 +186,7 @@
       { "gameId": "<canceled>" },
       { "gameId": "<canceled>" }
     ],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7367" },
         "priority": 1,
@@ -216,7 +216,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7368" },
         "priority": 2,
@@ -272,7 +272,7 @@
       { "gameId": "p7362" },
       { "gameId": "p7367" }
     ],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7373" },
         "priority": 1,
@@ -324,7 +324,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [],
+    "lotterySignups": [],
     "eventLogItems": [],
     "createdAt": "2023-11-03T07:46:17.222Z",
     "updatedAt": "2023-11-05T10:00:15.747Z"
@@ -339,7 +339,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [{ "gameId": "p7298" }, { "gameId": "p7299" }],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7298" },
         "priority": 1,
@@ -384,7 +384,7 @@
       { "gameId": "p7365" },
       { "gameId": "p7424" }
     ],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7274" },
         "priority": 1,
@@ -464,7 +464,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [{ "gameId": "p7300" }],
-    "signedGames": [],
+    "lotterySignups": [],
     "eventLogItems": [],
     "createdAt": "2023-11-03T09:32:46.284Z",
     "updatedAt": "2023-11-05T10:00:15.747Z"
@@ -479,7 +479,7 @@
     "groupCreatorCode": "0",
     "groupCode": "871-7c7-463",
     "favoritedGames": [],
-    "signedGames": [],
+    "lotterySignups": [],
     "eventLogItems": [
       {
         "action": "newAssignment",
@@ -502,7 +502,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7368" },
         "priority": 1,
@@ -530,7 +530,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [{ "gameId": "p7365" }, { "gameId": "p7347" }],
-    "signedGames": [],
+    "lotterySignups": [],
     "eventLogItems": [],
     "createdAt": "2023-11-03T12:58:51.695Z",
     "updatedAt": "2023-11-05T10:00:15.747Z"
@@ -545,7 +545,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7345" },
         "priority": 1,
@@ -620,7 +620,7 @@
       { "gameId": "p7369" },
       { "gameId": "p7365" }
     ],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7369" },
         "priority": 1,
@@ -652,7 +652,7 @@
       { "gameId": "p7280" },
       { "gameId": "p7360" }
     ],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7360" },
         "priority": 1,
@@ -682,7 +682,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [],
+    "lotterySignups": [],
     "eventLogItems": [],
     "createdAt": "2023-11-03T15:48:24.24Z",
     "updatedAt": "2023-11-05T10:00:15.747Z"
@@ -697,7 +697,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [],
+    "lotterySignups": [],
     "eventLogItems": [],
     "createdAt": "2023-11-03T16:13:20.485Z",
     "updatedAt": "2023-11-05T10:00:15.747Z"
@@ -717,7 +717,7 @@
       { "gameId": "<canceled>" },
       { "gameId": "p7341" }
     ],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7368" },
         "priority": 1,
@@ -747,7 +747,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [],
+    "lotterySignups": [],
     "eventLogItems": [],
     "createdAt": "2023-11-03T18:07:02.002Z",
     "updatedAt": "2023-11-05T10:00:15.747Z"
@@ -762,7 +762,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [],
+    "lotterySignups": [],
     "eventLogItems": [],
     "createdAt": "2023-11-03T18:10:51.429Z",
     "updatedAt": "2023-11-05T10:00:15.747Z"
@@ -777,7 +777,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7373" },
         "priority": 1,
@@ -807,7 +807,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [{ "gameId": "p7361" }, { "gameId": "p7353" }],
-    "signedGames": [],
+    "lotterySignups": [],
     "eventLogItems": [],
     "createdAt": "2023-11-03T18:30:17.305Z",
     "updatedAt": "2023-11-05T10:00:15.747Z"
@@ -822,7 +822,7 @@
     "groupCreatorCode": "871-7c7-463",
     "groupCode": "871-7c7-463",
     "favoritedGames": [],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7274" },
         "priority": 1,
@@ -870,7 +870,7 @@
     "groupCreatorCode": "0",
     "groupCode": "871-7c7-463",
     "favoritedGames": [],
-    "signedGames": [],
+    "lotterySignups": [],
     "eventLogItems": [
       {
         "action": "newAssignment",
@@ -893,7 +893,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [],
+    "lotterySignups": [],
     "eventLogItems": [],
     "createdAt": "2023-11-03T19:28:20.473Z",
     "updatedAt": "2023-11-05T10:00:15.747Z"
@@ -908,7 +908,7 @@
     "groupCreatorCode": "0",
     "groupCode": "673-35d-13d",
     "favoritedGames": [],
-    "signedGames": [],
+    "lotterySignups": [],
     "eventLogItems": [
       {
         "action": "newAssignment",
@@ -931,7 +931,7 @@
     "groupCreatorCode": "673-35d-13d",
     "groupCode": "673-35d-13d",
     "favoritedGames": [],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7298" },
         "priority": 1,
@@ -981,7 +981,7 @@
       { "gameId": "p7269" },
       { "gameId": "p7365" }
     ],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7298" },
         "priority": 2,
@@ -1037,7 +1037,7 @@
       { "gameId": "p7365" },
       { "gameId": "p7369" }
     ],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7279" },
         "priority": 1,
@@ -1082,7 +1082,7 @@
       { "gameId": "p7424" },
       { "gameId": "p7365" }
     ],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7367" },
         "priority": 1,
@@ -1118,7 +1118,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7368" },
         "priority": 1,
@@ -1155,7 +1155,7 @@
       { "gameId": "p7298" },
       { "gameId": "p7284" }
     ],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7298" },
         "priority": 1,
@@ -1185,7 +1185,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [{ "gameId": "p7347" }, { "gameId": "p7346" }],
-    "signedGames": [],
+    "lotterySignups": [],
     "eventLogItems": [],
     "createdAt": "2023-11-03T22:27:15.948Z",
     "updatedAt": "2023-11-05T10:00:15.747Z"
@@ -1215,7 +1215,7 @@
       { "gameId": "p7300" },
       { "gameId": "p7269" }
     ],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7269" },
         "priority": 1,
@@ -1245,7 +1245,7 @@
     "groupCreatorCode": "809-cd5-b1a",
     "groupCode": "809-cd5-b1a",
     "favoritedGames": [{ "gameId": "p7358" }, { "gameId": "p7367" }],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7358" },
         "priority": 1,
@@ -1288,7 +1288,7 @@
       { "gameId": "p7358" },
       { "gameId": "p7367" }
     ],
-    "signedGames": [],
+    "lotterySignups": [],
     "eventLogItems": [
       {
         "action": "newAssignment",
@@ -1319,7 +1319,7 @@
       { "gameId": "<canceled>" },
       { "gameId": "p7364" }
     ],
-    "signedGames": [],
+    "lotterySignups": [],
     "eventLogItems": [],
     "createdAt": "2023-11-04T05:03:11.837Z",
     "updatedAt": "2023-11-05T10:00:15.747Z"
@@ -1342,7 +1342,7 @@
       { "gameId": "p7273" },
       { "gameId": "<canceled>" }
     ],
-    "signedGames": [],
+    "lotterySignups": [],
     "eventLogItems": [],
     "createdAt": "2023-11-04T05:12:07.633Z",
     "updatedAt": "2023-11-05T10:00:15.747Z"
@@ -1364,7 +1364,7 @@
       { "gameId": "p7358" },
       { "gameId": "p7424" }
     ],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7368" },
         "priority": 1,
@@ -1413,7 +1413,7 @@
       { "gameId": "p7358" },
       { "gameId": "p7367" }
     ],
-    "signedGames": [],
+    "lotterySignups": [],
     "eventLogItems": [
       {
         "action": "newAssignment",
@@ -1458,7 +1458,7 @@
       { "gameId": "p7367" },
       { "gameId": "p7369" }
     ],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7269" },
         "priority": 1,
@@ -1539,7 +1539,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [{ "gameId": "p7284" }],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7345" },
         "priority": 1,
@@ -1616,7 +1616,7 @@
       { "gameId": "p7361" },
       { "gameId": "p7359" }
     ],
-    "signedGames": [],
+    "lotterySignups": [],
     "eventLogItems": [],
     "createdAt": "2023-11-04T06:22:16.12Z",
     "updatedAt": "2023-11-05T10:00:15.747Z"
@@ -1646,7 +1646,7 @@
       { "gameId": "p7346" },
       { "gameId": "p7365" }
     ],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7346" },
         "priority": 1,
@@ -1682,7 +1682,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [],
+    "lotterySignups": [],
     "eventLogItems": [],
     "createdAt": "2023-11-04T06:39:28.618Z",
     "updatedAt": "2023-11-05T10:00:15.747Z"
@@ -1701,7 +1701,7 @@
       { "gameId": "p7361" },
       { "gameId": "p7353" }
     ],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7365" },
         "priority": 1,
@@ -1741,7 +1741,7 @@
       { "gameId": "p7284" },
       { "gameId": "p7361" }
     ],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7269" },
         "priority": 1,
@@ -1796,7 +1796,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [],
+    "lotterySignups": [],
     "eventLogItems": [],
     "createdAt": "2023-11-04T07:02:13.728Z",
     "updatedAt": "2023-11-05T10:00:15.747Z"
@@ -1817,7 +1817,7 @@
       { "gameId": "p7346" },
       { "gameId": "<canceled>" }
     ],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7346" },
         "priority": 1,
@@ -1847,7 +1847,7 @@
     "groupCreatorCode": "84d-95c-a2f",
     "groupCode": "84d-95c-a2f",
     "favoritedGames": [],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7338" },
         "priority": 1,
@@ -1877,7 +1877,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [{ "gameId": "p7346" }],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7360" },
         "priority": 1,
@@ -1913,7 +1913,7 @@
     "groupCreatorCode": "0",
     "groupCode": "84d-95c-a2f",
     "favoritedGames": [],
-    "signedGames": [],
+    "lotterySignups": [],
     "eventLogItems": [
       {
         "action": "newAssignment",
@@ -1936,7 +1936,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [{ "gameId": "p7359" }, { "gameId": "p7361" }],
-    "signedGames": [],
+    "lotterySignups": [],
     "eventLogItems": [],
     "createdAt": "2023-11-04T07:21:14.706Z",
     "updatedAt": "2023-11-05T10:00:15.747Z"
@@ -1959,7 +1959,7 @@
       { "gameId": "p7273" },
       { "gameId": "p7358" }
     ],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7280" },
         "priority": 1,
@@ -2027,7 +2027,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [],
+    "lotterySignups": [],
     "eventLogItems": [
       {
         "action": "newAssignment",
@@ -2050,7 +2050,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [],
+    "lotterySignups": [],
     "eventLogItems": [],
     "createdAt": "2023-11-04T07:38:28.925Z",
     "updatedAt": "2023-11-05T10:00:15.747Z"
@@ -2071,7 +2071,7 @@
       { "gameId": "p7299" },
       { "gameId": "p7369" }
     ],
-    "signedGames": [],
+    "lotterySignups": [],
     "eventLogItems": [],
     "createdAt": "2023-11-04T07:45:16.362Z",
     "updatedAt": "2023-11-05T10:00:15.747Z"
@@ -2090,7 +2090,7 @@
       { "gameId": "p7361" },
       { "gameId": "p7284" }
     ],
-    "signedGames": [],
+    "lotterySignups": [],
     "eventLogItems": [],
     "createdAt": "2023-11-04T07:49:14.165Z",
     "updatedAt": "2023-11-05T10:00:15.747Z"
@@ -2105,7 +2105,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [],
+    "lotterySignups": [],
     "eventLogItems": [],
     "createdAt": "2023-11-04T07:52:20.466Z",
     "updatedAt": "2023-11-05T10:00:15.747Z"
@@ -2130,7 +2130,7 @@
       { "gameId": "p7344" },
       { "gameId": "p7362" }
     ],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7274" },
         "priority": 1,
@@ -2160,7 +2160,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [],
+    "lotterySignups": [],
     "eventLogItems": [],
     "createdAt": "2023-11-04T07:54:42.663Z",
     "updatedAt": "2023-11-05T10:00:15.747Z"
@@ -2175,7 +2175,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7362" },
         "priority": 1,
@@ -2209,7 +2209,7 @@
     "groupCreatorCode": "a55-454-c6c",
     "groupCode": "a55-454-c6c",
     "favoritedGames": [],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7364" },
         "priority": 1,
@@ -2263,7 +2263,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [],
+    "lotterySignups": [],
     "eventLogItems": [],
     "createdAt": "2023-11-04T08:06:23.32Z",
     "updatedAt": "2023-11-05T10:00:15.747Z"
@@ -2278,7 +2278,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7274" },
         "priority": 1,
@@ -2339,7 +2339,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [{ "gameId": "p7274" }, { "gameId": "p7280" }],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7274" },
         "priority": 1,
@@ -2369,7 +2369,7 @@
     "groupCreatorCode": "0",
     "groupCode": "a55-454-c6c",
     "favoritedGames": [],
-    "signedGames": [],
+    "lotterySignups": [],
     "eventLogItems": [
       {
         "action": "newAssignment",
@@ -2392,7 +2392,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7345" },
         "priority": 1,
@@ -2434,7 +2434,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [],
+    "lotterySignups": [],
     "eventLogItems": [],
     "createdAt": "2023-11-04T08:10:39.683Z",
     "updatedAt": "2023-11-05T10:00:15.747Z"
@@ -2455,7 +2455,7 @@
       { "gameId": "p7365" },
       { "gameId": "p7344" }
     ],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7335" },
         "priority": 1,
@@ -2504,7 +2504,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [],
+    "lotterySignups": [],
     "eventLogItems": [
       {
         "action": "newAssignment",
@@ -2527,7 +2527,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7360" },
         "priority": 1,
@@ -2563,7 +2563,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [],
+    "lotterySignups": [],
     "eventLogItems": [],
     "createdAt": "2023-11-04T08:23:06.533Z",
     "updatedAt": "2023-11-05T10:00:15.747Z"
@@ -2578,7 +2578,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [],
+    "lotterySignups": [],
     "eventLogItems": [],
     "createdAt": "2023-11-04T08:28:18.094Z",
     "updatedAt": "2023-11-05T10:00:15.747Z"
@@ -2593,7 +2593,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7364" },
         "priority": 1,
@@ -2634,7 +2634,7 @@
       { "gameId": "p7346" },
       { "gameId": "p7345" }
     ],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7346" },
         "priority": 1,
@@ -2670,7 +2670,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [],
+    "lotterySignups": [],
     "eventLogItems": [],
     "createdAt": "2023-11-04T08:32:49.283Z",
     "updatedAt": "2023-11-05T10:00:15.747Z"
@@ -2689,7 +2689,7 @@
       { "gameId": "p7362" },
       { "gameId": "p7358" }
     ],
-    "signedGames": [],
+    "lotterySignups": [],
     "eventLogItems": [],
     "createdAt": "2023-11-04T08:34:05.592Z",
     "updatedAt": "2023-11-05T10:00:15.747Z"
@@ -2704,7 +2704,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [],
+    "lotterySignups": [],
     "eventLogItems": [],
     "createdAt": "2023-11-04T08:37:08.253Z",
     "updatedAt": "2023-11-05T10:00:15.747Z"
@@ -2719,7 +2719,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [],
+    "lotterySignups": [],
     "eventLogItems": [],
     "createdAt": "2023-11-04T08:37:35.563Z",
     "updatedAt": "2023-11-05T10:00:15.747Z"
@@ -2734,7 +2734,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7338" },
         "priority": 1,
@@ -2777,7 +2777,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7369" },
         "priority": 1,
@@ -2807,7 +2807,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7345" },
         "priority": 1,
@@ -2856,7 +2856,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7345" },
         "priority": 1,
@@ -2905,7 +2905,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [{ "gameId": "p7341" }, { "gameId": "p7345" }],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7345" },
         "priority": 1,
@@ -2954,7 +2954,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7345" },
         "priority": 1,
@@ -3003,7 +3003,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7364" },
         "priority": 2,
@@ -3058,7 +3058,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7362" },
         "priority": 2,
@@ -3100,7 +3100,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [],
+    "lotterySignups": [],
     "eventLogItems": [],
     "createdAt": "2023-11-04T09:33:55.705Z",
     "updatedAt": "2023-11-05T10:00:15.747Z"
@@ -3115,7 +3115,7 @@
     "groupCreatorCode": "737-a8e-019",
     "groupCode": "737-a8e-019",
     "favoritedGames": [],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7274" },
         "priority": 1,
@@ -3176,7 +3176,7 @@
     "groupCreatorCode": "0",
     "groupCode": "737-a8e-019",
     "favoritedGames": [],
-    "signedGames": [],
+    "lotterySignups": [],
     "eventLogItems": [
       {
         "action": "newAssignment",
@@ -3206,7 +3206,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [],
+    "lotterySignups": [],
     "eventLogItems": [],
     "createdAt": "2023-11-04T09:37:42.119Z",
     "updatedAt": "2023-11-05T10:00:15.747Z"
@@ -3221,7 +3221,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7280" },
         "priority": 1,
@@ -3264,7 +3264,7 @@
     "groupCreatorCode": "0",
     "groupCode": "737-a8e-019",
     "favoritedGames": [],
-    "signedGames": [],
+    "lotterySignups": [],
     "eventLogItems": [
       {
         "action": "newAssignment",
@@ -3294,7 +3294,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [],
+    "lotterySignups": [],
     "eventLogItems": [],
     "createdAt": "2023-11-04T10:02:02.62Z",
     "updatedAt": "2023-11-05T10:00:15.747Z"
@@ -3309,7 +3309,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7364" },
         "priority": 2,
@@ -3358,7 +3358,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7274" },
         "priority": 1,
@@ -3401,7 +3401,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7360" },
         "priority": 1,
@@ -3443,7 +3443,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7345" },
         "priority": 1,
@@ -3477,7 +3477,7 @@
       { "gameId": "p7285" },
       { "gameId": "p7362" }
     ],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7345" },
         "priority": 1,
@@ -3538,7 +3538,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7360" },
         "priority": 1,
@@ -3593,7 +3593,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7373" },
         "priority": 1,
@@ -3623,7 +3623,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [],
+    "lotterySignups": [],
     "eventLogItems": [],
     "createdAt": "2023-11-04T11:35:05.6Z",
     "updatedAt": "2023-11-05T10:00:15.747Z"
@@ -3638,7 +3638,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7369" },
         "priority": 2,
@@ -3688,7 +3688,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [{ "gameId": "p7360" }],
-    "signedGames": [],
+    "lotterySignups": [],
     "eventLogItems": [],
     "createdAt": "2023-11-04T12:01:13.017Z",
     "updatedAt": "2023-11-05T10:00:15.747Z"
@@ -3710,7 +3710,7 @@
       { "gameId": "p7362" },
       { "gameId": "p7367" }
     ],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7373" },
         "priority": 1,
@@ -3747,7 +3747,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7344" },
         "priority": 1,
@@ -3777,7 +3777,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7360" },
         "priority": 1,
@@ -3799,7 +3799,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7364" },
         "priority": 1,
@@ -3829,7 +3829,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7358" },
         "priority": 1,
@@ -3865,7 +3865,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7279" },
         "priority": 1,
@@ -3918,7 +3918,7 @@
       { "gameId": "p7299" },
       { "gameId": "p7365" }
     ],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7365" },
         "priority": 1,
@@ -3960,7 +3960,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7269" },
         "priority": 2,
@@ -3996,7 +3996,7 @@
     "groupCreatorCode": "03a-74c-a5a",
     "groupCode": "03a-74c-a5a",
     "favoritedGames": [],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7279" },
         "priority": 1,
@@ -4038,7 +4038,7 @@
     "groupCreatorCode": "0",
     "groupCode": "03a-74c-a5a",
     "favoritedGames": [],
-    "signedGames": [],
+    "lotterySignups": [],
     "eventLogItems": [
       {
         "action": "newAssignment",
@@ -4061,7 +4061,7 @@
     "groupCreatorCode": "0",
     "groupCode": "03a-74c-a5a",
     "favoritedGames": [],
-    "signedGames": [],
+    "lotterySignups": [],
     "eventLogItems": [
       {
         "action": "newAssignment",
@@ -4084,7 +4084,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7362" },
         "priority": 1,
@@ -4126,7 +4126,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7346" },
         "priority": 1,
@@ -4156,7 +4156,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7362" },
         "priority": 1,
@@ -4198,7 +4198,7 @@
     "groupCreatorCode": "0",
     "groupCode": "737-a8e-019",
     "favoritedGames": [],
-    "signedGames": [],
+    "lotterySignups": [],
     "eventLogItems": [
       {
         "action": "newAssignment",
@@ -4221,7 +4221,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [],
+    "lotterySignups": [],
     "eventLogItems": [],
     "createdAt": "2023-11-04T14:40:50.837Z",
     "updatedAt": "2023-11-05T10:00:15.747Z"
@@ -4236,7 +4236,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [],
+    "lotterySignups": [],
     "eventLogItems": [],
     "createdAt": "2023-11-04T14:49:13.34Z",
     "updatedAt": "2023-11-05T10:00:15.747Z"
@@ -4259,7 +4259,7 @@
       { "gameId": "p7424" },
       { "gameId": "p7344" }
     ],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7270" },
         "priority": 2,
@@ -4308,7 +4308,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [],
+    "lotterySignups": [],
     "eventLogItems": [],
     "createdAt": "2023-11-04T19:29:23.78Z",
     "updatedAt": "2023-11-05T10:00:15.747Z"
@@ -4323,7 +4323,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7285" },
         "priority": 1,
@@ -4353,7 +4353,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7299" },
         "priority": 2,
@@ -4389,7 +4389,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7369" },
         "priority": 1,
@@ -4419,7 +4419,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7362" },
         "priority": 1,
@@ -4455,7 +4455,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7424" },
         "priority": 1,
@@ -4491,7 +4491,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7344" },
         "priority": 1,
@@ -4521,7 +4521,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7424" },
         "priority": 1,
@@ -4551,7 +4551,7 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [],
-    "signedGames": [
+    "lotterySignups": [
       {
         "gameDetails": { "gameId": "p7424" },
         "priority": 1,

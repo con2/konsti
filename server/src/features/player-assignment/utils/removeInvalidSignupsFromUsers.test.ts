@@ -3,11 +3,11 @@ import mongoose from "mongoose";
 import { faker } from "@faker-js/faker";
 import { UserModel } from "server/features/user/userSchema";
 import { GameModel } from "server/features/game/gameSchema";
-import { mockUser, mockSignedGames } from "server/test/mock-data/mockUser";
+import { mockUser, mockLotterySignups } from "server/test/mock-data/mockUser";
 import { testGame, testGame2 } from "shared/tests/testGame";
 import { removeInvalidGamesFromUsers } from "server/features/player-assignment/utils/removeInvalidGamesFromUsers";
 import { saveUser } from "server/features/user/userRepository";
-import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
+import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 
 beforeEach(async () => {
   await mongoose.connect(globalThis.__MONGO_URI__, {
@@ -28,14 +28,14 @@ test("should remove signups for invalid games from users", async () => {
   expect(insertedGames.length).toEqual(2);
 
   await saveUser(mockUser);
-  await saveSignedGames({
+  await saveLotterySignups({
     username: mockUser.username,
-    signedGames: mockSignedGames,
+    lotterySignups: mockLotterySignups,
   });
   const insertedUser = await UserModel.findOne({
     username: mockUser.username,
   });
-  expect(insertedUser?.signedGames.length).toEqual(2);
+  expect(insertedUser?.lotterySignups.length).toEqual(2);
 
   await GameModel.deleteOne({ gameId: game.gameId });
 
@@ -43,7 +43,7 @@ test("should remove signups for invalid games from users", async () => {
   const updatedUser = await UserModel.findOne({
     username: mockUser.username,
   });
-  expect(updatedUser?.signedGames.length).toEqual(1);
+  expect(updatedUser?.lotterySignups.length).toEqual(1);
 
   const insertedGames2 = await GameModel.find({});
   expect(insertedGames2.length).toEqual(1);

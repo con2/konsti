@@ -13,7 +13,7 @@ import {
   delSignupDocumentsByGameIds,
   findSignups,
 } from "server/features/signup/signupRepository";
-import { Signup } from "server/features/signup/signupTypes";
+import { SignupsForProgramItem } from "server/features/signup/signupTypes";
 import {
   Result,
   isErrorResult,
@@ -133,7 +133,7 @@ const getSignupStrategyForGame = (
 };
 
 const getSignupsForGame = (
-  signups: Signup[],
+  signups: SignupsForProgramItem[],
   gameId: string,
   signupQuestion?: SignupQuestion | undefined,
 ): UserSignup[] => {
