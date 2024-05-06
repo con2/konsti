@@ -156,7 +156,7 @@
   },
   "user": "Käyttäjä",
   "favoritedProgramItems": "Suosikit",
-  "lotterySignedGames": "Arvontaan ilmoittautumiset",
+  "lotterySignups": "Arvontaan ilmoittautumiset",
   "enteredGames": "Ilmoittautumiset",
   "hiddenProgramItems": "Piilotetut ohjelmanumerot",
   "error": {
@@ -171,7 +171,7 @@
   "showPrivacyPolicy": "Näytä rekisteriseloste",
   "hidePrivacyPolicy": "Piilota rekisteriseloste",
   "registrationSerialHelp": "Nouda rekisteröintikoodi Larp- ja Roolipelitiskiltä, Pelitiskiltä tai Infosta.",
-  "noSignedGames": "Ei valittuja pelejä. Voit ilmoittautua peleihin Kaikki ohjelma -näkymässä.",
+  "noLotterySignups": "Ei valittuja pelejä. Voit ilmoittautua peleihin Kaikki ohjelma -näkymässä.",
   "noFavoritedProgramItems": "Ei suosikkeja. Voit tallettaa suosikkiohjelmaa Kaikki ohjelma -näkymässä.",
   "noEnteredGames": "Ei ilmoittautumisia. Voit ilmoittautua ohjelmaan Kaikki ohjelma -näkymässä.",
   "noHiddenProgramItems": "Ei piilotettuja ohjelmanumeroita",
@@ -214,10 +214,10 @@
     "error": {
       "cannotUseOwnSerial": "Et voi käyttää omaa koodia ryhmään liittymisessä",
       "groupExists": "Ryhmä on jo olemassa",
-      "removePreviousSignupsFailed": "Virhe aikaisempia ilmoittautumisia poistaessa, yritä uudelleen.",
+      "removePreviousLotterySignupsFailed": "Virhe aikaisempia arvontailmoittautumisia poistaessa, yritä uudelleen.",
       "onlyCreatorCanCloseGroup": "Vain ryhmän perustaja voi sulkea ryhmän.",
-      "userHasSignedGames": "Sinulla on jo ilmoittautumisia peleihin. Poista ilmoittautumiset ennen kuin liityt ryhmään.",
-      "creatorHasSignedGames": "Sinulla on jo ilmoittautumisia peleihin. Poista ilmoittautumiset ennen kuin voit luoda ryhmän.",
+      "userHasDirectSignups": "Sinulla on jo ilmoittautumisia peleihin. Poista ilmoittautumiset ennen kuin liityt ryhmään.",
+      "creatorHasDirectSignups": "Sinulla on jo ilmoittautumisia peleihin. Poista ilmoittautumiset ennen kuin voit luoda ryhmän.",
       "alreadyInGroup": "Kuulut jo toiseen ryhmään."
     },
     "hasEnteredFollowingGames": "Olet jo ilmoittautunut seuraaviin peleihin:",

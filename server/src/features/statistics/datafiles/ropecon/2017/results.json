@@ -3,7 +3,7 @@
     "startTime": "2017-07-28T13:00:00.000Z",
     "results": [
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T13:00:00.000Z",
             "priority": "1",
@@ -26,7 +26,7 @@
         "username": "937874"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T13:00:00.000Z",
             "priority": "1",
@@ -44,7 +44,7 @@
         "username": "929122"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T13:00:00.000Z",
             "priority": "1",
@@ -62,7 +62,7 @@
         "username": "568609"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T13:00:00.000Z",
             "priority": "1",
@@ -80,7 +80,7 @@
         "username": "461959"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T13:00:00.000Z",
             "priority": "1",
@@ -93,7 +93,7 @@
         "username": "71859"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T13:00:00.000Z",
             "priority": "1",
@@ -111,7 +111,7 @@
         "username": "190718"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T13:00:00.000Z",
             "priority": "1",
@@ -129,7 +129,7 @@
         "username": "973465"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T13:00:00.000Z",
             "priority": "1",
@@ -147,7 +147,7 @@
         "username": "807858"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T13:00:00.000Z",
             "priority": "1",
@@ -160,7 +160,7 @@
         "username": "601249"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T13:00:00.000Z",
             "priority": "1",
@@ -183,7 +183,7 @@
         "username": "82198"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T13:00:00.000Z",
             "priority": "1",
@@ -206,7 +206,7 @@
         "username": "420650"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T13:00:00.000Z",
             "priority": "1",
@@ -229,7 +229,7 @@
         "username": "141399"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T13:00:00.000Z",
             "priority": "1",
@@ -242,7 +242,7 @@
         "username": "661183"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T13:00:00.000Z",
             "priority": "1",
@@ -255,7 +255,7 @@
         "username": "896984"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T13:00:00.000Z",
             "priority": "1",
@@ -273,7 +273,7 @@
         "username": "762393"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T13:00:00.000Z",
             "priority": "1",
@@ -291,7 +291,7 @@
         "username": "142553"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T13:00:00.000Z",
             "priority": "1",
@@ -304,7 +304,7 @@
         "username": "222883"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T13:00:00.000Z",
             "priority": "1",
@@ -317,7 +317,7 @@
         "username": "577962"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T13:00:00.000Z",
             "priority": "1",
@@ -340,7 +340,7 @@
         "username": "202803"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T13:00:00.000Z",
             "priority": "1",
@@ -363,7 +363,7 @@
         "username": "114240"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T13:00:00.000Z",
             "priority": "1",
@@ -386,7 +386,7 @@
         "username": "338703"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T13:00:00.000Z",
             "priority": "1",
@@ -409,7 +409,7 @@
         "username": "84842"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T13:00:00.000Z",
             "priority": "1",
@@ -432,7 +432,7 @@
         "username": "403133"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T13:00:00.000Z",
             "priority": "1",
@@ -455,7 +455,7 @@
         "username": "176292"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T13:00:00.000Z",
             "priority": "1",
@@ -478,7 +478,7 @@
         "username": "136801"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T13:00:00.000Z",
             "priority": "1",
@@ -491,7 +491,7 @@
         "username": "188019"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T13:00:00.000Z",
             "priority": "1",
@@ -504,7 +504,7 @@
         "username": "224520"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T13:00:00.000Z",
             "priority": "1",
@@ -517,7 +517,7 @@
         "username": "58904"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T13:00:00.000Z",
             "priority": "1",
@@ -530,7 +530,7 @@
         "username": "171619"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T13:00:00.000Z",
             "priority": "1",
@@ -548,7 +548,7 @@
     "startTime": "2017-07-28T14:00:00.000Z",
     "results": [
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T14:00:00.000Z",
             "priority": "1",
@@ -571,7 +571,7 @@
         "username": "252424"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T14:00:00.000Z",
             "priority": "3",
@@ -594,7 +594,7 @@
         "username": "904107"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T14:00:00.000Z",
             "priority": "1",
@@ -612,7 +612,7 @@
         "username": "798825"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T14:00:00.000Z",
             "priority": "1",
@@ -635,7 +635,7 @@
         "username": "647978"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T14:00:00.000Z",
             "priority": "1",
@@ -658,7 +658,7 @@
         "username": "707921"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T14:00:00.000Z",
             "priority": "1",
@@ -681,7 +681,7 @@
         "username": "114324"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T14:00:00.000Z",
             "priority": "1",
@@ -704,7 +704,7 @@
         "username": "732508"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T14:00:00.000Z",
             "priority": "2",
@@ -727,7 +727,7 @@
         "username": "500200"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T14:00:00.000Z",
             "priority": "1",
@@ -740,7 +740,7 @@
         "username": "495397"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T14:00:00.000Z",
             "priority": "1",
@@ -753,7 +753,7 @@
         "username": "349033"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T14:00:00.000Z",
             "priority": "1",
@@ -776,7 +776,7 @@
         "username": "434769"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T14:00:00.000Z",
             "priority": "1",
@@ -794,7 +794,7 @@
         "username": "896070"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T14:00:00.000Z",
             "priority": "1",
@@ -817,7 +817,7 @@
         "username": "1487"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T14:00:00.000Z",
             "priority": "1",
@@ -830,7 +830,7 @@
         "username": "525678"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T14:00:00.000Z",
             "priority": "1",
@@ -843,7 +843,7 @@
         "username": "953936"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T14:00:00.000Z",
             "priority": "1",
@@ -856,7 +856,7 @@
         "username": "950858"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T14:00:00.000Z",
             "priority": "1",
@@ -869,7 +869,7 @@
         "username": "378632"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T14:00:00.000Z",
             "priority": "1",
@@ -882,7 +882,7 @@
         "username": "407208"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T14:00:00.000Z",
             "priority": "1",
@@ -905,7 +905,7 @@
         "username": "357793"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T14:00:00.000Z",
             "priority": "1",
@@ -928,7 +928,7 @@
         "username": "325005"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T14:00:00.000Z",
             "priority": "2",
@@ -946,7 +946,7 @@
         "username": "823890"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T14:00:00.000Z",
             "priority": "1",
@@ -969,7 +969,7 @@
         "username": "987228"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T14:00:00.000Z",
             "priority": "1",
@@ -982,7 +982,7 @@
         "username": "521649"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T14:00:00.000Z",
             "priority": "1",
@@ -995,7 +995,7 @@
         "username": "473497"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T14:00:00.000Z",
             "priority": "1",
@@ -1018,7 +1018,7 @@
         "username": "291435"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T14:00:00.000Z",
             "priority": "1",
@@ -1041,7 +1041,7 @@
         "username": "457214"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T14:00:00.000Z",
             "priority": "1",
@@ -1054,7 +1054,7 @@
         "username": "216673"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T14:00:00.000Z",
             "priority": "1",
@@ -1072,7 +1072,7 @@
     "startTime": "2017-07-28T15:00:00.000Z",
     "results": [
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T15:00:00.000Z",
             "priority": "1",
@@ -1090,7 +1090,7 @@
         "username": "475375"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T15:00:00.000Z",
             "priority": "3",
@@ -1113,7 +1113,7 @@
         "username": "645282"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T15:00:00.000Z",
             "priority": "1",
@@ -1131,7 +1131,7 @@
         "username": "135866"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T15:00:00.000Z",
             "priority": "1",
@@ -1149,7 +1149,7 @@
         "username": "466924"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T15:00:00.000Z",
             "priority": "1",
@@ -1162,7 +1162,7 @@
         "username": "672192"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T15:00:00.000Z",
             "priority": "1",
@@ -1175,7 +1175,7 @@
         "username": "709863"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T15:00:00.000Z",
             "priority": "1",
@@ -1188,7 +1188,7 @@
         "username": "487830"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T15:00:00.000Z",
             "priority": "1",
@@ -1201,7 +1201,7 @@
         "username": "222882"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T15:00:00.000Z",
             "priority": "1",
@@ -1214,7 +1214,7 @@
         "username": "757859"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T15:00:00.000Z",
             "priority": "1",
@@ -1232,7 +1232,7 @@
         "username": "307681"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T15:00:00.000Z",
             "priority": "1",
@@ -1255,7 +1255,7 @@
         "username": "799528"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T15:00:00.000Z",
             "priority": "1",
@@ -1268,7 +1268,7 @@
         "username": "552632"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T15:00:00.000Z",
             "priority": "1",
@@ -1291,7 +1291,7 @@
         "username": "801388"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T15:00:00.000Z",
             "priority": "1",
@@ -1309,7 +1309,7 @@
         "username": "51116"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T15:00:00.000Z",
             "priority": "1",
@@ -1327,7 +1327,7 @@
         "username": "91702"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T15:00:00.000Z",
             "priority": "1",
@@ -1340,7 +1340,7 @@
         "username": "677903"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T15:00:00.000Z",
             "priority": "1",
@@ -1353,7 +1353,7 @@
         "username": "697728"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T15:00:00.000Z",
             "priority": "1",
@@ -1371,7 +1371,7 @@
         "username": "81398"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T15:00:00.000Z",
             "priority": "1",
@@ -1384,7 +1384,7 @@
         "username": "37933"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T15:00:00.000Z",
             "priority": "1",
@@ -1397,7 +1397,7 @@
         "username": "782158"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T15:00:00.000Z",
             "priority": "1",
@@ -1410,7 +1410,7 @@
         "username": "770603"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T15:00:00.000Z",
             "priority": "1",
@@ -1423,7 +1423,7 @@
         "username": "675454"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T15:00:00.000Z",
             "priority": "1",
@@ -1436,7 +1436,7 @@
         "username": "978820"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T15:00:00.000Z",
             "priority": "1",
@@ -1459,7 +1459,7 @@
         "username": "425259"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T15:00:00.000Z",
             "priority": "1",
@@ -1482,7 +1482,7 @@
         "username": "640106"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T15:00:00.000Z",
             "priority": "1",
@@ -1505,7 +1505,7 @@
         "username": "359934"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T15:00:00.000Z",
             "priority": "1",
@@ -1518,7 +1518,7 @@
         "username": "958916"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T15:00:00.000Z",
             "priority": "2",
@@ -1541,7 +1541,7 @@
         "username": "683409"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T15:00:00.000Z",
             "priority": "1",
@@ -1554,7 +1554,7 @@
         "username": "709546"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T15:00:00.000Z",
             "priority": "1",
@@ -1567,7 +1567,7 @@
         "username": "347318"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "priority": "2",
             "id": "8416",
@@ -1590,7 +1590,7 @@
         "username": "854769"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T14:00:00.000Z",
             "priority": "1",
@@ -1608,7 +1608,7 @@
         "username": "238132"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T14:00:00.000Z",
             "priority": "1",
@@ -1631,7 +1631,7 @@
         "username": "434769"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T15:00:00.000Z",
             "priority": "1",
@@ -1654,7 +1654,7 @@
         "username": "810076"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T15:00:00.000Z",
             "priority": "1",
@@ -1677,7 +1677,7 @@
         "username": "201874"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T15:00:00.000Z",
             "priority": "1",
@@ -1695,7 +1695,7 @@
         "username": "404001"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T15:00:00.000Z",
             "priority": "1",
@@ -1718,7 +1718,7 @@
         "username": "14739"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T15:00:00.000Z",
             "priority": "1",
@@ -1741,7 +1741,7 @@
         "username": "331018"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T15:00:00.000Z",
             "priority": "1",
@@ -1764,7 +1764,7 @@
         "username": "692629"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T15:00:00.000Z",
             "priority": "1",
@@ -1777,7 +1777,7 @@
         "username": "587418"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T15:00:00.000Z",
             "priority": "1",
@@ -1795,7 +1795,7 @@
         "username": "348786"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T15:00:00.000Z",
             "priority": "1",
@@ -1813,7 +1813,7 @@
         "username": "766167"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T15:00:00.000Z",
             "priority": "1",
@@ -1826,7 +1826,7 @@
         "username": "363615"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T15:00:00.000Z",
             "priority": "1",
@@ -1844,7 +1844,7 @@
     "startTime": "2017-07-28T16:00:00.000Z",
     "results": [
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T16:00:00.000Z",
             "priority": "1",
@@ -1857,7 +1857,7 @@
         "username": "905388"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T16:00:00.000Z",
             "priority": "1",
@@ -1875,7 +1875,7 @@
         "username": "434853"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T16:00:00.000Z",
             "priority": "1",
@@ -1888,7 +1888,7 @@
         "username": "689838"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T16:00:00.000Z",
             "priority": "1",
@@ -1901,7 +1901,7 @@
         "username": "422641"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T16:00:00.000Z",
             "priority": "1",
@@ -1914,7 +1914,7 @@
         "username": "428528"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T16:00:00.000Z",
             "priority": "2",
@@ -1937,7 +1937,7 @@
         "username": "601755"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T16:00:00.000Z",
             "priority": "1",
@@ -1950,7 +1950,7 @@
         "username": "363252"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T16:00:00.000Z",
             "priority": "1",
@@ -1963,7 +1963,7 @@
         "username": "91230"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T16:00:00.000Z",
             "priority": "1",
@@ -1976,7 +1976,7 @@
         "username": "539800"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T16:00:00.000Z",
             "priority": "1",
@@ -1989,7 +1989,7 @@
         "username": "48677"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T16:00:00.000Z",
             "priority": "1",
@@ -2002,7 +2002,7 @@
         "username": "828370"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T13:00:00.000Z",
             "priority": "1",
@@ -2025,7 +2025,7 @@
         "username": "82198"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T13:00:00.000Z",
             "priority": "1",
@@ -2048,7 +2048,7 @@
         "username": "420650"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T16:00:00.000Z",
             "priority": "1",
@@ -2061,7 +2061,7 @@
         "username": "811708"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T16:00:00.000Z",
             "priority": "1",
@@ -2079,7 +2079,7 @@
         "username": "746"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T16:00:00.000Z",
             "priority": "1",
@@ -2097,7 +2097,7 @@
         "username": "188019"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T16:00:00.000Z",
             "priority": "1",
@@ -2115,7 +2115,7 @@
         "username": "224520"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T16:00:00.000Z",
             "priority": "1",
@@ -2138,7 +2138,7 @@
     "startTime": "2017-07-28T17:00:00.000Z",
     "results": [
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T17:00:00.000Z",
             "priority": "1",
@@ -2176,7 +2176,7 @@
         "username": "403133"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T17:00:00.000Z",
             "priority": "1",
@@ -2199,7 +2199,7 @@
         "username": "96640"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T17:00:00.000Z",
             "priority": "1",
@@ -2222,7 +2222,7 @@
         "username": "390588"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T17:00:00.000Z",
             "priority": "1",
@@ -2235,7 +2235,7 @@
         "username": "701010"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T17:00:00.000Z",
             "priority": "1",
@@ -2258,7 +2258,7 @@
         "username": "586801"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T17:00:00.000Z",
             "priority": "1",
@@ -2281,7 +2281,7 @@
         "username": "461959"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T17:00:00.000Z",
             "priority": "3",
@@ -2304,7 +2304,7 @@
         "username": "572774"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T17:00:00.000Z",
             "priority": "1",
@@ -2327,7 +2327,7 @@
         "username": "274415"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T17:00:00.000Z",
             "priority": "1",
@@ -2350,7 +2350,7 @@
         "username": "252610"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T17:00:00.000Z",
             "priority": "1",
@@ -2373,7 +2373,7 @@
         "username": "646355"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T17:00:00.000Z",
             "priority": "1",
@@ -2386,7 +2386,7 @@
         "username": "134679"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T17:00:00.000Z",
             "priority": "1",
@@ -2409,7 +2409,7 @@
         "username": "102327"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T17:00:00.000Z",
             "priority": "1",
@@ -2422,7 +2422,7 @@
         "username": "502897"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T17:00:00.000Z",
             "priority": "1",
@@ -2435,7 +2435,7 @@
         "username": "321019"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T17:00:00.000Z",
             "priority": "1",
@@ -2448,7 +2448,7 @@
         "username": "27105"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T17:00:00.000Z",
             "priority": "1",
@@ -2471,7 +2471,7 @@
         "username": "86371"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T17:00:00.000Z",
             "priority": "1",
@@ -2489,7 +2489,7 @@
         "username": "709981"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T17:00:00.000Z",
             "priority": "1",
@@ -2512,7 +2512,7 @@
         "username": "602265"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T17:00:00.000Z",
             "priority": "1",
@@ -2535,7 +2535,7 @@
         "username": "564848"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T17:00:00.000Z",
             "priority": "1",
@@ -2558,7 +2558,7 @@
         "username": "671039"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T17:00:00.000Z",
             "priority": "2",
@@ -2581,7 +2581,7 @@
         "username": "865825"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T17:00:00.000Z",
             "priority": "1",
@@ -2609,7 +2609,7 @@
         "username": "491948"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T17:00:00.000Z",
             "priority": "1",
@@ -2627,7 +2627,7 @@
         "username": "124784"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T17:00:00.000Z",
             "priority": "1",
@@ -2650,7 +2650,7 @@
         "username": "404855"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T17:00:00.000Z",
             "priority": "1",
@@ -2678,7 +2678,7 @@
         "username": "81398"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T17:00:00.000Z",
             "priority": "1",
@@ -2696,7 +2696,7 @@
         "username": "293909"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T17:00:00.000Z",
             "priority": "1",
@@ -2729,7 +2729,7 @@
         "username": "142553"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T17:00:00.000Z",
             "priority": "1",
@@ -2767,7 +2767,7 @@
         "username": "338703"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T17:00:00.000Z",
             "priority": "1",
@@ -2785,7 +2785,7 @@
         "username": "789587"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T17:00:00.000Z",
             "priority": "1",
@@ -2798,7 +2798,7 @@
         "username": "248767"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T17:00:00.000Z",
             "priority": "1",
@@ -2811,7 +2811,7 @@
         "username": "115259"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T17:00:00.000Z",
             "priority": "1",
@@ -2834,7 +2834,7 @@
         "username": "232092"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T17:00:00.000Z",
             "priority": "1",
@@ -2857,7 +2857,7 @@
         "username": "422454"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T17:00:00.000Z",
             "priority": "1",
@@ -2870,7 +2870,7 @@
         "username": "278573"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T17:00:00.000Z",
             "priority": "1",
@@ -2893,7 +2893,7 @@
         "username": "767879"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T17:00:00.000Z",
             "priority": "1",
@@ -2926,7 +2926,7 @@
         "username": "762393"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T17:00:00.000Z",
             "priority": "1",
@@ -2949,7 +2949,7 @@
         "username": "715378"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T17:00:00.000Z",
             "priority": "1",
@@ -2972,7 +2972,7 @@
         "username": "31419"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T17:00:00.000Z",
             "priority": "1",
@@ -2985,7 +2985,7 @@
         "username": "82135"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T17:00:00.000Z",
             "priority": "1",
@@ -3008,7 +3008,7 @@
         "username": "571464"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T17:00:00.000Z",
             "priority": "1",
@@ -3021,7 +3021,7 @@
         "username": "870662"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T17:00:00.000Z",
             "priority": "1",
@@ -3034,7 +3034,7 @@
         "username": "624921"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T17:00:00.000Z",
             "priority": "1",
@@ -3057,7 +3057,7 @@
         "username": "96583"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T17:00:00.000Z",
             "priority": "1",
@@ -3095,7 +3095,7 @@
         "username": "202803"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T17:00:00.000Z",
             "priority": "1",
@@ -3118,7 +3118,7 @@
         "username": "71859"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T17:00:00.000Z",
             "priority": "1",
@@ -3141,7 +3141,7 @@
         "username": "678717"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T17:00:00.000Z",
             "priority": "1",
@@ -3164,7 +3164,7 @@
         "username": "879103"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T17:00:00.000Z",
             "priority": "1",
@@ -3187,7 +3187,7 @@
         "username": "626187"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T17:00:00.000Z",
             "priority": "2",
@@ -3225,7 +3225,7 @@
         "username": "904107"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T17:00:00.000Z",
             "priority": "1",
@@ -3263,7 +3263,7 @@
         "username": "425689"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T17:00:00.000Z",
             "priority": "1",
@@ -3301,7 +3301,7 @@
         "username": "84842"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T17:00:00.000Z",
             "priority": "1",
@@ -3319,7 +3319,7 @@
         "username": "705274"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T17:00:00.000Z",
             "priority": "1",
@@ -3332,7 +3332,7 @@
         "username": "8285"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T17:00:00.000Z",
             "priority": "1",
@@ -3345,7 +3345,7 @@
         "username": "95820"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T17:00:00.000Z",
             "priority": "1",
@@ -3358,7 +3358,7 @@
         "username": "538741"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T17:00:00.000Z",
             "priority": "1",
@@ -3371,7 +3371,7 @@
         "username": "739390"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T17:00:00.000Z",
             "priority": "1",
@@ -3389,7 +3389,7 @@
         "username": "278521"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T17:00:00.000Z",
             "priority": "1",
@@ -3402,7 +3402,7 @@
         "username": "135184"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T17:00:00.000Z",
             "priority": "1",
@@ -3415,7 +3415,7 @@
         "username": "507234"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-28T17:00:00.000Z",
             "priority": "1",
@@ -3433,7 +3433,7 @@
     "startTime": "2017-07-29T07:00:00.000Z",
     "results": [
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T07:00:00.000Z",
             "priority": "1",
@@ -3456,7 +3456,7 @@
         "username": "703878"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T07:00:00.000Z",
             "priority": "1",
@@ -3479,7 +3479,7 @@
         "username": "677739"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T07:00:00.000Z",
             "priority": "1",
@@ -3492,7 +3492,7 @@
         "username": "571504"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T07:00:00.000Z",
             "priority": "1",
@@ -3515,7 +3515,7 @@
         "username": "723927"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T07:00:00.000Z",
             "priority": "1",
@@ -3533,7 +3533,7 @@
         "username": "693070"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T07:00:00.000Z",
             "priority": "1",
@@ -3566,7 +3566,7 @@
         "username": "733260"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T07:00:00.000Z",
             "priority": "1",
@@ -3584,7 +3584,7 @@
         "username": "136292"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T07:00:00.000Z",
             "priority": "1",
@@ -3617,7 +3617,7 @@
         "username": "857245"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T07:00:00.000Z",
             "priority": "2",
@@ -3635,7 +3635,7 @@
         "username": "39095"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T07:00:00.000Z",
             "priority": "1",
@@ -3653,7 +3653,7 @@
         "username": "688895"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T07:00:00.000Z",
             "priority": "1",
@@ -3671,7 +3671,7 @@
         "username": "390599"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T07:00:00.000Z",
             "priority": "1",
@@ -3699,7 +3699,7 @@
         "username": "564848"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T07:00:00.000Z",
             "priority": "1",
@@ -3717,7 +3717,7 @@
         "username": "278902"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T07:00:00.000Z",
             "priority": "1",
@@ -3750,7 +3750,7 @@
         "username": "973465"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T07:00:00.000Z",
             "priority": "1",
@@ -3768,7 +3768,7 @@
         "username": "607670"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T07:00:00.000Z",
             "priority": "2",
@@ -3801,7 +3801,7 @@
         "username": "865825"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T07:00:00.000Z",
             "priority": "1",
@@ -3839,7 +3839,7 @@
         "username": "461959"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T07:00:00.000Z",
             "priority": "1",
@@ -3872,7 +3872,7 @@
         "username": "807858"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T07:00:00.000Z",
             "priority": "1",
@@ -3890,7 +3890,7 @@
         "username": "720445"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T07:00:00.000Z",
             "priority": "1",
@@ -3913,7 +3913,7 @@
         "username": "89017"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T07:00:00.000Z",
             "priority": "1",
@@ -3936,7 +3936,7 @@
         "username": "137793"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T07:00:00.000Z",
             "priority": "1",
@@ -3954,7 +3954,7 @@
         "username": "232907"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T07:00:00.000Z",
             "priority": "1",
@@ -3977,7 +3977,7 @@
         "username": "41946"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T07:00:00.000Z",
             "priority": "1",
@@ -4000,7 +4000,7 @@
         "username": "307768"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T07:00:00.000Z",
             "priority": "1",
@@ -4028,7 +4028,7 @@
         "username": "473497"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T07:00:00.000Z",
             "priority": "1",
@@ -4066,7 +4066,7 @@
         "username": "602265"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T07:00:00.000Z",
             "priority": "1",
@@ -4119,7 +4119,7 @@
         "username": "202803"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T07:00:00.000Z",
             "priority": "1",
@@ -4137,7 +4137,7 @@
         "username": "527034"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T07:00:00.000Z",
             "priority": "1",
@@ -4150,7 +4150,7 @@
         "username": "762480"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T07:00:00.000Z",
             "priority": "1",
@@ -4168,7 +4168,7 @@
         "username": "115259"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T07:00:00.000Z",
             "priority": "1",
@@ -4196,7 +4196,7 @@
         "username": "434769"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T07:00:00.000Z",
             "priority": "1",
@@ -4219,7 +4219,7 @@
         "username": "188019"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T07:00:00.000Z",
             "priority": "1",
@@ -4242,7 +4242,7 @@
         "username": "224520"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T07:00:00.000Z",
             "priority": "1",
@@ -4255,7 +4255,7 @@
         "username": "523621"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T07:00:00.000Z",
             "priority": "1",
@@ -4268,7 +4268,7 @@
         "username": "782344"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T07:00:00.000Z",
             "priority": "1",
@@ -4296,7 +4296,7 @@
         "username": "858561"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T07:00:00.000Z",
             "priority": "2",
@@ -4329,7 +4329,7 @@
     "startTime": "2017-07-29T08:00:00.000Z",
     "results": [
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T08:00:00.000Z",
             "priority": "1",
@@ -4342,7 +4342,7 @@
         "username": "126673"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T08:00:00.000Z",
             "priority": "1",
@@ -4355,7 +4355,7 @@
         "username": "446139"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T08:00:00.000Z",
             "priority": "1",
@@ -4373,7 +4373,7 @@
         "username": "672192"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T08:00:00.000Z",
             "priority": "1",
@@ -4391,7 +4391,7 @@
         "username": "709863"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T08:00:00.000Z",
             "priority": "1",
@@ -4409,7 +4409,7 @@
         "username": "757859"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T08:00:00.000Z",
             "priority": "1",
@@ -4432,7 +4432,7 @@
         "username": "812077"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T08:00:00.000Z",
             "priority": "1",
@@ -4460,7 +4460,7 @@
         "username": "200394"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T08:00:00.000Z",
             "priority": "1",
@@ -4473,7 +4473,7 @@
         "username": "258215"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T08:00:00.000Z",
             "priority": "3",
@@ -4506,7 +4506,7 @@
         "username": "645282"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T08:00:00.000Z",
             "priority": "1",
@@ -4524,7 +4524,7 @@
         "username": "372680"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T08:00:00.000Z",
             "priority": "1",
@@ -4542,7 +4542,7 @@
         "username": "79986"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T08:00:00.000Z",
             "priority": "1",
@@ -4560,7 +4560,7 @@
         "username": "552632"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T08:00:00.000Z",
             "priority": "1",
@@ -4583,7 +4583,7 @@
         "username": "466924"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T08:00:00.000Z",
             "priority": "1",
@@ -4601,7 +4601,7 @@
         "username": "677903"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T08:00:00.000Z",
             "priority": "1",
@@ -4619,7 +4619,7 @@
         "username": "697728"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T08:00:00.000Z",
             "priority": "1",
@@ -4637,7 +4637,7 @@
         "username": "222883"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T08:00:00.000Z",
             "priority": "1",
@@ -4660,7 +4660,7 @@
         "username": "28081"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T08:00:00.000Z",
             "priority": "1",
@@ -4683,7 +4683,7 @@
         "username": "451292"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T08:00:00.000Z",
             "priority": "1",
@@ -4696,7 +4696,7 @@
         "username": "509222"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T08:00:00.000Z",
             "priority": "1",
@@ -4709,7 +4709,7 @@
         "username": "707613"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T08:00:00.000Z",
             "priority": "1",
@@ -4747,7 +4747,7 @@
         "username": "647978"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T08:00:00.000Z",
             "priority": "1",
@@ -4800,7 +4800,7 @@
     "startTime": "2017-07-29T09:00:00.000Z",
     "results": [
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T09:00:00.000Z",
             "priority": "1",
@@ -4818,7 +4818,7 @@
         "username": "555074"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T09:00:00.000Z",
             "priority": "1",
@@ -4836,7 +4836,7 @@
         "username": "964034"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T09:00:00.000Z",
             "priority": "1",
@@ -4854,7 +4854,7 @@
         "username": "466237"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T09:00:00.000Z",
             "priority": "1",
@@ -4877,7 +4877,7 @@
         "username": "854852"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T09:00:00.000Z",
             "priority": "1",
@@ -4900,7 +4900,7 @@
         "username": "798979"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T09:00:00.000Z",
             "priority": "1",
@@ -4923,7 +4923,7 @@
         "username": "710936"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T09:00:00.000Z",
             "priority": "1",
@@ -4946,7 +4946,7 @@
         "username": "121827"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T09:00:00.000Z",
             "priority": "1",
@@ -4959,7 +4959,7 @@
         "username": "322266"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "priority": "1",
             "id": "8401",
@@ -4972,7 +4972,7 @@
         "username": "606037"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T09:00:00.000Z",
             "priority": "1",
@@ -4985,7 +4985,7 @@
         "username": "496490"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T09:00:00.000Z",
             "priority": "1",
@@ -5003,7 +5003,7 @@
         "username": "631850"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T09:00:00.000Z",
             "priority": "1",
@@ -5021,7 +5021,7 @@
         "username": "773239"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T09:00:00.000Z",
             "priority": "1",
@@ -5039,7 +5039,7 @@
         "username": "935360"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T09:00:00.000Z",
             "priority": "2",
@@ -5067,7 +5067,7 @@
         "username": "601755"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T09:00:00.000Z",
             "priority": "1",
@@ -5090,7 +5090,7 @@
         "username": "404001"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T09:00:00.000Z",
             "priority": "1",
@@ -5113,7 +5113,7 @@
         "username": "665397"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T09:00:00.000Z",
             "priority": "1",
@@ -5136,7 +5136,7 @@
         "username": "826224"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T09:00:00.000Z",
             "priority": "1",
@@ -5159,7 +5159,7 @@
         "username": "278700"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T09:00:00.000Z",
             "priority": "1",
@@ -5172,7 +5172,7 @@
         "username": "183384"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T09:00:00.000Z",
             "priority": "1",
@@ -5185,7 +5185,7 @@
         "username": "856073"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "priority": "1",
             "id": "8386",
@@ -5203,7 +5203,7 @@
     "startTime": "2017-07-29T10:00:00.000Z",
     "results": [
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T10:00:00.000Z",
             "priority": "1",
@@ -5226,7 +5226,7 @@
         "username": "84463"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T10:00:00.000Z",
             "priority": "1",
@@ -5264,7 +5264,7 @@
         "username": "136801"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T10:00:00.000Z",
             "priority": "1",
@@ -5327,7 +5327,7 @@
         "username": "678717"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T10:00:00.000Z",
             "priority": "2",
@@ -5350,7 +5350,7 @@
         "username": "579962"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T10:00:00.000Z",
             "priority": "1",
@@ -5368,7 +5368,7 @@
         "username": "301263"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T10:00:00.000Z",
             "priority": "1",
@@ -5391,7 +5391,7 @@
         "username": "248767"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T10:00:00.000Z",
             "priority": "1",
@@ -5409,7 +5409,7 @@
         "username": "953936"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T10:00:00.000Z",
             "priority": "1",
@@ -5422,7 +5422,7 @@
         "username": "292693"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T10:00:00.000Z",
             "priority": "1",
@@ -5435,7 +5435,7 @@
         "username": "790024"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T10:00:00.000Z",
             "priority": "1",
@@ -5448,7 +5448,7 @@
         "username": "176031"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T10:00:00.000Z",
             "priority": "1",
@@ -5466,7 +5466,7 @@
         "username": "647478"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T08:00:00.000Z",
             "priority": "1",
@@ -5489,7 +5489,7 @@
         "username": "812077"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T08:00:00.000Z",
             "priority": "3",
@@ -5522,7 +5522,7 @@
         "username": "645282"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T08:00:00.000Z",
             "priority": "1",
@@ -5550,7 +5550,7 @@
         "username": "200394"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T10:00:00.000Z",
             "priority": "1",
@@ -5563,7 +5563,7 @@
         "username": "970868"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T10:00:00.000Z",
             "priority": "1",
@@ -5576,7 +5576,7 @@
         "username": "671084"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T10:00:00.000Z",
             "priority": "1",
@@ -5624,7 +5624,7 @@
         "username": "671039"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T10:00:00.000Z",
             "priority": "1",
@@ -5637,7 +5637,7 @@
         "username": "358638"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T10:00:00.000Z",
             "priority": "1",
@@ -5650,7 +5650,7 @@
         "username": "708079"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T10:00:00.000Z",
             "priority": "1",
@@ -5678,7 +5678,7 @@
         "username": "950858"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T10:00:00.000Z",
             "priority": "1",
@@ -5711,7 +5711,7 @@
         "username": "190718"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T10:00:00.000Z",
             "priority": "1",
@@ -5734,7 +5734,7 @@
         "username": "14100"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T10:00:00.000Z",
             "priority": "1",
@@ -5757,7 +5757,7 @@
         "username": "189711"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T10:00:00.000Z",
             "priority": "1",
@@ -5770,7 +5770,7 @@
         "username": "358953"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T10:00:00.000Z",
             "priority": "1",
@@ -5793,7 +5793,7 @@
         "username": "961115"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T10:00:00.000Z",
             "priority": "1",
@@ -5821,7 +5821,7 @@
         "username": "509222"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T10:00:00.000Z",
             "priority": "1",
@@ -5844,7 +5844,7 @@
         "username": "811026"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T10:00:00.000Z",
             "priority": "1",
@@ -5882,7 +5882,7 @@
         "username": "422454"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T10:00:00.000Z",
             "priority": "1",
@@ -5930,7 +5930,7 @@
         "username": "647978"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T10:00:00.000Z",
             "priority": "1",
@@ -5943,7 +5943,7 @@
         "username": "349378"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T10:00:00.000Z",
             "priority": "1",
@@ -5966,7 +5966,7 @@
         "username": "539800"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T10:00:00.000Z",
             "priority": "1",
@@ -5979,7 +5979,7 @@
         "username": "775670"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T10:00:00.000Z",
             "priority": "3",
@@ -6032,7 +6032,7 @@
         "username": "904107"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T10:00:00.000Z",
             "priority": "2",
@@ -6055,7 +6055,7 @@
         "username": "334099"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T10:00:00.000Z",
             "priority": "1",
@@ -6068,7 +6068,7 @@
         "username": "865601"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T10:00:00.000Z",
             "priority": "1",
@@ -6081,7 +6081,7 @@
         "username": "119591"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T10:00:00.000Z",
             "priority": "1",
@@ -6119,7 +6119,7 @@
         "username": "278700"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T10:00:00.000Z",
             "priority": "1",
@@ -6142,7 +6142,7 @@
     "startTime": "2017-07-29T11:00:00.000Z",
     "results": [
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T11:00:00.000Z",
             "priority": "1",
@@ -6165,7 +6165,7 @@
         "username": "899998"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T11:00:00.000Z",
             "priority": "1",
@@ -6178,7 +6178,7 @@
         "username": "712625"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T11:00:00.000Z",
             "priority": "1",
@@ -6216,7 +6216,7 @@
         "username": "291435"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T11:00:00.000Z",
             "priority": "1",
@@ -6244,7 +6244,7 @@
         "username": "937874"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T11:00:00.000Z",
             "priority": "1",
@@ -6282,7 +6282,7 @@
         "username": "86371"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T11:00:00.000Z",
             "priority": "1",
@@ -6295,7 +6295,7 @@
         "username": "274707"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T11:00:00.000Z",
             "priority": "1",
@@ -6333,7 +6333,7 @@
         "username": "707921"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T11:00:00.000Z",
             "priority": "3",
@@ -6396,7 +6396,7 @@
         "username": "904107"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T11:00:00.000Z",
             "priority": "1",
@@ -6414,7 +6414,7 @@
         "username": "782344"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T11:00:00.000Z",
             "priority": "1",
@@ -6427,7 +6427,7 @@
         "username": "100749"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T11:00:00.000Z",
             "priority": "1",
@@ -6455,7 +6455,7 @@
         "username": "301263"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T11:00:00.000Z",
             "priority": "1",
@@ -6478,7 +6478,7 @@
         "username": "23602"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T11:00:00.000Z",
             "priority": "1",
@@ -6531,7 +6531,7 @@
         "username": "732508"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T11:00:00.000Z",
             "priority": "1",
@@ -6569,7 +6569,7 @@
         "username": "141399"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T11:00:00.000Z",
             "priority": "1",
@@ -6582,7 +6582,7 @@
         "username": "342597"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T11:00:00.000Z",
             "priority": "2",
@@ -6610,7 +6610,7 @@
         "username": "579962"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T11:00:00.000Z",
             "priority": "1",
@@ -6633,7 +6633,7 @@
         "username": "789585"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T11:00:00.000Z",
             "priority": "1",
@@ -6671,7 +6671,7 @@
         "username": "973465"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T11:00:00.000Z",
             "priority": "1",
@@ -6694,7 +6694,7 @@
         "username": "400494"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T11:00:00.000Z",
             "priority": "1",
@@ -6732,7 +6732,7 @@
         "username": "807858"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T11:00:00.000Z",
             "priority": "1",
@@ -6770,7 +6770,7 @@
         "username": "457214"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T11:00:00.000Z",
             "priority": "1",
@@ -6798,7 +6798,7 @@
         "username": "436648"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T11:00:00.000Z",
             "priority": "1",
@@ -6821,7 +6821,7 @@
         "username": "17964"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T11:00:00.000Z",
             "priority": "1",
@@ -6834,7 +6834,7 @@
         "username": "383241"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T11:00:00.000Z",
             "priority": "1",
@@ -6857,7 +6857,7 @@
         "username": "238132"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T11:00:00.000Z",
             "priority": "1",
@@ -6895,7 +6895,7 @@
         "username": "102327"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T11:00:00.000Z",
             "priority": "1",
@@ -6938,7 +6938,7 @@
         "username": "564848"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T11:00:00.000Z",
             "priority": "1",
@@ -6951,7 +6951,7 @@
         "username": "70853"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T11:00:00.000Z",
             "priority": "1",
@@ -6994,7 +6994,7 @@
     "startTime": "2017-07-29T12:00:00.000Z",
     "results": [
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T11:00:00.000Z",
             "priority": "2",
@@ -7022,7 +7022,7 @@
         "username": "579962"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T10:00:00.000Z",
             "priority": "2",
@@ -7045,7 +7045,7 @@
         "username": "334099"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T10:00:00.000Z",
             "priority": "1",
@@ -7068,7 +7068,7 @@
         "username": "14100"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T10:00:00.000Z",
             "priority": "1",
@@ -7091,7 +7091,7 @@
         "username": "189711"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T12:00:00.000Z",
             "priority": "1",
@@ -7104,7 +7104,7 @@
         "username": "170412"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T12:00:00.000Z",
             "priority": "1",
@@ -7137,7 +7137,7 @@
         "username": "137793"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T12:00:00.000Z",
             "priority": "1",
@@ -7155,7 +7155,7 @@
         "username": "422641"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T12:00:00.000Z",
             "priority": "1",
@@ -7173,7 +7173,7 @@
         "username": "428528"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T12:00:00.000Z",
             "priority": "1",
@@ -7196,7 +7196,7 @@
         "username": "48677"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T12:00:00.000Z",
             "priority": "1",
@@ -7219,7 +7219,7 @@
         "username": "912146"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T12:00:00.000Z",
             "priority": "1",
@@ -7242,7 +7242,7 @@
         "username": "828370"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T12:00:00.000Z",
             "priority": "1",
@@ -7255,7 +7255,7 @@
         "username": "717371"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T12:00:00.000Z",
             "priority": "1",
@@ -7268,7 +7268,7 @@
         "username": "781204"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T12:00:00.000Z",
             "priority": "1",
@@ -7281,7 +7281,7 @@
         "username": "292007"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T12:00:00.000Z",
             "priority": "1",
@@ -7294,7 +7294,7 @@
         "username": "68460"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T12:00:00.000Z",
             "priority": "1",
@@ -7317,7 +7317,7 @@
         "username": "836372"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T12:00:00.000Z",
             "priority": "1",
@@ -7335,7 +7335,7 @@
         "username": "770603"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T12:00:00.000Z",
             "priority": "1",
@@ -7373,7 +7373,7 @@
         "username": "96583"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T12:00:00.000Z",
             "priority": "1",
@@ -7406,7 +7406,7 @@
         "username": "348786"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T12:00:00.000Z",
             "priority": "1",
@@ -7419,7 +7419,7 @@
         "username": "789183"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T12:00:00.000Z",
             "priority": "1",
@@ -7452,7 +7452,7 @@
         "username": "407208"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T12:00:00.000Z",
             "priority": "1",
@@ -7465,7 +7465,7 @@
         "username": "577974"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T12:00:00.000Z",
             "priority": "1",
@@ -7478,7 +7478,7 @@
         "username": "444594"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T12:00:00.000Z",
             "priority": "1",
@@ -7501,7 +7501,7 @@
         "username": "830810"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T12:00:00.000Z",
             "priority": "1",
@@ -7544,7 +7544,7 @@
         "username": "733260"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T12:00:00.000Z",
             "priority": "1",
@@ -7587,7 +7587,7 @@
         "username": "857245"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T12:00:00.000Z",
             "priority": "1",
@@ -7600,7 +7600,7 @@
         "username": "551573"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T12:00:00.000Z",
             "priority": "1",
@@ -7613,7 +7613,7 @@
         "username": "436303"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T12:00:00.000Z",
             "priority": "1",
@@ -7631,7 +7631,7 @@
         "username": "883126"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T12:00:00.000Z",
             "priority": "1",
@@ -7644,7 +7644,7 @@
         "username": "691146"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T12:00:00.000Z",
             "priority": "1",
@@ -7662,7 +7662,7 @@
         "username": "22069"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T12:00:00.000Z",
             "priority": "1",
@@ -7680,7 +7680,7 @@
         "username": "388012"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T12:00:00.000Z",
             "priority": "1",
@@ -7693,7 +7693,7 @@
         "username": "985491"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T12:00:00.000Z",
             "priority": "1",
@@ -7736,7 +7736,7 @@
         "username": "473497"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T12:00:00.000Z",
             "priority": "1",
@@ -7769,7 +7769,7 @@
         "username": "359934"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T12:00:00.000Z",
             "priority": "2",
@@ -7802,7 +7802,7 @@
         "username": "683409"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T12:00:00.000Z",
             "priority": "1",
@@ -7850,7 +7850,7 @@
     "startTime": "2017-07-29T13:00:00.000Z",
     "results": [
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T13:00:00.000Z",
             "priority": "1",
@@ -7868,7 +7868,7 @@
         "username": "496490"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T13:00:00.000Z",
             "priority": "1",
@@ -7896,7 +7896,7 @@
         "username": "746"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T13:00:00.000Z",
             "priority": "1",
@@ -7939,7 +7939,7 @@
         "username": "602265"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T13:00:00.000Z",
             "priority": "1",
@@ -7967,7 +7967,7 @@
         "username": "82198"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T13:00:00.000Z",
             "priority": "1",
@@ -7980,7 +7980,7 @@
         "username": "869080"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T13:00:00.000Z",
             "priority": "1",
@@ -7993,7 +7993,7 @@
         "username": "487309"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T13:00:00.000Z",
             "priority": "1",
@@ -8006,7 +8006,7 @@
         "username": "226320"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T13:00:00.000Z",
             "priority": "1",
@@ -8024,7 +8024,7 @@
         "username": "807258"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "priority": "1",
             "id": "8450",
@@ -8042,7 +8042,7 @@
         "username": "606037"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T13:00:00.000Z",
             "priority": "1",
@@ -8055,7 +8055,7 @@
         "username": "307817"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T13:00:00.000Z",
             "priority": "1",
@@ -8068,7 +8068,7 @@
         "username": "155419"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T13:00:00.000Z",
             "priority": "1",
@@ -8081,7 +8081,7 @@
         "username": "184396"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T13:00:00.000Z",
             "priority": "1",
@@ -8104,7 +8104,7 @@
         "username": "390599"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T13:00:00.000Z",
             "priority": "1",
@@ -8142,7 +8142,7 @@
         "username": "89017"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T13:00:00.000Z",
             "priority": "1",
@@ -8160,7 +8160,7 @@
         "username": "551573"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T13:00:00.000Z",
             "priority": "1",
@@ -8173,7 +8173,7 @@
         "username": "944109"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T13:00:00.000Z",
             "priority": "1",
@@ -8186,7 +8186,7 @@
         "username": "564573"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T13:00:00.000Z",
             "priority": "1",
@@ -8199,7 +8199,7 @@
         "username": "818981"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T13:00:00.000Z",
             "priority": "1",
@@ -8232,7 +8232,7 @@
         "username": "665397"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T13:00:00.000Z",
             "priority": "1",
@@ -8255,7 +8255,7 @@
         "username": "388012"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T13:00:00.000Z",
             "priority": "1",
@@ -8268,7 +8268,7 @@
         "username": "809516"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T13:00:00.000Z",
             "priority": "1",
@@ -8281,7 +8281,7 @@
         "username": "738304"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T13:00:00.000Z",
             "priority": "1",
@@ -8294,7 +8294,7 @@
         "username": "279994"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T13:00:00.000Z",
             "priority": "1",
@@ -8317,7 +8317,7 @@
         "username": "278521"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T13:00:00.000Z",
             "priority": "1",
@@ -8335,7 +8335,7 @@
         "username": "782158"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T13:00:00.000Z",
             "priority": "1",
@@ -8358,7 +8358,7 @@
     "startTime": "2017-07-29T14:00:00.000Z",
     "results": [
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T14:00:00.000Z",
             "priority": "1",
@@ -8381,7 +8381,7 @@
         "username": "970366"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T14:00:00.000Z",
             "priority": "1",
@@ -8394,7 +8394,7 @@
         "username": "689583"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T14:00:00.000Z",
             "priority": "1",
@@ -8422,7 +8422,7 @@
         "username": "248767"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T14:00:00.000Z",
             "priority": "1",
@@ -8445,7 +8445,7 @@
         "username": "672192"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T14:00:00.000Z",
             "priority": "1",
@@ -8468,7 +8468,7 @@
         "username": "709863"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T14:00:00.000Z",
             "priority": "1",
@@ -8481,7 +8481,7 @@
         "username": "182053"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T14:00:00.000Z",
             "priority": "1",
@@ -8494,7 +8494,7 @@
         "username": "839656"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T14:00:00.000Z",
             "priority": "1",
@@ -8507,7 +8507,7 @@
         "username": "471622"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T14:00:00.000Z",
             "priority": "1",
@@ -8530,7 +8530,7 @@
         "username": "370980"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T14:00:00.000Z",
             "priority": "1",
@@ -8548,7 +8548,7 @@
         "username": "979076"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T14:00:00.000Z",
             "priority": "1",
@@ -8566,7 +8566,7 @@
         "username": "429102"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T14:00:00.000Z",
             "priority": "2",
@@ -8584,7 +8584,7 @@
         "username": "455250"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T14:00:00.000Z",
             "priority": "1",
@@ -8617,7 +8617,7 @@
         "username": "826224"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T14:00:00.000Z",
             "priority": "1",
@@ -8640,7 +8640,7 @@
         "username": "352719"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T14:00:00.000Z",
             "priority": "1",
@@ -8663,7 +8663,7 @@
         "username": "817251"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T14:00:00.000Z",
             "priority": "1",
@@ -8701,7 +8701,7 @@
         "username": "810076"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T14:00:00.000Z",
             "priority": "1",
@@ -8724,7 +8724,7 @@
         "username": "858317"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T14:00:00.000Z",
             "priority": "3",
@@ -8747,7 +8747,7 @@
         "username": "102872"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T14:00:00.000Z",
             "priority": "1",
@@ -8765,7 +8765,7 @@
         "username": "371916"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T14:00:00.000Z",
             "priority": "2",
@@ -8783,7 +8783,7 @@
         "username": "79206"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T14:00:00.000Z",
             "priority": "1",
@@ -8836,7 +8836,7 @@
         "username": "647978"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T14:00:00.000Z",
             "priority": "1",
@@ -8864,7 +8864,7 @@
         "username": "929122"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T14:00:00.000Z",
             "priority": "1",
@@ -8892,7 +8892,7 @@
         "username": "568609"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T14:00:00.000Z",
             "priority": "1",
@@ -8970,7 +8970,7 @@
     "startTime": "2017-07-29T15:00:00.000Z",
     "results": [
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T15:00:00.000Z",
             "priority": "1",
@@ -8988,7 +8988,7 @@
         "username": "943703"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T15:00:00.000Z",
             "priority": "1",
@@ -9006,7 +9006,7 @@
         "username": "160931"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T15:00:00.000Z",
             "priority": "1",
@@ -9059,7 +9059,7 @@
         "username": "671039"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T15:00:00.000Z",
             "priority": "1",
@@ -9072,7 +9072,7 @@
         "username": "60308"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T15:00:00.000Z",
             "priority": "1",
@@ -9085,7 +9085,7 @@
         "username": "31374"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T15:00:00.000Z",
             "priority": "1",
@@ -9108,7 +9108,7 @@
         "username": "232907"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T15:00:00.000Z",
             "priority": "1",
@@ -9121,7 +9121,7 @@
         "username": "442262"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T15:00:00.000Z",
             "priority": "1",
@@ -9134,7 +9134,7 @@
         "username": "83710"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T15:00:00.000Z",
             "priority": "2",
@@ -9172,7 +9172,7 @@
         "username": "854769"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T15:00:00.000Z",
             "priority": "1",
@@ -9190,7 +9190,7 @@
         "username": "691146"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T15:00:00.000Z",
             "priority": "1",
@@ -9223,7 +9223,7 @@
         "username": "31419"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T15:00:00.000Z",
             "priority": "1",
@@ -9236,7 +9236,7 @@
         "username": "163380"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T15:00:00.000Z",
             "priority": "1",
@@ -9249,7 +9249,7 @@
         "username": "232165"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T15:00:00.000Z",
             "priority": "1",
@@ -9272,7 +9272,7 @@
         "username": "216673"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T15:00:00.000Z",
             "priority": "1",
@@ -9285,7 +9285,7 @@
         "username": "413902"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T15:00:00.000Z",
             "priority": "1",
@@ -9298,7 +9298,7 @@
         "username": "431158"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T15:00:00.000Z",
             "priority": "1",
@@ -9311,7 +9311,7 @@
         "username": "772756"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T15:00:00.000Z",
             "priority": "1",
@@ -9329,7 +9329,7 @@
         "username": "514008"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T15:00:00.000Z",
             "priority": "1",
@@ -9357,7 +9357,7 @@
         "username": "418386"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T15:00:00.000Z",
             "priority": "2",
@@ -9385,7 +9385,7 @@
         "username": "39095"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T15:00:00.000Z",
             "priority": "2",
@@ -9423,7 +9423,7 @@
         "username": "500200"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T15:00:00.000Z",
             "priority": "1",
@@ -9461,7 +9461,7 @@
     "startTime": "2017-07-29T16:00:00.000Z",
     "results": [
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T16:00:00.000Z",
             "priority": "1",
@@ -9474,7 +9474,7 @@
         "username": "373194"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T16:00:00.000Z",
             "priority": "1",
@@ -9487,7 +9487,7 @@
         "username": "494824"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T16:00:00.000Z",
             "priority": "3",
@@ -9510,7 +9510,7 @@
         "username": "415745"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T16:00:00.000Z",
             "priority": "1",
@@ -9533,7 +9533,7 @@
         "username": "775675"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T16:00:00.000Z",
             "priority": "1",
@@ -9551,7 +9551,7 @@
         "username": "635618"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T16:00:00.000Z",
             "priority": "1",
@@ -9564,7 +9564,7 @@
         "username": "365645"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T16:00:00.000Z",
             "priority": "1",
@@ -9582,7 +9582,7 @@
         "username": "251285"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T16:00:00.000Z",
             "priority": "1",
@@ -9595,7 +9595,7 @@
         "username": "428813"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T16:00:00.000Z",
             "priority": "1",
@@ -9623,7 +9623,7 @@
         "username": "607670"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T16:00:00.000Z",
             "priority": "1",
@@ -9661,7 +9661,7 @@
         "username": "950858"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T16:00:00.000Z",
             "priority": "1",
@@ -9694,7 +9694,7 @@
         "username": "372680"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T16:00:00.000Z",
             "priority": "1",
@@ -9712,7 +9712,7 @@
         "username": "477602"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T16:00:00.000Z",
             "priority": "1",
@@ -9730,7 +9730,7 @@
         "username": "378047"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T16:00:00.000Z",
             "priority": "1",
@@ -9753,7 +9753,7 @@
         "username": "901937"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T16:00:00.000Z",
             "priority": "1",
@@ -9776,7 +9776,7 @@
         "username": "271214"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T16:00:00.000Z",
             "priority": "1",
@@ -9799,7 +9799,7 @@
         "username": "577003"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T16:00:00.000Z",
             "priority": "1",
@@ -9822,7 +9822,7 @@
         "username": "258215"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T16:00:00.000Z",
             "priority": "3",
@@ -9860,7 +9860,7 @@
         "username": "572774"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T16:00:00.000Z",
             "priority": "1",
@@ -9878,7 +9878,7 @@
         "username": "788883"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T16:00:00.000Z",
             "priority": "1",
@@ -9896,7 +9896,7 @@
         "username": "869560"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T16:00:00.000Z",
             "priority": "1",
@@ -9964,7 +9964,7 @@
         "username": "647978"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T16:00:00.000Z",
             "priority": "1",
@@ -9987,7 +9987,7 @@
         "username": "478877"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T16:00:00.000Z",
             "priority": "1",
@@ -10010,7 +10010,7 @@
         "username": "328164"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T16:00:00.000Z",
             "priority": "1",
@@ -10023,7 +10023,7 @@
         "username": "535554"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T16:00:00.000Z",
             "priority": "1",
@@ -10091,7 +10091,7 @@
         "username": "202803"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T16:00:00.000Z",
             "priority": "1",
@@ -10144,7 +10144,7 @@
         "username": "425689"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T16:00:00.000Z",
             "priority": "1",
@@ -10172,7 +10172,7 @@
         "username": "293909"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T16:00:00.000Z",
             "priority": "2",
@@ -10195,7 +10195,7 @@
         "username": "117866"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T16:00:00.000Z",
             "priority": "2",
@@ -10208,7 +10208,7 @@
         "username": "620291"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T16:00:00.000Z",
             "priority": "1",
@@ -10231,7 +10231,7 @@
         "username": "884453"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T16:00:00.000Z",
             "priority": "1",
@@ -10259,7 +10259,7 @@
         "username": "689838"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T16:00:00.000Z",
             "priority": "1",
@@ -10307,7 +10307,7 @@
         "username": "142553"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T16:00:00.000Z",
             "priority": "1",
@@ -10360,7 +10360,7 @@
         "username": "84842"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T16:00:00.000Z",
             "priority": "1",
@@ -10373,7 +10373,7 @@
         "username": "669549"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T16:00:00.000Z",
             "priority": "1",
@@ -10391,7 +10391,7 @@
         "username": "444602"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T16:00:00.000Z",
             "priority": "1",
@@ -10414,7 +10414,7 @@
         "username": "631850"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T16:00:00.000Z",
             "priority": "1",
@@ -10437,7 +10437,7 @@
         "username": "773239"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T16:00:00.000Z",
             "priority": "1",
@@ -10490,7 +10490,7 @@
         "username": "422454"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T16:00:00.000Z",
             "priority": "1",
@@ -10528,7 +10528,7 @@
         "username": "586801"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T16:00:00.000Z",
             "priority": "1",
@@ -10566,7 +10566,7 @@
         "username": "357793"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T16:00:00.000Z",
             "priority": "1",
@@ -10634,7 +10634,7 @@
         "username": "403133"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T16:00:00.000Z",
             "priority": "1",
@@ -10657,7 +10657,7 @@
         "username": "436624"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T16:00:00.000Z",
             "priority": "1",
@@ -10690,7 +10690,7 @@
         "username": "767879"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T16:00:00.000Z",
             "priority": "1",
@@ -10708,7 +10708,7 @@
         "username": "532337"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T16:00:00.000Z",
             "priority": "1",
@@ -10726,7 +10726,7 @@
         "username": "980464"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T16:00:00.000Z",
             "priority": "2",
@@ -10779,7 +10779,7 @@
         "username": "338703"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T16:00:00.000Z",
             "priority": "1",
@@ -10817,7 +10817,7 @@
         "username": "715378"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T16:00:00.000Z",
             "priority": "1",
@@ -10830,7 +10830,7 @@
         "username": "689790"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T16:00:00.000Z",
             "priority": "1",
@@ -10843,7 +10843,7 @@
         "username": "894275"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T16:00:00.000Z",
             "priority": "1",
@@ -10861,7 +10861,7 @@
         "username": "183384"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T16:00:00.000Z",
             "priority": "1",
@@ -10889,7 +10889,7 @@
         "username": "801388"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T16:00:00.000Z",
             "priority": "1",
@@ -10907,7 +10907,7 @@
         "username": "973454"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T16:00:00.000Z",
             "priority": "1",
@@ -10920,7 +10920,7 @@
         "username": "532922"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T16:00:00.000Z",
             "priority": "1",
@@ -10943,7 +10943,7 @@
         "username": "286139"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T16:00:00.000Z",
             "priority": "1",
@@ -10956,7 +10956,7 @@
         "username": "501070"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T16:00:00.000Z",
             "priority": "1",
@@ -10979,7 +10979,7 @@
         "username": "948604"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T16:00:00.000Z",
             "priority": "1",
@@ -11012,7 +11012,7 @@
         "username": "404855"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T16:00:00.000Z",
             "priority": "1",
@@ -11050,7 +11050,7 @@
     "startTime": "2017-07-29T17:00:00.000Z",
     "results": [
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T17:00:00.000Z",
             "priority": "1",
@@ -11068,7 +11068,7 @@
         "username": "19843"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T17:00:00.000Z",
             "priority": "1",
@@ -11081,7 +11081,7 @@
         "username": "370185"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T17:00:00.000Z",
             "priority": "1",
@@ -11099,7 +11099,7 @@
         "username": "712625"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T17:00:00.000Z",
             "priority": "2",
@@ -11132,7 +11132,7 @@
         "username": "334099"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T17:00:00.000Z",
             "priority": "1",
@@ -11150,7 +11150,7 @@
         "username": "200581"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T17:00:00.000Z",
             "priority": "1",
@@ -11168,7 +11168,7 @@
         "username": "917283"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T17:00:00.000Z",
             "priority": "1",
@@ -11181,7 +11181,7 @@
         "username": "647984"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T17:00:00.000Z",
             "priority": "1",
@@ -11194,7 +11194,7 @@
         "username": "481419"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T17:00:00.000Z",
             "priority": "1",
@@ -11247,7 +11247,7 @@
         "username": "102327"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T17:00:00.000Z",
             "priority": "1",
@@ -11295,7 +11295,7 @@
         "username": "457214"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T17:00:00.000Z",
             "priority": "1",
@@ -11313,7 +11313,7 @@
         "username": "915758"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T17:00:00.000Z",
             "priority": "1",
@@ -11361,7 +11361,7 @@
         "username": "461959"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T17:00:00.000Z",
             "priority": "1",
@@ -11409,7 +11409,7 @@
         "username": "291435"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T17:00:00.000Z",
             "priority": "1",
@@ -11422,7 +11422,7 @@
         "username": "797485"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T17:00:00.000Z",
             "priority": "2",
@@ -11445,7 +11445,7 @@
         "username": "994532"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T17:00:00.000Z",
             "priority": "1",
@@ -11468,7 +11468,7 @@
         "username": "844706"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T17:00:00.000Z",
             "priority": "1",
@@ -11481,7 +11481,7 @@
         "username": "975406"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T17:00:00.000Z",
             "priority": "1",
@@ -11519,7 +11519,7 @@
         "username": "278521"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T17:00:00.000Z",
             "priority": "2",
@@ -11542,7 +11542,7 @@
         "username": "161349"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T17:00:00.000Z",
             "priority": "1",
@@ -11565,7 +11565,7 @@
         "username": "100749"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T17:00:00.000Z",
             "priority": "1",
@@ -11603,7 +11603,7 @@
         "username": "425259"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T17:00:00.000Z",
             "priority": "1",
@@ -11616,7 +11616,7 @@
         "username": "588277"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T17:00:00.000Z",
             "priority": "1",
@@ -11659,7 +11659,7 @@
         "username": "434769"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T17:00:00.000Z",
             "priority": "1",
@@ -11677,7 +11677,7 @@
         "username": "363615"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T17:00:00.000Z",
             "priority": "1",
@@ -11695,7 +11695,7 @@
         "username": "217040"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T17:00:00.000Z",
             "priority": "1",
@@ -11733,7 +11733,7 @@
         "username": "754171"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T17:00:00.000Z",
             "priority": "1",
@@ -11776,7 +11776,7 @@
         "username": "709546"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T17:00:00.000Z",
             "priority": "1",
@@ -11809,7 +11809,7 @@
         "username": "188019"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T17:00:00.000Z",
             "priority": "1",
@@ -11842,7 +11842,7 @@
         "username": "420650"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T17:00:00.000Z",
             "priority": "1",
@@ -11865,7 +11865,7 @@
         "username": "740687"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T17:00:00.000Z",
             "priority": "1",
@@ -11888,7 +11888,7 @@
         "username": "951399"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T17:00:00.000Z",
             "priority": "1",
@@ -11911,7 +11911,7 @@
         "username": "135866"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T17:00:00.000Z",
             "priority": "1",
@@ -11929,7 +11929,7 @@
         "username": "905388"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T17:00:00.000Z",
             "priority": "2",
@@ -11972,7 +11972,7 @@
         "username": "579962"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T17:00:00.000Z",
             "priority": "3",
@@ -12000,7 +12000,7 @@
         "username": "912146"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T17:00:00.000Z",
             "priority": "1",
@@ -12013,7 +12013,7 @@
         "username": "188516"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T17:00:00.000Z",
             "priority": "1",
@@ -12036,7 +12036,7 @@
         "username": "260352"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T17:00:00.000Z",
             "priority": "1",
@@ -12059,7 +12059,7 @@
         "username": "462902"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T17:00:00.000Z",
             "priority": "1",
@@ -12082,7 +12082,7 @@
         "username": "864261"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T17:00:00.000Z",
             "priority": "1",
@@ -12140,7 +12140,7 @@
         "username": "602265"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T17:00:00.000Z",
             "priority": "1",
@@ -12168,7 +12168,7 @@
         "username": "689790"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T17:00:00.000Z",
             "priority": "1",
@@ -12191,7 +12191,7 @@
         "username": "222882"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-29T17:00:00.000Z",
             "priority": "1",
@@ -12229,7 +12229,7 @@
     "startTime": "2017-07-30T07:00:00.000Z",
     "results": [
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T07:00:00.000Z",
             "priority": "1",
@@ -12257,7 +12257,7 @@
         "username": "474964"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T07:00:00.000Z",
             "priority": "1",
@@ -12295,7 +12295,7 @@
         "username": "466924"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T07:00:00.000Z",
             "priority": "1",
@@ -12308,7 +12308,7 @@
         "username": "775236"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T07:00:00.000Z",
             "priority": "1",
@@ -12321,7 +12321,7 @@
         "username": "535230"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T07:00:00.000Z",
             "priority": "1",
@@ -12334,7 +12334,7 @@
         "username": "709669"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T07:00:00.000Z",
             "priority": "1",
@@ -12352,7 +12352,7 @@
         "username": "626398"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T07:00:00.000Z",
             "priority": "1",
@@ -12370,7 +12370,7 @@
         "username": "176031"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T07:00:00.000Z",
             "priority": "1",
@@ -12393,7 +12393,7 @@
         "username": "647478"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T07:00:00.000Z",
             "priority": "3",
@@ -12431,7 +12431,7 @@
         "username": "102872"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T07:00:00.000Z",
             "priority": "1",
@@ -12474,7 +12474,7 @@
         "username": "200394"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T07:00:00.000Z",
             "priority": "1",
@@ -12487,7 +12487,7 @@
         "username": "485888"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T07:00:00.000Z",
             "priority": "1",
@@ -12505,7 +12505,7 @@
         "username": "442262"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T07:00:00.000Z",
             "priority": "1",
@@ -12523,7 +12523,7 @@
         "username": "83710"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T07:00:00.000Z",
             "priority": "1",
@@ -12556,7 +12556,7 @@
         "username": "521649"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T07:00:00.000Z",
             "priority": "1",
@@ -12594,7 +12594,7 @@
         "username": "703878"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T07:00:00.000Z",
             "priority": "1",
@@ -12637,7 +12637,7 @@
         "username": "961115"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T07:00:00.000Z",
             "priority": "1",
@@ -12665,7 +12665,7 @@
         "username": "736093"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T07:00:00.000Z",
             "priority": "1",
@@ -12688,7 +12688,7 @@
         "username": "606037"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T07:00:00.000Z",
             "priority": "1",
@@ -12751,7 +12751,7 @@
         "username": "564848"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T07:00:00.000Z",
             "priority": "1",
@@ -12794,7 +12794,7 @@
         "username": "372680"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T07:00:00.000Z",
             "priority": "1",
@@ -12822,7 +12822,7 @@
         "username": "677739"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T07:00:00.000Z",
             "priority": "1",
@@ -12850,7 +12850,7 @@
         "username": "723927"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T07:00:00.000Z",
             "priority": "2",
@@ -12898,7 +12898,7 @@
         "username": "865825"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T07:00:00.000Z",
             "priority": "1",
@@ -12916,7 +12916,7 @@
         "username": "958916"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T07:00:00.000Z",
             "priority": "1",
@@ -12934,7 +12934,7 @@
         "username": "775670"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T07:00:00.000Z",
             "priority": "1",
@@ -12957,7 +12957,7 @@
         "username": "444602"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T07:00:00.000Z",
             "priority": "3",
@@ -12970,7 +12970,7 @@
         "username": "818836"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T07:00:00.000Z",
             "priority": "2",
@@ -12988,7 +12988,7 @@
         "username": "66745"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T07:00:00.000Z",
             "priority": "1",
@@ -13006,7 +13006,7 @@
         "username": "617336"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T07:00:00.000Z",
             "priority": "1",
@@ -13044,7 +13044,7 @@
         "username": "188019"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T07:00:00.000Z",
             "priority": "1",
@@ -13107,7 +13107,7 @@
         "username": "141399"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T07:00:00.000Z",
             "priority": "1",
@@ -13145,7 +13145,7 @@
         "username": "224520"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T07:00:00.000Z",
             "priority": "1",
@@ -13183,7 +13183,7 @@
         "username": "58904"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T07:00:00.000Z",
             "priority": "1",
@@ -13201,7 +13201,7 @@
         "username": "859285"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T07:00:00.000Z",
             "priority": "1",
@@ -13214,7 +13214,7 @@
         "username": "10610"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T07:00:00.000Z",
             "priority": "1",
@@ -13232,7 +13232,7 @@
         "username": "51585"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T07:00:00.000Z",
             "priority": "1",
@@ -13280,7 +13280,7 @@
         "username": "973465"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T07:00:00.000Z",
             "priority": "1",
@@ -13328,7 +13328,7 @@
         "username": "807858"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T07:00:00.000Z",
             "priority": "1",
@@ -13351,7 +13351,7 @@
         "username": "888388"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T07:00:00.000Z",
             "priority": "2",
@@ -13374,7 +13374,7 @@
         "username": "771176"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T07:00:00.000Z",
             "priority": "2",
@@ -13427,7 +13427,7 @@
         "username": "278521"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T07:00:00.000Z",
             "priority": "1",
@@ -13475,7 +13475,7 @@
         "username": "190718"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T07:00:00.000Z",
             "priority": "3",
@@ -13508,7 +13508,7 @@
         "username": "912146"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T07:00:00.000Z",
             "priority": "1",
@@ -13556,7 +13556,7 @@
         "username": "830810"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T07:00:00.000Z",
             "priority": "1",
@@ -13629,7 +13629,7 @@
         "username": "602265"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T07:00:00.000Z",
             "priority": "1",
@@ -13677,7 +13677,7 @@
         "username": "950858"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T07:00:00.000Z",
             "priority": "1",
@@ -13745,7 +13745,7 @@
     "startTime": "2017-07-30T08:00:00.000Z",
     "results": [
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T08:00:00.000Z",
             "priority": "1",
@@ -13763,7 +13763,7 @@
         "username": "335885"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T08:00:00.000Z",
             "priority": "1",
@@ -13781,7 +13781,7 @@
         "username": "341520"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T08:00:00.000Z",
             "priority": "1",
@@ -13814,7 +13814,7 @@
         "username": "607670"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T08:00:00.000Z",
             "priority": "1",
@@ -13832,7 +13832,7 @@
         "username": "282697"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T08:00:00.000Z",
             "priority": "2",
@@ -13885,7 +13885,7 @@
         "username": "810076"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T08:00:00.000Z",
             "priority": "2",
@@ -13933,7 +13933,7 @@
         "username": "683409"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T08:00:00.000Z",
             "priority": "1",
@@ -14016,7 +14016,7 @@
         "username": "678717"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T08:00:00.000Z",
             "priority": "1",
@@ -14044,7 +14044,7 @@
         "username": "631850"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T08:00:00.000Z",
             "priority": "1",
@@ -14072,7 +14072,7 @@
         "username": "773239"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T08:00:00.000Z",
             "priority": "1",
@@ -14085,7 +14085,7 @@
         "username": "916096"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T08:00:00.000Z",
             "priority": "1",
@@ -14108,7 +14108,7 @@
         "username": "475375"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T08:00:00.000Z",
             "priority": "1",
@@ -14191,7 +14191,7 @@
         "username": "202803"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T08:00:00.000Z",
             "priority": "1",
@@ -14229,7 +14229,7 @@
         "username": "71859"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T08:00:00.000Z",
             "priority": "1",
@@ -14267,7 +14267,7 @@
         "username": "17964"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T08:00:00.000Z",
             "priority": "1",
@@ -14330,7 +14330,7 @@
         "username": "422454"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T08:00:00.000Z",
             "priority": "1",
@@ -14343,7 +14343,7 @@
         "username": "330003"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T08:00:00.000Z",
             "priority": "1",
@@ -14426,7 +14426,7 @@
     "startTime": "2017-07-30T09:00:00.000Z",
     "results": [
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T09:00:00.000Z",
             "priority": "1",
@@ -14439,7 +14439,7 @@
         "username": "97638"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T09:00:00.000Z",
             "priority": "1",
@@ -14452,7 +14452,7 @@
         "username": "791020"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T09:00:00.000Z",
             "priority": "1",
@@ -14465,7 +14465,7 @@
         "username": "115789"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T09:00:00.000Z",
             "priority": "1",
@@ -14493,7 +14493,7 @@
         "username": "226320"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T09:00:00.000Z",
             "priority": "2",
@@ -14526,7 +14526,7 @@
         "username": "601755"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T09:00:00.000Z",
             "priority": "1",
@@ -14549,7 +14549,7 @@
         "username": "352328"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T09:00:00.000Z",
             "priority": "3",
@@ -14607,7 +14607,7 @@
         "username": "857245"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T09:00:00.000Z",
             "priority": "1",
@@ -14620,7 +14620,7 @@
         "username": "429618"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T09:00:00.000Z",
             "priority": "1",
@@ -14648,7 +14648,7 @@
         "username": "370185"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T09:00:00.000Z",
             "priority": "3",
@@ -14726,7 +14726,7 @@
         "username": "904107"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T09:00:00.000Z",
             "priority": "1",
@@ -14789,7 +14789,7 @@
         "username": "461959"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T09:00:00.000Z",
             "priority": "1",
@@ -14812,7 +14812,7 @@
         "username": "625451"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T09:00:00.000Z",
             "priority": "1",
@@ -14840,7 +14840,7 @@
         "username": "807258"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T09:00:00.000Z",
             "priority": "2",
@@ -14858,7 +14858,7 @@
         "username": "434548"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T09:00:00.000Z",
             "priority": "1",
@@ -14881,7 +14881,7 @@
         "username": "294185"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T09:00:00.000Z",
             "priority": "1",
@@ -14904,7 +14904,7 @@
         "username": "971520"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T09:00:00.000Z",
             "priority": "1",
@@ -14987,7 +14987,7 @@
         "username": "647978"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T09:00:00.000Z",
             "priority": "1",
@@ -15000,7 +15000,7 @@
         "username": "904136"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T09:00:00.000Z",
             "priority": "1",
@@ -15013,7 +15013,7 @@
         "username": "954836"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T09:00:00.000Z",
             "priority": "2",
@@ -15076,7 +15076,7 @@
         "username": "683409"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T09:00:00.000Z",
             "priority": "1",
@@ -15104,7 +15104,7 @@
         "username": "606037"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T09:00:00.000Z",
             "priority": "1",
@@ -15137,7 +15137,7 @@
         "username": "937874"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T09:00:00.000Z",
             "priority": "1",
@@ -15150,7 +15150,7 @@
         "username": "64414"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T09:00:00.000Z",
             "priority": "1",
@@ -15168,7 +15168,7 @@
         "username": "417680"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T09:00:00.000Z",
             "priority": "1",
@@ -15186,7 +15186,7 @@
         "username": "86088"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T09:00:00.000Z",
             "priority": "1",
@@ -15204,7 +15204,7 @@
         "username": "532922"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T09:00:00.000Z",
             "priority": "2",
@@ -15232,7 +15232,7 @@
         "username": "620291"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T09:00:00.000Z",
             "priority": "1",
@@ -15265,7 +15265,7 @@
         "username": "286139"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T09:00:00.000Z",
             "priority": "1",
@@ -15278,7 +15278,7 @@
         "username": "616791"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T09:00:00.000Z",
             "priority": "1",
@@ -15301,7 +15301,7 @@
         "username": "114615"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T09:00:00.000Z",
             "priority": "1",
@@ -15324,7 +15324,7 @@
         "username": "160931"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T09:00:00.000Z",
             "priority": "1",
@@ -15357,7 +15357,7 @@
         "username": "248767"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T09:00:00.000Z",
             "priority": "1",
@@ -15380,7 +15380,7 @@
         "username": "798825"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T09:00:00.000Z",
             "priority": "1",
@@ -15433,7 +15433,7 @@
         "username": "291435"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T09:00:00.000Z",
             "priority": "1",
@@ -15451,7 +15451,7 @@
         "username": "653852"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T09:00:00.000Z",
             "priority": "1",
@@ -15489,7 +15489,7 @@
         "username": "478877"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T09:00:00.000Z",
             "priority": "1",
@@ -15512,7 +15512,7 @@
         "username": "957268"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T09:00:00.000Z",
             "priority": "1",
@@ -15560,7 +15560,7 @@
         "username": "767879"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T09:00:00.000Z",
             "priority": "1",
@@ -15603,7 +15603,7 @@
         "username": "293909"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T09:00:00.000Z",
             "priority": "1",
@@ -15626,7 +15626,7 @@
         "username": "221570"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T09:00:00.000Z",
             "priority": "1",
@@ -15674,7 +15674,7 @@
         "username": "968951"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T09:00:00.000Z",
             "priority": "1",
@@ -15727,7 +15727,7 @@
         "username": "89017"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T09:00:00.000Z",
             "priority": "2",
@@ -15755,7 +15755,7 @@
         "username": "532337"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T09:00:00.000Z",
             "priority": "1",
@@ -15823,7 +15823,7 @@
         "username": "425689"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T09:00:00.000Z",
             "priority": "1",
@@ -15851,7 +15851,7 @@
         "username": "980464"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T09:00:00.000Z",
             "priority": "1",
@@ -15919,7 +15919,7 @@
         "username": "84842"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T09:00:00.000Z",
             "priority": "1",
@@ -15942,7 +15942,7 @@
         "username": "577962"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T09:00:00.000Z",
             "priority": "1",
@@ -15980,7 +15980,7 @@
         "username": "418386"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T09:00:00.000Z",
             "priority": "2",
@@ -16018,7 +16018,7 @@
         "username": "39095"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T09:00:00.000Z",
             "priority": "1",
@@ -16046,7 +16046,7 @@
         "username": "772756"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T09:00:00.000Z",
             "priority": "1",
@@ -16084,7 +16084,7 @@
         "username": "811026"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T09:00:00.000Z",
             "priority": "1",
@@ -16112,7 +16112,7 @@
         "username": "486902"
       },
       {
-        "signedGames": [
+        "lotterySignups": [
           {
             "time": "2017-07-30T09:00:00.000Z",
             "priority": "1",

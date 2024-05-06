@@ -1,24 +1,24 @@
 import { Dayjs } from "dayjs";
 import { Game } from "shared/types/models/game";
-import { SelectedGame } from "shared/types/models/user";
+import { Signup } from "shared/types/models/user";
 import { getDateAndTime, getWeekdayAndTime } from "client/utils/timeFormatter";
 import { config } from "shared/config";
 
 export const isAlreadySigned = (
   gameToCheck: Game,
-  signedGames: readonly SelectedGame[],
+  lotterySignups: readonly Signup[],
 ): boolean => {
-  return signedGames.some(
-    (g: SelectedGame) => g.gameDetails.gameId === gameToCheck.gameId,
+  return lotterySignups.some(
+    (g: Signup) => g.gameDetails.gameId === gameToCheck.gameId,
   );
 };
 
 export const isAlreadyEntered = (
   gameToCheck: Game,
-  enteredGames: readonly SelectedGame[],
+  enteredGames: readonly Signup[],
 ): boolean => {
   return enteredGames.some(
-    (g: SelectedGame) => g.gameDetails.gameId === gameToCheck.gameId,
+    (g: Signup) => g.gameDetails.gameId === gameToCheck.gameId,
   );
 };
 

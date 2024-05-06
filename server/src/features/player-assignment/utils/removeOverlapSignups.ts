@@ -1,10 +1,10 @@
 import dayjs from "dayjs";
 import isBetween from "dayjs/plugin/isBetween"; // ES 2015
 import { logger } from "server/utils/logger";
-import { UserSignedGames } from "server/types/resultTypes";
+import { UserLotterySignups } from "server/types/resultTypes";
 import { findUsers } from "server/features/user/userRepository";
 import { AssignmentResult } from "shared/types/models/result";
-import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
+import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import {
   Result,
   isErrorResult,
@@ -21,7 +21,7 @@ export const removeOverlapSignups = async (
   results: readonly AssignmentResult[],
 ): Promise<Result<void, MongoDbError>> => {
   logger.debug("Find overlapping signups");
-  const signupData: UserSignedGames[] = [];
+  const signupData: UserLotterySignups[] = [];
 
   const usersResult = await findUsers();
   if (isErrorResult(usersResult)) {
@@ -51,33 +51,35 @@ export const removeOverlapSignups = async (
     }
 
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-    const newSignedGames = signedUser?.signedGames.filter((signedGame) => {
-      // If signed game takes place during the length of entered game, cancel it
-      return !dayjs(signedGame.gameDetails.startTime).isBetween(
-        dayjs(enteredGame.startTime).add(1, "minutes"),
-        dayjs(enteredGame.endTime),
-      );
-    });
+    const newLotterySignups = signedUser?.lotterySignups.filter(
+      (lotterySignup) => {
+        // If lottery signup takes place during the length of entered game, cancel it
+        return !dayjs(lotterySignup.gameDetails.startTime).isBetween(
+          dayjs(enteredGame.startTime).add(1, "minutes"),
+          dayjs(enteredGame.endTime),
+        );
+      },
+    );
 
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-    if (!newSignedGames) {
+    if (!newLotterySignups) {
       logger.error(
         "%s",
-        new Error("removeOverlapSignups: Error finding signed games"),
+        new Error("removeOverlapSignups: Error finding lottery signups"),
       );
       return;
     }
 
     signupData.push({
       username: signedUser.username,
-      signedGames: newSignedGames,
+      lotterySignups: newLotterySignups,
     });
   });
 
   const promises = signupData.map(async (signup) => {
-    const saveSignedGamesResult = await saveSignedGames(signup);
-    if (isErrorResult(saveSignedGamesResult)) {
-      return saveSignedGamesResult;
+    const saveLotterySignupsResult = await saveLotterySignups(signup);
+    if (isErrorResult(saveLotterySignupsResult)) {
+      return saveLotterySignupsResult;
     }
     return makeSuccessResult(undefined);
   });

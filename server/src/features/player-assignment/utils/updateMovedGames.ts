@@ -65,19 +65,19 @@ const removeMovedLotterySignups = async (
   const usersToUpdate: User[] = users.flatMap((user) => {
     const programItemsToBeRemoved: Game[] = [];
 
-    const signedGames = user.signedGames.filter((signedGame) => {
+    const lotterySignups = user.lotterySignups.filter((lotterySignup) => {
       const movedFound = movedGames.find((movedGame) => {
-        return movedGame.gameId === signedGame.gameDetails.gameId;
+        return movedGame.gameId === lotterySignup.gameDetails.gameId;
       });
       if (!movedFound) {
-        return signedGame;
+        return lotterySignup;
       }
       programItemsToBeRemoved.push(movedFound);
     });
 
     if (programItemsToBeRemoved.length > 0) {
       logger.info(
-        `Remove following moved signedGames from user ${
+        `Remove following moved lotterySignups from user ${
           user.username
         }: ${programItemsToBeRemoved
           .map((deletedGame) => deletedGame.gameId)
@@ -85,10 +85,10 @@ const removeMovedLotterySignups = async (
       );
     }
 
-    if (user.signedGames.length !== signedGames.length) {
+    if (user.lotterySignups.length !== lotterySignups.length) {
       return {
         ...user,
-        signedGames,
+        lotterySignups,
       };
     }
 

@@ -25,19 +25,19 @@ export const removeInvalidGamesFromUsers = async (): Promise<
   const users = unwrapResult(usersResult);
 
   const usersToUpdate: User[] = users.flatMap((user) => {
-    const validSignedGames = user.signedGames.filter((signedGame) => {
+    const validLotterySignups = user.lotterySignups.filter((lotterySignup) => {
       // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-      if (signedGame.gameDetails !== null) {
-        return signedGame.gameDetails;
+      if (lotterySignup.gameDetails !== null) {
+        return lotterySignup.gameDetails;
       }
     });
 
-    const changedSignedGamesCount =
-      user.signedGames.length - validSignedGames.length;
+    const changedLotterySignupsCount =
+      user.lotterySignups.length - validLotterySignups.length;
 
-    if (changedSignedGamesCount > 0) {
+    if (changedLotterySignupsCount > 0) {
       logger.info(
-        `Remove ${changedSignedGamesCount} invalid signedGames from user ${user.username}`,
+        `Remove ${changedLotterySignupsCount} invalid lotterySignups from user ${user.username}`,
       );
     }
 
@@ -57,10 +57,10 @@ export const removeInvalidGamesFromUsers = async (): Promise<
       );
     }
 
-    if (changedSignedGamesCount > 0 || changedFavoritedGamesCount > 0) {
+    if (changedLotterySignupsCount > 0 || changedFavoritedGamesCount > 0) {
       return {
         ...user,
-        signedGames: validSignedGames,
+        lotterySignups: validLotterySignups,
         favoritedGames: validFavoritedGames,
       };
     }

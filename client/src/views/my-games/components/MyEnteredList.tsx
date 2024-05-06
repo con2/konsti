@@ -4,18 +4,18 @@ import { sortBy, uniq } from "lodash-es";
 import styled from "styled-components";
 import { ResultsByStartTimes } from "./ResultsByStartTimes";
 import { getMissedSignups } from "client/views/my-games/utils/getMissedSignups";
-import { SelectedGame } from "shared/types/models/user";
+import { Signup } from "shared/types/models/user";
 import { config } from "shared/config";
 import { RaisedCard } from "client/components/RaisedCard";
 
 interface Props {
-  enteredGames: readonly SelectedGame[];
-  signedGames: readonly SelectedGame[];
+  enteredGames: readonly Signup[];
+  lotterySignups: readonly Signup[];
 }
 
 export const MyEnteredList = ({
   enteredGames,
-  signedGames,
+  lotterySignups,
 }: Props): ReactElement => {
   const { t } = useTranslation();
 
@@ -23,8 +23,8 @@ export const MyEnteredList = ({
   const [startTimes, setStartTimes] = useState<string[]>([]);
 
   useEffect(() => {
-    setMissedSignups(getMissedSignups(signedGames, enteredGames));
-  }, [signedGames, enteredGames]);
+    setMissedSignups(getMissedSignups(lotterySignups, enteredGames));
+  }, [lotterySignups, enteredGames]);
 
   useEffect(() => {
     setStartTimes(

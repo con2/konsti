@@ -69,14 +69,15 @@ export const runAssignment = async ({
 
   // Only include "twoPhaseSignupProgramTypes" and don't include "directSignupAlwaysOpen" games
   const filteredUsers = users.map((user) => {
-    const matchingSignedGames = user.signedGames.filter(
-      (signedGame) =>
+    const matchingLotterySignups = user.lotterySignups.filter(
+      (lotterySignup) =>
         twoPhaseSignupProgramTypes.includes(
-          signedGame.gameDetails.programType,
-        ) && !directSignupAlwaysOpenIds.includes(signedGame.gameDetails.gameId),
+          lotterySignup.gameDetails.programType,
+        ) &&
+        !directSignupAlwaysOpenIds.includes(lotterySignup.gameDetails.gameId),
     );
 
-    return { ...user, signedGames: matchingSignedGames };
+    return { ...user, lotterySignups: matchingLotterySignups };
   });
 
   const gamesResult = await findGames();

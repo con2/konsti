@@ -4,18 +4,18 @@ import { sortBy } from "lodash-es";
 import styled from "styled-components";
 import { getStartTimes } from "client/utils/getStartTimes";
 import { SignupsByStartTimes } from "./SignupsByStartTimes";
-import { SelectedGame } from "shared/types/models/user";
+import { Signup } from "shared/types/models/user";
 import { RaisedCard } from "client/components/RaisedCard";
 import { useAppSelector } from "client/utils/hooks";
 
 interface Props {
-  signedGames: readonly SelectedGame[];
+  lotterySignups: readonly Signup[];
   isGroupCreator: boolean;
   isGroupMember: boolean;
 }
 
-export const MySignupsList = ({
-  signedGames,
+export const MyLotterySignupsList = ({
+  lotterySignups,
   isGroupCreator,
   isGroupMember,
 }: Props): ReactElement => {
@@ -23,18 +23,18 @@ export const MySignupsList = ({
 
   const groupMembers = useAppSelector((state) => state.group.groupMembers);
 
-  const sortedSignups = sortBy(signedGames, [
-    (signedGame) => signedGame.gameDetails.startTime,
-    (signedGame) => signedGame.priority,
+  const sortedSignups = sortBy(lotterySignups, [
+    (lotterySignup) => lotterySignup.gameDetails.startTime,
+    (lotterySignup) => lotterySignup.priority,
   ]);
 
   const startTimes = getStartTimes(
-    signedGames.map((signedGame) => signedGame.gameDetails),
+    lotterySignups.map((lotterySignup) => lotterySignup.gameDetails),
   );
 
   return (
     <RaisedCard>
-      <Header>{t("lotterySignedGames")}</Header>
+      <Header>{t("lotterySignups")}</Header>
 
       {!isGroupCreator && isGroupMember && (
         <InfoText>{t("group.inGroupSignups")}</InfoText>
@@ -43,10 +43,10 @@ export const MySignupsList = ({
         <InfoText>{t("group.groupCreatorSignups")}</InfoText>
       )}
 
-      {signedGames.length === 0 && (
-        <SecondaryText>{t("noSignedGames")}</SecondaryText>
+      {lotterySignups.length === 0 && (
+        <SecondaryText>{t("noLotterySignups")}</SecondaryText>
       )}
-      {signedGames.length !== 0 && (
+      {lotterySignups.length !== 0 && (
         <SignupsByStartTimes signups={sortedSignups} startTimes={startTimes} />
       )}
     </RaisedCard>

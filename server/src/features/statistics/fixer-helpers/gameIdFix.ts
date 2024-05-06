@@ -73,22 +73,22 @@ export const gameIdFix = async (year: number, event: string): Promise<void> => {
       return { gameId: matchingGame.gameId };
     });
 
-    const tempSignedGames = user.signedGames.map((signedGame) => {
+    const tempLotterySignups = user.lotterySignups.map((lotterySignup) => {
       const matchingGame = games.find(
         // @ts-expect-error: $oid not in interface
-        (game) => game._id.$oid === signedGame.gameDetails.$oid,
+        (game) => game._id.$oid === lotterySignup.gameDetails.$oid,
       );
       if (!matchingGame) {
         logger.error(
-          `Signed: program item for id ${JSON.stringify(signedGame)} not found`,
+          `Lottery signup: program item for id ${JSON.stringify(lotterySignup)} not found`,
         );
         return {
-          ...signedGame,
+          ...lotterySignup,
           gameDetails: { gameId: "<canceled>" },
         };
       }
       return {
-        ...signedGame,
+        ...lotterySignup,
         gameDetails: { gameId: matchingGame.gameId },
       };
     });
@@ -96,7 +96,7 @@ export const gameIdFix = async (year: number, event: string): Promise<void> => {
     // @ts-expect-error: We don't want whole game details
     user.favoritedGames = tempFavoritedGames;
     // @ts-expect-error: We don't want whole game details
-    user.signedGames = tempSignedGames;
+    user.lotterySignups = tempLotterySignups;
   });
 
   results.map((result) => {

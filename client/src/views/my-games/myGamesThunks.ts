@@ -5,18 +5,18 @@ import {
   submitDeleteEnteredAsync,
   submitPostEnteredGameAsync,
   submitGetUserAsync,
-  submitPostSignedGamesAsync,
+  submitPostLotterySignupsAsync,
   submitUpdateFavoritesAsync,
 } from "client/views/my-games/myGamesSlice";
 import {
   DeleteEnteredGameRequest,
   PostEnteredGameRequest,
-  PostSignedGamesRequest,
+  PostLotterySignupsRequest,
 } from "shared/types/api/myGames";
 import {
   deleteEnteredGame,
   postEnteredGame,
-  postSignedGames,
+  postLotterySignups,
 } from "client/services/myGamesServices";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 import { NewFavorite } from "shared/types/models/user";
@@ -34,14 +34,14 @@ export const submitGetUser = (username: string): AppThunk => {
     if (getUserResponse.status === "success") {
       const enteredGames = getUserResponse.games.enteredGames;
       const favoritedGames = getUserResponse.games.favoritedGames;
-      const signedGames = getUserResponse.games.signedGames;
+      const lotterySignups = getUserResponse.games.lotterySignups;
       const eventLogItems = getUserResponse.eventLogItems;
 
       dispatch(
         submitGetUserAsync({
           enteredGames,
           favoritedGames,
-          signedGames,
+          lotterySignups,
         }),
       );
 
@@ -139,33 +139,35 @@ export const submitDeleteEnteredGame = (
   };
 };
 
-export enum PostSignedGamesErrorMessage {
+export enum PostLotterySignupsErrorMessage {
   SIGNUP_ENDED = "signupError.signupEnded",
   SAME_PRIORITY = "signupError.samePriority",
   UNKNOWN = "signupError.generic",
 }
 
-export const submitPostSignedGames = (
-  signupData: PostSignedGamesRequest,
-): AppThunk<Promise<PostSignedGamesErrorMessage | undefined>> => {
-  return async (dispatch): Promise<PostSignedGamesErrorMessage | undefined> => {
-    const signupResponse = await postSignedGames(signupData);
+export const submitPostLotterySignups = (
+  signupData: PostLotterySignupsRequest,
+): AppThunk<Promise<PostLotterySignupsErrorMessage | undefined>> => {
+  return async (
+    dispatch,
+  ): Promise<PostLotterySignupsErrorMessage | undefined> => {
+    const signupResponse = await postLotterySignups(signupData);
 
     if (signupResponse.status === "error") {
       switch (signupResponse.errorId) {
         case "signupEnded":
-          return PostSignedGamesErrorMessage.SIGNUP_ENDED;
+          return PostLotterySignupsErrorMessage.SIGNUP_ENDED;
         case "samePriority":
-          return PostSignedGamesErrorMessage.SAME_PRIORITY;
+          return PostLotterySignupsErrorMessage.SAME_PRIORITY;
         case "unknown":
-          return PostSignedGamesErrorMessage.UNKNOWN;
+          return PostLotterySignupsErrorMessage.UNKNOWN;
         default:
           exhaustiveSwitchGuard(signupResponse.errorId);
       }
     }
 
     if (signupResponse.status === "success") {
-      dispatch(submitPostSignedGamesAsync(signupResponse.signedGames));
+      dispatch(submitPostLotterySignupsAsync(signupResponse.lotterySignups));
     }
   };
 };

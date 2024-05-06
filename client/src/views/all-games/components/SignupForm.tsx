@@ -3,15 +3,15 @@ import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { Game } from "shared/types/models/game";
 import {
-  PostSignedGamesErrorMessage,
-  submitPostSignedGames,
+  PostLotterySignupsErrorMessage,
+  submitPostLotterySignups,
 } from "client/views/my-games/myGamesThunks";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { Button, ButtonStyle } from "client/components/Button";
 import { ErrorMessage } from "client/components/ErrorMessage";
 import { Dropdown } from "client/components/Dropdown";
 import { ButtonGroup } from "client/components/ButtonGroup";
-import { selectSignedGames } from "client/views/my-games/myGamesSlice";
+import { selectLotterySignups } from "client/views/my-games/myGamesSlice";
 
 interface Props {
   game: Game;
@@ -29,11 +29,13 @@ export const SignupForm = ({
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   // We need all signed games here
-  const signedGames = useAppSelector(selectSignedGames);
+  const lotterySignups = useAppSelector(selectLotterySignups);
 
-  const selectedPriorities = signedGames
-    .filter((signedGame) => signedGame.gameDetails.startTime === startTime)
-    .map((signedGame) => signedGame.priority);
+  const selectedPriorities = lotterySignups
+    .filter(
+      (lotterySignup) => lotterySignup.gameDetails.startTime === startTime,
+    )
+    .map((lotterySignup) => lotterySignup.priority);
 
   const firstUnselected = OPTIONS.filter(
     (option) => !selectedPriorities.includes(option),
@@ -45,7 +47,7 @@ export const SignupForm = ({
   const [priority, setPriority] = useState<number>(firstOption);
 
   const [errorMessage, setErrorMessage] =
-    useState<PostSignedGamesErrorMessage | null>(null);
+    useState<PostLotterySignupsErrorMessage | null>(null);
 
   const onChange = (event: ChangeEvent<HTMLSelectElement>): void => {
     setPriority(parseInt(event.target.value, 10));
@@ -72,8 +74,8 @@ export const SignupForm = ({
     ];
 
     const error = await dispatch(
-      submitPostSignedGames({
-        selectedGames: signedGames.concat(newGame),
+      submitPostLotterySignups({
+        lotterySignups: lotterySignups.concat(newGame),
         startTime: game.startTime,
       }),
     );

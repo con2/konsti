@@ -2,8 +2,8 @@ import { first } from "lodash-es";
 import dayjs from "dayjs";
 import { ListItem } from "server/types/padgRandomAssignTypes";
 import { getAssignmentBonus } from "server/features/player-assignment/utils/getAssignmentBonus";
-import { SelectedGame, User } from "shared/types/models/user";
-import { Signup } from "server/features/signup/signupTypes";
+import { Signup, User } from "shared/types/models/user";
+import { SignupsForProgramItem } from "server/features/signup/signupTypes";
 import { logger } from "server/utils/logger";
 import {
   Result,
@@ -18,7 +18,7 @@ import { AssignmentError } from "shared/types/api/errors";
 export const getList = (
   playerGroups: readonly User[][],
   startTime: string,
-  signups: readonly Signup[],
+  signups: readonly SignupsForProgramItem[],
 ): Result<ListItem[], AssignmentError> => {
   const results = playerGroups.flatMap((playerGroup) => {
     const firstMember = first(playerGroup);
@@ -30,21 +30,21 @@ export const getList = (
       return makeErrorResult(AssignmentError.UNKNOWN_ERROR);
     }
 
-    const list = firstMember.signedGames
+    const list = firstMember.lotterySignups
       .filter(
-        (signedGame) =>
-          dayjs(signedGame.time).toISOString() ===
+        (lotterySignup) =>
+          dayjs(lotterySignup.time).toISOString() ===
           dayjs(startTime).toISOString(),
       )
-      .map((signedGame) => {
+      .map((lotterySignup) => {
         return {
           id:
             firstMember.groupCode !== "0"
               ? firstMember.groupCode
               : firstMember.serial,
           size: playerGroup.length,
-          event: signedGame.gameDetails.gameId,
-          gain: getGain(signedGame, playerGroup, signups),
+          event: lotterySignup.gameDetails.gameId,
+          gain: getGain(lotterySignup, playerGroup, signups),
         };
       });
 
@@ -67,13 +67,13 @@ export const getList = (
 };
 
 const getGain = (
-  signedGame: SelectedGame,
+  lotterySignup: Signup,
   playerGroup: User[],
-  signups: readonly Signup[],
+  signups: readonly SignupsForProgramItem[],
 ): number => {
   const bonus = getAssignmentBonus(playerGroup, signups);
 
-  switch (signedGame.priority) {
+  switch (lotterySignup.priority) {
     case 1:
       return 1 + bonus;
     case 2:

@@ -5,10 +5,10 @@ import { Link } from "react-router-dom";
 import { Game } from "shared/types/models/game";
 import { SignupForm } from "./SignupForm";
 import {
-  PostSignedGamesErrorMessage,
-  submitPostSignedGames,
+  PostLotterySignupsErrorMessage,
+  submitPostLotterySignups,
 } from "client/views/my-games/myGamesThunks";
-import { SelectedGame } from "shared/types/models/user";
+import { Signup } from "shared/types/models/user";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { getSignupOpensDate, isAlreadySigned } from "./allGamesUtils";
 import { Button, ButtonStyle } from "client/components/Button";
@@ -23,7 +23,7 @@ import { getIsInGroup } from "client/views/group/groupUtils";
 interface Props {
   game: Game;
   startTime: string;
-  signedGames: readonly SelectedGame[];
+  lotterySignups: readonly Signup[];
 }
 
 enum ClientError {
@@ -33,7 +33,7 @@ enum ClientError {
 export const AlgorithmSignupForm = ({
   game,
   startTime,
-  signedGames,
+  lotterySignups,
 }: Props): ReactElement | null => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
@@ -49,18 +49,18 @@ export const AlgorithmSignupForm = ({
   const [signupFormOpen, setSignupFormOpen] = useState(false);
   const [cancelSignupFormOpen, setCancelSignupFormOpen] = useState(false);
   const [errorMessage, setErrorMessage] = useState<
-    ClientError | PostSignedGamesErrorMessage | null
+    ClientError | PostLotterySignupsErrorMessage | null
   >(null);
 
-  const removeSignedGame = async (gameToRemove: Game): Promise<void> => {
+  const removeLotterySignup = async (gameToRemove: Game): Promise<void> => {
     setLoading(true);
-    const newSignupData = signedGames.filter(
-      (g: SelectedGame) => g.gameDetails.gameId !== gameToRemove.gameId,
+    const newSignupData = lotterySignups.filter(
+      (g: Signup) => g.gameDetails.gameId !== gameToRemove.gameId,
     );
 
     const error = await dispatch(
-      submitPostSignedGames({
-        selectedGames: newSignupData,
+      submitPostLotterySignups({
+        lotterySignups: newSignupData,
         startTime: gameToRemove.startTime,
       }),
     );
@@ -74,15 +74,15 @@ export const AlgorithmSignupForm = ({
     setLoading(false);
   };
 
-  const currentPriority = signedGames.find(
+  const currentPriority = lotterySignups.find(
     (g) => g.gameDetails.gameId === game.gameId,
   )?.priority;
 
-  const signedGamesForTimeslot = signedGames.filter(
+  const lotterySignupsForTimeslot = lotterySignups.filter(
     (g) => g.gameDetails.startTime === startTime,
   );
 
-  const alreadySignedToGame = isAlreadySigned(game, signedGames);
+  const alreadySignedToGame = isAlreadySigned(game, lotterySignups);
 
   const algorithmSignupStartTime = getAlgorithmSignupStartTime(startTime);
 
@@ -118,7 +118,7 @@ export const AlgorithmSignupForm = ({
         !alreadySignedToGame &&
         canSignToProgramItems && (
           <>
-            {signedGamesForTimeslot.length >= 3 && (
+            {lotterySignupsForTimeslot.length >= 3 && (
               <p>{t("signup.cannotSignupMoreGames")}</p>
             )}
 
@@ -132,7 +132,7 @@ export const AlgorithmSignupForm = ({
             )}
 
             {lotterySignupOpen &&
-              signedGamesForTimeslot.length < 3 &&
+              lotterySignupsForTimeslot.length < 3 &&
               !signupFormOpen && (
                 <ButtonContainer>
                   <StyledButton
@@ -154,11 +154,11 @@ export const AlgorithmSignupForm = ({
 
       {alreadySignedToGame && (
         <>
-          <SignedGameContainer>
+          <LotterySignupContainer>
             {t("signup.alreadyLotterySigned", {
               CURRENT_PRIORITY: currentPriority,
             })}
-          </SignedGameContainer>
+          </LotterySignupContainer>
 
           {config.shared().signupOpen && (
             <>
@@ -178,7 +178,7 @@ export const AlgorithmSignupForm = ({
                   onCancelForm={() => {
                     setCancelSignupFormOpen(false);
                   }}
-                  onConfirmForm={async () => await removeSignedGame(game)}
+                  onConfirmForm={async () => await removeLotterySignup(game)}
                   loading={loading}
                 />
               )}
@@ -205,7 +205,7 @@ export const AlgorithmSignupForm = ({
   );
 };
 
-const SignedGameContainer = styled.div`
+const LotterySignupContainer = styled.div`
   border: 1px solid ${(props) => props.theme.infoBorder};
   padding: 8px 6px;
   margin-bottom: 8px;

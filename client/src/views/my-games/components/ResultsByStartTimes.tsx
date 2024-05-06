@@ -3,11 +3,11 @@ import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { capitalize } from "lodash-es";
 import { getWeekdayAndTime } from "client/utils/timeFormatter";
-import { SelectedGame } from "shared/types/models/user";
+import { Signup } from "shared/types/models/user";
 import { EnteredGameRow } from "client/views/my-games/components/EnteredGameRow";
 
 interface Props {
-  signups: readonly SelectedGame[];
+  signups: readonly Signup[];
   startTimes: readonly string[];
   missedSignups: readonly string[];
 }

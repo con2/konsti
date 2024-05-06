@@ -6,7 +6,7 @@ import { startServer, closeServer } from "server/utils/server";
 import { saveUser } from "server/features/user/userRepository";
 import { mockUser, mockUser2 } from "server/test/mock-data/mockUser";
 import { testGame, testGame2 } from "shared/tests/testGame";
-import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
+import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import { findGames, saveGames } from "server/features/game/gameRepository";
 import { updateGamePopularity } from "server/features/game-popularity/updateGamePopularity";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
@@ -31,8 +31,8 @@ test(`Should update game popularity`, async () => {
   await saveGames([testGame, testGame2]);
   await saveUser(mockUser);
   await saveUser(mockUser2);
-  await saveSignedGames({
-    signedGames: [
+  await saveLotterySignups({
+    lotterySignups: [
       {
         gameDetails: testGame,
         priority: 1,
@@ -42,8 +42,8 @@ test(`Should update game popularity`, async () => {
     ],
     username: mockUser.username,
   });
-  await saveSignedGames({
-    signedGames: [
+  await saveLotterySignups({
+    lotterySignups: [
       {
         gameDetails: testGame,
         priority: 1,
@@ -93,8 +93,8 @@ test(`Should only update game popularity of upcoming program items`, async () =>
   await saveUser(mockUser2);
 
   // Past program item
-  await saveSignedGames({
-    signedGames: [
+  await saveLotterySignups({
+    lotterySignups: [
       {
         gameDetails: testGame,
         priority: 1,
@@ -106,8 +106,8 @@ test(`Should only update game popularity of upcoming program items`, async () =>
   });
 
   // Upcoming program item
-  await saveSignedGames({
-    signedGames: [
+  await saveLotterySignups({
+    lotterySignups: [
       {
         gameDetails: testGame2,
         priority: 1,

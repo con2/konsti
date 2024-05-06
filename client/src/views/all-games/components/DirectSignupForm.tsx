@@ -114,17 +114,17 @@ export const DirectSignupForm = ({
       {signupOpen && !alreadyEnteredToGame && !gameIsFull && (
         <>
           {enteredGameForTimeslot && (
-            <SignedGameContainer>
+            <DirectSignupContainer>
               {t("signup.alreadySignedToGame", {
                 PROGRAM_TYPE: t(
                   `programTypeIllative.${enteredGameForTimeslot.gameDetails.programType}`,
                 ),
               })}{" "}
-              <SignedGameName>
+              <DirectSignupProgramItemTitle>
                 {enteredGameForTimeslot.gameDetails.title}
-              </SignedGameName>
+              </DirectSignupProgramItemTitle>
               . {t("signup.cannotSignupMoreThanOneGame")}
-            </SignedGameContainer>
+            </DirectSignupContainer>
           )}
 
           {!enteredGameForTimeslot && (
@@ -170,11 +170,11 @@ export const DirectSignupForm = ({
 
       {alreadyEnteredToGame && (
         <>
-          <SignedGameContainer>
+          <DirectSignupContainer>
             {t("signup.currentSignup", {
               PROGRAM_TYPE: t(`programTypeIllative.${game.programType}`),
             })}
-          </SignedGameContainer>
+          </DirectSignupContainer>
 
           {signupOpen && (
             <>
@@ -213,7 +213,7 @@ export const DirectSignupForm = ({
   );
 };
 
-const SignedGameContainer = styled.div`
+const DirectSignupContainer = styled.div`
   border: 1px solid ${(props) => props.theme.infoBorder};
   padding: 8px 6px;
   border-radius: 5px;
@@ -221,7 +221,7 @@ const SignedGameContainer = styled.div`
   background-color: ${(props) => props.theme.infoBackground};
 `;
 
-const SignedGameName = styled.span`
+const DirectSignupProgramItemTitle = styled.span`
   font-weight: 600;
 `;
 

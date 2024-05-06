@@ -156,7 +156,7 @@
   },
   "user": "User",
   "favoritedProgramItems": "Favorites",
-  "lotterySignedGames": "Lottery sign-ups",
+  "lotterySignups": "Lottery sign-ups",
   "enteredGames": "Sign-ups",
   "hiddenProgramItems": "Hidden program items",
   "error": {
@@ -171,7 +171,7 @@
   "showPrivacyPolicy": "Show privacy policy",
   "hidePrivacyPolicy": "Hide privacy policy",
   "registrationSerialHelp": "You can get a registration code from the Larp & RPG Desk, the Gaming Desk or the Info.",
-  "noSignedGames": "No selected games. You can sign up to program in the All Program view.",
+  "noLotterySignups": "No selected games. You can sign up to program in the All Program view.",
   "noFavoritedProgramItems": "No favorites. You can add games here in the All Program view.",
   "noEnteredGames": "No sign-ups. You can sign up to program in the All Program view.",
   "noHiddenProgramItems": "No hidden program items",
@@ -214,10 +214,10 @@
     "error": {
       "cannotUseOwnSerial": "You cannot use your own serial to join a group.",
       "groupExists": "Group already exists.",
-      "removePreviousSignupsFailed": "Error deleting previous sign-ups, try again.",
+      "removePreviousLotterySignupsFailed": "Error deleting previous lottery sign-ups, try again.",
       "onlyCreatorCanCloseGroup": "Only the group creator can close a group.",
-      "userHasSignedGames": "You already have sign-ups. You will have to cancel those before joining a group.",
-      "creatorHasSignedGames": "You already have sign-ups. You will have to cancel those before creating a group.",
+      "userHasDirectSignups": "You already have sign-ups. You will have to cancel those before joining a group.",
+      "creatorHasDirectSignups": "You already have sign-ups. You will have to cancel those before creating a group.",
       "alreadyInGroup": "You are already a member of a group."
     },
     "hasEnteredFollowingGames": "You have already signed up to these games:",

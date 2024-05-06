@@ -24,14 +24,15 @@ export const getGroups = (
       return makeErrorResult(AssignmentError.UNKNOWN_ERROR);
     }
 
-    const signedGamesForStartTime = firstMember.signedGames.filter(
-      (signedGame) =>
-        dayjs(signedGame.time).toISOString() === dayjs(startTime).toISOString(),
+    const lotterySignupsForStartTime = firstMember.lotterySignups.filter(
+      (lotterySignup) =>
+        dayjs(lotterySignup.time).toISOString() ===
+        dayjs(startTime).toISOString(),
     );
 
-    const sortedSignedGames = sortBy(
-      signedGamesForStartTime,
-      (signedGame) => signedGame.priority,
+    const sortedLotterySignups = sortBy(
+      lotterySignupsForStartTime,
+      (lotterySignup) => lotterySignup.priority,
     );
 
     return makeSuccessResult({
@@ -40,8 +41,8 @@ export const getGroups = (
           ? firstMember.groupCode
           : firstMember.serial,
       size: playerGroup.length,
-      pref: sortedSignedGames.map(
-        (signedGame) => signedGame.gameDetails.gameId,
+      pref: sortedLotterySignups.map(
+        (lotterySignup) => lotterySignup.gameDetails.gameId,
       ),
     });
   });

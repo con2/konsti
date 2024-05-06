@@ -4,7 +4,7 @@ import {
   createUsersInGroup,
 } from "server/test/test-data-generation/generators/createUsers";
 import { createGames } from "server/test/test-data-generation/generators/createGames";
-import { createSignedGames } from "server/test/test-data-generation/generators/createSignedGames";
+import { createLotterySignups } from "server/test/test-data-generation/generators/createLotterySignups";
 
 export const generateTestData = async (
   newUsersCount: number,
@@ -22,7 +22,7 @@ export const generateTestData = async (
 
   await createGames(newGamesCount);
 
-  await createSignedGames();
+  await createLotterySignups();
 };
 
 export const generateTestUsers = async (

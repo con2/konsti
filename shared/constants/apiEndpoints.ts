@@ -4,7 +4,7 @@ export enum ApiEndpoint {
   GAMES = "/api/games",
   LOGIN = "/api/login",
   ASSIGNMENT = "/api/assignment",
-  SIGNED_GAME = "/api/signed-game",
+  LOTTERY_SIGNUP = "/api/lottery-signup",
   FAVORITE = "/api/favorite",
   HIDDEN = "/api/hidden",
   FEEDBACK = "/api/feedback",

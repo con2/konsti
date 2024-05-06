@@ -21,15 +21,15 @@ afterEach(async () => {
   await closeServer(server);
 });
 
-describe(`POST ${ApiEndpoint.SIGNED_GAME}`, () => {
+describe(`POST ${ApiEndpoint.LOTTERY_SIGNUP}`, () => {
   test("should return 401 without valid authorization", async () => {
-    const response = await request(server).post(ApiEndpoint.SIGNED_GAME);
+    const response = await request(server).post(ApiEndpoint.LOTTERY_SIGNUP);
     expect(response.status).toEqual(401);
   });
 
   test("should return 422 without valid body", async () => {
     const response = await request(server)
-      .post(ApiEndpoint.SIGNED_GAME)
+      .post(ApiEndpoint.LOTTERY_SIGNUP)
       .set("Authorization", `Bearer ${getJWT(UserGroup.USER, "testuser")}`);
     expect(response.status).toEqual(422);
   });

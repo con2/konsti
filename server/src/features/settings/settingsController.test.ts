@@ -14,7 +14,7 @@ import {
 import { testGame, testGame2 } from "shared/tests/testGame";
 import { saveGames } from "server/features/game/gameRepository";
 import { findUser, saveUser } from "server/features/user/userRepository";
-import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
+import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import {
   findSignups,
   findUserSignups,
@@ -24,7 +24,7 @@ import { saveFavorite } from "server/features/user/favorite-game/favoriteGameRep
 import {
   mockPostEnteredGameRequest,
   mockPostEnteredGameRequest2,
-  mockSignedGames,
+  mockLotterySignups,
   mockUser,
 } from "server/test/mock-data/mockUser";
 import { closeServer, startServer } from "server/utils/server";
@@ -141,9 +141,9 @@ describe(`POST ${ApiEndpoint.HIDDEN}`, () => {
   test("should remove hidden game from users", async () => {
     await saveGames([testGame, testGame2]);
     await saveUser(mockUser);
-    await saveSignedGames({
+    await saveLotterySignups({
       username: mockUser.username,
-      signedGames: mockSignedGames,
+      lotterySignups: mockLotterySignups,
     });
     await saveSignup(mockPostEnteredGameRequest);
     await saveSignup(mockPostEnteredGameRequest2);
@@ -161,8 +161,8 @@ describe(`POST ${ApiEndpoint.HIDDEN}`, () => {
 
     const updatedUserResult = await findUser(mockUser.username);
     const updatedUser = unsafelyUnwrapResult(updatedUserResult);
-    expect(updatedUser?.signedGames.length).toEqual(1);
-    expect(updatedUser?.signedGames[0].gameDetails.title).toEqual(
+    expect(updatedUser?.lotterySignups.length).toEqual(1);
+    expect(updatedUser?.lotterySignups[0].gameDetails.title).toEqual(
       testGame2.title,
     );
     expect(updatedUser?.favoritedGames.length).toEqual(1);

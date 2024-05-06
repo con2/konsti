@@ -8,7 +8,7 @@ import {
   saveGroupCode,
   saveGroupCreatorCode,
 } from "server/features/user/group/groupRepository";
-import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
+import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import { findUser } from "server/features/user/userRepository";
 import { config } from "shared/config";
 import { MongoDbError } from "shared/types/api/errors";
@@ -76,17 +76,19 @@ export const createGroup = async (
 
   const timeNow = unwrapResult(timeNowResult);
 
-  const userSignups = filteredSignups.flatMap((signup) => signup.userSignups);
-  const userHasSignups = userSignups.some((userSignup) =>
+  const userDirectSignups = filteredSignups.flatMap(
+    (signup) => signup.userSignups,
+  );
+  const userHasDirectSignups = userDirectSignups.some((userSignup) =>
     timeNow.isBefore(dayjs(userSignup.time)),
   );
 
   // User cannot have RPG signups in future when creating a group
-  if (userHasSignups) {
+  if (userHasDirectSignups) {
     return {
       message: "Signup in future",
       status: "error",
-      errorId: "userHasSignedGames",
+      errorId: "userHasDirectSignups",
     };
   }
 
@@ -186,17 +188,19 @@ export const joinGroup = async (
 
   const timeNow = unwrapResult(timeNowResult);
 
-  const userSignups = filteredSignups.flatMap((signup) => signup.userSignups);
-  const userHasSignups = userSignups.some((userSignup) =>
+  const userDirectSignups = filteredSignups.flatMap(
+    (signup) => signup.userSignups,
+  );
+  const userHasDirectSignups = userDirectSignups.some((userSignup) =>
     timeNow.isBefore(dayjs(userSignup.time)),
   );
 
   // User cannot have RPG signups in future when joining in group
-  if (userHasSignups) {
+  if (userHasDirectSignups) {
     return {
       message: "Signup in future",
       status: "error",
-      errorId: "userHasSignedGames",
+      errorId: "userHasDirectSignups",
     };
   }
 
@@ -241,16 +245,16 @@ export const joinGroup = async (
     };
   }
 
-  // Clean previous signups
-  const saveSignedGamesResult = await saveSignedGames({
-    signedGames: [],
+  // Clean previous lottery signups
+  const saveLotterySignupsResult = await saveLotterySignups({
+    lotterySignups: [],
     username,
   });
-  if (isErrorResult(saveSignedGamesResult)) {
+  if (isErrorResult(saveLotterySignupsResult)) {
     return {
-      message: "Error removing previous signups",
+      message: "Error removing previous lottery signups",
       status: "error",
-      errorId: "removePreviousSignupsFailed",
+      errorId: "removePreviousLotterySignupsFailed",
     };
   }
 
@@ -394,7 +398,7 @@ export const fetchGroup = async (
   const returnData = findGroupResults.map((result) => ({
     groupCode: result.groupCode,
     groupCreatorCode: result.groupCreatorCode,
-    signedGames: result.signedGames,
+    lotterySignups: result.lotterySignups,
     serial: result.serial,
     username: result.username,
   }));

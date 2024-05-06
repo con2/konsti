@@ -20,7 +20,7 @@ import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 export enum PostCreateGroupErrorMessage {
   UNKNOWN = "group.generalGroupError",
   GROUP_EXISTS = "group.error.groupExists",
-  CREATOR_HAS_SIGNED_GAMES = "group.error.creatorHasSignedGames",
+  CREATOR_HAS_DIRECT_SIGNUPS = "group.error.creatorHasDirectSignups",
 }
 
 export const submitCreateGroup = (): AppThunk<
@@ -33,8 +33,8 @@ export const submitCreateGroup = (): AppThunk<
       switch (createGroupResponse.errorId) {
         case "groupExists":
           return PostCreateGroupErrorMessage.GROUP_EXISTS;
-        case "userHasSignedGames":
-          return PostCreateGroupErrorMessage.CREATOR_HAS_SIGNED_GAMES;
+        case "userHasDirectSignups":
+          return PostCreateGroupErrorMessage.CREATOR_HAS_DIRECT_SIGNUPS;
         case "errorFindingUser":
           return PostCreateGroupErrorMessage.UNKNOWN;
         case "unknown":
@@ -61,8 +61,8 @@ export enum PostJoinGroupErrorMessage {
   GROUP_NOT_EXIST = "group.groupNotExist",
   UNKNOWN = "group.generalGroupError",
   CANNOT_JOIN_OWN_GROUP = "group.error.cannotUseOwnSerial",
-  REMOVE_PREVIOUS_SIGNUPS_FAILED = "group.error.removePreviousSignupsFailed",
-  USER_HAS_SIGNED_GAMES = "group.error.userHasSignedGames",
+  REMOVE_PREVIOUS_LOTTERY_SIGNUPS_FAILED = "group.error.removePreviousLotterySignupsFailed",
+  USER_HAS_DIRECT_SIGNUPS = "group.error.userHasDirectSignups",
   ALREADY_IN_GROUP = "group.error.alreadyInGroup",
 }
 
@@ -78,10 +78,10 @@ export const submitJoinGroup = (
           return PostJoinGroupErrorMessage.INVALID_GROUP_CODE;
         case "groupDoesNotExist":
           return PostJoinGroupErrorMessage.GROUP_NOT_EXIST;
-        case "removePreviousSignupsFailed":
-          return PostJoinGroupErrorMessage.REMOVE_PREVIOUS_SIGNUPS_FAILED;
-        case "userHasSignedGames":
-          return PostJoinGroupErrorMessage.USER_HAS_SIGNED_GAMES;
+        case "removePreviousLotterySignupsFailed":
+          return PostJoinGroupErrorMessage.REMOVE_PREVIOUS_LOTTERY_SIGNUPS_FAILED;
+        case "userHasDirectSignups":
+          return PostJoinGroupErrorMessage.USER_HAS_DIRECT_SIGNUPS;
         case "errorFindingUser":
           return PostJoinGroupErrorMessage.UNKNOWN;
         case "alreadyInGroup":

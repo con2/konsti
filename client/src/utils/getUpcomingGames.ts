@@ -2,7 +2,7 @@ import dayjs from "dayjs";
 import { GroupMember } from "shared/types/models/groups";
 import { Game } from "shared/types/models/game";
 import { getTimeNow } from "client/utils/getTimeNow";
-import { SelectedGame } from "shared/types/models/user";
+import { Signup } from "shared/types/models/user";
 
 export const getUpcomingGames = (
   games: readonly Game[],
@@ -17,18 +17,18 @@ export const getUpcomingGames = (
   return upcomingGames;
 };
 
-const getUpcomingSignedGames = (
-  signedGames: readonly SelectedGame[],
-): readonly SelectedGame[] => {
+const getUpcomingLotterySignups = (
+  lotterySignups: readonly Signup[],
+): readonly Signup[] => {
   const timeNow = getTimeNow();
 
-  const upcomingGames = signedGames.filter((signedGame) => {
-    return dayjs(signedGame.gameDetails.startTime)
+  const upcomingLotterySignups = lotterySignups.filter((lotterySignup) => {
+    return dayjs(lotterySignup.gameDetails.startTime)
       .add(1, "hours")
       .isAfter(timeNow);
   });
 
-  return upcomingGames;
+  return upcomingLotterySignups;
 };
 
 const getGroupCreator = (
@@ -43,23 +43,25 @@ const getGroupCreator = (
   return groupCreator;
 };
 
-interface GetSignedGamesParams {
-  signedGames: readonly SelectedGame[];
+interface GetLotterySignupsParams {
+  lotterySignups: readonly Signup[];
   isGroupCreator: boolean;
   groupMembers: readonly GroupMember[];
   isInGroup: boolean;
   getAllGames: boolean;
 }
 
-export const getSignedGames = ({
-  signedGames,
+export const getLotterySignups = ({
+  lotterySignups,
   isGroupCreator,
   groupMembers,
   isInGroup,
   getAllGames,
-}: GetSignedGamesParams): readonly SelectedGame[] => {
+}: GetLotterySignupsParams): readonly Signup[] => {
   if (isGroupCreator || !isInGroup) {
-    return getAllGames ? signedGames : getUpcomingSignedGames(signedGames);
+    return getAllGames
+      ? lotterySignups
+      : getUpcomingLotterySignups(lotterySignups);
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
@@ -70,16 +72,16 @@ export const getSignedGames = ({
     }
 
     return getAllGames
-      ? groupCreator.signedGames
-      : getUpcomingSignedGames(groupCreator.signedGames);
+      ? groupCreator.lotterySignups
+      : getUpcomingLotterySignups(groupCreator.lotterySignups);
   }
 
-  return signedGames;
+  return lotterySignups;
 };
 
 export const getUpcomingEnteredGames = (
-  enteredGames: readonly SelectedGame[],
-): readonly SelectedGame[] => {
+  enteredGames: readonly Signup[],
+): readonly Signup[] => {
   const timeNow = getTimeNow();
 
   const upcomingGames = enteredGames.filter((enteredGame) =>

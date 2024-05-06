@@ -35,12 +35,12 @@ export const removeHiddenGamesFromUsers = async (
   const users = unwrapResult(usersResult);
 
   const usersToUpdate: User[] = users.flatMap((user) => {
-    const signedGames = user.signedGames.filter((signedGame) => {
+    const lotterySignups = user.lotterySignups.filter((lotterySignup) => {
       const hiddenFound = hiddenGames.find((hiddenGame) => {
-        return hiddenGame.gameId === signedGame.gameDetails.gameId;
+        return hiddenGame.gameId === lotterySignup.gameDetails.gameId;
       });
       if (!hiddenFound) {
-        return signedGame;
+        return lotterySignup;
       }
     });
 
@@ -54,12 +54,12 @@ export const removeHiddenGamesFromUsers = async (
     });
 
     if (
-      user.signedGames.length !== signedGames.length ||
+      user.lotterySignups.length !== lotterySignups.length ||
       user.favoritedGames.length !== favoritedGames.length
     ) {
       return {
         ...user,
-        signedGames,
+        lotterySignups,
         favoritedGames,
       };
     }

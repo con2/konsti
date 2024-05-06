@@ -8,10 +8,10 @@ export interface UserSignup {
   message: string;
 }
 
-export interface Signup {
+export interface SignupsForProgramItem {
   game: Game;
   userSignups: readonly UserSignup[];
   count?: number;
 }
 
-export interface SignupDoc extends Signup, mongoose.Document {}
+export interface SignupDoc extends SignupsForProgramItem, mongoose.Document {}

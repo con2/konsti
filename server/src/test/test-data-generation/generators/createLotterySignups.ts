@@ -6,12 +6,12 @@ import { updateGamePopularity } from "server/features/game-popularity/updateGame
 import { Game } from "shared/types/models/game";
 import { findUsers } from "server/features/user/userRepository";
 import { findGames } from "server/features/game/gameRepository";
-import { SelectedGame, User } from "shared/types/models/user";
-import { saveSignedGames } from "server/features/user/signed-game/signedGameRepository";
+import { Signup, User } from "shared/types/models/user";
+import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 import { config } from "shared/config";
 
-export const createSignedGames = async (): Promise<void> => {
+export const createLotterySignups = async (): Promise<void> => {
   const gamesResult = await findGames();
   const games = unsafelyUnwrapResult(gamesResult);
   const allUsersResult = await findUsers();
@@ -30,20 +30,20 @@ export const createSignedGames = async (): Promise<void> => {
     // Individual users
     if (groupCode === "0") {
       logger.info("SIGNUP INDIVIDUAL USERS");
-      await signupMultiple(games, groupMembers);
+      await lotterySignupMultiple(games, groupMembers);
     }
     // Users in groups
     else {
       logger.info(`SIGNUP GROUP ${groupCode}`);
-      await signupGroup(games, groupMembers);
+      await lotterySignupGroup(games, groupMembers);
     }
   }
 
   await updateGamePopularity();
 };
 
-const getRandomSignup = (games: readonly Game[]): SelectedGame[] => {
-  const signedGames = [] as SelectedGame[];
+const getRandomLotterySignup = (games: readonly Game[]): Signup[] => {
+  const lotterySignups = [] as Signup[];
   let randomIndex;
 
   const { twoPhaseSignupProgramTypes, noKonstiSignupIds } = config.shared();
@@ -77,14 +77,15 @@ const getRandomSignup = (games: readonly Game[]): SelectedGame[] => {
 
       const randomGame = gamesForTime[randomIndex];
 
-      const duplicate = !!signedGames.find(
-        (signedGame) => signedGame.gameDetails.gameId === randomGame.gameId,
+      const duplicate = !!lotterySignups.find(
+        (lotterySignup) =>
+          lotterySignup.gameDetails.gameId === randomGame.gameId,
       );
 
       if (duplicate) {
         i -= 1;
       } else {
-        signedGames.push({
+        lotterySignups.push({
           gameDetails: randomGame,
           priority: i + 1,
           time: randomGame.startTime,
@@ -94,20 +95,23 @@ const getRandomSignup = (games: readonly Game[]): SelectedGame[] => {
     }
   });
 
-  return signedGames;
+  return lotterySignups;
 };
 
-const signup = async (games: readonly Game[], user: User): Promise<User> => {
-  const signedGames = getRandomSignup(games);
+const doLotterySignup = async (
+  games: readonly Game[],
+  user: User,
+): Promise<User> => {
+  const lotterySignups = getRandomLotterySignup(games);
 
-  const userResult = await saveSignedGames({
+  const userResult = await saveLotterySignups({
     username: user.username,
-    signedGames,
+    lotterySignups,
   });
   return unsafelyUnwrapResult(userResult);
 };
 
-const signupMultiple = async (
+const lotterySignupMultiple = async (
   games: readonly Game[],
   users: readonly User[],
 ): Promise<void> => {
@@ -115,14 +119,14 @@ const signupMultiple = async (
 
   for (const user of users) {
     if (user.username !== "admin" && user.username !== "helper") {
-      promises.push(signup(games, user));
+      promises.push(doLotterySignup(games, user));
     }
   }
 
   await Promise.all(promises);
 };
 
-const signupGroup = async (
+const lotterySignupGroup = async (
   games: readonly Game[],
   users: readonly User[],
 ): Promise<void> => {
@@ -137,8 +141,8 @@ const signupGroup = async (
 
   const signupData = {
     username: groupCreator.username,
-    signedGames: getRandomSignup(games),
+    lotterySignups: getRandomLotterySignup(games),
   };
 
-  await saveSignedGames(signupData);
+  await saveLotterySignups(signupData);
 };

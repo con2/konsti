@@ -40,7 +40,7 @@ import {
 } from "server/features/user/group/groupController";
 import { postLogin } from "server/features/user/login/loginController";
 import { postSessionRestore } from "server/features/user/session-restore/sessionRestoreController";
-import { postSignedGames } from "server/features/user/signed-game/signedGameController";
+import { postLotterySignups } from "server/features/user/lottery-signup/lotterySignupController";
 import { getSignupMessages } from "server/features/user/signup-message/signupMessageController";
 import {
   getUser,
@@ -71,7 +71,7 @@ apiRoutes.post(ApiEndpoint.GAMES, postUpdateGames);
 apiRoutes.post(ApiEndpoint.USERS, postUser);
 apiRoutes.post(ApiEndpoint.LOGIN, postLogin);
 apiRoutes.post(ApiEndpoint.ASSIGNMENT, postAssignment);
-apiRoutes.post(ApiEndpoint.SIGNED_GAME, postSignedGames);
+apiRoutes.post(ApiEndpoint.LOTTERY_SIGNUP, postLotterySignups);
 apiRoutes.post(ApiEndpoint.FAVORITE, postFavorite);
 apiRoutes.post(ApiEndpoint.HIDDEN, postHidden);
 apiRoutes.post(ApiEndpoint.FEEDBACK, postFeedback);

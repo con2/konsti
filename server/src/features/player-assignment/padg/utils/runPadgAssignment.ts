@@ -6,7 +6,7 @@ import { formatResults } from "server/features/player-assignment/utils/formatRes
 import { AssignmentStrategyResult, Input } from "server/types/resultTypes";
 import { Game } from "shared/types/models/game";
 import { User } from "shared/types/models/user";
-import { Signup } from "server/features/signup/signupTypes";
+import { SignupsForProgramItem } from "server/features/signup/signupTypes";
 import {
   Result,
   isErrorResult,
@@ -18,17 +18,17 @@ import { AssignmentError } from "shared/types/api/errors";
 import { logger } from "server/utils/logger";
 
 export const runPadgAssignment = (
-  signedGames: readonly Game[],
+  selectedGames: readonly Game[],
   playerGroups: readonly User[][],
   startTime: string,
-  signups: readonly Signup[],
+  signups: readonly SignupsForProgramItem[],
 ): Result<AssignmentStrategyResult, AssignmentError> => {
   const groupsResult = getGroups(playerGroups, startTime);
   if (isErrorResult(groupsResult)) {
     return groupsResult;
   }
   const groups = unwrapResult(groupsResult);
-  const events = getEvents(signedGames, signups);
+  const events = getEvents(selectedGames, signups);
   const listResult = getList(playerGroups, startTime, signups);
   if (isErrorResult(listResult)) {
     return listResult;

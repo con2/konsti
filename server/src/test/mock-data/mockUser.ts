@@ -1,6 +1,6 @@
 import { testGame, testGame2 } from "shared/tests/testGame";
 import { NewUser } from "server/types/userTypes";
-import { SelectedGame, UserGroup } from "shared/types/models/user";
+import { Signup, UserGroup } from "shared/types/models/user";
 import { PostEnteredGameRequest } from "shared/types/api/myGames";
 import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 
@@ -49,7 +49,7 @@ export const mockUser5: NewUser = {
   groupCode: "0",
 };
 
-export const mockSignedGames: readonly SelectedGame[] = [
+export const mockLotterySignups: readonly Signup[] = [
   {
     gameDetails: testGame,
     priority: 1,

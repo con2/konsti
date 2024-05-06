@@ -13,10 +13,11 @@ export const getSelectedPlayers = (
 
   players.forEach((player) => {
     let match = false;
-    for (let i = 0; i < player.signedGames.length; i += 1) {
+    for (let i = 0; i < player.lotterySignups.length; i += 1) {
       for (let j = 0; j < startingGames.length; j += 1) {
         if (
-          player.signedGames[i].gameDetails.gameId === startingGames[j].gameId
+          player.lotterySignups[i].gameDetails.gameId ===
+          startingGames[j].gameId
         ) {
           match = true;
           break;

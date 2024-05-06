@@ -2,11 +2,11 @@ import dayjs from "dayjs";
 import { getStartTimes } from "client/utils/getStartTimes";
 import { config } from "shared/config";
 import { getTimeNow } from "client/utils/getTimeNow";
-import { SelectedGame } from "shared/types/models/user";
+import { Signup } from "shared/types/models/user";
 
 export const getMissedSignups = (
-  signedGames: readonly SelectedGame[],
-  enteredGames: readonly SelectedGame[],
+  lotterySignups: readonly Signup[],
+  enteredGames: readonly Signup[],
 ): string[] => {
   // Wait this long before showing "you didn't get into game"
   // TODO: Instead of hard-coding, figure dynamically if assignment is still running
@@ -14,20 +14,20 @@ export const getMissedSignups = (
 
   const timeNow = getTimeNow();
 
-  const signedGamesStartTimes = getStartTimes(
-    signedGames.map((signedGame) => signedGame.gameDetails),
+  const lotterySignupsStartTimes = getStartTimes(
+    lotterySignups.map((lotterySignup) => lotterySignup.gameDetails),
   );
 
   // Get signup times for past signed games
-  const pastSignupTimes = signedGamesStartTimes.filter(
-    (signedGamesStartTime) => {
-      const signupEndTime = dayjs(signedGamesStartTime).subtract(
+  const pastSignupTimes = lotterySignupsStartTimes.filter(
+    (lotterySignupsStartTime) => {
+      const signupEndTime = dayjs(lotterySignupsStartTime).subtract(
         config.shared().DIRECT_SIGNUP_START - safePeriod,
         "minutes",
       );
 
       if (signupEndTime.isBefore(dayjs(timeNow))) {
-        return signedGamesStartTime;
+        return lotterySignupsStartTime;
       }
     },
   );

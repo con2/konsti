@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { capitalize } from "lodash-es";
 import { getWeekdayAndTime } from "client/utils/timeFormatter";
-import { SelectedGame } from "shared/types/models/user";
+import { Signup } from "shared/types/models/user";
 import { PopularityInfo } from "client/components/PopularityInfo";
 
 interface Props {
-  signups: SelectedGame[];
+  signups: Signup[];
   startTimes: readonly string[];
 }
 

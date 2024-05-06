@@ -2,18 +2,18 @@ import { Request, Response } from "express";
 import { logger } from "server/utils/logger";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
-  PostSignedGamesRequest,
-  PostSignedGamesRequestSchema,
+  PostLotterySignupsRequest,
+  PostLotterySignupsRequestSchema,
 } from "shared/types/api/myGames";
 import { getAuthorizedUsername } from "server/utils/authHeader";
 import { UserGroup } from "shared/types/models/user";
-import { storeSignedGames } from "server/features/user/signed-game/signedGameService";
+import { storeLotterySignups } from "server/features/user/lottery-signup/lotterySignupService";
 
-export const postSignedGames = async (
-  req: Request<{}, {}, PostSignedGamesRequest>,
+export const postLotterySignups = async (
+  req: Request<{}, {}, PostLotterySignupsRequest>,
   res: Response,
 ): Promise<Response> => {
-  logger.info(`API call: POST ${ApiEndpoint.SIGNED_GAME}`);
+  logger.info(`API call: POST ${ApiEndpoint.LOTTERY_SIGNUP}`);
 
   const username = getAuthorizedUsername(
     req.headers.authorization,
@@ -23,17 +23,21 @@ export const postSignedGames = async (
     return res.sendStatus(401);
   }
 
-  const result = PostSignedGamesRequestSchema.safeParse(req.body);
+  const result = PostLotterySignupsRequestSchema.safeParse(req.body);
   if (!result.success) {
     logger.error(
       "%s",
-      new Error(`Error validating postSignedGames body: ${result.error}`),
+      new Error(`Error validating postLotterySignups body: ${result.error}`),
     );
     return res.sendStatus(422);
   }
 
-  const { selectedGames, startTime } = result.data;
+  const { lotterySignups, startTime } = result.data;
 
-  const response = await storeSignedGames(selectedGames, username, startTime);
+  const response = await storeLotterySignups(
+    lotterySignups,
+    username,
+    startTime,
+  );
   return res.json(response);
 };
