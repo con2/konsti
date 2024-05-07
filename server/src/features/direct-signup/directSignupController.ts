@@ -3,22 +3,22 @@ import { getAuthorizedUsername } from "server/utils/authHeader";
 import { logger } from "server/utils/logger";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
-  DeleteEnteredGameRequest,
-  DeleteEnteredGameRequestSchema,
-  PostEnteredGameRequest,
-  PostEnteredGameRequestSchema,
+  DeleteDirectSignupRequest,
+  DeleteDirectSignupRequestSchema,
+  PostDirectSignupRequest,
+  PostDirectSignupRequestSchema,
 } from "shared/types/api/myGames";
 import { UserGroup } from "shared/types/models/user";
 import {
-  removeSignup,
-  storeSignup,
-} from "server/features/signup/signupService";
+  removeDirectSignup,
+  storeDirectSignup,
+} from "server/features/direct-signup/directSignupService";
 
-export const postSignup = async (
-  req: Request<{}, {}, PostEnteredGameRequest>,
+export const postDirectSignup = async (
+  req: Request<{}, {}, PostDirectSignupRequest>,
   res: Response,
 ): Promise<Response> => {
-  logger.info(`API call: POST ${ApiEndpoint.SIGNUP}`);
+  logger.info(`API call: POST ${ApiEndpoint.DIRECT_SIGNUP}`);
 
   const username = getAuthorizedUsername(
     req.headers.authorization,
@@ -28,24 +28,24 @@ export const postSignup = async (
     return res.sendStatus(401);
   }
 
-  const result = PostEnteredGameRequestSchema.safeParse(req.body);
+  const result = PostDirectSignupRequestSchema.safeParse(req.body);
   if (!result.success) {
     logger.error(
       "%s",
-      new Error(`Error validating postSignup body: ${result.error}`),
+      new Error(`Error validating postDirectSignup body: ${result.error}`),
     );
     return res.sendStatus(422);
   }
 
-  const response = await storeSignup(result.data);
+  const response = await storeDirectSignup(result.data);
   return res.json(response);
 };
 
-export const deleteSignup = async (
-  req: Request<{}, {}, DeleteEnteredGameRequest>,
+export const deleteDirectSignup = async (
+  req: Request<{}, {}, DeleteDirectSignupRequest>,
   res: Response,
 ): Promise<Response> => {
-  logger.info(`API call: DELETE ${ApiEndpoint.SIGNUP}`);
+  logger.info(`API call: DELETE ${ApiEndpoint.DIRECT_SIGNUP}`);
 
   const username = getAuthorizedUsername(
     req.headers.authorization,
@@ -55,15 +55,15 @@ export const deleteSignup = async (
     return res.sendStatus(401);
   }
 
-  const result = DeleteEnteredGameRequestSchema.safeParse(req.body);
+  const result = DeleteDirectSignupRequestSchema.safeParse(req.body);
   if (!result.success) {
     logger.error(
       "%s",
-      new Error(`Error validating deleteSignup body: ${result.error}`),
+      new Error(`Error validating deleteDirectSignup body: ${result.error}`),
     );
     return res.sendStatus(422);
   }
 
-  const response = await removeSignup(result.data);
+  const response = await removeDirectSignup(result.data);
   return res.json(response);
 };

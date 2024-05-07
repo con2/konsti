@@ -9,7 +9,7 @@ import { GameListTitle } from "client/views/all-games/components/GameListTitle";
 import { getLotterySignups } from "client/utils/getUpcomingGames";
 import { getTimeslotSignupStrategy } from "client/views/all-games/allGamesUtils";
 import {
-  selectEnteredGames,
+  selectDirectSignups,
   selectFavoritedGames,
   selectLotterySignups,
 } from "client/views/my-games/myGamesSlice";
@@ -25,7 +25,7 @@ export const AllGamesList = ({ games }: Props): ReactElement => {
 
   const signups = useAppSelector((state) => state.allGames.signups);
   const lotterySignups = useAppSelector(selectLotterySignups);
-  const enteredGames = useAppSelector(selectEnteredGames);
+  const directSignups = useAppSelector(selectDirectSignups);
   const activeProgramType = useAppSelector(
     (state) => state.admin.activeProgramType,
   );
@@ -65,7 +65,7 @@ export const AllGamesList = ({ games }: Props): ReactElement => {
           <GameListTitle
             startTime={startTime}
             lotterySignups={ownOrGroupCreatorLotterySignups}
-            enteredGames={enteredGames}
+            directSignups={directSignups}
             timeslotSignupStrategy={timeslotSignupStrategy}
             isGroupCreator={isGroupCreator}
             groupCode={groupCode}
@@ -85,7 +85,7 @@ export const AllGamesList = ({ games }: Props): ReactElement => {
                 players={gameSignups?.users.length ?? 0}
                 signupStrategy={timeslotSignupStrategy}
                 lotterySignups={ownOrGroupCreatorLotterySignups}
-                enteredGames={enteredGames}
+                directSignups={directSignups}
                 loading={loading}
                 setLoading={setLoading}
                 username={username}

@@ -1,4 +1,4 @@
-import { resetSignupsByGameIds } from "server/features/signup/signupRepository";
+import { resetDirectSignupsByGameIds } from "server/features/direct-signup/directSignupRepository";
 import {
   findUsers,
   updateUsersByUsername,
@@ -73,7 +73,7 @@ export const removeHiddenGamesFromUsers = async (
 
   const hiddenGameIds = hiddenGames.map((hiddenGame) => hiddenGame.gameId);
   const resetSignupsByGameIdsResult =
-    await resetSignupsByGameIds(hiddenGameIds);
+    await resetDirectSignupsByGameIds(hiddenGameIds);
   if (isErrorResult(resetSignupsByGameIdsResult)) {
     return resetSignupsByGameIdsResult;
   }

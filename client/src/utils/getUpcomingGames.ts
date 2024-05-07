@@ -79,13 +79,13 @@ export const getLotterySignups = ({
   return lotterySignups;
 };
 
-export const getUpcomingEnteredGames = (
-  enteredGames: readonly Signup[],
+export const getUpcomingDirectSignups = (
+  directSignups: readonly Signup[],
 ): readonly Signup[] => {
   const timeNow = getTimeNow();
 
-  const upcomingGames = enteredGames.filter((enteredGame) =>
-    dayjs(enteredGame.gameDetails.startTime).add(1, "hours").isAfter(timeNow),
+  const upcomingGames = directSignups.filter((directSignup) =>
+    dayjs(directSignup.gameDetails.startTime).add(1, "hours").isAfter(timeNow),
   );
 
   return upcomingGames;

@@ -13,7 +13,7 @@ import { saveGames } from "server/features/game/gameRepository";
 import { testGame } from "shared/tests/testGame";
 import { saveUser } from "server/features/user/userRepository";
 import {
-  mockPostEnteredGameRequest,
+  mockPostDirectSignupRequest,
   mockLotterySignups,
   mockUser,
   mockUser2,
@@ -21,9 +21,9 @@ import {
   mockUser4,
 } from "server/test/mock-data/mockUser";
 import {
-  findSignups,
-  saveSignup,
-} from "server/features/signup/signupRepository";
+  findDirectSignups,
+  saveDirectSignup,
+} from "server/features/direct-signup/directSignupRepository";
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 
 // This needs to be adjusted if test data is changed
@@ -124,14 +124,14 @@ test("Should adjust attendee limits if there are previous signups from moved pro
   // ** Save previous signups
 
   // This should remain because of different startTime
-  await saveSignup({
-    ...mockPostEnteredGameRequest,
+  await saveDirectSignup({
+    ...mockPostDirectSignupRequest,
     startTime: dayjs(testGame.startTime).subtract(1, "hours").toISOString(),
   });
 
   // This should be removed becase of same startTime
-  await saveSignup({
-    ...mockPostEnteredGameRequest,
+  await saveDirectSignup({
+    ...mockPostDirectSignupRequest,
     username: mockUser2.username,
   });
 
@@ -158,7 +158,7 @@ test("Should adjust attendee limits if there are previous signups from moved pro
   expect(assignResults.status).toEqual("success");
   expect(assignResults.results.length).toEqual(1);
 
-  const signupsAfterUpdate = unsafelyUnwrapResult(await findSignups());
+  const signupsAfterUpdate = unsafelyUnwrapResult(await findDirectSignups());
 
   const assignmentSignup = signupsAfterUpdate.find(
     (signup) => signup.game.gameId === testGame.gameId,

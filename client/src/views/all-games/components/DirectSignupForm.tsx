@@ -3,18 +3,18 @@ import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { Game } from "shared/types/models/game";
-import { EnterGameForm } from "./EnterGameForm";
+import { SignupGameForm } from "./SignupGameForm";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
-import { getSignupOpensDate, isAlreadyEntered } from "./allGamesUtils";
+import { getSignupOpensDate, isAlreadyDirectySigned } from "./allGamesUtils";
 import { Button, ButtonStyle } from "client/components/Button";
 import { CancelSignupForm } from "./CancelSignupForm";
 import {
-  DeleteEnteredGameErrorMessage,
-  submitDeleteEnteredGame,
+  DeleteDirectSignupErrorMessage,
+  submitDeleteDirectSignup,
 } from "client/views/my-games/myGamesThunks";
 import { loadGames } from "client/utils/loadData";
 import { ErrorMessage } from "client/components/ErrorMessage";
-import { selectEnteredGames } from "client/views/my-games/myGamesSlice";
+import { selectDirectSignups } from "client/views/my-games/myGamesSlice";
 import { getTimeNow } from "client/utils/getTimeNow";
 import { getDirectSignupStartTime } from "shared/utils/signupTimes";
 import { config } from "shared/config";
@@ -40,7 +40,7 @@ export const DirectSignupForm = ({
 
   const loggedIn = useAppSelector((state) => state.login.loggedIn);
   const username = useAppSelector((state) => state.login.username);
-  const enteredGames = useAppSelector(selectEnteredGames);
+  const directSignups = useAppSelector(selectDirectSignups);
   const signupQuestions = useAppSelector(
     (state) => state.admin.signupQuestions,
   );
@@ -48,21 +48,21 @@ export const DirectSignupForm = ({
   const [signupFormOpen, setSignupFormOpen] = useState(false);
   const [cancelSignupFormOpen, setCancelSignupFormOpen] = useState(false);
   const [serverError, setServerError] =
-    useState<DeleteEnteredGameErrorMessage | null>(null);
+    useState<DeleteDirectSignupErrorMessage | null>(null);
 
-  const enteredGameForTimeslot = enteredGames.find(
+  const directSignupForTimeslot = directSignups.find(
     (g) => g.gameDetails.startTime === startTime,
   );
 
-  const alreadyEnteredToGame = isAlreadyEntered(game, enteredGames);
+  const alreadySignedToGame = isAlreadyDirectySigned(game, directSignups);
 
   const removeSignup = async (): Promise<void> => {
     setLoading(true);
     const errorMessage = await dispatch(
-      submitDeleteEnteredGame({
+      submitDeleteDirectSignup({
         username,
         startTime: game.startTime,
-        enteredGameId: game.gameId,
+        directSignupGameId: game.gameId,
       }),
     );
 
@@ -111,23 +111,23 @@ export const DirectSignupForm = ({
         </BoldText>
       )}
 
-      {signupOpen && !alreadyEnteredToGame && !gameIsFull && (
+      {signupOpen && !alreadySignedToGame && !gameIsFull && (
         <>
-          {enteredGameForTimeslot && (
+          {directSignupForTimeslot && (
             <DirectSignupContainer>
               {t("signup.alreadySignedToGame", {
                 PROGRAM_TYPE: t(
-                  `programTypeIllative.${enteredGameForTimeslot.gameDetails.programType}`,
+                  `programTypeIllative.${directSignupForTimeslot.gameDetails.programType}`,
                 ),
               })}{" "}
               <DirectSignupProgramItemTitle>
-                {enteredGameForTimeslot.gameDetails.title}
+                {directSignupForTimeslot.gameDetails.title}
               </DirectSignupProgramItemTitle>
               . {t("signup.cannotSignupMoreThanOneGame")}
             </DirectSignupContainer>
           )}
 
-          {!enteredGameForTimeslot && (
+          {!directSignupForTimeslot && (
             <>
               {timeNow.isBefore(directSignupStartTime) && (
                 <p>
@@ -152,7 +152,7 @@ export const DirectSignupForm = ({
                 )}
 
               {signupFormOpen && (
-                <EnterGameForm
+                <SignupGameForm
                   game={game}
                   signupQuestion={signupQuestions.find(
                     ({ gameId }) => gameId === game.gameId,
@@ -168,7 +168,7 @@ export const DirectSignupForm = ({
         </>
       )}
 
-      {alreadyEnteredToGame && (
+      {alreadySignedToGame && (
         <>
           <DirectSignupContainer>
             {t("signup.currentSignup", {

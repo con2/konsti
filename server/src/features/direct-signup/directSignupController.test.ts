@@ -8,7 +8,7 @@ import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { getJWT } from "server/utils/jwt";
 import { UserGroup } from "shared/types/models/user";
 import {
-  mockPostEnteredGameRequest,
+  mockPostDirectSignupRequest,
   mockUser,
   mockUser2,
   mockUser3,
@@ -20,15 +20,15 @@ import { saveUser } from "server/features/user/userRepository";
 import { saveGames } from "server/features/game/gameRepository";
 import { saveTestSettings } from "server/test/test-settings/testSettingsRepository";
 import {
-  findSignups,
-  findUserSignups,
-  saveSignup,
-} from "server/features/signup/signupRepository";
+  findDirectSignups,
+  findUserDirectSignups,
+  saveDirectSignup,
+} from "server/features/direct-signup/directSignupRepository";
 import { NewUser } from "server/types/userTypes";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 import {
-  DeleteEnteredGameRequest,
-  PostEnteredGameRequest,
+  DeleteDirectSignupRequest,
+  PostDirectSignupRequest,
 } from "shared/types/api/myGames";
 import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 import * as signupTimes from "shared/utils/signupTimes";
@@ -47,19 +47,19 @@ afterEach(async () => {
   await closeServer(server);
 });
 
-describe(`POST ${ApiEndpoint.SIGNUP}`, () => {
+describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
   test("should return 401 without valid authorization", async () => {
-    const response = await request(server).post(ApiEndpoint.SIGNUP);
+    const response = await request(server).post(ApiEndpoint.DIRECT_SIGNUP);
     expect(response.status).toEqual(401);
   });
 
   test("should return 422 with invalid parameters", async () => {
-    const signup: Partial<PostEnteredGameRequest> = {
+    const signup: Partial<PostDirectSignupRequest> = {
       username: mockUser.username,
-      enteredGameId: "ABCD1234",
+      directSignupGameId: "ABCD1234",
     };
     const response = await request(server)
-      .post(ApiEndpoint.SIGNUP)
+      .post(ApiEndpoint.DIRECT_SIGNUP)
       .send(signup)
       .set(
         "Authorization",
@@ -69,16 +69,16 @@ describe(`POST ${ApiEndpoint.SIGNUP}`, () => {
   });
 
   test("should return 422 if signup message is too long", async () => {
-    const signup: PostEnteredGameRequest = {
+    const signup: PostDirectSignupRequest = {
       username: mockUser.username,
-      enteredGameId: testGame.gameId,
+      directSignupGameId: testGame.gameId,
       startTime: testGame.startTime,
       message:
         "Test message Test message Test message Test message Test message Test message Test message Test message Test message Test message Test message Test message Test message",
       priority: DIRECT_SIGNUP_PRIORITY,
     };
     const response = await request(server)
-      .post(ApiEndpoint.SIGNUP)
+      .post(ApiEndpoint.DIRECT_SIGNUP)
       .send(signup)
       .set(
         "Authorization",
@@ -93,15 +93,15 @@ describe(`POST ${ApiEndpoint.SIGNUP}`, () => {
     );
     await saveUser(mockUser);
 
-    const signup: PostEnteredGameRequest = {
+    const signup: PostDirectSignupRequest = {
       username: mockUser.username,
-      enteredGameId: "invalid_game_id",
+      directSignupGameId: "invalid_game_id",
       startTime: dayjs(testGame.startTime).subtract(1, "hour").toISOString(),
       message: "",
       priority: DIRECT_SIGNUP_PRIORITY,
     };
     const response = await request(server)
-      .post(ApiEndpoint.SIGNUP)
+      .post(ApiEndpoint.DIRECT_SIGNUP)
       .send(signup)
       .set(
         "Authorization",
@@ -120,15 +120,15 @@ describe(`POST ${ApiEndpoint.SIGNUP}`, () => {
 
     await saveGames([testGame]);
 
-    const signup: PostEnteredGameRequest = {
+    const signup: PostDirectSignupRequest = {
       username: "user_not_found",
-      enteredGameId: testGame.gameId,
+      directSignupGameId: testGame.gameId,
       startTime: testGame.startTime,
       message: "",
       priority: DIRECT_SIGNUP_PRIORITY,
     };
     const response = await request(server)
-      .post(ApiEndpoint.SIGNUP)
+      .post(ApiEndpoint.DIRECT_SIGNUP)
       .send(signup)
       .set(
         "Authorization",
@@ -147,15 +147,15 @@ describe(`POST ${ApiEndpoint.SIGNUP}`, () => {
       testTime: dayjs(testGame.startTime).subtract(2, "hours").toISOString(),
     });
 
-    const signup: PostEnteredGameRequest = {
+    const signup: PostDirectSignupRequest = {
       username: mockUser.username,
-      enteredGameId: testGame.gameId,
+      directSignupGameId: testGame.gameId,
       startTime: testGame.startTime,
       message: "",
       priority: DIRECT_SIGNUP_PRIORITY,
     };
     const response = await request(server)
-      .post(ApiEndpoint.SIGNUP)
+      .post(ApiEndpoint.DIRECT_SIGNUP)
       .send(signup)
       .set(
         "Authorization",
@@ -178,20 +178,22 @@ describe(`POST ${ApiEndpoint.SIGNUP}`, () => {
     await saveUser(mockUser);
 
     // Check starting conditions
-    const nonModifiedSignupsResult = await findUserSignups(mockUser.username);
+    const nonModifiedSignupsResult = await findUserDirectSignups(
+      mockUser.username,
+    );
     const nonModifiedSignups = unsafelyUnwrapResult(nonModifiedSignupsResult);
     expect(nonModifiedSignups.length).toEqual(0);
 
-    // Update entered games
-    const signup: PostEnteredGameRequest = {
+    // Update direct signups
+    const signup: PostDirectSignupRequest = {
       username: mockUser.username,
-      enteredGameId: testGame.gameId,
+      directSignupGameId: testGame.gameId,
       startTime: testGame.startTime,
       message: "Test message",
       priority: DIRECT_SIGNUP_PRIORITY,
     };
     const response = await request(server)
-      .post(ApiEndpoint.SIGNUP)
+      .post(ApiEndpoint.DIRECT_SIGNUP)
       .send(signup)
       .set(
         "Authorization",
@@ -204,7 +206,9 @@ describe(`POST ${ApiEndpoint.SIGNUP}`, () => {
     expect(response.body.status).toEqual("success");
 
     // Check database
-    const modifiedSignupsResult = await findUserSignups(mockUser.username);
+    const modifiedSignupsResult = await findUserDirectSignups(
+      mockUser.username,
+    );
     const modifiedSignups = unsafelyUnwrapResult(modifiedSignupsResult);
 
     expect(modifiedSignups[0].game.gameId).toEqual(testGame.gameId);
@@ -227,15 +231,15 @@ describe(`POST ${ApiEndpoint.SIGNUP}`, () => {
     await saveUser(mockUser5);
 
     const makeRequest = async (user: NewUser): Promise<Test> => {
-      const signup: PostEnteredGameRequest = {
+      const signup: PostDirectSignupRequest = {
         username: user.username,
-        enteredGameId: testGame.gameId,
+        directSignupGameId: testGame.gameId,
         startTime: testGame.startTime,
         message: "Test message",
         priority: DIRECT_SIGNUP_PRIORITY,
       };
       return await request(server)
-        .post(ApiEndpoint.SIGNUP)
+        .post(ApiEndpoint.DIRECT_SIGNUP)
         .send(signup)
         .set(
           "Authorization",
@@ -253,7 +257,7 @@ describe(`POST ${ApiEndpoint.SIGNUP}`, () => {
 
     // Check results
 
-    const signupsResult = await findSignups();
+    const signupsResult = await findDirectSignups();
     const signups = unsafelyUnwrapResult(signupsResult);
     const matchingSignup = signups.find(
       (signup) => signup.game.gameId === testGame.gameId,
@@ -276,18 +280,18 @@ describe(`POST ${ApiEndpoint.SIGNUP}`, () => {
     await saveUser(mockUser3);
 
     // Save on signup -> one seat left
-    await saveSignup(mockPostEnteredGameRequest);
+    await saveDirectSignup(mockPostDirectSignupRequest);
 
     const makeRequest = async (user: NewUser): Promise<Test> => {
-      const signup: PostEnteredGameRequest = {
+      const signup: PostDirectSignupRequest = {
         username: user.username,
-        enteredGameId: testGame.gameId,
+        directSignupGameId: testGame.gameId,
         startTime: testGame.startTime,
         message: "Test message",
         priority: DIRECT_SIGNUP_PRIORITY,
       };
       return await request(server)
-        .post(ApiEndpoint.SIGNUP)
+        .post(ApiEndpoint.DIRECT_SIGNUP)
         .send(signup)
         .set(
           "Authorization",
@@ -299,7 +303,7 @@ describe(`POST ${ApiEndpoint.SIGNUP}`, () => {
     await Promise.all([makeRequest(mockUser2), makeRequest(mockUser3)]);
 
     // Check results
-    const signupsResult = await findSignups();
+    const signupsResult = await findDirectSignups();
     const signups = unsafelyUnwrapResult(signupsResult);
     expect(signups).toHaveLength(1);
 
@@ -311,19 +315,19 @@ describe(`POST ${ApiEndpoint.SIGNUP}`, () => {
   });
 });
 
-describe(`DELETE ${ApiEndpoint.SIGNUP}`, () => {
+describe(`DELETE ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
   test("should return 401 without valid authorization", async () => {
-    const response = await request(server).delete(ApiEndpoint.SIGNUP);
+    const response = await request(server).delete(ApiEndpoint.DIRECT_SIGNUP);
     expect(response.status).toEqual(401);
   });
 
   test("should return 422 with invalid parameters", async () => {
-    const deleteRequest: Partial<DeleteEnteredGameRequest> = {
+    const deleteRequest: Partial<DeleteDirectSignupRequest> = {
       username: "testuser",
-      enteredGameId: "ABCD1234",
+      directSignupGameId: "ABCD1234",
     };
     const response = await request(server)
-      .delete(ApiEndpoint.SIGNUP)
+      .delete(ApiEndpoint.DIRECT_SIGNUP)
       .send(deleteRequest)
       .set("Authorization", `Bearer ${getJWT(UserGroup.USER, "testuser")}`);
     expect(response.status).toEqual(422);
@@ -335,13 +339,13 @@ describe(`DELETE ${ApiEndpoint.SIGNUP}`, () => {
     );
     await saveUser(mockUser);
 
-    const deleteRequest: DeleteEnteredGameRequest = {
+    const deleteRequest: DeleteDirectSignupRequest = {
       username: mockUser.username,
-      enteredGameId: "invalid_game_id",
+      directSignupGameId: "invalid_game_id",
       startTime: dayjs(testGame.startTime).subtract(1, "hour").toISOString(),
     };
     const response = await request(server)
-      .delete(ApiEndpoint.SIGNUP)
+      .delete(ApiEndpoint.DIRECT_SIGNUP)
       .send(deleteRequest)
       .set(
         "Authorization",
@@ -356,13 +360,13 @@ describe(`DELETE ${ApiEndpoint.SIGNUP}`, () => {
     vi.setSystemTime(testGame.startTime);
     await saveGames([testGame]);
 
-    const deleteRequest: DeleteEnteredGameRequest = {
+    const deleteRequest: DeleteDirectSignupRequest = {
       username: "user_not_found",
-      enteredGameId: testGame.gameId,
+      directSignupGameId: testGame.gameId,
       startTime: testGame.startTime,
     };
     const response = await request(server)
-      .delete(ApiEndpoint.SIGNUP)
+      .delete(ApiEndpoint.DIRECT_SIGNUP)
       .send(deleteRequest)
       .set(
         "Authorization",
@@ -382,23 +386,25 @@ describe(`DELETE ${ApiEndpoint.SIGNUP}`, () => {
     // Populate database
     await saveGames([testGame]);
     await saveUser(mockUser);
-    await saveSignup(mockPostEnteredGameRequest);
+    await saveDirectSignup(mockPostDirectSignupRequest);
 
     // Check starting conditions
-    const nonModifiedSignupResult = await findUserSignups(mockUser.username);
+    const nonModifiedSignupResult = await findUserDirectSignups(
+      mockUser.username,
+    );
     const nonModifiedSignup = unsafelyUnwrapResult(nonModifiedSignupResult);
 
     expect(nonModifiedSignup[0].game.gameId).toEqual(testGame.gameId);
     expect(nonModifiedSignup[0].userSignups.length).toEqual(1);
 
-    // Update entered games
-    const deleteRequest: DeleteEnteredGameRequest = {
+    // Update direct signups
+    const deleteRequest: DeleteDirectSignupRequest = {
       username: mockUser.username,
-      enteredGameId: testGame.gameId,
+      directSignupGameId: testGame.gameId,
       startTime: testGame.startTime,
     };
     const response = await request(server)
-      .delete(ApiEndpoint.SIGNUP)
+      .delete(ApiEndpoint.DIRECT_SIGNUP)
       .send(deleteRequest)
       .set(
         "Authorization",
@@ -411,7 +417,7 @@ describe(`DELETE ${ApiEndpoint.SIGNUP}`, () => {
     expect(response.body.status).toEqual("success");
 
     // Check database
-    const modifiedSignupResult = await findUserSignups(mockUser.username);
+    const modifiedSignupResult = await findUserDirectSignups(mockUser.username);
     const modifiedSignup = unsafelyUnwrapResult(modifiedSignupResult);
     expect(modifiedSignup.length).toEqual(0);
   });

@@ -30,7 +30,7 @@ export enum UserGroup {
 }
 
 export interface UserGames {
-  enteredGames: readonly Signup[];
+  directSignups: readonly Signup[];
   favoritedGames: readonly Game[];
   lotterySignups: readonly Signup[];
 }

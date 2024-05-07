@@ -33,7 +33,7 @@ export const findResult = async (
     )
       .lean<ResultsCollectionEntry>()
       .sort({ createdAt: -1 })
-      .populate("results.enteredGame.gameDetails");
+      .populate("results.directSignup.gameDetails");
     logger.debug(`MongoDB: Results data found for time ${startTime}`);
     return makeSuccessResult(response);
   } catch (error) {
@@ -60,16 +60,16 @@ export const saveResult = async (
   const games = unwrapResult(gamesResult);
   const results = signupResultData.reduce<AssignmentResult[]>((acc, result) => {
     const gameDocInDb = games.find(
-      (game) => game.gameId === result.enteredGame.gameDetails.gameId,
+      (game) => game.gameId === result.directSignup.gameDetails.gameId,
     );
 
     if (gameDocInDb) {
       acc.push({
         username: result.username,
-        enteredGame: {
+        directSignup: {
           gameDetails: gameDocInDb._id,
-          priority: result.enteredGame.priority,
-          time: result.enteredGame.time,
+          priority: result.directSignup.priority,
+          time: result.directSignup.time,
           message: "",
         },
       });

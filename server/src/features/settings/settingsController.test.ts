@@ -16,14 +16,14 @@ import { saveGames } from "server/features/game/gameRepository";
 import { findUser, saveUser } from "server/features/user/userRepository";
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import {
-  findSignups,
-  findUserSignups,
-  saveSignup,
-} from "server/features/signup/signupRepository";
+  findDirectSignups,
+  findUserDirectSignups,
+  saveDirectSignup,
+} from "server/features/direct-signup/directSignupRepository";
 import { saveFavorite } from "server/features/user/favorite-game/favoriteGameRepository";
 import {
-  mockPostEnteredGameRequest,
-  mockPostEnteredGameRequest2,
+  mockPostDirectSignupRequest,
+  mockPostDirectSignupRequest2,
   mockLotterySignups,
   mockUser,
 } from "server/test/mock-data/mockUser";
@@ -145,8 +145,8 @@ describe(`POST ${ApiEndpoint.HIDDEN}`, () => {
       username: mockUser.username,
       lotterySignups: mockLotterySignups,
     });
-    await saveSignup(mockPostEnteredGameRequest);
-    await saveSignup(mockPostEnteredGameRequest2);
+    await saveDirectSignup(mockPostDirectSignupRequest);
+    await saveDirectSignup(mockPostDirectSignupRequest2);
     await saveFavorite({
       username: mockUser.username,
       favoritedGameIds: [testGame.gameId, testGame2.gameId],
@@ -167,7 +167,7 @@ describe(`POST ${ApiEndpoint.HIDDEN}`, () => {
     );
     expect(updatedUser?.favoritedGames.length).toEqual(1);
 
-    const signupsResult = await findUserSignups(mockUser.username);
+    const signupsResult = await findUserDirectSignups(mockUser.username);
     const signups = unsafelyUnwrapResult(signupsResult);
     expect(signups.length).toEqual(1);
     expect(signups[0].userSignups[0].username).toEqual(mockUser.username);
@@ -176,9 +176,9 @@ describe(`POST ${ApiEndpoint.HIDDEN}`, () => {
   test("should clean but not remove signup document when program item is hidden", async () => {
     await saveGames([testGame]);
     await saveUser(mockUser);
-    await saveSignup(mockPostEnteredGameRequest);
+    await saveDirectSignup(mockPostDirectSignupRequest);
 
-    const findSignupsResult = await findSignups();
+    const findSignupsResult = await findDirectSignups();
     const signups = unsafelyUnwrapResult(findSignupsResult);
     expect(signups).toHaveLength(1);
     expect(signups[0].userSignups).toHaveLength(1);
@@ -189,7 +189,7 @@ describe(`POST ${ApiEndpoint.HIDDEN}`, () => {
       .send({ hiddenData: [testGame] })
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
 
-    const findSignupsResult2 = await findSignups();
+    const findSignupsResult2 = await findDirectSignups();
     const signups2 = unsafelyUnwrapResult(findSignupsResult2);
     expect(signups2).toHaveLength(1);
     expect(signups2[0].userSignups).toEqual([]);

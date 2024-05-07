@@ -5,7 +5,7 @@ import { User } from "shared/types/models/user";
 import { ResultsCollectionEntry } from "server/types/resultTypes";
 import { writeJson } from "server/features/statistics/statsUtil";
 import { config } from "shared/config";
-import { SignupsForProgramItem } from "server/features/signup/signupTypes";
+import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 
 export const anonymizeData = async (
   year: number,
@@ -25,7 +25,7 @@ export const anonymizeData = async (
     ),
   );
 
-  const signups: SignupsForProgramItem[] = JSON.parse(
+  const signups: DirectSignupsForProgramItem[] = JSON.parse(
     fs.readFileSync(
       `${config.server().statsDataDir}/${event}/${year}/signups.json`,
       "utf8",

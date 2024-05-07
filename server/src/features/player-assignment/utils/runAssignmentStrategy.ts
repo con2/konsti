@@ -8,7 +8,7 @@ import {
   PlayerAssignmentResult,
 } from "server/types/resultTypes";
 import { AssignmentStrategy } from "shared/config/sharedConfigTypes";
-import { SignupsForProgramItem } from "server/features/signup/signupTypes";
+import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 import {
   Result,
@@ -24,7 +24,7 @@ export const runAssignmentStrategy = (
   players: readonly User[],
   games: readonly Game[],
   startTime: string,
-  signups: readonly SignupsForProgramItem[],
+  signups: readonly DirectSignupsForProgramItem[],
 ): Result<PlayerAssignmentResult, AssignmentError> => {
   logger.info(
     `Received data for ${players.length} players and ${games.length} games`,
@@ -56,7 +56,7 @@ const runPadgStrategy = (
   players: readonly User[],
   games: readonly Game[],
   startTime: string,
-  signups: readonly SignupsForProgramItem[],
+  signups: readonly DirectSignupsForProgramItem[],
 ): Result<PlayerAssignmentResult, AssignmentError> => {
   const padgResultResult = padgAssignPlayers(
     players,
@@ -75,7 +75,7 @@ const runRandomStrategy = (
   players: readonly User[],
   games: readonly Game[],
   startTime: string,
-  signups: readonly SignupsForProgramItem[],
+  signups: readonly DirectSignupsForProgramItem[],
 ): Result<PlayerAssignmentResult, AssignmentError> => {
   const randomResultResult = randomAssignPlayers(
     players,
@@ -94,7 +94,7 @@ const runRandomPadgStrategy = (
   players: readonly User[],
   games: readonly Game[],
   startTime: string,
-  signups: readonly SignupsForProgramItem[],
+  signups: readonly DirectSignupsForProgramItem[],
 ): Result<PlayerAssignmentResult, AssignmentError> => {
   const randomResultResult = randomAssignPlayers(
     players,

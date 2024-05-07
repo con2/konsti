@@ -5,7 +5,7 @@ import { Loading } from "client/components/Loading";
 import { useAppSelector } from "client/utils/hooks";
 import { GameEntry } from "client/views/all-games/components/GameEntry";
 import {
-  selectEnteredGames,
+  selectDirectSignups,
   selectFavoritedGames,
   selectLotterySignups,
 } from "client/views/my-games/myGamesSlice";
@@ -21,7 +21,7 @@ export const GameDetailsPage = (): ReactElement => {
 
   const games = useAppSelector((state) => state.allGames.games);
   const signups = useAppSelector((state) => state.allGames.signups);
-  const enteredGames = useAppSelector(selectEnteredGames);
+  const directSignups = useAppSelector(selectDirectSignups);
   const username = useAppSelector((state) => state.login.username);
   const loggedIn = useAppSelector((state) => state.login.loggedIn);
   const userGroup = useAppSelector((state) => state.login.userGroup);
@@ -65,7 +65,7 @@ export const GameDetailsPage = (): ReactElement => {
           players={playerCount}
           signupStrategy={foundGame.signupStrategy ?? SignupStrategy.DIRECT}
           lotterySignups={ownOrGroupCreatorLotterySignups}
-          enteredGames={enteredGames}
+          directSignups={directSignups}
           loading={loading}
           setLoading={setLoading}
           username={username}

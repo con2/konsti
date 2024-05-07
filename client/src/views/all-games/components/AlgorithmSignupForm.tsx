@@ -3,14 +3,14 @@ import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { Game } from "shared/types/models/game";
-import { SignupForm } from "./SignupForm";
+import { LotterySignupForm } from "./LotterySignupForm";
 import {
   PostLotterySignupsErrorMessage,
   submitPostLotterySignups,
 } from "client/views/my-games/myGamesThunks";
 import { Signup } from "shared/types/models/user";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
-import { getSignupOpensDate, isAlreadySigned } from "./allGamesUtils";
+import { getSignupOpensDate, isAlreadyLotterySigned } from "./allGamesUtils";
 import { Button, ButtonStyle } from "client/components/Button";
 import { ErrorMessage } from "client/components/ErrorMessage";
 import { CancelSignupForm } from "client/views/all-games/components/CancelSignupForm";
@@ -82,7 +82,7 @@ export const AlgorithmSignupForm = ({
     (g) => g.gameDetails.startTime === startTime,
   );
 
-  const alreadySignedToGame = isAlreadySigned(game, lotterySignups);
+  const alreadySignedToGame = isAlreadyLotterySigned(game, lotterySignups);
 
   const algorithmSignupStartTime = getAlgorithmSignupStartTime(startTime);
 
@@ -195,7 +195,7 @@ export const AlgorithmSignupForm = ({
       )}
 
       {signupFormOpen && !alreadySignedToGame && (
-        <SignupForm
+        <LotterySignupForm
           game={game}
           startTime={startTime}
           onCancel={() => setSignupFormOpen(false)}

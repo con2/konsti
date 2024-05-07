@@ -16,7 +16,7 @@ import {
   PostUserResponse,
 } from "shared/types/api/users";
 import { ApiError } from "shared/types/api/errors";
-import { findUserSignups } from "server/features/signup/signupRepository";
+import { findUserDirectSignups } from "server/features/direct-signup/directSignupRepository";
 import { Signup } from "shared/types/models/user";
 import { isErrorResult, unwrapResult } from "shared/utils/result";
 import { config } from "shared/config";
@@ -250,7 +250,7 @@ export const fetchUserByUsername = async (
     };
   }
 
-  const signupsResult = await findUserSignups(username);
+  const signupsResult = await findUserDirectSignups(username);
   if (isErrorResult(signupsResult)) {
     return {
       message: "Getting user data failed",
@@ -262,7 +262,7 @@ export const fetchUserByUsername = async (
   const signups = unwrapResult(signupsResult);
 
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-  const enteredGames: Signup[] = signups
+  const directSignups: Signup[] = signups
     ? signups.flatMap((signup) => {
         const signupForUser = signup.userSignups.find(
           (userSignup) => userSignup.username === username,
@@ -283,7 +283,7 @@ export const fetchUserByUsername = async (
     message: "Getting user data success",
     status: "success",
     games: {
-      enteredGames,
+      directSignups,
       favoritedGames: user.favoritedGames,
       lotterySignups: user.lotterySignups,
     },

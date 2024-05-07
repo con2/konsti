@@ -1,11 +1,11 @@
 import dayjs from "dayjs";
 import { Game } from "shared/types/models/game";
 import { RandomAssignEvent } from "server/types/padgRandomAssignTypes";
-import { SignupsForProgramItem } from "server/features/signup/signupTypes";
+import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 
 export const getRandomAssignEvents = (
   selectedGames: readonly Game[],
-  signups: readonly SignupsForProgramItem[],
+  signups: readonly DirectSignupsForProgramItem[],
 ): RandomAssignEvent[] => {
   return selectedGames.map((selectedGame) => {
     // Program item can have existing signups if program item's start time has changed

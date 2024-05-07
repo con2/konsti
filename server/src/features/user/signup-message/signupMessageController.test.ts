@@ -9,8 +9,8 @@ import { closeServer, startServer } from "server/utils/server";
 import { saveGames } from "server/features/game/gameRepository";
 import { saveUser } from "server/features/user/userRepository";
 import {
-  mockPostEnteredGameRequest,
-  mockPostEnteredGameRequest2,
+  mockPostDirectSignupRequest,
+  mockPostDirectSignupRequest2,
   mockUser,
 } from "server/test/mock-data/mockUser";
 import { testGame, testGame2 } from "shared/tests/testGame";
@@ -22,7 +22,7 @@ import {
   createSettings,
   saveSignupQuestion,
 } from "server/features/settings/settingsRepository";
-import { saveSignup } from "server/features/signup/signupRepository";
+import { saveDirectSignup } from "server/features/direct-signup/directSignupRepository";
 
 let server: Server;
 
@@ -82,12 +82,12 @@ describe(`GET ${ApiEndpoint.SIGNUP_MESSAGE}`, () => {
     await saveGames([testGame, testGame2]);
     await saveUser(mockUser);
 
-    await saveSignup({
-      ...mockPostEnteredGameRequest,
+    await saveDirectSignup({
+      ...mockPostDirectSignupRequest,
       message: "Answer to public message",
     });
-    await saveSignup({
-      ...mockPostEnteredGameRequest2,
+    await saveDirectSignup({
+      ...mockPostDirectSignupRequest2,
       message: "Select Option 1",
     });
 

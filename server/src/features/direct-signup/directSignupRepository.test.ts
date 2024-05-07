@@ -6,18 +6,18 @@ import { saveUser } from "server/features/user/userRepository";
 import { testGame } from "shared/tests/testGame";
 import { saveGames } from "server/features/game/gameRepository";
 import {
-  mockPostEnteredGameRequest,
+  mockPostDirectSignupRequest,
   mockUser,
   mockUser2,
   mockUser3,
   mockUser4,
 } from "server/test/mock-data/mockUser";
 import {
-  delSignup,
-  findSignups,
-  saveSignup,
-  saveSignups,
-} from "server/features/signup/signupRepository";
+  delDirectSignup,
+  findDirectSignups,
+  saveDirectSignup,
+  saveDirectSignups,
+} from "server/features/direct-signup/directSignupRepository";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 
 beforeEach(async () => {
@@ -34,7 +34,7 @@ test("should add new signup for user", async () => {
   await saveUser(mockUser);
   await saveGames([testGame]);
 
-  const responseResult = await saveSignup(mockPostEnteredGameRequest);
+  const responseResult = await saveDirectSignup(mockPostDirectSignupRequest);
   const response = unsafelyUnwrapResult(responseResult);
 
   expect(response.game.gameId).toEqual(testGame.gameId);
@@ -44,9 +44,9 @@ test("should add new signup for user", async () => {
 test("should delete signup from user", async () => {
   await saveUser(mockUser);
   await saveGames([testGame]);
-  await saveSignup(mockPostEnteredGameRequest);
+  await saveDirectSignup(mockPostDirectSignupRequest);
 
-  const responseResult = await delSignup(mockPostEnteredGameRequest);
+  const responseResult = await delDirectSignup(mockPostDirectSignupRequest);
   const response = unsafelyUnwrapResult(responseResult);
 
   expect(response.userSignups.length).toEqual(0);
@@ -55,10 +55,10 @@ test("should delete signup from user", async () => {
 test("should delete signup from user even if game start time has changed after signup", async () => {
   await saveUser(mockUser);
   await saveGames([testGame]);
-  await saveSignup(mockPostEnteredGameRequest);
+  await saveDirectSignup(mockPostDirectSignupRequest);
 
-  const responseResult = await delSignup({
-    ...mockPostEnteredGameRequest,
+  const responseResult = await delDirectSignup({
+    ...mockPostDirectSignupRequest,
     startTime: dayjs(testGame.startTime).add(1, "hours").toISOString(),
   });
   const response = unsafelyUnwrapResult(responseResult);
@@ -66,7 +66,7 @@ test("should delete signup from user even if game start time has changed after s
   expect(response.userSignups.length).toEqual(0);
 });
 
-test("should limit max attendees if too many passed to saveSignups", async () => {
+test("should limit max attendees if too many passed to saveDirectSignups", async () => {
   await saveUser(mockUser);
   await saveUser(mockUser2);
   await saveUser(mockUser3);
@@ -74,17 +74,17 @@ test("should limit max attendees if too many passed to saveSignups", async () =>
   await saveGames([{ ...testGame, maxAttendance: 2 }]);
 
   const signups = [
-    mockPostEnteredGameRequest,
-    { ...mockPostEnteredGameRequest, username: mockUser2.username },
-    { ...mockPostEnteredGameRequest, username: mockUser3.username },
-    { ...mockPostEnteredGameRequest, username: mockUser4.username },
+    mockPostDirectSignupRequest,
+    { ...mockPostDirectSignupRequest, username: mockUser2.username },
+    { ...mockPostDirectSignupRequest, username: mockUser3.username },
+    { ...mockPostDirectSignupRequest, username: mockUser4.username },
   ];
 
-  const response = unsafelyUnwrapResult(await saveSignups(signups));
+  const response = unsafelyUnwrapResult(await saveDirectSignups(signups));
   expect(response.modifiedCount).toEqual(1);
   expect(response.droppedSignups).toHaveLength(2);
 
-  const signupsAfterSave = unsafelyUnwrapResult(await findSignups());
+  const signupsAfterSave = unsafelyUnwrapResult(await findDirectSignups());
   expect(signupsAfterSave).toHaveLength(1);
   expect(signupsAfterSave[0].count).toEqual(2);
   expect(signupsAfterSave[0].userSignups).toHaveLength(2);
@@ -95,13 +95,13 @@ test("should not add multiple duplicate signups for same user", async () => {
   await saveGames([testGame]);
 
   await Promise.all([
-    saveSignup(mockPostEnteredGameRequest),
-    saveSignup(mockPostEnteredGameRequest),
-    saveSignup(mockPostEnteredGameRequest),
-    saveSignup(mockPostEnteredGameRequest),
+    saveDirectSignup(mockPostDirectSignupRequest),
+    saveDirectSignup(mockPostDirectSignupRequest),
+    saveDirectSignup(mockPostDirectSignupRequest),
+    saveDirectSignup(mockPostDirectSignupRequest),
   ]);
 
-  const signupsAfterSave = unsafelyUnwrapResult(await findSignups());
+  const signupsAfterSave = unsafelyUnwrapResult(await findDirectSignups());
   expect(signupsAfterSave).toHaveLength(1);
   expect(signupsAfterSave[0].count).toEqual(1);
   expect(signupsAfterSave[0].userSignups).toHaveLength(1);
@@ -110,16 +110,16 @@ test("should not add multiple duplicate signups for same user", async () => {
 test("should not delete multiple times if delete called multiple times", async () => {
   await saveUser(mockUser);
   await saveGames([testGame]);
-  await saveSignup(mockPostEnteredGameRequest);
+  await saveDirectSignup(mockPostDirectSignupRequest);
 
   await Promise.all([
-    delSignup(mockPostEnteredGameRequest),
-    delSignup(mockPostEnteredGameRequest),
-    delSignup(mockPostEnteredGameRequest),
-    delSignup(mockPostEnteredGameRequest),
+    delDirectSignup(mockPostDirectSignupRequest),
+    delDirectSignup(mockPostDirectSignupRequest),
+    delDirectSignup(mockPostDirectSignupRequest),
+    delDirectSignup(mockPostDirectSignupRequest),
   ]);
 
-  const signupsAfterSave = unsafelyUnwrapResult(await findSignups());
+  const signupsAfterSave = unsafelyUnwrapResult(await findDirectSignups());
   expect(signupsAfterSave).toHaveLength(1);
   expect(signupsAfterSave[0].count).toEqual(0);
   expect(signupsAfterSave[0].userSignups).toHaveLength(0);

@@ -32,23 +32,23 @@ export interface PostLotterySignupsError extends ApiError {
 
 // POST direct signup
 
-export const PostEnteredGameRequestSchema = z.object({
+export const PostDirectSignupRequestSchema = z.object({
   username: z.string(),
-  enteredGameId: z.string(),
+  directSignupGameId: z.string(),
   startTime: z.string(),
   message: z.string().max(SIGNUP_MESSAGE_LENGTH, "Message too long"),
   priority: z.number(),
 });
 
-export type PostEnteredGameRequest = z.infer<
-  typeof PostEnteredGameRequestSchema
+export type PostDirectSignupRequest = z.infer<
+  typeof PostDirectSignupRequestSchema
 >;
 
-export interface PostEnteredGameResponse extends ApiResult {
-  enteredGame: Signup;
+export interface PostDirectSignupResponse extends ApiResult {
+  directSignup: Signup;
 }
 
-export interface PostEnteredGameError extends ApiError {
+export interface PostDirectSignupError extends ApiError {
   errorId:
     | "unknown"
     | "gameFull"
@@ -57,20 +57,20 @@ export interface PostEnteredGameError extends ApiError {
     | "noKonstiSignup";
 }
 
-// DELETE entered game
+// DELETE direct signup
 
-export const DeleteEnteredGameRequestSchema = z.object({
+export const DeleteDirectSignupRequestSchema = z.object({
   username: z.string(),
-  enteredGameId: z.string(),
+  directSignupGameId: z.string(),
   startTime: z.string(),
 });
 
-export type DeleteEnteredGameRequest = z.infer<
-  typeof DeleteEnteredGameRequestSchema
+export type DeleteDirectSignupRequest = z.infer<
+  typeof DeleteDirectSignupRequestSchema
 >;
 
-export type DeleteEnteredGameResponse = ApiResult;
+export type DeleteDirectSignupResponse = ApiResult;
 
-export interface DeleteEnteredGameError extends ApiError {
+export interface DeleteDirectSignupError extends ApiError {
   errorId: "unknown" | "signupEnded";
 }

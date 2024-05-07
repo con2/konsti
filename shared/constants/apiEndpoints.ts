@@ -20,7 +20,7 @@ export enum ApiEndpoint {
   USERS_PASSWORD = "/api/users/password",
   TEST_SETTINGS = "/api/test-settings",
   POPULATE_DB = "/api/populate-db",
-  SIGNUP = "/api/signup",
+  DIRECT_SIGNUP = "/api/direct-signup",
   SENTRY_TUNNEL = "/api/sentry",
   SENTRY_TEST = "/api/sentry-test",
   EVENT_LOG = "/api/event-log",

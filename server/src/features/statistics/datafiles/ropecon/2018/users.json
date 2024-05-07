@@ -12,7 +12,7 @@
         "time": "2018-07-27T15:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1889"
       }
@@ -42,7 +42,7 @@
         "time": "2018-07-28T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2636"
       }
@@ -86,7 +86,7 @@
         "time": "2018-07-28T13:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2181"
       },
@@ -130,7 +130,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2282"
       }
@@ -160,7 +160,7 @@
         "time": "2018-07-28T16:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2595"
       }
@@ -195,7 +195,7 @@
         "time": "2018-07-28T11:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2137"
       },
@@ -293,7 +293,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2295"
       },
@@ -355,7 +355,7 @@
         "time": "2018-07-28T17:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2632"
       }
@@ -369,7 +369,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "347106",
     "userGroup": "user",
     "serial": "7296750677",
@@ -383,7 +383,7 @@
       }
     ],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "643212",
     "userGroup": "user",
     "serial": "0709093561",
@@ -406,7 +406,7 @@
       }
     ],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "135959",
     "userGroup": "user",
     "serial": "1342805155",
@@ -416,7 +416,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "77537",
     "userGroup": "user",
     "serial": "0853169076",
@@ -430,7 +430,7 @@
       }
     ],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "160066",
     "userGroup": "user",
     "serial": "6929510441",
@@ -440,7 +440,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "603636",
     "userGroup": "user",
     "serial": "0201925971",
@@ -454,7 +454,7 @@
       }
     ],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "203332",
     "userGroup": "user",
     "serial": "5055264872",
@@ -470,7 +470,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2164"
       }
@@ -504,7 +504,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2308"
       }
@@ -518,7 +518,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "624891",
     "userGroup": "user",
     "serial": "4594264501",
@@ -534,7 +534,7 @@
         "time": "2018-07-28T10:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1924"
       },
@@ -551,7 +551,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "649483",
     "userGroup": "user",
     "serial": "0356828392",
@@ -561,7 +561,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "987331",
     "userGroup": "user",
     "serial": "6353628438",
@@ -571,7 +571,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "56240",
     "userGroup": "user",
     "serial": "3307770929",
@@ -587,7 +587,7 @@
         "time": "2018-07-28T16:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "446904",
     "userGroup": "user",
     "serial": "2816599407",
@@ -613,7 +613,7 @@
         "time": "2018-07-27T15:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2675"
       }
@@ -638,7 +638,7 @@
         "time": "2018-07-27T14:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2310"
       }
@@ -652,7 +652,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "88147",
     "userGroup": "user",
     "serial": "5714244828",
@@ -678,7 +678,7 @@
         "time": "2018-07-27T13:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2181"
       }
@@ -692,7 +692,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "970530",
     "userGroup": "user",
     "serial": "2457302269",
@@ -780,7 +780,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2635"
       },
@@ -813,7 +813,7 @@
       }
     ],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "192432",
     "userGroup": "user",
     "serial": "4180845408",
@@ -863,7 +863,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2297"
       },
@@ -960,7 +960,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1924"
       },
@@ -994,7 +994,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1853"
       }
@@ -1061,7 +1061,7 @@
         "time": "2018-07-28T16:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2645"
       },
@@ -1123,7 +1123,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2310"
       },
@@ -1151,7 +1151,7 @@
         "time": "2018-07-27T13:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2124"
       }
@@ -1241,7 +1241,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1893"
       },
@@ -1291,7 +1291,7 @@
         "time": "2018-07-28T17:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2552"
       }
@@ -1321,7 +1321,7 @@
         "time": "2018-07-28T16:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2297"
       },
@@ -1349,7 +1349,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2295"
       },
@@ -1372,7 +1372,7 @@
         "time": "2018-07-27T17:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2552"
       }
@@ -1427,7 +1427,7 @@
         "time": "2018-07-28T16:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2292"
       },
@@ -1458,7 +1458,7 @@
         "time": "2018-07-27T13:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2124"
       }
@@ -1472,7 +1472,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "965055",
     "userGroup": "user",
     "serial": "5739738390",
@@ -1492,7 +1492,7 @@
       }
     ],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "491698",
     "userGroup": "user",
     "serial": "7076705511",
@@ -1513,7 +1513,7 @@
         "time": "2018-07-27T13:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2297"
       }
@@ -1592,7 +1592,7 @@
         "time": "2018-07-29T08:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1964"
       },
@@ -1661,7 +1661,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2675"
       },
@@ -1752,7 +1752,7 @@
         "time": "2018-07-28T10:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2578"
       },
@@ -1813,7 +1813,7 @@
         "time": "2018-07-29T08:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2297"
       },
@@ -1886,7 +1886,7 @@
         "time": "2018-07-28T18:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2578"
       },
@@ -1940,7 +1940,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2153"
       },
@@ -1964,7 +1964,7 @@
       }
     ],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "423632",
     "userGroup": "user",
     "serial": "9920764041",
@@ -1990,7 +1990,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2510"
       },
@@ -2101,7 +2101,7 @@
         "time": "2018-07-28T17:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1893"
       },
@@ -2140,7 +2140,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2510"
       },
@@ -2173,7 +2173,7 @@
         "time": "2018-07-28T14:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1893"
       },
@@ -2216,7 +2216,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2570"
       },
@@ -2282,7 +2282,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2554"
       }
@@ -2326,7 +2326,7 @@
         "time": "2018-07-29T08:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2645"
       }
@@ -2406,7 +2406,7 @@
         "time": "2018-07-28T18:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2181"
       },
@@ -2475,7 +2475,7 @@
         "time": "2018-07-28T12:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2124"
       },
@@ -2529,7 +2529,7 @@
         "time": "2018-07-27T14:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1924"
       },
@@ -2562,7 +2562,7 @@
         "time": "2018-07-27T15:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2153"
       }
@@ -2576,7 +2576,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "449337",
     "userGroup": "user",
     "serial": "3612713861",
@@ -2592,7 +2592,7 @@
         "time": "2018-07-27T13:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2645"
       }
@@ -2657,7 +2657,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2115"
       },
@@ -2700,7 +2700,7 @@
         "time": "2018-07-28T10:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2586"
       }
@@ -2734,7 +2734,7 @@
         "time": "2018-07-28T16:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1789"
       }
@@ -2791,7 +2791,7 @@
         "time": "2018-07-28T11:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2295"
       },
@@ -2827,7 +2827,7 @@
         "time": "2018-07-28T11:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2711"
       },
@@ -2874,7 +2874,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2500"
       }
@@ -2904,7 +2904,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2296"
       }
@@ -2925,7 +2925,7 @@
       }
     ],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "644456",
     "userGroup": "user",
     "serial": "7845357271",
@@ -2945,7 +2945,7 @@
         "time": "2018-07-27T18:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "406872",
     "userGroup": "user",
     "serial": "7334905218",
@@ -2986,7 +2986,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2558"
       },
@@ -3017,7 +3017,7 @@
         "time": "2018-07-28T16:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "908480",
     "userGroup": "user",
     "serial": "9059958687",
@@ -3053,7 +3053,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2500"
       }
@@ -3098,7 +3098,7 @@
         "time": "2018-07-28T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2557"
       }
@@ -3128,7 +3128,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2296"
       }
@@ -3162,7 +3162,7 @@
         "time": "2018-07-28T14:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1893"
       },
@@ -3179,7 +3179,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "494301",
     "userGroup": "user",
     "serial": "2500332073",
@@ -3235,7 +3235,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2675"
       },
@@ -3268,7 +3268,7 @@
         "time": "2018-07-28T15:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2510"
       },
@@ -3326,7 +3326,7 @@
         "time": "2018-07-28T13:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2344"
       }
@@ -3386,7 +3386,7 @@
         "time": "2018-07-29T08:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2116"
       },
@@ -3442,7 +3442,7 @@
         "time": "2018-07-28T16:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1781"
       }
@@ -3477,7 +3477,7 @@
         "time": "2018-07-28T15:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1924"
       }
@@ -3558,7 +3558,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2574"
       }
@@ -3587,7 +3587,7 @@
         "time": "2018-07-28T13:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2518"
       }
@@ -3646,7 +3646,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2335"
       },
@@ -3695,7 +3695,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1893"
       },
@@ -3719,7 +3719,7 @@
       }
     ],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "547651",
     "userGroup": "user",
     "serial": "1998447922",
@@ -3735,7 +3735,7 @@
         "time": "2018-07-27T17:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "20530",
     "userGroup": "user",
     "serial": "4566094654",
@@ -3771,7 +3771,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2335"
       },
@@ -3794,7 +3794,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "57741",
     "userGroup": "user",
     "serial": "8146292407",
@@ -3804,7 +3804,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "637165",
     "userGroup": "user",
     "serial": "7572740228",
@@ -3925,7 +3925,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2635"
       },
@@ -4062,7 +4062,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2635"
       },
@@ -4199,7 +4199,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2635"
       },
@@ -4321,7 +4321,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2335"
       },
@@ -4406,7 +4406,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2163"
       },
@@ -4426,7 +4426,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "135377",
     "userGroup": "user",
     "serial": "1544589193",
@@ -4462,7 +4462,7 @@
         "time": "2018-07-28T17:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1777"
       },
@@ -4596,7 +4596,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2635"
       },
@@ -4638,7 +4638,7 @@
         "time": "2018-07-27T16:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2517"
       }
@@ -4680,7 +4680,7 @@
         "time": "2018-07-28T13:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1966"
       },
@@ -4748,7 +4748,7 @@
         "time": "2018-07-28T17:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2517"
       },
@@ -4772,7 +4772,7 @@
       }
     ],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "409064",
     "userGroup": "user",
     "serial": "3038987834",
@@ -4793,7 +4793,7 @@
         "time": "2018-07-27T19:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2749"
       }
@@ -4858,7 +4858,7 @@
         "time": "2018-07-28T19:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2558"
       },
@@ -4903,7 +4903,7 @@
         "time": "2018-07-28T13:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2000"
       },
@@ -4949,7 +4949,7 @@
         "time": "2018-07-27T15:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2137"
       }
@@ -4983,7 +4983,7 @@
         "time": "2018-07-27T15:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2160"
       }
@@ -5043,7 +5043,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2335"
       },
@@ -5097,7 +5097,7 @@
         "time": "2018-07-29T08:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1958"
       },
@@ -5124,7 +5124,7 @@
         "time": "2018-07-28T08:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2182"
       }
@@ -5172,7 +5172,7 @@
         "time": "2018-07-29T08:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2119"
       }
@@ -5196,7 +5196,7 @@
         "time": "2018-07-27T16:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1958"
       }
@@ -5230,7 +5230,7 @@
         "time": "2018-07-28T19:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2398"
       },
@@ -5263,7 +5263,7 @@
         "time": "2018-07-27T15:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2160"
       }
@@ -5313,7 +5313,7 @@
         "time": "2018-07-28T15:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2675"
       },
@@ -5350,7 +5350,7 @@
         "time": "2018-07-28T18:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2310"
       }
@@ -5395,7 +5395,7 @@
         "time": "2018-07-28T16:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2595"
       },
@@ -5443,7 +5443,7 @@
         "time": "2018-07-27T19:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2335"
       },
@@ -5469,7 +5469,7 @@
         "time": "2018-07-28T15:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2562"
       },
@@ -5492,7 +5492,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2250"
       }
@@ -5537,7 +5537,7 @@
         "time": "2018-07-28T19:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2380"
       },
@@ -5588,7 +5588,7 @@
         "time": "2018-07-28T16:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2586"
       }
@@ -5609,7 +5609,7 @@
       }
     ],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "669287",
     "userGroup": "user",
     "serial": "2084209747",
@@ -5645,7 +5645,7 @@
         "time": "2018-07-28T12:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2335"
       },
@@ -5662,7 +5662,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "385532",
     "userGroup": "user",
     "serial": "7252694117",
@@ -5678,7 +5678,7 @@
         "time": "2018-07-28T08:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "232115",
     "userGroup": "user",
     "serial": "1191053626",
@@ -5711,7 +5711,7 @@
         "time": "2018-07-27T17:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "683686",
     "userGroup": "user",
     "serial": "8228854934",
@@ -5721,7 +5721,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "635485",
     "userGroup": "user",
     "serial": "6999888297",
@@ -5757,7 +5757,7 @@
         "time": "2018-07-27T16:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2711"
       },
@@ -5789,7 +5789,7 @@
         "time": "2018-07-28T10:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2163"
       },
@@ -5806,7 +5806,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "674538",
     "userGroup": "user",
     "serial": "3078842782",
@@ -5882,7 +5882,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2115"
       },
@@ -5924,7 +5924,7 @@
         "time": "2018-07-27T18:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2625"
       }
@@ -5938,7 +5938,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "390376",
     "userGroup": "user",
     "serial": "1684453929",
@@ -5979,7 +5979,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2160"
       },
@@ -6002,7 +6002,7 @@
         "time": "2018-07-27T18:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "787562",
     "userGroup": "user",
     "serial": "5378921752",
@@ -6016,7 +6016,7 @@
       }
     ],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "244991",
     "userGroup": "user",
     "serial": "1572808044",
@@ -6042,7 +6042,7 @@
       }
     ],
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2115"
       },
@@ -6085,7 +6085,7 @@
         "time": "2018-07-28T10:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2137"
       },
@@ -6203,7 +6203,7 @@
         "time": "2018-07-29T08:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2378"
       },
@@ -6226,7 +6226,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "367791",
     "userGroup": "user",
     "serial": "7813765067",
@@ -6267,7 +6267,7 @@
         "time": "2018-07-28T16:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2335"
       }
@@ -6307,7 +6307,7 @@
         "time": "2018-07-27T19:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2576"
       }
@@ -6337,7 +6337,7 @@
         "time": "2018-07-27T17:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2366"
       }
@@ -6357,7 +6357,7 @@
         "time": "2018-07-27T18:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "239084",
     "userGroup": "user",
     "serial": "5982903758",
@@ -6413,7 +6413,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1889"
       },
@@ -6497,7 +6497,7 @@
         "time": "2018-07-29T08:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2584"
       },
@@ -6536,7 +6536,7 @@
         "time": "2018-07-28T18:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "355632",
     "userGroup": "user",
     "serial": "8528164430",
@@ -6546,7 +6546,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "836438",
     "userGroup": "user",
     "serial": "9710422354",
@@ -6596,7 +6596,7 @@
         "time": "2018-07-28T18:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2575"
       },
@@ -6637,7 +6637,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2568"
       }
@@ -6651,7 +6651,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "804764",
     "userGroup": "user",
     "serial": "2968169942",
@@ -6707,7 +6707,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2366"
       },
@@ -6745,7 +6745,7 @@
         "time": "2018-07-28T16:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2182"
       },
@@ -6787,7 +6787,7 @@
         "time": "2018-07-27T15:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2562"
       }
@@ -6855,7 +6855,7 @@
         "time": "2018-07-28T15:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2137"
       },
@@ -6945,7 +6945,7 @@
         "time": "2018-07-28T17:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2634"
       },
@@ -7019,7 +7019,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2634"
       },
@@ -7066,7 +7066,7 @@
         "time": "2018-07-27T16:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2557"
       }
@@ -7106,7 +7106,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2115"
       },
@@ -7144,7 +7144,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2182"
       },
@@ -7222,7 +7222,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2635"
       },
@@ -7278,7 +7278,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2510"
       },
@@ -7336,7 +7336,7 @@
         "time": "2018-07-29T08:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2595"
       },
@@ -7407,7 +7407,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2675"
       },
@@ -7443,7 +7443,7 @@
         "time": "2018-07-29T08:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2668"
       },
@@ -7471,7 +7471,7 @@
         "time": "2018-07-28T14:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "829163",
     "userGroup": "user",
     "serial": "3217359912",
@@ -7516,7 +7516,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2640"
       }
@@ -7624,7 +7624,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2557"
       },
@@ -7654,7 +7654,7 @@
         "time": "2018-07-27T18:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1777"
       }
@@ -7717,7 +7717,7 @@
         "time": "2018-07-28T19:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2318"
       },
@@ -7802,7 +7802,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2634"
       },
@@ -7874,7 +7874,7 @@
         "time": "2018-07-28T19:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2642"
       },
@@ -7937,7 +7937,7 @@
         "time": "2018-07-28T18:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1777"
       },
@@ -7975,7 +7975,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2163"
       },
@@ -7992,7 +7992,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "378931",
     "userGroup": "user",
     "serial": "4931587960",
@@ -8023,7 +8023,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2163"
       },
@@ -8040,7 +8040,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "50678",
     "userGroup": "user",
     "serial": "3890219276",
@@ -8131,7 +8131,7 @@
         "time": "2018-07-28T17:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2310"
       },
@@ -8169,7 +8169,7 @@
         "time": "2018-07-28T16:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1847"
       }
@@ -8198,7 +8198,7 @@
         "time": "2018-07-28T15:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2590"
       }
@@ -8233,7 +8233,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2254"
       },
@@ -8268,7 +8268,7 @@
         "time": "2018-07-28T16:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1847"
       }
@@ -8298,7 +8298,7 @@
         "time": "2018-07-27T15:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2160"
       }
@@ -8333,7 +8333,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1939"
       }
@@ -8347,7 +8347,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "951358",
     "userGroup": "user",
     "serial": "0117538900",
@@ -8368,7 +8368,7 @@
         "time": "2018-07-28T10:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1846"
       }
@@ -8403,7 +8403,7 @@
         "time": "2018-07-28T16:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1846"
       }
@@ -8468,7 +8468,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2153"
       },
@@ -8526,7 +8526,7 @@
         "time": "2018-07-28T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2000"
       },
@@ -8579,7 +8579,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2310"
       },
@@ -8625,7 +8625,7 @@
         "time": "2018-07-28T13:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2000"
       }
@@ -8639,7 +8639,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "40753",
     "userGroup": "user",
     "serial": "1712075876",
@@ -8665,7 +8665,7 @@
         "time": "2018-07-28T14:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2597"
       },
@@ -8698,7 +8698,7 @@
         "time": "2018-07-28T14:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2597"
       },
@@ -8726,7 +8726,7 @@
         "time": "2018-07-27T16:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2597"
       }
@@ -8761,7 +8761,7 @@
         "time": "2018-07-29T08:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2216"
       }
@@ -8791,7 +8791,7 @@
         "time": "2018-07-27T15:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2137"
       }
@@ -8856,7 +8856,7 @@
         "time": "2018-07-28T16:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2590"
       },
@@ -8904,7 +8904,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2558"
       },
@@ -8947,7 +8947,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2291"
       },
@@ -8993,7 +8993,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2291"
       },
@@ -9044,7 +9044,7 @@
         "time": "2018-07-29T08:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2595"
       },
@@ -9075,7 +9075,7 @@
         "time": "2018-07-28T16:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "133362",
     "userGroup": "user",
     "serial": "8129645084",
@@ -9131,7 +9131,7 @@
         "time": "2018-07-28T19:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2570"
       },
@@ -9185,7 +9185,7 @@
         "time": "2018-07-28T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1889"
       },
@@ -9237,7 +9237,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2160"
       },
@@ -9270,7 +9270,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2322"
       },
@@ -9322,7 +9322,7 @@
         "time": "2018-07-29T08:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2216"
       }
@@ -9347,7 +9347,7 @@
         "time": "2018-07-28T18:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2380"
       }
@@ -9387,7 +9387,7 @@
         "time": "2018-07-28T14:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2584"
       },
@@ -9424,7 +9424,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2711"
       },
@@ -9472,7 +9472,7 @@
         "time": "2018-07-28T08:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2243"
       },
@@ -9495,7 +9495,7 @@
         "time": "2018-07-27T18:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2380"
       }
@@ -9516,7 +9516,7 @@
       }
     ],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "991353",
     "userGroup": "user",
     "serial": "3733356889",
@@ -9532,7 +9532,7 @@
         "time": "2018-07-27T18:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2380"
       }
@@ -9582,7 +9582,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2126"
       },
@@ -9628,7 +9628,7 @@
         "time": "2018-07-28T14:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2586"
       },
@@ -9709,7 +9709,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2119"
       },
@@ -9726,7 +9726,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "352170",
     "userGroup": "user",
     "serial": "0833880669",
@@ -9821,7 +9821,7 @@
         "time": "2018-07-28T17:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2586"
       },
@@ -9877,7 +9877,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2126"
       },
@@ -9955,7 +9955,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2103"
       },
@@ -9975,7 +9975,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "830982",
     "userGroup": "user",
     "serial": "7044669799",
@@ -10031,7 +10031,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2126"
       },
@@ -10071,7 +10071,7 @@
         "time": "2018-07-28T18:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2371"
       },
@@ -10134,7 +10134,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2137"
       },
@@ -10195,7 +10195,7 @@
         "time": "2018-07-28T13:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2595"
       },
@@ -10261,7 +10261,7 @@
         "time": "2018-07-28T11:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2366"
       },
@@ -10311,7 +10311,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2366"
       },
@@ -10328,7 +10328,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "979425",
     "userGroup": "user",
     "serial": "1016456251",
@@ -10379,7 +10379,7 @@
         "time": "2018-07-29T08:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2241"
       },
@@ -10441,7 +10441,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2568"
       }
@@ -10466,7 +10466,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2574"
       }
@@ -10501,7 +10501,7 @@
         "time": "2018-07-28T16:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2620"
       }
@@ -10515,7 +10515,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "95242",
     "userGroup": "user",
     "serial": "9745156977",
@@ -10531,7 +10531,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1853"
       }
@@ -10571,7 +10571,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2147"
       },
@@ -10604,7 +10604,7 @@
         "time": "2018-07-28T17:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2318"
       },
@@ -10650,7 +10650,7 @@
         "time": "2018-07-28T18:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2575"
       },
@@ -10691,7 +10691,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "878447",
     "userGroup": "user",
     "serial": "4169827740",
@@ -10748,7 +10748,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2562"
       },
@@ -10768,7 +10768,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "862646",
     "userGroup": "user",
     "serial": "0001778661",
@@ -10809,7 +10809,7 @@
         "time": "2018-07-28T16:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2570"
       },
@@ -10840,7 +10840,7 @@
         "time": "2018-07-27T15:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1889"
       }
@@ -10870,7 +10870,7 @@
         "time": "2018-07-27T15:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2675"
       }
@@ -10891,7 +10891,7 @@
       }
     ],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "278793",
     "userGroup": "user",
     "serial": "9981328199",
@@ -10917,7 +10917,7 @@
         "time": "2018-07-28T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2119"
       }
@@ -10935,7 +10935,7 @@
       }
     ],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "436242",
     "userGroup": "user",
     "serial": "1133695278",
@@ -10951,7 +10951,7 @@
         "time": "2018-07-27T18:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "261874",
     "userGroup": "user",
     "serial": "6983453330",
@@ -11007,7 +11007,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2154"
       }
@@ -11021,7 +11021,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2150"
       }
@@ -11081,7 +11081,7 @@
         "time": "2018-07-28T16:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2153"
       },
@@ -11098,7 +11098,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "104266",
     "userGroup": "user",
     "serial": "1421123843",
@@ -11108,7 +11108,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "107486",
     "userGroup": "user",
     "serial": "9754467166",
@@ -11168,7 +11168,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2711"
       },
@@ -11202,7 +11202,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1789"
       }
@@ -11227,7 +11227,7 @@
         "time": "2018-07-27T16:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2243"
       }
@@ -11247,7 +11247,7 @@
         "time": "2018-07-27T15:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2711"
       }
@@ -11302,7 +11302,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2295"
       },
@@ -11333,7 +11333,7 @@
         "time": "2018-07-27T15:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2243"
       }
@@ -11418,7 +11418,7 @@
         "time": "2018-07-28T19:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2633"
       },
@@ -11445,7 +11445,7 @@
       }
     ],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "979224",
     "userGroup": "user",
     "serial": "1199408855",
@@ -11491,7 +11491,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2292"
       },
@@ -11522,7 +11522,7 @@
         "time": "2018-07-28T18:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2318"
       }
@@ -11536,7 +11536,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "816879",
     "userGroup": "user",
     "serial": "4795854134",
@@ -11592,7 +11592,7 @@
         "time": "2018-07-28T13:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2633"
       },
@@ -11633,7 +11633,7 @@
         "time": "2018-07-29T08:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2243"
       },
@@ -11650,7 +11650,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "920867",
     "userGroup": "user",
     "serial": "5484427884",
@@ -11686,7 +11686,7 @@
         "time": "2018-07-28T14:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1889"
       },
@@ -11744,7 +11744,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2643"
       },
@@ -11802,7 +11802,7 @@
         "time": "2018-07-28T13:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2586"
       },
@@ -11851,7 +11851,7 @@
         "time": "2018-07-28T14:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2639"
       }
@@ -11886,7 +11886,7 @@
         "time": "2018-07-28T18:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "865399",
     "userGroup": "user",
     "serial": "3793880349",
@@ -11927,7 +11927,7 @@
         "time": "2018-07-28T15:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2115"
       },
@@ -11985,7 +11985,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2160"
       },
@@ -12005,7 +12005,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "409979",
     "userGroup": "user",
     "serial": "5604136795",
@@ -12036,7 +12036,7 @@
         "time": "2018-07-29T08:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2241"
       },
@@ -12114,7 +12114,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2160"
       },
@@ -12140,7 +12140,7 @@
         "time": "2018-07-28T19:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1779"
       }
@@ -12175,7 +12175,7 @@
         "time": "2018-07-28T16:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2215"
       }
@@ -12205,7 +12205,7 @@
         "time": "2018-07-27T15:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2150"
       }
@@ -12219,7 +12219,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "879887",
     "userGroup": "user",
     "serial": "1593816372",
@@ -12255,7 +12255,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2103"
       }
@@ -12275,7 +12275,7 @@
         "time": "2018-07-27T17:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1845"
       }
@@ -12305,7 +12305,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2428"
       },
@@ -12337,7 +12337,7 @@
         "time": "2018-07-28T16:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1847"
       }
@@ -12361,7 +12361,7 @@
       }
     ],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "207357",
     "userGroup": "user",
     "serial": "1717419087",
@@ -12386,7 +12386,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2281"
       }
@@ -12446,7 +12446,7 @@
         "time": "2018-07-28T10:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2557"
       },
@@ -12469,7 +12469,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "179557",
     "userGroup": "user",
     "serial": "3354103362",
@@ -12479,7 +12479,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "56987",
     "userGroup": "user",
     "serial": "1242987202",
@@ -12489,7 +12489,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "309366",
     "userGroup": "user",
     "serial": "2894374756",
@@ -12505,7 +12505,7 @@
         "time": "2018-07-27T16:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2517"
       }
@@ -12540,7 +12540,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2553"
       }
@@ -12554,7 +12554,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "59736",
     "userGroup": "user",
     "serial": "4168390690",
@@ -12568,7 +12568,7 @@
       }
     ],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "353861",
     "userGroup": "user",
     "serial": "9622009943",
@@ -12594,7 +12594,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2634"
       },
@@ -12617,7 +12617,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2553"
       }
@@ -12637,7 +12637,7 @@
         "time": "2018-07-28T08:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2182"
       }
@@ -12687,7 +12687,7 @@
         "time": "2018-07-28T17:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2517"
       },
@@ -12772,7 +12772,7 @@
         "time": "2018-07-29T08:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1779"
       },
@@ -12832,7 +12832,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1891"
       },
@@ -12894,7 +12894,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2147"
       },
@@ -12914,7 +12914,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "208913",
     "userGroup": "user",
     "serial": "6520241099",
@@ -12935,7 +12935,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1892"
       }
@@ -12955,7 +12955,7 @@
         "time": "2018-07-28T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2563"
       }
@@ -12969,7 +12969,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "853134",
     "userGroup": "user",
     "serial": "3762229643",
@@ -12979,7 +12979,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "568984",
     "userGroup": "user",
     "serial": "8186123538",
@@ -12995,7 +12995,7 @@
         "time": "2018-07-28T17:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2565"
       }
@@ -13065,7 +13065,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2586"
       },
@@ -13111,7 +13111,7 @@
         "time": "2018-07-28T14:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2126"
       }
@@ -13125,7 +13125,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "956345",
     "userGroup": "user",
     "serial": "6311138215",
@@ -13161,7 +13161,7 @@
         "time": "2018-07-28T10:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2000"
       },
@@ -13239,7 +13239,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2558"
       },
@@ -13276,7 +13276,7 @@
         "time": "2018-07-28T11:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "271303",
     "userGroup": "user",
     "serial": "5212298540",
@@ -13304,7 +13304,7 @@
         "time": "2018-07-28T17:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2565"
       }
@@ -13342,7 +13342,7 @@
         "time": "2018-07-28T08:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2561"
       }
@@ -13426,7 +13426,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2570"
       },
@@ -13449,7 +13449,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "265349",
     "userGroup": "user",
     "serial": "5043799245",
@@ -13470,7 +13470,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2309"
       }
@@ -13502,7 +13502,7 @@
         "time": "2018-07-27T17:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "299153",
     "userGroup": "user",
     "serial": "2777702081",
@@ -13540,7 +13540,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2366"
       }
@@ -13570,7 +13570,7 @@
         "time": "2018-07-28T16:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1891"
       }
@@ -13595,7 +13595,7 @@
         "time": "2018-07-28T10:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2644"
       }
@@ -13634,7 +13634,7 @@
         "time": "2018-07-28T19:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2587"
       }
@@ -13699,7 +13699,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2590"
       },
@@ -13730,7 +13730,7 @@
         "time": "2018-07-27T16:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2597"
       }
@@ -13765,7 +13765,7 @@
         "time": "2018-07-28T15:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2113"
       }
@@ -13790,7 +13790,7 @@
         "time": "2018-07-28T19:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2592"
       }
@@ -13825,7 +13825,7 @@
         "time": "2018-07-28T15:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2113"
       }
@@ -13854,7 +13854,7 @@
         "time": "2018-07-27T16:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2586"
       }
@@ -13887,7 +13887,7 @@
         "time": "2018-07-27T17:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "958884",
     "userGroup": "user",
     "serial": "9100359992",
@@ -13908,7 +13908,7 @@
         "time": "2018-07-29T08:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1789"
       },
@@ -13961,7 +13961,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2318"
       },
@@ -14022,7 +14022,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2318"
       },
@@ -14066,7 +14066,7 @@
         "time": "2018-07-28T10:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1964"
       },
@@ -14109,7 +14109,7 @@
         "time": "2018-07-28T18:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2318"
       },
@@ -14170,7 +14170,7 @@
         "time": "2018-07-28T17:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2215"
       },
@@ -14200,7 +14200,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2194"
       }
@@ -14230,7 +14230,7 @@
         "time": "2018-07-28T19:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2592"
       }
@@ -14285,7 +14285,7 @@
         "time": "2018-07-28T17:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2215"
       },
@@ -14346,7 +14346,7 @@
         "time": "2018-07-28T17:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2215"
       },
@@ -14384,7 +14384,7 @@
         "time": "2018-07-28T11:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1925"
       },
@@ -14436,7 +14436,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1966"
       },
@@ -14468,7 +14468,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "11916",
     "userGroup": "user",
     "serial": "9238649934",
@@ -14489,7 +14489,7 @@
         "time": "2018-07-28T16:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "218533",
     "userGroup": "user",
     "serial": "4456593005",
@@ -14525,7 +14525,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "983267",
     "userGroup": "user",
     "serial": "2826385995",
@@ -14541,7 +14541,7 @@
         "time": "2018-07-27T16:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2597"
       }
@@ -14561,7 +14561,7 @@
         "time": "2018-07-27T18:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "4876",
     "userGroup": "user",
     "serial": "0348884446",
@@ -14597,7 +14597,7 @@
         "time": "2018-07-29T08:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2216"
       }
@@ -14617,7 +14617,7 @@
         "time": "2018-07-28T11:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "869696",
     "userGroup": "user",
     "serial": "6167536900",
@@ -14761,7 +14761,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1891"
       },
@@ -14802,7 +14802,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2000"
       },
@@ -14819,7 +14819,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "910539",
     "userGroup": "user",
     "serial": "0191363688",
@@ -14829,7 +14829,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "722543",
     "userGroup": "user",
     "serial": "4312569116",
@@ -14865,7 +14865,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2129"
       },
@@ -14908,7 +14908,7 @@
         "time": "2018-07-29T08:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2577"
       },
@@ -14954,7 +14954,7 @@
         "time": "2018-07-29T08:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2577"
       },
@@ -14974,7 +14974,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "364489",
     "userGroup": "user",
     "serial": "8179163848",
@@ -14995,7 +14995,7 @@
         "time": "2018-07-28T11:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "314003",
     "userGroup": "user",
     "serial": "9309791425",
@@ -15076,7 +15076,7 @@
         "time": "2018-07-29T08:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2558"
       },
@@ -15099,7 +15099,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "209113",
     "userGroup": "user",
     "serial": "2512156015",
@@ -15109,7 +15109,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "36200",
     "userGroup": "user",
     "serial": "4374487470",
@@ -15125,7 +15125,7 @@
         "time": "2018-07-27T16:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1958"
       }
@@ -15139,7 +15139,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "907214",
     "userGroup": "user",
     "serial": "6065871078",
@@ -15149,7 +15149,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1958"
       }
@@ -15163,7 +15163,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "853295",
     "userGroup": "user",
     "serial": "5541709027",
@@ -15199,7 +15199,7 @@
         "time": "2018-07-28T18:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2312"
       },
@@ -15250,7 +15250,7 @@
         "time": "2018-07-29T08:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2218"
       },
@@ -15281,7 +15281,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2644"
       },
@@ -15298,7 +15298,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "13576",
     "userGroup": "user",
     "serial": "5285893375",
@@ -15308,7 +15308,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "947605",
     "userGroup": "user",
     "serial": "9736196594",
@@ -15334,7 +15334,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2194"
       }
@@ -15348,7 +15348,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "785716",
     "userGroup": "user",
     "serial": "3264303714",
@@ -15369,7 +15369,7 @@
         "time": "2018-07-28T10:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1846"
       }
@@ -15394,7 +15394,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1845"
       },
@@ -15432,7 +15432,7 @@
         "time": "2018-07-28T16:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2633"
       }
@@ -15446,7 +15446,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1964"
       },
@@ -15489,7 +15489,7 @@
         "time": "2018-07-28T17:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2552"
       },
@@ -15509,7 +15509,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "776128",
     "userGroup": "user",
     "serial": "2941767994",
@@ -15519,7 +15519,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "755308",
     "userGroup": "user",
     "serial": "4930423498",
@@ -15535,7 +15535,7 @@
         "time": "2018-07-28T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2563"
       }
@@ -15575,7 +15575,7 @@
         "time": "2018-07-28T13:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2450"
       },
@@ -15592,7 +15592,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "187453",
     "userGroup": "user",
     "serial": "1110690177",
@@ -15608,7 +15608,7 @@
         "time": "2018-07-27T18:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2633"
       }
@@ -15629,7 +15629,7 @@
       }
     ],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "166397",
     "userGroup": "user",
     "serial": "2927908539",
@@ -15639,7 +15639,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "16843",
     "userGroup": "user",
     "serial": "8407013781",
@@ -15649,7 +15649,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "784025",
     "userGroup": "user",
     "serial": "0730062015",
@@ -15665,7 +15665,7 @@
         "time": "2018-07-27T18:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2633"
       }
@@ -15730,7 +15730,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1880"
       },
@@ -15764,7 +15764,7 @@
         "time": "2018-07-27T17:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2366"
       }
@@ -15778,7 +15778,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "83532",
     "userGroup": "user",
     "serial": "7263446143",
@@ -15814,7 +15814,7 @@
         "time": "2018-07-29T08:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2215"
       },
@@ -15844,7 +15844,7 @@
         "time": "2018-07-27T17:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "131759",
     "userGroup": "user",
     "serial": "7043562375",
@@ -15880,7 +15880,7 @@
         "time": "2018-07-28T17:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2294"
       },
@@ -15928,7 +15928,7 @@
         "time": "2018-07-29T08:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2585"
       }
@@ -15953,7 +15953,7 @@
         "time": "2018-07-28T14:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "925823",
     "userGroup": "user",
     "serial": "7468623397",
@@ -15989,7 +15989,7 @@
         "time": "2018-07-28T19:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2116"
       }
@@ -16019,7 +16019,7 @@
         "time": "2018-07-28T17:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1880"
       },
@@ -16067,7 +16067,7 @@
         "time": "2018-07-29T08:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2585"
       }
@@ -16112,7 +16112,7 @@
         "time": "2018-07-29T08:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2126"
       },
@@ -16145,7 +16145,7 @@
         "time": "2018-07-27T17:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1845"
       }
@@ -16163,7 +16163,7 @@
       }
     ],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "12771",
     "userGroup": "user",
     "serial": "8651743711",
@@ -16173,7 +16173,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "494106",
     "userGroup": "user",
     "serial": "4432492702",
@@ -16183,7 +16183,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "306251",
     "userGroup": "user",
     "serial": "1647194230",
@@ -16197,7 +16197,7 @@
       }
     ],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "582121",
     "userGroup": "user",
     "serial": "9215931842",
@@ -16213,7 +16213,7 @@
         "time": "2018-07-27T17:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2295"
       }
@@ -16253,7 +16253,7 @@
         "time": "2018-07-28T16:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2241"
       }
@@ -16267,7 +16267,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "187589",
     "userGroup": "user",
     "serial": "2848490567",
@@ -16293,7 +16293,7 @@
         "time": "2018-07-28T15:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2138"
       }
@@ -16341,7 +16341,7 @@
         "time": "2018-07-28T18:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2749"
       },
@@ -16362,7 +16362,7 @@
       }
     ],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "14917",
     "userGroup": "user",
     "serial": "8834220546",
@@ -16418,7 +16418,7 @@
         "time": "2018-07-28T13:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1777"
       },
@@ -16438,7 +16438,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "768884",
     "userGroup": "user",
     "serial": "0791691439",
@@ -16448,7 +16448,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "203619",
     "userGroup": "user",
     "serial": "9136719672",
@@ -16491,7 +16491,7 @@
         "time": "2018-07-28T16:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2128"
       }
@@ -16521,7 +16521,7 @@
         "time": "2018-07-28T18:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2398"
       }
@@ -16535,7 +16535,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "203310",
     "userGroup": "user",
     "serial": "6687344850",
@@ -16558,7 +16558,7 @@
         "time": "2018-07-28T13:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2638"
       }
@@ -16572,7 +16572,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "549193",
     "userGroup": "user",
     "serial": "4991320526",
@@ -16603,7 +16603,7 @@
         "time": "2018-07-28T18:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2555"
       },
@@ -16636,7 +16636,7 @@
         "time": "2018-07-28T11:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2587"
       }
@@ -16666,7 +16666,7 @@
         "time": "2018-07-27T18:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2625"
       }
@@ -16690,7 +16690,7 @@
         "time": "2018-07-28T14:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2362"
       }
@@ -16704,7 +16704,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "122365",
     "userGroup": "user",
     "serial": "7038507955",
@@ -16720,7 +16720,7 @@
         "time": "2018-07-27T18:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "436565",
     "userGroup": "user",
     "serial": "4316406356",
@@ -16776,7 +16776,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1951"
       },
@@ -16802,7 +16802,7 @@
         "time": "2018-07-27T18:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "523412",
     "userGroup": "user",
     "serial": "7074504817",
@@ -16812,7 +16812,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "743483",
     "userGroup": "user",
     "serial": "2182359238",
@@ -16833,7 +16833,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2575"
       }
@@ -16858,7 +16858,7 @@
         "time": "2018-07-27T18:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2380"
       }
@@ -16888,7 +16888,7 @@
         "time": "2018-07-27T18:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2555"
       }
@@ -16912,7 +16912,7 @@
         "time": "2018-07-28T11:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "368291",
     "userGroup": "user",
     "serial": "6432953559",
@@ -16928,7 +16928,7 @@
         "time": "2018-07-28T08:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2561"
       }
@@ -16948,7 +16948,7 @@
         "time": "2018-07-27T18:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "204548",
     "userGroup": "user",
     "serial": "1738339876",
@@ -16964,7 +16964,7 @@
         "time": "2018-07-27T18:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "476919",
     "userGroup": "user",
     "serial": "3929062317",
@@ -17003,7 +17003,7 @@
         "time": "2018-07-28T16:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2195"
       }
@@ -17023,7 +17023,7 @@
         "time": "2018-07-28T13:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2638"
       }
@@ -17037,7 +17037,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "979646",
     "userGroup": "user",
     "serial": "8120843886",
@@ -17053,7 +17053,7 @@
         "time": "2018-07-28T13:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "846406",
     "userGroup": "user",
     "serial": "0026883744",
@@ -17119,7 +17119,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2113"
       },
@@ -17136,7 +17136,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "602863",
     "userGroup": "user",
     "serial": "5840950934",
@@ -17159,7 +17159,7 @@
         "time": "2018-07-28T17:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2565"
       }
@@ -17214,7 +17214,7 @@
         "time": "2018-07-29T08:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2216"
       }
@@ -17254,7 +17254,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2127"
       }
@@ -17274,7 +17274,7 @@
         "time": "2018-07-27T19:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2632"
       }
@@ -17314,7 +17314,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2148"
       }
@@ -17362,7 +17362,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2127"
       }
@@ -17402,7 +17402,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1846"
       },
@@ -17425,7 +17425,7 @@
         "time": "2018-07-27T19:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "828151",
     "userGroup": "user",
     "serial": "6010610696",
@@ -17466,7 +17466,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2591"
       },
@@ -17539,7 +17539,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2632"
       },
@@ -17575,7 +17575,7 @@
         "time": "2018-07-27T19:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1880"
       }
@@ -17589,7 +17589,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "913904",
     "userGroup": "user",
     "serial": "6465237672",
@@ -17605,7 +17605,7 @@
         "time": "2018-07-28T12:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2242"
       }
@@ -17640,7 +17640,7 @@
         "time": "2018-07-28T16:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2241"
       }
@@ -17654,7 +17654,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "773376",
     "userGroup": "user",
     "serial": "1458552559",
@@ -17670,7 +17670,7 @@
         "time": "2018-07-27T19:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2632"
       }
@@ -17684,7 +17684,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "991500",
     "userGroup": "user",
     "serial": "6314375988",
@@ -17694,7 +17694,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "595100",
     "userGroup": "user",
     "serial": "3854026451",
@@ -17704,7 +17704,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "765809",
     "userGroup": "user",
     "serial": "5053378450",
@@ -17755,7 +17755,7 @@
         "time": "2018-07-28T19:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2590"
       },
@@ -17772,7 +17772,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "360512",
     "userGroup": "user",
     "serial": "3467541425",
@@ -17792,7 +17792,7 @@
         "time": "2018-07-28T16:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "600741",
     "userGroup": "user",
     "serial": "3340569361",
@@ -17825,7 +17825,7 @@
         "time": "2018-07-28T18:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "610110",
     "userGroup": "user",
     "serial": "2776478535",
@@ -17883,7 +17883,7 @@
         "time": "2018-07-28T13:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2518"
       }
@@ -17913,7 +17913,7 @@
         "time": "2018-07-28T08:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2361"
       }
@@ -17927,7 +17927,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "795667",
     "userGroup": "user",
     "serial": "9690732590",
@@ -17963,7 +17963,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2561"
       }
@@ -17993,7 +17993,7 @@
         "time": "2018-07-28T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2119"
       }
@@ -18023,7 +18023,7 @@
         "time": "2018-07-28T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2119"
       }
@@ -18063,7 +18063,7 @@
         "time": "2018-07-28T18:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2561"
       }
@@ -18113,7 +18113,7 @@
         "time": "2018-07-28T14:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2588"
       },
@@ -18139,7 +18139,7 @@
         "time": "2018-07-28T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2269"
       }
@@ -18159,7 +18159,7 @@
         "time": "2018-07-28T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2269"
       }
@@ -18179,7 +18179,7 @@
         "time": "2018-07-28T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2524"
       }
@@ -18199,7 +18199,7 @@
         "time": "2018-07-28T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2524"
       }
@@ -18213,7 +18213,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "589542",
     "userGroup": "user",
     "serial": "7204453893",
@@ -18229,7 +18229,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "360412",
     "userGroup": "user",
     "serial": "2209669700",
@@ -18287,7 +18287,7 @@
         "time": "2018-07-28T19:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2524"
       },
@@ -18310,7 +18310,7 @@
         "time": "2018-07-28T10:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "844701",
     "userGroup": "user",
     "serial": "0538357021",
@@ -18320,7 +18320,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "365390",
     "userGroup": "user",
     "serial": "5419107155",
@@ -18371,7 +18371,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2712"
       },
@@ -18400,7 +18400,7 @@
         "time": "2018-07-28T12:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2379"
       }
@@ -18424,7 +18424,7 @@
         "time": "2018-07-28T17:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2341"
       }
@@ -18438,7 +18438,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "476076",
     "userGroup": "user",
     "serial": "1411351016",
@@ -18448,7 +18448,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "290839",
     "userGroup": "user",
     "serial": "7781479725",
@@ -18474,7 +18474,7 @@
         "time": "2018-07-28T11:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2292"
       },
@@ -18501,7 +18501,7 @@
         "time": "2018-07-28T12:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1861"
       }
@@ -18531,7 +18531,7 @@
         "time": "2018-07-28T13:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2580"
       }
@@ -18576,7 +18576,7 @@
         "time": "2018-07-28T16:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2103"
       }
@@ -18596,7 +18596,7 @@
         "time": "2018-07-28T08:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2556"
       }
@@ -18616,7 +18616,7 @@
         "time": "2018-07-28T09:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "559645",
     "userGroup": "user",
     "serial": "9846442664",
@@ -18636,7 +18636,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2574"
       }
@@ -18660,7 +18660,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2559"
       }
@@ -18680,7 +18680,7 @@
         "time": "2018-07-28T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1967"
       }
@@ -18740,7 +18740,7 @@
         "time": "2018-07-28T16:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2195"
       }
@@ -18758,7 +18758,7 @@
       }
     ],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "996721",
     "userGroup": "user",
     "serial": "9371103954",
@@ -18774,7 +18774,7 @@
         "time": "2018-07-28T08:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2556"
       }
@@ -18794,7 +18794,7 @@
         "time": "2018-07-28T08:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2556"
       }
@@ -18814,7 +18814,7 @@
         "time": "2018-07-28T08:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2450"
       }
@@ -18839,7 +18839,7 @@
         "time": "2018-07-28T16:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "987034",
     "userGroup": "user",
     "serial": "5213426694",
@@ -18849,7 +18849,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "206814",
     "userGroup": "user",
     "serial": "5284668935",
@@ -18865,7 +18865,7 @@
         "time": "2018-07-28T16:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "804476",
     "userGroup": "user",
     "serial": "8688676793",
@@ -18881,7 +18881,7 @@
         "time": "2018-07-28T09:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "56374",
     "userGroup": "user",
     "serial": "3400111153",
@@ -18907,7 +18907,7 @@
         "time": "2018-07-28T10:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2282"
       }
@@ -18936,7 +18936,7 @@
         "time": "2018-07-28T14:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2556"
       },
@@ -18989,7 +18989,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2361"
       },
@@ -19019,7 +19019,7 @@
         "time": "2018-07-28T10:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2668"
       }
@@ -19033,7 +19033,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "904957",
     "userGroup": "user",
     "serial": "0367470663",
@@ -19049,7 +19049,7 @@
         "time": "2018-07-29T08:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2591"
       }
@@ -19074,7 +19074,7 @@
         "time": "2018-07-28T15:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2151"
       }
@@ -19104,7 +19104,7 @@
         "time": "2018-07-28T15:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "408479",
     "userGroup": "user",
     "serial": "2318386428",
@@ -19130,7 +19130,7 @@
         "time": "2018-07-28T13:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2361"
       },
@@ -19153,7 +19153,7 @@
         "time": "2018-07-28T08:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2556"
       }
@@ -19183,7 +19183,7 @@
         "time": "2018-07-28T10:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1846"
       }
@@ -19203,7 +19203,7 @@
         "time": "2018-07-28T10:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2282"
       }
@@ -19278,7 +19278,7 @@
         "time": "2018-07-28T11:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1951"
       },
@@ -19321,7 +19321,7 @@
         "time": "2018-07-28T14:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2128"
       }
@@ -19335,7 +19335,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "594515",
     "userGroup": "user",
     "serial": "6080794297",
@@ -19361,7 +19361,7 @@
         "time": "2018-07-28T16:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "315331",
     "userGroup": "user",
     "serial": "9907228598",
@@ -19371,7 +19371,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "370825",
     "userGroup": "user",
     "serial": "8362881735",
@@ -19381,7 +19381,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "635143",
     "userGroup": "user",
     "serial": "8730304568",
@@ -19391,7 +19391,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "151169",
     "userGroup": "user",
     "serial": "6755132765",
@@ -19401,7 +19401,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "262689",
     "userGroup": "user",
     "serial": "0404464505",
@@ -19432,7 +19432,7 @@
         "time": "2018-07-29T08:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2399"
       }
@@ -19471,7 +19471,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2127"
       },
@@ -19528,7 +19528,7 @@
         "time": "2018-07-28T19:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2151"
       },
@@ -19565,7 +19565,7 @@
         "time": "2018-07-28T13:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2321"
       },
@@ -19588,7 +19588,7 @@
         "time": "2018-07-28T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2563"
       }
@@ -19608,7 +19608,7 @@
         "time": "2018-07-28T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2524"
       }
@@ -19651,7 +19651,7 @@
         "time": "2018-07-28T11:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2587"
       }
@@ -19686,7 +19686,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "691198",
     "userGroup": "user",
     "serial": "0493503999",
@@ -19712,7 +19712,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2566"
       },
@@ -19732,7 +19732,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "172284",
     "userGroup": "user",
     "serial": "5017614925",
@@ -19748,7 +19748,7 @@
         "time": "2018-07-28T12:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "954856",
     "userGroup": "user",
     "serial": "2318606064",
@@ -19774,7 +19774,7 @@
         "time": "2018-07-28T15:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2428"
       }
@@ -19788,7 +19788,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "253790",
     "userGroup": "user",
     "serial": "9504506677",
@@ -19798,7 +19798,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "110729",
     "userGroup": "user",
     "serial": "3094147422",
@@ -19824,7 +19824,7 @@
         "time": "2018-07-28T15:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2428"
       }
@@ -19879,7 +19879,7 @@
         "time": "2018-07-28T16:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2560"
       }
@@ -19913,7 +19913,7 @@
         "time": "2018-07-28T15:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2138"
       }
@@ -19950,7 +19950,7 @@
         "time": "2018-07-28T15:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2151"
       }
@@ -19964,7 +19964,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2523"
       }
@@ -19988,7 +19988,7 @@
         "time": "2018-07-28T12:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2242"
       }
@@ -20023,7 +20023,7 @@
         "time": "2018-07-28T19:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2620"
       }
@@ -20077,7 +20077,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2569"
       }
@@ -20116,7 +20116,7 @@
         "time": "2018-07-28T10:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2620"
       }
@@ -20175,7 +20175,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2294"
       },
@@ -20198,7 +20198,7 @@
         "time": "2018-07-28T11:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "184136",
     "userGroup": "user",
     "serial": "0430668467",
@@ -20269,7 +20269,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2379"
       },
@@ -20347,7 +20347,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2379"
       },
@@ -20370,7 +20370,7 @@
         "time": "2018-07-28T10:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "982464",
     "userGroup": "user",
     "serial": "4703181695",
@@ -20387,7 +20387,7 @@
       }
     ],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "80681",
     "userGroup": "user",
     "serial": "5738279685",
@@ -20418,7 +20418,7 @@
         "time": "2018-07-28T16:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "205976",
     "userGroup": "user",
     "serial": "5369223713",
@@ -20444,7 +20444,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2311"
       },
@@ -20482,7 +20482,7 @@
         "time": "2018-07-28T16:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "53014",
     "userGroup": "user",
     "serial": "8237065225",
@@ -20523,7 +20523,7 @@
         "time": "2018-07-28T17:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2338"
       },
@@ -20556,7 +20556,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2311"
       },
@@ -20607,7 +20607,7 @@
         "time": "2018-07-29T08:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2379"
       },
@@ -20650,7 +20650,7 @@
         "time": "2018-07-28T18:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1967"
       },
@@ -20750,7 +20750,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2128"
       },
@@ -20767,7 +20767,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "807405",
     "userGroup": "user",
     "serial": "3607176512",
@@ -20777,7 +20777,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "663149",
     "userGroup": "user",
     "serial": "5039985717",
@@ -20787,7 +20787,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "902194",
     "userGroup": "user",
     "serial": "4910629478",
@@ -20797,7 +20797,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "898094",
     "userGroup": "user",
     "serial": "2951257258",
@@ -20817,7 +20817,7 @@
         "time": "2018-07-28T10:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "491008",
     "userGroup": "user",
     "serial": "5142199214",
@@ -20827,7 +20827,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "953377",
     "userGroup": "user",
     "serial": "8993872616",
@@ -20848,7 +20848,7 @@
         "time": "2018-07-28T11:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "114895",
     "userGroup": "user",
     "serial": "9017451841",
@@ -20879,7 +20879,7 @@
         "time": "2018-07-28T18:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2712"
       }
@@ -20893,7 +20893,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "409841",
     "userGroup": "user",
     "serial": "0891548356",
@@ -20909,7 +20909,7 @@
         "time": "2018-07-28T10:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2566"
       }
@@ -20934,7 +20934,7 @@
         "time": "2018-07-28T11:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2643"
       }
@@ -20954,7 +20954,7 @@
         "time": "2018-07-28T12:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2267"
       }
@@ -20968,7 +20968,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "936615",
     "userGroup": "user",
     "serial": "3909503512",
@@ -21019,7 +21019,7 @@
         "time": "2018-07-28T17:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2180"
       }
@@ -21033,7 +21033,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "428688",
     "userGroup": "user",
     "serial": "4218319277",
@@ -21043,7 +21043,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "74198",
     "userGroup": "user",
     "serial": "4275717512",
@@ -21053,7 +21053,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "623611",
     "userGroup": "user",
     "serial": "0272585266",
@@ -21069,7 +21069,7 @@
         "time": "2018-07-28T12:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2267"
       }
@@ -21093,7 +21093,7 @@
         "time": "2018-07-28T19:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "371003",
     "userGroup": "user",
     "serial": "7299909791",
@@ -21114,7 +21114,7 @@
         "time": "2018-07-28T10:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "491804",
     "userGroup": "user",
     "serial": "9952316579",
@@ -21130,7 +21130,7 @@
         "time": "2018-07-28T10:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "870161",
     "userGroup": "user",
     "serial": "4006343588",
@@ -21146,7 +21146,7 @@
         "time": "2018-07-28T11:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2321"
       }
@@ -21176,7 +21176,7 @@
         "time": "2018-07-28T13:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2196"
       }
@@ -21196,7 +21196,7 @@
         "time": "2018-07-28T12:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "853437",
     "userGroup": "user",
     "serial": "0613488899",
@@ -21224,7 +21224,7 @@
         "time": "2018-07-29T08:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "563858",
     "userGroup": "user",
     "serial": "0964695258",
@@ -21240,7 +21240,7 @@
         "time": "2018-07-28T11:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2423"
       }
@@ -21265,7 +21265,7 @@
         "time": "2018-07-28T10:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1846"
       }
@@ -21319,7 +21319,7 @@
         "time": "2018-07-28T18:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1865"
       },
@@ -21347,7 +21347,7 @@
         "time": "2018-07-28T10:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "774697",
     "userGroup": "user",
     "serial": "1722935580",
@@ -21363,7 +21363,7 @@
         "time": "2018-07-28T11:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2593"
       }
@@ -21381,7 +21381,7 @@
       }
     ],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "869529",
     "userGroup": "user",
     "serial": "0644855165",
@@ -21395,7 +21395,7 @@
       }
     ],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "288365",
     "userGroup": "user",
     "serial": "0155028772",
@@ -21421,7 +21421,7 @@
         "time": "2018-07-28T12:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2103"
       }
@@ -21446,7 +21446,7 @@
         "time": "2018-07-28T14:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1959"
       }
@@ -21460,7 +21460,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2103"
       }
@@ -21485,7 +21485,7 @@
         "time": "2018-07-28T14:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1959"
       }
@@ -21535,7 +21535,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2518"
       }
@@ -21580,7 +21580,7 @@
         "time": "2018-07-28T16:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2398"
       }
@@ -21594,7 +21594,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "953305",
     "userGroup": "user",
     "serial": "0230731556",
@@ -21620,7 +21620,7 @@
         "time": "2018-07-28T13:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2196"
       }
@@ -21650,7 +21650,7 @@
         "time": "2018-07-28T13:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2196"
       }
@@ -21695,7 +21695,7 @@
         "time": "2018-07-28T16:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2398"
       }
@@ -21740,7 +21740,7 @@
         "time": "2018-07-28T16:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2398"
       }
@@ -21770,7 +21770,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2640"
       }
@@ -21835,7 +21835,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1861"
       },
@@ -21863,7 +21863,7 @@
         "time": "2018-07-28T12:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2103"
       }
@@ -21887,7 +21887,7 @@
         "time": "2018-07-28T11:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2712"
       }
@@ -21907,7 +21907,7 @@
         "time": "2018-07-28T11:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "270367",
     "userGroup": "user",
     "serial": "1011222229",
@@ -21923,7 +21923,7 @@
         "time": "2018-07-28T11:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2643"
       }
@@ -21948,7 +21948,7 @@
         "time": "2018-07-28T13:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2580"
       }
@@ -22022,7 +22022,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2341"
       },
@@ -22050,7 +22050,7 @@
         "time": "2018-07-28T13:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "736859",
     "userGroup": "user",
     "serial": "6046227978",
@@ -22066,7 +22066,7 @@
         "time": "2018-07-28T14:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2291"
       }
@@ -22105,7 +22105,7 @@
         "time": "2018-07-28T14:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1861"
       },
@@ -22122,7 +22122,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2523"
       }
@@ -22142,7 +22142,7 @@
         "time": "2018-07-28T13:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "472451",
     "userGroup": "user",
     "serial": "0908218753",
@@ -22168,7 +22168,7 @@
         "time": "2018-07-29T08:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2311"
       },
@@ -22209,7 +22209,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2001"
       }
@@ -22239,7 +22239,7 @@
         "time": "2018-07-29T08:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2311"
       },
@@ -22265,7 +22265,7 @@
         "time": "2018-07-28T14:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "147512",
     "userGroup": "user",
     "serial": "1953972740",
@@ -22281,7 +22281,7 @@
         "time": "2018-07-28T14:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "902305",
     "userGroup": "user",
     "serial": "0400986261",
@@ -22297,7 +22297,7 @@
         "time": "2018-07-28T12:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "944215",
     "userGroup": "user",
     "serial": "1653038842",
@@ -22313,7 +22313,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2637"
       }
@@ -22343,7 +22343,7 @@
         "time": "2018-07-28T18:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "87204",
     "userGroup": "user",
     "serial": "1729274025",
@@ -22353,7 +22353,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "110397",
     "userGroup": "user",
     "serial": "0575013578",
@@ -22363,7 +22363,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "257624",
     "userGroup": "user",
     "serial": "16207152",
@@ -22389,7 +22389,7 @@
         "time": "2018-07-28T18:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "114756",
     "userGroup": "user",
     "serial": "98980906",
@@ -22420,7 +22420,7 @@
         "time": "2018-07-28T17:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2641"
       }
@@ -22434,7 +22434,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "752855",
     "userGroup": "user",
     "serial": "18902895",
@@ -22448,7 +22448,7 @@
       }
     ],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "56305",
     "userGroup": "user",
     "serial": "44394181",
@@ -22458,7 +22458,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "158873",
     "userGroup": "user",
     "serial": "9622734565",
@@ -22513,7 +22513,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2341"
       }
@@ -22527,7 +22527,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "247927",
     "userGroup": "user",
     "serial": "2054000688",
@@ -22543,7 +22543,7 @@
         "time": "2018-07-28T12:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "67490",
     "userGroup": "user",
     "serial": "53332588",
@@ -22578,7 +22578,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2267"
       }
@@ -22602,7 +22602,7 @@
         "time": "2018-07-28T15:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2428"
       }
@@ -22622,7 +22622,7 @@
         "time": "2018-07-28T12:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2267"
       }
@@ -22654,7 +22654,7 @@
         "time": "2018-07-29T08:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2399"
       }
@@ -22674,7 +22674,7 @@
         "time": "2018-07-28T12:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "392770",
     "userGroup": "user",
     "serial": "22823193",
@@ -22700,7 +22700,7 @@
         "time": "2018-07-28T16:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2242"
       }
@@ -22743,7 +22743,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2592"
       }
@@ -22764,7 +22764,7 @@
       }
     ],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "938953",
     "userGroup": "user",
     "serial": "13720501",
@@ -22785,7 +22785,7 @@
         "time": "2018-07-28T14:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2242"
       },
@@ -22802,7 +22802,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "8257",
     "userGroup": "user",
     "serial": "14988856",
@@ -22812,7 +22812,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "366214",
     "userGroup": "user",
     "serial": "88005575",
@@ -22828,7 +22828,7 @@
         "time": "2018-07-28T12:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "124804",
     "userGroup": "user",
     "serial": "96504887",
@@ -22844,7 +22844,7 @@
         "time": "2018-07-28T12:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "753445",
     "userGroup": "user",
     "serial": "72930568",
@@ -22875,7 +22875,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1952"
       },
@@ -22903,7 +22903,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "466156",
     "userGroup": "user",
     "serial": "20207990",
@@ -22924,7 +22924,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2309"
       }
@@ -22949,7 +22949,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2308"
       }
@@ -22969,7 +22969,7 @@
         "time": "2018-07-28T14:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2362"
       }
@@ -22989,7 +22989,7 @@
         "time": "2018-07-28T14:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1959"
       }
@@ -23009,7 +23009,7 @@
         "time": "2018-07-28T14:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2639"
       }
@@ -23023,7 +23023,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "326568",
     "userGroup": "user",
     "serial": "12144040",
@@ -23049,7 +23049,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2308"
       }
@@ -23073,7 +23073,7 @@
         "time": "2018-07-28T15:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2427"
       }
@@ -23093,7 +23093,7 @@
         "time": "2018-07-28T12:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2267"
       }
@@ -23113,7 +23113,7 @@
         "time": "2018-07-28T12:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2267"
       }
@@ -23153,7 +23153,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2669"
       }
@@ -23193,7 +23193,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2669"
       }
@@ -23213,7 +23213,7 @@
         "time": "2018-07-28T13:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "857403",
     "userGroup": "user",
     "serial": "3084548",
@@ -23227,7 +23227,7 @@
       }
     ],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "362277",
     "userGroup": "user",
     "serial": "4378036",
@@ -23243,7 +23243,7 @@
         "time": "2018-07-28T13:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2638"
       }
@@ -23263,7 +23263,7 @@
         "time": "2018-07-28T13:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2254"
       }
@@ -23293,7 +23293,7 @@
         "time": "2018-07-28T16:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "662012",
     "userGroup": "user",
     "serial": "6241343",
@@ -23313,7 +23313,7 @@
         "time": "2018-07-28T19:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "692158",
     "userGroup": "user",
     "serial": "22421296",
@@ -23329,7 +23329,7 @@
         "time": "2018-07-28T13:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "163478",
     "userGroup": "user",
     "serial": "9509276",
@@ -23345,7 +23345,7 @@
         "time": "2018-07-28T13:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2638"
       }
@@ -23359,7 +23359,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "936902",
     "userGroup": "user",
     "serial": "2483993",
@@ -23380,7 +23380,7 @@
         "time": "2018-07-29T08:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "587135",
     "userGroup": "user",
     "serial": "7981037",
@@ -23416,7 +23416,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2147"
       },
@@ -23442,7 +23442,7 @@
         "time": "2018-07-28T14:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1959"
       }
@@ -23482,7 +23482,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2147"
       },
@@ -23514,7 +23514,7 @@
         "time": "2018-07-28T17:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2341"
       }
@@ -23539,7 +23539,7 @@
         "time": "2018-07-28T17:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2341"
       }
@@ -23564,7 +23564,7 @@
         "time": "2018-07-28T14:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2217"
       }
@@ -23599,7 +23599,7 @@
         "time": "2018-07-28T17:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2280"
       }
@@ -23623,7 +23623,7 @@
         "time": "2018-07-28T14:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1959"
       }
@@ -23658,7 +23658,7 @@
         "time": "2018-07-28T14:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2312"
       }
@@ -23688,7 +23688,7 @@
         "time": "2018-07-28T16:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2427"
       }
@@ -23723,7 +23723,7 @@
         "time": "2018-07-28T15:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "828598",
     "userGroup": "user",
     "serial": "5556856",
@@ -23743,7 +23743,7 @@
         "time": "2018-07-28T16:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "484530",
     "userGroup": "user",
     "serial": "9313137441",
@@ -23759,7 +23759,7 @@
         "time": "2018-07-28T15:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "236620",
     "userGroup": "user",
     "serial": "3961739",
@@ -23793,7 +23793,7 @@
         "time": "2018-07-28T17:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "179658",
     "userGroup": "user",
     "serial": "1035729",
@@ -23824,7 +23824,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2639"
       }
@@ -23838,7 +23838,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "785558",
     "userGroup": "user",
     "serial": "3044500",
@@ -23858,7 +23858,7 @@
         "time": "2018-07-28T14:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1959"
       }
@@ -23872,7 +23872,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "191353",
     "userGroup": "user",
     "serial": "2758157",
@@ -23888,7 +23888,7 @@
         "time": "2018-07-28T13:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2638"
       }
@@ -23918,7 +23918,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2254"
       },
@@ -23951,7 +23951,7 @@
         "time": "2018-07-28T15:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2151"
       }
@@ -23975,7 +23975,7 @@
         "time": "2018-07-28T13:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "230074",
     "userGroup": "user",
     "serial": "2150272",
@@ -23991,7 +23991,7 @@
         "time": "2018-07-28T13:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2001"
       }
@@ -24011,7 +24011,7 @@
         "time": "2018-07-28T13:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "432951",
     "userGroup": "user",
     "serial": "6581882",
@@ -24062,7 +24062,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2669"
       }
@@ -24076,7 +24076,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "274989",
     "userGroup": "user",
     "serial": "3960730",
@@ -24086,7 +24086,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "512048",
     "userGroup": "user",
     "serial": "4703312",
@@ -24096,7 +24096,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "610257",
     "userGroup": "user",
     "serial": "5642005",
@@ -24106,7 +24106,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "976312",
     "userGroup": "user",
     "serial": "5543931",
@@ -24157,7 +24157,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2669"
       }
@@ -24187,7 +24187,7 @@
         "time": "2018-07-28T17:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "478849",
     "userGroup": "user",
     "serial": "8153547",
@@ -24197,7 +24197,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "323127",
     "userGroup": "user",
     "serial": "5251325",
@@ -24213,7 +24213,7 @@
         "time": "2018-07-28T15:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2427"
       }
@@ -24233,7 +24233,7 @@
         "time": "2018-07-28T15:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2427"
       }
@@ -24268,7 +24268,7 @@
         "time": "2018-07-28T19:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2567"
       },
@@ -24306,7 +24306,7 @@
         "time": "2018-07-28T19:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2642"
       },
@@ -24339,7 +24339,7 @@
         "time": "2018-07-28T14:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2362"
       }
@@ -24353,7 +24353,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "821855",
     "userGroup": "user",
     "serial": "8510267",
@@ -24374,7 +24374,7 @@
         "time": "2018-07-28T14:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2217"
       }
@@ -24392,7 +24392,7 @@
       }
     ],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "151163",
     "userGroup": "user",
     "serial": "9363361",
@@ -24402,7 +24402,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "808567",
     "userGroup": "user",
     "serial": "2404544",
@@ -24423,7 +24423,7 @@
         "time": "2018-07-28T16:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "152649",
     "userGroup": "user",
     "serial": "0278072954",
@@ -24469,7 +24469,7 @@
         "time": "2018-07-29T08:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2151"
       },
@@ -24486,7 +24486,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "407592",
     "userGroup": "user",
     "serial": "4639642",
@@ -24496,7 +24496,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "321714",
     "userGroup": "user",
     "serial": "4479384507",
@@ -24521,7 +24521,7 @@
         "time": "2018-07-28T14:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "521908",
     "userGroup": "user",
     "serial": "1638537",
@@ -24566,7 +24566,7 @@
         "time": "2018-07-28T18:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "437785",
     "userGroup": "user",
     "serial": "7348498",
@@ -24576,7 +24576,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "57277",
     "userGroup": "user",
     "serial": "8871521798",
@@ -24622,7 +24622,7 @@
         "time": "2018-07-29T08:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2216"
       }
@@ -24642,7 +24642,7 @@
         "time": "2018-07-28T15:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2427"
       }
@@ -24656,7 +24656,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "957092",
     "userGroup": "user",
     "serial": "4863372",
@@ -24666,7 +24666,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "114397",
     "userGroup": "user",
     "serial": "4571115155",
@@ -24682,7 +24682,7 @@
         "time": "2018-07-28T16:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "146543",
     "userGroup": "user",
     "serial": "7893579",
@@ -24698,7 +24698,7 @@
         "time": "2018-07-28T15:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "468812",
     "userGroup": "user",
     "serial": "3318788",
@@ -24718,7 +24718,7 @@
         "time": "2018-07-28T19:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2592"
       }
@@ -24732,7 +24732,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "25528",
     "userGroup": "user",
     "serial": "7195557",
@@ -24742,7 +24742,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "822944",
     "userGroup": "user",
     "serial": "2578402105",
@@ -24758,7 +24758,7 @@
         "time": "2018-07-28T17:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "995837",
     "userGroup": "user",
     "serial": "8666406",
@@ -24768,7 +24768,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "854621",
     "userGroup": "user",
     "serial": "4687735037",
@@ -24784,7 +24784,7 @@
         "time": "2018-07-28T16:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "888981",
     "userGroup": "user",
     "serial": "1499057",
@@ -24794,7 +24794,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "317609",
     "userGroup": "user",
     "serial": "5974721929",
@@ -24804,7 +24804,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "885669",
     "userGroup": "user",
     "serial": "3138523",
@@ -24827,7 +24827,7 @@
       }
     ],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "233108",
     "userGroup": "user",
     "serial": "6427633",
@@ -24837,7 +24837,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "974546",
     "userGroup": "user",
     "serial": "4009570",
@@ -24878,7 +24878,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2138"
       },
@@ -24895,7 +24895,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "774367",
     "userGroup": "user",
     "serial": "6822754",
@@ -24909,7 +24909,7 @@
       }
     ],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "981063",
     "userGroup": "user",
     "serial": "6337246",
@@ -24939,7 +24939,7 @@
         "time": "2018-07-28T18:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1779"
       }
@@ -24974,7 +24974,7 @@
         "time": "2018-07-29T08:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1782"
       }
@@ -25009,7 +25009,7 @@
         "time": "2018-07-29T08:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1782"
       }
@@ -25034,7 +25034,7 @@
         "time": "2018-07-28T16:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "143252",
     "userGroup": "user",
     "serial": "3698365",
@@ -25054,7 +25054,7 @@
         "time": "2018-07-28T19:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2129"
       }
@@ -25074,7 +25074,7 @@
         "time": "2018-07-28T19:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "906661",
     "userGroup": "user",
     "serial": "7489447",
@@ -25100,7 +25100,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2296"
       }
@@ -25114,7 +25114,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "370198",
     "userGroup": "user",
     "serial": "2340666",
@@ -25130,7 +25130,7 @@
         "time": "2018-07-28T17:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2183"
       }
@@ -25150,7 +25150,7 @@
         "time": "2018-07-28T17:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2183"
       }
@@ -25170,7 +25170,7 @@
         "time": "2018-07-28T18:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "671964",
     "userGroup": "user",
     "serial": "2589914",
@@ -25186,7 +25186,7 @@
         "time": "2018-07-28T16:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "321181",
     "userGroup": "user",
     "serial": "7301034",
@@ -25202,7 +25202,7 @@
         "time": "2018-07-28T16:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2642"
       }
@@ -25237,7 +25237,7 @@
         "time": "2018-07-28T17:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "940059",
     "userGroup": "user",
     "serial": "3639943",
@@ -25247,7 +25247,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "665229",
     "userGroup": "user",
     "serial": "3881575",
@@ -25288,7 +25288,7 @@
         "time": "2018-07-28T17:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2345"
       }
@@ -25333,7 +25333,7 @@
         "time": "2018-07-28T17:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2345"
       }
@@ -25347,7 +25347,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "707215",
     "userGroup": "user",
     "serial": "8304246724",
@@ -25373,7 +25373,7 @@
         "time": "2018-07-28T17:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2589"
       }
@@ -25403,7 +25403,7 @@
         "time": "2018-07-28T17:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2589"
       }
@@ -25423,7 +25423,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2308"
       }
@@ -25443,7 +25443,7 @@
         "time": "2018-07-28T18:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2641"
       }
@@ -25505,7 +25505,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2129"
       },
@@ -25528,7 +25528,7 @@
         "time": "2018-07-28T18:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "958431",
     "userGroup": "user",
     "serial": "7398028",
@@ -25569,7 +25569,7 @@
         "time": "2018-07-28T17:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2345"
       }
@@ -25589,7 +25589,7 @@
         "time": "2018-07-28T19:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "91069",
     "userGroup": "user",
     "serial": "1987325634",
@@ -25599,7 +25599,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "336250",
     "userGroup": "user",
     "serial": "2324453",
@@ -25615,7 +25615,7 @@
         "time": "2018-07-28T18:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "270013",
     "userGroup": "user",
     "serial": "6752969",
@@ -25631,7 +25631,7 @@
         "time": "2018-07-28T18:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2641"
       }
@@ -25651,7 +25651,7 @@
         "time": "2018-07-28T18:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "262975",
     "userGroup": "user",
     "serial": "8107196",
@@ -25667,7 +25667,7 @@
         "time": "2018-07-28T18:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "568060",
     "userGroup": "user",
     "serial": "5981768442",
@@ -25677,7 +25677,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "543125",
     "userGroup": "user",
     "serial": "7539518",
@@ -25707,7 +25707,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2281"
       }
@@ -25731,7 +25731,7 @@
         "time": "2018-07-28T17:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "188532",
     "userGroup": "user",
     "serial": "6179007544",
@@ -25741,7 +25741,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "913301",
     "userGroup": "user",
     "serial": "2155263",
@@ -25767,7 +25767,7 @@
         "time": "2018-07-28T19:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2190"
       }
@@ -25787,7 +25787,7 @@
         "time": "2018-07-28T18:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2298"
       }
@@ -25807,7 +25807,7 @@
         "time": "2018-07-28T18:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "530092",
     "userGroup": "user",
     "serial": "4479117",
@@ -25838,7 +25838,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2129"
       },
@@ -25861,7 +25861,7 @@
         "time": "2018-07-28T19:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2129"
       }
@@ -25890,7 +25890,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2108"
       }
@@ -25924,7 +25924,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2108"
       }
@@ -25938,7 +25938,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "87596",
     "userGroup": "user",
     "serial": "1117352",
@@ -25959,7 +25959,7 @@
         "time": "2018-07-29T08:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2399"
       }
@@ -25979,7 +25979,7 @@
         "time": "2018-07-29T08:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "520425",
     "userGroup": "user",
     "serial": "7009963",
@@ -25995,7 +25995,7 @@
         "time": "2018-07-29T08:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2266"
       }
@@ -26015,7 +26015,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1853"
       }
@@ -26035,7 +26035,7 @@
         "time": "2018-07-29T08:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2591"
       }
@@ -26055,7 +26055,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "105228",
     "userGroup": "user",
     "serial": "5690934",
@@ -26071,7 +26071,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2296"
       }
@@ -26100,7 +26100,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2164"
       }
@@ -26130,7 +26130,7 @@
         "time": "2018-07-29T07:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1853"
       }
@@ -26144,7 +26144,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "706287",
     "userGroup": "user",
     "serial": "1832869",
@@ -26174,7 +26174,7 @@
         "time": "2018-07-29T08:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2313"
       }
@@ -26203,7 +26203,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "684290",
     "userGroup": "user",
     "serial": "2402935668",
@@ -26233,7 +26233,7 @@
         "time": "2018-07-29T08:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2313"
       }
@@ -26268,7 +26268,7 @@
         "time": "2018-07-29T08:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p1782"
       }
@@ -26293,7 +26293,7 @@
         "time": "2018-07-29T08:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2591"
       }
@@ -26307,7 +26307,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2521"
       }
@@ -26332,7 +26332,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "256170",
     "userGroup": "user",
     "serial": "2993902",
@@ -26358,7 +26358,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2568"
       }
@@ -26383,7 +26383,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2554"
       }
@@ -26397,7 +26397,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "575426",
     "userGroup": "user",
     "serial": "2294092",
@@ -26433,7 +26433,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2281"
       }
@@ -26458,7 +26458,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2554"
       }
@@ -26488,7 +26488,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2148"
       }
@@ -26518,7 +26518,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2148"
       }
@@ -26588,7 +26588,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2194"
       }
@@ -26628,7 +26628,7 @@
         "time": "2018-07-29T09:00:00.000Z"
       }
     ],
-    "enteredGames": [
+    "directSignups": [
       {
         "id": "p2669"
       }
@@ -26642,7 +26642,7 @@
   {
     "favoritedGames": [],
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "username": "861305",
     "userGroup": "user",
     "serial": "3286400",

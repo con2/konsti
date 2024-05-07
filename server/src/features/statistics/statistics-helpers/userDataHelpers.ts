@@ -12,7 +12,7 @@ export const getUsersWithoutGames = (
   // TODO: Update to use signup collection
   /*
   users.forEach((user) => {
-    if (user.enteredGames.length === 0 && user.lotterySignups.length !== 0) {
+    if (user.directSignups.length === 0 && user.lotterySignups.length !== 0) {
       usersWithoutGames.push(user);
       counter += 1;
     }
@@ -20,7 +20,7 @@ export const getUsersWithoutGames = (
   */
 
   logger.info(
-    `Players without any entered games: ${counter}/${users.length} (${toPercent(
+    `Players without any direct signup: ${counter}/${users.length} (${toPercent(
       counter / users.length,
     )}%)`,
   );
@@ -41,7 +41,7 @@ export const getUsersWithoutSignups = (
   });
 
   logger.info(
-    `Players without any signed games: ${counter}/${users.length} (${toPercent(
+    `Players without any lottery signups: ${counter}/${users.length} (${toPercent(
       counter / users.length,
     )}%)`,
   );
@@ -89,7 +89,7 @@ export const getUsersWithAllGames = (_users: readonly User[]): void => {
   users.forEach((user) => {
     const lotterySignupsByTime = countBy(user.lotterySignups, "time");
 
-    if (Object.keys(lotterySignupsByTime).length === user.enteredGames.length) {
+    if (Object.keys(lotterySignupsByTime).length === user.directSignups.length) {
       counter++;
     }
   });

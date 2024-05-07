@@ -3,8 +3,8 @@ import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { Game } from "shared/types/models/game";
 import {
-  PostEnteredGameErrorMessage,
-  submitPostEnteredGame,
+  PostDirectSignupErrorMessage,
+  submitPostDirectSignup,
 } from "client/views/my-games/myGamesThunks";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { Button, ButtonStyle } from "client/components/Button";
@@ -37,7 +37,7 @@ interface Props {
   setLoading: (loading: boolean) => void;
 }
 
-export const EnterGameForm = ({
+export const SignupGameForm = ({
   game,
   onEnterGame,
   onCancelSignup,
@@ -63,7 +63,7 @@ export const EnterGameForm = ({
   );
   const [agreeEntryFee, setAgreeEntryFee] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<
-    | PostEnteredGameErrorMessage
+    | PostDirectSignupErrorMessage
     | PostLeaveGroupErrorMessage
     | PostCloseGroupErrorMessage
     | null
@@ -81,7 +81,7 @@ export const EnterGameForm = ({
 
     const enterData = {
       username,
-      enteredGameId: game.gameId,
+      directSignupGameId: game.gameId,
       startTime: game.startTime,
       message: userSignupMessage || selectedValue,
       priority: DIRECT_SIGNUP_PRIORITY,
@@ -116,7 +116,7 @@ export const EnterGameForm = ({
       }
     }
 
-    const error = await dispatch(submitPostEnteredGame(enterData));
+    const error = await dispatch(submitPostDirectSignup(enterData));
     if (error) {
       setErrorMessage(error);
       setLoading(false);

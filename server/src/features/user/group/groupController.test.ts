@@ -12,7 +12,7 @@ import { UserGroup } from "shared/types/models/user";
 import { getJWT } from "server/utils/jwt";
 import { findUser, saveUser } from "server/features/user/userRepository";
 import {
-  mockPostEnteredGameRequest,
+  mockPostDirectSignupRequest,
   mockLotterySignups,
   mockUser,
   mockUser2,
@@ -21,7 +21,7 @@ import { saveLotterySignups } from "server/features/user/lottery-signup/lotteryS
 import { saveGames } from "server/features/game/gameRepository";
 import { testGame, testGame2 } from "shared/tests/testGame";
 import { closeServer, startServer } from "server/utils/server";
-import { saveSignup } from "server/features/signup/signupRepository";
+import { saveDirectSignup } from "server/features/direct-signup/directSignupRepository";
 import { saveTestSettings } from "server/test/test-settings/testSettingsRepository";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 
@@ -59,8 +59,8 @@ describe(`GET ${ApiEndpoint.GROUP}`, () => {
     await saveGames([testGame]);
     await saveUser({ ...mockUser, groupCode: mockUser.serial });
     await saveUser({ ...mockUser2, groupCode: mockUser.serial });
-    await saveSignup({
-      ...mockPostEnteredGameRequest,
+    await saveDirectSignup({
+      ...mockPostDirectSignupRequest,
       username: mockUser2.username,
     });
 
@@ -168,8 +168,8 @@ describe(`POST ${ApiEndpoint.JOIN_GROUP}`, () => {
     await saveGames([testGame]);
     await saveUser({ ...mockUser, groupCode: mockUser.serial });
     await saveUser(mockUser2);
-    await saveSignup({
-      ...mockPostEnteredGameRequest,
+    await saveDirectSignup({
+      ...mockPostDirectSignupRequest,
       username: mockUser2.username,
     });
 

@@ -10,7 +10,7 @@ import {
   mockUser3,
   mockUser4,
 } from "server/test/mock-data/mockUser";
-import { findSignups } from "server/features/signup/signupRepository";
+import { findDirectSignups } from "server/features/direct-signup/directSignupRepository";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 import { saveUserSignupResults } from "server/features/player-assignment/utils/saveUserSignupResults";
 import { AssignmentResult } from "shared/types/models/result";
@@ -35,7 +35,7 @@ test("should not add event log items after assigment if signup is dropped due to
   const results: AssignmentResult[] = [
     {
       username: mockUser.username,
-      enteredGame: {
+      directSignup: {
         gameDetails: testGame,
         priority: 1,
         time: testGame.startTime,
@@ -44,7 +44,7 @@ test("should not add event log items after assigment if signup is dropped due to
     },
     {
       username: mockUser2.username,
-      enteredGame: {
+      directSignup: {
         gameDetails: testGame,
         priority: 1,
         time: testGame.startTime,
@@ -53,7 +53,7 @@ test("should not add event log items after assigment if signup is dropped due to
     },
     {
       username: mockUser3.username,
-      enteredGame: {
+      directSignup: {
         gameDetails: testGame,
         priority: 1,
         time: testGame.startTime,
@@ -62,7 +62,7 @@ test("should not add event log items after assigment if signup is dropped due to
     },
     {
       username: mockUser4.username,
-      enteredGame: {
+      directSignup: {
         gameDetails: testGame,
         priority: 1,
         time: testGame.startTime,
@@ -73,7 +73,7 @@ test("should not add event log items after assigment if signup is dropped due to
 
   await saveUserSignupResults(testGame.startTime, results);
 
-  const signupsAfterSave = unsafelyUnwrapResult(await findSignups());
+  const signupsAfterSave = unsafelyUnwrapResult(await findDirectSignups());
   expect(signupsAfterSave).toHaveLength(1);
   expect(signupsAfterSave[0].count).toEqual(3);
   expect(signupsAfterSave[0].userSignups).toHaveLength(3);

@@ -6,8 +6,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Signup } from "shared/types/models/user";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import {
-  DeleteEnteredGameErrorMessage,
-  submitDeleteEnteredGame,
+  DeleteDirectSignupErrorMessage,
+  submitDeleteDirectSignup,
 } from "client/views/my-games/myGamesThunks";
 import { CancelSignupForm } from "client/views/all-games/components/CancelSignupForm";
 import { ErrorMessage } from "client/components/ErrorMessage";
@@ -21,7 +21,7 @@ interface Props {
   startTime: string;
 }
 
-export const EnteredGameRow = ({
+export const DirectSignupRow = ({
   signup,
   startTime,
 }: Props): ReactElement | null => {
@@ -36,7 +36,7 @@ export const EnteredGameRow = ({
   const [loading, setLoading] = useState(false);
   const [cancelSignupFormOpen, setCancelSignupFormOpen] = useState(false);
   const [serverError, setServerError] =
-    useState<DeleteEnteredGameErrorMessage | null>(null);
+    useState<DeleteDirectSignupErrorMessage | null>(null);
 
   const signupQuestion = signupQuestions.find(
     (question) => question.gameId === signup.gameDetails.gameId,
@@ -45,10 +45,10 @@ export const EnteredGameRow = ({
   const removeSignup = async (): Promise<void> => {
     setLoading(true);
     const errorMessage = await dispatch(
-      submitDeleteEnteredGame({
+      submitDeleteDirectSignup({
         username,
         startTime: signup.gameDetails.startTime,
-        enteredGameId: signup.gameDetails.gameId,
+        directSignupGameId: signup.gameDetails.gameId,
       }),
     );
 

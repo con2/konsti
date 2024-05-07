@@ -3,7 +3,7 @@ import dayjs from "dayjs";
 import { ListItem } from "server/types/padgRandomAssignTypes";
 import { getAssignmentBonus } from "server/features/player-assignment/utils/getAssignmentBonus";
 import { Signup, User } from "shared/types/models/user";
-import { SignupsForProgramItem } from "server/features/signup/signupTypes";
+import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 import { logger } from "server/utils/logger";
 import {
   Result,
@@ -18,7 +18,7 @@ import { AssignmentError } from "shared/types/api/errors";
 export const getList = (
   playerGroups: readonly User[][],
   startTime: string,
-  signups: readonly SignupsForProgramItem[],
+  signups: readonly DirectSignupsForProgramItem[],
 ): Result<ListItem[], AssignmentError> => {
   const results = playerGroups.flatMap((playerGroup) => {
     const firstMember = first(playerGroup);
@@ -69,7 +69,7 @@ export const getList = (
 const getGain = (
   lotterySignup: Signup,
   playerGroup: User[],
-  signups: readonly SignupsForProgramItem[],
+  signups: readonly DirectSignupsForProgramItem[],
 ): number => {
   const bonus = getAssignmentBonus(playerGroup, signups);
 

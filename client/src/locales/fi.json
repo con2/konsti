@@ -157,7 +157,7 @@
   "user": "Käyttäjä",
   "favoritedProgramItems": "Suosikit",
   "lotterySignups": "Arvontaan ilmoittautumiset",
-  "enteredGames": "Ilmoittautumiset",
+  "directSignups": "Ilmoittautumiset",
   "hiddenProgramItems": "Piilotetut ohjelmanumerot",
   "error": {
     "usernameTaken": "Käyttäjänimi on jo olemassa",
@@ -173,7 +173,7 @@
   "registrationSerialHelp": "Nouda rekisteröintikoodi Larp- ja Roolipelitiskiltä, Pelitiskiltä tai Infosta.",
   "noLotterySignups": "Ei valittuja pelejä. Voit ilmoittautua peleihin Kaikki ohjelma -näkymässä.",
   "noFavoritedProgramItems": "Ei suosikkeja. Voit tallettaa suosikkiohjelmaa Kaikki ohjelma -näkymässä.",
-  "noEnteredGames": "Ei ilmoittautumisia. Voit ilmoittautua ohjelmaan Kaikki ohjelma -näkymässä.",
+  "noDirectSignups": "Ei ilmoittautumisia. Voit ilmoittautua ohjelmaan Kaikki ohjelma -näkymässä.",
   "noHiddenProgramItems": "Ei piilotettuja ohjelmanumeroita",
   "noSignupQuestions": "Ei ilmoittautumisten lisätietokysymystä",
   "signupQuestions": "Ilmoittautumisen lisätietokysymykset",
@@ -220,7 +220,7 @@
       "creatorHasDirectSignups": "Sinulla on jo ilmoittautumisia peleihin. Poista ilmoittautumiset ennen kuin voit luoda ryhmän.",
       "alreadyInGroup": "Kuulut jo toiseen ryhmään."
     },
-    "hasEnteredFollowingGames": "Olet jo ilmoittautunut seuraaviin peleihin:",
+    "hasDirectlySignedFollowingGames": "Olet jo ilmoittautunut seuraaviin peleihin:",
     "cancelSignupBeforeJoiningOrCreatingGroup": "Sinun täytyy perua nämä ilmoittautumiset ennen kuin voit luoda ryhmän tai liittyä ryhmään.",
     "signupDisabledNotCreator": "Olet ryhmän jäsen. Ryhmän perustaja ilmoittautuu arvontaan ryhmän jäsenten puolesta.",
     "signupForWholeGroup": "Olet ryhmän perustaja. Voit ilmoittautua arvontaan koko ryhmän puolesta.",

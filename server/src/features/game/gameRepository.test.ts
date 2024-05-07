@@ -6,7 +6,7 @@ import { saveGames } from "server/features/game/gameRepository";
 import { testGame } from "shared/tests/testGame";
 import { removeDeletedGames } from "server/features/game/gameUtils";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
-import { findSignups } from "server/features/signup/signupRepository";
+import { findDirectSignups } from "server/features/direct-signup/directSignupRepository";
 
 beforeEach(async () => {
   await mongoose.connect(globalThis.__MONGO_URI__, {
@@ -30,7 +30,7 @@ test("should insert new game into collection", async () => {
 test("should remove signup document when program item is removed", async () => {
   await saveGames([testGame]);
 
-  const findSignupsResult = await findSignups();
+  const findSignupsResult = await findDirectSignups();
   const signups = unsafelyUnwrapResult(findSignupsResult);
   expect(signups).toHaveLength(1);
 
@@ -38,7 +38,7 @@ test("should remove signup document when program item is removed", async () => {
   const deletedGamesCount = unsafelyUnwrapResult(removeDeletedGamesResult);
   expect(deletedGamesCount).toEqual(1);
 
-  const findSignupsResult2 = await findSignups();
+  const findSignupsResult2 = await findDirectSignups();
   const signups2 = unsafelyUnwrapResult(findSignupsResult2);
   expect(signups2).toHaveLength(0);
 });

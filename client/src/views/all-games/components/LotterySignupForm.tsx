@@ -21,14 +21,14 @@ interface Props {
 
 const OPTIONS = [1, 2, 3];
 
-export const SignupForm = ({
+export const LotterySignupForm = ({
   game,
   startTime,
   onCancel,
 }: Props): ReactElement => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
-  // We need all signed games here
+  // We need all lottery signups here
   const lotterySignups = useAppSelector(selectLotterySignups);
 
   const selectedPriorities = lotterySignups

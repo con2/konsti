@@ -6,8 +6,8 @@ import { SignupStrategy } from "shared/config/sharedConfigTypes";
 import { Signup, UserGroup } from "shared/types/models/user";
 import { RaisedCard } from "client/components/RaisedCard";
 import {
-  isAlreadyEntered,
-  isAlreadySigned,
+  isAlreadyDirectySigned,
+  isAlreadyLotterySigned,
 } from "client/views/all-games/components/allGamesUtils";
 import { config } from "shared/config";
 import { GameDetailsView } from "client/views/all-games/components/GameDetailsView";
@@ -20,7 +20,7 @@ interface Props {
   players: number;
   signupStrategy: SignupStrategy;
   lotterySignups: readonly Signup[];
-  enteredGames: readonly Signup[];
+  directSignups: readonly Signup[];
   isAlwaysExpanded: boolean;
   loading: boolean;
   setLoading: (loading: boolean) => void;
@@ -36,7 +36,7 @@ export const GameEntry = ({
   players,
   signupStrategy,
   lotterySignups,
-  enteredGames,
+  directSignups,
   isAlwaysExpanded,
   loading,
   setLoading,
@@ -56,12 +56,18 @@ export const GameEntry = ({
     signupStrategy === SignupStrategy.DIRECT ||
     signupAlwaysOpen;
 
-  const isEnteredCurrentGame = isAlreadyEntered(game, enteredGames);
-  const isSignedForCurrentGame = isAlreadySigned(game, lotterySignups);
+  const isDirectlySignedCurrentGame = isAlreadyDirectySigned(
+    game,
+    directSignups,
+  );
+  const isLotterySignedForCurrentGame = isAlreadyLotterySigned(
+    game,
+    lotterySignups,
+  );
 
   const isGameSigned = isEnterGameMode
-    ? isEnteredCurrentGame
-    : isSignedForCurrentGame;
+    ? isDirectlySignedCurrentGame
+    : isLotterySignedForCurrentGame;
 
   const tags = [];
   if (config.client().activeProgramTypes.length > 1) {

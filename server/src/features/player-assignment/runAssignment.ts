@@ -10,7 +10,7 @@ import { removeOverlapSignups } from "server/features/player-assignment/utils/re
 import { saveResults } from "server/features/player-assignment/utils/saveResults";
 import { getDynamicStartTime } from "server/features/player-assignment/utils/getDynamicStartTime";
 import { sleep } from "server/utils/sleep";
-import { findSignups } from "server/features/signup/signupRepository";
+import { findDirectSignups } from "server/features/direct-signup/directSignupRepository";
 import {
   Result,
   isErrorResult,
@@ -93,7 +93,7 @@ export const runAssignment = async ({
       !directSignupAlwaysOpenIds.includes(game.gameId),
   );
 
-  const signupsResult = await findSignups();
+  const signupsResult = await findDirectSignups();
   if (isErrorResult(signupsResult)) {
     return signupsResult;
   }

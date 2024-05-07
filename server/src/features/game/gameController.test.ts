@@ -12,8 +12,8 @@ import { findGames, saveGames } from "server/features/game/gameRepository";
 import { testGame, testGame2 } from "shared/tests/testGame";
 import { findUser, saveUser } from "server/features/user/userRepository";
 import {
-  mockPostEnteredGameRequest,
-  mockPostEnteredGameRequest2,
+  mockPostDirectSignupRequest,
+  mockPostDirectSignupRequest2,
   mockLotterySignups,
   mockUser,
 } from "server/test/mock-data/mockUser";
@@ -24,9 +24,9 @@ import {
   saveSignupQuestion,
 } from "server/features/settings/settingsRepository";
 import {
-  findUserSignups,
-  saveSignup,
-} from "server/features/signup/signupRepository";
+  findUserDirectSignups,
+  saveDirectSignup,
+} from "server/features/direct-signup/directSignupRepository";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 import {
   KompassiGameStyleRopecon,
@@ -70,12 +70,12 @@ describe(`GET ${ApiEndpoint.GAMES}`, () => {
     await saveUser(mockUser);
 
     const publicMessage = "Answer to public message";
-    await saveSignup({
-      ...mockPostEnteredGameRequest,
+    await saveDirectSignup({
+      ...mockPostDirectSignupRequest,
       message: publicMessage,
     });
-    await saveSignup({
-      ...mockPostEnteredGameRequest2,
+    await saveDirectSignup({
+      ...mockPostDirectSignupRequest2,
       message: "Answer to private message",
     });
 
@@ -147,8 +147,8 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
       username: mockUser.username,
       lotterySignups: mockLotterySignups,
     });
-    await saveSignup(mockPostEnteredGameRequest);
-    await saveSignup(mockPostEnteredGameRequest2);
+    await saveDirectSignup(mockPostDirectSignupRequest);
+    await saveDirectSignup(mockPostDirectSignupRequest2);
     await saveFavorite({
       username: mockUser.username,
       favoritedGameIds: [testGame.gameId, testGame2.gameId],
@@ -174,7 +174,7 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
     expect(updatedUser?.favoritedGames.length).toEqual(1);
     expect(updatedUser?.favoritedGames[0].gameId).toEqual(testGame.gameId);
 
-    const updatedSignupsResult = await findUserSignups(mockUser.username);
+    const updatedSignupsResult = await findUserDirectSignups(mockUser.username);
     const updatedSignups = unsafelyUnwrapResult(updatedSignupsResult);
     expect(updatedSignups.length).toEqual(1);
     expect(updatedSignups[0].game.title).toEqual(testGame.title);
@@ -274,8 +274,8 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
       username: mockUser.username,
       lotterySignups: mockLotterySignups,
     });
-    await saveSignup(mockPostEnteredGameRequest);
-    await saveSignup(mockPostEnteredGameRequest2);
+    await saveDirectSignup(mockPostDirectSignupRequest);
+    await saveDirectSignup(mockPostDirectSignupRequest2);
     await saveFavorite({
       username: mockUser.username,
       favoritedGameIds: [testGame.gameId, testGame2.gameId],
@@ -294,7 +294,7 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
     );
     expect(updatedUser?.favoritedGames.length).toEqual(2);
 
-    const signupsResult = await findUserSignups(mockUser.username);
+    const signupsResult = await findUserDirectSignups(mockUser.username);
     const signups = unsafelyUnwrapResult(signupsResult);
     expect(signups.length).toEqual(2);
     expect(signups[0].userSignups[0].username).toEqual(mockUser.username);

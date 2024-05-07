@@ -4,17 +4,17 @@ import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { MyLotterySignupsList } from "client/views/my-games/components/MyLotterySignupsList";
 import { MyFavoritesList } from "client/views/my-games/components/MyFavoritesList";
-import { MyEnteredList } from "client/views/my-games/components/MyEnteredList";
+import { MyDirectSignupsList } from "client/views/my-games/components/MyDirectSignupsList";
 import {
   getLotterySignups,
-  getUpcomingEnteredGames,
+  getUpcomingDirectSignups,
   getUpcomingFavorites,
 } from "client/utils/getUpcomingGames";
 import { loadUser, loadGames, loadGroupMembers } from "client/utils/loadData";
 import { useAppSelector } from "client/utils/hooks";
 import { SignupStrategy } from "shared/config/sharedConfigTypes";
 import {
-  selectEnteredGames,
+  selectDirectSignups,
   selectFavoritedGames,
   selectLotterySignups,
 } from "client/views/my-games/myGamesSlice";
@@ -32,7 +32,7 @@ export const MyGamesView = (): ReactElement => {
 
   const lotterySignups = useAppSelector(selectLotterySignups);
   const favoritedGames = useAppSelector(selectFavoritedGames);
-  const enteredGames = useAppSelector(selectEnteredGames);
+  const directSignups = useAppSelector(selectDirectSignups);
   const isGroupCreator = useAppSelector((state) => state.group.isGroupCreator);
   const groupMembers = useAppSelector((state) => state.group.groupMembers);
   const testTime = useAppSelector((state) => state.testSettings.testTime);
@@ -95,9 +95,9 @@ export const MyGamesView = (): ReactElement => {
           showAllGames ? favoritedGames : getUpcomingFavorites(favoritedGames)
         }
       />
-      <MyEnteredList
-        enteredGames={
-          showAllGames ? enteredGames : getUpcomingEnteredGames(enteredGames)
+      <MyDirectSignupsList
+        directSignups={
+          showAllGames ? directSignups : getUpcomingDirectSignups(directSignups)
         }
         lotterySignups={getLotterySignups({
           lotterySignups,

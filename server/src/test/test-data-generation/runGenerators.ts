@@ -6,11 +6,11 @@ import { removeResults } from "server/features/results/resultsRepository";
 import { removeGames } from "server/features/game/gameRepository";
 import { db } from "server/db/mongodb";
 import { generateTestUsers } from "server/test/test-data-generation/generators/generateTestData";
-import { createSignups } from "server/test/test-data-generation/generators/createSignups";
+import { createDirectSignups } from "server/test/test-data-generation/generators/createSignups";
 import { createSettings } from "server/test/test-data-generation/generators/createSettings";
 import { config } from "shared/config";
 import { removeLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
-import { removeSignups } from "server/features/signup/signupRepository";
+import { removeDirectSignups } from "server/features/direct-signup/directSignupRepository";
 import {
   createAdminUser,
   createHelpUser,
@@ -23,8 +23,8 @@ interface Options {
   clean?: boolean;
   users?: boolean;
   games?: boolean;
-  signups?: boolean;
-  entered?: boolean;
+  lotterySignups?: boolean;
+  directSignups?: boolean;
   log?: boolean;
 }
 
@@ -90,8 +90,8 @@ export const runGenerators = async (
     await createSettings();
   }
 
-  if (options.signups) {
-    logger.info("Generate signed games");
+  if (options.lotterySignups) {
+    logger.info("Generate lottery signups");
 
     !options.clean && (await removeLotterySignups());
     !options.clean && (await removeResults());
@@ -99,13 +99,13 @@ export const runGenerators = async (
     await createLotterySignups();
   }
 
-  if (options.entered) {
-    logger.info("Generate signups");
+  if (options.directSignups) {
+    logger.info("Generate direct signups");
 
-    !options.clean && (await removeSignups());
+    !options.clean && (await removeDirectSignups());
     !options.clean && (await removeResults());
 
-    await createSignups();
+    await createDirectSignups();
   }
 
   if (options.log) {
