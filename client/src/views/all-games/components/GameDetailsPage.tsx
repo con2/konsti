@@ -6,6 +6,7 @@ import { useAppSelector } from "client/utils/hooks";
 import { GameEntry } from "client/views/all-games/components/GameEntry";
 import {
   selectEnteredGames,
+  selectFavoritedGames,
   selectSignedGames,
 } from "client/views/my-games/myGamesSlice";
 import { SignupStrategy } from "shared/config/sharedConfigTypes";
@@ -21,6 +22,10 @@ export const GameDetailsPage = (): ReactElement => {
   const games = useAppSelector((state) => state.allGames.games);
   const signups = useAppSelector((state) => state.allGames.signups);
   const enteredGames = useAppSelector(selectEnteredGames);
+  const username = useAppSelector((state) => state.login.username);
+  const loggedIn = useAppSelector((state) => state.login.loggedIn);
+  const userGroup = useAppSelector((state) => state.login.userGroup);
+  const favoritedGames = useAppSelector(selectFavoritedGames);
 
   // Figure out if user has signed up to this game
   const signedGames = useAppSelector(selectSignedGames);
@@ -63,6 +68,10 @@ export const GameDetailsPage = (): ReactElement => {
           enteredGames={enteredGames}
           loading={loading}
           setLoading={setLoading}
+          username={username}
+          loggedIn={loggedIn}
+          userGroup={userGroup}
+          favoritedGames={favoritedGames}
         />
       )}
       {!loading && !foundGame && (
