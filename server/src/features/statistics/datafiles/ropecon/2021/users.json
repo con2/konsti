@@ -6,7 +6,7 @@
     "serial": "7998537893",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4661" },
         "priority": 1,
@@ -36,7 +36,7 @@
     "serial": "8440980848",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4709" },
         "priority": 1,
@@ -54,7 +54,7 @@
     "serial": "2968378972",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4661" },
         "priority": 1,
@@ -84,7 +84,7 @@
     "serial": "3375696923",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4661" },
         "priority": 1,
@@ -114,7 +114,7 @@
     "serial": "2140266954",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4661" },
         "priority": 1,
@@ -144,7 +144,7 @@
     "serial": "3542764034",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4661" },
         "priority": 1,
@@ -174,7 +174,7 @@
     "serial": "7997950253",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4661" },
         "priority": 1,
@@ -204,7 +204,7 @@
     "serial": "2780308769",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4642" },
         "priority": 1,
@@ -222,7 +222,7 @@
     "serial": "5743610916",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4740" },
         "priority": 1,
@@ -258,7 +258,7 @@
     "serial": "4831108933",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4661" },
         "priority": 1,
@@ -288,7 +288,7 @@
     "serial": "2337736355",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "createdAt": { "$date": "2021-07-26T08:13:06.835Z" },
     "updatedAt": { "$date": "2021-07-26T15:30:46.57Z" }
   },
@@ -299,7 +299,7 @@
     "serial": "4515837294",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4698" },
         "priority": 1,
@@ -329,7 +329,7 @@
     "serial": "4701690044",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4661" },
         "priority": 1,
@@ -359,7 +359,7 @@
     "serial": "9188742895",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "createdAt": { "$date": "2021-07-26T08:37:09.265Z" },
     "updatedAt": { "$date": "2021-07-29T06:05:55.195Z" }
   },
@@ -379,7 +379,7 @@
     "serial": "4934282106",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4653" },
         "priority": 1,
@@ -427,7 +427,7 @@
     "serial": "3130034287",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4601" },
         "priority": 1,
@@ -445,7 +445,7 @@
     "serial": "1528287871",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4661" },
         "priority": 1,
@@ -483,7 +483,7 @@
     "serial": "2238786418",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4661" },
         "priority": 1,
@@ -519,7 +519,7 @@
     "serial": "9387609960",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4661" },
         "priority": 1,
@@ -549,7 +549,7 @@
     "serial": "6136641906",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "createdAt": { "$date": "2021-07-26T14:29:52.975Z" },
     "updatedAt": { "$date": "2021-07-30T09:47:43.584Z" }
   },
@@ -560,7 +560,7 @@
     "serial": "8743105804",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "createdAt": { "$date": "2021-07-26T14:51:23.23Z" },
     "updatedAt": { "$date": "2021-07-26T16:22:45.343Z" }
   },
@@ -571,7 +571,7 @@
     "serial": "6504131548",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "createdAt": { "$date": "2021-07-26T15:01:23.92Z" },
     "updatedAt": { "$date": "2021-07-31T15:07:42.434Z" }
   },
@@ -582,7 +582,7 @@
     "serial": "2243897523",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4601" },
         "priority": 1,
@@ -600,7 +600,7 @@
     "serial": "5524683785",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4649" },
         "priority": 1,
@@ -618,7 +618,7 @@
     "serial": "2994638431",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4699" },
         "priority": 1,
@@ -636,7 +636,7 @@
     "serial": "0082058215",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "createdAt": { "$date": "2021-07-26T15:26:10.803Z" },
     "updatedAt": { "$date": "2021-07-26T17:21:35.604Z" }
   },
@@ -647,7 +647,7 @@
     "serial": "5690480982",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4667" },
         "priority": 1,
@@ -665,7 +665,7 @@
     "serial": "9729215922",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4654" },
         "priority": 1,
@@ -683,7 +683,7 @@
     "serial": "9281770876",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4601" },
         "priority": 1,
@@ -707,7 +707,7 @@
     "serial": "1472320983",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4697" },
         "priority": 1,
@@ -725,7 +725,7 @@
     "serial": "1956225898",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4601" },
         "priority": 1,
@@ -743,7 +743,7 @@
     "serial": "7472575542",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4729" },
         "priority": 1,
@@ -767,7 +767,7 @@
     "serial": "0254133739",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4698" },
         "priority": 1,
@@ -803,7 +803,7 @@
     "serial": "1055896136",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4656" },
         "priority": 1,
@@ -833,7 +833,7 @@
     "serial": "6932021147",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "createdAt": { "$date": "2021-07-26T17:00:27.896Z" },
     "updatedAt": { "$date": "2021-07-27T07:51:57.678Z" }
   },
@@ -844,7 +844,7 @@
     "serial": "4061702314",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4698" },
         "priority": 1,
@@ -874,7 +874,7 @@
     "serial": "7016260841",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4603" },
         "priority": 1,
@@ -904,7 +904,7 @@
     "serial": "2299850020",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "createdAt": { "$date": "2021-07-26T18:02:15.196Z" },
     "updatedAt": { "$date": "2021-07-26T22:21:46.467Z" }
   },
@@ -915,7 +915,7 @@
     "serial": "1510345778",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "createdAt": { "$date": "2021-07-26T18:04:33.275Z" },
     "updatedAt": { "$date": "2021-07-26T19:38:57.519Z" }
   },
@@ -926,7 +926,7 @@
     "serial": "7929139504",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4684" },
         "priority": 1,
@@ -950,7 +950,7 @@
     "serial": "4411498233",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "createdAt": { "$date": "2021-07-26T19:06:49.712Z" },
     "updatedAt": { "$date": "2021-07-26T19:06:49.712Z" }
   },
@@ -961,7 +961,7 @@
     "serial": "8946915694",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4697" },
         "priority": 1,
@@ -991,7 +991,7 @@
     "serial": "4496212590",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4699" },
         "priority": 1,
@@ -1009,7 +1009,7 @@
     "serial": "6245526873",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "createdAt": { "$date": "2021-07-26T20:06:04.042Z" },
     "updatedAt": { "$date": "2021-07-26T20:06:04.042Z" }
   },
@@ -1020,7 +1020,7 @@
     "serial": "5812648193",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4706" },
         "priority": 1,
@@ -1038,7 +1038,7 @@
     "serial": "1339737379",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "createdAt": { "$date": "2021-07-26T20:27:07.301Z" },
     "updatedAt": { "$date": "2021-07-26T20:27:07.301Z" }
   },
@@ -1060,7 +1060,7 @@
     "serial": "0474624673",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4667" },
         "priority": 1,
@@ -1096,7 +1096,7 @@
     "serial": "4187532934",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4681" },
         "priority": 1,
@@ -1126,7 +1126,7 @@
     "serial": "5106074247",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4640" },
         "priority": 1,
@@ -1144,7 +1144,7 @@
     "serial": "8473943028",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "createdAt": { "$date": "2021-07-26T21:31:20.889Z" },
     "updatedAt": { "$date": "2021-07-29T14:42:48.253Z" }
   },
@@ -1155,7 +1155,7 @@
     "serial": "2528990951",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4656" },
         "priority": 1,
@@ -1179,7 +1179,7 @@
     "serial": "9229328357",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4702" },
         "priority": 1,
@@ -1221,7 +1221,7 @@
     "serial": "7662102024",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "createdAt": { "$date": "2021-07-27T06:32:14.309Z" },
     "updatedAt": { "$date": "2021-07-27T06:32:14.309Z" }
   },
@@ -1232,7 +1232,7 @@
     "serial": "0697825172",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4703" },
         "priority": 1,
@@ -1262,7 +1262,7 @@
     "serial": "1354289447",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4694" },
         "priority": 1,
@@ -1280,7 +1280,7 @@
     "serial": "0837281229",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "createdAt": { "$date": "2021-07-27T07:43:26.672Z" },
     "updatedAt": { "$date": "2021-07-27T07:43:26.672Z" }
   },
@@ -1291,7 +1291,7 @@
     "serial": "4037693829",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4740" },
         "priority": 1,
@@ -1327,7 +1327,7 @@
     "serial": "4161048576",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4680" },
         "priority": 1,
@@ -1345,7 +1345,7 @@
     "serial": "7901573209",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "createdAt": { "$date": "2021-07-27T08:41:22.843Z" },
     "updatedAt": { "$date": "2021-07-31T21:11:50.874Z" }
   },
@@ -1356,7 +1356,7 @@
     "serial": "3520357934",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "createdAt": { "$date": "2021-07-27T08:42:36.091Z" },
     "updatedAt": { "$date": "2021-07-27T10:01:23.956Z" }
   },
@@ -1367,7 +1367,7 @@
     "serial": "1314833771",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4675" },
         "priority": 1,
@@ -1385,7 +1385,7 @@
     "serial": "5390936796",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4675" },
         "priority": 1,
@@ -1403,7 +1403,7 @@
     "serial": "3366549628",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4632" },
         "priority": 1,
@@ -1421,7 +1421,7 @@
     "serial": "0911343796",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4681" },
         "priority": 1,
@@ -1457,7 +1457,7 @@
     "serial": "5533143862",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4685" },
         "priority": 1,
@@ -1499,7 +1499,7 @@
     "serial": "3406042840",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4729" },
         "priority": 1,
@@ -1523,7 +1523,7 @@
     "serial": "2551641950",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "createdAt": { "$date": "2021-07-27T20:20:25.991Z" },
     "updatedAt": { "$date": "2021-07-27T20:20:25.991Z" }
   },
@@ -1534,7 +1534,7 @@
     "serial": "1174658094",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "createdAt": { "$date": "2021-07-27T21:02:01.924Z" },
     "updatedAt": { "$date": "2021-07-27T21:02:01.924Z" }
   },
@@ -1545,7 +1545,7 @@
     "serial": "4841180401",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "createdAt": { "$date": "2021-07-27T22:10:07.733Z" },
     "updatedAt": { "$date": "2021-07-27T22:16:55.465Z" }
   },
@@ -1556,7 +1556,7 @@
     "serial": "0047746664",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4667" },
         "priority": 1,
@@ -1574,7 +1574,7 @@
     "serial": "2076444286",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4603" },
         "priority": 1,
@@ -1598,7 +1598,7 @@
     "serial": "2012565707",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4603" },
         "priority": 1,
@@ -1616,7 +1616,7 @@
     "serial": "2423162144",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4675" },
         "priority": 1,
@@ -1634,7 +1634,7 @@
     "serial": "4309269084",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "createdAt": { "$date": "2021-07-28T09:56:25.136Z" },
     "updatedAt": { "$date": "2021-07-28T09:56:25.136Z" }
   },
@@ -1645,7 +1645,7 @@
     "serial": "0435921788",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "createdAt": { "$date": "2021-07-28T12:22:06.022Z" },
     "updatedAt": { "$date": "2021-07-31T14:15:19.402Z" }
   },
@@ -1656,7 +1656,7 @@
     "serial": "2839655772",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "createdAt": { "$date": "2021-07-28T12:29:51.662Z" },
     "updatedAt": { "$date": "2021-07-29T11:57:12.356Z" }
   },
@@ -1667,7 +1667,7 @@
     "serial": "3472643778",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4740" },
         "priority": 1,
@@ -1703,7 +1703,7 @@
     "serial": "4273041006",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4740" },
         "priority": 1,
@@ -1745,7 +1745,7 @@
     "serial": "9756876687",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4703" },
         "priority": 1,
@@ -1763,7 +1763,7 @@
     "serial": "2015105303",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4701" },
         "priority": 1,
@@ -1793,7 +1793,7 @@
     "serial": "4912532647",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4645" },
         "priority": 1,
@@ -1811,7 +1811,7 @@
     "serial": "6573719892",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4740" },
         "priority": 1,
@@ -1835,7 +1835,7 @@
     "serial": "5220362932",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "createdAt": { "$date": "2021-07-28T19:12:03.02Z" },
     "updatedAt": { "$date": "2021-07-28T19:12:03.02Z" }
   },
@@ -1846,7 +1846,7 @@
     "serial": "2553083417",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4729" },
         "priority": 1,
@@ -1870,7 +1870,7 @@
     "serial": "8319781673",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "createdAt": { "$date": "2021-07-28T20:26:46.251Z" },
     "updatedAt": { "$date": "2021-07-28T20:26:46.251Z" }
   },
@@ -1881,7 +1881,7 @@
     "serial": "1701016659",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "createdAt": { "$date": "2021-07-29T03:55:49.083Z" },
     "updatedAt": { "$date": "2021-07-29T19:34:00.982Z" }
   },
@@ -1892,7 +1892,7 @@
     "serial": "5767300840",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4698" },
         "priority": 1,
@@ -1916,7 +1916,7 @@
     "serial": "5369685994",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "createdAt": { "$date": "2021-07-29T05:55:22.246Z" },
     "updatedAt": { "$date": "2021-07-29T05:55:22.246Z" }
   },
@@ -1927,7 +1927,7 @@
     "serial": "8123606298",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4684" },
         "priority": 1,
@@ -1951,7 +1951,7 @@
     "serial": "7349373923",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "createdAt": { "$date": "2021-07-29T07:30:55.553Z" },
     "updatedAt": { "$date": "2021-07-29T07:30:55.553Z" }
   },
@@ -1962,7 +1962,7 @@
     "serial": "9596366345",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4682" },
         "priority": 1,
@@ -1980,7 +1980,7 @@
     "serial": "0077029254",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4691" },
         "priority": 1,
@@ -1998,7 +1998,7 @@
     "serial": "4852045097",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4684" },
         "priority": 1,
@@ -2022,7 +2022,7 @@
     "serial": "4409914985",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4684" },
         "priority": 1,
@@ -2040,7 +2040,7 @@
     "serial": "1844408847",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4729" },
         "priority": 1,
@@ -2058,7 +2058,7 @@
     "serial": "9758318639",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4684" },
         "priority": 1,
@@ -2076,7 +2076,7 @@
     "serial": "7092992846",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "createdAt": { "$date": "2021-07-29T11:14:04.28Z" },
     "updatedAt": { "$date": "2021-07-29T11:14:04.28Z" }
   },
@@ -2087,7 +2087,7 @@
     "serial": "6339076165",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4653" },
         "priority": 1,
@@ -2123,7 +2123,7 @@
     "serial": "9240567041",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4601" },
         "priority": 1,
@@ -2141,7 +2141,7 @@
     "serial": "7382347750",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4699" },
         "priority": 1,
@@ -2159,7 +2159,7 @@
     "serial": "3939052258",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4704" },
         "priority": 1,
@@ -2177,7 +2177,7 @@
     "serial": "4327196749",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4652" },
         "priority": 1,
@@ -2195,7 +2195,7 @@
     "serial": "6353344788",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4702" },
         "priority": 1,
@@ -2213,7 +2213,7 @@
     "serial": "5251826565",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "createdAt": { "$date": "2021-07-29T15:13:13.287Z" },
     "updatedAt": { "$date": "2021-07-29T15:13:13.287Z" }
   },
@@ -2224,7 +2224,7 @@
     "serial": "1635536368",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4682" },
         "priority": 1,
@@ -2260,7 +2260,7 @@
     "serial": "7505161005",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4680" },
         "priority": 1,
@@ -2278,7 +2278,7 @@
     "serial": "2910965272",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4639" },
         "priority": 1,
@@ -2296,7 +2296,7 @@
     "serial": "0795409044",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "createdAt": { "$date": "2021-07-29T20:29:47.045Z" },
     "updatedAt": { "$date": "2021-07-30T15:49:37.274Z" }
   },
@@ -2307,7 +2307,7 @@
     "serial": "2885899381",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "createdAt": { "$date": "2021-07-29T20:46:49.946Z" },
     "updatedAt": { "$date": "2021-07-29T20:46:49.946Z" }
   },
@@ -2318,7 +2318,7 @@
     "serial": "2691745208",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4640" },
         "priority": 1,
@@ -2372,7 +2372,7 @@
     "serial": "1200795175",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "createdAt": { "$date": "2021-07-30T05:04:20.694Z" },
     "updatedAt": { "$date": "2021-07-30T05:04:20.694Z" }
   },
@@ -2383,7 +2383,7 @@
     "serial": "9670730986",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4649" },
         "priority": 1,
@@ -2401,7 +2401,7 @@
     "serial": "8023642518",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "createdAt": { "$date": "2021-07-30T10:03:20.484Z" },
     "updatedAt": { "$date": "2021-07-30T10:03:20.484Z" }
   },
@@ -2412,7 +2412,7 @@
     "serial": "3159396856",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4667" },
         "priority": 1,
@@ -2430,7 +2430,7 @@
     "serial": "8621003774",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4674" },
         "priority": 1,
@@ -2466,7 +2466,7 @@
     "serial": "3269817833",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4682" },
         "priority": 1,
@@ -2490,7 +2490,7 @@
     "serial": "0334525045",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "createdAt": { "$date": "2021-07-30T10:32:00.644Z" },
     "updatedAt": { "$date": "2021-07-30T10:32:00.644Z" }
   },
@@ -2501,7 +2501,7 @@
     "serial": "7730830929",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4674" },
         "priority": 1,
@@ -2525,7 +2525,7 @@
     "serial": "2004023814",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4680" },
         "priority": 1,
@@ -2555,7 +2555,7 @@
     "serial": "8049267506",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "createdAt": { "$date": "2021-07-30T11:28:14.83Z" },
     "updatedAt": { "$date": "2021-07-30T11:28:14.83Z" }
   },
@@ -2566,7 +2566,7 @@
     "serial": "3277551614",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "createdAt": { "$date": "2021-07-30T11:46:13.87Z" },
     "updatedAt": { "$date": "2021-07-30T11:46:13.87Z" }
   },
@@ -2577,7 +2577,7 @@
     "serial": "6238998956",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "createdAt": { "$date": "2021-07-30T11:54:35.522Z" },
     "updatedAt": { "$date": "2021-07-30T11:58:22.852Z" }
   },
@@ -2588,7 +2588,7 @@
     "serial": "4858205935",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4682" },
         "priority": 1,
@@ -2606,7 +2606,7 @@
     "serial": "7458259558",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4642" },
         "priority": 1,
@@ -2624,7 +2624,7 @@
     "serial": "5607872404",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "createdAt": { "$date": "2021-07-30T13:02:38.347Z" },
     "updatedAt": { "$date": "2021-07-30T13:02:38.347Z" }
   },
@@ -2635,7 +2635,7 @@
     "serial": "5496155192",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4697" },
         "priority": 1,
@@ -2665,7 +2665,7 @@
     "serial": "9526288999",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "createdAt": { "$date": "2021-07-30T13:27:44.139Z" },
     "updatedAt": { "$date": "2021-07-30T13:27:44.139Z" }
   },
@@ -2676,7 +2676,7 @@
     "serial": "3879938474",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "createdAt": { "$date": "2021-07-30T13:28:18.495Z" },
     "updatedAt": { "$date": "2021-07-30T13:28:18.495Z" }
   },
@@ -2687,7 +2687,7 @@
     "serial": "0152905816",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "createdAt": { "$date": "2021-07-30T13:59:34.38Z" },
     "updatedAt": { "$date": "2021-07-30T14:05:47.676Z" }
   },
@@ -2698,7 +2698,7 @@
     "serial": "2074675345",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "createdAt": { "$date": "2021-07-30T14:25:26.326Z" },
     "updatedAt": { "$date": "2021-07-30T14:25:26.326Z" }
   },
@@ -2709,7 +2709,7 @@
     "serial": "5920353645",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4603" },
         "priority": 1,
@@ -2727,7 +2727,7 @@
     "serial": "1644635953",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4680" },
         "priority": 1,
@@ -2745,7 +2745,7 @@
     "serial": "4209928052",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "createdAt": { "$date": "2021-07-30T14:38:08.581Z" },
     "updatedAt": { "$date": "2021-07-30T14:38:08.581Z" }
   },
@@ -2756,7 +2756,7 @@
     "serial": "2014236067",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "createdAt": { "$date": "2021-07-30T14:44:37.322Z" },
     "updatedAt": { "$date": "2021-07-30T14:44:37.322Z" }
   },
@@ -2767,7 +2767,7 @@
     "serial": "9416106822",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "createdAt": { "$date": "2021-07-30T14:44:57.008Z" },
     "updatedAt": { "$date": "2021-07-31T08:55:45.502Z" }
   },
@@ -2778,7 +2778,7 @@
     "serial": "4250368810",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "createdAt": { "$date": "2021-07-30T15:06:23.507Z" },
     "updatedAt": { "$date": "2021-07-30T15:06:23.507Z" }
   },
@@ -2789,7 +2789,7 @@
     "serial": "2341760367",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "createdAt": { "$date": "2021-07-30T15:34:22.164Z" },
     "updatedAt": { "$date": "2021-07-30T15:34:22.164Z" }
   },
@@ -2800,7 +2800,7 @@
     "serial": "2207555356",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4632" },
         "priority": 1,
@@ -2830,7 +2830,7 @@
     "serial": "1793265784",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4703" },
         "priority": 1,
@@ -2848,7 +2848,7 @@
     "serial": "8351663441",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "createdAt": { "$date": "2021-07-30T16:16:52.621Z" },
     "updatedAt": { "$date": "2021-07-30T16:16:52.621Z" }
   },
@@ -2859,7 +2859,7 @@
     "serial": "3992041263",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4699" },
         "priority": 1,
@@ -2877,7 +2877,7 @@
     "serial": "8030451283",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "createdAt": { "$date": "2021-07-30T19:05:53.825Z" },
     "updatedAt": { "$date": "2021-07-31T14:58:24.037Z" }
   },
@@ -2888,7 +2888,7 @@
     "serial": "5946517629",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4701" },
         "priority": 1,
@@ -2906,7 +2906,7 @@
     "serial": "7530707871",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "createdAt": { "$date": "2021-07-31T08:11:34.08Z" },
     "updatedAt": { "$date": "2021-07-31T08:11:34.08Z" }
   },
@@ -2917,7 +2917,7 @@
     "serial": "9227166031",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "createdAt": { "$date": "2021-07-31T17:02:34.015Z" },
     "updatedAt": { "$date": "2021-07-31T17:02:34.015Z" }
   },
@@ -2928,7 +2928,7 @@
     "serial": "1495242396",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4621" },
         "priority": 1,
@@ -2946,7 +2946,7 @@
     "serial": "2276622806",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [
+    "directSignups": [
       {
         "gameDetails": { "gameId": "p4703" },
         "priority": 1,
@@ -2964,7 +2964,7 @@
     "serial": "5108964270",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "createdAt": { "$date": "2021-07-31T18:46:47.576Z" },
     "updatedAt": { "$date": "2021-08-01T07:39:14.473Z" }
   },
@@ -2975,7 +2975,7 @@
     "serial": "5578314758",
     "groupCode": "0",
     "lotterySignups": [],
-    "enteredGames": [],
+    "directSignups": [],
     "createdAt": { "$date": "2021-08-01T08:27:07.763Z" },
     "updatedAt": { "$date": "2021-08-01T08:27:07.763Z" }
   }

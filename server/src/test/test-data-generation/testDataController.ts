@@ -10,7 +10,13 @@ export const postPopulateDb = async (
 ): Promise<Response> => {
   logger.info(`API call: POST ${ApiEndpoint.POPULATE_DB}`);
   await runGenerators(
-    { clean: true, users: true, games: true, signups: true, entered: true },
+    {
+      clean: true,
+      users: true,
+      games: true,
+      lotterySignups: true,
+      directSignups: true,
+    },
     { closeDb: false },
   );
   return res.sendStatus(200);

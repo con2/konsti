@@ -4,7 +4,7 @@ import { Signup } from "shared/types/models/user";
 import { getDateAndTime, getWeekdayAndTime } from "client/utils/timeFormatter";
 import { config } from "shared/config";
 
-export const isAlreadySigned = (
+export const isAlreadyLotterySigned = (
   gameToCheck: Game,
   lotterySignups: readonly Signup[],
 ): boolean => {
@@ -13,11 +13,11 @@ export const isAlreadySigned = (
   );
 };
 
-export const isAlreadyEntered = (
+export const isAlreadyDirectySigned = (
   gameToCheck: Game,
-  enteredGames: readonly Signup[],
+  directSignups: readonly Signup[],
 ): boolean => {
-  return enteredGames.some(
+  return directSignups.some(
     (g: Signup) => g.gameDetails.gameId === gameToCheck.gameId,
   );
 };

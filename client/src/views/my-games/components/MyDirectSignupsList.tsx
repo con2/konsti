@@ -9,12 +9,12 @@ import { config } from "shared/config";
 import { RaisedCard } from "client/components/RaisedCard";
 
 interface Props {
-  enteredGames: readonly Signup[];
+  directSignups: readonly Signup[];
   lotterySignups: readonly Signup[];
 }
 
-export const MyEnteredList = ({
-  enteredGames,
+export const MyDirectSignupsList = ({
+  directSignups,
   lotterySignups,
 }: Props): ReactElement => {
   const { t } = useTranslation();
@@ -23,27 +23,27 @@ export const MyEnteredList = ({
   const [startTimes, setStartTimes] = useState<string[]>([]);
 
   useEffect(() => {
-    setMissedSignups(getMissedSignups(lotterySignups, enteredGames));
-  }, [lotterySignups, enteredGames]);
+    setMissedSignups(getMissedSignups(lotterySignups, directSignups));
+  }, [lotterySignups, directSignups]);
 
   useEffect(() => {
     setStartTimes(
-      enteredGames
-        .map((enteredGame) => enteredGame.gameDetails.startTime)
+      directSignups
+        .map((directSignup) => directSignup.gameDetails.startTime)
         .concat(missedSignups),
     );
-  }, [missedSignups, enteredGames]);
+  }, [missedSignups, directSignups]);
 
   return (
     <RaisedCard>
-      <Header>{t("enteredGames")}</Header>
+      <Header>{t("directSignups")}</Header>
       {(!config.shared().resultsVisible || startTimes.length === 0) && (
-        <SecondaryText>{t("noEnteredGames")}</SecondaryText>
+        <SecondaryText>{t("noDirectSignups")}</SecondaryText>
       )}
 
       {config.shared().resultsVisible && startTimes.length !== 0 && (
         <ResultsByStartTimes
-          signups={sortBy(enteredGames, [(enteredGame) => enteredGame.time])}
+          signups={sortBy(directSignups, [(directSignup) => directSignup.time])}
           startTimes={uniq(startTimes).sort()}
           missedSignups={missedSignups}
         />

@@ -6,7 +6,7 @@ import { Signup } from "shared/types/models/user";
 
 export const getMissedSignups = (
   lotterySignups: readonly Signup[],
-  enteredGames: readonly Signup[],
+  directSignups: readonly Signup[],
 ): string[] => {
   // Wait this long before showing "you didn't get into game"
   // TODO: Instead of hard-coding, figure dynamically if assignment is still running
@@ -18,7 +18,7 @@ export const getMissedSignups = (
     lotterySignups.map((lotterySignup) => lotterySignup.gameDetails),
   );
 
-  // Get signup times for past signed games
+  // Get signup times for past lottery signup
   const pastSignupTimes = lotterySignupsStartTimes.filter(
     (lotterySignupsStartTime) => {
       const signupEndTime = dayjs(lotterySignupsStartTime).subtract(
@@ -32,16 +32,16 @@ export const getMissedSignups = (
     },
   );
 
-  // Check if there are past signed games without entered game => missed signup
+  // Check if there are past lottery signups without direct signup => missed signup
   const missedSignupTimes = pastSignupTimes.filter((pastSignupTime) => {
     let found = false;
-    if (enteredGames.length === 0) {
+    if (directSignups.length === 0) {
       return pastSignupTime;
     }
 
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-    enteredGames.find((enteredGame) => {
-      if (enteredGame.time === pastSignupTime) {
+    directSignups.find((directSignup) => {
+      if (directSignup.time === pastSignupTime) {
         found = true;
       }
     });

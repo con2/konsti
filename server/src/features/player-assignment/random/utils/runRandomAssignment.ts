@@ -13,7 +13,7 @@ import {
   PadgRandomAssignResults,
 } from "server/types/padgRandomAssignTypes";
 import { User } from "shared/types/models/user";
-import { SignupsForProgramItem } from "server/features/signup/signupTypes";
+import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 import {
   Result,
   isErrorResult,
@@ -28,7 +28,7 @@ export const runRandomAssignment = (
   selectedGames: readonly Game[],
   playerGroups: readonly User[][],
   startTime: string,
-  signups: readonly SignupsForProgramItem[],
+  signups: readonly DirectSignupsForProgramItem[],
 ): Result<AssignmentStrategyResult, AssignmentError> => {
   const groupsResult = getGroups(playerGroups, startTime);
   if (isErrorResult(groupsResult)) {

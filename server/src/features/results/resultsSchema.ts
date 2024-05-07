@@ -6,7 +6,7 @@ const ResultsSchema = new mongoose.Schema(
     results: [
       {
         username: String,
-        enteredGame: {
+        directSignup: {
           gameDetails: { type: mongoose.Schema.Types.ObjectId, ref: "Game" },
           priority: Number,
           time: Date,

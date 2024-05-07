@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
-import { SignupDoc } from "server/features/signup/signupTypes";
+import { DirectSignupDoc } from "server/features/direct-signup/directSignupTypes";
 
-const SignupSchema = new mongoose.Schema(
+const DirectSignupSchema = new mongoose.Schema(
   {
     game: { type: mongoose.Schema.Types.ObjectId, ref: "Game" },
     userSignups: [
@@ -17,4 +17,7 @@ const SignupSchema = new mongoose.Schema(
   { timestamps: true },
 );
 
-export const SignupModel = mongoose.model<SignupDoc>("Signup", SignupSchema);
+export const SignupModel = mongoose.model<DirectSignupDoc>(
+  "direct-signup",
+  DirectSignupSchema,
+);

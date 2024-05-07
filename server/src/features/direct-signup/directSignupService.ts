@@ -3,25 +3,28 @@ import { findGameById } from "server/features/game/gameRepository";
 import { getTimeNow } from "server/features/player-assignment/utils/getTimeNow";
 import { isValidSignupTime } from "server/features/user/userUtils";
 import {
-  DeleteEnteredGameError,
-  DeleteEnteredGameRequest,
-  DeleteEnteredGameResponse,
-  PostEnteredGameError,
-  PostEnteredGameRequest,
-  PostEnteredGameResponse,
+  DeleteDirectSignupError,
+  DeleteDirectSignupRequest,
+  DeleteDirectSignupResponse,
+  PostDirectSignupError,
+  PostDirectSignupRequest,
+  PostDirectSignupResponse,
 } from "shared/types/api/myGames";
 import { getDirectSignupStartTime } from "shared/utils/signupTimes";
 import { logger } from "server/utils/logger";
-import { delSignup, saveSignup } from "server/features/signup/signupRepository";
+import {
+  delDirectSignup,
+  saveDirectSignup,
+} from "server/features/direct-signup/directSignupRepository";
 import { findUser } from "server/features/user/userRepository";
 import { isErrorResult, unwrapResult } from "shared/utils/result";
 import { config } from "shared/config";
 
-export const storeSignup = async (
-  signupRequest: PostEnteredGameRequest,
-): Promise<PostEnteredGameResponse | PostEnteredGameError> => {
-  const { startTime, enteredGameId, username } = signupRequest;
-  if (config.shared().noKonstiSignupIds.includes(enteredGameId)) {
+export const storeDirectSignup = async (
+  signupRequest: PostDirectSignupRequest,
+): Promise<PostDirectSignupResponse | PostDirectSignupError> => {
+  const { startTime, directSignupGameId, username } = signupRequest;
+  if (config.shared().noKonstiSignupIds.includes(directSignupGameId)) {
     return {
       message: `No Konsti signup for this program item`,
       status: "error",
@@ -40,7 +43,7 @@ export const storeSignup = async (
 
   const timeNow = unwrapResult(timeNowResult);
 
-  const gameResult = await findGameById(enteredGameId);
+  const gameResult = await findGameById(directSignupGameId);
   if (isErrorResult(gameResult)) {
     return {
       message: `Signed game not found`,
@@ -65,7 +68,7 @@ export const storeSignup = async (
     logger.error(
       "%s",
       new Error(
-        `Signup for game ${enteredGameId} not open yet, opens ${directSignupStartTime.toISOString()}`,
+        `Signup for game ${directSignupGameId} not open yet, opens ${directSignupStartTime.toISOString()}`,
       ),
     );
     return {
@@ -107,7 +110,7 @@ export const storeSignup = async (
     };
   }
 
-  const signupResult = await saveSignup(signupRequest);
+  const signupResult = await saveDirectSignup(signupRequest);
   if (isErrorResult(signupResult)) {
     return {
       message: `Store signup failure`,
@@ -127,7 +130,7 @@ export const storeSignup = async (
     return {
       message: "Store signup success",
       status: "success",
-      enteredGame: {
+      directSignup: {
         gameDetails: signup.game,
         priority: newSignup.priority,
         time: newSignup.time,
@@ -143,9 +146,9 @@ export const storeSignup = async (
   };
 };
 
-export const removeSignup = async (
-  signupRequest: DeleteEnteredGameRequest,
-): Promise<DeleteEnteredGameResponse | DeleteEnteredGameError> => {
+export const removeDirectSignup = async (
+  signupRequest: DeleteDirectSignupRequest,
+): Promise<DeleteDirectSignupResponse | DeleteDirectSignupError> => {
   const { startTime } = signupRequest;
 
   const timeNowResult = await getTimeNow();
@@ -172,7 +175,7 @@ export const removeSignup = async (
     };
   }
 
-  const signupResult = await delSignup(signupRequest);
+  const signupResult = await delDirectSignup(signupRequest);
   if (isErrorResult(signupResult)) {
     return {
       message: "Delete signup failure",

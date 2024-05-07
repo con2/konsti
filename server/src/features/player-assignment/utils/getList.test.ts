@@ -2,7 +2,7 @@ import { expect, test } from "vitest";
 import { testGame } from "shared/tests/testGame";
 import { getList } from "server/features/player-assignment/utils/getList";
 import { User, UserGroup } from "shared/types/models/user";
-import { SignupsForProgramItem } from "server/features/signup/signupTypes";
+import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 import { ProgramType } from "shared/types/models/game";
 
 const groupCreatorUser: User = {
@@ -57,7 +57,7 @@ const groupMember2: User = {
   eventLogItems: [],
 };
 
-const previousMatchingSignup: SignupsForProgramItem = {
+const previousMatchingSignup: DirectSignupsForProgramItem = {
   game: testGame,
   userSignups: [
     {
@@ -69,7 +69,7 @@ const previousMatchingSignup: SignupsForProgramItem = {
   ],
 };
 
-const previousNotMatchingSignup: SignupsForProgramItem = {
+const previousNotMatchingSignup: DirectSignupsForProgramItem = {
   game: testGame,
   userSignups: [
     {
@@ -81,7 +81,7 @@ const previousNotMatchingSignup: SignupsForProgramItem = {
   ],
 };
 
-const previousMatchingSignupWithWrongType: SignupsForProgramItem = {
+const previousMatchingSignupWithWrongType: DirectSignupsForProgramItem = {
   game: { ...testGame, programType: ProgramType.TOURNAMENT },
   userSignups: [
     {

@@ -2,7 +2,7 @@ import dayjs from "dayjs";
 import { logger } from "server/utils/logger";
 import { User } from "shared/types/models/user";
 import { findUsers } from "server/features/user/userRepository";
-import { findSignups } from "server/features/signup/signupRepository";
+import { findDirectSignups } from "server/features/direct-signup/directSignupRepository";
 import { config } from "shared/config";
 import {
   Result,
@@ -25,7 +25,7 @@ export const verifyUserSignups = async (): Promise<
 
   const users = unwrapResult(usersResult);
 
-  const signupsResult = await findSignups();
+  const signupsResult = await findDirectSignups();
   if (isErrorResult(signupsResult)) {
     return signupsResult;
   }

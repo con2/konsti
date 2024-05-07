@@ -6,12 +6,12 @@ import { findGames } from "server/features/game/gameRepository";
 import { findSettings } from "server/features/settings/settingsRepository";
 import { shuffleArray } from "server/utils/shuffleArray";
 import { getRandomInt } from "server/features/player-assignment/utils/getRandomInt";
-import { saveSignup } from "server/features/signup/signupRepository";
+import { saveDirectSignup } from "server/features/direct-signup/directSignupRepository";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 
-export const createSignups = async (): Promise<void> => {
-  logger.info(`Generate signup data`);
+export const createDirectSignups = async (): Promise<void> => {
+  logger.info(`Generate direct signup data`);
 
   const gamesResult = await findGames();
   const games = unsafelyUnwrapResult(gamesResult);
@@ -52,9 +52,9 @@ export const createSignups = async (): Promise<void> => {
         currentIndex += usersCount;
 
         return usersChunk.map(async (user) => {
-          await saveSignup({
+          await saveDirectSignup({
             username: user.username,
-            enteredGameId: randomGame.gameId,
+            directSignupGameId: randomGame.gameId,
             startTime: randomGame.startTime,
             message: foundSignupQuestion?.questionFi
               ? faker.lorem.words(4)

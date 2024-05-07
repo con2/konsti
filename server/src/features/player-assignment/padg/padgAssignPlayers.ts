@@ -9,7 +9,7 @@ import { getStartingGames } from "server/features/player-assignment/utils/getSta
 import { getRunRandomAndPadgInput } from "server/features/player-assignment/utils/getRunRandomAndPadgInput";
 import { runPadgAssignment } from "server/features/player-assignment/padg/utils/runPadgAssignment";
 import { logger } from "server/utils/logger";
-import { SignupsForProgramItem } from "server/features/signup/signupTypes";
+import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 import {
   Result,
   isErrorResult,
@@ -23,7 +23,7 @@ export const padgAssignPlayers = (
   players: readonly User[],
   games: readonly Game[],
   startTime: string,
-  signups: readonly SignupsForProgramItem[],
+  signups: readonly DirectSignupsForProgramItem[],
 ): Result<PlayerAssignmentResult, AssignmentError> => {
   logger.debug(`***** Run Padg Assignment for ${startTime}`);
   const startingGames = getStartingGames(games, startTime);
@@ -74,7 +74,7 @@ export const padgAssignPlayers = (
 
   const selectedUniqueGames = uniq(
     assignmentResult.results.map(
-      (result) => result.enteredGame.gameDetails.gameId,
+      (result) => result.directSignup.gameDetails.gameId,
     ),
   );
 

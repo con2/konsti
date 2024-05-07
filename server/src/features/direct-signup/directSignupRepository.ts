@@ -3,16 +3,16 @@ import { groupBy, shuffle } from "lodash-es";
 import { ObjectId } from "mongoose";
 import { findGameById, findGames } from "server/features/game/gameRepository";
 import {
-  SignupsForProgramItem,
-  UserSignup,
-} from "server/features/signup/signupTypes";
-import { SignupModel } from "server/features/signup/signupSchema";
+  DirectSignupsForProgramItem,
+  UserDirectSignup,
+} from "server/features/direct-signup/directSignupTypes";
+import { SignupModel } from "server/features/direct-signup/directSignupSchema";
 import { logger } from "server/utils/logger";
 import { config } from "shared/config";
 import { MongoDbError } from "shared/types/api/errors";
 import {
-  DeleteEnteredGameRequest,
-  PostEnteredGameRequest,
+  DeleteDirectSignupRequest,
+  PostDirectSignupRequest,
 } from "shared/types/api/myGames";
 import { ProgramType } from "shared/types/models/game";
 import {
@@ -23,8 +23,10 @@ import {
   unwrapResult,
 } from "shared/utils/result";
 
-export const removeSignups = async (): Promise<Result<void, MongoDbError>> => {
-  logger.info("MongoDB: remove ALL signups from db");
+export const removeDirectSignups = async (): Promise<
+  Result<void, MongoDbError>
+> => {
+  logger.info("MongoDB: remove ALL direct signups from db");
   try {
     await SignupModel.deleteMany({});
     return makeSuccessResult(undefined);
@@ -34,24 +36,24 @@ export const removeSignups = async (): Promise<Result<void, MongoDbError>> => {
   }
 };
 
-export const findSignups = async (): Promise<
-  Result<SignupsForProgramItem[], MongoDbError>
+export const findDirectSignups = async (): Promise<
+  Result<DirectSignupsForProgramItem[], MongoDbError>
 > => {
   try {
     const results = await SignupModel.find(
       {},
       "-createdAt -updatedAt -_id -__v -userSignups._id",
     )
-      .lean<SignupsForProgramItem[]>()
+      .lean<DirectSignupsForProgramItem[]>()
       .populate("game", "-createdAt -updatedAt -_id -__v");
 
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (!results) {
-      logger.info(`MongoDB: Signups not found`);
+      logger.info(`MongoDB: Direct signups not found`);
       return makeSuccessResult([]);
     }
 
-    logger.debug(`MongoDB: Signups found`);
+    logger.debug(`MongoDB: Direct signups found`);
 
     const resultsWithFormattedTime = results
       // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
@@ -74,14 +76,14 @@ export const findSignups = async (): Promise<
   }
 };
 
-interface FindSignupsByProgramTypesResponse extends UserSignup {
+interface FindDirectSignupsByProgramTypesResponse extends UserDirectSignup {
   gameId: string;
 }
 
-export const findSignupsByProgramTypes = async (
+export const findDirectSignupsByProgramTypes = async (
   programTypes: ProgramType[],
   startTime: string,
-): Promise<Result<FindSignupsByProgramTypesResponse[], MongoDbError>> => {
+): Promise<Result<FindDirectSignupsByProgramTypesResponse[], MongoDbError>> => {
   const gamesResult = await findGames();
   if (isErrorResult(gamesResult)) {
     return gamesResult;
@@ -98,7 +100,7 @@ export const findSignupsByProgramTypes = async (
       { game: { $in: gamesByProgramTypesForStartTimeObjectIds } },
       "-createdAt -updatedAt -_id -__v",
     )
-      .lean<SignupsForProgramItem[]>()
+      .lean<DirectSignupsForProgramItem[]>()
       .populate("game", "-createdAt -updatedAt -_id -__v");
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (!signups) {
@@ -108,7 +110,7 @@ export const findSignupsByProgramTypes = async (
 
     logger.debug(`MongoDB: Found signups for time ${startTime}`);
 
-    const formattedResponse: FindSignupsByProgramTypesResponse[] =
+    const formattedResponse: FindDirectSignupsByProgramTypesResponse[] =
       signups.flatMap((signup) => {
         return signup.userSignups.map((userSignup) => ({
           ...userSignup,
@@ -126,15 +128,15 @@ export const findSignupsByProgramTypes = async (
   }
 };
 
-export const findUserSignups = async (
+export const findUserDirectSignups = async (
   username: string,
-): Promise<Result<SignupsForProgramItem[], MongoDbError>> => {
+): Promise<Result<DirectSignupsForProgramItem[], MongoDbError>> => {
   try {
     const response = await SignupModel.find(
       { "userSignups.username": username },
       "-createdAt -updatedAt -_id -__v",
     )
-      .lean<SignupsForProgramItem[]>()
+      .lean<DirectSignupsForProgramItem[]>()
       .populate("game", "-createdAt -updatedAt -_id -__v");
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (!response) {
@@ -153,13 +155,13 @@ export const findUserSignups = async (
   }
 };
 
-export const saveSignup = async (
-  signupsRequest: PostEnteredGameRequest,
-): Promise<Result<SignupsForProgramItem, MongoDbError>> => {
-  const { username, enteredGameId, startTime, message, priority } =
+export const saveDirectSignup = async (
+  signupsRequest: PostDirectSignupRequest,
+): Promise<Result<DirectSignupsForProgramItem, MongoDbError>> => {
+  const { username, directSignupGameId, startTime, message, priority } =
     signupsRequest;
 
-  const gameResult = await findGameById(enteredGameId);
+  const gameResult = await findGameById(directSignupGameId);
   if (isErrorResult(gameResult)) {
     return gameResult;
   }
@@ -188,7 +190,7 @@ export const saveSignup = async (
         fields: "-userSignups._id -_id -__v -createdAt -updatedAt",
       },
     )
-      .lean<SignupsForProgramItem>()
+      .lean<DirectSignupsForProgramItem>()
       .populate("game");
     if (!signup) {
       logger.warn(
@@ -209,11 +211,11 @@ export const saveSignup = async (
 
 interface SaveSignupsResponse {
   modifiedCount: number;
-  droppedSignups: PostEnteredGameRequest[];
+  droppedSignups: PostDirectSignupRequest[];
 }
 
-export const saveSignups = async (
-  signupsRequests: PostEnteredGameRequest[],
+export const saveDirectSignups = async (
+  signupsRequests: PostDirectSignupRequest[],
 ): Promise<Result<SaveSignupsResponse, MongoDbError>> => {
   const gamesResult = await findGames();
   if (isErrorResult(gamesResult)) {
@@ -223,10 +225,10 @@ export const saveSignups = async (
 
   const signupsByProgramItems = groupBy(
     signupsRequests,
-    (signup) => signup.enteredGameId,
+    (signup) => signup.directSignupGameId,
   );
 
-  const droppedSignups: PostEnteredGameRequest[] = [];
+  const droppedSignups: PostDirectSignupRequest[] = [];
 
   const bulkOps = Object.entries(signupsByProgramItems).flatMap(
     ([gameId, signups]) => {
@@ -235,7 +237,7 @@ export const saveSignups = async (
         return [];
       }
 
-      let finalSignups: PostEnteredGameRequest[] = signups;
+      let finalSignups: PostDirectSignupRequest[] = signups;
       if (signups.length > game.maxAttendance) {
         logger.error(
           "%s",
@@ -284,12 +286,12 @@ export const saveSignups = async (
   }
 };
 
-export const delSignup = async (
-  signupRequest: DeleteEnteredGameRequest,
-): Promise<Result<SignupsForProgramItem, MongoDbError>> => {
-  const { username, enteredGameId } = signupRequest;
+export const delDirectSignup = async (
+  signupRequest: DeleteDirectSignupRequest,
+): Promise<Result<DirectSignupsForProgramItem, MongoDbError>> => {
+  const { username, directSignupGameId } = signupRequest;
 
-  const gameResult = await findGameById(enteredGameId);
+  const gameResult = await findGameById(directSignupGameId);
   if (isErrorResult(gameResult)) {
     return gameResult;
   }
@@ -308,7 +310,7 @@ export const delSignup = async (
       },
       { new: true, fields: "-userSignups._id -_id -__v -createdAt -updatedAt" },
     )
-      .lean<SignupsForProgramItem>()
+      .lean<DirectSignupsForProgramItem>()
       .populate("game", "-createdAt -updatedAt -_id -__v");
 
     if (!signup) {
@@ -350,7 +352,7 @@ export const delSignup = async (
   }
 };
 
-export const delSignupDocumentsByGameIds = async (
+export const delDirectSignupDocumentsByGameIds = async (
   gameIds: string[],
 ): Promise<Result<void, MongoDbError>> => {
   const gamesResult = await findGames();
@@ -381,7 +383,7 @@ export const delSignupDocumentsByGameIds = async (
   }
 };
 
-export const resetSignupsByGameIds = async (
+export const resetDirectSignupsByGameIds = async (
   gameIds: string[],
 ): Promise<Result<void, MongoDbError>> => {
   const gamesResult = await findGames();
@@ -412,7 +414,7 @@ export const resetSignupsByGameIds = async (
   }
 };
 
-export const delAssignmentSignupsByStartTime = async (
+export const delAssignmentDirectSignupsByStartTime = async (
   startTime: string,
 ): Promise<Result<void, MongoDbError>> => {
   const gamesResult = await findGames();
@@ -462,7 +464,7 @@ export const delAssignmentSignupsByStartTime = async (
   }
 };
 
-export const createEmptySignupDocumentForProgramItems = async (
+export const createEmptyDirectSignupDocumentForProgramItems = async (
   programItemObjectIds: ObjectId[],
 ): Promise<Result<void, MongoDbError>> => {
   const signupDocs = programItemObjectIds.map((programItemObjectId) => {

@@ -26,9 +26,9 @@ import {
   postSignupQuestion,
 } from "server/features/settings/settingsController";
 import {
-  deleteSignup,
-  postSignup,
-} from "server/features/signup/signupController";
+  deleteDirectSignup,
+  postDirectSignup,
+} from "server/features/direct-signup/directSignupController";
 import { postEventLogItem } from "server/features/user/event-log/eventLogController";
 import { postFavorite } from "server/features/user/favorite-game/favoriteGameController";
 import {
@@ -83,7 +83,7 @@ apiRoutes.post(ApiEndpoint.SIGNUP_QUESTION, postSignupQuestion);
 apiRoutes.post(ApiEndpoint.SESSION_RESTORE, postSessionRestore);
 apiRoutes.post(ApiEndpoint.USERS_PASSWORD, postUserPassword);
 apiRoutes.post(ApiEndpoint.SETTINGS, postSettings);
-apiRoutes.post(ApiEndpoint.SIGNUP, postSignup);
+apiRoutes.post(ApiEndpoint.DIRECT_SIGNUP, postDirectSignup);
 apiRoutes.post(ApiEndpoint.EVENT_LOG, postEventLogItem);
 apiRoutes.post(ApiEndpoint.PROGRAM_UPDATE_CRON, postAutoUpdateGames);
 apiRoutes.post(ApiEndpoint.ASSIGNMENT_CRON, postAutoAssignment);
@@ -107,7 +107,7 @@ apiRoutes.get(ApiEndpoint.HEALTH, getHealthStatus);
 /* DELETE routes */
 
 apiRoutes.delete(ApiEndpoint.SIGNUP_QUESTION, deleteSignupQuestion);
-apiRoutes.delete(ApiEndpoint.SIGNUP, deleteSignup);
+apiRoutes.delete(ApiEndpoint.DIRECT_SIGNUP, deleteDirectSignup);
 
 /* DEV routes */
 

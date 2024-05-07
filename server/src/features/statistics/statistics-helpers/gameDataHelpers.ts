@@ -19,9 +19,9 @@ export const getGamesByStartTime = (
 
 const getUsersByGames = (_users: readonly User[]): StringNumberObject => {
   // TODO: Update to use signup collection
-  // const enteredGames = users.flatMap((user) => user.enteredGames);
-  const enteredGames: Signup[] = [];
-  const usersByGames = countBy(enteredGames, "gameDetails.gameId");
+  // const directSignups = users.flatMap((user) => user.directSignups);
+  const directSignups: Signup[] = [];
+  const usersByGames = countBy(directSignups, "gameDetails.gameId");
   return usersByGames;
 };
 

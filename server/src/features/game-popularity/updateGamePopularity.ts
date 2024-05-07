@@ -2,7 +2,7 @@ import { logger } from "server/utils/logger";
 import { updateWithAssign } from "server/features/game-popularity/utils/updateWithAssign";
 import { findUsers } from "server/features/user/userRepository";
 import { findGames } from "server/features/game/gameRepository";
-import { findSignups } from "server/features/signup/signupRepository";
+import { findDirectSignups } from "server/features/direct-signup/directSignupRepository";
 import {
   Result,
   isErrorResult,
@@ -33,7 +33,7 @@ export const updateGamePopularity = async (): Promise<
     twoPhaseSignupProgramTypes.includes(game.programType),
   );
 
-  const signupsResult = await findSignups();
+  const signupsResult = await findDirectSignups();
   if (isErrorResult(signupsResult)) {
     return signupsResult;
   }

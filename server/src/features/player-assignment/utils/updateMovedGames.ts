@@ -53,7 +53,7 @@ export const updateMovedGames = async (
 const removeMovedLotterySignups = async (
   movedGames: readonly Game[],
 ): Promise<Result<void, MongoDbError>> => {
-  logger.info("Remove moved signed games from users");
+  logger.info("Remove moved lottery signups from users");
 
   const usersResult = await findUsers();
   if (isErrorResult(usersResult)) {

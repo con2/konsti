@@ -1,7 +1,7 @@
 import { testGame, testGame2 } from "shared/tests/testGame";
 import { NewUser } from "server/types/userTypes";
 import { Signup, UserGroup } from "shared/types/models/user";
-import { PostEnteredGameRequest } from "shared/types/api/myGames";
+import { PostDirectSignupRequest } from "shared/types/api/myGames";
 import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 
 export const mockUser: NewUser = {
@@ -64,17 +64,17 @@ export const mockLotterySignups: readonly Signup[] = [
   },
 ];
 
-export const mockPostEnteredGameRequest: PostEnteredGameRequest = {
+export const mockPostDirectSignupRequest: PostDirectSignupRequest = {
   username: mockUser.username,
-  enteredGameId: testGame.gameId,
+  directSignupGameId: testGame.gameId,
   startTime: testGame.startTime,
   message: "",
   priority: DIRECT_SIGNUP_PRIORITY,
 };
 
-export const mockPostEnteredGameRequest2: PostEnteredGameRequest = {
+export const mockPostDirectSignupRequest2: PostDirectSignupRequest = {
   username: mockUser.username,
-  enteredGameId: testGame2.gameId,
+  directSignupGameId: testGame2.gameId,
   startTime: testGame2.startTime,
   message: "",
   priority: DIRECT_SIGNUP_PRIORITY,

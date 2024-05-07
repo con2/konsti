@@ -1,11 +1,11 @@
 import dayjs from "dayjs";
 import { AssignmentResult } from "shared/types/models/result";
 import {
-  delSignup,
-  delAssignmentSignupsByStartTime,
-  findSignupsByProgramTypes,
-  saveSignups,
-} from "server/features/signup/signupRepository";
+  delDirectSignup,
+  delAssignmentDirectSignupsByStartTime,
+  findDirectSignupsByProgramTypes,
+  saveDirectSignups,
+} from "server/features/direct-signup/directSignupRepository";
 import {
   Result,
   isErrorResult,
@@ -28,16 +28,17 @@ export const saveUserSignupResults = async (
   // Remove previous assignment result for the same start time
   // This does not remove "directSignupAlwaysOpen" signups or previous signups from moved program items
   const delAssignmentSignupsByStartTimeResult =
-    await delAssignmentSignupsByStartTime(startTime);
+    await delAssignmentDirectSignupsByStartTime(startTime);
   if (isErrorResult(delAssignmentSignupsByStartTimeResult)) {
     return delAssignmentSignupsByStartTimeResult;
   }
 
   // Only "directSignupAlwaysOpen" signups and previous signups from moved program items should be remaining
-  const twoPhaseSignupsByStartTimeResult = await findSignupsByProgramTypes(
-    config.shared().twoPhaseSignupProgramTypes,
-    startTime,
-  );
+  const twoPhaseSignupsByStartTimeResult =
+    await findDirectSignupsByProgramTypes(
+      config.shared().twoPhaseSignupProgramTypes,
+      startTime,
+    );
   if (isErrorResult(twoPhaseSignupsByStartTimeResult)) {
     return twoPhaseSignupsByStartTimeResult;
   }
@@ -55,9 +56,9 @@ export const saveUserSignupResults = async (
     );
 
     if (existingSignup) {
-      const delSignupResult = await delSignup({
+      const delSignupResult = await delDirectSignup({
         username: existingSignup.username,
-        enteredGameId: existingSignup.gameId,
+        directSignupGameId: existingSignup.gameId,
         startTime: existingSignup.time,
       });
       if (isErrorResult(delSignupResult)) {
@@ -79,15 +80,15 @@ export const saveUserSignupResults = async (
   const newSignups = results.map((result) => {
     return {
       username: result.username,
-      enteredGameId: result.enteredGame.gameDetails.gameId,
+      directSignupGameId: result.directSignup.gameDetails.gameId,
       startTime,
-      message: result.enteredGame.message,
-      priority: result.enteredGame.priority,
+      message: result.directSignup.message,
+      priority: result.directSignup.priority,
     };
   });
 
   // This might drop some signups if by some error too many signups are passed for a program item
-  const saveSignupsResult = await saveSignups(newSignups);
+  const saveSignupsResult = await saveDirectSignups(newSignups);
   if (isErrorResult(saveSignupsResult)) {
     return saveSignupsResult;
   }
@@ -110,8 +111,8 @@ export const saveUserSignupResults = async (
           return droppedSignups.find(
             (signup) =>
               !(
-                signup.enteredGameId ===
-                  result.enteredGame.gameDetails.gameId &&
+                signup.directSignupGameId ===
+                  result.directSignup.gameDetails.gameId &&
                 signup.username === result.username
               ),
           );
@@ -122,7 +123,7 @@ export const saveUserSignupResults = async (
   const addEventLogItemsResult = await addEventLogItems({
     updates: finalResults.map((result) => ({
       username: result.username,
-      programItemId: result.enteredGame.gameDetails.gameId,
+      programItemId: result.directSignup.gameDetails.gameId,
       programItemStartTime: startTime,
       createdAt: dayjs().toISOString(),
     })),

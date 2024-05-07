@@ -7,7 +7,7 @@ import { ResultsCollectionEntry } from "server/types/resultTypes";
 import { writeJson } from "server/features/statistics/statsUtil";
 import { config } from "shared/config";
 import { Game } from "shared/types/models/game";
-import { SignupDoc } from "server/features/signup/signupTypes";
+import { DirectSignupDoc } from "server/features/direct-signup/directSignupTypes";
 import { SettingsDoc } from "server/types/settingsTypes";
 
 export const gameIdFix = async (year: number, event: string): Promise<void> => {
@@ -38,7 +38,7 @@ export const gameIdFix = async (year: number, event: string): Promise<void> => {
 
   logger.info(`Loaded ${games.length} games`);
 
-  const signups: SignupDoc[] = JSON.parse(
+  const signups: DirectSignupDoc[] = JSON.parse(
     fs.readFileSync(
       `${config.server().statsDataDir}/${event}/${year}/signups.json`,
       "utf8",
@@ -102,25 +102,25 @@ export const gameIdFix = async (year: number, event: string): Promise<void> => {
   results.map((result) => {
     result.results.map((userResult) => {
       const matchingGame = games.find((game) => {
-        return isEqual(game._id, userResult.enteredGame.gameDetails);
+        return isEqual(game._id, userResult.directSignup.gameDetails);
       });
 
       if (!matchingGame) {
         logger.error(
           `Results: program item for id ${JSON.stringify(
-            userResult.enteredGame.gameDetails,
+            userResult.directSignup.gameDetails,
           )} not found`,
         );
-        userResult.enteredGame = {
-          ...userResult.enteredGame,
+        userResult.directSignup = {
+          ...userResult.directSignup,
           // @ts-expect-error: We don't want whole game details
           gameDetails: { gameId: "<canceled>" },
         };
         return;
       }
 
-      userResult.enteredGame = {
-        ...userResult.enteredGame,
+      userResult.directSignup = {
+        ...userResult.directSignup,
         // @ts-expect-error: We don't want whole game details
         gameDetails: { gameId: matchingGame.gameId },
       };

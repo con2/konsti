@@ -4,7 +4,7 @@ import { Game } from "shared/types/models/game";
 import { Signup, UserGames } from "shared/types/models/user";
 
 const initialState: MyGamesState = {
-  enteredGames: [],
+  directSignups: [],
   favoritedGames: [],
   lotterySignups: [],
 };
@@ -16,7 +16,7 @@ const myGamesSlice = createSlice({
     submitGetUserAsync(state, action: PayloadAction<UserGames>) {
       return {
         ...state,
-        enteredGames: action.payload.enteredGames,
+        directSignups: action.payload.directSignups,
         favoritedGames: action.payload.favoritedGames,
         lotterySignups: action.payload.lotterySignups,
       };
@@ -36,16 +36,16 @@ const myGamesSlice = createSlice({
       return { ...state, lotterySignups: action.payload };
     },
 
-    submitPostEnteredGameAsync(state, action: PayloadAction<Signup>) {
-      const games = [...state.enteredGames, action.payload];
-      return { ...state, enteredGames: games };
+    submitPostDirectSignupAsync(state, action: PayloadAction<Signup>) {
+      const directSignups = [...state.directSignups, action.payload];
+      return { ...state, directSignups };
     },
 
-    submitDeleteEnteredAsync(state, action: PayloadAction<string>) {
-      const games = state.enteredGames.filter(
+    submitDeleteDirectSignupAsync(state, action: PayloadAction<string>) {
+      const directSignups = state.directSignups.filter(
         (game) => game.gameDetails.gameId !== action.payload,
       );
-      return { ...state, enteredGames: games };
+      return { ...state, directSignups };
     },
   },
 });
@@ -54,16 +54,16 @@ export const {
   submitGetUserAsync,
   submitUpdateFavoritesAsync,
   submitPostLotterySignupsAsync,
-  submitPostEnteredGameAsync,
-  submitDeleteEnteredAsync,
+  submitPostDirectSignupAsync,
+  submitDeleteDirectSignupAsync,
 } = myGamesSlice.actions;
 
 export const myGamesReducer = myGamesSlice.reducer;
 
 // SELECTORS
 
-export const selectEnteredGames = (state: RootState): readonly Signup[] =>
-  state.myGames.enteredGames;
+export const selectDirectSignups = (state: RootState): readonly Signup[] =>
+  state.myGames.directSignups;
 export const selectLotterySignups = (state: RootState): readonly Signup[] =>
   state.myGames.lotterySignups;
 export const selectFavoritedGames = (state: RootState): readonly Game[] =>

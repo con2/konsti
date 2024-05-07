@@ -9,7 +9,7 @@ import {
   PlayerAssignmentResult,
 } from "server/types/resultTypes";
 import { getRunRandomAndPadgInput } from "server/features/player-assignment/utils/getRunRandomAndPadgInput";
-import { SignupsForProgramItem } from "server/features/signup/signupTypes";
+import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 import {
   Result,
   isErrorResult,
@@ -23,7 +23,7 @@ export const randomAssignPlayers = (
   players: readonly User[],
   games: readonly Game[],
   startTime: string,
-  signups: readonly SignupsForProgramItem[],
+  signups: readonly DirectSignupsForProgramItem[],
 ): Result<PlayerAssignmentResult, AssignmentError> => {
   logger.debug(`***** Run Random Assignment for ${startTime}`);
   const startingGames = getStartingGames(games, startTime);
@@ -73,7 +73,7 @@ export const randomAssignPlayers = (
 
   const selectedUniqueGames = uniq(
     assignmentResult.results.map(
-      (result) => result.enteredGame.gameDetails.gameId,
+      (result) => result.directSignup.gameDetails.gameId,
     ),
   );
 

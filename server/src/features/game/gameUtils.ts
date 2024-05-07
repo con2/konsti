@@ -10,10 +10,10 @@ import { findSettings } from "server/features/settings/settingsRepository";
 import { Settings, SignupQuestion } from "shared/types/models/settings";
 import { getTimeNow } from "server/features/player-assignment/utils/getTimeNow";
 import {
-  delSignupDocumentsByGameIds,
-  findSignups,
-} from "server/features/signup/signupRepository";
-import { SignupsForProgramItem } from "server/features/signup/signupTypes";
+  delDirectSignupDocumentsByGameIds,
+  findDirectSignups,
+} from "server/features/direct-signup/directSignupRepository";
+import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 import {
   Result,
   isErrorResult,
@@ -48,7 +48,7 @@ export const removeDeletedGames = async (
     );
 
     const delSignupDocumentsResult =
-      await delSignupDocumentsByGameIds(deletedGameIds);
+      await delDirectSignupDocumentsByGameIds(deletedGameIds);
     if (isErrorResult(delSignupDocumentsResult)) {
       return delSignupDocumentsResult;
     }
@@ -73,7 +73,7 @@ export const enrichGames = async (
 
   const settings = unwrapResult(settingsResult);
 
-  const signupsResult = await findSignups();
+  const signupsResult = await findDirectSignups();
   if (isErrorResult(signupsResult)) {
     return signupsResult;
   }
@@ -133,7 +133,7 @@ const getSignupStrategyForGame = (
 };
 
 const getSignupsForGame = (
-  signups: SignupsForProgramItem[],
+  signups: DirectSignupsForProgramItem[],
   gameId: string,
   signupQuestion?: SignupQuestion | undefined,
 ): UserSignup[] => {

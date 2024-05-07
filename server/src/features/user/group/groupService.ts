@@ -1,7 +1,7 @@
 import { randomBytes } from "crypto";
 import dayjs from "dayjs";
 import { getTimeNow } from "server/features/player-assignment/utils/getTimeNow";
-import { findUserSignups } from "server/features/signup/signupRepository";
+import { findUserDirectSignups } from "server/features/direct-signup/directSignupRepository";
 import {
   checkGroupExists,
   findGroupMembers,
@@ -43,7 +43,7 @@ export const generateGroupCode = (): string => {
 export const createGroup = async (
   username: string,
 ): Promise<PostCreateGroupResponse | PostCreateGroupError> => {
-  const signupsResult = await findUserSignups(username);
+  const signupsResult = await findUserDirectSignups(username);
   if (isErrorResult(signupsResult)) {
     return {
       message: "Error finding signups",
@@ -155,7 +155,7 @@ export const joinGroup = async (
   username: string,
   groupCode: string,
 ): Promise<PostJoinGroupResponse | PostJoinGroupError> => {
-  const signupsResult = await findUserSignups(username);
+  const signupsResult = await findUserDirectSignups(username);
   if (isErrorResult(signupsResult)) {
     return {
       message: "Error finding signups",

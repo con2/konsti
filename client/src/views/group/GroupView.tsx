@@ -12,7 +12,7 @@ import { NotInGroupActions } from "client/views/group/components/NotInGroupActio
 import { GroupCreatorActions } from "client/views/group/components/GroupCreatorActions";
 import { GroupMemberActions } from "client/views/group/components/GroupMemberActions";
 import { getTimeNow } from "client/utils/getTimeNow";
-import { selectEnteredGames } from "client/views/my-games/myGamesSlice";
+import { selectDirectSignups } from "client/views/my-games/myGamesSlice";
 import { config } from "shared/config";
 
 export const GroupView = (): ReactElement => {
@@ -24,7 +24,7 @@ export const GroupView = (): ReactElement => {
   const isGroupCreator = useAppSelector((state) => state.group.isGroupCreator);
   const groupMembers = useAppSelector((state) => state.group.groupMembers);
 
-  const enteredGames = useAppSelector(selectEnteredGames);
+  const directSignups = useAppSelector(selectDirectSignups);
   const { t } = useTranslation();
 
   const store = useStore();
@@ -36,21 +36,21 @@ export const GroupView = (): ReactElement => {
     fetchData();
   }, [store]);
 
-  const filteredActiveEnteredGames = enteredGames
+  const filteredActiveDirectSignups = directSignups
     .filter(
-      (enteredGame) =>
-        !directSignupAlwaysOpenIds.includes(enteredGame.gameDetails.gameId),
+      (directSignup) =>
+        !directSignupAlwaysOpenIds.includes(directSignup.gameDetails.gameId),
     )
-    .filter((enteredGame) =>
-      twoPhaseSignupProgramTypes.includes(enteredGame.gameDetails.programType),
+    .filter((directSignup) =>
+      twoPhaseSignupProgramTypes.includes(directSignup.gameDetails.programType),
     );
 
   const isInGroup = getIsInGroup(groupCode);
   const timeNow = getTimeNow();
-  const enteredGamesAfterNow = filteredActiveEnteredGames.filter((game) =>
+  const directSignupsAfterNow = filteredActiveDirectSignups.filter((game) =>
     timeNow.isBefore(dayjs(game.time)),
   );
-  const hasEnteredGames = enteredGamesAfterNow.length > 0;
+  const hasDirectSignups = directSignupsAfterNow.length > 0;
 
   return (
     <div className="group-view">
@@ -59,13 +59,15 @@ export const GroupView = (): ReactElement => {
 
       {!isInGroup && (
         <>
-          {hasEnteredGames && (
-            <EnteredGamesContainer>
+          {hasDirectSignups && (
+            <DirectSignupsContainer>
               <p>
-                <BoldText>{t("group.hasEnteredFollowingGames")}</BoldText>
+                <BoldText>
+                  {t("group.hasDirectlySignedFollowingGames")}
+                </BoldText>
               </p>
               <ListItem>
-                {filteredActiveEnteredGames.map((game) => (
+                {filteredActiveDirectSignups.map((game) => (
                   <li key={game.gameDetails.gameId}>
                     <Link to={`/games/${game.gameDetails.gameId}`}>
                       {game.gameDetails.title}
@@ -78,10 +80,10 @@ export const GroupView = (): ReactElement => {
                   {t("group.cancelSignupBeforeJoiningOrCreatingGroup")}
                 </BoldText>
               </p>
-            </EnteredGamesContainer>
+            </DirectSignupsContainer>
           )}
 
-          <NotInGroupActions disabled={hasEnteredGames} />
+          <NotInGroupActions disabled={hasDirectSignups} />
         </>
       )}
 
@@ -119,7 +121,7 @@ export const GroupView = (): ReactElement => {
   );
 };
 
-const EnteredGamesContainer = styled.div`
+const DirectSignupsContainer = styled.div`
   margin: 10px 0;
 
   > ul {

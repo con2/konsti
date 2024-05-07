@@ -1,12 +1,12 @@
 import { api } from "client/utils/api";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
-  DeleteEnteredGameError,
-  DeleteEnteredGameRequest,
-  DeleteEnteredGameResponse,
-  PostEnteredGameError,
-  PostEnteredGameRequest,
-  PostEnteredGameResponse,
+  DeleteDirectSignupError,
+  DeleteDirectSignupRequest,
+  DeleteDirectSignupResponse,
+  PostDirectSignupError,
+  PostDirectSignupRequest,
+  PostDirectSignupResponse,
   PostLotterySignupsError,
   PostLotterySignupsRequest,
   PostLotterSignupsResponse,
@@ -22,22 +22,22 @@ export const postLotterySignups = async (
   return response.data;
 };
 
-export const postEnteredGame = async (
-  requestData: PostEnteredGameRequest,
-): Promise<PostEnteredGameResponse | PostEnteredGameError> => {
+export const postDirectSignup = async (
+  requestData: PostDirectSignupRequest,
+): Promise<PostDirectSignupResponse | PostDirectSignupError> => {
   const response = await api.post<
-    PostEnteredGameResponse,
-    PostEnteredGameRequest
-  >(ApiEndpoint.SIGNUP, requestData);
+    PostDirectSignupResponse,
+    PostDirectSignupRequest
+  >(ApiEndpoint.DIRECT_SIGNUP, requestData);
   return response.data;
 };
 
-export const deleteEnteredGame = async (
-  requestData: DeleteEnteredGameRequest,
-): Promise<DeleteEnteredGameResponse | DeleteEnteredGameError> => {
+export const deleteDirectSignup = async (
+  requestData: DeleteDirectSignupRequest,
+): Promise<DeleteDirectSignupResponse | DeleteDirectSignupError> => {
   const response = await api.delete<
-    DeleteEnteredGameResponse,
-    DeleteEnteredGameRequest
-  >(ApiEndpoint.SIGNUP, { data: requestData });
+    DeleteDirectSignupResponse,
+    DeleteDirectSignupRequest
+  >(ApiEndpoint.DIRECT_SIGNUP, { data: requestData });
   return response.data;
 };

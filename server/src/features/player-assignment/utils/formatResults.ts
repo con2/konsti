@@ -35,7 +35,7 @@ export const formatResults = (
     })
     .flat();
 
-  const getEnteredGame = (player: User): Signup | undefined => {
+  const getDirectSignup = (player: User): Signup | undefined => {
     return player.lotterySignups.find((lotterySignup) => {
       return assignResults.find(
         (assignResult) =>
@@ -47,11 +47,11 @@ export const formatResults = (
   };
 
   const results = selectedPlayers.reduce<AssignmentResult[]>((acc, player) => {
-    const enteredGame = getEnteredGame(player);
-    if (enteredGame) {
+    const directSignup = getDirectSignup(player);
+    if (directSignup) {
       acc.push({
         username: player.username,
-        enteredGame,
+        directSignup,
       });
     }
     return acc;

@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { capitalize } from "lodash-es";
 import { getWeekdayAndTime } from "client/utils/timeFormatter";
 import { Signup } from "shared/types/models/user";
-import { EnteredGameRow } from "client/views/my-games/components/EnteredGameRow";
+import { DirectSignupRow } from "client/views/my-games/components/DirectSignupRow";
 
 interface Props {
   signups: readonly Signup[];
@@ -29,7 +29,7 @@ export const ResultsByStartTimes = ({
             <ul>
               {signups.map((signup) => {
                 return (
-                  <EnteredGameRow
+                  <DirectSignupRow
                     key={signup.gameDetails.gameId}
                     signup={signup}
                     startTime={startTime}

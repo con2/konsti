@@ -15,7 +15,7 @@ import {
 interface Props {
   startTime: string;
   lotterySignups: readonly Signup[];
-  enteredGames: readonly Signup[];
+  directSignups: readonly Signup[];
   timeslotSignupStrategy: SignupStrategy;
   isGroupCreator: boolean;
   groupCode: string;
@@ -24,7 +24,7 @@ interface Props {
 export const GameListTitle = ({
   startTime,
   lotterySignups,
-  enteredGames,
+  directSignups,
   timeslotSignupStrategy,
   isGroupCreator,
   groupCode,
@@ -44,7 +44,7 @@ export const GameListTitle = ({
   const lotterySignupsCount = lotterySignups.filter(
     (game) => game.gameDetails.startTime === startTime,
   ).length;
-  const directSignup = enteredGames.find(
+  const directSignup = directSignups.find(
     (game) => game.gameDetails.startTime === startTime,
   );
 

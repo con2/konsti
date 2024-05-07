@@ -2,20 +2,20 @@ import { getUser } from "client/services/userServices";
 import { postFavorite } from "client/services/favoriteServices";
 import { AppThunk } from "client/types/reduxTypes";
 import {
-  submitDeleteEnteredAsync,
-  submitPostEnteredGameAsync,
+  submitDeleteDirectSignupAsync,
+  submitPostDirectSignupAsync,
   submitGetUserAsync,
   submitPostLotterySignupsAsync,
   submitUpdateFavoritesAsync,
 } from "client/views/my-games/myGamesSlice";
 import {
-  DeleteEnteredGameRequest,
-  PostEnteredGameRequest,
+  DeleteDirectSignupRequest,
+  PostDirectSignupRequest,
   PostLotterySignupsRequest,
 } from "shared/types/api/myGames";
 import {
-  deleteEnteredGame,
-  postEnteredGame,
+  deleteDirectSignup,
+  postDirectSignup,
   postLotterySignups,
 } from "client/services/myGamesServices";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
@@ -32,14 +32,14 @@ export const submitGetUser = (username: string): AppThunk => {
     }
 
     if (getUserResponse.status === "success") {
-      const enteredGames = getUserResponse.games.enteredGames;
+      const directSignups = getUserResponse.games.directSignups;
       const favoritedGames = getUserResponse.games.favoritedGames;
       const lotterySignups = getUserResponse.games.lotterySignups;
       const eventLogItems = getUserResponse.eventLogItems;
 
       dispatch(
         submitGetUserAsync({
-          enteredGames,
+          directSignups,
           favoritedGames,
           lotterySignups,
         }),
@@ -73,7 +73,7 @@ export const submitUpdateFavorites = (favoriteData: NewFavorite): AppThunk => {
   };
 };
 
-export enum PostEnteredGameErrorMessage {
+export enum PostDirectSignupErrorMessage {
   GAME_FULL = "signupError.programFull",
   UNKNOWN = "signupError.generic",
   SIGNUP_ENDED = "signupError.signupEnded",
@@ -81,60 +81,62 @@ export enum PostEnteredGameErrorMessage {
   NO_KONSTI_SIGNUP = "signupError.noKonstiSignup",
 }
 
-export const submitPostEnteredGame = (
-  data: PostEnteredGameRequest,
-): AppThunk<Promise<PostEnteredGameErrorMessage | undefined>> => {
-  return async (dispatch): Promise<PostEnteredGameErrorMessage | undefined> => {
-    const signupResponse = await postEnteredGame(data);
+export const submitPostDirectSignup = (
+  data: PostDirectSignupRequest,
+): AppThunk<Promise<PostDirectSignupErrorMessage | undefined>> => {
+  return async (
+    dispatch,
+  ): Promise<PostDirectSignupErrorMessage | undefined> => {
+    const signupResponse = await postDirectSignup(data);
 
     if (signupResponse.status === "error") {
       switch (signupResponse.errorId) {
         case "signupEnded":
-          return PostEnteredGameErrorMessage.SIGNUP_ENDED;
+          return PostDirectSignupErrorMessage.SIGNUP_ENDED;
         case "gameFull":
-          return PostEnteredGameErrorMessage.GAME_FULL;
+          return PostDirectSignupErrorMessage.GAME_FULL;
         case "signupNotOpenYet":
-          return PostEnteredGameErrorMessage.SIGNUP_NOT_OPEN_YET;
+          return PostDirectSignupErrorMessage.SIGNUP_NOT_OPEN_YET;
         case "noKonstiSignup":
-          return PostEnteredGameErrorMessage.NO_KONSTI_SIGNUP;
+          return PostDirectSignupErrorMessage.NO_KONSTI_SIGNUP;
         case "unknown":
-          return PostEnteredGameErrorMessage.UNKNOWN;
+          return PostDirectSignupErrorMessage.UNKNOWN;
         default:
           exhaustiveSwitchGuard(signupResponse.errorId);
       }
     }
 
     if (signupResponse.status === "success") {
-      dispatch(submitPostEnteredGameAsync(signupResponse.enteredGame));
+      dispatch(submitPostDirectSignupAsync(signupResponse.directSignup));
     }
   };
 };
 
-export enum DeleteEnteredGameErrorMessage {
+export enum DeleteDirectSignupErrorMessage {
   UNKNOWN = "signupError.cancelFailed",
   SIGNUP_ENDED = "signupError.signupEnded",
 }
 
-export const submitDeleteEnteredGame = (
-  data: DeleteEnteredGameRequest,
-): AppThunk<Promise<DeleteEnteredGameErrorMessage | undefined>> => {
+export const submitDeleteDirectSignup = (
+  data: DeleteDirectSignupRequest,
+): AppThunk<Promise<DeleteDirectSignupErrorMessage | undefined>> => {
   return async (
     dispatch,
-  ): Promise<DeleteEnteredGameErrorMessage | undefined> => {
-    const signupResponse = await deleteEnteredGame(data);
+  ): Promise<DeleteDirectSignupErrorMessage | undefined> => {
+    const signupResponse = await deleteDirectSignup(data);
 
     if (signupResponse.status === "error") {
       switch (signupResponse.errorId) {
         case "signupEnded":
-          return DeleteEnteredGameErrorMessage.SIGNUP_ENDED;
+          return DeleteDirectSignupErrorMessage.SIGNUP_ENDED;
         case "unknown":
-          return DeleteEnteredGameErrorMessage.UNKNOWN;
+          return DeleteDirectSignupErrorMessage.UNKNOWN;
         default:
           exhaustiveSwitchGuard(signupResponse.errorId);
       }
     }
     if (signupResponse.status === "success") {
-      dispatch(submitDeleteEnteredAsync(data.enteredGameId));
+      dispatch(submitDeleteDirectSignupAsync(data.directSignupGameId));
     }
   };
 };

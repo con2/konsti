@@ -13,7 +13,7 @@ import {
 import { removeDeletedGames } from "server/features/game/gameUtils";
 import { removeInvalidGamesFromUsers } from "server/features/player-assignment/utils/removeInvalidGamesFromUsers";
 import { MongoDbError } from "shared/types/api/errors";
-import { createEmptySignupDocumentForProgramItems } from "server/features/signup/signupRepository";
+import { createEmptyDirectSignupDocumentForProgramItems } from "server/features/direct-signup/directSignupRepository";
 
 export const removeGames = async (
   gameIds?: string[],
@@ -109,7 +109,7 @@ export const saveGames = async (
   // Create signup document for new program items
   if (newGameObjectIds.length > 0) {
     const createEmptySignupResult =
-      await createEmptySignupDocumentForProgramItems(newGameObjectIds);
+      await createEmptyDirectSignupDocumentForProgramItems(newGameObjectIds);
     if (isErrorResult(createEmptySignupResult)) {
       return createEmptySignupResult;
     }
