@@ -42,3 +42,13 @@ export const getDateAndTime = (time: string): string => {
   // eslint-disable-next-line no-restricted-syntax -- We want to call format here
   return dayjs(time).tz(TIMEZONE).format(timeFormat);
 };
+
+export const formatGameDuration = (mins: number): string => {
+  const hours = Math.floor(mins / 60);
+  const minutes = mins % 60;
+
+  const hoursStr = hours === 0 ? "" : `${hours} h`;
+  const minutesStr = minutes === 0 ? "" : `${minutes} min`;
+
+  return `${hoursStr} ${minutesStr}`;
+};

@@ -10,6 +10,7 @@ import { getSignedGames } from "client/utils/getUpcomingGames";
 import { getTimeslotSignupStrategy } from "client/views/all-games/allGamesUtils";
 import {
   selectEnteredGames,
+  selectFavoritedGames,
   selectSignedGames,
 } from "client/views/my-games/myGamesSlice";
 import { RaisedCard } from "client/components/RaisedCard";
@@ -31,6 +32,10 @@ export const AllGamesList = ({ games }: Props): ReactElement => {
   const groupMembers = useAppSelector((state) => state.group.groupMembers);
   const isGroupCreator = useAppSelector((state) => state.group.isGroupCreator);
   const groupCode = useAppSelector((state) => state.group.groupCode);
+  const username = useAppSelector((state) => state.login.username);
+  const loggedIn = useAppSelector((state) => state.login.loggedIn);
+  const userGroup = useAppSelector((state) => state.login.userGroup);
+  const favoritedGames = useAppSelector(selectFavoritedGames);
   const isInGroup = getIsInGroup(groupCode);
 
   const [loading, setLoading] = useState(false);
@@ -76,13 +81,17 @@ export const AllGamesList = ({ games }: Props): ReactElement => {
                 key={game.gameId}
                 isAlwaysExpanded={false}
                 game={game}
-                players={gameSignups?.users.length ?? 0}
                 startTime={startTime}
+                players={gameSignups?.users.length ?? 0}
                 signupStrategy={timeslotSignupStrategy}
                 signedGames={ownOrGroupCreatorSignedGames}
                 enteredGames={enteredGames}
                 loading={loading}
                 setLoading={setLoading}
+                username={username}
+                loggedIn={loggedIn}
+                userGroup={userGroup}
+                favoritedGames={favoritedGames}
               />
             );
           })}

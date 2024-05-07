@@ -1,9 +1,10 @@
 import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { capitalize } from "lodash-es";
 import { getWeekdayAndTime, getTime } from "client/utils/timeFormatter";
-import { Game, GameStyle, Genre } from "shared/types/models/game";
+import { Game } from "shared/types/models/game";
+import { InfoText } from "client/components/InfoText";
 
 interface Props {
   game: Game;
@@ -12,224 +13,115 @@ interface Props {
 export const GameInfo = ({ game }: Props): ReactElement => {
   const { t } = useTranslation();
 
+  const formatTime = () => {
+    const hours = Math.floor(game.mins / 60);
+    const minutes = Math.round((game.mins / 60 - hours) * 60);
+
+    const minutesDuration = !minutes ? `` : ` ${minutes}\xa0${t("minutes")}`;
+
+    // Note that the dash should be an en dash
+    return `${capitalize(getWeekdayAndTime(game.startTime))}–${getTime(game.endTime)} (${hours}\xa0${t("hours")}${minutesDuration})`;
+  };
+
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (!game) {
     return <div />;
   }
 
-  const getGenres = (genresList: readonly Genre[]): ReactElement[] => {
-    return genresList.map((genre, i) => {
-      return (
-        <span key={genre}>
-          <NoWrapText>{t(`genre.${genre}`)}</NoWrapText>
-          <span>{i !== genresList.length - 1 ? ", " : ""}</span>
-        </span>
-      );
-    });
-  };
-
-  const getStyles = (styles: readonly GameStyle[]): ReactElement[] => {
-    return styles.map((style, i) => {
-      return (
-        <span key={style}>
-          <NoWrapText>{t(`gameStyle.${style}`)}</NoWrapText>
-          <span>{i !== styles.length - 1 ? ", " : ""}</span>
-        </span>
-      );
-    });
-  };
-
-  const tagsList = game.tags.map((tag, i) => {
-    return (
-      <span key={tag}>
-        {t(`gameTags.${tag}`)}
-        <span>{i !== game.tags.length - 1 ? ", " : ""}</span>
-      </span>
-    );
-  });
-
-  const getFormattedStartTime = (startTime: string): string =>
-    capitalize(getWeekdayAndTime(startTime));
-
-  const getFormattedEndTime = (endTime: string): string => getTime(endTime);
-
-  const getFormattedDuration = (duration: number): string => {
-    const hours = Math.floor(duration / 60);
-    const minutes = Math.round((duration / 60 - hours) * 60);
-
-    if (!minutes) {
-      return `${hours} ${t("hours")}`;
-    }
-    return `${hours} ${t("hours")} ${minutes} ${t("minutes")}`;
-  };
-
-  const getFormattedAccessibility = (): ReactElement[] => {
-    return game.accessibilityValues.map((accessibilityValue) => {
-      return (
-        <StyledAccessibilityValue key={accessibilityValue}>
-          {t(`accessibility.${accessibilityValue}`)}
-        </StyledAccessibilityValue>
-      );
-    });
-  };
-
-  const formattedAccessibilityValues = getFormattedAccessibility();
-
   return (
     <DetailsContainer>
       {game.revolvingDoor && (
-        <>
-          <GameDetailsRow $rowWithSubtext={true}>
-            <GameDetailsTitle>
-              {t("gameInfo.revolvingDoor", {
-                PROGRAM_TYPE: t(`programTypeSingular.${game.programType}`),
-              })}
-            </GameDetailsTitle>
-          </GameDetailsRow>
-
-          <GameDetailsRow $subtext={true} $gap={true}>
-            <GameDetailsTextIndent>
-              {t("revolvingDoorInstruction", {
-                PROGRAM_TYPE: t(`programTypeIllative.${game.programType}`),
-                PROGRAM_TYPE2: t(`programTypeInessive.${game.programType}`),
-              })}
-            </GameDetailsTextIndent>
-          </GameDetailsRow>
-        </>
+        <InfoText>
+          {t("gameInfo.revolvingDoor", {
+            PROGRAM_TYPE: t(`programTypeSingular.${game.programType}`),
+            PROGRAM_TYPE2: t(`programTypeInessive.${game.programType}`),
+          })}
+        </InfoText>
       )}
 
       {!!game.mins && (
-        <GameDetailsRow>
-          <GameDetailsTitle $twoColumns={true}>
-            {t("gameInfo.runTime")}
-          </GameDetailsTitle>
-          <GameDetailsValue>
-            <span>
-              {getFormattedStartTime(game.startTime)}
-              {"–"}
-              {getFormattedEndTime(game.endTime)}{" "}
-            </span>
-            <NoWrapText>({getFormattedDuration(game.mins)})</NoWrapText>
-          </GameDetailsValue>
-        </GameDetailsRow>
+        <TwoColumnRow>
+          <DetailTitle>{t("gameInfo.runTime")}</DetailTitle>
+          {formatTime()}
+        </TwoColumnRow>
       )}
 
       {game.location && (
-        <GameDetailsRow>
-          <GameDetailsTitle $twoColumns={true}>
-            {t("gameInfo.location")}
-          </GameDetailsTitle>
-          <GameDetailsValue>{game.location}</GameDetailsValue>
-        </GameDetailsRow>
+        <TwoColumnRow>
+          <DetailTitle>{t("gameInfo.location")}</DetailTitle>
+          {game.location}
+        </TwoColumnRow>
       )}
 
-      {/*
-      {config.shared().activeProgramTypes.length > 1 && game.programType && (
-        <GameDetailsRow>
-          <GameDetailsTitle $twoColumns={true}>
-            {t("gameInfo.programType")}
-          </GameDetailsTitle>
-          <GameDetailsValue>
-            {t(`programType.${game.programType}`)}
-          </GameDetailsValue>
-        </GameDetailsRow>
-      )}
-      */}
-
-      {/* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition */}
-      {game.genres && game.genres.length > 0 && (
-        <GameDetailsRow>
-          <GameDetailsTitle $twoColumns={true}>
-            {t("gameInfo.genres")}
-          </GameDetailsTitle>
-          <GameDetailsValue>{getGenres(game.genres)}</GameDetailsValue>
-        </GameDetailsRow>
+      {game.genres.length > 0 && (
+        <TwoColumnRow>
+          <DetailTitle>{t("gameInfo.genres")}</DetailTitle>
+          {game.genres.map((genre) => t(`genre.${genre}`)).join(", ")}
+        </TwoColumnRow>
       )}
 
-      {tagsList.length > 0 && (
-        <GameDetailsRow>
-          <GameDetailsTitle $twoColumns={true}>
-            {t("gameInfo.tags")}
-          </GameDetailsTitle>
-          <GameDetailsValue>{tagsList}</GameDetailsValue>
-        </GameDetailsRow>
+      {game.tags.length > 0 && (
+        <TwoColumnRow>
+          <DetailTitle>{t("gameInfo.tags")}</DetailTitle>
+          {game.tags.map((tag) => t(`gameTags.${tag}`)).join(", ")}
+        </TwoColumnRow>
       )}
 
       {game.people && (
-        <GameDetailsRow>
-          <GameDetailsTitle $twoColumns={true}>
-            {t("gameInfo.organiser")}
-          </GameDetailsTitle>
-          <GameDetailsValue>{game.people}</GameDetailsValue>
-        </GameDetailsRow>
+        <TwoColumnRow>
+          <DetailTitle>{t("gameInfo.organiser")}</DetailTitle>
+          {game.people}
+        </TwoColumnRow>
       )}
 
-      {game.description && (
-        <>
-          <GameDetailsRow>
-            <GameDetailsTitle>{t("gameInfo.description")}</GameDetailsTitle>
-          </GameDetailsRow>
-          <GameDetailsRow $gap={true}>
-            <Description>{game.description}</Description>
-          </GameDetailsRow>
-        </>
-      )}
+      <p>{game.description}</p>
 
       {game.contentWarnings && game.contentWarnings !== "-" && (
-        <GameDetailsRow>
-          <GameDetailsTitle $twoColumns={true}>
-            {t("gameInfo.contentWarnings")}
-          </GameDetailsTitle>
-          <GameDetailsValue>{game.contentWarnings}</GameDetailsValue>
-        </GameDetailsRow>
+        <ResponsiveColumnRow>
+          <DetailTitle> {t("gameInfo.contentWarnings")}</DetailTitle>
+          {game.contentWarnings}
+        </ResponsiveColumnRow>
       )}
 
-      {formattedAccessibilityValues.length > 0 && (
-        <GameDetailsRow>
-          <GameDetailsTitle $twoColumns={true}>
-            {t("gameInfo.accessibility")}
-          </GameDetailsTitle>
-          <GameDetailsValue>{formattedAccessibilityValues}</GameDetailsValue>
-        </GameDetailsRow>
+      {game.accessibilityValues.length > 0 && (
+        <ResponsiveColumnRow>
+          <DetailTitle>{t("gameInfo.accessibility")}</DetailTitle>
+          <AccessibilityValues>
+            {game.accessibilityValues.map((a) => (
+              <span key={a}>{t(`accessibility.${a}`)}</span>
+            ))}
+          </AccessibilityValues>
+        </ResponsiveColumnRow>
       )}
 
       {game.otherAccessibilityInformation && (
-        <GameDetailsRow>
-          <GameDetailsTitle $twoColumns={true}>
+        <ResponsiveColumnRow>
+          <DetailTitle>
             {t("gameInfo.otherAccessibilityInformation")}
-          </GameDetailsTitle>
-          <GameDetailsValue>
-            {game.otherAccessibilityInformation}
-          </GameDetailsValue>
-        </GameDetailsRow>
+          </DetailTitle>
+          {game.otherAccessibilityInformation}
+        </ResponsiveColumnRow>
       )}
 
       {game.gameSystem && (
-        <GameDetailsRow>
-          <GameDetailsTitle $twoColumns={true}>
-            {t("gameInfo.gameSystem")}
-          </GameDetailsTitle>
-          <GameDetailsValue>{game.gameSystem}</GameDetailsValue>
-        </GameDetailsRow>
+        <ResponsiveColumnRow>
+          <DetailTitle>{t("gameInfo.otherAuthor")}</DetailTitle>
+          {game.gameSystem}
+        </ResponsiveColumnRow>
       )}
 
       {game.otherAuthor && (
-        <GameDetailsRow>
-          <GameDetailsTitle $twoColumns={true}>
-            {t("gameInfo.otherAuthor")}
-          </GameDetailsTitle>
-          <GameDetailsValue>{game.otherAuthor}</GameDetailsValue>
-        </GameDetailsRow>
+        <ResponsiveColumnRow>
+          <DetailTitle>{t("gameInfo.otherAuthor")}</DetailTitle>
+          {game.otherAuthor}
+        </ResponsiveColumnRow>
       )}
 
-      {/* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition */}
-      {game.styles && game.styles.length > 0 && (
-        <GameDetailsRow>
-          <GameDetailsTitle $twoColumns={true}>
-            {t("gameInfo.gameStyle")}
-          </GameDetailsTitle>
-          <GameDetailsValue>{getStyles(game.styles)}</GameDetailsValue>
-        </GameDetailsRow>
+      {game.styles.length > 0 && (
+        <ResponsiveColumnRow>
+          <DetailTitle>{t("gameInfo.gameStyle")}</DetailTitle>
+          {game.styles.map((s) => t(`gameStyle.${s}`)).join(", ")}
+        </ResponsiveColumnRow>
       )}
     </DetailsContainer>
   );
@@ -240,79 +132,31 @@ const DetailsContainer = styled.div`
   word-break: break-word;
 `;
 
-interface GameDetailsRowProps {
-  $rowWithSubtext?: boolean;
-  $subtext?: boolean;
-  $gap?: boolean;
-}
-
-const GameDetailsRow = styled.div<GameDetailsRowProps>`
+const TwoColumnRow = styled.div`
   display: flex;
-  flex: 1 0 auto;
   flex-direction: row;
-  padding: 0 0 10px;
-  white-space: pre-wrap;
-  word-wrap: break-word;
-
-  ${(gameDetailsRowProps) =>
-    gameDetailsRowProps.$rowWithSubtext &&
-    css`
-      padding: 0 0 4px;
-    `};
-
-  ${(gameDetailsRowProps) =>
-    gameDetailsRowProps.$subtext &&
-    css`
-      font-size: ${(props) => props.theme.fontSizeSmall};
-    `};
-
-  ${(gameDetailsRowProps) =>
-    gameDetailsRowProps.$gap &&
-    css`
-      padding: 0 0 20px;
-    `};
+  margin: 8px 0 0 0;
 `;
 
-interface GameDetailsTitleProps {
-  $twoColumns?: boolean;
-}
-
-const GameDetailsTitle = styled.span<GameDetailsTitleProps>`
-  font-weight: 600;
-  padding: 0 10px 0 0;
-  margin: 0;
-
-  ${(gameDetailsTitleProps) =>
-    gameDetailsTitleProps.$twoColumns &&
-    css`
-      width: 25%;
-
-      @media (max-width: ${(props) => props.theme.breakpointPhone}) {
-        width: 40%;
-      }
-    `};
-`;
-
-const GameDetailsValue = styled.span`
-  width: 75%;
+const ResponsiveColumnRow = styled(TwoColumnRow)`
+  row-gap: 4px;
 
   @media (max-width: ${(props) => props.theme.breakpointPhone}) {
-    width: 60%;
+    flex-direction: column;
   }
 `;
 
-const GameDetailsTextIndent = styled.span`
-  margin: 0 0 0 14px;
+const DetailTitle = styled.h4`
+  flex: 0 0 25%;
+  margin: 0;
+
+  @media (max-width: ${(props) => props.theme.breakpointPhone}) {
+    flex: 0 0 45%;
+  }
 `;
 
-const StyledAccessibilityValue = styled.p`
-  margin: 0 0 6px 0;
-`;
-
-const NoWrapText = styled.span`
-  white-space: nowrap;
-`;
-
-const Description = styled.span`
-  margin: 0 0 0 20px;
+const AccessibilityValues = styled.div`
+  display: flex;
+  flex-direction: column;
+  row-gap: 4px;
 `;

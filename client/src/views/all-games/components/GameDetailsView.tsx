@@ -3,8 +3,13 @@ import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Game } from "shared/types/models/game";
-import { ExpandedGameDescription } from "client/views/all-games/components/ExpandedGameDescription";
 import { getShortDescriptionFromDescription } from "client/utils/getShortDescriptionFromDescription";
+import { GameInfo } from "client/views/all-games/components/GameInfo";
+import { config } from "shared/config";
+import { FeedbackForm } from "client/views/all-games/components/FeedbackForm";
+import { UserGroup } from "shared/types/models/user";
+import { AdminActionCard } from "client/views/all-games/components/AdminActionCard";
+import { useAppSelector } from "client/utils/hooks";
 
 interface Props {
   game: Game;
@@ -16,6 +21,9 @@ export const GameDetailsView = ({
   isAlwaysExpanded,
 }: Props): ReactElement => {
   const { t } = useTranslation();
+
+  const loggedIn = useAppSelector((state) => state.login.loggedIn);
+  const userGroup = useAppSelector((state) => state.login.userGroup);
 
   const shortDescription = useMemo(
     () =>
@@ -37,7 +45,7 @@ export const GameDetailsView = ({
   )} ${game.title}`;
 
   return (
-    <>
+    <div>
       <ShortDescription>{`${shortDescription} `}</ShortDescription>
       {!isAlwaysExpanded && (
         <ButtonContainer>
@@ -58,10 +66,16 @@ export const GameDetailsView = ({
       )}
       {isExpanded && (
         <ExpandedDescriptionContainer id={id}>
-          <ExpandedGameDescription game={game} />
+          <GameInfo game={game} />
+          {loggedIn && config.client().enableOrganizerFeedback && (
+            <FeedbackForm game={game} />
+          )}
+          {loggedIn && userGroup === UserGroup.ADMIN && (
+            <AdminActionCard game={game} />
+          )}
         </ExpandedDescriptionContainer>
       )}
-    </>
+    </div>
   );
 };
 

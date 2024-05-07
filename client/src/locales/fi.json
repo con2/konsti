@@ -82,7 +82,7 @@
     "genres": "Genret",
     "organiser": "Järjestäjä",
     "shortDescription": "Lyhyt kuvaus",
-    "revolvingDoor": "Tämä on pyöröovi{{PROGRAM_TYPE}}",
+    "revolvingDoor": "Tämä on pyöröovi{{PROGRAM_TYPE}}, johon voi liittyä koska tahansa, jos {{PROGRAM_TYPE2}} on tilaa",
     "programType": "Ohjelmatyyppi",
     "showMore": "Näytä lisää",
     "showMoreAriaLabel": "Näytä lisää ohjelmanumerosta",

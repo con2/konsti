@@ -1,29 +1,18 @@
 import { ReactElement } from "react";
-import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
-import { capitalize } from "lodash-es";
-import { updateFavorite, UpdateFavoriteOpts } from "client/utils/favorite";
-import { useAppDispatch, useAppSelector } from "client/utils/hooks";
-import { SignupStrategy } from "shared/config/sharedConfigTypes";
+import { useTranslation } from "react-i18next";
 import { Game } from "shared/types/models/game";
-import { AlgorithmSignupForm } from "./AlgorithmSignupForm";
-import { DirectSignupForm } from "./DirectSignupForm";
-import { SelectedGame } from "shared/types/models/user";
-import { isAlreadyEntered, isAlreadySigned } from "./allGamesUtils";
-import { PopularityInfo } from "client/components/PopularityInfo";
+import { SignupStrategy } from "shared/config/sharedConfigTypes";
+import { SelectedGame, UserGroup } from "shared/types/models/user";
+import { RaisedCard } from "client/components/RaisedCard";
+import {
+  isAlreadyEntered,
+  isAlreadySigned,
+} from "client/views/all-games/components/allGamesUtils";
 import { config } from "shared/config";
 import { GameDetailsView } from "client/views/all-games/components/GameDetailsView";
-import { Tags } from "client/components/Tags";
-import { FavoriteButton } from "client/components/FavoriteButton";
-import { getAttendeeType } from "client/utils/getAttendeeType";
-import { RaisedCard } from "client/components/RaisedCard";
-import { isRevolvingDoorWorkshop } from "client/utils/isRevolvingDoorWorkshop";
-import { selectFavoritedGames } from "client/views/my-games/myGamesSlice";
-
-const ErrorText = styled.span`
-  color: ${(props) => props.theme.textError};
-`;
+import { SignupInfo } from "client/views/all-games/components/SignupInfo";
+import { GameHead } from "client/views/all-games/components/GameHead";
 
 interface Props {
   game: Game;
@@ -35,6 +24,10 @@ interface Props {
   isAlwaysExpanded: boolean;
   loading: boolean;
   setLoading: (loading: boolean) => void;
+  username: string;
+  loggedIn: boolean;
+  userGroup: UserGroup;
+  favoritedGames: readonly Game[];
 }
 
 export const GameEntry = ({
@@ -47,52 +40,24 @@ export const GameEntry = ({
   isAlwaysExpanded,
   loading,
   setLoading,
+  username,
+  loggedIn,
+  userGroup,
+  favoritedGames,
 }: Props): ReactElement => {
   const { t } = useTranslation();
-
-  const username = useAppSelector((state) => state.login.username);
-  const loggedIn = useAppSelector((state) => state.login.loggedIn);
-  const userGroup = useAppSelector((state) => state.login.userGroup);
-  const favoritedGames = useAppSelector(selectFavoritedGames);
-  const isEnteredCurrentGame = isAlreadyEntered(game, enteredGames);
-  const isSignedForCurrentGame = isAlreadySigned(game, signedGames);
-
-  const dispatch = useAppDispatch();
 
   const signupAlwaysOpen = config
     .shared()
     .directSignupAlwaysOpenIds.includes(game.gameId);
-
-  const favorited =
-    favoritedGames.find(
-      (favoritedGame) => favoritedGame.gameId === game.gameId,
-    ) !== undefined;
 
   const isEnterGameMode =
     config.shared().manualSignupMode === SignupStrategy.DIRECT ||
     signupStrategy === SignupStrategy.DIRECT ||
     signupAlwaysOpen;
 
-  const gameIsFull = players >= game.maxAttendance;
-
-  const formatDuration = (mins: number): string => {
-    const hours = Math.floor(mins / 60);
-    const minutes = mins % 60;
-
-    const hoursStr = hours === 0 ? "" : `${hours} h`;
-    const minutesStr = minutes === 0 ? "" : `${minutes} min`;
-
-    return `${hoursStr} ${minutesStr}`;
-  };
-
-  const updateFavoriteHandler = async (
-    updateOpts: UpdateFavoriteOpts,
-  ): Promise<void> => {
-    if (!updateOpts.game.gameId) {
-      return;
-    }
-    await updateFavorite(updateOpts);
-  };
+  const isEnteredCurrentGame = isAlreadyEntered(game, enteredGames);
+  const isSignedForCurrentGame = isAlreadySigned(game, signedGames);
 
   const isGameSigned = isEnterGameMode
     ? isEnteredCurrentGame
@@ -105,229 +70,36 @@ export const GameEntry = ({
   if (game.gameSystem) {
     tags.push(game.gameSystem);
   }
-  if (config.client().activeLanguages.length > 1) {
-    tags.push(t(`programItemLanguage.${game.language}`));
-  }
-  const requiresSignup = !isRevolvingDoorWorkshop(game);
-  const validMaxAttendanceValue = requiresSignup && game.maxAttendance > 0;
-
-  const konstiSignup = !config.shared().noKonstiSignupIds.includes(game.gameId);
-  const normalSignup = requiresSignup && konstiSignup;
+  tags.push(t(`programItemLanguage.${game.language}`));
 
   return (
-    <GameContainer
-      key={game.gameId}
-      isHighlighted={isGameSigned}
-      data-testid="game-container"
-    >
-      <GameHeader>
-        <HeaderContainer>
-          <h3 data-testid="game-title">
-            <StyledLink to={`/games/${game.gameId}`}>{game.title} </StyledLink>
-          </h3>
-          {signupAlwaysOpen && (
-            <SignupAlwaysOpenHelp>
-              {t("signup.signupAlwaysOpen")}
-            </SignupAlwaysOpenHelp>
-          )}
-          <Tags tags={tags} />
-          <p>
-            <RowItem>
-              {t("signup.expectedDuration", {
-                EXPECTED_DURATION: formatDuration(game.mins),
-              })}
-            </RowItem>
-
-            {requiresSignup &&
-              game.minAttendance > 0 &&
-              game.maxAttendance > 0 && (
-                <RowItem>
-                  {game.minAttendance === game.maxAttendance &&
-                    capitalize(
-                      `${t(
-                        `attendeeTypePlural.${getAttendeeType(
-                          game.programType,
-                        )}`,
-                      )} ${game.maxAttendance}`,
-                    )}
-
-                  {game.minAttendance !== game.maxAttendance &&
-                    capitalize(
-                      `${t(
-                        `attendeeTypePlural.${getAttendeeType(
-                          game.programType,
-                        )}`,
-                      )} ${game.minAttendance}–${game.maxAttendance}`,
-                    )}
-                </RowItem>
-              )}
-
-            <RowItem>
-              {!!game.entryFee &&
-                t(`signup.entryFee`, {
-                  ENTRY_FEE: game.entryFee,
-                })}
-            </RowItem>
-          </p>
-
-          {isEnterGameMode && normalSignup && validMaxAttendanceValue && (
-            <>
-              <PlayerCount>
-                {t("signup.signupCount", {
-                  PLAYERS: players,
-                  MAX_ATTENDANCE: game.maxAttendance,
-                })}
-              </PlayerCount>
-              <PlayersNeeded $visible={players < game.minAttendance}>
-                {t("signup.attendeesNeeded", {
-                  COUNT: game.minAttendance - players,
-                  ATTENDEE_TYPE:
-                    game.minAttendance - players === 1
-                      ? t(`attendeeType.${getAttendeeType(game.programType)}`)
-                      : t(
-                          `attendeeTypePartitive.${getAttendeeType(
-                            game.programType,
-                          )}`,
-                        ),
-                })}
-              </PlayersNeeded>
-            </>
-          )}
-
-          {!validMaxAttendanceValue && (
-            <ErrorText>
-              {t("signup.maxAttendanceMissing", {
-                ATTENDEE_TYPE: t(
-                  `attendeeTypePlural.${getAttendeeType(game.programType)}`,
-                ),
-              })}
-            </ErrorText>
-          )}
-
-          {!isEnterGameMode && normalSignup && (
-            <PopularityInfo
-              minAttendance={game.minAttendance}
-              maxAttendance={game.maxAttendance}
-              popularity={game.popularity}
-              includeMsg={true}
-            />
-          )}
-        </HeaderContainer>
-
-        {/* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition */}
-        {loggedIn && userGroup === "user" && game && (
-          <FavoriteButton
-            isFavorite={favorited}
-            onClick={async () =>
-              await updateFavoriteHandler({
-                game,
-                action: favorited ? "del" : "add",
-                favoritedGames,
-                username,
-                dispatch,
-              })
-            }
-          />
-        )}
-      </GameHeader>
-
+    <StyledCard isHighlighted={isGameSigned} data-testid="game-container">
+      <GameHead
+        game={game}
+        players={players}
+        signupStrategy={signupStrategy}
+        username={username}
+        loggedIn={loggedIn}
+        userGroup={userGroup}
+        favoritedGames={favoritedGames}
+      />
       <GameDetailsView game={game} isAlwaysExpanded={isAlwaysExpanded} />
-
-      {validMaxAttendanceValue && (
-        <>
-          {!isEnterGameMode && normalSignup && (
-            <AlgorithmSignupForm
-              game={game}
-              startTime={startTime}
-              signedGames={signedGames}
-            />
-          )}
-
-          {isEnterGameMode && normalSignup && (
-            <DirectSignupForm
-              game={game}
-              gameIsFull={gameIsFull}
-              startTime={startTime}
-              loading={loading}
-              setLoading={setLoading}
-            />
-          )}
-        </>
-      )}
-
-      {!requiresSignup && (
-        <p>
-          {t("signup.doesNotRequireSignup", {
-            PROGRAM_TYPE: t(`programTypeIllative.${game.programType}`),
-          })}
-        </p>
-      )}
-
-      {!konstiSignup && (
-        <p>
-          {t("signup.noKonstiSignup", {
-            PROGRAM_TYPE: t(`programTypeIllative.${game.programType}`),
-          })}
-        </p>
-      )}
-    </GameContainer>
+      <SignupInfo
+        signupStrategy={signupStrategy}
+        startTime={startTime}
+        signedGames={signedGames}
+        game={game}
+        players={players}
+        loading={loading}
+        setLoading={setLoading}
+      />
+    </StyledCard>
   );
 };
 
-const PlayersNeeded = styled("span")<{ $visible: boolean }>`
-  margin-top: 8px;
-  display: ${(props) => (props.$visible ? "block" : "none")};
-`;
-
-const PlayerCount = styled("span")`
-  margin-top: 8px;
-`;
-
-const GameEntryRow = styled.div`
-  display: flex;
-  flex-direction: row;
-`;
-
-const GameHeader = styled(GameEntryRow)`
-  justify-content: space-between;
-  margin-bottom: 14px;
-`;
-
-const HeaderContainer = styled.div`
+const StyledCard = styled(RaisedCard)`
   display: flex;
   flex-direction: column;
-
-  h3 {
-    margin: 8px 0 4px 0;
-  }
-`;
-
-const GameContainer = styled(RaisedCard)`
-  display: flex;
-  flex-direction: column;
-  min-height: 160px;
-  color: rgb(61, 61, 61);
-
-  @media (max-width: ${(props) => props.theme.breakpointPhone}) {
-    margin-left: 0;
-    margin-right: 0;
-  }
-`;
-
-const RowItem = styled.span`
-  padding-right: 12px;
-`;
-
-const SignupAlwaysOpenHelp = styled.div`
-  margin: 6px 0 6px 0;
-  border: 1px solid ${(props) => props.theme.infoBorder};
-  padding: 8px 6px;
-  border-radius: 5px;
-  border-left: 5px solid ${(props) => props.theme.infoBorder};
-  background-color: ${(props) => props.theme.infoBackground};
-`;
-
-const StyledLink = styled(Link)`
-  color: inherit;
-  text-decoration: inherit;
+  gap: 16px;
+  color: ${(props) => props.theme.textLighter};
 `;
