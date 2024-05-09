@@ -1,7 +1,7 @@
 export enum ApiEndpoint {
   USERS = "/api/users",
   USERS_BY_SERIAL_OR_USERNAME = "/api/users/serial-or-username",
-  GAMES = "/api/games",
+  PROGRAM_ITEMS = "/api/program-items",
   LOGIN = "/api/login",
   ASSIGNMENT = "/api/assignment",
   LOTTERY_SIGNUP = "/api/lottery-signup",

@@ -16,7 +16,7 @@ export const postUpdateGames = async (
   req: Request<{}, {}, {}>,
   res: Response,
 ): Promise<Response> => {
-  logger.info(`API call: POST ${ApiEndpoint.GAMES}`);
+  logger.info(`API call: POST ${ApiEndpoint.PROGRAM_ITEMS}`);
 
   const username = getAuthorizedUsername(
     req.headers.authorization,
@@ -52,7 +52,7 @@ export const getGames = async (
   _req: Request<{}, {}, {}>,
   res: Response,
 ): Promise<Response> => {
-  logger.info(`API call: GET ${ApiEndpoint.GAMES}`);
+  logger.info(`API call: GET ${ApiEndpoint.PROGRAM_ITEMS}`);
 
   const response = await fetchGames();
   return res.json(response);

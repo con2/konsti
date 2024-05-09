@@ -7,20 +7,20 @@ import {
 } from "shared/types/api/programItems";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 
-export const postUpdateGames = async (): Promise<
+export const postUpdateProgramItems = async (): Promise<
   PostUpdateProgramItemsResponse | PostUpdateProgramItemsError
 > => {
   const response = await api.post<PostUpdateProgramItemsResponse, {}>(
-    ApiEndpoint.GAMES,
+    ApiEndpoint.PROGRAM_ITEMS,
   );
   return response.data;
 };
 
-export const getGames = async (): Promise<
+export const getProgramItems = async (): Promise<
   GetProgramItemsResponse | ApiError
 > => {
   const response = await api.get<GetProgramItemsResponse, {}>(
-    ApiEndpoint.GAMES,
+    ApiEndpoint.PROGRAM_ITEMS,
   );
   return response.data;
 };

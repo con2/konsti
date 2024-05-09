@@ -64,9 +64,9 @@ afterEach(async () => {
   await closeServer(server);
 });
 
-describe(`GET ${ApiEndpoint.GAMES}`, () => {
+describe(`GET ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
   test(`should return 200`, async () => {
-    const response = await request(server).get(ApiEndpoint.GAMES);
+    const response = await request(server).get(ApiEndpoint.PROGRAM_ITEMS);
     expect(response.status).toEqual(200);
   });
 
@@ -102,7 +102,7 @@ describe(`GET ${ApiEndpoint.GAMES}`, () => {
       selectOptions: [],
     });
 
-    const response = await request(server).get(ApiEndpoint.GAMES);
+    const response = await request(server).get(ApiEndpoint.PROGRAM_ITEMS);
     expect(response.status).toEqual(200);
 
     const sortedGames = sortBy(response.body.games, "title");
@@ -111,7 +111,7 @@ describe(`GET ${ApiEndpoint.GAMES}`, () => {
   });
 });
 
-describe(`POST ${ApiEndpoint.GAMES}`, () => {
+describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
   beforeEach(() => {
     vi.spyOn(config, "shared").mockReturnValue({
       ...config.shared(),
@@ -120,7 +120,7 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
   });
 
   test(`should return 401 without valid authorization`, async () => {
-    const response = await request(server).post(ApiEndpoint.GAMES);
+    const response = await request(server).post(ApiEndpoint.PROGRAM_ITEMS);
     expect(response.status).toEqual(401);
   });
 
@@ -130,7 +130,7 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
       .mockResolvedValue({ value: [mockKompassiGameRopecon] });
 
     const response = await request(server)
-      .post(ApiEndpoint.GAMES)
+      .post(ApiEndpoint.PROGRAM_ITEMS)
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
     expect(response.status).toEqual(200);
     expect(spy).toHaveBeenCalledTimes(1);
@@ -164,7 +164,7 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
     });
 
     const response = await request(server)
-      .post(ApiEndpoint.GAMES)
+      .post(ApiEndpoint.PROGRAM_ITEMS)
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
     expect(response.status).toEqual(200);
 
@@ -199,7 +199,7 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
     await saveProgramItems([testProgramItem, testProgramItem2]);
 
     const response = await request(server)
-      .post(ApiEndpoint.GAMES)
+      .post(ApiEndpoint.PROGRAM_ITEMS)
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
     expect(response.status).toEqual(200);
 
@@ -220,7 +220,7 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
     await saveProgramItems([testProgramItem, testProgramItem2]);
 
     const response = await request(server)
-      .post(ApiEndpoint.GAMES)
+      .post(ApiEndpoint.PROGRAM_ITEMS)
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
     expect(response.status).toEqual(200);
 
@@ -252,7 +252,7 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
     await saveProgramItems([testProgramItem, testProgramItem2]);
 
     const response = await request(server)
-      .post(ApiEndpoint.GAMES)
+      .post(ApiEndpoint.PROGRAM_ITEMS)
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
     expect(response.status).toEqual(200);
 
@@ -298,7 +298,7 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
     });
 
     const response = await request(server)
-      .post(ApiEndpoint.GAMES)
+      .post(ApiEndpoint.PROGRAM_ITEMS)
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
     expect(response.status).toEqual(200);
 
@@ -361,7 +361,7 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
     });
 
     const response = await request(server)
-      .post(ApiEndpoint.GAMES)
+      .post(ApiEndpoint.PROGRAM_ITEMS)
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
     expect(response.status).toEqual(200);
 
@@ -392,7 +392,7 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
     const errorLoggerSpy = vi.spyOn(logger, "error");
 
     const response = await request(server)
-      .post(ApiEndpoint.GAMES)
+      .post(ApiEndpoint.PROGRAM_ITEMS)
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
 
     expect(response.status).toEqual(200);

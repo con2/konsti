@@ -67,7 +67,7 @@ export const apiRoutes = express.Router();
 
 /* POST routes */
 
-apiRoutes.post(ApiEndpoint.GAMES, postUpdateGames);
+apiRoutes.post(ApiEndpoint.PROGRAM_ITEMS, postUpdateGames);
 apiRoutes.post(ApiEndpoint.USERS, postUser);
 apiRoutes.post(ApiEndpoint.LOGIN, postLogin);
 apiRoutes.post(ApiEndpoint.ASSIGNMENT, postAssignment);
@@ -91,7 +91,7 @@ apiRoutes.post(ApiEndpoint.VERIFY_KOMPASSI_LOGIN, postVerifyKompassiLogin);
 
 /* GET routes */
 
-apiRoutes.get(ApiEndpoint.GAMES, getGames);
+apiRoutes.get(ApiEndpoint.PROGRAM_ITEMS, getGames);
 apiRoutes.get(ApiEndpoint.USERS, getUser);
 apiRoutes.get(
   ApiEndpoint.USERS_BY_SERIAL_OR_USERNAME,

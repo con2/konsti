@@ -1,13 +1,13 @@
 import {
-  getGames,
-  postUpdateGames,
+  getProgramItems,
+  postUpdateProgramItems,
 } from "client/services/programItemsServices";
 import { AppThunk } from "client/types/reduxTypes";
 import { submitGetProgramItemsAsync } from "client/views/all-program-items/allProgramItemsSlice";
 
 export const submitGetGames = (): AppThunk => {
   return async (dispatch): Promise<void> => {
-    const getGamesResponse = await getGames();
+    const getGamesResponse = await getProgramItems();
 
     if (getGamesResponse.status === "error") {
       // TODO
@@ -21,7 +21,7 @@ export const submitGetGames = (): AppThunk => {
 
 export const submitUpdateGames = (): AppThunk => {
   return async (dispatch): Promise<void> => {
-    const gamesUpdateResponse = await postUpdateGames();
+    const gamesUpdateResponse = await postUpdateProgramItems();
 
     if (gamesUpdateResponse.status === "error") {
       // TODO
