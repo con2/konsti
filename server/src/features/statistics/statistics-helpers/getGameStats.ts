@@ -4,7 +4,7 @@ import {
   getNumberOfFullGames,
   getDemandByTime,
   getDemandByGame,
-} from "./gameDataHelpers";
+} from "./programItemDataHelpers";
 import { logger } from "server/utils/logger";
 import { config } from "shared/config";
 import { ProgramItem } from "shared/types/models/programItem";

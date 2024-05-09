@@ -3,7 +3,7 @@ import dayjs from "dayjs";
 import {
   PostLotterySignupsError,
   PostLotterSignupsResponse,
-} from "shared/types/api/myGames";
+} from "shared/types/api/myProgramItems";
 import { Signup } from "shared/types/models/user";
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import { getTimeNow } from "server/features/player-assignment/utils/getTimeNow";

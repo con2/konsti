@@ -10,7 +10,7 @@ import {
   PostLotterySignupsError,
   PostLotterySignupsRequest,
   PostLotterSignupsResponse,
-} from "shared/types/api/myGames";
+} from "shared/types/api/myProgramItems";
 
 export const postLotterySignups = async (
   signupData: PostLotterySignupsRequest,

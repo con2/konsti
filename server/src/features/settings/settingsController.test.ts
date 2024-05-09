@@ -11,7 +11,10 @@ import {
   SignupQuestion,
   SignupQuestionType,
 } from "shared/types/models/settings";
-import { testGame, testGame2 } from "shared/tests/testGame";
+import {
+  testProgramItem,
+  testProgramItem2,
+} from "shared/tests/testProgramItem";
 import { saveProgramItems } from "server/features/program-item/programItemRepository";
 import { findUser, saveUser } from "server/features/user/userRepository";
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
@@ -139,7 +142,7 @@ describe(`POST ${ApiEndpoint.HIDDEN}`, () => {
   });
 
   test("should remove hidden game from users", async () => {
-    await saveProgramItems([testGame, testGame2]);
+    await saveProgramItems([testProgramItem, testProgramItem2]);
     await saveUser(mockUser);
     await saveLotterySignups({
       username: mockUser.username,
@@ -150,14 +153,14 @@ describe(`POST ${ApiEndpoint.HIDDEN}`, () => {
     await saveFavorite({
       username: mockUser.username,
       favoritedProgramItemIds: [
-        testGame.programItemId,
-        testGame2.programItemId,
+        testProgramItem.programItemId,
+        testProgramItem2.programItemId,
       ],
     });
 
     const response = await request(server)
       .post(ApiEndpoint.HIDDEN)
-      .send({ hiddenData: [testGame] })
+      .send({ hiddenData: [testProgramItem] })
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
 
     expect(response.status).toEqual(200);
@@ -166,7 +169,7 @@ describe(`POST ${ApiEndpoint.HIDDEN}`, () => {
     const updatedUser = unsafelyUnwrapResult(updatedUserResult);
     expect(updatedUser?.lotterySignups.length).toEqual(1);
     expect(updatedUser?.lotterySignups[0].programItemDetails.title).toEqual(
-      testGame2.title,
+      testProgramItem2.title,
     );
     expect(updatedUser?.favoritedProgramItems.length).toEqual(1);
 
@@ -177,7 +180,7 @@ describe(`POST ${ApiEndpoint.HIDDEN}`, () => {
   });
 
   test("should clean but not remove signup document when program item is hidden", async () => {
-    await saveProgramItems([testGame]);
+    await saveProgramItems([testProgramItem]);
     await saveUser(mockUser);
     await saveDirectSignup(mockPostDirectSignupRequest);
 
@@ -189,7 +192,7 @@ describe(`POST ${ApiEndpoint.HIDDEN}`, () => {
 
     await request(server)
       .post(ApiEndpoint.HIDDEN)
-      .send({ hiddenData: [testGame] })
+      .send({ hiddenData: [testProgramItem] })
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
 
     const findSignupsResult2 = await findDirectSignups();

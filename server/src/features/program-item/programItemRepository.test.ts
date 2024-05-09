@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 import { faker } from "@faker-js/faker";
 import { ProgramItemModel } from "server/features/program-item/programItemSchema";
 import { saveProgramItems } from "server/features/program-item/programItemRepository";
-import { testGame } from "shared/tests/testGame";
+import { testProgramItem } from "shared/tests/testProgramItem";
 import { removeDeletedProgramItems } from "server/features/program-item/programItemUtils";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 import { findDirectSignups } from "server/features/direct-signup/directSignupRepository";
@@ -19,16 +19,16 @@ afterEach(async () => {
 });
 
 test("should insert new game into collection", async () => {
-  await saveProgramItems([testGame]);
+  await saveProgramItems([testProgramItem]);
 
   const insertedGame = await ProgramItemModel.findOne({
-    programItemId: testGame.programItemId,
+    programItemId: testProgramItem.programItemId,
   });
-  expect(insertedGame?.programItemId).toEqual(testGame.programItemId);
+  expect(insertedGame?.programItemId).toEqual(testProgramItem.programItemId);
 });
 
 test("should remove signup document when program item is removed", async () => {
-  await saveProgramItems([testGame]);
+  await saveProgramItems([testProgramItem]);
 
   const findSignupsResult = await findDirectSignups();
   const signups = unsafelyUnwrapResult(findSignupsResult);

@@ -2,7 +2,7 @@ import { expect, test, vi } from "vitest";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 import { config } from "shared/config";
 import { ConventionName } from "shared/config/sharedConfigTypes";
-import { testHelperWrapper } from "server/kompassi/getGamesFromKompassi";
+import { testHelperWrapper } from "server/kompassi/getProgramItemsFromKompassi";
 import {
   mockKompassiGameRopecon,
   mockKompassiGameRopecon2,
@@ -17,11 +17,11 @@ import {
   mockKompassiGameSolmukohta,
   mockKompassiGameSolmukohta2,
 } from "server/kompassi/test/mockKompassiGameSolmukohta";
-import { KompassiGame } from "server/kompassi/kompassiGame";
+import { kompassiProgramItem } from "server/kompassi/kompassiProgramItem";
 
 const getMockKompassiGames = (
   conventionName: ConventionName,
-): KompassiGame[] => {
+): kompassiProgramItem[] => {
   switch (conventionName) {
     case ConventionName.ROPECON:
       return [mockKompassiGameRopecon, mockKompassiGameRopecon2];

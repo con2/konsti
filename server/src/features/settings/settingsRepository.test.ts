@@ -2,7 +2,10 @@ import { expect, test, afterEach, beforeEach } from "vitest";
 import mongoose from "mongoose";
 import { faker } from "@faker-js/faker";
 import { SettingsModel } from "server/features/settings/settingsSchema";
-import { testGame, testGame2 } from "shared/tests/testGame";
+import {
+  testProgramItem,
+  testProgramItem2,
+} from "shared/tests/testProgramItem";
 import {
   findSettings,
   saveHidden,
@@ -41,7 +44,7 @@ test("should set defaults if settings not found", async () => {
 });
 
 test("should update hidden games", async () => {
-  const hiddenGames = [testGame, testGame2];
+  const hiddenGames = [testProgramItem, testProgramItem2];
   await saveProgramItems(hiddenGames);
   await saveHidden(hiddenGames);
   const insertedSettings = await SettingsModel.findOne({});
@@ -49,7 +52,7 @@ test("should update hidden games", async () => {
 });
 
 test("should not return hidden games that are not in DB", async () => {
-  const hiddenGames = [testGame, testGame2];
+  const hiddenGames = [testProgramItem, testProgramItem2];
   await saveHidden(hiddenGames);
   const insertedSettings = await SettingsModel.findOne({});
   expect(insertedSettings?.hiddenGames.length).toEqual(0);

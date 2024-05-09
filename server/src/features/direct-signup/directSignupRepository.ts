@@ -16,7 +16,7 @@ import { MongoDbError } from "shared/types/api/errors";
 import {
   DeleteDirectSignupRequest,
   PostDirectSignupRequest,
-} from "shared/types/api/myGames";
+} from "shared/types/api/myProgramItems";
 import { ProgramType } from "shared/types/models/programItem";
 import {
   Result,

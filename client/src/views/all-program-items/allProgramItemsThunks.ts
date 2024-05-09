@@ -1,4 +1,7 @@
-import { getGames, postUpdateGames } from "client/services/gamesServices";
+import {
+  getGames,
+  postUpdateGames,
+} from "client/services/programItemsServices";
 import { AppThunk } from "client/types/reduxTypes";
 import { submitGetProgramItemsAsync } from "client/views/all-program-items/allProgramItemsSlice";
 

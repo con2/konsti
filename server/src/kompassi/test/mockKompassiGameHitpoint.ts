@@ -1,24 +1,27 @@
-import { testGame, testGame2 } from "shared/tests/testGame";
 import {
-  KompassiGameHitpoint,
+  testProgramItem,
+  testProgramItem2,
+} from "shared/tests/testProgramItem";
+import {
+  kompassiProgramItemHitpoint,
   KompassiPhysicalPlayHitpoint,
   KompassiProgramTypeHitpoint,
-} from "server/kompassi/hitpoint/kompassiGameHitpoint";
+} from "server/kompassi/hitpoint/kompassiProgramItemHitpoint";
 
-export const mockKompassiGameHitpoint: KompassiGameHitpoint = {
-  title: testGame.title,
-  description: testGame.description,
+export const mockKompassiGameHitpoint: kompassiProgramItemHitpoint = {
+  title: testProgramItem.title,
+  description: testProgramItem.description,
   category_title: KompassiProgramTypeHitpoint.TABLETOP_RPG,
-  formatted_hosts: testGame.people,
-  room_name: testGame.location,
-  length: testGame.mins,
-  start_time: testGame.startTime,
-  rpg_system: testGame.gameSystem,
-  min_players: testGame.minAttendance,
-  max_players: testGame.maxAttendance,
-  identifier: testGame.programItemId,
-  three_word_description: testGame.shortDescription,
-  other_author: testGame.otherAuthor,
+  formatted_hosts: testProgramItem.people,
+  room_name: testProgramItem.location,
+  length: testProgramItem.mins,
+  start_time: testProgramItem.startTime,
+  rpg_system: testProgramItem.gameSystem,
+  min_players: testProgramItem.minAttendance,
+  max_players: testProgramItem.maxAttendance,
+  identifier: testProgramItem.programItemId,
+  three_word_description: testProgramItem.shortDescription,
+  other_author: testProgramItem.otherAuthor,
   physical_play: KompassiPhysicalPlayHitpoint.SOME,
   is_english_ok: false,
   is_age_restricted: false,
@@ -29,20 +32,20 @@ export const mockKompassiGameHitpoint: KompassiGameHitpoint = {
   video_link: "",
 };
 
-export const mockKompassiGameHitpoint2: KompassiGameHitpoint = {
-  title: testGame2.title,
-  description: testGame2.description,
+export const mockKompassiGameHitpoint2: kompassiProgramItemHitpoint = {
+  title: testProgramItem2.title,
+  description: testProgramItem2.description,
   category_title: KompassiProgramTypeHitpoint.TABLETOP_RPG,
-  formatted_hosts: testGame2.people,
-  room_name: testGame2.location,
-  length: testGame2.mins,
-  start_time: testGame2.startTime,
-  rpg_system: testGame2.gameSystem,
-  min_players: testGame2.minAttendance,
-  max_players: testGame2.maxAttendance,
-  identifier: testGame2.programItemId,
-  three_word_description: testGame2.shortDescription,
-  other_author: testGame2.otherAuthor,
+  formatted_hosts: testProgramItem2.people,
+  room_name: testProgramItem2.location,
+  length: testProgramItem2.mins,
+  start_time: testProgramItem2.startTime,
+  rpg_system: testProgramItem2.gameSystem,
+  min_players: testProgramItem2.minAttendance,
+  max_players: testProgramItem2.maxAttendance,
+  identifier: testProgramItem2.programItemId,
+  three_word_description: testProgramItem2.shortDescription,
+  other_author: testProgramItem2.otherAuthor,
   physical_play: KompassiPhysicalPlayHitpoint.SOME,
   is_english_ok: false,
   is_age_restricted: false,

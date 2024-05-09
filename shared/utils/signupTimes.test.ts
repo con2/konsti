@@ -4,7 +4,7 @@ import {
   getAlgorithmSignupStartTime,
   getDirectSignupStartTime,
 } from "shared/utils/signupTimes";
-import { testGame } from "shared/tests/testGame";
+import { testProgramItem } from "shared/tests/testProgramItem";
 import { config } from "shared/config";
 import { ProgramType } from "shared/types/models/programItem";
 
@@ -97,7 +97,7 @@ describe(`Two phase direct signup`, () => {
   test("RPG starting at 15:00 should have signup starting at 15:00", () => {
     const startTime = "2023-07-28T12:00:00.000Z";
     const signupStartTime = getDirectSignupStartTime({
-      ...testGame,
+      ...testProgramItem,
       startTime,
     });
     expect(dayjs(signupStartTime).toISOString()).toEqual(
@@ -108,7 +108,7 @@ describe(`Two phase direct signup`, () => {
   test("RPG starting at 16:00 should have signup starting at 15:00", () => {
     const startTime = "2023-07-28T13:00:00.000Z";
     const signupStartTime = getDirectSignupStartTime({
-      ...testGame,
+      ...testProgramItem,
       startTime,
     });
     expect(dayjs(signupStartTime).toISOString()).toEqual(
@@ -119,7 +119,7 @@ describe(`Two phase direct signup`, () => {
   test("RPG starting at 17:00 should have signup starting at 15:00", () => {
     const startTime = "2023-07-28T14:00:00.000Z";
     const signupStartTime = getDirectSignupStartTime({
-      ...testGame,
+      ...testProgramItem,
       startTime,
     });
     expect(dayjs(signupStartTime).toISOString()).toEqual(
@@ -130,7 +130,7 @@ describe(`Two phase direct signup`, () => {
   test("RPG starting at 18:00 should have signup starting at 16:15", () => {
     const startTime = "2023-07-28T15:00:00.000Z";
     const signupStartTime = getDirectSignupStartTime({
-      ...testGame,
+      ...testProgramItem,
       startTime,
     });
     expect(dayjs(signupStartTime).toISOString()).toEqual(
@@ -141,7 +141,7 @@ describe(`Two phase direct signup`, () => {
   test("RPG starting at 19:00 should have signup starting at 17:15", () => {
     const startTime = "2023-07-28T16:00:00.000Z";
     const signupStartTime = getDirectSignupStartTime({
-      ...testGame,
+      ...testProgramItem,
       startTime,
     });
     expect(dayjs(signupStartTime).toISOString()).toEqual(
@@ -152,7 +152,7 @@ describe(`Two phase direct signup`, () => {
   test("RPG starting at 20:00 should have signup starting at 18:15", () => {
     const startTime = "2023-07-28T17:00:00.000Z";
     const signupStartTime = getDirectSignupStartTime({
-      ...testGame,
+      ...testProgramItem,
       startTime,
     });
     expect(dayjs(signupStartTime).toISOString()).toEqual(
@@ -162,7 +162,7 @@ describe(`Two phase direct signup`, () => {
 });
 
 describe(`Direct signup`, () => {
-  const testLarp = { ...testGame, programType: ProgramType.LARP };
+  const testLarp = { ...testProgramItem, programType: ProgramType.LARP };
 
   test("Larp starting at Fri 15:00 should have signup starting at Fri 15:00", () => {
     const startTime = "2023-07-28T12:00:00.000Z";

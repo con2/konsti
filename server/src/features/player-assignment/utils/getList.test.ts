@@ -1,5 +1,5 @@
 import { expect, test } from "vitest";
-import { testGame } from "shared/tests/testGame";
+import { testProgramItem } from "shared/tests/testProgramItem";
 import { getList } from "server/features/player-assignment/utils/getList";
 import { User, UserGroup } from "shared/types/models/user";
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
@@ -17,7 +17,7 @@ const groupCreatorWithLotterySignups: User = {
   favoritedProgramItems: [],
   lotterySignups: [
     {
-      programItemDetails: testGame,
+      programItemDetails: testProgramItem,
       priority: 1,
       time: "2019-11-23T12:00:00+02:00",
       message: "",
@@ -58,7 +58,7 @@ const groupMemberWithoutLotterySignups2: User = {
 };
 
 const previousSignup: DirectSignupsForProgramItem = {
-  programItem: testGame,
+  programItem: testProgramItem,
   userSignups: [
     {
       username: groupMemberWithoutLotterySignups2.username,
@@ -70,7 +70,7 @@ const previousSignup: DirectSignupsForProgramItem = {
 };
 
 const otherUserPreviousSignup: DirectSignupsForProgramItem = {
-  programItem: testGame,
+  programItem: testProgramItem,
   userSignups: [
     {
       username: "test name",
@@ -82,7 +82,7 @@ const otherUserPreviousSignup: DirectSignupsForProgramItem = {
 };
 
 const previousSignupWithWrongType: DirectSignupsForProgramItem = {
-  programItem: { ...testGame, programType: ProgramType.TOURNAMENT },
+  programItem: { ...testProgramItem, programType: ProgramType.TOURNAMENT },
   userSignups: [
     {
       username: groupCreatorWithLotterySignups.username,

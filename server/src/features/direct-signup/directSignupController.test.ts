@@ -15,7 +15,7 @@ import {
   mockUser4,
   mockUser5,
 } from "server/test/mock-data/mockUser";
-import { testGame } from "shared/tests/testGame";
+import { testProgramItem } from "shared/tests/testProgramItem";
 import { saveUser } from "server/features/user/userRepository";
 import { saveProgramItems } from "server/features/program-item/programItemRepository";
 import { saveTestSettings } from "server/test/test-settings/testSettingsRepository";
@@ -29,7 +29,7 @@ import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 import {
   DeleteDirectSignupRequest,
   PostDirectSignupRequest,
-} from "shared/types/api/myGames";
+} from "shared/types/api/myProgramItems";
 import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 import * as signupTimes from "shared/utils/signupTimes";
 
@@ -71,8 +71,8 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
   test("should return 422 if signup message is too long", async () => {
     const signup: PostDirectSignupRequest = {
       username: mockUser.username,
-      directSignupProgramItemId: testGame.programItemId,
-      startTime: testGame.startTime,
+      directSignupProgramItemId: testProgramItem.programItemId,
+      startTime: testProgramItem.startTime,
       message:
         "Test message Test message Test message Test message Test message Test message Test message Test message Test message Test message Test message Test message Test message",
       priority: DIRECT_SIGNUP_PRIORITY,
@@ -89,14 +89,16 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
 
   test("should return error when game is not found", async () => {
     vi.setSystemTime(
-      dayjs(testGame.startTime).subtract(1, "hour").toISOString(),
+      dayjs(testProgramItem.startTime).subtract(1, "hour").toISOString(),
     );
     await saveUser(mockUser);
 
     const signup: PostDirectSignupRequest = {
       username: mockUser.username,
       directSignupProgramItemId: "invalid_game_id",
-      startTime: dayjs(testGame.startTime).subtract(1, "hour").toISOString(),
+      startTime: dayjs(testProgramItem.startTime)
+        .subtract(1, "hour")
+        .toISOString(),
       message: "",
       priority: DIRECT_SIGNUP_PRIORITY,
     };
@@ -113,17 +115,17 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
   });
 
   test("should return error when user is not found", async () => {
-    vi.setSystemTime(testGame.startTime);
+    vi.setSystemTime(testProgramItem.startTime);
     vi.spyOn(signupTimes, "getDirectSignupStartTime").mockReturnValue(
-      dayjs(testGame.startTime),
+      dayjs(testProgramItem.startTime),
     );
 
-    await saveProgramItems([testGame]);
+    await saveProgramItems([testProgramItem]);
 
     const signup: PostDirectSignupRequest = {
       username: "user_not_found",
-      directSignupProgramItemId: testGame.programItemId,
-      startTime: testGame.startTime,
+      directSignupProgramItemId: testProgramItem.programItemId,
+      startTime: testProgramItem.startTime,
       message: "",
       priority: DIRECT_SIGNUP_PRIORITY,
     };
@@ -140,17 +142,19 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
   });
 
   test("should return error when signup is not yet open", async () => {
-    await saveProgramItems([testGame]);
+    await saveProgramItems([testProgramItem]);
     await saveUser(mockUser);
     await saveTestSettings({
       // This test time should land to phaseGap
-      testTime: dayjs(testGame.startTime).subtract(2, "hours").toISOString(),
+      testTime: dayjs(testProgramItem.startTime)
+        .subtract(2, "hours")
+        .toISOString(),
     });
 
     const signup: PostDirectSignupRequest = {
       username: mockUser.username,
-      directSignupProgramItemId: testGame.programItemId,
-      startTime: testGame.startTime,
+      directSignupProgramItemId: testProgramItem.programItemId,
+      startTime: testProgramItem.startTime,
       message: "",
       priority: DIRECT_SIGNUP_PRIORITY,
     };
@@ -168,13 +172,13 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
   });
 
   test("should return success when user and game are found", async () => {
-    vi.setSystemTime(testGame.startTime);
+    vi.setSystemTime(testProgramItem.startTime);
     vi.spyOn(signupTimes, "getDirectSignupStartTime").mockReturnValue(
-      dayjs(testGame.startTime),
+      dayjs(testProgramItem.startTime),
     );
 
     // Populate database
-    await saveProgramItems([testGame]);
+    await saveProgramItems([testProgramItem]);
     await saveUser(mockUser);
 
     // Check starting conditions
@@ -187,8 +191,8 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     // Update direct signups
     const signup: PostDirectSignupRequest = {
       username: mockUser.username,
-      directSignupProgramItemId: testGame.programItemId,
-      startTime: testGame.startTime,
+      directSignupProgramItemId: testProgramItem.programItemId,
+      startTime: testProgramItem.startTime,
       message: "Test message",
       priority: DIRECT_SIGNUP_PRIORITY,
     };
@@ -212,20 +216,20 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     const modifiedSignups = unsafelyUnwrapResult(modifiedSignupsResult);
 
     expect(modifiedSignups[0].programItem.programItemId).toEqual(
-      testGame.programItemId,
+      testProgramItem.programItemId,
     );
     expect(modifiedSignups[0].userSignups[0].message).toEqual("Test message");
   });
 
   test("should not sign too many players to game", async () => {
-    vi.setSystemTime(testGame.startTime);
+    vi.setSystemTime(testProgramItem.startTime);
     vi.spyOn(signupTimes, "getDirectSignupStartTime").mockReturnValue(
-      dayjs(testGame.startTime),
+      dayjs(testProgramItem.startTime),
     );
     const maxAttendance = 2;
 
     // Populate database
-    await saveProgramItems([{ ...testGame, maxAttendance }]);
+    await saveProgramItems([{ ...testProgramItem, maxAttendance }]);
     await saveUser(mockUser);
     await saveUser(mockUser2);
     await saveUser(mockUser3);
@@ -235,8 +239,8 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     const makeRequest = async (user: NewUser): Promise<Test> => {
       const signup: PostDirectSignupRequest = {
         username: user.username,
-        directSignupProgramItemId: testGame.programItemId,
-        startTime: testGame.startTime,
+        directSignupProgramItemId: testProgramItem.programItemId,
+        startTime: testProgramItem.startTime,
         message: "Test message",
         priority: DIRECT_SIGNUP_PRIORITY,
       };
@@ -262,21 +266,22 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     const signupsResult = await findDirectSignups();
     const signups = unsafelyUnwrapResult(signupsResult);
     const matchingSignup = signups.find(
-      (signup) => signup.programItem.programItemId === testGame.programItemId,
+      (signup) =>
+        signup.programItem.programItemId === testProgramItem.programItemId,
     );
     expect(matchingSignup?.userSignups.length).toEqual(maxAttendance);
     expect(matchingSignup?.count).toEqual(maxAttendance);
   });
 
   test("should not create new signup collection when program item is full", async () => {
-    vi.setSystemTime(testGame.startTime);
+    vi.setSystemTime(testProgramItem.startTime);
     vi.spyOn(signupTimes, "getDirectSignupStartTime").mockReturnValue(
-      dayjs(testGame.startTime),
+      dayjs(testProgramItem.startTime),
     );
     const maxAttendance = 2;
 
     // Populate database
-    await saveProgramItems([{ ...testGame, maxAttendance }]);
+    await saveProgramItems([{ ...testProgramItem, maxAttendance }]);
     await saveUser(mockUser);
     await saveUser(mockUser2);
     await saveUser(mockUser3);
@@ -287,8 +292,8 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     const makeRequest = async (user: NewUser): Promise<Test> => {
       const signup: PostDirectSignupRequest = {
         username: user.username,
-        directSignupProgramItemId: testGame.programItemId,
-        startTime: testGame.startTime,
+        directSignupProgramItemId: testProgramItem.programItemId,
+        startTime: testProgramItem.startTime,
         message: "Test message",
         priority: DIRECT_SIGNUP_PRIORITY,
       };
@@ -310,7 +315,8 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     expect(signups).toHaveLength(1);
 
     const matchingSignup = signups.find(
-      (signup) => signup.programItem.programItemId === testGame.programItemId,
+      (signup) =>
+        signup.programItem.programItemId === testProgramItem.programItemId,
     );
     expect(matchingSignup?.userSignups.length).toEqual(maxAttendance);
     expect(matchingSignup?.count).toEqual(maxAttendance);
@@ -337,14 +343,16 @@ describe(`DELETE ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
 
   test("should return error when game is not found", async () => {
     vi.setSystemTime(
-      dayjs(testGame.startTime).subtract(1, "hour").toISOString(),
+      dayjs(testProgramItem.startTime).subtract(1, "hour").toISOString(),
     );
     await saveUser(mockUser);
 
     const deleteRequest: DeleteDirectSignupRequest = {
       username: mockUser.username,
       directSignupProgramItemId: "invalid_game_id",
-      startTime: dayjs(testGame.startTime).subtract(1, "hour").toISOString(),
+      startTime: dayjs(testProgramItem.startTime)
+        .subtract(1, "hour")
+        .toISOString(),
     };
     const response = await request(server)
       .delete(ApiEndpoint.DIRECT_SIGNUP)
@@ -359,13 +367,13 @@ describe(`DELETE ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
   });
 
   test("should return error when signup is not found", async () => {
-    vi.setSystemTime(testGame.startTime);
-    await saveProgramItems([testGame]);
+    vi.setSystemTime(testProgramItem.startTime);
+    await saveProgramItems([testProgramItem]);
 
     const deleteRequest: DeleteDirectSignupRequest = {
       username: "user_not_found",
-      directSignupProgramItemId: testGame.programItemId,
-      startTime: testGame.startTime,
+      directSignupProgramItemId: testProgramItem.programItemId,
+      startTime: testProgramItem.startTime,
     };
     const response = await request(server)
       .delete(ApiEndpoint.DIRECT_SIGNUP)
@@ -380,13 +388,13 @@ describe(`DELETE ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
   });
 
   test("should return success when user and game are found", async () => {
-    vi.setSystemTime(testGame.startTime);
+    vi.setSystemTime(testProgramItem.startTime);
     vi.spyOn(signupTimes, "getDirectSignupStartTime").mockReturnValue(
-      dayjs(testGame.startTime),
+      dayjs(testProgramItem.startTime),
     );
 
     // Populate database
-    await saveProgramItems([testGame]);
+    await saveProgramItems([testProgramItem]);
     await saveUser(mockUser);
     await saveDirectSignup(mockPostDirectSignupRequest);
 
@@ -397,15 +405,15 @@ describe(`DELETE ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     const nonModifiedSignup = unsafelyUnwrapResult(nonModifiedSignupResult);
 
     expect(nonModifiedSignup[0].programItem.programItemId).toEqual(
-      testGame.programItemId,
+      testProgramItem.programItemId,
     );
     expect(nonModifiedSignup[0].userSignups.length).toEqual(1);
 
     // Update direct signups
     const deleteRequest: DeleteDirectSignupRequest = {
       username: mockUser.username,
-      directSignupProgramItemId: testGame.programItemId,
-      startTime: testGame.startTime,
+      directSignupProgramItemId: testProgramItem.programItemId,
+      startTime: testProgramItem.startTime,
     };
     const response = await request(server)
       .delete(ApiEndpoint.DIRECT_SIGNUP)

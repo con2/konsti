@@ -4,7 +4,10 @@ import { faker } from "@faker-js/faker";
 import { UserModel } from "server/features/user/userSchema";
 import { ProgramItemModel } from "server/features/program-item/programItemSchema";
 import { mockUser, mockLotterySignups } from "server/test/mock-data/mockUser";
-import { testGame, testGame2 } from "shared/tests/testGame";
+import {
+  testProgramItem,
+  testProgramItem2,
+} from "shared/tests/testProgramItem";
 import { removeInvalidProgramItemsFromUsers } from "server/features/player-assignment/utils/removeInvalidProgramItemsFromUsers";
 import { saveUser } from "server/features/user/userRepository";
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
@@ -20,9 +23,9 @@ afterEach(async () => {
 });
 
 test("should remove lottery signups for invalid games from users", async () => {
-  const game = new ProgramItemModel(testGame);
+  const game = new ProgramItemModel(testProgramItem);
   await game.save();
-  const game2 = new ProgramItemModel(testGame2);
+  const game2 = new ProgramItemModel(testProgramItem2);
   await game2.save();
   const insertedGames = await ProgramItemModel.find({});
   expect(insertedGames.length).toEqual(2);

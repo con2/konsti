@@ -7,7 +7,7 @@ import {
   DeleteDirectSignupRequestSchema,
   PostDirectSignupRequest,
   PostDirectSignupRequestSchema,
-} from "shared/types/api/myGames";
+} from "shared/types/api/myProgramItems";
 import { UserGroup } from "shared/types/models/user";
 import {
   removeDirectSignup,

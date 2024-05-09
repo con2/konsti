@@ -9,7 +9,7 @@ import { AssignmentStrategy } from "shared/config/sharedConfigTypes";
 import { config } from "shared/config";
 import { AssignmentResultStatus } from "server/types/resultTypes";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
-import { testGame } from "shared/tests/testGame";
+import { testProgramItem } from "shared/tests/testProgramItem";
 import { saveProgramItems } from "server/features/program-item/programItemRepository";
 import { saveUser } from "server/features/user/userRepository";
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
@@ -115,7 +115,9 @@ test("Assignment with valid data should return success with padg strategy", asyn
 test("Should adjust attendee limits if there are previous signups from moved program items", async () => {
   const assignmentStrategy = AssignmentStrategy.PADG;
 
-  await saveProgramItems([{ ...testGame, minAttendance: 2, maxAttendance: 2 }]);
+  await saveProgramItems([
+    { ...testProgramItem, minAttendance: 2, maxAttendance: 2 },
+  ]);
   await saveUser(mockUser);
   await saveUser(mockUser2);
   await saveUser(mockUser3);
@@ -126,7 +128,9 @@ test("Should adjust attendee limits if there are previous signups from moved pro
   // This should remain because of different startTime
   await saveDirectSignup({
     ...mockPostDirectSignupRequest,
-    startTime: dayjs(testGame.startTime).subtract(1, "hours").toISOString(),
+    startTime: dayjs(testProgramItem.startTime)
+      .subtract(1, "hours")
+      .toISOString(),
   });
 
   // This should be removed becase of same startTime
@@ -152,7 +156,7 @@ test("Should adjust attendee limits if there are previous signups from moved pro
   const assignResults = unsafelyUnwrapResult(
     await runAssignment({
       assignmentStrategy,
-      startTime: testGame.startTime,
+      startTime: testProgramItem.startTime,
     }),
   );
   expect(assignResults.status).toEqual("success");
@@ -161,13 +165,14 @@ test("Should adjust attendee limits if there are previous signups from moved pro
   const signupsAfterUpdate = unsafelyUnwrapResult(await findDirectSignups());
 
   const assignmentSignup = signupsAfterUpdate.find(
-    (signup) => signup.programItem.programItemId === testGame.programItemId,
+    (signup) =>
+      signup.programItem.programItemId === testProgramItem.programItemId,
   );
 
   expect(assignmentSignup?.userSignups).toMatchObject([
     {
       username: mockUser.username,
-      time: dayjs(testGame.startTime).subtract(1, "hours").toISOString(),
+      time: dayjs(testProgramItem.startTime).subtract(1, "hours").toISOString(),
       message: "",
       priority: 0,
     },

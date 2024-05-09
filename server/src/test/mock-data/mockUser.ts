@@ -1,7 +1,10 @@
-import { testGame, testGame2 } from "shared/tests/testGame";
+import {
+  testProgramItem,
+  testProgramItem2,
+} from "shared/tests/testProgramItem";
 import { NewUser } from "server/types/userTypes";
 import { Signup, UserGroup } from "shared/types/models/user";
-import { PostDirectSignupRequest } from "shared/types/api/myGames";
+import { PostDirectSignupRequest } from "shared/types/api/myProgramItems";
 import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 
 export const mockUser: NewUser = {
@@ -51,31 +54,31 @@ export const mockUser5: NewUser = {
 
 export const mockLotterySignups: readonly Signup[] = [
   {
-    programItemDetails: testGame,
+    programItemDetails: testProgramItem,
     priority: 1,
-    time: testGame.startTime,
+    time: testProgramItem.startTime,
     message: "",
   },
   {
-    programItemDetails: testGame2,
+    programItemDetails: testProgramItem2,
     priority: 1,
-    time: testGame2.startTime,
+    time: testProgramItem2.startTime,
     message: "",
   },
 ];
 
 export const mockPostDirectSignupRequest: PostDirectSignupRequest = {
   username: mockUser.username,
-  directSignupProgramItemId: testGame.programItemId,
-  startTime: testGame.startTime,
+  directSignupProgramItemId: testProgramItem.programItemId,
+  startTime: testProgramItem.startTime,
   message: "",
   priority: DIRECT_SIGNUP_PRIORITY,
 };
 
 export const mockPostDirectSignupRequest2: PostDirectSignupRequest = {
   username: mockUser.username,
-  directSignupProgramItemId: testGame2.programItemId,
-  startTime: testGame2.startTime,
+  directSignupProgramItemId: testProgramItem2.programItemId,
+  startTime: testProgramItem2.startTime,
   message: "",
   priority: DIRECT_SIGNUP_PRIORITY,
 };

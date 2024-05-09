@@ -5,7 +5,10 @@ import { faker } from "@faker-js/faker";
 import { UserModel } from "server/features/user/userSchema";
 import { ProgramItemModel } from "server/features/program-item/programItemSchema";
 import { mockUser, mockLotterySignups } from "server/test/mock-data/mockUser";
-import { testGame, testGame2 } from "shared/tests/testGame";
+import {
+  testProgramItem,
+  testProgramItem2,
+} from "shared/tests/testProgramItem";
 import { updateMovedProgramItems } from "server/features/player-assignment/utils/updateMovedProgramItems";
 import { findUser, saveUser } from "server/features/user/userRepository";
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
@@ -26,7 +29,7 @@ afterEach(async () => {
 });
 
 test("should remove lottery signups for moved games from users", async () => {
-  await saveProgramItems([testGame, testGame2]);
+  await saveProgramItems([testProgramItem, testProgramItem2]);
   const findGamesResult = await findProgramItems();
   const insertedGames = unsafelyUnwrapResult(findGamesResult);
   expect(insertedGames.length).toEqual(2);
@@ -42,9 +45,9 @@ test("should remove lottery signups for moved games from users", async () => {
   expect(insertedUser?.lotterySignups.length).toEqual(2);
 
   await ProgramItemModel.updateOne(
-    { programItemId: testGame.programItemId },
+    { programItemId: testProgramItem.programItemId },
     {
-      startTime: dayjs(testGame.startTime).add(1, "hours").toISOString(),
+      startTime: dayjs(testProgramItem.startTime).add(1, "hours").toISOString(),
     },
   );
 
@@ -56,5 +59,5 @@ test("should remove lottery signups for moved games from users", async () => {
   expect(updatedUser?.lotterySignups.length).toEqual(1);
   expect(
     updatedUser?.lotterySignups[0].programItemDetails.programItemId,
-  ).toEqual(testGame2.programItemId);
+  ).toEqual(testProgramItem2.programItemId);
 });

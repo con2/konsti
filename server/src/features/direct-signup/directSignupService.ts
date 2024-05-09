@@ -9,7 +9,7 @@ import {
   PostDirectSignupError,
   PostDirectSignupRequest,
   PostDirectSignupResponse,
-} from "shared/types/api/myGames";
+} from "shared/types/api/myProgramItems";
 import { getDirectSignupStartTime } from "shared/utils/signupTimes";
 import { logger } from "server/utils/logger";
 import {

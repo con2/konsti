@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ProgramItem } from "shared/types/models/programItem";
 import { getShortDescriptionFromDescription } from "client/utils/getShortDescriptionFromDescription";
-import { GameInfo } from "client/views/all-program-items/components/GameInfo";
+import { ProgramItemInfo } from "client/views/all-program-items/components/ProgramItemInfo";
 import { config } from "shared/config";
 import { FeedbackForm } from "client/views/all-program-items/components/FeedbackForm";
 import { UserGroup } from "shared/types/models/user";
@@ -66,7 +66,7 @@ export const ProgramItemDetailsView = ({
       )}
       {isExpanded && (
         <ExpandedDescriptionContainer id={id}>
-          <GameInfo programItem={programItem} />
+          <ProgramItemInfo programItem={programItem} />
           {loggedIn && config.client().enableOrganizerFeedback && (
             <FeedbackForm programItem={programItem} />
           )}

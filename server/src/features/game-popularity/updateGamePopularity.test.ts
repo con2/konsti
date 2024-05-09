@@ -5,7 +5,10 @@ import dayjs from "dayjs";
 import { startServer, closeServer } from "server/utils/server";
 import { saveUser } from "server/features/user/userRepository";
 import { mockUser, mockUser2 } from "server/test/mock-data/mockUser";
-import { testGame, testGame2 } from "shared/tests/testGame";
+import {
+  testProgramItem,
+  testProgramItem2,
+} from "shared/tests/testProgramItem";
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import {
   findProgramItems,
@@ -29,17 +32,17 @@ afterEach(async () => {
 });
 
 test(`Should update game popularity`, async () => {
-  vi.setSystemTime(testGame.startTime);
+  vi.setSystemTime(testProgramItem.startTime);
 
-  await saveProgramItems([testGame, testGame2]);
+  await saveProgramItems([testProgramItem, testProgramItem2]);
   await saveUser(mockUser);
   await saveUser(mockUser2);
   await saveLotterySignups({
     lotterySignups: [
       {
-        programItemDetails: testGame,
+        programItemDetails: testProgramItem,
         priority: 1,
-        time: testGame.startTime,
+        time: testProgramItem.startTime,
         message: "",
       },
     ],
@@ -48,9 +51,9 @@ test(`Should update game popularity`, async () => {
   await saveLotterySignups({
     lotterySignups: [
       {
-        programItemDetails: testGame,
+        programItemDetails: testProgramItem,
         priority: 1,
-        time: testGame.startTime,
+        time: testProgramItem.startTime,
         message: "",
       },
     ],
@@ -61,11 +64,11 @@ test(`Should update game popularity`, async () => {
   const games = unsafelyUnwrapResult(gamesResult);
   expect(games.length).toEqual(2);
   const firstGame = games.find(
-    (game) => game.programItemId === testGame.programItemId,
+    (game) => game.programItemId === testProgramItem.programItemId,
   );
   expect(firstGame?.popularity).toEqual(0);
   const secondGame = games.find(
-    (game) => game.programItemId === testGame2.programItemId,
+    (game) => game.programItemId === testProgramItem2.programItemId,
   );
   expect(secondGame?.popularity).toEqual(0);
 
@@ -75,25 +78,27 @@ test(`Should update game popularity`, async () => {
   const updatedGames = unsafelyUnwrapResult(updatedGamesResult);
   expect(updatedGames.length).toEqual(2);
   const updatedFirstGame = updatedGames.find(
-    (game) => game.programItemId === testGame.programItemId,
+    (game) => game.programItemId === testProgramItem.programItemId,
   );
   expect(updatedFirstGame?.popularity).toEqual(2);
   const updatedSecondGame = updatedGames.find(
-    (game) => game.programItemId === testGame2.programItemId,
+    (game) => game.programItemId === testProgramItem2.programItemId,
   );
   expect(updatedSecondGame?.popularity).toEqual(0);
 });
 
 test(`Should only update game popularity of upcoming program items`, async () => {
-  const timeNow = dayjs(testGame.startTime).add(1, "hours").toISOString();
+  const timeNow = dayjs(testProgramItem.startTime)
+    .add(1, "hours")
+    .toISOString();
   vi.setSystemTime(timeNow);
 
   await saveProgramItems([
-    { ...testGame, minAttendance: 1 },
+    { ...testProgramItem, minAttendance: 1 },
     {
-      ...testGame2,
+      ...testProgramItem2,
       minAttendance: 1,
-      startTime: dayjs(testGame.startTime).add(2, "hours").toISOString(),
+      startTime: dayjs(testProgramItem.startTime).add(2, "hours").toISOString(),
     },
   ]);
   await saveUser(mockUser);
@@ -103,9 +108,9 @@ test(`Should only update game popularity of upcoming program items`, async () =>
   await saveLotterySignups({
     lotterySignups: [
       {
-        programItemDetails: testGame,
+        programItemDetails: testProgramItem,
         priority: 1,
-        time: testGame.startTime,
+        time: testProgramItem.startTime,
         message: "",
       },
     ],
@@ -116,9 +121,9 @@ test(`Should only update game popularity of upcoming program items`, async () =>
   await saveLotterySignups({
     lotterySignups: [
       {
-        programItemDetails: testGame2,
+        programItemDetails: testProgramItem2,
         priority: 1,
-        time: dayjs(testGame.startTime).add(2, "hours").toISOString(),
+        time: dayjs(testProgramItem.startTime).add(2, "hours").toISOString(),
         message: "",
       },
     ],
@@ -129,11 +134,11 @@ test(`Should only update game popularity of upcoming program items`, async () =>
   expect(games.length).toEqual(2);
 
   const firstGame = games.find(
-    (game) => game.programItemId === testGame.programItemId,
+    (game) => game.programItemId === testProgramItem.programItemId,
   );
   expect(firstGame?.popularity).toEqual(0);
   const secondGame = games.find(
-    (game) => game.programItemId === testGame2.programItemId,
+    (game) => game.programItemId === testProgramItem2.programItemId,
   );
   expect(secondGame?.popularity).toEqual(0);
 
@@ -143,12 +148,12 @@ test(`Should only update game popularity of upcoming program items`, async () =>
   expect(updatedGames.length).toEqual(2);
 
   const updatedFirstGame = updatedGames.find(
-    (game) => game.programItemId === testGame.programItemId,
+    (game) => game.programItemId === testProgramItem.programItemId,
   );
   expect(updatedFirstGame?.popularity).toEqual(0);
 
   const updatedSecondGame = updatedGames.find(
-    (game) => game.programItemId === testGame2.programItemId,
+    (game) => game.programItemId === testProgramItem2.programItemId,
   );
   expect(updatedSecondGame?.popularity).toEqual(1);
 });

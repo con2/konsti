@@ -12,7 +12,10 @@ import {
   findProgramItems,
   saveProgramItems,
 } from "server/features/program-item/programItemRepository";
-import { testGame, testGame2 } from "shared/tests/testGame";
+import {
+  testProgramItem,
+  testProgramItem2,
+} from "shared/tests/testProgramItem";
 import { findUser, saveUser } from "server/features/user/userRepository";
 import {
   mockPostDirectSignupRequest,
@@ -35,13 +38,13 @@ import {
   KompassiGameStyleRopecon,
   KompassiGenreRopecon,
   KompassiTagRopecon,
-} from "server/kompassi/ropecon/kompassiGameRopecon";
+} from "server/kompassi/ropecon/kompassiProgramItemRopecon";
 import { GameStyle, Genre, Tag } from "shared/types/models/programItem";
 import { logger } from "server/utils/logger";
 import { SignupQuestionType } from "shared/types/models/settings";
 import { config } from "shared/config";
 import { ConventionName } from "shared/config/sharedConfigTypes";
-import { testHelperWrapper } from "server/kompassi/getGamesFromKompassi";
+import { testHelperWrapper } from "server/kompassi/getProgramItemsFromKompassi";
 import {
   mockKompassiGameRopecon,
   mockKompassiGameRopecon2,
@@ -69,7 +72,7 @@ describe(`GET ${ApiEndpoint.GAMES}`, () => {
 
   test(`should not return private signup messages`, async () => {
     await createSettings();
-    await saveProgramItems([testGame, testGame2]);
+    await saveProgramItems([testProgramItem, testProgramItem2]);
     await saveUser(mockUser);
 
     const publicMessage = "Answer to public message";
@@ -83,7 +86,7 @@ describe(`GET ${ApiEndpoint.GAMES}`, () => {
     });
 
     await saveSignupQuestion({
-      programItemId: testGame.programItemId,
+      programItemId: testProgramItem.programItemId,
       questionFi: "public message",
       questionEn: "public message",
       private: false,
@@ -91,7 +94,7 @@ describe(`GET ${ApiEndpoint.GAMES}`, () => {
       selectOptions: [],
     });
     await saveSignupQuestion({
-      programItemId: testGame2.programItemId,
+      programItemId: testProgramItem2.programItemId,
       questionFi: "private message",
       questionEn: "public message",
       private: true,
@@ -136,7 +139,7 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
     const games = unsafelyUnwrapResult(gamesResult);
 
     expect(games.length).toEqual(1);
-    expect(games[0].title).toEqual(testGame.title);
+    expect(games[0].title).toEqual(testProgramItem.title);
   });
 
   test("should remove games, lottery signups, direct signups, and favorited games that are not in the server response", async () => {
@@ -144,7 +147,7 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
       value: [mockKompassiGameRopecon],
     });
 
-    await saveProgramItems([testGame, testGame2]);
+    await saveProgramItems([testProgramItem, testProgramItem2]);
     await saveUser(mockUser);
     await saveLotterySignups({
       username: mockUser.username,
@@ -155,8 +158,8 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
     await saveFavorite({
       username: mockUser.username,
       favoritedProgramItemIds: [
-        testGame.programItemId,
-        testGame2.programItemId,
+        testProgramItem.programItemId,
+        testProgramItem2.programItemId,
       ],
     });
 
@@ -169,23 +172,23 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
     const games = unsafelyUnwrapResult(gamesResult);
 
     expect(games.length).toEqual(1);
-    expect(games[0].title).toEqual(testGame.title);
+    expect(games[0].title).toEqual(testProgramItem.title);
 
     const updatedUserResult = await findUser(mockUser.username);
     const updatedUser = unsafelyUnwrapResult(updatedUserResult);
     expect(updatedUser?.lotterySignups.length).toEqual(1);
     expect(updatedUser?.lotterySignups[0].programItemDetails.title).toEqual(
-      testGame.title,
+      testProgramItem.title,
     );
     expect(updatedUser?.favoritedProgramItems.length).toEqual(1);
     expect(updatedUser?.favoritedProgramItems[0].programItemId).toEqual(
-      testGame.programItemId,
+      testProgramItem.programItemId,
     );
 
     const updatedSignupsResult = await findUserDirectSignups(mockUser.username);
     const updatedSignups = unsafelyUnwrapResult(updatedSignupsResult);
     expect(updatedSignups.length).toEqual(1);
-    expect(updatedSignups[0].programItem.title).toEqual(testGame.title);
+    expect(updatedSignups[0].programItem.title).toEqual(testProgramItem.title);
   });
 
   test("should not modify anything if server response is invalid", async () => {
@@ -193,7 +196,7 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
       // @ts-expect-error: Invalid value for testing
       .mockResolvedValue({ value: "broken response" });
 
-    await saveProgramItems([testGame, testGame2]);
+    await saveProgramItems([testProgramItem, testProgramItem2]);
 
     const response = await request(server)
       .post(ApiEndpoint.GAMES)
@@ -205,8 +208,8 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
 
     expect(games.length).toEqual(2);
     const sortedGames = sortBy(games, "title");
-    expect(sortedGames[0].title).toEqual(testGame.title);
-    expect(sortedGames[1].title).toEqual(testGame2.title);
+    expect(sortedGames[0].title).toEqual(testProgramItem.title);
+    expect(sortedGames[1].title).toEqual(testProgramItem2.title);
   });
 
   test("should not modify anything if server response is empty array", async () => {
@@ -214,7 +217,7 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
       value: [],
     });
 
-    await saveProgramItems([testGame, testGame2]);
+    await saveProgramItems([testProgramItem, testProgramItem2]);
 
     const response = await request(server)
       .post(ApiEndpoint.GAMES)
@@ -226,13 +229,13 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
 
     expect(games.length).toEqual(2);
     const sortedGames = sortBy(games, "title");
-    expect(sortedGames[0].title).toEqual(testGame.title);
-    expect(sortedGames[1].title).toEqual(testGame2.title);
+    expect(sortedGames[0].title).toEqual(testProgramItem.title);
+    expect(sortedGames[1].title).toEqual(testProgramItem2.title);
   });
 
   test("should update changed game details", async () => {
     const newDescription = "new description";
-    const newStartTime = dayjs(testGame.startTime)
+    const newStartTime = dayjs(testProgramItem.startTime)
       .add(1, "hours")
       .toISOString();
 
@@ -246,7 +249,7 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
       ],
     });
 
-    await saveProgramItems([testGame, testGame2]);
+    await saveProgramItems([testProgramItem, testProgramItem2]);
 
     const response = await request(server)
       .post(ApiEndpoint.GAMES)
@@ -262,7 +265,7 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
   });
 
   test("should remove lottery signups but not direct signups or favorited games if game start time changes", async () => {
-    const newStartTime = dayjs(testGame.startTime)
+    const newStartTime = dayjs(testProgramItem.startTime)
       .add(1, "hours")
       .toISOString();
 
@@ -276,7 +279,7 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
       ],
     });
 
-    await saveProgramItems([testGame, testGame2]);
+    await saveProgramItems([testProgramItem, testProgramItem2]);
     await saveUser(mockUser);
     await saveLotterySignups({
       username: mockUser.username,
@@ -287,8 +290,8 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
     await saveFavorite({
       username: mockUser.username,
       favoritedProgramItemIds: [
-        testGame.programItemId,
-        testGame2.programItemId,
+        testProgramItem.programItemId,
+        testProgramItem2.programItemId,
       ],
     });
 
@@ -301,7 +304,7 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
     const updatedUser = unsafelyUnwrapResult(updatedUserResult);
     expect(updatedUser?.lotterySignups.length).toEqual(1);
     expect(updatedUser?.lotterySignups[0].programItemDetails.title).toEqual(
-      testGame2.title,
+      testProgramItem2.title,
     );
     expect(updatedUser?.favoritedProgramItems.length).toEqual(2);
 

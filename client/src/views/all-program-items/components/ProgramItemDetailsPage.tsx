@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 import { Loading } from "client/components/Loading";
 import { useAppSelector } from "client/utils/hooks";
-import { GameEntry } from "client/views/all-program-items/components/GameEntry";
+import { ProgramItemEntry } from "client/views/all-program-items/components/ProgramItemEntry";
 import {
   selectDirectSignups,
   selectFavoritedGames,
@@ -59,7 +59,7 @@ export const ProgramItemDetailsPage = (): ReactElement => {
       <BackButton />
       {loading && <Loading />}
       {foundGame && (
-        <GameEntry
+        <ProgramItemEntry
           isAlwaysExpanded={true}
           programItem={foundGame}
           startTime={foundGame.startTime}

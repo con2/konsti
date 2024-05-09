@@ -3,7 +3,7 @@ import {
   createTestUsers,
   createUsersInGroup,
 } from "server/test/test-data-generation/generators/createUsers";
-import { createGames } from "server/test/test-data-generation/generators/createGames";
+import { createGames } from "server/test/test-data-generation/generators/createProgramItems";
 import { createLotterySignups } from "server/test/test-data-generation/generators/createLotterySignups";
 
 export const generateTestData = async (

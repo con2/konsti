@@ -4,7 +4,10 @@ import { faker } from "@faker-js/faker";
 import { removeOverlapSignups } from "server/features/player-assignment/utils/removeOverlapSignups";
 import { mockUser, mockLotterySignups } from "server/test/mock-data/mockUser";
 import { mockResults } from "server/test/mock-data/mockResults";
-import { testGame, testGame2 } from "shared/tests/testGame";
+import {
+  testProgramItem,
+  testProgramItem2,
+} from "shared/tests/testProgramItem";
 import { findUser, saveUser } from "server/features/user/userRepository";
 import {
   findProgramItems,
@@ -24,7 +27,7 @@ afterEach(async () => {
 });
 
 test("should remove overlapping signups from user", async () => {
-  await saveProgramItems([testGame, testGame2]);
+  await saveProgramItems([testProgramItem, testProgramItem2]);
   const insertedGamesResult = await findProgramItems();
   const insertedGames = unsafelyUnwrapResult(insertedGamesResult);
   expect(insertedGames.length).toEqual(2);

@@ -19,20 +19,22 @@ import {
 } from "shared/utils/result";
 import { KompassiError } from "shared/types/api/errors";
 import { ProgramItem } from "shared/types/models/programItem";
-import { getGamesFromKompassi } from "server/kompassi/getGamesFromKompassi";
-import { kompassiGameMapper } from "server/kompassi/kompassiGameMapper";
+import { getProgramItemsFromKompassi } from "server/kompassi/getProgramItemsFromKompassi";
+import { kompassiProgramItemMapper } from "server/kompassi/kompassiProgramItemMapper";
 
 export const getGamesForConvention = async (): Promise<
   Result<readonly ProgramItem[], KompassiError>
 > => {
   const conventionName = config.shared().conventionName;
-  const kompassiGamesResult = await getGamesFromKompassi(conventionName);
+  const kompassiGamesResult = await getProgramItemsFromKompassi(conventionName);
   if (isErrorResult(kompassiGamesResult)) {
     return kompassiGamesResult;
   }
 
   const kompassiGames = unwrapResult(kompassiGamesResult);
-  return makeSuccessResult(kompassiGameMapper(conventionName, kompassiGames));
+  return makeSuccessResult(
+    kompassiProgramItemMapper(conventionName, kompassiGames),
+  );
 };
 
 export const updateGames = async (): Promise<

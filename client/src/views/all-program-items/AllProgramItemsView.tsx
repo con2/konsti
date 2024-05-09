@@ -1,7 +1,7 @@
 import { ReactElement, useEffect, useMemo, useState } from "react";
 import { useStore } from "react-redux";
 import { useDebounce } from "use-debounce";
-import { AllGamesList } from "client/views/all-program-items/components/AllGamesList";
+import { AllProgramItemsList } from "client/views/all-program-items/components/AllProgramItemsList";
 import { getUpcomingGames } from "client/utils/getUpcomingGames";
 import { loadGames } from "client/utils/loadData";
 import { Loading } from "client/components/Loading";
@@ -102,7 +102,7 @@ export const AllProgramItemsView = (): ReactElement => {
 
   const memoizedGames = useMemo(() => {
     return (
-      <AllGamesList
+      <AllProgramItemsList
         programItems={getVisibleGames(
           filteredGames,
           selectedStartingTime,

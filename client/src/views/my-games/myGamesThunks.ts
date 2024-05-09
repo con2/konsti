@@ -12,7 +12,7 @@ import {
   DeleteDirectSignupRequest,
   PostDirectSignupRequest,
   PostLotterySignupsRequest,
-} from "shared/types/api/myGames";
+} from "shared/types/api/myProgramItems";
 import {
   deleteDirectSignup,
   postDirectSignup,

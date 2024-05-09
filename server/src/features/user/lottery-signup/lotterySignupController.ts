@@ -4,7 +4,7 @@ import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import {
   PostLotterySignupsRequest,
   PostLotterySignupsRequestSchema,
-} from "shared/types/api/myGames";
+} from "shared/types/api/myProgramItems";
 import { getAuthorizedUsername } from "server/utils/authHeader";
 import { UserGroup } from "shared/types/models/user";
 import { storeLotterySignups } from "server/features/user/lottery-signup/lotterySignupService";
