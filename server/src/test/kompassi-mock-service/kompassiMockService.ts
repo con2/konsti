@@ -3,7 +3,7 @@ import { z } from "zod";
 import {
   KompassiProfile,
   KompassiTokens,
-} from "server/features/kompassiLogin/KompassiLoginTypes";
+} from "server/features/kompassi-login/KompassiLoginTypes";
 
 const accessToken = "fi9crnvvDdMDjKoetkgXwQZAhj4RFN";
 const tokenType = "Bearer";

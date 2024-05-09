@@ -29,7 +29,7 @@ import {
   KompassiProfileSchema,
   KompassiTokens,
   KompassiTokensSchema,
-} from "server/features/kompassiLogin/KompassiLoginTypes";
+} from "server/features/kompassi-login/KompassiLoginTypes";
 
 export const getBaseUrl = (): string => {
   if (process.env.SETTINGS === "ci") {

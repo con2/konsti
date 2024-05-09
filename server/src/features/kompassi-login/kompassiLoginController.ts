@@ -4,14 +4,14 @@ import {
   getBaseUrl,
   doKompassiLogin,
   verifyKompassiLogin,
-} from "server/features/kompassiLogin/kompassiLoginService";
+} from "server/features/kompassi-login/kompassiLoginService";
 import { ApiEndpoint, AuthEndpoint } from "shared/constants/apiEndpoints";
 import {
   PostKompassiLoginRequestSchema,
   PostVerifyKompassiLoginRequest,
   PostVerifyKompassiLoginRequestSchema,
 } from "shared/types/api/login";
-import { getAuthUrl } from "server/features/kompassiLogin/kompassiLoginUtils";
+import { getAuthUrl } from "server/features/kompassi-login/kompassiLoginUtils";
 import { getAuthorizedUsername } from "server/utils/authHeader";
 import { UserGroup } from "shared/types/models/user";
 
