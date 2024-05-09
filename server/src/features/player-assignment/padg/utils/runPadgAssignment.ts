@@ -18,7 +18,7 @@ import { AssignmentError } from "shared/types/api/errors";
 import { logger } from "server/utils/logger";
 
 export const runPadgAssignment = (
-  lotterySignupGames: readonly ProgramItem[],
+  lotterySignupProgramItems: readonly ProgramItem[],
   playerGroups: readonly User[][],
   startTime: string,
   directSignups: readonly DirectSignupsForProgramItem[],
@@ -28,7 +28,7 @@ export const runPadgAssignment = (
     return groupsResult;
   }
   const groups = unwrapResult(groupsResult);
-  const events = getEvents(lotterySignupGames, directSignups);
+  const events = getEvents(lotterySignupProgramItems, directSignups);
   const listResult = getList(playerGroups, startTime, directSignups);
   if (isErrorResult(listResult)) {
     return listResult;

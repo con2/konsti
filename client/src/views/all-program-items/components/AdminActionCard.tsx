@@ -27,7 +27,9 @@ export const AdminActionCard = ({ programItem }: Props): ReactElement => {
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
 
-  const hiddenGames = useAppSelector((state) => state.admin.hiddenProgramItems);
+  const hiddenProgramItems = useAppSelector(
+    (state) => state.admin.hiddenProgramItems,
+  );
   const signupQuestions = useAppSelector(
     (state) => state.admin.signupQuestions,
   );
@@ -51,7 +53,7 @@ export const AdminActionCard = ({ programItem }: Props): ReactElement => {
   useEffect(() => {
     // Check if hidden
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-    hiddenGames.find((hiddenGame) => {
+    hiddenProgramItems.find((hiddenGame) => {
       if (hiddenGame.programItemId === programItem.programItemId) {
         setHidden(true);
       }
@@ -64,26 +66,26 @@ export const AdminActionCard = ({ programItem }: Props): ReactElement => {
         setHasSignupQuestion(true);
       }
     });
-  }, [programItem.programItemId, hiddenGames, signupQuestions]);
+  }, [programItem.programItemId, hiddenProgramItems, signupQuestions]);
 
   const updateHidden = async (): Promise<void> => {
     setSubmitting(true);
 
     const newHidden = !hidden;
 
-    const gameIndex = hiddenGames.findIndex(
+    const gameIndex = hiddenProgramItems.findIndex(
       (g) => g.programItemId === programItem.programItemId,
     );
-    const allHiddenGames = hiddenGames.slice();
+    const allHiddenProgramItems = hiddenProgramItems.slice();
 
     if (newHidden && gameIndex === -1) {
-      allHiddenGames.push(programItem);
+      allHiddenProgramItems.push(programItem);
     } else if (!newHidden && gameIndex > -1) {
-      allHiddenGames.splice(gameIndex, 1);
+      allHiddenProgramItems.splice(gameIndex, 1);
     }
 
     try {
-      await dispatch(submitUpdateHidden(allHiddenGames));
+      await dispatch(submitUpdateHidden(allHiddenProgramItems));
     } catch (error) {
       // eslint-disable-next-line no-restricted-syntax -- TODO: Remove throw
       throw new Error(`submitUpdateHidden error: ${error}`);

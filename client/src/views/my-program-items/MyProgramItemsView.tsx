@@ -10,19 +10,23 @@ import {
   getUpcomingDirectSignups,
   getUpcomingFavorites,
 } from "client/utils/getUpcomingProgramItems";
-import { loadUser, loadGames, loadGroupMembers } from "client/utils/loadData";
+import {
+  loadUser,
+  loadProgramItems,
+  loadGroupMembers,
+} from "client/utils/loadData";
 import { useAppSelector } from "client/utils/hooks";
 import { SignupStrategy } from "shared/config/sharedConfigTypes";
 import {
   selectDirectSignups,
-  selectFavoritedGames,
+  selectFavoritedProgramItems,
   selectLotterySignups,
 } from "client/views/my-program-items/myProgramItemsSlice";
 import { RadioButton } from "client/components/RadioButton";
 import { RaisedCard } from "client/components/RaisedCard";
 import {
   SessionStorageValue,
-  getSavedShowAllGames,
+  getSavedShowAllProgramItems,
 } from "client/utils/sessionStorage";
 import { RadioButtonGroup } from "client/components/RadioButtonGroup";
 import { getIsInGroup } from "client/views/group/groupUtils";
@@ -31,7 +35,7 @@ export const MyProgramItemsView = (): ReactElement => {
   const { t } = useTranslation();
 
   const lotterySignups = useAppSelector(selectLotterySignups);
-  const favoritedGames = useAppSelector(selectFavoritedGames);
+  const favoritedProgramItems = useAppSelector(selectFavoritedProgramItems);
   const directSignups = useAppSelector(selectDirectSignups);
   const isGroupCreator = useAppSelector((state) => state.group.isGroupCreator);
   const groupMembers = useAppSelector((state) => state.group.groupMembers);
@@ -42,14 +46,14 @@ export const MyProgramItemsView = (): ReactElement => {
 
   const isGroupMember = groupMembers.length > 0;
 
-  const [showAllGames, setShowAllGames] = useState<boolean>(
-    getSavedShowAllGames(),
+  const [showAllProgramItems, setShowAllProgramItems] = useState<boolean>(
+    getSavedShowAllProgramItems(),
   );
   const store = useStore();
 
   useEffect(() => {
     const fetchData = async (): Promise<void> => {
-      await loadGames();
+      await loadProgramItems();
       await loadUser();
       await loadGroupMembers();
     };
@@ -57,32 +61,32 @@ export const MyProgramItemsView = (): ReactElement => {
   }, [store, testTime]);
 
   return (
-    <MyGamesViewContainer>
+    <MyProgramItemsViewContainer>
       <RaisedCard>
         <StyledLabel htmlFor="startingTimeSelection">
           {t("startingTime")}
         </StyledLabel>
         <RadioButtonGroup>
           <RadioButton
-            checked={!showAllGames}
+            checked={!showAllProgramItems}
             id={"upcoming"}
             label={t("lastStartedAndUpcoming")}
             onChange={() => {
-              setShowAllGames(false);
+              setShowAllProgramItems(false);
               sessionStorage.setItem(
-                SessionStorageValue.MY_GAMES_SHOW_ALL_GAMES,
+                SessionStorageValue.MY_PROGRAM_ITEMS_SHOW_ALL_PROGRAM_ITEMS,
                 "false",
               );
             }}
           />
           <RadioButton
-            checked={showAllGames}
+            checked={showAllProgramItems}
             id={"all"}
             label={t("all")}
             onChange={() => {
-              setShowAllGames(true);
+              setShowAllProgramItems(true);
               sessionStorage.setItem(
-                SessionStorageValue.MY_GAMES_SHOW_ALL_GAMES,
+                SessionStorageValue.MY_PROGRAM_ITEMS_SHOW_ALL_PROGRAM_ITEMS,
                 "true",
               );
             }}
@@ -92,17 +96,21 @@ export const MyProgramItemsView = (): ReactElement => {
 
       <MyFavoritesList
         favoritedProgramItems={
-          showAllGames ? favoritedGames : getUpcomingFavorites(favoritedGames)
+          showAllProgramItems
+            ? favoritedProgramItems
+            : getUpcomingFavorites(favoritedProgramItems)
         }
       />
       <MyDirectSignupsList
         directSignups={
-          showAllGames ? directSignups : getUpcomingDirectSignups(directSignups)
+          showAllProgramItems
+            ? directSignups
+            : getUpcomingDirectSignups(directSignups)
         }
         lotterySignups={getLotterySignups({
           lotterySignups,
           isGroupCreator,
-          getAllProgramItems: showAllGames,
+          getAllProgramItems: showAllProgramItems,
           isInGroup,
           groupMembers,
         })}
@@ -112,7 +120,7 @@ export const MyProgramItemsView = (): ReactElement => {
           lotterySignups={getLotterySignups({
             lotterySignups,
             isGroupCreator,
-            getAllProgramItems: showAllGames,
+            getAllProgramItems: showAllProgramItems,
             isInGroup,
             groupMembers,
           })}
@@ -120,11 +128,11 @@ export const MyProgramItemsView = (): ReactElement => {
           isGroupMember={isGroupMember}
         />
       )}
-    </MyGamesViewContainer>
+    </MyProgramItemsViewContainer>
   );
 };
 
-const MyGamesViewContainer = styled.div`
+const MyProgramItemsViewContainer = styled.div`
   margin: 8px 16px 8px 16px;
 
   @media (max-width: ${(props) => props.theme.breakpointPhone}) {

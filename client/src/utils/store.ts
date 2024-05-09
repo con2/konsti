@@ -52,8 +52,8 @@ const rootReducer = (
 };
 
 const ignoredActions = [
-  "allGames/submitGetGamesAsync", // Games is huge
-  "admin/submitGetSettingsAsync", // HiddenGames is huge
+  "allProgramItems/submitGetProgramItemsAsync", // Program items is huge
+  "admin/submitGetSettingsAsync", // HiddenProgramItems is huge
   "admin/submitGetSignupMessagesAsync", // Private
 ];
 
@@ -73,18 +73,18 @@ const sentryReduxEnhancer = createReduxEnhancer({
     /* eslint-disable @typescript-eslint/no-unnecessary-condition -- No idea what state the app state is in */
     const transformedState = {
       ...state,
-      allGames: {
+      allProgramItems: {
         ...state?.allProgramItems,
         programItems: `Program items count: ${state?.allProgramItems?.programItems?.length}`,
         directSignups: `Direct signups count: ${state?.allProgramItems?.directSignups?.length}`,
       },
       admin: {
         ...state?.admin,
-        hiddenGames: `Hidden games count: ${state?.admin?.hiddenProgramItems?.length}`,
+        hiddenProgramItems: `Hidden program items count: ${state?.admin?.hiddenProgramItems?.length}`,
         signupQuestions: `Signup questions count: ${state?.admin?.signupQuestions?.length}`,
         signupMessages: `Signup messages count: ${state?.admin?.signupMessages?.length}`,
       },
-      myGames: {
+      myProgramItems: {
         ...state?.myProgramItems,
         directSignups: state?.myProgramItems?.directSignups?.map(
           (directSignup) => ({

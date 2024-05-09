@@ -26,11 +26,11 @@ afterEach(async () => {
   await mongoose.disconnect();
 });
 
-test("should remove overlapping signups from user", async () => {
+test("should remove overlapping lottery signups from user", async () => {
   await saveProgramItems([testProgramItem, testProgramItem2]);
-  const insertedGamesResult = await findProgramItems();
-  const insertedGames = unsafelyUnwrapResult(insertedGamesResult);
-  expect(insertedGames.length).toEqual(2);
+  const insertedProgramItemsResult = await findProgramItems();
+  const insertedProgramItems = unsafelyUnwrapResult(insertedProgramItemsResult);
+  expect(insertedProgramItems.length).toEqual(2);
 
   await saveUser(mockUser);
   await saveLotterySignups({

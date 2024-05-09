@@ -29,7 +29,7 @@ export const HiddenProgramItemsList = ({
 
         {sortedProgramItems.map((programItem) => (
           <li key={programItem.programItemId}>
-            <Link to={`/games/${programItem.programItemId}`}>
+            <Link to={`/program/${programItem.programItemId}`}>
               {programItem.title}
             </Link>
 

@@ -32,7 +32,7 @@ export const LotterySignupsByStartTimes = ({
                       <RowLeftSide>
                         <SignupPriority>{`${signup.priority})`}</SignupPriority>
                         <StyledLink
-                          to={`/games/${signup.programItemDetails.programItemId}`}
+                          to={`/program/${signup.programItemDetails.programItemId}`}
                         >
                           {signup.programItemDetails.title}
                         </StyledLink>

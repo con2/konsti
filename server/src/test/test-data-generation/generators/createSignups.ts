@@ -29,9 +29,9 @@ export const createDirectSignups = async (): Promise<void> => {
   logger.info(`Signups: ${programItems.length} games`);
   logger.info(`Signups: ${users.length} users`);
 
-  const shuffledGames = shuffleArray(programItems);
+  const shuffledProgramItems = shuffleArray(programItems);
 
-  const gamesByProgramType = groupBy(shuffledGames, "programType");
+  const gamesByProgramType = groupBy(shuffledProgramItems, "programType");
 
   const promises = Object.entries(gamesByProgramType).flatMap(
     ([_programType, gamesForProgamType]) => {

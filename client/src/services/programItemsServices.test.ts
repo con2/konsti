@@ -6,7 +6,7 @@ import {
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { api } from "client/utils/api";
 
-test("GET games from server", async () => {
+test("GET program items from server", async () => {
   const spy = vi.spyOn(api, "get").mockResolvedValue({ data: "test response" });
 
   const response = await getProgramItems();
@@ -16,7 +16,7 @@ test("GET games from server", async () => {
   expect(spy).toHaveBeenCalledWith(ApiEndpoint.PROGRAM_ITEMS);
 });
 
-test("POST games update to server", async () => {
+test("POST program items update to server", async () => {
   const spy = vi
     .spyOn(api, "post")
     .mockResolvedValue({ data: "test response" });

@@ -37,7 +37,7 @@ export const getProgramItemsFromFullProgramHitpoint = (
 
   checkUnknownKeys(matchingProgramItems, KompassiProgramItemSchemaHitpoint);
 
-  const kompassiGames = matchingProgramItems.flatMap((programItem) => {
+  const kompassiProgramItems = matchingProgramItems.flatMap((programItem) => {
     const result = parseProgramItem(
       programItem,
       KompassiProgramItemSchemaHitpoint,
@@ -45,7 +45,7 @@ export const getProgramItemsFromFullProgramHitpoint = (
     return result ?? [];
   });
 
-  if (kompassiGames.length === 0) {
+  if (kompassiProgramItems.length === 0) {
     logger.error(
       "%s",
       new Error("No program items with known categories found"),
@@ -53,7 +53,7 @@ export const getProgramItemsFromFullProgramHitpoint = (
     return [];
   }
 
-  logger.info(`Found ${kompassiGames.length} valid games`);
+  logger.info(`Found ${kompassiProgramItems.length} valid program items`);
 
-  return kompassiGames;
+  return kompassiProgramItems;
 };

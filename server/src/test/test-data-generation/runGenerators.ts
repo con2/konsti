@@ -1,5 +1,5 @@
 import { logger } from "server/utils/logger";
-import { createGames } from "server/test/test-data-generation/generators/createProgramItems";
+import { createProgramItems } from "server/test/test-data-generation/generators/createProgramItems";
 import { createLotterySignups } from "server/test/test-data-generation/generators/createLotterySignups";
 import { removeUsers } from "server/features/user/userRepository";
 import { removeResults } from "server/features/results/resultsRepository";
@@ -86,7 +86,7 @@ export const runGenerators = async (
     !options.clean && (await removeProgramItems());
     !options.clean && (await removeResults());
 
-    await createGames(newGamesCount);
+    await createProgramItems(newGamesCount);
     await createSettings();
   }
 

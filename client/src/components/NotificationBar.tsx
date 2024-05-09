@@ -31,7 +31,9 @@ export const NotificationBar = (): ReactElement | null => {
         <StyledNotification key={`${action}-${createdAt}`}>
           <div>
             <span>{t(`eventLogActions.${action}`)}</span>
-            <Link to={`/games/${programItemId}`}>{foundProgramItem.title}</Link>
+            <Link to={`/program/${programItemId}`}>
+              {foundProgramItem.title}
+            </Link>
             <StartTime>
               ({getWeekdayAndTime(foundProgramItem.startTime)})
             </StartTime>

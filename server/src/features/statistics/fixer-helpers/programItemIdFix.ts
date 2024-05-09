@@ -39,7 +39,7 @@ export const programItemIdFix = async (
     ),
   );
 
-  logger.info(`Loaded ${programItems.length} games`);
+  logger.info(`Loaded ${programItems.length} program items`);
 
   const directSignups: DirectSignupDoc[] = JSON.parse(
     fs.readFileSync(
@@ -48,7 +48,7 @@ export const programItemIdFix = async (
     ),
   );
 
-  logger.info(`Loaded ${programItems.length} games`);
+  logger.info(`Loaded ${programItems.length} program items`);
 
   const settings: SettingsDoc[] = JSON.parse(
     fs.readFileSync(
@@ -57,10 +57,10 @@ export const programItemIdFix = async (
     ),
   );
 
-  logger.info(`Loaded ${settings.length} games`);
+  logger.info(`Loaded ${settings.length} program items`);
 
   users.map((user) => {
-    const tempFavoritedGames = user.favoritedProgramItems.map(
+    const tempFavoritedProgramItems = user.favoritedProgramItems.map(
       (favoritedGame) => {
         const matchingGame = programItems.find(
           // @ts-expect-error: $oid not in interface
@@ -99,7 +99,7 @@ export const programItemIdFix = async (
     });
 
     // @ts-expect-error: We don't want whole game details
-    user.favoritedProgramItems = tempFavoritedGames;
+    user.favoritedProgramItems = tempFavoritedProgramItems;
     // @ts-expect-error: We don't want whole game details
     user.lotterySignups = tempLotterySignups;
   });
@@ -141,20 +141,22 @@ export const programItemIdFix = async (
     });
   });
 
-  const tempHiddenGames: ProgramItem[] = [];
+  const tempHiddenProgramItems: ProgramItem[] = [];
 
   settings.map((setting) => {
-    programItems.map((game) => {
-      setting.hiddenGames.map((hiddenGame) => {
-        if (isEqual(game._id, hiddenGame)) {
+    programItems.map((programItem) => {
+      setting.hiddenProgramItems.map((hiddenGame) => {
+        if (isEqual(programItem._id, hiddenGame)) {
           // @ts-expect-error: We don't want whole game details
-          tempHiddenGames.push({ programItemId: game.programItemId });
+          tempHiddenProgramItems.push({
+            programItemId: programItem.programItemId,
+          });
         }
       });
     });
   });
 
-  settings[0].hiddenGames = tempHiddenGames;
+  settings[0].hiddenProgramItems = tempHiddenProgramItems;
 
   await writeJson(year, event, "users", users);
   await writeJson(year, event, "results", results);

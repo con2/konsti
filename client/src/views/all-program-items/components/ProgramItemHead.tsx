@@ -83,7 +83,7 @@ export const ProgramItemHead = ({
     <Container>
       <div>
         <H3 data-testid="game-title">
-          <HeaderLink to={`/games/${programItem.programItemId}`}>
+          <HeaderLink to={`/program/${programItem.programItemId}`}>
             {programItem.title}
           </HeaderLink>
         </H3>

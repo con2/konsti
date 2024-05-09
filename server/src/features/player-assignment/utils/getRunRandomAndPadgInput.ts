@@ -13,11 +13,11 @@ export const getRunRandomAndPadgInput = (
   programItems: readonly ProgramItem[],
   startTime: string,
 ): RunRandomAndPadgInput => {
-  const startingGames = getStartingProgramItems(programItems, startTime);
+  const startingProgramItems = getStartingProgramItems(programItems, startTime);
 
-  if (startingGames.length === 0) {
+  if (startingProgramItems.length === 0) {
     return {
-      lotterySignupGames: [],
+      lotterySignupProgramItems: [],
       playerGroups: [],
       allPlayers: [],
       numberOfIndividuals: 0,
@@ -29,7 +29,7 @@ export const getRunRandomAndPadgInput = (
 
   if (signupWishes.length === 0) {
     return {
-      lotterySignupGames: [],
+      lotterySignupProgramItems: [],
       playerGroups: [],
       allPlayers: [],
       numberOfIndividuals: 0,
@@ -37,13 +37,13 @@ export const getRunRandomAndPadgInput = (
     };
   }
 
-  const lotterySignupGames = getLotterySignupProgramItems(
-    startingGames,
+  const lotterySignupProgramItems = getLotterySignupProgramItems(
+    startingProgramItems,
     signupWishes,
   );
 
   // Get group creators, selected players are group creators since group members don't have signups yet
-  const groupCreators = getSelectedPlayers(players, startingGames);
+  const groupCreators = getSelectedPlayers(players, startingProgramItems);
 
   // Get group members based on group creators
   const groupMembers = getGroupMembers(groupCreators, players);
@@ -65,7 +65,7 @@ export const getRunRandomAndPadgInput = (
   }
 
   return {
-    lotterySignupGames,
+    lotterySignupProgramItems,
     playerGroups,
     allPlayers,
     numberOfIndividuals,

@@ -35,7 +35,7 @@ export const fetchSettings = async (): Promise<
   return {
     message: "Getting settings success",
     status: "success",
-    hiddenGames: settings.hiddenGames,
+    hiddenProgramItems: settings.hiddenProgramItems,
     appOpen: settings.appOpen,
     signupQuestions: settings.signupQuestions,
     signupStrategy: settings.signupStrategy,
@@ -57,9 +57,9 @@ export const storeHidden = async (
 
   const settings = unwrapResult(settingsResult);
 
-  const removeHiddenGamesFromUsersResult =
-    await removeHiddenProgramItemsFromUsers(settings.hiddenGames);
-  if (isErrorResult(removeHiddenGamesFromUsersResult)) {
+  const removeHiddenProgramItemsFromUsersResult =
+    await removeHiddenProgramItemsFromUsers(settings.hiddenProgramItems);
+  if (isErrorResult(removeHiddenProgramItemsFromUsersResult)) {
     return {
       message: "Update hidden failure",
       status: "error",
@@ -70,7 +70,7 @@ export const storeHidden = async (
   return {
     message: "Update hidden success",
     status: "success",
-    hiddenGames: settings.hiddenGames,
+    hiddenProgramItems: settings.hiddenProgramItems,
   };
 };
 

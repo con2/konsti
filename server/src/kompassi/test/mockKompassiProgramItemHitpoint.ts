@@ -8,7 +8,7 @@ import {
   KompassiProgramTypeHitpoint,
 } from "server/kompassi/hitpoint/kompassiProgramItemHitpoint";
 
-export const mockKompassiGameHitpoint: kompassiProgramItemHitpoint = {
+export const mockKompassiProgramItemHitpoint: kompassiProgramItemHitpoint = {
   title: testProgramItem.title,
   description: testProgramItem.description,
   category_title: KompassiProgramTypeHitpoint.TABLETOP_RPG,
@@ -32,7 +32,7 @@ export const mockKompassiGameHitpoint: kompassiProgramItemHitpoint = {
   video_link: "",
 };
 
-export const mockKompassiGameHitpoint2: kompassiProgramItemHitpoint = {
+export const mockKompassiProgramItemHitpoint2: kompassiProgramItemHitpoint = {
   title: testProgramItem2.title,
   description: testProgramItem2.description,
   category_title: KompassiProgramTypeHitpoint.TABLETOP_RPG,

@@ -8,7 +8,7 @@ import { ProgramItem } from "shared/types/models/programItem";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { updateFavorite } from "client/utils/favorite";
 import { IconButton } from "client/components/IconButton";
-import { selectFavoritedGames } from "client/views/my-program-items/myProgramItemsSlice";
+import { selectFavoritedProgramItems } from "client/views/my-program-items/myProgramItemsSlice";
 
 interface Props {
   programItems: readonly ProgramItem[];
@@ -22,7 +22,7 @@ export const FavoritesByStartTimes = ({
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const username = useAppSelector((state) => state.login.username);
-  const favoritedProgramItems = useAppSelector(selectFavoritedGames);
+  const favoritedProgramItems = useAppSelector(selectFavoritedProgramItems);
 
   const removeFavorite = async (programItem: ProgramItem): Promise<void> => {
     await updateFavorite({
@@ -47,7 +47,7 @@ export const FavoritesByStartTimes = ({
                   return (
                     <ProgramItemDetailsRow key={programItem.programItemId}>
                       <StyledLink
-                        to={`/games/${programItem.programItemId}`}
+                        to={`/program/${programItem.programItemId}`}
                         data-testid={"game-title"}
                       >
                         {programItem.title}

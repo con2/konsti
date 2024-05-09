@@ -28,11 +28,11 @@ afterEach(async () => {
   await mongoose.disconnect();
 });
 
-test("should remove lottery signups for moved games from users", async () => {
+test("should remove lottery signups for moved program items from users", async () => {
   await saveProgramItems([testProgramItem, testProgramItem2]);
-  const findGamesResult = await findProgramItems();
-  const insertedGames = unsafelyUnwrapResult(findGamesResult);
-  expect(insertedGames.length).toEqual(2);
+  const findProgramItemsResult = await findProgramItems();
+  const insertedProgramItems = unsafelyUnwrapResult(findProgramItemsResult);
+  expect(insertedProgramItems.length).toEqual(2);
 
   await saveUser(mockUser);
   await saveLotterySignups({
@@ -51,7 +51,7 @@ test("should remove lottery signups for moved games from users", async () => {
     },
   );
 
-  await updateMovedProgramItems(insertedGames);
+  await updateMovedProgramItems(insertedProgramItems);
 
   const findUserResult = await findUser(mockUser.username);
   const updatedUser = unsafelyUnwrapResult(findUserResult);

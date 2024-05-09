@@ -50,12 +50,12 @@ describe("Assignment with valid data", () => {
     const newUsersCount = 30;
     const groupSize = 3;
     const numberOfGroups = 10;
-    const newGamesCount = 10;
+    const newProgramItemsCount = 10;
     const testUsersCount = 0;
 
     await generateTestData(
       newUsersCount,
-      newGamesCount,
+      newProgramItemsCount,
       groupSize,
       numberOfGroups,
       testUsersCount,
@@ -258,10 +258,10 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     const signupsBeforeUpdateResult = await findDirectSignups();
     const signupsBeforeUpdate = unsafelyUnwrapResult(signupsBeforeUpdateResult);
 
-    const gamesWithSignups = signupsBeforeUpdate.filter(
+    const programItemsWithSignups = signupsBeforeUpdate.filter(
       (signup) => signup.userSignups.length > 0,
     );
-    expect(gamesWithSignups.length).toEqual(1);
+    expect(programItemsWithSignups.length).toEqual(1);
 
     const assignResultsResult = await runAssignment({
       assignmentStrategy,
@@ -426,10 +426,10 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     });
 
     const signupsBeforeUpdate = unsafelyUnwrapResult(await findDirectSignups());
-    const gamesWithSignups = signupsBeforeUpdate.filter(
+    const programItemsWithSignups = signupsBeforeUpdate.filter(
       (signup) => signup.userSignups.length > 0,
     );
-    expect(gamesWithSignups).toHaveLength(1);
+    expect(programItemsWithSignups).toHaveLength(1);
 
     const assignResults = unsafelyUnwrapResult(
       await runAssignment({
@@ -505,10 +505,10 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     );
 
     const signupsBeforeUpdate = unsafelyUnwrapResult(await findDirectSignups());
-    const gamesWithSignups = signupsBeforeUpdate.filter(
+    const programItemsWithSignups = signupsBeforeUpdate.filter(
       (signup) => signup.userSignups.length > 0,
     );
-    expect(gamesWithSignups).toHaveLength(1);
+    expect(programItemsWithSignups).toHaveLength(1);
 
     const assignResults = unsafelyUnwrapResult(
       await runAssignment({
@@ -609,10 +609,10 @@ describe("Assignment with first time bonus", () => {
 
     const signupsBeforeUpdateResult = await findDirectSignups();
     const signupsBeforeUpdate = unsafelyUnwrapResult(signupsBeforeUpdateResult);
-    const gamesWithSignups = signupsBeforeUpdate.filter(
+    const programItemsWithSignups = signupsBeforeUpdate.filter(
       (signup) => signup.userSignups.length > 0,
     );
-    expect(gamesWithSignups.length).toEqual(3);
+    expect(programItemsWithSignups.length).toEqual(3);
 
     const assignResultsResult = await runAssignment({
       assignmentStrategy,

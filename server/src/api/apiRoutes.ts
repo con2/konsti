@@ -7,9 +7,9 @@ import {
 } from "server/features/kompassi-login/kompassiLoginController";
 import { postFeedback } from "server/features/feedback/feedbackController";
 import {
-  getGames,
-  postAutoUpdateGames,
-  postUpdateGames,
+  getProgramItems,
+  postAutoUpdateProgramItems,
+  postUpdateProgramItems,
 } from "server/features/program-item/programItemController";
 import { getHealthStatus } from "server/features/health/healthController";
 import {
@@ -67,7 +67,7 @@ export const apiRoutes = express.Router();
 
 /* POST routes */
 
-apiRoutes.post(ApiEndpoint.PROGRAM_ITEMS, postUpdateGames);
+apiRoutes.post(ApiEndpoint.PROGRAM_ITEMS, postUpdateProgramItems);
 apiRoutes.post(ApiEndpoint.USERS, postUser);
 apiRoutes.post(ApiEndpoint.LOGIN, postLogin);
 apiRoutes.post(ApiEndpoint.ASSIGNMENT, postAssignment);
@@ -85,13 +85,13 @@ apiRoutes.post(ApiEndpoint.USERS_PASSWORD, postUserPassword);
 apiRoutes.post(ApiEndpoint.SETTINGS, postSettings);
 apiRoutes.post(ApiEndpoint.DIRECT_SIGNUP, postDirectSignup);
 apiRoutes.post(ApiEndpoint.EVENT_LOG, postEventLogItem);
-apiRoutes.post(ApiEndpoint.PROGRAM_UPDATE_CRON, postAutoUpdateGames);
+apiRoutes.post(ApiEndpoint.PROGRAM_UPDATE_CRON, postAutoUpdateProgramItems);
 apiRoutes.post(ApiEndpoint.ASSIGNMENT_CRON, postAutoAssignment);
 apiRoutes.post(ApiEndpoint.VERIFY_KOMPASSI_LOGIN, postVerifyKompassiLogin);
 
 /* GET routes */
 
-apiRoutes.get(ApiEndpoint.PROGRAM_ITEMS, getGames);
+apiRoutes.get(ApiEndpoint.PROGRAM_ITEMS, getProgramItems);
 apiRoutes.get(ApiEndpoint.USERS, getUser);
 apiRoutes.get(
   ApiEndpoint.USERS_BY_SERIAL_OR_USERNAME,

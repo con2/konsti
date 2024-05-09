@@ -1,7 +1,7 @@
 import fs from "fs";
 import {
-  getGamesByStartTime,
-  getNumberOfFullGames,
+  getProgramItemsByStartTime,
+  getNumberOfFullProgramItems,
   getDemandByTime,
   getDemandByGame,
 } from "./programItemDataHelpers";
@@ -18,7 +18,7 @@ export const getProgramItemStats = (year: number, event: string): void => {
     ),
   );
 
-  logger.info(`Loaded ${programItems.length} games`);
+  logger.info(`Loaded ${programItems.length} program items`);
 
   const users: User[] = JSON.parse(
     fs.readFileSync(
@@ -29,8 +29,8 @@ export const getProgramItemStats = (year: number, event: string): void => {
 
   logger.info(`Loaded ${programItems.length} users`);
 
-  getGamesByStartTime(programItems);
-  getNumberOfFullGames(programItems, users);
+  getProgramItemsByStartTime(programItems);
+  getNumberOfFullProgramItems(programItems, users);
   getDemandByTime(programItems, users);
   getDemandByGame(programItems, users);
 };

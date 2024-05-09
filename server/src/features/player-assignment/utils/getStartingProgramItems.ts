@@ -7,20 +7,20 @@ export const getStartingProgramItems = (
   startTime: string,
 ): readonly ProgramItem[] => {
   logger.debug("Get starting program items");
-  const startingGames = [] as ProgramItem[];
+  const startingProgramItems = [] as ProgramItem[];
   const selectedStartTime = dayjs(startTime);
 
-  // Get games that start at defined time
+  // Get program items that start at defined time
   programItems.forEach((programItem) => {
-    const gameStartTime = dayjs(programItem.startTime);
-    if (gameStartTime.isSame(selectedStartTime, "minute")) {
-      startingGames.push(programItem);
+    const programItemStartTime = dayjs(programItem.startTime);
+    if (programItemStartTime.isSame(selectedStartTime, "minute")) {
+      startingProgramItems.push(programItem);
     }
   });
 
   logger.debug(
-    `Found ${startingGames.length} program items for this start time`,
+    `Found ${startingProgramItems.length} program items for this start time`,
   );
 
-  return startingGames;
+  return startingProgramItems;
 };

@@ -8,7 +8,7 @@ import {
   submitPlayersAssign,
   submitToggleAppOpen,
 } from "client/views/admin/adminThunks";
-import { submitUpdateGames } from "client/views/all-program-items/allProgramItemsThunks";
+import { submitUpdateProgramItems } from "client/views/all-program-items/allProgramItemsThunks";
 import { getWeekdayAndTime } from "client/utils/timeFormatter";
 import { ProgramItem } from "shared/types/models/programItem";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
@@ -96,9 +96,9 @@ export const AdminView = (): ReactElement => {
   const submitUpdate = async (): Promise<void> => {
     setSubmitting(true);
     try {
-      await dispatch(submitUpdateGames());
+      await dispatch(submitUpdateProgramItems());
     } catch (error) {
-      console.log(`submitGamesUpdate error:`, error); // eslint-disable-line no-console
+      console.log(`submitProgramItemsUpdate error:`, error); // eslint-disable-line no-console
     }
     setSubmitting(false);
   };

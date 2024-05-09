@@ -23,7 +23,7 @@ import { isRevolvingDoorWorkshop } from "client/utils/isRevolvingDoorWorkshop";
 export const ResultsList = (): ReactElement => {
   const { t, i18n } = useTranslation();
 
-  const activeGames = useAppSelector(selectActiveProgramItems);
+  const activeProgramItems = useAppSelector(selectActiveProgramItems);
   const signups = useAppSelector(
     (state) => state.allProgramItems.directSignups,
   );
@@ -39,7 +39,9 @@ export const ResultsList = (): ReactElement => {
   const signupQuestions = useAppSelector(
     (state) => state.admin.signupQuestions,
   );
-  const hiddenGames = useAppSelector((state) => state.admin.hiddenProgramItems);
+  const hiddenProgramItems = useAppSelector(
+    (state) => state.admin.hiddenProgramItems,
+  );
 
   const [selectedStartingTime, setSelectedStartingTime] = useState<string>(
     ResultsStartingTimeOption.ALL,
@@ -52,22 +54,25 @@ export const ResultsList = (): ReactElement => {
   );
 
   // Filter out hidden program items, revolving door workshops and program items without Konsti signup
-  const visibleGames = activeGames
-    .filter((activeGame) =>
-      hiddenGames.every(
-        (hiddenGame) => activeGame.programItemId !== hiddenGame.programItemId,
+  const visibleProgramItems = activeProgramItems
+    .filter((activeProgramItem) =>
+      hiddenProgramItems.every(
+        (hiddenProgramItem) =>
+          activeProgramItem.programItemId !== hiddenProgramItem.programItemId,
       ),
     )
-    .filter((activeGame) => !isRevolvingDoorWorkshop(activeGame))
+    .filter((activeProgramItem) => !isRevolvingDoorWorkshop(activeProgramItem))
     .filter(
-      (activeGame) =>
-        !config.shared().noKonstiSignupIds.includes(activeGame.programItemId),
+      (activeProgramItem) =>
+        !config
+          .shared()
+          .noKonstiSignupIds.includes(activeProgramItem.programItemId),
     );
 
-  const filteredGames =
+  const filteredProgramItems =
     selectedStartingTime === ResultsStartingTimeOption.ALL
-      ? sortBy(visibleGames, "startTime")
-      : sortBy(getUpcomingProgramItems(visibleGames, 1), "startTime");
+      ? sortBy(visibleProgramItems, "startTime")
+      : sortBy(getUpcomingProgramItems(visibleProgramItems, 1), "startTime");
 
   const [programItemsForListing, setProgramItemsForListing] = useState<
     readonly ProgramItem[]
@@ -77,24 +82,24 @@ export const ResultsList = (): ReactElement => {
   const [searchTerm, setSearchTerm] = useState<string>("");
 
   useEffect(() => {
-    if (isEqual(filteredGames, programItemsForListing)) {
+    if (isEqual(filteredProgramItems, programItemsForListing)) {
       return;
     }
 
-    setProgramItemsForListing(filteredGames);
-  }, [filteredGames, programItemsForListing]);
+    setProgramItemsForListing(filteredProgramItems);
+  }, [filteredProgramItems, programItemsForListing]);
 
   useEffect(() => {
     if (searchTerm.length === 0) {
-      const gamesByStartTime = groupBy<ProgramItem>(
+      const programItemsByStartTime = groupBy<ProgramItem>(
         programItemsForListing,
         "startTime",
       );
-      setFilteredProgramItemsForListing(gamesByStartTime);
+      setFilteredProgramItemsForListing(programItemsByStartTime);
       return;
     }
 
-    const gamesFilteredBySearchTerm = programItemsForListing.filter(
+    const programItemsFilteredBySearchTerm = programItemsForListing.filter(
       (programItem) => {
         const users = getUsersForProgramItemId(
           programItem.programItemId,
@@ -114,12 +119,12 @@ export const ResultsList = (): ReactElement => {
       },
     );
 
-    const gamesByStartTime = groupBy<ProgramItem>(
-      gamesFilteredBySearchTerm,
+    const programItemsByStartTime = groupBy<ProgramItem>(
+      programItemsFilteredBySearchTerm,
       "startTime",
     );
 
-    setFilteredProgramItemsForListing(gamesByStartTime);
+    setFilteredProgramItemsForListing(programItemsByStartTime);
   }, [searchTerm, programItemsForListing, visibleSignups]);
 
   return (
@@ -131,11 +136,13 @@ export const ResultsList = (): ReactElement => {
         onSelectedStartingTimeChange={setSelectedStartingTime}
       />
 
-      {filteredGames.length === 0 && <h3>{t("resultsView.noResults")}</h3>}
+      {filteredProgramItems.length === 0 && (
+        <h3>{t("resultsView.noResults")}</h3>
+      )}
 
       {Object.entries(filteredProgramItemsForListing).map(
-        ([startTime, gamesForTime]) => {
-          const sortedProgramItemsForTime = sortBy(gamesForTime, [
+        ([startTime, programItemsForTime]) => {
+          const sortedProgramItemsForTime = sortBy(programItemsForTime, [
             (programItem) => programItem.title.toLocaleLowerCase(),
           ]);
 
@@ -143,7 +150,7 @@ export const ResultsList = (): ReactElement => {
             <TimeSlot key={startTime}>
               <h3>{capitalize(getWeekdayAndTime(startTime))}</h3>
 
-              <Games>
+              <ProgramItems>
                 {sortedProgramItemsForTime.map((programItem) => {
                   const signupQuestion = publicSignupQuestions.find(
                     (question) =>
@@ -282,7 +289,7 @@ export const ResultsList = (): ReactElement => {
                     </div>
                   );
                 })}
-              </Games>
+              </ProgramItems>
             </TimeSlot>
           );
         },
@@ -310,7 +317,7 @@ const TimeSlot = styled.div`
   padding: 0 10px 20px 10px;
 `;
 
-const Games = styled.div`
+const ProgramItems = styled.div`
   display: grid;
   grid-gap: 30px;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));

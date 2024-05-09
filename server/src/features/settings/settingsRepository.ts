@@ -54,7 +54,7 @@ export const findSettings = async (): Promise<
       "-signupQuestions._id -_id -__v -createdAt -updatedAt",
     )
       .lean<Settings>()
-      .populate("hiddenGames");
+      .populate("hiddenProgramItems");
 
     if (!settings) {
       const createSettingsResult = await createSettings();
@@ -118,14 +118,14 @@ export const saveHidden = async (
     const settings = await SettingsModel.findOneAndUpdate(
       {},
       {
-        hiddenGames: formattedData,
+        hiddenProgramItems: formattedData,
       },
       {
         new: true,
         upsert: true,
         fields: "-_id -__v -createdAt -updatedAt",
       },
-    ).populate("hiddenGames");
+    ).populate("hiddenProgramItems");
     logger.info(`MongoDB: Hidden data updated`);
     return makeSuccessResult(settings);
   } catch (error) {

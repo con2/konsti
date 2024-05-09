@@ -16,33 +16,33 @@ import { MongoDbError } from "shared/types/api/errors";
 import { User } from "shared/types/models/user";
 
 export const updateMovedProgramItems = async (
-  updatedGames: readonly ProgramItem[],
+  updatedProgramItems: readonly ProgramItem[],
 ): Promise<Result<void, MongoDbError>> => {
-  const currentGamesResult = await findProgramItems();
-  if (isErrorResult(currentGamesResult)) {
-    return currentGamesResult;
+  const currentProgramItemsResult = await findProgramItems();
+  if (isErrorResult(currentProgramItemsResult)) {
+    return currentProgramItemsResult;
   }
 
-  const currentGames = unwrapResult(currentGamesResult);
-  const movedGames = currentGames.filter((currentGame) => {
-    return updatedGames.find((updatedGame) => {
+  const currentProgramItems = unwrapResult(currentProgramItemsResult);
+  const movedProgramItems = currentProgramItems.filter((currentGame) => {
+    return updatedProgramItems.find((updatedProgramItem) => {
       return (
-        currentGame.programItemId === updatedGame.programItemId &&
+        currentGame.programItemId === updatedProgramItem.programItemId &&
         dayjs(currentGame.startTime).toISOString() !==
-          dayjs(updatedGame.startTime).toISOString()
+          dayjs(updatedProgramItem.startTime).toISOString()
       );
     });
   });
 
-  if (movedGames.length === 0) {
+  if (movedProgramItems.length === 0) {
     return makeSuccessResult(undefined);
   }
 
-  logger.info(`Found ${movedGames.length} moved games`);
+  logger.info(`Found ${movedProgramItems.length} moved program items`);
 
   // This will remove lottery signups
   const removeMovedLotterySignupsResult =
-    await removeMovedLotterySignups(movedGames);
+    await removeMovedLotterySignups(movedProgramItems);
   if (isErrorResult(removeMovedLotterySignupsResult)) {
     return removeMovedLotterySignupsResult;
   }
@@ -51,7 +51,7 @@ export const updateMovedProgramItems = async (
 };
 
 const removeMovedLotterySignups = async (
-  movedGames: readonly ProgramItem[],
+  movedProgramItems: readonly ProgramItem[],
 ): Promise<Result<void, MongoDbError>> => {
   logger.info("Remove moved lottery signups from users");
 
@@ -66,7 +66,7 @@ const removeMovedLotterySignups = async (
     const programItemsToBeRemoved: ProgramItem[] = [];
 
     const lotterySignups = user.lotterySignups.filter((lotterySignup) => {
-      const movedFound = movedGames.find((movedGame) => {
+      const movedFound = movedProgramItems.find((movedGame) => {
         return (
           movedGame.programItemId ===
           lotterySignup.programItemDetails.programItemId

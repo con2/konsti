@@ -4,7 +4,7 @@ import { config } from "shared/config";
 
 const SettingsSchema = new mongoose.Schema(
   {
-    hiddenGames: [
+    hiddenProgramItems: [
       {
         type: mongoose.Schema.Types.ObjectId,
         ref: "program-item",

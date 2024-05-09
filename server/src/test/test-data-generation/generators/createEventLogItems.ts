@@ -24,12 +24,12 @@ export const createEventLogItems = async (): Promise<void> => {
   );
 
   const eventLogUpdates = users.flatMap((user) => {
-    const randomGames = sampleSize(twoPhaseSignups, 5);
+    const randomProgramItems = sampleSize(twoPhaseSignups, 5);
 
-    return randomGames.map((randomGame, index) => ({
+    return randomProgramItems.map((randomProgramItem, index) => ({
       username: user.username,
-      programItemId: randomGame.programItemId,
-      programItemStartTime: randomGame.startTime,
+      programItemId: randomProgramItem.programItemId,
+      programItemStartTime: randomProgramItem.startTime,
       createdAt: createdAtTimes[index].toISOString(),
     }));
   });

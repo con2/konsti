@@ -42,7 +42,7 @@ export const getProgramItemsFromFullProgramSolmukohta = (
 
   checkUnknownKeys(matchingProgramItems, KompassiProgramItemSchemaSolmukohta);
 
-  const kompassiGames = matchingProgramItems.flatMap((programItem) => {
+  const kompassiProgramItems = matchingProgramItems.flatMap((programItem) => {
     const result = parseProgramItem(
       programItem,
       KompassiProgramItemSchemaSolmukohta,
@@ -50,7 +50,7 @@ export const getProgramItemsFromFullProgramSolmukohta = (
     return result ?? [];
   });
 
-  if (kompassiGames.length === 0) {
+  if (kompassiProgramItems.length === 0) {
     logger.error(
       "%s",
       new Error("No program items with known categories found"),
@@ -58,7 +58,7 @@ export const getProgramItemsFromFullProgramSolmukohta = (
     return [];
   }
 
-  logger.info(`Found ${kompassiGames.length} valid games`);
+  logger.info(`Found ${kompassiProgramItems.length} valid program items`);
 
-  return kompassiGames;
+  return kompassiProgramItems;
 };

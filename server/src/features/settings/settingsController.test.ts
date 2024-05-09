@@ -94,7 +94,7 @@ describe(`POST ${ApiEndpoint.SETTINGS}`, () => {
 
     // Full update
     const testSettings: Settings = {
-      hiddenGames: [],
+      hiddenProgramItems: [],
       appOpen: true,
       signupQuestions: [testSignupQuestion],
       signupStrategy: SignupStrategy.ALGORITHM,

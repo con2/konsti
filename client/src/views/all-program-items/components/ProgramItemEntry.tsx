@@ -65,7 +65,7 @@ export const ProgramItemEntry = ({
     lotterySignups,
   );
 
-  const isGameSigned = isEnterGameMode
+  const isProgramItemSigned = isEnterGameMode
     ? isDirectlySignedCurrentGame
     : isLotterySignedForCurrentGame;
 
@@ -79,7 +79,10 @@ export const ProgramItemEntry = ({
   tags.push(t(`programItemLanguage.${programItem.language}`));
 
   return (
-    <StyledCard isHighlighted={isGameSigned} data-testid="game-container">
+    <StyledCard
+      isHighlighted={isProgramItemSigned}
+      data-testid="game-container"
+    >
       <ProgramItemHead
         programItem={programItem}
         players={players}

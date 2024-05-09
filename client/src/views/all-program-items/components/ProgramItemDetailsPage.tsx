@@ -6,7 +6,7 @@ import { useAppSelector } from "client/utils/hooks";
 import { ProgramItemEntry } from "client/views/all-program-items/components/ProgramItemEntry";
 import {
   selectDirectSignups,
-  selectFavoritedGames,
+  selectFavoritedProgramItems,
   selectLotterySignups,
 } from "client/views/my-program-items/myProgramItemsSlice";
 import { SignupStrategy } from "shared/config/sharedConfigTypes";
@@ -29,7 +29,7 @@ export const ProgramItemDetailsPage = (): ReactElement => {
   const username = useAppSelector((state) => state.login.username);
   const loggedIn = useAppSelector((state) => state.login.loggedIn);
   const userGroup = useAppSelector((state) => state.login.userGroup);
-  const favoritedGames = useAppSelector(selectFavoritedGames);
+  const favoritedProgramItems = useAppSelector(selectFavoritedProgramItems);
 
   // Figure out if user has signed up to this game
   const lotterySignups = useAppSelector(selectLotterySignups);
@@ -48,29 +48,32 @@ export const ProgramItemDetailsPage = (): ReactElement => {
 
   const [loading, setLoading] = useState<boolean>(true);
 
-  const foundGame = programItems.find(
+  const foundProgramItem = programItems.find(
     (programItem) => programItem.programItemId === programItemId,
   );
   const playerCount =
     signups.find(
-      (gameSignup) => gameSignup.programItemId === foundGame?.programItemId,
+      (programItemSignup) =>
+        programItemSignup.programItemId === foundProgramItem?.programItemId,
     )?.users.length ?? 0;
 
   useEffect(() => {
     setLoading(false);
-  }, [foundGame]);
+  }, [foundProgramItem]);
 
   return (
     <div>
       <BackButton />
       {loading && <Loading />}
-      {foundGame && (
+      {foundProgramItem && (
         <ProgramItemEntry
           isAlwaysExpanded={true}
-          programItem={foundGame}
-          startTime={foundGame.startTime}
+          programItem={foundProgramItem}
+          startTime={foundProgramItem.startTime}
           players={playerCount}
-          signupStrategy={foundGame.signupStrategy ?? SignupStrategy.DIRECT}
+          signupStrategy={
+            foundProgramItem.signupStrategy ?? SignupStrategy.DIRECT
+          }
           lotterySignups={ownOrGroupCreatorLotterySignups}
           directSignups={directSignups}
           loading={loading}
@@ -78,10 +81,10 @@ export const ProgramItemDetailsPage = (): ReactElement => {
           username={username}
           loggedIn={loggedIn}
           userGroup={userGroup}
-          favoritedProgramItems={favoritedGames}
+          favoritedProgramItems={favoritedProgramItems}
         />
       )}
-      {!loading && !foundGame && (
+      {!loading && !foundProgramItem && (
         <div>
           {t("invalidProgramItemId")} {programItemId}.
         </div>

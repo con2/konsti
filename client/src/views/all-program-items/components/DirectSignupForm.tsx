@@ -15,7 +15,7 @@ import {
   DeleteDirectSignupErrorMessage,
   submitDeleteDirectSignup,
 } from "client/views/my-program-items/myProgramItemsThunks";
-import { loadGames } from "client/utils/loadData";
+import { loadProgramItems } from "client/utils/loadData";
 import { ErrorMessage } from "client/components/ErrorMessage";
 import { selectDirectSignups } from "client/views/my-program-items/myProgramItemsSlice";
 import { getTimeNow } from "client/utils/getTimeNow";
@@ -75,7 +75,7 @@ export const DirectSignupForm = ({
     if (errorMessage) {
       setServerError(errorMessage);
     } else {
-      await loadGames();
+      await loadProgramItems();
       setCancelSignupFormOpen(false);
     }
     setLoading(false);

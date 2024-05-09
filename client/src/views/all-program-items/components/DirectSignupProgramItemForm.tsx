@@ -12,7 +12,7 @@ import {
   SignupQuestion,
   SignupQuestionType,
 } from "shared/types/models/settings";
-import { loadGames } from "client/utils/loadData";
+import { loadProgramItems } from "client/utils/loadData";
 import { ErrorMessage } from "client/components/ErrorMessage";
 import { getIsInGroup } from "client/views/group/groupUtils";
 import {
@@ -125,7 +125,7 @@ export const DirectSignupProgramItemForm = ({
       return;
     }
 
-    await loadGames();
+    await loadProgramItems();
     onEnterGame();
     setLoading(false);
   };

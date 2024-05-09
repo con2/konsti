@@ -57,7 +57,7 @@ export const getProgramItemsFromFullProgramRopecon = (
 
   checkUnknownKeys(matchingProgramItems, KompassiProgramItemSchemaRopecon);
 
-  const kompassiGames = matchingProgramItems.flatMap((programItem) => {
+  const kompassiProgramItems = matchingProgramItems.flatMap((programItem) => {
     const result = parseProgramItem(
       programItem,
       KompassiProgramItemSchemaRopecon,
@@ -65,7 +65,7 @@ export const getProgramItemsFromFullProgramRopecon = (
     return result ?? [];
   });
 
-  if (kompassiGames.length === 0) {
+  if (kompassiProgramItems.length === 0) {
     logger.error(
       "%s",
       new Error("No program items with known categories found"),
@@ -73,7 +73,7 @@ export const getProgramItemsFromFullProgramRopecon = (
     return [];
   }
 
-  logger.info(`Found ${kompassiGames.length} valid games`);
+  logger.info(`Found ${kompassiProgramItems.length} valid program items`);
 
-  return kompassiGames;
+  return kompassiProgramItems;
 };

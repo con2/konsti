@@ -28,7 +28,7 @@ const SignupQuestionSchema = z.object({
 export type SignupQuestion = z.infer<typeof SignupQuestionSchema>;
 
 export const SettingsSchema = z.object({
-  hiddenGames: z.array(ProgramItemSchema),
+  hiddenProgramItems: z.array(ProgramItemSchema),
   appOpen: z.boolean(),
   signupQuestions: z.array(SignupQuestionSchema),
   signupStrategy: z.nativeEnum(SignupStrategy),

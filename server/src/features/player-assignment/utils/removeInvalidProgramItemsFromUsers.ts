@@ -15,7 +15,7 @@ import {
 export const removeInvalidProgramItemsFromUsers = async (): Promise<
   Result<void, MongoDbError>
 > => {
-  logger.info("Remove invalid games from users");
+  logger.info("Remove invalid program items from users");
 
   const usersResult = await findUsers();
   if (isErrorResult(usersResult)) {
@@ -41,29 +41,32 @@ export const removeInvalidProgramItemsFromUsers = async (): Promise<
       );
     }
 
-    const validFavoritedGames = user.favoritedProgramItems.filter(
-      (favoritedGame) => {
+    const validFavoritedProgramItems = user.favoritedProgramItems.filter(
+      (favoritedProgramItem) => {
         // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-        if (favoritedGame !== null) {
-          return favoritedGame;
+        if (favoritedProgramItem !== null) {
+          return favoritedProgramItem;
         }
       },
     );
 
-    const changedFavoritedGamesCount =
-      user.favoritedProgramItems.length - validFavoritedGames.length;
+    const changedFavoritedProgramItemsCount =
+      user.favoritedProgramItems.length - validFavoritedProgramItems.length;
 
-    if (changedFavoritedGamesCount > 0) {
+    if (changedFavoritedProgramItemsCount > 0) {
       logger.info(
-        `Remove ${changedFavoritedGamesCount} invalid favoritedGames from user ${user.username}`,
+        `Remove ${changedFavoritedProgramItemsCount} invalid favoritedProgramItems from user ${user.username}`,
       );
     }
 
-    if (changedLotterySignupsCount > 0 || changedFavoritedGamesCount > 0) {
+    if (
+      changedLotterySignupsCount > 0 ||
+      changedFavoritedProgramItemsCount > 0
+    ) {
       return {
         ...user,
         lotterySignups: validLotterySignups,
-        favoritedProgramItems: validFavoritedGames,
+        favoritedProgramItems: validFavoritedProgramItems,
       };
     }
 

@@ -10,19 +10,21 @@ import { selectActiveProgramItems } from "client/views/admin/adminSlice";
 export const RevolvingDoorProgramItemsInfo = (): ReactElement => {
   const { t } = useTranslation();
 
-  const activeGames = useAppSelector(selectActiveProgramItems);
-  const hiddenGames = useAppSelector((state) => state.admin.hiddenProgramItems);
+  const activeProgramItems = useAppSelector(selectActiveProgramItems);
+  const hiddenProgramItems = useAppSelector(
+    (state) => state.admin.hiddenProgramItems,
+  );
   const activeProgramType = useAppSelector(
     (state) => state.admin.activeProgramType,
   );
 
-  const hiddenGamesIds = hiddenGames.map((g) => g.programItemId);
+  const hiddenProgramItemsIds = hiddenProgramItems.map((g) => g.programItemId);
 
   const timeNow = getTimeNow();
-  const runningRevolvingDoorGames = activeGames.filter((game) => {
+  const runningRevolvingDoorProgramItems = activeProgramItems.filter((game) => {
     return (
       game.revolvingDoor &&
-      !hiddenGamesIds.includes(game.programItemId) &&
+      !hiddenProgramItemsIds.includes(game.programItemId) &&
       dayjs(game.startTime).isBefore(timeNow) &&
       dayjs(game.endTime).isAfter(timeNow)
     );
@@ -37,12 +39,13 @@ export const RevolvingDoorProgramItemsInfo = (): ReactElement => {
         })}
       </RevolvingDoorInstruction>
       {/* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition */}
-      {!runningRevolvingDoorGames || runningRevolvingDoorGames.length === 0 ? (
-        <NoGamesInfoText>
+      {!runningRevolvingDoorProgramItems ||
+      runningRevolvingDoorProgramItems.length === 0 ? (
+        <NoProgramItemsInfoText>
           {t("noRunningRevolvingDoorProgramItems", {
             PROGRAM_TYPE: t(`programTypePartitivePlural.${activeProgramType}`),
           })}
-        </NoGamesInfoText>
+        </NoProgramItemsInfoText>
       ) : (
         <div>
           <h3>
@@ -50,9 +53,9 @@ export const RevolvingDoorProgramItemsInfo = (): ReactElement => {
               PROGRAM_TYPE: t(`programTypePlural.${activeProgramType}`),
             })}
           </h3>
-          {runningRevolvingDoorGames.map((game) => (
+          {runningRevolvingDoorProgramItems.map((game) => (
             <div key={game.programItemId}>
-              <Link to={`/games/${game.programItemId}`}>{game.title}</Link>{" "}
+              <Link to={`/program/${game.programItemId}`}>{game.title}</Link>{" "}
               <GameListShortDescription>
                 {game.shortDescription
                   ? game.shortDescription
@@ -90,6 +93,6 @@ const RevolvingDoorInstruction = styled.div`
   background-color: ${(props) => props.theme.infoBackground};
 `;
 
-const NoGamesInfoText = styled.span`
+const NoProgramItemsInfoText = styled.span`
   margin-bottom: 8px;
 `;

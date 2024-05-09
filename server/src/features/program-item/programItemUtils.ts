@@ -33,29 +33,29 @@ import { tooEearlyForAlgorithmSignup } from "shared/utils/tooEearlyForAlgorithmS
 export const removeDeletedProgramItems = async (
   updatedProgramItems: readonly ProgramItem[],
 ): Promise<Result<number, MongoDbError>> => {
-  logger.info("Remove deleted games");
+  logger.info("Remove deleted program items");
 
-  const currentGamesResult = await findProgramItems();
-  if (isErrorResult(currentGamesResult)) {
-    return currentGamesResult;
+  const currentProgramItemsResult = await findProgramItems();
+  if (isErrorResult(currentProgramItemsResult)) {
+    return currentProgramItemsResult;
   }
 
-  const currentGames = unwrapResult(currentGamesResult);
-  const deletedGames = differenceBy(
-    currentGames,
+  const currentProgramItems = unwrapResult(currentProgramItemsResult);
+  const deletedProgramItems = differenceBy(
+    currentProgramItems,
     updatedProgramItems,
     "programItemId",
   );
 
-  if (deletedGames.length > 0) {
-    const deletedProgramItemIds = deletedGames.map(
+  if (deletedProgramItems.length > 0) {
+    const deletedProgramItemIds = deletedProgramItems.map(
       (deletedGame) => deletedGame.programItemId,
     );
 
     logger.info(
       `Found ${
-        deletedGames.length
-      } deleted games to be removed: ${deletedProgramItemIds.join(", ")}`,
+        deletedProgramItems.length
+      } deleted program items to be removed: ${deletedProgramItemIds.join(", ")}`,
     );
 
     const delSignupDocumentsResult =
@@ -64,17 +64,19 @@ export const removeDeletedProgramItems = async (
       return delSignupDocumentsResult;
     }
 
-    const removeGamesResult = await removeProgramItems(deletedProgramItemIds);
-    if (isErrorResult(removeGamesResult)) {
-      return removeGamesResult;
+    const removeProgramItemsResult = await removeProgramItems(
+      deletedProgramItemIds,
+    );
+    if (isErrorResult(removeProgramItemsResult)) {
+      return removeProgramItemsResult;
     }
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-  return makeSuccessResult(deletedGames.length ?? 0);
+  return makeSuccessResult(deletedProgramItems.length ?? 0);
 };
 
-export const enrichGames = async (
+export const enrichProgramItems = async (
   programItems: readonly ProgramItemDoc[],
 ): Promise<Result<ProgramItemWithUserSignups[], MongoDbError>> => {
   const settingsResult = await findSettings();
@@ -97,7 +99,7 @@ export const enrichGames = async (
   }
 
   const currentTime = unwrapResult(currentTimeResult);
-  const enrichedGames = programItems.map((programItem) => {
+  const enrichedProgramItems = programItems.map((programItem) => {
     const signupQuestion = settings.signupQuestions.find(
       (message) => message.programItemId === programItem.programItemId,
     );
@@ -118,7 +120,7 @@ export const enrichGames = async (
     };
   });
 
-  return makeSuccessResult(enrichedGames);
+  return makeSuccessResult(enrichedProgramItems);
 };
 
 const getSignupStrategyForGame = (

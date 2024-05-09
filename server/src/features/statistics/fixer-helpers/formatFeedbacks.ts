@@ -24,13 +24,15 @@ export const formatFeedbacks = (year: number, event: string): void => {
 
   logger.info(`Loaded ${feedbacks.length} feedbacks`);
 
-  const gamesJson = fs.readFileSync(
+  const programItemsJson = fs.readFileSync(
     `${config.server().statsDataDir}/${event}/${year}/program-items.json`,
     "utf8",
   );
-  const games = z.array(ProgramItemSchema).parse(JSON.parse(gamesJson));
+  const programItems = z
+    .array(ProgramItemSchema)
+    .parse(JSON.parse(programItemsJson));
 
-  logger.info(`Loaded ${games.length} games`);
+  logger.info(`Loaded ${programItems.length} program items`);
 
   const filteredFeedbacks = feedbacks.filter(
     (feedback) => feedback.feedback !== "",
@@ -43,7 +45,7 @@ export const formatFeedbacks = (year: number, event: string): void => {
   );
 
   const formattedFeedbacks = filteredFeedbacks.map((feedback) => {
-    const foundGame = games.find(
+    const foundGame = programItems.find(
       (game) => game.programItemId === feedback.programItemId,
     );
     return {

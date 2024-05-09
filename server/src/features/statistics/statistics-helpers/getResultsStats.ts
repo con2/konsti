@@ -26,7 +26,7 @@ export const getResultsStats = (year: number, event: string): void => {
     ),
   );
 
-  logger.info(`Loaded ${programItems.length} games`);
+  logger.info(`Loaded ${programItems.length} program items`);
 
   const signupsByTime = getSignupsByTime(results);
   const maximumNumberOfPlayersByTime =

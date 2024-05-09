@@ -15,7 +15,7 @@ export interface UserLotterySignups {
 
 export enum AssignmentResultStatus {
   SUCCESS = "success",
-  NO_STARTING_GAMES = "noStartingGames",
+  NO_STARTING_PROGRAM_ITEMS = "noStartingProgramItems",
   NO_SIGNUP_WISHES = "noSignupWishes",
   ERROR = "error",
 }
@@ -40,7 +40,7 @@ export interface AssignmentStrategyResult {
 }
 
 export interface RunRandomAndPadgInput {
-  lotterySignupGames: readonly ProgramItem[];
+  lotterySignupProgramItems: readonly ProgramItem[];
   playerGroups: readonly User[][];
   allPlayers: readonly User[];
   numberOfIndividuals: Number;

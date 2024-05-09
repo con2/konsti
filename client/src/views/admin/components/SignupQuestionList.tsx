@@ -18,7 +18,7 @@ export const SignupQuestionList = ({
 }: Props): ReactElement => {
   const { t } = useTranslation();
 
-  const signupQuestionsWithGames = signupQuestions.flatMap(
+  const signupQuestionsWithProgramItems = signupQuestions.flatMap(
     (privateSignupQuestion) => {
       const matchingProgramItem = programItems.find(
         (programItem) =>
@@ -31,7 +31,7 @@ export const SignupQuestionList = ({
     },
   );
 
-  const sortedSignupQuestions = sortBy(signupQuestionsWithGames, [
+  const sortedSignupQuestions = sortBy(signupQuestionsWithProgramItems, [
     "game.startTime",
     (signupQuestion) => signupQuestion.programItem.title.toLocaleLowerCase(),
   ]);
@@ -56,7 +56,7 @@ export const SignupQuestionList = ({
             <li
               key={`${signupQuestion.programItemId}-${signupQuestion.questionFi}`}
             >
-              <Link to={`/games/${signupQuestion.programItemId}`}>
+              <Link to={`/program/${signupQuestion.programItemId}`}>
                 {foundProgramItem.title}
               </Link>
               <span>

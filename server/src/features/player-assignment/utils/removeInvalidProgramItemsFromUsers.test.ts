@@ -22,13 +22,13 @@ afterEach(async () => {
   await mongoose.disconnect();
 });
 
-test("should remove lottery signups for invalid games from users", async () => {
+test("should remove lottery signups for invalid program items from users", async () => {
   const game = new ProgramItemModel(testProgramItem);
   await game.save();
   const game2 = new ProgramItemModel(testProgramItem2);
   await game2.save();
-  const insertedGames = await ProgramItemModel.find({});
-  expect(insertedGames.length).toEqual(2);
+  const insertedProgramItems = await ProgramItemModel.find({});
+  expect(insertedProgramItems.length).toEqual(2);
 
   await saveUser(mockUser);
   await saveLotterySignups({
@@ -48,7 +48,7 @@ test("should remove lottery signups for invalid games from users", async () => {
   });
   expect(updatedUser?.lotterySignups.length).toEqual(1);
 
-  const insertedGames2 = await ProgramItemModel.find({});
-  expect(insertedGames2.length).toEqual(1);
-  expect(insertedGames2[0].programItemId).toEqual(game2.programItemId);
+  const insertedProgramItems2 = await ProgramItemModel.find({});
+  expect(insertedProgramItems2.length).toEqual(1);
+  expect(insertedProgramItems2[0].programItemId).toEqual(game2.programItemId);
 });

@@ -16,15 +16,18 @@ export const MyFavoritesList = ({
 }: Props): ReactElement => {
   const { t } = useTranslation();
 
-  const sortedGames: readonly ProgramItem[] = sortBy(favoritedProgramItems, [
-    (favoritedGame) => favoritedGame.startTime,
-    (favoritedGame) => favoritedGame.title.toLowerCase(),
-  ]);
+  const sortedProgramItems: readonly ProgramItem[] = sortBy(
+    favoritedProgramItems,
+    [
+      (favoritedProgramItem) => favoritedProgramItem.startTime,
+      (favoritedProgramItem) => favoritedProgramItem.title.toLowerCase(),
+    ],
+  );
 
   const startTimes = getStartTimes(favoritedProgramItems);
 
   return (
-    <RaisedCard data-testid="favorited-games-list">
+    <RaisedCard data-testid="favorited-program-items-list">
       <Header>{t("favoritedProgramItems")}</Header>
       <div>
         {favoritedProgramItems.length === 0 && (
@@ -32,7 +35,7 @@ export const MyFavoritesList = ({
         )}
         {favoritedProgramItems.length !== 0 && (
           <FavoritesByStartTimes
-            programItems={sortedGames}
+            programItems={sortedProgramItems}
             startTimes={startTimes}
           />
         )}

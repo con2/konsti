@@ -5,14 +5,14 @@ import {
 } from "server/utils/authHeader";
 import { UserGroup } from "shared/types/models/user";
 import {
-  fetchGames,
-  updateGames,
+  fetchProgramItems,
+  updateProgramItems,
 } from "server/features/program-item/programItemService";
 import { logger } from "server/utils/logger";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
-import { autoUpdateGames } from "server/utils/cron";
+import { autoUpdateProgramItems } from "server/utils/cron";
 
-export const postUpdateGames = async (
+export const postUpdateProgramItems = async (
   req: Request<{}, {}, {}>,
   res: Response,
 ): Promise<Response> => {
@@ -26,11 +26,11 @@ export const postUpdateGames = async (
     return res.sendStatus(401);
   }
 
-  const response = await updateGames();
+  const response = await updateProgramItems();
   return res.json(response);
 };
 
-export const postAutoUpdateGames = (
+export const postAutoUpdateProgramItems = (
   req: Request<{}, {}, {}>,
   res: Response,
 ): Response => {
@@ -41,19 +41,19 @@ export const postAutoUpdateGames = (
     return res.sendStatus(401);
   }
 
-  autoUpdateGames().catch((error: unknown) => {
-    logger.error("autoUpdateGames failed: %s", error);
+  autoUpdateProgramItems().catch((error: unknown) => {
+    logger.error("autoUpdateProgramItems failed: %s", error);
   });
 
   return res.sendStatus(200);
 };
 
-export const getGames = async (
+export const getProgramItems = async (
   _req: Request<{}, {}, {}>,
   res: Response,
 ): Promise<Response> => {
   logger.info(`API call: GET ${ApiEndpoint.PROGRAM_ITEMS}`);
 
-  const response = await fetchGames();
+  const response = await fetchProgramItems();
   return res.json(response);
 };

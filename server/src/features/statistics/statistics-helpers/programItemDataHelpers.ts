@@ -8,16 +8,18 @@ import { StringNumberObject, PriorityObject } from "server/types/commonTypes";
 import { toPercent } from "server/features/statistics/statsUtil";
 import { TIMEZONE } from "shared/utils/initializeDayjs";
 
-export const getGamesByStartTime = (
+export const getProgramItemsByStartTime = (
   programItems: readonly ProgramItem[],
 ): StringNumberObject => {
   const gamesByTime = countBy(programItems, "startTime");
 
-  logger.info(`Number of games for each start time: \n`, gamesByTime);
+  logger.info(`Number of program items for each start time: \n`, gamesByTime);
   return gamesByTime;
 };
 
-const getUsersByGames = (_users: readonly User[]): StringNumberObject => {
+const getUsersByProgramItems = (
+  _users: readonly User[],
+): StringNumberObject => {
   // TODO: Update to use signup collection
   // const directSignups = users.flatMap((user) => user.directSignups);
   const directSignups: Signup[] = [];
@@ -28,11 +30,11 @@ const getUsersByGames = (_users: readonly User[]): StringNumberObject => {
   return usersByGames;
 };
 
-export const getNumberOfFullGames = (
+export const getNumberOfFullProgramItems = (
   programItems: readonly ProgramItem[],
   users: readonly User[],
 ): void => {
-  const usersByGames = getUsersByGames(users);
+  const usersByGames = getUsersByProgramItems(users);
 
   let counter = 0;
   programItems.forEach((game) => {
@@ -42,7 +44,7 @@ export const getNumberOfFullGames = (
   });
 
   logger.info(
-    `Games with maximum number of players: ${counter}/${
+    `Program items with maximum number of players: ${counter}/${
       programItems.length
     } (${toPercent(counter / programItems.length)}%)`,
   );

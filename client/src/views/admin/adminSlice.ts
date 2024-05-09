@@ -45,13 +45,13 @@ const adminSlice = createSlice({
       state,
       action: PayloadAction<readonly ProgramItem[]>,
     ) {
-      return { ...state, hiddenGames: action.payload };
+      return { ...state, hiddenProgramItems: action.payload };
     },
 
     submitGetSettingsAsync(state, action: PayloadAction<SettingsPayload>) {
       return {
         ...state,
-        hiddenGames: action.payload.hiddenGames,
+        hiddenProgramItems: action.payload.hiddenProgramItems,
         appOpen: action.payload.appOpen,
         signupQuestions: action.payload.signupQuestions,
         signupStrategy: action.payload.signupStrategy,

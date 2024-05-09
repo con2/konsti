@@ -34,9 +34,11 @@ test("should remove signup document when program item is removed", async () => {
   const signups = unsafelyUnwrapResult(findSignupsResult);
   expect(signups).toHaveLength(1);
 
-  const removeDeletedGamesResult = await removeDeletedProgramItems([]);
-  const deletedGamesCount = unsafelyUnwrapResult(removeDeletedGamesResult);
-  expect(deletedGamesCount).toEqual(1);
+  const removeDeletedProgramItemsResult = await removeDeletedProgramItems([]);
+  const deletedProgramItemsCount = unsafelyUnwrapResult(
+    removeDeletedProgramItemsResult,
+  );
+  expect(deletedProgramItemsCount).toEqual(1);
 
   const findSignupsResult2 = await findDirectSignups();
   const signups2 = unsafelyUnwrapResult(findSignupsResult2);

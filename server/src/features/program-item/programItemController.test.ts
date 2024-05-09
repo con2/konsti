@@ -46,8 +46,8 @@ import { config } from "shared/config";
 import { ConventionName } from "shared/config/sharedConfigTypes";
 import { testHelperWrapper } from "server/kompassi/getProgramItemsFromKompassi";
 import {
-  mockKompassiGameRopecon,
-  mockKompassiGameRopecon2,
+  mockKompassiProgramItemRopecon,
+  mockKompassiProgramItemRopecon2,
 } from "server/kompassi/test/mockKompassiProgramItemRopecon";
 
 let server: Server;
@@ -105,9 +105,9 @@ describe(`GET ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     const response = await request(server).get(ApiEndpoint.PROGRAM_ITEMS);
     expect(response.status).toEqual(200);
 
-    const sortedGames = sortBy(response.body.games, "title");
-    expect(sortedGames[0].users[0].signupMessage).toEqual(publicMessage);
-    expect(sortedGames[1].users[0].signupMessage).toEqual("");
+    const sortedProgramItems = sortBy(response.body.programItems, "title");
+    expect(sortedProgramItems[0].users[0].signupMessage).toEqual(publicMessage);
+    expect(sortedProgramItems[1].users[0].signupMessage).toEqual("");
   });
 });
 
@@ -124,10 +124,10 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     expect(response.status).toEqual(401);
   });
 
-  test("should return 200 with valid authorization and add games to DB", async () => {
+  test("should return 200 with valid authorization and add program items to DB", async () => {
     const spy = vi
       .spyOn(testHelperWrapper, "getEventProgramItems")
-      .mockResolvedValue({ value: [mockKompassiGameRopecon] });
+      .mockResolvedValue({ value: [mockKompassiProgramItemRopecon] });
 
     const response = await request(server)
       .post(ApiEndpoint.PROGRAM_ITEMS)
@@ -142,9 +142,9 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     expect(programItems[0].title).toEqual(testProgramItem.title);
   });
 
-  test("should remove games, lottery signups, direct signups, and favorited games that are not in the server response", async () => {
+  test("should remove program items, lottery signups, direct signups, and favorited program items that are not in the server response", async () => {
     vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
-      value: [mockKompassiGameRopecon],
+      value: [mockKompassiProgramItemRopecon],
     });
 
     await saveProgramItems([testProgramItem, testProgramItem2]);
@@ -207,9 +207,9 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     const programItems = unsafelyUnwrapResult(programItemsResult);
 
     expect(programItems.length).toEqual(2);
-    const sortedGames = sortBy(programItems, "title");
-    expect(sortedGames[0].title).toEqual(testProgramItem.title);
-    expect(sortedGames[1].title).toEqual(testProgramItem2.title);
+    const sortedProgramItems = sortBy(programItems, "title");
+    expect(sortedProgramItems[0].title).toEqual(testProgramItem.title);
+    expect(sortedProgramItems[1].title).toEqual(testProgramItem2.title);
   });
 
   test("should not modify anything if server response is empty array", async () => {
@@ -228,12 +228,12 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     const programItems = unsafelyUnwrapResult(programItemsResult);
 
     expect(programItems.length).toEqual(2);
-    const sortedGames = sortBy(programItems, "title");
-    expect(sortedGames[0].title).toEqual(testProgramItem.title);
-    expect(sortedGames[1].title).toEqual(testProgramItem2.title);
+    const sortedProgramItems = sortBy(programItems, "title");
+    expect(sortedProgramItems[0].title).toEqual(testProgramItem.title);
+    expect(sortedProgramItems[1].title).toEqual(testProgramItem2.title);
   });
 
-  test("should update changed game details", async () => {
+  test("should update changed program item details", async () => {
     const newDescription = "new description";
     const newStartTime = dayjs(testProgramItem.startTime)
       .add(1, "hours")
@@ -242,7 +242,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
       value: [
         {
-          ...mockKompassiGameRopecon,
+          ...mockKompassiProgramItemRopecon,
           start_time: newStartTime,
           description: newDescription,
         },
@@ -266,7 +266,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     expect(programItems[0].description).toEqual(newDescription);
   });
 
-  test("should remove lottery signups but not direct signups or favorited games if game start time changes", async () => {
+  test("should remove lottery signups but not direct signups or favorited program items if game start time changes", async () => {
     const newStartTime = dayjs(testProgramItem.startTime)
       .add(1, "hours")
       .toISOString();
@@ -274,10 +274,10 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
       value: [
         {
-          ...mockKompassiGameRopecon,
+          ...mockKompassiProgramItemRopecon,
           start_time: newStartTime,
         },
-        mockKompassiGameRopecon2,
+        mockKompassiProgramItemRopecon2,
       ],
     });
 
@@ -321,7 +321,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
       value: [
         {
-          ...mockKompassiGameRopecon,
+          ...mockKompassiProgramItemRopecon,
           tags: [
             KompassiTagRopecon.ALOITTELIJAYSTÄVÄLLINEN,
             // @ts-expect-error: Test
@@ -380,7 +380,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
       value: [
         {
-          ...mockKompassiGameRopecon,
+          ...mockKompassiProgramItemRopecon,
           // @ts-expect-error: Test value
           start_time: null,
           // @ts-expect-error: Test value

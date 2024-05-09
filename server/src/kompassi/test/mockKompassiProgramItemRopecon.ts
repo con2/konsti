@@ -12,7 +12,7 @@ import {
   KompassiTagRopecon,
 } from "server/kompassi/ropecon/kompassiProgramItemRopecon";
 
-export const mockKompassiGameRopecon: KompassiProgramItemRopecon = {
+export const mockKompassiProgramItemRopecon: KompassiProgramItemRopecon = {
   title: testProgramItem.title,
   description: testProgramItem.description,
   category_title: KompassiProgramTypeRopecon.TABLETOP_RPG,
@@ -72,7 +72,7 @@ export const mockKompassiGameRopecon: KompassiProgramItemRopecon = {
   ropecon2023_celebratory_year: false,
 };
 
-export const mockKompassiGameRopecon2: KompassiProgramItemRopecon = {
+export const mockKompassiProgramItemRopecon2: KompassiProgramItemRopecon = {
   title: testProgramItem2.title,
   description: testProgramItem2.description,
   category_title: KompassiProgramTypeRopecon.TABLETOP_RPG,

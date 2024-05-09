@@ -25,7 +25,7 @@ import { AssignmentError } from "shared/types/api/errors";
 import { logger } from "server/utils/logger";
 
 export const runRandomAssignment = (
-  lotterySignupGames: readonly ProgramItem[],
+  lotterySignupProgramItems: readonly ProgramItem[],
   playerGroups: readonly User[][],
   startTime: string,
   directSignups: readonly DirectSignupsForProgramItem[],
@@ -35,7 +35,10 @@ export const runRandomAssignment = (
     return groupsResult;
   }
   const groups = unwrapResult(groupsResult);
-  const events = getRandomAssignEvents(lotterySignupGames, directSignups);
+  const events = getRandomAssignEvents(
+    lotterySignupProgramItems,
+    directSignups,
+  );
   const listResult = getList(playerGroups, startTime, directSignups);
   if (isErrorResult(listResult)) {
     return listResult;

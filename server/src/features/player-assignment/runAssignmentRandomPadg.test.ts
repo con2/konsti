@@ -34,12 +34,12 @@ test("Assignment with valid data should return success with random+padg strategy
   const newUsersCount = 20;
   const groupSize = 3;
   const numberOfGroups = 5;
-  const newGamesCount = 10;
+  const newProgramItemsCount = 10;
   const testUsersCount = 0;
 
   await generateTestData(
     newUsersCount,
-    newGamesCount,
+    newProgramItemsCount,
     groupSize,
     numberOfGroups,
     testUsersCount,
@@ -101,16 +101,16 @@ test("Assignment with valid data should return success with random+padg strategy
   await assertUserUpdatedCorrectly(updatedUsers2);
 });
 
-test("Assignment with no games should return error with random+padg strategy", async () => {
+test("Assignment with no program items should return error with random+padg strategy", async () => {
   const newUsersCount = 1;
   const groupSize = 0;
   const numberOfGroups = 0;
-  const newGamesCount = 0;
+  const newProgramItemsCount = 0;
   const testUsersCount = 0;
 
   await generateTestData(
     newUsersCount,
-    newGamesCount,
+    newProgramItemsCount,
     groupSize,
     numberOfGroups,
     testUsersCount,
@@ -126,7 +126,7 @@ test("Assignment with no games should return error with random+padg strategy", a
   const assignResults = unsafelyUnwrapResult(assignResultsResult);
 
   expect(assignResults.status).toEqual(
-    AssignmentResultStatus.NO_STARTING_GAMES,
+    AssignmentResultStatus.NO_STARTING_PROGRAM_ITEMS,
   );
 });
 
@@ -134,12 +134,12 @@ test("Assignment with no players should return error with random+padg strategy",
   const newUsersCount = 0;
   const groupSize = 0;
   const numberOfGroups = 0;
-  const newGamesCount = 1;
+  const newProgramItemsCount = 1;
   const testUsersCount = 0;
 
   await generateTestData(
     newUsersCount,
-    newGamesCount,
+    newProgramItemsCount,
     groupSize,
     numberOfGroups,
     testUsersCount,
@@ -173,7 +173,7 @@ test("If random assignment fails, should return PADG result", async () => {
   const assignResults = unsafelyUnwrapResult(assignResultsResult);
   expect(assignResults.algorithm).toEqual(AssignmentStrategy.PADG);
   expect(assignResults.status).toEqual(
-    AssignmentResultStatus.NO_STARTING_GAMES,
+    AssignmentResultStatus.NO_STARTING_PROGRAM_ITEMS,
   );
 });
 
@@ -193,7 +193,7 @@ test("If PADG assignment fails, should return random result", async () => {
   const assignResults = unsafelyUnwrapResult(assignResultsResult);
   expect(assignResults.algorithm).toEqual(AssignmentStrategy.RANDOM);
   expect(assignResults.status).toEqual(
-    AssignmentResultStatus.NO_STARTING_GAMES,
+    AssignmentResultStatus.NO_STARTING_PROGRAM_ITEMS,
   );
 });
 

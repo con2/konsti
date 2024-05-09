@@ -14,7 +14,7 @@ const fixData = (): void => {
     });
 
   commander
-    .command("games <year> <event>")
+    .command("program-items <year> <event>")
     .description("Get game statistics")
     .action((year: number, event: string) => {
       getProgramItemStats(year, event);

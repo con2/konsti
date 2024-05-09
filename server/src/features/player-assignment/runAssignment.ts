@@ -53,9 +53,10 @@ export const runAssignment = async ({
     logger.info("Waiting done, start assignment");
   }
 
-  const removeInvalidGamesResult = await removeInvalidProgramItemsFromUsers();
-  if (isErrorResult(removeInvalidGamesResult)) {
-    return removeInvalidGamesResult;
+  const removeInvalidProgramItemsResult =
+    await removeInvalidProgramItemsFromUsers();
+  if (isErrorResult(removeInvalidProgramItemsResult)) {
+    return removeInvalidProgramItemsResult;
   }
 
   const usersResult = await findUsers();
@@ -67,7 +68,7 @@ export const runAssignment = async ({
   const { directSignupAlwaysOpenIds, twoPhaseSignupProgramTypes } =
     config.shared();
 
-  // Only include "twoPhaseSignupProgramTypes" and don't include "directSignupAlwaysOpen" games
+  // Only include "twoPhaseSignupProgramTypes" and don't include "directSignupAlwaysOpen" program items
   const filteredUsers = users.map((user) => {
     const matchingLotterySignups = user.lotterySignups.filter(
       (lotterySignup) =>
@@ -88,7 +89,7 @@ export const runAssignment = async ({
   }
   const programItems = unwrapResult(programItemsResult);
 
-  // Only include "twoPhaseSignupProgramTypes" and don't include "directSignupAlwaysOpen" games
+  // Only include "twoPhaseSignupProgramTypes" and don't include "directSignupAlwaysOpen" program items
   const filteredProgramItems = programItems.filter(
     (programItem) =>
       twoPhaseSignupProgramTypes.includes(programItem.programType) &&

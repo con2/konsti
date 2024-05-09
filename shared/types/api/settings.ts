@@ -15,13 +15,13 @@ export interface PostHiddenRequest {
 }
 
 export interface PostHiddenResponse extends ApiResult {
-  hiddenGames: readonly ProgramItem[];
+  hiddenProgramItems: readonly ProgramItem[];
 }
 
 // GET settings
 
 export interface SettingsPayload {
-  hiddenGames: readonly ProgramItem[];
+  hiddenProgramItems: readonly ProgramItem[];
   appOpen: boolean;
   signupQuestions: readonly SignupQuestion[];
   signupStrategy: SignupStrategy;

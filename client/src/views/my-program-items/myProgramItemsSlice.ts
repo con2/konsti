@@ -70,6 +70,6 @@ export const selectDirectSignups = (state: RootState): readonly Signup[] =>
   state.myProgramItems.directSignups;
 export const selectLotterySignups = (state: RootState): readonly Signup[] =>
   state.myProgramItems.lotterySignups;
-export const selectFavoritedGames = (
+export const selectFavoritedProgramItems = (
   state: RootState,
 ): readonly ProgramItem[] => state.myProgramItems.favoritedProgramItems;

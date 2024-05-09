@@ -78,7 +78,7 @@ export const EventLog = (): ReactElement => {
           >
             <span>
               {t(`eventLogActions.${eventLogItem.action}`)}
-              <StyledLink to={`/games/${eventLogItem.programItemId}`}>
+              <StyledLink to={`/program/${eventLogItem.programItemId}`}>
                 {foundGame.title}
               </StyledLink>
               .

@@ -10,13 +10,13 @@ export const getUpcomingProgramItems = (
 ): readonly ProgramItem[] => {
   const timeNow = getTimeNow();
 
-  const upcomingGames = programItems.filter((programItem) =>
+  const upcomingProgramItems = programItems.filter((programItem) =>
     dayjs(programItem.startTime)
       .add(offsetByHours, "hours")
       .isSameOrAfter(timeNow),
   );
 
-  return upcomingGames;
+  return upcomingProgramItems;
 };
 
 const getUpcomingLotterySignups = (
@@ -86,13 +86,13 @@ export const getUpcomingDirectSignups = (
 ): readonly Signup[] => {
   const timeNow = getTimeNow();
 
-  const upcomingGames = directSignups.filter((directSignup) =>
+  const upcomingProgramItems = directSignups.filter((directSignup) =>
     dayjs(directSignup.programItemDetails.startTime)
       .add(1, "hours")
       .isAfter(timeNow),
   );
 
-  return upcomingGames;
+  return upcomingProgramItems;
 };
 
 export const getUpcomingFavorites = (
@@ -100,9 +100,9 @@ export const getUpcomingFavorites = (
 ): readonly ProgramItem[] => {
   const timeNow = getTimeNow();
 
-  const upcomingGames = favoritedProgramItems.filter((favoritedGame) =>
+  const upcomingProgramItems = favoritedProgramItems.filter((favoritedGame) =>
     dayjs(favoritedGame.startTime).add(1, "hours").isAfter(timeNow),
   );
 
-  return upcomingGames;
+  return upcomingProgramItems;
 };

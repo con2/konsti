@@ -74,7 +74,7 @@ export const GroupView = (): ReactElement => {
                 {filteredActiveDirectSignups.map((programItem) => (
                   <li key={programItem.programItemDetails.programItemId}>
                     <Link
-                      to={`/games/${programItem.programItemDetails.programItemId}`}
+                      to={`/program/${programItem.programItemDetails.programItemId}`}
                     >
                       {programItem.programItemDetails.title}
                     </Link>

@@ -3,29 +3,29 @@ import { ProgramItem } from "shared/types/models/programItem";
 import { SignupWish } from "server/types/userTypes";
 
 export const getLotterySignupProgramItems = (
-  startingGames: readonly ProgramItem[],
+  startingProgramItems: readonly ProgramItem[],
   signupWishes: readonly SignupWish[],
 ): ProgramItem[] => {
-  logger.debug("Get selected games");
-  const lotterySignupGames = [] as ProgramItem[];
+  logger.debug("Get selected program items");
+  const lotterySignupProgramItems = [] as ProgramItem[];
   let minAttendance = 0;
   let maxAttendance = 0;
 
-  // Get valid games from games that are starting and games that have lottery signups
-  startingGames.forEach((startingGame) => {
+  // Get valid program items from program items that are starting and program items that have lottery signups
+  startingProgramItems.forEach((startingProgramItem) => {
     for (let i = 0; i < signupWishes.length; i += 1) {
-      if (startingGame.programItemId === signupWishes[i].programItemId) {
-        lotterySignupGames.push(startingGame);
-        minAttendance += startingGame.minAttendance;
-        maxAttendance += startingGame.maxAttendance;
+      if (startingProgramItem.programItemId === signupWishes[i].programItemId) {
+        lotterySignupProgramItems.push(startingProgramItem);
+        minAttendance += startingProgramItem.minAttendance;
+        maxAttendance += startingProgramItem.maxAttendance;
         break;
       }
     }
   });
 
   logger.debug(
-    `Found ${lotterySignupGames.length} games that have signup wishes and ${minAttendance}-${maxAttendance} available seats`,
+    `Found ${lotterySignupProgramItems.length} program items that have signup wishes and ${minAttendance}-${maxAttendance} available seats`,
   );
 
-  return lotterySignupGames;
+  return lotterySignupProgramItems;
 };

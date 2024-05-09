@@ -26,26 +26,26 @@ export const padgAssignPlayers = (
   directSignups: readonly DirectSignupsForProgramItem[],
 ): Result<PlayerAssignmentResult, AssignmentError> => {
   logger.debug(`***** Run Padg Assignment for ${startTime}`);
-  const startingGames = getStartingProgramItems(programItems, startTime);
+  const startingProgramItems = getStartingProgramItems(programItems, startTime);
 
-  if (startingGames.length === 0) {
-    logger.debug("No starting games, stop!");
+  if (startingProgramItems.length === 0) {
+    logger.debug("No starting program items, stop!");
     return makeSuccessResult({
       results: [],
-      message: "Padg Assign Result - No starting games",
+      message: "Padg Assign Result - No starting program items",
       algorithm: AssignmentStrategy.PADG,
-      status: AssignmentResultStatus.NO_STARTING_GAMES,
+      status: AssignmentResultStatus.NO_STARTING_PROGRAM_ITEMS,
     });
   }
 
   const {
-    lotterySignupGames,
+    lotterySignupProgramItems,
     playerGroups,
     allPlayers,
     numberOfIndividuals,
     numberOfGroups,
   } = getRunRandomAndPadgInput(players, programItems, startTime);
-  if (lotterySignupGames.length === 0) {
+  if (lotterySignupProgramItems.length === 0) {
     logger.debug("No signup wishes, stop!");
     return makeSuccessResult({
       results: [],
@@ -55,13 +55,15 @@ export const padgAssignPlayers = (
     });
   }
 
-  logger.debug(`Games with lottery signups: ${lotterySignupGames.length}`);
+  logger.debug(
+    `Program items with lottery signups: ${lotterySignupProgramItems.length}`,
+  );
   logger.debug(
     `Selected players: ${allPlayers.length} (${numberOfIndividuals} individual, ${numberOfGroups} groups)`,
   );
 
   const assignmentResultResult = runPadgAssignment(
-    lotterySignupGames,
+    lotterySignupProgramItems,
     playerGroups,
     startTime,
     directSignups,
@@ -72,7 +74,7 @@ export const padgAssignPlayers = (
 
   const assignmentResult = unwrapResult(assignmentResultResult);
 
-  const selectedUniqueGames = uniq(
+  const selectedUniqueProgramItems = uniq(
     assignmentResult.results.map(
       (result) => result.directSignup.programItemDetails.programItemId,
     ),
@@ -82,9 +84,9 @@ export const padgAssignPlayers = (
     assignmentResult.results.length
   }/${allPlayers.length} (${Math.round(
     (assignmentResult.results.length / allPlayers.length) * 100,
-  )}%), Games: ${selectedUniqueGames.length}/${
-    lotterySignupGames.length
-  } (${Math.round((selectedUniqueGames.length / lotterySignupGames.length) * 100)}%)`;
+  )}%), Program items: ${selectedUniqueProgramItems.length}/${
+    lotterySignupProgramItems.length
+  } (${Math.round((selectedUniqueProgramItems.length / lotterySignupProgramItems.length) * 100)}%)`;
 
   logger.debug(message);
 

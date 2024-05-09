@@ -4,25 +4,27 @@ import { RandomAssignEvent } from "server/types/padgRandomAssignTypes";
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 
 export const getRandomAssignEvents = (
-  lotterySignupGames: readonly ProgramItem[],
+  lotterySignupProgramItems: readonly ProgramItem[],
   directSignups: readonly DirectSignupsForProgramItem[],
 ): RandomAssignEvent[] => {
-  return lotterySignupGames.map((selectedGame) => {
+  return lotterySignupProgramItems.map((selectedGame) => {
     // Program item can have existing direct signups if program item's start time has changed
     // Consider existing direct signups when determining program item attendee limits
-    const gameSignup = directSignups.find(
+    const programItemSignup = directSignups.find(
       (signup) =>
         signup.programItem.programItemId === selectedGame.programItemId,
     );
 
-    const changedSignups = gameSignup?.userSignups.filter((userSignup) => {
-      const startTimeChanged = !dayjs(userSignup.time).isSame(
-        dayjs(selectedGame.startTime),
-      );
-      if (startTimeChanged) {
-        return true;
-      }
-    });
+    const changedSignups = programItemSignup?.userSignups.filter(
+      (userSignup) => {
+        const startTimeChanged = !dayjs(userSignup.time).isSame(
+          dayjs(selectedGame.startTime),
+        );
+        if (startTimeChanged) {
+          return true;
+        }
+      },
+    );
 
     const currentSignups = changedSignups?.length ?? 0;
 

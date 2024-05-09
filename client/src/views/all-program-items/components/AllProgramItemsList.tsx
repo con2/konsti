@@ -10,7 +10,7 @@ import { getLotterySignups } from "client/utils/getUpcomingProgramItems";
 import { getTimeslotSignupStrategy } from "client/views/all-program-items/allProgramItemsUtils";
 import {
   selectDirectSignups,
-  selectFavoritedGames,
+  selectFavoritedProgramItems,
   selectLotterySignups,
 } from "client/views/my-program-items/myProgramItemsSlice";
 import { RaisedCard } from "client/components/RaisedCard";
@@ -37,7 +37,7 @@ export const AllProgramItemsList = ({ programItems }: Props): ReactElement => {
   const username = useAppSelector((state) => state.login.username);
   const loggedIn = useAppSelector((state) => state.login.loggedIn);
   const userGroup = useAppSelector((state) => state.login.userGroup);
-  const favoritedGames = useAppSelector(selectFavoritedGames);
+  const favoritedProgramItems = useAppSelector(selectFavoritedProgramItems);
   const isInGroup = getIsInGroup(groupCode);
 
   const [loading, setLoading] = useState(false);
@@ -57,7 +57,7 @@ export const AllProgramItemsList = ({ programItems }: Props): ReactElement => {
 
   const programItemsByStartTime = groupBy(sortedProgramItems, "startTime");
 
-  const gamesList = Object.entries(programItemsByStartTime).map(
+  const programItemsList = Object.entries(programItemsByStartTime).map(
     ([startTime, programItemsForStartTime]) => {
       const timeslotSignupStrategy = getTimeslotSignupStrategy(
         programItemsForStartTime,
@@ -75,9 +75,9 @@ export const AllProgramItemsList = ({ programItems }: Props): ReactElement => {
           />
 
           {programItemsForStartTime.map((programItem) => {
-            const gameSignups = signups.find(
-              (gameSignup) =>
-                gameSignup.programItemId === programItem.programItemId,
+            const programItemSignups = signups.find(
+              (programItemSignup) =>
+                programItemSignup.programItemId === programItem.programItemId,
             );
 
             return (
@@ -86,7 +86,7 @@ export const AllProgramItemsList = ({ programItems }: Props): ReactElement => {
                 isAlwaysExpanded={false}
                 programItem={programItem}
                 startTime={startTime}
-                players={gameSignups?.users.length ?? 0}
+                players={programItemSignups?.users.length ?? 0}
                 signupStrategy={timeslotSignupStrategy}
                 lotterySignups={ownOrGroupCreatorLotterySignups}
                 directSignups={directSignups}
@@ -95,7 +95,7 @@ export const AllProgramItemsList = ({ programItems }: Props): ReactElement => {
                 username={username}
                 loggedIn={loggedIn}
                 userGroup={userGroup}
-                favoritedProgramItems={favoritedGames}
+                favoritedProgramItems={favoritedProgramItems}
               />
             );
           })}
@@ -108,21 +108,21 @@ export const AllProgramItemsList = ({ programItems }: Props): ReactElement => {
     <div>
       {programItems.length === 0 && (
         <RaisedCard>
-          <NoGamesText>
+          <NoProgramItemsText>
             {t("noProgramItemsAvailable", {
               PROGRAM_TYPE: t(
                 `programTypePartitivePlural.${activeProgramType}`,
               ),
             })}
-          </NoGamesText>
+          </NoProgramItemsText>
         </RaisedCard>
       )}
-      {programItems.length !== 0 && gamesList}
+      {programItems.length !== 0 && programItemsList}
     </div>
   );
 };
 
-const NoGamesText = styled.span`
+const NoProgramItemsText = styled.span`
   color: ${(props) => props.theme.textSecondary};
   font-size: ${(props) => props.theme.fontSizeLarge};
 `;

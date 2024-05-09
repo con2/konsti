@@ -44,12 +44,12 @@ test("Assignment with valid data should return success with random strategy", as
   const newUsersCount = 20;
   const groupSize = 3;
   const numberOfGroups = 5;
-  const newGamesCount = 10;
+  const newProgramItemsCount = 10;
   const testUsersCount = 0;
 
   await generateTestData(
     newUsersCount,
-    newGamesCount,
+    newProgramItemsCount,
     groupSize,
     numberOfGroups,
     testUsersCount,
@@ -139,7 +139,7 @@ test("Should adjust attendee limits if there are previous signups from moved pro
     username: mockUser2.username,
   });
 
-  // ** Save selected games
+  // ** Save selected program items
 
   // This will get assigned
   await saveLotterySignups({
@@ -185,16 +185,16 @@ test("Should adjust attendee limits if there are previous signups from moved pro
   ]);
 });
 
-test("Assignment with no games should return error with random strategy", async () => {
+test("Assignment with no program items should return error with random strategy", async () => {
   const newUsersCount = 1;
   const groupSize = 0;
   const numberOfGroups = 0;
-  const newGamesCount = 0;
+  const newProgramItemsCount = 0;
   const testUsersCount = 0;
 
   await generateTestData(
     newUsersCount,
-    newGamesCount,
+    newProgramItemsCount,
     groupSize,
     numberOfGroups,
     testUsersCount,
@@ -211,7 +211,7 @@ test("Assignment with no games should return error with random strategy", async 
   const assignResults = unsafelyUnwrapResult(assignResultsResult);
 
   expect(assignResults.status).toEqual(
-    AssignmentResultStatus.NO_STARTING_GAMES,
+    AssignmentResultStatus.NO_STARTING_PROGRAM_ITEMS,
   );
 });
 
@@ -219,12 +219,12 @@ test("Assignment with no players should return error with random strategy", asyn
   const newUsersCount = 0;
   const groupSize = 0;
   const numberOfGroups = 0;
-  const newGamesCount = 1;
+  const newProgramItemsCount = 1;
   const testUsersCount = 0;
 
   await generateTestData(
     newUsersCount,
-    newGamesCount,
+    newProgramItemsCount,
     groupSize,
     numberOfGroups,
     testUsersCount,

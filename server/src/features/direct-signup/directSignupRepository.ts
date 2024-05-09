@@ -366,13 +366,13 @@ export const delDirectSignupDocumentsByProgramItemIds = async (
   }
   const programItems = unwrapResult(programItemsResult);
 
-  const gamesInDb = programItemIds.map((programItemId) =>
+  const programItemsInDb = programItemIds.map((programItemId) =>
     programItems.find(
       (programItem) => programItem.programItemId === programItemId,
     ),
   );
 
-  const gameObjectIds = gamesInDb.flatMap((gameInDb) =>
+  const gameObjectIds = programItemsInDb.flatMap((gameInDb) =>
     gameInDb?._id ? gameInDb._id : [],
   );
 
@@ -399,13 +399,13 @@ export const resetDirectSignupsByProgramItemIds = async (
   }
   const programItems = unwrapResult(programItemsResult);
 
-  const gamesInDb = programItemIds.map((programItemId) =>
+  const programItemsInDb = programItemIds.map((programItemId) =>
     programItems.find(
       (programItem) => programItem.programItemId === programItemId,
     ),
   );
 
-  const gameObjectIds = gamesInDb.flatMap((gameInDb) =>
+  const gameObjectIds = programItemsInDb.flatMap((gameInDb) =>
     gameInDb?._id ? gameInDb._id : [],
   );
 

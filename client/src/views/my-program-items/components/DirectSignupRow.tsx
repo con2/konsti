@@ -11,7 +11,7 @@ import {
 } from "client/views/my-program-items/myProgramItemsThunks";
 import { CancelSignupForm } from "client/views/all-program-items/components/CancelSignupForm";
 import { ErrorMessage } from "client/components/ErrorMessage";
-import { loadGames } from "client/utils/loadData";
+import { loadProgramItems } from "client/utils/loadData";
 import { config } from "shared/config";
 import { IconButton } from "client/components/IconButton";
 import { getShortWeekdayAndTime } from "client/utils/timeFormatter";
@@ -56,7 +56,7 @@ export const DirectSignupRow = ({
     if (errorMessage) {
       setServerError(errorMessage);
     } else {
-      await loadGames();
+      await loadProgramItems();
       setCancelSignupFormOpen(false);
     }
     setLoading(false);
@@ -70,7 +70,9 @@ export const DirectSignupRow = ({
     <ProgramItemDetailsList key={signup.programItemDetails.programItemId}>
       <GameTitleAndButtons>
         <div>
-          <StyledLink to={`/games/${signup.programItemDetails.programItemId}`}>
+          <StyledLink
+            to={`/program/${signup.programItemDetails.programItemId}`}
+          >
             {signup.programItemDetails.title}
           </StyledLink>
           {config.shared().signupOpen && !cancelSignupFormOpen && (

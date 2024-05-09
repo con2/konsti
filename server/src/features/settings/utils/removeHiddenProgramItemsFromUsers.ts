@@ -16,16 +16,16 @@ import {
 } from "shared/utils/result";
 
 export const removeHiddenProgramItemsFromUsers = async (
-  hiddenGames: readonly ProgramItem[],
+  hiddenProgramItems: readonly ProgramItem[],
 ): Promise<Result<void, MongoDbError>> => {
-  logger.info(`Remove hidden games from users`);
+  logger.info(`Remove hidden program items from users`);
 
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-  if (!hiddenGames || hiddenGames.length === 0) {
+  if (!hiddenProgramItems || hiddenProgramItems.length === 0) {
     return makeErrorResult(MongoDbError.NO_HIDDEN_PROGRAM_ITEMS);
   }
 
-  logger.info(`Found ${hiddenGames.length} hidden games`);
+  logger.info(`Found ${hiddenProgramItems.length} hidden program items`);
 
   const usersResult = await findUsers();
   if (isErrorResult(usersResult)) {
@@ -36,9 +36,9 @@ export const removeHiddenProgramItemsFromUsers = async (
 
   const usersToUpdate: User[] = users.flatMap((user) => {
     const lotterySignups = user.lotterySignups.filter((lotterySignup) => {
-      const hiddenFound = hiddenGames.find((hiddenGame) => {
+      const hiddenFound = hiddenProgramItems.find((hiddenProgramItem) => {
         return (
-          hiddenGame.programItemId ===
+          hiddenProgramItem.programItemId ===
           lotterySignup.programItemDetails.programItemId
         );
       });
@@ -47,25 +47,28 @@ export const removeHiddenProgramItemsFromUsers = async (
       }
     });
 
-    const favoritedGames = user.favoritedProgramItems.filter(
-      (favoritedGame) => {
-        const hiddenFound = hiddenGames.find((hiddenGame) => {
-          return hiddenGame.programItemId === favoritedGame.programItemId;
+    const favoritedProgramItems = user.favoritedProgramItems.filter(
+      (favoritedProgramItem) => {
+        const hiddenFound = hiddenProgramItems.find((hiddenProgramItem) => {
+          return (
+            hiddenProgramItem.programItemId ===
+            favoritedProgramItem.programItemId
+          );
         });
         if (!hiddenFound) {
-          return favoritedGame;
+          return favoritedProgramItem;
         }
       },
     );
 
     if (
       user.lotterySignups.length !== lotterySignups.length ||
-      user.favoritedProgramItems.length !== favoritedGames.length
+      user.favoritedProgramItems.length !== favoritedProgramItems.length
     ) {
       return {
         ...user,
         lotterySignups,
-        favoritedGames,
+        favoritedProgramItems,
       };
     }
     return [];
@@ -76,7 +79,7 @@ export const removeHiddenProgramItemsFromUsers = async (
     return updateUsersResult;
   }
 
-  const hiddenProgramItemIds = hiddenGames.map(
+  const hiddenProgramItemIds = hiddenProgramItems.map(
     (hiddenGame) => hiddenGame.programItemId,
   );
   const resetSignupsByProgramItemIdsResult =

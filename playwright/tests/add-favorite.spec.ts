@@ -35,11 +35,13 @@ test("Add favorite", async ({ page, request }) => {
   // Go to My Program and check favorited game title
   await page.click("data-testid=my-program-list");
 
-  const favoritedGames = page.locator("data-testid=favorited-games-list");
+  const favoritedProgramItems = page.locator(
+    "data-testid=favorited-program-items-list",
+  );
 
-  const myGamesGameTitle = await favoritedGames
+  const myProgramItemsGameTitle = await favoritedProgramItems
     .locator("data-testid=game-title")
     .innerText();
 
-  expect(myGamesGameTitle.trim()).toEqual(favoritedGameTitle);
+  expect(myProgramItemsGameTitle.trim()).toEqual(favoritedGameTitle);
 });

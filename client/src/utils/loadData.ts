@@ -1,4 +1,4 @@
-import { submitGetGames } from "client/views/all-program-items/allProgramItemsThunks";
+import { submitGetProgramItems } from "client/views/all-program-items/allProgramItemsThunks";
 import {
   submitGetSettings,
   submitGetSignupMessages,
@@ -26,9 +26,9 @@ export const loadData = async (): Promise<void> => {
   // Get user data
   await loadUser();
 
-  // Get games data
+  // Get program items data
   // Must be loaded after user to be able to access state.login
-  await loadGames();
+  await loadProgramItems();
 
   // Get group members
   await loadGroupMembers();
@@ -44,7 +44,7 @@ const loadTestSettings = async (): Promise<void> => {
   await dispatch(submitGetTestSettings());
 };
 
-export const loadGames = async (): Promise<void> => {
+export const loadProgramItems = async (): Promise<void> => {
   const state = store.getState();
   const dispatch: AppDispatch = store.dispatch;
   const { appOpen } = state.admin;
@@ -54,7 +54,7 @@ export const loadGames = async (): Promise<void> => {
     return;
   }
 
-  await dispatch(submitGetGames());
+  await dispatch(submitGetProgramItems());
 };
 
 const recoverSession = async (): Promise<void> => {

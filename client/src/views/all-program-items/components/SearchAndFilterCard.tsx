@@ -85,7 +85,10 @@ export const SearchAndFilterCard = ({
             onChange={(event: ChangeEvent<HTMLSelectElement>) => {
               const tag = event.target.value as Tag | Language;
               setSelectedTag(tag);
-              sessionStorage.setItem(SessionStorageValue.ALL_GAMES_TAG, tag);
+              sessionStorage.setItem(
+                SessionStorageValue.ALL_PROGRAM_ITEMS_TAG,
+                tag,
+              );
             }}
             options={tagOptions}
             selectedValue={selectedTag}
@@ -112,7 +115,7 @@ export const SearchAndFilterCard = ({
                   onChange={() => {
                     setSelectedStartingTime(val);
                     sessionStorage.setItem(
-                      SessionStorageValue.ALL_GAMES_STARTING_TIME,
+                      SessionStorageValue.ALL_PROGRAM_ITEMS_STARTING_TIME,
                       val,
                     );
                   }}
@@ -145,9 +148,9 @@ export const SearchAndFilterCard = ({
         />
       </InputContainer>
       {selectedStartingTime === StartingTimeOption.REVOLVING_DOOR && (
-        <RevolvingDoorGamesInfoContainer>
+        <RevolvingDoorProgramItemsInfoContainer>
           <RevolvingDoorProgramItemsInfo />
-        </RevolvingDoorGamesInfoContainer>
+        </RevolvingDoorProgramItemsInfoContainer>
       )}
     </Container>
   );
@@ -180,6 +183,6 @@ const InputContainer = styled.div`
   flex-direction: column;
 `;
 
-const RevolvingDoorGamesInfoContainer = styled.div`
+const RevolvingDoorProgramItemsInfoContainer = styled.div`
   grid-column: 1/-1;
 `;

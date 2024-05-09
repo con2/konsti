@@ -13,7 +13,7 @@ import dayjs from "dayjs";
 import { startServer, closeServer } from "server/utils/server";
 import {
   autoAssignPlayers,
-  autoUpdateGames,
+  autoUpdateProgramItems,
   setLatestServerStartTime,
 } from "server/utils/cron";
 import {
@@ -69,7 +69,7 @@ describe("Progam update cronjob", () => {
       .toISOString();
     await saveSettings({ programUpdateLastRun: oldTime });
 
-    await autoUpdateGames();
+    await autoUpdateProgramItems();
 
     expect(infoLoggerSpy).toHaveBeenCalledWith(
       "Auto update not running, continue",
@@ -93,7 +93,7 @@ describe("Progam update cronjob", () => {
       .toISOString();
     await saveSettings({ programUpdateLastRun: oldTime });
 
-    await autoUpdateGames();
+    await autoUpdateProgramItems();
 
     expect(errorLoggerSpy).toHaveBeenCalledWith(
       "%s",
@@ -118,7 +118,7 @@ describe("Progam update cronjob", () => {
       .toISOString();
     await saveSettings({ programUpdateLastRun: oldTime });
 
-    await Promise.all([autoUpdateGames(), autoUpdateGames()]);
+    await Promise.all([autoUpdateProgramItems(), autoUpdateProgramItems()]);
 
     expect(infoLoggerSpy).toHaveBeenCalledWith(
       "Auto update not running, continue",
@@ -143,7 +143,7 @@ describe("Progam update cronjob", () => {
     const oldTime = dayjs(timeNow).subtract(1, "seconds").toISOString();
     await saveSettings({ latestServerStartTime: oldTime });
 
-    await autoUpdateGames();
+    await autoUpdateProgramItems();
 
     expect(errorLoggerSpy).toHaveBeenCalledWith(
       "%s",

@@ -27,11 +27,11 @@ export const runAssignmentStrategy = (
   directSignups: readonly DirectSignupsForProgramItem[],
 ): Result<PlayerAssignmentResult, AssignmentError> => {
   logger.info(
-    `Received data for ${players.length} players and ${programItems.length} games`,
+    `Received data for ${players.length} players and ${programItems.length} program items`,
   );
 
   logger.info(
-    `Assigning players for games starting at ${startTime.toString()}`,
+    `Assigning players for program items starting at ${startTime.toString()}`,
   );
 
   logger.info(`Assign strategy: ${assignmentStrategy}`);

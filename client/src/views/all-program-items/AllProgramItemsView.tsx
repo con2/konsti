@@ -3,7 +3,7 @@ import { useStore } from "react-redux";
 import { useDebounce } from "use-debounce";
 import { AllProgramItemsList } from "client/views/all-program-items/components/AllProgramItemsList";
 import { getUpcomingProgramItems } from "client/utils/getUpcomingProgramItems";
-import { loadGames } from "client/utils/loadData";
+import { loadProgramItems } from "client/utils/loadData";
 import { Loading } from "client/components/Loading";
 import {
   ProgramItem,
@@ -27,8 +27,10 @@ import {
 export const MULTIPLE_WHITESPACES_REGEX = /\s\s+/g;
 
 export const AllProgramItemsView = (): ReactElement => {
-  const activeGames = useAppSelector(selectActiveProgramItems);
-  const hiddenGames = useAppSelector((state) => state.admin.hiddenProgramItems);
+  const activeProgramItems = useAppSelector(selectActiveProgramItems);
+  const hiddenProgramItems = useAppSelector(
+    (state) => state.admin.hiddenProgramItems,
+  );
   const testTime = useAppSelector((state) => state.testSettings.testTime);
   const signupStrategy = useAppSelector((state) => state.admin.signupStrategy);
 
@@ -37,9 +39,9 @@ export const AllProgramItemsView = (): ReactElement => {
   );
   const [loading, setLoading] = useState<boolean>(false);
   const [searchTerm, setSearchTerm] = useState<string>(getSavedSearchTerm());
-  const [filteredGames, setFilteredGames] = useState<readonly ProgramItem[]>(
-    [],
-  );
+  const [filteredProgramItems, setFilteredProgramItems] = useState<
+    readonly ProgramItem[]
+  >([]);
   const [selectedStartingTime, setSelectedStartingTime] =
     useState<StartingTimeOption>(getSavedStartingTime());
 
@@ -47,10 +49,10 @@ export const AllProgramItemsView = (): ReactElement => {
     leading: true,
   });
 
-  const activeVisibleGames = useMemo(
+  const activeVisibleProgramItems = useMemo(
     () =>
-      activeGames.filter((programItem) => {
-        const hidden = hiddenGames.find(
+      activeProgramItems.filter((programItem) => {
+        const hidden = hiddenProgramItems.find(
           (hiddenGame) =>
             programItem.programItemId === hiddenGame.programItemId,
         );
@@ -58,7 +60,7 @@ export const AllProgramItemsView = (): ReactElement => {
           return programItem;
         }
       }),
-    [activeGames, hiddenGames],
+    [activeProgramItems, hiddenProgramItems],
   );
 
   const store = useStore();
@@ -66,7 +68,7 @@ export const AllProgramItemsView = (): ReactElement => {
   useEffect(() => {
     setLoading(true);
     const fetchData = async (): Promise<void> => {
-      await loadGames();
+      await loadProgramItems();
       setLoading(false);
     };
     fetchData();
@@ -74,23 +76,23 @@ export const AllProgramItemsView = (): ReactElement => {
 
   useEffect(() => {
     sessionStorage.setItem(
-      SessionStorageValue.ALL_GAMES_SEARCH_TERM,
+      SessionStorageValue.ALL_PROGRAM_ITEMS_SEARCH_TERM,
       debouncedSearchTerm,
     );
 
     if (debouncedSearchTerm.length === 0) {
-      setFilteredGames(activeVisibleGames);
+      setFilteredProgramItems(activeVisibleProgramItems);
       return;
     }
 
-    const gamesFilteredBySearchTerm = activeVisibleGames.filter(
-      (activeGame) => {
+    const programItemsFilteredBySearchTerm = activeVisibleProgramItems.filter(
+      (activeProgramItem) => {
         return (
-          activeGame.title
+          activeProgramItem.title
             .replace(MULTIPLE_WHITESPACES_REGEX, " ")
             .toLocaleLowerCase()
             .includes(debouncedSearchTerm.toLocaleLowerCase()) ||
-          activeGame.gameSystem
+          activeProgramItem.gameSystem
             .replace(MULTIPLE_WHITESPACES_REGEX, " ")
             .toLocaleLowerCase()
             .includes(debouncedSearchTerm.toLocaleLowerCase())
@@ -98,20 +100,20 @@ export const AllProgramItemsView = (): ReactElement => {
       },
     );
 
-    setFilteredGames(gamesFilteredBySearchTerm);
-  }, [debouncedSearchTerm, activeVisibleGames]);
+    setFilteredProgramItems(programItemsFilteredBySearchTerm);
+  }, [debouncedSearchTerm, activeVisibleProgramItems]);
 
-  const memoizedGames = useMemo(() => {
+  const memoizedProgramItems = useMemo(() => {
     return (
       <AllProgramItemsList
-        programItems={getVisibleGames(
-          filteredGames,
+        programItems={getVisibleProgramItems(
+          filteredProgramItems,
           selectedStartingTime,
           selectedTag,
         )}
       />
     );
-  }, [filteredGames, selectedStartingTime, selectedTag]);
+  }, [filteredProgramItems, selectedStartingTime, selectedTag]);
 
   return (
     <>
@@ -123,12 +125,12 @@ export const AllProgramItemsView = (): ReactElement => {
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
       />
-      {loading ? <Loading /> : memoizedGames}
+      {loading ? <Loading /> : memoizedProgramItems}
     </>
   );
 };
 
-const getVisibleGames = (
+const getVisibleProgramItems = (
   programItems: readonly ProgramItem[],
   selectedView: string,
   selectedTag: string,

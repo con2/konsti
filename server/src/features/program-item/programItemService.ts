@@ -10,7 +10,7 @@ import {
   findProgramItems,
   saveProgramItems,
 } from "server/features/program-item/programItemRepository";
-import { enrichGames } from "./programItemUtils";
+import { enrichProgramItems } from "./programItemUtils";
 import {
   Result,
   isErrorResult,
@@ -22,25 +22,26 @@ import { ProgramItem } from "shared/types/models/programItem";
 import { getProgramItemsFromKompassi } from "server/kompassi/getProgramItemsFromKompassi";
 import { kompassiProgramItemMapper } from "server/kompassi/kompassiProgramItemMapper";
 
-export const getGamesForConvention = async (): Promise<
+export const getProgramItemsForConvention = async (): Promise<
   Result<readonly ProgramItem[], KompassiError>
 > => {
   const conventionName = config.shared().conventionName;
-  const kompassiGamesResult = await getProgramItemsFromKompassi(conventionName);
-  if (isErrorResult(kompassiGamesResult)) {
-    return kompassiGamesResult;
+  const kompassiProgramItemsResult =
+    await getProgramItemsFromKompassi(conventionName);
+  if (isErrorResult(kompassiProgramItemsResult)) {
+    return kompassiProgramItemsResult;
   }
 
-  const kompassiGames = unwrapResult(kompassiGamesResult);
+  const kompassiProgramItems = unwrapResult(kompassiProgramItemsResult);
   return makeSuccessResult(
-    kompassiProgramItemMapper(conventionName, kompassiGames),
+    kompassiProgramItemMapper(conventionName, kompassiProgramItems),
   );
 };
 
-export const updateGames = async (): Promise<
+export const updateProgramItems = async (): Promise<
   PostUpdateProgramItemsResponse | PostUpdateProgramItemsError
 > => {
-  const programItemsResult = await getGamesForConvention();
+  const programItemsResult = await getProgramItemsForConvention();
   if (isErrorResult(programItemsResult)) {
     return {
       message: "Loading program items from Kompassi failed",
@@ -50,8 +51,8 @@ export const updateGames = async (): Promise<
   }
 
   const programItems = unwrapResult(programItemsResult);
-  const saveGamesResult = await saveProgramItems(programItems);
-  if (isErrorResult(saveGamesResult)) {
+  const saveProgramItemsResult = await saveProgramItems(programItems);
+  if (isErrorResult(saveProgramItemsResult)) {
     return {
       message: "Program items db update failed: Saving program items failed",
       status: "error",
@@ -59,36 +60,37 @@ export const updateGames = async (): Promise<
     };
   }
 
-  if (config.server().updateGamePopularityEnabled) {
+  if (config.server().updateProgramItemPopularityEnabled) {
     const updateGamePopularityResult = await updateProgramItemPopularity();
     if (isErrorResult(updateGamePopularityResult)) {
       return {
-        message: "Game popularity update failed",
+        message: "Program item popularity update failed",
         status: "error",
         errorId: "unknown",
       };
     }
   }
 
-  const updatedGamesResult = await findProgramItems();
-  if (isErrorResult(updatedGamesResult)) {
+  const updatedProgramItemsResult = await findProgramItems();
+  if (isErrorResult(updatedProgramItemsResult)) {
     return {
-      message: "Games db update failed: Error loading updated games",
+      message:
+        "Program items db update failed: Error loading updated program items",
       status: "error",
       errorId: "unknown",
     };
   }
 
-  const updatedGames = unwrapResult(updatedGamesResult);
+  const updatedProgramItems = unwrapResult(updatedProgramItemsResult);
 
   return {
-    message: "Games db updated",
+    message: "Program items db updated",
     status: "success",
-    programItems: updatedGames,
+    programItems: updatedProgramItems,
   };
 };
 
-export const fetchGames = async (): Promise<
+export const fetchProgramItems = async (): Promise<
   GetProgramItemsResponse | GetProgramItemsError
 > => {
   const programItemsResult = await findProgramItems();
@@ -102,8 +104,8 @@ export const fetchGames = async (): Promise<
 
   const programItems = unwrapResult(programItemsResult);
 
-  const gamesWithPlayersResult = await enrichGames(programItems);
-  if (isErrorResult(gamesWithPlayersResult)) {
+  const programItemsWithPlayersResult = await enrichProgramItems(programItems);
+  if (isErrorResult(programItemsWithPlayersResult)) {
     return {
       message: `Downloading program items failed`,
       status: "error",
@@ -111,11 +113,11 @@ export const fetchGames = async (): Promise<
     };
   }
 
-  const gamesWithPlayers = unwrapResult(gamesWithPlayersResult);
+  const programItemsWithPlayers = unwrapResult(programItemsWithPlayersResult);
 
   return {
-    message: "Games downloaded",
+    message: "Program items downloaded",
     status: "success",
-    programItems: gamesWithPlayers,
+    programItems: programItemsWithPlayers,
   };
 };

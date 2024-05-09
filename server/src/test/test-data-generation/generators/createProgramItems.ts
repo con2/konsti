@@ -71,10 +71,10 @@ const getProgramType = (
   return programType;
 };
 
-export const createGames = async (
-  gameCount: number,
+export const createProgramItems = async (
+  programItemCount: number,
 ): Promise<Result<void, MongoDbError>> => {
-  const kompassiGames: KompassiProgramItemRopecon[] = [];
+  const kompassiProgramItems: KompassiProgramItemRopecon[] = [];
 
   const programTypes = [
     KompassiProgramTypeRopecon.TABLETOP_RPG,
@@ -85,11 +85,11 @@ export const createGames = async (
 
   programTypes.map((programType) => {
     logger.info(
-      `Generate data for ${gameCount} programs of type ${programType} for ${startTimes.length} start times`,
+      `Generate data for ${programItemCount} programs of type ${programType} for ${startTimes.length} start times`,
     );
 
     startTimes.forEach((startTime) => {
-      for (let i = 0; i < gameCount; i += 1) {
+      for (let i = 0; i < programItemCount; i += 1) {
         const length = 180;
 
         const kompassiGameData: KompassiProgramItemRopecon = {
@@ -159,12 +159,12 @@ export const createGames = async (
         };
 
         logger.info(`Stored game ${kompassiGameData.title}`);
-        kompassiGames.push(kompassiGameData);
+        kompassiProgramItems.push(kompassiGameData);
       }
     });
   });
 
   return await saveProgramItems(
-    kompassiProgramItemMapperRopecon(kompassiGames),
+    kompassiProgramItemMapperRopecon(kompassiProgramItems),
   );
 };

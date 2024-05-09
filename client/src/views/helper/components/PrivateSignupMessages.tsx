@@ -13,9 +13,9 @@ export const PrivateSignupMessages = (): ReactElement => {
   const { t } = useTranslation();
 
   const [searchTerm, setSearchTerm] = useState<string>("");
-  const [filteredGames, setFilteredGames] = useState<readonly ProgramItem[]>(
-    [],
-  );
+  const [filteredProgramItems, setFilteredProgramItems] = useState<
+    readonly ProgramItem[]
+  >([]);
 
   const programItems = useAppSelector(
     (state) => state.allProgramItems.programItems,
@@ -34,7 +34,7 @@ export const PrivateSignupMessages = (): ReactElement => {
 
   const signupQuestionsWithProgramItems = privateSignupQuestions.flatMap(
     (privateSignupQuestion) => {
-      const matchingProgramItem = filteredGames.find(
+      const matchingProgramItem = filteredProgramItems.find(
         (programItem) =>
           programItem.programItemId === privateSignupQuestion.programItemId,
       );
@@ -58,27 +58,29 @@ export const PrivateSignupMessages = (): ReactElement => {
 
   useEffect(() => {
     if (searchTerm.length === 0) {
-      setFilteredGames(programItems);
+      setFilteredProgramItems(programItems);
       return;
     }
 
-    const gamesFilteredBySearchTerm = programItems.filter((programItem) => {
-      return (
-        programItem.title
-          .replace(MULTIPLE_WHITESPACES_REGEX, " ")
-          .toLocaleLowerCase()
-          .includes(searchTerm.toLocaleLowerCase()) ||
-        privateSignupMessages.find(
-          (signupMessage) =>
-            signupMessage.username
-              .toLocaleLowerCase()
-              .includes(searchTerm.toLocaleLowerCase()) &&
-            signupMessage.programItemId === programItem.programItemId,
-        )
-      );
-    });
+    const programItemsFilteredBySearchTerm = programItems.filter(
+      (programItem) => {
+        return (
+          programItem.title
+            .replace(MULTIPLE_WHITESPACES_REGEX, " ")
+            .toLocaleLowerCase()
+            .includes(searchTerm.toLocaleLowerCase()) ||
+          privateSignupMessages.find(
+            (signupMessage) =>
+              signupMessage.username
+                .toLocaleLowerCase()
+                .includes(searchTerm.toLocaleLowerCase()) &&
+              signupMessage.programItemId === programItem.programItemId,
+          )
+        );
+      },
+    );
 
-    setFilteredGames(gamesFilteredBySearchTerm);
+    setFilteredProgramItems(programItemsFilteredBySearchTerm);
   }, [searchTerm, programItems]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
@@ -112,7 +114,7 @@ export const PrivateSignupMessages = (): ReactElement => {
                 return (
                   <SingleGameAnswers key={signupQuestionWithGame.programItemId}>
                     <Link
-                      to={`/games/${signupQuestionWithGame.programItem.programItemId}`}
+                      to={`/program/${signupQuestionWithGame.programItem.programItemId}`}
                     >
                       {signupQuestionWithGame.programItem.title}
                     </Link>{" "}

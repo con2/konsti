@@ -24,17 +24,19 @@ import { getSentryTest } from "client/views/admin/adminService";
 import { postPlayerAssignment } from "client/services/assignmentServices";
 
 export const submitUpdateHidden = (
-  hiddenGames: readonly ProgramItem[],
+  hiddenProgramItems: readonly ProgramItem[],
 ): AppThunk => {
   return async (dispatch): Promise<void> => {
-    const updateHiddenResponse = await postHidden(hiddenGames);
+    const updateHiddenResponse = await postHidden(hiddenProgramItems);
 
     if (updateHiddenResponse.status === "error") {
       // TODO
     }
 
     if (updateHiddenResponse.status === "success") {
-      dispatch(submitUpdateHiddenAsync(updateHiddenResponse.hiddenGames));
+      dispatch(
+        submitUpdateHiddenAsync(updateHiddenResponse.hiddenProgramItems),
+      );
     }
   };
 };
@@ -50,7 +52,7 @@ export const submitGetSettings = (): AppThunk => {
     if (settingsResponse.status === "success") {
       dispatch(
         submitGetSettingsAsync({
-          hiddenGames: settingsResponse.hiddenGames,
+          hiddenProgramItems: settingsResponse.hiddenProgramItems,
           appOpen: settingsResponse.appOpen,
           signupQuestions: settingsResponse.signupQuestions,
           signupStrategy: settingsResponse.signupStrategy,

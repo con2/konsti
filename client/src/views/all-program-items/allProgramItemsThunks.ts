@@ -5,30 +5,32 @@ import {
 import { AppThunk } from "client/types/reduxTypes";
 import { submitGetProgramItemsAsync } from "client/views/all-program-items/allProgramItemsSlice";
 
-export const submitGetGames = (): AppThunk => {
+export const submitGetProgramItems = (): AppThunk => {
   return async (dispatch): Promise<void> => {
-    const getGamesResponse = await getProgramItems();
+    const getProgramItemsResponse = await getProgramItems();
 
-    if (getGamesResponse.status === "error") {
+    if (getProgramItemsResponse.status === "error") {
       // TODO
     }
 
-    if (getGamesResponse.status === "success") {
-      dispatch(submitGetProgramItemsAsync(getGamesResponse.programItems));
+    if (getProgramItemsResponse.status === "success") {
+      dispatch(
+        submitGetProgramItemsAsync(getProgramItemsResponse.programItems),
+      );
     }
   };
 };
 
-export const submitUpdateGames = (): AppThunk => {
+export const submitUpdateProgramItems = (): AppThunk => {
   return async (dispatch): Promise<void> => {
-    const gamesUpdateResponse = await postUpdateProgramItems();
+    const programItemsUpdateResponse = await postUpdateProgramItems();
 
-    if (gamesUpdateResponse.status === "error") {
+    if (programItemsUpdateResponse.status === "error") {
       // TODO
     }
 
-    if (gamesUpdateResponse.status === "success") {
-      dispatch(submitGetGames());
+    if (programItemsUpdateResponse.status === "success") {
+      dispatch(submitGetProgramItems());
     }
   };
 };
