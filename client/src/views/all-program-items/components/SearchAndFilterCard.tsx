@@ -64,7 +64,7 @@ export const SearchAndFilterCard = ({
     })),
     tagFilters.map((filter) => ({
       value: filter,
-      title: t(`gameTags.${filter}`),
+      title: t(`tags.${filter}`),
     })),
   ].flat();
 

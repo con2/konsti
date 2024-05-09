@@ -121,7 +121,7 @@ export const DirectSignupForm = ({
         <>
           {directSignupForTimeslot && (
             <DirectSignupContainer>
-              {t("signup.alreadySignedToGame", {
+              {t("signup.alreadySignedToProgramItem", {
                 PROGRAM_TYPE: t(
                   `programTypeIllative.${directSignupForTimeslot.programItemDetails.programType}`,
                 ),
@@ -129,7 +129,7 @@ export const DirectSignupForm = ({
               <DirectSignupProgramItemTitle>
                 {directSignupForTimeslot.programItemDetails.title}
               </DirectSignupProgramItemTitle>
-              . {t("signup.cannotSignupMoreThanOneGame")}
+              . {t("signup.cannotSignupMoreThanOneProgramItem")}
             </DirectSignupContainer>
           )}
 

@@ -148,7 +148,7 @@ export const AdminView = (): ReactElement => {
 
       {/* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition */}
       {(!programItems || programItems.length === 0) && (
-        <p>{t("noGamesInDatabase")}</p>
+        <p>{t("noProgramItemsInDatabase")}</p>
       )}
 
       <ButtonGroup>

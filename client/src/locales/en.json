@@ -42,7 +42,6 @@
   "show": "Show",
   "hide": "Hide",
   "sortBy": "Sort by",
-  "gameTitle": "Game Title",
   "find": "Find",
   "findTitleOrUsername": "{{PROGRAM_TYPE}} title or username",
   "searchWithTitle": "{{PROGRAM_TYPE}} title",
@@ -70,7 +69,7 @@
     "profile": "Profile",
     "help": "Help"
   },
-  "gameInfo": {
+  "programItemInfo": {
     "gameStyle": "Game style",
     "runTime": "Time",
     "description": "Description",
@@ -122,12 +121,12 @@
     "finnishOrEnglish": "In Finnish or in English",
     "languageFree": "Language free"
   },
-  "gameTags": {
+  "tags": {
     "inEnglish": "In English",
     "childrenFriendly": "Children friendly",
     "ageRestricted": "For 18+ only",
     "beginnerFriendly": "Beginner friendly",
-    "guestOfHonor": "Guest of Honor game",
+    "guestOfHonor": "Guest of Honor program item",
     "family": "Suitable for families",
     "themeElements": "Theme: Elements",
     "suitableUnder7": "Suitable for ages under 7",
@@ -171,8 +170,8 @@
   "showPrivacyPolicy": "Show privacy policy",
   "hidePrivacyPolicy": "Hide privacy policy",
   "registrationSerialHelp": "You can get a registration code from the Larp & RPG Desk, the Gaming Desk or the Info.",
-  "noLotterySignups": "No selected games. You can sign up to program in the All Program view.",
-  "noFavoritedProgramItems": "No favorites. You can add games here in the All Program view.",
+  "noLotterySignups": "No selected program items. You can sign up in the All Program view.",
+  "noFavoritedProgramItems": "No favorites. You can add program items here in the All Program view.",
   "noDirectSignups": "No sign-ups. You can sign up to program in the All Program view.",
   "noHiddenProgramItems": "No hidden program items",
   "noSignupQuestions": "No sign-up questions",
@@ -193,13 +192,12 @@
   "signupUnsavedChanges": "Unsaved changes",
   "closingMessage": "Konsti is closed and will open closer to the next event",
   "details": "details",
-  "gameLimitWarning": "Only three selected games allowed",
-  "noLotterySignupResult": "Unfortunately, you didn't get a spot in any game in the lottery.",
+  "noLotterySignupResult": "Unfortunately, you didn't get a spot in any program item in the lottery.",
   "invalidProgramItemId": "Program item not found, invalid ID",
   "feedbackTitle": "Feedback",
   "feedbackInstruction": "Did you enjoy the {{PROGRAM_TYPE}}? Send feedback to the organizer! They will receive it after the event.",
   "noProgramItemsAvailable": "No {{PROGRAM_TYPE}} found, please check your search conditions.",
-  "noGamesInDatabase": "No games in database",
+  "noProgramItemsInDatabase": "No program items in database",
   "upcoming": "Upcoming",
   "all": "All",
   "allProgramItems": "All {{PROGRAM_TYPE}}",
@@ -236,8 +234,8 @@
     "youAreInGroup": "You are in a group",
     "groupMembers": "Group members",
     "groupCreator": "group creator",
-    "groupMemberInfo": "The group creator will sign the group up to the lottery. You can see the selected games on the \"My Program\" page.",
-    "groupCreatorInfo": "You can sign up your group to the lottery. Please make sure that the group is not too big for the selected games. The group creator cannot leave the group, but can close it. This will remove all members from the group.",
+    "groupMemberInfo": "The group creator will sign the group up to the lottery. You can see the selected program items on the \"My Program\" page.",
+    "groupCreatorInfo": "You can sign up your group to the lottery. Please make sure that the group is not too big for the selected program items. The group creator cannot leave the group, but can close it. This will remove all members from the group.",
     "groupCodeInfo": "Others can join this group with the code ",
     "joiningGroupWillCancelLotterySignups": "Joining a group will cancel all your previous lottery signups.",
     "groupLotterySignupGuide": "You can enter a lottery sign-up as a group.",
@@ -267,21 +265,21 @@
     "programItemDetails": "Starting time {{START_TIME}} at {{LOCATION}}"
   },
   "eventLogActions": {
-    "newAssignment": "You were assigned to the game "
+    "newAssignment": "You were assigned to a program item "
   },
   "notificationBar": {
     "showAll": "Show all notifications"
   },
   "signup": {
-    "alreadyLotterySigned": "This game is priority {{CURRENT_PRIORITY}} on your lottery signups",
+    "alreadyLotterySigned": "This program item is priority {{CURRENT_PRIORITY}} on your lottery signups",
     "directSignup": "Sign up",
     "lotterySignup": "Lottery sign-up",
-    "cannotSignupMoreGames": "You can select up to three lottery games for the time slot.",
-    "gamePriority": "Game priority for me is",
+    "cannotLotterySignupMoreProgramItems": "You can select up to three lottery signups for the time slot.",
+    "programItemPriority": "Program item priority for me is",
     "confirm": "Confirm",
     "cancel": "Cancel",
-    "alreadySignedToGame": "You already signed up to the {{PROGRAM_TYPE}}",
-    "cannotSignupMoreThanOneGame": "You cannot sign up to another program item starting at the same time.",
+    "alreadySignedToProgramItem": "You already signed up to the {{PROGRAM_TYPE}}",
+    "cannotSignupMoreThanOneProgramItem": "You cannot sign up to another program item starting at the same time.",
     "signupCount": "{{PLAYERS}}/{{MAX_ATTENDANCE}} sign-ups",
     "attendeesNeeded": "{{COUNT}} more {{ATTENDEE_TYPE}} needed",
     "programItemFull": "This {{PROGRAM_TYPE}} is full.",
@@ -294,8 +292,8 @@
     "loginToSignup": "Log in to sign up",
     "lotterySignupOpens": "Lottery sign-up opens",
     "signupAlwaysOpen": "Sign-up always open",
-    "inGroupWarning": "If you sign up to a game, you will be removed from your current group.",
-    "groupCreatorWarning": "If you sign up to a game, the group you created will be deleted.",
+    "inGroupWarning": "If you sign up to a program item, you will be removed from your current group.",
+    "groupCreatorWarning": "If you sign up to a program item, the group you created will be deleted.",
     "currentSignup": "You have signed up to this {{PROGRAM_TYPE}}.",
     "entryFee": "Material fee {{ENTRY_FEE}}",
     "entryFeeInfo": "I understand that the workshop requires a material fee of {{ENTRY_FEE}}.",
@@ -409,8 +407,7 @@
     "allSignupResults": "Sign-up Results",
     "confirm": "Confirm",
     "noSignups": "No signed up {{ATTENDEE_TYPE}}",
-    "noResults": "No sign-up results",
-    "signupResultsFor": "Sign-up results for games starting at"
+    "noResults": "No sign-up results"
   },
   "firstLogin": {
     "serial": "Save this code for recovering your password:",
@@ -466,7 +463,7 @@
     "profileTab": "Profile",
     "groupTab": "Group"
   },
-  "gamePopularity": {
+  "programItemPopularity": {
     "low": "More players needed",
     "medium": "Enough players to run",
     "high": "More interested players than seats"

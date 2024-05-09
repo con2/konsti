@@ -101,7 +101,7 @@ export const LotterySignupForm = ({
 
   return (
     <form>
-      {t("signup.gamePriority")}{" "}
+      {t("signup.programItemPriority")}{" "}
       <StyledDropdown
         onChange={onChange}
         options={options}

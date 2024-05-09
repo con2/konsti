@@ -6,9 +6,9 @@ import styled from "styled-components";
 import { theme } from "client/theme";
 
 enum PopularityLevel {
-  LOW = "gamePopularity.low",
-  MEDIUM = "gamePopularity.medium",
-  HIGH = "gamePopularity.high",
+  LOW = "programItemPopularity.low",
+  MEDIUM = "programItemPopularity.medium",
+  HIGH = "programItemPopularity.high",
 }
 
 interface Props {

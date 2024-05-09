@@ -128,7 +128,7 @@ export const AlgorithmSignupForm = ({
         canSignToProgramItems && (
           <>
             {lotterySignupsForTimeslot.length >= 3 && (
-              <p>{t("signup.cannotSignupMoreGames")}</p>
+              <p>{t("signup.cannotLotterySignupMoreProgramItems")}</p>
             )}
 
             {!lotterySignupOpen && (

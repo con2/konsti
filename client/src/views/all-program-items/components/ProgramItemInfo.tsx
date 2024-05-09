@@ -32,7 +32,7 @@ export const ProgramItemInfo = ({ programItem }: Props): ReactElement => {
     <DetailsContainer>
       {programItem.revolvingDoor && (
         <InfoText>
-          {t("gameInfo.revolvingDoor", {
+          {t("programItemInfo.revolvingDoor", {
             PROGRAM_TYPE: t(`programTypeSingular.${programItem.programType}`),
             PROGRAM_TYPE2: t(`programTypeInessive.${programItem.programType}`),
           })}
@@ -41,35 +41,35 @@ export const ProgramItemInfo = ({ programItem }: Props): ReactElement => {
 
       {!!programItem.mins && (
         <TwoColumnRow>
-          <DetailTitle>{t("gameInfo.runTime")}</DetailTitle>
+          <DetailTitle>{t("programItemInfo.runTime")}</DetailTitle>
           {formatTime()}
         </TwoColumnRow>
       )}
 
       {programItem.location && (
         <TwoColumnRow>
-          <DetailTitle>{t("gameInfo.location")}</DetailTitle>
+          <DetailTitle>{t("programItemInfo.location")}</DetailTitle>
           {programItem.location}
         </TwoColumnRow>
       )}
 
       {programItem.genres.length > 0 && (
         <TwoColumnRow>
-          <DetailTitle>{t("gameInfo.genres")}</DetailTitle>
+          <DetailTitle>{t("programItemInfo.genres")}</DetailTitle>
           {programItem.genres.map((genre) => t(`genre.${genre}`)).join(", ")}
         </TwoColumnRow>
       )}
 
       {programItem.tags.length > 0 && (
         <TwoColumnRow>
-          <DetailTitle>{t("gameInfo.tags")}</DetailTitle>
-          {programItem.tags.map((tag) => t(`gameTags.${tag}`)).join(", ")}
+          <DetailTitle>{t("programItemInfo.tags")}</DetailTitle>
+          {programItem.tags.map((tag) => t(`tags.${tag}`)).join(", ")}
         </TwoColumnRow>
       )}
 
       {programItem.people && (
         <TwoColumnRow>
-          <DetailTitle>{t("gameInfo.organiser")}</DetailTitle>
+          <DetailTitle>{t("programItemInfo.organiser")}</DetailTitle>
           {programItem.people}
         </TwoColumnRow>
       )}
@@ -78,14 +78,14 @@ export const ProgramItemInfo = ({ programItem }: Props): ReactElement => {
 
       {programItem.contentWarnings && programItem.contentWarnings !== "-" && (
         <ResponsiveColumnRow>
-          <DetailTitle> {t("gameInfo.contentWarnings")}</DetailTitle>
+          <DetailTitle> {t("programItemInfo.contentWarnings")}</DetailTitle>
           {programItem.contentWarnings}
         </ResponsiveColumnRow>
       )}
 
       {programItem.accessibilityValues.length > 0 && (
         <ResponsiveColumnRow>
-          <DetailTitle>{t("gameInfo.accessibility")}</DetailTitle>
+          <DetailTitle>{t("programItemInfo.accessibility")}</DetailTitle>
           <AccessibilityValues>
             {programItem.accessibilityValues.map((a) => (
               <span key={a}>{t(`accessibility.${a}`)}</span>
@@ -97,7 +97,7 @@ export const ProgramItemInfo = ({ programItem }: Props): ReactElement => {
       {programItem.otherAccessibilityInformation && (
         <ResponsiveColumnRow>
           <DetailTitle>
-            {t("gameInfo.otherAccessibilityInformation")}
+            {t("programItemInfo.otherAccessibilityInformation")}
           </DetailTitle>
           {programItem.otherAccessibilityInformation}
         </ResponsiveColumnRow>
@@ -105,21 +105,21 @@ export const ProgramItemInfo = ({ programItem }: Props): ReactElement => {
 
       {programItem.gameSystem && (
         <ResponsiveColumnRow>
-          <DetailTitle>{t("gameInfo.otherAuthor")}</DetailTitle>
+          <DetailTitle>{t("programItemInfo.otherAuthor")}</DetailTitle>
           {programItem.gameSystem}
         </ResponsiveColumnRow>
       )}
 
       {programItem.otherAuthor && (
         <ResponsiveColumnRow>
-          <DetailTitle>{t("gameInfo.otherAuthor")}</DetailTitle>
+          <DetailTitle>{t("programItemInfo.otherAuthor")}</DetailTitle>
           {programItem.otherAuthor}
         </ResponsiveColumnRow>
       )}
 
       {programItem.styles.length > 0 && (
         <ResponsiveColumnRow>
-          <DetailTitle>{t("gameInfo.gameStyle")}</DetailTitle>
+          <DetailTitle>{t("programItemInfo.gameStyle")}</DetailTitle>
           {programItem.styles.map((s) => t(`gameStyle.${s}`)).join(", ")}
         </ResponsiveColumnRow>
       )}

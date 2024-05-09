@@ -140,7 +140,7 @@ export const AdminActionCard = ({ programItem }: Props): ReactElement => {
   return (
     <Container>
       <HeaderContainer>
-        <h4>{t("gameInfo.adminActions")}</h4>
+        <h4>{t("programItemInfo.adminActions")}</h4>
         {submitting && (
           <img alt={t("loading")} src={loaderImage} height="24" width="24" />
         )}
