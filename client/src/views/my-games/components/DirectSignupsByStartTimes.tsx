@@ -12,7 +12,7 @@ interface Props {
   missedSignups: readonly string[];
 }
 
-export const ResultsByStartTimes = ({
+export const DirectSignupsByStartTimes = ({
   directSignups,
   startTimes,
   missedSignups,

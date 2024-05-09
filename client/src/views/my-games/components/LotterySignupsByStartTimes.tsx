@@ -7,12 +7,12 @@ import { Signup } from "shared/types/models/user";
 import { PopularityInfo } from "client/components/PopularityInfo";
 
 interface Props {
-  directSignups: Signup[];
+  lotterySignups: Signup[];
   startTimes: readonly string[];
 }
 
-export const SignupsByStartTimes = ({
-  directSignups,
+export const LotterySignupsByStartTimes = ({
+  lotterySignups,
   startTimes,
 }: Props): ReactElement => {
   return (
@@ -23,7 +23,7 @@ export const SignupsByStartTimes = ({
             <StyledTime>{capitalize(getWeekdayAndTime(startTime))}</StyledTime>
 
             <ul>
-              {directSignups.map((signup) => {
+              {lotterySignups.map((signup) => {
                 if (signup.time === startTime) {
                   return (
                     <GameDetailsContainer key={signup.gameDetails.gameId}>
