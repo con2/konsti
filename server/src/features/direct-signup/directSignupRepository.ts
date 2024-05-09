@@ -31,7 +31,7 @@ export const removeDirectSignups = async (): Promise<
     await SignupModel.deleteMany({});
     return makeSuccessResult(undefined);
   } catch (error) {
-    logger.error("MongoDB: Error removing signups: %s", error);
+    logger.error("MongoDB: Error removing direct signups: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
@@ -71,7 +71,7 @@ export const findDirectSignups = async (): Promise<
       });
     return makeSuccessResult(resultsWithFormattedTime);
   } catch (error) {
-    logger.error("MongoDB: Error finding signups: %s", error);
+    logger.error("MongoDB: Error finding direct signups: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
@@ -225,27 +225,27 @@ export const saveDirectSignups = async (
 
   const signupsByProgramItems = groupBy(
     signupsRequests,
-    (signup) => signup.directSignupGameId,
+    (signupsRequest) => signupsRequest.directSignupGameId,
   );
 
   const droppedSignups: PostDirectSignupRequest[] = [];
 
   const bulkOps = Object.entries(signupsByProgramItems).flatMap(
-    ([gameId, signups]) => {
+    ([gameId, directSignups]) => {
       const game = games.find((g) => g.gameId === gameId);
       if (!game) {
         return [];
       }
 
-      let finalSignups: PostDirectSignupRequest[] = signups;
-      if (signups.length > game.maxAttendance) {
+      let finalSignups: PostDirectSignupRequest[] = directSignups;
+      if (directSignups.length > game.maxAttendance) {
         logger.error(
           "%s",
           new Error(
-            `Too many signups passed to saveSignups for program item ${game.gameId} - maxAttendance: ${game.maxAttendance}, signups: ${signups.length}`,
+            `Too many signups passed to saveSignups for program item ${game.gameId} - maxAttendance: ${game.maxAttendance}, direct signups: ${directSignups.length}`,
           ),
         );
-        const shuffledSignups = shuffle(signups);
+        const shuffledSignups = shuffle(directSignups);
         finalSignups = shuffledSignups.slice(0, game.maxAttendance);
         droppedSignups.push(
           ...shuffledSignups.slice(game.maxAttendance, shuffledSignups.length),
@@ -281,7 +281,7 @@ export const saveDirectSignups = async (
       droppedSignups,
     });
   } catch (error) {
-    logger.error(`MongoDB: Error saving signups: %s`, error);
+    logger.error(`MongoDB: Error saving direct signups: %s`, error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };

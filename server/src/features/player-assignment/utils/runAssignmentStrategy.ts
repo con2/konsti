@@ -24,7 +24,7 @@ export const runAssignmentStrategy = (
   players: readonly User[],
   games: readonly Game[],
   startTime: string,
-  signups: readonly DirectSignupsForProgramItem[],
+  directSignups: readonly DirectSignupsForProgramItem[],
 ): Result<PlayerAssignmentResult, AssignmentError> => {
   logger.info(
     `Received data for ${players.length} players and ${games.length} games`,
@@ -37,16 +37,16 @@ export const runAssignmentStrategy = (
   logger.info(`Assign strategy: ${assignmentStrategy}`);
 
   if (assignmentStrategy === AssignmentStrategy.PADG) {
-    return runPadgStrategy(players, games, startTime, signups);
+    return runPadgStrategy(players, games, startTime, directSignups);
   }
 
   if (assignmentStrategy === AssignmentStrategy.RANDOM) {
-    return runRandomStrategy(players, games, startTime, signups);
+    return runRandomStrategy(players, games, startTime, directSignups);
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (assignmentStrategy === AssignmentStrategy.RANDOM_PADG) {
-    return runRandomPadgStrategy(players, games, startTime, signups);
+    return runRandomPadgStrategy(players, games, startTime, directSignups);
   }
 
   return exhaustiveSwitchGuard(assignmentStrategy);
@@ -56,13 +56,13 @@ const runPadgStrategy = (
   players: readonly User[],
   games: readonly Game[],
   startTime: string,
-  signups: readonly DirectSignupsForProgramItem[],
+  directSignups: readonly DirectSignupsForProgramItem[],
 ): Result<PlayerAssignmentResult, AssignmentError> => {
   const padgResultResult = padgAssignPlayers(
     players,
     games,
     startTime,
-    signups,
+    directSignups,
   );
   if (isErrorResult(padgResultResult)) {
     return padgResultResult;
@@ -75,13 +75,13 @@ const runRandomStrategy = (
   players: readonly User[],
   games: readonly Game[],
   startTime: string,
-  signups: readonly DirectSignupsForProgramItem[],
+  directSignups: readonly DirectSignupsForProgramItem[],
 ): Result<PlayerAssignmentResult, AssignmentError> => {
   const randomResultResult = randomAssignPlayers(
     players,
     games,
     startTime,
-    signups,
+    directSignups,
   );
   if (isErrorResult(randomResultResult)) {
     return randomResultResult;
@@ -94,13 +94,13 @@ const runRandomPadgStrategy = (
   players: readonly User[],
   games: readonly Game[],
   startTime: string,
-  signups: readonly DirectSignupsForProgramItem[],
+  directSignups: readonly DirectSignupsForProgramItem[],
 ): Result<PlayerAssignmentResult, AssignmentError> => {
   const randomResultResult = randomAssignPlayers(
     players,
     games,
     startTime,
-    signups,
+    directSignups,
   );
   if (isErrorResult(randomResultResult)) {
     logger.error(
@@ -121,7 +121,7 @@ const runRandomPadgStrategy = (
     players,
     games,
     startTime,
-    signups,
+    directSignups,
   );
   if (isErrorResult(padgResultResult)) {
     logger.error(

@@ -5,13 +5,13 @@ import { DirectSignupsForProgramItem } from "server/features/direct-signup/direc
 
 // TODO: Merge this with getRandomAssignEvents
 export const getEvents = (
-  selectedGames: readonly Game[],
-  signups: readonly DirectSignupsForProgramItem[],
+  lotterySignupGames: readonly Game[],
+  directSignups: readonly DirectSignupsForProgramItem[],
 ): Event[] => {
-  return selectedGames.map((selectedGame) => {
+  return lotterySignupGames.map((selectedGame) => {
     // Program item can have existing signups if program item's start time has changed
     // Consider existing signups when determining program item attendee limits
-    const gameSignup = signups.find(
+    const gameSignup = directSignups.find(
       (signup) => signup.game.gameId === selectedGame.gameId,
     );
 

@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { sortBy } from "lodash-es";
 import styled from "styled-components";
 import { getStartTimes } from "client/utils/getStartTimes";
-import { SignupsByStartTimes } from "./SignupsByStartTimes";
+import { LotterySignupsByStartTimes } from "./LotterySignupsByStartTimes";
 import { Signup } from "shared/types/models/user";
 import { RaisedCard } from "client/components/RaisedCard";
 import { useAppSelector } from "client/utils/hooks";
@@ -23,7 +23,7 @@ export const MyLotterySignupsList = ({
 
   const groupMembers = useAppSelector((state) => state.group.groupMembers);
 
-  const sortedSignups = sortBy(lotterySignups, [
+  const sortedLotterySignups = sortBy(lotterySignups, [
     (lotterySignup) => lotterySignup.gameDetails.startTime,
     (lotterySignup) => lotterySignup.priority,
   ]);
@@ -47,7 +47,10 @@ export const MyLotterySignupsList = ({
         <SecondaryText>{t("noLotterySignups")}</SecondaryText>
       )}
       {lotterySignups.length !== 0 && (
-        <SignupsByStartTimes signups={sortedSignups} startTimes={startTimes} />
+        <LotterySignupsByStartTimes
+          lotterySignups={sortedLotterySignups}
+          startTimes={startTimes}
+        />
       )}
     </RaisedCard>
   );

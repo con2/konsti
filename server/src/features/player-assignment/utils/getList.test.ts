@@ -5,7 +5,7 @@ import { User, UserGroup } from "shared/types/models/user";
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 import { ProgramType } from "shared/types/models/game";
 
-const groupCreatorUser: User = {
+const groupCreatorWithLotterySignups: User = {
   kompassiId: 0,
   kompassiUsernameAccepted: false,
   username: "username",
@@ -27,7 +27,7 @@ const groupCreatorUser: User = {
   eventLogItems: [],
 };
 
-const groupMember1: User = {
+const groupMemberWithoutLotterySignups1: User = {
   kompassiId: 0,
   kompassiUsernameAccepted: false,
   username: "username 2",
@@ -42,7 +42,7 @@ const groupMember1: User = {
   eventLogItems: [],
 };
 
-const groupMember2: User = {
+const groupMemberWithoutLotterySignups2: User = {
   kompassiId: 0,
   kompassiUsernameAccepted: false,
   username: "username 3",
@@ -57,11 +57,11 @@ const groupMember2: User = {
   eventLogItems: [],
 };
 
-const previousMatchingSignup: DirectSignupsForProgramItem = {
+const previousSignup: DirectSignupsForProgramItem = {
   game: testGame,
   userSignups: [
     {
-      username: groupMember2.username,
+      username: groupMemberWithoutLotterySignups2.username,
       priority: 1,
       time: "2019-11-23T12:00:00+02:00",
       message: "",
@@ -69,7 +69,7 @@ const previousMatchingSignup: DirectSignupsForProgramItem = {
   ],
 };
 
-const previousNotMatchingSignup: DirectSignupsForProgramItem = {
+const otherUserPreviousSignup: DirectSignupsForProgramItem = {
   game: testGame,
   userSignups: [
     {
@@ -81,11 +81,11 @@ const previousNotMatchingSignup: DirectSignupsForProgramItem = {
   ],
 };
 
-const previousMatchingSignupWithWrongType: DirectSignupsForProgramItem = {
+const previousSignupWithWrongType: DirectSignupsForProgramItem = {
   game: { ...testGame, programType: ProgramType.TOURNAMENT },
   userSignups: [
     {
-      username: groupCreatorUser.username,
+      username: groupCreatorWithLotterySignups.username,
       priority: 1,
       time: "2019-11-23T12:00:00+02:00",
       message: "",
@@ -95,16 +95,16 @@ const previousMatchingSignupWithWrongType: DirectSignupsForProgramItem = {
 
 const startTime = "2019-11-23T12:00:00+02:00";
 
-test("should return empty array if user has no signed games", () => {
-  const userArray: User[] = [groupMember2];
+test("should return empty array if user has no lottery signups", () => {
+  const userArray: User[] = [groupMemberWithoutLotterySignups2];
   const playerGroups: readonly User[][] = [userArray, userArray, userArray];
   const list = getList(playerGroups, startTime, []);
 
   expect(list).toEqual({ value: [] });
 });
 
-test("should generate assignment list with bonuses for single user when signups is empty", () => {
-  const userArray: User[] = [groupCreatorUser];
+test("should generate assignment list with bonuses for single user without any direct signups", () => {
+  const userArray: User[] = [groupCreatorWithLotterySignups];
   const playerGroups: readonly User[][] = [userArray, userArray, userArray];
   const list = getList(playerGroups, startTime, []);
 
@@ -117,10 +117,10 @@ test("should generate assignment list with bonuses for single user when signups 
   });
 });
 
-test("should generate assignment list with bonuses for single user", () => {
-  const userArray: User[] = [groupCreatorUser];
+test("should generate assignment list with bonuses for single user without previous direct signups", () => {
+  const userArray: User[] = [groupCreatorWithLotterySignups];
   const playerGroups: readonly User[][] = [userArray, userArray, userArray];
-  const list = getList(playerGroups, startTime, [previousNotMatchingSignup]);
+  const list = getList(playerGroups, startTime, [otherUserPreviousSignup]);
 
   expect(list).toEqual({
     value: [
@@ -131,10 +131,13 @@ test("should generate assignment list with bonuses for single user", () => {
   });
 });
 
-test("should generate assignment list with bonuses for group", () => {
-  const userArray: User[] = [groupCreatorUser, groupMember1];
+test("should generate assignment list with bonuses for group without previous direct signups", () => {
+  const userArray: User[] = [
+    groupCreatorWithLotterySignups,
+    groupMemberWithoutLotterySignups1,
+  ];
   const playerGroups: readonly User[][] = [userArray, userArray, userArray];
-  const list = getList(playerGroups, startTime, [previousNotMatchingSignup]);
+  const list = getList(playerGroups, startTime, [otherUserPreviousSignup]);
 
   expect(list).toEqual({
     value: [
@@ -145,10 +148,13 @@ test("should generate assignment list with bonuses for group", () => {
   });
 });
 
-test("should generate assignment list without bonuses for group", () => {
-  const userArray: User[] = [groupCreatorUser, groupMember2];
+test("should generate assignment list without bonuses for group with previous direct signups", () => {
+  const userArray: User[] = [
+    groupCreatorWithLotterySignups,
+    groupMemberWithoutLotterySignups2,
+  ];
   const playerGroups: readonly User[][] = [userArray, userArray, userArray];
-  const list = getList(playerGroups, startTime, [previousMatchingSignup]);
+  const list = getList(playerGroups, startTime, [previousSignup]);
 
   expect(list).toEqual({
     value: [
@@ -159,12 +165,10 @@ test("should generate assignment list without bonuses for group", () => {
   });
 });
 
-test("should generate assignment list with bonuses if user has signups for different program type", () => {
-  const userArray: User[] = [groupCreatorUser];
+test("should generate assignment list with bonuses if user has direct signups for different program type", () => {
+  const userArray: User[] = [groupCreatorWithLotterySignups];
   const playerGroups: readonly User[][] = [userArray, userArray, userArray];
-  const list = getList(playerGroups, startTime, [
-    previousMatchingSignupWithWrongType,
-  ]);
+  const list = getList(playerGroups, startTime, [previousSignupWithWrongType]);
 
   expect(list).toEqual({
     value: [

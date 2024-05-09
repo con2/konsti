@@ -1,10 +1,10 @@
-import { UsersForGame } from "client/types/reduxTypes";
+import { GameDirectSignups } from "client/types/reduxTypes";
 import { UserSignup } from "shared/types/models/game";
 
 export const getUsersForGameId = (
   gameId: string,
-  signups: readonly UsersForGame[],
+  directSignups: readonly GameDirectSignups[],
 ): UserSignup[] => {
-  const foundSignup = signups.find((signup) => signup.gameId === gameId);
+  const foundSignup = directSignups.find((signup) => signup.gameId === gameId);
   return foundSignup?.users ?? [];
 };

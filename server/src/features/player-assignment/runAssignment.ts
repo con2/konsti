@@ -93,18 +93,18 @@ export const runAssignment = async ({
       !directSignupAlwaysOpenIds.includes(game.gameId),
   );
 
-  const signupsResult = await findDirectSignups();
-  if (isErrorResult(signupsResult)) {
-    return signupsResult;
+  const directSignupsResult = await findDirectSignups();
+  if (isErrorResult(directSignupsResult)) {
+    return directSignupsResult;
   }
-  const signups = unwrapResult(signupsResult);
+  const directSignups = unwrapResult(directSignupsResult);
 
   const assignResultsResult = runAssignmentStrategy(
     assignmentStrategy,
     filteredUsers,
     filteredGames,
     assignmentTime,
-    signups,
+    directSignups,
   );
   if (isErrorResult(assignResultsResult)) {
     return assignResultsResult;

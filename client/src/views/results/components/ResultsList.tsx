@@ -24,7 +24,7 @@ export const ResultsList = (): ReactElement => {
   const { t, i18n } = useTranslation();
 
   const activeGames = useAppSelector(selectActiveGames);
-  const signups = useAppSelector((state) => state.allGames.signups);
+  const signups = useAppSelector((state) => state.allGames.directSignups);
   const userGroup = useAppSelector((state) => state.login.userGroup);
   isAdminOrHelp(userGroup);
   const showResults =

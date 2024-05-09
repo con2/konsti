@@ -7,13 +7,13 @@ import { Signup } from "shared/types/models/user";
 import { DirectSignupRow } from "client/views/my-games/components/DirectSignupRow";
 
 interface Props {
-  signups: readonly Signup[];
+  directSignups: readonly Signup[];
   startTimes: readonly string[];
   missedSignups: readonly string[];
 }
 
-export const ResultsByStartTimes = ({
-  signups,
+export const DirectSignupsByStartTimes = ({
+  directSignups,
   startTimes,
   missedSignups,
 }: Props): ReactElement => {
@@ -27,7 +27,7 @@ export const ResultsByStartTimes = ({
             <StyledTime>{capitalize(getWeekdayAndTime(startTime))}</StyledTime>
 
             <ul>
-              {signups.map((signup) => {
+              {directSignups.map((signup) => {
                 return (
                   <DirectSignupRow
                     key={signup.gameDetails.gameId}

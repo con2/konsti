@@ -23,7 +23,7 @@ interface Props {
 export const AllGamesList = ({ games }: Props): ReactElement => {
   const { t } = useTranslation();
 
-  const signups = useAppSelector((state) => state.allGames.signups);
+  const signups = useAppSelector((state) => state.allGames.directSignups);
   const lotterySignups = useAppSelector(selectLotterySignups);
   const directSignups = useAppSelector(selectDirectSignups);
   const activeProgramType = useAppSelector(

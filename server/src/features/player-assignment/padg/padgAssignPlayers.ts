@@ -23,7 +23,7 @@ export const padgAssignPlayers = (
   players: readonly User[],
   games: readonly Game[],
   startTime: string,
-  signups: readonly DirectSignupsForProgramItem[],
+  directSignups: readonly DirectSignupsForProgramItem[],
 ): Result<PlayerAssignmentResult, AssignmentError> => {
   logger.debug(`***** Run Padg Assignment for ${startTime}`);
   const startingGames = getStartingGames(games, startTime);
@@ -39,13 +39,13 @@ export const padgAssignPlayers = (
   }
 
   const {
-    selectedGames,
+    lotterySignupGames,
     playerGroups,
     allPlayers,
     numberOfIndividuals,
     numberOfGroups,
   } = getRunRandomAndPadgInput(players, games, startTime);
-  if (selectedGames.length === 0) {
+  if (lotterySignupGames.length === 0) {
     logger.debug("No signup wishes, stop!");
     return makeSuccessResult({
       results: [],
@@ -55,16 +55,16 @@ export const padgAssignPlayers = (
     });
   }
 
-  logger.debug(`Games with signups: ${selectedGames.length}`);
+  logger.debug(`Games with lottery signups: ${lotterySignupGames.length}`);
   logger.debug(
     `Selected players: ${allPlayers.length} (${numberOfIndividuals} individual, ${numberOfGroups} groups)`,
   );
 
   const assignmentResultResult = runPadgAssignment(
-    selectedGames,
+    lotterySignupGames,
     playerGroups,
     startTime,
-    signups,
+    directSignups,
   );
   if (isErrorResult(assignmentResultResult)) {
     return assignmentResultResult;
@@ -83,8 +83,8 @@ export const padgAssignPlayers = (
   }/${allPlayers.length} (${Math.round(
     (assignmentResult.results.length / allPlayers.length) * 100,
   )}%), Games: ${selectedUniqueGames.length}/${
-    selectedGames.length
-  } (${Math.round((selectedUniqueGames.length / selectedGames.length) * 100)}%)`;
+    lotterySignupGames.length
+  } (${Math.round((selectedUniqueGames.length / lotterySignupGames.length) * 100)}%)`;
 
   logger.debug(message);
 

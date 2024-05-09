@@ -18,7 +18,7 @@ import { AssignmentError } from "shared/types/api/errors";
 export const getList = (
   playerGroups: readonly User[][],
   startTime: string,
-  signups: readonly DirectSignupsForProgramItem[],
+  directSignups: readonly DirectSignupsForProgramItem[],
 ): Result<ListItem[], AssignmentError> => {
   const results = playerGroups.flatMap((playerGroup) => {
     const firstMember = first(playerGroup);
@@ -44,7 +44,7 @@ export const getList = (
               : firstMember.serial,
           size: playerGroup.length,
           event: lotterySignup.gameDetails.gameId,
-          gain: getGain(lotterySignup, playerGroup, signups),
+          gain: getGain(lotterySignup, playerGroup, directSignups),
         };
       });
 
@@ -69,9 +69,9 @@ export const getList = (
 const getGain = (
   lotterySignup: Signup,
   playerGroup: User[],
-  signups: readonly DirectSignupsForProgramItem[],
+  directSignups: readonly DirectSignupsForProgramItem[],
 ): number => {
-  const bonus = getAssignmentBonus(playerGroup, signups);
+  const bonus = getAssignmentBonus(playerGroup, directSignups);
 
   switch (lotterySignup.priority) {
     case 1:

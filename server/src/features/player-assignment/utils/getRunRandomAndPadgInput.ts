@@ -1,6 +1,6 @@
 import { getStartingGames } from "server/features/player-assignment/utils/getStartingGames";
 import { getSignupWishes } from "server/features/player-assignment/utils/getSignupWishes";
-import { getSelectedGames } from "server/features/player-assignment/utils/getSelectedGames";
+import { getLotterySignupGames } from "server/features/player-assignment/utils/getLotterySignupGames";
 import { getSelectedPlayers } from "server/features/player-assignment/utils/getSelectedPlayers";
 import { getPlayerGroups } from "server/features/player-assignment/utils/getPlayerGroups";
 import { getGroupMembers } from "server/features/player-assignment/utils/getGroupMembers";
@@ -17,7 +17,7 @@ export const getRunRandomAndPadgInput = (
 
   if (startingGames.length === 0) {
     return {
-      selectedGames: [],
+      lotterySignupGames: [],
       playerGroups: [],
       allPlayers: [],
       numberOfIndividuals: 0,
@@ -29,7 +29,7 @@ export const getRunRandomAndPadgInput = (
 
   if (signupWishes.length === 0) {
     return {
-      selectedGames: [],
+      lotterySignupGames: [],
       playerGroups: [],
       allPlayers: [],
       numberOfIndividuals: 0,
@@ -37,7 +37,7 @@ export const getRunRandomAndPadgInput = (
     };
   }
 
-  const selectedGames = getSelectedGames(startingGames, signupWishes);
+  const lotterySignupGames = getLotterySignupGames(startingGames, signupWishes);
 
   // Get group creators, selected players are group creators since group members don't have signups yet
   const groupCreators = getSelectedPlayers(players, startingGames);
@@ -62,7 +62,7 @@ export const getRunRandomAndPadgInput = (
   }
 
   return {
-    selectedGames,
+    lotterySignupGames,
     playerGroups,
     allPlayers,
     numberOfIndividuals,

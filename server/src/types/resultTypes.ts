@@ -40,7 +40,7 @@ export interface AssignmentStrategyResult {
 }
 
 export interface RunRandomAndPadgInput {
-  selectedGames: readonly Game[];
+  lotterySignupGames: readonly Game[];
   playerGroups: readonly User[][];
   allPlayers: readonly User[];
   numberOfIndividuals: Number;

@@ -24,14 +24,14 @@ export interface AdminState {
   loginProvider: LoginProvider | undefined;
 }
 
-export interface UsersForGame {
+export interface GameDirectSignups {
   users: UserSignup[];
   gameId: string;
 }
 
 export interface AllGamesState {
   games: readonly Game[];
-  signups: readonly UsersForGame[];
+  directSignups: readonly GameDirectSignups[];
 }
 
 export interface LoginState {
