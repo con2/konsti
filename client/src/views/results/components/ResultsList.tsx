@@ -7,7 +7,7 @@ import { getWeekdayAndTime } from "client/utils/timeFormatter";
 import { useAppSelector } from "client/utils/hooks";
 import { getUsersForGameId } from "client/views/results/resultsUtils";
 import { getUpcomingGames } from "client/utils/getUpcomingGames";
-import { Game } from "shared/types/models/game";
+import { ProgramItem } from "shared/types/models/programItem";
 import { selectActiveGames } from "client/views/admin/adminSlice";
 import { MULTIPLE_WHITESPACES_REGEX } from "client/views/all-games/AllGamesView";
 import { Tags } from "client/components/Tags";
@@ -67,9 +67,11 @@ export const ResultsList = (): ReactElement => {
       ? sortBy(visibleGames, "startTime")
       : sortBy(getUpcomingGames(visibleGames, 1), "startTime");
 
-  const [gamesForListing, setGamesForListing] = useState<readonly Game[]>([]);
+  const [gamesForListing, setGamesForListing] = useState<
+    readonly ProgramItem[]
+  >([]);
   const [filteredGamesForListing, setFilteredGamesForListing] = useState<
-    Record<string, Game[]>
+    Record<string, ProgramItem[]>
   >({});
   const [searchTerm, setSearchTerm] = useState<string>("");
 
@@ -83,7 +85,10 @@ export const ResultsList = (): ReactElement => {
 
   useEffect(() => {
     if (searchTerm.length === 0) {
-      const gamesByStartTime = groupBy<Game>(gamesForListing, "startTime");
+      const gamesByStartTime = groupBy<ProgramItem>(
+        gamesForListing,
+        "startTime",
+      );
       setFilteredGamesForListing(gamesByStartTime);
       return;
     }
@@ -103,7 +108,7 @@ export const ResultsList = (): ReactElement => {
       );
     });
 
-    const gamesByStartTime = groupBy<Game>(
+    const gamesByStartTime = groupBy<ProgramItem>(
       gamesFilteredBySearchTerm,
       "startTime",
     );

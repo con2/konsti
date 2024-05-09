@@ -1,8 +1,8 @@
-import { findGames } from "server/features/program-item/programItemRepository";
+import { findProgramItems } from "server/features/program-item/programItemRepository";
 import { saveSignupQuestion } from "server/features/settings/settingsRepository";
 import { logger } from "server/utils/logger";
 import { config } from "shared/config";
-import { ProgramType } from "shared/types/models/game";
+import { ProgramType } from "shared/types/models/programItem";
 import { isErrorResult, unwrapResult } from "shared/utils/result";
 
 export const addSignupQuestions = async (): Promise<void> => {
@@ -21,7 +21,7 @@ export const addSignupQuestions = async (): Promise<void> => {
     return;
   }
 
-  const gamesResult = await findGames();
+  const gamesResult = await findProgramItems();
   if (isErrorResult(gamesResult)) {
     logger.error(
       "%s",

@@ -1,5 +1,5 @@
 import { logger } from "server/utils/logger";
-import { saveGames } from "server/features/program-item/programItemRepository";
+import { saveProgramItems } from "server/features/program-item/programItemRepository";
 import { db } from "server/db/mongodb";
 import {
   createAdminUser,
@@ -47,7 +47,7 @@ const initializeDatabase = async (): Promise<void> => {
     throw new Error("Unable to load Kompassi games");
   }
   const kompassiGames = unwrapResult(gamesResult);
-  await saveGames(kompassiGames);
+  await saveProgramItems(kompassiGames);
 
   // This will create default settings
   await findSettings();

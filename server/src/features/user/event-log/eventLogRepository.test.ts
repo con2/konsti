@@ -10,7 +10,7 @@ import {
 } from "server/features/user/event-log/eventLogRepository";
 import { EventLogAction } from "shared/types/models/eventLog";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
-import { saveGames } from "server/features/program-item/programItemRepository";
+import { saveProgramItems } from "server/features/program-item/programItemRepository";
 import { testGame, testGame2 } from "shared/tests/testGame";
 
 beforeEach(async () => {
@@ -24,7 +24,7 @@ afterEach(async () => {
 });
 
 test("should insert new event log item to user", async () => {
-  await saveGames([testGame]);
+  await saveProgramItems([testGame]);
   await saveUser(mockUser);
   await saveUser(mockUser2);
   await saveUser(mockUser3);
@@ -88,7 +88,7 @@ test("should insert new event log item to user", async () => {
 });
 
 test("should delete event log items for start time", async () => {
-  await saveGames([testGame, testGame2]);
+  await saveProgramItems([testGame, testGame2]);
   await saveUser(mockUser);
 
   await addEventLogItems({

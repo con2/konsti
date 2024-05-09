@@ -1,12 +1,16 @@
 import { differenceBy } from "lodash-es";
 import dayjs, { Dayjs } from "dayjs";
 import {
-  findGames,
-  removeGames,
+  findProgramItems,
+  removeProgramItems,
 } from "server/features/program-item/programItemRepository";
-import { GameDoc } from "server/types/gameTypes";
+import { ProgramItemDoc } from "server/types/programItemTypes";
 import { logger } from "server/utils/logger";
-import { Game, GameWithUsernames, UserSignup } from "shared/types/models/game";
+import {
+  ProgramItem,
+  GameWithUsernames,
+  UserSignup,
+} from "shared/types/models/programItem";
 import { SignupStrategy } from "shared/config/sharedConfigTypes";
 import { config } from "shared/config";
 import { findSettings } from "server/features/settings/settingsRepository";
@@ -26,18 +30,22 @@ import {
 import { MongoDbError } from "shared/types/api/errors";
 import { tooEearlyForAlgorithmSignup } from "shared/utils/tooEearlyForAlgorithmSignup";
 
-export const removeDeletedGames = async (
-  updatedGames: readonly Game[],
+export const removeDeletedProgramItems = async (
+  updatedProgramItems: readonly ProgramItem[],
 ): Promise<Result<number, MongoDbError>> => {
   logger.info("Remove deleted games");
 
-  const currentGamesResult = await findGames();
+  const currentGamesResult = await findProgramItems();
   if (isErrorResult(currentGamesResult)) {
     return currentGamesResult;
   }
 
   const currentGames = unwrapResult(currentGamesResult);
-  const deletedGames = differenceBy(currentGames, updatedGames, "gameId");
+  const deletedGames = differenceBy(
+    currentGames,
+    updatedProgramItems,
+    "gameId",
+  );
 
   if (deletedGames.length > 0) {
     const deletedGameIds = deletedGames.map(
@@ -56,7 +64,7 @@ export const removeDeletedGames = async (
       return delSignupDocumentsResult;
     }
 
-    const removeGamesResult = await removeGames(deletedGameIds);
+    const removeGamesResult = await removeProgramItems(deletedGameIds);
     if (isErrorResult(removeGamesResult)) {
       return removeGamesResult;
     }
@@ -67,7 +75,7 @@ export const removeDeletedGames = async (
 };
 
 export const enrichGames = async (
-  games: readonly GameDoc[],
+  games: readonly ProgramItemDoc[],
 ): Promise<Result<GameWithUsernames[], MongoDbError>> => {
   const settingsResult = await findSettings();
   if (isErrorResult(settingsResult)) {
@@ -95,7 +103,7 @@ export const enrichGames = async (
     );
     return {
       game: {
-        ...game.toJSON<GameDoc>(),
+        ...game.toJSON<ProgramItemDoc>(),
         signupStrategy: getSignupStrategyForGame(game, settings, currentTime),
       },
       users: getSignupsForGame(signups, game.gameId, signupQuestion),
@@ -106,7 +114,7 @@ export const enrichGames = async (
 };
 
 const getSignupStrategyForGame = (
-  game: GameDoc,
+  game: ProgramItemDoc,
   settings: Settings,
   currentTime: Dayjs,
 ): SignupStrategy => {

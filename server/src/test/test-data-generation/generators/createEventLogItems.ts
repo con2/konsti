@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 import { sampleSize } from "lodash-es";
-import { findGames } from "server/features/program-item/programItemRepository";
+import { findProgramItems } from "server/features/program-item/programItemRepository";
 import { addEventLogItems } from "server/features/user/event-log/eventLogRepository";
 import { findUsers } from "server/features/user/userRepository";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
@@ -8,7 +8,7 @@ import { EventLogAction } from "shared/types/models/eventLog";
 import { config } from "shared/config";
 
 export const createEventLogItems = async (): Promise<void> => {
-  const gamesResult = await findGames();
+  const gamesResult = await findProgramItems();
   const games = unsafelyUnwrapResult(gamesResult);
   const twoPhaseSignups = games.filter((game) =>
     config.shared().twoPhaseSignupProgramTypes.includes(game.programType),

@@ -2,7 +2,7 @@ import { ReactElement, useState } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { Game } from "shared/types/models/game";
+import { ProgramItem } from "shared/types/models/programItem";
 import { LotterySignupForm } from "./LotterySignupForm";
 import {
   PostLotterySignupsErrorMessage,
@@ -21,7 +21,7 @@ import { getAlgorithmSignupStartTime } from "shared/utils/signupTimes";
 import { getIsInGroup } from "client/views/group/groupUtils";
 
 interface Props {
-  game: Game;
+  game: ProgramItem;
   startTime: string;
   lotterySignups: readonly Signup[];
 }
@@ -52,7 +52,9 @@ export const AlgorithmSignupForm = ({
     ClientError | PostLotterySignupsErrorMessage | null
   >(null);
 
-  const removeLotterySignup = async (gameToRemove: Game): Promise<void> => {
+  const removeLotterySignup = async (
+    gameToRemove: ProgramItem,
+  ): Promise<void> => {
     setLoading(true);
     const newSignupData = lotterySignups.filter(
       (g: Signup) => g.gameDetails.gameId !== gameToRemove.gameId,

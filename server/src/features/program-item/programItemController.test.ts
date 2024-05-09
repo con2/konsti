@@ -9,8 +9,8 @@ import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { getJWT } from "server/utils/jwt";
 import { UserGroup } from "shared/types/models/user";
 import {
-  findGames,
-  saveGames,
+  findProgramItems,
+  saveProgramItems,
 } from "server/features/program-item/programItemRepository";
 import { testGame, testGame2 } from "shared/tests/testGame";
 import { findUser, saveUser } from "server/features/user/userRepository";
@@ -36,7 +36,7 @@ import {
   KompassiGenreRopecon,
   KompassiTagRopecon,
 } from "server/kompassi/ropecon/kompassiGameRopecon";
-import { GameStyle, Genre, Tag } from "shared/types/models/game";
+import { GameStyle, Genre, Tag } from "shared/types/models/programItem";
 import { logger } from "server/utils/logger";
 import { SignupQuestionType } from "shared/types/models/settings";
 import { config } from "shared/config";
@@ -69,7 +69,7 @@ describe(`GET ${ApiEndpoint.GAMES}`, () => {
 
   test(`should not return private signup messages`, async () => {
     await createSettings();
-    await saveGames([testGame, testGame2]);
+    await saveProgramItems([testGame, testGame2]);
     await saveUser(mockUser);
 
     const publicMessage = "Answer to public message";
@@ -132,7 +132,7 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
     expect(response.status).toEqual(200);
     expect(spy).toHaveBeenCalledTimes(1);
 
-    const gamesResult = await findGames();
+    const gamesResult = await findProgramItems();
     const games = unsafelyUnwrapResult(gamesResult);
 
     expect(games.length).toEqual(1);
@@ -144,7 +144,7 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
       value: [mockKompassiGameRopecon],
     });
 
-    await saveGames([testGame, testGame2]);
+    await saveProgramItems([testGame, testGame2]);
     await saveUser(mockUser);
     await saveLotterySignups({
       username: mockUser.username,
@@ -162,7 +162,7 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
     expect(response.status).toEqual(200);
 
-    const gamesResult = await findGames();
+    const gamesResult = await findProgramItems();
     const games = unsafelyUnwrapResult(gamesResult);
 
     expect(games.length).toEqual(1);
@@ -188,14 +188,14 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
       // @ts-expect-error: Invalid value for testing
       .mockResolvedValue({ value: "broken response" });
 
-    await saveGames([testGame, testGame2]);
+    await saveProgramItems([testGame, testGame2]);
 
     const response = await request(server)
       .post(ApiEndpoint.GAMES)
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
     expect(response.status).toEqual(200);
 
-    const gamesResult = await findGames();
+    const gamesResult = await findProgramItems();
     const games = unsafelyUnwrapResult(gamesResult);
 
     expect(games.length).toEqual(2);
@@ -209,14 +209,14 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
       value: [],
     });
 
-    await saveGames([testGame, testGame2]);
+    await saveProgramItems([testGame, testGame2]);
 
     const response = await request(server)
       .post(ApiEndpoint.GAMES)
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
     expect(response.status).toEqual(200);
 
-    const gamesResult = await findGames();
+    const gamesResult = await findProgramItems();
     const games = unsafelyUnwrapResult(gamesResult);
 
     expect(games.length).toEqual(2);
@@ -241,14 +241,14 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
       ],
     });
 
-    await saveGames([testGame, testGame2]);
+    await saveProgramItems([testGame, testGame2]);
 
     const response = await request(server)
       .post(ApiEndpoint.GAMES)
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
     expect(response.status).toEqual(200);
 
-    const gamesResult = await findGames();
+    const gamesResult = await findProgramItems();
     const games = unsafelyUnwrapResult(gamesResult);
 
     expect(games.length).toEqual(1);
@@ -271,7 +271,7 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
       ],
     });
 
-    await saveGames([testGame, testGame2]);
+    await saveProgramItems([testGame, testGame2]);
     await saveUser(mockUser);
     await saveLotterySignups({
       username: mockUser.username,
@@ -352,7 +352,7 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
     expect(response.status).toEqual(200);
 
-    const gamesResult = await findGames();
+    const gamesResult = await findProgramItems();
     const games = unsafelyUnwrapResult(gamesResult);
 
     expect(games.length).toEqual(1);
@@ -397,7 +397,7 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
       ),
     );
 
-    const gamesResult = await findGames();
+    const gamesResult = await findProgramItems();
     const games = unsafelyUnwrapResult(gamesResult);
 
     expect(games.length).toEqual(0);

@@ -1,10 +1,10 @@
 import dayjs from "dayjs";
-import { Game } from "shared/types/models/game";
+import { ProgramItem } from "shared/types/models/programItem";
 import { RandomAssignEvent } from "server/types/padgRandomAssignTypes";
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 
 export const getRandomAssignEvents = (
-  lotterySignupGames: readonly Game[],
+  lotterySignupGames: readonly ProgramItem[],
   directSignups: readonly DirectSignupsForProgramItem[],
 ): RandomAssignEvent[] => {
   return lotterySignupGames.map((selectedGame) => {

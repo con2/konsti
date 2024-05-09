@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { capitalize } from "lodash-es";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { Game } from "shared/types/models/game";
+import { ProgramItem } from "shared/types/models/programItem";
 import { SignupStrategy } from "shared/config/sharedConfigTypes";
 import { UserGroup } from "shared/types/models/user";
 import { FavoriteButton } from "client/components/FavoriteButton";
@@ -17,13 +17,13 @@ import { config } from "shared/config";
 import { isRevolvingDoorWorkshop } from "client/utils/isRevolvingDoorWorkshop";
 
 interface Props {
-  game: Game;
+  game: ProgramItem;
   players: number;
   signupStrategy: SignupStrategy;
   username: string;
   loggedIn: boolean;
   userGroup: UserGroup;
-  favoritedGames: readonly Game[];
+  favoritedGames: readonly ProgramItem[];
 }
 
 export const GameHead = ({

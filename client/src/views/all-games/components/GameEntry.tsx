@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
-import { Game } from "shared/types/models/game";
+import { ProgramItem } from "shared/types/models/programItem";
 import { SignupStrategy } from "shared/config/sharedConfigTypes";
 import { Signup, UserGroup } from "shared/types/models/user";
 import { RaisedCard } from "client/components/RaisedCard";
@@ -15,7 +15,7 @@ import { SignupInfo } from "client/views/all-games/components/SignupInfo";
 import { GameHead } from "client/views/all-games/components/GameHead";
 
 interface Props {
-  game: Game;
+  game: ProgramItem;
   startTime: string;
   players: number;
   signupStrategy: SignupStrategy;
@@ -27,7 +27,7 @@ interface Props {
   username: string;
   loggedIn: boolean;
   userGroup: UserGroup;
-  favoritedGames: readonly Game[];
+  favoritedGames: readonly ProgramItem[];
 }
 
 export const GameEntry = ({

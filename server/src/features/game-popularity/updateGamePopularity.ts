@@ -1,7 +1,7 @@
 import { logger } from "server/utils/logger";
 import { updateWithAssign } from "server/features/game-popularity/utils/updateWithAssign";
 import { findUsers } from "server/features/user/userRepository";
-import { findGames } from "server/features/program-item/programItemRepository";
+import { findProgramItems } from "server/features/program-item/programItemRepository";
 import { findDirectSignups } from "server/features/direct-signup/directSignupRepository";
 import {
   Result,
@@ -25,7 +25,7 @@ export const updateGamePopularity = async (): Promise<
   }
   const users = unwrapResult(usersResult);
 
-  const gamesResult = await findGames();
+  const gamesResult = await findProgramItems();
   if (isErrorResult(gamesResult)) {
     return gamesResult;
   }

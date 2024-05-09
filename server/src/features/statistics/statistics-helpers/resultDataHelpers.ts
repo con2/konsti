@@ -1,5 +1,5 @@
 import { logger } from "server/utils/logger";
-import { Game } from "shared/types/models/game";
+import { ProgramItem } from "shared/types/models/programItem";
 import { ResultsCollectionEntry } from "server/types/resultTypes";
 import { StringNumberObject } from "server/types/commonTypes";
 import { toPercent } from "server/features/statistics/statsUtil";
@@ -21,7 +21,7 @@ export const getSignupsByTime = (
 };
 
 export const getMaximumNumberOfPlayersByTime = (
-  games: readonly Game[],
+  games: readonly ProgramItem[],
 ): StringNumberObject => {
   const maxNumberOfPlayersByTime: StringNumberObject = {};
 

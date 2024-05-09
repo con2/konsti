@@ -5,7 +5,7 @@ import {
 } from "server/features/user/userRepository";
 import { logger } from "server/utils/logger";
 import { MongoDbError } from "shared/types/api/errors";
-import { Game } from "shared/types/models/game";
+import { ProgramItem } from "shared/types/models/programItem";
 import { User } from "shared/types/models/user";
 import {
   Result,
@@ -16,13 +16,13 @@ import {
 } from "shared/utils/result";
 
 export const removeHiddenGamesFromUsers = async (
-  hiddenGames: readonly Game[],
+  hiddenGames: readonly ProgramItem[],
 ): Promise<Result<void, MongoDbError>> => {
   logger.info(`Remove hidden games from users`);
 
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (!hiddenGames || hiddenGames.length === 0) {
-    return makeErrorResult(MongoDbError.NO_HIDDEN_GAMES);
+    return makeErrorResult(MongoDbError.NO_HIDDEN_PROGRAM_ITEMS);
   }
 
   logger.info(`Found ${hiddenGames.length} hidden games`);

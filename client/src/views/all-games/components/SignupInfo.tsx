@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
-import { Game } from "shared/types/models/game";
+import { ProgramItem } from "shared/types/models/programItem";
 import { DirectSignupForm } from "client/views/all-games/components/DirectSignupForm";
 import { AlgorithmSignupForm } from "client/views/all-games/components/AlgorithmSignupForm";
 import { config } from "shared/config";
@@ -12,7 +12,7 @@ interface Props {
   signupStrategy: SignupStrategy;
   startTime: string;
   lotterySignups: readonly Signup[];
-  game: Game;
+  game: ProgramItem;
   players: number;
   loading: boolean;
   setLoading: (loading: boolean) => void;

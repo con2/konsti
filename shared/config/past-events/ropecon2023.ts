@@ -6,7 +6,7 @@ import {
   LoginProvider,
   SignupStrategy,
 } from "shared/config/sharedConfigTypes";
-import { ProgramType } from "shared/types/models/game";
+import { ProgramType } from "shared/types/models/programItem";
 import {
   SignupQuestion,
   SignupQuestionType,

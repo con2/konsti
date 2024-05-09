@@ -9,7 +9,7 @@ import {
   saveSettings,
   saveSignupQuestion,
 } from "server/features/settings/settingsRepository";
-import { saveGames } from "server/features/program-item/programItemRepository";
+import { saveProgramItems } from "server/features/program-item/programItemRepository";
 import {
   SignupQuestion,
   SignupQuestionType,
@@ -42,7 +42,7 @@ test("should set defaults if settings not found", async () => {
 
 test("should update hidden games", async () => {
   const hiddenGames = [testGame, testGame2];
-  await saveGames(hiddenGames);
+  await saveProgramItems(hiddenGames);
   await saveHidden(hiddenGames);
   const insertedSettings = await SettingsModel.findOne({});
   expect(insertedSettings?.hiddenGames.length).toEqual(hiddenGames.length);

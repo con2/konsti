@@ -1,5 +1,5 @@
 import { ActiveProgramType } from "shared/config/clientConfigTypes";
-import { Language, ProgramType } from "shared/types/models/game";
+import { Language, ProgramType } from "shared/types/models/programItem";
 
 export interface ClientConfig {
   apiServerUrl: string;

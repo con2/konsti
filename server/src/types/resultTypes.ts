@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { Game } from "shared/types/models/game";
+import { ProgramItem } from "shared/types/models/programItem";
 import { Signup, User } from "shared/types/models/user";
 import { AssignmentResult } from "shared/types/models/result";
 
@@ -40,7 +40,7 @@ export interface AssignmentStrategyResult {
 }
 
 export interface RunRandomAndPadgInput {
-  lotterySignupGames: readonly Game[];
+  lotterySignupGames: readonly ProgramItem[];
   playerGroups: readonly User[][];
   allPlayers: readonly User[];
   numberOfIndividuals: Number;

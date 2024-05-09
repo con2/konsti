@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 import { faker } from "@faker-js/faker";
 import { findUsers, saveUser } from "server/features/user/userRepository";
 import { testGame } from "shared/tests/testGame";
-import { saveGames } from "server/features/program-item/programItemRepository";
+import { saveProgramItems } from "server/features/program-item/programItemRepository";
 import {
   mockUser,
   mockUser2,
@@ -30,7 +30,7 @@ test("should not add event log items after assigment if signup is dropped due to
   await saveUser(mockUser2);
   await saveUser(mockUser3);
   await saveUser(mockUser4);
-  await saveGames([{ ...testGame, maxAttendance: 3 }]);
+  await saveProgramItems([{ ...testGame, maxAttendance: 3 }]);
 
   const results: AssignmentResult[] = [
     {

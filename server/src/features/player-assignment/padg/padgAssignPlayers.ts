@@ -1,6 +1,6 @@
 import { uniq } from "lodash-es";
 import { User } from "shared/types/models/user";
-import { Game } from "shared/types/models/game";
+import { ProgramItem } from "shared/types/models/programItem";
 import {
   AssignmentResultStatus,
   PlayerAssignmentResult,
@@ -21,7 +21,7 @@ import { AssignmentStrategy } from "shared/config/sharedConfigTypes";
 
 export const padgAssignPlayers = (
   players: readonly User[],
-  games: readonly Game[],
+  games: readonly ProgramItem[],
   startTime: string,
   directSignups: readonly DirectSignupsForProgramItem[],
 ): Result<PlayerAssignmentResult, AssignmentError> => {

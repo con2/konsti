@@ -4,17 +4,17 @@ import { sortBy } from "lodash-es";
 import styled from "styled-components";
 import { getStartTimes } from "client/utils/getStartTimes";
 import { FavoritesByStartTimes } from "./FavoritesByStartTimes";
-import { Game } from "shared/types/models/game";
+import { ProgramItem } from "shared/types/models/programItem";
 import { RaisedCard } from "client/components/RaisedCard";
 
 interface Props {
-  favoritedGames: readonly Game[];
+  favoritedGames: readonly ProgramItem[];
 }
 
 export const MyFavoritesList = ({ favoritedGames }: Props): ReactElement => {
   const { t } = useTranslation();
 
-  const sortedGames: readonly Game[] = sortBy(favoritedGames, [
+  const sortedGames: readonly ProgramItem[] = sortBy(favoritedGames, [
     (favoritedGame) => favoritedGame.startTime,
     (favoritedGame) => favoritedGame.title.toLowerCase(),
   ]);

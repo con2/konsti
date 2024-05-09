@@ -8,8 +8,8 @@ import { mockUser, mockUser2 } from "server/test/mock-data/mockUser";
 import { testGame, testGame2 } from "shared/tests/testGame";
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import {
-  findGames,
-  saveGames,
+  findProgramItems,
+  saveProgramItems,
 } from "server/features/program-item/programItemRepository";
 import { updateGamePopularity } from "server/features/game-popularity/updateGamePopularity";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
@@ -31,7 +31,7 @@ afterEach(async () => {
 test(`Should update game popularity`, async () => {
   vi.setSystemTime(testGame.startTime);
 
-  await saveGames([testGame, testGame2]);
+  await saveProgramItems([testGame, testGame2]);
   await saveUser(mockUser);
   await saveUser(mockUser2);
   await saveLotterySignups({
@@ -57,7 +57,7 @@ test(`Should update game popularity`, async () => {
     username: mockUser2.username,
   });
 
-  const gamesResult = await findGames();
+  const gamesResult = await findProgramItems();
   const games = unsafelyUnwrapResult(gamesResult);
   expect(games.length).toEqual(2);
   const firstGame = games.find((game) => game.gameId === testGame.gameId);
@@ -67,7 +67,7 @@ test(`Should update game popularity`, async () => {
 
   await updateGamePopularity();
 
-  const updatedGamesResult = await findGames();
+  const updatedGamesResult = await findProgramItems();
   const updatedGames = unsafelyUnwrapResult(updatedGamesResult);
   expect(updatedGames.length).toEqual(2);
   const updatedFirstGame = updatedGames.find(
@@ -84,7 +84,7 @@ test(`Should only update game popularity of upcoming program items`, async () =>
   const timeNow = dayjs(testGame.startTime).add(1, "hours").toISOString();
   vi.setSystemTime(timeNow);
 
-  await saveGames([
+  await saveProgramItems([
     { ...testGame, minAttendance: 1 },
     {
       ...testGame2,
@@ -121,7 +121,7 @@ test(`Should only update game popularity of upcoming program items`, async () =>
     username: mockUser2.username,
   });
 
-  const games = unsafelyUnwrapResult(await findGames());
+  const games = unsafelyUnwrapResult(await findProgramItems());
   expect(games.length).toEqual(2);
 
   const firstGame = games.find((game) => game.gameId === testGame.gameId);
@@ -131,7 +131,7 @@ test(`Should only update game popularity of upcoming program items`, async () =>
 
   await updateGamePopularity();
 
-  const updatedGames = unsafelyUnwrapResult(await findGames());
+  const updatedGames = unsafelyUnwrapResult(await findProgramItems());
   expect(updatedGames.length).toEqual(2);
 
   const updatedFirstGame = updatedGames.find(

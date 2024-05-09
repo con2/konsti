@@ -6,7 +6,7 @@ import {
 } from "shared/utils/signupTimes";
 import { testGame } from "shared/tests/testGame";
 import { config } from "shared/config";
-import { ProgramType } from "shared/types/models/game";
+import { ProgramType } from "shared/types/models/programItem";
 
 beforeEach(() => {
   vi.spyOn(config, "shared").mockReturnValue({

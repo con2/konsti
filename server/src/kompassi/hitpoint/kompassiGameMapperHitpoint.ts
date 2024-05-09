@@ -1,6 +1,11 @@
 import dayjs from "dayjs";
 import { uniq } from "lodash-es";
-import { Game, Language, ProgramType, Tag } from "shared/types/models/game";
+import {
+  ProgramItem,
+  Language,
+  ProgramType,
+  Tag,
+} from "shared/types/models/programItem";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 import {
   KompassiGameHitpoint,
@@ -10,7 +15,7 @@ import { config } from "shared/config";
 
 export const kompassiGameMapperHitpoint = (
   games: readonly KompassiGameHitpoint[],
-): readonly Game[] => {
+): readonly ProgramItem[] => {
   return games.map((game) => {
     return {
       gameId: game.identifier,

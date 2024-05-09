@@ -1,5 +1,5 @@
 import { logger } from "server/utils/logger";
-import { removeInvalidGamesFromUsers } from "server/features/player-assignment/utils/removeInvalidGamesFromUsers";
+import { removeInvalidProgramItemsFromUsers } from "server/features/player-assignment/utils/removeInvalidProgramItemsFromUsers";
 import { db } from "server/db/mongodb";
 
 const removeInvalidGames = async (): Promise<void> => {
@@ -12,7 +12,7 @@ const removeInvalidGames = async (): Promise<void> => {
   }
 
   try {
-    await removeInvalidGamesFromUsers();
+    await removeInvalidProgramItemsFromUsers();
   } catch (error) {
     logger.error("Error removing invalid games: %s", error);
     // eslint-disable-next-line no-restricted-syntax -- Test script

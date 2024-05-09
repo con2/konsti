@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { LoginProvider, SignupStrategy } from "shared/config/sharedConfigTypes";
-import { GameSchema } from "shared/types/models/game";
+import { ProgramItemSchema } from "shared/types/models/programItem";
 
 export enum SignupQuestionType {
   TEXT = "text",
@@ -28,7 +28,7 @@ const SignupQuestionSchema = z.object({
 export type SignupQuestion = z.infer<typeof SignupQuestionSchema>;
 
 export const SettingsSchema = z.object({
-  hiddenGames: z.array(GameSchema),
+  hiddenGames: z.array(ProgramItemSchema),
   appOpen: z.boolean(),
   signupQuestions: z.array(SignupQuestionSchema),
   signupStrategy: z.nativeEnum(SignupStrategy),

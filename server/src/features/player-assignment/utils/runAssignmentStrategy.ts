@@ -2,7 +2,7 @@ import { logger } from "server/utils/logger";
 import { padgAssignPlayers } from "server/features/player-assignment/padg/padgAssignPlayers";
 import { randomAssignPlayers } from "server/features/player-assignment/random/randomAssignPlayers";
 import { User } from "shared/types/models/user";
-import { Game } from "shared/types/models/game";
+import { ProgramItem } from "shared/types/models/programItem";
 import {
   AssignmentResultStatus,
   PlayerAssignmentResult,
@@ -22,7 +22,7 @@ import { AssignmentError } from "shared/types/api/errors";
 export const runAssignmentStrategy = (
   assignmentStrategy: AssignmentStrategy,
   players: readonly User[],
-  games: readonly Game[],
+  games: readonly ProgramItem[],
   startTime: string,
   directSignups: readonly DirectSignupsForProgramItem[],
 ): Result<PlayerAssignmentResult, AssignmentError> => {
@@ -54,7 +54,7 @@ export const runAssignmentStrategy = (
 
 const runPadgStrategy = (
   players: readonly User[],
-  games: readonly Game[],
+  games: readonly ProgramItem[],
   startTime: string,
   directSignups: readonly DirectSignupsForProgramItem[],
 ): Result<PlayerAssignmentResult, AssignmentError> => {
@@ -73,7 +73,7 @@ const runPadgStrategy = (
 
 const runRandomStrategy = (
   players: readonly User[],
-  games: readonly Game[],
+  games: readonly ProgramItem[],
   startTime: string,
   directSignups: readonly DirectSignupsForProgramItem[],
 ): Result<PlayerAssignmentResult, AssignmentError> => {
@@ -92,7 +92,7 @@ const runRandomStrategy = (
 
 const runRandomPadgStrategy = (
   players: readonly User[],
-  games: readonly Game[],
+  games: readonly ProgramItem[],
   startTime: string,
   directSignups: readonly DirectSignupsForProgramItem[],
 ): Result<PlayerAssignmentResult, AssignmentError> => {

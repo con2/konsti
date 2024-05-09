@@ -5,7 +5,7 @@ import {
   postSignupQuestion,
   postSettings,
 } from "client/services/settingsServices";
-import { Game } from "shared/types/models/game";
+import { ProgramItem } from "shared/types/models/programItem";
 import { AppThunk } from "client/types/reduxTypes";
 import {
   submitUpdateHiddenAsync,
@@ -23,7 +23,9 @@ import { getSignupMessages } from "client/services/userServices";
 import { getSentryTest } from "client/views/admin/adminService";
 import { postPlayerAssignment } from "client/services/assignmentServices";
 
-export const submitUpdateHidden = (hiddenGames: readonly Game[]): AppThunk => {
+export const submitUpdateHidden = (
+  hiddenGames: readonly ProgramItem[],
+): AppThunk => {
   return async (dispatch): Promise<void> => {
     const updateHiddenResponse = await postHidden(hiddenGames);
 

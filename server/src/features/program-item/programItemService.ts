@@ -7,8 +7,8 @@ import {
   GetGamesError,
 } from "shared/types/api/games";
 import {
-  findGames,
-  saveGames,
+  findProgramItems,
+  saveProgramItems,
 } from "server/features/program-item/programItemRepository";
 import { enrichGames } from "./programItemUtils";
 import {
@@ -18,12 +18,12 @@ import {
   unwrapResult,
 } from "shared/utils/result";
 import { KompassiError } from "shared/types/api/errors";
-import { Game } from "shared/types/models/game";
+import { ProgramItem } from "shared/types/models/programItem";
 import { getGamesFromKompassi } from "server/kompassi/getGamesFromKompassi";
 import { kompassiGameMapper } from "server/kompassi/kompassiGameMapper";
 
 export const getGamesForConvention = async (): Promise<
-  Result<readonly Game[], KompassiError>
+  Result<readonly ProgramItem[], KompassiError>
 > => {
   const conventionName = config.shared().conventionName;
   const kompassiGamesResult = await getGamesFromKompassi(conventionName);
@@ -48,7 +48,7 @@ export const updateGames = async (): Promise<
   }
 
   const games = unwrapResult(gamesResult);
-  const saveGamesResult = await saveGames(games);
+  const saveGamesResult = await saveProgramItems(games);
   if (isErrorResult(saveGamesResult)) {
     return {
       message: "Games db update failed: Saving games failed",
@@ -68,7 +68,7 @@ export const updateGames = async (): Promise<
     }
   }
 
-  const updatedGamesResult = await findGames();
+  const updatedGamesResult = await findProgramItems();
   if (isErrorResult(updatedGamesResult)) {
     return {
       message: "Games db update failed: Error loading updated games",
@@ -89,7 +89,7 @@ export const updateGames = async (): Promise<
 export const fetchGames = async (): Promise<
   GetGamesResponse | GetGamesError
 > => {
-  const gamesResult = await findGames();
+  const gamesResult = await findProgramItems();
   if (isErrorResult(gamesResult)) {
     return {
       message: `Downloading games failed`,

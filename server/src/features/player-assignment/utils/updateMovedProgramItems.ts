@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
 import { logger } from "server/utils/logger";
-import { Game } from "shared/types/models/game";
-import { findGames } from "server/features/program-item/programItemRepository";
+import { ProgramItem } from "shared/types/models/programItem";
+import { findProgramItems } from "server/features/program-item/programItemRepository";
 import {
   findUsers,
   updateUsersByUsername,
@@ -15,10 +15,10 @@ import {
 import { MongoDbError } from "shared/types/api/errors";
 import { User } from "shared/types/models/user";
 
-export const updateMovedGames = async (
-  updatedGames: readonly Game[],
+export const updateMovedProgramItems = async (
+  updatedGames: readonly ProgramItem[],
 ): Promise<Result<void, MongoDbError>> => {
-  const currentGamesResult = await findGames();
+  const currentGamesResult = await findProgramItems();
   if (isErrorResult(currentGamesResult)) {
     return currentGamesResult;
   }
@@ -51,7 +51,7 @@ export const updateMovedGames = async (
 };
 
 const removeMovedLotterySignups = async (
-  movedGames: readonly Game[],
+  movedGames: readonly ProgramItem[],
 ): Promise<Result<void, MongoDbError>> => {
   logger.info("Remove moved lottery signups from users");
 
@@ -63,7 +63,7 @@ const removeMovedLotterySignups = async (
   const users = unwrapResult(usersResult);
 
   const usersToUpdate: User[] = users.flatMap((user) => {
-    const programItemsToBeRemoved: Game[] = [];
+    const programItemsToBeRemoved: ProgramItem[] = [];
 
     const lotterySignups = user.lotterySignups.filter((lotterySignup) => {
       const movedFound = movedGames.find((movedGame) => {

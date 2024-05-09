@@ -1,10 +1,10 @@
 import { logger } from "server/utils/logger";
 import { User } from "shared/types/models/user";
-import { Game } from "shared/types/models/game";
+import { ProgramItem } from "shared/types/models/programItem";
 
 export const getSelectedPlayers = (
   players: readonly User[],
-  startingGames: readonly Game[],
+  startingGames: readonly ProgramItem[],
 ): User[] => {
   logger.debug("Get selected players");
 

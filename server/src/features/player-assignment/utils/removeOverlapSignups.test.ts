@@ -7,8 +7,8 @@ import { mockResults } from "server/test/mock-data/mockResults";
 import { testGame, testGame2 } from "shared/tests/testGame";
 import { findUser, saveUser } from "server/features/user/userRepository";
 import {
-  findGames,
-  saveGames,
+  findProgramItems,
+  saveProgramItems,
 } from "server/features/program-item/programItemRepository";
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
@@ -24,8 +24,8 @@ afterEach(async () => {
 });
 
 test("should remove overlapping signups from user", async () => {
-  await saveGames([testGame, testGame2]);
-  const insertedGamesResult = await findGames();
+  await saveProgramItems([testGame, testGame2]);
+  const insertedGamesResult = await findProgramItems();
   const insertedGames = unsafelyUnwrapResult(insertedGamesResult);
   expect(insertedGames.length).toEqual(2);
 

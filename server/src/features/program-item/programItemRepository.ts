@@ -1,93 +1,98 @@
 import { ObjectId } from "mongoose";
 import { logger } from "server/utils/logger";
-import { GameModel } from "server/features/program-item/programItemSchema";
-import { updateMovedGames } from "server/features/player-assignment/utils/updateMovedGames";
-import { GameDoc } from "server/types/gameTypes";
-import { Game } from "shared/types/models/game";
+import { ProgramItemModel } from "server/features/program-item/programItemSchema";
+import { updateMovedProgramItems } from "server/features/player-assignment/utils/updateMovedProgramItems";
+import { ProgramItemDoc } from "server/types/programItemTypes";
+import { ProgramItem } from "shared/types/models/programItem";
 import {
   makeSuccessResult,
   Result,
   makeErrorResult,
   isErrorResult,
 } from "shared/utils/result";
-import { removeDeletedGames } from "server/features/program-item/programItemUtils";
-import { removeInvalidGamesFromUsers } from "server/features/player-assignment/utils/removeInvalidGamesFromUsers";
+import { removeDeletedProgramItems } from "server/features/program-item/programItemUtils";
+import { removeInvalidProgramItemsFromUsers } from "server/features/player-assignment/utils/removeInvalidProgramItemsFromUsers";
 import { MongoDbError } from "shared/types/api/errors";
 import { createEmptyDirectSignupDocumentForProgramItems } from "server/features/direct-signup/directSignupRepository";
 
-export const removeGames = async (
-  gameIds?: string[],
+export const removeProgramItems = async (
+  programItemIds?: string[],
 ): Promise<Result<void, MongoDbError>> => {
   logger.info(
-    `MongoDB: remove games from db: ${gameIds ? gameIds.join(", ") : "ALL"}`,
+    `MongoDB: remove program items from db: ${programItemIds ? programItemIds.join(", ") : "ALL"}`,
   );
 
   try {
-    await GameModel.deleteMany(gameIds ? { gameId: { $in: gameIds } } : {});
+    await ProgramItemModel.deleteMany(
+      programItemIds ? { gameId: { $in: programItemIds } } : {},
+    );
     return makeSuccessResult(undefined);
   } catch (error) {
-    logger.error("MongoDB: Error removing games: %s", error);
+    logger.error("MongoDB: Error removing program items: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
 
-export const saveGames = async (
-  games: readonly Game[],
+export const saveProgramItems = async (
+  programItems: readonly ProgramItem[],
 ): Promise<Result<void, MongoDbError>> => {
-  logger.info("MongoDB: Store games to DB");
+  logger.info("MongoDB: Store program items to DB");
 
-  // This will remove direct signups and games
-  const removeDeletedGamesResult = await removeDeletedGames(games);
-  if (isErrorResult(removeDeletedGamesResult)) {
-    return removeDeletedGamesResult;
+  // This will remove direct signups and program items
+  const removeDeletedProgramItemsResult =
+    await removeDeletedProgramItems(programItems);
+  if (isErrorResult(removeDeletedProgramItemsResult)) {
+    return removeDeletedProgramItemsResult;
   }
 
-  // If games were deleted, this will remove lottery signups and favorited games
-  const removeInvalidGamesResult = await removeInvalidGamesFromUsers();
-  if (isErrorResult(removeInvalidGamesResult)) {
-    return removeInvalidGamesResult;
+  // If program items were deleted, this will remove lottery signups and favorited program items
+  const removeInvalidProgramItemsResult =
+    await removeInvalidProgramItemsFromUsers();
+  if (isErrorResult(removeInvalidProgramItemsResult)) {
+    return removeInvalidProgramItemsResult;
   }
 
-  const updateMovedGamesResult = await updateMovedGames(games);
-  if (isErrorResult(updateMovedGamesResult)) {
-    return updateMovedGamesResult;
+  const updateMovedProgramItemsResult =
+    await updateMovedProgramItems(programItems);
+  if (isErrorResult(updateMovedProgramItemsResult)) {
+    return updateMovedProgramItemsResult;
   }
 
-  const bulkOps = games.map((game) => {
-    const newGame: Omit<Game, "popularity"> = {
-      gameId: game.gameId,
-      title: game.title,
-      description: game.description,
-      location: game.location,
-      startTime: game.startTime,
-      mins: game.mins,
-      tags: game.tags,
-      genres: game.genres,
-      styles: game.styles,
-      language: game.language,
-      endTime: game.endTime,
-      people: game.people,
-      minAttendance: game.minAttendance,
-      maxAttendance: game.maxAttendance,
-      gameSystem: game.gameSystem,
-      shortDescription: game.shortDescription,
-      revolvingDoor: game.revolvingDoor,
-      programType: game.programType,
-      contentWarnings: game.contentWarnings,
-      otherAuthor: game.otherAuthor,
-      accessibilityValues: game.accessibilityValues,
-      otherAccessibilityInformation: game.otherAccessibilityInformation,
-      entryFee: game.entryFee,
-      signupType: game.signupType,
+  const bulkOps = programItems.map((programItem) => {
+    const newProgramItem: Omit<ProgramItem, "popularity"> = {
+      gameId: programItem.gameId,
+      title: programItem.title,
+      description: programItem.description,
+      location: programItem.location,
+      startTime: programItem.startTime,
+      mins: programItem.mins,
+      tags: programItem.tags,
+      genres: programItem.genres,
+      styles: programItem.styles,
+      language: programItem.language,
+      endTime: programItem.endTime,
+      people: programItem.people,
+      minAttendance: programItem.minAttendance,
+      maxAttendance: programItem.maxAttendance,
+      gameSystem: programItem.gameSystem,
+      shortDescription: programItem.shortDescription,
+      revolvingDoor: programItem.revolvingDoor,
+      programType: programItem.programType,
+      contentWarnings: programItem.contentWarnings,
+      otherAuthor: programItem.otherAuthor,
+      accessibilityValues: programItem.accessibilityValues,
+      otherAccessibilityInformation: programItem.otherAccessibilityInformation,
+      entryFee: programItem.entryFee,
+      signupType: programItem.signupType,
     };
 
     return {
       updateOne: {
         filter: {
-          gameId: game.gameId,
+          gameId: programItem.gameId,
         },
         update: {
-          ...newGame,
+          ...newProgramItem,
         },
         upsert: true,
       },
@@ -96,20 +101,26 @@ export const saveGames = async (
 
   let response;
   try {
-    response = await GameModel.bulkWrite(bulkOps);
-    logger.debug("MongoDB: Games saved to DB successfully");
+    response = await ProgramItemModel.bulkWrite(bulkOps);
+    logger.debug("MongoDB: Program items saved to DB successfully");
   } catch (error) {
-    logger.error("Error saving games to DB: %s", error);
+    logger.error("Error saving program items to DB: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 
-  const newGameObjectIds: ObjectId[] = Object.values(response.upsertedIds);
-  logger.info(`MongoDB: Found ${newGameObjectIds.length} new program items`);
+  const newProgramItemObjectIds: ObjectId[] = Object.values(
+    response.upsertedIds,
+  );
+  logger.info(
+    `MongoDB: Found ${newProgramItemObjectIds.length} new program items`,
+  );
 
   // Create signup document for new program items
-  if (newGameObjectIds.length > 0) {
+  if (newProgramItemObjectIds.length > 0) {
     const createEmptySignupResult =
-      await createEmptyDirectSignupDocumentForProgramItems(newGameObjectIds);
+      await createEmptyDirectSignupDocumentForProgramItems(
+        newProgramItemObjectIds,
+      );
     if (isErrorResult(createEmptySignupResult)) {
       return createEmptySignupResult;
     }
@@ -118,47 +129,49 @@ export const saveGames = async (
   return makeSuccessResult(undefined);
 };
 
-export const findGames = async (): Promise<Result<GameDoc[], MongoDbError>> => {
+export const findProgramItems = async (): Promise<
+  Result<ProgramItemDoc[], MongoDbError>
+> => {
   try {
-    const response = await GameModel.find({});
-    logger.debug(`MongoDB: Find all games`);
+    const response = await ProgramItemModel.find({});
+    logger.debug(`MongoDB: Find all program items`);
     return makeSuccessResult(response);
   } catch (error) {
-    logger.error("MongoDB: Error fetching games: %s", error);
+    logger.error("MongoDB: Error fetching program items: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
 
-export const findGameById = async (
-  gameId: string,
-): Promise<Result<GameDoc, MongoDbError>> => {
-  logger.debug(`MongoDB: Find game with id ${gameId}`);
+export const findProgramItemById = async (
+  programItemId: string,
+): Promise<Result<ProgramItemDoc, MongoDbError>> => {
+  logger.debug(`MongoDB: Find program item with id ${programItemId}`);
 
   try {
-    const response = await GameModel.findOne({ gameId });
+    const response = await ProgramItemModel.findOne({ programItemId });
     if (!response) {
-      return makeErrorResult(MongoDbError.GAME_NOT_FOUND);
+      return makeErrorResult(MongoDbError.PROGRAM_ITEM_NOT_FOUND);
     }
     return makeSuccessResult(response);
   } catch (error) {
-    logger.error("MongoDB: Error fetching gameId: %s", error);
+    logger.error("MongoDB: Error fetching programItemId: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
 
 interface PopularityUpdate {
-  gameId: string;
+  programItemId: string;
   popularity: number;
 }
 
-export const saveGamePopularity = async (
+export const saveProgramItemPopularity = async (
   popularityUpdates: PopularityUpdate[],
 ): Promise<Result<void, MongoDbError>> => {
   const bulkOps = popularityUpdates.map((popularityUpdate) => {
     return {
       updateOne: {
         filter: {
-          gameId: popularityUpdate.gameId,
+          gameId: popularityUpdate.programItemId,
         },
         update: {
           popularity: popularityUpdate.popularity,
@@ -168,13 +181,13 @@ export const saveGamePopularity = async (
   });
 
   try {
-    await GameModel.bulkWrite(bulkOps);
+    await ProgramItemModel.bulkWrite(bulkOps);
     logger.info(
-      `MongoDB: Updated popularity for ${popularityUpdates.length} games`,
+      `MongoDB: Updated popularity for ${popularityUpdates.length} program items`,
     );
     return makeSuccessResult(undefined);
   } catch (error) {
-    logger.error("Error updating game popularity: %s", error);
+    logger.error("Error updating program item popularity: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };

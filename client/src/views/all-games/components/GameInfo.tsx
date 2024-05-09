@@ -3,11 +3,11 @@ import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { capitalize } from "lodash-es";
 import { getWeekdayAndTime, getTime } from "client/utils/timeFormatter";
-import { Game } from "shared/types/models/game";
+import { ProgramItem } from "shared/types/models/programItem";
 import { InfoText } from "client/components/InfoText";
 
 interface Props {
-  game: Game;
+  game: ProgramItem;
 }
 
 export const GameInfo = ({ game }: Props): ReactElement => {

@@ -1,6 +1,6 @@
 import { ThunkAction } from "redux-thunk";
 import { Action } from "redux";
-import { Game, UserSignup } from "shared/types/models/game";
+import { ProgramItem, UserSignup } from "shared/types/models/programItem";
 import { GroupMember } from "shared/types/models/groups";
 import { store, combinedReducer } from "client/utils/store";
 import { UserGames, UserGroup } from "shared/types/models/user";
@@ -12,7 +12,7 @@ import { EventLogItem } from "shared/types/models/eventLog";
 import { ActiveProgramType } from "shared/config/clientConfigTypes";
 
 export interface AdminState {
-  hiddenGames: readonly Game[];
+  hiddenGames: readonly ProgramItem[];
   activeAssignmentTime: string;
   appOpen: boolean;
   assignmentResponseMessage: string;
@@ -30,7 +30,7 @@ export interface GameDirectSignups {
 }
 
 export interface AllGamesState {
-  games: readonly Game[];
+  games: readonly ProgramItem[];
   directSignups: readonly GameDirectSignups[];
 }
 

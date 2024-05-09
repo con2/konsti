@@ -10,7 +10,7 @@ import { config } from "shared/config";
 import { AssignmentResultStatus } from "server/types/resultTypes";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 import { testGame } from "shared/tests/testGame";
-import { saveGames } from "server/features/program-item/programItemRepository";
+import { saveProgramItems } from "server/features/program-item/programItemRepository";
 import { saveUser } from "server/features/user/userRepository";
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import {
@@ -115,7 +115,7 @@ test("Assignment with valid data should return success with padg strategy", asyn
 test("Should adjust attendee limits if there are previous signups from moved program items", async () => {
   const assignmentStrategy = AssignmentStrategy.PADG;
 
-  await saveGames([{ ...testGame, minAttendance: 2, maxAttendance: 2 }]);
+  await saveProgramItems([{ ...testGame, minAttendance: 2, maxAttendance: 2 }]);
   await saveUser(mockUser);
   await saveUser(mockUser2);
   await saveUser(mockUser3);

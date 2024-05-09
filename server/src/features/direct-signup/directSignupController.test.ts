@@ -17,7 +17,7 @@ import {
 } from "server/test/mock-data/mockUser";
 import { testGame } from "shared/tests/testGame";
 import { saveUser } from "server/features/user/userRepository";
-import { saveGames } from "server/features/program-item/programItemRepository";
+import { saveProgramItems } from "server/features/program-item/programItemRepository";
 import { saveTestSettings } from "server/test/test-settings/testSettingsRepository";
 import {
   findDirectSignups,
@@ -118,7 +118,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
       dayjs(testGame.startTime),
     );
 
-    await saveGames([testGame]);
+    await saveProgramItems([testGame]);
 
     const signup: PostDirectSignupRequest = {
       username: "user_not_found",
@@ -140,7 +140,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
   });
 
   test("should return error when signup is not yet open", async () => {
-    await saveGames([testGame]);
+    await saveProgramItems([testGame]);
     await saveUser(mockUser);
     await saveTestSettings({
       // This test time should land to phaseGap
@@ -174,7 +174,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     );
 
     // Populate database
-    await saveGames([testGame]);
+    await saveProgramItems([testGame]);
     await saveUser(mockUser);
 
     // Check starting conditions
@@ -223,7 +223,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     const maxAttendance = 2;
 
     // Populate database
-    await saveGames([{ ...testGame, maxAttendance }]);
+    await saveProgramItems([{ ...testGame, maxAttendance }]);
     await saveUser(mockUser);
     await saveUser(mockUser2);
     await saveUser(mockUser3);
@@ -274,7 +274,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     const maxAttendance = 2;
 
     // Populate database
-    await saveGames([{ ...testGame, maxAttendance }]);
+    await saveProgramItems([{ ...testGame, maxAttendance }]);
     await saveUser(mockUser);
     await saveUser(mockUser2);
     await saveUser(mockUser3);
@@ -358,7 +358,7 @@ describe(`DELETE ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
 
   test("should return error when signup is not found", async () => {
     vi.setSystemTime(testGame.startTime);
-    await saveGames([testGame]);
+    await saveProgramItems([testGame]);
 
     const deleteRequest: DeleteDirectSignupRequest = {
       username: "user_not_found",
@@ -384,7 +384,7 @@ describe(`DELETE ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     );
 
     // Populate database
-    await saveGames([testGame]);
+    await saveProgramItems([testGame]);
     await saveUser(mockUser);
     await saveDirectSignup(mockPostDirectSignupRequest);
 

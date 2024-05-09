@@ -1,6 +1,6 @@
 import { faker } from "@faker-js/faker";
 import { logger } from "server/utils/logger";
-import { findGames } from "server/features/program-item/programItemRepository";
+import { findProgramItems } from "server/features/program-item/programItemRepository";
 import {
   findSettings,
   saveSignupQuestion,
@@ -24,7 +24,7 @@ export const createSettings = async (): Promise<void> => {
 
   await findSettings();
 
-  const gamesResult = await findGames();
+  const gamesResult = await findProgramItems();
   const games = unsafelyUnwrapResult(gamesResult);
   const shuffledGames = shuffleArray(games);
 

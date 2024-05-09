@@ -2,7 +2,7 @@ import { ReactElement, useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
-import { Game } from "shared/types/models/game";
+import { ProgramItem } from "shared/types/models/programItem";
 import { SignupGameForm } from "./SignupGameForm";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { getSignupOpensDate, isAlreadyDirectySigned } from "./allGamesUtils";
@@ -20,7 +20,7 @@ import { getDirectSignupStartTime } from "shared/utils/signupTimes";
 import { config } from "shared/config";
 
 interface Props {
-  game: Game;
+  game: ProgramItem;
   startTime: string;
   gameIsFull: boolean;
   loading: boolean;

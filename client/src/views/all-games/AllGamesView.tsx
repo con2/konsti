@@ -5,7 +5,12 @@ import { AllGamesList } from "client/views/all-games/components/AllGamesList";
 import { getUpcomingGames } from "client/utils/getUpcomingGames";
 import { loadGames } from "client/utils/loadData";
 import { Loading } from "client/components/Loading";
-import { Game, Language, ProgramType, Tag } from "shared/types/models/game";
+import {
+  ProgramItem,
+  Language,
+  ProgramType,
+  Tag,
+} from "shared/types/models/programItem";
 import { useAppSelector } from "client/utils/hooks";
 import { selectActiveGames } from "client/views/admin/adminSlice";
 import {
@@ -32,7 +37,9 @@ export const AllGamesView = (): ReactElement => {
   );
   const [loading, setLoading] = useState<boolean>(false);
   const [searchTerm, setSearchTerm] = useState<string>(getSavedSearchTerm());
-  const [filteredGames, setFilteredGames] = useState<readonly Game[]>([]);
+  const [filteredGames, setFilteredGames] = useState<readonly ProgramItem[]>(
+    [],
+  );
   const [selectedStartingTime, setSelectedStartingTime] =
     useState<StartingTimeOption>(getSavedStartingTime());
 
@@ -121,10 +128,10 @@ export const AllGamesView = (): ReactElement => {
 };
 
 const getVisibleGames = (
-  games: readonly Game[],
+  games: readonly ProgramItem[],
   selectedView: string,
   selectedTag: string,
-): readonly Game[] => {
+): readonly ProgramItem[] => {
   const filteredGames = getTagFilteredGames(games, selectedTag);
 
   if (selectedView === StartingTimeOption.UPCOMING) {
@@ -137,9 +144,9 @@ const getVisibleGames = (
 };
 
 const getTagFilteredGames = (
-  games: readonly Game[],
+  games: readonly ProgramItem[],
   selectedTag: string,
-): readonly Game[] => {
+): readonly ProgramItem[] => {
   if (!selectedTag) {
     return games;
   }

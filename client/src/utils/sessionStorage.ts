@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { StartingTimeOption } from "client/views/all-games/components/SearchAndFilterCard";
-import { Language, Tag } from "shared/types/models/game";
+import { Language, Tag } from "shared/types/models/programItem";
 import { StringToJsonSchema } from "client/utils/zodUtils";
 
 export enum SessionStorageValue {

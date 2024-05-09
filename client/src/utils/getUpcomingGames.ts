@@ -1,13 +1,13 @@
 import dayjs from "dayjs";
 import { GroupMember } from "shared/types/models/groups";
-import { Game } from "shared/types/models/game";
+import { ProgramItem } from "shared/types/models/programItem";
 import { getTimeNow } from "client/utils/getTimeNow";
 import { Signup } from "shared/types/models/user";
 
 export const getUpcomingGames = (
-  games: readonly Game[],
+  games: readonly ProgramItem[],
   offsetByHours = 0,
-): readonly Game[] => {
+): readonly ProgramItem[] => {
   const timeNow = getTimeNow();
 
   const upcomingGames = games.filter((game) =>
@@ -92,8 +92,8 @@ export const getUpcomingDirectSignups = (
 };
 
 export const getUpcomingFavorites = (
-  favoritedGames: readonly Game[],
-): readonly Game[] => {
+  favoritedGames: readonly ProgramItem[],
+): readonly ProgramItem[] => {
   const timeNow = getTimeNow();
 
   const upcomingGames = favoritedGames.filter((favoritedGame) =>

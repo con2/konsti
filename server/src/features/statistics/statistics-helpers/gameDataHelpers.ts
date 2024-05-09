@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
 import { countBy } from "lodash-es";
 import { logger } from "server/utils/logger";
-import { Game } from "shared/types/models/game";
+import { ProgramItem } from "shared/types/models/programItem";
 import { Signup, User } from "shared/types/models/user";
 import { getMaximumNumberOfPlayersByTime } from "./resultDataHelpers";
 import { StringNumberObject, PriorityObject } from "server/types/commonTypes";
@@ -9,7 +9,7 @@ import { toPercent } from "server/features/statistics/statsUtil";
 import { TIMEZONE } from "shared/utils/initializeDayjs";
 
 export const getGamesByStartTime = (
-  games: readonly Game[],
+  games: readonly ProgramItem[],
 ): StringNumberObject => {
   const gamesByTime = countBy(games, "startTime");
 
@@ -26,7 +26,7 @@ const getUsersByGames = (_users: readonly User[]): StringNumberObject => {
 };
 
 export const getNumberOfFullGames = (
-  games: readonly Game[],
+  games: readonly ProgramItem[],
   users: readonly User[],
 ): void => {
   const usersByGames = getUsersByGames(users);
@@ -80,7 +80,7 @@ const getSignupsByStartTime = (users: readonly User[]): StringNumberObject => {
 };
 
 export const getDemandByTime = (
-  games: readonly Game[],
+  games: readonly ProgramItem[],
   users: readonly User[],
 ): void => {
   logger.info(">>> Demand by time");
@@ -100,7 +100,7 @@ export const getDemandByTime = (
 };
 
 export const getDemandByGame = (
-  games: readonly Game[],
+  games: readonly ProgramItem[],
   users: readonly User[],
 ): void => {
   logger.info(">>> Demand by games");

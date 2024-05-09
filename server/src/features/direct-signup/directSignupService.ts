@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import { findGameById } from "server/features/program-item/programItemRepository";
+import { findProgramItemById } from "server/features/program-item/programItemRepository";
 import { getTimeNow } from "server/features/player-assignment/utils/getTimeNow";
 import { isValidSignupTime } from "server/features/user/userUtils";
 import {
@@ -43,7 +43,7 @@ export const storeDirectSignup = async (
 
   const timeNow = unwrapResult(timeNowResult);
 
-  const gameResult = await findGameById(directSignupGameId);
+  const gameResult = await findProgramItemById(directSignupGameId);
   if (isErrorResult(gameResult)) {
     return {
       message: `Signed game not found`,

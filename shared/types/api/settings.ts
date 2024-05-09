@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { LoginProvider, SignupStrategy } from "shared/config/sharedConfigTypes";
-import { Game } from "shared/types/models/game";
+import { ProgramItem } from "shared/types/models/programItem";
 import {
   Settings,
   SettingsSchema,
@@ -11,17 +11,17 @@ import { ApiResult } from "shared/types/api/errors";
 // POST hidden
 
 export interface PostHiddenRequest {
-  hiddenData: readonly Game[];
+  hiddenData: readonly ProgramItem[];
 }
 
 export interface PostHiddenResponse extends ApiResult {
-  hiddenGames: readonly Game[];
+  hiddenGames: readonly ProgramItem[];
 }
 
 // GET settings
 
 export interface SettingsPayload {
-  hiddenGames: readonly Game[];
+  hiddenGames: readonly ProgramItem[];
   appOpen: boolean;
   signupQuestions: readonly SignupQuestion[];
   signupStrategy: SignupStrategy;

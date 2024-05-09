@@ -2,7 +2,7 @@ import { ChangeEvent, ReactElement, useEffect, useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import loaderImage from "assets/loading.gif";
-import { Game } from "shared/types/models/game";
+import { ProgramItem } from "shared/types/models/programItem";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { Button, ButtonStyle } from "client/components/Button";
 import {
@@ -20,7 +20,7 @@ import {
 import { Checkbox } from "client/components/Checkbox";
 
 interface Props {
-  game: Game;
+  game: ProgramItem;
 }
 
 export const AdminActionCard = ({ game }: Props): ReactElement => {

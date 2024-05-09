@@ -1,8 +1,8 @@
 import { SignupStrategy } from "shared/config/sharedConfigTypes";
-import { Game } from "shared/types/models/game";
+import { ProgramItem } from "shared/types/models/programItem";
 
 export const getTimeslotSignupStrategy = (
-  gamesForStartTime: Game[],
+  gamesForStartTime: ProgramItem[],
 ): SignupStrategy => {
   // TODO:  How should we handle case where not all the games inside timeslot have same signup strategy?
   //        Should not be problem in real cases, but is it ok to fallback DIRECT if data is broken?

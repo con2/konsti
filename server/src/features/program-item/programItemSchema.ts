@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
-import { GameDoc } from "server/types/gameTypes";
+import { ProgramItemDoc } from "server/types/programItemTypes";
 
-const gameSchema = new mongoose.Schema(
+const programItemSchema = new mongoose.Schema(
   {
     gameId: String,
     title: String,
@@ -32,4 +32,7 @@ const gameSchema = new mongoose.Schema(
   { timestamps: true },
 );
 
-export const GameModel = mongoose.model<GameDoc>("game", gameSchema);
+export const ProgramItemModel = mongoose.model<ProgramItemDoc>(
+  "program-item",
+  programItemSchema,
+);

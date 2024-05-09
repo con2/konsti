@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { groupBy, sortBy, capitalize } from "lodash-es";
 import styled from "styled-components";
 import { useAppSelector } from "client/utils/hooks";
-import { Game } from "shared/types/models/game";
+import { ProgramItem } from "shared/types/models/programItem";
 import { getWeekdayAndTime } from "client/utils/timeFormatter";
 import { ControlledInput } from "client/components/ControlledInput";
 import { MULTIPLE_WHITESPACES_REGEX } from "client/views/all-games/AllGamesView";
@@ -13,7 +13,9 @@ export const PrivateSignupMessages = (): ReactElement => {
   const { t } = useTranslation();
 
   const [searchTerm, setSearchTerm] = useState<string>("");
-  const [filteredGames, setFilteredGames] = useState<readonly Game[]>([]);
+  const [filteredGames, setFilteredGames] = useState<readonly ProgramItem[]>(
+    [],
+  );
 
   const games = useAppSelector((state) => state.allGames.games);
   const signupQuestions = useAppSelector(

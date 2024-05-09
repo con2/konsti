@@ -92,7 +92,7 @@ export enum AccessibilityValue {
   PARTICIPATION_REQUIRES_REACT_QUICKLY = "participationRequiresReactQuickly",
 }
 
-export const GameSchema = z.object({
+export const ProgramItemSchema = z.object({
   gameId: z.string(),
   title: z.string(),
   description: z.string(),
@@ -121,10 +121,10 @@ export const GameSchema = z.object({
   signupType: z.string(),
 });
 
-export type Game = z.infer<typeof GameSchema>;
+export type ProgramItem = z.infer<typeof ProgramItemSchema>;
 
 export interface GameWithUsernames {
-  game: Game;
+  game: ProgramItem;
   users: UserSignup[];
 }
 

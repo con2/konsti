@@ -2,8 +2,8 @@ import dayjs from "dayjs";
 import { countBy, groupBy } from "lodash-es";
 import { padgAssignPlayers } from "server/features/player-assignment/padg/padgAssignPlayers";
 import { User } from "shared/types/models/user";
-import { Game } from "shared/types/models/game";
-import { saveGamePopularity } from "server/features/program-item/programItemRepository";
+import { ProgramItem } from "shared/types/models/programItem";
+import { saveProgramItemPopularity } from "server/features/program-item/programItemRepository";
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 import {
   Result,
@@ -18,7 +18,7 @@ import { getTimeNow } from "server/features/player-assignment/utils/getTimeNow";
 
 export const updateWithAssign = async (
   users: readonly User[],
-  games: readonly Game[],
+  games: readonly ProgramItem[],
   directSignups: readonly DirectSignupsForProgramItem[],
 ): Promise<Result<void, MongoDbError | AssignmentError>> => {
   const gamesForStartTimes = groupBy(games, (game) =>
@@ -61,12 +61,12 @@ export const updateWithAssign = async (
 
   const gamePopularityUpdates = games
     .map((game) => ({
-      gameId: game.gameId,
+      programItemId: game.gameId,
       popularity: groupedSignups[game.gameId],
     }))
     .filter((popularityUpdate) => popularityUpdate.popularity);
 
-  const saveGamePopularityResult = await saveGamePopularity(
+  const saveGamePopularityResult = await saveProgramItemPopularity(
     gamePopularityUpdates,
   );
 

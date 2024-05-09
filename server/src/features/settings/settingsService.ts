@@ -13,7 +13,7 @@ import {
   PostSettingsResponse,
   PostSignupQuestionResponse,
 } from "shared/types/api/settings";
-import { Game } from "shared/types/models/game";
+import { ProgramItem } from "shared/types/models/programItem";
 import { removeHiddenGamesFromUsers } from "server/features/settings/utils/removeHiddenGamesFromUsers";
 import { SignupQuestion } from "shared/types/models/settings";
 import { isErrorResult, unwrapResult } from "shared/utils/result";
@@ -44,7 +44,7 @@ export const fetchSettings = async (): Promise<
 };
 
 export const storeHidden = async (
-  hiddenData: readonly Game[],
+  hiddenData: readonly ProgramItem[],
 ): Promise<PostHiddenResponse | ApiError> => {
   const settingsResult = await saveHidden(hiddenData);
   if (isErrorResult(settingsResult)) {

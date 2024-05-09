@@ -6,7 +6,7 @@ import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { getJWT } from "server/utils/jwt";
 import { UserGroup } from "shared/types/models/user";
 import { closeServer, startServer } from "server/utils/server";
-import { saveGames } from "server/features/program-item/programItemRepository";
+import { saveProgramItems } from "server/features/program-item/programItemRepository";
 import { saveUser } from "server/features/user/userRepository";
 import {
   mockPostDirectSignupRequest,
@@ -79,7 +79,7 @@ describe(`GET ${ApiEndpoint.SIGNUP_MESSAGE}`, () => {
     await saveSignupQuestion(testSignupQuestion);
     await saveSignupQuestion(testSignupQuestion2);
 
-    await saveGames([testGame, testGame2]);
+    await saveProgramItems([testGame, testGame2]);
     await saveUser(mockUser);
 
     await saveDirectSignup({

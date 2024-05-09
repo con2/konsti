@@ -1,7 +1,7 @@
 import dayjs, { Dayjs } from "dayjs";
 import { reverse } from "lodash-es";
 import { config } from "shared/config";
-import { Game } from "shared/types/models/game";
+import { ProgramItem } from "shared/types/models/programItem";
 import { TIMEZONE } from "shared/utils/initializeDayjs";
 
 export const getAlgorithmSignupStartTime = (startTime: string): Dayjs => {
@@ -30,7 +30,7 @@ export const getAlgorithmSignupEndTime = (startTime: string): Dayjs => {
   return dayjs(startTime).subtract(DIRECT_SIGNUP_START, "minutes");
 };
 
-export const getDirectSignupStartTime = (game: Game): Dayjs => {
+export const getDirectSignupStartTime = (game: ProgramItem): Dayjs => {
   const {
     conventionStartTime,
     DIRECT_SIGNUP_START,

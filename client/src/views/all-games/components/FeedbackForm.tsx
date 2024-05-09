@@ -2,12 +2,12 @@ import { ReactElement, ChangeEvent, useState } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { postFeedback } from "client/services/feedbackServices";
-import { Game } from "shared/types/models/game";
+import { ProgramItem } from "shared/types/models/programItem";
 import { Button, ButtonStyle } from "client/components/Button";
 import { TextArea } from "client/components/TextArea";
 
 interface Props {
-  game: Game;
+  game: ProgramItem;
 }
 
 export const FeedbackForm = ({ game }: Props): ReactElement => {

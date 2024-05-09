@@ -1,7 +1,7 @@
 import { ReactElement, FormEvent, useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
-import { Game } from "shared/types/models/game";
+import { ProgramItem } from "shared/types/models/programItem";
 import {
   PostDirectSignupErrorMessage,
   submitPostDirectSignup,
@@ -29,7 +29,7 @@ import { Checkbox } from "client/components/Checkbox";
 import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 
 interface Props {
-  game: Game;
+  game: ProgramItem;
   signupQuestion: SignupQuestion | undefined;
   onEnterGame: () => void;
   onCancelSignup: () => void;

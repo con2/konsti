@@ -12,7 +12,7 @@ import {
   SignupQuestionType,
 } from "shared/types/models/settings";
 import { testGame, testGame2 } from "shared/tests/testGame";
-import { saveGames } from "server/features/program-item/programItemRepository";
+import { saveProgramItems } from "server/features/program-item/programItemRepository";
 import { findUser, saveUser } from "server/features/user/userRepository";
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import {
@@ -139,7 +139,7 @@ describe(`POST ${ApiEndpoint.HIDDEN}`, () => {
   });
 
   test("should remove hidden game from users", async () => {
-    await saveGames([testGame, testGame2]);
+    await saveProgramItems([testGame, testGame2]);
     await saveUser(mockUser);
     await saveLotterySignups({
       username: mockUser.username,
@@ -174,7 +174,7 @@ describe(`POST ${ApiEndpoint.HIDDEN}`, () => {
   });
 
   test("should clean but not remove signup document when program item is hidden", async () => {
-    await saveGames([testGame]);
+    await saveProgramItems([testGame]);
     await saveUser(mockUser);
     await saveDirectSignup(mockPostDirectSignupRequest);
 

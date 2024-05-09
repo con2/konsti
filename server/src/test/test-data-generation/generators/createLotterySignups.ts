@@ -3,16 +3,16 @@ import dayjs from "dayjs";
 import { groupBy } from "lodash-es";
 import { logger } from "server/utils/logger";
 import { updateGamePopularity } from "server/features/game-popularity/updateGamePopularity";
-import { Game } from "shared/types/models/game";
+import { ProgramItem } from "shared/types/models/programItem";
 import { findUsers } from "server/features/user/userRepository";
-import { findGames } from "server/features/program-item/programItemRepository";
+import { findProgramItems } from "server/features/program-item/programItemRepository";
 import { Signup, User } from "shared/types/models/user";
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 import { config } from "shared/config";
 
 export const createLotterySignups = async (): Promise<void> => {
-  const gamesResult = await findGames();
+  const gamesResult = await findProgramItems();
   const games = unsafelyUnwrapResult(gamesResult);
   const allUsersResult = await findUsers();
   const allUsers = unsafelyUnwrapResult(allUsersResult);
@@ -42,7 +42,7 @@ export const createLotterySignups = async (): Promise<void> => {
   await updateGamePopularity();
 };
 
-const getRandomLotterySignup = (games: readonly Game[]): Signup[] => {
+const getRandomLotterySignup = (games: readonly ProgramItem[]): Signup[] => {
   const lotterySignups = [] as Signup[];
   let randomIndex;
 
@@ -99,7 +99,7 @@ const getRandomLotterySignup = (games: readonly Game[]): Signup[] => {
 };
 
 const doLotterySignup = async (
-  games: readonly Game[],
+  games: readonly ProgramItem[],
   user: User,
 ): Promise<User> => {
   const lotterySignups = getRandomLotterySignup(games);
@@ -112,7 +112,7 @@ const doLotterySignup = async (
 };
 
 const lotterySignupMultiple = async (
-  games: readonly Game[],
+  games: readonly ProgramItem[],
   users: readonly User[],
 ): Promise<void> => {
   const promises: Array<Promise<User>> = [];
@@ -127,7 +127,7 @@ const lotterySignupMultiple = async (
 };
 
 const lotterySignupGroup = async (
-  games: readonly Game[],
+  games: readonly ProgramItem[],
   users: readonly User[],
 ): Promise<void> => {
   // Generate random signup data for the group creator

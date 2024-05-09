@@ -3,7 +3,7 @@ import { groupBy } from "lodash-es";
 import dayjs from "dayjs";
 import { z } from "zod";
 import { logger } from "server/utils/logger";
-import { GameSchema } from "shared/types/models/game";
+import { ProgramItemSchema } from "shared/types/models/programItem";
 import { Message, writeFeedback } from "server/features/statistics/statsUtil";
 import { PostFeedbackRequestSchema } from "shared/types/api/feedback";
 import { config } from "shared/config";
@@ -28,7 +28,7 @@ export const formatFeedbacks = (year: number, event: string): void => {
     `${config.server().statsDataDir}/${event}/${year}/games.json`,
     "utf8",
   );
-  const games = z.array(GameSchema).parse(JSON.parse(gamesJson));
+  const games = z.array(ProgramItemSchema).parse(JSON.parse(gamesJson));
 
   logger.info(`Loaded ${games.length} games`);
 

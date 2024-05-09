@@ -5,12 +5,12 @@ import { getSelectedPlayers } from "server/features/player-assignment/utils/getS
 import { getPlayerGroups } from "server/features/player-assignment/utils/getPlayerGroups";
 import { getGroupMembers } from "server/features/player-assignment/utils/getGroupMembers";
 import { User } from "shared/types/models/user";
-import { Game } from "shared/types/models/game";
+import { ProgramItem } from "shared/types/models/programItem";
 import { RunRandomAndPadgInput } from "server/types/resultTypes";
 
 export const getRunRandomAndPadgInput = (
   players: readonly User[],
-  games: readonly Game[],
+  games: readonly ProgramItem[],
   startTime: string,
 ): RunRandomAndPadgInput => {
   const startingGames = getStartingGames(games, startTime);

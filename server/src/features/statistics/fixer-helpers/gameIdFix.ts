@@ -2,11 +2,11 @@ import fs from "fs";
 import { isEqual } from "lodash-es";
 import { logger } from "server/utils/logger";
 import { User } from "shared/types/models/user";
-import { GameDoc } from "server/types/gameTypes";
+import { ProgramItemDoc } from "server/types/programItemTypes";
 import { ResultsCollectionEntry } from "server/types/resultTypes";
 import { writeJson } from "server/features/statistics/statsUtil";
 import { config } from "shared/config";
-import { Game } from "shared/types/models/game";
+import { ProgramItem } from "shared/types/models/programItem";
 import { DirectSignupDoc } from "server/features/direct-signup/directSignupTypes";
 import { SettingsDoc } from "server/types/settingsTypes";
 
@@ -29,7 +29,7 @@ export const gameIdFix = async (year: number, event: string): Promise<void> => {
 
   logger.info(`Loaded ${results.length} results`);
 
-  const games: GameDoc[] = JSON.parse(
+  const games: ProgramItemDoc[] = JSON.parse(
     fs.readFileSync(
       `${config.server().statsDataDir}/${event}/${year}/games.json`,
       "utf8",
@@ -136,7 +136,7 @@ export const gameIdFix = async (year: number, event: string): Promise<void> => {
     });
   });
 
-  const tempHiddenGames: Game[] = [];
+  const tempHiddenGames: ProgramItem[] = [];
 
   settings.map((setting) => {
     games.map((game) => {

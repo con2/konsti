@@ -12,7 +12,7 @@ import {
   unwrapResult,
 } from "shared/utils/result";
 
-export const removeInvalidGamesFromUsers = async (): Promise<
+export const removeInvalidProgramItemsFromUsers = async (): Promise<
   Result<void, MongoDbError>
 > => {
   logger.info("Remove invalid games from users");

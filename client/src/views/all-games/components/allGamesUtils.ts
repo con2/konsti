@@ -1,11 +1,11 @@
 import { Dayjs } from "dayjs";
-import { Game } from "shared/types/models/game";
+import { ProgramItem } from "shared/types/models/programItem";
 import { Signup } from "shared/types/models/user";
 import { getDateAndTime, getWeekdayAndTime } from "client/utils/timeFormatter";
 import { config } from "shared/config";
 
 export const isAlreadyLotterySigned = (
-  gameToCheck: Game,
+  gameToCheck: ProgramItem,
   lotterySignups: readonly Signup[],
 ): boolean => {
   return lotterySignups.some(
@@ -14,7 +14,7 @@ export const isAlreadyLotterySigned = (
 };
 
 export const isAlreadyDirectySigned = (
-  gameToCheck: Game,
+  gameToCheck: ProgramItem,
   directSignups: readonly Signup[],
 ): boolean => {
   return directSignups.some(

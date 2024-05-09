@@ -4,14 +4,14 @@ import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { capitalize } from "lodash-es";
 import { getWeekdayAndTime } from "client/utils/timeFormatter";
-import { Game } from "shared/types/models/game";
+import { ProgramItem } from "shared/types/models/programItem";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { updateFavorite } from "client/utils/favorite";
 import { IconButton } from "client/components/IconButton";
 import { selectFavoritedGames } from "client/views/my-games/myGamesSlice";
 
 interface Props {
-  games: readonly Game[];
+  games: readonly ProgramItem[];
   startTimes: readonly string[];
 }
 
@@ -24,7 +24,7 @@ export const FavoritesByStartTimes = ({
   const username = useAppSelector((state) => state.login.username);
   const favoritedGames = useAppSelector(selectFavoritedGames);
 
-  const removeFavorite = async (game: Game): Promise<void> => {
+  const removeFavorite = async (game: ProgramItem): Promise<void> => {
     await updateFavorite({
       game,
       action: "del",

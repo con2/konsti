@@ -3,7 +3,7 @@ import { logger } from "server/utils/logger";
 import { getStartingGames } from "server/features/player-assignment/utils/getStartingGames";
 import { runRandomAssignment } from "server/features/player-assignment/random/utils/runRandomAssignment";
 import { User } from "shared/types/models/user";
-import { Game } from "shared/types/models/game";
+import { ProgramItem } from "shared/types/models/programItem";
 import {
   AssignmentResultStatus,
   PlayerAssignmentResult,
@@ -21,7 +21,7 @@ import { AssignmentStrategy } from "shared/config/sharedConfigTypes";
 
 export const randomAssignPlayers = (
   players: readonly User[],
-  games: readonly Game[],
+  games: readonly ProgramItem[],
   startTime: string,
   directSignups: readonly DirectSignupsForProgramItem[],
 ): Result<PlayerAssignmentResult, AssignmentError> => {

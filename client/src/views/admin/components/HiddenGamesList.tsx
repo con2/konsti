@@ -3,10 +3,10 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { sortBy } from "lodash-es";
 import { getWeekdayAndTime } from "client/utils/timeFormatter";
-import { Game } from "shared/types/models/game";
+import { ProgramItem } from "shared/types/models/programItem";
 
 interface Props {
-  hiddenGames: readonly Game[];
+  hiddenGames: readonly ProgramItem[];
 }
 
 export const HiddenGamesList = ({ hiddenGames }: Props): ReactElement => {

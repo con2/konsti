@@ -7,11 +7,11 @@ import {
 } from "./gameDataHelpers";
 import { logger } from "server/utils/logger";
 import { config } from "shared/config";
-import { Game } from "shared/types/models/game";
+import { ProgramItem } from "shared/types/models/programItem";
 import { User } from "shared/types/models/user";
 
 export const getGameStats = (year: number, event: string): void => {
-  const games: Game[] = JSON.parse(
+  const games: ProgramItem[] = JSON.parse(
     fs.readFileSync(
       `${config.server().statsDataDir}/${event}/${year}/games.json`,
       "utf8",

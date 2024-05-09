@@ -1,14 +1,14 @@
 import {
   AccessibilityValue,
-  Game,
+  ProgramItem,
   GameStyle,
   Genre,
   Language,
   ProgramType,
   Tag,
-} from "shared/types/models/game";
+} from "shared/types/models/programItem";
 
-export const testGame: Game = {
+export const testGame: ProgramItem = {
   gameId: "p2106",
   title: "Test game",
   description: "Test game description",
@@ -49,7 +49,7 @@ export const testGame: Game = {
   signupType: "Konsti",
 };
 
-export const testGame2: Game = {
+export const testGame2: ProgramItem = {
   gameId: "p3001",
   title: "Test game 2",
   description: "Test game description",

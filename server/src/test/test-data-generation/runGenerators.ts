@@ -3,7 +3,7 @@ import { createGames } from "server/test/test-data-generation/generators/createG
 import { createLotterySignups } from "server/test/test-data-generation/generators/createLotterySignups";
 import { removeUsers } from "server/features/user/userRepository";
 import { removeResults } from "server/features/results/resultsRepository";
-import { removeGames } from "server/features/program-item/programItemRepository";
+import { removeProgramItems } from "server/features/program-item/programItemRepository";
 import { db } from "server/db/mongodb";
 import { generateTestUsers } from "server/test/test-data-generation/generators/generateTestData";
 import { createDirectSignups } from "server/test/test-data-generation/generators/createSignups";
@@ -83,7 +83,7 @@ export const runGenerators = async (
   if (options.games) {
     logger.info("Generate games");
 
-    !options.clean && (await removeGames());
+    !options.clean && (await removeProgramItems());
     !options.clean && (await removeResults());
 
     await createGames(newGamesCount);

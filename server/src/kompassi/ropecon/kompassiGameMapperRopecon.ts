@@ -2,13 +2,13 @@ import { uniq } from "lodash-es";
 import dayjs from "dayjs";
 import {
   AccessibilityValue,
-  Game,
+  ProgramItem,
   GameStyle,
   Genre,
   Language,
   ProgramType,
   Tag,
-} from "shared/types/models/game";
+} from "shared/types/models/programItem";
 import {
   KompassiGameRopecon,
   KompassiGameStyleRopecon,
@@ -23,7 +23,7 @@ import { config } from "shared/config";
 
 export const kompassiGameMapperRopecon = (
   games: readonly KompassiGameRopecon[],
-): readonly Game[] => {
+): readonly ProgramItem[] => {
   return games.map((game) => {
     return {
       gameId: game.identifier,

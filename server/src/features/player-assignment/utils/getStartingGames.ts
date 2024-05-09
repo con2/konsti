@@ -1,13 +1,13 @@
 import dayjs from "dayjs";
 import { logger } from "server/utils/logger";
-import { Game } from "shared/types/models/game";
+import { ProgramItem } from "shared/types/models/programItem";
 
 export const getStartingGames = (
-  games: readonly Game[],
+  games: readonly ProgramItem[],
   startTime: string,
-): readonly Game[] => {
+): readonly ProgramItem[] => {
   logger.debug("Get starting games");
-  const startingGames = [] as Game[];
+  const startingGames = [] as ProgramItem[];
   const selectedStartTime = dayjs(startTime);
 
   // Get games that start at defined time

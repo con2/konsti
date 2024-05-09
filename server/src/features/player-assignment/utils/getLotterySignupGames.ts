@@ -1,13 +1,13 @@
 import { logger } from "server/utils/logger";
-import { Game } from "shared/types/models/game";
+import { ProgramItem } from "shared/types/models/programItem";
 import { SignupWish } from "server/types/userTypes";
 
 export const getLotterySignupGames = (
-  startingGames: readonly Game[],
+  startingGames: readonly ProgramItem[],
   signupWishes: readonly SignupWish[],
-): Game[] => {
+): ProgramItem[] => {
   logger.debug("Get selected games");
-  const lotterySignupGames = [] as Game[];
+  const lotterySignupGames = [] as ProgramItem[];
   let minAttendance = 0;
   let maxAttendance = 0;
 

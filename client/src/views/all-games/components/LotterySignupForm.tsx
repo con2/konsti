@@ -1,7 +1,7 @@
 import { ReactElement, FormEvent, useState, ChangeEvent } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-import { Game } from "shared/types/models/game";
+import { ProgramItem } from "shared/types/models/programItem";
 import {
   PostLotterySignupsErrorMessage,
   submitPostLotterySignups,
@@ -14,7 +14,7 @@ import { ButtonGroup } from "client/components/ButtonGroup";
 import { selectLotterySignups } from "client/views/my-games/myGamesSlice";
 
 interface Props {
-  game: Game;
+  game: ProgramItem;
   startTime: string;
   onCancel: () => void;
 }

@@ -2,8 +2,8 @@ import dayjs from "dayjs";
 import { groupBy, shuffle } from "lodash-es";
 import { ObjectId } from "mongoose";
 import {
-  findGameById,
-  findGames,
+  findProgramItemById,
+  findProgramItems,
 } from "server/features/program-item/programItemRepository";
 import {
   DirectSignupsForProgramItem,
@@ -17,7 +17,7 @@ import {
   DeleteDirectSignupRequest,
   PostDirectSignupRequest,
 } from "shared/types/api/myGames";
-import { ProgramType } from "shared/types/models/game";
+import { ProgramType } from "shared/types/models/programItem";
 import {
   Result,
   isErrorResult,
@@ -87,7 +87,7 @@ export const findDirectSignupsByProgramTypes = async (
   programTypes: ProgramType[],
   startTime: string,
 ): Promise<Result<FindDirectSignupsByProgramTypesResponse[], MongoDbError>> => {
-  const gamesResult = await findGames();
+  const gamesResult = await findProgramItems();
   if (isErrorResult(gamesResult)) {
     return gamesResult;
   }
@@ -164,7 +164,7 @@ export const saveDirectSignup = async (
   const { username, directSignupGameId, startTime, message, priority } =
     signupsRequest;
 
-  const gameResult = await findGameById(directSignupGameId);
+  const gameResult = await findProgramItemById(directSignupGameId);
   if (isErrorResult(gameResult)) {
     return gameResult;
   }
@@ -220,7 +220,7 @@ interface SaveSignupsResponse {
 export const saveDirectSignups = async (
   signupsRequests: PostDirectSignupRequest[],
 ): Promise<Result<SaveSignupsResponse, MongoDbError>> => {
-  const gamesResult = await findGames();
+  const gamesResult = await findProgramItems();
   if (isErrorResult(gamesResult)) {
     return gamesResult;
   }
@@ -294,7 +294,7 @@ export const delDirectSignup = async (
 ): Promise<Result<DirectSignupsForProgramItem, MongoDbError>> => {
   const { username, directSignupGameId } = signupRequest;
 
-  const gameResult = await findGameById(directSignupGameId);
+  const gameResult = await findProgramItemById(directSignupGameId);
   if (isErrorResult(gameResult)) {
     return gameResult;
   }
@@ -358,7 +358,7 @@ export const delDirectSignup = async (
 export const delDirectSignupDocumentsByGameIds = async (
   gameIds: string[],
 ): Promise<Result<void, MongoDbError>> => {
-  const gamesResult = await findGames();
+  const gamesResult = await findProgramItems();
   if (isErrorResult(gamesResult)) {
     return gamesResult;
   }
@@ -389,7 +389,7 @@ export const delDirectSignupDocumentsByGameIds = async (
 export const resetDirectSignupsByGameIds = async (
   gameIds: string[],
 ): Promise<Result<void, MongoDbError>> => {
-  const gamesResult = await findGames();
+  const gamesResult = await findProgramItems();
   if (isErrorResult(gamesResult)) {
     return gamesResult;
   }
@@ -420,7 +420,7 @@ export const resetDirectSignupsByGameIds = async (
 export const delAssignmentDirectSignupsByStartTime = async (
   startTime: string,
 ): Promise<Result<void, MongoDbError>> => {
-  const gamesResult = await findGames();
+  const gamesResult = await findProgramItems();
   if (isErrorResult(gamesResult)) {
     return gamesResult;
   }

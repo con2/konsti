@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { MyGamesState, RootState } from "client/types/reduxTypes";
-import { Game } from "shared/types/models/game";
+import { ProgramItem } from "shared/types/models/programItem";
 import { Signup, UserGames } from "shared/types/models/user";
 
 const initialState: MyGamesState = {
@@ -22,7 +22,10 @@ const myGamesSlice = createSlice({
       };
     },
 
-    submitUpdateFavoritesAsync(state, action: PayloadAction<readonly Game[]>) {
+    submitUpdateFavoritesAsync(
+      state,
+      action: PayloadAction<readonly ProgramItem[]>,
+    ) {
       return {
         ...state,
         favoritedGames: action.payload,
@@ -66,5 +69,6 @@ export const selectDirectSignups = (state: RootState): readonly Signup[] =>
   state.myGames.directSignups;
 export const selectLotterySignups = (state: RootState): readonly Signup[] =>
   state.myGames.lotterySignups;
-export const selectFavoritedGames = (state: RootState): readonly Game[] =>
-  state.myGames.favoritedGames;
+export const selectFavoritedGames = (
+  state: RootState,
+): readonly ProgramItem[] => state.myGames.favoritedGames;

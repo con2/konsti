@@ -7,7 +7,7 @@ import { generateTestData } from "server/test/test-data-generation/generators/ge
 import { AssignmentStrategy } from "shared/config/sharedConfigTypes";
 import { config } from "shared/config";
 import { saveUser } from "server/features/user/userRepository";
-import { saveGames } from "server/features/program-item/programItemRepository";
+import { saveProgramItems } from "server/features/program-item/programItemRepository";
 import {
   findDirectSignups,
   findUserDirectSignups,
@@ -21,12 +21,12 @@ import {
   mockUser,
   mockUser2,
 } from "server/test/mock-data/mockUser";
-import { ProgramType } from "shared/types/models/game";
+import { ProgramType } from "shared/types/models/programItem";
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 import { assertUserUpdatedCorrectly } from "server/features/player-assignment/runAssignmentTestUtils";
 import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
-import { GameModel } from "server/features/program-item/programItemSchema";
+import { ProgramItemModel } from "server/features/program-item/programItemSchema";
 
 // This needs to be adjusted if test data is changed
 const expectedResultsCount = 18;
@@ -128,7 +128,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
 
     // Populate database
-    await saveGames([
+    await saveProgramItems([
       testGame,
       {
         ...testGame2,
@@ -209,7 +209,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
 
     // Populate database
-    await saveGames([
+    await saveProgramItems([
       { ...testGame, minAttendance: 1 },
       {
         ...testGame2,
@@ -290,7 +290,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
 
     // Populate database
-    await saveGames([
+    await saveProgramItems([
       testGame,
       {
         ...testGame2,
@@ -377,7 +377,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
       .add(1, "hours")
       .toISOString();
 
-    await saveGames([
+    await saveProgramItems([
       { ...testGame },
       {
         ...testGame2,
@@ -391,7 +391,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     // User 1 has previous signup from moved program item - this should not be removed
     await saveDirectSignup(mockPostDirectSignupRequest);
 
-    await GameModel.updateOne(
+    await ProgramItemModel.updateOne(
       { gameId: testGame.gameId },
       {
         startTime: assignmentTime,
@@ -450,7 +450,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
       .add(1, "hours")
       .toISOString();
 
-    await saveGames([
+    await saveProgramItems([
       { ...testGame },
       {
         ...testGame2,
@@ -472,7 +472,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     // User has previous signup from moved program item - this should be replaced by assignment result
     await saveDirectSignup(mockPostDirectSignupRequest);
 
-    await GameModel.updateOne(
+    await ProgramItemModel.updateOne(
       { gameId: testGame.gameId },
       {
         startTime: assignmentTime,
@@ -522,7 +522,7 @@ describe("Assignment with first time bonus", () => {
     const tournamentGameId = "AIAHHUA";
 
     // Populate database
-    await saveGames([
+    await saveProgramItems([
       { ...testGame, minAttendance: 1, maxAttendance: 1 },
       testGame2,
       {

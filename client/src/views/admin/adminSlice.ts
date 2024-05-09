@@ -4,7 +4,7 @@ import { BackendErrorType } from "client/components/ErrorBar";
 import { AdminState, RootState } from "client/types/reduxTypes";
 import { SettingsPayload } from "shared/types/api/settings";
 import { LoginProvider, SignupStrategy } from "shared/config/sharedConfigTypes";
-import { Game, ProgramType } from "shared/types/models/game";
+import { ProgramItem, ProgramType } from "shared/types/models/programItem";
 import { SignupQuestion } from "shared/types/models/settings";
 import { SignupMessage } from "shared/types/models/signupMessage";
 import { loadSession } from "client/utils/localStorage";
@@ -41,7 +41,10 @@ const adminSlice = createSlice({
   name: "admin",
   initialState,
   reducers: {
-    submitUpdateHiddenAsync(state, action: PayloadAction<readonly Game[]>) {
+    submitUpdateHiddenAsync(
+      state,
+      action: PayloadAction<readonly ProgramItem[]>,
+    ) {
       return { ...state, hiddenGames: action.payload };
     },
 
@@ -124,7 +127,8 @@ export const adminReducer = adminSlice.reducer;
 
 // SELECTORS
 
-const selectGames = (state: RootState): readonly Game[] => state.allGames.games;
+const selectGames = (state: RootState): readonly ProgramItem[] =>
+  state.allGames.games;
 const selectActiveProgramType = (state: RootState): ActiveProgramType =>
   state.admin.activeProgramType;
 

@@ -2,7 +2,7 @@ import { faker } from "@faker-js/faker";
 import { groupBy } from "lodash-es";
 import { logger } from "server/utils/logger";
 import { findUsers } from "server/features/user/userRepository";
-import { findGames } from "server/features/program-item/programItemRepository";
+import { findProgramItems } from "server/features/program-item/programItemRepository";
 import { findSettings } from "server/features/settings/settingsRepository";
 import { shuffleArray } from "server/utils/shuffleArray";
 import { getRandomInt } from "server/features/player-assignment/utils/getRandomInt";
@@ -13,7 +13,7 @@ import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 export const createDirectSignups = async (): Promise<void> => {
   logger.info(`Generate direct signup data`);
 
-  const gamesResult = await findGames();
+  const gamesResult = await findProgramItems();
   const games = unsafelyUnwrapResult(gamesResult);
 
   const allUsersResult = await findUsers();

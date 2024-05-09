@@ -6,8 +6,8 @@ import {
   SettingsSchema,
   SignupQuestion,
 } from "shared/types/models/settings";
-import { Game } from "shared/types/models/game";
-import { findGames } from "server/features/program-item/programItemRepository";
+import { ProgramItem } from "shared/types/models/programItem";
+import { findProgramItems } from "server/features/program-item/programItemRepository";
 import { PostSettingsRequest } from "shared/types/api/settings";
 import { SettingsDoc } from "server/types/settingsTypes";
 import {
@@ -93,18 +93,18 @@ export const findSettings = async (): Promise<
 };
 
 export const saveHidden = async (
-  hiddenGames: readonly Game[],
+  hiddenGames: readonly ProgramItem[],
 ): Promise<Result<Settings, MongoDbError>> => {
-  const gamesResult = await findGames();
+  const gamesResult = await findProgramItems();
   if (isErrorResult(gamesResult)) {
     return gamesResult;
   }
 
   const games = unwrapResult(gamesResult);
-  const formattedData = hiddenGames.reduce<Game[]>((acc, hiddenGame) => {
+  const formattedData = hiddenGames.reduce<ProgramItem[]>((acc, hiddenGame) => {
     const gameDocInDb = games.find((game) => game.gameId === hiddenGame.gameId);
     if (gameDocInDb) {
-      acc.push(gameDocInDb._id as Game);
+      acc.push(gameDocInDb._id as ProgramItem);
     }
     return acc;
   }, []);

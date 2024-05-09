@@ -2,7 +2,7 @@ import { ReactElement, useMemo, useState } from "react";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Game } from "shared/types/models/game";
+import { ProgramItem } from "shared/types/models/programItem";
 import { getShortDescriptionFromDescription } from "client/utils/getShortDescriptionFromDescription";
 import { GameInfo } from "client/views/all-games/components/GameInfo";
 import { config } from "shared/config";
@@ -12,7 +12,7 @@ import { AdminActionCard } from "client/views/all-games/components/AdminActionCa
 import { useAppSelector } from "client/utils/hooks";
 
 interface Props {
-  game: Game;
+  game: ProgramItem;
   isAlwaysExpanded: boolean;
 }
 

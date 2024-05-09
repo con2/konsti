@@ -1,5 +1,5 @@
 import { EventLogItem } from "shared/types/models/eventLog";
-import { Game } from "shared/types/models/game";
+import { ProgramItem } from "shared/types/models/programItem";
 
 export interface User {
   kompassiId: number;
@@ -10,14 +10,14 @@ export interface User {
   serial: string;
   groupCode: string;
   groupCreatorCode: string;
-  favoritedGames: readonly Game[];
+  favoritedGames: readonly ProgramItem[];
   lotterySignups: readonly Signup[];
   createdAt: string;
   eventLogItems: EventLogItem[];
 }
 
 export interface Signup {
-  gameDetails: Game;
+  gameDetails: ProgramItem;
   priority: number;
   time: string;
   message: string;
@@ -31,7 +31,7 @@ export enum UserGroup {
 
 export interface UserGames {
   directSignups: readonly Signup[];
-  favoritedGames: readonly Game[];
+  favoritedGames: readonly ProgramItem[];
   lotterySignups: readonly Signup[];
 }
 

@@ -1,5 +1,5 @@
 import { ActiveProgramType } from "shared/config/clientConfigTypes";
-import { ProgramType } from "shared/types/models/game";
+import { ProgramType } from "shared/types/models/programItem";
 
 enum AttendeeType {
   Player = "player",

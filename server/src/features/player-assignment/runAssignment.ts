@@ -1,9 +1,9 @@
 import { logger } from "server/utils/logger";
 import { runAssignmentStrategy } from "server/features/player-assignment/utils/runAssignmentStrategy";
-import { removeInvalidGamesFromUsers } from "server/features/player-assignment/utils/removeInvalidGamesFromUsers";
+import { removeInvalidProgramItemsFromUsers } from "server/features/player-assignment/utils/removeInvalidProgramItemsFromUsers";
 import { PlayerAssignmentResult } from "server/types/resultTypes";
 import { findUsers } from "server/features/user/userRepository";
-import { findGames } from "server/features/program-item/programItemRepository";
+import { findProgramItems } from "server/features/program-item/programItemRepository";
 import { AssignmentStrategy } from "shared/config/sharedConfigTypes";
 import { config } from "shared/config";
 import { removeOverlapSignups } from "server/features/player-assignment/utils/removeOverlapSignups";
@@ -53,7 +53,7 @@ export const runAssignment = async ({
     logger.info("Waiting done, start assignment");
   }
 
-  const removeInvalidGamesResult = await removeInvalidGamesFromUsers();
+  const removeInvalidGamesResult = await removeInvalidProgramItemsFromUsers();
   if (isErrorResult(removeInvalidGamesResult)) {
     return removeInvalidGamesResult;
   }
@@ -80,7 +80,7 @@ export const runAssignment = async ({
     return { ...user, lotterySignups: matchingLotterySignups };
   });
 
-  const gamesResult = await findGames();
+  const gamesResult = await findProgramItems();
   if (isErrorResult(gamesResult)) {
     return gamesResult;
   }

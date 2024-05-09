@@ -1,8 +1,8 @@
-import { findGames } from "server/features/program-item/programItemRepository";
+import { findProgramItems } from "server/features/program-item/programItemRepository";
 import { UserModel } from "server/features/user/userSchema";
 import { logger } from "server/utils/logger";
 import { MongoDbError } from "shared/types/api/errors";
-import { Game } from "shared/types/models/game";
+import { ProgramItem } from "shared/types/models/programItem";
 import { NewFavorite, User } from "shared/types/models/user";
 import {
   Result,
@@ -14,10 +14,10 @@ import {
 
 export const saveFavorite = async (
   favoriteData: NewFavorite,
-): Promise<Result<readonly Game[] | null, MongoDbError>> => {
+): Promise<Result<readonly ProgramItem[] | null, MongoDbError>> => {
   const { username, favoritedGameIds } = favoriteData;
 
-  const gamesResult = await findGames();
+  const gamesResult = await findProgramItems();
 
   if (isErrorResult(gamesResult)) {
     return gamesResult;

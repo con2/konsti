@@ -1,5 +1,9 @@
 import dayjs from "dayjs";
-import { Game, Language, ProgramType } from "shared/types/models/game";
+import {
+  ProgramItem,
+  Language,
+  ProgramType,
+} from "shared/types/models/programItem";
 import {
   KompassiGameSolmukohta,
   KompassiProgramTypeSolmukohta,
@@ -8,7 +12,7 @@ import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 
 export const kompassiGameMapperSolmukohta = (
   games: readonly KompassiGameSolmukohta[],
-): readonly Game[] => {
+): readonly ProgramItem[] => {
   return games.map((game) => {
     return {
       gameId: game.identifier,

@@ -1,10 +1,10 @@
 import { expect, test, afterEach, beforeEach } from "vitest";
 import mongoose from "mongoose";
 import { faker } from "@faker-js/faker";
-import { GameModel } from "server/features/program-item/programItemSchema";
-import { saveGames } from "server/features/program-item/programItemRepository";
+import { ProgramItemModel } from "server/features/program-item/programItemSchema";
+import { saveProgramItems } from "server/features/program-item/programItemRepository";
 import { testGame } from "shared/tests/testGame";
-import { removeDeletedGames } from "server/features/program-item/programItemUtils";
+import { removeDeletedProgramItems } from "server/features/program-item/programItemUtils";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 import { findDirectSignups } from "server/features/direct-signup/directSignupRepository";
 
@@ -19,22 +19,22 @@ afterEach(async () => {
 });
 
 test("should insert new game into collection", async () => {
-  await saveGames([testGame]);
+  await saveProgramItems([testGame]);
 
-  const insertedGame = await GameModel.findOne({
+  const insertedGame = await ProgramItemModel.findOne({
     gameId: testGame.gameId,
   });
   expect(insertedGame?.gameId).toEqual(testGame.gameId);
 });
 
 test("should remove signup document when program item is removed", async () => {
-  await saveGames([testGame]);
+  await saveProgramItems([testGame]);
 
   const findSignupsResult = await findDirectSignups();
   const signups = unsafelyUnwrapResult(findSignupsResult);
   expect(signups).toHaveLength(1);
 
-  const removeDeletedGamesResult = await removeDeletedGames([]);
+  const removeDeletedGamesResult = await removeDeletedProgramItems([]);
   const deletedGamesCount = unsafelyUnwrapResult(removeDeletedGamesResult);
   expect(deletedGamesCount).toEqual(1);
 

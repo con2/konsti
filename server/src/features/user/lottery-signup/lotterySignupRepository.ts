@@ -1,4 +1,4 @@
-import { findGames } from "server/features/program-item/programItemRepository";
+import { findProgramItems } from "server/features/program-item/programItemRepository";
 import { UserModel } from "server/features/user/userSchema";
 import { UserLotterySignups } from "server/types/resultTypes";
 import { logger } from "server/utils/logger";
@@ -17,7 +17,7 @@ export const saveLotterySignups = async (
 ): Promise<Result<User, MongoDbError>> => {
   const { lotterySignups, username } = signupData;
 
-  const gamesResult = await findGames();
+  const gamesResult = await findProgramItems();
 
   if (isErrorResult(gamesResult)) {
     return gamesResult;

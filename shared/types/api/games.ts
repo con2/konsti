@@ -1,10 +1,13 @@
 import { ApiError, ApiResult } from "shared/types/api/errors";
-import { Game, GameWithUsernames } from "shared/types/models/game";
+import {
+  ProgramItem,
+  GameWithUsernames,
+} from "shared/types/models/programItem";
 
 // POST update games
 
 export interface PostUpdateGamesResponse extends ApiResult {
-  games: Game[];
+  games: ProgramItem[];
 }
 
 export interface PostUpdateGamesError extends ApiError {

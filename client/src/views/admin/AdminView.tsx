@@ -10,7 +10,7 @@ import {
 } from "client/views/admin/adminThunks";
 import { submitUpdateGames } from "client/views/all-games/allGamesThunks";
 import { getWeekdayAndTime } from "client/utils/timeFormatter";
-import { Game } from "shared/types/models/game";
+import { ProgramItem } from "shared/types/models/programItem";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { Button, ButtonStyle } from "client/components/Button";
 import { SignupQuestionList } from "client/views/admin/components/SignupQuestionList";
@@ -33,12 +33,12 @@ export const AdminView = (): ReactElement => {
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
 
-  const getVisibleGames = (): readonly Game[] => {
+  const getVisibleGames = (): readonly ProgramItem[] => {
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (!hiddenGames) {
       return games;
     }
-    const visibleGames: Game[] = [];
+    const visibleGames: ProgramItem[] = [];
     for (let i = 0; i < games.length; i += 1) {
       let match = false;
 

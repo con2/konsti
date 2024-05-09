@@ -4,7 +4,7 @@ import { faker } from "@faker-js/faker";
 import dayjs from "dayjs";
 import { saveUser } from "server/features/user/userRepository";
 import { testGame } from "shared/tests/testGame";
-import { saveGames } from "server/features/program-item/programItemRepository";
+import { saveProgramItems } from "server/features/program-item/programItemRepository";
 import {
   mockPostDirectSignupRequest,
   mockUser,
@@ -32,7 +32,7 @@ afterEach(async () => {
 
 test("should add new signup for user", async () => {
   await saveUser(mockUser);
-  await saveGames([testGame]);
+  await saveProgramItems([testGame]);
 
   const responseResult = await saveDirectSignup(mockPostDirectSignupRequest);
   const response = unsafelyUnwrapResult(responseResult);
@@ -43,7 +43,7 @@ test("should add new signup for user", async () => {
 
 test("should delete signup from user", async () => {
   await saveUser(mockUser);
-  await saveGames([testGame]);
+  await saveProgramItems([testGame]);
   await saveDirectSignup(mockPostDirectSignupRequest);
 
   const responseResult = await delDirectSignup(mockPostDirectSignupRequest);
@@ -54,7 +54,7 @@ test("should delete signup from user", async () => {
 
 test("should delete signup from user even if game start time has changed after signup", async () => {
   await saveUser(mockUser);
-  await saveGames([testGame]);
+  await saveProgramItems([testGame]);
   await saveDirectSignup(mockPostDirectSignupRequest);
 
   const responseResult = await delDirectSignup({
@@ -71,7 +71,7 @@ test("should limit max attendees if too many passed to saveDirectSignups", async
   await saveUser(mockUser2);
   await saveUser(mockUser3);
   await saveUser(mockUser4);
-  await saveGames([{ ...testGame, maxAttendance: 2 }]);
+  await saveProgramItems([{ ...testGame, maxAttendance: 2 }]);
 
   const signups = [
     mockPostDirectSignupRequest,
@@ -92,7 +92,7 @@ test("should limit max attendees if too many passed to saveDirectSignups", async
 
 test("should not add multiple duplicate signups for same user", async () => {
   await saveUser(mockUser);
-  await saveGames([testGame]);
+  await saveProgramItems([testGame]);
 
   await Promise.all([
     saveDirectSignup(mockPostDirectSignupRequest),
@@ -109,7 +109,7 @@ test("should not add multiple duplicate signups for same user", async () => {
 
 test("should not delete multiple times if delete called multiple times", async () => {
   await saveUser(mockUser);
-  await saveGames([testGame]);
+  await saveProgramItems([testGame]);
   await saveDirectSignup(mockPostDirectSignupRequest);
 
   await Promise.all([

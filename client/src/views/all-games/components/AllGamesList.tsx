@@ -4,7 +4,7 @@ import { sortBy, groupBy } from "lodash-es";
 import styled from "styled-components";
 import { GameEntry } from "./GameEntry";
 import { useAppSelector } from "client/utils/hooks";
-import { Game } from "shared/types/models/game";
+import { ProgramItem } from "shared/types/models/programItem";
 import { GameListTitle } from "client/views/all-games/components/GameListTitle";
 import { getLotterySignups } from "client/utils/getUpcomingGames";
 import { getTimeslotSignupStrategy } from "client/views/all-games/allGamesUtils";
@@ -17,7 +17,7 @@ import { RaisedCard } from "client/components/RaisedCard";
 import { getIsInGroup } from "client/views/group/groupUtils";
 
 interface Props {
-  games: readonly Game[];
+  games: readonly ProgramItem[];
 }
 
 export const AllGamesList = ({ games }: Props): ReactElement => {
