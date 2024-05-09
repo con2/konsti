@@ -4,7 +4,7 @@ import {
   postKompassiLoginRedirect,
   postKompassiLogoutRedirect,
   postVerifyKompassiLogin,
-} from "server/features/kompassiLogin/kompassiLoginController";
+} from "server/features/kompassi-login/kompassiLoginController";
 import { postFeedback } from "server/features/feedback/feedbackController";
 import {
   getGames,

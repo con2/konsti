@@ -1,7 +1,7 @@
 import {
   getBaseUrl,
   clientId,
-} from "server/features/kompassiLogin/kompassiLoginService";
+} from "server/features/kompassi-login/kompassiLoginService";
 import { AuthEndpoint } from "shared/constants/apiEndpoints";
 
 export const getAuthUrl = (origin: string): string => {
