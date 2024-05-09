@@ -25,7 +25,7 @@ export const formatFeedbacks = (year: number, event: string): void => {
   logger.info(`Loaded ${feedbacks.length} feedbacks`);
 
   const gamesJson = fs.readFileSync(
-    `${config.server().statsDataDir}/${event}/${year}/games.json`,
+    `${config.server().statsDataDir}/${event}/${year}/program-items.json`,
     "utf8",
   );
   const games = z.array(ProgramItemSchema).parse(JSON.parse(gamesJson));

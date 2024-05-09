@@ -47,18 +47,20 @@ export const removeHiddenGamesFromUsers = async (
       }
     });
 
-    const favoritedGames = user.favoritedGames.filter((favoritedGame) => {
-      const hiddenFound = hiddenGames.find((hiddenGame) => {
-        return hiddenGame.programItemId === favoritedGame.programItemId;
-      });
-      if (!hiddenFound) {
-        return favoritedGame;
-      }
-    });
+    const favoritedGames = user.favoritedProgramItems.filter(
+      (favoritedGame) => {
+        const hiddenFound = hiddenGames.find((hiddenGame) => {
+          return hiddenGame.programItemId === favoritedGame.programItemId;
+        });
+        if (!hiddenFound) {
+          return favoritedGame;
+        }
+      },
+    );
 
     if (
       user.lotterySignups.length !== lotterySignups.length ||
-      user.favoritedGames.length !== favoritedGames.length
+      user.favoritedProgramItems.length !== favoritedGames.length
     ) {
       return {
         ...user,

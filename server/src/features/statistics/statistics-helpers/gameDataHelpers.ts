@@ -9,9 +9,9 @@ import { toPercent } from "server/features/statistics/statsUtil";
 import { TIMEZONE } from "shared/utils/initializeDayjs";
 
 export const getGamesByStartTime = (
-  games: readonly ProgramItem[],
+  programItems: readonly ProgramItem[],
 ): StringNumberObject => {
-  const gamesByTime = countBy(games, "startTime");
+  const gamesByTime = countBy(programItems, "startTime");
 
   logger.info(`Number of games for each start time: \n`, gamesByTime);
   return gamesByTime;
@@ -29,13 +29,13 @@ const getUsersByGames = (_users: readonly User[]): StringNumberObject => {
 };
 
 export const getNumberOfFullGames = (
-  games: readonly ProgramItem[],
+  programItems: readonly ProgramItem[],
   users: readonly User[],
 ): void => {
   const usersByGames = getUsersByGames(users);
 
   let counter = 0;
-  games.forEach((game) => {
+  programItems.forEach((game) => {
     if (game.maxAttendance === usersByGames[game.programItemId]) {
       counter++;
     }
@@ -43,8 +43,8 @@ export const getNumberOfFullGames = (
 
   logger.info(
     `Games with maximum number of players: ${counter}/${
-      games.length
-    } (${toPercent(counter / games.length)}%)`,
+      programItems.length
+    } (${toPercent(counter / programItems.length)}%)`,
   );
 };
 
@@ -83,12 +83,13 @@ const getSignupsByStartTime = (users: readonly User[]): StringNumberObject => {
 };
 
 export const getDemandByTime = (
-  games: readonly ProgramItem[],
+  programItems: readonly ProgramItem[],
   users: readonly User[],
 ): void => {
   logger.info(">>> Demand by time");
   const signupsByTime = getSignupsByStartTime(users);
-  const maximumNumberOfPlayersByTime = getMaximumNumberOfPlayersByTime(games);
+  const maximumNumberOfPlayersByTime =
+    getMaximumNumberOfPlayersByTime(programItems);
 
   for (const startTime in maximumNumberOfPlayersByTime) {
     logger.info(
@@ -103,7 +104,7 @@ export const getDemandByTime = (
 };
 
 export const getDemandByGame = (
-  games: readonly ProgramItem[],
+  programItems: readonly ProgramItem[],
   users: readonly User[],
 ): void => {
   logger.info(">>> Demand by games");
@@ -117,7 +118,7 @@ export const getDemandByGame = (
     }
 
     user.lotterySignups.forEach((lotterySignup) => {
-      const foundGame = games.find(
+      const foundGame = programItems.find(
         (game) =>
           game.programItemId === lotterySignup.programItemDetails.programItemId,
       );

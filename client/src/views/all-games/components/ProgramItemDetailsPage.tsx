@@ -19,7 +19,7 @@ export const ProgramItemDetailsPage = (): ReactElement => {
 
   const { programItemId } = useParams();
 
-  const games = useAppSelector((state) => state.allGames.games);
+  const games = useAppSelector((state) => state.allGames.programItems);
   const signups = useAppSelector((state) => state.allGames.directSignups);
   const directSignups = useAppSelector(selectDirectSignups);
   const username = useAppSelector((state) => state.login.username);
@@ -39,7 +39,7 @@ export const ProgramItemDetailsPage = (): ReactElement => {
     isGroupCreator,
     groupMembers,
     isInGroup,
-    getAllGames: true,
+    getAllProgramItems: true,
   });
 
   const [loading, setLoading] = useState<boolean>(true);
@@ -72,7 +72,7 @@ export const ProgramItemDetailsPage = (): ReactElement => {
           username={username}
           loggedIn={loggedIn}
           userGroup={userGroup}
-          favoritedGames={favoritedGames}
+          favoritedProgramItems={favoritedGames}
         />
       )}
       {!loading && !foundGame && (

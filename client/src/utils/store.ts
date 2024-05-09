@@ -75,12 +75,12 @@ const sentryReduxEnhancer = createReduxEnhancer({
       ...state,
       allGames: {
         ...state?.allGames,
-        games: `Games count: ${state?.allGames?.games?.length}`,
+        programItems: `Program items count: ${state?.allGames?.programItems?.length}`,
         directSignups: `Direct signups count: ${state?.allGames?.directSignups?.length}`,
       },
       admin: {
         ...state?.admin,
-        hiddenGames: `Hidden games count: ${state?.admin?.hiddenGames?.length}`,
+        hiddenGames: `Hidden games count: ${state?.admin?.hiddenProgramItems?.length}`,
         signupQuestions: `Signup questions count: ${state?.admin?.signupQuestions?.length}`,
         signupMessages: `Signup messages count: ${state?.admin?.signupMessages?.length}`,
       },
@@ -98,8 +98,8 @@ const sentryReduxEnhancer = createReduxEnhancer({
               lotterySignup?.programItemDetails?.programItemId,
           }),
         ),
-        favoritedGames: state?.myGames?.favoritedGames?.map(
-          (favoritedGame) => favoritedGame?.programItemId,
+        favoritedProgramItems: state?.myGames?.favoritedProgramItems?.map(
+          (favoritedProgramItem) => favoritedProgramItem?.programItemId,
         ),
       },
     };

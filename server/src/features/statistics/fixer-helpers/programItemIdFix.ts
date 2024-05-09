@@ -32,14 +32,14 @@ export const programItemIdFix = async (
 
   logger.info(`Loaded ${results.length} results`);
 
-  const games: ProgramItemDoc[] = JSON.parse(
+  const programItems: ProgramItemDoc[] = JSON.parse(
     fs.readFileSync(
-      `${config.server().statsDataDir}/${event}/${year}/games.json`,
+      `${config.server().statsDataDir}/${event}/${year}/program-items.json`,
       "utf8",
     ),
   );
 
-  logger.info(`Loaded ${games.length} games`);
+  logger.info(`Loaded ${programItems.length} games`);
 
   const directSignups: DirectSignupDoc[] = JSON.parse(
     fs.readFileSync(
@@ -48,7 +48,7 @@ export const programItemIdFix = async (
     ),
   );
 
-  logger.info(`Loaded ${games.length} games`);
+  logger.info(`Loaded ${programItems.length} games`);
 
   const settings: SettingsDoc[] = JSON.parse(
     fs.readFileSync(
@@ -60,24 +60,26 @@ export const programItemIdFix = async (
   logger.info(`Loaded ${settings.length} games`);
 
   users.map((user) => {
-    const tempFavoritedGames = user.favoritedGames.map((favoritedGame) => {
-      const matchingGame = games.find(
-        // @ts-expect-error: $oid not in interface
-        (game) => game._id.$oid === favoritedGame.$oid,
-      );
-      if (!matchingGame) {
-        logger.error(
-          `Favorited: program item for id ${JSON.stringify(
-            favoritedGame,
-          )} not found`,
+    const tempFavoritedGames = user.favoritedProgramItems.map(
+      (favoritedGame) => {
+        const matchingGame = programItems.find(
+          // @ts-expect-error: $oid not in interface
+          (game) => game._id.$oid === favoritedGame.$oid,
         );
-        return { programItemId: "<canceled>" };
-      }
-      return { programItemId: matchingGame.programItemId };
-    });
+        if (!matchingGame) {
+          logger.error(
+            `Favorited: program item for id ${JSON.stringify(
+              favoritedGame,
+            )} not found`,
+          );
+          return { programItemId: "<canceled>" };
+        }
+        return { programItemId: matchingGame.programItemId };
+      },
+    );
 
     const tempLotterySignups = user.lotterySignups.map((lotterySignup) => {
-      const matchingGame = games.find(
+      const matchingGame = programItems.find(
         // @ts-expect-error: $oid not in interface
         (game) => game._id.$oid === lotterySignup.programItemDetails.$oid,
       );
@@ -97,14 +99,14 @@ export const programItemIdFix = async (
     });
 
     // @ts-expect-error: We don't want whole game details
-    user.favoritedGames = tempFavoritedGames;
+    user.favoritedProgramItems = tempFavoritedGames;
     // @ts-expect-error: We don't want whole game details
     user.lotterySignups = tempLotterySignups;
   });
 
   results.map((result) => {
     result.results.map((userResult) => {
-      const matchingGame = games.find((game) => {
+      const matchingGame = programItems.find((game) => {
         return isEqual(game._id, userResult.directSignup.programItemDetails);
       });
 
@@ -131,7 +133,7 @@ export const programItemIdFix = async (
   });
 
   directSignups.map((signup) => {
-    games.map((game) => {
+    programItems.map((game) => {
       if (isEqual(game._id, signup.game)) {
         // @ts-expect-error: We don't want whole game details
         signup.game = { programItemId: game.programItemId };
@@ -142,7 +144,7 @@ export const programItemIdFix = async (
   const tempHiddenGames: ProgramItem[] = [];
 
   settings.map((setting) => {
-    games.map((game) => {
+    programItems.map((game) => {
       setting.hiddenGames.map((hiddenGame) => {
         if (isEqual(game._id, hiddenGame)) {
           // @ts-expect-error: We don't want whole game details

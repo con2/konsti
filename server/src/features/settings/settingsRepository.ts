@@ -126,7 +126,7 @@ export const saveHidden = async (
     logger.info(`MongoDB: Hidden data updated`);
     return makeSuccessResult(settings);
   } catch (error) {
-    logger.error("MongoDB: Error updating hidden games: %s", error);
+    logger.error("MongoDB: Error updating hidden program items: %s", error);
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
@@ -155,7 +155,10 @@ export const saveSignupQuestion = async (
     logger.info(`MongoDB: Signup question updated`);
     return makeSuccessResult(settings);
   } catch (error) {
-    logger.error("MongoDB: Error updating signup info games: %s", error);
+    logger.error(
+      "MongoDB: Error updating program item signup question: %s",
+      error,
+    );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
@@ -181,7 +184,10 @@ export const delSignupQuestion = async (
     logger.info(`MongoDB: Signup info deleted`);
     return makeSuccessResult(settings);
   } catch (error) {
-    logger.error("MongoDB: Error deleting signup info games: %s", error);
+    logger.error(
+      "MongoDB: Error deleting program item signup question: %s",
+      error,
+    );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };

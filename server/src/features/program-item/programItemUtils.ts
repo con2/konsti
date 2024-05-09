@@ -8,7 +8,7 @@ import { ProgramItemDoc } from "server/types/programItemTypes";
 import { logger } from "server/utils/logger";
 import {
   ProgramItem,
-  GameWithUsernames,
+  ProgramItemWithUserSignups,
   UserSignup,
 } from "shared/types/models/programItem";
 import { SignupStrategy } from "shared/config/sharedConfigTypes";
@@ -75,8 +75,8 @@ export const removeDeletedProgramItems = async (
 };
 
 export const enrichGames = async (
-  games: readonly ProgramItemDoc[],
-): Promise<Result<GameWithUsernames[], MongoDbError>> => {
+  programItems: readonly ProgramItemDoc[],
+): Promise<Result<ProgramItemWithUserSignups[], MongoDbError>> => {
   const settingsResult = await findSettings();
   if (isErrorResult(settingsResult)) {
     return settingsResult;
@@ -97,7 +97,7 @@ export const enrichGames = async (
   }
 
   const currentTime = unwrapResult(currentTimeResult);
-  const enrichedGames = games.map((game) => {
+  const enrichedGames = programItems.map((game) => {
     const signupQuestion = settings.signupQuestions.find(
       (message) => message.programItemId === game.programItemId,
     );

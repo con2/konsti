@@ -123,7 +123,7 @@ export const ProgramItemSchema = z.object({
 
 export type ProgramItem = z.infer<typeof ProgramItemSchema>;
 
-export interface GameWithUsernames {
+export interface ProgramItemWithUserSignups {
   game: ProgramItem;
   users: UserSignup[];
 }

@@ -20,9 +20,9 @@ import { ButtonGroup } from "client/components/ButtonGroup";
 import { LoginProviderSelector } from "client/views/admin/components/LoginProviderSelector";
 
 export const AdminView = (): ReactElement => {
-  const games = useAppSelector((state) => state.allGames.games);
+  const programItems = useAppSelector((state) => state.allGames.programItems);
   const appOpen = useAppSelector((state) => state.admin.appOpen);
-  const hiddenGames = useAppSelector((state) => state.admin.hiddenGames);
+  const hiddenGames = useAppSelector((state) => state.admin.hiddenProgramItems);
   const signupQuestions = useAppSelector(
     (state) => state.admin.signupQuestions,
   );
@@ -36,23 +36,23 @@ export const AdminView = (): ReactElement => {
   const getVisibleGames = (): readonly ProgramItem[] => {
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (!hiddenGames) {
-      return games;
+      return programItems;
     }
-    const visibleGames: ProgramItem[] = [];
-    for (let i = 0; i < games.length; i += 1) {
+    const visibleProgramItems: ProgramItem[] = [];
+    for (let i = 0; i < programItems.length; i += 1) {
       let match = false;
 
       for (let j = 0; j < hiddenGames.length; j += 1) {
-        if (games[i].programItemId === hiddenGames[j].programItemId) {
+        if (programItems[i].programItemId === hiddenGames[j].programItemId) {
           match = true;
           break;
         }
       }
       if (!match) {
-        visibleGames.push(games[i]);
+        visibleProgramItems.push(programItems[i]);
       }
     }
-    return visibleGames;
+    return visibleProgramItems;
   };
 
   const getDropdownOptions = (): Option[] => {
@@ -147,7 +147,9 @@ export const AdminView = (): ReactElement => {
       </ButtonGroup>
 
       {/* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition */}
-      {(!games || games.length === 0) && <p>{t("noGamesInDatabase")}</p>}
+      {(!programItems || programItems.length === 0) && (
+        <p>{t("noGamesInDatabase")}</p>
+      )}
 
       <ButtonGroup>
         <Button
@@ -186,7 +188,10 @@ export const AdminView = (): ReactElement => {
 
       <HiddenGamesList hiddenGames={hiddenGames} />
 
-      <SignupQuestionList signupQuestions={signupQuestions} games={games} />
+      <SignupQuestionList
+        signupQuestions={signupQuestions}
+        programItems={programItems}
+      />
 
       <h3>{t("admin.sentryTesting")}</h3>
       <ButtonGroup>

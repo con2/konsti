@@ -27,7 +27,7 @@ interface Props {
   username: string;
   loggedIn: boolean;
   userGroup: UserGroup;
-  favoritedGames: readonly ProgramItem[];
+  favoritedProgramItems: readonly ProgramItem[];
 }
 
 export const GameEntry = ({
@@ -43,7 +43,7 @@ export const GameEntry = ({
   username,
   loggedIn,
   userGroup,
-  favoritedGames,
+  favoritedProgramItems,
 }: Props): ReactElement => {
   const { t } = useTranslation();
 
@@ -87,7 +87,7 @@ export const GameEntry = ({
         username={username}
         loggedIn={loggedIn}
         userGroup={userGroup}
-        favoritedGames={favoritedGames}
+        favoritedProgramItems={favoritedProgramItems}
       />
       <ProgramItemDetailsView game={game} isAlwaysExpanded={isAlwaysExpanded} />
       <SignupInfo

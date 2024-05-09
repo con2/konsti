@@ -11,5 +11,5 @@ export const PostFavoriteRequestSchema = z.object({
 export type PostFavoriteRequest = z.infer<typeof PostFavoriteRequestSchema>;
 
 export interface PostFavoriteResponse extends ApiResult {
-  favoritedGames: readonly ProgramItem[];
+  favoritedProgramItems: readonly ProgramItem[];
 }

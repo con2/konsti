@@ -42,13 +42,15 @@ export const createLotterySignups = async (): Promise<void> => {
   await updateGamePopularity();
 };
 
-const getRandomLotterySignup = (games: readonly ProgramItem[]): Signup[] => {
+const getRandomLotterySignup = (
+  programItems: readonly ProgramItem[],
+): Signup[] => {
   const lotterySignups = [] as Signup[];
   let randomIndex;
 
   const { twoPhaseSignupProgramTypes, noKonstiSignupIds } = config.shared();
 
-  const activeGames = games
+  const activeGames = programItems
     .filter((game) => twoPhaseSignupProgramTypes.includes(game.programType))
     .filter((game) => !noKonstiSignupIds.includes(game.programItemId));
 
@@ -100,10 +102,10 @@ const getRandomLotterySignup = (games: readonly ProgramItem[]): Signup[] => {
 };
 
 const doLotterySignup = async (
-  games: readonly ProgramItem[],
+  programItems: readonly ProgramItem[],
   user: User,
 ): Promise<User> => {
-  const lotterySignups = getRandomLotterySignup(games);
+  const lotterySignups = getRandomLotterySignup(programItems);
 
   const userResult = await saveLotterySignups({
     username: user.username,
@@ -113,14 +115,14 @@ const doLotterySignup = async (
 };
 
 const lotterySignupMultiple = async (
-  games: readonly ProgramItem[],
+  programItems: readonly ProgramItem[],
   users: readonly User[],
 ): Promise<void> => {
   const promises: Array<Promise<User>> = [];
 
   for (const user of users) {
     if (user.username !== "admin" && user.username !== "helper") {
-      promises.push(doLotterySignup(games, user));
+      promises.push(doLotterySignup(programItems, user));
     }
   }
 
@@ -128,7 +130,7 @@ const lotterySignupMultiple = async (
 };
 
 const lotterySignupGroup = async (
-  games: readonly ProgramItem[],
+  programItems: readonly ProgramItem[],
   users: readonly User[],
 ): Promise<void> => {
   // Generate random signup data for the group creator
@@ -142,7 +144,7 @@ const lotterySignupGroup = async (
 
   const signupData = {
     username: groupCreator.username,
-    lotterySignups: getRandomLotterySignup(games),
+    lotterySignups: getRandomLotterySignup(programItems),
   };
 
   await saveLotterySignups(signupData);

@@ -11,14 +11,14 @@ import { ProgramItem } from "shared/types/models/programItem";
 import { User } from "shared/types/models/user";
 
 export const getGameStats = (year: number, event: string): void => {
-  const games: ProgramItem[] = JSON.parse(
+  const programItems: ProgramItem[] = JSON.parse(
     fs.readFileSync(
-      `${config.server().statsDataDir}/${event}/${year}/games.json`,
+      `${config.server().statsDataDir}/${event}/${year}/program-items.json`,
       "utf8",
     ),
   );
 
-  logger.info(`Loaded ${games.length} games`);
+  logger.info(`Loaded ${programItems.length} games`);
 
   const users: User[] = JSON.parse(
     fs.readFileSync(
@@ -27,10 +27,10 @@ export const getGameStats = (year: number, event: string): void => {
     ),
   );
 
-  logger.info(`Loaded ${games.length} users`);
+  logger.info(`Loaded ${programItems.length} users`);
 
-  getGamesByStartTime(games);
-  getNumberOfFullGames(games, users);
-  getDemandByTime(games, users);
-  getDemandByGame(games, users);
+  getGamesByStartTime(programItems);
+  getNumberOfFullGames(programItems, users);
+  getDemandByTime(programItems, users);
+  getDemandByGame(programItems, users);
 };

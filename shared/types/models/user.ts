@@ -10,7 +10,7 @@ export interface User {
   serial: string;
   groupCode: string;
   groupCreatorCode: string;
-  favoritedGames: readonly ProgramItem[];
+  favoritedProgramItems: readonly ProgramItem[];
   lotterySignups: readonly Signup[];
   createdAt: string;
   eventLogItems: EventLogItem[];
@@ -31,7 +31,7 @@ export enum UserGroup {
 
 export interface UserGames {
   directSignups: readonly Signup[];
-  favoritedGames: readonly ProgramItem[];
+  favoritedProgramItems: readonly ProgramItem[];
   lotterySignups: readonly Signup[];
 }
 

@@ -12,7 +12,7 @@ import { EventLogItem } from "shared/types/models/eventLog";
 import { ActiveProgramType } from "shared/config/clientConfigTypes";
 
 export interface AdminState {
-  hiddenGames: readonly ProgramItem[];
+  hiddenProgramItems: readonly ProgramItem[];
   activeAssignmentTime: string;
   appOpen: boolean;
   assignmentResponseMessage: string;
@@ -30,7 +30,7 @@ export interface GameDirectSignups {
 }
 
 export interface AllGamesState {
-  games: readonly ProgramItem[];
+  programItems: readonly ProgramItem[];
   directSignups: readonly GameDirectSignups[];
 }
 

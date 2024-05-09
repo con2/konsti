@@ -7,9 +7,9 @@ import { isErrorResult, unwrapResult } from "shared/utils/result";
 export const storeFavorite = async (
   favoriteData: NewFavorite,
 ): Promise<PostFavoriteResponse | ApiError> => {
-  const favoritedGamesResult = await saveFavorite(favoriteData);
+  const favoritedProgramItemsResult = await saveFavorite(favoriteData);
 
-  if (isErrorResult(favoritedGamesResult)) {
+  if (isErrorResult(favoritedProgramItemsResult)) {
     return {
       message: "Update favorite failure",
       status: "error",
@@ -17,13 +17,13 @@ export const storeFavorite = async (
     };
   }
 
-  const favoritedGames = unwrapResult(favoritedGamesResult);
+  const favoritedProgramItems = unwrapResult(favoritedProgramItemsResult);
 
-  if (favoritedGames) {
+  if (favoritedProgramItems) {
     return {
       message: "Update favorite success",
       status: "success",
-      favoritedGames,
+      favoritedProgramItems,
     };
   }
 

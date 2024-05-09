@@ -2,7 +2,7 @@ import { ReactElement } from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { IconName } from "@fortawesome/free-solid-svg-icons";
-import { AllGamesView } from "client/views/all-games/AllGamesView";
+import { AllProgramItemsView } from "client/views/all-games/AllProgramItemsView";
 import { ProgramItemDetailsPage } from "client/views/all-games/components/ProgramItemDetailsPage";
 import { LoginView } from "client/views/login/LoginView";
 import { MyGamesView } from "client/views/my-games/MyGamesView";
@@ -50,7 +50,7 @@ export const AppRoutes = (): ReactElement => {
     {
       headerText: t("pages.programList"),
       path: "list",
-      element: <AllGamesView />,
+      element: <AllProgramItemsView />,
       icon: "calendar-days" as IconName,
       "data-testid": "program-list",
     },
@@ -107,7 +107,7 @@ export const AppRoutes = (): ReactElement => {
               path="/program"
               element={<Navigate replace to="/program/list" />}
             />
-            <Route path="/program/list" element={<AllGamesView />} />
+            <Route path="/program/list" element={<AllProgramItemsView />} />
             <Route path="/results" element={<ResultsView />} />
             <Route path="/profile" element={<ProfileView />} />
           </>
@@ -139,7 +139,7 @@ export const AppRoutes = (): ReactElement => {
           element={<ProgramItemDetailsPage />}
         />
         {isAdminOrHelp(userGroup) ? (
-          <Route path="/program/list" element={<AllGamesView />} />
+          <Route path="/program/list" element={<AllProgramItemsView />} />
         ) : (
           <Route
             path="/program/*"
@@ -197,7 +197,7 @@ export const AppRoutes = (): ReactElement => {
         path="/program"
         element={<Navigate replace to="/program/list" />}
       />
-      <Route path="/program/list" element={<AllGamesView />} />
+      <Route path="/program/list" element={<AllProgramItemsView />} />
       <Route path="/about/*" element={<Tabs tabContents={aboutTabs} />} />
       <Route path="/" element={<Navigate to="/program" />} />
       <Route

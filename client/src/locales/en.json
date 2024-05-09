@@ -220,7 +220,7 @@
       "creatorHasDirectSignups": "You already have sign-ups. You will have to cancel those before creating a group.",
       "alreadyInGroup": "You are already a member of a group."
     },
-    "hasDirectlySignedFollowingGames": "You have already signed up to these games:",
+    "hasDirectlySignedFollowingProgramItems": "You have already signed up to these program items:",
     "cancelSignupBeforeJoiningOrCreatingGroup": "You'll have to cancel these sign-ups before you can create or join a group.",
     "signupDisabledNotCreator": "You are a group member. Your group's creator will sign up the whole group to the lottery.",
     "signupForWholeGroup": "You are the group creator. You can sign up the group to a lottery.",

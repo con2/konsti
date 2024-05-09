@@ -14,7 +14,7 @@ const removeInvalidGames = async (): Promise<void> => {
   try {
     await removeInvalidProgramItemsFromUsers();
   } catch (error) {
-    logger.error("Error removing invalid games: %s", error);
+    logger.error("Error removing invalid program items: %s", error);
     // eslint-disable-next-line no-restricted-syntax -- Test script
     throw error;
   }

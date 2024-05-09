@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { AllGamesState } from "client/types/reduxTypes";
-import { GameWithUsernames } from "shared/types/models/programItem";
+import { ProgramItemWithUserSignups } from "shared/types/models/programItem";
 
-const initialState: AllGamesState = { games: [], directSignups: [] };
+const initialState: AllGamesState = { programItems: [], directSignups: [] };
 
 const allGamesSlice = createSlice({
   name: "allGames",
@@ -10,11 +10,13 @@ const allGamesSlice = createSlice({
   reducers: {
     submitGetGamesAsync(
       state,
-      action: PayloadAction<readonly GameWithUsernames[]>,
+      action: PayloadAction<readonly ProgramItemWithUserSignups[]>,
     ) {
       return {
         ...state,
-        games: action.payload.map((gameWithPlayers) => gameWithPlayers.game),
+        programItems: action.payload.map(
+          (gameWithPlayers) => gameWithPlayers.game,
+        ),
         directSignups: action.payload.map((gameWithPlayers) => {
           return {
             users: gameWithPlayers.users,

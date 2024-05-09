@@ -7,7 +7,7 @@ import { useAppSelector } from "client/utils/hooks";
 import { ProgramItem } from "shared/types/models/programItem";
 import { getWeekdayAndTime } from "client/utils/timeFormatter";
 import { ControlledInput } from "client/components/ControlledInput";
-import { MULTIPLE_WHITESPACES_REGEX } from "client/views/all-games/AllGamesView";
+import { MULTIPLE_WHITESPACES_REGEX } from "client/views/all-games/AllProgramItemsView";
 
 export const PrivateSignupMessages = (): ReactElement => {
   const { t } = useTranslation();
@@ -17,7 +17,7 @@ export const PrivateSignupMessages = (): ReactElement => {
     [],
   );
 
-  const games = useAppSelector((state) => state.allGames.games);
+  const games = useAppSelector((state) => state.allGames.programItems);
   const signupQuestions = useAppSelector(
     (state) => state.admin.signupQuestions,
   );

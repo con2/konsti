@@ -14,7 +14,7 @@ export const EventLog = (): ReactElement => {
   const dispatch = useAppDispatch();
 
   const eventLogItems = useAppSelector((state) => state.login.eventLogItems);
-  const games = useAppSelector((state) => state.allGames.games);
+  const games = useAppSelector((state) => state.allGames.programItems);
   const username = useAppSelector((state) => state.login.username);
 
   const localEventLogItems = useRef(eventLogItems);

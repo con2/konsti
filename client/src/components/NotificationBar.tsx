@@ -13,7 +13,7 @@ export const NotificationBar = (): ReactElement | null => {
   const dispatch = useAppDispatch();
 
   const username = useAppSelector((state) => state.login.username);
-  const games = useAppSelector((state) => state.allGames.games);
+  const games = useAppSelector((state) => state.allGames.programItems);
   const eventLogItems = useAppSelector((state) => state.login.eventLogItems);
   const unseenEvents = eventLogItems.filter((item) => !item.isSeen);
 

@@ -22,38 +22,42 @@ import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 import { config } from "shared/config";
 
 export const kompassiGameMapperRopecon = (
-  games: readonly KompassiGameRopecon[],
+  programItems: readonly KompassiGameRopecon[],
 ): readonly ProgramItem[] => {
-  return games.map((game) => {
+  return programItems.map((programItem) => {
     return {
-      programItemId: game.identifier,
-      title: game.title,
-      description: game.description,
-      location: game.room_name,
-      startTime: dayjs(game.start_time).toISOString(),
+      programItemId: programItem.identifier,
+      title: programItem.title,
+      description: programItem.description,
+      location: programItem.room_name,
+      startTime: dayjs(programItem.start_time).toISOString(),
       mins:
-        game.length ||
-        dayjs(game.end_time).diff(dayjs(game.start_time), "minute"),
-      tags: mapTags(game),
-      genres: mapGenres(game),
-      styles: mapGameStyles(game),
-      language: mapLanguage(game.ropecon2023_language),
-      endTime: dayjs(game.end_time).toISOString(),
-      people: game.formatted_hosts,
-      minAttendance: game.min_players,
-      maxAttendance: game.max_players || game.ropecon2018_characters,
-      gameSystem: game.rpg_system,
-      shortDescription: game.short_blurb,
-      revolvingDoor: mapRevolvingDoor(game),
-      programType: mapProgramType(game),
-      contentWarnings: game.ropecon2022_content_warnings,
-      otherAuthor: game.other_author,
-      accessibilityValues: mapAccessibilityValues(game),
+        programItem.length ||
+        dayjs(programItem.end_time).diff(
+          dayjs(programItem.start_time),
+          "minute",
+        ),
+      tags: mapTags(programItem),
+      genres: mapGenres(programItem),
+      styles: mapGameStyles(programItem),
+      language: mapLanguage(programItem.ropecon2023_language),
+      endTime: dayjs(programItem.end_time).toISOString(),
+      people: programItem.formatted_hosts,
+      minAttendance: programItem.min_players,
+      maxAttendance:
+        programItem.max_players || programItem.ropecon2018_characters,
+      gameSystem: programItem.rpg_system,
+      shortDescription: programItem.short_blurb,
+      revolvingDoor: mapRevolvingDoor(programItem),
+      programType: mapProgramType(programItem),
+      contentWarnings: programItem.ropecon2022_content_warnings,
+      otherAuthor: programItem.other_author,
+      accessibilityValues: mapAccessibilityValues(programItem),
       popularity: 0,
       otherAccessibilityInformation:
-        game.ropecon2023_other_accessibility_information,
-      entryFee: game.ropecon2023_workshop_fee,
-      signupType: game.ropecon2023_signuplist,
+        programItem.ropecon2023_other_accessibility_information,
+      entryFee: programItem.ropecon2023_workshop_fee,
+      signupType: programItem.ropecon2023_signuplist,
     };
   });
 };

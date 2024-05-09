@@ -5,7 +5,7 @@ import { AppDispatch } from "client/types/reduxTypes";
 export interface UpdateFavoriteOpts {
   game: ProgramItem;
   action: string;
-  favoritedGames: readonly ProgramItem[];
+  favoritedProgramItems: readonly ProgramItem[];
   username: string;
   dispatch: AppDispatch;
 }
@@ -13,17 +13,17 @@ export interface UpdateFavoriteOpts {
 export const updateFavorite = async (
   updateFavoriteOpts: UpdateFavoriteOpts,
 ): Promise<void> => {
-  const { game, action, favoritedGames, username, dispatch } =
+  const { game, action, favoritedProgramItems, username, dispatch } =
     updateFavoriteOpts;
 
   if (!game.programItemId) {
     return;
   }
 
-  const gameIndex = favoritedGames.findIndex(
+  const gameIndex = favoritedProgramItems.findIndex(
     (favoritedGame) => favoritedGame.programItemId === game.programItemId,
   );
-  const favoritedProgramItemIds = favoritedGames.map(
+  const favoritedProgramItemIds = favoritedProgramItems.map(
     (favoritedGame) => favoritedGame.programItemId,
   );
 

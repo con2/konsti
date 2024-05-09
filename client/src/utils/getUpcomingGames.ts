@@ -5,12 +5,12 @@ import { getTimeNow } from "client/utils/getTimeNow";
 import { Signup } from "shared/types/models/user";
 
 export const getUpcomingGames = (
-  games: readonly ProgramItem[],
+  programItems: readonly ProgramItem[],
   offsetByHours = 0,
 ): readonly ProgramItem[] => {
   const timeNow = getTimeNow();
 
-  const upcomingGames = games.filter((game) =>
+  const upcomingGames = programItems.filter((game) =>
     dayjs(game.startTime).add(offsetByHours, "hours").isSameOrAfter(timeNow),
   );
 
@@ -48,7 +48,7 @@ interface GetLotterySignupsParams {
   isGroupCreator: boolean;
   groupMembers: readonly GroupMember[];
   isInGroup: boolean;
-  getAllGames: boolean;
+  getAllProgramItems: boolean;
 }
 
 export const getLotterySignups = ({
@@ -56,10 +56,10 @@ export const getLotterySignups = ({
   isGroupCreator,
   groupMembers,
   isInGroup,
-  getAllGames,
+  getAllProgramItems,
 }: GetLotterySignupsParams): readonly Signup[] => {
   if (isGroupCreator || !isInGroup) {
-    return getAllGames
+    return getAllProgramItems
       ? lotterySignups
       : getUpcomingLotterySignups(lotterySignups);
   }
@@ -71,7 +71,7 @@ export const getLotterySignups = ({
       return [];
     }
 
-    return getAllGames
+    return getAllProgramItems
       ? groupCreator.lotterySignups
       : getUpcomingLotterySignups(groupCreator.lotterySignups);
   }
@@ -94,11 +94,11 @@ export const getUpcomingDirectSignups = (
 };
 
 export const getUpcomingFavorites = (
-  favoritedGames: readonly ProgramItem[],
+  favoritedProgramItems: readonly ProgramItem[],
 ): readonly ProgramItem[] => {
   const timeNow = getTimeNow();
 
-  const upcomingGames = favoritedGames.filter((favoritedGame) =>
+  const upcomingGames = favoritedProgramItems.filter((favoritedGame) =>
     dayjs(favoritedGame.startTime).add(1, "hours").isAfter(timeNow),
   );
 

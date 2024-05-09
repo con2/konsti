@@ -168,7 +168,7 @@ describe(`POST ${ApiEndpoint.HIDDEN}`, () => {
     expect(updatedUser?.lotterySignups[0].programItemDetails.title).toEqual(
       testGame2.title,
     );
-    expect(updatedUser?.favoritedGames.length).toEqual(1);
+    expect(updatedUser?.favoritedProgramItems.length).toEqual(1);
 
     const signupsResult = await findUserDirectSignups(mockUser.username);
     const signups = unsafelyUnwrapResult(signupsResult);

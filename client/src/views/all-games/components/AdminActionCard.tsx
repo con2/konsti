@@ -27,7 +27,7 @@ export const AdminActionCard = ({ game }: Props): ReactElement => {
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
 
-  const hiddenGames = useAppSelector((state) => state.admin.hiddenGames);
+  const hiddenGames = useAppSelector((state) => state.admin.hiddenProgramItems);
   const signupQuestions = useAppSelector(
     (state) => state.admin.signupQuestions,
   );

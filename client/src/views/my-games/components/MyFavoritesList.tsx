@@ -8,28 +8,33 @@ import { ProgramItem } from "shared/types/models/programItem";
 import { RaisedCard } from "client/components/RaisedCard";
 
 interface Props {
-  favoritedGames: readonly ProgramItem[];
+  favoritedProgramItems: readonly ProgramItem[];
 }
 
-export const MyFavoritesList = ({ favoritedGames }: Props): ReactElement => {
+export const MyFavoritesList = ({
+  favoritedProgramItems,
+}: Props): ReactElement => {
   const { t } = useTranslation();
 
-  const sortedGames: readonly ProgramItem[] = sortBy(favoritedGames, [
+  const sortedGames: readonly ProgramItem[] = sortBy(favoritedProgramItems, [
     (favoritedGame) => favoritedGame.startTime,
     (favoritedGame) => favoritedGame.title.toLowerCase(),
   ]);
 
-  const startTimes = getStartTimes(favoritedGames);
+  const startTimes = getStartTimes(favoritedProgramItems);
 
   return (
     <RaisedCard data-testid="favorited-games-list">
       <Header>{t("favoritedProgramItems")}</Header>
       <div>
-        {favoritedGames.length === 0 && (
+        {favoritedProgramItems.length === 0 && (
           <SecondaryText>{t("noFavoritedProgramItems")}</SecondaryText>
         )}
-        {favoritedGames.length !== 0 && (
-          <FavoritesByStartTimes games={sortedGames} startTimes={startTimes} />
+        {favoritedProgramItems.length !== 0 && (
+          <FavoritesByStartTimes
+            programItems={sortedGames}
+            startTimes={startTimes}
+          />
         )}
       </div>
     </RaisedCard>

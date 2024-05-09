@@ -11,7 +11,7 @@ export const submitGetGames = (): AppThunk => {
     }
 
     if (getGamesResponse.status === "success") {
-      dispatch(submitGetGamesAsync(getGamesResponse.games));
+      dispatch(submitGetGamesAsync(getGamesResponse.programItems));
     }
   };
 };

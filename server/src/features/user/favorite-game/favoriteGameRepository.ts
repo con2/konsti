@@ -25,7 +25,7 @@ export const saveFavorite = async (
 
   const games = unwrapResult(gamesResult);
 
-  const favoritedGames = favoritedProgramItemIds.reduce<string[]>(
+  const favoritedProgramItems = favoritedProgramItemIds.reduce<string[]>(
     (acc, favoritedProgramItemId) => {
       const gameDocInDb = games.find(
         (game) => game.programItemId === favoritedProgramItemId,
@@ -43,7 +43,7 @@ export const saveFavorite = async (
     const response = await UserModel.findOneAndUpdate(
       { username },
       {
-        favoritedGames,
+        favoritedProgramItems,
       },
       { new: true, fields: "favoritedGames" },
     )
@@ -56,7 +56,7 @@ export const saveFavorite = async (
       logger.error("%s", new Error(`MongoDB: User ${username} not found`));
       return makeErrorResult(MongoDbError.USER_NOT_FOUND);
     }
-    return makeSuccessResult(response.favoritedGames);
+    return makeSuccessResult(response.favoritedProgramItems);
   } catch (error) {
     logger.error(
       `MongoDB: Error storing favorite data for user ${favoriteData.username}: %s`,

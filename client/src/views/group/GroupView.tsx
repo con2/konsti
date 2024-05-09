@@ -67,7 +67,7 @@ export const GroupView = (): ReactElement => {
             <DirectSignupsContainer>
               <p>
                 <BoldText>
-                  {t("group.hasDirectlySignedFollowingGames")}
+                  {t("group.hasDirectlySignedFollowingProgramItems")}
                 </BoldText>
               </p>
               <ListItem>

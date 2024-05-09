@@ -23,7 +23,7 @@ interface Props {
   username: string;
   loggedIn: boolean;
   userGroup: UserGroup;
-  favoritedGames: readonly ProgramItem[];
+  favoritedProgramItems: readonly ProgramItem[];
 }
 
 export const GameHead = ({
@@ -33,7 +33,7 @@ export const GameHead = ({
   username,
   loggedIn,
   userGroup,
-  favoritedGames,
+  favoritedProgramItems,
 }: Props): ReactElement => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
@@ -55,7 +55,7 @@ export const GameHead = ({
     signupAlwaysOpen;
 
   const isFavorited =
-    favoritedGames.find(
+    favoritedProgramItems.find(
       (favoritedGame) => favoritedGame.programItemId === game.programItemId,
     ) !== undefined;
 
@@ -170,7 +170,7 @@ export const GameHead = ({
               await updateFavoriteHandler({
                 game,
                 action: isFavorited ? "del" : "add",
-                favoritedGames,
+                favoritedProgramItems,
                 username,
                 dispatch,
               })

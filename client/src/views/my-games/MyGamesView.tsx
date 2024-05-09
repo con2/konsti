@@ -91,7 +91,7 @@ export const MyGamesView = (): ReactElement => {
       </RaisedCard>
 
       <MyFavoritesList
-        favoritedGames={
+        favoritedProgramItems={
           showAllGames ? favoritedGames : getUpcomingFavorites(favoritedGames)
         }
       />
@@ -102,7 +102,7 @@ export const MyGamesView = (): ReactElement => {
         lotterySignups={getLotterySignups({
           lotterySignups,
           isGroupCreator,
-          getAllGames: showAllGames,
+          getAllProgramItems: showAllGames,
           isInGroup,
           groupMembers,
         })}
@@ -112,7 +112,7 @@ export const MyGamesView = (): ReactElement => {
           lotterySignups={getLotterySignups({
             lotterySignups,
             isGroupCreator,
-            getAllGames: showAllGames,
+            getAllProgramItems: showAllGames,
             isInGroup,
             groupMembers,
           })}

@@ -21,11 +21,11 @@ export const getSignupsByTime = (
 };
 
 export const getMaximumNumberOfPlayersByTime = (
-  games: readonly ProgramItem[],
+  programItems: readonly ProgramItem[],
 ): StringNumberObject => {
   const maxNumberOfPlayersByTime: StringNumberObject = {};
 
-  games.forEach((game) => {
+  programItems.forEach((game) => {
     if (!maxNumberOfPlayersByTime[game.startTime]) {
       maxNumberOfPlayersByTime[game.startTime] = 0;
     }

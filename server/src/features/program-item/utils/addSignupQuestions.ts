@@ -25,7 +25,7 @@ export const addSignupQuestions = async (): Promise<void> => {
   if (isErrorResult(gamesResult)) {
     logger.error(
       "%s",
-      new Error(`Error finding games: ${unwrapResult(gamesResult)}`),
+      new Error(`Error finding program items: ${unwrapResult(gamesResult)}`),
     );
     return;
   }

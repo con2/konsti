@@ -5,7 +5,7 @@ import { Signup, UserGames } from "shared/types/models/user";
 
 const initialState: MyGamesState = {
   directSignups: [],
-  favoritedGames: [],
+  favoritedProgramItems: [],
   lotterySignups: [],
 };
 
@@ -17,7 +17,7 @@ const myGamesSlice = createSlice({
       return {
         ...state,
         directSignups: action.payload.directSignups,
-        favoritedGames: action.payload.favoritedGames,
+        favoritedProgramItems: action.payload.favoritedProgramItems,
         lotterySignups: action.payload.lotterySignups,
       };
     },
@@ -28,7 +28,7 @@ const myGamesSlice = createSlice({
     ) {
       return {
         ...state,
-        favoritedGames: action.payload,
+        favoritedProgramItems: action.payload,
       };
     },
 
@@ -71,4 +71,4 @@ export const selectLotterySignups = (state: RootState): readonly Signup[] =>
   state.myGames.lotterySignups;
 export const selectFavoritedGames = (
   state: RootState,
-): readonly ProgramItem[] => state.myGames.favoritedGames;
+): readonly ProgramItem[] => state.myGames.favoritedProgramItems;

@@ -22,12 +22,12 @@ import { AssignmentError } from "shared/types/api/errors";
 export const runAssignmentStrategy = (
   assignmentStrategy: AssignmentStrategy,
   players: readonly User[],
-  games: readonly ProgramItem[],
+  programItems: readonly ProgramItem[],
   startTime: string,
   directSignups: readonly DirectSignupsForProgramItem[],
 ): Result<PlayerAssignmentResult, AssignmentError> => {
   logger.info(
-    `Received data for ${players.length} players and ${games.length} games`,
+    `Received data for ${players.length} players and ${programItems.length} games`,
   );
 
   logger.info(
@@ -37,16 +37,21 @@ export const runAssignmentStrategy = (
   logger.info(`Assign strategy: ${assignmentStrategy}`);
 
   if (assignmentStrategy === AssignmentStrategy.PADG) {
-    return runPadgStrategy(players, games, startTime, directSignups);
+    return runPadgStrategy(players, programItems, startTime, directSignups);
   }
 
   if (assignmentStrategy === AssignmentStrategy.RANDOM) {
-    return runRandomStrategy(players, games, startTime, directSignups);
+    return runRandomStrategy(players, programItems, startTime, directSignups);
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (assignmentStrategy === AssignmentStrategy.RANDOM_PADG) {
-    return runRandomPadgStrategy(players, games, startTime, directSignups);
+    return runRandomPadgStrategy(
+      players,
+      programItems,
+      startTime,
+      directSignups,
+    );
   }
 
   return exhaustiveSwitchGuard(assignmentStrategy);
@@ -54,13 +59,13 @@ export const runAssignmentStrategy = (
 
 const runPadgStrategy = (
   players: readonly User[],
-  games: readonly ProgramItem[],
+  programItems: readonly ProgramItem[],
   startTime: string,
   directSignups: readonly DirectSignupsForProgramItem[],
 ): Result<PlayerAssignmentResult, AssignmentError> => {
   const padgResultResult = padgAssignPlayers(
     players,
-    games,
+    programItems,
     startTime,
     directSignups,
   );
@@ -73,13 +78,13 @@ const runPadgStrategy = (
 
 const runRandomStrategy = (
   players: readonly User[],
-  games: readonly ProgramItem[],
+  programItems: readonly ProgramItem[],
   startTime: string,
   directSignups: readonly DirectSignupsForProgramItem[],
 ): Result<PlayerAssignmentResult, AssignmentError> => {
   const randomResultResult = randomAssignPlayers(
     players,
-    games,
+    programItems,
     startTime,
     directSignups,
   );
@@ -92,13 +97,13 @@ const runRandomStrategy = (
 
 const runRandomPadgStrategy = (
   players: readonly User[],
-  games: readonly ProgramItem[],
+  programItems: readonly ProgramItem[],
   startTime: string,
   directSignups: readonly DirectSignupsForProgramItem[],
 ): Result<PlayerAssignmentResult, AssignmentError> => {
   const randomResultResult = randomAssignPlayers(
     players,
-    games,
+    programItems,
     startTime,
     directSignups,
   );
@@ -119,7 +124,7 @@ const runRandomPadgStrategy = (
 
   const padgResultResult = padgAssignPlayers(
     players,
-    games,
+    programItems,
     startTime,
     directSignups,
   );

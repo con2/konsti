@@ -14,30 +14,32 @@ import {
 import { config } from "shared/config";
 
 export const kompassiGameMapperHitpoint = (
-  games: readonly KompassiGameHitpoint[],
+  programItems: readonly KompassiGameHitpoint[],
 ): readonly ProgramItem[] => {
-  return games.map((game) => {
+  return programItems.map((programItem) => {
     return {
-      programItemId: game.identifier,
-      title: game.title,
-      description: game.description,
-      location: game.room_name,
-      startTime: dayjs(game.start_time).toISOString(),
-      mins: game.length,
-      tags: mapTags(game),
+      programItemId: programItem.identifier,
+      title: programItem.title,
+      description: programItem.description,
+      location: programItem.room_name,
+      startTime: dayjs(programItem.start_time).toISOString(),
+      mins: programItem.length,
+      tags: mapTags(programItem),
       genres: [],
       styles: [],
-      language: mapLanguage(game),
-      endTime: dayjs(game.start_time).add(game.length, "minutes").toISOString(),
-      people: game.formatted_hosts,
-      minAttendance: game.min_players,
-      maxAttendance: game.max_players,
-      gameSystem: game.rpg_system,
-      shortDescription: game.three_word_description,
+      language: mapLanguage(programItem),
+      endTime: dayjs(programItem.start_time)
+        .add(programItem.length, "minutes")
+        .toISOString(),
+      people: programItem.formatted_hosts,
+      minAttendance: programItem.min_players,
+      maxAttendance: programItem.max_players,
+      gameSystem: programItem.rpg_system,
+      shortDescription: programItem.three_word_description,
       revolvingDoor: false,
-      programType: mapProgramType(game),
+      programType: mapProgramType(programItem),
       contentWarnings: "",
-      otherAuthor: game.other_author,
+      otherAuthor: programItem.other_author,
       accessibilityValues: [],
       popularity: 0,
       otherAccessibilityInformation: "",

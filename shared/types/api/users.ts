@@ -14,7 +14,7 @@ import { EventLogItem } from "shared/types/models/eventLog";
 // GET user
 
 export interface GetUserResponse extends ApiResult {
-  games: UserGames;
+  programItems: UserGames;
   serial: string;
   groupCode: string;
   groupCreatorCode: string;

@@ -9,18 +9,18 @@ import { getWeekdayAndTime } from "client/utils/timeFormatter";
 
 interface Props {
   signupQuestions: readonly SignupQuestion[];
-  games: readonly ProgramItem[];
+  programItems: readonly ProgramItem[];
 }
 
 export const SignupQuestionList = ({
   signupQuestions,
-  games,
+  programItems,
 }: Props): ReactElement => {
   const { t } = useTranslation();
 
   const signupQuestionsWithGames = signupQuestions.flatMap(
     (privateSignupQuestion) => {
-      const matchingGame = games.find(
+      const matchingGame = programItems.find(
         (game) => game.programItemId === privateSignupQuestion.programItemId,
       );
       if (!matchingGame) {
@@ -43,7 +43,7 @@ export const SignupQuestionList = ({
         {signupQuestions.length === 0 && <span>{t("noSignupQuestions")}</span>}
 
         {sortedSignupQuestions.flatMap((signupQuestion) => {
-          const foundGame = games.find(
+          const foundGame = programItems.find(
             (game) => game.programItemId === signupQuestion.programItemId,
           );
           if (!foundGame) {

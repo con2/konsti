@@ -14,7 +14,7 @@ const groupCreatorWithLotterySignups: User = {
   serial: "123",
   groupCode: "123-234-345",
   groupCreatorCode: "123-234-345",
-  favoritedGames: [],
+  favoritedProgramItems: [],
   lotterySignups: [
     {
       programItemDetails: testGame,
@@ -36,7 +36,7 @@ const groupMemberWithoutLotterySignups1: User = {
   serial: "456",
   groupCode: "123-234-345",
   groupCreatorCode: "0",
-  favoritedGames: [],
+  favoritedProgramItems: [],
   lotterySignups: [],
   createdAt: "2019-11-23T12:00:00+02:00",
   eventLogItems: [],
@@ -51,7 +51,7 @@ const groupMemberWithoutLotterySignups2: User = {
   serial: "789",
   groupCode: "123-234-345",
   groupCreatorCode: "0",
-  favoritedGames: [],
+  favoritedProgramItems: [],
   lotterySignups: [],
   createdAt: "2019-11-23T12:00:00+02:00",
   eventLogItems: [],

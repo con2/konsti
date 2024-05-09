@@ -282,9 +282,9 @@ export const fetchUserByUsername = async (
   return {
     message: "Getting user data success",
     status: "success",
-    games: {
+    programItems: {
       directSignups,
-      favoritedGames: user.favoritedGames,
+      favoritedProgramItems: user.favoritedProgramItems,
       lotterySignups: user.lotterySignups,
     },
     username: user.username,

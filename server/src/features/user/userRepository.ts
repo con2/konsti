@@ -38,7 +38,7 @@ export const saveUser = async (
       typeof newUserData.groupCreatorCode === "string"
         ? newUserData.groupCreatorCode
         : "0",
-    favoritedGames: [],
+    favoritedProgramItems: [],
     lotterySignups: [],
     eventLogItems: [],
   };
@@ -71,7 +71,7 @@ export const updateUsersByUsername = async (
           userGroup: user.userGroup,
           serial: user.serial,
           groupCode: user.groupCode,
-          favoritedGames: user.favoritedGames,
+          favoritedProgramItems: user.favoritedProgramItems,
           lotterySignups: user.lotterySignups,
         },
       },

@@ -17,10 +17,10 @@ import { RaisedCard } from "client/components/RaisedCard";
 import { getIsInGroup } from "client/views/group/groupUtils";
 
 interface Props {
-  games: readonly ProgramItem[];
+  programItems: readonly ProgramItem[];
 }
 
-export const AllGamesList = ({ games }: Props): ReactElement => {
+export const AllGamesList = ({ programItems }: Props): ReactElement => {
   const { t } = useTranslation();
 
   const signups = useAppSelector((state) => state.allGames.directSignups);
@@ -45,10 +45,10 @@ export const AllGamesList = ({ games }: Props): ReactElement => {
     isGroupCreator,
     groupMembers,
     isInGroup,
-    getAllGames: true,
+    getAllProgramItems: true,
   });
 
-  const sortedGames = sortBy(games, [
+  const sortedGames = sortBy(programItems, [
     (game) => game.startTime,
     (game) => game.title.toLowerCase(),
   ]);
@@ -91,7 +91,7 @@ export const AllGamesList = ({ games }: Props): ReactElement => {
                 username={username}
                 loggedIn={loggedIn}
                 userGroup={userGroup}
-                favoritedGames={favoritedGames}
+                favoritedProgramItems={favoritedGames}
               />
             );
           })}
@@ -102,7 +102,7 @@ export const AllGamesList = ({ games }: Props): ReactElement => {
 
   return (
     <div>
-      {games.length === 0 && (
+      {programItems.length === 0 && (
         <RaisedCard>
           <NoGamesText>
             {t("noProgramItemsAvailable", {
@@ -113,7 +113,7 @@ export const AllGamesList = ({ games }: Props): ReactElement => {
           </NoGamesText>
         </RaisedCard>
       )}
-      {games.length !== 0 && gamesList}
+      {programItems.length !== 0 && gamesList}
     </div>
   );
 };

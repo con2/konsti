@@ -1,11 +1,11 @@
 import { updateGamePopularity } from "server/features/game-popularity/updateGamePopularity";
 import { config } from "shared/config";
 import {
-  PostUpdateGamesResponse,
-  GetGamesResponse,
-  PostUpdateGamesError,
-  GetGamesError,
-} from "shared/types/api/games";
+  PostUpdateProgramItemsResponse,
+  GetProgramItemsResponse,
+  PostUpdateProgramItemsError,
+  GetProgramItemsError,
+} from "shared/types/api/programItems";
 import {
   findProgramItems,
   saveProgramItems,
@@ -36,7 +36,7 @@ export const getGamesForConvention = async (): Promise<
 };
 
 export const updateGames = async (): Promise<
-  PostUpdateGamesResponse | PostUpdateGamesError
+  PostUpdateProgramItemsResponse | PostUpdateProgramItemsError
 > => {
   const gamesResult = await getGamesForConvention();
   if (isErrorResult(gamesResult)) {
@@ -82,12 +82,12 @@ export const updateGames = async (): Promise<
   return {
     message: "Games db updated",
     status: "success",
-    games: updatedGames,
+    programItems: updatedGames,
   };
 };
 
 export const fetchGames = async (): Promise<
-  GetGamesResponse | GetGamesError
+  GetProgramItemsResponse | GetProgramItemsError
 > => {
   const gamesResult = await findProgramItems();
   if (isErrorResult(gamesResult)) {
@@ -114,6 +114,6 @@ export const fetchGames = async (): Promise<
   return {
     message: "Games downloaded",
     status: "success",
-    games: gamesWithPlayers,
+    programItems: gamesWithPlayers,
   };
 };

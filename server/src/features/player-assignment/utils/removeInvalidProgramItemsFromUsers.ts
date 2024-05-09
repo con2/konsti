@@ -41,15 +41,17 @@ export const removeInvalidProgramItemsFromUsers = async (): Promise<
       );
     }
 
-    const validFavoritedGames = user.favoritedGames.filter((favoritedGame) => {
-      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-      if (favoritedGame !== null) {
-        return favoritedGame;
-      }
-    });
+    const validFavoritedGames = user.favoritedProgramItems.filter(
+      (favoritedGame) => {
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+        if (favoritedGame !== null) {
+          return favoritedGame;
+        }
+      },
+    );
 
     const changedFavoritedGamesCount =
-      user.favoritedGames.length - validFavoritedGames.length;
+      user.favoritedProgramItems.length - validFavoritedGames.length;
 
     if (changedFavoritedGamesCount > 0) {
       logger.info(
@@ -61,7 +63,7 @@ export const removeInvalidProgramItemsFromUsers = async (): Promise<
       return {
         ...user,
         lotterySignups: validLotterySignups,
-        favoritedGames: validFavoritedGames,
+        favoritedProgramItems: validFavoritedGames,
       };
     }
 

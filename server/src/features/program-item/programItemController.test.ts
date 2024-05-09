@@ -177,8 +177,8 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
     expect(updatedUser?.lotterySignups[0].programItemDetails.title).toEqual(
       testGame.title,
     );
-    expect(updatedUser?.favoritedGames.length).toEqual(1);
-    expect(updatedUser?.favoritedGames[0].programItemId).toEqual(
+    expect(updatedUser?.favoritedProgramItems.length).toEqual(1);
+    expect(updatedUser?.favoritedProgramItems[0].programItemId).toEqual(
       testGame.programItemId,
     );
 
@@ -303,7 +303,7 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
     expect(updatedUser?.lotterySignups[0].programItemDetails.title).toEqual(
       testGame2.title,
     );
-    expect(updatedUser?.favoritedGames.length).toEqual(2);
+    expect(updatedUser?.favoritedProgramItems.length).toEqual(2);
 
     const signupsResult = await findUserDirectSignups(mockUser.username);
     const signups = unsafelyUnwrapResult(signupsResult);

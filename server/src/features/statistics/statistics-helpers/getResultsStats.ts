@@ -19,16 +19,17 @@ export const getResultsStats = (year: number, event: string): void => {
 
   logger.info(`Loaded ${results.length} results`);
 
-  const games: ProgramItem[] = JSON.parse(
+  const programItems: ProgramItem[] = JSON.parse(
     fs.readFileSync(
-      `${config.server().statsDataDir}/${event}/${year}/games.json`,
+      `${config.server().statsDataDir}/${event}/${year}/program-items.json`,
       "utf8",
     ),
   );
 
-  logger.info(`Loaded ${games.length} games`);
+  logger.info(`Loaded ${programItems.length} games`);
 
   const signupsByTime = getSignupsByTime(results);
-  const maximumNumberOfPlayersByTime = getMaximumNumberOfPlayersByTime(games);
+  const maximumNumberOfPlayersByTime =
+    getMaximumNumberOfPlayersByTime(programItems);
   getDemandByTime(signupsByTime, maximumNumberOfPlayersByTime);
 };

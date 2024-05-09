@@ -11,7 +11,7 @@ export const RevolvingDoorGamesInfo = (): ReactElement => {
   const { t } = useTranslation();
 
   const activeGames = useAppSelector(selectActiveGames);
-  const hiddenGames = useAppSelector((state) => state.admin.hiddenGames);
+  const hiddenGames = useAppSelector((state) => state.admin.hiddenProgramItems);
   const activeProgramType = useAppSelector(
     (state) => state.admin.activeProgramType,
   );

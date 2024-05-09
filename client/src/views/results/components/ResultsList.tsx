@@ -9,7 +9,7 @@ import { getUsersForProgramItemId } from "client/views/results/resultsUtils";
 import { getUpcomingGames } from "client/utils/getUpcomingGames";
 import { ProgramItem } from "shared/types/models/programItem";
 import { selectActiveGames } from "client/views/admin/adminSlice";
-import { MULTIPLE_WHITESPACES_REGEX } from "client/views/all-games/AllGamesView";
+import { MULTIPLE_WHITESPACES_REGEX } from "client/views/all-games/AllProgramItemsView";
 import { Tags } from "client/components/Tags";
 import { getAttendeeType } from "client/utils/getAttendeeType";
 import { config } from "shared/config";
@@ -37,7 +37,7 @@ export const ResultsList = (): ReactElement => {
   const signupQuestions = useAppSelector(
     (state) => state.admin.signupQuestions,
   );
-  const hiddenGames = useAppSelector((state) => state.admin.hiddenGames);
+  const hiddenGames = useAppSelector((state) => state.admin.hiddenProgramItems);
 
   const [selectedStartingTime, setSelectedStartingTime] = useState<string>(
     ResultsStartingTimeOption.ALL,

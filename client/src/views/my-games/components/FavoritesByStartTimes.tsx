@@ -11,24 +11,24 @@ import { IconButton } from "client/components/IconButton";
 import { selectFavoritedGames } from "client/views/my-games/myGamesSlice";
 
 interface Props {
-  games: readonly ProgramItem[];
+  programItems: readonly ProgramItem[];
   startTimes: readonly string[];
 }
 
 export const FavoritesByStartTimes = ({
-  games,
+  programItems,
   startTimes,
 }: Props): ReactElement => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const username = useAppSelector((state) => state.login.username);
-  const favoritedGames = useAppSelector(selectFavoritedGames);
+  const favoritedProgramItems = useAppSelector(selectFavoritedGames);
 
   const removeFavorite = async (game: ProgramItem): Promise<void> => {
     await updateFavorite({
       game,
       action: "del",
-      favoritedGames,
+      favoritedProgramItems,
       username,
       dispatch,
     });
@@ -42,7 +42,7 @@ export const FavoritesByStartTimes = ({
             <StyledTime>{capitalize(getWeekdayAndTime(startTime))}</StyledTime>
 
             <ul>
-              {games.map((game) => {
+              {programItems.map((game) => {
                 if (game.startTime === startTime) {
                   return (
                     <ProgramItemDetailsRow key={game.programItemId}>

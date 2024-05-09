@@ -22,7 +22,7 @@ import { initializeDayjs } from "shared/utils/initializeDayjs";
 interface Options {
   clean?: boolean;
   users?: boolean;
-  games?: boolean;
+  programItems?: boolean;
   lotterySignups?: boolean;
   directSignups?: boolean;
   log?: boolean;
@@ -54,7 +54,7 @@ export const runGenerators = async (
 
   const testUsersCount = 5; // Number of test users
 
-  // Total games: newGamesCount
+  // Total program items: newGamesCount
   const newGamesCount = 10; // How many games are available for each signup time for each program type
 
   if (options.clean) {
@@ -80,7 +80,7 @@ export const runGenerators = async (
   await createAdminUser();
   await createHelpUser();
 
-  if (options.games) {
+  if (options.programItems) {
     logger.info("Generate games");
 
     !options.clean && (await removeProgramItems());

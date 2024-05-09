@@ -24,7 +24,7 @@ const getInitialActiveProgramType = (): ActiveProgramType => {
 
 const initialState = (): AdminState => {
   return {
-    hiddenGames: [],
+    hiddenProgramItems: [],
     activeAssignmentTime: "",
     appOpen: true,
     assignmentResponseMessage: "",
@@ -128,7 +128,7 @@ export const adminReducer = adminSlice.reducer;
 // SELECTORS
 
 const selectGames = (state: RootState): readonly ProgramItem[] =>
-  state.allGames.games;
+  state.allGames.programItems;
 const selectActiveProgramType = (state: RootState): ActiveProgramType =>
   state.admin.activeProgramType;
 
