@@ -4,7 +4,7 @@
       {
         "username": "804595",
         "directSignup": {
-          "gameDetails": { "gameId": "p5263" },
+          "programItemDetails": { "gameId": "p5263" },
           "priority": 3,
           "time": "2022-07-29T15:00:00Z"
         }
@@ -12,7 +12,7 @@
       {
         "username": "451394",
         "directSignup": {
-          "gameDetails": { "gameId": "p5263" },
+          "programItemDetails": { "gameId": "p5263" },
           "priority": 2,
           "time": "2022-07-29T15:00:00Z"
         }
@@ -20,7 +20,7 @@
       {
         "username": "799060",
         "directSignup": {
-          "gameDetails": { "gameId": "p5414" },
+          "programItemDetails": { "gameId": "p5414" },
           "priority": 3,
           "time": "2022-07-29T15:00:00Z"
         }
@@ -28,7 +28,7 @@
       {
         "username": "254323",
         "directSignup": {
-          "gameDetails": { "gameId": "p5414" },
+          "programItemDetails": { "gameId": "p5414" },
           "priority": 1,
           "time": "2022-07-29T15:00:00Z"
         }
@@ -36,7 +36,7 @@
       {
         "username": "99090",
         "directSignup": {
-          "gameDetails": { "gameId": "p5664" },
+          "programItemDetails": { "gameId": "p5664" },
           "priority": 1,
           "time": "2022-07-29T15:00:00Z"
         }
@@ -44,7 +44,7 @@
       {
         "username": "545503",
         "directSignup": {
-          "gameDetails": { "gameId": "p5664" },
+          "programItemDetails": { "gameId": "p5664" },
           "priority": 1,
           "time": "2022-07-29T15:00:00Z"
         }
@@ -52,7 +52,7 @@
       {
         "username": "770511",
         "directSignup": {
-          "gameDetails": { "gameId": "p5664" },
+          "programItemDetails": { "gameId": "p5664" },
           "priority": 1,
           "time": "2022-07-29T15:00:00Z"
         }
@@ -60,7 +60,7 @@
       {
         "username": "291101",
         "directSignup": {
-          "gameDetails": { "gameId": "p5664" },
+          "programItemDetails": { "gameId": "p5664" },
           "priority": 1,
           "time": "2022-07-29T15:00:00Z"
         }
@@ -77,7 +77,7 @@
       {
         "username": "420141",
         "directSignup": {
-          "gameDetails": { "gameId": "p5653" },
+          "programItemDetails": { "gameId": "p5653" },
           "priority": 1,
           "time": "2022-07-29T16:00:00Z"
         }
@@ -85,7 +85,7 @@
       {
         "username": "889552",
         "directSignup": {
-          "gameDetails": { "gameId": "p5670" },
+          "programItemDetails": { "gameId": "p5670" },
           "priority": 1,
           "time": "2022-07-29T16:00:00Z"
         }
@@ -93,7 +93,7 @@
       {
         "username": "839911",
         "directSignup": {
-          "gameDetails": { "gameId": "p5611" },
+          "programItemDetails": { "gameId": "p5611" },
           "priority": 1,
           "time": "2022-07-29T16:00:00Z"
         }
@@ -101,7 +101,7 @@
       {
         "username": "601627",
         "directSignup": {
-          "gameDetails": { "gameId": "p5565" },
+          "programItemDetails": { "gameId": "p5565" },
           "priority": 1,
           "time": "2022-07-29T16:00:00Z"
         }
@@ -109,7 +109,7 @@
       {
         "username": "543707",
         "directSignup": {
-          "gameDetails": { "gameId": "p5538" },
+          "programItemDetails": { "gameId": "p5538" },
           "priority": 1,
           "time": "2022-07-29T16:00:00Z"
         }
@@ -117,7 +117,7 @@
       {
         "username": "523433",
         "directSignup": {
-          "gameDetails": { "gameId": "p5653" },
+          "programItemDetails": { "gameId": "p5653" },
           "priority": 1,
           "time": "2022-07-29T16:00:00Z"
         }
@@ -125,7 +125,7 @@
       {
         "username": "144564",
         "directSignup": {
-          "gameDetails": { "gameId": "p5630" },
+          "programItemDetails": { "gameId": "p5630" },
           "priority": 2,
           "time": "2022-07-29T16:00:00Z"
         }
@@ -133,7 +133,7 @@
       {
         "username": "485147",
         "directSignup": {
-          "gameDetails": { "gameId": "p5670" },
+          "programItemDetails": { "gameId": "p5670" },
           "priority": 2,
           "time": "2022-07-29T16:00:00Z"
         }
@@ -141,7 +141,7 @@
       {
         "username": "496409",
         "directSignup": {
-          "gameDetails": { "gameId": "p5611" },
+          "programItemDetails": { "gameId": "p5611" },
           "priority": 3,
           "time": "2022-07-29T16:00:00Z"
         }
@@ -149,7 +149,7 @@
       {
         "username": "474302",
         "directSignup": {
-          "gameDetails": { "gameId": "p5653" },
+          "programItemDetails": { "gameId": "p5653" },
           "priority": 1,
           "time": "2022-07-29T16:00:00Z"
         }
@@ -157,7 +157,7 @@
       {
         "username": "908989",
         "directSignup": {
-          "gameDetails": { "gameId": "p5560" },
+          "programItemDetails": { "gameId": "p5560" },
           "priority": 2,
           "time": "2022-07-29T16:00:00Z"
         }
@@ -165,7 +165,7 @@
       {
         "username": "566404",
         "directSignup": {
-          "gameDetails": { "gameId": "p5670" },
+          "programItemDetails": { "gameId": "p5670" },
           "priority": 1,
           "time": "2022-07-29T16:00:00Z"
         }
@@ -173,7 +173,7 @@
       {
         "username": "174035",
         "directSignup": {
-          "gameDetails": { "gameId": "p5611" },
+          "programItemDetails": { "gameId": "p5611" },
           "priority": 1,
           "time": "2022-07-29T16:00:00Z"
         }
@@ -181,7 +181,7 @@
       {
         "username": "474050",
         "directSignup": {
-          "gameDetails": { "gameId": "p5630" },
+          "programItemDetails": { "gameId": "p5630" },
           "priority": 2,
           "time": "2022-07-29T16:00:00Z"
         }
@@ -189,7 +189,7 @@
       {
         "username": "230368",
         "directSignup": {
-          "gameDetails": { "gameId": "p5611" },
+          "programItemDetails": { "gameId": "p5611" },
           "priority": 1,
           "time": "2022-07-29T16:00:00Z"
         }
@@ -197,7 +197,7 @@
       {
         "username": "692189",
         "directSignup": {
-          "gameDetails": { "gameId": "p5672" },
+          "programItemDetails": { "gameId": "p5672" },
           "priority": 3,
           "time": "2022-07-29T16:00:00Z"
         }
@@ -205,7 +205,7 @@
       {
         "username": "323506",
         "directSignup": {
-          "gameDetails": { "gameId": "p5630" },
+          "programItemDetails": { "gameId": "p5630" },
           "priority": 1,
           "time": "2022-07-29T16:00:00Z"
         }
@@ -213,7 +213,7 @@
       {
         "username": "693202",
         "directSignup": {
-          "gameDetails": { "gameId": "p5565" },
+          "programItemDetails": { "gameId": "p5565" },
           "priority": 1,
           "time": "2022-07-29T16:00:00Z"
         }
@@ -221,7 +221,7 @@
       {
         "username": "109754",
         "directSignup": {
-          "gameDetails": { "gameId": "p5565" },
+          "programItemDetails": { "gameId": "p5565" },
           "priority": 1,
           "time": "2022-07-29T16:00:00Z"
         }
@@ -229,7 +229,7 @@
       {
         "username": "938746",
         "directSignup": {
-          "gameDetails": { "gameId": "p5538" },
+          "programItemDetails": { "gameId": "p5538" },
           "priority": 1,
           "time": "2022-07-29T16:00:00Z"
         }
@@ -237,7 +237,7 @@
       {
         "username": "258303",
         "directSignup": {
-          "gameDetails": { "gameId": "p5538" },
+          "programItemDetails": { "gameId": "p5538" },
           "priority": 2,
           "time": "2022-07-29T16:00:00Z"
         }
@@ -245,7 +245,7 @@
       {
         "username": "747542",
         "directSignup": {
-          "gameDetails": { "gameId": "p5630" },
+          "programItemDetails": { "gameId": "p5630" },
           "priority": 1,
           "time": "2022-07-29T16:00:00Z"
         }
@@ -253,7 +253,7 @@
       {
         "username": "541311",
         "directSignup": {
-          "gameDetails": { "gameId": "p5653" },
+          "programItemDetails": { "gameId": "p5653" },
           "priority": 1,
           "time": "2022-07-29T16:00:00Z"
         }
@@ -261,7 +261,7 @@
       {
         "username": "329596",
         "directSignup": {
-          "gameDetails": { "gameId": "p5653" },
+          "programItemDetails": { "gameId": "p5653" },
           "priority": 1,
           "time": "2022-07-29T16:00:00Z"
         }
@@ -269,7 +269,7 @@
       {
         "username": "812729",
         "directSignup": {
-          "gameDetails": { "gameId": "p5560" },
+          "programItemDetails": { "gameId": "p5560" },
           "priority": 1,
           "time": "2022-07-29T16:00:00Z"
         }
@@ -277,7 +277,7 @@
       {
         "username": "832499",
         "directSignup": {
-          "gameDetails": { "gameId": "p5630" },
+          "programItemDetails": { "gameId": "p5630" },
           "priority": 1,
           "time": "2022-07-29T16:00:00Z"
         }
@@ -285,7 +285,7 @@
       {
         "username": "391781",
         "directSignup": {
-          "gameDetails": { "gameId": "p5630" },
+          "programItemDetails": { "gameId": "p5630" },
           "priority": 1,
           "time": "2022-07-29T16:00:00Z"
         }
@@ -293,7 +293,7 @@
       {
         "username": "784665",
         "directSignup": {
-          "gameDetails": { "gameId": "p5630" },
+          "programItemDetails": { "gameId": "p5630" },
           "priority": 1,
           "time": "2022-07-29T16:00:00Z"
         }
@@ -301,7 +301,7 @@
       {
         "username": "849979",
         "directSignup": {
-          "gameDetails": { "gameId": "p5630" },
+          "programItemDetails": { "gameId": "p5630" },
           "priority": 1,
           "time": "2022-07-29T16:00:00Z"
         }
@@ -309,7 +309,7 @@
       {
         "username": "832606",
         "directSignup": {
-          "gameDetails": { "gameId": "p5672" },
+          "programItemDetails": { "gameId": "p5672" },
           "priority": 1,
           "time": "2022-07-29T16:00:00Z"
         }
@@ -317,7 +317,7 @@
       {
         "username": "716821",
         "directSignup": {
-          "gameDetails": { "gameId": "p5672" },
+          "programItemDetails": { "gameId": "p5672" },
           "priority": 1,
           "time": "2022-07-29T16:00:00Z"
         }
@@ -325,7 +325,7 @@
       {
         "username": "242785",
         "directSignup": {
-          "gameDetails": { "gameId": "p5672" },
+          "programItemDetails": { "gameId": "p5672" },
           "priority": 3,
           "time": "2022-07-29T16:00:00Z"
         }
@@ -333,7 +333,7 @@
       {
         "username": "429412",
         "directSignup": {
-          "gameDetails": { "gameId": "p5672" },
+          "programItemDetails": { "gameId": "p5672" },
           "priority": 3,
           "time": "2022-07-29T16:00:00Z"
         }
@@ -341,7 +341,7 @@
       {
         "username": "379675",
         "directSignup": {
-          "gameDetails": { "gameId": "p5538" },
+          "programItemDetails": { "gameId": "p5538" },
           "priority": 1,
           "time": "2022-07-29T16:00:00Z"
         }
@@ -349,7 +349,7 @@
       {
         "username": "228288",
         "directSignup": {
-          "gameDetails": { "gameId": "p5538" },
+          "programItemDetails": { "gameId": "p5538" },
           "priority": 1,
           "time": "2022-07-29T16:00:00Z"
         }
@@ -366,7 +366,7 @@
       {
         "username": "810395",
         "directSignup": {
-          "gameDetails": { "gameId": "p5536" },
+          "programItemDetails": { "gameId": "p5536" },
           "priority": 2,
           "time": "2022-07-29T17:00:00Z"
         }
@@ -374,7 +374,7 @@
       {
         "username": "815795",
         "directSignup": {
-          "gameDetails": { "gameId": "p5353" },
+          "programItemDetails": { "gameId": "p5353" },
           "priority": 1,
           "time": "2022-07-29T17:00:00Z"
         }
@@ -382,7 +382,7 @@
       {
         "username": "480007",
         "directSignup": {
-          "gameDetails": { "gameId": "p5474" },
+          "programItemDetails": { "gameId": "p5474" },
           "priority": 1,
           "time": "2022-07-29T17:00:00Z"
         }
@@ -390,7 +390,7 @@
       {
         "username": "606267",
         "directSignup": {
-          "gameDetails": { "gameId": "p5657" },
+          "programItemDetails": { "gameId": "p5657" },
           "priority": 2,
           "time": "2022-07-29T17:00:00Z"
         }
@@ -398,7 +398,7 @@
       {
         "username": "318047",
         "directSignup": {
-          "gameDetails": { "gameId": "p5068" },
+          "programItemDetails": { "gameId": "p5068" },
           "priority": 1,
           "time": "2022-07-29T17:00:00Z"
         }
@@ -406,7 +406,7 @@
       {
         "username": "288827",
         "directSignup": {
-          "gameDetails": { "gameId": "p5068" },
+          "programItemDetails": { "gameId": "p5068" },
           "priority": 1,
           "time": "2022-07-29T17:00:00Z"
         }
@@ -414,7 +414,7 @@
       {
         "username": "648528",
         "directSignup": {
-          "gameDetails": { "gameId": "p5068" },
+          "programItemDetails": { "gameId": "p5068" },
           "priority": 1,
           "time": "2022-07-29T17:00:00Z"
         }
@@ -422,7 +422,7 @@
       {
         "username": "99473",
         "directSignup": {
-          "gameDetails": { "gameId": "p5265" },
+          "programItemDetails": { "gameId": "p5265" },
           "priority": 1,
           "time": "2022-07-29T17:00:00Z"
         }
@@ -430,7 +430,7 @@
       {
         "username": "310202",
         "directSignup": {
-          "gameDetails": { "gameId": "p5265" },
+          "programItemDetails": { "gameId": "p5265" },
           "priority": 1,
           "time": "2022-07-29T17:00:00Z"
         }
@@ -438,7 +438,7 @@
       {
         "username": "530101",
         "directSignup": {
-          "gameDetails": { "gameId": "p5474" },
+          "programItemDetails": { "gameId": "p5474" },
           "priority": 1,
           "time": "2022-07-29T17:00:00Z"
         }
@@ -446,7 +446,7 @@
       {
         "username": "934675",
         "directSignup": {
-          "gameDetails": { "gameId": "p5459" },
+          "programItemDetails": { "gameId": "p5459" },
           "priority": 1,
           "time": "2022-07-29T17:00:00Z"
         }
@@ -454,7 +454,7 @@
       {
         "username": "456038",
         "directSignup": {
-          "gameDetails": { "gameId": "p5474" },
+          "programItemDetails": { "gameId": "p5474" },
           "priority": 1,
           "time": "2022-07-29T17:00:00Z"
         }
@@ -462,7 +462,7 @@
       {
         "username": "33782",
         "directSignup": {
-          "gameDetails": { "gameId": "p5536" },
+          "programItemDetails": { "gameId": "p5536" },
           "priority": 3,
           "time": "2022-07-29T17:00:00Z"
         }
@@ -470,7 +470,7 @@
       {
         "username": "454383",
         "directSignup": {
-          "gameDetails": { "gameId": "p5459" },
+          "programItemDetails": { "gameId": "p5459" },
           "priority": 1,
           "time": "2022-07-29T17:00:00Z"
         }
@@ -478,7 +478,7 @@
       {
         "username": "113337",
         "directSignup": {
-          "gameDetails": { "gameId": "p5474" },
+          "programItemDetails": { "gameId": "p5474" },
           "priority": 1,
           "time": "2022-07-29T17:00:00Z"
         }
@@ -486,7 +486,7 @@
       {
         "username": "910499",
         "directSignup": {
-          "gameDetails": { "gameId": "p5265" },
+          "programItemDetails": { "gameId": "p5265" },
           "priority": 1,
           "time": "2022-07-29T17:00:00Z"
         }
@@ -494,7 +494,7 @@
       {
         "username": "22255",
         "directSignup": {
-          "gameDetails": { "gameId": "p5459" },
+          "programItemDetails": { "gameId": "p5459" },
           "priority": 1,
           "time": "2022-07-29T17:00:00Z"
         }
@@ -502,7 +502,7 @@
       {
         "username": "472335",
         "directSignup": {
-          "gameDetails": { "gameId": "p5265" },
+          "programItemDetails": { "gameId": "p5265" },
           "priority": 1,
           "time": "2022-07-29T17:00:00Z"
         }
@@ -510,7 +510,7 @@
       {
         "username": "147152",
         "directSignup": {
-          "gameDetails": { "gameId": "p5068" },
+          "programItemDetails": { "gameId": "p5068" },
           "priority": 1,
           "time": "2022-07-29T17:00:00Z"
         }
@@ -518,7 +518,7 @@
       {
         "username": "474050",
         "directSignup": {
-          "gameDetails": { "gameId": "p5755" },
+          "programItemDetails": { "gameId": "p5755" },
           "priority": 2,
           "time": "2022-07-29T17:00:00Z"
         }
@@ -526,7 +526,7 @@
       {
         "username": "716711",
         "directSignup": {
-          "gameDetails": { "gameId": "p5353" },
+          "programItemDetails": { "gameId": "p5353" },
           "priority": 1,
           "time": "2022-07-29T17:00:00Z"
         }
@@ -534,7 +534,7 @@
       {
         "username": "623335",
         "directSignup": {
-          "gameDetails": { "gameId": "p5265" },
+          "programItemDetails": { "gameId": "p5265" },
           "priority": 1,
           "time": "2022-07-29T17:00:00Z"
         }
@@ -542,7 +542,7 @@
       {
         "username": "140088",
         "directSignup": {
-          "gameDetails": { "gameId": "p5755" },
+          "programItemDetails": { "gameId": "p5755" },
           "priority": 1,
           "time": "2022-07-29T17:00:00Z"
         }
@@ -550,7 +550,7 @@
       {
         "username": "676785",
         "directSignup": {
-          "gameDetails": { "gameId": "p5755" },
+          "programItemDetails": { "gameId": "p5755" },
           "priority": 1,
           "time": "2022-07-29T17:00:00Z"
         }
@@ -558,7 +558,7 @@
       {
         "username": "740895",
         "directSignup": {
-          "gameDetails": { "gameId": "p5755" },
+          "programItemDetails": { "gameId": "p5755" },
           "priority": 1,
           "time": "2022-07-29T17:00:00Z"
         }
@@ -566,7 +566,7 @@
       {
         "username": "316534",
         "directSignup": {
-          "gameDetails": { "gameId": "p5459" },
+          "programItemDetails": { "gameId": "p5459" },
           "priority": 2,
           "time": "2022-07-29T17:00:00Z"
         }
@@ -574,7 +574,7 @@
       {
         "username": "935278",
         "directSignup": {
-          "gameDetails": { "gameId": "p5755" },
+          "programItemDetails": { "gameId": "p5755" },
           "priority": 1,
           "time": "2022-07-29T17:00:00Z"
         }
@@ -582,7 +582,7 @@
       {
         "username": "511576",
         "directSignup": {
-          "gameDetails": { "gameId": "p5353" },
+          "programItemDetails": { "gameId": "p5353" },
           "priority": 1,
           "time": "2022-07-29T17:00:00Z"
         }
@@ -590,7 +590,7 @@
       {
         "username": "878043",
         "directSignup": {
-          "gameDetails": { "gameId": "p5474" },
+          "programItemDetails": { "gameId": "p5474" },
           "priority": 1,
           "time": "2022-07-29T17:00:00Z"
         }
@@ -598,7 +598,7 @@
       {
         "username": "769301",
         "directSignup": {
-          "gameDetails": { "gameId": "p5353" },
+          "programItemDetails": { "gameId": "p5353" },
           "priority": 2,
           "time": "2022-07-29T17:00:00Z"
         }
@@ -606,7 +606,7 @@
       {
         "username": "408651",
         "directSignup": {
-          "gameDetails": { "gameId": "p5342" },
+          "programItemDetails": { "gameId": "p5342" },
           "priority": 3,
           "time": "2022-07-29T17:00:00Z"
         }
@@ -614,7 +614,7 @@
       {
         "username": "567606",
         "directSignup": {
-          "gameDetails": { "gameId": "p5342" },
+          "programItemDetails": { "gameId": "p5342" },
           "priority": 2,
           "time": "2022-07-29T17:00:00Z"
         }
@@ -622,7 +622,7 @@
       {
         "username": "153567",
         "directSignup": {
-          "gameDetails": { "gameId": "p5068" },
+          "programItemDetails": { "gameId": "p5068" },
           "priority": 1,
           "time": "2022-07-29T17:00:00Z"
         }
@@ -630,7 +630,7 @@
       {
         "username": "226189",
         "directSignup": {
-          "gameDetails": { "gameId": "p5657" },
+          "programItemDetails": { "gameId": "p5657" },
           "priority": 1,
           "time": "2022-07-29T17:00:00Z"
         }
@@ -638,7 +638,7 @@
       {
         "username": "545873",
         "directSignup": {
-          "gameDetails": { "gameId": "p5657" },
+          "programItemDetails": { "gameId": "p5657" },
           "priority": 1,
           "time": "2022-07-29T17:00:00Z"
         }
@@ -646,7 +646,7 @@
       {
         "username": "475577",
         "directSignup": {
-          "gameDetails": { "gameId": "p5657" },
+          "programItemDetails": { "gameId": "p5657" },
           "priority": 1,
           "time": "2022-07-29T17:00:00Z"
         }
@@ -654,7 +654,7 @@
       {
         "username": "632831",
         "directSignup": {
-          "gameDetails": { "gameId": "p5657" },
+          "programItemDetails": { "gameId": "p5657" },
           "priority": 1,
           "time": "2022-07-29T17:00:00Z"
         }
@@ -662,7 +662,7 @@
       {
         "username": "847717",
         "directSignup": {
-          "gameDetails": { "gameId": "p5536" },
+          "programItemDetails": { "gameId": "p5536" },
           "priority": 3,
           "time": "2022-07-29T17:00:00Z"
         }
@@ -670,7 +670,7 @@
       {
         "username": "203925",
         "directSignup": {
-          "gameDetails": { "gameId": "p5536" },
+          "programItemDetails": { "gameId": "p5536" },
           "priority": 3,
           "time": "2022-07-29T17:00:00Z"
         }
@@ -678,7 +678,7 @@
       {
         "username": "843692",
         "directSignup": {
-          "gameDetails": { "gameId": "p5536" },
+          "programItemDetails": { "gameId": "p5536" },
           "priority": 3,
           "time": "2022-07-29T17:00:00Z"
         }
@@ -695,7 +695,7 @@
       {
         "username": "722229",
         "directSignup": {
-          "gameDetails": { "gameId": "p5640" },
+          "programItemDetails": { "gameId": "p5640" },
           "priority": 1,
           "time": "2022-07-29T18:00:00Z"
         }
@@ -703,7 +703,7 @@
       {
         "username": "345148",
         "directSignup": {
-          "gameDetails": { "gameId": "p5665" },
+          "programItemDetails": { "gameId": "p5665" },
           "priority": 2,
           "time": "2022-07-29T18:00:00Z"
         }
@@ -711,7 +711,7 @@
       {
         "username": "96157",
         "directSignup": {
-          "gameDetails": { "gameId": "p5609" },
+          "programItemDetails": { "gameId": "p5609" },
           "priority": 1,
           "time": "2022-07-29T18:00:00Z"
         }
@@ -719,7 +719,7 @@
       {
         "username": "660141",
         "directSignup": {
-          "gameDetails": { "gameId": "p5334" },
+          "programItemDetails": { "gameId": "p5334" },
           "priority": 1,
           "time": "2022-07-29T18:00:00Z"
         }
@@ -727,7 +727,7 @@
       {
         "username": "16085",
         "directSignup": {
-          "gameDetails": { "gameId": "p5673" },
+          "programItemDetails": { "gameId": "p5673" },
           "priority": 1,
           "time": "2022-07-29T18:00:00Z"
         }
@@ -735,7 +735,7 @@
       {
         "username": "905769",
         "directSignup": {
-          "gameDetails": { "gameId": "p5334" },
+          "programItemDetails": { "gameId": "p5334" },
           "priority": 1,
           "time": "2022-07-29T18:00:00Z"
         }
@@ -743,7 +743,7 @@
       {
         "username": "62531",
         "directSignup": {
-          "gameDetails": { "gameId": "p5665" },
+          "programItemDetails": { "gameId": "p5665" },
           "priority": 3,
           "time": "2022-07-29T18:00:00Z"
         }
@@ -751,7 +751,7 @@
       {
         "username": "558898",
         "directSignup": {
-          "gameDetails": { "gameId": "p5467" },
+          "programItemDetails": { "gameId": "p5467" },
           "priority": 1,
           "time": "2022-07-29T18:00:00Z"
         }
@@ -759,7 +759,7 @@
       {
         "username": "998133",
         "directSignup": {
-          "gameDetails": { "gameId": "p5673" },
+          "programItemDetails": { "gameId": "p5673" },
           "priority": 1,
           "time": "2022-07-29T18:00:00Z"
         }
@@ -767,7 +767,7 @@
       {
         "username": "401713",
         "directSignup": {
-          "gameDetails": { "gameId": "p5334" },
+          "programItemDetails": { "gameId": "p5334" },
           "priority": 1,
           "time": "2022-07-29T18:00:00Z"
         }
@@ -775,7 +775,7 @@
       {
         "username": "336070",
         "directSignup": {
-          "gameDetails": { "gameId": "p5524" },
+          "programItemDetails": { "gameId": "p5524" },
           "priority": 1,
           "time": "2022-07-29T18:00:00Z"
         }
@@ -783,7 +783,7 @@
       {
         "username": "502820",
         "directSignup": {
-          "gameDetails": { "gameId": "p5467" },
+          "programItemDetails": { "gameId": "p5467" },
           "priority": 1,
           "time": "2022-07-29T18:00:00Z"
         }
@@ -791,7 +791,7 @@
       {
         "username": "362690",
         "directSignup": {
-          "gameDetails": { "gameId": "p5524" },
+          "programItemDetails": { "gameId": "p5524" },
           "priority": 1,
           "time": "2022-07-29T18:00:00Z"
         }
@@ -799,7 +799,7 @@
       {
         "username": "584809",
         "directSignup": {
-          "gameDetails": { "gameId": "p5673" },
+          "programItemDetails": { "gameId": "p5673" },
           "priority": 1,
           "time": "2022-07-29T18:00:00Z"
         }
@@ -807,7 +807,7 @@
       {
         "username": "215784",
         "directSignup": {
-          "gameDetails": { "gameId": "p5640" },
+          "programItemDetails": { "gameId": "p5640" },
           "priority": 1,
           "time": "2022-07-29T18:00:00Z"
         }
@@ -815,7 +815,7 @@
       {
         "username": "621110",
         "directSignup": {
-          "gameDetails": { "gameId": "p5673" },
+          "programItemDetails": { "gameId": "p5673" },
           "priority": 1,
           "time": "2022-07-29T18:00:00Z"
         }
@@ -823,7 +823,7 @@
       {
         "username": "637270",
         "directSignup": {
-          "gameDetails": { "gameId": "p5640" },
+          "programItemDetails": { "gameId": "p5640" },
           "priority": 2,
           "time": "2022-07-29T18:00:00Z"
         }
@@ -831,7 +831,7 @@
       {
         "username": "408651",
         "directSignup": {
-          "gameDetails": { "gameId": "p5524" },
+          "programItemDetails": { "gameId": "p5524" },
           "priority": 1,
           "time": "2022-07-29T18:00:00Z"
         }
@@ -839,7 +839,7 @@
       {
         "username": "848435",
         "directSignup": {
-          "gameDetails": { "gameId": "p5640" },
+          "programItemDetails": { "gameId": "p5640" },
           "priority": 1,
           "time": "2022-07-29T18:00:00Z"
         }
@@ -847,7 +847,7 @@
       {
         "username": "974419",
         "directSignup": {
-          "gameDetails": { "gameId": "p5334" },
+          "programItemDetails": { "gameId": "p5334" },
           "priority": 2,
           "time": "2022-07-29T18:00:00Z"
         }
@@ -855,7 +855,7 @@
       {
         "username": "96256",
         "directSignup": {
-          "gameDetails": { "gameId": "p5467" },
+          "programItemDetails": { "gameId": "p5467" },
           "priority": 2,
           "time": "2022-07-29T18:00:00Z"
         }
@@ -863,7 +863,7 @@
       {
         "username": "144026",
         "directSignup": {
-          "gameDetails": { "gameId": "p5524" },
+          "programItemDetails": { "gameId": "p5524" },
           "priority": 1,
           "time": "2022-07-29T18:00:00Z"
         }
@@ -871,7 +871,7 @@
       {
         "username": "550116",
         "directSignup": {
-          "gameDetails": { "gameId": "p5609" },
+          "programItemDetails": { "gameId": "p5609" },
           "priority": 1,
           "time": "2022-07-29T18:00:00Z"
         }
@@ -879,7 +879,7 @@
       {
         "username": "8966",
         "directSignup": {
-          "gameDetails": { "gameId": "p5665" },
+          "programItemDetails": { "gameId": "p5665" },
           "priority": 2,
           "time": "2022-07-29T18:00:00Z"
         }
@@ -887,7 +887,7 @@
       {
         "username": "691237",
         "directSignup": {
-          "gameDetails": { "gameId": "p5609" },
+          "programItemDetails": { "gameId": "p5609" },
           "priority": 1,
           "time": "2022-07-29T18:00:00Z"
         }
@@ -895,7 +895,7 @@
       {
         "username": "895701",
         "directSignup": {
-          "gameDetails": { "gameId": "p5665" },
+          "programItemDetails": { "gameId": "p5665" },
           "priority": 1,
           "time": "2022-07-29T18:00:00Z"
         }
@@ -903,7 +903,7 @@
       {
         "username": "264756",
         "directSignup": {
-          "gameDetails": { "gameId": "p5640" },
+          "programItemDetails": { "gameId": "p5640" },
           "priority": 2,
           "time": "2022-07-29T18:00:00Z"
         }
@@ -911,7 +911,7 @@
       {
         "username": "730166",
         "directSignup": {
-          "gameDetails": { "gameId": "p5609" },
+          "programItemDetails": { "gameId": "p5609" },
           "priority": 1,
           "time": "2022-07-29T18:00:00Z"
         }
@@ -919,7 +919,7 @@
       {
         "username": "728319",
         "directSignup": {
-          "gameDetails": { "gameId": "p5609" },
+          "programItemDetails": { "gameId": "p5609" },
           "priority": 1,
           "time": "2022-07-29T18:00:00Z"
         }
@@ -927,7 +927,7 @@
       {
         "username": "264185",
         "directSignup": {
-          "gameDetails": { "gameId": "p5467" },
+          "programItemDetails": { "gameId": "p5467" },
           "priority": 2,
           "time": "2022-07-29T18:00:00Z"
         }
@@ -935,7 +935,7 @@
       {
         "username": "87605",
         "directSignup": {
-          "gameDetails": { "gameId": "p5467" },
+          "programItemDetails": { "gameId": "p5467" },
           "priority": 2,
           "time": "2022-07-29T18:00:00Z"
         }
@@ -952,7 +952,7 @@
       {
         "username": "178863",
         "directSignup": {
-          "gameDetails": { "gameId": "p5622" },
+          "programItemDetails": { "gameId": "p5622" },
           "priority": 1,
           "time": "2022-07-29T19:00:00Z"
         }
@@ -960,7 +960,7 @@
       {
         "username": "614861",
         "directSignup": {
-          "gameDetails": { "gameId": "p4956" },
+          "programItemDetails": { "gameId": "p4956" },
           "priority": 1,
           "time": "2022-07-29T19:00:00Z"
         }
@@ -968,7 +968,7 @@
       {
         "username": "553492",
         "directSignup": {
-          "gameDetails": { "gameId": "p5844" },
+          "programItemDetails": { "gameId": "p5844" },
           "priority": 1,
           "time": "2022-07-29T19:00:00Z"
         }
@@ -976,7 +976,7 @@
       {
         "username": "569702",
         "directSignup": {
-          "gameDetails": { "gameId": "p5064" },
+          "programItemDetails": { "gameId": "p5064" },
           "priority": 3,
           "time": "2022-07-29T19:00:00Z"
         }
@@ -984,7 +984,7 @@
       {
         "username": "10936",
         "directSignup": {
-          "gameDetails": { "gameId": "p5396" },
+          "programItemDetails": { "gameId": "p5396" },
           "priority": 1,
           "time": "2022-07-29T19:00:00Z"
         }
@@ -992,7 +992,7 @@
       {
         "username": "412161",
         "directSignup": {
-          "gameDetails": { "gameId": "p5396" },
+          "programItemDetails": { "gameId": "p5396" },
           "priority": 1,
           "time": "2022-07-29T19:00:00Z"
         }
@@ -1000,7 +1000,7 @@
       {
         "username": "808095",
         "directSignup": {
-          "gameDetails": { "gameId": "p5396" },
+          "programItemDetails": { "gameId": "p5396" },
           "priority": 2,
           "time": "2022-07-29T19:00:00Z"
         }
@@ -1008,7 +1008,7 @@
       {
         "username": "861953",
         "directSignup": {
-          "gameDetails": { "gameId": "p5064" },
+          "programItemDetails": { "gameId": "p5064" },
           "priority": 2,
           "time": "2022-07-29T19:00:00Z"
         }
@@ -1016,7 +1016,7 @@
       {
         "username": "62531",
         "directSignup": {
-          "gameDetails": { "gameId": "p5844" },
+          "programItemDetails": { "gameId": "p5844" },
           "priority": 2,
           "time": "2022-07-29T19:00:00Z"
         }
@@ -1024,7 +1024,7 @@
       {
         "username": "422913",
         "directSignup": {
-          "gameDetails": { "gameId": "p5064" },
+          "programItemDetails": { "gameId": "p5064" },
           "priority": 1,
           "time": "2022-07-29T19:00:00Z"
         }
@@ -1032,7 +1032,7 @@
       {
         "username": "174035",
         "directSignup": {
-          "gameDetails": { "gameId": "p4956" },
+          "programItemDetails": { "gameId": "p4956" },
           "priority": 1,
           "time": "2022-07-29T19:00:00Z"
         }
@@ -1040,7 +1040,7 @@
       {
         "username": "616310",
         "directSignup": {
-          "gameDetails": { "gameId": "p5047" },
+          "programItemDetails": { "gameId": "p5047" },
           "priority": 2,
           "time": "2022-07-29T19:00:00Z"
         }
@@ -1048,7 +1048,7 @@
       {
         "username": "708181",
         "directSignup": {
-          "gameDetails": { "gameId": "p5396" },
+          "programItemDetails": { "gameId": "p5396" },
           "priority": 1,
           "time": "2022-07-29T19:00:00Z"
         }
@@ -1056,7 +1056,7 @@
       {
         "username": "365748",
         "directSignup": {
-          "gameDetails": { "gameId": "p5622" },
+          "programItemDetails": { "gameId": "p5622" },
           "priority": 1,
           "time": "2022-07-29T19:00:00Z"
         }
@@ -1064,7 +1064,7 @@
       {
         "username": "344159",
         "directSignup": {
-          "gameDetails": { "gameId": "p5064" },
+          "programItemDetails": { "gameId": "p5064" },
           "priority": 1,
           "time": "2022-07-29T19:00:00Z"
         }
@@ -1072,7 +1072,7 @@
       {
         "username": "418105",
         "directSignup": {
-          "gameDetails": { "gameId": "p5047" },
+          "programItemDetails": { "gameId": "p5047" },
           "priority": 2,
           "time": "2022-07-29T19:00:00Z"
         }
@@ -1080,7 +1080,7 @@
       {
         "username": "431830",
         "directSignup": {
-          "gameDetails": { "gameId": "p5047" },
+          "programItemDetails": { "gameId": "p5047" },
           "priority": 2,
           "time": "2022-07-29T19:00:00Z"
         }
@@ -1088,7 +1088,7 @@
       {
         "username": "779350",
         "directSignup": {
-          "gameDetails": { "gameId": "p5622" },
+          "programItemDetails": { "gameId": "p5622" },
           "priority": 1,
           "time": "2022-07-29T19:00:00Z"
         }
@@ -1096,7 +1096,7 @@
       {
         "username": "754211",
         "directSignup": {
-          "gameDetails": { "gameId": "p5622" },
+          "programItemDetails": { "gameId": "p5622" },
           "priority": 1,
           "time": "2022-07-29T19:00:00Z"
         }
@@ -1104,7 +1104,7 @@
       {
         "username": "397388",
         "directSignup": {
-          "gameDetails": { "gameId": "p5844" },
+          "programItemDetails": { "gameId": "p5844" },
           "priority": 1,
           "time": "2022-07-29T19:00:00Z"
         }
@@ -1112,7 +1112,7 @@
       {
         "username": "484215",
         "directSignup": {
-          "gameDetails": { "gameId": "p5064" },
+          "programItemDetails": { "gameId": "p5064" },
           "priority": 1,
           "time": "2022-07-29T19:00:00Z"
         }
@@ -1120,7 +1120,7 @@
       {
         "username": "67086",
         "directSignup": {
-          "gameDetails": { "gameId": "p5064" },
+          "programItemDetails": { "gameId": "p5064" },
           "priority": 1,
           "time": "2022-07-29T19:00:00Z"
         }
@@ -1128,7 +1128,7 @@
       {
         "username": "895701",
         "directSignup": {
-          "gameDetails": { "gameId": "p5844" },
+          "programItemDetails": { "gameId": "p5844" },
           "priority": 2,
           "time": "2022-07-29T19:00:00Z"
         }
@@ -1136,7 +1136,7 @@
       {
         "username": "464758",
         "directSignup": {
-          "gameDetails": { "gameId": "p5622" },
+          "programItemDetails": { "gameId": "p5622" },
           "priority": 1,
           "time": "2022-07-29T19:00:00Z"
         }
@@ -1144,7 +1144,7 @@
       {
         "username": "268489",
         "directSignup": {
-          "gameDetails": { "gameId": "p4956" },
+          "programItemDetails": { "gameId": "p4956" },
           "priority": 1,
           "time": "2022-07-29T19:00:00Z"
         }
@@ -1152,7 +1152,7 @@
       {
         "username": "504641",
         "directSignup": {
-          "gameDetails": { "gameId": "p4956" },
+          "programItemDetails": { "gameId": "p4956" },
           "priority": 1,
           "time": "2022-07-29T19:00:00Z"
         }
@@ -1160,7 +1160,7 @@
       {
         "username": "192565",
         "directSignup": {
-          "gameDetails": { "gameId": "p4956" },
+          "programItemDetails": { "gameId": "p4956" },
           "priority": 1,
           "time": "2022-07-29T19:00:00Z"
         }
@@ -1177,7 +1177,7 @@
       {
         "username": "553492",
         "directSignup": {
-          "gameDetails": { "gameId": "p5727" },
+          "programItemDetails": { "gameId": "p5727" },
           "priority": 1,
           "time": "2022-07-29T21:00:00Z"
         }
@@ -1185,7 +1185,7 @@
       {
         "username": "939247",
         "directSignup": {
-          "gameDetails": { "gameId": "p5727" },
+          "programItemDetails": { "gameId": "p5727" },
           "priority": 1,
           "time": "2022-07-29T21:00:00Z"
         }
@@ -1193,7 +1193,7 @@
       {
         "username": "254323",
         "directSignup": {
-          "gameDetails": { "gameId": "p5727" },
+          "programItemDetails": { "gameId": "p5727" },
           "priority": 1,
           "time": "2022-07-29T21:00:00Z"
         }
@@ -1201,7 +1201,7 @@
       {
         "username": "496409",
         "directSignup": {
-          "gameDetails": { "gameId": "p5727" },
+          "programItemDetails": { "gameId": "p5727" },
           "priority": 1,
           "time": "2022-07-29T21:00:00Z"
         }
@@ -1209,7 +1209,7 @@
       {
         "username": "790596",
         "directSignup": {
-          "gameDetails": { "gameId": "p5727" },
+          "programItemDetails": { "gameId": "p5727" },
           "priority": 1,
           "time": "2022-07-29T21:00:00Z"
         }
@@ -1217,7 +1217,7 @@
       {
         "username": "716711",
         "directSignup": {
-          "gameDetails": { "gameId": "p5727" },
+          "programItemDetails": { "gameId": "p5727" },
           "priority": 1,
           "time": "2022-07-29T21:00:00Z"
         }
@@ -1225,7 +1225,7 @@
       {
         "username": "30042",
         "directSignup": {
-          "gameDetails": { "gameId": "p5727" },
+          "programItemDetails": { "gameId": "p5727" },
           "priority": 1,
           "time": "2022-07-29T21:00:00Z"
         }
@@ -1233,7 +1233,7 @@
       {
         "username": "742777",
         "directSignup": {
-          "gameDetails": { "gameId": "p5727" },
+          "programItemDetails": { "gameId": "p5727" },
           "priority": 1,
           "time": "2022-07-29T21:00:00Z"
         }
@@ -1250,7 +1250,7 @@
       {
         "username": "74166",
         "directSignup": {
-          "gameDetails": { "gameId": "p5171" },
+          "programItemDetails": { "gameId": "p5171" },
           "priority": 3,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1258,7 +1258,7 @@
       {
         "username": "804595",
         "directSignup": {
-          "gameDetails": { "gameId": "p5118" },
+          "programItemDetails": { "gameId": "p5118" },
           "priority": 2,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1266,7 +1266,7 @@
       {
         "username": "314827",
         "directSignup": {
-          "gameDetails": { "gameId": "p5677" },
+          "programItemDetails": { "gameId": "p5677" },
           "priority": 1,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1274,7 +1274,7 @@
       {
         "username": "899439",
         "directSignup": {
-          "gameDetails": { "gameId": "p5220" },
+          "programItemDetails": { "gameId": "p5220" },
           "priority": 1,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1282,7 +1282,7 @@
       {
         "username": "280564",
         "directSignup": {
-          "gameDetails": { "gameId": "p5666" },
+          "programItemDetails": { "gameId": "p5666" },
           "priority": 3,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1290,7 +1290,7 @@
       {
         "username": "212089",
         "directSignup": {
-          "gameDetails": { "gameId": "p4850" },
+          "programItemDetails": { "gameId": "p4850" },
           "priority": 2,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1298,7 +1298,7 @@
       {
         "username": "288827",
         "directSignup": {
-          "gameDetails": { "gameId": "p5567" },
+          "programItemDetails": { "gameId": "p5567" },
           "priority": 1,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1306,7 +1306,7 @@
       {
         "username": "11396",
         "directSignup": {
-          "gameDetails": { "gameId": "p5677" },
+          "programItemDetails": { "gameId": "p5677" },
           "priority": 3,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1314,7 +1314,7 @@
       {
         "username": "839911",
         "directSignup": {
-          "gameDetails": { "gameId": "p5677" },
+          "programItemDetails": { "gameId": "p5677" },
           "priority": 1,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1322,7 +1322,7 @@
       {
         "username": "715305",
         "directSignup": {
-          "gameDetails": { "gameId": "p5749" },
+          "programItemDetails": { "gameId": "p5749" },
           "priority": 1,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1330,7 +1330,7 @@
       {
         "username": "310202",
         "directSignup": {
-          "gameDetails": { "gameId": "p5575" },
+          "programItemDetails": { "gameId": "p5575" },
           "priority": 2,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1338,7 +1338,7 @@
       {
         "username": "378051",
         "directSignup": {
-          "gameDetails": { "gameId": "p5220" },
+          "programItemDetails": { "gameId": "p5220" },
           "priority": 2,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1346,7 +1346,7 @@
       {
         "username": "261587",
         "directSignup": {
-          "gameDetails": { "gameId": "p5171" },
+          "programItemDetails": { "gameId": "p5171" },
           "priority": 1,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1354,7 +1354,7 @@
       {
         "username": "776065",
         "directSignup": {
-          "gameDetails": { "gameId": "p5171" },
+          "programItemDetails": { "gameId": "p5171" },
           "priority": 1,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1362,7 +1362,7 @@
       {
         "username": "254323",
         "directSignup": {
-          "gameDetails": { "gameId": "p5677" },
+          "programItemDetails": { "gameId": "p5677" },
           "priority": 1,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1370,7 +1370,7 @@
       {
         "username": "485147",
         "directSignup": {
-          "gameDetails": { "gameId": "p5677" },
+          "programItemDetails": { "gameId": "p5677" },
           "priority": 2,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1378,7 +1378,7 @@
       {
         "username": "28470",
         "directSignup": {
-          "gameDetails": { "gameId": "p4850" },
+          "programItemDetails": { "gameId": "p4850" },
           "priority": 1,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1386,7 +1386,7 @@
       {
         "username": "927240",
         "directSignup": {
-          "gameDetails": { "gameId": "p5220" },
+          "programItemDetails": { "gameId": "p5220" },
           "priority": 3,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1394,7 +1394,7 @@
       {
         "username": "412161",
         "directSignup": {
-          "gameDetails": { "gameId": "p5675" },
+          "programItemDetails": { "gameId": "p5675" },
           "priority": 2,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1402,7 +1402,7 @@
       {
         "username": "996273",
         "directSignup": {
-          "gameDetails": { "gameId": "p5220" },
+          "programItemDetails": { "gameId": "p5220" },
           "priority": 1,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1410,7 +1410,7 @@
       {
         "username": "870169",
         "directSignup": {
-          "gameDetails": { "gameId": "p5666" },
+          "programItemDetails": { "gameId": "p5666" },
           "priority": 1,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1418,7 +1418,7 @@
       {
         "username": "908989",
         "directSignup": {
-          "gameDetails": { "gameId": "p5477" },
+          "programItemDetails": { "gameId": "p5477" },
           "priority": 2,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1426,7 +1426,7 @@
       {
         "username": "552980",
         "directSignup": {
-          "gameDetails": { "gameId": "p5395" },
+          "programItemDetails": { "gameId": "p5395" },
           "priority": 1,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1434,7 +1434,7 @@
       {
         "username": "230368",
         "directSignup": {
-          "gameDetails": { "gameId": "p5580" },
+          "programItemDetails": { "gameId": "p5580" },
           "priority": 1,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1442,7 +1442,7 @@
       {
         "username": "678087",
         "directSignup": {
-          "gameDetails": { "gameId": "p5580" },
+          "programItemDetails": { "gameId": "p5580" },
           "priority": 1,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1450,7 +1450,7 @@
       {
         "username": "756686",
         "directSignup": {
-          "gameDetails": { "gameId": "p5675" },
+          "programItemDetails": { "gameId": "p5675" },
           "priority": 1,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1458,7 +1458,7 @@
       {
         "username": "336070",
         "directSignup": {
-          "gameDetails": { "gameId": "p5220" },
+          "programItemDetails": { "gameId": "p5220" },
           "priority": 2,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1466,7 +1466,7 @@
       {
         "username": "598995",
         "directSignup": {
-          "gameDetails": { "gameId": "p5171" },
+          "programItemDetails": { "gameId": "p5171" },
           "priority": 3,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1474,7 +1474,7 @@
       {
         "username": "528877",
         "directSignup": {
-          "gameDetails": { "gameId": "p5675" },
+          "programItemDetails": { "gameId": "p5675" },
           "priority": 1,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1482,7 +1482,7 @@
       {
         "username": "64663",
         "directSignup": {
-          "gameDetails": { "gameId": "p5477" },
+          "programItemDetails": { "gameId": "p5477" },
           "priority": 1,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1490,7 +1490,7 @@
       {
         "username": "956939",
         "directSignup": {
-          "gameDetails": { "gameId": "p4850" },
+          "programItemDetails": { "gameId": "p4850" },
           "priority": 1,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1498,7 +1498,7 @@
       {
         "username": "841756",
         "directSignup": {
-          "gameDetails": { "gameId": "p5666" },
+          "programItemDetails": { "gameId": "p5666" },
           "priority": 1,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1506,7 +1506,7 @@
       {
         "username": "307247",
         "directSignup": {
-          "gameDetails": { "gameId": "p5749" },
+          "programItemDetails": { "gameId": "p5749" },
           "priority": 3,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1514,7 +1514,7 @@
       {
         "username": "345030",
         "directSignup": {
-          "gameDetails": { "gameId": "p5567" },
+          "programItemDetails": { "gameId": "p5567" },
           "priority": 3,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1522,7 +1522,7 @@
       {
         "username": "69825",
         "directSignup": {
-          "gameDetails": { "gameId": "p5567" },
+          "programItemDetails": { "gameId": "p5567" },
           "priority": 1,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1530,7 +1530,7 @@
       {
         "username": "205563",
         "directSignup": {
-          "gameDetails": { "gameId": "p5567" },
+          "programItemDetails": { "gameId": "p5567" },
           "priority": 1,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1538,7 +1538,7 @@
       {
         "username": "397388",
         "directSignup": {
-          "gameDetails": { "gameId": "p4850" },
+          "programItemDetails": { "gameId": "p4850" },
           "priority": 3,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1546,7 +1546,7 @@
       {
         "username": "269997",
         "directSignup": {
-          "gameDetails": { "gameId": "p5579" },
+          "programItemDetails": { "gameId": "p5579" },
           "priority": 3,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1554,7 +1554,7 @@
       {
         "username": "866950",
         "directSignup": {
-          "gameDetails": { "gameId": "p5171" },
+          "programItemDetails": { "gameId": "p5171" },
           "priority": 1,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1562,7 +1562,7 @@
       {
         "username": "181031",
         "directSignup": {
-          "gameDetails": { "gameId": "p5477" },
+          "programItemDetails": { "gameId": "p5477" },
           "priority": 1,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1570,7 +1570,7 @@
       {
         "username": "778761",
         "directSignup": {
-          "gameDetails": { "gameId": "p5118" },
+          "programItemDetails": { "gameId": "p5118" },
           "priority": 1,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1578,7 +1578,7 @@
       {
         "username": "64159",
         "directSignup": {
-          "gameDetails": { "gameId": "p5579" },
+          "programItemDetails": { "gameId": "p5579" },
           "priority": 2,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1586,7 +1586,7 @@
       {
         "username": "566861",
         "directSignup": {
-          "gameDetails": { "gameId": "p5666" },
+          "programItemDetails": { "gameId": "p5666" },
           "priority": 3,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1594,7 +1594,7 @@
       {
         "username": "275116",
         "directSignup": {
-          "gameDetails": { "gameId": "p5567" },
+          "programItemDetails": { "gameId": "p5567" },
           "priority": 2,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1602,7 +1602,7 @@
       {
         "username": "548268",
         "directSignup": {
-          "gameDetails": { "gameId": "p5575" },
+          "programItemDetails": { "gameId": "p5575" },
           "priority": 3,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1610,7 +1610,7 @@
       {
         "username": "264714",
         "directSignup": {
-          "gameDetails": { "gameId": "p5575" },
+          "programItemDetails": { "gameId": "p5575" },
           "priority": 2,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1618,7 +1618,7 @@
       {
         "username": "952272",
         "directSignup": {
-          "gameDetails": { "gameId": "p5675" },
+          "programItemDetails": { "gameId": "p5675" },
           "priority": 1,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1626,7 +1626,7 @@
       {
         "username": "153739",
         "directSignup": {
-          "gameDetails": { "gameId": "p4850" },
+          "programItemDetails": { "gameId": "p4850" },
           "priority": 1,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1634,7 +1634,7 @@
       {
         "username": "571091",
         "directSignup": {
-          "gameDetails": { "gameId": "p5220" },
+          "programItemDetails": { "gameId": "p5220" },
           "priority": 1,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1642,7 +1642,7 @@
       {
         "username": "21639",
         "directSignup": {
-          "gameDetails": { "gameId": "p5575" },
+          "programItemDetails": { "gameId": "p5575" },
           "priority": 1,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1650,7 +1650,7 @@
       {
         "username": "859838",
         "directSignup": {
-          "gameDetails": { "gameId": "p5579" },
+          "programItemDetails": { "gameId": "p5579" },
           "priority": 1,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1658,7 +1658,7 @@
       {
         "username": "794220",
         "directSignup": {
-          "gameDetails": { "gameId": "p5579" },
+          "programItemDetails": { "gameId": "p5579" },
           "priority": 1,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1666,7 +1666,7 @@
       {
         "username": "800077",
         "directSignup": {
-          "gameDetails": { "gameId": "p5579" },
+          "programItemDetails": { "gameId": "p5579" },
           "priority": 1,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1674,7 +1674,7 @@
       {
         "username": "641320",
         "directSignup": {
-          "gameDetails": { "gameId": "p5118" },
+          "programItemDetails": { "gameId": "p5118" },
           "priority": 1,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1682,7 +1682,7 @@
       {
         "username": "708333",
         "directSignup": {
-          "gameDetails": { "gameId": "p5118" },
+          "programItemDetails": { "gameId": "p5118" },
           "priority": 1,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1690,7 +1690,7 @@
       {
         "username": "118014",
         "directSignup": {
-          "gameDetails": { "gameId": "p5470" },
+          "programItemDetails": { "gameId": "p5470" },
           "priority": 3,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1698,7 +1698,7 @@
       {
         "username": "934996",
         "directSignup": {
-          "gameDetails": { "gameId": "p5470" },
+          "programItemDetails": { "gameId": "p5470" },
           "priority": 3,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1706,7 +1706,7 @@
       {
         "username": "242785",
         "directSignup": {
-          "gameDetails": { "gameId": "p5749" },
+          "programItemDetails": { "gameId": "p5749" },
           "priority": 1,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1714,7 +1714,7 @@
       {
         "username": "429412",
         "directSignup": {
-          "gameDetails": { "gameId": "p5749" },
+          "programItemDetails": { "gameId": "p5749" },
           "priority": 1,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1722,7 +1722,7 @@
       {
         "username": "730166",
         "directSignup": {
-          "gameDetails": { "gameId": "p5395" },
+          "programItemDetails": { "gameId": "p5395" },
           "priority": 2,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1730,7 +1730,7 @@
       {
         "username": "728319",
         "directSignup": {
-          "gameDetails": { "gameId": "p5395" },
+          "programItemDetails": { "gameId": "p5395" },
           "priority": 2,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1738,7 +1738,7 @@
       {
         "username": "733279",
         "directSignup": {
-          "gameDetails": { "gameId": "p5580" },
+          "programItemDetails": { "gameId": "p5580" },
           "priority": 2,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1746,7 +1746,7 @@
       {
         "username": "791268",
         "directSignup": {
-          "gameDetails": { "gameId": "p5580" },
+          "programItemDetails": { "gameId": "p5580" },
           "priority": 2,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1754,7 +1754,7 @@
       {
         "username": "550016",
         "directSignup": {
-          "gameDetails": { "gameId": "p5118" },
+          "programItemDetails": { "gameId": "p5118" },
           "priority": 2,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1762,7 +1762,7 @@
       {
         "username": "893901",
         "directSignup": {
-          "gameDetails": { "gameId": "p5118" },
+          "programItemDetails": { "gameId": "p5118" },
           "priority": 2,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1770,7 +1770,7 @@
       {
         "username": "742777",
         "directSignup": {
-          "gameDetails": { "gameId": "p5477" },
+          "programItemDetails": { "gameId": "p5477" },
           "priority": 1,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1778,7 +1778,7 @@
       {
         "username": "979422",
         "directSignup": {
-          "gameDetails": { "gameId": "p5477" },
+          "programItemDetails": { "gameId": "p5477" },
           "priority": 1,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1786,7 +1786,7 @@
       {
         "username": "123693",
         "directSignup": {
-          "gameDetails": { "gameId": "p5470" },
+          "programItemDetails": { "gameId": "p5470" },
           "priority": 1,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1794,7 +1794,7 @@
       {
         "username": "54963",
         "directSignup": {
-          "gameDetails": { "gameId": "p5470" },
+          "programItemDetails": { "gameId": "p5470" },
           "priority": 1,
           "time": "2022-07-30T07:00:00Z"
         }
@@ -1811,7 +1811,7 @@
       {
         "username": "606267",
         "directSignup": {
-          "gameDetails": { "gameId": "p5415" },
+          "programItemDetails": { "gameId": "p5415" },
           "priority": 3,
           "time": "2022-07-30T08:00:00Z"
         }
@@ -1819,7 +1819,7 @@
       {
         "username": "394278",
         "directSignup": {
-          "gameDetails": { "gameId": "p5608" },
+          "programItemDetails": { "gameId": "p5608" },
           "priority": 1,
           "time": "2022-07-30T08:00:00Z"
         }
@@ -1827,7 +1827,7 @@
       {
         "username": "799060",
         "directSignup": {
-          "gameDetails": { "gameId": "p5415" },
+          "programItemDetails": { "gameId": "p5415" },
           "priority": 1,
           "time": "2022-07-30T08:00:00Z"
         }
@@ -1835,7 +1835,7 @@
       {
         "username": "523433",
         "directSignup": {
-          "gameDetails": { "gameId": "p5415" },
+          "programItemDetails": { "gameId": "p5415" },
           "priority": 1,
           "time": "2022-07-30T08:00:00Z"
         }
@@ -1843,7 +1843,7 @@
       {
         "username": "553492",
         "directSignup": {
-          "gameDetails": { "gameId": "p5551" },
+          "programItemDetails": { "gameId": "p5551" },
           "priority": 1,
           "time": "2022-07-30T08:00:00Z"
         }
@@ -1851,7 +1851,7 @@
       {
         "username": "96157",
         "directSignup": {
-          "gameDetails": { "gameId": "p5551" },
+          "programItemDetails": { "gameId": "p5551" },
           "priority": 1,
           "time": "2022-07-30T08:00:00Z"
         }
@@ -1859,7 +1859,7 @@
       {
         "username": "412161",
         "directSignup": {
-          "gameDetails": { "gameId": "p5608" },
+          "programItemDetails": { "gameId": "p5608" },
           "priority": 1,
           "time": "2022-07-30T08:00:00Z"
         }
@@ -1867,7 +1867,7 @@
       {
         "username": "745132",
         "directSignup": {
-          "gameDetails": { "gameId": "p5551" },
+          "programItemDetails": { "gameId": "p5551" },
           "priority": 2,
           "time": "2022-07-30T08:00:00Z"
         }
@@ -1875,7 +1875,7 @@
       {
         "username": "62531",
         "directSignup": {
-          "gameDetails": { "gameId": "p5629" },
+          "programItemDetails": { "gameId": "p5629" },
           "priority": 1,
           "time": "2022-07-30T08:00:00Z"
         }
@@ -1883,7 +1883,7 @@
       {
         "username": "22255",
         "directSignup": {
-          "gameDetails": { "gameId": "p5629" },
+          "programItemDetails": { "gameId": "p5629" },
           "priority": 1,
           "time": "2022-07-30T08:00:00Z"
         }
@@ -1891,7 +1891,7 @@
       {
         "username": "474050",
         "directSignup": {
-          "gameDetails": { "gameId": "p4847" },
+          "programItemDetails": { "gameId": "p4847" },
           "priority": 2,
           "time": "2022-07-30T08:00:00Z"
         }
@@ -1899,7 +1899,7 @@
       {
         "username": "716711",
         "directSignup": {
-          "gameDetails": { "gameId": "p5288" },
+          "programItemDetails": { "gameId": "p5288" },
           "priority": 1,
           "time": "2022-07-30T08:00:00Z"
         }
@@ -1907,7 +1907,7 @@
       {
         "username": "814392",
         "directSignup": {
-          "gameDetails": { "gameId": "p5288" },
+          "programItemDetails": { "gameId": "p5288" },
           "priority": 1,
           "time": "2022-07-30T08:00:00Z"
         }
@@ -1915,7 +1915,7 @@
       {
         "username": "268489",
         "directSignup": {
-          "gameDetails": { "gameId": "p5629" },
+          "programItemDetails": { "gameId": "p5629" },
           "priority": 1,
           "time": "2022-07-30T08:00:00Z"
         }
@@ -1923,7 +1923,7 @@
       {
         "username": "249975",
         "directSignup": {
-          "gameDetails": { "gameId": "p5608" },
+          "programItemDetails": { "gameId": "p5608" },
           "priority": 1,
           "time": "2022-07-30T08:00:00Z"
         }
@@ -1931,7 +1931,7 @@
       {
         "username": "567606",
         "directSignup": {
-          "gameDetails": { "gameId": "p5608" },
+          "programItemDetails": { "gameId": "p5608" },
           "priority": 1,
           "time": "2022-07-30T08:00:00Z"
         }
@@ -1939,7 +1939,7 @@
       {
         "username": "848435",
         "directSignup": {
-          "gameDetails": { "gameId": "p5629" },
+          "programItemDetails": { "gameId": "p5629" },
           "priority": 1,
           "time": "2022-07-30T08:00:00Z"
         }
@@ -1947,7 +1947,7 @@
       {
         "username": "64159",
         "directSignup": {
-          "gameDetails": { "gameId": "p5608" },
+          "programItemDetails": { "gameId": "p5608" },
           "priority": 1,
           "time": "2022-07-30T08:00:00Z"
         }
@@ -1955,7 +1955,7 @@
       {
         "username": "697680",
         "directSignup": {
-          "gameDetails": { "gameId": "p4847" },
+          "programItemDetails": { "gameId": "p4847" },
           "priority": 1,
           "time": "2022-07-30T08:00:00Z"
         }
@@ -1963,7 +1963,7 @@
       {
         "username": "548268",
         "directSignup": {
-          "gameDetails": { "gameId": "p5629" },
+          "programItemDetails": { "gameId": "p5629" },
           "priority": 1,
           "time": "2022-07-30T08:00:00Z"
         }
@@ -1971,7 +1971,7 @@
       {
         "username": "297832",
         "directSignup": {
-          "gameDetails": { "gameId": "p5608" },
+          "programItemDetails": { "gameId": "p5608" },
           "priority": 1,
           "time": "2022-07-30T08:00:00Z"
         }
@@ -1979,7 +1979,7 @@
       {
         "username": "302826",
         "directSignup": {
-          "gameDetails": { "gameId": "p5551" },
+          "programItemDetails": { "gameId": "p5551" },
           "priority": 2,
           "time": "2022-07-30T08:00:00Z"
         }
@@ -1987,7 +1987,7 @@
       {
         "username": "333697",
         "directSignup": {
-          "gameDetails": { "gameId": "p5415" },
+          "programItemDetails": { "gameId": "p5415" },
           "priority": 1,
           "time": "2022-07-30T08:00:00Z"
         }
@@ -1995,7 +1995,7 @@
       {
         "username": "542571",
         "directSignup": {
-          "gameDetails": { "gameId": "p4847" },
+          "programItemDetails": { "gameId": "p4847" },
           "priority": 1,
           "time": "2022-07-30T08:00:00Z"
         }
@@ -2003,7 +2003,7 @@
       {
         "username": "251303",
         "directSignup": {
-          "gameDetails": { "gameId": "p5608" },
+          "programItemDetails": { "gameId": "p5608" },
           "priority": 1,
           "time": "2022-07-30T08:00:00Z"
         }
@@ -2011,7 +2011,7 @@
       {
         "username": "749392",
         "directSignup": {
-          "gameDetails": { "gameId": "p5551" },
+          "programItemDetails": { "gameId": "p5551" },
           "priority": 1,
           "time": "2022-07-30T08:00:00Z"
         }
@@ -2019,7 +2019,7 @@
       {
         "username": "156339",
         "directSignup": {
-          "gameDetails": { "gameId": "p4847" },
+          "programItemDetails": { "gameId": "p4847" },
           "priority": 2,
           "time": "2022-07-30T08:00:00Z"
         }
@@ -2027,7 +2027,7 @@
       {
         "username": "181631",
         "directSignup": {
-          "gameDetails": { "gameId": "p4847" },
+          "programItemDetails": { "gameId": "p4847" },
           "priority": 2,
           "time": "2022-07-30T08:00:00Z"
         }
@@ -2044,7 +2044,7 @@
       {
         "username": "968308",
         "directSignup": {
-          "gameDetails": { "gameId": "p5231" },
+          "programItemDetails": { "gameId": "p5231" },
           "priority": 1,
           "time": "2022-07-30T09:00:00Z"
         }
@@ -2052,7 +2052,7 @@
       {
         "username": "18808",
         "directSignup": {
-          "gameDetails": { "gameId": "p5588" },
+          "programItemDetails": { "gameId": "p5588" },
           "priority": 1,
           "time": "2022-07-30T09:00:00Z"
         }
@@ -2060,7 +2060,7 @@
       {
         "username": "614861",
         "directSignup": {
-          "gameDetails": { "gameId": "p5391" },
+          "programItemDetails": { "gameId": "p5391" },
           "priority": 2,
           "time": "2022-07-30T09:00:00Z"
         }
@@ -2068,7 +2068,7 @@
       {
         "username": "604817",
         "directSignup": {
-          "gameDetails": { "gameId": "p5231" },
+          "programItemDetails": { "gameId": "p5231" },
           "priority": 3,
           "time": "2022-07-30T09:00:00Z"
         }
@@ -2076,7 +2076,7 @@
       {
         "username": "793503",
         "directSignup": {
-          "gameDetails": { "gameId": "p5192" },
+          "programItemDetails": { "gameId": "p5192" },
           "priority": 1,
           "time": "2022-07-30T09:00:00Z"
         }
@@ -2084,7 +2084,7 @@
       {
         "username": "174035",
         "directSignup": {
-          "gameDetails": { "gameId": "p5231" },
+          "programItemDetails": { "gameId": "p5231" },
           "priority": 2,
           "time": "2022-07-30T09:00:00Z"
         }
@@ -2092,7 +2092,7 @@
       {
         "username": "692189",
         "directSignup": {
-          "gameDetails": { "gameId": "p5391" },
+          "programItemDetails": { "gameId": "p5391" },
           "priority": 1,
           "time": "2022-07-30T09:00:00Z"
         }
@@ -2100,7 +2100,7 @@
       {
         "username": "215784",
         "directSignup": {
-          "gameDetails": { "gameId": "p5192" },
+          "programItemDetails": { "gameId": "p5192" },
           "priority": 1,
           "time": "2022-07-30T09:00:00Z"
         }
@@ -2108,7 +2108,7 @@
       {
         "username": "221846",
         "directSignup": {
-          "gameDetails": { "gameId": "p5853" },
+          "programItemDetails": { "gameId": "p5853" },
           "priority": 2,
           "time": "2022-07-30T09:00:00Z"
         }
@@ -2116,7 +2116,7 @@
       {
         "username": "545873",
         "directSignup": {
-          "gameDetails": { "gameId": "p5429" },
+          "programItemDetails": { "gameId": "p5429" },
           "priority": 2,
           "time": "2022-07-30T09:00:00Z"
         }
@@ -2124,7 +2124,7 @@
       {
         "username": "504641",
         "directSignup": {
-          "gameDetails": { "gameId": "p5231" },
+          "programItemDetails": { "gameId": "p5231" },
           "priority": 2,
           "time": "2022-07-30T09:00:00Z"
         }
@@ -2132,7 +2132,7 @@
       {
         "username": "506597",
         "directSignup": {
-          "gameDetails": { "gameId": "p5588" },
+          "programItemDetails": { "gameId": "p5588" },
           "priority": 1,
           "time": "2022-07-30T09:00:00Z"
         }
@@ -2140,7 +2140,7 @@
       {
         "username": "543710",
         "directSignup": {
-          "gameDetails": { "gameId": "p5391" },
+          "programItemDetails": { "gameId": "p5391" },
           "priority": 1,
           "time": "2022-07-30T09:00:00Z"
         }
@@ -2148,7 +2148,7 @@
       {
         "username": "82255",
         "directSignup": {
-          "gameDetails": { "gameId": "p5192" },
+          "programItemDetails": { "gameId": "p5192" },
           "priority": 1,
           "time": "2022-07-30T09:00:00Z"
         }
@@ -2156,7 +2156,7 @@
       {
         "username": "413981",
         "directSignup": {
-          "gameDetails": { "gameId": "p5853" },
+          "programItemDetails": { "gameId": "p5853" },
           "priority": 1,
           "time": "2022-07-30T09:00:00Z"
         }
@@ -2164,7 +2164,7 @@
       {
         "username": "913250",
         "directSignup": {
-          "gameDetails": { "gameId": "p5853" },
+          "programItemDetails": { "gameId": "p5853" },
           "priority": 1,
           "time": "2022-07-30T09:00:00Z"
         }
@@ -2172,7 +2172,7 @@
       {
         "username": "115004",
         "directSignup": {
-          "gameDetails": { "gameId": "p5588" },
+          "programItemDetails": { "gameId": "p5588" },
           "priority": 2,
           "time": "2022-07-30T09:00:00Z"
         }
@@ -2180,7 +2180,7 @@
       {
         "username": "975270",
         "directSignup": {
-          "gameDetails": { "gameId": "p5853" },
+          "programItemDetails": { "gameId": "p5853" },
           "priority": 1,
           "time": "2022-07-30T09:00:00Z"
         }
@@ -2188,7 +2188,7 @@
       {
         "username": "656412",
         "directSignup": {
-          "gameDetails": { "gameId": "p5429" },
+          "programItemDetails": { "gameId": "p5429" },
           "priority": 1,
           "time": "2022-07-30T09:00:00Z"
         }
@@ -2196,7 +2196,7 @@
       {
         "username": "618819",
         "directSignup": {
-          "gameDetails": { "gameId": "p5429" },
+          "programItemDetails": { "gameId": "p5429" },
           "priority": 1,
           "time": "2022-07-30T09:00:00Z"
         }
@@ -2204,7 +2204,7 @@
       {
         "username": "836057",
         "directSignup": {
-          "gameDetails": { "gameId": "p5391" },
+          "programItemDetails": { "gameId": "p5391" },
           "priority": 2,
           "time": "2022-07-30T09:00:00Z"
         }
@@ -2212,7 +2212,7 @@
       {
         "username": "531481",
         "directSignup": {
-          "gameDetails": { "gameId": "p5231" },
+          "programItemDetails": { "gameId": "p5231" },
           "priority": 1,
           "time": "2022-07-30T09:00:00Z"
         }
@@ -2220,7 +2220,7 @@
       {
         "username": "291591",
         "directSignup": {
-          "gameDetails": { "gameId": "p5588" },
+          "programItemDetails": { "gameId": "p5588" },
           "priority": 2,
           "time": "2022-07-30T09:00:00Z"
         }
@@ -2228,7 +2228,7 @@
       {
         "username": "432087",
         "directSignup": {
-          "gameDetails": { "gameId": "p5588" },
+          "programItemDetails": { "gameId": "p5588" },
           "priority": 2,
           "time": "2022-07-30T09:00:00Z"
         }
@@ -2236,7 +2236,7 @@
       {
         "username": "640435",
         "directSignup": {
-          "gameDetails": { "gameId": "p5192" },
+          "programItemDetails": { "gameId": "p5192" },
           "priority": 2,
           "time": "2022-07-30T09:00:00Z"
         }
@@ -2244,7 +2244,7 @@
       {
         "username": "860318",
         "directSignup": {
-          "gameDetails": { "gameId": "p5192" },
+          "programItemDetails": { "gameId": "p5192" },
           "priority": 2,
           "time": "2022-07-30T09:00:00Z"
         }
@@ -2252,7 +2252,7 @@
       {
         "username": "909469",
         "directSignup": {
-          "gameDetails": { "gameId": "p5429" },
+          "programItemDetails": { "gameId": "p5429" },
           "priority": 1,
           "time": "2022-07-30T09:00:00Z"
         }
@@ -2260,7 +2260,7 @@
       {
         "username": "70430",
         "directSignup": {
-          "gameDetails": { "gameId": "p5429" },
+          "programItemDetails": { "gameId": "p5429" },
           "priority": 1,
           "time": "2022-07-30T09:00:00Z"
         }
@@ -2277,7 +2277,7 @@
       {
         "username": "797904",
         "directSignup": {
-          "gameDetails": { "gameId": "p5574" },
+          "programItemDetails": { "gameId": "p5574" },
           "priority": 1,
           "time": "2022-07-30T10:00:00Z"
         }
@@ -2285,7 +2285,7 @@
       {
         "username": "451394",
         "directSignup": {
-          "gameDetails": { "gameId": "p5486" },
+          "programItemDetails": { "gameId": "p5486" },
           "priority": 2,
           "time": "2022-07-30T10:00:00Z"
         }
@@ -2293,7 +2293,7 @@
       {
         "username": "719534",
         "directSignup": {
-          "gameDetails": { "gameId": "p5486" },
+          "programItemDetails": { "gameId": "p5486" },
           "priority": 1,
           "time": "2022-07-30T10:00:00Z"
         }
@@ -2301,7 +2301,7 @@
       {
         "username": "790596",
         "directSignup": {
-          "gameDetails": { "gameId": "p5574" },
+          "programItemDetails": { "gameId": "p5574" },
           "priority": 1,
           "time": "2022-07-30T10:00:00Z"
         }
@@ -2309,7 +2309,7 @@
       {
         "username": "532065",
         "directSignup": {
-          "gameDetails": { "gameId": "p5723" },
+          "programItemDetails": { "gameId": "p5723" },
           "priority": 1,
           "time": "2022-07-30T10:00:00Z"
         }
@@ -2317,7 +2317,7 @@
       {
         "username": "62531",
         "directSignup": {
-          "gameDetails": { "gameId": "p5723" },
+          "programItemDetails": { "gameId": "p5723" },
           "priority": 1,
           "time": "2022-07-30T10:00:00Z"
         }
@@ -2325,7 +2325,7 @@
       {
         "username": "745468",
         "directSignup": {
-          "gameDetails": { "gameId": "p5723" },
+          "programItemDetails": { "gameId": "p5723" },
           "priority": 1,
           "time": "2022-07-30T10:00:00Z"
         }
@@ -2333,7 +2333,7 @@
       {
         "username": "502820",
         "directSignup": {
-          "gameDetails": { "gameId": "p5598" },
+          "programItemDetails": { "gameId": "p5598" },
           "priority": 1,
           "time": "2022-07-30T10:00:00Z"
         }
@@ -2341,7 +2341,7 @@
       {
         "username": "143791",
         "directSignup": {
-          "gameDetails": { "gameId": "p5624" },
+          "programItemDetails": { "gameId": "p5624" },
           "priority": 1,
           "time": "2022-07-30T10:00:00Z"
         }
@@ -2349,7 +2349,7 @@
       {
         "username": "364796",
         "directSignup": {
-          "gameDetails": { "gameId": "p5624" },
+          "programItemDetails": { "gameId": "p5624" },
           "priority": 1,
           "time": "2022-07-30T10:00:00Z"
         }
@@ -2357,7 +2357,7 @@
       {
         "username": "550116",
         "directSignup": {
-          "gameDetails": { "gameId": "p5574" },
+          "programItemDetails": { "gameId": "p5574" },
           "priority": 1,
           "time": "2022-07-30T10:00:00Z"
         }
@@ -2365,7 +2365,7 @@
       {
         "username": "666692",
         "directSignup": {
-          "gameDetails": { "gameId": "p5486" },
+          "programItemDetails": { "gameId": "p5486" },
           "priority": 1,
           "time": "2022-07-30T10:00:00Z"
         }
@@ -2373,7 +2373,7 @@
       {
         "username": "617129",
         "directSignup": {
-          "gameDetails": { "gameId": "p5574" },
+          "programItemDetails": { "gameId": "p5574" },
           "priority": 2,
           "time": "2022-07-30T10:00:00Z"
         }
@@ -2381,7 +2381,7 @@
       {
         "username": "529456",
         "directSignup": {
-          "gameDetails": { "gameId": "p5598" },
+          "programItemDetails": { "gameId": "p5598" },
           "priority": 2,
           "time": "2022-07-30T10:00:00Z"
         }
@@ -2389,7 +2389,7 @@
       {
         "username": "94071",
         "directSignup": {
-          "gameDetails": { "gameId": "p5598" },
+          "programItemDetails": { "gameId": "p5598" },
           "priority": 2,
           "time": "2022-07-30T10:00:00Z"
         }
@@ -2397,7 +2397,7 @@
       {
         "username": "683547",
         "directSignup": {
-          "gameDetails": { "gameId": "p5598" },
+          "programItemDetails": { "gameId": "p5598" },
           "priority": 2,
           "time": "2022-07-30T10:00:00Z"
         }
@@ -2405,7 +2405,7 @@
       {
         "username": "913388",
         "directSignup": {
-          "gameDetails": { "gameId": "p5486" },
+          "programItemDetails": { "gameId": "p5486" },
           "priority": 1,
           "time": "2022-07-30T10:00:00Z"
         }
@@ -2413,7 +2413,7 @@
       {
         "username": "278784",
         "directSignup": {
-          "gameDetails": { "gameId": "p5624" },
+          "programItemDetails": { "gameId": "p5624" },
           "priority": 1,
           "time": "2022-07-30T10:00:00Z"
         }
@@ -2421,7 +2421,7 @@
       {
         "username": "5603",
         "directSignup": {
-          "gameDetails": { "gameId": "p5624" },
+          "programItemDetails": { "gameId": "p5624" },
           "priority": 1,
           "time": "2022-07-30T10:00:00Z"
         }
@@ -2429,7 +2429,7 @@
       {
         "username": "657305",
         "directSignup": {
-          "gameDetails": { "gameId": "p5624" },
+          "programItemDetails": { "gameId": "p5624" },
           "priority": 2,
           "time": "2022-07-30T10:00:00Z"
         }
@@ -2437,7 +2437,7 @@
       {
         "username": "92861",
         "directSignup": {
-          "gameDetails": { "gameId": "p5574" },
+          "programItemDetails": { "gameId": "p5574" },
           "priority": 1,
           "time": "2022-07-30T10:00:00Z"
         }
@@ -2445,7 +2445,7 @@
       {
         "username": "740078",
         "directSignup": {
-          "gameDetails": { "gameId": "p5598" },
+          "programItemDetails": { "gameId": "p5598" },
           "priority": 1,
           "time": "2022-07-30T10:00:00Z"
         }
@@ -2453,7 +2453,7 @@
       {
         "username": "404114",
         "directSignup": {
-          "gameDetails": { "gameId": "p5574" },
+          "programItemDetails": { "gameId": "p5574" },
           "priority": 3,
           "time": "2022-07-30T10:00:00Z"
         }
@@ -2461,7 +2461,7 @@
       {
         "username": "442271",
         "directSignup": {
-          "gameDetails": { "gameId": "p5652" },
+          "programItemDetails": { "gameId": "p5652" },
           "priority": 1,
           "time": "2022-07-30T10:00:00Z"
         }
@@ -2469,7 +2469,7 @@
       {
         "username": "749535",
         "directSignup": {
-          "gameDetails": { "gameId": "p5652" },
+          "programItemDetails": { "gameId": "p5652" },
           "priority": 1,
           "time": "2022-07-30T10:00:00Z"
         }
@@ -2477,7 +2477,7 @@
       {
         "username": "398380",
         "directSignup": {
-          "gameDetails": { "gameId": "p5652" },
+          "programItemDetails": { "gameId": "p5652" },
           "priority": 1,
           "time": "2022-07-30T10:00:00Z"
         }
@@ -2485,7 +2485,7 @@
       {
         "username": "27542",
         "directSignup": {
-          "gameDetails": { "gameId": "p5652" },
+          "programItemDetails": { "gameId": "p5652" },
           "priority": 1,
           "time": "2022-07-30T10:00:00Z"
         }
@@ -2493,7 +2493,7 @@
       {
         "username": "349986",
         "directSignup": {
-          "gameDetails": { "gameId": "p5652" },
+          "programItemDetails": { "gameId": "p5652" },
           "priority": 1,
           "time": "2022-07-30T10:00:00Z"
         }
@@ -2501,7 +2501,7 @@
       {
         "username": "118014",
         "directSignup": {
-          "gameDetails": { "gameId": "p5574" },
+          "programItemDetails": { "gameId": "p5574" },
           "priority": 2,
           "time": "2022-07-30T10:00:00Z"
         }
@@ -2509,7 +2509,7 @@
       {
         "username": "934996",
         "directSignup": {
-          "gameDetails": { "gameId": "p5574" },
+          "programItemDetails": { "gameId": "p5574" },
           "priority": 2,
           "time": "2022-07-30T10:00:00Z"
         }
@@ -2517,7 +2517,7 @@
       {
         "username": "485662",
         "directSignup": {
-          "gameDetails": { "gameId": "p5723" },
+          "programItemDetails": { "gameId": "p5723" },
           "priority": 1,
           "time": "2022-07-30T10:00:00Z"
         }
@@ -2525,7 +2525,7 @@
       {
         "username": "369551",
         "directSignup": {
-          "gameDetails": { "gameId": "p5723" },
+          "programItemDetails": { "gameId": "p5723" },
           "priority": 1,
           "time": "2022-07-30T10:00:00Z"
         }
@@ -2542,7 +2542,7 @@
       {
         "username": "74166",
         "directSignup": {
-          "gameDetails": { "gameId": "p5530" },
+          "programItemDetails": { "gameId": "p5530" },
           "priority": 2,
           "time": "2022-07-30T11:00:00Z"
         }
@@ -2550,7 +2550,7 @@
       {
         "username": "280564",
         "directSignup": {
-          "gameDetails": { "gameId": "p5546" },
+          "programItemDetails": { "gameId": "p5546" },
           "priority": 1,
           "time": "2022-07-30T11:00:00Z"
         }
@@ -2558,7 +2558,7 @@
       {
         "username": "492558",
         "directSignup": {
-          "gameDetails": { "gameId": "p5451" },
+          "programItemDetails": { "gameId": "p5451" },
           "priority": 1,
           "time": "2022-07-30T11:00:00Z"
         }
@@ -2566,7 +2566,7 @@
       {
         "username": "927240",
         "directSignup": {
-          "gameDetails": { "gameId": "p5114" },
+          "programItemDetails": { "gameId": "p5114" },
           "priority": 1,
           "time": "2022-07-30T11:00:00Z"
         }
@@ -2574,7 +2574,7 @@
       {
         "username": "963935",
         "directSignup": {
-          "gameDetails": { "gameId": "p5531" },
+          "programItemDetails": { "gameId": "p5531" },
           "priority": 1,
           "time": "2022-07-30T11:00:00Z"
         }
@@ -2582,7 +2582,7 @@
       {
         "username": "33782",
         "directSignup": {
-          "gameDetails": { "gameId": "p5530" },
+          "programItemDetails": { "gameId": "p5530" },
           "priority": 1,
           "time": "2022-07-30T11:00:00Z"
         }
@@ -2590,7 +2590,7 @@
       {
         "username": "910499",
         "directSignup": {
-          "gameDetails": { "gameId": "p5546" },
+          "programItemDetails": { "gameId": "p5546" },
           "priority": 1,
           "time": "2022-07-30T11:00:00Z"
         }
@@ -2598,7 +2598,7 @@
       {
         "username": "413929",
         "directSignup": {
-          "gameDetails": { "gameId": "p5546" },
+          "programItemDetails": { "gameId": "p5546" },
           "priority": 1,
           "time": "2022-07-30T11:00:00Z"
         }
@@ -2606,7 +2606,7 @@
       {
         "username": "187272",
         "directSignup": {
-          "gameDetails": { "gameId": "p5531" },
+          "programItemDetails": { "gameId": "p5531" },
           "priority": 3,
           "time": "2022-07-30T11:00:00Z"
         }
@@ -2614,7 +2614,7 @@
       {
         "username": "323506",
         "directSignup": {
-          "gameDetails": { "gameId": "p5530" },
+          "programItemDetails": { "gameId": "p5530" },
           "priority": 1,
           "time": "2022-07-30T11:00:00Z"
         }
@@ -2622,7 +2622,7 @@
       {
         "username": "967676",
         "directSignup": {
-          "gameDetails": { "gameId": "p5531" },
+          "programItemDetails": { "gameId": "p5531" },
           "priority": 3,
           "time": "2022-07-30T11:00:00Z"
         }
@@ -2630,7 +2630,7 @@
       {
         "username": "466457",
         "directSignup": {
-          "gameDetails": { "gameId": "p5847" },
+          "programItemDetails": { "gameId": "p5847" },
           "priority": 1,
           "time": "2022-07-30T11:00:00Z"
         }
@@ -2638,7 +2638,7 @@
       {
         "username": "240487",
         "directSignup": {
-          "gameDetails": { "gameId": "p5530" },
+          "programItemDetails": { "gameId": "p5530" },
           "priority": 2,
           "time": "2022-07-30T11:00:00Z"
         }
@@ -2646,7 +2646,7 @@
       {
         "username": "387713",
         "directSignup": {
-          "gameDetails": { "gameId": "p5627" },
+          "programItemDetails": { "gameId": "p5627" },
           "priority": 2,
           "time": "2022-07-30T11:00:00Z"
         }
@@ -2654,7 +2654,7 @@
       {
         "username": "566861",
         "directSignup": {
-          "gameDetails": { "gameId": "p5531" },
+          "programItemDetails": { "gameId": "p5531" },
           "priority": 2,
           "time": "2022-07-30T11:00:00Z"
         }
@@ -2662,7 +2662,7 @@
       {
         "username": "895701",
         "directSignup": {
-          "gameDetails": { "gameId": "p5451" },
+          "programItemDetails": { "gameId": "p5451" },
           "priority": 1,
           "time": "2022-07-30T11:00:00Z"
         }
@@ -2670,7 +2670,7 @@
       {
         "username": "397514",
         "directSignup": {
-          "gameDetails": { "gameId": "p5847" },
+          "programItemDetails": { "gameId": "p5847" },
           "priority": 2,
           "time": "2022-07-30T11:00:00Z"
         }
@@ -2678,7 +2678,7 @@
       {
         "username": "948741",
         "directSignup": {
-          "gameDetails": { "gameId": "p5847" },
+          "programItemDetails": { "gameId": "p5847" },
           "priority": 2,
           "time": "2022-07-30T11:00:00Z"
         }
@@ -2686,7 +2686,7 @@
       {
         "username": "559191",
         "directSignup": {
-          "gameDetails": { "gameId": "p5114" },
+          "programItemDetails": { "gameId": "p5114" },
           "priority": 1,
           "time": "2022-07-30T11:00:00Z"
         }
@@ -2694,7 +2694,7 @@
       {
         "username": "534367",
         "directSignup": {
-          "gameDetails": { "gameId": "p5451" },
+          "programItemDetails": { "gameId": "p5451" },
           "priority": 2,
           "time": "2022-07-30T11:00:00Z"
         }
@@ -2702,7 +2702,7 @@
       {
         "username": "8247",
         "directSignup": {
-          "gameDetails": { "gameId": "p5530" },
+          "programItemDetails": { "gameId": "p5530" },
           "priority": 2,
           "time": "2022-07-30T11:00:00Z"
         }
@@ -2710,7 +2710,7 @@
       {
         "username": "278784",
         "directSignup": {
-          "gameDetails": { "gameId": "p5531" },
+          "programItemDetails": { "gameId": "p5531" },
           "priority": 2,
           "time": "2022-07-30T11:00:00Z"
         }
@@ -2718,7 +2718,7 @@
       {
         "username": "746713",
         "directSignup": {
-          "gameDetails": { "gameId": "p5546" },
+          "programItemDetails": { "gameId": "p5546" },
           "priority": 1,
           "time": "2022-07-30T11:00:00Z"
         }
@@ -2726,7 +2726,7 @@
       {
         "username": "657703",
         "directSignup": {
-          "gameDetails": { "gameId": "p5114" },
+          "programItemDetails": { "gameId": "p5114" },
           "priority": 1,
           "time": "2022-07-30T11:00:00Z"
         }
@@ -2734,7 +2734,7 @@
       {
         "username": "546042",
         "directSignup": {
-          "gameDetails": { "gameId": "p5627" },
+          "programItemDetails": { "gameId": "p5627" },
           "priority": 1,
           "time": "2022-07-30T11:00:00Z"
         }
@@ -2742,7 +2742,7 @@
       {
         "username": "750568",
         "directSignup": {
-          "gameDetails": { "gameId": "p5114" },
+          "programItemDetails": { "gameId": "p5114" },
           "priority": 1,
           "time": "2022-07-30T11:00:00Z"
         }
@@ -2750,7 +2750,7 @@
       {
         "username": "966987",
         "directSignup": {
-          "gameDetails": { "gameId": "p5451" },
+          "programItemDetails": { "gameId": "p5451" },
           "priority": 1,
           "time": "2022-07-30T11:00:00Z"
         }
@@ -2758,7 +2758,7 @@
       {
         "username": "800993",
         "directSignup": {
-          "gameDetails": { "gameId": "p5546" },
+          "programItemDetails": { "gameId": "p5546" },
           "priority": 1,
           "time": "2022-07-30T11:00:00Z"
         }
@@ -2766,7 +2766,7 @@
       {
         "username": "538587",
         "directSignup": {
-          "gameDetails": { "gameId": "p5627" },
+          "programItemDetails": { "gameId": "p5627" },
           "priority": 2,
           "time": "2022-07-30T11:00:00Z"
         }
@@ -2774,7 +2774,7 @@
       {
         "username": "945716",
         "directSignup": {
-          "gameDetails": { "gameId": "p5627" },
+          "programItemDetails": { "gameId": "p5627" },
           "priority": 1,
           "time": "2022-07-30T11:00:00Z"
         }
@@ -2782,7 +2782,7 @@
       {
         "username": "56403",
         "directSignup": {
-          "gameDetails": { "gameId": "p5530" },
+          "programItemDetails": { "gameId": "p5530" },
           "priority": 1,
           "time": "2022-07-30T11:00:00Z"
         }
@@ -2790,7 +2790,7 @@
       {
         "username": "433863",
         "directSignup": {
-          "gameDetails": { "gameId": "p5847" },
+          "programItemDetails": { "gameId": "p5847" },
           "priority": 1,
           "time": "2022-07-30T11:00:00Z"
         }
@@ -2798,7 +2798,7 @@
       {
         "username": "365173",
         "directSignup": {
-          "gameDetails": { "gameId": "p5627" },
+          "programItemDetails": { "gameId": "p5627" },
           "priority": 1,
           "time": "2022-07-30T11:00:00Z"
         }
@@ -2806,7 +2806,7 @@
       {
         "username": "683986",
         "directSignup": {
-          "gameDetails": { "gameId": "p5531" },
+          "programItemDetails": { "gameId": "p5531" },
           "priority": 2,
           "time": "2022-07-30T11:00:00Z"
         }
@@ -2823,7 +2823,7 @@
       {
         "username": "722229",
         "directSignup": {
-          "gameDetails": { "gameId": "p5045" },
+          "programItemDetails": { "gameId": "p5045" },
           "priority": 1,
           "time": "2022-07-30T12:00:00Z"
         }
@@ -2831,7 +2831,7 @@
       {
         "username": "178863",
         "directSignup": {
-          "gameDetails": { "gameId": "p5045" },
+          "programItemDetails": { "gameId": "p5045" },
           "priority": 1,
           "time": "2022-07-30T12:00:00Z"
         }
@@ -2839,7 +2839,7 @@
       {
         "username": "685501",
         "directSignup": {
-          "gameDetails": { "gameId": "p5634" },
+          "programItemDetails": { "gameId": "p5634" },
           "priority": 1,
           "time": "2022-07-30T12:00:00Z"
         }
@@ -2847,7 +2847,7 @@
       {
         "username": "545455",
         "directSignup": {
-          "gameDetails": { "gameId": "p4957" },
+          "programItemDetails": { "gameId": "p4957" },
           "priority": 1,
           "time": "2022-07-30T12:00:00Z"
         }
@@ -2855,7 +2855,7 @@
       {
         "username": "378051",
         "directSignup": {
-          "gameDetails": { "gameId": "p5631" },
+          "programItemDetails": { "gameId": "p5631" },
           "priority": 1,
           "time": "2022-07-30T12:00:00Z"
         }
@@ -2863,7 +2863,7 @@
       {
         "username": "623335",
         "directSignup": {
-          "gameDetails": { "gameId": "p5634" },
+          "programItemDetails": { "gameId": "p5634" },
           "priority": 1,
           "time": "2022-07-30T12:00:00Z"
         }
@@ -2871,7 +2871,7 @@
       {
         "username": "359328",
         "directSignup": {
-          "gameDetails": { "gameId": "p5634" },
+          "programItemDetails": { "gameId": "p5634" },
           "priority": 1,
           "time": "2022-07-30T12:00:00Z"
         }
@@ -2879,7 +2879,7 @@
       {
         "username": "397388",
         "directSignup": {
-          "gameDetails": { "gameId": "p4957" },
+          "programItemDetails": { "gameId": "p4957" },
           "priority": 2,
           "time": "2022-07-30T12:00:00Z"
         }
@@ -2887,7 +2887,7 @@
       {
         "username": "342053",
         "directSignup": {
-          "gameDetails": { "gameId": "p5634" },
+          "programItemDetails": { "gameId": "p5634" },
           "priority": 1,
           "time": "2022-07-30T12:00:00Z"
         }
@@ -2895,7 +2895,7 @@
       {
         "username": "778761",
         "directSignup": {
-          "gameDetails": { "gameId": "p5631" },
+          "programItemDetails": { "gameId": "p5631" },
           "priority": 1,
           "time": "2022-07-30T12:00:00Z"
         }
@@ -2903,7 +2903,7 @@
       {
         "username": "895701",
         "directSignup": {
-          "gameDetails": { "gameId": "p4957" },
+          "programItemDetails": { "gameId": "p4957" },
           "priority": 1,
           "time": "2022-07-30T12:00:00Z"
         }
@@ -2911,7 +2911,7 @@
       {
         "username": "625220",
         "directSignup": {
-          "gameDetails": { "gameId": "p5607" },
+          "programItemDetails": { "gameId": "p5607" },
           "priority": 1,
           "time": "2022-07-30T12:00:00Z"
         }
@@ -2919,7 +2919,7 @@
       {
         "username": "823624",
         "directSignup": {
-          "gameDetails": { "gameId": "p5631" },
+          "programItemDetails": { "gameId": "p5631" },
           "priority": 1,
           "time": "2022-07-30T12:00:00Z"
         }
@@ -2927,7 +2927,7 @@
       {
         "username": "742603",
         "directSignup": {
-          "gameDetails": { "gameId": "p5631" },
+          "programItemDetails": { "gameId": "p5631" },
           "priority": 3,
           "time": "2022-07-30T12:00:00Z"
         }
@@ -2935,7 +2935,7 @@
       {
         "username": "285092",
         "directSignup": {
-          "gameDetails": { "gameId": "p5607" },
+          "programItemDetails": { "gameId": "p5607" },
           "priority": 1,
           "time": "2022-07-30T12:00:00Z"
         }
@@ -2943,7 +2943,7 @@
       {
         "username": "367107",
         "directSignup": {
-          "gameDetails": { "gameId": "p5631" },
+          "programItemDetails": { "gameId": "p5631" },
           "priority": 1,
           "time": "2022-07-30T12:00:00Z"
         }
@@ -2951,7 +2951,7 @@
       {
         "username": "686672",
         "directSignup": {
-          "gameDetails": { "gameId": "p5631" },
+          "programItemDetails": { "gameId": "p5631" },
           "priority": 1,
           "time": "2022-07-30T12:00:00Z"
         }
@@ -2959,7 +2959,7 @@
       {
         "username": "703072",
         "directSignup": {
-          "gameDetails": { "gameId": "p5634" },
+          "programItemDetails": { "gameId": "p5634" },
           "priority": 1,
           "time": "2022-07-30T12:00:00Z"
         }
@@ -2967,7 +2967,7 @@
       {
         "username": "865068",
         "directSignup": {
-          "gameDetails": { "gameId": "p5045" },
+          "programItemDetails": { "gameId": "p5045" },
           "priority": 1,
           "time": "2022-07-30T12:00:00Z"
         }
@@ -2975,7 +2975,7 @@
       {
         "username": "158394",
         "directSignup": {
-          "gameDetails": { "gameId": "p4957" },
+          "programItemDetails": { "gameId": "p4957" },
           "priority": 1,
           "time": "2022-07-30T12:00:00Z"
         }
@@ -2983,7 +2983,7 @@
       {
         "username": "955006",
         "directSignup": {
-          "gameDetails": { "gameId": "p4957" },
+          "programItemDetails": { "gameId": "p4957" },
           "priority": 1,
           "time": "2022-07-30T12:00:00Z"
         }
@@ -2991,7 +2991,7 @@
       {
         "username": "730166",
         "directSignup": {
-          "gameDetails": { "gameId": "p5631" },
+          "programItemDetails": { "gameId": "p5631" },
           "priority": 1,
           "time": "2022-07-30T12:00:00Z"
         }
@@ -2999,7 +2999,7 @@
       {
         "username": "728319",
         "directSignup": {
-          "gameDetails": { "gameId": "p5631" },
+          "programItemDetails": { "gameId": "p5631" },
           "priority": 1,
           "time": "2022-07-30T12:00:00Z"
         }
@@ -3007,7 +3007,7 @@
       {
         "username": "998133",
         "directSignup": {
-          "gameDetails": { "gameId": "p5607" },
+          "programItemDetails": { "gameId": "p5607" },
           "priority": 1,
           "time": "2022-07-30T12:00:00Z"
         }
@@ -3015,7 +3015,7 @@
       {
         "username": "718802",
         "directSignup": {
-          "gameDetails": { "gameId": "p5607" },
+          "programItemDetails": { "gameId": "p5607" },
           "priority": 1,
           "time": "2022-07-30T12:00:00Z"
         }
@@ -3023,7 +3023,7 @@
       {
         "username": "359355",
         "directSignup": {
-          "gameDetails": { "gameId": "p5045" },
+          "programItemDetails": { "gameId": "p5045" },
           "priority": 1,
           "time": "2022-07-30T12:00:00Z"
         }
@@ -3031,7 +3031,7 @@
       {
         "username": "418003",
         "directSignup": {
-          "gameDetails": { "gameId": "p5045" },
+          "programItemDetails": { "gameId": "p5045" },
           "priority": 1,
           "time": "2022-07-30T12:00:00Z"
         }
@@ -3048,7 +3048,7 @@
       {
         "username": "280564",
         "directSignup": {
-          "gameDetails": { "gameId": "p5541" },
+          "programItemDetails": { "gameId": "p5541" },
           "priority": 1,
           "time": "2022-07-30T13:00:00Z"
         }
@@ -3056,7 +3056,7 @@
       {
         "username": "144564",
         "directSignup": {
-          "gameDetails": { "gameId": "p5600" },
+          "programItemDetails": { "gameId": "p5600" },
           "priority": 1,
           "time": "2022-07-30T13:00:00Z"
         }
@@ -3064,7 +3064,7 @@
       {
         "username": "28470",
         "directSignup": {
-          "gameDetails": { "gameId": "p5600" },
+          "programItemDetails": { "gameId": "p5600" },
           "priority": 1,
           "time": "2022-07-30T13:00:00Z"
         }
@@ -3072,7 +3072,7 @@
       {
         "username": "327105",
         "directSignup": {
-          "gameDetails": { "gameId": "p5541" },
+          "programItemDetails": { "gameId": "p5541" },
           "priority": 1,
           "time": "2022-07-30T13:00:00Z"
         }
@@ -3080,7 +3080,7 @@
       {
         "username": "33782",
         "directSignup": {
-          "gameDetails": { "gameId": "p5566" },
+          "programItemDetails": { "gameId": "p5566" },
           "priority": 1,
           "time": "2022-07-30T13:00:00Z"
         }
@@ -3088,7 +3088,7 @@
       {
         "username": "852449",
         "directSignup": {
-          "gameDetails": { "gameId": "p5541" },
+          "programItemDetails": { "gameId": "p5541" },
           "priority": 1,
           "time": "2022-07-30T13:00:00Z"
         }
@@ -3096,7 +3096,7 @@
       {
         "username": "376038",
         "directSignup": {
-          "gameDetails": { "gameId": "p5541" },
+          "programItemDetails": { "gameId": "p5541" },
           "priority": 1,
           "time": "2022-07-30T13:00:00Z"
         }
@@ -3104,7 +3104,7 @@
       {
         "username": "257154",
         "directSignup": {
-          "gameDetails": { "gameId": "p5724" },
+          "programItemDetails": { "gameId": "p5724" },
           "priority": 2,
           "time": "2022-07-30T13:00:00Z"
         }
@@ -3112,7 +3112,7 @@
       {
         "username": "935173",
         "directSignup": {
-          "gameDetails": { "gameId": "p5267" },
+          "programItemDetails": { "gameId": "p5267" },
           "priority": 1,
           "time": "2022-07-30T13:00:00Z"
         }
@@ -3120,7 +3120,7 @@
       {
         "username": "956939",
         "directSignup": {
-          "gameDetails": { "gameId": "p5566" },
+          "programItemDetails": { "gameId": "p5566" },
           "priority": 1,
           "time": "2022-07-30T13:00:00Z"
         }
@@ -3128,7 +3128,7 @@
       {
         "username": "504641",
         "directSignup": {
-          "gameDetails": { "gameId": "p5724" },
+          "programItemDetails": { "gameId": "p5724" },
           "priority": 1,
           "time": "2022-07-30T13:00:00Z"
         }
@@ -3136,7 +3136,7 @@
       {
         "username": "275116",
         "directSignup": {
-          "gameDetails": { "gameId": "p5566" },
+          "programItemDetails": { "gameId": "p5566" },
           "priority": 2,
           "time": "2022-07-30T13:00:00Z"
         }
@@ -3144,7 +3144,7 @@
       {
         "username": "719225",
         "directSignup": {
-          "gameDetails": { "gameId": "p5267" },
+          "programItemDetails": { "gameId": "p5267" },
           "priority": 1,
           "time": "2022-07-30T13:00:00Z"
         }
@@ -3152,7 +3152,7 @@
       {
         "username": "678710",
         "directSignup": {
-          "gameDetails": { "gameId": "p5267" },
+          "programItemDetails": { "gameId": "p5267" },
           "priority": 1,
           "time": "2022-07-30T13:00:00Z"
         }
@@ -3160,7 +3160,7 @@
       {
         "username": "409207",
         "directSignup": {
-          "gameDetails": { "gameId": "p5566" },
+          "programItemDetails": { "gameId": "p5566" },
           "priority": 1,
           "time": "2022-07-30T13:00:00Z"
         }
@@ -3168,7 +3168,7 @@
       {
         "username": "352579",
         "directSignup": {
-          "gameDetails": { "gameId": "p5724" },
+          "programItemDetails": { "gameId": "p5724" },
           "priority": 1,
           "time": "2022-07-30T13:00:00Z"
         }
@@ -3176,7 +3176,7 @@
       {
         "username": "60723",
         "directSignup": {
-          "gameDetails": { "gameId": "p5267" },
+          "programItemDetails": { "gameId": "p5267" },
           "priority": 2,
           "time": "2022-07-30T13:00:00Z"
         }
@@ -3184,7 +3184,7 @@
       {
         "username": "554535",
         "directSignup": {
-          "gameDetails": { "gameId": "p5724" },
+          "programItemDetails": { "gameId": "p5724" },
           "priority": 1,
           "time": "2022-07-30T13:00:00Z"
         }
@@ -3192,7 +3192,7 @@
       {
         "username": "734531",
         "directSignup": {
-          "gameDetails": { "gameId": "p5724" },
+          "programItemDetails": { "gameId": "p5724" },
           "priority": 2,
           "time": "2022-07-30T13:00:00Z"
         }
@@ -3200,7 +3200,7 @@
       {
         "username": "148420",
         "directSignup": {
-          "gameDetails": { "gameId": "p5566" },
+          "programItemDetails": { "gameId": "p5566" },
           "priority": 2,
           "time": "2022-07-30T13:00:00Z"
         }
@@ -3208,7 +3208,7 @@
       {
         "username": "100671",
         "directSignup": {
-          "gameDetails": { "gameId": "p5600" },
+          "programItemDetails": { "gameId": "p5600" },
           "priority": 1,
           "time": "2022-07-30T13:00:00Z"
         }
@@ -3216,7 +3216,7 @@
       {
         "username": "154905",
         "directSignup": {
-          "gameDetails": { "gameId": "p5566" },
+          "programItemDetails": { "gameId": "p5566" },
           "priority": 1,
           "time": "2022-07-30T13:00:00Z"
         }
@@ -3224,7 +3224,7 @@
       {
         "username": "871150",
         "directSignup": {
-          "gameDetails": { "gameId": "p5724" },
+          "programItemDetails": { "gameId": "p5724" },
           "priority": 1,
           "time": "2022-07-30T13:00:00Z"
         }
@@ -3232,7 +3232,7 @@
       {
         "username": "82772",
         "directSignup": {
-          "gameDetails": { "gameId": "p5267" },
+          "programItemDetails": { "gameId": "p5267" },
           "priority": 1,
           "time": "2022-07-30T13:00:00Z"
         }
@@ -3240,7 +3240,7 @@
       {
         "username": "736117",
         "directSignup": {
-          "gameDetails": { "gameId": "p5541" },
+          "programItemDetails": { "gameId": "p5541" },
           "priority": 1,
           "time": "2022-07-30T13:00:00Z"
         }
@@ -3248,7 +3248,7 @@
       {
         "username": "733279",
         "directSignup": {
-          "gameDetails": { "gameId": "p5600" },
+          "programItemDetails": { "gameId": "p5600" },
           "priority": 1,
           "time": "2022-07-30T13:00:00Z"
         }
@@ -3256,7 +3256,7 @@
       {
         "username": "791268",
         "directSignup": {
-          "gameDetails": { "gameId": "p5600" },
+          "programItemDetails": { "gameId": "p5600" },
           "priority": 1,
           "time": "2022-07-30T13:00:00Z"
         }
@@ -3273,7 +3273,7 @@
       {
         "username": "74166",
         "directSignup": {
-          "gameDetails": { "gameId": "p5671" },
+          "programItemDetails": { "gameId": "p5671" },
           "priority": 1,
           "time": "2022-07-30T14:00:00Z"
         }
@@ -3281,7 +3281,7 @@
       {
         "username": "113933",
         "directSignup": {
-          "gameDetails": { "gameId": "p5671" },
+          "programItemDetails": { "gameId": "p5671" },
           "priority": 1,
           "time": "2022-07-30T14:00:00Z"
         }
@@ -3289,7 +3289,7 @@
       {
         "username": "10936",
         "directSignup": {
-          "gameDetails": { "gameId": "p5508" },
+          "programItemDetails": { "gameId": "p5508" },
           "priority": 1,
           "time": "2022-07-30T14:00:00Z"
         }
@@ -3297,7 +3297,7 @@
       {
         "username": "435371",
         "directSignup": {
-          "gameDetails": { "gameId": "p5063" },
+          "programItemDetails": { "gameId": "p5063" },
           "priority": 1,
           "time": "2022-07-30T14:00:00Z"
         }
@@ -3305,7 +3305,7 @@
       {
         "username": "745132",
         "directSignup": {
-          "gameDetails": { "gameId": "p5508" },
+          "programItemDetails": { "gameId": "p5508" },
           "priority": 1,
           "time": "2022-07-30T14:00:00Z"
         }
@@ -3313,7 +3313,7 @@
       {
         "username": "908989",
         "directSignup": {
-          "gameDetails": { "gameId": "p5671" },
+          "programItemDetails": { "gameId": "p5671" },
           "priority": 1,
           "time": "2022-07-30T14:00:00Z"
         }
@@ -3321,7 +3321,7 @@
       {
         "username": "528877",
         "directSignup": {
-          "gameDetails": { "gameId": "p5508" },
+          "programItemDetails": { "gameId": "p5508" },
           "priority": 1,
           "time": "2022-07-30T14:00:00Z"
         }
@@ -3329,7 +3329,7 @@
       {
         "username": "268489",
         "directSignup": {
-          "gameDetails": { "gameId": "p5063" },
+          "programItemDetails": { "gameId": "p5063" },
           "priority": 1,
           "time": "2022-07-30T14:00:00Z"
         }
@@ -3337,7 +3337,7 @@
       {
         "username": "834484",
         "directSignup": {
-          "gameDetails": { "gameId": "p5063" },
+          "programItemDetails": { "gameId": "p5063" },
           "priority": 2,
           "time": "2022-07-30T14:00:00Z"
         }
@@ -3345,7 +3345,7 @@
       {
         "username": "249975",
         "directSignup": {
-          "gameDetails": { "gameId": "p5063" },
+          "programItemDetails": { "gameId": "p5063" },
           "priority": 1,
           "time": "2022-07-30T14:00:00Z"
         }
@@ -3353,7 +3353,7 @@
       {
         "username": "60723",
         "directSignup": {
-          "gameDetails": { "gameId": "p5508" },
+          "programItemDetails": { "gameId": "p5508" },
           "priority": 1,
           "time": "2022-07-30T14:00:00Z"
         }
@@ -3361,7 +3361,7 @@
       {
         "username": "396128",
         "directSignup": {
-          "gameDetails": { "gameId": "p5671" },
+          "programItemDetails": { "gameId": "p5671" },
           "priority": 2,
           "time": "2022-07-30T14:00:00Z"
         }
@@ -3369,7 +3369,7 @@
       {
         "username": "901890",
         "directSignup": {
-          "gameDetails": { "gameId": "p5508" },
+          "programItemDetails": { "gameId": "p5508" },
           "priority": 1,
           "time": "2022-07-30T14:00:00Z"
         }
@@ -3377,7 +3377,7 @@
       {
         "username": "291591",
         "directSignup": {
-          "gameDetails": { "gameId": "p5063" },
+          "programItemDetails": { "gameId": "p5063" },
           "priority": 1,
           "time": "2022-07-30T14:00:00Z"
         }
@@ -3385,7 +3385,7 @@
       {
         "username": "508232",
         "directSignup": {
-          "gameDetails": { "gameId": "p5063" },
+          "programItemDetails": { "gameId": "p5063" },
           "priority": 1,
           "time": "2022-07-30T14:00:00Z"
         }
@@ -3402,7 +3402,7 @@
       {
         "username": "314827",
         "directSignup": {
-          "gameDetails": { "gameId": "p5752" },
+          "programItemDetails": { "gameId": "p5752" },
           "priority": 1,
           "time": "2022-07-30T15:00:00Z"
         }
@@ -3410,7 +3410,7 @@
       {
         "username": "606267",
         "directSignup": {
-          "gameDetails": { "gameId": "p5667" },
+          "programItemDetails": { "gameId": "p5667" },
           "priority": 1,
           "time": "2022-07-30T15:00:00Z"
         }
@@ -3418,7 +3418,7 @@
       {
         "username": "288827",
         "directSignup": {
-          "gameDetails": { "gameId": "p5599" },
+          "programItemDetails": { "gameId": "p5599" },
           "priority": 2,
           "time": "2022-07-30T15:00:00Z"
         }
@@ -3426,7 +3426,7 @@
       {
         "username": "784540",
         "directSignup": {
-          "gameDetails": { "gameId": "p5667" },
+          "programItemDetails": { "gameId": "p5667" },
           "priority": 1,
           "time": "2022-07-30T15:00:00Z"
         }
@@ -3434,7 +3434,7 @@
       {
         "username": "553492",
         "directSignup": {
-          "gameDetails": { "gameId": "p5473" },
+          "programItemDetails": { "gameId": "p5473" },
           "priority": 1,
           "time": "2022-07-30T15:00:00Z"
         }
@@ -3442,7 +3442,7 @@
       {
         "username": "254323",
         "directSignup": {
-          "gameDetails": { "gameId": "p5599" },
+          "programItemDetails": { "gameId": "p5599" },
           "priority": 1,
           "time": "2022-07-30T15:00:00Z"
         }
@@ -3450,7 +3450,7 @@
       {
         "username": "709028",
         "directSignup": {
-          "gameDetails": { "gameId": "p5604" },
+          "programItemDetails": { "gameId": "p5604" },
           "priority": 1,
           "time": "2022-07-30T15:00:00Z"
         }
@@ -3458,7 +3458,7 @@
       {
         "username": "666413",
         "directSignup": {
-          "gameDetails": { "gameId": "p5599" },
+          "programItemDetails": { "gameId": "p5599" },
           "priority": 2,
           "time": "2022-07-30T15:00:00Z"
         }
@@ -3466,7 +3466,7 @@
       {
         "username": "412161",
         "directSignup": {
-          "gameDetails": { "gameId": "p5752" },
+          "programItemDetails": { "gameId": "p5752" },
           "priority": 2,
           "time": "2022-07-30T15:00:00Z"
         }
@@ -3474,7 +3474,7 @@
       {
         "username": "790596",
         "directSignup": {
-          "gameDetails": { "gameId": "p5752" },
+          "programItemDetails": { "gameId": "p5752" },
           "priority": 2,
           "time": "2022-07-30T15:00:00Z"
         }
@@ -3482,7 +3482,7 @@
       {
         "username": "532065",
         "directSignup": {
-          "gameDetails": { "gameId": "p5473" },
+          "programItemDetails": { "gameId": "p5473" },
           "priority": 1,
           "time": "2022-07-30T15:00:00Z"
         }
@@ -3490,7 +3490,7 @@
       {
         "username": "62531",
         "directSignup": {
-          "gameDetails": { "gameId": "p5604" },
+          "programItemDetails": { "gameId": "p5604" },
           "priority": 1,
           "time": "2022-07-30T15:00:00Z"
         }
@@ -3498,7 +3498,7 @@
       {
         "username": "558898",
         "directSignup": {
-          "gameDetails": { "gameId": "p5473" },
+          "programItemDetails": { "gameId": "p5473" },
           "priority": 1,
           "time": "2022-07-30T15:00:00Z"
         }
@@ -3506,7 +3506,7 @@
       {
         "username": "418708",
         "directSignup": {
-          "gameDetails": { "gameId": "p5473" },
+          "programItemDetails": { "gameId": "p5473" },
           "priority": 1,
           "time": "2022-07-30T15:00:00Z"
         }
@@ -3514,7 +3514,7 @@
       {
         "username": "474050",
         "directSignup": {
-          "gameDetails": { "gameId": "p5417" },
+          "programItemDetails": { "gameId": "p5417" },
           "priority": 1,
           "time": "2022-07-30T15:00:00Z"
         }
@@ -3522,7 +3522,7 @@
       {
         "username": "258303",
         "directSignup": {
-          "gameDetails": { "gameId": "p5085" },
+          "programItemDetails": { "gameId": "p5085" },
           "priority": 1,
           "time": "2022-07-30T15:00:00Z"
         }
@@ -3530,7 +3530,7 @@
       {
         "username": "471151",
         "directSignup": {
-          "gameDetails": { "gameId": "p5604" },
+          "programItemDetails": { "gameId": "p5604" },
           "priority": 3,
           "time": "2022-07-30T15:00:00Z"
         }
@@ -3538,7 +3538,7 @@
       {
         "username": "774965",
         "directSignup": {
-          "gameDetails": { "gameId": "p5398" },
+          "programItemDetails": { "gameId": "p5398" },
           "priority": 1,
           "time": "2022-07-30T15:00:00Z"
         }
@@ -3546,7 +3546,7 @@
       {
         "username": "359328",
         "directSignup": {
-          "gameDetails": { "gameId": "p5667" },
+          "programItemDetails": { "gameId": "p5667" },
           "priority": 3,
           "time": "2022-07-30T15:00:00Z"
         }
@@ -3554,7 +3554,7 @@
       {
         "username": "269997",
         "directSignup": {
-          "gameDetails": { "gameId": "p5667" },
+          "programItemDetails": { "gameId": "p5667" },
           "priority": 3,
           "time": "2022-07-30T15:00:00Z"
         }
@@ -3562,7 +3562,7 @@
       {
         "username": "280121",
         "directSignup": {
-          "gameDetails": { "gameId": "p5628" },
+          "programItemDetails": { "gameId": "p5628" },
           "priority": 1,
           "time": "2022-07-30T15:00:00Z"
         }
@@ -3570,7 +3570,7 @@
       {
         "username": "45210",
         "directSignup": {
-          "gameDetails": { "gameId": "p5398" },
+          "programItemDetails": { "gameId": "p5398" },
           "priority": 3,
           "time": "2022-07-30T15:00:00Z"
         }
@@ -3578,7 +3578,7 @@
       {
         "username": "622536",
         "directSignup": {
-          "gameDetails": { "gameId": "p5760" },
+          "programItemDetails": { "gameId": "p5760" },
           "priority": 1,
           "time": "2022-07-30T15:00:00Z"
         }
@@ -3586,7 +3586,7 @@
       {
         "username": "876041",
         "directSignup": {
-          "gameDetails": { "gameId": "p5667" },
+          "programItemDetails": { "gameId": "p5667" },
           "priority": 2,
           "time": "2022-07-30T15:00:00Z"
         }
@@ -3594,7 +3594,7 @@
       {
         "username": "565456",
         "directSignup": {
-          "gameDetails": { "gameId": "p5417" },
+          "programItemDetails": { "gameId": "p5417" },
           "priority": 1,
           "time": "2022-07-30T15:00:00Z"
         }
@@ -3602,7 +3602,7 @@
       {
         "username": "397514",
         "directSignup": {
-          "gameDetails": { "gameId": "p5599" },
+          "programItemDetails": { "gameId": "p5599" },
           "priority": 1,
           "time": "2022-07-30T15:00:00Z"
         }
@@ -3610,7 +3610,7 @@
       {
         "username": "948741",
         "directSignup": {
-          "gameDetails": { "gameId": "p5599" },
+          "programItemDetails": { "gameId": "p5599" },
           "priority": 1,
           "time": "2022-07-30T15:00:00Z"
         }
@@ -3618,7 +3618,7 @@
       {
         "username": "641320",
         "directSignup": {
-          "gameDetails": { "gameId": "p5628" },
+          "programItemDetails": { "gameId": "p5628" },
           "priority": 2,
           "time": "2022-07-30T15:00:00Z"
         }
@@ -3626,7 +3626,7 @@
       {
         "username": "645740",
         "directSignup": {
-          "gameDetails": { "gameId": "p5085" },
+          "programItemDetails": { "gameId": "p5085" },
           "priority": 2,
           "time": "2022-07-30T15:00:00Z"
         }
@@ -3634,7 +3634,7 @@
       {
         "username": "281529",
         "directSignup": {
-          "gameDetails": { "gameId": "p5085" },
+          "programItemDetails": { "gameId": "p5085" },
           "priority": 1,
           "time": "2022-07-30T15:00:00Z"
         }
@@ -3642,7 +3642,7 @@
       {
         "username": "867228",
         "directSignup": {
-          "gameDetails": { "gameId": "p5599" },
+          "programItemDetails": { "gameId": "p5599" },
           "priority": 1,
           "time": "2022-07-30T15:00:00Z"
         }
@@ -3650,7 +3650,7 @@
       {
         "username": "740078",
         "directSignup": {
-          "gameDetails": { "gameId": "p5604" },
+          "programItemDetails": { "gameId": "p5604" },
           "priority": 1,
           "time": "2022-07-30T15:00:00Z"
         }
@@ -3658,7 +3658,7 @@
       {
         "username": "160038",
         "directSignup": {
-          "gameDetails": { "gameId": "p5398" },
+          "programItemDetails": { "gameId": "p5398" },
           "priority": 1,
           "time": "2022-07-30T15:00:00Z"
         }
@@ -3666,7 +3666,7 @@
       {
         "username": "654388",
         "directSignup": {
-          "gameDetails": { "gameId": "p5085" },
+          "programItemDetails": { "gameId": "p5085" },
           "priority": 1,
           "time": "2022-07-30T15:00:00Z"
         }
@@ -3674,7 +3674,7 @@
       {
         "username": "359312",
         "directSignup": {
-          "gameDetails": { "gameId": "p5085" },
+          "programItemDetails": { "gameId": "p5085" },
           "priority": 1,
           "time": "2022-07-30T15:00:00Z"
         }
@@ -3682,7 +3682,7 @@
       {
         "username": "418614",
         "directSignup": {
-          "gameDetails": { "gameId": "p5604" },
+          "programItemDetails": { "gameId": "p5604" },
           "priority": 1,
           "time": "2022-07-30T15:00:00Z"
         }
@@ -3690,7 +3690,7 @@
       {
         "username": "386602",
         "directSignup": {
-          "gameDetails": { "gameId": "p5473" },
+          "programItemDetails": { "gameId": "p5473" },
           "priority": 1,
           "time": "2022-07-30T15:00:00Z"
         }
@@ -3698,7 +3698,7 @@
       {
         "username": "710972",
         "directSignup": {
-          "gameDetails": { "gameId": "p5398" },
+          "programItemDetails": { "gameId": "p5398" },
           "priority": 2,
           "time": "2022-07-30T15:00:00Z"
         }
@@ -3706,7 +3706,7 @@
       {
         "username": "761750",
         "directSignup": {
-          "gameDetails": { "gameId": "p5628" },
+          "programItemDetails": { "gameId": "p5628" },
           "priority": 1,
           "time": "2022-07-30T15:00:00Z"
         }
@@ -3714,7 +3714,7 @@
       {
         "username": "999471",
         "directSignup": {
-          "gameDetails": { "gameId": "p5760" },
+          "programItemDetails": { "gameId": "p5760" },
           "priority": 2,
           "time": "2022-07-30T15:00:00Z"
         }
@@ -3722,7 +3722,7 @@
       {
         "username": "110736",
         "directSignup": {
-          "gameDetails": { "gameId": "p5628" },
+          "programItemDetails": { "gameId": "p5628" },
           "priority": 1,
           "time": "2022-07-30T15:00:00Z"
         }
@@ -3730,7 +3730,7 @@
       {
         "username": "404615",
         "directSignup": {
-          "gameDetails": { "gameId": "p5628" },
+          "programItemDetails": { "gameId": "p5628" },
           "priority": 1,
           "time": "2022-07-30T15:00:00Z"
         }
@@ -3738,7 +3738,7 @@
       {
         "username": "605552",
         "directSignup": {
-          "gameDetails": { "gameId": "p5752" },
+          "programItemDetails": { "gameId": "p5752" },
           "priority": 1,
           "time": "2022-07-30T15:00:00Z"
         }
@@ -3746,7 +3746,7 @@
       {
         "username": "824626",
         "directSignup": {
-          "gameDetails": { "gameId": "p5752" },
+          "programItemDetails": { "gameId": "p5752" },
           "priority": 1,
           "time": "2022-07-30T15:00:00Z"
         }
@@ -3754,7 +3754,7 @@
       {
         "username": "708075",
         "directSignup": {
-          "gameDetails": { "gameId": "p5752" },
+          "programItemDetails": { "gameId": "p5752" },
           "priority": 1,
           "time": "2022-07-30T15:00:00Z"
         }
@@ -3762,7 +3762,7 @@
       {
         "username": "955735",
         "directSignup": {
-          "gameDetails": { "gameId": "p5760" },
+          "programItemDetails": { "gameId": "p5760" },
           "priority": 2,
           "time": "2022-07-30T15:00:00Z"
         }
@@ -3770,7 +3770,7 @@
       {
         "username": "958122",
         "directSignup": {
-          "gameDetails": { "gameId": "p5760" },
+          "programItemDetails": { "gameId": "p5760" },
           "priority": 2,
           "time": "2022-07-30T15:00:00Z"
         }
@@ -3778,7 +3778,7 @@
       {
         "username": "104737",
         "directSignup": {
-          "gameDetails": { "gameId": "p5417" },
+          "programItemDetails": { "gameId": "p5417" },
           "priority": 3,
           "time": "2022-07-30T15:00:00Z"
         }
@@ -3786,7 +3786,7 @@
       {
         "username": "862778",
         "directSignup": {
-          "gameDetails": { "gameId": "p5417" },
+          "programItemDetails": { "gameId": "p5417" },
           "priority": 3,
           "time": "2022-07-30T15:00:00Z"
         }
@@ -3803,7 +3803,7 @@
       {
         "username": "74166",
         "directSignup": {
-          "gameDetails": { "gameId": "p5610" },
+          "programItemDetails": { "gameId": "p5610" },
           "priority": 1,
           "time": "2022-07-30T16:00:00Z"
         }
@@ -3811,7 +3811,7 @@
       {
         "username": "815795",
         "directSignup": {
-          "gameDetails": { "gameId": "p5347" },
+          "programItemDetails": { "gameId": "p5347" },
           "priority": 1,
           "time": "2022-07-30T16:00:00Z"
         }
@@ -3819,7 +3819,7 @@
       {
         "username": "614861",
         "directSignup": {
-          "gameDetails": { "gameId": "p5346" },
+          "programItemDetails": { "gameId": "p5346" },
           "priority": 2,
           "time": "2022-07-30T16:00:00Z"
         }
@@ -3827,7 +3827,7 @@
       {
         "username": "378051",
         "directSignup": {
-          "gameDetails": { "gameId": "p5533" },
+          "programItemDetails": { "gameId": "p5533" },
           "priority": 1,
           "time": "2022-07-30T16:00:00Z"
         }
@@ -3835,7 +3835,7 @@
       {
         "username": "96157",
         "directSignup": {
-          "gameDetails": { "gameId": "p5610" },
+          "programItemDetails": { "gameId": "p5610" },
           "priority": 1,
           "time": "2022-07-30T16:00:00Z"
         }
@@ -3843,7 +3843,7 @@
       {
         "username": "149023",
         "directSignup": {
-          "gameDetails": { "gameId": "p5345" },
+          "programItemDetails": { "gameId": "p5345" },
           "priority": 1,
           "time": "2022-07-30T16:00:00Z"
         }
@@ -3851,7 +3851,7 @@
       {
         "username": "296478",
         "directSignup": {
-          "gameDetails": { "gameId": "p5615" },
+          "programItemDetails": { "gameId": "p5615" },
           "priority": 1,
           "time": "2022-07-30T16:00:00Z"
         }
@@ -3859,7 +3859,7 @@
       {
         "username": "587991",
         "directSignup": {
-          "gameDetails": { "gameId": "p5615" },
+          "programItemDetails": { "gameId": "p5615" },
           "priority": 1,
           "time": "2022-07-30T16:00:00Z"
         }
@@ -3867,7 +3867,7 @@
       {
         "username": "315669",
         "directSignup": {
-          "gameDetails": { "gameId": "p5347" },
+          "programItemDetails": { "gameId": "p5347" },
           "priority": 1,
           "time": "2022-07-30T16:00:00Z"
         }
@@ -3875,7 +3875,7 @@
       {
         "username": "511576",
         "directSignup": {
-          "gameDetails": { "gameId": "p5348" },
+          "programItemDetails": { "gameId": "p5348" },
           "priority": 1,
           "time": "2022-07-30T16:00:00Z"
         }
@@ -3883,7 +3883,7 @@
       {
         "username": "912466",
         "directSignup": {
-          "gameDetails": { "gameId": "p5346" },
+          "programItemDetails": { "gameId": "p5346" },
           "priority": 2,
           "time": "2022-07-30T16:00:00Z"
         }
@@ -3891,7 +3891,7 @@
       {
         "username": "142855",
         "directSignup": {
-          "gameDetails": { "gameId": "p5345" },
+          "programItemDetails": { "gameId": "p5345" },
           "priority": 1,
           "time": "2022-07-30T16:00:00Z"
         }
@@ -3899,7 +3899,7 @@
       {
         "username": "484215",
         "directSignup": {
-          "gameDetails": { "gameId": "p5533" },
+          "programItemDetails": { "gameId": "p5533" },
           "priority": 1,
           "time": "2022-07-30T16:00:00Z"
         }
@@ -3907,7 +3907,7 @@
       {
         "username": "200958",
         "directSignup": {
-          "gameDetails": { "gameId": "p5533" },
+          "programItemDetails": { "gameId": "p5533" },
           "priority": 1,
           "time": "2022-07-30T16:00:00Z"
         }
@@ -3915,7 +3915,7 @@
       {
         "username": "506597",
         "directSignup": {
-          "gameDetails": { "gameId": "p5347" },
+          "programItemDetails": { "gameId": "p5347" },
           "priority": 2,
           "time": "2022-07-30T16:00:00Z"
         }
@@ -3923,7 +3923,7 @@
       {
         "username": "622536",
         "directSignup": {
-          "gameDetails": { "gameId": "p5345" },
+          "programItemDetails": { "gameId": "p5345" },
           "priority": 1,
           "time": "2022-07-30T16:00:00Z"
         }
@@ -3931,7 +3931,7 @@
       {
         "username": "96256",
         "directSignup": {
-          "gameDetails": { "gameId": "p5533" },
+          "programItemDetails": { "gameId": "p5533" },
           "priority": 2,
           "time": "2022-07-30T16:00:00Z"
         }
@@ -3939,7 +3939,7 @@
       {
         "username": "856643",
         "directSignup": {
-          "gameDetails": { "gameId": "p5610" },
+          "programItemDetails": { "gameId": "p5610" },
           "priority": 1,
           "time": "2022-07-30T16:00:00Z"
         }
@@ -3947,7 +3947,7 @@
       {
         "username": "691237",
         "directSignup": {
-          "gameDetails": { "gameId": "p5610" },
+          "programItemDetails": { "gameId": "p5610" },
           "priority": 1,
           "time": "2022-07-30T16:00:00Z"
         }
@@ -3955,7 +3955,7 @@
       {
         "username": "617129",
         "directSignup": {
-          "gameDetails": { "gameId": "p5615" },
+          "programItemDetails": { "gameId": "p5615" },
           "priority": 1,
           "time": "2022-07-30T16:00:00Z"
         }
@@ -3963,7 +3963,7 @@
       {
         "username": "805062",
         "directSignup": {
-          "gameDetails": { "gameId": "p5346" },
+          "programItemDetails": { "gameId": "p5346" },
           "priority": 2,
           "time": "2022-07-30T16:00:00Z"
         }
@@ -3971,7 +3971,7 @@
       {
         "username": "767329",
         "directSignup": {
-          "gameDetails": { "gameId": "p5346" },
+          "programItemDetails": { "gameId": "p5346" },
           "priority": 1,
           "time": "2022-07-30T16:00:00Z"
         }
@@ -3979,7 +3979,7 @@
       {
         "username": "703072",
         "directSignup": {
-          "gameDetails": { "gameId": "p5347" },
+          "programItemDetails": { "gameId": "p5347" },
           "priority": 3,
           "time": "2022-07-30T16:00:00Z"
         }
@@ -3987,7 +3987,7 @@
       {
         "username": "448964",
         "directSignup": {
-          "gameDetails": { "gameId": "p5610" },
+          "programItemDetails": { "gameId": "p5610" },
           "priority": 1,
           "time": "2022-07-30T16:00:00Z"
         }
@@ -3995,7 +3995,7 @@
       {
         "username": "292529",
         "directSignup": {
-          "gameDetails": { "gameId": "p5345" },
+          "programItemDetails": { "gameId": "p5345" },
           "priority": 1,
           "time": "2022-07-30T16:00:00Z"
         }
@@ -4003,7 +4003,7 @@
       {
         "username": "697668",
         "directSignup": {
-          "gameDetails": { "gameId": "p5615" },
+          "programItemDetails": { "gameId": "p5615" },
           "priority": 1,
           "time": "2022-07-30T16:00:00Z"
         }
@@ -4011,7 +4011,7 @@
       {
         "username": "442271",
         "directSignup": {
-          "gameDetails": { "gameId": "p5348" },
+          "programItemDetails": { "gameId": "p5348" },
           "priority": 2,
           "time": "2022-07-30T16:00:00Z"
         }
@@ -4019,7 +4019,7 @@
       {
         "username": "749535",
         "directSignup": {
-          "gameDetails": { "gameId": "p5348" },
+          "programItemDetails": { "gameId": "p5348" },
           "priority": 2,
           "time": "2022-07-30T16:00:00Z"
         }
@@ -4027,7 +4027,7 @@
       {
         "username": "398380",
         "directSignup": {
-          "gameDetails": { "gameId": "p5348" },
+          "programItemDetails": { "gameId": "p5348" },
           "priority": 2,
           "time": "2022-07-30T16:00:00Z"
         }
@@ -4035,7 +4035,7 @@
       {
         "username": "27542",
         "directSignup": {
-          "gameDetails": { "gameId": "p5348" },
+          "programItemDetails": { "gameId": "p5348" },
           "priority": 2,
           "time": "2022-07-30T16:00:00Z"
         }
@@ -4043,7 +4043,7 @@
       {
         "username": "349986",
         "directSignup": {
-          "gameDetails": { "gameId": "p5348" },
+          "programItemDetails": { "gameId": "p5348" },
           "priority": 2,
           "time": "2022-07-30T16:00:00Z"
         }
@@ -4060,7 +4060,7 @@
       {
         "username": "921613",
         "directSignup": {
-          "gameDetails": { "gameId": "p5460" },
+          "programItemDetails": { "gameId": "p5460" },
           "priority": 2,
           "time": "2022-07-30T17:00:00Z"
         }
@@ -4068,7 +4068,7 @@
       {
         "username": "715305",
         "directSignup": {
-          "gameDetails": { "gameId": "p5476" },
+          "programItemDetails": { "gameId": "p5476" },
           "priority": 1,
           "time": "2022-07-30T17:00:00Z"
         }
@@ -4076,7 +4076,7 @@
       {
         "username": "15204",
         "directSignup": {
-          "gameDetails": { "gameId": "p5460" },
+          "programItemDetails": { "gameId": "p5460" },
           "priority": 1,
           "time": "2022-07-30T17:00:00Z"
         }
@@ -4084,7 +4084,7 @@
       {
         "username": "794220",
         "directSignup": {
-          "gameDetails": { "gameId": "p5848" },
+          "programItemDetails": { "gameId": "p5848" },
           "priority": 1,
           "time": "2022-07-30T17:00:00Z"
         }
@@ -4092,7 +4092,7 @@
       {
         "username": "927240",
         "directSignup": {
-          "gameDetails": { "gameId": "p5590" },
+          "programItemDetails": { "gameId": "p5590" },
           "priority": 3,
           "time": "2022-07-30T17:00:00Z"
         }
@@ -4100,7 +4100,7 @@
       {
         "username": "887838",
         "directSignup": {
-          "gameDetails": { "gameId": "p5460" },
+          "programItemDetails": { "gameId": "p5460" },
           "priority": 1,
           "time": "2022-07-30T17:00:00Z"
         }
@@ -4108,7 +4108,7 @@
       {
         "username": "910499",
         "directSignup": {
-          "gameDetails": { "gameId": "p5590" },
+          "programItemDetails": { "gameId": "p5590" },
           "priority": 2,
           "time": "2022-07-30T17:00:00Z"
         }
@@ -4116,7 +4116,7 @@
       {
         "username": "648054",
         "directSignup": {
-          "gameDetails": { "gameId": "p5641" },
+          "programItemDetails": { "gameId": "p5641" },
           "priority": 1,
           "time": "2022-07-30T17:00:00Z"
         }
@@ -4124,7 +4124,7 @@
       {
         "username": "445685",
         "directSignup": {
-          "gameDetails": { "gameId": "p5559" },
+          "programItemDetails": { "gameId": "p5559" },
           "priority": 1,
           "time": "2022-07-30T17:00:00Z"
         }
@@ -4132,7 +4132,7 @@
       {
         "username": "272128",
         "directSignup": {
-          "gameDetails": { "gameId": "p5193" },
+          "programItemDetails": { "gameId": "p5193" },
           "priority": 1,
           "time": "2022-07-30T17:00:00Z"
         }
@@ -4140,7 +4140,7 @@
       {
         "username": "745468",
         "directSignup": {
-          "gameDetails": { "gameId": "p5848" },
+          "programItemDetails": { "gameId": "p5848" },
           "priority": 1,
           "time": "2022-07-30T17:00:00Z"
         }
@@ -4148,7 +4148,7 @@
       {
         "username": "756686",
         "directSignup": {
-          "gameDetails": { "gameId": "p5568" },
+          "programItemDetails": { "gameId": "p5568" },
           "priority": 1,
           "time": "2022-07-30T17:00:00Z"
         }
@@ -4156,7 +4156,7 @@
       {
         "username": "623335",
         "directSignup": {
-          "gameDetails": { "gameId": "p5641" },
+          "programItemDetails": { "gameId": "p5641" },
           "priority": 2,
           "time": "2022-07-30T17:00:00Z"
         }
@@ -4164,7 +4164,7 @@
       {
         "username": "403493",
         "directSignup": {
-          "gameDetails": { "gameId": "p5590" },
+          "programItemDetails": { "gameId": "p5590" },
           "priority": 1,
           "time": "2022-07-30T17:00:00Z"
         }
@@ -4172,7 +4172,7 @@
       {
         "username": "703904",
         "directSignup": {
-          "gameDetails": { "gameId": "p5568" },
+          "programItemDetails": { "gameId": "p5568" },
           "priority": 1,
           "time": "2022-07-30T17:00:00Z"
         }
@@ -4180,7 +4180,7 @@
       {
         "username": "769301",
         "directSignup": {
-          "gameDetails": { "gameId": "p5590" },
+          "programItemDetails": { "gameId": "p5590" },
           "priority": 1,
           "time": "2022-07-30T17:00:00Z"
         }
@@ -4188,7 +4188,7 @@
       {
         "username": "345030",
         "directSignup": {
-          "gameDetails": { "gameId": "p5193" },
+          "programItemDetails": { "gameId": "p5193" },
           "priority": 1,
           "time": "2022-07-30T17:00:00Z"
         }
@@ -4196,7 +4196,7 @@
       {
         "username": "485662",
         "directSignup": {
-          "gameDetails": { "gameId": "p5476" },
+          "programItemDetails": { "gameId": "p5476" },
           "priority": 2,
           "time": "2022-07-30T17:00:00Z"
         }
@@ -4204,7 +4204,7 @@
       {
         "username": "714196",
         "directSignup": {
-          "gameDetails": { "gameId": "p5193" },
+          "programItemDetails": { "gameId": "p5193" },
           "priority": 1,
           "time": "2022-07-30T17:00:00Z"
         }
@@ -4212,7 +4212,7 @@
       {
         "username": "548268",
         "directSignup": {
-          "gameDetails": { "gameId": "p5193" },
+          "programItemDetails": { "gameId": "p5193" },
           "priority": 3,
           "time": "2022-07-30T17:00:00Z"
         }
@@ -4220,7 +4220,7 @@
       {
         "username": "864803",
         "directSignup": {
-          "gameDetails": { "gameId": "p5559" },
+          "programItemDetails": { "gameId": "p5559" },
           "priority": 1,
           "time": "2022-07-30T17:00:00Z"
         }
@@ -4228,7 +4228,7 @@
       {
         "username": "666692",
         "directSignup": {
-          "gameDetails": { "gameId": "p5460" },
+          "programItemDetails": { "gameId": "p5460" },
           "priority": 1,
           "time": "2022-07-30T17:00:00Z"
         }
@@ -4236,7 +4236,7 @@
       {
         "username": "546042",
         "directSignup": {
-          "gameDetails": { "gameId": "p5590" },
+          "programItemDetails": { "gameId": "p5590" },
           "priority": 2,
           "time": "2022-07-30T17:00:00Z"
         }
@@ -4244,7 +4244,7 @@
       {
         "username": "538587",
         "directSignup": {
-          "gameDetails": { "gameId": "p5641" },
+          "programItemDetails": { "gameId": "p5641" },
           "priority": 3,
           "time": "2022-07-30T17:00:00Z"
         }
@@ -4252,7 +4252,7 @@
       {
         "username": "266770",
         "directSignup": {
-          "gameDetails": { "gameId": "p5568" },
+          "programItemDetails": { "gameId": "p5568" },
           "priority": 1,
           "time": "2022-07-30T17:00:00Z"
         }
@@ -4260,7 +4260,7 @@
       {
         "username": "516337",
         "directSignup": {
-          "gameDetails": { "gameId": "p5460" },
+          "programItemDetails": { "gameId": "p5460" },
           "priority": 1,
           "time": "2022-07-30T17:00:00Z"
         }
@@ -4268,7 +4268,7 @@
       {
         "username": "301835",
         "directSignup": {
-          "gameDetails": { "gameId": "p5460" },
+          "programItemDetails": { "gameId": "p5460" },
           "priority": 1,
           "time": "2022-07-30T17:00:00Z"
         }
@@ -4276,7 +4276,7 @@
       {
         "username": "828014",
         "directSignup": {
-          "gameDetails": { "gameId": "p5559" },
+          "programItemDetails": { "gameId": "p5559" },
           "priority": 2,
           "time": "2022-07-30T17:00:00Z"
         }
@@ -4284,7 +4284,7 @@
       {
         "username": "378826",
         "directSignup": {
-          "gameDetails": { "gameId": "p5641" },
+          "programItemDetails": { "gameId": "p5641" },
           "priority": 1,
           "time": "2022-07-30T17:00:00Z"
         }
@@ -4292,7 +4292,7 @@
       {
         "username": "654388",
         "directSignup": {
-          "gameDetails": { "gameId": "p5568" },
+          "programItemDetails": { "gameId": "p5568" },
           "priority": 1,
           "time": "2022-07-30T17:00:00Z"
         }
@@ -4300,7 +4300,7 @@
       {
         "username": "615047",
         "directSignup": {
-          "gameDetails": { "gameId": "p5568" },
+          "programItemDetails": { "gameId": "p5568" },
           "priority": 1,
           "time": "2022-07-30T17:00:00Z"
         }
@@ -4308,7 +4308,7 @@
       {
         "username": "797746",
         "directSignup": {
-          "gameDetails": { "gameId": "p5193" },
+          "programItemDetails": { "gameId": "p5193" },
           "priority": 2,
           "time": "2022-07-30T17:00:00Z"
         }
@@ -4316,7 +4316,7 @@
       {
         "username": "829762",
         "directSignup": {
-          "gameDetails": { "gameId": "p5559" },
+          "programItemDetails": { "gameId": "p5559" },
           "priority": 1,
           "time": "2022-07-30T17:00:00Z"
         }
@@ -4324,7 +4324,7 @@
       {
         "username": "387947",
         "directSignup": {
-          "gameDetails": { "gameId": "p5476" },
+          "programItemDetails": { "gameId": "p5476" },
           "priority": 3,
           "time": "2022-07-30T17:00:00Z"
         }
@@ -4332,7 +4332,7 @@
       {
         "username": "107034",
         "directSignup": {
-          "gameDetails": { "gameId": "p5559" },
+          "programItemDetails": { "gameId": "p5559" },
           "priority": 2,
           "time": "2022-07-30T17:00:00Z"
         }
@@ -4340,7 +4340,7 @@
       {
         "username": "780591",
         "directSignup": {
-          "gameDetails": { "gameId": "p5848" },
+          "programItemDetails": { "gameId": "p5848" },
           "priority": 1,
           "time": "2022-07-30T17:00:00Z"
         }
@@ -4348,7 +4348,7 @@
       {
         "username": "145374",
         "directSignup": {
-          "gameDetails": { "gameId": "p5476" },
+          "programItemDetails": { "gameId": "p5476" },
           "priority": 1,
           "time": "2022-07-30T17:00:00Z"
         }
@@ -4356,7 +4356,7 @@
       {
         "username": "244660",
         "directSignup": {
-          "gameDetails": { "gameId": "p5641" },
+          "programItemDetails": { "gameId": "p5641" },
           "priority": 1,
           "time": "2022-07-30T17:00:00Z"
         }
@@ -4364,7 +4364,7 @@
       {
         "username": "625706",
         "directSignup": {
-          "gameDetails": { "gameId": "p5476" },
+          "programItemDetails": { "gameId": "p5476" },
           "priority": 1,
           "time": "2022-07-30T17:00:00Z"
         }
@@ -4372,7 +4372,7 @@
       {
         "username": "762536",
         "directSignup": {
-          "gameDetails": { "gameId": "p5848" },
+          "programItemDetails": { "gameId": "p5848" },
           "priority": 1,
           "time": "2022-07-30T17:00:00Z"
         }
@@ -4380,7 +4380,7 @@
       {
         "username": "660728",
         "directSignup": {
-          "gameDetails": { "gameId": "p5559" },
+          "programItemDetails": { "gameId": "p5559" },
           "priority": 2,
           "time": "2022-07-30T17:00:00Z"
         }
@@ -4397,7 +4397,7 @@
       {
         "username": "74166",
         "directSignup": {
-          "gameDetails": { "gameId": "p5537" },
+          "programItemDetails": { "gameId": "p5537" },
           "priority": 1,
           "time": "2022-07-30T18:00:00Z"
         }
@@ -4405,7 +4405,7 @@
       {
         "username": "99286",
         "directSignup": {
-          "gameDetails": { "gameId": "p5537" },
+          "programItemDetails": { "gameId": "p5537" },
           "priority": 1,
           "time": "2022-07-30T18:00:00Z"
         }
@@ -4413,7 +4413,7 @@
       {
         "username": "804595",
         "directSignup": {
-          "gameDetails": { "gameId": "p5721" },
+          "programItemDetails": { "gameId": "p5721" },
           "priority": 1,
           "time": "2022-07-30T18:00:00Z"
         }
@@ -4421,7 +4421,7 @@
       {
         "username": "606267",
         "directSignup": {
-          "gameDetails": { "gameId": "p5623" },
+          "programItemDetails": { "gameId": "p5623" },
           "priority": 3,
           "time": "2022-07-30T18:00:00Z"
         }
@@ -4429,7 +4429,7 @@
       {
         "username": "921613",
         "directSignup": {
-          "gameDetails": { "gameId": "p5537" },
+          "programItemDetails": { "gameId": "p5537" },
           "priority": 1,
           "time": "2022-07-30T18:00:00Z"
         }
@@ -4437,7 +4437,7 @@
       {
         "username": "750984",
         "directSignup": {
-          "gameDetails": { "gameId": "p5621" },
+          "programItemDetails": { "gameId": "p5621" },
           "priority": 1,
           "time": "2022-07-30T18:00:00Z"
         }
@@ -4445,7 +4445,7 @@
       {
         "username": "336070",
         "directSignup": {
-          "gameDetails": { "gameId": "p5721" },
+          "programItemDetails": { "gameId": "p5721" },
           "priority": 1,
           "time": "2022-07-30T18:00:00Z"
         }
@@ -4453,7 +4453,7 @@
       {
         "username": "753488",
         "directSignup": {
-          "gameDetails": { "gameId": "p5623" },
+          "programItemDetails": { "gameId": "p5623" },
           "priority": 1,
           "time": "2022-07-30T18:00:00Z"
         }
@@ -4461,7 +4461,7 @@
       {
         "username": "344159",
         "directSignup": {
-          "gameDetails": { "gameId": "p5623" },
+          "programItemDetails": { "gameId": "p5623" },
           "priority": 1,
           "time": "2022-07-30T18:00:00Z"
         }
@@ -4469,7 +4469,7 @@
       {
         "username": "423695",
         "directSignup": {
-          "gameDetails": { "gameId": "p5621" },
+          "programItemDetails": { "gameId": "p5621" },
           "priority": 2,
           "time": "2022-07-30T18:00:00Z"
         }
@@ -4477,7 +4477,7 @@
       {
         "username": "566861",
         "directSignup": {
-          "gameDetails": { "gameId": "p5623" },
+          "programItemDetails": { "gameId": "p5623" },
           "priority": 1,
           "time": "2022-07-30T18:00:00Z"
         }
@@ -4485,7 +4485,7 @@
       {
         "username": "895701",
         "directSignup": {
-          "gameDetails": { "gameId": "p5623" },
+          "programItemDetails": { "gameId": "p5623" },
           "priority": 1,
           "time": "2022-07-30T18:00:00Z"
         }
@@ -4493,7 +4493,7 @@
       {
         "username": "746713",
         "directSignup": {
-          "gameDetails": { "gameId": "p5621" },
+          "programItemDetails": { "gameId": "p5621" },
           "priority": 1,
           "time": "2022-07-30T18:00:00Z"
         }
@@ -4501,7 +4501,7 @@
       {
         "username": "428045",
         "directSignup": {
-          "gameDetails": { "gameId": "p5621" },
+          "programItemDetails": { "gameId": "p5621" },
           "priority": 1,
           "time": "2022-07-30T18:00:00Z"
         }
@@ -4509,7 +4509,7 @@
       {
         "username": "363694",
         "directSignup": {
-          "gameDetails": { "gameId": "p5721" },
+          "programItemDetails": { "gameId": "p5721" },
           "priority": 1,
           "time": "2022-07-30T18:00:00Z"
         }
@@ -4517,7 +4517,7 @@
       {
         "username": "424481",
         "directSignup": {
-          "gameDetails": { "gameId": "p5721" },
+          "programItemDetails": { "gameId": "p5721" },
           "priority": 1,
           "time": "2022-07-30T18:00:00Z"
         }
@@ -4525,7 +4525,7 @@
       {
         "username": "264386",
         "directSignup": {
-          "gameDetails": { "gameId": "p5721" },
+          "programItemDetails": { "gameId": "p5721" },
           "priority": 1,
           "time": "2022-07-30T18:00:00Z"
         }
@@ -4533,7 +4533,7 @@
       {
         "username": "817113",
         "directSignup": {
-          "gameDetails": { "gameId": "p5537" },
+          "programItemDetails": { "gameId": "p5537" },
           "priority": 1,
           "time": "2022-07-30T18:00:00Z"
         }
@@ -4541,7 +4541,7 @@
       {
         "username": "973280",
         "directSignup": {
-          "gameDetails": { "gameId": "p5621" },
+          "programItemDetails": { "gameId": "p5621" },
           "priority": 2,
           "time": "2022-07-30T18:00:00Z"
         }
@@ -4549,7 +4549,7 @@
       {
         "username": "762536",
         "directSignup": {
-          "gameDetails": { "gameId": "p5537" },
+          "programItemDetails": { "gameId": "p5537" },
           "priority": 2,
           "time": "2022-07-30T18:00:00Z"
         }
@@ -4566,7 +4566,7 @@
       {
         "username": "62531",
         "directSignup": {
-          "gameDetails": { "gameId": "p5851" },
+          "programItemDetails": { "gameId": "p5851" },
           "priority": 1,
           "time": "2022-07-30T19:00:00Z"
         }
@@ -4574,7 +4574,7 @@
       {
         "username": "150210",
         "directSignup": {
-          "gameDetails": { "gameId": "p5397" },
+          "programItemDetails": { "gameId": "p5397" },
           "priority": 1,
           "time": "2022-07-30T19:00:00Z"
         }
@@ -4582,7 +4582,7 @@
       {
         "username": "140088",
         "directSignup": {
-          "gameDetails": { "gameId": "p5858" },
+          "programItemDetails": { "gameId": "p5858" },
           "priority": 1,
           "time": "2022-07-30T19:00:00Z"
         }
@@ -4590,7 +4590,7 @@
       {
         "username": "347236",
         "directSignup": {
-          "gameDetails": { "gameId": "p5858" },
+          "programItemDetails": { "gameId": "p5858" },
           "priority": 1,
           "time": "2022-07-30T19:00:00Z"
         }
@@ -4598,7 +4598,7 @@
       {
         "username": "740895",
         "directSignup": {
-          "gameDetails": { "gameId": "p5858" },
+          "programItemDetails": { "gameId": "p5858" },
           "priority": 1,
           "time": "2022-07-30T19:00:00Z"
         }
@@ -4606,7 +4606,7 @@
       {
         "username": "878043",
         "directSignup": {
-          "gameDetails": { "gameId": "p5851" },
+          "programItemDetails": { "gameId": "p5851" },
           "priority": 1,
           "time": "2022-07-30T19:00:00Z"
         }
@@ -4614,7 +4614,7 @@
       {
         "username": "264756",
         "directSignup": {
-          "gameDetails": { "gameId": "p5858" },
+          "programItemDetails": { "gameId": "p5858" },
           "priority": 2,
           "time": "2022-07-30T19:00:00Z"
         }
@@ -4622,7 +4622,7 @@
       {
         "username": "514167",
         "directSignup": {
-          "gameDetails": { "gameId": "p5397" },
+          "programItemDetails": { "gameId": "p5397" },
           "priority": 1,
           "time": "2022-07-30T19:00:00Z"
         }
@@ -4630,7 +4630,7 @@
       {
         "username": "600173",
         "directSignup": {
-          "gameDetails": { "gameId": "p5397" },
+          "programItemDetails": { "gameId": "p5397" },
           "priority": 1,
           "time": "2022-07-30T19:00:00Z"
         }
@@ -4638,7 +4638,7 @@
       {
         "username": "154905",
         "directSignup": {
-          "gameDetails": { "gameId": "p5397" },
+          "programItemDetails": { "gameId": "p5397" },
           "priority": 1,
           "time": "2022-07-30T19:00:00Z"
         }
@@ -4646,7 +4646,7 @@
       {
         "username": "342870",
         "directSignup": {
-          "gameDetails": { "gameId": "p5851" },
+          "programItemDetails": { "gameId": "p5851" },
           "priority": 1,
           "time": "2022-07-30T19:00:00Z"
         }
@@ -4654,7 +4654,7 @@
       {
         "username": "78089",
         "directSignup": {
-          "gameDetails": { "gameId": "p5858" },
+          "programItemDetails": { "gameId": "p5858" },
           "priority": 1,
           "time": "2022-07-30T19:00:00Z"
         }
@@ -4662,7 +4662,7 @@
       {
         "username": "699450",
         "directSignup": {
-          "gameDetails": { "gameId": "p5851" },
+          "programItemDetails": { "gameId": "p5851" },
           "priority": 1,
           "time": "2022-07-30T19:00:00Z"
         }
@@ -4679,7 +4679,7 @@
       {
         "username": "313229",
         "directSignup": {
-          "gameDetails": { "gameId": "p5471" },
+          "programItemDetails": { "gameId": "p5471" },
           "priority": 1,
           "time": "2022-07-30T21:00:00Z"
         }
@@ -4687,7 +4687,7 @@
       {
         "username": "998990",
         "directSignup": {
-          "gameDetails": { "gameId": "p5471" },
+          "programItemDetails": { "gameId": "p5471" },
           "priority": 1,
           "time": "2022-07-30T21:00:00Z"
         }
@@ -4695,7 +4695,7 @@
       {
         "username": "701999",
         "directSignup": {
-          "gameDetails": { "gameId": "p5471" },
+          "programItemDetails": { "gameId": "p5471" },
           "priority": 3,
           "time": "2022-07-30T21:00:00Z"
         }
@@ -4703,7 +4703,7 @@
       {
         "username": "699450",
         "directSignup": {
-          "gameDetails": { "gameId": "p5471" },
+          "programItemDetails": { "gameId": "p5471" },
           "priority": 1,
           "time": "2022-07-30T21:00:00Z"
         }
@@ -4711,7 +4711,7 @@
       {
         "username": "113629",
         "directSignup": {
-          "gameDetails": { "gameId": "p5471" },
+          "programItemDetails": { "gameId": "p5471" },
           "priority": 1,
           "time": "2022-07-30T21:00:00Z"
         }
@@ -4719,7 +4719,7 @@
       {
         "username": "126270",
         "directSignup": {
-          "gameDetails": { "gameId": "p5471" },
+          "programItemDetails": { "gameId": "p5471" },
           "priority": 1,
           "time": "2022-07-30T21:00:00Z"
         }
@@ -4727,7 +4727,7 @@
       {
         "username": "440685",
         "directSignup": {
-          "gameDetails": { "gameId": "p5471" },
+          "programItemDetails": { "gameId": "p5471" },
           "priority": 1,
           "time": "2022-07-30T21:00:00Z"
         }
@@ -4735,7 +4735,7 @@
       {
         "username": "523785",
         "directSignup": {
-          "gameDetails": { "gameId": "p5471" },
+          "programItemDetails": { "gameId": "p5471" },
           "priority": 1,
           "time": "2022-07-30T21:00:00Z"
         }
@@ -4752,7 +4752,7 @@
       {
         "username": "804595",
         "directSignup": {
-          "gameDetails": { "gameId": "p5759" },
+          "programItemDetails": { "gameId": "p5759" },
           "priority": 1,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -4760,7 +4760,7 @@
       {
         "username": "899439",
         "directSignup": {
-          "gameDetails": { "gameId": "p5678" },
+          "programItemDetails": { "gameId": "p5678" },
           "priority": 3,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -4768,7 +4768,7 @@
       {
         "username": "178863",
         "directSignup": {
-          "gameDetails": { "gameId": "p5333" },
+          "programItemDetails": { "gameId": "p5333" },
           "priority": 1,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -4776,7 +4776,7 @@
       {
         "username": "212089",
         "directSignup": {
-          "gameDetails": { "gameId": "p5625" },
+          "programItemDetails": { "gameId": "p5625" },
           "priority": 2,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -4784,7 +4784,7 @@
       {
         "username": "480007",
         "directSignup": {
-          "gameDetails": { "gameId": "p5676" },
+          "programItemDetails": { "gameId": "p5676" },
           "priority": 1,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -4792,7 +4792,7 @@
       {
         "username": "492558",
         "directSignup": {
-          "gameDetails": { "gameId": "p5663" },
+          "programItemDetails": { "gameId": "p5663" },
           "priority": 2,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -4800,7 +4800,7 @@
       {
         "username": "914746",
         "directSignup": {
-          "gameDetails": { "gameId": "p5663" },
+          "programItemDetails": { "gameId": "p5663" },
           "priority": 1,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -4808,7 +4808,7 @@
       {
         "username": "69477",
         "directSignup": {
-          "gameDetails": { "gameId": "p5676" },
+          "programItemDetails": { "gameId": "p5676" },
           "priority": 1,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -4816,7 +4816,7 @@
       {
         "username": "715305",
         "directSignup": {
-          "gameDetails": { "gameId": "p5540" },
+          "programItemDetails": { "gameId": "p5540" },
           "priority": 2,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -4824,7 +4824,7 @@
       {
         "username": "144564",
         "directSignup": {
-          "gameDetails": { "gameId": "p5663" },
+          "programItemDetails": { "gameId": "p5663" },
           "priority": 2,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -4832,7 +4832,7 @@
       {
         "username": "660141",
         "directSignup": {
-          "gameDetails": { "gameId": "p5413" },
+          "programItemDetails": { "gameId": "p5413" },
           "priority": 1,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -4840,7 +4840,7 @@
       {
         "username": "16085",
         "directSignup": {
-          "gameDetails": { "gameId": "p5597" },
+          "programItemDetails": { "gameId": "p5597" },
           "priority": 1,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -4848,7 +4848,7 @@
       {
         "username": "790596",
         "directSignup": {
-          "gameDetails": { "gameId": "p5636" },
+          "programItemDetails": { "gameId": "p5636" },
           "priority": 1,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -4856,7 +4856,7 @@
       {
         "username": "937690",
         "directSignup": {
-          "gameDetails": { "gameId": "p4955" },
+          "programItemDetails": { "gameId": "p4955" },
           "priority": 1,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -4864,7 +4864,7 @@
       {
         "username": "745132",
         "directSignup": {
-          "gameDetails": { "gameId": "p5625" },
+          "programItemDetails": { "gameId": "p5625" },
           "priority": 3,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -4872,7 +4872,7 @@
       {
         "username": "62531",
         "directSignup": {
-          "gameDetails": { "gameId": "p4955" },
+          "programItemDetails": { "gameId": "p4955" },
           "priority": 3,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -4880,7 +4880,7 @@
       {
         "username": "801673",
         "directSignup": {
-          "gameDetails": { "gameId": "p5759" },
+          "programItemDetails": { "gameId": "p5759" },
           "priority": 1,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -4888,7 +4888,7 @@
       {
         "username": "829140",
         "directSignup": {
-          "gameDetails": { "gameId": "p5349" },
+          "programItemDetails": { "gameId": "p5349" },
           "priority": 1,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -4896,7 +4896,7 @@
       {
         "username": "941969",
         "directSignup": {
-          "gameDetails": { "gameId": "p5349" },
+          "programItemDetails": { "gameId": "p5349" },
           "priority": 1,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -4904,7 +4904,7 @@
       {
         "username": "259756",
         "directSignup": {
-          "gameDetails": { "gameId": "p5625" },
+          "programItemDetails": { "gameId": "p5625" },
           "priority": 1,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -4912,7 +4912,7 @@
       {
         "username": "401713",
         "directSignup": {
-          "gameDetails": { "gameId": "p5636" },
+          "programItemDetails": { "gameId": "p5636" },
           "priority": 2,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -4920,7 +4920,7 @@
       {
         "username": "471151",
         "directSignup": {
-          "gameDetails": { "gameId": "p4955" },
+          "programItemDetails": { "gameId": "p4955" },
           "priority": 2,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -4928,7 +4928,7 @@
       {
         "username": "362690",
         "directSignup": {
-          "gameDetails": { "gameId": "p5678" },
+          "programItemDetails": { "gameId": "p5678" },
           "priority": 3,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -4936,7 +4936,7 @@
       {
         "username": "598995",
         "directSignup": {
-          "gameDetails": { "gameId": "p5349" },
+          "programItemDetails": { "gameId": "p5349" },
           "priority": 1,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -4944,7 +4944,7 @@
       {
         "username": "814392",
         "directSignup": {
-          "gameDetails": { "gameId": "p5115" },
+          "programItemDetails": { "gameId": "p5115" },
           "priority": 2,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -4952,7 +4952,7 @@
       {
         "username": "268489",
         "directSignup": {
-          "gameDetails": { "gameId": "p5676" },
+          "programItemDetails": { "gameId": "p5676" },
           "priority": 1,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -4960,7 +4960,7 @@
       {
         "username": "841756",
         "directSignup": {
-          "gameDetails": { "gameId": "p5751" },
+          "programItemDetails": { "gameId": "p5751" },
           "priority": 2,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -4968,7 +4968,7 @@
       {
         "username": "221846",
         "directSignup": {
-          "gameDetails": { "gameId": "p5333" },
+          "programItemDetails": { "gameId": "p5333" },
           "priority": 2,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -4976,7 +4976,7 @@
       {
         "username": "485662",
         "directSignup": {
-          "gameDetails": { "gameId": "p5679" },
+          "programItemDetails": { "gameId": "p5679" },
           "priority": 3,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -4984,7 +4984,7 @@
       {
         "username": "872623",
         "directSignup": {
-          "gameDetails": { "gameId": "p5540" },
+          "programItemDetails": { "gameId": "p5540" },
           "priority": 2,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -4992,7 +4992,7 @@
       {
         "username": "364796",
         "directSignup": {
-          "gameDetails": { "gameId": "p5540" },
+          "programItemDetails": { "gameId": "p5540" },
           "priority": 2,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -5000,7 +5000,7 @@
       {
         "username": "69825",
         "directSignup": {
-          "gameDetails": { "gameId": "p5679" },
+          "programItemDetails": { "gameId": "p5679" },
           "priority": 2,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -5008,7 +5008,7 @@
       {
         "username": "754989",
         "directSignup": {
-          "gameDetails": { "gameId": "p4955" },
+          "programItemDetails": { "gameId": "p4955" },
           "priority": 3,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -5016,7 +5016,7 @@
       {
         "username": "342053",
         "directSignup": {
-          "gameDetails": { "gameId": "p5597" },
+          "programItemDetails": { "gameId": "p5597" },
           "priority": 3,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -5024,7 +5024,7 @@
       {
         "username": "848435",
         "directSignup": {
-          "gameDetails": { "gameId": "p5663" },
+          "programItemDetails": { "gameId": "p5663" },
           "priority": 1,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -5032,7 +5032,7 @@
       {
         "username": "504641",
         "directSignup": {
-          "gameDetails": { "gameId": "p5676" },
+          "programItemDetails": { "gameId": "p5676" },
           "priority": 2,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -5040,7 +5040,7 @@
       {
         "username": "192565",
         "directSignup": {
-          "gameDetails": { "gameId": "p5678" },
+          "programItemDetails": { "gameId": "p5678" },
           "priority": 2,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -5048,7 +5048,7 @@
       {
         "username": "64159",
         "directSignup": {
-          "gameDetails": { "gameId": "p5663" },
+          "programItemDetails": { "gameId": "p5663" },
           "priority": 2,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -5056,7 +5056,7 @@
       {
         "username": "895701",
         "directSignup": {
-          "gameDetails": { "gameId": "p5751" },
+          "programItemDetails": { "gameId": "p5751" },
           "priority": 1,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -5064,7 +5064,7 @@
       {
         "username": "855524",
         "directSignup": {
-          "gameDetails": { "gameId": "p5636" },
+          "programItemDetails": { "gameId": "p5636" },
           "priority": 2,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -5072,7 +5072,7 @@
       {
         "username": "793889",
         "directSignup": {
-          "gameDetails": { "gameId": "p5679" },
+          "programItemDetails": { "gameId": "p5679" },
           "priority": 1,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -5080,7 +5080,7 @@
       {
         "username": "81142",
         "directSignup": {
-          "gameDetails": { "gameId": "p5676" },
+          "programItemDetails": { "gameId": "p5676" },
           "priority": 3,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -5088,7 +5088,7 @@
       {
         "username": "152787",
         "directSignup": {
-          "gameDetails": { "gameId": "p5333" },
+          "programItemDetails": { "gameId": "p5333" },
           "priority": 1,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -5096,7 +5096,7 @@
       {
         "username": "952272",
         "directSignup": {
-          "gameDetails": { "gameId": "p5679" },
+          "programItemDetails": { "gameId": "p5679" },
           "priority": 1,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -5104,7 +5104,7 @@
       {
         "username": "268603",
         "directSignup": {
-          "gameDetails": { "gameId": "p5115" },
+          "programItemDetails": { "gameId": "p5115" },
           "priority": 1,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -5112,7 +5112,7 @@
       {
         "username": "762024",
         "directSignup": {
-          "gameDetails": { "gameId": "p5349" },
+          "programItemDetails": { "gameId": "p5349" },
           "priority": 1,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -5120,7 +5120,7 @@
       {
         "username": "302826",
         "directSignup": {
-          "gameDetails": { "gameId": "p5751" },
+          "programItemDetails": { "gameId": "p5751" },
           "priority": 1,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -5128,7 +5128,7 @@
       {
         "username": "531481",
         "directSignup": {
-          "gameDetails": { "gameId": "p5759" },
+          "programItemDetails": { "gameId": "p5759" },
           "priority": 1,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -5136,7 +5136,7 @@
       {
         "username": "231112",
         "directSignup": {
-          "gameDetails": { "gameId": "p5751" },
+          "programItemDetails": { "gameId": "p5751" },
           "priority": 3,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -5144,7 +5144,7 @@
       {
         "username": "266798",
         "directSignup": {
-          "gameDetails": { "gameId": "p5751" },
+          "programItemDetails": { "gameId": "p5751" },
           "priority": 2,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -5152,7 +5152,7 @@
       {
         "username": "538587",
         "directSignup": {
-          "gameDetails": { "gameId": "p5115" },
+          "programItemDetails": { "gameId": "p5115" },
           "priority": 3,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -5160,7 +5160,7 @@
       {
         "username": "683986",
         "directSignup": {
-          "gameDetails": { "gameId": "p5333" },
+          "programItemDetails": { "gameId": "p5333" },
           "priority": 1,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -5168,7 +5168,7 @@
       {
         "username": "158394",
         "directSignup": {
-          "gameDetails": { "gameId": "p5678" },
+          "programItemDetails": { "gameId": "p5678" },
           "priority": 1,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -5176,7 +5176,7 @@
       {
         "username": "505217",
         "directSignup": {
-          "gameDetails": { "gameId": "p5679" },
+          "programItemDetails": { "gameId": "p5679" },
           "priority": 1,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -5184,7 +5184,7 @@
       {
         "username": "313323",
         "directSignup": {
-          "gameDetails": { "gameId": "p5115" },
+          "programItemDetails": { "gameId": "p5115" },
           "priority": 1,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -5192,7 +5192,7 @@
       {
         "username": "460267",
         "directSignup": {
-          "gameDetails": { "gameId": "p4955" },
+          "programItemDetails": { "gameId": "p4955" },
           "priority": 1,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -5200,7 +5200,7 @@
       {
         "username": "398530",
         "directSignup": {
-          "gameDetails": { "gameId": "p5636" },
+          "programItemDetails": { "gameId": "p5636" },
           "priority": 1,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -5208,7 +5208,7 @@
       {
         "username": "292529",
         "directSignup": {
-          "gameDetails": { "gameId": "p5759" },
+          "programItemDetails": { "gameId": "p5759" },
           "priority": 1,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -5216,7 +5216,7 @@
       {
         "username": "674811",
         "directSignup": {
-          "gameDetails": { "gameId": "p5669" },
+          "programItemDetails": { "gameId": "p5669" },
           "priority": 3,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -5224,7 +5224,7 @@
       {
         "username": "504001",
         "directSignup": {
-          "gameDetails": { "gameId": "p5349" },
+          "programItemDetails": { "gameId": "p5349" },
           "priority": 1,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -5232,7 +5232,7 @@
       {
         "username": "859838",
         "directSignup": {
-          "gameDetails": { "gameId": "p5597" },
+          "programItemDetails": { "gameId": "p5597" },
           "priority": 2,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -5240,7 +5240,7 @@
       {
         "username": "794220",
         "directSignup": {
-          "gameDetails": { "gameId": "p5597" },
+          "programItemDetails": { "gameId": "p5597" },
           "priority": 2,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -5248,7 +5248,7 @@
       {
         "username": "800077",
         "directSignup": {
-          "gameDetails": { "gameId": "p5597" },
+          "programItemDetails": { "gameId": "p5597" },
           "priority": 2,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -5256,7 +5256,7 @@
       {
         "username": "279332",
         "directSignup": {
-          "gameDetails": { "gameId": "p5625" },
+          "programItemDetails": { "gameId": "p5625" },
           "priority": 3,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -5264,7 +5264,7 @@
       {
         "username": "866260",
         "directSignup": {
-          "gameDetails": { "gameId": "p5625" },
+          "programItemDetails": { "gameId": "p5625" },
           "priority": 3,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -5272,7 +5272,7 @@
       {
         "username": "730166",
         "directSignup": {
-          "gameDetails": { "gameId": "p5540" },
+          "programItemDetails": { "gameId": "p5540" },
           "priority": 2,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -5280,7 +5280,7 @@
       {
         "username": "728319",
         "directSignup": {
-          "gameDetails": { "gameId": "p5540" },
+          "programItemDetails": { "gameId": "p5540" },
           "priority": 2,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -5288,7 +5288,7 @@
       {
         "username": "847717",
         "directSignup": {
-          "gameDetails": { "gameId": "p5669" },
+          "programItemDetails": { "gameId": "p5669" },
           "priority": 3,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -5296,7 +5296,7 @@
       {
         "username": "203925",
         "directSignup": {
-          "gameDetails": { "gameId": "p5669" },
+          "programItemDetails": { "gameId": "p5669" },
           "priority": 3,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -5304,7 +5304,7 @@
       {
         "username": "843692",
         "directSignup": {
-          "gameDetails": { "gameId": "p5669" },
+          "programItemDetails": { "gameId": "p5669" },
           "priority": 3,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -5312,7 +5312,7 @@
       {
         "username": "612168",
         "directSignup": {
-          "gameDetails": { "gameId": "p5413" },
+          "programItemDetails": { "gameId": "p5413" },
           "priority": 3,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -5320,7 +5320,7 @@
       {
         "username": "353065",
         "directSignup": {
-          "gameDetails": { "gameId": "p5413" },
+          "programItemDetails": { "gameId": "p5413" },
           "priority": 3,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -5328,7 +5328,7 @@
       {
         "username": "240786",
         "directSignup": {
-          "gameDetails": { "gameId": "p5413" },
+          "programItemDetails": { "gameId": "p5413" },
           "priority": 3,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -5336,7 +5336,7 @@
       {
         "username": "377113",
         "directSignup": {
-          "gameDetails": { "gameId": "p5636" },
+          "programItemDetails": { "gameId": "p5636" },
           "priority": 1,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -5344,7 +5344,7 @@
       {
         "username": "921438",
         "directSignup": {
-          "gameDetails": { "gameId": "p5636" },
+          "programItemDetails": { "gameId": "p5636" },
           "priority": 1,
           "time": "2022-07-31T07:00:00Z"
         }
@@ -5361,7 +5361,7 @@
       {
         "username": "310202",
         "directSignup": {
-          "gameDetails": { "gameId": "p5046" },
+          "programItemDetails": { "gameId": "p5046" },
           "priority": 1,
           "time": "2022-07-31T08:00:00Z"
         }
@@ -5369,7 +5369,7 @@
       {
         "username": "29298",
         "directSignup": {
-          "gameDetails": { "gameId": "p5046" },
+          "programItemDetails": { "gameId": "p5046" },
           "priority": 1,
           "time": "2022-07-31T08:00:00Z"
         }
@@ -5377,7 +5377,7 @@
       {
         "username": "221846",
         "directSignup": {
-          "gameDetails": { "gameId": "p5632" },
+          "programItemDetails": { "gameId": "p5632" },
           "priority": 1,
           "time": "2022-07-31T08:00:00Z"
         }
@@ -5385,7 +5385,7 @@
       {
         "username": "280121",
         "directSignup": {
-          "gameDetails": { "gameId": "p5046" },
+          "programItemDetails": { "gameId": "p5046" },
           "priority": 1,
           "time": "2022-07-31T08:00:00Z"
         }
@@ -5393,7 +5393,7 @@
       {
         "username": "380748",
         "directSignup": {
-          "gameDetails": { "gameId": "p5046" },
+          "programItemDetails": { "gameId": "p5046" },
           "priority": 3,
           "time": "2022-07-31T08:00:00Z"
         }
@@ -5401,7 +5401,7 @@
       {
         "username": "746713",
         "directSignup": {
-          "gameDetails": { "gameId": "p5046" },
+          "programItemDetails": { "gameId": "p5046" },
           "priority": 1,
           "time": "2022-07-31T08:00:00Z"
         }
@@ -5409,7 +5409,7 @@
       {
         "username": "442271",
         "directSignup": {
-          "gameDetails": { "gameId": "p5596" },
+          "programItemDetails": { "gameId": "p5596" },
           "priority": 1,
           "time": "2022-07-31T08:00:00Z"
         }
@@ -5417,7 +5417,7 @@
       {
         "username": "749535",
         "directSignup": {
-          "gameDetails": { "gameId": "p5596" },
+          "programItemDetails": { "gameId": "p5596" },
           "priority": 1,
           "time": "2022-07-31T08:00:00Z"
         }
@@ -5425,7 +5425,7 @@
       {
         "username": "398380",
         "directSignup": {
-          "gameDetails": { "gameId": "p5596" },
+          "programItemDetails": { "gameId": "p5596" },
           "priority": 1,
           "time": "2022-07-31T08:00:00Z"
         }
@@ -5433,7 +5433,7 @@
       {
         "username": "27542",
         "directSignup": {
-          "gameDetails": { "gameId": "p5596" },
+          "programItemDetails": { "gameId": "p5596" },
           "priority": 1,
           "time": "2022-07-31T08:00:00Z"
         }
@@ -5441,7 +5441,7 @@
       {
         "username": "349986",
         "directSignup": {
-          "gameDetails": { "gameId": "p5596" },
+          "programItemDetails": { "gameId": "p5596" },
           "priority": 1,
           "time": "2022-07-31T08:00:00Z"
         }
@@ -5449,7 +5449,7 @@
       {
         "username": "822363",
         "directSignup": {
-          "gameDetails": { "gameId": "p5632" },
+          "programItemDetails": { "gameId": "p5632" },
           "priority": 1,
           "time": "2022-07-31T08:00:00Z"
         }
@@ -5457,7 +5457,7 @@
       {
         "username": "497931",
         "directSignup": {
-          "gameDetails": { "gameId": "p5632" },
+          "programItemDetails": { "gameId": "p5632" },
           "priority": 1,
           "time": "2022-07-31T08:00:00Z"
         }
@@ -5474,7 +5474,7 @@
       {
         "username": "968308",
         "directSignup": {
-          "gameDetails": { "gameId": "p5534" },
+          "programItemDetails": { "gameId": "p5534" },
           "priority": 1,
           "time": "2022-07-31T09:00:00Z"
         }
@@ -5482,7 +5482,7 @@
       {
         "username": "462664",
         "directSignup": {
-          "gameDetails": { "gameId": "p5589" },
+          "programItemDetails": { "gameId": "p5589" },
           "priority": 1,
           "time": "2022-07-31T09:00:00Z"
         }
@@ -5490,7 +5490,7 @@
       {
         "username": "606267",
         "directSignup": {
-          "gameDetails": { "gameId": "p5589" },
+          "programItemDetails": { "gameId": "p5589" },
           "priority": 1,
           "time": "2022-07-31T09:00:00Z"
         }
@@ -5498,7 +5498,7 @@
       {
         "username": "18808",
         "directSignup": {
-          "gameDetails": { "gameId": "p5484" },
+          "programItemDetails": { "gameId": "p5484" },
           "priority": 1,
           "time": "2022-07-31T09:00:00Z"
         }
@@ -5506,7 +5506,7 @@
       {
         "username": "614861",
         "directSignup": {
-          "gameDetails": { "gameId": "p5350" },
+          "programItemDetails": { "gameId": "p5350" },
           "priority": 3,
           "time": "2022-07-31T09:00:00Z"
         }
@@ -5514,7 +5514,7 @@
       {
         "username": "785920",
         "directSignup": {
-          "gameDetails": { "gameId": "p5484" },
+          "programItemDetails": { "gameId": "p5484" },
           "priority": 1,
           "time": "2022-07-31T09:00:00Z"
         }
@@ -5522,7 +5522,7 @@
       {
         "username": "418445",
         "directSignup": {
-          "gameDetails": { "gameId": "p5545" },
+          "programItemDetails": { "gameId": "p5545" },
           "priority": 1,
           "time": "2022-07-31T09:00:00Z"
         }
@@ -5530,7 +5530,7 @@
       {
         "username": "413929",
         "directSignup": {
-          "gameDetails": { "gameId": "p5545" },
+          "programItemDetails": { "gameId": "p5545" },
           "priority": 1,
           "time": "2022-07-31T09:00:00Z"
         }
@@ -5538,7 +5538,7 @@
       {
         "username": "150210",
         "directSignup": {
-          "gameDetails": { "gameId": "p5545" },
+          "programItemDetails": { "gameId": "p5545" },
           "priority": 1,
           "time": "2022-07-31T09:00:00Z"
         }
@@ -5546,7 +5546,7 @@
       {
         "username": "361096",
         "directSignup": {
-          "gameDetails": { "gameId": "p5350" },
+          "programItemDetails": { "gameId": "p5350" },
           "priority": 1,
           "time": "2022-07-31T09:00:00Z"
         }
@@ -5554,7 +5554,7 @@
       {
         "username": "801673",
         "directSignup": {
-          "gameDetails": { "gameId": "p5534" },
+          "programItemDetails": { "gameId": "p5534" },
           "priority": 1,
           "time": "2022-07-31T09:00:00Z"
         }
@@ -5562,7 +5562,7 @@
       {
         "username": "666660",
         "directSignup": {
-          "gameDetails": { "gameId": "p5543" },
+          "programItemDetails": { "gameId": "p5543" },
           "priority": 1,
           "time": "2022-07-31T09:00:00Z"
         }
@@ -5570,7 +5570,7 @@
       {
         "username": "110613",
         "directSignup": {
-          "gameDetails": { "gameId": "p5432" },
+          "programItemDetails": { "gameId": "p5432" },
           "priority": 1,
           "time": "2022-07-31T09:00:00Z"
         }
@@ -5578,7 +5578,7 @@
       {
         "username": "716711",
         "directSignup": {
-          "gameDetails": { "gameId": "p5534" },
+          "programItemDetails": { "gameId": "p5534" },
           "priority": 2,
           "time": "2022-07-31T09:00:00Z"
         }
@@ -5586,7 +5586,7 @@
       {
         "username": "587991",
         "directSignup": {
-          "gameDetails": { "gameId": "p5543" },
+          "programItemDetails": { "gameId": "p5543" },
           "priority": 2,
           "time": "2022-07-31T09:00:00Z"
         }
@@ -5594,7 +5594,7 @@
       {
         "username": "258303",
         "directSignup": {
-          "gameDetails": { "gameId": "p5589" },
+          "programItemDetails": { "gameId": "p5589" },
           "priority": 1,
           "time": "2022-07-31T09:00:00Z"
         }
@@ -5602,7 +5602,7 @@
       {
         "username": "280670",
         "directSignup": {
-          "gameDetails": { "gameId": "p5432" },
+          "programItemDetails": { "gameId": "p5432" },
           "priority": 1,
           "time": "2022-07-31T09:00:00Z"
         }
@@ -5610,7 +5610,7 @@
       {
         "username": "637270",
         "directSignup": {
-          "gameDetails": { "gameId": "p5545" },
+          "programItemDetails": { "gameId": "p5545" },
           "priority": 1,
           "time": "2022-07-31T09:00:00Z"
         }
@@ -5618,7 +5618,7 @@
       {
         "username": "345030",
         "directSignup": {
-          "gameDetails": { "gameId": "p5534" },
+          "programItemDetails": { "gameId": "p5534" },
           "priority": 3,
           "time": "2022-07-31T09:00:00Z"
         }
@@ -5626,7 +5626,7 @@
       {
         "username": "409346",
         "directSignup": {
-          "gameDetails": { "gameId": "p5543" },
+          "programItemDetails": { "gameId": "p5543" },
           "priority": 1,
           "time": "2022-07-31T09:00:00Z"
         }
@@ -5634,7 +5634,7 @@
       {
         "username": "567606",
         "directSignup": {
-          "gameDetails": { "gameId": "p5350" },
+          "programItemDetails": { "gameId": "p5350" },
           "priority": 1,
           "time": "2022-07-31T09:00:00Z"
         }
@@ -5642,7 +5642,7 @@
       {
         "username": "387713",
         "directSignup": {
-          "gameDetails": { "gameId": "p5852" },
+          "programItemDetails": { "gameId": "p5852" },
           "priority": 1,
           "time": "2022-07-31T09:00:00Z"
         }
@@ -5650,7 +5650,7 @@
       {
         "username": "275116",
         "directSignup": {
-          "gameDetails": { "gameId": "p5484" },
+          "programItemDetails": { "gameId": "p5484" },
           "priority": 1,
           "time": "2022-07-31T09:00:00Z"
         }
@@ -5658,7 +5658,7 @@
       {
         "username": "543710",
         "directSignup": {
-          "gameDetails": { "gameId": "p5545" },
+          "programItemDetails": { "gameId": "p5545" },
           "priority": 1,
           "time": "2022-07-31T09:00:00Z"
         }
@@ -5666,7 +5666,7 @@
       {
         "username": "548268",
         "directSignup": {
-          "gameDetails": { "gameId": "p5852" },
+          "programItemDetails": { "gameId": "p5852" },
           "priority": 1,
           "time": "2022-07-31T09:00:00Z"
         }
@@ -5674,7 +5674,7 @@
       {
         "username": "683833",
         "directSignup": {
-          "gameDetails": { "gameId": "p5432" },
+          "programItemDetails": { "gameId": "p5432" },
           "priority": 1,
           "time": "2022-07-31T09:00:00Z"
         }
@@ -5682,7 +5682,7 @@
       {
         "username": "839734",
         "directSignup": {
-          "gameDetails": { "gameId": "p5543" },
+          "programItemDetails": { "gameId": "p5543" },
           "priority": 2,
           "time": "2022-07-31T09:00:00Z"
         }
@@ -5690,7 +5690,7 @@
       {
         "username": "21639",
         "directSignup": {
-          "gameDetails": { "gameId": "p5852" },
+          "programItemDetails": { "gameId": "p5852" },
           "priority": 1,
           "time": "2022-07-31T09:00:00Z"
         }
@@ -5698,7 +5698,7 @@
       {
         "username": "505217",
         "directSignup": {
-          "gameDetails": { "gameId": "p5432" },
+          "programItemDetails": { "gameId": "p5432" },
           "priority": 1,
           "time": "2022-07-31T09:00:00Z"
         }
@@ -5706,7 +5706,7 @@
       {
         "username": "396128",
         "directSignup": {
-          "gameDetails": { "gameId": "p5534" },
+          "programItemDetails": { "gameId": "p5534" },
           "priority": 2,
           "time": "2022-07-31T09:00:00Z"
         }
@@ -5714,7 +5714,7 @@
       {
         "username": "701999",
         "directSignup": {
-          "gameDetails": { "gameId": "p5852" },
+          "programItemDetails": { "gameId": "p5852" },
           "priority": 3,
           "time": "2022-07-31T09:00:00Z"
         }
@@ -5722,7 +5722,7 @@
       {
         "username": "699450",
         "directSignup": {
-          "gameDetails": { "gameId": "p5534" },
+          "programItemDetails": { "gameId": "p5534" },
           "priority": 1,
           "time": "2022-07-31T09:00:00Z"
         }
@@ -5730,7 +5730,7 @@
       {
         "username": "765505",
         "directSignup": {
-          "gameDetails": { "gameId": "p5350" },
+          "programItemDetails": { "gameId": "p5350" },
           "priority": 1,
           "time": "2022-07-31T09:00:00Z"
         }
@@ -5738,7 +5738,7 @@
       {
         "username": "676875",
         "directSignup": {
-          "gameDetails": { "gameId": "p5432" },
+          "programItemDetails": { "gameId": "p5432" },
           "priority": 1,
           "time": "2022-07-31T09:00:00Z"
         }
@@ -5746,7 +5746,7 @@
       {
         "username": "649807",
         "directSignup": {
-          "gameDetails": { "gameId": "p5543" },
+          "programItemDetails": { "gameId": "p5543" },
           "priority": 1,
           "time": "2022-07-31T09:00:00Z"
         }
@@ -5754,7 +5754,7 @@
       {
         "username": "944179",
         "directSignup": {
-          "gameDetails": { "gameId": "p5534" },
+          "programItemDetails": { "gameId": "p5534" },
           "priority": 3,
           "time": "2022-07-31T09:00:00Z"
         }
@@ -5762,7 +5762,7 @@
       {
         "username": "600831",
         "directSignup": {
-          "gameDetails": { "gameId": "p5534" },
+          "programItemDetails": { "gameId": "p5534" },
           "priority": 3,
           "time": "2022-07-31T09:00:00Z"
         }
@@ -5770,7 +5770,7 @@
       {
         "username": "641320",
         "directSignup": {
-          "gameDetails": { "gameId": "p5589" },
+          "programItemDetails": { "gameId": "p5589" },
           "priority": 3,
           "time": "2022-07-31T09:00:00Z"
         }
@@ -5778,7 +5778,7 @@
       {
         "username": "708333",
         "directSignup": {
-          "gameDetails": { "gameId": "p5589" },
+          "programItemDetails": { "gameId": "p5589" },
           "priority": 3,
           "time": "2022-07-31T09:00:00Z"
         }
@@ -5786,7 +5786,7 @@
       {
         "username": "242785",
         "directSignup": {
-          "gameDetails": { "gameId": "p5484" },
+          "programItemDetails": { "gameId": "p5484" },
           "priority": 1,
           "time": "2022-07-31T09:00:00Z"
         }
@@ -5794,7 +5794,7 @@
       {
         "username": "429412",
         "directSignup": {
-          "gameDetails": { "gameId": "p5484" },
+          "programItemDetails": { "gameId": "p5484" },
           "priority": 1,
           "time": "2022-07-31T09:00:00Z"
         }
@@ -5811,7 +5811,7 @@
       {
         "username": "794300",
         "directSignup": {
-          "gameDetails": { "gameId": "p5351" },
+          "programItemDetails": { "gameId": "p5351" },
           "priority": 1,
           "time": "2022-07-31T10:00:00Z"
         }
@@ -5819,7 +5819,7 @@
       {
         "username": "815795",
         "directSignup": {
-          "gameDetails": { "gameId": "p5658" },
+          "programItemDetails": { "gameId": "p5658" },
           "priority": 1,
           "time": "2022-07-31T10:00:00Z"
         }
@@ -5827,7 +5827,7 @@
       {
         "username": "694616",
         "directSignup": {
-          "gameDetails": { "gameId": "p5581" },
+          "programItemDetails": { "gameId": "p5581" },
           "priority": 1,
           "time": "2022-07-31T10:00:00Z"
         }
@@ -5835,7 +5835,7 @@
       {
         "username": "921613",
         "directSignup": {
-          "gameDetails": { "gameId": "p5191" },
+          "programItemDetails": { "gameId": "p5191" },
           "priority": 3,
           "time": "2022-07-31T10:00:00Z"
         }
@@ -5843,7 +5843,7 @@
       {
         "username": "540076",
         "directSignup": {
-          "gameDetails": { "gameId": "p5351" },
+          "programItemDetails": { "gameId": "p5351" },
           "priority": 1,
           "time": "2022-07-31T10:00:00Z"
         }
@@ -5851,7 +5851,7 @@
       {
         "username": "589801",
         "directSignup": {
-          "gameDetails": { "gameId": "p5722" },
+          "programItemDetails": { "gameId": "p5722" },
           "priority": 1,
           "time": "2022-07-31T10:00:00Z"
         }
@@ -5859,7 +5859,7 @@
       {
         "username": "908989",
         "directSignup": {
-          "gameDetails": { "gameId": "p5726" },
+          "programItemDetails": { "gameId": "p5726" },
           "priority": 1,
           "time": "2022-07-31T10:00:00Z"
         }
@@ -5867,7 +5867,7 @@
       {
         "username": "998133",
         "directSignup": {
-          "gameDetails": { "gameId": "p5191" },
+          "programItemDetails": { "gameId": "p5191" },
           "priority": 1,
           "time": "2022-07-31T10:00:00Z"
         }
@@ -5875,7 +5875,7 @@
       {
         "username": "902450",
         "directSignup": {
-          "gameDetails": { "gameId": "p5722" },
+          "programItemDetails": { "gameId": "p5722" },
           "priority": 1,
           "time": "2022-07-31T10:00:00Z"
         }
@@ -5883,7 +5883,7 @@
       {
         "username": "991023",
         "directSignup": {
-          "gameDetails": { "gameId": "p5191" },
+          "programItemDetails": { "gameId": "p5191" },
           "priority": 3,
           "time": "2022-07-31T10:00:00Z"
         }
@@ -5891,7 +5891,7 @@
       {
         "username": "756686",
         "directSignup": {
-          "gameDetails": { "gameId": "p5726" },
+          "programItemDetails": { "gameId": "p5726" },
           "priority": 3,
           "time": "2022-07-31T10:00:00Z"
         }
@@ -5899,7 +5899,7 @@
       {
         "username": "753488",
         "directSignup": {
-          "gameDetails": { "gameId": "p5191" },
+          "programItemDetails": { "gameId": "p5191" },
           "priority": 1,
           "time": "2022-07-31T10:00:00Z"
         }
@@ -5907,7 +5907,7 @@
       {
         "username": "362690",
         "directSignup": {
-          "gameDetails": { "gameId": "p5726" },
+          "programItemDetails": { "gameId": "p5726" },
           "priority": 1,
           "time": "2022-07-31T10:00:00Z"
         }
@@ -5915,7 +5915,7 @@
       {
         "username": "584809",
         "directSignup": {
-          "gameDetails": { "gameId": "p5722" },
+          "programItemDetails": { "gameId": "p5722" },
           "priority": 2,
           "time": "2022-07-31T10:00:00Z"
         }
@@ -5923,7 +5923,7 @@
       {
         "username": "812729",
         "directSignup": {
-          "gameDetails": { "gameId": "p5581" },
+          "programItemDetails": { "gameId": "p5581" },
           "priority": 1,
           "time": "2022-07-31T10:00:00Z"
         }
@@ -5931,7 +5931,7 @@
       {
         "username": "754211",
         "directSignup": {
-          "gameDetails": { "gameId": "p5191" },
+          "programItemDetails": { "gameId": "p5191" },
           "priority": 2,
           "time": "2022-07-31T10:00:00Z"
         }
@@ -5939,7 +5939,7 @@
       {
         "username": "397388",
         "directSignup": {
-          "gameDetails": { "gameId": "p5658" },
+          "programItemDetails": { "gameId": "p5658" },
           "priority": 1,
           "time": "2022-07-31T10:00:00Z"
         }
@@ -5947,7 +5947,7 @@
       {
         "username": "269997",
         "directSignup": {
-          "gameDetails": { "gameId": "p5726" },
+          "programItemDetails": { "gameId": "p5726" },
           "priority": 1,
           "time": "2022-07-31T10:00:00Z"
         }
@@ -5955,7 +5955,7 @@
       {
         "username": "181031",
         "directSignup": {
-          "gameDetails": { "gameId": "p5581" },
+          "programItemDetails": { "gameId": "p5581" },
           "priority": 1,
           "time": "2022-07-31T10:00:00Z"
         }
@@ -5963,7 +5963,7 @@
       {
         "username": "622536",
         "directSignup": {
-          "gameDetails": { "gameId": "p5351" },
+          "programItemDetails": { "gameId": "p5351" },
           "priority": 1,
           "time": "2022-07-31T10:00:00Z"
         }
@@ -5971,7 +5971,7 @@
       {
         "username": "566861",
         "directSignup": {
-          "gameDetails": { "gameId": "p5658" },
+          "programItemDetails": { "gameId": "p5658" },
           "priority": 1,
           "time": "2022-07-31T10:00:00Z"
         }
@@ -5979,7 +5979,7 @@
       {
         "username": "740078",
         "directSignup": {
-          "gameDetails": { "gameId": "p5581" },
+          "programItemDetails": { "gameId": "p5581" },
           "priority": 1,
           "time": "2022-07-31T10:00:00Z"
         }
@@ -5987,7 +5987,7 @@
       {
         "username": "60723",
         "directSignup": {
-          "gameDetails": { "gameId": "p5616" },
+          "programItemDetails": { "gameId": "p5616" },
           "priority": 3,
           "time": "2022-07-31T10:00:00Z"
         }
@@ -5995,7 +5995,7 @@
       {
         "username": "387947",
         "directSignup": {
-          "gameDetails": { "gameId": "p5726" },
+          "programItemDetails": { "gameId": "p5726" },
           "priority": 1,
           "time": "2022-07-31T10:00:00Z"
         }
@@ -6003,7 +6003,7 @@
       {
         "username": "780591",
         "directSignup": {
-          "gameDetails": { "gameId": "p5616" },
+          "programItemDetails": { "gameId": "p5616" },
           "priority": 1,
           "time": "2022-07-31T10:00:00Z"
         }
@@ -6011,7 +6011,7 @@
       {
         "username": "972205",
         "directSignup": {
-          "gameDetails": { "gameId": "p5722" },
+          "programItemDetails": { "gameId": "p5722" },
           "priority": 1,
           "time": "2022-07-31T10:00:00Z"
         }
@@ -6019,7 +6019,7 @@
       {
         "username": "126270",
         "directSignup": {
-          "gameDetails": { "gameId": "p5722" },
+          "programItemDetails": { "gameId": "p5722" },
           "priority": 1,
           "time": "2022-07-31T10:00:00Z"
         }
@@ -6027,7 +6027,7 @@
       {
         "username": "425468",
         "directSignup": {
-          "gameDetails": { "gameId": "p5616" },
+          "programItemDetails": { "gameId": "p5616" },
           "priority": 2,
           "time": "2022-07-31T10:00:00Z"
         }
@@ -6035,7 +6035,7 @@
       {
         "username": "817113",
         "directSignup": {
-          "gameDetails": { "gameId": "p5616" },
+          "programItemDetails": { "gameId": "p5616" },
           "priority": 1,
           "time": "2022-07-31T10:00:00Z"
         }
@@ -6043,7 +6043,7 @@
       {
         "username": "34795",
         "directSignup": {
-          "gameDetails": { "gameId": "p5351" },
+          "programItemDetails": { "gameId": "p5351" },
           "priority": 1,
           "time": "2022-07-31T10:00:00Z"
         }
@@ -6051,7 +6051,7 @@
       {
         "username": "578571",
         "directSignup": {
-          "gameDetails": { "gameId": "p5658" },
+          "programItemDetails": { "gameId": "p5658" },
           "priority": 1,
           "time": "2022-07-31T10:00:00Z"
         }
@@ -6059,7 +6059,7 @@
       {
         "username": "113826",
         "directSignup": {
-          "gameDetails": { "gameId": "p5658" },
+          "programItemDetails": { "gameId": "p5658" },
           "priority": 1,
           "time": "2022-07-31T10:00:00Z"
         }

@@ -37,7 +37,7 @@ test(`Should update game popularity`, async () => {
   await saveLotterySignups({
     lotterySignups: [
       {
-        gameDetails: testGame,
+        programItemDetails: testGame,
         priority: 1,
         time: testGame.startTime,
         message: "",
@@ -48,7 +48,7 @@ test(`Should update game popularity`, async () => {
   await saveLotterySignups({
     lotterySignups: [
       {
-        gameDetails: testGame,
+        programItemDetails: testGame,
         priority: 1,
         time: testGame.startTime,
         message: "",
@@ -99,7 +99,7 @@ test(`Should only update game popularity of upcoming program items`, async () =>
   await saveLotterySignups({
     lotterySignups: [
       {
-        gameDetails: testGame,
+        programItemDetails: testGame,
         priority: 1,
         time: testGame.startTime,
         message: "",
@@ -112,7 +112,7 @@ test(`Should only update game popularity of upcoming program items`, async () =>
   await saveLotterySignups({
     lotterySignups: [
       {
-        gameDetails: testGame2,
+        programItemDetails: testGame2,
         priority: 1,
         time: dayjs(testGame.startTime).add(2, "hours").toISOString(),
         message: "",

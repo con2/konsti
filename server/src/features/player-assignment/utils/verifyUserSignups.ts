@@ -65,7 +65,7 @@ export const verifyUserSignups = async (): Promise<
 
       const matchingCreatorLotterySignup = groupCreator.lotterySignups.find(
         (creatorLotterySignup) =>
-          creatorLotterySignup.gameDetails.gameId === game.gameId &&
+          creatorLotterySignup.programItemDetails.gameId === game.gameId &&
           dayjs(creatorLotterySignup.time).isSame(userSignup.time),
       );
 

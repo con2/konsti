@@ -82,7 +82,7 @@ export const EventLog = (): ReactElement => {
             </span>
 
             <StartTime>
-              {t("eventLog.gameDetails", {
+              {t("eventLog.programItemDetails", {
                 START_TIME: getWeekdayAndTime(foundGame.startTime),
                 LOCATION: foundGame.location,
               })}

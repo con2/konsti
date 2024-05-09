@@ -37,7 +37,7 @@ export const removeHiddenGamesFromUsers = async (
   const usersToUpdate: User[] = users.flatMap((user) => {
     const lotterySignups = user.lotterySignups.filter((lotterySignup) => {
       const hiddenFound = hiddenGames.find((hiddenGame) => {
-        return hiddenGame.gameId === lotterySignup.gameDetails.gameId;
+        return hiddenGame.gameId === lotterySignup.programItemDetails.gameId;
       });
       if (!hiddenFound) {
         return lotterySignup;

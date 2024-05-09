@@ -264,7 +264,7 @@
   "eventLog": {
     "title": "Ilmoitukset",
     "noNotifications": "Ei ilmoituksia",
-    "gameDetails": "Aloitusaika {{START_TIME}} huoneessa {{LOCATION}}"
+    "programItemDetails": "Aloitusaika {{START_TIME}} huoneessa {{LOCATION}}"
   },
   "eventLogActions": {
     "newAssignment": "Olet päässyt arvonnassa peliin "

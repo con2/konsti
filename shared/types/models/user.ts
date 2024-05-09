@@ -17,7 +17,7 @@ export interface User {
 }
 
 export interface Signup {
-  gameDetails: ProgramItem;
+  programItemDetails: ProgramItem;
   priority: number;
   time: string;
   message: string;

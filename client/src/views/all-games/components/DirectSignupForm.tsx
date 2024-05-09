@@ -51,7 +51,7 @@ export const DirectSignupForm = ({
     useState<DeleteDirectSignupErrorMessage | null>(null);
 
   const directSignupForTimeslot = directSignups.find(
-    (g) => g.gameDetails.startTime === startTime,
+    (g) => g.programItemDetails.startTime === startTime,
   );
 
   const alreadySignedToGame = isAlreadyDirectySigned(game, directSignups);
@@ -117,11 +117,11 @@ export const DirectSignupForm = ({
             <DirectSignupContainer>
               {t("signup.alreadySignedToGame", {
                 PROGRAM_TYPE: t(
-                  `programTypeIllative.${directSignupForTimeslot.gameDetails.programType}`,
+                  `programTypeIllative.${directSignupForTimeslot.programItemDetails.programType}`,
                 ),
               })}{" "}
               <DirectSignupProgramItemTitle>
-                {directSignupForTimeslot.gameDetails.title}
+                {directSignupForTimeslot.programItemDetails.title}
               </DirectSignupProgramItemTitle>
               . {t("signup.cannotSignupMoreThanOneGame")}
             </DirectSignupContainer>

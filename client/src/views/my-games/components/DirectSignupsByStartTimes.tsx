@@ -30,7 +30,7 @@ export const DirectSignupsByStartTimes = ({
               {directSignups.map((signup) => {
                 return (
                   <DirectSignupRow
-                    key={signup.gameDetails.gameId}
+                    key={signup.programItemDetails.gameId}
                     signup={signup}
                     startTime={startTime}
                   />
@@ -40,9 +40,9 @@ export const DirectSignupsByStartTimes = ({
               {missedSignups.map((missedSignup) => {
                 if (missedSignup === startTime) {
                   return (
-                    <GameDetailsList key={missedSignup}>
+                    <ProgramItemDetailsList key={missedSignup}>
                       {t("noLotterySignupResult")}
-                    </GameDetailsList>
+                    </ProgramItemDetailsList>
                   );
                 }
               })}
@@ -54,7 +54,7 @@ export const DirectSignupsByStartTimes = ({
   );
 };
 
-const GameDetailsList = styled.div`
+const ProgramItemDetailsList = styled.div`
   display: flex;
   align-items: center;
 `;

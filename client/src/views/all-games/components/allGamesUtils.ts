@@ -9,7 +9,7 @@ export const isAlreadyLotterySigned = (
   lotterySignups: readonly Signup[],
 ): boolean => {
   return lotterySignups.some(
-    (g: Signup) => g.gameDetails.gameId === gameToCheck.gameId,
+    (g: Signup) => g.programItemDetails.gameId === gameToCheck.gameId,
   );
 };
 
@@ -18,7 +18,7 @@ export const isAlreadyDirectySigned = (
   directSignups: readonly Signup[],
 ): boolean => {
   return directSignups.some(
-    (g: Signup) => g.gameDetails.gameId === gameToCheck.gameId,
+    (g: Signup) => g.programItemDetails.gameId === gameToCheck.gameId,
   );
 };
 

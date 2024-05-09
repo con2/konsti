@@ -29,7 +29,7 @@ export const MyDirectSignupsList = ({
   useEffect(() => {
     setStartTimes(
       directSignups
-        .map((directSignup) => directSignup.gameDetails.startTime)
+        .map((directSignup) => directSignup.programItemDetails.startTime)
         .concat(missedSignups),
     );
   }, [missedSignups, directSignups]);

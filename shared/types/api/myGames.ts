@@ -9,7 +9,7 @@ import { ProgramItemSchema } from "shared/types/models/programItem";
 export const PostLotterySignupsRequestSchema = z.object({
   lotterySignups: z.array(
     z.object({
-      gameDetails: ProgramItemSchema,
+      programItemDetails: ProgramItemSchema,
       priority: z.number(),
       time: z.string(),
       message: z.string(),

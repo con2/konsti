@@ -54,7 +54,7 @@ export const updateWithAssign = async (
   });
 
   const directSignupsResult = results.flatMap(
-    (result) => result.directSignup.gameDetails,
+    (result) => result.directSignup.programItemDetails,
   );
 
   const groupedSignups = countBy(directSignupsResult, "gameId");

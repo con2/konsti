@@ -264,7 +264,7 @@
   "eventLog": {
     "title": "Notifications",
     "noNotifications": "No notifications",
-    "gameDetails": "Starting time {{START_TIME}} at {{LOCATION}}"
+    "programItemDetails": "Starting time {{START_TIME}} at {{LOCATION}}"
   },
   "eventLogActions": {
     "newAssignment": "You were assigned to the game "

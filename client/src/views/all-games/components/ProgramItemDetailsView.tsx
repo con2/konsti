@@ -16,7 +16,7 @@ interface Props {
   isAlwaysExpanded: boolean;
 }
 
-export const GameDetailsView = ({
+export const ProgramItemDetailsView = ({
   game,
   isAlwaysExpanded,
 }: Props): ReactElement => {

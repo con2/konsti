@@ -12,6 +12,7 @@ import { ErrorMessage } from "client/components/ErrorMessage";
 import { Dropdown } from "client/components/Dropdown";
 import { ButtonGroup } from "client/components/ButtonGroup";
 import { selectLotterySignups } from "client/views/my-games/myGamesSlice";
+import { Signup } from "shared/types/models/user";
 
 interface Props {
   game: ProgramItem;
@@ -33,7 +34,8 @@ export const LotterySignupForm = ({
 
   const selectedPriorities = lotterySignups
     .filter(
-      (lotterySignup) => lotterySignup.gameDetails.startTime === startTime,
+      (lotterySignup) =>
+        lotterySignup.programItemDetails.startTime === startTime,
     )
     .map((lotterySignup) => lotterySignup.priority);
 
@@ -64,9 +66,9 @@ export const LotterySignupForm = ({
       return;
     }
 
-    const newGame = [
+    const newGame: Signup[] = [
       {
-        gameDetails: game,
+        programItemDetails: game,
         priority,
         time: game.startTime,
         message: "",

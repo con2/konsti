@@ -5,7 +5,11 @@ import { config } from "shared/config";
 const SettingsSchema = new mongoose.Schema(
   {
     hiddenGames: [
-      { type: mongoose.Schema.Types.ObjectId, ref: "Game", default: [] },
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "program-item",
+        default: [],
+      },
     ],
     appOpen: { type: Boolean, default: true },
     signupQuestions: [

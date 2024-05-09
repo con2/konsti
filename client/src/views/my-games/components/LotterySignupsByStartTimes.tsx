@@ -26,22 +26,30 @@ export const LotterySignupsByStartTimes = ({
               {lotterySignups.map((signup) => {
                 if (signup.time === startTime) {
                   return (
-                    <GameDetailsContainer key={signup.gameDetails.gameId}>
+                    <ProgramItemDetailsContainer
+                      key={signup.programItemDetails.gameId}
+                    >
                       <RowLeftSide>
                         <SignupPriority>{`${signup.priority})`}</SignupPriority>
-                        <StyledLink to={`/games/${signup.gameDetails.gameId}`}>
-                          {signup.gameDetails.title}
+                        <StyledLink
+                          to={`/games/${signup.programItemDetails.gameId}`}
+                        >
+                          {signup.programItemDetails.title}
                         </StyledLink>
                       </RowLeftSide>
                       <PopularityContainer>
                         <PopularityInfo
-                          minAttendance={signup.gameDetails.minAttendance}
-                          maxAttendance={signup.gameDetails.maxAttendance}
-                          popularity={signup.gameDetails.popularity}
+                          minAttendance={
+                            signup.programItemDetails.minAttendance
+                          }
+                          maxAttendance={
+                            signup.programItemDetails.maxAttendance
+                          }
+                          popularity={signup.programItemDetails.popularity}
                           includeMsg={false}
                         />
                       </PopularityContainer>
-                    </GameDetailsContainer>
+                    </ProgramItemDetailsContainer>
                   );
                 }
               })}
@@ -53,7 +61,7 @@ export const LotterySignupsByStartTimes = ({
   );
 };
 
-const GameDetailsContainer = styled.li`
+const ProgramItemDetailsContainer = styled.li`
   display: flex;
   flex-direction: row;
   margin-bottom: 8px;

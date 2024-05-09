@@ -15,7 +15,7 @@ export const getMissedSignups = (
   const timeNow = getTimeNow();
 
   const lotterySignupsStartTimes = getStartTimes(
-    lotterySignups.map((lotterySignup) => lotterySignup.gameDetails),
+    lotterySignups.map((lotterySignup) => lotterySignup.programItemDetails),
   );
 
   // Get signup times for past lottery signup

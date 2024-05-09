@@ -46,7 +46,7 @@ const myGamesSlice = createSlice({
 
     submitDeleteDirectSignupAsync(state, action: PayloadAction<string>) {
       const directSignups = state.directSignups.filter(
-        (game) => game.gameDetails.gameId !== action.payload,
+        (game) => game.programItemDetails.gameId !== action.payload,
       );
       return { ...state, directSignups };
     },

@@ -88,13 +88,13 @@ const sentryReduxEnhancer = createReduxEnhancer({
         ...state?.myGames,
         directSignups: state?.myGames?.directSignups?.map((directSignup) => ({
           ...directSignup,
-          gameDetails: directSignup?.gameDetails?.gameId,
+          programItemDetails: directSignup?.programItemDetails?.gameId,
           message: "<Message hidden>",
         })),
         lotterySignups: state?.myGames?.lotterySignups?.map(
           (lotterySignup) => ({
             ...lotterySignup,
-            gameDetails: lotterySignup?.gameDetails?.gameId,
+            programItemDetails: lotterySignup?.programItemDetails?.gameId,
           }),
         ),
         favoritedGames: state?.myGames?.favoritedGames?.map(

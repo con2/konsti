@@ -67,7 +67,7 @@ const removeMovedLotterySignups = async (
 
     const lotterySignups = user.lotterySignups.filter((lotterySignup) => {
       const movedFound = movedGames.find((movedGame) => {
-        return movedGame.gameId === lotterySignup.gameDetails.gameId;
+        return movedGame.gameId === lotterySignup.programItemDetails.gameId;
       });
       if (!movedFound) {
         return lotterySignup;

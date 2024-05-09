@@ -11,10 +11,15 @@ const UserSchema = new mongoose.Schema(
     serial: String,
     groupCreatorCode: String,
     groupCode: String,
-    favoritedGames: [{ type: mongoose.Schema.Types.ObjectId, ref: "Game" }],
+    favoritedProgramItems: [
+      { type: mongoose.Schema.Types.ObjectId, ref: "program-item" },
+    ],
     lotterySignups: [
       {
-        gameDetails: { type: mongoose.Schema.Types.ObjectId, ref: "Game" },
+        programItemDetails: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "program-item",
+        },
         priority: Number,
         time: Date,
         message: String,

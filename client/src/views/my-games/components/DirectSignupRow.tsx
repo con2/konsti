@@ -39,7 +39,7 @@ export const DirectSignupRow = ({
     useState<DeleteDirectSignupErrorMessage | null>(null);
 
   const signupQuestion = signupQuestions.find(
-    (question) => question.gameId === signup.gameDetails.gameId,
+    (question) => question.gameId === signup.programItemDetails.gameId,
   );
 
   const removeSignup = async (): Promise<void> => {
@@ -47,8 +47,8 @@ export const DirectSignupRow = ({
     const errorMessage = await dispatch(
       submitDeleteDirectSignup({
         username,
-        startTime: signup.gameDetails.startTime,
-        directSignupGameId: signup.gameDetails.gameId,
+        startTime: signup.programItemDetails.startTime,
+        directSignupGameId: signup.programItemDetails.gameId,
       }),
     );
 
@@ -61,16 +61,16 @@ export const DirectSignupRow = ({
     setLoading(false);
   };
 
-  if (signup.gameDetails.startTime !== startTime) {
+  if (signup.programItemDetails.startTime !== startTime) {
     return null;
   }
 
   return (
-    <GameDetailsList key={signup.gameDetails.gameId}>
+    <ProgramItemDetailsList key={signup.programItemDetails.gameId}>
       <GameTitleAndButtons>
         <div>
-          <StyledLink to={`/games/${signup.gameDetails.gameId}`}>
-            {signup.gameDetails.title}
+          <StyledLink to={`/games/${signup.programItemDetails.gameId}`}>
+            {signup.programItemDetails.title}
           </StyledLink>
           {config.shared().signupOpen && !cancelSignupFormOpen && (
             <IconButton
@@ -94,12 +94,12 @@ export const DirectSignupRow = ({
         )}
       </GameTitleAndButtons>
 
-      {signup.time !== signup.gameDetails.startTime && (
+      {signup.time !== signup.programItemDetails.startTime && (
         <div>
           {t("myProgramView.startingTimeChanged")}{" "}
           {getShortWeekdayAndTime(signup.time)}{" "}
           <FontAwesomeIcon icon="arrow-right" />{" "}
-          {getShortWeekdayAndTime(signup.gameDetails.startTime)}
+          {getShortWeekdayAndTime(signup.programItemDetails.startTime)}
         </div>
       )}
 
@@ -124,11 +124,11 @@ export const DirectSignupRow = ({
           closeError={() => setServerError(null)}
         />
       )}
-    </GameDetailsList>
+    </ProgramItemDetailsList>
   );
 };
 
-const GameDetailsList = styled.li`
+const ProgramItemDetailsList = styled.li`
   display: flex;
   flex-direction: column;
 `;

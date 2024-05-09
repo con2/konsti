@@ -42,7 +42,7 @@ export const getGroups = (
           : firstMember.serial,
       size: playerGroup.length,
       pref: sortedLotterySignups.map(
-        (lotterySignup) => lotterySignup.gameDetails.gameId,
+        (lotterySignup) => lotterySignup.programItemDetails.gameId,
       ),
     });
   });

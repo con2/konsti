@@ -36,7 +36,7 @@ test("should not add event log items after assigment if signup is dropped due to
     {
       username: mockUser.username,
       directSignup: {
-        gameDetails: testGame,
+        programItemDetails: testGame,
         priority: 1,
         time: testGame.startTime,
         message: "",
@@ -45,7 +45,7 @@ test("should not add event log items after assigment if signup is dropped due to
     {
       username: mockUser2.username,
       directSignup: {
-        gameDetails: testGame,
+        programItemDetails: testGame,
         priority: 1,
         time: testGame.startTime,
         message: "",
@@ -54,7 +54,7 @@ test("should not add event log items after assigment if signup is dropped due to
     {
       username: mockUser3.username,
       directSignup: {
-        gameDetails: testGame,
+        programItemDetails: testGame,
         priority: 1,
         time: testGame.startTime,
         message: "",
@@ -63,7 +63,7 @@ test("should not add event log items after assigment if signup is dropped due to
     {
       username: mockUser4.username,
       directSignup: {
-        gameDetails: testGame,
+        programItemDetails: testGame,
         priority: 1,
         time: testGame.startTime,
         message: "",

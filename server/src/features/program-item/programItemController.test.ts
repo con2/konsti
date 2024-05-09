@@ -171,7 +171,7 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
     const updatedUserResult = await findUser(mockUser.username);
     const updatedUser = unsafelyUnwrapResult(updatedUserResult);
     expect(updatedUser?.lotterySignups.length).toEqual(1);
-    expect(updatedUser?.lotterySignups[0].gameDetails.title).toEqual(
+    expect(updatedUser?.lotterySignups[0].programItemDetails.title).toEqual(
       testGame.title,
     );
     expect(updatedUser?.favoritedGames.length).toEqual(1);
@@ -292,7 +292,7 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
     const updatedUserResult = await findUser(mockUser.username);
     const updatedUser = unsafelyUnwrapResult(updatedUserResult);
     expect(updatedUser?.lotterySignups.length).toEqual(1);
-    expect(updatedUser?.lotterySignups[0].gameDetails.title).toEqual(
+    expect(updatedUser?.lotterySignups[0].programItemDetails.title).toEqual(
       testGame2.title,
     );
     expect(updatedUser?.favoritedGames.length).toEqual(2);

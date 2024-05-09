@@ -76,7 +76,7 @@ export const gameIdFix = async (year: number, event: string): Promise<void> => {
     const tempLotterySignups = user.lotterySignups.map((lotterySignup) => {
       const matchingGame = games.find(
         // @ts-expect-error: $oid not in interface
-        (game) => game._id.$oid === lotterySignup.gameDetails.$oid,
+        (game) => game._id.$oid === lotterySignup.programItemDetails.$oid,
       );
       if (!matchingGame) {
         logger.error(
@@ -84,12 +84,12 @@ export const gameIdFix = async (year: number, event: string): Promise<void> => {
         );
         return {
           ...lotterySignup,
-          gameDetails: { gameId: "<canceled>" },
+          programItemDetails: { gameId: "<canceled>" },
         };
       }
       return {
         ...lotterySignup,
-        gameDetails: { gameId: matchingGame.gameId },
+        programItemDetails: { gameId: matchingGame.gameId },
       };
     });
 
@@ -102,19 +102,19 @@ export const gameIdFix = async (year: number, event: string): Promise<void> => {
   results.map((result) => {
     result.results.map((userResult) => {
       const matchingGame = games.find((game) => {
-        return isEqual(game._id, userResult.directSignup.gameDetails);
+        return isEqual(game._id, userResult.directSignup.programItemDetails);
       });
 
       if (!matchingGame) {
         logger.error(
           `Results: program item for id ${JSON.stringify(
-            userResult.directSignup.gameDetails,
+            userResult.directSignup.programItemDetails,
           )} not found`,
         );
         userResult.directSignup = {
           ...userResult.directSignup,
           // @ts-expect-error: We don't want whole game details
-          gameDetails: { gameId: "<canceled>" },
+          programItemDetails: { gameId: "<canceled>" },
         };
         return;
       }
@@ -122,7 +122,7 @@ export const gameIdFix = async (year: number, event: string): Promise<void> => {
       userResult.directSignup = {
         ...userResult.directSignup,
         // @ts-expect-error: We don't want whole game details
-        gameDetails: { gameId: matchingGame.gameId },
+        programItemDetails: { gameId: matchingGame.gameId },
       };
     });
   });

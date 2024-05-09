@@ -54,7 +54,7 @@ test("should remove lottery signups for moved games from users", async () => {
   const updatedUser = unsafelyUnwrapResult(findUserResult);
 
   expect(updatedUser?.lotterySignups.length).toEqual(1);
-  expect(updatedUser?.lotterySignups[0].gameDetails.gameId).toEqual(
+  expect(updatedUser?.lotterySignups[0].programItemDetails.gameId).toEqual(
     testGame2.gameId,
   );
 });

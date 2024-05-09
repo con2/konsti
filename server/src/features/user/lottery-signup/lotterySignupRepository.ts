@@ -28,12 +28,12 @@ export const saveLotterySignups = async (
   const formattedData = lotterySignups.reduce<Signup[]>(
     (acc, lotterySignup) => {
       const gameDocInDb = games.find(
-        (game) => game.gameId === lotterySignup.gameDetails.gameId,
+        (game) => game.gameId === lotterySignup.programItemDetails.gameId,
       );
 
       if (gameDocInDb) {
         acc.push({
-          gameDetails: gameDocInDb._id,
+          programItemDetails: gameDocInDb._id,
           priority: lotterySignup.priority,
           time: lotterySignup.time,
           message: lotterySignup.message,
@@ -51,7 +51,7 @@ export const saveLotterySignups = async (
         lotterySignups: formattedData,
       },
       { new: true, fields: "-lotterySignups._id" },
-    ).populate("lotterySignups.gameDetails");
+    ).populate("lotterySignups.programItemDetails");
     if (!signupResponse) {
       logger.error("%s", new Error("Error saving lottery signups"));
       return makeErrorResult(MongoDbError.SIGNUP_NOT_FOUND);

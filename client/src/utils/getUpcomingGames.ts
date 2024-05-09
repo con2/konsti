@@ -23,7 +23,7 @@ const getUpcomingLotterySignups = (
   const timeNow = getTimeNow();
 
   const upcomingLotterySignups = lotterySignups.filter((lotterySignup) => {
-    return dayjs(lotterySignup.gameDetails.startTime)
+    return dayjs(lotterySignup.programItemDetails.startTime)
       .add(1, "hours")
       .isAfter(timeNow);
   });
@@ -85,7 +85,9 @@ export const getUpcomingDirectSignups = (
   const timeNow = getTimeNow();
 
   const upcomingGames = directSignups.filter((directSignup) =>
-    dayjs(directSignup.gameDetails.startTime).add(1, "hours").isAfter(timeNow),
+    dayjs(directSignup.programItemDetails.startTime)
+      .add(1, "hours")
+      .isAfter(timeNow),
   );
 
   return upcomingGames;

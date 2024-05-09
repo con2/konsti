@@ -14,7 +14,7 @@ import { getLotterySignups } from "client/utils/getUpcomingGames";
 import { BackButton } from "client/components/BackButton";
 import { getIsInGroup } from "client/views/group/groupUtils";
 
-export const GameDetailsPage = (): ReactElement => {
+export const ProgramItemDetailsPage = (): ReactElement => {
   const { t } = useTranslation();
 
   const { gameId } = useParams();

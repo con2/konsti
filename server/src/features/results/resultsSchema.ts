@@ -7,7 +7,10 @@ const ResultsSchema = new mongoose.Schema(
       {
         username: String,
         directSignup: {
-          gameDetails: { type: mongoose.Schema.Types.ObjectId, ref: "Game" },
+          programItemDetails: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "program-item",
+          },
           priority: Number,
           time: Date,
         },

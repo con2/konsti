@@ -72,9 +72,11 @@ export const runAssignment = async ({
     const matchingLotterySignups = user.lotterySignups.filter(
       (lotterySignup) =>
         twoPhaseSignupProgramTypes.includes(
-          lotterySignup.gameDetails.programType,
+          lotterySignup.programItemDetails.programType,
         ) &&
-        !directSignupAlwaysOpenIds.includes(lotterySignup.gameDetails.gameId),
+        !directSignupAlwaysOpenIds.includes(
+          lotterySignup.programItemDetails.gameId,
+        ),
     );
 
     return { ...user, lotterySignups: matchingLotterySignups };

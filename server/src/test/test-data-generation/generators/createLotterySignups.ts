@@ -79,14 +79,14 @@ const getRandomLotterySignup = (games: readonly ProgramItem[]): Signup[] => {
 
       const duplicate = !!lotterySignups.find(
         (lotterySignup) =>
-          lotterySignup.gameDetails.gameId === randomGame.gameId,
+          lotterySignup.programItemDetails.gameId === randomGame.gameId,
       );
 
       if (duplicate) {
         i -= 1;
       } else {
         lotterySignups.push({
-          gameDetails: randomGame,
+          programItemDetails: randomGame,
           priority: i + 1,
           time: randomGame.startTime,
           message: "",

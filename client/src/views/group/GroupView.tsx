@@ -39,10 +39,14 @@ export const GroupView = (): ReactElement => {
   const filteredActiveDirectSignups = directSignups
     .filter(
       (directSignup) =>
-        !directSignupAlwaysOpenIds.includes(directSignup.gameDetails.gameId),
+        !directSignupAlwaysOpenIds.includes(
+          directSignup.programItemDetails.gameId,
+        ),
     )
     .filter((directSignup) =>
-      twoPhaseSignupProgramTypes.includes(directSignup.gameDetails.programType),
+      twoPhaseSignupProgramTypes.includes(
+        directSignup.programItemDetails.programType,
+      ),
     );
 
   const isInGroup = getIsInGroup(groupCode);
@@ -68,9 +72,9 @@ export const GroupView = (): ReactElement => {
               </p>
               <ListItem>
                 {filteredActiveDirectSignups.map((game) => (
-                  <li key={game.gameDetails.gameId}>
-                    <Link to={`/games/${game.gameDetails.gameId}`}>
-                      {game.gameDetails.title}
+                  <li key={game.programItemDetails.gameId}>
+                    <Link to={`/games/${game.programItemDetails.gameId}`}>
+                      {game.programItemDetails.title}
                     </Link>
                   </li>
                 ))}

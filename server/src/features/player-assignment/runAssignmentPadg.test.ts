@@ -173,7 +173,7 @@ test("Should adjust attendee limits if there are previous signups from moved pro
     },
     {
       username: mockUser3.username,
-      time: mockLotterySignups[0].gameDetails.startTime,
+      time: mockLotterySignups[0].programItemDetails.startTime,
       message: "",
       priority: 1,
     },

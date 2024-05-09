@@ -10,7 +10,7 @@ import {
   isAlreadyLotterySigned,
 } from "client/views/all-games/components/allGamesUtils";
 import { config } from "shared/config";
-import { GameDetailsView } from "client/views/all-games/components/GameDetailsView";
+import { ProgramItemDetailsView } from "client/views/all-games/components/ProgramItemDetailsView";
 import { SignupInfo } from "client/views/all-games/components/SignupInfo";
 import { GameHead } from "client/views/all-games/components/GameHead";
 
@@ -89,7 +89,7 @@ export const GameEntry = ({
         userGroup={userGroup}
         favoritedGames={favoritedGames}
       />
-      <GameDetailsView game={game} isAlwaysExpanded={isAlwaysExpanded} />
+      <ProgramItemDetailsView game={game} isAlwaysExpanded={isAlwaysExpanded} />
       <SignupInfo
         signupStrategy={signupStrategy}
         startTime={startTime}

@@ -45,7 +45,7 @@ export const FavoritesByStartTimes = ({
               {games.map((game) => {
                 if (game.startTime === startTime) {
                   return (
-                    <GameDetailsRow key={game.gameId}>
+                    <ProgramItemDetailsRow key={game.gameId}>
                       <StyledLink
                         to={`/games/${game.gameId}`}
                         data-testid={"game-title"}
@@ -59,7 +59,7 @@ export const FavoritesByStartTimes = ({
                         }}
                         ariaLabel={t("iconAltText.deleteFavorite")}
                       />
-                    </GameDetailsRow>
+                    </ProgramItemDetailsRow>
                   );
                 }
               })}
@@ -71,7 +71,7 @@ export const FavoritesByStartTimes = ({
   );
 };
 
-const GameDetailsRow = styled.li`
+const ProgramItemDetailsRow = styled.li`
   align-items: center;
   justify-content: left;
   margin-bottom: 8px;
