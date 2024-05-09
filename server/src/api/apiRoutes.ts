@@ -30,7 +30,7 @@ import {
   postDirectSignup,
 } from "server/features/direct-signup/directSignupController";
 import { postEventLogItem } from "server/features/user/event-log/eventLogController";
-import { postFavorite } from "server/features/user/favorite-game/favoriteGameController";
+import { postFavorite } from "server/features/user/favorite-program-item/favoriteProgramItemController";
 import {
   getGroup,
   postCloseGroup,

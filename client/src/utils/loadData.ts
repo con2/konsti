@@ -3,7 +3,7 @@ import {
   submitGetSettings,
   submitGetSignupMessages,
 } from "client/views/admin/adminThunks";
-import { submitGetUser } from "client/views/my-games/myGamesThunks";
+import { submitGetUser } from "client/views/my-program-items/myProgramItemsThunks";
 import { submitGetGroup } from "client/views/group/groupThunks";
 import { submitSessionRecovery } from "client/views/login/loginThunks";
 import { store } from "client/utils/store";

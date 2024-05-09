@@ -8,7 +8,7 @@ import { SUBMIT_LOGOUT } from "client/types/logoutActionsTypes";
 // Reducers
 import { allProgramItemsReducer } from "client/views/all-program-items/allProgramItemsSlice";
 import { loginReducer } from "client/views/login/loginSlice";
-import { myGamesReducer } from "client/views/my-games/myGamesSlice";
+import { myProgramItemsReducer } from "client/views/my-program-items/myProgramItemsSlice";
 import { adminReducer } from "client/views/admin/adminSlice";
 import { testSettingsReducer } from "client/test/test-settings/testSettingsSlice";
 import { groupReducer } from "client/views/group/groupSlice";
@@ -16,7 +16,7 @@ import { groupReducer } from "client/views/group/groupSlice";
 export const combinedReducer = combineReducers({
   allGames: allProgramItemsReducer,
   login: loginReducer,
-  myGames: myGamesReducer,
+  myGames: myProgramItemsReducer,
   admin: adminReducer,
   testSettings: testSettingsReducer,
   group: groupReducer,

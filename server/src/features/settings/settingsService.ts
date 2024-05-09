@@ -14,7 +14,7 @@ import {
   PostSignupQuestionResponse,
 } from "shared/types/api/settings";
 import { ProgramItem } from "shared/types/models/programItem";
-import { removeHiddenGamesFromUsers } from "server/features/settings/utils/removeHiddenGamesFromUsers";
+import { removeHiddenProgramItemsFromUsers } from "server/features/settings/utils/removeHiddenProgramItemsFromUsers";
 import { SignupQuestion } from "shared/types/models/settings";
 import { isErrorResult, unwrapResult } from "shared/utils/result";
 
@@ -57,9 +57,8 @@ export const storeHidden = async (
 
   const settings = unwrapResult(settingsResult);
 
-  const removeHiddenGamesFromUsersResult = await removeHiddenGamesFromUsers(
-    settings.hiddenGames,
-  );
+  const removeHiddenGamesFromUsersResult =
+    await removeHiddenProgramItemsFromUsers(settings.hiddenGames);
   if (isErrorResult(removeHiddenGamesFromUsersResult)) {
     return {
       message: "Update hidden failure",

@@ -5,13 +5,13 @@ import { ProgramItem } from "shared/types/models/programItem";
 import {
   PostLotterySignupsErrorMessage,
   submitPostLotterySignups,
-} from "client/views/my-games/myGamesThunks";
+} from "client/views/my-program-items/myProgramItemsThunks";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import { Button, ButtonStyle } from "client/components/Button";
 import { ErrorMessage } from "client/components/ErrorMessage";
 import { Dropdown } from "client/components/Dropdown";
 import { ButtonGroup } from "client/components/ButtonGroup";
-import { selectLotterySignups } from "client/views/my-games/myGamesSlice";
+import { selectLotterySignups } from "client/views/my-program-items/myProgramItemsSlice";
 import { Signup } from "shared/types/models/user";
 
 interface Props {

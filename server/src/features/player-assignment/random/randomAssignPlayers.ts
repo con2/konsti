@@ -1,6 +1,6 @@
 import { uniq } from "lodash-es";
 import { logger } from "server/utils/logger";
-import { getStartingGames } from "server/features/player-assignment/utils/getStartingGames";
+import { getStartingProgramItems } from "server/features/player-assignment/utils/getStartingProgramItems";
 import { runRandomAssignment } from "server/features/player-assignment/random/utils/runRandomAssignment";
 import { User } from "shared/types/models/user";
 import { ProgramItem } from "shared/types/models/programItem";
@@ -26,7 +26,7 @@ export const randomAssignPlayers = (
   directSignups: readonly DirectSignupsForProgramItem[],
 ): Result<PlayerAssignmentResult, AssignmentError> => {
   logger.debug(`***** Run Random Assignment for ${startTime}`);
-  const startingGames = getStartingGames(programItems, startTime);
+  const startingGames = getStartingProgramItems(programItems, startTime);
 
   if (startingGames.length === 0) {
     logger.debug("No starting games, stop!");

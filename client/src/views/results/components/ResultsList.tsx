@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { getWeekdayAndTime } from "client/utils/timeFormatter";
 import { useAppSelector } from "client/utils/hooks";
 import { getUsersForProgramItemId } from "client/views/results/resultsUtils";
-import { getUpcomingGames } from "client/utils/getUpcomingGames";
+import { getUpcomingProgramItems } from "client/utils/getUpcomingProgramItems";
 import { ProgramItem } from "shared/types/models/programItem";
 import { selectActiveGames } from "client/views/admin/adminSlice";
 import { MULTIPLE_WHITESPACES_REGEX } from "client/views/all-program-items/AllProgramItemsView";
@@ -65,7 +65,7 @@ export const ResultsList = (): ReactElement => {
   const filteredGames =
     selectedStartingTime === ResultsStartingTimeOption.ALL
       ? sortBy(visibleGames, "startTime")
-      : sortBy(getUpcomingGames(visibleGames, 1), "startTime");
+      : sortBy(getUpcomingProgramItems(visibleGames, 1), "startTime");
 
   const [gamesForListing, setGamesForListing] = useState<
     readonly ProgramItem[]

@@ -2,7 +2,7 @@ import { ReactElement, ChangeEvent, useState } from "react";
 import { useTranslation } from "react-i18next";
 import styled, { css } from "styled-components";
 import { capitalize } from "lodash-es";
-import { HiddenGamesList } from "client/views/admin/components/HiddenGamesList";
+import { HiddenProgramItemsList } from "client/views/admin/components/HiddenProgramItemsList";
 import {
   submitGetSentryTest,
   submitPlayersAssign,
@@ -186,7 +186,7 @@ export const AdminView = (): ReactElement => {
 
       <LoginProviderSelector />
 
-      <HiddenGamesList hiddenGames={hiddenGames} />
+      <HiddenProgramItemsList hiddenGames={hiddenGames} />
 
       <SignupQuestionList
         signupQuestions={signupQuestions}

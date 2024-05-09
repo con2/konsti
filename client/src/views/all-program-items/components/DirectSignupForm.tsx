@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { ProgramItem } from "shared/types/models/programItem";
-import { SignupGameForm } from "./SignupGameForm";
+import { DirectSignupProgramItemForm } from "./DirectSignupProgramItemForm";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import {
   getSignupOpensDate,
@@ -14,10 +14,10 @@ import { CancelSignupForm } from "./CancelSignupForm";
 import {
   DeleteDirectSignupErrorMessage,
   submitDeleteDirectSignup,
-} from "client/views/my-games/myGamesThunks";
+} from "client/views/my-program-items/myProgramItemsThunks";
 import { loadGames } from "client/utils/loadData";
 import { ErrorMessage } from "client/components/ErrorMessage";
-import { selectDirectSignups } from "client/views/my-games/myGamesSlice";
+import { selectDirectSignups } from "client/views/my-program-items/myProgramItemsSlice";
 import { getTimeNow } from "client/utils/getTimeNow";
 import { getDirectSignupStartTime } from "shared/utils/signupTimes";
 import { config } from "shared/config";
@@ -158,7 +158,7 @@ export const DirectSignupForm = ({
                 )}
 
               {signupFormOpen && (
-                <SignupGameForm
+                <DirectSignupProgramItemForm
                   programItem={programItem}
                   signupQuestion={signupQuestions.find(
                     ({ programItemId }) =>

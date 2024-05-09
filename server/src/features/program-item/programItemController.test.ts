@@ -24,7 +24,7 @@ import {
   mockUser,
 } from "server/test/mock-data/mockUser";
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
-import { saveFavorite } from "server/features/user/favorite-game/favoriteGameRepository";
+import { saveFavorite } from "server/features/user/favorite-program-item/favoriteProgramItemRepository";
 import {
   createSettings,
   saveSignupQuestion,
@@ -48,7 +48,7 @@ import { testHelperWrapper } from "server/kompassi/getProgramItemsFromKompassi";
 import {
   mockKompassiGameRopecon,
   mockKompassiGameRopecon2,
-} from "server/kompassi/test/mockKompassiGameRopecon";
+} from "server/kompassi/test/mockKompassiProgramItemRopecon";
 
 let server: Server;
 

@@ -7,7 +7,7 @@ import { LotterySignupForm } from "./LotterySignupForm";
 import {
   PostLotterySignupsErrorMessage,
   submitPostLotterySignups,
-} from "client/views/my-games/myGamesThunks";
+} from "client/views/my-program-items/myProgramItemsThunks";
 import { Signup } from "shared/types/models/user";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";
 import {

@@ -5,7 +5,7 @@ import {
   AssignmentResultStatus,
   PlayerAssignmentResult,
 } from "server/types/resultTypes";
-import { getStartingGames } from "server/features/player-assignment/utils/getStartingGames";
+import { getStartingProgramItems } from "server/features/player-assignment/utils/getStartingProgramItems";
 import { getRunRandomAndPadgInput } from "server/features/player-assignment/utils/getRunRandomAndPadgInput";
 import { runPadgAssignment } from "server/features/player-assignment/padg/utils/runPadgAssignment";
 import { logger } from "server/utils/logger";
@@ -26,7 +26,7 @@ export const padgAssignPlayers = (
   directSignups: readonly DirectSignupsForProgramItem[],
 ): Result<PlayerAssignmentResult, AssignmentError> => {
   logger.debug(`***** Run Padg Assignment for ${startTime}`);
-  const startingGames = getStartingGames(programItems, startTime);
+  const startingGames = getStartingProgramItems(programItems, startTime);
 
   if (startingGames.length === 0) {
     logger.debug("No starting games, stop!");

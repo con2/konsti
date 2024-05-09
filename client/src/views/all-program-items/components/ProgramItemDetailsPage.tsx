@@ -8,9 +8,9 @@ import {
   selectDirectSignups,
   selectFavoritedGames,
   selectLotterySignups,
-} from "client/views/my-games/myGamesSlice";
+} from "client/views/my-program-items/myProgramItemsSlice";
 import { SignupStrategy } from "shared/config/sharedConfigTypes";
-import { getLotterySignups } from "client/utils/getUpcomingGames";
+import { getLotterySignups } from "client/utils/getUpcomingProgramItems";
 import { BackButton } from "client/components/BackButton";
 import { getIsInGroup } from "client/views/group/groupUtils";
 

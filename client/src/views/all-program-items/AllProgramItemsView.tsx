@@ -2,7 +2,7 @@ import { ReactElement, useEffect, useMemo, useState } from "react";
 import { useStore } from "react-redux";
 import { useDebounce } from "use-debounce";
 import { AllProgramItemsList } from "client/views/all-program-items/components/AllProgramItemsList";
-import { getUpcomingGames } from "client/utils/getUpcomingGames";
+import { getUpcomingProgramItems } from "client/utils/getUpcomingProgramItems";
 import { loadGames } from "client/utils/loadData";
 import { Loading } from "client/components/Loading";
 import {
@@ -135,9 +135,11 @@ const getVisibleGames = (
   const filteredGames = getTagFilteredGames(programItems, selectedTag);
 
   if (selectedView === StartingTimeOption.UPCOMING) {
-    return getUpcomingGames(filteredGames);
+    return getUpcomingProgramItems(filteredGames);
   } else if (selectedView === StartingTimeOption.REVOLVING_DOOR) {
-    return getUpcomingGames(filteredGames).filter((game) => game.revolvingDoor);
+    return getUpcomingProgramItems(filteredGames).filter(
+      (game) => game.revolvingDoor,
+    );
   }
 
   return filteredGames;

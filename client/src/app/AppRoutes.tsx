@@ -5,7 +5,7 @@ import { IconName } from "@fortawesome/free-solid-svg-icons";
 import { AllProgramItemsView } from "client/views/all-program-items/AllProgramItemsView";
 import { ProgramItemDetailsPage } from "client/views/all-program-items/components/ProgramItemDetailsPage";
 import { LoginView } from "client/views/login/LoginView";
-import { MyGamesView } from "client/views/my-games/MyGamesView";
+import { MyProgramItemsView } from "client/views/my-program-items/MyProgramItemsView";
 import { RegistrationView } from "client/views/registration/RegistrationView";
 import { AdminView } from "client/views/admin/AdminView";
 import { ResultsView } from "client/views/results/ResultsView";
@@ -43,7 +43,7 @@ export const AppRoutes = (): ReactElement => {
     {
       headerText: t("pages.myProgram"),
       path: "myprogram",
-      element: <MyGamesView />,
+      element: <MyProgramItemsView />,
       icon: "dice" as IconName,
       "data-testid": "my-program-list",
     },

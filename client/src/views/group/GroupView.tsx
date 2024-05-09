@@ -12,7 +12,7 @@ import { NotInGroupActions } from "client/views/group/components/NotInGroupActio
 import { GroupCreatorActions } from "client/views/group/components/GroupCreatorActions";
 import { GroupMemberActions } from "client/views/group/components/GroupMemberActions";
 import { getTimeNow } from "client/utils/getTimeNow";
-import { selectDirectSignups } from "client/views/my-games/myGamesSlice";
+import { selectDirectSignups } from "client/views/my-program-items/myProgramItemsSlice";
 import { config } from "shared/config";
 
 export const GroupView = (): ReactElement => {

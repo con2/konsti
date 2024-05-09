@@ -1,4 +1,4 @@
-import { updateGamePopularity } from "server/features/game-popularity/updateGamePopularity";
+import { updateGamePopularity } from "server/features/program-item-popularity/updateProgramItemPopularity";
 import { config } from "shared/config";
 import {
   PostUpdateProgramItemsResponse,

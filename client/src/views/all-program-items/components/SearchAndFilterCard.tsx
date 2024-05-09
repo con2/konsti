@@ -8,7 +8,7 @@ import { Dropdown } from "client/components/Dropdown";
 import { SessionStorageValue } from "client/utils/sessionStorage";
 import { ControlledInput } from "client/components/ControlledInput";
 import { RadioButton } from "client/components/RadioButton";
-import { RevolvingDoorGamesInfo } from "client/views/all-program-items/components/RevolvingDoorGamesInfo";
+import { RevolvingDoorProgramItemsInfo } from "client/views/all-program-items/components/RevolvingDoorProgramItemsInfo";
 import { config } from "shared/config";
 import { RaisedCard } from "client/components/RaisedCard";
 import { RadioButtonGroup } from "client/components/RadioButtonGroup";
@@ -146,7 +146,7 @@ export const SearchAndFilterCard = ({
       </InputContainer>
       {selectedStartingTime === StartingTimeOption.REVOLVING_DOOR && (
         <RevolvingDoorGamesInfoContainer>
-          <RevolvingDoorGamesInfo />
+          <RevolvingDoorProgramItemsInfo />
         </RevolvingDoorGamesInfoContainer>
       )}
     </Container>

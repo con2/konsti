@@ -23,7 +23,7 @@ import {
   findUserDirectSignups,
   saveDirectSignup,
 } from "server/features/direct-signup/directSignupRepository";
-import { saveFavorite } from "server/features/user/favorite-game/favoriteGameRepository";
+import { saveFavorite } from "server/features/user/favorite-program-item/favoriteProgramItemRepository";
 import {
   mockPostDirectSignupRequest,
   mockPostDirectSignupRequest2,
