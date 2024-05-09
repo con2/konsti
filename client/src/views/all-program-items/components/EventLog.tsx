@@ -14,7 +14,9 @@ export const EventLog = (): ReactElement => {
   const dispatch = useAppDispatch();
 
   const eventLogItems = useAppSelector((state) => state.login.eventLogItems);
-  const games = useAppSelector((state) => state.allGames.programItems);
+  const programItems = useAppSelector(
+    (state) => state.allProgramItems.programItems,
+  );
   const username = useAppSelector((state) => state.login.username);
 
   const localEventLogItems = useRef(eventLogItems);
@@ -62,8 +64,9 @@ export const EventLog = (): ReactElement => {
         (item) => item.createdAt,
         "desc",
       ).map((eventLogItem) => {
-        const foundGame = games.find(
-          (game) => game.programItemId === eventLogItem.programItemId,
+        const foundGame = programItems.find(
+          (programItem) =>
+            programItem.programItemId === eventLogItem.programItemId,
         );
         if (!foundGame) {
           return;

@@ -42,10 +42,10 @@ export const ProgramItemListTitle = ({
   );
 
   const lotterySignupsCount = lotterySignups.filter(
-    (game) => game.programItemDetails.startTime === startTime,
+    (programItem) => programItem.programItemDetails.startTime === startTime,
   ).length;
   const directSignup = directSignups.find(
-    (game) => game.programItemDetails.startTime === startTime,
+    (programItem) => programItem.programItemDetails.startTime === startTime,
   );
 
   return (

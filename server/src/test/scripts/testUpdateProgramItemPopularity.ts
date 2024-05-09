@@ -1,5 +1,5 @@
 import { logger } from "server/utils/logger";
-import { updateGamePopularity } from "server/features/program-item-popularity/updateProgramItemPopularity";
+import { updateProgramItemPopularity } from "server/features/program-item-popularity/updateProgramItemPopularity";
 import { db } from "server/db/mongodb";
 import { initializeDayjs } from "shared/utils/initializeDayjs";
 
@@ -13,7 +13,7 @@ const testUpdateProgramItemPopularity = async (): Promise<void> => {
   }
 
   try {
-    await updateGamePopularity();
+    await updateProgramItemPopularity();
   } catch (error) {
     logger.error("updateGamePopularity error: %s", error);
   }

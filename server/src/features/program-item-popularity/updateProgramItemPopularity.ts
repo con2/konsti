@@ -12,12 +12,12 @@ import {
 import { AssignmentError, MongoDbError } from "shared/types/api/errors";
 import { config } from "shared/config";
 
-export const updateGamePopularity = async (): Promise<
+export const updateProgramItemPopularity = async (): Promise<
   Result<void, MongoDbError | AssignmentError>
 > => {
   const { twoPhaseSignupProgramTypes } = config.shared();
 
-  logger.info(`Calculate game popularity`);
+  logger.info(`Calculate program item popularity`);
 
   const usersResult = await findUsers();
   if (isErrorResult(usersResult)) {
@@ -25,12 +25,12 @@ export const updateGamePopularity = async (): Promise<
   }
   const users = unwrapResult(usersResult);
 
-  const gamesResult = await findProgramItems();
-  if (isErrorResult(gamesResult)) {
-    return gamesResult;
+  const programItemsResult = await findProgramItems();
+  if (isErrorResult(programItemsResult)) {
+    return programItemsResult;
   }
-  const games = unwrapResult(gamesResult).filter((game) =>
-    twoPhaseSignupProgramTypes.includes(game.programType),
+  const programItems = unwrapResult(programItemsResult).filter((programItem) =>
+    twoPhaseSignupProgramTypes.includes(programItem.programType),
   );
 
   const signupsResult = await findDirectSignups();
@@ -39,7 +39,11 @@ export const updateGamePopularity = async (): Promise<
   }
   const signups = unwrapResult(signupsResult);
 
-  const updateWithAssignResult = await updateWithAssign(users, games, signups);
+  const updateWithAssignResult = await updateWithAssign(
+    users,
+    programItems,
+    signups,
+  );
   if (isErrorResult(updateWithAssignResult)) {
     return updateWithAssignResult;
   }

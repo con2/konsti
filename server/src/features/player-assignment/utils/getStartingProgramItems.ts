@@ -11,10 +11,10 @@ export const getStartingProgramItems = (
   const selectedStartTime = dayjs(startTime);
 
   // Get games that start at defined time
-  programItems.forEach((game) => {
-    const gameStartTime = dayjs(game.startTime);
+  programItems.forEach((programItem) => {
+    const gameStartTime = dayjs(programItem.startTime);
     if (gameStartTime.isSame(selectedStartTime, "minute")) {
-      startingGames.push(game);
+      startingGames.push(programItem);
     }
   });
 

@@ -82,17 +82,17 @@ export const runAssignment = async ({
     return { ...user, lotterySignups: matchingLotterySignups };
   });
 
-  const gamesResult = await findProgramItems();
-  if (isErrorResult(gamesResult)) {
-    return gamesResult;
+  const programItemsResult = await findProgramItems();
+  if (isErrorResult(programItemsResult)) {
+    return programItemsResult;
   }
-  const games = unwrapResult(gamesResult);
+  const programItems = unwrapResult(programItemsResult);
 
   // Only include "twoPhaseSignupProgramTypes" and don't include "directSignupAlwaysOpen" games
-  const filteredGames = games.filter(
-    (game) =>
-      twoPhaseSignupProgramTypes.includes(game.programType) &&
-      !directSignupAlwaysOpenIds.includes(game.programItemId),
+  const filteredProgramItems = programItems.filter(
+    (programItem) =>
+      twoPhaseSignupProgramTypes.includes(programItem.programType) &&
+      !directSignupAlwaysOpenIds.includes(programItem.programItemId),
   );
 
   const directSignupsResult = await findDirectSignups();
@@ -104,7 +104,7 @@ export const runAssignment = async ({
   const assignResultsResult = runAssignmentStrategy(
     assignmentStrategy,
     filteredUsers,
-    filteredGames,
+    filteredProgramItems,
     assignmentTime,
     directSignups,
   );

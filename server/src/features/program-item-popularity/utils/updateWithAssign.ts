@@ -21,8 +21,8 @@ export const updateWithAssign = async (
   programItems: readonly ProgramItem[],
   directSignups: readonly DirectSignupsForProgramItem[],
 ): Promise<Result<void, MongoDbError | AssignmentError>> => {
-  const gamesForStartTimes = groupBy(programItems, (game) =>
-    dayjs(game.startTime).toISOString(),
+  const programItemsForStartTimes = groupBy(programItems, (programItem) =>
+    dayjs(programItem.startTime).toISOString(),
   );
 
   const timeNowResult = await getTimeNow();
@@ -31,8 +31,8 @@ export const updateWithAssign = async (
   }
   const timeNow = unwrapResult(timeNowResult);
 
-  const startTimes = Object.keys(gamesForStartTimes).filter((startTime) =>
-    dayjs(startTime).isSameOrAfter(timeNow),
+  const startTimes = Object.keys(programItemsForStartTimes).filter(
+    (startTime) => dayjs(startTime).isSameOrAfter(timeNow),
   );
 
   const assignmentResultsResult = startTimes.map((startTime) => {
@@ -59,15 +59,15 @@ export const updateWithAssign = async (
 
   const groupedSignups = countBy(directSignupsResult, "programItemId");
 
-  const gamePopularityUpdates = programItems
-    .map((game) => ({
-      programItemId: game.programItemId,
-      popularity: groupedSignups[game.programItemId],
+  const programItemPopularityUpdates = programItems
+    .map((programItem) => ({
+      programItemId: programItem.programItemId,
+      popularity: groupedSignups[programItem.programItemId],
     }))
     .filter((popularityUpdate) => popularityUpdate.popularity);
 
   const saveGamePopularityResult = await saveProgramItemPopularity(
-    gamePopularityUpdates,
+    programItemPopularityUpdates,
   );
 
   if (isErrorResult(saveGamePopularityResult)) {

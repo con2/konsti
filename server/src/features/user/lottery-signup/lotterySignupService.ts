@@ -39,9 +39,12 @@ export const storeLotterySignups = async (
   }
 
   // Check for duplicate priorities, ie. some kind of error
-  const gamesByTimeslot = groupBy(lotterySignups, (game) => game.time);
+  const programItemsByTimeslot = groupBy(
+    lotterySignups,
+    (programItem) => programItem.time,
+  );
 
-  for (const [, games] of Object.entries(gamesByTimeslot)) {
+  for (const [, games] of Object.entries(programItemsByTimeslot)) {
     const priorities = games.map((selectedGame) => selectedGame.priority);
     const uniqPriorities = uniq(priorities);
 

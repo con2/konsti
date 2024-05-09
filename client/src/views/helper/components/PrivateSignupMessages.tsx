@@ -17,7 +17,9 @@ export const PrivateSignupMessages = (): ReactElement => {
     [],
   );
 
-  const games = useAppSelector((state) => state.allGames.programItems);
+  const programItems = useAppSelector(
+    (state) => state.allProgramItems.programItems,
+  );
   const signupQuestions = useAppSelector(
     (state) => state.admin.signupQuestions,
   );
@@ -30,20 +32,21 @@ export const PrivateSignupMessages = (): ReactElement => {
     (signupQuestion) => signupQuestion.private,
   );
 
-  const signupQuestionsWithGames = privateSignupQuestions.flatMap(
+  const signupQuestionsWithProgramItems = privateSignupQuestions.flatMap(
     (privateSignupQuestion) => {
-      const matchingGame = filteredGames.find(
-        (game) => game.programItemId === privateSignupQuestion.programItemId,
+      const matchingProgramItem = filteredGames.find(
+        (programItem) =>
+          programItem.programItemId === privateSignupQuestion.programItemId,
       );
-      if (!matchingGame) {
+      if (!matchingProgramItem) {
         return [];
       }
-      return { ...privateSignupQuestion, programItem: matchingGame };
+      return { ...privateSignupQuestion, programItem: matchingProgramItem };
     },
   );
 
   const groupedSignupQuestions = groupBy(
-    sortBy(signupQuestionsWithGames, "game.startTime"),
+    sortBy(signupQuestionsWithProgramItems, "game.startTime"),
     "game.startTime",
   );
 
@@ -55,13 +58,13 @@ export const PrivateSignupMessages = (): ReactElement => {
 
   useEffect(() => {
     if (searchTerm.length === 0) {
-      setFilteredGames(games);
+      setFilteredGames(programItems);
       return;
     }
 
-    const gamesFilteredBySearchTerm = games.filter((game) => {
+    const gamesFilteredBySearchTerm = programItems.filter((programItem) => {
       return (
-        game.title
+        programItem.title
           .replace(MULTIPLE_WHITESPACES_REGEX, " ")
           .toLocaleLowerCase()
           .includes(searchTerm.toLocaleLowerCase()) ||
@@ -70,13 +73,13 @@ export const PrivateSignupMessages = (): ReactElement => {
             signupMessage.username
               .toLocaleLowerCase()
               .includes(searchTerm.toLocaleLowerCase()) &&
-            signupMessage.programItemId === game.programItemId,
+            signupMessage.programItemId === programItem.programItemId,
         )
       );
     });
 
     setFilteredGames(gamesFilteredBySearchTerm);
-  }, [searchTerm, games]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [searchTerm, programItems]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div>

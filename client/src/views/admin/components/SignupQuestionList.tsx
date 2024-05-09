@@ -20,13 +20,14 @@ export const SignupQuestionList = ({
 
   const signupQuestionsWithGames = signupQuestions.flatMap(
     (privateSignupQuestion) => {
-      const matchingGame = programItems.find(
-        (game) => game.programItemId === privateSignupQuestion.programItemId,
+      const matchingProgramItem = programItems.find(
+        (programItem) =>
+          programItem.programItemId === privateSignupQuestion.programItemId,
       );
-      if (!matchingGame) {
+      if (!matchingProgramItem) {
         return [];
       }
-      return { ...privateSignupQuestion, programItem: matchingGame };
+      return { ...privateSignupQuestion, programItem: matchingProgramItem };
     },
   );
 
@@ -43,10 +44,11 @@ export const SignupQuestionList = ({
         {signupQuestions.length === 0 && <span>{t("noSignupQuestions")}</span>}
 
         {sortedSignupQuestions.flatMap((signupQuestion) => {
-          const foundGame = programItems.find(
-            (game) => game.programItemId === signupQuestion.programItemId,
+          const foundProgramItem = programItems.find(
+            (programItem) =>
+              programItem.programItemId === signupQuestion.programItemId,
           );
-          if (!foundGame) {
+          if (!foundProgramItem) {
             return [];
           }
 
@@ -55,7 +57,7 @@ export const SignupQuestionList = ({
               key={`${signupQuestion.programItemId}-${signupQuestion.questionFi}`}
             >
               <Link to={`/games/${signupQuestion.programItemId}`}>
-                {foundGame.title}
+                {foundProgramItem.title}
               </Link>
               <span>
                 : {signupQuestion.questionFi} / {signupQuestion.questionEn}
@@ -70,8 +72,8 @@ export const SignupQuestionList = ({
                 </span>
               )}{" "}
               {signupQuestion.private && <BoldText>({t("private")})</BoldText>}{" "}
-              - {t(`programType.${foundGame.programType}`)} -{" "}
-              <span>{getWeekdayAndTime(foundGame.startTime)}</span>
+              - {t(`programType.${foundProgramItem.programType}`)} -{" "}
+              <span>{getWeekdayAndTime(foundProgramItem.startTime)}</span>
             </li>
           );
         })}

@@ -46,14 +46,14 @@ export const getProgramItemsFromKompassi = async (
 
   logger.info(`Loaded ${eventProgramItems.length} event program items`);
 
-  const games = getProgramItemsFromFullProgram(
+  const programItems = getProgramItemsFromFullProgram(
     conventionName,
     eventProgramItems,
   );
 
-  return games.length === 0
+  return programItems.length === 0
     ? makeErrorResult(KompassiError.NO_PROGRAM_ITEMS)
-    : makeSuccessResult(games);
+    : makeSuccessResult(programItems);
 };
 
 export const parseProgramItem = (

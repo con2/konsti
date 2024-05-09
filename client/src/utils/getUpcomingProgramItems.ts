@@ -10,8 +10,10 @@ export const getUpcomingProgramItems = (
 ): readonly ProgramItem[] => {
   const timeNow = getTimeNow();
 
-  const upcomingGames = programItems.filter((game) =>
-    dayjs(game.startTime).add(offsetByHours, "hours").isSameOrAfter(timeNow),
+  const upcomingGames = programItems.filter((programItem) =>
+    dayjs(programItem.startTime)
+      .add(offsetByHours, "hours")
+      .isSameOrAfter(timeNow),
   );
 
   return upcomingGames;

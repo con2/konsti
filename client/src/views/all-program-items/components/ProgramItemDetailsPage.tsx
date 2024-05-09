@@ -19,8 +19,12 @@ export const ProgramItemDetailsPage = (): ReactElement => {
 
   const { programItemId } = useParams();
 
-  const games = useAppSelector((state) => state.allGames.programItems);
-  const signups = useAppSelector((state) => state.allGames.directSignups);
+  const programItems = useAppSelector(
+    (state) => state.allProgramItems.programItems,
+  );
+  const signups = useAppSelector(
+    (state) => state.allProgramItems.directSignups,
+  );
   const directSignups = useAppSelector(selectDirectSignups);
   const username = useAppSelector((state) => state.login.username);
   const loggedIn = useAppSelector((state) => state.login.loggedIn);
@@ -44,7 +48,9 @@ export const ProgramItemDetailsPage = (): ReactElement => {
 
   const [loading, setLoading] = useState<boolean>(true);
 
-  const foundGame = games.find((game) => game.programItemId === programItemId);
+  const foundGame = programItems.find(
+    (programItem) => programItem.programItemId === programItemId,
+  );
   const playerCount =
     signups.find(
       (gameSignup) => gameSignup.programItemId === foundGame?.programItemId,

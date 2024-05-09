@@ -41,12 +41,12 @@ const initializeDatabase = async (): Promise<void> => {
 
   logger.info("Download games from Kompassi");
 
-  const gamesResult = await getGamesForConvention();
-  if (isErrorResult(gamesResult)) {
+  const programItemsResult = await getGamesForConvention();
+  if (isErrorResult(programItemsResult)) {
     // eslint-disable-next-line no-restricted-syntax -- Data generation script
     throw new Error("Unable to load Kompassi games");
   }
-  const kompassiGames = unwrapResult(gamesResult);
+  const kompassiGames = unwrapResult(programItemsResult);
   await saveProgramItems(kompassiGames);
 
   // This will create default settings

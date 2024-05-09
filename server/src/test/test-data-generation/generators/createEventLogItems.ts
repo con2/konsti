@@ -8,10 +8,12 @@ import { EventLogAction } from "shared/types/models/eventLog";
 import { config } from "shared/config";
 
 export const createEventLogItems = async (): Promise<void> => {
-  const gamesResult = await findProgramItems();
-  const games = unsafelyUnwrapResult(gamesResult);
-  const twoPhaseSignups = games.filter((game) =>
-    config.shared().twoPhaseSignupProgramTypes.includes(game.programType),
+  const programItemsResult = await findProgramItems();
+  const programItems = unsafelyUnwrapResult(programItemsResult);
+  const twoPhaseSignups = programItems.filter((programItem) =>
+    config
+      .shared()
+      .twoPhaseSignupProgramTypes.includes(programItem.programType),
   );
 
   const allUsersResult = await findUsers();

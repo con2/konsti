@@ -135,11 +135,11 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
     expect(response.status).toEqual(200);
     expect(spy).toHaveBeenCalledTimes(1);
 
-    const gamesResult = await findProgramItems();
-    const games = unsafelyUnwrapResult(gamesResult);
+    const programItemsResult = await findProgramItems();
+    const programItems = unsafelyUnwrapResult(programItemsResult);
 
-    expect(games.length).toEqual(1);
-    expect(games[0].title).toEqual(testProgramItem.title);
+    expect(programItems.length).toEqual(1);
+    expect(programItems[0].title).toEqual(testProgramItem.title);
   });
 
   test("should remove games, lottery signups, direct signups, and favorited games that are not in the server response", async () => {
@@ -168,11 +168,11 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
     expect(response.status).toEqual(200);
 
-    const gamesResult = await findProgramItems();
-    const games = unsafelyUnwrapResult(gamesResult);
+    const programItemsResult = await findProgramItems();
+    const programItems = unsafelyUnwrapResult(programItemsResult);
 
-    expect(games.length).toEqual(1);
-    expect(games[0].title).toEqual(testProgramItem.title);
+    expect(programItems.length).toEqual(1);
+    expect(programItems[0].title).toEqual(testProgramItem.title);
 
     const updatedUserResult = await findUser(mockUser.username);
     const updatedUser = unsafelyUnwrapResult(updatedUserResult);
@@ -203,11 +203,11 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
     expect(response.status).toEqual(200);
 
-    const gamesResult = await findProgramItems();
-    const games = unsafelyUnwrapResult(gamesResult);
+    const programItemsResult = await findProgramItems();
+    const programItems = unsafelyUnwrapResult(programItemsResult);
 
-    expect(games.length).toEqual(2);
-    const sortedGames = sortBy(games, "title");
+    expect(programItems.length).toEqual(2);
+    const sortedGames = sortBy(programItems, "title");
     expect(sortedGames[0].title).toEqual(testProgramItem.title);
     expect(sortedGames[1].title).toEqual(testProgramItem2.title);
   });
@@ -224,11 +224,11 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
     expect(response.status).toEqual(200);
 
-    const gamesResult = await findProgramItems();
-    const games = unsafelyUnwrapResult(gamesResult);
+    const programItemsResult = await findProgramItems();
+    const programItems = unsafelyUnwrapResult(programItemsResult);
 
-    expect(games.length).toEqual(2);
-    const sortedGames = sortBy(games, "title");
+    expect(programItems.length).toEqual(2);
+    const sortedGames = sortBy(programItems, "title");
     expect(sortedGames[0].title).toEqual(testProgramItem.title);
     expect(sortedGames[1].title).toEqual(testProgramItem2.title);
   });
@@ -256,12 +256,14 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
     expect(response.status).toEqual(200);
 
-    const gamesResult = await findProgramItems();
-    const games = unsafelyUnwrapResult(gamesResult);
+    const programItemsResult = await findProgramItems();
+    const programItems = unsafelyUnwrapResult(programItemsResult);
 
-    expect(games.length).toEqual(1);
-    expect(dayjs(games[0].startTime).toISOString()).toEqual(newStartTime);
-    expect(games[0].description).toEqual(newDescription);
+    expect(programItems.length).toEqual(1);
+    expect(dayjs(programItems[0].startTime).toISOString()).toEqual(
+      newStartTime,
+    );
+    expect(programItems[0].description).toEqual(newDescription);
   });
 
   test("should remove lottery signups but not direct signups or favorited games if game start time changes", async () => {
@@ -363,15 +365,15 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
       .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
     expect(response.status).toEqual(200);
 
-    const gamesResult = await findProgramItems();
-    const games = unsafelyUnwrapResult(gamesResult);
+    const programItemsResult = await findProgramItems();
+    const programItems = unsafelyUnwrapResult(programItemsResult);
 
-    expect(games.length).toEqual(1);
-    expect(games[0].tags).toEqual([Tag.BEGINNER_FRIENDLY]);
-    expect(games[0].genres).toEqual([Genre.ADVENTURE]);
-    expect(games[0].styles).toEqual([GameStyle.CHARACTER_DRIVEN]);
+    expect(programItems.length).toEqual(1);
+    expect(programItems[0].tags).toEqual([Tag.BEGINNER_FRIENDLY]);
+    expect(programItems[0].genres).toEqual([Genre.ADVENTURE]);
+    expect(programItems[0].styles).toEqual([GameStyle.CHARACTER_DRIVEN]);
     // @ts-expect-error: Test
-    expect(games[0].foobar).toEqual(undefined);
+    expect(programItems[0].foobar).toEqual(undefined);
   });
 
   test("should log invalid fields and not add program item", async () => {
@@ -408,9 +410,9 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
       ),
     );
 
-    const gamesResult = await findProgramItems();
-    const games = unsafelyUnwrapResult(gamesResult);
+    const programItemsResult = await findProgramItems();
+    const programItems = unsafelyUnwrapResult(programItemsResult);
 
-    expect(games.length).toEqual(0);
+    expect(programItems.length).toEqual(0);
   });
 });

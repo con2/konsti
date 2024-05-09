@@ -20,9 +20,13 @@ import { ButtonGroup } from "client/components/ButtonGroup";
 import { LoginProviderSelector } from "client/views/admin/components/LoginProviderSelector";
 
 export const AdminView = (): ReactElement => {
-  const programItems = useAppSelector((state) => state.allGames.programItems);
+  const programItems = useAppSelector(
+    (state) => state.allProgramItems.programItems,
+  );
   const appOpen = useAppSelector((state) => state.admin.appOpen);
-  const hiddenGames = useAppSelector((state) => state.admin.hiddenProgramItems);
+  const hiddenProgramItems = useAppSelector(
+    (state) => state.admin.hiddenProgramItems,
+  );
   const signupQuestions = useAppSelector(
     (state) => state.admin.signupQuestions,
   );
@@ -33,17 +37,19 @@ export const AdminView = (): ReactElement => {
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
 
-  const getVisibleGames = (): readonly ProgramItem[] => {
+  const getVisibleProgramItems = (): readonly ProgramItem[] => {
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-    if (!hiddenGames) {
+    if (!hiddenProgramItems) {
       return programItems;
     }
     const visibleProgramItems: ProgramItem[] = [];
     for (let i = 0; i < programItems.length; i += 1) {
       let match = false;
 
-      for (let j = 0; j < hiddenGames.length; j += 1) {
-        if (programItems[i].programItemId === hiddenGames[j].programItemId) {
+      for (let j = 0; j < hiddenProgramItems.length; j += 1) {
+        if (
+          programItems[i].programItemId === hiddenProgramItems[j].programItemId
+        ) {
           match = true;
           break;
         }
@@ -56,8 +62,10 @@ export const AdminView = (): ReactElement => {
   };
 
   const getDropdownOptions = (): Option[] => {
-    const visibleGames = getVisibleGames();
-    const startTimes = visibleGames.map((game) => game.startTime);
+    const visibleProgramItems = getVisibleProgramItems();
+    const startTimes = visibleProgramItems.map(
+      (programItem) => programItem.startTime,
+    );
     const times = [...Array.from(new Set(startTimes))].sort();
 
     return times.map((time) => {
@@ -186,7 +194,7 @@ export const AdminView = (): ReactElement => {
 
       <LoginProviderSelector />
 
-      <HiddenProgramItemsList hiddenGames={hiddenGames} />
+      <HiddenProgramItemsList hiddenProgramItems={hiddenProgramItems} />
 
       <SignupQuestionList
         signupQuestions={signupQuestions}

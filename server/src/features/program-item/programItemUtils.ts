@@ -97,16 +97,24 @@ export const enrichGames = async (
   }
 
   const currentTime = unwrapResult(currentTimeResult);
-  const enrichedGames = programItems.map((game) => {
+  const enrichedGames = programItems.map((programItem) => {
     const signupQuestion = settings.signupQuestions.find(
-      (message) => message.programItemId === game.programItemId,
+      (message) => message.programItemId === programItem.programItemId,
     );
     return {
       programItem: {
-        ...game.toJSON<ProgramItemDoc>(),
-        signupStrategy: getSignupStrategyForGame(game, settings, currentTime),
+        ...programItem.toJSON<ProgramItemDoc>(),
+        signupStrategy: getSignupStrategyForGame(
+          programItem,
+          settings,
+          currentTime,
+        ),
       },
-      users: getSignupsForGame(signups, game.programItemId, signupQuestion),
+      users: getSignupsForGame(
+        signups,
+        programItem.programItemId,
+        signupQuestion,
+      ),
     };
   });
 

@@ -51,25 +51,25 @@ export const saveResult = async (
   algorithm: string,
   message: string,
 ): Promise<Result<void, MongoDbError>> => {
-  const gamesResult = await findProgramItems();
+  const programItemsResult = await findProgramItems();
 
-  if (isErrorResult(gamesResult)) {
-    return gamesResult;
+  if (isErrorResult(programItemsResult)) {
+    return programItemsResult;
   }
 
-  const games = unwrapResult(gamesResult);
+  const programItems = unwrapResult(programItemsResult);
   const results = signupResultData.reduce<AssignmentResult[]>((acc, result) => {
-    const gameDocInDb = games.find(
-      (game) =>
-        game.programItemId ===
+    const programItemDocInDb = programItems.find(
+      (programItem) =>
+        programItem.programItemId ===
         result.directSignup.programItemDetails.programItemId,
     );
 
-    if (gameDocInDb) {
+    if (programItemDocInDb) {
       acc.push({
         username: result.username,
         directSignup: {
-          programItemDetails: gameDocInDb._id,
+          programItemDetails: programItemDocInDb._id,
           priority: result.directSignup.priority,
           time: result.directSignup.time,
           message: "",

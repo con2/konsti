@@ -52,9 +52,9 @@ export const storeDirectSignup = async (
     };
   }
 
-  const game = unwrapResult(gameResult);
+  const programItem = unwrapResult(gameResult);
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-  if (!game) {
+  if (!programItem) {
     return {
       message: `Signed game not found`,
       status: "error",
@@ -62,7 +62,7 @@ export const storeDirectSignup = async (
     };
   }
 
-  const directSignupStartTime = getDirectSignupStartTime(game);
+  const directSignupStartTime = getDirectSignupStartTime(programItem);
 
   if (timeNow.isBefore(directSignupStartTime)) {
     logger.error(

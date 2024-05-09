@@ -8,7 +8,7 @@ import { useAppSelector } from "client/utils/hooks";
 import { getUsersForProgramItemId } from "client/views/results/resultsUtils";
 import { getUpcomingProgramItems } from "client/utils/getUpcomingProgramItems";
 import { ProgramItem } from "shared/types/models/programItem";
-import { selectActiveGames } from "client/views/admin/adminSlice";
+import { selectActiveProgramItems } from "client/views/admin/adminSlice";
 import { MULTIPLE_WHITESPACES_REGEX } from "client/views/all-program-items/AllProgramItemsView";
 import { Tags } from "client/components/Tags";
 import { getAttendeeType } from "client/utils/getAttendeeType";
@@ -23,8 +23,10 @@ import { isRevolvingDoorWorkshop } from "client/utils/isRevolvingDoorWorkshop";
 export const ResultsList = (): ReactElement => {
   const { t, i18n } = useTranslation();
 
-  const activeGames = useAppSelector(selectActiveGames);
-  const signups = useAppSelector((state) => state.allGames.directSignups);
+  const activeGames = useAppSelector(selectActiveProgramItems);
+  const signups = useAppSelector(
+    (state) => state.allProgramItems.directSignups,
+  );
   const userGroup = useAppSelector((state) => state.login.userGroup);
   isAdminOrHelp(userGroup);
   const showResults =
@@ -67,57 +69,58 @@ export const ResultsList = (): ReactElement => {
       ? sortBy(visibleGames, "startTime")
       : sortBy(getUpcomingProgramItems(visibleGames, 1), "startTime");
 
-  const [gamesForListing, setGamesForListing] = useState<
+  const [programItemsForListing, setProgramItemsForListing] = useState<
     readonly ProgramItem[]
   >([]);
-  const [filteredGamesForListing, setFilteredGamesForListing] = useState<
-    Record<string, ProgramItem[]>
-  >({});
+  const [filteredProgramItemsForListing, setFilteredProgramItemsForListing] =
+    useState<Record<string, ProgramItem[]>>({});
   const [searchTerm, setSearchTerm] = useState<string>("");
 
   useEffect(() => {
-    if (isEqual(filteredGames, gamesForListing)) {
+    if (isEqual(filteredGames, programItemsForListing)) {
       return;
     }
 
-    setGamesForListing(filteredGames);
-  }, [filteredGames, gamesForListing]);
+    setProgramItemsForListing(filteredGames);
+  }, [filteredGames, programItemsForListing]);
 
   useEffect(() => {
     if (searchTerm.length === 0) {
       const gamesByStartTime = groupBy<ProgramItem>(
-        gamesForListing,
+        programItemsForListing,
         "startTime",
       );
-      setFilteredGamesForListing(gamesByStartTime);
+      setFilteredProgramItemsForListing(gamesByStartTime);
       return;
     }
 
-    const gamesFilteredBySearchTerm = gamesForListing.filter((game) => {
-      const users = getUsersForProgramItemId(
-        game.programItemId,
-        visibleSignups,
-      );
-      return (
-        game.title
-          .replace(MULTIPLE_WHITESPACES_REGEX, " ")
-          .toLocaleLowerCase()
-          .includes(searchTerm.toLocaleLowerCase()) ||
-        users.some((user) =>
-          user.username
+    const gamesFilteredBySearchTerm = programItemsForListing.filter(
+      (programItem) => {
+        const users = getUsersForProgramItemId(
+          programItem.programItemId,
+          visibleSignups,
+        );
+        return (
+          programItem.title
+            .replace(MULTIPLE_WHITESPACES_REGEX, " ")
             .toLocaleLowerCase()
-            .includes(searchTerm.toLocaleLowerCase()),
-        )
-      );
-    });
+            .includes(searchTerm.toLocaleLowerCase()) ||
+          users.some((user) =>
+            user.username
+              .toLocaleLowerCase()
+              .includes(searchTerm.toLocaleLowerCase()),
+          )
+        );
+      },
+    );
 
     const gamesByStartTime = groupBy<ProgramItem>(
       gamesFilteredBySearchTerm,
       "startTime",
     );
 
-    setFilteredGamesForListing(gamesByStartTime);
-  }, [searchTerm, gamesForListing, visibleSignups]);
+    setFilteredProgramItemsForListing(gamesByStartTime);
+  }, [searchTerm, programItemsForListing, visibleSignups]);
 
   return (
     <div>
@@ -130,10 +133,10 @@ export const ResultsList = (): ReactElement => {
 
       {filteredGames.length === 0 && <h3>{t("resultsView.noResults")}</h3>}
 
-      {Object.entries(filteredGamesForListing).map(
+      {Object.entries(filteredProgramItemsForListing).map(
         ([startTime, gamesForTime]) => {
-          const sortedGamesForTime = sortBy(gamesForTime, [
-            (game) => game.title.toLocaleLowerCase(),
+          const sortedProgramItemsForTime = sortBy(gamesForTime, [
+            (programItem) => programItem.title.toLocaleLowerCase(),
           ]);
 
           return (
@@ -141,28 +144,31 @@ export const ResultsList = (): ReactElement => {
               <h3>{capitalize(getWeekdayAndTime(startTime))}</h3>
 
               <Games>
-                {sortedGamesForTime.map((game) => {
+                {sortedProgramItemsForTime.map((programItem) => {
                   const signupQuestion = publicSignupQuestions.find(
-                    (question) => question.programItemId === game.programItemId,
+                    (question) =>
+                      question.programItemId === programItem.programItemId,
                   );
                   const signupMessagesVisible = showSignupMessages.find(
-                    (message) => message === game.programItemId,
+                    (message) => message === programItem.programItemId,
                   );
                   const playerListVisible = showPlayers.find(
-                    (players) => players === game.programItemId,
+                    (players) => players === programItem.programItemId,
                   );
                   const users = getUsersForProgramItemId(
-                    game.programItemId,
+                    programItem.programItemId,
                     visibleSignups,
                   );
 
                   return (
-                    <div key={game.programItemId}>
-                      <ResultTitle key={game.programItemId}>
-                        {game.title}{" "}
+                    <div key={programItem.programItemId}>
+                      <ResultTitle key={programItem.programItemId}>
+                        {programItem.title}{" "}
                       </ResultTitle>
                       {config.client().activeProgramTypes.length > 1 && (
-                        <Tags tags={[t(`programType.${game.programType}`)]} />
+                        <Tags
+                          tags={[t(`programType.${programItem.programType}`)]}
+                        />
                       )}
                       <PlayerContainer>
                         <PlayerCount
@@ -171,13 +177,13 @@ export const ResultsList = (): ReactElement => {
                               setShowPlayers(
                                 showPlayers.filter(
                                   (programItemId) =>
-                                    programItemId !== game.programItemId,
+                                    programItemId !== programItem.programItemId,
                                 ),
                               );
                             } else {
                               setShowPlayers([
                                 ...showPlayers,
-                                game.programItemId,
+                                programItem.programItemId,
                               ]);
                             }
                           }}
@@ -186,11 +192,11 @@ export const ResultsList = (): ReactElement => {
                             {capitalize(
                               t(
                                 `attendeeTypePlural.${getAttendeeType(
-                                  game.programType,
+                                  programItem.programType,
                                 )}`,
                               ),
                             )}
-                            : {users.length}/{game.maxAttendance}
+                            : {users.length}/{programItem.maxAttendance}
                             {!!signupQuestion &&
                               (signupMessagesVisible ? (
                                 <CommentIcon
@@ -201,7 +207,7 @@ export const ResultsList = (): ReactElement => {
                                     setShowSignupMessages(
                                       showSignupMessages.filter(
                                         (message) =>
-                                          message !== game.programItemId,
+                                          message !== programItem.programItemId,
                                       ),
                                     );
                                   }}
@@ -214,7 +220,7 @@ export const ResultsList = (): ReactElement => {
                                     event.stopPropagation();
                                     setShowSignupMessages([
                                       ...showSignupMessages,
-                                      game.programItemId,
+                                      programItem.programItemId,
                                     ]);
                                   }}
                                 />
@@ -227,14 +233,14 @@ export const ResultsList = (): ReactElement => {
                                 ? t("iconAltText.closeAttendeeList", {
                                     ATTENDEE_TYPE: t(
                                       `attendeeType.${getAttendeeType(
-                                        game.programType,
+                                        programItem.programType,
                                       )}`,
                                     ),
                                   })
                                 : t("iconAltText.openAttendeeList", {
                                     ATTENDEE_TYPE: t(
                                       `attendeeType.${getAttendeeType(
-                                        game.programType,
+                                        programItem.programType,
                                       )}`,
                                     ),
                                   })
@@ -255,7 +261,7 @@ export const ResultsList = (): ReactElement => {
                                 {t("resultsView.noSignups", {
                                   ATTENDEE_TYPE: t(
                                     `attendeeTypePlural.${getAttendeeType(
-                                      game.programType,
+                                      programItem.programType,
                                     )}`,
                                   ),
                                 })}

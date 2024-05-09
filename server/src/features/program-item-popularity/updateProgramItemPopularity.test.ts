@@ -14,7 +14,7 @@ import {
   findProgramItems,
   saveProgramItems,
 } from "server/features/program-item/programItemRepository";
-import { updateGamePopularity } from "server/features/program-item-popularity/updateProgramItemPopularity";
+import { updateProgramItemPopularity } from "server/features/program-item-popularity/updateProgramItemPopularity";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 
 let server: Server;
@@ -31,7 +31,7 @@ afterEach(async () => {
   await closeServer(server);
 });
 
-test(`Should update game popularity`, async () => {
+test(`Should update program item popularity`, async () => {
   vi.setSystemTime(testProgramItem.startTime);
 
   await saveProgramItems([testProgramItem, testProgramItem2]);
@@ -60,34 +60,38 @@ test(`Should update game popularity`, async () => {
     username: mockUser2.username,
   });
 
-  const gamesResult = await findProgramItems();
-  const games = unsafelyUnwrapResult(gamesResult);
-  expect(games.length).toEqual(2);
-  const firstGame = games.find(
-    (game) => game.programItemId === testProgramItem.programItemId,
+  const programItemsResult = await findProgramItems();
+  const programItems = unsafelyUnwrapResult(programItemsResult);
+  expect(programItems.length).toEqual(2);
+  const firstProgramItem = programItems.find(
+    (programItem) =>
+      programItem.programItemId === testProgramItem.programItemId,
   );
-  expect(firstGame?.popularity).toEqual(0);
-  const secondGame = games.find(
-    (game) => game.programItemId === testProgramItem2.programItemId,
+  expect(firstProgramItem?.popularity).toEqual(0);
+  const secondProgramItem = programItems.find(
+    (programItem) =>
+      programItem.programItemId === testProgramItem2.programItemId,
   );
-  expect(secondGame?.popularity).toEqual(0);
+  expect(secondProgramItem?.popularity).toEqual(0);
 
-  await updateGamePopularity();
+  await updateProgramItemPopularity();
 
-  const updatedGamesResult = await findProgramItems();
-  const updatedGames = unsafelyUnwrapResult(updatedGamesResult);
-  expect(updatedGames.length).toEqual(2);
-  const updatedFirstGame = updatedGames.find(
-    (game) => game.programItemId === testProgramItem.programItemId,
+  const updatedProgtamItemsResult = await findProgramItems();
+  const updatedProgramItems = unsafelyUnwrapResult(updatedProgtamItemsResult);
+  expect(updatedProgramItems.length).toEqual(2);
+  const updatedFirstProgramItem = updatedProgramItems.find(
+    (programItem) =>
+      programItem.programItemId === testProgramItem.programItemId,
   );
-  expect(updatedFirstGame?.popularity).toEqual(2);
-  const updatedSecondGame = updatedGames.find(
-    (game) => game.programItemId === testProgramItem2.programItemId,
+  expect(updatedFirstProgramItem?.popularity).toEqual(2);
+  const updatedSecondProgramItem = updatedProgramItems.find(
+    (programItem) =>
+      programItem.programItemId === testProgramItem2.programItemId,
   );
-  expect(updatedSecondGame?.popularity).toEqual(0);
+  expect(updatedSecondProgramItem?.popularity).toEqual(0);
 });
 
-test(`Should only update game popularity of upcoming program items`, async () => {
+test(`Should only update program item popularity of upcoming program items`, async () => {
   const timeNow = dayjs(testProgramItem.startTime)
     .add(1, "hours")
     .toISOString();
@@ -130,30 +134,34 @@ test(`Should only update game popularity of upcoming program items`, async () =>
     username: mockUser2.username,
   });
 
-  const games = unsafelyUnwrapResult(await findProgramItems());
-  expect(games.length).toEqual(2);
+  const programItems = unsafelyUnwrapResult(await findProgramItems());
+  expect(programItems.length).toEqual(2);
 
-  const firstGame = games.find(
-    (game) => game.programItemId === testProgramItem.programItemId,
+  const firstProgramItem = programItems.find(
+    (programItem) =>
+      programItem.programItemId === testProgramItem.programItemId,
   );
-  expect(firstGame?.popularity).toEqual(0);
-  const secondGame = games.find(
-    (game) => game.programItemId === testProgramItem2.programItemId,
+  expect(firstProgramItem?.popularity).toEqual(0);
+  const secondProgramItem = programItems.find(
+    (programItem) =>
+      programItem.programItemId === testProgramItem2.programItemId,
   );
-  expect(secondGame?.popularity).toEqual(0);
+  expect(secondProgramItem?.popularity).toEqual(0);
 
-  await updateGamePopularity();
+  await updateProgramItemPopularity();
 
-  const updatedGames = unsafelyUnwrapResult(await findProgramItems());
-  expect(updatedGames.length).toEqual(2);
+  const updatedProgramItems = unsafelyUnwrapResult(await findProgramItems());
+  expect(updatedProgramItems.length).toEqual(2);
 
-  const updatedFirstGame = updatedGames.find(
-    (game) => game.programItemId === testProgramItem.programItemId,
+  const updatedFirstProgramItem = updatedProgramItems.find(
+    (programItem) =>
+      programItem.programItemId === testProgramItem.programItemId,
   );
-  expect(updatedFirstGame?.popularity).toEqual(0);
+  expect(updatedFirstProgramItem?.popularity).toEqual(0);
 
-  const updatedSecondGame = updatedGames.find(
-    (game) => game.programItemId === testProgramItem2.programItemId,
+  const updatedSecondProgramItem = updatedProgramItems.find(
+    (programItem) =>
+      programItem.programItemId === testProgramItem2.programItemId,
   );
-  expect(updatedSecondGame?.popularity).toEqual(1);
+  expect(updatedSecondProgramItem?.popularity).toEqual(1);
 });

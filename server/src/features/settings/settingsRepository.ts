@@ -93,23 +93,26 @@ export const findSettings = async (): Promise<
 };
 
 export const saveHidden = async (
-  hiddenGames: readonly ProgramItem[],
+  hiddenProgramItems: readonly ProgramItem[],
 ): Promise<Result<Settings, MongoDbError>> => {
-  const gamesResult = await findProgramItems();
-  if (isErrorResult(gamesResult)) {
-    return gamesResult;
+  const programItemsResult = await findProgramItems();
+  if (isErrorResult(programItemsResult)) {
+    return programItemsResult;
   }
 
-  const games = unwrapResult(gamesResult);
-  const formattedData = hiddenGames.reduce<ProgramItem[]>((acc, hiddenGame) => {
-    const gameDocInDb = games.find(
-      (game) => game.programItemId === hiddenGame.programItemId,
-    );
-    if (gameDocInDb) {
-      acc.push(gameDocInDb._id as ProgramItem);
-    }
-    return acc;
-  }, []);
+  const programItems = unwrapResult(programItemsResult);
+  const formattedData = hiddenProgramItems.reduce<ProgramItem[]>(
+    (acc, hiddenGame) => {
+      const programItemDocInDb = programItems.find(
+        (programItem) => programItem.programItemId === hiddenGame.programItemId,
+      );
+      if (programItemDocInDb) {
+        acc.push(programItemDocInDb._id as ProgramItem);
+      }
+      return acc;
+    },
+    [],
+  );
 
   try {
     const settings = await SettingsModel.findOneAndUpdate(

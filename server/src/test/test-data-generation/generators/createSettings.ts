@@ -24,9 +24,9 @@ export const createSettings = async (): Promise<void> => {
 
   await findSettings();
 
-  const gamesResult = await findProgramItems();
-  const games = unsafelyUnwrapResult(gamesResult);
-  const shuffledGames = shuffleArray(games);
+  const programItemsResult = await findProgramItems();
+  const programItems = unsafelyUnwrapResult(programItemsResult);
+  const shuffledGames = shuffleArray(programItems);
 
   const promises = testQuestions().map(async (testQuestion, index) => {
     const randomGame = shuffledGames[index];

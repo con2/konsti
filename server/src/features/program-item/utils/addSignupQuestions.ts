@@ -21,21 +21,23 @@ export const addSignupQuestions = async (): Promise<void> => {
     return;
   }
 
-  const gamesResult = await findProgramItems();
-  if (isErrorResult(gamesResult)) {
+  const programItemsResult = await findProgramItems();
+  if (isErrorResult(programItemsResult)) {
     logger.error(
       "%s",
-      new Error(`Error finding program items: ${unwrapResult(gamesResult)}`),
+      new Error(
+        `Error finding program items: ${unwrapResult(programItemsResult)}`,
+      ),
     );
     return;
   }
-  const games = unwrapResult(gamesResult);
+  const programItems = unwrapResult(programItemsResult);
 
-  const tournaments = games
-    .filter((game) => game.programType === ProgramType.TOURNAMENT)
+  const tournaments = programItems
+    .filter((programItem) => programItem.programType === ProgramType.TOURNAMENT)
     .filter(
-      (game) =>
-        !tournamentSignupQuestionExcludeIds.includes(game.programItemId),
+      (programItem) =>
+        !tournamentSignupQuestionExcludeIds.includes(programItem.programItemId),
     );
 
   const tournamentPromises = tournaments.map(async (tournament) => {

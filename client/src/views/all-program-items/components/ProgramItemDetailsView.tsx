@@ -41,7 +41,9 @@ export const ProgramItemDetailsView = ({
 
   const id = `more-info-${programItem.programItemId}`;
   const buttonAriaLabel = `${t(
-    isExpanded ? "programItemInfo.showLessAriaLabel" : "programItemInfo.showMoreAriaLabel",
+    isExpanded
+      ? "programItemInfo.showLessAriaLabel"
+      : "programItemInfo.showMoreAriaLabel",
   )} ${programItem.title}`;
 
   return (
@@ -60,7 +62,9 @@ export const ProgramItemDetailsView = ({
             onClick={onButtonClick}
             role="button"
           >
-            {isExpanded ? t("programItemInfo.showLess") : t("programItemInfo.showMore")}
+            {isExpanded
+              ? t("programItemInfo.showLess")
+              : t("programItemInfo.showMore")}
           </ExpandButton>
         </ButtonContainer>
       )}

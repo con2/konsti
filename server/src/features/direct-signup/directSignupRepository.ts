@@ -87,20 +87,22 @@ export const findDirectSignupsByProgramTypes = async (
   programTypes: ProgramType[],
   startTime: string,
 ): Promise<Result<FindDirectSignupsByProgramTypesResponse[], MongoDbError>> => {
-  const gamesResult = await findProgramItems();
-  if (isErrorResult(gamesResult)) {
-    return gamesResult;
+  const programItemsResult = await findProgramItems();
+  if (isErrorResult(programItemsResult)) {
+    return programItemsResult;
   }
-  const games = unwrapResult(gamesResult);
+  const programItems = unwrapResult(programItemsResult);
 
-  const gamesByProgramTypesForStartTimeObjectIds = games
-    .filter((game) => dayjs(game.startTime).isSame(dayjs(startTime)))
-    .filter((game) => programTypes.includes(game.programType))
-    .map((game) => game._id);
+  const programItemsByProgramTypesForStartTimeObjectIds = programItems
+    .filter((programItem) =>
+      dayjs(programItem.startTime).isSame(dayjs(startTime)),
+    )
+    .filter((programItem) => programTypes.includes(programItem.programType))
+    .map((programItem) => programItem._id);
 
   try {
     const signups = await SignupModel.find(
-      { programItem: { $in: gamesByProgramTypesForStartTimeObjectIds } },
+      { programItem: { $in: programItemsByProgramTypesForStartTimeObjectIds } },
       "-createdAt -updatedAt -_id -__v",
     )
       .lean<DirectSignupsForProgramItem[]>()
@@ -220,11 +222,11 @@ interface SaveSignupsResponse {
 export const saveDirectSignups = async (
   signupsRequests: PostDirectSignupRequest[],
 ): Promise<Result<SaveSignupsResponse, MongoDbError>> => {
-  const gamesResult = await findProgramItems();
-  if (isErrorResult(gamesResult)) {
-    return gamesResult;
+  const programItemsResult = await findProgramItems();
+  if (isErrorResult(programItemsResult)) {
+    return programItemsResult;
   }
-  const games = unwrapResult(gamesResult);
+  const programItems = unwrapResult(programItemsResult);
 
   const signupsByProgramItems = groupBy(
     signupsRequests,
@@ -235,7 +237,7 @@ export const saveDirectSignups = async (
 
   const bulkOps = Object.entries(signupsByProgramItems).flatMap(
     ([programItemId, directSignups]) => {
-      const game = games.find((g) => g.programItemId === programItemId);
+      const game = programItems.find((g) => g.programItemId === programItemId);
       if (!game) {
         return [];
       }
@@ -358,14 +360,16 @@ export const delDirectSignup = async (
 export const delDirectSignupDocumentsByProgramItemIds = async (
   programItemIds: string[],
 ): Promise<Result<void, MongoDbError>> => {
-  const gamesResult = await findProgramItems();
-  if (isErrorResult(gamesResult)) {
-    return gamesResult;
+  const programItemsResult = await findProgramItems();
+  if (isErrorResult(programItemsResult)) {
+    return programItemsResult;
   }
-  const games = unwrapResult(gamesResult);
+  const programItems = unwrapResult(programItemsResult);
 
   const gamesInDb = programItemIds.map((programItemId) =>
-    games.find((game) => game.programItemId === programItemId),
+    programItems.find(
+      (programItem) => programItem.programItemId === programItemId,
+    ),
   );
 
   const gameObjectIds = gamesInDb.flatMap((gameInDb) =>
@@ -389,14 +393,16 @@ export const delDirectSignupDocumentsByProgramItemIds = async (
 export const resetDirectSignupsByProgramItemIds = async (
   programItemIds: string[],
 ): Promise<Result<void, MongoDbError>> => {
-  const gamesResult = await findProgramItems();
-  if (isErrorResult(gamesResult)) {
-    return gamesResult;
+  const programItemsResult = await findProgramItems();
+  if (isErrorResult(programItemsResult)) {
+    return programItemsResult;
   }
-  const games = unwrapResult(gamesResult);
+  const programItems = unwrapResult(programItemsResult);
 
   const gamesInDb = programItemIds.map((programItemId) =>
-    games.find((game) => game.programItemId === programItemId),
+    programItems.find(
+      (programItem) => programItem.programItemId === programItemId,
+    ),
   );
 
   const gameObjectIds = gamesInDb.flatMap((gameInDb) =>
@@ -420,27 +426,29 @@ export const resetDirectSignupsByProgramItemIds = async (
 export const delAssignmentDirectSignupsByStartTime = async (
   startTime: string,
 ): Promise<Result<void, MongoDbError>> => {
-  const gamesResult = await findProgramItems();
-  if (isErrorResult(gamesResult)) {
-    return gamesResult;
+  const programItemsResult = await findProgramItems();
+  if (isErrorResult(programItemsResult)) {
+    return programItemsResult;
   }
-  const games = unwrapResult(gamesResult);
+  const programItems = unwrapResult(programItemsResult);
 
   // Only remove "twoPhaseSignupProgramTypes" signups and don't remove "directSignupAlwaysOpen" signups
-  const doNotRemoveGameObjectIds = games
+  const doNotRemoveProgramItemObjectIds = programItems
     .filter(
-      (game) =>
+      (programItem) =>
         config
           .shared()
-          .directSignupAlwaysOpenIds.includes(game.programItemId) ||
-        !config.shared().twoPhaseSignupProgramTypes.includes(game.programType),
+          .directSignupAlwaysOpenIds.includes(programItem.programItemId) ||
+        !config
+          .shared()
+          .twoPhaseSignupProgramTypes.includes(programItem.programType),
     )
-    .map((game) => game._id);
+    .map((programItem) => programItem._id);
 
   try {
     await SignupModel.updateMany(
       {
-        programItem: { $nin: doNotRemoveGameObjectIds },
+        programItem: { $nin: doNotRemoveProgramItemObjectIds },
       },
       [
         {

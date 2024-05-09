@@ -46,7 +46,8 @@ const myProgramItemsSlice = createSlice({
 
     submitDeleteDirectSignupAsync(state, action: PayloadAction<string>) {
       const directSignups = state.directSignups.filter(
-        (game) => game.programItemDetails.programItemId !== action.payload,
+        (programItem) =>
+          programItem.programItemDetails.programItemId !== action.payload,
       );
       return { ...state, directSignups };
     },
@@ -66,9 +67,9 @@ export const myProgramItemsReducer = myProgramItemsSlice.reducer;
 // SELECTORS
 
 export const selectDirectSignups = (state: RootState): readonly Signup[] =>
-  state.myGames.directSignups;
+  state.myProgramItems.directSignups;
 export const selectLotterySignups = (state: RootState): readonly Signup[] =>
-  state.myGames.lotterySignups;
+  state.myProgramItems.lotterySignups;
 export const selectFavoritedGames = (
   state: RootState,
-): readonly ProgramItem[] => state.myGames.favoritedProgramItems;
+): readonly ProgramItem[] => state.myProgramItems.favoritedProgramItems;

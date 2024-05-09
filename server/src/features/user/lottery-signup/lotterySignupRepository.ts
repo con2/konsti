@@ -17,24 +17,25 @@ export const saveLotterySignups = async (
 ): Promise<Result<User, MongoDbError>> => {
   const { lotterySignups, username } = signupData;
 
-  const gamesResult = await findProgramItems();
+  const programItemsResult = await findProgramItems();
 
-  if (isErrorResult(gamesResult)) {
-    return gamesResult;
+  if (isErrorResult(programItemsResult)) {
+    return programItemsResult;
   }
 
-  const games = unwrapResult(gamesResult);
+  const programItems = unwrapResult(programItemsResult);
 
   const formattedData = lotterySignups.reduce<Signup[]>(
     (acc, lotterySignup) => {
-      const gameDocInDb = games.find(
-        (game) =>
-          game.programItemId === lotterySignup.programItemDetails.programItemId,
+      const programItemDocInDb = programItems.find(
+        (programItem) =>
+          programItem.programItemId ===
+          lotterySignup.programItemDetails.programItemId,
       );
 
-      if (gameDocInDb) {
+      if (programItemDocInDb) {
         acc.push({
-          programItemDetails: gameDocInDb._id,
+          programItemDetails: programItemDocInDb._id,
           priority: lotterySignup.priority,
           time: lotterySignup.time,
           message: lotterySignup.message,

@@ -12,7 +12,7 @@ import {
   Tag,
 } from "shared/types/models/programItem";
 import { useAppSelector } from "client/utils/hooks";
-import { selectActiveGames } from "client/views/admin/adminSlice";
+import { selectActiveProgramItems } from "client/views/admin/adminSlice";
 import {
   SessionStorageValue,
   getSavedSearchTerm,
@@ -27,7 +27,7 @@ import {
 export const MULTIPLE_WHITESPACES_REGEX = /\s\s+/g;
 
 export const AllProgramItemsView = (): ReactElement => {
-  const activeGames = useAppSelector(selectActiveGames);
+  const activeGames = useAppSelector(selectActiveProgramItems);
   const hiddenGames = useAppSelector((state) => state.admin.hiddenProgramItems);
   const testTime = useAppSelector((state) => state.testSettings.testTime);
   const signupStrategy = useAppSelector((state) => state.admin.signupStrategy);
@@ -49,12 +49,13 @@ export const AllProgramItemsView = (): ReactElement => {
 
   const activeVisibleGames = useMemo(
     () =>
-      activeGames.filter((game) => {
+      activeGames.filter((programItem) => {
         const hidden = hiddenGames.find(
-          (hiddenGame) => game.programItemId === hiddenGame.programItemId,
+          (hiddenGame) =>
+            programItem.programItemId === hiddenGame.programItemId,
         );
         if (!hidden) {
-          return game;
+          return programItem;
         }
       }),
     [activeGames, hiddenGames],
@@ -132,42 +133,45 @@ const getVisibleGames = (
   selectedView: string,
   selectedTag: string,
 ): readonly ProgramItem[] => {
-  const filteredGames = getTagFilteredGames(programItems, selectedTag);
+  const filteredProgramItems = getTagFilteredProgramItems(
+    programItems,
+    selectedTag,
+  );
 
   if (selectedView === StartingTimeOption.UPCOMING) {
-    return getUpcomingProgramItems(filteredGames);
+    return getUpcomingProgramItems(filteredProgramItems);
   } else if (selectedView === StartingTimeOption.REVOLVING_DOOR) {
-    return getUpcomingProgramItems(filteredGames).filter(
-      (game) => game.revolvingDoor,
+    return getUpcomingProgramItems(filteredProgramItems).filter(
+      (programItem) => programItem.revolvingDoor,
     );
   }
 
-  return filteredGames;
+  return filteredProgramItems;
 };
 
-const getTagFilteredGames = (
+const getTagFilteredProgramItems = (
   programItems: readonly ProgramItem[],
   selectedTag: string,
 ): readonly ProgramItem[] => {
   if (!selectedTag) {
     return programItems;
   }
-  return programItems.filter((game) => {
-    if (game.programType.includes(selectedTag as ProgramType)) {
-      return game;
+  return programItems.filter((programItem) => {
+    if (programItem.programType.includes(selectedTag as ProgramType)) {
+      return programItem;
     }
-    if (game.tags.includes(selectedTag as Tag)) {
-      return game;
+    if (programItem.tags.includes(selectedTag as Tag)) {
+      return programItem;
     }
-    if (game.language.includes(selectedTag as Language)) {
-      return game;
+    if (programItem.language.includes(selectedTag as Language)) {
+      return programItem;
     }
     if (
-      (game.language === Language.FINNISH_OR_ENGLISH ||
-        game.language === Language.LANGUAGE_FREE) &&
+      (programItem.language === Language.FINNISH_OR_ENGLISH ||
+        programItem.language === Language.LANGUAGE_FREE) &&
       (selectedTag === Language.FINNISH || selectedTag === Language.ENGLISH)
     ) {
-      return game;
+      return programItem;
     }
   });
 };

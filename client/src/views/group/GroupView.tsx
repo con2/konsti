@@ -51,8 +51,8 @@ export const GroupView = (): ReactElement => {
 
   const isInGroup = getIsInGroup(groupCode);
   const timeNow = getTimeNow();
-  const directSignupsAfterNow = filteredActiveDirectSignups.filter((game) =>
-    timeNow.isBefore(dayjs(game.time)),
+  const directSignupsAfterNow = filteredActiveDirectSignups.filter(
+    (programItem) => timeNow.isBefore(dayjs(programItem.time)),
   );
   const hasDirectSignups = directSignupsAfterNow.length > 0;
 
@@ -71,12 +71,12 @@ export const GroupView = (): ReactElement => {
                 </BoldText>
               </p>
               <ListItem>
-                {filteredActiveDirectSignups.map((game) => (
-                  <li key={game.programItemDetails.programItemId}>
+                {filteredActiveDirectSignups.map((programItem) => (
+                  <li key={programItem.programItemDetails.programItemId}>
                     <Link
-                      to={`/games/${game.programItemDetails.programItemId}`}
+                      to={`/games/${programItem.programItemDetails.programItemId}`}
                     >
-                      {game.programItemDetails.title}
+                      {programItem.programItemDetails.title}
                     </Link>
                   </li>
                 ))}

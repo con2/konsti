@@ -5,12 +5,12 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { getTimeNow } from "client/utils/getTimeNow";
 import { useAppSelector } from "client/utils/hooks";
-import { selectActiveGames } from "client/views/admin/adminSlice";
+import { selectActiveProgramItems } from "client/views/admin/adminSlice";
 
 export const RevolvingDoorProgramItemsInfo = (): ReactElement => {
   const { t } = useTranslation();
 
-  const activeGames = useAppSelector(selectActiveGames);
+  const activeGames = useAppSelector(selectActiveProgramItems);
   const hiddenGames = useAppSelector((state) => state.admin.hiddenProgramItems);
   const activeProgramType = useAppSelector(
     (state) => state.admin.activeProgramType,

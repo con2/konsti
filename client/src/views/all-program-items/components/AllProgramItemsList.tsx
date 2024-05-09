@@ -23,7 +23,9 @@ interface Props {
 export const AllProgramItemsList = ({ programItems }: Props): ReactElement => {
   const { t } = useTranslation();
 
-  const signups = useAppSelector((state) => state.allGames.directSignups);
+  const signups = useAppSelector(
+    (state) => state.allProgramItems.directSignups,
+  );
   const lotterySignups = useAppSelector(selectLotterySignups);
   const directSignups = useAppSelector(selectDirectSignups);
   const activeProgramType = useAppSelector(
@@ -48,17 +50,18 @@ export const AllProgramItemsList = ({ programItems }: Props): ReactElement => {
     getAllProgramItems: true,
   });
 
-  const sortedGames = sortBy(programItems, [
-    (game) => game.startTime,
-    (game) => game.title.toLowerCase(),
+  const sortedProgramItems = sortBy(programItems, [
+    (programItem) => programItem.startTime,
+    (programItem) => programItem.title.toLowerCase(),
   ]);
 
-  const gamesByStartTime = groupBy(sortedGames, "startTime");
+  const programItemsByStartTime = groupBy(sortedProgramItems, "startTime");
 
-  const gamesList = Object.entries(gamesByStartTime).map(
-    ([startTime, gamesForStartTime]) => {
-      const timeslotSignupStrategy =
-        getTimeslotSignupStrategy(gamesForStartTime);
+  const gamesList = Object.entries(programItemsByStartTime).map(
+    ([startTime, programItemsForStartTime]) => {
+      const timeslotSignupStrategy = getTimeslotSignupStrategy(
+        programItemsForStartTime,
+      );
 
       return (
         <div key={startTime}>
@@ -71,16 +74,17 @@ export const AllProgramItemsList = ({ programItems }: Props): ReactElement => {
             groupCode={groupCode}
           />
 
-          {gamesForStartTime.map((game) => {
+          {programItemsForStartTime.map((programItem) => {
             const gameSignups = signups.find(
-              (gameSignup) => gameSignup.programItemId === game.programItemId,
+              (gameSignup) =>
+                gameSignup.programItemId === programItem.programItemId,
             );
 
             return (
               <ProgramItemEntry
-                key={game.programItemId}
+                key={programItem.programItemId}
                 isAlwaysExpanded={false}
-                programItem={game}
+                programItem={programItem}
                 startTime={startTime}
                 players={gameSignups?.users.length ?? 0}
                 signupStrategy={timeslotSignupStrategy}

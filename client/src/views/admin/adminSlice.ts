@@ -127,17 +127,19 @@ export const adminReducer = adminSlice.reducer;
 
 // SELECTORS
 
-const selectGames = (state: RootState): readonly ProgramItem[] =>
-  state.allGames.programItems;
+const selectProgramItems = (state: RootState): readonly ProgramItem[] =>
+  state.allProgramItems.programItems;
 const selectActiveProgramType = (state: RootState): ActiveProgramType =>
   state.admin.activeProgramType;
 
-export const selectActiveGames = createSelector(
-  [selectGames, selectActiveProgramType],
-  (games, activeProgramType) => {
+export const selectActiveProgramItems = createSelector(
+  [selectProgramItems, selectActiveProgramType],
+  (programItems, activeProgramType) => {
     if (activeProgramType === "all") {
-      return games;
+      return programItems;
     }
-    return games.filter((game) => game.programType === activeProgramType);
+    return programItems.filter(
+      (programItem) => programItem.programType === activeProgramType,
+    );
   },
 );

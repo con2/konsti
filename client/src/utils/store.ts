@@ -14,9 +14,9 @@ import { testSettingsReducer } from "client/test/test-settings/testSettingsSlice
 import { groupReducer } from "client/views/group/groupSlice";
 
 export const combinedReducer = combineReducers({
-  allGames: allProgramItemsReducer,
+  allProgramItems: allProgramItemsReducer,
   login: loginReducer,
-  myGames: myProgramItemsReducer,
+  myProgramItems: myProgramItemsReducer,
   admin: adminReducer,
   testSettings: testSettingsReducer,
   group: groupReducer,
@@ -34,8 +34,8 @@ const rootReducer = (
       newState.admin = state.admin;
     }
 
-    if (state?.allGames) {
-      newState.allGames = state.allGames;
+    if (state?.allProgramItems) {
+      newState.allProgramItems = state.allProgramItems;
     }
 
     if (
@@ -74,9 +74,9 @@ const sentryReduxEnhancer = createReduxEnhancer({
     const transformedState = {
       ...state,
       allGames: {
-        ...state?.allGames,
-        programItems: `Program items count: ${state?.allGames?.programItems?.length}`,
-        directSignups: `Direct signups count: ${state?.allGames?.directSignups?.length}`,
+        ...state?.allProgramItems,
+        programItems: `Program items count: ${state?.allProgramItems?.programItems?.length}`,
+        directSignups: `Direct signups count: ${state?.allProgramItems?.directSignups?.length}`,
       },
       admin: {
         ...state?.admin,
@@ -85,22 +85,25 @@ const sentryReduxEnhancer = createReduxEnhancer({
         signupMessages: `Signup messages count: ${state?.admin?.signupMessages?.length}`,
       },
       myGames: {
-        ...state?.myGames,
-        directSignups: state?.myGames?.directSignups?.map((directSignup) => ({
-          ...directSignup,
-          programItemDetails: directSignup?.programItemDetails?.programItemId,
-          message: "<Message hidden>",
-        })),
-        lotterySignups: state?.myGames?.lotterySignups?.map(
+        ...state?.myProgramItems,
+        directSignups: state?.myProgramItems?.directSignups?.map(
+          (directSignup) => ({
+            ...directSignup,
+            programItemDetails: directSignup?.programItemDetails?.programItemId,
+            message: "<Message hidden>",
+          }),
+        ),
+        lotterySignups: state?.myProgramItems?.lotterySignups?.map(
           (lotterySignup) => ({
             ...lotterySignup,
             programItemDetails:
               lotterySignup?.programItemDetails?.programItemId,
           }),
         ),
-        favoritedProgramItems: state?.myGames?.favoritedProgramItems?.map(
-          (favoritedProgramItem) => favoritedProgramItem?.programItemId,
-        ),
+        favoritedProgramItems:
+          state?.myProgramItems?.favoritedProgramItems?.map(
+            (favoritedProgramItem) => favoritedProgramItem?.programItemId,
+          ),
       },
     };
     /* eslint-enable @typescript-eslint/no-unnecessary-condition */

@@ -6,15 +6,15 @@ import { getWeekdayAndTime } from "client/utils/timeFormatter";
 import { ProgramItem } from "shared/types/models/programItem";
 
 interface Props {
-  hiddenGames: readonly ProgramItem[];
+  hiddenProgramItems: readonly ProgramItem[];
 }
 
 export const HiddenProgramItemsList = ({
-  hiddenGames,
+  hiddenProgramItems,
 }: Props): ReactElement => {
   const { t } = useTranslation();
 
-  const sortedGames = sortBy(hiddenGames, [
+  const sortedProgramItems = sortBy(hiddenProgramItems, [
     (hiddenGame) => hiddenGame.title.toLowerCase(),
   ]);
 
@@ -23,17 +23,21 @@ export const HiddenProgramItemsList = ({
       <h3>{t("hiddenProgramItems")}</h3>
 
       <ul>
-        {hiddenGames.length === 0 && <span>{t("noHiddenProgramItems")}</span>}
+        {hiddenProgramItems.length === 0 && (
+          <span>{t("noHiddenProgramItems")}</span>
+        )}
 
-        {sortedGames.map((game) => (
-          <li key={game.programItemId}>
-            <Link to={`/games/${game.programItemId}`}>{game.title}</Link>
+        {sortedProgramItems.map((programItem) => (
+          <li key={programItem.programItemId}>
+            <Link to={`/games/${programItem.programItemId}`}>
+              {programItem.title}
+            </Link>
 
             {" - "}
-            {t(`programType.${game.programType}`)}
+            {t(`programType.${programItem.programType}`)}
             {" - "}
 
-            {getWeekdayAndTime(game.startTime)}
+            {getWeekdayAndTime(programItem.startTime)}
           </li>
         ))}
       </ul>

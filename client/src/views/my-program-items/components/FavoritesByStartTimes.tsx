@@ -42,20 +42,20 @@ export const FavoritesByStartTimes = ({
             <StyledTime>{capitalize(getWeekdayAndTime(startTime))}</StyledTime>
 
             <ul>
-              {programItems.map((game) => {
-                if (game.startTime === startTime) {
+              {programItems.map((programItem) => {
+                if (programItem.startTime === startTime) {
                   return (
-                    <ProgramItemDetailsRow key={game.programItemId}>
+                    <ProgramItemDetailsRow key={programItem.programItemId}>
                       <StyledLink
-                        to={`/games/${game.programItemId}`}
+                        to={`/games/${programItem.programItemId}`}
                         data-testid={"game-title"}
                       >
-                        {game.title}
+                        {programItem.title}
                       </StyledLink>
                       <IconButton
                         icon="heart-circle-xmark"
                         onClick={async () => {
-                          await removeFavorite(game);
+                          await removeFavorite(programItem);
                         }}
                         ariaLabel={t("iconAltText.deleteFavorite")}
                       />

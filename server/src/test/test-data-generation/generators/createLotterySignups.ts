@@ -2,7 +2,7 @@ import { faker } from "@faker-js/faker";
 import dayjs from "dayjs";
 import { groupBy } from "lodash-es";
 import { logger } from "server/utils/logger";
-import { updateGamePopularity } from "server/features/program-item-popularity/updateProgramItemPopularity";
+import { updateProgramItemPopularity } from "server/features/program-item-popularity/updateProgramItemPopularity";
 import { ProgramItem } from "shared/types/models/programItem";
 import { findUsers } from "server/features/user/userRepository";
 import { findProgramItems } from "server/features/program-item/programItemRepository";
@@ -12,8 +12,8 @@ import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 import { config } from "shared/config";
 
 export const createLotterySignups = async (): Promise<void> => {
-  const gamesResult = await findProgramItems();
-  const games = unsafelyUnwrapResult(gamesResult);
+  const programItemsResult = await findProgramItems();
+  const programItems = unsafelyUnwrapResult(programItemsResult);
   const allUsersResult = await findUsers();
   const allUsers = unsafelyUnwrapResult(allUsersResult);
 
@@ -21,7 +21,7 @@ export const createLotterySignups = async (): Promise<void> => {
     (user) => user.username !== "admin" && user.username !== "helper",
   );
 
-  logger.info(`Signup: ${games.length} games`);
+  logger.info(`Signup: ${programItems.length} games`);
   logger.info(`Signup: ${users.length} users`);
 
   const groupedUsers = groupBy(users, "groupCode");
@@ -30,16 +30,16 @@ export const createLotterySignups = async (): Promise<void> => {
     // Individual users
     if (groupCode === "0") {
       logger.info("SIGNUP INDIVIDUAL USERS");
-      await lotterySignupMultiple(games, groupMembers);
+      await lotterySignupMultiple(programItems, groupMembers);
     }
     // Users in groups
     else {
       logger.info(`SIGNUP GROUP ${groupCode}`);
-      await lotterySignupGroup(games, groupMembers);
+      await lotterySignupGroup(programItems, groupMembers);
     }
   }
 
-  await updateGamePopularity();
+  await updateProgramItemPopularity();
 };
 
 const getRandomLotterySignup = (
@@ -50,12 +50,16 @@ const getRandomLotterySignup = (
 
   const { twoPhaseSignupProgramTypes, noKonstiSignupIds } = config.shared();
 
-  const activeGames = programItems
-    .filter((game) => twoPhaseSignupProgramTypes.includes(game.programType))
-    .filter((game) => !noKonstiSignupIds.includes(game.programItemId));
+  const activeProgramItems = programItems
+    .filter((programItem) =>
+      twoPhaseSignupProgramTypes.includes(programItem.programType),
+    )
+    .filter(
+      (programItem) => !noKonstiSignupIds.includes(programItem.programItemId),
+    );
 
-  const startTimes = activeGames.map((activeGame) =>
-    dayjs(activeGame.startTime).toISOString(),
+  const startTimes = activeProgramItems.map((activeProgramItem) =>
+    dayjs(activeProgramItem.startTime).toISOString(),
   );
   const uniqueTimes = Array.from(new Set(startTimes));
   const firstFourTimes = uniqueTimes.slice(0, 4);
@@ -63,7 +67,7 @@ const getRandomLotterySignup = (
   // Select random games for each start time
   firstFourTimes.forEach((startTime) => {
     logger.debug(`Generate signups for time ${startTime}`);
-    const gamesForTime = activeGames.filter(
+    const gamesForTime = activeProgramItems.filter(
       (activeGame) =>
         dayjs(activeGame.startTime).toISOString() ===
         dayjs(startTime).toISOString(),

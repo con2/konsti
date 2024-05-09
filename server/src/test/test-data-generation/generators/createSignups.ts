@@ -13,8 +13,8 @@ import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 export const createDirectSignups = async (): Promise<void> => {
   logger.info(`Generate direct signup data`);
 
-  const gamesResult = await findProgramItems();
-  const games = unsafelyUnwrapResult(gamesResult);
+  const programItemsResult = await findProgramItems();
+  const programItems = unsafelyUnwrapResult(programItemsResult);
 
   const allUsersResult = await findUsers();
   const allUsers = unsafelyUnwrapResult(allUsersResult);
@@ -26,10 +26,10 @@ export const createDirectSignups = async (): Promise<void> => {
     (user) => user.username !== "admin" && user.username !== "helper",
   );
 
-  logger.info(`Signups: ${games.length} games`);
+  logger.info(`Signups: ${programItems.length} games`);
   logger.info(`Signups: ${users.length} users`);
 
-  const shuffledGames = shuffleArray(games);
+  const shuffledGames = shuffleArray(programItems);
 
   const gamesByProgramType = groupBy(shuffledGames, "programType");
 

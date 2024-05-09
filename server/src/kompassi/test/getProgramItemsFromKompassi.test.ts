@@ -47,7 +47,7 @@ Object.values(ConventionName).map((conventionName) => {
       value: mockKompassiGames,
     });
 
-    const games = unsafelyUnwrapResult(await getGamesForConvention());
-    expect(games.length).toEqual(2);
+    const programItems = unsafelyUnwrapResult(await getGamesForConvention());
+    expect(programItems.length).toEqual(2);
   });
 });
