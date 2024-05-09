@@ -102,7 +102,9 @@ export const saveHidden = async (
 
   const games = unwrapResult(gamesResult);
   const formattedData = hiddenGames.reduce<ProgramItem[]>((acc, hiddenGame) => {
-    const gameDocInDb = games.find((game) => game.gameId === hiddenGame.gameId);
+    const gameDocInDb = games.find(
+      (game) => game.programItemId === hiddenGame.programItemId,
+    );
     if (gameDocInDb) {
       acc.push(gameDocInDb._id as ProgramItem);
     }
@@ -134,7 +136,11 @@ export const saveSignupQuestion = async (
 ): Promise<Result<Settings, MongoDbError>> => {
   try {
     const settings = await SettingsModel.findOneAndUpdate(
-      { "signupQuestions.gameId": { $ne: signupQuestionData.gameId } },
+      {
+        "signupQuestions.programItemId": {
+          $ne: signupQuestionData.programItemId,
+        },
+      },
       {
         $addToSet: { signupQuestions: signupQuestionData },
       },
@@ -155,13 +161,13 @@ export const saveSignupQuestion = async (
 };
 
 export const delSignupQuestion = async (
-  gameId: string,
+  programItemId: string,
 ): Promise<Result<Settings, MongoDbError>> => {
   try {
     const settings = await SettingsModel.findOneAndUpdate(
       {},
       {
-        $pull: { signupQuestions: { gameId } },
+        $pull: { signupQuestions: { programItemId } },
       },
       {
         new: true,

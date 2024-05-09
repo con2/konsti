@@ -15,7 +15,7 @@ import {
 export const saveFavorite = async (
   favoriteData: NewFavorite,
 ): Promise<Result<readonly ProgramItem[] | null, MongoDbError>> => {
-  const { username, favoritedGameIds } = favoriteData;
+  const { username, favoritedProgramItemIds } = favoriteData;
 
   const gamesResult = await findProgramItems();
 
@@ -25,9 +25,11 @@ export const saveFavorite = async (
 
   const games = unwrapResult(gamesResult);
 
-  const favoritedGames = favoritedGameIds.reduce<string[]>(
-    (acc, favoritedGameId) => {
-      const gameDocInDb = games.find((game) => game.gameId === favoritedGameId);
+  const favoritedGames = favoritedProgramItemIds.reduce<string[]>(
+    (acc, favoritedProgramItemId) => {
+      const gameDocInDb = games.find(
+        (game) => game.programItemId === favoritedProgramItemId,
+      );
 
       if (gameDocInDb) {
         acc.push(gameDocInDb._id as string);

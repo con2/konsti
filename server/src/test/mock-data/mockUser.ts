@@ -66,7 +66,7 @@ export const mockLotterySignups: readonly Signup[] = [
 
 export const mockPostDirectSignupRequest: PostDirectSignupRequest = {
   username: mockUser.username,
-  directSignupGameId: testGame.gameId,
+  directSignupProgramItemId: testGame.programItemId,
   startTime: testGame.startTime,
   message: "",
   priority: DIRECT_SIGNUP_PRIORITY,
@@ -74,7 +74,7 @@ export const mockPostDirectSignupRequest: PostDirectSignupRequest = {
 
 export const mockPostDirectSignupRequest2: PostDirectSignupRequest = {
   username: mockUser.username,
-  directSignupGameId: testGame2.gameId,
+  directSignupProgramItemId: testGame2.programItemId,
   startTime: testGame2.startTime,
   message: "",
   priority: DIRECT_SIGNUP_PRIORITY,

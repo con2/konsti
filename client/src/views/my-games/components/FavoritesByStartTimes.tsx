@@ -45,9 +45,9 @@ export const FavoritesByStartTimes = ({
               {games.map((game) => {
                 if (game.startTime === startTime) {
                   return (
-                    <ProgramItemDetailsRow key={game.gameId}>
+                    <ProgramItemDetailsRow key={game.programItemId}>
                       <StyledLink
-                        to={`/games/${game.gameId}`}
+                        to={`/games/${game.programItemId}`}
                         data-testid={"game-title"}
                       >
                         {game.title}

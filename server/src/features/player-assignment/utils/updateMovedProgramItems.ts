@@ -27,7 +27,7 @@ export const updateMovedProgramItems = async (
   const movedGames = currentGames.filter((currentGame) => {
     return updatedGames.find((updatedGame) => {
       return (
-        currentGame.gameId === updatedGame.gameId &&
+        currentGame.programItemId === updatedGame.programItemId &&
         dayjs(currentGame.startTime).toISOString() !==
           dayjs(updatedGame.startTime).toISOString()
       );
@@ -67,7 +67,10 @@ const removeMovedLotterySignups = async (
 
     const lotterySignups = user.lotterySignups.filter((lotterySignup) => {
       const movedFound = movedGames.find((movedGame) => {
-        return movedGame.gameId === lotterySignup.programItemDetails.gameId;
+        return (
+          movedGame.programItemId ===
+          lotterySignup.programItemDetails.programItemId
+        );
       });
       if (!movedFound) {
         return lotterySignup;
@@ -80,7 +83,7 @@ const removeMovedLotterySignups = async (
         `Remove following moved lotterySignups from user ${
           user.username
         }: ${programItemsToBeRemoved
-          .map((deletedGame) => deletedGame.gameId)
+          .map((deletedGame) => deletedGame.programItemId)
           .join(", ")}`,
       );
     }

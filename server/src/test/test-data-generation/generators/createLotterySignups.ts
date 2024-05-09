@@ -50,7 +50,7 @@ const getRandomLotterySignup = (games: readonly ProgramItem[]): Signup[] => {
 
   const activeGames = games
     .filter((game) => twoPhaseSignupProgramTypes.includes(game.programType))
-    .filter((game) => !noKonstiSignupIds.includes(game.gameId));
+    .filter((game) => !noKonstiSignupIds.includes(game.programItemId));
 
   const startTimes = activeGames.map((activeGame) =>
     dayjs(activeGame.startTime).toISOString(),
@@ -79,7 +79,8 @@ const getRandomLotterySignup = (games: readonly ProgramItem[]): Signup[] => {
 
       const duplicate = !!lotterySignups.find(
         (lotterySignup) =>
-          lotterySignup.programItemDetails.gameId === randomGame.gameId,
+          lotterySignup.programItemDetails.programItemId ===
+          randomGame.programItemId,
       );
 
       if (duplicate) {

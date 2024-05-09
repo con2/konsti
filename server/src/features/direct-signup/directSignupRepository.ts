@@ -80,7 +80,7 @@ export const findDirectSignups = async (): Promise<
 };
 
 interface FindDirectSignupsByProgramTypesResponse extends UserDirectSignup {
-  gameId: string;
+  programItemId: string;
 }
 
 export const findDirectSignupsByProgramTypes = async (
@@ -117,7 +117,7 @@ export const findDirectSignupsByProgramTypes = async (
       signups.flatMap((signup) => {
         return signup.userSignups.map((userSignup) => ({
           ...userSignup,
-          gameId: signup.game.gameId,
+          programItemId: signup.game.programItemId,
         }));
       });
 
@@ -161,10 +161,10 @@ export const findUserDirectSignups = async (
 export const saveDirectSignup = async (
   signupsRequest: PostDirectSignupRequest,
 ): Promise<Result<DirectSignupsForProgramItem, MongoDbError>> => {
-  const { username, directSignupGameId, startTime, message, priority } =
+  const { username, directSignupProgramItemId, startTime, message, priority } =
     signupsRequest;
 
-  const gameResult = await findProgramItemById(directSignupGameId);
+  const gameResult = await findProgramItemById(directSignupProgramItemId);
   if (isErrorResult(gameResult)) {
     return gameResult;
   }
@@ -197,7 +197,7 @@ export const saveDirectSignup = async (
       .populate("game");
     if (!signup) {
       logger.warn(
-        `Saving signup for user ${username} failed: game ${game.gameId} not found or game full`,
+        `Saving signup for user ${username} failed: game ${game.programItemId} not found or game full`,
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
@@ -228,14 +228,14 @@ export const saveDirectSignups = async (
 
   const signupsByProgramItems = groupBy(
     signupsRequests,
-    (signupsRequest) => signupsRequest.directSignupGameId,
+    (signupsRequest) => signupsRequest.directSignupProgramItemId,
   );
 
   const droppedSignups: PostDirectSignupRequest[] = [];
 
   const bulkOps = Object.entries(signupsByProgramItems).flatMap(
-    ([gameId, directSignups]) => {
-      const game = games.find((g) => g.gameId === gameId);
+    ([programItemId, directSignups]) => {
+      const game = games.find((g) => g.programItemId === programItemId);
       if (!game) {
         return [];
       }
@@ -245,7 +245,7 @@ export const saveDirectSignups = async (
         logger.error(
           "%s",
           new Error(
-            `Too many signups passed to saveSignups for program item ${game.gameId} - maxAttendance: ${game.maxAttendance}, direct signups: ${directSignups.length}`,
+            `Too many signups passed to saveSignups for program item ${game.programItemId} - maxAttendance: ${game.maxAttendance}, direct signups: ${directSignups.length}`,
           ),
         );
         const shuffledSignups = shuffle(directSignups);
@@ -292,9 +292,9 @@ export const saveDirectSignups = async (
 export const delDirectSignup = async (
   signupRequest: DeleteDirectSignupRequest,
 ): Promise<Result<DirectSignupsForProgramItem, MongoDbError>> => {
-  const { username, directSignupGameId } = signupRequest;
+  const { username, directSignupProgramItemId } = signupRequest;
 
-  const gameResult = await findProgramItemById(directSignupGameId);
+  const gameResult = await findProgramItemById(directSignupProgramItemId);
   if (isErrorResult(gameResult)) {
     return gameResult;
   }
@@ -320,7 +320,7 @@ export const delDirectSignup = async (
       logger.error(
         "%s",
         new Error(
-          `Signups to program item ${game.gameId} for user ${username} not found`,
+          `Signups to program item ${game.programItemId} for user ${username} not found`,
         ),
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
@@ -334,7 +334,7 @@ export const delDirectSignup = async (
       logger.error(
         "%s",
         new Error(
-          `Error removing signup to program item ${game.gameId} from user ${username}`,
+          `Error removing signup to program item ${game.programItemId} from user ${username}`,
         ),
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
@@ -342,21 +342,21 @@ export const delDirectSignup = async (
 
     logger.info(
       `MongoDB: Signup removed - program item: ${
-        game.gameId
+        game.programItemId
       }, user: ${username}, starting: ${dayjs(game.startTime).toISOString()}`,
     );
     return makeSuccessResult(signup);
   } catch (error) {
     logger.error(
-      `MongoDB: Error deleting signup to program item ${game.gameId} from user ${username}: %s`,
+      `MongoDB: Error deleting signup to program item ${game.programItemId} from user ${username}: %s`,
       error,
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };
 
-export const delDirectSignupDocumentsByGameIds = async (
-  gameIds: string[],
+export const delDirectSignupDocumentsByProgramItemIds = async (
+  programItemIds: string[],
 ): Promise<Result<void, MongoDbError>> => {
   const gamesResult = await findProgramItems();
   if (isErrorResult(gamesResult)) {
@@ -364,8 +364,8 @@ export const delDirectSignupDocumentsByGameIds = async (
   }
   const games = unwrapResult(gamesResult);
 
-  const gamesInDb = gameIds.map((gameId) =>
-    games.find((game) => game.gameId === gameId),
+  const gamesInDb = programItemIds.map((programItemId) =>
+    games.find((game) => game.programItemId === programItemId),
   );
 
   const gameObjectIds = gamesInDb.flatMap((gameInDb) =>
@@ -386,8 +386,8 @@ export const delDirectSignupDocumentsByGameIds = async (
   }
 };
 
-export const resetDirectSignupsByGameIds = async (
-  gameIds: string[],
+export const resetDirectSignupsByProgramItemIds = async (
+  programItemIds: string[],
 ): Promise<Result<void, MongoDbError>> => {
   const gamesResult = await findProgramItems();
   if (isErrorResult(gamesResult)) {
@@ -395,8 +395,8 @@ export const resetDirectSignupsByGameIds = async (
   }
   const games = unwrapResult(gamesResult);
 
-  const gamesInDb = gameIds.map((gameId) =>
-    games.find((game) => game.gameId === gameId),
+  const gamesInDb = programItemIds.map((programItemId) =>
+    games.find((game) => game.programItemId === programItemId),
   );
 
   const gameObjectIds = gamesInDb.flatMap((gameInDb) =>
@@ -430,7 +430,9 @@ export const delAssignmentDirectSignupsByStartTime = async (
   const doNotRemoveGameObjectIds = games
     .filter(
       (game) =>
-        config.shared().directSignupAlwaysOpenIds.includes(game.gameId) ||
+        config
+          .shared()
+          .directSignupAlwaysOpenIds.includes(game.programItemId) ||
         !config.shared().twoPhaseSignupProgramTypes.includes(game.programType),
     )
     .map((game) => game._id);

@@ -21,7 +21,10 @@ const getUsersByGames = (_users: readonly User[]): StringNumberObject => {
   // TODO: Update to use signup collection
   // const directSignups = users.flatMap((user) => user.directSignups);
   const directSignups: Signup[] = [];
-  const usersByGames = countBy(directSignups, "programItemDetails.gameId");
+  const usersByGames = countBy(
+    directSignups,
+    "programItemDetails.programItemId",
+  );
   return usersByGames;
 };
 
@@ -33,7 +36,7 @@ export const getNumberOfFullGames = (
 
   let counter = 0;
   games.forEach((game) => {
-    if (game.maxAttendance === usersByGames[game.gameId]) {
+    if (game.maxAttendance === usersByGames[game.programItemId]) {
       counter++;
     }
   });
@@ -115,7 +118,8 @@ export const getDemandByGame = (
 
     user.lotterySignups.forEach((lotterySignup) => {
       const foundGame = games.find(
-        (game) => game.gameId === lotterySignup.programItemDetails.gameId,
+        (game) =>
+          game.programItemId === lotterySignup.programItemDetails.programItemId,
       );
 
       if (!foundGame) {

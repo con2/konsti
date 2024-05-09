@@ -136,7 +136,7 @@ export const submitDeleteDirectSignup = (
       }
     }
     if (signupResponse.status === "success") {
-      dispatch(submitDeleteDirectSignupAsync(data.directSignupGameId));
+      dispatch(submitDeleteDirectSignupAsync(data.directSignupProgramItemId));
     }
   };
 };

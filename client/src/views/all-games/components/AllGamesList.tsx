@@ -73,12 +73,12 @@ export const AllGamesList = ({ games }: Props): ReactElement => {
 
           {gamesForStartTime.map((game) => {
             const gameSignups = signups.find(
-              (gameSignup) => gameSignup.gameId === game.gameId,
+              (gameSignup) => gameSignup.programItemId === game.programItemId,
             );
 
             return (
               <GameEntry
-                key={game.gameId}
+                key={game.programItemId}
                 isAlwaysExpanded={false}
                 game={game}
                 startTime={startTime}

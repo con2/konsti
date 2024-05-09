@@ -99,7 +99,10 @@ export const AppRoutes = (): ReactElement => {
         {isAdminOrHelp(userGroup) && (
           <>
             <Route path="/help" element={<HelperView />} />
-            <Route path="/games/:gameId" element={<ProgramItemDetailsPage />} />
+            <Route
+              path="/program/:programItemId"
+              element={<ProgramItemDetailsPage />}
+            />
             <Route
               path="/program"
               element={<Navigate replace to="/program/list" />}
@@ -131,7 +134,10 @@ export const AppRoutes = (): ReactElement => {
 
     return (
       <Routes>
-        <Route path="/games/:gameId" element={<ProgramItemDetailsPage />} />
+        <Route
+          path="/program/:programItemId"
+          element={<ProgramItemDetailsPage />}
+        />
         {isAdminOrHelp(userGroup) ? (
           <Route path="/program/list" element={<AllGamesView />} />
         ) : (
@@ -183,7 +189,10 @@ export const AppRoutes = (): ReactElement => {
       {loginProvider === LoginProvider.LOCAL && (
         <Route path="/registration" element={<RegistrationView />} />
       )}
-      <Route path="/games/:gameId" element={<ProgramItemDetailsPage />} />
+      <Route
+        path="/program/:programItemId"
+        element={<ProgramItemDetailsPage />}
+      />
       <Route
         path="/program"
         element={<Navigate replace to="/program/list" />}

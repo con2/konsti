@@ -33,7 +33,7 @@ export const PrivateSignupMessages = (): ReactElement => {
   const signupQuestionsWithGames = privateSignupQuestions.flatMap(
     (privateSignupQuestion) => {
       const matchingGame = filteredGames.find(
-        (game) => game.gameId === privateSignupQuestion.gameId,
+        (game) => game.programItemId === privateSignupQuestion.programItemId,
       );
       if (!matchingGame) {
         return [];
@@ -51,7 +51,7 @@ export const PrivateSignupMessages = (): ReactElement => {
     (signupMessage) => signupMessage.private,
   );
 
-  const groupedSignupMessages = groupBy(privateSignupMessages, "gameId");
+  const groupedSignupMessages = groupBy(privateSignupMessages, "programItemId");
 
   useEffect(() => {
     if (searchTerm.length === 0) {
@@ -70,7 +70,7 @@ export const PrivateSignupMessages = (): ReactElement => {
             signupMessage.username
               .toLocaleLowerCase()
               .includes(searchTerm.toLocaleLowerCase()) &&
-            signupMessage.gameId === game.gameId,
+            signupMessage.programItemId === game.programItemId,
         )
       );
     });
@@ -103,11 +103,13 @@ export const PrivateSignupMessages = (): ReactElement => {
               <h3>{capitalize(getWeekdayAndTime(startTime))}</h3>
               {sortedSignupQuestions.map((signupQuestionWithGame) => {
                 const matchingSignupMessages =
-                  groupedSignupMessages[signupQuestionWithGame.gameId];
+                  groupedSignupMessages[signupQuestionWithGame.programItemId];
 
                 return (
-                  <SingleGameAnswers key={signupQuestionWithGame.gameId}>
-                    <Link to={`/games/${signupQuestionWithGame.game.gameId}`}>
+                  <SingleGameAnswers key={signupQuestionWithGame.programItemId}>
+                    <Link
+                      to={`/games/${signupQuestionWithGame.game.programItemId}`}
+                    >
                       {signupQuestionWithGame.game.title}
                     </Link>{" "}
                     (

@@ -27,12 +27,12 @@ export const LotterySignupsByStartTimes = ({
                 if (signup.time === startTime) {
                   return (
                     <ProgramItemDetailsContainer
-                      key={signup.programItemDetails.gameId}
+                      key={signup.programItemDetails.programItemId}
                     >
                       <RowLeftSide>
                         <SignupPriority>{`${signup.priority})`}</SignupPriority>
                         <StyledLink
-                          to={`/games/${signup.programItemDetails.gameId}`}
+                          to={`/games/${signup.programItemDetails.programItemId}`}
                         >
                           {signup.programItemDetails.title}
                         </StyledLink>

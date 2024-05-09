@@ -39,7 +39,8 @@ export const DirectSignupRow = ({
     useState<DeleteDirectSignupErrorMessage | null>(null);
 
   const signupQuestion = signupQuestions.find(
-    (question) => question.gameId === signup.programItemDetails.gameId,
+    (question) =>
+      question.programItemId === signup.programItemDetails.programItemId,
   );
 
   const removeSignup = async (): Promise<void> => {
@@ -48,7 +49,7 @@ export const DirectSignupRow = ({
       submitDeleteDirectSignup({
         username,
         startTime: signup.programItemDetails.startTime,
-        directSignupGameId: signup.programItemDetails.gameId,
+        directSignupProgramItemId: signup.programItemDetails.programItemId,
       }),
     );
 
@@ -66,10 +67,10 @@ export const DirectSignupRow = ({
   }
 
   return (
-    <ProgramItemDetailsList key={signup.programItemDetails.gameId}>
+    <ProgramItemDetailsList key={signup.programItemDetails.programItemId}>
       <GameTitleAndButtons>
         <div>
-          <StyledLink to={`/games/${signup.programItemDetails.gameId}`}>
+          <StyledLink to={`/games/${signup.programItemDetails.programItemId}`}>
             {signup.programItemDetails.title}
           </StyledLink>
           {config.shared().signupOpen && !cancelSignupFormOpen && (

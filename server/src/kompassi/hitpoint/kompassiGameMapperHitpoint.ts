@@ -18,7 +18,7 @@ export const kompassiGameMapperHitpoint = (
 ): readonly ProgramItem[] => {
   return games.map((game) => {
     return {
-      gameId: game.identifier,
+      programItemId: game.identifier,
       title: game.title,
       description: game.description,
       location: game.room_name,

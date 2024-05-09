@@ -17,7 +17,7 @@ import { getIsInGroup } from "client/views/group/groupUtils";
 export const ProgramItemDetailsPage = (): ReactElement => {
   const { t } = useTranslation();
 
-  const { gameId } = useParams();
+  const { programItemId } = useParams();
 
   const games = useAppSelector((state) => state.allGames.games);
   const signups = useAppSelector((state) => state.allGames.directSignups);
@@ -44,10 +44,11 @@ export const ProgramItemDetailsPage = (): ReactElement => {
 
   const [loading, setLoading] = useState<boolean>(true);
 
-  const foundGame = games.find((game) => game.gameId === gameId);
+  const foundGame = games.find((game) => game.programItemId === programItemId);
   const playerCount =
-    signups.find((gameSignup) => gameSignup.gameId === foundGame?.gameId)?.users
-      .length ?? 0;
+    signups.find(
+      (gameSignup) => gameSignup.programItemId === foundGame?.programItemId,
+    )?.users.length ?? 0;
 
   useEffect(() => {
     setLoading(false);
@@ -76,7 +77,7 @@ export const ProgramItemDetailsPage = (): ReactElement => {
       )}
       {!loading && !foundGame && (
         <div>
-          {t("invalidProgramItemId")} {gameId}.
+          {t("invalidProgramItemId")} {programItemId}.
         </div>
       )}
     </div>

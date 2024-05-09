@@ -1,6 +1,6 @@
 [
   {
-    "gameId": "p4041",
+    "programItemId": "p4041",
     "ageRestricted": null,
     "beginnerFriendly": true,
     "childrenFriendly": null,
@@ -27,7 +27,7 @@
     "title": "Sexcraft"
   },
   {
-    "gameId": "p4038",
+    "programItemId": "p4038",
     "ageRestricted": null,
     "beginnerFriendly": false,
     "childrenFriendly": null,
@@ -54,7 +54,7 @@
     "title": "Hobbyhorse - keppihevonen"
   },
   {
-    "gameId": "p3963",
+    "programItemId": "p3963",
     "ageRestricted": null,
     "beginnerFriendly": true,
     "childrenFriendly": null,
@@ -81,7 +81,7 @@
     "title": "Kylmää kyytiä Kylmähaassa"
   },
   {
-    "gameId": "p3983",
+    "programItemId": "p3983",
     "ageRestricted": null,
     "beginnerFriendly": true,
     "childrenFriendly": null,
@@ -108,7 +108,7 @@
     "title": "Duty Unto Death - A Dragon Age RPG"
   },
   {
-    "gameId": "p3994",
+    "programItemId": "p3994",
     "ageRestricted": null,
     "beginnerFriendly": true,
     "childrenFriendly": null,
@@ -135,7 +135,7 @@
     "title": "Pathfinder Society Scenario #1-05: Trailblazers’ Bounty"
   },
   {
-    "gameId": "p4071",
+    "programItemId": "p4071",
     "ageRestricted": null,
     "beginnerFriendly": true,
     "childrenFriendly": null,
@@ -162,7 +162,7 @@
     "title": "The City We Know"
   },
   {
-    "gameId": "p3974",
+    "programItemId": "p3974",
     "ageRestricted": null,
     "beginnerFriendly": true,
     "childrenFriendly": null,
@@ -189,7 +189,7 @@
     "title": "Luolastomaailma"
   },
   {
-    "gameId": "p3947",
+    "programItemId": "p3947",
     "ageRestricted": null,
     "beginnerFriendly": false,
     "childrenFriendly": null,
@@ -216,7 +216,7 @@
     "title": "Pathfinder Society: #1-02: The Mosquito Witch"
   },
   {
-    "gameId": "p4017",
+    "programItemId": "p4017",
     "ageRestricted": null,
     "beginnerFriendly": true,
     "childrenFriendly": null,
@@ -243,7 +243,7 @@
     "title": "Starfinder Society scenario #1-18 Blackmoon Survey"
   },
   {
-    "gameId": "p3985",
+    "programItemId": "p3985",
     "ageRestricted": null,
     "beginnerFriendly": true,
     "childrenFriendly": null,
@@ -270,7 +270,7 @@
     "title": "Biorutto ja muita tarinoita"
   },
   {
-    "gameId": "p4001",
+    "programItemId": "p4001",
     "ageRestricted": null,
     "beginnerFriendly": true,
     "childrenFriendly": null,
@@ -297,7 +297,7 @@
     "title": "Silmä silmästä - Stealing the Eye"
   },
   {
-    "gameId": "p4099",
+    "programItemId": "p4099",
     "ageRestricted": null,
     "beginnerFriendly": true,
     "childrenFriendly": null,
@@ -324,7 +324,7 @@
     "title": "SS Andrea Dorian viimeinen matka"
   },
   {
-    "gameId": "p3975",
+    "programItemId": "p3975",
     "ageRestricted": null,
     "beginnerFriendly": false,
     "childrenFriendly": null,
@@ -351,7 +351,7 @@
     "title": "Dracurouge, Ikiyön Ritarit"
   },
   {
-    "gameId": "p4051",
+    "programItemId": "p4051",
     "ageRestricted": null,
     "beginnerFriendly": true,
     "childrenFriendly": null,
@@ -378,7 +378,7 @@
     "title": "The Road Rage"
   },
   {
-    "gameId": "p4015",
+    "programItemId": "p4015",
     "ageRestricted": null,
     "beginnerFriendly": true,
     "childrenFriendly": null,
@@ -405,7 +405,7 @@
     "title": "Aseisiin kuolleita vastaan"
   },
   {
-    "gameId": "p4011",
+    "programItemId": "p4011",
     "ageRestricted": null,
     "beginnerFriendly": true,
     "childrenFriendly": null,
@@ -432,7 +432,7 @@
     "title": "Pathfinder Society 2E Scenario #1-03: Escaping the Grave"
   },
   {
-    "gameId": "p3969",
+    "programItemId": "p3969",
     "ageRestricted": null,
     "beginnerFriendly": true,
     "childrenFriendly": null,
@@ -459,7 +459,7 @@
     "title": "Aurin ystävät (alkup. Robin's Friends)"
   },
   {
-    "gameId": "p4070",
+    "programItemId": "p4070",
     "ageRestricted": null,
     "beginnerFriendly": true,
     "childrenFriendly": null,
@@ -486,7 +486,7 @@
     "title": "A Ghost of Venice"
   },
   {
-    "gameId": "p4007",
+    "programItemId": "p4007",
     "ageRestricted": null,
     "beginnerFriendly": true,
     "childrenFriendly": null,
@@ -513,7 +513,7 @@
     "title": "Pathfinder Society 2E Scenario #1-06: Lost on the Spirit Road"
   },
   {
-    "gameId": "p3999",
+    "programItemId": "p3999",
     "ageRestricted": null,
     "beginnerFriendly": true,
     "childrenFriendly": null,
@@ -540,7 +540,7 @@
     "title": "Nahkametsä"
   },
   {
-    "gameId": "p4013",
+    "programItemId": "p4013",
     "ageRestricted": null,
     "beginnerFriendly": false,
     "childrenFriendly": null,
@@ -567,7 +567,7 @@
     "title": "Journey into the Worm"
   },
   {
-    "gameId": "p3957",
+    "programItemId": "p3957",
     "ageRestricted": null,
     "beginnerFriendly": true,
     "childrenFriendly": null,
@@ -594,7 +594,7 @@
     "title": "Kauhujen kesäleiri"
   },
   {
-    "gameId": "p4009",
+    "programItemId": "p4009",
     "ageRestricted": null,
     "beginnerFriendly": true,
     "childrenFriendly": null,
@@ -621,7 +621,7 @@
     "title": "Vetehisten Virsi"
   },
   {
-    "gameId": "p3954",
+    "programItemId": "p3954",
     "ageRestricted": null,
     "beginnerFriendly": true,
     "childrenFriendly": null,
@@ -648,7 +648,7 @@
     "title": "PRAEDOR - Kohtalon Kortit"
   },
   {
-    "gameId": "p4002",
+    "programItemId": "p4002",
     "ageRestricted": null,
     "beginnerFriendly": true,
     "childrenFriendly": null,
@@ -675,7 +675,7 @@
     "title": "Kuollut vuokralainen - Dead Boarder"
   },
   {
-    "gameId": "p4006",
+    "programItemId": "p4006",
     "ageRestricted": null,
     "beginnerFriendly": true,
     "childrenFriendly": null,
@@ -702,7 +702,7 @@
     "title": "Kaarnankaisen matkassa"
   },
   {
-    "gameId": "p3950",
+    "programItemId": "p3950",
     "ageRestricted": null,
     "beginnerFriendly": true,
     "childrenFriendly": null,
@@ -729,7 +729,7 @@
     "title": "Snekin paluu"
   },
   {
-    "gameId": "p4049",
+    "programItemId": "p4049",
     "ageRestricted": null,
     "beginnerFriendly": true,
     "childrenFriendly": null,
@@ -756,7 +756,7 @@
     "title": "Sexcraft"
   },
   {
-    "gameId": "p4044",
+    "programItemId": "p4044",
     "ageRestricted": null,
     "beginnerFriendly": true,
     "childrenFriendly": null,
@@ -783,7 +783,7 @@
     "title": "Kobanî"
   },
   {
-    "gameId": "p4012",
+    "programItemId": "p4012",
     "ageRestricted": null,
     "beginnerFriendly": true,
     "childrenFriendly": null,
@@ -810,7 +810,7 @@
     "title": "Kellertävä planeetta"
   },
   {
-    "gameId": "p3956",
+    "programItemId": "p3956",
     "ageRestricted": null,
     "beginnerFriendly": true,
     "childrenFriendly": null,
@@ -837,7 +837,7 @@
     "title": "Joulukatastrofi Korvatunturilla"
   },
   {
-    "gameId": "p3984",
+    "programItemId": "p3984",
     "ageRestricted": null,
     "beginnerFriendly": true,
     "childrenFriendly": null,
@@ -864,7 +864,7 @@
     "title": "Arl's Ransom - A Dragon Age RPG"
   },
   {
-    "gameId": "p4000",
+    "programItemId": "p4000",
     "ageRestricted": null,
     "beginnerFriendly": true,
     "childrenFriendly": null,
@@ -891,7 +891,7 @@
     "title": "Hullun koneen kaupunki"
   },
   {
-    "gameId": "p4005",
+    "programItemId": "p4005",
     "ageRestricted": null,
     "beginnerFriendly": true,
     "childrenFriendly": null,
@@ -918,7 +918,7 @@
     "title": "Starfinder Society Scenario #1-28: It Rests Beneath"
   },
   {
-    "gameId": "p3976",
+    "programItemId": "p3976",
     "ageRestricted": null,
     "beginnerFriendly": true,
     "childrenFriendly": null,
@@ -945,7 +945,7 @@
     "title": "You must gather your party before venturing forth"
   },
   {
-    "gameId": "p3980",
+    "programItemId": "p3980",
     "ageRestricted": null,
     "beginnerFriendly": true,
     "childrenFriendly": null,

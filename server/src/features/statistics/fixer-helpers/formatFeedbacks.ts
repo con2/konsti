@@ -43,7 +43,9 @@ export const formatFeedbacks = (year: number, event: string): void => {
   );
 
   const formattedFeedbacks = filteredFeedbacks.map((feedback) => {
-    const foundGame = games.find((game) => game.gameId === feedback.gameId);
+    const foundGame = games.find(
+      (game) => game.programItemId === feedback.programItemId,
+    );
     return {
       feedback: feedback.feedback,
       game: foundGame?.title,

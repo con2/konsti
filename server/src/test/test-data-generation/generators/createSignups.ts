@@ -43,7 +43,8 @@ export const createDirectSignups = async (): Promise<void> => {
         }
 
         const foundSignupQuestion = settings.signupQuestions.find(
-          (signupQuestion) => signupQuestion.gameId === randomGame.gameId,
+          (signupQuestion) =>
+            signupQuestion.programItemId === randomGame.programItemId,
         );
 
         const usersCount = getRandomInt(1, randomGame.maxAttendance);
@@ -54,7 +55,7 @@ export const createDirectSignups = async (): Promise<void> => {
         return usersChunk.map(async (user) => {
           await saveDirectSignup({
             username: user.username,
-            directSignupGameId: randomGame.gameId,
+            directSignupProgramItemId: randomGame.programItemId,
             startTime: randomGame.startTime,
             message: foundSignupQuestion?.questionFi
               ? faker.lorem.words(4)

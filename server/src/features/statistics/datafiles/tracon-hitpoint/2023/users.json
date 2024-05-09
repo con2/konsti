@@ -23,7 +23,7 @@
     "serial": "5044981701",
     "groupCreatorCode": "0",
     "groupCode": "871-7c7-463",
-    "favoritedGames": [{ "gameId": "p7334" }],
+    "favoritedGames": [{ "programItemId": "p7334" }],
     "lotterySignups": [],
     "eventLogItems": [
       {
@@ -47,15 +47,15 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [
-      { "gameId": "p7359" },
-      { "gameId": "p7381" },
-      { "gameId": "p7353" },
-      { "gameId": "p7358" },
-      { "gameId": "p7344" }
+      { "programItemId": "p7359" },
+      { "programItemId": "p7381" },
+      { "programItemId": "p7353" },
+      { "programItemId": "p7358" },
+      { "programItemId": "p7344" }
     ],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7358" },
+        "programItemDetails": { "programItemId": "p7358" },
         "priority": 1,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
@@ -113,12 +113,12 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [
-      { "gameId": "p7300" },
-      { "gameId": "p7353" },
-      { "gameId": "p7345" },
-      { "gameId": "<canceled>" },
-      { "gameId": "p7339" },
-      { "gameId": "<canceled>" }
+      { "programItemId": "p7300" },
+      { "programItemId": "p7353" },
+      { "programItemId": "p7345" },
+      { "programItemId": "<canceled>" },
+      { "programItemId": "p7339" },
+      { "programItemId": "<canceled>" }
     ],
     "lotterySignups": [],
     "eventLogItems": [],
@@ -150,12 +150,12 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [
-      { "gameId": "p7310" },
-      { "gameId": "p7359" },
-      { "gameId": "p7334" },
-      { "gameId": "p7284" },
-      { "gameId": "p7347" },
-      { "gameId": "p7343" }
+      { "programItemId": "p7310" },
+      { "programItemId": "p7359" },
+      { "programItemId": "p7334" },
+      { "programItemId": "p7284" },
+      { "programItemId": "p7347" },
+      { "programItemId": "p7343" }
     ],
     "lotterySignups": [],
     "eventLogItems": [],
@@ -172,23 +172,23 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [
-      { "gameId": "p7340" },
-      { "gameId": "p7359" },
-      { "gameId": "p7310" },
-      { "gameId": "p7300" },
-      { "gameId": "p7284" },
-      { "gameId": "p7280" },
-      { "gameId": "<canceled>" },
-      { "gameId": "p7367" },
-      { "gameId": "p7285" },
-      { "gameId": "p7365" },
-      { "gameId": "p7358" },
-      { "gameId": "<canceled>" },
-      { "gameId": "<canceled>" }
+      { "programItemId": "p7340" },
+      { "programItemId": "p7359" },
+      { "programItemId": "p7310" },
+      { "programItemId": "p7300" },
+      { "programItemId": "p7284" },
+      { "programItemId": "p7280" },
+      { "programItemId": "<canceled>" },
+      { "programItemId": "p7367" },
+      { "programItemId": "p7285" },
+      { "programItemId": "p7365" },
+      { "programItemId": "p7358" },
+      { "programItemId": "<canceled>" },
+      { "programItemId": "<canceled>" }
     ],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7367" },
+        "programItemDetails": { "programItemId": "p7367" },
         "priority": 1,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
@@ -218,19 +218,19 @@
     "favoritedGames": [],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7368" },
+        "programItemDetails": { "programItemId": "p7368" },
         "priority": 2,
         "time": "2023-11-04T15:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7298" },
+        "programItemDetails": { "programItemId": "p7298" },
         "priority": 1,
         "time": "2023-11-04T16:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7341" },
+        "programItemDetails": { "programItemId": "p7341" },
         "priority": 2,
         "time": "2023-11-04T16:00:00Z",
         "message": ""
@@ -265,46 +265,46 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [
-      { "gameId": "p7347" },
-      { "gameId": "p7310" },
-      { "gameId": "p7334" },
-      { "gameId": "p7365" },
-      { "gameId": "p7362" },
-      { "gameId": "p7367" }
+      { "programItemId": "p7347" },
+      { "programItemId": "p7310" },
+      { "programItemId": "p7334" },
+      { "programItemId": "p7365" },
+      { "programItemId": "p7362" },
+      { "programItemId": "p7367" }
     ],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7373" },
+        "programItemDetails": { "programItemId": "p7373" },
         "priority": 1,
         "time": "2023-11-04T18:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7346" },
+        "programItemDetails": { "programItemId": "p7346" },
         "priority": 2,
         "time": "2023-11-04T18:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7365" },
+        "programItemDetails": { "programItemId": "p7365" },
         "priority": 1,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7362" },
+        "programItemDetails": { "programItemId": "p7362" },
         "priority": 2,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7367" },
+        "programItemDetails": { "programItemId": "p7367" },
         "priority": 3,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7369" },
+        "programItemDetails": { "programItemId": "p7369" },
         "priority": 1,
         "time": "2023-11-05T11:00:00Z",
         "message": ""
@@ -338,16 +338,19 @@
     "serial": "4695924573",
     "groupCreatorCode": "0",
     "groupCode": "0",
-    "favoritedGames": [{ "gameId": "p7298" }, { "gameId": "p7299" }],
+    "favoritedGames": [
+      { "programItemId": "p7298" },
+      { "programItemId": "p7299" }
+    ],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7298" },
+        "programItemDetails": { "programItemId": "p7298" },
         "priority": 1,
         "time": "2023-11-04T16:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7299" },
+        "programItemDetails": { "programItemId": "p7299" },
         "priority": 1,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
@@ -375,54 +378,54 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [
-      { "gameId": "p7361" },
-      { "gameId": "p7274" },
-      { "gameId": "p7346" },
-      { "gameId": "p7344" },
-      { "gameId": "p7269" },
-      { "gameId": "p7373" },
-      { "gameId": "p7365" },
-      { "gameId": "p7424" }
+      { "programItemId": "p7361" },
+      { "programItemId": "p7274" },
+      { "programItemId": "p7346" },
+      { "programItemId": "p7344" },
+      { "programItemId": "p7269" },
+      { "programItemId": "p7373" },
+      { "programItemId": "p7365" },
+      { "programItemId": "p7424" }
     ],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7274" },
+        "programItemDetails": { "programItemId": "p7274" },
         "priority": 1,
         "time": "2023-11-04T14:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7341" },
+        "programItemDetails": { "programItemId": "p7341" },
         "priority": 1,
         "time": "2023-11-04T16:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7298" },
+        "programItemDetails": { "programItemId": "p7298" },
         "priority": 2,
         "time": "2023-11-04T16:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7335" },
+        "programItemDetails": { "programItemId": "p7335" },
         "priority": 3,
         "time": "2023-11-04T16:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7365" },
+        "programItemDetails": { "programItemId": "p7365" },
         "priority": 1,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7367" },
+        "programItemDetails": { "programItemId": "p7367" },
         "priority": 2,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7358" },
+        "programItemDetails": { "programItemId": "p7358" },
         "priority": 3,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
@@ -463,7 +466,7 @@
     "serial": "9629719288",
     "groupCreatorCode": "0",
     "groupCode": "0",
-    "favoritedGames": [{ "gameId": "p7300" }],
+    "favoritedGames": [{ "programItemId": "p7300" }],
     "lotterySignups": [],
     "eventLogItems": [],
     "createdAt": "2023-11-03T09:32:46.284Z",
@@ -504,13 +507,13 @@
     "favoritedGames": [],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7368" },
+        "programItemDetails": { "programItemId": "p7368" },
         "priority": 1,
         "time": "2023-11-04T15:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7369" },
+        "programItemDetails": { "programItemId": "p7369" },
         "priority": 1,
         "time": "2023-11-05T11:00:00Z",
         "message": ""
@@ -529,7 +532,10 @@
     "serial": "5358003662",
     "groupCreatorCode": "0",
     "groupCode": "0",
-    "favoritedGames": [{ "gameId": "p7365" }, { "gameId": "p7347" }],
+    "favoritedGames": [
+      { "programItemId": "p7365" },
+      { "programItemId": "p7347" }
+    ],
     "lotterySignups": [],
     "eventLogItems": [],
     "createdAt": "2023-11-03T12:58:51.695Z",
@@ -547,37 +553,37 @@
     "favoritedGames": [],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7345" },
+        "programItemDetails": { "programItemId": "p7345" },
         "priority": 1,
         "time": "2023-11-04T13:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7368" },
+        "programItemDetails": { "programItemId": "p7368" },
         "priority": 2,
         "time": "2023-11-04T15:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7298" },
+        "programItemDetails": { "programItemId": "p7298" },
         "priority": 1,
         "time": "2023-11-04T16:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7341" },
+        "programItemDetails": { "programItemId": "p7341" },
         "priority": 2,
         "time": "2023-11-04T16:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7285" },
+        "programItemDetails": { "programItemId": "p7285" },
         "priority": 1,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7362" },
+        "programItemDetails": { "programItemId": "p7362" },
         "priority": 2,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
@@ -612,17 +618,17 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [
-      { "gameId": "p7340" },
-      { "gameId": "p7429" },
-      { "gameId": "p7272" },
-      { "gameId": "p7373" },
-      { "gameId": "p7367" },
-      { "gameId": "p7369" },
-      { "gameId": "p7365" }
+      { "programItemId": "p7340" },
+      { "programItemId": "p7429" },
+      { "programItemId": "p7272" },
+      { "programItemId": "p7373" },
+      { "programItemId": "p7367" },
+      { "programItemId": "p7369" },
+      { "programItemId": "p7365" }
     ],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7369" },
+        "programItemDetails": { "programItemId": "p7369" },
         "priority": 1,
         "time": "2023-11-05T11:00:00Z",
         "message": ""
@@ -642,19 +648,19 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [
-      { "gameId": "p7310" },
-      { "gameId": "p7340" },
-      { "gameId": "p7359" },
-      { "gameId": "p7429" },
-      { "gameId": "p7284" },
-      { "gameId": "p7272" },
-      { "gameId": "p7345" },
-      { "gameId": "p7280" },
-      { "gameId": "p7360" }
+      { "programItemId": "p7310" },
+      { "programItemId": "p7340" },
+      { "programItemId": "p7359" },
+      { "programItemId": "p7429" },
+      { "programItemId": "p7284" },
+      { "programItemId": "p7272" },
+      { "programItemId": "p7345" },
+      { "programItemId": "p7280" },
+      { "programItemId": "p7360" }
     ],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7360" },
+        "programItemDetails": { "programItemId": "p7360" },
         "priority": 1,
         "time": "2023-11-04T15:00:00Z",
         "message": ""
@@ -712,14 +718,14 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [
-      { "gameId": "p7298" },
-      { "gameId": "p7368" },
-      { "gameId": "<canceled>" },
-      { "gameId": "p7341" }
+      { "programItemId": "p7298" },
+      { "programItemId": "p7368" },
+      { "programItemId": "<canceled>" },
+      { "programItemId": "p7341" }
     ],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7368" },
+        "programItemDetails": { "programItemId": "p7368" },
         "priority": 1,
         "time": "2023-11-04T15:00:00Z",
         "message": ""
@@ -779,7 +785,7 @@
     "favoritedGames": [],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7373" },
+        "programItemDetails": { "programItemId": "p7373" },
         "priority": 1,
         "time": "2023-11-04T18:00:00Z",
         "message": ""
@@ -806,7 +812,10 @@
     "serial": "8633539229",
     "groupCreatorCode": "0",
     "groupCode": "0",
-    "favoritedGames": [{ "gameId": "p7361" }, { "gameId": "p7353" }],
+    "favoritedGames": [
+      { "programItemId": "p7361" },
+      { "programItemId": "p7353" }
+    ],
     "lotterySignups": [],
     "eventLogItems": [],
     "createdAt": "2023-11-03T18:30:17.305Z",
@@ -824,25 +833,25 @@
     "favoritedGames": [],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7274" },
+        "programItemDetails": { "programItemId": "p7274" },
         "priority": 1,
         "time": "2023-11-04T14:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7360" },
+        "programItemDetails": { "programItemId": "p7360" },
         "priority": 1,
         "time": "2023-11-04T15:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7341" },
+        "programItemDetails": { "programItemId": "p7341" },
         "priority": 1,
         "time": "2023-11-04T16:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7335" },
+        "programItemDetails": { "programItemId": "p7335" },
         "priority": 2,
         "time": "2023-11-04T16:00:00Z",
         "message": ""
@@ -933,19 +942,19 @@
     "favoritedGames": [],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7298" },
+        "programItemDetails": { "programItemId": "p7298" },
         "priority": 1,
         "time": "2023-11-04T16:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7358" },
+        "programItemDetails": { "programItemId": "p7358" },
         "priority": 1,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7299" },
+        "programItemDetails": { "programItemId": "p7299" },
         "priority": 2,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
@@ -973,29 +982,29 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [
-      { "gameId": "p7300" },
-      { "gameId": "p7334" },
-      { "gameId": "p7284" },
-      { "gameId": "p7360" },
-      { "gameId": "p7298" },
-      { "gameId": "p7269" },
-      { "gameId": "p7365" }
+      { "programItemId": "p7300" },
+      { "programItemId": "p7334" },
+      { "programItemId": "p7284" },
+      { "programItemId": "p7360" },
+      { "programItemId": "p7298" },
+      { "programItemId": "p7269" },
+      { "programItemId": "p7365" }
     ],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7298" },
+        "programItemDetails": { "programItemId": "p7298" },
         "priority": 2,
         "time": "2023-11-04T16:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7279" },
+        "programItemDetails": { "programItemId": "p7279" },
         "priority": 1,
         "time": "2023-11-04T17:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7269" },
+        "programItemDetails": { "programItemId": "p7269" },
         "priority": 2,
         "time": "2023-11-04T17:00:00Z",
         "message": ""
@@ -1030,22 +1039,22 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [
-      { "gameId": "p7364" },
-      { "gameId": "p7360" },
-      { "gameId": "p7279" },
-      { "gameId": "p7346" },
-      { "gameId": "p7365" },
-      { "gameId": "p7369" }
+      { "programItemId": "p7364" },
+      { "programItemId": "p7360" },
+      { "programItemId": "p7279" },
+      { "programItemId": "p7346" },
+      { "programItemId": "p7365" },
+      { "programItemId": "p7369" }
     ],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7279" },
+        "programItemDetails": { "programItemId": "p7279" },
         "priority": 1,
         "time": "2023-11-04T17:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7369" },
+        "programItemDetails": { "programItemId": "p7369" },
         "priority": 1,
         "time": "2023-11-05T11:00:00Z",
         "message": ""
@@ -1073,24 +1082,24 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [
-      { "gameId": "p7280" },
-      { "gameId": "p7367" },
-      { "gameId": "p7285" },
-      { "gameId": "p7284" },
-      { "gameId": "p7334" },
-      { "gameId": "p7369" },
-      { "gameId": "p7424" },
-      { "gameId": "p7365" }
+      { "programItemId": "p7280" },
+      { "programItemId": "p7367" },
+      { "programItemId": "p7285" },
+      { "programItemId": "p7284" },
+      { "programItemId": "p7334" },
+      { "programItemId": "p7369" },
+      { "programItemId": "p7424" },
+      { "programItemId": "p7365" }
     ],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7367" },
+        "programItemDetails": { "programItemId": "p7367" },
         "priority": 1,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7285" },
+        "programItemDetails": { "programItemId": "p7285" },
         "priority": 2,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
@@ -1120,7 +1129,7 @@
     "favoritedGames": [],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7368" },
+        "programItemDetails": { "programItemId": "p7368" },
         "priority": 1,
         "time": "2023-11-04T15:00:00Z",
         "message": ""
@@ -1148,16 +1157,16 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [
-      { "gameId": "p7359" },
-      { "gameId": "p7363" },
-      { "gameId": "p7343" },
-      { "gameId": "p7368" },
-      { "gameId": "p7298" },
-      { "gameId": "p7284" }
+      { "programItemId": "p7359" },
+      { "programItemId": "p7363" },
+      { "programItemId": "p7343" },
+      { "programItemId": "p7368" },
+      { "programItemId": "p7298" },
+      { "programItemId": "p7284" }
     ],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7298" },
+        "programItemDetails": { "programItemId": "p7298" },
         "priority": 1,
         "time": "2023-11-04T16:00:00Z",
         "message": ""
@@ -1184,7 +1193,10 @@
     "serial": "2407300090",
     "groupCreatorCode": "0",
     "groupCode": "0",
-    "favoritedGames": [{ "gameId": "p7347" }, { "gameId": "p7346" }],
+    "favoritedGames": [
+      { "programItemId": "p7347" },
+      { "programItemId": "p7346" }
+    ],
     "lotterySignups": [],
     "eventLogItems": [],
     "createdAt": "2023-11-03T22:27:15.948Z",
@@ -1200,24 +1212,24 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [
-      { "gameId": "p7345" },
-      { "gameId": "p7280" },
-      { "gameId": "p7364" },
-      { "gameId": "p7431" },
-      { "gameId": "p7428" },
-      { "gameId": "p7358" },
-      { "gameId": "p7285" },
-      { "gameId": "p7367" },
-      { "gameId": "p7369" },
-      { "gameId": "p7272" },
-      { "gameId": "p7284" },
-      { "gameId": "p7429" },
-      { "gameId": "p7300" },
-      { "gameId": "p7269" }
+      { "programItemId": "p7345" },
+      { "programItemId": "p7280" },
+      { "programItemId": "p7364" },
+      { "programItemId": "p7431" },
+      { "programItemId": "p7428" },
+      { "programItemId": "p7358" },
+      { "programItemId": "p7285" },
+      { "programItemId": "p7367" },
+      { "programItemId": "p7369" },
+      { "programItemId": "p7272" },
+      { "programItemId": "p7284" },
+      { "programItemId": "p7429" },
+      { "programItemId": "p7300" },
+      { "programItemId": "p7269" }
     ],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7269" },
+        "programItemDetails": { "programItemId": "p7269" },
         "priority": 1,
         "time": "2023-11-04T17:00:00Z",
         "message": ""
@@ -1244,16 +1256,19 @@
     "serial": "4645249568",
     "groupCreatorCode": "809-cd5-b1a",
     "groupCode": "809-cd5-b1a",
-    "favoritedGames": [{ "gameId": "p7358" }, { "gameId": "p7367" }],
+    "favoritedGames": [
+      { "programItemId": "p7358" },
+      { "programItemId": "p7367" }
+    ],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7358" },
+        "programItemDetails": { "programItemId": "p7358" },
         "priority": 1,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7367" },
+        "programItemDetails": { "programItemId": "p7367" },
         "priority": 2,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
@@ -1281,12 +1296,12 @@
     "groupCreatorCode": "0",
     "groupCode": "809-cd5-b1a",
     "favoritedGames": [
-      { "gameId": "p7361" },
-      { "gameId": "p7359" },
-      { "gameId": "p7274" },
-      { "gameId": "p7360" },
-      { "gameId": "p7358" },
-      { "gameId": "p7367" }
+      { "programItemId": "p7361" },
+      { "programItemId": "p7359" },
+      { "programItemId": "p7274" },
+      { "programItemId": "p7360" },
+      { "programItemId": "p7358" },
+      { "programItemId": "p7367" }
     ],
     "lotterySignups": [],
     "eventLogItems": [
@@ -1311,13 +1326,13 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [
-      { "gameId": "p7361" },
-      { "gameId": "p7381" },
-      { "gameId": "p7284" },
-      { "gameId": "p7338" },
-      { "gameId": "p7274" },
-      { "gameId": "<canceled>" },
-      { "gameId": "p7364" }
+      { "programItemId": "p7361" },
+      { "programItemId": "p7381" },
+      { "programItemId": "p7284" },
+      { "programItemId": "p7338" },
+      { "programItemId": "p7274" },
+      { "programItemId": "<canceled>" },
+      { "programItemId": "p7364" }
     ],
     "lotterySignups": [],
     "eventLogItems": [],
@@ -1334,13 +1349,13 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [
-      { "gameId": "p7310" },
-      { "gameId": "p7300" },
-      { "gameId": "p7284" },
-      { "gameId": "p7361" },
-      { "gameId": "p7360" },
-      { "gameId": "p7273" },
-      { "gameId": "<canceled>" }
+      { "programItemId": "p7310" },
+      { "programItemId": "p7300" },
+      { "programItemId": "p7284" },
+      { "programItemId": "p7361" },
+      { "programItemId": "p7360" },
+      { "programItemId": "p7273" },
+      { "programItemId": "<canceled>" }
     ],
     "lotterySignups": [],
     "eventLogItems": [],
@@ -1357,22 +1372,22 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [
-      { "gameId": "p7363" },
-      { "gameId": "p7368" },
-      { "gameId": "p7360" },
-      { "gameId": "p7270" },
-      { "gameId": "p7358" },
-      { "gameId": "p7424" }
+      { "programItemId": "p7363" },
+      { "programItemId": "p7368" },
+      { "programItemId": "p7360" },
+      { "programItemId": "p7270" },
+      { "programItemId": "p7358" },
+      { "programItemId": "p7424" }
     ],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7368" },
+        "programItemDetails": { "programItemId": "p7368" },
         "priority": 1,
         "time": "2023-11-04T15:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7270" },
+        "programItemDetails": { "programItemId": "p7270" },
         "priority": 1,
         "time": "2023-11-05T09:00:00Z",
         "message": ""
@@ -1407,11 +1422,11 @@
     "groupCreatorCode": "0",
     "groupCode": "54e-32f-c47",
     "favoritedGames": [
-      { "gameId": "p7273" },
-      { "gameId": "p7373" },
-      { "gameId": "p7270" },
-      { "gameId": "p7358" },
-      { "gameId": "p7367" }
+      { "programItemId": "p7273" },
+      { "programItemId": "p7373" },
+      { "programItemId": "p7270" },
+      { "programItemId": "p7358" },
+      { "programItemId": "p7367" }
     ],
     "lotterySignups": [],
     "eventLogItems": [
@@ -1450,47 +1465,47 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [
-      { "gameId": "p7284" },
-      { "gameId": "p7335" },
-      { "gameId": "p7358" },
-      { "gameId": "p7362" },
-      { "gameId": "p7285" },
-      { "gameId": "p7367" },
-      { "gameId": "p7369" }
+      { "programItemId": "p7284" },
+      { "programItemId": "p7335" },
+      { "programItemId": "p7358" },
+      { "programItemId": "p7362" },
+      { "programItemId": "p7285" },
+      { "programItemId": "p7367" },
+      { "programItemId": "p7369" }
     ],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7269" },
+        "programItemDetails": { "programItemId": "p7269" },
         "priority": 1,
         "time": "2023-11-04T17:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7373" },
+        "programItemDetails": { "programItemId": "p7373" },
         "priority": 1,
         "time": "2023-11-04T18:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7339" },
+        "programItemDetails": { "programItemId": "p7339" },
         "priority": 1,
         "time": "2023-11-05T09:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7362" },
+        "programItemDetails": { "programItemId": "p7362" },
         "priority": 1,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7367" },
+        "programItemDetails": { "programItemId": "p7367" },
         "priority": 2,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7358" },
+        "programItemDetails": { "programItemId": "p7358" },
         "priority": 3,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
@@ -1538,46 +1553,46 @@
     "serial": "9839723088",
     "groupCreatorCode": "0",
     "groupCode": "0",
-    "favoritedGames": [{ "gameId": "p7284" }],
+    "favoritedGames": [{ "programItemId": "p7284" }],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7345" },
+        "programItemDetails": { "programItemId": "p7345" },
         "priority": 1,
         "time": "2023-11-04T13:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7280" },
+        "programItemDetails": { "programItemId": "p7280" },
         "priority": 2,
         "time": "2023-11-04T13:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7358" },
+        "programItemDetails": { "programItemId": "p7358" },
         "priority": 1,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7365" },
+        "programItemDetails": { "programItemId": "p7365" },
         "priority": 3,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7362" },
+        "programItemDetails": { "programItemId": "p7362" },
         "priority": 2,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7424" },
+        "programItemDetails": { "programItemId": "p7424" },
         "priority": 1,
         "time": "2023-11-05T12:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7344" },
+        "programItemDetails": { "programItemId": "p7344" },
         "priority": 2,
         "time": "2023-11-05T12:00:00Z",
         "message": ""
@@ -1612,9 +1627,9 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [
-      { "gameId": "p7284" },
-      { "gameId": "p7361" },
-      { "gameId": "p7359" }
+      { "programItemId": "p7284" },
+      { "programItemId": "p7361" },
+      { "programItemId": "p7359" }
     ],
     "lotterySignups": [],
     "eventLogItems": [],
@@ -1631,30 +1646,30 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [
-      { "gameId": "p7359" },
-      { "gameId": "p7361" },
-      { "gameId": "p7353" },
-      { "gameId": "p7272" },
-      { "gameId": "p7338" },
-      { "gameId": "p7280" },
-      { "gameId": "p7274" },
-      { "gameId": "p7360" },
-      { "gameId": "p7335" },
-      { "gameId": "p7341" },
-      { "gameId": "p7269" },
-      { "gameId": "p7273" },
-      { "gameId": "p7346" },
-      { "gameId": "p7365" }
+      { "programItemId": "p7359" },
+      { "programItemId": "p7361" },
+      { "programItemId": "p7353" },
+      { "programItemId": "p7272" },
+      { "programItemId": "p7338" },
+      { "programItemId": "p7280" },
+      { "programItemId": "p7274" },
+      { "programItemId": "p7360" },
+      { "programItemId": "p7335" },
+      { "programItemId": "p7341" },
+      { "programItemId": "p7269" },
+      { "programItemId": "p7273" },
+      { "programItemId": "p7346" },
+      { "programItemId": "p7365" }
     ],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7346" },
+        "programItemDetails": { "programItemId": "p7346" },
         "priority": 1,
         "time": "2023-11-04T18:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7373" },
+        "programItemDetails": { "programItemId": "p7373" },
         "priority": 2,
         "time": "2023-11-04T18:00:00Z",
         "message": ""
@@ -1697,19 +1712,19 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [
-      { "gameId": "p7359" },
-      { "gameId": "p7361" },
-      { "gameId": "p7353" }
+      { "programItemId": "p7359" },
+      { "programItemId": "p7361" },
+      { "programItemId": "p7353" }
     ],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7365" },
+        "programItemDetails": { "programItemId": "p7365" },
         "priority": 1,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7362" },
+        "programItemDetails": { "programItemId": "p7362" },
         "priority": 2,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
@@ -1737,31 +1752,31 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [
-      { "gameId": "p7353" },
-      { "gameId": "p7284" },
-      { "gameId": "p7361" }
+      { "programItemId": "p7353" },
+      { "programItemId": "p7284" },
+      { "programItemId": "p7361" }
     ],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7269" },
+        "programItemDetails": { "programItemId": "p7269" },
         "priority": 1,
         "time": "2023-11-04T17:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7285" },
+        "programItemDetails": { "programItemId": "p7285" },
         "priority": 1,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7358" },
+        "programItemDetails": { "programItemId": "p7358" },
         "priority": 3,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7362" },
+        "programItemDetails": { "programItemId": "p7362" },
         "priority": 2,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
@@ -1811,15 +1826,15 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [
-      { "gameId": "p7359" },
-      { "gameId": "p7347" },
-      { "gameId": "<canceled>" },
-      { "gameId": "p7346" },
-      { "gameId": "<canceled>" }
+      { "programItemId": "p7359" },
+      { "programItemId": "p7347" },
+      { "programItemId": "<canceled>" },
+      { "programItemId": "p7346" },
+      { "programItemId": "<canceled>" }
     ],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7346" },
+        "programItemDetails": { "programItemId": "p7346" },
         "priority": 1,
         "time": "2023-11-04T18:00:00Z",
         "message": ""
@@ -1849,7 +1864,7 @@
     "favoritedGames": [],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7338" },
+        "programItemDetails": { "programItemId": "p7338" },
         "priority": 1,
         "time": "2023-11-04T11:00:00Z",
         "message": ""
@@ -1876,16 +1891,16 @@
     "serial": "9630171610",
     "groupCreatorCode": "0",
     "groupCode": "0",
-    "favoritedGames": [{ "gameId": "p7346" }],
+    "favoritedGames": [{ "programItemId": "p7346" }],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7360" },
+        "programItemDetails": { "programItemId": "p7360" },
         "priority": 1,
         "time": "2023-11-04T15:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7285" },
+        "programItemDetails": { "programItemId": "p7285" },
         "priority": 1,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
@@ -1935,7 +1950,10 @@
     "serial": "4176715409",
     "groupCreatorCode": "0",
     "groupCode": "0",
-    "favoritedGames": [{ "gameId": "p7359" }, { "gameId": "p7361" }],
+    "favoritedGames": [
+      { "programItemId": "p7359" },
+      { "programItemId": "p7361" }
+    ],
     "lotterySignups": [],
     "eventLogItems": [],
     "createdAt": "2023-11-04T07:21:14.706Z",
@@ -1951,41 +1969,41 @@
     "groupCreatorCode": "54e-32f-c47",
     "groupCode": "54e-32f-c47",
     "favoritedGames": [
-      { "gameId": "p7373" },
-      { "gameId": "p7270" },
-      { "gameId": "p7367" },
-      { "gameId": "p7424" },
-      { "gameId": "p7280" },
-      { "gameId": "p7273" },
-      { "gameId": "p7358" }
+      { "programItemId": "p7373" },
+      { "programItemId": "p7270" },
+      { "programItemId": "p7367" },
+      { "programItemId": "p7424" },
+      { "programItemId": "p7280" },
+      { "programItemId": "p7273" },
+      { "programItemId": "p7358" }
     ],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7280" },
+        "programItemDetails": { "programItemId": "p7280" },
         "priority": 1,
         "time": "2023-11-04T13:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7273" },
+        "programItemDetails": { "programItemId": "p7273" },
         "priority": 2,
         "time": "2023-11-04T17:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7358" },
+        "programItemDetails": { "programItemId": "p7358" },
         "priority": 1,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7367" },
+        "programItemDetails": { "programItemId": "p7367" },
         "priority": 2,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7362" },
+        "programItemDetails": { "programItemId": "p7362" },
         "priority": 3,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
@@ -2065,11 +2083,11 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [
-      { "gameId": "p7272" },
-      { "gameId": "p7345" },
-      { "gameId": "p7343" },
-      { "gameId": "p7299" },
-      { "gameId": "p7369" }
+      { "programItemId": "p7272" },
+      { "programItemId": "p7345" },
+      { "programItemId": "p7343" },
+      { "programItemId": "p7299" },
+      { "programItemId": "p7369" }
     ],
     "lotterySignups": [],
     "eventLogItems": [],
@@ -2086,9 +2104,9 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [
-      { "gameId": "p7359" },
-      { "gameId": "p7361" },
-      { "gameId": "p7284" }
+      { "programItemId": "p7359" },
+      { "programItemId": "p7361" },
+      { "programItemId": "p7284" }
     ],
     "lotterySignups": [],
     "eventLogItems": [],
@@ -2120,19 +2138,19 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [
-      { "gameId": "p7284" },
-      { "gameId": "p7353" },
-      { "gameId": "p7347" },
-      { "gameId": "p7274" },
-      { "gameId": "p7361" },
-      { "gameId": "p7280" },
-      { "gameId": "p7365" },
-      { "gameId": "p7344" },
-      { "gameId": "p7362" }
+      { "programItemId": "p7284" },
+      { "programItemId": "p7353" },
+      { "programItemId": "p7347" },
+      { "programItemId": "p7274" },
+      { "programItemId": "p7361" },
+      { "programItemId": "p7280" },
+      { "programItemId": "p7365" },
+      { "programItemId": "p7344" },
+      { "programItemId": "p7362" }
     ],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7274" },
+        "programItemDetails": { "programItemId": "p7274" },
         "priority": 1,
         "time": "2023-11-04T14:00:00Z",
         "message": ""
@@ -2177,19 +2195,19 @@
     "favoritedGames": [],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7362" },
+        "programItemDetails": { "programItemId": "p7362" },
         "priority": 1,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7358" },
+        "programItemDetails": { "programItemId": "p7358" },
         "priority": 2,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7367" },
+        "programItemDetails": { "programItemId": "p7367" },
         "priority": 3,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
@@ -2211,31 +2229,31 @@
     "favoritedGames": [],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7364" },
+        "programItemDetails": { "programItemId": "p7364" },
         "priority": 1,
         "time": "2023-11-04T15:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7360" },
+        "programItemDetails": { "programItemId": "p7360" },
         "priority": 3,
         "time": "2023-11-04T15:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7367" },
+        "programItemDetails": { "programItemId": "p7367" },
         "priority": 1,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7362" },
+        "programItemDetails": { "programItemId": "p7362" },
         "priority": 2,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7365" },
+        "programItemDetails": { "programItemId": "p7365" },
         "priority": 3,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
@@ -2280,31 +2298,31 @@
     "favoritedGames": [],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7274" },
+        "programItemDetails": { "programItemId": "p7274" },
         "priority": 1,
         "time": "2023-11-04T14:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7285" },
+        "programItemDetails": { "programItemId": "p7285" },
         "priority": 1,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7362" },
+        "programItemDetails": { "programItemId": "p7362" },
         "priority": 2,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7424" },
+        "programItemDetails": { "programItemId": "p7424" },
         "priority": 1,
         "time": "2023-11-05T12:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7344" },
+        "programItemDetails": { "programItemId": "p7344" },
         "priority": 2,
         "time": "2023-11-05T12:00:00Z",
         "message": ""
@@ -2338,10 +2356,13 @@
     "serial": "4494151626",
     "groupCreatorCode": "0",
     "groupCode": "0",
-    "favoritedGames": [{ "gameId": "p7274" }, { "gameId": "p7280" }],
+    "favoritedGames": [
+      { "programItemId": "p7274" },
+      { "programItemId": "p7280" }
+    ],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7274" },
+        "programItemDetails": { "programItemId": "p7274" },
         "priority": 1,
         "time": "2023-11-04T14:00:00Z",
         "message": ""
@@ -2394,19 +2415,19 @@
     "favoritedGames": [],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7345" },
+        "programItemDetails": { "programItemId": "p7345" },
         "priority": 1,
         "time": "2023-11-04T13:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7341" },
+        "programItemDetails": { "programItemId": "p7341" },
         "priority": 1,
         "time": "2023-11-04T16:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7335" },
+        "programItemDetails": { "programItemId": "p7335" },
         "priority": 2,
         "time": "2023-11-04T16:00:00Z",
         "message": ""
@@ -2449,27 +2470,27 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [
-      { "gameId": "p7369" },
-      { "gameId": "p7367" },
-      { "gameId": "p7362" },
-      { "gameId": "p7365" },
-      { "gameId": "p7344" }
+      { "programItemId": "p7369" },
+      { "programItemId": "p7367" },
+      { "programItemId": "p7362" },
+      { "programItemId": "p7365" },
+      { "programItemId": "p7344" }
     ],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7335" },
+        "programItemDetails": { "programItemId": "p7335" },
         "priority": 1,
         "time": "2023-11-04T16:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7341" },
+        "programItemDetails": { "programItemId": "p7341" },
         "priority": 2,
         "time": "2023-11-04T16:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7369" },
+        "programItemDetails": { "programItemId": "p7369" },
         "priority": 1,
         "time": "2023-11-05T11:00:00Z",
         "message": ""
@@ -2529,13 +2550,13 @@
     "favoritedGames": [],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7360" },
+        "programItemDetails": { "programItemId": "p7360" },
         "priority": 1,
         "time": "2023-11-04T15:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7298" },
+        "programItemDetails": { "programItemId": "p7298" },
         "priority": 1,
         "time": "2023-11-04T16:00:00Z",
         "message": ""
@@ -2595,13 +2616,13 @@
     "favoritedGames": [],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7364" },
+        "programItemDetails": { "programItemId": "p7364" },
         "priority": 1,
         "time": "2023-11-04T15:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7360" },
+        "programItemDetails": { "programItemId": "p7360" },
         "priority": 2,
         "time": "2023-11-04T15:00:00Z",
         "message": ""
@@ -2629,20 +2650,20 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [
-      { "gameId": "p7373" },
-      { "gameId": "p7279" },
-      { "gameId": "p7346" },
-      { "gameId": "p7345" }
+      { "programItemId": "p7373" },
+      { "programItemId": "p7279" },
+      { "programItemId": "p7346" },
+      { "programItemId": "p7345" }
     ],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7346" },
+        "programItemDetails": { "programItemId": "p7346" },
         "priority": 1,
         "time": "2023-11-04T18:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7373" },
+        "programItemDetails": { "programItemId": "p7373" },
         "priority": 2,
         "time": "2023-11-04T18:00:00Z",
         "message": ""
@@ -2685,9 +2706,9 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [
-      { "gameId": "p7367" },
-      { "gameId": "p7362" },
-      { "gameId": "p7358" }
+      { "programItemId": "p7367" },
+      { "programItemId": "p7362" },
+      { "programItemId": "p7358" }
     ],
     "lotterySignups": [],
     "eventLogItems": [],
@@ -2736,13 +2757,13 @@
     "favoritedGames": [],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7338" },
+        "programItemDetails": { "programItemId": "p7338" },
         "priority": 1,
         "time": "2023-11-04T11:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7369" },
+        "programItemDetails": { "programItemId": "p7369" },
         "priority": 1,
         "time": "2023-11-05T11:00:00Z",
         "message": ""
@@ -2779,7 +2800,7 @@
     "favoritedGames": [],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7369" },
+        "programItemDetails": { "programItemId": "p7369" },
         "priority": 1,
         "time": "2023-11-05T11:00:00Z",
         "message": ""
@@ -2809,19 +2830,19 @@
     "favoritedGames": [],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7345" },
+        "programItemDetails": { "programItemId": "p7345" },
         "priority": 1,
         "time": "2023-11-04T13:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7341" },
+        "programItemDetails": { "programItemId": "p7341" },
         "priority": 1,
         "time": "2023-11-04T16:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7335" },
+        "programItemDetails": { "programItemId": "p7335" },
         "priority": 2,
         "time": "2023-11-04T16:00:00Z",
         "message": ""
@@ -2858,19 +2879,19 @@
     "favoritedGames": [],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7345" },
+        "programItemDetails": { "programItemId": "p7345" },
         "priority": 1,
         "time": "2023-11-04T13:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7341" },
+        "programItemDetails": { "programItemId": "p7341" },
         "priority": 1,
         "time": "2023-11-04T16:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7335" },
+        "programItemDetails": { "programItemId": "p7335" },
         "priority": 2,
         "time": "2023-11-04T16:00:00Z",
         "message": ""
@@ -2904,22 +2925,25 @@
     "serial": "4058100373",
     "groupCreatorCode": "0",
     "groupCode": "0",
-    "favoritedGames": [{ "gameId": "p7341" }, { "gameId": "p7345" }],
+    "favoritedGames": [
+      { "programItemId": "p7341" },
+      { "programItemId": "p7345" }
+    ],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7345" },
+        "programItemDetails": { "programItemId": "p7345" },
         "priority": 1,
         "time": "2023-11-04T13:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7341" },
+        "programItemDetails": { "programItemId": "p7341" },
         "priority": 1,
         "time": "2023-11-04T16:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7335" },
+        "programItemDetails": { "programItemId": "p7335" },
         "priority": 2,
         "time": "2023-11-04T16:00:00Z",
         "message": ""
@@ -2956,19 +2980,19 @@
     "favoritedGames": [],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7345" },
+        "programItemDetails": { "programItemId": "p7345" },
         "priority": 1,
         "time": "2023-11-04T13:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7341" },
+        "programItemDetails": { "programItemId": "p7341" },
         "priority": 1,
         "time": "2023-11-04T16:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7335" },
+        "programItemDetails": { "programItemId": "p7335" },
         "priority": 2,
         "time": "2023-11-04T16:00:00Z",
         "message": ""
@@ -3005,25 +3029,25 @@
     "favoritedGames": [],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7364" },
+        "programItemDetails": { "programItemId": "p7364" },
         "priority": 2,
         "time": "2023-11-04T15:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7360" },
+        "programItemDetails": { "programItemId": "p7360" },
         "priority": 1,
         "time": "2023-11-04T15:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7285" },
+        "programItemDetails": { "programItemId": "p7285" },
         "priority": 1,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7365" },
+        "programItemDetails": { "programItemId": "p7365" },
         "priority": 2,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
@@ -3060,19 +3084,19 @@
     "favoritedGames": [],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7362" },
+        "programItemDetails": { "programItemId": "p7362" },
         "priority": 2,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7285" },
+        "programItemDetails": { "programItemId": "p7285" },
         "priority": 1,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7358" },
+        "programItemDetails": { "programItemId": "p7358" },
         "priority": 3,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
@@ -3117,31 +3141,31 @@
     "favoritedGames": [],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7274" },
+        "programItemDetails": { "programItemId": "p7274" },
         "priority": 1,
         "time": "2023-11-04T14:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7368" },
+        "programItemDetails": { "programItemId": "p7368" },
         "priority": 1,
         "time": "2023-11-04T15:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7360" },
+        "programItemDetails": { "programItemId": "p7360" },
         "priority": 3,
         "time": "2023-11-04T15:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7270" },
+        "programItemDetails": { "programItemId": "p7270" },
         "priority": 1,
         "time": "2023-11-05T09:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7369" },
+        "programItemDetails": { "programItemId": "p7369" },
         "priority": 1,
         "time": "2023-11-05T11:00:00Z",
         "message": ""
@@ -3223,13 +3247,13 @@
     "favoritedGames": [],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7280" },
+        "programItemDetails": { "programItemId": "p7280" },
         "priority": 1,
         "time": "2023-11-04T13:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7346" },
+        "programItemDetails": { "programItemId": "p7346" },
         "priority": 1,
         "time": "2023-11-04T18:00:00Z",
         "message": ""
@@ -3311,19 +3335,19 @@
     "favoritedGames": [],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7364" },
+        "programItemDetails": { "programItemId": "p7364" },
         "priority": 2,
         "time": "2023-11-04T15:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7367" },
+        "programItemDetails": { "programItemId": "p7367" },
         "priority": 1,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7285" },
+        "programItemDetails": { "programItemId": "p7285" },
         "priority": 2,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
@@ -3360,13 +3384,13 @@
     "favoritedGames": [],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7274" },
+        "programItemDetails": { "programItemId": "p7274" },
         "priority": 1,
         "time": "2023-11-04T14:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7358" },
+        "programItemDetails": { "programItemId": "p7358" },
         "priority": 1,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
@@ -3403,19 +3427,19 @@
     "favoritedGames": [],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7360" },
+        "programItemDetails": { "programItemId": "p7360" },
         "priority": 1,
         "time": "2023-11-04T15:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7285" },
+        "programItemDetails": { "programItemId": "p7285" },
         "priority": 1,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7367" },
+        "programItemDetails": { "programItemId": "p7367" },
         "priority": 2,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
@@ -3445,7 +3469,7 @@
     "favoritedGames": [],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7345" },
+        "programItemDetails": { "programItemId": "p7345" },
         "priority": 1,
         "time": "2023-11-04T13:00:00Z",
         "message": ""
@@ -3473,37 +3497,37 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [
-      { "gameId": "p7367" },
-      { "gameId": "p7285" },
-      { "gameId": "p7362" }
+      { "programItemId": "p7367" },
+      { "programItemId": "p7285" },
+      { "programItemId": "p7362" }
     ],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7345" },
+        "programItemDetails": { "programItemId": "p7345" },
         "priority": 1,
         "time": "2023-11-04T13:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7280" },
+        "programItemDetails": { "programItemId": "p7280" },
         "priority": 2,
         "time": "2023-11-04T13:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7362" },
+        "programItemDetails": { "programItemId": "p7362" },
         "priority": 3,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7285" },
+        "programItemDetails": { "programItemId": "p7285" },
         "priority": 1,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7367" },
+        "programItemDetails": { "programItemId": "p7367" },
         "priority": 2,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
@@ -3540,25 +3564,25 @@
     "favoritedGames": [],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7360" },
+        "programItemDetails": { "programItemId": "p7360" },
         "priority": 1,
         "time": "2023-11-04T15:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7285" },
+        "programItemDetails": { "programItemId": "p7285" },
         "priority": 1,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7367" },
+        "programItemDetails": { "programItemId": "p7367" },
         "priority": 2,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7299" },
+        "programItemDetails": { "programItemId": "p7299" },
         "priority": 3,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
@@ -3595,7 +3619,7 @@
     "favoritedGames": [],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7373" },
+        "programItemDetails": { "programItemId": "p7373" },
         "priority": 1,
         "time": "2023-11-04T18:00:00Z",
         "message": ""
@@ -3640,13 +3664,13 @@
     "favoritedGames": [],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7369" },
+        "programItemDetails": { "programItemId": "p7369" },
         "priority": 2,
         "time": "2023-11-05T11:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7424" },
+        "programItemDetails": { "programItemId": "p7424" },
         "priority": 1,
         "time": "2023-11-05T12:00:00Z",
         "message": ""
@@ -3687,7 +3711,7 @@
     "serial": "9827253585",
     "groupCreatorCode": "0",
     "groupCode": "0",
-    "favoritedGames": [{ "gameId": "p7360" }],
+    "favoritedGames": [{ "programItemId": "p7360" }],
     "lotterySignups": [],
     "eventLogItems": [],
     "createdAt": "2023-11-04T12:01:13.017Z",
@@ -3703,16 +3727,16 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [
-      { "gameId": "p7279" },
-      { "gameId": "p7373" },
-      { "gameId": "p7270" },
-      { "gameId": "<canceled>" },
-      { "gameId": "p7362" },
-      { "gameId": "p7367" }
+      { "programItemId": "p7279" },
+      { "programItemId": "p7373" },
+      { "programItemId": "p7270" },
+      { "programItemId": "<canceled>" },
+      { "programItemId": "p7362" },
+      { "programItemId": "p7367" }
     ],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7373" },
+        "programItemDetails": { "programItemId": "p7373" },
         "priority": 1,
         "time": "2023-11-04T18:00:00Z",
         "message": ""
@@ -3749,7 +3773,7 @@
     "favoritedGames": [],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7344" },
+        "programItemDetails": { "programItemId": "p7344" },
         "priority": 1,
         "time": "2023-11-05T12:00:00Z",
         "message": ""
@@ -3779,7 +3803,7 @@
     "favoritedGames": [],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7360" },
+        "programItemDetails": { "programItemId": "p7360" },
         "priority": 1,
         "time": "2023-11-04T15:00:00Z",
         "message": ""
@@ -3801,7 +3825,7 @@
     "favoritedGames": [],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7364" },
+        "programItemDetails": { "programItemId": "p7364" },
         "priority": 1,
         "time": "2023-11-04T15:00:00Z",
         "message": ""
@@ -3831,13 +3855,13 @@
     "favoritedGames": [],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7358" },
+        "programItemDetails": { "programItemId": "p7358" },
         "priority": 1,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7367" },
+        "programItemDetails": { "programItemId": "p7367" },
         "priority": 2,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
@@ -3867,19 +3891,19 @@
     "favoritedGames": [],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7279" },
+        "programItemDetails": { "programItemId": "p7279" },
         "priority": 1,
         "time": "2023-11-04T17:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7365" },
+        "programItemDetails": { "programItemId": "p7365" },
         "priority": 1,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7367" },
+        "programItemDetails": { "programItemId": "p7367" },
         "priority": 2,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
@@ -3914,25 +3938,25 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [
-      { "gameId": "p7344" },
-      { "gameId": "p7299" },
-      { "gameId": "p7365" }
+      { "programItemId": "p7344" },
+      { "programItemId": "p7299" },
+      { "programItemId": "p7365" }
     ],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7365" },
+        "programItemDetails": { "programItemId": "p7365" },
         "priority": 1,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7285" },
+        "programItemDetails": { "programItemId": "p7285" },
         "priority": 3,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7299" },
+        "programItemDetails": { "programItemId": "p7299" },
         "priority": 2,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
@@ -3962,13 +3986,13 @@
     "favoritedGames": [],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7269" },
+        "programItemDetails": { "programItemId": "p7269" },
         "priority": 2,
         "time": "2023-11-04T17:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7279" },
+        "programItemDetails": { "programItemId": "p7279" },
         "priority": 1,
         "time": "2023-11-04T17:00:00Z",
         "message": ""
@@ -3998,19 +4022,19 @@
     "favoritedGames": [],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7279" },
+        "programItemDetails": { "programItemId": "p7279" },
         "priority": 1,
         "time": "2023-11-04T17:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7273" },
+        "programItemDetails": { "programItemId": "p7273" },
         "priority": 2,
         "time": "2023-11-04T17:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7424" },
+        "programItemDetails": { "programItemId": "p7424" },
         "priority": 1,
         "time": "2023-11-05T12:00:00Z",
         "message": ""
@@ -4086,19 +4110,19 @@
     "favoritedGames": [],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7362" },
+        "programItemDetails": { "programItemId": "p7362" },
         "priority": 1,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7285" },
+        "programItemDetails": { "programItemId": "p7285" },
         "priority": 2,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7336" },
+        "programItemDetails": { "programItemId": "p7336" },
         "priority": 3,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
@@ -4128,7 +4152,7 @@
     "favoritedGames": [],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7346" },
+        "programItemDetails": { "programItemId": "p7346" },
         "priority": 1,
         "time": "2023-11-04T18:00:00Z",
         "message": ""
@@ -4158,19 +4182,19 @@
     "favoritedGames": [],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7362" },
+        "programItemDetails": { "programItemId": "p7362" },
         "priority": 1,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7285" },
+        "programItemDetails": { "programItemId": "p7285" },
         "priority": 2,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7336" },
+        "programItemDetails": { "programItemId": "p7336" },
         "priority": 3,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
@@ -4251,29 +4275,29 @@
     "groupCreatorCode": "0",
     "groupCode": "0",
     "favoritedGames": [
-      { "gameId": "p7270" },
-      { "gameId": "p7365" },
-      { "gameId": "p7285" },
-      { "gameId": "p7367" },
-      { "gameId": "p7369" },
-      { "gameId": "p7424" },
-      { "gameId": "p7344" }
+      { "programItemId": "p7270" },
+      { "programItemId": "p7365" },
+      { "programItemId": "p7285" },
+      { "programItemId": "p7367" },
+      { "programItemId": "p7369" },
+      { "programItemId": "p7424" },
+      { "programItemId": "p7344" }
     ],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7270" },
+        "programItemDetails": { "programItemId": "p7270" },
         "priority": 2,
         "time": "2023-11-05T09:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7344" },
+        "programItemDetails": { "programItemId": "p7344" },
         "priority": 1,
         "time": "2023-11-05T12:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7424" },
+        "programItemDetails": { "programItemId": "p7424" },
         "priority": 2,
         "time": "2023-11-05T12:00:00Z",
         "message": ""
@@ -4325,7 +4349,7 @@
     "favoritedGames": [],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7285" },
+        "programItemDetails": { "programItemId": "p7285" },
         "priority": 1,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
@@ -4355,13 +4379,13 @@
     "favoritedGames": [],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7299" },
+        "programItemDetails": { "programItemId": "p7299" },
         "priority": 2,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7365" },
+        "programItemDetails": { "programItemId": "p7365" },
         "priority": 1,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
@@ -4391,7 +4415,7 @@
     "favoritedGames": [],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7369" },
+        "programItemDetails": { "programItemId": "p7369" },
         "priority": 1,
         "time": "2023-11-05T11:00:00Z",
         "message": ""
@@ -4421,13 +4445,13 @@
     "favoritedGames": [],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7362" },
+        "programItemDetails": { "programItemId": "p7362" },
         "priority": 1,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7299" },
+        "programItemDetails": { "programItemId": "p7299" },
         "priority": 2,
         "time": "2023-11-05T10:00:00Z",
         "message": ""
@@ -4457,13 +4481,13 @@
     "favoritedGames": [],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7424" },
+        "programItemDetails": { "programItemId": "p7424" },
         "priority": 1,
         "time": "2023-11-05T12:00:00Z",
         "message": ""
       },
       {
-        "programItemDetails": { "gameId": "p7344" },
+        "programItemDetails": { "programItemId": "p7344" },
         "priority": 2,
         "time": "2023-11-05T12:00:00Z",
         "message": ""
@@ -4493,7 +4517,7 @@
     "favoritedGames": [],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7344" },
+        "programItemDetails": { "programItemId": "p7344" },
         "priority": 1,
         "time": "2023-11-05T12:00:00Z",
         "message": ""
@@ -4523,7 +4547,7 @@
     "favoritedGames": [],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7424" },
+        "programItemDetails": { "programItemId": "p7424" },
         "priority": 1,
         "time": "2023-11-05T12:00:00Z",
         "message": ""
@@ -4553,7 +4577,7 @@
     "favoritedGames": [],
     "lotterySignups": [
       {
-        "programItemDetails": { "gameId": "p7424" },
+        "programItemDetails": { "programItemId": "p7424" },
         "priority": 1,
         "time": "2023-11-05T12:00:00Z",
         "message": ""

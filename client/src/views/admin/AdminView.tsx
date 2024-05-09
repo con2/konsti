@@ -43,7 +43,7 @@ export const AdminView = (): ReactElement => {
       let match = false;
 
       for (let j = 0; j < hiddenGames.length; j += 1) {
-        if (games[i].gameId === hiddenGames[j].gameId) {
+        if (games[i].programItemId === hiddenGames[j].programItemId) {
           match = true;
           break;
         }

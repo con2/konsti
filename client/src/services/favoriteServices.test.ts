@@ -10,7 +10,7 @@ test("POST favorited games to server", async () => {
 
   const favoriteData = {
     username: "test username",
-    favoritedGameIds: [],
+    favoritedProgramItemIds: [],
   };
 
   const response = await postFavorite(favoriteData);

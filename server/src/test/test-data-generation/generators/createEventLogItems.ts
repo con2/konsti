@@ -26,7 +26,7 @@ export const createEventLogItems = async (): Promise<void> => {
 
     return randomGames.map((randomGame, index) => ({
       username: user.username,
-      programItemId: randomGame.gameId,
+      programItemId: randomGame.programItemId,
       programItemStartTime: randomGame.startTime,
       createdAt: createdAtTimes[index].toISOString(),
     }));

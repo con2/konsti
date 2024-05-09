@@ -97,9 +97,9 @@ export const storeSignupQuestion = async (
 };
 
 export const removeSignupQuestion = async (
-  gameId: string,
+  programItemId: string,
 ): Promise<PostSignupQuestionResponse | ApiError> => {
-  const delSignupQuestionResult = await delSignupQuestion(gameId);
+  const delSignupQuestionResult = await delSignupQuestion(programItemId);
   if (isErrorResult(delSignupQuestionResult)) {
     return {
       message: "delSignupQuestion failure",

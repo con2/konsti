@@ -42,7 +42,7 @@ test("should remove lottery signups for moved games from users", async () => {
   expect(insertedUser?.lotterySignups.length).toEqual(2);
 
   await ProgramItemModel.updateOne(
-    { gameId: testGame.gameId },
+    { programItemId: testGame.programItemId },
     {
       startTime: dayjs(testGame.startTime).add(1, "hours").toISOString(),
     },
@@ -54,7 +54,7 @@ test("should remove lottery signups for moved games from users", async () => {
   const updatedUser = unsafelyUnwrapResult(findUserResult);
 
   expect(updatedUser?.lotterySignups.length).toEqual(1);
-  expect(updatedUser?.lotterySignups[0].programItemDetails.gameId).toEqual(
-    testGame2.gameId,
-  );
+  expect(
+    updatedUser?.lotterySignups[0].programItemDetails.programItemId,
+  ).toEqual(testGame2.programItemId);
 });

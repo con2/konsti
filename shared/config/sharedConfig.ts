@@ -32,7 +32,7 @@ export interface SharedConfig {
   addToKonsti: string[];
   noKonstiSignupIds: string[];
   signupQuestions: SignupQuestion[];
-  tournamentSignupQuestion: Omit<SignupQuestion, "gameId"> | null;
+  tournamentSignupQuestion: Omit<SignupQuestion, "programItemId"> | null;
   tournamentSignupQuestionExcludeIds: string[];
   addRevolvingDoorIds: string[];
   isEnglishProgramItems: string[];

@@ -19,7 +19,9 @@ export const NotificationBar = (): ReactElement | null => {
 
   const errorList = unseenEvents.map(
     ({ eventLogItemId, programItemId, action, createdAt }) => {
-      const foundGame = games.find((game) => game.gameId === programItemId);
+      const foundGame = games.find(
+        (game) => game.programItemId === programItemId,
+      );
       if (!foundGame) {
         return;
       }

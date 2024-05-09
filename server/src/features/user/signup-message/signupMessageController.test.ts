@@ -55,7 +55,7 @@ describe(`GET ${ApiEndpoint.SIGNUP_MESSAGE}`, () => {
     await createSettings();
 
     const testSignupQuestion: SignupQuestion = {
-      gameId: testGame.gameId,
+      programItemId: testGame.programItemId,
       questionFi: "Public signup question",
       questionEn: "public message",
       private: false,
@@ -64,7 +64,7 @@ describe(`GET ${ApiEndpoint.SIGNUP_MESSAGE}`, () => {
     };
 
     const testSignupQuestion2: SignupQuestion = {
-      gameId: testGame2.gameId,
+      programItemId: testGame2.programItemId,
       questionFi: "Private signup question",
       questionEn: "public message",
       private: true,

@@ -33,13 +33,13 @@ test("should insert new event log item to user", async () => {
     updates: [
       {
         username: mockUser.username,
-        programItemId: testGame.gameId,
+        programItemId: testGame.programItemId,
         programItemStartTime: testGame.startTime,
         createdAt: "2019-07-26T17:00:00.000Z",
       },
       {
         username: mockUser2.username,
-        programItemId: testGame.gameId,
+        programItemId: testGame.programItemId,
         programItemStartTime: testGame.startTime,
         createdAt: "2020-07-26T17:00:00.000Z",
       },
@@ -55,7 +55,7 @@ test("should insert new event log item to user", async () => {
     eventLogItems: [
       {
         action: EventLogAction.NEW_ASSIGNMENT,
-        programItemId: testGame.gameId,
+        programItemId: testGame.programItemId,
         programItemStartTime: testGame.startTime,
         createdAt: "2019-07-26T17:00:00.000Z",
       },
@@ -70,7 +70,7 @@ test("should insert new event log item to user", async () => {
     eventLogItems: [
       {
         action: EventLogAction.NEW_ASSIGNMENT,
-        programItemId: testGame.gameId,
+        programItemId: testGame.programItemId,
         programItemStartTime: testGame.startTime,
         createdAt: "2020-07-26T17:00:00.000Z",
       },
@@ -95,13 +95,13 @@ test("should delete event log items for start time", async () => {
     updates: [
       {
         username: mockUser.username,
-        programItemId: testGame.gameId,
+        programItemId: testGame.programItemId,
         programItemStartTime: testGame.startTime,
         createdAt: "2019-07-26T17:00:00.000Z",
       },
       {
         username: mockUser.username,
-        programItemId: testGame2.gameId,
+        programItemId: testGame2.programItemId,
         programItemStartTime: testGame2.startTime,
         createdAt: "2020-07-26T17:00:00.000Z",
       },
@@ -122,7 +122,7 @@ test("should delete event log items for start time", async () => {
     eventLogItems: [
       {
         action: EventLogAction.NEW_ASSIGNMENT,
-        programItemId: testGame2.gameId,
+        programItemId: testGame2.programItemId,
         programItemStartTime: testGame2.startTime,
         createdAt: "2020-07-26T17:00:00.000Z",
       },

@@ -11,7 +11,7 @@ export const getRandomAssignEvents = (
     // Program item can have existing direct signups if program item's start time has changed
     // Consider existing direct signups when determining program item attendee limits
     const gameSignup = directSignups.find(
-      (signup) => signup.game.gameId === selectedGame.gameId,
+      (signup) => signup.game.programItemId === selectedGame.programItemId,
     );
 
     const changedSignups = gameSignup?.userSignups.filter((userSignup) => {
@@ -26,7 +26,7 @@ export const getRandomAssignEvents = (
     const currentSignups = changedSignups?.length ?? 0;
 
     return {
-      id: selectedGame.gameId,
+      id: selectedGame.programItemId,
       min: selectedGame.minAttendance - currentSignups,
       max: selectedGame.maxAttendance - currentSignups,
       groups: [],

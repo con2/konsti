@@ -35,7 +35,7 @@ export const verifyUserSignups = async (): Promise<
   signups.map(({ game, userSignups }) => {
     if (
       !config.shared().twoPhaseSignupProgramTypes.includes(game.programType) ||
-      config.shared().directSignupAlwaysOpenIds.includes(game.gameId)
+      config.shared().directSignupAlwaysOpenIds.includes(game.programItemId)
     ) {
       return;
     }
@@ -65,7 +65,8 @@ export const verifyUserSignups = async (): Promise<
 
       const matchingCreatorLotterySignup = groupCreator.lotterySignups.find(
         (creatorLotterySignup) =>
-          creatorLotterySignup.programItemDetails.gameId === game.gameId &&
+          creatorLotterySignup.programItemDetails.programItemId ===
+            game.programItemId &&
           dayjs(creatorLotterySignup.time).isSame(userSignup.time),
       );
 

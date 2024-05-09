@@ -31,7 +31,7 @@ export const SignupInfo = ({
 
   const signupAlwaysOpen = config
     .shared()
-    .directSignupAlwaysOpenIds.includes(game.gameId);
+    .directSignupAlwaysOpenIds.includes(game.programItemId);
 
   const isEnterGameMode =
     config.shared().manualSignupMode === SignupStrategy.DIRECT ||
@@ -39,7 +39,9 @@ export const SignupInfo = ({
     signupAlwaysOpen;
 
   const requiresSignup = !isRevolvingDoorWorkshop(game);
-  const konstiSignup = !config.shared().noKonstiSignupIds.includes(game.gameId);
+  const konstiSignup = !config
+    .shared()
+    .noKonstiSignupIds.includes(game.programItemId);
   const normalSignup = requiresSignup && konstiSignup;
 
   return (

@@ -18,7 +18,7 @@ const allGamesSlice = createSlice({
         directSignups: action.payload.map((gameWithPlayers) => {
           return {
             users: gameWithPlayers.users,
-            gameId: gameWithPlayers.game.gameId,
+            programItemId: gameWithPlayers.game.programItemId,
           };
         }),
       };

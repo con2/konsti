@@ -12,7 +12,7 @@ export const getAssignmentBonus = (
   const signupsAffectingBonus = directSignups.filter(
     (directSignup) =>
       twoPhaseSignupProgramTypes.includes(directSignup.game.programType) &&
-      !directSignupAlwaysOpenIds.includes(directSignup.game.gameId),
+      !directSignupAlwaysOpenIds.includes(directSignup.game.programItemId),
   );
 
   const groupMembersWithSignups = playerGroup.flatMap((groupMember) => {

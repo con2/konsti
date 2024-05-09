@@ -34,7 +34,7 @@ export interface PostLotterySignupsError extends ApiError {
 
 export const PostDirectSignupRequestSchema = z.object({
   username: z.string(),
-  directSignupGameId: z.string(),
+  directSignupProgramItemId: z.string(),
   startTime: z.string(),
   message: z.string().max(SIGNUP_MESSAGE_LENGTH, "Message too long"),
   priority: z.number(),
@@ -61,7 +61,7 @@ export interface PostDirectSignupError extends ApiError {
 
 export const DeleteDirectSignupRequestSchema = z.object({
   username: z.string(),
-  directSignupGameId: z.string(),
+  directSignupProgramItemId: z.string(),
   startTime: z.string(),
 });
 

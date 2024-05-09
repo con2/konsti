@@ -4,7 +4,7 @@ import { ApiResult } from "shared/types/api/errors";
 // POST feedback
 
 export const PostFeedbackRequestSchema = z.object({
-  gameId: z.string(),
+  programItemId: z.string(),
   feedback: z.string(),
 });
 

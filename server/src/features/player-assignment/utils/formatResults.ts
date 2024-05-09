@@ -41,7 +41,8 @@ export const formatResults = (
         (assignResult) =>
           (assignResult.id === player.groupCode ||
             assignResult.id === player.serial) &&
-          assignResult.assignment === lotterySignup.programItemDetails.gameId,
+          assignResult.assignment ===
+            lotterySignup.programItemDetails.programItemId,
       );
     });
   };

@@ -12,7 +12,7 @@ export const saveFeedback = async (
   feedbackData: Feedback,
 ): Promise<Result<void, MongoDbError>> => {
   const feedback = new FeedbackModel({
-    gameId: feedbackData.gameId,
+    programItemId: feedbackData.programItemId,
     feedback: feedbackData.feedback,
     username: feedbackData.username,
   });

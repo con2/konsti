@@ -9,14 +9,14 @@ test("POST feedback to server", async () => {
     .mockResolvedValue({ data: "test response" });
 
   const feedback = "test feedback";
-  const gameId = "123";
+  const programItemId = "123";
 
-  const response = await postFeedback(gameId, feedback);
+  const response = await postFeedback(programItemId, feedback);
 
   expect(response).toEqual("test response");
   expect(spy).toHaveBeenCalledTimes(1);
   expect(spy).toHaveBeenCalledWith(ApiEndpoint.FEEDBACK, {
     feedback,
-    gameId,
+    programItemId,
   });
 });

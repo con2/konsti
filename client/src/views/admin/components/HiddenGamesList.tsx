@@ -24,8 +24,8 @@ export const HiddenGamesList = ({ hiddenGames }: Props): ReactElement => {
         {hiddenGames.length === 0 && <span>{t("noHiddenProgramItems")}</span>}
 
         {sortedGames.map((game) => (
-          <li key={game.gameId}>
-            <Link to={`/games/${game.gameId}`}>{game.title}</Link>
+          <li key={game.programItemId}>
+            <Link to={`/games/${game.programItemId}`}>{game.title}</Link>
 
             {" - "}
             {t(`programType.${game.programType}`)}

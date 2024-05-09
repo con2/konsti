@@ -1,7 +1,7 @@
 import { Command } from "commander";
 import { anonymizeData } from "./fixer-helpers/dataAnonymizer";
 import { wildFix } from "./fixer-helpers/wildFix";
-import { gameIdFix } from "./fixer-helpers/gameIdFix";
+import { programItemIdFix } from "./fixer-helpers/programItemIdFix";
 import { formatFeedbacks } from "./fixer-helpers/formatFeedbacks";
 import { initializeDayjs } from "shared/utils/initializeDayjs";
 import { getSimilarUsernames } from "server/features/statistics/similarUsernames";
@@ -19,10 +19,10 @@ const fixData = (): void => {
     });
 
   commander
-    .command("gameid <year> <event>")
-    .description("Fix game ids for users and results")
+    .command("program-item-id <year> <event>")
+    .description("Fix program item ids for users and results")
     .action(async (year: number, event: string) => {
-      await gameIdFix(year, event);
+      await programItemIdFix(year, event);
     });
 
   commander

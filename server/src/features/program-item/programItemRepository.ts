@@ -24,7 +24,7 @@ export const removeProgramItems = async (
 
   try {
     await ProgramItemModel.deleteMany(
-      programItemIds ? { gameId: { $in: programItemIds } } : {},
+      programItemIds ? { programItemId: { $in: programItemIds } } : {},
     );
     return makeSuccessResult(undefined);
   } catch (error) {
@@ -60,7 +60,7 @@ export const saveProgramItems = async (
 
   const bulkOps = programItems.map((programItem) => {
     const newProgramItem: Omit<ProgramItem, "popularity"> = {
-      gameId: programItem.gameId,
+      programItemId: programItem.programItemId,
       title: programItem.title,
       description: programItem.description,
       location: programItem.location,
@@ -89,7 +89,7 @@ export const saveProgramItems = async (
     return {
       updateOne: {
         filter: {
-          gameId: programItem.gameId,
+          programItemId: programItem.programItemId,
         },
         update: {
           ...newProgramItem,
@@ -171,7 +171,7 @@ export const saveProgramItemPopularity = async (
     return {
       updateOne: {
         filter: {
-          gameId: popularityUpdate.programItemId,
+          programItemId: popularityUpdate.programItemId,
         },
         update: {
           popularity: popularityUpdate.popularity,

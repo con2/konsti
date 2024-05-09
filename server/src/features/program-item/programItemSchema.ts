@@ -3,7 +3,7 @@ import { ProgramItemDoc } from "server/types/programItemTypes";
 
 const programItemSchema = new mongoose.Schema(
   {
-    gameId: String,
+    programItemId: String,
     title: String,
     description: String,
     location: String,

@@ -23,8 +23,8 @@ import { config } from "shared/config";
 export const storeDirectSignup = async (
   signupRequest: PostDirectSignupRequest,
 ): Promise<PostDirectSignupResponse | PostDirectSignupError> => {
-  const { startTime, directSignupGameId, username } = signupRequest;
-  if (config.shared().noKonstiSignupIds.includes(directSignupGameId)) {
+  const { startTime, directSignupProgramItemId, username } = signupRequest;
+  if (config.shared().noKonstiSignupIds.includes(directSignupProgramItemId)) {
     return {
       message: `No Konsti signup for this program item`,
       status: "error",
@@ -43,7 +43,7 @@ export const storeDirectSignup = async (
 
   const timeNow = unwrapResult(timeNowResult);
 
-  const gameResult = await findProgramItemById(directSignupGameId);
+  const gameResult = await findProgramItemById(directSignupProgramItemId);
   if (isErrorResult(gameResult)) {
     return {
       message: `Signed game not found`,
@@ -68,7 +68,7 @@ export const storeDirectSignup = async (
     logger.error(
       "%s",
       new Error(
-        `Signup for game ${directSignupGameId} not open yet, opens ${directSignupStartTime.toISOString()}`,
+        `Signup for game ${directSignupProgramItemId} not open yet, opens ${directSignupStartTime.toISOString()}`,
       ),
     );
     return {

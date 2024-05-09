@@ -16,28 +16,28 @@ export const updateFavorite = async (
   const { game, action, favoritedGames, username, dispatch } =
     updateFavoriteOpts;
 
-  if (!game.gameId) {
+  if (!game.programItemId) {
     return;
   }
 
   const gameIndex = favoritedGames.findIndex(
-    (favoritedGame) => favoritedGame.gameId === game.gameId,
+    (favoritedGame) => favoritedGame.programItemId === game.programItemId,
   );
-  const favoritedGameIds = favoritedGames.map(
-    (favoritedGame) => favoritedGame.gameId,
+  const favoritedProgramItemIds = favoritedGames.map(
+    (favoritedGame) => favoritedGame.programItemId,
   );
 
   if (action === "add" && gameIndex === -1) {
-    favoritedGameIds.push(game.gameId);
+    favoritedProgramItemIds.push(game.programItemId);
   } else if (action === "del" && gameIndex > -1) {
-    favoritedGameIds.splice(gameIndex, 1);
+    favoritedProgramItemIds.splice(gameIndex, 1);
   }
 
   try {
     await dispatch(
       submitUpdateFavorites({
         username,
-        favoritedGameIds,
+        favoritedProgramItemIds,
       }),
     );
   } catch (error) {

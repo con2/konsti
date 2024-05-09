@@ -26,7 +26,7 @@ export interface AdminState {
 
 export interface GameDirectSignups {
   users: UserSignup[];
-  gameId: string;
+  programItemId: string;
 }
 
 export interface AllGamesState {

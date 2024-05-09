@@ -34,13 +34,14 @@ export const addSignupQuestions = async (): Promise<void> => {
   const tournaments = games
     .filter((game) => game.programType === ProgramType.TOURNAMENT)
     .filter(
-      (game) => !tournamentSignupQuestionExcludeIds.includes(game.gameId),
+      (game) =>
+        !tournamentSignupQuestionExcludeIds.includes(game.programItemId),
     );
 
   const tournamentPromises = tournaments.map(async (tournament) => {
     await saveSignupQuestion({
       ...tournamentSignupQuestion,
-      gameId: tournament.gameId,
+      programItemId: tournament.programItemId,
     });
   });
   await Promise.all(tournamentPromises);

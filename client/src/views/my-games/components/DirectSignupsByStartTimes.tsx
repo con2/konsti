@@ -30,7 +30,7 @@ export const DirectSignupsByStartTimes = ({
               {directSignups.map((signup) => {
                 return (
                   <DirectSignupRow
-                    key={signup.programItemDetails.gameId}
+                    key={signup.programItemDetails.programItemId}
                     signup={signup}
                     startTime={startTime}
                   />

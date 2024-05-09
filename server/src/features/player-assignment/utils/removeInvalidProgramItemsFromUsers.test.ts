@@ -37,7 +37,7 @@ test("should remove lottery signups for invalid games from users", async () => {
   });
   expect(insertedUser?.lotterySignups.length).toEqual(2);
 
-  await ProgramItemModel.deleteOne({ gameId: game.gameId });
+  await ProgramItemModel.deleteOne({ programItemId: game.programItemId });
 
   await removeInvalidProgramItemsFromUsers();
   const updatedUser = await UserModel.findOne({
@@ -47,5 +47,5 @@ test("should remove lottery signups for invalid games from users", async () => {
 
   const insertedGames2 = await ProgramItemModel.find({});
   expect(insertedGames2.length).toEqual(1);
-  expect(insertedGames2[0].gameId).toEqual(game2.gameId);
+  expect(insertedGames2[0].programItemId).toEqual(game2.programItemId);
 });

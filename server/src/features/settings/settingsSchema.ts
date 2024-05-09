@@ -14,7 +14,7 @@ const SettingsSchema = new mongoose.Schema(
     appOpen: { type: Boolean, default: true },
     signupQuestions: [
       {
-        gameId: { type: String },
+        programItemId: { type: String },
         questionFi: { type: String },
         questionEn: { type: String },
         private: { type: Boolean },

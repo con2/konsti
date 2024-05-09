@@ -43,7 +43,7 @@ export interface PostSignupQuestionResponse extends ApiResult {
 // DELETE signup question
 
 export interface DeleteSignupQuestionRequest {
-  gameId: string;
+  programItemId: string;
 }
 
 export type DeleteSignupQuestionResponse = PostSignupQuestionResponse;

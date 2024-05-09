@@ -37,7 +37,7 @@ test("should add new signup for user", async () => {
   const responseResult = await saveDirectSignup(mockPostDirectSignupRequest);
   const response = unsafelyUnwrapResult(responseResult);
 
-  expect(response.game.gameId).toEqual(testGame.gameId);
+  expect(response.game.programItemId).toEqual(testGame.programItemId);
   expect(response.userSignups[0].username).toEqual(mockUser.username);
 });
 

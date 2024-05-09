@@ -1,5 +1,5 @@
 export interface SignupMessage {
-  gameId: string;
+  programItemId: string;
   username: string;
   message: string;
   private: boolean;

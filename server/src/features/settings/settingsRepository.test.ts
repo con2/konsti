@@ -62,12 +62,12 @@ test("should update appOpen status", async () => {
   expect(insertedSettings?.appOpen).toEqual(appOpen);
 });
 
-test("should not save multiple signup questions for same gameId", async () => {
+test("should not save multiple signup questions for same programItemId", async () => {
   // This will create default settings
   await findSettings();
 
   const signupQuestion: SignupQuestion = {
-    gameId: "p6673",
+    programItemId: "p6673",
     questionFi: "Hahmoluokka",
     questionEn: "Character class",
     private: false,

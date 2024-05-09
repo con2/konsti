@@ -1,4 +1,4 @@
-import { resetDirectSignupsByGameIds } from "server/features/direct-signup/directSignupRepository";
+import { resetDirectSignupsByProgramItemIds } from "server/features/direct-signup/directSignupRepository";
 import {
   findUsers,
   updateUsersByUsername,
@@ -37,7 +37,10 @@ export const removeHiddenGamesFromUsers = async (
   const usersToUpdate: User[] = users.flatMap((user) => {
     const lotterySignups = user.lotterySignups.filter((lotterySignup) => {
       const hiddenFound = hiddenGames.find((hiddenGame) => {
-        return hiddenGame.gameId === lotterySignup.programItemDetails.gameId;
+        return (
+          hiddenGame.programItemId ===
+          lotterySignup.programItemDetails.programItemId
+        );
       });
       if (!hiddenFound) {
         return lotterySignup;
@@ -46,7 +49,7 @@ export const removeHiddenGamesFromUsers = async (
 
     const favoritedGames = user.favoritedGames.filter((favoritedGame) => {
       const hiddenFound = hiddenGames.find((hiddenGame) => {
-        return hiddenGame.gameId === favoritedGame.gameId;
+        return hiddenGame.programItemId === favoritedGame.programItemId;
       });
       if (!hiddenFound) {
         return favoritedGame;
@@ -71,14 +74,18 @@ export const removeHiddenGamesFromUsers = async (
     return updateUsersResult;
   }
 
-  const hiddenGameIds = hiddenGames.map((hiddenGame) => hiddenGame.gameId);
-  const resetSignupsByGameIdsResult =
-    await resetDirectSignupsByGameIds(hiddenGameIds);
-  if (isErrorResult(resetSignupsByGameIdsResult)) {
-    return resetSignupsByGameIdsResult;
+  const hiddenProgramItemIds = hiddenGames.map(
+    (hiddenGame) => hiddenGame.programItemId,
+  );
+  const resetSignupsByProgramItemIdsResult =
+    await resetDirectSignupsByProgramItemIds(hiddenProgramItemIds);
+  if (isErrorResult(resetSignupsByProgramItemIdsResult)) {
+    return resetSignupsByProgramItemIdsResult;
   }
 
-  logger.info(`Hidden games removed from users and signups reset`);
+  logger.info(
+    `Hidden program items removed from users and direct signups reset`,
+  );
 
   return makeSuccessResult(undefined);
 };

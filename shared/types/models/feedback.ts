@@ -1,5 +1,5 @@
 export interface Feedback {
-  gameId: string;
+  programItemId: string;
   feedback: string;
   username: string;
 }

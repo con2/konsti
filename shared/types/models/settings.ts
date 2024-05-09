@@ -17,7 +17,7 @@ export type SignupQuestionSelectOption = z.infer<
 >;
 
 const SignupQuestionSchema = z.object({
-  gameId: z.string(),
+  programItemId: z.string(),
   questionFi: z.string(),
   questionEn: z.string(),
   private: z.boolean(),

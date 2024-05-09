@@ -21,7 +21,7 @@ export const SignupQuestionList = ({
   const signupQuestionsWithGames = signupQuestions.flatMap(
     (privateSignupQuestion) => {
       const matchingGame = games.find(
-        (game) => game.gameId === privateSignupQuestion.gameId,
+        (game) => game.programItemId === privateSignupQuestion.programItemId,
       );
       if (!matchingGame) {
         return [];
@@ -44,15 +44,17 @@ export const SignupQuestionList = ({
 
         {sortedSignupQuestions.flatMap((signupQuestion) => {
           const foundGame = games.find(
-            (game) => game.gameId === signupQuestion.gameId,
+            (game) => game.programItemId === signupQuestion.programItemId,
           );
           if (!foundGame) {
             return [];
           }
 
           return (
-            <li key={`${signupQuestion.gameId}-${signupQuestion.questionFi}`}>
-              <Link to={`/games/${signupQuestion.gameId}`}>
+            <li
+              key={`${signupQuestion.programItemId}-${signupQuestion.questionFi}`}
+            >
+              <Link to={`/games/${signupQuestion.programItemId}`}>
                 {foundGame.title}
               </Link>
               <span>

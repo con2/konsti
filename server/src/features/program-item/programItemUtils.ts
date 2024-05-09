@@ -17,7 +17,7 @@ import { findSettings } from "server/features/settings/settingsRepository";
 import { Settings, SignupQuestion } from "shared/types/models/settings";
 import { getTimeNow } from "server/features/player-assignment/utils/getTimeNow";
 import {
-  delDirectSignupDocumentsByGameIds,
+  delDirectSignupDocumentsByProgramItemIds,
   findDirectSignups,
 } from "server/features/direct-signup/directSignupRepository";
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
@@ -44,27 +44,27 @@ export const removeDeletedProgramItems = async (
   const deletedGames = differenceBy(
     currentGames,
     updatedProgramItems,
-    "gameId",
+    "programItemId",
   );
 
   if (deletedGames.length > 0) {
-    const deletedGameIds = deletedGames.map(
-      (deletedGame) => deletedGame.gameId,
+    const deletedProgramItemIds = deletedGames.map(
+      (deletedGame) => deletedGame.programItemId,
     );
 
     logger.info(
       `Found ${
         deletedGames.length
-      } deleted games to be removed: ${deletedGameIds.join(", ")}`,
+      } deleted games to be removed: ${deletedProgramItemIds.join(", ")}`,
     );
 
     const delSignupDocumentsResult =
-      await delDirectSignupDocumentsByGameIds(deletedGameIds);
+      await delDirectSignupDocumentsByProgramItemIds(deletedProgramItemIds);
     if (isErrorResult(delSignupDocumentsResult)) {
       return delSignupDocumentsResult;
     }
 
-    const removeGamesResult = await removeProgramItems(deletedGameIds);
+    const removeGamesResult = await removeProgramItems(deletedProgramItemIds);
     if (isErrorResult(removeGamesResult)) {
       return removeGamesResult;
     }
@@ -99,14 +99,14 @@ export const enrichGames = async (
   const currentTime = unwrapResult(currentTimeResult);
   const enrichedGames = games.map((game) => {
     const signupQuestion = settings.signupQuestions.find(
-      (message) => message.gameId === game.gameId,
+      (message) => message.programItemId === game.programItemId,
     );
     return {
       game: {
         ...game.toJSON<ProgramItemDoc>(),
         signupStrategy: getSignupStrategyForGame(game, settings, currentTime),
       },
-      users: getSignupsForGame(signups, game.gameId, signupQuestion),
+      users: getSignupsForGame(signups, game.programItemId, signupQuestion),
     };
   });
 
@@ -145,11 +145,11 @@ const getSignupStrategyForGame = (
 
 const getSignupsForGame = (
   directSignups: DirectSignupsForProgramItem[],
-  gameId: string,
+  programItemId: string,
   signupQuestion?: SignupQuestion | undefined,
 ): UserSignup[] => {
   const signupsForGame = directSignups.filter(
-    (signup) => signup.game.gameId === gameId,
+    (signup) => signup.game.programItemId === programItemId,
   );
 
   const formattedSignupsForGame = signupsForGame.flatMap((signupForGame) => {

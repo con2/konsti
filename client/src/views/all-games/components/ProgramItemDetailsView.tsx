@@ -39,7 +39,7 @@ export const ProgramItemDetailsView = ({
     setIsExpanded(!isExpanded);
   };
 
-  const id = `more-info-${game.gameId}`;
+  const id = `more-info-${game.programItemId}`;
   const buttonAriaLabel = `${t(
     isExpanded ? "gameInfo.showLessAriaLabel" : "gameInfo.showMoreAriaLabel",
   )} ${game.title}`;

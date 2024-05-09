@@ -63,7 +63,7 @@ export const EventLog = (): ReactElement => {
         "desc",
       ).map((eventLogItem) => {
         const foundGame = games.find(
-          (game) => game.gameId === eventLogItem.programItemId,
+          (game) => game.programItemId === eventLogItem.programItemId,
         );
         if (!foundGame) {
           return;

@@ -81,7 +81,7 @@ describe(`POST ${ApiEndpoint.SETTINGS}`, () => {
 
   test("should return updated settings with full or partial update", async () => {
     const testSignupQuestion: SignupQuestion = {
-      gameId: "123456",
+      programItemId: "123456",
       questionFi: "Test message",
       questionEn: "public message",
       private: false,
@@ -149,7 +149,10 @@ describe(`POST ${ApiEndpoint.HIDDEN}`, () => {
     await saveDirectSignup(mockPostDirectSignupRequest2);
     await saveFavorite({
       username: mockUser.username,
-      favoritedGameIds: [testGame.gameId, testGame2.gameId],
+      favoritedProgramItemIds: [
+        testGame.programItemId,
+        testGame2.programItemId,
+      ],
     });
 
     const response = await request(server)
@@ -229,7 +232,7 @@ describe(`POST ${ApiEndpoint.SIGNUP_QUESTION}`, () => {
 
     const requestData: PostSignupQuestionRequest = {
       signupQuestion: {
-        gameId: "123",
+        programItemId: "123",
         questionFi: "Character level",
         questionEn: "public message",
         private: false,
@@ -257,7 +260,7 @@ describe(`POST ${ApiEndpoint.SIGNUP_QUESTION}`, () => {
 
     const requestData: PostSignupQuestionRequest = {
       signupQuestion: {
-        gameId: "123",
+        programItemId: "123",
         questionFi: "Character level",
         questionEn: "public message",
         private: false,
@@ -315,7 +318,7 @@ describe(`POST ${ApiEndpoint.SIGNUP_QUESTION}`, () => {
       await createSettings();
 
       const signupQuestion: SignupQuestion = {
-        gameId: "123",
+        programItemId: "123",
         questionFi: "Character level",
         questionEn: "public message",
         private: false,
@@ -335,7 +338,7 @@ describe(`POST ${ApiEndpoint.SIGNUP_QUESTION}`, () => {
 
       await request(server)
         .delete(ApiEndpoint.SIGNUP_QUESTION)
-        .send({ gameId: "123" })
+        .send({ programItemId: "123" })
         .set("Authorization", `Bearer ${getJWT(UserGroup.ADMIN, "admin")}`);
 
       const updatedSettingsResult = await findSettings();

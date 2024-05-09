@@ -57,7 +57,8 @@ export const AlgorithmSignupForm = ({
   ): Promise<void> => {
     setLoading(true);
     const newSignupData = lotterySignups.filter(
-      (g: Signup) => g.programItemDetails.gameId !== gameToRemove.gameId,
+      (g: Signup) =>
+        g.programItemDetails.programItemId !== gameToRemove.programItemId,
     );
 
     const error = await dispatch(
@@ -77,7 +78,7 @@ export const AlgorithmSignupForm = ({
   };
 
   const currentPriority = lotterySignups.find(
-    (g) => g.programItemDetails.gameId === game.gameId,
+    (g) => g.programItemDetails.programItemId === game.programItemId,
   )?.priority;
 
   const lotterySignupsForTimeslot = lotterySignups.filter(

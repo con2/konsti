@@ -75,7 +75,7 @@ export const runAssignment = async ({
           lotterySignup.programItemDetails.programType,
         ) &&
         !directSignupAlwaysOpenIds.includes(
-          lotterySignup.programItemDetails.gameId,
+          lotterySignup.programItemDetails.programItemId,
         ),
     );
 
@@ -92,7 +92,7 @@ export const runAssignment = async ({
   const filteredGames = games.filter(
     (game) =>
       twoPhaseSignupProgramTypes.includes(game.programType) &&
-      !directSignupAlwaysOpenIds.includes(game.gameId),
+      !directSignupAlwaysOpenIds.includes(game.programItemId),
   );
 
   const directSignupsResult = await findDirectSignups();

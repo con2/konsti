@@ -1,93 +1,93 @@
 [
   {
     "hiddenGames": [
-      { "gameId": "p5644" },
-      { "gameId": "p5659" },
-      { "gameId": "p5753" },
-      { "gameId": "p5548" },
-      { "gameId": "p5549" },
-      { "gameId": "p5438" },
-      { "gameId": "p4874" },
-      { "gameId": "p5646" },
-      { "gameId": "p5352" },
-      { "gameId": "p5660" },
-      { "gameId": "p5754" },
-      { "gameId": "p5012" },
-      { "gameId": "p5550" },
-      { "gameId": "p5552" },
-      { "gameId": "p5561" },
-      { "gameId": "p5553" },
-      { "gameId": "p5554" },
-      { "gameId": "p5180" },
-      { "gameId": "p5556" },
-      { "gameId": "p5648" },
-      { "gameId": "p5087" },
-      { "gameId": "p5735" },
-      { "gameId": "p5650" },
-      { "gameId": "p5661" },
-      { "gameId": "p5557" },
-      { "gameId": "p5539" },
-      { "gameId": "p5170" },
-      { "gameId": "p5725" },
-      { "gameId": "p5758" },
-      { "gameId": "p5558" },
-      { "gameId": "p5835" },
-      { "gameId": "p5645" },
-      { "gameId": "p5647" },
-      { "gameId": "p5651" },
-      { "gameId": "p5649" }
+      { "programItemId": "p5644" },
+      { "programItemId": "p5659" },
+      { "programItemId": "p5753" },
+      { "programItemId": "p5548" },
+      { "programItemId": "p5549" },
+      { "programItemId": "p5438" },
+      { "programItemId": "p4874" },
+      { "programItemId": "p5646" },
+      { "programItemId": "p5352" },
+      { "programItemId": "p5660" },
+      { "programItemId": "p5754" },
+      { "programItemId": "p5012" },
+      { "programItemId": "p5550" },
+      { "programItemId": "p5552" },
+      { "programItemId": "p5561" },
+      { "programItemId": "p5553" },
+      { "programItemId": "p5554" },
+      { "programItemId": "p5180" },
+      { "programItemId": "p5556" },
+      { "programItemId": "p5648" },
+      { "programItemId": "p5087" },
+      { "programItemId": "p5735" },
+      { "programItemId": "p5650" },
+      { "programItemId": "p5661" },
+      { "programItemId": "p5557" },
+      { "programItemId": "p5539" },
+      { "programItemId": "p5170" },
+      { "programItemId": "p5725" },
+      { "programItemId": "p5758" },
+      { "programItemId": "p5558" },
+      { "programItemId": "p5835" },
+      { "programItemId": "p5645" },
+      { "programItemId": "p5647" },
+      { "programItemId": "p5651" },
+      { "programItemId": "p5649" }
     ],
     "signupTime": null,
     "appOpen": true,
     "signupStrategy": "algorithm+direct",
     "signupQuestions": [
       {
-        "gameId": "p5335",
+        "programItemId": "p5335",
         "message": "Syötä joukkueen nimi, kaikkien joukkueesi jäsenten (2-4 kpl) nimet, sekä ainakin yhden jäsenen sähköpostiosoite ja puhelinnumero mahdollista palkintoyhteydenottoa varten. Tiedot näkyvät vain turnauksen järjestäjille. | Please write the name of your team, the names of all team members (2-4 people) and an email address and phone number of at least one team member in case we need to contact you about a possible award. Only tournament organisers have access to this information.",
         "private": true
       },
       {
-        "gameId": "p5081",
+        "programItemId": "p5081",
         "message": "Syötä nimesi, sähköpostiosoitteesi ja puhelinnumerosi mahdollista palkintoyhteydenottoa varten. Tiedot näkyvät vain turnauksen järjestäjille. | Please write your name, email address and phone number in case we need to contact you about a possible award. Only tournament organisers have access to this information.",
         "private": true
       },
       {
-        "gameId": "p5810",
+        "programItemId": "p5810",
         "message": "Syötä nimesi, sähköpostiosoitteesi ja puhelinnumerosi mahdollista palkintoyhteydenottoa varten. Tiedot näkyvät vain turnauksen järjestäjille. | Please write your name, email address and phone number in case we need to contact you about a possible award. Only tournament organisers have access to this information.",
         "private": true
       },
       {
-        "gameId": "p5464",
+        "programItemId": "p5464",
         "message": "Syötä nimesi, sähköpostiosoitteesi ja puhelinnumerosi mahdollista palkintoyhteydenottoa varten. Tiedot näkyvät vain turnauksen järjestäjille. | Please write your name, email address and phone number in case we need to contact you about a possible award. Only tournament organisers have access to this information.",
         "private": true
       },
       {
-        "gameId": "p5207",
+        "programItemId": "p5207",
         "message": "Syötä nimesi, sähköpostiosoitteesi ja puhelinnumerosi mahdollista palkintoyhteydenottoa varten. Tiedot näkyvät vain turnauksen järjestäjille. | Please write your name, email address and phone number in case we need to contact you about a possible award. Only tournament organisers have access to this information.",
         "private": true
       },
       {
-        "gameId": "p5465",
+        "programItemId": "p5465",
         "message": "Syötä nimesi, sähköpostiosoitteesi ja puhelinnumerosi mahdollista palkintoyhteydenottoa varten. Tiedot näkyvät vain turnauksen järjestäjille. | Please write your name, email address and phone number in case we need to contact you about a possible award. Only tournament organisers have access to this information.",
         "private": true
       },
       {
-        "gameId": "p5691",
+        "programItemId": "p5691",
         "message": "Syötä nimesi, sähköpostiosoitteesi ja puhelinnumerosi mahdollista palkintoyhteydenottoa varten. Tiedot näkyvät vain turnauksen järjestäjille. | Please write your name, email address and phone number in case we need to contact you about a possible award. Only tournament organisers have access to this information.",
         "private": true
       },
       {
-        "gameId": "p5344",
+        "programItemId": "p5344",
         "message": "Hahmoluokka ja taso. Jos sinulla on useampi hahmo, merkitse ensisijainen hahmo sulkeilla. / Character class and level. If you have multiple characters, mark primary character with brackets.",
         "private": false
       },
       {
-        "gameId": "p5570",
+        "programItemId": "p5570",
         "message": "Syötä nimesi, sähköpostiosoitteesi ja puhelinnumerosi mahdollista palkintoyhteydenottoa varten. Tiedot näkyvät vain turnauksen järjestäjille. | Please write your name, email address and phone number in case we need to contact you about a possible award. Only tournament organisers have access to this information.",
         "private": true
       },
       {
-        "gameId": "p5571",
+        "programItemId": "p5571",
         "message": "Syötä nimesi, sähköpostiosoitteesi ja puhelinnumerosi mahdollista palkintoyhteydenottoa varten. Tiedot näkyvät vain turnauksen järjestäjille. | Please write your name, email address and phone number in case we need to contact you about a possible award. Only tournament organisers have access to this information.",
         "private": true
       }

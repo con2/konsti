@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { getWeekdayAndTime } from "client/utils/timeFormatter";
 import { useAppSelector } from "client/utils/hooks";
-import { getUsersForGameId } from "client/views/results/resultsUtils";
+import { getUsersForProgramItemId } from "client/views/results/resultsUtils";
 import { getUpcomingGames } from "client/utils/getUpcomingGames";
 import { ProgramItem } from "shared/types/models/programItem";
 import { selectActiveGames } from "client/views/admin/adminSlice";
@@ -53,13 +53,13 @@ export const ResultsList = (): ReactElement => {
   const visibleGames = activeGames
     .filter((activeGame) =>
       hiddenGames.every(
-        (hiddenGame) => activeGame.gameId !== hiddenGame.gameId,
+        (hiddenGame) => activeGame.programItemId !== hiddenGame.programItemId,
       ),
     )
     .filter((activeGame) => !isRevolvingDoorWorkshop(activeGame))
     .filter(
       (activeGame) =>
-        !config.shared().noKonstiSignupIds.includes(activeGame.gameId),
+        !config.shared().noKonstiSignupIds.includes(activeGame.programItemId),
     );
 
   const filteredGames =
@@ -94,7 +94,10 @@ export const ResultsList = (): ReactElement => {
     }
 
     const gamesFilteredBySearchTerm = gamesForListing.filter((game) => {
-      const users = getUsersForGameId(game.gameId, visibleSignups);
+      const users = getUsersForProgramItemId(
+        game.programItemId,
+        visibleSignups,
+      );
       return (
         game.title
           .replace(MULTIPLE_WHITESPACES_REGEX, " ")
@@ -140,19 +143,24 @@ export const ResultsList = (): ReactElement => {
               <Games>
                 {sortedGamesForTime.map((game) => {
                   const signupQuestion = publicSignupQuestions.find(
-                    (question) => question.gameId === game.gameId,
+                    (question) => question.programItemId === game.programItemId,
                   );
                   const signupMessagesVisible = showSignupMessages.find(
-                    (message) => message === game.gameId,
+                    (message) => message === game.programItemId,
                   );
                   const playerListVisible = showPlayers.find(
-                    (players) => players === game.gameId,
+                    (players) => players === game.programItemId,
                   );
-                  const users = getUsersForGameId(game.gameId, visibleSignups);
+                  const users = getUsersForProgramItemId(
+                    game.programItemId,
+                    visibleSignups,
+                  );
 
                   return (
-                    <div key={game.gameId}>
-                      <ResultTitle key={game.gameId}>{game.title} </ResultTitle>
+                    <div key={game.programItemId}>
+                      <ResultTitle key={game.programItemId}>
+                        {game.title}{" "}
+                      </ResultTitle>
                       {config.client().activeProgramTypes.length > 1 && (
                         <Tags tags={[t(`programType.${game.programType}`)]} />
                       )}
@@ -162,11 +170,15 @@ export const ResultsList = (): ReactElement => {
                             if (playerListVisible) {
                               setShowPlayers(
                                 showPlayers.filter(
-                                  (gameId) => gameId !== game.gameId,
+                                  (programItemId) =>
+                                    programItemId !== game.programItemId,
                                 ),
                               );
                             } else {
-                              setShowPlayers([...showPlayers, game.gameId]);
+                              setShowPlayers([
+                                ...showPlayers,
+                                game.programItemId,
+                              ]);
                             }
                           }}
                         >
@@ -188,7 +200,8 @@ export const ResultsList = (): ReactElement => {
                                     event.stopPropagation();
                                     setShowSignupMessages(
                                       showSignupMessages.filter(
-                                        (message) => message !== game.gameId,
+                                        (message) =>
+                                          message !== game.programItemId,
                                       ),
                                     );
                                   }}
@@ -201,7 +214,7 @@ export const ResultsList = (): ReactElement => {
                                     event.stopPropagation();
                                     setShowSignupMessages([
                                       ...showSignupMessages,
-                                      game.gameId,
+                                      game.programItemId,
                                     ]);
                                   }}
                                 />

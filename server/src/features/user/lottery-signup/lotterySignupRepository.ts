@@ -28,7 +28,8 @@ export const saveLotterySignups = async (
   const formattedData = lotterySignups.reduce<Signup[]>(
     (acc, lotterySignup) => {
       const gameDocInDb = games.find(
-        (game) => game.gameId === lotterySignup.programItemDetails.gameId,
+        (game) =>
+          game.programItemId === lotterySignup.programItemDetails.programItemId,
       );
 
       if (gameDocInDb) {

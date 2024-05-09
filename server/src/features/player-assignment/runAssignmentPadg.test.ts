@@ -161,7 +161,7 @@ test("Should adjust attendee limits if there are previous signups from moved pro
   const signupsAfterUpdate = unsafelyUnwrapResult(await findDirectSignups());
 
   const assignmentSignup = signupsAfterUpdate.find(
-    (signup) => signup.game.gameId === testGame.gameId,
+    (signup) => signup.game.programItemId === testGame.programItemId,
   );
 
   expect(assignmentSignup?.userSignups).toMatchObject([

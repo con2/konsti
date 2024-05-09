@@ -40,7 +40,7 @@ export const GroupView = (): ReactElement => {
     .filter(
       (directSignup) =>
         !directSignupAlwaysOpenIds.includes(
-          directSignup.programItemDetails.gameId,
+          directSignup.programItemDetails.programItemId,
         ),
     )
     .filter((directSignup) =>
@@ -72,8 +72,10 @@ export const GroupView = (): ReactElement => {
               </p>
               <ListItem>
                 {filteredActiveDirectSignups.map((game) => (
-                  <li key={game.programItemDetails.gameId}>
-                    <Link to={`/games/${game.programItemDetails.gameId}`}>
+                  <li key={game.programItemDetails.programItemId}>
+                    <Link
+                      to={`/games/${game.programItemDetails.programItemId}`}
+                    >
                       {game.programItemDetails.title}
                     </Link>
                   </li>

@@ -52,7 +52,7 @@ export const AdminActionCard = ({ game }: Props): ReactElement => {
     // Check if hidden
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     hiddenGames.find((hiddenGame) => {
-      if (hiddenGame.gameId === game.gameId) {
+      if (hiddenGame.programItemId === game.programItemId) {
         setHidden(true);
       }
     });
@@ -60,18 +60,20 @@ export const AdminActionCard = ({ game }: Props): ReactElement => {
     // Check if signup question exists
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     signupQuestions.find((signupQuestion) => {
-      if (signupQuestion.gameId === game.gameId) {
+      if (signupQuestion.programItemId === game.programItemId) {
         setHasSignupQuestion(true);
       }
     });
-  }, [game.gameId, hiddenGames, signupQuestions]);
+  }, [game.programItemId, hiddenGames, signupQuestions]);
 
   const updateHidden = async (): Promise<void> => {
     setSubmitting(true);
 
     const newHidden = !hidden;
 
-    const gameIndex = hiddenGames.findIndex((g) => g.gameId === game.gameId);
+    const gameIndex = hiddenGames.findIndex(
+      (g) => g.programItemId === game.programItemId,
+    );
     const allHiddenGames = hiddenGames.slice();
 
     if (newHidden && gameIndex === -1) {
@@ -96,7 +98,7 @@ export const AdminActionCard = ({ game }: Props): ReactElement => {
     setSubmitting(true);
 
     try {
-      await dispatch(submitDeleteSignupQuestion(game.gameId));
+      await dispatch(submitDeleteSignupQuestion(game.programItemId));
     } catch (error) {
       // eslint-disable-next-line no-restricted-syntax -- TODO: Remove throw
       throw new Error(`deleteSignupQuestion error: ${error}`);
@@ -112,7 +114,7 @@ export const AdminActionCard = ({ game }: Props): ReactElement => {
     try {
       await dispatch(
         submitAddSignupQuestion({
-          gameId: game.gameId,
+          programItemId: game.programItemId,
           questionFi: signupQuestionInputFi,
           questionEn: signupQuestionInputEn,
           private: isPrivateSignupQuestion,

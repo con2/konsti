@@ -80,7 +80,7 @@ export const submitAddSignupQuestion = (
 ): AppThunk => {
   return async (dispatch): Promise<void> => {
     const response = await postSignupQuestion({
-      gameId: signupQuestion.gameId,
+      programItemId: signupQuestion.programItemId,
       questionFi: signupQuestion.questionFi,
       questionEn: signupQuestion.questionEn,
       private: signupQuestion.private,
@@ -98,9 +98,9 @@ export const submitAddSignupQuestion = (
   };
 };
 
-export const submitDeleteSignupQuestion = (gameId: string): AppThunk => {
+export const submitDeleteSignupQuestion = (programItemId: string): AppThunk => {
   return async (dispatch): Promise<void> => {
-    const response = await deleteSignupQuestion(gameId);
+    const response = await deleteSignupQuestion(programItemId);
 
     if (response.status === "error") {
       // TODO

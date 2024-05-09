@@ -37,5 +37,5 @@ export interface UserGames {
 
 export interface NewFavorite {
   username: string;
-  favoritedGameIds: string[];
+  favoritedProgramItemIds: string[];
 }

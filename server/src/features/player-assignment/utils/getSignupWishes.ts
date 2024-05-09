@@ -12,7 +12,7 @@ export const getSignupWishes = (players: readonly User[]): SignupWish[] => {
       player.lotterySignups.forEach((lotterySignup) => {
         signupWishes.push({
           username: player.username,
-          gameId: lotterySignup.programItemDetails.gameId,
+          programItemId: lotterySignup.programItemDetails.programItemId,
           priority: lotterySignup.priority,
         });
       });

@@ -21,7 +21,7 @@ export const mockKompassiGameRopecon: KompassiGameRopecon = {
   rpg_system: testGame.gameSystem,
   min_players: testGame.minAttendance,
   max_players: testGame.maxAttendance,
-  identifier: testGame.gameId,
+  identifier: testGame.programItemId,
   tags: [
     KompassiTagRopecon.ALOITTELIJAYSTÄVÄLLINEN,
     KompassiTagRopecon.SOPII_ALLE_7V,
@@ -81,7 +81,7 @@ export const mockKompassiGameRopecon2: KompassiGameRopecon = {
   rpg_system: testGame2.gameSystem,
   min_players: testGame2.minAttendance,
   max_players: testGame2.maxAttendance,
-  identifier: testGame2.gameId,
+  identifier: testGame2.programItemId,
   tags: [
     KompassiTagRopecon.ALOITTELIJAYSTÄVÄLLINEN,
     KompassiTagRopecon.SOPII_ALLE_7V,

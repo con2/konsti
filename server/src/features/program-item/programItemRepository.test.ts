@@ -22,9 +22,9 @@ test("should insert new game into collection", async () => {
   await saveProgramItems([testGame]);
 
   const insertedGame = await ProgramItemModel.findOne({
-    gameId: testGame.gameId,
+    programItemId: testGame.programItemId,
   });
-  expect(insertedGame?.gameId).toEqual(testGame.gameId);
+  expect(insertedGame?.programItemId).toEqual(testGame.programItemId);
 });
 
 test("should remove signup document when program item is removed", async () => {

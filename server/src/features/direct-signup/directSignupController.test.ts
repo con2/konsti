@@ -56,7 +56,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
   test("should return 422 with invalid parameters", async () => {
     const signup: Partial<PostDirectSignupRequest> = {
       username: mockUser.username,
-      directSignupGameId: "ABCD1234",
+      directSignupProgramItemId: "ABCD1234",
     };
     const response = await request(server)
       .post(ApiEndpoint.DIRECT_SIGNUP)
@@ -71,7 +71,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
   test("should return 422 if signup message is too long", async () => {
     const signup: PostDirectSignupRequest = {
       username: mockUser.username,
-      directSignupGameId: testGame.gameId,
+      directSignupProgramItemId: testGame.programItemId,
       startTime: testGame.startTime,
       message:
         "Test message Test message Test message Test message Test message Test message Test message Test message Test message Test message Test message Test message Test message",
@@ -95,7 +95,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
 
     const signup: PostDirectSignupRequest = {
       username: mockUser.username,
-      directSignupGameId: "invalid_game_id",
+      directSignupProgramItemId: "invalid_game_id",
       startTime: dayjs(testGame.startTime).subtract(1, "hour").toISOString(),
       message: "",
       priority: DIRECT_SIGNUP_PRIORITY,
@@ -122,7 +122,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
 
     const signup: PostDirectSignupRequest = {
       username: "user_not_found",
-      directSignupGameId: testGame.gameId,
+      directSignupProgramItemId: testGame.programItemId,
       startTime: testGame.startTime,
       message: "",
       priority: DIRECT_SIGNUP_PRIORITY,
@@ -149,7 +149,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
 
     const signup: PostDirectSignupRequest = {
       username: mockUser.username,
-      directSignupGameId: testGame.gameId,
+      directSignupProgramItemId: testGame.programItemId,
       startTime: testGame.startTime,
       message: "",
       priority: DIRECT_SIGNUP_PRIORITY,
@@ -187,7 +187,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     // Update direct signups
     const signup: PostDirectSignupRequest = {
       username: mockUser.username,
-      directSignupGameId: testGame.gameId,
+      directSignupProgramItemId: testGame.programItemId,
       startTime: testGame.startTime,
       message: "Test message",
       priority: DIRECT_SIGNUP_PRIORITY,
@@ -211,7 +211,9 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     );
     const modifiedSignups = unsafelyUnwrapResult(modifiedSignupsResult);
 
-    expect(modifiedSignups[0].game.gameId).toEqual(testGame.gameId);
+    expect(modifiedSignups[0].game.programItemId).toEqual(
+      testGame.programItemId,
+    );
     expect(modifiedSignups[0].userSignups[0].message).toEqual("Test message");
   });
 
@@ -233,7 +235,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     const makeRequest = async (user: NewUser): Promise<Test> => {
       const signup: PostDirectSignupRequest = {
         username: user.username,
-        directSignupGameId: testGame.gameId,
+        directSignupProgramItemId: testGame.programItemId,
         startTime: testGame.startTime,
         message: "Test message",
         priority: DIRECT_SIGNUP_PRIORITY,
@@ -260,7 +262,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     const signupsResult = await findDirectSignups();
     const signups = unsafelyUnwrapResult(signupsResult);
     const matchingSignup = signups.find(
-      (signup) => signup.game.gameId === testGame.gameId,
+      (signup) => signup.game.programItemId === testGame.programItemId,
     );
     expect(matchingSignup?.userSignups.length).toEqual(maxAttendance);
     expect(matchingSignup?.count).toEqual(maxAttendance);
@@ -285,7 +287,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     const makeRequest = async (user: NewUser): Promise<Test> => {
       const signup: PostDirectSignupRequest = {
         username: user.username,
-        directSignupGameId: testGame.gameId,
+        directSignupProgramItemId: testGame.programItemId,
         startTime: testGame.startTime,
         message: "Test message",
         priority: DIRECT_SIGNUP_PRIORITY,
@@ -308,7 +310,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     expect(signups).toHaveLength(1);
 
     const matchingSignup = signups.find(
-      (signup) => signup.game.gameId === testGame.gameId,
+      (signup) => signup.game.programItemId === testGame.programItemId,
     );
     expect(matchingSignup?.userSignups.length).toEqual(maxAttendance);
     expect(matchingSignup?.count).toEqual(maxAttendance);
@@ -324,7 +326,7 @@ describe(`DELETE ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
   test("should return 422 with invalid parameters", async () => {
     const deleteRequest: Partial<DeleteDirectSignupRequest> = {
       username: "testuser",
-      directSignupGameId: "ABCD1234",
+      directSignupProgramItemId: "ABCD1234",
     };
     const response = await request(server)
       .delete(ApiEndpoint.DIRECT_SIGNUP)
@@ -341,7 +343,7 @@ describe(`DELETE ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
 
     const deleteRequest: DeleteDirectSignupRequest = {
       username: mockUser.username,
-      directSignupGameId: "invalid_game_id",
+      directSignupProgramItemId: "invalid_game_id",
       startTime: dayjs(testGame.startTime).subtract(1, "hour").toISOString(),
     };
     const response = await request(server)
@@ -362,7 +364,7 @@ describe(`DELETE ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
 
     const deleteRequest: DeleteDirectSignupRequest = {
       username: "user_not_found",
-      directSignupGameId: testGame.gameId,
+      directSignupProgramItemId: testGame.programItemId,
       startTime: testGame.startTime,
     };
     const response = await request(server)
@@ -394,13 +396,15 @@ describe(`DELETE ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     );
     const nonModifiedSignup = unsafelyUnwrapResult(nonModifiedSignupResult);
 
-    expect(nonModifiedSignup[0].game.gameId).toEqual(testGame.gameId);
+    expect(nonModifiedSignup[0].game.programItemId).toEqual(
+      testGame.programItemId,
+    );
     expect(nonModifiedSignup[0].userSignups.length).toEqual(1);
 
     // Update direct signups
     const deleteRequest: DeleteDirectSignupRequest = {
       username: mockUser.username,
-      directSignupGameId: testGame.gameId,
+      directSignupProgramItemId: testGame.programItemId,
       startTime: testGame.startTime,
     };
     const response = await request(server)

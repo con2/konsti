@@ -40,10 +40,12 @@ export const GameHead = ({
 
   const signupAlwaysOpen = config
     .shared()
-    .directSignupAlwaysOpenIds.includes(game.gameId);
+    .directSignupAlwaysOpenIds.includes(game.programItemId);
 
   const requiresSignup = !isRevolvingDoorWorkshop(game);
-  const konstiSignup = !config.shared().noKonstiSignupIds.includes(game.gameId);
+  const konstiSignup = !config
+    .shared()
+    .noKonstiSignupIds.includes(game.programItemId);
   const normalSignup = requiresSignup && konstiSignup;
   const validMaxAttendanceValue = requiresSignup && game.maxAttendance > 0;
 
@@ -54,7 +56,7 @@ export const GameHead = ({
 
   const isFavorited =
     favoritedGames.find(
-      (favoritedGame) => favoritedGame.gameId === game.gameId,
+      (favoritedGame) => favoritedGame.programItemId === game.programItemId,
     ) !== undefined;
 
   const tags = [];
@@ -69,7 +71,7 @@ export const GameHead = ({
   const updateFavoriteHandler = async (
     updateOpts: UpdateFavoriteOpts,
   ): Promise<void> => {
-    if (!updateOpts.game.gameId) {
+    if (!updateOpts.game.programItemId) {
       return;
     }
     await updateFavorite(updateOpts);
@@ -79,7 +81,9 @@ export const GameHead = ({
     <Container>
       <div>
         <H3 data-testid="game-title">
-          <HeaderLink to={`/games/${game.gameId}`}>{game.title}</HeaderLink>
+          <HeaderLink to={`/games/${game.programItemId}`}>
+            {game.title}
+          </HeaderLink>
         </H3>
         <Tags tags={tags} />
         <Row>

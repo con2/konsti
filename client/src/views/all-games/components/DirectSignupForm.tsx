@@ -62,7 +62,7 @@ export const DirectSignupForm = ({
       submitDeleteDirectSignup({
         username,
         startTime: game.startTime,
-        directSignupGameId: game.gameId,
+        directSignupProgramItemId: game.programItemId,
       }),
     );
 
@@ -155,7 +155,7 @@ export const DirectSignupForm = ({
                 <SignupGameForm
                   game={game}
                   signupQuestion={signupQuestions.find(
-                    ({ gameId }) => gameId === game.gameId,
+                    ({ programItemId }) => programItemId === game.programItemId,
                   )}
                   onEnterGame={() => setSignupFormOpen(false)}
                   onCancelSignup={() => setSignupFormOpen(false)}

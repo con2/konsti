@@ -9,7 +9,7 @@ import {
 } from "shared/types/models/programItem";
 
 export const testGame: ProgramItem = {
-  gameId: "p2106",
+  programItemId: "p2106",
   title: "Test game",
   description: "Test game description",
   location: "Test location",
@@ -50,7 +50,7 @@ export const testGame: ProgramItem = {
 };
 
 export const testGame2: ProgramItem = {
-  gameId: "p3001",
+  programItemId: "p3001",
   title: "Test game 2",
   description: "Test game description",
   location: "Test location",

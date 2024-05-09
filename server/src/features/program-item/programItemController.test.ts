@@ -83,7 +83,7 @@ describe(`GET ${ApiEndpoint.GAMES}`, () => {
     });
 
     await saveSignupQuestion({
-      gameId: testGame.gameId,
+      programItemId: testGame.programItemId,
       questionFi: "public message",
       questionEn: "public message",
       private: false,
@@ -91,7 +91,7 @@ describe(`GET ${ApiEndpoint.GAMES}`, () => {
       selectOptions: [],
     });
     await saveSignupQuestion({
-      gameId: testGame2.gameId,
+      programItemId: testGame2.programItemId,
       questionFi: "private message",
       questionEn: "public message",
       private: true,
@@ -154,7 +154,10 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
     await saveDirectSignup(mockPostDirectSignupRequest2);
     await saveFavorite({
       username: mockUser.username,
-      favoritedGameIds: [testGame.gameId, testGame2.gameId],
+      favoritedProgramItemIds: [
+        testGame.programItemId,
+        testGame2.programItemId,
+      ],
     });
 
     const response = await request(server)
@@ -175,7 +178,9 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
       testGame.title,
     );
     expect(updatedUser?.favoritedGames.length).toEqual(1);
-    expect(updatedUser?.favoritedGames[0].gameId).toEqual(testGame.gameId);
+    expect(updatedUser?.favoritedGames[0].programItemId).toEqual(
+      testGame.programItemId,
+    );
 
     const updatedSignupsResult = await findUserDirectSignups(mockUser.username);
     const updatedSignups = unsafelyUnwrapResult(updatedSignupsResult);
@@ -281,7 +286,10 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
     await saveDirectSignup(mockPostDirectSignupRequest2);
     await saveFavorite({
       username: mockUser.username,
-      favoritedGameIds: [testGame.gameId, testGame2.gameId],
+      favoritedProgramItemIds: [
+        testGame.programItemId,
+        testGame2.programItemId,
+      ],
     });
 
     const response = await request(server)

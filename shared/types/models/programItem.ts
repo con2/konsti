@@ -93,7 +93,7 @@ export enum AccessibilityValue {
 }
 
 export const ProgramItemSchema = z.object({
-  gameId: z.string(),
+  programItemId: z.string(),
   title: z.string(),
   description: z.string(),
   location: z.string(),

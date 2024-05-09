@@ -57,12 +57,12 @@ export const updateWithAssign = async (
     (result) => result.directSignup.programItemDetails,
   );
 
-  const groupedSignups = countBy(directSignupsResult, "gameId");
+  const groupedSignups = countBy(directSignupsResult, "programItemId");
 
   const gamePopularityUpdates = games
     .map((game) => ({
-      programItemId: game.gameId,
-      popularity: groupedSignups[game.gameId],
+      programItemId: game.programItemId,
+      popularity: groupedSignups[game.programItemId],
     }))
     .filter((popularityUpdate) => popularityUpdate.popularity);
 

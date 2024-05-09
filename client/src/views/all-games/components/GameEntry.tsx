@@ -49,7 +49,7 @@ export const GameEntry = ({
 
   const signupAlwaysOpen = config
     .shared()
-    .directSignupAlwaysOpenIds.includes(game.gameId);
+    .directSignupAlwaysOpenIds.includes(game.programItemId);
 
   const isEnterGameMode =
     config.shared().manualSignupMode === SignupStrategy.DIRECT ||

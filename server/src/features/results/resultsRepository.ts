@@ -60,7 +60,9 @@ export const saveResult = async (
   const games = unwrapResult(gamesResult);
   const results = signupResultData.reduce<AssignmentResult[]>((acc, result) => {
     const gameDocInDb = games.find(
-      (game) => game.gameId === result.directSignup.programItemDetails.gameId,
+      (game) =>
+        game.programItemId ===
+        result.directSignup.programItemDetails.programItemId,
     );
 
     if (gameDocInDb) {

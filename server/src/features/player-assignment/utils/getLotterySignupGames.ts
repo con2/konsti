@@ -14,7 +14,7 @@ export const getLotterySignupGames = (
   // Get valid games from games that are starting and games that have lottery signups
   startingGames.forEach((startingGame) => {
     for (let i = 0; i < signupWishes.length; i += 1) {
-      if (startingGame.gameId === signupWishes[i].gameId) {
+      if (startingGame.programItemId === signupWishes[i].programItemId) {
         lotterySignupGames.push(startingGame);
         minAttendance += startingGame.minAttendance;
         maxAttendance += startingGame.maxAttendance;

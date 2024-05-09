@@ -81,7 +81,7 @@ export const SignupGameForm = ({
 
     const enterData = {
       username,
-      directSignupGameId: game.gameId,
+      directSignupProgramItemId: game.programItemId,
       startTime: game.startTime,
       message: userSignupMessage || selectedValue,
       priority: DIRECT_SIGNUP_PRIORITY,
@@ -90,7 +90,7 @@ export const SignupGameForm = ({
     // TODO: This logic should be on backend
     if (
       config.shared().twoPhaseSignupProgramTypes.includes(game.programType) &&
-      !directSignupAlwaysOpenIds.includes(game.gameId)
+      !directSignupAlwaysOpenIds.includes(game.programItemId)
     ) {
       if (isInGroup && !isGroupCreator) {
         const leaveGroupError = await dispatch(submitLeaveGroup());
@@ -131,7 +131,7 @@ export const SignupGameForm = ({
   return (
     <SignupForm>
       {config.shared().twoPhaseSignupProgramTypes.includes(game.programType) &&
-        !directSignupAlwaysOpenIds.includes(game.gameId) &&
+        !directSignupAlwaysOpenIds.includes(game.programItemId) &&
         isInGroup && (
           <p>
             {!isGroupCreator && <Warning>{t("signup.inGroupWarning")}</Warning>}

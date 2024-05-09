@@ -22,7 +22,7 @@ export const FeedbackForm = ({ game }: Props): ReactElement => {
     setSubmitting(true);
 
     try {
-      await postFeedback(game.gameId, feedbackValue);
+      await postFeedback(game.programItemId, feedbackValue);
     } catch (error) {
       console.log(`postFeedback error:`, error); // eslint-disable-line no-console
     }

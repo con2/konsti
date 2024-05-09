@@ -16,13 +16,13 @@ export const RevolvingDoorGamesInfo = (): ReactElement => {
     (state) => state.admin.activeProgramType,
   );
 
-  const hiddenGamesIds = hiddenGames.map((g) => g.gameId);
+  const hiddenGamesIds = hiddenGames.map((g) => g.programItemId);
 
   const timeNow = getTimeNow();
   const runningRevolvingDoorGames = activeGames.filter((game) => {
     return (
       game.revolvingDoor &&
-      !hiddenGamesIds.includes(game.gameId) &&
+      !hiddenGamesIds.includes(game.programItemId) &&
       dayjs(game.startTime).isBefore(timeNow) &&
       dayjs(game.endTime).isAfter(timeNow)
     );
@@ -51,8 +51,8 @@ export const RevolvingDoorGamesInfo = (): ReactElement => {
             })}
           </h3>
           {runningRevolvingDoorGames.map((game) => (
-            <div key={game.gameId}>
-              <Link to={`/games/${game.gameId}`}>{game.title}</Link>{" "}
+            <div key={game.programItemId}>
+              <Link to={`/games/${game.programItemId}`}>{game.title}</Link>{" "}
               <GameListShortDescription>
                 {game.shortDescription
                   ? game.shortDescription

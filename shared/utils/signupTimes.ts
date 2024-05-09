@@ -40,7 +40,9 @@ export const getDirectSignupStartTime = (game: ProgramItem): Dayjs => {
     twoPhaseSignupProgramTypes,
   } = config.shared();
 
-  const signupAlwaysOpen = directSignupAlwaysOpenIds.includes(game.gameId);
+  const signupAlwaysOpen = directSignupAlwaysOpenIds.includes(
+    game.programItemId,
+  );
 
   if (signupAlwaysOpen) {
     const someOldTime = "2000-01-01T00:00:00.000Z";

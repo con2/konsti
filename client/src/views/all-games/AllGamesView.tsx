@@ -51,7 +51,7 @@ export const AllGamesView = (): ReactElement => {
     () =>
       activeGames.filter((game) => {
         const hidden = hiddenGames.find(
-          (hiddenGame) => game.gameId === hiddenGame.gameId,
+          (hiddenGame) => game.programItemId === hiddenGame.programItemId,
         );
         if (!hidden) {
           return game;
