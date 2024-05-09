@@ -1,7 +1,7 @@
 import { logger } from "server/utils/logger";
 import { ResultsModel } from "server/features/results/resultsSchema";
 import { ResultsCollectionEntry } from "server/types/resultTypes";
-import { findGames } from "server/features/game/gameRepository";
+import { findGames } from "server/features/program-item/programItemRepository";
 import { AssignmentResult } from "shared/types/models/result";
 import {
   Result,

@@ -1,7 +1,10 @@
 import dayjs from "dayjs";
 import { groupBy, shuffle } from "lodash-es";
 import { ObjectId } from "mongoose";
-import { findGameById, findGames } from "server/features/game/gameRepository";
+import {
+  findGameById,
+  findGames,
+} from "server/features/program-item/programItemRepository";
 import {
   DirectSignupsForProgramItem,
   UserDirectSignup,

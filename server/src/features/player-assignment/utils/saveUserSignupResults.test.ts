@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 import { faker } from "@faker-js/faker";
 import { findUsers, saveUser } from "server/features/user/userRepository";
 import { testGame } from "shared/tests/testGame";
-import { saveGames } from "server/features/game/gameRepository";
+import { saveGames } from "server/features/program-item/programItemRepository";
 import {
   mockUser,
   mockUser2,

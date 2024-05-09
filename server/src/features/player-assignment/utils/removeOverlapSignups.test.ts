@@ -6,7 +6,10 @@ import { mockUser, mockLotterySignups } from "server/test/mock-data/mockUser";
 import { mockResults } from "server/test/mock-data/mockResults";
 import { testGame, testGame2 } from "shared/tests/testGame";
 import { findUser, saveUser } from "server/features/user/userRepository";
-import { findGames, saveGames } from "server/features/game/gameRepository";
+import {
+  findGames,
+  saveGames,
+} from "server/features/program-item/programItemRepository";
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 

@@ -12,7 +12,7 @@ import {
   SignupQuestionType,
 } from "shared/types/models/settings";
 import { testGame, testGame2 } from "shared/tests/testGame";
-import { saveGames } from "server/features/game/gameRepository";
+import { saveGames } from "server/features/program-item/programItemRepository";
 import { findUser, saveUser } from "server/features/user/userRepository";
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import {

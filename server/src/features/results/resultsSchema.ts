@@ -20,4 +20,4 @@ const ResultsSchema = new mongoose.Schema(
   { timestamps: true },
 );
 
-export const ResultsModel = mongoose.model<ResultDoc>("Results", ResultsSchema);
+export const ResultsModel = mongoose.model<ResultDoc>("results", ResultsSchema);

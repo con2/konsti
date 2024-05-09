@@ -18,7 +18,7 @@ import {
   mockUser2,
 } from "server/test/mock-data/mockUser";
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
-import { saveGames } from "server/features/game/gameRepository";
+import { saveGames } from "server/features/program-item/programItemRepository";
 import { testGame, testGame2 } from "shared/tests/testGame";
 import { closeServer, startServer } from "server/utils/server";
 import { saveDirectSignup } from "server/features/direct-signup/directSignupRepository";

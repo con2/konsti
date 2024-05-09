@@ -1,5 +1,5 @@
 import { logger } from "server/utils/logger";
-import { saveGames } from "server/features/game/gameRepository";
+import { saveGames } from "server/features/program-item/programItemRepository";
 import { db } from "server/db/mongodb";
 import {
   createAdminUser,
@@ -8,9 +8,9 @@ import {
 } from "server/test/test-data-generation/generators/createUsers";
 import { isErrorResult, unwrapResult } from "shared/utils/result";
 import { cleanupDatabase } from "server/utils/cleanupDatabse";
-import { addSignupQuestions } from "server/features/game/utils/addSignupQuestions";
+import { addSignupQuestions } from "server/features/program-item/utils/addSignupQuestions";
 import { findSettings } from "server/features/settings/settingsRepository";
-import { getGamesForConvention } from "server/features/game/gamesService";
+import { getGamesForConvention } from "server/features/program-item/programItemService";
 
 const ADMIN_PASSWORD = "";
 const HELP_PASSWORD = "";

@@ -5,7 +5,7 @@ import { logger } from "server/utils/logger";
 import { updateGamePopularity } from "server/features/game-popularity/updateGamePopularity";
 import { Game } from "shared/types/models/game";
 import { findUsers } from "server/features/user/userRepository";
-import { findGames } from "server/features/game/gameRepository";
+import { findGames } from "server/features/program-item/programItemRepository";
 import { Signup, User } from "shared/types/models/user";
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";

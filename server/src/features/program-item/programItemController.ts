@@ -4,7 +4,10 @@ import {
   getAuthorizedUsername,
 } from "server/utils/authHeader";
 import { UserGroup } from "shared/types/models/user";
-import { fetchGames, updateGames } from "server/features/game/gamesService";
+import {
+  fetchGames,
+  updateGames,
+} from "server/features/program-item/programItemService";
 import { logger } from "server/utils/logger";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { autoUpdateGames } from "server/utils/cron";

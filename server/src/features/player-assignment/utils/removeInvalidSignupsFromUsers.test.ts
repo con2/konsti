@@ -2,7 +2,7 @@ import { expect, test, afterEach, beforeEach } from "vitest";
 import mongoose from "mongoose";
 import { faker } from "@faker-js/faker";
 import { UserModel } from "server/features/user/userSchema";
-import { GameModel } from "server/features/game/gameSchema";
+import { GameModel } from "server/features/program-item/programItemSchema";
 import { mockUser, mockLotterySignups } from "server/test/mock-data/mockUser";
 import { testGame, testGame2 } from "shared/tests/testGame";
 import { removeInvalidGamesFromUsers } from "server/features/player-assignment/utils/removeInvalidGamesFromUsers";

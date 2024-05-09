@@ -3,7 +3,7 @@ import { runAssignmentStrategy } from "server/features/player-assignment/utils/r
 import { removeInvalidGamesFromUsers } from "server/features/player-assignment/utils/removeInvalidGamesFromUsers";
 import { PlayerAssignmentResult } from "server/types/resultTypes";
 import { findUsers } from "server/features/user/userRepository";
-import { findGames } from "server/features/game/gameRepository";
+import { findGames } from "server/features/program-item/programItemRepository";
 import { AssignmentStrategy } from "shared/config/sharedConfigTypes";
 import { config } from "shared/config";
 import { removeOverlapSignups } from "server/features/player-assignment/utils/removeOverlapSignups";

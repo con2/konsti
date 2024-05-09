@@ -1,4 +1,4 @@
-import { removeGames } from "server/features/game/gameRepository";
+import { removeGames } from "server/features/program-item/programItemRepository";
 import { removeResults } from "server/features/results/resultsRepository";
 import { removeSerials } from "server/features/serial/serialRepository";
 import { removeSettings } from "server/features/settings/settingsRepository";

@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import { findGameById } from "server/features/game/gameRepository";
+import { findGameById } from "server/features/program-item/programItemRepository";
 import { getTimeNow } from "server/features/player-assignment/utils/getTimeNow";
 import { isValidSignupTime } from "server/features/user/userUtils";
 import {

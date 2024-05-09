@@ -1,4 +1,4 @@
-import { findGames } from "server/features/game/gameRepository";
+import { findGames } from "server/features/program-item/programItemRepository";
 import { UserModel } from "server/features/user/userSchema";
 import { logger } from "server/utils/logger";
 import { MongoDbError } from "shared/types/api/errors";

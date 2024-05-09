@@ -3,7 +3,7 @@ import { countBy, groupBy } from "lodash-es";
 import { padgAssignPlayers } from "server/features/player-assignment/padg/padgAssignPlayers";
 import { User } from "shared/types/models/user";
 import { Game } from "shared/types/models/game";
-import { saveGamePopularity } from "server/features/game/gameRepository";
+import { saveGamePopularity } from "server/features/program-item/programItemRepository";
 import { DirectSignupsForProgramItem } from "server/features/direct-signup/directSignupTypes";
 import {
   Result,

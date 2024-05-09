@@ -7,7 +7,7 @@ import {
   mockKompassiGameRopecon,
   mockKompassiGameRopecon2,
 } from "server/kompassi/test/mockKompassiGameRopecon";
-import { getGamesForConvention } from "server/features/game/gamesService";
+import { getGamesForConvention } from "server/features/program-item/programItemService";
 import { exhaustiveSwitchGuard } from "shared/utils/exhaustiveSwitchGuard";
 import {
   mockKompassiGameHitpoint,

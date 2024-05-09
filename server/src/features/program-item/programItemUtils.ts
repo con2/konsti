@@ -1,6 +1,9 @@
 import { differenceBy } from "lodash-es";
 import dayjs, { Dayjs } from "dayjs";
-import { findGames, removeGames } from "server/features/game/gameRepository";
+import {
+  findGames,
+  removeGames,
+} from "server/features/program-item/programItemRepository";
 import { GameDoc } from "server/types/gameTypes";
 import { logger } from "server/utils/logger";
 import { Game, GameWithUsernames, UserSignup } from "shared/types/models/game";

@@ -3,7 +3,7 @@ import dayjs from "dayjs";
 import { sample, sampleSize } from "lodash-es";
 import { logger } from "server/utils/logger";
 import { kompassiGameMapperRopecon } from "server/kompassi/ropecon/kompassiGameMapperRopecon";
-import { saveGames } from "server/features/game/gameRepository";
+import { saveGames } from "server/features/program-item/programItemRepository";
 import { config } from "shared/config";
 import {
   KompassiGameRopecon,

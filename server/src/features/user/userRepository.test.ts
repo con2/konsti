@@ -9,7 +9,7 @@ import {
 import { mockUser, mockUser2 } from "server/test/mock-data/mockUser";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 import { testGame } from "shared/tests/testGame";
-import { saveGames } from "server/features/game/gameRepository";
+import { saveGames } from "server/features/program-item/programItemRepository";
 
 beforeEach(async () => {
   await mongoose.connect(globalThis.__MONGO_URI__, {

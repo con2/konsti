@@ -8,7 +8,10 @@ import { startServer, closeServer } from "server/utils/server";
 import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { getJWT } from "server/utils/jwt";
 import { UserGroup } from "shared/types/models/user";
-import { findGames, saveGames } from "server/features/game/gameRepository";
+import {
+  findGames,
+  saveGames,
+} from "server/features/program-item/programItemRepository";
 import { testGame, testGame2 } from "shared/tests/testGame";
 import { findUser, saveUser } from "server/features/user/userRepository";
 import {

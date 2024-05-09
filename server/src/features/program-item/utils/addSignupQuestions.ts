@@ -1,4 +1,4 @@
-import { findGames } from "server/features/game/gameRepository";
+import { findGames } from "server/features/program-item/programItemRepository";
 import { saveSignupQuestion } from "server/features/settings/settingsRepository";
 import { logger } from "server/utils/logger";
 import { config } from "shared/config";

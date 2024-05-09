@@ -7,7 +7,7 @@ import {
   SignupQuestion,
 } from "shared/types/models/settings";
 import { Game } from "shared/types/models/game";
-import { findGames } from "server/features/game/gameRepository";
+import { findGames } from "server/features/program-item/programItemRepository";
 import { PostSettingsRequest } from "shared/types/api/settings";
 import { SettingsDoc } from "server/types/settingsTypes";
 import {

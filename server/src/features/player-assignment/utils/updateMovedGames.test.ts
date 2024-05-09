@@ -3,13 +3,16 @@ import dayjs from "dayjs";
 import mongoose from "mongoose";
 import { faker } from "@faker-js/faker";
 import { UserModel } from "server/features/user/userSchema";
-import { GameModel } from "server/features/game/gameSchema";
+import { GameModel } from "server/features/program-item/programItemSchema";
 import { mockUser, mockLotterySignups } from "server/test/mock-data/mockUser";
 import { testGame, testGame2 } from "shared/tests/testGame";
 import { updateMovedGames } from "server/features/player-assignment/utils/updateMovedGames";
 import { findUser, saveUser } from "server/features/user/userRepository";
 import { saveLotterySignups } from "server/features/user/lottery-signup/lotterySignupRepository";
-import { findGames, saveGames } from "server/features/game/gameRepository";
+import {
+  findGames,
+  saveGames,
+} from "server/features/program-item/programItemRepository";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 
 beforeEach(async () => {

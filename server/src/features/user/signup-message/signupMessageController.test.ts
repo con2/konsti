@@ -6,7 +6,7 @@ import { ApiEndpoint } from "shared/constants/apiEndpoints";
 import { getJWT } from "server/utils/jwt";
 import { UserGroup } from "shared/types/models/user";
 import { closeServer, startServer } from "server/utils/server";
-import { saveGames } from "server/features/game/gameRepository";
+import { saveGames } from "server/features/program-item/programItemRepository";
 import { saveUser } from "server/features/user/userRepository";
 import {
   mockPostDirectSignupRequest,

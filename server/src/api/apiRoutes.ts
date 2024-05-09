@@ -10,7 +10,7 @@ import {
   getGames,
   postAutoUpdateGames,
   postUpdateGames,
-} from "server/features/game/gameController";
+} from "server/features/program-item/programItemController";
 import { getHealthStatus } from "server/features/health/healthController";
 import {
   getResults,

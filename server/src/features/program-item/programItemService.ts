@@ -6,8 +6,11 @@ import {
   PostUpdateGamesError,
   GetGamesError,
 } from "shared/types/api/games";
-import { findGames, saveGames } from "server/features/game/gameRepository";
-import { enrichGames } from "./gameUtils";
+import {
+  findGames,
+  saveGames,
+} from "server/features/program-item/programItemRepository";
+import { enrichGames } from "./programItemUtils";
 import {
   Result,
   isErrorResult,

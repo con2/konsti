@@ -1,7 +1,7 @@
 import { logger } from "server/utils/logger";
 import { updateWithAssign } from "server/features/game-popularity/utils/updateWithAssign";
 import { findUsers } from "server/features/user/userRepository";
-import { findGames } from "server/features/game/gameRepository";
+import { findGames } from "server/features/program-item/programItemRepository";
 import { findDirectSignups } from "server/features/direct-signup/directSignupRepository";
 import {
   Result,

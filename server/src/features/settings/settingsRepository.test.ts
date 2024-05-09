@@ -9,7 +9,7 @@ import {
   saveSettings,
   saveSignupQuestion,
 } from "server/features/settings/settingsRepository";
-import { saveGames } from "server/features/game/gameRepository";
+import { saveGames } from "server/features/program-item/programItemRepository";
 import {
   SignupQuestion,
   SignupQuestionType,

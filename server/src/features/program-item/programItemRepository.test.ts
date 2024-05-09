@@ -1,10 +1,10 @@
 import { expect, test, afterEach, beforeEach } from "vitest";
 import mongoose from "mongoose";
 import { faker } from "@faker-js/faker";
-import { GameModel } from "server/features/game/gameSchema";
-import { saveGames } from "server/features/game/gameRepository";
+import { GameModel } from "server/features/program-item/programItemSchema";
+import { saveGames } from "server/features/program-item/programItemRepository";
 import { testGame } from "shared/tests/testGame";
-import { removeDeletedGames } from "server/features/game/gameUtils";
+import { removeDeletedGames } from "server/features/program-item/programItemUtils";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
 import { findDirectSignups } from "server/features/direct-signup/directSignupRepository";
 

@@ -17,7 +17,7 @@ import {
 } from "server/test/mock-data/mockUser";
 import { testGame } from "shared/tests/testGame";
 import { saveUser } from "server/features/user/userRepository";
-import { saveGames } from "server/features/game/gameRepository";
+import { saveGames } from "server/features/program-item/programItemRepository";
 import { saveTestSettings } from "server/test/test-settings/testSettingsRepository";
 import {
   findDirectSignups,

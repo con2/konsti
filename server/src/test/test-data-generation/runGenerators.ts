@@ -3,7 +3,7 @@ import { createGames } from "server/test/test-data-generation/generators/createG
 import { createLotterySignups } from "server/test/test-data-generation/generators/createLotterySignups";
 import { removeUsers } from "server/features/user/userRepository";
 import { removeResults } from "server/features/results/resultsRepository";
-import { removeGames } from "server/features/game/gameRepository";
+import { removeGames } from "server/features/program-item/programItemRepository";
 import { db } from "server/db/mongodb";
 import { generateTestUsers } from "server/test/test-data-generation/generators/generateTestData";
 import { createDirectSignups } from "server/test/test-data-generation/generators/createSignups";

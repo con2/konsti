@@ -10,7 +10,7 @@ import {
 } from "server/features/user/event-log/eventLogRepository";
 import { EventLogAction } from "shared/types/models/eventLog";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
-import { saveGames } from "server/features/game/gameRepository";
+import { saveGames } from "server/features/program-item/programItemRepository";
 import { testGame, testGame2 } from "shared/tests/testGame";
 
 beforeEach(async () => {

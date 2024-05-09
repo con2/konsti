@@ -39,6 +39,6 @@ const SettingsSchema = new mongoose.Schema(
 );
 
 export const SettingsModel = mongoose.model<SettingsDoc>(
-  "Settings",
+  "settings",
   SettingsSchema,
 );

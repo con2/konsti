@@ -1,6 +1,6 @@
 import { faker } from "@faker-js/faker";
 import { logger } from "server/utils/logger";
-import { findGames } from "server/features/game/gameRepository";
+import { findGames } from "server/features/program-item/programItemRepository";
 import {
   findSettings,
   saveSignupQuestion,

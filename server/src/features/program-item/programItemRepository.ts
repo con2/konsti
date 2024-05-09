@@ -1,6 +1,6 @@
 import { ObjectId } from "mongoose";
 import { logger } from "server/utils/logger";
-import { GameModel } from "server/features/game/gameSchema";
+import { GameModel } from "server/features/program-item/programItemSchema";
 import { updateMovedGames } from "server/features/player-assignment/utils/updateMovedGames";
 import { GameDoc } from "server/types/gameTypes";
 import { Game } from "shared/types/models/game";
@@ -10,7 +10,7 @@ import {
   makeErrorResult,
   isErrorResult,
 } from "shared/utils/result";
-import { removeDeletedGames } from "server/features/game/gameUtils";
+import { removeDeletedGames } from "server/features/program-item/programItemUtils";
 import { removeInvalidGamesFromUsers } from "server/features/player-assignment/utils/removeInvalidGamesFromUsers";
 import { MongoDbError } from "shared/types/api/errors";
 import { createEmptyDirectSignupDocumentForProgramItems } from "server/features/direct-signup/directSignupRepository";

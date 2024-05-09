@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
 import { logger } from "server/utils/logger";
 import { Game } from "shared/types/models/game";
-import { findGames } from "server/features/game/gameRepository";
+import { findGames } from "server/features/program-item/programItemRepository";
 import {
   findUsers,
   updateUsersByUsername,

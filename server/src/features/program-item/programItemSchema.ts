@@ -32,4 +32,4 @@ const gameSchema = new mongoose.Schema(
   { timestamps: true },
 );
 
-export const GameModel = mongoose.model<GameDoc>("Game", gameSchema);
+export const GameModel = mongoose.model<GameDoc>("game", gameSchema);

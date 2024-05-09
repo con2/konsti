@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 import { sampleSize } from "lodash-es";
-import { findGames } from "server/features/game/gameRepository";
+import { findGames } from "server/features/program-item/programItemRepository";
 import { addEventLogItems } from "server/features/user/event-log/eventLogRepository";
 import { findUsers } from "server/features/user/userRepository";
 import { unsafelyUnwrapResult } from "server/test/utils/unsafelyUnwrapResult";
