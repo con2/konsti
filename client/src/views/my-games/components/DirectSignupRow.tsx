@@ -9,7 +9,7 @@ import {
   DeleteDirectSignupErrorMessage,
   submitDeleteDirectSignup,
 } from "client/views/my-games/myGamesThunks";
-import { CancelSignupForm } from "client/views/all-games/components/CancelSignupForm";
+import { CancelSignupForm } from "client/views/all-program-items/components/CancelSignupForm";
 import { ErrorMessage } from "client/components/ErrorMessage";
 import { loadGames } from "client/utils/loadData";
 import { config } from "shared/config";

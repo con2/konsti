@@ -3,7 +3,7 @@ import { submitUpdateFavorites } from "client/views/my-games/myGamesThunks";
 import { AppDispatch } from "client/types/reduxTypes";
 
 export interface UpdateFavoriteOpts {
-  game: ProgramItem;
+  programItem: ProgramItem;
   action: string;
   favoritedProgramItems: readonly ProgramItem[];
   username: string;
@@ -13,22 +13,23 @@ export interface UpdateFavoriteOpts {
 export const updateFavorite = async (
   updateFavoriteOpts: UpdateFavoriteOpts,
 ): Promise<void> => {
-  const { game, action, favoritedProgramItems, username, dispatch } =
+  const { programItem, action, favoritedProgramItems, username, dispatch } =
     updateFavoriteOpts;
 
-  if (!game.programItemId) {
+  if (!programItem.programItemId) {
     return;
   }
 
   const gameIndex = favoritedProgramItems.findIndex(
-    (favoritedGame) => favoritedGame.programItemId === game.programItemId,
+    (favoritedGame) =>
+      favoritedGame.programItemId === programItem.programItemId,
   );
   const favoritedProgramItemIds = favoritedProgramItems.map(
     (favoritedGame) => favoritedGame.programItemId,
   );
 
   if (action === "add" && gameIndex === -1) {
-    favoritedProgramItemIds.push(game.programItemId);
+    favoritedProgramItemIds.push(programItem.programItemId);
   } else if (action === "del" && gameIndex > -1) {
     favoritedProgramItemIds.splice(gameIndex, 1);
   }

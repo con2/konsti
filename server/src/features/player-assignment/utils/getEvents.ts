@@ -12,7 +12,8 @@ export const getEvents = (
     // Program item can have existing signups if program item's start time has changed
     // Consider existing signups when determining program item attendee limits
     const gameSignup = directSignups.find(
-      (signup) => signup.game.programItemId === selectedGame.programItemId,
+      (signup) =>
+        signup.programItem.programItemId === selectedGame.programItemId,
     );
 
     const changedSignups = gameSignup?.userSignups.filter((userSignup) => {

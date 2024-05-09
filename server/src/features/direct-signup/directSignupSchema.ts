@@ -3,7 +3,7 @@ import { DirectSignupDoc } from "server/features/direct-signup/directSignupTypes
 
 const DirectSignupSchema = new mongoose.Schema(
   {
-    game: { type: mongoose.Schema.Types.ObjectId, ref: "program-item" },
+    programItem: { type: mongoose.Schema.Types.ObjectId, ref: "program-item" },
     userSignups: [
       {
         username: String,

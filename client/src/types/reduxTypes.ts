@@ -3,7 +3,7 @@ import { Action } from "redux";
 import { ProgramItem, UserSignup } from "shared/types/models/programItem";
 import { GroupMember } from "shared/types/models/groups";
 import { store, combinedReducer } from "client/utils/store";
-import { UserGames, UserGroup } from "shared/types/models/user";
+import { UserProgramItems, UserGroup } from "shared/types/models/user";
 import { SignupQuestion } from "shared/types/models/settings";
 import { LoginProvider, SignupStrategy } from "shared/config/sharedConfigTypes";
 import { BackendErrorType } from "client/components/ErrorBar";
@@ -24,14 +24,14 @@ export interface AdminState {
   loginProvider: LoginProvider | undefined;
 }
 
-export interface GameDirectSignups {
+export interface ProgramItemDirectSignups {
   users: UserSignup[];
   programItemId: string;
 }
 
-export interface AllGamesState {
+export interface AllProgramItemsState {
   programItems: readonly ProgramItem[];
-  directSignups: readonly GameDirectSignups[];
+  directSignups: readonly ProgramItemDirectSignups[];
 }
 
 export interface LoginState {
@@ -51,7 +51,7 @@ export interface GroupState {
   groupMembers: readonly GroupMember[];
 }
 
-export type MyGamesState = UserGames;
+export type MyProgramItemsState = UserProgramItems;
 
 export interface TestSettingsState {
   testTime: string;

@@ -102,7 +102,7 @@ export const enrichGames = async (
       (message) => message.programItemId === game.programItemId,
     );
     return {
-      game: {
+      programItem: {
         ...game.toJSON<ProgramItemDoc>(),
         signupStrategy: getSignupStrategyForGame(game, settings, currentTime),
       },
@@ -114,22 +114,22 @@ export const enrichGames = async (
 };
 
 const getSignupStrategyForGame = (
-  game: ProgramItemDoc,
+  programItem: ProgramItemDoc,
   settings: Settings,
   currentTime: Dayjs,
 ): SignupStrategy => {
-  const start = dayjs(game.startTime);
+  const start = dayjs(programItem.startTime);
   const { DIRECT_SIGNUP_START, twoPhaseSignupProgramTypes } = config.shared();
 
   if (settings.signupStrategy !== SignupStrategy.ALGORITHM_AND_DIRECT) {
     return settings.signupStrategy;
   }
 
-  if (!twoPhaseSignupProgramTypes.includes(game.programType)) {
+  if (!twoPhaseSignupProgramTypes.includes(programItem.programType)) {
     return SignupStrategy.DIRECT;
   }
 
-  if (tooEearlyForAlgorithmSignup(game.startTime)) {
+  if (tooEearlyForAlgorithmSignup(programItem.startTime)) {
     return SignupStrategy.DIRECT;
   }
 
@@ -149,7 +149,7 @@ const getSignupsForGame = (
   signupQuestion?: SignupQuestion | undefined,
 ): UserSignup[] => {
   const signupsForGame = directSignups.filter(
-    (signup) => signup.game.programItemId === programItemId,
+    (signup) => signup.programItem.programItemId === programItemId,
   );
 
   const formattedSignupsForGame = signupsForGame.flatMap((signupForGame) => {

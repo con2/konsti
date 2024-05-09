@@ -8,7 +8,7 @@ import {
   submitPlayersAssign,
   submitToggleAppOpen,
 } from "client/views/admin/adminThunks";
-import { submitUpdateGames } from "client/views/all-games/allGamesThunks";
+import { submitUpdateGames } from "client/views/all-program-items/allProgramItemsThunks";
 import { getWeekdayAndTime } from "client/utils/timeFormatter";
 import { ProgramItem } from "shared/types/models/programItem";
 import { useAppDispatch, useAppSelector } from "client/utils/hooks";

@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { MyGamesState, RootState } from "client/types/reduxTypes";
+import { MyProgramItemsState, RootState } from "client/types/reduxTypes";
 import { ProgramItem } from "shared/types/models/programItem";
-import { Signup, UserGames } from "shared/types/models/user";
+import { Signup, UserProgramItems } from "shared/types/models/user";
 
-const initialState: MyGamesState = {
+const initialState: MyProgramItemsState = {
   directSignups: [],
   favoritedProgramItems: [],
   lotterySignups: [],
@@ -13,7 +13,7 @@ const myGamesSlice = createSlice({
   name: "myGames",
   initialState,
   reducers: {
-    submitGetUserAsync(state, action: PayloadAction<UserGames>) {
+    submitGetUserAsync(state, action: PayloadAction<UserProgramItems>) {
       return {
         ...state,
         directSignups: action.payload.directSignups,

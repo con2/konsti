@@ -134,9 +134,9 @@ export const programItemIdFix = async (
 
   directSignups.map((signup) => {
     programItems.map((game) => {
-      if (isEqual(game._id, signup.game)) {
+      if (isEqual(game._id, signup.programItem)) {
         // @ts-expect-error: We don't want whole game details
-        signup.game = { programItemId: game.programItemId };
+        signup.programItem = { programItemId: game.programItemId };
       }
     });
   });

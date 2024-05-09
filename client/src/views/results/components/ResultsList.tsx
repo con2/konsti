@@ -9,7 +9,7 @@ import { getUsersForProgramItemId } from "client/views/results/resultsUtils";
 import { getUpcomingGames } from "client/utils/getUpcomingGames";
 import { ProgramItem } from "shared/types/models/programItem";
 import { selectActiveGames } from "client/views/admin/adminSlice";
-import { MULTIPLE_WHITESPACES_REGEX } from "client/views/all-games/AllProgramItemsView";
+import { MULTIPLE_WHITESPACES_REGEX } from "client/views/all-program-items/AllProgramItemsView";
 import { Tags } from "client/components/Tags";
 import { getAttendeeType } from "client/utils/getAttendeeType";
 import { config } from "shared/config";

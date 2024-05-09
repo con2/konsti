@@ -50,7 +50,7 @@ export const writeJson = async <T>(
 
 export interface Message {
   feedback: string;
-  game: string;
+  programItem: string;
   organizer: string;
   startTime: string;
   programType: string;
@@ -70,7 +70,7 @@ export const writeFeedback = (
 
   Object.entries(data).map(([host, messages], index) => {
     const descriptions = messages.map((message, i) => {
-      return `${i + 1}) ${message.game} (${message.startTime})\n\n${
+      return `${i + 1}) ${message.programItem} (${message.startTime})\n\n${
         message.feedback
       }\n\n`;
     });

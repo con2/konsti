@@ -24,9 +24,9 @@ export const FavoritesByStartTimes = ({
   const username = useAppSelector((state) => state.login.username);
   const favoritedProgramItems = useAppSelector(selectFavoritedGames);
 
-  const removeFavorite = async (game: ProgramItem): Promise<void> => {
+  const removeFavorite = async (programItem: ProgramItem): Promise<void> => {
     await updateFavorite({
-      game,
+      programItem,
       action: "del",
       favoritedProgramItems,
       username,

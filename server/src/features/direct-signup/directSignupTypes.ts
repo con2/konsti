@@ -9,7 +9,7 @@ export interface UserDirectSignup {
 }
 
 export interface DirectSignupsForProgramItem {
-  game: ProgramItem;
+  programItem: ProgramItem;
   userSignups: readonly UserDirectSignup[];
   count?: number;
 }

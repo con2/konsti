@@ -185,7 +185,7 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
     const updatedSignupsResult = await findUserDirectSignups(mockUser.username);
     const updatedSignups = unsafelyUnwrapResult(updatedSignupsResult);
     expect(updatedSignups.length).toEqual(1);
-    expect(updatedSignups[0].game.title).toEqual(testGame.title);
+    expect(updatedSignups[0].programItem.title).toEqual(testGame.title);
   });
 
   test("should not modify anything if server response is invalid", async () => {

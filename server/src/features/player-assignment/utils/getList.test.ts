@@ -58,7 +58,7 @@ const groupMemberWithoutLotterySignups2: User = {
 };
 
 const previousSignup: DirectSignupsForProgramItem = {
-  game: testGame,
+  programItem: testGame,
   userSignups: [
     {
       username: groupMemberWithoutLotterySignups2.username,
@@ -70,7 +70,7 @@ const previousSignup: DirectSignupsForProgramItem = {
 };
 
 const otherUserPreviousSignup: DirectSignupsForProgramItem = {
-  game: testGame,
+  programItem: testGame,
   userSignups: [
     {
       username: "test name",
@@ -82,7 +82,7 @@ const otherUserPreviousSignup: DirectSignupsForProgramItem = {
 };
 
 const previousSignupWithWrongType: DirectSignupsForProgramItem = {
-  game: { ...testGame, programType: ProgramType.TOURNAMENT },
+  programItem: { ...testGame, programType: ProgramType.TOURNAMENT },
   userSignups: [
     {
       username: groupCreatorWithLotterySignups.username,

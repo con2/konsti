@@ -29,7 +29,7 @@ export enum UserGroup {
   HELP = "help",
 }
 
-export interface UserGames {
+export interface UserProgramItems {
   directSignups: readonly Signup[];
   favoritedProgramItems: readonly ProgramItem[];
   lotterySignups: readonly Signup[];

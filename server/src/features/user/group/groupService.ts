@@ -59,11 +59,11 @@ export const createGroup = async (
 
   const filteredSignups = signups
     .filter((signup) =>
-      twoPhaseSignupProgramTypes.includes(signup.game.programType),
+      twoPhaseSignupProgramTypes.includes(signup.programItem.programType),
     )
     .filter(
       (signup) =>
-        !directSignupAlwaysOpenIds.includes(signup.game.programItemId),
+        !directSignupAlwaysOpenIds.includes(signup.programItem.programItemId),
     );
 
   const timeNowResult = await getTimeNow();
@@ -172,11 +172,11 @@ export const joinGroup = async (
 
   const filteredSignups = signups
     .filter((signup) =>
-      twoPhaseSignupProgramTypes.includes(signup.game.programType),
+      twoPhaseSignupProgramTypes.includes(signup.programItem.programType),
     )
     .filter(
       (signup) =>
-        !directSignupAlwaysOpenIds.includes(signup.game.programItemId),
+        !directSignupAlwaysOpenIds.includes(signup.programItem.programItemId),
     );
 
   const timeNowResult = await getTimeNow();

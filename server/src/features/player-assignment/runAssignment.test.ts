@@ -199,10 +199,10 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     const signupsAfterUpdate = unsafelyUnwrapResult(signupsAfterUpdateResult);
 
     const tournamentSignup = signupsAfterUpdate.find(
-      (signup) => signup.game.programType === ProgramType.TOURNAMENT,
+      (signup) => signup.programItem.programType === ProgramType.TOURNAMENT,
     );
     const rpgSignup = signupsAfterUpdate.find(
-      (signup) => signup.game.programType === ProgramType.TABLETOP_RPG,
+      (signup) => signup.programItem.programType === ProgramType.TABLETOP_RPG,
     );
 
     expect(tournamentSignup?.userSignups.length).toEqual(1);
@@ -278,11 +278,11 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     const signupsAfterUpdate = unsafelyUnwrapResult(signupsAfterUpdateResult);
 
     const assignmentSignup = signupsAfterUpdate.find(
-      (signup) => signup.game.programItemId === testGame.programItemId,
+      (signup) => signup.programItem.programItemId === testGame.programItemId,
     );
 
     const directSignupAlwaysOpenSignup = signupsAfterUpdate.find(
-      (signup) => signup.game.programItemId === directSignupAlwaysOpenId,
+      (signup) => signup.programItem.programItemId === directSignupAlwaysOpenId,
     );
 
     expect(assignmentSignup?.userSignups.length).toEqual(1);
@@ -374,10 +374,10 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     const signupsAfterUpdate = unsafelyUnwrapResult(signupsAfterUpdateResult);
 
     const assignmentSignup = signupsAfterUpdate.find(
-      (signup) => signup.game.programItemId === testGame.programItemId,
+      (signup) => signup.programItem.programItemId === testGame.programItemId,
     );
     const directSignupAlwaysOpenSignup = signupsAfterUpdate.find(
-      (signup) => signup.game.programItemId === directSignupAlwaysOpenId,
+      (signup) => signup.programItem.programItemId === directSignupAlwaysOpenId,
     );
 
     expect(assignmentSignup?.userSignups.length).toEqual(2);
@@ -443,7 +443,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     const signupsAfterUpdate = unsafelyUnwrapResult(await findDirectSignups());
 
     const previousSignupFromMovedProgramItem = signupsAfterUpdate.find(
-      (signup) => signup.game.programItemId === testGame.programItemId,
+      (signup) => signup.programItem.programItemId === testGame.programItemId,
     );
     expect(previousSignupFromMovedProgramItem?.userSignups).toHaveLength(1);
     expect(previousSignupFromMovedProgramItem?.userSignups[0].username).toEqual(
@@ -451,7 +451,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     );
 
     const assignmentSignup = signupsAfterUpdate.find(
-      (signup) => signup.game.programItemId === testGame2.programItemId,
+      (signup) => signup.programItem.programItemId === testGame2.programItemId,
     );
     expect(assignmentSignup?.userSignups).toHaveLength(1);
     expect(assignmentSignup?.userSignups[0].username).toEqual(
@@ -520,12 +520,12 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
     const signupsAfterUpdate = unsafelyUnwrapResult(await findDirectSignups());
 
     const previousSignupFromMovedProgramItem = signupsAfterUpdate.find(
-      (signup) => signup.game.programItemId === testGame.programItemId,
+      (signup) => signup.programItem.programItemId === testGame.programItemId,
     );
     expect(previousSignupFromMovedProgramItem?.userSignups).toHaveLength(0);
 
     const assignmentSignup = signupsAfterUpdate.find(
-      (signup) => signup.game.programItemId === testGame2.programItemId,
+      (signup) => signup.programItem.programItemId === testGame2.programItemId,
     );
     expect(assignmentSignup?.userSignups).toHaveLength(1);
     expect(assignmentSignup?.userSignups[0].username).toEqual(
@@ -611,19 +611,19 @@ describe("Assignment with first time bonus", () => {
     const signupsAfterUpdate = unsafelyUnwrapResult(signupsAfterUpdateResult);
 
     const assignmentSignup = signupsAfterUpdate.find(
-      (signup) => signup.game.programItemId === testGame.programItemId,
+      (signup) => signup.programItem.programItemId === testGame.programItemId,
     );
 
     const previousRpgSignup = signupsAfterUpdate.find(
-      (signup) => signup.game.programItemId === testGame2.programItemId,
+      (signup) => signup.programItem.programItemId === testGame2.programItemId,
     );
 
     const previousTournamentSignup = signupsAfterUpdate.find(
-      (signup) => signup.game.programItemId === tournamentProgramItemId,
+      (signup) => signup.programItem.programItemId === tournamentProgramItemId,
     );
 
     const previousDirectSignupAlwaysOpenSignup = signupsAfterUpdate.find(
-      (signup) => signup.game.programItemId === directSignupAlwaysOpenId,
+      (signup) => signup.programItem.programItemId === directSignupAlwaysOpenId,
     );
 
     expect(assignmentSignup?.userSignups[0]).toMatchObject({

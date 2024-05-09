@@ -1,4 +1,4 @@
-import { submitGetGames } from "client/views/all-games/allGamesThunks";
+import { submitGetGames } from "client/views/all-program-items/allProgramItemsThunks";
 import {
   submitGetSettings,
   submitGetSignupMessages,

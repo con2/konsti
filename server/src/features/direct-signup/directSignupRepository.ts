@@ -60,7 +60,7 @@ export const findDirectSignups = async (): Promise<
 
     const resultsWithFormattedTime = results
       // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-      .filter((result) => result.game) // Filter results with failed populate
+      .filter((result) => result.programItem) // Filter results with failed populate
       .map((result) => {
         return {
           ...result,
@@ -100,7 +100,7 @@ export const findDirectSignupsByProgramTypes = async (
 
   try {
     const signups = await SignupModel.find(
-      { game: { $in: gamesByProgramTypesForStartTimeObjectIds } },
+      { programItem: { $in: gamesByProgramTypesForStartTimeObjectIds } },
       "-createdAt -updatedAt -_id -__v",
     )
       .lean<DirectSignupsForProgramItem[]>()
@@ -117,7 +117,7 @@ export const findDirectSignupsByProgramTypes = async (
       signups.flatMap((signup) => {
         return signup.userSignups.map((userSignup) => ({
           ...userSignup,
-          programItemId: signup.game.programItemId,
+          programItemId: signup.programItem.programItemId,
         }));
       });
 
@@ -173,7 +173,7 @@ export const saveDirectSignup = async (
   try {
     const signup = await SignupModel.findOneAndUpdate(
       {
-        game: game._id,
+        programItem: game._id,
         count: { $lt: game.maxAttendance },
         "userSignups.username": { $ne: username },
       },
@@ -258,7 +258,7 @@ export const saveDirectSignups = async (
       return {
         updateOne: {
           filter: {
-            game: game._id,
+            programItem: game._id,
           },
           update: {
             $addToSet: {
@@ -302,7 +302,7 @@ export const delDirectSignup = async (
 
   try {
     const signup = await SignupModel.findOneAndUpdate(
-      { game: game._id, "userSignups.username": username },
+      { programItem: game._id, "userSignups.username": username },
       {
         $pull: {
           userSignups: {
@@ -374,7 +374,7 @@ export const delDirectSignupDocumentsByProgramItemIds = async (
 
   try {
     await SignupModel.deleteMany({
-      game: { $in: gameObjectIds },
+      programItem: { $in: gameObjectIds },
     });
     return makeSuccessResult(undefined);
   } catch (error) {
@@ -406,7 +406,7 @@ export const resetDirectSignupsByProgramItemIds = async (
   try {
     await SignupModel.updateMany(
       {
-        game: { $in: gameObjectIds },
+        programItem: { $in: gameObjectIds },
       },
       { userSignups: [], count: 0 },
     );
@@ -440,7 +440,7 @@ export const delAssignmentDirectSignupsByStartTime = async (
   try {
     await SignupModel.updateMany(
       {
-        game: { $nin: doNotRemoveGameObjectIds },
+        programItem: { $nin: doNotRemoveGameObjectIds },
       },
       [
         {
@@ -474,7 +474,7 @@ export const createEmptyDirectSignupDocumentForProgramItems = async (
 ): Promise<Result<void, MongoDbError>> => {
   const signupDocs = programItemObjectIds.map((programItemObjectId) => {
     return new SignupModel({
-      game: programItemObjectId,
+      programItem: programItemObjectId,
       userSignups: [],
       count: 0,
     });

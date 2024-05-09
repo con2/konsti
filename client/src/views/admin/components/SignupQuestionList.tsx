@@ -26,13 +26,13 @@ export const SignupQuestionList = ({
       if (!matchingGame) {
         return [];
       }
-      return { ...privateSignupQuestion, game: matchingGame };
+      return { ...privateSignupQuestion, programItem: matchingGame };
     },
   );
 
   const sortedSignupQuestions = sortBy(signupQuestionsWithGames, [
     "game.startTime",
-    (signupQuestion) => signupQuestion.game.title.toLocaleLowerCase(),
+    (signupQuestion) => signupQuestion.programItem.title.toLocaleLowerCase(),
   ]);
 
   return (

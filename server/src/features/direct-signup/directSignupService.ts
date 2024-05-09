@@ -131,7 +131,7 @@ export const storeDirectSignup = async (
       message: "Store signup success",
       status: "success",
       directSignup: {
-        programItemDetails: signup.game,
+        programItemDetails: signup.programItem,
         priority: newSignup.priority,
         time: newSignup.time,
         message: newSignup.message,

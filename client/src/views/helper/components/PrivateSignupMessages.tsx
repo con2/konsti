@@ -7,7 +7,7 @@ import { useAppSelector } from "client/utils/hooks";
 import { ProgramItem } from "shared/types/models/programItem";
 import { getWeekdayAndTime } from "client/utils/timeFormatter";
 import { ControlledInput } from "client/components/ControlledInput";
-import { MULTIPLE_WHITESPACES_REGEX } from "client/views/all-games/AllProgramItemsView";
+import { MULTIPLE_WHITESPACES_REGEX } from "client/views/all-program-items/AllProgramItemsView";
 
 export const PrivateSignupMessages = (): ReactElement => {
   const { t } = useTranslation();
@@ -38,7 +38,7 @@ export const PrivateSignupMessages = (): ReactElement => {
       if (!matchingGame) {
         return [];
       }
-      return { ...privateSignupQuestion, game: matchingGame };
+      return { ...privateSignupQuestion, programItem: matchingGame };
     },
   );
 
@@ -95,7 +95,8 @@ export const PrivateSignupMessages = (): ReactElement => {
       {Object.entries(groupedSignupQuestions).map(
         ([startTime, signupQuestionsWithGame]) => {
           const sortedSignupQuestions = sortBy(signupQuestionsWithGame, [
-            (signupQuestion) => signupQuestion.game.title.toLocaleLowerCase(),
+            (signupQuestion) =>
+              signupQuestion.programItem.title.toLocaleLowerCase(),
           ]);
 
           return (
@@ -108,13 +109,13 @@ export const PrivateSignupMessages = (): ReactElement => {
                 return (
                   <SingleGameAnswers key={signupQuestionWithGame.programItemId}>
                     <Link
-                      to={`/games/${signupQuestionWithGame.game.programItemId}`}
+                      to={`/games/${signupQuestionWithGame.programItem.programItemId}`}
                     >
-                      {signupQuestionWithGame.game.title}
+                      {signupQuestionWithGame.programItem.title}
                     </Link>{" "}
                     (
                     {t(
-                      `programType.${signupQuestionWithGame.game.programType}`,
+                      `programType.${signupQuestionWithGame.programItem.programType}`,
                     )}
                     )
                     <Answers>
