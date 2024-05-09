@@ -47,7 +47,10 @@ export const MyLotterySignupsList = ({
         <SecondaryText>{t("noLotterySignups")}</SecondaryText>
       )}
       {lotterySignups.length !== 0 && (
-        <SignupsByStartTimes signups={sortedSignups} startTimes={startTimes} />
+        <SignupsByStartTimes
+          directSignups={sortedSignups}
+          startTimes={startTimes}
+        />
       )}
     </RaisedCard>
   );

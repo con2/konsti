@@ -43,7 +43,9 @@ export const MyDirectSignupsList = ({
 
       {config.shared().resultsVisible && startTimes.length !== 0 && (
         <ResultsByStartTimes
-          signups={sortBy(directSignups, [(directSignup) => directSignup.time])}
+          directSignups={sortBy(directSignups, [
+            (directSignup) => directSignup.time,
+          ])}
           startTimes={uniq(startTimes).sort()}
           missedSignups={missedSignups}
         />

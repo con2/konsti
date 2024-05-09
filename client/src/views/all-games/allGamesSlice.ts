@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { AllGamesState } from "client/types/reduxTypes";
 import { GameWithUsernames } from "shared/types/models/game";
 
-const initialState: AllGamesState = { games: [], signups: [] };
+const initialState: AllGamesState = { games: [], directSignups: [] };
 
 const allGamesSlice = createSlice({
   name: "allGames",
@@ -15,7 +15,7 @@ const allGamesSlice = createSlice({
       return {
         ...state,
         games: action.payload.map((gameWithPlayers) => gameWithPlayers.game),
-        signups: action.payload.map((gameWithPlayers) => {
+        directSignups: action.payload.map((gameWithPlayers) => {
           return {
             users: gameWithPlayers.users,
             gameId: gameWithPlayers.game.gameId,

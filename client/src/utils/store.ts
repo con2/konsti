@@ -76,7 +76,7 @@ const sentryReduxEnhancer = createReduxEnhancer({
       allGames: {
         ...state?.allGames,
         games: `Games count: ${state?.allGames?.games?.length}`,
-        signups: `Signups count: ${state?.allGames?.signups?.length}`,
+        directSignups: `Direct signups count: ${state?.allGames?.directSignups?.length}`,
       },
       admin: {
         ...state?.admin,

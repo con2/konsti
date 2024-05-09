@@ -133,11 +133,11 @@ const getSignupStrategyForGame = (
 };
 
 const getSignupsForGame = (
-  signups: DirectSignupsForProgramItem[],
+  directSignups: DirectSignupsForProgramItem[],
   gameId: string,
   signupQuestion?: SignupQuestion | undefined,
 ): UserSignup[] => {
-  const signupsForGame = signups.filter(
+  const signupsForGame = directSignups.filter(
     (signup) => signup.game.gameId === gameId,
   );
 

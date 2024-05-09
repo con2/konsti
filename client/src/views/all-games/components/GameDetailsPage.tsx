@@ -20,7 +20,7 @@ export const GameDetailsPage = (): ReactElement => {
   const { gameId } = useParams();
 
   const games = useAppSelector((state) => state.allGames.games);
-  const signups = useAppSelector((state) => state.allGames.signups);
+  const signups = useAppSelector((state) => state.allGames.directSignups);
   const directSignups = useAppSelector(selectDirectSignups);
   const username = useAppSelector((state) => state.login.username);
   const loggedIn = useAppSelector((state) => state.login.loggedIn);

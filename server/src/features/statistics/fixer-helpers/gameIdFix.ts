@@ -38,9 +38,9 @@ export const gameIdFix = async (year: number, event: string): Promise<void> => {
 
   logger.info(`Loaded ${games.length} games`);
 
-  const signups: DirectSignupDoc[] = JSON.parse(
+  const directSignups: DirectSignupDoc[] = JSON.parse(
     fs.readFileSync(
-      `${config.server().statsDataDir}/${event}/${year}/signups.json`,
+      `${config.server().statsDataDir}/${event}/${year}/direct-signups.json`,
       "utf8",
     ),
   );
@@ -127,7 +127,7 @@ export const gameIdFix = async (year: number, event: string): Promise<void> => {
     });
   });
 
-  signups.map((signup) => {
+  directSignups.map((signup) => {
     games.map((game) => {
       if (isEqual(game._id, signup.game)) {
         // @ts-expect-error: We don't want whole game details
@@ -153,6 +153,6 @@ export const gameIdFix = async (year: number, event: string): Promise<void> => {
 
   await writeJson(year, event, "users", users);
   await writeJson(year, event, "results", results);
-  await writeJson(year, event, "signups", signups);
+  await writeJson(year, event, "signups", directSignups);
   await writeJson(year, event, "settings", settings);
 };

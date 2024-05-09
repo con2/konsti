@@ -25,9 +25,9 @@ export const anonymizeData = async (
     ),
   );
 
-  const signups: DirectSignupsForProgramItem[] = JSON.parse(
+  const directSignups: DirectSignupsForProgramItem[] = JSON.parse(
     fs.readFileSync(
-      `${config.server().statsDataDir}/${event}/${year}/signups.json`,
+      `${config.server().statsDataDir}/${event}/${year}/direct-signups.json`,
       "utf8",
     ),
   );
@@ -44,10 +44,12 @@ export const anonymizeData = async (
       });
     });
 
-    signups.forEach((signup) => {
+    directSignups.forEach((signup) => {
       signup.userSignups.forEach((userSignup) => {
         if (user.username === userSignup.username) {
-          logger.info(`signups.json: ${user.username} -> ${randomUsername}`);
+          logger.info(
+            `direct-signups.json: ${user.username} -> ${randomUsername}`,
+          );
           userSignup.username = randomUsername;
         }
       });
@@ -58,7 +60,7 @@ export const anonymizeData = async (
   });
 
   // Remove signup message answers
-  signups.forEach((signup) => {
+  directSignups.forEach((signup) => {
     signup.userSignups.forEach((userSignup) => {
       if (userSignup.message !== "") {
         userSignup.message = "<redacted>";
@@ -68,5 +70,5 @@ export const anonymizeData = async (
 
   await writeJson(year, event, "users", users);
   await writeJson(year, event, "results", results);
-  await writeJson(year, event, "signups", signups);
+  await writeJson(year, event, "signups", directSignups);
 };

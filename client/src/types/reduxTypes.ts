@@ -31,7 +31,7 @@ export interface UsersForGame {
 
 export interface AllGamesState {
   games: readonly Game[];
-  signups: readonly UsersForGame[];
+  directSignups: readonly UsersForGame[];
 }
 
 export interface LoginState {

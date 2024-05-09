@@ -19,7 +19,7 @@ import { getTimeNow } from "server/features/player-assignment/utils/getTimeNow";
 export const updateWithAssign = async (
   users: readonly User[],
   games: readonly Game[],
-  signups: readonly DirectSignupsForProgramItem[],
+  directSignups: readonly DirectSignupsForProgramItem[],
 ): Promise<Result<void, MongoDbError | AssignmentError>> => {
   const gamesForStartTimes = groupBy(games, (game) =>
     dayjs(game.startTime).toISOString(),
@@ -36,7 +36,7 @@ export const updateWithAssign = async (
   );
 
   const assignmentResultsResult = startTimes.map((startTime) => {
-    return padgAssignPlayers(users, games, startTime, signups);
+    return padgAssignPlayers(users, games, startTime, directSignups);
   });
 
   const someAssignmentFailed = assignmentResultsResult.some(

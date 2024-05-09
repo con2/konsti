@@ -136,7 +136,7 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
     expect(games[0].title).toEqual(testGame.title);
   });
 
-  test("should remove games, selectedGames, signups, and favoritedGames that are not in the server response", async () => {
+  test("should remove games, lottery signups, direct signups, and favorited games that are not in the server response", async () => {
     vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
       value: [mockKompassiGameRopecon],
     });
@@ -253,7 +253,7 @@ describe(`POST ${ApiEndpoint.GAMES}`, () => {
     expect(games[0].description).toEqual(newDescription);
   });
 
-  test("should remove selectedGames but not signups or favoritedGames if game start time changes", async () => {
+  test("should remove lottery signups but not direct signups or favorited games if game start time changes", async () => {
     const newStartTime = dayjs(testGame.startTime)
       .add(1, "hours")
       .toISOString();

@@ -7,12 +7,12 @@ import { Signup } from "shared/types/models/user";
 import { PopularityInfo } from "client/components/PopularityInfo";
 
 interface Props {
-  signups: Signup[];
+  directSignups: Signup[];
   startTimes: readonly string[];
 }
 
 export const SignupsByStartTimes = ({
-  signups,
+  directSignups,
   startTimes,
 }: Props): ReactElement => {
   return (
@@ -23,7 +23,7 @@ export const SignupsByStartTimes = ({
             <StyledTime>{capitalize(getWeekdayAndTime(startTime))}</StyledTime>
 
             <ul>
-              {signups.map((signup) => {
+              {directSignups.map((signup) => {
                 if (signup.time === startTime) {
                   return (
                     <GameDetailsContainer key={signup.gameDetails.gameId}>

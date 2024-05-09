@@ -4,15 +4,15 @@ import { User } from "shared/types/models/user";
 
 export const getAssignmentBonus = (
   playerGroup: User[],
-  signups: readonly DirectSignupsForProgramItem[],
+  directSignups: readonly DirectSignupsForProgramItem[],
 ): number => {
   const { twoPhaseSignupProgramTypes, directSignupAlwaysOpenIds } =
     config.shared();
 
-  const signupsAffectingBonus = signups.filter(
-    (signup) =>
-      twoPhaseSignupProgramTypes.includes(signup.game.programType) &&
-      !directSignupAlwaysOpenIds.includes(signup.game.gameId),
+  const signupsAffectingBonus = directSignups.filter(
+    (directSignup) =>
+      twoPhaseSignupProgramTypes.includes(directSignup.game.programType) &&
+      !directSignupAlwaysOpenIds.includes(directSignup.game.gameId),
   );
 
   const groupMembersWithSignups = playerGroup.flatMap((groupMember) => {

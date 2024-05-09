@@ -18,18 +18,18 @@ import { AssignmentError } from "shared/types/api/errors";
 import { logger } from "server/utils/logger";
 
 export const runPadgAssignment = (
-  selectedGames: readonly Game[],
+  lotterySignupGames: readonly Game[],
   playerGroups: readonly User[][],
   startTime: string,
-  signups: readonly DirectSignupsForProgramItem[],
+  directSignups: readonly DirectSignupsForProgramItem[],
 ): Result<AssignmentStrategyResult, AssignmentError> => {
   const groupsResult = getGroups(playerGroups, startTime);
   if (isErrorResult(groupsResult)) {
     return groupsResult;
   }
   const groups = unwrapResult(groupsResult);
-  const events = getEvents(selectedGames, signups);
-  const listResult = getList(playerGroups, startTime, signups);
+  const events = getEvents(lotterySignupGames, directSignups);
+  const listResult = getList(playerGroups, startTime, directSignups);
   if (isErrorResult(listResult)) {
     return listResult;
   }
