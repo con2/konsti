@@ -31,7 +31,7 @@ import { DIRECT_SIGNUP_PRIORITY } from "shared/constants/signups";
 interface Props {
   programItem: ProgramItem;
   signupQuestion: SignupQuestion | undefined;
-  onEnterGame: () => void;
+  onDirectSignupProgramItem: () => void;
   onCancelSignup: () => void;
   loading: boolean;
   setLoading: (loading: boolean) => void;
@@ -39,7 +39,7 @@ interface Props {
 
 export const DirectSignupProgramItemForm = ({
   programItem,
-  onEnterGame,
+  onDirectSignupProgramItem,
   onCancelSignup,
   signupQuestion,
   loading,
@@ -126,7 +126,7 @@ export const DirectSignupProgramItemForm = ({
     }
 
     await loadProgramItems();
-    onEnterGame();
+    onDirectSignupProgramItem();
     setLoading(false);
   };
 

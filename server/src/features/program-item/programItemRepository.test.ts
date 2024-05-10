@@ -18,7 +18,7 @@ afterEach(async () => {
   await mongoose.disconnect();
 });
 
-test("should insert new game into collection", async () => {
+test("should insert new program item into collection", async () => {
   await saveProgramItems([testProgramItem]);
 
   const insertedGame = await ProgramItemModel.findOne({

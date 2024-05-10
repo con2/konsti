@@ -48,7 +48,7 @@ export const FavoritesByStartTimes = ({
                     <ProgramItemDetailsRow key={programItem.programItemId}>
                       <StyledLink
                         to={`/program/${programItem.programItemId}`}
-                        data-testid={"game-title"}
+                        data-testid={"program-item-title"}
                       >
                         {programItem.title}
                       </StyledLink>

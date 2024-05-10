@@ -20,18 +20,18 @@ export const updateFavorite = async (
     return;
   }
 
-  const gameIndex = favoritedProgramItems.findIndex(
-    (favoritedGame) =>
-      favoritedGame.programItemId === programItem.programItemId,
+  const programItemIndex = favoritedProgramItems.findIndex(
+    (favoritedProgramItem) =>
+      favoritedProgramItem.programItemId === programItem.programItemId,
   );
   const favoritedProgramItemIds = favoritedProgramItems.map(
-    (favoritedGame) => favoritedGame.programItemId,
+    (favoritedProgramItem) => favoritedProgramItem.programItemId,
   );
 
-  if (action === "add" && gameIndex === -1) {
+  if (action === "add" && programItemIndex === -1) {
     favoritedProgramItemIds.push(programItem.programItemId);
-  } else if (action === "del" && gameIndex > -1) {
-    favoritedProgramItemIds.splice(gameIndex, 1);
+  } else if (action === "del" && programItemIndex > -1) {
+    favoritedProgramItemIds.splice(programItemIndex, 1);
   }
 
   try {

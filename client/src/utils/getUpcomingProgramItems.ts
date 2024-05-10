@@ -100,8 +100,9 @@ export const getUpcomingFavorites = (
 ): readonly ProgramItem[] => {
   const timeNow = getTimeNow();
 
-  const upcomingProgramItems = favoritedProgramItems.filter((favoritedGame) =>
-    dayjs(favoritedGame.startTime).add(1, "hours").isAfter(timeNow),
+  const upcomingProgramItems = favoritedProgramItems.filter(
+    (favoritedProgramItem) =>
+      dayjs(favoritedProgramItem.startTime).add(1, "hours").isAfter(timeNow),
   );
 
   return upcomingProgramItems;

@@ -147,7 +147,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
       lotterySignups: [
         { ...mockLotterySignups[0], priority: 2 },
         {
-          // non-"twoPhaseSignupProgramTypes" signed game should be ignored
+          // non-"twoPhaseSignupProgramTypes" signed program item should be ignored
           programItemDetails: {
             ...testProgramItem2,
             programType: ProgramType.TOURNAMENT,
@@ -163,7 +163,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
       lotterySignups: [
         { ...mockLotterySignups[0], priority: 2 },
         {
-          // non-"twoPhaseSignupProgramTypes" signed game should be ignored
+          // non-"twoPhaseSignupProgramTypes" signed program item should be ignored
           programItemDetails: {
             ...testProgramItem2,
             programType: ProgramType.TOURNAMENT,
@@ -235,7 +235,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
       lotterySignups: [
         { ...mockLotterySignups[0], priority: 2 },
         {
-          // directSignupAlwaysOpen signed game should be ignored
+          // directSignupAlwaysOpen signed program item should be ignored
           programItemDetails: {
             ...testProgramItem2,
             programItemId: directSignupAlwaysOpenId,
@@ -318,7 +318,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
       lotterySignups: [
         { ...mockLotterySignups[0], priority: 2 },
         {
-          // directSignupAlwaysOpen signed game should be ignored
+          // directSignupAlwaysOpen signed program item should be ignored
           programItemDetails: {
             ...testProgramItem2,
             programItemId: directSignupAlwaysOpenId,
@@ -334,7 +334,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
       lotterySignups: [
         { ...mockLotterySignups[0], priority: 2 },
         {
-          // directSignupAlwaysOpen signed game should be ignored
+          // directSignupAlwaysOpen signed program item should be ignored
           programItemDetails: {
             ...testProgramItem2,
             programItemId: directSignupAlwaysOpenId,
@@ -390,8 +390,8 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
   });
 
   test("should not remove previous signup from moved program item if user doesn't have updated result", async () => {
-    // User1, game1: 14:00 direct signup -> game moved 15:00
-    // User2, game2: 15:00 lottery signup -> doesn't affect user1 signup
+    // User1, programItem1: 14:00 direct signup -> program item moved 15:00
+    // User2, programItem2: 15:00 lottery signup -> doesn't affect user1 signup
     const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
 
     const assignmentTime = dayjs(testProgramItem.startTime)
@@ -467,7 +467,7 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
   });
 
   test("should update previous signup from moved program item with assignment signup if user has updated result", async () => {
-    // Game1: 14:00 direct signup -> game moved 15:00
+    // Game1: 14:00 direct signup -> program item moved 15:00
     // Game2: 15:00 lottery signup -> replaces Game1
     const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
 

@@ -15,7 +15,7 @@ export const HiddenProgramItemsList = ({
   const { t } = useTranslation();
 
   const sortedProgramItems = sortBy(hiddenProgramItems, [
-    (hiddenGame) => hiddenGame.title.toLowerCase(),
+    (hiddenProgramItem) => hiddenProgramItem.title.toLowerCase(),
   ]);
 
   return (

@@ -51,23 +51,23 @@ export const ProgramItemEntry = ({
     .shared()
     .directSignupAlwaysOpenIds.includes(programItem.programItemId);
 
-  const isEnterGameMode =
+  const isDirectSignupMode =
     config.shared().manualSignupMode === SignupStrategy.DIRECT ||
     signupStrategy === SignupStrategy.DIRECT ||
     signupAlwaysOpen;
 
-  const isDirectlySignedCurrentGame = isAlreadyDirectySigned(
+  const isDirectlySignedCurrentProgramItem = isAlreadyDirectySigned(
     programItem,
     directSignups,
   );
-  const isLotterySignedForCurrentGame = isAlreadyLotterySigned(
+  const isLotterySignedForCurrentProgramItem = isAlreadyLotterySigned(
     programItem,
     lotterySignups,
   );
 
-  const isProgramItemSigned = isEnterGameMode
-    ? isDirectlySignedCurrentGame
-    : isLotterySignedForCurrentGame;
+  const isProgramItemSigned = isDirectSignupMode
+    ? isDirectlySignedCurrentProgramItem
+    : isLotterySignedForCurrentProgramItem;
 
   const tags = [];
   if (config.client().activeProgramTypes.length > 1) {
@@ -81,7 +81,7 @@ export const ProgramItemEntry = ({
   return (
     <StyledCard
       isHighlighted={isProgramItemSigned}
-      data-testid="game-container"
+      data-testid="program-item-container"
     >
       <ProgramItemHead
         programItem={programItem}

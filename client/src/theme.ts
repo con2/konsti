@@ -126,7 +126,7 @@ export const theme = {
   iconSizeNormal: "20px",
   iconSizeLarge: "24px",
 
-  // Game popularity icon colors
+  // Program item popularity icon colors
   popularityLow: blue.primary,
   popularityMedium: green.primary,
   popularityHigh: red.primary,

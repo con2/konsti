@@ -66,7 +66,7 @@ export const LotterySignupForm = ({
       return;
     }
 
-    const newGame: Signup[] = [
+    const newProgramItem: Signup[] = [
       {
         programItemDetails: programItem,
         priority,
@@ -77,7 +77,7 @@ export const LotterySignupForm = ({
 
     const error = await dispatch(
       submitPostLotterySignups({
-        lotterySignups: lotterySignups.concat(newGame),
+        lotterySignups: lotterySignups.concat(newProgramItem),
         startTime: programItem.startTime,
       }),
     );

@@ -64,11 +64,11 @@ export const EventLog = (): ReactElement => {
         (item) => item.createdAt,
         "desc",
       ).map((eventLogItem) => {
-        const foundGame = programItems.find(
+        const founProgramItem = programItems.find(
           (programItem) =>
             programItem.programItemId === eventLogItem.programItemId,
         );
-        if (!foundGame) {
+        if (!founProgramItem) {
           return;
         }
         return (
@@ -79,15 +79,15 @@ export const EventLog = (): ReactElement => {
             <span>
               {t(`eventLogActions.${eventLogItem.action}`)}
               <StyledLink to={`/program/${eventLogItem.programItemId}`}>
-                {foundGame.title}
+                {founProgramItem.title}
               </StyledLink>
               .
             </span>
 
             <StartTime>
               {t("eventLog.programItemDetails", {
-                START_TIME: getWeekdayAndTime(foundGame.startTime),
-                LOCATION: foundGame.location,
+                START_TIME: getWeekdayAndTime(founProgramItem.startTime),
+                LOCATION: founProgramItem.location,
               })}
             </StartTime>
 

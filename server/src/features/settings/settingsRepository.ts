@@ -102,9 +102,10 @@ export const saveHidden = async (
 
   const programItems = unwrapResult(programItemsResult);
   const formattedData = hiddenProgramItems.reduce<ProgramItem[]>(
-    (acc, hiddenGame) => {
+    (acc, hiddenProgramItem) => {
       const programItemDocInDb = programItems.find(
-        (programItem) => programItem.programItemId === hiddenGame.programItemId,
+        (programItem) =>
+          programItem.programItemId === hiddenProgramItem.programItemId,
       );
       if (programItemDocInDb) {
         acc.push(programItemDocInDb._id as ProgramItem);

@@ -98,9 +98,9 @@ export const programItemIdFix = async (
       };
     });
 
-    // @ts-expect-error: We don't want whole game details
+    // @ts-expect-error: We don't want whole program item details
     user.favoritedProgramItems = tempFavoritedProgramItems;
-    // @ts-expect-error: We don't want whole game details
+    // @ts-expect-error: We don't want whole program item details
     user.lotterySignups = tempLotterySignups;
   });
 
@@ -118,7 +118,7 @@ export const programItemIdFix = async (
         );
         userResult.directSignup = {
           ...userResult.directSignup,
-          // @ts-expect-error: We don't want whole game details
+          // @ts-expect-error: We don't want whole program item details
           programItemDetails: { programItemId: "<canceled>" },
         };
         return;
@@ -126,7 +126,7 @@ export const programItemIdFix = async (
 
       userResult.directSignup = {
         ...userResult.directSignup,
-        // @ts-expect-error: We don't want whole game details
+        // @ts-expect-error: We don't want whole program item details
         programItemDetails: { programItemId: matchingGame.programItemId },
       };
     });
@@ -135,7 +135,7 @@ export const programItemIdFix = async (
   directSignups.map((signup) => {
     programItems.map((game) => {
       if (isEqual(game._id, signup.programItem)) {
-        // @ts-expect-error: We don't want whole game details
+        // @ts-expect-error: We don't want whole program item details
         signup.programItem = { programItemId: game.programItemId };
       }
     });
@@ -145,9 +145,9 @@ export const programItemIdFix = async (
 
   settings.map((setting) => {
     programItems.map((programItem) => {
-      setting.hiddenProgramItems.map((hiddenGame) => {
-        if (isEqual(programItem._id, hiddenGame)) {
-          // @ts-expect-error: We don't want whole game details
+      setting.hiddenProgramItems.map((hiddenProgramItem) => {
+        if (isEqual(programItem._id, hiddenProgramItem)) {
+          // @ts-expect-error: We don't want whole program item details
           tempHiddenProgramItems.push({
             programItemId: programItem.programItemId,
           });

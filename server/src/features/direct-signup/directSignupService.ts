@@ -46,7 +46,7 @@ export const storeDirectSignup = async (
   const gameResult = await findProgramItemById(directSignupProgramItemId);
   if (isErrorResult(gameResult)) {
     return {
-      message: `Signed game not found`,
+      message: `Signed program item not found`,
       status: "error",
       errorId: "unknown",
     };
@@ -56,7 +56,7 @@ export const storeDirectSignup = async (
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (!programItem) {
     return {
-      message: `Signed game not found`,
+      message: `Signed program item not found`,
       status: "error",
       errorId: "unknown",
     };
@@ -68,7 +68,7 @@ export const storeDirectSignup = async (
     logger.error(
       "%s",
       new Error(
-        `Signup for game ${directSignupProgramItemId} not open yet, opens ${directSignupStartTime.toISOString()}`,
+        `Signup for program item ${directSignupProgramItemId} not open yet, opens ${directSignupStartTime.toISOString()}`,
       ),
     );
     return {

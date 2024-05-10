@@ -5,22 +5,22 @@ import { getDateAndTime, getWeekdayAndTime } from "client/utils/timeFormatter";
 import { config } from "shared/config";
 
 export const isAlreadyLotterySigned = (
-  gameToCheck: ProgramItem,
+  programItemToCheck: ProgramItem,
   lotterySignups: readonly Signup[],
 ): boolean => {
   return lotterySignups.some(
     (g: Signup) =>
-      g.programItemDetails.programItemId === gameToCheck.programItemId,
+      g.programItemDetails.programItemId === programItemToCheck.programItemId,
   );
 };
 
 export const isAlreadyDirectySigned = (
-  gameToCheck: ProgramItem,
+  programItemToCheck: ProgramItem,
   directSignups: readonly Signup[],
 ): boolean => {
   return directSignups.some(
     (g: Signup) =>
-      g.programItemDetails.programItemId === gameToCheck.programItemId,
+      g.programItemDetails.programItemId === programItemToCheck.programItemId,
   );
 };
 

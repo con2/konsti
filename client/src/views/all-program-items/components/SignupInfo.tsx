@@ -57,7 +57,7 @@ export const SignupInfo = ({
       {isEnterGameMode && normalSignup && (
         <DirectSignupForm
           programItem={programItem}
-          gameIsFull={players >= programItem.maxAttendance}
+          programItemIsFull={players >= programItem.maxAttendance}
           startTime={startTime}
           loading={loading}
           setLoading={setLoading}

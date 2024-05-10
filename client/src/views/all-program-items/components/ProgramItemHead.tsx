@@ -8,7 +8,7 @@ import { SignupStrategy } from "shared/config/sharedConfigTypes";
 import { UserGroup } from "shared/types/models/user";
 import { FavoriteButton } from "client/components/FavoriteButton";
 import { Tags } from "client/components/Tags";
-import { formatGameDuration } from "client/utils/timeFormatter";
+import { formatProgramItemDuration } from "client/utils/timeFormatter";
 import { getAttendeeType } from "client/utils/getAttendeeType";
 import { PopularityInfo } from "client/components/PopularityInfo";
 import { updateFavorite, UpdateFavoriteOpts } from "client/utils/favorite";
@@ -50,15 +50,15 @@ export const ProgramItemHead = ({
   const validMaxAttendanceValue =
     requiresSignup && programItem.maxAttendance > 0;
 
-  const isEnterGameMode =
+  const isDirectSignupMode =
     config.shared().manualSignupMode === SignupStrategy.DIRECT ||
     signupStrategy === SignupStrategy.DIRECT ||
     signupAlwaysOpen;
 
   const isFavorited =
     favoritedProgramItems.find(
-      (favoritedGame) =>
-        favoritedGame.programItemId === programItem.programItemId,
+      (favoritedProgramItem) =>
+        favoritedProgramItem.programItemId === programItem.programItemId,
     ) !== undefined;
 
   const tags = [];
@@ -82,7 +82,7 @@ export const ProgramItemHead = ({
   return (
     <Container>
       <div>
-        <H3 data-testid="game-title">
+        <H3 data-testid="program-item-title">
           <HeaderLink to={`/program/${programItem.programItemId}`}>
             {programItem.title}
           </HeaderLink>
@@ -91,7 +91,7 @@ export const ProgramItemHead = ({
         <Row>
           <span>
             {t("signup.expectedDuration", {
-              EXPECTED_DURATION: formatGameDuration(programItem.mins),
+              EXPECTED_DURATION: formatProgramItemDuration(programItem.mins),
             })}
           </span>
           <span>
@@ -120,7 +120,7 @@ export const ProgramItemHead = ({
               ENTRY_FEE: programItem.entryFee,
             })}
         </Row>
-        {isEnterGameMode && normalSignup && validMaxAttendanceValue && (
+        {isDirectSignupMode && normalSignup && validMaxAttendanceValue && (
           <Row>
             {t("signup.signupCount", {
               PLAYERS: players,
@@ -156,7 +156,7 @@ export const ProgramItemHead = ({
             })}
           </Row>
         )}
-        {!isEnterGameMode && normalSignup && (
+        {!isDirectSignupMode && normalSignup && (
           <PopularityInfo
             minAttendance={programItem.minAttendance}
             maxAttendance={programItem.maxAttendance}

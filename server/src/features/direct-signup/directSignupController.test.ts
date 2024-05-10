@@ -87,7 +87,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     expect(response.status).toEqual(422);
   });
 
-  test("should return error when game is not found", async () => {
+  test("should return error when program item is not found", async () => {
     vi.setSystemTime(
       dayjs(testProgramItem.startTime).subtract(1, "hour").toISOString(),
     );
@@ -111,7 +111,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
       );
     expect(response.status).toEqual(200);
     expect(response.body.status).toEqual("error");
-    expect(response.body.message).toEqual("Signed game not found");
+    expect(response.body.message).toEqual("Signed program item not found");
   });
 
   test("should return error when user is not found", async () => {
@@ -171,7 +171,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     expect(response.body.errorId).toEqual("signupNotOpenYet");
   });
 
-  test("should return success when user and game are found", async () => {
+  test("should return success when user and program item are found", async () => {
     vi.setSystemTime(testProgramItem.startTime);
     vi.spyOn(signupTimes, "getDirectSignupStartTime").mockReturnValue(
       dayjs(testProgramItem.startTime),
@@ -341,7 +341,7 @@ describe(`DELETE ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     expect(response.status).toEqual(422);
   });
 
-  test("should return error when game is not found", async () => {
+  test("should return error when program item is not found", async () => {
     vi.setSystemTime(
       dayjs(testProgramItem.startTime).subtract(1, "hour").toISOString(),
     );
@@ -387,7 +387,7 @@ describe(`DELETE ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     expect(response.body.message).toEqual("Delete signup failure");
   });
 
-  test("should return success when user and game are found", async () => {
+  test("should return success when user and program item are found", async () => {
     vi.setSystemTime(testProgramItem.startTime);
     vi.spyOn(signupTimes, "getDirectSignupStartTime").mockReturnValue(
       dayjs(testProgramItem.startTime),

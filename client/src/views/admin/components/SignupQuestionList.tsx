@@ -32,7 +32,7 @@ export const SignupQuestionList = ({
   );
 
   const sortedSignupQuestions = sortBy(signupQuestionsWithProgramItems, [
-    "game.startTime",
+    "programItem.startTime",
     (signupQuestion) => signupQuestion.programItem.title.toLocaleLowerCase(),
   ]);
 

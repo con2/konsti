@@ -53,8 +53,8 @@ export const AdminActionCard = ({ programItem }: Props): ReactElement => {
   useEffect(() => {
     // Check if hidden
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-    hiddenProgramItems.find((hiddenGame) => {
-      if (hiddenGame.programItemId === programItem.programItemId) {
+    hiddenProgramItems.find((hiddenProgramItem) => {
+      if (hiddenProgramItem.programItemId === programItem.programItemId) {
         setHidden(true);
       }
     });
@@ -73,15 +73,15 @@ export const AdminActionCard = ({ programItem }: Props): ReactElement => {
 
     const newHidden = !hidden;
 
-    const gameIndex = hiddenProgramItems.findIndex(
+    const programItemIndex = hiddenProgramItems.findIndex(
       (g) => g.programItemId === programItem.programItemId,
     );
     const allHiddenProgramItems = hiddenProgramItems.slice();
 
-    if (newHidden && gameIndex === -1) {
+    if (newHidden && programItemIndex === -1) {
       allHiddenProgramItems.push(programItem);
-    } else if (!newHidden && gameIndex > -1) {
-      allHiddenProgramItems.splice(gameIndex, 1);
+    } else if (!newHidden && programItemIndex > -1) {
+      allHiddenProgramItems.splice(programItemIndex, 1);
     }
 
     try {

@@ -56,18 +56,19 @@ export const AlgorithmSignupForm = ({
   >(null);
 
   const removeLotterySignup = async (
-    gameToRemove: ProgramItem,
+    programItemToRemove: ProgramItem,
   ): Promise<void> => {
     setLoading(true);
     const newSignupData = lotterySignups.filter(
       (g: Signup) =>
-        g.programItemDetails.programItemId !== gameToRemove.programItemId,
+        g.programItemDetails.programItemId !==
+        programItemToRemove.programItemId,
     );
 
     const error = await dispatch(
       submitPostLotterySignups({
         lotterySignups: newSignupData,
-        startTime: gameToRemove.startTime,
+        startTime: programItemToRemove.startTime,
       }),
     );
 
@@ -88,7 +89,7 @@ export const AlgorithmSignupForm = ({
     (g) => g.programItemDetails.startTime === startTime,
   );
 
-  const alreadySignedToGame = isAlreadyLotterySigned(
+  const alreadySignedToProgramItem = isAlreadyLotterySigned(
     programItem,
     lotterySignups,
   );
@@ -124,7 +125,7 @@ export const AlgorithmSignupForm = ({
   return (
     <>
       {config.shared().signupOpen &&
-        !alreadySignedToGame &&
+        !alreadySignedToProgramItem &&
         canSignToProgramItems && (
           <>
             {lotterySignupsForTimeslot.length >= 3 && (
@@ -161,7 +162,7 @@ export const AlgorithmSignupForm = ({
           </>
         )}
 
-      {alreadySignedToGame && (
+      {alreadySignedToProgramItem && (
         <>
           <LotterySignupContainer>
             {t("signup.alreadyLotterySigned", {
@@ -205,7 +206,7 @@ export const AlgorithmSignupForm = ({
         />
       )}
 
-      {signupFormOpen && !alreadySignedToGame && (
+      {signupFormOpen && !alreadySignedToProgramItem && (
         <LotterySignupForm
           programItem={programItem}
           startTime={startTime}

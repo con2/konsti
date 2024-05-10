@@ -95,7 +95,7 @@ export const getUsersWithAllGames = (_users: readonly User[]): void => {
   });
 
   logger.info(
-    `This many users got into a game each time they signed up: ${counter}/${
+    `This many users got into a program item each time they signed up: ${counter}/${
       users.length
     } (${toPercent(counter / users.length)}%)`
   );

@@ -158,7 +158,7 @@ export const createProgramItems = async (
           ropecon2023_celebratory_year: Math.random() < 0.5,
         };
 
-        logger.info(`Stored game ${kompassiGameData.title}`);
+        logger.info(`Stored program item ${kompassiGameData.title}`);
         kompassiProgramItems.push(kompassiGameData);
       }
     });

@@ -266,7 +266,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     expect(programItems[0].description).toEqual(newDescription);
   });
 
-  test("should remove lottery signups but not direct signups or favorited program items if game start time changes", async () => {
+  test("should remove lottery signups but not direct signups or favorited program items if program item start time changes", async () => {
     const newStartTime = dayjs(testProgramItem.startTime)
       .add(1, "hours")
       .toISOString();
@@ -317,7 +317,7 @@ describe(`POST ${ApiEndpoint.PROGRAM_ITEMS}`, () => {
     expect(signups[1].userSignups[0].username).toEqual(mockUser.username);
   });
 
-  test("should add game even if game contains unknown fields or enum values", async () => {
+  test("should add program item even if program item contains unknown fields or enum values", async () => {
     vi.spyOn(testHelperWrapper, "getEventProgramItems").mockResolvedValue({
       value: [
         {

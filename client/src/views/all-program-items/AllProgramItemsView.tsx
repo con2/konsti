@@ -53,8 +53,8 @@ export const AllProgramItemsView = (): ReactElement => {
     () =>
       activeProgramItems.filter((programItem) => {
         const hidden = hiddenProgramItems.find(
-          (hiddenGame) =>
-            programItem.programItemId === hiddenGame.programItemId,
+          (hiddenProgramItem) =>
+            programItem.programItemId === hiddenProgramItem.programItemId,
         );
         if (!hidden) {
           return programItem;

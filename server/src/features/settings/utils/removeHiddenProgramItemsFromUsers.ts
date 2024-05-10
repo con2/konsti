@@ -80,7 +80,7 @@ export const removeHiddenProgramItemsFromUsers = async (
   }
 
   const hiddenProgramItemIds = hiddenProgramItems.map(
-    (hiddenGame) => hiddenGame.programItemId,
+    (hiddenProgramItem) => hiddenProgramItem.programItemId,
   );
   const resetSignupsByProgramItemIdsResult =
     await resetDirectSignupsByProgramItemIds(hiddenProgramItemIds);

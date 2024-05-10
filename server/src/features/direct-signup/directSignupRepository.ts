@@ -166,17 +166,19 @@ export const saveDirectSignup = async (
   const { username, directSignupProgramItemId, startTime, message, priority } =
     signupsRequest;
 
-  const gameResult = await findProgramItemById(directSignupProgramItemId);
-  if (isErrorResult(gameResult)) {
-    return gameResult;
+  const programItemResult = await findProgramItemById(
+    directSignupProgramItemId,
+  );
+  if (isErrorResult(programItemResult)) {
+    return programItemResult;
   }
-  const game = unwrapResult(gameResult);
+  const programItem = unwrapResult(programItemResult);
 
   try {
     const signup = await SignupModel.findOneAndUpdate(
       {
-        programItem: game._id,
-        count: { $lt: game.maxAttendance },
+        programItem: programItem._id,
+        count: { $lt: programItem.maxAttendance },
         "userSignups.username": { $ne: username },
       },
       {
@@ -199,7 +201,7 @@ export const saveDirectSignup = async (
       .populate("game");
     if (!signup) {
       logger.warn(
-        `Saving signup for user ${username} failed: game ${game.programItemId} not found or game full`,
+        `Saving signup for user ${username} failed: program item ${programItem.programItemId} not found or program item full`,
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
     }
@@ -237,30 +239,35 @@ export const saveDirectSignups = async (
 
   const bulkOps = Object.entries(signupsByProgramItems).flatMap(
     ([programItemId, directSignups]) => {
-      const game = programItems.find((g) => g.programItemId === programItemId);
-      if (!game) {
+      const programItem = programItems.find(
+        (g) => g.programItemId === programItemId,
+      );
+      if (!programItem) {
         return [];
       }
 
       let finalSignups: PostDirectSignupRequest[] = directSignups;
-      if (directSignups.length > game.maxAttendance) {
+      if (directSignups.length > programItem.maxAttendance) {
         logger.error(
           "%s",
           new Error(
-            `Too many signups passed to saveSignups for program item ${game.programItemId} - maxAttendance: ${game.maxAttendance}, direct signups: ${directSignups.length}`,
+            `Too many signups passed to saveSignups for program item ${programItem.programItemId} - maxAttendance: ${programItem.maxAttendance}, direct signups: ${directSignups.length}`,
           ),
         );
         const shuffledSignups = shuffle(directSignups);
-        finalSignups = shuffledSignups.slice(0, game.maxAttendance);
+        finalSignups = shuffledSignups.slice(0, programItem.maxAttendance);
         droppedSignups.push(
-          ...shuffledSignups.slice(game.maxAttendance, shuffledSignups.length),
+          ...shuffledSignups.slice(
+            programItem.maxAttendance,
+            shuffledSignups.length,
+          ),
         );
       }
 
       return {
         updateOne: {
           filter: {
-            programItem: game._id,
+            programItem: programItem._id,
           },
           update: {
             $addToSet: {
@@ -296,15 +303,17 @@ export const delDirectSignup = async (
 ): Promise<Result<DirectSignupsForProgramItem, MongoDbError>> => {
   const { username, directSignupProgramItemId } = signupRequest;
 
-  const gameResult = await findProgramItemById(directSignupProgramItemId);
-  if (isErrorResult(gameResult)) {
-    return gameResult;
+  const programItemResult = await findProgramItemById(
+    directSignupProgramItemId,
+  );
+  if (isErrorResult(programItemResult)) {
+    return programItemResult;
   }
-  const game = unwrapResult(gameResult);
+  const programItem = unwrapResult(programItemResult);
 
   try {
     const signup = await SignupModel.findOneAndUpdate(
-      { programItem: game._id, "userSignups.username": username },
+      { programItem: programItem._id, "userSignups.username": username },
       {
         $pull: {
           userSignups: {
@@ -322,7 +331,7 @@ export const delDirectSignup = async (
       logger.error(
         "%s",
         new Error(
-          `Signups to program item ${game.programItemId} for user ${username} not found`,
+          `Signups to program item ${programItem.programItemId} for user ${username} not found`,
         ),
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
@@ -336,7 +345,7 @@ export const delDirectSignup = async (
       logger.error(
         "%s",
         new Error(
-          `Error removing signup to program item ${game.programItemId} from user ${username}`,
+          `Error removing signup to program item ${programItem.programItemId} from user ${username}`,
         ),
       );
       return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
@@ -344,13 +353,13 @@ export const delDirectSignup = async (
 
     logger.info(
       `MongoDB: Signup removed - program item: ${
-        game.programItemId
-      }, user: ${username}, starting: ${dayjs(game.startTime).toISOString()}`,
+        programItem.programItemId
+      }, user: ${username}, starting: ${dayjs(programItem.startTime).toISOString()}`,
     );
     return makeSuccessResult(signup);
   } catch (error) {
     logger.error(
-      `MongoDB: Error deleting signup to program item ${game.programItemId} from user ${username}: %s`,
+      `MongoDB: Error deleting signup to program item ${programItem.programItemId} from user ${username}: %s`,
       error,
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
@@ -383,7 +392,7 @@ export const delDirectSignupDocumentsByProgramItemIds = async (
     return makeSuccessResult(undefined);
   } catch (error) {
     logger.error(
-      "MongoDB: Error removing signup documents for game IDs: %s",
+      "MongoDB: Error removing signup documents for program item IDs: %s",
       error,
     );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
@@ -418,7 +427,10 @@ export const resetDirectSignupsByProgramItemIds = async (
     );
     return makeSuccessResult(undefined);
   } catch (error) {
-    logger.error("MongoDB: Error removing signups for game IDs: %s", error);
+    logger.error(
+      "MongoDB: Error removing signups for program item IDs: %s",
+      error,
+    );
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 };

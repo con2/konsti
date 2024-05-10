@@ -54,7 +54,7 @@ test("should delete signup from user", async () => {
   expect(response.userSignups.length).toEqual(0);
 });
 
-test("should delete signup from user even if game start time has changed after signup", async () => {
+test("should delete signup from user even if program item start time has changed after signup", async () => {
   await saveUser(mockUser);
   await saveProgramItems([testProgramItem]);
   await saveDirectSignup(mockPostDirectSignupRequest);

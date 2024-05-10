@@ -141,7 +141,7 @@ describe(`POST ${ApiEndpoint.HIDDEN}`, () => {
     expect(response.status).toEqual(401);
   });
 
-  test("should remove hidden game from users", async () => {
+  test("should remove hidden program item from users", async () => {
     await saveProgramItems([testProgramItem, testProgramItem2]);
     await saveUser(mockUser);
     await saveLotterySignups({

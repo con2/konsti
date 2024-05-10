@@ -10,8 +10,8 @@ import {
 
 export const testProgramItem: ProgramItem = {
   programItemId: "p2106",
-  title: "Test game",
-  description: "Test game description",
+  title: "Test program item",
+  description: "Test program item description",
   location: "Test location",
   startTime: "2019-07-26T14:00:00.000Z",
   mins: 240,
@@ -51,8 +51,8 @@ export const testProgramItem: ProgramItem = {
 
 export const testProgramItem2: ProgramItem = {
   programItemId: "p3001",
-  title: "Test game 2",
-  description: "Test game description",
+  title: "Test program item 2",
+  description: "Test program item description",
   location: "Test location",
   startTime: "2019-07-26T15:00:00.000Z",
   mins: 240,

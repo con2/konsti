@@ -78,7 +78,7 @@ export const verifyUserSignups = async (): Promise<
         logger.error(
           "%s",
           new Error(
-            `No matching signed game found from group creator: ${userSignup.username} - ${programItem.title}`,
+            `No matching signed program item found from group creator: ${userSignup.username} - ${programItem.title}`,
           ),
         );
         return makeErrorResult(MongoDbError.UNKNOWN_ERROR);

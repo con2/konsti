@@ -25,7 +25,7 @@ import { config } from "shared/config";
 interface Props {
   programItem: ProgramItem;
   startTime: string;
-  gameIsFull: boolean;
+  programItemIsFull: boolean;
   loading: boolean;
   setLoading: (loading: boolean) => void;
 }
@@ -33,7 +33,7 @@ interface Props {
 export const DirectSignupForm = ({
   programItem,
   startTime,
-  gameIsFull,
+  programItemIsFull,
   loading,
   setLoading,
 }: Props): ReactElement | null => {
@@ -57,7 +57,7 @@ export const DirectSignupForm = ({
     (g) => g.programItemDetails.startTime === startTime,
   );
 
-  const alreadySignedToGame = isAlreadyDirectySigned(
+  const alreadySignedToProgramItem = isAlreadyDirectySigned(
     programItem,
     directSignups,
   );
@@ -109,7 +109,7 @@ export const DirectSignupForm = ({
 
   return (
     <>
-      {signupOpen && gameIsFull && (
+      {signupOpen && programItemIsFull && (
         <BoldText>
           {t("signup.programItemFull", {
             PROGRAM_TYPE: t(`programTypeSingular.${programItem.programType}`),
@@ -117,7 +117,7 @@ export const DirectSignupForm = ({
         </BoldText>
       )}
 
-      {signupOpen && !alreadySignedToGame && !gameIsFull && (
+      {signupOpen && !alreadySignedToProgramItem && !programItemIsFull && (
         <>
           {directSignupForTimeslot && (
             <DirectSignupContainer>
@@ -164,7 +164,7 @@ export const DirectSignupForm = ({
                     ({ programItemId }) =>
                       programItemId === programItem.programItemId,
                   )}
-                  onEnterGame={() => setSignupFormOpen(false)}
+                  onDirectSignupProgramItem={() => setSignupFormOpen(false)}
                   onCancelSignup={() => setSignupFormOpen(false)}
                   loading={loading}
                   setLoading={setLoading}
@@ -175,7 +175,7 @@ export const DirectSignupForm = ({
         </>
       )}
 
-      {alreadySignedToGame && (
+      {alreadySignedToProgramItem && (
         <>
           <DirectSignupContainer>
             {t("signup.currentSignup", {

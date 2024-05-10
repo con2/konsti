@@ -31,7 +31,7 @@ export const ProgramItemDetailsPage = (): ReactElement => {
   const userGroup = useAppSelector((state) => state.login.userGroup);
   const favoritedProgramItems = useAppSelector(selectFavoritedProgramItems);
 
-  // Figure out if user has signed up to this game
+  // Figure out if user has signed up to this program item
   const lotterySignups = useAppSelector(selectLotterySignups);
   const isGroupCreator = useAppSelector((state) => state.group.isGroupCreator);
   const groupMembers = useAppSelector((state) => state.group.groupMembers);

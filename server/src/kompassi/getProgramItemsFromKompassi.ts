@@ -79,7 +79,7 @@ export const parseProgramItem = (
   }
 
   logger.error(
-    `Unknown error while parsing game ${programItem.identifier}: %s`,
+    `Unknown error while parsing program item ${programItem.identifier}: %s`,
     result.error,
   );
 };

@@ -43,20 +43,20 @@ export const PopularityInfo = ({
   }, [maxAttendance, minAttendance, popularity]);
 
   return (
-    <GamePopularityContainer>
-      <GamePopularityIcon icon={icon} color={color} aria-hidden="true" />{" "}
+    <ProgramItemPopularityContainer>
+      <ProgramItemPopularityIcon icon={icon} color={color} aria-hidden="true" />{" "}
       {includeMsg && <span>{t(msg)}</span>}
-    </GamePopularityContainer>
+    </ProgramItemPopularityContainer>
   );
 };
 
-const GamePopularityContainer = styled.div`
+const ProgramItemPopularityContainer = styled.div`
   display: flex;
   flex-direction: row;
   margin-bottom: 5px;
 `;
 
-const GamePopularityIcon = styled(FontAwesomeIcon)<{
+const ProgramItemPopularityIcon = styled(FontAwesomeIcon)<{
   color: string;
 }>`
   color: ${(props) => props.color};
