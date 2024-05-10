@@ -51,7 +51,7 @@ export interface PostDirectSignupResponse extends ApiResult {
 export interface PostDirectSignupError extends ApiError {
   errorId:
     | "unknown"
-    | "gameFull"
+    | "programItemFull"
     | "signupEnded"
     | "signupNotOpenYet"
     | "noKonstiSignup";

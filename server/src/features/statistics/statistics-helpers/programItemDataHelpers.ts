@@ -11,10 +11,13 @@ import { TIMEZONE } from "shared/utils/initializeDayjs";
 export const getProgramItemsByStartTime = (
   programItems: readonly ProgramItem[],
 ): StringNumberObject => {
-  const gamesByTime = countBy(programItems, "startTime");
+  const programItemsByTime = countBy(programItems, "startTime");
 
-  logger.info(`Number of program items for each start time: \n`, gamesByTime);
-  return gamesByTime;
+  logger.info(
+    `Number of program items for each start time: \n`,
+    programItemsByTime,
+  );
+  return programItemsByTime;
 };
 
 const getUsersByProgramItems = (
@@ -23,22 +26,25 @@ const getUsersByProgramItems = (
   // TODO: Update to use signup collection
   // const directSignups = users.flatMap((user) => user.directSignups);
   const directSignups: Signup[] = [];
-  const usersByGames = countBy(
+  const usersByProgramItems = countBy(
     directSignups,
     "programItemDetails.programItemId",
   );
-  return usersByGames;
+  return usersByProgramItems;
 };
 
 export const getNumberOfFullProgramItems = (
   programItems: readonly ProgramItem[],
   users: readonly User[],
 ): void => {
-  const usersByGames = getUsersByProgramItems(users);
+  const usersByProgramItems = getUsersByProgramItems(users);
 
   let counter = 0;
-  programItems.forEach((game) => {
-    if (game.maxAttendance === usersByGames[game.programItemId]) {
+  programItems.forEach((programItem) => {
+    if (
+      programItem.maxAttendance ===
+      usersByProgramItems[programItem.programItemId]
+    ) {
       counter++;
     }
   });
@@ -105,11 +111,11 @@ export const getDemandByTime = (
   }
 };
 
-export const getDemandByGame = (
+export const getDemandByProgramItem = (
   programItems: readonly ProgramItem[],
   users: readonly User[],
 ): void => {
-  logger.info(">>> Demand by games");
+  logger.info(">>> Demand by program items");
 
   const lotterySignups = users.reduce<PriorityObject>((acc, user) => {
     let groupSize = 1;
@@ -120,27 +126,37 @@ export const getDemandByGame = (
     }
 
     user.lotterySignups.forEach((lotterySignup) => {
-      const foundGame = programItems.find(
-        (game) =>
-          game.programItemId === lotterySignup.programItemDetails.programItemId,
+      const foundProgramItem = programItems.find(
+        (programItem) =>
+          programItem.programItemId ===
+          lotterySignup.programItemDetails.programItemId,
       );
 
-      if (!foundGame) {
+      if (!foundProgramItem) {
         return;
       }
 
-      acc[foundGame.title] = {
-        first: acc[foundGame.title].first ? acc[foundGame.title].first : 0,
-        second: acc[foundGame.title].second ? acc[foundGame.title].second : 0,
-        third: acc[foundGame.title].third ? acc[foundGame.title].third : 0,
+      acc[foundProgramItem.title] = {
+        first: acc[foundProgramItem.title].first
+          ? acc[foundProgramItem.title].first
+          : 0,
+        second: acc[foundProgramItem.title].second
+          ? acc[foundProgramItem.title].second
+          : 0,
+        third: acc[foundProgramItem.title].third
+          ? acc[foundProgramItem.title].third
+          : 0,
       };
 
       if (lotterySignup.priority === 1) {
-        acc[foundGame.title].first = acc[foundGame.title].first + groupSize;
+        acc[foundProgramItem.title].first =
+          acc[foundProgramItem.title].first + groupSize;
       } else if (lotterySignup.priority === 2) {
-        acc[foundGame.title].second = ++acc[foundGame.title].second + groupSize;
+        acc[foundProgramItem.title].second =
+          ++acc[foundProgramItem.title].second + groupSize;
       } else if (lotterySignup.priority === 3) {
-        acc[foundGame.title].third = ++acc[foundGame.title].third + groupSize;
+        acc[foundProgramItem.title].third =
+          ++acc[foundProgramItem.title].third + groupSize;
       }
     });
     return acc;

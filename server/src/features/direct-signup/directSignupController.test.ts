@@ -95,7 +95,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
 
     const signup: PostDirectSignupRequest = {
       username: mockUser.username,
-      directSignupProgramItemId: "invalid_game_id",
+      directSignupProgramItemId: "invalid_program_item_id",
       startTime: dayjs(testProgramItem.startTime)
         .subtract(1, "hour")
         .toISOString(),
@@ -221,7 +221,7 @@ describe(`POST ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
     expect(modifiedSignups[0].userSignups[0].message).toEqual("Test message");
   });
 
-  test("should not sign too many players to game", async () => {
+  test("should not sign too many players to program item", async () => {
     vi.setSystemTime(testProgramItem.startTime);
     vi.spyOn(signupTimes, "getDirectSignupStartTime").mockReturnValue(
       dayjs(testProgramItem.startTime),
@@ -349,7 +349,7 @@ describe(`DELETE ${ApiEndpoint.DIRECT_SIGNUP}`, () => {
 
     const deleteRequest: DeleteDirectSignupRequest = {
       username: mockUser.username,
-      directSignupProgramItemId: "invalid_game_id",
+      directSignupProgramItemId: "invalid_program_item_id",
       startTime: dayjs(testProgramItem.startTime)
         .subtract(1, "hour")
         .toISOString(),

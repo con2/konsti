@@ -45,16 +45,18 @@ export const formatFeedbacks = (year: number, event: string): void => {
   );
 
   const formattedFeedbacks = filteredFeedbacks.map((feedback) => {
-    const foundGame = programItems.find(
-      (game) => game.programItemId === feedback.programItemId,
+    const foundProgramItem = programItems.find(
+      (programItem) => programItem.programItemId === feedback.programItemId,
     );
     return {
       feedback: feedback.feedback,
-      programItem: foundGame?.title,
-      organizer: foundGame?.people,
+      programItem: foundProgramItem?.title,
+      organizer: foundProgramItem?.people,
       // eslint-disable-next-line no-restricted-syntax -- We want to call format here
-      startTime: dayjs(foundGame?.startTime).tz(TIMEZONE).format("dddd HH:mm"),
-      programType: foundGame?.programType,
+      startTime: dayjs(foundProgramItem?.startTime)
+        .tz(TIMEZONE)
+        .format("dddd HH:mm"),
+      programType: foundProgramItem?.programType,
     };
   });
 

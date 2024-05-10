@@ -26,28 +26,31 @@ export const createDirectSignups = async (): Promise<void> => {
     (user) => user.username !== "admin" && user.username !== "helper",
   );
 
-  logger.info(`Signups: ${programItems.length} games`);
+  logger.info(`Signups: ${programItems.length} program items`);
   logger.info(`Signups: ${users.length} users`);
 
   const shuffledProgramItems = shuffleArray(programItems);
 
-  const gamesByProgramType = groupBy(shuffledProgramItems, "programType");
+  const programItemsByProgramType = groupBy(
+    shuffledProgramItems,
+    "programType",
+  );
 
-  const promises = Object.entries(gamesByProgramType).flatMap(
-    ([_programType, gamesForProgamType]) => {
+  const promises = Object.entries(programItemsByProgramType).flatMap(
+    ([_programType, programItemsForProgamType]) => {
       let currentIndex = 0;
 
-      return gamesForProgamType.flatMap((randomGame) => {
+      return programItemsForProgamType.flatMap((randomProgramItem) => {
         if (currentIndex > users.length) {
           return [];
         }
 
         const foundSignupQuestion = settings.signupQuestions.find(
           (signupQuestion) =>
-            signupQuestion.programItemId === randomGame.programItemId,
+            signupQuestion.programItemId === randomProgramItem.programItemId,
         );
 
-        const usersCount = getRandomInt(1, randomGame.maxAttendance);
+        const usersCount = getRandomInt(1, randomProgramItem.maxAttendance);
         const usersChunk = users.slice(currentIndex, currentIndex + usersCount);
 
         currentIndex += usersCount;
@@ -55,8 +58,8 @@ export const createDirectSignups = async (): Promise<void> => {
         return usersChunk.map(async (user) => {
           await saveDirectSignup({
             username: user.username,
-            directSignupProgramItemId: randomGame.programItemId,
-            startTime: randomGame.startTime,
+            directSignupProgramItemId: randomProgramItem.programItemId,
+            startTime: randomProgramItem.startTime,
             message: foundSignupQuestion?.questionFi
               ? faker.lorem.words(4)
               : "",

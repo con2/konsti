@@ -11,7 +11,7 @@ export interface Event {
   id: id; // program item id
   min: number; // program item min players
   max: number; // program item max players
-  groups: readonly Group[]; // groups signed for the game
+  groups: readonly Group[]; // groups signed for the program item
 }
 
 export interface RandomAssignEvent {
@@ -24,7 +24,7 @@ export interface RandomAssignEvent {
 export interface ListItem {
   id: id; // group id
   size: number; // group size
-  event: id; // program item id for the signed game
+  event: id; // program item id for the signed program item
   gain: number; // preference: 1st choice => 1, 2nd choice => 0.5, 3rd choice => 0.33
 }
 

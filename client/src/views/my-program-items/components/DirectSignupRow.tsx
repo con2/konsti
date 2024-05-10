@@ -68,7 +68,7 @@ export const DirectSignupRow = ({
 
   return (
     <ProgramItemDetailsList key={signup.programItemDetails.programItemId}>
-      <GameTitleAndButtons>
+      <ProgramItemTitleAndButtons>
         <div>
           <StyledLink
             to={`/program/${signup.programItemDetails.programItemId}`}
@@ -95,7 +95,7 @@ export const DirectSignupRow = ({
             />
           </CancelSignupFormContainer>
         )}
-      </GameTitleAndButtons>
+      </ProgramItemTitleAndButtons>
 
       {signup.time !== signup.programItemDetails.startTime && (
         <div>
@@ -136,7 +136,7 @@ const ProgramItemDetailsList = styled.li`
   flex-direction: column;
 `;
 
-const GameTitleAndButtons = styled.div`
+const ProgramItemTitleAndButtons = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;

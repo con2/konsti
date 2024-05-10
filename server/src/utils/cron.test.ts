@@ -75,7 +75,7 @@ describe("Progam update cronjob", () => {
       "Auto update not running, continue",
     );
     expect(infoLoggerSpy).toHaveBeenCalledWith(
-      "***** Games auto update completed",
+      "***** Program items auto update completed",
     );
 
     const settingsResult = await findSettings();
@@ -100,7 +100,7 @@ describe("Progam update cronjob", () => {
       new Error("Program auto update already running, stop"),
     );
     expect(infoLoggerSpy).not.toHaveBeenCalledWith(
-      "***** Games auto update completed",
+      "***** Program items auto update completed",
     );
 
     const settingsResult = await findSettings();
@@ -128,7 +128,7 @@ describe("Progam update cronjob", () => {
       new Error("Program auto update already running, stop"),
     );
     expect(infoLoggerSpy).toHaveBeenCalledWith(
-      "***** Games auto update completed",
+      "***** Program items auto update completed",
     );
 
     const settingsResult = await findSettings();

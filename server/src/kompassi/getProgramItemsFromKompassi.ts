@@ -125,7 +125,7 @@ const getProgramFromServer = async (): Promise<
     const response = await axios.get(config.server().dataUri);
     return makeSuccessResult(response.data);
   } catch (error) {
-    logger.error("Games request error: %s", error);
+    logger.error("Program items request error: %s", error);
     return makeErrorResult(KompassiError.UNKNOWN_ERROR);
   }
 };

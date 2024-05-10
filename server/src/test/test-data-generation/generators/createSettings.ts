@@ -29,14 +29,14 @@ export const createSettings = async (): Promise<void> => {
   const shuffledProgramItems = shuffleArray(programItems);
 
   const promises = testQuestions().map(async (testQuestion, index) => {
-    const randomGame = shuffledProgramItems[index];
+    const randomProgramItem = shuffledProgramItems[index];
 
     logger.info(
-      `Add test question ${testQuestion} to program item ${randomGame.title}`,
+      `Add test question ${testQuestion} to program item ${randomProgramItem.title}`,
     );
 
     await saveSignupQuestion({
-      programItemId: randomGame.programItemId,
+      programItemId: randomProgramItem.programItemId,
       questionFi: testQuestion,
       questionEn: testQuestion,
       private: Math.random() < 0.5,

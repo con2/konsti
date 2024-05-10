@@ -24,11 +24,11 @@ export const updateMovedProgramItems = async (
   }
 
   const currentProgramItems = unwrapResult(currentProgramItemsResult);
-  const movedProgramItems = currentProgramItems.filter((currentGame) => {
+  const movedProgramItems = currentProgramItems.filter((currentProgramItem) => {
     return updatedProgramItems.find((updatedProgramItem) => {
       return (
-        currentGame.programItemId === updatedProgramItem.programItemId &&
-        dayjs(currentGame.startTime).toISOString() !==
+        currentProgramItem.programItemId === updatedProgramItem.programItemId &&
+        dayjs(currentProgramItem.startTime).toISOString() !==
           dayjs(updatedProgramItem.startTime).toISOString()
       );
     });
@@ -66,9 +66,9 @@ const removeMovedLotterySignups = async (
     const programItemsToBeRemoved: ProgramItem[] = [];
 
     const lotterySignups = user.lotterySignups.filter((lotterySignup) => {
-      const movedFound = movedProgramItems.find((movedGame) => {
+      const movedFound = movedProgramItems.find((movedProgramItem) => {
         return (
-          movedGame.programItemId ===
+          movedProgramItem.programItemId ===
           lotterySignup.programItemDetails.programItemId
         );
       });
@@ -83,7 +83,7 @@ const removeMovedLotterySignups = async (
         `Remove following moved lotterySignups from user ${
           user.username
         }: ${programItemsToBeRemoved
-          .map((deletedGame) => deletedGame.programItemId)
+          .map((deletedProgramItem) => deletedProgramItem.programItemId)
           .join(", ")}`,
       );
     }

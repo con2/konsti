@@ -46,8 +46,8 @@ export const PrivateSignupMessages = (): ReactElement => {
   );
 
   const groupedSignupQuestions = groupBy(
-    sortBy(signupQuestionsWithProgramItems, "game.startTime"),
-    "game.startTime",
+    sortBy(signupQuestionsWithProgramItems, "programItem.startTime"),
+    "programItem.startTime",
   );
 
   const privateSignupMessages = signupMessages.filter(
@@ -98,8 +98,8 @@ export const PrivateSignupMessages = (): ReactElement => {
       />
 
       {Object.entries(groupedSignupQuestions).map(
-        ([startTime, signupQuestionsWithGame]) => {
-          const sortedSignupQuestions = sortBy(signupQuestionsWithGame, [
+        ([startTime, signupQuestionsWithProgramItem]) => {
+          const sortedSignupQuestions = sortBy(signupQuestionsWithProgramItem, [
             (signupQuestion) =>
               signupQuestion.programItem.title.toLocaleLowerCase(),
           ]);
@@ -107,26 +107,30 @@ export const PrivateSignupMessages = (): ReactElement => {
           return (
             <div key={startTime}>
               <h3>{capitalize(getWeekdayAndTime(startTime))}</h3>
-              {sortedSignupQuestions.map((signupQuestionWithGame) => {
+              {sortedSignupQuestions.map((signupQuestionWitProgramItem) => {
                 const matchingSignupMessages =
-                  groupedSignupMessages[signupQuestionWithGame.programItemId];
+                  groupedSignupMessages[
+                    signupQuestionWitProgramItem.programItemId
+                  ];
 
                 return (
-                  <SingleGameAnswers key={signupQuestionWithGame.programItemId}>
+                  <SingleProgramItemAnswers
+                    key={signupQuestionWitProgramItem.programItemId}
+                  >
                     <Link
-                      to={`/program/${signupQuestionWithGame.programItem.programItemId}`}
+                      to={`/program/${signupQuestionWitProgramItem.programItem.programItemId}`}
                     >
-                      {signupQuestionWithGame.programItem.title}
+                      {signupQuestionWitProgramItem.programItem.title}
                     </Link>{" "}
                     (
                     {t(
-                      `programType.${signupQuestionWithGame.programItem.programType}`,
+                      `programType.${signupQuestionWitProgramItem.programItem.programType}`,
                     )}
                     )
                     <Answers>
                       <BoldText>{t("helperView.question")}: </BoldText>{" "}
-                      {signupQuestionWithGame.questionFi} /{" "}
-                      {signupQuestionWithGame.questionEn}
+                      {signupQuestionWitProgramItem.questionFi} /{" "}
+                      {signupQuestionWitProgramItem.questionEn}
                       {/* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition */}
                       {matchingSignupMessages ? (
                         <SignupAnswersContainer>
@@ -143,7 +147,7 @@ export const PrivateSignupMessages = (): ReactElement => {
                         </SignupAnswersContainer>
                       )}
                     </Answers>
-                  </SingleGameAnswers>
+                  </SingleProgramItemAnswers>
                 );
               })}
             </div>
@@ -154,7 +158,7 @@ export const PrivateSignupMessages = (): ReactElement => {
   );
 };
 
-const SingleGameAnswers = styled.div`
+const SingleProgramItemAnswers = styled.div`
   margin-bottom: 16px;
 `;
 

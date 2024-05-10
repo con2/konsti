@@ -186,7 +186,7 @@
     "signupEnded": "Sign-up ended",
     "samePriority": "Priority already selected",
     "signupNotOpenYet": "Sign-up not open yet",
-    "programFull": "This program item is full.",
+    "programItemFull": "This program item is full.",
     "noKonstiSignup": "This program does not use Konsti for signing up. See the program details for instructions."
   },
   "signupUnsavedChanges": "Unsaved changes",

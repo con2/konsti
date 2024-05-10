@@ -8,7 +8,7 @@ export const getMissedSignups = (
   lotterySignups: readonly Signup[],
   directSignups: readonly Signup[],
 ): string[] => {
-  // Wait this long before showing "you didn't get into game"
+  // Wait this long before showing "you didn't get into program item"
   // TODO: Instead of hard-coding, figure dynamically if assignment is still running
   const safePeriod = 3; // minutes
 

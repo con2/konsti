@@ -19,7 +19,7 @@ import {
 import { Result } from "shared/utils/result";
 import { MongoDbError } from "shared/types/api/errors";
 
-const GAME_ID_MAX = 10000000;
+const PROGRAM_ITEM_ID_MAX = 10000000;
 
 const startTimes = [
   dayjs(config.shared().conventionStartTime).toISOString(),
@@ -92,7 +92,7 @@ export const createProgramItems = async (
       for (let i = 0; i < programItemCount; i += 1) {
         const length = 180;
 
-        const kompassiGameData: KompassiProgramItemRopecon = {
+        const kompassiProgramItemData: KompassiProgramItemRopecon = {
           title: faker.word.words(3),
           description: faker.lorem.sentences(5),
           category_title: getProgramType(programType),
@@ -107,7 +107,7 @@ export const createProgramItems = async (
               : "",
           min_players: getMinPlayers(programType),
           max_players: getMaxPlayers(programType),
-          identifier: faker.number.int(GAME_ID_MAX).toString(),
+          identifier: faker.number.int(PROGRAM_ITEM_ID_MAX).toString(),
           tags: sampleSize(Object.values(KompassiTagRopecon), 3),
           genres: sampleSize(Object.values(KompassiGenreRopecon), 2),
           styles: sampleSize(Object.values(KompassiGameStyleRopecon), 2),
@@ -158,8 +158,8 @@ export const createProgramItems = async (
           ropecon2023_celebratory_year: Math.random() < 0.5,
         };
 
-        logger.info(`Stored program item ${kompassiGameData.title}`);
-        kompassiProgramItems.push(kompassiGameData);
+        logger.info(`Stored program item ${kompassiProgramItemData.title}`);
+        kompassiProgramItems.push(kompassiProgramItemData);
       }
     });
   });

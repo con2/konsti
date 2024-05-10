@@ -48,7 +48,7 @@ export const updateProgramItemPopularity = async (): Promise<
     return updateWithAssignResult;
   }
 
-  logger.info("Game popularity updated");
+  logger.info("Program item popularity updated");
 
   return makeSuccessResult(undefined);
 };

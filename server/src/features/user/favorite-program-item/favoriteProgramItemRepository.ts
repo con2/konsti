@@ -45,10 +45,10 @@ export const saveFavorite = async (
       {
         favoritedProgramItems,
       },
-      { new: true, fields: "favoritedGames" },
+      { new: true, fields: "favoritedProgramItems" },
     )
       .lean<User>()
-      .populate("favoritedGames", "-_id -__v -updatedAt -createdAt");
+      .populate("favoritedProgramItems", "-_id -__v -updatedAt -createdAt");
     logger.info(
       `MongoDB: Favorite data stored for user ${favoriteData.username}`,
     );

@@ -21,10 +21,12 @@ afterEach(async () => {
 test("should insert new program item into collection", async () => {
   await saveProgramItems([testProgramItem]);
 
-  const insertedGame = await ProgramItemModel.findOne({
+  const insertedProgramItem = await ProgramItemModel.findOne({
     programItemId: testProgramItem.programItemId,
   });
-  expect(insertedGame?.programItemId).toEqual(testProgramItem.programItemId);
+  expect(insertedProgramItem?.programItemId).toEqual(
+    testProgramItem.programItemId,
+  );
 });
 
 test("should remove signup document when program item is removed", async () => {

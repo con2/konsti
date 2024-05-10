@@ -49,8 +49,8 @@ export const ProgramItemListTitle = ({
   );
 
   return (
-    <GameListTitleContainer key={startTime} ref={intersectionRef}>
-      <StyledGameListTitle>
+    <ProgramItemListTitleContainer key={startTime} ref={intersectionRef}>
+      <StyledProgramItemListTitle>
         <StartTimeContainer>
           <StartTime>{formattedStartTime}</StartTime>
           {timeslotSignupStrategy === SignupStrategy.ALGORITHM && (
@@ -71,7 +71,7 @@ export const ProgramItemListTitle = ({
             {directSignup ? directSignup.programItemDetails.title : ""}
           </DirectSignupCount>
         )}
-      </StyledGameListTitle>
+      </StyledProgramItemListTitle>
 
       {timeslotSignupStrategy === SignupStrategy.ALGORITHM &&
         groupCode !== "0" && (
@@ -83,7 +83,7 @@ export const ProgramItemListTitle = ({
             )}
           </GroupInfo>
         )}
-    </GameListTitleContainer>
+    </ProgramItemListTitleContainer>
   );
 };
 
@@ -96,7 +96,7 @@ const DirectSignupCount = styled.span`
   float: right;
 `;
 
-const GameListTitleContainer = styled.div`
+const ProgramItemListTitleContainer = styled.div`
   z-index: 2;
   margin: 20px 0 20px 0;
   padding: 8px;
@@ -120,7 +120,7 @@ const GameListTitleContainer = styled.div`
   }
 `;
 
-const StyledGameListTitle = styled.h3`
+const StyledProgramItemListTitle = styled.h3`
   display: flex;
   flex-direction: column;
   margin: 0;

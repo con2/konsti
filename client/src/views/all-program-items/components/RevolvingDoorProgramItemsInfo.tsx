@@ -21,14 +21,16 @@ export const RevolvingDoorProgramItemsInfo = (): ReactElement => {
   const hiddenProgramItemsIds = hiddenProgramItems.map((g) => g.programItemId);
 
   const timeNow = getTimeNow();
-  const runningRevolvingDoorProgramItems = activeProgramItems.filter((game) => {
-    return (
-      game.revolvingDoor &&
-      !hiddenProgramItemsIds.includes(game.programItemId) &&
-      dayjs(game.startTime).isBefore(timeNow) &&
-      dayjs(game.endTime).isAfter(timeNow)
-    );
-  });
+  const runningRevolvingDoorProgramItems = activeProgramItems.filter(
+    (programItem) => {
+      return (
+        programItem.revolvingDoor &&
+        !hiddenProgramItemsIds.includes(programItem.programItemId) &&
+        dayjs(programItem.startTime).isBefore(timeNow) &&
+        dayjs(programItem.endTime).isAfter(timeNow)
+      );
+    },
+  );
 
   return (
     <Container>
@@ -53,14 +55,16 @@ export const RevolvingDoorProgramItemsInfo = (): ReactElement => {
               PROGRAM_TYPE: t(`programTypePlural.${activeProgramType}`),
             })}
           </h3>
-          {runningRevolvingDoorProgramItems.map((game) => (
-            <div key={game.programItemId}>
-              <Link to={`/program/${game.programItemId}`}>{game.title}</Link>{" "}
-              <GameListShortDescription>
-                {game.shortDescription
-                  ? game.shortDescription
-                  : game.gameSystem}
-              </GameListShortDescription>
+          {runningRevolvingDoorProgramItems.map((programItem) => (
+            <div key={programItem.programItemId}>
+              <Link to={`/program/${programItem.programItemId}`}>
+                {programItem.title}
+              </Link>{" "}
+              <ProgramItemListShortDescription>
+                {programItem.shortDescription
+                  ? programItem.shortDescription
+                  : programItem.gameSystem}
+              </ProgramItemListShortDescription>
             </div>
           ))}
         </div>
@@ -69,7 +73,7 @@ export const RevolvingDoorProgramItemsInfo = (): ReactElement => {
   );
 };
 
-const GameListShortDescription = styled.p`
+const ProgramItemListShortDescription = styled.p`
   font-size: ${(props) => props.theme.fontSizeSmall};
   margin: 4px 0 8px 8px;
 `;

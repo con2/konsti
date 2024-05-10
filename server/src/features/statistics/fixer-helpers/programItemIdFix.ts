@@ -61,29 +61,30 @@ export const programItemIdFix = async (
 
   users.map((user) => {
     const tempFavoritedProgramItems = user.favoritedProgramItems.map(
-      (favoritedGame) => {
-        const matchingGame = programItems.find(
+      (favoritedProgramItem) => {
+        const matchingProgramItem = programItems.find(
           // @ts-expect-error: $oid not in interface
-          (game) => game._id.$oid === favoritedGame.$oid,
+          (programItem) => programItem._id.$oid === favoritedProgramItem.$oid,
         );
-        if (!matchingGame) {
+        if (!matchingProgramItem) {
           logger.error(
             `Favorited: program item for id ${JSON.stringify(
-              favoritedGame,
+              favoritedProgramItem,
             )} not found`,
           );
           return { programItemId: "<canceled>" };
         }
-        return { programItemId: matchingGame.programItemId };
+        return { programItemId: matchingProgramItem.programItemId };
       },
     );
 
     const tempLotterySignups = user.lotterySignups.map((lotterySignup) => {
-      const matchingGame = programItems.find(
-        // @ts-expect-error: $oid not in interface
-        (game) => game._id.$oid === lotterySignup.programItemDetails.$oid,
+      const matchingProgramItem = programItems.find(
+        (programItem) =>
+          // @ts-expect-error: $oid not in interface
+          programItem._id.$oid === lotterySignup.programItemDetails.$oid,
       );
-      if (!matchingGame) {
+      if (!matchingProgramItem) {
         logger.error(
           `Lottery signup: program item for id ${JSON.stringify(lotterySignup)} not found`,
         );
@@ -94,7 +95,9 @@ export const programItemIdFix = async (
       }
       return {
         ...lotterySignup,
-        programItemDetails: { programItemId: matchingGame.programItemId },
+        programItemDetails: {
+          programItemId: matchingProgramItem.programItemId,
+        },
       };
     });
 
@@ -106,11 +109,14 @@ export const programItemIdFix = async (
 
   results.map((result) => {
     result.results.map((userResult) => {
-      const matchingGame = programItems.find((game) => {
-        return isEqual(game._id, userResult.directSignup.programItemDetails);
+      const matchingProgramItem = programItems.find((programItem) => {
+        return isEqual(
+          programItem._id,
+          userResult.directSignup.programItemDetails,
+        );
       });
 
-      if (!matchingGame) {
+      if (!matchingProgramItem) {
         logger.error(
           `Results: program item for id ${JSON.stringify(
             userResult.directSignup.programItemDetails,
@@ -127,16 +133,18 @@ export const programItemIdFix = async (
       userResult.directSignup = {
         ...userResult.directSignup,
         // @ts-expect-error: We don't want whole program item details
-        programItemDetails: { programItemId: matchingGame.programItemId },
+        programItemDetails: {
+          programItemId: matchingProgramItem.programItemId,
+        },
       };
     });
   });
 
   directSignups.map((signup) => {
-    programItems.map((game) => {
-      if (isEqual(game._id, signup.programItem)) {
+    programItems.map((programItem) => {
+      if (isEqual(programItem._id, signup.programItem)) {
         // @ts-expect-error: We don't want whole program item details
-        signup.programItem = { programItemId: game.programItemId };
+        signup.programItem = { programItemId: programItem.programItemId };
       }
     });
   });

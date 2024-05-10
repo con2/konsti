@@ -54,8 +54,8 @@ export const runGenerators = async (
 
   const testUsersCount = 5; // Number of test users
 
-  // Total program items: newGamesCount
-  const newGamesCount = 10; // How many games are available for each signup time for each program type
+  // Total program items: newProgramItemsCount
+  const newProgramItemsCount = 10; // How many program items are available for each signup time for each program type
 
   if (options.clean) {
     logger.info("Clean all data");
@@ -81,12 +81,12 @@ export const runGenerators = async (
   await createHelpUser();
 
   if (options.programItems) {
-    logger.info("Generate games");
+    logger.info("Generate program items");
 
     !options.clean && (await removeProgramItems());
     !options.clean && (await removeResults());
 
-    await createProgramItems(newGamesCount);
+    await createProgramItems(newProgramItemsCount);
     await createSettings();
   }
 

@@ -61,8 +61,9 @@ export const updateProgramItems = async (): Promise<
   }
 
   if (config.server().updateProgramItemPopularityEnabled) {
-    const updateGamePopularityResult = await updateProgramItemPopularity();
-    if (isErrorResult(updateGamePopularityResult)) {
+    const updateProgramItemPopularityResult =
+      await updateProgramItemPopularity();
+    if (isErrorResult(updateProgramItemPopularityResult)) {
       return {
         message: "Program item popularity update failed",
         status: "error",

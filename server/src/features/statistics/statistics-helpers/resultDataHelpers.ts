@@ -13,7 +13,7 @@ export const getSignupsByTime = (
   }, {});
 
   logger.debug(
-    `Number of people entering to games by start times: \n`,
+    `Number of people entering to program items by start times: \n`,
     signupsByTime,
   );
 
@@ -25,13 +25,14 @@ export const getMaximumNumberOfPlayersByTime = (
 ): StringNumberObject => {
   const maxNumberOfPlayersByTime: StringNumberObject = {};
 
-  programItems.forEach((game) => {
-    if (!maxNumberOfPlayersByTime[game.startTime]) {
-      maxNumberOfPlayersByTime[game.startTime] = 0;
+  programItems.forEach((programItem) => {
+    if (!maxNumberOfPlayersByTime[programItem.startTime]) {
+      maxNumberOfPlayersByTime[programItem.startTime] = 0;
     }
 
-    maxNumberOfPlayersByTime[game.startTime] =
-      maxNumberOfPlayersByTime[game.startTime] + game.maxAttendance;
+    maxNumberOfPlayersByTime[programItem.startTime] =
+      maxNumberOfPlayersByTime[programItem.startTime] +
+      programItem.maxAttendance;
   });
 
   logger.debug(

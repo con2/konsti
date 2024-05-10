@@ -8,7 +8,7 @@ import { createLotterySignups } from "server/test/test-data-generation/generator
 
 export const generateTestData = async (
   newUsersCount: number,
-  newGamesCount: number,
+  newProgramItemsCount: number,
   groupSize: number,
   numberOfGroups: number,
   testUsersCount: number,
@@ -20,7 +20,7 @@ export const generateTestData = async (
     testUsersCount,
   );
 
-  await createProgramItems(newGamesCount);
+  await createProgramItems(newProgramItemsCount);
 
   await createLotterySignups();
 };

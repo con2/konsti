@@ -77,7 +77,7 @@ export const submitUpdateFavorites = (favoriteData: NewFavorite): AppThunk => {
 };
 
 export enum PostDirectSignupErrorMessage {
-  GAME_FULL = "signupError.programFull",
+  PROGRAM_ITEM_FULL = "signupError.programItemFull",
   UNKNOWN = "signupError.generic",
   SIGNUP_ENDED = "signupError.signupEnded",
   SIGNUP_NOT_OPEN_YET = "signupError.signupNotOpenYet",
@@ -96,8 +96,8 @@ export const submitPostDirectSignup = (
       switch (signupResponse.errorId) {
         case "signupEnded":
           return PostDirectSignupErrorMessage.SIGNUP_ENDED;
-        case "gameFull":
-          return PostDirectSignupErrorMessage.GAME_FULL;
+        case "programItemFull":
+          return PostDirectSignupErrorMessage.PROGRAM_ITEM_FULL;
         case "signupNotOpenYet":
           return PostDirectSignupErrorMessage.SIGNUP_NOT_OPEN_YET;
         case "noKonstiSignup":

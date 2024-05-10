@@ -66,11 +66,11 @@ export const updateWithAssign = async (
     }))
     .filter((popularityUpdate) => popularityUpdate.popularity);
 
-  const saveGamePopularityResult = await saveProgramItemPopularity(
+  const saveProgramItemPopularityResult = await saveProgramItemPopularity(
     programItemPopularityUpdates,
   );
 
-  if (isErrorResult(saveGamePopularityResult)) {
+  if (isErrorResult(saveProgramItemPopularityResult)) {
     return makeErrorResult(MongoDbError.UNKNOWN_ERROR);
   }
 

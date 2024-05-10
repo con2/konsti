@@ -49,7 +49,7 @@ export const removeDeletedProgramItems = async (
 
   if (deletedProgramItems.length > 0) {
     const deletedProgramItemIds = deletedProgramItems.map(
-      (deletedGame) => deletedGame.programItemId,
+      (deletedProgramItem) => deletedProgramItem.programItemId,
     );
 
     logger.info(
@@ -106,13 +106,13 @@ export const enrichProgramItems = async (
     return {
       programItem: {
         ...programItem.toJSON<ProgramItemDoc>(),
-        signupStrategy: getSignupStrategyForGame(
+        signupStrategy: getSignupStrategyForProgramItem(
           programItem,
           settings,
           currentTime,
         ),
       },
-      users: getSignupsForGame(
+      users: getDirectSignupsForProgramItem(
         signups,
         programItem.programItemId,
         signupQuestion,
@@ -123,7 +123,7 @@ export const enrichProgramItems = async (
   return makeSuccessResult(enrichedProgramItems);
 };
 
-const getSignupStrategyForGame = (
+const getSignupStrategyForProgramItem = (
   programItem: ProgramItemDoc,
   settings: Settings,
   currentTime: Dayjs,
@@ -153,25 +153,26 @@ const getSignupStrategyForGame = (
   return SignupStrategy.ALGORITHM;
 };
 
-const getSignupsForGame = (
+const getDirectSignupsForProgramItem = (
   directSignups: DirectSignupsForProgramItem[],
   programItemId: string,
   signupQuestion?: SignupQuestion | undefined,
 ): UserSignup[] => {
-  const signupsForGame = directSignups.filter(
+  const directSignupsForProgramItem = directSignups.filter(
     (signup) => signup.programItem.programItemId === programItemId,
   );
 
-  const formattedSignupsForGame = signupsForGame.flatMap((signupForGame) => {
-    return signupForGame.userSignups.map((userSignups) => {
-      return {
-        username: userSignups.username,
-        signupMessage: getSignupMessage(signupQuestion, userSignups.message),
-      };
+  const formattedDirectSignupsForProgramItem =
+    directSignupsForProgramItem.flatMap((directSignupForProgramItem) => {
+      return directSignupForProgramItem.userSignups.map((userSignups) => {
+        return {
+          username: userSignups.username,
+          signupMessage: getSignupMessage(signupQuestion, userSignups.message),
+        };
+      });
     });
-  });
 
-  return formattedSignupsForGame;
+  return formattedDirectSignupsForProgramItem;
 };
 
 const getSignupMessage = (

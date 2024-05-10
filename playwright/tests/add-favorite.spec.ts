@@ -28,7 +28,7 @@ test("Add favorite", async ({ page, request }) => {
     "data-testid=program-item-container >> nth=0",
   );
 
-  const favoritedGameTitle = await firstProgramItem
+  const favoritedProgramItemTitle = await firstProgramItem
     .locator("data-testid=program-item-title")
     .innerText();
 
@@ -41,9 +41,11 @@ test("Add favorite", async ({ page, request }) => {
     "data-testid=favorited-program-items-list",
   );
 
-  const myProgramItemsGameTitle = await favoritedProgramItems
+  const myProgramItemsProgramItemTitle = await favoritedProgramItems
     .locator("data-testid=program-item-title")
     .innerText();
 
-  expect(myProgramItemsGameTitle.trim()).toEqual(favoritedGameTitle);
+  expect(myProgramItemsProgramItemTitle.trim()).toEqual(
+    favoritedProgramItemTitle,
+  );
 });

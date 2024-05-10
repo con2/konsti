@@ -31,9 +31,9 @@ export const removeOverlapSignups = async (
   const users = unwrapResult(usersResult);
 
   results.map((result) => {
-    const directSignupGame = result.directSignup.programItemDetails;
+    const directSignupProgramItem = result.directSignup.programItemDetails;
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-    if (!directSignupGame) {
+    if (!directSignupProgramItem) {
       logger.error(
         "%s",
         new Error("removeOverlapSignups: Error finding direct signup"),
@@ -53,10 +53,10 @@ export const removeOverlapSignups = async (
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     const newLotterySignups = signedUser?.lotterySignups.filter(
       (lotterySignup) => {
-        // If lottery signup takes place during the length of direct signup game, cancel it
+        // If lottery signup takes place during the length of direct signup program item, cancel it
         return !dayjs(lotterySignup.programItemDetails.startTime).isBetween(
-          dayjs(directSignupGame.startTime).add(1, "minutes"),
-          dayjs(directSignupGame.endTime),
+          dayjs(directSignupProgramItem.startTime).add(1, "minutes"),
+          dayjs(directSignupProgramItem.endTime),
         );
       },
     );

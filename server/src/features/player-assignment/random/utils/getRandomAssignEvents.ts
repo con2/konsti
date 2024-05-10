@@ -7,18 +7,19 @@ export const getRandomAssignEvents = (
   lotterySignupProgramItems: readonly ProgramItem[],
   directSignups: readonly DirectSignupsForProgramItem[],
 ): RandomAssignEvent[] => {
-  return lotterySignupProgramItems.map((selectedGame) => {
+  return lotterySignupProgramItems.map((lotterySignupProgramItem) => {
     // Program item can have existing direct signups if program item's start time has changed
     // Consider existing direct signups when determining program item attendee limits
     const programItemSignup = directSignups.find(
       (signup) =>
-        signup.programItem.programItemId === selectedGame.programItemId,
+        signup.programItem.programItemId ===
+        lotterySignupProgramItem.programItemId,
     );
 
     const changedSignups = programItemSignup?.userSignups.filter(
       (userSignup) => {
         const startTimeChanged = !dayjs(userSignup.time).isSame(
-          dayjs(selectedGame.startTime),
+          dayjs(lotterySignupProgramItem.startTime),
         );
         if (startTimeChanged) {
           return true;
@@ -29,9 +30,9 @@ export const getRandomAssignEvents = (
     const currentSignups = changedSignups?.length ?? 0;
 
     return {
-      id: selectedGame.programItemId,
-      min: selectedGame.minAttendance - currentSignups,
-      max: selectedGame.maxAttendance - currentSignups,
+      id: lotterySignupProgramItem.programItemId,
+      min: lotterySignupProgramItem.minAttendance - currentSignups,
+      max: lotterySignupProgramItem.maxAttendance - currentSignups,
       groups: [],
     };
   });

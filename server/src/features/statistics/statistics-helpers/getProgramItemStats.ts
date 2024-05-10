@@ -3,7 +3,7 @@ import {
   getProgramItemsByStartTime,
   getNumberOfFullProgramItems,
   getDemandByTime,
-  getDemandByGame,
+  getDemandByProgramItem,
 } from "./programItemDataHelpers";
 import { logger } from "server/utils/logger";
 import { config } from "shared/config";
@@ -32,5 +32,5 @@ export const getProgramItemStats = (year: number, event: string): void => {
   getProgramItemsByStartTime(programItems);
   getNumberOfFullProgramItems(programItems, users);
   getDemandByTime(programItems, users);
-  getDemandByGame(programItems, users);
+  getDemandByProgramItem(programItems, users);
 };

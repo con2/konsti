@@ -33,7 +33,7 @@ export const SignupInfo = ({
     .shared()
     .directSignupAlwaysOpenIds.includes(programItem.programItemId);
 
-  const isEnterGameMode =
+  const isDirectSignupMode =
     config.shared().manualSignupMode === SignupStrategy.DIRECT ||
     signupStrategy === SignupStrategy.DIRECT ||
     signupAlwaysOpen;
@@ -46,7 +46,7 @@ export const SignupInfo = ({
 
   return (
     <div>
-      {!isEnterGameMode && normalSignup && (
+      {!isDirectSignupMode && normalSignup && (
         <AlgorithmSignupForm
           programItem={programItem}
           startTime={startTime}
@@ -54,7 +54,7 @@ export const SignupInfo = ({
         />
       )}
 
-      {isEnterGameMode && normalSignup && (
+      {isDirectSignupMode && normalSignup && (
         <DirectSignupForm
           programItem={programItem}
           programItemIsFull={players >= programItem.maxAttendance}

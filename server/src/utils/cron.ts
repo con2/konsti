@@ -51,16 +51,16 @@ export const startCronJobs = async (): Promise<void> => {
   if (autoUpdateProgramEnabled) {
     logger.info("Start cronjob: program auto update");
 
-    const autoUpdateGamesJob = Cron(
+    const autoUpdateProgramItemsJob = Cron(
       programUpdateInterval,
       {
-        name: "autoUpdateGames",
+        name: "autoUpdateProgramItems",
         protect: protectCallback,
         catch: errorHandler,
       },
       autoUpdateProgramItems,
     );
-    cronJobs.push(autoUpdateGamesJob);
+    cronJobs.push(autoUpdateProgramItemsJob);
   }
 
   if (autoAssignPlayersEnabled) {
@@ -136,12 +136,12 @@ export const autoUpdateProgramItems = async (): Promise<void> => {
 
   logger.info("Auto update not running, continue");
 
-  const updateGamesResult = await updateProgramItems();
-  if (updateGamesResult.status === "error") {
+  const updateProgramItemsResult = await updateProgramItems();
+  if (updateProgramItemsResult.status === "error") {
     logger.error(
       "%s",
       new Error(
-        `***** Program items auto update failed: ${updateGamesResult.message}`,
+        `***** Program items auto update failed: ${updateProgramItemsResult.message}`,
       ),
     );
     return;

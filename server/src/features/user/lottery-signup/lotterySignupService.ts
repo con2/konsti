@@ -44,8 +44,10 @@ export const storeLotterySignups = async (
     (programItem) => programItem.time,
   );
 
-  for (const [, games] of Object.entries(programItemsByTimeslot)) {
-    const priorities = games.map((selectedGame) => selectedGame.priority);
+  for (const [, programItems] of Object.entries(programItemsByTimeslot)) {
+    const priorities = programItems.map(
+      (selectedProgramItem) => selectedProgramItem.priority,
+    );
     const uniqPriorities = uniq(priorities);
 
     if (priorities.length !== uniqPriorities.length) {

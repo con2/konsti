@@ -21,7 +21,7 @@ export const createLotterySignups = async (): Promise<void> => {
     (user) => user.username !== "admin" && user.username !== "helper",
   );
 
-  logger.info(`Signup: ${programItems.length} games`);
+  logger.info(`Signup: ${programItems.length} program items`);
   logger.info(`Signup: ${users.length} users`);
 
   const groupedUsers = groupBy(users, "groupCode");
@@ -64,38 +64,38 @@ const getRandomLotterySignup = (
   const uniqueTimes = Array.from(new Set(startTimes));
   const firstFourTimes = uniqueTimes.slice(0, 4);
 
-  // Select random games for each start time
+  // Select random program items for each start time
   firstFourTimes.forEach((startTime) => {
     logger.debug(`Generate signups for time ${startTime}`);
-    const gamesForTime = activeProgramItems.filter(
-      (activeGame) =>
-        dayjs(activeGame.startTime).toISOString() ===
+    const programItemsForTime = activeProgramItems.filter(
+      (activeProgramItem) =>
+        dayjs(activeProgramItem.startTime).toISOString() ===
         dayjs(startTime).toISOString(),
     );
 
-    const numberOfSignups = Math.min(gamesForTime.length, 3);
+    const numberOfSignups = Math.min(programItemsForTime.length, 3);
 
     for (let i = 0; i < numberOfSignups; i += 1) {
       randomIndex = faker.number.int({
         min: 0,
-        max: gamesForTime.length - 1,
+        max: programItemsForTime.length - 1,
       });
 
-      const randomGame = gamesForTime[randomIndex];
+      const randomProgramItem = programItemsForTime[randomIndex];
 
       const duplicate = !!lotterySignups.find(
         (lotterySignup) =>
           lotterySignup.programItemDetails.programItemId ===
-          randomGame.programItemId,
+          randomProgramItem.programItemId,
       );
 
       if (duplicate) {
         i -= 1;
       } else {
         lotterySignups.push({
-          programItemDetails: randomGame,
+          programItemDetails: randomProgramItem,
           priority: i + 1,
-          time: randomGame.startTime,
+          time: randomProgramItem.startTime,
           message: "",
         });
       }

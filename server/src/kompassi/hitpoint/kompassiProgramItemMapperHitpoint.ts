@@ -50,9 +50,9 @@ export const kompassiProgramItemMapperHitpoint = (
 };
 
 const mapProgramType = (
-  kompassiGame: kompassiProgramItemHitpoint,
+  kompassiProgramItem: kompassiProgramItemHitpoint,
 ): ProgramType => {
-  const programType = kompassiGame.category_title;
+  const programType = kompassiProgramItem.category_title;
 
   switch (programType) {
     case KompassiProgramTypeHitpoint.TABLETOP_RPG:
@@ -66,36 +66,36 @@ const mapProgramType = (
   }
 };
 
-const mapTags = (kompassiGame: kompassiProgramItemHitpoint): Tag[] => {
+const mapTags = (kompassiProgramItem: kompassiProgramItemHitpoint): Tag[] => {
   const tags = [];
 
-  if (kompassiGame.is_age_restricted) {
+  if (kompassiProgramItem.is_age_restricted) {
     tags.push(Tag.FOR_18_PLUS_ONLY);
   }
 
-  if (kompassiGame.is_beginner_friendly) {
+  if (kompassiProgramItem.is_beginner_friendly) {
     tags.push(Tag.BEGINNER_FRIENDLY);
   }
 
-  if (kompassiGame.is_children_friendly) {
+  if (kompassiProgramItem.is_children_friendly) {
     tags.push(Tag.CHILDREN_FRIENDLY);
   }
 
-  if (kompassiGame.is_intended_for_experienced_participants) {
+  if (kompassiProgramItem.is_intended_for_experienced_participants) {
     tags.push(Tag.INTENDED_FOR_EXPERIENCED_PARTICIPANTS);
   }
 
   return uniq(tags);
 };
 
-const mapLanguage = (kompassiGame: kompassiProgramItemHitpoint) => {
+const mapLanguage = (kompassiProgramItem: kompassiProgramItemHitpoint) => {
   const { isEnglishProgramItems } = config.shared();
 
-  if (isEnglishProgramItems.includes(kompassiGame.identifier)) {
+  if (isEnglishProgramItems.includes(kompassiProgramItem.identifier)) {
     return Language.ENGLISH;
   }
 
-  if (kompassiGame.is_english_ok) {
+  if (kompassiProgramItem.is_english_ok) {
     return Language.FINNISH_OR_ENGLISH;
   }
 

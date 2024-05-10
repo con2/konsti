@@ -51,9 +51,9 @@ export const kompassiProgramItemMapperSolmukohta = (
 };
 
 const mapProgramType = (
-  kompassiGame: KompassiProgramItemSolmukohta,
+  kompassiProgramItem: KompassiProgramItemSolmukohta,
 ): ProgramType => {
-  const programType = kompassiGame.category_title;
+  const programType = kompassiProgramItem.category_title;
 
   switch (programType) {
     case KompassiProgramTypeSolmukohta.LARP:

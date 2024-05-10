@@ -8,18 +8,19 @@ export const getEvents = (
   lotterySignupProgramItems: readonly ProgramItem[],
   directSignups: readonly DirectSignupsForProgramItem[],
 ): Event[] => {
-  return lotterySignupProgramItems.map((selectedGame) => {
+  return lotterySignupProgramItems.map((lotterySignupProgramItem) => {
     // Program item can have existing signups if program item's start time has changed
     // Consider existing signups when determining program item attendee limits
     const programItemsSignup = directSignups.find(
       (signup) =>
-        signup.programItem.programItemId === selectedGame.programItemId,
+        signup.programItem.programItemId ===
+        lotterySignupProgramItem.programItemId,
     );
 
     const changedSignups = programItemsSignup?.userSignups.filter(
       (userSignup) => {
         const startTimeChanged = !dayjs(userSignup.time).isSame(
-          dayjs(selectedGame.startTime),
+          dayjs(lotterySignupProgramItem.startTime),
         );
         if (startTimeChanged) {
           return true;
@@ -30,9 +31,9 @@ export const getEvents = (
     const currentSignups = changedSignups?.length ?? 0;
 
     return {
-      id: selectedGame.programItemId,
-      min: selectedGame.minAttendance - currentSignups,
-      max: selectedGame.maxAttendance - currentSignups,
+      id: lotterySignupProgramItem.programItemId,
+      min: lotterySignupProgramItem.minAttendance - currentSignups,
+      max: lotterySignupProgramItem.maxAttendance - currentSignups,
       groups: [],
     };
   });

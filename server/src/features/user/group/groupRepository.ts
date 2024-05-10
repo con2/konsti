@@ -14,7 +14,7 @@ export const findGroupMembers = async (
   try {
     const response = await UserModel.find({ groupCode })
       .lean<User[]>()
-      .populate("favoritedGames")
+      .populate("favoritedProgramItems")
       .populate("lotterySignups.programItemDetails");
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (!response || response.length === 0) {

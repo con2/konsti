@@ -43,8 +43,10 @@ export const storeDirectSignup = async (
 
   const timeNow = unwrapResult(timeNowResult);
 
-  const gameResult = await findProgramItemById(directSignupProgramItemId);
-  if (isErrorResult(gameResult)) {
+  const programItemResult = await findProgramItemById(
+    directSignupProgramItemId,
+  );
+  if (isErrorResult(programItemResult)) {
     return {
       message: `Signed program item not found`,
       status: "error",
@@ -52,7 +54,7 @@ export const storeDirectSignup = async (
     };
   }
 
-  const programItem = unwrapResult(gameResult);
+  const programItem = unwrapResult(programItemResult);
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   if (!programItem) {
     return {

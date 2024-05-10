@@ -467,8 +467,8 @@ describe("Assignment with multiple program types and directSignupAlwaysOpen", ()
   });
 
   test("should update previous signup from moved program item with assignment signup if user has updated result", async () => {
-    // Game1: 14:00 direct signup -> program item moved 15:00
-    // Game2: 15:00 lottery signup -> replaces Game1
+    // ProgramItem1: 14:00 direct signup -> program item moved 15:00
+    // ProgramItem2: 15:00 lottery signup -> replaces ProgramItem1
     const assignmentStrategy = AssignmentStrategy.RANDOM_PADG;
 
     const assignmentTime = dayjs(testProgramItem.startTime)
